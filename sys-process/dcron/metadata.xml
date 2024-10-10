@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<name>Filip Kobierski</name>
+		<email>fkobi@pm.me</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		This lightweight cron daemon aims to be simple and secure, with just enough
 		features to stay useful.
@@ -10,7 +17,9 @@
 		All jobs are run with `/bin/sh` for conformity and portability.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/dubiousjim/dcron/issues</bugs-to>
-		<remote-id type="github">dubiousjim/dcron</remote-id>
+		<bugs-to>https://github.com/ptchinster/dcron/issues</bugs-to>
+		<!-- readme's the doc -->
+		<changelog>https://github.com/ptchinster/dcron/blob/master/CHANGELOG</changelog>
+		<remote-id type="github">ptchinster/dcron</remote-id>
 	</upstream>
 </pkgmetadata>
