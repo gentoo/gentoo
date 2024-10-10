@@ -1,0 +1,2 @@
+d /run/knot	0750	knot	knot
+d /var/lib/knot	0750	knot	knot
