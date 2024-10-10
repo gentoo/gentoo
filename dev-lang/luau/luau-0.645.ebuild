@@ -22,7 +22,8 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-
+IUSE="test"
+RESTRICT="!test? ( test )"
 DOCS=( CONTRIBUTING.md README.md SECURITY.md )
 
 src_test() {
@@ -30,9 +31,24 @@ src_test() {
 	"${BUILD_DIR}/Luau.Conformance" || die
 }
 
+src_configure() {
+	local mycmakeargs=(
+		-DLUAU_BUILD_TESTS=$(usex test)
+	)
+	cmake_src_configure
+}
+
 src_install() {
+	dolib.a "${BUILD_DIR}"/libLuau.*.a
+
 	exeinto /usr/bin
 	doexe "${BUILD_DIR}"/luau{,-analyze,-ast,-compile,-reduce}
+
+	insinto /usr/include/Luau
+	doins "${S}"/VM/include/*.h
+	doins "${S}"/Compiler/include/luacode.h
+	doins "${S}"/CodeGen/include/luacodegen.h
+	doins "${S}"/{Config,Common,Compiler,CodeGen,Ast,Analysis,EqSat}/include/Luau/*.h
 
 	einstalldocs
 }
