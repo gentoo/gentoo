@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+LUA_COMPAT=( lua5-{2..4} )
+
+inherit flag-o-matic toolchain-funcs lua-single
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="https://neomutt.org/"
@@ -21,11 +23,12 @@ SRC_URI+=" test? ( https://github.com/${PN}/neomutt-test-files/archive/${TEST_FI
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet lmdb lz4
-	nls notmuch pgp-classic qdbm sasl selinux smime-classic ssl tokyocabinet
+IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet lmdb lua
+	lz4 nls notmuch pgp-classic qdbm sasl selinux smime-classic ssl tokyocabinet
 	test zlib zstd"
 REQUIRED_USE="
-	autocrypt? ( gpgme )"
+	autocrypt? ( gpgme )
+	lua? ( ${LUA_REQUIRED_USE} )"
 
 CDEPEND="
 	app-misc/mime-types
@@ -48,6 +51,7 @@ CDEPEND="
 	autocrypt? ( >=dev-db/sqlite-3 )
 	idn? ( net-dns/libidn2:= )
 	kerberos? ( virtual/krb5 )
+	lua? ( ${LUA_DEPS} )
 	notmuch? ( net-mail/notmuch:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( >=dev-libs/openssl-1.0.2u:0= )
@@ -74,6 +78,10 @@ RDEPEND="${CDEPEND}
 "
 
 RESTRICT="!test? ( test )"
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
 
 src_unpack() {
 	if [[ -n ${A} ]]; then
@@ -111,6 +119,7 @@ src_configure() {
 		"$(use_enable idn idn2)"
 		"$(use_enable kerberos gss)"
 		"$(use_enable lmdb)"
+		"$(use_enable lua)"
 		"$(use_enable sasl)"
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
 		"$(use_enable ssl)"
