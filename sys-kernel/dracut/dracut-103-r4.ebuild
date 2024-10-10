@@ -22,7 +22,8 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="selinux test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test? ( test_privileged test_network )"
 
 RDEPEND="
 	app-alternatives/cpio
@@ -58,6 +59,38 @@ BDEPEND="
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
 	virtual/pkgconfig
+	test? (
+		net-nds/rpcbind
+		net-fs/nfs-utils
+		sys-block/open-iscsi
+		sys-fs/btrfs-progs
+		sys-fs/dmraid
+		sys-fs/lvm2[lvm,thin]
+		sys-fs/mdadm
+		sys-fs/multipath-tools
+		alpha? ( app-emulation/qemu[qemu_softmmu_targets_alpha] )
+		amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] )
+		arm? ( app-emulation/qemu[qemu_softmmu_targets_arm] )
+		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
+		hppa? ( app-emulation/qemu[qemu_softmmu_targets_hppa] )
+		loong? ( app-emulation/qemu[qemu_softmmu_targets_loongarch64] )
+		mips? ( || (
+			app-emulation/qemu[qemu_softmmu_targets_mips]
+			app-emulation/qemu[qemu_softmmu_targets_mips64]
+			app-emulation/qemu[qemu_softmmu_targets_mips64el]
+		) )
+		ppc? ( app-emulation/qemu[qemu_softmmu_targets_ppc] )
+		ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] )
+		riscv? ( || (
+			app-emulation/qemu[qemu_softmmu_targets_riscv32]
+			app-emulation/qemu[qemu_softmmu_targets_riscv64]
+		) )
+		sparc? ( || (
+			app-emulation/qemu[qemu_softmmu_targets_sparc]
+			app-emulation/qemu[qemu_softmmu_targets_sparc64]
+		) )
+		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
+	)
 "
 
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
@@ -89,14 +122,21 @@ src_configure() {
 }
 
 src_test() {
-	if [[ ${EUID} != 0 ]]; then
-		# Tests need root privileges, bug #298014
-		ewarn "Skipping tests: Not running as root."
-	elif [[ ! -w /dev/kvm ]]; then
-		ewarn "Skipping tests: Unable to access /dev/kvm."
+	addwrite /dev/kvm
+	# Translate ARCH so run-qemu can find the correct qemu-system-ARCH
+	local qemu_arch
+	if use amd64; then
+		qemu_arch=x86_64
+	elif use arm64; then
+		qemu_arch=aarch64
+	elif use loong; then
+		qemu_arch=loongarch64
+	elif use x86; then
+		qemu_arch=i386
 	else
-		emake -C test check
+		qemu_arch=$(tc-arch)
 	fi
+	ARCH=${qemu_arch} emake -C test check
 }
 
 src_install() {

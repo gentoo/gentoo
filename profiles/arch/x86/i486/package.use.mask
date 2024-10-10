@@ -1,6 +1,10 @@
 # Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
+
 # Ben Kohler <bkohler@gentoo.org> (2024-05-03)
 # Requires thin-provisioning-tools, which requires rust, which cannot currently
 # build/install on i486 or any other CPU class lacking sse2.
