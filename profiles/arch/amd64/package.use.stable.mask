@@ -25,10 +25,6 @@ dev-python/PyQt6 remoteobjects
 # No stable versions of ROCm at the moment
 sys-apps/hwloc rocm
 
-# Zen <dev@pyl.onl> (2024-07-01)
-# UGRD support is still experimental, no stable keywords for now
-sys-kernel/installkernel ugrd
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
