@@ -458,10 +458,6 @@ media-gfx/pstoedit emf
 # openvz-sources are likely too old for any proper arm64 usage
 app-emulation/libvirt openvz
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# Virtualbox is x86 only
-app-emulation/libvirt virtualbox
-
 # Alexis Ballier <aballier@gentoo.org> (2017-06-21)
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers
