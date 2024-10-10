@@ -32,7 +32,7 @@ IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
 	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nbd nfs nls numa
 	openvz parted pcap policykit +qemu rbd sasl selinux test +udev
-	virtualbox +virt-network wireshark-plugins xen zfs
+	virtiofsd virtualbox +virt-network wireshark-plugins xen zfs
 "
 RESTRICT="!test? ( test )"
 
@@ -53,7 +53,6 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
-	net-libs/rpcsvc-proto
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
@@ -124,6 +123,8 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
+	virtiofsd? ( app-emulation/virtiofsd )
+	virtualbox? ( <app-emulation/virtualbox-7.1.0 )
 	wireshark-plugins? ( >=net-analyzer/wireshark-2.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.9.0
@@ -139,6 +140,11 @@ DEPEND="
 	${BDEPEND}
 	${RDEPEND}
 	${PYTHON_DEPS}
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
 "
 # The 'circular' dependency on dev-python/libvirt-python is because of
 # virt-qemu-qmp-proxy.
@@ -148,13 +154,17 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-9.4.0-do-not-use-sysconfig.patch
+	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
-	"${FILESDIR}"/${PN}-9.10.0-virxml-include-libxml-xmlsave.h-for-xmlIndentTreeOut.patch
-	"${FILESDIR}"/${PN}-10.1.0-Fix-off-by-one-error-in-udevListInterfacesByStatus.patch
 	"${FILESDIR}"/${PN}-10.2.0-remote-check-for-negative-array-lengths-before-alloc.patch
 	"${FILESDIR}"/${PN}-10.5.0-virt-aa-helper-Allow-RO-access-to-usr-share-edk2-ovm.patch
 )
+
+python_check_deps() {
+	if use test; then
+		python_has_version -d "dev-python/pytest[${PYTHON_USEDEP}]"
+	fi
+}
 
 pkg_setup() {
 	# Check kernel configuration:
@@ -278,7 +288,7 @@ src_configure() {
 		$(meson_feature lvm storage_lvm)
 		$(meson_feature lvm storage_mpath)
 		$(meson_feature lxc driver_lxc)
-		$(meson_feature nbd libnbd)
+		$(meson_feature nbd nbdkit)
 		$(meson_feature nls)
 		$(meson_feature numa numactl)
 		$(meson_feature numa numad)
