@@ -30,6 +30,7 @@ HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
 
 LICENSE="GPL-2"
 SLOT="0"
+S="${WORKDIR}/${MY_P}"
 
 IUSE="X debug hdf5 html ipmi json lua multiple-slurmd +munge mysql numa
 		nvml ofed pam perl slurmdbd slurmrestd static-libs torque ucx yaml"
@@ -79,8 +80,6 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	torque? ( perl )
 	slurmrestd? ( json ) "
 
-S="${WORKDIR}/${MY_P}"
-
 LIBSLURM_PERL_S="${S}/contribs/perlapi/libslurm/perl"
 LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
 
@@ -100,7 +99,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	tc-ld-disable-gold
+	tc-ld-force-bfd
 	default
 
 	# pids should go to /var/run/slurm
