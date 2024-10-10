@@ -11,10 +11,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/jedisct1/pure-ftpd.git"
 else
-	SRC_URI="
-		ftp://ftp.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2
-		http://download.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2
-	"
+	SRC_URI="https://download.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
