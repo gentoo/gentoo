@@ -57,8 +57,7 @@ src_prepare() {
 
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX:-/}:" \
-		-e "s:@libdir@:/usr/lib:" \
-		"${FILESDIR}/distcc-config" > "${T}/distcc-config" || die
+		"${FILESDIR}/distcc-config-r1" > "${T}/distcc-config" || die
 
 	# TODO: gdb tests fail due to gdb failing to find .c file
 	sed -i -e '/Gdb.*Case,/d' test/testdistcc.py || die
@@ -152,13 +151,19 @@ src_install() {
 	fi
 
 	insinto /usr/share/shadowman/tools
-	newins - distcc <<<"${EPREFIX}/usr/lib/distcc/bin"
-	# Dummy symlinks to distccd to satisfy command whitelist, bug 650986
-	newins - distccd <<<"${EPREFIX}/usr/lib/distcc"
+	newins - distcc <<<"${EPREFIX}/usr/lib/distcc"
 
 	rm -r "${ED}/etc/default" || die
 	rm "${ED}/etc/distcc/clients.allow" || die
 	rm "${ED}/etc/distcc/commands.allow.sh" || die
+}
+
+pkg_preinst() {
+	# Compatibility symlink for Portage
+	dosym . /usr/lib/distcc/bin
+	if [[ -e ${EROOT}/usr/lib/distcc/bin && ! -L ${EROOT}/usr/lib/distcc/bin ]]; then
+		rm -rf "${EROOT}"/usr/lib/distcc/bin || die
+	fi
 }
 
 pkg_postinst() {
@@ -170,7 +175,6 @@ pkg_postinst() {
 
 	if [[ -z ${ROOT} ]]; then
 		eselect compiler-shadow update distcc
-		eselect compiler-shadow update distccd
 	fi
 
 	elog
