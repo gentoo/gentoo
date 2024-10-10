@@ -3,10 +3,7 @@
 
 EAPI=8
 
-inherit cmake git-r3 readme.gentoo-r1 xdg-utils
-
-EGIT_REPO_URI="https://github.com/OpenRCT2/OpenRCT2.git"
-EGIT_BRANCH="develop"
+inherit cmake readme.gentoo-r1 xdg-utils
 
 MY_PN="OpenRCT2"
 MY_PN_MSX="openmusic"
@@ -23,16 +20,20 @@ MY_PV_TS="0.4.14"
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
 SRC_URI="
+	https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/${MY_PN}/${MY_PN_MSX}/releases/download/v${MY_PV_MSX}/${MY_PN_MSX}.zip -> ${PN}-${MY_PN_MSX}-${MY_PV_MSX}.zip
 	https://github.com/${MY_PN}/${MY_PN_OBJ}/releases/download/v${MY_PV_OBJ}/${MY_PN_OBJ}.zip -> ${PN}-${MY_PN_OBJ}-${MY_PV_OBJ}.zip
 	https://github.com/${MY_PN}/OpenSoundEffects/releases/download/v${MY_PV_SFX}/${MY_PN_SFX}.zip -> ${PN}-${MY_PN_SFX}-${MY_PV_SFX}.zip
 	https://github.com/${MY_PN}/${MY_PN_TS}/releases/download/v${MY_PV_TS}/${MY_PN_TS}.zip -> ${PN}-${MY_PN_TS}-${MY_PV_TS}.zip
 	test? ( https://github.com/${MY_PN}/${MY_PN_RPL}/releases/download/v${MY_PV_RPL}/${MY_PN_RPL}.zip -> ${PN}-${MY_PN_RPL}-${MY_PV_RPL}.zip )
 "
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="dedicated +flac +opengl scripting test +truetype +vorbis"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -74,8 +75,6 @@ BDEPEND="
 	app-arch/unzip
 	virtual/pkgconfig
 "
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
@@ -177,5 +176,5 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
-	xdg_mimeinf
+	xdg_mimeinfo_database_update
 }
