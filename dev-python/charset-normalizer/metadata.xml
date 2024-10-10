@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">Ousret/charset_normalizer</remote-id>
+		<remote-id type="github">jawah/charset_normalizer</remote-id>
 		<remote-id type="pypi">charset-normalizer</remote-id>
 	</upstream>
 </pkgmetadata>
