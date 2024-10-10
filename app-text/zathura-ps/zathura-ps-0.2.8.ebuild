@@ -7,14 +7,15 @@ inherit meson xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/pwmt/zathura-pdf-poppler.git"
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-ps.git"
+	EGIT_BRANCH="develop"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-	SRC_URI="https://github.com/pwmt/zathura-pdf-poppler/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://pwmt.org/projects/zathura-ps/download/${P}.tar.xz"
 fi
 
-DESCRIPTION="PDF plug-in for zathura"
-HOMEPAGE="https://pwmt.org/projects/zathura-pdf-poppler"
+DESCRIPTION="PostScript plug-in for zathura"
+HOMEPAGE="https://pwmt.org/projects/zathura-ps/download/"
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -22,8 +23,8 @@ SLOT="0"
 # Tests currently only validating data files
 RESTRICT="test"
 
-DEPEND=">=app-text/poppler-21.12.0:=[cairo]
-	>=app-text/zathura-0.5.3:=
+DEPEND="app-text/libspectre
+	>=app-text/zathura-0.3.9
 	dev-libs/girara:=
 	dev-libs/glib:2
 	x11-libs/cairo"

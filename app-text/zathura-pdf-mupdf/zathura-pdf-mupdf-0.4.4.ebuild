@@ -8,6 +8,7 @@ inherit meson xdg
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pwmt/zathura-pdf-mupdf.git"
+	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
 	SRC_URI="https://github.com/pwmt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
