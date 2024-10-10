@@ -124,6 +124,7 @@ RDEPEND="
 		sys-apps/iproute2[-minimal]
 	)
 	virtiofsd? ( app-emulation/virtiofsd )
+	virtualbox? ( <app-emulation/virtualbox-7.1.0 )
 	wireshark-plugins? ( >=net-analyzer/wireshark-2.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.9.0
@@ -155,7 +156,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
-	"${FILESDIR}"/${PN}-10.2.0-remote-check-for-negative-array-lengths-before-alloc.patch
+	"${FILESDIR}"/${PN}-10.3.0-vsh-Don-t-init-history-in-cmdComplete.patch
 	"${FILESDIR}"/${PN}-10.5.0-virt-aa-helper-Allow-RO-access-to-usr-share-edk2-ovm.patch
 )
 
