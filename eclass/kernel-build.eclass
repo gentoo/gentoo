@@ -108,10 +108,14 @@ IUSE="+strip"
 # @ECLASS_VARIABLE: KERNEL_GENERIC_UKI_CMDLINE
 # @USER_VARIABLE
 # @DESCRIPTION:
-# If KERNEL_IUSE_GENERIC_UKI is set, this variable allows setting the
-# built-in kernel command line for the UKI. If unset, the default is
-# root=/dev/gpt-auto-root ro
-: "${KERNEL_GENERIC_UKI_CMDLINE:="root=/dev/gpt-auto-root ro"}"
+# If KERNEL_IUSE_GENERIC_UKI is set, and this variable is not
+# empty, then the contents are used as the first kernel cmdline
+# option of the multi-profile generic UKI. Supplementing the four
+# standard options of:
+# - root=/dev/gpt-auto-root ro
+# - root=/dev/gpt-auto-root ro quiet splash
+# - root=/dev/gpt-auto-root ro lockdown=integrity
+# - root=/dev/gpt-auto-root ro quiet splash lockdown=integrity
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
@@ -539,40 +543,85 @@ kernel-build_src_install() {
 			dracut "${dracut_args[@]}" "${image%/*}/initrd" ||
 				die "Failed to generate initramfs"
 
-			local ukify_args=(
+			local ukify_base_args=(
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
-				--cmdline="${KERNEL_GENERIC_UKI_CMDLINE}"
 				--uname="${KV_FULL}"
-				--output="${image%/*}/uki.efi"
 			)
 
-			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
-				ukify_args+=(
-					--signtool=sbsign
-					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
-					--secureboot-certificate="${SECUREBOOT_SIGN_CERT}"
+			local pcrpkey=${ED}${kernel_dir}/certs/signing_key.x509
+			if [[ -r ${pcrpkey} ]]; then
+				ukify_base_args+=(
+					--pcrpkey="${pcrpkey}"
 				)
-				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
-					ukify_args+=(
-						--signing-engine="pkcs11"
-					)
-				else
-					# Sytemd-measure does not currently support pkcs11
-					ukify_args+=(
+			fi
+
+			ukify build "${ukify_base_args[@]}" \
+				--output="${T}/base-uki.efi" ||
+					die "Failed to generate base UKI"
+
+
+			local ukify_extend_args=()
+			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
+				ukify_extend_args+=(
 						--measure
-						--pcrpkey="${ED}${kernel_dir}/certs/signing_key.x509"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
 						--phases="enter-initrd"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
 						--phases="enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready"
+				)
+				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+					ukify_extend_args+=(
+						--signing-engine="pkcs11"
+						--pcr-public-key="${SECUREBOOT_SIGN_CERT}"
 					)
 				fi
 			fi
 
-			# systemd<255 does not install ukify in /usr/bin
-			PATH="${PATH}:${BROOT}/usr/lib/systemd:${BROOT}/lib/systemd" \
-				ukify build "${ukify_args[@]}" || die "Failed to generate UKI"
+			# Note, we cannot use an associative array here because those are
+			# not ordered.
+			local profiles=()
+			local cmdlines=()
+
+			# If defined, make the custom entry the first and default
+			if [[ -n ${KERNEL_GENERIC_UKI_CMDLINE} ]]; then
+				profiles+=(
+					"TITLE=Custom\nID=custom"
+				)
+				cmdlines+=( ${KERNEL_GENERIC_UKI_CMDLINE} )
+			fi
+
+			profiles+=(
+				"TITLE=Default\nID=default"
+				"TITLE=Default with splash\nID=splash"
+				"TITLE=Default with lockdown\nID=lockdown"
+				"TITLE=Default with splash and lockdown\nID=splash-lockdown"
+			)
+
+			cmdlines+=(
+				"root=/dev/gpt-auto-root ro"
+				"root=/dev/gpt-auto-root ro quiet splash"
+				"root=/dev/gpt-auto-root ro lockdown=integrity"
+				"root=/dev/gpt-auto-root ro quiet splash lockdown=integrity"
+			)
+
+			cp "${T}/base-uki.efi" "${image%/*}/uki.efi" || die
+			local i
+			# echo -e to interpret \n
+			for (( i=0; i<"${#profiles[@]}"; i++ )); do
+				ukify build "${ukify_extend_args[@]}" \
+					--extend="${image%/*}/uki.efi" \
+					--measure-base="${T}/base-uki.efi" \
+					--profile="$(echo -e ${profiles[${i}]})" \
+					--cmdline="${cmdlines[${i}]}" \
+					--output="${image%/*}/uki.efi" ||
+						die "Failed to extend UKI"
+			done
+
+			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+				secureboot_sign_efi_file "${image%/*}/uki.efi"
+			fi
+
 
 			# Overwrite unnecessary image types to save space
 			> "${image}" || die
