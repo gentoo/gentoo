@@ -46,6 +46,7 @@ app-editors/emacs m17n-lib
 # NOTE to prefix devs: if it needs to not be a global mask, talk to me because
 # it currently causes failures on linux. It can be made a "less global" mask.
 dev-lang/python berkdb
+dev-lang/python-freethreading berkdb
 
 # Elias Pipping <pipping@gentoo.org> (2007-11-15)
 # pkg_postinst tries to create/delete a user, fails

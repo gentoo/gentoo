@@ -13,8 +13,8 @@ inherit verify-sig
 
 MY_PV=${PV/_}
 MY_P="Python-${MY_PV%_p*}"
-PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-${MY_PV}-r1"
+PYVER="$(ver_cut 1-2)t"
+PATCHSET="python-gentoo-patches-${MY_PV}"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -34,7 +34,7 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
-	bluetooth build +debug +ensurepip examples gdbm +gil jit
+	bluetooth build debug +ensurepip examples gdbm jit
 	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
@@ -124,13 +124,11 @@ pkg_pretend() {
 		check-reqs_pkg_pretend
 	fi
 
-	if ! use gil || use jit; then
-		ewarn "USE=-gil and USE=jit flags are considered experimental upstream.  Using"
-		ewarn "them could lead to unexpected breakage, including race conditions"
-		ewarn "and crashes, respectively.  Please do not file Gentoo bugs, unless"
-		ewarn "you can reproduce the problem with dev-lang/python[gil,-jit].  Instead,"
-		ewarn "please consider reporting freethreading / JIT problems upstream."
-	fi
+	ewarn "Freethreading build is considered experimental upstream.  Using it"
+	ewarn "could lead to unexpected breakage, including race conditions"
+	ewarn "and crashes, respectively.  Please do not file Gentoo bugs, unless"
+	ewarn "you can reproduce the problem with dev-lang/python.  Instead,"
+	ewarn "please consider reporting freethreading problems upstream."
 }
 
 pkg_setup() {
@@ -431,9 +429,9 @@ src_configure() {
 		--with-platlibdir=lib
 		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
+		--disable-gil
 
 		$(use_with debug assertions)
-		$(use_enable gil)
 		$(use_enable jit experimental-jit)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
@@ -569,6 +567,10 @@ src_install() {
 
 	# Fix collisions between different slots of Python.
 	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
+	# Fix collision with GIL-enabled build.
+	rm "${ED}/usr/bin/python3.13" || die
+	mv "${ED}"/usr/bin/pydoc{${PYVER%t},${PYVER}} || die
+	mv "${ED}"/usr/share/man/man1/python{${PYVER%t},${PYVER}}.1 || die
 
 	# Cheap hack to get version with ABIFLAGS
 	local abiver=$(cd "${ED}/usr/include"; echo python*)
@@ -594,8 +596,11 @@ src_install() {
 	if ! use sqlite; then
 		rm -r "${libdir}/"sqlite3 || die
 	fi
-	if ! use tk; then
-		rm -r "${ED}/usr/bin/idle${PYVER}" || die
+	if use tk; then
+		# rename to avoid collision with dev-lang/python
+		mv "${ED}"/usr/bin/idle{${PYVER%t},${PYVER}} || die
+	else
+		rm -r "${ED}/usr/bin/idle${PYVER%t}" || die
 		rm -r "${libdir}/"{idlelib,tkinter} || die
 	fi
 
@@ -646,20 +651,4 @@ src_install() {
 	if use tk; then
 		ln -s "../../../bin/idle${PYVER}" "${scriptdir}/idle" || die
 	fi
-}
-
-pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 3.13.0_beta2; then
-			ewarn "Python 3.13.0b2 has changed its module ABI.  The .pyc files"
-			ewarn "installed previously are no longer valid and will be regenerated"
-			ewarn "(or ignored) on the next import.  This may cause sandbox failures"
-			ewarn "when installing some packages and checksum mismatches when removing"
-			ewarn "old versions.  To actively prevent this, rebuild all packages"
-			ewarn "installing Python 3.13 modules, e.g. using:"
-			ewarn
-			ewarn "  emerge -1v /usr/lib/python3.13/site-packages"
-		fi
-	done
 }

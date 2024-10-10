@@ -31,10 +31,6 @@
 			<pkg>dev-debug/valgrind</pkg> is detected (may incur minor
 			performance penalty even when valgrind is not used)
 		</flag>
-		<flag name="wininst">
-			Install Windows executables required to create an executable
-			installer for MS Windows
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:python:python</remote-id>

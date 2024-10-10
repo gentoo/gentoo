@@ -24,6 +24,7 @@ x11-misc/xdg-utils plasma
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
+dev-lang/python-freethreading jit
 
 # NRK <nrk@disroot.org> (2024-04-08)
 # media-libs/libraw is not keyworded

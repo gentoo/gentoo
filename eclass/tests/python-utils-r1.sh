@@ -64,7 +64,7 @@ tmpfile=$(mktemp)
 
 inherit python-utils-r1
 
-for minor in {10..13}; do
+for minor in {10..13} 13t; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"
@@ -72,9 +72,9 @@ for minor in {10..13}; do
 	if [[ -x /usr/bin/python3.${minor} ]]; then
 		abiflags=$(/usr/bin/python3.${minor} -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
 		test_var PYTHON_SITEDIR "python3_${minor}" "/usr/lib*/python3.${minor}/site-packages"
-		test_var PYTHON_INCLUDEDIR "python3_${minor}" "/usr/include/python3.${minor}${abiflags}"
-		test_var PYTHON_LIBPATH "python3_${minor}" "/usr/lib*/libpython3.${minor}${abiflags}$(get_libname)"
-		test_var PYTHON_CONFIG "python3_${minor}" "/usr/bin/python3.${minor}${abiflags}-config"
+		test_var PYTHON_INCLUDEDIR "python3_${minor}" "/usr/include/python3.${minor%t}${abiflags}"
+		test_var PYTHON_LIBPATH "python3_${minor}" "/usr/lib*/libpython3.${minor%t}${abiflags}$(get_libname)"
+		test_var PYTHON_CONFIG "python3_${minor}" "/usr/bin/python3.${minor%t}${abiflags}-config"
 		test_var PYTHON_CFLAGS "python3_${minor}" "*-I/usr/include/python3.${minor}*"
 		test_var PYTHON_LIBS "python3_${minor}" "*-lpython3.${minor}*"
 	fi

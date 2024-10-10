@@ -68,6 +68,7 @@ dev-games/openscenegraph ffmpeg
 # to use it, please do not file Gentoo bugs and report any issues you
 # hit upstream.
 dev-lang/python jit
+dev-lang/python-freethreading jit
 
 # Sam James <sam@gentoo.org> (2024-06-24)
 # Breaks installed gems in hard-to-debug ways.
@@ -881,6 +882,7 @@ dev-lang/moarvm asan
 # Mike Gilbert <floppym@gentoo.org> (2015-05-16)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb
+dev-lang/python-freethreading berkdb
 
 # Andrew Savchenko <bircoph@gentoo.org> (2015-02-11)
 # Cluster code is still under development, only base functionality

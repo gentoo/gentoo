@@ -51,6 +51,7 @@ media-fonts/fonts-meta emoji
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-18)
 # Avoid a circular dependency, bug 764623
 dev-lang/python -bluetooth
+dev-lang/python-freethreading -bluetooth
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-12-18)
 # Required by media-gfx/digikam, kde-apps/libkexiv2
@@ -59,6 +60,7 @@ media-gfx/exiv2 xmp
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
 # Required by many packages, most notably Mozilla products
 dev-lang/python sqlite
+dev-lang/python-freethreading sqlite
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-03-20)
 # Enable client by default. Usually desktop users need the client.

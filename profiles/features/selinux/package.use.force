@@ -5,6 +5,7 @@
 # sys-apps/policycoreutils has PYTHON_USE_WITH="xml" set, so we force it
 # here to allow stages to build with USE=xml on python
 dev-lang/python xml
+dev-lang/python-freethreading xml
 
 # Sven Vermeulen <swift@gentoo.org> (2013-04-19)
 # sys-apps/policycoreutils (semanage command) uses sepolgen, which requires libselinux with USE="python".

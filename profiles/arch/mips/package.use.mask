@@ -114,6 +114,7 @@ media-video/ffmpeg libplacebo
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
+dev-lang/python-freethreading jit
 
 # matoro <matoro_gentoo@matoro.tk> (2024-05-01)
 # Sanitizers supported on both 32-bit and 64-bit mips, #779742

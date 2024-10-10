@@ -28,6 +28,7 @@ kde-plasma/kwin caps
 # Python does not support JIT on musl, see
 # https://peps.python.org/pep-0744/#support.
 dev-lang/python jit
+dev-lang/python-freethreading jit
 
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # dev-db/mongodb is masked on musl

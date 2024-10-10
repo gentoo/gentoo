@@ -4,3 +4,4 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Requires 32bit alignment, so we mask it for the moment
 dev-lang/python:3.13
+dev-lang/python-freethreading:3.13

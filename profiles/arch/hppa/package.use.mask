@@ -39,6 +39,7 @@ app-arch/mt-st test
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
+dev-lang/python-freethreading jit
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-23)
 # Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
