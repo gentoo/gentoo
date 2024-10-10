@@ -18,6 +18,10 @@ net-misc/plowshare javascript
 sci-astronomy/cpl gasgano
 sci-libs/gdal java
 
+# Benda Xu <heroxbd@gentoo.org> (2024-10-10)
+# dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on x86
+sys-cluster/slurm nvml ucx
+
 # Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
 # Only supported on x86/amd64 (bug #940014).
 net-misc/lldpd -seccomp
