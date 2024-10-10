@@ -240,10 +240,6 @@ sci-chemistry/mopac7
 # Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
 =sys-libs/timezone-data-2024b
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-09)
-# No revdeps for years, KF5-based. Removal on 2024-10-09.
-net-libs/libmediawiki
-
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # These packages are no more needed. Use dev-ml/dune-private-libs
 # that include these
