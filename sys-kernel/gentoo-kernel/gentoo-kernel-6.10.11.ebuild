@@ -29,6 +29,10 @@ SRC_URI+="
 	)
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
+	alpha? (
+		 https://paste.gentoo.zip/jRo8BT3X
+			-> kernel-alpha-debian.config.${CONFIG_VER}
+	)
 	amd64? (
 		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
@@ -48,7 +52,7 @@ SRC_URI+="
 "
 S=${WORKDIR}/${MY_P}
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="debug experimental hardened"
 REQUIRED_USE="
 	arm? ( savedconfig )
@@ -87,6 +91,9 @@ src_prepare() {
 		arm | hppa | loong | riscv | sparc)
 			> .config || die
 		;;
+		alpha)
+			cp "${DISTDIR}/kernel-alpha-debian.config.${CONFIG_VER}" .config || die
+			;;
 		amd64)
 			cp "${DISTDIR}/kernel-x86_64-fedora.config.${CONFIG_VER}" .config || die
 			;;
