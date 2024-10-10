@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2024-10-10)
+# Despite passing tests this version of GN has proven
+# to be unable to build Chromium. Masked pending investigation.
+=dev-build/gn-0.2200
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-10-09)
 # This is the new stable series of webkit-gtk, but it has a new
 # less-portable rendering engine, and doesn't yet build on ~riscv for
