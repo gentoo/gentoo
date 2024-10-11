@@ -169,6 +169,9 @@ PATCHES=(
 	#"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch  # pending refresh
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
 	"${FILESDIR}"/1.79.0-revert-8c40426.patch
+	"${FILESDIR}/1.81.0-backport-bug937164.patch"
+	"${FILESDIR}/1.81.0-backport-llvm-pr101761.patch"
+	"${FILESDIR}/1.81.0-backport-llvm-pr101766.patch"
 )
 
 clear_vendor_checksums() {
