@@ -33,7 +33,12 @@ RDEPEND="${COMMON_DEP}
 	emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jre-1.8:* )"
 
-BDEPEND="test? ( sys-libs/timezone-data )"
+# specifically verifies that you are not using generic lex/yacc
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+	test? ( sys-libs/timezone-data )
+"
 
 SITEFILE=50${PN}-gentoo.el
 
