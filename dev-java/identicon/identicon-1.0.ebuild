@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ COMMIT="96902d3c7c9733d9da4cce9c5ed424557fc2ec3c"
 SRC_URI="https://github.com/PauloMigAlmeida/identicon/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 CP_DEPEND="
 	dev-java/cache2k-api:0
