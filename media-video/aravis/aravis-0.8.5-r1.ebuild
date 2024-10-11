@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ fi
 
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="gtk-doc fast-heartbeat gstreamer introspection packet-socket test usb viewer"
+IUSE="doc fast-heartbeat gstreamer introspection packet-socket test usb viewer"
 RESTRICT="!test? ( test )"
 
 GST_DEPEND="
@@ -29,14 +29,17 @@ GST_DEPEND="
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
-	gtk-doc? (
+	doc? (
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3
 	)
 	introspection? ( dev-libs/gobject-introspection:= )
 "
 DEPEND="
-	dev-libs/glib:2[gtk-doc?]
+	dev-libs/glib:2
+	doc? (
+		dev-libs/glib:2[gtk-doc(+),doc(+)]
+	)
 	dev-libs/libxml2:2
 	sys-libs/zlib
 	gstreamer? ( ${GST_DEPEND} )
@@ -56,7 +59,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature gtk-doc documentation)
+		$(meson_feature doc documentation)
 		$(meson_use fast-heartbeat)
 		$(meson_feature gstreamer gst-plugin)
 		$(meson_feature introspection)
