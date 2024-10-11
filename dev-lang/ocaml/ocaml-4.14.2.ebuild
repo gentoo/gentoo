@@ -20,7 +20,7 @@ BDEPEND="${RDEPEND}
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
 
-QA_FLAGS_IGNORED='/usr/lib.*/ocaml/bigarray.cmxs'
+QA_FLAGS_IGNORED='/usr/lib.*/ocaml/.*.cmxs /usr/lib.*/ocaml/libasmrun_shared.so'
 
 src_prepare() {
 	default
