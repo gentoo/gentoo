@@ -1,6 +1,15 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-11)
+# depends on java packages, not keyworded on arm
+app-office/libreoffice java
+media-gfx/zbar java
+media-libs/libbluray java
+media-libs/opencv java
+net-misc/plowshare javascript
+sci-libs/gdal java
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # kde-plasma/plasma-workspace:6 is not keyworded
 sys-auth/polkit kde
