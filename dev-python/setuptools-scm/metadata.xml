@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">setuptools-scm</remote-id>
-		<remote-id type="github">pypa/setuptools_scm</remote-id>
+		<remote-id type="github">pypa/setuptools-scm</remote-id>
 	</upstream>
 </pkgmetadata>
