@@ -32,6 +32,11 @@ RDEPEND="
 	~dev-python/opentelemetry-semantic-conventions-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/flaky[${PYTHON_USEDEP}]
+	)
+"
 
 # Tests cannot handle xdist with high makeopts
 # https://bugs.gentoo.org/928132
