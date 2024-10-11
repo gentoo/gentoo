@@ -319,10 +319,10 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	dev-util/bpftool
 "
 BDEPEND="
 	app-misc/jq
+	dev-util/bpftool
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=[llvm_targets_BPF(-)]
 	')
