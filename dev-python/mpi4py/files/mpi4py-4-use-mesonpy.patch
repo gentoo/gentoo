@@ -1,0 +1,11 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 8585f6d..5b0b2d8 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,4 +1,3 @@
+ [build-system]
+-requires = ["setuptools >= 42", "build"]
+-build-backend = "builder"
+-backend-path = ["conf"]
++requires = ["meson-python", "Cython"]
++build-backend = "mesonpy"
