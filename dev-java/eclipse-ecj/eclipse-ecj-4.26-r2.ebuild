@@ -16,7 +16,7 @@ S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
 SLOT="4.26"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 BDEPEND="
 	app-arch/unzip
