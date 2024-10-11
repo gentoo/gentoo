@@ -23,7 +23,9 @@ ruby_add_rdepend "
 	>=dev-ruby/google-protobuf-3.24.4:0
 "
 
-pkg_setup() { :; }
+PATCHES=(
+	"${FILESDIR}"/${P}-c99.patch
+)
 
 each_ruby_configure() {
 	export GRPC_RUBY_BUILD_PROCS="$(makeopts_jobs)"
