@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_FULLY_TESTED=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_13t )
 
 inherit distutils-r1 pypi
 
@@ -28,7 +29,9 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/hypothesis[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+		' "${PYTHON_FULLY_TESTED[@]}")
 	)
 "
 
@@ -44,4 +47,16 @@ python_prepare_all() {
 	sed -i '/package_data=/d' setup.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/property
+		)
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
