@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="doc examples"
 
 RDEPEND=">=dev-python/charset-normalizer-2.0.0[${PYTHON_USEDEP}]
