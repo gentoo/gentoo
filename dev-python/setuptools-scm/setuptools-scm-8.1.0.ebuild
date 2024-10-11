@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Manage versions by scm tags via setuptools"
 HOMEPAGE="
-	https://github.com/pypa/setuptools_scm/
+	https://github.com/pypa/setuptools-scm/
 	https://pypi.org/project/setuptools-scm/
 "
 
