@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ HOMEPAGE="https://software.dzhuvinov.com/json-rpc-2.0-base.html"
 SRC_URI="https://bitbucket.org/thetransactioncompany/json-rpc-2.0-base/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 CP_DEPEND="dev-java/json-smart:1"
 DEPEND="
