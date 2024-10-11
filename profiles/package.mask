@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
+# Vendors an unreleased libbpf version and generates ABI-breaking code.
+# Bug #941185.
+=dev-util/bpftool-7.5.0-r2
+
 # Michał Górny <mgorny@gentoo.org> (2024-10-10)
 # Gentoo package not updated for 4 years now.  No tests upstream.
 # No revdeps.
