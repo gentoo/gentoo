@@ -51,6 +51,11 @@ src_prepare() {
 src_configure() {
 	strip-flags
 
+	# machdeps/x86_64_regs.h:37:25: error: global register variable follows a function definition
+	# https://bugs.gentoo.org/924767
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68384
+	filter-lto
+
 	local myconf
 	myconf="--libdir=/usr/$(get_libdir) \
 		$(use_enable mono csharp-grade) \
