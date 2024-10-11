@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit vdr-plugin-2
 
@@ -9,24 +9,18 @@ DESCRIPTION="VDR Plugin: attach some buttons with diodes to the serial port"
 HOMEPAGE="http://www.lf-klueber.de/vdr.htm"
 SRC_URI="http://www.lf-klueber.de/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-video/vdr"
+DEPEND="
+	media-video/vdr
+"
 
-pkg_setup() {
-	vdr-plugin-2_pkg_setup
-
-	if ! getent group uucp | grep -q vdr; then
-		echo
-		einfo "Add user 'vdr' to group 'uucp' for full user access to serial/ttyS* device"
-		echo
-		elog "User vdr added to group uucp"
-		gpasswd -a vdr uucp
-	fi
-}
+RDEPEND="
+	${DEPEND}
+	acct-user/vdr[serial]
+"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare

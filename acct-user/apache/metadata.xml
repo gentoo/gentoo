@@ -5,4 +5,8 @@
 		<email>apache-bugs@gentoo.org</email>
 		<name>Apache project</name>
 	</maintainer>
+	<use>
+		<flag name="icingaweb2">Prepare group membership for <pkg>www-apps/icingaweb2</pkg></flag>
+		<flag name="mgraph">Prepare group membership for <pkg>net-mail/mailgraph</pkg></flag>
+	</use>
 </pkgmetadata>
