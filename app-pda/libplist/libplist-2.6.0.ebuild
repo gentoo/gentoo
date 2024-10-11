@@ -9,7 +9,7 @@ SRC_URI="https://github.com/libimobiledevice/${PN}/releases/download/${PV}/${P}.
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
