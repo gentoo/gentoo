@@ -78,8 +78,8 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
 	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
+	"${FILESDIR}/${PN}-0.4.5-include-additional-paths.patch"
 )
 
 src_unpack() {
