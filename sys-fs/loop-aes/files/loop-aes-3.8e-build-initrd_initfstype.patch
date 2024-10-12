@@ -1,0 +1,76 @@
+diff '--color=auto' -urP loop-AES-v3.8e-build-initrd_prefer-l-a-losetup/build-initrd.sh loop-AES-v3.8e-build-initrd_initfstype/build-initrd.sh
+--- loop-AES-v3.8e-build-initrd_prefer-l-a-losetup/build-initrd.sh	2024-10-11 12:24:11.542170501 -0600
++++ loop-AES-v3.8e-build-initrd_initfstype/build-initrd.sh	2024-10-11 15:31:36.719228138 -0600
+@@ -74,6 +74,8 @@
+ #  2.4 and older kernels always install to block/ directory
+ #  2.6 kernels with loop-AES-v3.2a and later install to extra/ directory
+ #
++# Note, if INITFSTYPE= is not minix, the rootfstype= arguments above
++# will need to be adjusted accordingly.
+ 
+ ### All default-values can be altered via the configfile
+ 
+@@ -183,6 +185,9 @@
+ # which must be in uncompressed form. (can not be .gz file)
+ LOADNATIONALKEYB=0
+ 
++# Filesystem type to use in the initrd (minix or ext2)
++INITFSTYPE=minix
++
+ # Try to auto-assemble linux software raid md devices. This is only
+ # needed and used on USEPIVOT=2 (initramfs/switch_root) type build.
+ # This gets automatically disabled if none of needed devices (BOOTDEV,
+@@ -887,10 +892,51 @@
+         y=`expr ${y} + 1`
+     fi
+ 
++    # Try to detect if the running system lacks support for
++    # the named filesystem, to avoid a less graceful error.
++    if [ -r /proc/filesystems ]; then
++        if ! grep -q "	${INITFSTYPE}\$" /proc/filesystems ; then
++            echo "************************************************"
++            echo "***  INITFSTYPE specifies a filesystem type  ***"
++            echo "***  not supported by the running kernel.    ***"
++            echo "***  Script aborted.                         ***"
++            echo "************************************************"
++            exit 1
++        fi
++    fi
++
++    # Check if the currently booted kernel has a rootfstype=
++    # argument that mismatches; warn but do not abort.
++    if [ -r /proc/cmdline ]; then
++        ROOTFSTYPEARG=$(grep -E -o 'rootfstype=[^ ]+' /proc/cmdline | cut -d= -f2-)
++        if [ -n "${ROOTFSTYPEARG}" ] && [ "${ROOTFSTYPEARG}" != "${INITFSTYPE}" ]; then
++            echo "******************************************************"
++            echo "***  Warning: INITFSTYPE '${INITFSTYPE}'"
++            echo "***  does not match the running kernel argument"
++            echo "***  'rootfstype=${ROOTFSTYPEARG}'"
++            echo "***  Existing bootloader arguments may fail to boot."
++            echo "******************************************************"
++        fi
++    fi
++
++    if [ ${INITFSTYPE} = "minix" ]; then
++        MKFS_ARGS="-t minix -i 32 tmp-i-$$ ${y}"
++    elif [ ${INITFSTYPE} = "ext2" ]; then
++        MKFS_ARGS="-t ext2 -i 1024 tmp-i-$$"
++        y=`expr ${y} + 80`
++    else
++        echo "*******************************************"
++        echo "***  Unsupported INITFSTYPE specified;  ***"
++        echo "***  must be one of: minix, ext2        ***"
++        echo "***  Script aborted.                    ***"
++        echo "*******************************************"
++        exit 1
++    fi
++
+     dd if=/dev/zero of=tmp-i-$$ bs=1024 count=${y}
+-    /sbin/mkfs -t minix -i 32 tmp-i-$$ ${y}
++    /sbin/mkfs ${MKFS_ARGS}
+     ${LOSETUPLIVE} /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-i-$$
+-    mount -t minix /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-d-$$
++    mount -t ${INITFSTYPE} /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-d-$$
+ fi
+ cd tmp-d-$$
+ 
