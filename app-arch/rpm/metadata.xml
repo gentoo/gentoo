@@ -13,6 +13,7 @@
 		<remote-id type="github">rpm-software-management/rpm</remote-id>
 	</upstream>
 	<use>
+		<flag name="sanitize">Enable ASAN and UBSAN</flag>
 		<flag name="sequoia">Use <pkg>app-crypt/rpm-sequoia</pkg> instead of the deprecated internal parser</flag>
 	</use>
 </pkgmetadata>
