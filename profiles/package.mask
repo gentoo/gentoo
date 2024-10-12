@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-10-12)
+# File collisions with sys-libs/ldb (bug #941298)
+=net-fs/samba-4.21.0
+
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
 # Bug #941185.
