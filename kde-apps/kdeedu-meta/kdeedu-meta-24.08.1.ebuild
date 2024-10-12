@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/categories/education/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="+webengine"
 
 RDEPEND="
