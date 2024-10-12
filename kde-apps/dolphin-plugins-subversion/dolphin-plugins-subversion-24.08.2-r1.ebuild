@@ -52,6 +52,7 @@ src_configure() {
 		-DBUILD_dropbox=OFF
 		-DBUILD_git=OFF
 		-DBUILD_hg=OFF
+		-DBUILD_makefileactions=OFF
 		-DBUILD_mountiso=OFF
 	)
 	ecm_src_configure
