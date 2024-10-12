@@ -173,6 +173,9 @@ verify-sig_verify_detached() {
 				-V -p "${key}" -m "${file}" -x "${sig}" ||
 				die "Signify signature verification failed"
 			;;
+		*)
+			die "${FUNCNAME} not supported with ${VERIFY_SIG_METHOD}"
+			;;
 	esac
 }
 
@@ -233,6 +236,9 @@ verify-sig_verify_message() {
 		signify)
 			signify -V -e -p "${key}" -m "${output_file}" -x "${file}" ||
 				die "Signify signature verification failed"
+			;;
+		*)
+			die "${FUNCNAME} not supported with ${VERIFY_SIG_METHOD}"
 			;;
 	esac
 }
@@ -366,6 +372,9 @@ verify-sig_verify_signed_checksums() {
 			signify -C -p "${key}" \
 				-x "${checksum_file}" "${files[@]}" ||
 				die "Signify signature verification failed"
+			;;
+		*)
+			die "${FUNCNAME} not supported with ${VERIFY_SIG_METHOD}"
 			;;
 	esac
 }
