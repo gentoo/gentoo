@@ -13,7 +13,7 @@ SLOT="${PV}" # Single live slot.
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.3"
+PHP_SLOTS="8.3 8.2 8.1" # Check with: grep PHP_VERSION classes/Config.php
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
