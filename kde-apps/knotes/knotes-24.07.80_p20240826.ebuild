@@ -17,7 +17,7 @@ S="${WORKDIR}/${P/_p*/}"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
 
 COMMON_DEPEND="
