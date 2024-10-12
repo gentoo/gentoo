@@ -14,7 +14,7 @@ QEMU_DOCS_VERSION=$(ver_cut 1-2).0
 QEMU_DOC_USEFLAG="+doc"
 
 PYTHON_COMPAT=( python3_{10..12} )
-PYTHON_REQ_USE="ncurses,readline"
+PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
 
@@ -281,7 +281,6 @@ BDEPEND="
 	dev-lang/perl
 	>=dev-build/meson-0.63.0
 	app-alternatives/ninja
-	|| ( dev-python/pip[${PYTHON_USEDEP}] dev-lang/python[ensurepip(-)] )
 	virtual/pkgconfig
 	doc? (
 		>=dev-python/sphinx-1.6.0[${PYTHON_USEDEP}]
