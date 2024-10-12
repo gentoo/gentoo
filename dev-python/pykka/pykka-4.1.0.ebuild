@@ -25,6 +25,7 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	test? (
+		>=dev-python/pydantic-2.9[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
