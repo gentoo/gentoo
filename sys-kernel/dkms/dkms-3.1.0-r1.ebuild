@@ -26,6 +26,10 @@ RESTRICT="test"
 
 CONFIG_CHECK="~MODULES"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cleanup-leftover-cmd.patch"
+)
+
 src_compile() {
 	# Nothing to do here
 	return
