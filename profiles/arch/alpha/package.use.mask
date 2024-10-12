@@ -381,10 +381,6 @@ dev-db/percona-server cjk
 app-admin/sudo sssd
 sys-auth/pambase sssd
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
-# Needs sys-apps/fakechroot which isn't keyworded
-app-arch/rpm test
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-06-05)
 # Unkeyworded dependencies.
 app-admin/syslog-ng amqp kafka mongodb
