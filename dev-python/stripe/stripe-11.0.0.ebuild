@@ -26,7 +26,7 @@ RDEPEND="
 # please bump dev-util/stripe-mock dep to the latest version on every bump
 BDEPEND="
 	test? (
-		>=dev-util/stripe-mock-0.188.0
+		>=dev-util/stripe-mock-0.190.0
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
