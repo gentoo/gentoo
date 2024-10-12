@@ -136,7 +136,6 @@ create_socket_datagram() {
 	systemd_newunit - "$1.service" <<-EOF
 	[Service]
 	ExecStart="${EPREFIX}/usr/libexec/$1"
-	KillMode=process
 	StandardInput=socket
 	StandardError=journal
 	EOF
@@ -164,6 +163,5 @@ src_install() {
 	create_socket_stream telnetd 23
 	create_socket_stream uucpd 540
 
-	create_socket_datagram tftpd 69
 	create_socket_datagram talkd 518
 }
