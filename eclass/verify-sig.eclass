@@ -132,7 +132,6 @@ verify-sig_verify_detached() {
 	fi
 
 	local extra_args=()
-	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
 	if [[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]]; then
 		[[ ${VERIFY_SIG_METHOD} == openpgp ]] ||
 			die "${FUNCNAME}: VERIFY_SIG_OPENPGP_KEYSERVER is not supported"
@@ -152,10 +151,15 @@ verify-sig_verify_detached() {
 	einfo "Verifying ${filename} ..."
 	case ${VERIFY_SIG_METHOD} in
 		minisig)
-			minisign -V -P "$(<"${key}")" -x "${sig}" -m "${file}" ||
+			minisign "${extra_args[@]}" \
+				-V -P "$(<"${key}")" -x "${sig}" -m "${file}" ||
 				die "minisig signature verification failed"
 			;;
 		openpgp)
+			if [[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} != yes ]]; then
+				extra_args+=( -R )
+			fi
+
 			# gpg can't handle very long TMPDIR
 			# https://bugs.gentoo.org/854492
 			local -x TMPDIR=/tmp
@@ -165,7 +169,8 @@ verify-sig_verify_detached() {
 				die "PGP signature verification failed"
 			;;
 		signify)
-			signify -V -p "${key}" -m "${file}" -x "${sig}" ||
+			signify "${extra_args[@]}" \
+				-V -p "${key}" -m "${file}" -x "${sig}" ||
 				die "Signify signature verification failed"
 			;;
 	esac
