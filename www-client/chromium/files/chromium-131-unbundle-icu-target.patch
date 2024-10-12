@@ -1,0 +1,21 @@
+From a665875b4013eed997bd042326a038e24f3296e7 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Thu, 10 Oct 2024 14:36:51 +1000
+Subject: [PATCH] unbundle: add missing icu target
+
+--- a/build/linux/unbundle/icu.gn
++++ b/build/linux/unbundle/icu.gn
+@@ -65,6 +65,10 @@ group("icuuc_public") {
+   public_deps = [ ":icuuc" ]
+ }
+ 
++group("icui18n_hidden_visibility") {
++  public_deps = [ ":icuuc" ]
++}
++
+ shim_headers("icui18n_shim") {
+   root_path = "source/i18n"
+   headers = [
+-- 
+2.46.2
+
