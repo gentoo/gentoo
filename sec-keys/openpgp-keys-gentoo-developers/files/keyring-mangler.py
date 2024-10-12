@@ -35,7 +35,7 @@ gentoo_auth = sys.argv[1]
 active_devs = sys.argv[2]
 armored_output = sys.argv[3]
 
-gpg = gnupg.GPG(verbose=False, gnupghome=os.environ["GNUPGHOME"])
+gpg = gnupg.GPG(verbose=False, gnupghome=os.environ["GNUPGHOME"], options="--auto-check-trustdb")
 gpg.encoding = "utf-8"
 
 with open(gentoo_auth, "r", encoding="utf8") as keyring:
