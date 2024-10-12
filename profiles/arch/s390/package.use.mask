@@ -244,8 +244,6 @@ app-editors/vim lua
 # not keyworded yet
 media-gfx/imagemagick raw
 dev-db/mariadb numa
-# not tested yet
-app-arch/rpm test
 # no ceph keyworded
 net-analyzer/rrdtool rados
 
