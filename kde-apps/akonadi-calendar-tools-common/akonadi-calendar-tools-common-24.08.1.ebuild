@@ -9,7 +9,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2 handbook? ( FDL-1.2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	!<kde-apps/calendarjanitor-24.07.90-r1
