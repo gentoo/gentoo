@@ -10,6 +10,7 @@
 		<flag name="kill">Build the kill program</flag>
 		<flag name="modern-top">Enables new startup defaults of top. Keeps old defaults if disabled</flag>
 		<flag name="ncurses">Build programs that use ncurses: top, slabtop, watch</flag>
+		<flag name="skill">Build the skill and snice programs</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:procps_project:procps</remote-id>
