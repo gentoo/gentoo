@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	!!app-crypt/heimdal
+	>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
 	|| (
 		>=dev-libs/libverto-0.2.5[libev,${MULTILIB_USEDEP}]
 		>=dev-libs/libverto-0.2.5[libevent,${MULTILIB_USEDEP}]
