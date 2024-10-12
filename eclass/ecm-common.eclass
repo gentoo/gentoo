@@ -392,7 +392,11 @@ ecm-common_src_prepare() {
 # Passes -DQT_MAJOR_VERSION=${_KFSLOT} only.
 ecm-common_src_configure() {
 	# necessary for at least KF6KCMUtils
-	local mycmakeargs=( -DQT_MAJOR_VERSION=${_KFSLOT} )
+	local cmakeargs=( -DQT_MAJOR_VERSION=${_KFSLOT} )
+
+	# allow the ebuild to override what we set here
+	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
+
 	cmake_src_configure
 }
 
