@@ -315,7 +315,10 @@ DEPEND="
 	virtual/libelf:=
 	sys-libs/zlib:=
 	>=dev-libs/libbpf-1.3:=
-	openrc? ( sys-apps/openrc )
+	openrc? ( || (
+		sys-apps/openrc
+		sys-apps/openrc-navi
+	) )
 "
 RDEPEND="
 	${DEPEND}
