@@ -12,11 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="examples"
 
-# The ./configure script uses sys-apps/which to locate flex...
-BDEPEND="
-	app-alternatives/lex
-	sys-apps/which
-"
+BDEPEND="app-alternatives/lex"
 
 # The ncurses/terminfo libraries are used to provide color and status
 # support; but, they're detected and enabled automagically by the build
@@ -25,12 +21,13 @@ BDEPEND="
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/xjobs-20200726-command-v.patch"
-	"${FILESDIR}/xjobs-20200726-dont-page-tests.patch"
-)
-
 src_install() {
 	default
 	use examples && dodoc -r examples
+}
+
+src_test() {
+	default
+	einfo "The \"failed\" tally is from xjobs and NOT from the test suite."
+	einfo "(Everything is fine.)"
 }
