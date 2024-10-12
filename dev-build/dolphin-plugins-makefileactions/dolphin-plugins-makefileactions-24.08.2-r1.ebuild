@@ -28,6 +28,7 @@ DEPEND="
 	>=kde-frameworks/kjobwidgets-${KFMIN}:6
 "
 RDEPEND="${DEPEND}
+	!<kde-apps/dolphin-plugins-subversion-24.08.2-r1
 	>=kde-apps/dolphin-plugins-common-${PV}
 "
 
