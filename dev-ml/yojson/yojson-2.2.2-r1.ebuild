@@ -18,6 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/sedlex:=[ocamlopt?]
+	dev-ml/ppxlib:=[ocamlopt?]
 	!!<dev-ml/seq-0.3
 "
 DEPEND="${RDEPEND}"
