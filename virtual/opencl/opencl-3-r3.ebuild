@@ -27,7 +27,7 @@ pkg_postinst() {
 	elog " * proprietary:"
 	elog "    - dev-libs/amdgpu-pro-opencl - AMD Polaris GPUs. 32-bit support;"
 	elog "    - dev-util/intel-ocl-sdk - Intel CPUs (*not* GPUs). 64-bit only;"
-	elog "    - x11-drivers/nvidia-drivers[uvm] - Nvidia GPUs; specific package versions"
+	elog "    - x11-drivers/nvidia-drivers - Nvidia GPUs; specific package versions"
 	elog "      required for older devices [2]. 32-bit support."
 	elog
 	elog " [1] https://dri.freedesktop.org/wiki/GalliumCompute/"
