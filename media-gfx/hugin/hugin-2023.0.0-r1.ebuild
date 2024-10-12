@@ -31,7 +31,7 @@ CDEPEND="
 	media-libs/libpng:=
 	media-libs/openexr:=
 	media-libs/tiff:=
-	>=media-libs/vigra-1.11.1-r5[openexr]
+	>=media-libs/vigra-1.11.1-r5[openexr,tiff]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
 	sys-libs/zlib
