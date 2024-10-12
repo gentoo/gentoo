@@ -98,11 +98,15 @@ src_install() {
 	# Move the pkg-config files to guile-data.  In future versions, this
 	# should be handled by --with-pkgconfigdir (patch waiting on
 	# upstream).
-	local pcdir=/usr/share/guile-data/"${SLOT}"
-	mkdir -p "${ED}${pcdir}" || die
+	local datadir=/usr/share/guile-data/"${SLOT}"
+	local pcdir="${datadir}"/pkgconfig
+	mkdir -p "${ED}${datadir}" || die
 	mv "${ED}"/usr/share/aclocal/guile{,-"${SLOT}"}.m4 || die
 	mv "${ED}"/usr/$(get_libdir)/pkgconfig/ \
 	   "${ED}/${pcdir}" || die
+
+	[[ -f "${pcdir}"/guile-2.2.pc ]]
+	assert "failed to install .pc file?"
 
 	guile_slot_info
 
@@ -110,7 +114,7 @@ src_install() {
 	local minor="$(ver_cut 2 "${SLOT}")"
 	local idx="$((99999-(major*1000+minor)))"
 	newenvd - "50guile${idx}" <<-EOF
-	PKG_CONFIG_PATH="${datadir}/pkgconfig"
+	PKG_CONFIG_PATH="${pcdir}"
 	INFOPATH="${GUILE_INFODIR}"
 	EOF
 }
