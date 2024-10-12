@@ -52,7 +52,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 systemd toolchain-funcs virtu
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PATCHSET_PPC64="128.0.6613.84-1raptor0~deb12u1"
-PATCH_V="${PV%%\.*}"
+PATCH_V="${PV%%\.*}-1"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	system-toolchain? (
 		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
@@ -374,7 +374,7 @@ pkg_setup() {
 			# TODO: check if the user has already selected a specific impl via make.conf and respect that.
 			if ! tc-is-lto && use official; then
 				einfo "USE=official selected and LTO not detected."
-				einfo "It is _highly_ recommended that LTO be enabled for performance reasons"
+				einfo "It is _highly_ recommended that LTO be enabled for performance and security reasons,"
 				einfo "and to be consistent with the upstream \"official\" build optimisations."
 			fi
 
@@ -434,6 +434,10 @@ pkg_setup() {
 			else
 					einfo "Using Rust ${rustc_ver} to build"
 			fi
+
+			# I hate doing this but upstream Rust have yet to come up with a better solution for
+			# us poor packagers. Required for Split LTO units, which are required for CFI.
+			export RUSTC_BOOTSTRAP=1
 
 			# Chromium requires the Rust profiler library while setting up its build environment.
 			# Since a standard Rust comes with the profiler, instead of patching it out (build/rust/std/BUILD.gn#L103)
@@ -1194,11 +1198,6 @@ chromium_configure() {
 		use wayland && myconf_gn+=" use_system_libffi=true"
 	fi
 
-	# Results in undefined references in chrome linking, may require CFI to work
-	if use arm64; then
-		myconf_gn+=" arm_control_flow_integrity=\"none\""
-	fi
-
 	myconf_gn+=" use_thin_lto=${use_lto}"
 	myconf_gn+=" thin_lto_enable_optimizations=${use_lto}"
 
@@ -1208,10 +1207,10 @@ chromium_configure() {
 		# Allow building against system libraries in official builds
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 			tools/generate_shim_headers/generate_shim_headers.py || die
-		# Req's LTO; TODO: not compatible with -fno-split-lto-unit
-		# split-lto-unit can be enabled with RUSTC_BOOTSTRAP=1 (and an updated compiler patch),
-		# however I still got weird linking errors with CFI _and_ the split unit LTO OOMed after using 100G.
-		myconf_gn+=" is_cfi=false"
+		# This may need to be filtered on non-amd64 arches
+		# Also these options are listed in upstream docs: use_cfi_icall=true use_cfi_cast=true (This may be for testing only?)
+		# https://www.chromium.org/developers/testing/control-flow-integrity/
+		myconf_gn+=" is_cfi=${use_lto}"
 		# Don't add symbols to build
 		myconf_gn+=" symbol_level=0"
 	fi
