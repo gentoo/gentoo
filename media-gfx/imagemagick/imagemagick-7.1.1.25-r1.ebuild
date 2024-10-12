@@ -138,6 +138,9 @@ src_configure() {
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
+	# Workaround for bug #941208 (gcc PR117100)
+	tc-is-gcc && [[ $(gcc-major-version) == 13 ]] && append-flags -fno-unswitch-loops
+
 	local myeconfargs=(
 		$(use_enable static-libs static)
 		$(use_enable hdri)

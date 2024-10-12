@@ -89,6 +89,8 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/${PN}-7.1.1.38-perl-1.patch"
+	"${FILESDIR}/${PN}-7.1.1.38-perl-2.patch"
 	"${FILESDIR}/${PN}-9999-nocputuning.patch"
 )
 
