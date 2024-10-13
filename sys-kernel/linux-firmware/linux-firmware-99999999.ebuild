@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit dist-kernel-utils linux-info mount-boot savedconfig
+PYTHON_COMPAT=( python3_{10..13} )
+inherit dist-kernel-utils linux-info mount-boot python-any-r1 savedconfig
 
 # In case this is a real snapshot, fill in commit below.
 # For normal, tagged releases, leave blank
@@ -40,8 +41,8 @@ RESTRICT="binchecks strip test
 BDEPEND="initramfs? ( app-alternatives/cpio )
 	compress-xz? ( app-arch/xz-utils )
 	compress-zstd? ( app-arch/zstd )
-	python
-	deduplicate? ( app-misc/rdfind )"
+	deduplicate? ( app-misc/rdfind )
+	${PYTHON_DEPS}"
 
 #add anything else that collides to this
 RDEPEND="!savedconfig? (
@@ -85,6 +86,9 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+
+	python_setup
+
 	if use compress-xz || use compress-zstd ; then
 		local CONFIG_CHECK
 
@@ -122,6 +126,7 @@ src_prepare() {
 
 	chmod +x copy-firmware.sh || die
 	chmod +x dedup-firmware.sh || die
+	chmod +x check_whence.py || die
 	cp "${FILESDIR}/${PN}-make-amd-ucode-img.bash" "${T}/make-amd-ucode-img" || die
 	chmod +x "${T}/make-amd-ucode-img" || die
 
@@ -139,6 +144,7 @@ src_prepare() {
 	local misc_files=(
 		copy-firmware.sh
 		dedup-firmware.sh
+		check_whence.py
 		WHENCE
 		README
 	)
