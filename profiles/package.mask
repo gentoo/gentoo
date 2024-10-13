@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# matoro <matoro_gentoo@matoro.tk> (2024-10-13)
+# Last commit in 2020, hyperion branch last commit in 2019.
+# Possible breakage and/or misconfiguration with gcc-15/clang-16.
+# Current active fork is now packaged and stable in tree:
+# use app-emulation/hercules-sdl instead.  Removal on 2024-11-23.
+# See #711068, #940656.  From #521032, #828460, #900328, #879629
+app-emulation/hercules
+
 # Hans de Graaff <graaff@gentoo.org> (2024-10-13)
 # Obsolete slots without reverse dependencies. Use a newer slot
 # instead. Removal on 2024-11-13.
