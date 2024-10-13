@@ -19,9 +19,8 @@ KEYWORDS="~amd64"
 #net-misc/gns3-server version should always match gns3-gui version
 RDEPEND="
 	>=dev-python/distro-1.9.0[${PYTHON_USEDEP}]
-	>=dev-python/jsonschema-4.23.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-4.22.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-6.0.0[${PYTHON_USEDEP}]
-	>=dev-python/sentry-sdk-2.12[${PYTHON_USEDEP}]
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 	~net-misc/gns3-server-${PV}[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,svg,websockets,widgets,${PYTHON_USEDEP}]
