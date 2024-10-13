@@ -28,7 +28,6 @@
   </longdescription>
   <use>
     <flag name="multiuser">Enable multiuser support (by setting correct permissions)</flag>
-    <flag name="nethack">Express error messages in nethack style</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:gnu:screen</remote-id>

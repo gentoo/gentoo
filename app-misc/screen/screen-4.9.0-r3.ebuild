@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="debug nethack pam selinux multiuser"
+IUSE="debug pam selinux multiuser"
 
 DEPEND=">=sys-libs/ncurses-5.2:=
 	virtual/libcrypt:=
@@ -75,7 +75,6 @@ src_configure() {
 		append-cppflags -D_XOPEN_SOURCE=600
 	fi
 
-	use nethack || append-cppflags "-DNONETHACK"
 	use debug && append-cppflags "-DDEBUG"
 
 	local myeconfargs=(
