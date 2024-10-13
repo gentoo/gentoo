@@ -22,6 +22,5 @@ KEYWORDS="~amd64 ~arm64"
 distutils_enable_tests unittest
 
 python_test() {
-	cd tests || die
-	eunittest
+	eunittest tests
 }
