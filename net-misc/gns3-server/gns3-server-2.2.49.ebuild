@@ -30,7 +30,6 @@ RDEPEND="
 	>=dev-python/platformdirs-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-6.0.0[${PYTHON_USEDEP}]
 	>=dev-python/py-cpuinfo-9.0.0[${PYTHON_USEDEP}]
-	>=dev-python/sentry-sdk-2.12[${PYTHON_USEDEP}]
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 	net-misc/ubridge
 	sys-apps/busybox[static]
