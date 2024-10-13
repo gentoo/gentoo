@@ -182,6 +182,11 @@ src_compile() {
 
 	default
 
+	# This version mangles the symbolic link,
+	# please check if this can be removed before bumping
+	rm "${S}"/bcachefs
+	ln -s "${S}"/target/release/bcachefs bcachefs
+
 	local shell
 	for shell in bash fish zsh; do
 		./bcachefs completions ${shell} > ${shell}.completion || die
