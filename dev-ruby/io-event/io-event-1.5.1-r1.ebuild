@@ -24,6 +24,10 @@ IUSE="+io-uring"
 RDEPEND="io-uring? ( sys-libs/liburing:= )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.5-update-test-hooks.patch
+)
+
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
 
