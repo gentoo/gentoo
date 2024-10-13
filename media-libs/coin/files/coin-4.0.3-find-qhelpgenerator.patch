@@ -1,0 +1,23 @@
+--- a/src/doc/CMakeLists.txt	2024-09-06 07:36:34.000000000 +0200
++++ b/src/doc/CMakeLists.txt	2024-10-13 20:41:26.450802361 +0200
+@@ -32,13 +32,15 @@
+     endif()
+   endif()
+   if(COIN_BUILD_DOCUMENTATION_QTHELP)
+-    find_program(QHG_LOCATION NAMES qhelpgenerator qhelpgenerator-qt5 DOC "Qt qhelpgenerator")
+-    if(NOT QHG_LOCATION)
+-      message(FATAL_ERROR "Missing program Qt qhelpgenerator")
++    find_package(Qt6Tools QUIET COMPONENTS Help)
++    if(Qt6Tools_FOUND)
++      get_target_property(QHG_LOCATION Qt6::qhelpgenerator LOCATION)
+     else()
+-      set(GENERATE_QHP YES)
+-      mark_as_advanced(QHG_LOCATION)
++      find_package(Qt5Help REQUIRED)
++      get_target_property(QHG_LOCATION Qt5::qhelpgenerator LOCATION)
+     endif()
++    set(GENERATE_QHP YES)
++    mark_as_advanced(QHG_LOCATION)
+   endif()
+ 
+   # Add default files
