@@ -66,6 +66,11 @@ COMMON_DEPEND="
 		media-gfx/cairosvg
 	)
 "
+
+if [[ ${PV} == 9999 ]] ; then
+	COMMON_DEPEND+="dev-libs/protobuf"
+fi
+
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
