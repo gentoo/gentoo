@@ -41,6 +41,13 @@ src_prepare() {
 	eautoreconf
 	if use python; then
 		cd python || die
+		# Bug #936589: compiling from inside the 'python' sub-directory
+		# might set that as the top source directory, and not ${S}, but
+		# "${S}/libiptcdata" is required to find headers and libraries.
+		# Symbolic linking "../libiptcdata" is a possible fix.  Another
+		# way is adding in python/setup.py, under iptcdata's Extension,
+		# "include_dirs=['..']" and "library_dirs=['../libiptcdata']".
+		ln -s "../${PN}" . || die
 		distutils-r1_src_prepare
 	fi
 }
