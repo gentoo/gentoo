@@ -42,6 +42,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-2.2.0-makefile.patch" )
+
 src_configure() {
 	xdg_environment_reset  # bug #667182
 
@@ -83,22 +85,19 @@ src_configure() {
 }
 
 src_compile() {
+	emake CC="$(tc-getCC)"
+
 	local -x PATH="${S}/bin:${PATH}"
+	local -a nimflags=(
+		-d:release
+		--listCmd
+		--parallelBuild:$(makeopts_jobs)
+	)
 
-	edo ./build.sh --parallel "$(makeopts_jobs)"
-
-	ebegin "Waiting for unfinished parallel jobs"
-	while [[ ! -f "bin/nim" ]] ; do
-		sleep 3
-	done
-	sleep 10
-	eend 0
-
-	edo chmod +x ./bin/nim
-	edo ./bin/nim compile -d:release koch
-	edo ./koch boot -d:nimUseLinenoise -d:release --skipParentCfg:off
-	edo ./koch tools -d:release
-	edo ./bin/nim compile -d:release ./tools/niminst/niminst.nim
+	edo ./bin/nim compile "${nimflags[@]}" koch
+	edo ./koch boot "${nimflags[@]}" -d:nimUseLinenoise --skipParentCfg:off
+	edo ./koch tools "${nimflags[@]}"
+	edo ./bin/nim compile "${nimflags[@]}" ./tools/niminst/niminst.nim
 }
 
 src_test() {
