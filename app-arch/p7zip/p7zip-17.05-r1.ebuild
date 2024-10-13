@@ -1,14 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib toolchain-funcs wrapper xdg
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="https://github.com/p7zip-project/p7zip"
 SRC_URI="https://github.com/p7zip-project/p7zip/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-#S="${WORKDIR}/${PN}-${PV}"
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
@@ -25,9 +24,7 @@ BDEPEND="
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/nasm )"
 
-PATCHES=(
-	"${FILESDIR}/p7zip-17.05-unit64.patch"
-)
+PATCHES=( "${FILESDIR}/p7zip-17.05-unit64.patch" )
 
 src_prepare() {
 	default
@@ -61,16 +58,16 @@ src_prepare() {
 
 	if use abi_x86_x32; then
 		sed -i -e "/^ASM=/s:amd64:x32:" makefile* || die
-		cp -f makefile.linux_amd64_asm makefile.machine || die
+		cp makefile.linux_amd64_asm makefile.machine || die
 	elif use amd64; then
-		cp -f makefile.linux_amd64_asm makefile.machine || die
+		cp makefile.linux_amd64_asm makefile.machine || die
 	elif use x86; then
-		cp -f makefile.linux_x86_asm_gcc_4.X makefile.machine || die
+		cp makefile.linux_x86_asm_gcc_4.X makefile.machine || die
 	elif [[ ${CHOST} == *-darwin* ]] ; then
 		# Mac OS X needs this special makefile, because it has a non-GNU
 		# linker, it doesn't matter so much for bitwidth, for it doesn't
 		# do anything with it
-		cp -f makefile.macosx_llvm_64bits makefile.machine || die
+		cp makefile.macosx_llvm_64bits makefile.machine || die
 		# bundles have extension .bundle but don't die because USE=-rar
 		# removes the Rar directory
 		sed -i -e '/strcpy(name/s/\.so/.bundle/' \
