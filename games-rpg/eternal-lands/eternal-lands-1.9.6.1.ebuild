@@ -25,6 +25,7 @@ RDEPEND="app-arch/unzip
 	media-libs/openal
 	media-libs/sdl2-image
 	media-libs/sdl2-net
+	media-libs/sdl2-ttf
 	sys-libs/zlib[minizip]
 	virtual/glu
 	virtual/opengl
