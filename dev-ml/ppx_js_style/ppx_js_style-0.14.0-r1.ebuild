@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	<=dev-lang/ocaml-4.13
+	<dev-lang/ocaml-4.13
 	>=dev-ml/base-0.14.0:=
 	dev-ml/findlib:=
 	dev-ml/octavius:=
