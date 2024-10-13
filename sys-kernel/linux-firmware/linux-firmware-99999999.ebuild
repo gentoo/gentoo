@@ -40,6 +40,7 @@ RESTRICT="binchecks strip test
 BDEPEND="initramfs? ( app-alternatives/cpio )
 	compress-xz? ( app-arch/xz-utils )
 	compress-zstd? ( app-arch/zstd )
+	python
 	deduplicate? ( app-misc/rdfind )"
 
 #add anything else that collides to this
@@ -120,6 +121,7 @@ src_prepare() {
 		|| die
 
 	chmod +x copy-firmware.sh || die
+	chmod +x dedup-firmware.sh || die
 	cp "${FILESDIR}/${PN}-make-amd-ucode-img.bash" "${T}/make-amd-ucode-img" || die
 	chmod +x "${T}/make-amd-ucode-img" || die
 
@@ -136,6 +138,7 @@ src_prepare() {
 	# whitelist of misc files
 	local misc_files=(
 		copy-firmware.sh
+		dedup-firmware.sh
 		WHENCE
 		README
 	)
@@ -284,9 +287,9 @@ src_install() {
 	elif use compress-zstd; then
 		FW_OPTIONS+=( "--zstd" )
 	fi
-	! use deduplicate && FW_OPTIONS+=( "--ignore-duplicates" )
 	FW_OPTIONS+=( "${ED}/lib/firmware" )
 	./copy-firmware.sh "${FW_OPTIONS[@]}" || die
+	use deduplicate && ./dedup-firmware.sh "${ED}/lib/firmware" || die
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
 
