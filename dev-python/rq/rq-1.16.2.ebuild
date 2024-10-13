@@ -27,7 +27,6 @@ BDEPEND="
 	test? (
 		dev-db/redis
 		dev-python/psutil[${PYTHON_USEDEP}]
-		<dev-python/sentry-sdk-2[${PYTHON_USEDEP}]
 	)
 "
 
@@ -54,4 +53,14 @@ src_test() {
 
 	# Clean up afterwards
 	kill "$(<"${redis_pid}")" || die
+}
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# requires <sentry-sdk-2
+		tests/test_sentry.py::TestSentry::test_failure_capture
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
