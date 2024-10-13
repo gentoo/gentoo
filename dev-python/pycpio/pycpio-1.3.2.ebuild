@@ -20,5 +20,5 @@ RDEPEND=">=dev-python/zenlib-2.1.2[${PYTHON_USEDEP}]"
 distutils_enable_tests unittest
 
 python_test() {
-	eunittest tests/
+	eunittest tests
 }
