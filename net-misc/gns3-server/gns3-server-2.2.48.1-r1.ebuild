@@ -26,11 +26,10 @@ RDEPEND="
 	>=dev-python/async-timeout-4.0.3[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-3.1.4[${PYTHON_USEDEP}]
-	>=dev-python/jsonschema-4.23.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-4.22.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-6.0.0[${PYTHON_USEDEP}]
 	>=dev-python/py-cpuinfo-9.0.0[${PYTHON_USEDEP}]
-	>=dev-python/sentry-sdk-2.12[${PYTHON_USEDEP}]
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 	net-misc/ubridge
 	sys-apps/busybox[static]
