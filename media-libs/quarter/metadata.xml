@@ -21,6 +21,7 @@
 	</longdescription>
 	<use>
 		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="qch">Install API documentation in QCH format</flag>
 		<flag name="qthelp">Build API documentation in QtHelp format</flag>
 	</use>
 	<upstream>
