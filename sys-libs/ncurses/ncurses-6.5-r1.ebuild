@@ -115,6 +115,10 @@ PATCHES=(
 	# For the same reasons, please include the original configure.in changes,
 	# NOT just the generated results!
 	"${WORKDIR}"/${GENTOO_PATCH_NAME}
+
+	# Avoid breakage with CHOST ending in t64
+	"${FILESDIR}"/ncurses-6.4-t64-1.patch
+	"${FILESDIR}"/ncurses-6.4-t64-2.patch
 )
 
 src_unpack() {
