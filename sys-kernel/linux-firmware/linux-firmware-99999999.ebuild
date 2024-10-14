@@ -287,6 +287,7 @@ src_prepare() {
 src_install() {
 
 	local FW_OPTIONS=( "-v" )
+	git config --global --add safe.directory "${S}" || die
 
 	if use compress-xz; then
 		FW_OPTIONS+=( "--xz" )
