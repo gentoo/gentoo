@@ -57,7 +57,6 @@ mail-mta/postfix ldap-bind
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # No kerberos provider is marked stable here
-net-fs/samba system-heimdal system-mitkrb5
 sys-auth/pambase pam_krb5
 
 # Sam James <sam@gentoo.org> (2022-03-03)
