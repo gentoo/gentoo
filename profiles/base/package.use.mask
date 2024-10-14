@@ -781,10 +781,6 @@ dev-python/paramiko server
 # Bug #651606.
 sys-block/fio static
 
-# Michał Górny <mgorny@gentoo.org> (2018-05-16)
-# Depends on last-rited sci-libs/coinhsl.
-sci-libs/ipopt hsl
-
 # Lars Wendler <polynomial-c@gentoo.org> (2018-03-14)
 # sys-cluster/ceph is only available on amd64 & x86, unmask per arch
 net-fs/samba ceph
