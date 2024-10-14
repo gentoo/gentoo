@@ -56,6 +56,8 @@ src_test() {
 		cmd.cc-gnu-src-cxx-cmd
 		cmd.cc-gnu-c-src-c-E
 		cmd.cc-gnu-c-src-c-cmd
+		cmd.cc-gnu-tgt-i386-opt-E
+		cmd.cc-gnu-c-tgt-i386-opt-E
 	)
 
 	cmake_src_test
