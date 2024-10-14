@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ DOCS=( Changelog )
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable fontconfig) \
-		$(use_enable libunibreak) \
+		$(multilib_native_use_enable libunibreak) \
 		$(use_enable test) \
 		--disable-require-system-font-provider
 }
