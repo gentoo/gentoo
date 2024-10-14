@@ -48,6 +48,7 @@ DOCS="AUTHORS README.md doc/source/*.rst"
 PATCHES=(
 	"${FILESDIR}/flint-3.0.1-find-cblas.patch"
 	"${FILESDIR}/flint-3.1.3_p1-c99-I.patch"
+	"${FILESDIR}/flint-3.1.3_p1-fix-pc-location.patch"
 )
 
 src_configure() {
