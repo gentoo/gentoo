@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Set of version requirements for a CPAN dist"
 
 SLOT="0"
-KEYWORDS="amd64 ~loong ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
