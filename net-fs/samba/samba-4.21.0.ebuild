@@ -101,7 +101,6 @@ COMMON_DEPEND="
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	python? (
-		sys-libs/ldb[python,${PYTHON_SINGLE_USEDEP}]
 		sys-libs/talloc[python,${PYTHON_SINGLE_USEDEP}]
 		sys-libs/tdb[python,${PYTHON_SINGLE_USEDEP}]
 		sys-libs/tevent[python,${PYTHON_SINGLE_USEDEP}]
