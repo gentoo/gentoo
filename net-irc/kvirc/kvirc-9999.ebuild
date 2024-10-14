@@ -32,6 +32,7 @@ BDEPEND="
 DEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,sql,widgets,xml]
 	dev-qt/qtmultimedia:6
+	dev-qt/qt5compat:6
 	sys-libs/zlib:0=
 	x11-libs/libX11
 	audiofile? ( media-libs/audiofile )
