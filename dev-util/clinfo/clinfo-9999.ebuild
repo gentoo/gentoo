@@ -17,7 +17,8 @@ HOMEPAGE="https://github.com/Oblomov/clinfo"
 
 LICENSE="CC0-1.0"
 SLOT="0"
-DEPEND=">=virtual/opencl-3"
+DEPEND=">=virtual/opencl-3
+	dev-util/opencl-headers"
 RDEPEND="${DEPEND}"
 
 src_install() {
