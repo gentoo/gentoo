@@ -11,7 +11,7 @@ SRC_URI="https://github.com/acerion/${PN}/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~x86"
+KEYWORDS="~alpha amd64 ppc x86"
 
 RDEPEND=">=media-radio/unixcw-3.6.0"
 DEPEND="${RDEPEND}"
