@@ -423,6 +423,7 @@ dev-ml/async:0/0.17
 dev-ml/patience_diff:0/0.17
 >=dev-ml/ppx_deriving-6.0.2
 dev-ml/ppx_js_style:0/0.17
+>=dev-ml/camlp4-5
 
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
