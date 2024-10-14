@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-10-14)
+# These packages are no more needed.
+# Use dev-ml/opam, dev-ml/opam-file-format, 
+# dev-ml/opam-installer
+# that include these
+# remove on 2024-11-14.
+dev-ml/opam-client
+dev-ml/opam-repository
+dev-ml/opam-state
+dev-ml/opam-format
+dev-ml/opam-core
+dev-ml/opam-solver
+
 # Hans de Graaff <graaff@gentoo.org> (2024-10-13)
 # Obsolete slots without reverse dependencies. Use a newer slot
 # instead. Removal on 2024-11-13.
@@ -250,14 +263,6 @@ sci-chemistry/mopac7
 # Sam James <sam@gentoo.org> (2024-09-10)
 # Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
 =sys-libs/timezone-data-2024b
-
-# Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
-# These packages are no more needed. Use dev-ml/dune-private-libs
-# that include these
-# remove on 2024-10-08. Bug #939339
-dev-ml/stdune
-dev-ml/ordering
-dev-ml/dyn
 
 # Michał Górny <mgorny@gentoo.org> (2024-09-08)
 # Does not build anymore.  No upstream activity since 2021.
