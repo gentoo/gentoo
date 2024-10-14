@@ -192,7 +192,7 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	if [[ ${CVS_RSH} != "ssh" ]] ; then
 		die "Support for ext auth with clients other than ssh has not been implemented yet"
 	fi
-	BDEPEND+=" net-misc/openssh"
+	BDEPEND+=" >=net-misc/openssh-8.4"
 fi
 
 # @FUNCTION: cvs_fetch
@@ -362,40 +362,9 @@ cvs_fetch() {
 		# Hack to support SSH password authentication
 
 		if [[ ${CVS_RSH} == "ssh" ]] ; then
-			# Force SSH to use SSH_ASKPASS by creating python wrapper
-
-			local -x CVS_RSH="${T}/cvs_sshwrapper"
-			cat > "${CVS_RSH}" <<EOF || die
-#!${EPREFIX}/usr/bin/python
-import fcntl
-import os
-import sys
-try:
-	fd = os.open('/dev/tty', 2)
-	TIOCNOTTY=0x5422
-	try:
-		fcntl.ioctl(fd, TIOCNOTTY)
-	except:
-		pass
-	os.close(fd)
-except:
-	pass
-newarglist = sys.argv[:]
-EOF
-
-			# disable X11 forwarding which causes .xauth access violations
-			# - 20041205 Armando Di Cianno <fafhrd@gentoo.org>
-			echo "newarglist.insert(1, '-oClearAllForwardings=yes')" \
-				>> "${CVS_RSH}" || die
-			echo "newarglist.insert(1, '-oForwardX11=no')" \
-				>> "${CVS_RSH}" || die
-
 			# Handle SSH host key checking
 
 			local known_hosts_file="${T}/cvs_ssh_known_hosts"
-			echo "newarglist.insert(1, '-oUserKnownHostsFile=${known_hosts_file}')" \
-				>> "${CVS_RSH}" || die
-
 			local strict_host_key_checking
 			if [[ -z ${ECVS_SSH_HOST_KEY} ]] ; then
 				ewarn "Warning: The SSH host key of the remote server will not be verified."
@@ -407,28 +376,31 @@ EOF
 				echo "${ECVS_SSH_HOST_KEY}" > "${known_hosts_file}" || die
 			fi
 
-			echo -n "newarglist.insert(1, '-oStrictHostKeyChecking=" \
-				>> "${CVS_RSH}" || die
-			echo "${strict_host_key_checking}')" \
-				>> "${CVS_RSH}" || die
-			echo "os.execv('${EPREFIX}/usr/bin/ssh', newarglist)" \
-				>> "${CVS_RSH}" || die
+			# Create a wrapper script to pass additional options to SSH
+			# Disable X11 forwarding which causes .xauth access violations
 
+			local -x CVS_RSH="${T}/cvs_sshwrapper"
+			cat > "${CVS_RSH}" <<-EOF || die
+				#!${BROOT}/bin/bash
+				exec "${BROOT}/usr/bin/ssh" \\
+					-oStrictHostKeyChecking=${strict_host_key_checking} \\
+					-oUserKnownHostsFile="${known_hosts_file}" \\
+					-oForwardX11=no \\
+					-oClearAllForwardings=yes \\
+					"\$@"
+				EOF
 			chmod a+x "${CVS_RSH}" || die
-
-			# Make sure DISPLAY is set (SSH will not use SSH_ASKPASS
-			# if DISPLAY is not set)
-
-			local -x DISPLAY="${DISPLAY:-DISPLAY}"
 
 			# Create a dummy executable to echo ${ECVS_PASS}
 
 			local -x SSH_ASKPASS="${T}/cvs_sshechopass"
+			local -x SSH_ASKPASS_REQUIRE="force"
+
 			if [[ ${ECVS_AUTH} != "no" ]] ; then
-				echo -en "#!/bin/bash\necho \"${ECVS_PASS}\"\n" \
+				echo -en "#!${BROOT}/bin/bash\necho \"${ECVS_PASS}\"\n" \
 					> "${SSH_ASKPASS}" || die
 			else
-				echo -en "#!/bin/bash\nreturn\n" \
+				echo -en "#!${BROOT}/bin/bash\nreturn\n" \
 					> "${SSH_ASKPASS}" || die
 			fi
 			chmod a+x "${SSH_ASKPASS}" || die
