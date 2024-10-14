@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Tiny replacement for Module::Build"
 
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~loong ~ppc ~ppc64 ~sparc ~x86"
 IUSE="minimal"
 
 RDEPEND="
