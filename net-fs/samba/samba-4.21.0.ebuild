@@ -291,6 +291,7 @@ multilib_src_configure() {
 		$(use_with debug lttng)
 		$(use_with ldap)
 		$(use_with profiling-data)
+		--private-libraries='!ldb'
 		# bug #683148
 		--jobs 1
 	)
