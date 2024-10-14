@@ -1,0 +1,25 @@
+https://bugzilla.mindrot.org/show_bug.cgi?id=3717
+https://github.com/openssh/openssh-portable/commit/c21c3a2419bbc1c59cb1a16ea356e703e99a90d9
+
+From c21c3a2419bbc1c59cb1a16ea356e703e99a90d9 Mon Sep 17 00:00:00 2001
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Thu, 12 Sep 2024 00:36:27 +0000
+Subject: [PATCH] upstream: Relax absolute path requirement back to what it was
+ prior to
+
+OpenSSH 9.8, which incorrectly required that sshd was started with an
+absolute path in inetd mode. bz3717, patch from Colin Wilson
+
+OpenBSD-Commit-ID: 25c57f22764897242d942853f8cccc5e991ea058
+--- a/sshd.c
++++ b/sshd.c
+@@ -1341,7 +1341,7 @@ main(int ac, char **av)
+ 			break;
+ 		}
+ 	}
+-	if (!test_flag && !do_dump_cfg && !path_absolute(av[0]))
++	if (!test_flag && !inetd_flag && !do_dump_cfg && !path_absolute(av[0]))
+ 		fatal("sshd requires execution with an absolute path");
+ 
+ 	closefrom(STDERR_FILENO + 1);
+
