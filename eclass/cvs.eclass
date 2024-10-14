@@ -174,6 +174,12 @@ _CVS_ECLASS=1
 # WARNING: If a SSH host key is not specified using this variable, the
 # remote host key will not be verified.
 
+# @ECLASS_VARIABLE: ECVS_SSH_EXTRA_OPTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If SSH is used for "ext" authentication, this array variable can be
+# used to pass additional options to the SSH command.
+
 # @ECLASS_VARIABLE: ECVS_CLEAN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -376,6 +382,11 @@ cvs_fetch() {
 				echo "${ECVS_SSH_HOST_KEY}" > "${known_hosts_file}" || die
 			fi
 
+			local i quoted_opts=()
+			for i in "${!ECVS_SSH_EXTRA_OPTS[@]}"; do
+				printf -v "quoted_opts[i]" "%q" "${ECVS_SSH_EXTRA_OPTS[i]}"
+			done
+
 			# Create a wrapper script to pass additional options to SSH
 			# Disable X11 forwarding which causes .xauth access violations
 
@@ -387,6 +398,7 @@ cvs_fetch() {
 					-oUserKnownHostsFile="${known_hosts_file}" \\
 					-oForwardX11=no \\
 					-oClearAllForwardings=yes \\
+					${quoted_opts[*]} \\
 					"\$@"
 				EOF
 			chmod a+x "${CVS_RSH}" || die
