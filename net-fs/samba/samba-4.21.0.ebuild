@@ -21,7 +21,7 @@ fi
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/2.10.0"
 IUSE="acl addc ads ceph client cluster cups debug fam glusterfs gpg"
 IUSE+=" iprint json ldap llvm-libunwind pam profiling-data python quota +regedit selinux"
 IUSE+=" snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind"
