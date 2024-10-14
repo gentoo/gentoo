@@ -55,10 +55,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-certbot )
 "
 
-PATCHES=(
-	"${FILESDIR}"/certbot-2.11.0-workaround-cryptography-deprecation-warnings.patch
-)
-
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
