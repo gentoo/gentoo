@@ -66,6 +66,10 @@ src_prepare() {
 
 	# Remove bundled libffi.
 	rm -r "${S}/bc/foreign/libffi" || die "failed to remove bundled libffi"
+
+	cd "${WORKDIR}/${P}" || die
+
+	eapply "${FILESDIR}/${P}-compiler-elf.patch"
 }
 
 src_configure() {

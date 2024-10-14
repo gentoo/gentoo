@@ -1,0 +1,29 @@
+This was modified to make it apply for distribution tarball.
+
+From bf288da1171e884537760d2f5723ceb03840de98 Mon Sep 17 00:00:00 2001
+From: Matthew Flatt <mflatt@racket-lang.org>
+Date: Mon, 26 Aug 2024 07:42:26 -0600
+Subject: [PATCH] raco exe: repair ELF update to add a section
+
+When a NOBITS section is misinterpreted as taking up space in the
+file, and when that space would overlap with the string-constant
+update, then an incorrect update to the virtual-memory size of the
+section was planned. That adjustment, in turn, could trigger
+disallowed virtual-address shifts to PROGBITS sections that are later
+in memory, leading to a "cannot move SHT_PROGBITS section" error.
+---
+ racket/collects/compiler/private/elf.rkt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/racket/collects/compiler/private/elf.rkt b/racket/collects/compiler/private/elf.rkt
+index c3009727cfd..a0fbef331db 100644
+--- a/collects/compiler/private/elf.rkt
++++ b/collects/compiler/private/elf.rkt
+@@ -256,6 +256,7 @@
+ (define (find-section-by-offset offset sections)
+   (for/or ([s (in-list sections)])
+     (and (section-alloc? s)
++         (not (= SHT_NOBITS (section-type s)))
+          (offset . >= . (section-offset s))
+          (offset . < . (+ (section-offset s)
+                           (section-size s)))
