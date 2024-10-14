@@ -250,5 +250,5 @@ pkg_config() {
 	einfo "After you configured your MTA, publish your key by adding this TXT record to your domain:"
 	cat "${ROOT}/var/lib/opendkim/${selector}.txt"
 	einfo "t=y signifies you only test the DKIM on your domain. See following page for the complete list of tags:"
-	einfo "  http://www.dkim.org/specs/rfc4871-dkimbase.html#key-text"
+	einfo "  https://www.rfc-editor.org/rfc/rfc6376.html#section-3.6.1"
 }
