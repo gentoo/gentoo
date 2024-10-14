@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
-pRDEPEND="
+RDEPEND="
 	!minimal? (
 		virtual/perl-IO
 		dev-perl/TermReadKey
