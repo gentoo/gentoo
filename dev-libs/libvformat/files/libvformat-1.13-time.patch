@@ -1,0 +1,33 @@
+diff -Naur libvformat-1.13.orig/src/vf_access_calendar.c libvformat-1.13/src/vf_access_calendar.c
+--- libvformat-1.13.orig/src/vf_access_calendar.c	2002-11-24 06:26:22.000000000 -0800
++++ libvformat-1.13/src/vf_access_calendar.c	2024-10-13 17:37:41.406689492 -0700
+@@ -228,7 +228,7 @@
+  *---------------------------------------------------------------------------*/
+ 
+ bool_t vf_date_string_to_time(
+-    uint32_t *p_time,               /* Output time value */
++    time_t *p_time,                 /* Output time value */
+     const char *p_string            /* Input string */
+     )
+ {
+@@ -298,7 +298,7 @@
+             }
+             else
+             {
+-                *p_time = (uint32_t)t;
++                *p_time = t;
+             }
+         }
+     }
+diff -Naur libvformat-1.13.orig/vformat/vf_iface.h libvformat-1.13/vformat/vf_iface.h
+--- libvformat-1.13.orig/vformat/vf_iface.h	2002-12-07 09:25:44.000000000 -0800
++++ libvformat-1.13/vformat/vf_iface.h	2024-10-13 17:46:02.229686374 -0700
+@@ -1180,7 +1180,7 @@
+  *---------------------------------------------------------------------------*/
+ 
+ extern VFORMATDECLSPEC bool_t vf_date_string_to_time(
+-    uint32_t *p_time,               /* Output time value */
++    time_t *p_time,                 /* Output time value */
+     const char *p_string            /* Input string */
+     );
+ 
