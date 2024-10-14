@@ -24,7 +24,6 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 src_configure() {
 	eqmake6 PREFIX="${EPREFIX}/usr"
-
 }
 
 src_install() {
