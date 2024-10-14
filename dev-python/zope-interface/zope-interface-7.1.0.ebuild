@@ -30,9 +30,12 @@ BDEPEND="
 distutils_enable_tests unittest
 
 src_prepare() {
-	# strip rdep specific to namespaces
-	sed -e "/'setuptools'/d" -i setup.py || die
 	distutils-r1_src_prepare
+
+	# strip rdep specific to namespaces
+	sed -i -e "/'setuptools'/d" setup.py || die
+	# force failure if extension build fails
+	sed -i -e "/'build_ext':/d" setup.py || die
 }
 
 python_compile() {
