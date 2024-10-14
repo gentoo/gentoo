@@ -10,6 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="bpf">Enable the BPF probe as alternative event source
+			to <pkg>dev-debug/scap-driver</pkg>.</flag>
 		<flag name="modules">Build kernel modules needed for tracing local
 			events. Disable this only if you intend to use sysdig purely
 			to work with dumpfiles.</flag>
