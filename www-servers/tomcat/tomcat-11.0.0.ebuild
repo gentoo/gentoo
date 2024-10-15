@@ -9,7 +9,7 @@ inherit java-pkg-2 prefix verify-sig
 
 MY_P="apache-${P}-src"
 
-DESCRIPTION="Tomcat Servlet-6.0/JSP-3.1/EL-5.0/WebSocket-2.1/JASPIC-3.0 Container"
+DESCRIPTION="Tomcat Servlet-6.1/JSP-4.0/EL-6.0/WebSocket-2.2/JASPIC-3.1 Container"
 HOMEPAGE="https://tomcat.apache.org/"
 SRC_URI="mirror://apache/${PN}/tomcat-$(ver_cut 1)/v${PV}/src/${MY_P}.tar.gz
 	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/${MY_P}.tar.gz.asc )"
