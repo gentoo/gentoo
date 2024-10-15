@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/940650#c4
+https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=977223;filename=guile-3.0-fix-32bit-BE.patch;msg=66
+
+diff --git a/stage0/Makefile.am b/stage0/Makefile.am
+index 12029fb45..b00611df0 100644
+--- a/stage0/Makefile.am
++++ b/stage0/Makefile.am
+@@ -22,7 +22,12 @@
+ 
+ 
+ GUILE_WARNINGS = -W0
+-GUILE_OPTIMIZATIONS = -O1
++$(ifeq($SCM_PREBUILT_BINARIES,"32-bit-little-endian") \
++	GUILE_OPTIMIZATIONS = -O1 -Oresolve-primitives -Ocps \
++else \
++	GUILE_OPTIMIZATIONS = -O1 \
++endif)
++
+ GUILE_BOOTSTRAP_STAGE = stage0
+ 
+ include $(top_srcdir)/am/bootstrap.am
