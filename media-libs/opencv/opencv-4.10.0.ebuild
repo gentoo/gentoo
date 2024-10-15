@@ -76,7 +76,7 @@ IUSE+=" +ffmpeg gstreamer xine vaapi v4l gphoto2 ieee1394"
 # image
 IUSE+=" gdal jasper jpeg jpeg2k openexr png quirc tesseract tiff webp"
 # gui
-IUSE+=" gtk3 qt5 qt6 opengl vtk"
+IUSE+=" gtk3 qt6 opengl vtk"
 # parallel
 IUSE+=" openmp tbb"
 # lapack options
@@ -158,7 +158,7 @@ REQUIRED_USE="
 	dnnsamples? ( examples )
 	gflags? ( contrib )
 	glog? ( contrib )
-	contribcvv? ( contrib || ( qt5 qt6 ) )
+	contribcvv? ( contrib qt6 )
 	contribdnn? ( contrib )
 	contribfreetype? ( contrib )
 	contribhdf? ( contrib )
@@ -166,10 +166,10 @@ REQUIRED_USE="
 	contribsfm? ( contrib eigen gflags glog )
 	contribxfeatures2d? ( contrib )
 	java? ( python )
-	opengl? ( ?? ( gtk3 || ( qt5 qt6 ) ) )
+	opengl? ( ?? ( gtk3 qt6 ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )
-	?? ( gtk3 || ( qt5 qt6 ) )
+	?? ( gtk3 qt6 )
 	test? ( || ( ffmpeg gstreamer ) jpeg png tiff features2d  )
 "
 
@@ -242,17 +242,8 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 		dev-python/numpy:=[${PYTHON_USEDEP}]
 	)
-	qt5? (
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dev-qt/qttest:5
-		dev-qt/qtconcurrent:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
-	!qt5? (
-		qt6? (
-			dev-qt/qtbase:6[gui,widgets,concurrent,opengl?]
-		)
+	qt6? (
+		dev-qt/qtbase:6[gui,widgets,concurrent,opengl?]
 	)
 	quirc? ( media-libs/quirc )
 	tesseract? ( app-text/tesseract[${MULTILIB_USEDEP}] )
@@ -705,12 +696,7 @@ multilib_src_configure() {
 
 	)
 
-	if use qt5; then
-		mycmakeargs+=(
-			-DWITH_QT="$(multilib_native_usex qt5)"
-			-DCMAKE_DISABLE_FIND_PACKAGE_Qt6="yes"
-		)
-	elif use qt6; then
+	if use qt6; then
 		mycmakeargs+=(
 			-DWITH_QT="$(multilib_native_usex qt6)"
 			-DCMAKE_DISABLE_FIND_PACKAGE_Qt5="yes"
@@ -928,7 +914,7 @@ multilib_src_test() {
 		'AsyncAPICancelation/cancel*basic'
 	)
 
-	if ! use gtk3 && ! use qt5 && ! use qt6; then
+	if ! use gtk3 && ! use qt6; then
 		CMAKE_SKIP_TESTS+=(
 			# these fail with parallism
 			'^Highgui_*'
@@ -1139,7 +1125,7 @@ multilib_src_install() {
 			/usr/include/opencv4/opencv2/text/swt_text_detection.hpp
 			/usr/include/opencv4/opencv2/text/textDetector.hpp
 
-			# [qt5,qt6]
+			# [qt6]
 			/usr/include/opencv4/opencv2/viz.hpp
 			/usr/include/opencv4/opencv2/viz/types.hpp
 			/usr/include/opencv4/opencv2/viz/viz3d.hpp
