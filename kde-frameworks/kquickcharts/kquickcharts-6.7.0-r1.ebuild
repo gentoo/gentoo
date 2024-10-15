@@ -20,6 +20,7 @@ IUSE=""
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
+	>=dev-qt/qtshadertools-${QTMIN}:6
 	examples? (
 		>=dev-qt/qtbase-${QTMIN}:6[widgets]
 		=kde-frameworks/kdeclarative-${PVCUT}*:6
