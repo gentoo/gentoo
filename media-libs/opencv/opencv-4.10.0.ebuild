@@ -286,7 +286,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.0-disable-download.patch"
 	"${FILESDIR}/${PN}-3.4.1-cuda-add-relaxed-constexpr.patch"
 	"${FILESDIR}/${PN}-4.1.2-opencl-license.patch"
 	"${FILESDIR}/${PN}-4.4.0-disable-native-cpuflag-detect.patch"
@@ -529,7 +528,6 @@ multilib_src_configure() {
 
 	# Optional 3rd party components
 	# ===================================================
-		-DENABLE_DOWNLOAD=yes
 		-DOPENCV_ENABLE_NONFREE="$(usex non-free)"
 		-DWITH_QUIRC="$(usex quirc)"
 		-DWITH_FLATBUFFERS="$(multilib_native_usex contribdnn)"
