@@ -55,6 +55,8 @@ DEPEND="
 
 src_prepare() {
 	default
+	# Remove -W from SPHINXOPTS to prevent failure due to warnings
+	sed -i 's#^SPHINXOPTS .*=.*#SPHINXOPTS =#' doc/Makefile.am || die "Makefile patching failed"
 	eautoreconf
 }
 
