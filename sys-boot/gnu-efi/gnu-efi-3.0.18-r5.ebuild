@@ -61,18 +61,18 @@ check_and_set_objcopy() {
 	fi
 }
 
-check_comppiler() {
+check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		tc-is-gcc || tc-is-clang || die "Unsupported compiler"
 	fi
 }
 
 pkg_pretend() {
-	check_comppiler
-	check_and_set_objcopy
+	check_compiler
 }
 
 pkg_setup() {
+	check_compiler
 	check_and_set_objcopy
 }
 
