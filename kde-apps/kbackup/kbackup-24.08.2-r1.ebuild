@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ECM_HANDBOOK="forceoptional"
+ECM_HANDBOOK="optional"
 KFMIN=6.5.0
 QTMIN=6.7.2
 inherit ecm gear.kde.org
@@ -13,11 +13,12 @@ HOMEPAGE="https://apps.kde.org/kbackup/"
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
 	app-arch/libarchive:=
+	>=dev-qt/qt5compat-${QTMIN}:6
 	>=dev-qt/qtbase-${QTMIN}:6[gui,widgets]
 	>=kde-frameworks/karchive-${KFMIN}:6
 	>=kde-frameworks/kcompletion-${KFMIN}:6
@@ -30,6 +31,7 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/knotifications-${KFMIN}:6
 	>=kde-frameworks/kservice-${KFMIN}:6
+	>=kde-frameworks/kstatusnotifieritem-${KFMIN}:6
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 "
