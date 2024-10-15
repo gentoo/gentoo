@@ -60,5 +60,5 @@ src_prepare() {
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p repeat python/test.py
+	epytest -p repeat scripts/test.py
 }
