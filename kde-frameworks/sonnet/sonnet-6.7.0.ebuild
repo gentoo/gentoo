@@ -22,6 +22,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 
+PATCHES=( "${FILESDIR}/${P}-no-backend.patch" ) # bug 941425
+
 CMAKE_SKIP_TESTS=(
 	# bug 779994
 	sonnet-test_autodetect
@@ -36,6 +38,9 @@ src_configure() {
 		$(cmake_use_find_package hunspell HUNSPELL)
 		-DSONNET_USE_QML=$(usex qml)
 	)
+	if ! use aspell && ! use hunspell; then
+		mycmakeargs+=( -DSONNET_NO_BACKENDS=ON )
+	fi
 
 	ecm_src_configure
 }
