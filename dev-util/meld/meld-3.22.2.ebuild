@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+# py3.13: https://gitlab.gnome.org/GNOME/meld/-/issues/873
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
