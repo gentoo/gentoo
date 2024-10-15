@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="GPL-2"
