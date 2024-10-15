@@ -594,7 +594,7 @@ multilib_src_configure() {
 	# ===================================================
 	# OpenCV build options
 	# ===================================================
-		# -DENABLE_CCACHE="no"
+		-DENABLE_CCACHE="no"
 		# bug 733796, but PCH is a risky game in CMake anyway
 		-DBUILD_USE_SYMLINKS="yes"
 		-DENABLE_PRECOMPILED_HEADERS="no"
