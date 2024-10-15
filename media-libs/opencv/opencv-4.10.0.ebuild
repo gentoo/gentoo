@@ -80,13 +80,27 @@ IUSE+=" openmp tbb"
 # lapack options
 IUSE+=" atlas lapack mkl"
 
+# from cmake/OpenCVCompilerOptimizations.cmake
 # TODO make this only relevant for binhost
 CPU_FEATURES_MAP=(
 	cpu_flags_arm_neon:NEON
 	cpu_flags_arm_vfpv3:VFPV3
 
+	# cpu_flags_arm_fp:FP16
+
+	cpu_flags_arm_asimddp:NEON_DOTPROD
+	# cpu_flags_arm_neon_fp16:NEON_FP16
+	# cpu_flags_arm_neon_bf16:NEON_BF16
+
+	# cpu_flags_loong_lsx:LSX
+	# cpu_flags_loong_lasx:LASX
+
+	# cpu_flags_mips_msa:MSA
+
 	cpu_flags_ppc_vsx:VSX   # (always available on Power8)
 	cpu_flags_ppc_vsx3:VSX3 # (always available on Power9)
+
+	# cpu_flags_riscv_rvv:RVV
 
 	cpu_flags_x86_sse:SSE   # (always available on 64-bit CPUs)
 	cpu_flags_x86_sse2:SSE2 # (always available on 64-bit CPUs)
@@ -102,15 +116,39 @@ CPU_FEATURES_MAP=(
 	cpu_flags_x86_fma3:FMA3
 	cpu_flags_x86_avx:AVX
 	cpu_flags_x86_avx2:AVX2
+	cpu_flags_x86_avx512_bitalg:AVX_512BITALG
+	cpu_flags_x86_avx512_vbmi2:AVX_512VBMI2
+	cpu_flags_x86_avx512_vnni:AVX_512VNNI
+	cpu_flags_x86_avx512_vpopcntdq:AVX_512VPOPCNTDQ
+	cpu_flags_x86_avx512bw:AVX_512BW
+	cpu_flags_x86_avx512cd:AVX_512CD
+	cpu_flags_x86_avx512dq:AVX_512DQ
 	cpu_flags_x86_avx512f:AVX_512F
+	cpu_flags_x86_avx512ifma:AVX_512IFMA
+	cpu_flags_x86_avx512vbmi:AVX_512VBMI
+	cpu_flags_x86_avx512vl:AVX_512VL
+
+	# AVX512_KNL_EXTRA
+	cpu_flags_x86_avx512er:AVX_512ER
+	cpu_flags_x86_avx512pf:AVX_512PF
+	# AVX512_KNM_EXTRA
+	cpu_flags_x86_avx512_4fmaps:AVX_5124FMAPS
+	cpu_flags_x86_avx512_4vnniw:AVX_5124VNNIW
+
 )
 IUSE+=" ${CPU_FEATURES_MAP[*]%:*}"
-unset ARM_CPU_FEATURES PPC_CPU_FEATURES X86_CPU_FEATURES_RAW X86_CPU_FEATURES
 
 REQUIRED_USE="
-	amd64? ( cpu_flags_x86_sse cpu_flags_x86_sse2 )
-	cpu_flags_x86_avx2? ( cpu_flags_x86_f16c )
-	cpu_flags_x86_f16c? ( cpu_flags_x86_avx )
+	amd64? (
+		cpu_flags_x86_sse
+		cpu_flags_x86_sse2
+		cpu_flags_x86_avx2? ( cpu_flags_x86_f16c )
+		cpu_flags_x86_f16c? ( cpu_flags_x86_avx )
+		cpu_flags_x86_avx512er? ( cpu_flags_x86_avx512pf )
+		cpu_flags_x86_avx512pf? ( cpu_flags_x86_avx512er )
+		cpu_flags_x86_avx512_4fmaps? ( cpu_flags_x86_avx512_4fmaps )
+		cpu_flags_x86_avx512_4vnniw? ( cpu_flags_x86_avx512_4vnniw )
+	)
 	cuda? (
 		contrib
 		tesseract? ( opencl )
@@ -649,7 +687,25 @@ multilib_src_configure() {
 	local CPU_BASELINE=""
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		if [[ ${ABI} != x86 || ${i%:*} != "cpu_flags_x86_avx2" ]]; then # workaround for Bug 747163
-			use "${i%:*}" && CPU_BASELINE="${CPU_BASELINE}${i#*:};"
+			local value
+			# These are merged into one flag internally
+			if [[ ${ABI} == amd64 ]]; then
+				case "${i%:*}" in
+					cpu_flags_x86_avx512er|cpu_flags_x86_avx512pf)
+						value="AVX512_KNL_EXTRA"
+						;;
+					cpu_flags_x86_avx512_4fmaps|cpu_flags_x86_avx512_4vnniw)
+						value="AVX512_KNM_EXTRA"
+						;;
+					*)
+						value="${i#*:}"
+						;;
+				esac
+			else
+				value=${i#*:}
+			fi
+
+			use "${i%:*}" && CPU_BASELINE="${CPU_BASELINE}${value};"
 		fi
 	done
 	unset CPU_FEATURES_MAP
