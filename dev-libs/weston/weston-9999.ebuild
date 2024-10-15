@@ -33,7 +33,7 @@ REQUIRED_USE="
 	pipewire? ( drm )
 	remoting? ( drm gles2 )
 	screen-sharing? ( rdp )
-	test? ( desktop headless lcms xwayland )
+	test? ( headless )
 	wayland-compositor? ( gles2 )
 	|| ( drm headless rdp vnc wayland-compositor X )
 "
