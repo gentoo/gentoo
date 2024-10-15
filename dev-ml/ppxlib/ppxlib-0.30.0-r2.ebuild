@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ml/sexplib0:=[ocamlopt?]
 	dev-ml/stdlib-shims:=[ocamlopt?]
 	>=dev-ml/ppx_derivers-1.2.1:=[ocamlopt?]
+	<dev-lang/ocaml-5
 "
 DEPEND="${RDEPEND}
 	test? (
