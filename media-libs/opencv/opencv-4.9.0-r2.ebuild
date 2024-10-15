@@ -804,7 +804,7 @@ multilib_src_test() {
 		'AsyncAPICancelation/cancel*basic'
 	)
 
-	if ! use gtk && ! use qt5 && ! use qt6; then
+	if ! use gtk3 && ! use qt5 && ! use qt6; then
 		CMAKE_SKIP_TESTS+=(
 			# these fail with parallism
 			'^Highgui_*'
