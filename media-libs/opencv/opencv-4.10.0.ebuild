@@ -171,11 +171,6 @@ REQUIRED_USE="
 	test? ( || ( ffmpeg gstreamer ) jpeg png tiff features2d  )
 "
 
-# TODO find a way to compile these with the cuda compiler
-REQUIRED_USE+="
-	cuda? ( !gdal !openexr !tbb )
-"
-
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -779,10 +774,21 @@ multilib_src_configure() {
 		cuda_add_sandbox -w
 		addwrite "/proc/self/task"
 
-		local -x CUDAHOSTCXX
+		local -x CUDAHOSTCXX CUDAHOSTLD
 		CUDAHOSTCXX="$(cuda_get_host_compiler)"
 		CUDAARCHS="$(cuda_get_host_native_arch)"
 		export CUDAARCHS
+		CUDAHOSTLD="$(tc-getCXX)"
+
+		if tc-is-gcc; then
+			# Filter out IMPLICIT_LINK_DIRECTORIES picked up by CMAKE_DETERMINE_COMPILER_ABI(CUDA)
+			# See /usr/share/cmake/Help/variable/CMAKE_LANG_IMPLICIT_LINK_DIRECTORIES.rst
+			CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES_EXCLUDE=$(
+				"${CUDAHOSTLD}" -E -v - <<<"int main(){}" |& \
+				grep LIBRARY_PATH | cut -d '=' -f 2 | cut -d ':' -f 1
+			)
+		fi
+
 		mycmakeargs+=(
 			-DENABLE_CUDA_FIRST_CLASS_LANGUAGE="yes"
 		)
