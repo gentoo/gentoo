@@ -151,7 +151,6 @@ REQUIRED_USE="
 	)
 	cuda? (
 		contrib
-		tesseract? ( opencl )
 	)
 	cudnn? ( cuda )
 	dnnsamples? ( examples )
@@ -256,7 +255,7 @@ COMMON_DEPEND="
 		)
 	)
 	quirc? ( media-libs/quirc )
-	tesseract? ( app-text/tesseract[opencl=,${MULTILIB_USEDEP}] )
+	tesseract? ( app-text/tesseract[${MULTILIB_USEDEP}] )
 	tbb? ( dev-cpp/tbb:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	v4l? ( >=media-libs/libv4l-0.8.3[${MULTILIB_USEDEP}] )
