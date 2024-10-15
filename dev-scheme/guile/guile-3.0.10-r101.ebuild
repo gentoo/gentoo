@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
 SRC_URI="mirror://gnu/guile/${P}.tar.xz"
@@ -39,7 +41,11 @@ QA_PREBUILT='*[.]go'
 
 DOCS=( ABOUT-NLS AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README THANKS )
 
-PATCHES=( "${FILESDIR}"/${PN}-2.2.3-gentoo-sandbox.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.3-gentoo-sandbox.patch
+	"${FILESDIR}/${PN}-3.0-fix-32bit-BE.patch"
+	"${FILESDIR}/${PN}-3.0.10-backport-issue72913.patch"
+)
 
 # Where to install data files.
 GUILE_DATA="${EPREFIX}/usr/share/guile-data/${SLOT}"
@@ -49,6 +55,7 @@ GUILE_INFODIR="${GUILE_DATA}"/info
 src_configure() {
 	# see bug #676468
 	mv prebuilt/32-bit-big-endian{,.broken} || die
+	eautoreconf
 
 	local -a myconf=(
 		--program-suffix="-${SLOT}"
