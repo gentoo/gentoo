@@ -371,7 +371,8 @@ fi
 
 SRC_URI+=" ${NUGET_URIS} "
 
-LICENSE="Apache-2.0 BSD-2 LGPL-2.1 LGPL-3+ MIT"
+# "all-rights-reserved" - ships a copy of proprietary BASS lib - https://www.un4seen.com
+LICENSE="Apache-2.0 BSD-2 LGPL-2.1 LGPL-3+ MIT all-rights-reserved"
 SLOT="0"
 IUSE="+pipewire"
 RESTRICT="test" # > The active test run was aborted. Reason: Test host process crashed
