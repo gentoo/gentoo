@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit vcs-clean
+inherit flag-o-matic vcs-clean
 
 PATCHSET_VER="1"
 MY_P=mercury-srcdist-${PV}
