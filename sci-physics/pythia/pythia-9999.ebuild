@@ -164,11 +164,7 @@ src_test() {
 	use root && tests+=" main143"
 	use hepmc3 && use lhapdf && tests+=" $(echo main{133,162})"
 	use fastjet && use hepmc3 && use lhapdf && tests+=" $(echo main161)"
-	# Disabled tests:
-	# 33	needs PowHEG
-	# 46	needs ProMC
-	# 48	needs EvtGen
-	# 92	generated ROOT dictionary is badly broken
+	# Other tests disabled due to missing dependencies 
 
 	# use emake for parallel instead of long runmains
 	LD_LIBRARY_PATH="${S}/$(get_libdir):${LD_LIBRARY_PATH}" \
