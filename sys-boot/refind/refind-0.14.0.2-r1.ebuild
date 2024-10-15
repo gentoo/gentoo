@@ -41,10 +41,6 @@ checktools() {
 	fi
 }
 
-pkg_pretend() {
-	checktools
-}
-
 pkg_setup() {
 	if use x86; then
 		export EFIARCH=ia32
