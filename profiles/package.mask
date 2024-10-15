@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2024-10-15)
+# No longer provided as a separate package; the Emacs mode is now
+# installed by dev-util/quilt with USE=emacs.
+# Removal on 2024-11-14. Bug #247500.
+app-emacs/quilt-el
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-10-14)
 # These packages are no more needed.
 # Use dev-ml/opam, dev-ml/opam-file-format, 
