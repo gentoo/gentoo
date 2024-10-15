@@ -13,7 +13,7 @@ S="${WORKDIR}/Zarith-release-${PV}"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="doc +ocamlopt"
 RESTRICT="!ocamlopt? ( test )"
 
