@@ -26,10 +26,11 @@ else
 	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
-S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
 HOMEPAGE="https://www.libvirt.org"
+
+S="${WORKDIR}/${P%_rc*}"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -60,4 +61,5 @@ python_install_all() {
 	fi
 
 	distutils-r1_python_install_all
+
 }
