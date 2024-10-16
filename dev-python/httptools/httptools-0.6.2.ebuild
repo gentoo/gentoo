@@ -7,16 +7,15 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1
 
 DESCRIPTION="A collection of framework independent HTTP protocol utils"
 HOMEPAGE="
 	https://github.com/MagicStack/httptools/
 	https://pypi.org/project/httptools/
 "
-# sdist is missing cython source files, and github archive is missing
-# vendored libs
-SRC_URI+="
+# sdist is missing cython source files, as of 0.6.2
+SRC_URI="
 	https://github.com/MagicStack/httptools/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
