@@ -38,7 +38,7 @@ RDEPEND="
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	x11-libs/gtk+:3
-	jpegxl? ( media-libs/jpegxl:= )
+	jpegxl? ( media-libs/libjxl:= )
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
