@@ -569,7 +569,7 @@ src_install() {
 	# Fix collisions between different slots of Python.
 	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
 	# Fix collision with GIL-enabled build.
-	rm "${ED}/usr/bin/python3.13" || die
+	rm "${ED}/usr/bin/python${PYVER%t}" || die
 	mv "${ED}"/usr/bin/pydoc{${PYVER%t},${PYVER}} || die
 	mv "${ED}"/usr/share/man/man1/python{${PYVER%t},${PYVER}}.1 || die
 
