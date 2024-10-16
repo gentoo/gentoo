@@ -5,7 +5,7 @@ EAPI=8
 
 inherit linux-mod-r1
 
-COMMIT_HASH="cfff3d242c11dc3ebfa70e7771ee1c094bf2f368"
+COMMIT_HASH="8e11a92de853a3234ef19586d20d86b7b82d35b2"
 DESCRIPTION="Kernel module to expose more Framework Laptop stuff"
 HOMEPAGE="https://github.com/DHowett/framework-laptop-kmod"
 SRC_URI="https://github.com/DHowett/framework-laptop-kmod/archive/${COMMIT_HASH}.tar.gz -> ${P}.gh.tar.gz"
