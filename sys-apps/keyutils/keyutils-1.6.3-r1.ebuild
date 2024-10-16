@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs linux-info multilib-minimal
 
@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
 	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
 	"${FILESDIR}"/${PN}-1.6.3-fix-rpmspec-check.patch
+	"${FILESDIR}"/${PN}-1.6.3-symbols.patch
 	"${FILESDIR}"/${P}-tests.patch
 )
 
