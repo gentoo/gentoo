@@ -5,7 +5,7 @@ EAPI=8
 
 # Bump with sci-libs/libqalculate and sci-calculators/qalculate-gtk!
 
-inherit qmake-utils xdg
+inherit optfeature qmake-utils xdg
 
 DESCRIPTION="Qt-based UI for libqalculate"
 HOMEPAGE="https://github.com/Qalculate/qalculate-qt"
@@ -28,4 +28,10 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${ED}" install
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "gnuplot support" sci-libs/libqalculate[gnuplot]
 }
