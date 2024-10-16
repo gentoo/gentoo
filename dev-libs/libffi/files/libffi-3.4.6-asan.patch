@@ -1,0 +1,88 @@
+https://github.com/libffi/libffi/commit/01db744b4af8665f9b7494d00cc2a1cc45ee9636
+
+From 01db744b4af8665f9b7494d00cc2a1cc45ee9636 Mon Sep 17 00:00:00 2001
+From: KJ Tsanaktsidis <kj@kjtsanaktsidis.id.au>
+Date: Fri, 20 Sep 2024 20:00:49 +1000
+Subject: [PATCH] Disable ASAN in ffi_call_int functions (#858)
+
+The pattern for several of the architectures is for ffi_call_int to
+stack-allocate some arguments + the registers, and then
+ffi_call_$ARCH will pop the top of that structure into registers, and
+then adjust the stack pointer such that the alloca'd buffer _becomes_
+the stack-passed arguments for the function being called.
+
+If libffi is compiled with ASAN, then there will be a redzone inserted
+after the alloca'd buffer which is marked as poisoned. This redzone
+appears beyond the end of $sp upon entry to the called function.
+
+If the called function does anything to use this stack memory, ASAN will
+notice that it's poisoned and report an error.
+
+This commit fixes the situation (on the architectures that I have access
+to) disabling instrumentation for ffi_call_int; that means there will be
+no alloca redzone left on the shadow-stack.
+--- a/include/ffi_common.h
++++ b/include/ffi_common.h
+@@ -83,6 +83,23 @@ char *alloca ();
+ #include <stdio.h>
+ #endif
+ 
++#ifndef __SANITIZE_ADDRESS__
++# ifdef __clang__
++#  if __has_feature(address_sanitizer)
++#   define FFI_ASAN
++#  endif
++# endif
++#endif
++#ifdef __SANITIZE_ADDRESS__
++#define FFI_ASAN
++#endif
++
++#ifdef FFI_ASAN
++#define FFI_ASAN_NO_SANITIZE __attribute__((no_sanitize_address))
++#else
++#define FFI_ASAN_NO_SANITIZE
++#endif
++
+ #ifdef FFI_DEBUG
+ NORETURN void ffi_assert(const char *expr, const char *file, int line);
+ void ffi_stop_here(void);
+--- a/src/aarch64/ffi.c
++++ b/src/aarch64/ffi.c
+@@ -645,7 +645,10 @@ extern void ffi_call_SYSV (struct call_context *context, void *frame,
+ 			   void *closure) FFI_HIDDEN;
+ 
+ /* Call a function with the provided arguments and capture the return
+-   value.  */
++   value.
++   n.b. ffi_call_SYSV will steal the alloca'd `stack` variable here for use
++   _as its own stack_ - so we need to compile this function without ASAN */
++FFI_ASAN_NO_SANITIZE
+ static void
+ ffi_call_int (ffi_cif *cif, void (*fn)(void), void *orig_rvalue,
+ 	      void **avalue, void *closure)
+--- a/src/x86/ffi.c
++++ b/src/x86/ffi.c
+@@ -270,6 +270,9 @@ extern void FFI_DECLARE_FASTCALL ffi_call_i386(struct call_frame *, char *) FFI_
+ #if defined(_MSC_VER)
+ #pragma runtime_checks("s", off)
+ #endif
++/* n.b. ffi_call_unix64 will steal the alloca'd `stack` variable here for use
++   _as its own stack_ - so we need to compile this function without ASAN */
++FFI_ASAN_NO_SANITIZE
+ static void
+ ffi_call_int (ffi_cif *cif, void (*fn)(void), void *rvalue,
+ 	      void **avalue, void *closure)
+--- a/src/x86/ffi64.c
++++ b/src/x86/ffi64.c
+@@ -557,6 +557,9 @@ ffi_prep_cif_machdep (ffi_cif *cif)
+   return FFI_OK;
+ }
+ 
++/* n.b. ffi_call_unix64 will steal the alloca'd `stack` variable here for use
++   _as its own stack_ - so we need to compile this function without ASAN */
++FFI_ASAN_NO_SANITIZE
+ static void
+ ffi_call_int (ffi_cif *cif, void (*fn)(void), void *rvalue,
+ 	      void **avalue, void *closure)
+

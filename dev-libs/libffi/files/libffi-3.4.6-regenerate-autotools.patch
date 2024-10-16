@@ -1,0 +1,48 @@
+The arm64 patches we backported to 3.4.6 mean we need to autoreconf ourselves,
+apply this patch to avoid needing to do it in the ebuild b/c of deps.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -330,8 +330,8 @@ am__define_uniq_tagged_files = \
+   done | $(am__uniquify_input)`
+ DIST_SUBDIRS = include testsuite man doc
+ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/fficonfig.h.in \
+-	$(srcdir)/libffi.pc.in README.md compile config.guess \
+-	config.sub depcomp install-sh ltmain.sh missing
++	$(srcdir)/libffi.pc.in ChangeLog README.md compile \
++	config.guess config.sub depcomp install-sh ltmain.sh missing
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ distdir = $(PACKAGE)-$(VERSION)
+ top_distdir = $(distdir)
+--- a/fficonfig.h.in
++++ b/fficonfig.h.in
+@@ -31,6 +31,9 @@
+ /* Define to 1 if you have the <alloca.h> header file. */
+ #undef HAVE_ALLOCA_H
+ 
++/* Define if your compiler supports pointer authentication. */
++#undef HAVE_ARM64E_PTRAUTH
++
+ /* Define if your assembler supports .cfi_* directives. */
+ #undef HAVE_AS_CFI_PSEUDO_OP
+ 
+@@ -71,9 +74,6 @@
+ /* Define to 1 if you have the `memfd_create' function. */
+ #undef HAVE_MEMFD_CREATE
+ 
+-/* Define if your compiler supports pointer authentication. */
+-#undef HAVE_PTRAUTH
+-
+ /* Define if .eh_frame sections should be read-only. */
+ #undef HAVE_RO_EH_FRAME
+ 
+--- a/testsuite/Makefile.in
++++ b/testsuite/Makefile.in
+@@ -292,7 +292,7 @@ EXTRA_DEJAGNU_SITE_CONFIG = ../local.exp
+ CLEANFILES = *.exe core* *.log *.sum
+ EXTRA_DIST = config/default.exp emscripten/build.sh emscripten/conftest.py \
+ 	emscripten/node-tests.sh emscripten/test.html emscripten/test_libffi.py \
+-  emscripten/build-tests.sh lib/libffi.exp lib/target-libpath.exp \
++	emscripten/build-tests.sh lib/libffi.exp lib/target-libpath.exp \
+ 	lib/wrapper.exp libffi.bhaible/Makefile libffi.bhaible/README \
+ 	libffi.bhaible/alignof.h libffi.bhaible/bhaible.exp libffi.bhaible/test-call.c \
+ 	libffi.bhaible/test-callback.c libffi.bhaible/testcases.c libffi.call/align_mixed.c \
