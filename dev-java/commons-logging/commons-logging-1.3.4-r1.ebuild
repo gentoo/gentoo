@@ -121,7 +121,6 @@ src_compile() {
 	jar cvf "${JAVA_JAR_FILENAME}" \
 		-C target/classes . \
 		--release 9 -C target/versions/9 . || die
-	java-pkg-simple_src_compile
 
 	pushd target/classes > /dev/null || die
 
