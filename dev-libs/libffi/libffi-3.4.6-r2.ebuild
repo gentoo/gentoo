@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-x86-sse.patch
 	"${FILESDIR}"/${P}-arm64-cfi.patch
 	"${FILESDIR}"/${P}-asan.patch
+	"${FILESDIR}"/${P}-tests.patch
 	"${FILESDIR}"/${P}-regenerate-autotools.patch
 )
 
