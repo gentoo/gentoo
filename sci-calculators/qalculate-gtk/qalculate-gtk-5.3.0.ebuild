@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: bump with sci-libs/libqalculate and sci-calculators/qalculate-qt!
 
-inherit xdg
+inherit optfeature xdg
 
 DESCRIPTION="Modern multi-purpose calculator"
 HOMEPAGE="https://qalculate.github.io/"
@@ -36,4 +36,10 @@ src_prepare() {
 	EOF
 
 	default
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "gnuplot support" sci-libs/libqalculate[gnuplot]
 }
