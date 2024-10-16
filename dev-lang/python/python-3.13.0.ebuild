@@ -114,7 +114,7 @@ QA_PKGCONFIG_VERSION=${PYVER}
 # false positives -- functions specific to *BSD
 QA_CONFIG_IMPL_DECL_SKIP=( chflags lchflags )
 
-declare -rA PYTHON_KERNEL_CHECKS=(
+declare -rgA PYTHON_KERNEL_CHECKS=(
 	["CROSS_MEMORY_ATTACH"]="test_external_inspection" #bug 938589
 	["DNOTIFY"]="test_fcntl" # bug 938662
 )
