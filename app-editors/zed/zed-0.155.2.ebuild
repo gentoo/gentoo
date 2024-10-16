@@ -84,7 +84,7 @@ BDEPEND="
 	')
 "
 
-QA_FLAGS_IGNORED="usr/bin/zed"
+QA_FLAGS_IGNORED="usr/bin/zedit"
 
 pkg_setup() {
 	if tc-is-gcc; then
