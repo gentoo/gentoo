@@ -36,7 +36,6 @@ SLOT="0"
 IUSE="nls +standalone static"
 
 RDEPEND="
-	!=app-text/tetex-2*
 	>=sys-libs/ncurses-5.2-r2:=
 	virtual/perl-Data-Dumper
 	virtual/perl-Encode
