@@ -26,8 +26,12 @@ SLOT="0/${PV}"
 
 KEYWORDS="amd64 ~arm ~ppc ppc64 x86"
 IUSE="+chez +doc +futures iconv +jit minimal ncurses +places +threads"
-# See bug #809785 re chez/threads
-REQUIRED_USE="chez? ( futures places ) futures? ( jit threads ) places? ( threads )"
+# * "chez" - see bug #809785 re chez/threads
+# * "iconv" - required for "doc"
+REQUIRED_USE="
+	chez? ( futures places ) futures? ( jit threads ) places? ( threads )
+	doc? ( iconv )
+"
 
 RDEPEND="
 	dev-db/sqlite:3
