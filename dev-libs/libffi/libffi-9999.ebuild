@@ -32,13 +32,6 @@ IUSE="debug exec-static-trampoline pax-kernel static-libs test"
 RESTRICT="!test? ( test )"
 BDEPEND="test? ( dev-util/dejagnu )"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-arm64-cfi.patch
-	"${FILESDIR}"/${P}-sparc-struct-targs.patch
-	"${FILESDIR}"/${P}-test-typo.patch
-	"${FILESDIR}"/${P}-x86-sse.patch
-)
-
 src_prepare() {
 	default
 
