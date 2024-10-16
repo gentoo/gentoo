@@ -5,7 +5,6 @@ EAPI=8
 
 DIST_AUTHOR=ETJ
 DIST_VERSION=2.67
-DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
 DESCRIPTION="A wrapper for AT&T's GraphViz"
