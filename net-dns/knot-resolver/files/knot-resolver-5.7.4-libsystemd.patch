@@ -1,0 +1,25 @@
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -229,3 +229,10 @@
+   value: 'auto',
+   description: 'add rpath to the knot resolver executables',
+ )
++
++option(
++  'systemd',
++  type: 'feature',
++  value: 'auto',
++  description: 'systemd watchdog support',
++)
+
+--- a/meson.build
++++ b/meson.build
+@@ -126,7 +126,7 @@
+ 
+ ### Systemd
+ systemd_files = get_option('systemd_files')
+-libsystemd = dependency('libsystemd', required: systemd_files == 'enabled')
++libsystemd = dependency('libsystemd', required: get_option('systemd'))
+
+ ### Allocator
+ # use empty name to disable the dependency, but still compile the dependent kresd
