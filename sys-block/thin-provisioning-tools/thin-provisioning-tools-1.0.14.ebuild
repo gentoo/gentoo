@@ -147,7 +147,9 @@ declare -A GIT_CRATES=(
 	[rio]='https://github.com/jthornber/rio;2979a720f671e836302c01546f9cc9f7988610c8;rio-%commit%'
 )
 
-inherit cargo
+LLVM_COMPAT=( {17..18} )
+
+inherit cargo llvm-r1
 
 DESCRIPTION="A suite of tools for thin provisioning on Linux"
 HOMEPAGE="https://github.com/jthornber/thin-provisioning-tools"
@@ -160,7 +162,7 @@ else
 		https://github.com/jthornber/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-3"
@@ -168,6 +170,14 @@ LICENSE="GPL-3"
 LICENSE+=" Apache-2.0 BSD GPL-3 ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 IUSE="io-uring"
+
+# Needed for bindgen
+BDEPEND="
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+	')
+	virtual/pkgconfig
+"
 
 DOCS=(
 	CHANGES
