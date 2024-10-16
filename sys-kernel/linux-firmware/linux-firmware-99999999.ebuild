@@ -296,7 +296,7 @@ src_install() {
 	fi
 	FW_OPTIONS+=( "${ED}/lib/firmware" )
 	./copy-firmware.sh "${FW_OPTIONS[@]}" || die
-	use deduplicate && ./dedup-firmware.sh "${ED}/lib/firmware" || die
+	use deduplicate && { ./dedup-firmware.sh "${ED}/lib/firmware" || die; }
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
 
