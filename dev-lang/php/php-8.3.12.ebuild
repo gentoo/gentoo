@@ -209,6 +209,10 @@ php_set_ini_dir() {
 	PHP_EXT_INI_DIR_ACTIVE="${PHP_INI_DIR}/ext-active"
 }
 
+pkg_setup() {
+	use postgres && postgres_pkg_setup
+}
+
 src_prepare() {
 	default
 
