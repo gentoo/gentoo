@@ -372,6 +372,7 @@ src_configure() {
 
 			# Fails in profiling run, passes in src_test().
 			-x test_capi
+			-x test_embed
 		)
 
 		# Arch-specific skips.  See #931888 for a collection of these.
