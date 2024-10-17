@@ -204,6 +204,13 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	cd "${WORKDIR}"/rio* || die
+	eapply "${FILESDIR}/${PN}-1.1.0-rio-nightly.patch"
+}
+
 src_configure() {
 	local myfeatures=( $(usev io-uring io_uring) )
 	cargo_src_configure
