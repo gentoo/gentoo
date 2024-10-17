@@ -1,0 +1,56 @@
+There was 1 failure:
+1) unused_stubbings(org.mockito.internal.junit.UnusedStubbingsTest)
+java.lang.AssertionError:
+Expecting:
+ <"[MockitoHint] MyTest.myTestMethod (see javadoc for MockitoHint):
+[MockitoHint] 1. Unused -> at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:0)
+[MockitoHint] 2. Unused -> at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:0)
+">
+to be in:
+ <["[MockitoHint] MyTest.myTestMethod (see javadoc for MockitoHint):
+[MockitoHint] 1. Unused -> at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[MockitoHint] 2. Unused -> at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+",
+    "[MockitoHint] MyTest.myTestMethod (see javadoc for MockitoHint):
+[MockitoHint] 1. Unused -> at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[MockitoHint] 2. Unused -> at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+"]>
+
+        at org.mockito.internal.junit.UnusedStubbingsTest.unused_stubbings(UnusedStubbingsTest.java:50)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+#	--- a/src/test/java/org/mockito/internal/junit/UnusedStubbingsTest.java
+#	+++ b/src/test/java/org/mockito/internal/junit/UnusedStubbingsTest.java
+#	@@ -5,6 +5,7 @@
+#	 package org.mockito.internal.junit;
+#	 
+#	 import org.junit.Test;
+#	+import org.junit.Ignore;
+#	 import org.mockito.internal.invocation.InvocationBuilder;
+#	 import org.mockito.internal.stubbing.StubbedInvocationMatcher;
+#	 import org.mockito.internal.util.SimpleMockitoLogger;
+#	@@ -34,7 +35,7 @@ public class UnusedStubbingsTest extends TestBase {
+#	         assertEquals("", logger.getLoggedInfo());
+#	     }
+#	 
+#	-    @Test
+#	+    @Test @Ignore
+#	     public void unused_stubbings() throws Exception {
+#	         //given
+#	         UnusedStubbings stubbings = new UnusedStubbings(Arrays.asList(
+--- a/src/test/java/org/mockito/internal/junit/UnusedStubbingsTest.java
++++ b/src/test/java/org/mockito/internal/junit/UnusedStubbingsTest.java
+@@ -53,7 +53,10 @@ public class UnusedStubbingsTest extends TestBase {
+                                     "[MockitoHint] 2. Unused -> at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n",
+             "[MockitoHint] MyTest.myTestMethod (see javadoc for MockitoHint):\n" +  //Java 9
+                                     "[MockitoHint] 1. Unused -> at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n" +
+-                                    "[MockitoHint] 2. Unused -> at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n"
++                                    "[MockitoHint] 2. Unused -> at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n" +
++           "[MockitoHint] MyTest.myTestMethod (see javadoc for MockitoHint):\n" + //Java 21
++                                   "[MockitoHint] 1. Unused -> at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:0)\n" +
++                                   "[MockitoHint] 2. Unused -> at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:0)\n"
+         );
+     }
+ }
+
