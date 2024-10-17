@@ -31,7 +31,7 @@ DEPEND="
 	>=media-libs/libraw-0.13.2:=
 	>=media-libs/libexif-0.6.16
 	app-crypt/libsecret
-	>=dev-libs/libportal-0.5:=[gtk]
+	>=dev-libs/libportal-0.5:=[gtk,vala]
 	media-libs/libwebp:=
 
 	>=app-crypt/gcr-3:0=[gtk]
