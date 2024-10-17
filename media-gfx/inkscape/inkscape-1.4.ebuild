@@ -108,6 +108,10 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4-gcc15.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
