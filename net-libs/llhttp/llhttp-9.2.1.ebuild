@@ -18,4 +18,4 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
