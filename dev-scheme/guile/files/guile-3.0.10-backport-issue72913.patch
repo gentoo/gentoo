@@ -1,0 +1,394 @@
+https://bugs.gentoo.org/940650#c12
+https://issues.guix.gnu.org/72913
+https://git.savannah.gnu.org/cgit/guile.git/commit/?id=aff9ac968840e9c86719fb613bd2ed3c39b9905c
+
+From 605440d8021061a4ef8c18370783ef39f62c59b2 Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@pobox.com>
+Date: Wed, 25 Sep 2024 17:23:06 +0200
+Subject: [PATCH 1/4] Fix fixpoint needed-bits computation in
+ specialize-numbers
+
+* module/language/cps/specialize-numbers.scm (next-power-of-two): Use
+integer-length.  No change.
+(compute-significant-bits): Fix the fixpoint computation, which was
+failing to complete in some cases with loops.
+---
+ module/language/cps/specialize-numbers.scm | 27 ++++++++--------------
+ 1 file changed, 10 insertions(+), 17 deletions(-)
+
+diff --git a/module/language/cps/specialize-numbers.scm b/module/language/cps/specialize-numbers.scm
+index 4ec88871c..12963cd71 100644
+--- a/module/language/cps/specialize-numbers.scm
++++ b/module/language/cps/specialize-numbers.scm
+@@ -265,10 +265,7 @@
+   (sigbits-intersect a (sigbits-intersect b c)))
+ 
+ (define (next-power-of-two n)
+-  (let lp ((out 1))
+-    (if (< n out)
+-        out
+-        (lp (ash out 1)))))
++  (ash 1 (integer-length n)))
+ 
+ (define (range->sigbits min max)
+   (cond
+@@ -310,18 +307,16 @@
+ BITS indicating the significant bits needed for a variable.  BITS may be
+ #f to indicate all bits, or a non-negative integer indicating a bitmask."
+   (let ((preds (invert-graph (compute-successors cps kfun))))
+-    (let lp ((worklist (intmap-keys preds)) (visited empty-intset)
+-             (out empty-intmap))
++    (let lp ((worklist (intmap-keys preds)) (out empty-intmap))
+       (match (intset-prev worklist)
+         (#f out)
+         (label
+-         (let ((worklist (intset-remove worklist label))
+-               (visited* (intset-add visited label)))
++         (let ((worklist (intset-remove worklist label)))
+            (define (continue out*)
+-             (if (and (eq? out out*) (eq? visited visited*))
+-                 (lp worklist visited out)
++             (if (eq? out out*)
++                 (lp worklist out)
+                  (lp (intset-union worklist (intmap-ref preds label))
+-                     visited* out*)))
++                     out*)))
+            (define (add-def out var)
+              (intmap-add out var 0 sigbits-union))
+            (define (add-defs out vars)
+@@ -352,12 +347,10 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+                       (($ $values args)
+                        (match (intmap-ref cps k)
+                          (($ $kargs _ vars)
+-                          (if (intset-ref visited k)
+-                              (fold (lambda (arg var out)
+-                                      (intmap-add out arg (intmap-ref out var)
+-                                                  sigbits-union))
+-                                    out args vars)
+-                              out))
++                          (fold (lambda (arg var out)
++                                  (intmap-add out arg (intmap-ref out var (lambda (_) 0))
++                                              sigbits-union))
++                                out args vars))
+                          (($ $ktail)
+                           (add-unknown-uses out args))))
+                       (($ $call proc args)
+-- 
+2.47.0
+
+
+From 6953fcb8d9b7d9d36bf36e83e80e24153d37e2a4 Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@pobox.com>
+Date: Wed, 25 Sep 2024 17:24:51 +0200
+Subject: [PATCH 2/4] Fix boxing of non-fixnum negative u64 values
+
+* module/language/cps/specialize-numbers.scm (u64->fixnum/truncate): New
+helper.
+(specialize-operations): Fix specialized boxing of u64 values to
+truncate possibly-negative values, to avoid confusing CSE.  Fixes
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=71891.
+---
+ module/language/cps/specialize-numbers.scm | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/module/language/cps/specialize-numbers.scm b/module/language/cps/specialize-numbers.scm
+index 12963cd71..e9761f0cb 100644
+--- a/module/language/cps/specialize-numbers.scm
++++ b/module/language/cps/specialize-numbers.scm
+@@ -115,6 +115,13 @@
+     (letk ks64 ($kargs ('s64) (s64) ,tag-body))
+     (build-term
+       ($continue ks64 src ($primcall 'u64->s64 #f (u64))))))
++(define (u64->fixnum/truncate cps k src u64 bits)
++  (with-cps cps
++    (letv truncated)
++    (let$ tag-body (u64->fixnum k src truncated))
++    (letk ku64 ($kargs ('truncated) (truncated) ,tag-body))
++    (build-term
++      ($continue ku64 src ($primcall 'ulogand/immediate bits (u64))))))
+ (define-simple-primcall scm->u64)
+ (define-simple-primcall scm->u64/truncate)
+ (define-simple-primcall u64->scm)
+@@ -473,7 +480,19 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+     (define (box-s64 result)
+       (if (fixnum-result? result) tag-fixnum s64->scm))
+     (define (box-u64 result)
+-      (if (fixnum-result? result) u64->fixnum u64->scm))
++      (call-with-values
++          (lambda ()
++            (lookup-post-type types label result 0))
++        (lambda (type min max)
++          (cond
++           ((and (type<=? type &exact-integer)
++                 (<= 0 min max (target-most-positive-fixnum)))
++            u64->fixnum)
++           ((only-fixnum-bits-used? result)
++            (lambda (cps k src u64)
++              (u64->fixnum/truncate cps k src u64 (intmap-ref sigbits result))))
++           (else
++            u64->scm)))))
+     (define (box-f64 result)
+       f64->scm)
+ 
+-- 
+2.47.0
+
+
+From b0559dbe88eb54e2bba4a82dd1f7e7c5b6de2f55 Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@pobox.com>
+Date: Mon, 23 Sep 2024 15:57:23 +0200
+Subject: [PATCH 3/4] Narrow parameter of logand/immediate if no bits used
+
+* module/language/cps/specialize-numbers.scm (specialize-operations):
+Narrow ulogand/immediate param according to used bits.
+---
+ module/language/cps/specialize-numbers.scm | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/module/language/cps/specialize-numbers.scm b/module/language/cps/specialize-numbers.scm
+index e9761f0cb..262dee484 100644
+--- a/module/language/cps/specialize-numbers.scm
++++ b/module/language/cps/specialize-numbers.scm
+@@ -1,6 +1,6 @@
+ ;;; Continuation-passing style (CPS) intermediate language (IL)
+ 
+-;; Copyright (C) 2015-2021, 2023 Free Software Foundation, Inc.
++;; Copyright (C) 2015-2021,2023-2024 Free Software Foundation, Inc.
+ 
+ ;;;; This library is free software; you can redistribute it and/or
+ ;;;; modify it under the terms of the GNU Lesser General Public
+@@ -573,9 +573,11 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+               (specialize-unop cps k src op param a
+                                (unbox-u64 a) (box-u64 result))))
+ 
+-           (('logand/immediate (? u64-result? ) param (? u64-operand? a))
++           (('logand/immediate (? u64-result?) param (? u64-operand? a))
+             (specialize-unop cps k src 'ulogand/immediate
+-                             (logand param (1- (ash 1 64)))
++                             (logand param
++                                     (or (intmap-ref sigbits result) -1)
++                                     (1- (ash 1 64)))
+                              a
+                              (unbox-u64 a) (box-u64 result)))
+ 
+-- 
+2.47.0
+
+
+From 51db308ec2107f9fb32a06004e7a0a3da6418ff6 Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@pobox.com>
+Date: Thu, 26 Sep 2024 11:14:52 +0200
+Subject: [PATCH 4/4] Run sigbits fixpoint based on use/def graph, not cfg
+
+* module/language/cps/specialize-numbers.scm (sigbits-ref): New helper.
+(invert-graph*): New helper.
+(compute-significant-bits): When visiting a term changes computed
+needed-bits for one of its definitions, we need to revisit the variables
+that contributed to its result (the uses), because they might need more
+bits as well.  Previously we were doing this by enqueueing predecessors
+to the term, which worked if the uses were defined in predecessors, or
+if all defining terms were already in the worklist, which is the case
+without loops.  But with loops, when revisiting a term, you could see
+that it causes sigbits to change, enqueue its predecessors, but then the
+predecessors don't change anything and the fixpoint stops before
+reaching the definitions of the variables we need.  So instead we
+compute the use-def graph and enqueue defs directly.
+---
+ module/language/cps/specialize-numbers.scm | 120 ++++++++++-----------
+ 1 file changed, 54 insertions(+), 66 deletions(-)
+
+diff --git a/module/language/cps/specialize-numbers.scm b/module/language/cps/specialize-numbers.scm
+index 262dee484..ac63c8194 100644
+--- a/module/language/cps/specialize-numbers.scm
++++ b/module/language/cps/specialize-numbers.scm
+@@ -286,6 +286,9 @@
+       (and (type<=? type (logior &exact-integer &u64 &s64))
+            (range->sigbits min max)))))
+ 
++(define (sigbits-ref sigbits var)
++  (intmap-ref sigbits var (lambda (_) 0)))
++
+ (define significant-bits-handlers (make-hash-table))
+ (define-syntax-rule (define-significant-bits-handler
+                       ((primop label types out def ...) param arg ...)
+@@ -297,24 +300,42 @@
+ (define-significant-bits-handler ((logand label types out res) param a b)
+   (let ((sigbits (sigbits-intersect3 (inferred-sigbits types label a)
+                                      (inferred-sigbits types label b)
+-                                     (intmap-ref out res (lambda (_) 0)))))
++                                     (sigbits-ref out res))))
+     (intmap-add (intmap-add out a sigbits sigbits-union)
+                 b sigbits sigbits-union)))
+ (define-significant-bits-handler ((logand/immediate label types out res) param a)
+   (let ((sigbits (sigbits-intersect3 (inferred-sigbits types label a)
+                                      param
+-                                     (intmap-ref out res (lambda (_) 0)))))
++                                     (sigbits-ref out res))))
+     (intmap-add out a sigbits sigbits-union)))
+ 
+ (define (significant-bits-handler primop)
+   (hashq-ref significant-bits-handlers primop))
+ 
++(define (invert-graph* defs)
++  "Given a graph LABEL->VAR..., return a graph VAR->LABEL....  Like the one
++in (language cps graphs), but different because it doesn't assume that
++the domain will be the same before and after."
++  (persistent-intmap
++   (intmap-fold (lambda (label vars out)
++                  (intset-fold
++                   (lambda (var out)
++                     (intmap-add! out var (intset label) intset-union))
++                   vars
++                   out))
++                defs
++                empty-intmap)))
++
+ (define (compute-significant-bits cps types kfun)
+   "Given the locally inferred types @var{types}, compute a map of VAR ->
+ BITS indicating the significant bits needed for a variable.  BITS may be
+ #f to indicate all bits, or a non-negative integer indicating a bitmask."
+-  (let ((preds (invert-graph (compute-successors cps kfun))))
+-    (let lp ((worklist (intmap-keys preds)) (out empty-intmap))
++  (let ((cps (intmap-select cps (compute-function-body cps kfun))))
++    ;; Label -> Var...
++    (define-values (defs uses) (compute-defs-and-uses cps))
++    ;; Var -> Label...
++    (define defs-by-var (invert-graph* defs))
++    (let lp ((worklist (intmap-keys cps)) (out empty-intmap))
+       (match (intset-prev worklist)
+         (#f out)
+         (label
+@@ -322,69 +343,36 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+            (define (continue out*)
+              (if (eq? out out*)
+                  (lp worklist out)
+-                 (lp (intset-union worklist (intmap-ref preds label))
++                 (lp (intset-fold
++                      (lambda (use worklist)
++                        (intset-union worklist (intmap-ref defs-by-var use)))
++                      (intmap-ref uses label)
++                      worklist)
+                      out*)))
+-           (define (add-def out var)
+-             (intmap-add out var 0 sigbits-union))
+-           (define (add-defs out vars)
+-             (match vars
+-               (() out)
+-               ((var . vars) (add-defs (add-def out var) vars))))
+-           (define (add-unknown-use out var)
++           (define (add-unknown-use var out)
+              (intmap-add out var (inferred-sigbits types label var)
+                          sigbits-union))
+-           (define (add-unknown-uses out vars)
+-             (match vars
+-               (() out)
+-               ((var . vars)
+-                (add-unknown-uses (add-unknown-use out var) vars))))
++           (define (default)
++             (intset-fold add-unknown-use (intmap-ref uses label) out))
+            (continue
+             (match (intmap-ref cps label)
+-              (($ $kfun src meta self)
+-               (if self (add-def out self) out))
+-              (($ $kargs names vars term)
+-               (let ((out (add-defs out vars)))
+-                 (match term
+-                   (($ $continue k src exp)
+-                    (match exp
+-                      ((or ($ $const) ($ $prim) ($ $fun) ($ $const-fun)
+-                           ($ $code) ($ $rec))
+-                       ;; No uses, so no info added to sigbits.
+-                       out)
+-                      (($ $values args)
+-                       (match (intmap-ref cps k)
+-                         (($ $kargs _ vars)
+-                          (fold (lambda (arg var out)
+-                                  (intmap-add out arg (intmap-ref out var (lambda (_) 0))
+-                                              sigbits-union))
+-                                out args vars))
+-                         (($ $ktail)
+-                          (add-unknown-uses out args))))
+-                      (($ $call proc args)
+-                       (add-unknown-use (add-unknown-uses out args) proc))
+-                      (($ $callk label proc args)
+-                       (let ((out (add-unknown-uses out args)))
+-                         (if proc
+-                             (add-unknown-use out proc)
+-                             out)))
+-                      (($ $calli args callee)
+-                       (add-unknown-uses (add-unknown-use out callee) args))
+-                      (($ $primcall name param args)
+-                       (let ((h (significant-bits-handler name)))
+-                         (if h
+-                             (match (intmap-ref cps k)
+-                               (($ $kargs _ defs)
+-                                (h label types out param args defs)))
+-                             (add-unknown-uses out args))))))
+-                   (($ $branch kf kt src op param args)
+-                    (add-unknown-uses out args))
+-                   (($ $switch kf kt src arg)
+-                    (add-unknown-use out arg))
+-                   (($ $prompt k kh src escape? tag)
+-                    (add-unknown-use out tag))
+-                   (($ $throw src op param args)
+-                    (add-unknown-uses out args)))))
+-              (_ out)))))))))
++              (($ $kargs _ _ ($ $continue k _ ($ $primcall op param args)))
++               (match (significant-bits-handler op)
++                 (#f (default))
++                 (h
++                  (match (intmap-ref cps k)
++                    (($ $kargs _ defs)
++                     (h label types out param args defs))))))
++              (($ $kargs _ _ ($ $continue k _ ($ $values args)))
++               (match (intmap-ref cps k)
++                 (($ $kargs _ vars)
++                  (fold (lambda (arg var out)
++                          (intmap-add out arg (sigbits-ref out var)
++                                      sigbits-union))
++                        out args vars))
++                 (($ $ktail)
++                  (default))))
++              (_ (default))))))))))
+ 
+ (define (specialize-operations cps)
+   (define (u6-parameter? param)
+@@ -416,7 +404,7 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+     (define (all-u64-bits-set? var)
+       (operand-in-range? var &exact-integer (1- (ash 1 64)) (1- (ash 1 64))))
+     (define (only-fixnum-bits-used? var)
+-      (let ((bits (intmap-ref sigbits var)))
++      (let ((bits (sigbits-ref sigbits var)))
+         (and bits (= bits (logand bits (target-most-positive-fixnum))))))
+     (define (fixnum-result? result)
+       (or (only-fixnum-bits-used? result)
+@@ -429,7 +417,7 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+                        min max
+                        (target-most-positive-fixnum)))))))
+     (define (only-u64-bits-used? var)
+-      (let ((bits (intmap-ref sigbits var)))
++      (let ((bits (sigbits-ref sigbits var)))
+         (and bits (= bits (logand bits (1- (ash 1 64)))))))
+     (define (u64-result? result)
+       (or (only-u64-bits-used? result)
+@@ -490,7 +478,7 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+             u64->fixnum)
+            ((only-fixnum-bits-used? result)
+             (lambda (cps k src u64)
+-              (u64->fixnum/truncate cps k src u64 (intmap-ref sigbits result))))
++              (u64->fixnum/truncate cps k src u64 (sigbits-ref sigbits result))))
+            (else
+             u64->scm)))))
+     (define (box-f64 result)
+@@ -576,7 +564,7 @@ BITS indicating the significant bits needed for a variable.  BITS may be
+            (('logand/immediate (? u64-result?) param (? u64-operand? a))
+             (specialize-unop cps k src 'ulogand/immediate
+                              (logand param
+-                                     (or (intmap-ref sigbits result) -1)
++                                     (or (sigbits-ref sigbits a) -1)
+                                      (1- (ash 1 64)))
+                              a
+                              (unbox-u64 a) (box-u64 result)))
+-- 
+2.47.0
+
