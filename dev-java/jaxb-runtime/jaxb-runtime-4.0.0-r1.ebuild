@@ -18,7 +18,7 @@ SRC_URI="https://github.com/eclipse-ee4j/jaxb-ri/archive/${PV}-RI.tar.gz -> jaxb
 
 LICENSE="EPL-1.0"
 SLOT="4"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=dev-java/fastinfoset-2.1.0-r1:0
