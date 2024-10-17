@@ -15,7 +15,7 @@ SRC_URI="https://github.com/evanphx/benchmark-ips/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.6:5 )"
