@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs systemd
+inherit cmake systemd
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
@@ -11,23 +11,24 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cpu_flags_x86_aes +upnp"
 
-RDEPEND="
-	acct-user/i2pd
-	acct-group/i2pd
+DEPEND="
 	dev-libs/boost:=
 	dev-libs/openssl:0=[-bindist(-)]
 	sys-libs/zlib
-	upnp? ( net-libs/miniupnpc:= )"
-DEPEND="${RDEPEND}"
+	upnp? ( net-libs/miniupnpc:= )
+"
+RDEPEND="
+	acct-user/i2pd
+	acct-group/i2pd
+	${DEPEND}
+"
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/build"
 
 DOCS=( ../README.md ../contrib/i2pd.conf ../contrib/tunnels.conf )
-
-PATCHES=( "${FILESDIR}/${P}-miniupnp.patch" )
 
 src_configure() {
 	local mycmakeargs=(
