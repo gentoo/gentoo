@@ -19,7 +19,7 @@ SRC_URI="https://github.com/jidesoft/jide-oss/archive/${MY_COMMIT}.tar.gz -> ${P
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 # Upstream does not support java-11
 # https://github.com/jidesoft/jide-oss/issues/30
