@@ -17,7 +17,7 @@ IUSE="+man elogind systemd"
 RDEPEND="
 	>=gui-libs/gtk-4.2:4
 	>=dev-libs/glib-2.74.0:2
-	>=sys-apps/fwupd-1.9.16[elogind?,systemd?]
+	>=sys-apps/fwupd-1.9.16:=[elogind?,systemd?]
 	>=dev-libs/libxmlb-0.1.7:=
 	>=gui-libs/libadwaita-1.4:1
 	elogind? ( sys-auth/elogind )
