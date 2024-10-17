@@ -852,19 +852,107 @@ setup_multilib_osdirnames() {
 	sed -i "${sed_args[@]}" "${S}"/gcc/config/${config} || die
 }
 
+# @FUNCTION: _get_bootstrap_gcc_info
+# @USAGE: [gcc_pkg|gcc_bin_base]...
+# @DESCRIPTION:
+# Get some information about the gcc that would be used to build this package.
+# All the variables that are passed as arguments will be set to their apropriate
+# values:
+#
+# - bootstrap_gcc_pkg = the ${CATEGORY}/${PN} that provides the build gcc
+#
+# - bootstrap_gcc_bin_base = the directory up to /gcc-bin but excluding the slot, of
+# the aformentioned package.
+_get_bootstrap_gcc_info() {
+	crossp() {
+		tc-is-cross-compiler && echo "${2}" || echo "${1}"
+	}
+
+	local arg
+	for arg ; do
+		case "${arg}" in
+			bootstrap_gcc_pkg)
+				bootstrap_gcc_pkg=$(crossp sys-devel/gcc cross-${CHOST}/gcc)
+				;;
+			bootstrap_gcc_bin_base)
+				bootstrap_gcc_bin_base=${BROOT}/usr/$(crossp ${CHOST} ${CBUILD}/${CHOST})/gcc-bin
+				;;
+			*)
+				die "Unknown argument '${arg}' passed to ${FUNCNAME}"
+		esac
+	done
+}
+
+# @FUNCTION: _find_bootstrap_gcc_with
+# @USAGE: <use_expression> <pretty_use_name> <minimum_slot>
+# @RETURN: Shell true if a matching gcc installation was found, false otherwise
+# @INTERNAL
+# @DESCRIPTION:
+# Check installed versions of gcc that can be used as a compiler for the current
+# build for one matching a certain USE expression.  The order of preference is
+# checking for the same SLOT we are building, then iterate downwards until (and
+# including) minimum_slot, then iterate upward starting with SLOT+1.  When
+# cross-compiling only SLOT is checked.
+#
+# If a proper installation is discovered this function will set
+# ${bootstrap_gcc_bin_dir} to the full path of the directory in which
+# ${CHOST}-gcc and friends are found and ${bootstrap_gcc_slot} to the slot that
+# was found.  If nothing was found those variables will be empty.
+#
+# This function is provided to aid languages like ada and d that require
+# bootstraping.
+_find_bootstrap_gcc_with() {
+	local use="${1}"
+	local pretty_use="${2}"
+	local bootstrap_gcc_pkg bootstrap_gcc_bin_base
+	_get_bootstrap_gcc_info bootstrap_gcc_pkg bootstrap_gcc_bin_base
+
+	local min_slot max_slot
+	if tc-is-cross-compiler ; then
+		min_slot="${SLOT}"
+		max_slot="${SLOT}"
+	else
+		min_slot="${3}"
+		max_slot=$(best_version -b "${bootstrap_gcc_pkg}")
+		max_slot="${max_slot#${bootstrap_gcc_pkg}-}"
+		max_slot=$(ver_cut 1 ${max_slot})
+	fi
+
+	local candidate result
+	for candidate in ${SLOT} $(seq $((${SLOT} - 1)) -1 ${min_slot}) $(seq $((${SLOT} + 1)) ${max_slot}) ; do
+		has_version -b "${bootstrap_gcc_pkg}:${candidate}" || continue
+
+		ebegin "Testing ${bootstrap_gcc_pkg}:${candidate} for ${pretty_use}"
+		if has_version -b "${bootstrap_gcc_pkg}:${candidate}${use}" ; then
+			result=${candidate}
+
+			eend 0
+			break
+		fi
+		eend 1
+	done
+
+	if [[ ${result} ]] ; then
+		bootstrap_gcc_bin_dir="${bootstrap_gcc_bin_base}/${result}"
+		bootstrap_gcc_slot=${result}
+		return 0
+	else
+		bootstrap_gcc_bin_dir=
+		bootstrap_gcc_slot=
+		return 1
+	fi
+}
+
 # @FUNCTION: toolchain_setup_ada
 # @INTERNAL
 # @DESCRIPTION:
 # Determine the most suitable GNAT (Ada compiler) for bootstrapping
 # and setup the environment, including wrappers, for building.
 toolchain_setup_ada() {
-	local latest_gcc=$(best_version -b "sys-devel/gcc")
-	latest_gcc="${latest_gcc#sys-devel/gcc-}"
-	latest_gcc=$(ver_cut 1 ${latest_gcc})
-
 	local ada_bootstrap
 	local ada_candidate
 	local ada_bootstrap_type
+	local ada_bootstrap_bin_dir
 	# GNAT can usually be built using the last major version and
 	# the current version, at least.
 	#
@@ -872,19 +960,12 @@ toolchain_setup_ada() {
 	# 1) Match the version being built;
 	# 2) Iterate downwards from the version being built;
 	# 3) Iterate upwards from the version being built to the greatest version installed.
-	for ada_candidate in ${SLOT} $(seq $((${SLOT} - 1)) -1 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
-		has_version -b "sys-devel/gcc:${ada_candidate}" || continue
-
-		ebegin "Testing sys-devel/gcc:${ada_candidate} for Ada"
-		if has_version -b "sys-devel/gcc:${ada_candidate}[ada(-)]" ; then
-			ada_bootstrap=${ada_candidate}
-			ada_bootstrap_type=gcc
-
-			eend 0
-			break
-		fi
-		eend 1
-	done
+	local bootstrap_gcc_slot bootstrap_gcc_bin_dir
+	if _find_bootstrap_gcc_with "[ada(-)]" "Ada" 10 ; then
+		ada_bootstrap=${bootstrap_gcc_slot}
+		ada_bootstrap_type=gcc
+		ada_bootstrap_bin_dir="${bootstrap_gcc_bin_dir}"
+	fi
 
 	# As a penultimate resort, try dev-lang/ada-bootstrap.
 	if ver_test ${ada_bootstrap} -gt ${PV} || [[ -z ${ada_bootstrap} ]] ; then
@@ -897,6 +978,7 @@ toolchain_setup_ada() {
 			#latest_ada_bootstrap=$(ver_cut 1 ${latest_ada_bootstrap})
 			ada_bootstrap="10"
 			ada_bootstrap_type=ada-bootstrap
+			ada_bootstrap_bin_dir="${BROOT}/usr/lib/ada-bootstrap/bin"
 
 			eend 0
 		else
@@ -910,6 +992,7 @@ toolchain_setup_ada() {
 		if has_version -b "dev-lang/gnat-gpl" ; then
 			ada_bootstrap=10
 			ada_bootstrap_type=gcc
+			ada_bootstrap_bin_dir="${BROOT}/usr/${CHOST}/gcc-bin/${ada_bootstrap}"
 			eend 0
 		else
 			eend 1
@@ -974,10 +1057,10 @@ toolchain_setup_ada() {
 	case ${ada_bootstrap_type} in
 		ada-bootstrap)
 			export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
-			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
+			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CHOST}/${ada_bootstrap}/gnat1
 			;;
 		*)
-			gnat1_path=${BROOT}/usr/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
+			gnat1_path=${BROOT}/usr/libexec/gcc/${CHOST}/${ada_bootstrap}/gnat1
 			;;
 	esac
 
@@ -994,7 +1077,7 @@ toolchain_setup_ada() {
 	# work for us as the stage1 compiler doesn't necessarily have Ada
 	# support. Substitute the Ada compiler we found earlier.
 	local adalib
-	adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
+	adalib=$("${ada_bootstrap_bin_dir}"/${CHOST}-gcc -print-libgcc-file-name || die "Finding adalib dir failed")
 	adalib="${adalib%/*}/adalib"
 	sed -i \
 		-e "s:adalib=.*:adalib=${adalib}:" \
@@ -1007,7 +1090,7 @@ toolchain_setup_ada() {
 	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
 		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
 		#!/bin/sh
-		exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) "\$@"
+		exec "${ada_bootstrap_bin_dir}"/${CHOST}-${tool} "\$@"
 		EOF
 
 		export "${tool^^}"="${T}"/ada-wrappers/${tool}
@@ -1024,47 +1107,20 @@ toolchain_setup_ada() {
 # Determine the most suitable GDC (D compiler) for bootstrapping
 # and setup the environment for building.
 toolchain_setup_d() {
-	local gcc_pkg gcc_bin_base
-	if tc-is-cross-compiler ; then
-		gcc_pkg=cross-${CHOST}/gcc
-		gcc_bin_base=${BROOT}/usr/${CBUILD}/${CHOST}/gcc-bin
-	else
-		gcc_pkg=sys-devel/gcc
-		gcc_bin_base=${BROOT}/usr/${CHOST}/gcc-bin
-	fi
+	local bootstrap_gcc_slot bootstrap_gcc_bin_dir
+	_find_bootstrap_gcc_with "[d(-)]" "D" 11
 
-	local latest_gcc=$(best_version -b "${gcc_pkg}")
-	latest_gcc="${latest_gcc#${gcc_pkg}-}"
-	latest_gcc=$(ver_cut 1 ${latest_gcc})
-
-	local d_bootstrap
-	local d_candidate
-	# Order of preference (descending):
-	# 1) Match the version being built;
-	# 2) Iterate downwards from the version being built;
-	# 3) Iterate upwards from the version being built to the greatest version installed.
-	for d_candidate in ${SLOT} $(seq $((${SLOT} - 1)) -1 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
-		has_version -b "${gcc_pkg}:${d_candidate}" || continue
-
-		ebegin "Testing ${gcc_pkg}:${d_candidate} for D"
-		if has_version -b "${gcc_pkg}:${d_candidate}[d(-)]" ; then
-			d_bootstrap=${d_candidate}
-
-			eend 0
-			break
-		fi
-		eend 1
-	done
-
-	if [[ -z ${d_bootstrap} ]] ; then
+	if [[ -z ${bootstrap_gcc_bin_dir} ]] ; then
 		if tc-is-cross-compiler ; then
 			# We can't add cross-${CHOST}/gcc[d] to BDEPEND but we can
 			# print a useful message to the user.
-			eerror "No ${gcc_pkg}[d] was found installed."
+			local bootstrap_gcc_pkg
+			_get_bootstrap_gcc_info bootstrap_gcc_pkg
+			eerror "No ${bootstrap_gcc_pkg}[d] was found installed."
 			eerror "When cross-compiling GDC a bootstrap GDC is required."
 			eerror "Either disable the d USE flag or add:"
 			eerror ""
-			eerror "    ${gcc_pkg} d"
+			eerror "    ${bootstrap_gcc_pkg} d"
 			eerror ""
 			eerror "In your package.use and re-emerge it."
 			eerror ""
@@ -1073,7 +1129,7 @@ toolchain_setup_d() {
 		die "Did not find any appropriate GDC compiler installed"
 	fi
 
-	export GDC=${gcc_bin_base}/${d_bootstrap}/${CHOST}-gdc
+	export GDC=${bootstrap_gcc_bin_dir}/${CHOST}-gdc
 }
 
 #---->> src_configure <<----
