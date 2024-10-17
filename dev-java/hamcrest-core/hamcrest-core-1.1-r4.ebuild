@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${MY_PN}/JavaHamcrest/archive/${MY_PN}-java-${PV}.ta
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 x86 ~amd64-linux ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x64-solaris"
 
 RDEPEND="
 	>=virtual/jre-1.8:*"
