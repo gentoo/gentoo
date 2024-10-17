@@ -12,13 +12,13 @@ HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="aalib alsa aqua debug doc gnome heif jpeg2k jpegxl mng openexr postscript udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	>=app-text/poppler-0.50[cairo]
 	>=app-text/poppler-data-0.4.7
@@ -63,18 +63,19 @@ DEPEND="
 "
 
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	x11-themes/hicolor-icon-theme
 	gnome? ( gnome-base/gvfs )
 "
 
-BDEPEND="
+DEPEND="
+	${COMMON_DEPEND}
 	>=dev-lang/perl-5.10.0
 	dev-libs/appstream-glib
 	>=dev-build/gtk-doc-am-1
 	dev-util/gtk-update-icon-cache
 	>=dev-util/intltool-0.40.1
-	>=sys-devel/gettext-0.19.8
+	>=sys-devel/gettext-0.19
 	>=dev-build/libtool-2.2
 	virtual/pkgconfig
 "
@@ -85,9 +86,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.10_fix_test-appdata.patch" # Bugs 685210 (and duplicate 691070)
 	"${FILESDIR}/${PN}-2.10_fix_musl_backtrace_backend_switch.patch" #900148
 	"${FILESDIR}/${PN}-2.10_fix_configure_GCC13_implicit_function_declarations.patch" #899796
-	"${FILESDIR}/${P}_fix_strict-aliasing.patch" #917497
-	"${FILESDIR}/${P}_c99_tiff.patch" #919282
-	"${FILESDIR}/${P}_c99_metadata.patch" #919282
 )
 
 src_prepare() {
@@ -95,6 +93,10 @@ src_prepare() {
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's/-DGIMP_DISABLE_DEPRECATED/-DGIMP_protect_DISABLE_DEPRECATED/g' -i configure.ac || die #615144
+
+	if use heif ; then
+		has_version -d ">=media-libs/libheif-1.18.0" && eapply "${FILESDIR}/${PN}-2.10_libheif-1.18_unconditional_compat.patch" # 940915
+	fi
 
 	gnome2_src_prepare  # calls eautoreconf
 
@@ -194,7 +196,7 @@ src_install() {
 	# precedence on PDF documents by default
 	mv "${ED}"/usr/share/applications/{,zzz-}gimp.desktop || die
 
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 
 	# Prevent dead symlink gimp-console.1 from downstream man page compression (bug #433527)
 	local gimp_app_version=$(ver_cut 1-2)
