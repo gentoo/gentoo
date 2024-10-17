@@ -13,4 +13,5 @@
     <remote-id type="github">pear/Net_SMTP</remote-id>
     <remote-id type="pear">Net_SMTP</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
