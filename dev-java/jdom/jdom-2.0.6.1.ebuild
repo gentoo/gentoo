@@ -16,7 +16,7 @@ S="${WORKDIR}/jdom-JDOM-${PV}"
 
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	dev-java/iso-relax:0
