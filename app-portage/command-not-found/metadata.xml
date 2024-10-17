@@ -6,7 +6,7 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">AndrewAmmerlaan/command-not-found-gentoo</remote-id>
+		<remote-id type="github">Nowa-Ammerlaan/command-not-found-gentoo</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
