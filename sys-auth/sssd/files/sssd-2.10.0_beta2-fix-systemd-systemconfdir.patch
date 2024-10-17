@@ -1,0 +1,22 @@
+diff --git a/src/conf_macros.m4 b/src/conf_macros.m4
+index c0efc3ad1..07fef0c1a 100644
+--- a/src/conf_macros.m4
++++ b/src/conf_macros.m4
+@@ -227,14 +227,14 @@ AC_DEFUN([WITH_SYSTEMD_CONF_DIR],
+   if test x"$with_systemdconfdir" != x; then
+     systemdconfdir=$with_systemdconfdir
+   else
+-    pkgconfigdir=${prefix}$($PKG_CONFIG --variable=systemdsystemconfdir systemd)
++    pkgconfigdir=$($PKG_CONFIG --variable=systemdsystemconfdir systemd)
+     if test x"$pkgconfigdir" = x; then
+       AC_MSG_ERROR([Could not detect systemd config directory])
+     fi
+-    if test "${pkgconfigdir:0:${#prefix}}" = "${prefix}"; then
++    if test "${pkgconfigdir:0:${#sysconfdir}}" = "${sysconfdir}"; then
+         systemdconfdir=${pkgconfigdir}
+     else
+-        systemdconfdir=${prefix}${pkgconfigdir}
++        systemdconfdir=${sysconfdir}${pkgconfigdir}
+     fi
+   fi
+   AC_SUBST(systemdconfdir, [$systemdconfdir/sssd.service.d])
