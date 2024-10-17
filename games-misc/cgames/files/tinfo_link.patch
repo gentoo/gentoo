@@ -1,0 +1,26 @@
+diff --git a/configure b/configure
+index 958361d..53c42df 100755
+--- a/configure
++++ b/configure
+@@ -1685,7 +1685,7 @@ IOCFILE="linuxio.c"
+ # Check whether --with-ncurses was given.
+ if test "${with_ncurses+set}" = set; then :
+   withval=$with_ncurses; if test $withval = yes ; then
+-	   LOADLIBES="$LOADLIBES -lncurses"
++	   LOADLIBES="$LOADLIBES -lncurses -ltinfo"
+ 	   IOCFILE="cursesio.c"
+ 	 fi
+ fi
+diff --git a/configure.in b/configure.in
+index a6df0ce..e712c31 100644
+--- a/configure.in
++++ b/configure.in
+@@ -28,7 +28,7 @@ IOCFILE="linuxio.c"
+ AC_ARG_WITH(ncurses,
+ 	[  --with-ncurses          Build ncurses version],
+ 	[if test $withval = yes ; then
+-	   LOADLIBES="$LOADLIBES -lncurses"
++	   LOADLIBES="$LOADLIBES -lncurses -ltinfo"
+ 	   IOCFILE="cursesio.c"
+ 	 fi])
+ 
