@@ -11,7 +11,6 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gtranslator/"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="gtk-doc"
 
 DEPEND="
 	>=dev-libs/glib-2.71.3:2
@@ -29,10 +28,6 @@ BDEPEND="
 	dev-libs/appstream-glib
 	dev-libs/libxml2:2
 	dev-util/glib-utils
-	gtk-doc? (
-		>=dev-util/gtk-doc-1.28
-		app-text/docbook-xml-dtd:4.1.2
-	)
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
@@ -43,8 +38,10 @@ PATCHES=(
 )
 
 src_configure() {
+	# Documentation broken and removed in future releases:
+	# https://gitlab.gnome.org/GNOME/gtranslator/-/issues/189
 	local emesonargs=(
-		$(meson_use gtk-doc gtk_doc)
+		-Dgtk_doc=false
 		-Dprofile=default
 	)
 	meson_src_configure
