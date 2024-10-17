@@ -32,6 +32,7 @@ RestrictRealtime=yes
 DeviceAllow=char-drm rw
 DeviceAllow=char-nvidia-frontend rw
 DeviceAllow=char-nvidia-uvm rw
+DeviceAllow=char-nvidia rw
 
 [Install]
 WantedBy=multi-user.target
