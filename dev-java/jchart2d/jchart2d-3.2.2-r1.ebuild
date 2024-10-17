@@ -15,7 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/project/jchart2d/jchart2d/sources/jch
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 CP_DEPEND="dev-java/jide-oss:0
 	dev-java/xmlgraphics-commons:2"
