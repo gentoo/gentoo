@@ -23,9 +23,9 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3"
 SLOT="0/2.10.0"
 IUSE="acl addc ads ceph client cluster cups debug fam glusterfs gpg"
-IUSE+=" iprint json ldap llvm-libunwind pam profiling-data python quota +regedit selinux"
-IUSE+=" snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind"
-IUSE+=" zeroconf"
+IUSE+=" iprint json ldap llvm-libunwind lmdb pam profiling-data python quota"
+IUSE+=" +regedit selinux snapper spotlight syslog system-heimdal +system-mitkrb5"
+IUSE+=" systemd test unwind winbind zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	addc? ( json python !system-mitkrb5 winbind )
@@ -99,6 +99,7 @@ COMMON_DEPEND="
 	gpg? ( app-crypt/gpgme:= )
 	json? ( dev-libs/jansson:= )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
+	lmdb? ( >=dev-db/lmdb-0.9.16:=[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	python? (
 		sys-libs/talloc[python,${PYTHON_SINGLE_USEDEP}]
@@ -291,6 +292,7 @@ multilib_src_configure() {
 		$(use_with ldap)
 		$(use_with profiling-data)
 		--private-libraries='!ldb'
+		$(usex lmdb '' --without-ldb-lmdb)
 		# bug #683148
 		--jobs 1
 	)

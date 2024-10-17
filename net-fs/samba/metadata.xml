@@ -16,8 +16,9 @@
 		<flag name="cluster">Enable support for clustering</flag>
 		<flag name="glusterfs">Enable support for Glusterfs filesystem via <pkg>sys-cluster/glusterfs</pkg></flag>
 		<flag name="gpg">Use <pkg>app-crypt/gpgme</pkg> for AD DC</flag>
-		<flag name="json">Enable json audit support through <pkg>dev-libs/jansson</pkg></flag>
 		<flag name="iprint">Enabling iPrint technology by Novell</flag>
+		<flag name="json">Enable json audit support through <pkg>dev-libs/jansson</pkg></flag>
+		<flag name="lmdb">Enable LMDB backend for bundled ldb</flag>
 		<flag name="profiling-data">Enables support for collecting profiling data</flag>
 		<flag name="quota">Enables support for user quotas</flag>
 		<flag name="regedit">Enable support for regedit command-line tool</flag>
