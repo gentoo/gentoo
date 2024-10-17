@@ -16,7 +16,7 @@ SRC_URI="https://github.com/vcr/vcr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE="json test"
 
 # Tests require all supported HTTP libraries to be present, and it is
