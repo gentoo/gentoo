@@ -52,7 +52,6 @@ PATCHES=(
 
 pkg_setup() {
 	MMDIR="/usr/$(get_libdir)/molmol"
-	MAKEOPTS="${MAKEOPTS} -j1" #880621
 }
 
 src_prepare() {
@@ -85,6 +84,13 @@ src_prepare() {
 
 	eapply "${WORKDIR}"/patches/wild.patch
 	tc-export AR
+
+	# Parallel build fails (#880621) and cannot be disabled by MAKEOPTS
+	# (#880621, #941488).
+	find . -name Makefile -exec sed -i -e "1i .NOTPARALLEL:" {} + || die
+	# Try to drop the ugly hardcoded sleep now that make is really
+	# serial
+	sed -i -e 's/sleep 2/sleep 0/g' makedef || die
 }
 
 src_install() {
