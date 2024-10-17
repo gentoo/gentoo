@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	)
 	pango? (
 		x11-libs/cairo
-		>=x11-libs/pango-1.21
+		>=x11-libs/pango-1.21[X]
 	)
 	systemd? ( sys-apps/systemd )
 	udev? ( virtual/libudev )
