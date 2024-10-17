@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/commons/digester/source/${PN}3-${PV}-src.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="3.2"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ppc64"
 
 # 1) atomWithNamespaceParse(org.apache.commons.digester3.xmlrules.SetNamespaceURITestCase)
 # java.net.UnknownHostException: commons.apache.org
