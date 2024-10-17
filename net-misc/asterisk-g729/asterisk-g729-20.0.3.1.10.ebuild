@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 DESCRIPTION="G.729 codec and supporting files for asterisk"
-HOMEPAGE="https://www.sangoma.com/asterisk/software/g729-codec/"
+HOMEPAGE="https://www.asterisk.org/products/add-ons/g729-codec/"
 
 AST_PV="$(ver_cut 1-2)"
 MY_PV="$(ver_rs 2 _)"
