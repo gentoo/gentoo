@@ -18,7 +18,7 @@ SRC_URI="https://github.com/antlr/antlr4/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
