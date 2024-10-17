@@ -139,31 +139,25 @@ src_configure() {
 		--sysconfdir="${EPREFIX}/etc/${PN}"
 		--with-hwloc="${EPREFIX}/usr"
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}"
+		$(use_enable debug)
+		$(use_enable lua)
+		$(use_enable pam)
+		$(use_enable X x11)
+		$(use_with munge)
+		$(use_with json)
+		$(use_with hdf5)
+		$(use_with nvml)
+		$(use_with ofed)
+		$(use_with ucx)
+		$(use_with yaml)
+		$(use_enable static-libs static)
+		$(use_enable slurmrestd)
+		$(use_enable multiple-slurmd)
 	)
 	use pam && myconf+=( --with-pam_dir=$(getpam_mod_dir) )
 	use mysql || myconf+=( --without-mysql_config )
-	econf "${myconf[@]}" \
-		$(use_enable debug) \
-		$(use_enable lua) \
-		$(use_enable pam) \
-		$(use_enable X x11) \
-		$(use_with munge) \
-		$(use_with json) \
-		$(use_with hdf5) \
-		$(use_with nvml) \
-		$(use_with ofed) \
-		$(use_with ucx) \
-		$(use_with yaml) \
-		$(use_enable static-libs static) \
-		$(use_enable slurmrestd) \
-		$(use_enable multiple-slurmd)
+	econf "${myconf[@]}"
 
-	# --htmldir does not seems to propagate... Documentations are installed
-	# in /usr/share/doc/slurm-2.3.0/html
-	# instead of /usr/share/doc/slurm-2.3.0.2/html
-	sed \
-		-e "s|htmldir = .*/html|htmldir = \${prefix}/share/doc/slurm-${PVR}/html|g" \
-		-i doc/html/Makefile || die
 	if use perl ; then
 		# small hack to make it compile
 		mkdir -p "${S}/src/api/.libs" || die
