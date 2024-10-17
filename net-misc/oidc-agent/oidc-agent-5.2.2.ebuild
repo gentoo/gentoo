@@ -15,15 +15,18 @@ KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="test"
 
 DEPEND="app-crypt/libsecret
-	dev-libs/cJSON:=
+	dev-libs/cJSON
+	dev-libs/glib:2
 	dev-libs/libsodium:=
-	media-gfx/qrencode
+	media-gfx/qrencode:=
 	net-libs/libmicrohttpd:=
-	net-libs/webkit-gtk:4.1=
+	net-libs/webkit-gtk:4.1
 	net-misc/curl
+	x11-libs/gtk+:3
 	elibc_musl? ( sys-libs/argp-standalone )"
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( dev-libs/check )"
+BDEPEND="sys-apps/help2man
+	test? ( dev-libs/check )"
 
 RESTRICT="!test? ( test )"
 
@@ -61,7 +64,7 @@ src_install() {
 
 	# This file is not compatible with Gentoo and in any case, we generally
 	# let the users load such agents themselves.
-	rm -f "${ED}"/etc/X11/Xsession.d/91${PN}
+	rm "${ED}"/etc/X11/Xsession.d/91${PN} || die
 }
 
 pkg_postinst() {
