@@ -16,6 +16,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/nextcloud/server/issues</bugs-to>
+		<changelog>https://github.com/nextcloud/server/releases</changelog>
 		<remote-id type="github">nextcloud/server</remote-id>
 	</upstream>
 </pkgmetadata>
