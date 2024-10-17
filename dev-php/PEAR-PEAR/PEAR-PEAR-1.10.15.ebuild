@@ -12,7 +12,7 @@ SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc64 ~s390 sparc x86"
 
 RDEPEND="dev-lang/php:*[cli(-),xml(-),zlib(-)]
 	dev-php/PEAR-Archive_Tar
