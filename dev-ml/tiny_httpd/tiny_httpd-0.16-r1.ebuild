@@ -19,8 +19,9 @@ IUSE="camlzip ocamlopt test"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.08
-	dev-ml/result:=
-	camlzip? ( >=dev-ml/camlzip-1.06:= )
+	dev-ml/logs:=[ocamlopt?]
+	dev-ml/result:=[ocamlopt?]
+	camlzip? ( >=dev-ml/camlzip-1.06:=[ocamlopt?] )
 "
 DEPEND="
 	${RDEPEND}
