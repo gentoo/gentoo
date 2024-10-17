@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit fcaps meson
 
@@ -38,19 +38,17 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		-Dman-pages=$(usex man enabled disabled)
-		-Dpam=$(usex pam enabled disabled)
-		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
-		"-Dfish-completions=true"
-		"-Dzsh-completions=true"
-		"-Dbash-completions=true"
+		$(meson_feature man man-pages)
+		$(meson_feature pam)
+		$(meson_feature gdk-pixbuf)
+		-Dfish-completions=true
+		-Dzsh-completions=true
+		-Dbash-completions=true
 	)
 
 	meson_src_configure
 }
 
 pkg_postinst() {
-	if ! use pam; then
-		fcaps cap_sys_admin usr/bin/swaylock
-	fi
+	use !pam && fcaps cap_sys_admin usr/bin/swaylock
 }
