@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libuv:=
-	dev-ml/ocaml-ctypes:=[ocamlopt?]
+	>=dev-ml/ocaml-ctypes-0.23:=[ocamlopt?]
 	dev-ml/result:=[ocamlopt?]
 	dev-ml/integers:=[ocamlopt?]
 "
