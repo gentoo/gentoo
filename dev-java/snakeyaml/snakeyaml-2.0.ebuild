@@ -16,7 +16,7 @@ S="${WORKDIR}/snakeyaml-snakeyaml-59ddbb3304bb"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Compile dependencies
 # POM: pom.xml
