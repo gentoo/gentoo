@@ -94,9 +94,8 @@ src_install() {
 	DOCS=( FAQ Fixes Ported README.md WishList Y2K )
 	einstalldocs
 
-	if use man ; then
-		mv tcsh.man{,1}
-		doman tcsh.man1
+	if ! use man ; then
+		rm -Rf "${ED}"/usr/share/man
 	fi
 
 	insinto /etc
