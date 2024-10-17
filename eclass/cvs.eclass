@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -174,6 +174,12 @@ _CVS_ECLASS=1
 # WARNING: If a SSH host key is not specified using this variable, the
 # remote host key will not be verified.
 
+# @ECLASS_VARIABLE: ECVS_SSH_EXTRA_OPTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If SSH is used for "ext" authentication, this array variable can be
+# used to pass additional options to the SSH command.
+
 # @ECLASS_VARIABLE: ECVS_CLEAN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -192,7 +198,7 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	if [[ ${CVS_RSH} != "ssh" ]] ; then
 		die "Support for ext auth with clients other than ssh has not been implemented yet"
 	fi
-	BDEPEND+=" net-misc/openssh"
+	BDEPEND+=" >=net-misc/openssh-8.4"
 fi
 
 # @FUNCTION: cvs_fetch
@@ -268,13 +274,14 @@ cvs_fetch() {
 	# In case ECVS_TOP_DIR is a symlink to a dir, get the real path,
 	# otherwise addwrite() doesn't work.
 
-	cd -P "${ECVS_TOP_DIR}" >/dev/null
+	cd -P "${ECVS_TOP_DIR}" >/dev/null || die
 	ECVS_TOP_DIR=$(pwd)
 
 	# Disable the sandbox for this dir
 	addwrite "${ECVS_TOP_DIR}"
 
 	# Determine the CVS command mode (checkout or update)
+	local mode
 	if [[ ! -d ${ECVS_TOP_DIR}/${ECVS_LOCALNAME}/CVS ]] ; then
 		mode=checkout
 	else
@@ -294,14 +301,14 @@ cvs_fetch() {
 
 	# Switch servers automagically if needed
 	if [[ ${mode} == "update" ]] ; then
-		cd "/${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"
-		local oldserver=$(cat CVS/Root)
+		cd "/${ECVS_TOP_DIR}/${ECVS_LOCALNAME}" || die
+		local oldserver=$(cat CVS/Root || die)
 		if [[ ${server} != "${oldserver}" ]] ; then
 			einfo "Changing the CVS server from ${oldserver} to ${server}:"
 			debug-print "${FUNCNAME}: Changing the CVS server from ${oldserver} to ${server}:"
 
 			einfo "Searching for CVS directories ..."
-			local cvsdirs=$(find . -iname CVS -print)
+			local cvsdirs=$(find . -iname CVS -print || die)
 			debug-print "${FUNCNAME}: CVS directories found:"
 			debug-print "${cvsdirs}"
 
@@ -309,21 +316,22 @@ cvs_fetch() {
 			local x
 			for x in ${cvsdirs} ; do
 				debug-print "In ${x}"
-				echo "${server}" > "${x}/Root"
+				echo "${server}" > "${x}/Root" || die
 			done
 		fi
 	fi
 
 	# Prepare a cvspass file just for this session, we don't want to
 	# mess with ~/.cvspass
-	touch "${T}/cvspass"
-	export CVS_PASSFILE="${T}/cvspass"
+	local -x CVS_PASSFILE="${T}/cvspass"
+	touch "${CVS_PASSFILE}" || die
 
 	# The server string with the password in it, for login (only used for pserver)
-	cvsroot_pass=":${connection}:${ECVS_USER}:${ECVS_PASS}@${ECVS_SERVER}"
+	local cvsroot_pass=":${connection}:${ECVS_USER}:${ECVS_PASS}@${ECVS_SERVER}"
 
 	# Ditto without the password, for checkout/update after login, so
 	# that the CVS/Root files don't contain the password in plaintext
+	local cvsroot_nopass
 	if [[ ${ECVS_AUTH} == "no" ]] ; then
 		cvsroot_nopass="${ECVS_USER}@${ECVS_SERVER}"
 	else
@@ -331,13 +339,21 @@ cvs_fetch() {
 	fi
 
 	# Commands to run
-	cmdlogin=( ${ECVS_CVS_COMMAND} -d "${cvsroot_pass}" login )
-	cmdupdate=( ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" update ${ECVS_UP_OPTS} ${ECVS_LOCALNAME} )
-	cmdcheckout=( ${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" checkout ${ECVS_CO_OPTS} ${ECVS_MODULE} )
+	local cmdlogin=(
+		${ECVS_CVS_COMMAND} -d "${cvsroot_pass}" login
+	)
+	local cmdupdate=(
+		${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" update
+		${ECVS_UP_OPTS} ${ECVS_LOCALNAME}
+	)
+	local cmdcheckout=(
+		${ECVS_CVS_COMMAND} -d "${cvsroot_nopass}" checkout
+		${ECVS_CO_OPTS} ${ECVS_MODULE}
+	)
 
 	# Execute commands
 
-	cd "${ECVS_TOP_DIR}"
+	cd "${ECVS_TOP_DIR}" || die
 	if [[ ${ECVS_AUTH} == "pserver" ]] ; then
 		einfo "Running ${cmdlogin[*]}"
 		"${cmdlogin[@]}" || die "cvs login command failed"
@@ -351,92 +367,55 @@ cvs_fetch() {
 	elif [[ ${ECVS_AUTH} == "ext" || ${ECVS_AUTH} == "no" ]] ; then
 		# Hack to support SSH password authentication
 
-		# Backup environment variable values
-		local CVS_ECLASS_ORIG_CVS_RSH="${CVS_RSH}"
-
-		if [[ ${SSH_ASKPASS+set} == "set" ]] ; then
-			local CVS_ECLASS_ORIG_SSH_ASKPASS="${SSH_ASKPASS}"
-		else
-			unset CVS_ECLASS_ORIG_SSH_ASKPASS
-		fi
-
-		if [[ ${DISPLAY+set} == "set" ]] ; then
-			local CVS_ECLASS_ORIG_DISPLAY="${DISPLAY}"
-		else
-			unset CVS_ECLASS_ORIG_DISPLAY
-		fi
-
 		if [[ ${CVS_RSH} == "ssh" ]] ; then
-			# Force SSH to use SSH_ASKPASS by creating python wrapper
-
-			export CVS_RSH="${T}/cvs_sshwrapper"
-			cat > "${CVS_RSH}"<<EOF
-#!${EPREFIX}/usr/bin/python
-import fcntl
-import os
-import sys
-try:
-	fd = os.open('/dev/tty', 2)
-	TIOCNOTTY=0x5422
-	try:
-		fcntl.ioctl(fd, TIOCNOTTY)
-	except:
-		pass
-	os.close(fd)
-except:
-	pass
-newarglist = sys.argv[:]
-EOF
-
-			# disable X11 forwarding which causes .xauth access violations
-			# - 20041205 Armando Di Cianno <fafhrd@gentoo.org>
-			echo "newarglist.insert(1, '-oClearAllForwardings=yes')" \
-				>> "${CVS_RSH}"
-			echo "newarglist.insert(1, '-oForwardX11=no')" \
-				>> "${CVS_RSH}"
-
 			# Handle SSH host key checking
 
-			local CVS_ECLASS_KNOWN_HOSTS="${T}/cvs_ssh_known_hosts"
-			echo "newarglist.insert(1, '-oUserKnownHostsFile=${CVS_ECLASS_KNOWN_HOSTS}')" \
-				>> "${CVS_RSH}"
-
+			local known_hosts_file="${T}/cvs_ssh_known_hosts"
+			local strict_host_key_checking
 			if [[ -z ${ECVS_SSH_HOST_KEY} ]] ; then
 				ewarn "Warning: The SSH host key of the remote server will not be verified."
 				einfo "A temporary known hosts list will be used."
-				local CVS_ECLASS_STRICT_HOST_CHECKING="no"
-				touch "${CVS_ECLASS_KNOWN_HOSTS}"
+				strict_host_key_checking="no"
+				touch "${known_hosts_file}" || die
 			else
-				local CVS_ECLASS_STRICT_HOST_CHECKING="yes"
-				echo "${ECVS_SSH_HOST_KEY}" > "${CVS_ECLASS_KNOWN_HOSTS}"
+				strict_host_key_checking="yes"
+				echo "${ECVS_SSH_HOST_KEY}" > "${known_hosts_file}" || die
 			fi
 
-			echo -n "newarglist.insert(1, '-oStrictHostKeyChecking=" \
-				>> "${CVS_RSH}"
-			echo "${CVS_ECLASS_STRICT_HOST_CHECKING}')" \
-				>> "${CVS_RSH}"
-			echo "os.execv('${EPREFIX}/usr/bin/ssh', newarglist)" \
-				>> "${CVS_RSH}"
+			local i quoted_opts=()
+			for i in "${!ECVS_SSH_EXTRA_OPTS[@]}"; do
+				printf -v "quoted_opts[i]" "%q" "${ECVS_SSH_EXTRA_OPTS[i]}"
+			done
 
-			chmod a+x "${CVS_RSH}"
+			# Create a wrapper script to pass additional options to SSH
+			# Disable X11 forwarding which causes .xauth access violations
 
-			# Make sure DISPLAY is set (SSH will not use SSH_ASKPASS
-			# if DISPLAY is not set)
-
-			: "${DISPLAY:="DISPLAY"}"
-			export DISPLAY
+			local -x CVS_RSH="${T}/cvs_sshwrapper"
+			cat > "${CVS_RSH}" <<-EOF || die
+				#!${BROOT}/bin/bash
+				exec "${BROOT}/usr/bin/ssh" \\
+					-oStrictHostKeyChecking=${strict_host_key_checking} \\
+					-oUserKnownHostsFile="${known_hosts_file}" \\
+					-oForwardX11=no \\
+					-oClearAllForwardings=yes \\
+					${quoted_opts[*]} \\
+					"\$@"
+				EOF
+			chmod a+x "${CVS_RSH}" || die
 
 			# Create a dummy executable to echo ${ECVS_PASS}
 
-			export SSH_ASKPASS="${T}/cvs_sshechopass"
+			local -x SSH_ASKPASS="${T}/cvs_sshechopass"
+			local -x SSH_ASKPASS_REQUIRE="force"
+
 			if [[ ${ECVS_AUTH} != "no" ]] ; then
-				echo -en "#!/bin/bash\necho \"${ECVS_PASS}\"\n" \
-					> "${SSH_ASKPASS}"
+				echo -en "#!${BROOT}/bin/bash\necho \"${ECVS_PASS}\"\n" \
+					> "${SSH_ASKPASS}" || die
 			else
-				echo -en "#!/bin/bash\nreturn\n" \
-					> "${SSH_ASKPASS}"
+				echo -en "#!${BROOT}/bin/bash\nreturn\n" \
+					> "${SSH_ASKPASS}" || die
 			fi
-			chmod a+x "${SSH_ASKPASS}"
+			chmod a+x "${SSH_ASKPASS}" || die
 		fi
 
 		if [[ ${mode} == "update" ]] ; then
@@ -445,20 +424,6 @@ EOF
 		elif [[ ${mode} == "checkout" ]] ; then
 			einfo "Running ${cmdcheckout[*]}"
 			"${cmdcheckout[@]}" || die "cvs checkout command failed"
-		fi
-
-		# Restore environment variable values
-		export CVS_RSH="${CVS_ECLASS_ORIG_CVS_RSH}"
-		if [[ ${CVS_ECLASS_ORIG_SSH_ASKPASS+set} == "set" ]] ; then
-			export SSH_ASKPASS="${CVS_ECLASS_ORIG_SSH_ASKPASS}"
-		else
-			unset SSH_ASKPASS
-		fi
-
-		if [[ ${CVS_ECLASS_ORIG_DISPLAY+set} == "set" ]] ; then
-			export DISPLAY="${CVS_ECLASS_ORIG_DISPLAY}"
-		else
-			unset DISPLAY
 		fi
 	fi
 }
@@ -508,12 +473,14 @@ cvs_src_unpack() {
 	debug-print "Copying module ${ECVS_MODULE} local_mode=${ECVS_LOCAL} from ${ECVS_TOP_DIR} ..."
 
 	# This is probably redundant, but best to make sure.
-	mkdir -p "${WORKDIR}/${ECVS_LOCALNAME}"
+	mkdir -p "${WORKDIR}/${ECVS_LOCALNAME}" || die
 
 	if [[ -n ${ECVS_LOCAL} ]] ; then
-		cp -f "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"/* "${WORKDIR}/${ECVS_LOCALNAME}"
+		cp -f "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"/* \
+			"${WORKDIR}/${ECVS_LOCALNAME}" || die
 	else
-		cp -Rf "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}" "${WORKDIR}/${ECVS_LOCALNAME}/.."
+		cp -Rf "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}" \
+			"${WORKDIR}/${ECVS_LOCALNAME}/.." || die
 	fi
 
 	# Not exactly perfect, but should be pretty close #333773
@@ -522,6 +489,7 @@ cvs_src_unpack() {
 			LC_ALL=C sort | \
 			sha1sum | \
 			awk '{print $1}'
+		assert
 	)
 
 	# If the directory is empty, remove it; empty directories cannot
@@ -530,7 +498,7 @@ cvs_src_unpack() {
 	# the empty directory in workdir though.
 	if [[ $(ls -A "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}") == "CVS" ]] ; then
 		debug-print "${FUNCNAME}: removing empty CVS directory ${ECVS_LOCALNAME}"
-		rm -rf "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"
+		rm -rf "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}" || die
 	fi
 
 	einfo "CVS module ${ECVS_MODULE} is now in ${WORKDIR}"
