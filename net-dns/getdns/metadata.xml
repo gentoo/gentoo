@@ -10,5 +10,6 @@
 		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> support</flag>
 		<flag name="libev">Enable <pkg>dev-libs/libev</pkg> support</flag>
 		<flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
+		<flag name="minimal">Only build stub resolution mode</flag>
 	</use>
 </pkgmetadata>

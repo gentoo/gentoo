@@ -1,0 +1,40 @@
+diff -ur a/cmake/modules/FindGnuTLS.cmake b/cmake/modules/FindGnuTLS.cmake
+--- a/cmake/modules/FindGnuTLS.cmake	2024-10-16 21:33:11.113665484 +0200
++++ b/cmake/modules/FindGnuTLS.cmake	2024-10-16 21:33:40.923835214 +0200
+@@ -38,8 +38,8 @@
+ 
+ if (PkgGnuTLS_FOUND AND PkgGnuTLSDane_FOUND)
+   set(GNUTLS_INCLUDE_DIR ${PkgGnuTLS_INCLUDE_DIRS} $PkgGnuTLSDane_INCLUDE_DIRS} CACHE FILEPATH "GnuTLS include path")
+-  set(NETTLE_LIBRARIES ${PkgGnuTLS_LIBRARIES} ${PkgGnuTLSDane_LIBRARIES} CACHE STRING "GnuTLS libraries")
+-  set(NETTLE_VERSION ${PkgGnuTLS_VERSION})
++  set(GNUTLS_LIBRARIES ${PkgGnuTLS_LIBRARIES} ${PkgGnuTLSDane_LIBRARIES} CACHE STRING "GnuTLS libraries")
++  set(GNUTLS_VERSION ${PkgGnuTLS_VERSION})
+   add_library(GnuTLS::GnuTLS ALIAS PkgConfig::PkgGnuTLS)
+   add_library(GnuTLS::Dane ALIAS PkgConfig::PkgGnuTLSDane)
+   set(GnuTLS_FOUND ON)
+diff -ur a/cmake/modules/FindNettle.cmake b/cmake/modules/FindNettle.cmake
+--- a/cmake/modules/FindNettle.cmake	2024-10-16 21:05:17.521591723 +0200
++++ b/cmake/modules/FindNettle.cmake	2024-10-16 21:50:42.414650647 +0200
+@@ -34,12 +34,20 @@
+ if(PKG_CONFIG_FOUND)
+   pkg_check_modules(PkgNettle IMPORTED_TARGET GLOBAL nettle)
+   pkg_check_modules(PkgHogweed IMPORTED_TARGET GLOBAL QUIET hogweed)
++  if (UNIX)
++    pkg_check_modules(PkgGmp IMPORTED_TARGET GLOBAL QUIET gmp)
++  endif ()
+ endif()
+ 
+-if(PkgNettle_FOUND AND PkHogweed_FOUND)
++if(PkgNettle_FOUND AND PkgHogweed_FOUND)
+   set(NETTLE_INCLUDE_DIR ${PkgNettle_INCLUDE_DIRS} ${PkgHogweed_INCLUDE_DIRS} CACHE FILEPATH "Nettle include path")
+-  set(NETTLE_LIBRARIES ${PkgNettle_LIBRARIES} ${PkgHogweed_LIBRARIES} CACHE STRING "Nettle libraries")
++  if (PkgGmp_FOUND)
++    set(NETTLE_LIBRARIES ${PkgNettle_LIBRARIES} ${PkgHogweed_LIBRARIES} ${PkgGmp_LIBRARIES} CACHE STRING "Nettle libraries")
++  else ()
++    set(NETTLE_LIBRARIES ${PkgNettle_LIBRARIES} ${PkgHogweed_LIBRARIES} CACHE STRING "Nettle libraries")
++  endif ()
+   set(NETTLE_VERSION ${PkgNettle_VERSION})
++  set_target_properties(PkgConfig::PkgNettle PROPERTIES INTERFACE_LINK_LIBRARIES "${NETTLE_LIBRARIES}")
+   add_library(Nettle::Nettle ALIAS PkgConfig::PkgNettle)
+   add_library(Nettle::Hogweed ALIAS PkgConfig::PkgHogweed)
+   set(Nettle_FOUND ON)
