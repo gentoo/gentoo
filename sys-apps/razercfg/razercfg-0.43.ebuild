@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-single-r1 systemd tmpfiles udev xdg-utils
+inherit cmake optfeature python-single-r1 systemd tmpfiles udev xdg-utils
 
 DESCRIPTION="Utility for advanced configuration of Razer mice"
 HOMEPAGE="https://bues.ch/cms/hacking/razercfg.html https://github.com/mbuesch/razer"
@@ -14,24 +14,20 @@ SRC_URI="https://bues.ch/${PN}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gui +udev"
+IUSE="gui"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}
+DEPEND="
+	${PYTHON_DEPS}
 	virtual/libusb:1
 "
-BDEPEND="virtual/pkgconfig"
-RDEPEND="${DEPEND}
-	gui? (
-		$(python_gen_cond_dep '
-			dev-python/PyQt5[${PYTHON_USEDEP}]
-		')
-	)
-	udev? ( virtual/udev )
+RDEPEND="
+	${DEPEND}
+	virtual/udev
+	gui? ( $(python_gen_cond_dep 'dev-python/PyQt5[${PYTHON_USEDEP}]') )
 "
-
-PATCHES=( "${FILESDIR}/${PN}-0.39-unit-variables.patch" )
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	cmake_src_prepare
@@ -41,19 +37,19 @@ src_prepare() {
 
 	sed -i librazer/CMakeLists.txt \
 		-e '/ldconfig/{N;d}' \
-		-e "s:DESTINATION lib:DESTINATION $(get_libdir):" \
-		|| die
+		-e "s:DESTINATION lib:DESTINATION $(get_libdir):" || die
 
 	sed -i ui/razercfg.desktop.template \
-		-e '/^Categories=/s/=.*$/=Qt;Settings/' \
-		|| die
+		-e '/^Categories=/s/=.*$/=Qt;Settings/' || die
+
+	# install udev rules to proper location
+	sed -i CMakeLists.txt \
+		-e 's:DESTINATION /etc/udev/:DESTINATION /usr/udev/:' || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DPYTHON="${PYTHON}"
-		-DSYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)"
-		-DUDEV_DIR="$(get_udevdir)"
 	)
 	RAZERCFG_PKG_BUILD=1 cmake_src_configure
 }
@@ -79,10 +75,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use udev ; then
-		udevadm control --reload-rules
-		udevadm trigger --subsystem-match=usb
-	fi
+	udevadm control --reload-rules
+	udevadm trigger --subsystem-match=usb
 
 	xdg_icon_cache_update
 
