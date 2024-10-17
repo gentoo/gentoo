@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 CP_DEPEND="
 	dev-java/commons-cli:0
