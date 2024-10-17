@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{10..12} )
-PYPI_PN=${PN/-react-console-/_react_console_}
+PYPI_PN=${PN//-/_}
 inherit distutils-r1 pypi
 
 DESCRIPTION="Buildbot react based console-view plugin"
