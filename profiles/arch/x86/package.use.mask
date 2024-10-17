@@ -1,6 +1,23 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-17)
+# depends on java packages, not keyworded on x86
+app-forensics/sleuthkit java
+app-office/gtg test
+app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
+dev-lang/logtalk fop
+dev-lang/swi-prolog test
+dev-util/diffoscope pdf
+media-gfx/zbar java
+media-libs/libbluray java
+media-libs/opencv java
+media-tv/mythtv java
+net-dns/opendnssec test
+net-misc/plowshare javascript
+sci-astronomy/cpl gasgano
+sci-libs/gdal java
+
 # Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
 # Only supported on x86/amd64 (bug #940014).
 net-misc/lldpd -seccomp
