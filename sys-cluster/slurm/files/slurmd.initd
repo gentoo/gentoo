@@ -37,16 +37,14 @@ checkconfig() {
 	fi
 	# Make sure folders exists
 	. /etc/slurm/slurm.conf
-	folders=(
-		${SlurmdSpoolDir}
-		$(dirname ${SlurmctldLogFile})
-		$(dirname ${SlurmctldPidFile})
-		$(dirname ${SlurmdLogFile})
-		$(dirname ${SlurmdPidFile})
-		${SlurmdSpoolDir}
+
+	for folder in ${SlurmdSpoolDir} \
+		$(dirname ${SlurmctldLogFile}) \
+		$(dirname ${SlurmctldPidFile}) \
+		$(dirname ${SlurmdLogFile}) \
+		$(dirname ${SlurmdPidFile}) \
 		${StateSaveLocation}
-	)
-	for folder in ${folders[@]}; do
+	do
 		create_folder_and_set_permission "${folder}"
 	done
 }
