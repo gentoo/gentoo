@@ -34,7 +34,7 @@ RDEPEND="
 		openssl? ( dev-libs/openssl:= )
 	)
 	test? (
-		media-gfx/imagemagick
+		media-gfx/imagemagick[X]
 		x11-apps/xwd
 		x11-apps/xwininfo
 	)
