@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-python/httpx-0.22.0[${PYTHON_USEDEP}]
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	>=dev-python/python-multipart-0.0.7[${PYTHON_USEDEP}]
+	<dev-python/python-multipart-0.0.12-r100[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 BDEPEND="
