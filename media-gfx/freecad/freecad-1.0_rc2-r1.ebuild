@@ -176,7 +176,6 @@ CHECKREQS_DISK_BUILD="2G"
 pkg_setup() {
 	check-reqs_pkg_setup
 	python-single-r1_pkg_setup
-	[[ -z ${CASROOT} ]] && die "\${CASROOT} not set, please run eselect opencascade"
 }
 
 src_prepare() {
