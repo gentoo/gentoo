@@ -33,7 +33,6 @@ r600 - VIDEO_CARDS setting to build only r600, r700, Evergreen and Northern Isla
 radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
 siliconmotion - VIDEO_CARDS setting to build driver for siliconmotion video cards
-swrast - VIDEO_CARDS setting to build software rasterizer driver
 tegra - VIDEO_CARDS setting to build driver for tegra video cards
 v3d - VIDEO_CARDS setting to build driver for v3d video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards

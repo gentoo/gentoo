@@ -235,7 +235,6 @@ dev-lang/dafny-bin
 dev-libs/luise
 dev-libs/nwjs
 dev-perl/Lab-Zhinst
-dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
 dev-util/azuredatastudio
 dev-util/idea-community

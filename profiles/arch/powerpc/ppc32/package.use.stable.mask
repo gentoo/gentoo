@@ -72,11 +72,6 @@ sys-fs/lvm2 sanlock
 # and there are many dependencies to go through before there are
 app-text/htmltidy test
 
-# Sam James <sam@gentoo.org> (2021-02-06)
-# Drags in too much unstable GNOME for now
-# bug #727572
-mail-client/claws-mail gdata
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-21)
 # Unstable test deps.
 dev-cpp/eigen test

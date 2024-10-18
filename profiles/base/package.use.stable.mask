@@ -181,18 +181,9 @@ net-analyzer/wireshark doc
 # Bugs #649408, #641108, #640724
 dev-perl/DBD-SQLite system-sqlite
 
-# Andrey Grozin <grozin@gentoo.org> (2018-01-24)
-# Depends on unstable dev-python/sphinx-gallery.
-# Bug #643840.
-dev-python/matplotlib doc
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2017-11-27)
 # Dependencies have no stable keyword
 app-backup/backup-manager s3
-
-# Brian Evans <grknight@gentoo.org> (2017-11-06)
-# Requires stable phpunit
-dev-php/PEAR-Text_Password test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.

@@ -227,7 +227,6 @@ dev-util/diffoscope haskell
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
-x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
@@ -402,7 +401,6 @@ sys-boot/grub:2 grub_platforms_xen-32
 # Mask it globally, unmask it on arm.
 media-video/motion mmal
 media-video/ffmpeg mmal
-media-video/ffmpeg-chromium mmal
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

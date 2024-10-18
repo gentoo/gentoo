@@ -198,7 +198,6 @@ dev-haskell/tasty-expected-failure test
 # Jaco Kroon <jaco@uls.co.za> (2023-09-19)
 # Joonas Niilola <juippis@gentoo.org> (2023-09-21)
 # DAHDI is being last-rited. See bug #914477.
-net-misc/asterisk dahdi
 net-voip/yate dahdi
 
 # Matt Turner <mattst88@gentoo.org> (2023-09-14)
@@ -274,10 +273,6 @@ app-emulation/qemu aio
 # Doesn't compile, see #894210.
 dev-libs/log4cxx smtp
 
-# Sam James <sam@gentoo.org> (2023-05-01)
-# Doc building is broken with Python 3.11. See https://github.com/ukoethe/vigra/issues/529.
-media-libs/vigra doc
-
 # Sam James <sam@gentoo.org> (2023-04-17)
 # Ruby has several JITs available but they need porting to individual arches.
 # Unmask on specific arches where it's available.
@@ -296,10 +291,6 @@ x11-apps/xdpyinfo dmx
 # https://bugs.gentoo.org/833097
 # https://bugs.gentoo.org/833098
 dev-java/openjdk:11 lto
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-20)
-# dev-python/colorspacious is masked for removal.
-<dev-python/matplotlib-3.7.1 doc
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-09)
 # Bug #893686. Presently nothing depends on dev-java/swt built with this flag.
@@ -587,23 +578,7 @@ www-servers/apache apache2_modules_lua
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
 # Our PHPUnit (or at least one of its dependencies) doesn't work with
 # modern versions of PHP itself.
-dev-php/PEAR-Console_Getargs test
-dev-php/PEAR-Crypt_GPG test
-dev-php/PEAR-Crypt_HMAC2 test
 dev-php/PEAR-Exception test
-dev-php/PEAR-File_Fortune test
-dev-php/PEAR-HTML_CSS test
-dev-php/PEAR-HTML_Template_Sigma test
-dev-php/PEAR-HTTP_Request2 test
-dev-php/PEAR-Image_Color2 test
-dev-php/PEAR-Image_Text test
-dev-php/PEAR-Net_IPv6 test
-dev-php/PEAR-Net_LDAP2 test
-dev-php/PEAR-Numbers_Words test
-dev-php/PEAR-Text_Password test
-dev-php/PEAR-Text_Wiki test
-dev-php/PEAR-Text_Wiki_Mediawiki test
-dev-php/PEAR-XML_RSS test
 dev-php/PHP_CodeSniffer test
 dev-php/awl test
 dev-php/fedora-autoloader test
@@ -696,13 +671,11 @@ sci-chemistry/gromacs python
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
 # Requires old x11-libs/fox:1.6 slot.
 dev-games/openscenegraph fox
-sci-mathematics/gsl-shell fox
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Packages requiring dev-python/ipython to build the docs and still
 # supporting Python 2.7.  This can be resolved long term via either
 # using any-r1 API to build docs or cond-deps.
-dev-python/matplotlib doc
 dev-python/statsmodels doc
 
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2019-12-01)
@@ -912,10 +885,6 @@ media-libs/libsdl2 custom-cflags
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)
 gnustep-apps/cynthiune flac
-
-# Richard Freeman <rich0@gentoo.org> (2013-03-24)
-# Dependency is masked for buffer overflows for now
-dev-python/pyocr cuneiform
 
 # Tom Wijsman <TomWij@gentoo.org> (2013-03-10)
 # Experimental, masked until it compiles and works.

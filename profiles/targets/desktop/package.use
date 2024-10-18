@@ -41,7 +41,6 @@ dev-qt/qtmultimedia:5 widgets
 media-libs/clutter egl
 media-libs/cogl gles2
 media-libs/libsdl2 gles2
-<media-libs/mesa-24.1 gles2
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2022-12-27)
 # On desktops it's common to use browser to browse internet, which these

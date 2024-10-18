@@ -34,7 +34,7 @@ games-emulation/rmg -dynarec
 # We only want to support spirv-llvm-translator >= 17 on x86, which is a
 # dependency of mesa.
 >=media-libs/mesa-24.1 llvm_slot_15 llvm_slot_16
->=dev-util/intel_clc-24.1 llvm_slot_15 llvm_slot_16
+>=dev-util/intel_clc-24.1 llvm_slot_16
 
 # Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # The opcache extension fails to build on hardened x86, but only
@@ -188,10 +188,6 @@ media-video/ffmpeg vmaf
 # dev-util/hip and its rocm dependencies not keyworded here
 sci-physics/lammps hip
 
-# Sam James <sam@gentoo.org> (2022-01-20)
-# Only supports cpu_flags_x86_aes in 64-bit mode
-net-fs/samba cpu_flags_x86_aes
-
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
 app-emulation/fs-uae -jit
@@ -231,7 +227,6 @@ media-video/obs-studio browser
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers does not function well with
 # the last drivers to support x86 (needed here to override use.mask).
-x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)

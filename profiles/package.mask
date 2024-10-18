@@ -100,11 +100,6 @@ app-i18n/fcitx-unikey:4
 app-i18n/fcitx:4
 app-i18n/kcm-fcitx
 
-# Matt Jolly <kangie@gentoo.org> (2024-10-10)
-# Despite passing tests this version of GN has proven
-# to be unable to build Chromium. Masked pending investigation.
-=dev-build/gn-0.2200
-
 # Michael Orlitzky <mjo@gentoo.org> (2024-10-09)
 # This is the new stable series of webkit-gtk, but it has a new
 # less-portable rendering engine, and doesn't yet build on ~riscv for
@@ -321,19 +316,6 @@ sci-physics/qmeq
 >=dev-libs/gobject-introspection-common-1.80
 >=x11-terms/ptyxis-46
 
-# Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
-# Bad version can result in failing builds. Please upgrade to 72.1.0.
-=dev-python/ensurepip-setuptools-72.0.0
-=dev-python/setuptools-72.0.0
-
-# Alfred Wingate <parona@protonmail.com> (2024-07-24)
-# Includes change that breaks firewalld notably.
-#
-# https://git.netfilter.org/nftables/commit/?id=93560d0117639c8685fc287128ab06dec9950fbd
-# https://github.com/firewalld/firewalld/issues/1366
-# https://lore.kernel.org/netfilter-devel/Zp7FqL_YK3p_dQ8B@egarver-mac/
-=net-firewall/nftables-1.1.0
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
@@ -348,21 +330,8 @@ sci-physics/qmeq
 =dev-libs/libxslt-1.1.41
 
 # Sam James <sam@gentoo.org> (2024-06-25)
-# Subvolume printing is broken: https://github.com/kdave/btrfs-progs/issues/829
-=sys-fs/btrfs-progs-6.9.1
-
-# Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
-
-# Cédric Krier <cedk@gentoo.org> (2023-06-15)
-# critical regression with potential data loss:
-# https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
-# Bug #934138
-~dev-vcs/mercurial-6.7
-~dev-vcs/mercurial-6.7.1
-~dev-vcs/mercurial-6.7.2
-~dev-vcs/mercurial-6.7.3
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
@@ -467,16 +436,6 @@ dev-ml/ppx_js_style:0/0.17
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-11)
-# Contains a bug that could render the kernel fail to boot.
-# https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
-# The fix is:
-# https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7d24c0aa8e678f41457d1304e2091cac6fd1a2e
-=sys-kernel/gentoo-kernel-6.6.26
-=sys-kernel/gentoo-kernel-bin-6.6.26
-=sys-kernel/vanilla-kernel-6.6.26
-=sys-kernel/vanilla-kernel-6.8.5
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.

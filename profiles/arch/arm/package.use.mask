@@ -313,7 +313,7 @@ app-metrics/collectd -collectd_plugins_mqtt
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -378,7 +378,6 @@ net-print/hplip -scanner kde
 # Alexis Ballier <aballier@gentoo.org> (2015-11-14)
 # MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
 media-video/ffmpeg -mmal
-media-video/ffmpeg-chromium -mmal
 
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
@@ -397,7 +396,6 @@ app-i18n/scim-anthy kasumi
 
 # Markus Meier <maekke@gentoo.org> (2014-11-29)
 # Unkeyworded deps, bug #518742
-dev-python/ipython doc
 dev-python/oct2py doc
 
 # Alexis Ballier <aballier@gentoo.org> (2014-10-24)
@@ -473,7 +471,6 @@ dev-libs/xapian-bindings java
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-02-20)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra spacenav
 media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (2013-02-05)
