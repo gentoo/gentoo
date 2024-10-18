@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools verify-sig
+inherit autotools multiprocessing verify-sig
 
 DESCRIPTION="Create debuginfo and source file distributions"
 HOMEPAGE="https://sourceware.org/debugedit/"
@@ -45,4 +45,8 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_test() {
+	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
