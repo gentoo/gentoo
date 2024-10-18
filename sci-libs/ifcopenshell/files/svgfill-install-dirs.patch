@@ -1,0 +1,46 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,33 @@ if (POLICY CMP0144)
+ cmake_policy(SET CMP0144 NEW) # find_package() uses upper-case <PACKAGENAME>_ROOT variables.
+ endif()
+ 
++include(GNUInstallDirs)
++
++# Specify paths to install files
++if(NOT BINDIR)
++    set(BINDIR bin)
++endif()
++if(NOT IS_ABSOLUTE ${BINDIR})
++    set(BINDIR ${CMAKE_INSTALL_BINDIR})
++endif()
++message(STATUS "BINDIR: ${BINDIR}")
++
++if(NOT INCLUDEDIR)
++    set(INCLUDEDIR include)
++endif()
++if(NOT IS_ABSOLUTE ${INCLUDEDIR})
++    set(INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR})
++endif()
++message(STATUS "INCLUDEDIR: ${INCLUDEDIR}")
++
++if(NOT LIBDIR)
++    set(LIBDIR lib)
++endif()
++if(NOT IS_ABSOLUTE ${LIBDIR})
++    set(LIBDIR ${CMAKE_INSTALL_LIBDIR})
++endif()
++message(STATUS "LIBDIR: ${LIBDIR}")
++
+ set(CGAL_LIBRARY_NAMES libCGAL_Core libCGAL_ImageIO libCGAL)
+ 
+ if("${CGAL_INCLUDE_DIR}" STREQUAL "")
+@@ -107,6 +134,6 @@ target_link_libraries(libsvgfill ${Boost_LIBRARIES} ${BCRYPT_LIBRARIES} ${LIBXML
+ add_executable(svgfill src/main.cpp)
+ target_link_libraries(svgfill libsvgfill)
+ 
+-install(TARGETS svgfill DESTINATION bin)
+-install(TARGETS libsvgfill DESTINATION lib)
+-install(FILES ${LIB_H_FILES} DESTINATION include)
++install(TARGETS svgfill DESTINATION ${BINDIR})
++install(TARGETS libsvgfill DESTINATION ${LIBDIR})
++install(FILES ${LIB_H_FILES} DESTINATION ${INCLUDEDIR})
