@@ -27,6 +27,8 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Dtests=$(usex test true false)
 		-Ddefault_library=$(usex static-libs both shared)
+		# https://bugs.gentoo.org/940641
+		-Dossfuzz=false
 	)
 	# with -Dprograms=false, the test suite is only rudimentary,
 	# so build them for testing non-native ABI as well
