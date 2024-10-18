@@ -196,13 +196,6 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="
-	dev-libs/libusb:=
-"
-RDEPEND="
-	${DEPEND}
-"
-
 QA_FLAGS_IGNORED="/usr/bin/cyme"
 
 src_prepare() {
