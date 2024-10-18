@@ -23,6 +23,9 @@
     <flag name="hepmc3">Adds support for High Energy Physics Monte Carlo Generators 3 <pkg>sci-physics/hepmc</pkg></flag>
     <flag name="lhapdf">Support the use of external PDF sets via <pkg>sci-physics/lhapdf</pkg></flag>
     <flag name="root">Use <pkg>sci-physics/root</pkg> trees and histograms (in examples only)</flag>
+    <flag name="highfive">Support hdf and highfive</flag>
+    <flag name="mpich">Support mpich</flag>
+    <flag name="rivet">Support <pkg>sci-physics/rivet</pkg></flag>
   </use>
   <upstream>
     <remote-id type="gitlab">Pythia8/releases</remote-id>
