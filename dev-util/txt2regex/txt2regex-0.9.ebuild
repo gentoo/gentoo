@@ -1,37 +1,37 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A Regular Expression wizard that converts human sentences to regexs"
 HOMEPAGE="https://aurelio.net/projects/txt2regex/"
-SRC_URI="https://github.com/aureliojargas/txt2regex/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aureliojargas/txt2regex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="nls cjk"
-
-DEPEND="nls? ( sys-devel/gettext )"
-RDEPEND=">=app-shells/bash-2.04"
 RESTRICT="test" # tests need to run in a docker container it seems
+
+RDEPEND=">=app-shells/bash-2.04"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
 
-	# bug #93568
-	if ! use nls ; then
-		eapply "${FILESDIR}"/${P}-disable-nls.patch
+	if use !nls ; then
+		eapply "${FILESDIR}"/${P}-disable-nls.patch # bug #93568
 	fi
 
 	if use cjk ; then
-		sed -i -e 's/\xa4/:+:/g' "${S}"/${PN}.sh || die
+		sed -e 's/\xa4/:+:/g' -i ${PN}.sh || die
 	fi
 }
 
 src_compile() {
-	# a call to emake without target will execute the tests
-	true
+	# there is no building the program as it is a shell script
+	# but calling without target will run the tests and fail
+	:
 }
 
 src_install() {
