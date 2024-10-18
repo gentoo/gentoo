@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 CRATES="
 	aho-corasick@1.1.3
-	anyhow@1.0.86
+	anyhow@1.0.89
 	arc-swap@1.7.1
 	autocfg@1.3.0
 	base64@0.21.7
@@ -17,7 +17,7 @@ CRATES="
 	blake2@0.10.6
 	block-buffer@0.10.4
 	bumpalo@3.16.0
-	bytes@1.7.1
+	bytes@1.7.2
 	cfg-if@1.0.0
 	cpufeatures@0.2.12
 	crypto-common@0.1.6
@@ -64,9 +64,9 @@ CRATES="
 	regex@1.10.6
 	ryu@1.0.18
 	scopeguard@1.2.0
-	serde@1.0.209
-	serde_derive@1.0.209
-	serde_json@1.0.127
+	serde@1.0.210
+	serde_derive@1.0.210
+	serde_json@1.0.128
 	sha1@0.10.6
 	sha2@0.10.8
 	smallvec@1.13.2
@@ -150,7 +150,7 @@ RDEPEND="
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/pymacaroons[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	dev-python/python-multipart[${PYTHON_USEDEP}]
+	>=dev-python/python-multipart-0.0.12-r100[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/service-identity[${PYTHON_USEDEP}]
 	dev-python/signedjson[${PYTHON_USEDEP}]
@@ -159,9 +159,6 @@ RDEPEND="
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/legacy-cgi[${PYTHON_USEDEP}]
-	' 3.13)
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	systemd? ( dev-python/python-systemd[${PYTHON_USEDEP}] )
 "
@@ -180,6 +177,14 @@ BDEPEND="
 
 # Rust extension
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/synapse/synapse_rust.abi3.so"
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# python-multipart package renamed in Gentoo to python_multipart
+	sed -e 's:import multipart:import python_multipart as multipart:' \
+		-i synapse/http/client.py || die
+}
 
 src_test() {
 	if use postgres; then

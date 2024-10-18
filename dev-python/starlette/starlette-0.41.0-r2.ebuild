@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-python/httpx-0.22.0[${PYTHON_USEDEP}]
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	>=dev-python/python-multipart-0.0.7[${PYTHON_USEDEP}]
+	>=dev-python/python-multipart-0.0.12-r100[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -44,6 +44,15 @@ BDEPEND="
 
 : ${EPYTEST_TIMEOUT:-180}
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# python-multipart package renamed in Gentoo to python_multipart
+	sed -e "s:from multipart:from python_multipart:" \
+		-e "s:import multipart:import python_multipart as multipart:" \
+		-i starlette/*.py || die
+}
 
 python_test() {
 	local EPYTEST_IGNORE=(
