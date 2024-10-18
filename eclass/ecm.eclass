@@ -104,11 +104,17 @@ fi
 : "${ECM_HANDBOOK_DIR:=doc}"
 
 # @ECLASS_VARIABLE: ECM_PO_DIRS
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Specifies directories of l10n files relative to ${S} to be processed by
 # KF${_KFSLOT}I18n (ki18n_install). If IUSE nls exists and is disabled then
 # disable build of these directories in CMakeLists.txt.
-: "${ECM_PO_DIRS:="po poqm"}"
+if [[ ${ECM_PO_DIRS} ]]; then
+	[[ ${ECM_PO_DIRS@a} == *a* ]] ||
+		die "ECM_PO_DIRS must be an array"
+else
+	ECM_PO_DIRS=( po poqm )
+fi
 
 # @ECLASS_VARIABLE: ECM_QTHELP
 # @DEFAULT_UNSET
@@ -338,7 +344,7 @@ _ecm_strip_handbook_translations() {
 	fi
 
 	local lang po
-	for po in ${ECM_PO_DIRS}; do
+	for po in ${ECM_PO_DIRS[*]}; do
 		if [[ -d ${po} ]] ; then
 			pushd ${po} > /dev/null || die
 			for lang in *; do
