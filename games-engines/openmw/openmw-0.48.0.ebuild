@@ -76,6 +76,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/openmw-0.48.0-gcc14.patch"
+	"${FILESDIR}/openmw-0.48.0-Xt.patch"
 )
 
 src_prepare() {
