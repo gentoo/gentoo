@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit rebar3
+inherit rebar
 
 DESCRIPTION="Erlang utility modules from ProcessOne"
 HOMEPAGE="https://github.com/processone/p1_utils"
