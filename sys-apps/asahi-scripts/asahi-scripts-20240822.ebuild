@@ -6,19 +6,34 @@ EAPI="8"
 DESCRIPTION="Apple Silicon support scripts"
 HOMEPAGE="https://asahilinux.org/"
 SRC_URI="https://github.com/AsahiLinux/${PN}/archive/refs/tags/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
-
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
-PATCHES=(
-	"${FILESDIR}/makefile.patch"
-	"${FILESDIR}/update-m1n1-dtbs.patch"
-)
+BDEPEND="
+	dev-build/make
+	virtual/udev
+"
+
+src_prepare() {
+	default
+}
+
+src_compile() {
+	emake || die "Could not invoke emake"
+}
 
 src_install() {
-	default
-	emake DESTDIR="${D}" SYS_PREFIX="" install-dracut
+	emake DESTDIR="${D}" PREFIX="/usr" SYS_PREFIX="" install-dracut
+	emake DESTDIR="${D}" PREFIX="/usr" install-macsmc-battery
+
+	newinitd "${FILESDIR}/${PN}-macsmc-battery.openrc" "macsmc-battery"
+
+	# install gentoo sys config
+	insinto /etc/default
+	newins "${FILESDIR}"/update-m1n1.gentoo.conf update-m1n1
+	exeinto /usr/lib/kernel/install.d/
+	doexe "${FILESDIR}/99-update-m1n1.install"
 }
 
 pkg_postinst() {
@@ -29,9 +44,8 @@ pkg_postinst() {
 		ewarn "sys-firmware/asahi-firmware!"
 	fi
 
-	if [[ -e ${ROOT}/bin/update-m1n1 ]]; then
-		ewarn "You need to remove /bin/update-m1n1."
-	fi
+	elog "Asahi scripts have been installed to /usr/. For more"
+	elog "information on how to use them, please visit the Wiki."
 
 	if [[ -e ${ROOT}/usr/local/share/asahi-scripts/functions.sh ]]; then
 		ewarn "You have upgraded to a new version of ${PN}. Please"
