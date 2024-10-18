@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-10-18)
+# Causing issues since forever.  We are already deselecting a lot
+# of tests because of cryptic failures.  On top of that, upstream shows
+# no interest in porting to >=dev-python/pytest-8.  No (non-optional)
+# revdeps left.
+# Removal on 2024-11-17.  Bug #937896.
+dev-python/sentry-sdk
+
 # Ulrich Müller <ulm@gentoo.org> (2024-10-15)
 # No longer provided as a separate package; the Emacs mode is now
 # installed by dev-util/quilt with USE=emacs.
