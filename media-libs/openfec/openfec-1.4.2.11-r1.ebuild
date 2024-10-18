@@ -13,7 +13,6 @@ SRC_URI="https://github.com/roc-streaming/openfec/archive/refs/tags/v${PV}.tar.g
 LICENSE="CeCILL-2 CeCILL-C"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_sse"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.2.11-opt.patch
@@ -21,7 +20,9 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DASSEMBLY_SSE_OPT=$(usex cpu_flags_x86_sse)
+		# Causes crashes in media-libs/roc-toolkit (bug #941750)
+		# https://github.com/roc-streaming/openfec/issues/22
+		-DASSEMBLY_SSE_OPT=OFF
 	)
 
 	cmake_src_configure
