@@ -155,16 +155,17 @@ fi
 : "${ECM_TEST:=false}"
 
 # @ECLASS_VARIABLE: KFMIN
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
-# is ${PV} and 5.106.0 baseline for everything else.
+# is ${PV} and 5.116.0 baseline for everything else.
 # If set to >=5.240, KF6/Qt6 is assumed thus SLOT=6 dependencies added and
 # -DQT_MAJOR_VERSION=6 added to cmake args.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${KFMIN:=$(ver_cut 1-2)}"
 fi
-: "${KFMIN:=5.106.0}"
+: "${KFMIN:=5.116.0}"
 
 # @ECLASS_VARIABLE: _KFSLOT
 # @INTERNAL
