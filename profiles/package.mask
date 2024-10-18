@@ -274,11 +274,6 @@ sci-chemistry/mopac7
 # Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
 =sys-libs/timezone-data-2024b
 
-# Michał Górny <mgorny@gentoo.org> (2024-09-08)
-# Does not build anymore.  No upstream activity since 2021.
-# Removal on 2024-10-08.  Bug #932532.
-sci-physics/qmeq
-
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
