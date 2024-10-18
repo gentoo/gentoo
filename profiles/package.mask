@@ -55,7 +55,7 @@ app-emacs/quilt-el
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-10-14)
 # These packages are no more needed.
-# Use dev-ml/opam, dev-ml/opam-file-format, 
+# Use dev-ml/opam, dev-ml/opam-file-format,
 # dev-ml/opam-installer
 # that include these
 # remove on 2024-11-14.
@@ -255,11 +255,6 @@ dev-util/cucumber-gherkin:22
 # instead. Removal on 2024-10-14.
 dev-ruby/hiera-eyaml:3
 dev-util/aruba:0
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-10)
-# ia64 only package. Since we drop ia64, we can remove this package.
-# Removal on 2024-10-10.  Bug #939298.
-sys-apps/salinfo
 
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
