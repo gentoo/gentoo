@@ -131,7 +131,6 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	app-text/dos2unix
 	dev-lang/swig
 	test? (
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
@@ -165,7 +164,7 @@ REQUIRED_USE="
 # There is no py3.12 support planned for pyside2
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-1.0_rc2-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
 )
@@ -183,8 +182,6 @@ pkg_setup() {
 src_prepare() {
 	# Fix desktop file
 	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecad.FreeCAD.desktop || die
-
-	find "${S}" -type f -exec dos2unix -q {} \; || die "failed to convert to unix line endings"
 
 	cmake_src_prepare
 }
