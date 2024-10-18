@@ -47,7 +47,8 @@ LICENSE+="
 	LGPL-3 MIT MPL-2.0 Unicode-DFS-2016 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
+IUSE="gles"
 CHECKREQS_DISK_BUILD="8G"
 CHECKREQS_MEMORY="16G"
 
@@ -96,6 +97,9 @@ pkg_setup() {
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
 	# linking error with llvm-18
 	export RUSTFLAGS="${RUSTFLAGS} -C link-args=-Wl,-z,nostart-stop-gc"
+	if use gles; then
+		export RUSTFLAGS="${RUSTFLAGS} --cfg gles"
+	fi
 }
 
 src_prepare() {
