@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	<dev-python/anyio-5[${PYTHON_USEDEP}]
@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-python/httpx-0.22.0[${PYTHON_USEDEP}]
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	>=dev-python/python-multipart-0.0.7[${PYTHON_USEDEP}]
+	<dev-python/python-multipart-0.0.12-r100[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 BDEPEND="
