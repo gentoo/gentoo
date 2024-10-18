@@ -44,7 +44,6 @@ RDEPEND="
 	dev-libs/date:=
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
-	gui-libs/wlroots:=
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
 	evdev? ( dev-libs/libevdev:= )
