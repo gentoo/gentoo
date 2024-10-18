@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
+# Experimental version, for testing purposes only.
+# Bug #941566.
+app-emulation/virtualbox-kvm
+
 # Michał Górny <mgorny@gentoo.org> (2024-10-18)
 # Low-quality, test-restricted package with multiple unresolved bugs
 # and version bump pending.  Removal requested by the maintainer.
