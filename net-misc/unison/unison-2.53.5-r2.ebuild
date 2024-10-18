@@ -96,18 +96,21 @@ src_install() {
 	cd "${S}/src" || die
 
 	local -a bins=(
-		unison
 		unison-fsmonitor
 	)
 
+	# Unison GUI is a CLI + GTK GUI in one binary, no need to install both,
+	# see bug https://bugs.gentoo.org/941780
 	if use gui ; then
 		bins+=( unison-gui )
+	else
+		bins+=( unison )
 	fi
 
 	local binname
 	for binname in "${bins[@]}" ; do
 		exeinto /usr/bin
-		newexe "${binname}" "${binname}-${SLOT}"
+		newexe "${binname}" "${binname/-gui/}-${SLOT}"
 	done
 
 	cd "${S}" || die
