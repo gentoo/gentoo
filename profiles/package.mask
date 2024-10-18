@@ -260,11 +260,6 @@ dev-util/aruba:0
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.0.9999:30-vcs
 
-# Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
-# Upstream has dropped this package since MATE 1.28.
-# Removal on 2024-10-09.  Bug #932568.
-mate-extra/mate-netbook
-
 # Sam James <sam@gentoo.org> (2024-09-10)
 # Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
 =sys-libs/timezone-data-2024b
