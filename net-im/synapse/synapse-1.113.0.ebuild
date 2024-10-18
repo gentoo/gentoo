@@ -165,6 +165,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		dev-python/hiredis[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
