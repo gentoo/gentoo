@@ -122,13 +122,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	find . -type f -not -perm 0644 -print0 \
-		| xargs --null --no-run-if-empty chmod 0644 \
-		|| die
-
-	chmod +x "${S}"/{copy-firmware.sh,dedup-firmware.sh,check_whence.py,build_packages.py} || die
-	chmod +x "${S}"/{carl9170fw/autogen.sh,carl9170fw/genapi.sh} || die
-	chmod +x "${S}"/contrib/process_linux_firmware.py || di
 	cp "${FILESDIR}/${PN}-make-amd-ucode-img.bash" "${T}/make-amd-ucode-img" || die
 	chmod +x "${T}/make-amd-ucode-img" || die
 
