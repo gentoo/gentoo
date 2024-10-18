@@ -3,13 +3,21 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/jariruusu.asc"
+inherit linux-mod-r1 verify-sig
 
 MY_P="${PN/aes/AES}-v${PV}"
 
 DESCRIPTION="Linux kernel module to encrypt disk partitions with AES cipher"
 HOMEPAGE="https://sourceforge.net/projects/loop-aes/"
-SRC_URI="https://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2"
+SRC_URI="
+	https://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2
+	verify-sig? (
+		https://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2.sign
+			-> ${MY_P}.tar.bz2.sig
+	)
+"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,10 +25,14 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 IUSE="cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock"
 
 DEPEND="app-crypt/loop-aes-losetup"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-jariruusu )"
 
-PATCHES=( "${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch )
-
-S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch
+	"${FILESDIR}"/loop-aes-3.8c-build-initrd_nvme.patch
+	"${FILESDIR}"/loop-aes-3.8e-build-initrd_prefer-l-a-losetup.patch
+	"${FILESDIR}"/loop-aes-3.8e-build-initrd_initfstype.patch
+)
 
 pkg_setup() {
 	linux-mod-r1_pkg_setup
