@@ -3,21 +3,16 @@
 
 EAPI=8
 
-DESCRIPTION="A mixer designed for WindowMaker"
-HOMEPAGE="https://www.dockapps.net/wmmixer"
+DESCRIPTION="dockapp that shows lunar ephemeris to a high accuracy"
+HOMEPAGE="https://www.dockapps.net/wmmoonclock"
 SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~sparc ~x86"
+KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
-
-src_prepare() {
-	default
-	sed -e "s/Audio;/\0AudioVideo;/" -i ${PN}.desktop || die
-}

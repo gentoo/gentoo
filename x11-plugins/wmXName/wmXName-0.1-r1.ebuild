@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,11 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="dock-app showing you status of your XName hosted zones"
 HOMEPAGE="http://source.xname.org/"
 SRC_URI="http://source.xname.org/${MY_P}.tgz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
 COMMON_DEPEND=">=x11-libs/libXpm-3.5.7
 	>=x11-libs/libX11-1.1.4
@@ -26,8 +26,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=www-client/lynx-2.8.6-r2"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,11 +7,11 @@ inherit toolchain-funcs
 DESCRIPTION="a dockapp cpu monitor with spinning 3d objects"
 HOMEPAGE="https://www.dockapps.net/wmcube"
 SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
+S="${WORKDIR}/${P}/wmcube"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ppc ppc64 ~sparc x86"
-IUSE=""
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
@@ -22,7 +22,6 @@ DOCS=(
 	"${WORKDIR}"/${P}/CHANGES
 	"${WORKDIR}"/${P}/README
 	)
-S="${WORKDIR}/${P}/wmcube"
 
 src_prepare() {
 	default
