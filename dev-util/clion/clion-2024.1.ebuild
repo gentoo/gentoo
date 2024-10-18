@@ -94,6 +94,8 @@ src_install() {
 		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
 
+	fperms 755 "${dir}"/plugins/clion-radler/DotFiles/linux-x64/Rider.Backend
+
 	dosym -r "${EPREFIX}/usr/bin/ninja" "${dir}"/bin/ninja/linux/x64/ninja
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
