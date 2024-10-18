@@ -9,11 +9,15 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
+DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.11.6-patches-01.tar.xz"
+	https://github.com/hydrapolic/gentoo-dist/raw/main/mariadb/${PN}-11.4.3-patches-01.tar.xz"
 
-DESCRIPTION="An enhanced, drop-in replacement for MySQL"
+# Shorten the path because the socket path length must be shorter than 107 chars
+# and we will run a mysql server during test phase
+S="${WORKDIR}/mysql"
+
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
 IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
@@ -29,11 +33,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	static? ( yassl !pam )
 	test? ( extraengine )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-
-# Shorten the path because the socket path length must be shorter than 107 chars
-# and we will run a mysql server during test phase
-S="${WORKDIR}/mysql"
+#KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
@@ -107,7 +107,11 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb:10.8
 	!dev-db/mariadb:10.9
 	!dev-db/mariadb:10.10
+	!dev-db/mariadb:10.11
 	!dev-db/mariadb:11.0
+	!dev-db/mariadb:11.1
+	!dev-db/mariadb:11.2
+	!dev-db/mariadb:11.3
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
 		columnstore? ( dev-db/mariadb-connector-c )
@@ -277,7 +281,7 @@ src_configure() {
 	# bug #855233 (MDEV-11914, MDEV-25633) at least
 	filter-lto
 	# bug 508724 mariadb cannot use ld.gold
-	tc-ld-disable-gold
+	tc-ld-force-bfd
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
