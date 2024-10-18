@@ -405,8 +405,6 @@ pkg_postinst() {
 			mount-boot_pkg_postinst
 		fi
 	fi
-
-
 }
 
 pkg_prerm() {
