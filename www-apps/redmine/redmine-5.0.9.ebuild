@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,9 +10,9 @@ DESCRIPTION="Flexible project management web application using the Ruby on Rails
 HOMEPAGE="https://www.redmine.org/"
 SRC_URI="https://www.redmine.org/releases/${P}.tar.gz"
 
-KEYWORDS="~amd64"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="fastcgi imagemagick ldap markdown +minimagick mysql passenger pdf postgres +standalone sqlite"
 
 ruby_add_bdepend "
@@ -38,7 +38,7 @@ ruby_add_bdepend "
 	>=dev-ruby/net-pop-0.1.1
 	>=dev-ruby/net-smtp-0.3.0
 	>=dev-ruby/nokogiri-1.15.2
-	>=dev-ruby/rails-6.1.7.2:6.1
+	>=dev-ruby/rails-6.1.7.8:6.1
 	>=dev-ruby/rbpdf-1.21.3
 	>=dev-ruby/request_store-1.5.0:0
 	dev-ruby/rexml
