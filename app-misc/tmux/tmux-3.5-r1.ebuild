@@ -54,6 +54,7 @@ DOCS=( CHANGES README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-flags.patch
+	"${FILESDIR}"/${P}-fix-xterm-sym.patch # merged upstream
 )
 
 src_prepare() {
