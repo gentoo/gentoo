@@ -176,9 +176,7 @@ fi
 # prefixed cmake args.
 : "${_KFSLOT:=5}"
 if [[ ${CATEGORY} == kde-frameworks ]]; then
-	if [[ ${PV} != 5.9999 ]] && $(ver_test ${KFMIN} -ge 5.240); then
-		_KFSLOT=6
-	fi
+	ver_test ${KFMIN} -ge 5.240 && _KFSLOT=6
 else
 	if [[ ${KFMIN/.*} == 6 ]] || $(ver_test ${KFMIN} -ge 5.240); then
 		_KFSLOT=6
