@@ -25,8 +25,8 @@ else
 
 	XEN_GENTOO_PATCHSET_NUM=2
 	XEN_GENTOO_PATCHSET_BASE=4.17.0
-	XEN_PRE_PATCHSET_NUM=
-	XEN_PRE_VERSION_BASE=
+	XEN_PRE_PATCHSET_NUM=0
+	XEN_PRE_VERSION_BASE=4.18.3
 
 	XEN_BASE_PV="${PV}"
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
@@ -363,16 +363,24 @@ src_prepare() {
 		-i tools/Makefile || die
 
 	# disable png automagic
-	sed -e "s:\$\$source/configure:\0 --disable-vnc-png:" \
+	sed -e "s:\$\$source/configure:\0 --disable-png:" \
 		-i tools/Makefile || die
 
 	# disable docker (Bug #732970)
 	sed -e "s:\$\$source/configure:\0 --disable-containers:" \
 		-i tools/Makefile || die
 
+	# disable gettext (Bug #937219)
+	sed -e "s:\$\$source/configure:\0 --disable-gettext:" \
+		-i tools/Makefile || die
+
 	# disable abi-dumper (Bug #791172)
 	sed -e 's/$(ABI_DUMPER) /echo /g' \
 		-i tools/libs/libs.mk || die
+
+	# disable header check (Bug #921932)
+	sed -e '/__XEN_INTERFACE_VERSION__/,+2d' \
+		-i tools/qemu-xen/include/hw/xen/xen_native.h || die
 
 	# Remove -Werror
 	find . -type f \( -name Makefile -o -name "*.mk" \) \
@@ -456,9 +464,6 @@ src_install() {
 
 	emake DESTDIR="${ED}" DOCDIR="/usr/share/doc/${PF}" \
 		XEN_PYTHON_NATIVE_INSTALL=y install-tools
-
-	# Created at runtime
-	rm -rv "${ED}/var/run" || die
 
 	# Fix the remaining Python shebangs.
 	python_fix_shebang "${D}"
