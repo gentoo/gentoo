@@ -250,11 +250,6 @@ dev-util/cucumber-compatibility-kit:10
 dev-util/cucumber-core:12
 dev-util/cucumber-gherkin:22
 
-# Hans de Graaff <graaff@gentoo.org> (2024-09-14)
-# Old slots that are not compatible with ruby32. Use the newer slots
-# instead. Removal on 2024-10-14.
-dev-ruby/hiera-eyaml:3
-
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.0.9999:30-vcs
