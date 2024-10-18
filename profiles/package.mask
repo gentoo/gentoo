@@ -265,11 +265,6 @@ dev-util/aruba:0
 # Removal on 2024-10-09.  Bug #932568.
 mate-extra/mate-netbook
 
-# Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
-# Fails to build with modern C. Unmaintained for 20 years.
-# Removal on 2024-10-09.  Bug #877105, #927389.
-sci-chemistry/mopac7
-
 # Sam James <sam@gentoo.org> (2024-09-10)
 # Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
 =sys-libs/timezone-data-2024b
