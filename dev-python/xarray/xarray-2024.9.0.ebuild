@@ -34,7 +34,9 @@ BDEPEND="
 		dev-python/cftime[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		!riscv? ( dev-python/netcdf4[bzip2,szip,${PYTHON_USEDEP}] )
+		!riscv? ( !x86? (
+			dev-python/netcdf4[bzip2,szip,${PYTHON_USEDEP}]
+		) )
 		dev-python/toolz[${PYTHON_USEDEP}]
 		!hppa? ( >=dev-python/scipy-1.4[${PYTHON_USEDEP}] )
 	)
