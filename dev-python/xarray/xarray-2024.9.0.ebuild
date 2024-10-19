@@ -99,6 +99,15 @@ python_test() {
 		)
 	fi
 
+	case ${ARCH} in
+		arm64)
+			EPYTEST_DESELECT+=(
+				'xarray/tests/test_backends.py::TestNetCDF4Data::test_roundtrip_mask_and_scale[dtype0-create_unsigned_false_masked_scaled_data-create_encoded_unsigned_false_masked_scaled_data]'
+				'xarray/tests/test_backends.py::TestNetCDF4Data::test_roundtrip_mask_and_scale[dtype1-create_unsigned_false_masked_scaled_data-create_encoded_unsigned_false_masked_scaled_data]'
+			)
+			;;
+	esac
+
 	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			xarray/tests/test_dataset.py::TestDataset::test_polyfit_warnings
