@@ -21,7 +21,7 @@ SRC_URI="
 DESCRIPTION="Prebuilt Java JRE binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net/"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa cups headless-awt selinux"
 
 RDEPEND="
