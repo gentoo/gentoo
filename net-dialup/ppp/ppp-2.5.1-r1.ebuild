@@ -113,7 +113,7 @@ src_install() {
 
 	doman contrib/pppgetpass/pppgetpass.8
 
-	newtmpfiles "${FILESDIR}/pppd.tmpfiles" pppd.conf
+	newtmpfiles "${FILESDIR}/pppd.tmpfiles-r1" pppd.conf
 
 	insinto /etc/ppp/radius
 	doins pppd/plugins/radius/etc/{dictionary*,issue,port-id-map,radiusclient.conf,realms,servers}
