@@ -34,12 +34,7 @@ RDEPEND="
 	disasm? ( >=dev-libs/capstone-3.0.5[python,${PYTHON_USEDEP}] )
 	jsonschema? ( >=dev-python/jsonschema-2.3.0[${PYTHON_USEDEP}] )
 	leechcore? ( >=dev-python/leechcorepyc-2.4.0[${PYTHON_USEDEP}] )
-	snappy? (
-		|| (
-			app-arch/snappy:0/1.1
-			app-arch/snappy:0/1.2
-		)
-	)
+	snappy? ( app-arch/snappy:0/1.1 )
 	yara? ( >=dev-python/yara-python-3.8.0[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
