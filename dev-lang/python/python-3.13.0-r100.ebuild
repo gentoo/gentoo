@@ -99,11 +99,11 @@ BDEPEND="
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 "
-#if [[ ${PV} != *_alpha* ]]; then
-#	RDEPEND+="
-#		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
-#	"
-#fi
+if [[ ${PV} != *_alpha* ]]; then
+	RDEPEND+="
+		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
+	"
+fi
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
 
