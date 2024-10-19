@@ -19,9 +19,10 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib"
+IUSE="curl debug doc +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib"
 
 RDEPEND="
+	acct-group/gerbera
 	acct-user/gerbera
 	dev-db/sqlite
 	dev-libs/libebml:=
@@ -33,10 +34,14 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	curl? ( net-misc/curl )
+	doc? (
+		app-text/doxygen
+		media-gfx/graphviz
+	)
 	exif? ( media-libs/libexif )
 	exiv2? ( media-gfx/exiv2:= )
 	ffmpeg? ( media-video/ffmpeg:= )
-	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
+	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer[png] )
 	javascript? ( dev-lang/duktape:= )
 	magic? ( sys-apps/file )
 	matroska? ( media-libs/libmatroska:= )
@@ -50,6 +55,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_DOC=$(usex doc)
 		-DWITH_AVCODEC=$(usex ffmpeg)
 		-DWITH_CURL=$(usex curl)
 		-DWITH_DEBUG=$(usex debug)
