@@ -30,7 +30,7 @@
  
  # shellcheck disable=SC2162 # file/folder name can include escaped symbols
  grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read l t; do
-+    [ -n "${FIRMWARE_LIST}" ]  && if ! echo "${FIRMWARE_LIST}" | grep -q "${f}"; then continue; fi
++    [ -n "${FIRMWARE_LIST}" ]  && if ! echo "${FIRMWARE_LIST}" | grep -q "${t}"; then continue; fi
      directory="$destdir/$(dirname "$l")"
      install -d "$directory"
      target="$(cd "$directory" && realpath -m -s "$t")"
