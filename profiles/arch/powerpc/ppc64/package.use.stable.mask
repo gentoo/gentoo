@@ -68,6 +68,10 @@ sys-block/tgt rbd
 # Unstable test deps.
 dev-cpp/eigen test
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
+# media-plugins/frei0r-plugins not stable yet
+media-video/ffmpeg frei0r
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not stable
 media-gfx/inkscape cdr visio wpg

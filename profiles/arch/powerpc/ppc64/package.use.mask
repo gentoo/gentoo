@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-19)
+# luajit not keyworded on ppc64, #696222
+dev-libs/efl lua_single_target_luajit
+media-video/obs-studio lua
+
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak is not keyworded
 media-libs/libass libunibreak
@@ -74,6 +79,11 @@ dev-lang/python-exec -python_targets_pypy3
 # Go doesn't support pie on ppc64, bug #818529
 net-dns/dnscrypt-proxy pie
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps not keyworded
+gnome-base/gnome-extra-apps share
+media-gfx/gnome-photos upnp-av
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects zamaudio
@@ -142,6 +152,11 @@ app-emulation/qemu -spice -usbredir
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
 lxqt-base/lxqt-meta archiver
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
+# Problems even on ppc64le, needs more work
+dev-lang/spidermonkey clang
+mail-client/thunderbird clang
 
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
 # Mask until net-analyzer/icinga2 is keyworded
@@ -216,3 +231,7 @@ net-im/pidgin gstreamer
 
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
 media-video/mplayer cpudetection
+
+# Brent Baude <ranger@gentoo.org> (2009-12-31)
+# Masking for bug 274847
+app-admin/conky apcupsd
