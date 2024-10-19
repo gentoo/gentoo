@@ -3,13 +3,15 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
 
 inherit ada multiprocessing
 
 DESCRIPTION="LibGPR2 - Parser for GPR Project files"
 HOMEPAGE="https://github.com/AdaCore/gpr"
 SRC_URI="https://github.com/AdaCore/${PN}/releases/download/v${PV}/gpr2-with-lkparser-$(ver_cut 1-2).tgz"
+
+S="${WORKDIR}"/${PN}
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -27,8 +29,6 @@ RDEPEND="${ADA_DEPS}
 DEPEND="${RDEPEND}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-
-S="${WORKDIR}"/${PN}
 
 src_compile() {
 	build () {
