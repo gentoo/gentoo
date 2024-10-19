@@ -7,6 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="alloca">Use alloca(3) instead of malloc(3) for memory management</flag>
+		<flag name="double">Build library for primary data type of double</flag>
+		<flag name="int16">Build library for primary data type of int16_t</flag>
+		<flag name="int32">Build library for primary data type of int32_t</flag>
 		<flag name="tools">Build command line tools</flag>
 	</use>
 	<upstream>
