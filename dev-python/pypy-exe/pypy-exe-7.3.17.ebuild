@@ -43,6 +43,7 @@ RDEPEND="
 BDEPEND="
 	!low-memory? (
 		|| (
+			dev-lang/pypy:2.7
 			dev-python/pypy
 			dev-lang/python:2.7
 		)
