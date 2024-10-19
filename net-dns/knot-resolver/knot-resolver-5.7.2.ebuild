@@ -10,8 +10,8 @@ inherit lua-single meson tmpfiles verify-sig
 DESCRIPTION="A scaleable caching DNS resolver"
 HOMEPAGE="https://www.knot-resolver.cz https://gitlab.nic.cz/knot/knot-resolver"
 SRC_URI="
-	https://secure.nic.cz/files/${PN}/${P}.tar.xz
-	verify-sig? ( https://secure.nic.cz/files/${PN}/${P}.tar.xz.asc )
+	https://knot-resolver.nic.cz/release/${P}.tar.xz
+	verify-sig? ( https://knot-resolver.nic.cz/release/${P}.tar.xz.asc )
 "
 
 LICENSE="Apache-2.0 BSD CC0-1.0 GPL-3+ LGPL-2.1+ MIT"
