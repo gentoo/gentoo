@@ -90,6 +90,12 @@ python_test() {
 			xarray/tests/test_dataarray.py::TestDataArray::test_repr_multiindex_long
 			xarray/tests/test_dataset.py::TestDataset::test_repr_multiindex
 			xarray/tests/test_formatting.py::test_array_repr_dtypes_unix
+
+			# converting timestamps into ns, causing an overflow
+			xarray/tests/test_cftimeindex.py::test_asi8
+			xarray/tests/test_coding_times.py::test_decode_cf_time_bounds
+			xarray/tests/test_coding_times.py::test_use_cftime_false_standard_calendar_in_range
+			xarray/tests/test_coding_times.py::test_decode_cf_datetime_non_standard_units
 		)
 	fi
 
