@@ -301,18 +301,31 @@ _qt6-build_sanitize_cpu_flags() {
 		fma4 sse4a
 	)
 
+	# extras for which -mno-* does not matter, but can lead to enabling
+	# other flags when set and breaking the -march=haswell case below
+	# (add more as needed if users use these)
+	local cpuflags_filter_only=(
+		avx512vp2intersect
+	)
+
 	# check if any known problematic -mno-* C(XX)FLAGS
 	if ! is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))"; then
-		# check if qsimd_p.h (search for "enable all") will accept -march
-		: "$($(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 1
-				#if (defined(__AVX2__) && (__BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __POPCNT__) != 6) || \
-					(defined(__AVX512F__) && (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512VL__) != 4)
-				bad
-				#endif
-			EOF
-			assert
-		)"
-		[[ ${_} == bad ]] || return 0 # *should* be fine as-is
+		# check if qsimd_p.h (search for "enable all") will accept -march, and
+		# further check when -march=haswell is appended (which Qt uses for some
+		# parts) given combination with other -m* could lead to partial support
+		local bad flags
+		for flags in '' '-march=haswell'; do
+			: "$($(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} ${flags} - <<-EOF | tail -n 1
+					#if (defined(__AVX2__) && (__BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __POPCNT__) != 6) || \
+						(defined(__AVX512F__) && (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512VL__) != 4)
+					bad
+					#endif
+				EOF
+				assert
+			)"
+			[[ ${_} == bad ]] && bad=1 && break
+		done
+		[[ -v bad ]] || return 0 # *should* be fine as-is
 	fi
 
 	# determine highest(known) usable x86-64 feature level
@@ -332,6 +345,7 @@ _qt6-build_sanitize_cpu_flags() {
 		assert
 	)
 
+	cpuflags+=("${cpuflags_filter_only[@]}")
 	filter-flags '-march=*' "${cpuflags[@]/#/-m}" "${cpuflags[@]/#/-mno-}"
 	[[ ${march} == x86-64* ]] && append-flags $(test-flags-CXX -march=${march})
 	einfo "C(XX)FLAGS were adjusted due to Qt limitations: ${CXXFLAGS}"
