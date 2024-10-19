@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~x86"
+KEYWORDS="amd64 ~loong ~x86"
 
 RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
