@@ -79,6 +79,7 @@ for minor in {10..13} 13t; do
 		test_var PYTHON_LIBS "python3_${minor}" "*-lpython3.${minor}*"
 	fi
 	test_var PYTHON_PKG_DEP "python3_${minor}" "*dev-lang/python*:3.${minor}"
+	PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP "python3_${minor}" "*dev-lang/python*:3.${minor}\[sqlite\]"
 	test_var PYTHON_SCRIPTDIR "python3_${minor}" "/usr/lib/python-exec/python3.${minor}"
 
 	tbegin "Testing that python3_${minor} is present in an impl array"
@@ -126,7 +127,8 @@ if [[ -x /usr/bin/pypy3 ]]; then
 	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3.*/site-packages"
 	test_var PYTHON_INCLUDEDIR pypy3 "/usr/include/pypy3.*"
 fi
-test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:='
+test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:=\[symlink\]'
+PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:=\[symlink,sqlite\]'
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
 eoutdent
 

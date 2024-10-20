@@ -450,19 +450,14 @@ _python_export() {
 				local d
 				case ${impl} in
 					python*)
-						PYTHON_PKG_DEP="dev-lang/python:${impl#python}"
+						PYTHON_PKG_DEP="dev-lang/python:${impl#python}${PYTHON_REQ_USE:+[${PYTHON_REQ_USE}]}"
 						;;
 					pypy3)
-						PYTHON_PKG_DEP="dev-python/${impl}:="
+						PYTHON_PKG_DEP=">=dev-lang/pypy-3.10:=[symlink${PYTHON_REQ_USE:+,${PYTHON_REQ_USE}}]"
 						;;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
-
-				# use-dep
-				if [[ ${PYTHON_REQ_USE} ]]; then
-					PYTHON_PKG_DEP+=[${PYTHON_REQ_USE}]
-				fi
 
 				export PYTHON_PKG_DEP
 				debug-print "${FUNCNAME}: PYTHON_PKG_DEP = ${PYTHON_PKG_DEP}"
