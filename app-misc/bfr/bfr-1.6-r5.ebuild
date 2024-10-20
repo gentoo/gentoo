@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="General-purpose command-line pipe buffer"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -19,6 +19,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-perl.patch
 	"${FILESDIR}"/${P}-long-types.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf # uses old broken checks for compiler, bug #874519
+}
 
 src_configure() {
 	tc-export CC
