@@ -1,0 +1,25 @@
+From ab6861f88b781b3e95ee67c01889b2c3f9f23e4d Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 14 Apr 2024 11:18:52 +0200
+Subject: [PATCH] Fix missing quotes on CXXFLAGS
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8bd5411..5c940ee 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,7 +43,7 @@ AC_CONFIG_HEADERS([config/config.h include/LHAPDF/Version.h])
+ 
+ 
+ ## Set default C++ optimisation level to -O3 and drop the -g debug flag
+-if test -z $CXXFLAGS; then
++if test -z "$CXXFLAGS"; then
+     CXXFLAGS='-O3'
+ fi
+ 
+-- 
+GitLab
+

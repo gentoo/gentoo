@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	dev-texlive/texlive-bibtexextra
@@ -45,7 +45,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.5.4-include-cstdint.patch
+	"${FILESDIR}"/${P}-include-cstdint.patch # https://gitlab.com/hepcedar/lhapdf/-/merge_requests/96
+	"${FILESDIR}"/${P}-cxxflags.patch # https://gitlab.com/hepcedar/lhapdf/-/merge_requests/87
 )
 
 pkg_setup() {
