@@ -77,6 +77,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.6-parallel-rdp-standalone-musl.patch
+	# https://bugs.gentoo.org/941889
+	"${FILESDIR}"/${P}-mupen64plus-input-raphnetraw-pkgconfig.patch
+	# https://github.com/gonetz/GLideN64/issues/2877
+	"${FILESDIR}"/${P}-mupen64plus-video-GLideN64-strict-aliasing.patch
 )
 
 pkg_setup() {
