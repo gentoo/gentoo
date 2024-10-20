@@ -28,7 +28,7 @@ DESCRIPTION="Google C++ Testing Framework"
 HOMEPAGE="https://github.com/google/googletest"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="abseil doc examples test"
 RESTRICT="!test? ( test )"
 
