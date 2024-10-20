@@ -166,7 +166,7 @@ net-im/choqok
 # instead. Removal on 2024-11-08.
 dev-ruby/base64:0.1
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-05)
 # This version is known to break on certain systems. At the
 # same time it fixes several reported issues. Masked until
 # we can work out how to resolve the situation.
