@@ -1,0 +1,154 @@
+From 1f0ee66aecbb52f8c423128aa7e0dd35822e989c Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Mon, 27 May 2024 10:23:46 +0200
+Subject: [PATCH] [protolcols] Do not compile-in SFTP when ftp was disabled.
+ Refs #304
+
+---
+ src/protocol/curl/ftp.c  | 42 +++-------------------------------------
+ src/protocol/curl/http.c | 42 ++++++++++++++++++++++++++++++++++++++++
+ src/protocol/curl/sftp.h |  2 +-
+ src/protocol/protocol.c  |  2 +-
+ 4 files changed, 47 insertions(+), 41 deletions(-)
+
+diff --git a/src/protocol/curl/ftp.c b/src/protocol/curl/ftp.c
+index 5f3d462ac..73120a67d 100644
+--- a/src/protocol/curl/ftp.c
++++ b/src/protocol/curl/ftp.c
+@@ -55,6 +55,8 @@
+ #include "util/memory.h"
+ #include "util/string.h"
+ 
++#ifdef CONFIG_FTP
++
+ static char el_curlversion[256];
+ 
+ static void
+@@ -641,45 +643,6 @@ ftp_curl_handle_error(struct connection *conn, CURLcode res)
+ 	abort_connection(conn, connection_state(S_CURL_ERROR - res));
+ }
+ 
+-/* Check for completed transfers, and remove their easy handles */
+-void
+-check_multi_info(GlobalInfo *g)
+-{
+-	//char *eff_url;
+-	CURLMsg *msg;
+-	int msgs_left;
+-	struct connection *conn;
+-	CURL *easy;
+-	CURLcode res;
+-
+-	//fprintf(stderr, "REMAINING: %d\n", g->still_running);
+-
+-	while ((msg = curl_multi_info_read(g->multi, &msgs_left))) {
+-		if (msg->msg == CURLMSG_DONE) {
+-			easy = msg->easy_handle;
+-			res = msg->data.result;
+-			curl_easy_getinfo(easy, CURLINFO_PRIVATE, &conn);
+-
+-			if (conn->uri->protocol == PROTOCOL_HTTP || conn->uri->protocol == PROTOCOL_HTTPS) {
+-				http_curl_handle_error(conn, res);
+-				continue;
+-			}
+-
+-			if (conn->uri->protocol == PROTOCOL_FTP || conn->uri->protocol == PROTOCOL_FTPES || conn->uri->protocol == PROTOCOL_SFTP) {
+-				ftp_curl_handle_error(conn, res);
+-				continue;
+-			} else {
+-				abort_connection(conn, connection_state(S_OK));
+-			}
+-		}
+-	}
+-#if 0
+-	if (g->still_running == 0 && g->stopped) {
+-		event_base_loopbreak(g->evbase);
+-	}
+-#endif
+-}
+-
+ void
+ ftpes_protocol_handler(struct connection *conn)
+ {
+@@ -695,3 +658,4 @@ sftp_protocol_handler(struct connection *conn)
+ 		do_ftpes(conn);
+ 	}
+ }
++#endif
+\ No newline at end of file
+diff --git a/src/protocol/curl/http.c b/src/protocol/curl/http.c
+index e2349489a..25d0eb36d 100644
+--- a/src/protocol/curl/http.c
++++ b/src/protocol/curl/http.c
+@@ -505,3 +505,45 @@ http_curl_protocol_handler(struct connection *conn)
+ 		do_http(conn);
+ 	}
+ }
++
++/* Check for completed transfers, and remove their easy handles */
++void
++check_multi_info(GlobalInfo *g)
++{
++	//char *eff_url;
++	CURLMsg *msg;
++	int msgs_left;
++	struct connection *conn;
++	CURL *easy;
++	CURLcode res;
++
++	//fprintf(stderr, "REMAINING: %d\n", g->still_running);
++
++	while ((msg = curl_multi_info_read(g->multi, &msgs_left))) {
++		if (msg->msg == CURLMSG_DONE) {
++			easy = msg->easy_handle;
++			res = msg->data.result;
++			curl_easy_getinfo(easy, CURLINFO_PRIVATE, &conn);
++
++			if (conn->uri->protocol == PROTOCOL_HTTP || conn->uri->protocol == PROTOCOL_HTTPS) {
++				http_curl_handle_error(conn, res);
++				continue;
++			}
++
++#ifdef CONFIG_FTP
++			if (conn->uri->protocol == PROTOCOL_FTP || conn->uri->protocol == PROTOCOL_FTPES || conn->uri->protocol == PROTOCOL_SFTP) {
++				ftp_curl_handle_error(conn, res);
++				continue;
++			}
++#endif
++			else {
++				abort_connection(conn, connection_state(S_OK));
++			}
++		}
++	}
++#if 0
++	if (g->still_running == 0 && g->stopped) {
++		event_base_loopbreak(g->evbase);
++	}
++#endif
++}
+diff --git a/src/protocol/curl/sftp.h b/src/protocol/curl/sftp.h
+index f9167c3fa..cdcafd572 100644
+--- a/src/protocol/curl/sftp.h
++++ b/src/protocol/curl/sftp.h
+@@ -10,7 +10,7 @@ extern "C" {
+ 
+ extern struct module sftp_protocol_module;
+ 
+-#if defined(CONFIG_LIBCURL)
++#if defined(CONFIG_FTP) && defined(CONFIG_LIBCURL)
+ extern protocol_handler_T sftp_protocol_handler;
+ #else
+ #define sftp_protocol_handler NULL
+diff --git a/src/protocol/protocol.c b/src/protocol/protocol.c
+index 930a4f86b..d3fae896c 100644
+--- a/src/protocol/protocol.c
++++ b/src/protocol/protocol.c
+@@ -336,7 +336,7 @@ static struct module *protocol_submodules[] = {
+ #ifdef CONFIG_NNTP
+ 	&nntp_protocol_module,
+ #endif
+-#if defined(CONFIG_LIBCURL)
++#if defined(CONFIG_FTP) && defined(CONFIG_LIBCURL)
+ 	&sftp_protocol_module,
+ #endif
+ #ifdef CONFIG_SMB
