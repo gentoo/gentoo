@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools libtool bash-completion-r1
+inherit meson shell-completion
 
 DESCRIPTION="Library and tools for managing linux kernel modules"
 HOMEPAGE="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug doc +lzma pkcs7 static-libs +tools +zlib +zstd"
+IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
 
 # Upstream does not support running the test suite with custom configure flags.
 # I was also told that the test suite is intended for kmod developers.
@@ -41,79 +41,39 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? (
-		dev-util/gtk-doc
-		dev-build/gtk-doc-am
-	)
+	app-text/scdoc
+	doc? ( dev-util/gtk-doc )
 	lzma? ( virtual/pkgconfig )
 	zlib? ( virtual/pkgconfig )
 "
-if [[ ${PV} == 9999* ]]; then
-	BDEPEND+=" app-text/scdoc"
-fi
-
-src_prepare() {
-	default
-
-	if [[ ! -e configure ]] || use doc ; then
-		if use doc; then
-			cp "${BROOT}"/usr/share/aclocal/gtk-doc.m4 m4 || die
-			gtkdocize --copy --docdir libkmod/docs || die
-		else
-			touch libkmod/docs/gtk-doc.make
-		fi
-		eautoreconf
-	else
-		elibtoolize
-	fi
-
-	# Restore possibility of running --enable-static, bug #472608
-	sed -i \
-		-e '/--enable-static is not supported by kmod/s:as_fn_error:echo:' \
-		configure || die
-}
-
 src_configure() {
 	# TODO: >=33 enables decompressing without libraries being built in
 	# as kmod defers to the kernel. How should the ebuild be adapted?
-	local myeconfargs=(
-		--bindir="${EPREFIX}/bin"
-		--sbindir="${EPREFIX}/sbin"
-		--enable-shared
-		--with-bashcompletiondir="$(get_bashcompdir)"
-		$(use_enable debug)
-		$(usev doc '--enable-gtk-doc')
-		$(use_enable static-libs static)
-		$(use_enable tools)
-		$(use_with lzma xz)
-		$(use_with pkcs7 openssl)
-		$(use_with zlib)
-		$(use_with zstd)
+	local emesonargs=(
+		--bindir "${EPREFIX}/bin"
+		--sbindir "${EPREFIX}/sbin"
+		-Dbashcompletiondir="$(get_bashcompdir)"
+		-Dfishcompletiondir="$(get_fishcompdir)"
+		-Dzshcompletiondir="$(get_zshcompdir)"
+		$(meson_use debug debug-messages)
+		$(meson_use doc docs)
+		$(meson_use tools)
+		$(meson_feature lzma xz)
+		$(meson_feature pkcs7 openssl)
+		$(meson_feature zlib)
+		$(meson_feature zstd)
 	)
 
-	if [[ ${PV} != 9999 ]] ; then
-		# See src_install
-		myeconfargs+=( --disable-manpages )
-	fi
-
-	econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
 src_install() {
-	default
-
-	if [[ ${PV} != 9999 ]] ; then
-		# The dist logic is broken but the files are in there (bug #937942)
-		emake -C man DESTDIR="${D}" install
-	fi
-
-	find "${ED}" -type f -name "*.la" -delete || die
+	meson_src_install
 
 	if use tools; then
 		local cmd
-		for cmd in depmod insmod modprobe rmmod; do
-			rm "${ED}"/bin/${cmd} || die
-			dosym ../bin/kmod /sbin/${cmd}
+		for cmd in lsmod modinfo; do
+			dosym kmod /bin/${cmd}
 		done
 	fi
 
