@@ -3,7 +3,14 @@
 
 EAPI=8
 
-inherit cmake linux-info
+DOCS_BUILDER="sphinx"
+#DOCS_DEPEND="dev-python/sphinx-rtd-theme"
+DOCS_DIR="doc"
+DOCS_AUTODOC=0
+
+PYTHON_COMPAT=( python3_{10..13} )
+
+inherit python-any-r1 cmake docs linux-info
 
 DESCRIPTION="UPnP Media Server"
 HOMEPAGE="https://gerbera.io"
@@ -34,10 +41,6 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	curl? ( net-misc/curl )
-	doc? (
-		app-text/doxygen
-		media-gfx/graphviz
-	)
 	exif? ( media-libs/libexif )
 	exiv2? ( media-gfx/exiv2:= )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -50,6 +53,12 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
+
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+	')
+	media-gfx/graphviz"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
@@ -73,6 +82,11 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	docs_compile
 }
 
 src_install() {
