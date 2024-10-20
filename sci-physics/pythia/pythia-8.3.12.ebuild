@@ -27,7 +27,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/Pythia8/releases"
 else
 	SRC_URI="https://pythia.org/download/${PN}${MV//./}/${MY_P}.tgz
-	$SRC_URI"
+	${SRC_URI}"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
