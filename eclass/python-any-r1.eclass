@@ -167,8 +167,7 @@ inherit python-utils-r1
 # @CODE
 
 _python_any_set_globals() {
-	local usestr deps i PYTHON_PKG_DEP
-	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
+	local deps i PYTHON_PKG_DEP
 
 	_python_set_impls
 
