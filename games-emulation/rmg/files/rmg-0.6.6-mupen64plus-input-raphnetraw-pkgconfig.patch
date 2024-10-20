@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/941889
+https://github.com/raphnet/mupen64plus-input-raphnetraw/pull/17
+https://github.com/Rosalie241/RMG/pull/296
+https://github.com/Rosalie241/RMG/pull/297
+https://github.com/Rosalie241/RMG/commit/f6b73b86c6625fa5a268b74b1e36114a5bdd535c
+https://github.com/Rosalie241/RMG/commit/69c24b9131909c338b03c48438744b253501146a
+
+From e8ec98eb7e7ee4b769232ce143af6c6f9cf29bc6 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 20 Oct 2024 08:59:56 -0700
+Subject: [PATCH 1/2] 3rdParty: don't hard-code pkg-config in
+ mupen64plus-input-raphnetraw (#296) 3rdParty: improve the hidapi check in
+ mupen64plus-input-raphnetraw (#297)
+
+---
+ .../projects/unix/Makefile                    | 22 ++++++++++---------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/Source/3rdParty/mupen64plus-input-raphnetraw/projects/unix/Makefile b/Source/3rdParty/mupen64plus-input-raphnetraw/projects/unix/Makefile
+index a2571378..18dcaf19 100644
+--- a/Source/3rdParty/mupen64plus-input-raphnetraw/projects/unix/Makefile
++++ b/Source/3rdParty/mupen64plus-input-raphnetraw/projects/unix/Makefile
+@@ -141,6 +141,14 @@ ifeq ($(OS), OSX)
+   endif
+ endif
+
++# test for essential build dependencies
++ifeq ($(origin PKG_CONFIG), undefined)
++  PKG_CONFIG = $(CROSS_COMPILE)pkg-config
++  ifeq ($(shell which $(PKG_CONFIG) 2>/dev/null),)
++    $(error $(PKG_CONFIG) not found)
++  endif
++endif
++
+ ifeq ($(OS), LINUX)
+     HIDAPI_NAME=hidapi-hidraw
+ else
+@@ -149,17 +157,11 @@ endif
+
+ # test for presence of HIDLIB
+ ifeq ($(origin HID_CFLAGS) $(origin HID_LDLIBS), undefined undefined)
+-  HIDAPI_CONFIG = $(CROSS_COMPILE)pkg-config $(HIDAPI_NAME)
+-  ifeq ($(shell which $(HIDAPI_CONFIG) 2>/dev/null),)
+-    HIDAPI_CONFIG = $(CROSS_COMPILE)pkg-config $(HIDAPI_NAME)
+-    ifeq ($(shell which $(HIDAPI_CONFIG) 2>/dev/null),)
+-      $(error No HIDAPI development libraries found!)
+-    else
+-      $(warning Using HIDAPI libraries)
+-    endif
++  ifeq ($(shell $(PKG_CONFIG) --modversion $(HIDAPI_NAME) 2>/dev/null),)
++    $(error No HIDAPI development libraries found!)
+   endif
+-  HID_CFLAGS  += $(shell $(HIDAPI_CONFIG) --cflags)
+-  HID_LDLIBS += $(shell $(HIDAPI_CONFIG) --libs)
++  HID_CFLAGS = $(shell $(PKG_CONFIG) --cflags $(HIDAPI_NAME))
++  HID_LDLIBS = $(shell $(PKG_CONFIG) --libs $(HIDAPI_NAME))
+ endif
+ CFLAGS += $(HID_CFLAGS)
+ LDLIBS += $(HID_LDLIBS)

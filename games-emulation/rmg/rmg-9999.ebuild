@@ -27,7 +27,7 @@ CRATES="
 	winapi@0.3.9
 "
 
-inherit cargo cmake flag-o-matic xdg
+inherit cargo cmake flag-o-matic toolchain-funcs xdg
 
 MY_PN="${PN^^}"
 MY_P="${MY_PN}-${PV}"
@@ -125,6 +125,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local mycmakeargs=(
