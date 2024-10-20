@@ -31,8 +31,7 @@ CRATES="
 	bumpalo@3.16.0
 	byteorder@1.5.0
 	cast@0.3.0
-	cc@1.1.25
-	cc@1.1.8
+	cc@1.1.22
 	cfg-if@1.0.0
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
@@ -119,8 +118,7 @@ CRATES="
 	num-traits@0.2.19
 	number_prefix@0.4.0
 	numpy@0.21.0
-	once_cell@1.19.0
-	once_cell@1.20.2
+	once_cell@1.20.1
 	onig@6.4.0
 	onig_sys@69.8.1
 	oorandom@11.1.4
@@ -161,7 +159,7 @@ CRATES="
 	redox_users@0.4.6
 	regex-automata@0.4.8
 	regex-syntax@0.8.5
-	redox_syscall@0.5.3
+	redox_syscall@0.5.7
 	regex-automata@0.4.7
 	regex-syntax@0.8.4
 	regex@1.10.6
