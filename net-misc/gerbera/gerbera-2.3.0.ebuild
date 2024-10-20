@@ -10,6 +10,7 @@ DOCS_AUTODOC=0
 
 PYTHON_COMPAT=( python3_{10..13} )
 
+# python-any-r1 is inherited first because docs.eclass sources it, and cmake.eclass exports phases.
 inherit python-any-r1 cmake docs linux-info
 
 DESCRIPTION="UPnP Media Server"
