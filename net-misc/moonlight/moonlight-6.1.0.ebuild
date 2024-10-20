@@ -19,8 +19,7 @@ DESCRIPTION="NVIDIA GameStream (and Sunshine) client"
 HOMEPAGE="https://github.com/moonlight-stream/moonlight-qt"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda +libdrm embedded glslow qt5 qt6 soundio +vaapi vdpau vkslow wayland X"
-REQUIRED_USE="|| ( qt6 qt5 )"
+IUSE="cuda +libdrm embedded glslow qt6 soundio +vaapi vdpau vkslow wayland X"
 
 RDEPEND="
 	dev-libs/openssl:=
@@ -35,14 +34,14 @@ RDEPEND="
 		dev-qt/qtbase:6[gui,network]
 		dev-qt/qtdeclarative:6[svg]
 	)
-	!qt6? ( qt5? (
+	!qt6? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtquickcontrols2:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
-	) )
+	)
 	soundio? ( media-libs/libsoundio:= )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
 	vdpau? (
