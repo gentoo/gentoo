@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,10 @@ inherit toolchain-funcs
 
 DESCRIPTION="Yacc: Yet Another Compiler-Compiler"
 HOMEPAGE="http://dinosaur.compilertools.net/#yacc"
-SRC_URI="ftp://metalab.unc.edu/pub/Linux/devel/compiler-tools/${P}.tar.Z"
+SRC_URI="
+	ftp://metalab.unc.edu/pub/Linux/devel/compiler-tools/${P}.tar.Z
+	https://dev.gentoo.org/~arthurzam/distfiles/dev-util/${PN}/${P}-modern-C.patch.xz
+"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -23,6 +26,9 @@ PATCHES=(
 
 	# Avoid stack access error. See bug 232005.
 	"${FILESDIR}/${P}-CVE-2008-3196.patch"
+
+	# fixes for modern C compiler, bug #730802
+	"${WORKDIR}/${P}-modern-C.patch"
 )
 
 src_prepare() {
