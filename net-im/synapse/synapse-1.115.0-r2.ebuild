@@ -124,9 +124,7 @@ DEPEND="
 	acct-user/synapse
 	acct-group/synapse
 "
-# The dev-python/twisted-24.3.0_p20240628 snapshot available in our tree
-# introduces some breaking changes for synapse,
-# see https://github.com/element-hq/synapse/issues/17075
+# <twisted: https://github.com/element-hq/synapse/issues/17075
 RDEPEND="
 	${DEPEND}
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -156,7 +154,7 @@ RDEPEND="
 	dev-python/signedjson[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	dev-python/treq[${PYTHON_USEDEP}]
-	dev-python/twisted[${PYTHON_USEDEP}]
+	<dev-python/twisted-24.10[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
