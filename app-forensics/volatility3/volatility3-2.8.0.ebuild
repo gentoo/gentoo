@@ -23,7 +23,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="crypt disasm jsonschema leechcore snappy test yara"
 
 # We need to select *all* subslots of app-arch/snappy which select
@@ -34,12 +34,7 @@ RDEPEND="
 	disasm? ( >=dev-libs/capstone-3.0.5[python,${PYTHON_USEDEP}] )
 	jsonschema? ( >=dev-python/jsonschema-2.3.0[${PYTHON_USEDEP}] )
 	leechcore? ( >=dev-python/leechcorepyc-2.4.0[${PYTHON_USEDEP}] )
-	snappy? (
-		|| (
-			app-arch/snappy:0/1
-			app-arch/snappy:0/1.1
-		)
-	)
+	snappy? ( app-arch/snappy:0/1.1 )
 	yara? ( >=dev-python/yara-python-3.8.0[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
