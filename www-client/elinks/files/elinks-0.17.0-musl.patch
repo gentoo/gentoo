@@ -1,0 +1,22 @@
+From ee43345e4a20cfa242e88fee94c0afab464d669d Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Mon, 27 May 2024 20:25:23 +0200
+Subject: [PATCH] Revert "[curl] include sys/cdefs.h for __STRING" . Refs #306
+
+This reverts commit 3923ae6d64c4d06fb5b5c21f767c4dda2c304c68.
+---
+ src/main/select.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/main/select.c b/src/main/select.c
+index 505d2aee3..fb2c6e863 100644
+--- a/src/main/select.c
++++ b/src/main/select.c
+@@ -52,7 +52,6 @@
+ 
+ #ifdef CONFIG_LIBCURL
+ #include <curl/curl.h>
+-#include <sys/cdefs.h>
+ #endif
+ 
+ #include "elinks.h"

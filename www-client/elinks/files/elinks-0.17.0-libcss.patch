@@ -1,0 +1,145 @@
+From 2fdb04a6ab5523b94c4bd5c0062b0701686e127f Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Mon, 1 Jan 2024 17:47:59 +0100
+Subject: [PATCH] [libcss] bump libcss to 0.9.2 and libdom to 0.4.2
+
+Needs some tweaks. Code is compilable at least.
+---
+ meson.build               |  8 ++++----
+ src/document/libdom/css.c | 33 ++++++++++++++++++++++++---------
+ 2 files changed, 28 insertions(+), 13 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 2917865fe..20d1d93d3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -492,7 +492,7 @@ conf_data.set('CONFIG_LIBCSS', false)
+ cssdeps = false
+ 
+ if conf_data.get('CONFIG_ECMASCRIPT_SMJS') or conf_data.get('CONFIG_QUICKJS') or conf_data.get('CONFIG_MUJS')
+-    cssdeps = dependency('libcss', static: st, version: '>=0.9.1')
++    cssdeps = dependency('libcss', static: st, version: '>=0.9.2')
+     deps += cssdeps
+     conf_data.set('CONFIG_LIBCSS', true)
+ endif
+@@ -501,17 +501,17 @@ conf_data.set('CONFIG_LIBDOM', false)
+ libdomdeps = false
+ 
+ if conf_data.get('CONFIG_ECMASCRIPT_SMJS') or conf_data.get('CONFIG_QUICKJS') or conf_data.get('CONFIG_MUJS')
+-    libdomdeps = dependency('libdom', static: st, version: '>=0.4.1')
++    libdomdeps = dependency('libdom', static: st, version: '>=0.4.2')
+     deps += libdomdeps
+     conf_data.set('CONFIG_LIBDOM', true)
+ endif
+ 
+ if not conf_data.get('CONFIG_LIBCSS') and get_option('libcss')
+-    cssdeps = dependency('libcss', static: st, version: '>=0.9.1')
++    cssdeps = dependency('libcss', static: st, version: '>=0.9.2')
+     deps += cssdeps
+     conf_data.set('CONFIG_LIBCSS', true)
+     if not conf_data.get('CONFIG_LIBDOM')
+-        libdomdeps = dependency('libdom', static: st, version: '>=0.4.1')
++        libdomdeps = dependency('libdom', static: st, version: '>=0.4.2')
+         deps += libdomdeps
+         conf_data.set('CONFIG_LIBDOM', true)
+     endif
+diff --git a/src/document/libdom/css.c b/src/document/libdom/css.c
+index 662c5d711..02a5f66e5 100644
+--- a/src/document/libdom/css.c
++++ b/src/document/libdom/css.c
+@@ -222,7 +222,6 @@ static css_select_handler selection_handler = {
+ 	node_is_lang,
+ 	node_presentational_hint,
+ 	ua_default_for_property,
+-	compute_font_size,
+ 	set_libcss_node_data,
+ 	get_libcss_node_data
+ };
+@@ -287,7 +286,9 @@ static void nscss_dom_user_data_handler(dom_node_operation operation,
+  *         or NULL on failure
+  */
+ css_select_results *nscss_get_style(nscss_select_ctx *ctx, dom_node *n,
+-		const css_media *media, const css_stylesheet *inline_style)
++		const css_media *media,
++		const css_unit_ctx *unit_len_ctx,
++		const css_stylesheet *inline_style)
+ {
+ 	css_computed_style *composed;
+ 	css_select_results *styles;
+@@ -295,7 +296,7 @@ css_select_results *nscss_get_style(nscss_select_ctx *ctx, dom_node *n,
+ 	css_error error;
+ 
+ 	/* Select style for node */
+-	error = css_select_style(ctx->ctx, n, media, inline_style,
++	error = css_select_style(ctx->ctx, n, unit_len_ctx, media, inline_style,
+ 			&selection_handler, ctx, &styles);
+ 
+ 	if (error != CSS_OK || styles == NULL) {
+@@ -310,8 +311,7 @@ css_select_results *nscss_get_style(nscss_select_ctx *ctx, dom_node *n,
+ 		 * element's style */
+ 		error = css_computed_style_compose(ctx->parent_style,
+ 				styles->styles[CSS_PSEUDO_ELEMENT_NONE],
+-				compute_font_size, ctx,
+-				&composed);
++				unit_len_ctx, &composed);
+ 		if (error != CSS_OK) {
+ 			css_select_results_destroy(styles);
+ 			return NULL;
+@@ -342,8 +342,7 @@ css_select_results *nscss_get_style(nscss_select_ctx *ctx, dom_node *n,
+ 		error = css_computed_style_compose(
+ 				styles->styles[CSS_PSEUDO_ELEMENT_NONE],
+ 				styles->styles[pseudo_element],
+-				compute_font_size, ctx,
+-				&composed);
++				unit_len_ctx, &composed);
+ 		if (error != CSS_OK) {
+ 			/* TODO: perhaps this shouldn't be quite so
+ 			 * catastrophic? */
+@@ -367,6 +366,7 @@ css_select_results *nscss_get_style(nscss_select_ctx *ctx, dom_node *n,
+  * \return Pointer to blank style, or NULL on failure
+  */
+ css_computed_style *nscss_get_blank_style(nscss_select_ctx *ctx,
++		const css_unit_ctx *unit_len_ctx,
+ 		const css_computed_style *parent)
+ {
+ 	css_computed_style *partial, *composed;
+@@ -381,7 +381,7 @@ css_computed_style *nscss_get_blank_style(nscss_select_ctx *ctx,
+ 	/* TODO: Do we really need to compose?  Initial style shouldn't
+ 	 * have any inherited properties. */
+ 	error = css_computed_style_compose(parent, partial,
+-			compute_font_size, ctx, &composed);
++			unit_len_ctx, &composed);
+ 	css_computed_style_destroy(partial);
+ 	if (error != CSS_OK) {
+ 		css_computed_style_destroy(composed);
+@@ -2063,6 +2063,21 @@ select_css(struct html_context *html_context, struct html_element *html_element)
+ 	css_media media = {
+ 		.type = CSS_MEDIA_SCREEN,
+ 	};
++	css_unit_ctx unit_len_ctx;
++	unit_len_ctx.viewport_width  = 800; // TODO
++	unit_len_ctx.viewport_height = 600; // TODO
++	unit_len_ctx.device_dpi = F_90; //device_dpi;
++
++	/** \todo Change nsoption font sizes to px. */
++///	f_size = FDIV(FMUL(F_96, FDIV(INTTOFIX(nsoption_int(font_size)), F_10)), F_72);
++///	f_min  = FDIV(FMUL(F_96, FDIV(INTTOFIX(nsoption_int(font_min_size)), F_10)), F_72);
++
++	unsigned int f_size = FDIV(FMUL(F_96, FDIV(INTTOFIX(50), F_10)), F_72); // TODO
++	unsigned int f_min  = FDIV(FMUL(F_96, FDIV(INTTOFIX(50), F_10)), F_72); // TODO
++
++	unit_len_ctx.font_size_default = f_size;
++	unit_len_ctx.font_size_minimum = f_min;
++
+ 	int offset = html_element->name - html_context->document->text.source;
+ 	dom_node *el = (dom_node *)find_in_map(html_context->document->element_map, offset);
+ 
+@@ -2101,7 +2116,7 @@ select_css(struct html_context *html_context, struct html_element *html_element)
+ ///	ctx.parent_style = parent_style;
+ 
+ 	/* Select style for element */
+-	style = nscss_get_style(&ctx, el, &media, inline_style);
++	style = nscss_get_style(&ctx, el, &media, &unit_len_ctx, inline_style);
+ 
+ 	/* No longer need inline style */
+ 	if (inline_style != NULL) {
