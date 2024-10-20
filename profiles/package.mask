@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-20)
+# Maintainer-needed, no reverse dependencies, EAPI=7, many modern C
+# bugs. Many other IRC clients can be replacement. Awaits version
+# bump.
+# Removal on 2024-11-19.  Bugs #941899, #900078, #934184, #874669, #834035, #745762.
+net-irc/epic5
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
