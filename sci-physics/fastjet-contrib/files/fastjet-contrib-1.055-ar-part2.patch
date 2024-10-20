@@ -1,0 +1,13 @@
+--- a/SignalFreeBackgroundEstimator/Makefile
++++ b/SignalFreeBackgroundEstimator/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
