@@ -31,7 +31,7 @@ index 509d56e116..f49c820fa0 100644
          endif()
          if(GMX_TORCH)
 -            target_compile_options(colvars_objlib PRIVATE ${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS})
-+            target_compile_options(colvars_objlib PRIVATE ${CMAKE_CXX_FLAGS})
++            target_compile_options(colvars_objlib PRIVATE ${TORCH_CXX_FLAGS})
              target_include_directories(colvars_objlib PRIVATE ${TORCH_INCLUDE_DIRS})
              target_compile_definitions(colvars_objlib PRIVATE -DCOLVARS_TORCH)
          endif()

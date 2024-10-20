@@ -241,6 +241,7 @@ src_configure() {
 		-DGMX_USE_HDF5=$(usex hdf5)
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
+		-DGMX_BUILD_HELP=on
 		-DGMX_SIMD="$acce"
 		-DGMX_NNPOT="$nnpot"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
@@ -337,7 +338,7 @@ src_install() {
 		cat "${ED}"/usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
 		newbashcomp "${T}"/"${n}" "${n}"
 	done
-	#rm "${ED}"/usr/bin/gmx-completion*.bash || die
+	rm "${ED}"/usr/bin/gmx-completion*.bash || die
 	readme.gentoo_create_doc
 }
 
