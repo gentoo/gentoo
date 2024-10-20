@@ -77,15 +77,6 @@ src_install() {
 		done
 	fi
 
-	cat <<-EOF > "${T}"/usb-load-ehci-first.conf
-	softdep uhci_hcd pre: ehci_hcd
-	softdep ohci_hcd pre: ehci_hcd
-	EOF
-
-	insinto /lib/modprobe.d
-	# bug #260139
-	doins "${T}"/usb-load-ehci-first.conf
-
 	newinitd "${FILESDIR}"/kmod-static-nodes-r1 kmod-static-nodes
 }
 
