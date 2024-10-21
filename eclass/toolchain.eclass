@@ -1944,6 +1944,10 @@ gcc_do_filter_flags() {
 		filter-flags -Walloc-size
 	fi
 
+	if ver_test -lt 15.1 ; then
+		filter-flags -fdiagnostics-explain-harder
+	fi
+
 	# Please use USE=lto instead (bug #906007).
 	filter-lto
 
