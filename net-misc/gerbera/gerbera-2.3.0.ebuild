@@ -66,7 +66,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_DOC=$(usex doc)
+		-DBUILD_DOC=off
 		-DWITH_AVCODEC=$(usex ffmpeg)
 		-DWITH_CURL=$(usex curl)
 		-DWITH_DEBUG=$(usex debug)
