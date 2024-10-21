@@ -89,6 +89,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
+	# in git master, https://github.com/mltframework/mlt/issues/1020
+	"${FILESDIR}"/${P}-fix-32bit.patch
 )
 
 pkg_setup() {
