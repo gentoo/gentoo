@@ -40,6 +40,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Make-wl_drm-optional.patch
+)
+
 src_prepare() {
 	eapply_user
 	sed -e 's/intel-gen4asm/\0diSaBlEd/g' -i configure.ac || die
