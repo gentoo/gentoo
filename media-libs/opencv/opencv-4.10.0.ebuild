@@ -208,7 +208,6 @@ COMMON_DEPEND="
 		media-libs/libdc1394:=[${MULTILIB_USEDEP}]
 		sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	)
-	java? ( >=virtual/jre-1.8:* )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? (
 		jasper? ( media-libs/jasper:= )
@@ -273,6 +272,8 @@ RDEPEND="
 	${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.8:* )
 "
+unset COMMON_DEPEND
+
 BDEPEND="
 	virtual/pkgconfig
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
@@ -507,9 +508,9 @@ src_prepare() {
 		java-pkg-opt-2_src_prepare
 
 		# set encoding so even this cmake build will pick it up.
-		export ANT_OPTS+=" -Dfile.encoding=iso-8859-1"
-		export ANT_OPTS+=" -Dant.build.javac.source=$(java-pkg_get-source)"
-		export ANT_OPTS+=" -Dant.build.javac.target=$(java-pkg_get-target)"
+		ANT_OPTS+=" -Dfile.encoding=iso-8859-1"
+		ANT_OPTS+=" -Dant.build.javac.source=$(java-pkg_get-source)"
+		ANT_OPTS+=" -Dant.build.javac.target=$(java-pkg_get-target)"
 	fi
 }
 
