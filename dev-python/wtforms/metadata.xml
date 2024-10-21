@@ -8,7 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">WTForms</remote-id>
-		<remote-id type="github">wtforms/wtforms</remote-id>
-		<bugs-to>https://github.com/wtforms/wtforms/issues</bugs-to>
+		<remote-id type="github">pallets-eco/wtforms</remote-id>
 	</upstream>
 </pkgmetadata>
