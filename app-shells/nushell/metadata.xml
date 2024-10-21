@@ -21,5 +21,6 @@
 	</upstream>
 	<use>
 		<flag name="plugins">Build official plugins</flag>
+		<flag name="system-clipboard">System clipboard support in `reedline`</flag>
 	</use>
 </pkgmetadata>
