@@ -69,6 +69,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	sys-apps/which
 	virtual/pkgconfig
 	dynarec? ( dev-lang/nasm )
 	rust-plugin? ( virtual/rust )
