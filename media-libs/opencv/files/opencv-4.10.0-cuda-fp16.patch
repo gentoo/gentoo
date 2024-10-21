@@ -1,0 +1,226 @@
+https://github.com/opencv/opencv/issues/25711
+https://github.com/opencv/opencv/pull/25880
+
+From 5115dc62f8af616c6e75e4b3df3eb8f201298432 Mon Sep 17 00:00:00 2001
+From: Aliaksei Urbanski <aliaksei.urbanski@gmail.com>
+Date: Tue, 9 Jul 2024 01:46:12 +0300
+Subject: [PATCH 1/3] =?UTF-8?q?=F0=9F=90=9B=20Fix=20CUDA=20for=20old=20GPU?=
+ =?UTF-8?q?s=20without=20FP16=20support?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+--- a/modules/dnn/src/cuda4dnn/init.hpp
++++ b/modules/dnn/src/cuda4dnn/init.hpp
+@@ -15,7 +15,7 @@
+ 
+ namespace cv { namespace dnn { namespace cuda4dnn {
+ 
+-    void checkVersions()
++    inline void checkVersions()
+     {
+         // https://docs.nvidia.com/deeplearning/cudnn/developer-guide/index.html#programming-model
+         // cuDNN API Compatibility
+@@ -44,19 +44,19 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+         }
+     }
+ 
+-    int getDeviceCount()
++    inline int getDeviceCount()
+     {
+         return cuda::getCudaEnabledDeviceCount();
+     }
+ 
+-    int getDevice()
++    inline int getDevice()
+     {
+         int device_id = -1;
+         CUDA4DNN_CHECK_CUDA(cudaGetDevice(&device_id));
+         return device_id;
+     }
+ 
+-    bool isDeviceCompatible()
++    inline bool isDeviceCompatible()
+     {
+         int device_id = getDevice();
+         if (device_id < 0)
+@@ -76,7 +76,7 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+         return false;
+     }
+ 
+-    bool doesDeviceSupportFP16()
++    inline bool doesDeviceSupportFP16()
+     {
+         int device_id = getDevice();
+         if (device_id < 0)
+--- a/modules/dnn/src/registry.cpp
++++ b/modules/dnn/src/registry.cpp
+@@ -18,6 +18,10 @@
+ #include "backend.hpp"
+ #include "factory.hpp"
+ 
++#ifdef HAVE_CUDA
++#include "cuda4dnn/init.hpp"
++#endif
++
+ namespace cv {
+ namespace dnn {
+ CV__DNN_INLINE_NS_BEGIN
+@@ -121,7 +125,8 @@ class BackendRegistry
+         if (haveCUDA())
+         {
+             backends.push_back(std::make_pair(DNN_BACKEND_CUDA, DNN_TARGET_CUDA));
+-            backends.push_back(std::make_pair(DNN_BACKEND_CUDA, DNN_TARGET_CUDA_FP16));
++            if (cuda4dnn::doesDeviceSupportFP16())
++                backends.push_back(std::make_pair(DNN_BACKEND_CUDA, DNN_TARGET_CUDA_FP16));
+         }
+ #endif
+ 
+
+From cfb2bc34acd7699707110523f067a7452a404206 Mon Sep 17 00:00:00 2001
+From: Alexander Smorkalov <alexander.smorkalov@xperience.ai>
+Date: Tue, 9 Jul 2024 11:21:58 +0300
+Subject: [PATCH 2/3] Added CUDA FP16 availability check for target management.
+
+--- a/modules/dnn/src/cuda4dnn/init.hpp
++++ b/modules/dnn/src/cuda4dnn/init.hpp
+@@ -56,9 +56,11 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+         return device_id;
+     }
+ 
+-    inline bool isDeviceCompatible()
++    inline bool isDeviceCompatible(int device_id = -1)
+     {
+-        int device_id = getDevice();
++        if (device_id < 0)
++            device_id = getDevice();
++
+         if (device_id < 0)
+             return false;
+ 
+@@ -76,9 +78,11 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+         return false;
+     }
+ 
+-    inline bool doesDeviceSupportFP16()
++    inline bool doesDeviceSupportFP16(int device_id = -1)
+     {
+-        int device_id = getDevice();
++        if (device_id < 0)
++            device_id = getDevice();
++
+         if (device_id < 0)
+             return false;
+ 
+@@ -87,9 +91,7 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+         CUDA4DNN_CHECK_CUDA(cudaDeviceGetAttribute(&minor, cudaDevAttrComputeCapabilityMinor, device_id));
+ 
+         int version = major * 10 + minor;
+-        if (version < 53)
+-            return false;
+-        return true;
++        return (version >= 53);
+     }
+ 
+ }}} /* namespace cv::dnn::cuda4dnn */
+--- a/modules/dnn/src/net_impl_backend.cpp
++++ b/modules/dnn/src/net_impl_backend.cpp
+@@ -10,6 +10,10 @@
+ #include "backend.hpp"
+ #include "factory.hpp"
+ 
++#ifdef HAVE_CUDA
++#include "cuda4dnn/init.hpp"
++#endif
++
+ namespace cv {
+ namespace dnn {
+ CV__DNN_INLINE_NS_BEGIN
+@@ -242,6 +246,16 @@ void Net::Impl::setPreferableTarget(int targetId)
+ #endif
+         }
+ 
++        if (IS_DNN_CUDA_TARGET(targetId))
++        {
++            preferableTarget = DNN_TARGET_CPU;
++#ifdef HAVE_CUDA
++            if (cuda4dnn::doesDeviceSupportFP16() && targetId == DNN_TARGET_CUDA_FP16)
++                preferableTarget = DNN_TARGET_CUDA_FP16;
++            else
++                preferableTarget = DNN_TARGET_CUDA;
++#endif
++        }
+ #if !defined(__arm64__) || !__arm64__
+         if (targetId == DNN_TARGET_CPU_FP16)
+         {
+--- a/modules/dnn/src/registry.cpp
++++ b/modules/dnn/src/registry.cpp
+@@ -122,10 +122,24 @@ class BackendRegistry
+ #endif
+ 
+ #ifdef HAVE_CUDA
+-        if (haveCUDA())
++        cuda4dnn::checkVersions();
++
++        bool hasCudaCompatible = false;
++        bool hasCudaFP16 = false;
++        for (int i = 0; i < cuda4dnn::getDeviceCount(); i++)
++        {
++            if (cuda4dnn::isDeviceCompatible(i))
++            {
++                hasCudaCompatible = true;
++                if (cuda4dnn::doesDeviceSupportFP16(i))
++                    hasCudaFP16 = true;
++            }
++        }
++
++        if (hasCudaCompatible)
+         {
+             backends.push_back(std::make_pair(DNN_BACKEND_CUDA, DNN_TARGET_CUDA));
+-            if (cuda4dnn::doesDeviceSupportFP16())
++            if (hasCudaFP16)
+                 backends.push_back(std::make_pair(DNN_BACKEND_CUDA, DNN_TARGET_CUDA_FP16));
+         }
+ #endif
+--- a/modules/dnn/test/test_common.hpp
++++ b/modules/dnn/test/test_common.hpp
+@@ -211,7 +211,7 @@ class DNNTestLayer : public TestWithParam<tuple<Backend, Target> >
+             if ((!l->supportBackend(backend) || l->preferableTarget != target) && !fused)
+             {
+                 hasFallbacks = true;
+-                std::cout << "FALLBACK: Layer [" << l->type << "]:[" << l->name << "] is expected to has backend implementation" << endl;
++                std::cout << "FALLBACK: Layer [" << l->type << "]:[" << l->name << "] is expected to have backend implementation" << endl;
+             }
+         }
+         if (hasFallbacks && raiseError)
+--- a/modules/dnn/test/test_onnx_conformance.cpp
++++ b/modules/dnn/test/test_onnx_conformance.cpp
+@@ -1008,7 +1008,7 @@ class Test_ONNX_conformance : public TestWithParam<ONNXConfParams>
+             if ((!l->supportBackend(backend) || l->preferableTarget != target) && !fused)
+             {
+                 hasFallbacks = true;
+-                std::cout << "FALLBACK: Layer [" << l->type << "]:[" << l->name << "] is expected to has backend implementation" << endl;
++                std::cout << "FALLBACK: Layer [" << l->type << "]:[" << l->name << "] is expected to have backend implementation" << endl;
+             }
+         }
+         return hasFallbacks;
+
+From cc9178903daff229bc396db718bf347c4eafd33b Mon Sep 17 00:00:00 2001
+From: Alexander Smorkalov <2536374+asmorkalov@users.noreply.github.com>
+Date: Wed, 10 Jul 2024 09:06:09 +0300
+Subject: [PATCH 3/3] Update modules/dnn/src/registry.cpp
+
+Co-authored-by: Aliaksei Urbanski <aliaksei.urbanski@gmail.com>
+--- a/modules/dnn/src/registry.cpp
++++ b/modules/dnn/src/registry.cpp
+@@ -132,7 +132,10 @@ class BackendRegistry
+             {
+                 hasCudaCompatible = true;
+                 if (cuda4dnn::doesDeviceSupportFP16(i))
++                {
+                     hasCudaFP16 = true;
++                    break; // we already have all we need here
++                }
+             }
+         }
+ 

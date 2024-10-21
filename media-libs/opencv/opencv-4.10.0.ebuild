@@ -51,6 +51,8 @@ else
 				https://github.com/NVIDIA/NVIDIAOpticalFlowSDK/archive/${NVIDIA_OPTICAL_FLOW_COMMIT}.tar.gz
 					-> NVIDIAOpticalFlowSDK-${NVIDIA_OPTICAL_FLOW_COMMIT}.tar.gz
 			)
+			https://github.com/${PN}/${PN}_contrib/commit/667a66ee0e99f3f3263c1ef2de1b90d9244b7bd4.patch
+			-> ${PN}_contrib-4.10.0-3607.patch
 		)
 		test? (
 			https://github.com/${PN}/${PN}_extra/archive/refs/tags/${PV}.tar.gz -> ${PN}_extra-${PV}.tar.gz
@@ -177,7 +179,7 @@ COMMON_DEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	cuda? ( <dev-util/nvidia-cuda-toolkit-12.4:0= )
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	cudnn? (
 		dev-cpp/abseil-cpp:=
 		dev-libs/cudnn:=
@@ -282,7 +284,7 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	doc? (
 		app-text/doxygen[dot]
 		python? (
@@ -306,10 +308,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.9.0-cmake-cleanup.patch"
 
 	"${FILESDIR}/${PN}-4.10.0-dnn-explicitly-include-abseil-cpp.patch"
+	"${FILESDIR}/${PN}-4.10.0-cudnn-9.patch" # 25841
+	"${FILESDIR}/${PN}-4.10.0-cuda-fp16.patch" # 25880
+	"${FILESDIR}/${PN}-4.10.0-tbb-detection.patch"
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-${PV}-rgbd.patch"
 	# "${FILESDIR}/${PN}_contrib-4.8.1-NVIDIAOpticalFlowSDK-2.0.tar.gz.patch"
+
+	# "${FILESDIR}/${PN}_contrib-4.10.0-CUDA-12.6-tuple_size.patch" # 3785
 )
 
 cuda_get_host_compiler() {
@@ -419,10 +426,11 @@ src_prepare() {
 		cd "${WORKDIR}/${PN}_contrib-${PV}" || die
 		eapply "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
 		eapply "${FILESDIR}/${PN}_contrib-4.8.1-NVIDIAOpticalFlowSDK-2.0.tar.gz.patch"
-		if has_version ">=dev-util/nvidia-cuda-toolkit-12.4" && use cuda; then
-			# TODO https://github.com/NVIDIA/cccl/pull/1522
-			eapply "${FILESDIR}/${PN}_contrib-4.9.0-cuda-12.4.patch"
+		if ver_test "$(nvcc --version | tail -n 1 | cut -d '_' -f 2- | cut -d '.' -f 1-2)" -ge 12.4; then
+			eapply "${DISTDIR}/${PN}_contrib-4.10.0-3607.patch"
+			eapply "${FILESDIR}/${PN}_contrib-4.10.0-CUDA-12.6-tuple_size.patch" # 3785
 		fi
+
 		cd "${S}" || die
 
 		! use contribcvv && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/cvv" || die; }

@@ -1,0 +1,28 @@
+From 460bf0927fcc09e8c7a21d5bb48044fc923a8ee7 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 8 Oct 2024 00:31:52 +0200
+Subject: [PATCH] Fix tbb detection
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cmake/OpenCVDetectTBB.cmake b/cmake/OpenCVDetectTBB.cmake
+index c9ecc02..3db3ae0 100644
+--- a/cmake/OpenCVDetectTBB.cmake
++++ b/cmake/OpenCVDetectTBB.cmake
+@@ -25,7 +25,12 @@ function(ocv_tbb_cmake_guess _found)
+         message(WARNING "No TBB::tbb target found!")
+         return()
+       endif()
+-      get_target_property(_lib TBB::tbb IMPORTED_LOCATION_RELEASE)
++
++      # Get installed configuration of tbb
++      get_target_property (TARGET_TBB_IMPORT_CONFS TBB::tbb IMPORTED_CONFIGURATIONS)
++      list (GET TARGET_TBB_IMPORT_CONFS 0 CHOSEN_IMPORT_CONF)
++
++      get_target_property(_lib TBB::tbb IMPORTED_LOCATION_${CHOSEN_IMPORT_CONF})
+       message(STATUS "Found TBB (cmake): ${_lib}")
+       get_target_property(_inc TBB::tbb INTERFACE_INCLUDE_DIRECTORIES)
+       add_library(tbb INTERFACE IMPORTED)
+-- 
+2.46.2
+
