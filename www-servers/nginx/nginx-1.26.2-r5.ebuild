@@ -328,7 +328,7 @@ CDEPEND="
 	nginx_modules_http_auth_pam? ( sys-libs/pam )
 	nginx_modules_http_metrics? ( dev-libs/yajl:= )
 	nginx_modules_http_dav_ext? ( dev-libs/libxml2 )
-	nginx_modules_http_security? ( dev-libs/modsecurity )
+	nginx_modules_http_security? ( dev-libs/modsecurity:= )
 	nginx_modules_http_auth_ldap? ( net-nds/openldap:=[ssl?] )
 	nginx_modules_http_vod? ( media-video/ffmpeg:0= )
 	nginx_modules_stream_geoip? ( dev-libs/geoip )
