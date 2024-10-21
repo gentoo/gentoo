@@ -12,7 +12,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for downloading and sharing additional application data"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="opds"
 
 DEPEND="
@@ -28,6 +28,7 @@ DEPEND="
 	opds? ( =kde-frameworks/syndication-${PVCUT}*:6 )
 "
 RDEPEND="${DEPEND}
+	>=kde-frameworks/kcmutils-${PVCUT}:6
 	>=kde-frameworks/kirigami-${PVCUT}:6
 "
 
