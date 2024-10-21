@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">openresty/set-misc-nginx-module</remote-id>
+	</upstream>
+	<use>
+		<flag name="hmac">Enable support for generating HMAC digests using <pkg>dev-libs/openssl</pkg></flag>
+	</use>
+</pkgmetadata>
