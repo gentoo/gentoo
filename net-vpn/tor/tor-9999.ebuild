@@ -73,6 +73,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# test correctly fails because -lnacl fails if not available
+	# https://bugs.gentoo.org/900092
+	crypto_scalarmult_curve25519
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
