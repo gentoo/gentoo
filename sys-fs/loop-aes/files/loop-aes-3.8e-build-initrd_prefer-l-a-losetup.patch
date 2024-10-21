@@ -1,0 +1,42 @@
+diff '--color=auto' -urP loop-AES-v3.8e-build-initrd_explicit-losetup/build-initrd.sh loop-AES-v3.8e-build-initrd_prefer-l-a-losetup/build-initrd.sh
+--- loop-AES-v3.8e-build-initrd_explicit-losetup/build-initrd.sh	2024-10-11 12:21:58.899153668 -0600
++++ loop-AES-v3.8e-build-initrd_prefer-l-a-losetup/build-initrd.sh	2024-10-11 12:24:11.542170501 -0600
+@@ -863,6 +863,11 @@
+ fi
+ rm -f tmp-c-$$.[co]
+ 
++# If the live system has loop-aes-losetup, prefer that over losetup
++# (needed for e.g. Gentoo)
++LOSETUPLIVE=losetup
++command -v loop-aes-losetup >/dev/null && LOSETUPLIVE=loop-aes-losetup
++
+ mkdir tmp-d-$$
+ if [ ${USEPIVOT} != 2 ] ; then
+     x=`cat tmp-c-$$ | wc -c`
+@@ -884,7 +889,7 @@
+ 
+     dd if=/dev/zero of=tmp-i-$$ bs=1024 count=${y}
+     /sbin/mkfs -t minix -i 32 tmp-i-$$ ${y}
+-    losetup /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-i-$$
++    ${LOSETUPLIVE} /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-i-$$
+     mount -t minix /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-d-$$
+ fi
+ cd tmp-d-$$
+@@ -980,7 +985,7 @@
+         if [ ${USEPIVOT} != 2 ] ; then
+             umount tmp-d-$$
+             rmdir tmp-d-$$
+-            losetup -d /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
++            ${LOSETUPLIVE} -d /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
+             rm tmp-i-$$
+         else
+             rm -rf tmp-d-$$
+@@ -1005,7 +1010,7 @@
+     cd ..
+     df tmp-d-$$
+     umount tmp-d-$$
+-    losetup -d /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
++    ${LOSETUPLIVE} -d /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
+     rmdir tmp-d-$$
+     sync ; sync ; sync
+     gzip -9 tmp-i-$$
