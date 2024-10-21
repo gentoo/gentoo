@@ -20,6 +20,7 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# https://bugs.gentoo.org/277307
 	sed -e "s/t3.sh//" -e "s/t7.sh//" -i checks/Makefile.in checks/Makefile.am || die
 
 	eautoreconf
