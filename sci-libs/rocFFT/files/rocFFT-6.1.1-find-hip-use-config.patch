@@ -1,0 +1,31 @@
+Upstream PR: https://github.com/ROCm/rocFFT/pull/530
+From b29c984bfaaec9d372fb566f5136fe3c473ff22d Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Sun, 20 Oct 2024 23:22:50 +0800
+Subject: [PATCH] Require rocFFT use hip-config.cmake to find HIP
+
+Sometimes rocFFT use FindHIP.cmake which is not desired -- it does not
+have hip::device and hip::host target imported and result in cmake
+generating error.
+
+Reference: https://bugs.gentoo.org/932155
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bcb9819c..da697834 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -186,7 +186,7 @@ set(AMDGPU_TARGETS "${DEFAULT_GPUS}" CACHE STRING "Target default GPUs if AMDGPU
+ rocm_check_target_ids(AMDGPU_TARGETS TARGETS "${AMDGPU_TARGETS}")
+   
+ # HIP is required - library and clients use HIP to access the device
+-find_package( HIP REQUIRED )
++find_package( HIP REQUIRED CONFIG )
+ 
+ # The nvidia backend can be used to compile for CUDA devices.
+ # Specify the CUDA prefix in the CUDA_PREFIX variable.
+-- 
+2.45.2
+
