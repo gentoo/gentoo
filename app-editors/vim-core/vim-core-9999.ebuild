@@ -5,8 +5,8 @@ EAPI=8
 
 # Please bump with app-editors/vim and app-editors/gvim
 
-VIM_VERSION="9.0"
-VIM_PATCHES_VERSION="9.0.1000"
+VIM_VERSION="9.1"
+VIM_PATCHES_VERSION="9.0.2092"
 inherit bash-completion-r1 desktop flag-o-matic prefix toolchain-funcs vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
