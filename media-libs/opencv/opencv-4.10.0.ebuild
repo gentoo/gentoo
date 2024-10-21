@@ -573,7 +573,7 @@ multilib_src_configure() {
 		# -DWITH_QUICKTIME="no"
 		# -DWITH_QTKIT="no"
 		-DWITH_TBB="$(usex tbb)"
-		-DWITH_OPENMP="$(usex !tbb "$(usex openmp)")"
+		-DWITH_OPENMP="$(usex openmp)"
 		-DWITH_PTHREADS_PF="yes"
 		-DWITH_TIFF="$(usex tiff)"
 		-DWITH_UNICAP="no"               # Not packaged
@@ -838,7 +838,7 @@ multilib_src_configure() {
 	if use mkl; then
 		mycmakeargs+=(
 			-DLAPACK_IMPL="MKL"
-			-DMKL_WITH_OPENMP="$(usex !tbb "$(usex openmp)")"
+			-DMKL_WITH_OPENMP="$(usex openmp)"
 			-DMKL_WITH_TBB="$(usex tbb)"
 		)
 	fi
