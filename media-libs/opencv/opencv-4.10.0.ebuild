@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cuda java-pkg-opt-2 cmake-multilib flag-o-matic multiprocessing python-r1 toolchain-funcs virtualx
+inherit cuda java-pkg-opt-2 cmake-multilib flag-o-matic multilib multiprocessing python-r1 toolchain-funcs virtualx
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
@@ -28,7 +28,8 @@ else
 	# branch nvof_2_0_bsd
 	NVIDIA_OPTICAL_FLOW_COMMIT="edb50da3cf849840d680249aa6dbef248ebce2ca"
 
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="
+		https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/opencv/ade/archive/v${ADE_PV}.tar.gz -> ade-${ADE_PV}.tar.gz
 		contrib? (
 			https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${PN}_contrib-${PV}.tar.gz
@@ -70,7 +71,7 @@ IUSE="debug doc +eigen gflags glog java non-free opencvapps +python test testpro
 # modules
 IUSE+=" contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d dnnsamples examples +features2d"
 # hardware
-IUSE+=" opencl cuda cudnn video_cards_intel"
+IUSE+=" cuda cudnn opencl video_cards_intel"
 # video
 IUSE+=" +ffmpeg gstreamer xine vaapi v4l gphoto2 ieee1394"
 # image
@@ -171,7 +172,7 @@ REQUIRED_USE="
 	tesseract? ( contrib )
 	?? ( gtk3 qt6 )
 	testprograms? ( test )
-	test? ( || ( ffmpeg gstreamer ) jpeg png tiff features2d  )
+	test? ( || ( ffmpeg gstreamer ) jpeg png tiff features2d )
 "
 
 RESTRICT="!test? ( test )"
@@ -307,6 +308,7 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-4.8.1-use-system-flatbuffers.patch"
 	"${FILESDIR}/${PN}-4.8.1-use-system-opencl.patch"
+
 	"${FILESDIR}/${PN}-4.9.0-drop-python2-detection.patch"
 	"${FILESDIR}/${PN}-4.9.0-ade-0.1.2d.tar.gz.patch"
 	"${FILESDIR}/${PN}-4.9.0-cmake-cleanup.patch"
@@ -318,7 +320,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-tbb-detection.patch"
 
 	# TODO applied in src_prepare
-	# "${FILESDIR}/${PN}_contrib-${PV}-rgbd.patch"
+	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
+
 	# "${FILESDIR}/${PN}_contrib-4.8.1-NVIDIAOpticalFlowSDK-2.0.tar.gz.patch"
 
 	# "${FILESDIR}/${PN}_contrib-4.10.0-CUDA-12.6-tuple_size.patch" # 3785
@@ -389,6 +392,8 @@ cuda_get_host_native_arch() {
 }
 
 pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	if use cuda && [[ -z "${CUDA_GENERATION}" ]] && [[ -z "${CUDA_ARCH_BIN}" ]]; then # TODO CUDAARCHS
 		einfo "The target CUDA architecture can be set via one of:"
 		einfo "  - CUDA_GENERATION set to one of Maxwell, Pascal, Volta, Turing, Ampere, Lovelace, Hopper, Auto"
@@ -403,12 +408,11 @@ pkg_pretend() {
 		local info_message="When building a binary package it's recommended to unset CUDA_GENERATION and CUDA_ARCH_BIN"
 		einfo "$info_message so all available architectures are build."
 	fi
-
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	use java && java-pkg-opt-2_pkg_setup
 
 	if use cuda && [[ ! -e /dev/nvidia-uvm ]]; then
@@ -916,13 +920,10 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	opencv_compile() {
-		cmake_src_compile
-	}
 	if multilib_is_native_abi && use python; then
-		python_foreach_impl opencv_compile
+		python_foreach_impl cmake_src_compile
 	else
-		opencv_compile
+		cmake_src_compile
 	fi
 }
 
