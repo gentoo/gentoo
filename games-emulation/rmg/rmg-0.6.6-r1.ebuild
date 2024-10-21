@@ -76,6 +76,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.6-parallel-rdp-standalone-musl.patch
+	# Use pkg-config(1) for SDL2 and don't depend on which(1)
+	"${FILESDIR}"/${P}-mupen64plus-core-sdl-pkgconfig.patch
 )
 
 pkg_setup() {
