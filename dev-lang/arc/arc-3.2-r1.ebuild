@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,24 +16,28 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	!app-arch/arc
-	dev-scheme/racket:=
+	dev-scheme/racket:=[-minimal]
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
+
+DOCS=( copyright how-to-run-news )
 
 src_compile() {
-	# byte-compile some racket modules
-	local mod
+	# Byte-compile Racket modules.
+	local mod=""
 	for mod in ac brackets ; do
-		raco make --vv ./${mod}.scm || die "raco failed to compile ${mod}"
+		raco make --vv "./${mod}.scm" || die "raco failed to compile ${mod}"
 	done
 }
 
 src_install() {
-	dodoc copyright how-to-run-news
-	rm copyright how-to-run-news || die
+	einstalldocs
+	rm "${DOCS[@]}" || die
 
-	insinto /usr/share/${PN}
-	doins -r *
+	insinto "/usr/share/${PN}"
+	doins -r ./*
 
-	make_wrapper ${PN} "racket --load ./as.scm" /usr/share/${PN}
+	make_wrapper "${PN}" "racket --load ./as.scm" "/usr/share/${PN}"
 }
