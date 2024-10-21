@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop libtool qmake-utils systemd
+inherit desktop flag-o-matic libtool qmake-utils systemd
 
 MY_PV=${PV/_beta/-b}
 MY_P=${PN}-${MY_PV}
@@ -195,6 +195,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# bug #940695
+	#
+	# common datastructures with partial different components for
+	# different tools of the backup suite
+	filter-lto
+
 	local myconf=''
 
 	if use bacula-clientonly; then
