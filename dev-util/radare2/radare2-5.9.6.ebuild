@@ -10,7 +10,7 @@ HOMEPAGE="https://www.radare.org"
 
 ARM64_COMMIT=55d73c6bbb94448a5c615933179e73ac618cf876
 ARMV7_COMMIT=f270a6cc99644cb8e76055b6fa632b25abd26024
-BINS_COMMIT=ff7a8fb14610c87f7b2d3b185eb267f2aff381ca
+BINS_COMMIT=87ab82cc96e83e02f044c0c4111ade2a65576c60
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -33,6 +33,7 @@ IUSE="ssl test"
 RESTRICT="fetch !test? ( test )"
 
 RDEPEND="
+	app-arch/lz4
 	>=dev-libs/capstone-5.0_rc4:=
 	dev-libs/libzip:=
 	dev-libs/xxhash
@@ -48,6 +49,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.8.2-vector35.patch"
+	"${FILESDIR}/${PN}-5.8.4-test.patch"
 )
 
 src_prepare() {
@@ -73,12 +75,12 @@ src_configure() {
 	export HOST_CC=${CC}
 
 	econf \
-		--without-libuv \
 		--with-syscapstone \
+		--with-syslz4 \
 		--with-sysmagic \
 		--with-sysxxhash \
 		--with-syszip \
-		$(use_with ssl openssl)
+		$(use_with ssl)
 }
 
 src_test() {
