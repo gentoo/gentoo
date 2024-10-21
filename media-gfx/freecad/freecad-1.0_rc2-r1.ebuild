@@ -30,7 +30,7 @@ SLOT="0"
 IUSE="debug designer +gui +qt6 spacenav test X"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
-FREECAD_STABLE_MODULES="addonmgr fem idf inspection material
+FREECAD_STABLE_MODULES="addonmgr fem idf inspection
 	openscad part-design points robot show smesh
 	surface techdraw"
 
@@ -70,6 +70,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-cpp/gtest
+	dev-cpp/yaml-cpp
 	dev-libs/boost:=
 	dev-libs/libfmt:=
 	dev-libs/xerces-c[icu]
@@ -128,7 +129,6 @@ RDEPEND="
 			' )
 		)
 	)
-	material? ( dev-cpp/yaml-cpp )
 	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2,vtk] )
@@ -212,7 +212,7 @@ src_configure() {
 		-DBUILD_IMPORT=ON						# import module for various file formats
 		-DBUILD_INSPECTION=$(usex inspection)
 		-DBUILD_JTREADER=OFF					# uses an old proprietary library
-		-DBUILD_MATERIAL=$(usex material)
+		-DBUILD_MATERIAL=ON
 		-DBUILD_MEASURE=ON
 		-DBUILD_MESH=ON
 		-DBUILD_MESH_PART=ON
