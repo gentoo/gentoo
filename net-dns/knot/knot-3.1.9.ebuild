@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,6 +8,8 @@ inherit flag-o-matic systemd
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/ https://gitlab.nic.cz/knot/knot-dns"
 SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
+
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -49,8 +51,8 @@ RDEPEND="
 	)
 	systemd? ( sys-apps/systemd:= )
 	xdp? (
-		 dev-libs/libbpf:=
-		 net-libs/libmnl:=
+		<dev-libs/libbpf-0.9:=
+		net-libs/libmnl:=
 	)
 "
 DEPEND="${RDEPEND}"
@@ -58,8 +60,6 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 "
-
-S="${WORKDIR}/${P/_/-}"
 
 src_configure() {
 	local u
