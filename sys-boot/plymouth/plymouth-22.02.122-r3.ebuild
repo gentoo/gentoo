@@ -38,6 +38,7 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	elibc_musl? ( sys-libs/rpmatch-standalone )
+	pango? ( x11-base/xorg-proto )
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig

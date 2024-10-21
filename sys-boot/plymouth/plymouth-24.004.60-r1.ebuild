@@ -52,6 +52,7 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	elibc_musl? ( sys-libs/rpmatch-standalone )
+	pango? ( x11-base/xorg-proto )
 "
 
 RDEPEND="${COMMON_DEPEND}
