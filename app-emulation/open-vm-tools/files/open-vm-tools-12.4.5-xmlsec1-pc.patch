@@ -8,13 +8,13 @@ Subject: [PATCH 1/2] Also try using pkg-config to detect xmlsec
 The xmlsec1-config script does not help when cross-compiling. pkg-config is
 subsequently used for a version detection anyway.
 ---
- open-vm-tools/configure.ac | 2 +-
+ configure.ac | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/open-vm-tools/configure.ac b/open-vm-tools/configure.ac
+diff --git a/configure.ac b/configure.ac
 index 26b2e950..d46a51e2 100644
---- a/open-vm-tools/configure.ac
-+++ b/open-vm-tools/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -879,7 +879,7 @@ if test "$enable_vgauth" = "yes" ; then
     AC_VMW_DEFAULT_FLAGS([XMLSEC1])
     AC_VMW_CHECK_LIB([xmlsec1],
@@ -36,13 +36,13 @@ Subject: [PATCH 2/2] Respect the $PKG_CONFIG variable when checking the xmlsec
 
 This particularly helps when cross-compiling.
 ---
- open-vm-tools/configure.ac | 2 +-
+ configure.ac | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/open-vm-tools/configure.ac b/open-vm-tools/configure.ac
+diff --git a/configure.ac b/configure.ac
 index d46a51e2..39b9fa9c 100644
---- a/open-vm-tools/configure.ac
-+++ b/open-vm-tools/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -884,7 +884,7 @@ if test "$enable_vgauth" = "yes" ; then
                       [],
                       [xmlsec/xmlsec.h],

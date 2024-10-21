@@ -62,9 +62,9 @@ BDEPEND="
 	doc? ( app-text/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}"/10.1.0-Werror.patch
-	"${FILESDIR}"/11.3.5-icu.patch
-	"${FILESDIR}"/12.4.5-xmlsec1-pc.patch
+	"${FILESDIR}"/${PN}-12.4.5-Werror.patch
+	"${FILESDIR}"/${PN}-12.4.5-icu.patch
+	"${FILESDIR}"/${PN}-12.4.5-xmlsec1-pc.patch
 )
 
 pkg_setup() {
@@ -75,8 +75,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply -p2 "${PATCHES[@]}"
-	eapply_user
+	default
 	eautoreconf
 }
 
