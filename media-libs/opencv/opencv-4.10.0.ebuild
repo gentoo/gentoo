@@ -170,6 +170,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )
 	?? ( gtk3 qt6 )
+	testprograms? ( test )
 	test? ( || ( ffmpeg gstreamer ) jpeg png tiff features2d  )
 "
 
@@ -524,6 +525,12 @@ src_prepare() {
 		ANT_OPTS+=" -Dant.build.javac.source=$(java-pkg_get-source)"
 		ANT_OPTS+=" -Dant.build.javac.target=$(java-pkg_get-target)"
 	fi
+
+	if multilib_native_use testprograms; then
+		sed \
+			-e 's:share/OpenCV/testdata:@OPENCV_TEST_DATA_INSTALL_PATH@:g' \
+			-i  "${S}/cmake/templates/opencv_run_all_tests_unix.sh.in" || die
+	fi
 }
 
 multilib_src_configure() {
@@ -616,7 +623,7 @@ multilib_src_configure() {
 		-DBUILD_opencv_apps="$(usex opencvapps)"
 		-DBUILD_DOCS="$(usex doc)" # Doesn't install anyways.
 		-DBUILD_EXAMPLES="$(multilib_native_usex examples)"
-		-DBUILD_TESTS="$(multilib_native_usex test)"
+		-DBUILD_TESTS="$(multilib_native_usex test "yes" "$(multilib_native_usex testprograms)")"
 		-DBUILD_PERF_TESTS="no"
 
 		# -DBUILD_WITH_STATIC_CRT="no"
@@ -675,9 +682,6 @@ multilib_src_configure() {
 	# things we want to be hard enabled not worth useflag
 	# ===================================================
 		-DOPENCV_DOC_INSTALL_PATH="share/doc/${PF}"
-		# NOTE do this so testprograms do not fail TODO adjust path in code
-		-DOPENCV_TEST_DATA_INSTALL_PATH="share/${PN}$(ver_cut 1)/testdata"
-		-DOPENCV_TEST_INSTALL_PATH="libexec/${PN}/bin/test"
 		-DOPENCV_SAMPLES_BIN_INSTALL_PATH="libexec/${PN}/bin/samples"
 
 		-DBUILD_IPP_IW="no"
@@ -875,6 +879,13 @@ multilib_src_configure() {
 		fi
 	fi
 
+	if multilib_native_use testprograms; then
+		# NOTE do this so testprograms do not fail
+		mycmakeargs+=(
+			-DOPENCV_TEST_INSTALL_PATH="libexec/${PN}/bin/test"
+		)
+	fi
+
 	if multilib_is_native_abi && use python; then
 		python_configure() {
 			# Set all python variables to load the correct Gentoo paths
@@ -916,6 +927,9 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	# NOTE we don't run the tests
+	use testprograms && return
+
 	CMAKE_SKIP_TESTS=(
 		'Test_ONNX_layers.LSTM_cell_forward/0'
 		'Test_ONNX_layers.LSTM_cell_bidirectional/0'
