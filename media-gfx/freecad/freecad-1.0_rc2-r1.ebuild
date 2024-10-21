@@ -32,7 +32,7 @@ IUSE="debug designer +gui pcl +qt6 smesh spacenav test X"
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-IUSE+=" addonmgr cloud fem idf inspection netgen openscad points robot surface techdraw"
+IUSE+=" addonmgr cloud fem idf inspection netgen openscad points robot surface +techdraw"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -41,6 +41,7 @@ REQUIRED_USE="
 	inspection? ( points )
 	openscad? ( smesh )
 	python_single_target_python3_12? ( gui? ( qt6 ) )
+	test? ( techdraw )
 "
 # There is no py3.12 support planned for pyside2
 
@@ -294,12 +295,16 @@ src_configure() {
 # configuration. Without those, there are sandbox violation, when it
 # tries to create /var/lib/portage/home/.FreeCAD directory.
 src_test() {
-	pushd "${BUILD_DIR}" > /dev/null || die
-	export FREECAD_USER_HOME="${HOME}"
-	export FREECAD_USER_DATA="${T}"
-	export FREECAD_USER_TEMP="${T}"
-	nonfatal ./bin/FreeCADCmd --run-test 0
-	popd > /dev/null || die
+	(
+		pushd "${BUILD_DIR}" > /dev/null || die
+		export FREECAD_USER_HOME="${HOME}"
+		export FREECAD_USER_DATA="${T}"
+		export FREECAD_USER_TEMP="${T}"
+		nonfatal ./bin/FreeCADCmd --run-test 0
+		ret=${?}
+		popd > /dev/null || die
+		exit "${ret}"
+	) || die
 }
 
 src_install() {
