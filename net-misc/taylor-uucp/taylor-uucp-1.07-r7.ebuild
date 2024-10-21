@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-fprintf.patch
 	"${FILESDIR}"/${P}-remove-extern.patch
+	"${FILESDIR}"/${P}-modernc.patch
 )
 
 src_prepare() {
