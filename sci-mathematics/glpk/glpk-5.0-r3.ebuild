@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.65-fix-mysql-include-prefix.patch
 	"${FILESDIR}"/${PN}-4.65-debundle-system-libs.patch
+	"${FILESDIR}"/${PN}-5.0-aliasing.patch
 )
 
 src_prepare() {
@@ -53,15 +54,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://bugs.gentoo.org/863047
-	# https://lists.gnu.org/archive/html/bug-glpk/2022-08/msg00000.html
-	# No upstream response...
-	#
-	# Do not trust it to LTO either.
-	append-flags -fno-strict-aliasing
-	filter-lto
-
 	local myconf
 	if use mysql || use odbc; then
 		myconf="--enable-dl"
