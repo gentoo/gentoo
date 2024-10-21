@@ -7,7 +7,7 @@
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=8.0
+DOTNET_PKG_COMPAT="8.0"
 NUGET_APIS=(
 	"https://api.nuget.org/v3-flatcontainer"
 	"https://www.powershellgallery.com/api/v2"
@@ -265,7 +265,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="gui"
+IUSE="gui vanilla"
 
 # TODO: "LibraryImports.g.cs", "PSVersionInfo.g.cs" not found.
 RESTRICT="test"
@@ -296,7 +296,6 @@ DOTNET_PKG_PROJECTS=(
 )
 PATCHES=(
 	"${FILESDIR}/pwsh-7.3.3-disable-update-check.patch"
-	"${FILESDIR}/pwsh-7.4.0-disable-telemetry.patch"
 	"${FILESDIR}/pwsh-7.4.5-downgrade-codeanalysis.patch"
 )
 
@@ -348,6 +347,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if ! use vanilla ; then
+		PATCHES+=(
+			"${FILESDIR}/pwsh-7.4.0-disable-telemetry.patch"
+		)
+	fi
+
 	dotnet-pkg_src_prepare
 
 	# This is guarded by "RegexGitVersion" in "PowerShell.Common.props".
