@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=(19)
+LLVM_COMPAT=(18)
 LLVM_OPTIONAL=1
 
 ZIG_SLOT="$(ver_cut 1-2)"
@@ -75,6 +75,11 @@ RDEPEND="${DEPEND}"
 IDEPEND="app-eselect/eselect-zig"
 
 DOCS=("README.md" "doc/build.zig.zon.md")
+
+PATCHES=(
+	"${FILESDIR}/zig-0.13.0-test-std-kernel-version.patch"
+	"${FILESDIR}/zig-0.13.0-skip-test-stack_iterator.patch"
+)
 
 # zig-build does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
