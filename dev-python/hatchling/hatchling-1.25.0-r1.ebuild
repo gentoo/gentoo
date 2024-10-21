@@ -41,7 +41,7 @@ RDEPEND="
 # stops treating unknown classifiers as a fatal error
 # https://github.com/pypa/hatch/issues/1368
 RDEPEND+="
-	>=dev-python/trove-classifiers-2024.3.25[${PYTHON_USEDEP}]
+	>=dev-python/trove-classifiers-2024.10.16[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
