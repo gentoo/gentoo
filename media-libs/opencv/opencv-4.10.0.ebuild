@@ -77,7 +77,7 @@ IUSE+=" +ffmpeg gstreamer xine vaapi v4l gphoto2 ieee1394"
 # image
 IUSE+=" avif gdal jasper jpeg jpeg2k openexr png quirc tesseract tiff webp"
 # gui
-IUSE+=" gtk3 qt6 opengl vtk"
+IUSE+=" gtk3 qt6 opengl truetype vtk"
 # parallel
 IUSE+=" openmp tbb"
 # lapack options
@@ -195,6 +195,7 @@ COMMON_DEPEND="
 	)
 	contribovis? ( >=dev-games/ogre-1.12:= )
 	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
+	truetype? ( media-libs/freetype:2[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
 	glog? ( dev-cpp/glog:=[${MULTILIB_USEDEP}] )
@@ -610,6 +611,7 @@ multilib_src_configure() {
 		-DWITH_ITT="no" # 3dparty libs itt_notify
 
 		-DWITH_AVIF="$(usex avif)"
+		-DWITH_FREETYPE="$(usex truetype)"
 	# ===================================================
 	# CUDA build components: nvidia-cuda-toolkit
 	# ===================================================
