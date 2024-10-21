@@ -32,7 +32,7 @@ IUSE="debug designer +gui +qt6 spacenav test X"
 FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
 	openscad part-design path points raytracing robot show smesh
-	surface techdraw tux"
+	surface techdraw"
 
 for module in ${FREECAD_STABLE_MODULES}; do
 	IUSE="${IUSE} +${module}"
@@ -237,7 +237,7 @@ src_configure() {
 		-DBUILD_SURFACE=$(usex surface)
 		-DBUILD_TECHDRAW=$(usex techdraw)
 		-DBUILD_TEST=ON							# always build test workbench for run-time testing
-		-DBUILD_TUX=$(usex tux)
+		-DBUILD_TUX=$(usex gui)
 		-DBUILD_VR=OFF
 		-DBUILD_WEB=ON							# needed by start workspace
 		-DBUILD_WITH_CONDA=OFF
