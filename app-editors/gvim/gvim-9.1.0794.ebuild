@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# Please bump with app-editors/vim-core and app-editors/gvim
+# Please bump with app-editors/vim-core and app-editors/vim
 
 VIM_VERSION="9.1"
 VIM_PATCHES_VERSION="9.0.2092"
@@ -13,37 +13,46 @@ PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby31 ruby32"
 
-inherit bash-completion-r1 flag-o-matic lua-single desktop python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
+inherit bash-completion-r1 flag-o-matic lua-single prefix python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
+	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
-	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
+S="${WORKDIR}"/vim-${PV}
 
-DESCRIPTION="Vim, an improved vi-style text editor"
+DESCRIPTION="GUI version of the Vim text editor"
 HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager X"
+IUSE="acl crypt cscope debug lua minimal motif netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	vim-pager? ( !minimal )
 "
 
 RDEPEND="
 	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
 	>=sys-libs/ncurses-5.2-r2:0=
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libXext
+	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
+	motif? ( >=x11-libs/motif-2.3:0 )
+	!motif? (
+		x11-libs/gtk+:3
+		x11-libs/libXft
+	)
 	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
-	gpm? ( >=sys-libs/gpm-1.19.3 )
 	lua? (
 		${LUA_DEPS}
 		$(lua_gen_impl_dep 'deprecated' lua5-1)
@@ -54,17 +63,16 @@ RDEPEND="
 	racket? ( dev-scheme/racket )
 	ruby? ( ${RUBY_DEPS} )
 	selinux? ( sys-libs/libselinux )
+	session? ( x11-libs/libSM )
 	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
-	vim-pager? ( app-editors/vim-core[-minimal] )
-	X? ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )
-"
+	x11-base/xorg-proto"
 # configure runs the Lua interpreter
 BDEPEND="
 	dev-build/autoconf
+	virtual/pkgconfig
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
@@ -77,7 +85,10 @@ if [[ ${PV} != 9999* ]]; then
 	)
 fi
 
-# platform-specific checks (bug #898450 #898452):
+# various failures (bugs #630042 and #682320)
+RESTRICT="test"
+
+# platform-specific checks (bug #898450):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -86,7 +97,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 pkg_setup() {
-	# people with broken alphabets run into trouble. bug #82186.
+	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
@@ -110,7 +121,7 @@ src_prepare() {
 
 	# Use exuberant ctags which installs as /usr/bin/exuberant-ctags.
 	# Hopefully this pattern won't break for a while at least.
-	# This fixes bug #29398 (27 Sep 2003 agriffis)
+	# This fixes bug 29398 (27 Sep 2003 agriffis)
 	sed -i -e \
 		's/\<ctags\("\| [-*.]\)/exuberant-&/g' \
 		"${S}"/runtime/doc/syntax.txt \
@@ -127,24 +138,11 @@ src_prepare() {
 		echo >> "$c" || die "echo failed"
 	done
 
-	# conditionally make the manpager.sh script
-	if use vim-pager; then
-		cat > "${S}"/runtime/macros/manpager.sh <<-_EOF_ || die "cat EOF failed"
-			#!/bin/sh
-			sed -e 's/\x1B\[[[:digit:]]\+m//g' | col -b | \\
-					vim \\
-						-c 'let no_plugin_maps = 1' \\
-						-c 'set nolist nomod ft=man ts=8' \\
-						-c 'let g:showmarks_enable=0' \\
-						-c 'runtime! macros/less.vim' -
-			_EOF_
-	fi
-
 	# Try to avoid sandbox problems. Bug #114475.
 	if [[ -d "${S}"/src/po ]]; then
 		sed -i -e \
 			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
-			"${S}"/src/po/Makefile || die "sed failed"
+			"${S}"/src/po/Makefile || die
 	fi
 
 	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
@@ -156,7 +154,7 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i -e \
 		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm src/auto/configure || die "rm failed"
+	rm -v src/auto/configure || die "rm failed"
 
 	# --with-features=huge forces on cscope even if we --disable it. We need
 	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
@@ -173,8 +171,8 @@ src_prepare() {
 
 src_configure() {
 
-	# Fix bug #37354: Disallow -funroll-all-loops on amd64
-	# Bug #57859 suggests that we want to do this for all archs
+	# Fix bug 37354: Disallow -funroll-all-loops on amd64
+	# Bug 57859 suggests that we want to do this for all archs
 	filter-flags -funroll-all-loops
 
 	# Fix bug 76331: -O3 causes problems, use -O2 instead. We'll do this for
@@ -184,76 +182,60 @@ src_configure() {
 
 	emake -j1 -C src autoconf
 
-	# This should fix a sandbox violation (see bug #24447). The hvc
-	# things are for ppc64, see bug #86433.
+	# This should fix a sandbox violation (see bug 24447). The hvc
+	# things are for ppc64, see bug 86433.
 	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
 		if [[ -e ${file} ]]; then
-			addwrite ${file}
+			addwrite $file
 		fi
 	done
 
+	use debug && append-flags "-DDEBUG"
+
 	local myconf=(
-		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
-		--enable-gui=no
-		--disable-darwin
+		--with-features=huge
+		--disable-gpm
+		--with-gnome=no
+		$(use_enable sound canberra)
+		$(use_enable acl)
+		$(use_enable crypt libsodium)
+		$(use_enable cscope)
+		$(use_enable netbeans)
+		$(use_enable nls)
+		$(use_enable perl perlinterp)
+		$(use_enable python python3interp)
+		$(use_with python python3-command "${PYTHON}")
+		$(use_enable racket mzschemeinterp)
+		$(use_enable ruby rubyinterp)
+		$(use_enable selinux)
+		$(use_enable session xsmp)
+		$(use_enable tcl tclinterp)
 	)
 
-	if use minimal; then
-		myconf+=(
-			--with-features=tiny
-			--disable-nls
-			--disable-canberra
-			--disable-acl
-			--without-x
-			--disable-luainterp
-			--disable-perlinterp
-			--disable-pythoninterp
-			--disable-mzschemeinterp
-			--disable-rubyinterp
-			--disable-selinux
-			--disable-tclinterp
-			--disable-gpm
-		)
-	else
-		use debug && append-flags "-DDEBUG"
+	if use lua; then
+		# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+		# deprecated (in 5.1) luaL_openlib API (#874690)
+		use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
 
 		myconf+=(
-			--with-features=huge
-			$(use_enable sound canberra)
-			$(use_enable acl)
-			$(use_enable crypt libsodium)
-			$(use_enable cscope)
-			$(use_enable gpm)
-			$(use_enable nls)
-			$(use_enable perl perlinterp)
-			$(use_enable python python3interp)
-			$(use_with python python3-command "${PYTHON}")
-			$(use_enable racket mzschemeinterp)
-			$(use_enable ruby rubyinterp)
-			$(use_enable selinux)
-			$(use_enable tcl tclinterp)
-			$(use_enable terminal)
-		)
-
-		if use lua; then
-			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
-			# deprecated (in 5.1) luaL_openlib API (#874690)
-			use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
-
-			myconf+=(
-				--enable-luainterp
-				$(use_with lua_single_target_luajit luajit)
-				--with-lua-prefix="${EPREFIX}/usr"
-			)
-		fi
-
-		# don't test USE=X here ... see bug #19115
-		# but need to provide a way to link against X ... see bug #20093
-		myconf+=(
-			$(use_with X x)
+			--enable-luainterp
+			$(use_with lua_single_target_luajit luajit)
+			--with-lua-prefix="${EPREFIX}/usr"
 		)
 	fi
+
+	# Default is gtk unless motif is enabled
+	echo ; echo
+	if use motif; then
+		einfo "Building gvim with the MOTIF GUI"
+		myconf+=( --enable-gui=motif )
+	else
+		myconf+=( --enable-gtk3-check )
+		einfo "Building gvim with the gtk+-3 GUI"
+		myconf+=( --enable-gui=gtk3 )
+	fi
+	echo ; echo
 
 	# let package manager strip binaries
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"
@@ -269,7 +251,11 @@ src_configure() {
 			   vim_cv_toupper_broken=no
 	fi
 
-	econf "${myconf[@]}"
+	econf \
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)" \
+		--with-vim-name=gvim \
+		--with-x \
+		"${myconf[@]}"
 }
 
 src_compile() {
@@ -292,38 +278,19 @@ src_test() {
 	# Don't let vim talk to X
 	unset DISPLAY
 
-	# Arch and opensuse seem to do this and at this point, I'm willing
-	# to try anything to avoid random test hangs!
-	export TERM=xterm
+	# Make gvim not try to connect to X. See :help gui-x11-start in vim for how
+	# this evil trickery works.
+	ln -s "${S}"/src/gvim "${S}"/src/testvim || die
 
-	# See https://github.com/vim/vim/blob/f08b0eb8691ff09f98bc4beef986ece1c521655f/src/testdir/runtest.vim#L5
-	# for more information on test variables we can use.
-	# Note that certain variables need vim-compatible regex (not PCRE), see e.g.
-	# http://www.softpanorama.org/Editors/Vimorama/vim_regular_expressions.shtml.
-	#
-	# Skipped tests:
-	# - Test_expand_star_star
-	# Hangs because of a recursive symlink in /usr/include/nodejs (bug #616680)
-	# - Test_exrc
-	# Looks in wrong location? (bug #742710)
-	# - Test_job_tty_in_out
-	# Fragile and depends on TERM(?)
-	# - Test_spelldump_bang
-	# Hangs.
-	# - Test_fuzzy_completion_env
-	# Too sensitive to leaked environment variables.
-	# - Test_term_mouse_multiple_clicks_to_select_mode
-	# Hangs.
-	# - Test_spelldump
-	# Hangs.
-	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\)'
+	# Make sure our VIMPROG is used.
+	sed -i -e 's:\.\./vim:../testvim:' src/testdir/test49.vim || die
 
 	# Don't do additional GUI tests.
-	emake -j1 -C src/testdir nongui
+	emake -j1 VIMPROG=../testvim -C src/testdir nongui
 }
 
 # Call eselect vi update with --if-unset
-# to respect user's choice (bug #187449)
+# to respect user's choice (bug 187449)
 eselect_vi_update() {
 	ebegin "Calling eselect vi update"
 	eselect vi update --if-unset
@@ -333,36 +300,42 @@ eselect_vi_update() {
 src_install() {
 	local vimfiles=/usr/share/vim/vim${VIM_VERSION/.}
 
-	# Note: Do not install symlinks for 'vi', 'ex', or 'view', as these are
-	#       managed by eselect-vi
-	dobin src/vim
-	if ! use minimal ; then
-		dosym vim /usr/bin/vimdiff
-	fi
-	dosym vim /usr/bin/rvim
-	dosym vim /usr/bin/rview
-	if use vim-pager ; then
-		dosym ${vimfiles}/macros/less.sh /usr/bin/vimpager
-		dosym ${vimfiles}/macros/manpager.sh /usr/bin/vimmanpager
-		insinto ${vimfiles}/macros
-		doins runtime/macros/manpager.sh
-		fperms a+x ${vimfiles}/macros/manpager.sh
-	fi
+	dobin src/gvim
+	dosym gvim /usr/bin/gvimdiff
+	dosym gvim /usr/bin/evim
+	dosym gvim /usr/bin/eview
+	dosym gvim /usr/bin/gview
+	dosym gvim /usr/bin/rgvim
+	dosym gvim /usr/bin/rgview
 
-	domenu runtime/vim.desktop
+	emake -C src DESTDIR="${D}" DATADIR="${EPREFIX}"/usr/share install-icons
 
+	dodir /usr/share/man/man1
+	echo ".so vim.1" > "${ED}"/usr/share/man/man1/gvim.1 || die "echo failed"
+	echo ".so vim.1" > "${ED}"/usr/share/man/man1/gview.1 || die "echo failed"
+	echo ".so vimdiff.1" > "${ED}"/usr/share/man/man1/gvimdiff.1 || \
+		die "echo failed"
+
+	insinto /etc/vim
+	newins "${FILESDIR}"/gvimrc-r1 gvimrc
+	eprefixify "${ED}"/etc/vim/gvimrc
+
+	# bash completion script, bug #79018.
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
 
-	# keep in sync with 'complete ... -F' list
-	bashcomp_alias vim ex vi view rvim rview vimdiff
+	# don't install vim desktop file
+	rm -v "${ED}"/usr/share/applications/vim.desktop || die "failed to remove vim.desktop"
 }
 
 pkg_postinst() {
 	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
 
-	# update desktop file mime cache
+	# update fdo mime stuff, bug #78394
 	xdg_desktop_database_update
+
+	# update icon cache
+	xdg_icon_cache_update
 
 	# call eselect vi update
 	eselect_vi_update
@@ -372,8 +345,11 @@ pkg_postrm() {
 	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
 
-	# update desktop file mime cache
+	# update fdo mime stuff, bug #78394
 	xdg_desktop_database_update
+
+	# update icon cache
+	xdg_icon_cache_update
 
 	# call eselect vi update
 	eselect_vi_update
