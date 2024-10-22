@@ -50,6 +50,7 @@ RDEPEND="
 		net-libs/webkit-gtk:4[introspection]
 		net-libs/webkit-gtk:4.1[introspection]
 	)
+	sys-apps/pciutils
 	sys-apps/xdg-desktop-portal
 	x11-apps/mesa-progs
 	x11-apps/xgamma
