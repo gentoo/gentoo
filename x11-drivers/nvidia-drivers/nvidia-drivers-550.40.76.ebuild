@@ -549,8 +549,8 @@ pkg_postinst() {
 		ewarn "installed by the ebuild to handle sleep using the official upstream"
 		ewarn "script. It is recommended to disable the option."
 	fi
-	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep | sort | uniq | \
-		xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
+	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep 2>/dev/null | \
+		sort | uniq | xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
 	then
 		ewarn
 		ewarn "!!! WARNING !!!"
