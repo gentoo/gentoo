@@ -40,7 +40,7 @@ RDEPEND="
 	x11-libs/pango
 	gpg? ( app-crypt/gpgme:= )
 	http? ( net-libs/libsoup:2.4 )
-	notification-sound? ( media-libs/libcanberra:0[sound] )
+	notification-sound? ( media-libs/libcanberra:0[sound(+)] )
 	omemo? (
 		dev-libs/libgcrypt:=
 		media-gfx/qrencode:=
@@ -51,8 +51,7 @@ RDEPEND="
 		media-libs/webrtc-audio-processing:0
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	media-libs/gst-plugins-base
 	media-libs/gstreamer
 "
