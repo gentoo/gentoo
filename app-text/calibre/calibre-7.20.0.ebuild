@@ -89,7 +89,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/freetype-2:=
 	>=media-libs/libmtp-1.1.11:=
 	>=media-gfx/optipng-0.7.6
-	media-video/ffmpeg:=
+	>=media-video/ffmpeg-6:=
 	virtual/libusb:1=
 	x11-misc/shared-mime-info
 	>=x11-misc/xdg-utils-1.0.2-r2
