@@ -42,7 +42,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+	use introspection && python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
