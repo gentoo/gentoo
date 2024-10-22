@@ -27,7 +27,7 @@ REQUIRED_USE="|| ( cli ncurses qt5 )"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	<dev-libs/libsecp256k1-0.4
+	dev-libs/libsecp256k1
 	>=dev-python/aiohttp-socks-0.8.4[${PYTHON_USEDEP}]
 	=dev-python/aiorpcx-0.23*[${PYTHON_USEDEP}]
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
