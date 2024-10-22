@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson-multilib
 
-HASH_EGLWAYLAND=c10c5300483a8ec975e64e5d76c0fb00ac94e026
+HASH_EGLWAYLAND=0cd471dcfd46e6cb8b71eceddb20cc02eadabf61
 
 DESCRIPTION="EGLStream-based Wayland external platform"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland/"
