@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>freedesktop-bugs@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="sound">Install freedesktop.org spec compliant theme for desktop environment system sounds</flag>
+	</use>
+</pkgmetadata>

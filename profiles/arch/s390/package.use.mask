@@ -185,6 +185,7 @@ net-fs/cifs-utils acl
 # Sam James <sam@gentoo.org> (2022-04-20)
 # x11-themes/sound-theme-freedesktop unkeyworded here
 media-libs/libcanberra sound
+virtual/sound-theme sound
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # media-libs/libavif isn't keyworded here
