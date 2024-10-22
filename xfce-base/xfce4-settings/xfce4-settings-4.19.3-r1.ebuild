@@ -33,7 +33,7 @@ RDEPEND="
 	>=xfce-base/libxfce4util-4.17.2:=
 	>=xfce-base/xfconf-4.13.0:=
 	colord? ( >=x11-misc/colord-1.0.2:= )
-	libcanberra? ( >=media-libs/libcanberra-0.25[sound] )
+	libcanberra? ( >=media-libs/libcanberra-0.25[sound(+)] )
 	upower? ( >=sys-power/upower-0.99.10 )
 
 	X? (
