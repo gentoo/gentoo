@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="gnu.getopt:java-getopt:§{PV}"
+MAVEN_ID="gnu.getopt:java-getopt:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
