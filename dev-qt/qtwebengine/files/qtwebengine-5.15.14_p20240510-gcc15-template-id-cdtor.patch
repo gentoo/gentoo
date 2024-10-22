@@ -1,0 +1,93 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Wed, 23 Oct 2024 01:04:16 +0200
+Subject: template-id-cdtor
+
+warning: template-id not allowed for constructor in C++20 [-Wtemplate-id-cdtor]
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/string_concatenate.h
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/string_concatenate.h
+@@ -45,7 +45,7 @@ class StringTypeAdapter<char> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<char>(char buffer) : buffer_(buffer) {}
++  explicit StringTypeAdapter(char buffer) : buffer_(buffer) {}
+ 
+   unsigned length() const { return 1; }
+   bool Is8Bit() const { return true; }
+@@ -62,7 +62,7 @@ class StringTypeAdapter<LChar> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<LChar>(LChar buffer) : buffer_(buffer) {}
++  explicit StringTypeAdapter(LChar buffer) : buffer_(buffer) {}
+ 
+   unsigned length() const { return 1; }
+   bool Is8Bit() const { return true; }
+@@ -79,7 +79,7 @@ class StringTypeAdapter<UChar> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<UChar>(UChar buffer) : buffer_(buffer) {}
++  explicit StringTypeAdapter(UChar buffer) : buffer_(buffer) {}
+ 
+   unsigned length() const { return 1; }
+   bool Is8Bit() const { return buffer_ <= 0xff; }
+@@ -100,7 +100,7 @@ class WTF_EXPORT StringTypeAdapter<char*> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<char*>(char* buffer)
++  explicit StringTypeAdapter(char* buffer)
+       : StringTypeAdapter(buffer, strlen(buffer)) {}
+ 
+   unsigned length() const { return length_; }
+@@ -110,7 +110,7 @@ class WTF_EXPORT StringTypeAdapter<char*> {
+   void WriteTo(UChar* destination) const;
+ 
+  private:
+-  StringTypeAdapter<char*>(char* buffer, size_t length);
++  StringTypeAdapter(char* buffer, size_t length);
+ 
+   const char* buffer_;
+   unsigned length_;
+@@ -121,7 +121,7 @@ class WTF_EXPORT StringTypeAdapter<LChar*> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<LChar*>(LChar* buffer);
++  explicit StringTypeAdapter(LChar* buffer);
+ 
+   unsigned length() const { return length_; }
+   bool Is8Bit() const { return true; }
+@@ -157,7 +157,7 @@ class WTF_EXPORT StringTypeAdapter<const char*> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<const char*>(const char* buffer);
++  explicit StringTypeAdapter(const char* buffer);
+ 
+   unsigned length() const { return length_; }
+   bool Is8Bit() const { return true; }
+@@ -175,7 +175,7 @@ class WTF_EXPORT StringTypeAdapter<const LChar*> {
+   DISALLOW_NEW();
+ 
+  public:
+-  explicit StringTypeAdapter<const LChar*>(const LChar* buffer);
++  explicit StringTypeAdapter(const LChar* buffer);
+ 
+   unsigned length() const { return length_; }
+   bool Is8Bit() const { return true; }
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/string_operators.h
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/string_operators.h
+@@ -115,7 +115,7 @@ class StringTypeAdapter<StringAppend<StringType1, StringType2>> {
+   STACK_ALLOCATED();
+ 
+  public:
+-  StringTypeAdapter<StringAppend<StringType1, StringType2>>(
++  StringTypeAdapter(
+       const StringAppend<StringType1, StringType2>& buffer)
+       : buffer_(buffer) {}
+ 
