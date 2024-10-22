@@ -78,8 +78,8 @@
     </flag>
     <flag name="wide-int">
       Prefer wide Emacs integers (typically 62-bit). This option has an
-      effect only on architectures where "long" and "long long" types have
-      different size.
+      effect only on 32-bit systems, where it increases the maximum buffer
+      size from 0.5 to 2 GiB, at the cost of 10% to 30% Lisp slowdown.
     </flag>
   </use>
   <upstream>
