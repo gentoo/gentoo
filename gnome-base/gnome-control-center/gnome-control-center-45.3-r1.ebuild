@@ -77,7 +77,7 @@ DEPEND="
 
 	x11-libs/pango
 "
-# media-libs/libcanberra[pulseaudio,sound] needed for Speaker tests in
+# media-libs/libcanberra[pulseaudio] and virtual/sound-theme[sound] needed for Speaker tests in
 # Settings/Sound/Output/Output Device, bug #814110
 # systemd/elogind USE flagged because package manager will potentially try to satisfy a
 # "|| ( systemd ( elogind openrc-settingsd)" via systemd if openrc-settingsd isn't already installed.
@@ -91,7 +91,8 @@ DEPEND="
 # system-config-printer provides org.fedoraproject.Config.Printing service and interface
 # cups-pk-helper provides org.opensuse.cupspkhelper.mechanism.all-edit policykit helper policy
 RDEPEND="${DEPEND}
-	media-libs/libcanberra[pulseaudio,sound]
+	media-libs/libcanberra[pulseaudio]
+	virtual/sound-theme[sound]
 	systemd? ( >=sys-apps/systemd-31 )
 	elogind? (
 		app-admin/openrc-settingsd

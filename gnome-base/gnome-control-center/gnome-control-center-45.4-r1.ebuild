@@ -2,27 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-control-center"
-SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${P}-patchset-r1.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-45.0-patchset.tar.xz"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo.svg"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo-dark.svg"
 # Logo is CC-BY-SA-2.5
 LICENSE="GPL-2+ CC-BY-SA-2.5"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-
-IUSE="+bluetooth +cups debug elogind +gnome-online-accounts +ibus input_devices_wacom kerberos +geolocation networkmanager systemd test wayland"
+IUSE="+bluetooth +cups debug elogind +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager systemd test wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime,
 #   but needs testing if handled gracefully enough
-
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
@@ -33,7 +31,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	gnome-online-accounts? (
 		x11-libs/gtk+:3
-		>=net-libs/gnome-online-accounts-3.49.1:=
+		>=net-libs/gnome-online-accounts-3.25.3:=
 	)
 	>=media-libs/libpulse-2.0[glib]
 	>=gui-libs/gtk-4.11.2:4[X,wayland=]
@@ -41,17 +39,17 @@ DEPEND="
 	>=sys-apps/accountsservice-0.6.39
 	>=x11-misc/colord-0.1.34:0=
 	>=x11-libs/gdk-pixbuf-2.23.0:2
-	>=dev-libs/glib-2.76.6:2
+	>=dev-libs/glib-2.75.0:2
 	gnome-base/gnome-desktop:4=
 	>=gnome-base/gnome-settings-daemon-41.0[colord,input_devices_wacom?]
-	>=gnome-base/gsettings-desktop-schemas-46_beta
+	>=gnome-base/gsettings-desktop-schemas-42_alpha
 	dev-libs/libxml2:2
 	>=sys-power/upower-0.99.8:=
 	>=dev-libs/libgudev-232
 	>=x11-libs/libX11-1.8
 	>=x11-libs/libXi-1.2
 	media-libs/libepoxy
-	>=app-crypt/gcr-4.1.0
+	app-crypt/gcr:0=
 	>=dev-libs/libpwquality-1.2.2
 	>=sys-auth/polkit-0.114
 	cups? (
@@ -65,7 +63,7 @@ DEPEND="
 		>=net-misc/modemmanager-0.7.990:=
 	)
 	bluetooth? ( net-wireless/gnome-bluetooth:3= )
-	input_devices_wacom? ( >=dev-libs/libwacom-1.4:= )
+	input_devices_wacom? ( >=dev-libs/libwacom-0.27:= )
 	kerberos? ( app-crypt/mit-krb5 )
 
 	x11-libs/cairo[glib]
@@ -79,7 +77,7 @@ DEPEND="
 
 	x11-libs/pango
 "
-# media-libs/libcanberra[pulseaudio,sound] needed for Speaker tests in
+# media-libs/libcanberra[pulseaudio] and virtual/sound-theme[sound] needed for Speaker tests in
 # Settings/Sound/Output/Output Device, bug #814110
 # systemd/elogind USE flagged because package manager will potentially try to satisfy a
 # "|| ( systemd ( elogind openrc-settingsd)" via systemd if openrc-settingsd isn't already installed.
@@ -93,7 +91,8 @@ DEPEND="
 # system-config-printer provides org.fedoraproject.Config.Printing service and interface
 # cups-pk-helper provides org.opensuse.cupspkhelper.mechanism.all-edit policykit helper policy
 RDEPEND="${DEPEND}
-	media-libs/libcanberra[pulseaudio,sound]
+	media-libs/libcanberra[pulseaudio]
+	virtual/sound-theme[sound]
 	systemd? ( >=sys-apps/systemd-31 )
 	elogind? (
 		app-admin/openrc-settingsd
@@ -132,6 +131,7 @@ BDEPEND="${PYTHON_DEPS}
 		$(python_gen_any_dep '
 			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
+		x11-apps/setxkbmap
 	)
 "
 
@@ -171,9 +171,7 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use bluetooth)
 		-Dcups=$(usex cups enabled disabled)
-		-Ddeprecated-declarations=disabled
 		-Ddocumentation=true # manpage
-		-Dlocation-services=$(usex geolocation enabled disabled)
 		-Dgoa=$(usex gnome-online-accounts enabled disabled)
 		$(meson_use ibus)
 		-Dkerberos=$(usex kerberos enabled disabled)
