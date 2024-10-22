@@ -40,7 +40,10 @@ RDEPEND="
 	x11-libs/pango
 	gpg? ( app-crypt/gpgme:= )
 	http? ( net-libs/libsoup:2.4 )
-	notification-sound? ( media-libs/libcanberra:0[sound] )
+	notification-sound? (
+		media-libs/libcanberra
+		virtual/sound-theme[sound]
+	)
 	omemo? (
 		dev-libs/libgcrypt:=
 		media-gfx/qrencode:=
