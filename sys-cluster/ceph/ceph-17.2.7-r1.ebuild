@@ -81,7 +81,7 @@ DEPEND="
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	jaeger? (
 		dev-cpp/nlohmann_json:=
-		dev-cpp/opentelemetry-cpp:=[jaeger]
+		<dev-cpp/opentelemetry-cpp-1.10.0:=[jaeger]
 	)
 	kafka? ( dev-libs/librdkafka:= )
 	kerberos? ( virtual/krb5 )
