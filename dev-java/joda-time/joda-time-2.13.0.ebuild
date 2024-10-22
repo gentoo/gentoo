@@ -40,7 +40,7 @@ JAVA_TEST_SRC_DIR="src/test/java"
 src_prepare() {
 	default
 	# move .properties files to JAVA_RESOURCE_DIRS
-	mkdir -p src/main/res/META-INF
+	mkdir -p src/main/res/META-INF ZoneInfoCompiler || die
 	cp -r src/main/{java/*,res} || die
 	find src/main/res -type f ! -name '*.properties' -exec rm -rf {} + || die
 	mv src/main/res{ources,}/META-INF/native-image || die
