@@ -1,0 +1,13 @@
+--- a/Makefile_dist
++++ b/Makefile_dist
+@@ -19,8 +19,8 @@ RMRF=rm -rf
+ 
+ ######
+ 
+-MAKE=make
+-MAKEJ4=make -j4
++MAKE ?= $(MAKE)
++MAKEJ4 ?= $(MAKE)
+ 
+ ######
+ #

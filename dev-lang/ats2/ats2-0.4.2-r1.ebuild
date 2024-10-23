@@ -1,14 +1,22 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit elisp-common toolchain-funcs
+inherit elisp-common flag-o-matic toolchain-funcs
 
 DESCRIPTION="Functional programming language with dependent types"
 HOMEPAGE="https://www.cs.bu.edu/~hwxi/atslangweb/
 	https://sourceforge.net/projects/ats2-lang/"
-SRC_URI="http://downloads.sourceforge.net/sourceforge/ats2-lang/ATS2-Postiats-gmp-${PV}.tgz"
+
+SRC_URI="
+	http://downloads.sourceforge.net/sourceforge/ats2-lang/ATS2-Postiats-gmp-${PV}.tgz
+
+	https://sources.debian.org/data/main/a/ats2-lang/0.4.2-2/debian/patches/deprecated-cl-package
+		-> ${PN}-0.4.2-2-deprecated-cl-package.patch
+	https://sources.debian.org/data/main/a/ats2-lang/0.4.2-2/debian/patches/prelude-function-prototypes
+		-> ${PN}-0.4.2-2-prelude-function-prototypes.patch
+"
 S="${WORKDIR}/ATS2-Postiats-gmp-${PV}"
 
 LICENSE="GPL-3+"
@@ -24,6 +32,12 @@ DEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.4.2-makefile_dist.patch"
+	"${DISTDIR}/${PN}-0.4.2-2-deprecated-cl-package.patch"
+	"${DISTDIR}/${PN}-0.4.2-2-prelude-function-prototypes.patch"
+)
+
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
@@ -32,8 +46,6 @@ src_prepare() {
 	sed -i Makefile								\
 		-e "/^CFLAGS/s|=| = ${CFLAGS}|"			\
 		-e "/^LDFLAGS/s|=| = ${LDFLAGS}|"		\
-		-e "/^MAKE/s|=make| ?= \$(MAKE)|g"		\
-		-e "/^MAKEJ4/s|-j4||"					\
 		|| die
 
 	sed -i ccomp/atslib/Makefile				\
@@ -53,6 +65,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Not really accurate but need Makefile investigation and patches.
+	# See: https://bugs.gentoo.org/941105 and https://bugs.gentoo.org/923881
+	filter-lto
+
 	emake -j1 CC="$(tc-getCC)" GCC="$(tc-getCC)" CCOMP="$(tc-getCC)" all
 
 	if use emacs ; then
