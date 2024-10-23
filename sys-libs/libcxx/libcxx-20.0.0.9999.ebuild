@@ -39,7 +39,9 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( runtimes libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
+LLVM_COMPONENTS=(
+	runtimes libcxx{,abi} libc llvm/{cmake,utils/llvm-lit} cmake
+)
 llvm.org_set_globals
 
 python_check_deps() {
