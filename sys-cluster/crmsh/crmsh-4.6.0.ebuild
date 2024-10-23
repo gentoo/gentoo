@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10,12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/crmsh/crmsh"
