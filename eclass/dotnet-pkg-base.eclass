@@ -101,6 +101,9 @@ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
 export MSBUILDDISABLENODEREUSE=1
 export POWERSHELL_TELEMETRY_OPTOUT=1
 export POWERSHELL_UPDATECHECK=0
+# Speeds up restore. Having this turned on is redundant with Portage manifests.
+# See also: https://github.com/NuGet/Home/issues/13062
+export DOTNET_NUGET_SIGNATURE_VERIFICATION=false
 # Overwrite selected MSBuild properties ("-p:XYZ").
 export UseSharedCompilation=false
 
