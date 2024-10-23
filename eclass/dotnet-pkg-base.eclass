@@ -294,6 +294,18 @@ edotnet() {
 	edo "${DOTNET_PKG_EXECUTABLE}" "${@}"
 }
 
+# @FUNCTION: efsi
+# @USAGE: <command> [args...]
+# @DESCRIPTION:
+# Call dotnet fsi, passing the supplied arguments.
+# FSI is the F# interpreter shipped with .NET SDK, it is useful for running F#
+# maintenance scripts.
+efsi() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	edotnet fsi --nologo "${@}"
+}
+
 # @FUNCTION: dotnet-pkg-base_info
 # @DESCRIPTION:
 # Show information about current .NET SDK that is being used.
