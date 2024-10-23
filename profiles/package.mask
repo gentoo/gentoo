@@ -255,7 +255,7 @@ dev-java/ant-core
 # Florian Schmaus <flow@gentoo.org> (2024-08-23)
 # Has a serious bug that causes synced directories to end up world read-
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
->=net-misc/nextcloud-client-3.13.1
+=net-misc/nextcloud-client-3.13.2
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-08-11)
 # >=1.1.14 enables usage of explicit sync (with >=nvidia-drivers-560
