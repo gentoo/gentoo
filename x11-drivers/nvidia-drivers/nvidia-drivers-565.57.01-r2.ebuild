@@ -25,6 +25,7 @@ S=${WORKDIR}
 LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 # beta drivers do not get keyworded, opt-in at your own risks if wanted
+# reminder: drop the egl-wayland version warning & unmask it when out of beta
 #KEYWORDS="-* ~amd64 ~arm64"
 # note: kernel-open is an upstream default in >=560 if all GPUs on the system
 # support it but, since no automagic here, keeping it off for the wider support
@@ -65,11 +66,7 @@ RDEPEND="
 	wayland? (
 		>=gui-libs/egl-gbm-1.1.1-r2[abi_x86_32(-)?]
 		>=gui-libs/egl-wayland-1.1.13.1[abi_x86_32(-)?]
-		X? (
-			media-libs/mesa[gbm(+),abi_x86_32(-)?]
-			x11-libs/libdrm[abi_x86_32(-)?]
-			x11-libs/libxcb:=[abi_x86_32(-)?]
-		)
+		X? ( gui-libs/egl-x11[abi_x86_32(-)?] )
 	)
 "
 DEPEND="
@@ -261,16 +258,12 @@ src_install() {
 
 	local skip_files=(
 		$(usev !X "libGLX_nvidia libglxserver_nvidia")
-		# TODO?: package egl-x11 separately and drop wayland? ( X? ( deps ) )
-		# https://github.com/NVIDIA/egl-x11 (but no release yet, maybe wait)
-		$(use !X || use !wayland && echo "
-			libnvidia-egl-xcb 20_nvidia_xcb.json
-			libnvidia-egl-xlib 20_nvidia_xlib.json
-		")
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
 		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
+		libnvidia-egl-xcb 20_nvidia_xcb.json # gui-libs/egl-x11
+		libnvidia-egl-xlib 20_nvidia_xlib.json # gui-libs/egl-x11
 		libnvidia-pkcs11.so # using the openssl3 version instead
 	)
 	local skip_modules=(
@@ -403,8 +396,8 @@ documentation that is installed alongside this README."
 			continue
 		fi
 		# avoid portage warning due to missing soname links in manifest
-		[[ ${m[0]} =~ .*((libnvidia-ngx.so|libnvidia-egl-(gbm|xcb|xlib).so).*) ]] &&
-			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
+		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
+			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}
@@ -601,5 +594,19 @@ pkg_postinst() {
 		elog
 		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
 		elog "default, and for openrc+elogind a similar hook has been installed."
+	fi
+
+	# TODO: drop this when out of beta, plan is to unmask it then
+	if use X && use wayland && has_version '<gui-libs/egl-wayland-1.1.14'; then
+		ewarn
+		ewarn "*** NVIDIA Beta Notice ***"
+		ewarn
+		ewarn ">=gui-libs/egl-wayland-1.1.14 is currently masked, however with this"
+		ewarn "beta version of nvidia-drivers it is recommended to use latest"
+		ewarn "egl-wayland for better xwayland performance and also potentially"
+		ewarn "avoiding some visual glitches."
+		ewarn
+		ewarn "Plan is to unmask it for everyone when out of beta, but may want to do"
+		ewarn "so now unless it causes problems (e.g. some applications crashing)."
 	fi
 }
