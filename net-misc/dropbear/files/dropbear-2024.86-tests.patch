@@ -1,0 +1,59 @@
+Create all the keys needed for the tests.
+Enable testing server auth.
+
+dbclient obeys $HOME, but dropbear (the server) resolves HOME using getpwnam.
+Use sys-libs/nss_wrapper to fake it during tests.
+
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -4,18 +4,26 @@
+ 
+ all: test
+ 
+-test: venv/bin/pytest fakekey
+-	(source ./venv/bin/activate; pytest --hostkey=fakekey --dbclient=../dbclient --dropbear=../dropbear $(srcdir) )
++uid:=$(shell id -u)
++gid:=$(shell id -g)
++test: fakekey
++	mkdir -p ~/.ssh
++	../dropbearkey -t ecdsa -f ~/.ssh/id_dropbear
++	../dropbearkey -y -f ~/.ssh/id_dropbear | grep ^ecdsa > ~/.ssh/authorized_keys
++	# Convert to openssh format so that asyncssh can find it in tests
++	-../dropbearconvert dropbear openssh ~/.ssh/id_dropbear ~/.ssh/id_ecdsa
++	../dropbearkey -t ecdsa -f ~/.ssh/id_dropbear_key2 | grep ^ecdsa | sed 's/[^ ]*$$/key2 extra/' >> ~/.ssh/authorized_keys
++	../dropbearkey -t ecdsa -f ~/.ssh/id_dropbear_key3 | grep ^ecdsa | sed 's/[^ ]*$$/key3%char/' >> ~/.ssh/authorized_keys
++	../dropbearkey -t ecdsa -f ~/.ssh/id_dropbear_key4 | grep ^ecdsa | sed 's/[^ ]*$$/key4,char/' >> ~/.ssh/authorized_keys
++	echo "$(LOGNAME)::$(uid):$(gid):$(USER):$(HOME):/bin/bash" >> ~/passwd
++	echo "$(LOGNAME)::$(gid):" >> ~/group
++	chmod 0700 ~ ~/.ssh ~/.ssh/authorized_keys ~/passwd ~/group
++	DBTEST_IN_ACTION=y pytest --hostkey=fakekey --dbclient=../dbclient --dropbear=../dropbear $(srcdir)
+ 
+-one: venv/bin/pytest fakekey
+-	(source ./venv/bin/activate; pytest --hostkey=fakekey --dbclient=../dbclient --dropbear=../dropbear $(srcdir) -k exit)
++one: fakekey
++	pytest --hostkey=fakekey --dbclient=../dbclient --dropbear=../dropbear $(srcdir) -k exit
+ 
+ fakekey:
+ 	../dropbearkey -t ecdsa -f $@
+ 
+-venv/bin/pytest: $(srcdir)/requirements.txt
+-	python3 -m venv init venv
+-	./venv/bin/pip install --upgrade pip
+-	./venv/bin/pip install -r $(srcdir)/requirements.txt
+-
+ .PHONY: test
+--- a/test/test_dropbear.py
++++ b/test/test_dropbear.py
+@@ -27,7 +27,11 @@ def dropbear(request):
+ 		]
+ 	print("subprocess args: ", args)
+ 
+-	p = subprocess.Popen(args, stderr=subprocess.PIPE, text=True)
++	env = os.environ
++	env['LD_PRELOAD'] = 'libnss_wrapper.so'
++	env['NSS_WRAPPER_PASSWD'] = env['HOME'] + '/passwd'
++	env['NSS_WRAPPER_GROUP'] = env['HOME'] + '/group'
++	p = subprocess.Popen(args, stderr=subprocess.PIPE, text=True, env=env)
+ 	# Wait until it has started listening
+ 	for l in p.stderr:
+ 		if "Not backgrounding" in l:
