@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jakartaee/jaf-api/archive/${PV}.tar.gz -> jakarta-ac
 
 LICENSE="EPL-1.0"
 SLOT="1"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"

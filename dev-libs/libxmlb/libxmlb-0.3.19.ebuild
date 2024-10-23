@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit meson python-any-r1
 
@@ -42,7 +42,11 @@ BDEPEND="
 "
 
 python_check_deps() {
-	python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+	if use introspection ; then
+		python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+	else
+		return 0
+	fi
 }
 
 pkg_setup() {

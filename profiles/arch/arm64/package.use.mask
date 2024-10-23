@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-10-23)
+# Debug-enabled binary packages are built for a subset of architectures.
+sys-kernel/gentoo-kernel-bin -debug
+
+# Benda Xu <heroxbd@gentoo.org> (2024-10-10)
+# dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on arm64
+sys-cluster/slurm nvml ucx
+
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has arm64 asm.
 games-emulation/rmg -dynarec
@@ -30,10 +38,6 @@ x11-libs/libdrm -video_cards_vmware
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-12)
 # Supports 64-bit NEON
 media-libs/opencv -cpu_flags_arm_neon
-
-# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-02)
-# Supports 64-bit NEON
-media-libs/openpgl -cpu_flags_arm_neon
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here

@@ -40,7 +40,10 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	dev-python/pypy
+	|| (
+		dev-lang/pypy:2.7
+		dev-python/pypy
+	)
 	virtual/pkgconfig
 "
 

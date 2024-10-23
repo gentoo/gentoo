@@ -8,9 +8,9 @@ EAPI=8
 # Scripting for this is in sam-gentoo-scripts.
 : ${FVWM3_DOCS_PREBUILT:=1}
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 GO_OPTIONAL=1
-inherit autotools desktop flag-o-matic go-module python-single-r1 toolchain-funcs
+inherit flag-o-matic go-module meson python-single-r1
 
 DESCRIPTION="A multiple large virtual desktop window manager derived from fvwm"
 HOMEPAGE="https://www.fvwm.org/"
@@ -31,9 +31,8 @@ fi
 LICENSE="GPL-2+ FVWM
 	go? ( Apache-2.0 BSD MIT )"
 SLOT="0"
-IUSE="bidi debug +go netpbm nls perl readline stroke svg tk lock"
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}"
+IUSE="bidi +go netpbm nls perl readline svg"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( NEWS )
 
@@ -83,20 +82,15 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/libXpm
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	x11-misc/xlockmore
+	dev-lang/tk
+	dev-perl/Tk
+	>=dev-perl/X11-Protocol-0.56
 	bidi? ( dev-libs/fribidi )
-	lock? ( x11-misc/xlockmore )
-	netpbm? ( media-libs/netpbm )
-	perl? ( tk? (
-			dev-lang/tk
-			dev-perl/Tk
-			>=dev-perl/X11-Protocol-0.56
-		)
-	)
 	readline? (
 		sys-libs/ncurses:=
 		sys-libs/readline:=
 	)
-	stroke? ( dev-libs/libstroke )
 	svg? (
 		gnome-base/librsvg:2
 		x11-libs/cairo
@@ -104,14 +98,6 @@ RDEPEND="${PYTHON_DEPS}
 
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
-
-src_prepare() {
-	default
-	use go && ( sed -e 's/GOFLAGS=-ldflags="-s -w"/GOFLAGS=/' \
-		-i bin/FvwmPrompt/Makefile.am || die )
-
-	eautoreconf
-}
 
 src_configure() {
 	# Recommended by upstream for release. Doesn't really matter for live ebuilds.
@@ -122,68 +108,57 @@ src_configure() {
 		use $arch && append-flags -fsigned-chars
 	done
 
-	local myconf=(
-		--with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm
-		--enable-package-subdirs
-		$(use_enable bidi)
-		$(use_enable go golang)
-		$(use_enable nls)
-		$(use_enable nls iconv)
-		$(use_enable perl perllib)
-		$(use_with readline readline-library)
-		$(use_enable svg rsvg)
-		--enable-png
+	local emesonargs=(
+		"-Dpng=enabled"
+		"-Dsm=enabled"
+		"-Dxcursor=enabled"
+		"-Dxkbcommon=enabled"
+		"-Dxpm=enabled"
+		"-Dxrender=enabled"
+		$(meson_feature bidi)
+		$(meson_feature go golang)
+		$(meson_feature nls iconv)
+		$(meson_feature nls)
+		$(meson_feature readline) # not required for go but it won't hurt to enable it
+		$(meson_feature svg cairo) # Pick 1 of 'cairo', 'cairo-svg', or 'libsvg-cairo'; add the appropriate dependency
+		$(meson_feature svg)
+		"-Dcairo-svg=disabled"
+		"-Dlibsvg-cairo=disabled"
+		"-Ddocdir=${EPREFIX}/usr/share/doc/${PF}"
 	)
 
 	if [[ ${FVWM3_DOCS_PREBUILT} == 0 ]]; then
-		myconf+=(
-			--enable-mandoc
-			--enable-htmldoc
+		emesonargs+=(
+			"-Dhtmldoc=true"
+			"-Dmandoc=true"
 		)
 	else
 		# Probably not required, but let's be safe
-		myconf+=(
-			--disable-mandoc
-			--disable-htmldoc
+		emesonargs+=(
+			"-Dhtmldoc=false"
+			"-Dmandoc=false"
 		)
 	fi
 
-	use readline && myconf+=( --without-termcap-library )
-
-	econf "${myconf[@]}"
-}
-
-src_compile() {
-	PREFIX="${EPREFIX}/usr" emake AR="$(tc-getAR)"
+	meson_src_configure
 }
 
 src_install() {
 	# Since we're manually handling docs installation, let's do that first
-	# and then install the rest of the files via emake
+	# and then install the rest of the files "normally".
 	local HTML_DOCS
 	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]] ; then
 		doman "${WORKDIR}"/${P}-docs/man/**/*.[0-8]
 		HTML_DOCS="${WORKDIR}"/${P}-docs/html/*
-	else
-		HTML_DOCS="${S}"/doc/*.html
-		doman "${S}"/doc/*.[0-8]
 	fi
-
 	einstalldocs
 
-	emake DESTDIR="${ED}" prefix="/usr" exec_prefix="/usr" datarootdir="/usr/share" install
+	meson_src_install
 
-	exeinto /etc/X11/Sessions
-	newexe - ${PN} <<-EOF
-	#!/bin/sh
-	${PN}
-	EOF
-
-	python_scriptinto "/usr/bin"
-	python_doscript "${ED}/usr/bin/FvwmCommand" "${ED}/usr/bin/fvwm-menu-desktop"
-
-	make_session_desktop fvwm3 /usr/bin/fvwm3
-
+	if ! use go; then
+		python_scriptinto "/usr/bin"
+		python_doscript "${ED}/usr/bin/FvwmCommand" "${ED}/usr/bin/fvwm-menu-desktop"
+	fi
 }
 
 pkg_postinst() {

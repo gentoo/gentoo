@@ -17,7 +17,7 @@ else
 		https://dev.gentoo.org/~ionen/distfiles/${MY_P}-vendor.tar.xz
 	"
 	S=${WORKDIR}/${MY_P}
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="Flash Player emulator written in Rust"

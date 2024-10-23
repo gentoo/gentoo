@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop libtool qmake-utils systemd
+inherit desktop flag-o-matic libtool qmake-utils systemd
 
 MY_PV=${PV/_beta/-b}
 MY_P=${PN}-${MY_PV}
@@ -184,6 +184,9 @@ src_prepare() {
 	sed -i -e "s/(INSTALL_PROGRAM) /(INSTALL_LIB) /" src/plugins/fd/Makefile ||die
 	sed -i -e "s/(INSTALL_PROGRAM) /(INSTALL_LIB) /" src/plugins/fd/docker/Makefile ||die
 
+	# drop reliance on installed 'which' program (bug #940692)
+	eapply "${FILESDIR}"/${PN}-drop-which.patch
+
 	# fix bundled libtool (bug 466696)
 	# But first move directory with M4 macros out of the way.
 	# It is only needed by autoconf and gives errors during elibtoolize.
@@ -192,6 +195,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# bug #940695
+	#
+	# common datastructures with partial different components for
+	# different tools of the backup suite
+	filter-lto
+
 	local myconf=''
 
 	if use bacula-clientonly; then

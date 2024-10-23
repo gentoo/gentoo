@@ -42,6 +42,7 @@ S="${WORKDIR}/${ORIGIN_PN}-${ORIGIN_PV}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="alsa dbus debug doc dtrace +gui +hardened java lvm nls pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde +vmmraw vnc"
 
 unset WATCOM #856769

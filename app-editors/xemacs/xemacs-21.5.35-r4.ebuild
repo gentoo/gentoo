@@ -68,6 +68,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-which.patch"
 	eapply "${FILESDIR}/${P}-misalignment.patch"
 	eapply "${FILESDIR}/${P}-va_args.patch"
+	eapply "${FILESDIR}/${P}-linker-flags.patch"
 
 	eapply_user
 

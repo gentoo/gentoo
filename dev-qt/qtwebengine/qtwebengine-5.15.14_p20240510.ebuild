@@ -102,6 +102,7 @@ PATCHES=(
 	"${WORKDIR}/${PATCHSET}"
 	"${FILESDIR}/${PN}-5.15.13_p20240510-gcc15.patch"
 	"${FILESDIR}/${P}-re2.patch"
+	"${FILESDIR}/${PN}-5.15.14_p20240510-gcc15-cstdint.patch"
 )
 
 python_check_deps() {

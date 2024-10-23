@@ -15,7 +15,7 @@ S="${WORKDIR}/jaf-api-${PV}/activation"
 
 LICENSE="EPL-1.0"
 SLOT="1"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 CDEPEND="dev-java/jakarta-activation-api:1"
 DEPEND="${CDEPEND}

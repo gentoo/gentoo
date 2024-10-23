@@ -26,7 +26,7 @@ IUSE="X legacy-renderer systemd"
 # so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
-	dev-build/cmake
+	>=dev-build/cmake-3.30
 	dev-build/meson
 	dev-vcs/git
 	virtual/pkgconfig
@@ -36,8 +36,9 @@ RDEPEND="
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/libinput
-	>=dev-libs/wayland-1.20.0
-	gui-libs/aquamarine
+	>=dev-libs/udis86-1.7.2
+	>=dev-libs/wayland-1.22.90
+	>=gui-libs/aquamarine-0.4.2
 	>=gui-libs/hyprcursor-0.1.9
 	media-libs/libglvnd
 	x11-libs/cairo
@@ -55,7 +56,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=dev-libs/hyprland-protocols-0.3
+	>=dev-libs/hyprland-protocols-0.4
 	>=dev-libs/hyprlang-0.3.2
 	>=dev-libs/wayland-protocols-1.36
 	>=gui-libs/hyprutils-0.2.3
@@ -64,7 +65,7 @@ BDEPEND="
 	|| ( >=sys-devel/gcc-14:* >=sys-devel/clang-18:* )
 	app-misc/jq
 	dev-build/cmake
-	>=dev-util/hyprwayland-scanner-0.3.8
+	>=dev-util/hyprwayland-scanner-0.3.10
 	virtual/pkgconfig
 "
 

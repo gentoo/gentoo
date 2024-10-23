@@ -15,7 +15,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64"
 
 CP_DEPEND="
 	dev-java/commons-cli:0

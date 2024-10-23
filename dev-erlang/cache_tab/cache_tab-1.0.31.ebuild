@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit rebar3
+inherit rebar
 
 DESCRIPTION="In-memory cache Erlang and Elixir library"
 HOMEPAGE="https://github.com/processone/cache_tab"

@@ -5,4 +5,3 @@
 # Requires thin-provisioning-tools, which requires rust, which cannot currently
 # build/install on i486 or any other CPU class lacking sse2.
 sys-fs/lvm2 thin
-app-containers/docker device-mapper

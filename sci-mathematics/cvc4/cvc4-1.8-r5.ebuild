@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN^^}-archived-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+cln proofs readline +statistics"
 
 RDEPEND="dev-libs/antlr-c

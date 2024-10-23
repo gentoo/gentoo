@@ -14,5 +14,6 @@
 		<changelog>http://pwmt.org/projects/zathura/download/</changelog>
 		<doc lang="en">http://pwmt.org/projects/zathura/</doc>
 		<bugs-to>http://bugs.pwmt.org/</bugs-to>
+		<remote-id type="github">pwmt/zathura-djvu</remote-id>
 	</upstream>
 </pkgmetadata>

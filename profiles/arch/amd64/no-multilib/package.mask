@@ -24,7 +24,6 @@ app-emulation/q4wine
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-sdk-update-manager
-dev-util/biew
 games-action/badland
 games-action/beathazardultra
 games-action/brutal-legend-gog

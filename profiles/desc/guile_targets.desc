@@ -3,6 +3,5 @@
 
 # This file contains descriptions of GUILE_TARGETS USE_EXPAND flags.
 
-1-8 - Build with GNU Guile 1.8
 2-2 - Build with GNU Guile 2.2
 3-0 - Build with GNU Guile 3.0

@@ -5,7 +5,7 @@
 # The following mesa components calls fcntl(fd, F_DUPFD_CLOEXEC, 3) directly
 # without checking.  That results on build time failure, because we have
 # stripped away F_DUPFD_CLOEXEC from glibc for this profile.
-media-libs/mesa gles2 llvm
+media-libs/mesa llvm
 
 # Benda Xu <heroxbd@gentoo.org> (2018-02-21)
 # We are on an old kernel that only glibc-2.19 is supported. That glibc does

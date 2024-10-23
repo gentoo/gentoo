@@ -1,6 +1,18 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-24)
+# Using a glibc interface, and with that on musl pretty much useless
+sys-auth/nss-mdns
+sys-auth/libnss-cache
+sys-auth/nss-myhostname
+sys-auth/libnss-nis
+sys-auth/nss-pam-ldapd
+sys-auth/libnss-pgsql
+sys-auth/libnss-mysql
+sys-auth/nss_ldap
+net-nds/nsscache
+
 # Sam James <sam@gentoo.org> (2024-09-30)
 # Needs porting to musl (bug #940130)
 =sys-auth/elogind-255.5
@@ -235,7 +247,6 @@ dev-lang/dafny-bin
 dev-libs/luise
 dev-libs/nwjs
 dev-perl/Lab-Zhinst
-dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
 dev-util/azuredatastudio
 dev-util/idea-community

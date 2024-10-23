@@ -1,0 +1,54 @@
+From d6e30eb0269fa04d4a16133bd94405f10240aeb0 Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <henryschreineriii@gmail.com>
+Date: Fri, 11 Oct 2024 17:11:21 -0400
+Subject: [PATCH 1/2] refactor: rename to python_multipart
+
+Signed-off-by: Henry Schreiner <henryschreineriii@gmail.com>
+
+diff --git a/pyproject.toml b/pyproject.toml
+index fb03f83..1a81077 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -62,13 +65,10 @@ Changelog = "https://github.com/Kludex/python-multipart/blob/master/CHANGELOG.md
+ Source = "https://github.com/Kludex/python-multipart"
+ 
+ [tool.hatch.version]
+-path = "multipart/__init__.py"
+-
+-[tool.hatch.build.targets.wheel]
+-packages = ["multipart"]
++path = "python_multipart/__init__.py"
+ 
+ [tool.hatch.build.targets.sdist]
+-include = ["/multipart", "/tests", "CHANGELOG.md", "LICENSE.txt"]
++include = ["/python_multipart", "/tests", "CHANGELOG.md", "LICENSE.txt", "_python_multipart.pth", "_python_multipart_loader.py"]
+ 
+ [tool.mypy]
+ strict = true
+diff --git a/tests/test_multipart.py b/tests/test_multipart.py
+index b824f19..f5f8e7e 100644
+--- a/tests/test_multipart.py
++++ b/tests/test_multipart.py
+@@ -11,9 +11,9 @@
+ 
+ import yaml
+ 
+-from multipart.decoders import Base64Decoder, QuotedPrintableDecoder
+-from multipart.exceptions import DecodeError, FileError, FormParserError, MultipartParseError, QuerystringParseError
+-from multipart.multipart import (
++from python_multipart.decoders import Base64Decoder, QuotedPrintableDecoder
++from python_multipart.exceptions import DecodeError, FileError, FormParserError, MultipartParseError, QuerystringParseError
++from python_multipart.multipart import (
+     BaseParser,
+     Field,
+     File,
+@@ -31,7 +31,7 @@
+ if TYPE_CHECKING:
+     from typing import Any, Iterator, TypedDict
+ 
+-    from multipart.multipart import FieldProtocol, FileConfig, FileProtocol
++    from python_multipart.multipart import FieldProtocol, FileConfig, FileProtocol
+ 
+     class TestParams(TypedDict):
+         name: str
+

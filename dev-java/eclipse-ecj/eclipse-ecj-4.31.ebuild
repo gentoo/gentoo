@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
 SLOT="4.31"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 BDEPEND="app-arch/unzip"
 COMMON_DEP="app-eselect/eselect-java"

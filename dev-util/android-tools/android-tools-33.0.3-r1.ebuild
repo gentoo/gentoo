@@ -41,6 +41,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	dev-lang/go
 	dev-lang/perl
+	dev-libs/protobuf[protoc(+)]
 "
 
 DOCS=()

@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/${PV}/js
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"

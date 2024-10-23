@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/fordfrog/apgdiff https://www.apgdiff.com/"
 SRC_URI="https://github.com/fordfrog/${PN}/archive/refs/tags/release_${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 # Compile dependencies
 # POM: pom.xml

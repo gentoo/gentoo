@@ -16,4 +16,7 @@
 	<longdescription lang="en">
 	The fastjet-contrib space is intended to provide a common location for access to 3rd party extensions of FastJet.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">fjcontrib/fjcontrib</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -15,7 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PN}.zip -> ${P}.zip"
 LICENSE="public-domain"
 
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="
 	>=virtual/jdk-1.8:*"

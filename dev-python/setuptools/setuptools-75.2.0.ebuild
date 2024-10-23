@@ -73,7 +73,7 @@ BDEPEND="
 # https://github.com/pypa/setuptools/issues/4459
 PDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	>=dev-python/trove-classifiers-2024.7.2[${PYTHON_USEDEP}]
+	>=dev-python/trove-classifiers-2024.10.16[${PYTHON_USEDEP}]
 "
 
 src_prepare() {

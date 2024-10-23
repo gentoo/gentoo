@@ -1,0 +1,3 @@
+d /run/slurm 755 slurm slurm -
+d /var/tmp/slurm/slurmd 755 slurm slurm -
+d /var/tmp/slurm 755 slurm slurm -

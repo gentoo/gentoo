@@ -15,7 +15,7 @@ SRC_URI="https://github.com/conan-io/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/bottle-0.12.8[${PYTHON_USEDEP}]

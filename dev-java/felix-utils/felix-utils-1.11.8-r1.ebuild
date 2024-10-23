@@ -17,7 +17,7 @@ S="${WORKDIR}/org.apache.felix.utils-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*

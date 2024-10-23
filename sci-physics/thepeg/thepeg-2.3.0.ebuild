@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.3-java.patch
 	"${FILESDIR}"/${PN}-2.0.4-gcc6.patch
 	"${FILESDIR}"/${PN}-2.3.0-rivet.patch # properly support rivet/yoda weights in thepeg, reported to upstream by mail.
+	"${FILESDIR}"/${PN}-2.3.0-functional.patch # https://bugs.gentoo.org/941477
 )
 
 src_prepare() {

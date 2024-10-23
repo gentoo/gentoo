@@ -11,7 +11,7 @@ MODULES_KERNEL_MAX=6.9
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="https://www.nvidia.com/download/index.aspx"
+HOMEPAGE="https://www.nvidia.com/"
 SRC_URI="
 	${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run
 	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
@@ -472,8 +472,8 @@ pkg_postinst() {
 		ewarn "installed by the ebuild to handle sleep using the official upstream"
 		ewarn "script. It is recommended to disable the option."
 	fi
-	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep | sort | uniq | \
-		xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
+	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep 2>/dev/null | \
+		sort | uniq | xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
 	then
 		ewarn
 		ewarn "!!! WARNING !!!"

@@ -14,7 +14,7 @@ S="${WORKDIR}/sanselan-${PV}-incubator"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="test" # 5/48 failures, dunno why :(
 
 DEPEND=">=virtual/jdk-1.8:*

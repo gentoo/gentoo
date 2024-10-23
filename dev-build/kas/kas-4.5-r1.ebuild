@@ -45,6 +45,7 @@ BDEPEND="
 # environment variable KAS_REPO_REF_DIR is deleted during
 # testing
 PROPERTIES="test_network"
+RESTRICT="test"
 
 distutils_enable_tests pytest
 

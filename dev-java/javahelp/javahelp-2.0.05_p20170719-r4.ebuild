@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 
 CP_DEPEND="
 	dev-java/javax-jsp-api:2.0

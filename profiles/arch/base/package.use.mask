@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-10-23)
+# Debug-enabled binary packages are built for a subset of architectures.
+sys-kernel/gentoo-kernel-bin debug
+
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-10-10)
 # VirtualBox is amd64 only
 app-emulation/libvirt virtualbox
@@ -227,7 +231,6 @@ dev-util/diffoscope haskell
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
-x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
@@ -402,7 +405,6 @@ sys-boot/grub:2 grub_platforms_xen-32
 # Mask it globally, unmask it on arm.
 media-video/motion mmal
 media-video/ffmpeg mmal
-media-video/ffmpeg-chromium mmal
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

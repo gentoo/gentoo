@@ -15,7 +15,7 @@ S="${WORKDIR}/android-sdk-linux"
 
 LICENSE="android"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="bindist mirror"
 
 DEPEND="acct-group/android"

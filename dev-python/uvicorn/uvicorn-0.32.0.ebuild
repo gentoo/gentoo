@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~sparc"
 IUSE="test-rust"
 
 RDEPEND="

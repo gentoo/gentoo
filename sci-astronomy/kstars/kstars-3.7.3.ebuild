@@ -21,7 +21,8 @@ LICENSE="GPL-2+ GPL-3+"
 SLOT="5"
 IUSE="+password raw wcs"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+# IUSE wcs needed by TestPolarAlign
+REQUIRED_USE="${PYTHON_REQUIRED_USE} test? ( wcs )"
 
 COMMON_DEPEND="
 	>=dev-qt/qtdatavis3d-${QTMIN}:5
@@ -73,6 +74,15 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
 
+CMAKE_SKIP_TESTS=(
+	# bug 842768, test declared unstable by upstream
+	TestKSPaths
+	# bugs 923871, 939788
+	TestPlaceholderPath # ki18n (KLocalizedString) failure
+	# all fail with offscreen plugin
+	TestEkos{Capture,FilterWheel,Focus,Mount,Scheduler{,Ops},Simulator}
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PYKSTARS=OFF
@@ -87,12 +97,7 @@ src_configure() {
 }
 
 src_test() {
-	# bug 842768, test declared unstable by upstream
-	local myctestargs=(
-		-E "(TestKSPaths)"
-	)
-
-	ecm_src_test
+	LC_NUMERIC="C" LC_TIME="C" TZ=UTC ecm_src_test
 }
 
 pkg_postinst() {

@@ -1,0 +1,98 @@
+From df33893e32c12317a4617982a768dc33d8110365 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Sun, 20 Oct 2024 22:38:13 -0400
+Subject: [PATCH] fix various Modern C issues
+
+These mostly encompass configure checks for missing headers (and one
+missing return type for main) that result in compile checks failing.
+
+There are also a couple issues in the codebase itself. Not all numbers
+are the same (type)...
+
+https://bugs.gentoo.org/874705
+https://bugs.gentoo.org/900260
+---
+ configure.in  | 11 ++++++-----
+ unix/portnm.c |  2 +-
+ unix/tcp.c    |  2 +-
+ 3 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 4087ec4..317affc 100644
+--- a/configure.in
++++ b/configure.in
+@@ -278,7 +278,7 @@ fi
+ dnl
+ AC_MSG_CHECKING(for void)
+ AC_CACHE_VAL(uucp_cv_c_void,
+-[AC_TRY_COMPILE([], [extern void foo (); (void) exit (0);],
++[AC_TRY_COMPILE([#include <stdlib.h>], [extern void foo (); (void) exit (0);],
+ uucp_cv_c_void=yes, uucp_cv_c_void=no)])
+ AC_MSG_RESULT($uucp_cv_c_void)
+ if test $uucp_cv_c_void = yes; then
+@@ -318,7 +318,7 @@ dnl On some systems, memset, memcmp, and memcpy must be called with
+ dnl the right number of arguments.
+ AC_MSG_CHECKING(for memset)
+ AC_CACHE_VAL(ac_cv_func_memset,
+-[AC_TRY_LINK([], [ char *i; int j, k; memset(i, j, k); ],
++[AC_TRY_LINK([#include <string.h>], [ char *i; int j, k; memset(i, j, k); ],
+ ac_cv_func_memset=yes, ac_cv_func_memset=no)])
+ AC_MSG_RESULT($ac_cv_func_memset)
+ if test $ac_cv_func_memset = yes; then
+@@ -327,7 +327,7 @@ fi
+ dnl
+ AC_MSG_CHECKING(for memcmp)
+ AC_CACHE_VAL(ac_cv_func_memcmp,
+-[AC_TRY_LINK([], [ char *i, *j; int k; memcmp(i, j, k); ],
++[AC_TRY_LINK([#include <string.h>], [ char *i, *j; int k; memcmp(i, j, k); ],
+ ac_cv_func_memcmp=yes, ac_cv_func_memcmp=no)])
+ AC_MSG_RESULT($ac_cv_func_memcmp)
+ if test $ac_cv_func_memcmp = yes; then
+@@ -336,7 +336,7 @@ fi
+ dnl
+ AC_MSG_CHECKING(for memcpy)
+ AC_CACHE_VAL(ac_cv_func_memcpy,
+-[AC_TRY_LINK([], [ char *i, *j; int k; memcpy(i, j, k); ],
++[AC_TRY_LINK([#include <string.h>], [ char *i, *j; int k; memcpy(i, j, k); ],
+ ac_cv_func_memcpy=yes, ac_cv_func_memcpy=no)])
+ AC_MSG_RESULT($ac_cv_func_memcpy)
+ if test $ac_cv_func_memcpy = yes; then
+@@ -373,7 +373,8 @@ AC_CACHE_VAL(uucp_cv_sys_ftime_ok,
+ [AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/timeb.h>
+-main ()
++#include <stdlib.h>
++int main ()
+ {
+   struct timeb s, slast;
+   int c = 0;
+diff --git a/unix/portnm.c b/unix/portnm.c
+index 9eda4ab..019337c 100644
+--- a/unix/portnm.c
++++ b/unix/portnm.c
+@@ -32,7 +32,7 @@ zsysdep_port_name (ftcp_port)
+ 
+ #if HAVE_TCP
+   {
+-    size_t clen;
++    socklen_t clen;
+     struct sockaddr s;
+ 
+     clen = sizeof (struct sockaddr);
+diff --git a/unix/tcp.c b/unix/tcp.c
+index 1bbcec7..af52cab 100644
+--- a/unix/tcp.c
++++ b/unix/tcp.c
+@@ -395,7 +395,7 @@ ftcp_open (qconn, ibaud, fwait, fuser)
+   while (! FGOT_SIGNAL ())
+     {
+       sockaddr_storage speer;
+-      size_t clen;
++      socklen_t clen;
+       int onew;
+       pid_t ipid;
+ 
+-- 
+2.45.2
+

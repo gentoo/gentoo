@@ -15,7 +15,7 @@ S="${WORKDIR}/elpa-${COMMIT:0:7}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 # ELISP_TEXINFO="${PN}.texi"    # Broken.
 SITEFILE="50${PN}-gentoo.el"

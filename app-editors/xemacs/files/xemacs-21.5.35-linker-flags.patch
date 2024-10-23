@@ -1,0 +1,24 @@
+changeset:   7521:ce06831b299c
+parent:      7519:fb35ba719d24
+user:        Aidan Kehoe <kehoea@parhasard.net>
+date:        Thu Oct 17 09:01:54 2024 +0100
+summary:     configure.ac: No longer use XE_PROTECT_LINKER_FLAGS on LDFLAGS.
+
+diff -r fb35ba719d24 -r ce06831b299c configure.ac
+--- a/configure.ac	Mon Oct 14 19:18:08 2024 +0100
++++ b/configure.ac	Thu Oct 17 09:01:54 2024 +0100
+@@ -2155,8 +2155,12 @@
+ XE_PROTECT_LINKER_FLAGS(ld_switch_system)
+ XE_PROTECT_LINKER_FLAGS(ld_switch_machine)
+ XE_PROTECT_LINKER_FLAGS(ld_switch_site)
+-XE_PROTECT_LINKER_FLAGS(LDFLAGS)
+ XE_PROTECT_LINKER_FLAGS(ld_call_shared)
++dnl No longer do this for LDFLAGS, since that interacts poorly with link time
++dnl optimization. Unclear if XE_PROTECT_LINKER_FLAGS() is still needed in
++dnl general, it was introduced for GCC versions in the 90s and things have
++dnl changed, but unlikely to be an issue with the other flags. See
++dnl https://bugs.gentoo.org/940327 for a relevant bug report.
+ 
+ dnl Add s&m-determined objects to link line
+ test -n "$objects_machine" && XE_ADD_OBJS($objects_machine)
+

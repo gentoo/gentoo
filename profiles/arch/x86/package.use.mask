@@ -1,6 +1,31 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexander Puck Neuwirth <alexander@neuwirth-informatik.de> (2024-10-20)
+# sci-physics/rivet is unavailable on x86
+sci-physics/pythia rivet
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-17)
+# depends on java packages, not keyworded on x86
+app-forensics/sleuthkit java
+app-office/gtg test
+app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
+dev-lang/logtalk fop
+dev-lang/swi-prolog test
+dev-util/diffoscope pdf
+media-gfx/zbar java
+media-libs/libbluray java
+media-libs/opencv java
+media-tv/mythtv java
+net-dns/opendnssec test
+net-misc/plowshare javascript
+sci-astronomy/cpl gasgano
+sci-libs/gdal java
+
+# Benda Xu <heroxbd@gentoo.org> (2024-10-10)
+# dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on x86
+sys-cluster/slurm nvml ucx
+
 # Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
 # Only supported on x86/amd64 (bug #940014).
 net-misc/lldpd -seccomp
@@ -13,7 +38,7 @@ games-emulation/rmg -dynarec
 # We only want to support spirv-llvm-translator >= 17 on x86, which is a
 # dependency of mesa.
 >=media-libs/mesa-24.1 llvm_slot_15 llvm_slot_16
->=dev-util/intel_clc-24.1 llvm_slot_15 llvm_slot_16
+>=dev-util/intel_clc-24.1 llvm_slot_16
 
 # Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # The opcache extension fails to build on hardened x86, but only
@@ -167,10 +192,6 @@ media-video/ffmpeg vmaf
 # dev-util/hip and its rocm dependencies not keyworded here
 sci-physics/lammps hip
 
-# Sam James <sam@gentoo.org> (2022-01-20)
-# Only supports cpu_flags_x86_aes in 64-bit mode
-net-fs/samba cpu_flags_x86_aes
-
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
 app-emulation/fs-uae -jit
@@ -210,7 +231,6 @@ media-video/obs-studio browser
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers does not function well with
 # the last drivers to support x86 (needed here to override use.mask).
-x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)

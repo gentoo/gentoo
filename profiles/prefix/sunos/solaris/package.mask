@@ -12,11 +12,6 @@
 # https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
 sys-apps/attr
 
-# Fabian Groffen <grobian@gentoo.org> (2023-06-09)
-# Fails to compile due to missing DT_* symbols
-# fix: https://lore.kernel.org/git/20230606205935.3183276-1-asedeno@google.com/
-~dev-vcs/git-2.41.0
-
 # Fabian Groffen <grobian@gentoo.org> (2014-01-14)
 # util-linux has no business on Solaris systems
 sys-apps/util-linux

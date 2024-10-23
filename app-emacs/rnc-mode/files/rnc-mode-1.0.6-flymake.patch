@@ -1,4 +1,5 @@
-Update function and variable names that are obsolete since Emacs 26
+Update function and variable names that are obsolete since Emacs 26.
+Don't try to configure flymake without a jing jar file.
 
 --- rnc-mode-1.0.6/rnc-mode.el
 +++ rnc-mode-1.0.6/rnc-mode.el
@@ -28,3 +29,16 @@ Update function and variable names that are obsolete since Emacs 26
      (message "RNC flymake not enabled because the Jing jar could not be found")))
  
  ;;; Imenu support
+@@ -329,8 +329,9 @@
+     (modify-syntax-entry ?_ "w   " rnc-syntax-table)
+     (set-syntax-table rnc-syntax-table))
+ 
+-  (rnc-configure-flymake)
+-  (when rnc-enable-flymake
+-    (flymake-mode))
++  (when rnc-jing-jar-file
++    (rnc-configure-flymake)
++    (when rnc-enable-flymake
++      (flymake-mode)))
+   (when rnc-enable-imenu
+     (rnc-configure-imenu))

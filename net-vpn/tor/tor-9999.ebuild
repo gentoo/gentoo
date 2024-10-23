@@ -43,6 +43,8 @@ IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening te
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	acct-user/tor
+	acct-group/tor
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	dev-libs/openssl:=[-bindist(-)]
 	sys-libs/zlib
@@ -55,8 +57,6 @@ DEPEND="
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
-	acct-user/tor
-	acct-group/tor
 	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )
 "
@@ -71,6 +71,12 @@ DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# test correctly fails because -lnacl fails if not available
+	# https://bugs.gentoo.org/900092
+	crypto_scalarmult_curve25519
 )
 
 pkg_setup() {

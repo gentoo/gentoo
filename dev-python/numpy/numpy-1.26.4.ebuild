@@ -50,6 +50,11 @@ BDEPEND="
 	)
 "
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# https://bugs.gentoo.org/925367
+	vrndq_f32
+)
+
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 

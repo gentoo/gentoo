@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson-multilib
 
-DESCRIPTION="EGLStream-based Wayland external platform"
+DESCRIPTION="NVIDIA wayland EGL external platform library"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland/"
 SRC_URI="
 	https://github.com/NVIDIA/egl-wayland/archive/refs/tags/${PV}.tar.gz
