@@ -57,18 +57,19 @@ RDEPEND="
 	dev-libs/openssl:0/3
 	sys-libs/glibc
 	X? (
-		>=gui-libs/egl-gbm-1.1.1-r2[abi_x86_32(-)?]
 		media-libs/libglvnd[X,abi_x86_32(-)?]
-		media-libs/mesa[gbm(+),abi_x86_32(-)?]
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
-		x11-libs/libdrm[abi_x86_32(-)?]
-		x11-libs/libxcb:=[abi_x86_32(-)?]
 	)
 	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
 	wayland? (
 		>=gui-libs/egl-gbm-1.1.1-r2[abi_x86_32(-)?]
 		>=gui-libs/egl-wayland-1.1.13.1[abi_x86_32(-)?]
+		X? (
+			media-libs/mesa[gbm(+),abi_x86_32(-)?]
+			x11-libs/libdrm[abi_x86_32(-)?]
+			x11-libs/libxcb:=[abi_x86_32(-)?]
+		)
 	)
 "
 DEPEND="
@@ -259,9 +260,12 @@ src_install() {
 	)
 
 	local skip_files=(
-		$(usev !X "
-			libGLX_nvidia libglxserver_nvidia
-			libnvidia-egl-xcb libnvidia-egl-xlib
+		$(usev !X "libGLX_nvidia libglxserver_nvidia")
+		# TODO?: package egl-x11 separately and drop wayland? ( X? ( deps ) )
+		# https://github.com/NVIDIA/egl-x11 (but no release yet, maybe wait)
+		$(use !X || use !wayland && echo "
+			libnvidia-egl-xcb 20_nvidia_xcb.json
+			libnvidia-egl-xlib 20_nvidia_xlib.json
 		")
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
