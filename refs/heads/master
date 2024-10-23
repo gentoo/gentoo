@@ -1,17 +1,14 @@
 certificate version 0.1
-pusher 0xAECFCBDC64276180 1729649823 -0400
-pushee gentoo:repo/gentoo.git
-nonce 1729649823-818f3a6896f680a25843fc782c7e12db47c515a0
+pusher 0xE31EE5662371CB21 1729650510 -0500
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1729650510-477b5f238a2d885a615a96b76612b8019c5aa15d
 
-48d21dd18d38564b018568acba34278a4624f6e4 fd81b392ac9ace821f1c4861d716c5edd4e4ad19 refs/heads/master
+fd81b392ac9ace821f1c4861d716c5edd4e4ad19 a8d1cb98814b68f62eee5bccfe375e93e89e9894 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-iQEzBAABCAAdFiEEx3SLh1HBoPy/yLVYskQGsLCsQzQFAmcYXJ8ACgkQskQGsLCs
-QzQcwggAkYh1UqDneSaHrlPYCev147rW8w6HMQwSh6hztA1T0QZlKtWavUe2/wlb
-XZmtov0nMHatW5vPXgnrsMj9JX71s7X0dsxpZ+rLjfUSQCsFZr+KpcBqwj45HeRz
-rr03SpDPSRz6P51srrtnA7JAqyZAJgs5iNKo/ijCLjyxEI09nPKmqU7hCQbKYaVo
-uX+8nrvXw4Ib9+a+8dgfWFQFv2kjL4sWIeMENVibifSsO8s9pX7SJ0oirHEx5qa3
-ZxvKeWvt5k9eOad9Y+qvpsM04WnkLB5iuEJcCza64zOooXKLigAW6Firp0roLS2j
-LPl7MaUxgnOsL8vR2DVS2fmqEehBrg==
-=QyW5
+iHUEABYKAB0WIQT8h8LKAMfXpbyNfbiSCKUy8s+wzgUCZxhfTgAKCRCSCKUy8s+w
+zgZiAQC6N819kkZUXSpKl8EhL59y38Sxqt2OdoAv4JS1pCldagD/WDjAib8zKjHK
+LkK7dTWAocfAKKBVQqEyX96zWNYzOwE=
+=MSYH
 -----END PGP SIGNATURE-----
