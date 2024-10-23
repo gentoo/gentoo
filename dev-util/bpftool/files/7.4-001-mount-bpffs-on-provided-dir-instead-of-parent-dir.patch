@@ -1,0 +1,255 @@
+From 54bcb7c7fecb33d40266223d4bba49ad38e59ee3 Mon Sep 17 00:00:00 2001
+From: Sahil Siddiq <icegambit91@gmail.com>
+Date: Fri, 5 Apr 2024 00:52:19 +0530
+Subject: [PATCH] bpftool: Mount bpffs on provided dir instead of parent dir
+
+When pinning programs/objects under PATH (eg: during "bpftool prog
+loadall") the bpffs is mounted on the parent dir of PATH in the
+following situations:
+- the given dir exists but it is not bpffs.
+- the given dir doesn't exist and the parent dir is not bpffs.
+
+Mounting on the parent dir can also have the unintentional side-
+effect of hiding other files located under the parent dir.
+
+If the given dir exists but is not bpffs, then the bpffs should
+be mounted on the given dir and not its parent dir.
+
+Similarly, if the given dir doesn't exist and its parent dir is not
+bpffs, then the given dir should be created and the bpffs should be
+mounted on this new dir.
+
+Fixes: 2a36c26fe3b8 ("bpftool: Support bpffs mountpoint as pin path for prog loadall")
+Signed-off-by: Sahil Siddiq <icegambit91@gmail.com>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Link: https://lore.kernel.org/bpf/2da44d24-74ae-a564-1764-afccf395eeec@isovalent.com/T/#t
+Link: https://lore.kernel.org/bpf/20240404192219.52373-1-icegambit91@gmail.com
+
+Closes: https://github.com/libbpf/bpftool/issues/100
+
+Changes since v1:
+ - Split "mount_bpffs_for_pin" into two functions.
+   This is done to improve maintainability and readability.
+
+Changes since v2:
+- mount_bpffs_for_pin: rename to "create_and_mount_bpffs_dir".
+- mount_bpffs_given_file: rename to "mount_bpffs_given_file".
+- create_and_mount_bpffs_dir:
+  - introduce "dir_exists" boolean.
+  - remove new dir if "mnt_fs" fails.
+- improve error handling and error messages.
+
+Changes since v3:
+- Rectify function name.
+- Improve error messages and formatting.
+- mount_bpffs_for_file:
+  - Check if dir exists before block_mount check.
+
+Changes since v4:
+- Use strdup instead of strcpy.
+- create_and_mount_bpffs_dir:
+  - Use S_IRWXU instead of 0700.
+- Improve error handling and formatting.
+---
+ src/common.c     | 96 ++++++++++++++++++++++++++++++++++++++++++------
+ src/iter.c       |  2 +-
+ src/main.h       |  3 +-
+ src/prog.c       |  5 ++-
+ src/struct_ops.c |  2 +-
+ 5 files changed, 92 insertions(+), 16 deletions(-)
+
+diff --git a/src/common.c b/src/common.c
+index cc6e6aae..958e92ac 100644
+--- a/src/common.c
++++ b/src/common.c
+@@ -244,29 +244,101 @@ int open_obj_pinned_any(const char *path, enum bpf_obj_type exp_type)
+ 	return fd;
+ }
+ 
+-int mount_bpffs_for_pin(const char *name, bool is_dir)
++int create_and_mount_bpffs_dir(const char *dir_name)
+ {
+ 	char err_str[ERR_MAX_LEN];
+-	char *file;
+-	char *dir;
++	bool dir_exists;
+ 	int err = 0;
+ 
+-	if (is_dir && is_bpffs(name))
++	if (is_bpffs(dir_name))
+ 		return err;
+ 
+-	file = malloc(strlen(name) + 1);
+-	if (!file) {
++	dir_exists = access(dir_name, F_OK) == 0;
++
++	if (!dir_exists) {
++		char *temp_name;
++		char *parent_name;
++
++		temp_name = strdup(dir_name);
++		if (!temp_name) {
++			p_err("mem alloc failed");
++			return -1;
++		}
++
++		parent_name = dirname(temp_name);
++
++		if (is_bpffs(parent_name)) {
++			/* nothing to do if already mounted */
++			free(temp_name);
++			return err;
++		}
++
++		if (access(parent_name, F_OK) == -1) {
++			p_err("can't create dir '%s' to pin BPF object: parent dir '%s' doesn't exist",
++			      dir_name, parent_name);
++			free(temp_name);
++			return -1;
++		}
++
++		free(temp_name);
++	}
++
++	if (block_mount) {
++		p_err("no BPF file system found, not mounting it due to --nomount option");
++		return -1;
++	}
++
++	if (!dir_exists) {
++		err = mkdir(dir_name, S_IRWXU);
++		if (err) {
++			p_err("failed to create dir '%s': %s", dir_name, strerror(errno));
++			return err;
++		}
++	}
++
++	err = mnt_fs(dir_name, "bpf", err_str, ERR_MAX_LEN);
++	if (err) {
++		err_str[ERR_MAX_LEN - 1] = '\0';
++		p_err("can't mount BPF file system on given dir '%s': %s",
++		      dir_name, err_str);
++
++		if (!dir_exists)
++			rmdir(dir_name);
++	}
++
++	return err;
++}
++
++int mount_bpffs_for_file(const char *file_name)
++{
++	char err_str[ERR_MAX_LEN];
++	char *temp_name;
++	char *dir;
++	int err = 0;
++
++	if (access(file_name, F_OK) != -1) {
++		p_err("can't pin BPF object: path '%s' already exists", file_name);
++		return -1;
++	}
++
++	temp_name = strdup(file_name);
++	if (!temp_name) {
+ 		p_err("mem alloc failed");
+ 		return -1;
+ 	}
+ 
+-	strcpy(file, name);
+-	dir = dirname(file);
++	dir = dirname(temp_name);
+ 
+ 	if (is_bpffs(dir))
+ 		/* nothing to do if already mounted */
+ 		goto out_free;
+ 
++	if (access(dir, F_OK) == -1) {
++		p_err("can't pin BPF object: dir '%s' doesn't exist", dir);
++		err = -1;
++		goto out_free;
++	}
++
+ 	if (block_mount) {
+ 		p_err("no BPF file system found, not mounting it due to --nomount option");
+ 		err = -1;
+@@ -276,12 +348,12 @@ int mount_bpffs_for_pin(const char *name, bool is_dir)
+ 	err = mnt_fs(dir, "bpf", err_str, ERR_MAX_LEN);
+ 	if (err) {
+ 		err_str[ERR_MAX_LEN - 1] = '\0';
+-		p_err("can't mount BPF file system to pin the object (%s): %s",
+-		      name, err_str);
++		p_err("can't mount BPF file system to pin the object '%s': %s",
++		      file_name, err_str);
+ 	}
+ 
+ out_free:
+-	free(file);
++	free(temp_name);
+ 	return err;
+ }
+ 
+@@ -289,7 +361,7 @@ int do_pin_fd(int fd, const char *name)
+ {
+ 	int err;
+ 
+-	err = mount_bpffs_for_pin(name, false);
++	err = mount_bpffs_for_file(name);
+ 	if (err)
+ 		return err;
+ 
+diff --git a/src/iter.c b/src/iter.c
+index 6b0e5202..5c39c2ed 100644
+--- a/src/iter.c
++++ b/src/iter.c
+@@ -76,7 +76,7 @@ static int do_pin(int argc, char **argv)
+ 		goto close_obj;
+ 	}
+ 
+-	err = mount_bpffs_for_pin(path, false);
++	err = mount_bpffs_for_file(path);
+ 	if (err)
+ 		goto close_link;
+ 
+diff --git a/src/main.h b/src/main.h
+index b8bb08d1..9eb764fe 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -142,7 +142,8 @@ const char *get_fd_type_name(enum bpf_obj_type type);
+ char *get_fdinfo(int fd, const char *key);
+ int open_obj_pinned(const char *path, bool quiet);
+ int open_obj_pinned_any(const char *path, enum bpf_obj_type exp_type);
+-int mount_bpffs_for_pin(const char *name, bool is_dir);
++int mount_bpffs_for_file(const char *file_name);
++int create_and_mount_bpffs_dir(const char *dir_name);
+ int do_pin_any(int argc, char **argv, int (*get_fd_by_id)(int *, char ***));
+ int do_pin_fd(int fd, const char *name);
+ 
+diff --git a/src/prog.c b/src/prog.c
+index 9cb42a33..4c4cf16a 100644
+--- a/src/prog.c
++++ b/src/prog.c
+@@ -1778,7 +1778,10 @@ static int load_with_options(int argc, char **argv, bool first_prog_only)
+ 		goto err_close_obj;
+ 	}
+ 
+-	err = mount_bpffs_for_pin(pinfile, !first_prog_only);
++	if (first_prog_only)
++		err = mount_bpffs_for_file(pinfile);
++	else
++		err = create_and_mount_bpffs_dir(pinfile);
+ 	if (err)
+ 		goto err_close_obj;
+ 
+diff --git a/src/struct_ops.c b/src/struct_ops.c
+index d573f264..aa43dead 100644
+--- a/src/struct_ops.c
++++ b/src/struct_ops.c
+@@ -515,7 +515,7 @@ static int do_register(int argc, char **argv)
+ 	if (argc == 1)
+ 		linkdir = GET_ARG();
+ 
+-	if (linkdir && mount_bpffs_for_pin(linkdir, true)) {
++	if (linkdir && create_and_mount_bpffs_dir(linkdir)) {
+ 		p_err("can't mount bpffs for pinning");
+ 		return -1;
+ 	}

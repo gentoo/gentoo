@@ -1,0 +1,38 @@
+From 06c61eccd3b8a6ff3df3e451a2a93058913124fc Mon Sep 17 00:00:00 2001
+From: jinzhiguang <jinzhiguang@kylinos.cn>
+Date: Sun, 7 Apr 2024 16:54:33 +0800
+Subject: [PATCH] mirror: Set DESTDIR to empty when building libbpf
+
+If a value is assigned to the variable DESTDIR when compiling bpftool,
+this variable will be passed to libbpf's Makefile.
+
+In this case, libbpf's header files will be installed in an unexpected
+directory, causing bpftool to be unable to find the header files.
+
+Signed-off-by: jinzhiguang <jinzhiguang@kylinos.cn>
+---
+ src/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index a3bc6a0..d48d22f 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -42,7 +42,7 @@ $(LIBBPF_OUTPUT) $(BOOTSTRAP_OUTPUT) $(LIBBPF_BOOTSTRAP_OUTPUT) $(LIBBPF_HDRS_DI
+ 
+ $(LIBBPF): $(wildcard $(BPF_DIR)/*.[ch] $(BPF_DIR)/Makefile) | $(LIBBPF_OUTPUT)
+ 	$(Q)$(MAKE) -C $(BPF_DIR) OBJDIR=$(patsubst %/,%,$(LIBBPF_OUTPUT)) \
+-		PREFIX=$(LIBBPF_DESTDIR:/=) $(LIBBPF) install_headers
++		DESTDIR="" PREFIX=$(LIBBPF_DESTDIR:/=) $(LIBBPF) install_headers
+ 
+ $(LIBBPF_INTERNAL_HDRS): $(LIBBPF_HDRS_DIR)/%.h: $(BPF_DIR)/%.h | $(LIBBPF_HDRS_DIR)
+ 	$(call QUIET_INSTALL, $@)
+@@ -50,7 +50,7 @@ $(LIBBPF_INTERNAL_HDRS): $(LIBBPF_HDRS_DIR)/%.h: $(BPF_DIR)/%.h | $(LIBBPF_HDRS_
+ 
+ $(LIBBPF_BOOTSTRAP): $(wildcard $(BPF_DIR)/*.[ch] $(BPF_DIR)/Makefile) | $(LIBBPF_BOOTSTRAP_OUTPUT)
+ 	$(Q)$(MAKE) -C $(BPF_DIR) OBJDIR=$(patsubst %/,%,$(LIBBPF_BOOTSTRAP_OUTPUT)) \
+-		PREFIX=$(LIBBPF_BOOTSTRAP_DESTDIR:/=) \
++		DESTDIR="" PREFIX=$(LIBBPF_BOOTSTRAP_DESTDIR:/=) \
+ 		ARCH= CROSS_COMPILE= CC="$(HOSTCC)" LD="$(HOSTLD)" AR="$(HOSTAR)" $@ install_headers
+ 
+ $(LIBBPF_BOOTSTRAP_INTERNAL_HDRS): $(LIBBPF_BOOTSTRAP_HDRS_DIR)/%.h: $(BPF_DIR)/%.h | $(LIBBPF_BOOTSTRAP_HDRS_DIR)
