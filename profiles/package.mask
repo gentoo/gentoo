@@ -250,11 +250,6 @@ dev-python/pytest-lazy-fixture
 >=dev-python/ensurepip-setuptools-75.1.0
 >=dev-python/setuptools-75.1.0
 
-# Hans de Graaff <graaff@gentoo.org> (2024-09-14)
-# Obsolete slots that were used for older cucumber version but that no
-# longer have reverse dependencies. Removal on 2024-10-14.
-dev-util/cucumber-compatibility-kit:10
-
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.0.9999:30-vcs
