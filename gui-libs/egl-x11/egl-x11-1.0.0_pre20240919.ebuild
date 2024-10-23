@@ -8,7 +8,7 @@ inherit meson-multilib
 # no releases yet, should typically update hash in sync with nvidia bumps
 HASH_EGLX11=8aac36c712561ebfecc82af3db15c50cd0d573fb
 
-DESCRIPTION="X11/XCB EGL external platform library"
+DESCRIPTION="NVIDIA X11/XCB EGL external platform library"
 HOMEPAGE="https://github.com/NVIDIA/egl-x11/"
 SRC_URI="
 	https://github.com/NVIDIA/egl-x11/archive/${HASH_EGLX11}.tar.gz
