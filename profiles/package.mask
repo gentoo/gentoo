@@ -238,12 +238,6 @@ dev-python/pypy3_9
 dev-python/pypy3_9-exe
 dev-python/pypy3_9-exe-bin
 
-# Michał Górny <mgorny@gentoo.org> (2024-09-21)
-# Unmaintained.  Broken with >=dev-python/pytest-8.
-# Replaced by dev-python/pytest-lazy-fixtures.  No revdeps left.
-# Removal on 2024-10-21.  Bug #939420.
-dev-python/pytest-lazy-fixture
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
 # Breaks parallel builds with fatal compiler errors.
 # Bug #939798, #939875.
