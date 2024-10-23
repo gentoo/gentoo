@@ -21,6 +21,7 @@ IUSE="accessibility +jit +network opengl qmlls +sql +ssl svg vulkan +widgets"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[accessibility=,gui,network=,opengl=,sql?,ssl?,vulkan=,widgets=]
+	>=dev-qt/qtbase-${PV}-r1
 	qmlls? ( ~dev-qt/qtlanguageserver-${PV}:6 )
 	svg? ( ~dev-qt/qtsvg-${PV}:6 )
 "
