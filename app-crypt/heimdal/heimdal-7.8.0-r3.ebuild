@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}/heimdal_fix-db60.patch"
 	"${FILESDIR}/heimdal-7.8.0-CVE-2022-45142.patch"
 	"${FILESDIR}/heimdal-7.8.0-configure-clang16.patch"
+	"${FILESDIR}/heimdal-7.8.0-autoconf-2.72.patch"
 )
 
 src_prepare() {
