@@ -51,7 +51,9 @@ BDEPEND="
 "
 
 check_env() {
-	if ! has_version -b dev-python/pypy; then
+	if ! has_version -b dev-lang/pypy:2.7 &&
+		! has_version -b dev-python/pypy
+	then
 		if use low-memory; then
 			eerror "USE=low-memory requires (a prior version of) dev-python/pypy"
 			eerror "installed."
@@ -142,7 +144,10 @@ src_configure() {
 	done
 
 	local interp
-	if use low-memory || has_version -b dev-python/pypy; then
+	if use low-memory ||
+		has_version -b dev-lang/pypy:2.7 ||
+		has_version -b dev-python/pypy
+	then
 		einfo "Using already-installed PyPy to perform the translation."
 		interp=( pypy )
 		if use low-memory; then
