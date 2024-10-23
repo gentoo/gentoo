@@ -7,7 +7,7 @@ inherit meson-multilib
 
 HASH_EGLWAYLAND=0cd471dcfd46e6cb8b71eceddb20cc02eadabf61
 
-DESCRIPTION="EGLStream-based Wayland external platform"
+DESCRIPTION="NVIDIA wayland EGL external platform library"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland/"
 SRC_URI="
 	https://github.com/NVIDIA/egl-wayland/archive/${HASH_EGLWAYLAND}.tar.gz
