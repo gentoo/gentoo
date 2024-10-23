@@ -1,0 +1,48 @@
+From bf9e0609acb97d73a7ebf3e8910b0119cd943dfb Mon Sep 17 00:00:00 2001
+From: Quentin Monnet <qmo@kernel.org>
+Date: Mon, 14 Oct 2024 17:43:25 +0100
+Subject: [PATCH] mirror: Define PACKAGE at build time when trying to detect libbfd
+
+Feature detection from the Makefile.feature for libbfd (with the
+different variants of the probe) may fail on some systems where the
+bfd.h and dis-asm.h headers expect the PACKAGE or PACKAGE_VERSION macros
+to be defined [0]. In the kernel tree, feature detection addresses it by
+defining the PACKAGE macro when invoking the compiler [1]. Add a similar
+definition for the mirror repository.
+
+Note that this issue has remained undetected for a while. This is
+because the bfd.h included in some distributions (Debian/Ubuntu, for
+example) does not contain the inclusion guard [2].
+
+[0] https://sourceware.org/git/?p=binutils-gdb.git;a=blob;f=bfd/bfd-in.h;h=04e65aad5f0c235a5013513c545e57a01e96541f;hb=binutils-2_43_1#l27
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/build/feature/Makefile?h=v6.11#n114
+[2] https://git.launchpad.net/ubuntu/+source/binutils/tree/debian/rules?h=applied/2.43.1-5#n1031
+
+Reported-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+Signed-off-by: Quentin Monnet <qmo@kernel.org>
+---
+ src/Makefile.feature | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.feature b/src/Makefile.feature
+index 131c67e..90f9e7c 100644
+--- a/src/Makefile.feature
++++ b/src/Makefile.feature
+@@ -45,7 +45,7 @@ LIBBFD_PROBE += '	bfd_demangle(0, 0, 0);'
+ LIBBFD_PROBE += '	return 0;'
+ LIBBFD_PROBE += '}'
+ LIBBFD_PROBE_CMD = printf '%b\n' $(LIBBFD_PROBE) | \
+-  $(CC) $(CFLAGS) -Wall -Werror -x c - $(1) -o /dev/null >/dev/null
++  $(CC) $(CFLAGS) -Wall -Werror -x c -DPACKAGE='"bpftool"' - $(1) -o /dev/null >/dev/null
+ 
+ define libbfd_build
+   $(call detect,$(LIBBFD_PROBE_CMD))
+@@ -78,7 +78,7 @@ DISASSEMBLER_PROBE += '	return 0;'
+ DISASSEMBLER_PROBE += '}'
+ 
+ DISASSEMBLER_PROBE_CMD = printf '%b\n' $(1) | \
+-  $(CC) $(CFLAGS) -Wall -Werror -x c - -lbfd -lopcodes -S -o - >/dev/null
++  $(CC) $(CFLAGS) -Wall -Werror -x c -DPACKAGE='"bpftool"' - -lbfd -lopcodes -S -o - >/dev/null
+ define disassembler_build
+   $(call detect,$(DISASSEMBLER_PROBE_CMD))
+ endef

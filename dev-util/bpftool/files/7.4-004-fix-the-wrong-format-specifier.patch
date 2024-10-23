@@ -1,0 +1,38 @@
+From cb035aad23cf92254d8d3c7631e5b642e6805bd1 Mon Sep 17 00:00:00 2001
+From: Zhu Jun <zhujun2@cmss.chinamobile.com>
+Date: Wed, 24 Jul 2024 04:11:20 -0700
+Subject: [PATCH] tools/bpf: Fix the wrong format specifier
+
+The format specifier of "unsigned int" in printf() should be "%u", not
+"%d".
+
+Signed-off-by: Zhu Jun <zhujun2@cmss.chinamobile.com>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Acked-by: Quentin Monnet <qmo@kernel.org>
+Link: https://lore.kernel.org/bpf/20240724111120.11625-1-zhujun2@cmss.chinamobile.com
+---
+ src/xlated_dumper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/xlated_dumper.c b/src/xlated_dumper.c
+index 567f56d..d009434 100644
+--- a/src/xlated_dumper.c
++++ b/src/xlated_dumper.c
+@@ -349,7 +349,7 @@ void dump_xlated_plain(struct dump_data *dd, void *buf, unsigned int len,
+ 
+ 		double_insn = insn[i].code == (BPF_LD | BPF_IMM | BPF_DW);
+ 
+-		printf("% 4d: ", i);
++		printf("%4u: ", i);
+ 		print_bpf_insn(&cbs, insn + i, true);
+ 
+ 		if (opcodes) {
+@@ -415,7 +415,7 @@ void dump_xlated_for_graph(struct dump_data *dd, void *buf_start, void *buf_end,
+ 			}
+ 		}
+ 
+-		printf("%d: ", insn_off);
++		printf("%u: ", insn_off);
+ 		print_bpf_insn(&cbs, cur, true);
+ 
+ 		if (opcodes) {
