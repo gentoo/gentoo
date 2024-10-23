@@ -13,4 +13,7 @@
 		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to enable unprivileged run support</flag>
 		<flag name="llvm">Use <pkg>sys-devel/llvm</pkg> instead of libbfd (<pkg>sys-libs/binutils-libs</pkg>) for JIT disassembly</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libbpf/bpftool</remote-id>
+	</upstream>
 </pkgmetadata>
