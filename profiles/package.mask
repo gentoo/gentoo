@@ -230,12 +230,6 @@ dev-util/biew
 # Beware that if you upgrade to it, you may need to reset your keyrings.
 >=app-crypt/gnupg-2.5
 
-# Michał Górny <mgorny@gentoo.org> (2024-09-21)
-# Discontinued upstream.  Since 7.3.17, only 2.7 and 3.10 are released.
-# Vulnerable.
-# Removal on 2024-10-21.  Bug #939951.
-dev-python/pypy3_9-exe
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
 # Breaks parallel builds with fatal compiler errors.
 # Bug #939798, #939875.
