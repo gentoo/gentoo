@@ -6,12 +6,12 @@ EAPI=8
 inherit cmake optfeature
 
 DESCRIPTION="Tail with multiple windows"
-HOMEPAGE="http://www.vanheusden.com/multitail/ https://github.com/folkertvanheusden/multitail/"
+HOMEPAGE="https://www.vanheusden.com/multitail/ https://github.com/folkertvanheusden/multitail/"
 SRC_URI="https://github.com/folkertvanheusden/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples unicode"
 
 RDEPEND="sys-libs/ncurses:=[unicode(+)?]"
@@ -20,8 +20,6 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-gentoo.patch
-	"${FILESDIR}"/${PN}-7.0.0-fix-clang16-build.patch
-	"${FILESDIR}"/${PN}-7.0.0-fix-lto-type-mismatch.patch
 )
 
 src_prepare() {
@@ -46,15 +44,16 @@ src_install() {
 	doins multitail.conf
 
 	rm -rf "${ED}"/usr/{ect,etc} || die
-	rm -rf "${ED}"/usr/share/doc/multitail-VERSION=6.4.3 || die
+	rm -rf "${ED}"/usr/share/doc/multitail-VERSION=${PV} || die
 
-	DOCS=( readme.txt thanks.txt )
-	HTML_DOCS=( manual.html )
+	local DOCS=( README.md thanks.txt )
+	local HTML_DOCS=( manual.html )
 	einstalldocs
 
 	if use examples; then
+		docompress -x /usr/share/doc/${PF}/examples
 		docinto examples
-		dodoc conversion-scripts/colors-example.{pl,sh} conversion-scripts/convert-{geoip,simple}.pl
+		dodoc conversion-scripts/{colors-example.{pl,sh},convert-{geoip,simple}.pl}
 	fi
 }
 
