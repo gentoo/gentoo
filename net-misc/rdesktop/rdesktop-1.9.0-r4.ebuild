@@ -53,6 +53,11 @@ PATCHES=(
 
 DOCS=( doc/ChangeLog doc/HACKING doc/TODO doc/keymapping.txt )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# unavailable on Linux, and has correct checks and handles in configure.ac, bug #941974
+	statvfs64
+)
+
 src_prepare() {
 	default
 	eautoreconf
