@@ -254,7 +254,6 @@ dev-python/pytest-lazy-fixture
 # Obsolete slots that were used for older cucumber version but that no
 # longer have reverse dependencies. Removal on 2024-10-14.
 dev-util/cucumber-compatibility-kit:10
-dev-util/cucumber-core:12
 
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
