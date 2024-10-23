@@ -13,8 +13,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
-IUSE="openmp tcmalloc"
+KEYWORDS="amd64 ~riscv ~x86"
+IUSE="jpegxl openmp tcmalloc"
 
 RDEPEND="
 	dev-cpp/atkmm:0
@@ -36,10 +36,12 @@ RDEPEND="
 	media-libs/libiptcdata
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
+	media-libs/libraw:=
 	media-libs/tiff:=
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	x11-libs/gtk+:3
+	jpegxl? ( media-libs/libjxl:= )
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -67,7 +69,9 @@ src_configure() {
 		-DLICENCEDIR=/usr/share/${PN}
 		-DCACHE_NAME_SUFFIX=""
 		-DWITH_SYSTEM_KLT="off"
+		-DWITH_SYSTEM_LIBRAW="on"
 		-DENABLE_TCMALLOC=$(usex tcmalloc)
+		-DWITH_JXL=$(usex jpegxl)
 	)
 	cmake_src_configure
 }

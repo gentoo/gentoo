@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 
 SLOT="0"
@@ -32,7 +32,7 @@ REQUIRED_USE="
 "
 
 COMMONDEPEND="
-	>=dev-libs/glib-2.50:2
+	>=dev-libs/glib-2.36:2
 	dev-libs/nettle:=
 	net-mail/ytnef
 	sys-libs/zlib:=
@@ -116,6 +116,9 @@ RDEPEND="${COMMONDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
+	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
+	"${FILESDIR}/${P}-gtksocket.patch"
+
 )
 
 src_prepare() {
@@ -146,9 +149,6 @@ src_configure() {
 		$(use_enable clamav clamd-plugin)
 		$(use_enable dbus)
 		$(use_enable debug crash-dialog)
-		$(use_enable debug more-addressbook-debug)
-		$(use_enable debug more-ldap-debug)
-		$(use_enable debug more-archive-debug)
 		$(use_enable doc manual)
 		$(use_enable gnutls)
 		$(use_enable ldap)
@@ -188,7 +188,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS ChangeLog* INSTALL* NEWS README* )
+	local DOCS=( AUTHORS ChangeLog* INSTALL* NEWS README* TODO* )
 	default
 
 	# Makefile install claws-mail.png in /usr/share/icons/hicolor/48x48/apps
