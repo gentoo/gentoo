@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson-multilib
 
-DESCRIPTION="GBM EGL external platform library"
+DESCRIPTION="NVIDIA GBM EGL external platform library"
 HOMEPAGE="https://github.com/NVIDIA/egl-gbm/"
 SRC_URI="
 	https://github.com/NVIDIA/egl-gbm/archive/${PV}.tar.gz
