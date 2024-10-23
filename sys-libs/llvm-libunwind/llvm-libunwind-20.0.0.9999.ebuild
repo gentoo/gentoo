@@ -35,7 +35,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libunwind libcxx llvm/cmake cmake )
-LLVM_TEST_COMPONENTS=( libcxxabi llvm/utils/llvm-lit )
+LLVM_TEST_COMPONENTS=( libc libcxxabi llvm/utils/llvm-lit )
 llvm.org_set_globals
 
 python_check_deps() {
