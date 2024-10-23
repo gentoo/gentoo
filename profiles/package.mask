@@ -220,11 +220,6 @@ dev-python/brython
 # Nothing depends on it. Removal on 2024-10-28.
 dev-java/ant-core
 
-# Eli Schwartz <eschwartz@gentoo.org> (2024-09-22)
-# Unmaintained, abandoned upstream, does not compile with GCC 14.
-# Removal on 2024-10-22.  Bug #874732.
-dev-util/biew
-
 # Robin H. Johnson <robbat2@gentoo.org> (2024-09-22)
 # Upstream testing release; fails some tests as well here
 # Beware that if you upgrade to it, you may need to reset your keyrings.
