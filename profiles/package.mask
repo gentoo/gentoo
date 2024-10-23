@@ -235,7 +235,6 @@ dev-util/biew
 # Vulnerable.
 # Removal on 2024-10-21.  Bug #939951.
 dev-python/pypy3_9-exe
-dev-python/pypy3_9-exe-bin
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
 # Breaks parallel builds with fatal compiler errors.
