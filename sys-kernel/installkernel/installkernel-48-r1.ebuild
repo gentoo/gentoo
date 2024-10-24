@@ -90,7 +90,7 @@ RDEPEND="
 " # Block against systemd that still installs dummy install.conf
 
 pkg_setup() {
-	use efistub && CONFIG_CHECK="EFI_STUB" linux-info_pkg_setup
+	use efistub && CONFIG_CHECK="~EFI_STUB" linux-info_pkg_setup
 }
 
 src_install() {
