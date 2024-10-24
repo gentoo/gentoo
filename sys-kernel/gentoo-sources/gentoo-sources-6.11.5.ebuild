@@ -21,6 +21,11 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+src_prepare() {
+	kernel-2_src_prepare
+	rm "${S}/tools/testing/selftests/tc-testing/action-ebpf"
+}
+
 pkg_postinst() {
 	kernel-2_pkg_postinst
 	einfo "For more info on this patchset, and how to report problems, see:"
