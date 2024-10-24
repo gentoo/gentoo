@@ -80,7 +80,7 @@ SLOT="0/stable"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
 # it shouldn't be keyworded but adventurous users can select it.
 if [[ ${SLOT} == "0/dev" ]]; then
-	KEYWORDS=""
+	KEYWORDS="amd64"
 else
 	KEYWORDS="~amd64 ~arm64"
 fi
