@@ -112,7 +112,7 @@ fi
 # @ECLASS_VARIABLE: ZIG_VER
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# Zig version found during "zig-toolchain_find_installation", as reported by "zig version".
+# Zig version found during "zig-toolchain_find_installation", as reported in dev-lang/zig-${PV} PV part.
 #
 # Example:
 # @CODE
@@ -223,35 +223,33 @@ zig-toolchain_find_installation() {
 
 	einfo "Searching Zig ${ZIG_SLOT}..."
 
+	local zig_supported_versions=(
+		"9999"
+		"0.13.1"
+		"0.13.0"
+	)
+
 	local selected_path selected_version
-
-	# Prefer "dev-lang/zig" over "dev-lang/zig-bin"
-	local -a candidates candidates1 candidates2
-	readarray -d '' -t candidates1 < <(find -P "${BROOT}"/usr/bin/ -mindepth 1 -maxdepth 1 -type l -name "zig-bin-*" -print0 2> /dev/null || echo -n "")
-	readarray -d '' -t candidates2 < <(find -P "${BROOT}"/usr/bin/ -mindepth 1 -maxdepth 1 -type l -name "zig-*" -a '!' -name "zig-bin-*" -print0 2> /dev/null || echo -n "")
-	candidates=( "${candidates1[@]}" "${candidates2[@]}" )
-
-	local candidate_path
-	for candidate_path in "${candidates[@]}"; do
-		local candidate_version="${candidate_path##*-}"
-
+	for selected_version in "${zig_supported_versions[@]}"; do
 		# Compare with ZIG_SLOT (like 0.13)
-		local candidate_slot=$(ver_cut 1-2 ${candidate_version})
+		local candidate_slot=$(ver_cut 1-2 ${selected_version})
 		if ver_test "${candidate_slot}" -ne ${ZIG_SLOT}; then
 			# Candidate does not satisfy ZIG_SLOT condition.
 			continue
 		fi
 
-		# Compare with previous version (like 0.13.0 and 0.13.1, we prefer the second one if possible)
-		if [[ -n "${selected_path}" ]]; then
-			local selected_version="${selected_path##*-}"
-			if ver_test ${candidate_version} -lt ${selected_version}; then
-				# Previously chosen version is higher, keep it.
-				continue
-			fi
+		# Prefer "dev-lang/zig" over "dev-lang/zig-bin"
+		local candidate_path="${BROOT}/usr/bin/zig-${selected_version}"
+		if [[ -x "${candidate_path}" ]]; then
+			selected_path="${candidate_path}"
+			break;
 		fi
 
-		selected_path="${candidate_path}"
+		candidate_path="${BROOT}/usr/bin/zig-bin-${selected_version}"
+		if [[ -x "${candidate_path}" ]]; then
+			selected_path="${candidate_path}"
+			break;
+		fi
 	done
 
 	if [[ -z "${selected_path}" ]]; then
@@ -259,6 +257,12 @@ zig-toolchain_find_installation() {
 	fi
 
 	export ZIG_EXE="${selected_path}"
+	export ZIG_VER="${selected_version}"
+	# Sanity check, from upstream:
+	# // Check libc++ linkage to make sure Zig was built correctly, but only
+	# // for "env" and "version" to avoid affecting the startup time for
+	# // build-critical commands (check takes about ~10 μs)
+	"${ZIG_EXE}" version > /dev/null || die "Sanity check failed for \"${ZIG_EXE}\""
 }
 
 # @FUNCTION: zig-toolchain_populate_env_vars
@@ -271,10 +275,6 @@ zig-toolchain_populate_env_vars() {
 	# when setting ZIG_TARGET and ZIG_CPU variables for incompatible versions.
 	if [[ -z "${ZIG_EXE}" ]]; then
 		zig-toolchain_find_installation
-	fi
-	if [[ -z ${ZIG_VER} ]]; then
-		local selected_ver=$("${ZIG_EXE}" version || die "Failed to get version from \"${ZIG_EXE}\"")
-		export ZIG_VER=${selected_ver}
 	fi
 
 	if [[ -z ${ZIG_TARGET} ]]; then
