@@ -1,0 +1,171 @@
+From 20213b913f4a396752c515cafd7ee2ea53ab1fcf Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 20 Jun 2024 17:03:20 +0200
+Subject: [PATCH 1/2] add requirements
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -0,0 +1,4 @@
++numpy>=2.0.0
++pytest>=8.2.2
++setuptools>=70.0.0
++Cython>=3.0.10
+\ No newline at end of file
+-- 
+2.45.2
+
+
+From bfb5c7005917fc5b4cb71e17b2ed8cc015828f1b Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 20 Jun 2024 21:40:28 +0200
+Subject: [PATCH 1/5] numpy-2.0 define_macros
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/setup.py
++++ b/setup.py
+@@ -45,7 +45,7 @@ def cython_extension(
+             # *cython* itself is using the deprecated api, and the
+             # deprecated APIs are actually providing the attributes
+             # that we use throughout our code...
+-            #    ('NPY_NO_DEPRECATED_API','NPY_1_7_API_VERSION'),
++            ('NPY_NO_DEPRECATED_API', 'NPY_2_0_API_VERSION'),
+         ],
+         compiler_directives={'language_level': "3"} if have_cython else {},
+     )
+-- 
+2.45.2
+
+
+From b352289a51b2629917b59ee2b35569651436af70 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 20 Jun 2024 21:42:33 +0200
+Subject: [PATCH 2/5] python-3.11-PyMemoryView_GetContiguous
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/src/buffers_formathandler.pyx
++++ b/src/buffers_formathandler.pyx
+@@ -73,8 +73,8 @@ cdef class MemoryviewHandler(FormatHandler):
+             # TODO: respect no-copy flag!
+             instance = PyMemoryView_GetContiguous( 
+                 instance, 
+-                PyBUF_STRIDES|PyBUF_FORMAT|PyBUF_C_CONTIGUOUS,
+                 'C'
++                PyBUF_WRITE,
+             )
+         return instance
+     cdef c_from_param( self, object instance, object typeCode ):
+-- 
+2.45.2
+
+
+From 86268a423c994f0808bd745ac4b0dfe69c8682ad Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 20 Jun 2024 21:43:32 +0200
+Subject: [PATCH 3/5] enable conversion to C char
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/src/buffers_formathandler.pyx
++++ b/src/buffers_formathandler.pyx
+@@ -73,8 +73,8 @@ cdef class MemoryviewHandler(FormatHandler):
+             # TODO: respect no-copy flag!
+             instance = PyMemoryView_GetContiguous( 
+                 instance, 
+-                'C'
+                 PyBUF_WRITE,
++                b'C'
+             )
+         return instance
+     cdef c_from_param( self, object instance, object typeCode ):
+-- 
+2.45.2
+
+
+From 8d8618cd4d318ace3ecabe823da0dcfdae2fb0e5 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 20 Jun 2024 21:44:53 +0200
+Subject: [PATCH 4/5] set language_level
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/setup.py
++++ b/setup.py
+@@ -47,7 +47,6 @@ def cython_extension(
+             # that we use throughout our code...
+             ('NPY_NO_DEPRECATED_API', 'NPY_2_0_API_VERSION'),
+         ],
+-        compiler_directives={'language_level': "3"} if have_cython else {},
+     )
+ 
+ 
+@@ -116,6 +115,8 @@ if (  # Prevents running of setup during code introspection imports
+         extraArguments["cmdclass"] = {
+             "build_ext": build_ext,
+         }
++        for e in extensions:
++            e.cython_directives = {'language_level': "3"}
+     setup(
+         options={
+             "sdist": {
+--- a/src/numpy_formathandler.pyx
++++ b/src/numpy_formathandler.pyx
+@@ -1,5 +1,5 @@
+ """Accelerator for numpy format handler operations"""
+-#cython: language_level=3
++# cython: language_level=3
+ from ctypes import c_void_p
+ import numpy as np
+ cimport numpy as np
+-- 
+2.45.2
+
+
+From 6cd6e7c053e3268086e90df6d1297941cbce93f2 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 20 Jun 2024 21:46:46 +0200
+Subject: [PATCH 5/5] drop old cython numpy definitions
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/src/numpy_formathandler.pyx
++++ b/src/numpy_formathandler.pyx
+@@ -3,36 +3,18 @@
+ from ctypes import c_void_p
+ import numpy as np
+ cimport numpy as np
++from numpy cimport *
+ from OpenGL_accelerate.formathandler cimport FormatHandler
+-import traceback, weakref
+ from OpenGL.error import CopyError
+ from OpenGL._bytes import bytes,unicode
+ 
+-cdef extern from "Python.h":
+-    cdef void Py_INCREF( object )
+-
+ cdef extern from "numpy/arrayobject.h":
+     cdef np.ndarray PyArray_FromArray( np.ndarray, np.dtype, int )
+-    cdef np.ndarray PyArray_ContiguousFromAny( object op, int, int, int max_depth)
+-    cdef int PyArray_Check( object )
+-    cdef int PyArray_CheckScalar( object )
+-    int NPY_ARRAY_CARRAY
+-    int NPY_ARRAY_FORCECAST
+-    int PyArray_ISCARRAY( np.ndarray instance )
+-    int PyArray_ISCARRAY_RO( np.ndarray instance )
+     cdef np.ndarray PyArray_Zeros(int nd, np.npy_intp* dims, np.dtype, int fortran)
+-    cdef np.ndarray PyArray_EnsureArray(object)
+-    cdef int PyArray_FillWithScalar(np.ndarray, object)
+-    cdef void* PyArray_DATA( np.ndarray )
+-    cdef int PyArray_NDIM( np.ndarray )
+-    cdef int *PyArray_DIMS( np.ndarray )
+-    cdef int PyArray_DIM( np.ndarray, int dim )
+-    cdef np.dtype PyArray_DESCR( np.ndarray )
+-    cdef np.npy_intp PyArray_SIZE( np.ndarray )
+ 
+ cdef np.dtype array_descr( np.ndarray array ):
+     """Wrap PyArray_DESCR and incref to deal with the "borrowed" reference"""
+-    cdef np.dtype desc = PyArray_DESCR( array )
++    cdef np.dtype desc = array.dtype
+     Py_INCREF(<object> desc)
+     return desc
+ 
+-- 
+2.45.2
+
