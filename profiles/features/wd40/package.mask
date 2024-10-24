@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Viorel Munteanu <ceamac@gentoo.org> (2024-10-24)
+# Requires already masked packages (dev-python/bcrypt,
+# dev-python/cryptography, dev-python/fido2, dev-python/pyopenssl)
+dev-python/asyncssh
+
 # Michał Górny <mgorny@gentoo.org> (2024-09-23)
 # Requires dev-python/nh3.
 dev-python/textile
