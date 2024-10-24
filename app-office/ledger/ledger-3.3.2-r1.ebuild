@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10,11,12} )
 CMAKE_REMOVE_MODULES_LIST=( FindPython Support )
-inherit bash-completion-r1 check-reqs cmake python-single-r1
+inherit bash-completion-r1 check-reqs cmake optfeature python-single-r1
 
 DESCRIPTION="Double-entry accounting system with a command-line reporting interface"
 HOMEPAGE="https://www.ledger-cli.org/"
@@ -108,9 +108,12 @@ pkg_postinst() {
 	elog
 	elog "Since version 3, vim support is released separately."
 	elog "See https://github.com/ledger/vim-ledger"
-	elog
-	elog "For Emacs mode, emerge app-emacs/ledger-mode"
+
+	optfeature_header \
+		"Install the following packages for additional features:"
+	optfeature "Emacs support" "app-emacs/ledger-mode"
 }
 
 # rainy day TODO:
 # - IUSE test
+# - create vim-ledger ebuild
