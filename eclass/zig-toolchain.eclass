@@ -40,6 +40,17 @@ inherit edo flag-o-matic
 # @CODE
 # 0.13
 # @CODE
+#
+# When a new Zig release occurs, it is advisable for maintainers to
+# check whether their ebuild supports that new version. If yes, they
+# they should bump ZIG_SLOT to the latest version; if not supported,
+# they need to patch any issues with new version and again bump ZIG_SLOT.
+# This helps to reduce dependencies on outdated Zig versions.
+#
+# This policy of "1 exclusive Zig slot" will work until it
+# stabilizes enough (probably near 1.0), then it will be re-evaluated
+# and most likely changed to more common in other eclasses ZIG_MIN/
+# ZIG_MAX form.
 
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
