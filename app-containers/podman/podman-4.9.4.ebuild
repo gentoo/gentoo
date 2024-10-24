@@ -114,7 +114,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.completions $(usev wrapper install.docker-full)
+	emake DESTDIR="${D}" SELINUXOPT= install install.completions $(usev wrapper install.docker-full)
 
 	insinto /etc/cni/net.d
 	doins cni/87-podman-bridge.conflist
