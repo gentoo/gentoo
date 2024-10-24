@@ -18,7 +18,7 @@ RDEPEND="
 	sys-boot/efibootmgr
 "
 
-CONFIG_CHECK="EFI_STUB"
+CONFIG_CHECK="~EFI_STUB"
 
 src_install() {
 	dobin uefi-mkconfig
