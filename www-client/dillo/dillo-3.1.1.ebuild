@@ -54,6 +54,11 @@ BDEPEND="
 
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-unused-constructor.patch
+	"${FILESDIR}"/${P}-remove-which.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf

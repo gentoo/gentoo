@@ -3,17 +3,6 @@ From: meat <meat@device.domain>
 Date: Thu, 3 Oct 2024 12:48:31 +0200
 Subject: [PATCH] Use command -v instead of which
 
---- a/autogen.sh
-+++ b/autogen.sh
-@@ -15,7 +15,7 @@
- # Required binaries check
- #          
- check_bin_file(){
--   which $1 > /dev/null 2>&1
-+   command -v $1 > /dev/null 2>&1
-    if [ $? = 0 ]; then
-       return 0
-    else
 --- a/configure.ac
 +++ b/configure.ac
 @@ -297,18 +297,18 @@ if test "x$enable_png" = "xyes"; then
