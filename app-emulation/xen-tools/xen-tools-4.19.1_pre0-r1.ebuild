@@ -370,6 +370,10 @@ src_prepare() {
 	sed -e "s:\$\$source/configure:\0 --disable-containers:" \
 		-i tools/Makefile || die
 
+	# disable gettext (Bug #937219)
+	sed -e "s:\$\$source/configure:\0 --disable-gettext:" \
+		-i tools/Makefile || die
+
 	# disable abi-dumper (Bug #791172)
 	sed -e 's/$(ABI_DUMPER) /echo /g' \
 		-i tools/libs/libs.mk || die
