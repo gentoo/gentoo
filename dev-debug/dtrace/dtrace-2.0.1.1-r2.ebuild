@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/oracle/dtrace-utils/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/dtrace-utils-${PV}
 
-	KEYWORDS="-* amd64 ~arm64"
+	KEYWORDS="-* amd64 arm64"
 fi
 
 LICENSE="UPL-1.0"
