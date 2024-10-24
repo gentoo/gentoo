@@ -85,8 +85,6 @@ src_configure() {
 		-DBUILD_UPDATER=OFF
 		$(cmake_use_find_package doc Sphinx)
 		$(cmake_use_find_package doc PdfLatex)
-		$(cmake_use_find_package webengine Qt6WebEngine)
-		$(cmake_use_find_package webengine Qt6WebEngineWidgets)
 		-DBUILD_WITH_WEBENGINE=$(usex webengine)
 		-DBUILD_SHELL_INTEGRATION_DOLPHIN=$(usex dolphin)
 		-DBUILD_SHELL_INTEGRATION_NAUTILUS=$(usex nautilus)
