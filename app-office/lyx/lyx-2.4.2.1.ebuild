@@ -13,7 +13,7 @@ SRC_URI="http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="aspell cups dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
