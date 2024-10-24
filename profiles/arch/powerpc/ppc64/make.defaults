@@ -21,9 +21,10 @@ KERNEL_ABI="ppc64"
 PROFILE_ARCH="ppc64"
 ABI="ppc64"
 
-#CFLAGS_ppc64="-m64"
+CFLAGS_ppc64="-m64"
 LDFLAGS_ppc64="-m elf64ppc"
 CHOST_ppc64="powerpc64-unknown-linux-gnu"
+LIBDIR_ppc64="lib64"
 
 CFLAGS_ppc="-m32"
 LDFLAGS_ppc="-m elf32ppc"

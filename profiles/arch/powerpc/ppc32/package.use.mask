@@ -253,3 +253,7 @@ net-misc/connman openconnect
 # Julian Ospald <hasufell@gentoo.org> (2013-11-23)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
+
+# Pacho Ramos <pacho@gentoo.org> (2013-10-31)
+# Missing keywords, bug #478254
+gnome-base/gnome classic extras
