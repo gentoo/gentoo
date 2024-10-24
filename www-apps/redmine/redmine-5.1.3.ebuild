@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,16 +10,19 @@ DESCRIPTION="Flexible project management web application using the Ruby on Rails
 HOMEPAGE="https://www.redmine.org/"
 SRC_URI="https://www.redmine.org/releases/${P}.tar.gz"
 
-KEYWORDS="~amd64"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="fastcgi imagemagick ldap +minimagick mysql passenger pdf postgres +standalone sqlite"
 
 ruby_add_bdepend "
 	fastcgi? ( dev-ruby/fcgi )
 	ldap? ( >=dev-ruby/ruby-net-ldap-0.17.0 )
 	minimagick? ( >=dev-ruby/mini_magick-4.12.0 )
-	mysql? ( >=dev-ruby/mysql2-0.5.0:0.5 )
+	mysql? (
+		>=dev-ruby/mysql2-0.5.0:0.5
+		dev-ruby/with_advisory_lock
+	)
 	passenger? ( www-apache/passenger )
 	postgres? ( >=dev-ruby/pg-1.5.3:1 )
 	sqlite? ( >=dev-ruby/sqlite3-1.6.0 )
@@ -79,7 +82,7 @@ all_ruby_prepare() {
 	sed -i -e "s/~>/>=/g" Gemfile || die
 
 	# bug #724464
-	sed -i -e "s/gem 'rails',.*/gem 'rails', '~>6.1.6'/" Gemfile || die
+	sed -i -e "s/gem 'rails',.*/gem 'rails', '~>6.1.7'/" Gemfile || die
 
 	# Commonmark
 	sed -i -e "s/'2.3.2'/'>=2.3.2'/" Gemfile || die
