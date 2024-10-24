@@ -1,0 +1,37 @@
+diff --git a/dstat b/dstat
+index 9359965..541fe95 100755
+--- a/dstat
++++ b/dstat
+@@ -2613,28 +2613,19 @@ def main():
+             pluginfile = 'dstat_' + mod.replace('-', '_')
+             try:
+                 if pluginfile not in globals():
+-                    import imp
+-                    fp, pathname, description = imp.find_module(pluginfile, pluginpath)
+-                    fp.close()
++                    import importlib.machinery
++                    spec = importlib.machinery.PathFinder().find_spec(pluginfile, pluginpath)
+ 
+                     ### TODO: Would using .pyc help with anything ?
+                     ### Try loading python plugin
+-                    if description[0] in ('.py', ):
+-                        exec(open(pathname).read())
++                    if spec.origin.endswith('.py'):
++                        exec(open(spec.origin).read())
+                         #execfile(pathname)
+                         exec('global plug; plug = dstat_plugin(); del(dstat_plugin)')
+                         plug.filename = pluginfile
+                         plug.check()
+                         plug.prepare()
+ 
+-                    ### Try loading C plugin (not functional yet)
+-                    elif description[0] == '.so':
+-                        exec('import %s; global plug; plug = %s.new()' % (pluginfile, pluginfile))
+-                        plug.check()
+-                        plug.prepare()
+-#                        print(dir(plug))
+-#                        print(plug.__module__)
+-#                        print(plug.name)
+                     else:
+                         print('Module %s is of unknown type.' % pluginfile, file=sys.stderr)
+ 
