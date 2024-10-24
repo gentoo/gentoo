@@ -5,8 +5,8 @@
 : ${KRESD_GROUP:=knot-resolver}
 : ${KRESD_USER:=knot-resolver}
 : ${KRESD_CONFIG:=/etc/knot-resolver/kresd.conf}
-: ${KRESD_RUNDIR:=/var/run/kresd}
-: ${KRESD_PIDFILE:=/var/run/kresd.pid}
+: ${KRESD_RUNDIR:=/run/kresd}
+: ${KRESD_PIDFILE:=/run/kresd.pid}
 
 command="/usr/sbin/kresd"
 command_args="${KRESD_OPTS} -n -c ${KRESD_CONFIG} ${KRESD_RUNDIR}"
@@ -15,6 +15,8 @@ pidfile="${KRESD_PIDFILE}"
 command_background=true
 retry="TERM/60/KILL/5"
 
+# set privileges when it is configured to bind to well-known ports.
+# need capabilities support : sys-apps/openrc[caps]
 capabilities="^cap_net_bind_service,^cap_setpcap"
 
 name="knot-resolver"

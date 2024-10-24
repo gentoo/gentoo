@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,8 +16,9 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD CC0-1.0 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64"
-IUSE="caps dnstap jemalloc kresc nghttp2 systemd test"
+KEYWORDS="~amd64"
+
+IUSE="caps dnstap jemalloc kresc nghttp2 systemd test xdp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -26,8 +27,8 @@ RDEPEND="
 	acct-group/knot-resolver
 	acct-user/knot-resolver
 	dev-db/lmdb:=
-	dev-libs/libuv:=
 	net-dns/knot:=
+	dev-libs/libuv:=
 	net-libs/gnutls:=
 	caps? ( sys-libs/libcap-ng )
 	dnstap? (
@@ -38,12 +39,11 @@ RDEPEND="
 	kresc? ( dev-libs/libedit )
 	nghttp2? ( net-libs/nghttp2:= )
 	systemd? ( sys-apps/systemd:= )
+	xdp? ( >=net-dns/knot-3.1.9:=[xdp] )
 "
 DEPEND="
 	${RDEPEND}
-	test? (
-		  dev-util/cmocka
-	)
+	test? ( dev-util/cmocka )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -53,20 +53,10 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-docdir.patch
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
-
-	# Bug #921567
-	"${FILESDIR}"/${PN}-5.7.0-r2-tmpfiles.patch
+	"${FILESDIR}"/${PN}-5.7.4-libsystemd.patch
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.gpg
-
-src_unpack() {
-	if use verify-sig; then
-		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
-	fi
-
-	unpack ${P}.tar.xz
-}
 
 src_configure() {
 	local emesonargs=(
@@ -77,12 +67,13 @@ src_configure() {
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		-Dopenssl=disabled
 		-Dmalloc=$(usex jemalloc jemalloc disabled)
+		-Dsystemd_files=enabled
 		$(meson_feature caps capng)
 		$(meson_feature dnstap)
 		$(meson_feature kresc client)
 		$(meson_feature nghttp2)
+		$(meson_feature systemd)
 		$(meson_feature test unit_tests)
-		$(meson_feature systemd systemd_files)
 	)
 
 	meson_src_configure
