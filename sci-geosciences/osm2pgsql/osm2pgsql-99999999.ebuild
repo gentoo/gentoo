@@ -16,8 +16,8 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+lua"
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+IUSE=""
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	sci-libs/proj:=
 	sys-libs/zlib
-	lua? ( ${LUA_DEPS} )
+	${LUA_DEPS}
 "
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/nlohmann_json
@@ -39,20 +39,15 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.0-cmake_lua_version.patch
+	"${FILESDIR}"/${PN}-2.0.0-cmake_lua_version.patch
 )
 
 src_configure() {
-	# Setting WITH_LUAJIT without "if use lua" guard is safe, upstream
-	# CMakeLists.txt only evaluates it if WITH_LUA is true.
 	local mycmakeargs=(
-		-DWITH_LUA=$(usex lua)
 		-DWITH_LUAJIT=$(usex lua_single_target_luajit)
+		# To prevent the "unused variable" QA warning
+		$(usex !lua_single_target_luajit "-DLUA_VERSION=$(lua_get_version)" "")
 		-DBUILD_TESTS=OFF
 	)
-	# To prevent the "unused variable" QA warning
-	if use lua && ! use lua_single_target_luajit; then
-		mycmakeargs+=( -DLUA_VERSION="$(lua_get_version)" )
-	fi
 	cmake_src_configure
 }
