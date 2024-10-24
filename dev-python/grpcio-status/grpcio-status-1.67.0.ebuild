@@ -16,10 +16,8 @@ HOMEPAGE="
 	https://pypi.org/project/grpcio-status/
 "
 SRC_URI="
-	test? (
-		https://github.com/grpc/grpc/archive/v${PV}.tar.gz
-			-> ${MY_P}.gh.tar.gz
-	)
+	https://github.com/grpc/grpc/archive/v${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}/src/python/grpcio_status
 
