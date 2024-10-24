@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake
 
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
@@ -16,7 +16,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
 
 RDEPEND="app-arch/zstd
 	dev-db/mysql-connector-c:=
@@ -25,31 +24,9 @@ RDEPEND="app-arch/zstd
 	dev-libs/openssl:=
 	sys-libs/zlib:="
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	doc? ( dev-python/sphinx )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.13.1-atomic.patch" #654314
-
-	"${FILESDIR}"/${PN}-0.15-Do-not-overwrite-the-user-CFLAGS.patch
+	"${FILESDIR}/${PN}-0.15-Do-not-overwrite-the-user-CFLAGS.patch"
 )
-
-src_prepare() {
-	# fix doc install path
-	sed -i -e "s|share/doc/mydumper|share/doc/${PF}|" docs/CMakeLists.txt || die
-
-	cmake_src_prepare
-}
-
-src_configure() {
-	# -Werror=lto-type-mismatch
-	# https://bugs.gentoo.org/855239
-	#
-	# Fixed upstream in git master:
-	# https://github.com/mydumper/mydumper/pull/1413
-	filter-lto
-
-	local mycmakeargs=(-DBUILD_DOCS=$(usex doc))
-
-	cmake_src_configure
-}
