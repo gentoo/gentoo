@@ -19,12 +19,8 @@ RDEPEND="!<dev-debug/sysdig-${PV}[modules]"
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
 # We need to specify the driver version manually since we do not use a git tree.
-# This version can be found in the corresponding *sysdig* tree in cmake/modules/driver.cmake
-DRIVER_VERSION="7.2.0+driver"
-
-PATCHES=(
-	"${FILESDIR}"/${PV}-fix-kmod-build-on-6.10+.patch
-)
+# This version can be found as git tag on the same commit as the libs version.
+DRIVER_VERSION="7.3.0+driver"
 
 src_configure() {
 	local mycmakeargs=(
