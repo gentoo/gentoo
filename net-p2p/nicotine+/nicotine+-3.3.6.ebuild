@@ -26,7 +26,7 @@ BDEPEND="
 		dev-python/pytest
 		|| (
 		   >=gui-libs/gtk-4.6.9[broadway]
-		   >=x11-libs/gtk+-3.22.20:3[broadway]
+		   >=x11-libs/gtk+-3.22.30:3[broadway]
 		)
 	)
 "
@@ -34,13 +34,13 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	|| (
 		>=gui-libs/gtk-4.6.9[introspection]
-		>=x11-libs/gtk+-3.22.20:3[introspection]
+		>=x11-libs/gtk+-3.22.30:3[introspection]
 	)
 "
 
 distutils_enable_tests pytest
 
-DOCS=( AUTHORS.md NEWS.md README.md TRANSLATORS.md )
+DOCS=( AUTHORS.md NEWS.md README.md )
 
 src_prepare() {
 	default
