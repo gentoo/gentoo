@@ -425,7 +425,7 @@ LICENSE+="
 "
 
 SLOT="0"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="~amd64 ~loong ~riscv"
 
 BDEPEND="
 	>=virtual/rust-1.76
