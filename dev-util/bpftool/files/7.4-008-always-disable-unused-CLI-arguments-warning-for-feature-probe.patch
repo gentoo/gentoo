@@ -1,0 +1,38 @@
+From 3be8ac358900c5f57028b2b6501407a14167a9bb Mon Sep 17 00:00:00 2001
+From: Quentin Monnet <qmo@kernel.org>
+Date: Thu, 17 Oct 2024 11:22:14 +0100
+Subject: [PATCH] mirror: Always disable unused CLI arguments warning for feature probe
+
+In commit 8a2d7d510ccd ("mirror: Fix features detection for building
+with clang") we prevented clang to error out when encountering unused
+command-line arguments in the feature probes, because we do add unused
+arguments for some of the probes when retrieving arguments from
+llvm-config, and we don't want probes to fail because of that.
+
+At the time, the issue was apparent for the LLVM-based disassembler, so
+we added -Wno-unused-command-line-argument when $(LLVM) was enabled,
+only. We missed the case when we're building bpftool with clang instead
+of gcc, without building the LLVM disassembler. Let's disable the
+warning unconditionally instead to fix this case.
+
+Reported-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+Signed-off-by: Quentin Monnet <qmo@kernel.org>
+---
+ src/Makefile.feature | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/Makefile.feature b/src/Makefile.feature
+index 90f9e7c..b08e7b9 100644
+--- a/src/Makefile.feature
++++ b/src/Makefile.feature
+@@ -4,9 +4,7 @@ pound := \#
+ 
+ CFLAGS_BACKUP := $(CFLAGS)
+ CFLAGS := $(EXTRA_CFLAGS)
+-ifneq ($(LLVM),)
+-  CFLAGS += -Wno-unused-command-line-argument
+-endif
++CFLAGS += -Wno-unused-command-line-argument
+ 
+ ifeq ($(V),1)
+   LOG=$(warning $(1))
