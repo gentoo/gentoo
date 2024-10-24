@@ -1,0 +1,157 @@
+From c2ffc28e97a08534e003eaf25abfa35279274263 Mon Sep 17 00:00:00 2001
+From: Samuel Williams <samuel.williams@oriontransfer.co.nz>
+Date: Wed, 4 Sep 2024 20:53:04 +1200
+Subject: [PATCH] Update test before/after hooks.
+
+---
+ test/io/event/selector.rb             | 12 ++++--------
+ test/io/event/selector/buffered_io.rb |  4 ++--
+ test/io/event/selector/cancellable.rb |  7 +++----
+ test/io/event/selector/file_io.rb     |  4 ++--
+ test/io/event/selector/process_io.rb  |  4 ++--
+ test/io/event/selector/queue.rb       |  4 ++--
+ 6 files changed, 15 insertions(+), 20 deletions(-)
+
+diff --git a/test/io/event/selector.rb b/test/io/event/selector.rb
+index 760369a6..ee1a53f8 100644
+--- a/test/io/event/selector.rb
++++ b/test/io/event/selector.rb
+@@ -622,14 +622,12 @@ def transfer
+ 		end
+ 
+ 		with 'an instance' do
+-			def before
++			before do
+ 				@loop = Fiber.current
+ 				@selector = subject.new(@loop)
+-				super
+ 			end
+ 			
+-			def after
+-				super
++			after do
+ 				@selector&.close
+ 			end
+ 			
+@@ -642,14 +640,12 @@ def after
+ end
+ 
+ describe IO::Event::Debug::Selector do
+-	def before
++	before do
+ 		@loop = Fiber.current
+ 		@selector = subject.new(IO::Event::Selector.new(loop))
+-		super
+ 	end
+ 	
+-	def after
+-		super
++	after do
+ 		@selector&.close
+ 	end
+ 	
+diff --git a/test/io/event/selector/buffered_io.rb b/test/io/event/selector/buffered_io.rb
+index 3659d717..3b74d569 100644
+--- a/test/io/event/selector/buffered_io.rb
++++ b/test/io/event/selector/buffered_io.rb
+@@ -80,12 +80,12 @@
+ 	next unless klass.instance_methods.include?(:io_read)
+ 	
+ 	describe(klass, unique: name) do
+-		def before
++		before do
+ 			@loop = Fiber.current
+ 			@selector = subject.new(@loop)
+ 		end
+ 		
+-		def after
++		after do
+ 			@selector&.close
+ 		end
+ 		
+diff --git a/test/io/event/selector/cancellable.rb b/test/io/event/selector/cancellable.rb
+index 2dfa2bae..cb6c1f2a 100644
+--- a/test/io/event/selector/cancellable.rb
++++ b/test/io/event/selector/cancellable.rb
+@@ -15,8 +15,7 @@
+ 		let(:input) {pipe.first}
+ 		let(:output) {pipe.last}
+ 		
+-		def after
+-			super
++		after do
+ 			input.close
+ 			output.close
+ 		end
+@@ -70,12 +69,12 @@ def after
+ 	next unless klass.instance_methods.include?(:io_read)
+ 	
+ 	describe(klass, unique: name) do
+-		def before
++		before do
+ 			@loop = Fiber.current
+ 			@selector = subject.new(@loop)
+ 		end
+ 		
+-		def after
++		after do
+ 			@selector&.close
+ 		end
+ 		
+diff --git a/test/io/event/selector/file_io.rb b/test/io/event/selector/file_io.rb
+index 70a2c962..395a45e3 100644
+--- a/test/io/event/selector/file_io.rb
++++ b/test/io/event/selector/file_io.rb
+@@ -49,12 +49,12 @@
+ 	next unless klass.instance_methods.include?(:io_read)
+ 	
+ 	describe(klass, unique: name) do
+-		def before
++		before do
+ 			@loop = Fiber.current
+ 			@selector = subject.new(@loop)
+ 		end
+ 		
+-		def after
++		after do
+ 			@selector&.close
+ 		end
+ 		
+diff --git a/test/io/event/selector/process_io.rb b/test/io/event/selector/process_io.rb
+index cb8c73de..1ccff956 100644
+--- a/test/io/event/selector/process_io.rb
++++ b/test/io/event/selector/process_io.rb
+@@ -43,12 +43,12 @@
+ 	klass = IO::Event::Selector.const_get(name)
+ 	
+ 	describe(klass, unique: name) do
+-		def before
++		before do
+ 			@loop = Fiber.current
+ 			@selector = subject.new(@loop)
+ 		end
+ 		
+-		def after
++		after do
+ 			@selector&.close
+ 		end
+ 		
+diff --git a/test/io/event/selector/queue.rb b/test/io/event/selector/queue.rb
+index e62af5c4..8017dc36 100644
+--- a/test/io/event/selector/queue.rb
++++ b/test/io/event/selector/queue.rb
+@@ -198,12 +198,12 @@ def object.transfer
+ 	klass = IO::Event::Selector.const_get(name)
+ 	
+ 	describe(klass, unique: name) do
+-		def before
++		before do
+ 			@loop = Fiber.current
+ 			@selector = subject.new(@loop)
+ 		end
+ 		
+-		def after
++		after do
+ 			@selector&.close
+ 		end
+ 		
