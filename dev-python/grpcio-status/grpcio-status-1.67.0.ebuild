@@ -31,6 +31,11 @@ RDEPEND="
 	<dev-python/protobuf-python-6[${PYTHON_USEDEP}]
 	>=dev-python/protobuf-python-5.26.1[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
