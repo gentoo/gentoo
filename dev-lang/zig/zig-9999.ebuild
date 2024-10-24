@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=(19)
+LLVM_COMPAT=( 19 )
 LLVM_OPTIONAL=1
 
 ZIG_SLOT="$(ver_cut 1-2)"
@@ -106,12 +106,15 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Avoid double patching. Copied from net-misc/sunshine-0.23.1::gentoo .
-	default_src_prepare
-	default_src_prepare() { :; }
-
-	use llvm && cmake_src_prepare
-	zig-build_src_prepare
+	if use llvm; then
+		cmake_src_prepare
+	else
+		# Sync with zig-build_src_prepare
+		default_src_prepare
+		mkdir -p "${BUILD_DIR}" || die
+		einfo "BUILD_DIR: \"${BUILD_DIR}\""
+		# "--system" mode is not used during bootstrap.
+	fi
 
 	# Remove "limit memory usage" flags, it's already verified by
 	# CHECKREQS_MEMORY and causes unneccessary errors. Upstream set them
