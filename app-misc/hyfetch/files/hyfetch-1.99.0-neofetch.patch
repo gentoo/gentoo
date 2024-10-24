@@ -1,0 +1,22 @@
+From: Cat Kasin <cat@aulucya.gay>
+Date: Thu, 23 Oct 2024 19:31:10 -0700
+Subject: [PATCH] use system neowofetch
+
+Signed-off-by: Cat Kasin <cat@aulucya.gay>
+Forwarded: not-needed
+
+---
+diff --git a/hyfetch/neofetch_util.py b/hyfetch/neofetch_util.py
+index 17829ac..1fcfcfc 100644
+--- a/hyfetch/neofetch_util.py
++++ b/hyfetch/neofetch_util.py
+@@ -254,8 +254,7 @@
+     Run neofetch command
+     """
+     if platform.system() != 'Windows':
+-        bash = ['/usr/bin/env', 'bash'] if Path('/usr/bin/env').is_file() else [shutil.which('bash')]
+-        full_cmd = [*bash, get_command_path(), *shlex.split(args)]
++        full_cmd = ['/usr/bin/neowofetch', *shlex.split(args)]
+ 
+     else:
+         cmd = get_command_path().replace("\\", "/").replace("C:/", "/c/")
