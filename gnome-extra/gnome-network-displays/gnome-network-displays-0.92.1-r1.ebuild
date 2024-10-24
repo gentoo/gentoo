@@ -26,6 +26,7 @@ RDEPEND="
 	>=net-misc/networkmanager-1.16.0[wifi]
 	>=dev-libs/libportal-0.7[gtk]
 	>=gui-libs/libadwaita-1
+	net-dns/avahi[introspection]
 	net-dns/dnsmasq
 	net-wireless/wpa_supplicant[p2p]
 	sys-apps/xdg-desktop-portal[screencast(+)]
