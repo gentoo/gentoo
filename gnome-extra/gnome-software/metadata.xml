@@ -6,6 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
+    <flag name="dkms">Enable DKMS plugin to help installing DKMS (and akmods) Secure Boot certificates to UEFI MOK</flag>
     <flag name="firmware">Enable firmware update support through <pkg>sys-apps/fwupd</pkg></flag>
     <flag name="flatpak">Enable support for flatpak applications using <pkg>sys-apps/flatpak</pkg></flag>
     <flag name="snap">Enable support for snap packages using <pkg>app-containers/snapd</pkg></flag>
