@@ -27,7 +27,7 @@ pkg_pretend() {
 				ewarn "  or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
 			fi
 			if ! linux_chkconfig_present CFG80211; then
-				ewarn "REGULARTORY DOMAIN PROBLEM:"
+				ewarn "REGULATORY DOMAIN PROBLEM:"
 				ewarn "  With CONFIG_CFG80211 unset, the driver(s) won't be able to load the regulatory.db from"
 				ewarn "  /lib/firmware, resulting in broken regulatory domain support. Please set CONFIG_CFG80211=m."
 			fi
