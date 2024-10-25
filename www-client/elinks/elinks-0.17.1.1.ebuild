@@ -78,6 +78,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gettext.patch
+	"${FILESDIR}"/${P}-sftp.patch
+)
+
 pkg_setup() {
 	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
