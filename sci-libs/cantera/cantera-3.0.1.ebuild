@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
