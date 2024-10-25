@@ -1,0 +1,21 @@
+diff '--color=auto' -ur orig/client-src/runtar.c amanda-tag-community-3.5.4/client-src/runtar.c
+--- orig/client-src/runtar.c	2023-07-26 06:27:30.000000000 -0400
++++ amanda-tag-community-3.5.4/client-src/runtar.c	2024-10-16 20:08:01.653602008 -0400
+@@ -54,7 +54,7 @@
+ {
+ #ifdef GNUTAR
+     int i;
+-    char **j;
++    const char **j;
+     char *e;
+     char *dbf;
+     char *cmdline;
+@@ -255,7 +255,7 @@
+     gchar* option)
+ {
+     bool result = TRUE;
+-    char** i;
++    const char** i;
+ 
+     for(i=whitelisted_args; *i; i++) {
+         if (g_str_has_prefix(option, *i)) {
