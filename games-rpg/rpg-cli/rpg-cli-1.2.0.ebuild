@@ -113,6 +113,8 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 
+QA_FLAGS_IGNORED="usr/bin/rpg-cli"
+
 src_install() {
 	cargo_src_install
 	dodoc README.md
