@@ -1,0 +1,22 @@
+diff '--color=auto' -ur amanda-tag-community-3.5.4.orig/perl/Amanda/Tapelist.swg amanda-tag-community-3.5.4/perl/Amanda/Tapelist.swg
+--- amanda-tag-community-3.5.4.orig/perl/Amanda/Tapelist.swg	2023-07-26 06:27:30.000000000 -0400
++++ amanda-tag-community-3.5.4/perl/Amanda/Tapelist.swg	2024-10-24 23:48:21.920655197 -0400
+@@ -52,7 +52,6 @@
+ use Amanda::Config qw( config_dir_relative );
+ use File::Copy;
+ use Fcntl qw(:flock); # import LOCK_* constants
+-use Amanda::Message qw( :severity );
+ 
+ ## package functions
+ 
+diff '--color=auto' -ur amanda-tag-community-3.5.4.orig/server-src/amtape.pl amanda-tag-community-3.5.4/server-src/amtape.pl
+--- amanda-tag-community-3.5.4.orig/server-src/amtape.pl	2023-07-26 06:27:30.000000000 -0400
++++ amanda-tag-community-3.5.4/server-src/amtape.pl	2024-10-24 23:49:22.789728432 -0400
+@@ -39,7 +39,6 @@
+ use Amanda::Recovery::Scan;
+ use Amanda::Interactivity;
+ use Amanda::Tapelist;
+-use Amanda::Message qw( :severity );
+ 
+ my $exit_status = 0;
+ my $tl;

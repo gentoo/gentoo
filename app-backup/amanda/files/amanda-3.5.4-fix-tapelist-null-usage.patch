@@ -1,0 +1,12 @@
+diff '--color=auto' -ur amanda-tag-community-3.5.4.orig/common-src/tapelist.c amanda-tag-community-3.5.4/common-src/tapelist.c
+--- amanda-tag-community-3.5.4.orig/common-src/tapelist.c	2023-07-26 06:27:30.000000000 -0400
++++ amanda-tag-community-3.5.4/common-src/tapelist.c	2024-10-24 23:53:34.782171543 -0400
+@@ -106,7 +106,7 @@
+ 
+     /* see if we have this tape already, and if so just add to its file list */
+     for(cur_tape = tapelist; cur_tape; cur_tape = cur_tape->next) {
+-	if ((!storage || cur_tape->storage ||
++	if ((!storage || !cur_tape->storage ||
+ 	     g_str_equal(storage, cur_tape->storage)) &&
+ 	    g_str_equal(label, cur_tape->label)) {
+ 	    int d_idx = 0;
