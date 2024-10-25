@@ -21,9 +21,12 @@ RDEPEND="
 	>=dev-libs/glib-2.58:2
 	>=x11-libs/gtk+-3.24:3[introspection]
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	$(vala_depend)
+	dev-util/glib-utils
 	test? ( dev-cpp/gtest )
 "
 
