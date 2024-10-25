@@ -15,7 +15,7 @@ S="${WORKDIR}/${P#*-}"
 LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="crypt +http greenwich kill lua +mqtt +ping +tours"
+IUSE="crypt +http kill lua +mqtt +ping +tours"
 
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -65,7 +65,6 @@ src_configure() {
 		WITH_KILL=$(usex kill)
 		WITH_HTTP=$(usex http)
 		WITH_TOURS=$(usex tours)
-		WITH_GREENWICH=$(usex greenwich)
 		WITH_TZ=yes
 
 		CC="$(tc-getCC)"

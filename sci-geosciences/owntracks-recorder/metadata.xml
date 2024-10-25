@@ -10,7 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="crypt">Enable support for payload encryption with <pkg>dev-libs/libsodium</pkg></flag>
-		<flag name="greenwich">Enable support for the OwnTracks Greenwich firmware</flag>
 		<flag name="http">Enable support for the built-in HTTP REST API</flag>
 		<flag name="kill">Enable support removing data via the API (dangerous)</flag>
 		<flag name="lua">Enable support for Lua hook integration</flag>
