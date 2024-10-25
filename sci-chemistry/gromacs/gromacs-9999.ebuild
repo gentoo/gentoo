@@ -284,6 +284,8 @@ src_compile() {
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake_src_compile
+		BUILD_DIR="${WORKDIR}/${P}_${x}"\
+			cmake_src_compile man
 		if use python; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake_src_compile	python_packaging/all
