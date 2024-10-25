@@ -79,7 +79,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake -j1 DESTDIR="${D}" install
 
 	if use emacs ; then
 		cd utils/emacs || die
