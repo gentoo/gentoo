@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">flori/json</remote-id>
+    <remote-id type="github">ruby/json</remote-id>
+    <remote-id type="rubygems">json</remote-id>
   </upstream>
 </pkgmetadata>
