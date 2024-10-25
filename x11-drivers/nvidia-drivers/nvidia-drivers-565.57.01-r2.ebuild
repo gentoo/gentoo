@@ -24,9 +24,7 @@ S=${WORKDIR}
 
 LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-# beta drivers do not get keyworded, opt-in at your own risks if wanted
-# reminder: drop the egl-wayland version warning & unmask it when out of beta
-#KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* ~amd64 ~arm64"
 # note: kernel-open is an upstream default in >=560 if all GPUs on the system
 # support it but, since no automagic here, keeping it off for the wider support
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
@@ -594,19 +592,5 @@ pkg_postinst() {
 		elog
 		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
 		elog "default, and for openrc+elogind a similar hook has been installed."
-	fi
-
-	# TODO: drop this when out of beta, plan is to unmask it then
-	if use X && use wayland && has_version '<gui-libs/egl-wayland-1.1.14'; then
-		ewarn
-		ewarn "*** NVIDIA Beta Notice ***"
-		ewarn
-		ewarn ">=gui-libs/egl-wayland-1.1.14 is currently masked, however with this"
-		ewarn "beta version of nvidia-drivers it is recommended to use latest"
-		ewarn "egl-wayland for better xwayland performance and also potentially"
-		ewarn "avoiding some visual glitches."
-		ewarn
-		ewarn "Plan is to unmask it for everyone when out of beta, but may want to do"
-		ewarn "so now unless it causes problems (e.g. some applications crashing)."
 	fi
 }
