@@ -19,7 +19,7 @@ S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
 
 LICENSE="LGPL-3"
 SLOT="0/${LAZARUS_PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	dev-qt/qtgui:5
