@@ -11,7 +11,7 @@ inherit kernel-install toolchain-funcs unpacker
 
 MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 6 ))
-BINPKG=${PF/-bin}-1
+BINPKG=${PN/-bin}-6.6.57-1
 
 DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
@@ -49,6 +49,7 @@ PDEPEND="
 BDEPEND="
 	app-alternatives/bc
 	app-alternatives/lex
+	dev-util/pahole
 	virtual/libelf
 	app-alternatives/yacc
 "
