@@ -12,10 +12,10 @@ HOMEPAGE="https://www.cs.bu.edu/~hwxi/atslangweb/
 SRC_URI="
 	http://downloads.sourceforge.net/sourceforge/ats2-lang/ATS2-Postiats-gmp-${PV}.tgz
 
-	https://sources.debian.org/data/main/a/ats2-lang/0.4.2-2/debian/patches/deprecated-cl-package
-		-> ${PN}-0.4.2-2-deprecated-cl-package.patch
-	https://sources.debian.org/data/main/a/ats2-lang/0.4.2-2/debian/patches/prelude-function-prototypes
-		-> ${PN}-0.4.2-2-prelude-function-prototypes.patch
+	https://sources.debian.org/data/main/a/ats2-lang/${PV}-2/debian/patches/deprecated-cl-package
+		-> ${PN}-${PV}-2-deprecated-cl-package.patch
+	https://sources.debian.org/data/main/a/ats2-lang/${PV}-2/debian/patches/prelude-function-prototypes
+		-> ${PN}-${PV}-2-prelude-function-prototypes.patch
 "
 S="${WORKDIR}/ATS2-Postiats-gmp-${PV}"
 
