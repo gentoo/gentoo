@@ -195,6 +195,7 @@ src_test () {
 
 src_install() {
 	JAVA_JAR_FILENAME="icu4j.jar"
+	JAVA_MAIN_CLASS="com.ibm.icu.util.VersionInfo"
 	java-pkg-simple_src_install
 	java-pkg_dojar "icu4j-charset.jar"
 	java-pkg_dojar "icu4j-localespi.jar"
