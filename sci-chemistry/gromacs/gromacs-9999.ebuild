@@ -94,8 +94,6 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}/${P}-Fix-build-with-torch.patch" )
-
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
