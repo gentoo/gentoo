@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multiprocessing systemd tmpfiles
+inherit systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -51,9 +51,18 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 	test? (
 		dev-util/cmocka
-		dev-util/kyua
 	)
 "
+
+src_prepare() {
+	default
+
+	# Don't clobber our toolchain defaults
+	sed -i -e '/FORTIFY_SOURCE=/d' configure || die
+
+	# Test is (notoriously) slow/resource intensive
+	sed -i -e 's:ISC_TEST_MAIN:int main(void) { exit(77); }:' tests/isc/netmgr_test.c || die
+}
 
 src_configure() {
 	local myeconfargs=(
@@ -73,6 +82,7 @@ src_configure() {
 		$(use_enable fixed-rrset)
 		$(use_enable static-libs static)
 		$(use_enable geoip)
+		$(use_with test cmocka)
 		$(use_with geoip maxminddb)
 		$(use_with gssapi)
 		$(use_with idn libidn2)
@@ -87,7 +97,11 @@ src_configure() {
 src_test() {
 	# system tests ('emake test') require network configuration for IPs etc
 	# so we run the unit tests instead.
-	TEST_PARALLEL_JOBS="$(makeopts_jobs)" emake unit
+	CI=1 emake unit V=1
+
+	# libtest is an internal test helper library, it has no tests,
+	# so suppress the QA warning.
+	rm libtest/test-suite.log || die
 }
 
 src_install() {
