@@ -18,7 +18,7 @@ ZLIB_S="${WORKDIR}/${ZLIB_P}"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.2-musl-off_t-fix.patch
