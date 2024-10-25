@@ -101,7 +101,7 @@ src_test() {
 
 	# libtest is an internal test helper library, it has no tests,
 	# so suppress the QA warning.
-	rm libtest/test-suite.log || die
+	rm tests/libtest/test-suite.log || die
 }
 
 src_install() {
