@@ -145,7 +145,7 @@ python_test() {
 	if ! use test-full; then
 		# .invalid is guaranteed to return NXDOMAIN per RFC 6761
 		local -x DB_IP=mongodb.invalid
-		epytest
+		epytest -p asyncio
 		return
 	fi
 
