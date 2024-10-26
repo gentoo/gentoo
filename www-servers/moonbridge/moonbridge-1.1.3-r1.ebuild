@@ -1,7 +1,7 @@
 # Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{2,3} )
 
@@ -13,6 +13,7 @@ DESCRIPTION="Network Server for Lua Applications"
 HOMEPAGE="https://www.public-software-group.org/moonbridge"
 SRC_URI="https://www.public-software-group.org/pub/projects/${PN}/v${PV}/${MYP}.tar.gz
 	https://dev.gentoo.org/~tupone/distfiles/${MYP}.tar.gz"
+S="${WORKDIR}"/${MYP}
 
 LICENSE="MIT"
 SLOT="0"
@@ -26,8 +27,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="dev-build/pmake
 	sys-apps/lsb-release
 	virtual/pkgconfig"
-
-S="${WORKDIR}"/${MYP}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.2-gentoo.patch
