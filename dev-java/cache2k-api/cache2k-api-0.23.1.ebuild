@@ -11,13 +11,13 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="light weight and high performance Java caching library: API"
 HOMEPAGE="https://cache2k.org"
 SRC_URI="https://github.com/cache2k/cache2k/archive/v${PV}.tar.gz -> cache2k-${PV}.tar.gz"
+S="${WORKDIR}/cache2k-${PV}/api"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
-
-S="${WORKDIR}/cache2k-${PV}/api"
 
 JAVA_SRC_DIR="src/main/java"
