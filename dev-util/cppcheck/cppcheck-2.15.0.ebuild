@@ -12,8 +12,8 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
-IUSE="charts gui qt6 htmlreport pcre test threads"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="boost charts gui qt6 htmlreport pcre test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	charts? ( gui )
@@ -23,6 +23,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/tinyxml2:=
+	boost? ( dev-libs/boost:= )
 	pcre? ( dev-libs/libpcre )
 	gui? (
 		qt6? (
@@ -45,9 +46,7 @@ RDEPEND="
 	${DEPEND}
 	${PYTHON_DEPS}
 	htmlreport? (
-		$(python_gen_cond_dep '
-			dev-python/pygments[${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep 'dev-python/pygments[${PYTHON_USEDEP}]')
 	)
 "
 BDEPEND="
@@ -55,17 +54,9 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig
-	gui? (
-		!qt6? (
-			dev-qt/linguist-tools:5
-		)
-	)
+	gui? ( !qt6? ( dev-qt/linguist-tools:5 ) )
 	test? (
-		gui? (
-			!qt6? (
-				dev-qt/qttest:5
-			)
-		)
+		gui? ( !qt6? (	dev-qt/qttest:5	) )
 		htmlreport? (
 			$(python_gen_cond_dep '
 				dev-python/pytest[${PYTHON_USEDEP}]
@@ -75,10 +66,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.13.0-32-bit-tests.patch
-)
-
 src_prepare() {
 	cmake_src_prepare
 
@@ -86,9 +73,6 @@ src_prepare() {
 	sed -i \
 		-e "s|set(DB2MAN .*|set(DB2MAN \"${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl\")|" \
 		man/CMakeLists.txt || die
-
-	# Make tests use cppcheck built in build dir.
-	sed -i -e "s|CPPCHECK_BIN = .*|CPPCHECK_BIN = '${BUILD_DIR}/bin/cppcheck'|" htmlreport/test_htmlreport.py || die
 }
 
 src_configure() {
@@ -109,9 +93,8 @@ src_configure() {
 		-DUSE_MATCHCOMPILER=ON
 		-DUSE_LIBCXX=OFF
 
-		-DUSE_THREADS=$(usex threads)
 		-DDISABLE_DMAKE=ON
-		-DUSE_BOOST=OFF
+		-DUSE_BOOST=$(usex boost) # REVIEW(fkobi): we could use this I think
 		-DUSE_BUNDLED_TINYXML2=OFF
 
 		# Yes, this is necessary to use the correct python version.
