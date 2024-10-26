@@ -110,6 +110,8 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.7.3-missing-gn-deps.patch
+	"${FILESDIR}"/${PN}-6.7.3-missing-gn-deps-blink.patch
 )
 
 python_check_deps() {
