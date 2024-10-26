@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -20,9 +20,8 @@ HOMEPAGE="https://github.com/DatabaseCleaner/database_cleaner-active_record"
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/activerecord:6.1 )
+	dev-ruby/activerecord
 	dev-ruby/database_cleaner-core:2.0
 "
