@@ -12,6 +12,8 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Represent, parse and serialise JSON-RPC 2.0 messages"
 HOMEPAGE="https://software.dzhuvinov.com/json-rpc-2.0-base.html"
 SRC_URI="https://bitbucket.org/thetransactioncompany/json-rpc-2.0-base/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
+S="${WORKDIR}/thetransactioncompany-json-rpc-2.0-base-75e66af02953"
+
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="amd64 ~arm64"
@@ -26,8 +28,6 @@ RDEPEND="
 	${CP_DEPEND}
 	>=virtual/jre-1.8:*
 "
-
-S="${WORKDIR}/thetransactioncompany-json-rpc-2.0-base-75e66af02953"
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_SRC_DIR="src/test/java"
