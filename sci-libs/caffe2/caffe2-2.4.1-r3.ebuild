@@ -37,6 +37,7 @@ REQUIRED_USE="
 # CUDA 12 not supported yet: https://github.com/pytorch/pytorch/issues/91122
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/abseil-cpp:=
 	dev-cpp/gflags:=
 	>=dev-cpp/glog-0.5.0
 	dev-libs/cpuinfo
