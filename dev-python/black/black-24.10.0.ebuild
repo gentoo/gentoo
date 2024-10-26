@@ -38,6 +38,7 @@ BDEPEND="
 		dev-python/aiohttp-cors[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
+		dev-python/pytest-forked[${PYTHON_USEDEP}]
 	)
 "
 
@@ -45,7 +46,9 @@ distutils_enable_tests pytest
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
+	# pytest-forked to workaround fd leakage in blackd
+	# https://github.com/psf/black/issues/4504
+	epytest -p pytest_forked --forked
 }
 
 pkg_postinst() {
