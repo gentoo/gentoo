@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="http://cgm.cs.mcgill.ca/~avis/C/lrslib/archive/${P}.tar.gz"
 # COPYING is GPL-2, but e.g. lrslib.h says "or ... any later version."
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~riscv ~amd64-linux"
 IUSE="gmp mpi"
 
 BDEPEND=""
