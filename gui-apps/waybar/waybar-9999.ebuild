@@ -43,8 +43,7 @@ RDEPEND="
 	>=dev-libs/spdlog-1.10.0:=
 	dev-libs/date:=
 	dev-libs/wayland
-	gui-libs/gtk-layer-shell
-	gui-libs/wlroots:=
+	>=gui-libs/gtk-layer-shell-0.9.0
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
 	evdev? ( dev-libs/libevdev:= )
