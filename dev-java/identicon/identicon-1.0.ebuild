@@ -12,6 +12,8 @@ DESCRIPTION="Visual representation of a hash value"
 HOMEPAGE="https://github.com/PauloMigAlmeida/identicon"
 COMMIT="96902d3c7c9733d9da4cce9c5ed424557fc2ec3c"
 SRC_URI="https://github.com/PauloMigAlmeida/identicon/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}/core"
+
 LICENSE="MIT"
 SLOT="1"
 KEYWORDS="amd64 ~arm64"
@@ -28,8 +30,6 @@ RDEPEND="
 	${CP_DEPEND}
 	>=virtual/jre-1.8:*
 "
-
-S="${WORKDIR}/${PN}-${COMMIT}/core"
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="cache2k-api-2"
