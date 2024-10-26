@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 multiprocessing pypi
+inherit distutils-r1 flag-o-matic multiprocessing pypi
 
 MY_P=grpc-${PV}
 DESCRIPTION="HTTP/2-based RPC framework"
@@ -16,13 +16,14 @@ HOMEPAGE="
 	https://github.com/grpc/grpc/
 	https://pypi.org/project/grpcio/
 "
-# Tests need other packages from the source tree
+# Tests need other packages from the source tree, so use a GitHub
+# archive.  grpcio-tools is required for tests, and requires a bunch
+# of bundled libraries   However, we also need bundled abseil-cpp,
+# so take that one from grpcio-tools to avoid two sdists.
 SRC_URI="
 	https://github.com/grpc/grpc/archive/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
-	test? (
-		$(pypi_sdist_url grpcio-tools)
-	)
+	$(pypi_sdist_url grpcio-tools)
 "
 S=${WORKDIR}/${MY_P}
 
@@ -31,7 +32,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	dev-cpp/abseil-cpp:=
 	dev-libs/openssl:=
 	dev-libs/re2:=
 	net-dns/c-ares:=
@@ -52,17 +52,32 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+src_unpack() {
+	default
+
+	# reuse the bundled abseil-cpp from grpcio-tools sdist.
+	ln -s "${WORKDIR}/grpcio_tools-${PV}/third_party/abseil-cpp/absl" \
+		"${S}/third_party/abseil-cpp/absl" || die
+}
+
 src_configure() {
 	export GRPC_PYTHON_BUILD_EXT_COMPILER_JOBS="$(makeopts_jobs)"
-	export GRPC_PYTHON_BUILD_SYSTEM_ABSL=1
+	# system abseil-cpp crashes with USE=-debug, sigh
+	# https://bugs.gentoo.org/942021
+	#export GRPC_PYTHON_BUILD_SYSTEM_ABSL=1
 	export GRPC_PYTHON_BUILD_SYSTEM_CARES=1
 	export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
 	export GRPC_PYTHON_BUILD_SYSTEM_RE2=1
 	export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 	export GRPC_PYTHON_BUILD_WITH_CYTHON=1
 
-	# -std= required by modern abseil-cpp, rest copied from setup.py
-	export GRPC_PYTHON_CFLAGS="-std=c++17 -fvisibility=hidden -fno-wrapv -fno-exceptions"
+	# copied from setup.py, except for removed -std= that does not apply
+	# to C code and causes warnings
+	export GRPC_PYTHON_CFLAGS="-fvisibility=hidden -fno-wrapv -fno-exceptions"
+	# required by abseil-cpp
+	append-cxxflags -std=c++14
+	# silence a lot of harmless noise from bad quality code
+	append-cxxflags -Wno-attributes
 }
 
 python_test() {
