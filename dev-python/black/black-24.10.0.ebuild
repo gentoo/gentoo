@@ -43,6 +43,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
+
 pkg_postinst() {
 	optfeature "blackd - HTTP API for black" \
 		"dev-python/aiohttp dev-python/aiohttp-cors"
