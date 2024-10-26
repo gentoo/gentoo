@@ -28,7 +28,7 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 DEPEND="
 	>=virtual/jdk-11:*
 	dev-java/commons-codec:0
-	dev-java/commons-io:1
+	>=dev-java/commons-io-2.17.0:1
 	test? (
 		>=dev-java/commons-lang-3.12.0:3.6
 		dev-java/junit:5
