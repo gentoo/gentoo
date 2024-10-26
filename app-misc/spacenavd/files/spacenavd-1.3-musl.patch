@@ -1,0 +1,27 @@
+From c6f8a6bf4aa5024c0317f4bb215f828e4219d61f Mon Sep 17 00:00:00 2001
+From: John Tsiombikas <nuclear@member.fsf.org>
+Date: Sun, 16 Jun 2024 20:10:26 +0300
+Subject: [PATCH] fix typo in conditional include stopping stdint.h from being
+ included
+
+fixes gitub issue #105
+---
+ src/proto.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/proto.h b/src/proto.h
+index a852f7f..8c983ab 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -3,9 +3,9 @@
+ 
+ #include "config.h"
+ 
+-#ifdef HAVE_STDINT_H_
++#ifdef HAVE_STDINT_H
+ #include <stdint.h>
+-#elif defined(HAVE_INTTYPES_H_)
++#elif defined(HAVE_INTTYPES_H)
+ #include <inttypes.h>
+ #endif
+ 
