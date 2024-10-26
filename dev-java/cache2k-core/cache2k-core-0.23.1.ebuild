@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,8 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="light weight and high performance Java caching library: core"
 HOMEPAGE="https://cache2k.org"
 SRC_URI="https://github.com/cache2k/cache2k/archive/v${PV}.tar.gz -> cache2k-${PV}.tar.gz"
+S="${WORKDIR}/cache2k-${PV}/core"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
@@ -28,8 +30,6 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}
 "
-
-S="${WORKDIR}/cache2k-${PV}/core"
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS=( "src/main/resources" )
