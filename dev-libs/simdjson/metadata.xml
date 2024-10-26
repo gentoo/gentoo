@@ -9,4 +9,7 @@
 		<flag name="tools">Build and install extra command line tools</flag>
 		<flag name="all-impls">Enable all implementations rather than only onem</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">simdjson/simdjson</remote-id>
+	</upstream>
 </pkgmetadata>
