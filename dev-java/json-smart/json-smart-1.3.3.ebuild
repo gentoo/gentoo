@@ -12,14 +12,14 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="old JSON parser"
 HOMEPAGE="https://urielch.github.io"
 SRC_URI="https://github.com/netplex/json-smart-v1/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-v1-${PV}/json-smart"
+
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="amd64 ~arm64"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
-
-S="${WORKDIR}/${PN}-v1-${PV}/json-smart"
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_SRC_DIR="src/test/java"
