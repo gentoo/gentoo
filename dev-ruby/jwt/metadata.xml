@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">jwt/ruby-jwt</remote-id>
   </upstream>
+  <use>
+    <flag name="eddsa">Support EdDSA algorithm using dev-ruby/rbnacl</flag>
+  </use>
 </pkgmetadata>

@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
 	SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ppc64 x86"
 fi
 
 DESCRIPTION="Cloud instance initialisation magic"

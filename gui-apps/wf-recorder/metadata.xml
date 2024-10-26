@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<maintainer type="person" proxied="yes">
+		<email>leohdz172@proton.me</email>
+		<name>Leonardo Hernández Hernández</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">ammen99/wf-recorder</remote-id>
 	</upstream>
 	<use>
 		<flag name="pulseaudio">Enable support for audio capture via PulseAudio</flag>
+		<flag name="pipewire">Enable support for audio capture via <pkg>media-video/pipewire</pkg>.</flag>
 	</use>
 </pkgmetadata>

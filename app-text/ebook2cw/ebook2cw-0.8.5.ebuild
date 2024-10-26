@@ -9,14 +9,13 @@ SRC_URI="https://fkurz.net/ham/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
+KEYWORDS="amd64"
 
 DEPEND="
 	media-sound/lame
 	media-libs/libvorbis
 	media-libs/libogg
-	"
+"
 
 src_prepare() {
 	# avoid prestripping of 'qrq' binary

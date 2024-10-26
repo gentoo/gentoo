@@ -42,6 +42,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-c99.patch
+)
+
 EPYTEST_DESELECT=(
 	# Fragile based on black version?
 	tests/test_type_stubs.py::test_xmlsec_constants_stub

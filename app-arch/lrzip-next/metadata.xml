@@ -17,6 +17,7 @@
 		<remote-id type="github">pete4abw/lrzip-next</remote-id>
 	</upstream>
 	<use>
-		<flag name="year2038">Enables support for timestamps after the year 2038</flag>
+		<flag name="largefile">Enables support for large files</flag>
+		<flag name="year2038">Enables support for 64-bit 'time_t' (sets D_TIME_BITS=64; glibc only)</flag>
 	</use>
 </pkgmetadata>

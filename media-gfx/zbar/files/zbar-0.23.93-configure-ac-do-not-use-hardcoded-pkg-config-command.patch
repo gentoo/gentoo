@@ -1,0 +1,49 @@
+From 368571ffa1a0f6cc41f708dd0d27f9b6e9409df8 Mon Sep 17 00:00:00 2001
+From: Boyuan Yang <byang@debian.org>
+Date: Tue, 9 Jan 2024 07:56:32 -0500
+Subject: [PATCH] configure.ac: Do not use hardcoded pkg-config command
+
+Use overridable $PKG_CONFIG instead.
+
+Also fixes some M4 grammar errors in configure.ac.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
+ configure.ac | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f0f9723c..a2251e3d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -663,23 +663,23 @@ AC_ARG_WITH([qt6],
+ 
+ AS_IF([test "x$with_qt" != "xno"],
+       [AS_IF([test "x$with_qt6" != "xno"],
+-	     PKG_CHECK_MODULES([QT],
++	     [PKG_CHECK_MODULES([QT],
+                                [Qt6],
+-                               [MOC=`pkg-config Qt6 --variable=moc`
++                               [MOC=`$PKG_CONFIG Qt6 --variable=moc`
+                                 QT_VERSION=`$PKG_CONFIG Qt6 --modversion`
+-                                QT6_HEADERS=`pkg-config Qt6 --variable=headerdir`
++                                QT6_HEADERS=`$PKG_CONFIG Qt6 --variable=headerdir`
+                                 CPPFLAGS="$CPPFLAGS -I$QT6_HEADERS -I$QT6_HEADERS/QtWidgets -I$QT6_HEADERS/QtCore -I$QT6_HEADERS/QtGui"
+                                 qt_pkgconfig_file="zbar-qt5.pc"
+                                ],
+-                               [with_qt6="no"]))
++                               [with_qt6="no"])])
+        AS_IF([test "x$with_qt6" = "xno"],
+-             PKG_CHECK_MODULES([QT],
++             [PKG_CHECK_MODULES([QT],
+                                [Qt5Core >= 5 Qt5Gui >= 5 Qt5Widgets >= 5.0 Qt5X11Extras >= 5.0],
+-                               [MOC=`pkg-config Qt5 --variable=moc`
++                               [MOC=`$PKG_CONFIG Qt5 --variable=moc`
+                                 QT_VERSION=`$PKG_CONFIG Qt5 --modversion`
+                                 qt_pkgconfig_file="zbar-qt5.pc"
+                                ],
+-                               [with_qt="no"]))
++                               [with_qt="no"])])
+       ])
+ 
+ AC_ARG_VAR([MOC], [full path to Qt moc program])

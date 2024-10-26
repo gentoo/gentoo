@@ -49,6 +49,10 @@ CDEPEND="
 	blas? ( virtual/blas )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14:= )
 	opencl? ( virtual/opencl )
+	openmp? (
+		sys-devel/gcc[openmp]
+		sys-devel/clang-runtime[openmp]
+	)
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )

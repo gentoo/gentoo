@@ -1,0 +1,262 @@
+Not essential to backport the update, but KDE upstream recommends
+it to avoid warnings.
+
+https://codereview.qt-project.org/c/qt/qtwayland/+/574283
+--- a/src/3rdparty/protocol/wayland.xml
++++ b/src/3rdparty/protocol/wayland.xml
+@@ -49 +49 @@
+-	The callback_data passed in the callback is the event serial.
++	The callback_data passed in the callback is undefined and should be ignored.
+@@ -215 +215 @@
+-  <interface name="wl_shm_pool" version="1">
++  <interface name="wl_shm_pool" version="2">
+@@ -265,5 +265,5 @@
+-        This request only changes the amount of bytes that are mmapped
+-        by the server and does not touch the file corresponding to the
+-        file descriptor passed at creation time. It is the client's
+-        responsibility to ensure that the file is at least as big as
+-        the new pool size.
++	This request only changes the amount of bytes that are mmapped
++	by the server and does not touch the file corresponding to the
++	file descriptor passed at creation time. It is the client's
++	responsibility to ensure that the file is at least as big as
++	the new pool size.
+@@ -275 +275 @@
+-  <interface name="wl_shm" version="1">
++  <interface name="wl_shm" version="2">
+@@ -421,0 +422,15 @@
++      <entry name="c1" value="0x20203143" summary="[7:0] C0:C1:C2:C3:C4:C5:C6:C7 1:1:1:1:1:1:1:1 eight pixels/byte"/>
++      <entry name="c2" value="0x20203243" summary="[7:0] C0:C1:C2:C3 2:2:2:2 four pixels/byte"/>
++      <entry name="c4" value="0x20203443" summary="[7:0] C0:C1 4:4 two pixels/byte"/>
++      <entry name="d1" value="0x20203144" summary="[7:0] D0:D1:D2:D3:D4:D5:D6:D7 1:1:1:1:1:1:1:1 eight pixels/byte"/>
++      <entry name="d2" value="0x20203244" summary="[7:0] D0:D1:D2:D3 2:2:2:2 four pixels/byte"/>
++      <entry name="d4" value="0x20203444" summary="[7:0] D0:D1 4:4 two pixels/byte"/>
++      <entry name="d8" value="0x20203844" summary="[7:0] D"/>
++      <entry name="r1" value="0x20203152" summary="[7:0] R0:R1:R2:R3:R4:R5:R6:R7 1:1:1:1:1:1:1:1 eight pixels/byte"/>
++      <entry name="r2" value="0x20203252" summary="[7:0] R0:R1:R2:R3 2:2:2:2 four pixels/byte"/>
++      <entry name="r4" value="0x20203452" summary="[7:0] R0:R1 4:4 two pixels/byte"/>
++      <entry name="r10" value="0x20303152" summary="[15:0] x:R 6:10 little endian"/>
++      <entry name="r12" value="0x20323152" summary="[15:0] x:R 4:12 little endian"/>
++      <entry name="avuy8888" value="0x59555641" summary="[31:0] A:Cr:Cb:Y 8:8:8:8 little endian"/>
++      <entry name="xvuy8888" value="0x59555658" summary="[31:0] X:Cr:Cb:Y 8:8:8:8 little endian"/>
++      <entry name="p030" value="0x30333050" summary="2x2 subsampled Cr:Cb plane 10 bits per channel packed"/>
+@@ -444,0 +460,11 @@
++
++    <!-- Version 2 additions -->
++
++    <request name="release" type="destructor" since="2">
++      <description summary="release the shm object">
++	Using this request a client can tell the server that it is not going to
++	use the shm object anymore.
++
++	Objects created via this interface remain unaffected.
++      </description>
++    </request>
+@@ -456,3 +482,5 @@
+-      If the buffer uses a format that has an alpha channel, the alpha channel
+-      is assumed to be premultiplied in the color channels unless otherwise
+-      specified.
++      Color channels are assumed to be electrical rather than optical (in other
++      words, encoded with a transfer function) unless otherwise specified. If
++      the buffer uses a format that has an alpha channel, the alpha channel is
++      assumed to be premultiplied into the electrical color channel values
++      (after transfer function encoding) unless otherwise specified.
+@@ -849,0 +878 @@
++      <entry name="used_source" value="1" summary="source has already been used"/>
+@@ -871 +900 @@
+-	hotspot, but subsequent wl_surface.attach request can move the
++	hotspot, but subsequent wl_surface.offset requests can move the
+@@ -878,0 +908,4 @@
++
++	The given source may not be used in any further set_selection or
++	start_drag requests. Attempting to reuse a previously-used source
++	may send a used_source error.
+@@ -891,0 +925,4 @@
++
++	The given source may not be used in any further set_selection or
++	start_drag requests. Attempting to reuse a previously-used source
++	may send a used_source error.
+@@ -1414 +1451 @@
+-             summary="surface was destroyed before its role object"/>
++	     summary="surface was destroyed before its role object"/>
+@@ -1443,3 +1480,3 @@
+-        'invalid_offset' error being raised. The x and y arguments are ignored
+-        and do not change the pending state. To achieve equivalent semantics,
+-        use wl_surface.offset.
++	'invalid_offset' error being raised. The x and y arguments are ignored
++	and do not change the pending state. To achieve equivalent semantics,
++	use wl_surface.offset.
+@@ -1481,0 +1519,7 @@
++
++	If a pending wl_buffer has been destroyed, the result is not specified.
++	Many compositors are known to remove the surface content on the following
++	wl_surface.commit, but this behaviour is not universal. Clients seeking to
++	maximise compatibility should not destroy pending buffers and should
++	ensure that they explicitly remove content from surfaces, even after
++	destroying buffers.
+@@ -1621,10 +1665,12 @@
+-	as opposed to the current state in use by the compositor. A commit
+-	request atomically applies all pending state, replacing the current
+-	state. After commit, the new pending state is as documented for each
+-	related request.
+-
+-	On commit, a pending wl_buffer is applied first, and all other state
+-	second. This means that all coordinates in double-buffered state are
+-	relative to the new wl_buffer coming into use, except for
+-	wl_surface.attach itself. If there is no pending wl_buffer, the
+-	coordinates are relative to the current surface contents.
++	as opposed to the active state in use by the compositor.
++
++	A commit request atomically creates a content update from the pending
++	state, even if the pending state has not been touched. The content
++	update is placed in a queue until it becomes active. After commit, the
++	new pending state is as documented for each related request.
++
++	When the content update is applied, the wl_buffer is applied before all
++	other state. This means that all coordinates in double-buffered state
++	are relative to the newly attached wl_buffers, except for
++	wl_surface.attach itself. If there is no newly attached wl_buffer, the
++	coordinates are relative to the previous content update.
+@@ -1669,4 +1715,6 @@
+-	This request sets an optional transformation on how the compositor
+-	interprets the contents of the buffer attached to the surface. The
+-	accepted values for the transform parameter are the values for
+-	wl_output.transform.
++	This request sets the transformation that the client has already applied
++	to the content of the buffer. The accepted values for the transform
++	parameter are the values for wl_output.transform.
++
++	The compositor applies the inverse of this transformation whenever it
++	uses the buffer contents.
+@@ -1728 +1776 @@
+-	If scale is not positive the invalid_scale protocol error is
++	If scale is not greater than 0 the invalid_scale protocol error is
+@@ -1732 +1780 @@
+-	   summary="positive scale for interpreting buffer contents"/>
++	   summary="scale for interpreting buffer contents"/>
+@@ -1804,0 +1853,3 @@
++	Before receiving this event the preferred buffer scale for this surface
++	is 1.
++
+@@ -1808,0 +1860,2 @@
++
++	The compositor shall emit a scale value greater than 0.
+@@ -1818,3 +1871,6 @@
+-	It is intended that transform aware clients use this event to apply the
+-	transform to their content and use wl_surface.set_buffer_transform to
+-	indicate the transform they have rendered with.
++	Before receiving this event the preferred buffer transform for this
++	surface is normal.
++
++	Applying this transformation to the surface buffer contents and using
++	wl_surface.set_buffer_transform might allow the compositor to use the
++	surface buffer more efficiently.
+@@ -1995 +2051 @@
+-	On surface.attach requests to the pointer surface, hotspot_x
++	On wl_surface.offset requests to the pointer surface, hotspot_x
+@@ -1997 +2053 @@
+-	passed to the request. Attach must be confirmed by
++	passed to the request. The offset must be applied by
+@@ -2251 +2307 @@
+-    <event name="axis_discrete" since="5">
++    <event name="axis_discrete" since="5" deprecated-since="8">
+@@ -2376,0 +2433,10 @@
++
++      Each wl_keyboard has the following logical state:
++
++      - an active surface (possibly null),
++      - the keys currently logically down,
++      - the active modifiers,
++      - the active group.
++
++      By default, the active surface is null, the keys currently logically down
++      are empty, the active modifiers and the active group are 0.
+@@ -2410,0 +2477,5 @@
++
++	In the wl_keyboard logical state, this event sets the active surface to
++	the surface argument and the keys currently logically down to the keys
++	in the keys argument. The compositor must not send this event if the
++	wl_keyboard already had an active surface immediately before this event.
+@@ -2414 +2485 @@
+-      <arg name="keys" type="array" summary="the currently pressed keys"/>
++      <arg name="keys" type="array" summary="the keys currently logically down"/>
+@@ -2425,2 +2496,4 @@
+-	After this event client must assume that all keys, including modifiers,
+-	are lifted and also it must stop key repeating if there's some going on.
++	In the wl_keyboard logical state, this event resets all values to their
++	defaults. The compositor must not send this event if the active surface
++	of the wl_keyboard was not equal to the surface argument immediately
++	before this event.
+@@ -2450,0 +2524,9 @@
++
++	In the wl_keyboard logical state, this event adds the key to the keys
++	currently logically down (if the state argument is pressed) or removes
++	the key from the keys currently logically down (if the state argument is
++	released). The compositor must not send this event if the wl_keyboard
++	did not have an active surface immediately before this event. The
++	compositor must not send this event if state is pressed (resp. released)
++	and the key was already logically down (resp. was not logically down)
++	immediately before this event.
+@@ -2461,0 +2544,11 @@
++
++	The compositor may send this event without a surface of the client
++	having keyboard focus, for example to tie modifier information to
++	pointer focus instead. If a modifier event with pressed modifiers is sent
++	without a prior enter event, the client can assume the modifier state is
++	valid until it receives the next wl_keyboard.modifiers event. In order to
++	reset the modifier state again, the compositor can send a
++	wl_keyboard.modifiers event with no pressed modifiers.
++
++	In the wl_keyboard logical state, this event updates the modifiers and
++	group.
+@@ -2568,0 +2662,2 @@
++
++	No frame event is required after the cancel event.
+@@ -2668,4 +2763,3 @@
+-      <description summary="transform from framebuffer to output">
+-	This describes the transform that a compositor will apply to a
+-	surface to compensate for the rotation or mirroring of an
+-	output device.
++      <description summary="transformation applied to buffer contents">
++	This describes transformations that clients and compositors apply to
++	buffer contents.
+@@ -2702,0 +2797,4 @@
++	Clients should use wl_surface.preferred_buffer_transform instead of the
++	transform advertised by this event to find the preferred buffer
++	transform to use for a surface.
++
+@@ -2725 +2823 @@
+-	   summary="transform that maps framebuffer to output"/>
++	   summary="additional transformation applied to buffer contents during presentation"/>
+@@ -2798,2 +2896,3 @@
+-	later. If it is not sent, the client should assume a
+-	scale of 1.
++	later. The compositor will emit a non-zero, positive
++	value for scale. If it is not sent, the client should
++	assume a scale of 1.
+@@ -2807,6 +2906,3 @@
+-	It is intended that scaling aware clients track the
+-	current output of a surface, and if it is on a scaled
+-	output it should use wl_surface.set_buffer_scale with
+-	the scale of the output. That way the compositor can
+-	avoid scaling the surface, and the client can supply
+-	a higher detail image.
++	Clients should use wl_surface.preferred_buffer_scale
++	instead of this event to find the preferred buffer
++	scale to use for a surface.
+@@ -3037,0 +3134,5 @@
++
++      A sub-surface never has the keyboard focus of any seat.
++
++      The wl_surface.offset request is ignored: clients must use set_position
++      instead to move the sub-surface.
+@@ -3063,3 +3164 @@
+-	parent surface is applied. When this happens depends on whether the
+-	parent surface is in synchronized mode or not. See
+-	wl_subsurface.set_sync and wl_subsurface.set_desync for details.
++	parent surface is applied.
+@@ -3088,3 +3187 @@
+-	surface is applied. When this happens depends on whether the parent
+-	surface is in synchronized mode or not. See wl_subsurface.set_sync and
+-	wl_subsurface.set_desync for details.
++	surface is applied.

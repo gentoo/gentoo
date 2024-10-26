@@ -1,0 +1,40 @@
+# bug 940708
+--- postfix-3.9.0/src/tls/tls_misc.c	2023-08-07 15:42:24.000000000 +0200
++++ postfix-3.10_pre20240612/work/postfix-3.10-20240612/src/tls/tls_misc.c	2024-06-12 17:59:54.000000000 +0200
+@@ -1433,20 +1433,29 @@
+ {
+     TLS_VINFO hdr_info;
+     TLS_VINFO lib_info;
++    int     warn_compat = 0;
+ 
+     tls_version_split(OPENSSL_VERSION_NUMBER, &hdr_info);
+     tls_version_split(OpenSSL_version_num(), &lib_info);
+ 
+     /*
+      * Warn if run-time library is different from compile-time library,
+-     * allowing later run-time "micro" versions starting with 1.1.0.
++     * allowing later run-time "micro" versions starting with 1.1.0, and
++     * later minor numbers starting with 3.0.0.
+      */
+-    if (lib_info.major != hdr_info.major
+-	|| lib_info.minor != hdr_info.minor
+-	|| (lib_info.micro != hdr_info.micro
+-	    && (lib_info.micro < hdr_info.micro
+-		|| hdr_info.major == 0
+-		|| (hdr_info.major == 1 && hdr_info.minor == 0))))
++    if (hdr_info.major >= 3) {
++        warn_compat = lib_info.major != hdr_info.major 
++            || lib_info.minor < hdr_info.minor;
++    } else if (hdr_info.major == 1 && hdr_info.minor != 0) {
++        warn_compat = lib_info.major != hdr_info.major 
++            || lib_info.minor != hdr_info.minor
++            || lib_info.micro < hdr_info.micro;
++    } else {
++        warn_compat = lib_info.major != hdr_info.major
++            || lib_info.minor != hdr_info.minor
++            || lib_info.micro != hdr_info.micro;
++    }
++    if (warn_compat)
+ 	msg_warn("run-time library vs. compile-time header version mismatch: "
+ 	     "OpenSSL %d.%d.%d may not be compatible with OpenSSL %d.%d.%d",
+ 		 lib_info.major, lib_info.minor, lib_info.micro,

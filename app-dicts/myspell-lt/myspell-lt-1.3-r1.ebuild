@@ -20,7 +20,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/openoffice-spellc
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 src_prepare() {
 	default

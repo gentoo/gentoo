@@ -6,10 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=frameworks-kuserfeedback</bugs-to>
 		<remote-id type="kde-invent">frameworks/kuserfeedback</remote-id>
 	</upstream>
-	<use>
-		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
-	</use>
 </pkgmetadata>

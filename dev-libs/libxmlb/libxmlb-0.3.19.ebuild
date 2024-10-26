@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit meson python-any-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hughsie/libxmlb/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0/2" # libxmlb.so version
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="doc introspection +lzma stemmer test +zstd"
 
 RESTRICT="!test? ( test )"
@@ -42,7 +42,11 @@ BDEPEND="
 "
 
 python_check_deps() {
-	python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+	if use introspection ; then
+		python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+	else
+		return 0
+	fi
 }
 
 pkg_setup() {

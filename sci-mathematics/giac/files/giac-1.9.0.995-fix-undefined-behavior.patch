@@ -1,0 +1,43 @@
+From 864ecde569ce9fad636abe1135de33fdc94e6981 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 5 Sep 2024 19:49:07 -0400
+Subject: [PATCH 1/1] src/vecteur.cc: skip undefined behavior with a bounds
+ check
+
+---
+ src/vecteur.cc | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/vecteur.cc b/src/vecteur.cc
+index de10197..119d454 100644
+--- a/src/vecteur.cc
++++ b/src/vecteur.cc
+@@ -8490,6 +8490,17 @@ namespace giac {
+ 	  }
+ 	  else {
+ 	    int C=col+1;
++	    // mjo: C can be equal to cmax here, which makes buffer[C]
++	    // illegal. In that case, however, nothing will happen
++	    // below:
++	    //
++	    // 1. C = cmax ==> C >= (cmax-4), so the "for" loop is skipped
++	    // 2. After the "for" loop, C += ptr-&buffer[C] sets C to zero
++	    // 3. Now C = cmax means that the second "for" loop is skipped
++	    //
++	    // As a result, we can comment out this whole thing when
++	    // C = cmax to avoid a crash.
++	    if (C < cmax) {
+ 	    longlong * ptr= &buffer[C],*ptrend=&buffer[0]+cmax-4;
+ 	    const int *ptrN=&Nline[C];
+ 	    for (;ptr<ptrend;ptrN+=4,ptr+=4){
+@@ -8502,6 +8513,7 @@ namespace giac {
+ 	    for (;C<cmax;++C){
+ 	      buffer[C] -= coeff*Nline[C];   
+ 	    }
++	    }
+ 	  }
+ 	}
+ 	// copy back buffer to N[l]
+-- 
+2.44.2
+

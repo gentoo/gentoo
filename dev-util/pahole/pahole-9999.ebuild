@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake python-single-r1
 
 MY_PN=dwarves
@@ -58,7 +58,7 @@ src_unpack() {
 	if use verify-sig; then
 		einfo "Unpacking ${MY_P}.tar.xz ..."
 		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign \
-			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -x))
+			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -xf -))
 		assert "Unpack failed"
 	else
 		default

@@ -45,7 +45,7 @@ IUSE="
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
-QT_PV=6.2.0:6 # IDE_QT_VERSION_MIN
+QT_PV=6.5.4:6
 
 # := is used where Qt's private APIs are used for safety
 COMMON_DEPEND="
@@ -53,7 +53,12 @@ COMMON_DEPEND="
 	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
-	clang? ( $(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=') )
+	clang? (
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
+		')
+	)
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? (
 		>=dev-qt/qttools-${QT_PV}[assistant]
@@ -72,6 +77,7 @@ COMMON_DEPEND="
 	tracing? (
 		app-arch/zstd:=
 		dev-libs/elfutils
+		>=dev-qt/qtcharts-${QT_PV}
 		>=dev-qt/qtshadertools-${QT_PV}
 	)
 "
@@ -92,7 +98,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-11.0.2-musl-no-execinfo.patch
+	"${FILESDIR}"/${PN}-15.0.0-musl-no-execinfo.patch
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
 )
 
@@ -141,12 +147,13 @@ src_configure() {
 	use elibc_musl && append-lfs-flags
 
 	local mycmakeargs=(
+		-DBUILD_DEVELOPER_DOCS=$(usex doc)
+		-DBUILD_DOCS_BY_DEFAULT=$(usex doc)
 		-DBUILD_WITH_PCH=no
 		-DWITH_DOCS=$(usex doc)
-		-DBUILD_DEVELOPER_DOCS=$(usex doc)
 		-DWITH_TESTS=$(usex test)
 
-		# TODO: try unbundling now that slot 6 exists+unmasked (bug #934462)
+		# sticking to bundled for now until it switches to KF6's
 		-DBUILD_LIBRARY_KSYNTAXHIGHLIGHTING=yes
 
 		# Much can be optional, but do not want to flood users (or maintainers)
@@ -156,6 +163,7 @@ src_configure() {
 		# to plugins with additional build-time dependencies.
 		-DBUILD_LIBRARY_TRACING=$(usex tracing) # qml+perfprofiler,ctfvisual
 		-DBUILD_EXECUTABLE_PERFPARSER=$(usex tracing)
+		-DBUILD_PLUGIN_APPSTATISTICSMONITOR=$(usex tracing)
 
 		-DBUILD_PLUGIN_CLANGCODEMODEL=$(usex clang)
 		-DBUILD_PLUGIN_CLANGFORMAT=$(usex clang)
@@ -178,7 +186,9 @@ src_configure() {
 
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
 
-		-Djournald=no # not really useful unless match qtbase (needs systemd)
+		# meant to be in sync with qtbase[journald], but think(?) not worth
+		# handling given qt-creator can use QT_FORCE_STDERR_LOGGING=1 nowadays
+		-Djournald=no
 
 		# not packaged, but allow using if found
 		#-DCMAKE_DISABLE_FIND_PACKAGE_LibDDemangle=yes
@@ -202,12 +212,6 @@ src_test() {
 	)
 
 	cmake_src_test --label-exclude exclude_from_precheck
-}
-
-src_compile() {
-	cmake_src_compile
-
-	use doc && cmake_build {qch,html}_docs
 }
 
 src_install() {
@@ -265,6 +269,7 @@ Qt Quick:
 - QmlProfiler (USE=tracing)
 
 Utilities:
+- AppStatisticsMonitor (USE=tracing)
 - Autotest (dev-cpp/catch, dev-cpp/gtest, or dev-libs/boost if used)
 - Conan (dev-util/conan)
 - Docker (app-containers/docker)

@@ -20,7 +20,7 @@ SRC_URI="https://github.com/lostisland/faraday-net_http/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( >=dev-ruby/faraday-2.5 )"

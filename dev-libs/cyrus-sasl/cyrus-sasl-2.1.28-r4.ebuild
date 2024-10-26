@@ -6,16 +6,16 @@ EAPI=8
 inherit autotools edos2unix flag-o-matic multilib multilib-minimal pam db-use systemd toolchain-funcs tmpfiles
 
 SASLAUTHD_CONF_VER="2.1.26"
-MY_PATCH_VER="${PN}-2.1.28-r3-patches"
+MY_PATCH_VER="${PN}-2.1.28-r4-patches"
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="https://www.cyrusimap.org/sasl/"
 #SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
 SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH_VER}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~grobian/distfiles/${MY_PATCH_VER}.tar.xz"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="authdaemond berkdb gdbm kerberos ldapdb openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
 REQUIRED_USE="ldapdb? ( openldap )"
 
@@ -59,6 +59,9 @@ src_prepare() {
 
 src_configure() {
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
+
+	# Fails with C23 because of decls
+	append-flags -std=gnu17
 
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/894684

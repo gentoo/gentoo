@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/889910
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -418,7 +418,7 @@ if (USE_ICU_REGEXP)
+ endif ()
+ 
+ if (NOT WIN32)
+-  add_definitions ("-Wall -Werror")
++  add_definitions ("-Wall")
+ endif ()
+ 
+ include_directories ("src")
+--- a/tools/cpp/CMakeLists.txt
++++ b/tools/cpp/CMakeLists.txt
+@@ -25,7 +25,7 @@ set (
+ )
+ 
+ if (NOT WIN32)
+-  add_definitions ("-Wall -Werror")
++  add_definitions ("-Wall")
+ endif ()
+ 
+ include_directories ("src")

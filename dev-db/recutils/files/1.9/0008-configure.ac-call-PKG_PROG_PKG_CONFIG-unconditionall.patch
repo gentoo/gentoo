@@ -1,0 +1,36 @@
+https://lists.gnu.org/archive/html/bug-recutils/2024-10/msg00002.html
+
+From 00e5dcacbec2f59466402c56d729ade31d845d6a Mon Sep 17 00:00:00 2001
+Message-ID: <00e5dcacbec2f59466402c56d729ade31d845d6a.1728191717.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Oct 2024 05:32:19 +0100
+Subject: [PATCH 08/10] configure.ac: call PKG_PROG_PKG_CONFIG unconditionally
+
+PKG_PROG_PKG_CONFIG has a catch when used with AS_IF because it is
+only expanded once, so it can be problematic if expanded in a (rare)
+option which isn't enabled. Unconditionally call it to avoid this.
+
+2024-10-06  Sam James  <sam@gentoo.org>
+
+	* configure.ac: Call PKG_PROG_PKG_CONFIG unconditionally.
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index a190f5e..e0caa02 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,6 +74,7 @@ dnl Search for functions
+ AC_FUNC_FSEEKO
+ 
+ dnl Search for required libraries
++PKG_PROG_PKG_CONFIG
+ 
+ have_check=no
+ PKG_CHECK_MODULES([CHECK], [check],
+-- 
+2.46.2
+

@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">smplayer</remote-id>
+    <remote-id type="github">smplayer-dev/smplayer</remote-id>
   </upstream>
 </pkgmetadata>

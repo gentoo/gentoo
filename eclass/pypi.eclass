@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pypi.eclass
@@ -40,7 +40,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYPI_ECLASS} ]]; then
+if [[ -z ${_PYPI_ECLASS} ]]; then
 _PYPI_ECLASS=1
 
 # @ECLASS_VARIABLE: PYPI_NO_NORMALIZE

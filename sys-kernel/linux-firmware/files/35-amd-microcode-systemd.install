@@ -26,10 +26,15 @@ if ! command -v make-amd-ucode-img >/dev/null; then
 	exit 1
 fi
 
-[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
-	"Generating AMD CPU Microcode early initramfs image..."
+if [[ -d /lib/firmware/amd-ucode ]]; then
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"Generating AMD CPU Microcode early initramfs image..."
 
-make-amd-ucode-img \
-	${KERNEL_INSTALL_STAGING_AREA}/microcode-amd \
-	/lib/firmware/amd-ucode ||
-		{ echo "make-amd-ucode-img failed" && exit 1; }
+	make-amd-ucode-img \
+		${KERNEL_INSTALL_STAGING_AREA}/microcode-amd \
+		/lib/firmware/amd-ucode ||
+			{ echo "make-amd-ucode-img failed" && exit 1; }
+else
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"No AMD CPU Microcode installed, nothing to do here."
+fi

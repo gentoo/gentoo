@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/artwiz-latin1/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT=0
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 S="${WORKDIR}/${PN}"
 

@@ -11,8 +11,8 @@ PHP_EXT_ECONF_ARGS=()
 inherit php-ext-source-r3 autotools
 
 DESCRIPTION="PHP bindings for libvirt"
-HOMEPAGE="http://libvirt.org/php/"
-SRC_URI="http://libvirt.org/sources/php/${P}.tar.xz"
+HOMEPAGE="https://php.libvirt.org/"
+SRC_URI="https://download.libvirt.org/php/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

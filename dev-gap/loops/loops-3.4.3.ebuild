@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Computing with quasigroups and loops in GAP"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 
 GAP_PKG_EXTRA_INSTALL=( data )
 gap-pkg_enable_tests

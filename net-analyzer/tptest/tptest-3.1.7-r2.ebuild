@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_PV="${PV/./_}"
 
 DESCRIPTION="Internet bandwidth tester"
-HOMEPAGE="http://tptest.sourceforge.net/"
+HOMEPAGE="https://tptest.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

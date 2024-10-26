@@ -1,0 +1,171 @@
+From 6a1d6b44ee400431d75ed2326bd0b4f35d4727fa Mon Sep 17 00:00:00 2001
+From: Marius Gedminas <marius@gedmin.as>
+Date: Mon, 21 Aug 2023 13:11:43 +0300
+Subject: [PATCH 1/2] Fix tests
+
+Not sure why they broke (new docutils release on PyPI)?  Doctests were a
+bad idea.
+
+Upstream-commit: https://github.com/mgedmin/restview/commit/6a1d6b44ee400431d75ed2326bd0b4f35d4727fa
+
+diff --git a/src/restview/tests.py b/src/restview/tests.py
+index 71aeb77..d129835 100644
+--- a/src/restview/tests.py
++++ b/src/restview/tests.py
+@@ -540,7 +540,7 @@ def doctest_RestViewer_rest_to_html():
+         ... This is an inline literal: ``README.txt``.
+         ... ''', settings={'cloak_email_addresses': True}).strip())
+         ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+-        <?xml version="1.0" encoding="utf-8" ?>
++        <?xml version="1.0" encoding="utf-8"...?>
+         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+         <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+         <head>
+@@ -584,35 +584,11 @@ def doctest_RestViewer_rest_to_html():
+ def doctest_RestViewer_rest_to_html_css_url():
+     """Test for RestViewer.rest_to_html
+ 
+-    XXX: this shows pygments styles inlined *after* the external css, which
+-    means it's hard to override them!
+-
+         >>> viewer = RestViewer('.')
+         >>> viewer.stylesheets = 'http://example.com/my.css'
+-        >>> print(viewer.rest_to_html(b'''
+-        ... Some text
+-        ... ''').strip())
+-        ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+-        <?xml version="1.0" encoding="utf-8" ?>
+-        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+-        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+-        <head>
+-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+-        ...
+-        <title>...</title>
++        >>> html = viewer.rest_to_html(b'Some text')
++        >>> grep('stylesheet', html)
+         <link rel="stylesheet" href="http://example.com/my.css" type="text/css" />
+-        <style type="text/css">
+-        ...
+-        </style>
+-        </head>
+-        <body>
+-        <div class="document">
+-        <BLANKLINE>
+-        <BLANKLINE>
+-        <p>Some text</p>
+-        </div>
+-        </body>
+-        </html>
+ 
+     """
+ 
+@@ -720,32 +696,16 @@ def doctest_RestViewer_rest_to_html_pypi_strict():
+         >>> viewer = RestViewer('.')
+         >>> viewer.stylesheets = None
+         >>> viewer.pypi_strict = True
+-        >>> print(viewer.rest_to_html(b'''
++        >>> html = viewer.rest_to_html(b'''
+         ... Hello
+         ... -----
+         ...
+         ... `This is fine <http://www.example.com>`__.
+         ...
+-        ... ''').strip().replace("&quot;", '"'))
+-        ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+-        <?xml version="1.0" encoding="utf-8" ?>
+-        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+-        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+-        <head>
+-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+-        ...
++        ... ''')
++        >>> grep('Hello', html)
+         <title>Hello</title>
+-        <style type="text/css">
+-        ...
+-        </head>
+-        <body>
+-        <div class="document" id="hello">
+         <h1 class="title">Hello</h1>
+-        <BLANKLINE>
+-        <p><a href="http://www.example.com" rel="nofollow">This is fine</a>.</p>
+-        </div>
+-        </body>
+-        </html>
+ 
+     """
+ 
+@@ -1031,6 +991,12 @@ class TestMain(unittest.TestCase):
+                       serve_called=True, browser_launched=True)
+ 
+ 
++def grep(needle, haystack):
++    for line in haystack.splitlines():
++        if needle in line:
++            print(line)
++
++
+ def test_suite():
+     return unittest.TestSuite([
+         unittest.defaultTestLoader.loadTestsFromName(__name__),
+-- 
+2.44.2
+
+
+From 2827a754b8706f3286d1aec07a95faf6c8e7ab84 Mon Sep 17 00:00:00 2001
+From: Marius Gedminas <marius@gedmin.as>
+Date: Wed, 31 Aug 2022 13:46:44 +0300
+Subject: [PATCH 2/2] Fix test failures with new docutils
+
+This probably introduces a dependency of docutils >= 0.19 for the test
+suite, but I don't want to make it a requirement for pip install.
+---
+
+This is backported upstream commit [1]. The issue is not related to
+docutils but >=dev-python/readme-renderer-37.0, see [2].
+
+[1] https://github.com/mgedmin/restview/commit/5033eacb1d5552e496a0da46f6a474a38b414f21
+[2] https://github.com/mgedmin/restview/issues/65#issuecomment-1377180524
+
+diff --git a/src/restview/tests.py b/src/restview/tests.py
+index d129835..a7f36d5 100644
+--- a/src/restview/tests.py
++++ b/src/restview/tests.py
+@@ -541,10 +541,9 @@ def doctest_RestViewer_rest_to_html():
+         ... ''', settings={'cloak_email_addresses': True}).strip())
+         ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+         <?xml version="1.0" encoding="utf-8"...?>
+-        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
++        <!DOCTYPE html...>
+         <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+         <head>
+-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         ...
+         <title>example</title>
+         <style type="text/css">
+@@ -556,7 +555,7 @@ def doctest_RestViewer_rest_to_html():
+         </style>
+         </head>
+         <body>
+-        <div class="document" id="example">
++        <main id="example">
+         <h1 class="title">example</h1>
+         <BLANKLINE>
+         <p>This is a doctest:</p>
+@@ -570,11 +569,9 @@ def doctest_RestViewer_rest_to_html():
+         <p>This is a reference: <a class="reference external" href="http://example.com/README.rst">README.rst</a></p>
+         <p>This is an email: <a class="reference external" href="mailto:marius&#37;&#52;&#48;gedmin&#46;as">marius<span>&#64;</span>gedmin<span>&#46;</span>as</a></p>
+         <p>This is a literal block:</p>
+-        <pre class="literal-block">
+-        See <a href="CHANGES.rst">CHANGES.rst</a>, mkay?
+-        </pre>
++        <pre class="literal-block">See <a href="CHANGES.rst">CHANGES.rst</a>, mkay?</pre>
+         <p>This is an inline literal: <tt class="docutils literal"><a href="README.txt">README.txt</a></tt>.</p>
+-        </div>
++        </main>
+         </body>
+         </html>
+ 
+-- 
+2.44.2
+

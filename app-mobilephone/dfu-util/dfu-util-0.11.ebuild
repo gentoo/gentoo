@@ -4,7 +4,7 @@
 EAPI=8
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/dfu-util/dfu-util"
+	EGIT_REPO_URI="https://git.code.sf.net/p/dfu-util/dfu-util"
 	inherit autotools git-r3
 else
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"

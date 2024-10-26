@@ -1,0 +1,101 @@
+From 6f533e7b8999bc4017c1a6685bf2baea6570d44c Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Tue, 24 Sep 2024 09:47:46 -0700
+Subject: [PATCH 1/3] fix #1020 Mlt::Producer::set_creation_time() not exported
+ on i686
+
+---
+ src/mlt++/mlt++.vers | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/mlt++/mlt++.vers b/src/mlt++/mlt++.vers
+index 1934decd..c47f017a 100644
+--- a/src/mlt++/mlt++.vers
++++ b/src/mlt++/mlt++.vers
+@@ -540,7 +540,8 @@ MLTPP_6.14.0 {
+       "Mlt::Service::set_profile(mlt_profile_s*)";
+       "Mlt::Playlist::reorder(int const*)";
+       "Mlt::Transition::connect(Mlt::Service&, int, int)";
+-      "Mlt::Producer::set_creation_time(long)";
++#      "Mlt::Producer::set_creation_time(long)";
++      _ZN3Mlt8Producer17set_creation_timeE[lx];
+       "Mlt::Producer::get_creation_time()";
+   };
+ } MLTPP_6.10.0;
+-- 
+2.46.1
+
+
+From 2072c6b3596854f1a7165d7ddd5994204e741db8 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Tue, 24 Sep 2024 10:00:51 -0700
+Subject: [PATCH 2/3] fix mlt++.vers #1020
+
+---
+ src/mlt++/mlt++.vers | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/mlt++/mlt++.vers b/src/mlt++/mlt++.vers
+index c47f017a..2d8c1dda 100644
+--- a/src/mlt++/mlt++.vers
++++ b/src/mlt++/mlt++.vers
+@@ -540,10 +540,10 @@ MLTPP_6.14.0 {
+       "Mlt::Service::set_profile(mlt_profile_s*)";
+       "Mlt::Playlist::reorder(int const*)";
+       "Mlt::Transition::connect(Mlt::Service&, int, int)";
+-#      "Mlt::Producer::set_creation_time(long)";
+-      _ZN3Mlt8Producer17set_creation_timeE[lx];
+       "Mlt::Producer::get_creation_time()";
+   };
++# "Mlt::Producer::set_creation_time(long)";
++  _ZN3Mlt8Producer17set_creation_timeE[lx];
+ } MLTPP_6.10.0;
+ 
+ MLTPP_6.18.0 {
+-- 
+2.46.1
+
+
+From 63953cf7338181c82eb6eb9f93c8c9a11aaee5f7 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Tue, 24 Sep 2024 10:55:16 -0700
+Subject: [PATCH 3/3] fix Mlt::Properties::set(int64_t) symbol version
+
+Related to #1020
+---
+ src/mlt++/mlt++.vers | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/mlt++/mlt++.vers b/src/mlt++/mlt++.vers
+index 2d8c1dda..19300de3 100644
+--- a/src/mlt++/mlt++.vers
++++ b/src/mlt++/mlt++.vers
+@@ -310,7 +310,6 @@ MLTPP_0.8.8 {
+       "Mlt::Properties::set(char const*, char const*)";
+       "Mlt::Properties::set(char const*, double)";
+       "Mlt::Properties::set(char const*, int)";
+-      "Mlt::Properties::set(char const*, long)";
+       "Mlt::Properties::set(char const*, void*, int, void (*)(void*), char* (*)(void*, int))";
+       "Mlt::Properties::set_lcnumeric(char const*)";
+       "Mlt::Properties::setup_wait_for(char const*)";
+@@ -414,6 +413,8 @@ MLTPP_0.8.8 {
+       "Mlt::Transition::Transition(Mlt::Transition&)";
+       "Mlt::Transition::Transition(mlt_transition_s*)";
+     };
++# "Mlt::Properties::set(char const*, int64_t)";
++  _ZN3Mlt10Properties3setEPKc[lx];
+ 
+   local: *;
+ };
+@@ -542,7 +543,7 @@ MLTPP_6.14.0 {
+       "Mlt::Transition::connect(Mlt::Service&, int, int)";
+       "Mlt::Producer::get_creation_time()";
+   };
+-# "Mlt::Producer::set_creation_time(long)";
++# "Mlt::Producer::set_creation_time(int64_t)";
+   _ZN3Mlt8Producer17set_creation_timeE[lx];
+ } MLTPP_6.10.0;
+ 
+-- 
+2.46.1
+

@@ -6,12 +6,12 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="The crystallographic groups catalog"
-SLOT="0"
 SRC_URI="https://www.math.uni-bielefeld.de/~gaehler/gap/CrystCat/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-gap/cryst"
 

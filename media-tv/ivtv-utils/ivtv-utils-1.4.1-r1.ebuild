@@ -11,7 +11,7 @@ SRC_URI="http://dl.ivtvdriver.org/ivtv/archive/$(ver_cut 1-2).x/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="perl"
 
 RDEPEND="
@@ -27,6 +27,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0-gentoo.patch
 	"${FILESDIR}"/${PN}-1.4.1-overflow.patch
+	"${FILESDIR}"/${PN}-1.4.1-redefine.patch
 )
 
 src_configure() {

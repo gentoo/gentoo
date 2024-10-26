@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>jonas.licht@gmail.com</email>
-		<name>Jonas Licht</name>
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
-		</maintainer>
+	</maintainer>
 </pkgmetadata>

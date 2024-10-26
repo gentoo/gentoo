@@ -1,0 +1,57 @@
+From e04d8262f1409725afc8f71720b77083fb43c525 Mon Sep 17 00:00:00 2001
+From: Hoggins! <hoggins@radiom.fr>
+Date: Tue, 16 Jul 2024 23:52:39 +0200
+Subject: [PATCH] Python3.12 compains with a "SyntaxWarning: invalid escape
+ sequence" when regexes are not used with raw strings
+
+---
+ tlsa | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tlsa b/tlsa
+index ec97150..d06bd49 100755
+--- a/tlsa
++++ b/tlsa
+@@ -495,7 +495,7 @@ class TLSARecord:
+ 	"""When instanciated, this class contains all the fields of a TLSA record.
+ 	"""
+ 	def __init__(self, name, usage, selector, mtype, cert):
+-		"""name is the name of the RR in the format: /^(_\d{1,5}|\*)\._(tcp|udp|sctp)\.([a-z0-9]*\.){2,}$/
++		r"""name is the name of the RR in the format: /^(_\d{1,5}|\*)\._(tcp|udp|sctp)\.([a-z0-9]*\.){2,}$/
+ 		usage, selector and mtype should be an integer
+ 		cert should be a hexidecimal string representing the certificate to be matched field
+ 		"""
+@@ -513,7 +513,7 @@ class TLSARecord:
+ 	def getRecord(self, generic=False):
+ 		"""Returns the RR string of this TLSARecord, either in rfc (default) or generic format"""
+ 		if generic:
+-			return '%s IN TYPE52 \# %s %s%s%s%s' % (self.name, (len(self.cert)//2)+3 , self._toHex(self.usage), self._toHex(self.selector), self._toHex(self.mtype), self.cert)
++			return r'%s IN TYPE52 \# %s %s%s%s%s' % (self.name, (len(self.cert)//2)+3 , self._toHex(self.usage), self._toHex(self.selector), self._toHex(self.mtype), self.cert)
+ 		return '%s IN TLSA %s %s %s %s' % (self.name, self.usage, self.selector, self.mtype, self.cert)
+ 
+ 	def _toHex(self, val):
+@@ -554,20 +554,20 @@ class TLSARecord:
+ 
+ 	def isNameValid(self):
+ 		"""Check if the name if in the correct format"""
+-		if not re.match('^(_\d{1,5}|\*)\._(tcp|udp|sctp)\.([-a-z0-9]*\.){2,}$', self.name):
++		if not re.match(r'^(_\d{1,5}|\*)\._(tcp|udp|sctp)\.([-a-z0-9]*\.){2,}$', self.name):
+ 			return False
+ 		return True
+ 
+ 	def getProtocol(self):
+ 		"""Returns the protocol based on the name"""
+-		return re.split('\.', self.name)[1][1:]
++		return re.split(r'\.', self.name)[1][1:]
+ 
+ 	def getPort(self):
+ 		"""Returns the port based on the name"""
+-		if re.split('\.', self.name)[0][0] == '*':
++		if re.split(r'\.', self.name)[0][0] == '*':
+ 			return '*'
+ 		else:
+-			return re.split('\.', self.name)[0][1:]
++			return re.split(r'\.', self.name)[0][1:]
+ 
+ class ARecord:
+ 	"""An object representing an A Record (IPv4 address)"""

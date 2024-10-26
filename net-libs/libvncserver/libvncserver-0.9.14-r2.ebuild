@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 LICENSE="GPL-2 GPL-2+ LGPL-2.1+ BSD MIT"
 # no sub slot wanted (yet), see #578958
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+24bpp +filetransfer gnutls ipv6 +jpeg lzo +png sasl ssl systemd +threads +zlib"
 # https://bugs.gentoo.org/690202
 # https://bugs.gentoo.org/435326

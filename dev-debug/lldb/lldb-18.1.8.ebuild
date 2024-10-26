@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${LLVM_SOABI}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~x86"
+KEYWORDS="amd64 arm arm64 ~loong x86"
 IUSE="debug debuginfod +libedit lzma ncurses +python test +xml"
 RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
@@ -49,6 +49,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( lldb cmake llvm/utils )
+LLVM_PATCHSET=${PV}-r5
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
 llvm.org_set_globals
 

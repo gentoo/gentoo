@@ -1,0 +1,36 @@
+Upstream Facter still supports Ruby 2.5 due to Puppetserver 7, but the Thor
+dependency dropped Ruby 2.5 support in the 1.3 series.
+
+That doesn't matter for Gentoo, because Gentoo dropped Ruby 2.5 long ago, so
+tweak the dependency to permit newer Thor.
+
+This stops the incredibly vague error:
+```
+$ puppet parser validate ..
+Error: Could not initialize global default settings: Gem::MissingSpecError
+```
+
+Reference: https://github.com/puppetlabs/facter/issues/2687
+Reference: https://github.com/puppetlabs/facter/pull/2674
+Reference: https://github.com/puppetlabs/facter/pull/2686
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff '--color=auto' -Nuar facter-4.7.0.orig/ext/project_data.yaml facter-4.7.0/ext/project_data.yaml
+--- facter-4.7.0.orig/ext/project_data.yaml	2024-04-05 10:45:18.000000000 -0700
++++ facter-4.7.0/ext/project_data.yaml	2024-07-20 10:20:06.637005127 -0700
+@@ -15,4 +15,4 @@
+ gem_required_ruby_version: ['>= 2.5', '< 4.0']
+ gem_runtime_dependencies:
+   hocon: ~> 1.3
+-  thor: ['>= 1.0.1', '< 1.3']
++  thor: ['>= 1.0.1', '< 2.0']
+diff '--color=auto' -Nuar facter-4.7.0.orig/facter.gemspec facter-4.7.0/facter.gemspec
+--- facter-4.7.0.orig/facter.gemspec	2024-07-20 10:18:09.763758108 -0700
++++ facter-4.7.0/facter.gemspec	2024-07-20 10:19:55.470346750 -0700
+@@ -46,5 +46,5 @@
+   spec.add_development_dependency 'yard', '~> 0.9'
+ 
+   spec.add_runtime_dependency 'hocon', '~> 1.3'
+-  spec.add_runtime_dependency 'thor', ['>= 1.0.1', '< 1.3'] # Thor 1.3.0 drops support for Ruby 2.5
++  spec.add_runtime_dependency 'thor', ['>= 1.0.1', '< 2.0'] # Thor 1.3.0 drops support for Ruby 2.5 - which doesn't matter for Gentoo
+ end

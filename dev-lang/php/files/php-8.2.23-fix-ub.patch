@@ -1,0 +1,32 @@
+From 47f80ffc77f2b728b0973ae671251859b2a8ab53 Mon Sep 17 00:00:00 2001
+From: Ilija Tovilo <ilija.tovilo@me.com>
+Date: Sun, 5 Mar 2023 12:55:59 +0100
+Subject: [PATCH] Remove unnecessary type punnign from mysqli_api.c
+
+value is a long. On big-endian architectures mysql_stmt_attr_get() will write to
+the most significant byte. Type punning was used to move that byte to the least
+significant one, which is UB. We can avoid this by simply casting to my_bool
+(alias of bool). Previously, a comparison against 0 should've been done.
+---
+ ext/mysqli/mysqli_api.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ext/mysqli/mysqli_api.c b/ext/mysqli/mysqli_api.c
+index 48078c57df091..68b55e1d78d35 100644
+--- a/ext/mysqli/mysqli_api.c
++++ b/ext/mysqli/mysqli_api.c
+@@ -1799,11 +1799,11 @@ PHP_FUNCTION(mysqli_stmt_attr_get)
+ 			"MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH, "
+ 			"MYSQLI_STMT_ATTR_PREFETCH_ROWS, or STMT_ATTR_CURSOR_TYPE");
+ 		RETURN_THROWS();
+-    }
+-
++	}
+ 
+ 	if (attr == STMT_ATTR_UPDATE_MAX_LENGTH)
+-		value = *((my_bool *)&value);
++		value = (my_bool)value;
++
+ 	RETURN_LONG((unsigned long)value);
+ }
+ /* }}} */

@@ -1,6 +1,19 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
+# KF6 and media-libs/phonon have dropped ppc keyword
+app-office/texstudio video
+net-irc/kvirc phonon
+
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
+# Michał Górny <mgorny@gentoo.org> (2024-07-24)
+# Full testing requires www-client/firefox.
+dev-python/selenium test-rust
+
 # Sam James <sam@gentoo.org> (2024-07-03)
 # kde-frameworks/kservice not keyworded here
 x11-misc/xdg-utils plasma
@@ -43,10 +56,6 @@ dev-python/nbconvert test
 # Sam James <sam@gentoo.org> (2023-10-08)
 # dev-db/mysql not keyworded/stable here
 dev-perl/DBD-mysql mysql
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # sys-apps/flatpak is not keyworded here
@@ -98,10 +107,6 @@ dev-python/PyQt5 bluetooth location speech
 # deps not keyworded
 dev-util/pkgcheck emacs
 
-# Matt Turner <mattst88@gentoo.org> (2022-07-28)
-# kde-frameworks/plasma not keyworded here
-app-i18n/uim kde
-
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-22)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
@@ -137,10 +142,6 @@ net-mail/lbdb evo
 # Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
 # gnome-base/librsvg has no stable keywords here, bug #807130
 app-admin/conky lua-rsvg
-
-# Akinori Hattori <hattya@gentoo.org> (2021-10-24)
-# Requires unkeyworded dependencies
-app-i18n/uim kde
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gdm requires gnome-shell requires rustified librsvg.
@@ -195,7 +196,6 @@ dev-python/pyopengl test
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
 media-libs/libv4l bpf
-media-tv/v4l-utils bpf
 
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
 # Mask until net-analyzer/icinga2 is keyworded

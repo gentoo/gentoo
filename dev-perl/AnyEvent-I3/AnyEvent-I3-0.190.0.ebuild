@@ -10,7 +10,7 @@ inherit perl-module virtualx
 DESCRIPTION="Communicate with the i3 window manager"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-perl/AnyEvent

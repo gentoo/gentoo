@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -27,7 +27,8 @@ fi
 
 DESCRIPTION="An implementation of the ACME protocol"
 HOMEPAGE="
-	https://github.com/certbot/certbot
+	https://github.com/certbot/certbot/
+	https://pypi.org/project/acme/
 	https://letsencrypt.org/
 "
 
@@ -37,8 +38,6 @@ SLOT="0"
 
 BDEPEND="
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	)
 "
@@ -55,5 +54,11 @@ RDEPEND="
 	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
+distutils_enable_sphinx docs \
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}

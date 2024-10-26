@@ -1,0 +1,32 @@
+From 3dc53183e86bb9f0ee9d45ff9d4971036c61ecba Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Wed, 15 May 2024 10:43:50 +0200
+Subject: [PATCH] Fix test_extract_class_dict for Python 3.13 beta 1
+
+Resolves: https://github.com/cloudpipe/cloudpickle/issues/533
+Closes: https://github.com/cloudpipe/cloudpickle/pull/534
+---
+ tests/cloudpickle_test.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/cloudpickle_test.py b/tests/cloudpickle_test.py
+index 4041bf7..6d0d915 100644
+--- a/tests/cloudpickle_test.py
++++ b/tests/cloudpickle_test.py
+@@ -108,7 +108,12 @@ def test_extract_class_dict():
+             return "c"
+ 
+     clsdict = _extract_class_dict(C)
+-    assert sorted(clsdict.keys()) == ["C_CONSTANT", "__doc__", "method_c"]
++    expected_keys = ["C_CONSTANT", "__doc__", "method_c"]
++    # New attribute in Python 3.13 beta 1
++    # https://github.com/python/cpython/pull/118475
++    if sys.version_info >= (3, 13):
++        expected_keys.insert(2, "__firstlineno__")
++    assert sorted(clsdict.keys()) == expected_keys
+     assert clsdict["C_CONSTANT"] == 43
+     assert clsdict["__doc__"] is None
+     assert clsdict["method_c"](C()) == C().method_c()
+-- 
+2.45.2
+

@@ -1,6 +1,30 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Felix Janda <felix.janda@posteo.de> (2024-10-20)
+# requires dev-libs/libcss and net-libs/libdom to be keyworded
+www-client/elinks libcss
+
+# David Roman <davidroman96@gmail.com> (2024-10-04)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Hans de Graaff <graaff@gentoo.org> (2024-08-16)
+# Requires large parts of dev-ruby/rails to be keyworded
+dev-ruby/minitest-hooks test
+
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-10)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
@@ -71,6 +95,7 @@ app-alternatives/ninja samurai
 # indicate a passing test suite, you must check the logs.
 # https://buildd.debian.org/status/logs.php?pkg=weston&arch=alpha
 gui-libs/gtk wayland
+dev-libs/libportal wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # sci-physics/bullet not keyworded here (#908240)
@@ -257,7 +282,7 @@ media-sound/fluidsynth lash
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
-media-libs/libsdl2 fcitx4
+media-libs/libsdl2 fcitx
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
 # media-libs/libilbc is not ported to alpha
@@ -269,11 +294,10 @@ mail-filter/pyzor mysql
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay zink
+media-libs/mesa video_cards_zink vulkan vulkan-overlay
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
-app-editors/emacs xwidgets
 gnome-extra/evolution-data-server oauth-gtk3 oauth-gtk4
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer
@@ -321,7 +345,6 @@ media-video/ffmpeg dav1d libaribb24 libtesseract
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on sys-devel/clang which is not keyworded on alpha.
 media-libs/libv4l bpf
-media-tv/v4l-utils bpf
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
@@ -541,10 +564,6 @@ media-libs/gst-plugins-base ivorbis
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Raúl Porcel <armin76@gentoo.org> (2012-12-30)
-# Needs testing
-media-libs/phonon gstreamer vlc
 
 # Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)

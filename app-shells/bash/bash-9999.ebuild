@@ -45,7 +45,7 @@ elif (( PLEVEL < 0 )) && [[ ${PV} == *_p* ]] ; then
 	# the alpha, and the next pre-release is usually quite far away.
 	#
 	# i.e. if it's worth packaging the alpha, it's worth packaging a followup.
-	BASH_COMMIT="5e28a1813ce7d08628c8df584ea36515091c6d9b"
+	BASH_COMMIT="d3e86e66ce857a8dc02e3116fd98b6e5b34d6364"
 	SRC_URI="https://git.savannah.gnu.org/cgit/bash.git/snapshot/bash-${BASH_COMMIT}.tar.xz -> ${P}-${BASH_COMMIT}.tar.xz"
 	S=${WORKDIR}/${PN}-${BASH_COMMIT}
 else
@@ -73,7 +73,7 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 if (( PLEVEL >= 0 )); then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
 

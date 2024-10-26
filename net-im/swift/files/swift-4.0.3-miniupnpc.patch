@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/934054
+
+From: Bill Prendergast <dek.devel@baisenvar.info>
+
+Fix build with newer net-libs/miniupnpc (API 18)
+--- a/Swiften/Network/MiniUPnPInterface.cpp
++++ b/Swiften/Network/MiniUPnPInterface.cpp
+@@ -45,9 +45,16 @@ MiniUPnPInterface::MiniUPnPInterface() : p(new Private()) {
+     }
+ 
+     char lanAddress[64];
++#if MINIUPNPC_API_VERSION > 17
++    char wanAddress[64];
++    if (!UPNP_GetValidIGD(p->deviceList, &p->urls, &p->data, lanAddress, sizeof(lanAddress), wanAddress, sizeof(wanAddress))) {
++        return;
++    }
++#else
+     if (!UPNP_GetValidIGD(p->deviceList, &p->urls, &p->data, lanAddress, sizeof(lanAddress))) {
+         return;
+     }
++#endif
+     p->localAddress = std::string(lanAddress);
+     p->isValid = true;
+ }

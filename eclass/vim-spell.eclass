@@ -6,7 +6,7 @@
 # Vim Maintainers <vim@gentoo.org>
 # @AUTHOR:
 # Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for managing Vim spell files.
 # @DESCRIPTION:
 # How to make a vim spell file package using prebuilt spell lists
@@ -62,13 +62,13 @@
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_VIM_SPELL_ECLASS} ]] ; then
 _VIM_SPELL_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SLOT="0"

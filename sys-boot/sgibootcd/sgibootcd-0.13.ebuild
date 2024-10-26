@@ -1,4 +1,4 @@
-# Copyright 2005-2021 Gentoo Authors
+# Copyright 2005-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -11,11 +11,6 @@ SRC_URI="https://dev.gentoo.org/~kumba/distfiles/${P}.tar.xz"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~mips"
-
-IUSE=""
-RDEPEND=""
-DEPEND=""
-RESTRICT=""
 
 # sgibootcd is a small utility used to build the image that is burned to a
 # CD and used to boot SGI systems.  Its compilation does not involve the

@@ -1,0 +1,4 @@
+move dev-python/pyopengl_accelerate dev-python/pyopengl-accelerate
+move sys-apps/scx sys-kernel/scx
+slotmove media-sound/kmetronome 5 0
+move net-im/sendxmpp-amm net-im/sendxmpp-scala

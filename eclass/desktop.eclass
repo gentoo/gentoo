@@ -1,19 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: support for desktop files, menus, and icons
-
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @FUNCTION: make_desktop_entry
 # @USAGE: <command> [name] [icon] [type] [fields]
@@ -212,7 +212,7 @@ make_desktop_entry() {
 		insopts -m 0644
 		insinto /usr/share/applications
 		doins "${desktop}"
-	) || die "installing desktop file failed"
+	)
 }
 
 # @FUNCTION: make_session_desktop
@@ -353,7 +353,7 @@ _iconins() {
 	if [[ ${funcname} == newicon ]] ; then
 		newins "$@"
 	fi
-	) || die
+	)
 }
 
 # @FUNCTION: doicon

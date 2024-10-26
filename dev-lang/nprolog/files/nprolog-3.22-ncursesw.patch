@@ -1,0 +1,13 @@
+diff --git a/edlog.c b/edlog.c
+index 206e6a6..317a4ee 100644
+--- a/edlog.c
++++ b/edlog.c
+@@ -8,7 +8,7 @@
+ #define _XOPEN_SOURCE_EXTENDED
+ #define NCURSES_OPAQUE 1
+ #ifdef __linux__
+-#include <ncurses.h>
++#include <ncursesw/ncurses.h>
+ #else
+ #include <curses.h>
+ #endif

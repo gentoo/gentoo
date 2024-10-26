@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake elisp-common
+inherit cmake elisp-common flag-o-matic
 
 DESCRIPTION="Graphics Layout Engine"
-HOMEPAGE="http://glx.sourceforge.io/ https://github.com/vlabella/GLE/"
+HOMEPAGE="https://glx.sourceforge.io/ https://github.com/vlabella/GLE/"
 IUSE="doc emacs"
 LIB_VERSION="d476418f006b001dc7f47dcafb413c0557fa44a7"
 SRC_URI="https://github.com/vlabella/GLE/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
@@ -43,6 +43,11 @@ PATCHES=( "${FILESDIR}"/license.patch "${FILESDIR}"/tiff.patch )
 SITEFILE="64${PN}-gentoo.el"
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/927779
+	# https://github.com/vlabella/GLE/issues/35
+	filter-lto
+
 	local mycmakeargs=(
 		-DGLE_EXAMPLES_LIBRARY_PATH="${WORKDIR}"/gle-library-${LIB_VERSION}
 	)

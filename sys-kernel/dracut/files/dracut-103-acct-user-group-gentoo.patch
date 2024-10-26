@@ -1,0 +1,30 @@
+diff --git a/dracut-init.sh b/dracut-init.sh
+index 986da96b..bd47bc92 100755
+--- a/dracut-init.sh
++++ b/dracut-init.sh
+@@ -711,10 +711,10 @@ inst_libdir_file() {
+ 
+ # install sysusers files
+ inst_sysusers() {
+-    inst_multiple -o "$sysusers/$*"
++    inst_multiple -o "$sysusers/acct-*-$*"
+ 
+     if [[ $hostonly ]]; then
+-        inst_multiple -H -o "$sysusersconfdir/$*"
++        inst_multiple -H -o "$sysusersconfdir/acct-*-$*"
+     fi
+ }
+ 
+diff --git a/modules.d/91tpm2-tss/module-setup.sh b/modules.d/91tpm2-tss/module-setup.sh
+index 4441f552..4b5654d5 100755
+--- a/modules.d/91tpm2-tss/module-setup.sh
++++ b/modules.d/91tpm2-tss/module-setup.sh
+@@ -30,7 +30,7 @@ installkernel() {
+ 
+ # Install the required file(s) and directories for the module in the initramfs.
+ install() {
+-    inst_sysusers tpm2-tss.conf
++    inst_sysusers tss.conf
+ 
+     inst_multiple -o \
+         "$tmpfilesdir"/tpm2-tss-fapi.conf \

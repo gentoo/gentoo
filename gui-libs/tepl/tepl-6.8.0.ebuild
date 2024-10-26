@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/swilmet/tepl"
 
 LICENSE="LGPL-3+"
 SLOT="6/4"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc"
 RESTRICT="!test? ( test )"
 

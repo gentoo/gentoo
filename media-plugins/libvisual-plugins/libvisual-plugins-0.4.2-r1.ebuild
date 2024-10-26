@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit multilib-minimal
+inherit flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
 HOMEPAGE="http://libvisual.org/"
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Libvisual/libvisual/releases/download/${P}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0.4"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="alsa debug gstreamer gtk jack mplayer opengl portaudio pulseaudio"
 
 RDEPEND=">=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
@@ -36,7 +36,20 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
+src_prepare() {
+	default
+	elibtoolize
+}
+
 multilib_src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/927006
+	# https://github.com/Libvisual/libvisual/issues/358
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable jack) \

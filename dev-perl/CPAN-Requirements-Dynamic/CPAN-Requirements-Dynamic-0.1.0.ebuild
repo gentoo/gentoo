@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Dynamic prerequisites in meta files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	dev-perl/CPAN-Meta-Requirements

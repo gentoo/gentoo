@@ -102,12 +102,12 @@ src_compile() {
 	fi
 
 	# BUILD_SECCOMP is used in the patch to toggle seccomp
-	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" BUILD_SECCOMP="$(usex seccomp)" \
+	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" BUILD_SECCOMP="$(usex seccomp)" SELINUXOPT= \
 		  all $(usev wrapper docker-docs)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.completions $(usev wrapper install.docker-full)
+	emake DESTDIR="${D}" SELINUXOPT= install install.completions $(usev wrapper install.docker-full)
 
 	if use !systemd; then
 		newconfd "${FILESDIR}"/podman-5.0.0_rc4.confd podman

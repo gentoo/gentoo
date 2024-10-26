@@ -1,0 +1,93 @@
+From 6c6219710e08784b3b8beed25d17240ea7f9ef93 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 12 Jul 2024 11:05:40 +0200
+Subject: [PATCH 1/2] Improve compatibility with patched python-json-logger on
+ py3.12+
+
+Discard the `taskName` field from event capsule, to preserve
+compatibility both with current python-json-logger versions, and with
+versions containing the Python 3.12 fix
+from madzak/python-json-logger#188 that removes the reserved `taskName`
+field.
+---
+ tests/test_logger.py | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test_logger.py b/tests/test_logger.py
+index 8a0a499..986aade 100644
+--- a/tests/test_logger.py
++++ b/tests/test_logger.py
+@@ -166,8 +166,7 @@ def test_emit():
+         "__metadata_version__": 1,
+         "something": "blah",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
++    event_capsule.pop("taskName", None)
+     assert event_capsule == expected
+ 
+ 
+@@ -214,8 +213,7 @@ def test_message_field():
+         "something": "blah",
+         "message": "a message was seen",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
++    event_capsule.pop("taskName", None)
+     assert event_capsule == expected
+ 
+ 
+@@ -263,8 +261,7 @@ def test_nested_message_field():
+         "__metadata_version__": 1,
+         "thing": {"message": "a nested message was seen"},
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
++    event_capsule.pop("taskName", None)
+     assert event_capsule == expected
+ 
+ 
+@@ -428,8 +425,7 @@ def test_unique_logger_instances():
+         "__metadata_version__": 1,
+         "something": "blah",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
++    event_capsule0.pop("taskName", None)
+     assert event_capsule0 == expected
+ 
+     event_capsule1 = json.loads(output1.getvalue())
+@@ -443,8 +439,7 @@ def test_unique_logger_instances():
+         "__metadata_version__": 1,
+         "something": "blah",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
++    event_capsule1.pop("taskName", None)
+     assert event_capsule1 == expected
+ 
+ 
+
+From 5ad1b27eb8424f1c33067eb68859f9ed0d7ede74 Mon Sep 17 00:00:00 2001
+From: "pre-commit-ci[bot]"
+ <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+Date: Fri, 12 Jul 2024 09:08:44 +0000
+Subject: [PATCH 2/2] [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+---
+ tests/test_logger.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/test_logger.py b/tests/test_logger.py
+index 986aade..ecd56ab 100644
+--- a/tests/test_logger.py
++++ b/tests/test_logger.py
+@@ -3,7 +3,6 @@
+ import io
+ import json
+ import logging
+-import sys
+ from datetime import datetime, timedelta, timezone
+ from unittest.mock import MagicMock
+ 

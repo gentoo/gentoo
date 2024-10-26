@@ -1,0 +1,103 @@
+From f69c099c20afb5ae5262e93208f1a28e39d911f1 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 9 Aug 2024 08:54:08 +0300
+Subject: [PATCH 1/2] Add support for libfmt-11
+
+fmt::join was moved into fmt/ranges.h
+--- a/Source/Core/Common/StringUtil.cpp
++++ b/Source/Core/Common/StringUtil.cpp
+@@ -22,6 +22,7 @@
+ #include <vector>
+ 
+ #include <fmt/format.h>
++#include <fmt/ranges.h>
+ 
+ #include "Common/CommonFuncs.h"
+ #include "Common/CommonPaths.h"
+--- a/Source/Core/Core/HW/EXI/EXI_Device.h
++++ b/Source/Core/Core/HW/EXI/EXI_Device.h
+@@ -111,7 +111,7 @@ struct fmt::formatter<ExpansionInterface::EXIDeviceType>
+   constexpr formatter() : EnumFormatter(names) {}
+ 
+   template <typename FormatContext>
+-  auto format(const ExpansionInterface::EXIDeviceType& e, FormatContext& ctx)
++  auto format(const ExpansionInterface::EXIDeviceType& e, FormatContext& ctx) const
+   {
+     if (e != ExpansionInterface::EXIDeviceType::None)
+     {
+--- a/Source/Core/Core/NetPlayClient.cpp
++++ b/Source/Core/Core/NetPlayClient.cpp
+@@ -17,6 +17,7 @@
+ #include <vector>
+ 
+ #include <fmt/format.h>
++#include <fmt/ranges.h>
+ 
+ #include "Common/Assert.h"
+ #include "Common/CommonPaths.h"
+--- a/Source/Core/Core/NetPlayServer.cpp
++++ b/Source/Core/Core/NetPlayServer.cpp
+@@ -18,6 +18,7 @@
+ #include <vector>
+ 
+ #include <fmt/format.h>
++#include <fmt/ranges.h>
+ 
+ #include "Common/CommonPaths.h"
+ #include "Common/ENet.h"
+--- a/Source/Core/DolphinQt/Debugger/CodeViewWidget.cpp
++++ b/Source/Core/DolphinQt/Debugger/CodeViewWidget.cpp
+@@ -7,6 +7,7 @@
+ #include <cmath>
+ 
+ #include <fmt/format.h>
++#include <fmt/ranges.h>
+ 
+ #include <QApplication>
+ #include <QClipboard>
+--- a/Source/Core/DolphinQt/NetPlay/NetPlayDialog.cpp
++++ b/Source/Core/DolphinQt/NetPlay/NetPlayDialog.cpp
+@@ -25,6 +25,8 @@
+ #include <algorithm>
+ #include <sstream>
+ 
++#include <fmt/ranges.h>
++
+ #include "Common/CommonPaths.h"
+ #include "Common/Config/Config.h"
+ #include "Common/HttpRequest.h"
+--- a/Source/Core/VideoBackends/OGL/OGLConfig.cpp
++++ b/Source/Core/VideoBackends/OGL/OGLConfig.cpp
+@@ -7,6 +7,8 @@
+ #include <string>
+ #include <string_view>
+ 
++#include <fmt/ranges.h>
++
+ #include "Common/Assert.h"
+ #include "Common/GL/GLContext.h"
+ #include "Common/GL/GLExtensions/GLExtensions.h"
+--- a/Source/Core/VideoCommon/VertexLoaderBase.cpp
++++ b/Source/Core/VideoCommon/VertexLoaderBase.cpp
+@@ -11,6 +11,7 @@
+ #include <vector>
+ 
+ #include <fmt/format.h>
++#include <fmt/ranges.h>
+ 
+ #include "Common/Assert.h"
+ #include "Common/BitUtils.h"
+--- a/Source/UnitTests/Common/BitFieldTest.cpp
++++ b/Source/UnitTests/Common/BitFieldTest.cpp
+@@ -1,6 +1,8 @@
+ // Copyright 2014 Dolphin Emulator Project
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
++#include <fmt/ranges.h>
++
+ #include <gtest/gtest.h>
+ 
+ #include "Common/BitField.h"
+-- 
+2.45.2
+

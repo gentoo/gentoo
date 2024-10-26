@@ -29,7 +29,8 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature python-any-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature python-any-r1
+inherit secureboot toolchain-funcs
 
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"
@@ -54,11 +55,17 @@ if [[ ${PV} != 9999 ]]; then
 		S=${WORKDIR}/${P%_*}
 	fi
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/gfxpayload.patch
+	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/grub-2.06-test-words.patch
+)
 
 DEJAVU=dejavu-sans-ttf-2.37
 UNIFONT=unifont-15.0.06
@@ -68,7 +75,7 @@ SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="device-mapper doc efiemu +fonts mount nls sdl test +themes truetype libzfs"
+IUSE="+device-mapper doc efiemu +fonts mount nls sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot
 	qemu qemu-mips pc uboot xen xen-32 xen-pvh )
@@ -157,12 +164,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}"/gfxpayload.patch
-		"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
-		"${FILESDIR}"/grub-2.06-test-words.patch
-	)
-
 	default
 
 	python_setup
@@ -291,6 +292,70 @@ src_test() {
 	grub_do emake -j1 check
 }
 
+grub_mkstandalone_secureboot() {
+	use secureboot || return
+
+	if tc-is-cross-compiler; then
+		ewarn "USE=secureboot is not supported when cross-compiling."
+		ewarn "No standalone EFI executable will be built."
+		return 1
+	fi
+
+	local standalone_targets
+
+	case ${CTARGET:-${CHOST}} in
+		i?86* | x86_64*)
+			use grub_platforms_efi-32 && standalone_targets+=( i386-efi )
+			use grub_platforms_efi-64 && standalone_targets+=( x86_64-efi )
+			;;
+		arm* | aarch64*)
+			use grub_platforms_efi-32 && standalone_targets+=( arm-efi )
+			use grub_platforms_efi-64 && standalone_targets+=( arm64-efi )
+			;;
+		riscv*)
+			use grub_platforms_efi-32 && standalone_targets+=( riscv32-efi )
+			use grub_platforms_efi-64 && standalone_targets+=( riscv64-efi )
+			;;
+		ia64*)
+			use grub_platforms_efi-64 && standalone_targets+=( ia64-efi )
+			;;
+		loongarch64*)
+			use grub_platforms_efi-64 && standalone_targets+=( loongarch64-efi )
+			;;
+	esac
+
+	if [[ ${#standalone_targets[@]} -eq 0 ]]; then
+		ewarn "USE=secureboot is enabled, but no suitable EFI target in GRUB_PLATFORMS."
+		ewarn "No standalone EFI executable will be built."
+		return 1
+	fi
+
+	local target mkstandalone_args
+
+	# grub-mkstandalone embeds a config file, make this config file chainload
+	# a config file in the same directory grub is installed in. This requires
+	# pre-loading the part_gpt and part_msdos modules.
+	echo 'configfile ${cmdpath}/grub.cfg' > "${T}/grub.cfg" || die
+	for target in "${standalone_targets[@]}"; do
+		ebegin "Building standalone EFI executable for ${target}"
+		mkstandalone_args=(
+			--verbose
+			--directory="${ED}/usr/lib/grub/${target}"
+			--locale-directory="${ED}/usr/share/locale"
+			--format="${target}"
+			--modules="part_gpt part_msdos"
+			--sbat="${ED}/usr/share/grub/sbat.csv"
+			--output="${ED}/usr/lib/grub/grub-${target%-efi}.efi"
+			"boot/grub/grub.cfg=${T}/grub.cfg"
+		)
+
+		"${ED}/usr/bin/grub-mkstandalone" "${mkstandalone_args[@]}"
+		eend ${?} || die "grub-mkstandalone failed to build EFI executable"
+	done
+
+	secureboot_auto_sign
+}
+
 src_install() {
 	grub_do emake install DESTDIR="${D}" bashcompletiondir="$(get_bashcompdir)"
 	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
@@ -311,6 +376,8 @@ src_install() {
 		# https://bugs.gentoo.org/900348
 		QA_CONFIG_IMPL_DECL_SKIP=( re_{compile_pattern,match,search,set_syntax} )
 	fi
+
+	grub_mkstandalone_secureboot
 }
 
 pkg_postinst() {
@@ -331,7 +398,7 @@ pkg_postinst() {
 	else
 		elog
 		optfeature "detecting other operating systems (grub-mkconfig)" sys-boot/os-prober
-		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn
+		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn sys-fs/mtools
 		optfeature "enabling RAID device detection" sys-fs/mdadm
 		optfeature "automatically updating GRUB's configuration on each kernel installation" "sys-kernel/installkernel[grub]"
 	fi
@@ -344,5 +411,22 @@ pkg_postinst() {
 	if has_version sys-boot/os-prober; then
 		ewarn "Due to security concerns, os-prober is disabled by default."
 		ewarn "Set GRUB_DISABLE_OS_PROBER=false in /etc/default/grub to enable it."
+	fi
+
+	if use secureboot; then
+		elog
+		elog "The signed standalone grub EFI executable(s) are available in:"
+		elog "    /usr/lib/grub/grub-<target>.efi(.signed)"
+		elog "These EFI executables should be copied to the usual location at:"
+		elog "    ESP/EFI/Gentoo/grub<arch>.efi"
+		elog "Note that 'grub-install' does not install these images."
+		elog
+		elog "These standalone grub executables read the grub config file from"
+		elog "the grub.cfg in the same directory instead of the default"
+		elog "/boot/grub/grub.cfg. When sys-kernel/installkernel[grub] is used,"
+		elog "the location of the grub.cfg may be overridden by setting the"
+		elog "GRUB_CFG environment variable:"
+		elog "     GRUB_CFG=ESP/EFI/Gentoo/grub.cfg"
+		elog
 	fi
 }

@@ -32,7 +32,7 @@ else
 	[[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 #
@@ -500,7 +500,7 @@ src_install() {
 pkg_postinst() {
 	# Make sure this ${CTARGET} has a binutils version selected
 	[[ -e ${EROOT}/etc/env.d/binutils/config-${CTARGET} ]] && return 0
-	binutils-config ${CTARGET}-${PV}
+	binutils-config ${CTARGET}-${PV} || eerror binutils-config returned an error
 }
 
 pkg_postrm() {
@@ -517,12 +517,12 @@ pkg_postrm() {
 		choice=${choice//$'\n'/ }
 		choice=${choice/* }
 		if [[ -z ${choice} ]] ; then
-			binutils-config -u ${CTARGET}
+			binutils-config -u ${CTARGET} || eerror binutils-config returned an error
 		else
-			binutils-config ${choice}
+			binutils-config ${choice} || eerror binutils-config returned an error
 		fi
 	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${PV} ]] ; then
-		binutils-config ${CTARGET}-${PV}
+		binutils-config ${CTARGET}-${PV} || eerror binutils-config returned an error
 	fi
 }
 

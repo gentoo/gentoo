@@ -15,6 +15,7 @@
 		<flag name="argon2">Enable Argon2 hashes in modules</flag>
 		<flag name="gnutls">Enable TLS support</flag>
 		<flag name="ldap">Enable LDAP support</flag>
+		<flag name="log-json">Enable logging via JSON</flag>
 		<flag name="maxminddb">Add support for geolocation using libMaxMindDB</flag>
 		<flag name="mbedtls">Add support for TLS using the mbedTLS library</flag>
 		<flag name="mysql">Enable MySQL database backend</flag>

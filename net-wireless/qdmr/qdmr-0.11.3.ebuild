@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,12 @@ else
 	MY_PV="${PV/_/-}"
 	SRC_URI="https://github.com/hmatuschek/qdmr/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
-IUSE="test"
-RESTRICT="!test? ( test )"
-
 LICENSE="GPL-3+"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-cpp/yaml-cpp:=
@@ -40,9 +39,9 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 pkg_setup() {
 	CONFIG_CHECK="~USB_ACM"
-	WARNING_USB_ACM="Some radios require CONFIG_USB_ACM to work, you may need to enable this driver to talk to your radio"
+	WARNING_USB_ACM="You need to enable CONFIG_USB_ACM in your kernel to talk to some radios"
 	CONFIG_CHECK="~USB_SERIAL"
-	WARNING_USB_SERIAL="Some radios require CONFIG_USB_SERIAL to work, you may need to enable this driver to talk to your radio"
+	WARNING_USB_SERIAL="You need to enable CONFIG_USB_SERIAL in your kernel to talk to some radios"
 	check_extra_config
 }
 

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>matthew@gentoo.org</email>
-        <name>Matthew Smith</name>
-    </maintainer>
+    <!-- maintainer-needed -->
     <longdescription lang="en">
     Solvespace is a parametric 2D/3D CAD tool. Applications include:
     - modeling 3d parts — draw with extrudes, revolves, and Boolean (union / difference) operations

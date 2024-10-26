@@ -11,7 +11,7 @@ SRC_URI="https://pcsc-perl.apdu.fr/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 
 RESTRICT="test" # actually accesses the pcsc-lite daemon
 

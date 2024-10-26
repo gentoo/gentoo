@@ -1,0 +1,51 @@
+From c8f662204f7858a38b485c23b387e5abdf13042c Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Fri, 20 Sep 2024 17:17:50 +0100
+Subject: [PATCH] Fix building docs from subprojects by not using
+ CMAKE_SOURCE_DIR
+
+The generate_documentation function currently uses CMAKE_SOURCE_DIR to
+find documentation assets at the SDK top-level, but when building from a
+subproject like sdk/core/azure-core, the variable points to that
+directory instead.
+
+Fix this by defining SDK_ROOT_DIR, which is based on PROJECT_SOURCE_DIR.
+This should always work as long as each subproject calling the function
+is always 3 levels down, which is currently the case.
+---
+ cmake-modules/AzureDoxygen.cmake | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/cmake-modules/AzureDoxygen.cmake b/cmake-modules/AzureDoxygen.cmake
+index 31b2e2f..eb64c39 100644
+--- a/cmake-modules/AzureDoxygen.cmake
++++ b/cmake-modules/AzureDoxygen.cmake
+@@ -14,8 +14,9 @@ function(generate_documentation PROJECT_NAME PROJECT_VERSION)
+         set(DOXYGEN_PROJECT_NAME ${PROJECT_NAME})
+         set(DOXYGEN_PROJECT_NUMBER ${PROJECT_VERSION})
+ 
++        set(SDK_ROOT_DIR ${PROJECT_SOURCE_DIR}/../../..)
+         set(DOXYGEN_OUTPUT_DIRECTORY docs)
+-        set(DOXYGEN_LAYOUT_FILE ${CMAKE_SOURCE_DIR}/eng/docs/api/assets/DoxygenLayout.xml)
++        set(DOXYGEN_LAYOUT_FILE ${SDK_ROOT_DIR}/eng/docs/api/assets/DoxygenLayout.xml)
+         set(DOXYGEN_RECURSIVE YES)
+         if (MSVC)
+           set(DOXYGEN_WARN_FORMAT "$file($line) : $text")
+@@ -45,10 +46,10 @@ function(generate_documentation PROJECT_NAME PROJECT_VERSION)
+             az_
+             AZ_
+         )
+-        set(DOXYGEN_HTML_HEADER ${CMAKE_SOURCE_DIR}/eng/docs/api/assets/header.html)
+-        set(DOXYGEN_HTML_FOOTER ${CMAKE_SOURCE_DIR}/eng/docs/api/assets/footer.html)
+-        set(DOXYGEN_HTML_STYLESHEET ${CMAKE_SOURCE_DIR}/eng/docs/api/assets/style.css)
+-        set(DOXYGEN_PROJECT_LOGO ${CMAKE_SOURCE_DIR}/eng/common/docgeneration/assets/logo.svg)
++        set(DOXYGEN_HTML_HEADER ${SDK_ROOT_DIR}/eng/docs/api/assets/header.html)
++        set(DOXYGEN_HTML_FOOTER ${SDK_ROOT_DIR}/eng/docs/api/assets/footer.html)
++        set(DOXYGEN_HTML_STYLESHEET ${SDK_ROOT_DIR}/eng/docs/api/assets/style.css)
++        set(DOXYGEN_PROJECT_LOGO ${SDK_ROOT_DIR}/eng/common/docgeneration/assets/logo.svg)
+ 
+         set(DOXYGEN_GENERATE_XML YES)
+         set(DOXYGEN_GENERATE_LATEX NO)
+-- 
+2.46.0
+

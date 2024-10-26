@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/GPUOpen-LibrariesAndSDKs/AMF"
 else
 	SRC_URI="https://github.com/GPUOpen-LibrariesAndSDKs/AMF/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 DESCRIPTION="The Advanced Media Framework (AMF) SDK"

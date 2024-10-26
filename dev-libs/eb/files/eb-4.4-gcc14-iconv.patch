@@ -1,0 +1,13 @@
+diff --git a/libebutils/puts_eucjp.c b/libebutils/puts_eucjp.c
+index 678b296..d4c41b6 100644
+--- a/libebutils/puts_eucjp.c
++++ b/libebutils/puts_eucjp.c
+@@ -94,7 +94,7 @@ fputs_eucjp_to_locale(const char *string, FILE *stream)
+ 	out_p = buffer;
+ 	out_left = buffer_size;
+ 
+-	if (iconv(cd, &in_p, &in_left, &out_p, &out_left) != -1)
++	if (iconv(cd, (char **)&in_p, &in_left, &out_p, &out_left) != -1)
+ 	    break;
+ 	if (errno == E2BIG) {
+ 	    /*

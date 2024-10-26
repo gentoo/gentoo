@@ -8,9 +8,11 @@ DESCRIPTION="Database abstraction layer for PHP"
 HOMEPAGE="https://adodb.org/ https://github.com/ADOdb/ADOdb"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 LICENSE="BSD LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc64 sparc x86"
 
 # If you want to be picky, we should require that PHP be built with at
 # least one database driver enabled; otherwise adodb isn't going to be
@@ -22,8 +24,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
 # and let the user install adodb unconditionally. If he doesn't have
 # database support in PHP, it just won't work.
 RDEPEND="dev-lang/php:*"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	DOCS="README.md docs/changelog*.md xmlschema*.dtd session/*.sql"

@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_COMPAT=( 18 )
 
-inherit cmake llvm-r1
+inherit cmake flag-o-matic llvm-r1
 
 DESCRIPTION="A set of tools to translate CUDA source code into portable HIP C++"
 HOMEPAGE="https://github.com/ROCm/HIPIFY"
@@ -36,6 +36,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# 928906: CMakeLists.txt ignores CC/CXX, switches compiler to clang
+	# and fails if non-compatible CFLAGS/CXXFLAGS are used
+	strip-unsupported-flags
+
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)/$(get_libdir)/cmake/llvm"
 	)

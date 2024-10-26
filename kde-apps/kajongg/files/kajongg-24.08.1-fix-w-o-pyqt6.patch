@@ -1,0 +1,156 @@
+From 2628e367759fab2ff9365b4ebaf1b76cc3e8c301 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rohdewald <wolfgang@rohdewald.de>
+Date: Tue, 10 Sep 2024 22:07:43 +0200
+Subject: [PATCH 1/4] did not work with QT=API=PYSIDE2 anymore
+
+(cherry picked from commit 8354d9b0fda654c0520c6c97d96f8b9a2f1eec34)
+---
+ src/kajongg.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/kajongg.py b/src/kajongg.py
+index 5f369889..139a061c 100755
+--- a/src/kajongg.py
++++ b/src/kajongg.py
+@@ -15,7 +15,7 @@ import os
+ import logging
+ from typing import Tuple, List, Optional, Type, Any
+ 
+-from qtpy import QT5
++from qtpy import QT5, PYSIDE2
+ from qt import QObject, QCommandLineParser, QCommandLineOption, Qt, QGuiApplication
+ from kde import KApplication
+ from mi18n import i18n, MLocale
+@@ -190,4 +190,7 @@ from mainwindow import MainWindow
+ if QT5:
+     QGuiApplication.setAttribute(Qt.ApplicationAttribute.AA_UseHighDpiPixmaps, True)  # type:ignore[attr-defined]
+ MainWindow()
+-Internal.app.exec()
++if PYSIDE2:
++    Internal.app.exec_()
++else:
++    Internal.app.exec()
+-- 
+2.46.0
+
+
+From f47761e86c1c97fcce543437a580051f5bfdf6e1 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rohdewald <wolfgang@rohdewald.de>
+Date: Tue, 10 Sep 2024 22:09:13 +0200
+Subject: [PATCH 2/4] Help/About did not work with QT5 anymore
+
+(cherry picked from commit 7b69cc0a7fd8a999a41b1f874460f9634d1b1bd9)
+---
+ src/kdestub.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/kdestub.py b/src/kdestub.py
+index 651137a8..0985b75f 100644
+--- a/src/kdestub.py
++++ b/src/kdestub.py
+@@ -42,7 +42,7 @@ from configparser import ConfigParser, NoSectionError, NoOptionError
+ 
+ # pylint: disable=wildcard-import,unused-wildcard-import
+ from qt import *
+-from qtpy import QT6, PYSIDE2, PYSIDE6, QT_VERSION, API_NAME, PYQT_VERSION
++from qtpy import QT5, QT6, PYSIDE2, PYSIDE6, QT_VERSION, API_NAME, PYQT_VERSION
+ if QT6:
+     # pylint:disable=no-name-in-module
+     from qtpy.QtCore import QKeyCombination  # type: ignore
+@@ -1130,7 +1130,11 @@ class AboutKajonggDialog(KDialog):
+     @staticmethod
+     def licenseFile() ->Optional[str]:
+         """which may currently only be 1: GPL_V2"""
+-        prefix = QLibraryInfo.location(QLibraryInfo.LibraryPath.PrefixPath)  # type:ignore[attr-defined]
++        if QT5:
++            # pyqt 2.3.0 does not seem to handle this
++            prefix = QLibraryInfo.location(QLibraryInfo.LibraryLocation.PrefixPath)  # type:ignore[attr-defined]
++        else:
++            prefix = QLibraryInfo.path(QLibraryInfo.LibraryPath.PrefixPath)  # type:ignore[attr-defined]
+         for path in ('COPYING', '../COPYING',
+                      f'{prefix}/share/kf5/licenses/GPL_V2'):
+             path = os.path.abspath(path)
+-- 
+2.46.0
+
+
+From 534d598b4d19149e984cce22fc5431091dd2d47c Mon Sep 17 00:00:00 2001
+From: Wolfgang Rohdewald <wolfgang@rohdewald.de>
+Date: Tue, 10 Sep 2024 22:10:23 +0200
+Subject: [PATCH 3/4] this should work with PYSIDE6 without PyQt6 being
+ installed
+
+(cherry picked from commit 3f12d305cc56814b72c561b36271494a21cf236d)
+---
+ src/qt.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/qt.py b/src/qt.py
+index 38679abc..b9cf96ca 100644
+--- a/src/qt.py
++++ b/src/qt.py
+@@ -150,6 +150,9 @@ elif QT6:
+         return sip.cast(obj, _type)
+ else:
+     HAVE_SIP = False
++    def sip_cast(obj, _type):
++        """hide not so nice things in qt.py"""
++        raise NotImplementedError
+ 
+ def modeltest_is_supported() ->bool:
+     """Is the QT binding supported."""
+@@ -158,7 +161,7 @@ def modeltest_is_supported() ->bool:
+     try:
+         _ = sip_cast(QSize(), QSize)
+         return True
+-    except TypeError:
++    except (TypeError, NotImplementedError):
+         return False
+ 
+ SIP_VERSION_STR = 'no sip'
+-- 
+2.46.0
+
+
+From b025fef86626f7b3af17924de8ca7ae1cdde6b87 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rohdewald <wolfgang@rohdewald.de>
+Date: Thu, 12 Sep 2024 21:09:54 +0200
+Subject: [PATCH 4/4] workaround: qtpy sometimes uses PYQT6 bindings even if it
+ cannot find module PyQt6. See KDE bug 486171
+
+(cherry picked from commit 88a0beb61b97682307d5cd70aa61dd832759f293)
+---
+ src/qt.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/qt.py b/src/qt.py
+index b9cf96ca..0799f6c2 100644
+--- a/src/qt.py
++++ b/src/qt.py
+@@ -9,7 +9,7 @@ SPDX-License-Identifier: GPL-2.0
+ 
+ # pylint: disable=unused-import
+ 
+-from qtpy import uic, QT5, QT6
++from qtpy import uic, QT5, QT6, PYQT5, PYQT6
+ from qtpy.QtCore import QAbstractAnimation
+ from qtpy.QtCore import QAbstractItemModel
+ from qtpy.QtCore import QAbstractTableModel
+@@ -138,12 +138,12 @@ from qtpy.QtSvg import QSvgRenderer
+ # pylint:disable=c-extension-no-member
+ 
+ HAVE_SIP = True
+-if QT5:
++if PYQT5:
+     from PyQt5 import sip
+     def sip_cast(obj, _type):
+         """hide not so nice things in qt.py"""
+         return sip.cast(obj, _type)
+-elif QT6:
++elif PYQT6:
+     from PyQt6 import sip  # type:ignore[no-redef]
+     def sip_cast(obj, _type):
+         """hide not so nice things in qt.py"""
+-- 
+2.46.0
+

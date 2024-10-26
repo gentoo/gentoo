@@ -163,6 +163,11 @@ src_prepare() {
 src_configure() {
 	local native_dbus_cflags=$($(tc-getPKG_CONFIG) --cflags dbus-1 || die)
 
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
+
 	multilib-minimal_src_configure
 }
 

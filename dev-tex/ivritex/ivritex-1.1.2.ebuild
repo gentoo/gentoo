@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/ivritex/${P}.tar.gz"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 RESTRICT="mirror"
 
 src_install() {

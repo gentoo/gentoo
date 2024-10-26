@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
-	<dev-scheme/guile-1.9[debug?,deprecated]
+	<dev-scheme/guile-1.9:12[debug?,deprecated]
 	media-libs/freetype
 	x11-apps/xmodmap
 	x11-libs/libXext

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jboss-javassist/javassist/archive/rel_${PV//./_}_ga.
 
 LICENSE="Apache-2.0 LGPL-2.1 MPL-1.1"
 SLOT="3"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
 
 # Compile dependencies
 # POM: pom.xml

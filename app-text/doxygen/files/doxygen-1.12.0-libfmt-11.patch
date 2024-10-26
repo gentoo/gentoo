@@ -1,0 +1,112 @@
+https://bugs.gentoo.org/937599
+https://github.com/doxygen/doxygen/pull/11083
+
+From 567aca983f70b01103271e431bc71a13ac79213c Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 9 Aug 2024 03:00:05 +0300
+Subject: [PATCH] Adjust to libfmt-11 changes
+
+Bug: https://bugs.gentoo.org/937599
+See-Also: https://github.com/fmtlib/fmt/commit/d70729215fba1d54862e407b626abf86ddf409bf
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/src/trace.h
++++ b/src/trace.h
+@@ -156,7 +156,7 @@ namespace fmt { template<typename T> struct formatter {}; }
+ //! adds support for formatting QCString
+ template<> struct fmt::formatter<QCString> : formatter<std::string>
+ {
+-  auto format(const QCString &c, format_context& ctx) {
++  auto format(const QCString &c, format_context& ctx) const {
+     return formatter<std::string>::format(c.str(), ctx);
+   }
+ };
+@@ -164,7 +164,7 @@ template<> struct fmt::formatter<QCString> : formatter<std::string>
+ //! adds support for formatting Protected
+ template<> struct fmt::formatter<Protection> : formatter<std::string>
+ {
+-  auto format(Protection prot, format_context& ctx) {
++  auto format(Protection prot, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (prot)
+     {
+@@ -180,7 +180,7 @@ template<> struct fmt::formatter<Protection> : formatter<std::string>
+ //! adds support for formatting Specifier
+ template<> struct fmt::formatter<Specifier> : formatter<std::string>
+ {
+-  auto format(Specifier spec, format_context& ctx) {
++  auto format(Specifier spec, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (spec)
+     {
+@@ -195,7 +195,7 @@ template<> struct fmt::formatter<Specifier> : formatter<std::string>
+ //! adds support for formatting MethodTypes
+ template<> struct fmt::formatter<MethodTypes> : formatter<std::string>
+ {
+-  auto format(MethodTypes mtype, format_context& ctx) {
++  auto format(MethodTypes mtype, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (mtype)
+     {
+@@ -213,7 +213,7 @@ template<> struct fmt::formatter<MethodTypes> : formatter<std::string>
+ //! adds support for formatting RelatesType
+ template<> struct fmt::formatter<RelatesType> : formatter<std::string>
+ {
+-  auto format(RelatesType type, format_context& ctx) {
++  auto format(RelatesType type, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (type)
+     {
+@@ -228,7 +228,7 @@ template<> struct fmt::formatter<RelatesType> : formatter<std::string>
+ //! adds support for formatting RelationShip
+ template<> struct fmt::formatter<Relationship> : formatter<std::string>
+ {
+-  auto format(Relationship relation, format_context& ctx) {
++  auto format(Relationship relation, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (relation)
+     {
+@@ -243,7 +243,7 @@ template<> struct fmt::formatter<Relationship> : formatter<std::string>
+ //! adds support for formatting SrcLangExt
+ template<> struct fmt::formatter<SrcLangExt> : formatter<std::string>
+ {
+-  auto format(SrcLangExt lang, format_context& ctx) {
++  auto format(SrcLangExt lang, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (lang)
+     {
+@@ -273,7 +273,7 @@ template<> struct fmt::formatter<SrcLangExt> : formatter<std::string>
+ //! adds support for formatting MemberType
+ template<> struct fmt::formatter<MemberType> : formatter<std::string>
+ {
+-  auto format(MemberType mtype, format_context& ctx) {
++  auto format(MemberType mtype, format_context& ctx) const {
+     std::string result="Unknown";
+     switch (mtype)
+     {
+@@ -301,7 +301,7 @@ template<> struct fmt::formatter<MemberType> : formatter<std::string>
+ //! adds support for formatting TypeSpecifier
+ template<> struct fmt::formatter<TypeSpecifier> : formatter<std::string>
+ {
+-  auto format(TypeSpecifier type, format_context& ctx) {
++  auto format(TypeSpecifier type, format_context& ctx) const {
+     return formatter<std::string>::format(type.to_string(),ctx);
+   }
+ };
+@@ -309,7 +309,7 @@ template<> struct fmt::formatter<TypeSpecifier> : formatter<std::string>
+ //! adds support for formatting EntryType
+ template<> struct fmt::formatter<EntryType> : formatter<std::string>
+ {
+-  auto format(EntryType type, format_context& ctx) {
++  auto format(EntryType type, format_context& ctx) const {
+     return formatter<std::string>::format(type.to_string(),ctx);
+   }
+ };
+@@ -317,7 +317,7 @@ template<> struct fmt::formatter<EntryType> : formatter<std::string>
+ //! adds support for formatting MemberListType
+ template<> struct fmt::formatter<MemberListType> : formatter<std::string>
+ {
+-  auto format(MemberListType type, format_context& ctx) {
++  auto format(MemberListType type, format_context& ctx) const {
+     return formatter<std::string>::format(type.to_string(),ctx);
+   }
+ };

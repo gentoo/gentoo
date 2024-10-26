@@ -19,7 +19,7 @@ S="${WORKDIR}/httpcore"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/httpcomponents-core.hc.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-httpcomponents-httpcore )"

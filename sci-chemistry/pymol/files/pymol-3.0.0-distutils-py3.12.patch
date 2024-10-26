@@ -1,0 +1,70 @@
+From 3d3c8963798d426e70675c3c40df146e12869b0a Mon Sep 17 00:00:00 2001
+From: Branch Vincent <branchevincent@gmail.com>
+Date: Fri, 10 May 2024 22:12:58 -0700
+Subject: [PATCH] replace distutils for python 3.12 (#362)
+
+Co-authored-by: Jarrett Johnson <jarrett.johnson@schrodinger.com>
+---
+ create_shadertext.py                  | 3 +--
+ modules/pymol/plugins/installation.py | 7 +++----
+ testing/tests/system/pymolwin.py      | 1 -
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/create_shadertext.py b/create_shadertext.py
+index 7bae72180..f6857087e 100644
+--- a/create_shadertext.py
++++ b/create_shadertext.py
+@@ -7,7 +7,6 @@
+ from collections import defaultdict
+ from os.path import dirname
+ from subprocess import Popen, PIPE
+-from distutils import dir_util
+ 
+ def create_all(generated_dir, pymoldir="."):
+     '''
+@@ -30,7 +29,7 @@ def __init__(self, filename):
+             self.out = cStringIO.StringIO()
+             self.filename = filename
+         else:
+-            dir_util.mkpath(os.path.dirname(filename))
++            os.makedirs(os.path.dirname(filename), exist_ok=True)
+             self.out = open(filename, "w")
+             self.filename = None
+     def close(self):
+diff --git a/modules/pymol/plugins/installation.py b/modules/pymol/plugins/installation.py
+index 3a980545b..2fb8f6f03 100644
+--- a/modules/pymol/plugins/installation.py
++++ b/modules/pymol/plugins/installation.py
+@@ -45,8 +45,6 @@ def cmp_version(v1, v2):
+     '''
+     Compares two version strings. An empty version string is always considered
+     smaller than a non-empty version string.
+-
+-    Uses distutils.version.StrictVersion to evaluate non-empty version strings.
+     '''
+     if v1 == v2:
+         return 0
+@@ -55,8 +53,9 @@ def cmp_version(v1, v2):
+     if v2 == '':
+         return 1
+     try:
+-        from distutils.version import StrictVersion as Version
+-        return cmp(Version(v1), Version(v2))
++        v1_parts = list(map(int, v1.split('.')))
++        v2_parts = list(map(int, v2.split('.')))
++        return (v1_parts > v2_parts) - (v1_parts < v2_parts)
+     except:
+         print(' Warning: Version parsing failed for', v1, 'and/or', v2)
+         return 0
+diff --git a/testing/tests/system/pymolwin.py b/testing/tests/system/pymolwin.py
+index 429fd28aa..e7885bd38 100644
+--- a/testing/tests/system/pymolwin.py
++++ b/testing/tests/system/pymolwin.py
+@@ -7,7 +7,6 @@
+ import subprocess
+ import sys
+ import unittest
+-from distutils.spawn import find_executable
+ from pymol import cmd, CmdException, testing, stored
+ 
+ @unittest.skipIf(not sys.platform.startswith('win'), 'windows only')

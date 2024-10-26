@@ -20,7 +20,7 @@ S="${WORKDIR}/Project-X"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ppc64"
 IUSE="X cpu_flags_x86_mmx cpu_flags_x86_sse"
 
 COMMON_DEPEND="

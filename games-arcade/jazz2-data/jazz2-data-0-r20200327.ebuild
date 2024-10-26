@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,8 @@ KEYWORDS="~amd64"
 IUSE="+cc demo gles2-only"
 RESTRICT="!demo? ( bindist fetch )"
 
-RDEPEND="games-arcade/jazz2:=[gles2-only=]"
+# jazz2-import is available only before version 1.0.0
+RDEPEND="<games-arcade/jazz2-1:=[gles2-only=]"
 
 BDEPEND="
 	${RDEPEND}

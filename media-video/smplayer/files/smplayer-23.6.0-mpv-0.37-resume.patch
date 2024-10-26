@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/919917#c2
+https://github.com/smplayer-dev/smplayer/issues/837
+--- a/src/mpvoptions.cpp
++++ b/src/mpvoptions.cpp
+@@ -848,6 +848,10 @@ void MPVProcess::mute(bool b) {
+ 
+ void MPVProcess::setPause(bool b) {
+ 	sendCommand(QString("set pause %1").arg(b ? "yes" : "no"));
++
++	// Workaround for mpv 0.37, playback not resuming after pause
++	// It seems mpv reports the pause state in the status line with some delay
++	if (b) sendCommand("no-osd seek 0 relative exact");
+ }
+ 
+ void MPVProcess::frameStep() {

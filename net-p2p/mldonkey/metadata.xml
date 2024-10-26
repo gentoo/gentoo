@@ -16,7 +16,6 @@
     <flag name="guionly">enable client build only</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">mldonkey</remote-id>
     <remote-id type="github">ygrek/mldonkey</remote-id>
   </upstream>
 </pkgmetadata>

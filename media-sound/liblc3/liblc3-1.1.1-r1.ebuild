@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 inherit python-any-r1 toolchain-funcs meson-multilib
 
 DESCRIPTION="LC3 is an efficient low latency audio codec"

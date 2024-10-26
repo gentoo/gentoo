@@ -115,6 +115,7 @@ src_compile() {
 
 	tc-export AS LD STRIP
 	export GOMD2MAN="$(command -v go-md2man)"
+	export SELINUXOPT=
 	default
 }
 
@@ -123,6 +124,6 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install install.completions
+	emake DESTDIR="${ED}" SELINUXOPT= install install.completions
 	einstalldocs
 }

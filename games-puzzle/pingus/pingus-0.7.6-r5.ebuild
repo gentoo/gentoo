@@ -10,7 +10,7 @@ DESCRIPTION="Free Lemmings clone"
 HOMEPAGE="https://pingus.gitlab.io/"
 SRC_URI="https://pingus.googlecode.com/files/${P}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+ GPL-2+ ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="opengl music"

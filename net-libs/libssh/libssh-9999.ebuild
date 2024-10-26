@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
 	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
@@ -111,6 +111,10 @@ multilib_src_configure() {
 multilib_src_compile() {
 	cmake_src_compile
 	multilib_is_native_abi && use doc && cmake_src_compile docs
+}
+
+multilib_src_test() {
+	cmake_src_test --timeout 3000
 }
 
 multilib_src_install() {

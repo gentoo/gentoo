@@ -20,7 +20,7 @@ S="${WORKDIR}/saaj-api-${PV}"
 LICENSE="BSD"
 # Since version 2.0.0, the namespace has changed to jakarta.xml.soap
 SLOT="1"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	>=dev-java/jakarta-activation-api-1.2.2-r1:1

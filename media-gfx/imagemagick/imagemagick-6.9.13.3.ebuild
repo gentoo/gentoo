@@ -14,13 +14,13 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
-HOMEPAGE="https://www.imagemagick.org/"
+HOMEPAGE="https://imagemagick.org/index.php"
 
 LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.

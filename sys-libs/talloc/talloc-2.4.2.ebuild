@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 inherit waf-utils python-single-r1 multilib-minimal
 
@@ -13,7 +13,7 @@ SRC_URI="https://www.samba.org/ftp/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3+ LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 IUSE="compat +python test valgrind"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

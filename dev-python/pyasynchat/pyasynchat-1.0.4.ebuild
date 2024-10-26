@@ -16,10 +16,17 @@ HOMEPAGE="
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/pyasyncore-1.0.2[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-python/test[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests unittest

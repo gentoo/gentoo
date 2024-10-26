@@ -85,7 +85,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="ada +cxx debug doc gpm minimal profile split-usr +stack-realign static-libs test tinfo trace"
 RESTRICT="!test? ( test )"
 
@@ -115,6 +115,10 @@ PATCHES=(
 	# For the same reasons, please include the original configure.in changes,
 	# NOT just the generated results!
 	"${WORKDIR}"/${GENTOO_PATCH_NAME}
+
+	# Avoid breakage with CHOST ending in t64
+	"${FILESDIR}"/ncurses-6.4-t64-1.patch
+	"${FILESDIR}"/ncurses-6.4-t64-2.patch
 )
 
 src_unpack() {

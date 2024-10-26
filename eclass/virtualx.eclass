@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -6,16 +6,16 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Original author: Martin Schlemmer <azarah@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: This eclass can be used for packages that need a working X environment to build.
-
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_VIRTUALX_ECLASS} ]]; then
 _VIRTUALX_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @PRE_INHERIT
@@ -32,15 +32,15 @@ _VIRTUALX_ECLASS=1
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Standard dependencies string that is automatically added to BDEPEND
-# (in EAPI-6: DEPEND) unless VIRTUALX_REQUIRED is set to "manual".
+# unless VIRTUALX_REQUIRED is set to "manual".
 # DEPRECATED: Pre-EAPI-8 you can specify the variable BEFORE inherit
 # to add more dependencies.
-[[ ${EAPI} != [67] ]] && VIRTUALX_DEPEND=""
+[[ ${EAPI} != 7 ]] && VIRTUALX_DEPEND=""
 VIRTUALX_DEPEND+="
 	x11-base/xorg-server[xvfb]
 	x11-apps/xhost
 "
-[[ ${EAPI} != [67] ]] && readonly VIRTUALX_DEPEND
+[[ ${EAPI} != 7 ]] && readonly VIRTUALX_DEPEND
 
 [[ ${VIRTUALX_COMMAND} ]] && die "VIRTUALX_COMMAND has been removed and is a no-op"
 
@@ -57,8 +57,6 @@ case ${VIRTUALX_REQUIRED} in
 			RESTRICT+=" !test? ( test )"
 		;;
 esac
-
-[[ ${EAPI} == 6 ]] && DEPEND="${BDEPEND}"
 
 
 # @FUNCTION: virtx
@@ -113,6 +111,7 @@ virtx() {
 	export XAUTHORITY=
 
 	einfo "Starting Xvfb ..."
+	addpredict /dev/dri/ # Needed for Xvfb w/ >=mesa-24.2.0
 
 	debug-print "${FUNCNAME}: Xvfb -displayfd 1 ${xvfbargs[*]}"
 	local logfile=${T}/Xvfb.log

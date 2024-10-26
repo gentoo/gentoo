@@ -1,16 +1,16 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A library with SDR DSP primitives"
-HOMEPAGE="http://git.osmocom.org/libosmo-dsp/"
+DESCRIPTION="Library with SDR DSP primitives"
+HOMEPAGE="https://gitea.osmocom.org/sdr/libosmo-dsp/"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.osmocom.org/${PN}"
+	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
 else
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"

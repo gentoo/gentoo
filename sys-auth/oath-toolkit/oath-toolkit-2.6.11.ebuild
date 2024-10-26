@@ -11,7 +11,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ~arm64 ~loong ppc64 ~riscv x86"
 IUSE="pam static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -27,12 +27,26 @@ BDEPEND="
 	test? ( dev-libs/libxml2 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-musl-build.patch" )
+
+# fpurge is from gnulib, and unused as of 2.6.11
 QA_CONFIG_IMPL_DECL_SKIP=(
 	MIN # glibc fp
-	unreachable
 	alignof
+	fpurge
 	static_assert
+	unreachable
 )
+
+src_prepare() {
+	default
+
+	# After patching, we have to fix the mtime on libpskc/global.c so
+	# that it doesn't cause Makefile.gdoc to be rebuilt so that it
+	# doesn't cause Makefile.in to be rebuilt so that it doesn't try to
+	# run automake-1.16.5 for no reason. Bug 936309.
+	touch --reference=libpskc/errors.c libpskc/global.c || die
+}
 
 src_configure() {
 	local myeconfargs=(

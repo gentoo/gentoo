@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
 	SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Cloud instance initialisation magic"
@@ -54,6 +54,12 @@ RDEPEND="
 	virtual/logger
 	selinux? ( sec-policy/selinux-cloudinit )
 "
+
+EPYTEST_IGNORE=(
+	# Can't find file
+	tests/unittests/config/test_apt_configure_sources_list_v1.py
+	tests/unittests/config/test_apt_configure_sources_list_v3.py
+)
 
 distutils_enable_tests pytest
 

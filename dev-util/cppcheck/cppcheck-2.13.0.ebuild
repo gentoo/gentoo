@@ -12,7 +12,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="charts gui qt6 htmlreport pcre test threads"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -75,10 +75,14 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.13.0-32-bit-tests.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
-	# Modify to an existing dockbook location
+	# Modify to an existing docbook location
 	sed -i \
 		-e "s|set(DB2MAN .*|set(DB2MAN \"${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl\")|" \
 		man/CMakeLists.txt || die

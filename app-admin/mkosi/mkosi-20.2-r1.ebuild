@@ -19,7 +19,7 @@ RDEPEND="
 	app-emulation/qemu
 	sys-apps/bubblewrap
 	sys-apps/systemd
-	|| ( sys-firmware/edk2-ovmf-bin sys-firmware/edk2-ovmf )"
+	|| ( sys-firmware/edk2-bin sys-firmware/edk2 )"
 BDEPEND="virtual/pandoc"
 
 distutils_enable_tests pytest

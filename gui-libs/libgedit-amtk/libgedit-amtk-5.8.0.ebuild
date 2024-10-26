@@ -11,7 +11,7 @@ SRC_URI="https://gedit-technology.net/tarballs/libgedit-amtk/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="5/0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+introspection gtk-doc"
 
 RDEPEND="

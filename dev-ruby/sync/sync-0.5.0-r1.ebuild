@@ -19,7 +19,7 @@ SRC_URI="https://github.com/ruby/sync/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 
 all_ruby_prepare() {
 	eapply "${DISTDIR}/${P}-mjit.patch"

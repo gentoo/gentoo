@@ -1,0 +1,43 @@
+https://github.com/Qalculate/qalculate-gtk/pull/552
+
+From 5ac0d4264bdec99776fa27f9b6adeeb4965ab8d6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Oct 2024 08:34:21 +0100
+Subject: [PATCH] searchprovider: don't use conflicting type for
+ simplified_percentage
+
+Fixes the following warning with LTO:
+```
+interface.cc:186:13: error: type of 'simplified_percentage' does not match original declaration [-Werror=lto-type-mismatch]
+  186 | extern bool simplified_percentage;
+      |             ^
+callbacks.cc:231:5: note: type 'int' should match type 'bool'
+  231 | int simplified_percentage = -1;
+      |     ^
+```
+
+Bug: https://bugs.gentoo.org/940927
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/searchprovider.cc
++++ b/src/searchprovider.cc
+@@ -366,7 +366,7 @@ void load_preferences_search() {
+ 	search_ignore_locale = false;
+ 	search_adaptive_interval_display = true;
+ 
+-	bool simplified_percentage = true;
++	int simplified_percentage = 1;
+ 
+ 	CALCULATOR->useIntervalArithmetic(true);
+ 	CALCULATOR->useBinaryPrefixes(0);
+
+--- a/src/interface.cc
++++ b/src/interface.cc
+@@ -183,7 +183,7 @@ extern bool caret_as_xor;
+ extern int close_with_esc;
+ extern int visible_keypad;
+ extern bool auto_calculate, chain_mode;
+-extern bool simplified_percentage;
++extern int simplified_percentage;
+ extern bool complex_angle_form;
+ extern bool check_version;
+ extern int max_plot_time;

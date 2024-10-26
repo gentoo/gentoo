@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/luke-jr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
@@ -53,4 +53,6 @@ src_install() {
 		# It's hard to control this directory with multilib_is_native_abi && use tools, hence -f.
 		rm -rf "${ED}/TRASH" || die
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

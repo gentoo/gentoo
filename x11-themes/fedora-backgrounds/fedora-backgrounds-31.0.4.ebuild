@@ -10,9 +10,10 @@ MY_PN="f$(ver_cut 1)-backgrounds"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="https://github.com/fedoradesign/backgrounds/releases/download/v${PV}/${MY_P}.tar.xz"
 
+S="${WORKDIR}/${MY_PN}"
+
 # Review on each bump, files Attribution*
 LICENSE="CC-BY-4.0 CC-BY-SA-4.0 CC0-1.0 Free-Art-1.3"
 
-KEYWORDS="amd64 x86"
 SLOT="$(ver_cut 1)"
-S="${WORKDIR}/${MY_PN}"
+KEYWORDS="amd64 x86"

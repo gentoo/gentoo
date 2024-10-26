@@ -33,7 +33,7 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jpakkane.gpg
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -94,6 +94,10 @@ python_prepare_all() {
 
 	# Broken due to python2 script created by python_wrapper_setup
 	rm -r "test cases/frameworks/1 boost" || die
+	# nvcc breaks on essentially any LDFLAGS
+	# https://bugs.gentoo.org/936757
+	# https://github.com/mesonbuild/meson/issues/11234
+	rm -r "test cases/cuda"/* || die
 
 	# The 1.4.2 tarball accidentally contains some untracked files from git master:
 	# - subprojects/bar-0.1/Cargo.toml

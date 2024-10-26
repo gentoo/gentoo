@@ -11,7 +11,7 @@ SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~x86"
+KEYWORDS="amd64 arm ~arm64 ~m68k ~mips ~s390 x86"
 IUSE="doc static-libs"
 
 DEPEND="

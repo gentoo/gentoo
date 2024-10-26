@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-utils.eclass
@@ -6,7 +6,7 @@
 # Ruby team <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for supporting ruby scripts and bindings in non-ruby packages
 # @DESCRIPTION:
 # The ruby-utils eclass is designed to allow an easier installation of
@@ -15,12 +15,13 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 
-case ${EAPI:-0} in
-	[5678]) ;;
+if [[ -z ${_RUBY_UTILS_ECLASS} ]] ; then
+_RUBY_UTILS_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_RUBY_UTILS} ]]; then
 
 # @ECLASS_VARIABLE: RUBY_TARGETS_PREFERENCE
 # @INTERNAL
@@ -32,10 +33,10 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 # provide for a better first installation experience.
 
 # All stable RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby31 "
+RUBY_TARGETS_PREFERENCE="ruby32 ruby31 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby32 ruby33"
+RUBY_TARGETS_PREFERENCE+="ruby33"
 
 _ruby_implementation_depend() {
 	local rubypn=
@@ -64,5 +65,4 @@ _ruby_implementation_depend() {
 	echo "$2${rubypn}$3${rubyslot}"
 }
 
-_RUBY_UTILS=1
 fi

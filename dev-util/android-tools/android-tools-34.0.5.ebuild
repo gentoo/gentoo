@@ -28,6 +28,7 @@ DEPEND="
 	app-arch/brotli:=
 	app-arch/lz4:=
 	app-arch/zstd:=
+	dev-cpp/abseil-cpp:=
 	dev-libs/libpcre2:=
 	>=dev-libs/protobuf-3.0.0:=
 	sys-libs/zlib:=
@@ -40,6 +41,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	dev-lang/go
 	dev-lang/perl
+	dev-libs/protobuf[protoc(+)]
 "
 
 DOCS=()

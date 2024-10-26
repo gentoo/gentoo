@@ -78,7 +78,7 @@ ACCT_GROUP_NAME=${PN}
 # << Boilerplate ebuild variables >>
 : "${DESCRIPTION:="System group: ${ACCT_GROUP_NAME}"}"
 : "${SLOT:=0}"
-: "${KEYWORDS:=~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris}"
+: "${KEYWORDS:=~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris}"
 S=${WORKDIR}
 
 
@@ -89,7 +89,7 @@ S=${WORKDIR}
 # Performs sanity checks for correct eclass usage, and early-checks
 # whether requested GID can be enforced.
 acct-group_pkg_pretend() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# verify ACCT_GROUP_ID
 	[[ -n ${ACCT_GROUP_ID} ]] || die "Ebuild error: ACCT_GROUP_ID must be set!"
@@ -131,7 +131,7 @@ acct-group_pkg_pretend() {
 # @DESCRIPTION:
 # Installs sysusers.d file for the group.
 acct-group_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# check for the override, use PN in case this is an overlay and
 	# ACCT_GROUP_NAME is not PN and not valid in a bash variable name
@@ -156,7 +156,7 @@ acct-group_src_install() {
 # @DESCRIPTION:
 # Creates the group if it does not exist yet.
 acct-group_pkg_preinst() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${EUID} -ne 0 || -n ${EPREFIX} ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"

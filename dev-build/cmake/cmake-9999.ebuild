@@ -47,9 +47,9 @@ else
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
 		)"
 
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
-		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20230817 )"
+		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20240902 )"
 	fi
 fi
 
@@ -101,7 +101,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0003-Prefer-pkgconfig-in-FindBLAS.patch
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0004-Ensure-that-the-correct-version-of-Qt-is-always-used.patch
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0005-Respect-Gentoo-s-Python-eclasses.patch
-	"${FILESDIR}"/${PN}-3.27.0_rc1-0006-Filter-out-distcc-warnings-to-avoid-confusing-CMake.patch
+	# Cuda
+	"${FILESDIR}/${PN}-3.30.3-cudahostld.patch"
 
 	# Upstream fixes (can usually be removed with a version bump)
 )
@@ -153,6 +154,14 @@ src_prepare() {
 		sed -i -e '/define CMAKE_USE_XCODE/s/XCODE/NO_XCODE/' \
 			-e '/cmGlobalXCodeGenerator.h/d' \
 			Source/cmake.cxx || die
+		# Disable system integration, bug #933744
+		sed -i -e 's/__APPLE__/__DISABLED__/' \
+			Source/cmFindProgramCommand.cxx \
+			Source/CPack/cmCPackGeneratorFactory.cxx || die
+		sed -i -e 's/__MAC_OS_X_VERSION_MIN_REQUIRED/__DISABLED__/' \
+			Source/cmMachO.cxx || die
+		sed -i -e 's:CPack/cmCPack\(Bundle\|DragNDrop\|PKG\|ProductBuild\)Generator.cxx::' \
+			Source/CMakeLists.txt || die
 
 		# Disable isysroot usage with GCC, we've properly instructed
 		# where things are via GCC configuration and ldwrapper

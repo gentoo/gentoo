@@ -1,0 +1,54 @@
+From a824da365964aa57dc7f735d1887be4a3c6c5b71 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 28 Sep 2024 19:24:35 +0100
+Subject: [PATCH] Clang doesn't support these flags
+
+---
+ build/modes/debug.mk   |  2 +-
+ build/modes/release.mk | 13 ++++++-------
+ 2 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/build/modes/debug.mk b/build/modes/debug.mk
+index 4b857dc576..1ded5e7ec7 100644
+--- a/build/modes/debug.mk
++++ b/build/modes/debug.mk
+@@ -6,7 +6,7 @@ endif
+ 
+ ifeq ($(SSE),1) # Not all -O options are working with sse
+   ifneq ($(filter -O2 -O3 -O4 -Ofast,$(CFLAGS)),)
+-    CFLAGS += -O1 -fthread-jumps -falign-functions -falign-jumps -falign-loops -falign-labels -fcaller-saves -fcrossjumping -fcse-skip-blocks -fdelete-null-pointer-checks -fexpensive-optimizations -fgcse-lm -foptimize-sibling-calls -fpeephole2 -fregmove -freorder-blocks -freorder-functions -frerun-cse-after-loop -fsched-interblock -fsched-spec -fschedule-insns2 -fstrict-overflow -ftree-pre -ftree-vrp
++    CFLAGS += -O1 -falign-functions -fdelete-null-pointer-checks -foptimize-sibling-calls -fsched-interblock -fschedule-insns2 -fstrict-overflow
+   endif
+   ifneq ($(filter -O3 -O4 -Ofast,$(CFLAGS)),)
+     CFLAGS += -finline-functions -funswitch-loops -fpredictive-commoning -fgcse-after-reload -ftree-vectorize -fno-strict-aliasing
+diff --git a/build/modes/release.mk b/build/modes/release.mk
+index 81dc21e24e..e166d8e902 100644
+--- a/build/modes/release.mk
++++ b/build/modes/release.mk
+@@ -9,17 +9,16 @@ ifeq ($(TARGET_ARCH),i386)
+ endif
+ 
+ ifeq ($(TARGET_ARCH),x86_64)
+-  CFLAGS += -fexpensive-optimizations -fno-strict-aliasing
++  CFLAGS += -fno-strict-aliasing
+ endif
+ 
+ ifeq ($(SSE),1) # Not all -O options are working with sse
+   ifneq ($(filter -O2 -O3 -O4 -Ofast,$(CFLAGS)),)
+-    CFLAGS += -O1 -fthread-jumps -falign-functions -falign-jumps -falign-loops
+-    CFLAGS += -falign-labels -fcaller-saves -fcrossjumping -fcse-skip-blocks
+-    CFLAGS += -fdelete-null-pointer-checks -fexpensive-optimizations -fgcse-lm
+-    CFLAGS += -foptimize-sibling-calls -fpeephole2 -fregmove -freorder-blocks
+-    CFLAGS += -freorder-functions -frerun-cse-after-loop -fsched-interblock
+-    CFLAGS += -fsched-spec -fschedule-insns2 -fstrict-overflow -ftree-pre -ftree-vrp
++    CFLAGS += -O1 -falign-functions
++    CFLAGS += -fdelete-null-pointer-checks
++    CFLAGS += -foptimize-sibling-calls
++    CFLAGS += -fsched-interblock
++    CFLAGS += -fstrict-overflow
+   endif
+   ifneq ($(filter -O3 -O4 -Ofast,$(CFLAGS)),)
+     CFLAGS += -finline-functions -funswitch-loops -fpredictive-commoning
+-- 
+2.46.0
+

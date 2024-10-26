@@ -16,6 +16,8 @@
 		for faster binaries. This option will double the compile time.</flag>
 	<flag name="pulseaudio">Add sound server support via media-libs/libpulse (may be PulseAudio or
 		Pipewire, or apulse if installed)</flag>
+	<flag name="rust-extensions">Compile and install experimental rust extensions, that may become
+		part of Thunderbird some day.</flag>
 	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
 		and <pkg>media-libs/libaom</pkg> library instead of bundled.</flag>

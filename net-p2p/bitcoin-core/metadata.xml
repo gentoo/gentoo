@@ -22,7 +22,8 @@
 		<flag name="sqlite">Support descriptor wallets in SQLite format</flag>
 		<flag name="system-leveldb">Link with <pkg>virtual/bitcoin-leveldb</pkg> rather than embedding an internal copy</flag>
 		<flag name="system-libsecp256k1">Link with <pkg>dev-libs/libsecp256k1</pkg> rather than embedding an internal copy</flag>
-		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
+		<flag name="test-full">Run tests that take a long time</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="zeromq">Report blocks and transactions via zeromq</flag>
 	</use>

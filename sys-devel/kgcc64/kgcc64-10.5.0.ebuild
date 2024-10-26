@@ -20,7 +20,6 @@ PATCH_VER="6"
 MUSL_VER="2"
 MUSL_GCC_VER="10.5.0"
 GCC_TARGET_NO_MULTILIB=true
-PYTHON_COMPAT=( python3_{10..12} )
 
 inherit toolchain
 

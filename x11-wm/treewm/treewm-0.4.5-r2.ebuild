@@ -38,7 +38,7 @@ src_compile() {
 		CXX="$(tc-getCXX)" \
 		CCOPTIONS="${CFLAGS}" \
 		EXTRA_LDOPTIONS="${LDFLAGS}" \
-		PREFIX="/usr" ROOT="${D}"
+		PREFIX="/usr"
 }
 
 src_install() {

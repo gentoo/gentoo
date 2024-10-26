@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{9..13} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
 inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="8"
+SLOT="9"
 IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -71,19 +71,11 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
-	"${FILESDIR}/${PN}-6.8-boost-1.85.patch"
 )
 
 pkg_pretend() {
 	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
 		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
-}
-
-pkg_setup() {
-	if has_version \>=dev-libs/libsigc++-2.6 ; then
-		append-cxxflags -std=c++11
-	fi
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {
@@ -146,6 +138,7 @@ src_configure() {
 		--freedesktop
 		--noconfirm
 		--optimize
+		--no-ytk
 		--with-backends=${backends}
 		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
 			echo '' || echo "--no-fpu-optimization")

@@ -16,7 +16,7 @@ HOMEPAGE="https://hackage.haskell.org/package/text-short"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="debug"
 
 RDEPEND="

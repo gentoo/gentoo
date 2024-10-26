@@ -46,7 +46,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-no-automagic.patch"
 	"${FILESDIR}/${PN}-9999-htmldir.patch"
 	"${FILESDIR}/${PN}-9999-desktop.patch"
-	"${FILESDIR}/${PN}-9999-fix-build-with-lld.patch"
 )
 
 src_prepare() {

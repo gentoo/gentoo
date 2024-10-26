@@ -30,7 +30,7 @@ IUSE="python ruby static-libs ruby_targets_ruby31 ruby_targets_ruby32 ruby_targe
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}]
-	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
+	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP},static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		ruby_targets_ruby31? ( dev-lang/ruby:3.1 )

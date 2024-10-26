@@ -58,9 +58,7 @@ src_prepare() {
 }
 
 src_configure() {
-	addpredict /dev/random
-	addpredict /dev/kfd
-	addpredict /dev/dri/
+	rocm_use_hipcc
 
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
@@ -86,7 +84,7 @@ src_configure() {
 		)
 	fi
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_compile() {

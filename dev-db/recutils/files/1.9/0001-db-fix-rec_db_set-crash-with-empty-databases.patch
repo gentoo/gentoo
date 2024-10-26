@@ -1,0 +1,70 @@
+From 9f08064fef75ce02df9b6133d240c0fa84df458e Mon Sep 17 00:00:00 2001
+Message-ID: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+From: "Jose E. Marchesi" <jose.marchesi@oracle.com>
+Date: Mon, 25 Apr 2022 09:32:09 +0200
+Subject: [PATCH 01/10] db: fix rec_db_set crash with empty databases
+
+2022-04-25  Jose E. Marchesi  <jemarch@gnu.org>
+
+	* src/rec-db.c (rec_db_set): Avoid segfault with databases with no
+	record sets.
+	* torture/utils/recset.sh: New test.
+---
+ ChangeLog               | 6 ++++++
+ src/rec-db.c            | 2 +-
+ torture/utils/recset.sh | 8 ++++++++
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index eb79621..5527ba2 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,9 @@
++2022-04-25  Jose E. Marchesi  <jemarch@gnu.org>
++
++	* src/rec-db.c (rec_db_set): Avoid segfault with databases with no
++	record sets.
++	* torture/utils/recset.sh: New test.
++
+ 2022-04-16  Jose E. Marchesi  <jemarch@gnu.org>
+ 
+ 	* configure.ac: Bump version to 1.9.
+diff --git a/src/rec-db.c b/src/rec-db.c
+index 1d91441..e90a734 100644
+--- a/src/rec-db.c
++++ b/src/rec-db.c
+@@ -1431,7 +1431,7 @@ bool rec_db_set (rec_db_t    db,
+       rset = rec_db_get_rset (db, 0);
+ 
+   /* Don't process empty record sets.  */
+-  if (rec_rset_num_records (rset) == 0)
++  if (!rset || rec_rset_num_records (rset) == 0)
+     return true;
+ 
+   /* If the user requested to manipulate random records then calculate
+diff --git a/torture/utils/recset.sh b/torture/utils/recset.sh
+index f44ee59..d73d530 100755
+--- a/torture/utils/recset.sh
++++ b/torture/utils/recset.sh
+@@ -98,10 +98,18 @@ field2: value32
+ field3: value33
+ '
+ 
++test_declare_input_file empty ''
++
+ #
+ # Declare tests.
+ #
+ 
++test_tool recset-empty ok \
++          recset \
++          '' \
++          empty \
++          ''
++
+ test_tool recset-append-field ok \
+           recset \
+           '-n 0 -f foo -a bar' \
+-- 
+2.46.2
+

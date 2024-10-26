@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Perl extensions for keeping data partially sorted"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"

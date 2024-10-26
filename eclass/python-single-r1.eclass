@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-single-r1.eclass
@@ -42,7 +42,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
+if [[ -z ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 _PYTHON_SINGLE_R1_ECLASS=1
 
 if [[ ${_PYTHON_R1_ECLASS} ]]; then
@@ -269,7 +269,7 @@ unset -f _python_single_set_globals
 # REQUIRED_USE="doc? ( ^^ ( python_single_target_python2_7 ) )"
 # @CODE
 python_gen_useflags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -313,7 +313,7 @@ python_gen_useflags() {
 #     dev-python/unittest2[python_targets_pypy(-)?,...] )"
 # @CODE
 python_gen_cond_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -367,7 +367,7 @@ python_gen_cond_dep() {
 #     dev-python/pypy[xml(+)] ) )"
 # @CODE
 python_gen_impl_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl
 	local matches=()
@@ -392,7 +392,8 @@ python_gen_impl_dep() {
 # Determine what the selected Python implementation is and set
 # the Python build environment up for it.
 python_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
+	_python_sanity_checks
 
 	unset EPYTHON
 
@@ -447,7 +448,7 @@ python_setup() {
 # @DESCRIPTION:
 # Runs python_setup.
 python-single-r1_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }

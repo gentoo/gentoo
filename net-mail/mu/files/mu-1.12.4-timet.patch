@@ -1,0 +1,34 @@
+From 075394b35f33bcf684eb0b0023a8640a3ce9c8f5 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Mon, 26 Aug 2024 14:46:54 +0000
+Subject: [PATCH] lib: use time_t_max for empty datetime
+
+In Mu::parse_date_time, when provided with an empty string, return
+time_t_max instead of G_MAXINT64. For systems with a 64-bit time_t, there
+is no difference. With a 32-bit time_t it caused a test to fail:
+
+    not ok /utils/date-basic - ERROR:../mu-1.12.4/lib/utils/tests/test-utils.cc:92
+    void test_date_basic(): assertion failed
+    (parse_date_time(std::get<0>(test), std::get<1>(test)).value_or(-1)
+      == std::get<2>(test)): (18446744073709551615 == 2147483647)
+
+This edge case probably only affected the test, as when other parts of
+the application call parse_date_time (e.g. mu-server.cc and
+mu-query-processor.cc), they check if the input string is empty first.
+
+Upstream: https://github.com/djcb/mu/pull/2749
+Bug: https://bugs.gentoo.org/933093
+--- a/lib/utils/mu-utils.cc
++++ b/lib/utils/mu-utils.cc
+@@ -493,7 +493,7 @@ Mu::parse_date_time(const std::string& dstr, bool is_first, bool utc)
+ 
+ 	/* one-sided dates */
+ 	if (dstr.empty())
+-		return is_first ? 0 : G_MAXINT64;
++		return is_first ? time_t_min : time_t_max;
+ 	else if (dstr == "today" || dstr == "now")
+ 		return special_date_time(dstr, is_first);
+ 	else if (dstr.find_first_of("ymdwhMs") != std::string::npos)
+-- 
+2.46.0
+

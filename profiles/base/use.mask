@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-21)
+# Mechanism for coping with the time64 transition of 32bit arches
+# Will be unmasked in the time64 profiles
+perl_features_time64
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-01)
 # PERL_FEATURES=debug is not a setting that should be used lightly.
 # If you really need it, then unmask it...

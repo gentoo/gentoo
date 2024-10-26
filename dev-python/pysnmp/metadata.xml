@@ -27,6 +27,6 @@
 	<upstream>
 		<remote-id type="pypi">pysnmp</remote-id>
 		<remote-id type="sourceforge">pysnmp</remote-id>
-		<remote-id type="github">etingof/pysnmp</remote-id>
+		<remote-id type="github">lextudio/pysnmp</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,24 +4,25 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-13)
-# Building with qt6 requires (masked) kde-frameworks:6
-app-admin/calamares qt6
-app-crypt/pinentry qt6
+# Michał Górny <mgorny@gentoo.org> (2024-10-26)
+# Unblock the support in python-exec while the target is masked.
+dev-lang/python-exec -python_targets_python3_13
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-14)
-# Qt6 dependencies are not yet available in stable. Moreover,
-# Qt6 support in freecad is not completely finished.
-media-gfx/freecad qt6
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-10-11)
+# No suitable version of dev-libs/protobuf available.
+=dev-java/protobuf-java-4.28.1 system-protoc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# Pin down kf6compat mask to currently stable versions.
+<kde-apps/kio-extras-24.02.2-r2 kf6compat
+<kde-frameworks/kglobalaccel-5.116.0-r1 kf6compat
+<kde-frameworks/kguiaddons-5.116.0-r1 kf6compat
+<kde-frameworks/kwallet-5.116.0-r1 kf6compat
 
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
 # Calendar is broken with some languages on 115.0 release with <icu-75.
 # Bug #910229, #920713
 >=mail-client/thunderbird-115.0 system-icu
-
-# Sam James <sam@gentoo.org> (2023-10-23)
-# Requires llvm-17.
->=www-client/chromium-118 libcxx lto pgo
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-11)
 # xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
@@ -184,18 +185,9 @@ net-analyzer/wireshark doc
 # Bugs #649408, #641108, #640724
 dev-perl/DBD-SQLite system-sqlite
 
-# Andrey Grozin <grozin@gentoo.org> (2018-01-24)
-# Depends on unstable dev-python/sphinx-gallery.
-# Bug #643840.
-dev-python/matplotlib doc
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2017-11-27)
 # Dependencies have no stable keyword
 app-backup/backup-manager s3
-
-# Brian Evans <grknight@gentoo.org> (2017-11-06)
-# Requires stable phpunit
-dev-php/PEAR-Text_Password test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit java-pkg-opt-2 python-r1 toolchain-funcs
 
@@ -31,6 +31,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.25-openmp.patch
 	"${FILESDIR}"/${PN}-3.30-makefile.patch
+	"${FILESDIR}"/${PN}-3.30-javaMakefile.patch
 )
 
 pkg_pretend() {
@@ -43,6 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	java-pkg_clean
 
 	sed -i -e "s@\.\./@${EPREFIX}/usr/bin/@g" tools/*.py \
 		|| die "Failed to fix paths in python files"
@@ -50,16 +52,10 @@ src_prepare() {
 		|| die "Failed to fix paths for svm-grid"
 	sed -i -e 's/grid.py/svm-grid/g' tools/grid.py \
 		|| die "Failed to rename grid.py to svm-grid"
-
-	if use java; then
-		local JAVAC_FLAGS="$(java-pkg_javac-args)"
-		sed -i \
-			-e "s/JAVAC_FLAGS =/JAVAC_FLAGS=${JAVAC_FLAGS}/g" \
-			java/Makefile || die "Failed to fix java makefile"
-	fi
 }
 
 src_configure() {
+	use java && export JAVAC_FLAGS="$(java-pkg_javac-args)"
 	if use openmp; then
 		export OPENMP_CFLAGS="-fopenmp -DOPENMP"
 		export OPENMP_LIBS="-fopenmp"

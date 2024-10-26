@@ -5,4 +5,7 @@
 		<email>virtualization@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gitlab">libvirt/libvirt</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,26 @@
+https://github.com/libffi/libffi/commit/38732240c125b6af9db66d940c0725a69292cc49
+
+From 38732240c125b6af9db66d940c0725a69292cc49 Mon Sep 17 00:00:00 2001
+From: Bill Roberts <152999275+billatarm@users.noreply.github.com>
+Date: Sat, 1 Jun 2024 12:33:28 -0500
+Subject: [PATCH] ffi: fix spelling mistake (#833)
+
+Signed-off-by: Bill Roberts <bill.roberts@arm.com>
+---
+ src/aarch64/ffi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/aarch64/ffi.c b/src/aarch64/ffi.c
+index 8661a352..b13738e3 100644
+--- a/src/aarch64/ffi.c
++++ b/src/aarch64/ffi.c
+@@ -682,7 +682,7 @@ ffi_call_int (ffi_cif *cif, void (*fn)(void), void *orig_rvalue,
+   else if (flags & AARCH64_RET_NEED_COPY)
+     rsize = 16;
+ 
+-  /* Allocate consectutive stack for everything we'll need.
++  /* Allocate consecutive stack for everything we'll need.
+      The frame uses 40 bytes for: lr, fp, rvalue, flags, sp */
+   context = alloca (sizeof(struct call_context) + stack_bytes + 40 + rsize);
+   stack = context + 1;
+

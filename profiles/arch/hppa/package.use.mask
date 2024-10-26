@@ -4,6 +4,26 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Felix Janda <felix.janda@posteo.de> (2024-10-20)
+# requires dev-libs/libcss and net-libs/libdom to be keyworded
+www-client/elinks libcss
+
+# Yongxiang Liang <tanekliang@gentoo.org> (2024-10-10)
+# app-i18n/fcitx:5 is not yet keyworded
+media-libs/libsdl2 fcitx
+
+# David Roman <davidroman96@gmail.com> (2024-10-04)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
@@ -11,12 +31,6 @@ media-video/ffmpeg quirc liblc3
 # Sam James <sam@gentoo.org> (2024-07-03)
 # kde-frameworks/kservice not keyworded here
 x11-misc/xdg-utils plasma
-
-# Sam James <sam@gentoo.org> (2024-06-19)
-# The systemd implementation of installkernel doesn't currently support
-# updating the 'initramfs.img' and 'vmlinuz' symlinks that palo needs,
-# and palo is the only bootloader for HPPA.
-sys-kernel/installkernel systemd
 
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
@@ -71,14 +85,11 @@ dev-qt/qtgui vulkan
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Sam James <sam@gentoo.org> (2023-09-24)
 # Qt not keyworded here.
 app-text/doxygen gui
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-18)
 # x11-libs/gtksourceview:4 not keyworded here
@@ -264,7 +275,7 @@ dev-libs/efl avif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay zink
+media-libs/mesa video_cards_zink vulkan vulkan-overlay
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording

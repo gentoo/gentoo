@@ -12,7 +12,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

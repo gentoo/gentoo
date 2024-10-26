@@ -13,6 +13,6 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">entangle/entangle</remote-id>
+		<remote-id type="gitlab">entangle/entangle</remote-id>
 	</upstream>
 </pkgmetadata>

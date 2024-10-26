@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">dav-text</remote-id>
+		<remote-id type="github">atsb/dav-text</remote-id>
 	</upstream>
 </pkgmetadata>

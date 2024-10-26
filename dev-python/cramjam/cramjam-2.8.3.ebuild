@@ -204,12 +204,6 @@ src_test() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=(
-		# random health check failures
-		# https://github.com/milesgranger/cramjam/issues/141
-		tests/test_variants.py::test_variants_different_dtypes
-	)
-
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest tests
 }

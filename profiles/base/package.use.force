@@ -1,11 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (2024-06-29)
-# Disabling GIL (enabling freethreading) is experimental and prone
-# to break packages.  Should you choose to test it, please do not file
-# Gentoo bugs and report any issues you hit upstream.
-dev-lang/python gil
+# Sam James <sam@gentoo.org> (2024-09-30)
+# gnat-gpl only exists for (bootstrapping) Ada. Until bug #940471 is handled,
+# force Ada on. Once it is split/moved/gutted, this won't be necessary
+# as it'll always build Ada.
+dev-lang/gnat-gpl ada cxx
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215).
@@ -230,7 +230,6 @@ sys-firmware/seabios binary
 net-analyzer/snort libtirpc
 net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
-sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
@@ -254,6 +253,7 @@ dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_python3_13
+dev-lang/python-exec python_targets_python3_13t
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

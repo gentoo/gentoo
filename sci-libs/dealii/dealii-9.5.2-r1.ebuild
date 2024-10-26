@@ -85,7 +85,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/doxygen[dot] dev-lang/perl )"
 
 BDEPEND="
-	verify-sig? ( sec-keys/openpgp-keys-dealii )"
+	verify-sig? ( <=sec-keys/openpgp-keys-dealii-20230904 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.2-base-mpi.cc-remove-superfluous-explicit-instantiatio.patch

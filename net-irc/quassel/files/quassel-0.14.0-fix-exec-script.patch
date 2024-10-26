@@ -1,0 +1,31 @@
+https://github.com/quassel/quassel/pull/609
+
+From 247d7fe0a99a4e2a1c1b861455062c5630428492 Mon Sep 17 00:00:00 2001
+From: Max Audron <audron@cocaine.farm>
+Date: Tue, 18 Oct 2022 15:04:17 +0200
+Subject: [PATCH] fix client execwrapper not using full path to script
+
+The clients execwrapper was using the scriptName instead of the full
+path fileName to execute scripts leading to scripts only being found and
+executed if the script directory was also in $PATH or a executable with
+the same name as the script was in $PATH.
+
+This could also lead to confusion as it executes whatever is in $PATH
+instead of the actual script in quassels directories.
+---
+ src/client/execwrapper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/client/execwrapper.cpp b/src/client/execwrapper.cpp
+index 5cbecf675..6ec519c4d 100644
+--- a/src/client/execwrapper.cpp
++++ b/src/client/execwrapper.cpp
+@@ -73,7 +73,7 @@ void ExecWrapper::start(const BufferInfo& info, const QString& command)
+             if (!QFile::exists(fileName))
+                 continue;
+             _process.setWorkingDirectory(scriptDir);
+-            _process.start(_scriptName, params);
++            _process.start(fileName, params);
+             return;
+         }
+         emit error(tr("Could not find script \"%1\"").arg(_scriptName));

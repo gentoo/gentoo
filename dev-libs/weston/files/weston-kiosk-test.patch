@@ -1,0 +1,53 @@
+From 4d5224027c941224eb9a7aaa71c949558f2b4796 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 6 Sep 2024 23:15:05 +0100
+Subject: [PATCH] tests: Make the kiosk test dependent on the shell-kiosk
+ option
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ tests/meson.build | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 45b475c3..4b52cb29 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -180,14 +180,6 @@ tests = [
+ 			input_timestamps_unstable_v1_protocol_c,
+ 		],
+ 	},
+-	{
+-		'name': 'kiosk-shell',
+-		'sources': [
+-			'kiosk-shell-test.c',
+-			xdg_shell_client_protocol_h,
+-			xdg_shell_protocol_c,
+-		],
+-        },
+ 	{
+ 		'name': 'linux-explicit-synchronization',
+ 		'sources': [
+@@ -427,6 +419,19 @@ if get_option('shell-ivi')
+ 	]
+ endif
+ 
++if get_option('shell-kiosk')
++	tests += [
++		{
++			'name': 'kiosk-shell',
++			'sources': [
++				'kiosk-shell-test.c',
++				xdg_shell_client_protocol_h,
++				xdg_shell_protocol_c,
++			],
++		},
++	]
++endif
++
+ test_config_h = configuration_data()
+ test_config_h.set_quoted('WESTON_TEST_REFERENCE_PATH', meson.current_source_dir() + '/reference')
+ test_config_h.set_quoted('WESTON_MODULE_MAP', env_modmap)
+-- 
+2.46.0
+

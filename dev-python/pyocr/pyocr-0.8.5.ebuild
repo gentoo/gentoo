@@ -17,11 +17,10 @@ HOMEPAGE="
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuneiform +tesseract"
-REQUIRED_USE="|| ( cuneiform tesseract )"
 
 RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
+	app-text/tesseract
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
@@ -29,8 +28,3 @@ BDEPEND="
 
 # (tests apparently do not require any backend installed)
 distutils_enable_tests unittest
-
-RDEPEND+="
-	cuneiform? ( app-text/cuneiform )
-	tesseract? ( app-text/tesseract )
-"

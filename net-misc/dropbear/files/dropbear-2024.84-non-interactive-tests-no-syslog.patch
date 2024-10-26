@@ -1,0 +1,13 @@
+Force tests to be non-interactive
+
+--- a/test/test_dropbear.py
++++ b/test/test_dropbear.py
+@@ -23,7 +23,7 @@
+ 	args = opt.dropbear.split() + [
+ 		"-p", LOCALADDR + ":" + opt.port, # bind locally only
+ 		"-r", opt.hostkey,
+-		"-F", "-E",
++		"-F", "-s",
+ 		]
+ 	print("subprocess args: ", args)
+ 

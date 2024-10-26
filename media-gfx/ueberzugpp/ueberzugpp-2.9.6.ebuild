@@ -54,10 +54,9 @@ BDEPEND="
 "
 
 src_configure() {
-	if use X && tc-is-clang && has_version sys-libs/libcxx; then
+	if use X && [[ $(tc-get-cxx-stdlib) == libc++ ]]; then
 		# X support makes use of C++20's std::jthread which is currently
-		# marked experimental (at least) in <=libcxx-18 (should limit
-		# version in above libcxx check whenever this becomes unnecessary)
+		# marked experimental (at least) in <=libcxx-18
 		append-cxxflags $(test-flags-CXX -fexperimental-library)
 	fi
 

@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${P}"
 else
 	SRC_URI="https://github.com/SELinuxProject/setools/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~riscv"
 	S="${WORKDIR}/${PN}"
 fi
 
@@ -39,6 +39,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-python/cython-0.29.14[${PYTHON_USEDEP}]
 	test? (
+		dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		sys-apps/checkpolicy
 	)"
 

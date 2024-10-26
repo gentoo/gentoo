@@ -11,7 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 	S=${WORKDIR}/${P}/source
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/x265-3.3-ppc64.patch"
 	"${FILESDIR}/tests.patch"
 	"${FILESDIR}/test-ns.patch"
+	"${FILESDIR}/${PN}-3.5-r5-test-ns_2.patch"
 )
 
 src_unpack() {

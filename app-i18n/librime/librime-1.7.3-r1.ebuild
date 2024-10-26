@@ -1,4 +1,4 @@
-# Copyright 2012-2023 Gentoo Authors
+# Copyright 2012-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -44,6 +44,7 @@ DOCS=(CHANGELOG.md README.md)
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.6.0-boost-1.76.patch"
+	eapply "${FILESDIR}/${PN}-1.7.3-boost-1.85.patch"
 
 	# Use headers of dev-libs/darts, dev-libs/utfcpp and x11-base/xorg-proto.
 	sed -e "/\${PROJECT_SOURCE_DIR}\/thirdparty/d" -i CMakeLists.txt || die

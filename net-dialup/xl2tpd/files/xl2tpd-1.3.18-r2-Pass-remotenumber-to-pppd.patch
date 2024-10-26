@@ -1,0 +1,116 @@
+From b81956418ca6590d8c3b1a6758dccc0f2f05eb54 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Tue, 18 Oct 2022 12:46:11 +0200
+Subject: [PATCH] Pass remotenumber to pppd.
+
+By default this will be the IP address of the remote peer, but it could
+be the remote's number as provided by way of AVP should the newly added
+'trust remotenumber' LNS option be set to yes.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ doc/l2tpd.conf.sample |  1 +
+ doc/xl2tpd.conf.5     |  6 ++++++
+ file.c                | 17 +++++++++++++++++
+ file.h                |  1 +
+ xl2tpd.c              |  8 ++++++++
+ 5 files changed, 33 insertions(+)
+
+diff --git a/doc/l2tpd.conf.sample b/doc/l2tpd.conf.sample
+index 8f8fcb5..f6f0359 100644
+--- a/doc/l2tpd.conf.sample
++++ b/doc/l2tpd.conf.sample
+@@ -47,6 +47,7 @@
+ ; rx bps = 10000000				; Receive tunnel speed
+ ; tx bps = 10000000				; Transmit tunnel speed
+ ; bps = 100000					; Define both receive and transmit speed in one option
++; trust remotenumber = no			; Trust dialing number AVP?
+ 
+ ; [lac marko]							; Example VPN LAC definition
+ ; lns = lns.marko.net					; * Who is our LNS?
+diff --git a/doc/xl2tpd.conf.5 b/doc/xl2tpd.conf.5
+index 2b1acbc..173a453 100644
+--- a/doc/xl2tpd.conf.5
++++ b/doc/xl2tpd.conf.5
+@@ -175,6 +175,12 @@ This will enable the debug for pppd.
+ .B pass peer
+ Pass the peer's IP address to pppd as ipparam. Enabled by default.
+ 
++.TP
++.B trust remotenumber
++When this is set to yes xl2tpd will trust the dialing number AVP and provide
++that as the remotenumber to pppd rather than the peer's IP address.  Default is
++not trusted.
++
+ .TP 
+ .B pppoptfile
+ Specify the path for a file which contains pppd configuration parameters
+diff --git a/file.c b/file.c
+index 17dc377..29fcb66 100644
+--- a/file.c
++++ b/file.c
+@@ -676,6 +676,22 @@ int set_pass_peer (char *word, char *value, int context, void *item)
+     return 0;
+ }
+ 
++int set_trust_remotenumber (char *word, char *value, int context, void *item)
++{
++    switch (context & ~CONTEXT_DEFAULT)
++    {
++    case CONTEXT_LNS:
++        if (set_boolean (word, value, &(((struct lns *) item)->trust_remotenumber)))
++            return -1;
++        break;
++    default:
++        snprintf (filerr, sizeof (filerr), "'%s' not valid in this context\n",
++                  word);
++        return -1;
++    }
++    return 0;
++}
++
+ int set_pppoptfile (char *word, char *value, int context, void *item)
+ {
+     struct lac *l = (struct lac *) item;
+@@ -1611,6 +1627,7 @@ struct keyword words[] = {
+     {"hostname", &set_hostname},
+     {"ppp debug", &set_debug},
+     {"pass peer", &set_pass_peer},
++    {"trust remotenumber", &set_trust_remotenumber},
+     {"pppoptfile", &set_pppoptfile},
+     {"call rws", &set_rws},
+     {"tunnel rws", &set_rws},
+diff --git a/file.h b/file.h
+index a2707c2..9d76359 100644
+--- a/file.h
++++ b/file.h
+@@ -97,6 +97,7 @@ struct lns
+     int proxyauth;              /* Allow proxy authentication? */
+     int debug;                  /* Debug PPP? */
+     int pass_peer;              /* Pass peer IP to pppd as ipparam? */
++    int trust_remotenumber;     /* Whether or not to trust remotely supplied "Dialing Number" AVP */
+     char pppoptfile[STRLEN];    /* File containing PPP options */
+     struct tunnel *t;           /* Tunnel of this, if it's ready */
+ };
+diff --git a/xl2tpd.c b/xl2tpd.c
+index 3195988..b551146 100644
+--- a/xl2tpd.c
++++ b/xl2tpd.c
+@@ -495,6 +495,14 @@ int start_pppd (struct call *c, struct ppp_opts *opts)
+     }
+ 
+     {
++        stropt[pos++] = strdup("remotenumber");
++        if (c->dialing[0] && (!c->lns || c->lns->trust_remotenumber)) {
++            /* if a remotenumber is available, and we're a LAC or the remote "dialing number" AVP is trusted */
++            stropt[pos++] = strdup(c->dialing);
++        } else {
++            stropt[pos++] = strdup(IPADDY(c->container->peer.sin_addr));
++        }
++
+         struct ppp_opts *p = opts;
+         int maxn_opts = sizeof(stropt) / sizeof(stropt[0]) - 1;
+         while (p && pos < maxn_opts)
+-- 
+2.44.2
+

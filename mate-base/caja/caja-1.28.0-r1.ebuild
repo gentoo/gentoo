@@ -9,7 +9,7 @@ inherit flag-o-matic mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="Caja file manager for the MATE desktop"
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=dev-libs/libxml2-2.4.7:2
 	gnome-base/dconf
 	>=gnome-base/gvfs-1.10.1:0[udisks]
-	>=mate-base/mate-desktop-1.28.0
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	>=media-libs/libexif-0.6.14:0
 	virtual/libintl
 	x11-libs/cairo

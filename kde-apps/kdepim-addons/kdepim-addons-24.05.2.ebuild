@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kontact/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="importwizard markdown"
 
 RESTRICT="test"
@@ -67,6 +67,9 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		# not packaged (bug 911819), but if present leads to rust shenanigans
+		-DCMAKE_DISABLE_FIND_PACKAGE_Corrosion=ON # for adblock support, bug 940898
+		-DCMAKE_DISABLE_FIND_PACKAGE_KLLMCore=ON # utilities/alpaka, not packaged
 		$(cmake_use_find_package importwizard KPim6ImportWizard)
 		$(cmake_use_find_package markdown Discount)
 	)

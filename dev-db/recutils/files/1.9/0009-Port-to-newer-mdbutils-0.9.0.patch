@@ -1,0 +1,64 @@
+https://lists.gnu.org/archive/html/bug-recutils/2024-10/msg00002.html
+
+From 35c6919708e73d1dd3eba67813a7ab3f6f62477b Mon Sep 17 00:00:00 2001
+Message-ID: <35c6919708e73d1dd3eba67813a7ab3f6f62477b.1728191717.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Oct 2024 05:48:41 +0100
+Subject: [PATCH 09/10] Port to newer mdbutils (>=0.9.0)
+
+mdbutils-0.9.0 dropped mdb_init and mdb_exit, per NEWS:
+> The previously-deprecated functions mdb_init() and mdb_exit() have been
+> removed. These functions did nothing; any calls to them should be excised with
+> prejudice.
+
+2024-10-06  Sam James  <sam@gentoo.org>
+
+	* configure.ac: Check for mdb_backends_init instead of mdb_init.
+	* utils/mdb2rec.c: Drop <glib.h> include, as it conflicts with
+	libmdb's 'fakeglib'.
+	(process_mdb): Drop mdb_init call. Pass MdbHandle to mdb_set_date_fmt.
+---
+ configure.ac    | 2 +-
+ utils/mdb2rec.c | 4 +---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e0caa02..7e47b9d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -139,7 +139,7 @@ AC_ARG_ENABLE([mdb],
+               [mdb_enabled=$enableval], [mdb_enabled=yes])
+ have_mdb=no
+ AS_IF([test "x$mdb_enabled" = "xyes"], [
+-    AC_CHECK_LIB([mdb], [mdb_init], [have_mdb=yes], [])
++    AC_CHECK_LIB([mdb], [mdb_init_backends], [have_mdb=yes], [])
+     AS_IF([test "x$have_mdb" = "xyes"], [
+         MDBLIBS=-lmdb
+ 
+diff --git a/utils/mdb2rec.c b/utils/mdb2rec.c
+index 1e25397..5ee0369 100644
+--- a/utils/mdb2rec.c
++++ b/utils/mdb2rec.c
+@@ -26,7 +26,6 @@
+ #include <gettext.h>
+ #define _(str) gettext (str)
+ 
+-#include <glib.h>
+ #include <mdbtools.h>
+ 
+ #include <rec.h>
+@@ -428,8 +427,7 @@ process_mdb (void)
+     recutl_out_of_memory ();
+ 
+   /* Initialize libmdb and open the input file.  */
+-  mdb_init();
+-  mdb_set_date_fmt ("%Y-%m-%dT%H:%M:%S%z"); /* ISO 8601 */
++  mdb_set_date_fmt (mdb, "%Y-%m-%dT%H:%M:%S%z"); /* ISO 8601 */
+ 
+   mdb = mdb_open (mdb2rec_mdb_file, MDB_NOFLAGS);
+   if (!mdb)
+-- 
+2.46.2
+

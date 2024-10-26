@@ -21,15 +21,16 @@ if [[ ${PV} == *9999* ]]; then
 	RDEPEND="app-emulation/libvirt:="
 else
 	MY_P="${P/_rc/-rc}"
-	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz
-		verify-sig? ( https://libvirt.org/sources/python/${MY_P}.tar.gz.asc )"
+	SRC_URI="https://download.libvirt.org/python/${MY_P}.tar.gz
+		verify-sig? ( https://download.libvirt.org/python/${MY_P}.tar.gz.asc )"
 	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
-S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
 HOMEPAGE="https://www.libvirt.org"
+
+S="${WORKDIR}/${P%_rc*}"
 
 LICENSE="LGPL-2"
 SLOT="0"

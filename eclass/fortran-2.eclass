@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -26,13 +26,13 @@
 #
 # FORTRAN_NEED_OPENMP=1
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FORTRAN_2_ECLASS} ]]; then
 _FORTRAN_2_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit toolchain-funcs
 
@@ -66,9 +66,7 @@ inherit toolchain-funcs
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
-			if [[ ${EAPI} != [56] ]]; then
-				BDEPEND+=" virtual/fortran"
-			fi
+			BDEPEND+=" virtual/fortran"
 			DEPEND+=" virtual/fortran"
 			RDEPEND+=" virtual/fortran"
 			break
@@ -77,16 +75,10 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			break
 			;;
 		test)
-			if [[ ${EAPI} != [56] ]]; then
-				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
-			else
-				DEPEND+=" ${_f_use}? ( virtual/fortran )"
-			fi
+			BDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;
 		*)
-			if [[ ${EAPI} != [56] ]]; then
-				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
-			fi
+			BDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
 			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;
@@ -99,7 +91,7 @@ unset _f_use
 # Return the Fortran compiler flag to enable 64 bit integers for
 # array indices
 fortran_int64_abi_fflags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local _FC=$(tc-getFC)
 	if [[ ${_FC} == *gfortran* ]]; then
@@ -116,7 +108,7 @@ fortran_int64_abi_fflags() {
 # @DESCRIPTION:
 # writes fortran test code
 _fortran_write_testsuite() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local filebase=${T}/test-fortran
 
@@ -144,7 +136,7 @@ _fortran_write_testsuite() {
 # Takes fortran compiler as first argument and dialect as second.
 # Checks whether the passed fortran compiler speaks the fortran dialect
 _fortran_compile_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local filebase=${T}/test-fortran
 	local fcomp=${1}
@@ -171,7 +163,7 @@ _fortran_compile_test() {
 # @DESCRIPTION:
 # See if the fortran supports OpenMP.
 _fortran-has-openmp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local flag
 	local filebase=${T}/test-fc-openmp
@@ -200,7 +192,7 @@ _fortran-has-openmp() {
 # @DESCRIPTION:
 # Detailed description how to handle fortran support
 _fortran_die_msg() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	eerror
 	eerror "Please install currently selected gcc version with USE=fortran."
@@ -217,7 +209,7 @@ _fortran_die_msg() {
 # Internal test function for working fortran compiler.
 # It is called in fortran-2_pkg_setup.
 _fortran_test_function() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local dialect
 
@@ -283,7 +275,7 @@ _fortran-2_pkg_setup() {
 # Setup functionality,
 # checks for a valid fortran compiler and optionally for its openmp support.
 fortran-2_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		_fortran-2_pkg_setup

@@ -19,7 +19,7 @@ HOMEPAGE="
 LICENSE="GPL-3+"
 # API/ABI changes in point releases
 SLOT="0/${PV}"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 IUSE="doc"
 
 DEPEND="

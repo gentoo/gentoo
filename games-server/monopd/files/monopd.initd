@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="monopd"
+command_background="true"
+command_user="nobody:nogroup"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+    use net
+}

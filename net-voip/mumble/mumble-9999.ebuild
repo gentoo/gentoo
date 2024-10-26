@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake flag-o-matic multilib python-any-r1 xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"

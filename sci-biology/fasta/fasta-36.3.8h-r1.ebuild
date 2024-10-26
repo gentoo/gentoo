@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,10 +15,7 @@ S="${WORKDIR}/${PN}36-${MY_PV}"
 LICENSE="fasta"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="debug cpu_flags_x86_sse2 test"
-RESTRICT="!test? ( test )"
-
-BDEPEND="test? ( app-shells/tcsh )"
+IUSE="debug cpu_flags_x86_sse2"
 
 src_prepare() {
 	CC_ALT=
@@ -44,6 +41,11 @@ src_prepare() {
 
 	export CC_ALT="${CC_ALT}"
 	export ALT="${ALT}"
+
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862267
+	# https://github.com/wrpearson/fasta36/issues/63
+	filter-lto
 
 	eapply "${FILESDIR}"/${P}-ldflags.patch
 

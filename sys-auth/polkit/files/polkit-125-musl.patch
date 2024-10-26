@@ -1,0 +1,34 @@
+https://github.com/polkit-org/polkit/commit/13bea3e08f924002a6a5c2f275d4bf1588fc3d02
+
+From 13bea3e08f924002a6a5c2f275d4bf1588fc3d02 Mon Sep 17 00:00:00 2001
+From: Sertonix <sertonix@posteo.net>
+Date: Sun, 11 Aug 2024 00:26:51 +0200
+Subject: [PATCH] Fix missing arguments with HAVE_PTHREAD_CONDATTR_SETCLOCK
+
+Fixes <64f5e4dda52> Add syslog-style log levels support
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -767,12 +767,14 @@ runaway_killer_common(PolkitBackendJsAuthority *authority, RunawayKillerCtx *ctx
+ #ifdef HAVE_PTHREAD_CONDATTR_SETCLOCK
+   if ((pthread_err = pthread_condattr_init(&attr))) {
+     polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  LOG_LEVEL_ERROR,
+                                   "Error initializing condition variable attributes: %s",
+                                   strerror(pthread_err));
+     return FALSE;
+   }
+   if ((pthread_err = pthread_condattr_setclock(&attr, PK_CLOCK))) {
+     polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  LOG_LEVEL_ERROR,
+                                   "Error setting condition variable attributes: %s",
+                                   strerror(pthread_err));
+     goto err_clean_condattr;
+@@ -780,6 +782,7 @@ runaway_killer_common(PolkitBackendJsAuthority *authority, RunawayKillerCtx *ctx
+   /* Init again, with needed attr */
+   if ((pthread_err = pthread_cond_init(&ctx->cond, &attr))) {
+     polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  LOG_LEVEL_ERROR,
+                                   "Error initializing condition variable: %s",
+                                   strerror(pthread_err));
+     goto err_clean_condattr;
+

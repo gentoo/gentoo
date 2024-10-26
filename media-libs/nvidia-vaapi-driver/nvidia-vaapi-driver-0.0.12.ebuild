@@ -20,3 +20,13 @@ RDEPEND="media-libs/gst-plugins-bad
 DEPEND="${RDEPEND}
 	>=media-libs/nv-codec-headers-11.1.5.1"
 BDEPEND="virtual/pkgconfig"
+
+pkg_postinst() {
+	# Source: https://github.com/elFarto/nvidia-vaapi-driver/blob/v0.0.12/src/backend-common.c#L13
+	elog "If vaapi drivers fail to load, then make sure that you are"
+	elog "passing the correct parameters to the kernel."
+	elog "nvidia_drm.modeset should be set to 1."
+
+	elog "Check the wiki page for more information: "
+	elog "https://wiki.gentoo.org/wiki/VAAPI"
+}

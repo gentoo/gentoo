@@ -240,15 +240,15 @@ SEABIOS_VERSION="1.16.0"
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
+		~sys-firmware/edk2-bin-${EDK2_OVMF_VERSION}
 		~sys-firmware/ipxe-1.21.1[binary,qemu]
 		~sys-firmware/seabios-bin-${SEABIOS_VERSION}
 		~sys-firmware/sgabios-0.1_pre10[binary]
 	)
 	!pin-upstream-blobs? (
 		|| (
-			>=sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}
-			>=sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
+			>=sys-firmware/edk2-${EDK2_OVMF_VERSION}
+			>=sys-firmware/edk2-bin-${EDK2_OVMF_VERSION}
 		)
 		sys-firmware/ipxe[qemu]
 		|| (
@@ -453,6 +453,14 @@ src_prepare() {
 	# Use correct toolchain to fix cross-compiling
 	tc-export AR AS LD NM OBJCOPY PKG_CONFIG RANLIB STRINGS
 	export WINDRES=${CHOST}-windres
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		cat >> "${S}"/configs/meson/linux.txt <<-EOF || die
+		[binaries]
+		dtrace='stap-dtrace'
+		EOF
+	fi
 
 	# Verbose builds
 	MAKEOPTS+=" V=1"
@@ -661,7 +669,7 @@ qemu_src_configure() {
 	local targets="${buildtype}_targets"
 	[[ -n ${targets} ]] && conf_opts+=( --target-list="${!targets}" )
 
-	# Add support for SystemTAP
+	# Add support for SystemTap
 	use systemtap && conf_opts+=( --enable-trace-backends="dtrace" )
 
 	# We always want to attempt to build with PIE support as it results
@@ -923,10 +931,10 @@ pkg_postinst() {
 	if use pin-upstream-blobs && firmware_abi_change; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
 
-		if has_version 'sys-firmware/edk2-ovmf-bin'; then
-			ewarn "	$(best_version sys-firmware/edk2-ovmf-bin)"
+		if has_version 'sys-firmware/edk2-bin'; then
+			ewarn "	$(best_version sys-firmware/edk2-bin)"
 		else
-			ewarn " $(best_version sys-firmware/edk2-ovmf)"
+			ewarn " $(best_version sys-firmware/edk2)"
 		fi
 
 		if has_version 'sys-firmware/seabios-bin'; then
@@ -950,10 +958,10 @@ pkg_info() {
 	echo "Using:"
 	echo "  $(best_version app-emulation/spice-protocol)"
 
-	if has_version 'sys-firmware/edk2-ovmf-bin'; then
-		echo "  $(best_version sys-firmware/edk2-ovmf-bin)"
+	if has_version 'sys-firmware/edk2-bin'; then
+		echo "  $(best_version sys-firmware/edk2-bin)"
 	else
-		echo "  $(best_version sys-firmware/edk2-ovmf)"
+		echo "  $(best_version sys-firmware/edk2)"
 	fi
 
 	if has_version 'sys-firmware/seabios-bin'; then

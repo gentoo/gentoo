@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,19 +8,27 @@ inherit flag-o-matic verify-sig
 
 DESCRIPTION="Utility to apply diffs to files"
 HOMEPAGE="https://www.gnu.org/software/patch/patch.html"
-SRC_URI="mirror://gnu/patch/${P}.tar.xz"
-SRC_URI+=" verify-sig? ( mirror://gnu/patch/${P}.tar.xz.sig )"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/patch.git"
+	inherit git-r3
+else
+	SRC_URI="mirror://gnu/patch/${P}.tar.xz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/patch/${P}.tar.xz.sig )"
+
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="static test xattr"
 RESTRICT="!test? ( test )"
 
 RDEPEND="xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( sys-apps/ed )
-	verify-sig? ( sec-keys/openpgp-keys-patch )"
+BDEPEND="
+	test? ( sys-apps/ed )
+	verify-sig? ( sec-keys/openpgp-keys-patch )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-test-suite.patch
@@ -37,6 +45,19 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.6-Avoid-invalid-memory-access-in-context-format-diffs.patch
 )
 
+src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+
+		cd "${S}" || die
+		./bootstrap || die
+	elif use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+	fi
+
+	default
+}
+
 src_configure() {
 	use static && append-ldflags -static
 
@@ -48,6 +69,10 @@ src_configure() {
 	# Do not let $ED mess up the search for `ed` 470210.
 	ac_cv_path_ED=$(type -P ed) \
 		econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	emake check gl_public_submodule_commit=
 }
 
 src_install() {

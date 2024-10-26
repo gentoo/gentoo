@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+# Defaults
+LAYOUT=compat
+BOOTPART=/boot
+KNAME=kernel
+INITRD=initramfs.img
+
+instkern_state=/var/lib/misc/installkernel
+if [[ -s ${instkern_state} ]]; then
+	# If we have a log file, set defaults from there.
+	IFS=$'\t' read -r -a LastKernArray <<< "$(tail -n1 ${instkern_state})"
+	LAYOUT="${LastKernArray[4]}"
+	BOOTPART="${LastKernArray[7]}"
+	KNAME="${LastKernArray[8]}"
+	if [[ "${LastKernArray[9]}" != unknown && ${LAYOUT} != uki ]]; then
+		INITRD="${LastKernArray[9]}"
+	else
+		INITRD=
+	fi
+fi
+
+if [[ ${LAYOUT} == uki ]]; then
+	echo "WARNING: kexec currently does not support UKIs"
+	KPARAM=
+else
+	if [[ -f /etc/kernel/cmdline ]]; then
+		KPARAM="$(tr -s "${IFS}" ' ' </etc/kernel/cmdline)"
+	elif [[ -f /usr/lib/kernel/cmdline ]]; then
+		KPARAM="$(tr -s "${IFS}" ' ' </usr/lib/kernel/cmdline)"
+	else
+		KPARAM=
+	fi
+fi
+
+
+# /etc/kexec.conf overrides installkernel.log
+kexec_conf=/etc/kexec.conf
+if [[ -f ${kexec_conf} ]]; then
+	source ${kexec_conf}
+fi
+
+if [[ -z ${DONT_MOUNT_BOOT} ]]; then
+	# Borrowed from mount-boot-utils.eclass
+	# note that /dev/BOOT is in the Gentoo default /etc/fstab file
+	fstabstate=$(awk "!/^[[:blank:]]*#|^\/dev\/BOOT/ && \$2 == \"${BOOTPART}\" \
+		{ print 1; exit }" /etc/fstab || die "awk failed")
+
+	if [[ -z ${fstabstate} ]]; then
+		echo "Assuming you do not have a separate ${BOOTPART} partition."
+	else
+		procstate=$(awk "\$2 == \"${BOOTPART}\" { split(\$4, a, \",\"); \
+			for (i in a) if (a[i] ~ /^r[ow]\$/) { print a[i]; break }; exit }" \
+			/proc/mounts || die "awk failed")
+
+		if [[ -z ${procstate} ]]; then
+			echo "ERROR: Your ${BOOTPART} partition is not mounted"
+			exit 1
+		fi
+	fi
+fi
+
+if [[ ! -d ${BOOTPART} ]]; then
+	echo "ERROR: BOOTPART=${BOOTPART} not found"
+	exit 1
+fi
+
+KEXEC_ARGS=()
+
+if [[ -f ${BOOTPART}/${KNAME} ]]; then
+	KEXEC_ARGS+=( --load "${BOOTPART}/${KNAME}" )
+else
+	echo "ERROR: KNAME=${KNAME} not found"
+	exit 1
+fi
+
+if [[ -n ${INITRD} ]]; then
+	if [[ -f ${BOOTPART}/${INITRD} ]]; then
+		KEXEC_ARGS+=( --initrd "${BOOTPART}/${INITRD}" )
+	else
+		echo "WARNING: INITRD=${INITRD} not found"
+	fi
+fi
+
+if [[ -n ${KPARAM} ]]; then
+	KEXEC_ARGS+=(  --command-line "${KPARAM}" )
+elif [[ ! -f /etc/kernel/cmdline && ! -f /usr/lib/kernel/cmdline ]]; then
+	# If it is still empty and we did not intentionally set it empty then reuse.
+	KEXEC_OPT_ARGS+=" --reuse-cmdline "
+fi
+
+KEXEC_ARGS+=( ${KEXEC_OPT_ARGS} )
+
+echo "Calling kexec with arguments: ${KEXEC_ARGS[@]}"
+exec kexec "${KEXEC_ARGS[@]}"

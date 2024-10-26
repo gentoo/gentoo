@@ -1,0 +1,75 @@
+From b948467c3f01cc46b5dcda8802b913295b7c8999 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Wed, 31 Jul 2024 18:05:01 +0200
+Subject: [PATCH] Skip tests requiring DSA if SSH does not support DSS
+
+Modern OpenSSH no longer supports DSA/DSS. We need to skip tests that
+use DSA if it is not supported by the installed SSH. The availability of
+DSA can be checked by querying `ssh -Q key`, which includes `ssh-dss` in
+the output if DSS is available, as suggested in [1].
+
+[1] https://github.com/twisted/twisted/issues/12273#issuecomment-2260799255
+
+Issue: https://github.com/twisted/twisted/issues/12273
+
+Based on upstream PR https://github.com/twisted/twisted/pull/12274
+
+diff --git a/src/twisted/conch/test/test_cftp.py b/src/twisted/conch/test/test_cftp.py
+index 40b2deaedb..51a978de4b 100644
+--- a/src/twisted/conch/test/test_cftp.py
++++ b/src/twisted/conch/test/test_cftp.py
+@@ -20,6 +20,7 @@ from zope.interface import implementer
+ 
+ from twisted.conch import ls
+ from twisted.conch.interfaces import ISFTPFile
++from twisted.conch.test.test_conch import HAS_DSA
+ from twisted.conch.test.test_filetransfer import FileTransferTestAvatar, SFTPTestBase
+ from twisted.cred import portal
+ from twisted.internet import defer, error, interfaces, protocol, reactor
+@@ -1436,6 +1437,7 @@ exit
+ @skipIf(skipTests, "don't run w/o spawnProcess or cryptography")
+ @skipIf(not which("ssh"), "no ssh command-line client available")
+ @skipIf(not which("sftp"), "no sftp command-line client available")
++@skipIf(not HAS_DSA, "needs ssh supporting dsa")
+ class OurServerSftpClientTests(CFTPClientTestBase):
+     """
+     Test the sftp server against sftp command line client.
+diff --git a/src/twisted/conch/test/test_conch.py b/src/twisted/conch/test/test_conch.py
+index 45b357c995..9e77c9b2e9 100644
+--- a/src/twisted/conch/test/test_conch.py
++++ b/src/twisted/conch/test/test_conch.py
+@@ -59,6 +59,21 @@ except ImportError as e:
+ else:
+     StdioInteractingSession = _StdioInteractingSession
+ 
++def _has_dsa():
++    has_dsa = False
++    try:
++        output = subprocess.check_output(
++            [which("ssh")[0], "-Q", "key"], stderr=subprocess.STDOUT, text=True
++        )
++        keys = output.split()
++        if "ssh-dss" in keys:
++            has_dsa = True
++    except BaseException:
++        pass
++    return has_dsa
++
++HAS_DSA = _has_dsa()
++
+ 
+ def _has_ipv6():
+     """Returns True if the system can bind an IPv6 address."""
+@@ -551,6 +566,9 @@ class OpenSSHClientMixin:
+     if not which("ssh"):
+         skip = "no ssh command-line client available"
+ 
++    if not HAS_DSA:
++        skip = "needs ssh supporting dsa"
++
+     def execute(self, remoteCommand, process, sshArgs=""):
+         """
+         Connects to the SSH server started in L{ConchServerSetupMixin.setUp} by
+-- 
+2.44.2
+

@@ -1,0 +1,12 @@
+diff --git a/Config.mk.in b/Config.mk.in
+index e069054..d9ee2cb 100644
+--- a/Config.mk.in
++++ b/Config.mk.in
+@@ -30,7 +30,6 @@ ifdef debug
+     ldflags	:= -g -rdynamic
+ else
+     cflags	:= -Os -g0 -DNDEBUG=1
+-    ldflags	:= -s
+ endif
+ CFLAGS		:= -Wall -Wextra -Wstrict-prototypes -Wshadow
+ cflags		+= -std=c11 @pkg_cflags@ ${CFLAGS}

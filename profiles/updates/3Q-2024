@@ -1,2 +1,13 @@
 move sci-libs/rtree dev-python/rtree
 move dev-python/mapbox_earcut dev-python/mapbox-earcut
+move dev-qt/kdsingleapplication dev-libs/kdsingleapplication
+slotmove dev-util/kdevelop-pg-qt 5 0
+move dev-python/parse_type dev-python/parse-type
+slotmove app-admin/calamares 5 0
+slotmove x11-misc/kronometer 5 0
+slotmove app-dicts/dikt 5 0
+slotmove app-cdr/kcdemu 5 0
+move sys-apps/azure-nvme-utils sys-apps/azure-vm-utils
+move dev-python/sphinx-aiohttp-theme dev-python/aiohttp-theme
+move sys-firmware/edk2-ovmf sys-firmware/edk2
+move sys-firmware/edk2-ovmf-bin sys-firmware/edk2-bin

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -21,7 +21,13 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
-IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk vst"
+IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk test vst"
+
+# FAIL!  : AutomatableModelTest::LinkTests() 'm1Changed' returned FALSE. ()
+#
+# Did not previously pass, did not previously run. Maintain status quo.
+# Fixed upstream in git.
+RESTRICT="test"
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -54,6 +60,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qtx11extras:5
+	test? ( dev-qt/qttest:5 )
 "
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -74,7 +81,22 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.2.2-kwidgetsaddons.patch"
 )
 
+src_prepare() {
+	cmake_src_prepare
+
+	if use !test; then
+		sed -i '/ADD_SUBDIRECTORY(tests)/d' CMakeLists.txt || die
+	fi
+}
+
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860867
+	# https://github.com/LMMS/lmms/pull/6174
+	#
+	# Fixed upstream, remove whenever they finally release a new version.
+	filter-lto
+
 	local mycmakeargs=(
 		-DUSE_WERROR=FALSE
 		-DWANT_CAPS=FALSE
@@ -98,4 +120,11 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# does not use ctest
+	cmake_build tests/tests
+	"${BUILD_DIR}"/tests/tests || die
+
 }

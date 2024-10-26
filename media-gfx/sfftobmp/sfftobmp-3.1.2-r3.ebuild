@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools
 
 MY_P=${PN}${PV//./_}
 
@@ -19,7 +19,8 @@ KEYWORDS="amd64 ~hppa ppc x86"
 RDEPEND="
 	dev-libs/boost:=
 	media-libs/libjpeg-turbo:=
-	media-libs/tiff:="
+	media-libs/tiff:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 
@@ -27,16 +28,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-gcc44-and-boost-1_37.patch
 	"${FILESDIR}"/${PN}-3.1.2-boost_fs3.patch
 	"${FILESDIR}"/${PN}-3.1.2-Wformat.patch
+	"${FILESDIR}"/${PN}-3.1.2-boost-1.85.patch
 )
 
 src_prepare() {
 	default
 	eautoreconf
-}
-
-src_configure() {
-	append-cppflags -DBOOST_FILESYSTEM_VERSION=3
-	default
 }
 
 src_install() {

@@ -1,0 +1,184 @@
+From 0826efdadc36a7f1f4251f0450101fb5cbb1c94f Mon Sep 17 00:00:00 2001
+From: Petr Vaněk <arkamar@gentoo.org>
+Date: Sat, 13 Jul 2024 15:53:28 +0200
+Subject: [PATCH] backward compatibility with <dev-libs/libfmt-11
+
+Upstream updated bundled libfmt to version 11 [1], where fmt/core.h was
+renamed to fmt/base.h [2]. Rspamd switched to a new header file but
+libfmt reintroduced fmt/core.h later for compatibility reasons. This
+patch switches fmt/base.h back to fmt/core.h in order to be able to work
+with <dev-libs/libfmt-11.
+
+[1] https://github.com/rspamd/rspamd/commit/19299911dc7b951fa9649b918a661026a5d0e450
+[2] https://github.com/fmtlib/fmt/commit/79f1506fe3a7fae7c22c55d3cd7cdc33bc536dae
+[3] https://github.com/fmtlib/fmt/commit/58a6bd48a8dc7ea74bb9fd900c60fd333a85725f
+
+diff --git a/src/libmime/lang_detection_fasttext.cxx b/src/libmime/lang_detection_fasttext.cxx
+index 89916151f..5c3549c8e 100644
+--- a/src/libmime/lang_detection_fasttext.cxx
++++ b/src/libmime/lang_detection_fasttext.cxx
+@@ -20,7 +20,7 @@
+ #include "fasttext/fasttext.h"
+ #include "libserver/cfg_file.h"
+ #include "libserver/logger.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "stat_api.h"
+ #include <exception>
+ #include <string_view>
+diff --git a/src/libserver/backtrace.cxx b/src/libserver/backtrace.cxx
+index c24e61936..330c829b0 100644
+--- a/src/libserver/backtrace.cxx
++++ b/src/libserver/backtrace.cxx
+@@ -19,7 +19,7 @@
+ #ifdef BACKWARD_ENABLE
+ 
+ #include "contrib/backward-cpp/backward.hpp"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "logger.h"
+ 
+ namespace rspamd {
+diff --git a/src/libserver/cfg_rcl.cxx b/src/libserver/cfg_rcl.cxx
+index ce3df4010..f0c9db64d 100644
+--- a/src/libserver/cfg_rcl.cxx
++++ b/src/libserver/cfg_rcl.cxx
+@@ -34,7 +34,7 @@
+ #include <algorithm>// for std::transform
+ #include <memory>
+ #include "contrib/ankerl/unordered_dense.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "libutil/cxx/util.hxx"
+ #include "libutil/cxx/file_util.hxx"
+ #include "frozen/unordered_set.h"
+diff --git a/src/libserver/cfg_utils.cxx b/src/libserver/cfg_utils.cxx
+index 1344bc4f9..adc23f590 100644
+--- a/src/libserver/cfg_utils.cxx
++++ b/src/libserver/cfg_utils.cxx
+@@ -65,7 +65,7 @@
+ #include <string>
+ #include <string_view>
+ #include <vector>
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "cxx/util.hxx"
+ #include "frozen/unordered_map.h"
+ #include "frozen/string.h"
+diff --git a/src/libserver/css/css_parser.cxx b/src/libserver/css/css_parser.cxx
+index 11fa830f0..c016b9d9d 100644
+--- a/src/libserver/css/css_parser.cxx
++++ b/src/libserver/css/css_parser.cxx
+@@ -20,7 +20,7 @@
+ #include "css_rule.hxx"
+ #include "css_util.hxx"
+ #include "css.hxx"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ 
+ #include <vector>
+ #include <unicode/utf8.h>
+diff --git a/src/libserver/css/css_selector.cxx b/src/libserver/css/css_selector.cxx
+index d2ae093cb..61bd8750f 100644
+--- a/src/libserver/css/css_selector.cxx
++++ b/src/libserver/css/css_selector.cxx
+@@ -17,7 +17,7 @@
+ #include "css_selector.hxx"
+ #include "css.hxx"
+ #include "libserver/html/html.hxx"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #define DOCTEST_CONFIG_IMPLEMENTATION_IN_DLL
+ #include "doctest/doctest.h"
+ 
+diff --git a/src/libserver/css/css_value.cxx b/src/libserver/css/css_value.cxx
+index f2ff55363..64ebc536f 100644
+--- a/src/libserver/css/css_value.cxx
++++ b/src/libserver/css/css_value.cxx
+@@ -20,7 +20,7 @@
+ #include "frozen/string.h"
+ #include "libutil/util.h"
+ #include "contrib/ankerl/unordered_dense.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ 
+ #define DOCTEST_CONFIG_IMPLEMENTATION_IN_DLL
+ #include "doctest/doctest.h"
+diff --git a/src/libserver/hyperscan_tools.cxx b/src/libserver/hyperscan_tools.cxx
+index 5035bee2c..6f8450e6a 100644
+--- a/src/libserver/hyperscan_tools.cxx
++++ b/src/libserver/hyperscan_tools.cxx
+@@ -21,7 +21,7 @@
+ #include <filesystem>
+ #include "contrib/ankerl/unordered_dense.h"
+ #include "contrib/ankerl/svector.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "libutil/cxx/file_util.hxx"
+ #include "libutil/cxx/error.hxx"
+ #include "hs.h"
+diff --git a/src/libserver/symcache/symcache_impl.cxx b/src/libserver/symcache/symcache_impl.cxx
+index 7159555d2..4ea087024 100644
+--- a/src/libserver/symcache/symcache_impl.cxx
++++ b/src/libserver/symcache/symcache_impl.cxx
+@@ -21,7 +21,7 @@
+ #include "unix-std.h"
+ #include "libutil/cxx/file_util.hxx"
+ #include "libutil/cxx/util.hxx"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "contrib/t1ha/t1ha.h"
+ 
+ #ifdef __has_include
+diff --git a/src/libserver/symcache/symcache_item.cxx b/src/libserver/symcache/symcache_item.cxx
+index 4a9581fe7..490a87880 100644
+--- a/src/libserver/symcache/symcache_item.cxx
++++ b/src/libserver/symcache/symcache_item.cxx
+@@ -17,7 +17,7 @@
+ #include "lua/lua_common.h"
+ #include "symcache_internal.hxx"
+ #include "symcache_item.hxx"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "libserver/task.h"
+ #include "libutil/cxx/util.hxx"
+ #include <numeric>
+diff --git a/src/libstat/backends/cdb_backend.cxx b/src/libstat/backends/cdb_backend.cxx
+index bd05e8ef8..1d2b54d4c 100644
+--- a/src/libstat/backends/cdb_backend.cxx
++++ b/src/libstat/backends/cdb_backend.cxx
+@@ -28,7 +28,7 @@
+ #include <optional>
+ #include "contrib/expected/expected.hpp"
+ #include "contrib/ankerl/unordered_dense.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ 
+ namespace rspamd::stat::cdb {
+ 
+diff --git a/src/libstat/backends/redis_backend.cxx b/src/libstat/backends/redis_backend.cxx
+index 06842b078..6abcfa122 100644
+--- a/src/libstat/backends/redis_backend.cxx
++++ b/src/libstat/backends/redis_backend.cxx
+@@ -19,7 +19,7 @@
+ #include "stat_internal.h"
+ #include "upstream.h"
+ #include "libserver/mempool_vars_internal.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ 
+ #include "libutil/cxx/error.hxx"
+ 
+diff --git a/test/rspamd_cxx_unit_dkim.hxx b/test/rspamd_cxx_unit_dkim.hxx
+index d445c3800..6d3b4207e 100644
+--- a/test/rspamd_cxx_unit_dkim.hxx
++++ b/test/rspamd_cxx_unit_dkim.hxx
+@@ -21,7 +21,7 @@
+ 
+ #define DOCTEST_CONFIG_IMPLEMENTATION_IN_DLL
+ #include "doctest/doctest.h"
+-#include "fmt/base.h"
++#include "fmt/core.h"
+ #include "libserver/dkim.h"
+ 
+ #include <vector>

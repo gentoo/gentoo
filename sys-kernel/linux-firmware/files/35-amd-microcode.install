@@ -31,9 +31,13 @@ main() {
 
 	[[ ${EUID} -eq 0 ]] || die "Please run this script as root"
 
-	einfo "Generating AMD CPU Microcode early initramfs image..."
-	make-amd-ucode-img /boot/amd-uc.img /lib/firmware/amd-ucode ||
-		die "make-amd-ucode-img failed"
+	if [[ -d /lib/firmware/amd-ucode ]]; then
+		einfo "Generating AMD CPU Microcode early initramfs image..."
+		make-amd-ucode-img /boot/amd-uc.img /lib/firmware/amd-ucode ||
+			die "make-amd-ucode-img failed"
+	else
+		einfo "No AMD CPU Microcode installed, nothing to do here."
+	fi
 }
 
 main

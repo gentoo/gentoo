@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Gentoo Authors
+# Copyright 2013-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
@@ -17,13 +17,13 @@
 # dependencies shall use the USE dependency string in ${MULTILIB_USEDEP}
 # to properly request multilib enabled.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_MULTILIB_BUILD_ECLASS} ]]; then
 _MULTILIB_BUILD_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit multibuild multilib
 
@@ -253,8 +253,8 @@ multilib_check_headers() {
 	_multilib_header_cksum() {
 		set -o pipefail
 
-		if [[ -d ${ED%/}/usr/include ]]; then
-			find "${ED%/}"/usr/include -type f \
+		if [[ -d ${ED}/usr/include ]]; then
+			find "${ED}"/usr/include -type f \
 				-exec cksum {} + | sort -k2
 		fi
 	}
@@ -376,7 +376,7 @@ multilib_prepare_wrappers() {
 
 	[[ ${#} -le 1 ]] || die "${FUNCNAME}: too many arguments"
 
-	local root=${1:-${ED%/}}
+	local root=${1:-${ED}}
 	local f
 
 	if [[ ${COMPLETE_MULTILIB} == yes ]]; then
@@ -444,9 +444,9 @@ multilib_prepare_wrappers() {
 
 				# Some ABIs may have install less files than others.
 				if [[ -f ${root}/usr/include${f} ]]; then
-					local wrapper=${ED%/}/tmp/multilib-include${f}
+					local wrapper=${ED}/tmp/multilib-include${f}
 
-					if [[ ! -f ${ED%/}/tmp/multilib-include${f} ]]; then
+					if [[ ! -f ${ED}/tmp/multilib-include${f} ]]; then
 						dodir "/tmp/multilib-include${dir}"
 						# a generic template
 						cat > "${wrapper}" <<_EOF_ || die
@@ -504,7 +504,7 @@ _EOF_
 
 					# $CHOST shall be set by multilib_toolchain_setup
 					dodir "/tmp/multilib-include/${CHOST}${dir}"
-					mv "${root}/usr/include${f}" "${ED%/}/tmp/multilib-include/${CHOST}${dir}/" || die
+					mv "${root}/usr/include${f}" "${ED}/tmp/multilib-include/${CHOST}${dir}/" || die
 
 					# Note: match a space afterwards to avoid collision potential.
 					sed -e "/${MULTILIB_ABI_FLAG} /s&error.*&include <${CHOST}${f}>&" \
@@ -544,11 +544,11 @@ multilib_install_wrappers() {
 
 	local root=${1:-${ED}}
 
-	if [[ -d ${ED%/}/tmp/multilib-include ]]; then
+	if [[ -d ${ED}/tmp/multilib-include ]]; then
 		multibuild_merge_root \
-			"${ED%/}"/tmp/multilib-include "${root}"/usr/include
+			"${ED}"/tmp/multilib-include "${root}"/usr/include
 		# it can fail if something else uses /tmp
-		rmdir "${ED%/}"/tmp &>/dev/null
+		rmdir "${ED}"/tmp &>/dev/null
 	fi
 }
 

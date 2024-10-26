@@ -1,0 +1,18 @@
+Description: Properly terminate while loop when finding application name.
+Author: Anders Nedergaard Jensen <jensen@math.au.dk>
+Origin: https://bugs.debian.org/950008#17
+Bug-Debian: https://bugs.debian.org/950008
+Forwarded: yes
+Last-Update: 2021-11-21
+
+--- a/src/application.cpp
++++ b/src/application.cpp
+@@ -26,7 +26,7 @@
+     {
+       l--;
+     }
+-  while(p[l]!=0 && p[l]!='/');
++  while(l >= 0 && p[l]!='/');
+ 
+   return p+l+1;
+ }

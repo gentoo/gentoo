@@ -1,0 +1,12 @@
+diff -Naurp a/simdzone/configure.ac b/simdzone/configure.ac
+--- a/simdzone/configure.ac	2024-08-02 08:05:01.000000000 -0400
++++ b/simdzone/configure.ac	2024-08-04 17:56:15.810347292 -0400
+@@ -76,7 +76,7 @@ AC_INCLUDES_DEFAULT
+ int main(int argc, char *argv[])
+ {
+   (void)argv;
+-  uint64_t popcnt = _mm_popcnt_64((uint64_t)argc);
++  uint64_t popcnt = _mm_popcnt_u64((uint64_t)argc);
+   return popcnt == 11;
+ }
+ ]])

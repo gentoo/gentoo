@@ -1,0 +1,23 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-AM_CFLAGS = -Wall -O3 $(AVX_CFLAGS)
++AM_CFLAGS = $(AVX_CFLAGS)
+ 
+ SUBDIRS = libnova elp
+ 
+--- a/src/elp/Makefile.am
++++ b/src/elp/Makefile.am
+@@ -1,6 +1,6 @@
+ noinst_LTLIBRARIES = libelp.la
+ 
+-AM_CFLAGS = -I ../ -Wall -O3 $(AVX_CFLAGS)
++AM_CFLAGS = -I ../ $(AVX_CFLAGS)
+ 
+ libelp_la_SOURCES = \
+ 	elp1.c \
+-- 
+2.45.2
+

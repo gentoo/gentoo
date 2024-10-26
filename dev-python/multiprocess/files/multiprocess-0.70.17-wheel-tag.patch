@@ -1,0 +1,65 @@
+From 6008b92ab778f845b8425f215e0e78d4238b7693 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 9 Oct 2024 09:47:07 +0200
+Subject: [PATCH] enforce correct python tags for pure wheels from setup.py
+
+Enforce correct python tags for pure Python wheels directly from
+`setup.py`.  This should be more reliable than the current approach.
+While at it, switch to correct tags for each platforms -- CPython
+uses "cp" (which unlike "py" is not accepted for PyPy), and PyPy can use
+pure "pp" without platform specifiers (since no extensions are
+installed).
+
+Fixes #196
+---
+ pyproject.toml |  1 +
+ setup.py       | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 5d64e77..38dd6b7 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,7 @@
+ [build-system]
+ # Further build requirements come from setup.py via the PEP 517 interface
+ requires = [
++    "packaging",
+     "setuptools>=42",
+ ]
+ build-backend = "setuptools.build_meta"
+diff --git a/setup.py b/setup.py
+index aeefecb..5dbca89 100644
+--- a/setup.py
++++ b/setup.py
+@@ -221,6 +221,7 @@ def has_ext_modules(foo):
+ 
+ def run_setup(with_extensions=True):
+     extensions = []
++    options = {}
+     if with_extensions:
+         extensions = [
+             Extension(
+@@ -232,6 +233,14 @@ def run_setup(with_extensions=True):
+                 depends=glob.glob('%s/*.h' % srcdir) + ['setup.py'],
+             ),
+         ]
++    else:
++        import packaging.tags
++
++        tag_name = packaging.tags.interpreter_name()
++        tag_version = packaging.tags.interpreter_version()
++        options['bdist_wheel'] = {
++            'python_tag':tag_name+tag_version,
++        }
+     packages = find_packages(
+         where=pkgdir,
+         exclude=['ez_setup', 'examples', 'doc',],
+@@ -276,6 +285,7 @@ def run_setup(with_extensions=True):
+         packages=packages,
+         package_dir={'': pkgdir},
+         ext_modules=extensions,
++        options=options,
+     )
+     # add dependencies
+     depend = [dill_version]

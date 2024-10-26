@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: out-of-source-utils.eclass
@@ -6,26 +6,26 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for building packages out-of-source
 # @DESCRIPTION:
 # This eclass provides a run_in_build_dir() helper that can be used
 # to execute specified command inside BUILD_DIR.
 
+if [[ -z ${_OUT_OF_SOURCE_UTILS_ECLASS} ]]; then
+_OUT_OF_SOURCE_UTILS_ECLASS=1
+
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_OUT_OF_SOURCE_UTILS_ECLASS} ]]; then
-_OUT_OF_SOURCE_UTILS_ECLASS=1
 
 # @FUNCTION: run_in_build_dir
 # @USAGE: <argv>...
 # @DESCRIPTION:
 # Run the given command in the directory pointed by BUILD_DIR.
 run_in_build_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	local ret
 
 	[[ ${#} -eq 0 ]] && die "${FUNCNAME}: no command specified."

@@ -1,9 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit vim-plugin python-single-r1
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://vim-latex.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

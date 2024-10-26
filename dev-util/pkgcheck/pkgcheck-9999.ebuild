@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 		https://github.com/pkgcore/pkgcheck.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 	inherit pypi
 fi
 
@@ -38,7 +38,7 @@ RDEPEND+="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	>=dev-python/tree-sitter-0.22.0[${PYTHON_USEDEP}]
+	>=dev-python/tree-sitter-0.23.0[${PYTHON_USEDEP}]
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode

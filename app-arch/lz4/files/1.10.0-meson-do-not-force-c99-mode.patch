@@ -1,0 +1,44 @@
+https://github.com/lz4/lz4/pull/1485
+
+From bce6a94c25a9077fdcd7c94079a24f9713b192e1 Mon Sep 17 00:00:00 2001
+From: Fabian Groffen <grobian@gentoo.org>
+Date: Tue, 30 Jul 2024 21:50:06 +0200
+Subject: [PATCH] meson: do not force c99 mode
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On Solaris/OpenIndiana hosts forcing (old) C99 means disabling POSIX
+2001 functionality, resulting in errors like
+
+In file included from ../../../net/ptah/export/gentoo/working-repos/lz4/programs/bench.c:39:
+../../../net/ptah/export/gentoo/working-repos/lz4/programs/util.h: In function  UTIL_getOpenFileSize’:
+../../../net/ptah/export/gentoo/working-repos/lz4/programs/util.h:156:23: error: implicit declaration of function ‘fileno’ [-Wimplicit-function-declaration]
+  156 | #  define UTIL_fileno fileno
+      |                       ^~~~~~
+../../../net/ptah/export/gentoo/working-repos/lz4/programs/util.h:325:10: note: in expansion of macro ‘UTIL_fileno’
+  325 |     fd = UTIL_fileno(file);
+      |          ^~~~~~~~~~~
+
+These can be fixed either by forcing a standard to be applied in programs/platform.h or by not forcing the compiler to use an old standard.
+
+Since CMake and Makefile don't force C99 by default either, just drop it from
+meson.build.
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+---
+ build/meson/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/build/meson/meson.build b/build/meson/meson.build
+index fc6408af6..7e1696802 100644
+--- a/build/meson/meson.build
++++ b/build/meson/meson.build
+@@ -16,7 +16,6 @@ project(
+   'c',
+   license: 'BSD-2-Clause-Patent AND GPL-2.0-or-later',
+   default_options: [
+-    'c_std=c99',
+     'buildtype=release',
+     'warning_level=3'
+   ],

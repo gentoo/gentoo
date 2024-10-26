@@ -1,0 +1,67 @@
+# HG changeset patch
+# User Aidan Kehoe <kehoea@parhasard.net>
+# Date 1727073391 -3600
+#      Mon Sep 23 07:36:31 2024 +0100
+# Node ID 00eb7276ebb1a22e20e6f6b9b5247b196b44f3f1
+# Parent  d40990b854cf32198aea31eae0d60ce91ce0f4f7
+Avoid misaligned coding systems objects in the dump file,
+
+src/ChangeLog addition:
+
+2024-09-22  Aidan Kehoe  <kehoea@parhasard.net>
+
+	* file-coding.c:
+	* file-coding.c (aligned_sizeof_coding_system): New.
+	* file-coding.c (allocate_coding_system): Use it.
+	Avoid misaligned coding systems objects in the dump file,
+	previously addressed for lstreams, specifiers, opaque data in
+	Martin Buchholz's change of 2001-01-24. Approach taken the same as
+	that for specifiers.
+	* file-coding.c (struct convert_eol_coding_system):
+	Remove a dummy integer no longer needed.
+
+[Changelog patch removed]
+
+diff -r d40990b854cf -r 00eb7276ebb1 src/file-coding.c
+--- a/src/file-coding.c	Mon Sep 23 08:03:15 2024 +0100
++++ b/src/file-coding.c	Mon Sep 23 07:36:31 2024 +0100
+@@ -312,11 +312,18 @@
+   MAYBE_XCODESYSMETH (obj, finalize, (obj));
+ }
+ 
++inline static Bytecount
++aligned_sizeof_coding_system (Bytecount type_specific_size)
++{
++  return MAX_ALIGN_SIZE (offsetof (Lisp_Coding_System, data)
++                         + type_specific_size);
++}
++
+ static Bytecount
+ sizeof_coding_system (Lisp_Object obj)
+ {
+   const Lisp_Coding_System *p = XCODING_SYSTEM (obj);
+-  return offsetof (Lisp_Coding_System, data) + p->methods->extra_data_size;
++  return aligned_sizeof_coding_system (p->methods->extra_data_size);
+ }
+ 
+ static const struct memory_description coding_system_methods_description_1[]
+@@ -835,7 +842,7 @@
+ 			Bytecount data_size,
+ 			Lisp_Object name)
+ {
+-  Bytecount total_size = offsetof (Lisp_Coding_System, data) + data_size;
++  Bytecount total_size = aligned_sizeof_coding_system (data_size);
+   Lisp_Object obj = ALLOC_SIZED_LISP_OBJECT (total_size, coding_system);
+   Lisp_Coding_System *codesys = XCODING_SYSTEM (obj);
+ 
+@@ -3951,10 +3958,6 @@
+ struct convert_eol_coding_system
+ {
+   enum eol_type subtype;
+-  int dummy; /* On some architectures (eg ia64) the portable dumper can
+-                produce unaligned access errors without this field.  Probably
+-                because the combined structure of this structure and
+-                Lisp_Coding_System is not properly aligned. */
+ };
+ 
+ #define CODING_SYSTEM_CONVERT_EOL_SUBTYPE(codesys) \

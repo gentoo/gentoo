@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 # By default, drivers for all supported cameras will be compiled.
 # If you want to only compile for specific camera(s), set CAMERAS
@@ -41,7 +41,7 @@ IUSE_CAMERAS=(
 	pccam300 pccam600 pentax polaroid_pdc320 polaroid_pdc640 polaroid_pdc700 ptp2
 	ricoh ricoh_g3
 	samsung sierra sipix_blink2 sipix_web2 smal sonix sony_dscf1 sony_dscf55
-	soundvision	spca50x sq905 st2205 stv0674 stv0680 sx330z
+	soundvision spca50x sq905 st2205 stv0674 stv0680 sx330z
 	toshiba_pdrm11 topfield tp6801
 )
 

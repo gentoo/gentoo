@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="README"
 
@@ -17,14 +17,14 @@ HOMEPAGE="https://github.com/feed2imap/ruby-feedparser"
 SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64"
+IUSE="test"
 
 ruby_add_rdepend "dev-ruby/magic"
 
 ruby_add_bdepend "dev-ruby/magic
-	test? ( dev-ruby/mocha:1.0 )"
+	test? ( dev-ruby/mocha:2 dev-ruby/test-unit )"
 
 all_ruby_prepare() {
 	# Extract gemspec source from Rakefile
@@ -32,7 +32,8 @@ all_ruby_prepare() {
 	sed -i -e 's/PKG_NAME/"'${PN}'"/' \
 		-e 's/PKG_VERSION/"'${PV}'"/' \
 		-e '/s.files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
-	sed -i -e '2igem "mocha", "<2"' test/tc_sgml_parser.rb || die
+
+	sed -e '/mocha/ s/setup/test_unit/' -i test/tc_sgml_parser.rb || die
 }
 
 each_ruby_prepare() {

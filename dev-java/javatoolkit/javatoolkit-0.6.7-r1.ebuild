@@ -15,7 +15,7 @@ SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 sparc ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 

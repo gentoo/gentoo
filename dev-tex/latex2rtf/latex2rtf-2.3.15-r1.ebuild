@@ -12,7 +12,7 @@ S="${WORKDIR}/${P%b}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

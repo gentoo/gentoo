@@ -1,0 +1,16 @@
+Quick workaround for libSPIRV seemingly having became a stub in glslang-1.3.296
+
+https://bugs.gentoo.org/941968
+
+TODO?: rather than worry with the constant issues with glslang, should likely
+always force shaderc -- it's also what upstream prefers by default and so the
+glslang paths are hardly tested.
+--- a/src/glsl/meson.build
++++ b/src/glsl/meson.build
+@@ -39,4 +39,5 @@
+ 
+     glslang_deps += spirv
++    glslang_deps += cxx.find_library('glslang', required: required, static: static)
+ 
+     if static
+

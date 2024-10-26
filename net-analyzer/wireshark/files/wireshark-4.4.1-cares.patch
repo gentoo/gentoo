@@ -1,0 +1,48 @@
+https://gitlab.com/wireshark/wireshark/-/commit/0e120834b0883c9940d31f210a51613f723ad422
+
+From 0e120834b0883c9940d31f210a51613f723ad422 Mon Sep 17 00:00:00 2001
+From: John Thacker <johnthacker@gmail.com>
+Date: Thu, 10 Oct 2024 23:15:18 +0000
+Subject: [PATCH] CMake: Fix our c-ares version discovery
+
+c-ares 1.34.0 and later generate ARES_VERSION_STR using a macro, so
+fetch the version from ARES_VERSION_MAJOR, ARES_VERSION_MINOR, and
+ARES_VERSION_PATCH.
+
+Fixes #20125
+
+
+(cherry picked from commit 7c1418625d2ba5095ef5393abdb2141c990a662c)
+
+Co-authored-by: Gerald Combs <gerald@wireshark.org>
+--- a/cmake/modules/FindCARES.cmake
++++ b/cmake/modules/FindCARES.cmake
+@@ -36,11 +36,22 @@ find_library( CARES_LIBRARY
+ )
+ 
+ # Try to retrieve version from header if found
++# Adapted from https://stackoverflow.com/a/47084079/82195
+ if(CARES_INCLUDE_DIR)
+-  set(_version_regex "^#define[ \t]+ARES_VERSION_STR[ \t]+\"([^\"]+)\".*")
+-  file(STRINGS "${CARES_INCLUDE_DIR}/ares_version.h" CARES_VERSION REGEX "${_version_regex}")
+-  string(REGEX REPLACE "${_version_regex}" "\\1" CARES_VERSION "${CARES_VERSION}")
+-  unset(_version_regex)
++  file(READ "${CARES_INCLUDE_DIR}/ares_version.h" _ares_version_h)
++
++  string(REGEX MATCH "#[\t ]*define[ \t]+ARES_VERSION_MAJOR[ \t]+([0-9]+)" _ ${_ares_version_h})
++  set(_ares_version_major ${CMAKE_MATCH_1})
++  string(REGEX MATCH "#[\t ]*define[ \t]+ARES_VERSION_MINOR[ \t]+([0-9]+)" _ ${_ares_version_h})
++  set(_ares_version_minor ${CMAKE_MATCH_1})
++  string(REGEX MATCH "#[\t ]*define[ \t]+ARES_VERSION_PATCH[ \t]+([0-9]+)" _ ${_ares_version_h})
++  set(_ares_version_patch ${CMAKE_MATCH_1})
++  set(CARES_VERSION ${_ares_version_major}.${_ares_version_minor}.${_ares_version_patch})
++
++  unset(_ares_version_h)
++  unset(_ares_version_major)
++  unset(_ares_version_minor)
++  unset(_ares_version_patch)
+ endif()
+ 
+ # handle the QUIETLY and REQUIRED arguments and set CARES_FOUND to TRUE if
+-- 
+GitLab

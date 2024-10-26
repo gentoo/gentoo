@@ -1,0 +1,24 @@
+From bbfc674fc85c874560c784bd8076be7c9b3b5f43 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 1 Sep 2024 22:33:09 -0400
+Subject: [PATCH] c99 porting: fix UB from not including headers
+
+---
+ examples/matrix/matrix.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/examples/matrix/matrix.c b/examples/matrix/matrix.c
+index 1d3e1df..3fbecf6 100644
+--- a/examples/matrix/matrix.c
++++ b/examples/matrix/matrix.c
+@@ -28,6 +28,7 @@
+ #ifdef HAVE_CONFIG_H
+ #include <XbaeConfig.h>
+ #endif
++#include <stdio.h>
+ #include <stdlib.h>
+ #ifdef USE_EDITRES
+ #include <X11/Intrinsic.h>
+-- 
+2.44.2
+

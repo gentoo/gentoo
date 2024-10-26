@@ -5,6 +5,11 @@
   <email>swegener@gentoo.org</email>
 </maintainer>
   <use>
+    <flag name="debuginfod">Enable debuginfod support via <pkg>dev-libs/elfutils</pkg> libdebuginfod</flag>
+    <flag name="dtrace-symlink">
+        Provide /usr/bin/dtrace symlink pointing to /usr/bin/stap-dtrace.
+        This prevents coinstallation with <pkg>dev-debug/dtrace</pkg>.
+    </flag>
     <flag name="libvirt">Support probing of libvirt domains.</flag>
   </use>
 </pkgmetadata>

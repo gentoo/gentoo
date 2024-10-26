@@ -16,14 +16,15 @@ LIBABIGAIL_DOCS_USEFLAG="+doc"
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools bash-completion-r1 python-any-r1 out-of-source
+inherit libtool bash-completion-r1 python-any-r1 out-of-source
 
 DESCRIPTION="Suite of tools for checking ABI differences between ELF objects"
 HOMEPAGE="https://sourceware.org/libabigail/"
 if [[ ${PV} == 9999 ]] ; then
 	LIBABIGAIL_DOCS_PREBUILT=0
 	EGIT_REPO_URI="https://sourceware.org/git/libabigail.git"
-	inherit git-r3
+	EGIT_SUBMODULES=()
+	inherit autotools git-r3
 else
 	SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.xz"
 	if [[ ${LIBABIGAIL_DOCS_PREBUILT} == 1 ]] ; then
@@ -31,7 +32,7 @@ else
 		LIBABIGAIL_DOCS_USEFLAG="doc"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
@@ -58,9 +59,11 @@ BDEPEND="
 
 src_prepare() {
 	default
-	# need to run our autotools, due to ltmain.sh including Redhat calls:
-	# cannot read spec file '/usr/lib/rpm/redhat/redhat-hardened-ld': No such file or directory
-	eautoreconf
+	if [[ ${PV} = 9999 ]] ; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 my_src_configure() {

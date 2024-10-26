@@ -18,12 +18,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="pulseaudio"
+IUSE="pipewire pulseaudio"
 
 DEPEND="
 	dev-libs/wayland
-	media-libs/mesa[wayland]
+	media-libs/mesa[opengl,wayland]
 	media-video/ffmpeg[pulseaudio?,x264]
+	x11-libs/libdrm
+	pipewire? ( >=media-video/pipewire-1.0.5:= )
 	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${DEPEND}"
@@ -36,6 +38,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		$(meson_feature pulseaudio pulse)
+		$(meson_feature pipewire)
 	)
 	meson_src_configure
 }

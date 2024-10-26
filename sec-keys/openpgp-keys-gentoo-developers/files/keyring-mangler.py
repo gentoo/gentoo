@@ -35,7 +35,7 @@ gentoo_auth = sys.argv[1]
 active_devs = sys.argv[2]
 armored_output = sys.argv[3]
 
-gpg = gnupg.GPG(verbose=False, gnupghome=os.environ["GNUPGHOME"])
+gpg = gnupg.GPG(verbose=False, gnupghome=os.environ["GNUPGHOME"], options="--auto-check-trustdb")
 gpg.encoding = "utf-8"
 
 with open(gentoo_auth, "r", encoding="utf8") as keyring:
@@ -90,6 +90,9 @@ for key in gpg.list_keys(sigs=True):
         raise ValidationErr(f"{key['uids']=} lacks a signature from L2 key!")
 
     good_keys.append(key["fingerprint"])
+
+if len(good_keys) <= len(AUTHORITY_KEYS):
+    raise RuntimeError("No valid developer keys were found!")
 
 with open(armored_output, "w", encoding="utf8") as keyring:
     keyring.write(gpg.export_keys(good_keys))

@@ -10,7 +10,7 @@ HOMEPAGE="http://www.grisbi.org https://github.com/grisbi/grisbi"
 SRC_URI="https://downloads.sourceforge.net/${PN}/grisbi%20stable/$(ver_cut 1-2).x/${P}.tar.bz2"
 IUSE="goffice nls ofx ssl"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
 

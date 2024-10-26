@@ -15,7 +15,7 @@ S="${WORKDIR}/contrib-${PV}"
 
 LICENSE="public-domain"
 SLOT="29"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64"
 
 DEPEND="
 	dev-libs/gmp:0=

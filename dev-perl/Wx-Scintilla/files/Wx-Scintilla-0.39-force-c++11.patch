@@ -1,0 +1,13 @@
+Uses std::auto_ptr which has been officially removed in C++17.
+While GCC still has it present LLVM has explicitly removed it.
+
+--- a/inc/Module/Build/Scintilla/GTK.pm
++++ b/inc/Module/Build/Scintilla/GTK.pm
+@@ -50,6 +50,7 @@
+ 		'-o ' . $object_name,
+ 		'-O2',
+ 		'-Wall',
++		'-std=c++11',
+ 		$object_name !~ /((Plat|Scintilla)WX|scintilla)\.o/
+ 		? '-Wno-missing-braces -Wno-char-subscripts'
+ 		: '',

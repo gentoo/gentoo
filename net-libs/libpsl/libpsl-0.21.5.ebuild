@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit meson-multilib python-any-r1
 
 DESCRIPTION="C library for the Public Suffix List"
@@ -12,8 +12,8 @@ SRC_URI="https://github.com/rockdaboot/${PN}/releases/download/${PV}/${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="icu +idn test"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+IUSE="icu +idn test static-libs"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -55,6 +55,12 @@ multilib_src_configure() {
 	else
 		emesonargs+=(
 			-Druntime=no
+		)
+	fi
+
+	if use static-libs ; then
+		emesonargs+=(
+			-Ddefault_library=both
 		)
 	fi
 

@@ -1,0 +1,41 @@
+diff --git i/configure.ac w/configure.ac
+index 97ab9e7..8cd2efb 100644
+--- i/configure.ac
++++ w/configure.ac
+@@ -208,6 +208,10 @@ AC_MSG_RESULT($val)
+ # optional libraries.
+ AC_PROG_CC
+ AC_PROG_CPP
++AN_MAKEVAR([AR], [AC_PROG_AR])
++AN_PROGRAM([ar], [AC_PROG_AR])
++AC_DEFUN([AC_PROG_AR], [AC_CHECK_TOOL(AR, ar, :)])
++AC_PROG_AR
+ 
+ # added -Wall for gcc, what about for others?
+ if test "x$GCC" = "xyes"; then
+diff --git i/libs/Makefile.in w/libs/Makefile.in
+index 28b6732..c66d3e4 100644
+--- i/libs/Makefile.in
++++ w/libs/Makefile.in
+@@ -100,7 +100,7 @@ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ AM_V_AR = $(am__v_AR_@AM_V@)
+ am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)
+diff --git i/modules/FvwmScript/Widgets/Makefile.in w/modules/FvwmScript/Widgets/Makefile.in
+index 8bda02d..582b046 100644
+--- i/modules/FvwmScript/Widgets/Makefile.in
++++ w/modules/FvwmScript/Widgets/Makefile.in
+@@ -100,7 +100,7 @@ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ AM_V_AR = $(am__v_AR_@AM_V@)
+ am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)

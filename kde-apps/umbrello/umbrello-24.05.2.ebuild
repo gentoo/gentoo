@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/umbrello/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="php"
 
 RDEPEND="
@@ -43,7 +43,7 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	php? (
 		dev-util/kdevelop:5=
-		dev-util/kdevelop-pg-qt:5
+		dev-util/kdevelop-pg-qt:0
 		dev-util/kdevelop-php:5
 	)
 "

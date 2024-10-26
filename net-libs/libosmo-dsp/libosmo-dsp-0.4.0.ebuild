@@ -5,12 +5,12 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A library with SDR DSP primitives"
-HOMEPAGE="http://git.osmocom.org/libosmo-dsp/"
+DESCRIPTION="Library with SDR DSP primitives"
+HOMEPAGE="https://gitea.osmocom.org/sdr/libosmo-dsp/"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.osmocom.org/${PN}"
+	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
 else
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"

@@ -21,7 +21,7 @@ S="${WORKDIR}/Arduino-${PV}"
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64"
 
 BDEPEND=">=dev-java/ant-1.10.14-r3:0"
 CDEPEND="dev-embedded/arduino-builder"

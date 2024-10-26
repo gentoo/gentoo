@@ -34,15 +34,17 @@ RDEPEND="
 		openssl? ( dev-libs/openssl:= )
 	)
 	test? (
-		media-gfx/imagemagick
+		media-fonts/dejavu
+		media-gfx/imagemagick[X]
 		x11-apps/xwd
 		x11-apps/xwininfo
 	)
-
 "
+
 DEPEND="
 	${RDEPEND}
 "
+
 BDEPEND="
 	doc? (
 		app-text/doxygen[dot]

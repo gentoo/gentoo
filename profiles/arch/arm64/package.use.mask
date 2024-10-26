@@ -1,6 +1,28 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-10-23)
+# Debug-enabled binary packages are built for a subset of architectures.
+sys-kernel/gentoo-kernel-bin -debug
+
+# Benda Xu <heroxbd@gentoo.org> (2024-10-10)
+# dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on arm64
+sys-cluster/slurm nvml ucx
+
+# orbea <orbea@riseup.net> (2024-07-19)
+# Unmask the dynarec flag which has arm64 asm.
+games-emulation/rmg -dynarec
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-16)
+# Unmask the ugrd flag for installkernel. It is keyworded here
+sys-kernel/installkernel -ugrd
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-14)
+# Abandoned upstream, does not take bug reports, unsupported in Gentoo.
+# Only remaining use is as a requirement for dev-lang/go on arm{,64}.
+# See #934149, #934151, #936022, #936021
+sys-devel/binutils -gold
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which is keyworded here
 >=kde-apps/kdeutils-meta-24.05.1 -gpg
@@ -16,10 +38,6 @@ x11-libs/libdrm -video_cards_vmware
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-12)
 # Supports 64-bit NEON
 media-libs/opencv -cpu_flags_arm_neon
-
-# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-02)
-# Supports 64-bit NEON
-media-libs/openpgl -cpu_flags_arm_neon
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
@@ -40,10 +58,6 @@ www-servers/nginx test
 # Alexander Tsoy <alexander@tsoy.me> (2024-01-31)
 # Supports 64-bit NEON
 media-libs/zita-resampler -cpu_flags_arm_neon
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/PyQt6 is keyworded here
-dev-python/QtPy -pyqt6
 
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
 # No sys-block/nbdkit on arm, yet
@@ -81,6 +95,7 @@ dev-libs/botan -cpu_flags_arm_neon
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
@@ -222,7 +237,7 @@ app-text/enchant voikko
 sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
-sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
+sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
 >=sys-libs/compiler-rt-sanitizers-16 -orc
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
@@ -265,11 +280,6 @@ media-video/ffmpeg -rav1e
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring
-
-# Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/pahole.
-sys-kernel/gentoo-kernel debug
-sys-kernel/vanilla-kernel debug
 
 # Sam James <sam@gentoo.org> (2020-06-11)
 # PGO works on arm64
@@ -452,10 +462,6 @@ media-gfx/pstoedit emf
 # openvz-sources are likely too old for any proper arm64 usage
 app-emulation/libvirt openvz
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# Virtualbox is x86 only
-app-emulation/libvirt virtualbox
-
 # Alexis Ballier <aballier@gentoo.org> (2017-06-21)
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers
@@ -495,5 +501,4 @@ sci-libs/linux-gpib firmware
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-02-20)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra spacenav
 media-gfx/pstoedit emf

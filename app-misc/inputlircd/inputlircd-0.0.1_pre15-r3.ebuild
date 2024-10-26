@@ -11,7 +11,7 @@ SRC_URI="http://gentooexperimental.org/~genstef/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
 
 src_prepare() {
 	local ver="$(best_version sys-kernel/linux-headers)"

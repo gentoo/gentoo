@@ -11,7 +11,7 @@ SRC_URI="https://github.com/troglobit/inadyn/releases/download/v${PV}/${P}.tar.x
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="gnutls mbedtls openssl"
 REQUIRED_USE="?? ( gnutls mbedtls openssl )"
 
@@ -28,6 +28,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${PN}-2.12.0-musl.patch" )
 
 src_configure() {
 	# Tests would need a custom config file in homedir per configure help?

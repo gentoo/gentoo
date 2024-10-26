@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
 else
 	# NOTE: Cannot be "PYPI_PN=latex-rubber" + "inherit pypi" due to missing files
 	SRC_URI="https://gitlab.com/latex-rubber/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc ~riscv x86"
 fi
 
 DESCRIPTION="A LaTeX wrapper for automatically building documents"

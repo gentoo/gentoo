@@ -12,9 +12,9 @@ Pending questions:
 -    if [ "${KDE_SESSION_VERSION:-0}" -gt 4 ] ; then
 -        default_dir="$(qtpaths --writable-path ConfigLocation)"
 +    if [ "${KDE_SESSION_VERSION:-0}" -gt 5 ] ; then
-+        default_dir="$($(pkg-config --variable=bindir Qt6Core)/qt6paths) --writable-path ConfigLocation)"
++        default_dir="$($(pkg-config --variable=bindir Qt6Core)/qtpaths6 --writable-path ConfigLocation)"
 +        default_file="$default_dir/mimeapps.list"
-+    elif [ x"$KDE_SESSION_VERSION" = x"5" ; then
++    elif [ x"$KDE_SESSION_VERSION" = x"5" ] ; then
 +        default_dir="$(qtpaths5 --writable-path ConfigLocation)"
          default_file="$default_dir/mimeapps.list"
      elif [ x"$KDE_SESSION_VERSION" = x"4" ]; then

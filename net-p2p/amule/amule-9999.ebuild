@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
-HOMEPAGE="http://www.amule.org/"
+HOMEPAGE="https://www.amule.org/"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -53,12 +53,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
 	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
 	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
-	"${FILESDIR}/${PN}-2.3.3-wx3.2.patch"
+	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
 )
-
-pkg_setup() {
-	setup-wxwidgets
-}
 
 src_prepare() {
 	default
@@ -72,6 +68,8 @@ src_prepare() {
 }
 
 src_configure() {
+	setup-wxwidgets
+
 	use debug || append-cppflags -DwxDEBUG_LEVEL=0
 	append-cxxflags -std=gnu++14
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -43,7 +43,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_ANY_R1_ECLASS} ]]; then
+if [[ -z ${_PYTHON_ANY_R1_ECLASS} ]]; then
 _PYTHON_ANY_R1_ECLASS=1
 
 if [[ ${_PYTHON_R1_ECLASS} ]]; then
@@ -245,7 +245,7 @@ unset -f _python_any_set_globals
 # )
 # @CODE
 python_gen_any_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local depstr=${1}
 	[[ ${depstr} ]] || die "No dependency string provided"
@@ -271,7 +271,8 @@ python_gen_any_dep() {
 #
 # This function will call python_check_deps() if defined.
 python_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
+	_python_sanity_checks
 
 	# support developer override
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
@@ -337,7 +338,7 @@ python_setup() {
 # In a binary package installs is a no-op. If you need Python in pkg_*
 # phases of a binary package, call python_setup directly.
 python-any-r1_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }

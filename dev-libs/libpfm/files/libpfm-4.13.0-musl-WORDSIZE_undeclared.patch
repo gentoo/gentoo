@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/935529
+
+__WORDSIZE__ is used for getting correct ABI struct sizes, its undeclared on musl unless you include the bits/reg.h header.
+
+--- a/include/perfmon/pfmlib.h    2023-03-29 02:44:33.000000000 +0300
++++ b/include/perfmon/pfmlib.h  2024-08-24 12:45:29.084265290 +0300
+@@ -38,6 +38,9 @@
+ #include <unistd.h>
+ #include <inttypes.h>
+ #include <stdio.h>
++#ifndef __GLIBC__
++#include <bits/reg.h>
++#endif
+ 
+ #define LIBPFM_VERSION         (4 << 16 | 0)
+ #define PFM_MAJ_VERSION(v)     ((v)>>16)
+

@@ -4,7 +4,7 @@
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
@@ -26,7 +26,7 @@
 # If non-empty, then the repo likely needs EGIT_LFS to clone properly.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -35,13 +35,8 @@ _GIT_R3_ECLASS=1
 
 PROPERTIES+=" live"
 
-if [[ ${EAPI} != 6 ]]; then
-	BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
-	[[ ${EGIT_LFS} ]] && BDEPEND+=" dev-vcs/git-lfs"
-else
-	DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
-	[[ ${EGIT_LFS} ]] && DEPEND+=" dev-vcs/git-lfs"
-fi
+BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+[[ ${EGIT_LFS} ]] && BDEPEND+=" dev-vcs/git-lfs"
 
 # @ECLASS_VARIABLE: EGIT_CLONE_TYPE
 # @USER_VARIABLE

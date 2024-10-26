@@ -14,7 +14,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/containers/common/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P#containers-}"
-	KEYWORDS="amd64 arm64 ~riscv"
+	KEYWORDS="amd64 arm64 ~loong ~riscv"
 fi
 
 LICENSE="Apache-2.0"

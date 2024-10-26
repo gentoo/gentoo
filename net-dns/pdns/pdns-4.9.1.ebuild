@@ -18,7 +18,7 @@ PATCHES=(
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug doc geoip ldap lmdb lua-records mysql odbc postgres remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"

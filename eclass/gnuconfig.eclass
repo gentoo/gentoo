@@ -6,7 +6,7 @@
 # Sam James <sam@gentoo.org>
 # @AUTHOR:
 # Will Woods <wwoods@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Refresh bundled gnuconfig files (config.guess, config.sub)
 # @DESCRIPTION:
 # This eclass is used to automatically update files that typically come with
@@ -16,13 +16,13 @@
 # other files that come with automake, e.g. depcomp, mkinstalldirs, etc.
 #
 
-case ${EAPI:-0} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GNUCONFIG_ECLASS} ]] ; then
  _GNUCONFIG_CLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: GNUCONFIG_DEPEND
 # @OUTPUT_VARIABLE
@@ -37,12 +37,7 @@ GNUCONFIG_DEPEND="sys-devel/gnuconfig"
 # ebuilds form conditional depends by using ${GNUCONFIG_DEPEND} in
 # their own DEPEND string.
 : "${GNUCONFIG_AUTO_DEPEND:=yes}"
-if [[ ${GNUCONFIG_AUTO_DEPEND} != "no" ]] ; then
-	case ${EAPI} in
-		6) DEPEND=${GNUCONFIG_DEPEND} ;;
-		*) BDEPEND=${GNUCONFIG_DEPEND} ;;
-	esac
-fi
+[[ ${GNUCONFIG_AUTO_DEPEND} != "no" ]] && BDEPEND=${GNUCONFIG_DEPEND}
 
 # @FUNCTION: gnuconfig_update
 # @USAGE: [file1 file2 ...]
@@ -118,23 +113,11 @@ gnuconfig_do_update() {
 # This searches the standard locations for the newest config.{sub|guess}, and
 # returns the directory where they can be found.
 gnuconfig_findnewest() {
-	local locations=()
-	local prefix
-
-	case ${EAPI} in
-		6)
-			prefix="${EPREFIX}"
-			;;
-		*)
-			prefix="${BROOT}"
-			;;
-	esac
-
-	locations+=(
-		"${prefix}"/usr/share/misc/config.sub
-		"${prefix}"/usr/share/gnuconfig/config.sub
-		"${prefix}"/usr/share/automake*/config.sub
-		"${prefix}"/usr/share/libtool/config.sub
+	local locations=(
+		"${BROOT}"/usr/share/misc/config.sub
+		"${BROOT}"/usr/share/gnuconfig/config.sub
+		"${BROOT}"/usr/share/automake*/config.sub
+		"${BROOT}"/usr/share/libtool/config.sub
 	)
 
 	grep -s '^timestamp' "${locations[@]}" | \

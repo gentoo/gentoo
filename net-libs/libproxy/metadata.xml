@@ -7,7 +7,6 @@
 	<use>
 		<flag name="duktape">Use <pkg>dev-lang/duktape</pkg> for PAC parsing</flag>
 		<flag name="gnome">Enable support for reading proxy settings from GNOME</flag>
-		<flag name="kde">Enable support for reading proxy settings from KDE</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">libproxy/libproxy</remote-id>

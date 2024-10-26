@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="examples +native-extensions test"
 RESTRICT="!test? ( test )"
 
@@ -37,6 +37,7 @@ BDEPEND="
 	test? (
 		dev-db/postgresql
 		dev-python/psycopg:0[${PYTHON_USEDEP}]
+		sys-libs/timezone-data
 	)
 "
 
@@ -62,6 +63,7 @@ src_test() {
 	initdb -D "${T}"/pgsql || die
 	pg_ctl -w -D "${T}"/pgsql start -o "-h '' -k '${T}'" || die
 	createdb -h "${T}" peewee_test || die
+	psql -h "${T}" peewee_test -c 'create extension hstore;' || die
 
 	local -x PEEWEE_PSQL_HOST="${T}"
 	distutils-r1_src_test

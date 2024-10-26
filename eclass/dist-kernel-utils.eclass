@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -72,7 +72,7 @@ dist-kernel_get_image_path() {
 # the kernel version, <image> full path to the image, <system.map>
 # full path to System.map.
 dist-kernel_install_kernel() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 3 ]] || die "${FUNCNAME}: invalid arguments"
 	local version=${1}
@@ -125,7 +125,7 @@ dist-kernel_install_kernel() {
 # This function is to be used in pkg_postinst() of ebuilds installing
 # kernel modules that are included in the initramfs.
 dist-kernel_reinstall_initramfs() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
 	local kernel_dir=${1}
@@ -148,7 +148,7 @@ dist-kernel_reinstall_initramfs() {
 # @DESCRIPTION:
 # Convert a Gentoo-style ebuild version to kernel "x.y.z[-rcN]" version.
 dist-kernel_PV_to_KV() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
 	local pv=${1}
@@ -159,30 +159,80 @@ dist-kernel_PV_to_KV() {
 	echo "${kv}"
 }
 
+# @FUNCTION: dist-kernel_get_module_suffix
+# @USAGE: <kernel_config>
+# @DESCRIPTION:
+# Returns the suffix for kernel modules based on the CONFIG_MODULES_COMPESS_*
+# setting in the kernel config and USE=modules-compress.
+dist-kernel_get_module_suffix() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
+
+	local config=${1}
+
+	if ! in_iuse modules-compress || ! use modules-compress; then
+		echo .ko
+	elif [[ ! -r ${config} ]]; then
+		die "Cannot find kernel config ${config}"
+	elif grep -q "CONFIG_MODULE_COMPRESS_NONE=y" "${config}"; then
+		echo .ko
+	elif grep -q "CONFIG_MODULE_COMPRESS_GZIP=y" "${config}"; then
+		echo .ko.gz
+	elif grep -q "CONFIG_MODULE_COMPRESS_XZ=y" "${config}"; then
+		echo .ko.xz
+	elif grep -q "CONFIG_MODULE_COMPRESS_ZSTD=y" "${config}"; then
+		echo .ko.zst
+	else
+		die "Module compression is enabled, but compressor not known"
+	fi
+}
+
 # @FUNCTION: dist-kernel_compressed_module_cleanup
 # @USAGE: <path>
 # @DESCRIPTION:
 # Traverse path for duplicate (un)compressed modules and remove all
 # but the newest variant.
 dist-kernel_compressed_module_cleanup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
 	local path=${1}
-	local basename f
+	local config_path=/usr/src/linux-${KV_FULL}/.config
+
+	local option
+	for option in config source/.config build/.config; do
+		if [[ -f ${path}/${option} ]]; then
+			config_path=${path}/${option}
+			break
+		fi
+	done
+
+	local preferred=
+	[[ -f ${config_path} ]] && preferred=$(dist-kernel_get_module_suffix "${config_path}")
+
+	local basename suffix
 
 	while read -r basename; do
 		local prev=
-		for f in "${path}/${basename}"{,.gz,.xz,.zst}; do
-			if [[ ! -e ${f} ]]; then
-				continue
+		for suffix in .ko .ko.gz .ko.xz .ko.zst; do
+			[[ ${suffix} == ${preferred} ]] && continue
+			local current=${path}/${basename}${suffix}
+			[[ -f ${current} ]] || continue
+
+			if [[ -f ${path}/${basename}${preferred} ]]; then
+				# If the module with the desired compression exists, remove
+				# all other variations.
+				rm -v "${current}" || die
 			elif [[ -z ${prev} ]]; then
-				prev=${f}
-			elif [[ ${f} -nt ${prev} ]]; then
+				# If not, then keep whichever of the duplicate modules is the
+				# newest. Normally you should not end up here.
+				prev=${current}
+			elif [[ ${current} -nt ${prev} ]]; then
 				rm -v "${prev}" || die
-				prev=${f}
+				prev=${current}
 			else
-				rm -v "${f}" || die
+				rm -v "${current}" || die
 			fi
 		done
 	done < <(
@@ -192,7 +242,8 @@ dist-kernel_compressed_module_cleanup() {
 			-o -name '*.ko.gz' \
 			-o -name '*.ko.xz' \
 			-o -name '*.ko.zst' \
-			\) | sed -e 's:[.]\(gz\|xz\|zst\)$::' | sort | uniq -d || die
+			\) | sed -e 's:[.]ko\(\|[.]gz\|[.]xz\|[.]zst\)$::' |
+				sort | uniq -d || die
 	)
 }
 

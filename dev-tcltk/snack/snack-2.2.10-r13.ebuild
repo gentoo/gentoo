@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=yes
 
@@ -12,8 +12,8 @@ inherit distutils-r1 flag-o-matic toolchain-funcs virtualx
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
 HOMEPAGE="http://www.speech.kth.se/snack/"
 SRC_URI="http://www.speech.kth.se/snack/dist/${PN}${PV}.tar.gz"
-
 S="${WORKDIR}/${PN}${PV}/unix"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
@@ -26,14 +26,17 @@ DEPEND="
 	dev-lang/tk:0=
 	alsa? ( media-libs/alsa-lib )
 	python? ( ${PYTHON_DEPS} )
-	vorbis? ( media-libs/libvorbis )"
+	vorbis? ( media-libs/libvorbis )
+"
 RDEPEND="${DEPEND}"
-BDEPEND="python? (
-	${PYTHON_DEPS}
-	${DISTUTILS_DEPS}
-)"
+BDEPEND="
+	python? (
+		${PYTHON_DEPS}
+		${DISTUTILS_DEPS}
+	)
+"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/alsa-undef-sym.patch
@@ -55,12 +58,15 @@ src_prepare() {
 	# adds -install_name (soname on Darwin)
 	[[ ${CHOST} == *-darwin* ]] && PATCHES+=( "${FILESDIR}"/${P}-darwin.patch )
 
+	# For Clang 16, bunch of -Wimplicit-int, etc
+	append-flags -std=gnu89
+
 	sed \
 		-e "s:ar cr:$(tc-getAR) cr:g" \
 		-e "s|-O|${CFLAGS}|g" \
 		-i Makefile.in || die
 
-	cd ..
+	cd .. || die
 
 	default
 
@@ -69,15 +75,12 @@ src_prepare() {
 		-i generic/jkFormatMP3.c || die
 	rm tests/{play,record}.test || die
 	if use python; then
-		cd python
+		cd python || die
 		distutils-r1_src_prepare
 	fi
 }
 
 src_configure() {
-	# For Clang 16, bunch of -Wimplicit-int, etc
-	append-flags -std=gnu89
-
 	local myconf=""
 
 	use alsa && myconf+=" --enable-alsa"
@@ -92,9 +95,10 @@ src_configure() {
 		--includedir="${EPREFIX}"/usr/include \
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
 		--with-tk="${EPREFIX}"/usr/$(get_libdir) \
-		$myconf
+		${myconf}
+
 	if use python; then
-		cd ../python
+		cd ../python || die
 		distutils-r1_src_configure
 	fi
 }
@@ -102,7 +106,7 @@ src_configure() {
 src_compile() {
 	default
 	if use python; then
-		cd ../python
+		cd ../python || die
 		distutils-r1_src_compile
 	fi
 }

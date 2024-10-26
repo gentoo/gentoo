@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/x48.berlios/${P}.tar.bz2"
 LICENSE="GPL-3"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="readline"
 
 RDEPEND="

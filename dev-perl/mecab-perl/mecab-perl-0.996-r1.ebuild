@@ -11,7 +11,7 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="~app-text/mecab-${PV}"
 BDEPEND="${RDEPEND}"

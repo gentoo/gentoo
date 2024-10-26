@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}4-${MY_COMMIT}"
 
 LICENSE="EPL-1.0"
 SLOT="4"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 CP_DEPEND="dev-java/hamcrest-core:1.3"
 DEPEND="${CP_DEPEND}
@@ -44,7 +44,8 @@ src_prepare() {
 src_test() {
 	cd "${JAVA_TEST_SRC_DIR}" || die
 
-	local CP=".:../resources:${S}/${PN}.jar:$(java-pkg_getjars ${JAVA_TEST_GENTOO_CLASSPATH})"
+	local CP=".:../resources:${S}/${PN}.jar:$(java-pkg_getjars \
+		--build-only ${JAVA_TEST_GENTOO_CLASSPATH})"
 
 	ejavac -cp "${CP}" -d . $(find * -name "*.java")
 	# pom.xml lines 264-268

@@ -36,14 +36,14 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
 RESTRICT="test"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
@@ -96,13 +96,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk? (
-			x11-libs/gtk+:3
-			xwidgets? (
-				net-libs/webkit-gtk:4.1=
-				x11-libs/libXcomposite
-			)
-		)
+		gtk? ( x11-libs/gtk+:3 )
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
@@ -166,8 +160,10 @@ src_prepare() {
 }
 
 src_configure() {
+	replace-flags "-O[3-9]" -O2			#839405
+
 	# We want floating-point arithmetic to be correct #933380
-	replace-flags -Ofast -O3
+	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
 
 	local myconf
@@ -229,7 +225,7 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
+			myconf+=" --with-x-toolkit=gtk3 --without-xwidgets"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -248,8 +244,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
 	if tc-is-cross-compiler; then

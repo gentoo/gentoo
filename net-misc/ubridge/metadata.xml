@@ -5,10 +5,6 @@
 		<email>mmk@levelnine.at</email>
 		<name>Michael Mair-Keimberger</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>g.djavadyan@gmail.com</email>
-		<name>Garri Djavadyan</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -18,4 +14,7 @@
 		various technologies. Currently bridging between UDP tunnels, Ethernet
 		and TAP interfaces is supported. Packet capture is also supported.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">GNS3/ubridge</remote-id>
+	</upstream>
 </pkgmetadata>

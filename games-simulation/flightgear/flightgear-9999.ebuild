@@ -3,12 +3,11 @@
 
 EAPI=7
 
-inherit cmake toolchain-funcs git-r3
+inherit cmake flag-o-matic toolchain-funcs git-r3
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
-	git://mapserver.flightgear.org/${PN}"
+EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/${PN}"
 EGIT_BRANCH="next"
 
 LICENSE="GPL-2"
@@ -81,6 +80,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch, -Werror=odr
+	# https://bugs.gentoo.org/859217
+	# https://sourceforge.net/p/flightgear/codetickets/2908/
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DENABLE_AUTOTESTING=OFF

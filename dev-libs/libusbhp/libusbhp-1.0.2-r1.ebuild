@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="http://www.aasimon.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND=">=virtual/libudev-147"
 DEPEND="${RDEPEND}"

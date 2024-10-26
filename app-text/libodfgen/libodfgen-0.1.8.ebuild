@@ -31,6 +31,10 @@ BDEPEND="
 	doc? ( app-text/doxygen )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.8-gcc15-cstdint.patch
+)
+
 src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf

@@ -1,0 +1,297 @@
+From 3d330dc50a608581c81d269b661af0c938155428 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 26 Jul 2024 00:10:33 +0200
+Subject: [PATCH 1/5] main must return int
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/CONFIG/src/backend/archinfo_aix.c
++++ b/CONFIG/src/backend/archinfo_aix.c
+@@ -180,7 +180,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_freebsd.c
++++ b/CONFIG/src/backend/archinfo_freebsd.c
+@@ -243,7 +243,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_irix.c
++++ b/CONFIG/src/backend/archinfo_irix.c
+@@ -198,7 +198,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_linux.c
++++ b/CONFIG/src/backend/archinfo_linux.c
+@@ -571,7 +571,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_sfu.c
++++ b/CONFIG/src/backend/archinfo_sfu.c
+@@ -151,7 +151,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_sunos.c
++++ b/CONFIG/src/backend/archinfo_sunos.c
+@@ -212,7 +212,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_win.c
++++ b/CONFIG/src/backend/archinfo_win.c
+@@ -221,7 +221,7 @@ int ProbeThrottle()
+    return(iret);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int flags, CacheLevel, ncpu, mhz, bits, sure;
+    enum MACHTYPE arch=MACHOther;
+--- a/CONFIG/src/backend/archinfo_x86.c
++++ b/CONFIG/src/backend/archinfo_x86.c
+@@ -460,7 +460,7 @@ int GetFlags(int nargs, char **args, int *CacheLevel)
+    return(flag);
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int ierr, x86_64, flags, CacheLevel;
+    unsigned family, model;
+--- a/bin/extract.c
++++ b/bin/extract.c
+@@ -3904,7 +3904,7 @@ void HandleLine(EXTENV *EE, char *line)
+ }
+ 
+ 
+-main(int nargs, char *args[])
++int main(int nargs, char *args[])
+ {
+    char line[LNLEN], *path;
+    int i;
+--- a/bin/gpmmtst.c
++++ b/bin/gpmmtst.c
+@@ -783,11 +783,11 @@ void GetFlags(int nargs, char *args[], int *TEST,
+       #endif
+    }
+ }
+-___main(){}
+-__main(){}
+-MAIN__(){}
+-_MAIN_(){}
+-main(int nargs, char *args[])
++int ___main(){}
++int __main(){}
++int MAIN__(){}
++int _MAIN_(){}
++int main(int nargs, char *args[])
+ /*
+  *  tst <tst> <# TA> <TA's> <# TB's> <TB's> <M0> <MN> <incM> <N0> <NN> <incN>
+  *      <K0> <KN> <incK> <# alphas> <alphas> <# betas> <betas>
+--- a/bin/invtst.c
++++ b/bin/invtst.c
+@@ -743,7 +743,7 @@ void GetFlags(int nargs, char **args, int *MFLOP, int *CacheSize, TYPE *thresh,
+    }
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int MFLOP, CacheSize, ldagap, nord, nuplo, N0, NN, incN;
+    enum TEST_UPLO *Uplo;
+--- a/bin/llttst.c
++++ b/bin/llttst.c
+@@ -538,7 +538,7 @@ void GetFlags(int nargs, char **args, int *MFLOP, int *CacheSize, TYPE *thresh,
+    }
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int MFLOP, CacheSize, ldagap, nuplo, N0, NN, incN;
+    TYPE thresh;
+--- a/bin/lutst.c
++++ b/bin/lutst.c
+@@ -476,7 +476,7 @@ void GetFlags(int nargs, char **args, int *MFLOP, int *CacheSize, TYPE *thresh,
+    if (*M0 == -1) *M0 = *MN = *incM = *MisN = 1;
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int MFLOP, CacheSize, LdaIsM, MisN, NisM, M0, MN, incM, N0, NN, incN;
+    int norders;
+--- a/bin/slvtst.c
++++ b/bin/slvtst.c
+@@ -743,7 +743,7 @@ static int DoAllTests(int nrep, int N0, int NN, int incN, int R0, int RN,
+    else fprintf(stdout, "\n%d TESTS RUN, %d FAILED!!\n\n", i, ierr);
+    return(ierr);
+ }
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int ierr, N0, NN, incN, R0, RN, incR, ldagap, ldbgap, nord, nuplo;
+    int CS, MFLOP, QR, nrep;
+--- a/bin/uumtst.c
++++ b/bin/uumtst.c
+@@ -566,7 +566,7 @@ void GetFlags(int nargs, char **args, int *MFLOP, int *CacheSize, TYPE *thresh,
+    }
+ }
+ 
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    int MFLOP, CacheSize, ldagap, nuplo, N0, NN, incN;
+    TYPE thresh;
+--- a/lib/qr.c
++++ b/lib/qr.c
+@@ -5,7 +5,7 @@
+ #elif defined(UpCase)
+    #define dgeqrf_ DGEQRF
+ #endif
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    extern void dgeqrf_(F77_INTEGER*,F77_INTEGER*,double*,F77_INTEGER*,
+                        double*,double*,F77_INTEGER*,F77_INTEGER*);
+--- a/lib/test_dynlink.c
++++ b/lib/test_dynlink.c
+@@ -1,6 +1,6 @@
+ #include <cblas.h>
+ #include <clapack.h>
+-main(int nargs, char **args)
++int main(int nargs, char **args)
+ {
+    double A[1]={1.0}, b[1]={1.0};
+    int ipiv[1];
+--- a/tune/sysinfo/masrch.c
++++ b/tune/sysinfo/masrch.c
+@@ -169,7 +169,7 @@ int FindMflop
+    return(mf);
+ }
+ 
+-FindNreg
++int FindNreg
+ (
+    char pre,   /* precision: s,d,q */
+    int fmf,    /* number of mflops to force timer on */
+-- 
+2.45.2
+
+
+From 537f1afe821d5bad24fe401c8cb1294f2235f5b7 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 26 Jul 2024 00:11:42 +0200
+Subject: [PATCH 2/5] add missing function declarations
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/CONFIG/include/atlconf_misc.h
++++ b/CONFIG/include/atlconf_misc.h
+@@ -41,6 +41,8 @@ char *NameWithoutPath(char *file);
+ char *GetPathWithoutName(char *file);
+ void GetGccVers(char *gcc, int *comp, int *major, int *minor, int *patch);
+ int CompIsGcc(char *comp);
++int CompIsClang(char *comp);
++int CompIsMinGW(char *comp);
+ int CompIsAppleGcc(char *comp);
+ int CompIsMIPSpro(char *comp);
+ int CompIsPathScale(char *comp);
+-- 
+2.45.2
+
+
+From 975b10d484ec2c18fcc3eccbdf30fd166f2072c3 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 26 Jul 2024 00:11:49 +0200
+Subject: [PATCH 3/5] fix typo osnam -> osname
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/CONFIG/src/probe_arch.c
++++ b/CONFIG/src/probe_arch.c
+@@ -198,7 +198,7 @@ int ConfirmPtrbits(enum OSTYPE OS0, enum ASMDIA asmd0, char *targ0,
+ /*
+  * Try OS-specific probe, compiling with -m64 (assumes gcc workalike)
+  */
+-   i = 1 + strlen(frm) + strlen(osnam) + strlen(osnam[OS]) +
++   i = 1 + strlen(frm) + strlen(osname) + strlen(osnam[OS]) +
+        strlen(ASMNAM[asmd]) + strlen(flag) + strlen(targ) + strlen(find);
+    cmnd = malloc(i*sizeof(char));
+    assert(cmnd);
+-- 
+2.45.2
+
+
+From 550c8ff309c6896635bc86001af6dbecbf043d51 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 26 Jul 2024 00:15:08 +0200
+Subject: [PATCH 4/5] use long long in format string
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/bin/atlas_install.c
++++ b/bin/atlas_install.c
+@@ -278,7 +278,7 @@ long long GetFirstLongHex(char *ln)
+    {
+       if (isxdigit(ln[i]))
+       {
+-         sscanf(ln+i, "%lx", &iret);
++         sscanf(ln+i, "%llx", &iret);
+          break;
+       }
+    }
+-- 
+2.45.2
+
+
+From 9a9d7f5f83ea6235ee8e40d49b93545bb3c5b7c2 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 26 Jul 2024 00:16:03 +0200
+Subject: [PATCH 5/5] add missing string.h include
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/bin/qrtst.c
++++ b/bin/qrtst.c
+@@ -41,6 +41,7 @@
+ #ifndef TimeF77
+    #include "clapack.h"
+ #endif
++#include <string.h>
+ 
+ #ifdef ATL_FULL_LAPACK
+    #include "atlas_C2Flapack.h"
+-- 
+2.45.2
+

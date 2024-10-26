@@ -3,17 +3,25 @@
 
 EAPI=8
 
-inherit elisp
+inherit elisp edo
 
 DESCRIPTION="Emacs command line parser"
 HOMEPAGE="https://github.com/rejeep/commander.el/"
-SRC_URI="https://github.com/rejeep/${PN}.el/archive/v${PV}.tar.gz
-			-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${PV}
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/rejeep/${PN}.el.git"
+else
+	SRC_URI="https://github.com/rejeep/${PN}.el/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}.el-${PV}"
+
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -32,10 +40,14 @@ BDEPEND="
 	)
 "
 
+ELISP_REMOVE="
+	features/usage.feature
+"
+
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
 
 src_test() {
-	ert-runner || die
-	ecukes --debug --reporter spec --script	features || die
+	edo ert-runner
+	edo ecukes --debug --reporter spec --script --verbose features
 }

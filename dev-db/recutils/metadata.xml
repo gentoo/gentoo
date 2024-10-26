@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<use>
+		<flag name="curl">Enable support for remote descriptors using <pkg>net-misc/curl</pkg></flag>
+		<flag name="mdb">Build the mdb2rec utility using <pkg>app-office/mdbtools</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="savannah">recutils</remote-id>
+	</upstream>
+</pkgmetadata>

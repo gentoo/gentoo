@@ -6,7 +6,7 @@
 # PID file
 # If you should ever change this, remember to update
 # "/etc/logrotate.d/nginx", too.
-#NGINX_PIDFILE="/run/nginx.pid"
+#NGINX_PIDFILE="/run/nginx/nginx.pid"
 
 # User to run nginx as
 # If you should ever change this, make sure this user has
@@ -30,3 +30,6 @@
 # that the service will be terminated within a given time (60 + 5 seconds
 # per default) when you are stopping the service.
 #NGINX_TERMTIMEOUT="TERM/60/KILL/5"
+
+# Run master process as user (requires configuration with setcap)
+#command_user="${NGINX_USER:-nginx}"

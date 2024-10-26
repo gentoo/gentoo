@@ -60,7 +60,7 @@ src_compile() {
 	unset CFLAGS LDFLAGS
 
 	if use bios; then
-		emake bios DATE="${DATE}" HEXDATE="${HEXDATE}"
+		emake bios DATE="${DATE}" HEXDATE="${HEXDATE}" UPX=false
 	fi
 	if use uefi; then
 		if use abi_x86_32; then

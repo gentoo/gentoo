@@ -20,12 +20,20 @@
 # the kernel and installing it along with its modules and subset
 # of sources needed to build external modules.
 
+# @ECLASS_VARIABLE: KV_FULL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A string containing the full kernel release version, e.g.
+# '6.9.6-gentoo-dist'. This is used to ensure consistency between the
+# kernel's release version and Gentoo's tooling. This is set by
+# kernel-build_src_configure() once we have a kernel.release file.
+
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
+if [[ -z ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{10..13} )
@@ -39,6 +47,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-alternatives/bc
+	dev-lang/perl
 	sys-devel/bison
 	sys-devel/flex
 	virtual/libelf
@@ -123,13 +132,35 @@ fi
 # Call python-any-r1 and secureboot pkg_setup
 kernel-build_pkg_setup() {
 	python-any-r1_pkg_setup
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} && ${MERGE_TYPE} != binary ]]; then
 		secureboot_pkg_setup
-		if [[ -e ${MODULES_SIGN_KEY} && ${MODULES_SIGN_KEY} != pkcs11:* ]]; then
-			if [[ -e ${MODULES_SIGN_CERT} && ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
-				MODULES_SIGN_KEY_CONTENTS="$(cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" || die)"
+
+		if use modules-sign && [[ -n ${MODULES_SIGN_KEY} ]]; then
+			# Sanity check: fail early if key/cert in DER format or does not exist
+			local openssl_args=(
+				-noout -nocert
+			)
+			if [[ -n ${MODULES_SIGN_CERT} ]]; then
+				openssl_args+=( -inform PEM -in "${MODULES_SIGN_CERT}" )
 			else
-				MODULES_SIGN_KEY_CONTENTS="$(< "${MODULES_SIGN_KEY}")"
+				# If no cert specified, we assume the pem key also contains the cert
+				openssl_args+=( -inform PEM -in "${MODULES_SIGN_KEY}" )
+			fi
+			if [[ ${MODULES_SIGN_KEY} == pkcs11:* ]]; then
+				openssl_args+=( -engine pkcs11 -keyform ENGINE -key "${MODULES_SIGN_KEY}" )
+			else
+				openssl_args+=( -keyform PEM -key "${MODULES_SIGN_KEY}" )
+			fi
+
+			openssl x509 "${openssl_args[@]}" ||
+				die "Kernel module signing certificate or key not found or not PEM format."
+
+			if [[ ${MODULES_SIGN_KEY} != pkcs11:* ]]; then
+				if [[ -n ${MODULES_SIGN_CERT} && ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
+					MODULES_SIGN_KEY_CONTENTS="$(cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" || die)"
+				else
+					MODULES_SIGN_KEY_CONTENTS="$(< "${MODULES_SIGN_KEY}")"
+				fi
 			fi
 		fi
 	fi
@@ -137,10 +168,10 @@ kernel-build_pkg_setup() {
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
-# Prepare the toolchain for building the kernel, get the default .config
-# or restore savedconfig, and get build tree configured for modprep.
+# Prepare the toolchain for building the kernel, get the .config file,
+# and get build tree configured for modprep.
 kernel-build_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if ! tc-is-cross-compiler && use hppa ; then
 		if [[ ${CHOST} == hppa2.0-* ]] ; then
@@ -157,6 +188,10 @@ kernel-build_src_configure() {
 	fi
 
 	# force ld.bfd if we can find it easily
+	local HOSTLD="$(tc-getBUILD_LD)"
+	if type -P "${HOSTLD}.bfd" &>/dev/null; then
+		HOSTLD+=.bfd
+	fi
 	local LD="$(tc-getLD)"
 	if type -P "${LD}.bfd" &>/dev/null; then
 		LD+=.bfd
@@ -168,6 +203,8 @@ kernel-build_src_configure() {
 
 		HOSTCC="$(tc-getBUILD_CC)"
 		HOSTCXX="$(tc-getBUILD_CXX)"
+		HOSTLD="${HOSTLD}"
+		HOSTAR="$(tc-getBUILD_AR)"
 		HOSTCFLAGS="${BUILD_CFLAGS}"
 		HOSTLDFLAGS="${BUILD_LDFLAGS}"
 
@@ -180,6 +217,7 @@ kernel-build_src_configure() {
 		STRIP="$(tc-getSTRIP)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		OBJDUMP="$(tc-getOBJDUMP)"
+		READELF="$(tc-getREADELF)"
 
 		# we need to pass it to override colliding Gentoo envvar
 		ARCH=$(tc-arch-kernel)
@@ -206,8 +244,7 @@ kernel-build_src_configure() {
 		MAKEARGS+=( KBZIP2="lbzip2" )
 	fi
 
-	restore_config .config
-	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
+	[[ -f .config ]] || die "Ebuild error: No .config, kernel-build_merge_configs was not called."
 
 	if [[ -z "${KV_LOCALVERSION}" ]]; then
 		KV_LOCALVERSION=$(sed -n -e 's#^CONFIG_LOCALVERSION="\(.*\)"$#\1#p' \
@@ -223,6 +260,32 @@ kernel-build_src_configure() {
 	mkdir -p "${WORKDIR}"/modprep || die
 	mv .config "${WORKDIR}"/modprep/ || die
 	emake O="${WORKDIR}"/modprep "${MAKEARGS[@]}" olddefconfig
+
+	local k_release=$(emake -s O="${WORKDIR}"/modprep "${MAKEARGS[@]}" kernelrelease)
+	if [[ -z ${KV_FULL} ]]; then
+		KV_FULL=${k_release}
+	fi
+
+	# Make sure we are about to build the correct kernel
+	if [[ ${PV} != *9999 ]]; then
+		local expected_ver=$(dist-kernel_PV_to_KV "${PV}")
+
+		if [[ ${KV_FULL} != ${k_release} ]]; then
+			eerror "KV_FULL mismatch!"
+			eerror "KV_FULL:  ${KV_FULL}"
+			eerror "Expected: ${k_release}"
+			die "KV_FULL mismatch: got ${KV_FULL}, expected ${k_release}"
+		fi
+
+		if [[ ${KV_FULL} != ${expected_ver}* ]]; then
+			eerror "Kernel version does not match PV!"
+			eerror "Source version: ${KV_FULL}"
+			eerror "Expected (PV*): ${expected_ver}*"
+			eerror "Please ensure you are applying the correct patchset."
+			die "Kernel version mismatch: got ${KV_FULL}, expected ${expected_ver}*"
+		fi
+	fi
+
 	emake O="${WORKDIR}"/modprep "${MAKEARGS[@]}" modules_prepare
 	cp -pR "${WORKDIR}"/modprep "${WORKDIR}"/build || die
 }
@@ -231,9 +294,18 @@ kernel-build_src_configure() {
 # @DESCRIPTION:
 # Compile the kernel sources.
 kernel-build_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" all
+	local targets=( all )
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf )
+	fi
+
+	local target
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" "${target}"
+	done
 }
 
 # @FUNCTION: kernel-build_src_test
@@ -241,7 +313,13 @@ kernel-build_src_compile() {
 # Test the built kernel via qemu.  This just wraps the logic
 # from kernel-install.eclass with the correct paths.
 kernel-build_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
+
+	local targets=( modules_install )
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf_install )
+	fi
 
 	# Use the kernel build system to strip, this ensures the modules
 	# are stripped *before* they are signed or compressed.
@@ -250,26 +328,24 @@ kernel-build_src_test() {
 		strip_args="--strip-unneeded"
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
-		modules_install
+	local target
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+			INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
+			"${target}"
+	done
 
-	local dir_ver=${PV}${KV_LOCALVERSION}
-	local relfile=${WORKDIR}/build/include/config/kernel.release
-	local module_ver
-	module_ver=$(<"${relfile}") || die
-
-	kernel-install_test "${module_ver}" \
+	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
-		"${T}/lib/modules/${module_ver}"
+		"${T}/lib/modules/${KV_FULL}"
 }
 
 # @FUNCTION: kernel-build_src_install
 # @DESCRIPTION:
 # Install the built kernel along with subset of sources
-# into /usr/src/linux-${PV}.  Install the modules.  Save the config.
+# into /usr/src/linux-${KV_FULL}.  Install the modules.  Save the config.
 kernel-build_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# do not use 'make install' as it behaves differently based
 	# on what kind of installkernel is installed
@@ -277,6 +353,10 @@ kernel-build_src_install() {
 	# on arm or arm64 you also need dtb
 	if use arm || use arm64 || use riscv; then
 		targets+=( dtbs_install )
+	fi
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf_install )
 	fi
 
 	# Use the kernel build system to strip, this ensures the modules
@@ -297,15 +377,17 @@ kernel-build_src_install() {
 		)
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
-		INSTALL_PATH="${ED}/boot" "${compress[@]}" "${targets[@]}"
+	local target
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+			INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
+			INSTALL_PATH="${ED}/boot" "${compress[@]}" "${target}"
+	done
 
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
-	local dir_ver=${PV}${KV_LOCALVERSION}
-	local kernel_dir=/usr/src/linux-${dir_ver}
+	local kernel_dir=/usr/src/linux-${KV_FULL}
 
 	if use sparc ; then
 		# We don't want tc-arch-kernel's sparc64, even though we do
@@ -373,14 +455,11 @@ kernel-build_src_install() {
 			mv "build/vmlinux" "${ED}${kernel_dir}/vmlinux" || die
 		fi
 		dostrip -x "${kernel_dir}/vmlinux"
+		dostrip -x "${kernel_dir}/vmlinux.ctfa"
 	fi
 
 	# strip empty directories
 	find "${D}" -type d -empty -exec rmdir {} + || die
-
-	local relfile=${ED}${kernel_dir}/include/config/kernel.release
-	local module_ver
-	module_ver=$(<"${relfile}") || die
 
 	# warn when trying to "make" a dist-kernel
 	cat <<-EOF >> "${ED}${kernel_dir}/Makefile" || die
@@ -399,12 +478,14 @@ kernel-build_src_install() {
 	echo "${CATEGORY}/${PF}:${SLOT}" > "${ED}${kernel_dir}/dist-kernel" || die
 
 	# fix source tree and build dir symlinks
-	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
-	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
+	dosym "../../../${kernel_dir}" "/lib/modules/${KV_FULL}/build"
+	dosym "../../../${kernel_dir}" "/lib/modules/${KV_FULL}/source"
+	dosym "../../../${kernel_dir}/.config" "/lib/modules/${KV_FULL}/config"
+	dosym "../../../${kernel_dir}/System.map" "/lib/modules/${KV_FULL}/System.map"
 	if [[ "${image_path}" == *vmlinux* ]]; then
-		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinux"
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${KV_FULL}/vmlinux"
 	else
-		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinuz"
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${KV_FULL}/vmlinuz"
 	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
@@ -435,8 +516,8 @@ kernel-build_src_install() {
 				--conf "${T}/empty-file"
 				--confdir "${T}/empty-directory"
 				--kernel-image "${image}"
-				--kmoddir "${ED}/lib/modules/${dir_ver}"
-				--kver "${dir_ver}"
+				--kmoddir "${ED}/lib/modules/${KV_FULL}"
+				--kver "${KV_FULL}"
 				--verbose
 				--compress="xz -9e --check=crc32"
 				--no-hostonly
@@ -462,11 +543,11 @@ kernel-build_src_install() {
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
 				--cmdline="${KERNEL_GENERIC_UKI_CMDLINE}"
-				--uname="${dir_ver}"
+				--uname="${KV_FULL}"
 				--output="${image%/*}/uki.efi"
 			)
 
-			if [[ ${KERNEL_IUSE_SECUREBOOT} ]] && use secureboot; then
+			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
 				ukify_args+=(
 					--signtool=sbsign
 					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
@@ -520,7 +601,7 @@ kernel-build_pkg_postinst() {
 			ewarn
 			ewarn "MODULES_SIGN_KEY was not set, this means the kernel build system"
 			ewarn "automatically generated the signing key. This key was installed"
-			ewarn "in ${EROOT}/usr/src/linux-${PV}${KV_LOCALVERSION}/certs"
+			ewarn "in ${EROOT}/usr/src/linux-${KV_FULL}/certs"
 			ewarn "and will also be included in any binary packages."
 			ewarn "Please take appropriate action to protect the key!"
 			ewarn
@@ -539,15 +620,22 @@ kernel-build_pkg_postinst() {
 # @FUNCTION: kernel-build_merge_configs
 # @USAGE: [distro.config...]
 # @DESCRIPTION:
-# Merge the config files specified as arguments (if any) into
-# the '.config' file in the current directory, then merge
-# any user-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
-# The '.config' file must exist already and contain the base
-# configuration.
+# Merge kernel config files.  The following is merged onto the '.config'
+# file in the current directory, in order:
+#
+# 1. Config files specified as arguments.
+# 2. Default module signing and compression configuration
+#    (if applicable).
+# 3. Config saved via USE=savedconfig (if applicable).
+# 4. Module signing key specified via MODULES_SIGN_KEY* variables.
+# 5. User-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
+#
+# This function must be called by the ebuild in the src_prepare phase.
 kernel-build_merge_configs() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
-	[[ -f .config ]] || die "${FUNCNAME}: .config does not exist"
+	[[ -f .config ]] ||
+		die "${FUNCNAME}: No .config, please copy default config into .config"
 	has .config "${@}" &&
 		die "${FUNCNAME}: do not specify .config as parameter"
 
@@ -558,30 +646,16 @@ kernel-build_merge_configs() {
 
 	local merge_configs=( "${@}" )
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		if use modules-sign; then
-			: "${MODULES_SIGN_HASH:=sha512}"
-			cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
-				## Enable module signing
-				CONFIG_MODULE_SIG=y
-				CONFIG_MODULE_SIG_ALL=y
-				CONFIG_MODULE_SIG_FORCE=y
-				CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
-			EOF
-			if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
-				(umask 066 && touch "${T}/kernel_key.pem" || die)
-				echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
-				unset MODULES_SIGN_KEY_CONTENTS
-				export MODULES_SIGN_KEY="${T}/kernel_key.pem"
-			fi
-			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
-				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
-					>> "${WORKDIR}/modules-sign.config"
-			elif [[ -n ${MODULES_SIGN_KEY} ]]; then
-				die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
-			fi
-			merge_configs+=( "${WORKDIR}/modules-sign.config" )
-		fi
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+		: "${MODULES_SIGN_HASH:=sha512}"
+		cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
+			## Enable module signing
+			CONFIG_MODULE_SIG=y
+			CONFIG_MODULE_SIG_ALL=y
+			CONFIG_MODULE_SIG_FORCE=y
+			CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
+		EOF
+		merge_configs+=( "${WORKDIR}/modules-sign.config" )
 	fi
 
 	# Only semi-related but let's use that to avoid changing stable ebuilds.
@@ -593,6 +667,27 @@ kernel-build_merge_configs() {
 			CONFIG_MODULE_COMPRESS_XZ=y
 		EOF
 		merge_configs+=( "${WORKDIR}/module-compress.config" )
+	fi
+
+	restore_config "${WORKDIR}/savedconfig.config"
+	if [[ -f ${WORKDIR}/savedconfig.config ]]; then
+		merge_configs+=( "${WORKDIR}/savedconfig.config" )
+	fi
+
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+		if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
+			(umask 066 && touch "${T}/kernel_key.pem" || die)
+			echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
+			unset MODULES_SIGN_KEY_CONTENTS
+			export MODULES_SIGN_KEY="${T}/kernel_key.pem"
+		fi
+		if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
+			echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
+				>> "${WORKDIR}/modules-sign-key.config"
+			merge_configs+=( "${WORKDIR}/modules-sign-key.config" )
+		elif [[ -n ${MODULES_SIGN_KEY} ]]; then
+			die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
+		fi
 	fi
 
 	if [[ ${#user_configs[@]} -gt 0 ]]; then

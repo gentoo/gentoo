@@ -1,0 +1,42 @@
+Fix was for ffmpeg-7.0.1 (masked) but the change was backported to 6.1.2.
+
+Should hardly be an issue but it does cause a test failure when it
+attempts to compare the return error when reading a (intentionally)
+corrupted file (aborts either way, just differently). Still some time
+until 6.7.3, and prefer to keep tests in a working state meanwhile.
+
+https://bugreports.qt.io/browse/QTBUG-126687
+https://github.com/qt/qtmultimedia/commit/8d809d56697f8d23669a9b1476ac0b0748e32e0d
+From: Pavel Dubsky <pavel.dubsky@qt.io>
+Date: Wed, 10 Jul 2024 14:42:51 +0200
+Subject: [PATCH] Process FFmpeg AVERROR_INVALIDDATA from avformat_open_input
+
+FFmpeg version n7.0.1 changed the error code that is returned from
+function mp3_read_header: AVERROR(EINVAL) -> AVERROR_INVALIDDATA.
+
+Task-number: QTBUG-126687
+Pick-to: 6.8 6.7 6.5
+Change-Id: I6aee7771a9d1f80ea459376711d5264bed9a7bac
+Reviewed-by: Artem Dyomin <artem.dyomin@qt.io>
+--- a/src/plugins/multimedia/ffmpeg/playbackengine/qffmpegmediadataholder.cpp
++++ b/src/plugins/multimedia/ffmpeg/playbackengine/qffmpegmediadataholder.cpp
+@@ -194,7 +194,7 @@ loadMedia(const QUrl &mediaUrl, QIODevice *stream, const std::shared_ptr<ICancel
+         auto code = QMediaPlayer::ResourceError;
+         if (ret == AVERROR(EACCES))
+             code = QMediaPlayer::AccessDeniedError;
+-        else if (ret == AVERROR(EINVAL))
++        else if (ret == AVERROR(EINVAL) || ret == AVERROR_INVALIDDATA)
+             code = QMediaPlayer::FormatError;
+ 
+         return MediaDataHolder::ContextError{ code, QMediaPlayer::tr("Could not open file") };
+--- a/tests/auto/integration/qmediaplayerbackend/tst_qmediaplayerbackend.cpp
++++ b/tests/auto/integration/qmediaplayerbackend/tst_qmediaplayerbackend.cpp
+@@ -962,7 +962,7 @@ void tst_QMediaPlayerBackend::setSource_emitsError_whenSdpFileIsLoaded()
+     });
+ 
+     m_fixture->player.setSource(sdpUrl);
+-    QTRY_COMPARE_EQ(m_fixture->player.error(), QMediaPlayer::ResourceError);
++    QTRY_COMPARE_EQ(m_fixture->player.error(), QMediaPlayer::FormatError);
+ #endif // QT_CONFIG(process)
+ }
+ 

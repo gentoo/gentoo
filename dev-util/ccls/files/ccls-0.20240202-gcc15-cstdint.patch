@@ -1,0 +1,22 @@
+https://github.com/MaskRay/ccls/pull/968
+
+From dcb10d17de5aa9d2fb2278ea87e76d042d9fda77 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 6 Aug 2024 11:41:47 +0100
+Subject: [PATCH] utils: Add `<cstdint>`
+
+utils uses `uint64_t` without including `<cstdint>`
+which fails to build w/ GCC 15 after a change in libstdc++ [0]
+
+[0] https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=3a817a4a5a6d94da9127af3be9f84a74e3076ee2
+--- a/src/utils.hh
++++ b/src/utils.hh
+@@ -6,6 +6,7 @@
+ #include <optional>
+ #include <string_view>
+ 
++#include <cstdint>
+ #include <iterator>
+ #include <memory>
+ #include <string>
+

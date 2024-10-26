@@ -1,0 +1,11 @@
+--- a/codecs/jpegxl.cc	2024-10-06 17:58:07.684805110 +0200
++++ b/codecs/jpegxl.cc	2024-10-06 17:58:23.929604759 +0200
+@@ -186,7 +186,7 @@
+   }
+   
+   if (JXL_ENC_SUCCESS !=
+-      JxlEncoderAddImageFrame(JxlEncoderOptionsCreate(enc.get(), nullptr),
++      JxlEncoderAddImageFrame(JxlEncoderFrameSettingsCreate(enc.get(), nullptr),
+                               &pixel_format, image.getRawData(),
+                               image.stride() * image.h)) {
+     std::cerr << "JxlEncoderAddImageFrame failed" << std::endl;

@@ -13,7 +13,7 @@ HOMEPAGE="https://hackage.haskell.org/package/string-qq"
 
 LICENSE="public-domain"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 CABAL_CHDEPS=(
 	'text >=1.2 && <1.3' 'text >=1.2'

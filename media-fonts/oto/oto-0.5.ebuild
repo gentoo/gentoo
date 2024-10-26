@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/oto/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~loong ~ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~loong ~ppc ~s390 sparc x86"
 
 src_prepare() {
 	default

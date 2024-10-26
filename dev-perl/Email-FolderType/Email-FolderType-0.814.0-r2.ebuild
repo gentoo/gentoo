@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Determine the type of a mail folder"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0

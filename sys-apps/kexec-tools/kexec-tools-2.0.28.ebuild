@@ -17,6 +17,8 @@ fi
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
 HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
 
+S="${WORKDIR}/${P/_/-}"
+
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="booke lzma selinux xen zlib"
@@ -31,8 +33,6 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-kdump )
 "
-
-S="${WORKDIR}/${P/_/-}"
 
 CONFIG_CHECK="~KEXEC"
 

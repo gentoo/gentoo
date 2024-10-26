@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -71,6 +71,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
 	"${FILESDIR}"/${PN}-5.229.1-python-executable.patch
+	"${FILESDIR}"/${PN}-7.349.0-glslang-1.3.296.patch
 )
 
 python_check_deps() {

@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc motif static-libs tk"
 
 RDEPEND="
@@ -43,7 +43,7 @@ src_prepare() {
 	default
 
 	# fix pointers for 64 bits
-	if use amd64 || use ia64; then
+	if use amd64; then
 		sed -e 's/INTEGER PIXMAP/INTEGER*8 PIXMAP/g' \
 			-i drivers/{gi,pp,wd}driv.f || die "sed 64bits failed"
 	fi

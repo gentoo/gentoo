@@ -17,6 +17,6 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ia64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 distutils_enable_tests unittest

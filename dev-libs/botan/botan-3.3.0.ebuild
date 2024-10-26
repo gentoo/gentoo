@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/botan.asc
 inherit edo flag-o-matic multiprocessing ninja-utils python-r1 toolchain-funcs verify-sig
 
@@ -18,7 +18,7 @@ LICENSE="BSD-2"
 # New major versions are parallel-installable
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)" # soname version
 # Unkeyworded because of https://github.com/randombit/botan/issues/3917
-#KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos"
+#KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos"
 IUSE="doc boost bzip2 lzma python static-libs sqlite test tools zlib"
 CPU_USE=(
 	cpu_flags_arm_{aes,neon,sha1,sha2}

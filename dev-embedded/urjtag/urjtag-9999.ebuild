@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit python-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/urjtag/git"
+	EGIT_REPO_URI="https://git.code.sf.net/p/urjtag/git"
 	inherit git-r3 autotools
 	S="${WORKDIR}/${P}/${PN}"
 else
@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Tool for communicating over JTAG with flash chips, CPUs, and many more"
-HOMEPAGE="https://urjtag.sourceforge.net/"
+HOMEPAGE="https://urjtag.sourceforge.io/"
 
 LICENSE="GPL-2"
 SLOT="0"

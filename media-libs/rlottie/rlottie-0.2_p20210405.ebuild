@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Samsung/rlottie/archive/${MY_COMMIT}.tar.gz -> ${P}.
 
 LICENSE="BSD FTL JSON MIT"
 SLOT="0/0.2"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="debug test"
 
 RESTRICT="!test? ( test )"

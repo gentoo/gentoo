@@ -12,7 +12,7 @@ SRC_URI="https://github.com/flatpak/libportal/releases/download/${PV}/${P}.tar.x
 
 LICENSE="LGPL-3"
 SLOT="0/1-1-1-1" # soname of libportal{,-gtk3,-gtk4,-qt5}.so
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk gtk-doc +introspection qt5 test +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -56,6 +56,11 @@ BDEPEND="
 	)
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	# backport fix for tests incompatibility with dbusmock 0.30.0
+	"${FILESDIR}"/6cd7c2ab82575b76f876ee2bd2d31f6cb77f022f.patch
+)
 
 python_check_deps() {
 	python_has_version \

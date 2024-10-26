@@ -10,5 +10,6 @@
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:qrencode_project:qrencode</remote-id>
+    <remote-id type="github">fukuchi/libqrencode</remote-id>
   </upstream>
 </pkgmetadata>

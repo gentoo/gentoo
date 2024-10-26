@@ -17,6 +17,7 @@ dev-qt/qtnetworkauth:6
 dev-qt/qtpositioning:6
 dev-qt/qtquick3d:6
 dev-qt/qtquicktimeline:6
+dev-qt/qtremoteobjects:6
 dev-qt/qtscxml:6
 dev-qt/qtsensors:6
 dev-qt/qtserialbus:6

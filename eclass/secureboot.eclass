@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: secureboot.eclass
@@ -44,7 +44,12 @@ case ${EAPI} in
 esac
 
 IUSE="secureboot"
-BDEPEND="secureboot? ( app-crypt/sbsigntools )"
+BDEPEND="
+	secureboot? (
+		app-crypt/sbsigntools
+		dev-libs/openssl
+	)
+"
 
 # @ECLASS_VARIABLE: SECUREBOOT_SIGN_KEY
 # @USER_VARIABLE
@@ -69,25 +74,32 @@ _SECUREBOOT_ECLASS=1
 # If USE=secureboot is enabled die if the required user variables are unset
 # and die if the keys can't be found.
 _secureboot_die_if_unset() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	if [[ -z ${SECUREBOOT_SIGN_KEY} || -z ${SECUREBOOT_SIGN_CERT} ]]; then
 		die "USE=secureboot enabled but SECUREBOOT_SIGN_KEY and/or SECUREBOOT_SIGN_CERT not set."
 	fi
-	if [[ ! ${SECUREBOOT_SIGN_KEY} == pkcs11:* && ! -r ${SECUREBOOT_SIGN_KEY} ]]; then
-		die "SECUREBOOT_SIGN_KEY=${SECUREBOOT_SIGN_KEY} not found or not readable!"
+
+	# Sanity check: fail early if key/cert in DER format or does not exist
+	local openssl_args=(
+		-inform PEM -in "${SECUREBOOT_SIGN_CERT}"
+		-noout -nocert
+	)
+	if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+		openssl_args+=( -engine pkcs11 -keyform ENGINE -key "${SECUREBOOT_SIGN_KEY}" )
+	else
+		openssl_args+=( -keyform PEM -key "${SECUREBOOT_SIGN_KEY}" )
 	fi
-	if [[ ! -r ${SECUREBOOT_SIGN_CERT} ]]; then
-		die "SECUREBOOT_SIGN_CERT=${SECUREBOOT_SIGN_CERT} not found or not readable!"
-	fi
+	openssl x509 "${openssl_args[@]}" ||
+		die "Secure Boot signing certificate or key not found or not PEM format."
 }
 
 # @FUNCTION: secureboot_pkg_setup
 # @DESCRIPTION:
 # Checks if required user variables are set before starting the build
 secureboot_pkg_setup() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	# If we are merging a binary then the files in this binary
@@ -105,7 +117,7 @@ secureboot_pkg_setup() {
 # If no output file is specified the output file will be the same
 # as the input file, i.e. the file will be overwritten.
 secureboot_sign_efi_file() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	local input_file=${1}
@@ -141,7 +153,7 @@ secureboot_sign_efi_file() {
 # By default signed files gain the .signed suffix. If the --in-place
 # argument is given the efi files are replaced with a signed version in place.
 secureboot_auto_sign() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	[[ ${EBUILD_PHASE} == install ]] ||

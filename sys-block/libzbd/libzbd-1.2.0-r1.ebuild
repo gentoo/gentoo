@@ -12,7 +12,7 @@ SRC_URI="https://github.com/westerndigitalcorporation/${PN}/archive/v${PV}.tar.g
 # Examples/tools are GPL-3+, library is LGPL-3+
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="gtk"
 
 # PKG_CHECK_MODULES is only for GTK right now

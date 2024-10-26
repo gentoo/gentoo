@@ -17,7 +17,7 @@ else
 		https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz
 		verify-sig? ( https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz.asc )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="BSD GPL-2"
@@ -74,6 +74,10 @@ BDEPEND="
 	test? ( virtual/perl-Test-Harness )
 	verify-sig? ( sec-keys/openpgp-keys-lighttpd )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sparc.patch
+)
 
 # update certain parts of lighttpd.conf based on conditionals
 update_config() {

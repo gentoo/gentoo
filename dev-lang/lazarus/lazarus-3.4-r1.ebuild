@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/3.0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+gui gtk2 gtk qt5 qt6 extras"
 # TODO: Drop REQUIRED_USE per QA policy for USE=gui
 REQUIRED_USE="gui? ( ^^ ( gtk2 gtk qt5 qt6 ) ) extras? ( gui )"

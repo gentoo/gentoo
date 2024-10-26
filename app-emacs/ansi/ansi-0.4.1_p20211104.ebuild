@@ -3,18 +3,27 @@
 
 EAPI=8
 
-COMMIT=2367fba7b3b2340364a30cd6de7f3eb6bb9898a3
+COMMIT="2367fba7b3b2340364a30cd6de7f3eb6bb9898a3"
 
 inherit elisp
 
 DESCRIPTION="Emacs library to convert strings into ansi"
 HOMEPAGE="https://github.com/rejeep/ansi.el/"
-SRC_URI="https://github.com/rejeep/${PN}.el/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${COMMIT}
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/rejeep/${PN}.el.git"
+else
+	SRC_URI="https://github.com/rejeep/${PN}.el/archive/${COMMIT}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}.el-${COMMIT}"
+
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

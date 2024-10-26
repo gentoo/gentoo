@@ -11,7 +11,7 @@ DESCRIPTION="atexit() function to register exit-callbacks"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 RDEPEND="
 	virtual/perl-Exporter

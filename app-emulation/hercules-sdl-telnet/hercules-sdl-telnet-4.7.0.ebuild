@@ -16,5 +16,5 @@ SRC_URI="https://github.com/SDL-Hercules-390/telnet/archive/${COMMIT}.tar.gz -> 
 S="${WORKDIR}/telnet-${COMMIT}"
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 PATCHES=( "${FILESDIR}/cmakefix.patch" )

@@ -4,7 +4,8 @@ After=network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
-PIDFile=/run/nginx.pid
+PIDFile=/run/nginx/nginx.pid
+RuntimeDirectory=nginx
 ExecStartPre=/usr/sbin/nginx -t
 ExecStart=/usr/sbin/nginx
 ExecStartPost=/bin/sleep 0.1

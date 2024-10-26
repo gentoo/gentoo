@@ -1,4 +1,4 @@
-# Copyright 2016-2022 Gentoo Authors
+# Copyright 2016-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Functions related to tmpfiles.d files
 # @DESCRIPTION:
 # This eclass provides functionality related to installing and
@@ -32,7 +32,7 @@
 # Typical usage of this eclass:
 #
 # @CODE
-#	EAPI=6
+#	EAPI=8
 #	inherit tmpfiles
 #
 #	...
@@ -55,9 +55,9 @@
 if [[ -z ${_TMPFILES_ECLASS} ]]; then
 _TMPFILES_ECLASS=1
 
-case "${EAPI}" in
-5|6|7|8) ;;
-*) die "API is undefined for EAPI ${EAPI}" ;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS_VARIABLE: TMPFILES_OPTIONAL
@@ -76,7 +76,7 @@ fi
 # @DESCRIPTION:
 # Install one or more tmpfiles.d files into /usr/lib/tmpfiles.d.
 dotmpfiles() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local f
 	for f; do
@@ -97,7 +97,7 @@ dotmpfiles() {
 # @DESCRIPTION:
 # Install a tmpfiles.d file in /usr/lib/tmpfiles.d under a new name.
 newtmpfiles() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ $2 != *.conf ]]; then
 		die "tmpfiles.d files must end with .conf"
@@ -116,7 +116,7 @@ newtmpfiles() {
 # Call a tmpfiles.d implementation to create new volatile and temporary
 # files and directories.
 tmpfiles_process() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} == postinst ]] || die "${FUNCNAME}: Only valid in pkg_postinst"
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"

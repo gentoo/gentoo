@@ -3,10 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+GUILE_REQ_USE="deprecated"
+GUILE_COMPAT=( 2-2 3-0 )
+PYTHON_COMPAT=( python3_{10..13} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
-inherit flag-o-matic meson lua-single python-single-r1
+inherit flag-o-matic guile-single meson lua-single python-single-r1
 
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
@@ -17,15 +19,16 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/rkd77/elinks/releases/download/v${PV}/${P}.tar.xz"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn"
-IUSE+=" javascript lua lzma +mouse nls nntp perl python samba ssl test tre unicode X xml zlib zstd"
+IUSE="bittorrent brotli bzip2 debug finger ftp gemini gopher gpm gnutls guile idn"
+IUSE+=" javascript libcss lua lzma +mouse nls nntp perl python samba ssl test tre unicode X xml zlib zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	guile? ( ${GUILE_REQUIRED_USE} )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -37,11 +40,15 @@ RDEPEND="
 	gpm? (
 		>=sys-libs/gpm-1.20.0-r5
 	)
-	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
+	guile? ( ${GUILE_DEPS} )
 	idn? ( net-dns/libidn2:= )
 	javascript? (
 		dev-cpp/libxmlpp:5.0
 		dev-lang/mujs:=
+	)
+	libcss? (
+		>=dev-libs/libcss-0.9.2
+		>=net-libs/libdom-0.4.2
 	)
 	lua? ( ${LUA_DEPS} )
 	lzma? ( app-arch/xz-utils )
@@ -67,14 +74,19 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? (
-		net-dns/libidn2
+		net-dns/libidn
 	)
 "
 
 pkg_setup() {
+	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
-
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+	use guile && guile_bump_sources
 }
 
 src_configure() {
@@ -103,7 +115,7 @@ src_configure() {
 		$(meson_use finger)
 		$(meson_use ftp)
 		-Dfsp=false
-		-Dgemini=false
+		$(meson_use gemini)
 		$(meson_use nls gettext)
 		$(meson_use gopher)
 		$(meson_use gpm)
@@ -114,12 +126,12 @@ src_configure() {
 		$(meson_use javascript mujs)
 		-Dipv6=true
 		-Dleds=true
+		$(meson_use libcss)
 		-Dlibev=false
 		-Dlibevent=false
 		-Dluapkg=$(usex lua ${ELUA:-0} '')
 		$(meson_use lzma)
 		$(meson_use mouse)
-		#-Dmujs=false
 		$(meson_use nls)
 		$(meson_use nntp)
 		$(meson_use perl)
@@ -159,7 +171,7 @@ src_install() {
 	newins contrib/keybind-full.conf keybind-full.sample
 	newins contrib/keybind.conf keybind.conf.sample
 
-	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS README SITES THANKS TODO doc/*.*
+	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS README.md SITES THANKS TODO doc/*.*
 	docinto contrib ; dodoc contrib/{README,colws.diff,elinks[-.]vim*}
 	docinto contrib/lua ; dodoc contrib/lua/{*.lua,elinks-remote}
 	docinto contrib/conv ; dodoc contrib/conv/*.*
@@ -168,9 +180,14 @@ src_install() {
 	# elinks uses an internal copy of gettext which ships files that may
 	# collide with the system's gettext (https://bugs.gentoo.org/635090)
 	rm -f "${ED}"/usr/{share/locale/locale,lib/charset}.alias || die
+
+	use guile && guile_unstrip_ccache
 }
 
 pkg_postinst() {
+	elog "If upgrading from a version prior to 0.17.0, you will need to move"
+	elog "your configuration from ~/.elinks to \${XDG_CONFIG_HOME}/elinks"
+	elog
 	elog "You may want to convert your html.cfg and links.cfg of"
 	elog "Links or older ELinks versions to the new ELinks elinks.conf"
 	elog "using ${EROOT}/usr/share/doc/${PF}/contrib/conv/conf-links2elinks.pl"

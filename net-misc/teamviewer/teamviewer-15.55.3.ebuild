@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 RESTRICT="bindist mirror strip"
 
 # Unpack will fail without app-arch/xz-utils[extra-filters], bug #798027
-BDEPEND="app-arch/xz-utils[extra-filters]"
+BDEPEND="app-arch/xz-utils[extra-filters(+)]"
 
 RDEPEND="
 	dev-libs/glib:2

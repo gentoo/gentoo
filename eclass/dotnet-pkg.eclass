@@ -210,7 +210,7 @@ dotnet-pkg_src_unpack() {
 #
 # Used by "dotnet-pkg_src_prepare".
 dotnet-pkg_remove-bad() {
-	debug-print-function "${FUNCNAME[0]}" "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "${FUNCNAME[0]}: no solution file specified"
 
@@ -246,7 +246,7 @@ dotnet-pkg_src_prepare() {
 #
 # Used by "dotnet-pkg_src_configure" and "dotnet-pkg_src_compile".
 dotnet-pkg_foreach-project() {
-	debug-print-function "${FUNCNAME[0]}" "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local dotnet_project
 	for dotnet_project in "${DOTNET_PKG_PROJECTS[@]}" ; do

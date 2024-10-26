@@ -31,26 +31,30 @@ esac
 rust_abi() {
 	local CTARGET=${1:-${CHOST}}
 	case ${CTARGET%%*-} in
-		aarch64*gnu)  echo aarch64-unknown-linux-gnu;;
-		aarch64*musl) echo aarch64-unknown-linux-musl;;
-		armv6j*h*)    echo arm-unknown-linux-gnueabihf;;
-		armv6j*s*)    echo arm-unknown-linux-gnueabi;;
-		armv7a*h*)    echo armv7-unknown-linux-gnueabihf;;
-		i?86*)        echo i686-unknown-linux-gnu;;
-		loongarch64*) echo loongarch64-unknown-linux-gnu;;
-		mips64el*)    echo mips64el-unknown-linux-gnuabi64;;
-		mips64*)      echo mips64-unknown-linux-gnuabi64;;
-		mipsel*)      echo mipsel-unknown-linux-gnu;;
-		mips*)        echo mips-unknown-linux-gnu;;
-		powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
-		powerpc64*)   echo powerpc64-unknown-linux-gnu;;
-		powerpc*)     echo powerpc-unknown-linux-gnu;;
-		riscv64*gnu)  echo riscv64gc-unknown-linux-gnu;;
-		riscv64*musl) echo riscv64gc-unknown-linux-musl;;
-		s390x*)       echo s390x-unknown-linux-gnu;;
-		x86_64*gnu)   echo x86_64-unknown-linux-gnu;;
-		x86_64*musl)  echo x86_64-unknown-linux-musl;;
-		*)            echo ${CTARGET};;
+		aarch64*gnu)      echo aarch64-unknown-linux-gnu;;
+		aarch64*musl)     echo aarch64-unknown-linux-musl;;
+		armv6j*h*)        echo arm-unknown-linux-gnueabihf;;
+		armv6j*s*)        echo arm-unknown-linux-gnueabi;;
+		armv7a*h*)        echo armv7-unknown-linux-gnueabihf;;
+		i?86*)            echo i686-unknown-linux-gnu;;
+		loongarch64*)     echo loongarch64-unknown-linux-gnu;;
+		mips64el*)        echo mips64el-unknown-linux-gnuabi64;;
+		mips64*)          echo mips64-unknown-linux-gnuabi64;;
+		mipsel*)          echo mipsel-unknown-linux-gnu;;
+		mips*)            echo mips-unknown-linux-gnu;;
+		powerpc64le*gnu)  echo powerpc64le-unknown-linux-gnu;;
+		powerpc64le*musl) echo powerpc64le-unknown-linux-musl;;
+		powerpc64*gnu)    echo powerpc64-unknown-linux-gnu;;
+		powerpc64*musl)   echo powerpc64-unknown-linux-musl;;
+		powerpc*gnu)      echo powerpc-unknown-linux-gnu;;
+		powerpc*musl)     echo powerpc-unknown-linux-musl;;
+		riscv64*gnu)      echo riscv64gc-unknown-linux-gnu;;
+		riscv64*musl)     echo riscv64gc-unknown-linux-musl;;
+		s390x*)           echo s390x-unknown-linux-gnu;;
+		sparc64*gnu)      echo sparc64-unknown-linux-gnu;;
+		x86_64*gnu)       echo x86_64-unknown-linux-gnu;;
+		x86_64*musl)      echo x86_64-unknown-linux-musl;;
+		*)                echo ${CTARGET};;
   esac
 }
 
@@ -88,29 +92,27 @@ rust_arch_uri() {
 rust_all_arch_uris()
 {
 	echo "
-	abi_x86_32? ( $(rust_arch_uri i686-unknown-linux-gnu "$@") )
+	abi_x86_32? ( elibc_glibc? ( $(rust_arch_uri i686-unknown-linux-gnu "$@") ) )
 	abi_x86_64? (
 		elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu  "$@") )
 		elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "$@") )
 	)
-	arm? (
+	arm? ( elibc_glibc? (
 		$(rust_arch_uri arm-unknown-linux-gnueabi     "$@")
 		$(rust_arch_uri arm-unknown-linux-gnueabihf   "$@")
 		$(rust_arch_uri armv7-unknown-linux-gnueabihf "$@")
-	)
+	) )
 	arm64? (
 		elibc_glibc? ( $(rust_arch_uri aarch64-unknown-linux-gnu  "$@") )
 		elibc_musl?  ( $(rust_arch_uri aarch64-unknown-linux-musl "$@") )
 	)
-	ppc? ( $(rust_arch_uri powerpc-unknown-linux-gnu "$@") )
+	ppc? ( elibc_glibc? ( $(rust_arch_uri powerpc-unknown-linux-gnu "$@") ) )
 	ppc64? (
-		big-endian?  ( $(rust_arch_uri powerpc64-unknown-linux-gnu   "$@") )
-		!big-endian? ( $(rust_arch_uri powerpc64le-unknown-linux-gnu "$@") )
+		big-endian?  ( elibc_glibc? ( $(rust_arch_uri powerpc64-unknown-linux-gnu   "$@") ) )
+		!big-endian? ( elibc_glibc? ( $(rust_arch_uri powerpc64le-unknown-linux-gnu "$@") ) )
 	)
-	riscv? (
-		elibc_glibc? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "$@") )
-	)
-	s390?  ( $(rust_arch_uri s390x-unknown-linux-gnu     "$@") )
+	riscv? ( elibc_glibc? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "$@") ) )
+	s390?  ( elibc_glibc? ( $(rust_arch_uri s390x-unknown-linux-gnu     "$@") ) )
 	"
 
 	# Upstream did not gain support for loong until v1.71.0.
@@ -119,7 +121,7 @@ rust_all_arch_uris()
 	local arg_version="${1##*-}"
 	arg_version="${arg_version:-$PV}"
 	if ver_test "${arg_version}" -ge 1.71.0; then
-		echo "loong? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") )"
+		echo "loong? ( elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") ) )"
 	fi
 
 	# until https://github.com/rust-lang/rust/pull/113274 is resolved, there

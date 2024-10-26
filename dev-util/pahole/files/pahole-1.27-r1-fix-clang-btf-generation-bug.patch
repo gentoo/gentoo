@@ -1,0 +1,83 @@
+From 6a2b27c0f512619b0e7a769a18a0fb05bb3789a5 Mon Sep 17 00:00:00 2001
+From: Arnaldo Carvalho de Melo <acme@redhat.com>
+Date: Tue, 18 Jun 2024 10:37:30 -0300
+Subject: [PATCH] core: Initialize cu->node with INIT_LIST_HEAD()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In cu__new() zalloc() is used defensively, and that helped catch this
+problem where we assume that a cu us in the cus list of cu instances,
+but that is not the case when we use cus__merge_and_process_cu(), for
+instance when loading files created by clang with LTO, as reported by
+Peter Jung and narrowed down by Nathan Chancellor.
+
+If we use INIT_LIST_HEAD() in cu__new() to initialize cu->node, which is
+what we do with other lists and nodes there, then the unconditional
+removal using list_del_init() will be a no-op and removing something not
+on the cus list of cu instances will not cause problems, just keep an
+unconsistent cus->nr_entries field.
+
+So lets just have this fix in first, keeping Nathan's Tested-by and then
+do the a bit more involved fix of either adding that cu to the cus list
+or checking at removal time if it is there.
+
+  Program received signal SIGSEGV, Segmentation fault.
+  0x00007ffff7f1e13e in __list_del (prev=0x0, next=0x0) at /home/acme/git/pahole/list.h:106
+  106		next->prev = prev;
+  (gdb) bt
+  #0  0x00007ffff7f1e13e in __list_del (prev=0x0, next=0x0) at /home/acme/git/pahole/list.h:106
+  #1  0x00007ffff7f1e176 in list_del_init (entry=0x417980) at /home/acme/git/pahole/list.h:165
+  #2  0x00007ffff7f1f8f9 in __cus__remove (cus=0x4142a0, cu=0x417980) at /home/acme/git/pahole/dwarves.c:527
+  #3  0x00007ffff7f1f92b in cus__remove (cus=0x4142a0, cu=0x417980) at /home/acme/git/pahole/dwarves.c:533
+  #4  0x00007ffff7f3d01c in cus__finalize (cus=0x4142a0, cu=0x417980, conf=0x4133c0 <conf_load>, thr_data=0x0)
+      at /home/acme/git/pahole/dwarf_loader.c:3040
+  #5  0x00007ffff7f3e05c in cus__merge_and_process_cu (cus=0x4142a0, conf=0x4133c0 <conf_load>, mod=0x415cf0, dw=0x416110, elf=0x414380,
+      filename=0x7fffffffe3f7 "cast_common.ko", build_id=0x416680 "\265D\371U\213\373u|\037\250\242\032\271\365⒜]y\023", build_id_len=20,
+      type_dcu=0x0) at /home/acme/git/pahole/dwarf_loader.c:3482
+  #6  0x00007ffff7f3e218 in cus__load_module (cus=0x4142a0, conf=0x4133c0 <conf_load>, mod=0x415cf0, dw=0x416110, elf=0x414380,
+      filename=0x7fffffffe3f7 "cast_common.ko") at /home/acme/git/pahole/dwarf_loader.c:3521
+  #7  0x00007ffff7f3e396 in cus__process_dwflmod (dwflmod=0x415cf0, userdata=0x415d00, name=0x415ea0 "cast_common.ko", base=65536,
+      arg=0x7fffffffde40) at /home/acme/git/pahole/dwarf_loader.c:3581
+  #8  0x00007ffff7eb4609 in dwfl_getmodules (dwfl=0x414300, callback=0x7ffff7f3e2ec <cus__process_dwflmod>, arg=0x7fffffffde40, offset=0)
+      at ../libdwfl/dwfl_getmodules.c:86
+  #9  0x00007ffff7f3e4c5 in cus__process_file (cus=0x4142a0, conf=0x4133c0 <conf_load>, fd=3, filename=0x7fffffffe3f7 "cast_common.ko")
+      at /home/acme/git/pahole/dwarf_loader.c:3647
+  #10 0x00007ffff7f3e5cd in dwarf__load_file (cus=0x4142a0, conf=0x4133c0 <conf_load>, filename=0x7fffffffe3f7 "cast_common.ko")
+      at /home/acme/git/pahole/dwarf_loader.c:3684
+  #11 0x00007ffff7f232df in cus__load_file (cus=0x4142a0, conf=0x4133c0 <conf_load>, filename=0x7fffffffe3f7 "cast_common.ko")
+      at /home/acme/git/pahole/dwarves.c:2134
+  #12 0x00007ffff7f23e8b in cus__load_files (cus=0x4142a0, conf=0x4133c0 <conf_load>, filenames=0x7fffffffe0f0)
+      at /home/acme/git/pahole/dwarves.c:2637
+  #13 0x000000000040aec0 in main (argc=2, argv=0x7fffffffe0e8) at /home/acme/git/pahole/pahole.c:3805
+  (gdb) fr 1
+  #1  0x00007ffff7f1e176 in list_del_init (entry=0x417980) at /home/acme/git/pahole/list.h:165
+  165		__list_del(entry->prev, entry->next);
+  (gdb) p entry
+  $1 = (struct list_head *) 0x417980
+  (gdb) p entry->next
+  $2 = (struct list_head *) 0x0
+  (gdb) p entry->prev
+  $3 = (struct list_head *) 0x0
+
+Closes: https://github.com/acmel/dwarves/issues/53
+Closes: https://gitlab.archlinux.org/archlinux/packaging/packages/pahole/-/issues/1
+Tested-by: Nathan Chancellor <nathan@kernel.org>
+Link: https://lore.kernel.org/all/20240617210810.GA1877676@thelio-3990X
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ dwarves.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dwarves.c b/dwarves.c
+index 1ec259f5..823a0152 100644
+--- a/dwarves.c
++++ b/dwarves.c
+@@ -739,6 +739,7 @@ struct cu *cu__new(const char *name, uint8_t addr_size,
+ 		cu->dfops	= NULL;
+ 		INIT_LIST_HEAD(&cu->tags);
+ 		INIT_LIST_HEAD(&cu->tool_list);
++		INIT_LIST_HEAD(&cu->node);
+ 
+ 		cu->addr_size = addr_size;
+ 		cu->extra_dbg_info = 0;

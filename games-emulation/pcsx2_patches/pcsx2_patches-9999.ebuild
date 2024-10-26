@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# note: not "required" but should typically be bumped at same
+# time as pcsx2 to match the patches.zip shipped with it
+
 PYTHON_COMPAT=( python3_{10..13} )
 inherit python-any-r1
 

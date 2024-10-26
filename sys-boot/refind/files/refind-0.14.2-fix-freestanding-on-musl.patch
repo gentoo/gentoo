@@ -1,0 +1,63 @@
+On amd64, musl typedefs wchar_t to int, conflicting with -fshort-wchar.
+Also, /usr/include is searched before the compiler provided include directory.
+As a workaround, use -nostdinc and switch them around.
+
+Add missing `#include <stddef.h>` where wchar_t was defined indirectly by
+other standard includefiles.
+
+We need and extra -D for clang, where wchar_t is defined in
+/usr/include/allbits.h and gets included by other headers, conflicting with
+wchar_t already defined in stddef.h.
+
+See also:	https://bugs.gentoo.org/938012
+			https://bugs.gentoo.org/881131
+			https://bugs.gentoo.org/832018
+
+--- a/Make.common
++++ b/Make.common
+@@ -79,7 +79,7 @@
+ #
+ 
+ # ...for both GNU-EFI and TianoCore....
+-OPTIMFLAGS      = -Os -fno-strict-aliasing -fno-tree-loop-distribute-patterns
++OPTIMFLAGS      = -Os -fno-strict-aliasing -ffreestanding -nostdinc -isystem $(CPPINCLUDEDIR) -isystem $(EPREFIX)/usr/include $(EXTRACFLAGS)
+ CFLAGS          = $(OPTIMFLAGS) -fno-stack-protector -fshort-wchar -Wall
+ 
+ # ...for GNU-EFI....
+@@ -168,7 +168,7 @@
+   SUBSYSTEM_LDFLAG = -defsym=EFI_SUBSYSTEM=0xa
+   LDFLAGS         += --warn-common --no-undefined --fatal-warnings
+ 
+-  ARCH_CFLAGS = -fno-merge-constants -ffreestanding -DEFIAARCH64
++  ARCH_CFLAGS = -fno-merge-constants -ffreestanding -DEFIAARCH64 -nostdinc -isystem $(CPPINCLUDEDIR) -isystem $(EPREFIX)/usr/include $(EXTRACFLAGS)
+   ifeq ($(MAKEWITH),TIANO)
+     ARCH_CFLAGS += -mcmodel=large -Wno-address -Wno-missing-braces -Wno-array-bounds -ffunction-sections -fdata-sections
+   endif
+--- a/libeg/lodepng.h
++++ b/libeg/lodepng.h
+@@ -32,6 +32,7 @@
+ #ifndef LODEPNG_H
+ #define LODEPNG_H
+ 
++#include <stddef.h>
+ #include <string.h> /*for size_t*/
+ 
+ // Below block of lines required for GNU-EFI and TianoCore (program hangs
+--- a/libeg/nanojpeg.c
++++ b/libeg/nanojpeg.c
+@@ -211,6 +211,7 @@
+ 
+ #ifdef  _NJ_EXAMPLE_PROGRAM
+ 
++#include <stddef.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -275,6 +276,7 @@
+ #endif
+ 
+ #if NJ_USE_LIBC
++    #include <stddef.h>
+     #include <stdlib.h>
+     #include <string.h>
+     #define njAllocMem malloc

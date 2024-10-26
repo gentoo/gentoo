@@ -14,6 +14,11 @@ SLOT="0/3"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-cxx20.patch" # bug 939897
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF # nothing is installed

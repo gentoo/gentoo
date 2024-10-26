@@ -1,0 +1,22 @@
+diff --git a/tools/perf/Makefile.config b/tools/perf/Makefile.config
+index bc980fd..a7f1e1e 100644
+--- a/tools/perf/Makefile.config
++++ b/tools/perf/Makefile.config
+@@ -1184,7 +1184,7 @@ ifneq ($(NO_LIBTRACEEVENT),1)
+     CFLAGS += -DHAVE_LIBTRACEEVENT $(LIBTRACEEVENT_CFLAGS)
+     LDFLAGS += $(LIBTRACEEVENT_LDFLAGS)
+     EXTLIBS += ${TRACEEVENTLIBS}
+-    LIBTRACEEVENT_VERSION := $(shell PKG_CONFIG_PATH=$(LIBTRACEEVENT_DIR) $(PKG_CONFIG) --modversion libtraceevent)
++    LIBTRACEEVENT_VERSION := $(shell PKG_CONFIG_PATH=$(LIBTRACEEVENT_DIR) $(PKG_CONFIG) --modversion libtraceevent).0
+     LIBTRACEEVENT_VERSION_1 := $(word 1, $(subst ., ,$(LIBTRACEEVENT_VERSION)))
+     LIBTRACEEVENT_VERSION_2 := $(word 2, $(subst ., ,$(LIBTRACEEVENT_VERSION)))
+     LIBTRACEEVENT_VERSION_3 := $(word 3, $(subst ., ,$(LIBTRACEEVENT_VERSION)))
+@@ -1198,7 +1198,7 @@ ifneq ($(NO_LIBTRACEEVENT),1)
+   $(call feature_check,libtracefs)
+   ifeq ($(feature-libtracefs), 1)
+     EXTLIBS += -ltracefs
+-    LIBTRACEFS_VERSION := $(shell $(PKG_CONFIG) --modversion libtracefs)
++    LIBTRACEFS_VERSION := $(shell $(PKG_CONFIG) --modversion libtracefs).0
+     LIBTRACEFS_VERSION_1 := $(word 1, $(subst ., ,$(LIBTRACEFS_VERSION)))
+     LIBTRACEFS_VERSION_2 := $(word 2, $(subst ., ,$(LIBTRACEFS_VERSION)))
+     LIBTRACEFS_VERSION_3 := $(word 3, $(subst ., ,$(LIBTRACEFS_VERSION)))

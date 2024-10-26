@@ -12,7 +12,7 @@ DESCRIPTION="Provide high level APIs for rapid user interface design on the cons
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~ia64 ppc ~s390 sparc x86"
+KEYWORDS="amd64 ppc ~s390 sparc x86"
 
 RDEPEND="
 	>=sys-libs/ncurses-5

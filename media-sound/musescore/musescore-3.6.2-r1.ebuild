@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit cmake qmake-utils xdg check-reqs
+inherit cmake flag-o-matic qmake-utils xdg check-reqs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -83,6 +83,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860885
+	#
+	# The relevant code no longer exists in later releases.
+	filter-lto
+
 	# bug #766111
 	export PATH="$(qt5_get_bindir):${PATH}"
 

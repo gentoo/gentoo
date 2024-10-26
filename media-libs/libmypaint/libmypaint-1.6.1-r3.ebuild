@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit libtool python-any-r1 toolchain-funcs
 
@@ -19,7 +19,7 @@ LICENSE="ISC"
 # See https://github.com/mypaint/libmypaint/releases/tag/v1.6.1
 # https://github.com/mypaint/libmypaint/compare/v1.6.0...v1.6.1
 SLOT="0/0.0.0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv x86"
 IUSE="gegl introspection nls openmp"
 
 BDEPEND="

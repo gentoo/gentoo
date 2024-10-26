@@ -1,0 +1,25 @@
+From d4ff9b9e4c64f7e60c95676ec74c49b12b20ad3b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@gentoo.org>
+Date: Sat, 3 Aug 2024 18:28:51 +0200
+Subject: [PATCH 1/2] add missing include
+
+fixes an implicit function declaration
+---
+ src/compat.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/compat.c b/src/compat.c
+index 943c7f9..9b15b31 100644
+--- a/src/compat.c
++++ b/src/compat.c
+@@ -21,6 +21,7 @@
+ #endif
+ 
+ #include <libguile.h>
++#include <libguile/deprecation.h>
+ #include <compat.h>
+ #include <string.h>
+ #include <stdio.h>
+-- 
+2.45.2
+

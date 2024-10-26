@@ -23,7 +23,7 @@ TARBALL_S="${S}/${PN}4-ST4-${PV}"
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~x64-solaris"
 
 CP_DEPEND="
 	dev-java/antlr-runtime:3.5
@@ -53,7 +53,10 @@ JAVA_TEST_SRC_DIR="${TARBALL_S}/test"
 JAVA_TEST_RESOURCE_DIRS=( "${TARBALL_S}/test/resources" )
 
 DOCS=( "${TARBALL_S}/"{CHANGES.txt,README.md} )
-PATCHES=( "${FILESDIR}/stringtemplate-4.3.4-BaseTest-javac-source-target.patch" )
+PATCHES=(
+	"${FILESDIR}/stringtemplate-4.3.4-BaseTest-javac-source-target.patch"
+	"${FILESDIR}/stringtemplate-4.3.4-Java21+-TestRenderers.patch"
+)
 
 src_prepare() {
 	default #780585
@@ -65,10 +68,6 @@ src_prepare() {
 }
 
 src_test() {
-	local vm_version="$(java-config -g PROVIDES_VERSION)"
-	if ver_test "${vm_version}" -ge 21; then
-		eapply "${FILESDIR}/stringtemplate-4.3.4-Java21-TestRenderers.patch"
-	fi
 	# Make sure no older versions of this slot are present in the classpath
 	# https://bugs.gentoo.org/834138#c4
 	local old_ver_cp="$(nonfatal java-pkg_getjars "${PN}-${SLOT}")"

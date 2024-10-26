@@ -1,0 +1,19 @@
+https://github.com/libffi/libffi/commit/f7e4992789fa563b4cc74521c37ff703555da21c
+
+From f7e4992789fa563b4cc74521c37ff703555da21c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@cmpct.info>
+Date: Fri, 20 Sep 2024 10:58:06 +0100
+Subject: [PATCH] testsuite: fix dejagnu directive typo (#859)
+
+--- a/testsuite/libffi.complex/complex_int.c
++++ b/testsuite/libffi.complex/complex_int.c
+@@ -76,7 +76,7 @@ int main (void)
+ 
+   printf ("%d,%di %d,%di, x %d 1234, y %d 11110\n",
+ 	  (int)tc_result, (int)(tc_result * -I), 2, 8, tc_int_arg_x, tc_y);
+-  /* dg-output "-2,8i 2,8i, x 1234 1234, y 11110 11110" */
++  /* { dg-output "-2,8i 2,8i, x 1234 1234, y 11110 11110" } */
+   CHECK (creal (tc_result) == -2);
+   CHECK (cimag (tc_result) == 8);
+   CHECK (tc_int_arg_x == 1234);
+

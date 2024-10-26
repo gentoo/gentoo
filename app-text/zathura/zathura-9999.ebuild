@@ -10,53 +10,50 @@ HOMEPAGE="https://pwmt.org/projects/zathura/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-	EGIT_BRANCH="develop"
+	EGIT_REPO_URI="https://github.com/pwmt/zathura.git"
 else
 	SRC_URI="
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://cdn.turret.cyou/e28b2f940d1a19a74ecbfd80ea4477c5ea9ac627/${P}-manpages.tar.xz
 	"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="ZLIB"
-SLOT="0/5.6"
-IUSE="seccomp synctex test"
+SLOT="0/6.7"
+IUSE="+man seccomp synctex test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/girara-0.4.3
-	>=dev-libs/glib-2.50:2
 	dev-libs/json-glib
-	sys-apps/file
-	x11-libs/cairo
-	>=x11-libs/gtk+-3.22:3
-	>=dev-db/sqlite-3.6.23:3
+	man? ( dev-python/sphinx )
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
+	sys-apps/file
+	x11-libs/cairo
+	x11-libs/pango
+	>=dev-db/sqlite-3.6.23:3
+	>=dev-libs/girara-0.4.3:=
+	>=dev-libs/glib-2.72:2
+	>=x11-libs/gtk+-3.24:3
 "
 DEPEND="
 	${RDEPEND}
+	>=sys-kernel/linux-headers-5.13
 	test? (
 		dev-libs/check
-		>=x11-libs/gtk+-3.22:3[X]
+		>=x11-libs/gtk+-3.24:3[X]
 	)
 "
 BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}"/${P}-disable-seccomp-tests.patch
-)
-
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=disabled
+		-Dlandlock=enabled
+		-Dmanpages=$(usex man enabled disabled)
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
 		)
@@ -69,5 +66,4 @@ src_test() {
 
 src_install() {
 	meson_src_install
-	[[ ${PV} != *9999 ]] && doman "${WORKDIR}"/man/zathura*
 }

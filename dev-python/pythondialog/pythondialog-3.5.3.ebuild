@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/python3-${P
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ppc ~riscv sparc x86"
 
 RDEPEND="dev-util/dialog"
 

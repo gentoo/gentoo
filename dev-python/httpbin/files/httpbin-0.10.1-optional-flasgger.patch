@@ -34,15 +34,13 @@ index a82c1b8..77576a4 100644
  
  from . import filters
  from .helpers import (
-@@ -165,7 +168,10 @@ swagger_config = {
+@@ -165,7 +168,8 @@ swagger_config = {
      "specs_route": "/",
  }
  
 -swagger = Swagger(app, sanitizer=NO_SANITIZER, template=template, config=swagger_config)
 +if Swagger is not None:
 +    swagger = Swagger(app, sanitizer=NO_SANITIZER, template=template, config=swagger_config)
-+else:
-+    app.logger.warning("Swagger not found, legacy index will be used.")
  
  # Set up Bugsnag exception tracking, if desired. To use Bugsnag, install the
  # Bugsnag Python client with the command "pip install bugsnag", and set the

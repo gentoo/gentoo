@@ -5,6 +5,9 @@
 		<email>kumba@gentoo.org</email>
 		<name>Joshua Kinard</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">NLnetLabs/nsd</remote-id>
+	</upstream>
 	<use>
 		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS and statistics in nsd-control</flag>
 		<flag name="default-znow">Enable full relocation binding at load-time (RELRO NOW, to protect GOT and .dtor areas)</flag>
@@ -21,12 +24,8 @@
 		<flag name="radix-tree">Use a radix tree for main lookups instead of a red-black tree</flag>
 		<flag name="ratelimit">Enables ratelimiting, based on query name, type and source</flag>
 		<flag name="recvmmsg">Enable recvmmsg and sendmmsg compilation, faster but some kernel versions may have implementation problems for IPv6</flag>
-		<flag name="root-server">Configure NSD as a root server (OBSOLETE: removed in >=4.9.x)</flag>
 		<flag name="simdzone">Leverage SIMD instructions in modern CPUs to improve throughput</flag>
 		<flag name="tfo">Enable TCP Fast Open</flag>
-		<flag name="year2038">Support timestamps after 2038 (glibc only!)</flag>
+		<flag name="year2038">Enables support for 64-bit 'time_t' (sets D_TIME_BITS=64; glibc only)</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">NLnetLabs/nsd</remote-id>
-	</upstream>
 </pkgmetadata>

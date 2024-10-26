@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/chessai/semirings"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-haskell/base-compat-batteries:=[profile?]

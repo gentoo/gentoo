@@ -9,7 +9,7 @@ DESCRIPTION="GAP package for computing with error-correcting codes"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 DEPEND="sci-mathematics/gap"
 

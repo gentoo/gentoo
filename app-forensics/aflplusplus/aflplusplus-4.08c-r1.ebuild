@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 LLVM_MAX_SLOT=17
 LLVM_MIN_SLOT=14
 inherit toolchain-funcs llvm optfeature python-single-r1
@@ -67,7 +67,17 @@ pkg_setup() {
 }
 
 mymake() {
-	emake \
+	# afl-fuzz spews garbage to stdout if the environment contains any
+	# variables whose name beginning with USE_ (including the underscore),
+	# regardless of their value (even if empty!).  The ebuild environment
+	# contains several such variables and the garbage that gets printed
+	# ends up in the generated man page.
+	#
+	# We can work around the problem by unsetting all these variables when
+	# running make.
+	local badvars=("${!USE_@}")
+
+	env "${badvars[@]/#/-u}" emake \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
 		CFLAGS_FLTO="" \

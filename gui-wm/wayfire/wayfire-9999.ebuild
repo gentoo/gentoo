@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wayfire"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
-	SLOT="0/0.9"
+	SLOT="0/0.10"
 else
 	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~riscv"
@@ -29,7 +29,7 @@ CDEPEND="
 	dev-cpp/nlohmann_json
 	dev-libs/glib:2
 	dev-libs/libevdev
-	>=dev-libs/libinput-1.7.0:=
+	dev-libs/libinput:=
 	dev-libs/wayland
 	>=dev-libs/wayland-protocols-1.12
 	gui-libs/wf-config:${SLOT}

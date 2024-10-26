@@ -14,8 +14,8 @@ HOMEPAGE="https://projects.eclipse.org/projects/eclipse.jdt"
 SRC_URI="https://archive.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV/_rc/RC}.jar"
 
 LICENSE="EPL-1.0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 SLOT="4.20"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 BDEPEND="app-arch/unzip"
 COMMON_DEP="app-eselect/eselect-java"

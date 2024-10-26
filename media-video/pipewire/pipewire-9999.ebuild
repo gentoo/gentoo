@@ -26,7 +26,7 @@ PIPEWIRE_DOCS_PREBUILT_DEV=sam
 PIPEWIRE_DOCS_VERSION="${PV}"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]]; then
@@ -56,7 +56,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
+IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
 IUSE+=" modemmanager pipewire-alsa readline roc selinux sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
@@ -123,6 +123,7 @@ RDEPEND="
 		>=net-wireless/bluez-4.101:=
 		virtual/libusb:1
 	)
+	elogind? ( sys-auth/elogind )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	echo-cancel? ( >=media-libs/webrtc-audio-processing-1.2:1 )
 	extra? ( >=media-libs/libsndfile-1.0.20 )
@@ -191,6 +192,15 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local logind=disabled
+	if multilib_is_native_abi ; then
+		if use systemd ; then
+			logind=enabled
+		elif use elogind ; then
+			logind=enabled
+		fi
+	fi
+
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 
@@ -206,6 +216,8 @@ multilib_src_configure() {
 		$(meson_native_use_feature gstreamer gstreamer-device-provider)
 		$(meson_native_use_feature gsettings)
 		$(meson_native_use_feature systemd)
+		-Dlogind=${logind}
+		-Dlogind-provider=$(usex systemd 'libsystemd' 'libelogind')
 
 		$(meson_native_use_feature system-service systemd-system-service)
 		-Dsystemd-system-unit-dir="$(systemd_get_systemunitdir)"

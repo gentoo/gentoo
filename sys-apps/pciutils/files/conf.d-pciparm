@@ -1,6 +1,3 @@
-# PCI tweaking article:
-# http://www.gentoo.org/doc/en/articles/hardware-stability-p2.xml
-#
 # Apply to all devices:
 # PCIPARM_ALL="...."
 # Cards also can be addressed by vid:pid or by bus:slot.func

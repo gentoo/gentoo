@@ -1,0 +1,27 @@
+From a8c1bf9838610bbb8362b1d425cdd3e2ecfecc8b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Sun, 1 Sep 2024 14:59:49 +0200
+Subject: [PATCH] tests: add import for python-cryptography >= 43.0.0
+
+write_pkcs12_container method raises following error message with
+python-cryptography-43.0.0:
+
+  Error: module 'cryptography.hazmat.primitives.serialization' has no attribute 'pkcs12'
+
+Explicit import of the pkcs12 module resolves the issue.
+
+Upstream-PR: https://github.com/mtrojnar/osslsigncode/pull/407
+
+diff --git a/tests/make_certificates.py b/tests/make_certificates.py
+index 6fb03ac2..ea14a7ed 100644
+--- a/tests/make_certificates.py
++++ b/tests/make_certificates.py
+@@ -10,6 +10,8 @@
+ from cryptography.hazmat.primitives import serialization
+ from cryptography.hazmat.primitives.asymmetric import rsa
+ 
++import cryptography.hazmat.primitives.serialization.pkcs12
++
+ RESULT_PATH = os.getcwd()
+ CERTS_PATH = os.path.join(RESULT_PATH, "./Testing/certs/")
+ 

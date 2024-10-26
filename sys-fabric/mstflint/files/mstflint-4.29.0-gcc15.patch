@@ -1,0 +1,12 @@
+diff --git a/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h b/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h
+index 2d1e84e2..b6e03fed 100644
+--- a/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h
++++ b/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h
+@@ -38,6 +38,7 @@
+ #include <memory>
+ #include <vector>
+ #include <sstream>
++#include <cstdint>
+ 
+ namespace mft
+ {

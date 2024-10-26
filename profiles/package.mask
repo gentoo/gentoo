@@ -33,36 +33,246 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-23)
+# Doesn't support latest Rust/Cargo ebuild format and standard. Confuses
+# developers who tries to use it, and then see pkgcheck warnings on the
+# result.
+# Superior replacement is app-portage/pycargoebuild, which is maintained,
+# and supports more features.
+# Removal on 2024-11-22.  Bugs #942026, #934381, #724162, #930011.
+dev-util/cargo-ebuild
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-20)
+# Maintainer-needed, no reverse dependencies, EAPI=7, many modern C
+# bugs. Many other IRC clients can be replacement. Awaits version
+# bump.
+# Removal on 2024-11-19.  Bugs #941899, #900078, #934184, #874669, #834035, #745762.
+net-irc/epic5
+
+# Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
+# Experimental version, for testing purposes only.
+# Bug #941566.
+app-emulation/virtualbox-kvm
+
+# Michał Górny <mgorny@gentoo.org> (2024-10-18)
+# Low-quality, test-restricted package with multiple unresolved bugs
+# and version bump pending.  Removal requested by the maintainer.
+# Removal on 2024-11-17.  Bug #941436.
+net-misc/electron-cash
+
+# Michał Górny <mgorny@gentoo.org> (2024-10-18)
+# Causing issues since forever.  We are already deselecting a lot
+# of tests because of cryptic failures.  On top of that, upstream shows
+# no interest in porting to >=dev-python/pytest-8.  No (non-optional)
+# revdeps left.
+# Removal on 2024-11-17.  Bug #937896.
+dev-python/sentry-sdk
+
+# Ulrich Müller <ulm@gentoo.org> (2024-10-15)
+# No longer provided as a separate package; the Emacs mode is now
+# installed by dev-util/quilt with USE=emacs.
+# Removal on 2024-11-14. Bug #247500.
+app-emacs/quilt-el
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-10-14)
+# These packages are no more needed.
+# Use dev-ml/opam, dev-ml/opam-file-format,
+# dev-ml/opam-installer
+# that include these
+# remove on 2024-11-14.
+dev-ml/opam-client
+dev-ml/opam-repository
+dev-ml/opam-state
+dev-ml/opam-format
+dev-ml/opam-core
+dev-ml/opam-solver
+
+# Hans de Graaff <graaff@gentoo.org> (2024-10-13)
+# Obsolete slots without reverse dependencies. Use a newer slot
+# instead. Removal on 2024-11-13.
+dev-ruby/io-event:1.2
+dev-ruby/io-event:1.3
+
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
+# Vendors an unreleased libbpf version and generates ABI-breaking code.
+# Bug #941185.
+=dev-util/bpftool-7.5.0-r2
+
+# Michał Górny <mgorny@gentoo.org> (2024-10-10)
+# Gentoo package not updated for 4 years now.  No tests upstream.
+# No revdeps.
+# Removal on 2024-11-09.  Bug #941245.
+dev-python/beagle
+
+# Yongxiang Liang <tanekliang@gmail.org> (2024-10-10)
+# Fcitx 4 has been archived. Users can upgrade to Fcitx 5
+app-i18n/fcitx-anthy:4
+app-i18n/fcitx-chewing:4
+app-i18n/fcitx-cloudpinyin:4
+app-i18n/fcitx-configtool:4
+app-i18n/fcitx-hangul:4
+app-i18n/fcitx-libpinyin:4
+app-i18n/fcitx-m17n:4
+app-i18n/fcitx-qt5:4
+app-i18n/fcitx-rime:4
+app-i18n/fcitx-sayura:4
+app-i18n/fcitx-table-extra:4
+app-i18n/fcitx-unikey:4
+app-i18n/fcitx:4
+app-i18n/kcm-fcitx
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-10-09)
+# This is the new stable series of webkit-gtk, but it has a new
+# less-portable rendering engine, and doesn't yet build on ~riscv for
+# reasons unrelated to that. It's easier to play around with it in
+# the tree, but it's not ready for end users yet.
+>=net-libs/webkit-gtk-2.46.0
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-10-08)
+# Masked for testing and (mostly) to avoid upgrade noise given
+# PyQt6-6.7.x is known broken with it and depends on <6.8. Feel
+# free to unmask early if not using PyQt6.
+=dev-python/pyside6-6.8.0*
+=dev-python/pyside6-tools-6.8.0*
+=dev-python/shiboken6-6.8.0*
+=dev-qt/qt-docs-6.8.0*
+=dev-qt/qt3d-6.8.0*
+=dev-qt/qt5compat-6.8.0*
+=dev-qt/qtbase-6.8.0*
+=dev-qt/qtcharts-6.8.0*
+=dev-qt/qtconnectivity-6.8.0*
+=dev-qt/qtdeclarative-6.8.0*
+=dev-qt/qthttpserver-6.8.0*
+=dev-qt/qtimageformats-6.8.0*
+=dev-qt/qtlanguageserver-6.8.0*
+=dev-qt/qtlocation-6.8.0*
+=dev-qt/qtmultimedia-6.8.0*
+=dev-qt/qtnetworkauth-6.8.0*
+=dev-qt/qtpositioning-6.8.0*
+=dev-qt/qtquick3d-6.8.0*
+=dev-qt/qtquicktimeline-6.8.0*
+=dev-qt/qtremoteobjects-6.8.0*
+=dev-qt/qtscxml-6.8.0*
+=dev-qt/qtsensors-6.8.0*
+=dev-qt/qtserialbus-6.8.0*
+=dev-qt/qtserialport-6.8.0*
+=dev-qt/qtshadertools-6.8.0*
+=dev-qt/qtspeech-6.8.0*
+=dev-qt/qtsvg-6.8.0*
+=dev-qt/qttools-6.8.0*
+=dev-qt/qttranslations-6.8.0*
+=dev-qt/qtvirtualkeyboard-6.8.0*
+=dev-qt/qtwayland-6.8.0*
+=dev-qt/qtwebchannel-6.8.0*
+=dev-qt/qtwebengine-6.8.0*
+=dev-qt/qtwebsockets-6.8.0*
+=dev-qt/qtwebview-6.8.0*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
+# No more revdeps, merged into kde-frameworks/kpeople upstream.
+# Removal on 2024-11-06.
+dev-libs/kpeoplevcard
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
+# Unmaintained and archived upstream, removal on 2024-11-06.
+net-im/choqok
+
+# Hans de Graaff <graaff@gentoo.org> (2024-10-06)
+# Obsolete slot without reverse dependencies. Use the newer slot
+# instead. Removal on 2024-11-08.
+dev-ruby/base64:0.1
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-05)
+# This version is known to break on certain systems. At the
+# same time it fixes several reported issues. Masked until
+# we can work out how to resolve the situation.
+# See also: https://github.com/gentoo/gentoo/pull/36091
+~sys-boot/plymouth-24.004.60
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-05)
+# Masked for removal in 30 days. Broken since KF6 incapacitated
+# breeze-icons-rcc, but no one even complained. Upstream porting
+# effort stalled indefinitely:
+# https://invent.kde.org/office/kexi/-/issues/152
+# Removal on 2024-11-04.
+app-office/kexi
+dev-db/kdb
+dev-libs/kproperty
+dev-libs/kreport
+kde-frameworks/breeze-icons-rcc
+
+# Sebastian Pipping <sping@gentoo.org> (2024-10-03)
+# Masked for removal in 30 days.  Last release in 2021,
+# last commit two years ago, has open bugs, .. (bug #940725).
+# Also removing its two dependencies that have no other
+# reverse dependencies in Gentoo or known use outside of Lurch.
+net-libs/libaxc
+net-libs/libomemo
+x11-plugins/lurch
+
+# Sam James <sam@gentoo.org> (2024-09-30)
+# GCC 10 and older no longer receive upstream support or fixes for
+# bugs. Please switch to a newer GCC version using gcc-config.
+# The lowest supported version of GCC is GCC 11.
+<sys-devel/gcc-11
+<sys-devel/kgcc64-11
+
+# Michał Górny <mgorny@gentoo.org> (2024-09-29)
+# This package has not been updated since Python 3.11.2.  It bundles
+# part of Python stdlib that's most likely vulnerable by now, as well
+# as some third-party packages.  And it really needs a dedicated
+# maintainer.
+# Removal on 2024-10-29.  Bug #910612.
+dev-python/brython
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-28)
+# Nothing depends on it. Removal on 2024-10-28.
+dev-java/ant-core
+
+# Robin H. Johnson <robbat2@gentoo.org> (2024-09-22)
+# Upstream testing release; fails some tests as well here
+# Beware that if you upgrade to it, you may need to reset your keyrings.
+>=app-crypt/gnupg-2.5
+
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
+# Breaks parallel builds with fatal compiler errors.
+# Bug #939798, #939875.
+>=dev-python/ensurepip-setuptools-75.1.0
+>=dev-python/setuptools-75.1.0
+
+# Ulrich Müller <ulm@gentoo.org> (2024-09-12)
+# Pretest versions, masked for testing.
+<app-editors/emacs-30.0.9999:30-vcs
+
+# Sam James <sam@gentoo.org> (2024-09-10)
+# Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
+=sys-libs/timezone-data-2024b
+
+# Fabian Groffen <grobian@gentoo.org> (2024-09-02)
+# exim_tinydb utility crashes due to invalid free() (used in startup script)
+=mail-mta/exim-4.98
+
+# Florian Schmaus <flow@gentoo.org> (2024-08-23)
+# Has a serious bug that causes synced directories to end up world read-
+# and writeable. See https://github.com/nextcloud/desktop/issues/6863
+=net-misc/nextcloud-client-3.13.2
+
+# Pacho Ramos <pacho@gentoo.org> (2024-08-09)
+# Mask until we find out a way to deal better with the upstream
+# introduced circular dep, bug #937616
+>=dev-libs/glib-2.80
+>=dev-util/glib-utils-2.80
+>=dev-util/gdbus-codegen-2.80
+>=gnome-base/gnome-shell-46
+>=gnome-extra/gnome-shell-extensions-46
+>=gnome-base/nautilus-46
+>=dev-libs/gobject-introspection-1.80
+>=dev-libs/gobject-introspection-common-1.80
+>=x11-terms/ptyxis-46
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
-
-# Michał Górny <mgorny@gentoo.org> (2024-07-06)
-# Leftover backport for Python 3.9.  No revdeps.
-# Removal on 2024-08-05.  Bug #935676.
-dev-python/pathlib2
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# rime-data is EAPI=6, and with it last-rite it's reverse-dependencies.
-# Removal on 2024-08-04.  Bugs #935555, #935155, #695056, #924139.
-app-i18n/fcitx-rime
-app-i18n/ibus-rime
-app-i18n/rime-data
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, no reverse dependencies, various issues with modern C.
-# Removal on 2024-08-04.  Bugs #935553, #875746, #875245, #731094.
-media-video/luvcview
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, no reverse dependencies, fails tests.
-# Removal on 2024-08-04.  Bugs #935549, #873463, #741508.
-sci-libs/minuit
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, many compilation and configure issues, more QA issues.
-# Removal on 2024-08-04.  Bug #935545.
-sci-astronomy/esomidas
 
 # Joonas Niilola <juippis@gentoo.org> (2024-07-04)
 # libxml2-2.13.1 removed "deprecated" symbols that other (older)
@@ -73,325 +283,9 @@ sci-astronomy/esomidas
 =dev-libs/libxml2-2.13.1
 =dev-libs/libxslt-1.1.41
 
-# James Le Cuirot <chewi@gentoo.org> (2024-07-01)
-# Ancient, dead upstream, generally awful.
-# Removal on 2024-08-01.  Bugs #935307, #935308, #935309.
-games-arcade/spacerider
-games-arcade/tuxdash
-games-arcade/xsfcave
-
-# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-28)
-# games-puzzle/seatris: last rites
-# Twenty-year-old tetris clone with upstream that wasn't touched since,
-# broken code and broken autoconf.
-# Removed after 2024-08-01
-# Bug: https://bugs.gentoo.org/935057
-games-puzzle/seatris
-
-# Sam James <sam@gentoo.org> (2024-06-25)
-# Subvolume printing is broken: https://github.com/kdave/btrfs-progs/issues/829
-=sys-fs/btrfs-progs-6.9.1
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
-
-# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
-# Masked for removal in 30 days.
-# It's a dependency of cinelerra, written for cinelerra.
-# We don't ship cinelerra. It should be removed when we removed cinelerra
-#
-# Bugs #871387, #907261, #712480, #931765.
-media-libs/libmpeg3
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-22)
-# EAPI=6, no reverse-dependencies, various issues with modern C,
-# installs libtools files.
-# Removal on 2024-07-22.  Bugs #934689, #741440, #849920, #832789, #862714, #828579.
-sci-libs/h5hut
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-22)
-# EAPI=6, failing tests, fails to compile in various envs, various
-# QA issues.
-# Removal on 2024-07-22.  Bugs #934687, #928028, #862687, #836104, #741430, #811561, #526442.
-sci-libs/coinor-os
-
-# Michał Górny <mgorny@gentoo.org> (2024-06-21)
-# An obsolete timezone distribution for Python.  No revdeps left.
-# Removal on 2024-07-21.  Bug #934681.
-dev-python/pytzdata
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
-# EAPI=6, not maintained in gentoo for a long time, fails to
-# configure.
-# Removal on 2024-07-21.  Bugs #934680, #677444, #898100.
-sci-astronomy/aatm
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
-# Last dev-php/* EAPI=6 packages, and reverse dependencies of them.
-# composer has active security vulnerabilities. Others are waiting
-# for version bumps, and unbundling of dependencies.
-# Removal on 2024-07-21.  Bugs #934666.
-dev-php/phpDocumentor
-dev-php/phpcov
-dev-php/phpdepend
-dev-php/phpdocumentor-reflection-common
-dev-php/phpdocumentor-reflection-docblock
-dev-php/phpdocumentor-type-resolver
-dev-php/stringparser_bbcode
-dev-php/symfony-config
-dev-php/symfony-console
-dev-php/symfony-dependency-injection
-dev-php/symfony-event-dispatcher
-dev-php/symfony-yaml
-dev-php/composer
-
-# Hans de Graaff <graaff@gentoo.org> (2024-06-21)
-# Obsolete slot. Please use a newer slot instead.
-# Masked for removal on 2024-07-21.
-dev-ruby/public_suffix:4
-
-# Martin Dummer <martin.dummer@gmx.net> (2024-06-21)
-# Upstream dead, was an optional package for a reverse dependency
-# which is gone.
-# Removal on 2024-07-21.  Bug #791904
-media-video/vdr2jpeg
-
-# James Le Cuirot <chewi@gentoo.org> (2024-06-20)
-# Ancient, dead upstream, X11-based, probably doesn't work any more, and there
-# are better ways of running games in different sessions now.
-# Removal on 2024-07-20.  Bug #934640.
-games-util/xgame
-games-util/xgame-gtk2
-
-# James Le Cuirot <chewi@gentoo.org> (2024-06-20)
-# Apparently a good game, but you cannot buy the full Linux version any more.
-# Get the HD version from Steam or the Windows original from GOG instead.
-# Removal on 2024-07-20.  Bug #934637.
-games-strategy/majesty-demo
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
-# EAPI=6, keyworded for x86 only (making it hard to debug), has
-# open bugs for modern C and not using correct toolchain commands.
-# Removal on 2024-07-20.  Bugs #934621, #925090, #724078, #727438.
-dev-debug/ald
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
-# EAPI=6, no reverse dependencies, waiting for a version bump.
-# Removal on 2024-07-20.  Bugs #934619, #730758, #713760.
-media-gfx/dawn
-
-# Jakov Smolić <jsmolic@gentoo.org> (2024-06-18)
-# Outdated by several versions, very difficult to package due to the
-# complicated Cargo dependency management.
-# Removal on 2024-07-18. Bug #922378.
-app-emulation/cloud-hypervisor
-
-# Michał Górny <mgorny@gentoo.org> (2024-06-17)
-# A compatibility shim for ancient versions of flake8.  Upstream project
-# is gone.  No revdeps.
-# Removal on 2024-07-17.  Bug #934466.
-dev-python/flake8-polyfill
-
-# Hans de Graaff <graaff@gentoo.org> (2024-06-17)
-# Obsolete slot with failing tests. Use the newer slot instead. No
-# reverse dependencies. Masked for removal on 2024-07-17.
-dev-ruby/net-imap:0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
-# No release since 2021-06-10 and effectively declared unmaintained by
-# upstream since then; now conflicting with Plasma 6 by pulling in old
-# kde-plasma/libksysguard:5. Removal on 2024-08-24.
-kde-plasma/ksysguard
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
-# After most protocol support is gone, there is barely anything usable
-# left in kde-apps/kopete. It is also unmaintained and still depends on
-# kf5-portingaids, as well as conflicting kde-apps in slot 5. bug #760555
-# Removal on 2024-07-24.
-kde-apps/kopete
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
-# EAPI=6, no reverse dependencies, not packaged on other distributions,
-# waiting for a version bump (which is hard since ebuild used debian
-# patches). Not really maintained in Gentoo for a long time.
-# Removal on 2024-07-15.  Bugs #934366, #871378, #716084, #924302.
-sci-astronomy/predict
-
-# Cédric Krier <cedk@gentoo.org> (2023-06-15)
-# critical regression with potential data loss:
-# https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
-# Bug #934138
-~dev-vcs/mercurial-6.7
-~dev-vcs/mercurial-6.7.1
-~dev-vcs/mercurial-6.7.2
-~dev-vcs/mercurial-6.7.3
-
-# Maciej Barć <xgqt@gentoo.org> (2024-06-14)
-# EAPI=6, now shipped in official gambit and so it fails to merge from file
-# collision. Bug: #832334
-# Removal on 2024-07-14.
-dev-scheme/termite
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, no reverse dependencies, maintainer-needed, installation
-# blocked by iproute2.
-# Removal on 2024-07-14.  Bugs #934242, #430816.
-net-misc/arpd
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, many compilation issues, upstream is gone, not maintained for
-# many years.
-# Removal on 2024-07-14.  Bugs #934240.
-sci-electronics/vbs
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, dead upstream website, Gentoo is last distribution to
-# package it.
-# Removal on 2024-07-14.  Bug #934232.
-sci-chemistry/xyza2pipe
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, not maintained for ~7 years in gentoo, waiting for version
-# bump. Fetch restricted, and fails to build after manual fetch.
-# Removal on 2024-07-14.  Bugs #934228, #686860, #686858, #686856.
-sci-chemistry/namd
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, not maintained in Gentoo for a long time. procheck is
-# fetch restricted, and the file you download from upstream
-# doesn't match size and manifests. aqua depends on procheck.
-# Removal on 2024-07-14.  Bugs #928067, #928068.
-sci-chemistry/aqua
-sci-chemistry/procheck
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, maintainer-needed, no reverse dependencies.
-# Removal on 2024-07-14.  Bugs #934227, #898840.
-www-misc/log-toolkit
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
-# EAPI=6, maintainer needed, no reverse dependencies. Not maintained in
-# gentoo for a long time.
-# Removal on 2024-07-12.  Bugs #934156, #636422.
-net-misc/bfgminer
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
-# EAPI=6, library with no reverse dependencies, fails tests, has
-# issues with modern C.
-# Removal on 2024-07-12.  Bugs #934133, #725622, #813240.
-sci-libs/o2scl
-
-# Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
-# dev-php/pear, dev-php/PEAR-* and their reverse dependencies: mask for removal
-# in 30 days.
-# They are all unmaintained, most of the ebuilds are still EAPI 6, and together
-# they have around 40 bugs.
-# Removal: 2024-07-11.  Bug #933998.
-dev-php/PEAR-Cache
-dev-php/PEAR-Cache_Lite
-dev-php/PEAR-Console_Getargs
-dev-php/PEAR-Crypt_CHAP
-dev-php/PEAR-Crypt_HMAC
-dev-php/PEAR-Crypt_HMAC2
-dev-php/PEAR-DB
-dev-php/PEAR-DB_DataObject
-dev-php/PEAR-Date
-dev-php/PEAR-File
-dev-php/PEAR-File_Archive
-dev-php/PEAR-File_Find
-dev-php/PEAR-File_Fortune
-dev-php/PEAR-File_Gettext
-dev-php/PEAR-File_SMBPasswd
-dev-php/PEAR-HTML_AJAX
-dev-php/PEAR-HTML_CSS
-dev-php/PEAR-HTML_Common
-dev-php/PEAR-HTML_Common2
-dev-php/PEAR-HTML_Javascript
-dev-php/PEAR-HTML_QuickForm2
-dev-php/PEAR-HTML_Table
-dev-php/PEAR-HTML_Table_Matrix
-dev-php/PEAR-HTML_Template_Flexy
-dev-php/PEAR-HTML_Template_Sigma
-dev-php/PEAR-HTTP
-dev-php/PEAR-HTTP_Header
-dev-php/PEAR-HTTP_Request2
-dev-php/PEAR-HTTP_Session2
-dev-php/PEAR-Image_Color2
-dev-php/PEAR-Image_GraphViz
-dev-php/PEAR-Image_IPTC
-dev-php/PEAR-Image_Text
-dev-php/PEAR-Log
-dev-php/PEAR-MDB
-dev-php/PEAR-MDB2
-dev-php/PEAR-MDB2_Driver_mssql
-dev-php/PEAR-MDB2_Driver_mysqli
-dev-php/PEAR-MDB2_Driver_oci8
-dev-php/PEAR-MDB2_Driver_pgsql
-dev-php/PEAR-MIME_Type
-dev-php/PEAR-Mail
-dev-php/PEAR-Mail_mimeDecode
-dev-php/PEAR-Math_BigInteger
-dev-php/PEAR-Net_DNS
-dev-php/PEAR-Net_DNS2
-dev-php/PEAR-Net_DNSBL
-dev-php/PEAR-Net_IDNA2
-dev-php/PEAR-Net_IPv4
-dev-php/PEAR-Net_IPv6
-dev-php/PEAR-Net_LDAP2
-dev-php/PEAR-Net_POP3
-dev-php/PEAR-Net_Ping
-dev-php/PEAR-Net_SmartIRC
-dev-php/PEAR-Net_Traceroute
-dev-php/PEAR-Net_URL
-dev-php/PEAR-Net_URL2
-dev-php/PEAR-Net_UserAgent_Detect
-dev-php/PEAR-Numbers_Words
-dev-php/PEAR-OLE
-dev-php/PEAR-PHP_Beautifier
-dev-php/PEAR-PHP_Debug
-dev-php/PEAR-Pager
-dev-php/PEAR-Services_JSON
-dev-php/PEAR-Services_TinyURL
-dev-php/PEAR-Services_W3C_CSSValidator
-dev-php/PEAR-Spreadsheet_Excel_Writer
-dev-php/PEAR-System_Command
-dev-php/PEAR-Text_CAPTCHA
-dev-php/PEAR-Text_CAPTCHA_Numeral
-dev-php/PEAR-Text_Figlet
-dev-php/PEAR-Text_Highlighter
-dev-php/PEAR-Text_Password
-dev-php/PEAR-Text_Wiki
-dev-php/PEAR-Text_Wiki_BBCode
-dev-php/PEAR-Text_Wiki_Mediawiki
-dev-php/PEAR-Validate
-dev-php/PEAR-Var_Dump
-dev-php/PEAR-XML_Parser
-dev-php/PEAR-XML_RSS
-dev-php/PEAR-XML_Serializer
-dev-php/YAML
-dev-php/cphplib
-www-apps/dotproject
-
-# Michał Górny <mgorny@gentoo.org> (2024-06-10)
-# Merged into dev-python/rapidfuzz.  No revdeps left.
-# Removal on 2024-07-10.  Bug #934002.
-dev-python/rapidfuzz-capi
-
-# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
-# Long dead upstream. Probably broken. Use games-emulation/dolphin instead.
-# Removal on 2024-07-09.  Bug #739140.
-games-emulation/gcube
-
-# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
-# Super ancient and broken 32-bit only port. Package ECWolf instead.
-# Removal on 2024-07-09.  Bug #926467.
-games-fps/wolfgl
-
-# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
-# Download no longer available, license prevents mirroring.
-# Removal on 2024-07-09.  Bug #791115.
-games-strategy/darwinia-demo
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
@@ -471,34 +365,9 @@ dev-ml/async:0/0.17
 >=dev-ml/labltk-8.06.14
 dev-ml/patience_diff:0/0.17
 >=dev-ml/ppx_deriving-6.0.2
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, waiting for a version bump, not maintained for many years.
-# Removal on 2024-07-08.  Bug #933850.
-www-apps/wiliki
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# Various apache modules with no reverse dependencies, EAPI=6,
-# some maintainer-needed.
-# Removal on 2024-07-08.  Bugs #933847, #742452.
-www-apache/mod_vdbh
-www-apache/modsec-flameeyes
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, no reverse dependencies, maintainer-needed, various QA issues.
-# Removal on 2024-07-08.  Bugs #933843, #695068, #677432.
-net-analyzer/check_mk_agent
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, no reverse dependencies, fails to compile with LLVM or musl,
-# various QA issues.
-# Removal on 2024-07-08.  Bugs #933837, #832891, #740364, #751697, #403627.
-media-sound/herrie
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, fetch restricted, waiting for a version bump.
-# Removal on 2024-07-08.  Bug #933836.
-sci-libs/coinhsl
+dev-ml/ppx_js_style:0/0.17
+>=dev-ml/camlp4-5
+dev-ml/textutils_kernel:0/0.17
 
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
@@ -508,6 +377,7 @@ sci-libs/coinhsl
 >=xfce-base/garcon-4.19
 >=xfce-base/libxfce4ui-4.19
 >=xfce-base/libxfce4util-4.19
+>=xfce-base/libxfce4windowing-4.19.5
 >=xfce-base/thunar-4.19
 >=xfce-base/tumbler-4.19
 >=xfce-base/xfce4-appfinder-4.19
@@ -518,37 +388,9 @@ sci-libs/coinhsl
 >=xfce-base/xfconf-4.19
 >=xfce-base/xfdesktop-4.19
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, not maintained since cvs days. Keyworded for x86 and ppc
-# only. Fails to compile with modern C.
-# Removal on 2024-07-08.  Bugs #933824, #927783.
-net-p2p/gnut
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-07)
-# EAPI=6, no reverse dependencies, failing tests, various QA issues.
-# Removal on 2024-07-07.  Bugs #933768, #849923, #882403, #837020,
-# #741444, #831092, #862717.
-sci-libs/h5part
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
-# EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
-# clang.
-# Removal on 2024-07-09.  Bugs #933241, #889912, #880267, #562822, #930500.
-net-mail/gnubiff
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-11)
-# Contains a bug that could render the kernel fail to boot.
-# https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
-# The fix is:
-# https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7d24c0aa8e678f41457d1304e2091cac6fd1a2e
-=sys-kernel/gentoo-kernel-6.6.26
-=sys-kernel/gentoo-kernel-bin-6.6.26
-=sys-kernel/vanilla-kernel-6.6.26
-=sys-kernel/vanilla-kernel-6.8.5
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
@@ -573,11 +415,6 @@ sec-keys/openpgp-keys-jiatan
 # Mask experimental software
 =mail-mta/postfix-3.10*
 
-# Ulrich Müller <ulm@gentoo.org> (2024-02-08)
-# Masked for testing.
-# Test failure in watchpoints.dem, undefined function FresnelC.
-~sci-visualization/gnuplot-6.0.0
-
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require
@@ -595,13 +432,6 @@ sec-keys/openpgp-keys-jiatan
 <sys-kernel/gentoo-sources-5.10
 <sys-kernel/gentoo-kernel-5.10
 <virtual/dist-kernel-5.10
-
-# Sam James <sam@gentoo.org> (2023-11-19)
-# GCC 10 and older no longer receive upstream support or fixes for
-# bugs. Please switch to a newer GCC version using gcc-config.
-# The lowest supported version of GCC is GCC 11.
-<sys-devel/gcc-11
-<sys-devel/kgcc64-11
 
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
@@ -640,6 +470,7 @@ sec-keys/openpgp-keys-jiatan
 # Lots of package breakage as usual for new versions. Masked until most/all
 # reverse dependencies are fixed. Tracker bug is bug #906077.
 >=dev-libs/libfmt-10
+>=games-emulation/dolphin-2407
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
@@ -718,20 +549,6 @@ dev-build/automake:1.11
 media-plugins/kodi-game-libretro-nestopia
 media-plugins/kodi-game-libretro-dosbox
 
-# Sam James <sam@gentoo.org> (2020-10-05)
-# Masked for testing. New major versions of Guile
-# often break reverse dependencies.
-# Guile in Gentoo is not slotted, so let's be cautious.
-# bug #705554, bug #689408.
->=dev-scheme/guile-3.0.4
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# TeXmacs is the only remaining package in tree that requires guile-1.8, which
-# is unsupported upstream. A TeXmacs port to Guile-2 has been in progress for a
-# few years. Bug #436400
-app-office/texmacs
-<dev-scheme/guile-2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
 # Masked for more testing especially of reverse-deps.
 # ogre 1.11/1.12 breakage: bug #834468
@@ -768,9 +585,9 @@ app-office/texmacs
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-libs/glibc-2.38-r10
-<sys-libs/binutils-libs-2.40
-<sys-devel/binutils-2.40
-<sys-devel/binutils-hppa64-2.40
+<sys-libs/binutils-libs-2.42
+<sys-devel/binutils-2.42
+<sys-devel/binutils-hppa64-2.42
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but

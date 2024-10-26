@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/940608
+
+Sent via email to upstream by sam on 2024-10-15.
+--- a/src/testprogs/test-gif.c
++++ b/src/testprogs/test-gif.c
+@@ -19,8 +19,8 @@
+ #include "errors.h"
+ 
+ 
+-ssize_t wwwoffles_read_data(char *data,int len);
+-ssize_t wwwoffles_write_data(char *data,int len);
++ssize_t wwwoffles_read_data(char *data,size_t len);
++ssize_t wwwoffles_write_data(char *data,size_t len);
+ 
+ int main(int argc,char **argv)
+ {
+@@ -55,7 +55,7 @@ int main(int argc,char **argv)
+   This function is used as a callback from gifmodify.c and htmlmodify.l
+   ++++++++++++++++++++++++++++++++++++++*/
+ 
+-ssize_t wwwoffles_read_data(char *data,int len)
++ssize_t wwwoffles_read_data(char *data,size_t len)
+ {
+  int n=read_data(0,data,len);
+ 
+@@ -75,7 +75,7 @@ ssize_t wwwoffles_read_data(char *data,int len)
+   This function is used as a callback from gifmodify.c and htmlmodify.l
+   ++++++++++++++++++++++++++++++++++++++*/
+ 
+-ssize_t wwwoffles_write_data(char *data,int len)
++ssize_t wwwoffles_write_data(char *data,size_t len)
+ {
+  write_data(1,data,len);
+ 
+--- a/src/testprogs/test-modify.c
++++ b/src/testprogs/test-modify.c
+@@ -21,8 +21,8 @@
+ #include "errors.h"
+ 
+ 
+-ssize_t wwwoffles_read_data(char *data,int len);
+-ssize_t wwwoffles_write_data(char *data,int len);
++ssize_t wwwoffles_read_data(char *data,size_t len);
++ssize_t wwwoffles_write_data(char *data,size_t len);
+ 
+ int main(int argc,char **argv)
+ {
+@@ -72,7 +72,7 @@ int main(int argc,char **argv)
+   This function is used as a callback from gifmodify.c and htmlmodify.l
+   ++++++++++++++++++++++++++++++++++++++*/
+ 
+-ssize_t wwwoffles_read_data(char *data,int len)
++ssize_t wwwoffles_read_data(char *data,size_t len)
+ {
+  int n=read_data(0,data,len);
+ 
+@@ -92,7 +92,7 @@ ssize_t wwwoffles_read_data(char *data,int len)
+   This function is used as a callback from gifmodify.c and htmlmodify.l
+   ++++++++++++++++++++++++++++++++++++++*/
+ 
+-ssize_t wwwoffles_write_data(char *data,int len)
++ssize_t wwwoffles_write_data(char *data,size_t len)
+ {
+  write_data(1,data,len);
+ 

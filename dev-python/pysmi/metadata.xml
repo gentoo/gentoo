@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pysmi</remote-id>
-		<remote-id type="github">etingof/pysmi</remote-id>
+		<remote-id type="github">lextudio/pysmi</remote-id>
 	</upstream>
 </pkgmetadata>

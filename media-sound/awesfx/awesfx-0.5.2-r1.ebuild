@@ -12,7 +12,6 @@ SRC_URI="https://github.com/tiwai/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
-IUSE=""
 
 DEPEND="media-libs/alsa-lib"
 RDEPEND="${DEPEND}"

@@ -3,31 +3,40 @@
 
 EAPI=8
 
-NEED_EMACS=26
+NEED_EMACS="26"
 
 inherit elisp
 
 DESCRIPTION="EDN parser for Emacs Lisp"
 HOMEPAGE="https://github.com/clojure-emacs/parseedn/"
-SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/clojure-emacs/${PN}.git"
+else
+	SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
+
+	KEYWORDS="amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64 ~x86"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="app-emacs/parseclj"
+RDEPEND="
+	app-emacs/parseclj
+"
 BDEPEND="
 	${RDEPEND}
-	test? ( app-emacs/ert-runner )
 "
 
-ELISP_REMOVE="test/${PN}-test.el"  # Remove bad tests.
+# Remove bad tests.
+ELISP_REMOVE="
+	test/${PN}-test.el
+"
+
 DOCS=( CHANGELOG.md README.md )
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	ert-runner -L . -L test --reporter ert+duration --script test || die
-}
+elisp-enable-tests ert-runner test

@@ -1,0 +1,33 @@
+diff -Naurp lrzip-next-0.12.6.orig/configure.ac lrzip-next-0.12.6/configure.ac
+--- lrzip-next-0.12.6.orig/configure.ac	2024-01-27 08:42:15.000000000 -0500
++++ lrzip-next-0.12.6/configure.ac	2024-03-11 16:27:53.972571412 -0400
+@@ -168,16 +168,19 @@ AC_CHECK_LIB(gcrypt, gcry_md_open, ,
+ AC_CHECK_FUNCS(mmap strerror)
+ AC_CHECK_FUNCS(getopt_long)
+ 
+-AX_PTHREAD
+-LIBS="$PTHREAD_LIBS $LIBS"
+-AS_IF([test x"$debug" = xyes],
+-	 CFLAGS="-g -Og -DDEBUG"
+-	 CXXFLAGS="-g -Og -DDEBUG",
+-	 CFLAGS="$CFLAGS"
+-	 CXXFLAGS="$CXXFLAGS")
+-
+-CFLAGS+=" $PTHREAD_CFLAGS"
+-CXXFLAGS+=" $PTHREAD_CFLAGS"
++ACX_PTHREAD([
++	LIBS="$LIBS $PTHREAD_LIBS"
++	CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
++	CXXFLAGS="$CXXFLAGS $PTHREAD_CFLAGS"
++	CC="$PTHREAD_CC"
++	CXX="$PTHREAD_CXX"
++	AC_SUBST([LIBS])
++	AC_SUBST([CFLAGS])
++	AC_SUBST([CXXFLAGS])
++	AC_SUBST([CC])
++	AC_SUBST([CXX])
++	],
++	[AC_MSG_ERROR([POSIX threads support is required])])
+ 
+ ## test for ARM or other non x86 processor
+ ## must use -DNOJIT for compiling zpaq

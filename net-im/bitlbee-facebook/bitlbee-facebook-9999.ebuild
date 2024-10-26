@@ -1,16 +1,12 @@
-# Copyright 2017-2019 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Facebook protocol plugin for BitlBee"
 HOMEPAGE="https://github.com/bitlbee/bitlbee-facebook"
-
-LICENSE="GPL-2"
-SLOT="0"
-IUSE=""
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit	git-r3
@@ -19,6 +15,9 @@ else
 	SRC_URI="https://github.com/bitlbee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
+
+LICENSE="GPL-2"
+SLOT="0"
 
 RDEPEND="
 	dev-libs/glib:2

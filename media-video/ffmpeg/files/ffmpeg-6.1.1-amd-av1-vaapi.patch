@@ -1,0 +1,254 @@
+https://bugs.gentoo.org/936310
+https://gitlab.freedesktop.org/mesa/mesa/-/issues/11533
+https://github.com/FFmpeg/FFmpeg/commit/fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c
+https://github.com/FFmpeg/FFmpeg/commit/d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba
+
+From fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Wed, 8 May 2024 09:11:11 +0200
+Subject: [PATCH] lavc/vaapi_decode: Make it possible to send multiple slice
+ params buffers
+
+Reviewed-by: Neal Gompa <ngompa13@gmail.com>
+Signed-off-by: David Rosca <nowrep@gmail.com>
+Signed-off-by: Haihao Xiang <haihao.xiang@intel.com>
+--- a/libavcodec/vaapi_av1.c
++++ b/libavcodec/vaapi_av1.c
+@@ -409,7 +409,7 @@ static int vaapi_av1_decode_slice(AVCodecContext *avctx,
+             .tg_end            = s->tg_end,
+         };
+ 
+-        err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &slice_param,
++        err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &slice_param, 1,
+                                                 sizeof(VASliceParameterBufferAV1),
+                                                 buffer,
+                                                 size);
+--- a/libavcodec/vaapi_decode.c
++++ b/libavcodec/vaapi_decode.c
+@@ -63,6 +63,7 @@ int ff_vaapi_decode_make_param_buffer(AVCodecContext *avctx,
+ int ff_vaapi_decode_make_slice_buffer(AVCodecContext *avctx,
+                                       VAAPIDecodePicture *pic,
+                                       const void *params_data,
++                                      int nb_params,
+                                       size_t params_size,
+                                       const void *slice_data,
+                                       size_t slice_size)
+@@ -88,7 +89,7 @@ int ff_vaapi_decode_make_slice_buffer(AVCodecContext *avctx,
+ 
+     vas = vaCreateBuffer(ctx->hwctx->display, ctx->va_context,
+                          VASliceParameterBufferType,
+-                         params_size, 1, (void*)params_data,
++                         params_size, nb_params, (void*)params_data,
+                          &pic->slice_buffers[index]);
+     if (vas != VA_STATUS_SUCCESS) {
+         av_log(avctx, AV_LOG_ERROR, "Failed to create slice "
+--- a/libavcodec/vaapi_decode.h
++++ b/libavcodec/vaapi_decode.h
+@@ -73,6 +73,7 @@ int ff_vaapi_decode_make_param_buffer(AVCodecContext *avctx,
+ int ff_vaapi_decode_make_slice_buffer(AVCodecContext *avctx,
+                                       VAAPIDecodePicture *pic,
+                                       const void *params_data,
++                                      int nb_params,
+                                       size_t params_size,
+                                       const void *slice_data,
+                                       size_t slice_size);
+--- a/libavcodec/vaapi_h264.c
++++ b/libavcodec/vaapi_h264.c
+@@ -375,7 +375,7 @@ static int vaapi_h264_decode_slice(AVCodecContext *avctx,
+                                        slice_param.chroma_offset_l1);
+ 
+     err = ff_vaapi_decode_make_slice_buffer(avctx, pic,
+-                                            &slice_param, sizeof(slice_param),
++                                            &slice_param, 1, sizeof(slice_param),
+                                             buffer, size);
+     if (err) {
+         ff_vaapi_decode_cancel(avctx, pic);
+--- a/libavcodec/vaapi_hevc.c
++++ b/libavcodec/vaapi_hevc.c
+@@ -353,7 +353,7 @@ static int vaapi_hevc_end_frame(AVCodecContext *avctx)
+     if (pic->last_size) {
+         last_slice_param->LongSliceFlags.fields.LastSliceOfPic = 1;
+         ret = ff_vaapi_decode_make_slice_buffer(avctx, &pic->pic,
+-                                                &pic->last_slice_param, slice_param_size,
++                                                &pic->last_slice_param, 1, slice_param_size,
+                                                 pic->last_buffer, pic->last_size);
+         if (ret < 0)
+             goto fail;
+@@ -471,7 +471,7 @@ static int vaapi_hevc_decode_slice(AVCodecContext *avctx,
+ 
+     if (!sh->first_slice_in_pic_flag) {
+         err = ff_vaapi_decode_make_slice_buffer(avctx, &pic->pic,
+-                                                &pic->last_slice_param, slice_param_size,
++                                                &pic->last_slice_param, 1, slice_param_size,
+                                                 pic->last_buffer, pic->last_size);
+         pic->last_buffer = NULL;
+         pic->last_size   = 0;
+--- a/libavcodec/vaapi_mjpeg.c
++++ b/libavcodec/vaapi_mjpeg.c
+@@ -131,7 +131,7 @@ static int vaapi_mjpeg_decode_slice(AVCodecContext *avctx,
+         sp.components[i].ac_table_selector  = s->ac_index[i];
+     }
+ 
+-    err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &sp, sizeof(sp), buffer, size);
++    err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &sp, 1, sizeof(sp), buffer, size);
+     if (err)
+         goto fail;
+ 
+--- a/libavcodec/vaapi_mpeg2.c
++++ b/libavcodec/vaapi_mpeg2.c
+@@ -162,7 +162,7 @@ static int vaapi_mpeg2_decode_slice(AVCodecContext *avctx, const uint8_t *buffer
+     };
+ 
+     err = ff_vaapi_decode_make_slice_buffer(avctx, pic,
+-                                            &slice_param, sizeof(slice_param),
++                                            &slice_param, 1, sizeof(slice_param),
+                                             buffer, size);
+     if (err < 0) {
+         ff_vaapi_decode_cancel(avctx, pic);
+--- a/libavcodec/vaapi_mpeg4.c
++++ b/libavcodec/vaapi_mpeg4.c
+@@ -169,7 +169,7 @@ static int vaapi_mpeg4_decode_slice(AVCodecContext *avctx, const uint8_t *buffer
+     };
+ 
+     err = ff_vaapi_decode_make_slice_buffer(avctx, pic,
+-                                            &slice_param, sizeof(slice_param),
++                                            &slice_param, 1, sizeof(slice_param),
+                                             buffer, size);
+     if (err < 0) {
+         ff_vaapi_decode_cancel(avctx, pic);
+--- a/libavcodec/vaapi_vc1.c
++++ b/libavcodec/vaapi_vc1.c
+@@ -490,7 +490,7 @@ static int vaapi_vc1_decode_slice(AVCodecContext *avctx, const uint8_t *buffer,
+     };
+ 
+     err = ff_vaapi_decode_make_slice_buffer(avctx, pic,
+-                                            &slice_param, sizeof(slice_param),
++                                            &slice_param, 1, sizeof(slice_param),
+                                             buffer, size);
+     if (err < 0) {
+         ff_vaapi_decode_cancel(avctx, pic);
+--- a/libavcodec/vaapi_vp8.c
++++ b/libavcodec/vaapi_vp8.c
+@@ -209,7 +209,7 @@ static int vaapi_vp8_decode_slice(AVCodecContext *avctx,
+     for (i = 0; i < 8; i++)
+         sp.partition_size[i+1] = s->coeff_partition_size[i];
+ 
+-    err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &sp, sizeof(sp), data, data_size);
++    err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &sp, 1, sizeof(sp), data, data_size);
+     if (err)
+         goto fail;
+ 
+--- a/libavcodec/vaapi_vp9.c
++++ b/libavcodec/vaapi_vp9.c
+@@ -158,7 +158,7 @@ static int vaapi_vp9_decode_slice(AVCodecContext *avctx,
+     }
+ 
+     err = ff_vaapi_decode_make_slice_buffer(avctx, pic,
+-                                            &slice_param, sizeof(slice_param),
++                                            &slice_param, 1, sizeof(slice_param),
+                                             buffer, size);
+     if (err) {
+         ff_vaapi_decode_cancel(avctx, pic);
+
+From d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Wed, 8 May 2024 09:11:13 +0200
+Subject: [PATCH] lavc/vaapi_av1: Avoid sending the same slice buffer multiple
+ times
+
+When there are multiple tiles in one slice buffer, use multiple slice
+params to avoid sending the same slice buffer multiple times and thus
+increasing the bitstream size the driver will need to upload to hw.
+
+Reviewed-by: Neal Gompa <ngompa13@gmail.com>
+Signed-off-by: David Rosca <nowrep@gmail.com>
+Signed-off-by: Haihao Xiang <haihao.xiang@intel.com>
+--- a/libavcodec/vaapi_av1.c
++++ b/libavcodec/vaapi_av1.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "libavutil/frame.h"
++#include "libavutil/mem.h"
+ #include "hwaccel_internal.h"
+ #include "vaapi_decode.h"
+ #include "internal.h"
+@@ -42,6 +43,9 @@ typedef struct VAAPIAV1DecContext {
+     */
+     VAAPIAV1FrameRef ref_tab[AV1_NUM_REF_FRAMES];
+     AVFrame *tmp_frame;
++
++    int nb_slice_params;
++    VASliceParameterBufferAV1 *slice_params;
+ } VAAPIAV1DecContext;
+ 
+ static VASurfaceID vaapi_av1_surface_id(AV1Frame *vf)
+@@ -97,6 +101,8 @@ static int vaapi_av1_decode_uninit(AVCodecContext *avctx)
+     for (int i = 0; i < FF_ARRAY_ELEMS(ctx->ref_tab); i++)
+         av_frame_free(&ctx->ref_tab[i].frame);
+ 
++    av_freep(&ctx->slice_params);
++
+     return ff_vaapi_decode_uninit(avctx);
+ }
+ 
+@@ -393,13 +399,24 @@ static int vaapi_av1_decode_slice(AVCodecContext *avctx,
+ {
+     const AV1DecContext *s = avctx->priv_data;
+     VAAPIDecodePicture *pic = s->cur_frame.hwaccel_picture_private;
+-    VASliceParameterBufferAV1 slice_param;
+-    int err = 0;
++    VAAPIAV1DecContext *ctx = avctx->internal->hwaccel_priv_data;
++    int err, nb_params;
++
++    nb_params = s->tg_end - s->tg_start + 1;
++    if (ctx->nb_slice_params < nb_params) {
++        ctx->slice_params = av_realloc_array(ctx->slice_params,
++                                             nb_params,
++                                             sizeof(*ctx->slice_params));
++        if (!ctx->slice_params) {
++            ctx->nb_slice_params = 0;
++            err = AVERROR(ENOMEM);
++            goto fail;
++        }
++        ctx->nb_slice_params = nb_params;
++    }
+ 
+     for (int i = s->tg_start; i <= s->tg_end; i++) {
+-        memset(&slice_param, 0, sizeof(VASliceParameterBufferAV1));
+-
+-        slice_param = (VASliceParameterBufferAV1) {
++        ctx->slice_params[i - s->tg_start] = (VASliceParameterBufferAV1) {
+             .slice_data_size   = s->tile_group_info[i].tile_size,
+             .slice_data_offset = s->tile_group_info[i].tile_offset,
+             .slice_data_flag   = VA_SLICE_DATA_FLAG_ALL,
+@@ -408,18 +425,20 @@ static int vaapi_av1_decode_slice(AVCodecContext *avctx,
+             .tg_start          = s->tg_start,
+             .tg_end            = s->tg_end,
+         };
+-
+-        err = ff_vaapi_decode_make_slice_buffer(avctx, pic, &slice_param, 1,
+-                                                sizeof(VASliceParameterBufferAV1),
+-                                                buffer,
+-                                                size);
+-        if (err) {
+-            ff_vaapi_decode_cancel(avctx, pic);
+-            return err;
+-        }
+     }
+ 
++    err = ff_vaapi_decode_make_slice_buffer(avctx, pic, ctx->slice_params, nb_params,
++                                            sizeof(VASliceParameterBufferAV1),
++                                            buffer,
++                                            size);
++    if (err)
++        goto fail;
++
+     return 0;
++
++fail:
++    ff_vaapi_decode_cancel(avctx, pic);
++    return err;
+ }
+ 
+ const FFHWAccel ff_av1_vaapi_hwaccel = {

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/iputils/iputils/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
@@ -40,15 +40,20 @@ DEPEND="
 	virtual/os-headers
 "
 BDEPEND="
-	app-text/docbook-xml-dtd:4.2
-	app-text/docbook-xml-dtd:4.5
-	app-text/docbook-xsl-ns-stylesheets
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
 	virtual/pkgconfig
 	test? ( sys-apps/iproute2 )
 	nls? ( sys-devel/gettext )
 "
+
+if [[ ${PV} == 9999 ]] ; then
+	BDEPEND+="
+		app-text/docbook-xml-dtd:4.2
+		app-text/docbook-xml-dtd:4.5
+		app-text/docbook-xsl-ns-stylesheets
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	"
+fi
 
 src_prepare() {
 	default
@@ -68,9 +73,14 @@ src_configure() {
 		-Dsystemdunitdir=$(systemd_get_systemunitdir)
 		-DUSE_GETTEXT=$(usex nls true false)
 		$(meson_use !test SKIP_TESTS)
-		-DBUILD_HTML_MANS=$(usex doc true false)
-		-DBUILD_MANS=true
 	)
+
+	if use doc || [[ ${PV} == 9999 ]] ; then
+		emesonargs+=(
+			-DBUILD_HTML_MANS=true
+			-DBUILD_MANS=true
+		)
+	fi
 
 	meson_src_configure
 }

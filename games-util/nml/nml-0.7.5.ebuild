@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
 
 DESCRIPTION="Compiler of NML files into GRF/NFO files"
@@ -23,6 +23,10 @@ RDEPEND="
 		dev-python/ply[${PYTHON_USEDEP}]
 	')
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.5-regex-py313.patch
+)
 
 src_prepare() {
 	default

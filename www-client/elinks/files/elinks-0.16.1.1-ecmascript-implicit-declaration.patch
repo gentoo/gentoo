@@ -1,0 +1,36 @@
+--- elinks-0.16.1.1/src/document/html/parser/general.c	2024-06-06 07:10:40.163191871 +0200
++++ elinks-0.16.1.1/src/document/html/parser/general.c	2024-06-06 07:11:45.913711031 +0200
+@@ -38,6 +38,10 @@
+ #include "util/memory.h"
+ #include "util/string.h"
+ 
++#ifdef CONFIG_ECMASCRIPT
++#include "ecmascript/ecmascript.h"
++#endif
++
+ /* Unsafe macros */
+ #include "document/html/internal.h"
+ 
+--- elinks-0.16.1.1/src/document/html/parser/stack.c	2023-05-01 10:45:22.000000000 +0200
++++ elinks-0.16.1.1/src/document/html/parser/stack.c	2024-06-06 07:11:29.892765184 +0200
+@@ -24,6 +24,10 @@
+ #include "util/memory.h"
+ #include "util/string.h"
+ 
++#ifdef CONFIG_ECMASCRIPT
++#include "ecmascript/ecmascript.h"
++#endif
++
+ /* Unsafe macros */
+ #include "document/html/internal.h"
+ 
+--- elinks-0.16.1.1/src/ecmascript/ecmascript.h.orig	2024-06-06 07:18:53.237018842 +0200
++++ elinks-0.16.1.1/src/ecmascript/ecmascript.h	2024-06-06 07:20:04.434093077 +0200
+@@ -26,6 +26,7 @@
+ #include "main/module.h"
+ #include "main/timer.h"
+ #include "util/time.h"
++#include <stdbool.h>
+ 
+ //#define ECMASCRIPT_DEBUG 1
+ 

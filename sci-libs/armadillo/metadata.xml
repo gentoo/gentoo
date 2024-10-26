@@ -34,5 +34,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">arma</remote-id>
+    <remote-id type="gitlab">conradsnicta/armadillo-code</remote-id>
   </upstream>
 </pkgmetadata>

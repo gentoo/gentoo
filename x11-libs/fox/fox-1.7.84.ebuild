@@ -11,7 +11,7 @@ SRC_URI="ftp://www.fox-toolkit.org/pub/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.7"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile tools"
 
 COMMON_DEPEND="
@@ -65,6 +65,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing (bug #864412, bug #940648)
+	# Do not trust it for LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use debug || append-cppflags -DNDEBUG
 
 	# Not using --enable-release because of the options it sets like no SSP

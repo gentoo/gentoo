@@ -1,0 +1,33 @@
+--- hiredis-2.2.2.orig/setup.py
++++ hiredis-2.2.2/setup.py
+@@ -18,8 +18,7 @@
+ 
+ 
+ def get_sources():
+-    hiredis_sources = ("alloc", "async", "hiredis", "net", "read", "sds", "sockcompat")
+-    return sorted(glob.glob("src/*.c") + ["vendor/hiredis/%s.c" % src for src in hiredis_sources])
++    return sorted(glob.glob("src/*.c"))
+ 
+ 
+ def get_linker_args():
+@@ -38,17 +37,16 @@
+ 
+ def get_libraries():
+     if 'win32' in sys.platform:
+-        return ["ws2_32", ]
++        return ["ws2_32", "hiredis"]
+     else:
+-        return []
++        return ["hiredis"]
+ 
+ 
+ ext = Extension("hiredis.hiredis",
+                 sources=get_sources(),
+                 extra_compile_args=get_compiler_args(),
+                 extra_link_args=get_linker_args(),
+-                libraries=get_libraries(),
+-                include_dirs=["vendor"])
++                libraries=get_libraries())
+ 
+ setup(
+     name="hiredis",

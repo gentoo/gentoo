@@ -8,14 +8,14 @@ inherit autotools
 MY_COMMIT=73b6fd183872096f20e6d1007429546a317a7cb1
 
 DESCRIPTION="Support library to communicate with Apple iPhone/iPod Touch devices"
-HOMEPAGE="https://www.libimobiledevice.org/"
+HOMEPAGE="https://libimobiledevice.org/"
 SRC_URI="https://github.com/libimobiledevice/libimobiledevice/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_COMMIT}
 
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/1.0-6" # based on SONAME of libimobiledevice-1.0.so
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
 IUSE="doc gnutls readline static-libs"
 
 RDEPEND="

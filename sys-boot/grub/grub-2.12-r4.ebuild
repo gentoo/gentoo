@@ -51,11 +51,19 @@ if [[ ${PV} != 9999 ]]; then
 		S=${WORKDIR}/${P%_*}
 	fi
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
-	KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/gfxpayload.patch
+	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.12-fwsetup.patch
+	"${WORKDIR}"/grub-2.12-bash-completion.patch
+)
 
 DEJAVU=dejavu-sans-ttf-2.37
 UNIFONT=unifont-15.0.06
@@ -154,14 +162,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}"/gfxpayload.patch
-		"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
-		"${FILESDIR}"/grub-2.06-test-words.patch
-		"${FILESDIR}"/grub-2.12-fwsetup.patch
-		"${WORKDIR}"/grub-2.12-bash-completion.patch
-	)
-
 	default
 
 	python_setup
@@ -334,7 +334,7 @@ pkg_postinst() {
 	else
 		elog
 		optfeature "detecting other operating systems (grub-mkconfig)" sys-boot/os-prober
-		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn
+		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn sys-fs/mtools
 		optfeature "enabling RAID device detection" sys-fs/mdadm
 		optfeature "automatically updating GRUB's configuration on each kernel installation" "sys-kernel/installkernel[grub]"
 	fi

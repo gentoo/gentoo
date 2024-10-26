@@ -6,6 +6,6 @@
 		<name>Gentoo Office project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">hunspell</remote-id>
+		<remote-id type="github">hunspell/mythes</remote-id>
 	</upstream>
 </pkgmetadata>

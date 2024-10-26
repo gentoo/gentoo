@@ -6,7 +6,9 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kate</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:kate</remote-id>
+		<remote-id type="kde-invent">utilities/kate</remote-id>
 	</upstream>
 	<use>
 		<flag name="filebrowser">Enable File System browser tool view</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multibuild.eclass
@@ -6,23 +6,23 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: A generic eclass for building multiple variants of packages.
 # @DESCRIPTION:
 # The multibuild eclass aims to provide a generic framework for building
 # multiple 'variants' of a package (e.g. multilib, Python
 # implementations).
 
+if [[ -z ${_MULTIBUILD_ECLASS} ]]; then
+_MULTIBUILD_ECLASS=1
+
 case ${EAPI} in
-	6|7|8)
+	7|8)
 		# backwards compatibility for run_in_build_dir
 		inherit out-of-source-utils
 		;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_MULTIBUILD_ECLASS} ]]; then
-_MULTIBUILD_ECLASS=1
 
 # @ECLASS_VARIABLE: MULTIBUILD_VARIANTS
 # @REQUIRED
@@ -95,7 +95,7 @@ _MULTIBUILD_ECLASS=1
 # nevertheless. It is preferred to call 'die' inside of the passed
 # function.
 multibuild_foreach_variant() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MULTIBUILD_VARIANTS} ]] \
 		|| die "MULTIBUILD_VARIANTS need to be set"
@@ -146,7 +146,7 @@ multibuild_foreach_variant() {
 #
 # The function returns command exit status.
 multibuild_for_best_variant() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MULTIBUILD_VARIANTS} ]] \
 		|| die "MULTIBUILD_VARIANTS need to be set"
@@ -162,7 +162,7 @@ multibuild_for_best_variant() {
 # be placed in directories matching BUILD_DIRs used by
 # multibuild_foreach().
 multibuild_copy_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local _MULTIBUILD_INITIAL_BUILD_DIR=${BUILD_DIR:-${S}}
 
@@ -184,7 +184,7 @@ multibuild_copy_sources() {
 # (the real root). Both directories have to be real, absolute paths
 # (i.e. including ${D}). Source root will be removed.
 multibuild_merge_root() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local src=${1}
 	local dest=${2}

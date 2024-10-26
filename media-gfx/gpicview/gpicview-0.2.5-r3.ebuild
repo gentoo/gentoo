@@ -6,7 +6,7 @@ EAPI=8
 inherit xdg
 
 DESCRIPTION="A Simple and Fast Image Viewer for X"
-HOMEPAGE="http://lxde.sourceforge.net/gpicview"
+HOMEPAGE="https://lxde.sourceforge.net/gpicview/"
 SRC_URI="https://downloads.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"

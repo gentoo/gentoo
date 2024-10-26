@@ -12,7 +12,7 @@ SRC_URI="https://github.com/SDL-Hercules-390/hyperion/archive/refs/tags/Release_
 S="${WORKDIR}/hyperion-Release_${PV/.0/}"
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 # In theory USE=object-rexx and USE=regina-rexx are not mutually-exclusive.
 # In practice they functionally are as the Gentoo packages conflict, and
 # additionally Hercules only supports calling out to one of them at runtime,
@@ -25,23 +25,26 @@ FILECAPS=(
 	-M 755 cap_net_admin+ep usr/bin/hercifc
 )
 
-RDEPEND="
-	!app-emulation/hercules
+COMMON_DEPEND="
 	dev-libs/libltdl
 	net-libs/libnsl:0
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	object-rexx? ( dev-lang/oorexx )
 	regina-rexx? ( dev-lang/regina-rexx )"
-DEPEND="${RDEPEND}
+RDEPEND="
+	!app-emulation/hercules
+	!app-arch/tapeutils
+	${COMMON_DEPEND}"
+DEPEND="
+	${COMMON_DEPEND}
 	~app-emulation/hercules-sdl-crypto-${PV}
 	~app-emulation/hercules-sdl-decnumber-${PV}
 	~app-emulation/hercules-sdl-softfloat-${PV}
 	~app-emulation/hercules-sdl-telnet-${PV}"
 # Neither package support needs to be compiled-in for tests,
 # but the "rexx" command needs to be available
-BDEPEND="${RDEPEND}
-	test? ( || ( dev-lang/regina-rexx dev-lang/oorexx ) )"
+BDEPEND="test? ( || ( dev-lang/regina-rexx dev-lang/oorexx ) )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-htmldir.patch"

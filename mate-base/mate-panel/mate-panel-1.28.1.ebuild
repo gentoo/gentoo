@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	dev-libs/libxml2:2
 	>=gnome-base/dconf-0.13.4
 	>=gnome-base/dconf-editor-43.0
-	>=mate-base/mate-desktop-1.28.0
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	>=mate-base/mate-menus-1.28.0
 	>=sys-apps/dbus-1.1.2
 	>=x11-libs/cairo-1.0.0[X?]

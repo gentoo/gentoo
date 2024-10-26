@@ -55,6 +55,8 @@ has() {
 }
 use() { has "$1" ${IUSE} ; }
 
+in_iuse() { use "$@" ; }
+
 die() {
 	echo "die: $*" 1>&2
 	exit 1

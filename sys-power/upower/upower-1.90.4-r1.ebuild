@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit meson python-any-r1 systemd udev xdg-utils
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0/3" # based on SONAME of libupower-glib.so
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # gtk-doc files are not available as prebuilt in the tarball
 IUSE="doc +introspection ios selinux test"
@@ -65,6 +65,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	xdg_environment_reset
+	# https://bugs.gentoo.org/935575
+	unset XDG_CONFIG_DIRS XDG_DATA_DIRS
 }
 
 src_configure() {

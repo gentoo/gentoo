@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 
 inherit meson python-single-r1 optfeature virtualx xdg
@@ -50,6 +50,7 @@ RDEPEND="
 		net-libs/webkit-gtk:4[introspection]
 		net-libs/webkit-gtk:4.1[introspection]
 	)
+	sys-apps/pciutils
 	sys-apps/xdg-desktop-portal
 	x11-apps/mesa-progs
 	x11-apps/xgamma

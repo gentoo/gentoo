@@ -5,7 +5,7 @@
 		<email>asturm@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="cgroup-hybrid">Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.</flag>
+		<flag name="cgroup-hybrid">Use hybrid cgroup hierarchy instead of unified (OpenRC's default).</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">elogind/elogind</remote-id>

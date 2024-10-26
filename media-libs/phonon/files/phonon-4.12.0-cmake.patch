@@ -1,0 +1,62 @@
+From 02bde730f0750ca751da81a7077a0f70bf9dd056 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 22 Aug 2024 21:19:07 +0200
+Subject: [PATCH] Hide QtDesigner cmake finding and workarounds behind existing
+ option
+
+Otherwise, `add_library(Qt::OpenGLWidgets ALIAS Qt6::OpenGLWidgets)` will
+potentially fail even if PHONON_BUILD_DESIGNER_PLUGIN was not requested.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 32 +++++++++++++++++-------------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c00760fc..babeb392 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,23 +116,27 @@ foreach(version ${VERSIONS})
+     # https://bugreports.qt.io/browse/QTBUG-114706
+     add_library(Qt::Widgets ALIAS Qt${QT_MAJOR_VERSION}::Widgets)
+ 
+-    # Designer Plugin
+-    find_package(Qt${QT_MAJOR_VERSION}Designer ${REQUIRED_QT_VERSION})
+-    set_package_properties(Qt${QT_MAJOR_VERSION}Designer PROPERTIES
+-        TYPE RECOMMENDED
+-        DESCRIPTION "Needed to build the Qt Designer plugin"
+-        URL "https://www.qt.io/download")
+-    # https://bugreports.qt.io/browse/QTBUG-114706
+-    if(Qt${QT_MAJOR_VERSION}Xml_FOUND)
+-        add_library(Qt::Xml ALIAS Qt${QT_MAJOR_VERSION}::Xml)
++    if(PHONON_BUILD_DESIGNER_PLUGIN)
++        # Designer Plugin
++        find_package(Qt${QT_MAJOR_VERSION}Designer ${REQUIRED_QT_VERSION})
++        set_package_properties(Qt${QT_MAJOR_VERSION}Designer PROPERTIES
++            TYPE RECOMMENDED
++            DESCRIPTION "Needed to build the Qt Designer plugin"
++            URL "https://www.qt.io/download")
++        # https://bugreports.qt.io/browse/QTBUG-114706
++        if(Qt${QT_MAJOR_VERSION}Xml_FOUND)
++            add_library(Qt::Xml ALIAS Qt${QT_MAJOR_VERSION}::Xml)
++        endif()
++        if(QT_MAJOR_VERSION STREQUAL "6")
++            # Qt6Designer links to OpenGLWidgets but doesnt find it
++            find_package(Qt6OpenGLWidgets ${REQUIRED_QT_VERSION})
++            # https://bugreports.qt.io/browse/QTBUG-114706
++            add_library(Qt::OpenGLWidgets ALIAS Qt6::OpenGLWidgets)
++        endif()
+     endif()
+ 
+     if(QT_MAJOR_VERSION STREQUAL "6")
+         find_package(Qt6Core5Compat REQUIRED)
+-        # Qt6Designer links to OpenGLWidgets but doesnt find it
+-        find_package(Qt6OpenGLWidgets ${REQUIRED_QT_VERSION})
+-        # https://bugreports.qt.io/browse/QTBUG-114706
+-        add_library(Qt::OpenGLWidgets ALIAS Qt6::OpenGLWidgets)
+     endif()
+ 
+     set(BUILDSYSTEM_INSTALL_DIR ${CMAKE_INSTALL_FULL_DATAROOTDIR}/${PHONON_LIB_SONAME}/buildsystem/)
+-- 
+2.46.0
+

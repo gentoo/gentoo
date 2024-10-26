@@ -14,7 +14,7 @@ SRC_URI="https://github.com/adaptivecomputing/torque/archive/${MY_COMMIT}.tar.gz
 
 LICENSE="torque-2.5"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="autorun cgroups cpusets +crypt doc munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="

@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/937457
+https://github.com/openssl/openssl/commit/419fb4ea4be4c0b28c63b494ff30fa3510aba06e
+
+From 419fb4ea4be4c0b28c63b494ff30fa3510aba06e Mon Sep 17 00:00:00 2001
+From: Neil Horman <nhorman@openssl.org>
+Date: Sun, 14 Jul 2024 08:57:25 -0400
+Subject: [PATCH] Fix cmake generator
+
+PR #24678 modified some environment variables and locations that the
+cmake exporter depended on, resulting in empty directory resolution.
+Adjust build build.info and input variable names to match up again
+
+Fixes #24874
+
+Reviewed-by: Richard Levitte <levitte@openssl.org>
+Reviewed-by: Tomas Mraz <tomas@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/24877)
+
+(cherry picked from commit c1a27bdeb9a4f915aa92ed0e74ed48a1f9b94176)
+--- a/build.info
++++ b/build.info
+@@ -102,6 +102,11 @@ IF[{- $config{target} =~ /^(?:Cygwin|mingw|VC-|BC-)/ -}]
+ ENDIF
+ 
+ # This file sets the build directory up for CMake inclusion
++# Note: This generation of OpenSSLConfig[Version].cmake is used
++# for building openssl locally, and so the build variables are 
++# taken from builddata.pm rather than installdata.pm.  For exportable
++# versions of these generated files, you'll find them in the exporters
++# directory
+ GENERATE[OpenSSLConfig.cmake]=exporters/cmake/OpenSSLConfig.cmake.in
+ DEPEND[OpenSSLConfig.cmake]=builddata.pm
+ GENERATE[OpenSSLConfigVersion.cmake]=exporters/cmake/OpenSSLConfigVersion.cmake.in
+--- a/exporters/cmake/OpenSSLConfig.cmake.in
++++ b/exporters/cmake/OpenSSLConfig.cmake.in
+@@ -127,13 +127,13 @@ set(OPENSSL_VERSION_FIX "${OpenSSL_VERSION_PATCH}")
+ set(OPENSSL_FOUND YES)
+ 
+ # Directories and names
+-set(OPENSSL_INCLUDE_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::INCLUDEDIR_REL, 1); -}")
+-set(OPENSSL_LIBRARY_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::LIBDIR_REL, 1); -}")
+-set(OPENSSL_ENGINES_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::ENGINESDIR_REL, 1); -}")
+-set(OPENSSL_MODULES_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::MODULESDIR_REL, 1); -}")
+-set(OPENSSL_RUNTIME_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::BINDIR_REL, 1); -}")
++set(OPENSSL_LIBRARY_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::LIBDIR_REL_PREFIX, 1); -}")
++set(OPENSSL_INCLUDE_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::INCLUDEDIR_REL_PREFIX, 1); -}")
++set(OPENSSL_ENGINES_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::LIBDIR_REL_PREFIX, 1); -}/{- unixify($OpenSSL::safe::installdata::ENGINESDIR_REL_LIBDIR, 1); -}")
++set(OPENSSL_MODULES_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::LIBDIR_REL_PREFIX, 1); -}/{- unixify($OpenSSL::safe::installdata::MODULESDIR_REL_LIBDIR, 1); -}")
++set(OPENSSL_RUNTIME_DIR "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::BINDIR_REL_PREFIX, 1); -}")
+ {- output_off() if $disabled{uplink}; "" -}
+-set(OPENSSL_APPLINK_SOURCE "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::APPLINKDIR_REL, 1); -}/applink.c")
++set(OPENSSL_APPLINK_SOURCE "${_ossl_prefix}/{- unixify($OpenSSL::safe::installdata::APPLINKDIR_REL_PREFIX, 1); -}/applink.c")
+ {- output_on() if $disabled{uplink}; "" -}
+ set(OPENSSL_PROGRAM "${OPENSSL_RUNTIME_DIR}/{- platform->bin('openssl') -}")
+ 

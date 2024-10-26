@@ -12,10 +12,10 @@
 		servers.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/httpie/httpie/issues</bugs-to>
+		<bugs-to>https://github.com/httpie/cli/issues</bugs-to>
 		<changelog>https://raw.githubusercontent.com/httpie/httpie/master/CHANGELOG.md</changelog>
 		<doc>https://httpie.io/docs</doc>
-		<remote-id type="github">httpie/httpie</remote-id>
+		<remote-id type="github">httpie/cli</remote-id>
 		<remote-id type="pypi">httpie</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,7 +6,7 @@
 # Pacho Ramos <pacho@gentoo.org>
 # @AUTHOR:
 # Author: Pacho Ramos <pacho@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: install a doc file shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file recording tips
@@ -21,7 +21,7 @@ if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -54,7 +54,7 @@ esac
 # ${FILESDIR}/README.gentoo-${SLOT} also.
 # Usually called at src_install phase.
 readme.gentoo_create_doc() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -n "${DOC_CONTENTS}" ]]; then
 		if [[ -n "${DISABLE_AUTOFORMATTING}" ]]; then
@@ -78,7 +78,7 @@ readme.gentoo_create_doc() {
 	( # subshell to avoid pollution of calling environment
 		docinto .
 		dodoc "${T}"/README.gentoo
-	) || die
+	)
 	README_GENTOO_DOC_VALUE=$(< "${T}/README.gentoo")
 }
 
@@ -94,7 +94,7 @@ readme.gentoo_create_doc() {
 # rely on specific REPLACING_VERSIONS handling in your ebuild to print messages
 # when people update from versions still providing old message.
 readme.gentoo_print_elog() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z "${README_GENTOO_DOC_VALUE}" ]]; then
 		die "readme.gentoo_print_elog invoked without matching readme.gentoo_create_doc call!"

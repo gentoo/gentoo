@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,8 +15,7 @@ SRC_URI="$(pypi_sdist_url) -> ${PN}_python-${PV}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64"
-IUSE=""
+KEYWORDS="amd64 ~riscv"
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="~sci-mathematics/lrcalc-${PV}"

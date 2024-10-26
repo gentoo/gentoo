@@ -12,7 +12,7 @@
 	<use>
 		<flag name="external-signer">Include support for external wallet signer programs</flag>
 		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
-		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="wallet">Enable wallet support</flag>
 		<flag name="zeromq">Report blocks and transactions via zeromq</flag>

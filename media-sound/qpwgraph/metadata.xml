@@ -13,7 +13,4 @@
 		<remote-id type="freedesktop-gitlab">rncbc/qpwgraph</remote-id>
 		<bugs-to>https://gitlab.freedesktop.org/rncbc/qpwgraph/-/issues</bugs-to>
 	</upstream>
-	<use>
-		<flag name="trayicon">Build support for tray icon</flag>
-	</use>
 </pkgmetadata>

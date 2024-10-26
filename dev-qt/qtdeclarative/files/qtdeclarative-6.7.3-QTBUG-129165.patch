@@ -1,0 +1,162 @@
+Recommended backport from 6.8.0 to prevent a crash with kcm_pulseaudio.
+https://bugreports.qt.io/browse/QTBUG-129165
+https://bugs.kde.org/show_bug.cgi?id=493266
+(kde bug mentions is for 6.8.0, but was seemingly the -rc without the fix)
+--- a/src/quick/items/qquickitemview.cpp
++++ b/src/quick/items/qquickitemview.cpp
+@@ -11,4 +11,5 @@
+ 
+ Q_LOGGING_CATEGORY(lcItemViewDelegateLifecycle, "qt.quick.itemview.lifecycle")
++Q_LOGGING_CATEGORY(lcCount, "qt.quick.itemview.count")
+ 
+ // Default cacheBuffer for all views.
+@@ -224,5 +225,5 @@
+         if (QQmlDelegateModel *dataModel = qobject_cast<QQmlDelegateModel*>(d->model))
+             QObjectPrivate::connect(dataModel, &QQmlDelegateModel::delegateChanged, d, &QQuickItemViewPrivate::applyDelegateChange);
+-        emit countChanged();
++        d->emitCountChanged();
+     }
+     emit modelChanged();
+@@ -256,5 +257,5 @@
+         dataModel->setDelegate(delegate);
+         if (oldCount != dataModel->count())
+-            emit countChanged();
++            d->emitCountChanged();
+     }
+     emit delegateChanged();
+@@ -1126,4 +1127,12 @@
+ }
+ 
++// Simplifies debugging of count.
++void QQuickItemViewPrivate::emitCountChanged()
++{
++    Q_Q(QQuickItemView);
++    qCDebug(lcCount).nospace() << "about to emit countChanged for " << q << "; count changed to " << q->count();
++    emit q->countChanged();
++}
++
+ void QQuickItemViewPrivate::itemGeometryChanged(QQuickItem *item, QQuickGeometryChange change,
+                                                 const QRectF &oldGeometry)
+@@ -1225,5 +1234,5 @@
+         }
+         d->moveReason = QQuickItemViewPrivate::Other;
+-        emit countChanged();
++        d->emitCountChanged();
+ #if QT_CONFIG(quick_viewtransitions)
+         if (d->transitioner && d->transitioner->populateTransition)
+@@ -1488,5 +1497,5 @@
+     }
+     if (d->model && d->model->count())
+-        emit countChanged();
++        d->emitCountChanged();
+ }
+ 
+@@ -1814,5 +1823,5 @@
+ 
+         if (prevCount != itemCount)
+-            emit q->countChanged();
++            emitCountChanged();
+     } while (currentChanges.hasPendingChanges() || bufferedChanges.hasPendingChanges());
+     storeFirstVisibleItemPosition();
+@@ -1865,4 +1874,14 @@
+     // views (see tst_QQuickListView::resizeView).
+     if ((!isValid() && !visibleItems.size()) || q->size().isNull()) {
++        if (q->size().isNull() && hasPendingChanges()) {
++            // count() refers to the number of items in the model, not in the view
++            // (which is why we don't emit for the !visibleItems.size() case).
++            // If there are pending model changes, emit countChanged in order to
++            // support the use case of QTBUG-129165, where visible is bound to count > 0
++            // and the ListView is in a layout with Layout.preferredHeight bound to
++            // contentHeight. This ensures that a hidden ListView will become visible.
++            emitCountChanged();
++        }
++
+         clear();
+         setPosition(contentStartOffset());
+@@ -2139,5 +2158,5 @@
+     updateSections();
+     if (prevItemCount != itemCount)
+-        emit q->countChanged();
++        emitCountChanged();
+     if (!visibleAffected && viewportChanged)
+         updateViewport();
+--- a/src/quick/items/qquickitemview_p_p.h
++++ b/src/quick/items/qquickitemview_p_p.h
+@@ -230,4 +230,6 @@
+     }
+ 
++    void emitCountChanged();
++
+     virtual QQuickItemViewAttached *getAttachedObject(const QObject *) const { return nullptr; }
+ 
+--- a/tests/auto/quick/qquicklistview2/data/visibleBoundToCountGreaterThanZero.qml
++++ b/tests/auto/quick/qquicklistview2/data/visibleBoundToCountGreaterThanZero.qml
+@@ -0,0 +1,31 @@
++import QtQuick
++import QtQuick.Layouts
++
++ColumnLayout {
++    property alias listView: listView
++
++    ListView {
++        id: listView
++
++        visible: count > 0 // actual defect. countChanged never fires so this never turns true
++
++        Layout.fillWidth: true
++        Layout.preferredHeight: contentHeight // grow with content, initially 0
++
++        model: ListModel {
++            id: idModel
++        }
++
++        delegate: Text {
++            required property string name
++            text: name
++        }
++
++        Timer {
++            running: true
++            interval: 10
++            repeat: true
++            onTriggered: idModel.append({name:"Hello"})
++        }
++    }
++}
+--- a/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
++++ b/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
+@@ -19,4 +19,6 @@
+ using namespace QQuickVisualTestUtils;
+ 
++static const int oneSecondInMs = 1000;
++
+ class tst_QQuickListView2 : public QQmlDataTest
+ {
+@@ -69,4 +71,5 @@
+ 
+     void clearObjectListModel();
++    void visibleBoundToCountGreaterThanZero();
+ 
+ private:
+@@ -1313,4 +1316,21 @@
+ }
+ 
++void tst_QQuickListView2::visibleBoundToCountGreaterThanZero()
++{
++    QQuickView window;
++    QVERIFY(QQuickTest::showView(window, testFileUrl("visibleBoundToCountGreaterThanZero.qml")));
++
++    auto *listView = window.rootObject()->property("listView").value<QQuickListView *>();
++    QVERIFY(listView);
++
++    QSignalSpy countChangedSpy(listView, SIGNAL(countChanged()));
++    QVERIFY(countChangedSpy.isValid());
++
++    QTRY_COMPARE_GT_WITH_TIMEOUT(listView->count(), 1, oneSecondInMs);
++    // Using the TRY variant here as well is necessary.
++    QTRY_COMPARE_GT_WITH_TIMEOUT(countChangedSpy.count(), 1, oneSecondInMs);
++    QVERIFY(listView->isVisible());
++}
++
+ QTEST_MAIN(tst_QQuickListView2)
+ 

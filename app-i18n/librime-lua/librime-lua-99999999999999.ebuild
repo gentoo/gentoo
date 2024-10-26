@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,19 +16,14 @@ fi
 
 DESCRIPTION="Lua module for RIME"
 HOMEPAGE="https://github.com/hchunhui/librime-lua"
-if [[ "${PV}" == "99999999999999" ]]; then
-	SRC_URI=""
-else
+if [[ "${PV}" != "99999999999999" ]]; then
 	SRC_URI="https://github.com/hchunhui/${PN}/archive/${LIBRIME_LUA_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-BDEPEND=""
 RDEPEND=">=app-i18n/librime-1.6:0=
 	${LUA_DEPS}"
 DEPEND="${RDEPEND}

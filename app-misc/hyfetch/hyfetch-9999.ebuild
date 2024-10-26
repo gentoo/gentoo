@@ -21,11 +21,6 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-pyproject.patch
-	"${FILESDIR}"/${PN}-1.4.11-neofetch.patch
-)
-
 RDEPEND="
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
@@ -37,9 +32,12 @@ python_install() {
 	distutils-r1_python_install
 
 	dodir /usr/bin/
-	cp neofetch "${D}/usr/bin/neowofetch" || die
+	python_newexe neofetch neowofetch
 
 	rm -r "${D}/usr/lib/${EPYTHON}/site-packages/hyfetch/scripts" || die
+	rm -r "${D}/usr/lib/${EPYTHON}/site-packages/docs" || die
+	mkdir "${D}/usr/lib/${EPYTHON}/site-packages/hyfetch/scripts" || die
+	cp neofetch "${D}/usr/lib/${EPYTHON}/site-packages/hyfetch/scripts/neowofetch" || die
 }
 
 pkg_postinst() {

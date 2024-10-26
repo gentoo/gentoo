@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="fuse">Builds erofsfuse (requires <pkg>sys-fs/fuse</pkg>).</flag>
+		<flag name="libdeflate">Use <pkg>app-arch/libdeflate</pkg> rather than <pkg>sys-libs/zlib</pkg> for handling deflate compression.</flag>
 		<flag name="uuid">Enables UUID support via <pkg>sys-apps/util-linux</pkg>.</flag>
 	</use>
 </pkgmetadata>

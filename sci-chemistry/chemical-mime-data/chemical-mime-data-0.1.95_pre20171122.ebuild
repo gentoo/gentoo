@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,11 +8,11 @@ DESCRIPTION="A collection of data files to add support for chemical MIME types"
 HOMEPAGE="https://github.com/dleidert/chemical-mime"
 COMMIT="4fd66e3b3b7d922555d1e25587908b036805c45b"
 SRC_URI="https://github.com/dleidert/chemical-mime/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN/-data/}-${COMMIT}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 x86"
-IUSE=""
 
 RDEPEND="x11-misc/shared-mime-info"
 DEPEND="${RDEPEND}"
@@ -27,8 +27,6 @@ PATCHES=(
 	# https://github.com/dleidert/chemical-mime/issues/5
 	"${FILESDIR}"/${PN}-0.1.95-turbomole.patch
 )
-
-S="${WORKDIR}/${PN/-data/}-${COMMIT}"
 
 src_prepare() {
 	default

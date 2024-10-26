@@ -4,8 +4,11 @@
 EAPI=8
 
 MATE2_LA_PUNT="yes"
+# For script meson_post_install.py
+# Bug 906826, tracker bug 762406
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit mate meson
+inherit mate meson python-any-r1
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
@@ -23,7 +26,7 @@ COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.58:2
 	>=gnome-base/libgtop-2:2=
-	>=mate-base/mate-desktop-1.27.1
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	media-libs/libcanberra[gtk3]
 	x11-libs/cairo
 	>=x11-libs/pango-1.2[X]
@@ -45,6 +48,8 @@ COMMON_DEPEND="
 	>=x11-libs/startup-notification-0.7
 	xinerama? ( x11-libs/libXinerama )
 "
+
+DEPEND="${PYTHON_DEPS}"
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/zenity

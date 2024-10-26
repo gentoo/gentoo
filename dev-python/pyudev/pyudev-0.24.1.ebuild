@@ -12,7 +12,7 @@ HOMEPAGE="https://pyudev.readthedocs.io/en/latest/ https://github.com/pyudev/pyu
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="qt5"
 
 # Known to fail on test system that aren't exactly the same devices as on CI

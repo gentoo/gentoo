@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+
+depend() {
+	need localmount
+	need bootmisc
+	after logger
+}
+
+start() {
+	start-stop-daemon --start --exec /usr/sbin/dtprobed
+}
+
+stop() {
+	start-stop-daemon --stop --exec /usr/sbin/dtprobed
+}

@@ -44,9 +44,6 @@ src_configure() {
 		-DUSE_HTTP_PARSER=system
 		-DREGEX_BACKEND=pcre2
 	)
-	# https://bugs.gentoo.org/927821
-	append-flags -fno-strict-aliasing
-	filter-lto
 	# https://bugs.gentoo.org/925207
 	append-lfs-flags
 	cmake_src_configure

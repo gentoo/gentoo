@@ -1,0 +1,13 @@
+diff --git a/cmake/modules/BuildSPDK.cmake b/cmake/modules/BuildSPDK.cmake
+index d6ce97e..0c49e05 100644
+--- a/cmake/modules/BuildSPDK.cmake
++++ b/cmake/modules/BuildSPDK.cmake
+@@ -51,6 +51,8 @@ macro(build_spdk)
+       --with-dpdk=${DPDK_DIR}
+       --without-isal
+       --without-vhost
++      --disable-tests
++      --disable-unit-tests
+       --target-arch=${target_arch}
+     # unset $CFLAGS, otherwise it will interfere with how SPDK sets
+     # its include directory.

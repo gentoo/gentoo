@@ -11,7 +11,7 @@ SRC_URI="https://docs.broadcom.com/docs-and-downloads/legacy-host-bus-adapters/l
 # can remove the distfiles from their mirror anytime.
 LICENSE="LSI"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror bindist"
 
 BDEPEND="app-arch/unzip"
@@ -23,7 +23,6 @@ S="${WORKDIR}"
 src_install() {
 	exeinto /opt/bin
 	use amd64 && newexe Linux/lsiutil.x86_64 lsiutil
-	use ia64 && newexe Linux/lsiutil.ia64 lsiutil
 	use x86 && doexe Linux/lsiutil
 
 	dodoc changes.txt

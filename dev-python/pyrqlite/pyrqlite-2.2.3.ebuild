@@ -26,5 +26,6 @@ BDEPEND="
 		>=dev-db/rqlite-6.7.0
 	)
 "
+PATCHES=("${FILESDIR}/pyrqlite-2.2.3-test-support.patch")
 
 distutils_enable_tests pytest

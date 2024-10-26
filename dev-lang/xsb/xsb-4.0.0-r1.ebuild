@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/xsb/XSB-$(ver_rs 1-3 -).tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64"
 IUSE="curl debug iodbc java mariadb mysql odbc pcre threads xml"
 
 RDEPEND="curl? ( net-misc/curl )

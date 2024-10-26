@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-r2820.patch
 	"${FILESDIR}"/${P}-fix-ftbfs-with-customized-abort-function.patch
 	"${FILESDIR}"/${P}-clang16-build-fix.patch
+	"${FILESDIR}"/${P}-implicit-int.patch
 )
 
 src_prepare() {

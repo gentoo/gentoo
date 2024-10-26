@@ -8,12 +8,14 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake lua-single python-single-r1
+inherit cmake flag-o-matic lua-single python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
+	# vcpkg is not used anyway
+	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	DOC_P="Csound${PV}"
@@ -22,7 +24,7 @@ else
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_pdf.zip
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_html.zip
 		)"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Sound design and signal processing system for composition and performance"
@@ -105,9 +107,21 @@ src_prepare() {
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
+
+	if use doc; then
+		local png="${WORKDIR}/html/images/delayk.png"
+		pngfix -q --out=${png/.png/fixed.png} ${png} # see pngfix help for exit codes
+		[[ $? -gt 15 ]] && die "Failed to fix ${png}"
+		mv -f ${png/.png/fixed.png} ${png} || die
+	fi
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/860492
+	# https://github.com/csound/csound/issues/1919
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_BELA=OFF
 		-DBUILD_CSBEATS=$(usex beats)

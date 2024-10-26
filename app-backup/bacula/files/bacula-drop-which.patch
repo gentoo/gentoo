@@ -1,0 +1,12 @@
+diff --git a/scripts/getgitcommit b/scripts/getgitcommit
+index 6897091..d82a7e5 100755
+--- a/scripts/getgitcommit
++++ b/scripts/getgitcommit
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-GIT=$(which git)
++GIT=$(command -v git)
+ if [ "x$GIT" != "x" ]
+ then
+    COMMIT=$(git log --pretty=format:%h -n 1 2>/dev/null)

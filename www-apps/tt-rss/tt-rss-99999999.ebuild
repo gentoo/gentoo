@@ -13,7 +13,7 @@ SLOT="${PV}" # Single live slot.
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.3 8.2 8.1"
+PHP_SLOTS="8.3 8.2 8.1" # Check with: grep PHP_VERSION classes/Config.php
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
@@ -60,12 +60,13 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r *
 
-	# When updating, grep the code for additional DiskCache::instances as they
-	# cannot be created later due to permissions.
+	# When updating, grep the code for new DiskCache::instance occurrences as
+	# these directories cannot be created later due to permissions. Some
+	# of these directories are already present in the source tree.
 	keepdir "${MY_HTDOCSDIR}"/cache/{feed-icons,starred-images}
 
 	local dir
-	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,lock}/; do
+	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,feed-icons,lock}/; do
 		webapp_serverowned "${dir#${ED}}"
 	done
 

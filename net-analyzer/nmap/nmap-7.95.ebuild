@@ -8,7 +8,7 @@ LUA_REQ_USE="deprecated"
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PLOCALES="de es fr hi hr hu id it ja pl pt_BR pt_PR ro ru sk zh"
 PLOCALE_BACKUP="en"
 inherit autotools distutils-r1 lua-single plocale toolchain-funcs
@@ -27,7 +27,7 @@ else
 	SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.95-patches-2.tar.xz"

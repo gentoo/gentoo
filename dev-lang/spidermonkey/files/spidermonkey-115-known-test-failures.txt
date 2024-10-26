@@ -12,6 +12,7 @@ non262/Intl/DisplayNames/language-dialect.js
 non262/Intl/ListFormat/conjunction-type.js
 non262/Intl/Locale/likely-subtags-generated.js
 non262/Intl/Locale/likely-subtags.js
+non262/Intl/NumberFormat/currency-narrow-symbol.js
 non262/Intl/available-locales-resolved.js
 non262/Intl/available-locales-supported.js
 non262/Intl/supportedValuesOf-timeZones-canonical.js

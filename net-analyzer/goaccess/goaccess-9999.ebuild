@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
@@ -11,11 +11,9 @@ inherit autotools git-r3 optfeature systemd tmpfiles
 
 DESCRIPTION="A real-time web log analyzer and interactive viewer in a terminal"
 HOMEPAGE="https://goaccess.io"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug geoip geoipv2 getline ssl unicode"
 REQUIRED_USE="geoipv2? ( geoip )"
 

@@ -1,0 +1,20 @@
+diff -Naurp lrzip-next-0.13.1.orig/src/lzma/ASM/Makefile.am lrzip-next-0.13.1/src/lzma/ASM/Makefile.am
+--- lrzip-next-0.13.1.orig/src/lzma/ASM/Makefile.am	2024-07-08 17:55:41.000000000 -0400
++++ lrzip-next-0.13.1/src/lzma/ASM/Makefile.am	2024-07-15 01:54:16.727136060 -0400
+@@ -25,7 +25,7 @@ LzmaDecOptFILE := \
+ 
+ $(ASM_De).lo: $(SRC)/$(ASM_De).asm
+ 	$(ASM_PROG) $(ASM_OPT) -o $(ASM_De).o $(ABSSRC)/$(ASM_De).asm
+-	@echo -e "$(LzmaDecOptFILE)" > $(ASM_De).lo
++	@printf "$(LzmaDecOptFILE)" > $(ASM_De).lo
+ 	@$(MKDIR_P) .libs
+ 	@cp $(ASM_De).o .libs
+ 
+@@ -38,6 +38,6 @@ LzFindOptFILE := \
+ 
+ $(ASM_F).lo: $(SRC)/$(ASM_F).asm
+ 	$(ASM_PROG) $(ASM_OPT) -o $(ASM_F).o $(ABSSRC)/$(ASM_F).asm
+-	@echo -e "$(LzFindOptFILE)" > $(ASM_F).lo
++	@printf "$(LzFindOptFILE)" > $(ASM_F).lo
+ 	@$(MKDIR_P) .libs
+ 	@cp $(ASM_F).o .libs

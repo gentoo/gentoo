@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 inherit waf-utils multilib-minimal python-single-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://samba.org/ftp/tdb/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -70,7 +70,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# the default src_test runs 'make test' and 'make check', letting
 	# the tests fail occasionally (reason: unknown)
-	emake check
+	emake check WAF_BIN="${WAF_BINARY}"
 }
 
 multilib_src_install() {

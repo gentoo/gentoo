@@ -1,0 +1,15 @@
+We don't use a venv for this test, remove it.
+
+--- a/test/test_aslr.py
++++ b/test/test_aslr.py
+@@ -9,9 +9,7 @@
+ 	This indicates that re-exec makes ASLR work
+ 	"""
+ 	map_script = (Path(request.node.fspath).parent / "parent_dropbear_map.py").resolve()
+-	# run within the same venv, for python deps
+-	activate = own_venv_command()
+-	cmd = f"{activate}; {map_script}"
++	cmd = f"{map_script}"
+ 	print(cmd)
+ 	r = dbclient(request, cmd, capture_output=True, text=True)
+ 	map1 = r.stdout.rstrip()

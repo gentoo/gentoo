@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}2/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-apm )"

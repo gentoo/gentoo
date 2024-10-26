@@ -4,10 +4,10 @@
 EAPI=8
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit flag-o-matic lua-single meson optfeature xdg
+inherit lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
-HOMEPAGE="http://www.geeqie.org"
+HOMEPAGE="https://www.geeqie.org"
 SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~voyageur/distfiles/${P}-docs.tar.xz"
 # Doc build:
@@ -64,11 +64,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=odr
-	# https://bugs.gentoo.org/585432
-	# https://github.com/BestImageViewer/geeqie/issues/1270
-	filter-lto
-
 	local emesonargs=(
 		-Dgq_helpdir="share/doc/${PF}"
 		-Dgq_htmldir="share/doc/${PF}/html"

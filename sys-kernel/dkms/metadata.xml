@@ -15,4 +15,5 @@
 	<upstream>
 		<remote-id type="github">dell/dkms</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

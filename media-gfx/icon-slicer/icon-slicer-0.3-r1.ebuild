@@ -7,7 +7,7 @@ DESCRIPTION="Utility for generating icon themes and libXcursor cursor themes"
 HOMEPAGE="https://www.freedesktop.org/software/icon-slicer/"
 SRC_URI="https://www.freedesktop.org/software/icon-slicer/releases/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
 LICENSE="MIT"
 SLOT="0"
 

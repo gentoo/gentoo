@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-LLVM_COMPAT=( {15..17} )
+LLVM_COMPAT=( {15..18} )
 ROCM_VERSION=5.7
 
 inherit cuda cmake python-single-r1 llvm-r1 rocm
@@ -38,7 +38,12 @@ RDEPEND="
 	hip? ( dev-util/hip )
 	openimageio? ( media-libs/openimageio:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}=
+		sys-devel/llvm:${LLVM_SLOT}=
+	')
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.2-amdgpu-targets.patch"

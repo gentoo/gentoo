@@ -7,12 +7,12 @@ EGIT_REPO_URI="https://github.com/MaskRay/${PN}"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
-	LLVM_MAX_SLOT=18
+	LLVM_COMPAT=( {18..19} )
 else
-	LLVM_MAX_SLOT=18
+	LLVM_COMPAT=( {18..19} )
 fi
 
-inherit cmake llvm ${GIT_ECLASS}
+inherit cmake llvm-r1 ${GIT_ECLASS}
 
 DESCRIPTION="C/C++/ObjC language server"
 HOMEPAGE="https://github.com/MaskRay/ccls"
@@ -25,11 +25,12 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 
-# We only depend on Clang because of a quirk in how dependencies work
-# See comment in llvm.eclass docs
 DEPEND="
 	dev-libs/rapidjson
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}=
+		sys-devel/llvm:${LLVM_SLOT}=
+	')
 "
 RDEPEND="${DEPEND}"
 

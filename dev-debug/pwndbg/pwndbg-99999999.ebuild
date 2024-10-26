@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 wrapper
 
@@ -18,7 +18,7 @@ if [[ ${PV} == "99999999" ]]; then
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
 	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 

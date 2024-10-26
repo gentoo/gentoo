@@ -16,7 +16,7 @@ SRC_URI="https://downloads.sourceforge.net/infozip/${MY_P}.tar.gz
 
 LICENSE="Info-ZIP"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="bzip2 natspec unicode"
 
 DEPEND="bzip2? ( app-arch/bzip2 )
@@ -65,7 +65,7 @@ src_configure() {
 		i?86*-*linux*)       TARGET="linux_asm" ;;
 		*linux*)             TARGET="linux_noasm" ;;
 		*-darwin*)           TARGET="macosx" ;;
-		*-solaris*)          TARGET="generic" ;;
+		*-solaris*)          TARGET="linux_noasm" ;;
 		*) die "Unknown target; please update the ebuild to handle ${CHOST}" ;;
 	esac
 
@@ -73,6 +73,7 @@ src_configure() {
 	append-flags -std=gnu89
 
 	[[ ${CHOST} == *linux* ]] && append-cppflags -DNO_LCHMOD
+	[[ ${CHOST} == *-solaris* ]] && append-cppflags -DNO_LCHMOD -DBSD4_4
 	use bzip2 && append-cppflags -DUSE_BZIP2
 	use unicode && append-cppflags -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DUSE_ICONV_MAPPING
 

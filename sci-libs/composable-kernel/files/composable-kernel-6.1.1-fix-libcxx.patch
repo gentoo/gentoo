@@ -1,0 +1,25 @@
+libc++ has no std::numeric_limits<__Float16> implementation and treats f8_t as is_integral.
+
+Bug for is_integral: https://github.com/llvm/llvm-project/issues/102767
+Bug for numeric_limits: https://github.com/ROCm/composable_kernel/issues/1460
+--- a/library/include/ck/library/utility/check_err.hpp
++++ b/library/include/ck/library/utility/check_err.hpp
+@@ -146,7 +146,7 @@ check_err(const Range& out,
+     bool res{true};
+     int err_count  = 0;
+     double err     = 0;
+-    double max_err = std::numeric_limits<ranges::range_value_t<Range>>::min();
++    double max_err = NumericLimits<ranges::range_value_t<Range>>::Min();
+     for(std::size_t i = 0; i < ref.size(); ++i)
+     {
+         const double o = type_convert<float>(*std::next(std::begin(out), i));
+@@ -178,7 +178,8 @@ check_err(const Range& out,
+ template <typename Range, typename RefRange>
+ std::enable_if_t<(std::is_same_v<ranges::range_value_t<Range>, ranges::range_value_t<RefRange>> &&
+                   std::is_integral_v<ranges::range_value_t<Range>> &&
+-                  !std::is_same_v<ranges::range_value_t<Range>, bhalf_t>)
++                  !std::is_same_v<ranges::range_value_t<Range>, bhalf_t> &&
++                  !std::is_same_v<ranges::range_value_t<Range>, f8_t>)
+ #ifdef CK_EXPERIMENTAL_BIT_INT_EXTENSION_INT4
+                      || std::is_same_v<ranges::range_value_t<Range>, int4_t>
+ #endif

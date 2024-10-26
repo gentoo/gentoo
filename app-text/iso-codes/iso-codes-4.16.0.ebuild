@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PLOCALES="ab ace ach af ak am an ar as ast ay az ba bar be bg bi bn bn_BD bn_IN br bs byn ca ce ch chr ckb crh cs csb cv cy da de dv dz ee el en eo es et eu fa ff fi fil fo fr frp fur fy ga gez gl gn gu gv ha haw he hi hr ht hu hy ia id io is it iu ja jam ka kab ki kk kl km kmr kn ko kok kv kw ky lo lt lv mai mhr mi mk ml mn mr ms mt my na nah nb_NO ne nl nn nso nv oc or pa pa_PK pap pi pl ps pt pt_BR ro ro_MD ru rw sc sd si sk sl so son sq sr sr@latin sv sw ta te tg th ti tig tk tl tr tt tt@iqtelif tzm ug uk ur uz ve vi wa wal wo xh yo zh_CN zh_HK zh_Hans zh_Hant zh_TW zu"
 
 inherit python-any-r1
@@ -14,7 +14,7 @@ SRC_URI="https://salsa.debian.org/${PN}-team/${PN}/-/archive/v${PV}/${PN}-v${PV}
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext

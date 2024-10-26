@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby31"
+USE_RUBY="ruby32"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python3_{9,10,11,12} )
+PYTHON_COMPAT=( python3_{11,12,13} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
@@ -24,7 +24,6 @@ DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
 HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
@@ -40,6 +39,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
+	dev-libs/libgit2
 	sys-libs/zlib
 	${PYTHON_DEPS}
 	$(ruby_implementations_depend)

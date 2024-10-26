@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/927336
+https://savannah.gnu.org/bugs/?63720
+
+From 509906e7cc4669b525cbcb05022e7e10c6663627 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <npopov@redhat.com>
+Date: Fri, 27 Jan 2023 12:13:10 +0100
+Subject: [PATCH] Fix C99 support in sffile.c
+
+This fixes one -Wimplicit-function-declaration and one
+-Wimplicit-int warning, which will become errors in future
+compiler versions.
+
+Related to:
+
+  <https://fedoraproject.org/wiki/Changes/PortingToModernC>
+  <https://fedoraproject.org/wiki/Toolchain/PortingToModernC>
+--- a/libs/libsffile/sffile.c
++++ b/libs/libsffile/sffile.c
+@@ -20,6 +20,7 @@
+  *================================================================*/
+ //Interface to Denemo License:  FSF GPL version 3 or later
+ 
++#include <ctype.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+@@ -51,7 +52,7 @@ static void ConvertIllegalChar(char *name){
+ int  ParseSoundfont(char *soundfont, int index, char **name, int *preset, int *bank) {
+   FILE *fp;
+   static SFInfo sf;
+-  static initialized = FALSE;
++  static int initialized = FALSE;
+   int i;
+   int number = 0;
+   if(soundfont) {
+-- 
+2.39.1
+

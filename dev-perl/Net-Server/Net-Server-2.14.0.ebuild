@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Extensible, general Perl server engine"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="ipv6"
 
 RDEPEND="

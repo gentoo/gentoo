@@ -1,0 +1,30 @@
+https://github.com/iputils/iputils/pull/556
+
+From 1e2a59a879859eb01ca8b34523f54b6acbb886cb Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Wed, 18 Sep 2024 00:32:53 -0400
+Subject: [PATCH] meson: fix installation of prebuilt manpages in dist tarball
+
+page contains the name of the program we are building/installing a
+manual for. In the custom targets for building the manpages, we append
+.xml and .8 in turn -- we don't replace a ".xml" in the page name.
+
+As there is nothing to replace, we end up checking if e.g. "./arping"
+exists, and trying to install it as a manual if so -- rather than
+arping.8 as intended. Sync the logic so that this works.
+
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+--- a/doc/meson.build
++++ b/doc/meson.build
+@@ -28,8 +28,8 @@ if meson.version().version_compare('>=0.58.0')
+ 	out_html_pages = []
+ 	generated_docs_exist = true
+ 	foreach page : manpages
+-		man_page_name = page.replace('.xml', '.8')
+-		html_page_name = page.replace('.xml', '.html')
++		man_page_name = page + '.8'
++		html_page_name = page + '.html'
+ 		out_man_pages += man_page_name
+ 		out_html_pages += html_page_name
+ 		if not fs.exists(man_page_name) or not fs.exists(html_page_name)
+

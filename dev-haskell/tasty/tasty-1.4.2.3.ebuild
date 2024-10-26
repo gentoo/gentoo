@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/UnkindPartition/tasty"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+clock"
 
 RDEPEND="

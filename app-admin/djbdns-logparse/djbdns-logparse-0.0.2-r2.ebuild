@@ -28,5 +28,5 @@ python_install_all() {
 }
 
 python_test() {
-	esetup.py test
+	"${EPYTHON}" -m doctest --verbose djbdns/*.py || die
 }

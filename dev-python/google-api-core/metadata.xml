@@ -14,4 +14,10 @@
 		<remote-id type="pypi">google-api-core</remote-id>
 		<remote-id type="github">googleapis/python-api-core</remote-id>
 	</upstream>
+	<use>
+		<flag name="grpc">
+			Pull (heavy) gRPC dependencies in, that are optionally
+			required by part of the API.
+		</flag>
+	</use>
 </pkgmetadata>

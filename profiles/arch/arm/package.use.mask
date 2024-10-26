@@ -1,6 +1,38 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-11)
+# depends on java packages, not keyworded on arm
+app-office/libreoffice java
+media-gfx/zbar java
+media-libs/libbluray java
+media-libs/opencv java
+net-misc/plowshare javascript
+sci-libs/gdal java
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# kde-plasma/plasma-workspace:6 is not keyworded
+sys-auth/polkit kde
+virtual/notification-daemon kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-31)
+# KF6 and media-libs/phonon will drop arm keyword
+app-office/texstudio video
+
+# Michał Górny <mgorny@gentoo.org> (2024-07-24)
+# Full testing requires www-client/firefox.
+dev-python/selenium test-rust
+
+# orbea <orbea@riseup.net> (2024-07-19)
+# Unmask the dynarec flag which has arm asm.
+games-emulation/rmg -dynarec
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-14)
+# Abandoned upstream, does not take bug reports, unsupported in Gentoo.
+# Only remaining use is as a requirement for dev-lang/go on arm{,64}.
+# See #934149, #934151, #936022, #936021
+sys-devel/binutils -gold
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
 # USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
 # which is package.use.mask'ed on these arches. We cannot mask the
@@ -57,10 +89,6 @@ sys-kernel/installkernel -grub
 # media-libs/shaderc in not keyworded
 media-video/ffmpeg shaderc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-11-13)
-# kde-plasma/print-manager is not keyworded
-kde-plasma/plasma-meta cups
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo
@@ -90,7 +118,6 @@ dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/QtPy test
 games-util/lgogdownloader gui
-kde-plasma/plasma-nm openconnect
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
@@ -202,7 +229,7 @@ net-wireless/gnuradio ctrlport
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
-media-libs/libsdl2 fcitx4
+media-libs/libsdl2 fcitx
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm
@@ -236,14 +263,6 @@ dev-util/schroot zfs
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
-# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
-kde-plasma/plasma-meta thunderbolt
-
-# Craig Andrews <candrews@gentoo.org> (2019-07-03)
-# Unmask Raspberry Pi support on arm.
-media-tv/kodi -raspberry-pi
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
@@ -288,17 +307,13 @@ media-tv/tvheadend hdhomerun
 # smallest wav files.
 media-sound/xmms2 mac
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm-sensors
-
 # Patrice Clement <monsieurp@gentoo.org> (2017-04-09)
 # Enable MQTT support on supported architectures
 app-metrics/collectd -collectd_plugins_mqtt
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -363,7 +378,6 @@ net-print/hplip -scanner kde
 # Alexis Ballier <aballier@gentoo.org> (2015-11-14)
 # MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
 media-video/ffmpeg -mmal
-media-video/ffmpeg-chromium -mmal
 
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
@@ -382,7 +396,6 @@ app-i18n/scim-anthy kasumi
 
 # Markus Meier <maekke@gentoo.org> (2014-11-29)
 # Unkeyworded deps, bug #518742
-dev-python/ipython doc
 dev-python/oct2py doc
 
 # Alexis Ballier <aballier@gentoo.org> (2014-10-24)
@@ -458,7 +471,6 @@ dev-libs/xapian-bindings java
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-02-20)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra spacenav
 media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (2013-02-05)

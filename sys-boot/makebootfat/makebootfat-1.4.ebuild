@@ -10,7 +10,6 @@ SRC_URI="https://downloads.sourceforge.net/advancemame/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="sys-boot/syslinux"
 DEPEND="${RDEPEND}"

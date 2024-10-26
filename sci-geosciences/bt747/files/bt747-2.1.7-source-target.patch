@@ -1,0 +1,33 @@
+Hardcoded javac options prevent configuration.
+In order to allow using -Dant.build.javac.source
+and -Dant.build.javac.target we remove them.
+
+--- a/build.xml
++++ b/build.xml
+@@ -411,7 +411,7 @@
+ 		<delete dir="${j2sebuild.dir}" />
+ 		<mkdir dir="${j2sebuild.dir}" />
+ 
+-		<javac verbose="no" srcdir="${src_j2se.dir}" destdir="${j2sebuild.dir}" optimize="${java.optimize}" debug="${java.debug}" classpathref="j2seclasspath" encoding="iso-8859-15" target="1.5" source="1.5">
++		<javac verbose="no" srcdir="${src_j2se.dir}" destdir="${j2sebuild.dir}" optimize="${java.optimize}" debug="${java.debug}" classpathref="j2seclasspath" encoding="iso-8859-15">
+ 			<include name="bt747/j2se_view/BT747Main.java" />
+ 			<include name="bt747/j2se_view/BT747cmd.java" />
+ 			<include name="de/k621/avr/gps/converter/NMEAConverter.java" />
+@@ -442,7 +442,7 @@
+ 		<delete dir="${wababuild.dir}" />
+ 		<mkdir dir="${wababuild.dir}" />
+ 
+-		<javac verbose="no" srcdir="${src_waba.dir}" destdir="${wababuild.dir}" optimize="${java.optimize}" debug="${java.debug}" classpathref="wabaclasspath" encoding="iso-8859-15" target="1.5" source="1.5">
++		<javac verbose="no" srcdir="${src_waba.dir}" destdir="${wababuild.dir}" optimize="${java.optimize}" debug="${java.debug}" classpathref="wabaclasspath" encoding="iso-8859-15">
+ 			<include name="BT747.java" />
+ 			<compilerarg line="-Xlint:unchecked" />
+ 		</javac>
+@@ -971,7 +971,7 @@
+ 				<include name="${src_j2se.dir}/**/resources/*" if="is.lib" />
+ 			</fileset>
+ 		</delete>
+-		<javac verbose="no" srcdir="${rxtxsrc.dir}" destdir="${rxtxbuild.dir}" optimize="${java.optimize}" debug="${java.debug}" classpathref="${build.classpath}" encoding="iso-8859-15" target="1.5" source="1.5">
++		<javac verbose="no" srcdir="${rxtxsrc.dir}" destdir="${rxtxbuild.dir}" optimize="${java.optimize}" debug="${java.debug}" classpathref="${build.classpath}" encoding="iso-8859-15">
+ 			<include name="**/*.java" />
+ 		</javac>
+ 		<copy todir="${rxtxbuild.dir}">

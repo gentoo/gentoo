@@ -80,7 +80,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
-	"${FILESDIR}"/${PN}-1.7.5855-no-libbacktrace.patch
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 )
@@ -117,8 +116,9 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_ADVANCE_SIMD=yes
 		-DENABLE_TESTS=$(usex test)
+		-DUSE_BACKTRACE=no # not packaged (bug #885471)
 		-DUSE_LINKED_FFMPEG=yes
-		-DUSE_VTUNE=no
+		-DUSE_VTUNE=no # not packaged
 		-DUSE_VULKAN=$(usex vulkan)
 
 		# note that upstream hardly support native wayland, may or may not work
@@ -167,13 +167,4 @@ pkg_postinst() {
 	optfeature "UI sound effects support" \
 		media-sound/alsa-utils \
 		media-libs/gst-plugins-base:1.0
-
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 1.7; then
-		elog ">=${PN}-1.7 has received several changes since <=${PN}-1.6.0, and is"
-		elog "notably now a 64bit build using Qt6. Just-in-case it is recommended"
-		elog "to backup configs, save states, and memory cards before using."
-		elog
-		elog "The executable was also renamed from 'PCSX2' to 'pcsx2'."
-	fi
 }

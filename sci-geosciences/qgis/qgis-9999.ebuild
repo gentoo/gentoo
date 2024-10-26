@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 inherit cmake flag-o-matic python-single-r1 virtualx xdg
 
@@ -25,11 +25,10 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d doc examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal +polar postgres python qml qt6 test webengine"
+IUSE="3d doc examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal postgres python qml test webengine"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	mapserver? ( python )
-	qt6? ( polar )
 "
 # 	test? ( postgres )
 
@@ -37,11 +36,19 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	app-crypt/qca:2[qt6,ssl]
 	>=dev-db/spatialite-4.2.0
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
 	dev-libs/protobuf:=
+	dev-libs/qtkeychain[qt6]
+	dev-qt/qttools:6[designer]
+	dev-qt/qtbase:6[concurrent,gui,network,sql,ssl,widgets,xml]
+	dev-qt/qtmultimedia:6
+	dev-qt/qtpositioning:6
+	dev-qt/qtserialport:6
+	dev-qt/qtsvg:6
 	dev-vcs/git
 	media-gfx/exiv2:=
 	>=sci-libs/gdal-3.0.4:=[geos,spatialite,sqlite]
@@ -49,6 +56,9 @@ COMMON_DEPEND="
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-4.9.3:=
 	sys-libs/zlib
+	>=x11-libs/qscintilla-2.10.1:=[qt6]
+	>=x11-libs/qwt-6.2.0-r3:=[polar(+),qt6,svg(+)]
+	3d? ( dev-qt/qt3d:6 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( sci-geosciences/grass:= )
 	hdf5? ( sci-libs/hdf5:= )
@@ -78,74 +88,14 @@ COMMON_DEPEND="
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-			!qt6? (
-				dev-python/PyQt5[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
-				>=dev-python/qscintilla-python-2.10.1[qt5]
-			)
-			qt6? (
-				dev-python/PyQt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
-				>=dev-python/qscintilla-python-2.10.1[qt6]
-			)
+			dev-python/PyQt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.1[qt6]
 		')
 	)
-	!qt6? (
-		app-crypt/qca:2[qt5,ssl]
-		dev-libs/qtkeychain[qt5]
-		x11-libs/qwt:=[qt5(+),svg(+)]
-		>=x11-libs/qscintilla-2.10.1:=[qt5]
-		dev-qt/designer:5
-		dev-qt/qtconcurrent:5
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5[widgets]
-		dev-qt/qtnetwork:5[ssl]
-		dev-qt/qtpositioning:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtserialport:5
-		dev-qt/qtsql:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-		3d? ( dev-qt/qt3d:5 )
-		polar? (
-			|| (
-				(
-					x11-libs/qwt:5
-					x11-libs/qwtpolar
-				)
-				(
-					x11-libs/qwt:6/1.5
-					x11-libs/qwtpolar
-				)
-				(
-					>=x11-libs/qwt-6.2[polar(+)]
-				)
-			)
-		)
-		qml? ( dev-qt/qtdeclarative:5 )
-		webengine? ( dev-qt/qtwebengine:5 )
-	)
-	qt6? (
-		app-crypt/qca:2[qt6,ssl]
-		dev-libs/qtkeychain[qt6]
-		>=x11-libs/qwt-6.2.0-r3:=[qt6,svg(+)]
-		>=x11-libs/qscintilla-2.10.1:=[qt6]
-		dev-qt/qttools:6[designer]
-		dev-qt/qtbase:6[concurrent,gui,network,sql,ssl,widgets,xml]
-		dev-qt/qtmultimedia:6
-		dev-qt/qtpositioning:6
-		dev-qt/qtserialport:6
-		dev-qt/qtsvg:6
-		3d? ( dev-qt/qt3d:6 )
-		polar? ( x11-libs/qwt:=[polar(+)] )
-		qml? ( dev-qt/qtdeclarative:6 )
-		webengine? ( dev-qt/qtwebengine:6 )
-	)
+	qml? ( dev-qt/qtdeclarative:6 )
+	webengine? ( dev-qt/qtwebengine:6 )
 "
 DEPEND="${COMMON_DEPEND}
-	!qt6? (
-		dev-qt/qttest:5
-	)
 	test? (
 		python? (
 			app-text/qpdf
@@ -157,20 +107,14 @@ RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel
 "
 BDEPEND="${PYTHON_DEPS}
-	!qt6? ( dev-qt/linguist-tools:5 )
-	qt6? ( dev-qt/qttools:6[linguist] )
+	dev-qt/qttools:6[linguist]
 	app-alternatives/yacc
 	app-alternatives/lex
 	doc? ( app-text/doxygen )
 	test? (
 		python? (
 			$(python_gen_cond_dep '
-				!qt6? (
-					dev-python/PyQt5[${PYTHON_USEDEP},testlib]
-				)
-				qt6? (
-					dev-python/PyQt6[${PYTHON_USEDEP},testlib]
-				)
+				dev-python/PyQt6[${PYTHON_USEDEP},testlib]
 				dev-python/nose2[${PYTHON_USEDEP}]
 				dev-python/mock[${PYTHON_USEDEP}]
 			')
@@ -221,7 +165,7 @@ src_configure() {
 
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
-		-DBUILD_WITH_QT6="$(usex qt6)"
+		-DBUILD_WITH_QT6=ON
 		-DWITH_ANALYSIS=ON
 		-DWITH_APIDOC=$(usex doc)
 		-DWITH_GUI=ON
@@ -235,7 +179,7 @@ src_configure() {
 		$(cmake_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
-		-DWITH_QWTPOLAR=$(usex polar)
+		-DWITH_QWTPOLAR=ON
 		-DWITH_QTWEBENGINE=$(usex webengine)
 		-DWITH_PDAL=$(usex pdal)
 		-DWITH_POSTGRESQL=$(usex postgres)

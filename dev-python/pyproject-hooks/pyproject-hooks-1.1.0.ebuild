@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	test? (
@@ -33,3 +33,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# fails due to setuptools 70.1
+	# https://bugs.gentoo.org/936052
+	# https://github.com/pypa/pyproject-hooks/issues/203
+	tests/test_call_hooks.py::test_setup_py
+)

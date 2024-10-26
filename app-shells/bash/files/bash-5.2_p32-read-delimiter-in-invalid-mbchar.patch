@@ -1,0 +1,297 @@
+From 0432ec33408ac124b620c44416c9c58f0c10b63b Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Fri, 23 Aug 2024 04:14:36 +0100
+Subject: [PATCH] Backport fix for issue with read delimiter in invalid
+ mutibyte char
+
+This addresses a regression introduced by 5.0. Consider the following
+test case.
+
+for i in {194..245}; do printf -v o %o "$i"; printf "\\$o\\n"; done |
+while read -r; do declare -p REPLY; done
+
+BEFORE
+
+declare -- REPLY=$'\302\n\303\n\304\n\305\n\306\n\307\n\310\n\311\n\312\
+n\313\n\314\n\315\n\316\n\317\n\320\n\321\n\322\n\323\n\324\n\325\n\326\
+n\327\n\330\n\331\n\332\n\333\n\334\n\335\n\336\n\337\n\340\n\341\n\342\
+n\343\n\344\n\345\n\346\n\347\n\350\n\351\n\352\n\353\n\354\n\355\n\356\
+n\357\n\360\n\361\n\362\n\363\n\364\n\365'
+
+AFTER
+
+declare -- REPLY=$'\302'
+declare -- REPLY=$'\303'
+declare -- REPLY=$'\304'
+declare -- REPLY=$'\305'
+declare -- REPLY=$'\306'
+declare -- REPLY=$'\307'
+declare -- REPLY=$'\310'
+declare -- REPLY=$'\311'
+declare -- REPLY=$'\312'
+declare -- REPLY=$'\313'
+declare -- REPLY=$'\314'
+declare -- REPLY=$'\315'
+declare -- REPLY=$'\316'
+declare -- REPLY=$'\317'
+declare -- REPLY=$'\320'
+declare -- REPLY=$'\321'
+declare -- REPLY=$'\322'
+declare -- REPLY=$'\323'
+declare -- REPLY=$'\324'
+declare -- REPLY=$'\325'
+declare -- REPLY=$'\326'
+declare -- REPLY=$'\327'
+declare -- REPLY=$'\330'
+declare -- REPLY=$'\331'
+declare -- REPLY=$'\332'
+declare -- REPLY=$'\333'
+declare -- REPLY=$'\334'
+declare -- REPLY=$'\335'
+declare -- REPLY=$'\336'
+declare -- REPLY=$'\337'
+declare -- REPLY=$'\340'
+declare -- REPLY=$'\341'
+declare -- REPLY=$'\342'
+declare -- REPLY=$'\343'
+declare -- REPLY=$'\344'
+declare -- REPLY=$'\345'
+declare -- REPLY=$'\346'
+declare -- REPLY=$'\347'
+declare -- REPLY=$'\350'
+declare -- REPLY=$'\351'
+declare -- REPLY=$'\352'
+declare -- REPLY=$'\353'
+declare -- REPLY=$'\354'
+declare -- REPLY=$'\355'
+declare -- REPLY=$'\356'
+declare -- REPLY=$'\357'
+declare -- REPLY=$'\360'
+declare -- REPLY=$'\361'
+declare -- REPLY=$'\362'
+declare -- REPLY=$'\363'
+declare -- REPLY=$'\364'
+declare -- REPLY=$'\365'
+
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ builtins/read.def | 25 ++++++++++++----
+ externs.h         |  1 +
+ lib/sh/zread.c    | 74 +++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 94 insertions(+), 6 deletions(-)
+
+diff --git builtins/read.def builtins/read.def
+index ddd91d32..53b4bd81 100644
+--- builtins/read.def
++++ builtins/read.def
+@@ -130,7 +130,7 @@ static void set_readline_timeout PARAMS((sh_timer *t, time_t, long));
+ #endif
+ static SHELL_VAR *bind_read_variable PARAMS((char *, char *, int));
+ #if defined (HANDLE_MULTIBYTE)
+-static int read_mbchar PARAMS((int, char *, int, int, int));
++static int read_mbchar PARAMS((int, char *, int, int, int, int));
+ #endif
+ static void ttyrestore PARAMS((struct ttsave *));
+ 
+@@ -806,7 +806,7 @@ add_char:
+ 	  else
+ #  endif
+ 	  if (locale_utf8locale == 0 || ((c & 0x80) != 0))
+-	    i += read_mbchar (fd, input_string, i, c, unbuffered_read);
++	    i += read_mbchar (fd, input_string, i, c, delim, unbuffered_read);
+ 	}
+ #endif
+ 
+@@ -1064,10 +1064,10 @@ bind_read_variable (name, value, flags)
+ 
+ #if defined (HANDLE_MULTIBYTE)
+ static int
+-read_mbchar (fd, string, ind, ch, unbuffered)
++read_mbchar (fd, string, ind, ch, delim, unbuffered)
+      int fd;
+      char *string;
+-     int ind, ch, unbuffered;
++     int ind, ch, delim, unbuffered;
+ {
+   char mbchar[MB_LEN_MAX + 1];
+   int i, n, r;
+@@ -1101,8 +1101,21 @@ read_mbchar (fd, string, ind, ch, unbuffered)
+ 	  mbchar[i++] = c;	
+ 	  continue;
+ 	}
+-      else if (ret == (size_t)-1 || ret == (size_t)0 || ret > (size_t)0)
+-	break;
++      else if (ret == (size_t)-1)
++	{
++	  /* If we read a delimiter character that makes this an invalid
++	     multibyte character, we can't just add it to the input string
++	     and treat it as a byte. We need to push it back so a subsequent
++	     zread will pick it up. */
++	  if (c == delim)
++	    {
++	      zungetc (c);
++	      mbchar[--i] = '\0';		/* unget the delimiter */
++	    }
++	  break;		/* invalid multibyte character */
++	}
++      else if (ret == (size_t)0 || ret > (size_t)0)
++	break;		/* valid multibyte character */
+     }
+ 
+ mbchar_return:
+diff --git externs.h externs.h
+index 931dba9c..1b70a13b 100644
+--- externs.h
++++ externs.h
+@@ -536,6 +536,7 @@ extern ssize_t zreadintr PARAMS((int, char *, size_t));
+ extern ssize_t zreadc PARAMS((int, char *));
+ extern ssize_t zreadcintr PARAMS((int, char *));
+ extern ssize_t zreadn PARAMS((int, char *, size_t));
++extern int zungetc PARAMS((int));
+ extern void zreset PARAMS((void));
+ extern void zsyncfd PARAMS((int));
+ 
+diff --git lib/sh/zread.c lib/sh/zread.c
+index dafb7f60..7cfbb288 100644
+--- lib/sh/zread.c
++++ lib/sh/zread.c
+@@ -41,6 +41,10 @@ extern int errno;
+ #  define ZBUFSIZ 4096
+ #endif
+ 
++#ifndef EOF
++#  define EOF -1
++#endif
++
+ extern int executing_builtin;
+ 
+ extern void check_signals_and_traps (void);
+@@ -48,6 +52,11 @@ extern void check_signals (void);
+ extern int signal_is_trapped (int);
+ extern int read_builtin_timeout (int);
+ 
++int zungetc (int);
++
++/* Provide one character of pushback whether we are using read or zread. */
++static int zpushedchar = -1;
++
+ /* Read LEN bytes from FD into BUF.  Retry the read on EINTR.  Any other
+    error causes the loop to break. */
+ ssize_t
+@@ -59,6 +68,15 @@ zread (fd, buf, len)
+   ssize_t r;
+ 
+   check_signals ();	/* check for signals before a blocking read */
++
++  /* If we pushed a char back, return it immediately */
++  if (zpushedchar != -1)
++    {
++      *buf = (unsigned char)zpushedchar;
++      zpushedchar = -1;
++      return 1;
++    }
++
+   /* should generalize into a mechanism where different parts of the shell can
+      `register' timeouts and have them checked here. */
+   while (((r = read_builtin_timeout (fd)) < 0 || (r = read (fd, buf, len)) < 0) &&
+@@ -95,6 +113,14 @@ zreadretry (fd, buf, len)
+   ssize_t r;
+   int nintr;
+ 
++  /* If we pushed a char back, return it immediately */
++  if (zpushedchar != -1)
++    {
++      *buf = (unsigned char)zpushedchar;
++      zpushedchar = -1;
++      return 1;
++    }
++
+   for (nintr = 0; ; )
+     {
+       r = read (fd, buf, len);
+@@ -118,6 +144,15 @@ zreadintr (fd, buf, len)
+      size_t len;
+ {
+   check_signals ();
++
++  /* If we pushed a char back, return it immediately */
++  if (zpushedchar != -1)
++    {
++      *buf = (unsigned char)zpushedchar;
++      zpushedchar = -1;
++      return 1;
++    }
++
+   return (read (fd, buf, len));
+ }
+ 
+@@ -135,6 +170,14 @@ zreadc (fd, cp)
+ {
+   ssize_t nr;
+ 
++  /* If we pushed a char back, return it immediately */
++  if (zpushedchar != -1 && cp)
++    {
++      *cp = (unsigned char)zpushedchar;
++      zpushedchar = -1;
++      return 1;
++    }
++
+   if (lind == lused || lused == 0)
+     {
+       nr = zread (fd, lbuf, sizeof (lbuf));
+@@ -160,6 +203,14 @@ zreadcintr (fd, cp)
+ {
+   ssize_t nr;
+ 
++  /* If we pushed a char back, return it immediately */
++  if (zpushedchar != -1 && cp)
++    {
++      *cp = (unsigned char)zpushedchar;
++      zpushedchar = -1;
++      return 1;
++    }
++
+   if (lind == lused || lused == 0)
+     {
+       nr = zreadintr (fd, lbuf, sizeof (lbuf));
+@@ -186,6 +237,13 @@ zreadn (fd, cp, len)
+ {
+   ssize_t nr;
+ 
++  if (zpushedchar != -1 && cp)
++    {
++      *cp = zpushedchar;
++      zpushedchar = -1;
++      return 1;
++    }
++
+   if (lind == lused || lused == 0)
+     {
+       if (len > sizeof (lbuf))
+@@ -204,6 +262,22 @@ zreadn (fd, cp, len)
+   return 1;
+ }
+ 
++int
++zungetc (c)
++     int c;
++{
++  if (zpushedchar == -1)
++    {
++      zpushedchar = c;
++      return c;
++    }
++
++  if (c == EOF || lind == 0)
++    return (EOF);
++  lbuf[--lind] = c;		/* XXX */
++  return c;
++}
++
+ void
+ zreset ()
+ {
+-- 
+2.45.2
+

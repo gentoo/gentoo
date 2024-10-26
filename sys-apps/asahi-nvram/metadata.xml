@@ -10,8 +10,6 @@
 		<name>Gentoo Asahi Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">
-			WhatAmISupposedToPutHere/asahi-nvram
-		</remote-id>
+		<remote-id type="github">WhatAmISupposedToPutHere/asahi-nvram</remote-id>
 	</upstream>
 </pkgmetadata>

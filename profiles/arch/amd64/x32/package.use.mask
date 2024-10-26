@@ -36,7 +36,6 @@ sci-mathematics/cadabra jupyter
 sci-mathematics/yacas jupyter
 sci-physics/hepmc root
 sci-physics/pythia root
-sci-physics/qmeq examples
 sci-physics/vgm root test
 sci-physics/yoda root
 

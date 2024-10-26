@@ -7,8 +7,10 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">deathkiller/jazz2</remote-id>
+		<remote-id type="github">deathkiller/jazz2-native</remote-id>
 	</upstream>
 	<use>
 		<flag name="server">Build the multiplayer game server</flag>
+		<flag name="sdl">Prefer SDL2 over GLFW backend</flag>
 	</use>
 </pkgmetadata>

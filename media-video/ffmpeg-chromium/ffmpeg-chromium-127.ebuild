@@ -16,7 +16,7 @@ LICENSE="
 "
 SLOT="${PV}"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64"
 
 # Options to use as use_enable in the foo[:bar] form.
 # This will feed configure with $(use_enable foo bar)
@@ -139,15 +139,6 @@ src_configure() {
 
 	# Bug #918997. Will probably be fixed upstream in the next release.
 	use vulkan && append-ldflags -Wl,-z,muldefs
-
-	# bug 842201
-	use ia64 && tc-is-gcc && append-flags \
-		-fno-tree-ccp \
-		-fno-tree-dominator-opts \
-		-fno-tree-fre \
-		-fno-code-hoisting \
-		-fno-tree-pre \
-		-fno-tree-vrp
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 

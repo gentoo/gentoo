@@ -11,7 +11,7 @@ DESCRIPTION="Porters stemming algorithm for Denmark"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 src_install() {
 	perl-module_src_install

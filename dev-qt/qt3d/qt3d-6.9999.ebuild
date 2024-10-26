@@ -30,7 +30,6 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Qml)
 		-DQT_FEATURE_qt3d_system_assimp=ON
-		-DQT_UNITY_BUILD=OFF # fails to build
 	)
 
 	qt6-build_src_configure

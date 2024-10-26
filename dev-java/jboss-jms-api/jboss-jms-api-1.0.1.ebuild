@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/jboss/${PN}_spec/archive/${PN}_1.1_spec-${PV}.Final.
 
 LICENSE="CDDL GPL-2-with-classpath-exception"
 SLOT="1.1"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"

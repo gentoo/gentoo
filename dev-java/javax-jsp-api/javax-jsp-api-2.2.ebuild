@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/javax/servlet/jsp/jsp-api/${PV}/jsp-api-
 
 LICENSE="CDDL GPL-2-with-classpath-exception"
 SLOT="2.2"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64"
 
 CP_DEPEND="
 	dev-java/javax-el-api:2.2

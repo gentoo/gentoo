@@ -7,13 +7,12 @@ inherit cmake
 
 DESCRIPTION="Qt GUI ALSA tools: mixer, configuration browser"
 HOMEPAGE="https://gitlab.com/sebholt/qastools"
-SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
-S="${WORKDIR}"/${PN}-v${PV}
+SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-qt/qtbase:6[dbus,gui,network,widgets]

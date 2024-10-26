@@ -1,0 +1,63 @@
+https://git.netfilter.org/nftables/commit/?id=93560d0117639c8685fc287128ab06dec9950fbd
+https://github.com/firewalld/firewalld/issues/1366
+https://lore.kernel.org/netfilter-devel/Zp7FqL_YK3p_dQ8B@egarver-mac/
+
+From 93560d0117639c8685fc287128ab06dec9950fbd Mon Sep 17 00:00:00 2001
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+Date: Wed, 24 Jul 2024 09:38:33 +0200
+Subject: Revert "cache: recycle existing cache with incremental updates"
+
+This reverts commit e791dbe109b6dd891a63a4236df5dc29d7a4b863.
+
+Eric Garver reported two issues:
+
+- index with rule breaks, because NFT_CACHE_REFRESH is missing.
+- simple set updates.
+
+Moreover, the current process could populate the cache with objects for
+listing commands (no generation ID is bumped), while another process
+could update the ruleset. Leading to a inconsistent cache due to the
+genid + 1 check.
+
+This optimization needs more work and more tests for -i/--interactive,
+revert it.
+
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -1184,21 +1184,9 @@ static bool nft_cache_needs_refresh(struct nft_cache *cache, unsigned int flags)
+ 	       (flags & NFT_CACHE_REFRESH);
+ }
+ 
+-static bool nft_cache_is_updated(struct nft_cache *cache, unsigned int flags,
+-				 uint16_t genid)
++static bool nft_cache_is_updated(struct nft_cache *cache, uint16_t genid)
+ {
+-	if (!genid)
+-		return false;
+-
+-	if (genid == cache->genid)
+-		return true;
+-
+-	if (genid == cache->genid + 1) {
+-		cache->genid++;
+-		return true;
+-	}
+-
+-	return false;
++	return genid && genid == cache->genid;
+ }
+ 
+ bool nft_cache_needs_update(struct nft_cache *cache)
+@@ -1223,7 +1211,7 @@ replay:
+ 	genid = mnl_genid_get(&ctx);
+ 	if (!nft_cache_needs_refresh(cache, flags) &&
+ 	    nft_cache_is_complete(cache, flags) &&
+-	    nft_cache_is_updated(cache, flags, genid))
++	    nft_cache_is_updated(cache, genid))
+ 		return 0;
+ 
+ 	if (cache->genid)
+-- 
+cgit v1.2.3
+

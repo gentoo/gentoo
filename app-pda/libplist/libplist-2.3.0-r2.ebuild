@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
-HOMEPAGE="https://www.libimobiledevice.org/"
+HOMEPAGE="https://libimobiledevice.org/"
 SRC_URI="https://cgit.libimobiledevice.org/${PN}.git/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"

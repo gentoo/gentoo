@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}-${APP_
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 RDEPEND="
 	sys-libs/ncurses:=

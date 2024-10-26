@@ -11,7 +11,7 @@ SRC_URI="https://github.com/johnwhitington/${PN}/releases/download/${PV}/${P}.tb
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 

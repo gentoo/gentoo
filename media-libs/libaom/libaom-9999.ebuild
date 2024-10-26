@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake-multilib flag-o-matic multiprocessing python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
@@ -16,7 +16,7 @@ else
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
 		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"

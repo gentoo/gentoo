@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,16 +6,16 @@ EAPI=7
 COMMIT=33ed278b9b543554fd6a556fd391eb4c78faab07
 MY_PN=qtscrob
 MY_P=${MY_PN}-${PV}
-inherit desktop qmake-utils toolchain-funcs xdg-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Updates last.fm profiles using information from supported portable music players"
 HOMEPAGE="http://qtscrob.sourceforge.net/"
 SRC_URI="https://sourceforge.net/code-snapshots/git/q/qt/${MY_PN}/code.git/${MY_PN}-code-${COMMIT}.zip -> ${P}.zip"
+S="${WORKDIR}/${MY_PN}-code-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 BDEPEND="
 	app-arch/unzip
@@ -31,8 +31,6 @@ RDEPEND="
 	media-libs/libmtp:=
 	net-misc/curl"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_PN}-code-${COMMIT}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-qt5.patch

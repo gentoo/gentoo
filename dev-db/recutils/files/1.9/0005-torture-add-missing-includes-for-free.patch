@@ -1,0 +1,90 @@
+https://lists.gnu.org/archive/html/bug-recutils/2024-10/msg00002.html
+
+From fb9fafca61f07be0dded5a5ca6f74dd6cc0bec2c Mon Sep 17 00:00:00 2001
+Message-ID: <fb9fafca61f07be0dded5a5ca6f74dd6cc0bec2c.1728191717.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Oct 2024 05:01:27 +0100
+Subject: [PATCH 05/10] torture: add missing includes for free()
+
+Add a bunch of missing `<stdlib.h>` includes for `free()`.
+
+2024-10-06  Sam James  <sam@gentoo.org>
+
+	* torture/rec-parser/rec-parse-record-str.c: Include stdlib.h.
+	* torture/rec-parser/rec-parse-record.c: Ditto.
+	* torture/rec-writer/rec-write-comment-str.c: Ditto.
+	* torture/rec-writer/rec-write-field-name-str.c: Ditto.
+	* torture/rec-writer/rec-write-field-str.c: Ditto.
+---
+ torture/rec-parser/rec-parse-record-str.c     | 1 +
+ torture/rec-parser/rec-parse-record.c         | 1 +
+ torture/rec-writer/rec-write-comment-str.c    | 1 +
+ torture/rec-writer/rec-write-field-name-str.c | 1 +
+ torture/rec-writer/rec-write-field-str.c      | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/torture/rec-parser/rec-parse-record-str.c b/torture/rec-parser/rec-parse-record-str.c
+index 141aa15..3d0c3bb 100644
+--- a/torture/rec-parser/rec-parse-record-str.c
++++ b/torture/rec-parser/rec-parse-record-str.c
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <check.h>
+ 
+ #include <rec.h>
+diff --git a/torture/rec-parser/rec-parse-record.c b/torture/rec-parser/rec-parse-record.c
+index 79e34ff..f77f6cd 100644
+--- a/torture/rec-parser/rec-parse-record.c
++++ b/torture/rec-parser/rec-parse-record.c
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <check.h>
+ 
+ #include <rec.h>
+diff --git a/torture/rec-writer/rec-write-comment-str.c b/torture/rec-writer/rec-write-comment-str.c
+index 21849e2..0b7d916 100644
+--- a/torture/rec-writer/rec-write-comment-str.c
++++ b/torture/rec-writer/rec-write-comment-str.c
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <check.h>
+ 
+ #include <rec.h>
+diff --git a/torture/rec-writer/rec-write-field-name-str.c b/torture/rec-writer/rec-write-field-name-str.c
+index 1687243..a8ec6c2 100644
+--- a/torture/rec-writer/rec-write-field-name-str.c
++++ b/torture/rec-writer/rec-write-field-name-str.c
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <check.h>
+ 
+ #include <rec.h>
+diff --git a/torture/rec-writer/rec-write-field-str.c b/torture/rec-writer/rec-write-field-str.c
+index efbeb54..3a5b7b0 100644
+--- a/torture/rec-writer/rec-write-field-str.c
++++ b/torture/rec-writer/rec-write-field-str.c
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <check.h>
+ 
+ #include <rec.h>
+-- 
+2.46.2
+

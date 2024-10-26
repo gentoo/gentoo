@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/GooCanvas"
 
 LICENSE="LGPL-2"
 SLOT="3.0"
-KEYWORDS="~alpha amd64 ~arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="examples +introspection"
 
 RDEPEND="

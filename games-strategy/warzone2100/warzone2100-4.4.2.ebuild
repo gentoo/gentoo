@@ -65,6 +65,7 @@ DOCS=( README.md doc/images doc/Scripting.md doc/js-globals.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.3-no-compress-manpages.patch
+	"${FILESDIR}"/${PN}-4.4.2-gcc15-cstdint.patch
 )
 
 src_unpack() {

@@ -9,6 +9,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: llvm-utils
 # @BLURB: Utility functions to build against slotted LLVM
+# @DEPRECATED: llvm-r1.eclass
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
 # against specific version of slotted LLVM (with fallback to :0 for old
@@ -62,7 +63,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LLVM_ECLASS} ]]; then
+if [[ -z ${_LLVM_ECLASS} ]]; then
 _LLVM_ECLASS=1
 
 inherit llvm-utils
@@ -118,7 +119,7 @@ declare -g -r _LLVM_KNOWN_SLOTS=( {19..8} )
 # the function defaults to checking whether sys-devel/llvm:${LLVM_SLOT}
 # is installed.
 get_llvm_slot() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local hv_switch=-d
 	while [[ ${1} == -* ]]; do
@@ -169,7 +170,7 @@ get_llvm_slot() {
 #
 # The options and behavior is the same as for get_llvm_slot.
 get_llvm_prefix() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local prefix=${ESYSROOT}
 	[[ ${1} == -b ]] && prefix=${BROOT}
@@ -192,7 +193,7 @@ get_llvm_prefix() {
 # If any other behavior is desired, the contents of the function
 # should be inlined into the ebuild and modified as necessary.
 llvm_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${LLVM_ECLASS_SKIP_PKG_SETUP} ]]; then
 		return

@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="rdoc">Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.</flag>
-    <flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+    <flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
   </use>
   <upstream>
     <remote-id type="github">ruby/ruby</remote-id>

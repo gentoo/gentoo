@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 
 LICENSE="LGPL-2.1+ GPL-2+ MIT"
 SLOT="0/20" # subslot = soname major version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+asm doc +getentropy static-libs"
 IUSE+=" cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_arm_sve"
 IUSE+=" cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3"
@@ -94,13 +94,6 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	if [[ ${CHOST} == *86*-solaris* ]] ; then
-		# ASM code uses GNU ELF syntax, divide in particular, we need to
-		# allow this via ASFLAGS, since we don't have a flag-o-matic
-		# function for that, we'll have to abuse cflags for this
-		append-cflags -Wa,--divide
-	fi
-
 	if [[ ${CHOST} == powerpc* ]] ; then
 		# ./configure does a lot of automagic, prevent that
 		# generic ppc32+ppc64 altivec
@@ -145,9 +138,6 @@ multilib_src_configure() {
 		# disabled due to various applications requiring privileges
 		# after libgcrypt drops them (bug #468616)
 		--without-capabilities
-
-		# http://trac.videolan.org/vlc/ticket/620
-		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 

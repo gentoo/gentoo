@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit flag-o-matic linux-info python-r1 systemd
 
 DESCRIPTION="shared storage lock manager"
@@ -12,7 +12,7 @@ SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2+ GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

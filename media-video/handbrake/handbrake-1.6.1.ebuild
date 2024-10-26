@@ -43,7 +43,7 @@ RDEPEND="
 	>=media-libs/libvpx-1.12.0:=
 	media-libs/opus
 	>=media-libs/speex-1.2.1
-	>=media-libs/svt-av1-1.4.1
+	>=media-libs/svt-av1-1.4.1:=
 	>=media-libs/x264-0.0.20220222:=
 	>=media-libs/zimg-3.0.4
 	media-sound/lame

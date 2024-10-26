@@ -24,7 +24,7 @@ S="${WORKDIR}/latex-pax-${MY_COMMIT_ID}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x64-macos"
 
 COMMON_DEPEND="virtual/latex-base"
 DEPEND="

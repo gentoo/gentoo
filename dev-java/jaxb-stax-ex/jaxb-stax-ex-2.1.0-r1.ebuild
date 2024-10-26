@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	dev-java/jakarta-activation-api:2

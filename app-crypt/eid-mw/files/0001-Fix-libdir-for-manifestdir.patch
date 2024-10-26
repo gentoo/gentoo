@@ -1,0 +1,30 @@
+From feb0032d95568e7f0dd1736ac773363cc778ce59 Mon Sep 17 00:00:00 2001
+From: Vincent Hardy <vincent.hardy.be@gmail.com>
+Date: Thu, 8 Aug 2024 10:58:44 +0200
+Subject: [PATCH] Fix libdir for manifestdir
+
+See also https://github.com/Fedict/eid-mw/pull/199
+---
+ cardcomm/pkcs11/src/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cardcomm/pkcs11/src/Makefile.am b/cardcomm/pkcs11/src/Makefile.am
+index 33201b147..ddc410fb4 100644
+--- a/cardcomm/pkcs11/src/Makefile.am
++++ b/cardcomm/pkcs11/src/Makefile.am
+@@ -211,10 +211,10 @@ beid_spr_changepin_LDADD = @GTK_LIBS@
+ metainfodir = $(datarootdir)/metainfo
+ dist_metainfo_DATA = be.belgium.eid.eidmw.metainfo.xml
+ 
+-pkcs11_manifestdir = $(prefix)/lib/mozilla/pkcs11-modules
++pkcs11_manifestdir = $(libdir)/mozilla/pkcs11-modules
+ pkcs11_manifest_DATA = beidpkcs11.json beidpkcs11_alt.json
+ 
+-managed_storage_manifestdir = $(prefix)/lib/mozilla/managed-storage
++managed_storage_manifestdir = $(libdir)/mozilla/managed-storage
+ managed_storage_manifest_DATA = belgiumeid@eid.belgium.be.json
+ 
+ pkgconfig_DATA=libbeidpkcs11.pc
+-- 
+2.44.2
+

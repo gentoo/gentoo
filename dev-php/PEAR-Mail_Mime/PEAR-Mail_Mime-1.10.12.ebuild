@@ -9,7 +9,7 @@ DESCRIPTION="Create and manipulate mime messages with PHP"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~hppa ppc64 ~s390 sparc x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"

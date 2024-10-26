@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-doc.eclass
 # @MAINTAINER:
 # vim@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for vim{,-plugin}.eclass to update documentation tags.
 # @DESCRIPTION:
 # This eclass is used by vim.eclass and vim-plugin.eclass to update
@@ -16,19 +16,20 @@
 # DEPEND in vim-plugin or by whatever version of vim is being
 # installed by the eclass.
 
+if [[ -z ${_VIM_DOC_ECLASS} ]]; then
+_VIM_DOC_ECLASS=1
+
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_VIM_DOC_ECLASS} ]] ; then
 
 # @FUNCTION: update_vim_helptags
 # @USAGE:
 # @DESCRIPTION:
 # Update the documentation tags in the versioned Vim directory.
 update_vim_helptags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local vimfiles helpfile files vim d
 
@@ -54,7 +55,7 @@ update_vim_helptags() {
 
 	# Install the documentation symlinks into the versioned vim
 	# directory and run :helptags
-	for d in "${EROOT%/}"/usr/share/vim/vim[0-9]*; do
+	for d in "${EROOT}"/usr/share/vim/vim[0-9]*; do
 		[[ -d "${d}/doc" ]] || continue	# catch a failed glob
 
 		# Remove links
@@ -100,5 +101,4 @@ update_vim_helptags() {
 	fi
 }
 
-_VIM_DOC_ECLASS=1
 fi

@@ -11,7 +11,7 @@ SRC_URI="https://repo.or.cz/w/guilt.git/snapshot/${EGIT_COMMIT}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 # Since we need to build the man pages anyway, I don't think it makes

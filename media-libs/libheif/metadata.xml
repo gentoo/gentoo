@@ -7,6 +7,7 @@
 	<flag name="gdk-pixbuf">Enable <pkg>x11-libs/gdk-pixbuf</pkg> plugin</flag>
 	<flag name="go">Enable building <pkg>dev-lang/go</pkg> code/examples</flag>
 	<flag name="rav1e">Use <pkg>media-video/rav1e</pkg> for AVIF encoding</flag>
+	<flag name="svt-av1">Use <pkg>media-libs/svt-av1</pkg> for SVT-AV1 encoding</flag>
 	<flag name="x265">Use <pkg> media-libs/x265</pkg> for HEIF encoding</flag>
 	</use>
 	<upstream>

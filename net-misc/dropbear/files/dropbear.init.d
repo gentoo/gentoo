@@ -11,7 +11,7 @@ check_config() {
 	mkdir -p /etc/dropbear
 
 	local t k
-	for t in dss rsa ecdsa; do
+	for t in rsa ecdsa ed25519; do
 		k="/etc/dropbear/dropbear_${t}_host_key"
 		if [ ! -e ${k} ] ; then
 			# See if support is enabled for this key type.

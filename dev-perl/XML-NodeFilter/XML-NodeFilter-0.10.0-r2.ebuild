@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Generic XML::NodeFilter Class"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ppc sparc x86"

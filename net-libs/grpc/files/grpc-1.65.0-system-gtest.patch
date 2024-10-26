@@ -1,14 +1,11 @@
-https://bugs.gentoo.org/927403
-
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7a55616fb6..ee62502267 100644
+index d4d798f..824c4ed 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -3442,79 +3442,6 @@ if(gRPC_INSTALL)
-   )
+@@ -3504,77 +3504,8 @@ if(gRPC_INSTALL)
  endif()
  
--if(gRPC_BUILD_TESTS)
+ if(gRPC_BUILD_TESTS)
 -
 -add_library(gtest
 -  third_party/googletest/googlemock/src/gmock-cardinalities.cc
@@ -80,7 +77,8 @@ index 7a55616fb6..ee62502267 100644
 -)
 -
 -
--endif()
++  find_package(GTest REQUIRED)
++  enable_testing()
+ endif()
  
  add_library(upb_base_lib
-   third_party/upb/upb/base/status.c

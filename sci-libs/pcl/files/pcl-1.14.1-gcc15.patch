@@ -1,0 +1,62 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 22 Aug 2024 16:44:39 +0200
+Subject: [PATCH] fix gcc 15
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/registration/include/pcl/registration/correspondence_rejection_features.h
++++ b/registration/include/pcl/registration/correspondence_rejection_features.h
+@@ -203,6 +203,11 @@ protected:
+     /** \brief Empty destructor */
+     ~FeatureContainer() override = default;
+ 
++    inline std::string getClassName()
++    {
++      return "FeatureContainer<FeatureT>";
++    }
++
+     inline void
+     setSourceFeature(const FeatureCloudConstPtr& source_features)
+     {
+--- a/surface/include/pcl/surface/3rdparty/poisson4/octree_poisson.h
++++ b/surface/include/pcl/surface/3rdparty/poisson4/octree_poisson.h
+@@ -94,6 +94,9 @@ namespace pcl
+         short d , off[DIMENSION];
+         NodeData nodeData;
+ 
++        Point3D<Real> center;
++        int offset[3];
++
+         OctNode(void);
+         ~OctNode(void);
+         int initChildren(void);
+--- a/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.h
++++ b/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.h
+@@ -56,6 +56,8 @@ namespace pcl
+         bool _contiguous;
+         int _maxEntriesPerRow;
+         static int UseAlloc;
++        std::size_t m_M;
++        std::size_t m_N;
+       public:
+         static Allocator<MatrixEntry<T> > internalAllocator;
+         static int UseAllocator(void);
+--- a/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.hpp
++++ b/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.hpp
+@@ -235,7 +235,7 @@ namespace pcl
+     void SparseMatrix<T>::SetIdentity()
+     {
+       SetZero();
+-      for(int ij=0; ij < Min( this->Rows(), this->Columns() ); ij++)
++      for(int ij=0; ij < std::min( this->rows, this->_maxEntriesPerRow ); ij++)
+         (*this)(ij,ij) = T(1);
+     }
+ 
+@@ -388,7 +388,7 @@ namespace pcl
+       T alpha,beta,rDotR;
+       int i;
+ 
+-      solution.Resize(M.Columns());
++      solution.Resize(M._maxEntriesPerRow);
+       solution.SetZero();
+ 
+       d=r=bb;

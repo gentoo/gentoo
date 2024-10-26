@@ -7,20 +7,22 @@ inherit elisp
 
 DESCRIPTION="Clojure Parser for Emacs Lisp"
 HOMEPAGE="https://github.com/clojure-emacs/parseclj/"
-SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/clojure-emacs/${PN}.git"
+else
+	SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
+
+	KEYWORDS="amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64 ~x86"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-BDEPEND="test? ( app-emacs/ert-runner )"
 
 DOCS=( CHANGELOG.md DESIGN.md README.md )
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	ert-runner -L . -L test --reporter ert+duration --script test || die
-}
+elisp-enable-tests ert-runner test

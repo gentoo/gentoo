@@ -10,7 +10,7 @@ inherit perl-module virtualx
 DESCRIPTION="lite JPEG loader for Tk::Photo"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 RDEPEND="virtual/jpeg:0
 	>=dev-perl/Tk-800.15.0"

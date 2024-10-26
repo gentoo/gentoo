@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/antlr/${PN}/${PV}/${P}-sources.jar"
 
 LICENSE="BSD"
 SLOT="3.5"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Common dependencies
 # POM: ${P}.pom

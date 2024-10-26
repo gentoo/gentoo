@@ -18,6 +18,7 @@
     <flag name="svt-av1">Enable support for the SVT-AV1 encoder</flag>
   </use>
   <upstream>
+    <bugs-to>https://github.com/AOMediaCodec/libavif/issues</bugs-to>
     <remote-id type="github">AOMediaCodec/libavif</remote-id>
   </upstream>
 </pkgmetadata>

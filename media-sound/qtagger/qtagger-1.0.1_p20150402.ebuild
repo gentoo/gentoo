@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,11 @@ inherit cmake qmake-utils
 DESCRIPTION="Simple Qt5 ID3v2 tag editor"
 HOMEPAGE="https://github.com/DOOMer/qtagger"
 SRC_URI="https://github.com/DOOMer/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 BDEPEND="dev-qt/linguist-tools:5"
 DEPEND="
@@ -24,8 +24,6 @@ DEPEND="
 	media-libs/taglib
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	# fix doc installation path

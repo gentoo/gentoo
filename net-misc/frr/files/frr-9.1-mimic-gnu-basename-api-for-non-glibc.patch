@@ -1,0 +1,26 @@
+https://github.com/FRRouting/frr/commit/0ef71391f0fb15039550a09c218977fa3e1abaf1.patch
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 15 Mar 2024 14:34:06 -0700
+Subject: [PATCH] zebra: Mimic GNU basename() API for non-glibc library e.g.
+ musl
+
+musl only provides POSIX version of basename and it has also removed
+providing it via string.h header [1] which now results in compile errors
+with newer compilers e.g. clang-18
+
+[1] https://git.musl-libc.org/cgit/musl/commit/?id=725e17ed6dff4d0cd22487bb64470881e86a92e7
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/zebra/zebra_netns_notify.c
++++ b/zebra/zebra_netns_notify.c
+@@ -42,6 +42,10 @@
+ #define ZEBRA_NS_POLLING_INTERVAL_MSEC     1000
+ #define ZEBRA_NS_POLLING_MAX_RETRIES  200
+ 
++#if !defined(__GLIBC__)
++#define basename(src) (strrchr(src, '/') ? strrchr(src, '/') + 1 : src)
++#endif
++
+ DEFINE_MTYPE_STATIC(ZEBRA, NETNS_MISC, "ZebraNetNSInfo");
+ static struct event *zebra_netns_notify_current;
+ 

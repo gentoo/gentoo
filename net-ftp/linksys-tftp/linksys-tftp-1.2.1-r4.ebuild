@@ -11,7 +11,7 @@ SRC_URI="https://www.redsand.net/solutions/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-r1-header.patch"

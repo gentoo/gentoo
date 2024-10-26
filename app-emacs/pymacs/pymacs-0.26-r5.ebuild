@@ -21,7 +21,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${P^}"
 
-	KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="GPL-2+"

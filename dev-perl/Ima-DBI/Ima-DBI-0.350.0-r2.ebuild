@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Add contextual fetches to DBI"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="

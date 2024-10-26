@@ -30,7 +30,7 @@ LICENSE="
 "
 SLOT="0"
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2

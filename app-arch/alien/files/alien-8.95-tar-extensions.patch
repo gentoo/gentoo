@@ -4,12 +4,6 @@ Date: Fri, 1 Sep 2017 02:20:37 -0500
 Subject: [PATCH] add more tar extensions
 
 Signed-off-by: Austin English <austinenglish@gmail.com>
----
- Alien/Package/Tgz.pm | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Alien/Package/Tgz.pm b/Alien/Package/Tgz.pm
-index 7ab6e8b..65a3d2d 100644
 --- a/Alien/Package/Tgz.pm
 +++ b/Alien/Package/Tgz.pm
 @@ -11,7 +11,7 @@ use strict;

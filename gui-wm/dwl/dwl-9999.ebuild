@@ -5,30 +5,13 @@ EAPI=8
 
 inherit savedconfig toolchain-funcs
 
-MY_P="${PN}-v${PV}"
-
-WLROOTS_DEP="
-	>=gui-libs/wlroots-0.17:=[libinput,session,X?]
-	<gui-libs/wlroots-0.18:=
-"
-
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://codeberg.org/dwl/dwl.git"
 	inherit git-r3
-
-	# 9999-r0: main (latest stable wlroots release)
-	# 9999-r1: wlroots-next (wlroots-9999)
-	case ${PVR} in
-		9999)
-			EGIT_BRANCH=main
-			;;
-		9999-r1)
-			EGIT_BRANCH=wlroots-next
-			WLROOTS_DEP="~gui-libs/wlroots-9999:=[libinput,session,X?]"
-			;;
-	esac
 else
-	SRC_URI="https://codeberg.org/${PN}/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
+	MY_PV="${PV/_rc/-rc}"
+	MY_P="${PN}-v${MY_PV}"
+	SRC_URI="https://codeberg.org/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
@@ -40,8 +23,15 @@ LICENSE="CC0-1.0 GPL-3+ MIT"
 SLOT="0"
 IUSE="X"
 
-CDEPEND="
-	${WLROOTS_DEP}
+if [[ ${PV} == 9999 ]]; then
+	COMMON_DEPEND="~gui-libs/wlroots-9999:=[libinput,session,X?]"
+else
+	COMMON_DEPEND="
+		>=gui-libs/wlroots-0.19:=[libinput,session,X?]
+		<gui-libs/wlroots-0.20:="
+fi
+
+COMMON_DEPEND+="
 	dev-libs/libinput:=
 	dev-libs/wayland
 	x11-libs/libxkbcommon
@@ -51,19 +41,19 @@ CDEPEND="
 	)
 "
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	X? (
 		x11-base/xwayland
 	)
 "
 # uses <linux/input-event-codes.h>
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	sys-kernel/linux-headers
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.32
-	dev-util/wayland-scanner
+	>=dev-util/wayland-scanner-1.23
 	virtual/pkgconfig
 "
 

@@ -1,0 +1,28 @@
+From c7128efaabf82c1503e2ae30fed7c3c3dbe91f2b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@gentoo.org>
+Date: Fri, 27 Sep 2024 15:08:01 +0200
+Subject: [PATCH] build: fix summary call for bestline in src/external
+
+Fixes the following error:
+
+  src/external/meson.build:74:4: ERROR: Summary section '' already have key 'libpkgconf'
+---
+ src/external/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/external/meson.build b/src/external/meson.build
+index 421dea76..853bf91e 100644
+--- a/src/external/meson.build
++++ b/src/external/meson.build
+@@ -71,7 +71,7 @@ readline_opt = get_option('readline')
+ dep_sources += files(f'readline_@readline_opt@.c')
+ if readline_opt != 'builtin'
+     dep = dependency(readline_opt)
+-    summary(name, dep.found())
++    summary(readline_opt, dep.found())
+     dep_dict += {name: dep.found()}
+     external_deps += [dep]
+ endif
+-- 
+2.46.1
+

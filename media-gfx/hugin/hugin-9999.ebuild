@@ -1,10 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit mercurial python-single-r1 wxwidgets cmake xdg
 
@@ -13,6 +13,8 @@ HOMEPAGE="http://hugin.sf.net"
 SRC_URI=""
 EHG_REPO_URI="http://hg.code.sf.net/p/hugin/hugin"
 EHG_PROJECT="${PN}-${PN}"
+
+S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
@@ -56,8 +58,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( authors.txt README TODO )
 
-S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	setup-wxwidgets
@@ -71,10 +71,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_HSI=$(usex python)
 		-DENABLE_LAPACK=$(usex lapack)
-		# Temporary workaround for bug #833443. Can be dropped when
-		# we switch to wxgtk-3.2, but complications for that remain
-		# w/ egl+wayland.
-		-DUSE_GDKBACKEND_X11=on
 	)
 	cmake_src_configure
 }

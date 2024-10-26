@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/filelight/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
@@ -35,3 +35,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 "
+
+CMAKE_SKIP_TESTS=(
+	# bug 911856
+	scanManagerTest
+)

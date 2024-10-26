@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 VALA_USE_DEPEND="vapigen"
 inherit cmake python-any-r1 vala
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc examples +glib +introspection static-libs test vala"
 
 REQUIRED_USE="introspection? ( glib ) vala? ( introspection )"

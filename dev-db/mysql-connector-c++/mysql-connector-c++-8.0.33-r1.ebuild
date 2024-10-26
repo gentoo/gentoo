@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,16 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.27-mysqlclient_r.patch
 	"${FILESDIR}"/${P}-jdbc.patch
 )
+
+src_prepare() {
+	cmake_src_prepare
+	# ignores MAKEOPTS and runs recursive make -j$(nproc). Clobbers jobs badly
+	# enough that your system immediately freezes.
+	#
+	# https://bugs.gentoo.org/921309
+	# https://bugs.mysql.com/bug.php?id=115734
+	sed -i 's/prc_cnt AND NOT/FALSE AND NOT/' cdk/cmake/dependency.cmake || die
+}
 
 src_configure() {
 	local mycmakeargs=(

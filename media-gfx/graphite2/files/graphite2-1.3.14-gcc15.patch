@@ -1,0 +1,29 @@
+https://github.com/silnrsi/graphite/pull/91
+
+From fb5e7313802a32783cf0a3f1c28880f11e9588a5 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Fri, 2 Aug 2024 22:31:44 +0100
+Subject: [PATCH] tests/featuremap/featuremaptest.cpp: add missing <stdint.h>
+ include
+
+Without the change `graphite` build fails on upcoming `gcc-15` as:
+
+    tests/featuremap/featuremaptest.cpp:30:15: error: 'uint8_t' was not declared in this scope
+       30 |   std::vector<uint8_t> _ttf;
+          |               ^~~~~~~
+    tests/featuremap/featuremaptest.cpp:16:1: note: 'uint8_t' is defined in header '<cstdint>';
+      this is probably fixable by adding '#include <cstdint>'
+       15 | #include "inc/Face.h"
+      +++ |+#include <cstdint>
+       16 | #include "inc/FeatureMap.h"
+--- a/tests/featuremap/featuremaptest.cpp
++++ b/tests/featuremap/featuremaptest.cpp
+@@ -6,6 +6,7 @@
+ #include <iostream>
+ #include <map>
+ #include <memory>
++#include <stdint.h>
+ #include <string>
+ #include <vector>
+ 
+

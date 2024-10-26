@@ -19,7 +19,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_POSTGRES_MULTI_ECLASS} ]]; then
+if [[ -z ${_POSTGRES_MULTI_ECLASS} ]]; then
 _POSTGRES_MULTI_ECLASS=1
 
 inherit multibuild postgres
@@ -55,7 +55,7 @@ export _POSTGRES_INTERSECT_SLOTS=( )
 # appearance of @PG_SLOT@ in the command and arguments with value of
 # ${PG_SLOT}.
 _postgres-multi_multibuild_wrapper() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	export PG_SLOT=${MULTIBUILD_VARIANT}
 	export PG_CONFIG=$(type -P pg_config${MULTIBUILD_VARIANT//./})
 	if [[ -n ${PKG_CONFIG_PATH} ]] ; then

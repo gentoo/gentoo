@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
@@ -23,13 +23,13 @@
 # }
 # @CODE
 
-if [[ ! ${_BASH_COMPLETION_R1_ECLASS} ]]; then
+if [[ -z ${_BASH_COMPLETION_R1_ECLASS} ]]; then
 _BASH_COMPLETION_R1_ECLASS=1
 
 inherit toolchain-funcs
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -41,7 +41,7 @@ esac
 # @EXAMPLE:
 # _bash-completion-r1_get_bashdir completionsdir /usr/share/bash-completion
 _bash-completion-r1_get_bashdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if $(tc-getPKG_CONFIG) --exists bash-completion &>/dev/null; then
 		local path
@@ -59,7 +59,7 @@ _bash-completion-r1_get_bashdir() {
 # @DESCRIPTION:
 # Get unprefixed bash-completion completions directory.
 _bash-completion-r1_get_bashcompdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_bash-completion-r1_get_bashdir completionsdir /usr/share/bash-completion/completions
 }
@@ -69,7 +69,7 @@ _bash-completion-r1_get_bashcompdir() {
 # @DESCRIPTION:
 # Get unprefixed bash-completion helpers directory.
 _bash-completion-r1_get_bashhelpersdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_bash-completion-r1_get_bashdir helpersdir /usr/share/bash-completion/helpers
 }
@@ -78,7 +78,7 @@ _bash-completion-r1_get_bashhelpersdir() {
 # @DESCRIPTION:
 # Get the bash-completion completions directory.
 get_bashcompdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "${EPREFIX}$(_bash-completion-r1_get_bashcompdir)"
 }
@@ -88,7 +88,7 @@ get_bashcompdir() {
 # @DESCRIPTION:
 # Get the bash-completion helpers directory.
 get_bashhelpersdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "${EPREFIX}$(_bash-completion-r1_get_bashhelpersdir)"
 }
@@ -99,7 +99,7 @@ get_bashhelpersdir() {
 # Install bash-completion files passed as args. Has EAPI-dependent failure
 # behavior (like doins).
 dobashcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -114,7 +114,7 @@ dobashcomp() {
 # Install bash-completion file under a new name. Has EAPI-dependent failure
 # behavior (like newins).
 newbashcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -128,7 +128,7 @@ newbashcomp() {
 # @DESCRIPTION:
 # Alias <basename> completion to one or more commands (<alias>es).
 bashcomp_alias() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -lt 2 ]] && die "Usage: ${FUNCNAME} <basename> <alias>..."
 	local base=${1} f

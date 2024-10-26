@@ -1,0 +1,57 @@
+From 997c8a7280fe0f99a29465f67b56fd001cdac4e1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 22 Jul 2024 22:20:26 +0200
+Subject: [PATCH] Make it possible to build against system kdsingleapplication
+
+Bundling must be avoided wherever possible.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt  | 10 +++++++++-
+ rkward/main.cpp |  2 +-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3b9833164..1af6cd172 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,15 @@ FIND_PACKAGE(Qt6 6.6 CONFIG REQUIRED COMPONENTS Widgets Core Xml Network Qml Pri
+ FIND_PACKAGE(KF6 6.0.0 REQUIRED COMPONENTS CoreAddons DocTools I18n XmlGui TextEditor WidgetsAddons Parts Config Notifications WindowSystem Archive BreezeIcons OPTIONAL_COMPONENTS Crash)
+ FIND_PACKAGE(Gettext REQUIRED)
+ 
++FIND_PACKAGE(KDSingleApplication-qt6 1.1.0 QUIET)
++if(KDSingleApplication-qt6_FOUND)
++  message(STATUS "Using system KDSingleApplication")
++else()
++  message(STATUS "Using bundled KDSingleApplication")
++  add_subdirectory(3rdparty/KDSingleApplication)
++  add_definitions(-DKDSINGLEAPPLICATION_STATIC_BUILD)
++endif()
++
+ IF(FORCE_PRETTY_MAKEFILE)
+ 	SET(CMAKE_VERBOSE_MAKEFILE OFF)
+ ENDIF(FORCE_PRETTY_MAKEFILE)
+@@ -37,7 +46,6 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII) # TODO remove to compley to KDECompi
+ #uncomment the line below to save ~250-350kB in object size
+ #ADD_DEFINITIONS(-DRKWARD_NO_TRACE)
+ 
+-ADD_SUBDIRECTORY(3rdparty/KDSingleApplication)
+ ADD_SUBDIRECTORY(rkward)
+ ADD_SUBDIRECTORY(doc)
+ ADD_SUBDIRECTORY(tests)
+diff --git a/rkward/main.cpp b/rkward/main.cpp
+index 2804e99d8..df959ba82 100644
+--- a/rkward/main.cpp
++++ b/rkward/main.cpp
+@@ -72,7 +72,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ #include "rbackend/rksessionvars.h"
+ #include "windows/rkdebugmessagewindow.h"
+ #include "misc/rkcommonfunctions.h"
+-#include "../3rdparty/KDSingleApplication/kdsingleapplication.h"
++#include "kdsingleapplication.h"
+ #include "misc/rkcommandlineargs.h"
+ 
+ #ifdef Q_OS_WIN
+-- 
+GitLab
+

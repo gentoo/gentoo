@@ -1,0 +1,128 @@
+From edf495736a39c0031d5514e8350363dfa229f3d4 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Sun, 22 Sep 2024 23:48:36 -0400
+Subject: [PATCH] Fix handling of Paths in zip implementation
+
+Fixes #1688
+---
+ fsspec/implementations/zip.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/fsspec/implementations/zip.py b/fsspec/implementations/zip.py
+index aa6a57842..6db3ae278 100644
+--- a/fsspec/implementations/zip.py
++++ b/fsspec/implementations/zip.py
+@@ -1,3 +1,4 @@
++import os
+ import zipfile
+ 
+ import fsspec
+@@ -48,7 +49,7 @@ def __init__(
+         if mode not in set("rwa"):
+             raise ValueError(f"mode '{mode}' no understood")
+         self.mode = mode
+-        if isinstance(fo, str):
++        if isinstance(fo, (str, os.PathLike)):
+             if mode == "a":
+                 m = "r+b"
+             else:
+From dc4f5a97d90238b862fa7974a9b8e93602f44540 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martindurant@users.noreply.github.com>
+Date: Mon, 23 Sep 2024 09:42:21 -0400
+Subject: [PATCH] Don't require absolute offsets in zip tests (#1691)
+
+---
+ fsspec/implementations/tests/test_zip.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/fsspec/implementations/tests/test_zip.py b/fsspec/implementations/tests/test_zip.py
+index ecd082f3f..8bf8155d9 100644
+--- a/fsspec/implementations/tests/test_zip.py
++++ b/fsspec/implementations/tests/test_zip.py
+@@ -169,12 +169,16 @@ def _assert_all_except_context_dependent_variables(result, expected_result):
+         result_without_date_time.pop("_raw_time")
+         result_without_date_time.pop("external_attr")
+         result_without_date_time.pop("create_system")
++        result_without_date_time.pop("_end_offset", None)
++        result_without_date_time.pop("header_offset", None)
+ 
+         expected_result_without_date_time = expected_result[path].copy()
+         expected_result_without_date_time.pop("date_time")
+         expected_result_without_date_time.pop("_raw_time")
+         expected_result_without_date_time.pop("external_attr")
+         expected_result_without_date_time.pop("create_system")
++        expected_result_without_date_time.pop("_end_offset", None)
++        expected_result_without_date_time.pop("header_offset", None)
+         assert result_without_date_time == expected_result_without_date_time
+ 
+ 
+From 0021859ff78bbf62e86c330e2dad00c5dd205108 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@alumni.utoronto.ca>
+Date: Wed, 2 Oct 2024 11:37:14 -0400
+Subject: [PATCH] Limit fields checked in ZIP tests
+
+---
+ fsspec/asyn.py                           |  4 +++
+ fsspec/implementations/tests/test_zip.py | 34 +++++++++++++-----------
+ 2 files changed, 23 insertions(+), 15 deletions(-)
+
+diff --git a/fsspec/asyn.py b/fsspec/asyn.py
+index f203fa0a4..de41839ea 100644
+--- a/fsspec/asyn.py
++++ b/fsspec/asyn.py
+@@ -344,6 +344,10 @@ async def _rm(self, path, recursive=False, batch_size=None, **kwargs):
+     async def _cp_file(self, path1, path2, **kwargs):
+         raise NotImplementedError
+ 
++    async def _mv_file(self, path1, path2):
++        await self._cp_file(path1, path2)
++        await self._rm_file(path1)
++
+     async def _copy(
+         self,
+         path1,
+diff --git a/fsspec/implementations/tests/test_zip.py b/fsspec/implementations/tests/test_zip.py
+index 8bf8155d9..14d00086e 100644
+--- a/fsspec/implementations/tests/test_zip.py
++++ b/fsspec/implementations/tests/test_zip.py
+@@ -164,21 +164,25 @@ def zip_file_fixture(tmp_path):
+ def _assert_all_except_context_dependent_variables(result, expected_result):
+     for path in expected_result.keys():
+         assert result[path]
+-        result_without_date_time = result[path].copy()
+-        result_without_date_time.pop("date_time")
+-        result_without_date_time.pop("_raw_time")
+-        result_without_date_time.pop("external_attr")
+-        result_without_date_time.pop("create_system")
+-        result_without_date_time.pop("_end_offset", None)
+-        result_without_date_time.pop("header_offset", None)
+-
+-        expected_result_without_date_time = expected_result[path].copy()
+-        expected_result_without_date_time.pop("date_time")
+-        expected_result_without_date_time.pop("_raw_time")
+-        expected_result_without_date_time.pop("external_attr")
+-        expected_result_without_date_time.pop("create_system")
+-        expected_result_without_date_time.pop("_end_offset", None)
+-        expected_result_without_date_time.pop("header_offset", None)
++        fields = [
++            "orig_filename",
++            "filename",
++            "compress_type",
++            "comment",
++            "extra",
++            "CRC",
++            "compress_size",
++            "file_size",
++            "name",
++            "size",
++            "type",
++        ]
++
++        result_without_date_time = {k: result[path][k] for k in fields}
++
++        expected_result_without_date_time = {
++            k: expected_result[path][k] for k in fields
++        }
+         assert result_without_date_time == expected_result_without_date_time
+ 
+ 

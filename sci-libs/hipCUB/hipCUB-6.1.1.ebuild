@@ -37,6 +37,8 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DBUILD_TEST=$(usex test ON OFF)
@@ -44,7 +46,7 @@ src_configure() {
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 	)
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {

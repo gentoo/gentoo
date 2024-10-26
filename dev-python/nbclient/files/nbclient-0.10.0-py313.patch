@@ -1,0 +1,35 @@
+From 57222265bfd8bdcf8851997e1dce5cd564e1a573 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Wed, 3 Jul 2024 14:21:41 +0200
+Subject: [PATCH] Fix compatibility with Python 3.13 beta 2
+
+There are more calls in 3.13 than in previous versions
+so the tests are now more permissive.
+
+Fixes: https://github.com/jupyter/nbclient/issues/316
+---
+ tests/test_cli.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 04b9887..55ccbd6 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -60,7 +60,7 @@ def test_mult(input_names, relative, inplace, jupyterapp, client, reader, writer
+     # add suffix if needed
+     paths = [p.with_suffix(".ipynb") for p in paths]
+ 
+-    assert path_open.mock_calls[::3] == [call(p) for p in paths]
++    assert all(call(p) in path_open.mock_calls for p in paths)
+     assert reader.call_count == len(paths)
+     # assert reader.mock_calls == [call(p, as_version=4) for p in paths]
+ 
+@@ -114,7 +114,7 @@ def test_output(input_names, relative, output_base, jupyterapp, client, reader,
+     # add suffix if needed
+     paths = [p.with_suffix(".ipynb") for p in paths]
+ 
+-    assert path_open.mock_calls[::3] == [call(p) for p in paths]
++    assert all(call(p) in path_open.mock_calls for p in paths)
+     assert reader.call_count == len(paths)
+ 
+     expected = []

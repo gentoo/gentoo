@@ -11,4 +11,4 @@ DESCRIPTION="Read the CDDB entry for an audio CD in your drive"
 HOMEPAGE="http://armin.emx.at/cddb/ https://metacpan.org/release/CDDB_get"
 
 SLOT="2"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"

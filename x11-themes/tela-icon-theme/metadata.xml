@@ -11,39 +11,9 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name="standard">Install standard folder version</flag>
-		<flag name="black">Install black folder version</flag>
-		<flag name="blue">Install blue folder version</flag>
-		<flag name="brown">Install bworn folder version</flag>
-		<flag name="green">Install green folder version</flag>
-		<flag name="grey">Install grey folder version</flag>
-		<flag name="orange">Install orange folder version</flag>
-		<flag name="pink">Install pink folder version</flag>
-		<flag name="purple">Install purple folder version</flag>
-		<flag name="red">Install red older version</flag>
-		<flag name="yellow">Install yellow folder version</flag>
-		<flag name="manjaro">Install manjaro folder version</flag>
-		<flag name="ubuntu">Install ubuntu folder version</flag>
-		<flag name="dracula">Install dracula folder version</flag>
-		<flag name="nord">Install nord folder version</flag>
 		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
 	</use>
 	<use lang="fr">
-		<flag name="standard">Installer la variante de couleur des dossiers standard</flag>
-		<flag name="black">Installer la variante de couleur des dossiers noire</flag>
-		<flag name="blue">Installer la variante de couleur des dossiers bleue</flag>
-		<flag name="brown">Installer la variante de couleur des dossiers marron</flag>
-		<flag name="green">Installer la variante de couleur des dossiers verte</flag>
-		<flag name="grey">Installer la variante de couleur des dossiers grise</flag>
-		<flag name="orange">Installer la variante de couleur des dossiers orange</flag>
-		<flag name="pink">Installer la variante de couleur des dossiers rose</flag>
-		<flag name="purple">Installer la variante de couleur des dossiers violette</flag>
-		<flag name="red">Installer la variante de couleur des dossiers rouge</flag>
-		<flag name="yellow">Installer la variante de couleur des dossiers jaune</flag>
-		<flag name="manjaro">Installer la variante de couleur des dossiers spécifique à Manjaro</flag>
-		<flag name="ubuntu">Installer la variante de couleur des dossiers spécifique à Ubuntu</flag>
-		<flag name="dracula">Installer la variante de couleur des dossiers spécifique à Dracula</flag>
-		<flag name="nord">Installer la variante de couleur des dossiers « nord »</flag>
 		<flag name="hardlink">Créer des liens durs pour les icônes doublons afin de grandement réduire la taille à l'installation</flag>
 	</use>
 	<upstream>

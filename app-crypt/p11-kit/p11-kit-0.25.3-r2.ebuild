@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit bash-completion-r1 meson-multilib python-any-r1
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/p11-glue/p11-kit/releases/download/${PV}/${P}.tar.xz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+libffi gtk-doc nls systemd test"
 RESTRICT="!test? ( test )"
 

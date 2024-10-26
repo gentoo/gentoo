@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/jakartaee/servlet/archive/${PV}-RELEASE.tar.gz -> ${
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="6"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-11:*"

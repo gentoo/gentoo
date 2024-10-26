@@ -12,7 +12,7 @@ SRC_URI="https://github.com/knu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 sparc x86"
 IUSE="wanderlust"
 
 RDEPEND="wanderlust? ( app-emacs/wanderlust )"

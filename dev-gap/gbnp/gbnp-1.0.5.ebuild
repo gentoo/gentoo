@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Compute Gröbner bases of noncommutative polynomials"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 IUSE="examples"
 
 gap-pkg_enable_tests

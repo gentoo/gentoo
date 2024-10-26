@@ -34,7 +34,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 
 LICENSE="openssl"
 SLOT="1.0.0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla tls-compression"
 
 RESTRICT="!bindist? ( bindist )
@@ -165,12 +165,6 @@ multilib_src_configure() {
 	#		ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
 	#	fi
 	#fi
-
-	# https://github.com/openssl/openssl/issues/2286
-	if use ia64 ; then
-		replace-flags -g3 -g2
-		replace-flags -ggdb3 -ggdb2
-	fi
 
 	local sslout=$(./gentoo.config)
 	einfo "Use configuration ${sslout:-(openssl knows best)}"

@@ -8,7 +8,7 @@ RUBY_FAKEGEM_EXTENSIONS=(src/ruby/ext/grpc/extconf.rb)
 RUBY_FAKEGEM_EXTRAINSTALL="etc src"
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
-inherit ruby-fakegem
+inherit multiprocessing ruby-fakegem
 
 DESCRIPTION="Send RPCs from Ruby using GRPC"
 HOMEPAGE="https://github.com/grpc/grpc"
@@ -22,6 +22,12 @@ ruby_add_rdepend "
 	dev-ruby/googleapis-common-protos-types:1
 	>=dev-ruby/google-protobuf-3.24.4
 "
+
+each_ruby_configure() {
+	export GRPC_RUBY_BUILD_PROCS="$(makeopts_jobs)"
+
+	each_fakegem_configure
+}
 
 each_ruby_install() {
 	# Remove all the "src" bits that are not needed

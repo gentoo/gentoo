@@ -13,7 +13,7 @@ HOMEPAGE="https://java.net/projects/swingx-ws/"
 SRC_URI="https://downloads.sourceforge.net/bt747/Development/${MY_P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="bt747"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 CP_DEPEND="
 	dev-java/jakarta-xml-soap-api:1

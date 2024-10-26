@@ -1,0 +1,60 @@
+Port upstream commit 337455eb3a66176cc3f66d2c663a72cc7b4178bd to 2.4.59.
+
+With 2.4.x, gentoo-infra saw crashes in nsscache during exit.
+This patch was later reverted upstream because it was not portable to AIX And
+was fixed in a different way in 2.5 & 2.6 releases.
+
+original https://github.com/openldap/openldap/commit/337455eb3a66176cc3f66d2c663a72cc7b4178bd
+revert: https://github.com/openldap/openldap/commit/5e13ef87a94491f9339dbca709db29e76741f1a9
+AIX discussion: https://bugs.openldap.org/show_bug.cgi?id=10176
+diff '--color=auto' -NuarwbB --exclude '*.rej' --exclude '*.orig' openldap-2.4.59.orig/libraries/libldap/init.c openldap-2.4.59/libraries/libldap/init.c
+--- openldap-2.4.59.orig/libraries/libldap/init.c	2021-06-03 11:40:31.000000000 -0700
++++ openldap-2.4.59/libraries/libldap/init.c	2024-08-24 11:15:06.727326650 -0700
+@@ -508,9 +508,6 @@
+ 		gopts->ldo_def_sasl_authcid = NULL;
+ 	}
+ #endif
+-#ifdef HAVE_TLS
+-	ldap_int_tls_destroy( gopts );
+-#endif
+ }
+
+ /*
+diff '--color=auto' -NuarwbB --exclude '*.rej' --exclude '*.orig' openldap-2.4.59.orig/libraries/libldap/tls2.c openldap-2.4.59/libraries/libldap/tls2.c
+--- openldap-2.4.59.orig/libraries/libldap/tls2.c	2024-08-24 11:14:46.910678897 -0700
++++ openldap-2.4.59/libraries/libldap/tls2.c	2024-08-24 11:15:38.103963402 -0700
+@@ -155,6 +155,14 @@
+ 	tls_imp->ti_tls_destroy();
+ }
+
++static void
++ldap_exit_tls_destroy( void )
++{
++	struct ldapoptions *lo = LDAP_INT_GLOBAL_OPT();
++
++	ldap_int_tls_destroy( lo );
++}
++
+ /*
+  * Initialize a particular TLS implementation.
+  * Called once per implementation.
+@@ -163,6 +171,7 @@
+ tls_init(tls_impl *impl )
+ {
+ 	static int tls_initialized = 0;
++	int rc;
+
+ 	if ( !tls_initialized++ ) {
+ #ifdef LDAP_R_COMPILE
+@@ -175,7 +184,10 @@
+ #ifdef LDAP_R_COMPILE
+ 	impl->ti_thr_init();
+ #endif
+-	return impl->ti_tls_init();
++	rc = impl->ti_tls_init();
++
++	atexit( ldap_exit_tls_destroy );
++	return rc;
+ }
+
+ /*

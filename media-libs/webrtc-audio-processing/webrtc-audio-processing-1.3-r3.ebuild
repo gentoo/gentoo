@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3-big-endian-support.patch"
 	"${FILESDIR}/${PN}-1.3-x86-no-sse.patch"
 	"${FILESDIR}/${PN}-1.3-musl.patch"
+	"${FILESDIR}/${PN}-1.3-gcc15-cstdint.patch"
 )
 
 DOCS=( AUTHORS NEWS README.md )

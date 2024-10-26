@@ -16,7 +16,7 @@ https://userbase.kde.org/Zanshin"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 RESTRICT="test" # bug 785844

@@ -34,7 +34,7 @@ else
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="BSD"
@@ -71,6 +71,11 @@ BDEPEND="
 	acct-user/murmur
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# fix build on musl, bug #888960
+	"${FILESDIR}"/murmur-1.5.634-remove-redundant-OpenSSL-locking-c.patch
+)
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="

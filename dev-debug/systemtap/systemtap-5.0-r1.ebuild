@@ -7,13 +7,13 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit autotools linux-info python-single-r1
 
-DESCRIPTION="A linux trace/probe tool"
-HOMEPAGE="https://www.sourceware.org/systemtap"
-SRC_URI="https://www.sourceware.org/ftp/${PN}/releases/${P}.tar.gz"
+DESCRIPTION="Linux trace/probe tool"
+HOMEPAGE="https://sourceware.org/systemtap/"
+SRC_URI="https://sourceware.org/ftp/${PN}/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="libvirt selinux sqlite +ssl test zeroconf"
 
 CDEPEND="

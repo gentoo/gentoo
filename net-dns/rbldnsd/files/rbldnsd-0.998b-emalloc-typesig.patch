@@ -1,0 +1,34 @@
+From 5ba62bded7e26a0a6f3877491c7f102b3cf67e5e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 4 Oct 2024 15:02:09 -0400
+Subject: [PATCH] mempool.c: fix type signature of emalloc()
+
+This file declares emalloc() as,
+
+  void *emalloc(unsigned size);
+
+whereas the actual implementation of emalloc in rbldnsd_util.c is,
+
+  char *emalloc(size_t size);
+
+The mismatch can cause problems for link-time optimization; in
+particular it causes a warning to be raised -Wlto-type-mismatch.
+On Gentoo, for example, we encourage users of LTO to build with
+that warning enabled and promoted to an error.
+---
+ mempool.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mempool.c b/mempool.c
+index 2abbf3a..dd0d733 100644
+--- a/mempool.c
++++ b/mempool.c
+@@ -18,7 +18,7 @@
+ #define alignto sizeof(void*)
+ #define alignmask (alignto-1)
+ 
+-void *emalloc(unsigned size);
++char *emalloc(size_t size);
+ 
+ #define MEMPOOL_CHUNKSIZE (65536-sizeof(unsigned)*4)
+ 

@@ -1,0 +1,17 @@
+commit f54a851586ff3762e0426ea9265ffb3499f93ad5
+Author: Adeodato Simó <dato@net.com.org.es>
+Date:   Sun Mar 1 14:10:15 2009 +0100
+
+    src/DownloadListCtrl.cpp: use xdg-open as default instead of mplayer.
+
+--- a/src/DownloadListCtrl.cpp
++++ b/src/DownloadListCtrl.cpp
+@@ -1429,7 +1429,7 @@ void CDownloadListCtrl::PreviewFile(CPar
+ 			_("File preview"), wxOK, this);
+ 		// Since newer versions for some reason mplayer does not automatically
+ 		// select video output device and needs a parameter, go figure...
+-		command = wxT("xterm -T \"aMule Preview\" -iconic -e mplayer ") QUOTE wxT("$file") QUOTE;
++		command = wxT("xterm -T \"aMule Preview\" -iconic -e xdg-open ") QUOTE wxT("$file") QUOTE;
+ 	} else {
+ 		command = thePrefs::GetVideoPlayer();
+ 	}

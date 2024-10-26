@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Lightweight cache with timed expiration"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~riscv sparc x86"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.27-no-dot-inc.patch"

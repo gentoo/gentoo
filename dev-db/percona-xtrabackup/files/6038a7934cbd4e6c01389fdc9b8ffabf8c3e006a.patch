@@ -1,0 +1,139 @@
+From 6038a7934cbd4e6c01389fdc9b8ffabf8c3e006a Mon Sep 17 00:00:00 2001
+From: Marcelo Altmann <marcelo.altmann@percona.com>
+Date: Tue, 20 Jun 2023 15:41:12 -0300
+Subject: [PATCH] Fixed PXB-2993 - make PXB compatible with procps-4
+
+Fixed Issue with procps version 4.
+Now we detect the version during cmake and use the correct library
+when linking xbtrabackup
+
+This also fixes PXB-3066 - Compilation issues on Debian 12
+---
+ cmake/procps.cmake                            | 32 +++++++++++++++++++
+ .../innobase/xtrabackup/src/CMakeLists.txt    | 10 ++++--
+ storage/innobase/xtrabackup/src/utils.cc      | 24 +++++++++++++-
+ 3 files changed, 62 insertions(+), 4 deletions(-)
+ create mode 100644 cmake/procps.cmake
+
+diff --git a/cmake/procps.cmake b/cmake/procps.cmake
+new file mode 100644
+index 000000000000..f463248c48eb
+--- /dev/null
++++ b/cmake/procps.cmake
+@@ -0,0 +1,32 @@
++# Copyright (c) 2023 Percona LLC and/or its affiliates
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; version 2 of the License.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA 
++
++MACRO (FIND_PROCPS)
++  FIND_FILE(PROCPS_INCLUDE_DIR NAMES proc/procps.h NO_CACHE)
++  IF (PROCPS_INCLUDE_DIR)
++    MESSAGE("-- Found proc/sysinfo.h in ${PROCPS_INCLUDE_DIR} Procps version 3.")
++    ADD_DEFINITIONS(-DHAVE_PROCPS_V3)
++    SET(PROCPS_VERSION "3")
++  ELSE()
++  FIND_FILE(PROCPS_INCLUDE_DIR NAMES libproc2/meminfo.h NO_CACHE)
++    IF (PROCPS_INCLUDE_DIR)
++      MESSAGE("-- Found libproc2/meminfo.h in ${PROCPS_INCLUDE_DIR}. Procps version 4.")
++      ADD_DEFINITIONS(-DHAVE_PROCPS_V4)
++      SET(PROCPS_VERSION "4")
++    ELSE()
++      MESSAGE(SEND_ERROR "Cannot find proc/sysinfo.h or libproc2/meminfo.h in ${PROCPS_INCLUDE_PATH}. You can pass it to CMake with -DPROCPS_INCLUDE_PATH=<path> or install procps-devel/procps-ng-devel/libproc2-dev package")
++    ENDIF()
++  ENDIF()
++ENDMACRO()
+diff --git a/storage/innobase/xtrabackup/src/CMakeLists.txt b/storage/innobase/xtrabackup/src/CMakeLists.txt
+index e3a1b9056536..68e33365a36b 100644
+--- a/storage/innobase/xtrabackup/src/CMakeLists.txt
++++ b/storage/innobase/xtrabackup/src/CMakeLists.txt
+@@ -14,12 +14,14 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+ 
+ INCLUDE(gcrypt)
++INCLUDE(procps)
+ 
+ OPTION(WITH_VERSION_CHECK "Build with version check" ON)
+ 
+ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/compile_flags.cmake)
+ 
+ FIND_GCRYPT()
++FIND_PROCPS()
+ 
+ CHECK_TYPE_SIZE("unsigned long" SIZEOF_UNSIGNED_LONG)
+ 
+@@ -134,9 +136,11 @@ TARGET_LINK_LIBRARIES(xtrabackup
+   )
+ 
+ IF(NOT APPLE)
+-  TARGET_LINK_LIBRARIES(xtrabackup
+-    procps
+-    )
++  IF(PROCPS_VERSION EQUAL 4)
++    TARGET_LINK_LIBRARIES(xtrabackup proc2)
++  ELSE()
++    TARGET_LINK_LIBRARIES(xtrabackup procps)
++  ENDIF()
+ ENDIF()
+ 
+  # We depend on protobuf because of the mysqlx plugin and replication.
+diff --git a/storage/innobase/xtrabackup/src/utils.cc b/storage/innobase/xtrabackup/src/utils.cc
+index 527d17d19d47..635b271b0ab1 100644
+--- a/storage/innobase/xtrabackup/src/utils.cc
++++ b/storage/innobase/xtrabackup/src/utils.cc
+@@ -23,8 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+ #include <mach/mach_host.h>
+ #include <sys/sysctl.h>
+ #else
++#ifdef HAVE_PROCPS_V3
+ #include <proc/sysinfo.h>
+-#endif
++#else
++#include <libproc2/meminfo.h>
++#endif                                     // HAVE_PROCPS_V3
++#endif                                     // __APPLE__
+ #include <boost/uuid/uuid.hpp>             // uuid class
+ #include <boost/uuid/uuid_generators.hpp>  // generators
+ #include <boost/uuid/uuid_io.hpp>          // streaming operators etc.
+@@ -141,13 +145,31 @@ unsigned long host_free_memory() {
+ }
+ #else
+ unsigned long host_total_memory() {
++#ifdef HAVE_PROCPS_V3
+   meminfo();
+   return kb_main_total * 1024;
++#else
++  struct meminfo_info *mem_info;
++  if (procps_meminfo_new(&mem_info) < 0) {
++    return 0;
++  }
++
++  return MEMINFO_GET(mem_info, MEMINFO_MEM_TOTAL, ul_int) * 1024;
++#endif  // HAVE_PROCPS_V3
+ }
+ 
+ unsigned long host_free_memory() {
++#ifdef HAVE_PROCPS_V3
+   meminfo();
+   return kb_main_available * 1024;
++#else
++  struct meminfo_info *mem_info;
++  if (procps_meminfo_new(&mem_info) < 0) {
++    return 0;
++  }
++
++  return MEMINFO_GET(mem_info, MEMINFO_MEM_AVAILABLE, ul_int) * 1024;
++#endif  // HAVE_PROCPS_V3
+ }
+ #endif
+ 

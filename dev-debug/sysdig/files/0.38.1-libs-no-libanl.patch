@@ -1,0 +1,21 @@
+
+Do not attempt to link against libanl on musl.
+
+Bug: https://bugs.gentoo.org/929907
+Bug: https://github.com/falcosecurity/libs/issues/1948
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- libs-0.17.2/userspace/libsinsp/CMakeLists.txt~	2024-06-14 11:38:50.000000000 +0200
++++ libs-0.17.2/userspace/libsinsp/CMakeLists.txt	2024-07-05 00:18:03.326406540 +0200
+@@ -258,8 +258,8 @@ if(NOT WIN32)
+ 			)
+ 
+ 			if(NOT MUSL_OPTIMIZED_BUILD)
+-				target_link_libraries(sinsp INTERFACE rt anl)
+-				list(APPEND SINSP_PKGCONFIG_LIBRARIES rt anl)
++				target_link_libraries(sinsp INTERFACE rt)
++				list(APPEND SINSP_PKGCONFIG_LIBRARIES rt)
+ 			endif()
+ 
+ 		else()

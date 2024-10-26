@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/941453
+https://github.com/nghttp2/nghttp2/issues/2253
+https://github.com/nghttp2/nghttp2/pull/2256
+https://github.com/nghttp2/nghttp2/commit/1ee4636528b1a8ea6769496750dda05f12104fa8
+
+From 1ee4636528b1a8ea6769496750dda05f12104fa8 Mon Sep 17 00:00:00 2001
+From: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+Date: Tue, 15 Oct 2024 19:25:12 +0900
+Subject: [PATCH] cmake: Fix c-ares v1.34.0 version detection failure
+
+--- a/cmake/FindLibcares.cmake
++++ b/cmake/FindLibcares.cmake
+@@ -17,12 +17,18 @@ find_library(LIBCARES_LIBRARY
+ )
+ 
+ if(LIBCARES_INCLUDE_DIR)
+-  set(_version_regex "^#define[ \t]+ARES_VERSION_STR[ \t]+\"([^\"]+)\".*")
+-  file(STRINGS "${LIBCARES_INCLUDE_DIR}/ares_version.h"
+-    LIBCARES_VERSION REGEX "${_version_regex}")
+-  string(REGEX REPLACE "${_version_regex}" "\\1"
+-    LIBCARES_VERSION "${LIBCARES_VERSION}")
+-  unset(_version_regex)
++  file(READ "${LIBCARES_INCLUDE_DIR}/ares_version.h" _ares_version_h)
++  string(REGEX REPLACE ".*#define[ \t]+ARES_VERSION_MAJOR[ \t]+([0-9]+).*" "\\1"
++    _ares_version_major ${_ares_version_h})
++  string(REGEX REPLACE ".*#define[ \t]+ARES_VERSION_MINOR[ \t]+([0-9]+).*" "\\1"
++    _ares_version_minor ${_ares_version_h})
++  string(REGEX REPLACE ".*#define[ \t]+ARES_VERSION_PATCH[ \t]+([0-9]+).*" "\\1"
++    _ares_version_patch ${_ares_version_h})
++  set(LIBCARES_VERSION "${_ares_version_major}.${_ares_version_minor}.${_ares_version_patch}")
++  unset(_ares_version_patch)
++  unset(_ares_version_minor)
++  unset(_ares_version_major)
++  unset(_ares_version_h)
+ endif()
+ 
+ include(FindPackageHandleStandardArgs)
+

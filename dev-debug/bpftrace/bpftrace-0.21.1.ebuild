@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="lldb test"
 
 # lots of fixing needed

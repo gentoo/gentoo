@@ -1,6 +1,34 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Viorel Munteanu <ceamac@gentoo.org> (2024-10-23)
+# Missing keywords on dev-python/asyncssh.
+net-misc/dropbear test
+
+# Michał Górny <mgorny@gentoo.org> (2024-10-23)
+# Debug-enabled binary packages are built for a subset of architectures.
+sys-kernel/gentoo-kernel-bin debug
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-10-10)
+# VirtualBox is amd64 only
+app-emulation/libvirt virtualbox
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-08-12)
+# Builds a amd vendored opencl runtime that causes collisions.
+# Hardly useful outside of maintainer testing. #934963, #936317
+dev-util/hip opencl
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-14)
+# Abandoned upstream, does not take bug reports, unsupported in Gentoo.
+# Only remaining use is as a requirement for dev-lang/go on arm{,64}.
+# See #934149, #934151, #936022, #936021
+sys-devel/binutils default-gold gold
+sys-devel/binutils-hppa64 default-gold gold
+
+# Zen <dev@pyl.onl> (2024-07-01)
+# UGRD is not keyworded everywhere yet
+sys-kernel/installkernel ugrd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which requires kde-apps/akonadi, which is as
 # part of the KDE PIM stack (big, requiring QtWebengine) only keyworded
@@ -44,10 +72,6 @@ app-admin/syslog-ng mqtt
 # Refind is only available on a subset of arches
 sys-kernel/installkernel refind
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/PyQt6 and dev-python/pyside6 have very few keywords
-dev-python/QtPy pyqt6 pyside6
-
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is only available on some arches
 app-emulation/libvirt virtiofsd
@@ -66,8 +90,8 @@ sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
-# Needs dev-qt/qtwebengine:6 which has very few keywords.
-dev-python/PyQt6 pdfium
+# dev-qt/qtwebengine:6 and dev-qt/qtremoteobjects:6 have few keywords.
+dev-python/PyQt6 pdfium remoteobjects
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
 # media-libs/libvpl is only keyworded for amd64 at this time.
@@ -211,7 +235,6 @@ dev-util/diffoscope haskell
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
-x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
@@ -236,7 +259,7 @@ sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
 sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
 sys-libs/compiler-rt-sanitizers libfuzzer memprof orc profile xray
-sys-libs/compiler-rt-sanitizers ctx-profile
+sys-libs/compiler-rt-sanitizers ctx-profile nsan rtsan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -295,11 +318,6 @@ sys-firmware/seabios debug
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream tarballs for tier-2 arches do not ship docs
 dev-lang/rust-bin doc
-
-# Craig Andrews <candrews@gentoo.org> (2019-07-03)
-# Raspberry Pi support is only available on arm.
-# Mask raspberry-pi USE globally, unmask on arm.
-media-tv/kodi raspberry-pi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # mask here and unmask in profiles for specific arches
@@ -391,7 +409,6 @@ sys-boot/grub:2 grub_platforms_xen-32
 # Mask it globally, unmask it on arm.
 media-video/motion mmal
 media-video/ffmpeg mmal
-media-video/ffmpeg-chromium mmal
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

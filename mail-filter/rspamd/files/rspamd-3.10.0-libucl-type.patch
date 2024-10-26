@@ -1,0 +1,36 @@
+From 3041484f859f3d8cc2275c5189280c31ff3ffeda Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Wed, 2 Oct 2024 15:01:07 +0200
+Subject: [PATCH] [Fix] Use correct type for keylen in lua_ucl_newindex
+
+The keylen variable used in lua_ucl_newindex function should use size_t
+type instead of lua_Integer, because all functions that use keylen
+expect it to be of size_t type. This mismatch leads to incompatible
+pointer types, and modern versions of GCC fail to compile the code.
+
+Fixes: 9e87597ceb05 ("[Project] Allow manipulations with opaque UCL objects")
+Issue: https://github.com/rspamd/rspamd/issues/5163
+PR: https://github.com/rspamd/rspamd/pull/5169
+
+diff --git a/contrib/libucl/lua_ucl.c b/contrib/libucl/lua_ucl.c
+index 19ac9cb127..473aefe0cf 100644
+--- a/contrib/libucl/lua_ucl.c
++++ b/contrib/libucl/lua_ucl.c
+@@ -1426,7 +1426,7 @@ lua_ucl_newindex(lua_State *L)
+ 
+ 	if (ucl_object_type(obj) == UCL_OBJECT) {
+ 		if (key_type == LUA_TSTRING) {
+-			lua_Integer keylen;
++			size_t keylen;
+ 			const char *key = lua_tolstring(L, 2, &keylen);
+ 
+ 			ucl_object_t *value_obj = lua_ucl_object_get(L, 3);
+@@ -1539,7 +1539,7 @@ lua_ucl_newindex(lua_State *L)
+ 			obj->value.av = NULL;
+ 			obj->type = UCL_OBJECT;
+ 
+-			lua_Integer keylen;
++			size_t keylen;
+ 			const char *key = lua_tolstring(L, 2, &keylen);
+ 
+ 			ucl_object_t *value_obj = lua_ucl_object_get(L, 3);

@@ -39,6 +39,11 @@ DEPEND="
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/cython[${PYTHON_USEDEP}]
+		test? (
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+			media-libs/libpulse
+			>=net-misc/networkmanager-0.8[introspection]
+		)
 	')
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -79,6 +84,8 @@ RDEPEND="
 		)
 	)
 "
+
+distutils_enable_tests unittest
 
 pkg_pretend() {
 	if use network; then
@@ -125,6 +132,27 @@ python_configure() {
 
 python_compile() {
 	default
+}
+
+python_test() {
+	local -x PYTHONPATH=module/.libs
+
+	if [[ ! -f /dev/rfkill ]]; then
+		# Tests attempt to import these modules if present, but they
+		# require /dev/rfkill.  Hide them to make the tests pass.
+		mv blueman/plugins/mechanism/RfKill.py{,~} || die
+		mv blueman/plugins/applet/KillSwitch.py{,~} || die
+	fi
+
+	local failed=
+	nonfatal eunittest || failed=1
+
+	if [[ ! -f /dev/rfkill ]]; then
+		mv blueman/plugins/mechanism/RfKill.py{~,} || die
+		mv blueman/plugins/applet/KillSwitch.py{~,} || die
+	fi
+
+	[[ ${failed} ]] && die "Tests failed with ${EPYTHON}"
 }
 
 python_install() {

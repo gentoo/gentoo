@@ -1,0 +1,33 @@
+{
+    "description": "UEFI for arm64 VMs, with *INSECURE* SB, SB enabled, MS certs enrolled",
+    "interface-types": [
+        "uefi"
+    ],
+    "mapping": {
+        "device": "flash",
+        "mode" : "split",
+        "executable": {
+            "filename": "/usr/share/edk2/ArmVirtQemu-AARCH64/QEMU_EFI.secboot_INSECURE.qcow2",
+            "format": "qcow2"
+        },
+        "nvram-template": {
+            "filename": "/usr/share/edk2/ArmVirtQemu-AARCH64/QEMU_VARS.secboot_INSECURE.qcow2",
+            "format": "qcow2"
+        }
+    },
+    "targets": [
+        {
+            "architecture": "aarch64",
+            "machines": [
+                "virt-*"
+            ]
+        }
+    ],
+    "features": [
+        "enrolled-keys",
+        "secure-boot"
+    ],
+    "tags": [
+
+    ]
+}

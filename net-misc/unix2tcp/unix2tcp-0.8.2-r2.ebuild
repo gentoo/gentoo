@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ~s390 x86"
+KEYWORDS="amd64 arm ~hppa ppc ~s390 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch

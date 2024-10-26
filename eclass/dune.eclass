@@ -19,7 +19,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_DUNE_ECLASS} ]]; then
+if [[ -z ${_DUNE_ECLASS} ]]; then
 _DUNE_ECLASS=1
 
 # @ECLASS_VARIABLE: DUNE_PKG_NAME
@@ -55,7 +55,7 @@ BDEPEND="
 # edune clean
 # @CODE
 edune() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	edo dune "${@}"
 }
@@ -74,7 +74,7 @@ edune() {
 # dune-release build --target @install menhir menhirLib menhirSdk
 # @CODE
 dune-release() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local subcommand
 	local target
@@ -120,7 +120,7 @@ dune-release() {
 # dune-compile menhir menhirLib menhirSdk
 # @CODE
 dune-compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	dune-release build --target @install "${@}"
 }
@@ -135,7 +135,7 @@ dune-compile() {
 # dune-test menhir menhirLib menhirSdk
 # @CODE
 dune-test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	dune-release runtest "${@}"
 }
@@ -159,7 +159,7 @@ dune_src_test() {
 # dune-install menhir menhirLib menhirSdk
 # @CODE
 dune-install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local -a pkgs=( "${@}" )
 

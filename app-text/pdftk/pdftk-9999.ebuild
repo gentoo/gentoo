@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/pdftk-${PV}"
 else
 	SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/v${PV}/pdftk-v${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/pdftk-v${PV}"
 fi
 

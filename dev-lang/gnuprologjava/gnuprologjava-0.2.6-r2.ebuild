@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/gnuprologjava/${P}-src.zip"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND="dev-java/java-getopt:1"

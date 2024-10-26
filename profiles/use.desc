@@ -94,7 +94,6 @@ fltk - Add support for the Fast Light Toolkit gui interface
 fontconfig - Support for configuring and customizing font access via media-libs/fontconfig
 fortran - Add support for fortran
 freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
-freewnn - Add support for FreeWnn kana to kanji conversion engine
 ftp - Add FTP (File Transfer Protocol) support
 gd - Add support for media-libs/gd (to generate graphics on the fly)
 gdbm - Add support for sys-libs/gdbm (GNU database libraries)

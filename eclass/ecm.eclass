@@ -84,8 +84,8 @@ fi
 
 # @ECLASS_VARIABLE: ECM_HANDBOOK
 # @DESCRIPTION:
-# Will accept "true", "false", "optional", "forceoptional". If set to "false",
-# do nothing.
+# Will accept "true", "false", "optional", "forceoptional", "forceoff".
+# If set to "false" (default), do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and let
 # KF${_KFSLOT}DocTools generate and install the handbook from docbook file(s)
 # found in ECM_HANDBOOK_DIR. However if !handbook, disable build of
@@ -121,6 +121,15 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${ECM_QTHELP:=true}"
 fi
 : "${ECM_QTHELP:=false}"
+
+# @ECLASS_VARIABLE: ECM_REMOVE_FROM_INSTALL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of <paths> to remove from install image.
+if [[ ${ECM_REMOVE_FROM_INSTALL} ]]; then
+	[[ ${ECM_REMOVE_FROM_INSTALL@a} == *a* ]] ||
+		die "ECM_REMOVE_FROM_INSTALL must be an array"
+fi
 
 # @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
@@ -233,7 +242,7 @@ case ${ECM_HANDBOOK} in
 		IUSE+=" +handbook"
 		BDEPEND+=" handbook? ( >=kde-frameworks/kdoctools-${KFMIN}:${_KFSLOT} )"
 		;;
-	false) ;;
+	false|forceoff) ;;
 	*)
 		eerror "Unknown value for \${ECM_HANDBOOK}"
 		die "Value ${ECM_HANDBOOK} is not supported"
@@ -446,6 +455,25 @@ ecm_punt_bogus_dep() {
 	fi
 }
 
+# @FUNCTION: _ecm_punt_kdoctools_install
+# @INTERNAL
+# @DESCRIPTION:
+# Disables kdoctools_install(po) call.
+_ecm_punt_kdoctools_install() {
+	sed -e "s/^ *kdoctools_install.*(po.*)/#& # disabled by ecm.eclass/" \
+		-i CMakeLists.txt || die
+}
+
+# @FUNCTION: ecm_punt_po_install
+# @DESCRIPTION:
+# Disables handling of po subdirectories, typically when the package
+# is outsourcing common files to a ${PN}-common split package.
+ecm_punt_po_install() {
+	_ecm_punt_kdoctools_install
+	sed -e "s/^ *ki18n_install.*(po.*)/#& # disabled by ecm.eclass/" \
+		-i CMakeLists.txt || die
+}
+
 # @FUNCTION: ecm_pkg_pretend
 # @DESCRIPTION:
 # Checks if the active compiler meets the minimum version requirements.
@@ -478,13 +506,16 @@ ecm_src_prepare() {
 	fi
 
 	# only enable handbook when required
-	if in_iuse handbook && ! use handbook ; then
+	if [[ ${ECM_HANDBOOK} == forceoff ]] ||
+		{ [[ ${ECM_HANDBOOK} = forceoptional ]] && in_iuse handbook && ! use handbook; }
+	then
+		ecm_punt_kf_module DocTools
+		_ecm_punt_kdoctools_install
+	fi
+	if [[ ${ECM_HANDBOOK} == forceoff ]] ||
+		{ in_iuse handbook && ! use handbook; }
+	then
 		cmake_comment_add_subdirectory ${ECM_HANDBOOK_DIR}
-
-		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
-			ecm_punt_kf_module DocTools
-			sed -i -e "/kdoctools_install/I s/^/#DONT/" CMakeLists.txt || die
-		fi
 	fi
 
 	# drop translations when nls is not wanted
@@ -649,14 +680,17 @@ ecm_src_test() {
 # Wrapper for cmake_src_install. Drops executable bit from .desktop files
 # installed inside /usr/share/applications. This is set by cmake when install()
 # is called in PROGRAM form, as seen in many kde.org projects.
+# In case kde.org.eclass is detected, in case KDE_ORG_NAME != PN, tries real
+# hard to detect, then rename, metainfo.xml appdata files to something unique
+# including SLOT if else than "0" (basically KDE_ORG_NAME -> PN+SLOT).
 ecm_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake_src_install
 
+	local f
 	# bug 621970
 	if [[ -d "${ED}"/usr/share/applications ]]; then
-		local f
 		for f in "${ED}"/usr/share/applications/*.desktop; do
 			if [[ -x ${f} ]]; then
 				einfo "Removing executable bit from ${f#${ED}}"
@@ -664,6 +698,37 @@ ecm_src_install() {
 			fi
 		done
 	fi
+
+	mv_metainfo() {
+		if [[ -f ${1} ]]; then
+			mv -v ${1} ${1/${2}/${3}} || die
+		fi
+	}
+
+	if [[ -n ${_KDE_ORG_ECLASS} && -d "${ED}"/usr/share/metainfo/ ]]; then
+		if [[ ${KDE_ORG_NAME} != ${PN} ]]; then
+			local ecm_metainfo
+			pushd "${ED}"/usr/share/metainfo/ > /dev/null || die
+			for ecm_metainfo in find * -type f -iname "*metainfo.xml"; do
+				case ${ecm_metainfo} in
+					*${KDE_ORG_NAME}*)
+						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME} ${PN}${SLOT/0*/}
+						;;
+					*${KDE_ORG_NAME/-/_}*)
+						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME/-/_} ${PN}${SLOT/0*/}
+						;;
+					org.kde.*)
+						mv_metainfo ${ecm_metainfo} "org.kde." "org.kde.${PN}${SLOT/0*/}-"
+						;;
+				esac
+			done
+			popd > /dev/null || die
+		fi
+	fi
+
+	for f in "${ECM_REMOVE_FROM_INSTALL[@]}"; do
+		rm -r "${ED}"${f} || die
+	done
 }
 
 # @FUNCTION: ecm_pkg_preinst

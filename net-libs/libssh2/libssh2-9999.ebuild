@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake-multilib git-r3
 
 DESCRIPTION="Library implementing the SSH2 protocol"
-HOMEPAGE="https://www.libssh2.org"
+HOMEPAGE="https://libssh2.org"
 EGIT_REPO_URI="https://github.com/libssh2/libssh2"
 
 LICENSE="BSD"
@@ -26,7 +26,9 @@ RDEPEND="
 	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.0-mansyntax_sh.patch
@@ -42,11 +44,10 @@ multilib_src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_STATIC_LIBS=OFF
 		-DBUILD_TESTING=$(usex test)
 		-DCRYPTO_BACKEND=${crypto_backend}
 		-DENABLE_ZLIB_COMPRESSION=$(usex zlib)
-		-DRUN_SSHD_TESTS=OFF
-		-DRUN_DOCKER_TESTS=OFF
 	)
 
 	if use test ; then

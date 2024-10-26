@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="A decoder for yENC format, popular on Usenet"
 HOMEPAGE="https://yydecode.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/yydecode/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ppc ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.10-fix-strcmp-not-found.patch
@@ -19,7 +19,11 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -e "s/t3.sh//" -e "s/t7.sh//" -i checks/Makefile.in || die
+
+	# https://bugs.gentoo.org/277307
+	sed -e "s/t3.sh//" -e "s/t7.sh//" -i checks/Makefile.in checks/Makefile.am || die
+
+	eautoreconf
 }
 
 src_configure() {

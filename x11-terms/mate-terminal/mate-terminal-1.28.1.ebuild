@@ -28,7 +28,7 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
-	>=mate-base/mate-desktop-1.28.0
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	virtual/libintl
 "
 

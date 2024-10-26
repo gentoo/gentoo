@@ -5,11 +5,15 @@
 		<email>gio@eigenlab.org</email>
 		<name>Gioacchino Mazzurco</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>fkobi@pm.me</email>
+		<name>Filip Kobierski</name>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription lang="en">
+	<longdescription>
 		RetroShare is a Free and Open Source cross-platform, Friend-2-Friend
 		secure decentralised communication platform.
 		It lets you to securely chat and share files with your friends, family
@@ -28,6 +32,8 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/RetroShare/RetroShare/issues</bugs-to>
+		<!-- NOTE: for core functionalities check cout RetroShare/libretroshare -->
+		<doc>https://retrosharedocs.readthedocs.io/en/latest/</doc>
 		<remote-id type="github">RetroShare/RetroShare</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,76 @@
+From e154822aeec19cb790f8618ee740875c048859e4 Mon Sep 17 00:00:00 2001
+Message-ID: <e154822aeec19cb790f8618ee740875c048859e4.1728191717.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 15 Dec 2022 14:55:10 +0100
+Subject: [PATCH 02/10] C99 compatibility fix
+
+I researched this quite a bit, and this approach seems to be the least
+bad option.
+
+Future compilers are likely to require functions to be declared before
+they can be called.  The flex lexer generator can be taught to create a
+header file with the required declarations.  However, automake conspires
+against us to use it during the build.  So I extracted the relevant
+declarations by hand and put it into a non-generated header file.  At
+least the declarations are checked against the definitions in
+rec-sex-lex.c, so maybe it's not too bad after all.
+
+Related to:
+
+  <https://fedoraproject.org/wiki/Changes/PortingToModernC>
+  <https://fedoraproject.org/wiki/Toolchain/PortingToModernC>
+---
+ src/rec-sex-lex.l    | 2 +-
+ src/rec-sex-parser.c | 2 +-
+ src/rec-sex-tab.y    | 2 +-
+ 4 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/rec-sex-lex.l b/src/rec-sex-lex.l
+index 1e537bf..2d4a891 100644
+--- a/src/rec-sex-lex.l
++++ b/src/rec-sex-lex.l
+@@ -26,12 +26,12 @@
+ %option bison-bridge
+ %option extra-type="void *"
+ 
+-%option header-file="rec-sex-lex.h"
+ %option nounput
+ %option noinput
+ %top {
+    /* This code goes at the "top" of the generated file.  */
+    #include <config.h>
++   #include "rec-sex-lex.h"
+ }
+ 
+ %{
+diff --git a/src/rec-sex-parser.c b/src/rec-sex-parser.c
+index e5bcd33..4eb188a 100644
+--- a/src/rec-sex-parser.c
++++ b/src/rec-sex-parser.c
+@@ -25,7 +25,7 @@
+ 
+ #include <rec-sex-parser.h>
+ #include "rec-sex-tab.h"
+-/*#include "rec-sex-lex.h" */
++#include "rec-sex-lex.h"
+ 
+ struct rec_sex_parser_s
+ {
+diff --git a/src/rec-sex-tab.y b/src/rec-sex-tab.y
+index 6c31edd..f011bc4 100644
+--- a/src/rec-sex-tab.y
++++ b/src/rec-sex-tab.y
+@@ -33,7 +33,7 @@
+   #include <rec-sex-ast.h>
+   #include <rec-sex-parser.h>
+   #include "rec-sex-tab.h"
+-  /*  #include "rec-sex-lex.h" */
++  #include "rec-sex-lex.h"
+ 
+   void sexerror (rec_sex_parser_t context, const char *err)
+   {
+-- 
+2.46.2
+

@@ -22,10 +22,6 @@ www-client/firefox -screencast
 # altivec code is big-endian only, #773100
 media-libs/libdvbcsa cpu_flags_ppc_altivec
 
-# Michał Górny <mgorny@gentoo.org> (2021-03-06)
-# LLVM 9 has been removed.
-dev-util/perf clang
-
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Additional sanitizers supported on ppc64le.
 sys-libs/compiler-rt-sanitizers -xray

@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="EPL-1.0"
 SLOT="2"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 CDEPEND="dev-java/jakarta-activation-api:1"
 DEPEND="${CDEPEND}

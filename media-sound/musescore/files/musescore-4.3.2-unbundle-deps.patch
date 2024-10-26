@@ -1,0 +1,48 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,7 +188,7 @@ if (MUE_BUILD_UNIT_TESTS)
+         FULL_DOCS "List XML files outputted by google test."
+     )
+ 
+-    add_subdirectory(thirdparty/googletest)
++    find_package(GTest REQUIRED)
+ endif(MUE_BUILD_UNIT_TESTS)
+ 
+ add_subdirectory(share)
+--- a/src/framework/audio/CMakeLists.txt
++++ b/src/framework/audio/CMakeLists.txt
+@@ -268,10 +268,10 @@ if (MUE_ENABLE_AUDIO_EXPORT)
+         ${CMAKE_CURRENT_LIST_DIR}/internal/soundtracks/soundtrackwriter.h
+         )
+ 
+-    add_subdirectory(${PROJECT_SOURCE_DIR}/thirdparty/lame lame)
++    pkg_check_modules(lame REQUIRED IMPORTED_TARGET lame)
+     set(MODULE_LINK
+         ${MODULE_LINK}
+-        lame
++        PkgConfig::lame
+     )
+     if (MUE_COMPILE_USE_SYSTEM_OPUSENC)
+         pkg_check_modules(libopusenc REQUIRED IMPORTED_TARGET libopusenc)
+--- a/src/framework/audio/internal/encoders/mp3encoder.cpp
++++ b/src/framework/audio/internal/encoders/mp3encoder.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include "mp3encoder.h"
+ 
+-#include "lame.h"
++#include "lame/lame.h"
+ 
+ using namespace mu;
+ using namespace mu::audio;
+--- a/src/framework/testing/gtest.cmake
++++ b/src/framework/testing/gtest.cmake
+@@ -60,7 +60,7 @@ find_package(Qt5 COMPONENTS Core Gui REQUIRED)
+ target_link_libraries(${MODULE_TEST}
+     Qt5::Core
+     Qt5::Gui
+-    gmock
++    GTest::gmock
+     global
+     ${MODULE_TEST_LINK}
+     )

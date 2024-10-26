@@ -21,7 +21,7 @@ SRC_URI="https://github.com/Snaipe/Criterion/archive/refs/tags/v${PV}.tar.gz -> 
 S="${WORKDIR}/Criterion-${PV}"
 LICENSE="BSD-2 MIT ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

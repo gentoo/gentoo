@@ -1,0 +1,83 @@
+diff '--color=auto' -ur accerciser-3.42.0.orig/plugins/validate.py accerciser-3.42.0/plugins/validate.py
+--- accerciser-3.42.0.orig/plugins/validate.py	2024-07-15 20:46:50.173168139 +0200
++++ accerciser-3.42.0/plugins/validate.py	2024-07-15 20:50:07.974258909 +0200
+@@ -20,7 +20,7 @@
+ import traceback
+ import sys
+ import glob
+-import imp
++import importlib
+ import webbrowser
+ from accerciser.plugin import ViewportPlugin
+ from accerciser.i18n import _, N_, DOMAIN
+@@ -68,16 +68,18 @@
+     '''
+     for path in [USER_SCHEMA_PATH, SYS_SCHEMA_PATH]:
+       for fn in glob.glob(os.path.join(path, '*.py')):
+-        module = os.path.basename(fn)[:-3]
+-        params = imp.find_module(module, [path])
+-        schema = imp.load_module(module, *params)
++        module_name = os.path.basename(fn)[:-3]
++        spec = importlib.util.spec_from_file_location(module_name, fn)
++        module = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(module)
++
+         try:
+           # try to get descriptive fields from the module
+-          SCHEMA_METADATA[module] = schema.__metadata__
++          SCHEMA_METADATA[module_name] = module.__metadata__
+         except AttributeError:
+           # default to usinf file name as description
+-          SCHEMA_METADATA[module] = {'name' : module,
+-                                        'description' : _('No description')}
++          SCHEMA_METADATA[module_name] = {'name' : module,
++                                          'description' : _('No description')}
+       
+   @staticmethod
+   def getValidators(name):
+diff '--color=auto' -ur accerciser-3.42.0.orig/pyreqs.py accerciser-3.42.0/pyreqs.py
+--- accerciser-3.42.0.orig/pyreqs.py	2024-07-15 20:46:50.170168156 +0200
++++ accerciser-3.42.0/pyreqs.py	2024-07-15 20:50:27.235354799 +0200
+@@ -11,7 +11,7 @@
+ this distribution, and is available at 
+ U{http://www.opensource.org/licenses/bsd-license.php}
+ '''
+-import sys, os, imp
++import sys, os
+ 
+ PYGTK_REQ = '2.0'
+ PYATSPI_REQ = (2, 23, 3)
+Sólo en accerciser-3.42.0: pyreqs.py.orig
+diff '--color=auto' -ur accerciser-3.42.0.orig/src/lib/accerciser/plugin/plugin_manager.py accerciser-3.42.0/src/lib/accerciser/plugin/plugin_manager.py
+--- accerciser-3.42.0.orig/src/lib/accerciser/plugin/plugin_manager.py	2024-07-15 20:46:50.169168161 +0200
++++ accerciser-3.42.0/src/lib/accerciser/plugin/plugin_manager.py	2024-07-15 20:47:28.027960768 +0200
+@@ -23,7 +23,7 @@
+ from .message import MessageManager
+ import os
+ import sys
+-import imp
++import importlib
+ import traceback
+ from accerciser.i18n import _, N_, C_
+ 
+@@ -136,8 +136,7 @@
+     '''
+     sys.path.insert(0, plugin_dir)
+     try:
+-      params = imp.find_module(plugin_fn, [plugin_dir])
+-      plugin = imp.load_module(plugin_fn, *params)
++      plugin = importlib.import_module(plugin_fn)
+       plugin_locals = plugin.__dict__
+     except Exception as e:
+       self.message_manager.newModuleError(plugin_fn, plugin_dir,
+diff '--color=auto' -ur accerciser-3.42.0.orig/src/lib/accerciser/plugin/view.py accerciser-3.42.0/src/lib/accerciser/plugin/view.py
+--- accerciser-3.42.0.orig/src/lib/accerciser/plugin/view.py	2024-07-15 20:46:50.170168156 +0200
++++ accerciser-3.42.0/src/lib/accerciser/plugin/view.py	2024-07-15 20:47:28.028960763 +0200
+@@ -20,7 +20,6 @@
+ from .message import MessageManager
+ import os
+ import sys
+-import imp
+ from accerciser.i18n import _, N_
+ import gc
+ from accerciser import ui_manager

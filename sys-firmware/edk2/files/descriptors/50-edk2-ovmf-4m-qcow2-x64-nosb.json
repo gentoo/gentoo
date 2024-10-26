@@ -1,0 +1,36 @@
+{
+    "description": "OVMF for x86_64, without SB+SMM, empty varstore",
+    "interface-types": [
+        "uefi"
+    ],
+    "mapping": {
+        "device": "flash",
+        "mode" : "split",
+        "executable": {
+            "filename": "/usr/share/edk2/OvmfX64/OVMF_CODE_4M.qcow2",
+            "format": "qcow2"
+        },
+        "nvram-template": {
+            "filename": "/usr/share/edk2/OvmfX64/OVMF_VARS_4M.qcow2",
+            "format": "qcow2"
+        }
+    },
+    "targets": [
+        {
+            "architecture": "x86_64",
+            "machines": [
+                "pc-i440fx-*",
+                "pc-q35-*"
+            ]
+        }
+    ],
+    "features": [
+        "acpi-s3",
+        "amd-sev",
+        "amd-sev-es",
+        "verbose-dynamic"
+    ],
+    "tags": [
+
+    ]
+}

@@ -19,18 +19,18 @@ fi
 
 LICENSE="GPL-2"
 SLOT="4"
-IUSE="+configuration_tool"
+IUSE="+configuration-tool"
 
 BDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/pkgconfig
-	configuration_tool? (
+	configuration-tool? (
 		dev-qt/qtcore:5
 		dev-qt/qtwidgets:5
 	)"
 DEPEND=">=app-i18n/fcitx-4.2.9:4
 	<app-i18n/librime-1.9.0:=
 	virtual/libintl
-	configuration_tool? (
+	configuration-tool? (
 		>=app-i18n/fcitx-qt5-1.1:4
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -39,14 +39,14 @@ DEPEND=">=app-i18n/fcitx-4.2.9:4
 RDEPEND="${DEPEND}
 	app-i18n/rime-data"
 DEPEND="${DEPEND}
-	configuration_tool? ( dev-qt/qtconcurrent:5 )"
+	configuration-tool? ( dev-qt/qtconcurrent:5 )"
 
 DOCS=()
 
 src_configure() {
 	local mycmakeargs=(
 		-DRIME_DATA_DIR="${EPREFIX}/usr/share/rime-data"
-		-DENABLE_QT5GUI=$(usex configuration_tool)
+		-DENABLE_QT5GUI=$(usex configuration-tool)
 	)
 
 	cmake_src_configure

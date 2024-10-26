@@ -1,0 +1,12 @@
+https://github.com/fcitx/fcitx5/pull/1119
+
+--- a/src/lib/fcitx-utils/inputbuffer.h
++++ b/src/lib/fcitx-utils/inputbuffer.h
+@@ -7,6 +7,7 @@
+ #ifndef _FCITX_UTILS_INPUTBUFFER_H_
+ #define _FCITX_UTILS_INPUTBUFFER_H_
+ 
++#include <cstdint>
+ #include <cstring>
+ #include <memory>
+ #include <string>

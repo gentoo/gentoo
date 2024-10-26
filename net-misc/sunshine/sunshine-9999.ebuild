@@ -52,7 +52,7 @@ DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda debug libdrm svt-av1 trayicon vaapi wayland X x264 x265"
+IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi wayland X x264 x265"
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
@@ -140,7 +140,7 @@ CDEPEND="
 		sys-libs/libcap
 		x11-libs/libdrm
 	)
-	svt-av1? ( media-libs/svt-av1 )
+	svt-av1? ( media-libs/svt-av1:= )
 	trayicon? (
 		dev-libs/libayatana-appindicator
 		x11-libs/libnotify
@@ -236,10 +236,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Apply CBS patch.
-	cd "${WORKDIR}"/build-deps || die
-	eapply "${FILESDIR}"/${PN}-cross-cbs.patch
-
 	# Apply general ffmpeg patches.
 	cd "${WORKDIR}"/build-deps/ffmpeg_sources/ffmpeg || die
 	eapply "${WORKDIR}"/build-deps/ffmpeg_patches/ffmpeg/*.patch
@@ -338,6 +334,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DBOOST_USE_STATIC=no
+		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=yes
@@ -352,9 +349,9 @@ src_configure() {
 		-DSUNSHINE_ENABLE_TRAY=$(usex trayicon)
 		-DSUNSHINE_REQUIRE_TRAY=$(usex trayicon)
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
-		-DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir)
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
+	use systemd && mycmakeargs+=( -DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir) )
 	[[ ${PV} = 9999* ]] || mycmakeargs+=( -DNPM="${BROOT}"/bin/true )
 	CMAKE_USE_DIR="${S}" cmake_src_configure
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit verify-sig
 
 DESCRIPTION="Extract and concatenate portions of pcap files"
-HOMEPAGE="http://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpslice"
+HOMEPAGE="https://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpslice"
 SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz
 	verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig )"
 

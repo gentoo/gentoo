@@ -33,7 +33,7 @@ else
 			)
 		)"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 ~arm64 -x86"
 	LANGS=" cs de es fi fr hu it ja nl pl pt-BR ru sl sq uk zh-CN zh-TW"
 fi
 
@@ -92,7 +92,7 @@ DEPEND="dev-db/sqlite:3
 	openexr? ( media-libs/openexr:= )
 	webp? ( media-libs/libwebp:= )"
 RDEPEND="${DEPEND}
-	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
+	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1:* )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch

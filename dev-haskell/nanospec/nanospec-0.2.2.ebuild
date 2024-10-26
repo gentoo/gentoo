@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/hspec/nanospec#readme"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-lang/ghc-8.4.3:=

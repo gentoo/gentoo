@@ -16,7 +16,6 @@
 		<flag name="cpuinfo">Enable the cpuinfo plugin.</flag>
 		<flag name="dbus">Enable the dbus plugin.</flag>
 		<flag name="diskstats">Enable the diskstats plugin.</flag>
-		<flag name="dmalloc">Enable dmalloc for debugging.</flag>
 		<flag name="dvb">Enable support for the DVB plugin.</flag>
 		<flag name="event">Enable the event plugin.</flag>
 		<flag name="exec">Enable the exec plugin, to read output from external programs.</flag>

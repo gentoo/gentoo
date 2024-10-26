@@ -1,0 +1,31 @@
+--- a/src/dune	2024-10-20 18:15:24.137632115 +0200
++++ b/src/dune	2024-10-20 18:15:39.144450132 +0200
+@@ -2,5 +2,5 @@
+   (name tiny_httpd)
+   (public_name tiny_httpd)
+   (flags :standard -open Tiny_httpd_core)
+-  (libraries threads seq unix hmap tiny_httpd.core tiny_httpd.html
++  (libraries threads unix hmap tiny_httpd.core tiny_httpd.html
+              tiny_httpd.unix))
+--- a/src/core/dune	2024-10-21 12:06:33.365496763 +0200
++++ b/src/core/dune	2024-10-21 12:06:48.673307538 +0200
+@@ -3,7 +3,7 @@
+   (name tiny_httpd_core)
+   (public_name tiny_httpd.core)
+   (private_modules parse_ common_)
+-  (libraries threads seq hmap iostream
++  (libraries threads hmap iostream
+              (select log.ml from
+               (logs -> log.logs.ml)
+               (-> log.default.ml))))
+--- a/src/html/dune	2024-10-21 12:07:25.727849443 +0200
++++ b/src/html/dune	2024-10-21 12:07:39.004685307 +0200
+@@ -4,7 +4,7 @@
+   (name tiny_httpd_html)
+   (public_name tiny_httpd.html)
+   (flags :standard -open Tiny_httpd_core)
+-  (libraries seq tiny_httpd.core))
++  (libraries tiny_httpd.core))
+ 
+ (rule
+  (targets html_.ml)

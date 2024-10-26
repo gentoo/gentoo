@@ -13,18 +13,18 @@ if [[ ${PV} =~ ^9{4,}$ ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/OpenRC/openrc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash caps debug pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
+IUSE="audit bash debug pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
 
 COMMON_DEPEND="
+	sys-libs/libcap
+	sys-process/psmisc
 	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
-	caps? ( sys-libs/libcap )
-	sys-process/psmisc
 	selinux? (
 		sys-apps/policycoreutils
 		>=sys-libs/libselinux-2.6
@@ -52,14 +52,14 @@ PDEPEND="netifrc? ( net-misc/netifrc )"
 
 src_configure() {
 	local emesonargs=(
+	--bindir=/bin
+	--sbindir=/sbin
 		$(meson_feature audit)
 		"-Dbranding=\"Gentoo Linux\""
-		$(meson_feature caps capabilities)
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
 		$(meson_feature selinux)
-		-Drootprefix="${EPREFIX}"
 		-Dshell=$(usex bash /bin/bash /bin/sh)
 		$(meson_use sysv-utils sysvinit)
 	)

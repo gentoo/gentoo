@@ -18,7 +18,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_RUBY_NG_GNOME2_ECLASS} ]]; then
+if [[ -z ${_RUBY_NG_GNOME2_ECLASS} ]]; then
 _RUBY_NG_GNOME2_ECLASS=1
 
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
@@ -76,7 +76,7 @@ all_ruby_prepare() {
 # @DESCRIPTION:
 # Run the configure script in the subbinding for each specific ruby target.
 each_ruby_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -e extconf.rb ]] || return
 
@@ -87,7 +87,7 @@ each_ruby_configure() {
 # @DESCRIPTION:
 # Compile the C bindings in the subbinding for each specific ruby target.
 each_ruby_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -e Makefile ]] || return
 
@@ -107,7 +107,7 @@ each_ruby_compile() {
 # @DESCRIPTION:
 # Install the files in the subbinding for each specific ruby target.
 each_ruby_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -e Makefile ]]; then
 		# Create the directories, or the package will create them as files.
@@ -124,7 +124,7 @@ each_ruby_install() {
 # @DESCRIPTION:
 # Install the files common to all ruby targets.
 all_ruby_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	for doc in ../AUTHORS ../NEWS ChangeLog README; do
 		[[ -s ${doc} ]] && dodoc $doc
@@ -141,7 +141,7 @@ all_ruby_install() {
 # @DESCRIPTION:
 # Run the tests for this package.
 each_ruby_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -e test/run-test.rb ]] || return
 

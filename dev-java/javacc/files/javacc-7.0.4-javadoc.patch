@@ -1,0 +1,12 @@
+--- a/build.xml
++++ b/build.xml
+@@ -201,9 +201,6 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 			<fileset dir="${generated-src}" />
+ 			<fileset dir="${java-src}" />
+ 		</javadoc>
+-
+-		<zip destfile="${install-name}-javadoc.jar" basedir="${target-folder}/javadoc">
+-		</zip>
+ 	</target>
+ 
+ 	<target name="unittest" depends="jar" description="run JUnit unit test cases" unless="true">

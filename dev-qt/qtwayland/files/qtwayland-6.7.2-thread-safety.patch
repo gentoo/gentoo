@@ -1,0 +1,65 @@
+Backport from 6.8 branch which should later land in 6.7.3 in [1] for [2].
+
+[1] https://codereview.qt-project.org/c/qt/qtwayland/+/574983
+[2] https://bugs.kde.org/show_bug.cgi?id=489180
+
+From: David Edmundson <davidedmundson@kde.org>
+Date: Fri, 05 Jul 2024 16:13:40 +0100
+Subject: [PATCH] Client: Improve thread safety determining window size on the render thread
+
+updateSurface is called from both the render and GUI thread. We
+therefore need every property referenced to be thread safe.
+
+Rather than guarding each property we cache the buffer size whenever the
+window geometry or scale changes and put a mutex round this one
+variable.
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
+@@ -51,4 +51,13 @@
+ void QWaylandEglWindow::ensureSize()
+ {
++    // this is always called on the main thread
++    QMargins margins = mWindowDecoration ? frameMargins() : QMargins{};
++    QRect rect = geometry();
++    QSize sizeWithMargins = (rect.size() + QSize(margins.left() + margins.right(), margins.top() + margins.bottom())) * scale();
++    {
++        QWriteLocker lock(&m_bufferSizeLock);
++        m_bufferSize = sizeWithMargins;
++    }
++
+     updateSurface(false);
+ }
+@@ -61,12 +70,15 @@
+     // Just resize the wl_egl_window, the EGLSurface will be created
+     // the next time makeCurrent is called.
+-    updateSurface(false);
++    ensureSize();
+ }
+ 
+ void QWaylandEglWindow::updateSurface(bool create)
+ {
+-    QMargins margins = mWindowDecoration ? frameMargins() : QMargins{};
+-    QRect rect = geometry();
+-    QSize sizeWithMargins = (rect.size() + QSize(margins.left() + margins.right(), margins.top() + margins.bottom())) * scale();
++
++    QSize sizeWithMargins;
++    {
++        QReadLocker lock(&m_bufferSizeLock);
++        sizeWithMargins = m_bufferSize;
++    }
+ 
+     // wl_egl_windows must have both width and height > 0
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow_p.h
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow_p.h
+@@ -61,5 +61,11 @@
+ 
+     QSurfaceFormat m_format;
++    // Size used in the last call to wl_egl_window_resize
+     QSize m_requestedSize;
++
++    // Size of the buffer used by QWaylandWindow
++    // This is always written to from the main thread, potentially read from the rendering thread
++    QReadWriteLock m_bufferSizeLock;
++    QSize m_bufferSize;
+ };
+ 

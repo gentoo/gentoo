@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib elisp-common toolchain-funcs
+inherit cmake-multilib elisp-common toolchain-funcs multilib
 
 ABSEIL_BRANCH="lts_2023_08_02" # NOTE from https://github.com/protocolbuffers/protobuf/blob/main/.gitmodules
 
@@ -18,7 +18,7 @@ if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~mips ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 	MY_SLOT=$(ver_cut 1-2)
 fi
 
@@ -127,9 +127,9 @@ src_test() {
 multilib_src_install_all() {
 	find "${ED}" -name "*.la" -delete || die
 
-	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf.so.${SLOT#*/}" ]]; then
+	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf$(get_libname ${SLOT#*/})" ]]; then
 		eerror "No matching library found with SLOT variable, currently set: ${SLOT}\n" \
-			"Expected value: ${ED}/usr/$(get_libdir)/libprotobuf.so.${SLOT#*/}"
+			"Expected value: ${ED}/usr/$(get_libdir)/libprotobuf$(get_libname ${SLOT#*/})"
 		die "Please update SLOT variable"
 	fi
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ HOMEPAGE="https://projects.eclipse.org/projects/ee4j.el"
 SRC_URI="https://github.com/jakartaee/expression-language/archive/${PV}-RELEASE-api.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 SLOT="5.0"
 
 DEPEND=">=virtual/jdk-11:*"

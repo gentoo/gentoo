@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Multiple precision interval arithmetic library based on MPFR"
-HOMEPAGE="http://perso.ens-lyon.fr/nathalie.revol/software.html"
+HOMEPAGE="https://perso.ens-lyon.fr/nathalie.revol/software.html"
 SRC_URI="https://gforge.inria.fr/frs/download.php/file/38111/${P}.tgz"
 
 # COPYING is GPL-3, COPYING.LESSER is LGPL-3, source file headers

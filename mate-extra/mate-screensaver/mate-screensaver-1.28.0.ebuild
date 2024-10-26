@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.58:2
 	gnome-base/dconf
 	>=mate-base/libmatekbd-1.17.0
-	>=mate-base/mate-desktop-1.17.0
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	>=mate-base/mate-menus-1.21.0
 	>=sys-apps/dbus-0.30
 	>=x11-libs/gdk-pixbuf-2.14:2

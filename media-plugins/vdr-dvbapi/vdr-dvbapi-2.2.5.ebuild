@@ -1,7 +1,7 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit vdr-plugin-2
 
@@ -10,6 +10,7 @@ MY_P="vdr-plugin-dvbapi-${PV}"
 DESCRIPTION="VDR Plugin: allows connect VDR to OScam"
 HOMEPAGE="https://github.com/manio/vdr-plugin-dvbapi"
 SRC_URI="https://github.com/manio/vdr-plugin-dvbapi/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -24,7 +25,6 @@ DOCS=( "FAQ" "HISTORY" "INSTALL" "README" "FFdecsa/docs" )
 QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-dvbapi.*
 	usr/lib64/vdr/plugins/libvdr-dvbapi.*"
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare

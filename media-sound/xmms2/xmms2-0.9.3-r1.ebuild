@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 inherit flag-o-matic optfeature perl-functions python-single-r1 waf-utils
 
@@ -36,10 +36,12 @@ XMMS2_PLUGINS=(
 IUSE="
 	${XMMS2_OPTIONALS[@]%:*}
 	${XMMS2_PLUGINS[@]%:*}
-	+server"
+	+server
+"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	test? ( server )"
+	test? ( server )
+"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -96,7 +98,8 @@ COMMON_DEPEND="
 			net-dns/avahi[mdnsresponder-compat]
 			net-misc/curl
 		)
-	)"
+	)
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	perl? (
@@ -109,16 +112,19 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
-	)"
+	)
+"
 DEPEND="
 	${COMMON_DEPEND}
 	cxx? ( dev-libs/boost )
-	test? ( dev-util/cunit )"
+	test? ( dev-util/cunit )
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	perl? (	dev-perl/Pod-Parser )
-	python? ( $(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]') )"
+	python? ( $(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]') )
+"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	avcodec_free_frame # succcessfully detects that this is gone in newer ffmpeg

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Folks https://gitlab.gnome.org/GNOME/f
 
 LICENSE="LGPL-2.1+"
 SLOT="0/26" # subslot = libfolks soname version
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~x86-linux"
 
 IUSE="bluetooth eds telepathy test utils"
 REQUIRED_USE="bluetooth? ( eds )"

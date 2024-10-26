@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/920743
+https://github.com/ClusterLabs/resource-agents/pull/1908
+
+From a97a00c37d8a15ee3a8d11ac00281626f55790b3 Mon Sep 17 00:00:00 2001
+From: Oyvind Albrigtsen <oalbrigt@redhat.com>
+Date: Mon, 8 Jan 2024 15:07:19 +0100
+Subject: [PATCH] configure: fix "C preprocessor "gcc -E" fails sanity check"
+ error caused by autoconf 2.72
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,6 +81,7 @@ fi
+ AC_PROG_CC dnl Can force other with environment variable "CC".
+ AM_PROG_CC_C_O
+ AC_PROG_CC_STDC
++AC_PROG_CPP
+ AC_PROG_AWK
+ AC_PROG_LN_S
+ AC_PROG_INSTALL
+

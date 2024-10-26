@@ -1,6 +1,34 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Felix Janda <felix.janda@posteo.de> (2024-10-20)
+# requires dev-libs/libcss and net-libs/libdom to be keyworded
+www-client/elinks libcss
+
+# Sam James <sam@gentoo.org> (2024-10-12)
+# Exposes a kernel bug which causes system lockup (bug #899540)
+sys-libs/liburing test
+
+# David Roman <davidroman96@gmail.com> (2024-10-04)
+# dev-libs/libunibreak not keyworded here
+media-libs/libass libunibreak
+
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
+# Joonas Niilola <juippis@gentoo.org> (2024-07-29)
+# Dependency not keyworded on sparc.
+dev-libs/re2 benchmark
+
+# Michał Górny <mgorny@gentoo.org> (2024-07-24)
+# Full testing requires www-client/firefox.
+dev-python/selenium test-rust
+
 # Sam James <sam@gentoo.org> (2024-07-03)
 # kde-frameworks/kservice not keyworded here
 x11-misc/xdg-utils plasma
@@ -110,10 +138,7 @@ dev-qt/qtgui vulkan
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
+sys-apps/openrc-navi s6
 
 # Sam James <sam@gentoo.org> (2023-07-21)
 # Requires app-emulation/qemu.
@@ -322,11 +347,11 @@ xfce-base/tumbler epub
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
-media-libs/libsdl2 fcitx4
+media-libs/libsdl2 fcitx
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay zink
+media-libs/mesa video_cards_zink vulkan vulkan-overlay
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
@@ -374,7 +399,6 @@ app-misc/tracker-miners test
 dev-ruby/rack-cache test
 dev-ruby/activemodel test
 dev-ruby/activerecord test
-dev-ruby/activesupport test
 dev-ruby/globalid test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
@@ -396,7 +420,6 @@ x11-libs/qwt designer
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # USE=bpf depends on sys-devel/clang which is not keyworded on sparc
 media-libs/libv4l bpf
-media-tv/v4l-utils bpf
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dev-lang/luajit is not keyworded on sparc
@@ -506,7 +529,7 @@ net-misc/ofono dundee
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=hdf5 that is masked in this profile.
-media-libs/vigra doc python test
+media-libs/vigra test
 
 # Jason Zaman <perfinion@gentoo.org> (2017-05-09)
 # x11-libs/libXpresent is not keyworded on sparc
@@ -611,10 +634,6 @@ dev-haskell/haskell-src-exts test
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille
 
-# Christoph Junghans <junghans@gentoo.org> (2014-07-21)
-# Missing keywords on sci-libs/libcerf (bug 517726)
-sci-visualization/gnuplot libcerf
-
 # Pacho Ramos <pacho@gentoo.org> (2014-04-12)
 # Missing keywords, bug #507490
 net-misc/modemmanager mbim
@@ -650,10 +669,6 @@ net-misc/modemmanager qmi
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Raúl Porcel <armin76@gentoo.org> (2012-12-30)
-# Needs testing
-media-libs/phonon gstreamer vlc
 
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc

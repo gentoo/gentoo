@@ -5,6 +5,10 @@
 		<email>expeditioneer@gentoo.org</email>
 		<name>Dennis Lamm</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/raspberrypi/linux/issues</bugs-to>
 		<doc>https://www.raspberrypi.com/documentation/computers/linux_kernel.html</doc>

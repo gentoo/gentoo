@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/alezost/${PN}.el/archive/${COMMIT}.tar.gz -> ${P}.ta
 S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 RDEPEND="app-emacs/dash"

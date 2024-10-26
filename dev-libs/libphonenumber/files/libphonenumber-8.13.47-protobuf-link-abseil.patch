@@ -1,0 +1,24 @@
+https://gitlab.exherbo.org/exherbo/kde/-/raw/master/packages/dev-libs/libphonenumber/files/libphonenumber-Update-CMakeLists.txt.patch
+
+Upstream: under review (approved), https://github.com/google/libphonenumber/pull/3215
+Reason: Fix build with recent protobuf
+
+From d420534a727c43fa251a1e09b77ed4cd6b615395 Mon Sep 17 00:00:00 2001
+From: katbohm <96047875+katbohm@users.noreply.github.com>
+Date: Mon, 18 Sep 2023 12:25:11 +0200
+Subject: [PATCH] Update CMakeLists.txt
+
+Temporary fix for b/283987730 (failing build due to new protobuf having absl dependencies).
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -433,7 +433,7 @@ include_directories ("src")
+ # Collate dependencies
+ #----------------------------------------------------------------
+ 
+-set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::node_hash_set absl::strings absl::synchronization)
++set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::node_hash_set absl::strings absl::synchronization absl::log_internal_message absl::log_internal_check_op)
+ 
+ if (USE_BOOST)
+   list (APPEND LIBRARY_DEPS ${Boost_LIBRARIES})
+-- 
+2.42.0

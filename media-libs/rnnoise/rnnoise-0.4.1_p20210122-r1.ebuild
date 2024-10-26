@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="doc"
+IUSE="doc examples"
 # NOTE: Documentation currently empty (version 0.4.1_p20210122)
 
 BDEPEND="
@@ -36,8 +36,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-examples
 		$(use_enable doc)
+		$(use_enable examples)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -46,4 +46,5 @@ src_install() {
 	default
 	rm "${ED}/usr/share/doc/${PF}/COPYING" || die
 	find "${ED}" -name '*.la' -delete || die
+	use examples && dobin examples/.libs/rnnoise_demo
 }

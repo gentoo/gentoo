@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/hvr/cryptohash-sha1"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-lang/ghc-7.4.1:=
 "

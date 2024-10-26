@@ -20,6 +20,7 @@
     <flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis (discouraged)</flag>
     <flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
     <flag name="id3tag">Support for ID3 tags</flag>
+    <flag name="io-uring">Enable support for io_uring</flag>
     <flag name="inotify">Use the Linux kernel inotify subsystem to notice changes to mpd music library</flag>
     <flag name="lame">Support for MP3 streaming via Icecast2</flag>
     <flag name="libmpdclient">Enable support for remote mpd databases</flag>
@@ -40,6 +41,7 @@
     <flag name="twolame">Support twolame MPEG-2 encoding</flag>
     <flag name="webdav">Enable using music from a WebDAV share</flag>
     <flag name="wildmidi">Enable MIDI support via wildmidi</flag>
+    <flag name="yajl">Enable JSON parsing via <pkg>dev-libs/yajl</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">MusicPlayerDaemon/MPD</remote-id>

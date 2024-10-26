@@ -6,13 +6,13 @@ EAPI=8
 inherit linux-mod-r1
 
 DESCRIPTION="RTSP conntrack module for Netfilter"
-HOMEPAGE="https://mike.it-loops.com/rtsp"
+HOMEPAGE="https://github.com/maru-sama/rtsp-linux"
 SRC_URI="https://github.com/maru-sama/rtsp-linux/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/rtsp-linux-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CONFIG_CHECK="NF_CONNTRACK"
 

@@ -9,7 +9,7 @@ inherit xorg-3
 
 DESCRIPTION="Miscellaneous Ethiopic fonts"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 XORG_CONFIGURE_OPTIONS=(
 	--with-fontrootdir="${EPREFIX}/usr/share/fonts"

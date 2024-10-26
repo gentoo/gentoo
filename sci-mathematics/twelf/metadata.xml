@@ -7,4 +7,7 @@
   logic programming and for the formalization of programming language
   theory.
   </longdescription>
+  <upstream>
+    <remote-id type="github">standardml/twelf</remote-id>
+  </upstream>
 </pkgmetadata>

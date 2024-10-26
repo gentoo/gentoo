@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
 
 DESCRIPTION="Console CardDAV client"
@@ -52,7 +52,7 @@ DOCS=(
 	doc/source/examples/khard.conf.example
 )
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
 distutils_enable_sphinx docs
 
 python_compile_all() {
@@ -71,5 +71,5 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	doins misc/zsh/_khard
 
-    distutils-r1_python_install_all
+	distutils-r1_python_install_all
 }

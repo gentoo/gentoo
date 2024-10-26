@@ -1,0 +1,41 @@
+--- openldap-2.4.59/servers/slapd/back-meta/conn.c	2021-06-03 11:40:31.000000000 -0700
++++ openldap-2.4.59/servers/slapd/back-meta/conn.c	2024-08-24 14:22:31.677357359 -0700
+@@ -31,6 +31,7 @@
+ 
+ #define AVL_INTERNAL
+ #include "slap.h"
++#include "proto-slap.h"
+ #include "../back-ldap/back-ldap.h"
+ #include "back-meta.h"
+ 
+--- openldap-2.4.59/servers/slapd/back-ldap/bind.c	2021-06-03 11:40:31.000000000 -0700
++++ openldap-2.4.59/servers/slapd/back-ldap/bind.c	2024-08-24 14:22:13.340701355 -0700
+@@ -31,6 +31,7 @@
+ 
+ #define AVL_INTERNAL
+ #include "slap.h"
++#include "proto-slap.h"
+ #include "back-ldap.h"
+ #include "lutil.h"
+ #include "lutil_ldap.h"
+--- openldap-2.4.59/servers/slapd/config.c	2021-06-03 11:40:31.000000000 -0700
++++ openldap-2.4.59/servers/slapd/config.c	2024-08-24 14:22:13.414034645 -0700
+@@ -43,6 +43,7 @@
+ #endif
+ 
+ #include "slap.h"
++#include "proto-slap.h"
+ #ifdef LDAP_SLAPI
+ #include "slapi/slapi.h"
+ #endif
+diff '--color=auto' -NuarwbB openldap-2.4.59.orig/servers/slapd/proto-slap.h openldap-2.4.59/servers/slapd/proto-slap.h
+--- openldap-2.4.59.orig/servers/slapd/proto-slap.h	2024-08-24 14:31:02.304109181 -0700
++++ openldap-2.4.59/servers/slapd/proto-slap.h	2024-08-24 14:31:18.004121208 -0700
+@@ -739,6 +739,7 @@
+ LDAP_SLAPD_F (int) bindconf_tls_set LDAP_P((
+ 	slap_bindconf *bc, LDAP *ld ));
+ LDAP_SLAPD_F (void) bindconf_free LDAP_P(( slap_bindconf *bc ));
++LDAP_SLAPD_F (void) slap_client_keepalive LDAP_P(( LDAP *ld, slap_keepalive *sk ));
+ LDAP_SLAPD_F (int) slap_client_connect LDAP_P(( LDAP **ldp, slap_bindconf *sb ));
+ LDAP_SLAPD_F (int) config_generic_wrapper LDAP_P(( Backend *be,
+ 	const char *fname, int lineno, int argc, char **argv ));

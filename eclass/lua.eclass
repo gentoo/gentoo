@@ -1,10 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# Marek Szuba <marecki@gentoo.org>
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
@@ -201,7 +200,7 @@ inherit multibuild lua-utils
 # Enforce the proper setting of LUA_TARGETS, if LUA_COMPAT_OVERRIDE
 # is not in effect. If it is, just warn that the flags will be ignored.
 _lua_validate_useflags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${LUA_COMPAT_OVERRIDE} ]]; then
 		if [[ ! ${_LUA_COMPAT_OVERRIDE_WARNED} ]]; then
@@ -261,7 +260,7 @@ _lua_obtain_impls() {
 # Initialize the environment for the Lua implementation selected
 # for multibuild.
 _lua_multibuild_wrapper() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local -x ELUA LUA
 	_lua_export "${MULTIBUILD_VARIANT}" ELUA LUA
@@ -280,7 +279,7 @@ _lua_multibuild_wrapper() {
 # to implementation-specific build directory matching BUILD_DIR used by
 # lua_foreach_abi().
 lua_copy_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS
 	_lua_obtain_impls
@@ -302,7 +301,7 @@ lua_copy_sources() {
 # For each command being run, ELUA, LUA and BUILD_DIR are set
 # locally, and the former two are exported to the command environment.
 lua_foreach_impl() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS
 	_lua_obtain_impls

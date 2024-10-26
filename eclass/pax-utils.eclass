@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pax-utils.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Kevin F. Quinn <kevquinn@gentoo.org>
 # Author: Anthony G. Basile <blueness@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
@@ -21,13 +21,13 @@
 # To control what markings are made, set PAX_MARKINGS in /etc/portage/make.conf
 # to contain either "PT", "XT" or "none".  The default is none
 
-case ${EAPI:-0} in
-	5|6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_PAX_UTILS_ECLASS} ]]; then
 _PAX_UTILS_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: PAX_MARKINGS
 # @DESCRIPTION:

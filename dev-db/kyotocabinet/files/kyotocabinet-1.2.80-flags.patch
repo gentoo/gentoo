@@ -1,0 +1,34 @@
+--- a/configure.in
++++ b/configure.in
+@@ -202,28 +202,6 @@ test -n "$LDFLAGS" && MYLDFLAGS="$LDFLAGS $MYLDFLAGS"
+ # Byte order
+ AC_C_BIGENDIAN(MYCPPFLAGS="$MYCPPFLAGS -D_MYBIGEND")
+ 
+-# System-depending optimization
+-printf 'checking for 64-bit availability... '
+-if printf 'int main(void) {return 0;}' | $CC -xc -m64 -o config.tmp - >config.tmp 2>&1
+-then
+-  MYCFLAGS="-m64 $MYCFLAGS"
+-  MYCXXFLAGS="-m64 $MYCXXFLAGS"
+-  printf 'yes\n'
+-else
+-  printf 'no\n'
+-fi
+-if test "$enable_opt" != "no"
+-then
+-  printf 'checking for CPU optimization availability... '
+-  if printf 'int main(void) {return 0;}' | $CC -xc -march=native -o config.tmp - >config.tmp 2>&1
+-  then
+-    MYCFLAGS="-march=native $MYCFLAGS"
+-    MYCXXFLAGS="-march=native $MYCXXFLAGS"
+-    printf 'yes\n'
+-  else
+-    printf 'no\n'
+-  fi
+-fi
+ printf 'checking for useless warnings... '
+ if printf 'int main(void) {return 0;}' | $CC -xc \
+   -Wno-unused-but-set-variable -Wno-unused-but-set-parameter -o config.tmp - >config.tmp 2>&1
+-- 
+2.44.2
+

@@ -1,0 +1,17 @@
+https://github.com/punesemu/puNES/commit/6e51b1a6107ad3de97edd40ae4ec2d41b32d804f.patch
+From: Cosima Neidahl <opna2608@protonmail.com>
+Date: Fri, 31 May 2024 14:48:50 +0200
+Subject: [PATCH] Fix compatibility with Qt 6.7.1 (#403)
+
+Upstream QTBUG-105023 fix made it mandatory that arguments to QObject::findChild[ren] calls must be Q_OBJECTs.
+--- a/src/gui/dlgStdPad.hpp
++++ b/src/gui/dlgStdPad.hpp
+@@ -47,6 +47,8 @@ typedef struct _joy_list {
+ extern _joy_list joy_list;
+ 
+ class pixmapButton: public QPushButton {
++	Q_OBJECT
++
+ 	private:
+ 		QPixmap pixmap;
+ 

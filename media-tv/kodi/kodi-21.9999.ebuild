@@ -19,16 +19,16 @@ GROOVY_VERSION="4.0.16"
 APACHE_COMMON_LANG_VERSION="3.14.0"
 APACHE_COMMON_TEXT_VERSION="1.11.0"
 
-# Doesn't build with jdk-21
-_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17} )
+_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21} )
 JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
 # Required to be set, but not used.
-JAVA_PKG_WANT_SOURCE="17"
-JAVA_PKG_WANT_TARGET="17"
+JAVA_PKG_WANT_SOURCE="21"
+JAVA_PKG_WANT_TARGET="21"
 
 PYTHON_REQ_USE="sqlite,ssl"
 PYTHON_COMPAT=( python3_{10..12} )
 
+# See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 
 inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
@@ -67,11 +67,19 @@ else
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
 LICENSE="GPL-2+"
+# vendored dependencies
+# apache-groovy, common-lang3 and commons-text
+LICENSE+=" Apache-2.0"
+# libdvdnav, libdvdread and libdvdcss.
+LICENSE+=" GPL-2+"
+# ffmpeg built as USE="gpl"
+LICENSE+=" !system-ffmpeg? ( GPL-2 )"
+
 SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
@@ -79,7 +87,7 @@ SLOT="0"
 IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	^^ ( gbm wayland X )
+	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	gbm? ( udev )
@@ -122,7 +130,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libass-0.15.0:=
 	media-libs/mesa[egl(+),gbm(+)?,wayland?,X?]
 	>=media-libs/taglib-1.9.0
-	=media-video/ffmpeg-6*:=[encode,soc(-)?,postproc,vaapi?,vdpau?,X?]
 	sci-libs/kissfft
 	virtual/libiconv
 	virtual/ttf-fonts
@@ -194,6 +201,15 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
+	system-ffmpeg? (
+		=media-video/ffmpeg-6*:=[encode,soc(-)?,postproc,vaapi?,vdpau?,X?]
+	)
+	!system-ffmpeg? (
+		app-arch/bzip2
+		app-arch/xz-utils
+		media-libs/dav1d:=
+		net-libs/gnutls:=
+	)
 	udf? (
 		>=dev-libs/libudfread-1.0.0
 	)
@@ -253,11 +269,16 @@ BDEPEND="
 	dev-build/cmake
 	dev-lang/swig
 	virtual/pkgconfig
-	<=virtual/jre-17:*
+	<=virtual/jre-21:*
 	doc? (
 		app-text/doxygen
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
+	"${FILESDIR}"/kodi-21.1-silence-libdvdread-git.patch
+)
 
 # bug #544020
 CONFIG_CHECK="~IP_MULTICAST"
@@ -318,11 +339,17 @@ src_prepare() {
 }
 
 src_configure() {
+	local core_platform=(
+		$(usev gbm)
+		$(usev wayland)
+		$(usev X x11)
+	)
+
 	local mycmakeargs=(
 		-Wno-dev # less noise
 
 		-DAPP_RENDER_SYSTEM=$(usex gles gles gl)
-		-DCORE_PLATFORM_NAME=$(usev gbm)$(usev wayland)$(usev X x11)
+		-DCORE_PLATFORM_NAME="${core_platform[*]}"
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_TESTING=$(usex test)
 		-DVERBOSE=ON
@@ -353,7 +380,7 @@ src_configure() {
 		-DENABLE_CEC=$(usex cec)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DVDCSS=$(usex css)
-		-DENABLE_EVENTCLIENTS=ON # alway enable to have 'kodi-send' and filter extra staff in 'src_install()'
+		-DENABLE_EVENTCLIENTS=ON # alway enable to have 'kodi-send' and filter extra stuff in 'src_install()'
 		-DENABLE_ISO9660PP=$(usex optical)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
@@ -461,12 +488,19 @@ src_test() {
 		# The difference between output[2i] and (i==freq1?1.0:0.0) is inf, which exceeds 1e-7, where output[2i]
 		# evaluates to inf,(i==freq1?1.0:0.0) evaluates to 0, and 1e-7 evaluates to 9.9999999999999995e-08.
 		TestRFFT.SimpleSignal
-		# bug #779184
-		# https://github.com/xbmc/xbmc/issues/18594
-		$(usev x86 TestDateTime.SetFromDBTime)
 		# Tries to ping localhost, naturally breaking network-sandbox
 		TestNetwork.PingHost
 	)
+
+	if use arm || use x86; then
+		# bug #779184
+		# https://github.com/xbmc/xbmc/issues/18594
+		CMAKE_SKIP_TESTS+=(
+			TestDateTime.Reset
+			TestDateTime.SetDateTime
+			TestDateTime.SetFromDBTime
+		)
+	fi
 
 	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
 	local -x KODI_HOME="${BUILD_DIR}"

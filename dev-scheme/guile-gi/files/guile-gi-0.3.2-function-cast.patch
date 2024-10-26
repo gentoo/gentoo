@@ -1,0 +1,89 @@
+https://bugs.gentoo.org/880955
+
+Based on https://github.com/spk121/guile-gi/commit/94144d0beffa96bf62c03bc71b498b94dafacc46
+
+--- a/src/gig_callback.c
++++ b/src/gig_callback.c
+@@ -296,6 +296,12 @@ callback_binding_inner(struct callback_binding_args *args)
+     return (void *)1;
+ }
+ 
++inline static void *
++callback_binding_inner_v(void *args)
++{
++    return callback_binding_inner(args);
++}
++
+ void
+ callback_binding(ffi_cif *cif, gpointer ret, gpointer *ffi_args, gpointer user_data)
+ {
+@@ -314,7 +320,7 @@ callback_binding(ffi_cif *cif, gpointer ret, gpointer *ffi_args, gpointer user_d
+     if (scm_is_true(scm_fluid_ref(gig_callback_thread_fluid)))
+         callback_binding_inner(&args);
+     else {
+-        if (NULL == scm_with_guile(callback_binding_inner, &args))
++        if (NULL == scm_with_guile(callback_binding_inner_v, &args))
+             scm_c_eval_string("(quit EXIT_FAILURE)");
+     }
+ }
+@@ -365,6 +371,12 @@ c_callback_binding_inner(struct callback_binding_args *args)
+     return (void *)1;
+ }
+ 
++inline static void *
++c_callback_binding_inner_v(void *args)
++{
++    return c_callback_binding_inner(args);
++}
++
+ void
+ c_callback_binding(ffi_cif *cif, gpointer ret, gpointer *ffi_args, gpointer user_data)
+ {
+@@ -383,7 +395,7 @@ c_callback_binding(ffi_cif *cif, gpointer ret, gpointer *ffi_args, gpointer user
+     if (scm_is_true(scm_fluid_ref(gig_callback_thread_fluid)))
+         c_callback_binding_inner(&args);
+     else {
+-        if (NULL == scm_with_guile(c_callback_binding_inner, &args))
++        if (NULL == scm_with_guile(c_callback_binding_inner_v, &args))
+             scm_c_eval_string("(quit EXIT_FAILURE)");
+     }
+ }
+@@ -692,10 +704,16 @@ callback_free(GigCallback *gcb)
+     g_free(gcb);
+ }
+ 
++inline static void
++callback_free_v(void *gcb)
++{
++    callback_free(gcb);
++}
++
+ static void
+ gig_fini_callback(void)
+ {
+     g_debug("Freeing callbacks");
+-    g_slist_free_full(callback_list, (GDestroyNotify)callback_free);
++    g_slist_free_full(callback_list, (GDestroyNotify)callback_free_v);
+     callback_list = NULL;
+ }
+--- a/src/gig_type_private.c
++++ b/src/gig_type_private.c
+@@ -59,8 +59,14 @@ _boxed_funcs_free(GigBoxedFuncs *funcs)
+     g_free(funcs);
+ }
+ 
++inline static void
++_boxed_funcs_free_v(void *funcs)
++{
++    _boxed_funcs_free(funcs);
++}
++
+ void
+ _free_boxed_funcs()
+ {
+-    g_slist_free_full(_boxed_funcs, (GDestroyNotify)_boxed_funcs_free);
++    g_slist_free_full(_boxed_funcs, (GDestroyNotify)_boxed_funcs_free_v);
+ }
+-- 
+2.46.0
+

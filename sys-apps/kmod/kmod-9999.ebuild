@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="LGPL-2"
@@ -49,12 +49,8 @@ BDEPEND="
 	zlib? ( virtual/pkgconfig )
 "
 if [[ ${PV} == 9999* ]]; then
-	BDEPEND+=" dev-libs/libxslt"
+	BDEPEND+=" app-text/scdoc"
 fi
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-31-musl-basename.patch
-)
 
 src_prepare() {
 	default
@@ -78,6 +74,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: >=33 enables decompressing without libraries being built in
+	# as kmod defers to the kernel. How should the ebuild be adapted?
 	local myeconfargs=(
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
@@ -93,11 +91,21 @@ src_configure() {
 		$(use_with zstd)
 	)
 
+	if [[ ${PV} != 9999 ]] ; then
+		# See src_install
+		myeconfargs+=( --disable-manpages )
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+
+	if [[ ${PV} != 9999 ]] ; then
+		# The dist logic is broken but the files are in there (bug #937942)
+		emake -C man DESTDIR="${D}" install
+	fi
 
 	find "${ED}" -type f -name "*.la" -delete || die
 

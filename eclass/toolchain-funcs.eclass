@@ -1,10 +1,10 @@
-# Copyright 2002-2023 Gentoo Authors
+# Copyright 2002-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: functions to query common info about the toolchain
 # @DESCRIPTION:
 # The toolchain-funcs aims to provide a complete suite of functions
@@ -13,13 +13,13 @@
 # in such a way that you can rely on the function always returning
 # something sane.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_TOOLCHAIN_FUNCS_ECLASS} ]]; then
 _TOOLCHAIN_FUNCS_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit multilib
 
@@ -251,7 +251,7 @@ tc-detect-is-softfloat() {
 
 	case ${CTARGET:-${CHOST}} in
 		# Avoid autodetection for bare-metal targets. bug #666896
-		*-newlib|*-elf|*-eabi)
+		*-newlib|*-elf|*-eabi|arm64-apple-darwin*)
 			return 1 ;;
 
 		# arm-unknown-linux-gnueabi is ambiguous. We used to treat it as
@@ -294,6 +294,8 @@ tc-tuple-is-softfloat() {
 			echo "no" ;;
 		# bare-metal targets have their defaults. bug #666896
 		*-newlib|*-elf|*-eabi)
+			echo "no" ;;
+		arm64-apple-darwin*)
 			echo "no" ;;
 		arm*)
 			echo "yes" ;;
@@ -445,6 +447,41 @@ econf_build() {
 	tc-env_build econf_env "$@"
 }
 
+# @FUNCTION: tc-ld-is-bfd
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Return true if the current linker is set to GNU bfd.
+tc-ld-is-bfd() {
+	local out
+
+	# Ensure ld output is in English.
+	local -x LC_ALL=C
+
+	# First check the linker directly.
+	out=$($(tc-getLD "$@") --version 2>&1)
+	if [[ ${out} != "GNU ld"* ]] ; then
+		return 1
+	fi
+
+	# Then see if they're selecting bfd via compiler flags.
+	# Note: We're assuming they're using LDFLAGS to hold the
+	# options and not CFLAGS/CXXFLAGS.
+	local base="${T}/test-tc-linker"
+	cat <<-EOF > "${base}.c"
+	int main(void) { return 0; }
+	EOF
+	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
+	rm -f "${base}"*
+	if [[ ! ${out} =~ .*^"GNU ld".* ]] ; then
+		return 1
+	fi
+
+	# It's bfd!
+	# We use positive logic here unlike tc-ld-is-gold and tc-ld-is-mold
+	# because LD might be bfd even if *FLAGS isn't.
+	return 0
+}
+
 # @FUNCTION: tc-ld-is-gold
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
@@ -464,7 +501,7 @@ tc-ld-is-gold() {
 	# Then see if they're selecting gold via compiler flags.
 	# Note: We're assuming they're using LDFLAGS to hold the
 	# options and not CFLAGS/CXXFLAGS.
-	local base="${T}/test-tc-gold"
+	local base="${T}/test-tc-linker"
 	cat <<-EOF > "${base}.c"
 	int main(void) { return 0; }
 	EOF
@@ -497,7 +534,7 @@ tc-ld-is-lld() {
 	# Then see if they're selecting lld via compiler flags.
 	# Note: We're assuming they're using LDFLAGS to hold the
 	# options and not CFLAGS/CXXFLAGS.
-	local base="${T}/test-tc-lld"
+	local base="${T}/test-tc-linker"
 	cat <<-EOF > "${base}.c"
 	int main(void) { return 0; }
 	EOF
@@ -511,8 +548,43 @@ tc-ld-is-lld() {
 	return 1
 }
 
+
+# @FUNCTION: tc-ld-is-mold
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Return true if the current linker is set to mold.
+tc-ld-is-mold() {
+	local out
+
+	# Ensure ld output is in English.
+	local -x LC_ALL=C
+
+	# First check the linker directly.
+	out=$($(tc-getLD "$@") --version 2>&1)
+	if [[ ${out} == *"mold"* ]] ; then
+		return 0
+	fi
+
+	# Then see if they're selecting mold via compiler flags.
+	# Note: We're assuming they're using LDFLAGS to hold the
+	# options and not CFLAGS/CXXFLAGS.
+	local base="${T}/test-tc-linker"
+	cat <<-EOF > "${base}.c"
+	int main(void) { return 0; }
+	EOF
+	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
+	rm -f "${base}"*
+	if [[ ${out} == *"mold"* ]] ; then
+		return 0
+	fi
+
+	# No mold here!
+	return 1
+}
+
 # @FUNCTION: tc-ld-disable-gold
 # @USAGE: [toolchain prefix]
+# @DEPRECATED: tc-ld-force-bfd
 # @DESCRIPTION:
 # If the gold linker is currently selected, configure the compilation
 # settings so that we use the older bfd linker instead.
@@ -523,11 +595,12 @@ tc-ld-disable-gold() {
 # @FUNCTION: tc-ld-force-bfd
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
-# If the gold or lld linker is currently selected, configure the compilation
-# settings so that we use the bfd linker instead.
+# If a linker other than bfd is currently selected, configure the compilation
+# settings so that we use the bfd linker instead.  This function should not
+# be used for simple underlinking problems.  This function is intended for use
+# when a package is fragile and/or relies on bfd internals.
 tc-ld-force-bfd() {
-	if ! tc-ld-is-gold "$@" && ! tc-ld-is-lld "$@" ; then
-		# They aren't using gold or lld, so nothing to do!
+	if tc-ld-is-bfd "$@" ; then
 		return
 	fi
 
@@ -542,6 +615,8 @@ tc-ld-force-bfd() {
 
 	# Set up LDFLAGS to select bfd based on the gcc / clang version.
 	if tc-is-gcc || tc-is-clang ; then
+		export CFLAGS="${CFLAGS} -fuse-ld=bfd"
+		export CXXFLAGS="${CXXFLAGS} -fuse-ld=bfd"
 		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
 }
@@ -559,8 +634,9 @@ _tc-has-openmp() {
 		int nthreads, tid, ret = 0;
 		#pragma omp parallel private(nthreads, tid)
 		{
-		tid = omp_get_thread_num();
-		nthreads = omp_get_num_threads(); ret += tid + nthreads;
+			tid = omp_get_thread_num();
+			nthreads = omp_get_num_threads();
+			ret += tid + nthreads;
 		}
 		return ret;
 	}
@@ -626,7 +702,14 @@ tc-has-tls() {
 		-*) die "Usage: tc-has-tls [-c|-l] [toolchain prefix]";;
 	esac
 
-	: "${flags:=-fPIC -shared -Wl,-z,defs}"
+	case "${CHOST}" in
+		*-darwin*)
+			# bug #612370
+			: ${flags:=-dynamiclib}
+			;;
+		*)
+			: ${flags:=-fPIC -shared -Wl,-z,defs}
+	esac
 	[[ $1 == -* ]] && shift
 	$(tc-getCC "$@") ${flags} "${base}.c" -o "${base}" >&/dev/null
 	local ret=$?
@@ -645,6 +728,7 @@ tc-ninja_magic_to_arch() {
 	[[ -z ${host} ]] && host=${CTARGET:-${CHOST}}
 
 	case ${host} in
+		arm64*)		echo arm64;;
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
 		arc*)		echo arc;;
@@ -1029,9 +1113,9 @@ gen_usr_ldscript() {
 	ewarn "${FUNCNAME}: Please migrate to usr-ldscript.eclass"
 
 	local lib libdir=$(get_libdir) output_format="" auto=false suffix=$(get_libname)
-	[[ -z ${ED+set} ]] && local ED=${D%/}${EPREFIX}/
 
 	tc-is-static-only && return
+	use prefix && return
 
 	# We only care about stuffing / for the native ABI, bug #479448
 	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
@@ -1234,6 +1318,7 @@ tc-get-build-ptr-size() {
 # @RETURN: Shell true if we are using LTO, shell false otherwise
 tc-is-lto() {
 	local f="${T}/test-lto.o"
+	local ret=1
 
 	case $(tc-get-compiler-type) in
 		clang)
@@ -1241,14 +1326,25 @@ tc-is-lto() {
 			# If LTO is used, clang will output bytecode and llvm-bcanalyzer
 			# will run successfully.  Otherwise, it will output plain object
 			# file and llvm-bcanalyzer will exit with error.
-			llvm-bcanalyzer "${f}" &>/dev/null && return 0
+			llvm-bcanalyzer "${f}" &>/dev/null && ret=0
 			;;
 		gcc)
 			$(tc-getCC) ${CFLAGS} -c -o "${f}" -x c - <<<"" || die
-			[[ $($(tc-getREADELF) -S "${f}") == *.gnu.lto* ]] && return 0
+			[[ $($(tc-getREADELF) -S "${f}") == *.gnu.lto* ]] && ret=0
 			;;
 	esac
-	return 1
+	rm -f "${f}" || die
+	return "${ret}"
+}
+
+# @FUNCTION: tc-has-64bit-time_t
+# @RETURN: Shell true if time_t is at least 64 bits long, false otherwise
+tc-has-64bit-time_t() {
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} -c -x c - -o /dev/null <<-EOF &>/dev/null
+		#include <sys/types.h>
+		int test[sizeof(time_t) >= 8 ? 1 : -1];
+	EOF
+	return $?
 }
 
 fi

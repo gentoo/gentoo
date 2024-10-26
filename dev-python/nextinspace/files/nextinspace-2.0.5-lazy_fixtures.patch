@@ -1,0 +1,96 @@
+commit 6d9b758075e756650b5a13ff3cf0852b21d6f1e7
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Fri Sep 20 23:13:24 2024 +0200
+Upstream: https://github.com/gideonshaked/nextinspace/pull/17
+
+    Migrate from pytest-lazy-fixture to pytest-lazy-fixtures
+
+--- a/tests/cli/test_viewer.py
++++ b/tests/cli/test_viewer.py
+@@ -1,6 +1,7 @@
+ # type: ignore
+ 
+ import pytest
++from pytest_lazy_fixtures import lf
+ 
+ from nextinspace.cli import viewer
+ 
+@@ -13,8 +14,8 @@ def test_dict_event(example_event, example_event_dict):
+     "launcher, dict_",
+     [
+         (
+-            pytest.lazy_fixture("example_launcher"),
+-            pytest.lazy_fixture("example_launcher_dict"),
++            lf("example_launcher"),
++            lf("example_launcher_dict"),
+         ),
+         (None, None),
+     ],
+@@ -27,12 +28,12 @@ def test_dict_launcher(launcher, dict_):
+     "launch, dict_",
+     [
+         (
+-            pytest.lazy_fixture("example_launch_verbose"),
+-            pytest.lazy_fixture("example_launch_verbose_dict"),
++            lf("example_launch_verbose"),
++            lf("example_launch_verbose_dict"),
+         ),
+         (
+-            pytest.lazy_fixture("example_launch_normal"),
+-            pytest.lazy_fixture("example_launch_normal_dict"),
++            lf("example_launch_normal"),
++            lf("example_launch_normal_dict"),
+         ),
+     ],
+ )
+@@ -44,12 +45,12 @@ def test_dict_launch(launch, dict_):
+     "item, dict_",
+     [
+         (
+-            pytest.lazy_fixture("example_launch_normal"),
+-            pytest.lazy_fixture("example_launch_normal_dict"),
++            lf("example_launch_normal"),
++            lf("example_launch_normal_dict"),
+         ),
+         (
+-            pytest.lazy_fixture("example_event"),
+-            pytest.lazy_fixture("example_event_dict"),
++            lf("example_event"),
++            lf("example_event_dict"),
+         ),
+     ],
+ )
+--- a/tests/test_nextinspace.py
++++ b/tests/test_nextinspace.py
+@@ -4,6 +4,7 @@ import copy
+ from datetime import MINYEAR, datetime, timedelta, timezone
+ 
+ import pytest
++from pytest_lazy_fixtures import lf
+ 
+ import nextinspace
+ from nextinspace import BASE_URL
+@@ -12,9 +13,9 @@ from nextinspace import BASE_URL
+ @pytest.mark.parametrize(
+     "example",
+     [
+-        pytest.lazy_fixture("example_event"),
+-        pytest.lazy_fixture("example_launcher"),
+-        pytest.lazy_fixture("example_launch_verbose"),
++        lf("example_event"),
++        lf("example_launcher"),
++        lf("example_launch_verbose"),
+     ],
+ )
+ def test_eq(example):
+@@ -69,8 +70,8 @@ def test_date_str_to_datetime(datetime_str, result):
+ @pytest.mark.parametrize(
+     "launch, include_launcher",
+     [
+-        (pytest.lazy_fixture("example_launch_verbose"), True),
+-        (pytest.lazy_fixture("example_launch_normal"), False),
++        (lf("example_launch_verbose"), True),
++        (lf("example_launch_normal"), False),
+     ],
+ )
+ def test_next_launch(requests_mock, example_launch_text, launch, include_launcher, example_launcher_text):

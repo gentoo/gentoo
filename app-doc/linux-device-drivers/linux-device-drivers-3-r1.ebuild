@@ -18,7 +18,7 @@ S="${WORKDIR}"
 
 LICENSE="CC-BY-SA-2.0"
 SLOT="3"
-KEYWORDS="amd64 arm hppa ~ia64 ppc ~riscv ~s390 x86"
+KEYWORDS="amd64 arm hppa ppc ~riscv ~s390 x86"
 
 src_install() {
 	dodoc ldd3_pdf/*.pdf

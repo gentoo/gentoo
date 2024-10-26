@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit vcs-clean
+inherit flag-o-matic vcs-clean
 
 PATCHSET_VER="1"
 MY_P=mercury-srcdist-${PV}
@@ -191,6 +191,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# ccJwDryZ.ltrans0.ltrans.o:(.data.rel.ro.local+0x330): undefined reference to `<unification predicate for type 'align_right.squeeze'/0 mode 0>'
+	# https://bugs.gentoo.org/855638
+	#
+	# Custom language-specific compiler infrastructure, the main mercury compiler cannot handle LTO either.
+	filter-lto
+
 	for mercury_pkg in $(mercury_pkgs); do
 		mercury_pkg_compile ${mercury_pkg}
 	done

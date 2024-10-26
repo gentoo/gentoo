@@ -24,7 +24,7 @@
 		Perl, PHP, Pike, Python, and Ruby.
 	</longdescription>
 	<use>
-		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
+		<flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
 		<flag name="gles1">include OpenGL ES 1.0 support</flag>
 		<flag name="haptic">Enable the haptic (force feedback) subsystem</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>

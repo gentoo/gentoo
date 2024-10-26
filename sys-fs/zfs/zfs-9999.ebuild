@@ -33,8 +33,8 @@ LICENSE="BSD-2 CDDL MIT"
 # just libzfs soname major for now.
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
-SLOT="0/5"
-IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs selinux test-suite"
+SLOT="0/6"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs selinux test-suite unwind"
 
 DEPEND="
 	dev-libs/openssl:=
@@ -47,6 +47,7 @@ DEPEND="
 	python? (
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 	)
+	unwind? ( sys-libs/libunwind:= )
 "
 
 BDEPEND="
@@ -220,6 +221,7 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pam)
 		$(use_enable python pyzfs)
+		$(use_with unwind libunwind)
 		--disable-static
 		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)

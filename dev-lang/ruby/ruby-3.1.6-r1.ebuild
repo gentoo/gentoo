@@ -17,7 +17,7 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -72,6 +72,8 @@ PDEPEND="
 src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/012*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/013*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/020*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
@@ -92,7 +94,7 @@ src_prepare() {
 	rm -fr ext/fiddle/libffi-3.2.1 || die
 
 	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
-	# rm -rf tool/test/webrick || die
+	rm -rf tool/test/webrick || die
 
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
@@ -111,23 +113,6 @@ src_prepare() {
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
 		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
-
-		if [[ ${CHOST} == *darwin* ]] ; then
-			# avoid symlink loop on Darwin (?!)
-			sed -i \
-				-e '/LIBRUBY_ALIASES=/s/lib$(RUBY_INSTALL_NAME).$(SOEXT)//' \
-				configure.ac || die
-
-			# make ar/libtool hack for Darwin work
-			sed -i \
-				-e "s/ac_cv_prog_ac_ct_AR='libtool/ac_cv_prog_AR='${CHOST}-libtool/" \
-				configure.ac || die
-
-			# disable using security framework (GCC barfs on those headers)
-			sed -i \
-				-e 's/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
-				random.c || die
-		fi
 	fi
 
 	eapply_user
@@ -156,6 +141,11 @@ src_configure() {
 	# In many places aliasing rules are broken; play it safe
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
 
 	# Socks support via dante
 	if use socks5 ; then
@@ -190,7 +180,10 @@ src_configure() {
 	# Provide an empty LIBPATHENV because we disable rpath but we do not
 	# need LD_LIBRARY_PATH by default since that breaks USE=multitarget
 	# #564272
-	INSTALL="${EPREFIX}/usr/bin/install -c" LIBPATHENV="" econf \
+	# except on Darwin, where we really need LIBPATHENV to set the right
+	# DYLD_ stuff during the invocation of miniruby for it to work
+	[[ ${CHOST} == *-darwin* ]] || export LIBPATHENV=""
+	INSTALL="${EPREFIX}/usr/bin/install -c" econf \
 		--program-suffix=${MY_SUFFIX} \
 		--with-soname=ruby${MY_SUFFIX} \
 		--with-readline-dir="${EPREFIX}"/usr \
@@ -220,10 +213,12 @@ src_configure() {
 }
 
 src_compile() {
+	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }
 
 src_test() {
+	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 check
 }
 
@@ -240,10 +235,6 @@ src_install() {
 	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
 
 	local -x LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
-
-	if [[ ${CHOST} == *darwin* ]] ; then
-		local -x DYLD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
-	fi
 
 	local -x RUBYLIB="${S}:${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
 	for d in $(find "${S}/ext" -type d) ; do

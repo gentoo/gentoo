@@ -37,7 +37,7 @@ Related upstream bug: https://github.com/ROCm/hipBLASLt/issues/535
      else()
 --- a/library/src/amd_detail/rocblaslt/src/CMakeLists.txt
 +++ b/library/src/amd_detail/rocblaslt/src/CMakeLists.txt
-@@ -100,7 +100,16 @@ if( BUILD_WITH_TENSILE )
+@@ -100,7 +100,17 @@ if( BUILD_WITH_TENSILE )
    set( Tensile_INC
      ${CMAKE_CURRENT_SOURCE_DIR}/src/amd_detail/rocblaslt/src/Tensile
    )
@@ -45,7 +45,8 @@ Related upstream bug: https://github.com/ROCm/hipBLASLt/issues/535
 +  set_target_properties( TensileHost PROPERTIES POSITION_INDEPENDENT_CODE ON )
  
 +  set( Tensile_SRC
-+  src/amd_detail/rocblaslt/src/tensile_host.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/src/amd_detail/rocblaslt/src/tensile_host.cpp
++  ${PROJECT_SOURCE_DIR}/tensilelite/Tensile/Source/lib/source/msgpack/MessagePack.cpp
 +  )
 +
 +  set( Tensile_INC

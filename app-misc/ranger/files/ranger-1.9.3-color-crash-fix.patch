@@ -1,0 +1,25 @@
+Backport of crash fix when previewing some files with colors.
+https://forums.gentoo.org/viewtopic-t-1170286.html
+https://github.com/ranger/ranger/commit/82eef55b1664
+https://github.com/ranger/ranger/commit/642d594b8328 (also needed)
+--- a/ranger/gui/color.py
++++ b/ranger/gui/color.py
+@@ -20,5 +20,6 @@
+ DEFAULT_FOREGROUND = curses.COLOR_WHITE
+ DEFAULT_BACKGROUND = curses.COLOR_BLACK
+-COLOR_PAIRS = {10: 0}
++# Color pair 0 is wired to white on black and cannot be changed
++COLOR_PAIRS = {(DEFAULT_FOREGROUND, DEFAULT_BACKGROUND): 0}
+ 
+ 
+@@ -31,4 +32,10 @@
+         try:
+             curses.init_pair(size, fg, bg)
++        except ValueError:
++            # We're trying to add more pairs than the terminal can store,
++            # approximating to the closest color pair that's already stored
++            # would be cool but the easier solution is to just fall back to the
++            # default fore and background colors, pair 0
++            COLOR_PAIRS[key] = 0
+         except curses.error:
+             # If curses.use_default_colors() failed during the initialization

@@ -17,11 +17,19 @@ SRC_URI="https://github.com/rails/globalid/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
-IUSE=""
+IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler >=dev-ruby/activemodel-6.1 >=dev-ruby/railties-6.1 )"
+ruby_add_bdepend "test? (
+	dev-ruby/bundler
+	<dev-ruby/activemodel-7.2
+	<dev-ruby/railties-7.2
+)"
 ruby_add_rdepend ">=dev-ruby/activesupport-6.1:*"
 
 all_ruby_prepare() {
 	rm -f Gemfile.lock || die
+
+	# Ensure a version of rails compatible with the tests.
+	sed -e '/^gem / s/$/, "<7.2"/' \
+		-i Gemfile || die
 }

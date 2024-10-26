@@ -16,7 +16,7 @@ SRC_URI="https://github.com/checkpoint-restore/${PN}/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 -riscv"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 -riscv"
 IUSE="bpf doc gnutls nftables selinux setproctitle static-libs test video_cards_amdgpu"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -70,6 +70,7 @@ criu_arch() {
 	case ${ARCH} in
 		amd64) echo "x86";;
 		arm64) echo "aarch64";;
+		loong) echo "loongarch64";;
 		ppc64*) echo "ppc64";;
 		*)     echo "${ARCH}";;
 	esac

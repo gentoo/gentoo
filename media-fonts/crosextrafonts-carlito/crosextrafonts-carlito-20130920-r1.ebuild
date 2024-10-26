@@ -11,7 +11,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 IUSE=""
 
 RESTRICT="binchecks strip test"

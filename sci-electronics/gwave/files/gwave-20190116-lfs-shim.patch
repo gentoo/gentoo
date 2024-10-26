@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/886139
+
+--- a/spicefile/sp2sp.c
++++ b/spicefile/sp2sp.c
+@@ -234,7 +234,7 @@
+ 		}
+ 		of = stdout;
+ 	} else {
+-		of = (FILE *)fopen64(outfilename, "w"); /* DJW: why is the cast needed? */
++		of = fopen(outfilename, "w");
+ 		if(!of) {
+ 		if(errno)
+ 			perror(outfilename);
+

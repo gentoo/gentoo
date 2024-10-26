@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
@@ -31,7 +31,10 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog HACKING MAINTAINERS NEWS README )
 
 # Patch from 3.x for bug #394925
-PATCHES=( "${FILESDIR}/${P}-G_CONST_RETURN.patch" )
+PATCHES=(
+	"${FILESDIR}/2.10.5-G_CONST_RETURN.patch"
+	"${FILESDIR}/2.10.5-gcc14.patch"
+)
 
 src_prepare() {
 	gnome2_src_prepare

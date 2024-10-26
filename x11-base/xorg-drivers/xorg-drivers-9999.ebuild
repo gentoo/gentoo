@@ -5,12 +5,11 @@ EAPI=7
 
 DESCRIPTION="Meta package containing deps on all xorg drivers"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 else
 	PROPERTIES+=" live"
 fi

@@ -15,4 +15,8 @@
 		<remote-id type="sourceforge">svxlink</remote-id>
 		<remote-id type="github">sm0svx/svxlink</remote-id>
 	</upstream>
+	<use>
+		<flag name="qt5">Build and install qtel application</flag>
+		<flag name="rtlsdr">Add support for rtlsdr hardware</flag>
+	</use>
 </pkgmetadata>

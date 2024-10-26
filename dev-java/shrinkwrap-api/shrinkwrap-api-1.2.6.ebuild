@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/shrinkwrap-${PV}/api"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Restrict to jdk:1.8 - otherwhise one test would fail:
 # 1) shouldCreateDefensiveCopyOfURLOnConstruction(org.jboss.shrinkwrap.api.asset.UrlAssetTestCase)

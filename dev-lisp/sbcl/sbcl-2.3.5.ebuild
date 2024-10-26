@@ -21,7 +21,7 @@ BV_X64_SOLARIS=1.2.7
 BV_SPARC_SOLARIS=1.0.23
 
 DESCRIPTION="Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp"
-HOMEPAGE="https://www.sbcl.org/ http://sbcl.sourceforge.net/"
+HOMEPAGE="https://www.sbcl.org/ https://sbcl.sourceforge.net/"
 BSD_SOCKETS_TEST_PATCH=bsd-sockets-test-2.3.1.patch
 SRC_URI="https://downloads.sourceforge.net/sbcl/${P}-source.tar.bz2
 	https://dev.gentoo.org/~grozin/${BSD_SOCKETS_TEST_PATCH}.gz
@@ -121,6 +121,11 @@ src_prepare() {
 	strip-unsupported-flags
 	filter-flags -fomit-frame-pointer -Wl,-s
 	filter-ldflags -s
+
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/917557
+	# https://bugs.launchpad.net/gentoo/+bug/2072800
+	filter-lto
 
 	# original bugs #526194, #620532
 	# this broke no-pie default builds, c.f. bug #632670

@@ -1,0 +1,82 @@
+https://github.com/libffi/libffi/issues/855
+https://github.com/libffi/libffi/commit/f64141ee3f9e455a060bd09e9ab72b6c94653d7c
+
+From f64141ee3f9e455a060bd09e9ab72b6c94653d7c Mon Sep 17 00:00:00 2001
+From: Bill Roberts <152999275+billatarm@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 11:44:55 -0500
+Subject: [PATCH] Fix bti support (#830)
+
+* bti: add identifier to ffi_closure_SYSV_V_alt
+
+This was missing BTI_C identifier.
+
+Old Code:
+ffi_closure_SYSV_V_alt:
+0000fffff7f70500:   ldr     x17, [sp, #8]
+
+Signed-off-by: Bill Roberts <bill.roberts@arm.com>
+
+* testsuite: fix whitespace in Makefile.am
+
+Signed-off-by: Bill Roberts <bill.roberts@arm.com>
+
+* aarch64: correct comment describing BTI
+
+The comment is incorrect, BTI is enabled per mapping via mprotect with
+PROT_BTI flag set, not per-process. When the loader loads the library,
+if the GNU Notes section is missing this, PROT_BTI will not be enabled
+for that mapping, but is independent of other mappings.
+
+Signed-off-by: Bill Roberts <bill.roberts@arm.com>
+
+---------
+
+Signed-off-by: Bill Roberts <bill.roberts@arm.com>
+---
+ src/aarch64/sysv.S    | 4 +++-
+ testsuite/Makefile.am | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/aarch64/sysv.S b/src/aarch64/sysv.S
+index fdd0e8b7..60cfa505 100644
+--- a/src/aarch64/sysv.S
++++ b/src/aarch64/sysv.S
+@@ -68,7 +68,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
+ #define BTI_J hint #36
+ /*
+  * The ELF Notes section needs to indicate if BTI is supported, as the first ELF loaded that doesn't
+- * declare this support disables it for the whole process.
++ * declare this support disables it for memory region containing the loaded library.
+  */
+ # define GNU_PROPERTY_AARCH64_BTI (1 << 0)         /* Has Branch Target Identification */
+ 	.text
+@@ -527,6 +527,7 @@ L(do_closure):
+ #if defined(FFI_EXEC_STATIC_TRAMP)
+ 	.align 4
+ CNAME(ffi_closure_SYSV_V_alt):
++	BTI_C
+ 	/* See the comments above trampoline_code_table. */
+ 	ldr	x17, [sp, #8]			/* Load closure in x17 */
+ 	add	sp, sp, #16			/* Restore the stack */
+@@ -541,6 +542,7 @@ CNAME(ffi_closure_SYSV_V_alt):
+ 
+ 	.align 4
+ CNAME(ffi_closure_SYSV_alt):
++	BTI_C
+ 	/* See the comments above trampoline_code_table. */
+ 	ldr	x17, [sp, #8]			/* Load closure in x17 */
+ 	add	sp, sp, #16			/* Restore the stack */
+diff --git a/testsuite/Makefile.am b/testsuite/Makefile.am
+index d286cf7f..6ba98e12 100644
+--- a/testsuite/Makefile.am
++++ b/testsuite/Makefile.am
+@@ -8,7 +8,7 @@ CLEANFILES = *.exe core* *.log *.sum
+ 
+ EXTRA_DIST = config/default.exp emscripten/build.sh emscripten/conftest.py \
+ 	emscripten/node-tests.sh emscripten/test.html emscripten/test_libffi.py \
+-  emscripten/build-tests.sh lib/libffi.exp lib/target-libpath.exp \
++	emscripten/build-tests.sh lib/libffi.exp lib/target-libpath.exp \
+ 	lib/wrapper.exp libffi.bhaible/Makefile libffi.bhaible/README \
+ 	libffi.bhaible/alignof.h libffi.bhaible/bhaible.exp libffi.bhaible/test-call.c \
+ 	libffi.bhaible/test-callback.c libffi.bhaible/testcases.c libffi.call/align_mixed.c \
+

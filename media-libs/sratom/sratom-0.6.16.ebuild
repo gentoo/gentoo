@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{9..13} )
 PYTHON_REQ_USE='threads(+)'
 inherit meson-multilib python-any-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

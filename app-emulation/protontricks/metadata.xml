@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<longdescription lang="en">
 		A simple wrapper script that allows you to easily run Winetricks commands for Steam Play/Proton

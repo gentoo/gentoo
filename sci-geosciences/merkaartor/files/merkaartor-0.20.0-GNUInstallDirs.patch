@@ -1,0 +1,44 @@
+From 97fab944083c7a3a5716f1aaf40b9c62a3f84cf2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?= <zebob.m@gmail.com>
+Date: Sun, 26 May 2024 18:43:12 +0200
+Subject: [PATCH] Use CMAKE_INSTALL_LIBDIR for library installation path
+
+---
+ CMakeLists.txt        | 10 ++++++++--
+ plugins/plugins.cmake |  2 ++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e107439d..50d82e1d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,8 +21,14 @@ project(merkaartor VERSION ${VCS_VERSION})
+ # compatibility.
+ # Using configure_file() allows us to store the metadata in a .cpp file, thus
+ # only rebuilding that one and linking.
+-set(SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share/merkaartor)
+-set(LIB_DIR   ${CMAKE_INSTALL_PREFIX}/lib/merkaartor)
++if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++    include(GNUInstallDirs)
++    set(SHARE_DIR ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATAROOTDIR}/merkaartor)
++    set(LIB_DIR   ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/merkaartor)
++else()
++    set(SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share/merkaartor)
++    set(LIB_DIR   ${CMAKE_INSTALL_PREFIX}/lib/merkaartor)
++endif()
+ configure_file("${PROJECT_SOURCE_DIR}/cmake/build-metadata.cpp.in" "${PROJECT_BINARY_DIR}/build-metadata.cpp" @ONLY)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+diff --git a/plugins/plugins.cmake b/plugins/plugins.cmake
+index 955be124..4c9fa499 100644
+--- a/plugins/plugins.cmake
++++ b/plugins/plugins.cmake
+@@ -1,6 +1,8 @@
+ 
+ if (APPLE)
+ set(PLUGINS_INSTALL_POSTFIX "merkaartor.app/Contents/plugins")
++elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++set(PLUGINS_INSTALL_POSTFIX "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/merkaartor/plugins")
+ else()
+ set(PLUGINS_INSTALL_POSTFIX "lib/merkaartor/plugins")
+ endif()

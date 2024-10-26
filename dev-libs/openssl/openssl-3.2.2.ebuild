@@ -8,7 +8,7 @@ inherit edo flag-o-matic linux-info toolchain-funcs
 inherit multilib multilib-minimal multiprocessing preserve-libs verify-sig
 
 DESCRIPTION="Robust, full-featured Open Source Toolkit for the Transport Layer Security (TLS)"
-HOMEPAGE="https://www.openssl.org/"
+HOMEPAGE="https://openssl-library.org/"
 
 MY_P=${P/_/-}
 
@@ -18,12 +18,14 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="
-		mirror://openssl/source/${MY_P}.tar.gz
-		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )
+		https://github.com/openssl/openssl/releases/download/${P}/${P}.tar.gz
+		verify-sig? (
+			https://github.com/openssl/openssl/releases/download/${P}/${P}.tar.gz.asc
+		)
 	"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -46,7 +48,7 @@ BDEPEND="
 		app-alternatives/bc
 		sys-process/procps
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230801 )"
+	verify-sig? ( <sec-keys/openpgp-keys-openssl-20240920 )"
 
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"

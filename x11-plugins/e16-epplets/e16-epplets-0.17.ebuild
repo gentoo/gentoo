@@ -6,10 +6,10 @@ EAPI=8
 DESCRIPTION="Enlightenment DR16 epplets"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
 SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.xz"
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2+ BSD public-domain"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="cdaudio libgtop opengl"
 
 BDEPEND="

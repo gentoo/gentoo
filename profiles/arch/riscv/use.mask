@@ -4,6 +4,13 @@
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-09-01)
+# These lisp implementations have ~riscv keywords.
+# This counteracts the mask in arch/base/use.mask.
+-clisp
+-ecl
+-gcl
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot

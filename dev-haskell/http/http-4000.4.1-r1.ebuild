@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/haskell/HTTP"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-haskell/network-2.6:=[profile?] <dev-haskell/network-3.2:=[profile?]

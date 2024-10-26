@@ -9,7 +9,7 @@ SRC_URI="https://bindfs.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND=">=sys-fs/fuse-3.10.2:3"

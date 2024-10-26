@@ -23,7 +23,7 @@ case ${PV} in
 		SRC_URI="https://github.com/akermu/${MY_PN}/archive/${COMMIT:-${PV}}.tar.gz
 			-> ${P}.tar.gz"
 		S="${WORKDIR}/${MY_PN}-${COMMIT:-${PV}}"
-		KEYWORDS="~amd64 ~arm64 ~x86"
+		KEYWORDS="amd64 ~arm64 ~x86"
 		;;
 esac
 

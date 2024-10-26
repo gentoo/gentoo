@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">christian-korneck/docker-pushrm</remote-id>
+    <bugs-to>https://github.com/christian-korneck/docker-pushrm/issues/</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+    docker-pushrm is a Docker CLI plugin that adds a new docker pushrm
+    command to Docker.  It pushes the README file from the current working
+    directory to a container registry server where it appears as repo
+    description in the web interface.  It currently supports Docker Hub, Red
+    Hat Quay and Harbor v2.  For most registry types docker-pushrm uses
+    authentication info from the Docker credentials store - so it "just
+    works" for registry servers that you're already logged into with Docker.
+  </longdescription>
+</pkgmetadata>

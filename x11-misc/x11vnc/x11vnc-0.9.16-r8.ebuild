@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/LibVNC/x11vnc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="crypt fbcon ssl +xcomposite +xdamage +xfixes xinerama +xrandr zeroconf"
 
 COMMON_DEPEND="
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2020-29074.patch
 	"${FILESDIR}"/${P}-implicit-function-declaration.patch
 	"${FILESDIR}"/${P}-libressl.patch # 903001
+	"${FILESDIR}"/${P}-fix-build-on-32bit.patch
 )
 
 src_prepare() {

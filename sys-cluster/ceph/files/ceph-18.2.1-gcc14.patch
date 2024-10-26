@@ -1,0 +1,141 @@
+From 0eace4ea9ea42412d4d6a16d24a8660642e41173 Mon Sep 17 00:00:00 2001
+From: Radoslaw Zarzynski <rzarzyns@redhat.com>
+Date: Wed, 24 Jan 2024 17:22:44 +0000
+Subject: [PATCH] common/dout: fix FTBFS on GCC 14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The following problem has been reported by Kaleb Keithley:
+
+```
+/builddir/build/BUILD/ceph-18.2.1/src/osd/osd_types.h: In lambda function:
+/builddir/build/BUILD/ceph-18.2.1/src/common/dout.h:184:73: error: call to non-‘constexpr’ function ‘virtual unsigned int DoutPrefixProvider::get_subsys() const’
+  184 |     dout_impl(pdpp->get_cct(), ceph::dout::need_dynamic(pdpp->get_subsys()), v) \
+      |                                                         ~~~~~~~~~~~~~~~~^~
+/builddir/build/BUILD/ceph-18.2.1/src/common/dout.h:155:58: note: in definition of macro ‘dout_impl’
+  155 |       return (cctX->_conf->subsys.template should_gather<sub, v>());    \
+      |                                                          ^~~
+/builddir/build/BUILD/ceph-18.2.1/src/osd/osd_types.h:3617:3: note: in expansion of macro ‘ldpp_dout’
+ 3617 |   ldpp_dout(dpp, 10) << "build_prior all_probe " << all_probe << dendl;
+      |   ^~~~~~~~~
+```
+
+For details of the problem and the idea behind the fix,
+please refer to the comment this commit brings to `dout.h`.
+
+The minimized replicator that the facilitated Goldbot-based
+investigation:
+
+```cpp
+namespace ceph::dout {
+
+template<typename T>
+struct dynamic_marker_t {
+  T value;
+  // constexpr ctor isn't needed as it's an aggregate type
+  constexpr operator T() const { return value; }
+};
+
+template<typename T>
+constexpr dynamic_marker_t<T> need_dynamic(T&& t) {
+  return dynamic_marker_t<T>{ std::forward<T>(t) };
+}
+
+template<typename T>
+struct is_dynamic : public std::false_type {};
+
+template<typename T>
+struct is_dynamic<dynamic_marker_t<T>> : public std::true_type {};
+
+} // ceph::dout
+
+struct subsys_t {
+  template <unsigned SubV, int LvlV>
+  bool should_gather() const {
+    return true;
+  }
+  bool should_gather(const unsigned sub, int level) const {
+    return false;
+  }
+};
+
+static subsys_t subsys;
+
+  do {                                                                  \
+  const bool should_gather = [&](const auto cctX) {                     \
+    if constexpr (ceph::dout::is_dynamic<decltype(sub)>::value ||       \
+                  ceph::dout::is_dynamic<decltype(v)>::value) {         \
+      std::cout << "the dynamic path" << std::endl;                     \
+      return subsys.should_gather(sub, v);                              \
+    } else {                                                            \
+      /* The parentheses are **essential** because commas in angle      \
+       * brackets are NOT ignored on macro expansion! A language's      \
+       * limitation, sorry. */                                          \
+      std::cout << "the static path" << std::endl;                      \
+      /*return subsys.should_gather(sub, v);*/                              \
+      return (subsys.template should_gather<sub, v>());             \
+    }                                                                   \
+  }(cct);                                                               \
+  } while (0)
+
+  if (decltype(auto) pdpp = (dpp); pdpp) /* workaround -Wnonnull-compare for 'this' */ \
+    dout_impl(42, sub, v)
+
+  if (decltype(auto) pdpp = (dpp); pdpp) /* workaround -Wnonnull-compare for 'this' */ \
+    dout_impl(42, ceph::dout::need_dynamic(42), v)
+
+int main() {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist6(1,6); // distribution in range [1, 6]
+
+    int sub = dist6(rng);
+    ldpp_dout("mocked out", sub);
+    //ldpp_subdout("mocked out", 4, 3);
+}
+```
+
+Fixes: https://tracker.ceph.com/issues/64050
+Signed-off-by: Radoslaw Zarzynski <rzarzyns@redhat.com>
+---
+ src/common/dout.h | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/src/common/dout.h b/src/common/dout.h
+index 4cd60efff8fef..6516060c5438e 100644
+--- a/src/common/dout.h
++++ b/src/common/dout.h
+@@ -144,17 +144,27 @@ struct is_dynamic<dynamic_marker_t<T>> : public std::true_type {};
+ #else
+ #define dout_impl(cct, sub, v)						\
+   do {									\
+-  const bool should_gather = [&](const auto cctX) {			\
+-    if constexpr (ceph::dout::is_dynamic<decltype(sub)>::value ||	\
+-		  ceph::dout::is_dynamic<decltype(v)>::value) {		\
++  const bool should_gather = [&](const auto cctX, auto sub_, auto v_) {	\
++    /* The check is performed on `sub_` and `v_` to leverage the C++'s 	\
++     * guarantee on _discarding_ one of blocks of `if constexpr`, which	\
++     * includes also the checks for ill-formed code (`should_gather<>`	\
++     * must not be feed with non-const expresions), BUT ONLY within	\
++     * a template (thus the generic lambda) and under the restriction	\
++     * it's dependant on a parameter of this template).			\
++     * GCC prior to v14 was not enforcing these restrictions. */	\
++    if constexpr (ceph::dout::is_dynamic<decltype(sub_)>::value ||	\
++		  ceph::dout::is_dynamic<decltype(v_)>::value) {	\
+       return cctX->_conf->subsys.should_gather(sub, v);			\
+     } else {								\
++      constexpr auto sub_helper = static_cast<decltype(sub_)>(sub);	\
++      constexpr auto v_helper = static_cast<decltype(v_)>(v);		\
+       /* The parentheses are **essential** because commas in angle	\
+        * brackets are NOT ignored on macro expansion! A language's	\
+        * limitation, sorry. */						\
+-      return (cctX->_conf->subsys.template should_gather<sub, v>());	\
++      return (cctX->_conf->subsys.template should_gather<sub_helper,	\
++							 v_helper>());	\
+     }									\
+-  }(cct);								\
++  }(cct, sub, v);							\
+ 									\
+   if (should_gather) {							\
+     ceph::logging::MutableEntry _dout_e(v, sub);                        \

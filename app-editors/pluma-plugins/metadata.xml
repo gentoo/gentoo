@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>immoloism@gmail.com</email>
@@ -9,13 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-<use>
-	<flag name="bracketcompletion">Auto complete bracket pairs</flag>
-	<flag name="codecomment">Comment code blocks</flag>
-	<flag name="smartspaces">Insert smart spaces</flag>
-	<flag name="synctex">Enable synctex support for pdflatex</flag>
-	<flag name="terminal">Embed a terminal in the bottom pane</flag>
-</use>
 <upstream>
 	<remote-id type="github">mate-desktop/pluma-plugins</remote-id>
 </upstream>

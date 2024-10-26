@@ -1,0 +1,22 @@
+From 50be59fb4bd6706c7939a659f4477041e2f0619e Mon Sep 17 00:00:00 2001
+From: Jarrett Johnson <36459667+JarrettSJohnson@users.noreply.github.com>
+Date: Sat, 6 Apr 2024 22:49:41 -0400
+Subject: [PATCH] PYMOL-4849: Fix SceneGetDrawFlag slot indexing
+
+---
+ layer1/Scene.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/layer1/Scene.cpp b/layer1/Scene.cpp
+index e4888db6d..ed211bdd6 100644
+--- a/layer1/Scene.cpp
++++ b/layer1/Scene.cpp
+@@ -4448,7 +4448,7 @@ int SceneGetDrawFlag(GridInfo * grid, int *slot_vla, int slot)
+       {
+         if(((slot < 0) && grid->slot) ||
+            ((slot == 0) && (grid->slot == 0)) ||
+-           (slot_vla && (slot_vla[slot] == grid->slot))) {
++           (slot_vla && (slot >= 0 && slot_vla[slot] == grid->slot))) {
+           draw_flag = true;
+         }
+       }

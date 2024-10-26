@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Computation with polycyclic groups"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64"
+SLOT="0"
+KEYWORDS="amd64 ~riscv"
 
 # Circular dependency polycyclic->alnuth->polycyclic. There's a global
 # variable called USE_ALNUTH in polycyclic, but setting it to "false"

@@ -1,0 +1,23 @@
+Clang won't allow an incorrect redeclaration.
+
+iozone.c:1272:9: error: redeclaration of 'pread64' must have the 'overloadable' attribute
+ 1272 | ssize_t pread64(); 
+      |         ^
+/usr/include/bits/unistd.h:66:1: note: previous overload of function is here
+   66 | pread64 (int __fd, __fortify_clang_overload_arg0 (void *, ,__buf),
+      | ^
+
+--- a/src/current/iozone.c        2023-05-01 06:29:49.000000000 +0300
++++ b/src/current/iozone.c   2024-10-19 08:44:44.697717249 +0300
+@@ -1268,8 +1268,8 @@
+ 
+ #ifdef HAVE_ANSIC_C
+ #if defined (HAVE_PREAD) && defined(_LARGEFILE64_SOURCE)
+-ssize_t pwrite64(); 
+-ssize_t pread64(); 
++ssize_t pwrite64(int fd, const void *buf, size_t count, off_t offset); 
++ssize_t pread64(int fd, void *buf, size_t count, off_t offset); 
+ #endif
+ #if !defined(linux)
+ char *getenv();
+

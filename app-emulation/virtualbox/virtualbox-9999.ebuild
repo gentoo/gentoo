@@ -9,7 +9,6 @@ EAPI=8
 # It is not meant to be used, might be very unstable.
 # Upstream seem to have added support for python 3.12, but it crashes.
 #
-# USE=doc does not work for now.
 #
 #
 # To add a new Python here:
@@ -30,14 +29,14 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature
 	python-single-r1 subversion tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
-BASE_PV=7.0.16
+BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
 SRC_URI="
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.0_pre20240419.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.0.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 S="${WORKDIR}/trunk"
@@ -132,7 +131,6 @@ RDEPEND="
 	java? ( virtual/jre:1.8 )
 "
 BDEPEND="
-	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
@@ -144,6 +142,7 @@ BDEPEND="
 	sys-power/iasl
 	virtual/pkgconfig
 	doc? (
+		app-doc/dita-ot-bin
 		app-text/docbook-sgml-dtd:4.4
 		app-text/docbook-xsl-ns-stylesheets
 		dev-texlive/texlive-basic
@@ -152,11 +151,13 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
-		dev-qt/qthelp:5
+		dev-qt/qttools:6[assistant]
+		sys-libs/nss_wrapper
 	)
 	gui? ( dev-qt/qttools:6[linguist] )
 	nls? ( dev-qt/qttools:6[linguist] )
 	java? ( virtual/jdk:1.8 )
+	python? ( ${PYTHON_DEPS} )
 "
 
 QA_FLAGS_IGNORED="
@@ -197,7 +198,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.1.0_pre20240419/patches
+	"${WORKDIR}"/virtualbox-patches-7.1.0/patches
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
@@ -262,8 +263,8 @@ src_prepare() {
 			>> LocalConfig.kmk || die
 	fi
 
-	# bug #916002, #488176
-	tc-ld-force-bfd
+	# bug #916002, #488176, #925347
+	tc-ld-is-mold || tc-ld-force-bfd
 
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
@@ -289,13 +290,6 @@ src_prepare() {
 		java-pkg-opt-2_src_prepare
 	fi
 
-	#856811 #864274
-	# cannot filter out only one flag, some combinations of these flags produce buggy executables
-	for i in abm avx avx2 bmi bmi2 fma fma4 popcnt; do
-		append-cflags $(test-flags-CC -mno-$i)
-		append-cxxflags $(test-flags-CXX -mno-$i)
-	done
-
 	# bug #908814
 	filter-lto
 
@@ -314,11 +308,8 @@ src_prepare() {
 	echo -e "\nVBOX_WITH_VBOX_IMG=1" >> LocalConfig.kmk || die
 
 	if tc-is-clang; then
-		# clang assembler chokes on comments starting with /
-		sed -i -e '/^\//d' src/libs/xpcom18a4/nsprpub/pr/src/md/unix/os_Linux_x86_64.s || die
-
 		# clang does not support this extension
-		eapply "${FILESDIR}"/${PN}-7.0.8-disable-rebuild-iPxeBiosBin.patch
+		eapply "${FILESDIR}"/${PN}-7.1.0-disable-rebuild-iPxeBiosBin.patch
 	fi
 
 	# fix doc generation
@@ -494,6 +485,20 @@ src_compile() {
 			TOOL_GXX32_AR="$(tc-getAR)"
 			TOOL_GXX32_OBJCOPY="$(tc-getOBJCOPY)"
 		)
+	fi
+
+	if use doc; then
+		# dita needs to write to ~/.fop and ~/.java
+		# but it ignores ${HOME} and tries to write to the real home of user portage
+		# resulting in a sandbox violation
+		# -Duser.home= does not work
+		# force using the temporary homedir with nss_wrapper
+		echo "${LOGNAME}::$(id -u):$(id -g):${USER}:${HOME}:/bin/bash" >> ~/passwd
+		echo "${LOGNAME}::$(id -g):" >> ~/group
+
+		local -x LD_PRELOAD=libnss_wrapper.so
+		local -x NSS_WRAPPER_PASSWD="${HOME}"/passwd
+		local -x NSS_WRAPPER_GROUP="${HOME}"/group
 	fi
 
 	MAKE="kmk" emake "${myemakeargs[@]}" all

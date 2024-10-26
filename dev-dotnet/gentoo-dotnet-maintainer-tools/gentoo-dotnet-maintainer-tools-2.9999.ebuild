@@ -5,7 +5,7 @@ EAPI=8
 
 MAJOR="$(ver_cut 1)"
 
-DOTNET_PKG_COMPAT=8.0
+DOTNET_PKG_COMPAT="8.0"
 NUGETS="
 fabulous.ast@0.7.0
 fantomas.core@6.3.0-alpha-003
@@ -86,4 +86,6 @@ src_install() {
 	for tool_exe in "${DOTNET_TOOLS[@]}" ; do
 		dotnet-pkg-base_dolauncher "/usr/share/${P}/${tool_exe}"
 	done
+
+	dodoc -r docs/*.md
 }

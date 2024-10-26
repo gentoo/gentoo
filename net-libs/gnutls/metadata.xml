@@ -16,7 +16,7 @@
 			Add support for PKCS#11 through <pkg>app-crypt/p11-kit</pkg>
 		</flag>
 		<flag name="tools">
-			Build extra tools
+			Build cli tools such as gnutls-cli, certtool and oscptool
 		</flag>
 		<flag name="tls-heartbeat">
 			Enable the Heartbeat Extension in TLS and DTLS

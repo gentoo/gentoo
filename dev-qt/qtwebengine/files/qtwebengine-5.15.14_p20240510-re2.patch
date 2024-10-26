@@ -1,0 +1,14 @@
+# https://bugs.gentoo.org/913923
+
+    Fix missing {-no,}-webengine-re2 command line options
+
+--- a/src/core/configure.json
++++ b/src/core/configure.json
+@@ -16,6 +16,7 @@
+             "webengine-icu": { "type": "enum", "name": "webengine-system-icu", "values": { "system": "yes", "qt": "no" } },
+             "webengine-ffmpeg": { "type": "enum", "name": "webengine-system-ffmpeg", "values": { "system": "yes", "qt": "no" } },
+             "webengine-opus": { "type": "enum", "name": "webengine-system-opus", "values": { "system": "yes", "qt": "no" } },
++            "webengine-re2": { "type": "enum", "name": "webengine-system-re2", "values": { "system": "yes", "qt": "no" } },
+             "webengine-webp": { "type": "enum", "name": "webengine-system-libwebp", "values": { "system": "yes", "qt": "no" } },
+             "webengine-pepper-plugins": "boolean",
+             "webengine-printing-and-pdf": "boolean",

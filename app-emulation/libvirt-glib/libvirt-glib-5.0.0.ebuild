@@ -7,7 +7,7 @@ inherit meson vala
 
 DESCRIPTION="GLib and GObject mappings for libvirt"
 HOMEPAGE="https://libvirt.org/ https://gitlab.com/libvirt/libvirt-glib/"
-SRC_URI="https://libvirt.org/sources/glib/${P}.tar.xz"
+SRC_URI="https://download.libvirt.org/glib/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 x86"

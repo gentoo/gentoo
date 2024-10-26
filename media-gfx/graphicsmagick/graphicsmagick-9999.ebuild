@@ -20,7 +20,7 @@ else
 	SRC_URI+=" verify-sig? ( https://downloads.sourceforge.net/project/${PN}/${PN}-history/$(ver_cut 1-2)/${MY_P}.tar.xz.asc )"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bobfriesenhahn )"
 fi
@@ -28,8 +28,8 @@ fi
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
 IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpeg2k jpegxl lcms lzma"
-IUSE+=" openmp perl png postscript q16 q32 static-libs tcmalloc tiff truetype"
-IUSE+=" webp wmf X zlib zstd"
+IUSE+=" openmp perl postscript png q16 q32 static-libs tcmalloc tiff truetype"
+IUSE+=" webp wmf X zip zlib zstd"
 
 RDEPEND="
 	dev-libs/libltdl
@@ -44,8 +44,8 @@ RDEPEND="
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl:= )
+	postscript? ( app-text/ghostscript-gpl:= )
 	png? ( media-libs/libpng:= )
-	postscript? ( app-text/ghostscript-gpl )
 	tcmalloc? ( dev-util/google-perftools:= )
 	tiff? ( media-libs/tiff:= )
 	truetype? (
@@ -59,6 +59,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXext
 	)
+	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd:= )
 "
@@ -103,12 +104,12 @@ src_configure() {
 		--with-quantum-depth=${depth}
 		--without-frozenpaths
 		$(use_with cxx magick-plus-plus)
+		$(use_with postscript gs)
 		$(use_with heif)
 		$(use_with jpegxl jxl)
 		$(use_with perl)
 		--with-perl-options=INSTALLDIRS=vendor
 		$(use_with bzip2 bzlib)
-		$(use_with postscript dps)
 		$(use_with fpx)
 		$(use_with jbig)
 		$(use_with webp)
@@ -125,6 +126,7 @@ src_configure() {
 		--with-fontpath="${EPREFIX}"/usr/share/fonts
 		--with-gs-font-dir="${EPREFIX}"/usr/share/fonts/urw-fonts
 		--with-windows-font-dir="${EPREFIX}"/usr/share/fonts/corefonts
+		$(use_with zip libzip)
 		$(use_with zlib)
 		$(use_with zstd)
 		$(use_with X x)

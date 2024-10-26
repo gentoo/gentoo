@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ DESCRIPTION="Scintilla source code editing component for wxWidgets"
 LICENSE+=" HPND"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/Alien-wxWidgets
@@ -29,6 +28,9 @@ BDEPEND=${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.34-flags.patch
 	"${FILESDIR}"/${PN}-0.39-gcc6.patch
+	"${FILESDIR}"/${PN}-0.39-respect-user-flags.patch
+	"${FILESDIR}"/${PN}-0.39-force-c++11.patch
+	"${FILESDIR}"/${PN}-0.39-scrub-gtk2.patch
 )
 
 src_configure() {

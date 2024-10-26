@@ -4,6 +4,7 @@
 EAPI=8
 
 TOOLCHAIN_PATCH_DEV="sam"
+TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="12.3.0"
 MUSL_GCC_VER="12.3.0"
 PYTHON_COMPAT=( python3_{10..12} )
@@ -36,7 +37,7 @@ if tc_is_live ; then
 	EGIT_BRANCH=releases/gcc-$(ver_cut 1)
 elif [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
 	# Don't keyword live ebuilds
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 if [[ ${CATEGORY} != cross-* ]] ; then

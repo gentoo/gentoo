@@ -17,16 +17,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-10-09)
+# The package still does not support dev-python/pytest-8 (effectively
+# blocking Python 3.13 support), suffers from tons of test failures
+# we were never able to solve, and new releases frequently introduce
+# regressions.  Bug #937896.
+dev-python/sentry-sdk
+
 # Michał Górny <mgorny@gentoo.org> (2024-06-15)
 # Stop-gap compatibility package.  Upstreams really need to move away
 # from the removed cgi module rather than rely on this.
 dev-python/legacy-cgi
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
-# ant-core should no longer be ussed as of version 1.10.14 or higher.
-# It is now completely integrated in dev-java/ant and will be removed after a
-# grace period.
-dev-java/ant-core
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-09)
 # Unmaintained upstream. Does not build with llvm-16 and up, nor with

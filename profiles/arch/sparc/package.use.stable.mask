@@ -1,6 +1,10 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-07-31)
+# Qt 6 not stable here.
+dev-build/cmake gui
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
 # app-text/mupdf is not stable. bug #923811
 net-print/cups-filters pdf
@@ -118,7 +122,3 @@ dev-libs/libzip mbedtls
 net-libs/libssh mbedtls
 net-libs/libssh2 mbedtls
 net-vpn/openvpn mbedtls
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-04)
-# Needs stable net-libs/webkit-gtk, bug #712260
-app-editors/emacs xwidgets

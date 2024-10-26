@@ -6,7 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="ada">Build the ADA language (GNAT) frontend</flag>
-		<flag name="bootstrap">Used to bootstrap gnat-gpl</flag>
 		<flag name="cet" restrict="&gt;=dev-lang/gnat-gpl-2021">Enable support for Intel Control Flow Enforcement Technology (CET)</flag>
 		<flag name="d">Enable support for the D programming language</flag>
 		<flag name="default-stack-clash-protection">Build packages with stack clash protection on by default</flag>
@@ -29,6 +28,7 @@
 		<flag name="pgo">Build GCC using Profile Guided Optimization (PGO)</flag>
 		<flag name="rust">Build support for the Rust language, installs gccrs.</flag>
 		<flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
+		<flag name="system-bootstrap">Bootstrap using installed Ada compiler</flag>
 		<flag name="systemtap">enable systemtap static probe points</flag>
 		<flag name="ssp">Build packages with stack smashing protector on by default</flag>
 		<flag name="vtv">Build support for virtual table verification (a C++ hardening feature)</flag>

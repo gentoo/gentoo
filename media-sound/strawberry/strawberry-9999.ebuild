@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake flag-o-matic plocale xdg
 
-PLOCALES="ca cs de es es_AR es_ES es_MX fi fr hu id it ja ko nb nl pl pt_BR ru sv uk zh_CN"
+PLOCALES="ca_ES cs_CZ de_DE es_AR es_ES es_MX et_EE fi_FI fr_FR hu_HU id_ID it_IT ja_JP ko_KR nb_NO nl_NL pl_PL pt_BR ru_RU sv_SE tr_CY tr_TR uk_UA zh_CN zh_TW"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawberrymusicplayer.org/"
@@ -19,35 +19,41 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda debug +gstreamer icu ipod moodbar mtp pulseaudio +udisks vlc"
+IUSE="cdda debug +gstreamer ipod moodbar mtp pulseaudio qt6 soup +udisks vlc"
 
 BDEPEND="
-	dev-qt/linguist-tools:5
 	sys-devel/gettext
 	virtual/pkgconfig
+	!qt6? ( dev-qt/linguist-tools:5 )
 "
 COMMON_DEPEND="
 	dev-db/sqlite:=
 	dev-libs/glib:2
+	dev-libs/icu:=
 	dev-libs/protobuf:=
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
 	media-libs/alsa-lib
 	media-libs/taglib
-	x11-libs/libX11
+	!qt6? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5[ssl]
+		dev-qt/qtsql:5[sqlite]
+		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
+		x11-libs/libX11
+	)
+	qt6? (
+		dev-libs/kdsingleapplication[qt6(+)]
+		dev-qt/qtbase:6[concurrent,dbus,gui,network,ssl,sql,sqlite,widgets]
+	)
 	cdda? ( dev-libs/libcdio:= )
 	gstreamer? (
 		media-libs/chromaprint:=
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
-	icu? ( dev-libs/icu:= )
 	ipod? ( media-libs/libgpod )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( media-libs/libmtp )
@@ -58,7 +64,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	gstreamer? (
 		media-plugins/gst-plugins-meta:1.0
-		media-plugins/gst-plugins-soup:1.0
+		soup? ( media-plugins/gst-plugins-soup:1.0 )
 		media-plugins/gst-plugins-taglib:1.0
 	)
 	mtp? ( gnome-base/gvfs[mtp] )
@@ -67,7 +73,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/gtest
 	dev-libs/boost
-	dev-qt/qttest:5
+	!qt6? ( dev-qt/qttest:5 )
 "
 
 DOCS=( Changelog README.md )
@@ -93,16 +99,18 @@ src_configure() {
 		-DLINGUAS="$(plocale_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_GSTREAMER="$(usex gstreamer)"
-		-DUSE_ICU="$(usex icu)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_MOODBAR="$(usex moodbar)"
 		-DENABLE_MUSICBRAINZ="$(usex gstreamer)"
 		-DENABLE_SONGFINGERPRINTING="$(usex gstreamer)"
+		-DENABLE_SPOTIFY="$(usex gstreamer)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
-		-DQT_VERSION_MAJOR=5
+		-DBUILD_WITH_QT6="$(usex qt6)"
+		-DBUILD_WITH_QT5="$(usex !qt6)"
+		-DQT_VERSION_MAJOR="$(usex qt6 6 5)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT

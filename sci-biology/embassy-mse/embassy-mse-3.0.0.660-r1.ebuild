@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 EBO_DESCRIPTION="MSE - Multiple Sequence Screen Editor"
 
-inherit autotools emboss-r3
+inherit autotools emboss-r3 flag-o-matic
 
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 
@@ -21,6 +21,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927386
+	#
+	# Upstream is dead since 2013.
+	filter-lto
+
 	emboss-r3_src_configure --enable-curses
 }
 

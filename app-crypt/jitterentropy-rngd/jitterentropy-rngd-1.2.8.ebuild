@@ -12,7 +12,6 @@ SRC_URI="https://github.com/smuellerDD/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~mips x86"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-do-not-strip-and-compress.patch

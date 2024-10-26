@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit vim-plugin
 
@@ -20,3 +20,7 @@ LICENSE="WTFPL-2"
 VIM_PLUGIN_HELPFILES="NERD_tree"
 
 DOCS=( CHANGELOG.md README.markdown )
+
+src_install() {
+	vim-plugin_src_install lib nerdtree_plugin
+}

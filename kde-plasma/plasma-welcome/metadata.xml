@@ -8,8 +8,4 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
-	<use>
-		<flag name="discover">Pull in resources management GUI; a centralised GHNS alternative and optional <pkg>sys-apps/fwupd</pkg> frontend</flag>
-		<flag name="kaccounts">Build the OpenDesktop integration plugin</flag>
-	</use>
 </pkgmetadata>

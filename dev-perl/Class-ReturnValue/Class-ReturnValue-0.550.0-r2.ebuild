@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Return-value object that lets you treat it as as a boolean, array or object"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~riscv sparc x86"
 
 RDEPEND="dev-perl/Devel-StackTrace"
 BDEPEND="${RDEPEND}"

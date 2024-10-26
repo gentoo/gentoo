@@ -1,0 +1,18 @@
+From b5f466a66771621a3aaa15434910f413ab7168f7 Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Sat, 10 Aug 2024 16:10:13 -0400
+Subject: [PATCH] octree_node.txx fix chilren typo
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/Utilities/octree/octree/octree_node.txx
++++ b/Utilities/octree/octree/octree_node.txx
+@@ -210,7 +210,7 @@ const octree_node<T_, d_, A_>& octree_node<T_, d_, A_>::operator[](int child) co
+   {
+     throw std::domain_error("Attempt to access children of an octree leaf node.");
+   }
+-  return this->_M_chilren[child];
++  return this->m_children[child];
+ }
+ 
+ /**\brief Return a reference to a child node.

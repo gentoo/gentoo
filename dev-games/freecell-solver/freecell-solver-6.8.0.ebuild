@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake python-single-r1
 
 DESCRIPTION="C library for automatically solving Freecell and some other solitaire variants"

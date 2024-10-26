@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="High-level interface to cddb/freedb protocol"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 RDEPEND="
 	>=virtual/perl-Carp-1.260.0

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hamcrest/JavaHamcrest/archive/hamcrest-java-${PV}.ta
 
 LICENSE="BSD-2"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm64 ppc64 ~ppc-macos ~x64-macos"
 
 CP_DEPEND="dev-java/qdox:1.12"
 

@@ -1,0 +1,21 @@
+From 921792f201e954de461d3b551e01b5369d666db8 Mon Sep 17 00:00:00 2001
+From: Antonio Alvarez Feijoo <antonio.feijoo@suse.com>
+Date: Tue, 10 Sep 2024 15:51:46 +0200
+Subject: [PATCH] feat(systemd): always install libsystemd libraries
+
+---
+ modules.d/00systemd/module-setup.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/modules.d/00systemd/module-setup.sh b/modules.d/00systemd/module-setup.sh
+index 498cd7edd..fb8a8200b 100755
+--- a/modules.d/00systemd/module-setup.sh
++++ b/modules.d/00systemd/module-setup.sh
+@@ -156,5 +156,6 @@ EOF
+     _arch=${DRACUT_ARCH:-$(uname -m)}
+     inst_libdir_file \
+         {"tls/$_arch/",tls/,"$_arch/",}"libgcrypt.so*" \
+-        {"tls/$_arch/",tls/,"$_arch/",}"libnss_*"
++        {"tls/$_arch/",tls/,"$_arch/",}"libnss_*" \
++        {"tls/$_arch/",tls/,"$_arch/",}"systemd/libsystemd*.so"
+ }

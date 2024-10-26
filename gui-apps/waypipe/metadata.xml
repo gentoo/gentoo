@@ -11,7 +11,7 @@
 	<use>
 		<flag name="dmabuf">Use DMABUFs for data exchange and hardware decoding</flag>
 		<flag name="ffmpeg">Link with ffmpeg to allow buffer displays using video streams</flag>
-		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
 	</use>
 	<upstream>
 		<remote-id type="freedesktop-gitlab">mstoeckl/waypipe</remote-id>

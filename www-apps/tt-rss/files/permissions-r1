@@ -14,8 +14,8 @@ if [[ $1 = install ]]; then
 	chown root:root cache/
 	chmod 00755 cache/
 
-	chgrp --no-dereference ttrssd lock/ cache/*/
-	chmod g+ws lock/ cache/*/
+	chgrp --no-dereference ttrssd feed-icons/ lock/ cache/*/
+	chmod g+ws feed-icons/ lock/ cache/*/
 
 	# Files within lock/ are exclusively written by the update daemon. cache/
 	# subdirectories hold files that are modified in place by both processes and

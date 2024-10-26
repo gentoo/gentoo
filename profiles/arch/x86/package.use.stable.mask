@@ -17,13 +17,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-20)
+# dev-python/pyside6 is not stable here.
+dev-python/QtPy pyside6
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
+# kde-plasma/plasma-workspace is not stable here.
+sys-auth/polkit kde
+virtual/notification-daemon kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-30)
+# KF6 is not stable here.
+>=app-crypt/pinentry-1.3.0 wayland
+
+# Matt Turner <mattst88@gentoo.org> (2024-07-14)
+# spirv-llvm-translator < 17 is not stable on x86.
+<dev-libs/libclc-17 spirv
+
 # Sam James <sam@gentoo.org> (2024-04-30)
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd
-
-# Matt Turner <mattst88@gentoo.org> (2024-04-25)
-# spirv-llvm-translator is not stable on x86.
-dev-libs/libclc spirv
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
 # Experimental, virt-firmware is keyworded only unstable
@@ -41,11 +54,8 @@ dev-games/openscenegraph las
 dev-libs/efl physics
 media-libs/a52dec djbfft
 dev-python/graphviz test
-kde-apps/cantor R
 dev-python/sympy symengine
-kde-apps/gwenview fits
 kde-apps/marble gps
-kde-plasma/plasma-workspace gps
 media-gfx/graphviz gts
 media-libs/libpano13 suitesparse
 media-libs/opencv gdal lapack
@@ -53,8 +63,6 @@ media-libs/openimageio dicom
 sci-libs/cholmod partition
 sci-libs/gdal armadillo fits geos hdf5 netcdf ogdi
 sci-libs/gsl cblas-external
-sci-libs/hdf szip test
-sci-libs/hdf5 szip
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-28)
 # dev-ruby/stringex is not marked stable here yet

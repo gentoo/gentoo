@@ -35,13 +35,18 @@ opts=(
 	--no-downgrade
 )
 
-if [[ ${KERNEL_INSTALL_VERBOSE} == 1 ]]; then
-	echo "Generating Intel CPU Microcode early initramfs image..."
-	opts+=(
-		--list-all
-		--list
-	)
-fi
+if [[ -d /lib/firmware/intel-ucode ]]; then
+	if [[ ${KERNEL_INSTALL_VERBOSE} == 1 ]]; then
+		echo "Generating Intel CPU Microcode early initramfs image..."
+		opts+=(
+			--list-all
+			--list
+		)
+	fi
 
-iucode_tool /lib/firmware/intel-ucode "${opts[@]}" ||
-	{ echo "iucode_tool failed" && exit 1; }
+	iucode_tool /lib/firmware/intel-ucode "${opts[@]}" ||
+		{ echo "iucode_tool failed" && exit 1; }
+else
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"No Intel CPU Microcode installed, nothing to do here."
+fi

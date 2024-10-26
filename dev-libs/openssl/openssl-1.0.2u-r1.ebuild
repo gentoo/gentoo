@@ -22,7 +22,7 @@ MY_P=${P/_/-}
 BINDIST_PATCH_SET="openssl-1.0.2t-bindist-1.0.tar.xz"
 
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
-HOMEPAGE="https://www.openssl.org/"
+HOMEPAGE="https://openssl-library.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	bindist? (
 		mirror://gentoo/bb/${BINDIST_PATCH_SET}
@@ -33,7 +33,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 
 LICENSE="openssl"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux ~arm64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux ~arm64-macos"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test tls-compression +tls-heartbeat vanilla"
 RESTRICT="!bindist? ( bindist )
 	!test? ( test )"
@@ -159,12 +159,6 @@ multilib_src_configure() {
 	#if ${CC} ${CFLAGS} -c "${T}"/128.c -o /dev/null >&/dev/null ; then
 	#       ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
 	#fi
-
-	# https://github.com/openssl/openssl/issues/2286
-	if use ia64 ; then
-		replace-flags -g3 -g2
-		replace-flags -ggdb3 -ggdb2
-	fi
 
 	local sslout=$(./gentoo.config)
 	einfo "Use configuration ${sslout:-(openssl knows best)}"

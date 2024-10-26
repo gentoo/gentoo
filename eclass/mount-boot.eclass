@@ -4,7 +4,7 @@
 # @ECLASS: mount-boot.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: eclass for packages that install files into /boot or the ESP
 # @DESCRIPTION:
 # This eclass is really only useful for bootloaders and kernel installation.

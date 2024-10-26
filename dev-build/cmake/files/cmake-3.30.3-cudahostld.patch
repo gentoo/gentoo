@@ -1,0 +1,23 @@
+From 0648f8f75c5f7044cca0f96d26e3ef6ed9440b3d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 17:04:04 +0200
+Subject: [PATCH] allow custom CMAKE_CUDA_LINK_LAUNCHER
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Modules/Internal/CMakeNVCCParseImplicitInfo.cmake b/Modules/Internal/CMakeNVCCParseImplicitInfo.cmake
+index 3aa10a2..a58c3ec 100644
+--- a/Modules/Internal/CMakeNVCCParseImplicitInfo.cmake
++++ b/Modules/Internal/CMakeNVCCParseImplicitInfo.cmake
+@@ -77,6 +77,11 @@ macro(cmake_nvcc_parse_implicit_info lang lang_var_)
+   if(_nvcc_link_line)
+     if("x${CMAKE_${lang}_SIMULATE_ID}" STREQUAL "xMSVC")
+       set(CMAKE_${lang}_HOST_LINK_LAUNCHER "${CMAKE_LINKER}")
++    elseif(DEFINED ENV{CUDAHOSTLD})
++      set(CMAKE_${lang}_HOST_LINK_LAUNCHER "$ENV{CUDAHOSTLD}")
++      string(APPEND _nvcc_log "  env link launcher name: [${CMAKE_${lang}_HOST_LINK_LAUNCHER}]\n")
++    elseif(DEFINED CMAKE_CUDA_HOST_LINK_LAUNCHER)
++      string(APPEND _nvcc_log "  set link launcher name: [${CMAKE_${lang}_HOST_LINK_LAUNCHER}]\n")
+     else()
+       #extract the compiler that is being used for linking
+       separate_arguments(_nvcc_link_line_args UNIX_COMMAND "${_nvcc_link_line}")

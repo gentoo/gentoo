@@ -11,7 +11,7 @@ SRC_URI="https://github.com/michaelrsweet/${PN}/releases/download/v${PV}/${P}-so
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86"
 IUSE="fltk ssl"
 
 BDEPEND="virtual/pkgconfig"

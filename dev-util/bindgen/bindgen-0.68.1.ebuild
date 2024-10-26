@@ -118,7 +118,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 
 DEPEND="virtual/rust"
 RDEPEND="${DEPEND}
-	sys-devel/clang:="
+	sys-devel/clang:*"
 
 QA_FLAGS_IGNORED="usr/bin/bindgen"
 

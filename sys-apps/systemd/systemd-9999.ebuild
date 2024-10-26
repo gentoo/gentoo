@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 # Avoid QA warnings
 TMPFILES_OPTIONAL=1
@@ -20,7 +20,7 @@ else
 	SRC_URI="https://github.com/systemd/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	fi
 fi
 
@@ -33,7 +33,7 @@ HOMEPAGE="https://systemd.io/"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
-	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
+	acl apparmor audit boot bpf cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
 	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
@@ -59,6 +59,7 @@ COMMON_DEPEND="
 	acl? ( sys-apps/acl:0= )
 	apparmor? ( >=sys-libs/libapparmor-2.13:0= )
 	audit? ( >=sys-process/audit-2:0= )
+	bpf? ( >=dev-libs/libbpf-1.4.0:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
 	curl? ( >=net-misc/curl-7.32.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
@@ -134,11 +135,11 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
+		!sys-apps/openrc-navi[sysv-utils(-)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? ( sys-apps/sysvinit )
 	resolvconf? ( !net-dns/openresolv )
-	!sys-apps/hwids[udev]
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev
@@ -157,6 +158,10 @@ BDEPEND="
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
 	virtual/pkgconfig
+	bpf? (
+		dev-util/bpftool
+		sys-devel/bpf-toolchain
+	)
 	test? (
 		app-text/tree
 		dev-lang/perl
@@ -222,6 +227,7 @@ pkg_pretend() {
 			~!SYSFS_DEPRECATED_V2"
 
 		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
+		use bpf && CONFIG_CHECK+=" ~BPF ~BPF_SYSCALL ~BPF_LSM ~DEBUG_INFO_BTF"
 		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
 
 		if kernel_is -ge 5 10 20; then
@@ -310,6 +316,8 @@ multilib_src_configure() {
 		$(meson_native_use_bool apparmor)
 		$(meson_native_use_bool audit)
 		$(meson_native_use_bool boot bootloader)
+		$(meson_native_use_bool bpf bpf-framework)
+		-Dbpf-compiler=gcc
 		$(meson_native_use_bool cryptsetup libcryptsetup)
 		$(meson_native_use_bool curl libcurl)
 		$(meson_native_use_bool dns-over-tls dns-over-tls)
@@ -431,7 +439,11 @@ multilib_src_install_all() {
 	keepdir /var/log/journal
 
 	if use pam; then
-		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+		if use selinux; then
+			newpamd "${FILESDIR}"/systemd-user-selinux.pam systemd-user
+		else
+			newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+		fi
 	fi
 
 	if use kernel-install; then

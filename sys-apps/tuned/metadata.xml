@@ -9,4 +9,7 @@
 A tool that performs monitoring and adaptive configuration of the system
 according to selected profile. 
 </longdescription>
+<upstream>
+	<remote-id type="github">redhat-performance/tuned</remote-id>
+</upstream>
 </pkgmetadata>

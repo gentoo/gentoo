@@ -1,0 +1,179 @@
+# HG changeset patch
+# User Aidan Kehoe <kehoea@parhasard.net>
+# Date 1727074995 -3600
+#      Mon Sep 23 08:03:15 2024 +0100
+# Node ID d40990b854cf32198aea31eae0d60ce91ce0f4f7
+# Parent  d3dfe7ea1c31cc619bf8416e04c5466927d9c6f5
+Avoid passing an int among Lisp_Object va_args, specifier instantiate methods.
+
+src/ChangeLog addition:
+
+2024-09-08  Aidan Kehoe  <kehoea@parhasard.net>
+
+	* fontcolor.c (color_instantiate):
+	* fontcolor.c (font_instantiate):
+	* fontcolor.c (face_boolean_instantiate):
+	* fontcolor.c (face_background_placement_instantiate):
+	* glyphs.c (image_instantiate):
+	* specifier.c (specifier_instance_from_inst_list):
+	* specifier.h (struct specifier_methods):
+	Avoid passing an int among the Lisp_Object va_args of the
+	specifier instantiate methods, this is not portable behaviour,
+	thank you clang and -fsanitize=undefined.
+
+[Changelog patch removed]
+
+diff -r d3dfe7ea1c31 -r d40990b854cf src/fontcolor.c
+--- a/src/fontcolor.c	Mon Sep 23 08:01:37 2024 +0100
++++ b/src/fontcolor.c	Mon Sep 23 08:03:15 2024 +0100
+@@ -1380,7 +1380,7 @@
+ static Lisp_Object
+ color_instantiate (Lisp_Object specifier, Lisp_Object UNUSED (matchspec),
+ 		   Lisp_Object domain, Lisp_Object instantiator,
+-		   Lisp_Object depth, int no_fallback)
++		   Lisp_Object depth, Lisp_Object no_fallback)
+ {
+   /* When called, we're inside of call_with_suspended_errors(),
+      so we can freely error. */
+@@ -1436,7 +1436,7 @@
+ 		  (Fget_face (XVECTOR_DATA (instantiator)[0]),
+ 		   COLOR_SPECIFIER_FACE_PROPERTY
+ 		   (XCOLOR_SPECIFIER (specifier)),
+-		   domain, ERROR_ME, no_fallback, depth));
++                     domain, ERROR_ME, !NILP (no_fallback), depth));
+ 
+ 	case 2:
+ 	  return (FACE_PROPERTY_INSTANCE_1
+@@ -1653,7 +1653,7 @@
+ font_instantiate (Lisp_Object UNUSED (specifier),
+ 		  Lisp_Object USED_IF_MULE (matchspec),
+ 		  Lisp_Object domain, Lisp_Object instantiator,
+-		  Lisp_Object depth, int no_fallback)
++		  Lisp_Object depth, Lisp_Object no_fallback)
+ {
+   /* When called, we're inside of call_with_suspended_errors(),
+      so we can freely error. */
+@@ -1766,13 +1766,15 @@
+ 
+       match_inst = face_property_matching_instance
+ 	(Fget_face (XVECTOR_DATA (instantiator)[0]), Qfont,
+-	 charset, domain, ERROR_ME, no_fallback, depth, STAGE_INITIAL);
++           charset, domain, ERROR_ME, !NILP (no_fallback),
++           depth, STAGE_INITIAL);
+ 
+       if (UNBOUNDP(match_inst))
+ 	{
+ 	  match_inst = face_property_matching_instance
+ 	    (Fget_face (XVECTOR_DATA (instantiator)[0]), Qfont,
+-	     charset, domain, ERROR_ME, no_fallback, depth, STAGE_FINAL);
++               charset, domain, ERROR_ME, !NILP (no_fallback), depth,
++               STAGE_FINAL);
+ 	}
+ 
+       return match_inst;
+@@ -1868,7 +1870,7 @@
+ face_boolean_instantiate (Lisp_Object specifier,
+ 			  Lisp_Object UNUSED (matchspec),
+ 			  Lisp_Object domain, Lisp_Object instantiator,
+-			  Lisp_Object depth, int no_fallback)
++			  Lisp_Object depth, Lisp_Object no_fallback)
+ {
+   /* When called, we're inside of call_with_suspended_errors(),
+      so we can freely error. */
+@@ -1895,7 +1897,7 @@
+ 
+       retval = (FACE_PROPERTY_INSTANCE_1
+ 		(Fget_face (XVECTOR_DATA (instantiator)[0]),
+-		 prop, domain, ERROR_ME, no_fallback, depth));
++                   prop, domain, ERROR_ME, !NILP (no_fallback), depth));
+ 
+       if (instantiator_len == 3 && !NILP (XVECTOR_DATA (instantiator)[2]))
+ 	retval = NILP (retval) ? Qt : Qnil;
+@@ -2015,7 +2017,7 @@
+ 				       Lisp_Object domain,
+ 				       Lisp_Object instantiator,
+ 				       Lisp_Object depth,
+-				       int no_fallback)
++                                       Lisp_Object no_fallback)
+ {
+   /* When called, we're inside of call_with_suspended_errors(),
+      so we can freely error. */
+@@ -2027,7 +2029,7 @@
+ 
+       return FACE_PROPERTY_INSTANCE_1
+ 	(Fget_face (XVECTOR_DATA (instantiator)[0]),
+-	 Qbackground_placement, domain, ERROR_ME, no_fallback, depth);
++           Qbackground_placement, domain, ERROR_ME, !NILP (no_fallback), depth);
+     }
+   else
+     ABORT ();	/* Eh? */
+diff -r d3dfe7ea1c31 -r d40990b854cf src/glyphs.c
+--- a/src/glyphs.c	Mon Sep 23 08:01:37 2024 +0100
++++ b/src/glyphs.c	Mon Sep 23 08:03:15 2024 +0100
+@@ -3179,7 +3179,7 @@
+ static Lisp_Object
+ image_instantiate (Lisp_Object specifier, Lisp_Object UNUSED (matchspec),
+ 		   Lisp_Object domain, Lisp_Object instantiator,
+-		   Lisp_Object depth, int no_fallback)
++		   Lisp_Object depth, Lisp_Object no_fallback)
+ {
+   Lisp_Object glyph = IMAGE_SPECIFIER_ATTACHEE (XIMAGE_SPECIFIER (specifier));
+   int dest_mask = XIMAGE_SPECIFIER_ALLOWED (specifier);
+@@ -3218,7 +3218,7 @@
+       assert (XVECTOR_LENGTH (instantiator) == 3);
+       return (FACE_PROPERTY_INSTANCE
+ 	      (Fget_face (XVECTOR_DATA (instantiator)[2]),
+-	       Qbackground_pixmap, domain, no_fallback, depth));
++	       Qbackground_pixmap, domain, !NILP (no_fallback), depth));
+     }
+   else
+     {
+diff -r d3dfe7ea1c31 -r d40990b854cf src/specifier.c
+--- a/src/specifier.c	Mon Sep 23 08:01:37 2024 +0100
++++ b/src/specifier.c	Mon Sep 23 08:03:15 2024 +0100
+@@ -2862,8 +2862,8 @@
+       if (HAS_SPECMETH_P (sp, instantiate))
+ 	val = call_with_suspended_errors
+ 	  ((lisp_fn_t) RAW_SPECMETH (sp, instantiate),
+-	   Qunbound, Qspecifier, ERROR_ME_WARN, 5, specifier,
+-	   matchspec, domain, val, depth, no_fallback);
++	   Qunbound, Qspecifier, ERROR_ME_WARN, 6, specifier,
++	   matchspec, domain, val, depth, no_fallback ? Qt : Qnil);
+ 
+       if (!UNBOUNDP (val))
+ 	{
+@@ -2911,8 +2911,8 @@
+       if (HAS_SPECMETH_P (sp, instantiate))
+ 	val = call_with_suspended_errors
+ 	  ((lisp_fn_t) RAW_SPECMETH (sp, instantiate),
+-	   Qunbound, Qspecifier, errb, 5, specifier,
+-	   matchspec, domain, val, depth, no_fallback);
++	   Qunbound, Qspecifier, errb, 6, specifier,
++	   matchspec, domain, val, depth, no_fallback ? Qt : Qnil);
+ 
+       if (!UNBOUNDP (val))
+ 	{
+diff -r d3dfe7ea1c31 -r d40990b854cf src/specifier.h
+--- a/src/specifier.h	Mon Sep 23 08:01:37 2024 +0100
++++ b/src/specifier.h	Mon Sep 23 08:03:15 2024 +0100
+@@ -147,8 +147,9 @@
+      name specifier_instance) to avoid creating "external"
+      specification loops.
+ 
+-     NO_FALLBACK indicates that the method should not try the fallbacks
+-     (and thus simply return Qunbound) in case of a failure to instantiate.
++     NO_FALLBACK non-nil indicates that the method should not try the
++     fallbacks (and thus simply return Qunbound) in case of a failure to
++     instantiate.
+ 
+      This method must presume that both INSTANTIATOR and MATCHSPEC are
+      already validated by the corresponding validate_* methods, and
+@@ -165,7 +166,7 @@
+ 				     Lisp_Object domain,
+ 				     Lisp_Object instantiator,
+ 				     Lisp_Object depth,
+-				     int no_fallback);
++				     Lisp_Object no_fallback);
+ 
+   /* Going-to-add method: Called when an instantiator is about
+      to be added to a specifier.  This function can specify

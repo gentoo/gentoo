@@ -1,0 +1,54 @@
+From 314fb5e18cbcaa11040a129d6ffaee3c376f55e7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Wed, 31 Jul 2024 15:08:20 +0200
+Subject: [PATCH] skip py3.13 incompatible tests
+
+Based on upstream changes in PR https://github.com/twisted/twisted/pull/12092
+
+diff --git a/src/twisted/internet/test/test_inlinecb.py b/src/twisted/internet/test/test_inlinecb.py
+index 355572b566..11c09c6996 100644
+--- a/src/twisted/internet/test/test_inlinecb.py
++++ b/src/twisted/internet/test/test_inlinecb.py
+@@ -6,11 +6,13 @@
+ Tests for L{twisted.internet.inlineCallbacks}.
+ """
+ 
++import sys
+ import traceback
+ import unittest as pyunit
+ import weakref
+ from enum import Enum
+ from typing import Any, Generator, List, Set, Union
++from unittest import skipIf
+ 
+ from twisted.internet import reactor, task
+ from twisted.internet.defer import (
+@@ -1122,6 +1124,9 @@ class NonLocalExitTests(TestCase):
+ 
+ 
+ class ForwardTraceBackTests(SynchronousTestCase):
++    HAVE_PY3_12_OR_OLDER = sys.version_info < (3, 13)
++
++    @skipIf(not HAVE_PY3_12_OR_OLDER, "Needs Python 3.12 or older")
+     def test_forwardTracebacks(self):
+         """
+         Chained inlineCallbacks are forwarding the traceback information
+@@ -1171,6 +1176,7 @@ class ForwardTraceBackTests(SynchronousTestCase):
+ 
+         return d
+ 
++    @skipIf(not HAVE_PY3_12_OR_OLDER, "Needs Python 3.12 or older")
+     def test_forwardLotsOfTracebacks(self):
+         """
+         Several Chained inlineCallbacks gives information about all generators.
+@@ -1218,6 +1224,7 @@ class ForwardTraceBackTests(SynchronousTestCase):
+         self.assertIn("Error Marker", tb)
+         self.assertIn("in erroring", f.getTraceback())
+ 
++    @skipIf(not HAVE_PY3_12_OR_OLDER, "Needs Python 3.12 or older")
+     def test_forwardLotsOfTracebacksCoro(self):
+         """
+         Several chained inlineCallbacks mixed with coroutines gives information
+-- 
+2.44.2
+

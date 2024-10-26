@@ -3,13 +3,16 @@
 
 EAPI=8
 
+MY_P=${P/_/-}
+
 if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-r3"
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/catalyst.git"
 	EGIT_BRANCH="master"
 else
-	SRC_URI="https://gitweb.gentoo.org/proj/catalyst.git/snapshot/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	SRC_URI="https://gitweb.gentoo.org/proj/catalyst.git/snapshot/${MY_P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	S="${WORKDIR}/${MY_P/_/-}"
 fi
 
 PYTHON_COMPAT=( python3_{9..12} )
@@ -53,10 +56,6 @@ RDEPEND="
 			sys-fs/mtools
 		)
 		arm64?  (
-			sys-boot/grub[grub_platforms_efi-64]
-			sys-fs/mtools
-		)
-		ia64?  (
 			sys-boot/grub[grub_platforms_efi-64]
 			sys-fs/mtools
 		)

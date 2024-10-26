@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: aspell-dict-r1.eclass
@@ -41,7 +41,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_ASPELL_DICT_R1_ECLASS} ]]; then
+if [[ -z ${_ASPELL_DICT_R1_ECLASS} ]]; then
 _ASPELL_DICT_R1_ECLASS=1
 
 # Most of those aspell packages have an idiosyncratic versioning scheme,

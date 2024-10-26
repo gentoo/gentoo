@@ -1,10 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# Marek Szuba <marecki@gentoo.org>
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-utils-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
@@ -125,7 +124,7 @@ _lua_set_impls() {
 # setup will be done. If wrapper update is requested, the directory
 # shall be removed first.
 _lua_wrapper_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local workdir=${1:-${T}/${ELUA}}
 	local impl=${2:-${ELUA}}
@@ -144,18 +143,18 @@ _lua_wrapper_setup() {
 		_lua_export "${impl}" ELUA LUA
 
 		# Lua interpreter
-		ln -s "${EPREFIX}"/usr/bin/${ELUA} "${workdir}"/bin/lua || die
+		ln -s "${LUA}" "${workdir}"/bin/lua || die
 
 		# Lua compiler, or a stub for it in case of luajit
 		if [[ ${ELUA} == luajit ]]; then
 			# Just in case
-			ln -s "${EPREFIX}"/bin/true "${workdir}"/bin/luac || die
+			ln -s "${BROOT}"/bin/true "${workdir}"/bin/luac || die
 		else
-			ln -s "${EPREFIX}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
+			ln -s "${BROOT}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
 		fi
 
 		# pkg-config
-		ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${ELUA}.pc \
+		ln -s "${ESYSROOT}"/usr/$(get_libdir)/pkgconfig/${ELUA}.pc \
 			"${workdir}"/pkgconfig/lua.pc || die
 	fi
 
@@ -235,7 +234,7 @@ _lua_get_library_file() {
 # or an ELUA one, e.g. lua5.4). If no implementation passed,
 # the current one will be obtained from ${ELUA}.
 _lua_export() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl var
 
@@ -264,7 +263,7 @@ _lua_export() {
 				debug-print "${FUNCNAME}: ELUA = ${ELUA}"
 				;;
 			LUA)
-				export LUA="${EPREFIX}"/usr/bin/${impl}
+				export LUA="${BROOT}"/usr/bin/${impl}
 				debug-print "${FUNCNAME}: LUA = ${LUA}"
 				;;
 			LUA_CFLAGS)
@@ -375,7 +374,7 @@ _lua_export() {
 # This function must be called in global scope, after RDEPEND has been
 # declared.  Take care not to overwrite the variables set by it.
 lua_enable_tests() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME} takes at least one argument: test-runner (test-directory)"
 	local test_directory
@@ -432,7 +431,7 @@ lua_enable_tests() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_CFLAGS() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_CFLAGS
 	echo "${LUA_CFLAGS}"
@@ -448,7 +447,7 @@ lua_get_CFLAGS() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_cmod_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_CMOD_DIR
 	echo "${LUA_CMOD_DIR}"
@@ -464,7 +463,7 @@ lua_get_cmod_dir() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_include_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_INCLUDE_DIR
 	echo "${LUA_INCLUDE_DIR}"
@@ -480,7 +479,7 @@ lua_get_include_dir() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_LIBS() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_LIBS
 	echo "${LUA_LIBS}"
@@ -496,7 +495,7 @@ lua_get_LIBS() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_lmod_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_LMOD_DIR
 	echo "${LUA_LMOD_DIR}"
@@ -515,7 +514,7 @@ lua_get_lmod_dir() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_shared_lib() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_SHARED_LIB
 	echo "${LUA_SHARED_LIB}"
@@ -530,7 +529,7 @@ lua_get_shared_lib() {
 # Please note that this function requires Lua and pkg-config installed,
 # and therefore proper build-time dependencies need be added to the ebuild.
 lua_get_version() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_lua_export "${@}" LUA_VERSION
 	echo "${LUA_VERSION}"

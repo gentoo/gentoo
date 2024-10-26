@@ -10,7 +10,7 @@ inherit cmake flag-o-matic systemd
 CMAKE_USE_DIR="${S}/src"
 
 DESCRIPTION="Multi Purpose Voice Services System, including Qtel for EchoLink"
-HOMEPAGE="http://www.svxlink.org"
+HOMEPAGE="https://www.svxlink.org"
 SRC_URI="https://github.com/sm0svx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"

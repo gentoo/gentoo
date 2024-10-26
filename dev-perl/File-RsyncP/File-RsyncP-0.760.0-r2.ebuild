@@ -12,7 +12,7 @@ HOMEPAGE="https://perlrsync.sourceforge.net/ https://metacpan.org/release/File-R
 # Bundled files make for some weirdness
 LICENSE="GPL-3+ GPL-2+ RSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	>=virtual/perl-Getopt-Long-2.240.0

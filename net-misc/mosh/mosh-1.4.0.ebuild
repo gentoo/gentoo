@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools bash-completion-r1 flag-o-matic
+inherit autotools bash-completion-r1
 
 MY_P=${PN}-${PV/_rc/rc}
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="GPL-3"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 fi
 IUSE="+client examples +hardened nettle +server syslog ufw +utempter"
 
@@ -51,14 +51,19 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# abseil-cpp needs >=c++14
+	local CXXSTD="14"
+	if has_version ">=dev-cpp/abseil-cpp-20240722.0"; then
+		# needs >=c++17
+		CXXSTD="17"
+	fi
+	sed -e "/AX_CXX_COMPILE_STDCXX/{s/11/${CXXSTD}/}" -i configure.ac || die
+
 	eautoreconf
 }
 
 src_configure() {
 	MAKEOPTS+=" V=1"
-
-	# protobuf needs >=c++14
-	append-cxxflags -std=gnu++14
 
 	local myeconfargs=(
 		# We install it ourselves in src_install

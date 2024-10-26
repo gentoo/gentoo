@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">kr/beanstalkd</remote-id>
+    <remote-id type="github">beanstalkd/beanstalkd</remote-id>
   </upstream>
 </pkgmetadata>

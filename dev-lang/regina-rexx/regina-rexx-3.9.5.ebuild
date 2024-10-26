@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz
 
 LICENSE="LGPL-2.1 MPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 
 RDEPEND="virtual/libcrypt:=
 	!dev-lang/oorexx"

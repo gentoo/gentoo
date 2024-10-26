@@ -108,7 +108,7 @@ RDEPEND="
 		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
 		lzo? ( >=dev-python/python-lzo-0.7.0[${PYTHON_USEDEP}] )
 		oauth? ( dev-python/oauthlib[${PYTHON_USEDEP}] )
-		opengl? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
+		opengl? ( dev-python/pyopengl-accelerate[${PYTHON_USEDEP}] )
 		webcam? (
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/pyinotify[${PYTHON_USEDEP}]

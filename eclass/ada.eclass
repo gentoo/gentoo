@@ -57,7 +57,7 @@ _ADA_ECLASS=1
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2021 gcc_12 gcc_13
+	gnat_2021 gcc_12 gcc_13 gcc_14 gcc_15
 )
 readonly _ADA_ALL_IMPLS
 
@@ -110,7 +110,7 @@ readonly _ADA_ALL_IMPLS
 # unsupported, returns 1 -- and the caller should ignore the entry.
 # If it is invalid, dies with an appropriate error message.
 _ada_impl_supported() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: takes exactly 1 argument (impl)."
 
@@ -119,7 +119,7 @@ _ada_impl_supported() {
 	# keep in sync with _ADA_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		gnat_2021|gcc_12|gcc_13)
+		gnat_2021|gcc_12|gcc_13|gcc_14|gcc_15)
 			return 0
 			;;
 		*)
@@ -208,12 +208,12 @@ _ada_set_impls() {
 # They are described more completely in the eclass
 # variable documentation.
 ada_export() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl var
 
 	case "${1}" in
-		gnat_2021|gcc_12|gcc_13)
+		gnat_2021|gcc_12|gcc_13|gcc_14|gcc_15)
 			impl=${1}
 			shift
 			;;
@@ -240,6 +240,14 @@ ada_export() {
 		gcc_13)
 			gcc_pv=13
 			slot=13
+			;;
+		gcc_14)
+			gcc_pv=14
+			slot=14
+			;;
+		gcc_15)
+			gcc_pv=15
+			slot=15
 			;;
 		*)
 			gcc_pv="9.9.9"
@@ -294,7 +302,7 @@ ada_export() {
 					gnat_2021)
 						ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
 						;;
-					gcc_12|gcc_13)
+					gcc_12|gcc_13|gcc_14|gcc_15)
 						ADA_PKG_DEP="sys-devel/gcc:${slot}[ada]"
 						;;
 					*)
@@ -396,7 +404,7 @@ unset -f _ada_single_set_globals
 # setup will be done. If wrapper update is requested, the directory
 # shall be removed first.
 ada_wrapper_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local workdir=${1:-${T}/${EADA}}
 	local impl=${2:-${EADA}}
@@ -462,7 +470,7 @@ ada_wrapper_setup() {
 # Determine what the selected Ada implementation is and set
 # the Ada build environment up for it.
 ada_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	unset EADA
 
@@ -510,7 +518,7 @@ ada_setup() {
 # @DESCRIPTION:
 # Runs ada_setup.
 ada_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && ada_setup
 }

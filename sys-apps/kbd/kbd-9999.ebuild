@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit multiprocessing
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
@@ -10,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	if [[ $(ver_cut 3) -lt 90 ]] ; then
 		SRC_URI="https://www.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	else
 		inherit autotools
 		SRC_URI="https://github.com/legionus/kbd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -73,6 +75,10 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 src_install() {

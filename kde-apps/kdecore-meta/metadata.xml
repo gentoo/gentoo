@@ -10,7 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="share">Install <pkg>kde-frameworks/purpose</pkg> for share file context menu actions in <pkg>kde-apps/dolphin</pkg></flag>
-		<flag name="thumbnail">Install <pkg>kde-apps/ffmpegthumbs</pkg> and <pkg>kde-apps/thumbnailers</pkg> for thumbnail generation in <pkg>kde-apps/dolphin</pkg></flag>
 		<flag name="webengine">Enable <pkg>www-client/falkon</pkg> which depends on <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>

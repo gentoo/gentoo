@@ -1,6 +1,32 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-24)
+# Using a glibc interface, and with that on musl pretty much useless
+sys-auth/nss-mdns
+sys-auth/libnss-cache
+sys-auth/nss-myhostname
+sys-auth/libnss-nis
+sys-auth/nss-pam-ldapd
+sys-auth/libnss-pgsql
+sys-auth/libnss-mysql
+sys-auth/nss_ldap
+net-nds/nsscache
+
+# Sam James <sam@gentoo.org> (2024-09-30)
+# Needs porting to musl (bug #940130)
+=sys-auth/elogind-255.5
+
+# Sam James <sam@gentoo.org> (2024-08-31)
+# sys-devel/binutils[gprofng] is masked on musl
+dev-debug/gprofng-gui
+
+# Sam James <sam@gentoo.org> (2024-08-21)
+# systemtap needs porting to musl. Fails to compile in a few ways.
+# See bug #925857.
+dev-debug/systemtap
+sys-apps/tuned
+
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # needs mongodb
 net-wireless/unifi
@@ -75,7 +101,10 @@ app-arch/lrzip-next
 # Christopher Fore <csfore@posteo.net> (2024-01-24)
 # >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
 # https://github.com/koverstreet/bcachefs-tools/issues/213
->=sys-fs/bcachefs-tools-1.4.1
+# The above was fixed in musl 1.2.5, which bcachefs-tools 1.11.0
+# will now depend on.
+# https://www.openwall.com/lists/musl/2024/03/01/2
+<sys-fs/bcachefs-tools-1.11.0
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
 # Uses glibc function getsourcefilter(),
@@ -132,6 +161,7 @@ sys-apps/noexec
 dev-db/pg-gvm
 net-analyzer/notus-scanner
 net-analyzer/greenbone-feed-sync
+net-analyzer/boreas
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
 # Musl does not implement rresvport function, bugs #713810 and #713376.
@@ -185,6 +215,7 @@ app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
 app-admin/puppet-agent
 app-admin/puppetserver
+app-admin/winbox
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
@@ -216,7 +247,6 @@ dev-lang/dafny-bin
 dev-libs/luise
 dev-libs/nwjs
 dev-perl/Lab-Zhinst
-dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
 dev-util/azuredatastudio
 dev-util/idea-community
@@ -269,15 +299,14 @@ games-server/steamcmd
 games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
-games-strategy/darwinia-demo
 games-strategy/knights-demo
-games-strategy/majesty-demo
 games-util/heroic-bin
 gnome-extra/nautilus-dropbox
 kde-apps/dolphin-plugins-dropbox
 mail-client/thunderbird-bin
 mate-extra/caja-dropbox
 media-gfx/brscan4
+media-gfx/evoluspencil
 media-libs/amdgpu-pro-vulkan
 media-sound/baudline
 media-sound/teamspeak-server

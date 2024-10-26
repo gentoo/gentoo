@@ -17,7 +17,7 @@ EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png motif freewnn xft xim athena neXt Xaw3d gdbm berkdb +bignum"
+IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png motif xft xim athena neXt Xaw3d gdbm berkdb +bignum"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
@@ -43,13 +43,14 @@ RDEPEND="
 	tiff? ( media-libs/tiff:= )
 	png? ( >=media-libs/libpng-1.2:0 )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	freewnn? ( app-i18n/freewnn )
 	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15
 	bignum? ( dev-libs/openssl )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+BDEPEND="sys-apps/texinfo"
 
 PDEPEND="app-xemacs/xemacs-base
 	app-xemacs/mule-base"
@@ -138,7 +139,7 @@ src_configure() {
 		myconf="${myconf} --with-xim=no"
 	fi
 
-	myconf="${myconf} $(use_with freewnn wnn )"
+	myconf="${myconf} --without-wnn"
 
 	# This determines the type of sounds we are playing
 	local soundconf="native"
@@ -168,8 +169,6 @@ src_configure() {
 
 	use bignum && myconf="${myconf} --with-bignum=openssl" ||
 		myconf="${myconf} --with-bignum=no"
-
-	use freewnn && append-cppflags "-I. -I${ESYSROOT}/usr/include/wnn"
 
 	econf ${myconf} \
 		$(use_with gif ) \

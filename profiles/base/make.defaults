@@ -12,7 +12,7 @@ USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
-USE_EXPAND="ABI_MIPS ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS AMDGPU_TARGETS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL CURL_QUIC ELIBC FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LLVM_SLOT LLVM_TARGETS LUA_SINGLE_TARGET LUA_TARGETS MONKEYD_PLUGINS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PERL_FEATURES PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS RUBY_TARGETS SANE_BACKENDS UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XTABLES_ADDONS"
+USE_EXPAND="ABI_MIPS ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS AMDGPU_TARGETS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL CURL_QUIC ELIBC FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS GUILE_SINGLE_TARGET GUILE_TARGETS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LLVM_SLOT LLVM_TARGETS LUA_SINGLE_TARGET LUA_TARGETS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PERL_FEATURES PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS RUBY_TARGETS SANE_BACKENDS UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XTABLES_ADDONS"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
@@ -77,7 +77,7 @@ COLLECTD_PLUGINS="df interface irq load memory rrdtool swap syslog"
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (2010-10-26)
 # By default enable all protocols for average GPS user
-GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax mtk3301 ntrip navcom oceanserver oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 tsip tripmate tnt ublox"
+GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax navcom oceanserver oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 tsip tripmate tnt ublox"
 
 # Benedikt Böhm <hollow@gentoo.org> (2007-11-27)
 # Sane defaults for built-in apache modules
@@ -94,9 +94,9 @@ XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipp2p iface geoip fu
 LCD_DEVICES="bayrad cfontz glk hd44780 lb216 lcdm001 mtxorb text"
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
-# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
+# Hans de Graaff <graaff@gentoo.org> (2024-10-08)
 # Default Ruby build target(s)
-RUBY_TARGETS="ruby31 ruby32"
+RUBY_TARGETS="ruby32"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
 # These USE flags are what is common between the various sub-profiles. Stages 2
@@ -123,8 +123,7 @@ PYTHONDONTWRITEBYTECODE="1"
 # This MUST be kept in sync with the PYTHON_TARGETS below
 # Mike Gilbert <floppym@gentoo.org> (2018-05-23)
 # sys-apps/baselayout-2.5 needs split-usr enabled.
-# dev-lang/python:3.13 and later needs gil enabled
-BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_12 python_single_target_python3_12 gil"
+BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_12 python_single_target_python3_12"
 
 # Mike Gilbert <floppym@gentoo.org> (2012-05-15)
 # Default target(s) for python-r1.eclass
@@ -150,7 +149,7 @@ TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
 
 # Aaron W. Swenson <titanofold@gentoo.org> (2017-07-09)
 # Default target(s) for postgres{,-multi}.eclass
-POSTGRES_TARGETS="postgres15"
+POSTGRES_TARGETS="postgres16"
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-11-17)
 #
@@ -182,3 +181,9 @@ LUA_TARGETS="lua5-1"
 # we care about should match these anyway. See https://wiki.gentoo.org/wiki/Modern_C_porting.
 ac_cv_c_undeclared_builtin_options="none needed"
 gl_cv_compiler_check_decl_option="-Werror=implicit-function-declaration"
+
+# Arsen Arsenović <arsen@gentoo.org> (2024-08-04)
+# Default target values for the Guile ecosystem (see also:
+# guile{,-single}.eclass)
+GUILE_TARGETS="3-0"
+GUILE_SINGLE_TARGET="3-0"

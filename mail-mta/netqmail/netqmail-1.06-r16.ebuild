@@ -40,7 +40,7 @@ SRC_URI="http://qmail.org/${P}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc64 ~s390 ~sparc ~x86"
 IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"

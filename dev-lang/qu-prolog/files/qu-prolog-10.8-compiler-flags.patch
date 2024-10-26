@@ -1,0 +1,18 @@
+--- qp10.6.orig/configure.ac	2020-06-24 23:37:02.000000000 -0000
++++ qp10.6/configure.ac	2021-05-15 16:36:32.504585122 -0000
+@@ -228,9 +228,12 @@
+ #-----------------------------------------------------------------------------
+ dnl Check for -fno-strict-aliasing
+ AC_MSG_CHECKING([for -fno-strict-aliasing])
+-echo "int i;" > aliasing_test.cc
+-qp_alias=[`gcc -fno-strict-aliasing -c aliasing_test.cc`]
+-rm aliasing_test.*
++ac_saved_cflags=$[]_AC_LANG_PREFIX[]FLAGS
++_AC_LANG_PREFIX[]FLAGS="-Werror -fno-strict-aliasing"
++AC_COMPILE_IFELSE([AC_LANG_SOURCE([[int main(void) { return 0; }]])],
++    [qp_alias=""],
++    [qp_alias="not-found"])
++_AC_LANG_PREFIX[]FLAGS="$ac_saved_cflags"
+ if test -n "$qp_alias"; then
+     AC_MSG_RESULT(not found)
+     GCC_ALIAS_FLAG=

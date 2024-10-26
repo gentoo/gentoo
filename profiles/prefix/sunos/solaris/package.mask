@@ -1,12 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (2024-05-19)
-# Fails to compile due to undefined INT_MAX
-# https://github.com/libarchive/libarchive/issues/2162
-# https://github.com/libarchive/libarchive/commit/6ff1cd1e487ddf545337b88da3f1f5ca69a2f958
-=app-arch/libarchive-3.7.4
-
 # Fabian Groffen <grobian@gentoo.org> (2023-06-23)
 # Fails to link due to missing libintl, already fixed upstream:
 # https://git.savannah.gnu.org/cgit/tar.git/commit/?id=8632df398b2f548465ebe68b8f494c0d6f8d913d
@@ -17,11 +11,6 @@
 # For example, 'lgetxattr' is not available on Solaris or gnulib.
 # https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
 sys-apps/attr
-
-# Fabian Groffen <grobian@gentoo.org> (2023-06-09)
-# Fails to compile due to missing DT_* symbols
-# fix: https://lore.kernel.org/git/20230606205935.3183276-1-asedeno@google.com/
-~dev-vcs/git-2.41.0
 
 # Fabian Groffen <grobian@gentoo.org> (2014-01-14)
 # util-linux has no business on Solaris systems

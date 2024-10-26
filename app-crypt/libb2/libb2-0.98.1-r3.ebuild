@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp"
 HOMEPAGE="https://github.com/BLAKE2/libb2"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BLAKE2/libb2/archive/${GITHASH}.tar.gz -> ${P}.tar.g
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="static-libs native-cflags openmp"
 
 DEPEND="
@@ -40,6 +40,8 @@ src_prepare() {
 	sed -i -e 's/ == / = /' configure.ac || die
 	# https://github.com/BLAKE2/libb2/pull/28
 	echo 'libb2_la_LDFLAGS = -no-undefined' >> src/Makefile.am || die
+	# make memset_s available
+	[[ ${CHOST} == *-solaris* ]] && append-cppflags -D__STDC_WANT_LIB_EXT1__=1
 	eautoreconf  # upstream doesn't make releases
 }
 

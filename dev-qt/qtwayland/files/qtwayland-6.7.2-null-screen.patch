@@ -1,0 +1,29 @@
+Backport of [1] for [2], will be fixed in qtwayland-6.7.3.
+
+[1] https://codereview.qt-project.org/c/qt/qtwayland/+/576718
+[2] https://bugs.kde.org/show_bug.cgi?id=489072
+
+From: David Edmundson <davidedmundson@kde.org>
+Date: Wed, 10 Jul 2024 09:00:33 +0100
+Subject: [PATCH] client: Guard against windows being on a null screen
+
+calculateScreenFromSurfaceEvents uses the screen information from our
+surface enter events. If this is not set yet, or refers to outputs not
+yet complete we fall back to the QWindow::screen. This was introduced in
+e03613524fc9f6be5c4cd7e9bdb00bc09c7f1e0b.
+
+It was assumed that this would always be a valid value as QtBase keeps
+it updated, but there are apparently paths for it to still be null.
+
+It will be evaluated again when the surface receives a wl_enter event or
+the output that we have entered is finally initialised and we will then
+be marked as on the correct screen.
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -1406,5 +1406,5 @@
+     QPlatformScreen *newScreen = calculateScreenFromSurfaceEvents();
+ 
+-    if (newScreen->screen() == window()->screen())
++    if (!newScreen || newScreen->screen() == window()->screen())
+         return;
+ 

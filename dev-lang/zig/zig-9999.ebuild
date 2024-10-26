@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 LLVM_OPTIONAL=1
 
 inherit check-reqs cmake edo llvm-r1 toolchain-funcs
@@ -178,8 +178,8 @@ src_compile() {
 
 	if use doc; then
 		cd "${BUILD_DIR}" || die
-		edo ./stage3/bin/zig build std-docs --prefix "${S}/docgen/"
-		edo ./stage3/bin/zig build langref --prefix "${S}/docgen/"
+		edo ./stage3/bin/zig build std-docs --zig-lib-dir "${BUILD_DIR}/stage3/lib/zig/" --prefix "${S}/docgen/"
+		edo ./stage3/bin/zig build langref --zig-lib-dir "${BUILD_DIR}/stage3/lib/zig/" --prefix "${S}/docgen/"
 	fi
 }
 

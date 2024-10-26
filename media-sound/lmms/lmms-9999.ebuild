@@ -19,7 +19,9 @@ fi
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
-IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk vst"
+IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk test vst"
+
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -52,6 +54,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qtx11extras:5
+	test? ( dev-qt/qttest:5 )
 "
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -70,6 +73,14 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-no_compress_man.patch" #733284
 	"${FILESDIR}/${PN}-9999-plugin-path.patch" #907285
 )
+
+src_prepare() {
+	cmake_src_prepare
+
+	if use !test; then
+		sed -i '/ADD_SUBDIRECTORY(tests)/d' CMakeLists.txt || die
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -94,4 +105,11 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# tests are hidden inside a subdir and ctest does not detect them without
+	# running inside that subdir
+	local BUILD_DIR="${BUILD_DIR}/tests"
+	cmake_src_test
 }

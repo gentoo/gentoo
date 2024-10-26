@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Zenburn for Emacs is a direct port of the popular Zenburn theme
+  for vim, developed by Jani Nurminen. It's my personal belief (and that
+  of its many users I presume) that it's one of the best low contrast
+  color themes out there and that it is exceptionally easy on the eyes.
+  Zenburn is a low-contrast color theme. It's easy for your eyes and
+  designed to keep you in the zone for long programming sessions.
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="github">bbatsov/zenburn-emacs</remote-id>
+</upstream>
+</pkgmetadata>

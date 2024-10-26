@@ -17,5 +17,6 @@
     <flag name="opencl">
       Use OpenCL for virtual background support (<pkg>virtual/opencl</pkg>)
     </flag>
+    <flag name="zoom-symlink">Install a zoom symlink in /usr/bin</flag>
   </use>
 </pkgmetadata>

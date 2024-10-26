@@ -7,7 +7,7 @@ CONFIG_CHECK="~ADVISE_SYSCALLS"
 PYTHON_COMPAT=( python3_{9..12} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 check-reqs flag-o-matic linux-info pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 check-reqs flag-o-matic linux-info ninja-utils pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -20,7 +20,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 	SLOT="0/$(ver_cut 1)"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
 	S="${WORKDIR}/node-v${PV}"
 fi
 
@@ -169,6 +169,7 @@ src_configure() {
 }
 
 src_compile() {
+	export NINJA_ARGS=$(get_NINJAOPTS)
 	emake -Onone
 }
 
@@ -247,6 +248,7 @@ src_test() {
 		test/parallel/test-strace-openat-openssl.js
 		test/sequential/test-util-debug.js
 	)
+	[[ "$(nice)" -gt 10 ]] && drop_tests+=( "test/parallel/test-os.js" )
 	rm -f "${drop_tests[@]}" || die "disabling tests failed"
 
 	out/${BUILDTYPE}/cctest || die

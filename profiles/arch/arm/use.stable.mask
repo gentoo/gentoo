@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
-# Allow ruby32 stabling: https://bugs.gentoo.org/932285
-ruby_targets_ruby32
-
 # Sam James <sam@gentoo.org> (2022-01-16)
 # net-libs/gnome-online-accounts is not marked stable on arm yet
 gnome-online-accounts

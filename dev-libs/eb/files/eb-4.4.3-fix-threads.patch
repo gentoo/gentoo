@@ -1,0 +1,13 @@
+diff --git a/eb/readtext.c b/eb/readtext.c
+index 6e3c218..e4dcf95 100644
+--- a/eb/readtext.c
++++ b/eb/readtext.c
+@@ -1560,7 +1560,7 @@ eb_is_text_stopped(EB_Book *book)
+ {
+     int is_stopped = 0;
+ 
+-    eb_lock(book);
++    eb_lock(&book->lock);
+     LOG(("in: eb_is_text_stopped(book=%d)", (int)book->code));
+ 
+     if (book->subbook_current != NULL) {

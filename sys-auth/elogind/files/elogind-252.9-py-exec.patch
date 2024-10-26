@@ -1,0 +1,19 @@
+From f56b6bfa18b6b582619074135b07ff35a84e6a01 Mon Sep 17 00:00:00 2001
+From: Sven Eden <sven@eden-worx.com>
+Date: Wed, 1 Nov 2023 15:14:01 +0100
+Subject: [PATCH] Add execution bit on tools that had it missing.
+
+Signed-off-by: Sven Eden <sven@eden-worx.com>
+---
+ tools/dbus_exporter.py       | 0
+ tools/meson-render-jinja2.py | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 tools/dbus_exporter.py
+ mode change 100644 => 100755 tools/meson-render-jinja2.py
+
+diff --git a/tools/dbus_exporter.py b/tools/dbus_exporter.py
+old mode 100644
+new mode 100755
+diff --git a/tools/meson-render-jinja2.py b/tools/meson-render-jinja2.py
+old mode 100644
+new mode 100755

@@ -10,8 +10,7 @@ HOMEPAGE="https://sites.google.com/site/gogdownloader/"
 EGIT_REPO_URI="https://github.com/Sude-/lgogdownloader.git"
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="gui qt5 qt6"
-REQUIRED_USE="gui? ( ^^ ( qt5 qt6 ) )"
+IUSE="gui"
 
 RDEPEND="
 	>=app-crypt/rhash-1.3.3-r2:0=
@@ -21,8 +20,8 @@ RDEPEND="
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.55:0=[ssl]
 	gui? (
-		qt5? ( dev-qt/qtwebengine:5[widgets] )
-		qt6? ( dev-qt/qtwebengine:6[widgets] )
+		dev-qt/qtbase:6[network,widgets]
+		dev-qt/qtwebengine:6[widgets]
 	)
 "
 
@@ -37,9 +36,6 @@ BDEPEND="
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT_GUI=$(usex gui)
-	)
-	use gui && mycmakeargs+=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6=$(usex qt5)
 	)
 	cmake_src_configure
 }

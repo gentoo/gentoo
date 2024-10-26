@@ -25,7 +25,7 @@ RUBY_S="rmagick-${MY_PV}"
 
 LICENSE="Artistic"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="

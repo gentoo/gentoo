@@ -1,0 +1,23 @@
+diff -Naur AClock-0.4.0.orig/AppController.m AClock-0.4.0/AppController.m
+--- AClock-0.4.0.orig/AppController.m	2011-07-01 13:00:12.000000000 +0200
++++ AClock-0.4.0/AppController.m	2024-07-21 23:27:31.977296966 +0200
+@@ -25,6 +25,7 @@
+  */
+ 
+ #import <AppKit/AppKit.h>
++#import <GNUstepGUI/GSInfoPanel.h>
+ #import "AppController.h"
+ 
+ @implementation AppController
+diff -Naur AClock-0.4.0.orig/Clock.m AClock-0.4.0/Clock.m
+--- AClock-0.4.0.orig/Clock.m	2011-07-01 13:00:23.000000000 +0200
++++ AClock-0.4.0/Clock.m	2024-07-21 23:27:31.977296966 +0200
+@@ -50,7 +50,7 @@
+ 	RETAIN(numArray[0]);
+ 	RETAIN(numArray[1]);
+ 
+-	dayWeek = [NSArray arrayWithObjects:@"su",@"mo",@"tu",@"we",@"th",@"fr",@"sa"];
++	dayWeek = [NSArray arrayWithObjects:@"su",@"mo",@"tu",@"we",@"th",@"fr",@"sa",nil];
+ 	RETAIN(dayWeek);
+ 
+ 	defaults = [NSUserDefaults standardUserDefaults];

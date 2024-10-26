@@ -16,7 +16,7 @@ HOMEPAGE="https://thoughtpolice.github.com/hs-ed25519"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RESTRICT=test # bitrotten test suite
 

@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Roman <davidroman96@gmail.com> (2024-10-04)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
 # USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
 # which is package.use.mask'ed on these arches. We cannot mask the
@@ -8,18 +16,9 @@
 # additional dev-qt/qtwebengine revdeps.
 kde-frameworks/purpose:5 kaccounts
 
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needs as-yet-unkeyworded KF6 (bug #934215)
-app-crypt/pinentry qt6
-app-office/libreoffice qt6
-
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
-
-# José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
-# No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on ppc64.
->=dev-python/qscintilla-python-2.14.1-r1 qt6
 
 # Sam James <sam@gentoo.org> (2024-03-23)
 # dev-qt/qtwebengine not available here
@@ -32,10 +31,6 @@ app-emulation/libvirt -virtiofsd
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
@@ -75,10 +70,6 @@ lxqt-base/lxqt-meta desktop-portal
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy3
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-12)
-# telepathy stack is not keyworded
-dev-util/kdevelop reviewboard
-
 # Sam James <sam@gentoo.org> (2021-10-17)
 # Go doesn't support pie on ppc64, bug #818529
 net-dns/dnscrypt-proxy pie
@@ -116,6 +107,7 @@ dev-util/diffoscope haskell
 sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -scudo
 sys-libs/compiler-rt-sanitizers -profile
+>=sys-libs/compiler-rt-sanitizers-19 -orc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # fwupd keyworded now on ppc64
@@ -161,7 +153,7 @@ kde-plasma/plasma-meta thunderbolt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
 # not keyworded or irrelevant on ~ppc64, bug 679888
-app-emulation/libvirt virtualbox xen
+app-emulation/libvirt xen
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches

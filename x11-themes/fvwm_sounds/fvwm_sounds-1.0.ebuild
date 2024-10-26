@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="|| ( x11-wm/fvwm3 >=x11-wm/fvwm-2.6.2 )"
 

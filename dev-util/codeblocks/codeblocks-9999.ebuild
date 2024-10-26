@@ -8,7 +8,7 @@ WX_GTK_VER="3.2-gtk3"
 inherit autotools flag-o-matic multiprocessing subversion wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
-HOMEPAGE="https://codeblocks.org/"
+HOMEPAGE="https://www.codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
 ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"

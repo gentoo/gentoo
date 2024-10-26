@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="torque-2.5"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="autorun cgroups cpusets +crypt doc munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
@@ -107,6 +107,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863737
+	#
+	# The project went source-unavailable and doesn't respond on github.
+	# No bug reported.
+	filter-lto
+
 	append-cflags "-fpermissive"
 
 	# Force Bash for configure as there's a lot of issues with configure.ac and such here

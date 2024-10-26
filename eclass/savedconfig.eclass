@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: savedconfig.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common API for saving/restoring complex configuration files
 # @DESCRIPTION:
 # It is not uncommon to come across a package which has a very fine
@@ -31,7 +31,7 @@
 # build.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -60,12 +60,12 @@ save_config() {
 	if [[ $# -eq 1 && -f $1 ]] ; then
 		# Just one file, so have the ${configfile} be that config file
 		dodir "${configfile%/*}"
-		cp "$@" "${ED%/}/${configfile}" || die "failed to save $*"
+		cp "$@" "${ED}/${configfile}" || die "failed to save $*"
 	else
 		# A dir, or multiple files, so have the ${configfile} be a dir
 		# with all the saved stuff below it
 		dodir "${configfile}"
-		treecopy "$@" "${ED%/}/${configfile}" || die "failed to save $*"
+		treecopy "$@" "${ED}/${configfile}" || die "failed to save $*"
 	fi
 
 	elog "Your configuration for ${CATEGORY}/${PF} has been saved in "
@@ -150,7 +150,7 @@ savedconfig_pkg_postinst() {
 	# are worse :/.
 
 	if use savedconfig ; then
-		find "${EROOT%/}/etc/portage/savedconfig/${CATEGORY}/${PF}" \
+		find "${EROOT}/etc/portage/savedconfig/${CATEGORY}/${PF}" \
 			-exec touch {} + 2>/dev/null
 	fi
 }

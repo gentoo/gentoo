@@ -11,8 +11,10 @@ SRC_URI="https://downloads.sourceforge.net/giflib/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/7"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="doc static-libs"
+
+BDEPEND="doc? ( virtual/imagemagick-tools )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.1-fix-missing-quantize-API-symbols.patch

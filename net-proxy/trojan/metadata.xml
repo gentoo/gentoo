@@ -25,6 +25,9 @@
 	</longdescription>
 	<use>
 		<flag name="mysql">build with MySQL support</flag>
+		<flag name="nat">Build with NAT support</flag>
+		<flag name="reuseport">Build with SO_REUSEPORT support</flag>
+		<flag name="tcpfastopen">Force build with TCP Fast Open support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">trojan-gfw/trojan</remote-id>

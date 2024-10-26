@@ -1,5 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-09-04)
+# Build with debugging support by default to facilitate dev-debug/dtrace
+# and sys-apps/systemd[bpf].
+>=sys-kernel/gentoo-kernel-6.6.53 debug
+>=sys-kernel/vanilla-kernel-6.6.53 debug
 
 # James Le Cuirot <chewi@gentoo.org> (2023-12-16)
 # Apply additional FFmpeg patches for efficient playback on some SoCs.

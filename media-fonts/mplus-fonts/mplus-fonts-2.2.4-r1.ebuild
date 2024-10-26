@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/5030/${MY_P}.tar.gz"
 
 LICENSE="mplus-fonts"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 RESTRICT="binchecks strip"
 

@@ -1,0 +1,178 @@
+From 4acebfaa89196785ccc893d56b97ac8598c30e71 Mon Sep 17 00:00:00 2001
+From: Frank Hoffmann <15r10nk-git@polarbit.de>
+Date: Mon, 26 Aug 2024 21:43:13 +0200
+Subject: [PATCH 1/2] fix: backward compatibility fix for changed source
+ positions in 3.12.6 (#85)
+
+---
+ executing/_position_node_finder.py | 15 +++++++++++++++
+ tests/generate_small_sample.py     |  9 ++++++---
+ tests/test_main.py                 |  5 +++++
+ 3 files changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/executing/_position_node_finder.py b/executing/_position_node_finder.py
+index 7a81415..c923822 100644
+--- a/executing/_position_node_finder.py
++++ b/executing/_position_node_finder.py
+@@ -242,6 +242,21 @@ def fix_result(
+             # keeping the old behaviour makes it possible to distinguish both cases.
+ 
+             return node.parent
++
++        if (
++            sys.version_info >= (3, 12, 6)
++            and instruction.opname in ("GET_ITER", "FOR_ITER")
++            and isinstance(
++                node.parent.parent,
++                (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp),
++            )
++            and isinstance(node.parent,ast.comprehension)
++            and node is node.parent.iter
++        ):
++            # same as above but only for comprehensions, see:
++            # https://github.com/python/cpython/issues/123142
++
++            return node.parent.parent
+         return node
+ 
+     def known_issues(self, node: EnhancedAST, instruction: dis.Instruction) -> None:
+diff --git a/tests/generate_small_sample.py b/tests/generate_small_sample.py
+index 89c7477..573d17a 100644
+--- a/tests/generate_small_sample.py
++++ b/tests/generate_small_sample.py
+@@ -18,6 +18,7 @@
+ from rich.syntax import Syntax
+ from rich.console import Console
+ import argparse
++import ast
+ 
+ last_samples_dir = Path(__file__).parent / "last_samples"
+ last_samples_dir.mkdir(exist_ok=True)
+@@ -63,6 +64,11 @@ def test_file(filename: Path):
+             delattr(Source, cache_name)
+ 
+     test = TestFiles()
++    try:
++        ast.parse(code)
++    except (RecursionError,SyntaxError):
++        return True
++
+     try:
+         with open(os.devnull, "w") as dev_null:
+             with contextlib.redirect_stderr(dev_null):
+@@ -122,9 +128,6 @@ def main():
+                     break_file.unlink()
+                     sys.exit(0)
+ 
+-                if time.time() > end_time:
+-                    print("Timeout")
+-                    sys.exit(0)
+ 
+                 if not result:
+                     print(f"{filename} is failing the tests -> minimize\n")
+diff --git a/tests/test_main.py b/tests/test_main.py
+index 5d4f83b..a3f92ee 100644
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -609,6 +609,11 @@ def __next__(self):
+             assert {i: i for i in iter_test(ast.DictComp)} == {1: 1, 2: 2}
+             assert list(i for i in iter_test(ast.GeneratorExp)) == [1, 2]
+ 
++            assert [i for j in [0] for i in iter_test(ast.ListComp)] == [1, 2]
++            assert {i for j in [0] for i in iter_test(ast.SetComp)} == {1, 2}
++            assert {i: i for j in [0] for i in iter_test(ast.DictComp)} == {1: 1, 2: 2}
++            assert list(i for j in [0] for i in iter_test(ast.GeneratorExp)) == [1, 2]
++
+             for i in iter_test(ast.For):
+                 assert i in (1, 2)
+ 
+
+From 6a6925e691681aa5bc05b42bf1f1f06adeb25722 Mon Sep 17 00:00:00 2001
+From: Frank Hoffmann <15r10nk-git@polarbit.de>
+Date: Sun, 15 Sep 2024 14:24:10 +0200
+Subject: [PATCH 2/2] fix: handle changed positions for __exit__ of ast.With
+
+---
+ executing/_position_node_finder.py            | 50 +++++++++++++++++++
+ ...3cd3a42b54914d66f7a67f8b2ade36f89ed761b.py |  3 ++
+ 2 files changed, 53 insertions(+)
+ create mode 100644 tests/small_samples/3e40f2921fbaf6ccbabb2fa5c3cd3a42b54914d66f7a67f8b2ade36f89ed761b.py
+
+diff --git a/executing/_position_node_finder.py b/executing/_position_node_finder.py
+index c923822..0f83441 100644
+--- a/executing/_position_node_finder.py
++++ b/executing/_position_node_finder.py
+@@ -257,6 +257,51 @@ def fix_result(
+             # https://github.com/python/cpython/issues/123142
+ 
+             return node.parent.parent
++
++        if sys.version_info >= (3, 12,6) and instruction.opname == "CALL":
++            before = self.instruction_before(instruction)
++            if (
++                before is not None
++                and before.opname == "LOAD_CONST"
++                and before.positions == instruction.positions
++                and isinstance(node.parent, ast.withitem)
++                and node is node.parent.context_expr
++            ):
++                # node positions for with-statements have change
++                # and is now equal to the expression which created the context-manager
++                # https://github.com/python/cpython/pull/120763
++
++                # with context_manager:
++                #     ...
++
++                # but there is one problem to distinguish call-expressions from __exit__()
++
++                # with context_manager():
++                #     ...
++
++                # the call for __exit__
++
++                # 20  1:5    1:22  LOAD_CONST(None)
++                # 22  1:5    1:22  LOAD_CONST(None)
++                # 24  1:5    1:22  LOAD_CONST(None)
++                # 26  1:5    1:22  CALL()         # <-- same source range as context_manager()
++
++                # but we can use the fact that the previous load for None
++                # has the same source range as the call, wich can not happen for normal calls
++
++                # we return the same ast.With statement at the and to preserve backward compatibility
++
++                return node.parent.parent
++
++        if (
++            sys.version_info >= (3, 12,6)
++            and instruction.opname == "BEFORE_WITH"
++            and isinstance(node.parent, ast.withitem)
++            and node is node.parent.context_expr
++        ):
++            # handle positions changes for __enter__
++            return node.parent.parent
++
+         return node
+ 
+     def known_issues(self, node: EnhancedAST, instruction: dis.Instruction) -> None:
+@@ -895,6 +940,11 @@ def node_match(node_type: Union[Type, Tuple[Type, ...]], **kwargs: Any) -> bool:
+     def instruction(self, index: int) -> Optional[dis.Instruction]:
+         return self.bc_dict.get(index,None)
+ 
++    def instruction_before(
++        self, instruction: dis.Instruction
++    ) -> Optional[dis.Instruction]:
++        return self.bc_dict.get(instruction.offset - 2, None)
++
+     def opname(self, index: int) -> str:
+         i=self.instruction(index)
+         if i is None:
+diff --git a/tests/small_samples/3e40f2921fbaf6ccbabb2fa5c3cd3a42b54914d66f7a67f8b2ade36f89ed761b.py b/tests/small_samples/3e40f2921fbaf6ccbabb2fa5c3cd3a42b54914d66f7a67f8b2ade36f89ed761b.py
+new file mode 100644
+index 0000000..bfffc14
+--- /dev/null
++++ b/tests/small_samples/3e40f2921fbaf6ccbabb2fa5c3cd3a42b54914d66f7a67f8b2ade36f89ed761b.py
+@@ -0,0 +1,3 @@
++async def wait():
++    async with something:
++        pass
+\ No newline at end of file

@@ -14,7 +14,7 @@ DESCRIPTION="Library for akonadi notes integration"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 DEPEND="

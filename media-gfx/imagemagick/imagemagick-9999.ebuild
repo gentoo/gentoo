@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,13 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
-HOMEPAGE="https://www.imagemagick.org/"
+HOMEPAGE="https://imagemagick.org/index.php"
 
 LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
@@ -138,6 +138,9 @@ src_configure() {
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
+	# Workaround for bug #941208 (gcc PR117100)
+	tc-is-gcc && [[ $(gcc-major-version) == 13 ]] && append-flags -fno-unswitch-loops
+
 	local myeconfargs=(
 		$(use_enable static-libs static)
 		$(use_enable hdri)
@@ -155,6 +158,7 @@ src_configure() {
 		$(use_with zip)
 		$(use_with zlib)
 		--without-autotrace
+		--with-uhdr
 		$(use_with postscript dps)
 		$(use_with djvu)
 		--with-dejavu-font-dir="${EPREFIX}"/usr/share/fonts/dejavu
@@ -226,8 +230,7 @@ src_install() {
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
 
-	rm -f "${ED}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
-	dodoc {AUTHORS,README}.txt
+	einstalldocs
 
 	if use perl; then
 		find "${ED}" -type f -name perllocal.pod -exec rm -f {} +

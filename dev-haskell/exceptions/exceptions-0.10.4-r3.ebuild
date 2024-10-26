@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/ekmett/exceptions/"
 LICENSE="BSD"
 SLOT="0/${PV}"
 # Keep in sync with relevant ghc versions (CABAL_CORE_LIB_GHC_PV)
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-lang/ghc-8.10.6:=

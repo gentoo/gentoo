@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lldpd/lldpd/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/4.9.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 	seccomp sonmp snmp static-libs test readline valgrind xml"
 RESTRICT="!test? ( test )"

@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
-IUSE="+av debug daemon dht-node ipv6 key-utils log-debug +log-error log-info log-trace log-warn test"
+IUSE="+av debug daemon dht-node experimental ipv6 key-utils log-debug +log-error log-info log-trace log-warn test"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"
@@ -45,7 +45,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	#Remove faulty tests
-	for testname in lan_discovery save_load; do
+	for testname in lan_discovery; do
 		sed -i -e "/^auto_test(${testname})$/d" ./auto_tests/CMakeLists.txt || die
 	done
 }
@@ -55,21 +55,24 @@ src_configure() {
 		-DAUTOTEST=$(usex test ON OFF)
 		-DBOOTSTRAP_DAEMON=$(usex daemon ON OFF)
 		-DBUILD_FUN_UTILS=$(usex key-utils ON OFF)
-		-DBUILD_FUZZ_TESTS=OFF #Upstream reports that this breaks all other tests
+		-DBUILD_FUZZ_TESTS=OFF #Requires the compiler to be Clang
 		-DBUILD_MISC_TESTS=$(usex test ON OFF)
 		-DBUILD_TOXAV=$(usex av ON OFF)
 		-DCMAKE_BUILD_TYPE=$(usex debug Debug Release)
 		-DDHT_BOOTSTRAP=$(usex dht-node ON OFF)
 		-DENABLE_SHARED=ON
 		-DENABLE_STATIC=OFF
+		-DEXPERIMENTAL_API=$(usex experimental ON OFF)
 		-DFULLY_STATIC=OFF
 		-DMUST_BUILD_TOXAV=$(usex av ON OFF)
+		-DUNITTEST=OFF
 	)
 
 	if use test; then
 		mycmakeargs+=(
-			-DTEST_TIMEOUT_SECONDS=150
 			-DNON_HERMETIC_TESTS=OFF
+			-DPROXY_TEST=OFF
+			-DTEST_TIMEOUT_SECONDS=150
 			-DUSE_IPV6=$(usex ipv6 ON OFF)
 		)
 	else
@@ -107,18 +110,5 @@ src_install() {
 		insinto /etc
 		doins "${FILESDIR}"/tox-bootstrapd.conf
 		systemd_dounit "${FILESDIR}"/tox-bootstrapd.service
-	fi
-}
-
-pkg_postinst() {
-	if use dht-node; then
-		ewarn "The QA notice regarding libmisc_tools.so is known by the upstream"
-		ewarn "developers and is on their TODO list. For more information,"
-		ewarn "please see 'https://github.com/toktok/c-toxcore/issues/1144'"
-		ewarn ""
-		ewarn "There is currently an unresolved issue with tox DHT Bootstrap node"
-		ewarn "that causes the program to be built with a null library reference."
-		ewarn "This causes an infinite loop for certain revdep-rebuild commands."
-		ewarn "If you aren't running a node, please consider disabling the dht-node use flag."
 	fi
 }

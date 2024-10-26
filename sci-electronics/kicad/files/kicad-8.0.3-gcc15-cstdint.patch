@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/937872
+https://gitlab.com/kicad/code/kicad/-/issues/18539
+https://gitlab.com/kicad/code/kicad/-/commit/0bf2d2ca32495dd40826a107e1be428a8e566a70
+
+From 0bf2d2ca32495dd40826a107e1be428a8e566a70 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Tue, 13 Aug 2024 13:41:35 -0400
+Subject: [PATCH] Fix build issue with experimental GCC version 15.
+
+Fixes https://gitlab.com/kicad/code/kicad/-/issues/18539
+
+(cherry picked from commit e6bcc6d0a6a231f15326df0f0a2971c7aff8a384)
+--- a/include/kicad_curl/kicad_curl_easy.h
++++ b/include/kicad_curl/kicad_curl_easy.h
+@@ -38,6 +38,7 @@
+ #include <memory>
+ #include <ostream>
+ #include <string>
++#include <cstdint>
+ 
+ typedef void CURL;
+ struct curl_slist;
+-- 
+GitLab

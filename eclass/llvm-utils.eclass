@@ -18,7 +18,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LLVM_UTILS_ECLASS} ]]; then
+if [[ -z ${_LLVM_UTILS_ECLASS} ]]; then
 _LLVM_UTILS_ECLASS=1
 
 # @FUNCTION: llvm_tuple_to_target
@@ -27,7 +27,7 @@ _LLVM_UTILS_ECLASS=1
 # Translate a tuple into a target suitable for LLVM_TARGETS.
 # Defaults to ${CHOST} if not specified.
 llvm_tuple_to_target() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -gt 1 ]] && die "Usage: ${FUNCNAME} [<tuple>]"
 
@@ -61,7 +61,7 @@ llvm_tuple_to_target() {
 # the major version, to prevent PATH alterations from forcing an older
 # clang version being used.
 llvm_fix_clang_version() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local shopt_save=$(shopt -p -o noglob)
 	set -f
@@ -95,7 +95,7 @@ llvm_fix_clang_version() {
 # current location, to prevent PATH alterations from forcing older
 # versions being used.
 llvm_fix_tool_path() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local shopt_save=$(shopt -p -o noglob)
 	set -f
@@ -118,7 +118,7 @@ llvm_fix_tool_path() {
 # Prepend the path to the specified LLVM slot to PATH variable,
 # and reexport it.
 llvm_prepend_path() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <slot>"
 	local slot=${1}

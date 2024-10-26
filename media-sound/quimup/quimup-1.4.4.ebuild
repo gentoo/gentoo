@@ -8,11 +8,11 @@ inherit desktop qmake-utils
 DESCRIPTION="Qt5 client for the music player daemon (MPD)"
 HOMEPAGE="https://sourceforge.net/projects/quimup/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${PN^}_${PV}_source.tar.gz"
+S="${WORKDIR}/${PN^}_${PV}_source"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -24,8 +24,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN^}_${PV}_source"
 
 DOCS=( changelog FAQ.txt README )
 

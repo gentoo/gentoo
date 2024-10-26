@@ -85,7 +85,7 @@ src_configure() {
 
 	if use all-impls; then
 		local -a impls=("fallback")
-		if use amd64 || use x86; then
+		if use amd64; then
 			impls+=("westmere" "haswell" "icelake")
 		elif use arm64; then
 			impls+=("arm64")

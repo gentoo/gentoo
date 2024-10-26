@@ -6,7 +6,4 @@
 		<name>Gentoo systemd team</name>
 	</maintainer>
 	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="bitbucket">mgorny/gentoo-systemd-integration</remote-id>
-	</upstream>
 </pkgmetadata>

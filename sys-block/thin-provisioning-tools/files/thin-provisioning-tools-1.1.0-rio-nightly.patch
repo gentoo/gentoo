@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/939517
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -130,7 +130,6 @@
+     trivial_casts,
+     trivial_numeric_casts,
+     unsafe_code,
+-    unused_qualifications
+ )]
+ #![deny(
+     clippy::cast_lossless,

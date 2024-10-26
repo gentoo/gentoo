@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-functions.eclass
@@ -16,12 +16,12 @@
 # It provides helper functions, no phases or variable manipulation in
 # global scope.
 
+if [[ -z ${_PERL_FUNCTIONS_ECLASS} ]]; then
+_PERL_FUNCTIONS_ECLASS=1
+
 case ${EAPI} in
-	7|8)
-		;;
-	*)
-		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
-		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 [[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
@@ -157,18 +157,18 @@ perl_fix_packlist() {
                         einfo "Fixing packlist file /${f#${D}}"
 
 			# remove the temporary build dir path
-			sed -i -e "s:${D%/}/:/:g" "${f}"
+			sed -i -e "s:${D}/:/:g" "${f}" || die
 
 			# remove duplicate entries
-			sort -u "${f}" > "${packlist_temp}"
-			mv "${packlist_temp}" "${f}"
+			sort -u "${f}" > "${packlist_temp}" || die
+			mv "${packlist_temp}" "${f}" || die
 
 			# remove files that dont exist
 			cat "${f}" | while read -r entry; do
 				if [[ ! -e ${D}/${entry} ]]; then
 					einfo "Pruning surplus packlist entry ${entry}"
 					grep -v -x -F "${entry}" "${f}" > "${packlist_temp}"
-					mv "${packlist_temp}" "${f}"
+					mv "${packlist_temp}" "${f}" || die
 				fi
 			done
 		fi
@@ -185,7 +185,7 @@ perl_remove_temppath() {
 	find "${D}" -type f -not -name '*.so' -print0 | while read -rd '' f ; do
 		if file "${f}" | grep -q -i " text" ; then
 			grep -q "${D}" "${f}" && ewarn "QA: File contains a temporary path ${f}"
-			sed -i -e "s:${D%/}/:/:g" "${f}"
+			sed -i -e "s:${D}/:/:g" "${f}" || die
 		fi
 	done
 }
@@ -629,3 +629,5 @@ perl_get_wikiurl_features() {
 perl_get_wikiurl_tests() {
 	perl_get_wikiurl Testing
 }
+
+fi

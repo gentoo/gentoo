@@ -5,7 +5,16 @@
     <email>graaff@gentoo.org</email>
     <name>Hans de Graaff</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">SeleniumHQ/selenium</remote-id>
   </upstream>
+  <use>
+    <flag name="telemetry">
+      Disable sending telemetry by default (avoid-stats config option).
+    </flag>
+  </use>
 </pkgmetadata>

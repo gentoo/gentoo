@@ -58,10 +58,12 @@ RDEPEND="${DEPEND}
 RESTRICT="test"
 
 # These all come from gnulib and the ./configure checks are working as
-# intended when the functions aren't present. Bug 921190.
+# intended when the functions aren't present. Bugs 921190 and 936891.
 QA_CONFIG_IMPL_DECL_SKIP=(
 	MIN
+	fpurge
 	static_assert
+	statvfs64
 	alignof
 )
 

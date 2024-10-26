@@ -1,0 +1,16 @@
+[Unit]
+Description=netflow capture daemon, %I instance
+Documentation=man:nfcapd(1)
+After=network.target auditd.service
+PartOf=nfdump.service
+
+[Service]
+Type=forking
+Environment=options="-l /var/cache/nfdump -p 2055"
+ExecStart=/usr/bin/nfcapd -D -P %t/nfcapd.%I.pid $options
+PIDFile=%t/nfcapd.%I.pid
+KillMode=process
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

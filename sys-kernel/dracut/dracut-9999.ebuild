@@ -3,14 +3,14 @@
 
 EAPI=8
 
-inherit bash-completion-r1 edo optfeature systemd toolchain-funcs
+inherit flag-o-matic bash-completion-r1 edo optfeature systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dracut-ng/dracut-ng"
 else
 	if [[ "${PV}" != *_rc* ]]; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	fi
 	SRC_URI="https://github.com/dracut-ng/dracut-ng/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-ng-${PV}"
@@ -32,6 +32,7 @@ RDEPEND="
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/openrc[sysv-utils(-),selinux?]
+		sys-apps/openrc-navi[sysv-utils(-),selinux?]
 		sys-apps/systemd[sysv-utils]
 		sys-apps/s6-linux-init[sysv-utils(-)]
 	)
@@ -63,6 +64,8 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
+	# Gentoo specific acct-user and acct-group conf adjustments
+	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
 )
 
 src_configure() {
@@ -72,6 +75,9 @@ src_configure() {
 		--bashcompletiondir="$(get_bashcompdir)"
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
+
+	# this emulates what the build system would be doing without us
+	append-cflags -D_FILE_OFFSET_BITS=64
 
 	tc-export CC PKG_CONFIG
 
@@ -145,6 +151,10 @@ pkg_postinst() {
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
 		sys-apps/rng-tools
+	optfeature "building Unified Kernel Images with dracut (--uefi)" \
+		"sys-apps/systemd[boot]" "sys-apps/systemd-utils[boot]"
 	optfeature "automatically generating an initramfs on each kernel installation" \
 		"sys-kernel/installkernel[dracut]"
+	optfeature "automatically generating an UKI on each kernel installation" \
+		"sys-kernel/installkernel[dracut,uki]"
 }

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>matthew@gentoo.org</email>
-		<name>Matthew Smith</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Miniz is a lossless, high performance data compression library in a single source file that implements the zlib
 		(RFC 1950) and Deflate (RFC 1951) compressed data format specification standards. It supports the most commonly

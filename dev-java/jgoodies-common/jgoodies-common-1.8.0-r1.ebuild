@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="http://www.jgoodies.com/download/libraries/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="1.8"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~ppc64"
 IUSE=""
 
 RESTRICT="test"

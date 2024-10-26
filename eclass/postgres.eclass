@@ -19,7 +19,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_POSTGRES_ECLASS} ]]; then
+if [[ -z ${_POSTGRES_ECLASS} ]]; then
 _POSTGRES_ECLASS=1
 
 # @ECLASS_VARIABLE: _POSTGRES_ALL_VERSIONS
@@ -27,7 +27,7 @@ _POSTGRES_ECLASS=1
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
 
-_POSTGRES_ALL_VERSIONS=( 9999 16 15 14 13 12 )
+_POSTGRES_ALL_VERSIONS=( 9999 17 16 15 14 13 12 )
 
 
 
@@ -136,7 +136,7 @@ postgres_check_slot() {
 # is required if pkg_setup() is declared in the ebuild.
 # Exports PG_SLOT, PG_CONFIG, and PKG_CONFIG_PATH.
 postgres_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local compat_slot
 	local best_slot

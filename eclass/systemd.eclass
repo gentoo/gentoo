@@ -1,10 +1,10 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: helper functions to install systemd units
 # @DESCRIPTION:
 # This eclass provides a set of functions to install unit files for
@@ -24,18 +24,17 @@
 # }
 # @CODE
 
+if [[ -z ${_SYSTEMD_ECLASS} ]]; then
+_SYSTEMD_ECLASS=1
+
 case ${EAPI} in
-	5|6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit toolchain-funcs
 
-if [[ ${EAPI} == [56] ]]; then
-	DEPEND="virtual/pkgconfig"
-else
-	BDEPEND="virtual/pkgconfig"
-fi
+BDEPEND="virtual/pkgconfig"
 
 # @FUNCTION: _systemd_get_dir
 # @USAGE: <variable-name> <fallback-directory>
@@ -76,18 +75,9 @@ _systemd_unprefix() {
 # ${D}).  This function always succeeds, even if systemd is not
 # installed.
 systemd_get_systemunitdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
-}
-
-# @FUNCTION: systemd_get_unitdir
-# @DESCRIPTION:
-# Deprecated alias for systemd_get_systemunitdir.
-systemd_get_unitdir() {
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI 6, use systemd_get_systemunitdir instead"
-
-	systemd_get_systemunitdir
 }
 
 # @FUNCTION: systemd_get_userunitdir
@@ -96,7 +86,7 @@ systemd_get_unitdir() {
 # ${D}). This function always succeeds, even if systemd is not
 # installed.
 systemd_get_userunitdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
 }
@@ -107,7 +97,7 @@ systemd_get_userunitdir() {
 # ${D}). This function always succeeds, even if systemd is not
 # installed.
 systemd_get_utildir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdutildir /lib/systemd
 }
@@ -117,7 +107,7 @@ systemd_get_utildir() {
 # Output the path for the systemd system generator directory (not including
 # ${D}). This function always succeeds, even if systemd is not installed.
 systemd_get_systemgeneratordir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
 }
@@ -127,7 +117,7 @@ systemd_get_systemgeneratordir() {
 # Output the path for the systemd system preset directory (not including
 # ${D}). This function always succeeds, even if systemd is not installed.
 systemd_get_systempresetdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
 }
@@ -136,7 +126,7 @@ systemd_get_systempresetdir() {
 # @DESCRIPTION:
 # Output the path for the system sleep directory.
 systemd_get_sleepdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	_systemd_get_dir systemdsleepdir /lib/systemd/system-sleep
 }
 
@@ -145,7 +135,7 @@ systemd_get_sleepdir() {
 # @DESCRIPTION:
 # Install systemd unit(s). Uses doins, thus it is fatal.
 systemd_dounit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -159,7 +149,7 @@ systemd_dounit() {
 # @DESCRIPTION:
 # Install systemd unit with a new name. Uses newins, thus it is fatal.
 systemd_newunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -173,7 +163,7 @@ systemd_newunit() {
 # @DESCRIPTION:
 # Install systemd user unit(s). Uses doins, thus it is fatal.
 systemd_douserunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -188,7 +178,7 @@ systemd_douserunit() {
 # Install systemd user unit with a new name. Uses newins, thus it
 # is fatal.
 systemd_newuserunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -205,7 +195,7 @@ systemd_newuserunit() {
 # <conf-file> with the .conf suffix stripped is used
 # (e.g. foo.service.conf -> foo.service.d/00gentoo.conf).
 systemd_install_serviced() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local src=${1}
 	local service=${2}
@@ -243,7 +233,7 @@ systemd_install_serviced() {
 # 	RestartSec=120
 # EOF
 systemd_install_dropin() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local basedir
 	if [[ $# -ge 1 ]] && [[ $1 == "--user" ]]; then
@@ -275,7 +265,7 @@ systemd_install_dropin() {
 # Enable service in desired target, e.g. install a symlink for it.
 # Uses dosym, thus it is fatal.
 systemd_enable_service() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 2 ]] || die "Synopsis: systemd_enable_service target service"
 
@@ -300,7 +290,7 @@ systemd_enable_service() {
 #
 # Doc: https://www.freedesktop.org/wiki/Software/systemd/timedated/
 systemd_enable_ntpunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	if [[ ${#} -lt 2 ]]; then
 		die "Usage: systemd_enable_ntpunit <NN-name> <service>..."
 	fi
@@ -335,46 +325,6 @@ systemd_enable_ntpunit() {
 	return ${ret}
 }
 
-# @FUNCTION: systemd_with_unitdir
-# @USAGE: [<configure-option-name>]
-# @DESCRIPTION:
-# Note: deprecated and banned in EAPI 6. Please use full --with-...=
-# parameter for improved ebuild readability.
-#
-# Output '--with-systemdsystemunitdir' as expected by systemd-aware configure
-# scripts. This function always succeeds. Its output may be quoted in order
-# to preserve whitespace in paths. systemd_to_myeconfargs() is preferred over
-# this function.
-#
-# If upstream does use invalid configure option to handle installing systemd
-# units (e.g. `--with-systemdunitdir'), you can pass the 'suffix' as an optional
-# argument to this function (`$(systemd_with_unitdir systemdunitdir)'). Please
-# remember to report a bug upstream as well.
-systemd_with_unitdir() {
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-${1:-systemdsystemunitdir}=\"\$(systemd_get_systemunitdir)\" instead"
-
-	debug-print-function ${FUNCNAME} "${@}"
-	local optname=${1:-systemdsystemunitdir}
-
-	echo --with-${optname}="$(systemd_get_systemunitdir)"
-}
-
-# @FUNCTION: systemd_with_utildir
-# @DESCRIPTION:
-# Note: deprecated and banned in EAPI 6. Please use full --with-...=
-# parameter for improved ebuild readability.
-#
-# Output '--with-systemdsystemutildir' as used by some packages to install
-# systemd helpers. This function always succeeds. Its output may be quoted
-# in order to preserve whitespace in paths.
-systemd_with_utildir() {
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-systemdutildir=\"\$(systemd_get_utildir)\" instead"
-
-	debug-print-function ${FUNCNAME} "${@}"
-
-	echo --with-systemdutildir="$(systemd_get_utildir)"
-}
-
 # @FUNCTION: systemd_update_catalog
 # @DESCRIPTION:
 # Update the journald catalog. This needs to be called after installing
@@ -385,7 +335,7 @@ systemd_with_utildir() {
 #
 # See: https://www.freedesktop.org/wiki/Software/systemd/catalog
 systemd_update_catalog() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} == post* ]] \
 		|| die "${FUNCNAME} disallowed during ${EBUILD_PHASE_FUNC:-${EBUILD_PHASE}}"
@@ -415,7 +365,7 @@ systemd_update_catalog() {
 #
 # See: man sd_booted
 systemd_is_booted() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -d /run/systemd/system ]]
 	local ret=${?}
@@ -444,3 +394,5 @@ systemd_reenable() {
 		fi
 	done
 }
+
+fi

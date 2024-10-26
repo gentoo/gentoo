@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 TMPFILES_OPTIONAL=1
 
@@ -10,6 +10,7 @@ inherit prefix toolchain-funcs flag-o-matic gnuconfig \
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
+
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 SLOT="2.2"
 
@@ -345,6 +346,11 @@ setup_flags() {
 	# glibc aborts if rpath is set by LDFLAGS
 	filter-ldflags '-Wl,-rpath=*'
 
+	# Fails to link (bug #940709) in some cases but even if it manages to,
+	# subtle runtime breakage will occur because the linker scripts need
+	# adaptation. Mentioned in PR21557#c0.
+	filter-ldflags '-Wl,--gc-sections'
+
 	# #492892
 	filter-flags -frecord-gcc-switches
 
@@ -464,7 +470,7 @@ check_devpts() {
 	[[ ${MERGE_TYPE} == "buildonly" ]] && return
 
 	# Only sanity check when installing the native glibc.
-	[[ ${ROOT} != "/" ]] && return
+	[[ -n ${ROOT} ]] && return
 
 	# If they're opting in to the old suid code, then no need to check.
 	use suid && return
@@ -552,7 +558,7 @@ sanity_prechecks() {
 
 	# Prevent native builds from downgrading
 	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
-	   [[ ${ROOT} == "/" ]] && \
+	   [[ -z ${ROOT} ]] && \
 	   [[ ${CBUILD} == ${CHOST} ]] && \
 	   [[ ${CHOST} == ${CTARGET} ]] ; then
 
@@ -625,8 +631,8 @@ sanity_prechecks() {
 				STAT=0
 			fi
 			rm -f "${T}/check-ia32-emulation.elf32"
-			eend $STAT
-			if [[ $STAT -ne 0 ]]; then
+			eend ${STAT}
+			if [[ ${STAT} -ne 0 ]]; then
 				eerror "Ensure that CONFIG_IA32_EMULATION is enabled in the kernel."
 				eerror "Seek support otherwise."
 				die "Unable to execute 32-bit binaries"
@@ -740,8 +746,10 @@ src_prepare() {
 }
 
 glibc_do_configure() {
-	# Glibc does not work with gold (for various reasons) #269274.
-	tc-ld-disable-gold
+	# glibc does not work with non-bfd (for various reasons):
+	# * gold (bug #269274)
+	# * mold (bug #860900)
+	tc-ld-force-bfd
 
 	# CXX isnt handled by the multilib system, so if we dont unset here
 	# we accumulate crap across abis
@@ -1030,10 +1038,10 @@ src_test() {
 run_locale_gen() {
 	# if the host locales.gen contains no entries, we'll install everything
 	local root="$1"
-	local locale_list="${root}/etc/locale.gen"
+	local locale_list="${root%/}/etc/locale.gen"
 	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
 		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-		locale_list="${root}/usr/share/i18n/SUPPORTED"
+		locale_list="${root%/}/usr/share/i18n/SUPPORTED"
 	fi
 
 	locale-gen --jobs $(makeopts_jobs) --config "${locale_list}" \
@@ -1044,7 +1052,7 @@ glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
-	emake install_root="${D}$(alt_prefix)" install
+	emake install_root="${D}/$(alt_prefix)" install
 
 	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
 	# which come without headers etc. Only needed for binary packages since the
@@ -1061,9 +1069,9 @@ glibc_do_src_install() {
 		# Move versioned .a file out of libdir to evade portage QA checks
 		# instead of using gen_usr_ldscript(). We fix ldscript as:
 		# "GROUP ( /usr/lib64/libm-<pv>.a ..." -> "GROUP ( /usr/lib64/glibc-<pv>/libm-<pv>.a ..."
-		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"$(alt_usrlibdir)/libm.a || die
+		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"/$(alt_usrlibdir)/libm.a || die
 		dodir $(alt_usrlibdir)/${P}
-		mv "${ED}"$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
+		mv "${ED}"/$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"/$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
 	fi
 
 	# We'll take care of the cache ourselves
@@ -1218,7 +1226,7 @@ glibc_do_src_install() {
 glibc_headers_install() {
 	local builddir=$(builddir "headers")
 	cd "${builddir}"
-	emake install_root="${D}$(alt_prefix)" install-headers
+	emake install_root="${D}/$(alt_prefix)" install-headers
 
 	insinto $(alt_headers)/gnu
 	doins "${S}"/include/gnu/stubs.h
@@ -1289,7 +1297,7 @@ pkg_preinst() {
 		einfo "Defaulting /etc/host.conf:multi to on"
 	fi
 
-	[[ ${ROOT} != "/" ]] && return 0
+	[[ -n ${ROOT} ]] && return 0
 	[[ -d ${ED}/$(get_libdir) ]] || return 0
 	[[ -z ${BOOTSTRAP_RAP} ]] && glibc_sanity_check
 }
@@ -1300,11 +1308,11 @@ pkg_postinst() {
 
 	if ! tc-is-cross-compiler && [[ -x ${EROOT}/usr/sbin/iconvconfig ]] ; then
 		# Generate fastloading iconv module configuration file.
-		"${EROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}"
+		"${EROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}/"
 	fi
 
-	if ! is_crosscompile && [[ ${ROOT} == "/" ]] ; then
-		use compile-locales || run_locale_gen "${EROOT}"
+	if ! is_crosscompile && [[ -n ${ROOT} ]] ; then
+		use compile-locales || run_locale_gen "${EROOT}/"
 	fi
 
 	# Check for sanity of /etc/nsswitch.conf, take 2

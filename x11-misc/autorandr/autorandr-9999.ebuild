@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit bash-completion-r1 distutils-r1 systemd udev
 
@@ -58,7 +58,7 @@ src_install() {
 
 	emake DESTDIR="${D}" \
 		  BASH_COMPLETIONS_DIR="$(get_bashcompdir)" \
-		  SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" \
+		  SYSTEMD_UNIT_DIR=$(usex systemd "$(systemd_get_systemunitdir)" "") \
 		  UDEV_RULES_DIR="$(get_udevdir)"/rules.d \
 		  $(printf "install_%s " "${targets[@]}")
 }

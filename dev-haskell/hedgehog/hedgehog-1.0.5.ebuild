@@ -15,7 +15,7 @@ HOMEPAGE="https://hedgehog.qa"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 CABAL_CHDEPS=(
 	'template-haskell                >= 2.10       && < 2.18' 'template-haskell >=2.10'

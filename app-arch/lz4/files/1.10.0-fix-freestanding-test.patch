@@ -1,0 +1,42 @@
+
+From: https://github.com/lz4/lz4/pull/1468
+
+commit 63267a77d863f63826d8b13ddb8c190d3a4c01c5
+Author: Holger Hoffstätte <holger@applied-asynchrony.com>
+Date:   Mon Jul 22 22:11:19 2024 +0200
+
+    Fix stack alignment of _start() in freestanding test
+    
+    When the freestanding test is built with any kind of optimization
+    that enables vectorized loops, special care must be taken to align
+    the stack for _start() at a 16-byte boundary.
+
+diff --git a/tests/freestanding.c b/tests/freestanding.c
+index 6109aa7..96de9d3 100644
+--- a/tests/freestanding.c
++++ b/tests/freestanding.c
+@@ -225,7 +225,7 @@ EXTERN_C int memcmp(const void *s1, const void *s2, size_t n) {
+ 
+ 
+ //
+-EXTERN_C void _start(void) {
++EXTERN_C void __attribute__((force_align_arg_pointer)) _start(void) {
+     test();
+     MY_exit(0);
+ }
+
+Disable the stack protector to allow building with clang.
+See https://bugs.gentoo.org/936480
+
+diff -up lz4-1.10.0/build/meson/meson/tests/meson.build lz4-1.10.0/build/meson/meson/tests/meson.build
+--- lz4-1.10.0/build/meson/meson/tests/meson.build	2024-07-21 19:29:49.000000000 +0200
++++ lz4-1.10.0/build/meson/meson/tests/meson.build	2024-07-23 01:26:40.561113031 +0200
+@@ -47,7 +47,7 @@ test_exes = {
+   },
+   'freestanding': {
+     'sources': files(lz4_source_root / 'tests/freestanding.c'),
+-    'c_args': ['-ffreestanding', '-Wno-unused-parameter', '-Wno-declaration-after-statement'],
++    'c_args': ['-ffreestanding', '-fno-stack-protector', '-Wno-unused-parameter', '-Wno-declaration-after-statement'],
+     'link_args': ['-nostdlib'],
+     'build': cc.get_id() in ['gcc', 'clang'] and
+       host_machine.system() == 'linux' and host_machine.cpu_family() == 'x86_64',

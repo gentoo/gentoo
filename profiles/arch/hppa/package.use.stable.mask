@@ -17,6 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-07-31)
+# Qt 6 not stable here.
+dev-build/cmake gui
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-25)
+# Moved to stable.mask, issue is fixed in unstable v40
+# Sam James <sam@gentoo.org> (2024-06-19)
+# The systemd implementation of installkernel doesn't currently support
+# updating the 'initramfs.img' and 'vmlinuz' symlinks that palo needs,
+# and palo is the only bootloader for HPPA.
+sys-kernel/installkernel systemd
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
 # Mask pdf support so net-print/cups-filters stabilisation
 # can go ahead (bug 627392)
@@ -185,7 +197,7 @@ x11-base/xorg-server xorg
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.
-media-libs/libsdl2 fcitx4
+media-libs/libsdl2 fcitx
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-06-10)
 # not stable dev-vcs/mercurial because of broken dependencies: bug #727390

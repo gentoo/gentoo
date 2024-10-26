@@ -48,7 +48,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	mate-base/caja
-	mate-base/mate-desktop
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	>=mate-base/mate-settings-daemon-1.28.0
 	virtual/libintl
 "

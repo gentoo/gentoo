@@ -1,0 +1,29 @@
+From d98739ceaac1c477879b9c4fba89ea76dba2d539 Mon Sep 17 00:00:00 2001
+From: axxel <awagger@gmail.com>
+Date: Sun, 22 Sep 2024 22:39:11 +0200
+Subject: [PATCH] cmake: switch to c++-20 by default for the core library
+
+I finally accept the incurred performance penalty from the position
+independent DataMatrix detection by default.
+
+This is finally fixing #386. It also (sufficiently) fixes #822 and thereby
+supersedes #836.
+---
+ CMakeLists.txt           | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b602712d79..fee4c68cdc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,7 +71,9 @@ if(NOT ZXING_DEPENDENCIES IN_LIST ZXING_DEPENDENCIES_LIST)
+ endif()
+ 
+ if (NOT DEFINED CMAKE_CXX_STANDARD)
+-    set (CMAKE_CXX_STANDARD 17)
++    set (CMAKE_CXX_STANDARD 20)
++    # Allow the fallback to earlier versions if the compiler does not support it.
++    set(CMAKE_CXX_STANDARD_REQUIRED OFF)
+ endif()
+ if (NOT DEFINED CMAKE_CXX_EXTENSIONS)
+     set (CMAKE_CXX_EXTENSIONS OFF)

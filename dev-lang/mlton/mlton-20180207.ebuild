@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs multibuild pax-utils
+inherit check-reqs flag-o-matic multibuild pax-utils
 
 DESCRIPTION="Standard ML optimizing compiler and libraries"
 BASE_URI="https://downloads.sourceforge.net/${PN}"
@@ -172,6 +172,10 @@ src_prepare() {
 }
 
 mlton_src_compile() {
+	# produces invalid codegen for twelf
+	# https://bugs.gentoo.org/863266
+	filter-lto
+
 	if [[ ${MULTIBUILD_VARIANT} == $(mlton_bootstrap_variant) ]]; then
 		emake -j1 \
 			"bootstrap-smlnj" \

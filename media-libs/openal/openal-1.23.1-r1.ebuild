@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ S="${WORKDIR}"/${MY_P}
 # Some components are under BSD
 LICENSE="LGPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="
 	alsa coreaudio debug jack oss pipewire portaudio pulseaudio sdl sndio qt5
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
@@ -50,6 +50,10 @@ DEPEND="
 "
 
 DOCS=( alsoftrc.sample docs/env-vars.txt docs/hrtf.txt ChangeLog README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.23.1-gcc15-cstdint.patch
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(

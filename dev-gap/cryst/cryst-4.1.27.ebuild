@@ -6,12 +6,12 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="GAP package for computing with crystallographic groups"
-SLOT="0"
 SRC_URI="https://www.math.uni-bielefeld.de/~gaehler/gap/Cryst/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-gap/polycyclic"
 

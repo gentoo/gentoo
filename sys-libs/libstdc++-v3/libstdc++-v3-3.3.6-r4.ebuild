@@ -70,11 +70,13 @@ is_arch_allowed() {
 }
 
 do_filter_flags() {
-	declare setting
+	declare setting newflags
 
 	# In general gcc does not like optimization, and add -O2 where
 	# it is safe.  This is especially true for gcc 3.3 + 3.4
-	replace-flags -O? -O2
+	if is-flagq -O?; then
+		newflags+=" -O2"
+	fi
 
 	# gcc 3.3 doesn't support -mtune on numerous archs, so xgcc will fail
 	setting="`get-flag mtune`"
@@ -90,47 +92,28 @@ do_filter_flags() {
 	transform_known_flags
 	setting="`get-flag march`"
 	if [[ ! -z "${setting}" ]] ; then
-		is_arch_allowed "${setting}" || filter-flags -march="${setting}"
+		is_arch_allowed "${setting}" && newflags+=" -march=${setting}"
 	fi
 	setting="`get-flag mcpu`"
 	if [[ ! -z "${setting}" ]] ; then
-		is_arch_allowed "${setting}" || filter-flags -mcpu="${setting}"
+		is_arch_allowed "${setting}" && newflags+=" -mcpu=${setting}"
 	fi
 
-	# xgcc wont understand gcc 3.4 flags...
-	filter-flags -fno-unit-at-a-time
-	filter-flags -funit-at-a-time
-	filter-flags -fweb
-	filter-flags -fno-web
-	filter-flags -mno-tls-direct-seg-refs
+	# There is lots of brittle old code that violates the aliasing rules. GCC
+	# 3.3 supports disabling this optimization.
+	newflags+=" -fno-strict-aliasing"
 
-	# xgcc isnt patched with propolice
-	filter-flags -fstack-protector-all
-	filter-flags -fno-stack-protector-all
-	filter-flags -fstack-protector
-	filter-flags -fno-stack-protector
-
-	# xgcc isnt patched with the gcc symbol visibility patch
-	filter-flags -fvisibility-inlines-hidden
-	filter-flags -fvisibility=hidden
-
-	# Bug #269433 & #290202
-	filter-flags -fno-strict-overflow
-	filter-flags -fstrict-overflow
-
-	# Bug #442784
-	filter-flags '-W*'
-
-	filter-flags -frecord-gcc-switches
-	filter-flags '-fdiagnostics-color*'
-
-	# Bug #610064
-	filter-flags '-fstack-check*'
-
-	# ...sure, why not?
-	strip-unsupported-flags
-
-	strip-flags
+	# xgcc wont understand gcc 3.4 flags... in fact it won't understand most
+	# things or have most patches, regardless of what the real GCC understands.
+	# A random collection of bugs:
+	# #269433 #290202 #442784 #610064 #879775 #919184 #832016
+	#
+	# There's some extensive discussion at bug #923112, ultimately the only
+	# practical approach is to simply reject *all* flags unless we handpicked
+	# them to allow them. Check in "${S}"/gcc/doc/gcc.1 before proceeding.
+	export CFLAGS="${newflags}"
+	export CXXFLAGS="${newflags}"
+	unset LDFLAGS
 }
 
 S=${WORKDIR}/gcc-${PV}
@@ -153,6 +136,22 @@ src_prepare() {
 	fi
 
 	tc-export AR CC RANLIB NM
+
+	# newer versions of GCC add default werrors that we need to disable for
+	# this very old and brittle code. But adding it to CFLAGS doesn't work,
+	# since GCC creates xgcc and uses that to compile libstdc++, and the
+	# ancient xgcc doesn't understand the flags we need.
+	mkdir "${T}/conservative-compiler" || die
+	export PATH="${$}/conservative-compiler:${PATH}"
+
+	local realcc=$(type -P "${CC}") || die
+	export CC="${T}/conservative-compiler/${CC##*/}"
+	cat > "${CC}" <<- __EOF__ || die
+		#!/bin/sh
+		"${realcc}" -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types "\$@"
+	__EOF__
+
+	chmod +x "${CC}" || die
 }
 
 src_configure() {

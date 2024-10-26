@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~hppa ppc64 ~s390 sparc x86"
 IUSE="examples sasl test"
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-Net_Socket

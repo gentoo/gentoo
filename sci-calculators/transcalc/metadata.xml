@@ -23,5 +23,6 @@
     </longdescription>
     <upstream>
         <remote-id type="sourceforge">transcalc</remote-id>
+        <remote-id type="gitlab">oss-abandonware/sci-calculators/transcalc</remote-id>
     </upstream>
 </pkgmetadata>

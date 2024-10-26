@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="kde-invent">libraries/ksanecore</remote-id>
 	</upstream>
-	<use>
-		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
-	</use>
 </pkgmetadata>

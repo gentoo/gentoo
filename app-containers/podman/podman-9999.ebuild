@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
 	[[ ${PV} != *rc* ]] && \
-		KEYWORDS="~amd64 ~arm64 ~riscv"
+		KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 fi
 
 # main pkg
@@ -114,12 +114,12 @@ src_compile() {
 		tc-export PKG_CONFIG
 	fi
 
-	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" EXTRA_BUILDTAGS="$(usev seccomp)" \
+	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" EXTRA_BUILDTAGS="$(usev seccomp)" SELINUXOPT= \
 		  all $(usev wrapper docker-docs)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.completions $(usev wrapper install.docker-full)
+	emake DESTDIR="${D}" SELINUXOPT= install install.completions $(usev wrapper install.docker-full)
 
 	if use !systemd; then
 		newconfd "${FILESDIR}"/podman-5.0.0_rc4.confd podman

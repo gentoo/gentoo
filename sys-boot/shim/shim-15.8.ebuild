@@ -16,7 +16,7 @@ S="${WORKDIR}/boot/efi/EFI"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 src_install() {
 	insinto /usr/share/${PN}

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
@@ -79,6 +79,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch, -Werror=odr
+	# https://bugs.gentoo.org/859217
+	# https://sourceforge.net/p/flightgear/codetickets/2908/
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DENABLE_AUTOTESTING=OFF

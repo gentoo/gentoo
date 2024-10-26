@@ -6,10 +6,16 @@
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
 # @AUTHOR:
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Helper eclass for setting the Go compile environment. Required for cross-compiling.
 # @DESCRIPTION:
 # This eclass includes helper functions for setting the compile environment for Go ebuilds.
 # Intended to be called by other Go eclasses in an early build stage, e.g. src_unpack.
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
@@ -34,19 +40,40 @@ go-env_set_compile_environment() {
 	use x86 && export GO386=$(go-env_go386)
 
 	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
-	case ${EAPI} in
-		6)
-			has_version "sys-devel/gcc[debug]" && filter-lto
-			;;
-		*)
-			has_version -b "sys-devel/gcc[debug]" && filter-lto
-			;;
-	esac
+	has_version -b "sys-devel/gcc[debug]" && filter-lto
 
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
 	export CGO_CXXFLAGS="${CGO_CXXFLAGS:-$CXXFLAGS}"
 	export CGO_LDFLAGS="${CGO_LDFLAGS:-$LDFLAGS}"
+
+	# bug #929219
+	if tc-is-gcc ; then
+		CGO_CFLAGS=$(
+			CFLAGS=${CGO_CFLAGS}
+			replace-flags -g3 -g
+			replace-flags -ggdb3 -ggdb
+			printf %s "${CFLAGS}"
+		)
+	fi
+}
+
+# @FUNCTION: go-env_goos
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Returns the appropriate GOOS setting for the target operating system.
+go-env_goos() {
+	local target=${1:-${CHOST}}
+	case "${target}" in
+		*-linux*) echo linux ;;
+		*-darwin*) echo darwin ;;
+		*-freebsd*) echo freebsd ;;
+		*-netbsd*) echo netbsd ;;
+		*-openbsd*) echo openbsd ;;
+		*-solaris*) echo solaris ;;
+		*-cygwin*|*-interix*|*-winnt*) echo windows ;;
+		*) die "unknown GOOS for ${target}" ;;
+	esac
 }
 
 # @FUNCTION: go-env_goarch
@@ -54,21 +81,23 @@ go-env_set_compile_environment() {
 # @DESCRIPTION:
 # Returns the appropriate GOARCH setting for the target architecture.
 go-env_goarch() {
-	# By chance most portage arch names match Go
-	local tc_arch=$(tc-arch $@)
-	case "${tc_arch}" in
-		x86)	echo 386;;
-		x64-*)	echo amd64;;
-		loong)	echo loong64;;
-		mips) if use abi_mips_o32; then
-				[[ $(tc-endian $@) = big ]] && echo mips || echo mipsle
-			elif use abi_mips_n64; then
-				[[ $(tc-endian $@) = big ]] && echo mips64 || echo mips64le
-			fi ;;
-		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
-		riscv) echo riscv64 ;;
-		s390) echo s390x ;;
-		*)		echo "${tc_arch}";;
+	local target=${1:-${CHOST}}
+	# Some Portage arch names match Go.
+	local arch=$(tc-arch "${target}") cpu=${target%%-*}
+	case "${arch}" in
+		x86)	echo 386 ;;
+		loong)	echo loong64 ;;
+		*)		case "${cpu}" in
+					aarch64*be) echo arm64be ;;
+					arm64) echo arm64 ;;
+					arm*b*) echo armbe ;;
+					mips64*l*) echo mips64le ;;
+					mips*l*) echo mipsle ;;
+					powerpc64le*) echo ppc64le ;;
+					arm64|s390x) echo "${cpu}" ;;
+					mips64*|riscv64*|sparc64*) echo "${arch}64" ;;
+					*) echo "${arch}" ;;
+				esac ;;
 	esac
 }
 

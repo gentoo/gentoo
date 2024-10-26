@@ -7,19 +7,19 @@ EGIT_REPO_URI="https://git.savannah.gnu.org/git/quilt.git"
 
 [[ ${PV} == 9999 ]] && inherit git-r3
 
-inherit bash-completion-r1
+inherit bash-completion-r1 elisp-common
 
 DESCRIPTION="quilt patch manager"
 HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
 [[ ${PV} == 9999 ]] || SRC_URI="https://savannah.nongnu.org/download/quilt/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 GPL-1+"  # any GPL version for quilt.el
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
-IUSE="graphviz"
+IUSE="emacs graphviz"
 
-RDEPEND="
+RDEPEND="!app-emacs/quilt-el
 	dev-util/diffstat
 	mail-mta/sendmail
 	sys-apps/ed
@@ -30,42 +30,47 @@ RDEPEND="
 	app-arch/zstd:=
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-el-0.45.4-header-window.patch )
+
 src_prepare() {
-
-	default
-
 	# Add support for USE=graphviz
-	use graphviz || eapply "${FILESDIR}/${PN}-0.66-no-graphviz.patch"
+	use graphviz || PATCHES+=( "${FILESDIR}"/${PN}-0.66-no-graphviz.patch )
+	default
 
 	# remove failing test, because it fails on root-build
 	rm -rf test/delete.test
 }
 
 src_configure() {
-	local myconf=""
-	[[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] && \
-		myconf="${myconf} --with-getopt=${EPREFIX}/usr/bin/getopt-long"
-	econf ${myconf}
+	local myconf=()
+	[[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] \
+		&& myconf+=( "--with-getopt=${EPREFIX}/usr/bin/getopt-long" )
+	econf "${myconf[@]}"
+}
+
+src_compile() {
+	default
+	use emacs && elisp-compile lib/quilt.el
 }
 
 src_install() {
 	emake BUILD_ROOT="${D}" install
 
-	rm -rf "${ED}"/etc/bash_completion.d
-	newbashcomp bash_completion ${PN}
-
 	rm -rf "${ED}"/usr/share/doc/${PN}
 	dodoc AUTHORS COPYING NEWS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
 
+	# Remove misplaced Emacs mode
+	rm -rf "${ED}"/usr/share/emacs || die
+
+	if use emacs; then
+		elisp-install ${PN} lib/quilt.{el,elc}
+		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
+		dodoc doc/README.EMACS
+	fi
+
+	rm -rf "${ED}"/etc/bash_completion.d
+	newbashcomp bash_completion ${PN}
+
 	# Remove the compat symlinks
 	rm -rf "${ED}"/usr/share/quilt/compat
-
-	# Remove Emacs mode; newer version is in app-emacs/quilt-el, bug 247500
-	rm -rf "${ED}"/usr/share/emacs
-}
-
-pkg_postinst() {
-	if ! has_version -r 'app-emacs/quilt-el' ; then
-		elog "If you plan to use quilt with emacs consider installing \"app-emacs/quilt-el\""
-	fi
 }

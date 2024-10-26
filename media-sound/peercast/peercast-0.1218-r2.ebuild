@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,21 +8,16 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="A client and server for Peercast P2P-radio network"
 HOMEPAGE="http://www.peercast.org"
 SRC_URI="http://www.peercast.org/src/${P}-src.tgz"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND=""
-
-S=${WORKDIR}
 
 PATCHES=(
-	"${FILESDIR}/${P}-CVE-2008-2040.patch" \
-	"${FILESDIR}/${PN}-0.1216-makefile.patch" \
-	"${FILESDIR}/${PN}-0.1216-amd64.patch" \
+	"${FILESDIR}/${P}-CVE-2008-2040.patch"
+	"${FILESDIR}/${PN}-0.1216-makefile.patch"
+	"${FILESDIR}/${PN}-0.1216-amd64.patch"
 	"${FILESDIR}/${P}-glibc-2.10.patch"
 )
 

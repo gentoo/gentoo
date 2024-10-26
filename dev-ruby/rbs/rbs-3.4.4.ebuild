@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/ruby/rbs"
 SRC_URI="https://github.com/ruby/rbs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 SLOT="0"
 IUSE="test"
 
