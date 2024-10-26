@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ORIG_PN="${PN%-amm}"
+ORIG_PN="${PN%-scala}"
 
 DESCRIPTION="Send XMPP (Jabber) messages via command line"
 HOMEPAGE="https://github.com/flowdalic/sendxmpp"
