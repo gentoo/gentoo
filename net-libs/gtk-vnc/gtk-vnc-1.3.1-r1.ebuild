@@ -25,7 +25,7 @@ RDEPEND="
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.27:2 )
 	>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 	>=x11-libs/cairo-1.15.0
-	>=x11-libs/libX11-1.6.5
+	X? ( >=x11-libs/libX11-1.6.5 )
 	pulseaudio? ( media-libs/libpulse )
 	introspection? ( >=dev-libs/gobject-introspection-1.56.0:= )
 "
