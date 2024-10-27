@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-10-27)
+
+# Obsolete slots without reverse dependencies. dev-util/cucumber will
+# use other slots when installed. Removal on 2024-11-27.
+dev-util/cucumber-gherkin:26
+dev-util/cucumber-messages:17
+dev-util/cucumber-messages:20
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-23)
 # Doesn't support latest Rust/Cargo ebuild format and standard. Confuses
 # developers who tries to use it, and then see pkgcheck warnings on the
