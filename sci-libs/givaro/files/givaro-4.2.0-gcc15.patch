@@ -1,0 +1,26 @@
+From 4d0712be1180f034ac698d944c1cefb3decf351a Mon Sep 17 00:00:00 2001
+From: Doug Torrance <dtorrance@piedmont.edu>
+Date: Thu, 3 Oct 2024 13:26:16 -0400
+Subject: [PATCH] Fix build using GCC 15
+
+max is an rint, which doesn't have a "Low" member.  But max.Value,
+which is an ruint, does.
+
+Closes: #232
+---
+ src/kernel/recint/rfiddling.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kernel/recint/rfiddling.h b/src/kernel/recint/rfiddling.h
+index 3865eb3b..3ea16e91 100644
+--- a/src/kernel/recint/rfiddling.h
++++ b/src/kernel/recint/rfiddling.h
+@@ -167,7 +167,7 @@ namespace RecInt
+     template <size_t K>
+     inline rint<K> rint<K>::maxFFLAS() {
+         rint<K> max;
+-        set_highest_bit(max.Low.Value);
++        set_highest_bit(max.Value.Low.Value);
+         return max;
+     }
+ 
