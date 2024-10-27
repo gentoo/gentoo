@@ -47,6 +47,7 @@ COMMON_DEPEND="
 		dev-libs/openssl:0=
 		sys-libs/pam
 		x11-libs/libXau
+		x11-libs/libxcvt
 		x11-libs/libXdamage
 		x11-libs/libXdmcp
 		x11-libs/libXfixes
@@ -83,7 +84,6 @@ DEPEND="${COMMON_DEPEND}
 	server? (
 		media-fonts/font-util
 		x11-base/xorg-proto
-		x11-libs/libxcvt
 		x11-libs/libXi
 		x11-libs/libxkbfile
 		x11-libs/libXrender
@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
 	"${FILESDIR}"/${PN}-1.14.0-xsession-path.patch
 	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
+	"${FILESDIR}"/${PN}-1.14.1-pam.patch
 )
 
 src_unpack() {
