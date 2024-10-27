@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit linux-info python-single-r1 systemd
 
 DESCRIPTION="Daemon to work around throttling issues on some Intel laptops"
