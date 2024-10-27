@@ -34,7 +34,7 @@ distutils_enable_tests unittest
 
 src_prepare() {
 	# Tests against real servers, some tests always fail and some are subject to change.
-	rm test/test_results.py || die
+	rm test/test_extractor.py test/test_results.py || die
 
 	distutils-r1_src_prepare
 }
