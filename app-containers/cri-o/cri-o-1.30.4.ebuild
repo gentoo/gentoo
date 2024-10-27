@@ -39,6 +39,7 @@ DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	!<app-containers/podman-1.3.2-r1
 	selinux? ( sec-policy/selinux-crio )"
+BDEPEND="sys-apps/which"
 
 src_prepare() {
 	default
