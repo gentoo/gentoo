@@ -1,0 +1,13 @@
+diff --git a/libclamav/regex/engine.c b/libclamav/regex/engine.c
+index ed359c3..3c25398 100644
+--- a/libclamav/regex/engine.c
++++ b/libclamav/regex/engine.c
+@@ -223,7 +223,7 @@ matcher(struct re_guts *g, const char *string, size_t nmatch,
+ 			dp = dissect(m, m->coldp, endp, gf, gl);
+ 		} else {
+ 			if (g->nplus > 0 && m->lastpos == NULL)
+-				m->lastpos = (char **)cli_malloc((g->nplus+1) *
++				m->lastpos = (const char **)cli_malloc((g->nplus+1) *
+ 							sizeof(char *));
+ 			if (g->nplus > 0 && m->lastpos == NULL) {
+ 				free(m->pmatch);
