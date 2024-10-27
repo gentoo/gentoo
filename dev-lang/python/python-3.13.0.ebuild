@@ -262,6 +262,8 @@ src_configure() {
 	COMMON_TEST_SKIPS=(
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
+		# https://bugs.gentoo.org/933840
+		-x test_perf_profiler
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
