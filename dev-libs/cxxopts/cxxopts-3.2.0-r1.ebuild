@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jarro2783/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="icu test"
 
 RESTRICT="
