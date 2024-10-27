@@ -13,7 +13,7 @@ S=${WORKDIR}
 LICENSE="GPL-3"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="readline"
 
 RDEPEND="
