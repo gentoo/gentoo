@@ -201,8 +201,10 @@ system.xml.xpath@4.3.0
 inherit check-reqs dotnet-pkg distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Nearly seamless integration with the .NET Common Language Runtime"
-HOMEPAGE="http://pythonnet.github.io/
-	https://github.com/pythonnet/pythonnet/"
+HOMEPAGE="
+	https://pythonnet.github.io/
+	https://github.com/pythonnet/pythonnet/
+"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
