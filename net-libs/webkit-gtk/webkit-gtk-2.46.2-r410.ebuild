@@ -150,8 +150,6 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
-
-	eapply "${FILESDIR}/2.46.1-riscv-buildfix.patch"
 }
 
 src_configure() {
