@@ -225,10 +225,6 @@ x11-plugins/lurch
 # Removal on 2024-10-29.  Bug #910612.
 dev-python/brython
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-28)
-# Nothing depends on it. Removal on 2024-10-28.
-dev-java/ant-core
-
 # Robin H. Johnson <robbat2@gentoo.org> (2024-09-22)
 # Upstream testing release; fails some tests as well here
 # Beware that if you upgrade to it, you may need to reset your keyrings.
