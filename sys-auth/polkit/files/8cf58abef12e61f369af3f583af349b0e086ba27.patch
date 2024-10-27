@@ -1,0 +1,58 @@
+From 8cf58abef12e61f369af3f583af349b0e086ba27 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Sun, 20 Oct 2024 15:18:55 -0400
+Subject: [PATCH] meson: correctly test for setnetgrent return type
+
+meson doesn't automatically add all project arguments to configure
+checks -- nor incrementally the inline value of all configuration_data
+entries.
+
+But that meant it was missing -D_GNU_SOURCE, as well as a define added
+to config.h itself. As a result, this check failed to detect the
+necessary function definition and failed to link.
+
+```
+Command line: `gcc-14 /var/tmp/portage/sys-auth/polkit-125/work/polkit-125-build/meson-private/tmpj0ih4pm4/testfile.c -o /var/tmp/portage/sys-auth/polkit-125/work/polkit-125-build/meson-private/tmpj0ih4pm4/output.obj -c -pipe -march=native -fstack-protector-all -O2 -fdiagnostics-color=always -frecord-gcc-switches -Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing -Wformat -Werror=format-security -Werror=implicit-function-declaration -Werror=implicit-int -Werror=int-conversion -Werror=incompatible-pointer-types -D_FILE_OFFSET_BITS=64 -O0 -std=c99` -> 1
+stderr:
+/var/tmp/portage/sys-auth/polkit-125/work/polkit-125-build/meson-private/tmpj0ih4pm4/testfile.c: In function 'main':
+/var/tmp/portage/sys-auth/polkit-125/work/polkit-125-build/meson-private/tmpj0ih4pm4/testfile.c:9:17: error: implicit declaration of function 'setnetgrent'; did you mean 'setnetent'? [-Wimplicit-function-declaration]
+    9 |         int r = setnetgrent (NULL);
+      |                 ^~~~~~~~~~~
+      |                 setnetent
+-----------
+Checking if "setnetgrent return support" compiles: NO
+```
+
+Bug: https://bugs.gentoo.org/938870
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+---
+ meson.build | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 0800c88..a0b440d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -159,7 +159,8 @@ host_system = host_machine.system()
+ config_data.set('HAVE_' + host_system.to_upper(), true)
+ 
+ # Check whether setnetgrent has a return value
+-config_data.set('HAVE_NETGROUP_H', cc.has_header('netgroup.h'))
++have_netgroup_h = cc.has_header('netgroup.h')
++config_data.set('HAVE_NETGROUP_H', have_netgroup_h)
+ 
+ if config_data.get('HAVE_SETNETGRENT', false)
+   setnetgrent_return_src = '''
+@@ -174,7 +175,11 @@ if config_data.get('HAVE_SETNETGRENT', false)
+     };
+   '''
+ 
+-  config_data.set('HAVE_SETNETGRENT_RETURN', cc.compiles(setnetgrent_return_src, name: 'setnetgrent return support'))
++  args = ['-D_GNU_SOURCE']
++  if have_netgroup_h
++    args += '-DHAVE_NETGROUP_H'
++  endif
++  config_data.set('HAVE_SETNETGRENT_RETURN', cc.compiles(setnetgrent_return_src, args: args, name: 'setnetgrent return support'))
+ endif
+ 
+ # Select wether to use logind, elogind or ConsoleKit for session tracking
