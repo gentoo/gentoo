@@ -13,7 +13,7 @@ SRC_URI="https://github.com/xmms2/xmms2-devel/releases/download/${PV}/${P}.tar.x
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~loong ppc ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~loong ppc ~riscv x86"
 
 # IUSE static map to be passed to --with-{optionals,plugins}=opt1,opt2,...
 # flag:opt = `usev flag opt`, opt = `usev opt`, :opt = `echo opt`
