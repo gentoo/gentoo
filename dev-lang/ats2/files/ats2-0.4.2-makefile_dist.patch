@@ -11,3 +11,14 @@
  
  ######
  #
+--- a/Makefile_dist
++++ b/Makefile_dist
+@@ -78,7 +78,7 @@ LDFLAGS=
+ #
+ src2_patsopt: ; \
+ $(MAKEJ4) -C src/CBOOT patsopt \
+-CCOMP=$(CCOMP) GCFLAG=$(GCFLAG) LDFLAGS=$(LDFLAGS) 
++CCOMP="$(CCOMP)" GCFLAG="$(GCFLAG)" LDFLAGS="$(LDFLAGS)"
+ #
+ bin2_patsopt: src2_patsopt ; $(CPF) src/CBOOT/patsopt bin/patsopt
+ #

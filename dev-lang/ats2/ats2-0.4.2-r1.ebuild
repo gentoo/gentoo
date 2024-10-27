@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common flag-o-matic toolchain-funcs
+inherit elisp-common toolchain-funcs
 
 DESCRIPTION="Functional programming language with dependent types"
 HOMEPAGE="https://www.cs.bu.edu/~hwxi/atslangweb/
@@ -61,14 +61,15 @@ src_prepare() {
 		-e "s|ar -r|$(tc-getAR) ${ARFLAGS} -r|g"	\
 		|| die
 
+	sed -i contrib/CATS-atscc2js/Makefile		\
+		-i src/CBOOT/Makefile					\
+		-e "/^AR=/s|ar|$(tc-getAR) ${ARFLAGS}|"	\
+		|| die
+
 	rm utils/emacs/flycheck-ats2.el || die
 }
 
 src_compile() {
-	# Not really accurate but need Makefile investigation and patches.
-	# See: https://bugs.gentoo.org/941105 and https://bugs.gentoo.org/923881
-	filter-lto
-
 	emake -j1 CC="$(tc-getCC)" GCC="$(tc-getCC)" CCOMP="$(tc-getCC)" all
 
 	if use emacs ; then
