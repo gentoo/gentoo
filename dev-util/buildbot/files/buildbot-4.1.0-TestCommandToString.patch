@@ -1,0 +1,28 @@
+https://github.com/buildbot/buildbot/commit/b941956d3b9598804b46cf9ceebadc549f90e303
+From b941956d3b9598804b46cf9ceebadc549f90e303 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Wed, 16 Oct 2024 12:14:16 +0100
+Subject: [PATCH] Fix CommandToString.test_list_with_objects
+
+59c3ccd0f69e9d2b5ed72310c85158c73ef9e6af changed the behaviour of
+`command_to_string` here.
+---
+ master/buildbot/test/unit/test_util.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/buildbot/test/unit/test_util.py b/buildbot/test/unit/test_util.py
+index 5fb333e93..d2c71d56d 100644
+--- a/buildbot/test/unit/test_util.py
++++ b/buildbot/test/unit/test_util.py
+@@ -433,8 +433,7 @@ class CommandToString(unittest.TestCase):
+         self.assertEqual(util.command_to_string(object()), None)
+ 
+     def test_list_with_objects(self):
+-        # the object looks like a renderable, and is skipped
+-        self.assertEqual(util.command_to_string(['ab', object(), 'cd']), "'ab cd'")
++        self.assertRegex(util.command_to_string(['ab', object(), 'cd']), r"'ab <object .*> \.\.\.'")
+ 
+     def test_invalid_ascii(self):
+         self.assertEqual(util.command_to_string(b'a\xffc'), "'a\ufffdc'")
+-- 
+2.45.2
