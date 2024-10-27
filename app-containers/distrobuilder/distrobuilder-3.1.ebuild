@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module linux-info
+inherit go-module linux-info optfeature
 
 DESCRIPTION="System container image builder for LXC and incus"
 HOMEPAGE="https://linuxcontainers.org/distrobuilder/introduction/"
@@ -47,4 +47,9 @@ src_install() {
 	export GOPATH="${S}/_dist"
 	dobin ${GOPATH}/bin/distrobuilder
 	dodoc -r doc/*
+}
+
+pkg_postinst() {
+	optfeature_header "Optional support"
+	optfeature "building MS Windows images" app-arch/wimlib app-misc/hivex
 }
