@@ -204,6 +204,7 @@ pkg_postinst() {
 	elog "  https://wiki.gentoo.org/wiki/Incus#Migrating_from_LXD"
 	elog
 	optfeature "virtual machine support" app-cdr/cdrtools app-emulation/qemu[spice,usbredir,virtfs]
+	optfeature "OCI container images support" app-containers/skopeo app-containers/umoci
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "ipv6 support" net-dns/dnsmasq[ipv6]
 	optfeature "full incus-migrate support" net-misc/rsync
