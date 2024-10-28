@@ -73,7 +73,6 @@ COMMON_TARGETS="
 	aarch64
 	alpha
 	arm
-	cris
 	hppa
 	i386
 	loongarch64
@@ -91,7 +90,6 @@ COMMON_TARGETS="
 	riscv64
 	s390x
 	sh4
-	sh4eb
 	sparc
 	sparc64
 	x86_64
@@ -112,6 +110,7 @@ IUSE_USER_TARGETS="
 	mipsn32
 	mipsn32el
 	ppc64le
+	sh4eb
 	sparc32plus
 "
 
