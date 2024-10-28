@@ -1,18 +1,7 @@
-From 1f0ee66aecbb52f8c423128aa7e0dd35822e989c Mon Sep 17 00:00:00 2001
-From: Witold Filipczyk <witekfl@poczta.onet.pl>
-Date: Mon, 27 May 2024 10:23:46 +0200
-Subject: [PATCH] [protolcols] Do not compile-in SFTP when ftp was disabled.
- Refs #304
+Combination of upstream commits:
+1f0ee66aecbb52f8c423128aa7e0dd35822e989c
+a198d2da3cf958d7c1de3bc02a2ea49c25a3f785
 
----
- src/protocol/curl/ftp.c  | 42 +++-------------------------------------
- src/protocol/curl/http.c | 42 ++++++++++++++++++++++++++++++++++++++++
- src/protocol/curl/sftp.h |  2 +-
- src/protocol/protocol.c  |  2 +-
- 4 files changed, 47 insertions(+), 41 deletions(-)
-
-diff --git a/src/protocol/curl/ftp.c b/src/protocol/curl/ftp.c
-index 5f3d462ac..73120a67d 100644
 --- a/src/protocol/curl/ftp.c
 +++ b/src/protocol/curl/ftp.c
 @@ -55,6 +55,8 @@
@@ -24,7 +13,16 @@ index 5f3d462ac..73120a67d 100644
  static char el_curlversion[256];
  
  static void
-@@ -641,45 +643,6 @@ ftp_curl_handle_error(struct connection *conn, CURLcode res)
+@@ -616,7 +618,7 @@
+ 	abort_connection(conn, connection_state(S_OK));
+ }
+ 
+-static void
++void
+ ftp_curl_handle_error(struct connection *conn, CURLcode res)
+ {
+ 	if (res == CURLE_OK) {
+@@ -635,45 +637,6 @@
  	abort_connection(conn, connection_state(S_CURL_ERROR - res));
  }
  
@@ -70,17 +68,36 @@ index 5f3d462ac..73120a67d 100644
  void
  ftpes_protocol_handler(struct connection *conn)
  {
-@@ -695,3 +658,4 @@ sftp_protocol_handler(struct connection *conn)
+@@ -689,3 +652,4 @@
  		do_ftpes(conn);
  	}
  }
 +#endif
 \ No newline at end of file
-diff --git a/src/protocol/curl/http.c b/src/protocol/curl/http.c
-index e2349489a..25d0eb36d 100644
+--- a/src/protocol/curl/ftpes.h
++++ b/src/protocol/curl/ftpes.h
+@@ -1,6 +1,10 @@
+ #ifndef EL__PROTOCOL_CURL_FTPES_H
+ #define EL__PROTOCOL_CURL_FTPES_H
+ 
++#ifdef CONFIG_LIBCURL
++#include <curl/curl.h>
++#endif
++
+ #include "main/module.h"
+ #include "protocol/protocol.h"
+ 
+@@ -12,6 +16,7 @@
+ 
+ #if defined(CONFIG_FTP) && defined(CONFIG_LIBCURL)
+ extern protocol_handler_T ftpes_protocol_handler;
++void ftp_curl_handle_error(struct connection *conn, CURLcode res);
+ #else
+ #define ftpes_protocol_handler NULL
+ #endif
 --- a/src/protocol/curl/http.c
 +++ b/src/protocol/curl/http.c
-@@ -505,3 +505,45 @@ http_curl_protocol_handler(struct connection *conn)
+@@ -461,3 +461,45 @@
  		do_http(conn);
  	}
  }
@@ -126,11 +143,9 @@ index e2349489a..25d0eb36d 100644
 +	}
 +#endif
 +}
-diff --git a/src/protocol/curl/sftp.h b/src/protocol/curl/sftp.h
-index f9167c3fa..cdcafd572 100644
 --- a/src/protocol/curl/sftp.h
 +++ b/src/protocol/curl/sftp.h
-@@ -10,7 +10,7 @@ extern "C" {
+@@ -10,7 +10,7 @@
  
  extern struct module sftp_protocol_module;
  
@@ -139,11 +154,9 @@ index f9167c3fa..cdcafd572 100644
  extern protocol_handler_T sftp_protocol_handler;
  #else
  #define sftp_protocol_handler NULL
-diff --git a/src/protocol/protocol.c b/src/protocol/protocol.c
-index 930a4f86b..d3fae896c 100644
 --- a/src/protocol/protocol.c
 +++ b/src/protocol/protocol.c
-@@ -336,7 +336,7 @@ static struct module *protocol_submodules[] = {
+@@ -336,7 +336,7 @@
  #ifdef CONFIG_NNTP
  	&nntp_protocol_module,
  #endif
