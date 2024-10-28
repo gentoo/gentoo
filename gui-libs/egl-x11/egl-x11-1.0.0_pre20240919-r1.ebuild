@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson-multilib
+inherit flag-o-matic meson-multilib toolchain-funcs
 
 # no releases yet, should typically update hash in sync with nvidia bumps
 HASH_EGLX11=8aac36c712561ebfecc82af3db15c50cd0d573fb
@@ -35,3 +35,10 @@ DEPEND="
 	media-libs/libglvnd
 	x11-base/xorg-proto
 "
+
+src_configure() {
+	# needs looking into, likely some UB broken at >=-O1 (bug #942396)
+	tc-is-clang && replace-flags '-O*' '-O0'
+
+	meson-multilib_src_configure
+}
