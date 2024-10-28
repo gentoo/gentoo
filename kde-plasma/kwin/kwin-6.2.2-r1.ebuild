@@ -8,14 +8,14 @@ ECM_TEST="true"
 KFMIN=6.6.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.7.2
-inherit ecm plasma.kde.org
+inherit ecm fcaps plasma.kde.org
 
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 
 LICENSE="GPL-2+"
 SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="accessibility +caps gles2-only lock screencast +shortcuts systemd"
+IUSE="accessibility gles2-only lock screencast +shortcuts systemd"
 
 RESTRICT="test"
 
@@ -106,7 +106,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtwayland-${QTMIN}:6
 	x11-base/xorg-proto
 	x11-libs/xcb-util-image
-	caps? ( sys-libs/libcap )
 	test? ( screencast? ( >=kde-plasma/kpipewire-${PVCUT}:6 ) )
 "
 BDEPEND="
@@ -114,6 +113,10 @@ BDEPEND="
 	dev-util/wayland-scanner
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 "
+
+# https://bugs.gentoo.org/941628
+# -m 0755 to avoid suid with USE="-filecaps"
+FILECAPS=( -m 0755 cap_sys_nice=ep usr/bin/kwin_wayland )
 
 src_prepare() {
 	ecm_src_prepare
@@ -134,10 +137,15 @@ src_configure() {
 		# TODO: KWIN_BUILD_X11=$(usex xwayland) KWIN_BUILD_X11_BACKEND=$(usex X)
 		# KWIN_BUILD_NOTIFICATIONS exists, but kdeclarative still hard-depends on it
 		$(cmake_use_find_package accessibility QAccessibilityClient6)
-		$(cmake_use_find_package caps Libcap)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Libcap=ON
 		-DKWIN_BUILD_SCREENLOCKER=$(usex lock)
 		-DKWIN_BUILD_GLOBALSHORTCUTS=$(usex shortcuts)
 	)
 
 	ecm_src_configure
+}
+
+pkg_postinst() {
+	ecm_pkg_postinst
+	fcaps_pkg_postinst
 }
