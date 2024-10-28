@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
