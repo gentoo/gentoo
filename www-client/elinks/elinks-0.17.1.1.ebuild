@@ -29,6 +29,7 @@ IUSE+=" javascript libcss lua lzma +mouse nls nntp perl python samba ssl test tr
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	guile? ( ${GUILE_REQUIRED_USE} )
+	javascript? ( libcss )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -86,12 +87,17 @@ PATCHES=(
 pkg_setup() {
 	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
 	use guile && guile_bump_sources
+	python_fix_shebang .
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=942286
+	sed -i -e '/find_library/s/, dirs: \[[^]]*\]//' \
+		meson.build || die
 }
 
 src_configure() {
