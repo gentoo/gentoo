@@ -47,6 +47,7 @@ RDEPEND="
 "
 # sphinx required for man-page and html creation
 BDEPEND="
+	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 	test? (
