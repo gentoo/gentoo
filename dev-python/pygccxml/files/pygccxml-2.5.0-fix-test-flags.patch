@@ -1,0 +1,10 @@
+diff --git a/unittests/xml_generator.cfg b/unittests/xml_generator.cfg
+index cb00818..58899b6 100644
+--- a/unittests/xml_generator.cfg
++++ b/unittests/xml_generator.cfg
+@@ -15,3 +15,5 @@ include_paths=
+ compiler=
+ # Keep xml files after errors (useful for debugging)
+ keep_xml=
++# needed with clang-19
++cflags=-fsized-deallocation

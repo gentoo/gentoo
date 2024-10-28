@@ -47,6 +47,8 @@ python_prepare_all() {
 		"${FILESDIR}/${PN}-2.4.0-doc.patch"
 		# https://github.com/CastXML/pygccxml/pull/179
 		"${FILESDIR}/${P}-which.patch"
+		# fixes tests with clang-19
+		"${FILESDIR}/${PN}-2.5.0-fix-test-flags.patch"
 	)
 
 	distutils-r1_python_prepare_all
