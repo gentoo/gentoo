@@ -36,6 +36,9 @@ distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 EPYTEST_DESELECT=(
 	# TODO; too new LLVM?  upstream tests against LLVM 13
 	unittests/test_overrides.py::Test::test
+	# fails with >=GCC-15.0.2 (bug #940578)
+	unittests/test_smart_pointer.py::Test::test_smart_pointer_value_type
+
 )
 
 python_prepare_all() {
