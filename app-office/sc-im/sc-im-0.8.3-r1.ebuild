@@ -55,7 +55,7 @@ pkg_setup() {
 	fi
 
 	# Run lua setup
-	lua-single_pkg_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
