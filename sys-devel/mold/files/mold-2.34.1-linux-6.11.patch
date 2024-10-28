@@ -1,0 +1,22 @@
+https://lore.kernel.org/stable/CACKH++YAtEMYu2nTLUyfmxZoGO37fqogKMDkBpddmNaz5HE6ng@mail.gmail.com/T/#u
+https://github.com/rui314/mold/issues/1361
+https://bugs.gentoo.org/941070
+--- a/src/output-file-unix.cc
++++ b/src/output-file-unix.cc
+@@ -19,16 +19,6 @@ template <typename E>
+ static int
+ open_or_create_file(Context<E> &ctx, std::string path, std::string tmpfile,
+                     int perm) {
+-  // Reuse an existing file if exists and writable because on Linux,
+-  // writing to an existing file is much faster than creating a fresh
+-  // file and writing to it.
+-  if (ctx.overwrite_output_file && rename(path.c_str(), tmpfile.c_str()) == 0) {
+-    i64 fd = ::open(tmpfile.c_str(), O_RDWR | O_CREAT, perm);
+-    if (fd != -1)
+-      return fd;
+-    unlink(tmpfile.c_str());
+-  }
+-
+   i64 fd = ::open(tmpfile.c_str(), O_RDWR | O_CREAT, perm);
+   if (fd == -1)
+     Fatal(ctx) << "cannot open " << tmpfile << ": " << errno_string();
