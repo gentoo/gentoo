@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ppc ~riscv ~x86 ~amd64-linux"
 IUSE="nls emacs xemacs"
 
 DEPEND="
