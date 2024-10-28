@@ -22,3 +22,13 @@ https://bugs.gentoo.org/925105
  #include <boost/filesystem/path.hpp>
 
  #include "character.hpp"
+--- a/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
++++ b/apps/openmw_test_suite/nifloader/testbulletnifloader.cpp
+@@ -13,6 +13,7 @@
+ 
+ #include <algorithm>
+ #include <type_traits>
++#include <iomanip>
+ 
+ namespace
+ {
