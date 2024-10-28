@@ -14,30 +14,37 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 else
 	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${P}"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
+# This particular commit is hardcoded in
+# https://gitlab.com/OpenMW/openmw/-/blob/ffe164b28d3a10408e20fdadd2f0168c1e32fd6e/apps/components_tests/CMakeLists.txt#L114-118
 MY_TEMPLATE_COMMIT="8966dab24692555eec720c854fb0f73d108070cd"
 SRC_URI+="
-	test? ( https://gitlab.com/OpenMW/example-suite/-/raw/${MY_TEMPLATE_COMMIT}/data/template.omwgame -> openmw-template-${MY_TEMPLATE_COMMIT}.omwgame )
+	test? (
+		https://gitlab.com/OpenMW/example-suite/-/raw/${MY_TEMPLATE_COMMIT}/game_template/data/template.omwgame
+		-> openmw-template-${MY_TEMPLATE_COMMIT}.omwgame
+	)
 "
 
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
-IUSE="doc devtools +osg-fork test +qt5"
+IUSE="doc devtools +gui +osg-fork test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-# FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
-# used when BUILD_OPENCS flag is enabled. See bug #676266.
+# TODO: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
+# used when BUILD_OPENCS flag is enabled.
+# OpenMW has custom changes to this library.
+# See bug #676266.
 
 RDEPEND="${LUA_DEPS}
 	app-arch/lz4:=
-	>=dev-games/mygui-3.4.3:=
 	dev-cpp/yaml-cpp:=
 	dev-db/sqlite:3
 	dev-games/recastnavigation:=
+	>=dev-games/mygui-3.4.3:=
 	dev-libs/boost:=[zlib]
 	dev-libs/icu:=
 	dev-libs/tinyxml[stl]
@@ -45,16 +52,14 @@ RDEPEND="${LUA_DEPS}
 	media-libs/openal
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=[double-precision]
+	sys-libs/zlib
 	virtual/opengl
 	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
-	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
-	qt5? (
+	!osg-fork? ( >=dev-games/openscenegraph-3.6.5:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
+	gui? (
 		app-arch/unshield
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtopengl:5
-		dev-qt/qtwidgets:5
+		dev-qt/qtbase:6[gui,network,opengl,widgets]
+		dev-qt/qtsvg:6
 	)
 "
 
@@ -68,6 +73,9 @@ BDEPEND="
 		app-text/doxygen[dot]
 		dev-python/sphinx
 	)
+	gui? (
+		dev-qt/qttools:6[linguist]
+	)
 	test? (
 		dev-cpp/gtest
 	)
@@ -78,27 +86,34 @@ src_prepare() {
 
 	# Use the system tinyxml headers
 	rm -v extern/oics/tiny{str,xml}* || die
-	rm -rv extern/sol3 || die
+
+	# Use the system sol2 (v3) headers
+	rm -r extern/sol3 || die
 }
 
 src_configure() {
-	use devtools && ! use qt5 &&
-		elog "'qt5' USE flag is disabled, 'openmw-cs' will not be installed"
+	use devtools && ! use gui &&
+		elog "'gui' USE flag is disabled, 'openmw-cs' will not be installed"
 
 	local mycmakeargs=(
 		-DBUILD_BSATOOL=$(usex devtools)
 		-DBUILD_DOCS=$(usex doc)
 		-DBUILD_ESMTOOL=$(usex devtools)
-		-DBUILD_LAUNCHER=$(usex qt5)
+		-DBUILD_LAUNCHER=$(usex gui)
+		-DBUILD_OPENCS=$(usex devtools $(usex gui))
+		-DBUILD_WIZARD=$(usex gui)
 		-DBUILD_NIFTEST=$(usex devtools)
-		-DBUILD_OPENCS=$(usex devtools $(usex qt5))
-		-DBUILD_WIZARD=$(usex qt5)
-		-DBUILD_UNITTESTS=$(usex test)
+		-DBUILD_COMPONENTS_TESTS=$(usex test)
+		-DBUILD_OPENMW_TESTS=$(usex test)
+		-DBUILD_OPENCS_TESTS=$(usex test $(usex devtools))
+
 		-DGLOBAL_DATA_PATH="${EPREFIX}/usr/share"
 		-DICONDIR="${EPREFIX}/usr/share/icons/hicolor/256x256/apps"
 		-DUSE_SYSTEM_TINYXML=ON
 		-DOPENMW_USE_SYSTEM_GOOGLETEST=ON
 		-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
+
+		-DQT_DIR="${ESYSROOT}/usr/lib64/cmake/Qt6"
 	)
 
 	if [[ ${ELUA} == luajit ]]; then
@@ -116,9 +131,9 @@ src_configure() {
 	fi
 
 	if use test ; then
-		mkdir -p "${BUILD_DIR}"/apps/openmw_test_suite/data || die
+		mkdir -p "${BUILD_DIR}"/apps/components_tests/data || die
 		cp "${DISTDIR}"/openmw-template-${MY_TEMPLATE_COMMIT}.omwgame \
-			"${BUILD_DIR}"/apps/openmw_test_suite/data/template.omwgame || die
+			"${BUILD_DIR}"/apps/components_tests/data/template.omwgame || die
 	fi
 
 	cmake_src_configure
@@ -142,8 +157,13 @@ src_test() {
 		elog "Skipping tests on ${ELUA}"
 		return
 	fi
+
 	pushd "${BUILD_DIR}" > /dev/null || die
-	./openmw_test_suite || die
+	./components-tests || die
+	./openmw-tests || die
+	if use gui && use devtools; then
+		./openmw-cs-tests || die
+	fi
 	popd > /dev/null || die
 }
 
@@ -157,9 +177,9 @@ src_install() {
 	(either by using the launcher or by calling 'openmw-wizard'
 	directly).\n"
 
-	if ! use qt5; then
+	if ! use gui ; then
 		DOC_CONTENTS+="\n\n
-		USE flag 'qt5' is disabled, 'openmw-launcher' and
+		USE flag 'gui' is disabled, 'openmw-launcher' and
 		'openmw-wizard' are not available. You are on your own for
 		making the Morrowind data files available and pointing
 		openmw at them.\n\n
