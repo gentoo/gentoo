@@ -5,11 +5,17 @@ EAPI=8
 
 DESCRIPTION="PKCS#11 support for GnuPG"
 HOMEPAGE="https://sourceforge.net/projects/gnupg-pkcs11/"
-SRC_URI="https://github.com/alonbl/${PN}/releases/download/${P}/${P}.tar.bz2"
+
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/alonbl/gnupg-pkcs11-scd.git"
+	inherit autotools git-r3
+else
+	SRC_URI="https://github.com/alonbl/${PN}/releases/download/${P}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="proxy"
 
 DEPEND="
@@ -17,15 +23,23 @@ DEPEND="
 	<dev-libs/libassuan-3:=
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error:=
-	dev-libs/pkcs11-helper:="
+	dev-libs/pkcs11-helper:=
+"
 RDEPEND="
 	${DEPEND}
 	proxy? (
 		acct-group/gnupg-pkcs11
 		acct-group/gnupg-pkcs11-scd-proxy
 		acct-user/gnupg-pkcs11-scd-proxy
-	)"
+	)
+"
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	[[ ${PV} == 9999 ]] && eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
