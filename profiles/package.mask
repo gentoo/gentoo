@@ -33,6 +33,39 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2024-10-28)
+# New style opencpn plugins depend on specific snapshots of
+# "opencpn-libs", a collection of bundled 3rd party libs or
+# forks thereof.
+# This makes it virtually impossible to package opencpn and
+# its plugins in a sane way.
+# Use the flatpak version instead.
+# removal on 2024-11-28.
+# Bug #928960, #933606
+sci-geosciences/opencpn
+sci-geosciences/opencpn-plugin-aisradar
+sci-geosciences/opencpn-plugin-climatology
+sci-geosciences/opencpn-plugin-dr
+sci-geosciences/opencpn-plugin-findit
+sci-geosciences/opencpn-plugin-gxradar
+sci-geosciences/opencpn-plugin-iacfleet
+sci-geosciences/opencpn-plugin-launcher
+sci-geosciences/opencpn-plugin-logbookkonni
+sci-geosciences/opencpn-plugin-objsearch
+sci-geosciences/opencpn-plugin-ocpn_draw
+sci-geosciences/opencpn-plugin-ocpndebugger
+sci-geosciences/opencpn-plugin-oesenc
+sci-geosciences/opencpn-plugin-otcurrent
+sci-geosciences/opencpn-plugin-polar
+sci-geosciences/opencpn-plugin-radar
+sci-geosciences/opencpn-plugin-route
+sci-geosciences/opencpn-plugin-squiddio
+sci-geosciences/opencpn-plugin-statusbar
+sci-geosciences/opencpn-plugin-watchdog
+sci-geosciences/opencpn-plugin-weather_routing
+sci-geosciences/opencpn-plugin-weatherfax
+sci-geosciences/opencpn-plugins-meta
+
 # Hans de Graaff <graaff@gentoo.org> (2024-10-27)
 
 # Obsolete slots without reverse dependencies. dev-util/cucumber will
