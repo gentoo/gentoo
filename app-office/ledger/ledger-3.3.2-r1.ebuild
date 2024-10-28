@@ -102,6 +102,10 @@ src_install() {
 	cmake_src_install
 
 	newbashcomp contrib/${PN}-completion.bash ${PN}
+
+	# Requires gnuplot
+	exeinto /usr/bin
+	doexe contrib/report
 }
 
 pkg_postinst() {
@@ -112,6 +116,8 @@ pkg_postinst() {
 	optfeature_header \
 		"Install the following packages for additional features:"
 	optfeature "Emacs support" "app-emacs/ledger-mode"
+	optfeature "Plot visualization" "sci-visualization/gnuplot"
+	optfeature "Graph visualization" "media-gfx/graphviz"
 }
 
 # rainy day TODO:
