@@ -306,6 +306,7 @@ src_configure() {
 				# bug 788022
 				-x test_multiprocessing_fork
 				-x test_multiprocessing_forkserver
+				-x test_multiprocessing_spawn
 
 				-x test_ctypes
 				-x test_descr
