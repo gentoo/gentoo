@@ -41,19 +41,21 @@ SLOT="0/${MY_PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 # TODO: Like to simplifiy these. Mostly the flags related to Groups.
-IUSE="all-modules boost cuda debug doc examples ffmpeg +freetype gdal gles2-only imaging
-	java las +logging mpi mysql odbc opencascade openmp openvdb pdal postgres python qt5
-	qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
+IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg +freetype gdal gles2-only imaging
+	java las +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
+	python qt5 qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
 
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	all-modules? (
-		boost ffmpeg freetype gdal imaging las mysql odbc opencascade openvdb pdal
+		boost cgns ffmpeg freetype gdal imaging las mysql netcdf odbc opencascade openvdb pdal
 		postgres rendering views
 	)
 	cuda? ( video_cards_nvidia vtkm !tbb )
 	java? ( rendering )
+	minimal? ( !rendering )
+	!minimal? ( cgns netcdf rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( rendering )
 	qt6? ( rendering )
@@ -79,25 +81,27 @@ RDEPEND="
 	dev-libs/pugixml
 	media-libs/freetype
 	media-libs/libjpeg-turbo
-	>=media-libs/libharu-2.4.0:=
 	media-libs/libogg
 	media-libs/libpng:=
-	media-libs/libtheora
 	media-libs/tiff:=
-	>=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=]
 	sci-libs/hdf5:=[mpi=]
 	sci-libs/proj:=
-	sci-libs/netcdf:=[mpi=]
 	sys-libs/zlib
 	boost? ( dev-libs/boost:=[mpi?] )
+	cgns? ( >=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=] )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:= )
 	freetype? ( media-libs/fontconfig )
 	gdal? ( sci-libs/gdal:= )
 	java? ( >=virtual/jdk-11:= )
 	las? ( sci-geosciences/liblas )
+	!minimal? (
+		>=media-libs/libharu-2.4.0:=
+		media-libs/libtheora
+	)
 	mpi? ( virtual/mpi[cxx,romio] )
 	mysql? ( dev-db/mariadb-connector-c )
+	netcdf? ( sci-libs/netcdf:=[mpi=] )
 	odbc? ( dev-db/unixODBC )
 	openvdb? ( media-gfx/openvdb:= )
 	opencascade? ( sci-libs/opencascade:= )
@@ -255,7 +259,7 @@ pkg_setup() {
 #	and can currently not unbundled:
 #	diy2, exodusII, fides, h5part, kissfft, loguru, verdict, vpic,
 #	vtkm, xdmf{2,3}, zfp
-# TODO: exprtk
+# TODO: exprtk, ioss
 # Note: As of v9.2.2 we no longer drop bundled libraries, when using system
 # libraries. This just saves a little space. CMake logic of VTK on ThirdParty
 # libraries avoids automagic builds, so deletion is not needed to catch these.
@@ -314,18 +318,18 @@ src_configure() {
 
 		-DVTK_GROUP_ENABLE_Imaging="$(usex imaging "YES" "NO")"
 		-DVTK_GROUP_ENABLE_Rendering="$(usex rendering "YES" "NO")"
-		-DVTK_GROUP_ENABLE_StandAlone="YES"
+		-DVTK_GROUP_ENABLE_StandAlone="$(usex minimal "NO" "YES")"
 		-DVTK_GROUP_ENABLE_Views="$(usex views "YES" "NO")"
 		-DVTK_GROUP_ENABLE_Web="$(usex web "YES" "NO")"
 
 		-DVTK_INSTALL_SDK=ON
 
-		-DVTK_MODULE_ENABLE_VTK_IOCGNSReader="YES"
-		-DVTK_MODULE_ENABLE_VTK_IOExportPDF="YES"
+		-DVTK_MODULE_ENABLE_VTK_IOCGNSReader="$(usex cgns "YES" "NO")"
+		-DVTK_MODULE_ENABLE_VTK_IOExportPDF="$(usex minimal "NO" "YES")"
 		-DVTK_MODULE_ENABLE_VTK_IOLAS="$(usex las "YES" "NO")"
-		-DVTK_MODULE_ENABLE_VTK_IONetCDF="YES"
+		-DVTK_MODULE_ENABLE_VTK_IONetCDF="$(usex netcdf "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOOCCT="$(usex opencascade "YES" "NO")"
-		-DVTK_MODULE_ENABLE_VTK_IOOggTheora="YES"
+		-DVTK_MODULE_ENABLE_VTK_IOOggTheora="$(usex minimal "NO" "YES")"
 		-DVTK_MODULE_ENABLE_VTK_IOOpenVDB="$(usex openvdb "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOSQL="YES" # sqlite
 		-DVTK_MODULE_ENABLE_VTK_IOPDAL="$(usex pdal "YES" "NO")"
@@ -333,7 +337,7 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_IOXMLParser="YES"
 		-DVTK_MODULE_ENABLE_VTK_RenderingFreeType="$(usex freetype "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig="$(usex freetype "YES" "NO")"
-		-DVTK_MODULE_ENABLE_VTK_cgns="YES"
+		-DVTK_MODULE_ENABLE_VTK_cgns="$(usex cgns "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_doubleconversion="YES"
 		-DVTK_MODULE_ENABLE_VTK_eigen="YES"
 		-DVTK_MODULE_ENABLE_VTK_expat="YES"
@@ -342,19 +346,19 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_hdf5="YES"
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"
-		-DVTK_MODULE_ENABLE_VTK_libharu="YES"
+		-DVTK_MODULE_ENABLE_VTK_libharu="$(usex minimal "NO" "YES")"
 		-DVTK_MODULE_ENABLE_VTK_libproj="YES"
 		-DVTK_MODULE_ENABLE_VTK_libxml2="YES"
 		-DVTK_MODULE_ENABLE_VTK_lz4="YES"
 		-DVTK_MODULE_ENABLE_VTK_lzma="YES"
-		-DVTK_MODULE_ENABLE_VTK_netcdf="YES"
+		-DVTK_MODULE_ENABLE_VTK_netcdf="$(usex netcdf "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_nlohmannjson="YES"
 		-DVTK_MODULE_ENABLE_VTK_ogg="YES"
 		-DVTK_MODULE_ENABLE_VTK_pegtl="YES"
 		-DVTK_MODULE_ENABLE_VTK_png="YES"
 		-DVTK_MODULE_ENABLE_VTK_pugixml="YES"
 		-DVTK_MODULE_ENABLE_VTK_sqlite="YES"
-		-DVTK_MODULE_ENABLE_VTK_theora="YES"
+		-DVTK_MODULE_ENABLE_VTK_theora="$(usex minimal "NO" "YES")"
 		-DVTK_MODULE_ENABLE_VTK_tiff="YES"
 		-DVTK_MODULE_ENABLE_VTK_utf8="YES"
 		-DVTK_MODULE_ENABLE_VTK_vtkvtkm="$(usex vtkm "YES" "NO")"
@@ -363,6 +367,7 @@ src_configure() {
 		# not packaged in Gentoo
 		-DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF
 		-DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF
+		-DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF
 		-DVTK_MODULE_USE_EXTERNAL_VTK_verdict=OFF
 
 		-DVTK_RELOCATABLE_INSTALL=ON
@@ -387,6 +392,35 @@ src_configure() {
 		-DVTK_WRAP_JAVA="$(usex java)"
 		-DVTK_WRAP_PYTHON="$(usex python)"
 	)
+
+	if use minimal; then
+		mycmakeargs+=(
+			-DVTK_MODULE_ENABLE_VTK_CommonComputationalGeometry="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonExecutionModel="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonMath="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonMisc="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonSystem="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonTransforms="YES"
+
+			-DVTK_MODULE_ENABLE_VTK_FiltersCore="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersExtraction="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersGeneral="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersGeneric="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersGeometry="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersHybrid="NO"
+			-DVTK_MODULE_ENABLE_VTK_FiltersHyperTree="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersSources="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersStatistics="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersVerdict="YES"
+
+			-DVTK_MODULE_ENABLE_VTK_IOCore="YES"
+			-DVTK_MODULE_ENABLE_VTK_IOGeometry="NO"
+			-DVTK_MODULE_ENABLE_VTK_IOLegacy="YES"
+
+			-DVTK_MODULE_ENABLE_VTK_ParallelCore="YES"
+			-DVTK_MODULE_ENABLE_VTK_ParallelDIY="YES"
+		)
+	fi
 
 	if use all-modules; then
 		mycmakeargs+=(
@@ -500,7 +534,7 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_IOH5part="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOMPIParallel="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOParallel="YES"
-			-DVTK_MODULE_ENABLE_VTK_IOParallelNetCDF="YES"
+			-DVTK_MODULE_ENABLE_VTK_IOParallelNetCDF="$(usex netcdf "YES" "NO")"
 			-DVTK_MODULE_ENABLE_VTK_IOParallelXML="YES"
 			-DVTK_MODULE_ENABLE_VTK_ParallelMPI="YES"
 			-DVTK_MODULE_ENABLE_VTK_h5part="YES"
