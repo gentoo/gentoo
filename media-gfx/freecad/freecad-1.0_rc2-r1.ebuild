@@ -118,7 +118,7 @@ RDEPEND="
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2,vtk] )
 	smesh? (
-		sci-libs/hdf5:=[fortran,zlib]
+		sci-libs/hdf5:=[zlib]
 		>=sci-libs/med-4.0.0-r1
 		!qt6? ( sci-libs/vtk:=[qt5] )
 		qt6? ( sci-libs/vtk:=[-qt5,qt6] )
