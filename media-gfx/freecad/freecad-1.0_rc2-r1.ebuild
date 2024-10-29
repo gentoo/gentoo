@@ -77,6 +77,7 @@ RDEPEND="
 	)
 	fem? (
 		sci-libs/vtk:=
+		$(python_gen_cond_dep 'dev-python/ply[${PYTHON_USEDEP}]')
 	)
 	gui? (
 		>=media-libs/coin-4.0.0
@@ -112,7 +113,10 @@ RDEPEND="
 		spacenav? ( dev-libs/libspnav[X?] )
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
-	openscad? ( media-gfx/openscad )
+	openscad? (
+		media-gfx/openscad
+		$(python_gen_cond_dep 'dev-python/ply[${PYTHON_USEDEP}]')
+	)
 	pcl? ( sci-libs/pcl:= )
 	smesh? (
 		sci-libs/hdf5:=[zlib]
@@ -122,7 +126,6 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
-		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
 	')
 "
 DEPEND="${RDEPEND}
