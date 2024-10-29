@@ -27,17 +27,18 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui netgen pcl +qt6 smesh spacenav test X"
+IUSE="debug designer +gui netgen pcl +qt6 +smesh spacenav test X"
 # Modules are found in src/Mod/ and their options defined in:
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-IUSE+=" addonmgr bim cam cloud fem idf inspection mesh openscad points reverse robot surface +techdraw"
+IUSE+=" addonmgr +bim cam cloud fem idf inspection +mesh openscad points reverse robot surface +techdraw"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bim? ( mesh )
 	cam? ( mesh )
+	gui? ( bim )
 	designer? ( gui )
 	fem? ( smesh )
 	inspection? ( points )
@@ -47,6 +48,7 @@ REQUIRED_USE="
 	reverse? ( mesh points )
 	test? ( techdraw )
 "
+# Draft Workbench needs BIM
 # There is no py3.12 support planned for pyside2
 
 RESTRICT="!test? ( test )"
