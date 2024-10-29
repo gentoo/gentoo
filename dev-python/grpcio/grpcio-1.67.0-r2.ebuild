@@ -17,15 +17,14 @@ HOMEPAGE="
 	https://pypi.org/project/grpcio/
 "
 # Tests need other packages from the source tree, so use a GitHub
-# archive.  grpcio-tools is required for tests, and requires a bunch
-# of bundled libraries   However, we also need bundled abseil-cpp,
-# so take that one from grpcio-tools to avoid two sdists.
-SRC_URI="
-	https://github.com/grpc/grpc/archive/v${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
-	$(pypi_sdist_url grpcio-tools)
+# archive.  sdist provides bundled library sources (git submodules).
+SRC_URI+="
+	test? (
+		https://github.com/grpc/grpc/archive/v${PV}.tar.gz
+			-> ${MY_P}.gh.tar.gz
+		$(pypi_sdist_url grpcio_tools)
+	)
 "
-S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -33,7 +32,6 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-libs/openssl:=
-	dev-libs/re2:=
 	net-dns/c-ares:=
 	sys-libs/zlib:=
 "
@@ -52,14 +50,6 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-src_unpack() {
-	default
-
-	# reuse the bundled abseil-cpp from grpcio-tools sdist.
-	ln -s "${WORKDIR}/grpcio_tools-${PV}/third_party/abseil-cpp/absl" \
-		"${S}/third_party/abseil-cpp/absl" || die
-}
-
 src_configure() {
 	export GRPC_PYTHON_BUILD_EXT_COMPILER_JOBS="$(makeopts_jobs)"
 	# system abseil-cpp crashes with USE=-debug, sigh
@@ -67,7 +57,8 @@ src_configure() {
 	#export GRPC_PYTHON_BUILD_SYSTEM_ABSL=1
 	export GRPC_PYTHON_BUILD_SYSTEM_CARES=1
 	export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
-	export GRPC_PYTHON_BUILD_SYSTEM_RE2=1
+	# re2 needs to be built against the same abseil-cpp version
+	#export GRPC_PYTHON_BUILD_SYSTEM_RE2=1
 	export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 	export GRPC_PYTHON_BUILD_WITH_CYTHON=1
 
@@ -102,10 +93,10 @@ python_test() {
 	# grpcio_tools supports bundled libs only, and requires different
 	# flags
 	unset GRPC_PYTHON_CFLAGS
-	pushd "${WORKDIR}/grpcio_tools-${PV}" >/dev/null || die
+	cd "${WORKDIR}/grpcio_tools-${PV}" || die
 	distutils_pep517_install "${BUILD_DIR}"/test
-	popd >/dev/null || die
 
+	cd "${WORKDIR}/${MY_P}" || die
 	local protodir=src/proto/grpc/testing
 	local testdir=src/python/grpcio_tests
 	"${EPYTHON}" -m grpc_tools.protoc -I. --python_out="${testdir}" \
