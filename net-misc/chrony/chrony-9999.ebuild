@@ -40,8 +40,6 @@ REQUIRED_USE="
 
 DEPEND="
 	caps? (
-		acct-group/ntp
-		acct-user/ntp
 		sys-libs/libcap
 	)
 	libtomcrypt? ( dev-libs/libtomcrypt:= )
@@ -54,9 +52,17 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	caps? (
+		acct-group/ntp
+		acct-user/ntp
+	)
 	selinux? ( sec-policy/selinux-chronyd )
 "
 BDEPEND="
+	caps? (
+		acct-group/ntp
+		acct-user/ntp
+	)
 	html? ( dev-ruby/asciidoctor )
 	nts? ( virtual/pkgconfig )
 	sechash? (
