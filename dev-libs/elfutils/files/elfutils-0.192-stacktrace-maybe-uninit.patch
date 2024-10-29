@@ -1,0 +1,38 @@
+https://sourceware.org/git/?p=elfutils.git;a=commit;h=dce324303198545e1c5484d912e5f259b1d4953d
+
+From dce324303198545e1c5484d912e5f259b1d4953d Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Thu, 24 Oct 2024 11:06:08 +0200
+Subject: [PATCH] stacktrace: Init elf_fd in sysprof_init_dwfl
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+When building with LTO gcc believes elf_fd can be used uninitialized:
+
+In function âsysprof_init_dwflâ,
+    inlined from âsysprof_unwind_cbâ at stacktrace.c:1235:16:
+stacktrace.c:1087:7: error: âelf_fdâ may be used uninitialized [-Werror=maybe-uninitialized]
+ 1087 |       close (elf_fd);
+      |       ^
+
+This code won't be reached because if find_procfile doesn't initialize
+elf_fd, it will return an error. But help the compiler by initializing
+elf_fd to -1.
+
+	* src/stacktrace.c (sysprof_init_dwfl): Init elf_fd to -1.
+
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+--- a/src/stacktrace.c
++++ b/src/stacktrace.c
+@@ -1033,7 +1033,7 @@ sysprof_init_dwfl (struct sysprof_unwind_info *sui,
+     }
+ 
+   Elf *elf = NULL;
+-  int elf_fd;
++  int elf_fd = -1;
+   err = find_procfile (dwfl, &pid, &elf, &elf_fd);
+   if (err < 0)
+     {
+-- 
+2.43.5

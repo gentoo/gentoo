@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2024-10-29)
+# Currently needs patched dev-util/sysprof.
+dev-libs/elfutils stacktrace
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-21)
 # Mechanism for coping with the time64 transition of 32bit arches
 # Will be unmasked in the time64 profiles

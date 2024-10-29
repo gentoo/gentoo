@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-10-29)
+# Only available on amd64 for now
+dev-libs/elfutils stacktrace
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-23)
 # Missing keywords on dev-python/asyncssh.
 net-misc/dropbear test

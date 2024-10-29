@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-10-29)
+# Only available on amd64 for now
+dev-libs/elfutils -stacktrace
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-23)
 # Dependency dev-python/asyncssh is keyworded here.
 net-misc/dropbear -test

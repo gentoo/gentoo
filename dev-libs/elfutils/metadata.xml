@@ -7,6 +7,11 @@
 	</maintainer>
 	<use>
 		<flag name="lzma">Support automatic decompression of LZMA-compressed files and kernel images</flag>
+		<flag name="stacktrace">
+			Build experimental eu-stacktrace tool. Relies on integration with dev-util/sysprof.
+
+			See https://developers.redhat.com/articles/2024/06/11/get-system-wide-profiles-binaries-without-frame-pointers.
+		</flag>
 		<flag name="utils">Install command-line utilities (all the eu-* programs)</flag>
 		<flag name="debuginfod">Enable debuginfod support, both the debuginfod server and the libdebuginfod client library</flag>
 	</use>
