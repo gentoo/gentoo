@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
-SRC_URI+=" test? ( https://mirror.bytemark.co.uk/gentoo/releases/amd64/binpackages/17.1/x86-64/virtual/libc/libc-1-r1-1.gpkg.tar )"
+SRC_URI+=" test? ( https://mirror.bytemark.co.uk/gentoo/releases/amd64/binpackages/23.0/x86-64/virtual/libc/libc-1-r1-1.gpkg.tar )"
 
 LICENSE="GPL-2"
 SLOT="0"
