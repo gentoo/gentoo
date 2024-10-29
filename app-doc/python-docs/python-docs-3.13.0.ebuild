@@ -11,7 +11,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="PSF-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 src_install() {
 	rm -r _sources || die
