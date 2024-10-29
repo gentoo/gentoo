@@ -272,15 +272,15 @@ src_install() {
 	cp "${desktop_file}" "${WORKDIR}/${PN}.desktop-template" || die
 
 	# Add apulse support through our wrapper shell launcher, patchelf-method broken since 119.0.
-	# See bgo#916230
+	# See bgo#916230, bgo#941873
 	local apulselib=
 	if has_version -r media-sound/apulse[-sdk] ; then
 		apulselib="${EPREFIX}/usr/$(get_libdir)/apulse"
 		ewarn "media-sound/apulse with -sdk use flag detected!"
 		ewarn "Firefox-bin will be installed with a wrapper, that attempts to load"
 		ewarn "apulse instead of pipewire/pulseadio. This may lead to sound issues."
-		ewarn "Please either enable sdk use flag for apulse, or remove it to utilize"
-		ewarn "pipewire/pulseaudio instead."
+		ewarn "Please either enable sdk use flag for apulse, or remove apulse"
+		ewarn "completely and re-install firefox-bin to utilize pipewire/pulseaudio instead."
 	fi
 
 	sed -i \
