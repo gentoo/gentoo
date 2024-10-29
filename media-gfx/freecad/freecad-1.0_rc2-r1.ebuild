@@ -76,8 +76,7 @@ RDEPEND="
 		net-misc/curl
 	)
 	fem? (
-		!qt6? ( sci-libs/vtk:=[qt5,rendering] )
-		qt6? ( sci-libs/vtk:=[-qt5,qt6,rendering] )
+		sci-libs/vtk:=
 	)
 	gui? (
 		>=media-libs/coin-4.0.0
@@ -120,8 +119,7 @@ RDEPEND="
 	smesh? (
 		sci-libs/hdf5:=[zlib]
 		>=sci-libs/med-4.0.0-r1
-		!qt6? ( sci-libs/vtk:=[qt5] )
-		qt6? ( sci-libs/vtk:=[-qt5,qt6] )
+		sci-libs/vtk:=
 	)
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
