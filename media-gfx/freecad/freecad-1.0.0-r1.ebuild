@@ -89,7 +89,7 @@ RDEPEND="
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside2:=[gui,svg,webchannel,${PYTHON_USEDEP}]
+				dev-python/pyside2:=[gui,svg,${PYTHON_USEDEP}]
 				dev-python/shiboken2:=[${PYTHON_USEDEP}]
 			' python3_{10..11} )
 		)
@@ -102,7 +102,7 @@ RDEPEND="
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside6:=[gui,svg,webchannel,${PYTHON_USEDEP}]
+				dev-python/pyside6:=[gui,svg,${PYTHON_USEDEP}]
 				dev-python/shiboken6:=[${PYTHON_USEDEP}]
 			' )
 		)
