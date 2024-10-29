@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/935393
+https://github.com/vandry/Perl-Locale-gettext/issues/7
+https://github.com/vandry/Perl-Locale-gettext/pull/4
+
+From e6e30992fa4ca3e7ecf417a23a9c46af8f671226 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Salvador=20Fandi=C3=B1o?= <sfandino@yahoo.com>
+Date: Fri, 27 Oct 2017 16:22:54 +0200
+Subject: [PATCH] skip for C.UTF-8 too
+
+--- a/t/lib/gen_test_data.pl
++++ b/t/lib/gen_test_data.pl
+@@ -28,11 +28,11 @@ sub gen {
+ 		skip("cannot run test without a locale set", 0);
+ 		exit 0;
+ 	}
+-	if ($messages eq 'C') {
++	if ($messages =~ /^C(\..*)?$/) {
+ 		skip("cannot run test in the C locale", 0);
+ 		exit 0;
+ 	}
+-	if ($messages eq 'POSIX') {
++	if ($messages =~ /^POSIX(\..*)?$/) {
+ 		skip("cannot run test in the POSIX locale", 0);
+ 		exit 0;
+ 	}
+
