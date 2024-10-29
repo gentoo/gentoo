@@ -301,7 +301,7 @@ src_test() {
 	local -x FREECAD_USER_HOME="${HOME}"
 	local -x FREECAD_USER_DATA="${T}"
 	local -x FREECAD_USER_TEMP="${T}"
-	./bin/FreeCADCmd --run-test 0 || die
+	./bin/FreeCADCmd --run-test 0 --set-config AppHomePath="${BUILD_DIR}/" || die
 }
 
 src_install() {
