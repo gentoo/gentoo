@@ -71,6 +71,11 @@ RDEPEND="
 	media-libs/freetype
 	sci-libs/opencascade:=[json]
 	sys-libs/zlib
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	')
 	cloud? (
 		dev-libs/openssl:=
 		net-misc/curl
@@ -122,23 +127,15 @@ RDEPEND="
 		>=sci-libs/med-4.0.0-r1
 		sci-libs/vtk:=
 	)
-	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pybind11[${PYTHON_USEDEP}]
-	')
 "
 DEPEND="${RDEPEND}
 	>=dev-cpp/eigen-3.3.1:3
 	dev-cpp/ms-gsl
-	test? (
-		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
-		!qt6? ( dev-qt/qttest:5 )
-	)
+	test? ( !qt6? ( dev-qt/qttest:5 ) )
 "
 BDEPEND="
 	dev-lang/swig
 	test? (
-		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 		!qt6? ( dev-qt/qttest:5 )
 		dev-cpp/gtest
 	)
@@ -349,7 +346,6 @@ pkg_postinst() {
 	optfeature "Dependency graphs" media-gfx/graphviz
 	optfeature_header "Import / Export"
 	optfeature "Work with COLLADA documents" dev-python/pycollada
-	optfeature "YAML importer and emitter" dev-python/pyyaml
 	optfeature "Importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
 	optfeature "Importing and exporting geospatial data formats" sci-libs/gdal
 	optfeature "Working with projection data" sci-libs/proj
