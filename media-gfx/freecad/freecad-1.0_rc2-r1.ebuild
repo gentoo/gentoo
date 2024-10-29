@@ -42,6 +42,30 @@ for module in ${FREECAD_EXPERIMENTAL_MODULES}; do
 done
 unset module
 
+# To get required dependencies:
+# 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
+# We set the following requirements by default:
+# arch, draft, drawing, import, mesh, part, qt5, sketcher, spreadsheet, start, web.
+#
+# Additionally, we auto-enable mesh_part, flat_mesh and smesh
+# Fem actually needs smesh, but as long as we don't have a smesh package, we enable
+# smesh through the mesh USE flag. Note however, the fem<-smesh dependency isn't
+# reflected by the REQUIRES_MODS macro, but at
+# cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake:187.
+#
+# The increase in auto-enabled workbenches is due to their need in parts of the
+# test suite when compiled with a minimal set of USE flags.
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	designer? ( gui )
+	fem? ( smesh )
+	inspection? ( points )
+	openscad? ( smesh )
+	path? ( robot )
+	python_single_target_python3_12? ( gui? ( qt6 ) )
+"
+# There is no py3.12 support planned for pyside2
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -138,30 +162,6 @@ BDEPEND="
 		dev-cpp/gtest
 	)
 "
-
-# To get required dependencies:
-# 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-# We set the following requirements by default:
-# arch, draft, drawing, import, mesh, part, qt5, sketcher, spreadsheet, start, web.
-#
-# Additionally, we auto-enable mesh_part, flat_mesh and smesh
-# Fem actually needs smesh, but as long as we don't have a smesh package, we enable
-# smesh through the mesh USE flag. Note however, the fem<-smesh dependency isn't
-# reflected by the REQUIRES_MODS macro, but at
-# cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake:187.
-#
-# The increase in auto-enabled workbenches is due to their need in parts of the
-# test suite when compiled with a minimal set of USE flags.
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	designer? ( gui )
-	fem? ( smesh )
-	inspection? ( points )
-	openscad? ( smesh )
-	path? ( robot )
-	python_single_target_python3_12? ( gui? ( qt6 ) )
-"
-# There is no py3.12 support planned for pyside2
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0_rc2-Gentoo-specific-don-t-check-vcs.patch
