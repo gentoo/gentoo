@@ -26,19 +26,22 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui pcl qt5 smesh spacenav test X"
+IUSE="debug designer +gui netgen pcl qt5 smesh spacenav test X"
 # Modules are found in src/Mod/ and their options defined in:
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-IUSE+=" addonmgr cloud fem idf inspection netgen openscad points reverse robot surface +techdraw"
+IUSE+=" addonmgr bim cam cloud fem idf inspection mesh openscad points reverse robot surface +techdraw"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	bim? ( mesh )
+	cam? ( mesh )
 	designer? ( gui )
 	fem? ( smesh )
 	inspection? ( points )
-	openscad? ( smesh )
+	mesh? ( smesh )
+	openscad? ( mesh )
 	python_single_target_python3_12? ( gui? ( !qt5 ) )
 	reverse? ( mesh points )
 	test? ( techdraw )
@@ -184,14 +187,14 @@ src_configure() {
 		# Modules
 		-DBUILD_ADDONMGR=$(usex addonmgr)
 		-DBUILD_ASSEMBLY=OFF					# Requires OndselSolver
-		-DBUILD_BIM=ON
-		-DBUILD_CAM=ON
+		-DBUILD_BIM=$(usex bim)
+		-DBUILD_CAM=$(usex cam)
 		-DBUILD_CLOUD=$(usex cloud)
 		-DBUILD_DRAFT=ON
 		# see below for DRAWING
 		-DBUILD_FEM=$(usex fem)
-		-DBUILD_FEM_NETGEN=$(usex netgen)
-		-DBUILD_FLAT_MESH=ON					# a submodule of MeshPart
+		-DBUILD_FEM_NETGEN=$(usex fem $(usex netgen))
+		-DBUILD_FLAT_MESH=$(usex mesh)			# a submodule of MeshPart
 		-DBUILD_HELP=ON
 		-DBUILD_IDF=$(usex idf)
 		-DBUILD_IMPORT=ON						# import module for various file formats
@@ -199,8 +202,8 @@ src_configure() {
 		-DBUILD_JTREADER=OFF					# uses an old proprietary library
 		-DBUILD_MATERIAL=ON
 		-DBUILD_MEASURE=ON
-		-DBUILD_MESH=ON
-		-DBUILD_MESH_PART=ON
+		-DBUILD_MESH=$(usex mesh)
+		-DBUILD_MESH_PART=$(usex mesh)
 		-DBUILD_OPENSCAD=$(usex openscad)
 		-DBUILD_PART=ON
 		-DBUILD_PART_DESIGN=ON

@@ -14,6 +14,12 @@
 			Build the addon manager module for automatic handling of 3rd 
 			party addons
 		</flag>
+		<flag name="bim">
+			Build the BIM module and workbench
+		</flag>
+		<flag name="cam">
+			Build the CAM module and workbench
+		</flag>
 		<flag name="cloud">
 			Build the Cloud workbench, to access cloud providers (mostly
 			Amazon S3).
@@ -47,6 +53,9 @@
 		</flag>
 		<flag name="material">
 			Build the material module and workbench to work with materials
+		</flag>
+		<flag name="mesh">
+			Build the mesh module and workbench
 		</flag>
 		<flag name="netgen">
 			Build support for the netgen mesher through <pkg>media-gfx/netgen</pkg>.
@@ -82,7 +91,7 @@
 			Build the show module, a helper module for visibility automation
 		</flag>
 		<flag name="smesh">
-			Build the Salome SMESH module
+			Build Salome SMESH
 		</flag>
 		<flag name="spacenav">
 			Add support for space navigator devices through
