@@ -17,14 +17,15 @@
 		Build and install the efiemu runtimes
 	</flag>
 	<flag name="fonts">Build and install fonts for the gfxterm module</flag>
-	<flag name="mount">
-		Build and install the grub-mount utility
-	</flag>
 	<flag name="libzfs">
 		Enable support for <pkg>sys-fs/zfs</pkg>
 	</flag>
+	<flag name="mount">
+		Build and install the grub-mount utility
+	</flag>
 	<flag name="themes">Build and install GRUB themes (starfield)</flag>
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
+	<flag name="uki">Install a grub-mkconfig script to detect and add UKI images</flag>
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:gnu:grub</remote-id>

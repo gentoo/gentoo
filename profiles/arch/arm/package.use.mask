@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Peter Levine <plevine457@gmail.com> (2024-10-25)
+# UEFI and UKIs are available on arm
+sys-boot/grub -uki
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-11)
 # depends on java packages, not keyworded on arm
 app-office/libreoffice java

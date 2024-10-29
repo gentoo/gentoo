@@ -1,6 +1,10 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Peter Levine <plevine457@gmail.com> (2024-10-25)
+# UEFI and UKIs are available on riscv
+sys-boot/grub -uki
+
 # Benda Xu <heroxbd@gentoo.org> (2024-10-10)
 # dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on riscv
 sys-cluster/slurm nvml ucx

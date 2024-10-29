@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Peter Levine <plevine457@gmail.com> (2024-10-25)
+# UEFI and UKIs are available on arm64
+sys-boot/grub -uki
+
 # Michał Górny <mgorny@gentoo.org> (2024-10-23)
 # Debug-enabled binary packages are built for a subset of architectures.
 sys-kernel/gentoo-kernel-bin -debug

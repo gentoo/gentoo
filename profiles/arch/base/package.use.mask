@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Peter Levine <plevine457@gmail.com> (2024-10-25)
+# Restrict to architectures that support Unified Kernel Images
+sys-boot/grub uki
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-23)
 # Missing keywords on dev-python/asyncssh.
 net-misc/dropbear test
