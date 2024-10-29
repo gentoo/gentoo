@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-10-29)
+# Unmaintained in Gentoo.  The latter is multiple versions behind.
+# Ebuilds without working tests.  The only revdep has its "doc" flag
+# masked for over a year.
+# Removal on 2024-11-28.  Bug #942445.
+dev-python/mkdocs-ansible
+dev-python/mkdocs-macros-plugin
+
 # Marc Schiffbauer <mschiff@gentoo.org> (2024-10-28)
 # New style opencpn plugins depend on specific snapshots of
 # "opencpn-libs", a collection of bundled 3rd party libs or
