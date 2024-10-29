@@ -72,6 +72,9 @@
 		<flag name="raytracing">
 			Build the raytracing module and workbench for raytracing and rendering
 		</flag>
+		<flag name="reverse">
+			Build the reverse engineering module and workbench
+		</flag>
 		<flag name="robot">
 			Build the robot module and workbench for studying robot movements
 		</flag>

@@ -32,7 +32,7 @@ IUSE="debug designer +gui pcl +qt6 smesh spacenav test X"
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-IUSE+=" addonmgr cloud fem idf inspection netgen openscad points robot surface +techdraw"
+IUSE+=" addonmgr cloud fem idf inspection netgen openscad points reverse robot surface +techdraw"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -41,6 +41,7 @@ REQUIRED_USE="
 	inspection? ( points )
 	openscad? ( smesh )
 	python_single_target_python3_12? ( gui? ( qt6 ) )
+	reverse? ( mesh points )
 	test? ( techdraw )
 "
 # There is no py3.12 support planned for pyside2
@@ -206,7 +207,7 @@ src_configure() {
 		-DBUILD_PART_DESIGN=ON
 		-DBUILD_PLOT=ON
 		-DBUILD_POINTS=$(usex points)
-		-DBUILD_REVERSEENGINEERING=OFF			# currently only an empty sandbox
+		-DBUILD_REVERSEENGINEERING=$(usex reverse)
 		-DBUILD_ROBOT=$(usex robot)
 		-DBUILD_SANDBOX=OFF
 		-DBUILD_SHOW=$(usex gui)
