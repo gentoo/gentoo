@@ -21,7 +21,7 @@ DEPEND="
 	>=dev-libs/xxhash-0.8:=
 "
 RDEPEND="
-	${RDEPEND}
+	${DEPEND}
 	sys-devel/dwz
 "
 BDEPEND="
