@@ -81,6 +81,10 @@
 		<flag name="smesh">
 			Build the Salome SMESH module
 		</flag>
+		<flag name="spacenav">
+			Add support for space navigator devices through
+			<pkg>dev-libs/libspnav</pkg>
+		</flag>
 		<flag name="surface">
 			Build the surface module and workbench
 		</flag>

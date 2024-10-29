@@ -27,7 +27,7 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui +qt6 test"
+IUSE="debug designer +gui +qt6 spacenav test X"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
@@ -50,7 +50,6 @@ RDEPEND="
 	dev-cpp/yaml-cpp
 	dev-libs/boost:=
 	dev-libs/libfmt:=
-	dev-libs/libspnav[X]
 	dev-libs/xerces-c[icu]
 	!qt6? (
 		dev-qt/qtconcurrent:5
@@ -110,6 +109,7 @@ RDEPEND="
 				dev-python/shiboken6:=[${PYTHON_USEDEP}]
 			' )
 		)
+		spacenav? ( dev-libs/libspnav[X?] )
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
