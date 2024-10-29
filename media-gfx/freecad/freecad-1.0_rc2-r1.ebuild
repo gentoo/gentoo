@@ -30,8 +30,8 @@ SLOT="0"
 IUSE="debug designer +gui +qt6 spacenav test X"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
-FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
-	openscad part-design path points raytracing robot show smesh
+FREECAD_STABLE_MODULES="addonmgr fem idf inspection material
+	openscad part-design points robot show smesh
 	surface techdraw tux"
 
 for module in ${FREECAD_STABLE_MODULES}; do
@@ -61,7 +61,6 @@ REQUIRED_USE="
 	fem? ( smesh )
 	inspection? ( points )
 	openscad? ( smesh )
-	path? ( robot )
 	python_single_target_python3_12? ( gui? ( qt6 ) )
 "
 # There is no py3.12 support planned for pyside2
@@ -195,48 +194,50 @@ src_configure() {
 	append-ldflags -Wl,--copy-dt-needed-entries
 
 	local mycmakeargs=(
-		-DBUILD_ADDONMGR=$(usex addonmgr)
-		-DBUILD_ARCH=ON
-		-DBUILD_ASSEMBLY=OFF                    # Requires OndselSolver
-		-DBUILD_CLOUD=$(usex cloud)
-		-DBUILD_COMPLETE=OFF					# deprecated
-		-DBUILD_DRAFT=ON
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
-		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for current git master
+		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
+		-DBUILD_GUI=$(usex gui)
+		-DBUILD_SMESH=$(usex smesh)
+		-DBUILD_VR=OFF
+		-DBUILD_WITH_CONDA=OFF
+
+		# Modules
+		-DBUILD_ADDONMGR=$(usex addonmgr)
+		-DBUILD_ASSEMBLY=OFF					# Requires OndselSolver
+		-DBUILD_BIM=ON
+		-DBUILD_CAM=ON
+		-DBUILD_CLOUD=$(usex cloud)
+		-DBUILD_DRAFT=ON
+		# see below for DRAWING
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=$(usex netgen)
-		-DBUILD_FLAT_MESH=ON
-		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
-		-DBUILD_FREETYPE=ON						# automagic dep
-		-DBUILD_GUI=$(usex gui)
+		-DBUILD_FLAT_MESH=ON					# a submodule of MeshPart
+		-DBUILD_HELP=ON
 		-DBUILD_IDF=$(usex idf)
-		-DBUILD_IMAGE=$(usex image)
 		-DBUILD_IMPORT=ON						# import module for various file formats
 		-DBUILD_INSPECTION=$(usex inspection)
-		-DBUILD_JTREADER=OFF					# code has been removed upstream, but option is still there
+		-DBUILD_JTREADER=OFF					# uses an old proprietary library
 		-DBUILD_MATERIAL=$(usex material)
+		-DBUILD_MEASURE=ON
 		-DBUILD_MESH=ON
 		-DBUILD_MESH_PART=ON
 		-DBUILD_OPENSCAD=$(usex openscad)
 		-DBUILD_PART=ON
 		-DBUILD_PART_DESIGN=$(usex part-design)
-		-DBUILD_PATH=$(usex path)
+		-DBUILD_PLOT=ON
 		-DBUILD_POINTS=$(usex points)
-		-DBUILD_RAYTRACING=$(usex raytracing)
 		-DBUILD_REVERSEENGINEERING=OFF			# currently only an empty sandbox
 		-DBUILD_ROBOT=$(usex robot)
+		-DBUILD_SANDBOX=OFF
 		-DBUILD_SHOW=$(usex show)
 		-DBUILD_SKETCHER=ON						# needed by draft workspace
-		-DBUILD_SMESH=$(usex smesh)
 		-DBUILD_SPREADSHEET=ON
 		-DBUILD_START=ON
 		-DBUILD_SURFACE=$(usex surface)
 		-DBUILD_TECHDRAW=$(usex techdraw)
 		-DBUILD_TEST=ON							# always build test workbench for run-time testing
 		-DBUILD_TUX=$(usex tux)
-		-DBUILD_VR=OFF
 		-DBUILD_WEB=ON							# needed by start workspace
-		-DBUILD_WITH_CONDA=OFF
 
 		-DCMAKE_INSTALL_DATADIR=/usr/share/${PN}/data
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
