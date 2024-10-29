@@ -61,8 +61,6 @@ RDEPEND="
 		dev-qt/qtbase:6[concurrent,network,xml]
 	)
 	media-libs/freetype
-	sci-libs/hdf5:=[fortran,zlib]
-	>=sci-libs/med-4.0.0-r1
 	sci-libs/opencascade:=[json,vtk]
 	sys-libs/zlib
 	cloud? (
@@ -112,6 +110,8 @@ RDEPEND="
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2,vtk] )
 	smesh? (
+		sci-libs/hdf5:=[fortran,zlib]
+		>=sci-libs/med-4.0.0-r1
 		qt5? ( sci-libs/vtk:=[qt5] )
 		!qt5? ( sci-libs/vtk:=[-qt5,qt6] )
 	)
@@ -155,7 +155,9 @@ BDEPEND="
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	designer? ( gui )
+	fem? ( smesh )
 	inspection? ( points )
+	openscad? ( smesh )
 	path? ( robot )
 	python_single_target_python3_12? ( gui? ( !qt5 ) )
 "
