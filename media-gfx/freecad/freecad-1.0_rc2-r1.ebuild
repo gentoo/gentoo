@@ -333,25 +333,14 @@ pkg_postinst() {
 	einfo "You can load a lot of additional workbenches using the integrated"
 	einfo "AddonManager."
 
-	# ToDo: check opencv, pysolar (::science), elmerfem (::science)
-	#		ifc++, ifcopenshell, z88 (no pkgs), calculix-ccx (::waebbl)
 	einfo "There are a lot of additional tools, for which FreeCAD has builtin"
 	einfo "support. Some of them are available in Gentoo. Take a look at"
 	einfo "https://wiki.freecad.org/Installing_additional_components"
-	optfeature_header "Computational utilities"
-	optfeature "Statistical computation with Python" dev-python/pandas
-	optfeature "Use scientific computation with Python" dev-python/scipy
-	optfeature "Use symbolic math with Python" dev-python/sympy
-	optfeature_header "Imaging, Plotting and Rendering utilities"
-	optfeature "Dependency graphs" media-gfx/graphviz
-	optfeature_header "Import / Export"
-	optfeature "Work with COLLADA documents" dev-python/pycollada
-	optfeature "Importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
-	optfeature "Importing and exporting geospatial data formats" sci-libs/gdal
-	optfeature "Working with projection data" sci-libs/proj
-	optfeature_header "Meshing and FEM"
-	optfeature "FEM mesh generator" sci-libs/gmsh
-	optfeature "Visualization" sci-visualization/paraview
+	optfeature_header "External programs used by FreeCAD"
+	optfeature "dependency graphs" media-gfx/graphviz
+	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
+	use bim && optfeature "working with COLLADA documents" dev-python/pycollada
+	( use fem || use mesh ) && optfeature "mesh generation" sci-libs/gmsh
 }
 
 pkg_postrm() {
