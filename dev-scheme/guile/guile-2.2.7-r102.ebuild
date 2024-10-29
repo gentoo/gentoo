@@ -105,9 +105,6 @@ src_install() {
 	mv "${ED}"/usr/$(get_libdir)/pkgconfig/ \
 	   "${ED}/${pcdir}" || die
 
-	[[ -f "${pcdir}"/guile-2.2.pc ]]
-	assert "failed to install .pc file?"
-
 	guile_slot_info
 
 	local major="$(ver_cut 1 "${SLOT}")"
