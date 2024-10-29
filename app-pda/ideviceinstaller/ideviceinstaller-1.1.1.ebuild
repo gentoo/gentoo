@@ -9,7 +9,7 @@ SRC_URI="https://github.com/libimobiledevice/ideviceinstaller/releases/download/
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=app-pda/libimobiledevice-1.3.0:=
 	>=app-pda/libplist-2.3.0:=
