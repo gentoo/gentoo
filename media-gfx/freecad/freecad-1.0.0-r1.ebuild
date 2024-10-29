@@ -116,10 +116,7 @@ RDEPEND="
 		spacenav? ( dev-libs/libspnav[X?] )
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
-	openscad? (
-		media-gfx/openscad
-		$(python_gen_cond_dep 'dev-python/ply[${PYTHON_USEDEP}]')
-	)
+	openscad? ( $(python_gen_cond_dep 'dev-python/ply[${PYTHON_USEDEP}]') )
 	pcl? ( sci-libs/pcl:= )
 	smesh? (
 		sci-libs/hdf5:=[zlib]
@@ -335,6 +332,7 @@ pkg_postinst() {
 	optfeature_header "External programs used by FreeCAD"
 	optfeature "dependency graphs" media-gfx/graphviz
 	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
+	optfeature "importing OpenSCAD files, Mesh booleans" media-gfx/openscad
 	use bim && optfeature "working with COLLADA documents" dev-python/pycollada
 	if use fem || use mesh; then
 		optfeature "mesh generation" sci-libs/gmsh
