@@ -359,7 +359,7 @@ src_prepare() {
 
 src_compile() {
 	einfo 'Copying DLL files for the missing "ref" directory'
-	edotnet fsi "${FILESDIR}/pwsh-7.3.3-copy-ref.fsx" "${WORKDIR}/${P}_ref"
+	efsi "${FILESDIR}/pwsh-7.3.3-copy-ref.fsx" "${WORKDIR}/${P}_ref"
 
 	dotnet-pkg_src_compile
 }
