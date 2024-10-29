@@ -8,6 +8,8 @@ inherit meson cmake
 DESCRIPTION="High-level C++ D-Bus library"
 HOMEPAGE="https://github.com/Kistler-Group/sdbus-cpp"
 SRC_URI="https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/sdbus-cpp-${PV}"
+
 LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1" # Nothing to do with Qt but exception text is exactly the same.
 SLOT="0/2"
 KEYWORDS="~amd64"
@@ -32,10 +34,9 @@ BDEPEND="
 	doc? ( app-text/doxygen[dot] )
 "
 
-S="${WORKDIR}/sdbus-cpp-${PV}"
-
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_DOXYGEN_DOC=$(usex doc)
 		-DSDBUSCPP_BUILD_CODEGEN=$(usex tools)
 		-DSDBUSCPP_BUILD_DOCS=yes
 		-DSDBUSCPP_BUILD_DOXYGEN_DOCS=$(usex doc)
@@ -60,7 +61,9 @@ src_test() {
 		return
 	fi
 
-	cmake_src_test
+	# Can't use cmake_src_test with dbus-run-session. Don't bother with all the
+	# extra arguments because there's only two tests.
+	dbus-run-session ctest --test-dir "${BUILD_DIR}" || die
 }
 
 src_install() {
