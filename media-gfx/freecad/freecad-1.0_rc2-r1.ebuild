@@ -356,7 +356,7 @@ pkg_postinst() {
 	#		ifc++, ifcopenshell, z88 (no pkgs), calculix-ccx (::waebbl)
 	einfo "There are a lot of additional tools, for which FreeCAD has builtin"
 	einfo "support. Some of them are available in Gentoo. Take a look at"
-	einfo "https://wiki.freecadweb.org/Installing#External_software_supported_by_FreeCAD"
+	einfo "https://wiki.freecad.org/Installing_additional_components"
 	optfeature_header "Computational utilities"
 	optfeature "Statistical computation with Python" dev-python/pandas
 	optfeature "Use scientific computation with Python" dev-python/scipy
