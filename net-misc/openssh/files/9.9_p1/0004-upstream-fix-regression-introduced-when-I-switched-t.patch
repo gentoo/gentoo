@@ -1,0 +1,296 @@
+From dda58ae078f4cba21c3b874e81f1d28121636985 Mon Sep 17 00:00:00 2001
+Message-ID: <dda58ae078f4cba21c3b874e81f1d28121636985.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Wed, 25 Sep 2024 01:24:04 +0000
+Subject: [PATCH 4/8] upstream: fix regression introduced when I switched the
+ "Match"
+
+criteria tokeniser to a more shell-like one. Apparently the old tokeniser
+(accidentally?) allowed "Match criteria=argument" as well as the "Match
+criteria argument" syntax that we tested for.
+
+People were using this syntax so this adds back support for
+"Match criteria=argument"
+
+bz3739 ok dtucker
+
+OpenBSD-Commit-ID: d1eebedb8c902002b75b75debfe1eeea1801f58a
+(cherry picked from commit 66878e12a207fa9746dee3e2bdcca29b704cf035)
+---
+ misc.c     | 23 +++++++++++++++++++++-
+ misc.h     |  3 ++-
+ readconf.c | 28 ++++++++++++++++++++++-----
+ servconf.c | 57 ++++++++++++++++++++++++++++++++++++++++--------------
+ 4 files changed, 89 insertions(+), 22 deletions(-)
+
+diff --git a/misc.c b/misc.c
+index afdf5142e..1b4b55c50 100644
+--- a/misc.c
++++ b/misc.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: misc.c,v 1.196 2024/06/06 17:15:25 djm Exp $ */
++/* $OpenBSD: misc.c,v 1.197 2024/09/25 01:24:04 djm Exp $ */
+ /*
+  * Copyright (c) 2000 Markus Friedl.  All rights reserved.
+  * Copyright (c) 2005-2020 Damien Miller.  All rights reserved.
+@@ -107,6 +107,27 @@ rtrim(char *s)
+ 	}
+ }
+ 
++/*
++ * returns pointer to character after 'prefix' in 's' or otherwise NULL
++ * if the prefix is not present.
++ */
++const char *
++strprefix(const char *s, const char *prefix, int ignorecase)
++{
++	size_t prefixlen;
++
++	if ((prefixlen = strlen(prefix)) == 0)
++		return s;
++	if (ignorecase) {
++		if (strncasecmp(s, prefix, prefixlen) != 0)
++			return NULL;
++	} else {
++		if (strncmp(s, prefix, prefixlen) != 0)
++			return NULL;
++	}
++	return s + prefixlen;
++}
++
+ /* set/unset filedescriptor to non-blocking */
+ int
+ set_nonblock(int fd)
+diff --git a/misc.h b/misc.h
+index 113403896..efecdf1ad 100644
+--- a/misc.h
++++ b/misc.h
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: misc.h,v 1.109 2024/06/06 17:15:25 djm Exp $ */
++/* $OpenBSD: misc.h,v 1.110 2024/09/25 01:24:04 djm Exp $ */
+ 
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+@@ -56,6 +56,7 @@ struct ForwardOptions {
+ char	*chop(char *);
+ void	 rtrim(char *);
+ void	skip_space(char **);
++const char *strprefix(const char *, const char *, int);
+ char	*strdelim(char **);
+ char	*strdelimw(char **);
+ int	 set_nonblock(int);
+diff --git a/readconf.c b/readconf.c
+index 3d9cc6dbb..de42fb6ff 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: readconf.c,v 1.390 2024/09/15 00:57:36 djm Exp $ */
++/* $OpenBSD: readconf.c,v 1.391 2024/09/25 01:24:04 djm Exp $ */
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+@@ -710,7 +710,7 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+     struct passwd *pw, const char *host_arg, const char *original_host,
+     int final_pass, int *want_final_pass, const char *filename, int linenum)
+ {
+-	char *arg, *oattrib, *attrib, *cmd, *host, *criteria;
++	char *arg, *oattrib, *attrib = NULL, *cmd, *host, *criteria;
+ 	const char *ruser;
+ 	int r, this_result, result = 1, attributes = 0, negate;
+ 
+@@ -731,7 +731,8 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+ 
+ 	debug2("checking match for '%s' host %s originally %s",
+ 	    full_line, host, original_host);
+-	while ((oattrib = attrib = argv_next(acp, avp)) != NULL) {
++	while ((oattrib = argv_next(acp, avp)) != NULL) {
++		attrib = xstrdup(oattrib);
+ 		/* Terminate on comment */
+ 		if (*attrib == '#') {
+ 			argv_consume(acp);
+@@ -777,9 +778,23 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+ 			    this_result ? "" : "not ", oattrib);
+ 			continue;
+ 		}
++
++		/* Keep this list in sync with below */
++		if (strprefix(attrib, "host=", 1)  != NULL ||
++		    strprefix(attrib, "originalhost=", 1) != NULL ||
++		    strprefix(attrib, "user=", 1) != NULL ||
++		    strprefix(attrib, "localuser=", 1) != NULL ||
++		    strprefix(attrib, "localnetwork=", 1) != NULL ||
++		    strprefix(attrib, "tagged=", 1) != NULL ||
++		    strprefix(attrib, "exec=", 1) != NULL) {
++			arg = strchr(attrib, '=');
++			*(arg++) = '\0';
++		} else {
++			arg = argv_next(acp, avp);
++		}
++
+ 		/* All other criteria require an argument */
+-		if ((arg = argv_next(acp, avp)) == NULL ||
+-		    *arg == '\0' || *arg == '#') {
++		if (arg == NULL || *arg == '\0' || *arg == '#') {
+ 			error("Missing Match criteria for %s", attrib);
+ 			result = -1;
+ 			goto out;
+@@ -856,6 +871,8 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+ 		    criteria == NULL ? "" : criteria,
+ 		    criteria == NULL ? "" : "\"");
+ 		free(criteria);
++		free(attrib);
++		attrib = NULL;
+ 	}
+ 	if (attributes == 0) {
+ 		error("One or more attributes required for Match");
+@@ -865,6 +882,7 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+  out:
+ 	if (result != -1)
+ 		debug2("match %sfound", result ? "" : "not ");
++	free(attrib);
+ 	free(host);
+ 	return result;
+ }
+diff --git a/servconf.c b/servconf.c
+index 89b8413e8..dd774f468 100644
+--- a/servconf.c
++++ b/servconf.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: servconf.c,v 1.418 2024/09/15 03:09:44 djm Exp $ */
++/* $OpenBSD: servconf.c,v 1.419 2024/09/25 01:24:04 djm Exp $ */
+ /*
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+  *                    All rights reserved
+@@ -1033,7 +1033,7 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+     int line, struct connection_info *ci)
+ {
+ 	int result = 1, attributes = 0, port;
+-	char *arg, *attrib;
++	char *arg, *attrib = NULL, *oattrib;
+ 
+ 	if (ci == NULL)
+ 		debug3("checking syntax for 'Match %s'", full_line);
+@@ -1047,7 +1047,8 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 		    ci->laddress ? ci->laddress : "(null)", ci->lport);
+ 	}
+ 
+-	while ((attrib = argv_next(acp, avp)) != NULL) {
++	while ((oattrib = argv_next(acp, avp)) != NULL) {
++		attrib = xstrdup(oattrib);
+ 		/* Terminate on comment */
+ 		if (*attrib == '#') {
+ 			argv_consume(acp); /* mark all arguments consumed */
+@@ -1062,11 +1063,13 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 			    *arg != '\0' && *arg != '#')) {
+ 				error("'all' cannot be combined with other "
+ 				    "Match attributes");
+-				return -1;
++				result = -1;
++				goto out;
+ 			}
+ 			if (arg != NULL && *arg == '#')
+ 				argv_consume(acp); /* consume remaining args */
+-			return 1;
++			result = 1;
++			goto out;
+ 		}
+ 		/* Criterion "invalid-user" also has no argument */
+ 		if (strcasecmp(attrib, "invalid-user") == 0) {
+@@ -1078,11 +1081,26 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 				debug("matched invalid-user at line %d", line);
+ 			continue;
+ 		}
++
++		/* Keep this list in sync with below */
++		if (strprefix(attrib, "user=", 1) != NULL ||
++		    strprefix(attrib, "group=", 1) != NULL ||
++		    strprefix(attrib, "host=", 1) != NULL ||
++		    strprefix(attrib, "address=", 1) != NULL ||
++		    strprefix(attrib, "localaddress=", 1) != NULL ||
++		    strprefix(attrib, "localport=", 1) != NULL ||
++		    strprefix(attrib, "rdomain=", 1) != NULL) {
++			arg = strchr(attrib, '=');
++			*(arg++) = '\0';
++		} else {
++			arg = argv_next(acp, avp);
++		}
++
+ 		/* All other criteria require an argument */
+-		if ((arg = argv_next(acp, avp)) == NULL ||
+-		    *arg == '\0' || *arg == '#') {
++		if (arg == NULL || *arg == '\0' || *arg == '#') {
+ 			error("Missing Match criteria for %s", attrib);
+-			return -1;
++			result = -1;
++			goto out;
+ 		}
+ 		if (strcasecmp(attrib, "user") == 0) {
+ 			if (ci == NULL || (ci->test && ci->user == NULL)) {
+@@ -1105,7 +1123,8 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 				match_test_missing_fatal("Group", "user");
+ 			switch (match_cfg_line_group(arg, line, ci->user)) {
+ 			case -1:
+-				return -1;
++				result = -1;
++				goto out;
+ 			case 0:
+ 				result = 0;
+ 			}
+@@ -1141,7 +1160,8 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 				result = 0;
+ 				break;
+ 			case -2:
+-				return -1;
++				result = -1;
++				goto out;
+ 			}
+ 		} else if (strcasecmp(attrib, "localaddress") == 0){
+ 			if (ci == NULL || (ci->test && ci->laddress == NULL)) {
+@@ -1166,13 +1186,15 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 				result = 0;
+ 				break;
+ 			case -2:
+-				return -1;
++				result = -1;
++				goto out;
+ 			}
+ 		} else if (strcasecmp(attrib, "localport") == 0) {
+ 			if ((port = a2port(arg)) == -1) {
+ 				error("Invalid LocalPort '%s' on Match line",
+ 				    arg);
+-				return -1;
++				result = -1;
++				goto out;
+ 			}
+ 			if (ci == NULL || (ci->test && ci->lport == -1)) {
+ 				result = 0;
+@@ -1200,16 +1222,21 @@ match_cfg_line(const char *full_line, int *acp, char ***avp,
+ 				debug("user %.100s matched 'RDomain %.100s' at "
+ 				    "line %d", ci->rdomain, arg, line);
+ 		} else {
+-			error("Unsupported Match attribute %s", attrib);
+-			return -1;
++			error("Unsupported Match attribute %s", oattrib);
++			result = -1;
++			goto out;
+ 		}
++		free(attrib);
++		attrib = NULL;
+ 	}
+ 	if (attributes == 0) {
+ 		error("One or more attributes required for Match");
+ 		return -1;
+ 	}
+-	if (ci != NULL)
++ out:
++	if (ci != NULL && result != -1)
+ 		debug3("match %sfound", result ? "" : "not ");
++	free(attrib);
+ 	return result;
+ }
+ 
+-- 
+2.47.0
+

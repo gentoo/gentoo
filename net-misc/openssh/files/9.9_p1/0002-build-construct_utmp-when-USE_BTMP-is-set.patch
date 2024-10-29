@@ -1,0 +1,40 @@
+From c606840894ca805472ddbd4ebad4b0a6f231ccb5 Mon Sep 17 00:00:00 2001
+Message-ID: <c606840894ca805472ddbd4ebad4b0a6f231ccb5.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Wed, 25 Sep 2024 11:13:05 +1000
+Subject: [PATCH 2/8] build construct_utmp() when USE_BTMP is set
+
+Fixes compile error on Void Linux/Musl
+
+(cherry picked from commit 2c12ae8cf9b0b7549ae097c4123abeda0ee63e5b)
+---
+ loginrec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/loginrec.c b/loginrec.c
+index 45f13dee8..7b1818b86 100644
+--- a/loginrec.c
++++ b/loginrec.c
+@@ -614,7 +614,7 @@ line_abbrevname(char *dst, const char *src, int dstsize)
+  ** into account.
+  **/
+ 
+-#if defined(USE_UTMP) || defined (USE_WTMP) || defined (USE_LOGIN)
++#if defined(USE_BTMP) || defined(USE_UTMP) || defined (USE_WTMP) || defined (USE_LOGIN)
+ 
+ /* build the utmp structure */
+ void
+@@ -698,7 +698,7 @@ construct_utmp(struct logininfo *li,
+ 	}
+ # endif
+ }
+-#endif /* USE_UTMP || USE_WTMP || USE_LOGIN */
++#endif /* USE_BTMP || USE_UTMP || USE_WTMP || USE_LOGIN */
+ 
+ /**
+  ** utmpx utility functions
+-- 
+2.47.0
+

@@ -1,0 +1,30 @@
+From d1e0cfefc3a0f2d371f280d270e9ebc2188950c6 Mon Sep 17 00:00:00 2001
+Message-ID: <d1e0cfefc3a0f2d371f280d270e9ebc2188950c6.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Wed, 25 Sep 2024 11:15:45 +1000
+Subject: [PATCH 3/8] gss-serv.c needs sys/param.h
+
+From Void Linux
+
+(cherry picked from commit ff2cd1dd5711ff88efdf26662d6189d980439a1f)
+---
+ gss-serv.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gss-serv.c b/gss-serv.c
+index 00e3d118b..025a118f8 100644
+--- a/gss-serv.c
++++ b/gss-serv.c
+@@ -29,6 +29,7 @@
+ #ifdef GSSAPI
+ 
+ #include <sys/types.h>
++#include <sys/param.h>
+ 
+ #include <stdarg.h>
+ #include <string.h>
+-- 
+2.47.0
+

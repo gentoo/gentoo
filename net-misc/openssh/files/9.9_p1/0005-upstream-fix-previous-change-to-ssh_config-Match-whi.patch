@@ -1,0 +1,70 @@
+From 3e95023995e1d0249febab2b804f51b7673e07de Mon Sep 17 00:00:00 2001
+Message-ID: <3e95023995e1d0249febab2b804f51b7673e07de.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Thu, 26 Sep 2024 23:55:08 +0000
+Subject: [PATCH 5/8] upstream: fix previous change to ssh_config Match, which
+ broken on
+
+negated Matches; spotted by phessler@ ok deraadt@
+
+OpenBSD-Commit-ID: b1c6acec66cd5bd1252feff1d02ad7129ced37c7
+(cherry picked from commit 19bcb2d90c6caf14abf386b644fb24eb7afab889)
+---
+ readconf.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/readconf.c b/readconf.c
+index de42fb6ff..9f5592698 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: readconf.c,v 1.391 2024/09/25 01:24:04 djm Exp $ */
++/* $OpenBSD: readconf.c,v 1.392 2024/09/26 23:55:08 djm Exp $ */
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+@@ -710,7 +710,7 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+     struct passwd *pw, const char *host_arg, const char *original_host,
+     int final_pass, int *want_final_pass, const char *filename, int linenum)
+ {
+-	char *arg, *oattrib, *attrib = NULL, *cmd, *host, *criteria;
++	char *arg, *oattrib = NULL, *attrib = NULL, *cmd, *host, *criteria;
+ 	const char *ruser;
+ 	int r, this_result, result = 1, attributes = 0, negate;
+ 
+@@ -731,8 +731,8 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+ 
+ 	debug2("checking match for '%s' host %s originally %s",
+ 	    full_line, host, original_host);
+-	while ((oattrib = argv_next(acp, avp)) != NULL) {
+-		attrib = xstrdup(oattrib);
++	while ((attrib = argv_next(acp, avp)) != NULL) {
++		attrib = oattrib = xstrdup(attrib);
+ 		/* Terminate on comment */
+ 		if (*attrib == '#') {
+ 			argv_consume(acp);
+@@ -871,8 +871,8 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+ 		    criteria == NULL ? "" : criteria,
+ 		    criteria == NULL ? "" : "\"");
+ 		free(criteria);
+-		free(attrib);
+-		attrib = NULL;
++		free(oattrib);
++		oattrib = attrib = NULL;
+ 	}
+ 	if (attributes == 0) {
+ 		error("One or more attributes required for Match");
+@@ -882,7 +882,7 @@ match_cfg_line(Options *options, const char *full_line, int *acp, char ***avp,
+  out:
+ 	if (result != -1)
+ 		debug2("match %sfound", result ? "" : "not ");
+-	free(attrib);
++	free(oattrib);
+ 	free(host);
+ 	return result;
+ }
+-- 
+2.47.0
+

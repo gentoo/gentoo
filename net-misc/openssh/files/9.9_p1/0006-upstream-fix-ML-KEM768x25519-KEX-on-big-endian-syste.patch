@@ -1,0 +1,99 @@
+From 3c10bf179b0029e0412e4b0fecf2e31d53b4ef08 Mon Sep 17 00:00:00 2001
+Message-ID: <3c10bf179b0029e0412e4b0fecf2e31d53b4ef08.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Sun, 27 Oct 2024 02:06:01 +0000
+Subject: [PATCH 6/8] upstream: fix ML-KEM768x25519 KEX on big-endian systems;
+ spotted by
+
+jsg@ feedback/ok deraadt@
+
+OpenBSD-Commit-ID: 26d81a430811672bc762687166986cad40d28cc0
+(cherry picked from commit 11f348196b3fb51c3d8d1f4f36db9d73f03149ed)
+---
+ libcrux_mlkem768_sha3.h |  8 +++++---
+ mlkem768.sh             | 17 ++++++++++++-----
+ 2 files changed, 17 insertions(+), 8 deletions(-)
+
+diff --git a/libcrux_mlkem768_sha3.h b/libcrux_mlkem768_sha3.h
+index a82d60e83..b8ac1436f 100644
+--- a/libcrux_mlkem768_sha3.h
++++ b/libcrux_mlkem768_sha3.h
+@@ -1,4 +1,5 @@
+-/*  $OpenBSD: libcrux_mlkem768_sha3.h,v 1.1 2024/09/02 12:13:56 djm Exp $ */
++/*  $OpenBSD: libcrux_mlkem768_sha3.h,v 1.2 2024/10/27 02:06:01 djm Exp $ */
++
+ /* Extracted from libcrux revision 84c5d87b3092c59294345aa269ceefe0eb97cc35 */
+ 
+ /*
+@@ -160,18 +161,19 @@ static inline void Eurydice_slice_to_array3(uint8_t *dst_tag, char *dst_ok,
+ // CORE STUFF (conversions, endianness, ...)
+ 
+ static inline void core_num__u64_9__to_le_bytes(uint64_t v, uint8_t buf[8]) {
++  v = htole64(v);
+   memcpy(buf, &v, sizeof(v));
+ }
+ static inline uint64_t core_num__u64_9__from_le_bytes(uint8_t buf[8]) {
+   uint64_t v;
+   memcpy(&v, buf, sizeof(v));
+-  return v;
++  return le64toh(v);
+ }
+ 
+ static inline uint32_t core_num__u32_8__from_le_bytes(uint8_t buf[4]) {
+   uint32_t v;
+   memcpy(&v, buf, sizeof(v));
+-  return v;
++  return le32toh(v);
+ }
+ 
+ static inline uint32_t core_num__u8_6__count_ones(uint8_t x0) {
+diff --git a/mlkem768.sh b/mlkem768.sh
+index 2fdc28312..3d12b2ed8 100644
+--- a/mlkem768.sh
++++ b/mlkem768.sh
+@@ -1,9 +1,10 @@
+ #!/bin/sh
+-#       $OpenBSD: mlkem768.sh,v 1.2 2024/09/04 05:11:33 djm Exp $
++#       $OpenBSD: mlkem768.sh,v 1.3 2024/10/27 02:06:01 djm Exp $
+ #       Placed in the Public Domain.
+ #
+ 
+-WANT_LIBCRUX_REVISION="origin/main"
++#WANT_LIBCRUX_REVISION="origin/main"
++WANT_LIBCRUX_REVISION="84c5d87b3092c59294345aa269ceefe0eb97cc35"
+ 
+ FILES="
+ 	libcrux/libcrux-ml-kem/cg/eurydice_glue.h
+@@ -47,6 +48,7 @@ echo '#define KRML_NOINLINE __attribute__((noinline, unused))'
+ echo '#define KRML_HOST_EPRINTF(...)'
+ echo '#define KRML_HOST_EXIT(x) fatal_f("internal error")'
+ echo
++
+ for i in $FILES; do
+ 	echo "/* from $i */"
+ 	# Changes to all files:
+@@ -56,11 +58,16 @@ for i in $FILES; do
+ 	    -e 's/[	 ]*$//' \
+ 	    $i | \
+ 	case "$i" in
+-	# XXX per-file handling goes here.
++	*/libcrux-ml-kem/cg/eurydice_glue.h)
++		# Replace endian functions with versions that work.
++		perl -0777 -pe 's/(static inline void core_num__u64_9__to_le_bytes.*\n)([^}]*\n)/\1  v = htole64(v);\n\2/' |
++		perl -0777 -pe 's/(static inline uint64_t core_num__u64_9__from_le_bytes.*?)return v;/\1return le64toh(v);/s' |
++		perl -0777 -pe 's/(static inline uint32_t core_num__u32_8__from_le_bytes.*?)return v;/\1return le32toh(v);/s'
++		;;
+ 	# Default: pass through.
+ 	*)
+-	    cat
+-	    ;;
++		cat
++		;;
+ 	esac
+ 	echo
+ done
+-- 
+2.47.0
+
