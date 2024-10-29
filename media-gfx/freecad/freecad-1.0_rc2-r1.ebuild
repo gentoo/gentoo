@@ -32,7 +32,7 @@ IUSE="debug designer +gui pcl +qt6 smesh spacenav test X"
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-IUSE+=" addonmgr cloud fem idf inspection netgen openscad points robot surface techdraw"
+IUSE+=" addonmgr cloud fem idf inspection netgen openscad points robot surface +techdraw"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -41,6 +41,7 @@ REQUIRED_USE="
 	inspection? ( points )
 	openscad? ( smesh )
 	python_single_target_python3_12? ( gui? ( qt6 ) )
+	test? ( techdraw )
 "
 # There is no py3.12 support planned for pyside2
 
@@ -286,18 +287,18 @@ src_configure() {
 # We use the FreeCADCmd binary instead of the FreeCAD binary here
 # for two reasons:
 # 1. It works out of the box with USE=-gui as well, not needing a guard
-# 2. We don't need virtualx.eclass and it's dependencies
-# The exported environment variables are needed, so freecad does know
-# where to save it's temporary files, and where to look and write it's
-# configuration. Without those, there are sandbox violation, when it
+# 2. We don't need virtualx.eclass and its dependencies
+# The environment variables are needed, so that FreeCAD knows
+# where to save its temporary files, and where to look and write its
+# configuration. Without those, there is a sandbox violation, when it
 # tries to create /var/lib/portage/home/.FreeCAD directory.
 src_test() {
-	pushd "${BUILD_DIR}" > /dev/null || die
-	export FREECAD_USER_HOME="${HOME}"
-	export FREECAD_USER_DATA="${T}"
-	export FREECAD_USER_TEMP="${T}"
-	nonfatal ./bin/FreeCADCmd --run-test 0
-	popd > /dev/null || die
+	cd "${BUILD_DIR}" || die
+
+	local -x FREECAD_USER_HOME="${HOME}"
+	local -x FREECAD_USER_DATA="${T}"
+	local -x FREECAD_USER_TEMP="${T}"
+	./bin/FreeCADCmd --run-test 0 || die
 }
 
 src_install() {
