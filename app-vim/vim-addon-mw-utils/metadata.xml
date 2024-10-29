@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">MarcWeber/vim-addon-mw-utils</remote-id>
+		<remote-id type="vim">2940</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

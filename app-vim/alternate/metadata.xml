@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">vim-scripts/a.vim</remote-id>
+		<remote-id type="vim">31</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

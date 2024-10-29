@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="github">bling/vim-airline</remote-id>
+    <remote-id type="vim">4661</remote-id>
   </upstream>
   <stabilize-allarches/>
 </pkgmetadata>

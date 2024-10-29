@@ -5,5 +5,8 @@
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="vim">1886</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

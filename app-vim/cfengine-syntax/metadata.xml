@@ -12,6 +12,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">neilhwatson/vim_cf3</remote-id>
+		<remote-id type="vim">2904</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

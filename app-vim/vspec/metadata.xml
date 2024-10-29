@@ -6,6 +6,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">kana/vim-vspec</remote-id>
+		<remote-id type="vim">3012</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
