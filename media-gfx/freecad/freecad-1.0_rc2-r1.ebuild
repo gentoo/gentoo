@@ -90,7 +90,6 @@ RDEPEND="
 			dev-qt/qtsvg:5
 			dev-qt/qtwidgets:5
 			dev-qt/qtx11extras:5
-			pcl? ( sci-libs/pcl[qt5] )
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
@@ -103,7 +102,6 @@ RDEPEND="
 			dev-qt/qttools:6[widgets]
 			dev-qt/qtbase:6[gui,opengl,widgets]
 			dev-qt/qtsvg:6
-			pcl? ( sci-libs/pcl[-qt5,qt6(-)] )
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
@@ -115,7 +113,7 @@ RDEPEND="
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
-	pcl? ( sci-libs/pcl:=[opengl,openni2,vtk] )
+	pcl? ( sci-libs/pcl:= )
 	smesh? (
 		sci-libs/hdf5:=[zlib]
 		>=sci-libs/med-4.0.0-r1
