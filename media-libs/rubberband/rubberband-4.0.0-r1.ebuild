@@ -10,7 +10,7 @@ HOMEPAGE="https://www.breakfastquay.com/rubberband/"
 SRC_URI="https://breakfastquay.com/files/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="ladspa lv2 jni static-libs +programs test vamp"
 RESTRICT="!test? ( test )"
