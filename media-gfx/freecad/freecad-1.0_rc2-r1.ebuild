@@ -62,7 +62,7 @@ RDEPEND="
 		dev-qt/qtbase:6[concurrent,network,xml]
 	)
 	media-libs/freetype
-	sci-libs/opencascade:=[json,vtk]
+	sci-libs/opencascade:=[json]
 	sys-libs/zlib
 	cloud? (
 		dev-libs/openssl:=
