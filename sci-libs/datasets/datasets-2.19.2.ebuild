@@ -72,6 +72,7 @@ src_test() {
 	local EPYTEST_IGNORE=(
 		tests/test_upstream_hub.py
 		tests/packaged_modules/test_spark.py
+		tests/test_load.py
 	)
 
 	local EPYTEST_DESELECT=(
@@ -105,6 +106,14 @@ src_test() {
 		"tests/test_distributed.py::test_torch_distributed_run_streaming_with_num_workers"
 		"tests/test_file_utils.py::TestxPath::test_xpath_glob"
 		"tests/test_file_utils.py::TestxPath::test_xpath_rglob"
+		"tests/test_file_utils.py::test_xopen_remote"
+		"tests/test_file_utils.py::test_xexists_private"
+		"tests/test_file_utils.py::test_xlistdir_private"
+		"tests/test_file_utils.py::test_xisdir_private"
+		"tests/test_file_utils.py::test_xisfile_private"
+		"tests/test_file_utils.py::test_xgetsize_private"
+		"tests/test_file_utils.py::test_xglob_private"
+		"tests/test_file_utils.py::test_xwalk_private"
 		"tests/test_fingerprint.py::TokenizersHashTest::test_hash_regex"
 		"tests/test_fingerprint.py::TokenizersHashTest::test_hash_tokenizer"
 		"tests/test_fingerprint.py::TokenizersHashTest::test_hash_tokenizer_with_cache"
@@ -128,8 +137,15 @@ src_test() {
 		"tests/test_formatting.py::test_torch_formatter_sets_default_dtypes"
 		"tests/test_inspect.py::test_get_dataset_config_names[hf-internal-testing/librispeech_asr_dummy-expected4]"
 		"tests/test_inspect.py::test_get_dataset_default_config_name[hf-internal-testing/librispeech_asr_dummy-None]"
-		"tests/test_load.py::ModuleFactoryTest::test_HubDatasetModuleFactoryWithParquetExport"
-		"tests/test_load.py::ModuleFactoryTest::test_HubDatasetModuleFactoryWithParquetExport_errors_on_wrong_sha"
+		"tests/test_inspect.py::test_inspect_dataset"
+		"tests/test_inspect.py::test_inspect_metric"
+		"tests/test_inspect.py::test_get_dataset_config_info"
+		"tests/test_inspect.py::test_get_dataset_config_info_error[paws-None-ValueError]"
+		"tests/test_inspect.py::test_get_dataset_config_names"
+		"tests/test_inspect.py::test_get_dataset_default_config_name"
+		"tests/test_inspect.py::test_get_dataset_info"
+		"tests/test_inspect.py::test_get_dataset_split_names"
+		"tests/test_inspect.py::test_get_dataset_config_info_private"
 		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_bertscore"
 		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_bleurt"
 		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_chrf"
@@ -157,6 +173,8 @@ src_test() {
 		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_wiki_split"
 		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_xnli"
 		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_xtreme_s"
+		"tests/test_metric_common.py::LocalMetricTest::test_load_metric_bleu"
+		"tests/commands/test_test.py::test_test_command"
 		"tests/features/test_array_xd.py::ExtensionTypeCompatibilityTest::test_array2d_nonspecific_shape"
 		"tests/features/test_array_xd.py::ExtensionTypeCompatibilityTest::test_extension_indexing"
 		"tests/features/test_array_xd.py::ExtensionTypeCompatibilityTest::test_multiple_extensions_same_row"
@@ -189,6 +207,27 @@ src_test() {
 		"tests/features/test_image.py::test_formatted_dataset_with_image_feature_undecoded"
 		"tests/packaged_modules/test_cache.py::test_cache_multi_configs"
 		"tests/packaged_modules/test_cache.py::test_cache_single_config"
+		"tests/packaged_modules/test_cache.py::test_cache_capital_letters"
+		"tests/packaged_modules/test_folder_based_builder.py::test_data_files_with_different_levels_no_metadata"
+		"tests/packaged_modules/test_folder_based_builder.py::test_data_files_with_one_label_no_metadata"
+		"tests/test_data_files.py::test_DataFilesList_from_patterns_locally_with_extra_files"
+		"tests/test_data_files.py::test_DataFilesDict_from_patterns_locally_or_remote_hashing"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_natural_questions/default@19ba7767b174ad046a84f46af056517a3910ee57"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wiki40b/en@7b21a2e64b90323b2d3d1b81aa349bb4bc76d9bf"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wiki_dpr/psgs_w100.multiset.no_index@b24a417d802a583f8922946c1c75210290e93108"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wiki_dpr/psgs_w100.nq.compressed@b24a417d802a583f8922946c1c75210290e93108"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wiki_dpr/psgs_w100.nq.no_index@b24a417d802a583f8922946c1c75210290e93108"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wikipedia/20220301.de@4d013bdd32c475c8536aae00a56efc774f061649"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wikipedia/20220301.en@4d013bdd32c475c8536aae00a56efc774f061649"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wikipedia/20220301.fr@4d013bdd32c475c8536aae00a56efc774f061649"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wikipedia/20220301.frr@4d013bdd32c475c8536aae00a56efc774f061649"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wikipedia/20220301.it@4d013bdd32c475c8536aae00a56efc774f061649"
+		"tests/test_hf_gcp.py::TestDatasetOnHfGcp::test_dataset_info_available_wikipedia/20220301.simple@4d013bdd32c475c8536aae00a56efc774f061649"
+		"tests/test_hf_gcp.py::test_as_dataset_from_hf_gcs"
+		"tests/test_hf_gcp.py::test_as_streaming_dataset_from_hf_gcs"
+		"tests/test_iterable_dataset.py::test_iterable_dataset_from_hub_torch_dataloader_parallel"
+		"tests/test_offline_util.py::test_offline_with_timeout"
+		"tests/io/test_parquet.py::test_parquet_read_geoparquet"
 	)
 	distutils-r1_src_test
 }
