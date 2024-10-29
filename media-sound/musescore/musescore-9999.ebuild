@@ -59,7 +59,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
-	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
+	"${FILESDIR}/${PN}-4.5.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
 )
