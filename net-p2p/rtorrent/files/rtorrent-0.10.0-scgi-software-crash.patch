@@ -1,0 +1,32 @@
+From b284be6a66b67c625ae255989c3a3d021ebc7c6b Mon Sep 17 00:00:00 2001
+From: stickz <stickman002@mail.com>
+Date: Fri, 25 Oct 2024 12:35:43 -0400
+Subject: [PATCH] Resolve scgi software crash
+
+This commit resolves a scgi software crash when the scgi socket is closed before the message can be sent. It instructs `::send()` not to send a SIGPIPE termination signal. Instead the value -1 is returned and handled bellow. The SCgiTask is closed and a new one is sent to complete the task.
+
+```
+Thread 3 "rtorrent scgi" received signal SIGPIPE, Broken pipe.
+                                                             [Switching to Thread 0x7fffe635c6c0 (LWP 2443872)]
+0x00007ffff7929a84 in send () from /lib/x86_64-linux-gnu/libc.so.6
+```
+---
+ src/rpc/scgi_task.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rpc/scgi_task.cc b/src/rpc/scgi_task.cc
+index 9f2e329..160ba50 100644
+--- a/src/rpc/scgi_task.cc
++++ b/src/rpc/scgi_task.cc
+@@ -200,7 +200,7 @@ SCgiTask::event_read() {
+ 
+ void
+ SCgiTask::event_write() {
+-  int bytes = ::send(m_fileDesc, m_position, m_bufferSize, 0);
++  int bytes = ::send(m_fileDesc, m_position, m_bufferSize, MSG_NOSIGNAL);
+ 
+   if (bytes == -1) {
+     if (!rak::error_number::current().is_blocked_momentary())
+-- 
+2.45.2
+
