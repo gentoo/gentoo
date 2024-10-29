@@ -27,34 +27,13 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui +qt6 spacenav test X"
-
-FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
-FREECAD_STABLE_MODULES="addonmgr fem idf inspection
-	openscad part-design points robot show smesh
-	surface techdraw tux"
-
-for module in ${FREECAD_STABLE_MODULES}; do
-	IUSE="${IUSE} +${module}"
-done
-for module in ${FREECAD_EXPERIMENTAL_MODULES}; do
-	IUSE="${IUSE} ${module}"
-done
-unset module
-
-# To get required dependencies:
+IUSE="debug designer +gui pcl +qt6 smesh spacenav test X"
+# Modules are found in src/Mod/ and their options defined in:
+# cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
+# To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-# We set the following requirements by default:
-# arch, draft, drawing, import, mesh, part, qt5, sketcher, spreadsheet, start, web.
-#
-# Additionally, we auto-enable mesh_part, flat_mesh and smesh
-# Fem actually needs smesh, but as long as we don't have a smesh package, we enable
-# smesh through the mesh USE flag. Note however, the fem<-smesh dependency isn't
-# reflected by the REQUIRES_MODS macro, but at
-# cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake:187.
-#
-# The increase in auto-enabled workbenches is due to their need in parts of the
-# test suite when compiled with a minimal set of USE flags.
+IUSE+=" addonmgr cloud fem idf inspection netgen openscad points robot surface techdraw"
+
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	designer? ( gui )
@@ -223,20 +202,20 @@ src_configure() {
 		-DBUILD_MESH_PART=ON
 		-DBUILD_OPENSCAD=$(usex openscad)
 		-DBUILD_PART=ON
-		-DBUILD_PART_DESIGN=$(usex part-design)
+		-DBUILD_PART_DESIGN=ON
 		-DBUILD_PLOT=ON
 		-DBUILD_POINTS=$(usex points)
 		-DBUILD_REVERSEENGINEERING=OFF			# currently only an empty sandbox
 		-DBUILD_ROBOT=$(usex robot)
 		-DBUILD_SANDBOX=OFF
-		-DBUILD_SHOW=$(usex show)
+		-DBUILD_SHOW=$(usex gui)
 		-DBUILD_SKETCHER=ON						# needed by draft workspace
 		-DBUILD_SPREADSHEET=ON
 		-DBUILD_START=ON
 		-DBUILD_SURFACE=$(usex surface)
 		-DBUILD_TECHDRAW=$(usex techdraw)
 		-DBUILD_TEST=ON							# always build test workbench for run-time testing
-		-DBUILD_TUX=$(usex tux)
+		-DBUILD_TUX=$(usex gui)
 		-DBUILD_WEB=ON							# needed by start workspace
 
 		-DCMAKE_INSTALL_DATADIR=/usr/share/${PN}/data
