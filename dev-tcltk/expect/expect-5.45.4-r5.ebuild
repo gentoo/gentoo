@@ -39,7 +39,7 @@ src_prepare() {
 
 	# fix install_name on darwin
 	[[ ${CHOST} == *-darwin* ]] && \
-		eapply "${FILESDIR}"/${P}-darwin-install_name.patch
+		eapply "${FILESDIR}"/${PN}-5.45-darwin-install_name.patch
 
 	mv configure.{in,ac} || die
 
