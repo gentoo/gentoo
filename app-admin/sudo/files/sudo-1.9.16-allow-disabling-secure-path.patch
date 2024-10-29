@@ -1,0 +1,54 @@
+https://github.com/sudo-project/sudo/commit/131e7e2de02ab53cfefefe93978d7fee4cb8142d
+
+From 131e7e2de02ab53cfefefe93978d7fee4cb8142d Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Tue, 17 Sep 2024 12:49:13 +0000
+Subject: [PATCH] Allow --secure-path-value=no
+
+This adds support for --with-secure-path-value=no to allow packagers
+to ship the sudoers configuration file with the secure path
+line commented out if required.
+--- a/configure.ac
++++ b/configure.ac
+@@ -177,6 +177,7 @@ AC_SUBST([sssd_lib])
+ AC_SUBST([nsswitch_conf])
+ AC_SUBST([netsvc_conf])
+ AC_SUBST([secure_path])
++AC_SUBST([secure_path_config])
+ AC_SUBST([secure_path_status])
+ AC_SUBST([editor])
+ AC_SUBST([pam_session])
+@@ -230,6 +231,7 @@ sesh_file="$libexecdir/sudo/sesh"
+ visudo="$sbindir/visudo"
+ nsswitch_conf=/etc/nsswitch.conf
+ secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
++secure_path_config=
+ secure_path_status="disabled"
+ pam_session=on
+ pam_login_service=sudo
+@@ -1068,9 +1070,11 @@ AC_ARG_WITH(ldap-secret-file, [AS_HELP_STRING([--with-ldap-secret-file], [path t
+ test -n "$with_ldap_secret_file" && ldap_secret="$with_ldap_secret_file"
+ SUDO_DEFINE_UNQUOTED(_PATH_LDAP_SECRET, "$ldap_secret", [Path to the ldap.secret file])
+ 
+-AC_ARG_WITH(secure-path-value, [AS_HELP_STRING([--with-secure-path-value], [value of secure_path in the default sudoers file])],
++AC_ARG_WITH(secure-path-value, [AS_HELP_STRING([--with-secure-path-value], [value of secure_path in the default sudoers file, or "no" to comment out by default])],
+ [case $with_secure_path_value in
+-    yes|no)	AC_MSG_ERROR([must give --secure-path-value an argument.])
++    yes)	AC_MSG_ERROR([must give --with-secure-path-value an argument.])
++		;;
++    no)		secure_path_config="# "
+ 		;;
+     *)		secure_path="$with_secure_path_value"
+ 		;;
+--- a/plugins/sudoers/sudoers.in
++++ b/plugins/sudoers/sudoers.in
+@@ -48,7 +48,7 @@ Defaults!@visudo@ env_keep += "SUDO_EDITOR EDITOR VISUAL"
+ ## Use a hard-coded PATH instead of the user's to find commands.
+ ## This also helps prevent poorly written scripts from running
+ ## artbitrary commands under sudo.
+-Defaults secure_path="@secure_path@"
++@secure_path_config@Defaults secure_path="@secure_path@"
+ ##
+ ## You may wish to keep some of the following environment variables
+ ## when running commands via sudo.
+
