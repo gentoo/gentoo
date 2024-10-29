@@ -231,22 +231,17 @@ src_configure() {
 		$(use_enable ldapi)
 		$(use_with selinux)
 		$(use_with !systemd initddir "/etc/init.d")
+		$(use_with systemd)
 		$(use_enable test cmocka)
+		--with-systemdgroupname="dirsrv.target"
+		--with-tmpfiles-d="${EPREFIX}/usr/lib/tmpfiles.d"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--enable-rust-offline
 		--with-pythonexec="${PYTHON}"
 		--with-fhs
 		--with-openldap
 		--with-db-inc="${EPREFIX}"/usr/include/db5.3
 		--disable-cockpit
-	)
-
-	# https://github.com/389ds/389-ds-base/issues/4292 part 2
-	# creates wrongly named unit file if == no
-	use systemd && myconf+=(
-		$(use_with systemd)
-		$(use_with systemdgroupname "dirsrv.target")
-		$(use_with tmpfiles-d "/usr/lib/tmpfiles.d")
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 
 	econf "${myeconfargs[@]}"
