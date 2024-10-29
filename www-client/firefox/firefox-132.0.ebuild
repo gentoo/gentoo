@@ -898,7 +898,10 @@ src_configure() {
 	fi
 
 	# LTO is handled via configure
+	# -Werror=lto-type-mismatch -Werror=odr are going to fail with GCC, 
+	# bmo#1516758, bgo#942288
 	filter-lto
+	filter-flags -Werror=lto-type-mismatch -Werror=odr
 
 	if use lto ; then
 		if use clang ; then
