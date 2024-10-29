@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {15..18} )
+LLVM_COMPAT=( {15..19} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake edo flag-o-matic go-env llvm-r1 multiprocessing
