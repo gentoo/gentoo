@@ -56,11 +56,12 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
-DOCS=( AUTHORS ChangeLog DEVELOPERS.md README.md )
+DOCS=( AUTHORS ChangeLog DEVELOPERS README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.3-gnuinstalldirs.patch"
-	"${FILESDIR}/${PN}-1.3.0-cflags.patch"
+	"${FILESDIR}/${PN}-1.2.3-cflags.patch"
+	"${FILESDIR}/${PN}-1.2.2-no-pch-include.patch"
 )
 
 src_prepare() {
