@@ -5,11 +5,11 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 CRATES="
 	aho-corasick@1.1.3
-	anyhow@1.0.89
+	anyhow@1.0.86
 	arc-swap@1.7.1
 	autocfg@1.3.0
 	base64@0.21.7
@@ -17,7 +17,7 @@ CRATES="
 	blake2@0.10.6
 	block-buffer@0.10.4
 	bumpalo@3.16.0
-	bytes@1.7.2
+	bytes@1.7.1
 	cfg-if@1.0.0
 	cpufeatures@0.2.12
 	crypto-common@0.1.6
@@ -64,9 +64,9 @@ CRATES="
 	regex@1.10.6
 	ryu@1.0.18
 	scopeguard@1.2.0
-	serde@1.0.210
-	serde_derive@1.0.210
-	serde_json@1.0.128
+	serde@1.0.209
+	serde_derive@1.0.209
+	serde_json@1.0.127
 	sha1@0.10.6
 	sha2@0.10.8
 	smallvec@1.13.2
@@ -116,7 +116,7 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="postgres systemd test"
 RESTRICT="!test? ( test )"
 
@@ -153,7 +153,7 @@ RDEPEND="
 	dev-python/service-identity[${PYTHON_USEDEP}]
 	dev-python/signedjson[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
-	dev-python/treq[${PYTHON_USEDEP}]
+	<dev-python/treq-24.9.1-r1[${PYTHON_USEDEP}]
 	<dev-python/twisted-24.10[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
