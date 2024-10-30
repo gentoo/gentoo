@@ -1948,6 +1948,11 @@ gcc_do_filter_flags() {
 		filter-flags -fdiagnostics-explain-harder
 	fi
 
+	if is_d ; then
+		# bug #940750
+		filter-flags -Warray-bounds
+	fi
+
 	# Please use USE=lto instead (bug #906007).
 	filter-lto
 
