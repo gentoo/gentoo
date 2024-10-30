@@ -21,7 +21,7 @@ fi
 
 LICENSE="UPL-1.0"
 SLOT="0"
-IUSE="test-install"
+IUSE="test-install valgrind"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
@@ -62,9 +62,7 @@ BDEPEND="
 	>=sys-devel/bpf-toolchain-14.1.0
 	sys-devel/flex
 "
-# This isn't yet optional, valgrind.h is included unconditionally
-# https://github.com/oracle/dtrace-utils/issues/80
-DEPEND+=" dev-debug/valgrind"
+DEPEND+=" valgrind? ( dev-debug/valgrind )"
 
 QA_PRESTRIPPED="
 	usr/.*/dtrace/testsuite/test/triggers/.*
@@ -144,6 +142,7 @@ src_configure() {
 		--with-systemd
 		HAVE_LIBCTF=yes
 		HAVE_BPFV3=yes
+		HAVE_VALGRIND=$(usex valgrind)
 	)
 
 	edo ./configure "${confargs[@]}"
