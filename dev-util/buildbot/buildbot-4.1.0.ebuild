@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 # https://github.com/buildbot/buildbot/commit/b941956d3b9598804b46cf9ceebadc549f90e303
 # Fix CommandToString.test_list_with_objects
 PATCHES=(
-        "${FILESDIR}/buildbot-4.1.0-TestCommandToString.patch"
+	"${FILESDIR}/buildbot-4.1.0-TestCommandToString.patch"
 )
 
 RDEPEND="
@@ -54,8 +54,8 @@ RDEPEND="
 	docker? (
 		>=dev-python/docker-7.0.0[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-	)
-"
+	)"
+
 BDEPEND="
 	test? (
 		${RDEPEND}
@@ -71,7 +71,7 @@ BDEPEND="
 		dev-python/pypugjs[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
 		dev-python/treq[${PYTHON_USEDEP}]
-                dev-util/ruff
+		dev-util/ruff
 	)"
 
 DOC_CONTENTS="The \"buildbot\" user and the \"buildmaster\" init script has been added
@@ -82,9 +82,6 @@ The scripts can	run as a different user if desired."
 src_prepare() {
 	# disable all warnings as errors
 	sed -e "/warnings.filterwarnings('error')/d" -i buildbot/test/__init__.py || die
-	# https://github.com/buildbot/buildbot/issues/6776
-	# https://bugs.gentoo.org/904062
-	rm buildbot/test/integration/test_try_client.py || die
 
 	distutils-r1_src_prepare
 }
