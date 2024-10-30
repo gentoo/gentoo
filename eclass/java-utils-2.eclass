@@ -1636,10 +1636,6 @@ java-pkg_is-vm-version-ge() {
 	fi
 }
 
-java-pkg_set-current-vm() {
-	export GENTOO_VM=${1}
-}
-
 # @FUNCTION: java-pkg_current-vm-matches
 # @USAGE: <vm_string1> [<vm_string2> [<vm_string3>...]]
 # @RETURN: 0: the current vm matches any of the provided strings
