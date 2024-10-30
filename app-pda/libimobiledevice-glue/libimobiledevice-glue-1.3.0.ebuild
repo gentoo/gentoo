@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libimobiledevice/libimobiledevice-glue/releases/down
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.1.0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 x86"
 
 RDEPEND=">=app-pda/libplist-2.3:="
 DEPEND="${RDEPEND}"
