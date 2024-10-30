@@ -18,7 +18,7 @@ S="${WORKDIR}/elpa-${COMMIT:0:7}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 SITEFILE="50${PN}-gentoo.el"
 
