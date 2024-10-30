@@ -5,8 +5,19 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">open-telemetry/opentelemetry-cpp</remote-id>
+	</upstream>
 	<use>
-		<flag name="jaeger">Include the jaeger exporter</flag>
-		<flag name="prometheus">include the Prometheus Client in the SDK</flag>
+		<flag name="http">Include the OTLP HTTP exporter in the SDK</flag>
+		<flag name="grpc">Include the OTLP gRPC exporter in the SDK</flag>
+		<flag name="file">Include the OTLP file exporter in the SDK</flag>
+		<flag name="mtls">Enable mTLS support for gRPC (experimental)</flag>
+		<flag name="http-compression">Include gzip compression for the OLTP HTTP exporter in the SDK</flag>
+		<flag name="zipkin">Include the Zipkin exporter in the SDK</flag>
+		<flag name="prometheus">Include the Prometheus client in the SDK</flag>
+		<flag name="jaeger">Include the Jaeger client in the SDK</flag>
+		<flag name="elasticsearch">Include the Elasticsearch client in the SDK</flag>
+		<flag name="deprecated">Include deprecated code</flag>
 	</use>
 </pkgmetadata>
