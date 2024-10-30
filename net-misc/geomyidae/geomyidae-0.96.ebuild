@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A daemon to serve the gopher protocol"
-HOMEPAGE="http://r-36.net/scm/geomyidae/"
+HOMEPAGE="https://r-36.net/scm/geomyidae/"
 SRC_URI="ftp://bitreich.org/releases/geomyidae/${PN}-v${PV}.tar.gz"
 
 S="${WORKDIR}/${PN}-v${PV}"
