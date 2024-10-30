@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Boost-1.0 BSD MIT"
 SLOT="0/23"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="+all-impls test tools"
 
 BDEPEND="
