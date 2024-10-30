@@ -32,10 +32,10 @@ BDEPEND="
 			dev-python/gmpy[${PYTHON_USEDEP}]
 		' 'python3*')
 		!mips? (
-			dev-python/matplotlib[${PYTHON_USEDEP}]
-			$(python_gen_cond_dep '
-				dev-python/ipython[${PYTHON_USEDEP}]
-			' 3.{10..12})
+			dev-python/ipython[${PYTHON_USEDEP}]
+			!hppa? (
+				dev-python/matplotlib[${PYTHON_USEDEP}]
+			)
 		)
 	)
 "
