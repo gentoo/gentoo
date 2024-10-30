@@ -21,7 +21,7 @@ fi
 
 LICENSE="UPL-1.0"
 SLOT="0"
-IUSE="systemd test-install"
+IUSE="test-install"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
@@ -36,7 +36,6 @@ DEPEND="
 	>=sys-fs/fuse-3.2.0:3
 	>=sys-libs/binutils-libs-2.42:=
 	sys-libs/zlib
-	systemd? ( sys-apps/systemd )
 "
 RDEPEND="
 	${DEPEND}
@@ -142,8 +141,8 @@ src_configure() {
 		# See https://github.com/oracle/dtrace-utils/issues/106 for man8 suffix
 		--mandir="${EPREFIX}"/usr/share/man/man8
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-systemd
 		HAVE_LIBCTF=yes
-		HAVE_LIBSYSTEMD=$(usex systemd)
 		HAVE_BPFV3=yes
 	)
 
