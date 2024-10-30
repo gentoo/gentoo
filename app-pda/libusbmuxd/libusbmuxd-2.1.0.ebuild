@@ -9,7 +9,7 @@ SRC_URI="https://github.com/libimobiledevice/${PN}/releases/download/${PV}/${P}.
 
 LICENSE="GPL-2+ LGPL-2.1+" # tools/*.c is GPL-2+, rest is LGPL-2.1+
 SLOT="0/2.0-7" # based on SONAME of libusbmuxd-2.0.so
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
 	>=app-pda/libimobiledevice-glue-1.2.0:=
