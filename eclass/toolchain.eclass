@@ -1945,7 +1945,7 @@ gcc_do_filter_flags() {
 	fi
 
 	if ver_test -lt 15.1 ; then
-		filter-flags -fdiagnostics-explain-harder
+		filter-flags -fdiagnostics-explain-harder -fdiagnostics-details
 	fi
 
 	if is_d ; then
