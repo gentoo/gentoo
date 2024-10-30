@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robert Siebeck <gentoo.2019@r123.de> (2024-10-30)
+# musl not supported by upstream
+app-editors/zed
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-24)
 # Using a glibc interface, and with that on musl pretty much useless
 sys-auth/nss-mdns
