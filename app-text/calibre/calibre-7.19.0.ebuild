@@ -36,7 +36,7 @@ LICENSE="
 	PSF-2
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="+font-subsetting ios speech +system-mathjax test +udisks unrar"
 
 RESTRICT="!test? ( test )"
