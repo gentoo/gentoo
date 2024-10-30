@@ -136,8 +136,7 @@ src_configure() {
 	local confargs=(
 		# TODO: Maybe we should set the UNPRIV_UID to something? -3 is a bit... kludgy
 		--prefix="${EPREFIX}"/usr
-		# See https://github.com/oracle/dtrace-utils/issues/106 for man8 suffix
-		--mandir="${EPREFIX}"/usr/share/man/man8
+		--mandir="${EPREFIX}"/usr/share/man
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--with-systemd
 		HAVE_LIBCTF=yes
