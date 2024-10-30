@@ -116,9 +116,6 @@ src_configure() {
 
 	tc-export CC
 
-	# https://github.com/oracle/dtrace-utils/issues/78
-	tc-enables-fortify-source && append-cppflags -U_FORTIFY_SOURCE
-
 	# lld does this by default, so fix that, although lld fails anyway...
 	# 'LIBDTRACE_1.0' to symbol 'dtrace_provider_modules' failed: symbol not defined
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
