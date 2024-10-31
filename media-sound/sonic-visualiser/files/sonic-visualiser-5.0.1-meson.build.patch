@@ -1,6 +1,6 @@
 --- a/meson.build
 +++ b/meson.build
-@@ -90,17 +90,7 @@ if system == 'linux'
+@@ -119,22 +119,8 @@ if system == 'linux'
    serd_dep = dependency('serd-0', version: '>= 0.5')
    capnp_dep = dependency('capnp', version: '>= 0.6')
    lrdf_dep = dependency('lrdf', version: '>= 0.2')
@@ -9,16 +9,21 @@
 -  mad_dep = dependency('mad', version: '>= 0.15.0')
 -  id3tag_dep = dependency('id3tag', version: '>= 0.15.0')
 -  opus_dep = dependency('opusfile')
+-  opusenc_dep = dependency('opusenc', required: false)
+-  if not opusenc_dep.found()
+-    opusenc_dep = dependency('libopusenc', required: false)
+-  endif
 -  lo_dep = dependency('liblo')
 -  jack_dep = dependency('jack', version: '>= 0.100')
 -  libpulse_dep = dependency('libpulse', version: '>= 0.9')
    alsa_dep = dependency('alsa')
--  
+   
 -  portaudio_dep = dependency('portaudio-2.0', version: '>= 19', required: false)
- 
+-
    feature_dependencies = [
+     vamphostsdk_dep,
      bzip2_dep,
-@@ -113,23 +103,8 @@ if system == 'linux'
+@@ -146,16 +132,6 @@ if system == 'linux'
      serd_dep,
      capnp_dep,
      lrdf_dep,
@@ -27,22 +32,15 @@
 -    mad_dep,
 -    id3tag_dep,
 -    opus_dep,
+-    opusenc_dep,
 -    lo_dep,
 -    portaudio_dep,
 -    jack_dep,
 -    libpulse_dep,
      alsa_dep,
    ]
--
--  server_dependencies = [
--    capnp_dep,
--    sord_dep,
--    dl_dep,
--  ]
-   
-   feature_defines = [
-     '-DHAVE_BZ2',
-@@ -142,26 +117,110 @@ if system == 'linux'
+ 
+@@ -178,34 +154,104 @@ if system == 'linux'
      '-DHAVE_SERD',
      '-DHAVE_CAPNP',
      '-DHAVE_LRDF',
@@ -65,18 +63,21 @@
 +    feature_dependencies += [
 +      id3tag_dep,
 +    ]
-+    feature_defines += [
+     feature_defines += [
+-      '-DHAVE_PORTAUDIO',
 +      '-DHAVE_ID3TAG',
-+    ]
-+  endif
-+
+     ]
+   endif
+ 
+-  if not opusenc_dep.found()
 +  enable_jack = get_option('jack')
 +  if enable_jack
 +    jack_dep = dependency('jack', version: '>= 0.100')
 +    feature_dependencies += [
 +      jack_dep,
 +    ]
-+    feature_defines += [
+     feature_defines += [
+-      '-DHAVE_OPUS_READ_ONLY'
 +      '-DHAVE_JACK',
 +      '-DDYNAMIC_JACK',
 +    ]
@@ -114,8 +115,9 @@
 +  enable_opus = get_option('opus')
 +  if enable_opus
 +    opus_dep = dependency('opusfile')
++    opusenc_dep = dependency('libopusenc')
 +    feature_dependencies += [
-+      opus_dep,
++      opus_dep, opusenc_dep,
 +    ]
 +    feature_defines += [
 +      '-DHAVE_OPUS',
@@ -139,13 +141,8 @@
 +    feature_dependencies += [
 +      portaudio_dep,
 +    ]
-     feature_defines += [
-       '-DHAVE_PORTAUDIO',
-     ]
-   endif
- 
--  svcore_moc_args = [
--    '-DHAVE_MAD'
++  endif
++
 +  enable_pulseaudio = get_option('pulseaudio')
 +  if enable_pulseaudio
 +    libpulse_dep = dependency('libpulse', version: '>= 0.9')
@@ -154,19 +151,22 @@
 +    ]
 +    feature_defines += [
 +      '-DHAVE_LIBPULSE',
-+    ]
-+  endif
-+
-+  server_dependencies = [
-+    capnp_dep,
-+    sord_dep,
-+    dl_dep,
-   ]
-   
+     ]
+   endif
+ 
+-  svcore_moc_args = [
+-    '-DHAVE_MAD'
+-  ]
+-  
  elif system == 'darwin'
---- /dev/null
+ 
+   svdeps_dir = meson.current_source_dir() / 'sv-dependency-builds/osx'
+--- a/meson_options.txt
 +++ b/meson_options.txt
-@@ -0,0 +1,8 @@
+@@ -3,3 +3,11 @@ option('no_qt',
+        value: 'false',
+        description: 'Build only the small utilities that do not use Qt.')
+ 
 +option('id3tag', type: 'boolean', value: false)
 +option('jack', type: 'boolean', value: false)
 +option('mad', type: 'boolean', value: false)
