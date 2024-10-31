@@ -1,0 +1,29 @@
+From 1cc02cc6710384c52e1082a33d1617504eaed296 Mon Sep 17 00:00:00 2001
+From: Katie Rust <katie@ktpanda.org>
+Date: Mon, 16 Sep 2024 13:04:22 -0500
+Subject: [PATCH] BUG: Stub out `get_build_msvc_version` if
+ `distutils.msvccompiler` cannot be imported (fixes #27405)
+
+---
+ numpy/distutils/mingw32ccompiler.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/numpy/distutils/mingw32ccompiler.py b/numpy/distutils/mingw32ccompiler.py
+index 39905a784088..2599a9e9a807 100644
+--- a/numpy/distutils/mingw32ccompiler.py
++++ b/numpy/distutils/mingw32ccompiler.py
+@@ -24,7 +24,13 @@
+ 
+ import distutils.cygwinccompiler
+ from distutils.unixccompiler import UnixCCompiler
+-from distutils.msvccompiler import get_build_version as get_build_msvc_version
++
++try:
++    from distutils.msvccompiler import get_build_version as get_build_msvc_version
++except ImportError:
++    def get_build_msvc_version():
++        return None
++
+ from distutils.errors import UnknownFileError
+ from numpy.distutils.misc_util import (msvc_runtime_library,
+                                        msvc_runtime_version,

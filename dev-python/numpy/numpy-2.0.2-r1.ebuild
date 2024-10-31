@@ -57,6 +57,11 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/numpy/numpy/pull/27406
+		"${FILESDIR}/${P}-setuptools-74.patch"
+	)
+
 	# bug #922457
 	filter-lto
 	# https://github.com/numpy/numpy/issues/25004
@@ -118,6 +123,13 @@ python_test() {
 			)
 			;;
 	esac
+
+	if has_version ">=dev-python/setuptools-74[${PYTHON_USEDEP}]"; then
+		# msvccompiler removal
+		EPYTEST_DESELECT+=(
+			tests/test_public_api.py::test_api_importable
+		)
+	fi
 
 	if ! has_version -b "~${CATEGORY}/${P}[${PYTHON_USEDEP}]" ; then
 		# depends on importing numpy.random from system namespace
