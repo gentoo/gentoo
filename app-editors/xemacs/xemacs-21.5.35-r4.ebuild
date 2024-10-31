@@ -16,7 +16,7 @@ SRC_URI="http://ftp.xemacs.org/pub/xemacs/xemacs-$(ver_cut 1-2)/${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ppc ppc64 ~riscv sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm64 ~hppa ppc ppc64 ~riscv sparc ~x86"
 IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png motif xft xim athena neXt Xaw3d gdbm berkdb +bignum"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
