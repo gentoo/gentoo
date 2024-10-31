@@ -40,6 +40,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.0_alpha2-before-numpy-2.patch
+)
+
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
