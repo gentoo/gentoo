@@ -19,7 +19,7 @@ SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="Artistic BSD GPL-2 IJG LGPL-2.1 MIT public-domain"
 SLOT="0/stable"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml"
 
 # app-text/ghostscript-gpl is really needed for postscript
