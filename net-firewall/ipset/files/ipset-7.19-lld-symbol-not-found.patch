@@ -1,0 +1,44 @@
+Fix linking error with lld
+--- a/lib/libipset.map
++++ b/lib/libipset.map
+@@ -46,7 +46,6 @@ global:
+   ipset_parse_ipnet;
+   ipset_parse_ip4_single6;
+   ipset_parse_ip4_net6;
+-  ipset_parse_name;
+   ipset_parse_before;
+   ipset_parse_after;
+   ipset_parse_setname;
+@@ -84,8 +83,6 @@ global:
+   ipset_session_lineno;
+   ipset_session_report;
+   ipset_session_report_reset;
+-  ipset_session_error;
+-  ipset_session_warning;
+   ipset_envopt_parse;
+   ipset_envopt_test;
+   ipset_session_output;
+@@ -93,7 +90,6 @@ global:
+   ipset_cmd;
+   ipset_session_init;
+   ipset_session_fini;
+-  ipset_debug_msg;
+   ipset_cache_add;
+   ipset_cache_del;
+   ipset_cache_rename;
+@@ -109,7 +105,6 @@ global:
+   ipset_match_cmd;
+   ipset_match_option;
+   ipset_match_envopt;
+-  ipset_shift_argv;
+ 
+ local: *;
+ };
+@@ -124,7 +119,6 @@ global:
+ 
+ LIBIPSET_3.0 {
+ global:
+-  ipset_session_outfn;
+ } LIBIPSET_2.0;
+ 
+ LIBIPSET_4.0 {
