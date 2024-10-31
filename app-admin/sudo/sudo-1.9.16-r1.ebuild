@@ -185,7 +185,7 @@ src_configure() {
 		$(use_with pam)
 		$(use_with pam pam-login)
 		$(use_with secure-path)
-		--with-secure-path-value="${SECURE_PATH}"
+		"$(use_with secure-path secure-path-value "${SECURE_PATH}")"
 		$(use_with selinux)
 		$(use_with sendmail)
 		$(use_with skey)
