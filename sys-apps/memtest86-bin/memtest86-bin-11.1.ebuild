@@ -11,9 +11,9 @@ SRC_URI="https://www.memtest86.com/downloads/memtest86-usb.zip -> ${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="PassMark-EULA"
-RESTRICT="mirror bindist"
-SLOT="0"
+SLOT=0
 KEYWORDS="-* ~amd64"
+RESTRICT="mirror bindist"
 
 BDEPEND="
 	app-arch/unzip
