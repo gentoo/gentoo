@@ -27,6 +27,7 @@ IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse 
 RDEPEND="
 	dev-cpp/cairomm:0
 	dev-cpp/glibmm:2
+	dev-cpp/pangomm:1.4
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
