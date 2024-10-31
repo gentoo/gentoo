@@ -36,7 +36,6 @@ kde-apps/kmail
 kde-apps/libksieve
 kde-apps/kdepim-runtime
 kde-apps/kontact
-kde-apps/kimagemapeditor
 kde-apps/grantlee-editor
 kde-apps/akregator
 dev-util/kdevelop

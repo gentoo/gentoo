@@ -27,7 +27,6 @@ dev-python/spyder-line-profiler
 dev-python/spyder-vim
 dev-python/spyder-notebook
 kde-apps/cantor:5
-kde-apps/kimagemapeditor:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
