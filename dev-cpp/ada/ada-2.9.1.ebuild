@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ada-url/ada/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv"
 RESTRICT="test"
 
 src_configure() {
