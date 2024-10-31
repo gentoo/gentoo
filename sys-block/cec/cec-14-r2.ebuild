@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Coraid Ethernet Console client"
-HOMEPAGE="http://aoetools.sourceforge.net/"
+HOMEPAGE="https://aoetools.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/aoetools/${P}.tgz"
 
 LICENSE="GPL-2"
