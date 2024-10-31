@@ -8,4 +8,7 @@
 	<longdescription>
 		The Apache Commons Digester package lets you configure an XML to Java object mapping module which triggers certain actions called rules whenever a particular pattern of nested XML elements is recognized.
 	</longdescription>
+	<use>
+		<flag name="log4j">Add optional support for log4j</flag>
+	</use>
 </pkgmetadata>
