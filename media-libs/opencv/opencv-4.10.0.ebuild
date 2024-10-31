@@ -783,7 +783,7 @@ multilib_src_configure() {
 			-DBUILD_opencv_xfeatures2d="$(usex contribxfeatures2d)"
 		)
 
-		if multilib_is_native_abi && use !tesseract; then
+		if ! multilib_native_use tesseract; then
 			mycmakeargs+=(
 				-DCMAKE_DISABLE_FIND_PACKAGE_Tesseract="yes"
 			)
@@ -793,7 +793,7 @@ multilib_src_configure() {
 	# workaround for bug 413429
 	tc-export CC CXX
 
-	if multilib_is_native_abi && use cuda; then
+	if multilib_native_use cuda; then
 		cuda_add_sandbox -w
 		addwrite "/proc/self/task"
 
@@ -870,6 +870,8 @@ multilib_src_configure() {
 		)
 	fi
 
+	# NOTE due to multilib we can't do
+	# if multilib_native_use test; then
 	if use test; then
 		# opencv tests assume to be build in Release mode
 		CMAKE_BUILD_TYPE="Release"
@@ -890,7 +892,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	if multilib_is_native_abi && use python; then
+	if multilib_native_use python; then
 		python_configure() {
 			# Set all python variables to load the correct Gentoo paths
 			local mycmakeargs=(
@@ -920,7 +922,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	if multilib_is_native_abi && use python; then
+	if multilib_native_use python; then
 		python_foreach_impl cmake_src_compile
 	else
 		cmake_src_compile
@@ -947,7 +949,7 @@ multilib_src_test() {
 		)
 	fi
 
-	if multilib_is_native_abi && use cuda; then
+	if multilib_native_use cuda; then
 		CMAKE_SKIP_TESTS+=(
 			'CUDA_OptFlow/BroxOpticalFlow.Regression/0'
 			'CUDA_OptFlow/BroxOpticalFlow.OpticalFlowNan/0'
@@ -973,7 +975,7 @@ multilib_src_test() {
 		--test-timeout 180
 	)
 
-	if multilib_is_native_abi && use cuda; then
+	if multilib_native_use cuda; then
 		cuda_add_sandbox -w
 		export OPENCV_PARALLEL_BACKEND="threads"
 		export DNN_BACKEND_OPENCV="cuda"
@@ -1005,7 +1007,7 @@ multilib_src_test() {
 		echo -e "${results[*]}"
 	}
 
-	if multilib_is_native_abi && use python; then
+	if multilib_native_use python; then
 		python_foreach_impl virtx opencv_test
 	else
 		virtx opencv_test
@@ -1162,7 +1164,8 @@ multilib_src_install() {
 			/usr/include/opencv4/opencv2/wechat_qrcode.hpp
 		) # }}}
 	fi
-	if multilib_is_native_abi && use python; then
+
+	if multilib_native_use python; then
 		python_foreach_impl cmake_src_install
 		python_foreach_impl python_optimize
 	else
