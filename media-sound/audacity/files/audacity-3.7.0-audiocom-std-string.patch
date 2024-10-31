@@ -9,6 +9,9 @@ std::string {aka std::_cxx11::basic_string<char>}`
 See: https://bugs.gentoo.org/920363
 
 Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+
+REBASED
+
 --- a/libraries/lib-cloud-audiocom/OAuthService.h
 +++ b/libraries/lib-cloud-audiocom/OAuthService.h
 @@ -12,6 +12,7 @@
@@ -17,8 +20,5 @@ Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
  #include <functional>
 +#include <string>
  #include <string_view>
+ #include <string>
  #include <mutex>
- 
--- 
-2.43.0
-

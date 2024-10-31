@@ -8,9 +8,8 @@ Fixes: https://github.com/audacity/audacity/issues/3289
 Forwarded: https://github.com/audacity/audacity/pull/3671
 [1] https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling#caveats
 
-diff -Nuar a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2023-06-08 15:17:02.000000000 +0200
-+++ b/CMakeLists.txt	2023-07-14 01:18:46.452163033 +0200
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -412,6 +412,7 @@
  set( _LIBDIR "${CMAKE_INSTALL_LIBDIR}" )
  set( _DATADIR "${CMAKE_INSTALL_DATADIR}" )
@@ -19,9 +18,8 @@ diff -Nuar a/CMakeLists.txt b/CMakeLists.txt
  set( _PKGDATA "${_DATADIR}/audacity/" )
  set( _MANDIR "${CMAKE_INSTALL_MANDIR}" )
  set( _MODDIR "${_PKGLIB}/modules" )
-diff -Nuar a/cmake-proxies/cmake-modules/AudacityFunctions.cmake b/cmake-proxies/cmake-modules/AudacityFunctions.cmake
---- a/cmake-proxies/cmake-modules/AudacityFunctions.cmake	2023-06-08 15:17:02.000000000 +0200
-+++ b/cmake-proxies/cmake-modules/AudacityFunctions.cmake	2023-07-14 01:23:42.025628702 +0200
+--- a/cmake-proxies/cmake-modules/AudacityFunctions.cmake
++++ b/cmake-proxies/cmake-modules/AudacityFunctions.cmake
 @@ -338,6 +338,17 @@
     set( "${var}" "${node}" PARENT_SCOPE )
  endfunction()
@@ -70,17 +68,15 @@ diff -Nuar a/cmake-proxies/cmake-modules/AudacityFunctions.cmake b/cmake-proxies
        )
  
        if( NOT CMAKE_SYSTEM_NAME MATCHES "Windows|Darwin" )
-diff -Nuar a/modules/mod-script-pipe/CMakeLists.txt b/modules/mod-script-pipe/CMakeLists.txt
---- a/modules/mod-script-pipe/CMakeLists.txt	2023-06-08 15:17:02.000000000 +0200
-+++ b/modules/mod-script-pipe/CMakeLists.txt	2023-07-14 01:25:10.730068564 +0200
+--- a/modules/mod-script-pipe/CMakeLists.txt
++++ b/modules/mod-script-pipe/CMakeLists.txt
 @@ -15,3 +15,4 @@
  )
  audacity_module( mod-script-pipe "${SOURCES}" "Audacity"
     "${DEFINES}" "" )
 +install_audacity_module( mod-script-pipe )
-diff -Nuar a/src/CMakeLists.txt b/src/CMakeLists.txt
---- a/src/CMakeLists.txt	2023-06-08 15:17:02.000000000 +0200
-+++ b/src/CMakeLists.txt	2023-07-14 01:26:23.098427419 +0200
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
 @@ -1557,11 +1557,6 @@
                 RUNTIME
                 RESOURCE DESTINATION "${_PKGDATA}" )

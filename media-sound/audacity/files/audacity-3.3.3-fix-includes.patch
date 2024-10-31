@@ -4,13 +4,6 @@ Date: Fri, 14 Jul 2023 21:08:52 +0000
 Subject: [PATCH] Fix ImportMP3_MAD and ImportQT include directives
 
 This fixes 'file not found' errors.
----
- src/import/ImportMP3_MAD.cpp | 6 +++---
- src/import/ImportQT.cpp      | 8 ++++----
- 2 files changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/src/import/ImportMP3_MAD.cpp b/src/import/ImportMP3_MAD.cpp
-index fa26eaca49dd..9e6dfdf3a534 100644
 --- a/src/import/ImportMP3_MAD.cpp
 +++ b/src/import/ImportMP3_MAD.cpp
 @@ -62,10 +62,10 @@ static Importer::RegisteredUnusableImportPlugin registered
@@ -27,8 +20,6 @@ index fa26eaca49dd..9e6dfdf3a534 100644
  
  // PRL:  include these last,
  // and correct some preprocessor namespace pollution from wxWidgets that
-diff --git a/src/import/ImportQT.cpp b/src/import/ImportQT.cpp
-index f931b5a63fc1..5b49c1630b7f 100644
 --- a/src/import/ImportQT.cpp
 +++ b/src/import/ImportQT.cpp
 @@ -17,8 +17,8 @@

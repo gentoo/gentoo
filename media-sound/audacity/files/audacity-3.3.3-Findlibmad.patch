@@ -7,14 +7,6 @@ Date: Fri, 14 Jul 2023 21:17:45 +0000
 Subject: [PATCH] Add missing Findlibmad.cmake file
 
 This fixes compiling against the system installed libmad.
----
- cmake-proxies/cmake-modules/Findlibmad.cmake | 35 ++++++++++++++++++++
- 1 file changed, 35 insertions(+)
- create mode 100644 cmake-proxies/cmake-modules/Findlibmad.cmake
-
-diff --git a/cmake-proxies/cmake-modules/Findlibmad.cmake b/cmake-proxies/cmake-modules/Findlibmad.cmake
-new file mode 100644
-index 000000000000..0858c2d93e24
 --- /dev/null
 +++ b/cmake-proxies/cmake-modules/Findlibmad.cmake
 @@ -0,0 +1,35 @@

@@ -4,9 +4,12 @@ Date: Sat, 17 Dec 2022 21:13:56 +0100
 Subject: [PATCH] portmixer: Allow overriding PA_HAS_{ALSA,JACK}
 
 Not included for OSS as OSS is always included AFAICT.
+
+REBASED
+
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -624,6 +624,9 @@ cmd_option( ${_OPT}use_portmixer "Build PortMixer support into Audacity" On)
+@@ -615,6 +607,9 @@ cmd_option( ${_OPT}use_portmixer "Build PortMixer support into Audacity" On)
  if( ${_OPT}use_portmixer )
     set(USE_PORTMIXER Yes)
     add_subdirectory( "lib-src/portmixer" )
@@ -20,7 +23,7 @@ Not included for OSS as OSS is always included AFAICT.
 +++ b/lib-src/portmixer/CMakeLists.txt
 @@ -8,9 +8,12 @@ if (UNIX AND NOT APPLE)
     include(CheckIncludeFile)
-    set(CMAKE_REQUIRED_LIBRARIES PortAudio::PortAudio)
+    set(CMAKE_REQUIRED_LIBRARIES portaudio::portaudio)
  
 -   check_include_file( "pa_jack.h" PA_HAS_JACK )
 -
@@ -34,6 +37,3 @@ Not included for OSS as OSS is always included AFAICT.
     if( PA_HAS_ALSA )
        find_package( ALSA REQUIRED QUIET )
     endif()
--- 
-2.39.0
-
