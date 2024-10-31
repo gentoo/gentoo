@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( mirror://gnu/stow/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ~ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
