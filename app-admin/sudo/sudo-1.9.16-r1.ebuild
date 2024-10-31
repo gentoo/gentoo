@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools pam libtool tmpfiles toolchain-funcs
+inherit autotools pam tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
