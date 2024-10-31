@@ -25,6 +25,7 @@ SLOT="9"
 IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
+	dev-cpp/cairomm:0
 	dev-cpp/glibmm:2
 	dev-libs/boost:=
 	dev-libs/glib:2
