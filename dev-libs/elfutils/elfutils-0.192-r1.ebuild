@@ -36,11 +36,11 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[static-libs?,${MULTILIB_USEDEP}] )
 	debuginfod? (
-		app-arch/libarchive:=
+		>=app-arch/libarchive-3.1.2:=
 		dev-db/sqlite:3=
-		net-libs/libmicrohttpd:=
-
-		net-misc/curl[static-libs?,${MULTILIB_USEDEP}]
+		>=dev-libs/json-c-0.11:=[${MULTILIB_USEDEP}]
+		>=net-libs/libmicrohttpd-0.9.33:=
+		>=net-misc/curl-7.29.0[static-libs?,${MULTILIB_USEDEP}]
 	)
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[static-libs?,${MULTILIB_USEDEP}] )
 	stacktrace? ( dev-util/sysprof )
@@ -99,6 +99,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
 		$(multilib_native_use_enable debuginfod)
+		# Could do dummy if needed?
 		$(use_enable debuginfod libdebuginfod)
 		$(multilib_native_use_enable stacktrace)
 		$(use_enable valgrind valgrind-annotations)
