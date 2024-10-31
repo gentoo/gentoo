@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs systemd tmpfiles
 
@@ -11,47 +11,47 @@ HOMEPAGE="https://github.com/coturn/coturn"
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/coturn/coturn.git"
 	inherit git-r3
-	#S="${WORKDIR}/${PN}-master"
 else
 	SRC_URI="https://github.com/coturn/coturn/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="mongodb mysql postgres redis sqlite"
 
-RDEPEND="
-	acct-group/turnserver
-	acct-user/turnserver
-	>dev-libs/libevent-2.1.8:=
+DEPEND="
+	>dev-libs/libevent-2.1.8:=[ssl]
 	dev-libs/openssl:=
-	mongodb? ( dev-libs/mongo-c-driver )
-	mysql?  ( dev-db/mysql-connector-c:= )
+	mongodb? (
+		dev-libs/libbson
+		dev-libs/mongo-c-driver
+	)
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	redis? ( dev-libs/hiredis:= )
-	sqlite? ( dev-db/sqlite )
+	sqlite? ( dev-db/sqlite:3 )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	acct-group/turnserver
+	acct-user/turnserver
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.5.2-respect-TMPDIR.patch
-	"${FILESDIR}"/${P}-openssl3.patch
 )
 
 src_configure() {
-	if [[ -n "${AR}" ]]; then
-		sed 's:ARCHIVERCMD="ar -r":ARCHIVERCMD="${AR} -r":g' -i "${S}/configure"
-	fi
+	sed -e '/MANPREFIX/s:/man/:/:' \
+		-e '/INSTALL_DIR} examples\/script/a \	\${INSTALL_DIR} examples\/ca \${DESTDIR}${EXAMPLESDIR}' \
+		-e '/INSTALL_STATIC_LIB/d' \
+		-i "Makefile.in" || die "sed for Makefile.in failed"
 
-	sed 's:MANPREFIX}/man/:MANPREFIX}/:g' -i "${S}/Makefile.in" || die "sed for mandir failed"
-	sed 's:#log-file=/var/tmp/turn.log:log-file=/var/log/turnserver.log:' \
-	    -i "${S}/examples/etc/turnserver.conf"  || die "sed for logdir failed"
-	sed 's:#simple-log:simple-log:' -i "${S}/examples/etc/turnserver.conf" \
-	    || die "sed for simple-log failed"
-	sed '/INSTALL_DIR} examples\/script/a \	\${INSTALL_DIR} examples\/ca \${DESTDIR}${EXAMPLESDIR}' \
-	    -i "${S}/Makefile.in" || die "sed for example ca failed"
+	sed -e 's:#log-file=/var/tmp/turn.log:log-file=/var/log/turnserver.log:' \
+		-e 's:#simple-log:simple-log:' \
+		-i "examples/etc/turnserver.conf"  || die "sed for turnserve.conf failed"
 
 	if ! use mongodb; then
 		export TURN_NO_MONGO=yes
@@ -73,13 +73,15 @@ src_configure() {
 
 	export ARCHIVERCMD="$(tc-getAR) -r"
 	export PKGCONFIG="$(tc-getPKG_CONFIG)"
-	export DOCSDIR="/usr/share/doc/${PN}-${PV}"
+	export DOCSDIR="/usr/share/doc/${PF}"
 
 	econf $(use_with sqlite)
 }
 
 src_install() {
 	default
+
+	keepdir /var/lib/db
 
 	newinitd "${FILESDIR}/turnserver.init" turnserver
 
