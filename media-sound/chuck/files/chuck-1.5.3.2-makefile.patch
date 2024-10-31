@@ -1,0 +1,32 @@
+--- a/src/makefile
++++ b/src/makefile
+@@ -90,15 +90,15 @@ win32:
+ 
+ ########################### COMPILATION TOOLS #################################
+ # lexer
+-LEX=flex
++LEX?=flex
+ # parser
+-YACC=bison
++YACC?=bison
+ # c compiler
+-CC=gcc
++CC?=gcc
+ # c++ compiler
+-CXX=g++
++CXX?=g++
+ # linker
+-LD=$(CXX)
++LD?=$(CXX)
+ 
+ 
+ ############################# COMPILER FLAGS ##################################
+@@ -113,8 +113,6 @@ endif
+ # enable chuck debug macros?
+ ifneq ($(CHUCK_DEBUG),)
+ CFLAGS+= -g -D__CHUCK_DEBUG__
+-else
+-CFLAGS+= -O3
+ endif
+ 
+ # use 64-bit audio samples?

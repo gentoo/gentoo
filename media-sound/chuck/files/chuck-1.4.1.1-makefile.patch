@@ -1,5 +1,3 @@
-diff --git a/src/core/makefile.x/makefile.alsa b/src/core/makefile.x/makefile.alsa
-index 5694257..577dd91 100644
 --- a/src/core/makefile.x/makefile.alsa
 +++ b/src/core/makefile.x/makefile.alsa
 @@ -1,4 +1,4 @@
@@ -8,8 +6,6 @@ index 5694257..577dd91 100644
 +CFLAGS+= -D__LINUX_ALSA__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
  LDFLAGS+= -lasound -lstdc++ -ldl -lm -lsndfile -lpthread
  
-diff --git a/src/core/makefile.x/makefile.jack b/src/core/makefile.x/makefile.jack
-index 86b2511..442708b 100644
 --- a/src/core/makefile.x/makefile.jack
 +++ b/src/core/makefile.x/makefile.jack
 @@ -1,4 +1,4 @@
@@ -18,8 +14,6 @@ index 86b2511..442708b 100644
 +CFLAGS+= -D__UNIX_JACK__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
  LDFLAGS+= -lasound -ljack -lstdc++ -ldl -lm -lsndfile -lpthread
  
-diff --git a/src/makefile b/src/makefile
-index f52f0c2..310991a 100644
 --- a/src/makefile
 +++ b/src/makefile
 @@ -76,11 +76,11 @@ CK_VERSION=1.4.1.1
