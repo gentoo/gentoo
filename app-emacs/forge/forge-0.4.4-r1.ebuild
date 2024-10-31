@@ -31,14 +31,15 @@ ELISP_TEXINFO="../docs/*.texi"
 SITEFILE="50${PN}-gentoo.el"
 
 RDEPEND="
-	>=app-emacs/compat-30.0.0.0
-	>=app-emacs/closql-2.0.0
-	>=app-emacs/dash-2.19.1
-	>=app-emacs/emacsql-4.0.3
+	app-emacs/compat
+	app-emacs/closql
+	app-emacs/dash
+	app-emacs/emacsql
 	>=app-emacs/ghub-4.1.1
-	>=app-emacs/markdown-mode-2.6
+	>=app-emacs/magit-4.1.1
+	app-emacs/markdown-mode
 	>=app-emacs/transient-0.7.6
-	>=app-emacs/yaml-0.5.5
+	app-emacs/yaml
 "
 BDEPEND="
 	${RDEPEND}
