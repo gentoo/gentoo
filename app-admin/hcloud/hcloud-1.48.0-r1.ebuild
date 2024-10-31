@@ -18,12 +18,16 @@ src_compile() {
 }
 
 src_test() {
-	# For upstream a simple test is run 'hcloud version'
 	./hcloud version
 	if [[ $? -ne 0 ]]
 	then
-		die "Test failed"
+		die "hcloud version test failed"
 	fi
+
+	# Avoid error like:
+	# -buildmode=pie not supported when -race is enabled on linux/amd64
+	GOFLAGS=${GOFLAGS//-buildmode=pie}
+	ego test -coverpkg=./... -coverprofile=coverage.txt -v -race ./...
 }
 
 src_install() {
