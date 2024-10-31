@@ -353,7 +353,7 @@ sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
 www-apps/chromedriver-bin
-www-apps/grafana-bin
+<www-apps/grafana-bin-11.2
 www-apps/jellyfin-bin
 www-apps/kibana-bin
 www-client/firefox-bin
