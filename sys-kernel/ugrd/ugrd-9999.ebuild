@@ -23,6 +23,9 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		sys-fs/btrfs-progs
+		sys-fs/xfsprogs
+		sys-fs/cryptsetup
 		amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] )
 		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
 	)
