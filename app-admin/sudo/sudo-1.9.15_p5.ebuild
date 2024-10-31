@@ -178,7 +178,7 @@ src_configure() {
 		$(use_with offensive all-insults)
 		$(use_with pam)
 		$(use_with pam pam-login)
-		$(use_with secure-path secure-path "${SECURE_PATH}")
+		"$(use_with secure-path secure-path "${SECURE_PATH}")"
 		$(use_with selinux)
 		$(use_with sendmail)
 		$(use_with skey)
