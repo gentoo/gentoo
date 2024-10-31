@@ -63,6 +63,8 @@ JAVA_GENTOO_CLASSPATH="
 	slf4j-api
 "
 
+JAVA_MODULE_NAME="org.apache.${PN/-/.}"
+JAVA_MODULES_DIR="src/main"
 JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
@@ -84,43 +86,7 @@ src_prepare() {
 }
 
 src_compile() {
-	# getting dependencies into the modulepath
-	DEPENDENCIES=(
-		jakarta-servlet-api-4
-		slf4j-api
-		$(use log4j && echo log4j-12-api-2)
-		$(use log4j && echo log4j-api-2)
-	)
-	local modulepath
-	for dependency in ${DEPENDENCIES[@]}; do
-		modulepath="${modulepath}:$(java-pkg_getjars --build-only ${dependency})"
-	done
-
-	local JAVA_MODULE_NAME="org.apache.${PN/-/.}"
-	JAVA_JAR_FILENAME="${JAVA_MODULE_NAME}.jar"
-	java-pkg-simple_src_compile	# creates a legacy jar file without module-info
-
-	# generate module-info.java
-	jdeps \
-		--module-path "${modulepath}" \
-		--add-modules=ALL-MODULE-PATH \
-		--generate-module-info src/main \
-		--multi-release 9 \
-		"${JAVA_MODULE_NAME}.jar" || die
-
-	# compile module-info.java
-	ejavac \
-		-source 9 -target 9 \
-		--module-path "${modulepath}" \
-		--patch-module "${JAVA_MODULE_NAME}"="${JAVA_MODULE_NAME}.jar" \
-		-d target/versions/9 \
-		src/main/"${JAVA_MODULE_NAME}"/versions/9/module-info.java
-
-	# package
-	JAVA_JAR_FILENAME="${PN}.jar"
-	jar cvf "${JAVA_JAR_FILENAME}" \
-		-C target/classes . \
-		--release 9 -C target/versions/9 . || die
+	java-pkg-simple_src_compile
 
 	pushd target/classes > /dev/null || die
 
