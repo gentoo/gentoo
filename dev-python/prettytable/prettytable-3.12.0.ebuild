@@ -30,3 +30,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# remove the implicit dep on coverage
+	sed -i -e '/coverage/d' pyproject.toml || die
+}
