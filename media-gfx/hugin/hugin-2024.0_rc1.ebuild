@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..13} python3_13t )
 
 inherit python-single-r1 wxwidgets cmake xdg
 
@@ -33,7 +33,7 @@ CDEPEND="
 	media-libs/libpng:=
 	media-libs/openexr:=
 	media-libs/tiff:=
-	>=media-libs/vigra-1.11.1-r5[openexr]
+	>=media-libs/vigra-1.11.1-r5[openexr,tiff]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
 	sys-libs/zlib
