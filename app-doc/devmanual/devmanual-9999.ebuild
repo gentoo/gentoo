@@ -25,12 +25,18 @@ SLOT="0"
 IUSE="+offline test"
 RESTRICT="!test? ( test )"
 
-BDEPEND=">=dev-libs/libxml2-2.9.12
-	dev-libs/libxslt
+BDEPEND="dev-libs/libxslt
 	gnome-base/librsvg
 	media-fonts/open-sans
-	${PYTHON_DEPS}
-	test? ( >=app-text/htmltidy-5.8.0 )"
+	!offline? ( ${PYTHON_DEPS} )
+	test? (
+		>=dev-libs/libxml2-2.9.12
+		>=app-text/htmltidy-5.8.0
+	)"
+
+pkg_setup() {
+	use !offline && python-any-r1_pkg_setup
+}
 
 src_compile() {
 	emake OFFLINE=$(usex offline 1 0)
