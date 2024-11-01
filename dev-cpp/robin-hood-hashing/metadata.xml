@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>sarnex@gentoo.org</email>
-		<name>Nick Sarnie</name>
+		<email>vulkan@gentoo.org</email>
+		<name>Vulkan Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">martinus/robin-hood-hashing</remote-id>
