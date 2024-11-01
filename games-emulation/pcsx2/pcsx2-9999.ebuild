@@ -61,7 +61,7 @@ COMMON_DEPEND="
 # is missing and it is fairly small (installs a ~1.5MB patches.zip)
 RDEPEND="
 	${COMMON_DEPEND}
-	>=games-emulation/pcsx2_patches-0_p20230917
+	>=games-emulation/pcsx2_patches-0_p20241020
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -82,6 +82,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
+	"${FILESDIR}"/${PN}-2.2.0-missing-header.patch
 )
 
 src_prepare() {
@@ -116,6 +117,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_ADVANCE_SIMD=yes
 		-DENABLE_TESTS=$(usex test)
+		-DPACKAGE_MODE=yes
 		-DUSE_BACKTRACE=no # not packaged (bug #885471)
 		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no # not packaged
@@ -145,26 +147,27 @@ src_test() {
 }
 
 src_install() {
-	insinto /usr/lib/${PN}
-	doins -r "${BUILD_DIR}"/bin/.
+	cmake_src_install
 
-	fperms +x /usr/lib/${PN}/pcsx2-qt
-	dosym -r /usr/lib/${PN}/pcsx2-qt /usr/bin/${PN}
-
-	newicon bin/resources/icons/AppIconLarge.png ${PN}.png
-	make_desktop_entry ${PN} ${PN^^}
+	newicon bin/resources/icons/AppIconLarge.png pcsx2-qt.png
+	make_desktop_entry pcsx2-qt PCSX2
 
 	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,debugger.txt}
-
-	use !test || rm "${ED}"/usr/lib/${PN}/*_test || die
 }
 
 pkg_postinst() {
-	fcaps -m 0755 cap_net_admin,cap_net_raw=eip usr/lib/${PN}/pcsx2-qt
+	fcaps -m 0755 cap_net_admin,cap_net_raw=eip usr/bin/pcsx2-qt
 
 	# calls aplay or gst-play/launch-1.0 as fallback
 	# https://github.com/PCSX2/pcsx2/issues/11141
 	optfeature "UI sound effects support" \
 		media-sound/alsa-utils \
 		media-libs/gst-plugins-base:1.0
+
+	if [[ ${REPLACING_VERSIONS##* } ]] &&
+		ver_test ${REPLACING_VERSIONS##* } -lt 2.2.0
+	then
+		elog
+		elog "Note that the 'pcsx2' executable was renamed to 'pcsx2-qt' with this version."
+	fi
 }
