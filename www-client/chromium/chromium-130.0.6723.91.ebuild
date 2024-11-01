@@ -34,12 +34,12 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PATCHSET_PPC64="128.0.6613.84-1raptor0~deb12u1"
 PATCH_V="${PV%%\.*}-1"
-SRC_URI="https://chromium-tarballs.syd1.cdn.digitaloceanspaces.com/${P}.tar.xz
+SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}.tar.xz
 		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 	test? (
-		https://chromium-tarballs.syd1.cdn.digitaloceanspaces.com/${P}-testdata.tar.xz
-		https://chromium-fonts.storage.googleapis.com/${TEST_FONT} -> chromium-${PV%%\.*}-testfonts.tar.gz
-		)
+		https://chromium-tarballs.distfiles.gentoo.org/${P}-testdata.tar.xz
+		https://chromium-fonts.storage.googleapis.com/${TEST_FONT} -> chromium-testfonts-${TEST_FONT:0:10}.tar.gz
+	)
 	ppc64? (
 		https://quickbuild.io/~raptor-engineering-public/+archive/ubuntu/chromium/+files/chromium_${PATCHSET_PPC64}.debian.tar.xz
 		https://deps.gentoo.zip/chromium-ppc64le-gentoo-patches-1.tar.xz
