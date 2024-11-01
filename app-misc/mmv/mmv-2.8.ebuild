@@ -9,6 +9,6 @@ SRC_URI="https://github.com/rrthomas/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm64 ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 QA_CONFIG_IMPL_DECL_SKIP=( MIN )
