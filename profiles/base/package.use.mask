@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-11-01)
+# No suitable versions of dev-libs/protobuf available.
+>=dev-java/protobuf-java-4.28.1 system-protoc
+
 # Sam James <sam@gentoo.org> (2024-10-29)
 # Currently needs patched dev-util/sysprof.
 dev-libs/elfutils stacktrace
@@ -38,10 +42,6 @@ dev-lang/gnat-gpl pgo lto
 # Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
 # Only supported on x86/amd64 (bug #940014).
 net-misc/lldpd seccomp
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-12)
-# No suitable version of dev-libs/protobuf available.
-=dev-java/protobuf-java-4.28.1 system-protoc
 
 # Sam James <sam@gentoo.org> (2024-09-07)
 # yacc[reference] exists more for curiosity than anything else, it's
