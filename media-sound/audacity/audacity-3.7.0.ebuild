@@ -136,6 +136,9 @@ PATCHES=(
 
 	# #920363
 	"${FILESDIR}/audacity-3.7.0-audiocom-std-string.patch"
+
+	# 915041
+	"${FILESDIR}/audacity-3.7.0-do-not-include-template-on-unix-to-fix-clang-compile.patch"
 )
 
 src_prepare() {
