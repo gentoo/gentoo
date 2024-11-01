@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/zenlib-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/zenlib-2.3.2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests unittest
