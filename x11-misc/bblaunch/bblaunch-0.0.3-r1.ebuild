@@ -10,7 +10,7 @@ SRC_URI="http://www.stud.ifi.uio.no/~steingrd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="ppc ~x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}"
