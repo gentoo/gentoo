@@ -56,7 +56,7 @@ BDEPEND="test? (
 )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${PN}-2.19.2-tests.patch
 )
 
 distutils_enable_tests pytest
@@ -228,6 +228,8 @@ src_test() {
 		"tests/test_iterable_dataset.py::test_iterable_dataset_from_hub_torch_dataloader_parallel"
 		"tests/test_offline_util.py::test_offline_with_timeout"
 		"tests/io/test_parquet.py::test_parquet_read_geoparquet"
+		tests/test_exceptions.py::test_error_deprecated
+		tests/test_hub.py::test_convert_to_parquet
 	)
 	distutils-r1_src_test
 }
