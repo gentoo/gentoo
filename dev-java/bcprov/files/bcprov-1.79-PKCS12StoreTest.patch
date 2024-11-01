@@ -1,0 +1,21 @@
+There was 1 failure:
+1) testJCE(org.bouncycastle.jce.provider.test.SimpleTestTest)
+junit.framework.AssertionFailedError: index 30 PKCS12Store: Exception: java.io.FileNotFoundException: /tmp/PKCS12-AES256-AES128.p12 (Permission denied)
+	at junit.framework.Assert.fail(Assert.java:57)
+	at junit.framework.TestCase.fail(TestCase.java:223)
+	at org.bouncycastle.jce.provider.test.SimpleTestTest.testJCE(SimpleTestTest.java:33)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+--- a/prov/src/test/java/org/bouncycastle/jce/provider/test/PKCS12StoreTest.java
++++ b/prov/src/test/java/org/bouncycastle/jce/provider/test/PKCS12StoreTest.java
+@@ -2153,7 +2153,7 @@ public class PKCS12StoreTest
+ 
+         inStore.load(new ByteArrayInputStream(bOut.toByteArray()), passwd);
+ 
+-        FileOutputStream fOut = new FileOutputStream("/tmp/" + storeType + ".p12");
++        FileOutputStream fOut = new FileOutputStream(System.getProperty("java.io.tmpdir") + storeType + ".p12");
+         fOut.write(bOut.toByteArray());
+         fOut.close();
+         Key k = inStore.getKey("key", null);
