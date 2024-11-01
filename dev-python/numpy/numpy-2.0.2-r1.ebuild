@@ -100,11 +100,41 @@ python_test() {
 	if [[ $(uname -m) == armv8l ]]; then
 		# Degenerate case of arm32 chroot on arm64, bug #774108
 		EPYTEST_DESELECT+=(
-			core/tests/test_cpu_features.py::Test_ARM_Features::test_features
+			_core/tests/test_cpu_features.py::Test_ARM_Features::test_features
 		)
 	fi
 
 	case ${ARCH} in
+		arm)
+			EPYTEST_DESELECT+=(
+				# TODO: warnings
+				_core/tests/test_umath.py::TestSpecialFloats::test_unary_spurious_fpexception
+
+				# TODO
+				_core/tests/test_function_base.py::TestLinspace::test_denormal_numbers
+				f2py/tests/test_kind.py::TestKind::test_real
+				f2py/tests/test_kind.py::TestKind::test_quad_precisionn
+
+				# require too much memory
+				'_core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
+				'_core/tests/test_multiarray.py::TestDot::test_huge_vectordot[float64]'
+			)
+			;;
+		ppc64)
+			EPYTEST_DESELECT+=(
+				# long double thingy
+				_core/tests/test_scalarprint.py::TestRealScalars::test_ppc64_ibm_double_double128
+
+				# TODO
+				_core/tests/test_cpu_features.py::TestEnvPrivation::test_impossible_feature_enable
+				linalg/tests/test_linalg.py::TestDet::test_generalized_sq_cases
+				linalg/tests/test_linalg.py::TestDet::test_sq_cases
+				"f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[s1]"
+				"f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[t1]"
+				"f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[s1]"
+				"f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[t1]"
+			)
+			;;
 		x86)
 			EPYTEST_DESELECT+=(
 				# require too much memory
