@@ -85,6 +85,9 @@ src_prepare() {
 
 	sed -e "s,@LLVM_BIN_PATH@,$(get_llvm_prefix)/bin," -i Common.py || die
 
+	# Remove disabled tests which causes test failure: https://github.com/ROCm/Tensile/issues/2038
+	rm -rf Tests/disabled || die
+
 	popd || die
 
 	sed -e "/package_data/d" -e "/data_files/d" -i setup.py || die
