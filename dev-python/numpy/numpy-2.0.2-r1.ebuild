@@ -95,7 +95,6 @@ python_test() {
 		typing/tests/test_typing.py
 		# Uses huge amount of memory
 		core/tests/test_mem_overlap.py
-		'core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
 	)
 
 	if [[ $(uname -m) == armv8l ]]; then
@@ -104,6 +103,16 @@ python_test() {
 			core/tests/test_cpu_features.py::Test_ARM_Features::test_features
 		)
 	fi
+
+	case ${ARCH} in
+		x86)
+			EPYTEST_DESELECT+=(
+				# require too much memory
+				'_core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
+				'_core/tests/test_multiarray.py::TestDot::test_huge_vectordot[float64]'
+			)
+			;;
+	esac
 
 	case ${EPYTHON} in
 		python3.13)
