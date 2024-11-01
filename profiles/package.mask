@@ -307,11 +307,6 @@ dev-python/brython
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
 
-# Florian Schmaus <flow@gentoo.org> (2024-08-23)
-# Has a serious bug that causes synced directories to end up world read-
-# and writeable. See https://github.com/nextcloud/desktop/issues/6863
-=net-misc/nextcloud-client-3.13.2
-
 # Pacho Ramos <pacho@gentoo.org> (2024-08-09)
 # Mask until we find out a way to deal better with the upstream
 # introduced circular dep, bug #937616
