@@ -11,8 +11,8 @@ LLVM_COMPAT=( 18 )
 inherit cmake distutils-r1 llvm-r1 prefix rocm
 
 DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
-HOMEPAGE="https://github.com/ROCmSoftwarePlatform/Tensile"
-SRC_URI="https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
+HOMEPAGE="https://github.com/ROCm/Tensile"
+SRC_URI="https://github.com/ROCm/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
 S="${WORKDIR}/${PN}-rocm-${PV}"
 
 LICENSE="MIT"
