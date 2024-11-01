@@ -184,6 +184,8 @@ net-fs/cifs-utils acl
 
 # Sam James <sam@gentoo.org> (2022-04-20)
 # x11-themes/sound-theme-freedesktop unkeyworded here
+app-editors/gvim sound
+app-editors/vim sound
 media-libs/libcanberra sound
 
 # Sam James <sam@gentoo.org> (2022-04-24)
