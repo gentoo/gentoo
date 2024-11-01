@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/sasagawa888/nprolog/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="BSD-2"
