@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}${PV/./_}"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv ~sparc ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.506-include-function-parameters.patch
