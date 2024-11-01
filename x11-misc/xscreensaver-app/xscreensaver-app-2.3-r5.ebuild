@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/xscreensaverapp/${MY_PN}/${PV
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	x11-libs/libdockapp
