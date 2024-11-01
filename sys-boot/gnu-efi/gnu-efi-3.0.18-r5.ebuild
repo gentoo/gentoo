@@ -16,7 +16,7 @@ SRC_URI="https://downloads.sourceforge.net/gnu-efi/${P}.tar.bz2"
 # - GPL-2+ : setjmp_ia32.S
 LICENSE="GPL-2+ BSD BSD-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~riscv x86"
 IUSE="abi_x86_32 abi_x86_64 custom-cflags"
 REQUIRED_USE="
 	amd64? ( || ( abi_x86_32 abi_x86_64 ) )
