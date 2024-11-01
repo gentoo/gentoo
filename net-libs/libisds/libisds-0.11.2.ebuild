@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Client library for accessing ISDS Soap services"
 HOMEPAGE="http://xpisar.wz.cz/libisds/"
 SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.xz"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~mips x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
