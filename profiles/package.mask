@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2024-11-01)
+# Does not work with current versions of dependencies. ruby32-only
+# because of it. No release in two years. No reverse
+# dependencies. Removal on 2024-12-01.
+dev-ruby/typhoeus
+
+# Hans de Graaff <graaff@gentoo.org> (2024-11-01)
 # No longer compiles with modern C compilers, bug 881245. Last upstream
 # release 6 years ago. No reverse dependencies. Removal on 2024-12-01.
 dev-ruby/ruby-opengl
