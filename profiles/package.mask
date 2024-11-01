@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-11-01)
+# No longer compiles with modern C compilers, bug 881245. Last upstream
+# release 6 years ago. No reverse dependencies. Removal on 2024-12-01.
+dev-ruby/ruby-opengl
+
 # Michał Górny <mgorny@gentoo.org> (2024-10-29)
 # Unmaintained in Gentoo.  The latter is multiple versions behind.
 # Ebuilds without working tests.  The only revdep has its "doc" flag
@@ -75,7 +80,6 @@ sci-geosciences/opencpn-plugin-weatherfax
 sci-geosciences/opencpn-plugins-meta
 
 # Hans de Graaff <graaff@gentoo.org> (2024-10-27)
-
 # Obsolete slots without reverse dependencies. dev-util/cucumber will
 # use other slots when installed. Removal on 2024-11-27.
 dev-util/cucumber-gherkin:26
