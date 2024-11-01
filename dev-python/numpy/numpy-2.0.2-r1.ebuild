@@ -20,7 +20,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 # +lapack because the internal fallbacks are pretty slow. Building without blas
 # is barely supported anyway, see bug #914358.
 IUSE="big-endian +lapack"
