@@ -36,7 +36,6 @@
     <flag name="uring">Build with support for <pkg>sys-libs/liburing</pkg></flag>
     <flag name="zbd">Enable <pkg>sys-block/libzbd</pkg> bluestore backend</flag>
     <flag name="xfs">Add xfs support</flag>
-    <flag name="zfs">Add zfs support</flag>
   </use>
   <upstream>
     <bugs-to>https://tracker.ceph.com/issues</bugs-to>
