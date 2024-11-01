@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/checkpasswd-pam/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~riscv x86"
 
 DEPEND=">=sys-libs/pam-0.75"
 
