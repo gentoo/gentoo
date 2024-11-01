@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/604554
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4a9d6af..16c3ca2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -137,16 +137,6 @@ ADD_DEPENDENCIES(tag_pre module-only)
+ # Release
+ #
+ 
+-INCLUDE(ManageRelease)
+-IF(CMAKE_FEDORA_ENABLE_FEDORA_BUILD)
+-    INCLUDE(ManageReleaseFedora)
+-    RELEASE_FEDORA(fedora epel7 el6)
+-    # "Off" Warning is displayed if mock is not installed.
+-    MANAGE_RELEASE(tag_push release_fedora)
+-ELSE(CMAKE_FEDORA_ENABLE_FEDORA_BUILD)
+-    MANAGE_RELEASE(tag_push)
+-ENDIF(CMAKE_FEDORA_ENABLE_FEDORA_BUILD)
+-
+ ####################################################################
+ # Test Suites.
+ #

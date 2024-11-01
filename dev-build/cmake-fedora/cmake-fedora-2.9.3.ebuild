@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-# fails 1 of 7
+PATCHES=( "${FILESDIR}/${P}-no-release.patch" )
+
+# FIXME: Test running in the build directory, while it want a file in source directory.
 RESTRICT="test"
 
 src_prepare() {
@@ -24,4 +26,12 @@ src_prepare() {
 		"${S}"/CMakeLists.txt || die
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0
+		-DMANAGE_DEPENDENCY_PACKAGE_EXISTS_CMD=true
+	)
+	cmake_src_configure
 }
