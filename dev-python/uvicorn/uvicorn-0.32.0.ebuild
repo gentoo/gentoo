@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~mips ppc ~ppc64 ~riscv ~s390 sparc ~x86"
 IUSE="test-rust"
 
 RDEPEND="
