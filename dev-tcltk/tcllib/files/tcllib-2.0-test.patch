@@ -1,0 +1,44 @@
+--- a/modules/comm/comm.test	2024-11-02 20:23:21.687981633 +0100
++++ b/modules/comm/comm.test	2024-11-02 20:23:34.055823008 +0100
+@@ -265,7 +265,7 @@
+ 
+ # ------------------------------------------------------------------------
+ 
+-test comm-6.0 {secured communication via tls package} hastls {
++test comm-6.0 {secured communication via tls package} 0 {
+     # Setup secured channel in main process.
+     tls::init \
+ 	-keyfile  [tcllibPath devtools/receiver.key] \
+--- a/modules/http/autoproxy.test	2024-11-02 20:24:32.014089148 +0100
++++ b/modules/http/autoproxy.test	2024-11-02 20:25:18.113509819 +0100
+@@ -180,7 +180,7 @@
+ } -result "Invalid TLS package option 'dummy'. Must be 'tls' or 'twapi'" -returnCodes error
+ 
+ test autoproxy-2.0.0 "autoproxy::tls_socket (tls) with proxy" -constraints {
+-    have_tls
++    0
+ } -setup {
+     packageReset
+     package require http
+--- a/modules/http/autoproxytls.test	2024-11-02 20:46:42.978304258 +0100
++++ b/modules/http/autoproxytls.test	2024-11-02 20:48:26.620984610 +0100
+@@ -186,7 +186,7 @@
+ }
+ 
+ test autoproxy-tls-1.1.1 "autoproxy::tls_socket (tls) with proxy and http proxy config" -constraints {
+-    have_tls
++    0
+ } -setup {
+     packageReset
+     autoproxy::configure -proxy_host proxy.tcllib.test -proxy_port 4319
+--- a/modules/pop3/pop3.test	2024-11-02 20:49:19.431312311 +0100
++++ b/modules/pop3/pop3.test	2024-11-02 20:49:48.197945678 +0100
+@@ -579,7 +579,7 @@
+     set msg
+ } {POP3 UIDL ERROR:  unknown command 'UIDL'}
+ 
+-test pop3-7.0 {open pop3 channel secured via package tls} hastls {
++test pop3-7.0 {open pop3 channel secured via package tls} 0 {
+     dialog::shutdown
+     dialog::setup server {Pop3 Fake Server} 1
+ 
