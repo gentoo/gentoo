@@ -59,5 +59,6 @@ python_test() {
 		tests/test_autoconf.py
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest --doctest-modules --doctest-glob='doctests.txt' src/pylibmc tests
 }
