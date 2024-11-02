@@ -12,8 +12,8 @@ inherit flag-o-matic python-single-r1 strip-linguas toolchain-funcs
 export CTARGET=${CTARGET:-${CHOST}}
 
 if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
+	if [[ ${CATEGORY} == cross*-* ]] ; then
+		export CTARGET=${CATEGORY#cross*-}
 	fi
 fi
 
