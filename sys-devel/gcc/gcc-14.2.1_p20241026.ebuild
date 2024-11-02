@@ -31,7 +31,7 @@ elif [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
 	:;
 fi
 
-if [[ ${CATEGORY} != cross-* ]] ; then
+if [[ ${CATEGORY} != cross*-* ]] ; then
 	# Technically only if USE=hardened *too* right now, but no point in complicating it further.
 	# If GCC is enabling CET by default, we need glibc to be built with support for it.
 	# bug #830454
