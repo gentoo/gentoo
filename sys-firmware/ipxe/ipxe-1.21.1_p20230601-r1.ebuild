@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${COMMIT_SHA1}/src"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+binary uefi32 uefi64 ipv6 iso lkrn +qemu undi usb vmware"
 REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
 
