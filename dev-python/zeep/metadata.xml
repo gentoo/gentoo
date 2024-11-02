@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="async">Add async support</flag>
 	</use>
