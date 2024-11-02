@@ -130,8 +130,8 @@ src_prepare() {
 src_configure() {
 	export CTARGET=${CTARGET:-${CHOST}}
 	if [[ ${CTARGET} == ${CHOST} ]] ; then
-		if [[ ${CATEGORY} == cross-* ]] ; then
-			export CTARGET=${CATEGORY#cross-}
+		if [[ ${CATEGORY} == cross*-* ]] ; then
+			export CTARGET=${CATEGORY#cross*-}
 		fi
 	fi
 
