@@ -52,8 +52,8 @@ FEATURES=${FEATURES/multilib-strict/}
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} = ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
+	if [[ ${CATEGORY} == cross*-* ]] ; then
+		export CTARGET=${CATEGORY#cross*-}
 	fi
 fi
 : "${TARGET_ABI:=${ABI}}"
@@ -713,7 +713,7 @@ do_gcc_gentoo_patches() {
 		fi
 
 		if [[ -n ${MUSL_VER} || -d "${WORKDIR}"/musl ]] && [[ ${CTARGET} == *musl* ]] ; then
-			if [[ ${CATEGORY} == cross-* ]] ; then
+			if [[ ${CATEGORY} == cross*-* ]] ; then
 				# We don't want to apply some patches when cross-compiling.
 				if [[ -d "${WORKDIR}"/musl/nocross ]] ; then
 					rm -fv "${WORKDIR}"/musl/nocross/*.patch || die
