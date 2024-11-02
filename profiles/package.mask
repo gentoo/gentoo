@@ -439,6 +439,7 @@ dev-ml/textutils_kernel:0/0.17
 >=xfce-base/xfce4-settings-4.19
 >=xfce-base/xfconf-4.19
 >=xfce-base/xfdesktop-4.19
+>=xfce-base/xfwm4-4.19
 
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
