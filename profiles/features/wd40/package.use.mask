@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-11-02)
+# Optional Rust extensions.
+dev-python/dulwich native-extensions
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-10-04)
 # >=media-libs/libopenraw-0.3.2 depends on rust
 xfce-base/tumbler raw
