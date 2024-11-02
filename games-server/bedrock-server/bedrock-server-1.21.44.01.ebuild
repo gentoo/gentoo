@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="The official bedrock (non-java) based server for the sandbox video game"
 HOMEPAGE="https://www.minecraft.net/"
-SRC_URI="https://minecraft.azureedge.net/bin-linux/${P}.zip"
+SRC_URI="https://www.minecraft.net/bedrockdedicatedserver/bin-linux/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="Mojang"
