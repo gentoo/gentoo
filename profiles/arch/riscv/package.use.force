@@ -1,6 +1,11 @@
 # Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-11-01)
+# The alternative to icu is dev-libs/libgrapheme, and it
+# ain't keyworded yet.
+media-gfx/imv icu
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
 # the only choice for maintained lua. Apply mask/force to override
