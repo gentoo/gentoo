@@ -131,7 +131,7 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv ~sparc ~x86"
 
 DEPEND="
 	app-arch/bzip2:=
