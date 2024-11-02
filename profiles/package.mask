@@ -432,6 +432,7 @@ dev-ml/textutils_kernel:0/0.17
 >=xfce-base/thunar-volman-4.19
 >=xfce-base/tumbler-4.19
 >=xfce-base/xfce4-appfinder-4.19
+>=xfce-base/xfce4-meta-4.19
 >=xfce-base/xfce4-panel-4.19
 >=xfce-base/xfce4-power-manager-4.19
 >=xfce-base/xfce4-session-4.19
