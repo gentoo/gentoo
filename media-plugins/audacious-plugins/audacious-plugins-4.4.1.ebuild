@@ -11,7 +11,7 @@ SRC_URI="https://distfiles.audacious-media-player.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="
 	aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme gtk http jack
 	lame libnotify libsamplerate lirc mms modplug mp3 opengl openmpt opus
