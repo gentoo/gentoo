@@ -27,6 +27,7 @@ python_test() {
 		tests/test_linux.py::TestRootFsDeviceFinder::test_disk_partitions_mocked
 		tests/test_linux.py::TestSystemDiskPartitions::test_zfs_fs
 		tests/test_linux.py::TestSystemNetIfAddrs::test_ips
+		tests/test_posix.py::TestProcess::test_nice
 		tests/test_process.py::TestProcess::test_ionice_linux
 		tests/test_system.py::TestDiskAPIs::test_disk_partitions
 
