@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Inter-Process Communication (IPC) library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 IUSE="qml"
