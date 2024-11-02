@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Physical position determination library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
 fi
 
 IUSE="geoclue nmea +qml"
