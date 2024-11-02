@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Wayland platform plugin for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 fi
 
 IUSE="accessibility compositor qml vulkan"
