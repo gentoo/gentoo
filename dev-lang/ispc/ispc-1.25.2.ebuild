@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {17..19} )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake llvm-r1 multiprocessing python-any-r1 toolchain-funcs
 
