@@ -37,7 +37,7 @@ QA_PREBUILT="
 
 src_unpack() {
 	unpack ${A}
-	unpack Linux_Release${MY_PV}/dtc/$(usex amd64 x86_64 aarch64)/${MY_P_DTC}.tar.gz
+	unpack Linux_Release${MY_PV}/dtc/$(usex amd64 x86_64 arm64)/${MY_P_DTC}.tar.gz
 	use gui && unpack Linux_Release${MY_PV}/dtc/kryoflux-ui.jar
 }
 
