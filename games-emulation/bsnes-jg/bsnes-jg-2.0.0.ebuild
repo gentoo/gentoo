@@ -45,6 +45,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-install-data.patch
+)
+
 src_configure() {
 	local makeopts=(
 		PREFIX="${EPREFIX}"/usr
