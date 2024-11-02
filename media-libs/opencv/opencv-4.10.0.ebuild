@@ -75,7 +75,7 @@ IUSE+=" cuda cudnn opencl video_cards_intel"
 # video
 IUSE+=" +ffmpeg gstreamer xine vaapi v4l gphoto2 ieee1394"
 # image
-IUSE+=" gdal jasper jpeg jpeg2k openexr png quirc tesseract tiff webp"
+IUSE+=" avif gdal jasper jpeg jpeg2k openexr png quirc tesseract tiff webp"
 # gui
 IUSE+=" gtk3 qt6 opengl vtk"
 # parallel
@@ -181,6 +181,7 @@ COMMON_DEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
+	avif? ( media-libs/libavif:=[${MULTILIB_USEDEP}] )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	cudnn? (
 		dev-cpp/abseil-cpp:=
@@ -607,6 +608,8 @@ multilib_src_configure() {
 		-DWITH_GPHOTO2="$(usex gphoto2)"
 		-DWITH_LAPACK="$(multilib_native_usex lapack)"
 		-DWITH_ITT="no" # 3dparty libs itt_notify
+
+		-DWITH_AVIF="$(usex avif)"
 	# ===================================================
 	# CUDA build components: nvidia-cuda-toolkit
 	# ===================================================
