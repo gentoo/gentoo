@@ -672,7 +672,7 @@ multilib_src_configure() {
 	# ===================================================
 	# things we want to be hard enabled not worth useflag
 	# ===================================================
-		-DOPENCV_DOC_INSTALL_PATH="share/doc/${P}"
+		-DOPENCV_DOC_INSTALL_PATH="share/doc/${PF}"
 		# NOTE do this so testprograms do not fail TODO adjust path in code
 		-DOPENCV_TEST_DATA_INSTALL_PATH="share/${PN}$(ver_cut 1)/testdata"
 		-DOPENCV_TEST_INSTALL_PATH="libexec/${PN}/bin/test"
