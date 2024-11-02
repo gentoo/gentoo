@@ -13,7 +13,6 @@ RUST_MIN_VER=1.78.0
 # chromium-tools/get-chromium-toolchain-strings.py
 TEST_FONT=f26f29c9d3bfae588207bbc9762de8d142e58935c62a86f67332819b15203b35
 
-
 VIRTUALX_REQUIRED="pgo"
 
 CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
@@ -23,7 +22,8 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 # While prerelease llvm is actually used in the google build, until we have a
 # sane way to select 'rust built with this llvm slot' that isn't stable and testing
 # subslots we will have to restrict LLVM_COMPAT to stable and testing keywords.
-LLVM_COMPAT=( {17..19} )
+# Requires 18.1.8 or 19.1.1 (or newer) for ppc64
+LLVM_COMPAT=( 18 19 )
 PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 
@@ -32,8 +32,8 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 systemd toolchain-funcs virtu
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PATCHSET_PPC64="128.0.6613.84-1raptor0~deb12u1"
-PATCH_V="${PV%%\.*}-1"
+PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
+PATCH_V="${PV%%\.*}-2"
 SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}.tar.xz
 		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 	test? (
@@ -41,8 +41,7 @@ SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}.tar.xz
 		https://chromium-fonts.storage.googleapis.com/${TEST_FONT} -> chromium-testfonts-${TEST_FONT:0:10}.tar.gz
 	)
 	ppc64? (
-		https://quickbuild.io/~raptor-engineering-public/+archive/ubuntu/chromium/+files/chromium_${PATCHSET_PPC64}.debian.tar.xz
-		https://deps.gentoo.zip/chromium-ppc64le-gentoo-patches-1.tar.xz
+		https://gitlab.solidsilicon.io/public-development/open-source/chromium/openpower-patches/-/archive/${PPC64_HASH}/openpower-patches-${PPC64_HASH}.tar.bz2 -> chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
 	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
@@ -53,12 +52,12 @@ SLOT="0/stable"
 if [[ ${SLOT} == "0/dev" ]]; then
 	KEYWORDS=""
 else
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo +proprietary-codecs pulseaudio"
-IUSE+=" qt5 qt6 +screencast selinux test +vaapi +wayland +widevine"
+IUSE+=" qt5 qt6 +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
 RESTRICT="
 	!bindist? ( bindist )
 	!test? ( test )
@@ -463,8 +462,7 @@ src_unpack() {
 	fi
 
 	if use ppc64; then
-		unpack chromium_${PATCHSET_PPC64}.debian.tar.xz
-		unpack chromium-ppc64le-gentoo-patches-1.tar.xz
+		unpack chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
 	fi
 }
 
@@ -485,23 +483,41 @@ src_prepare() {
 		"${FILESDIR}/chromium-127-bindgen-custom-toolchain.patch"
 	)
 
-	PATCHES+=( "${WORKDIR}/chromium-patches-${PATCH_V}" )
+	shopt -s globstar nullglob
+	# 130: moved the PPC64 patches into the chromium-patches repo
+	local patch
+	for patch in "${WORKDIR}/chromium-patches-${PATCH_V}"/**/*.patch; do
+		elog "Applying patch: ${patch}"
+		if [[ ${patch} == *"ppc64le"* ]]; then
+			use ppc64 && PATCHES+=( "${patch}" )
+		else
+			PATCHES+=( "${patch}" )
+		fi
+	done
+
 	# We can't use the bundled compiler builtins with the system toolchain
 	# `grep` is a development convenience to ensure we fail early when google changes something.
 	local builtins_match="if (is_clang && !is_nacl && !is_cronet_build) {"
 	grep -q "${builtins_match}" build/config/compiler/BUILD.gn || die "Failed to disable bundled compiler builtins"
 	sed -i -e "/${builtins_match}/,+2d" build/config/compiler/BUILD.gn
 
-	if use ppc64 ; then
-		local p
-		for p in $(grep -v "^#" "${WORKDIR}"/debian/patches/series | grep "^ppc64le" || die); do
-			if [[ ! $p =~ "fix-breakpad-compile.patch" ]]; then
-				eapply "${WORKDIR}/debian/patches/${p}"
+	if use ppc64; then
+		# Above this level there are ungoogled-chromium patches that we can't apply
+		local patchset_dir="${WORKDIR}/openpower-patches-${PPC64_HASH}/patches/ppc64le"
+		# Apply the OpenPOWER patches
+		local power9_patch="patches/ppc64le/core/baseline-isa-3-0.patch"
+		for patch in ${patchset_dir}/**/*.{patch,diff}; do
+			if [[ ${patch} == *"${power9_patch}" ]]; then
+				use cpu_flags_ppc_vsx3 && PATCHES+=( "${patch}" )
+			else
+				PATCHES+=( "${patch}" )
 			fi
 		done
-		PATCHES+=( "${WORKDIR}/ppc64le" )
-		PATCHES+=( "${WORKDIR}/debian/patches/fixes/rust-clanglib.patch" )
+
+		PATCHES+=( "${WORKDIR}/openpower-patches-${PPC64_HASH}/patches/upstream/blink-fix-size-assertions.patch" )
 	fi
+
+	shopt -u globstar nullglob
 
 	default
 
