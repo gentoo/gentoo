@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="
 	acl blake2 +bzip2 +e2fsprogs expat +iconv lz4 +lzma lzo nettle
 	static-libs test xattr +zstd
