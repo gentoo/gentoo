@@ -2976,18 +2976,21 @@ XGCC() { get_make_var GCC_FOR_TARGET ; }
 
 has toolchain_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" toolchain_death_notice"
 toolchain_death_notice() {
-	if [[ -e "${WORKDIR}"/build ]] ; then
-		pushd "${WORKDIR}"/build >/dev/null
-		(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > gccinfo.log
-		[[ -e "${T}"/build.log ]] && cp "${T}"/build.log .
-		tar -acf "${WORKDIR}"/gcc-build-logs.tar.xz \
-			gccinfo.log build.log $(find -name config.log)
-		rm gccinfo.log build.log
-		eerror
-		eerror "Please include ${WORKDIR}/gcc-build-logs.tar.xz in your bug report."
-		eerror
-		popd >/dev/null
-	fi
+	local dir
+	for dir in "${WORKDIR}"/build-jit "${WORKDIR}"/build ; do
+		if [[ -e "${dir}" ]] ; then
+			pushd "${WORKDIR}" >/dev/null
+			(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > gccinfo.log
+			[[ -e "${T}"/build.log ]] && cp "${T}"/build.log .
+			tar -arf "${WORKDIR}"/gcc-build-logs.tar.xz \
+				"${dir}"/gccinfo.log "${dir}"/build.log $(find -name "${dir}"/config.log)
+			rm "${dir}"/gccinfo.log "${dir}"/build.log
+			eerror
+			eerror "Please include ${WORKDIR}/gcc-build-logs.tar.xz in your bug report."
+			eerror
+			popd >/dev/null
+		fi
+	done
 }
 
 fi
