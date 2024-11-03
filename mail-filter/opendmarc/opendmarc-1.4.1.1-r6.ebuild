@@ -12,7 +12,7 @@ S="${WORKDIR}/OpenDMARC-rel-${PN}-${PV//./-}"
 
 LICENSE="BSD"
 SLOT="0/3"  # 1.4 has API breakage with 1.3, yet uses same soname
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="spf +reports"
 
 DEPEND="mail-filter/libmilter:=
