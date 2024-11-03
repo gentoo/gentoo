@@ -117,6 +117,17 @@ python_test() {
 		Tests/test_file_libtiff.py::TestFileLibTiff::test_lzma
 	)
 
+	case ${ARCH} in
+		ppc)
+			EPYTEST_DESELECT+=(
+				# https://github.com/python-pillow/Pillow/issues/7008
+				# (we've reverted the upstream patch because it was worse
+				# than the original issue)
+				Tests/test_file_libtiff.py::TestFileLibTiff::test_exif_ifd
+			)
+			;;
+	esac
+
 	"${EPYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# leak tests are fragile and broken under xdist
