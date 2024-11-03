@@ -1,0 +1,178 @@
+From 09e6d8cd005fd36811998bbc8c9de3a019c7b8fb Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Tue, 15 Oct 2024 21:09:31 +0000
+Subject: [PATCH 1/2] Fix build with poppler 24.10.0
+
+git-svn-id: svn://scribus.net/branches/Version16x/Scribus@26324 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 34 ++++++++++++++++++++++++
+ scribus/plugins/import/pdf/slaoutput.h   |  6 ++++-
+ 2 files changed, 39 insertions(+), 1 deletion(-)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index c002a886a..dfabf7039 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -81,6 +81,8 @@ namespace
+ 	}
+ }
+ 
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(24, 10, 0)
++
+ LinkSubmitForm::LinkSubmitForm(Object *actionObj)
+ {
+ 	if (!actionObj->isDict())
+@@ -111,6 +113,8 @@ LinkSubmitForm::~LinkSubmitForm()
+ 	delete fileName;
+ }
+ 
++#endif
++
+ LinkImportData::LinkImportData(Object *actionObj)
+ {
+ 	if (!actionObj->isDict())
+@@ -1078,6 +1082,32 @@ void SlaOutputDev::handleActions(PageItem* ite, AnnotWidget *ano)
+ 				}
+ 			}
+ 		}
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 89, 0)
++		else if (Lact->getKind() == actionResetForm)
++		{
++			ite->annotation().setActionType(4);
++		}
++#endif
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(24, 10, 0)
++		else if (Lact->getKind() == actionSubmitForm)
++		{
++			const auto* impo = (LinkSubmitForm*) Lact;
++			if (impo->isOk())
++			{
++				ite->annotation().setActionType(3);
++				ite->annotation().setAction(UnicodeParsedString(impo->getUrl()));
++				int fl = impo->getFlags();
++				if (fl == 0)
++					ite->annotation().setHTML(0);
++				else if (fl == 4)
++					ite->annotation().setHTML(1);
++				else if (fl == 64)
++					ite->annotation().setHTML(2);
++				else if (fl == 512)
++					ite->annotation().setHTML(3);
++			}
++		}
++#endif
+ 		else if (Lact->getKind() == actionUnknown)
+ 		{
+ 			auto *uno = (LinkUnknown*) Lact;
+@@ -1106,7 +1136,11 @@ void SlaOutputDev::handleActions(PageItem* ite, AnnotWidget *ano)
+ 						if (impo->isOk())
+ 						{
+ 							ite->annotation().setActionType(3);
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(24, 10, 0)
++							ite->annotation().setAction(UnicodeParsedString(impo->getUrl()));
++#else
+ 							ite->annotation().setAction(UnicodeParsedString(impo->getFileName()));
++#endif
+ 							int fl = impo->getFlags();
+ 							if (fl == 0)
+ 								ite->annotation().setHTML(0);
+diff --git a/scribus/plugins/import/pdf/slaoutput.h b/scribus/plugins/import/pdf/slaoutput.h
+index 35de565b0..90a745972 100644
+--- a/scribus/plugins/import/pdf/slaoutput.h
++++ b/scribus/plugins/import/pdf/slaoutput.h
+@@ -56,9 +56,11 @@ for which a new license (GPL+exception) is in place.
+ #include <poppler/splash/SplashGlyphBitmap.h>
+ 
+ //------------------------------------------------------------------------
+-// LinkSubmitData
++// LinkSubmitForm
+ //------------------------------------------------------------------------
+ 
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(24, 10, 0)
++
+ class LinkSubmitForm: public LinkAction
+ {
+ public:
+@@ -79,6 +81,8 @@ private:
+ 	int m_flags {0};
+ };
+ 
++#endif
++
+ //------------------------------------------------------------------------
+ // LinkImportData
+ //------------------------------------------------------------------------
+-- 
+2.47.0
+
+
+From 6b80de8425a5b6b3e8c170b4a99cb4c5e0d85789 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Tue, 15 Oct 2024 21:15:36 +0000
+Subject: [PATCH 2/2] Simplify build fix for poppler 24.10.0
+
+git-svn-id: svn://scribus.net/branches/Version16x/Scribus@26326 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 8 ++------
+ scribus/plugins/import/pdf/slaoutput.h   | 6 +++---
+ 2 files changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index dfabf7039..69022014b 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -99,7 +99,7 @@ LinkSubmitForm::LinkSubmitForm(Object *actionObj)
+ 			{
+ 				Object obj2 = obj1.dictLookup("F");
+ 				if (!obj2.isNull())
+-					fileName = obj2.getString()->copy();
++					m_url = obj2.getString()->copy();
+ 			}
+ 		}
+ 	}
+@@ -110,7 +110,7 @@ LinkSubmitForm::LinkSubmitForm(Object *actionObj)
+ 
+ LinkSubmitForm::~LinkSubmitForm()
+ {
+-	delete fileName;
++	delete m_url;
+ }
+ 
+ #endif
+@@ -1136,11 +1136,7 @@ void SlaOutputDev::handleActions(PageItem* ite, AnnotWidget *ano)
+ 						if (impo->isOk())
+ 						{
+ 							ite->annotation().setActionType(3);
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(24, 10, 0)
+ 							ite->annotation().setAction(UnicodeParsedString(impo->getUrl()));
+-#else
+-							ite->annotation().setAction(UnicodeParsedString(impo->getFileName()));
+-#endif
+ 							int fl = impo->getFlags();
+ 							if (fl == 0)
+ 								ite->annotation().setHTML(0);
+diff --git a/scribus/plugins/import/pdf/slaoutput.h b/scribus/plugins/import/pdf/slaoutput.h
+index 90a745972..0482a5855 100644
+--- a/scribus/plugins/import/pdf/slaoutput.h
++++ b/scribus/plugins/import/pdf/slaoutput.h
+@@ -70,14 +70,14 @@ public:
+ 	virtual ~LinkSubmitForm();
+ 
+ 	// Was the LinkImportData created successfully?
+-	GBool isOk() POPPLER_CONST override { return fileName != nullptr; }
++	GBool isOk() POPPLER_CONST override { return m_url != nullptr; }
+ 	// Accessors.
+ 	LinkActionKind getKind() POPPLER_CONST override { return actionUnknown; }
+-	GooString *getFileName() { return fileName; }
++	GooString *getUrl() { return m_url; }
+ 	int getFlags() { return m_flags; }
+ 
+ private:
+-	GooString *fileName {nullptr};		// file name
++	GooString *m_url {nullptr};		// URL
+ 	int m_flags {0};
+ };
+ 
+-- 
+2.47.0
+
