@@ -23,20 +23,17 @@ be retargeted for other microprocessors.
 		<flag name="device-lib">Enable built of devices libraries</flag>
 		<flag name="non-free">Enable non-free runtime library parts</flag>
 		<flag name="packihx">Enable Intel HEX files pack utility</flag>
-		<flag name="sdbinutils">Enable SDCC library archive utilities sdar, sdranlib, sdnm</flag>
 		<flag name="sdcdb">Enable SDCC source level debugger</flag>
 		<flag name="sdcpp">Enable SDCC preprocessor based on GCC cpp</flag>
 		<flag name="ucsim">Enable software simulator for microcontrollers</flag>
 
 		<!-- ports in order defined by configure.ac -->
-		<flag name="avr">Add support for AVR -- not supported upstream</flag>
 		<flag name="mcs51">Add support for Intel mcs51</flag>
 		<flag name="z80">Add support for Zilog Z80</flag>
 		<flag name="z180">Add support for Zilog Z180</flag>
 		<flag name="r2k">Add support for Rabbit 2000</flag>
 		<flag name="r2ka">Add support for Rabbit 2000A</flag>
 		<flag name="r3ka">Add support for Rabbit 3000A</flag>
-		<flag name="gbz80">Add support for Gameboy gbz80</flag>
 		<flag name="sm83">Add support for Gameboy SM83</flag>
 		<flag name="tlcs90">Add support for TLCS-90</flag>
 		<flag name="ez80-z80">Add support for EZ80-Z80</flag>
