@@ -23,6 +23,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# checking for intrinsics, will fail where not supported. bug #927102
+	_mm_popcnt_u64
+)
+
 src_configure() {
 	# bug 909429
 	use webp && append-ldflags -lwebp
