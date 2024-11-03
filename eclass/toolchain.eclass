@@ -2602,7 +2602,16 @@ gcc_movelibs() {
 	# code to run on the target.
 	if is_crosscompile ; then
 		dodir "${HOSTLIBPATH#${EPREFIX}}"
-		mv "${ED}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
+		# libcc1 can be present in the followig locations:
+		# - `/usr/$(get_libdir)`, where `$(get_libdir)` evaluates to `lib64`.
+		# - `/usr/lib`, which can be still the case even if `$(get_libdir)` evaluates
+		#   to `lib64`. This case was observed when building cross GCC toolchain on
+		#   a system based on LLVM profile/stage3.
+		for lib_dir in "${ED}/usr/$(get_libdir)" "${ED}/usr/lib"; do
+			if [ -d "${lib_dir}" ] && compgen -G "${lib_dir}/libcc1*" > /dev/null; then
+				mv "${lib_dir}/libcc1"* "${D}${HOSTLIBPATH}" || die
+			fi
+		done
 	fi
 
 	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
