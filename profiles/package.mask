@@ -36,7 +36,7 @@
 # David Seifert <soap@gentoo.org> (2024-11-03)
 # Bug ridden package, extremely brittle build system, lots of QA issues,
 # terrible license, no other linux distro still packages this.
-# Removal on 2024-12-03. Bug #942445.
+# Removal on 2024-12-03. Bug #929069.
 sci-chemistry/molden
 
 # Hans de Graaff <graaff@gentoo.org> (2024-11-03)
