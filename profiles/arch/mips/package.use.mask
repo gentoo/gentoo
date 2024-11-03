@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2024-11-03)
+# Requires llvm 16 which is not keyworded
+=dev-lang/rust-1.71.1-r100 system-llvm
+
 # Felix Janda <felix.janda@posteo.de> (2024-10-20)
 # requires dev-libs/libcss and net-libs/libdom to be keyworded
 www-client/elinks libcss
