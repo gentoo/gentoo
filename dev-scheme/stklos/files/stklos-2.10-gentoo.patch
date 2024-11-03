@@ -1,0 +1,70 @@
+--- a/lib/Lalr.d/Makefile.am
++++ b/lib/Lalr.d/Makefile.am
+@@ -33,7 +33,7 @@
+ all: lalr.ostk calc
+ 
+ install-sources: install
+-	mkdir -p $(schemedir)
++	mkdir -p $(DESTDIR)$(schemedir)
+ 	cp lalr.stk $(DESTDIR)$(schemedir)
+ 
+ uninstall-hook:
+--- a/lib/scheme/Makefile.am
++++ b/lib/scheme/Makefile.am
+@@ -208,7 +208,7 @@
+ 	@for i in $(SUBDIRS) ;do \
+ 	   (cd $$i && $(MAKE) install-sources)\
+ 	done
+-	cp $(scheme_sources) $(schemedir)
++	cp $(scheme_sources) $(DESTDIR)$(schemedir)
+ 
+ install-data-hook:
+ 	(cd regex && $(MAKE) install)
+--- a/lib/scheme/vector/Makefile.am
++++ b/lib/scheme/vector/Makefile.am
+@@ -130,8 +130,8 @@
+ #======================================================================
+ 
+ install-sources:
+-	mkdir -p $(srfidir)
+-	cp $(srfi_sources) $(srfi_interm) $(srfidir)
++	mkdir -p $(DESTDIR)$(srfidir)
++	cp $(srfi_sources) $(srfi_interm) $(DESTDIR)$(srfidir)
+ 
+ # we also clean the TAG.stk files -- $(srfi-interm) --, which are NOT
+ # srfi_OBJS (should not be installed with other objects):
+--- a/lib/stklos/Makefile.am
++++ b/lib/stklos/Makefile.am
+@@ -77,7 +77,7 @@
+ 
+ # ======================================================================
+ install-sources:
+-	cp $(scheme_sources) $(schemedir)
++	cp $(scheme_sources) $(DESTDIR)$(schemedir)
+ 
+ clean:
+ 	rm -f $(ALL_OBJS) *-incl.c  *~
+--- a/lib/streams/Makefile.am
++++ b/lib/streams/Makefile.am
+@@ -75,7 +75,7 @@
+ 
+ # ======================================================================
+ install-sources:
+-	install $(scheme_sources) $(schemedir)
++	install $(scheme_sources) $(DESTDIR)$(schemedir)
+ 
+ clean:
+ 	rm -f $(ALL_OBJS) *-incl.c  *~
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -108,8 +108,8 @@
+ 
+ 
+ install-exec-hook:
+-	mv $(bindir)/stklos $(bindir)/stklos-@VERSION@
+-	ln -s stklos-@VERSION@ $(bindir)/stklos
++	mv $(DESTDIR)$(bindir)/stklos $(DESTDIR)$(bindir)/stklos-@VERSION@
++	ln -s stklos-@VERSION@ $(DESTDIR)$(bindir)/stklos
+ 
+ 
+ doc:  $(DOCDB)
