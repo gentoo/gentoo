@@ -1,0 +1,30 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=2ca38bee7a63c0f7185ca1dbf13da1cbc4933563
+
+From 2ca38bee7a63c0f7185ca1dbf13da1cbc4933563 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 31 Oct 2024 11:47:55 +0900
+Subject: [PATCH] agent: Fix status output for LISTTRUSTED.
+
+* agent/trustlist.c (istrusted_internal): When LISTMODE is enabled,
+TRUSTLISTFPR status output should be done.
+
+--
+
+GnuPG-bug-id: 7363
+Fixes-commit: 4fa82eec43e8d205fa336113f6ea554923fd6986
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+--- a/agent/trustlist.c
++++ b/agent/trustlist.c
+@@ -485,8 +485,8 @@ istrusted_internal (ctrl_t ctrl, const char *fpr, int listmode, int *r_disabled,
+                in a locked state.  */
+             if (already_locked)
+               ;
+-            else if (ti->flags.relax || ti->flags.cm || ti->flags.qual
+-                     || ti->flags.de_vs)
++            else if (listmode || ti->flags.relax || ti->flags.cm
++                     || ti->flags.qual || ti->flags.de_vs)
+               {
+                 unlock_trusttable ();
+                 locked = 0;
+-- 
+2.30.2
