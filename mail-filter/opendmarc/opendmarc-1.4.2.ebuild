@@ -22,12 +22,12 @@ RDEPEND="${DEPEND}
 	reports? (
 		dev-perl/DBD-mysql
 		dev-perl/HTTP-Message
+		dev-perl/JSON
 		dev-perl/Switch
 	)
 	spf? ( mail-filter/libspf2 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.1.1-CVE-2021-34555.patch
 	"${FILESDIR}"/${PN}-1.4.1.1-underlinking.patch
 	"${FILESDIR}"/${PN}-1.4.1.1-arc-seal-crash.patch
 )
