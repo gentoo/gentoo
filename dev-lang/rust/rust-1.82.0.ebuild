@@ -310,7 +310,8 @@ src_prepare() {
 	if use x86; then
 		if ! use cpu_flags_x86_sse2; then
 			eapply "${FILESDIR}/1.82.0-i586-baseline.patch"
-			grep -rl cmd.args.push\(\"-march=i686\" . | xargs sed  -i 's/march=i686/-march=i586/g' || die
+			# Required for i586 support, commented out until ready for wider use.
+			#grep -rl cmd.args.push\(\"-march=i686\" . | xargs sed  -i 's/march=i686/-march=i586/g' || die
 		fi
 	fi
 
