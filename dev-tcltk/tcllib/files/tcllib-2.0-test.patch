@@ -42,3 +42,50 @@
      dialog::shutdown
      dialog::setup server {Pop3 Fake Server} 1
  
+--- a/modules/websocket/websocket.test	2024-11-03 09:46:47.851212270 +0100
++++ b/modules/websocket/websocket.test	2024-11-03 09:49:09.262647901 +0100
+@@ -75,7 +75,7 @@
+ set wsUrl ws://ws.ifelse.io
+ set expectNum 2
+ 
+-test example-1.1 "Open a websocket" -constraints {} -setup {
++test example-1.1 "Open a websocket" -constraints { 0 } -setup {
+     wsResetSleep
+     wsResetHandler
+ } -body {
+@@ -94,7 +94,7 @@
+ SOCKET text {Request served by *}
+ }
+ 
+-test example-1.2 "Close a websocket" -constraints {} -setup {
++test example-1.2 "Close a websocket" -constraints { 0 } -setup {
+     wsResetHandler
+     wsResetSleep
+     wsExpectHandler $expectNum
+@@ -115,7 +115,7 @@
+ SOCKET disconnect {Disconnected from remote end}
+ }
+ 
+-test example-1.3 "Open second websocket - require different socket" -constraints {} -setup {
++test example-1.3 "Open second websocket - require different socket" -constraints { 0 } -setup {
+     wsResetSleep
+     wsResetHandler
+     wsExpectHandler $expectNum
+@@ -138,7 +138,7 @@
+     wsResetHandler
+ } -match glob -result {Sockets differ: *}
+ 
+-test example-1.4 "Open second websocket - usual server return" -constraints {} -setup {
++test example-1.4 "Open second websocket - usual server return" -constraints { 0 } -setup {
+     wsResetSleep
+     wsResetHandler
+     wsExpectHandler $expectNum
+@@ -165,7 +165,7 @@
+ SOCKET text {Request served by *}
+ }
+ 
+-test example-2.1 "Send a message" -constraints {} -setup {
++test example-2.1 "Send a message" -constraints { 0 } -setup {
+     wsResetHandler
+     wsResetSleep
+     wsExpectHandler $expectNum
