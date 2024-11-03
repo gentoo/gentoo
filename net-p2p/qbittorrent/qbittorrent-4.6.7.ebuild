@@ -71,6 +71,8 @@ BDEPEND+="
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
 
+PATCHES=( ${FILESDIR}/qt5-qbittorrent-github-3d9e9715b4660b8f57c3648a62a4d83c67db9de5-backport.patch )
+
 src_prepare() {
 	MULTIBUILD_VARIANTS=()
 	use gui && MULTIBUILD_VARIANTS+=( gui )
