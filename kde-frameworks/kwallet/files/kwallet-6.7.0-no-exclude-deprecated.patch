@@ -1,0 +1,34 @@
+From 38f293ce0b025ad30d7bc1fd5c0f8dd1d3b07c6c Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 18 Oct 2024 23:15:19 +0200
+Subject: [PATCH] Don't exclude deprecated functions from build
+
+Some of the deprecated API is part of the runtime DBus interface and might be used by older applications
+
+BUG: 493356
+---
+ CMakeLists.txt | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c31f8e12..8cffe41e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,11 +33,10 @@ option(BUILD_KWALLET_QUERY "Build kwallet-query tool" ON)
+ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
+ 
+-if (TRUE) # TODO: port and remove remaining code in v5-time deprecated parts, then return to using 0
+-set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 5.99.0 CACHE STRING "Control the range of deprecated API excluded from the build [default=5.99.0].")
+-else() # normal
++# kwalletd contains functions that are marked as deprecated.
++# These are part of the public DBus API and are used by older applications
++# Therefore we must not exclude those by default
+ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
+-endif()
+ 
+ find_package(KF6CoreAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF6Config ${KF_DEP_VERSION} REQUIRED)
+-- 
+GitLab
+
