@@ -96,10 +96,6 @@ src_prepare() {
 	# which in turn requires discovery in Autoconf, something that upstream deeply resents.
 	sed -e "/DirectoryMode=/a ExecStartPost=-${EPREFIX}/bin/systemctl --user set-environment SSH_AUTH_SOCK=%t/gnupg/S.gpg-agent.ssh" \
 		-i "${T}"/gpg-agent-ssh.socket || die
-
-	# definition of getpeername etc uses different things like socket_fd_t
-	[[ ${CHOST} == *-solaris* ]] &&
-		append-cflags $(test-flags-CC -Wno-incompatible-pointer-types)
 }
 
 my_src_configure() {
@@ -145,6 +141,11 @@ my_src_configure() {
 	if use prefix && use usb; then
 		# bug #649598
 		append-cppflags -I"${ESYSROOT}/usr/include/libusb-1.0"
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# https://dev.gnupg.org/T7368
+		append-cppflags -D_XOPEN_SOURCE=500
 	fi
 
 	# bug #663142
