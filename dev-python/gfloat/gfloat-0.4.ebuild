@@ -17,6 +17,7 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="test-rust"
 
 RDEPEND="
 	dev-python/more-itertools[${PYTHON_USEDEP}]
@@ -25,16 +26,28 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/ml-dtypes[${PYTHON_USEDEP}]
+		test-rust? (
+			dev-python/nbval[${PYTHON_USEDEP}]
+		)
 	)
 "
 
 distutils_enable_tests pytest
 
-EPYTEST_IGNORE=(
-	# require jax
-	docs/source/03-value-tables.ipynb
-	docs/source/04-benchmark.ipynb
-	test/test_jax.py
-	# requires mx (possibly git version), torch
-	test/test_microxcaling.py
-)
+python_test() {
+	local EPYTEST_IGNORE=(
+		# require jax
+		docs/source/03-value-tables.ipynb
+		docs/source/04-benchmark.ipynb
+		test/test_jax.py
+		# requires mx (possibly git version), torch
+		test/test_microxcaling.py
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	if has_version "dev-python/nbval[${PYTHON_USEDEP}]"; then
+		epytest -p nbval
+	else
+		epytest -o addopts=
+	fi
+}
