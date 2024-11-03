@@ -12,13 +12,10 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-editors/xemacs-21.4.24-r9
+RDEPEND=">=app-editors/xemacs-21.5.35
 	app-xemacs/sh-script"
-BDEPEND="${RDEPEND}
-	test? ( >=app-editors/xemacs-21.5.35 )"
+BDEPEND="${RDEPEND}"
 
 EMACS="${EPREFIX}/usr/bin/xemacs"
 EMACSFLAGS="-batch -q -no-site-file"
