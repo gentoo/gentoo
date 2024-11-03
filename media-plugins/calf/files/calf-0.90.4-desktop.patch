@@ -1,0 +1,22 @@
+ * QA Notice: This package installs one or more .desktop files that do not
+ * pass validation.
+ * 
+ *      /usr/share/applications/calf.desktop: error: value "0.90.1" for key "Version" in group "Desktop Entry" is not a known version
+ *      /usr/share/applications/calf.desktop: warning: value "Application;AudioVideo;Audio;GNOME" for key "Categories" in group "Desktop Entry" contains a deprecated value "Application"
+
+
+
+--- a/calf.desktop.in
++++ b/calf.desktop.in
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+-Categories=Application;AudioVideo;Audio;GNOME
++Categories=AudioVideo;Audio;GNOME
+ Exec=calfjackhost
+ Icon=calf
+ Terminal=false
+ Type=Application
+-Version=@VERSION@
+ 
+ Name=Calf Plugin Pack for JACK
+ Name[fr]=Ensemble de greffons Calf pour JACK
