@@ -27,6 +27,11 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	_mm_popcnt_u64
 )
 
+src_prepare() {
+	default
+	elibtoolize
+}
+
 src_configure() {
 	# bug 909429
 	use webp && append-ldflags -lwebp
