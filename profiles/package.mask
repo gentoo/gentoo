@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-11-03)
+# Obsolete ruby32-only slot without reverse dependencies. Use the newer
+# slot instead. Removal on 2024-12-03.
+dev-ruby/pdf-reader:0
+
 # Hans de Graaff <graaff@gentoo.org> (2024-11-01)
 # Does not work with current versions of dependencies. ruby32-only
 # because of it. No release in two years. No reverse
