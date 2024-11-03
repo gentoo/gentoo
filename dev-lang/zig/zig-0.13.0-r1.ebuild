@@ -21,6 +21,7 @@ else
 	SRC_URI="
 		https://ziglang.org/download/${PV}/${P}.tar.xz
 		verify-sig? ( https://ziglang.org/download/${PV}/${P}.tar.xz.minisig )
+		https://codeberg.org/BratishkaErik/distfiles/releases/download/dev-lang%2Fzig-${PV}/${P}-llvm-18.1.8-r6-fix.patch
 	"
 	KEYWORDS="~amd64 ~arm ~arm64"
 
@@ -73,6 +74,7 @@ CHECKREQS_MEMORY="4G"
 PATCHES=(
 	"${FILESDIR}/${P}-test-fmt-no-doc.patch"
 	"${FILESDIR}/${P}-test-std-kernel-version.patch"
+	"${DISTDIR}/${P}-llvm-18.1.8-r6-fix.patch"
 )
 
 llvm_check_deps() {
@@ -124,6 +126,13 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.minisig}
+	fi
+	default
+}
+
 src_configure() {
 	# Useful for debugging and a little bit more deterministic.
 	export ZIG_LOCAL_CACHE_DIR="${T}/zig-local-cache"
@@ -142,6 +151,11 @@ src_configure() {
 }
 
 src_compile() {
+	# Remove "limit memory usage" flags, it's already verified by
+	# CHECKREQS_MEMORY and causes unneccessary errors. Upstream set them
+	# according to CI OOM failures, which are higher than during Gentoo build.
+	sed -i -e '/\.max_rss = .*,/d' build.zig || die
+
 	cmake_src_compile
 
 	"${BUILD_DIR}/stage3/bin/zig" env || die "Zig compilation failed"
