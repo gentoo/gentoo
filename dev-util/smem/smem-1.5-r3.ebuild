@@ -27,6 +27,8 @@ pkg_setup() {
 		CONFIG_CHECK="PROC_PAGE_MONITOR"
 		check_extra_config
 	fi
+
+	python-single-r1_pkg_setup
 }
 
 src_compile() {
