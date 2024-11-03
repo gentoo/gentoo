@@ -1,0 +1,505 @@
+From c06bc18dc4da9832ad8aed8beac8904e0bdfee7e Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sat, 2 Nov 2024 09:55:15 +0100
+Subject: [PATCH] Add missing `#include <cstdint>`
+
+* GCC 15 has reduced transitive dependencies between headers.
+
+Bug: https://bugs.gentoo.org/939856
+---
+ bindings/guile/gnc-kvp-guile.cpp                             | 1 +
+ gnucash/gnome-utils/gnc-option-gtk-ui.cpp                    | 1 +
+ gnucash/gnome-utils/test/test-autoclear.cpp                  | 1 +
+ gnucash/import-export/aqb/assistant-ab-initial.c             | 1 +
+ gnucash/import-export/aqb/gnc-gwen-gui.c                     | 1 +
+ gnucash/import-export/csv-imp/assistant-csv-price-import.cpp | 1 +
+ gnucash/import-export/csv-imp/assistant-csv-trans-import.cpp | 1 +
+ gnucash/import-export/csv-imp/gnc-imp-settings-csv-price.cpp | 1 +
+ gnucash/import-export/csv-imp/gnc-imp-settings-csv-tx.cpp    | 1 +
+ gnucash/import-export/csv-imp/gnc-imp-settings-csv.hpp       | 1 +
+ gnucash/import-export/csv-imp/gnc-import-price.hpp           | 1 +
+ gnucash/import-export/csv-imp/gnc-import-tx.hpp              | 1 +
+ gnucash/import-export/csv-imp/gnc-tokenizer-fw.hpp           | 1 +
+ libgnucash/app-utils/test/test-print-parse-amount.cpp        | 1 +
+ libgnucash/backend/dbi/gnc-dbisqlresult.hpp                  | 1 +
+ libgnucash/backend/sql/gnc-slots-sql.cpp                     | 1 +
+ libgnucash/backend/sql/gnc-sql-column-table-entry.cpp        | 1 +
+ libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp        | 1 +
+ libgnucash/backend/xml/io-gncxml-v2.cpp                      | 1 +
+ libgnucash/backend/xml/sixtp-dom-generators.cpp              | 1 +
+ libgnucash/engine/gnc-numeric.hpp                            | 1 +
+ libgnucash/engine/gnc-option-impl.hpp                        | 1 +
+ libgnucash/engine/gnc-option.hpp                             | 1 +
+ libgnucash/engine/gnc-optiondb.hpp                           | 1 +
+ libgnucash/engine/gnc-rational.cpp                           | 1 +
+ libgnucash/engine/gncInvoice.c                               | 1 -
+ libgnucash/engine/kvp-frame.cpp                              | 1 +
+ libgnucash/engine/kvp-value.hpp                              | 1 +
+ libgnucash/engine/qofinstance.cpp                            | 1 +
+ libgnucash/engine/test-core/test-engine-stuff.cpp            | 1 -
+ libgnucash/engine/test/gtest-gnc-int128.cpp                  | 1 +
+ libgnucash/engine/test/gtest-gnc-numeric.cpp                 | 1 +
+ libgnucash/engine/test/gtest-gnc-option.cpp                  | 1 +
+ libgnucash/engine/test/gtest-gnc-optiondb.cpp                | 1 +
+ libgnucash/engine/test/gtest-gnc-rational.cpp                | 1 +
+ libgnucash/engine/test/gtest-import-map.cpp                  | 1 +
+ libgnucash/engine/test/test-kvp-frame.cpp                    | 1 +
+ libgnucash/engine/test/test-kvp-value.cpp                    | 1 +
+ 38 files changed, 36 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/guile/gnc-kvp-guile.cpp b/bindings/guile/gnc-kvp-guile.cpp
+index c199ac68d68..f3f96114f63 100644
+--- a/bindings/guile/gnc-kvp-guile.cpp
++++ b/bindings/guile/gnc-kvp-guile.cpp
+@@ -2,6 +2,7 @@
+ #include <kvp-frame.hpp>
+ #include <libguile.h>
+ #include <numeric>
++#include <cstdint>
+ 
+ #include <config.h>
+ 
+diff --git a/gnucash/gnome-utils/gnc-option-gtk-ui.cpp b/gnucash/gnome-utils/gnc-option-gtk-ui.cpp
+index 9dd5fe6ca50..3db1cb7c803 100644
+--- a/gnucash/gnome-utils/gnc-option-gtk-ui.cpp
++++ b/gnucash/gnome-utils/gnc-option-gtk-ui.cpp
+@@ -25,6 +25,7 @@
+ #include "gnc-option-gtk-ui.hpp"
+ #include <config.h>  // for scanf format string
+ #include <memory>
++#include <cstdint>
+ #include <qof.h>
+ #include <gnc-engine.h> // for GNC_MOD_GUI
+ #include <gnc-commodity.h> // for GNC_COMMODITY
+diff --git a/gnucash/gnome-utils/test/test-autoclear.cpp b/gnucash/gnome-utils/test/test-autoclear.cpp
+index a13d92512ed..4bf6c258905 100644
+--- a/gnucash/gnome-utils/test/test-autoclear.cpp
++++ b/gnucash/gnome-utils/test/test-autoclear.cpp
+@@ -26,6 +26,7 @@
+ // GoogleTest is written in C++, however, the function we test in C.
+ #include "../gnc-autoclear.h"
+ #include <memory>
++#include <cstdint>
+ #include <Account.h>
+ #include <Split.h>
+ #include <gtest/gtest.h>
+diff --git a/gnucash/import-export/aqb/assistant-ab-initial.c b/gnucash/import-export/aqb/assistant-ab-initial.c
+index 57e76d83cbf..c65acb956ba 100644
+--- a/gnucash/import-export/aqb/assistant-ab-initial.c
++++ b/gnucash/import-export/aqb/assistant-ab-initial.c
+@@ -51,6 +51,7 @@
+ #endif
+ #include <fcntl.h>
+ #include <unistd.h>
++#include <stdint.h>
+ 
+ #include "dialog-utils.h"
+ #include "assistant-ab-initial.h"
+diff --git a/gnucash/import-export/aqb/gnc-gwen-gui.c b/gnucash/import-export/aqb/gnc-gwen-gui.c
+index 47055afef1d..aaa20f8abae 100644
+--- a/gnucash/import-export/aqb/gnc-gwen-gui.c
++++ b/gnucash/import-export/aqb/gnc-gwen-gui.c
+@@ -31,6 +31,7 @@
+ #include <config.h>
+ 
+ #include <ctype.h>
++#include <stdint.h>
+ #include <glib/gi18n.h>
+ #include <gwenhywfar/gui_be.h>
+ #include <gwenhywfar/inherit.h>
+diff --git a/gnucash/import-export/csv-imp/assistant-csv-price-import.cpp b/gnucash/import-export/csv-imp/assistant-csv-price-import.cpp
+index ddb0a2a1e40..6f1a8644dd2 100644
+--- a/gnucash/import-export/csv-imp/assistant-csv-price-import.cpp
++++ b/gnucash/import-export/csv-imp/assistant-csv-price-import.cpp
+@@ -34,6 +34,7 @@
+ #include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+ #include <stdlib.h>
++#include <cstdint>
+ 
+ #include "gnc-ui.h"
+ #include "gnc-uri-utils.h"
+diff --git a/gnucash/import-export/csv-imp/assistant-csv-trans-import.cpp b/gnucash/import-export/csv-imp/assistant-csv-trans-import.cpp
+index d1cb2480eaa..a096d1c3f31 100644
+--- a/gnucash/import-export/csv-imp/assistant-csv-trans-import.cpp
++++ b/gnucash/import-export/csv-imp/assistant-csv-trans-import.cpp
+@@ -36,6 +36,7 @@
+ #include <glib/gi18n.h>
+ #include <stdexcept>
+ #include <stdlib.h>
++#include <cstdint>
+ 
+ #include "gnc-path.h"
+ #include "gnc-ui.h"
+diff --git a/gnucash/import-export/csv-imp/gnc-imp-settings-csv-price.cpp b/gnucash/import-export/csv-imp/gnc-imp-settings-csv-price.cpp
+index c2bcd290041..ec5998751d2 100644
+--- a/gnucash/import-export/csv-imp/gnc-imp-settings-csv-price.cpp
++++ b/gnucash/import-export/csv-imp/gnc-imp-settings-csv-price.cpp
+@@ -33,6 +33,7 @@
+ #include <sstream>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include <config.h>
+ 
+diff --git a/gnucash/import-export/csv-imp/gnc-imp-settings-csv-tx.cpp b/gnucash/import-export/csv-imp/gnc-imp-settings-csv-tx.cpp
+index a4904e808b6..c42d8d49f29 100644
+--- a/gnucash/import-export/csv-imp/gnc-imp-settings-csv-tx.cpp
++++ b/gnucash/import-export/csv-imp/gnc-imp-settings-csv-tx.cpp
+@@ -33,6 +33,7 @@
+ #include <sstream>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include <config.h>
+ 
+diff --git a/gnucash/import-export/csv-imp/gnc-imp-settings-csv.hpp b/gnucash/import-export/csv-imp/gnc-imp-settings-csv.hpp
+index 39b48e65ff8..40d8c7009e0 100644
+--- a/gnucash/import-export/csv-imp/gnc-imp-settings-csv.hpp
++++ b/gnucash/import-export/csv-imp/gnc-imp-settings-csv.hpp
+@@ -35,6 +35,7 @@
+ #include <string>
+ #include <vector>
+ #include <optional>
++#include <cstdint>
+ #include <gnc-datetime.hpp>
+ #include "gnc-tokenizer.hpp"
+ 
+diff --git a/gnucash/import-export/csv-imp/gnc-import-price.hpp b/gnucash/import-export/csv-imp/gnc-import-price.hpp
+index 4ada98ca9b0..f0ffa89458e 100644
+--- a/gnucash/import-export/csv-imp/gnc-import-price.hpp
++++ b/gnucash/import-export/csv-imp/gnc-import-price.hpp
+@@ -38,6 +38,7 @@
+ #include <map>
+ #include <memory>
+ #include <optional>
++#include <cstdint>
+ 
+ #include "gnc-tokenizer.hpp"
+ #include "gnc-imp-props-price.hpp"
+diff --git a/gnucash/import-export/csv-imp/gnc-import-tx.hpp b/gnucash/import-export/csv-imp/gnc-import-tx.hpp
+index f2bb4e2765e..e3f7016c5d0 100644
+--- a/gnucash/import-export/csv-imp/gnc-import-tx.hpp
++++ b/gnucash/import-export/csv-imp/gnc-import-tx.hpp
+@@ -39,6 +39,7 @@
+ #include <map>
+ #include <memory>
+ #include <optional>
++#include <cstdint>
+ 
+ #include "gnc-tokenizer.hpp"
+ #include "gnc-imp-props-tx.hpp"
+diff --git a/gnucash/import-export/csv-imp/gnc-tokenizer-fw.hpp b/gnucash/import-export/csv-imp/gnc-tokenizer-fw.hpp
+index e34c55de131..b669eb0af14 100644
+--- a/gnucash/import-export/csv-imp/gnc-tokenizer-fw.hpp
++++ b/gnucash/import-export/csv-imp/gnc-tokenizer-fw.hpp
+@@ -43,6 +43,7 @@
+ #include <fstream>      // fstream
+ #include <vector>
+ #include <string>
++#include <cstdint>
+ #include "gnc-tokenizer.hpp"
+ 
+ class GncFwTokenizer : public GncTokenizer
+diff --git a/libgnucash/app-utils/test/test-print-parse-amount.cpp b/libgnucash/app-utils/test/test-print-parse-amount.cpp
+index 1a71d6e729a..842f46594e1 100644
+--- a/libgnucash/app-utils/test/test-print-parse-amount.cpp
++++ b/libgnucash/app-utils/test/test-print-parse-amount.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include <config.h>
+ #include <stdlib.h>
++#include <cstdint>
+ 
+ #include "gnc-ui-util.h"
+ #include "gnc-numeric.h"
+diff --git a/libgnucash/backend/dbi/gnc-dbisqlresult.hpp b/libgnucash/backend/dbi/gnc-dbisqlresult.hpp
+index 8b6aa84188b..34606012689 100644
+--- a/libgnucash/backend/dbi/gnc-dbisqlresult.hpp
++++ b/libgnucash/backend/dbi/gnc-dbisqlresult.hpp
+@@ -26,6 +26,7 @@
+ #define __GNC_DBISQLBACKEND_HPP__
+ 
+ #include <optional>
++#include <cstdint>
+ 
+ #include "gnc-backend-dbi.h"
+ #include <gnc-sql-result.hpp>
+diff --git a/libgnucash/backend/sql/gnc-slots-sql.cpp b/libgnucash/backend/sql/gnc-slots-sql.cpp
+index fd4078c127e..7ab4537c739 100644
+--- a/libgnucash/backend/sql/gnc-slots-sql.cpp
++++ b/libgnucash/backend/sql/gnc-slots-sql.cpp
+@@ -39,6 +39,7 @@
+ 
+ #include <string>
+ #include <sstream>
++#include <cstdint>
+ 
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-sql-column-table-entry.cpp b/libgnucash/backend/sql/gnc-sql-column-table-entry.cpp
+index 979d54d5c70..4d3ad948500 100644
+--- a/libgnucash/backend/sql/gnc-sql-column-table-entry.cpp
++++ b/libgnucash/backend/sql/gnc-sql-column-table-entry.cpp
+@@ -25,6 +25,7 @@
+ #include <qof.h>
+ #include <sstream>
+ #include <iomanip>
++#include <cstdint>
+ #include <gnc-datetime.hpp>
+ #include "gnc-sql-backend.hpp"
+ #include "gnc-sql-object-backend.hpp"
+diff --git a/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp b/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp
+index 19f24595f66..9965025044e 100644
+--- a/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp
++++ b/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp
+@@ -23,6 +23,7 @@
+ #include <glib.h>
+ 
+ #include <config.h>
++#include <cstdint>
+ #include <string.h>
+ #include <unittest-support.h>
+ /* Add specific headers for this class */
+diff --git a/libgnucash/backend/xml/io-gncxml-v2.cpp b/libgnucash/backend/xml/io-gncxml-v2.cpp
+index 76c562c6165..562d685cfdb 100644
+--- a/libgnucash/backend/xml/io-gncxml-v2.cpp
++++ b/libgnucash/backend/xml/io-gncxml-v2.cpp
+@@ -44,6 +44,7 @@
+ #endif
+ #include <zlib.h>
+ #include <errno.h>
++#include <cstdint>
+ 
+ #include "gnc-engine.h"
+ #include "gnc-pricedb-p.h"
+diff --git a/libgnucash/backend/xml/sixtp-dom-generators.cpp b/libgnucash/backend/xml/sixtp-dom-generators.cpp
+index f8de8d29c5f..a949b65a52c 100644
+--- a/libgnucash/backend/xml/sixtp-dom-generators.cpp
++++ b/libgnucash/backend/xml/sixtp-dom-generators.cpp
+@@ -27,6 +27,7 @@
+ #include <config.h>
+ 
+ #include <gnc-date.h>
++#include <cstdint>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp-dom-generators.h"
+diff --git a/libgnucash/engine/gnc-numeric.hpp b/libgnucash/engine/gnc-numeric.hpp
+index b00c36f345d..fb532f263d8 100644
+--- a/libgnucash/engine/gnc-numeric.hpp
++++ b/libgnucash/engine/gnc-numeric.hpp
+@@ -27,6 +27,7 @@
+ #include <iostream>
+ #include <locale>
+ #include <typeinfo> // For std::bad_cast exception
++#include <cstdint>
+ #include "gnc-rational-rounding.hpp"
+ 
+ class GncRational;
+diff --git a/libgnucash/engine/gnc-option-impl.hpp b/libgnucash/engine/gnc-option-impl.hpp
+index 53d010fb3b7..0f144fef1b7 100644
+--- a/libgnucash/engine/gnc-option-impl.hpp
++++ b/libgnucash/engine/gnc-option-impl.hpp
+@@ -50,6 +50,7 @@
+ #include <variant>
+ #include <iostream>
+ #include <limits>
++#include <cstdint>
+ 
+ #include "gnc-option-uitype.hpp"
+ 
+diff --git a/libgnucash/engine/gnc-option.hpp b/libgnucash/engine/gnc-option.hpp
+index a15641a4585..01f58fa0efe 100644
+--- a/libgnucash/engine/gnc-option.hpp
++++ b/libgnucash/engine/gnc-option.hpp
+@@ -42,6 +42,7 @@
+ #include <variant>
+ #include <memory>
+ #include <tuple>
++#include <cstdint>
+ #include "gnc-option-ui.hpp"
+ #include "gnc-option-date.hpp"
+ #include "guid.hpp"
+diff --git a/libgnucash/engine/gnc-optiondb.hpp b/libgnucash/engine/gnc-optiondb.hpp
+index 9bdefed3138..db038a97731 100644
+--- a/libgnucash/engine/gnc-optiondb.hpp
++++ b/libgnucash/engine/gnc-optiondb.hpp
+@@ -38,6 +38,7 @@
+ #include <exception>
+ #include <optional>
+ #include <iostream>
++#include <cstdint>
+ 
+ #include <config.h>
+ #include "Account.h"
+diff --git a/libgnucash/engine/gnc-rational.cpp b/libgnucash/engine/gnc-rational.cpp
+index 33f2741d677..81c44bbdec3 100644
+--- a/libgnucash/engine/gnc-rational.cpp
++++ b/libgnucash/engine/gnc-rational.cpp
+@@ -21,6 +21,7 @@
+  *******************************************************************/
+ 
+ #include <sstream>
++#include <cstdint>
+ #include "gnc-rational.hpp"
+ #include "gnc-numeric.hpp"
+ 
+diff --git a/libgnucash/engine/gncInvoice.c b/libgnucash/engine/gncInvoice.c
+index eb4ab1db8da..15c1cf6959e 100644
+--- a/libgnucash/engine/gncInvoice.c
++++ b/libgnucash/engine/gncInvoice.c
+@@ -29,7 +29,6 @@
+ 
+ #include <config.h>
+ 
+-#include <stdint.h>
+ #include <inttypes.h>
+ #include <glib.h>
+ #include <glib/gi18n.h>
+diff --git a/libgnucash/engine/kvp-frame.cpp b/libgnucash/engine/kvp-frame.cpp
+index 48f80376602..eb390fb0bbf 100644
+--- a/libgnucash/engine/kvp-frame.cpp
++++ b/libgnucash/engine/kvp-frame.cpp
+@@ -27,6 +27,7 @@
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <cstdint>
+ 
+ #include "kvp-value.hpp"
+ #include "kvp-frame.hpp"
+diff --git a/libgnucash/engine/kvp-value.hpp b/libgnucash/engine/kvp-value.hpp
+index 6518dc4e808..0ea80560a0d 100644
+--- a/libgnucash/engine/kvp-value.hpp
++++ b/libgnucash/engine/kvp-value.hpp
+@@ -27,6 +27,7 @@
+ #include <config.h>
+ #include "qof.h"
+ 
++#include <cstdint>
+ #include <boost/variant.hpp>
+ 
+ //Must be a struct because it's exposed to C so that it can in turn be
+diff --git a/libgnucash/engine/qofinstance.cpp b/libgnucash/engine/qofinstance.cpp
+index 1fbe371deec..e2c63d636a9 100644
+--- a/libgnucash/engine/qofinstance.cpp
++++ b/libgnucash/engine/qofinstance.cpp
+@@ -33,6 +33,7 @@
+ #include <config.h>
+ #include <glib.h>
+ 
++#include <cstdint>
+ #include <utility>
+ #include "qof.h"
+ #include "qofbook-p.h"
+diff --git a/libgnucash/engine/test-core/test-engine-stuff.cpp b/libgnucash/engine/test-core/test-engine-stuff.cpp
+index 8dbb440ecec..3baf38f78d8 100644
+--- a/libgnucash/engine/test-core/test-engine-stuff.cpp
++++ b/libgnucash/engine/test-core/test-engine-stuff.cpp
+@@ -47,7 +47,6 @@
+ #include <fcntl.h>
+ #include <glib.h>
+ #include <stdio.h>
+-#include <stdint.h>
+ #include <inttypes.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/libgnucash/engine/test/gtest-gnc-int128.cpp b/libgnucash/engine/test/gtest-gnc-int128.cpp
+index 4f28bdd262d..34a7200b696 100644
+--- a/libgnucash/engine/test/gtest-gnc-int128.cpp
++++ b/libgnucash/engine/test/gtest-gnc-int128.cpp
+@@ -22,6 +22,7 @@
+  *******************************************************************/
+ 
+ #include <gtest/gtest.h>
++#include <cstdint>
+ #include "../gnc-int128.hpp"
+ 
+ TEST(GncInt128_constructors, test_default_constructor)
+diff --git a/libgnucash/engine/test/gtest-gnc-numeric.cpp b/libgnucash/engine/test/gtest-gnc-numeric.cpp
+index 20079e17c87..a38d4b4f258 100644
+--- a/libgnucash/engine/test/gtest-gnc-numeric.cpp
++++ b/libgnucash/engine/test/gtest-gnc-numeric.cpp
+@@ -21,6 +21,7 @@
+ \********************************************************************/
+ 
+ #include <gtest/gtest.h>
++#include <cstdint>
+ #include "../gnc-numeric.hpp"
+ #include "../gnc-rational.hpp"
+ 
+diff --git a/libgnucash/engine/test/gtest-gnc-option.cpp b/libgnucash/engine/test/gtest-gnc-option.cpp
+index 81700ea7019..7894f7c02aa 100644
+--- a/libgnucash/engine/test/gtest-gnc-option.cpp
++++ b/libgnucash/engine/test/gtest-gnc-option.cpp
+@@ -33,6 +33,7 @@
+ #include "gnc-commodity.h"
+ #include "gnc-date.h"
+ #include <time.h>
++#include <cstdint>
+ #include "gnc-session.h"
+ 
+ TEST(GncOption, test_string_ctor)
+diff --git a/libgnucash/engine/test/gtest-gnc-optiondb.cpp b/libgnucash/engine/test/gtest-gnc-optiondb.cpp
+index 1b92ed63c3e..7ee6957de80 100644
+--- a/libgnucash/engine/test/gtest-gnc-optiondb.cpp
++++ b/libgnucash/engine/test/gtest-gnc-optiondb.cpp
+@@ -27,6 +27,7 @@
+ #include "gnc-option-ui.hpp"
+ #include "kvp-value.hpp"
+ #include <glib-2.0/glib.h>
++#include <cstdint>
+ 
+ #include "gnc-session.h"
+ 
+diff --git a/libgnucash/engine/test/gtest-gnc-rational.cpp b/libgnucash/engine/test/gtest-gnc-rational.cpp
+index fa6c2d9224c..c3200ce1e1e 100644
+--- a/libgnucash/engine/test/gtest-gnc-rational.cpp
++++ b/libgnucash/engine/test/gtest-gnc-rational.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include <gtest/gtest.h>
+ #include <random>
++#include <cstdint>
+ #include "../gnc-rational.hpp"
+ #include "../gnc-numeric.hpp" //for RoundType
+ 
+diff --git a/libgnucash/engine/test/gtest-import-map.cpp b/libgnucash/engine/test/gtest-import-map.cpp
+index 8ba2cffe0fb..c5bc31699e7 100644
+--- a/libgnucash/engine/test/gtest-import-map.cpp
++++ b/libgnucash/engine/test/gtest-import-map.cpp
+@@ -28,6 +28,7 @@
+ #include <kvp-frame.hpp>
+ #include <gtest/gtest.h>
+ #include <string>
++#include <cstdint>
+ 
+ class ImapTest : public testing::Test
+ {
+diff --git a/libgnucash/engine/test/test-kvp-frame.cpp b/libgnucash/engine/test/test-kvp-frame.cpp
+index 9746f1482ff..7ef40db9afd 100644
+--- a/libgnucash/engine/test/test-kvp-frame.cpp
++++ b/libgnucash/engine/test/test-kvp-frame.cpp
+@@ -27,6 +27,7 @@
+ #include "../kvp-frame.hpp"
+ #include <gtest/gtest.h>
+ #include <algorithm>
++#include <cstdint>
+ 
+ class KvpFrameTest : public ::testing::Test
+ {
+diff --git a/libgnucash/engine/test/test-kvp-value.cpp b/libgnucash/engine/test/test-kvp-value.cpp
+index 8f719d7a7ae..4d9d6c0d18c 100644
+--- a/libgnucash/engine/test/test-kvp-value.cpp
++++ b/libgnucash/engine/test/test-kvp-value.cpp
+@@ -28,6 +28,7 @@
+ #include "../kvp-frame.hpp"
+ #include "../gnc-date.h"
+ #include <memory>
++#include <cstdint>
+ #include <gtest/gtest.h>
+ 
+ TEST (KvpValueTest, Equality)

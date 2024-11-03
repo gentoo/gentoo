@@ -120,6 +120,9 @@ PATCHES=(
 	# This is only to prevent webkit2gtk-4 from being selected.
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
+
+	# GCC 15 backport
+	"${FILESDIR}/${PN}-5.8-gcc15.patch"
 )
 
 pkg_setup() {
