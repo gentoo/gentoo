@@ -1,0 +1,32 @@
+From 180c1d1ef0c0ef12e0c56adfe10c7779dff3b55f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 3 Nov 2024 16:35:54 +0100
+Subject: [PATCH] Revert "Corrected passing TIFF_LONG to libtiff"
+
+This is the wrong solution to the problem at hand, and results
+in passing an int64_t where libtiff expects uint32_t.  This seems
+to miraculously work on most of our platforms but it is clearly wrong,
+and it breaks ppc32.
+
+Bug: https://github.com/python-pillow/Pillow/issues/8522
+Reverts: b1b0353d17bcdca99cfcb2ea48c6af7861fb43ba
+---
+ src/encode.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/encode.c b/src/encode.c
+index 1a4cd489d..ba350c39a 100644
+--- a/src/encode.c
++++ b/src/encode.c
+@@ -929,7 +929,7 @@ PyImaging_LibTiffEncoderNew(PyObject *self, PyObject *args) {
+                 );
+             } else if (type == TIFF_LONG) {
+                 status = ImagingLibTiffSetField(
+-                    &encoder->state, (ttag_t)key_int, PyLong_AsLongLong(value)
++                    &encoder->state, (ttag_t)key_int, (UINT32)PyLong_AsLong(value)
+                 );
+             } else if (type == TIFF_SSHORT) {
+                 status = ImagingLibTiffSetField(
+-- 
+2.47.0
+
