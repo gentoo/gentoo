@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-03)
+# Vendors an unreleased libbpf version and announces incorrect version.
+# Please downgrade to 7.4.0. Removal on 2024-12-03.
+=dev-util/bpftool-7.5.0-r1
+
 # David Seifert <soap@gentoo.org> (2024-11-03)
 # Bug ridden package, extremely brittle build system, lots of QA issues,
 # terrible license, no other linux distro still packages this.
@@ -165,7 +170,7 @@ dev-ruby/io-event:1.3
 
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
-# Bug #941185.
+# Bug #941185. Removal on 2024-12-03.
 =dev-util/bpftool-7.5.0-r2
 
 # Michał Górny <mgorny@gentoo.org> (2024-10-10)
