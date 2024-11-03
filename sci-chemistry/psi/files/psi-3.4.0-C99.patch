@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/886127
+
+--- a/src/lib/libipv1/parse.y
++++ b/src/lib/libipv1/parse.y
+@@ -1,6 +1,7 @@
+ %{
+ #include <stdio.h>
+ #include <tmpl.h>
++#include "ip_error.gbl"
+ #include "ip_types.h"
+ #include "ip_read.gbl"
+ %}
+--- a/src/lib/libipv1/scan.l
++++ b/src/lib/libipv1/scan.l
+@@ -1,6 +1,7 @@
+ %{
+ #include <string.h>
+ #include <tmpl.h>
++#include "ip_error.gbl"
+ #include "ip_types.h"
+ #include "ip_global.h"
+ #include "scan.gbl"

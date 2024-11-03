@@ -1,13 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Suite for ab initio quantum chemistry computing various molecular properties"
 HOMEPAGE="http://www.psicode.org/"
 SRC_URI="https://downloads.sourceforge.net/psicode/${P}.tar.gz"
+S="${WORKDIR}/${PN}${PV:0:1}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,8 +28,6 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
-S="${WORKDIR}/${PN}${PV:0:1}"
-
 PATCHES=(
 	"${FILESDIR}"/${PV}-dont-build-libint.patch
 	"${FILESDIR}"/use-external-libint.patch
@@ -41,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-fortify.patch
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-perl-File-Temp.patch
+	"${FILESDIR}"/${P}-C99.patch
 )
 
 src_prepare() {
