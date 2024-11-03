@@ -18,7 +18,7 @@ S="${WORKDIR}/bc-java-${MY_PV}/pkix"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ppc64"
 
 # 1) testSANMismatchIP(org.bouncycastle.est.test.TestHostNameAuthorizer)
 # org.bouncycastle.est.ESTException: localhost.me: Temporary failure in name resolution HTTP Status Code: 0
