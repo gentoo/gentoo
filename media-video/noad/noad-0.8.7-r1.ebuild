@@ -1,9 +1,9 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools
 
 DESCRIPTION="Mark commercial breaks in VDR recordings"
 HOMEPAGE="https://github.com/madmartin/noad"
