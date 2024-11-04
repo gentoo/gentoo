@@ -110,6 +110,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4-gcc15.patch
+	"${FILESDIR}"/${PN}-1.4-poppler-24.10-fix-backport.patch
 )
 
 pkg_pretend() {
