@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+GA_METHOD=${GA_METHOD:-virtio-serial}
+GA_PATH=${GA_PATH:-/dev/virtio-ports/org.qemu.guest_agent.0}
+
+description="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
+command="/usr/bin/qemu-ga"
+pidfile="/run/qemu-ga.pid"
+command_args="-m ${GA_METHOD} -p ${GA_PATH} -l /var/log/qemu-ga.log -d -f ${pidfile} -t /run ${GA_OPTIONS}"

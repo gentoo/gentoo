@@ -84,7 +84,7 @@ src_install() {
 	dobin build/qga/qemu-ga
 
 	# Normal init stuff
-	newinitd "${FILESDIR}/qemu-ga.init-r1" qemu-guest-agent
+	newinitd "${FILESDIR}/qemu-ga.init-r2" qemu-guest-agent
 	newconfd "${FILESDIR}/qemu-ga.conf-r1" qemu-guest-agent
 
 	insinto /etc/logrotate.d
