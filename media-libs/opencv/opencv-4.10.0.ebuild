@@ -66,7 +66,7 @@ LICENSE="Apache-2.0"
 SLOT="0/${PV}" # subslot = libopencv* soname version
 
 # general options
-IUSE="debug doc +eigen gflags glog java non-free opencvapps +python test testprograms"
+IUSE="debug doc +eigen gflags glog java non-free opencvapps python test testprograms"
 
 # modules
 IUSE+=" contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d dnnsamples examples +features2d"
