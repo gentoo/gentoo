@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 KFMIN=5.115.0
 QTMIN=5.15.12
 inherit python-single-r1 ecm gear.kde.org
