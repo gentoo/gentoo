@@ -310,6 +310,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-dnn-explicitly-include-abseil-cpp.patch"
 	"${FILESDIR}/${PN}-4.10.0-cudnn-9.patch" # 25841
 	"${FILESDIR}/${PN}-4.10.0-cuda-fp16.patch" # 25880
+	"${FILESDIR}/${PN}-4.10.0-26234.patch" # 26234
 	"${FILESDIR}/${PN}-4.10.0-tbb-detection.patch"
 
 	# TODO applied in src_prepare
