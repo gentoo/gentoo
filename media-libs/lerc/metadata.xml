@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person" proxied="yes">
+        <email>thomas.bettler@gmail.com</email>
+        <name>Thomas Bettler</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email> 
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>codec@gentoo.org</email>
+        <name>Gentoo Codec Project</name>
+    </maintainer>
+    <longdescription>
+        Limited Error Raster Compression (LERC) supports rapid encoding and decoding
+        for any pixel type (not just RGB or Byte). Users set the maximum compression
+        error per pixel while encoding, so the precision of the original input image
+        is preserved (within user defined error bounds).
+    </longdescription>
+    <upstream>
+        <remote-id type="github">esri/lerc</remote-id>
+    </upstream>
+</pkgmetadata>
