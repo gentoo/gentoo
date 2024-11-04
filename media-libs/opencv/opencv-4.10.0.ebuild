@@ -259,7 +259,16 @@ COMMON_DEPEND="
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	v4l? ( >=media-libs/libv4l-0.8.3[${MULTILIB_USEDEP}] )
 	vaapi? ( media-libs/libva[${MULTILIB_USEDEP}] )
-	vtk? ( sci-libs/vtk:=[rendering,cuda=] )
+	vtk? (
+		sci-libs/vtk:=[rendering,cuda=]
+		|| (
+			(
+				sci-libs/vtk[opencascade(+)]
+				sci-libs/opencascade[-ffmpeg]
+			)
+			sci-libs/vtk[-opencascade(-)]
+		)
+	)
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	xine? ( media-libs/xine-lib )
 "
