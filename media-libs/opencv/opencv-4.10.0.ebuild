@@ -371,8 +371,9 @@ cuda_get_host_compiler() {
 }
 
 cuda_get_host_native_arch() {
-	: "${CUDAARCHS:=$(__nvcc_device_query)}"
-	echo "${CUDAARCHS}"
+	[[ -n ${CUDAARCHS} ]] && echo "${CUDAARCHS}"
+
+	__nvcc_device_query || die "failed to query the native device"
 }
 
 pkg_pretend() {
@@ -385,6 +386,7 @@ pkg_pretend() {
 		einfo "The CUDA architecture tuple for your device can be found at https://developer.nvidia.com/cuda-gpus."
 	fi
 
+	# When building binpkgs you probably want to include all targets
 	if use cuda && [[ ${MERGE_TYPE} == "buildonly" ]] && [[ -n "${CUDA_GENERATION}" || -n "${CUDA_ARCH_BIN}" ]]; then
 		local info_message="When building a binary package it's recommended to unset CUDA_GENERATION and CUDA_ARCH_BIN"
 		einfo "$info_message so all available architectures are build."
@@ -396,6 +398,13 @@ pkg_pretend() {
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	use java && java-pkg-opt-2_pkg_setup
+
+	if use cuda && [[ ! -e /dev/nvidia-uvm ]]; then
+		# NOTE We try to load nvidia-uvm and nvidia-modeset here,
+		# so __nvcc_device_query does not fail later.
+
+		nvidia-modprobe -m -u -c 0 || true
+	fi
 }
 
 src_prepare() {
@@ -774,10 +783,22 @@ multilib_src_configure() {
 		cuda_add_sandbox -w
 		addwrite "/proc/self/task"
 
+		if ! test -w /dev/nvidiactl; then
+			# eqawarn "Can't access the GPU at /dev/nvidiactl."
+			# eqawarn "User $(id -nu) is not in the group \"video\"."
+			if [[ -z "${CUDA_GENERATION}" ]] && [[ -z "${CUDA_ARCH_BIN}" ]]; then
+				# build all targets
+				mycmakeargs+=(
+					-DCUDA_GENERATION=""
+				)
+			fi
+		else
+			local -x CUDAARCHS
+			: "${CUDAARCHS:="$(cuda_get_host_native_arch)"}"
+		fi
+
 		local -x CUDAHOSTCXX CUDAHOSTLD
 		CUDAHOSTCXX="$(cuda_get_host_compiler)"
-		CUDAARCHS="$(cuda_get_host_native_arch)"
-		export CUDAARCHS
 		CUDAHOSTLD="$(tc-getCXX)"
 
 		if tc-is-gcc; then
