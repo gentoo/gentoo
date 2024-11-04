@@ -495,6 +495,9 @@ src_prepare() {
 		cli/runArgument.dfy
 		comp/CoverageReport.dfy
 		comp/Libraries/consumer.dfy
+		comp/compile1quiet/CompileRunQuietly.dfy
+		comp/compile1verbose/CompileAndThenRun.dfy
+		comp/compile3/JustRun.dfy
 		concurrency/06-ThreadOwnership.dfy
 		concurrency/09-CounterNoStateMachine.dfy
 		dafny0/CoinductiveProofs.dfy
@@ -532,6 +535,7 @@ src_prepare() {
 		server/counterexample_none.transcript
 		triggers/emptyTrigger.dfy
 		unicodecharsFalse/DafnyTests/RunAllTestsOption.dfy
+		unicodecharsFalse/comp/CompileWithArguments.dfy
 		unicodecharsFalse/comp/Print.dfy
 		verification/isolate-assertions.dfy
 		verification/outOfResourceAndIsolateAssertions.dfy
