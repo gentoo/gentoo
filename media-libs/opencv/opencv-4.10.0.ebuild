@@ -9,6 +9,10 @@ inherit cuda java-pkg-opt-2 cmake-multilib flag-o-matic multilib multiprocessing
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
 
+# TODO
+# - dnn: move module from opencv_contrib
+#   https://github.com/opencv/opencv/commit/93729784bb1c4e544e07ec27a43ef57c4f456cec
+
 if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -453,7 +457,7 @@ src_prepare() {
 		cd "${S}" || die
 
 		! use contribcvv && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/cvv" || die; }
-		# ! use contribdnn && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/dnn" || die; }
+		! use contribdnn && { rm -R "${S}/modules/dnn" || die; }
 		! use contribfreetype && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/freetype" || die; }
 		! use contribhdf && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/hdf" || die; }
 		! use contribovis && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/ovis" || die; }
@@ -802,10 +806,16 @@ multilib_src_configure() {
 	# ===================================================
 	# OpenCV Contrib Modules
 	# ===================================================
+	# NOTE
+	# we remove unused modules,
+	# so we shouldn't need to disable options for unused modules
 	if use contrib; then
 		mycmakeargs+=(
 			-DBUILD_opencv_cvv="$(usex contribcvv)"
 			-DBUILD_opencv_dnn="$(usex contribdnn)"
+			-DOPENCV_DNN_OPENCL="$(usex opencl)"
+			-DOPENCV_DNN_CUDA="$(multilib_native_usex cudnn)"
+
 			-DBUILD_opencv_freetype="$(usex contribfreetype)"
 			-DBUILD_opencv_hdf="$(multilib_native_usex contribhdf)"
 			-DBUILD_opencv_ovis="$(usex contribovis)"
