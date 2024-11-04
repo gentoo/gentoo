@@ -137,7 +137,6 @@ BDEPEND="
 	')
 	elibc_musl? ( >=sys-libs/musl-1.2.5 )
 	virtual/pkgconfig
-	virtual/rust
 	verify-sig? ( >=sec-keys/openpgp-keys-kentoverstreet-20241012 )
 "
 

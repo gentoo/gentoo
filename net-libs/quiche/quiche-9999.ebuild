@@ -195,6 +195,10 @@ windows-targets@0.52.5
 ws2_32-sys@0.2.1
 "
 
+RUST_USEDEP='${MULTILIB_USEDEP}'
+
+inherit multilib-minimal cargo cmake flag-o-matic rust-toolchain
+
 inherit cargo cmake flag-o-matic rust-toolchain multilib-minimal
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
@@ -225,7 +229,6 @@ IUSE=""
 DOCS=( COPYING README.md )
 
 BDEPEND="
-	>=virtual/rust-1.66.0[${MULTILIB_USEDEP}]
 	dev-build/cmake
 "
 DEPEND=""

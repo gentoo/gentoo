@@ -239,7 +239,7 @@ x11-misc/xscreensaver gdm
 >=media-libs/libheif-1.10.0 rav1e
 
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no ${arch} keyword
+# Rust has no ${arch} keyword
 dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
@@ -253,7 +253,7 @@ media-libs/gd avif
 net-libs/webkit-gtk avif
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# ${arch} has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+# ${arch} has no Rust support, needed by newer gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)

@@ -667,5 +667,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "Dafny GO language backend" dev-go/go-tools
-	optfeature "Dafny Rust language backend" virtual/rust
+	optfeature "Dafny Rust language backend" dev-lang/rust dev-lang/rust-bin
 }

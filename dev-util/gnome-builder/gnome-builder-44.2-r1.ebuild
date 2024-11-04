@@ -114,7 +114,7 @@ that are currently available with packages include:
   autocompletion support.
 * dev-debug/valgrind for integration with valgrind.
 * dev-build/meson for integration with the Meson build system.
-* virtual/rust for integration with the Rust Cargo build system.
+* dev-lang/rust{,-bin} for integration with the Rust Cargo build system.
 * dev-build/cmake for integration with the CMake build system.
 * net-libs/nodejs[npm] for integration with the NPM package system.
 '
@@ -272,7 +272,7 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	optfeature_header "Language support"
-	optfeature "Rust's Cargo build system" virtual/rust
+	optfeature "Rust's Cargo build system" dev-lang/rust dev-lang/rust-bin
 	optfeature "CMake" dev-build/cmake
 	optfeature "Java Maven build system" dev-java/maven-bin
 	optfeature "Meson Build system" dev-build/meson

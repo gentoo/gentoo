@@ -176,8 +176,9 @@ declare -A GIT_CRATES=(
 	[onig_sys]="https://github.com/rust-onig/rust-onig;fa90c0e97e90a056af89f183b23cd417b59ee6a2;rust-onig-%commit%/onig_sys"
 )
 
-LLVM_MAX_SLOT=17
-inherit cargo llvm
+LLVM_COMPAT=( 17 )
+
+inherit cargo llvm-r1
 
 DESCRIPTION="GNU findutils rewritten in Rust"
 HOMEPAGE="https://uutils.github.io/findutils/ https://github.com/uutils/findutils"
@@ -208,8 +209,9 @@ fi
 RDEPEND=">=dev-libs/oniguruma-6.9.9:="
 DEPEND="${RDEPEND}"
 BDEPEND="
-	<sys-devel/clang-$((LLVM_MAX_SLOT + 1))
-	>=virtual/rust-1.56.0
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+	')
 "
 
 QA_FLAGS_IGNORED=".*"
@@ -217,6 +219,11 @@ QA_FLAGS_IGNORED=".*"
 PATCHES=(
 	"${WORKDIR}"/${PN}-0.4.2-update-crates.patch
 )
+
+pkg_setup() {
+	llvm-r1_pkg_setup
+	rust_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then

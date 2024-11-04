@@ -181,7 +181,6 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	dev-build/cmake
-	>=virtual/rust-1.37.0
 "
 
 src_prepare() {

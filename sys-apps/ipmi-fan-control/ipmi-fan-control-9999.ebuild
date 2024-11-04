@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/chenxiaolong/${PN}"
 else
 	SRC_URI="https://github.com/chenxiaolong/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		$(cargo_crate_uris)"
+		${CARGO_CRATE_URIS}"
 	# supported boards are x86_64 only, do not keyword elsewhere
 	# technically it could run on remote host and issue commands via ipmitool lanplus, but that's very edgy case
 	KEYWORDS="-* ~amd64"

@@ -6,6 +6,6 @@
   <name>Matthew Smith</name>
 </maintainer>
 <upstream>
-  <remote-id type="github">googleprojectzero/weggli</remote-id>
+  <remote-id type="github">weggli-rs/weggli</remote-id>
 </upstream>
 </pkgmetadata>

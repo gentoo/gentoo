@@ -3,6 +3,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.80.1"
+
 inherit cargo edo shell-completion
 
 DESCRIPTION="A command line tool for bug, issue, and ticket mangling"
@@ -15,7 +17,6 @@ IUSE="openssl static test"
 RESTRICT="!test? ( test ) "
 
 BDEPEND="
-	>=virtual/rust-1.80
 	openssl? (
 		!static? ( dev-libs/openssl:= )
 		static? ( dev-libs/openssl:=[static-libs] )

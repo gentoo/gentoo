@@ -8,6 +8,8 @@ CRATES="
 
 MY_PV="${PV//_rc/-rc}"
 
+RUST_MIN_VER="1.74.1"
+
 inherit bash-completion-r1 cargo desktop
 
 DESCRIPTION="GPU-accelerated terminal emulator"
@@ -21,6 +23,7 @@ else
 		${CARGO_CRATE_URIS}"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="Apache-2.0"
 # Dependent crate licenses
@@ -58,13 +61,10 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	dev-build/cmake
-	>=virtual/rust-1.70.0
 	app-text/scdoc
 "
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then

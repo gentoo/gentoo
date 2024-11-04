@@ -5,7 +5,9 @@ EAPI=8
 
 CRATES=" "
 LLVM_COMPAT=( {17..18} )
-inherit edo cargo llvm-r1
+RUST_MIN_VER="1.77.1"
+
+inherit edo llvm-r1 cargo
 
 DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -35,9 +37,13 @@ BDEPEND="
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
 	')
-	>=virtual/rust-1.76
 	test? ( dev-util/cargo-nextest )
 "
+
+pkg_setup() {
+	llvm-r1_pkg_setup
+	rust_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
