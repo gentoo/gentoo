@@ -1,0 +1,89 @@
+From 4bbc2ec941fcca8525af30964e8683498b65de62 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 3 Nov 2024 20:32:28 -0500
+Subject: [PATCH 1/2] Configure: replace `which foo` by $(command -v foo)
+
+The POSIX "command -v" is a more portable way to get the path to an
+executable than "which". The latter is non-standard and typically
+requires an extra package to be installed. Similarly, $(bar) is a
+superior alternative to `bar`. Unless you have a shell from the 1980s,
+both are portable, but the $() syntax is much more amenable to nesting
+and quoting.
+
+References:
+
+ * https://pubs.opengroup.org/onlinepubs/9799919799.2024edition/utilities/command.html
+ * http://mywiki.wooledge.org/BashFAQ/082
+---
+ Configure | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/Configure b/Configure
+index 53b556e..a08fe08 100755
+--- a/Configure
++++ b/Configure
+@@ -12,7 +12,7 @@ VARPREFIX=${VARPREFIX:-"/var"}
+ 
+ FILE="Makefile.new"
+ CONFIG="config.h"
+-RM=`which \rm`
++RM=$(command -v rm)
+ if [ -z "$RM" ];
+ then
+ echo "**ERROR**: Could not find rm"; exit;
+@@ -25,19 +25,19 @@ echo "#define VARPREFIX \"$VARPREFIX\"" >> $CONFIG
+ echo "#define VERSION \"$VERSION\"" >> $CONFIG
+ echo "VERSION = $VERSION" >> $FILE
+ 
+-GREP=`which \grep`
++GREP=$(command -v grep)
+ if [ -z "$GREP" ];
+ then
+ echo "*WARNING*: Could not find grep --- will not be able to build new_data"
+ fi
+ 
+-GP=`which \gp`
++GP=$(command -v gp)
+ if [ -z "$GP" ];
+ then
+ echo "*WARNING*: Could not find gp --- will not be able to build new_data"
+ fi
+ 
+-SED=`which \sed` && echo "SED = $SED" >> $FILE
++SED=$(command -v sed) && echo "SED = $SED" >> $FILE
+ if [ -z "$SED" ];
+ then
+ echo "*WARNING*: Could not find sed --- will not be able to build new_data"
+@@ -75,7 +75,7 @@ export CC
+ ##echo "**ERROR**: Could not find uname"; exit;
+ ##fi
+ 
+-HELP2MAN=`which \help2man` && echo "HELP2MAN = $HELP2MAN" >> $FILE
++HELP2MAN=$(command -v help2man) && echo "HELP2MAN = $HELP2MAN" >> $FILE
+ if [ -z "$HELP2MAN" ];
+ then
+ echo "**ERROR**: Could not find help2man"; exit;
+@@ -284,17 +284,17 @@ df="datafiles"
+ echo "DATAFILES = $df/*M.txt $df/*S.txt $df/param_data" >> $FILE
+ 
+ echo "RM = $RM" >> $FILE
+-CP=`which \cp` && echo "CP = $CP" >> $FILE
++CP=$(command -v cp) && echo "CP = $CP" >> $FILE
+ if [ -z "$CP" ];
+ then
+ echo "**ERROR**: Could not find cp"; exit;
+ fi
+-MKDIR=`which \mkdir` && echo "MKDIR = $MKDIR" >> $FILE
++MKDIR=$(command -v mkdir) && echo "MKDIR = $MKDIR" >> $FILE
+ if [ -z "$MKDIR" ];
+ then
+ echo "**ERROR**: Could not find mkdir"; exit;
+ fi
+-TOUCH=`which \touch` && echo "TOUCH = $TOUCH" >> $FILE
++TOUCH=$(command -v touch) && echo "TOUCH = $TOUCH" >> $FILE
+ if [ -z "$TOUCH" ];
+ then
+ echo "**ERROR**: Could not find touch"; exit;
+-- 
+2.47.0
+
