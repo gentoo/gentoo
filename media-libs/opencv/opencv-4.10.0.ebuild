@@ -168,6 +168,7 @@ REQUIRED_USE="
 	contribxfeatures2d? ( contrib )
 	java? ( python )
 	opengl? ( qt6 )
+	jasper? ( !abi_x86_32 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )
 	?? ( gtk3 qt6 )
@@ -567,9 +568,9 @@ multilib_src_configure() {
 		-DWITH_GTK="$(usex gtk3)"
 		-DWITH_GTK_2_X="no" # only want gtk3 nowadays
 		-DWITH_IPP="no"
-		-DWITH_JASPER="$(multilib_native_usex jasper)"
+		-DWITH_JASPER="$(usex jpeg2k "$(multilib_native_usex jasper)")"
 		-DWITH_JPEG="$(usex jpeg)"
-		-DWITH_OPENJPEG="$(usex jpeg2k)"
+		-DWITH_OPENJPEG="$(usex jpeg2k "$(multilib_native_usex !jasper)")"
 		-DWITH_WEBP="$(usex webp)"
 		-DWITH_OPENEXR="$(multilib_native_usex openexr)"
 		-DWITH_OPENGL="$(usex opengl)"
