@@ -168,6 +168,7 @@ lash - Add LASH Audio Session Handler support
 latex - Add support for LaTeX (typesetting package)
 lcms - Add lcms support (color management engine)
 ldap - Add LDAP support (Lightweight Directory Access Protocol)
+lerc - Add LERC suppport (Limited Error Raster Compression)
 libass - SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
