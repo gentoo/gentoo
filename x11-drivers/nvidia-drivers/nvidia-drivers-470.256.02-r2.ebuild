@@ -7,30 +7,26 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.11
+MODULES_KERNEL_MAX=6.9
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/"
 SRC_URI="
-	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
-	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
+	${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run
 	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
-	${NV_URI}NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-${PV}.tar.xz
 "
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
 S=${WORKDIR}
 
-LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
+LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* amd64 ~arm64"
-IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
-REQUIRED_USE="kernel-open? ( modules )"
+KEYWORDS="-* amd64"
+IUSE="+X abi_x86_32 abi_x86_64 persistenced +static-libs +tools"
 
 COMMON_DEPEND="
 	acct-group/video
-	X? ( x11-libs/libpciaccess )
 	persistenced? (
 		acct-user/nvpd
 		net-libs/libtirpc:=
@@ -51,18 +47,11 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-libs/openssl:0/3
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
-	)
-	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
-	wayland? (
-		gui-libs/egl-gbm
-		>=gui-libs/egl-wayland-1.1.10
-		media-libs/libglvnd
 	)
 "
 DEPEND="
@@ -89,10 +78,11 @@ BDEPEND="
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
-	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
+	"${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
+	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
+	"${FILESDIR}"/nvidia-settings-390.144-no-gtk2.patch
 	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
-	"${FILESDIR}"/nvidia-settings-530.30.02-desktop.patch
 )
 
 pkg_setup() {
@@ -102,14 +92,15 @@ pkg_setup() {
 		PROC_FS
 		~DRM_KMS_HELPER
 		~SYSVIPC
+		~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
+		~!X86_KERNEL_IBT
 		!DEBUG_MUTEXES
-		$(usev powerd '~CPU_FREQ')
 	"
 
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
-	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
+	of drivers (no custom config), and for nvidia-drm.modeset=1 if used.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
@@ -118,14 +109,8 @@ pkg_setup() {
 	this *could* lead to modules load failure with ENDBR errors, or to
 	broken CUDA/NVENC. Please ignore if not having issues, but otherwise
 	try to unset or pass ibt=off to the kernel's command line." #911142
-	use kernel-open || CONFIG_CHECK+=" ~!X86_KERNEL_IBT"
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
-
-	use kernel-open && CONFIG_CHECK+=" MMU_NOTIFIER" #843827
-	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
-	Cannot be directly selected in the kernel's menuconfig, and may need
-	selection of another option that requires it such as CONFIG_KVM."
 
 	linux-mod-r1_pkg_setup
 }
@@ -136,46 +121,33 @@ src_prepare() {
 	rm nvidia-persistenced && mv nvidia-persistenced{-${PV},} || die
 	rm nvidia-settings && mv nvidia-settings{-${PV},} || die
 	rm nvidia-xconfig && mv nvidia-xconfig{-${PV},} || die
-	mv NVIDIA-kernel-module-source-${PV} kernel-module-source || die
 
 	default
 
-	kernel_is -ge 6 7 &&
-		eapply "${FILESDIR}"/nvidia-drivers-535.43.22-kernel-6.7.patch
-
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
-		-i kernel{,-module-source/kernel-open}/conftest.sh || die
+		-i kernel/conftest.sh || die
 
-	# adjust service files
 	sed 's/__USER__/nvpd/' \
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
-	use !powerd || # file is missing on arm64 (masked)
-		sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
-
-	# use alternative vulkan icd option if USE=-X (bug #909181)
-	use X || sed -i 's/"libGLX/"libEGL/' nvidia_{layers,icd}.json || die
-
-	# enable nvidia-drm.modeset=1 by default with USE=wayland
-	cp "${FILESDIR}"/nvidia-470.conf "${T}"/nvidia.conf || die
-	use !wayland || sed -i '/^#.*modeset=1$/s/^#//' "${T}"/nvidia.conf || die
-
-	# makefile attempts to install wayland library even if not built
-	use wayland || sed -i 's/ WAYLAND_LIB_install$//' \
-		nvidia-settings/src/Makefile || die
-
-	# temporary option, nvidia will remove in the future
-	use !kernel-open ||
-		sed -i '/blacklist/a\
-\
-# Enable using kernel-open with workstation GPUs (experimental)\
-options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' "${T}"/nvidia.conf || die
 }
 
 src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
+
+	# latest branches has proper fixes, but legacy have more issues and are
+	# not worth the trouble, so doing the lame "fix" for gcc14 (bug #921370)
+	# TODO: check if still needed on bumps given this branch is supported,
+	# and reminder to cleanup the CC="${KERNEL_CC}" in modargs if removing
+	local noerr=(
+		-Wno-error=implicit-function-declaration
+		-Wno-error=incompatible-pointer-types
+	)
+	# not *FLAGS to ensure it's used everywhere including conftest.sh
+	CC+=" $(test-flags-CC "${noerr[@]}")"
+	use modules && KERNEL_CC+=" $(CC=${KERNEL_CC} test-flags-CC "${noerr[@]}")"
 
 	local xnvflags=-fPIC #840389
 	# lto static libraries tend to cause problems without fat objects
@@ -185,40 +157,23 @@ src_compile() {
 		PREFIX="${EPREFIX}"/usr
 		HOST_CC="$(tc-getBUILD_CC)"
 		HOST_LD="$(tc-getBUILD_LD)"
-		BUILD_GTK2LIB=
 		NV_USE_BUNDLED_LIBJANSSON=0
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
-		WAYLAND_AVAILABLE=$(usex wayland 1 0)
 		XNVCTRL_CFLAGS="${xnvflags}"
 	)
 
-	if use modules; then
-		local o_cflags=${CFLAGS} o_cxxflags=${CXXFLAGS} o_ldflags=${LDFLAGS}
+	local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=video:kernel )
+	local modargs=(
+		CC="${KERNEL_CC}" # for the above gcc14 workarounds
+		IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
+		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
+	)
 
-		local modlistargs=video:kernel
-		if use kernel-open; then
-			modlistargs+=-module-source:kernel-module-source/kernel-open
-
-			# environment flags are normally unused for modules, but nvidia
-			# uses it for building the "blob" and it is a bit fragile
-			filter-flags -fno-plt #912949
-			filter-lto
-			CC=${KERNEL_CC} CXX=${KERNEL_CXX} strip-unsupported-flags
-		fi
-
-		local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=${modlistargs} )
-		local modargs=(
-			IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
-			SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
-		)
-
-		# temporary workaround for bug #914468
+	# temporary workaround for bug #914468
+	use modules &&
 		CPP="${KERNEL_CC} -E" tc-is-clang && addpredict "${KV_OUT_DIR}"
 
-		linux-mod-r1_src_compile
-		CFLAGS=${o_cflags} CXXFLAGS=${o_cxxflags} LDFLAGS=${o_ldflags}
-	fi
-
+	linux-mod-r1_src_compile
 	emake "${NV_ARGS[@]}" -C nvidia-modprobe
 	use persistenced && emake "${NV_ARGS[@]}" -C nvidia-persistenced
 	use X && emake "${NV_ARGS[@]}" -C nvidia-xconfig
@@ -228,9 +183,7 @@ src_compile() {
 		CFLAGS="-Wno-deprecated-declarations ${CFLAGS}" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
-		# pretend GTK+3 is available, not actually used (bug #880879)
-		emake "${NV_ARGS[@]}" BUILD_GTK3LIB=1 \
-			-C nvidia-settings/src out/libXNVCtrl.a
+		emake "${NV_ARGS[@]}" -C nvidia-settings/src out/libXNVCtrl.a
 	fi
 }
 
@@ -244,9 +197,7 @@ src_install() {
 		[CUDA_ICD]=/etc/OpenCL/vendors
 		[EGL_EXTERNAL_PLATFORM_JSON]=/usr/share/egl/egl_external_platform.d
 		[FIRMWARE]=/lib/firmware/nvidia/${PV}
-		[GBM_BACKEND_LIB_SYMLINK]=/usr/${libdir}/gbm
 		[GLVND_EGL_ICD_JSON]=/usr/share/glvnd/egl_vendor.d
-		[OPENGL_DATA]=/usr/share/nvidia
 		[VULKAN_ICD_JSON]=/usr/share/vulkan
 		[WINE_LIB]=/usr/${libdir}/nvidia/wine
 		[XORG_OUTPUTCLASS_CONFIG]=/usr/share/X11/xorg.conf.d
@@ -257,24 +208,21 @@ src_install() {
 	)
 
 	local skip_files=(
-		$(usev !X "libGLX_nvidia libglxserver_nvidia")
-		$(usev !wayland libnvidia-vulkan-producer)
+		$(usev !X "libGLX_nvidia libglxserver_nvidia libnvidia-ifr")
 		libGLX_indirect # non-glvnd unused fallback
-		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
-		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
-		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
-		libnvidia-pkcs11.so # using the openssl3 version instead
+		libnvidia-gtk nvidia-{settings,xconfig} # built from source
+		# skip wayland-related files, largely broken with 470 at this point
+		libnvidia-egl-wayland 10_nvidia_wayland libnvidia-vulkan-producer
 	)
 	local skip_modules=(
 		$(usev !X "nvfbc vdpau xdriver")
 		$(usev !modules gsp)
-		$(usev !powerd powerd)
 		installer nvpd # handled separately / built from source
 	)
 	local skip_types=(
 		GLVND_LIB GLVND_SYMLINK EGL_CLIENT.\* GLX_CLIENT.\* # media-libs/libglvnd
 		OPENCL_WRAPPER.\* # virtual/opencl
-		DOCUMENTATION DOT_DESKTOP .\*_SRC DKMS_CONF SYSTEMD_UNIT # handled separately / unused
+		DOCUMENTATION DOT_DESKTOP .\*_SRC DKMS_CONF # handled separately / unused
 	)
 
 	local DOCS=(
@@ -317,7 +265,7 @@ documentation that is installed alongside this README."
 		linux-mod-r1_src_install
 
 		insinto /etc/modprobe.d
-		doins "${T}"/nvidia.conf
+		newins "${FILESDIR}"/nvidia-470.conf nvidia.conf
 
 		# used for gpu verification with binpkgs (not kept, see pkg_preinst)
 		insinto /usr/share/nvidia
@@ -368,14 +316,11 @@ documentation that is installed alongside this README."
 				gzip -dc ${m[0]} | newman - ${m[0]%.gz}; assert
 				continue
 			;;
-			GBM_BACKEND_LIB_SYMLINK) m[4]=../${m[4]};; # missing ../
 			VDPAU_SYMLINK) m[4]=vdpau/; m[5]=${m[5]#vdpau/};; # .so to vdpau/
 		esac
 
 		if [[ -v 'paths[${m[2]}]' ]]; then
 			into=${paths[${m[2]}]}
-		elif [[ ${m[2]} == EXPLICIT_PATH ]]; then
-			into=${m[3]}
 		elif [[ ${m[2]} == *_BINARY ]]; then
 			into=/opt/bin
 		elif [[ ${m[3]} == COMPAT32 ]]; then
@@ -394,7 +339,7 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		[[ ${m[0]} =~ ^libnvidia-ngx.so|^libnvidia-egl-gbm.so ]] &&
+		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
 			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1 # soname not in .manifest
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
@@ -413,15 +358,6 @@ documentation that is installed alongside this README."
 
 	dobin nvidia-bug-report.sh
 
-	# MODULE:powerd extras
-	if use powerd; then
-		newinitd "${FILESDIR}"/nvidia-powerd.initd nvidia-powerd #923117
-		systemd_dounit systemd/system/nvidia-powerd.service
-
-		insinto /usr/share/dbus-1/system.d
-		doins nvidia-dbus.conf
-	fi
-
 	# enabling is needed for sleep to work properly and little reason not to do
 	# it unconditionally for a better user experience
 	: "$(systemd_get_systemunitdir)"
@@ -437,6 +373,22 @@ documentation that is installed alongside this README."
 	# <elogind-255.5 used a different path (bug #939216), keep a compat symlink
 	# TODO: cleanup after 255.5 been stable for a few months
 	dosym {/usr/lib,/"${libdir}"}/elogind/system-sleep/nvidia
+
+	# needed with >=systemd-256 or may fail to resume with some setups
+	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1072722
+	insinto "${unitdir}"/systemd-homed.service.d
+	newins - 10-nvidia.conf <<-EOF
+		[Service]
+		Environment=SYSTEMD_HOME_LOCK_FREEZE_SESSION=false
+	EOF
+	insinto "${unitdir}"/systemd-suspend.service.d
+	newins - 10-nvidia.conf <<-EOF
+		[Service]
+		Environment=SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false
+	EOF
+	dosym -r "${unitdir}"/systemd-{suspend,hibernate}.service.d/10-nvidia.conf
+	dosym -r "${unitdir}"/systemd-{suspend,hybrid-sleep}.service.d/10-nvidia.conf
+	dosym -r "${unitdir}"/systemd-{suspend,suspend-then-hibernate}.service.d/10-nvidia.conf
 
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
@@ -462,8 +414,6 @@ documentation that is installed alongside this README."
 }
 
 pkg_preinst() {
-	has_version "${CATEGORY}/${PN}[wayland]" && NV_HAD_WAYLAND=
-
 	use modules || return
 
 	# set video group id based on live system (bug #491414)
@@ -526,23 +476,6 @@ pkg_postinst() {
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
 	fi
 
-	if use kernel-open; then
-		ewarn
-		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
-		ewarn "and only for modern GPUs (e.g. GTX 1650+). Try to disable if run into issues."
-		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
-	fi
-
-	if use wayland && use modules && [[ ! -v NV_HAD_WAYLAND ]]; then
-		elog
-		elog "With USE=wayland, this version of ${PN} sets nvidia-drm.modeset=1"
-		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. This feature is considered"
-		elog "experimental but is required for wayland."
-		elog
-		elog "If you experience issues, either disable wayland or edit nvidia.conf."
-		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
-	fi
-
 	# these can be removed after some time, only to help the transition
 	# given users are unlikely to do further custom solutions if it works
 	# (see also https://github.com/elogind/elogind/issues/272)
@@ -569,7 +502,7 @@ pkg_postinst() {
 		ewarn "scripts can be used together. The warning will be removed in the future."
 	fi
 	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 535.183.01-r1 # may get repeated
+		ver_test ${REPLACING_VERSIONS##* } -lt 470.256.02-r1 # may get repeated
 	then
 		elog
 		elog "For suspend/sleep, 'NVreg_PreserveVideoMemoryAllocations=1' is now default"
