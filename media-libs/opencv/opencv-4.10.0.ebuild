@@ -544,6 +544,10 @@ multilib_src_configure() {
 	# bug #919101 and https://github.com/opencv/opencv/issues/19020
 	filter-lto
 
+	if tc-is-gcc && [[ $(gcc-major-version) -ge 15 ]] && use contribdnn; then
+		append-cxxflags "-fno-tree-vectorize"
+	fi
+
 	# please don't sort here, order is the same as in CMakeLists.txt
 	local mycmakeargs=(
 		-DMIN_VER_CMAKE=3.26
