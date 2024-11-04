@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Thomas Bettler <thomas.bettler@gmail.com> (2024-11-04)
+# media-libs/tiff only keyworded on amd64
+-lerc
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
 # media-libs/quirc is keyworded on amd64
 -quirc
