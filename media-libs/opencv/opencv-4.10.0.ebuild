@@ -595,7 +595,7 @@ multilib_src_configure() {
 		# NOTE set this via MYCMAKEARGS if needed
 		-DWITH_NVCUVID="no" # TODO needs NVIDIA Video Codec SDK
 		-DWITH_NVCUVENC="no" # TODO needs NVIDIA Video Codec SDK
-		-DCUDA_NPP_LIBRARY_ROOT_DIR="$(usex cuda "${EPREFIX}/opt/cuda" "")"
+		-DCUDA_NPP_LIBRARY_ROOT_DIR="$(usex cuda "${CUDA_PATH:=${EPREFIX}/opt/cuda}" "")"
 	# ===================================================
 	# OpenCV build components
 	# ===================================================
