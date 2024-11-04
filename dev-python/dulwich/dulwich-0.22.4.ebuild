@@ -78,10 +78,10 @@ src_prepare() {
 
 	if use !native-extensions; then
 		# avoid hard dep on rust via setuptools_rust
-	    sed -i \
-            -e '/from setuptools_rust/d' \
-            -e '/^rust_extensions = \[/,/^\]/d' \
-            setup.py || die
+		sed -i \
+			-e '/from setuptools_rust/d' \
+			-e '/^rust_extensions = \[/,/^\]/d' \
+			setup.py || die
 	fi
 }
 
