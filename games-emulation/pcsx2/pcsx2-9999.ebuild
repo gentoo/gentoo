@@ -109,10 +109,6 @@ src_configure() {
 		strip-unsupported-flags
 	fi
 
-	# pthread_attr_setaffinity_np is not supported on musl, may be possible
-	# to remove if bundled lzma code is updated like 7zip did (bug #935298)
-	use elibc_musl && append-cppflags -DZ7_AFFINITY_DISABLE
-
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_ADVANCE_SIMD=yes
