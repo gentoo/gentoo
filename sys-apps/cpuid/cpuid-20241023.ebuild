@@ -20,7 +20,7 @@ BDEPEND="
 
 DOCS=( "ChangeLog" "FUTURE" )
 
-PATCHES=( "${FILESDIR}/${PN}-20220620-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-20241023-makefile.patch" )
 
 src_prepare() {
 	default

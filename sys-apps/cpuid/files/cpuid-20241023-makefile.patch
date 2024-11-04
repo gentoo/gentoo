@@ -1,0 +1,38 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS+=-g
++CFLAGS+=
+ CPPFLAGS?=
+ LDFLAGS?=
+ ifneq (,$(findstring arch=i386,$(CFLAGS)))
+@@ -6,7 +6,7 @@
+ endif
+ CFL=$(CPPFLAGS) $(CFLAGS) $(CISA) -Wall -W -Wshadow -Wcast-align -Wredundant-decls -Wbad-function-cast -Wcast-qual -Wwrite-strings -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wimplicit-fallthrough -Wunused-parameter -Wundef -D_FILE_OFFSET_BITS=64 -DVERSION=$(VERSION)
+ CFL_OPT=-O3 $(CFL) -Wformat-overflow=2 
+-INSTALL_STRIP=-s
++INSTALL_STRIP=
+ 
+ PACKAGE=cpuid
+ VERSION=20241023
+@@ -41,7 +41,7 @@
+ 
+ BUILDROOT=$(DESTDIR)
+ 
+-default: $(PROG) $(PROG).man.gz cpuinfo2cpuid cpuinfo2cpuid.man.gz
++default: $(PROG) cpuinfo2cpuid
+ 
+ $(PROG): cpuid.c Makefile
+ 	$(CC) $(CFL) $(LDFLAGS) -o $@ cpuid.c
+@@ -62,9 +62,9 @@
+ 
+ install: $(PROG) $(PROG).man.gz cpuinfo2cpuid cpuinfo2cpuid.man.gz
+ 	install -D $(INSTALL_STRIP) -m 755 $(PROG) $(BUILDROOT)/usr/bin/$(PROG)
+-	install -D -m 444 $(PROG).man.gz       $(BUILDROOT)/usr/share/man/man1/$(PROG).1.gz
++	install -D -m 444 $(PROG).man          $(BUILDROOT)/usr/share/man/man1/$(PROG).1
+ 	install -D -m 755 cpuinfo2cpuid        $(BUILDROOT)/usr/bin/cpuinfo2cpuid
+-	install -D -m 444 cpuinfo2cpuid.man.gz $(BUILDROOT)/usr/share/man/man1/cpuinfo2cpuid.1.gz
++	install -D -m 444 cpuinfo2cpuid.man    $(BUILDROOT)/usr/share/man/man1/cpuinfo2cpuid.1
+ 
+ clean:
+ 	rm -f $(PROG) $(PROG).i386 $(PROG).x86_64
