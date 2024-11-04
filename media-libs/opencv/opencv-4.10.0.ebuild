@@ -434,6 +434,13 @@ src_prepare() {
 	sed -e '/add_subdirectory(.*3rdparty.*)/ d' \
 		-i CMakeLists.txt cmake/*cmake || die
 
+	sed \
+		-e 's:truetype/wqy:wqy-microhei:g' \
+		-i \
+			modules/gapi/test/render/gapi_render_tests_ocv.cpp \
+			modules/gapi/test/render/ftp_render_test.cpp \
+		|| die
+
 	if use contrib; then
 		cd "${WORKDIR}/${PN}_contrib-${PV}" || die
 		eapply "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
@@ -855,6 +862,7 @@ multilib_src_configure() {
 	if use ffmpeg; then
 		mycmakeargs+=(
 			-DOPENCV_GAPI_GSTREAMER="no"
+			-DOPENCV_FFMPEG_DISABLE_MEDIASDK="yes"
 		)
 	fi
 
@@ -897,7 +905,7 @@ multilib_src_configure() {
 	# if multilib_native_use test; then
 	if use test; then
 		# opencv tests assume to be build in Release mode
-		CMAKE_BUILD_TYPE="Release"
+		local -x CMAKE_BUILD_TYPE="Release"
 		mycmakeargs+=(
 			-DOPENCV_TEST_DATA_PATH="${WORKDIR}/${PN}_extra-${PV}/testdata"
 		)
@@ -953,72 +961,157 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	# no tests on ABI_X86_32
+	! multilib_is_native_abi && return
+
 	# NOTE we don't run the tests
 	use testprograms && return
 
-	CMAKE_SKIP_TESTS=(
-		'Test_ONNX_layers.LSTM_cell_forward/0'
-		'Test_ONNX_layers.LSTM_cell_bidirectional/0'
-		'Test_TensorFlow_layers.Convolution3D/1'
-		'Test_TensorFlow_layers.concat_3d/1'
+	declare -xA OPENCV_SKIP_TESTS
 
-		'AsyncAPICancelation/cancel*basic'
+	local -x OPENCV_SKIP_TESTS_core=(
+		'hal_intrin128.*32x4_CPP_EMULATOR'
+		'hal_intrin128.*64x2_CPP_EMULATOR'
+	)
+
+	local -x OPENCV_SKIP_TESTS_gapi=(
+		'AsyncAPICancelation/cancel/*.basic'
+	)
+
+	local -x OPENCV_SKIP_TESTS_videoio=(
+		'*mfx*'
+		'videoio/videoio_bunny.frame_count/12'
+	)
+
+	local -x OPENCV_SKIP_TESTS_video=(
+		'GOTURN.accuracy'
+		'DaSiamRPN.accuracy'
+		'NanoTrack.accuracy_NanoTrack_V1'
+		'NanoTrack.accuracy_NanoTrack_V2'
+		'Tracking/DistanceAndOverlap.GOTURN*'
 	)
 
 	if ! use gtk3 && ! use qt6; then
-		CMAKE_SKIP_TESTS+=(
-			# these fail with parallism
-			'^Highgui_*'
+		local -x OPENCV_SKIP_TESTS_highgui=(
+			'Highgui_GUI.*'
 		)
+	else
+		addpredict /dev/fuse
 	fi
 
 	if multilib_native_use cuda; then
-		CMAKE_SKIP_TESTS+=(
+		local -x OPENCV_SKIP_TESTS_cudaoptflow=(
 			'CUDA_OptFlow/BroxOpticalFlow.Regression/0'
 			'CUDA_OptFlow/BroxOpticalFlow.OpticalFlowNan/0'
 			'CUDA_OptFlow/NvidiaOpticalFlow_1_0.Regression/0'
 			'CUDA_OptFlow/NvidiaOpticalFlow_2_0.Regression/0'
 		)
+		if use opengl; then
+			local -x OPENCV_SKIP_TESTS_cudaarithm=(
+				'OpenGL/Buffer.MapDevice/*'
+				'OpenGL/*Gpu*'
+			)
+		fi
 	fi
 
-	if use opengl; then
-		CMAKE_SKIP_TESTS+=(
-			'OpenGL/Buffer.MapDevice/*'
-			'OpenGL/*Gpu*'
+	if use contribdnn; then
+		local -x OPENCV_SKIP_TESTS_dnn=(
+			'Test_ONNX_layers.LSTM_cell_forward/*'
+			'Test_ONNX_layers.LSTM_cell_bidirectional/*'
+			'Test_TensorFlow_layers.Convolution3D/*'
+			'Test_TensorFlow_layers.concat_3d/*'
+		)
+		local -x OPENCV_SKIP_TESTS_objdetect=(
+			'Objdetect_face_detection.regression'
+			'Objdetect_face_recognition.regression' 'Objdetect_QRCode_Encode_Decode_Structured_Append.regression'
+		)
+	else
+		local -x OPENCV_SKIP_TESTS_objdetect=(
+			'Objdetect_face_detection.regression'
+			'Objdetect_face_recognition.regression'
+			)
+
+		OPENCV_SKIP_TESTS_video+=(
+			'vittrack.accuracy_vittrack'
 		)
 	fi
-
-	if use opencl; then
-		CMAKE_SKIP_TESTS+=(
-			'OCL_Arithm/InRange.Mat/\(CV_32S,*'
+	if use dnnsamples; then
+		local -x OPENCV_SKIP_TESTS_wechat_qrcode=(
+			'Objdetect_QRCode_points_position.rotate45'
+			'Objdetect_QRCode_Big.regression'
+			'Objdetect_QRCode_Tiny.regression'
+			'Objdetect_QRCode_Multi.regression/*'
+			'Objdetect_QRCode_Easy_Multi.regression/1'
 		)
 	fi
-
-	local myctestargs=(
-		--test-timeout 180
-	)
 
 	if multilib_native_use cuda; then
-		cuda_add_sandbox -w
-		export OPENCV_PARALLEL_BACKEND="threads"
-		export DNN_BACKEND_OPENCV="cuda"
+		if ! SANDBOX_WRITE=/dev/nvidiactl test -w /dev/nvidiactl ; then
+			eerror "Can't access the GPU at /dev/nvidiactl."
+			eerror "User $(id -nu) is not in the group \"video\"."
+			local -x TEST_CUDA="false"
+			# local -x OPENCV_PARALLEL_BACKEND="threads"
+			# local -x DNN_BACKEND_OPENCV="cuda"
+
+			local -x OPENCV_SKIP_TESTS_photo=( "CUDA_*" )
+			local -x OPENCV_SKIP_TESTS_stitching=( "CUDA_*" )
+			OPENCV_SKIP_TESTS_video+=( "CUDA_*" )
+		else
+			cuda_add_sandbox -w
+			addwrite "/dev/dri/"
+			[[ -e /dev/udmabuf ]] && addwrite /dev/udmabuf
+		fi
 	fi
 
 	opencv_test() {
-		export OPENCV_CORE_PLUGIN_PATH="${BUILD_DIR}/lib"
-		export OPENCV_DNN_PLUGIN_PATH="${BUILD_DIR}/lib"
-		export OPENCV_VIDEOIO_PLUGIN_PATH="${BUILD_DIR}/lib"
+		cd "${BUILD_DIR}" || die
 
-		export OPENCV_TEST_DATA_PATH="${WORKDIR}/${PN}_extra-${PV}/testdata"
+		# directories to search for _core_ plugins
+		local -x OPENCV_CORE_PLUGIN_PATH="${BUILD_DIR}/lib"
+		# directories to search for _dnn_ plugins
+		local -x OPENCV_DNN_PLUGIN_PATH="${BUILD_DIR}/lib"
+		# directories to search for _videoio_ plugins
+		local -x OPENCV_VIDEOIO_PLUGIN_PATH="${BUILD_DIR}/lib"
+		# # path to extra OpenVINO plugins
+		# local -x OPENCV_DNN_IE_EXTRA_PLUGIN_PATH="${BUILD_DIR}/lib"
 
-		# Work around zink warnings
-		export LIBGL_ALWAYS_SOFTWARE=true
-		results=()
-		for test in "${BUILD_DIR}/bin/opencv_test_"*; do
-			echo "${test}"
-			if ! "${test}" --gtest_color=yes --gtest_filter="-$(IFS=: ; echo "${CMAKE_SKIP_TESTS[*]}")"; then
+		local -x OPENCV_TEMP_PATH="${T}"
 
-				results+=( "$(basename ${test})" )
+		local -x OPENCV_TEST_DATA_PATH="${WORKDIR}/${PN}_extra-${PV}/testdata"
+
+		local test_opts_base=(
+			--skip_unstable=1
+			--test_threads="$(makeopts_jobs)"
+		)
+
+		local results=()
+
+		local tests
+		readarray -t tests <<< "$(find "${BUILD_DIR}/bin" -name 'opencv_test_*')"
+
+		for test in "${tests[@]}" ; do
+
+			if [[ ${TEST_CUDA} == "false" && ${test} = *opencv_test_cu* ]] ; then
+				eqawarn "Skipping test ${test}"
+				continue
+			fi
+
+			local test_opts=(
+				--gtest_color=yes
+				--gtest_output="json:${BUILD_DIR}/test-reports/$(basename "${test}").json"
+			)
+
+			local testname
+			testname="OPENCV_SKIP_TESTS_$(basename "${test//opencv_test_/}")[*]"
+			if [[ -n "${!testname}" ]]; then
+				test_opts+=(
+					--gtest_filter="-$(IFS=':'; echo "${!testname}")"
+				)
+			fi
+
+			einfo "${test} ${test_opts_base[*]} ${test_opts[*]}"
+			if ! "${test}" "${test_opts_base[@]}" "${test_opts[@]}"; then
+				results+=( "$(basename "${test}")" )
 
 				if [[ -z "${OPENCV_TEST_CONTINUE_ON_FAIL}" ]]; then
 					eerror "${results[*]} failed"
@@ -1027,7 +1120,10 @@ multilib_src_test() {
 			fi
 		done
 
-		echo -e "${results[*]}"
+		if [[ -n "${results[*]}" ]]; then
+			eerror "failed: ${results[*]}"
+			die "${results[*]}"
+		fi
 	}
 
 	if multilib_native_use python; then
