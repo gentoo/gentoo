@@ -37,7 +37,6 @@ REQUIRED_USE="s3? ( simple-s3 )"
 
 BDEPEND="
 	virtual/pkgconfig
-	>=virtual/rust-1.65
 "
 DEPEND="
 	app-arch/zstd

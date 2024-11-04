@@ -20,6 +20,9 @@ CRATES="
 	paste@1.0.14
 "
 
+RUST_MIN_VER="1.74.1"
+RUST_OPTIONAL=1
+
 inherit cargo
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
@@ -155,7 +158,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
-		>=virtual/rust-1.62.0
+		${RUST_DEPEND}
 		>=dev-util/bindgen-0.58.0
 	)
 	>=dev-build/meson-1.4.1
@@ -177,7 +180,7 @@ BDEPEND="
 		video_cards_nvk? (
 			>=dev-util/bindgen-0.68.1
 			>=dev-util/cbindgen-0.26.0
-			>=virtual/rust-1.74.1
+			${RUST_DEPEND}
 		)
 	)
 	wayland? ( dev-util/wayland-scanner )
@@ -294,6 +297,13 @@ pkg_setup() {
 
 	use llvm && llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
+
+	if use opencl || use vulkan; then
+		rust_pkg_setup
+	fi
+	if use opencl || use vulkan; then
+		rust_pkg_setup
+	fi
 }
 
 src_prepare() {

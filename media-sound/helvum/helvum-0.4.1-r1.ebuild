@@ -108,7 +108,7 @@ CRATES="
 
 LLVM_COMPAT=( {16..18} )
 
-inherit cargo desktop llvm-r1 xdg
+inherit llvm-r1 cargo desktop xdg
 
 DESCRIPTION="A GTK patchbay for pipewire"
 HOMEPAGE="https://gitlab.freedesktop.org/pipewire/helvum"
@@ -131,7 +131,6 @@ BDEPEND="
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=
 		sys-devel/llvm:${LLVM_SLOT}=
-		virtual/rust:0/llvm-${LLVM_SLOT}
 	')
 	virtual/pkgconfig
 "
@@ -147,6 +146,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+pkg_setup() {
+	llvm-r1_pkg_setup
+	rust_pkg_setup
+}
 
 src_install() {
 	cargo_src_install

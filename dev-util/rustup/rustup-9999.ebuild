@@ -33,7 +33,6 @@ DEPEND="
 	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/rust"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 QA_FLAGS_IGNORED="usr/bin/rustup-init"

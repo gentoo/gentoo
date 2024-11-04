@@ -3,6 +3,8 @@
 
 EAPI=8
 
+RUST_MIN_VERSION="1.81.0"
+
 inherit cargo desktop optfeature xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -48,7 +50,6 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.81
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"

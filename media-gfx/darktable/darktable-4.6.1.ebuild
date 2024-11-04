@@ -47,7 +47,7 @@ RESTRICT="!test? ( test )"
 # in BDEPEND. This has not been done *on purpose*, for the following reason:
 #  - darktable can also be built with sys-devel/clang so we'd have to have that, as an alternative,
 #    in BDEPEND too
-#  - there are at least two darktable dependencies (media-libs/mesa and virtual/rust) which
+#  - there are at least two darktable dependencies (media-libs/mesa and dev-lang/rust) which
 #    by default pull in sys-devel/clang
 #  - as a result of the above, for most gcc users adding the above to BDEPEND is a no-op
 #    (and curiously enough, empirical observations suggest current versions of Portage are

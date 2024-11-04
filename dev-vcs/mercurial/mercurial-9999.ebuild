@@ -9,6 +9,9 @@ DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
+# for stdsimd
+RUST_MAX_VER=1.77.1
+
 inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic multiprocessing
 
 DESCRIPTION="Scalable distributed SCM"

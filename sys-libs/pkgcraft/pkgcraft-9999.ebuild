@@ -35,7 +35,6 @@ RESTRICT="!test? ( test )"
 BDEPEND+="
 	dev-util/cargo-c
 	sys-devel/clang
-	>=virtual/rust-1.76
 "
 
 QA_FLAGS_IGNORED="usr/lib.*/libpkgcraft.so.*"
