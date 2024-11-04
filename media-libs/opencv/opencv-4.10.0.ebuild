@@ -167,7 +167,7 @@ REQUIRED_USE="
 	contribsfm? ( contrib eigen gflags glog )
 	contribxfeatures2d? ( contrib )
 	java? ( python )
-	opengl? ( ?? ( gtk3 qt6 ) )
+	opengl? ( qt6 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )
 	?? ( gtk3 qt6 )
@@ -709,10 +709,23 @@ multilib_src_configure() {
 
 		# -DBUILD_opencv_world="yes"
 
-		-DDNN_PLUGIN_LIST="all"
-		-DHIGHGUI_PLUGIN_LIST="all"
-		-DVIDEOIO_PLUGIN_LIST="all"
+		-DOPENCV_PLUGIN_VERSION=".$(ver_rs 1-2 '' "$(ver_cut 1-2)")"
+		-DOPENCV_PLUGIN_ARCH=".${ARCH}"
 
+		-DDNN_PLUGIN_LIST="all"
+		-DHIGHGUI_ENABLE_PLUGINS="no"
+	)
+
+	local VIDEOIO_PLUGIN_LIST=()
+	if use ffmpeg; then
+		VIDEOIO_PLUGIN_LIST+=("ffmpeg")
+	fi
+	if use gstreamer; then
+		VIDEOIO_PLUGIN_LIST+=("gstreamer")
+	fi
+
+	mycmakeargs+=(
+		-DVIDEOIO_PLUGIN_LIST="$(IFS=';'; echo "${VIDEOIO_PLUGIN_LIST[*]}")"
 	)
 
 	if use qt6; then
