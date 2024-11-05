@@ -69,18 +69,17 @@ multilib_src_configure() {
 multilib_src_install() {
 	# Disable parallel installation until bug #253862 is solved
 	emake DESTDIR="${D}" -j1 install
-
-	rm "${D}"/usr/include/canberra.h \
-		"${D}"/usr/lib64/libcanberra-0.30/libcanberra-{multi,null}.so \
-		"${D}"/usr/lib64/libcanberra.so{,.0,.0.2.5} \
-		"${D}"/usr/lib64/pkgconfig/libcanberra.pc \
-		"${D}"/usr/share/vala/vapi/libcanberra.vapi \
-		|| die
 }
 
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -type f -name '*.la' -delete || die
+
+	rm "${ED}"/usr/include/canberra.h || die
+
+	find "${ED}"/usr \( -iname libcanberra.pc -o -iname libcanberra.vapi \
+		-o -iname libcanberra-multi.so -o -iname libcanberra-null.so \
+		-o -iname libcanberra.so* \) -delete || die
 
 	# This is needed for desktops different than GNOME, bug #520550
 	exeinto /etc/X11/xinit/xinitrc.d
