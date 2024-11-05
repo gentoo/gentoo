@@ -8,5 +8,6 @@
 	<upstream>
 		<bugs-to>https://github.com/bitstrings/junit-clptr/issues</bugs-to>
 		<changelog>https://github.com/bitstrings/junit-clptr/commits/master</changelog>
+		<remote-id type="github">bitstrings/junit-clptr</remote-id>
 	</upstream>
 </pkgmetadata>
