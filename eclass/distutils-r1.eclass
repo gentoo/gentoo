@@ -271,7 +271,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-1.4.0[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.7.4[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -1262,8 +1262,8 @@ distutils_pep517_install() {
 			# `maturin pep517 build-wheel --help` for options
 			local maturin_args=(
 				"${DISTUTILS_ARGS[@]}"
+				--auditwheel=skip # see bug #831171
 				--jobs="$(makeopts_jobs)"
-				--skip-auditwheel # see bug #831171
 				$(in_iuse debug && usex debug '--profile=dev' '')
 			)
 
