@@ -1,0 +1,16 @@
+From: Brand Huntsman <bgo-7187AEA9-brand@qzx.com>
+Bug: https://bugs.gentoo.org/909991#c6
+
+--- a/makefile
++++ b/makefile
+@@ -93,7 +93,9 @@ $(GPODDER_SERVICE_FILE): $(GPODDER_SERVICE_FILE_IN)
+ %.desktop.in.h: %.desktop.in
+ 	intltool-extract --quiet --type=gettext/ini $<
+ 
+-install: messages $(GPODDER_SERVICE_FILE) $(DESKTOP_FILES)
++build: messages $(GPODDER_SERVICE_FILE) $(DESKTOP_FILES)
++
++install: build
+ 	$(PYTHON) setup.py install --root=$(DESTDIR) --prefix=$(PREFIX) --optimize=1
+ 
+ install-win: messages $(GPODDER_SERVICE_FILE) $(DESKTOP_FILES)
