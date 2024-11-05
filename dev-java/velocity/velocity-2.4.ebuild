@@ -99,7 +99,7 @@ src_prepare() {
 }
 
 src_test() {
-	pushd src/test/java || die
+	pushd src/test/java > /dev/null || die
 		# DataSourceResourceLoaderTestCase.java requires configured jdbc
 		local JAVA_TEST_RUN_ONLY=$(find * \
 			-name "*TestCase.java" \
@@ -108,6 +108,6 @@ src_test() {
 			)
 		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
 		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
-	popd
+	popd > /dev/null || die
 	java-pkg-simple_src_test
 }
