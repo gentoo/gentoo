@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/${PV}/download
 
 LICENSE="MIT"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="sys-apps/hwdata"
 DEPEND="${RDEPEND}"
