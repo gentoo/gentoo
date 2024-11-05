@@ -10,6 +10,7 @@
     <flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> based Google authentication support</flag>
     <flag name="oauth-gtk3">Enable internal OAuth2 authentication for GTK+3 applications (libedataserverui-*.so) support for Google and Outlook.com. If gnome-online-accounts is enabled and used, this is not necessary, but both can be supported at the same time with different setup at runtime</flag>
     <flag name="oauth-gtk4">Enable internal OAuth2 authentication for GTK 4 applications (libedataserverui4-*.so) support for Google and Outlook.com. If gnome-online-accounts is enabled and used, this is not necessary, but both can be supported at the same time with different setup at runtime</flag>
+    <flag name="sound">Sound notification support through <pkg>media-libs/libcanberra-gtk3</pkg> (does nothing without USE=gtk)</flag>
     <flag name="weather">Enable optional weather calendar support</flag>
   </use>
   <upstream>
