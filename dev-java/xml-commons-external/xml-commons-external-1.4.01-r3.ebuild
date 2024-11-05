@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 MAVEN_ID="xml-apis:xml-apis:1.4.01"
@@ -19,8 +19,8 @@ LICENSE="Apache-2.0"
 SLOT="1.4"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
-RDEPEND=">=virtual/jre-1.8:*"
-DEPEND=">=virtual/jdk-1.8:*"
 BDEPEND="source? ( app-arch/zip )"
+DEPEND=">=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*"
 
 JAVADOC_ARGS="-source 8"
