@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
