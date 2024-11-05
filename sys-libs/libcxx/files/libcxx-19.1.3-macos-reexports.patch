@@ -1,0 +1,17 @@
+Fix build of standalone libc++ on Gentoo Prefix
+
+Partial revert of https://github.com/llvm/llvm-project/pull/79012
+
+Fixed upstream (in a more involved way) in https://github.com/llvm/llvm-project/pull/110920
+
+--- a/libcxx/src/CMakeLists.txt
++++ b/libcxx/src/CMakeLists.txt
+@@ -234,7 +234,7 @@ if (LIBCXX_ENABLE_SHARED)
+   # into libc++ because in that case there's no dylib to re-export from.
+   if (APPLE AND LIBCXX_CXX_ABI MATCHES "libcxxabi$"
+             AND NOT LIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY)
+-    target_link_libraries(cxx_shared PRIVATE cxxabi-reexports)
++    target_link_libraries(cxx_shared PRIVATE $<TARGET_NAME_IF_EXISTS:cxxabi-reexports>)
+ 
+     # TODO: These exports controls should not be tied to whether we re-export libc++abi symbols
+     target_link_libraries(cxx_shared PRIVATE
