@@ -105,6 +105,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-arch/xz-utils
 	virtual/pkgconfig
+	doc? ( app-text/docbook-sgml-utils )
 "
 RDEPEND="${COMMONDEPEND}
 	app-misc/mime-types
