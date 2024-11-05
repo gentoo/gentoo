@@ -49,9 +49,7 @@ LICENSE="BSD"
 SLOT="0/beta"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
 # it shouldn't be keyworded but adventurous users can select it.
-if [[ ${SLOT} == "0/dev" ]]; then
-	KEYWORDS=""
-else
+if [[ ${SLOT} != "0/dev" ]]; then
 	KEYWORDS="~amd64 ~arm64"
 fi
 
