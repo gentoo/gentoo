@@ -8,6 +8,7 @@
 # Doug Goldstein <cardoe@gentoo.org>
 # Georgy Yakovlev <gyakovlev@gentoo.org>
 # @SUPPORTED_EAPIS: 8
+# @PROVIDES: rust
 # @BLURB: common functions and variables for cargo builds
 
 case ${EAPI} in
@@ -18,25 +19,36 @@ esac
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-# check and document RUST_DEPEND and options we need below in case conditions.
+if [[ -n ${RUST_NEEDS_LLVM} ]]; then
+	if [[ -z ${_LLVM_R1_ECLASS} ]]; then
+		die "Please inherit llvm-r1.eclass before cargo.eclass when using RUST_NEEDS_LLVM"
+	fi
+fi
+
+if [[ -n ${CARGO_OPTIONAL} ]]; then
+	RUST_OPTIONAL=1
+fi
+
+# Either the lowest slot supported by rust.eclass _or_
+# reference the changelog for a particular feature requirement
 # https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
-RUST_DEPEND="virtual/rust"
+_CARGO_ECLASS_RUST_MIN_VER="1.71.1"
 
 case ${EAPI} in
 	8)
-		# 1.39 added --workspace
-		# 1.46 added --target dir
-		# 1.48 added term.progress config option
-		# 1.51 added split-debuginfo profile option
-		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
-		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
-		RUST_DEPEND=">=virtual/rust-1.53"
+		if [[ -n ${RUST_MIN_VER} ]]; then
+			# This is _very_ unlikely given that we leverage the rust eclass but just in case cargo requires a newer version
+			# than the oldest in-tree in future.
+			if ver_test "${RUST_MIN_VER}" -lt "${_CARGO_ECLASS_RUST_MIN_VER}"; then
+				die "RUST_MIN_VERSION must be at least ${_CARGO_ECLASS_RUST_MIN_VER}"
+			fi
+		else
+			RUST_MIN_VER="${_CARGO_ECLASS_RUST_MIN_VER}"
+		fi
 		;;
 esac
 
-inherit flag-o-matic multiprocessing rust-toolchain toolchain-funcs
-
-[[ ! ${CARGO_OPTIONAL} ]] && BDEPEND="${RUST_DEPEND}"
+inherit flag-o-matic multiprocessing rust rust-toolchain toolchain-funcs
 
 IUSE="${IUSE} debug"
 
@@ -107,9 +119,8 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # be considered optional. No dependencies will be added and no phase
 # functions will be exported.
 #
-# If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
-# for your package and call at least cargo_gen_config manually before using
-# other src_functions or cargo_env of this eclass.
+# If you enable CARGO_OPTIONAL call at least cargo_gen_config manually
+# before using other src_functions or cargo_env of this eclass.
 # Note that cargo_gen_config is automatically called by cargo_src_unpack.
 
 # @ECLASS_VARIABLE: myfeatures
@@ -129,6 +140,11 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
+# @ECLASS_VARIABLE: ECARGO_HOME
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Location of the cargo home directory.
+
 # @ECLASS_VARIABLE: ECARGO_REGISTRY_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -147,6 +163,11 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # If non-empty, this variable prevents online operations in
 # cargo_live_src_unpack.
 # Inherits value of EVCS_OFFLINE if not set explicitly.
+
+# @ECLASS_VARIABLE: ECARGO_VENDOR
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Location of the cargo vendor directory.
 
 # @ECLASS_VARIABLE: EVCS_UMASK
 # @USER_VARIABLE
@@ -531,6 +552,8 @@ cargo_src_configure() {
 # take affect due to Cargo limitations, so add these to your ebuild's RUSTFLAGS
 # if they seem important.
 cargo_env() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
@@ -604,7 +627,7 @@ cargo_env() {
 cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- ${CARGO} build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo build failed"
 }
@@ -618,7 +641,7 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- cargo install $(has --path ${@} || echo --path ./) \
+	set -- ${CARGO} install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
 		${GIT_CRATES[@]:+--frozen} \
 		$(usex debug --debug "") \
@@ -636,7 +659,7 @@ cargo_src_install() {
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- ${CARGO} test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo test failed"
 }
