@@ -64,6 +64,7 @@ COMMON_DEPEND="
 		dev-libs/libcdio:=
 	)
 	drm? (
+		media-libs/libdisplay-info:=
 		x11-libs/libdrm
 		egl? ( media-libs/mesa[gbm(+)] )
 	)
