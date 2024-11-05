@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 MY_COMMIT_HASH="abc8fca7499f44c725122881cd380a88c37abe0e"
 DESCRIPTION="Arduino private fork of dev-util/ctags"
@@ -15,7 +17,14 @@ KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20161123-gcc-unused-attribute.patch
+	"${FILESDIR}"/${PN}-20161123-implicit-exit.patch
+	"${FILESDIR}"/${PN}-20161123-implicit-int.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
