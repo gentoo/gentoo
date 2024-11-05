@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs test"
+IUSE="cpu_flags_ppc_altivec cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs test"
 RESTRICT="!test? ( test )"
 
 pkg_pretend() {
@@ -33,8 +33,6 @@ pkg_setup() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		$(meson_feature cpu_flags_arm_iwmmxt iwmmxt)
-		$(meson_use     cpu_flags_arm_iwmmxt2 iwmmxt2)
 		$(meson_feature cpu_flags_x86_mmxext mmx)
 		$(meson_feature cpu_flags_x86_sse2 sse2)
 		$(meson_feature cpu_flags_x86_ssse3 ssse3)
