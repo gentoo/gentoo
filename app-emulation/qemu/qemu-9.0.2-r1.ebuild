@@ -369,12 +369,12 @@ kernel module is loaded is to load it on boot.
 Please review /etc/conf.d/modules for how to load these.
 
 Make sure your user is in the 'kvm' group. Just run
-	$ gpasswd -a <USER> kvm
+	# gpasswd -a <USER> kvm
 then have <USER> re-login.
 
 For brand new installs, the default permissions on /dev/kvm might not let
 you access it.  You can tell udev to reset ownership/perms:
-	$ udevadm trigger -c add /dev/kvm
+	# udevadm trigger -c add /dev/kvm
 
 If you want to register binfmt handlers for qemu user targets:
 For openrc:
