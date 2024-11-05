@@ -1,11 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-JAVA_SRC_DIR="src/main/java"
-JAVA_GENTOO_CLASSPATH="jansi,jansi-native"
+
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A Java library for handling console input"
@@ -17,30 +16,34 @@ LICENSE="BSD"
 SLOT="2"
 KEYWORDS="amd64 arm64 ppc64"
 IUSE="test"
+
 # Needs yet-unpackaged powermock for tests
 RESTRICT="!test? ( test ) test"
 
-CDEPEND="
+CP_DEPEND="
 	dev-java/jansi:0
 	dev-java/jansi-native:0"
 
 DEPEND="
+	${CP_DEPEND}
+	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/easymock:3.2
 		dev-java/junit:4
 	)
-	${CDEPEND}
-	>=virtual/jdk-1.8:*"
+"
 
 RDEPEND="
-	${CDEPEND}
-	>=virtual/jre-1.8:*"
+	${CP_DEPEND}
+	>=virtual/jre-1.8:*
+"
+
+DOCS=( {CHANGELOG,README}.md )
+
+JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
-	default
-
-	# Easier to use java-pkg-simple.
-	rm -v pom.xml || die
+	java-pkg-2_src_prepare
 
 	# Don't forget the resources!
 	mkdir -p target/classes || die
@@ -57,10 +60,4 @@ src_test() {
 
 	ejavac -cp "${CP}" -d . $(find * -name "*.java" || die)
 	ejunit4 -classpath "${CP}" ${TESTS}
-}
-
-src_install() {
-	java-pkg-simple_src_install
-
-	dodoc {CHANGELOG,README}.md
 }
