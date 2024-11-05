@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic libtool
 
 DESCRIPTION="versatile and fast Unicode/ASCII/ANSI graphics renderer"
 HOMEPAGE="https://hpjansson.org/chafa/ https://github.com/hpjansson/chafa"
