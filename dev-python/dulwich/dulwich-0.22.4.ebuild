@@ -78,6 +78,7 @@ src_prepare() {
 
 	if use !native-extensions; then
 		# avoid hard dep on rust via setuptools_rust
+		# https://github.com/jelmer/dulwich/issues/1405
 		sed -i \
 			-e '/from setuptools_rust/d' \
 			-e '/^rust_extensions = \[/,/^\]/d' \
