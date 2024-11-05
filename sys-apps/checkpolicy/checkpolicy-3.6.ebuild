@@ -25,7 +25,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
 
-RDEPEND=">=sys-libs/libsepol-${PV}:=[static-libs(+)]"
+RDEPEND="~sys-libs/libsepol-${PV}"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/flex
 	sys-devel/bison"
