@@ -1,0 +1,18 @@
+uncomment build backend
+
+diff --git a/pyproject.toml b/pyproject.toml
+index c3338c9c..6197d3df 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -38,7 +38,7 @@ Homepage = "https://torsion.org/borgmatic"
+ [build-system]
+ requires = ["setuptools>=61.0"]
+ # allow looking for conf in setup.{cfg,py}
+-#build-backend = "setuptools.build_meta"
++build-backend = "setuptools.build_meta"
+ 
+ [tool.setuptools.packages.find]
+ include = ["borgmatic*"]
+-- 
+2.45.2
+
