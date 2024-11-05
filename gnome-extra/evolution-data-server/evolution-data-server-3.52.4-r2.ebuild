@@ -14,7 +14,7 @@ SLOT="0/64-11-21-4-3-27-2-27-4-0" # subslot = libcamel-1.2/libebackend-1.2/libeb
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="berkdb +gnome-online-accounts +gtk gtk-doc +introspection ldap kerberos oauth-gtk3 oauth-gtk4 vala +weather"
+IUSE="berkdb +gnome-online-accounts +gtk gtk-doc +introspection ldap kerberos oauth-gtk3 oauth-gtk4 sound vala +weather"
 REQUIRED_USE="
 	oauth-gtk3? ( gtk )
 	oauth-gtk4? ( gtk )
@@ -42,9 +42,11 @@ RDEPEND="
 	gtk? (
 		>=x11-libs/gtk+-3.20:3
 		>=gui-libs/gtk-4.4:4
-		|| (
-			media-libs/libcanberra-gtk3
-			>=media-libs/libcanberra-0.25[gtk3(-)]
+		sound? (
+			|| (
+				media-libs/libcanberra-gtk3
+				>=media-libs/libcanberra-0.25[gtk3(-)]
+			)
 		)
 
 		oauth-gtk3? ( >=net-libs/webkit-gtk-2.34.0:4.1 )
@@ -127,7 +129,6 @@ src_configure() {
 		-DENABLE_SMIME=ON
 		-DENABLE_GTK=$(usex gtk)
 		-DENABLE_GTK4=$(usex gtk)
-		-DENABLE_CANBERRA=$(usex gtk)
 		-DENABLE_OAUTH2_WEBKITGTK=$(usex oauth-gtk3)
 		-DENABLE_OAUTH2_WEBKITGTK4=$(usex oauth-gtk4)
 		-DENABLE_EXAMPLES=OFF
@@ -140,6 +141,12 @@ src_configure() {
 		-DENABLE_VALA_BINDINGS=$(usex vala)
 		-DENABLE_TESTS=$(usex test)
 	)
+	if use gtk && use sound; then
+		mycmakeargs+=( -DENABLE_CANBERRA=ON )
+	else
+		mycmakeargs+=( -DENABLE_CANBERRA=OFF )
+	fi
+
 	cmake_src_configure
 }
 
