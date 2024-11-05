@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="examples numa test"
 RESTRICT="!test? ( test )"
 
