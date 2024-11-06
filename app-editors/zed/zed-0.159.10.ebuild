@@ -99,10 +99,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=virtual/rust-1.80.0
+	dev-build/cmake
 	dev-util/vulkan-headers
 	sys-devel/gettext
 	sys-devel/mold
+	>=virtual/rust-1.80.0
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=
 		sys-devel/llvm:${LLVM_SLOT}=
