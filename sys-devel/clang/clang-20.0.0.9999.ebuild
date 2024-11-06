@@ -201,6 +201,7 @@ get_distribution_components() {
 			clang-refactor
 			clang-repl
 			clang-scan-deps
+			clang-sycl-linker
 			diagtool
 			hmaptool
 			nvptx-arch
