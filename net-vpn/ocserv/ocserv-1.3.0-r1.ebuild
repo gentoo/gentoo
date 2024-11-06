@@ -59,6 +59,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/ocserv-1.3.0-seccomp-readlinkat.patch
+)
+
 src_prepare() {
 	default
 	if [[ ${PV} == 9999 ]]; then
