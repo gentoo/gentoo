@@ -1,0 +1,175 @@
+From bfca43e551729b9518772fed6fba19bb5dbe6646 Mon Sep 17 00:00:00 2001
+From: Megan Conkle <megan.conkle@kdemail.net>
+Date: Sat, 12 Oct 2024 23:34:27 -0700
+Subject: [PATCH] Fix segmentation fault when .conf file is missing
+
+Whenever ghostwriter.conf is missing (or the last used exporter within
+is empty), the app will crash with a segmentation fault due to accessing
+an uninitialed pointer to the current HTML exporter in appsettings.cpp.
+This commit ensures that the pointer is initialized to null before being
+checked for whether obtaining an exporter was successful.
+BUG: 465799
+
+(cherry picked from commit f82070ac7916b36bb0bfd84a5c0e96cb084a6e28)
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CHANGELOG.md                 |  8 ++++++++
+ src/preview/htmlpreview.cpp  | 24 ++++++++++++------------
+ src/settings/appsettings.cpp | 18 ++++++++++++------
+ 3 files changed, 32 insertions(+), 18 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 6f34002f..89017211 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+ 
+ ## [Unreleased]
+ 
++## [24.08.3]
++
++### Fixed
++
++* Issue #465799: Segmentation fault no longer occurs when .conf file is missing on first launch.
++
++## [24.08.0]
++
+ ### Added
+ 
+ * Added more icons to menu actions.
+diff --git a/src/preview/htmlpreview.cpp b/src/preview/htmlpreview.cpp
+index db89dd29..5a600769 100644
+--- a/src/preview/htmlpreview.cpp
++++ b/src/preview/htmlpreview.cpp
+@@ -1,5 +1,5 @@
+-/*
+- * SPDX-FileCopyrightText: 2014-2023 Megan Conkle <megan.conkle@kdemail.net>
++﻿/*
++ * SPDX-FileCopyrightText: 2014-2024 Megan Conkle <megan.conkle@kdemail.net>
+  *
+  * SPDX-License-Identifier: GPL-3.0-or-later
+  */
+@@ -38,7 +38,7 @@ public:
+     HtmlPreviewPrivate(HtmlPreview *q_ptr)
+         : q_ptr(q_ptr)
+     {
+-        ;
++        proxy = new PreviewProxy(q_ptr);
+     }
+ 
+     ~HtmlPreviewPrivate()
+@@ -51,7 +51,7 @@ public:
+     MarkdownDocument *document;
+     bool updateInProgress;
+     bool updateAgain;
+-    PreviewProxy proxy;
++    PreviewProxy *proxy;
+     QString baseUrl;
+     QRegularExpression headingTagExp;
+     Exporter *exporter;
+@@ -91,7 +91,7 @@ HtmlPreview::HtmlPreview
+     d->updateInProgress = false;
+     d->updateAgain = false;
+     d->exporter = exporter;
+-    d->proxy.setMathEnabled(d->exporter->supportsMath());
++    d->proxy->setMathEnabled(d->exporter->supportsMath());
+ 
+     d->baseUrl = "";
+ 
+@@ -153,7 +153,7 @@ HtmlPreview::HtmlPreview
+     this->setZoomFactor((horizontalDpi / 96.0));
+ 
+     QWebChannel *channel = new QWebChannel(this);
+-    channel->registerObject(QStringLiteral("previewProxy"), &d->proxy);
++    channel->registerObject(QStringLiteral("previewProxy"), d->proxy);
+     this->page()->setWebChannel(channel);
+ 
+     QFile wrapperHtmlFile(":/resources/preview.html");
+@@ -240,22 +240,22 @@ void HtmlPreview::setHtmlExporter(Exporter *exporter)
+     
+     d->exporter = exporter;
+     d->setHtmlContent("");
+-    d->proxy.setMathEnabled(d->exporter->supportsMath());
++    d->proxy->setMathEnabled(d->exporter->supportsMath());
+     updatePreview();
+ }
+ 
+ void HtmlPreview::setStyleSheet(const QString &css)
+ {
+     Q_D(HtmlPreview);
+-    
+-    d->proxy.setStyleSheet(css);
++
++    d->proxy->setStyleSheet(css);
+ }
+ 
+ void HtmlPreview::setMathEnabled(bool enabled)
+ {
+     Q_D(HtmlPreview);
+-    
+-    d->proxy.setMathEnabled(enabled);
++
++    d->proxy->setMathEnabled(enabled);
+ }
+ 
+ void HtmlPreviewPrivate::onHtmlReady()
+@@ -312,7 +312,7 @@ void HtmlPreview::closeEvent(QCloseEvent *event)
+ 
+ void HtmlPreviewPrivate::setHtmlContent(const QString &html)
+ {
+-    this->proxy.setHtmlContent(html);
++    this->proxy->setHtmlContent(html);
+ }
+ 
+ QString HtmlPreviewPrivate::exportToHtml
+diff --git a/src/settings/appsettings.cpp b/src/settings/appsettings.cpp
+index a76c25a5..7d51ac5d 100644
+--- a/src/settings/appsettings.cpp
++++ b/src/settings/appsettings.cpp
+@@ -65,6 +65,7 @@ public:
+     static AppSettings *instance;
+ 
+     AppSettingsPrivate()
++        : currentHtmlExporter(nullptr)
+     {
+         ;
+     }
+@@ -677,6 +678,7 @@ void AppSettings::setShowUnbreakableSpaceEnabled(bool enabled)
+     d->showUnbreakableSpaceEnabled = enabled;
+     emit showUnbreakableSpaceEnabledChanged(d->showUnbreakableSpaceEnabled);
+ }
++
+ AppSettings::AppSettings()
+     : d_ptr(new AppSettingsPrivate())
+ {
+@@ -843,17 +845,21 @@ AppSettings::AppSettings()
+ 
+     QString exporterName = appSettings.value(constants::GW_LAST_USED_EXPORTER_KEY).toString();
+ 
++    d->currentHtmlExporter = nullptr;
++
+     if (!exporterName.isEmpty()) {
+         d->currentHtmlExporter = ExporterFactory::instance()->exporterByName(exporterName);
+-    }
+ 
+-    if (d->currentHtmlExporter) {
+-        auto lastExportOptions = appSettings.value(constants::GW_LAST_USED_EXPORTER_PARAMS_KEY).toString();
++        if (d->currentHtmlExporter) {
++            auto lastExportOptions = appSettings.value(constants::GW_LAST_USED_EXPORTER_PARAMS_KEY).toString();
+ 
+-        if (!lastExportOptions.isEmpty()) {
+-            d->currentHtmlExporter->setOptions(lastExportOptions);
++            if (!lastExportOptions.isEmpty()) {
++                d->currentHtmlExporter->setOptions(lastExportOptions);
++            }
+         }
+-    } else {
++    }
++
++    if (!d->currentHtmlExporter) {
+         d->currentHtmlExporter = ExporterFactory::instance()->htmlExporters().first();
+     }
+ }
+-- 
+GitLab
+
