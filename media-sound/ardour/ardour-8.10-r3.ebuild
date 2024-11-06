@@ -72,6 +72,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
 	"${FILESDIR}/${PN}-9.0.0-fix-clang-crash.patch"
+	"${FILESDIR}/${PN}-9.0.0-properly-check-for-syscall.patch"
+	"${FILESDIR}/${PN}-9.0.0-fix-unlikely-buffer-overflow.patch"
 )
 
 pkg_pretend() {
