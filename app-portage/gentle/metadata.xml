@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
@@ -9,5 +9,6 @@
 		</maintainer>
 		<bugs-to>https://bugs.sysrq.in/enter_bug.cgi?product=Software&amp;component=gentle</bugs-to>
 		<remote-id type="pypi">gentle-mxml</remote-id>
+		<changelog>https://gentle.sysrq.in/release-notes.html</changelog>
 	</upstream>
 </pkgmetadata>
