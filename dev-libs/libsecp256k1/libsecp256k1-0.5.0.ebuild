@@ -6,11 +6,9 @@ EAPI=8
 inherit autotools
 
 MyPN=secp256k1
-
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
 HOMEPAGE="https://github.com/bitcoin-core/secp256k1"
 SRC_URI="https://github.com/bitcoin-core/secp256k1/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
 S="${WORKDIR}/${MyPN}-${PV}"
 
 LICENSE="MIT"

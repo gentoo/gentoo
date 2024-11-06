@@ -9,6 +9,7 @@ MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
 HOMEPAGE="https://github.com/bitcoin-core/secp256k1"
 SRC_URI="https://github.com/bitcoin-core/secp256k1/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MyPN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0/2"  # subslot is "$((_LIB_VERSION_CURRENT-_LIB_VERSION_AGE))" from configure.ac
@@ -29,8 +30,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/0.3.0-fix-cross-compile.patch"
 )
-
-S="${WORKDIR}/${MyPN}-${PV}"
 
 src_prepare() {
 	default
