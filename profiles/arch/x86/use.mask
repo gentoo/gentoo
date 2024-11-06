@@ -181,7 +181,6 @@ webengine
 -video_cards_vmware
 -video_cards_geode
 -video_cards_vesa
--video_cards_virtualbox
 -video_cards_qxl
 
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)

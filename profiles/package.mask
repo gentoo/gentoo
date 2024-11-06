@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2024-11-06)
+# Replaced by kernel modesetting (CONFIG_DRM_VBOXVIDEO) and the
+# xf86-video-modesetting driver in the Xserver. Bug #929007
+#
+# Removal on 2024-12-06. Bug #924715.
+x11-drivers/xf86-video-vboxvideo
+
+# Matt Turner <mattst88@gentoo.org> (2024-11-06)
 # Driver for integrated GPU paired only with Texas Instruments ARM CPUs.
 #
 # Not maintained upstream. No releases since 2016. No sign of users.
