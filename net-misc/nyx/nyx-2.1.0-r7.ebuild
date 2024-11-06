@@ -27,6 +27,10 @@ RDEPEND="
 	net-vpn/tor
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-py311.patch
+)
+
 distutils_enable_tests unittest
 
 python_install_all() {
