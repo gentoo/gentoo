@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -10,6 +10,7 @@ DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
 HOMEPAGE="https://github.com/bitcoin-core/secp256k1"
 COMMITHASH="3967d96bf184519eb98b766af665b4d4b072563e"
 SRC_URI="https://github.com/bitcoin-core/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${PN}-v${PV}.tgz"
+S="${WORKDIR}/${MyPN}-${COMMITHASH}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,8 +32,6 @@ DEPEND="${RDEPEND}
 	test-openssl? ( dev-libs/openssl:0 )
 	valgrind? ( dev-debug/valgrind )
 "
-
-S="${WORKDIR}/${MyPN}-${COMMITHASH}"
 
 src_prepare() {
 	default
