@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
+    <email>gentoo@mattwhitlock.name</email>
+    <name>Matt Whitlock</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
     <email>luke-jr+gentoobugs@utopios.org</email>
     <name>Luke Dashjr</name>
   </maintainer>
@@ -22,6 +26,6 @@
     <flag name="test-openssl">Enable OpenSSL comparison tests</flag>
   </use>
   <upstream>
-    <remote-id type="github">bitcoin/secp256k1</remote-id>
+    <remote-id type="github">bitcoin-core/secp256k1</remote-id>
   </upstream>
 </pkgmetadata>
