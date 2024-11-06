@@ -243,11 +243,6 @@ app-i18n/kcm-fcitx
 =dev-qt/qtwebsockets-6.8.0*
 =dev-qt/qtwebview-6.8.0*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
-# No more revdeps, merged into kde-frameworks/kpeople upstream.
-# Removal on 2024-11-06.
-dev-libs/kpeoplevcard
-
 # Hans de Graaff <graaff@gentoo.org> (2024-10-06)
 # Obsolete slot without reverse dependencies. Use the newer slot
 # instead. Removal on 2024-11-08.
