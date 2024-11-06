@@ -378,10 +378,6 @@ sci-libs/gdal spatialite
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
 
-# Anthony G. Basile <blueness@gentoo.org> (2012-11-15)
-# Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
-net-im/choqok telepathy
-
 # Samuli Suominen <ssuominen@gentoo.org> (2012-09-27)
 # I don't want to open this can of worms yet. Feel free
 # to do so.

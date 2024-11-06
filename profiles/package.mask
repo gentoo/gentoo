@@ -248,10 +248,6 @@ app-i18n/kcm-fcitx
 # Removal on 2024-11-06.
 dev-libs/kpeoplevcard
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
-# Unmaintained and archived upstream, removal on 2024-11-06.
-net-im/choqok
-
 # Hans de Graaff <graaff@gentoo.org> (2024-10-06)
 # Obsolete slot without reverse dependencies. Use the newer slot
 # instead. Removal on 2024-11-08.
