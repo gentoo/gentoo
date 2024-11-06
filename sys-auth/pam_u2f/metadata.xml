@@ -6,10 +6,6 @@
     <name>Göktürk Yüksek</name>
   </maintainer>
   <use>
-    <flag name="debug" restrict="&lt;sys-auth/pam_u2f-1.0.6">
-      Enable debug messages using the pam logging macros.
-      (Note: these will be visible on stdout for terminal logins).
-    </flag>
     <flag name="debug">
       Enable debug messages using the pam logging macros.
     </flag>
