@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
 HOMEPAGE="https://wiki.qemu.org/Features/GuestAgent"
-SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.xz"
+SRC_URI="https://download.qemu.org/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD-2"
