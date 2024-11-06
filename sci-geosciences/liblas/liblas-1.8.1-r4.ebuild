@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-debug.patch # bug 668778
 	"${FILESDIR}"/${P}-boost-1.73.patch # bug 722878
 	"${FILESDIR}"/${P}-gcc11.patch # bug 789732
+	"${FILESDIR}"/${P}-c99.patch # bug 933089
 )
 
 src_prepare() {
