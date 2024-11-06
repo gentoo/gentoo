@@ -2980,10 +2980,10 @@ toolchain_death_notice() {
 	for dir in "${WORKDIR}"/build-jit "${WORKDIR}"/build ; do
 		if [[ -e "${dir}" ]] ; then
 			pushd "${WORKDIR}" >/dev/null
-			(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > gccinfo.log
-			[[ -e "${T}"/build.log ]] && cp "${T}"/build.log .
+			(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > "${dir}"/gccinfo.log
+			[[ -e "${T}"/build.log ]] && cp "${T}"/build.log "${dir}"
 			tar -arf "${WORKDIR}"/gcc-build-logs.tar.xz \
-				"${dir}"/gccinfo.log "${dir}"/build.log $(find -name "${dir}"/config.log)
+				"${dir#${WORKDIR}/}"/gccinfo.log "${dir#${WORKDIR}/}"/build.log $(find -name "${dir}"/config.log)
 			rm "${dir}"/gccinfo.log "${dir}"/build.log
 			eerror
 			eerror "Please include ${WORKDIR}/gcc-build-logs.tar.xz in your bug report."
