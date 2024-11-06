@@ -23,7 +23,10 @@ DEPEND="
 	${RDEPEND}
 	x11-libs/libXv"
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-Fix-for-X.Org-X-Server-1.20.patch
+)
 
 src_configure() {
 	# -Werror=strict-aliasing
