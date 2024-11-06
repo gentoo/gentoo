@@ -3,19 +3,17 @@
 
 EAPI=8
 
-MYP=pytorch-rls-v${PV}
+MYP=pytorch-rls-v${PV/_p/-}
 DESCRIPTION="Intel® Optimization for Chainer"
 HOMEPAGE="https://github.com/intel/ideep"
 SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MYP}.tar.gz
-	-> ${PF}.tar.gz"
+	-> ${P}.tar.gz"
+
+S="${WORKDIR}"/ideep-${MYP}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-
-PATCHES=( "${FILESDIR}"/${P}-20230825.patch )
-
-S="${WORKDIR}"/ideep-${MYP}
 
 src_install() {
 	doheader -r include/*
