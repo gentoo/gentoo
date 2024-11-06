@@ -15,7 +15,7 @@ S="${WORKDIR}/${MyPN}-${COMMITHASH}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test-openssl"
+IUSE="asm ecdh endomorphism experimental gmp java +recovery test test-openssl"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="

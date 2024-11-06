@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Whitlock <gentoo@mattwhitlock.name> (2024-11-06)
+# Assembly optimization is experimental except on amd64, so we leave it
+# disabled by default on all other arches. Bug #941226
+dev-libs/libsecp256k1 asm
+
 # Michał Górny <mgorny@gentoo.org> (2024-09-04)
 # Build with debugging support by default to facilitate dev-debug/dtrace
 # and sys-apps/systemd[bpf].
