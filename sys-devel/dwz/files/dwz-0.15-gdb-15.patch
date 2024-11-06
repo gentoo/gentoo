@@ -1,0 +1,369 @@
+https://sourceware.org/git/?p=dwz.git;a=commit;h=1ae37f476bc6c9f7a756fee4830766f03600866c
+
+From 1ae37f476bc6c9f7a756fee4830766f03600866c Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Wed, 2 Oct 2024 23:20:57 +0200
+Subject: [PATCH] Add support for version 9 .gdb_index
+
+Version 9 .gdb_index adds a new shortcut table. The table itself is
+just two offset_type values (2 * 4 bytes) describing the language of
+the main function expresses as an DW_LANG_ constant and the offset of
+the main function's name in the constant pool.
+
+The offset to the shortcut table in the header is between the symbol
+table and constant pool offsets.
+
+write_gdb_index explicitly copies the function's name into the new
+constant pool (if lang is not zero) because it might not be an offset
+to an existing name of a symbol.
+
+Some extra checks and warnings have been added to let the user know
+when parsing the .gdb_index fails. Add a const char *file argument to
+write_gdb_index for better error reporting.
+
+Add -D_GNU_SOURCE to Makefile CFLAGS_COMMON to use memrchr.
+
+This fixes the gdb-add-index.sh testcase with gdb 15+.
+
+https://sourceware.org/PR32146
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ CFLAGS = -O2 -g
+ DWZ_VERSION := $(shell cat $(srcdir)/VERSION)
+ CFLAGS_VERSION = -DDWZ_VERSION='"$(DWZ_VERSION)"'
+ CFLAGS_COPYRIGHT = $(shell cat $(srcdir)/COPYRIGHT_YEARS)
+-CFLAGS_COMMON = -Wall -W -D_FILE_OFFSET_BITS=64
++CFLAGS_COMMON = -Wall -W -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE
+ XXH_PROG = "\#define XXH_INLINE_ALL 1\n\#include <xxhash.h>\n"
+ XXH_INLINE_ALL_WORKS = $(shell printf $(XXH_PROG) \
+ 		| $(CC) -xc -c - -o /dev/null 2>/dev/null \
+--- a/dwz.c
++++ b/dwz.c
+@@ -1,6 +1,7 @@
+ /* Copyright (C) 2001-2021 Red Hat, Inc.
+    Copyright (C) 2003 Free Software Foundation, Inc.
+    Copyright (C) 2019-2021 SUSE LLC.
++   Copyright (C) 2024 Mark J. Wielaard <mark@klomp.org>
+    Written by Jakub Jelinek <jakub@redhat.com>, 2012.
+ 
+    This program is free software; you can redistribute it and/or modify
+@@ -13222,12 +13223,13 @@ gdb_index_tu_cmp (const void *p, const void *q)
+ /* Construct new .gdb_index section in malloced memory
+    if it needs adjustment.  */
+ static void
+-write_gdb_index (void)
++write_gdb_index (const char *file)
+ {
+   dw_cu_ref cu, cu_next, first_tu = NULL;
+-  unsigned char *gdb_index, *ptr, *inptr, *end;
++  unsigned char *gdb_index, *ptr, *inptr, *end, *conststart;
+   unsigned int ncus = 0, npus = 0, ntus = 0, ndelcus = 0, ver;
+   unsigned int culistoff, cutypesoff, addressoff, symboloff, constoff;
++  unsigned int headersize, shortcutoff, nextoff;
+   unsigned int *tuindices = NULL, tuidx = 0, *cumap = NULL, i, j, k;
+   bool fail = false;
+ 
+@@ -13235,14 +13237,27 @@ write_gdb_index (void)
+   if (likely (!op_multifile)
+       && (debug_sections[GDB_INDEX].data == NULL
+ 	  || debug_sections[GDB_INDEX].size < 0x18))
+-    return;
++    {
++      if (file && debug_sections[GDB_INDEX].data != NULL)
++	error (0, 0, "%s: .gdb_index too small 0x%zx", file,
++	       debug_sections[GDB_INDEX].size);
++      return;
++    }
+   inptr = (unsigned char *) debug_sections[GDB_INDEX].data;
+   if (unlikely (op_multifile))
+     ver = multi_gdb_index_ver;
+   else
+     ver = buf_read_ule32 (inptr);
+-  if (ver < 4 || ver > 8)
+-    return;
++  if (ver < 4 || ver > 9)
++    {
++      if (file)
++	error (0, 0, "%s: Unknown .gdb_index section version 0x%x", file, ver);
++      return;
++    }
++
++  /* Version 9 added a shortcut table offset (4 bytes) between the
++     address and symbol table offsets.  */
++  headersize = ver < 9 ? 0x18 : 0x1c;
+ 
+   for (cu = first_cu; cu; cu = cu->cu_next)
+     if (cu->cu_kind == CU_PU)
+@@ -13259,25 +13274,38 @@ write_gdb_index (void)
+   /* Starting with version 7 CU indexes are limited to 24 bits,
+      so if we have more CUs, give up.  */
+   if (npus + ncus + ntus - ndelcus >= (1U << 24))
+-    return;
++    {
++      if (file)
++	error (0, 0, "%s: Cannot write %u CUs to .gdb_index",
++	       file, npus + ncus + ntus - ndelcus);
++      return;
++    }
+ 
+   if (unlikely (op_multifile))
+     {
+       assert (ncus == 0 && ntus == 0);
++      /* Version 9 index contain an (empty) shortcut table of 2 32bit
++	 entries (8 byte).  */
+       debug_sections[GDB_INDEX].new_size
+-	= 0x18 + npus * 16 + 16;
++	= headersize + npus * 16 + 16 + (ver >= 9 ? 8 : 0);
+       gdb_index = malloc (debug_sections[GDB_INDEX].new_size);
+       if (gdb_index == NULL)
+ 	dwz_oom ();
+       debug_sections[GDB_INDEX].new_data = gdb_index;
+       /* Write new header.  */
+       buf_write_le32 (gdb_index + 0x00, ver);
+-      buf_write_le32 (gdb_index + 0x04, 0x18);
+-      buf_write_le32 (gdb_index + 0x08, 0x18 + npus * 16);
+-      buf_write_le32 (gdb_index + 0x0c, 0x18 + npus * 16);
+-      buf_write_le32 (gdb_index + 0x10, 0x18 + npus * 16);
+-      buf_write_le32 (gdb_index + 0x14, 0x18 + npus * 16 + 16);
+-      ptr = gdb_index + 0x18;
++      buf_write_le32 (gdb_index + 0x04, headersize);
++      buf_write_le32 (gdb_index + 0x08, headersize + npus * 16);
++      buf_write_le32 (gdb_index + 0x0c, headersize + npus * 16);
++      buf_write_le32 (gdb_index + 0x10, headersize + npus * 16);
++      if (ver >= 9)
++	{
++	  buf_write_le32 (gdb_index + 0x14, headersize + npus * 16 + 16);
++	  buf_write_le32 (gdb_index + 0x18, headersize + npus * 16 + 16 + 8);
++	}
++      else
++	buf_write_le32 (gdb_index + 0x14, headersize + npus * 16 + 16);
++      ptr = gdb_index + headersize;
+       /* Write new CU list.  */
+       for (cu = first_cu; cu; cu = cu->cu_next)
+ 	{
+@@ -13290,6 +13318,10 @@ write_gdb_index (void)
+ 	}
+       /* Write an empty hash table (with two entries).  */
+       memset (ptr, '\0', 16);
++      /* Write an empty shortcut table (two zero offset types,
++	 indicating no main function or language).  */
++      if (ver >= 9)
++	memset (ptr + 16, '\0', 8);
+       return;
+     }
+ 
+@@ -13297,18 +13329,34 @@ write_gdb_index (void)
+   cutypesoff = buf_read_ule32 (inptr + 0x08);
+   addressoff = buf_read_ule32 (inptr + 0x0c);
+   symboloff = buf_read_ule32 (inptr + 0x10);
+-  constoff = buf_read_ule32 (inptr + 0x14);
+-  if (culistoff != 0x18
+-      || cutypesoff != 0x18 + ncus * 16
++  if (ver >= 9)
++    {
++      shortcutoff = buf_read_ule32 (inptr + 0x14);
++      constoff = buf_read_ule32 (inptr + 0x18);
++      nextoff = shortcutoff;
++    }
++  else
++    {
++      shortcutoff = 0;
++      constoff = buf_read_ule32 (inptr + 0x14);
++      nextoff = constoff;
++    }
++
++  if (culistoff != headersize
++      || cutypesoff != headersize + ncus * 16
+       || addressoff != cutypesoff + ntus * 24
+       || symboloff < addressoff
+       || ((symboloff - addressoff) % 20) != 0
+-      || constoff < symboloff
+-      || ((constoff - symboloff) & (constoff - symboloff - 1)) != 0
+-      || ((constoff - symboloff) & 7) != 0
++      || nextoff < symboloff
++      || ((nextoff - symboloff) & (nextoff - symboloff - 1)) != 0
++      || ((nextoff - symboloff) & 7) != 0
+       || debug_sections[GDB_INDEX].size < constoff)
+-    return;
+-  inptr += 0x18;
++    {
++      if (file)
++	error (0, 0, "%s: Unexpected offsets in .gdb_index", file);
++      return;
++    }
++  inptr += headersize;
+   if (ndelcus)
+     cumap = (unsigned int *)
+ 	    obstack_alloc (&ob2, ncus * sizeof (unsigned int));
+@@ -13319,6 +13367,8 @@ write_gdb_index (void)
+ 	  {
+ 	    if (cumap)
+ 	      obstack_free (&ob2, (void *) cumap);
++	    if (file)
++	      error (0, 0, "%s: unexpected cu cu_offset in .gdb_index", file);
+ 	    return;
+ 	  }
+ 	inptr += 16;
+@@ -13353,6 +13403,8 @@ write_gdb_index (void)
+ 	      obstack_free (&ob2, (void *) cumap);
+ 	    else
+ 	      obstack_free (&ob2, (void *) tuindices);
++	    if (file)
++	      error (0, 0, "%s: unexpected tui cu_offset in .gdb_index", file);
+ 	    return;
+ 	  }
+     }
+@@ -13375,8 +13427,16 @@ write_gdb_index (void)
+   buf_write_le32 (gdb_index + 0x08, cutypesoff + npus * 16 - ndelcus * 16);
+   buf_write_le32 (gdb_index + 0x0c, addressoff + npus * 16 - ndelcus * 16);
+   buf_write_le32 (gdb_index + 0x10, symboloff + npus * 16 - ndelcus * 16);
+-  buf_write_le32 (gdb_index + 0x14, constoff + npus * 16 - ndelcus * 16);
+-  ptr = gdb_index + 0x18;
++  if (ver >= 9)
++    {
++      buf_write_le32 (gdb_index + 0x14,
++		      shortcutoff + npus * 16 - ndelcus * 16);
++      buf_write_le32 (gdb_index + 0x18,
++		      constoff + npus * 16 - ndelcus * 16);
++    }
++  else
++    buf_write_le32 (gdb_index + 0x14, constoff + npus * 16 - ndelcus * 16);
++  ptr = gdb_index + headersize;
+   /* Write new CU list.  */
+   for (cu = first_cu; cu; cu = cu_next)
+     {
+@@ -13434,12 +13494,43 @@ write_gdb_index (void)
+       inptr += 20;
+     }
+   /* Copy the symbol hash table.  */
+-  memcpy (ptr, inptr, constoff - symboloff);
++  memcpy (ptr, inptr, nextoff - symboloff);
+   /* Clear the const pool initially.  */
+-  memset (ptr + (constoff - symboloff), '\0',
++  memset (ptr + (nextoff - symboloff) + (ver < 9 ? 0 : 8), '\0',
+ 	  debug_sections[GDB_INDEX].size - constoff);
++  /* Copy the shortcut table.  */
++  if (ver >= 9)
++    {
++      unsigned char *inscptr = inptr + (nextoff - symboloff);
++      unsigned char *scptr = ptr + (nextoff - symboloff);
++      uint32_t lang = buf_read_ule32 (inscptr);
++      uint32_t name = buf_read_ule32 (inscptr + 4);
++      buf_write_le32 (scptr, lang);
++      buf_write_le32 (scptr + 4, name);
++
++      /* If lang is not zero then put the name in the const table, it
++	 might not be an offset to the name of a symbol.  */
++      if (lang != 0)
++	{
++	  if (name > debug_sections[GDB_INDEX].size - constoff - 1
++	      || memrchr (debug_sections[GDB_INDEX].data
++			  + debug_sections[GDB_INDEX].size, '\0',
++			  debug_sections[GDB_INDEX].size
++			  - constoff - name) == NULL)
++	    {
++	      error (0, 0, "%s: bad shortcut table name in .gdb_index", file);
++	      goto fail;
++	    }
++	  strcpy ((char *) ptr + (constoff - symboloff) + name,
++		  (char *) inptr + (constoff - symboloff) + name);
++	}
++    }
+   ptr = ptr + (constoff - symboloff);
+-  end = inptr + (constoff - symboloff);
++  end = inptr + (nextoff - symboloff);
++  if (ver >= 9)
++    conststart = end + (constoff - nextoff);
++  else
++    conststart = end;
+   /* Finally copy over const objects into the const pool, strings as is,
+      CU vectors with CU indexes adjusted.  */
+   while (inptr < end)
+@@ -13450,9 +13541,11 @@ write_gdb_index (void)
+       inptr += 8;
+       if (name == 0 && cuvec == 0)
+ 	continue;
+-      if (name > debug_sections[GDB_INDEX].size - constoff - 1
+-	  || cuvec > debug_sections[GDB_INDEX].size - constoff - 4)
++      if (name > debug_sections[GDB_INDEX].size - nextoff - 1
++	  || cuvec > debug_sections[GDB_INDEX].size - nextoff - 4)
+ 	{
++	  if (file)
++	    error (0, 0, "%s: name or cuvec too large in .gdb_index", file);
+ 	fail:
+ 	  free (gdb_index);
+ 	  debug_sections[GDB_INDEX].new_size = 0;
+@@ -13460,26 +13553,36 @@ write_gdb_index (void)
+ 	}
+       if (ptr[name] == '\0')
+ 	{
+-	  unsigned char *strend = end + name;
++	  unsigned char *strend = conststart + name;
+ 	  while (*strend != '\0')
+ 	    {
+ 	      if (strend + 1
+-		  == end + (debug_sections[GDB_INDEX].size - constoff))
+-		goto fail;
++		  == conststart + (debug_sections[GDB_INDEX].size - constoff))
++		{
++		  if (file)
++		    error (0, 0, "%s: name too large in .gdb_index", file);
++		  goto fail;
++		}
+ 	      strend++;
+ 	    }
+-	  memcpy (ptr + name, end + name, strend + 1 - (end + name));
++	  memcpy (ptr + name, conststart + name,
++		  strend + 1 - (conststart + name));
+ 	}
+       if (buf_read_ule32 (ptr + cuvec) == 0)
+ 	{
+-	  unsigned int count = buf_read_ule32 (end + cuvec);
++	  unsigned int count = buf_read_ule32 (conststart + cuvec);
+ 	  if (count * 4
+ 	      > debug_sections[GDB_INDEX].size - constoff - cuvec - 4)
+-	    goto fail;
++	    {
++	      if (file)
++		error (0, 0, "%s: count (%u) too large in .gdb_index",
++		       file, count);
++	      goto fail;
++	    }
+ 	  buf_write_le32 (ptr + cuvec, count);
+ 	  for (i = 0; i < count; i++)
+ 	    {
+-	      j = buf_read_ule32 (end + cuvec + (i + 1) * 4);
++	      j = buf_read_ule32 (conststart + cuvec + (i + 1) * 4);
+ 	      if (ver >= 7)
+ 		k = j & ((1U << 24) - 1);
+ 	      else
+@@ -13506,6 +13609,9 @@ write_gdb_index (void)
+     obstack_free (&ob2, (void *) tuindices);
+   if (fail)
+     {
++      if (file)
++	error (0, 0, "%s: fail in .gdb_index", file);
++
+       free (debug_sections[GDB_INDEX].new_data);
+       debug_sections[GDB_INDEX].new_data = NULL;
+       debug_sections[GDB_INDEX].new_size = 0;
+@@ -15549,7 +15655,7 @@ dwz (const char *file, const char *outfile, struct file_result *res)
+ 	      report_progress ();
+ 	      fprintf (stderr, "write_gdb_index\n");
+ 	    }
+-	  write_gdb_index ();
++	  write_gdb_index (file);
+ 	  /* These sections are optional and it is unclear
+ 	     how to adjust them.  Just remove them.  */
+ 	  debug_sections[DEBUG_PUBNAMES].new_data = NULL;
+@@ -15808,7 +15914,7 @@ optimize_multifile (unsigned int *die_count)
+ 
+ 	  write_abbrev ();
+ 	  write_info (die_count);
+-	  write_gdb_index ();
++	  write_gdb_index (NULL);
+ 	  if (write_multifile_line ())
+ 	    goto fail;
+ 	}
+-- 
+2.43.5
