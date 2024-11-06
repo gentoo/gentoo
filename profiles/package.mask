@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2024-11-06)
+# Driver for integrated GPU paired only with Texas Instruments ARM CPUs.
+#
+# Not maintained upstream. No releases since 2016. No sign of users.
+#
+# Removal on 2024-12-06. Bug #924715.
+x11-drivers/xf86-video-omap
+
+# Matt Turner <mattst88@gentoo.org> (2024-11-06)
 # Driver for integrated GPU paired only with x86 VIA CPUs.
 #
 # Has not worked in Gentoo for more than two years (see bug #875233) without
