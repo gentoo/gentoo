@@ -52,6 +52,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.45.1-ppc64-ptr.patch
+	"${FILESDIR}"/${PN}-3.47.0-nonbash.patch
 )
 
 _fossil_fetch() {
