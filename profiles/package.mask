@@ -255,14 +255,6 @@ dev-ruby/base64:0.1
 # See also: https://github.com/gentoo/gentoo/pull/36091
 ~sys-boot/plymouth-24.004.60
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-05)
-# Masked for removal in 30 days. Broken since KF6 incapacitated
-# breeze-icons-rcc, but no one even complained. Upstream porting
-# effort stalled indefinitely:
-# https://invent.kde.org/office/kexi/-/issues/152
-# Removal on 2024-11-04.
-app-office/kexi
-
 # Sebastian Pipping <sping@gentoo.org> (2024-10-03)
 # Masked for removal in 30 days.  Last release in 2021,
 # last commit two years ago, has open bugs, .. (bug #940725).
