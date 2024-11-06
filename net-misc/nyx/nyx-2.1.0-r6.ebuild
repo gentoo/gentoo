@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE='ncurses,sqlite(-)'
 DISTUTILS_USE_PEP517=setuptools
 
@@ -22,11 +22,10 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-# net-libs/stem-1.8.0_p20211118 was an incompatible git-snapshot
-# simply depend on net-libs/stem in the future
 RDEPEND="
 	net-libs/stem[${PYTHON_USEDEP}]
-	net-vpn/tor"
+	net-vpn/tor
+"
 
 distutils_enable_tests unittest
 
