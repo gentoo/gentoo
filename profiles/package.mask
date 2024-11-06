@@ -264,7 +264,6 @@ dev-ruby/base64:0.1
 app-office/kexi
 dev-db/kdb
 dev-libs/kproperty
-dev-libs/kreport
 
 # Sebastian Pipping <sping@gentoo.org> (2024-10-03)
 # Masked for removal in 30 days.  Last release in 2021,
