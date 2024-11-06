@@ -1,3 +1,5 @@
+https://bugs.gentoo.org/942871
+https://github.com/torproject/nyx/issues/74
 --- a/nyx/panel/__init__.py
 +++ b/nyx/panel/__init__.py
 @@ -78,7 +78,7 @@
