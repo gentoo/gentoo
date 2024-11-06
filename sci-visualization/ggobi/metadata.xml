@@ -12,4 +12,7 @@
 		scatterplot, barchart and parallel coordinates plots. Plots are
 		interactive and linked with brushing and identification.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ggobi/ggobi</remote-id>
+	</upstream>
 </pkgmetadata>
