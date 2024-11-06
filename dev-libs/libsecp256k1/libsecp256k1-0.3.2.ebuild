@@ -14,7 +14,7 @@ S="${WORKDIR}/${MyPN}-${PV}"
 LICENSE="MIT"
 SLOT="0/2"  # subslot is "$((_LIB_VERSION_CURRENT-_LIB_VERSION_AGE))" from configure.ac
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+asm +ecdh experimental +extrakeys lowmem +recovery +schnorr test valgrind"
+IUSE="asm +ecdh experimental +extrakeys lowmem +recovery +schnorr test valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
