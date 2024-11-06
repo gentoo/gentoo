@@ -75,15 +75,6 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 				20.0.0_pre20241029)
 					EGIT_COMMIT=3f4468faaa9525ad615118675c3c68938f4a8d5f
 					;;
-				20.0.0_pre20241023)
-					EGIT_COMMIT=0cb80c4f00689ca00a85e1f38bc6ae9dd0bf980e
-					;;
-				20.0.0_pre20241015)
-					EGIT_COMMIT=9aef0fd52a0b2bf31cf3bae8a0693d6df8db6e04
-					;;
-				20.0.0_pre20241009)
-					EGIT_COMMIT=fb2960aad93f6c02e0ea8de0568c0aef8896eee8
-					;;
 				*)
 					die "Unknown snapshot: ${PV}"
 					;;
