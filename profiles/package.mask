@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2024-11-06)
+# Driver for integrated GPU paired only with x86 VIA CPUs.
+#
+# Has not worked in Gentoo for more than two years (see bug #875233) without
+# any actual users noticing.
+#
+# Removal on 2024-12-06. Bug #875233.
+x11-drivers/xf86-video-openchrome
+
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-11-03)
 # Vendors an unreleased libbpf version and announces incorrect version.
 # Please downgrade to 7.4.0. Bug Bug #941185. Removal on 2024-12-03.

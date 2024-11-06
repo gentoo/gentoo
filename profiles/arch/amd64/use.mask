@@ -144,7 +144,6 @@
 -video_cards_nvk
 -video_cards_siliconmotion
 -video_cards_vesa
--video_cards_via
 -video_cards_virtualbox
 -video_cards_vmware
 -video_cards_qxl
