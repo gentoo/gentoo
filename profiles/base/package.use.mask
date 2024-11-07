@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Joonas Niilola <juippis@gentoo.org> (2024-11-07)
+# Dependency for generating docs not packaged in Gentoo. #942992
+dev-util/repolite doc
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-11-01)
 # No suitable versions of dev-libs/protobuf available.
 >=dev-java/protobuf-java-4.28.1 system-protoc
