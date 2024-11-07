@@ -389,6 +389,13 @@ pkg_postinst() {
 		fi
 	fi
 
+	ewarn
+	ewarn "Warning: please consider ${PN} provided as-is without real"
+	ewarn "support. Upstream does not want bug reports unless can reproduce"
+	ewarn "with real Steam+Proton, and Gentoo is largely unable to help"
+	ewarn "unless it is a build/packaging issue. So, if need support, try"
+	ewarn "normal Wine or Proton instead."
+
 	eselect wine update --if-unset || die
 }
 
