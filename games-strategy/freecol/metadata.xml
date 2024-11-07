@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/freecol/bugs/</bugs-to>
+		<changelog>https://sourceforge.net/p/freecol/git/ci/master/tree/CHANGELOG.md</changelog>
 		<doc>https://github.com/FreeCol/freecol/wiki</doc>
 		<remote-id type="sourceforge">freecol</remote-id>
 	</upstream>
