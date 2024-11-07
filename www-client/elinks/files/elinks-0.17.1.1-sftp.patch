@@ -143,6 +143,20 @@ a198d2da3cf958d7c1de3bc02a2ea49c25a3f785
 +	}
 +#endif
 +}
+--- a/src/protocol/curl/http.h
++++ b/src/protocol/curl/http.h
+@@ -19,6 +19,10 @@ extern protocol_handler_T http_curl_prot
+
+ void http_curl_handle_error(struct connection *conn, CURLcode res);
+
++#ifdef CONFIG_FTP
++void ftp_curl_handle_error(struct connection *conn, CURLcode res);
++#endif
++
+ #endif
+
+ #ifdef __cplusplus
+
 --- a/src/protocol/curl/sftp.h
 +++ b/src/protocol/curl/sftp.h
 @@ -10,7 +10,7 @@
