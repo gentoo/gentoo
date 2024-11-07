@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools toolchain-funcs
 
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE="X"
+IUSE="gui"
 
 RDEPEND="
 	dev-libs/libmix
@@ -21,7 +21,7 @@ RDEPEND="
 	net-libs/libpcap
 	net-libs/libtirpc:=
 	net-libs/rpcsvc-proto
-	X? (
+	gui? (
 		dev-lang/tk:*
 		x11-libs/libX11
 	)
@@ -59,7 +59,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	econf $(use_with X x)
+	econf $(use_with gui x)
 }
 
 src_compile() {
@@ -68,7 +68,7 @@ src_compile() {
 
 src_install() {
 	dobin nsat smb-ns
-	use X && dobin tools/xnsat
+	use gui && dobin tools/xnsat
 
 	insinto /usr/share/nsat
 	doins nsat.cgi
