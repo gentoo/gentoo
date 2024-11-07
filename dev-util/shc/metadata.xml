@@ -3,6 +3,7 @@
 <pkgmetadata>
 <!-- maintainer-needed -->
 <upstream>
-	<changelog>http://www.datsi.fi.upm.es/~frosal/sources/CHANGES</changelog>
+	<remote-id type="github">neurobin/shc</remote-id>
+	<changelog>https://www.datsi.fi.upm.es/~frosal/sources/CHANGES</changelog>
 </upstream>
 </pkgmetadata>
