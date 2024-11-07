@@ -1,0 +1,7 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-11-06)
+# Old versions of GCC do not support USE=time64, and as such do not
+# enforce 64-bit time_t as required by this profile.
+<sys-devel/gcc-14.2.1_p20241026
