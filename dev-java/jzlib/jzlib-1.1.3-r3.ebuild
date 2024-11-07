@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="examples source test"
 MAVEN_ID="com.jcraft:jzlib:1.1.3"
@@ -11,28 +11,20 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="JZlib is a re-implementation of zlib in pure Java"
 HOMEPAGE="http://www.jcraft.com/jzlib/"
 SRC_URI="https://github.com/ymnk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
-RDEPEND="
-	>=virtual/jre-1.8:*"
-DEPEND="
-	>=virtual/jdk-1.8:*"
-#	test? (
-#		dev-lang/scala
-#		dev-java/junit:4 )"
+DEPEND=">=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*"
 # Restrict test due to missing keywords for scala
 RESTRICT="test"
 
-S="${WORKDIR}/${P}"
-JAVA_SRC_DIR="src/main/java"
+DOCS=( README ChangeLog )
 
-src_prepare() {
-	default
-	rm pom.xml || die
-}
+JAVA_SRC_DIR="src/main/java"
 
 src_test() {
 	local CP TESTS
@@ -46,6 +38,5 @@ src_test() {
 
 src_install() {
 	java-pkg-simple_src_install
-	dodoc README ChangeLog
 	use examples && java-pkg_doexamples example
 }
