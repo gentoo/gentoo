@@ -23,7 +23,6 @@ DEPEND="test? (
 	app-shells/tcsh
 	app-shells/zsh
 )"
-RDEPEND=""
 
 RESTRICT="!test? ( test )"
 
