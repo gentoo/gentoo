@@ -14,6 +14,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/BiglySoftware/BiglyBT/issues</bugs-to>
+		<changelog>https://github.com/BiglySoftware/BiglyBT/blob/master/ChangeLog.txt</changelog>
 		<doc>https://github.com/BiglySoftware/BiglyBT/wiki</doc>
 		<remote-id type="github">BiglySoftware/BiglyBT</remote-id>
 	</upstream>
