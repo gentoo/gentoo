@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libtirpc.patch
 	"${FILESDIR}"/${P}-amd64-compat.patch
 	"${FILESDIR}"/${P}-configure-dash.patch
+	"${FILESDIR}"/${P}-no-ansi.patch
 )
 
 src_prepare() {

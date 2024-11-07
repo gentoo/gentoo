@@ -1,0 +1,53 @@
+--- a/configure.in
++++ b/configure.in
+@@ -42,20 +42,20 @@ case "`${UNAME}`" in
+   AC_DEFINE(HAVE_LINUX)
+   AC_DEFINE(MY_HDRINCL,3)
+ if test x$LEETCC = xyes; then
+-    CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DLINUX'
++    CCOPTS='-Wall -O6 -funroll-loops -fPIC -DLINUX'
+ else
+     CCOPTS="${CFLAGS} -DLINUX"
+ fi
+     SMBCFLAGS="${CCOPTS} -Wall -DLINUX -DNETGROUP -DALLOW_CHANGE_PASSWORD -DFAST_SHARE_MODES -DNO_ASMSIGNALH -DGLIBC2"
+     SMBLFLAGS="-lnsl -lcrypt"
+-    CFLAGS="${CCOPTS} -Wall -ansi -fPIC -DLINUX"
++    CFLAGS="${CCOPTS} -Wall -fPIC -DLINUX"
+  ;;
+  *Darwin* | *Mac* | *MAC*)
+   AC_MSG_RESULT(found MAC OS X)
+   AC_DEFINE(HAVE_BSD)
+   AC_DEFINE(MY_HDRINCL,2)
+ if test x$LEETCC = xyes; then
+-   CCOPTS='-Wall -O -funroll-loops -ansi -fPIC -DBSD44 -DDARWIN'
++   CCOPTS='-Wall -O -funroll-loops -fPIC -DBSD44 -DDARWIN'
+ else
+    CCOPTS='-DBSD44 -DOBSD'
+ fi
+@@ -68,7 +68,7 @@ fi
+   AC_DEFINE(HAVE_BSD)
+   AC_DEFINE(MY_HDRINCL,2)
+ if test x$LEETCC = xyes; then
+-   CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DBSD44 -DOBSD'
++   CCOPTS='-Wall -O6 -funroll-loops -fPIC -DBSD44 -DOBSD'
+ else
+    CCOPTS='-DBSD44 -DOBSD'
+ fi
+@@ -81,7 +81,7 @@ fi
+   AC_DEFINE(HAVE_BSD)
+   AC_DEFINE(MY_HDRINCL,2)
+ if test x$LEETCC = xyes; then
+-    CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DBSD44'
++    CCOPTS='-Wall -O6 -funroll-loops -fPIC -DBSD44'
+ else
+     CCOPTS='-DBSD44'
+ fi
+@@ -96,7 +96,7 @@ fi
+   AC_CHECK_LIB(socket, socket, [ CLIB="$CLIB -lsocket " ], AC_MSG_ERROR(libsocket not found.))
+   AC_CHECK_LIB(nsl, gethostbyname, [ CLIB="$CLIB -lnsl " ], AC_MSG_ERROR(libnsl not found.))
+ if test x$LEETCC = xyes; then
+-    CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DSOLARIS'
++    CCOPTS='-Wall -O6 -funroll-loops -fPIC -DSOLARIS'
+ else
+     CCOPTS='-DSOLARIS'
+ fi
