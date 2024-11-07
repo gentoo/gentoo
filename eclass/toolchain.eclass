@@ -1579,7 +1579,7 @@ toolchain_src_configure() {
 			fi
 		}
 
-		enable_cet_for 'i[34567]86' 'linux' 'cet'
+		enable_cet_for 'i[34567]86' 'gnu' 'cet'
 		enable_cet_for 'x86_64' 'gnu' 'cet'
 		enable_cet_for 'aarch64' 'gnu' 'standard-branch-protection'
 	fi
