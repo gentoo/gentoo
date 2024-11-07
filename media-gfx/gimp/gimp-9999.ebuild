@@ -15,10 +15,12 @@ EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
-IUSE="X aalib alsa doc gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons webp wmf xpm"
+IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons webp wmf xpm"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
+	test? ( X )
+	xpm? ( X )
 "
 
 RESTRICT="!test? ( test )"
@@ -38,7 +40,7 @@ COMMON_DEPEND="
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
-	>=gnome-base/librsvg-2.40.21:2
+	>=gnome-base/librsvg-2.57.3:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
 	>=media-libs/babl-9999[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
@@ -53,13 +55,13 @@ COMMON_DEPEND="
 	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
-	>=x11-libs/cairo-1.16.0
+	>=x11-libs/cairo-1.16.0[X=]
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
-	>=x11-libs/gtk+-3.24.16:3[introspection]
-	>=x11-libs/pango-1.50.0
-	>=x11-libs/libXmu-1.1.4
+	>=x11-libs/gtk+-3.24.16:3[introspection,X=]
+	>=x11-libs/pango-1.50.0[X=]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
+	fits? ( sci-libs/cfitsio )
 	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
@@ -76,8 +78,13 @@ COMMON_DEPEND="
 	udev? ( >=dev-libs/libgudev-167:= )
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
 	webp? ( >=media-libs/libwebp-0.6.0:= )
-	wmf? ( >=media-libs/libwmf-0.2.8 )
-	X? ( x11-libs/libXcursor )
+	wmf? ( >=media-libs/libwmf-0.2.8[X=] )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXcursor
+		x11-libs/libXext
+		>=x11-libs/libXmu-1.1.4
+	)
 	xpm? ( x11-libs/libXpm )
 "
 
@@ -167,11 +174,13 @@ src_configure() {
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
 		-Dbug-report-url=https://bugs.gentoo.org/
+		-Dilbm=disabled
 		-Dlibbacktrace=false
 		-Dwebkit-unmaintained=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
 		$(meson_feature doc gi-docgen)
+		$(meson_feature fits)
 		$(meson_feature heif)
 		$(meson_feature javascript)
 		$(meson_feature jpeg2k jpeg2000)
@@ -235,15 +244,12 @@ src_install() {
 
 	find "${D}" -name '*.la' -type f -delete || die
 
-	# Prevent dead symlink gimp-console.1 from downstream man page compression (bug #433527)
-	mv "${ED}"/usr/share/man/man1/gimp-console{-*,}.1 || die
-
 	# Create symlinks for Gimp exec in /usr/bin
-	dosym "${ESYSROOT}"/usr/bin/gimp-2.99 /usr/bin/gimp
-	dosym "${ESYSROOT}"/usr/bin/gimp-console-2.99 /usr/bin/gimp-console
+	dosym "${ESYSROOT}"/usr/bin/gimp-3.0 /usr/bin/gimp
+	dosym "${ESYSROOT}"/usr/bin/gimp-console-3.0 /usr/bin/gimp-console
 	dosym "${ESYSROOT}"/usr/bin/gimp-script-fu-interpreter-3.0 /usr/bin/gimp-script-fu-interpreter
-	dosym "${ESYSROOT}"/usr/bin/gimp-test-clipboard-2.99 /usr/bin/gimp-test-clipboard
-	dosym "${ESYSROOT}"/usr/bin/gimptool-2.99 /usr/bin/gimptool
+	dosym "${ESYSROOT}"/usr/bin/gimp-test-clipboard-3.0 /usr/bin/gimp-test-clipboard
+	dosym "${ESYSROOT}"/usr/bin/gimptool-3.0 /usr/bin/gimptool
 
 	_rename_plugins || die
 }
