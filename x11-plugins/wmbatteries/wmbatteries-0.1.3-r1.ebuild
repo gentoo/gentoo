@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Dock app for monitoring the current battery status and CPU temperature"
 HOMEPAGE="https://sourceforge.net/projects/wmbatteries"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
@@ -19,3 +21,8 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 DOCS=( AUTHORS THANKS README example/wmbatteriesrc )
+
+src_prepare() {
+	default
+	eautoreconf
+}
