@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 LICENSE="MIT"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde libs +man nat-pmp +qrcode +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
 RESTRICT="!test? ( test )"
