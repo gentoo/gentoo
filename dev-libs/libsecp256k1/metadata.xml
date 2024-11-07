@@ -16,14 +16,12 @@
   <use>
     <flag name="ecdh">Enable ECDH shared secret computation</flag>
     <flag name="ellswift">Enable ElligatorSwift encoding for public keys</flag>
-    <flag name="endomorphism">Enable endomorphism</flag>
     <flag name="experimental">Allow experimental USE flags</flag>
     <flag name="extrakeys">Enable extrakeys module</flag>
     <flag name="lowmem">Reduce runtime memory usage at the expense of performance (ecmult window size 4, gen precision 2)</flag>
     <flag name="musig">Enable MuSig2 module</flag>
     <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
     <flag name="schnorr">Enable Schnorr signature module</flag>
-    <flag name="test-openssl">Enable OpenSSL comparison tests</flag>
   </use>
   <upstream>
     <remote-id type="github">bitcoin-core/secp256k1</remote-id>
