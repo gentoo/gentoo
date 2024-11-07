@@ -152,6 +152,11 @@ dev-python/tables cpudetection
 # libomptarget is only supported on 64-bit architectures.
 >=sys-libs/libomp-16.0.0_pre20230124 offload
 
+# Sam James <sam@gentoo.org> (2023-01-05)
+# asm is only available for amd64 and arm, but for arm, is gated
+# behind an experimental flag.
+>=dev-libs/libsecp256k1-0.2.0 asm
+
 # Sam James <sam@gentoo.org> (2022-12-11)
 # Unkeyworded dependencies
 net-misc/curl rustls curl_ssl_rustls
