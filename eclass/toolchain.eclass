@@ -14,6 +14,8 @@
 if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
 _TOOLCHAIN_ECLASS=1
 
+RUST_OPTIONAL="1"
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -22,7 +24,7 @@ esac
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit edo flag-o-matic gnuconfig libtool multilib pax-utils rust toolchain-funcs prefix
 
 [[ -n ${TOOLCHAIN_HAS_TESTS} ]] && inherit python-any-r1
 
@@ -427,7 +429,7 @@ fi
 if tc_has_feature rust && tc_version_is_at_least 14.0.0_pre20230421 ; then
 	# This was added upstream in r14-9968-g3e1e73fc995844 as a temporary measure.
 	# See https://inbox.sourceware.org/gcc/34fec7ea-8762-4cac-a1c8-ff54e20e31ed@embecosm.com/
-	BDEPEND+=" rust? ( virtual/rust )"
+	BDEPEND+=" rust? ( ${RUST_DEPEND} )"
 fi
 
 PDEPEND=">=sys-devel/gcc-config-2.11"
