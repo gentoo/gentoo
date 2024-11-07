@@ -12,7 +12,7 @@ SRC_URI="https://github.com/neurobin/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ppc ~sparc ~x86"
 
 IUSE="test"
 
