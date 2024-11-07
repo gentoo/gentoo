@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-11-07)
+# No more used (caffe2 used to)
+# Removal on 2024-12-07.  Bug #942972.
+sci-libs/QNNPACK
+
 # Matt Turner <mattst88@gentoo.org> (2024-11-06)
 # Replaced by kernel modesetting (CONFIG_DRM_VBOXVIDEO) and the
 # xf86-video-modesetting driver in the Xserver. Bug #929007
