@@ -4,7 +4,7 @@
 EAPI=8
 inherit cmake
 
-CommitId=d6860c477c99f1fce9e28eb206891af3c0e1a1d7
+CommitId=094fc30b9256f54dad5ad23bcbfb5de74781422f
 
 DESCRIPTION="CPU INFOrmation library"
 HOMEPAGE="https://github.com/pytorch/cpuinfo/"
