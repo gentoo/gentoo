@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2024-11-09)
+# Does not build with any rust version in the tree. Removal in 30 days.
+=dev-util/wasmer-0.11.0
+
 # Hans de Graaff <graaff@gentoo.org> (2024-11-08)
 # Obsolete slot. Use a newer slot instead. Removal on 2024-12-08.
 dev-ruby/faker:2
