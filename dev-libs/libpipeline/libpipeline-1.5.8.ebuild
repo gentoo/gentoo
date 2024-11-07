@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="A pipeline manipulation library"
 HOMEPAGE="https://libpipeline.nongnu.org/"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
@@ -15,6 +17,11 @@ RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_install() {
 	default
