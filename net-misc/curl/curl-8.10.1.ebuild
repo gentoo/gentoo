@@ -112,7 +112,7 @@ RDEPEND="
 			>=dev-libs/openssl-0.9.7:=[sslv3(-)=,static-libs?,${MULTILIB_USEDEP}]
 		)
 		rustls? (
-			>=net-libs/rustls-ffi-0.13.0:=[${MULTILIB_USEDEP}]
+			>=net-libs/rustls-ffi-0.14.0:=[${MULTILIB_USEDEP}]
 		)
 	)
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
