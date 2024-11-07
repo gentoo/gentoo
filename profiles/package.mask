@@ -34,6 +34,38 @@
 #--- END OF EXAMPLES ---
 
 # Matt Jolly <kangie@gentoo.org> (2024-11-09)
+# The legacy Rust ebuilds are no longer maintained and have been
+# replaced by the new slotted Rust. Removal in 30 days.
+=dev-lang/rust-1.71.1
+=dev-lang/rust-1.74.1
+=dev-lang/rust-1.75.0-r1
+=dev-lang/rust-1.77.1
+=dev-lang/rust-1.79.0
+=dev-lang/rust-1.80.1
+=dev-lang/rust-1.81.0
+=dev-lang/rust-1.82.0
+=dev-lang/rust-bin-1.71.1
+=dev-lang/rust-bin-1.74.1
+=dev-lang/rust-bin-1.75.0
+=dev-lang/rust-bin-1.77.1
+=dev-lang/rust-bin-1.79.0
+=dev-lang/rust-bin-1.80.1
+=dev-lang/rust-bin-1.81.0
+=dev-lang/rust-bin-1.82.0
+=virtual/rust-1.71.1-r2
+=virtual/rust-1.74.1-r1
+=virtual/rust-1.75.0-r1
+=virtual/rust-1.77.1
+=virtual/rust-1.79.0
+=virtual/rust-1.80.1
+=virtual/rust-1.81.0-r1
+=virtual/rust-1.82.0
+
+# Matt Jolly <kangie@gentoo.org> (2024-11-09)
+# Does not build with any rust version in the tree. Removal in 30 days.
+=dev-lang/starlark-rust-0.8.0
+
+# Matt Jolly <kangie@gentoo.org> (2024-11-09)
 # Does not build with any rust version in the tree. Removal in 30 days.
 =dev-util/wasmer-0.11.0
 
