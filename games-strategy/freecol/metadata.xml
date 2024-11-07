@@ -10,5 +10,6 @@
 		<changelog>https://sourceforge.net/p/freecol/git/ci/master/tree/CHANGELOG.md</changelog>
 		<doc>https://github.com/FreeCol/freecol/wiki</doc>
 		<remote-id type="sourceforge">freecol</remote-id>
+		<remote-id type="github">FreeCol/freecol</remote-id>
 	</upstream>
 </pkgmetadata>
