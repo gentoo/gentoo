@@ -17,7 +17,7 @@ LICENSE="boehm-gc"
 # We've been using subslot 0 for these instead of "1.1".
 SLOT="0"
 # Don't keyword versions if upstream mark them as pre-release.
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="cxx +large static-libs +threads"
 
 RDEPEND=">=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]"
