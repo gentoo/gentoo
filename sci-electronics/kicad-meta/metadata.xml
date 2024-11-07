@@ -14,7 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">KiCad/kicad</remote-id>
+		<remote-id type="github">KiCad/kicad-source-mirror</remote-id>
 		<remote-id type="launchpad">kicad</remote-id>
 	</upstream>
 	<use>
