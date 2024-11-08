@@ -15,7 +15,7 @@ SRC_URI="https://github.com/C0rn3j/sc-controller/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2 BSD CC-BY-3.0 CC0-1.0 LGPL-2.1 MIT PSF-2 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+trayicon +udev wayland"
 
 RDEPEND="
