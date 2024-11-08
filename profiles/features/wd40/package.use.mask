@@ -162,6 +162,7 @@ dev-libs/tree-sitter-vimdoc test
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
+dev-libs/libpeas javascript
 dev-util/glade gjs
 gnome-base/gnome-menus test
 gnome-base/gnome-settings-daemon modemmanager
