@@ -19,7 +19,7 @@ SRC_URI="https://github.com/ValveSoftware/steam-devices/archive/${STEAM_COMMIT}.
 S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+acl elogind systemd"
 REQUIRED_USE="acl? ( || ( elogind systemd ) )"
 
