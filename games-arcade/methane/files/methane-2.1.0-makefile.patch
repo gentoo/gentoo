@@ -1,0 +1,27 @@
+--- a/Makefile~	2024-08-20 13:13:02.000000000 +0200
++++ b/Makefile	2024-11-08 20:13:10.069539923 +0100
+@@ -1,5 +1,6 @@
+-METHANE_FLAGS = `pkg-config --cflags clanCore-4.2 clanDisplay-4.2 clanApp-4.2 clanGL-4.2 clanSound-4.2 libmikmod` -Isources
+-METHANE_LIBS = `pkg-config --libs clanCore-4.2 clanDisplay-4.2 clanApp-4.2 clanGL-4.2 clanSound-4.2 libmikmod`
++PKG_CONFIG ?= pkg-config
++METHANE_FLAGS = `$(PKG_CONFIG) --cflags clanCore-4.2 clanDisplay-4.2 clanApp-4.2 clanGL-4.2 clanSound-4.2 libmikmod` -Isources
++METHANE_LIBS = `$(PKG_CONFIG) --libs clanCore-4.2 clanDisplay-4.2 clanApp-4.2 clanGL-4.2 clanSound-4.2 libmikmod`
+ 
+ OBJF = sources/precomp.o \
+     sources/player.o \
+@@ -37,7 +38,7 @@
+ 	@echo "================================="
+ 
+ methane: ${OBJF}
+-	g++ ${CXXFLAGS} ${OBJF}	-o methane ${METHANE_LIBS}
++	$(CXX) ${CXXFLAGS} ${LDFLAGS} ${OBJF}	-o methane ${METHANE_LIBS}
+ 
+ clean:
+ 	@rm -f sources/*.o
+@@ -49,5 +50,5 @@
+ # The main source code
+ %.o:%.cpp
+ 	@echo "  Compiling $<..."
+-	gcc ${CXXFLAGS} ${METHANE_FLAGS} -c $< -o $@
++	$(CXX) ${CXXFLAGS} ${METHANE_FLAGS} -c $< -o $@
+ 
