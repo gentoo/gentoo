@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apache2 apache2-server fpm ldap mysql nginx pdf postgres"
-REQUIRED_USE="( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )"
+REQUIRED_USE="( ?? ( apache2-server nginx ) ) apache2? ( apache2-server )"
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
