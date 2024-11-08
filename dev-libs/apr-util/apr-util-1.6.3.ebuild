@@ -54,6 +54,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.3-configure-int.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	memset_s # bug #898566
+)
+
 src_prepare() {
 	default
 
