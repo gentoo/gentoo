@@ -13,20 +13,19 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libpeas"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="glade +gtk gtk-doc javascript lua +python vala"
+IUSE="glade gtk-doc javascript lua +python vala"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/glib-2.44:2
+	>=dev-libs/glib-2.74:2
 	>=dev-libs/gobject-introspection-1.39:=
 	javascript? (
 		>=dev-libs/gjs-1.78.5
-		>=dev-lang/spidermonkey-115:115
+		dev-lang/spidermonkey:115
 	)
-	gtk? ( >=x11-libs/gtk+-3.0.0:3[introspection] )
 	glade? ( >=dev-util/glade-3.9.1:3.10 )
 	lua? (
 		${LUA_DEPS}
