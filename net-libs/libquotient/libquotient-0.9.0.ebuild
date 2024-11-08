@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/olm
 	dev-libs/openssl:=
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
-	>=dev-qt/qtbase-6.4:6[gui,network,sql,ssl]
+	>=dev-qt/qtbase-6.4:6=[gui,network,sql,ssl]
 	>=dev-qt/qtmultimedia-6.4:6
 "
 DEPEND="${RDEPEND}
