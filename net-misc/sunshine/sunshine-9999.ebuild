@@ -126,7 +126,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	>=dev-libs/boost-1.85:=[nls]
+	>=dev-libs/boost-1.86:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
