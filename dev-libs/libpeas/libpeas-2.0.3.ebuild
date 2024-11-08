@@ -85,6 +85,6 @@ src_install() {
 
 	if use gtk-doc; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
-		mv "${ED}"/usr/share/doc/libpeas{,-gtk}-1.0 "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/libpeas-2 "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
