@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
@@ -10,24 +10,26 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Library for testing Java code using mock objects"
 HOMEPAGE="http://jmock.org/"
 SRC_URI="http://jmock.org/downloads/${P}-jars.zip"
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="1.0"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
-CDEPEND="dev-java/junit:0"
+CP_DEPEND="dev-java/junit:0"
 
-RDEPEND=">=virtual/jre-1.8:*
-	${CDEPEND}"
-
-DEPEND="app-arch/unzip
+DEPEND="
+	${CP_DEPEND}
+	app-arch/unzip
 	>=virtual/jdk-1.8:*
-	${CDEPEND}"
+"
 
-S="${WORKDIR}/${P}"
+RDEPEND="
+	${CP_DEPEND}
+	>=virtual/jre-1.8:*
+"
 
 JAVA_SRC_DIR="src"
-JAVA_GENTOO_CLASSPATH="junit"
 
 PATCHES=(
 	# This patch isn't changing the behaviour if jmock per se.
@@ -42,7 +44,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
-	find -name "*.class" -delete || die
-	rm *.jar || die
+	default #780585
+	java-pkg-2_src_prepare
+	java-pkg_clean
 }
