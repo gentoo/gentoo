@@ -295,14 +295,6 @@ app-i18n/kcm-fcitx
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
 
-# Michał Górny <mgorny@gentoo.org> (2024-09-29)
-# This package has not been updated since Python 3.11.2.  It bundles
-# part of Python stdlib that's most likely vulnerable by now, as well
-# as some third-party packages.  And it really needs a dedicated
-# maintainer.
-# Removal on 2024-10-29.  Bug #910612.
-dev-python/brython
-
 # Robin H. Johnson <robbat2@gentoo.org> (2024-09-22)
 # Upstream testing release; fails some tests as well here
 # Beware that if you upgrade to it, you may need to reset your keyrings.
