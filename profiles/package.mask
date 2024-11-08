@@ -272,11 +272,6 @@ app-i18n/kcm-fcitx
 =dev-qt/qtwebsockets-6.8.0*
 =dev-qt/qtwebview-6.8.0*
 
-# Hans de Graaff <graaff@gentoo.org> (2024-10-06)
-# Obsolete slot without reverse dependencies. Use the newer slot
-# instead. Removal on 2024-11-08.
-dev-ruby/base64:0.1
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-05)
 # This version is known to break on certain systems. At the
 # same time it fixes several reported issues. Masked until
