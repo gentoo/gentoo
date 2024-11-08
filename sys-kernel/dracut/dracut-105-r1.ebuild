@@ -158,17 +158,19 @@ src_install() {
 pkg_preinst() {
 	# Remove directory/symlink conflicts
 	# https://bugs.gentoo.org/943007
-	local module backup
+	local save_nullglob=$(shopt -p nullglob)
+	shopt -s nullglob
+	local module
 	for module in "${EROOT}"/usr/lib/dracut/modules.d/{80test,80test-makeroot,80test-root}; do
 		if [[ ! -L ${module} && -d ${module} ]]; then
 			rm -rv "${module}" || die
 		fi
-		for backup in "${module}".backup.*; do
-			if [[ -L ${backup} ]]; then
-				rm -v "${backup}" || die
-			fi
-		done
+		local backups=( "${module}".backup.* )
+		if [[ ${#backups[@]} -gt 0 ]]; then
+			rm -v "${backups[@]}" || die
+		fi
 	done
+	eval "${save_nullglob}"
 }
 
 pkg_postinst() {
