@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="OpenGL-based 3D File Manager"
 HOMEPAGE="https://sourceforge.net/projects/innolab/"
 SRC_URI="https://downloads.sourceforge.net/innolab/${P}.tar.gz"
@@ -16,6 +18,11 @@ RDEPEND="
 	virtual/opengl
 	media-libs/freeglut"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default
