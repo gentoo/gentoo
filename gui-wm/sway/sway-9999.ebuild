@@ -25,11 +25,11 @@ REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
-	>=dev-libs/libinput-1.21.0:0=
+	>=dev-libs/libinput-1.26.0:0=
 	virtual/libudev
 	sys-auth/seatd:=
 	dev-libs/libpcre2
-	>=dev-libs/wayland-1.20.0
+	>=dev-libs/wayland-1.21.0
 	x11-libs/cairo
 	>=x11-libs/libxkbcommon-1.5.0:0=
 	x11-libs/pango
@@ -52,8 +52,8 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[X?]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.17:=[X?]
-		<gui-libs/wlroots-0.18:=[X?]
+		>=gui-libs/wlroots-0.19:=[X?]
+		<gui-libs/wlroots-0.20:=[X?]
 	"
 fi
 RDEPEND="
@@ -62,7 +62,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.24
-	>=dev-build/meson-0.60.0
+	>=dev-build/meson-1.3
 	virtual/pkgconfig
 	man? ( >=app-text/scdoc-1.11.3 )
 "
