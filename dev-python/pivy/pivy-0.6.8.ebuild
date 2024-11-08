@@ -49,10 +49,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.6-0001-fix-CMakeLists.txt-for-distutils_cmake.patch
 	"${FILESDIR}"/${PN}-0.6.6-0002-Gentoo-specific-clear-swig-deprecation-warning.patch
 	"${FILESDIR}"/${PN}-0.6.7-find-qmake.patch
-	# https://github.com/coin3d/pivy/issues/105
-	"${FILESDIR}"/${PN}-0.6.8-python312.patch
-	# https://github.com/coin3d/pivy/pull/109
-	"${DISTDIR}"/${PN}-0.6.8-python312-unittests.patch
+	# in 0.6.9:
+	"${FILESDIR}"/${P}-python312.patch # https://github.com/coin3d/pivy/issues/105
+	"${DISTDIR}"/${P}-python312-unittests.patch # https://github.com/coin3d/pivy/pull/109
+	"${FILESDIR}"/${P}-SoQtViewer-w-cmath.patch # bug 920482
 )
 
 DOCS=( AUTHORS HACKING NEWS README.md THANKS )
