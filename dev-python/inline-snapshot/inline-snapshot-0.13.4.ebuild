@@ -34,6 +34,7 @@ BDEPEND="
 	test? (
 		>=dev-python/dirty-equals-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-6.75.5[${PYTHON_USEDEP}]
+		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		>=dev-python/pytest-subtests-0.11.0[${PYTHON_USEDEP}]
 		>=dev-python/time-machine-2.10.0[${PYTHON_USEDEP}]
