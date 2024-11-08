@@ -86,6 +86,17 @@ src_prepare() {
 	# remove hardcoded/unhelpful flags from bpftool
 	sed -i -e '/CFLAGS += -O2/d' -e 's/-W //g' -e 's/-Wextra //g' src/Makefile || die
 
+	# CO-RE support is an optional feature, but unfortunately the detection of
+	# its support via clang cannot be turned off by disabling the corresponding
+	# feature flag; the test is run unconditionally.
+	# Therefore we use our toolchain's clang when the dependency is satisfied,
+	# else we remove the feature check and explicitly leave CLANG undefined.
+	if has_version -b "sys-devel/clang:${LLVM_SLOT}[llvm_targets_BPF]" ; then
+		export CLANG="$(get_llvm_prefix)/bin/clang"
+	else
+		sed -i -e '/^FEATURE_TESTS :=/s/clang-bpf-co-re//' src/Makefile || die
+	fi
+
 	# Use rst2man or rst2man.py depending on which one exists (#930076)
 	type -P rst2man >/dev/null || sed -i -e 's/rst2man/rst2man.py/g' docs/Makefile || die
 }
