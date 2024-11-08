@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
