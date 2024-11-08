@@ -95,7 +95,7 @@ src_configure() {
 		-Denable-easy-codec-installation=yes
 		-Denable-python=$(usex python yes no)
 		-Dlibportal=enabled
-		-Dwith-plugins=all # in 3.34.1 only builtin and python plugins are left, and python is extra controlled by enable-python
+		-Dwith-plugins=all
 		$(meson_use gtk-doc enable-gtk-doc)
 		-Dprofile=default
 		-Dinspector-page=false
