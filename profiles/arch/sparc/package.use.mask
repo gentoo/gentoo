@@ -208,6 +208,7 @@ app-crypt/gcr:4 gtk
 
 # Sam James <sam@gentoo.org> (2022-11-24)
 # Pulls in gjs which is broken on sparc, bug #882071
+dev-libs/libpeas javascript
 app-crypt/libsecret test-rust
 dev-util/glade gjs
 gnome-base/gnome-menus test
