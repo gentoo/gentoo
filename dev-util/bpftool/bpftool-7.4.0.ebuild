@@ -59,6 +59,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-arch/tar
 	dev-python/docutils
+	$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}[llvm_targets_BPF]')
 "
 
 CONFIG_CHECK="~DEBUG_INFO_BTF"
@@ -106,6 +107,7 @@ bpftool_make() {
 
 	emake \
 		ARCH="$(tc-arch-kernel)" \
+		CLANG="$(get_llvm_prefix -b)/bin/clang" \
 		HOSTAR="$(tc-getBUILD_AR)" \
 		HOSTCC="$(tc-getBUILD_CC)" \
 		HOSTLD="$(tc-getBUILD_LD)" \
@@ -125,8 +127,4 @@ src_compile() {
 src_install() {
 	bpftool_make DESTDIR="${D}" -C src install
 	bpftool_make mandir="${ED}"/usr/share/man -C docs install
-}
-
-pkg_postinst() {
-	optfeature "clang-bpf-co-re support" sys-devel/clang[llvm_targets_BPF]
 }
