@@ -36,6 +36,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+# Pending issue upstream: https://github.com/naelstrof/maim/issues/292
+PATCHES=( "${FILESDIR}/${P}-icu-75.patch" ) # bug 937454
+
 src_configure() {
 	local mycmakeargs=(
 		-DMAIM_UNICODE=$(usex icu)
