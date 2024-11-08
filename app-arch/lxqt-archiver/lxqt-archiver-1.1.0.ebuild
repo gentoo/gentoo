@@ -34,7 +34,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pkg_postinst() {
-	default
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 
 	elog "Please note that this is only a graphical front-end, and additional"
 	elog "packages are needed to have support for specific file formats."
