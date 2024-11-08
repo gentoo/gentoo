@@ -112,7 +112,6 @@ src_configure() {
 		"-Dpng=enabled"
 		"-Dsm=enabled"
 		"-Dxcursor=enabled"
-		"-Dxkbcommon=enabled"
 		"-Dxpm=enabled"
 		"-Dxrender=enabled"
 		$(meson_feature bidi)
