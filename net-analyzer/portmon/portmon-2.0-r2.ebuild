@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Portmon is a network service monitoring daemon"
 HOMEPAGE="http://aboleo.net/software/portmon/"
@@ -14,6 +16,11 @@ LICENSE="GPL-2"
 PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf --sysconfdir=/etc/portmon
