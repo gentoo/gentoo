@@ -343,6 +343,7 @@ dev-python/brython
 >=dev-util/gdbus-codegen-2.80
 >=gnome-base/gnome-shell-46
 >=gnome-extra/gnome-shell-extensions-46
+>=gnome-extra/gnome-shell-frippery-46
 >=gnome-base/nautilus-46
 >=dev-libs/gobject-introspection-1.80
 >=dev-libs/gobject-introspection-common-1.80
