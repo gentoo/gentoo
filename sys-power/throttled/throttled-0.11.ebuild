@@ -13,8 +13,9 @@ SRC_URI="https://github.com/erpalma/throttled/archive/refs/tags/v${PV}.tar.gz ->
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 CONFIG_CHECK="~X86_MSR ~DEVMEM"
 
@@ -25,11 +26,16 @@ RDEPEND="
 		dev-python/pygobject[${PYTHON_USEDEP}]
 	')
 	sys-apps/pciutils
+	test? ( dev-python/pytest-import-check )
 "
 
 pkg_setup() {
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
+}
+
+src_test() {
+	epytest -p no:python --import-check mmio.py throttled.py
 }
 
 src_install() {
