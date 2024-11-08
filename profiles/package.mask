@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-11-08)
+# Obsolete slot. Use a newer slot instead. The included jquery-ui
+# version is no longer supported upstream. Removal on 2024-12-08.
+dev-ruby/jquery-ui-rails:6
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-11-07)
 # No more used (caffe2 used to)
 # Removal on 2024-12-07.  Bug #942972.
