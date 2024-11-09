@@ -90,7 +90,7 @@ DEPEND="
 	sys-libs/zlib:=
 	dev-libs/openssl:0=
 	system-llvm? (
-		${LLVM_DEPEND}
+		${LLVM_DEPEND[*]}
 		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
 	)
 	!system-llvm? (
