@@ -35,6 +35,11 @@ RDEPEND="
 	!dev-lang/rust-bin:stable
 "
 
+src_unpack() {
+	# Avoid unpacking the whole tarball which would need check-reqs
+	tar -xf "${DISTDIR}"/${SRC} ${SRC%%.tar.xz}/src/tools/cargo/src/etc/cargo.bashcomp.sh || die
+}
+
 src_configure() {
 	:
 }
