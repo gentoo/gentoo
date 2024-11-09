@@ -3,16 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake crossdev flag-o-matic llvm.org llvm-utils python-any-r1
-inherit toolchain-funcs
+PYTHON_COMPAT=( python3_{10..12} )
+inherit cmake crossdev flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_MAJOR}"
-IUSE="+abi_x86_32 abi_x86_64 +clang +debug test"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
+IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 DEPEND="
@@ -30,7 +30,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
-LLVM_TEST_COMPONENTS=( llvm/include/llvm/TargetParser )
+LLVM_PATCHSET=${PV}
 llvm.org_set_globals
 
 python_check_deps() {
@@ -46,6 +46,13 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	# Darwin Prefix builds do not have llvm installed yet, so rely on
+	# bootstrap-prefix to set the appropriate path vars to LLVM instead
+	# of using llvm_pkg_setup.
+	if [[ ${CHOST} != *-darwin* ]] || has_version sys-devel/llvm; then
+		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
+	fi
+
 	if target_is_not_host || tc-is-cross-compiler ; then
 		# strips vars like CFLAGS="-march=x86_64-v3" for non-x86 architectures
 		CHOST=${CTARGET} strip-unsupported-flags
@@ -62,8 +69,6 @@ test_compiler() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
@@ -90,7 +95,7 @@ src_configure() {
 		elif test_compiler "${nolib_flags[@]}" -nostartfiles; then
 			# Avoiding -nostartfiles earlier on for bug #862540,
 			# and set available entry symbol for bug #862798.
-			nolib_flags+=( -nostartfiles -e main )
+			nolib_flags+=( -nostartfiles -emain )
 
 			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
 			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
@@ -102,7 +107,6 @@ src_configure() {
 
 		-DCOMPILER_RT_EXCLUDE_ATOMIC_BUILTIN=OFF
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
-		-DCOMPILER_RT_BUILD_CTX_PROFILE=OFF
 		-DCOMPILER_RT_BUILD_LIBFUZZER=OFF
 		-DCOMPILER_RT_BUILD_MEMPROF=OFF
 		-DCOMPILER_RT_BUILD_ORC=OFF
