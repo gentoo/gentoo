@@ -15,8 +15,8 @@ MY_PN_RPL="replays"
 MY_PN_SFX="opensound"
 MY_PN_TS="title-sequences"
 MY_PV_MSX="1.6"
-MY_PV_OBJ="1.4.8"
-MY_PV_RPL="0.0.80"
+MY_PV_OBJ="1.4.10"
+MY_PV_RPL="0.0.83"
 MY_PV_SFX="1.0.5"
 MY_PV_TS="0.4.14"
 
@@ -79,7 +79,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
-	"${FILESDIR}/${PN}-0.4.5-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.4.6-include-additional-paths.patch"
 )
 
 src_unpack() {
