@@ -196,8 +196,8 @@ _rust_set_globals() {
 		for slot in "${_RUST_SLOTS[@]}"; do
 				usedep="${RUST_USEDEP+[${RUST_USEDEP}]}"
 				rust_dep+=(
-					"dev-lang/rust:${slot}${usedep}"
 					"dev-lang/rust-bin:${slot}${usedep}"
+					"dev-lang/rust:${slot}${usedep}"
 				)
 		done
 		rust_dep+=( ")" )
@@ -215,8 +215,8 @@ _rust_set_globals() {
 				for rust_slot in "${_RUST_SLOTS[@]}"; do
 					if [[ "${_RUST_LLVM_MAP[${rust_slot}]}" == "${llvm_slot}" ]]; then
 						slot_dep_content+=(
-							"dev-lang/rust:${rust_slot}${usedep}"
 							"dev-lang/rust-bin:${rust_slot}${usedep}"
+							"dev-lang/rust:${rust_slot}${usedep}"
 						)
 					fi
 				done
