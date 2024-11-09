@@ -144,7 +144,7 @@ _rust_set_globals() {
 
 	# If RUST_MIN_VER is older than our oldest slot we'll just set it to that
 	# internally so we don't have to worry about it later.
-	if ! ver_test "${_RUST_SLOTS_ORDERED[-1]}" -gt "${RUST_MIN_VER:-0}"; then
+	if ver_test "${_RUST_SLOTS_ORDERED[-1]}" -gt "${RUST_MIN_VER:-0}"; then
 		RUST_MIN_VER="${_RUST_SLOTS_ORDERED[-1]}"
 	fi
 
