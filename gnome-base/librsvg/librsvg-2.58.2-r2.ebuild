@@ -230,8 +230,8 @@ CRATES="
 	thiserror@1.0.56
 	tiff@0.9.1
 	time-core@0.1.2
-	time-macros@0.2.17
-	time@0.3.34
+	time-macros@0.2.18
+	time@0.3.36
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
@@ -288,7 +288,6 @@ CRATES="
 	zune-inflate@0.2.54
 "
 
-RUST_MAX_VER="1.79.0"
 RUST_MIN_VER="1.71.1"
 RUST_USEDEP='${MULTILIB_USEDEP}'
 
@@ -343,6 +342,10 @@ QA_FLAGS_IGNORED="
 	usr/bin/rsvg-convert
 	usr/lib.*/librsvg.*
 "
+
+PATCHES=(
+	"${FILESDIR}"/librsvg-2.58.5-time-rust-1.80.patch
+)
 
 pkg_setup() {
 	rust_pkg_setup

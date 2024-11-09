@@ -131,6 +131,7 @@ CRATES="
 	nom@7.1.3
 	normalize-line-endings@0.3.0
 	num-complex@0.4.4
+	num-conv@0.1.0
 	num-integer@0.1.45
 	num-rational@0.4.1
 	num-traits@0.2.17
@@ -220,8 +221,8 @@ CRATES="
 	thiserror-impl@1.0.50
 	thiserror@1.0.50
 	time-core@0.1.2
-	time-macros@0.2.15
-	time@0.3.30
+	time-macros@0.2.18
+	time@0.3.36
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
@@ -277,7 +278,6 @@ CRATES="
 	yeslogic-fontconfig-sys@4.0.1
 "
 
-RUST_MAX_VER="1.79.0"
 RUST_USEDEP='${MULTILIB_USEDEP}'
 
 inherit multilib-minimal cargo gnome2 python-any-r1 rust-toolchain vala
@@ -326,6 +326,10 @@ BDEPEND="
 	dev-libs/vala-common
 "
 # dev-libs/gobject-introspection-common, dev-libs/vala-common needed by eautoreconf
+
+PATCHES=(
+	"${FILESDIR}"/librsvg-2.57.3-time-rust-1.80.patch
+)
 
 QA_FLAGS_IGNORED="
 	usr/bin/rsvg-convert
