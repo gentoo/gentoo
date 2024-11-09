@@ -472,7 +472,7 @@ pkg_setup() {
 		fi
 
 		if use pgo ; then
-			if [[ ${use_lto} == "yes" ]]; then
+			if [[ ${use_lto} == "no" ]]; then
 				eerror "Building ${PN} with USE=pgo requires LTO!"
 				die "Please fix your CFLAGS/CXXFLAGS."
 			fi
