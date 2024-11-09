@@ -472,9 +472,10 @@ pkg_setup() {
 		fi
 
 		if use pgo ; then
-			if [[ ${use_lto} == "no" ]]; then
-				eerror "Building ${PN} with USE=pgo requires LTO!"
-				die "Please fix your CFLAGS/CXXFLAGS."
+			if [[ ${use_lto} == "no" ]] ; then
+				elog "Building ${PN} with USE=pgo requires LTO, however this was not detected in your environment."
+				elog "Forcing LTO, however it is recommended to enable LTO explicitly."
+				use_lto=yes
 			fi
 			if ! has userpriv ${FEATURES} ; then
 				eerror "Building ${PN} with USE=pgo and FEATURES=-userpriv is not supported!"
@@ -583,7 +584,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ ${use_lto} = "yes" ]]; then
+	if [[ ${use_lto} == "yes" ]]; then
 		rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch || die
 	fi
 
@@ -902,7 +903,7 @@ src_configure() {
 		mozconfig_add_options_ac '+x11' --enable-default-toolkit=cairo-gtk3-x11-only
 	fi
 
-	if [[ ${use_lto} = "yes" ]] ; then
+	if [[ ${use_lto} == "yes" ]] ; then
 		if use clang ; then
 			# Upstream only supports lld or mold when using clang.
 			if tc-ld-is-mold ; then
