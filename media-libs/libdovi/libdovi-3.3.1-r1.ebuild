@@ -89,9 +89,7 @@ CRATES="
 	windows_x86_64_msvc@0.52.6
 	wyz@0.5.1
 "
-
 RUST_USEDEP='${MULTILIB_USEDEP}'
-
 inherit multilib-minimal cargo edo rust-toolchain
 
 DESCRIPTION="Dolby Vision metadata parsing and writing"
@@ -119,44 +117,42 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-multilib_src_configure() {
-	local -n cargoargs=${PN}_CARGOARGS_${ABI}
-
-	cargoargs=(
-		--prefix="${EPREFIX}/usr"
-		--libdir="${EPREFIX}/usr/$(get_libdir)"
-		--library-type=cdylib
-		--target="$(rust_abi)"
-		# cargo cbuild --help claims dev is default but (currently) this seems
-		# to always use release unless --profile=dev is explicitly passed?
-		$(usex debug --profile=dev --release)
-	)
-}
-
 src_configure() {
+	multilib_src_configure() {
+		local -n cargoargs=${PN}_CARGOARGS_${ABI}
+
+		cargoargs=(
+			--prefix="${EPREFIX}/usr"
+			--libdir="${EPREFIX}/usr/$(get_libdir)"
+			--library-type=cdylib
+			--target="$(rust_abi)"
+			# cargo cbuild --help claims dev is default but (currently) seems
+			# to always use release unless --profile=dev is explicitly passed?
+			$(usex debug --profile=dev --release)
+		)
+	}
+
 	multilib-minimal_src_configure
 }
 
-multilib_src_compile() {
-	local -n cargoargs=${PN}_CARGOARGS_${ABI}
-
-	edo cargo cbuild "${cargoargs[@]}"
-}
-
 src_compile() {
+	multilib_src_compile() {
+		local -n cargoargs=${PN}_CARGOARGS_${ABI}
+
+		edo cargo cbuild "${cargoargs[@]}"
+	}
+
 	multilib-minimal_src_compile
 }
 
-multilib_src_install() {
-	local -n cargoargs=${PN}_CARGOARGS_${ABI}
-
-	edo cargo cinstall --destdir="${D}" "${cargoargs[@]}"
-}
-
-src_test() {
-	multilib-minimal_src_test
-}
+src_test() { :; } # no tests, and must not run cargo_src_test
 
 src_install() {
+	multilib_src_install() {
+		local -n cargoargs=${PN}_CARGOARGS_${ABI}
+
+		edo cargo cinstall --destdir="${D}" "${cargoargs[@]}"
+	}
+
 	multilib-minimal_src_install
 }
