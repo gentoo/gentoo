@@ -158,6 +158,13 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}/${PN}-prefix-3.patch"
 	"${FILESDIR}/${PN}-respect-cflags-3.patch"
+	"${FILESDIR}/${P}-cmdline-ech-docs.patch"
+	"${FILESDIR}/${P}-curl-libssh-ipv6-brackets.patch"
+	"${FILESDIR}/${P}-mbedtls-global-init.patch"
+	"${FILESDIR}/${P}-setopt-http_content_decoding.patch"
+	"${FILESDIR}/${P}-cookie-case-sensitive.patch"
+	"${FILESDIR}/${P}-duphandle-init-netrc.patch"
+	"${FILESDIR}/${P}-netrc-large-file.patch"
 )
 
 src_prepare() {

@@ -1,0 +1,56 @@
+https://github.com/curl/curl/commit/9919149aef67014150e2a1c75a7aa2c79204e30d
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Wed, 6 Nov 2024 11:26:25 +0100
+Subject: [PATCH] cookie: treat cookie name case sensitively
+
+Extend test 31 to verify
+
+Reported-by: delogicsreal on github
+Fixes #15492
+Closes #15493
+--- a/lib/cookie.c
++++ b/lib/cookie.c
+@@ -989,7 +989,7 @@ replace_existing(struct Curl_easy *data,
+   size_t myhash = cookiehash(co->domain);
+   for(n = Curl_llist_head(&ci->cookielist[myhash]); n; n = Curl_node_next(n)) {
+     struct Cookie *clist = Curl_node_elem(n);
+-    if(strcasecompare(clist->name, co->name)) {
++    if(!strcmp(clist->name, co->name)) {
+       /* the names are identical */
+       bool matching_domains = FALSE;
+ 
+@@ -1029,7 +1029,7 @@ replace_existing(struct Curl_easy *data,
+       }
+     }
+ 
+-    if(!replace_n && strcasecompare(clist->name, co->name)) {
++    if(!replace_n && !strcmp(clist->name, co->name)) {
+       /* the names are identical */
+ 
+       if(clist->domain && co->domain) {
+--- a/tests/data/test31
++++ b/tests/data/test31
+@@ -26,6 +26,7 @@ Set-Cookie: blankdomain=sure; domain=; path=/
+ %if !hyper
+ Set-Cookie: foobar=name; domain=anything.com; path=/ ; secure
+ Set-Cookie:ismatch=this  ; domain=test31.curl; path=/silly/
++Set-Cookie:ISMATCH=this  ; domain=test31.curl; path=/silly/
+ Set-Cookie: overwrite=this  ; domain=test31.curl; path=/overwrite/
+ Set-Cookie: overwrite=this2  ; domain=test31.curl; path=/overwrite
+ Set-Cookie: sec1value=secure1  ; domain=test31.curl; path=/secure1/ ; secure
+@@ -75,6 +76,7 @@ Set-Cookie: securewithspace=after    ; secure =
+ %else
+ Set-Cookie: foobar=name; domain=anything.com; path=/ ; secure
+ Set-Cookie: ismatch=this  ; domain=test31.curl; path=/silly/
++Set-Cookie:ISMATCH=this  ; domain=test31.curl; path=/silly/
+ Set-Cookie: overwrite=this  ; domain=test31.curl; path=/overwrite/
+ Set-Cookie: overwrite=this2  ; domain=test31.curl; path=/overwrite
+ Set-Cookie: sec1value=secure1  ; domain=test31.curl; path=/secure1/ ; secure
+@@ -181,6 +183,7 @@ test31.curl	FALSE	/we/want/	FALSE	2118138987	nodomain	value
+ #HttpOnly_.test31.curl	TRUE	/p2/	FALSE	0	httpo2	value2
+ #HttpOnly_.test31.curl	TRUE	/p1/	FALSE	0	httpo1	value1
+ .test31.curl	TRUE	/overwrite	FALSE	0	overwrite	this2
++.test31.curl	TRUE	/silly/	FALSE	0	ISMATCH	this
+ .test31.curl	TRUE	/silly/	FALSE	0	ismatch	this
+ test31.curl	FALSE	/	FALSE	0	blankdomain	sure
+ </file>
