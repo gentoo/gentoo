@@ -419,6 +419,10 @@ PATCHES=(
 
 DOCS=( README.md AUTHORS.md )
 
+pkg_setup() {
+	use sso && rust_pkg_setup
+}
+
 src_unpack() {
 	unpack ${P}.tar.gz
 	use sso && cargo_src_unpack
