@@ -33,7 +33,7 @@ pkg_setup() {
 }
 
 src_configure() {
-		cargo_src_configure ${static_stuff}
+	cargo_src_configure ${static_stuff}
 }
 
 src_test() {

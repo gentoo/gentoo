@@ -39,7 +39,7 @@ src_configure() {
 	local myfeatures=(
 		$(usev openssl native-tls)
 	)
-		cargo_src_configure --no-default-features ${static_stuff}
+	cargo_src_configure --no-default-features ${static_stuff}
 }
 
 src_test() {
