@@ -6,8 +6,10 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DIR="docs/.doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
+LLVM_COMPAT=( 18 )
 ROCM_VERSION=${PV}
-inherit cmake docs edo multiprocessing rocm
+
+inherit cmake docs edo multiprocessing rocm llvm-r1
 
 DESCRIPTION="AMD's library for BLAS on ROCm"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rocBLAS"
