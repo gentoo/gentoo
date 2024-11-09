@@ -197,6 +197,10 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}/python3.12.patch" )
 
+pkg_setup() {
+	use rust && rust_pkg_setup
+}
+
 src_unpack() {
 	default_src_unpack
 	if use rust; then

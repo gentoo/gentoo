@@ -234,6 +234,10 @@ SITEFILE="70${PN}-gentoo.el"
 
 RESTRICT="!test? ( test )"
 
+pkg_setup() {
+	use rust && rust_pkg_setup
+}
+
 src_unpack() {
 	default_src_unpack
 	if use rust; then
