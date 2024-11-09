@@ -55,6 +55,13 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin deps
+	sed -i -e 's:,<[0-9.a]*::' pyproject.toml || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# Internet
