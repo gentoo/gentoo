@@ -104,14 +104,8 @@ RDEPEND="${DEPEND}
 	app-eselect/eselect-rust
 	dev-lang/rust-common
 	sys-apps/lsb-release
-	!dev-lang/rust:stable/1.71.1
-	!dev-lang/rust:stable/1.74.1
-	!dev-lang/rust:stable/1.75.0
-	!dev-lang/rust:stable/1.77.1
-	!dev-lang/rust:stable/1.79.0
-	!dev-lang/rust:stable/1.80.1
-	!dev-lang/rust:stable/1.81.0
-	!dev-lang/rust:stable/1.82.0
+	!dev-lang/rust:stable
+	!dev-lang/rust-bin:stable
 "
 
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
