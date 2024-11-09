@@ -611,42 +611,50 @@ setup_env() {
 	export glibc__ORIG_CXX=${CXX}
 	export glibc__ORIG_CPP=${CPP}
 
-	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
-		export glibc__force_gcc=yes
-		# once this is toggled on, it needs to stay on, since with CPP manipulated
-		# tc-is-clang does not work correctly anymore...
-	fi
-
-	if [[ ${glibc__force_gcc} == "yes" ]] ; then
+	if tc-is-clang && ! use custom-cflags ; then
 		# If we are running in an otherwise clang/llvm environment, we need to
 		# recover the proper gcc and binutils settings here, at least until glibc
 		# is finally building with clang. So let's override everything that is
 		# set in the clang profiles.
 		# Want to shoot yourself into the foot? Set USE=custom-cflags, that's always
 		# a good start into that direction.
-		# Also, if you're crosscompiling, let's assume you know what you are doing.
-		# Hopefully.
 		# Last, we need the settings of the *build* environment, not of the
 		# target environment...
 
-		local current_binutils_path=$(env ROOT="${BROOT}" binutils-config -B)
-		local current_gcc_path=$(env ROOT="${BROOT}" gcc-config -B)
 		einfo "Overriding clang configuration, since it won't work here"
-
-		export CC="${current_gcc_path}/gcc"
-		export CPP="${current_gcc_path}/cpp"
-		export CXX="${current_gcc_path}/g++"
-		export LD="${current_binutils_path}/ld.bfd"
-		export AR="${current_binutils_path}/ar"
-		export AS="${current_binutils_path}/as"
-		export NM="${current_binutils_path}/nm"
-		export STRIP="${current_binutils_path}/strip"
-		export RANLIB="${current_binutils_path}/ranlib"
-		export OBJCOPY="${current_binutils_path}/objcopy"
-		export STRINGS="${current_binutils_path}/strings"
-		export OBJDUMP="${current_binutils_path}/objdump"
-		export READELF="${current_binutils_path}/readelf"
-		export ADDR2LINE="${current_binutils_path}/addr2line"
+		if is_crosscompile ; then
+			export CC="${CTARGET}-gcc"
+			export CPP="${CTARGET}-cpp"
+			export CXX="${CTARGET}-g++"
+			export LD="${CTARGET}-ld.bfd"
+			export AR="${CTARGET}-gcc-ar"
+			export AS="${CTARGET}-as"
+			export NM="${CTARGET}-gcc-nm"
+			export STRIP="${CTARGET}-strip"
+			export RANLIB="${CTARGET}-gcc-ranlib"
+			export OBJCOPY="${CTARGET}-objcopy"
+			export STRINGS="${CTARGET}-strings"
+			export OBJDUMP="${CTARGET}-objdump"
+			export READELF="${CTARGET}-readelf"
+			export ADDR2LINE="${CTARGET}-addr2line"
+		else
+			local current_binutils_path=$(env ROOT="${BROOT}" binutils-config -B)
+			local current_gcc_path=$(env ROOT="${BROOT}" gcc-config -B)
+			export CC="${current_gcc_path}/gcc"
+			export CPP="${current_gcc_path}/cpp"
+			export CXX="${current_gcc_path}/g++"
+			export LD="${current_binutils_path}/ld.bfd"
+			export AR="${current_binutils_path}/ar"
+			export AS="${current_binutils_path}/as"
+			export NM="${current_binutils_path}/nm"
+			export STRIP="${current_binutils_path}/strip"
+			export RANLIB="${current_binutils_path}/ranlib"
+			export OBJCOPY="${current_binutils_path}/objcopy"
+			export STRINGS="${current_binutils_path}/strings"
+			export OBJDUMP="${current_binutils_path}/objdump"
+			export READELF="${current_binutils_path}/readelf"
+			export ADDR2LINE="${current_binutils_path}/addr2line"
+		fi
 
 		# do we need to also do flags munging here? yes! at least...
 		filter-flags '-fuse-ld=*'
@@ -1235,18 +1243,41 @@ glibc_headers_configure() {
 
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
-	local headers_only_CC=$(tc-getBUILD_CC)
+	if tc-is-clang && ! use custom-cflags ; then
+		einfo "Overriding clang configuration, since it won't work here"
+		# If we are running in an otherwise clang/llvm environment, we need to
+		# recover the proper gcc and binutils settings here, at least until glibc
+		# is finally building with clang. So let's override everything that is
+		# set in the clang profiles.
+		# Want to shoot yourself into the foot? Set USE=custom-cflags, that's always
+		# a good start into that direction.
+		# We always want to use the host GCC to build headers, so we call gcc-config
+		# with an empty CTARGET even for cross builds.
+		local current_binutils_path=$(env CTARGET= ROOT="${BROOT}" binutils-config -B)
+		local current_gcc_path=$(env CTARGET= ROOT="${BROOT}" gcc-config -B)
+		local headers_only_CC="${current_gcc_path}/gcc"
+		local headers_only_CPP="${current_gcc_path}/cpp"
+		local headers_only_CXX="${current_gcc_path}/g++"
+	else
+		local headers_only_CC=$(tc-getBUILD_CC)
+		local headers_only_CPP=$(tc-getBUILD_CPP)
+		local headers_only_CXX=$(tc-getBUILD_CXX)
+	fi
 	local headers_only_CFLAGS="-O1 -pipe"
 	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
 	local headers_only_LDFLAGS=""
 	set -- "${S}"/configure "${myconf[@]}"
 	echo \
 		"CC=${headers_only_CC}" \
+		"CPP=${headers_only_CPP}" \
+		"CXX=${headers_only_CXX}" \
 		"CFLAGS=${headers_only_CFLAGS}" \
 		"CPPFLAGS=${headers_only_CPPFLAGS}" \
 		"LDFLAGS=${headers_only_LDFLAGS}" \
 		"$@"
 	CC=${headers_only_CC} \
+	CPP=${headers_only_CPP} \
+	CXX=${headers_only_CXX} \
 	CFLAGS=${headers_only_CFLAGS} \
 	CPPFLAGS=${headers_only_CPPFLAGS} \
 	LDFLAGS="" \
