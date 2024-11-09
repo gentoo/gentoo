@@ -595,6 +595,8 @@ toolchain_pkg_setup() {
 	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
 
 	[[ -n ${TOOLCHAIN_HAS_TESTS} ]] && use test && python-any-r1_pkg_setup
+
+	_tc_use_if_iuse rust && rust_pkg_setup
 }
 
 #---->> src_unpack <<----
