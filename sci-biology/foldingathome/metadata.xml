@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>sci-biology@gentoo.org</email>
-	<name>Gentoo Biology Project</name>
-</maintainer>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">FoldingAtHome/fah-client-bastet</remote-id>
+		<bugs-to>https://github.com/FoldingAtHome/fah-client-bastet/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
