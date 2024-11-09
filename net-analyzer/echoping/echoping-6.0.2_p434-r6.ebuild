@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_session.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-fno-common.patch
 	"${FILESDIR}"/0001-correctly-link-to-libm.patch
+	"${FILESDIR}"/${PN}-6.0.2_p434-gethostbyname.patch
 )
 
 src_prepare() {

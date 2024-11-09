@@ -1,0 +1,11 @@
+diff '--color=auto' -ruN echoping-6.0.2_p434.orig/acinclude.m4 echoping-6.0.2_p434/acinclude.m4
+--- echoping-6.0.2_p434.orig/acinclude.m4	2024-11-09 22:26:58.045557458 +0100
++++ echoping-6.0.2_p434/acinclude.m4	2024-11-09 22:26:35.950243412 +0100
+@@ -87,6 +87,7 @@
+ AC_MSG_CHECKING(if libnsl is mandatory)
+ AC_TRY_LINK([#include <sys/types.h>
+              #include <netinet/in.h>
++             #include <netdb.h>
+              char *domain;  ], 
+  [gethostbyname(domain)], dnl
+  [AC_MSG_RESULT(no)], dnl
