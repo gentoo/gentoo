@@ -390,7 +390,7 @@ get_rust_path() {
 	if [[ "${rust_type}" == "source" ]]; then
 		echo "${prefix}/usr/lib/rust/${slot}/"
 	else
-		echo "${prefix}opt/rust-bin-${slot}/"
+		echo "${prefix}/opt/rust-bin-${slot}/"
 	fi
 }
 
