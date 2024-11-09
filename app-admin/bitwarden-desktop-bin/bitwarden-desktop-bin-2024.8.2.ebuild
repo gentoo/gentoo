@@ -12,9 +12,10 @@ HOMEPAGE="https://bitwarden.com/"
 SRC_URI="https://github.com/bitwarden/clients/releases/download/desktop-v${PV}/Bitwarden-${PV}-amd64.deb"
 S="${WORKDIR}"
 
-LICENSE="GPL-3"
+LICENSE="BITWARDEN GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="bindist mirror"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
