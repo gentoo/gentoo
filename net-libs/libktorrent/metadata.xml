@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="xfs">Enable XFS specific disk preallocation support via <pkg>sys-fs/xfsprogs</pkg></flag>
+	</use>
 </pkgmetadata>
