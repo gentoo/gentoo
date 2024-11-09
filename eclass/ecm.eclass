@@ -29,7 +29,7 @@ esac
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
-inherit cmake flag-o-matic toolchain-funcs
+inherit cmake flag-o-matic
 
 if [[ ${EAPI} == 8 ]]; then
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
@@ -39,7 +39,7 @@ if [[ ${EAPI} == 8 ]]; then
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : "${VIRTUALX_REQUIRED:=manual}"
 
-inherit virtualx
+inherit toolchain-funcs virtualx
 fi
 
 # @ECLASS_VARIABLE: ECM_NONGUI
@@ -196,6 +196,14 @@ else
 	fi
 fi
 
+# @ECLASS_VARIABLE: KDE_GCC_MINIMAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Minimum version of active GCC to require. This is checked in
+# ecm_pkg_pretend and ecm_pkg_setup.
+[[ ${KDE_GCC_MINIMAL} ]] && ver_test ${KFMIN} -ge 6.9 &&
+	die "KDE_GCC_MINIMAL has been banned with KFMIN >=6.9.0."
+
 case ${ECM_NONGUI} in
 	true) ;;
 	false)
@@ -325,30 +333,6 @@ fi
 DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
-
-# @ECLASS_VARIABLE: KDE_GCC_MINIMAL
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Minimum version of active GCC to require. This is checked in
-# ecm_pkg_pretend and ecm_pkg_setup.
-
-# @FUNCTION: _ecm_check_gcc_version
-# @INTERNAL
-# @DESCRIPTION:
-# Determine if the current GCC version is acceptable, otherwise die.
-_ecm_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
-
-		local version=$(gcc-version)
-
-		debug-print "GCC version check activated"
-		debug-print "Version detected: ${version}"
-		debug-print "Version required: ${KDE_GCC_MINIMAL}"
-
-		ver_test ${version} -lt ${KDE_GCC_MINIMAL} &&
-			die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
-	fi
-}
 
 # @FUNCTION: _ecm_strip_handbook_translations
 # @INTERNAL
@@ -495,22 +479,49 @@ ecm_punt_po_install() {
 		-i CMakeLists.txt || die
 }
 
+if [[ ${EAPI} == 8 ]]; then
+# @FUNCTION: _ecm_deprecated_check_gcc_version
+# @INTERNAL
+# @DESCRIPTION:
+# Determine if the current GCC version is acceptable, otherwise die.
+_ecm_deprecated_check_gcc_version() {
+	if ver_test ${KFMIN} -ge 6.9; then
+		eqawarn "QA notice: ecm_pkg_${1} has become a no-op."
+		eqawarn "It is no longer being exported with KFMIN >=6.9.0."
+		return
+	fi
+	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
+
+		local version=$(gcc-version)
+
+		debug-print "GCC version check activated"
+		debug-print "Version detected: ${version}"
+		debug-print "Version required: ${KDE_GCC_MINIMAL}"
+
+		ver_test ${version} -lt ${KDE_GCC_MINIMAL} &&
+			die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
+	fi
+}
+
 # @FUNCTION: ecm_pkg_pretend
 # @DESCRIPTION:
 # Checks if the active compiler meets the minimum version requirements.
-# phase function is only exported if KDE_GCC_MINIMAL is defined.
+# Phase function is only exported if KFMIN is <6.9.0 and KDE_GCC_MINIMAL
+# is defined.
 ecm_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "$@"
-	_ecm_check_gcc_version
+	_ecm_deprecated_check_gcc_version pretend
 }
 
 # @FUNCTION: ecm_pkg_setup
 # @DESCRIPTION:
 # Checks if the active compiler meets the minimum version requirements.
+# Phase function is only exported if KFMIN is <6.9.0.
 ecm_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
-	_ecm_check_gcc_version
+	_ecm_deprecated_check_gcc_version setup
 }
+fi
 
 # @FUNCTION: ecm_src_prepare
 # @DESCRIPTION:
@@ -807,11 +818,10 @@ fi
 fi
 
 if ver_test ${KFMIN} -lt 6.9; then
-	EXPORT_FUNCTIONS pkg_preinst pkg_postinst pkg_postrm
+	EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst pkg_postrm
+	if [[ -v ${KDE_GCC_MINIMAL} ]]; then
+		EXPORT_FUNCTIONS pkg_pretend
+	fi
 fi
 
-if [[ -v ${KDE_GCC_MINIMAL} ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test src_install
+EXPORT_FUNCTIONS src_prepare src_configure src_test src_install
