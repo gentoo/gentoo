@@ -332,9 +332,18 @@ QA_FLAGS_IGNORED="
 	usr/lib.*/librsvg.*
 "
 
+pkg_setup() {
+	rust_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	use vala && vala_setup
 	gnome2_src_prepare
+}
+
+src_configure() {
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
@@ -365,8 +374,20 @@ multilib_src_configure() {
 	fi
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+}
+
 multilib_src_compile() {
 	gnome2_src_compile
+}
+
+src_test() {
+	multilib-minimal_src_test
+}
+
+src_install() {
+	multilib-minimal_src_install
 }
 
 multilib_src_install() {

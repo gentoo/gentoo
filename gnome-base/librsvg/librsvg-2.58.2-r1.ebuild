@@ -354,6 +354,10 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
+src_configure() {
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local myconf=(
 		--disable-static
@@ -382,8 +386,20 @@ multilib_src_configure() {
 	fi
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+}
+
 multilib_src_compile() {
 	gnome2_src_compile
+}
+
+src_test() {
+	multilib-minimal_src_test
+}
+
+src_install() {
+	multilib-minimal_src_install
 }
 
 multilib_src_install() {
