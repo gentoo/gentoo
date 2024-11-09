@@ -22,7 +22,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 RDEPEND="
 	>=dev-python/colorama-0.4.1[${PYTHON_USEDEP}]
 	dev-python/flake8[${PYTHON_USEDEP}]
-	<dev-python/mando-0.8[${PYTHON_USEDEP}]
+	>=dev-python/mando-0.6[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
@@ -32,3 +32,10 @@ BDEPEND="
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin deps
+	sed -i -e 's:,<[0-9.]*::' setup.py || die
+}
