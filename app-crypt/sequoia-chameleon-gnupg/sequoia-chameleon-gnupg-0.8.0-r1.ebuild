@@ -407,7 +407,7 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/bin/gpg-sq usr/bin/gpgv-sq"
 
 pkg_setup() {
-	llvm_r1_pkg_setup
+	llvm-r1_pkg_setup
 	rust_pkg_setup
 }
 
