@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="alsa amr ao encode flac id3tag ladspa mad magic ogg openmp oss opus png pulseaudio sndfile sndio twolame wavpack"
+IUSE="alsa amr ao encode flac id3tag ladspa mad ogg openmp oss opus png pulseaudio sndfile sndio twolame wavpack"
 
 RDEPEND="
 	dev-libs/libltdl:0=
@@ -37,7 +37,6 @@ RDEPEND="
 	id3tag? ( media-libs/libid3tag:= )
 	ladspa? ( media-libs/ladspa-sdk )
 	mad? ( media-libs/libmad )
-	magic? ( sys-apps/file )
 	ogg? (
 		media-libs/libogg
 		media-libs/libvorbis
@@ -94,7 +93,7 @@ src_configure() {
 		$(use_with id3tag)
 		$(use_with ladspa ladspa dyn)
 		$(use_with mad)
-		$(use_with magic)
+		--with-magic
 		$(use_enable openmp)
 		$(use_enable ogg oggvorbis)
 		$(use_enable oss)
