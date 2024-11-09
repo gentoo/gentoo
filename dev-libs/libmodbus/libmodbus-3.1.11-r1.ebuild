@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Modbus library which supports RTU communication over a serial line or a TCP link"
 HOMEPAGE="https://libmodbus.org/"
 SRC_URI="https://github.com/stephane/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -12,6 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
+
+PATCHES=( "${FILESDIR}/${PN}-3.1.11-cflags.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
