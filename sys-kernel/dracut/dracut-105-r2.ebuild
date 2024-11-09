@@ -101,6 +101,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
 	# https://github.com/dracut-ng/dracut-ng/pull/834
 	"${FILESDIR}"/${PN}-105-ensure-abs-args-for-objcopy.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/904
+	"${FILESDIR}"/${PN}-105-fix-check_kernel_module.patch
 )
 
 src_configure() {
