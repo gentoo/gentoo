@@ -57,7 +57,7 @@ BDEPEND="dev-util/cargo-c"
 QA_FLAGS_IGNORED="usr/lib.*/librustls.*"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}@0.12.1-no-rust-nightly.patch
+	"${FILESDIR}"/${PN}-0.12.1-no-rust-nightly.patch
 )
 
 src_prepare() {

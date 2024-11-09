@@ -85,8 +85,8 @@ BDEPEND="dev-util/cargo-c"
 QA_FLAGS_IGNORED="usr/lib.*/librustls.*"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}@0.9.1-cargo-c.patch
-	"${FILESDIR}"/${PN}@0.9.1-tests-32-bit.patch
+	"${FILESDIR}"/${PN}-0.9.1-cargo-c.patch
+	"${FILESDIR}"/${PN}-0.9.1-tests-32-bit.patch
 )
 
 src_prepare() {
