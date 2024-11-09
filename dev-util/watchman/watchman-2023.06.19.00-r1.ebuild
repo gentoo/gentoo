@@ -172,6 +172,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2022.08.08.00-musl-fsword-fix.patch
 	"${FILESDIR}"/${PN}-2023.06.19.00-rust-1.70-avoidance.patch
 	"${FILESDIR}"/${PN}-2023.06.19.00-unused.patch
+	"${FILESDIR}"/${PN}-2023.06.19.00-gcc15.patch
 )
 
 # Rust utility
