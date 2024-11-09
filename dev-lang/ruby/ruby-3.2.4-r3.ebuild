@@ -190,7 +190,7 @@ src_configure() {
 	fi
 
 	# ipv6 hack, bug 168939. Needs --enable-ipv6.
-	use ipv6 || myconf="${myconf} --with-lookup-order-hack=INET"
+	myconf="${myconf} --with-lookup-order-hack=INET"
 
 	# Determine which modules *not* to build depending in the USE flags.
 	if ! use berkdb ; then
