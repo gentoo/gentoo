@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 KFMIN=5.115.0
 QTMIN=5.15.12
 inherit ecm kde.org python-single-r1
@@ -96,6 +96,8 @@ PATCHES=(
 	# downstream
 	"${FILESDIR}"/${PN}-5.2.3-tests-optional.patch
 	"${FILESDIR}"/${PN}-5.2.2-fftw.patch # bug 913518
+	# Fedora, non-upstreamed:
+	"${FILESDIR}"/${P}-py3.13.patch # bug 943149
 	# git master
 	"${FILESDIR}"/${PN}-5.1.5-sip-6.8.patch # bug 919139
 )
