@@ -43,15 +43,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default
-	python_fix_shebang .
-}
-
-
 src_install() {
-	python_fix_shebang "${WORKDIR}/${P}-build"/src/accerciser
 	meson_src_install
 	gnome2_src_install
+	python_fix_shebang "${ED}"
 	python_optimize
 }
