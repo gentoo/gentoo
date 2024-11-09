@@ -6,8 +6,6 @@ EAPI=8
 ECM_HANDBOOK="true"
 KDE_ORG_CATEGORY="network"
 KDE_ORG_NAME="${PN/-common/}"
-KF5_BDEPEND=( "kde-apps/kaccounts-integration:6[qt5(-)]" )
-KF6_BDEPEND=( "kde-apps/kaccounts-integration:6" )
 inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2+"
@@ -18,15 +16,12 @@ RDEPEND="
 	!<kde-misc/kio-gdrive-23.08.5-r2:5
 	!<kde-misc/kio-gdrive-24.05.2-r1:6
 "
+BDEPEND="kde-apps/kaccounts-integration:6"
 
 ECM_INSTALL_FILES=(
 	desktop/gdrive-network.desktop:\${KDE_INSTALL_DATADIR}/remoteview
 	desktop/org.kde.kio_gdrive.metainfo.xml:\${KDE_INSTALL_METAINFODIR}
 )
-
-ecm-common-check_deps() {
-	return $(has_version -b "kde-apps/kaccounts-integration:6")
-}
 
 ecm-common_inject_heredoc() {
 	cat >> CMakeLists.txt <<- _EOF_ || die
