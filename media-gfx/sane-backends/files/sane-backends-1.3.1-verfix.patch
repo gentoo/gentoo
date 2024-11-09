@@ -1,0 +1,23 @@
+diff --git a/configure.ac b/configure.ac
+index ddb52b9..c3046b9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,13 +16,11 @@ AM_SILENT_RULES
+ dnl ******************************************************************
+ dnl  Determine SANE version components and release status
+ dnl ******************************************************************
+-AS_IF([test x = "x$AWK"],[AC_PROG_AWK])
+-AS_IF([test x = "x`echo $VERSION | sed 's/[[.0-9]]//g'`"],
+-            [is_release=yes],
+-            [is_release=no])
+-V_MAJOR=`echo $VERSION | $AWK -F. '{print $1}'`
+-V_MINOR=`echo $VERSION | $AWK -F. '{print $2}'`
+-V_REV=`echo $VERSION | $AWK -F. '{print $3}' | sed 's/^\([[0-9]]*\).*/\1/'`;
++is_release=yes
++is_release=no
++V_MAJOR=1
++V_MINOR=3
++V_REV=1
+ 
+ AC_DEFINE_UNQUOTED(SANE_DLL_V_MAJOR, $V_MAJOR, [SANE DLL major number])
+ AC_DEFINE_UNQUOTED(SANE_DLL_V_MINOR, $V_MINOR, [SANE DLL minor number])
