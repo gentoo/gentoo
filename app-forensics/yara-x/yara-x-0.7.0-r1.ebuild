@@ -559,6 +559,8 @@ QA_FLAGS_IGNORED="usr/bin/yr"
 pkg_setup() {
 	# https://bugs.gentoo.org/933233
 	QA_SONAME="usr/$(get_libdir)/libyara_x.*\\.so usr/lib.*/py.*/site-packages/yara_x/yara_x.*\\.so"
+
+	rust_pkg_setup
 }
 
 src_prepare() {
