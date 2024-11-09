@@ -272,7 +272,7 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/lib.*/librpm_sequoia.so.1"
 
 pkg_setup() {
-	llvm_r1_pkg_setup
+	llvm-r1_pkg_setup
 	rust_pkg_setup
 }
 
