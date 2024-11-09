@@ -58,7 +58,6 @@ BDEPEND="
 			dev-python/pretend[${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
-			<dev-python/rich-13.8[${PYTHON_USEDEP}]
 			dev-python/scripttest[${PYTHON_USEDEP}]
 			dev-python/tomli-w[${PYTHON_USEDEP}]
 			dev-python/virtualenv[${PYTHON_USEDEP}]
@@ -79,6 +78,8 @@ python_prepare_all() {
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
 		# prepare to unbundle dependencies
 		"${FILESDIR}/pip-24.1-unbundle.patch"
+		# https://github.com/pypa/pip/pull/13073
+		"${FILESDIR}/pip-24.3.1-rich-13.8.patch"
 	)
 
 	distutils-r1_python_prepare_all
