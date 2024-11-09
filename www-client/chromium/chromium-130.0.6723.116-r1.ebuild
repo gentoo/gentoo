@@ -341,7 +341,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${P}.tar.xz
+	unpack ${P}-gentoo.tar.xz
 	unpack chromium-patches-${PATCH_V}.tar.bz2
 
 	use pgo && unpack chromium-profiler-0.2.tar
@@ -350,7 +350,7 @@ src_unpack() {
 		# A new testdata tarball is available for each release; but testfonts tend to remain stable
 		# for the duration of a release.
 		# This unpacks directly into/over ${WORKDIR}/${P} so we can just use `unpack`.
-		unpack ${P}-testdata.tar.xz
+		unpack ${P}-testdata-gentoo.tar.xz
 		# This just contains a bunch of font files that need to be unpacked (or moved) to the correct location.
 		local testfonts_dir="${WORKDIR}/${P}/third_party/test_fonts"
 		tar xf "${DISTDIR}/${P%%\.*}-testfonts.tar.gz" -C "${testfonts_dir}" || die "Failed to unpack testfonts"
