@@ -249,6 +249,10 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+src_configure() {
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	append-flags "-fPIC"
 	local mycmakeargs=(
@@ -258,13 +262,25 @@ multilib_src_configure() {
 	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_configure
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+}
+
 multilib_src_compile() {
 	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_compile bssl
 	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta" --target="$(rust_abi)"
 }
 
+src_test() {
+	multilib-minimal_src_test
+}
+
 multilib_src_test() {
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test  --target="$(rust_abi)"
+	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test --target="$(rust_abi)"
+}
+
+src_install() {
+	multilib-minimal_src_install
 }
 
 multilib_src_install() {
