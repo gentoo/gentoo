@@ -24,8 +24,7 @@ DEPEND="
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 "
-RDEPEND="
-	${DEPEND}
+RDEPEND="${DEPEND}
 	acct-user/sndiod
 "
 
