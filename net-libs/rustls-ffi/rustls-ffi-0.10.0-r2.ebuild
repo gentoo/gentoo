@@ -45,8 +45,8 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winnow@0.4.1
 "
-
-inherit cargo flag-o-matic multilib-minimal rust-toolchain
+RUST_USEDEP='${MULTILIB_USEDEP}'
+inherit multilib-minimal cargo flag-o-matic rust-toolchain
 
 DESCRIPTION="C-to-rustls bindings"
 HOMEPAGE="https://github.com/rustls/rustls-ffi"
@@ -83,6 +83,10 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+}
+
 multilib_src_compile() {
 	local cargoargs=(
 		--library-type=cdylib
@@ -95,6 +99,10 @@ multilib_src_compile() {
 	cargo cbuild "${cargoargs[@]}" || die "cargo cbuild failed"
 }
 
+src_test() {
+	multilib-minimal_src_test
+}
+
 multilib_src_test() {
 	local cargoargs=(
 		--prefix=/usr
@@ -104,6 +112,10 @@ multilib_src_test() {
 	)
 
 	cargo ctest "${cargoargs[@]}" || die "cargo ctest failed"
+}
+
+src_install() {
+	multilib-minimal_src_install
 }
 
 multilib_src_install() {
