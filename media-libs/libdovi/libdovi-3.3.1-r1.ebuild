@@ -133,14 +133,30 @@ multilib_src_configure() {
 	)
 }
 
+src_configure() {
+	multilib-minimal_src_configure
+}
+
 multilib_src_compile() {
 	local -n cargoargs=${PN}_CARGOARGS_${ABI}
 
 	edo cargo cbuild "${cargoargs[@]}"
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+}
+
 multilib_src_install() {
 	local -n cargoargs=${PN}_CARGOARGS_${ABI}
 
 	edo cargo cinstall --destdir="${D}" "${cargoargs[@]}"
+}
+
+src_test() {
+	multilib-minimal_src_test
+}
+
+src_install() {
+	multilib-minimal_src_install
 }
