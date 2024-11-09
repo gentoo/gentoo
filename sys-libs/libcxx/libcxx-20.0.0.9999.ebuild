@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
+inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils python-any-r1
 inherit toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
@@ -94,18 +94,29 @@ multilib_src_configure() {
 	local use_compiler_rt=OFF
 	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
-	# bootstrap: cmake is unhappy if compiler can't link to stdlib
-	local nolib_flags=( -nodefaultlibs -lc )
-	if ! test_compiler; then
-		if test_compiler "${nolib_flags[@]}"; then
-			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-			ewarn "${CXX} seems to lack runtime, trying with ${nolib_flags[*]}"
+	# Scenarios to consider:
+	#
+	# 1. Compiler test works with the default flags.
+	# 2. There is a runtime library, but no stdlib. In that case, leave the
+	#    LDFLAGS untouched, since there is no self-dependency in libc++.
+	# 3. There is no runtime library nor stdlib. In that case, overwrite the
+	#    LDFLAGS.
+	local nostdlib_flags=( -nostdlib --rtlib=compiler-rt -lc )
+	local nort_flags=( -nodefaultlibs -lc )
+	if ! test_compiler && ! test_compiler "${nostdlib_flags[@]}"; then
+		if test_compiler "${nort_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nort_flags[*]}"
+			ewarn "${CXX} seems to lack runtime, trying with ${nort_flags[*]}"
 		fi
 	fi
 
+	local sysroot
+	target_is_not_host && sysroot=/usr/${CTARGET}
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
+		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${sysroot}/usr"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES=libcxx
 		-DLLVM_INCLUDE_TESTS=OFF
@@ -125,7 +136,16 @@ multilib_src_configure() {
 		# this is broken with standalone builds, and also meaningless
 		-DLIBCXXABI_USE_LLVM_UNWINDER=OFF
 	)
-
+	if is_crosspkg; then
+		# Needed to target built libc headers
+		export CFLAGS="${CFLAGS} -isystem /usr/${CTARGET}/usr/include"
+		mycmakeargs+=(
+			# Without this, the compiler will compile a test program
+			# and fail due to no builtins.
+			-DCMAKE_C_COMPILER_WORKS=1
+			-DCMAKE_CXX_COMPILER_WORKS=1
+		)
+	fi
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
@@ -159,6 +179,7 @@ multilib_src_install() {
 	# since we've replaced libc++.{a,so} with ldscripts, now we have to
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
+		target_is_not_host && into /usr/${CTARGET}
 		dolib.so lib/libc++_shared.so
 		use static-libs && dolib.a lib/libc++_static.a
 	fi
