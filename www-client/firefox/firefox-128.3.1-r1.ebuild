@@ -11,6 +11,8 @@ PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ncurses,sqlite,ssl"
 
 RUST_NEEDS_LLVM=1
+RUST_MIN_VER=1.77.1
+
 
 WANT_AUTOCONF="2.1"
 

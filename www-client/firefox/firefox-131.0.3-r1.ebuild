@@ -10,7 +10,10 @@ LLVM_COMPAT=( 17 18 19 )
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ncurses,sqlite,ssl"
 
+# This will also filter rust versions that don't match LLVM_COMPAT in the non-clang path; this is fine.
 RUST_NEEDS_LLVM=1
+# If not building with clang we need at least rust 1.76
+RUST_MIN_VER=1.77.1
 
 WANT_AUTOCONF="2.1"
 
@@ -445,7 +448,7 @@ pkg_pretend() {
 		fi
 
 		# Ensure we have enough disk space to compile
-		if use pgo || use lto || use debug ; then
+		if use pgo || tc-is-lto || use debug ; then
 			CHECKREQS_DISK_BUILD="13500M"
 		else
 			CHECKREQS_DISK_BUILD="6600M"
@@ -456,15 +459,33 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	# Get LTO from environment; export after this phase for use in src_configure (etc)
+	use_lto=no
+
 	if [[ ${MERGE_TYPE} != binary ]] ; then
+
+		if tc-is-lto; then
+			use_lto=yes
+			# LTO is handled via configure
+			# -Werror=lto-type-mismatch -Werror=odr are going to fail with GCC,
+			# bmo#1516758, bgo#942288
+			filter-lto
+			filter-flags -Werror=lto-type-mismatch -Werror=odr
+		fi
+
 		if use pgo ; then
+			if [[ ${use_lto} == "no" ]] ; then
+				elog "Building ${PN} with USE=pgo requires LTO, however this was not detected in your environment."
+				elog "Forcing LTO, however it is recommended to enable LTO explicitly."
+				use_lto=yes
+			fi
 			if ! has userpriv ${FEATURES} ; then
 				eerror "Building ${PN} with USE=pgo and FEATURES=-userpriv is not supported!"
 			fi
 		fi
 
 		# Ensure we have enough disk space to compile
-		if use pgo || use lto || use debug ; then
+		if [[ "${use_lto}" == "yes" ]] || use pgo || use debug ; then
 			CHECKREQS_DISK_BUILD="13500M"
 		else
 			CHECKREQS_DISK_BUILD="6400M"
@@ -475,24 +496,10 @@ pkg_setup() {
 		llvm-r1_pkg_setup
 		rust_pkg_setup
 
-		if use clang && use lto && tc-ld-is-lld ; then
-			local version_lld=$(ld.lld --version 2>/dev/null | awk '{ print $2 }')
-			[[ -n ${version_lld} ]] && version_lld=$(ver_cut 1 "${version_lld}")
-			[[ -z ${version_lld} ]] && die "Failed to read ld.lld version!"
-
-			local version_llvm_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'LLVM version:' | awk '{ print $3 }')
-			[[ -n ${version_llvm_rust} ]] && version_llvm_rust=$(ver_cut 1 "${version_llvm_rust}")
-			[[ -z ${version_llvm_rust} ]] && die "Failed to read used LLVM version from rustc!"
-
-			if ver_test "${version_lld}" -ne "${version_llvm_rust}" ; then
-				eerror "Rust is using LLVM version ${version_llvm_rust} but ld.lld version belongs to LLVM version ${version_lld}."
-				eerror "You will be unable to link ${CATEGORY}/${PN}. To proceed you have the following options:"
-				eerror "  - Manually switch rust version using 'eselect rust' to match used LLVM version"
-				eerror "  - Switch to dev-lang/rust[system-llvm] which will guarantee matching version"
-				eerror "  - Build ${CATEGORY}/${PN} without USE=lto"
-				eerror "  - Rebuild lld with llvm that was used to build rust (may need to rebuild the whole "
-				eerror "    llvm/clang/lld/rust chain depending on your @world updates)"
-				die "LLVM version used by Rust (${version_llvm_rust}) does not match with ld.lld version (${version_lld})!"
+		if [[ ${use_lto} == "yes" ]] && use clang; then
+			if ! (tc-ld-is-lld || tc-ld-is-mold) ; then
+				eerror "Building ${PN} with LTO and Clang requires the sys-devel/lld or sys-devel/mold linker!"
+				die "Please fix your toolchain configuration."
 			fi
 		fi
 
@@ -550,6 +557,8 @@ pkg_setup() {
 		export LC_ALL=C
 	fi
 
+	export use_lto
+
 	CONFIG_CHECK="~SECCOMP"
 	WARNING_SECCOMP="CONFIG_SECCOMP not set! This system will be unable to play DRM-protected content."
 	linux-info_pkg_setup
@@ -573,7 +582,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use lto; then
+	if [[ "${use_lto}" == "yes" ]]; then
 		rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch || die
 	fi
 
@@ -895,7 +904,7 @@ src_configure() {
 	# LTO is handled via configure
 	filter-lto
 
-	if use lto ; then
+	if [[ "${use_lto}" == "yes" ]] ; then
 		if use clang ; then
 			# Upstream only supports lld or mold when using clang.
 			if tc-ld-is-mold ; then
@@ -1082,7 +1091,7 @@ src_configure() {
 src_compile() {
 	local virtx_cmd=
 
-	if tc-ld-is-mold && use lto; then
+	if tc-ld-is-mold && [[ ${use_lto} == "yes" ]]; then
 		# increase ulimit with mold+lto, bugs #892641, #907485
 		if ! ulimit -n 16384 1>/dev/null 2>&1 ; then
 			ewarn "Unable to modify ulimits - building with mold+lto might fail due to low ulimit -n resources."
