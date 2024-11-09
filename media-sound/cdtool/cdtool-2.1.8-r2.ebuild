@@ -1,7 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="collection of command-line utilities to control cdrom devices"
 HOMEPAGE="http://hinterhof.net/cdtool/"
@@ -17,3 +19,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-glibc-2.10.patch"
 	"${FILESDIR}/${P}-fix-build-system.patch"
 )
+
+src_prepare() {
+	default
+
+	# bug 899848
+	eautoreconf
+}
