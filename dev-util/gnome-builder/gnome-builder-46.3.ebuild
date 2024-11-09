@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.gnome.org/Builder/ https://gitlab.gnome.org/GNOME/gnome-b
 # FIXME: Review licenses at some point
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="clang doc +d-spy flatpak +git gtk-doc spell +sysprof test +webkit"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -106,10 +106,10 @@ that are currently available with packages include:
   highlighting and symbol resolving support.
 * dev-python/python-lsp-server for more accurate Python
   autocompletion support.
-* dev-util/valgrind for integration with valgrind.
-* dev-util/meson for integration with the Meson build system.
-* virtual/rust for integration with the Rust Cargo build system.
-* dev-util/cmake for integration with the CMake build system.
+* dev-debug/valgrind for integration with valgrind.
+* dev-build/meson for integration with the Meson build system.
+* dev-lang/rust{,-bin} for integration with the Rust Cargo build system.
+* dev-build/cmake for integration with the CMake build system.
 * net-libs/nodejs[npm] for integration with the NPM package system.
 '
 # FIXME: Package codespell and mention here
@@ -258,10 +258,10 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	optfeature_header "Language support"
-	optfeature "Rust's Cargo build system" virtual/rust
-	optfeature "CMake" dev-util/cmake
+	optfeature "Rust's Cargo build system" dev-lang/rust dev-lang/rust-bin
+	optfeature "CMake" dev-build/cmake
 	optfeature "Java Maven build system" dev-java/maven-bin
-	optfeature "Meson Build system" dev-util/meson
+	optfeature "Meson Build system" dev-build/meson
 }
 
 pkg_postrm() {
