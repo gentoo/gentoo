@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="alsa amr ao encode flac id3tag ladspa mad magic ogg openmp oss opus png pulseaudio sndfile sndio static-libs twolame wavpack"
+IUSE="alsa amr ao encode flac id3tag ladspa mad magic ogg openmp oss opus png pulseaudio sndfile sndio twolame wavpack"
 
 RDEPEND="
 	dev-libs/libltdl:0=
@@ -103,7 +103,6 @@ src_configure() {
 		$(use_enable pulseaudio)
 		$(use_enable sndfile)
 		$(use_enable sndio)
-		$(use_enable static-libs static)
 		$(use_with twolame)
 		$(use_enable wavpack)
 		--enable-formats=dyn
