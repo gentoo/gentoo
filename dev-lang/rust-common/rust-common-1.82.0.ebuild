@@ -31,14 +31,8 @@ IUSE="verify-sig"
 
 # Legacy non-slotted versions bash completions will collide.
 RDEPEND="
-	!dev-lang/rust:stable/1.71.1
-	!dev-lang/rust:stable/1.74.1
-	!dev-lang/rust:stable/1.75.0
-	!dev-lang/rust:stable/1.77.1
-	!dev-lang/rust:stable/1.79.0
-	!dev-lang/rust:stable/1.80.1
-	!dev-lang/rust:stable/1.81.0
-	!dev-lang/rust:stable/1.82.0
+	!dev-lang/rust:stable
+	!dev-lang/rust-bin:stable
 "
 
 src_configure() {
