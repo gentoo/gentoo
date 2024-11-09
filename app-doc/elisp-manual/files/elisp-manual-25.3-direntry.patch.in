@@ -1,10 +1,10 @@
---- lispref-orig/elisp.texi
+--- lispref/elisp.texi
 +++ lispref/elisp.texi
 @@ -1,6 +1,6 @@
  \input texinfo  @c -*-texinfo-*-
  @c %**start of header
 -@setfilename ../../info/elisp.info
-+@setfilename elisp26.info
++@setfilename elisp@version@.info
  
  @ifset VOL1
  @set volflag
@@ -16,7 +16,7 @@
 +@dircategory Emacs
  @direntry
 -* Elisp: (elisp).               The Emacs Lisp Reference Manual.
-+* Elisp 26: (elisp26).  The Emacs Lisp Reference Manual for Emacs 26.
++* Elisp @version@: (elisp@version@).  The Emacs Lisp Reference Manual for Emacs @version@.
  @end direntry
  
  @titlepage

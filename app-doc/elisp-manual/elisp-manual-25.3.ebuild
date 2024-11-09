@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,12 @@ KEYWORDS="amd64 ppc x86"
 
 BDEPEND="sys-apps/texinfo"
 
-PATCHES=("${FILESDIR}/${P}-direntry.patch")
+src_prepare() {
+	sed -e "s/@version@/${SLOT}/g" "${FILESDIR}"/${PN}-25.3-direntry.patch.in \
+		> "${T}"/direntry.patch || die
+	eapply "${T}"/direntry.patch
+	eapply_user
+}
 
 src_compile() {
 	makeinfo -I "${WORKDIR}"/emacs elisp.texi || die
