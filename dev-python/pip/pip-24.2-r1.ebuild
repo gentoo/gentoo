@@ -58,6 +58,7 @@ BDEPEND="
 			dev-python/pretend[${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
+			<dev-python/rich-13.8[${PYTHON_USEDEP}]
 			dev-python/scripttest[${PYTHON_USEDEP}]
 			dev-python/tomli-w[${PYTHON_USEDEP}]
 			dev-python/virtualenv[${PYTHON_USEDEP}]
