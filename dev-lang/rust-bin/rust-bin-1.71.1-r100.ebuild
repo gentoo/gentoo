@@ -31,9 +31,9 @@ RDEPEND="
 	dev-libs/openssl
 	sys-apps/lsb-release
 	sys-devel/gcc:*
+	!dev-lang/rust:stable
 	!dev-lang/rust-bin:stable
 "
-
 BDEPEND="
 	prefix? ( dev-util/patchelf )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
