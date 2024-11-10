@@ -253,7 +253,7 @@ CRATES="
 LLVM_COMPAT=( {17..18} )
 RUST_NEEDS_LLVM=1
 
-inherit bash-completion-r1 llvm-r1 cargo
+inherit bash-completion-r1 cargo llvm-r1
 
 DESCRIPTION="A simple OpenPGP signature verification program"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sqv"

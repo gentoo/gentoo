@@ -65,8 +65,9 @@ CRATES="
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-x86_64-pc-windows-gnu@0.4.0
 "
-RUST_USEDEP='${MULTILIB_USEDEP}'
-inherit multilib-minimal cargo flag-o-matic rust-toolchain
+RUST_MULTILIB=1
+
+inherit cargo flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="C-to-rustls bindings"
 HOMEPAGE="https://github.com/rustls/rustls-ffi"

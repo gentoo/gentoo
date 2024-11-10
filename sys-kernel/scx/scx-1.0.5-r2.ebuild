@@ -296,7 +296,7 @@ CRATES="
 
 RUST_MIN_VER="1.74.1"
 
-inherit llvm-r1 cargo linux-info meson rust-toolchain
+inherit cargo linux-info llvm-r1 meson rust-toolchain
 
 DESCRIPTION="sched_ext schedulers and tools"
 HOMEPAGE="https://github.com/sched-ext/scx"

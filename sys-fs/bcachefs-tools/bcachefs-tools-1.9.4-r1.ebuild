@@ -102,7 +102,7 @@ CRATES="
 LLVM_COMPAT=( {16..18} )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit llvm-r1 cargo flag-o-matic multiprocessing python-any-r1 shell-completion toolchain-funcs unpacker
+inherit cargo flag-o-matic  llvm-r1 multiprocessing python-any-r1 shell-completion toolchain-funcs unpacker
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"

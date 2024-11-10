@@ -278,9 +278,9 @@ CRATES="
 	yeslogic-fontconfig-sys@4.0.1
 "
 
-RUST_USEDEP='${MULTILIB_USEDEP}'
+RUST_MULTILIB=1
 
-inherit multilib-minimal cargo gnome2 python-any-r1 rust-toolchain vala
+inherit cargo gnome2 multilib-minimal python-any-r1 rust-toolchain vala
 
 DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
 HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg https://gitlab.gnome.org/GNOME/librsvg"
