@@ -42,6 +42,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-76.1-remove-bashisms.patch"
 	"${FILESDIR}/${PN}-64.2-darwin.patch"
 	"${FILESDIR}/${PN}-68.1-nonunicode.patch"
+
+	# Undo change for now which exposes underlinking in consumers;
+	# revisit when things are a bit quieter and tinderbox its removal.
+	"${FILESDIR}/${PN}-76.1-undo-pkgconfig-change-for-now.patch"
 )
 
 src_prepare() {
