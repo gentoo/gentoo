@@ -545,7 +545,7 @@ ecm_src_prepare() {
 		if [[ ${ECM_TEST} = forceoptional ]] ; then
 			[[ ${_KFSLOT} = 5 ]] && ecm_punt_qt_module Test
 			# if forceoptional, also cover non-kde categories
-			cmake_comment_add_subdirectory autotests test tests
+			cmake_comment_add_subdirectory appiumtests autotests test tests
 		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
 			[[ ${_KFSLOT} = 5 ]] && ecm_punt_qt_module Test
 			local f pf="${T}/${P}"-tests-optional.patch
@@ -567,7 +567,7 @@ ecm_src_prepare() {
 			eqawarn "  ${pf}"
 			eqawarn "Push it upstream to make this message go away."
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
-			cmake_comment_add_subdirectory autotests test tests
+			cmake_comment_add_subdirectory appiumtests autotests test tests
 		fi
 	fi
 
