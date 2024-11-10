@@ -1259,6 +1259,9 @@ distutils_pep517_install() {
 
 	# set it globally in case we were using "standalone" wrapper
 	local -x HATCH_METADATA_CLASSIFIERS_NO_VERIFY=1
+	if in_iuse debug && use debug; then
+		local -x SETUPTOOLS_RUST_CARGO_PROFILE=dev
+	fi
 
 	case ${DISTUTILS_USE_PEP517} in
 		maturin)
@@ -1351,9 +1354,6 @@ distutils_pep517_install() {
 			)
 			;;
 		setuptools)
-			if in_iuse debug && use debug; then
-				local -x SETUPTOOLS_RUST_CARGO_PROFILE=dev
-			fi
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				config_settings=$(
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
