@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
+inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils python-any-r1
 inherit toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
@@ -50,8 +50,8 @@ multilib_src_configure() {
 	llvm_prepend_path "${LLVM_MAJOR}"
 
 	if use clang; then
-		local -x CC=${CHOST}-clang
-		local -x CXX=${CHOST}-clang++
+		local -x CC=${CTARGET}-clang
+		local -x CXX=${CTARGET}-clang++
 		strip-unsupported-flags
 	fi
 
@@ -59,9 +59,13 @@ multilib_src_configure() {
 	local use_compiler_rt=OFF
 	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
+	local sysroot
+	target_is_not_host && sysroot=/usr/${CTARGET}
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
+		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${sysroot}/usr"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx"
 		-DLLVM_INCLUDE_TESTS=OFF
@@ -73,7 +77,7 @@ multilib_src_configure() {
 
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
-		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
+		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}${sysroot}"/usr/include
 		# this is broken with standalone builds, and also meaningless
 		-DLIBCXXABI_USE_LLVM_UNWINDER=OFF
 
@@ -87,6 +91,14 @@ multilib_src_configure() {
 		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
+	if is_crosspkg; then
+		mycmakeargs+=(
+			# Without this, the compiler will compile a test program
+			# and fail due to no builtins.
+			-DCMAKE_C_COMPILER_WORKS=1
+			-DCMAKE_CXX_COMPILER_WORKS=1
+		)
+	fi
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
