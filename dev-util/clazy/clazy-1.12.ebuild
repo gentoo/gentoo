@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-LIBRARY_DIRS.patch
 	"${FILESDIR}"/${P}-INCLUDE_DIRS.patch
 	"${FILESDIR}"/${P}-standalone-install-location.patch
+	"${FILESDIR}"/${P}-clazy-install-location.patch
 )
 
 pkg_setup() {
@@ -78,10 +79,10 @@ src_test() {
 
 	# Run tests against built copy, not installed
 	# bug #811723
-	local -x PATH="${BUILD_DIR}/${LLVM_ROOT}/bin:${BUILD_DIR}/bin:${BUILD_DIR}:${PATH}"
+	local -x PATH="${BUILD_DIR}/${LLVM_ROOT}/bin:${BUILD_DIR}/bin:${PATH}"
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/lib"
 
-	chmod +x "${BUILD_DIR}"/clazy || die
+	chmod +x "${BUILD_DIR}/bin/clazy" || die
 
 	cmake_src_test
 }
