@@ -572,7 +572,7 @@ ecm_src_prepare() {
 	fi
 
 	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+	if [[ -n ${_FRAMEWORKS_KDE_ORG_ECLASS} ]] && [[ ${PN} != extra-cmake-modules ]]; then
 		cmake_comment_add_subdirectory tests
 	fi
 }
