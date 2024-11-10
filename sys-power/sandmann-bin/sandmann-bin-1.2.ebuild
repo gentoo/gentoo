@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3+ LGPL-3"
 SLOT="0"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # >=java-config-2.3.2 to get the libdir fix.
 RDEPEND="
