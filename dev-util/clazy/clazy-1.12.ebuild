@@ -74,11 +74,13 @@ src_test() {
 
 	# Run tests against built copy, not installed
 	# bug #811723
-	local -x PATH="${BUILD_DIR}/${LLVM_ROOT}/bin:${BUILD_DIR}/bin:${PATH}"
+	local -x PATH="${BUILD_DIR}/${LLVM_ROOT}/bin:${BUILD_DIR}/bin:${BUILD_DIR}:${PATH}"
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/lib"
 
 	# NOTE or DEPEND on "test? ( dev-qt/qtscxml:6[qml] )"
 	local -x CMAKE_SKIP_TESTS=()
+
+	chmod +x "${BUILD_DIR}"/clazy || die
 
 	if ! has_version dev-qt/qtscxml:6; then
 		CMAKE_SKIP_TESTS+=(
