@@ -91,7 +91,7 @@ LLVM_COMPAT=( {16..18} )
 PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 
-inherit llvm-r1 cargo flag-o-matic python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
+inherit cargo flag-o-matic  llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"

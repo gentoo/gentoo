@@ -133,7 +133,7 @@ CRATES="
 "
 
 LLVM_COMPAT=( {17..18} )
-inherit llvm-r1 cargo
+inherit cargo llvm-r1
 
 DESCRIPTION="GNU findutils rewritten in Rust"
 HOMEPAGE="https://uutils.github.io/findutils/ https://github.com/uutils/findutils"

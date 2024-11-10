@@ -58,7 +58,7 @@ LLVM_COMPAT=( 18 )
 RUST_MIN_VER="1.80.1"
 RUST_NEEDS_LLVM=1
 
-inherit llvm-r1 cargo check-reqs desktop flag-o-matic toolchain-funcs xdg
+inherit cargo check-reqs desktop flag-o-matic llvm-r1 toolchain-funcs xdg
 
 DESCRIPTION="The fast, collaborative code editor"
 HOMEPAGE="https://zed.dev https://github.com/zed-industries/zed"

@@ -487,7 +487,7 @@ CRATES="
 
 LLVM_COMPAT=( {16..17} )
 
-inherit llvm-r1 cargo shell-completion
+inherit cargo llvm-r1 shell-completion
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"

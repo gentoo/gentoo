@@ -108,7 +108,7 @@ CRATES="
 
 LLVM_COMPAT=( {16..18} )
 
-inherit llvm-r1 cargo desktop xdg
+inherit cargo desktop llvm-r1 xdg
 
 DESCRIPTION="A GTK patchbay for pipewire"
 HOMEPAGE="https://gitlab.freedesktop.org/pipewire/helvum"
