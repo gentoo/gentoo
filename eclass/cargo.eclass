@@ -20,9 +20,7 @@ if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-	if [[ -z ${_LLVM_R1_ECLASS} ]]; then
-		die "Please inherit llvm-r1.eclass before cargo.eclass when using RUST_NEEDS_LLVM"
-	fi
+		inherit llvm-r1
 fi
 
 if [[ -n ${CARGO_OPTIONAL} ]]; then
@@ -627,7 +625,11 @@ cargo_env() {
 cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- ${CARGO} build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	if [[ -z "${CARGO}" ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	set -- "${CARGO}" build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo build failed"
 }
@@ -641,7 +643,11 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- ${CARGO} install $(has --path ${@} || echo --path ./) \
+	if [[ -z "${CARGO}" ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	set -- "${CARGO}" install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
 		${GIT_CRATES[@]:+--frozen} \
 		$(usex debug --debug "") \
@@ -659,7 +665,11 @@ cargo_src_install() {
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- ${CARGO} test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	if [[ -z "${CARGO}" ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	set -- "${CARGO}" test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo test failed"
 }
