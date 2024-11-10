@@ -22,7 +22,12 @@ RDEPEND="
 	$(llvm_gen_dep 'sys-devel/llvm:${LLVM_SLOT}')
 "
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND="
+	test? (
+		${PYTHON_DEPS}
+		dev-qt/qtnetworkauth:6
+	)
+"
 
 PATCHES=(
 	# git master
