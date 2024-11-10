@@ -378,15 +378,6 @@ app-i18n/kcm-fcitx
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
 
-# Joonas Niilola <juippis@gentoo.org> (2024-07-04)
-# libxml2-2.13.1 removed "deprecated" symbols that other (older)
-# packages depend upon. It can be mitigated with a --with-legacy
-# configure option, but it's still not a perfect fix. Bug #935452
-# to track and work on tree-wide support. Masking the exact version
-# so we can revbump the package with a fix.
-=dev-libs/libxml2-2.13.1
-=dev-libs/libxslt-1.1.41
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
