@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<!-- not ALLARCHES: has some arch-specific logic -->
 	<upstream>
 		<remote-id type="github">mesonbuild/meson-python</remote-id>
 		<remote-id type="pypi">meson-python</remote-id>
