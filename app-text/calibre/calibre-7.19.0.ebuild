@@ -124,6 +124,8 @@ PATCHES=(
 	# We don't (yet?) package libjxr and it seems to be dead upstream
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-7.0.0-jxr-test.patch"
+	# fix tests with pillow 11
+	"${FILESDIR}"/0001-PIL-11.0-changes-its-webp-features-output.patch
 )
 
 src_prepare() {
