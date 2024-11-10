@@ -758,12 +758,6 @@ ecm_pkg_postinst() {
 		false) xdg_pkg_postinst ;;
 		*) ;;
 	esac
-
-	if [[ -n ${_KDE_ORG_ECLASS} ]] && [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]] && [[ ${KDE_BUILD_TYPE} = live ]]; then
-		einfo "WARNING! This is an experimental live ebuild of ${CATEGORY}/${PN}"
-		einfo "Use it at your own risk."
-		einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
-	fi
 }
 
 # @FUNCTION: ecm_pkg_postrm
