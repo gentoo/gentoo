@@ -247,7 +247,7 @@ multilib_src_configure() {
 		$(use_with zeroconf avahi)
 	)
 
-	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" BACKENDS="${lbackends}" econf "${myconf[@]}"
+	BACKENDS="${lbackends}" econf "${myconf[@]}"
 }
 
 multilib_src_compile() {
