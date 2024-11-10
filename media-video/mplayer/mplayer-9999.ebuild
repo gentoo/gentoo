@@ -124,13 +124,11 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:= )
 	pnm? ( media-libs/netpbm )
-	pulseaudio? ( media-sound/pulseaudio )
-	rar? (
-		|| (
+	pulseaudio? ( media-libs/libpulse )
+	rar? ( || (
 			app-arch/unrar
 			app-arch/rar
-		)
-	)
+	) )
 	rtmp? ( media-video/rtmpdump )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl )
