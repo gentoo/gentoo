@@ -1257,6 +1257,9 @@ distutils_pep517_install() {
 		cmd+=( cargo_env )
 	fi
 
+	# set it globally in case we were using "standalone" wrapper
+	local -x HATCH_METADATA_CLASSIFIERS_NO_VERIFY=1
+
 	case ${DISTUTILS_USE_PEP517} in
 		maturin)
 			# `maturin pep517 build-wheel --help` for options
