@@ -52,6 +52,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	virtual/libcrypt:=
+	net-dns/libidn:0=
 	acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
