@@ -67,11 +67,6 @@ app-emulation/libvirt nbd
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
-# Experimental and only available on a subset of architectures
-sys-kernel/gentoo-kernel -generic-uki
-sys-kernel/gentoo-kernel-bin -generic-uki
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 is keyworded here.
 dev-python/PyQt6 -pdfium
