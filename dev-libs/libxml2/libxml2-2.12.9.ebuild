@@ -61,7 +61,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.11.9-icu-pkgconfig.patch
+	"${FILESDIR}"/${PN}-2.12.9-icu-pkgconfig.patch
 )
 
 src_unpack() {
