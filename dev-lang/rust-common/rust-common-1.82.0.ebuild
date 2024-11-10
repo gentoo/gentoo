@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit bash-completion-r1
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
+inherit bash-completion-r1 verify-sig
 
 DESCRIPTION="Common files shared between multiple slots of Rust"
 HOMEPAGE="https://www.rust-lang.org/"
@@ -25,17 +26,21 @@ SRC_URI="
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
-SLOT=0
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="verify-sig"
 
 # Legacy non-slotted versions bash completions will collide.
 RDEPEND="
 	!dev-lang/rust:stable
 	!dev-lang/rust-bin:stable
 "
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-rust )"
 
 src_unpack() {
+	if use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${SRC} "${DISTDIR}"/${SRC}.asc
+	fi
+
 	# Avoid unpacking the whole tarball which would need check-reqs
 	tar -xf "${DISTDIR}"/${SRC} ${SRC%%.tar.xz}/src/tools/cargo/src/etc/cargo.bashcomp.sh || die
 }
