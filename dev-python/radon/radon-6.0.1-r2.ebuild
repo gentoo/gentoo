@@ -37,5 +37,5 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	# unpin deps
-	sed -i -e 's:,<[0-9.]*::' setup.py || die
+	sed -i -e 's:,<[0-9.]*::' pyproject.toml || die
 }
