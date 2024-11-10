@@ -490,17 +490,8 @@ pkg_setup() {
 		fi
 
 		check-reqs_pkg_setup
-
 		llvm-r1_pkg_setup
 		rust_pkg_setup
-
-		if [[ ${use_lto} == "yes" ]] && use clang; then
-			if ! (tc-ld-is-lld || tc-ld-is-mold) ; then
-				eerror "Building ${PN} with LTO and Clang requires the sys-devel/lld or sys-devel/mold linker!"
-				die "Please fix your toolchain configuration."
-			fi
-		fi
-
 		python-any-r1_pkg_setup
 
 		# Avoid PGO profiling problems due to enviroment leakage
