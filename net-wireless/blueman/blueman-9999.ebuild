@@ -80,7 +80,6 @@ RDEPEND="
 		|| (
 			media-sound/pulseaudio-daemon[bluetooth]
 			media-video/pipewire[bluetooth]
-			<media-sound/pulseaudio-15.99.1[bluetooth]
 		)
 	)
 "
