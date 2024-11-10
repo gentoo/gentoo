@@ -18,12 +18,8 @@ DEPEND="${RDEPEND}
 	dev-libs/boost"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-6.1.0-cmake-install.patch
+
 	# Bug #894648
 	"${FILESDIR}"/${PN}-6.0.6_p20230811-no-fortify-source.patch
 )
-
-src_install() {
-	dobin "${BUILD_DIR}"/{grfcodec,grfid,grfstrip,nforenum}
-	doman docs/*.1
-	dodoc changelog.txt docs/*.txt
-}
