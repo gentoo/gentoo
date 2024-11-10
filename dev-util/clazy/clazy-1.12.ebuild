@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 15 16 17 18 )
+LLVM_COMPAT=( {15..18} )
 PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake llvm-r1 python-any-r1
 
@@ -30,6 +30,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-llvm-18.patch
 	# Pending: https://invent.kde.org/sdk/clazy/-/merge_requests/131
 	"${FILESDIR}"/${P}-clang-16-no-src-root.patch
+
+	"${FILESDIR}"/${P}-LIBRARY_DIRS.patch
+	"${FILESDIR}"/${P}-INCLUDE_DIRS.patch
+	"${FILESDIR}"/${P}-standalone-install-location.patch
 )
 
 pkg_setup() {
@@ -45,13 +49,47 @@ src_prepare() {
 }
 
 src_configure() {
-	export LLVM_ROOT="$(get_llvm_prefix -d)"
+	local -x LLVM_ROOT="$(get_llvm_prefix -d)"
+
+	export CI_JOB_NAME_SLUG="qt6"
 
 	cmake_src_configure
 }
 
 src_test() {
+	# clazy-standalone wants to be installed in the directory of the clang binary,
+	# so it can find the llvm/clang via relative paths.
+	# Requires the standalone-install-location.patch.
+	# Setup the directories and symlink the system include dir for that.
+	local -x LLVM_ROOT="$(get_llvm_prefix -d)"
+	local -x CLANG_ROOT="${LLVM_ROOT//llvm/clang}"
+	mkdir -p "${BUILD_DIR}${CLANG_ROOT}" || die
+
+	ln -s "${CLANG_ROOT}/include" "${BUILD_DIR}${CLANG_ROOT}/include" || die
+
 	# Run tests against built copy, not installed
 	# bug #811723
-	PATH="${BUILD_DIR}/bin:${PATH}" LD_LIBRARY_PATH="${BUILD_DIR}/lib" cmake_src_test
+	local -x PATH="${BUILD_DIR}/${LLVM_ROOT}/bin:${BUILD_DIR}/bin:${PATH}"
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}/lib"
+
+	# NOTE or DEPEND on "test? ( dev-qt/qtscxml:6[qml] )"
+	local -x CMAKE_SKIP_TESTS=()
+
+	if ! has_version dev-qt/qtscxml:6; then
+		CMAKE_SKIP_TESTS+=(
+			# cannot find -lQt6StateMachine: No such file or directory
+			"old-style-connect"
+		)
+	fi
+
+	if ! has_version dev-qt/qtdeclarative:6; then
+		CMAKE_SKIP_TESTS+=(
+			# lowercase-qml-type-name/main.cpp:3:10: fatal error: 'QtQml/QQmlEngine' file not found
+			"lowercase-qml-type-name"
+			# no-module-include/main.cpp:5:10: fatal error: 'QtQml/QtQml' file not found
+			"no-module-include"
+		)
+	fi
+
+	cmake_src_test
 }
