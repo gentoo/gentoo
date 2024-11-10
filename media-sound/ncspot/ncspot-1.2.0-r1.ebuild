@@ -595,6 +595,11 @@ BDEPEND="${PYTHON_DEPS}
 
 QA_FLAGS_IGNORED="/usr/bin/ncspot"
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	rust_pkg_setup
+}
+
 src_configure() {
 	local myfeaturesdef=""
 
