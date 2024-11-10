@@ -74,21 +74,15 @@ distutils_enable_sphinx docs
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/dulwich/_.*.so"
 
-src_unpack() {
-	cargo_src_unpack
+pkg_setup() {
+	# avoid rust_pkg_setup which will die when there's no Rust found
+	if use native-extensions ; then
+		rust_pkg_setup  # implicitly inherited through cargo
+	fi
 }
 
-src_prepare() {
-	default
-
-	if use !native-extensions; then
-		# avoid hard dep on rust via setuptools_rust
-		# https://github.com/jelmer/dulwich/issues/1405
-		sed -i \
-			-e '/from setuptools_rust/d' \
-			-e '/^rust_extensions = \[/,/^\]/d' \
-			setup.py || die
-	fi
+src_unpack() {
+	cargo_src_unpack
 }
 
 python_compile() {
