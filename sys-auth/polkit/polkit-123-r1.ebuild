@@ -23,7 +23,7 @@ fi
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="+daemon +duktape examples gtk +introspection kde pam selinux systemd test"
+IUSE="+daemon examples gtk +introspection kde pam selinux systemd test"
 # https://gitlab.freedesktop.org/polkit/polkit/-/issues/181 for test restriction
 RESTRICT="!test? ( test ) test"
 
@@ -57,10 +57,7 @@ BDEPEND="
 DEPEND="
 	>=dev-libs/glib-2.32:2
 	dev-libs/expat
-	daemon? (
-		duktape? ( dev-lang/duktape:= )
-		!duktape? ( dev-lang/spidermonkey:102[-debug] )
-	)
+	daemon? ( dev-lang/duktape:= )
 	pam? (
 		sys-auth/pambase
 		sys-libs/pam
@@ -122,7 +119,7 @@ src_configure() {
 		-Dos_type=gentoo
 		-Dsession_tracking="$(usex systemd libsystemd-login libelogind)"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
-		-Djs_engine=$(usex duktape duktape mozjs)
+		-Djs_engine=duktape
 		$(meson_use !daemon libs-only)
 		$(meson_use introspection)
 		$(meson_use test tests)
