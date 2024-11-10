@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
-		dev-cpp/catch
+		<dev-cpp/catch-3
 		dev-lang/go
 	)
 "
@@ -45,9 +45,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# https://github.com/strukturag/libheif/issues/1249
-PATCHES=( "${FILESDIR}"/${P}-prepend_DESTDIR_when_generating_heif-convert_symlink.patch )
-
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
 )
@@ -58,6 +55,8 @@ src_prepare() {
 		rm tests/catch.hpp || die
 		ln -s "${ESYSROOT}"/usr/include/catch2/catch.hpp tests/catch.hpp || die
 	fi
+
+	sed -e '/Werror/d' -i CMakeLists.txt || die # bug 936466
 
 	cmake_src_prepare
 
