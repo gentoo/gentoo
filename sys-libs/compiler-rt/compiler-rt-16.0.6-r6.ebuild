@@ -12,7 +12,8 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_MAJOR}"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
-IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
+IUSE="+abi_x86_32 abi_x86_64 +atomic-builtins +clang debug test"
+REQUIRED_USE="atomic-builtins? ( clang )"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 DEPEND="
@@ -105,7 +106,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
 
-		-DCOMPILER_RT_EXCLUDE_ATOMIC_BUILTIN=OFF
+		-DCOMPILER_RT_EXCLUDE_ATOMIC_BUILTIN=$(usex !atomic-builtins)
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		-DCOMPILER_RT_BUILD_LIBFUZZER=OFF
 		-DCOMPILER_RT_BUILD_MEMPROF=OFF
