@@ -566,7 +566,7 @@ ecm_src_prepare() {
 			eqawarn "Unified diff file ready for pickup in:"
 			eqawarn "  ${pf}"
 			eqawarn "Push it upstream to make this message go away."
-		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
+		elif [[ -n ${_KDE_ORG_ECLASS} ]] ; then
 			cmake_comment_add_subdirectory appiumtests autotests test tests
 		fi
 	fi
