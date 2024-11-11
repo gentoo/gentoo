@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-apps/hwdata"
+BDEPEND="sys-apps/hwdata"
 DEPEND="${RDEPEND}"
 
 BDEPEND="
