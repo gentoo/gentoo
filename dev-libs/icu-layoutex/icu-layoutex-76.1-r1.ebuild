@@ -34,7 +34,13 @@ BDEPEND="
 	verify-sig? ( >=sec-keys/openpgp-keys-icu-20241110 )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-76.1-remove-bashisms.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-76.1-remove-bashisms.patch"
+
+	# Undo change for now which exposes underlinking in consumers;
+	# revisit when things are a bit quieter and tinderbox its removal.
+	"${FILESDIR}/${PN}-76.1-undo-pkgconfig-change-for-now.patch"
+)
 
 src_prepare() {
 	default
