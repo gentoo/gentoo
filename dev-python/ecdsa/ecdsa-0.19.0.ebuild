@@ -20,7 +20,7 @@ KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~ppc-macos ~x64
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/gmpy[${PYTHON_USEDEP}]
+		dev-python/gmpy2[${PYTHON_USEDEP}]
 	' 'python*')
 	dev-python/six[${PYTHON_USEDEP}]
 "

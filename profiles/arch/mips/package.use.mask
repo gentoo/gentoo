@@ -319,9 +319,9 @@ gnome-base/gvfs google
 xfce-base/xfwm4 xpresent
 
 # Mart Raudsepp <leio@gentoo.org> (2017-02-07)
-# dev-python/gmpy fails tests about sizeof (conch), bug 608496
+# dev-python/gmpy2 fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
-# dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
+# dev-python/gmpy2 also a test depend, so minimize the features until can test properly (http2 soap test)
 dev-python/twisted conch http2 test
 
 # Felix Janda <felix.janda@posteo.de> (2016-09-24)

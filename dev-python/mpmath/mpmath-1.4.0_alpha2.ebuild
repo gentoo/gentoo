@@ -29,7 +29,7 @@ BDEPEND="
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/gmpy[${PYTHON_USEDEP}]
+			dev-python/gmpy2[${PYTHON_USEDEP}]
 		' 'python3*')
 		!mips? (
 			dev-python/ipython[${PYTHON_USEDEP}]
@@ -73,6 +73,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "gmp support" dev-python/gmpy
+	optfeature "gmp support" dev-python/gmpy2
 	optfeature "matplotlib support" dev-python/matplotlib
 }

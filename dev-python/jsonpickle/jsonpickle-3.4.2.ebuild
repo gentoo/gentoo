@@ -26,7 +26,7 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/feedparser[${PYTHON_USEDEP}]
-		dev-python/gmpy[${PYTHON_USEDEP}]
+		dev-python/gmpy2[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
@@ -49,7 +49,7 @@ python_test() {
 		tests/bson_test.py
 	)
 
-	if ! has_version "dev-python/gmpy[${PYTHON_USEDEP}]"; then
+	if ! has_version "dev-python/gmpy2[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=( jsonpickle/ext/gmpy.py )
 	fi
 	if ! has_version "dev-python/pandas[${PYTHON_USEDEP}]"; then
