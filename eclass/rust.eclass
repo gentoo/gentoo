@@ -130,7 +130,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # @DESCRIPTION:
 # This is an eclass-generated Rust dependency string, filtered by
 # RUST_MAX_VER and RUST_MIN_VER. If RUST_NEEDS_LLVM is set, this
-# is gropeda and gated by an appropriate `llvm_slot_x` USE for all
+# is grouped and gated by an appropriate `llvm_slot_x` USE for all
 # implementations listed in LLVM_COMPAT.
 
 # @ECLASS_VARIABLE: RUST_OPTIONAL
