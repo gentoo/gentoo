@@ -27,7 +27,7 @@ BDEPEND="
 	test? (
 		app-arch/brotli[${PYTHON_USEDEP},python]
 		>=dev-python/execnet-1.0.9[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pyzmq[${PYTHON_USEDEP}]

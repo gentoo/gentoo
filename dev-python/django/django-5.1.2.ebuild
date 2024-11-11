@@ -43,7 +43,7 @@ BDEPEND="
 		$(python_gen_impl_dep sqlite)
 		${RDEPEND}
 		>=dev-python/docutils-0.19[${PYTHON_USEDEP}]
-		>=dev-python/jinja-2.11.0[${PYTHON_USEDEP}]
+		>=dev-python/jinja2-2.11.0[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pillow[webp,${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]

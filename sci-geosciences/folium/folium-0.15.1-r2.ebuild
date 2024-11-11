@@ -22,7 +22,7 @@ PATCHES=(
 
 RDEPEND="sci-geosciences/xyzservices[${PYTHON_USEDEP}]
 	sci-libs/branca[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

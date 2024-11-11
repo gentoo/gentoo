@@ -18,7 +18,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
+RDEPEND="dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/parsedatetime[${PYTHON_USEDEP}]
 	dev-python/pillow[jpeg,truetype,${PYTHON_USEDEP}]

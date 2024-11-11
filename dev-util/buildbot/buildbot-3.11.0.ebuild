@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/croniter-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-2.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]

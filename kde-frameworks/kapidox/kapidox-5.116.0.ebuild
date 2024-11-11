@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	app-text/doxygen
 	$(python_gen_cond_dep '
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	media-gfx/graphviz[python,${PYTHON_SINGLE_USEDEP}]

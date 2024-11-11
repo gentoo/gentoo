@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit bash-completion-r1 distutils-r1 optfeature pypi
@@ -62,7 +62,7 @@ pkg_postinst() {
 	optfeature "chart generation" dev-python/pygal
 	optfeature "hyphenation support" dev-python/pyphen
 	optfeature "notebook compilation and LESS support" dev-python/ipython
-	optfeature "alternative templating engine to Mako" dev-python/jinja
+	optfeature "alternative templating engine to Mako" dev-python/jinja2
 	optfeature "built-in web server support" dev-python/aiohttp
 	optfeature "monitoring file system events" dev-python/watchdog
 	optfeature "extracting metadata from web media links" dev-python/micawber

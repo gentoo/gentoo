@@ -27,7 +27,7 @@ IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.2[${PYTHON_USEDEP}]

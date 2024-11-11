@@ -28,7 +28,7 @@ RDEPEND="
 		>=dev-python/markupsafe-1[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2[${PYTHON_USEDEP}]
-		>=dev-python/jinja-2[${PYTHON_USEDEP}]
+		>=dev-python/jinja2-2[${PYTHON_USEDEP}]
 		>=dev-python/typogrify-2[${PYTHON_USEDEP}]
 	')
 	$(python_gen_cond_dep '

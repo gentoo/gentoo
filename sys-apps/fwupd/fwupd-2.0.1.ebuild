@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="$(vala_depend)
 	$(python_gen_cond_dep '
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 	')
 	>=dev-build/meson-1.3.2
 	virtual/pkgconfig
