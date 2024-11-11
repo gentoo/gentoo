@@ -37,7 +37,7 @@ OPTIONAL_DEPEND="
 	>=dev-python/beautifulsoup4-4.11.1[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
 	>=dev-python/html5lib-1.1[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1.2[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.8.0[${PYTHON_USEDEP}]
 	>=dev-python/matplotlib-3.6.1[${PYTHON_USEDEP}]
 	>=dev-python/openpyxl-3.0.7[${PYTHON_USEDEP}]
@@ -223,7 +223,7 @@ pkg_postinst() {
 	optfeature "accelerating certain numerical operations, using multiple cores as well as smart chunking and caching to achieve large speedups" ">=dev-python/numexpr-2.1"
 	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup4 dev-python/html5lib dev-python/lxml
 	optfeature "for msgpack compression using blosc" dev-python/blosc
-	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
+	optfeature "Template engine for conditional HTML formatting" dev-python/jinja2
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-3.0.10" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
 	optfeature "necessary for HDF5-based storage" ">=dev-python/tables-3.7.0"

@@ -36,7 +36,7 @@ RDEPEND="
 	>=dev-python/cryptography-42.0.0[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.5[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1.3[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1.3[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	dev-python/looseversion[${PYTHON_USEDEP}]

@@ -21,7 +21,7 @@ KEYWORDS="amd64"
 
 RDEPEND=">=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/boolean-py-3.8[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/license-expression-1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-debian-0.1.48[${PYTHON_USEDEP}]"
 

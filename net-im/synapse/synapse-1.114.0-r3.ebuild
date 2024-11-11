@@ -134,7 +134,7 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/ijson[${PYTHON_USEDEP}]
 	dev-python/immutabledict[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.0[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	>=dev-python/matrix-common-1.3.0[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
