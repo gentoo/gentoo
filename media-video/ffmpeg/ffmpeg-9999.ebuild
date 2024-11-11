@@ -549,6 +549,10 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 	)
 
+	if use elibc_musl ; then
+		append-cflags -DHAVE_POSIX_IOCTL
+	fi
+
 	# Use --extra-libs if needed for LIBS
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
