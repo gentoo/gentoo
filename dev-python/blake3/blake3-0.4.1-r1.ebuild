@@ -113,8 +113,9 @@ pkg_setup() {
 }
 
 src_unpack() {
-	default
-	use rust && cargo_src_unpack
+	# Do this unconditionally as it has sensible behaviour even
+	# w/ USE=-rust.
+	cargo_src_unpack
 }
 
 src_prepare() {
