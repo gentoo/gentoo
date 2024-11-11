@@ -246,13 +246,23 @@ CRATES="
 
 LLVM_COMPAT=( {16..18} )
 
-inherit llvm-r1 cargo
+inherit cargo llvm-r1
 
 DESCRIPTION="swiss army knife for chess file formats"
 HOMEPAGE="https://git.sr.ht/~alip/jja"
-SRC_URI="https://git.sr.ht/~alip/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+
+if [[ "${PV}" == "9999" ]] ; then
+	EGIT_REPO_URI="https://git.sr.ht/~alip/${PN}"
+	inherit git-r3
+	S="${WORKDIR}/${P}"
+else
+	SRC_URI="https://git.sr.ht/~alip/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 	"
+
+	KEYWORDS="~amd64"
+	S="${WORKDIR}/${PN}-v${PV}"
+fi
 
 # rocksdb needs clang
 DEPEND+="$(llvm_gen_dep '
@@ -262,13 +272,23 @@ DEPEND+="$(llvm_gen_dep '
 	sys-libs/liburing"
 RDEPEND=${DEPEND}
 LICENSE="GPL-3+"
+
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64"
+
+pkg_setup() {
+	llvm-r1_pkg_setup
+	rust_pkg_setup
+}
 
 src_unpack() {
-	cargo_src_unpack
-	rmdir "${WORKDIR}"/${P}
-	mv "${WORKDIR}"/${PN}-v${PV} "${WORKDIR}"/${P} || die
+
+	if [[ "${PV}" == "9999" ]] ; then
+		git-r3_src_unpack
+		cargo_live_src_unpack
+	else
+		cargo_src_unpack
+	fi
+
 }
