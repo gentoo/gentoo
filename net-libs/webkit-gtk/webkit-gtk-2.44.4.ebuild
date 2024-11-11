@@ -145,6 +145,9 @@ src_prepare() {
 
 	# Fix USE=-jumbo-build on all arches
 	eapply "${FILESDIR}"/2.44.1-non-unified-build-fixes.patch
+
+	# https://bugs.gentoo.org/943213
+	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
 }
 
 src_configure() {
