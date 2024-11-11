@@ -64,7 +64,7 @@ DEPEND="
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
-	lerc? ( >media-libs/tiff-4.7.0:=[lerc] )
+	lerc? ( media-libs/tiff:=[lerc(-)] )
 	lzma? ( || (
 		app-arch/xz-utils
 		app-arch/lzma
