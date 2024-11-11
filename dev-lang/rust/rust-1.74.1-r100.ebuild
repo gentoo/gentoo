@@ -6,8 +6,6 @@ EAPI=8
 LLVM_COMPAT=( 17 )
 PYTHON_COMPAT=( python3_{10..12} )
 
-# We only need this for system-bootstrap
-RUST_OPTIONAL=1
 RUST_MAX_VER=${PV}
 RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 
@@ -25,15 +23,12 @@ else
 	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
-RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
-
 DESCRIPTION="Language empowering everyone to build reliable and efficient software"
 HOMEPAGE="https://www.rust-lang.org/"
 
 SRC_URI="
 	https://static.rust-lang.org/dist/${SRC}
 	verify-sig? ( https://static.rust-lang.org/dist/${SRC}.asc )
-	!system-bootstrap? ( $(rust_all_arch_uris rust-${RUST_STAGE0_VERSION}) )
 "
 
 S="${WORKDIR}/${MY_P}-src"
@@ -64,7 +59,6 @@ BDEPEND="${PYTHON_DEPS}
 		>=sys-devel/gcc-4.7
 		>=sys-devel/clang-3.5
 	)
-	system-bootstrap? ( ${RUST_DEPEND} )
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4
 		app-alternatives/ninja
@@ -154,7 +148,7 @@ toml_usex() {
 }
 
 pre_build_checks() {
-	local M=8192
+	local M=9216
 	# multiply requirements by 1.3 if we are doing x86-multilib
 	if use amd64; then
 		M=$(( $(usex abi_x86_32 13 10) * ${M} / 10 ))
@@ -177,7 +171,6 @@ pre_build_checks() {
 		M=$(( 15 * ${M} / 10 ))
 	fi
 	eshopts_pop
-	M=$(( $(usex system-bootstrap 0 1024) + ${M} ))
 	M=$(( $(usex doc 256 0) + ${M} ))
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
 }
@@ -212,14 +205,13 @@ pkg_setup() {
 		export OPENSSL_INCLUDE_DIR="${ROOT}/usr/include"
 		export OPENSSL_LIB_DIR="${ROOT}/usr/$(get_libdir)"
 
-		use system-bootstrap || die "USE=system-bootstrap is required when cross-compiling"
 		use system-llvm && die "USE=system-llvm not allowed when cross-compiling"
 		local cross_llvm_target="$(llvm_tuple_to_target "${CBUILD}")"
 		use "llvm_targets_${cross_llvm_target}" || \
 			die "Must enable LLVM_TARGETS=${cross_llvm_target} matching CBUILD=${CBUILD} when cross-compiling"
 	fi
 
-	use system-bootstrap && rust_pkg_setup
+	rust_pkg_setup
 
 	if use system-llvm; then
 		llvm-r1_pkg_setup
@@ -228,45 +220,6 @@ pkg_setup() {
 		export LLVM_LINK_SHARED=1
 		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
 	fi
-}
-
-esetup_unwind_hack() {
-	# https://bugs.gentoo.org/870280
-	# this is a hack needed to bootstrap with libgcc_s linked tarball on llvm-libunwind system.
-	# it should trigger for internal bootstrap or system-bootstrap with rust-bin.
-	# the whole idea is for stage0 to bootstrap with fake libgcc_s.
-	# final stage will receive -L${T}/lib but not -lgcc_s args, producing clean compiler.
-	local fakelib="${T}/fakelib"
-	mkdir -p "${fakelib}" || die
-	# we need both symlinks, one for cargo runtime, other for linker.
-	ln -s "${ESYSROOT}/usr/lib/libunwind.so" "${fakelib}/libgcc_s.so.1" || die
-	ln -s "${ESYSROOT}/usr/lib/libunwind.so" "${fakelib}/libgcc_s.so" || die
-	export LD_LIBRARY_PATH="${fakelib}"
-	export RUSTFLAGS+=" -L${fakelib}"
-	# this is a literally magic variable that gets through cargo cache, without it some
-	# crates ignore RUSTFLAGS.
-	# this variable can not contain leading space.
-	export MAGIC_EXTRA_RUSTFLAGS+="${MAGIC_EXTRA_RUSTFLAGS:+ }-L${fakelib}"
-}
-
-src_prepare() {
-	# Clear vendor checksums for crates that we patched to bump libc.
-	# NOTE: refresh this on each bump.
-	#for i in addr2line-0.20.0 bstr cranelift-jit crossbeam-channel elasticlunr-rs handlebars icu_locid libffi \
-	#	terminal_size tracing-tree; do
-	#	clear_vendor_checksums "${i}"
-	#done
-
-	if ! use system-bootstrap; then
-		has_version sys-devel/gcc || esetup_unwind_hack
-		local rust_stage0_root="${WORKDIR}"/rust-stage0
-		local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi "${CBUILD}")"
-
-		"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig \
-			--without=rust-docs-json-preview,rust-docs --destdir="${rust_stage0_root}" --prefix=/ || die
-	fi
-
-	default
 }
 
 src_configure() {
@@ -296,14 +249,7 @@ src_configure() {
 	use rust-analyzer && tools+=',"rust-analyzer"'
 	use rust-src && tools+=',"src"'
 
-	local rust_stage0_root
-	if use system-bootstrap; then
-		local printsysroot
-		printsysroot="$(${RUSTC} --print --sysroot || die "Can't determine rust's sysroot")"
-		rust_stage0_root="${printsysroot}"
-	else
-		rust_stage0_root="${WORKDIR}"/rust-stage0
-	fi
+	local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
 	# in case of prefix it will be already prefixed, as --print sysroot returns full path
 	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
 
