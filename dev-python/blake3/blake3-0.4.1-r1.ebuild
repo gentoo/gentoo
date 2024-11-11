@@ -109,11 +109,11 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/blake3/blake3.*.so"
 distutils_enable_tests pytest
 
 pkg_setup() {
-	distutils-r1_pkg_setup
-	use rust && cargo_pkg_setup
+	use rust && rust_pkg_setup
 }
 
 src_unpack() {
+	default
 	use rust && cargo_src_unpack
 }
 
