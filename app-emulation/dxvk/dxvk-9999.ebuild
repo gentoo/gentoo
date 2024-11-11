@@ -56,7 +56,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-wow64-setup.patch
-	"${FILESDIR}"/${PN}-2.3.1-gcc14.patch
 	"${FILESDIR}"/${PN}-2.4-d3d8-setup.patch
 )
 
