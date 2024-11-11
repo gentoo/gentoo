@@ -11,7 +11,6 @@ LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt"
-RESTRICT="test"  # Tests fail
 
 RDEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
 DEPEND="${RDEPEND}
