@@ -3,6 +3,12 @@
 
 # New entries go on top.
 
+# Matt Jolly <kangie@gentoo.org> (2024-11-11)
+# ICU 76.1 is not compatible with Chromium. Bug #943216.
+# We'll mask it for a few weeks to use the bundled ICU
+# while Google fixes the issue.
+www-client/chromium system-icu
+
 # Joonas Niilola <juippis@gentoo.org> (2024-11-07)
 # Dependency for generating docs not packaged in Gentoo. #942992
 dev-util/repolite doc
