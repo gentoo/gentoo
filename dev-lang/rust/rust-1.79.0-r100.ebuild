@@ -661,8 +661,8 @@ pkg_postinst() {
 	eselect rust update
 
 	if has_version dev-debug/gdb || has_version dev-debug/lldb; then
-		elog "Rust installs a helper script for calling GDB and LLDB,"
-		elog "for your convenience it is installed under /usr/bin/rust-{gdb,lldb}-${PV}."
+		elog "Rust installs helper scripts for calling GDB and LLDB,"
+		elog "for convenience they are installed under /usr/bin/rust-{gdb,lldb}-${PV}."
 	fi
 
 	if has_version app-editors/emacs; then
