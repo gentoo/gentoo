@@ -181,10 +181,6 @@ ocamlopt
 # sys-devel/gcc fails to build with USE=d (bug #178896).
 d
 
-# Jeroen Roovers <jer@gentoo.org> (2007-05-02)
-# Lack of user/dev support for WiFi (bug #176517)
-networkmanager
-
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
 # See bug #157881#c3
 battery
@@ -231,10 +227,6 @@ ieee1394
 # Guy Martin <gmsoft@gentoo.org> (2005-06-25)
 # mono is not yet supported on hppa
 mono
-
-# Guy Martin <gmsoft@gentoo.org> (2004-08-08)
-# Wifi stuff not test yet because of lack of hardware
-wifi
 
 # Guy Martin <gmsoft@gentoo.org> (2003-02-26)
 # No lirc support on hppa
