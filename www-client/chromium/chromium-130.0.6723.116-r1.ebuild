@@ -1230,6 +1230,33 @@ src_test() {
 		StringPieceTest.OutOfBoundsDeath
 		ThreadPoolEnvironmentConfig.CanUseBackgroundPriorityForWorker
 		ValuesUtilTest.FilePath
+		# Gentoo-specific
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedAllocReturnNullDirect/0
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedAllocReturnNullDirect/1
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedAllocReturnNullDirect/2
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedAllocReturnNullDirect/3
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedReallocReturnNullDirect/0
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedReallocReturnNullDirect/1
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedReallocReturnNullDirect/2
+		AlternateTestParams/PartitionAllocDeathTest.RepeatedReallocReturnNullDirect/3
+		CharacterEncodingTest.GetCanonicalEncodingNameByAliasName
+		CheckExitCodeAfterSignalHandlerDeathTest.CheckSIGFPE
+		CheckExitCodeAfterSignalHandlerDeathTest.CheckSIGILL
+		CheckExitCodeAfterSignalHandlerDeathTest.CheckSIGSEGV
+		CheckExitCodeAfterSignalHandlerDeathTest.CheckSIGSEGVNonCanonicalAddress
+		FilePathTest.FromUTF8Unsafe_And_AsUTF8Unsafe
+		ICUStringConversionsTest.ConvertToUtf8AndNormalize
+		NumberFormattingTest.FormatPercent
+		PathServiceTest.CheckedGetFailure
+		PlatformThreadTest.CanChangeThreadType
+		StackCanary.ChangingStackCanaryCrashesOnReturn
+		StackTraceDeathTest.StackDumpSignalHandlerIsMallocFree
+		SysStrings.SysNativeMBAndWide
+		SysStrings.SysNativeMBToWide
+		SysStrings.SysWideToNativeMB
+		TestLauncherTools.TruncateSnippetFocusedMatchesFatalMessagesTest
+		ToolsSanityTest.BadVirtualCallNull
+		ToolsSanityTest.BadVirtualCallWrongType
 	)
 	local test_filter="-$(IFS=:; printf '%s' "${skip_tests[*]}")"
 	# test-launcher-bot-mode enables parallelism and plain output
