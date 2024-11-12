@@ -538,7 +538,7 @@ src_test() {
 
 		if ! ulimit -n 4162 1>/dev/null 2>&1 ; then
 			# Medium limit comes from '[Warning] Buffered warning: Could not
-			# increase number of max_open_files to more than 3000 (request: # 4162)'
+			# increase number of max_open_files to more than 3000 (request: 4162)'
 			ewarn "For medium test coverage please raise open file limit to 4162 (ulimit -n 4162) before calling the package manager."
 
 			if ! ulimit -n 3000 1>/dev/null 2>&1 ; then
