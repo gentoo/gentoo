@@ -281,7 +281,7 @@ src_configure() {
 	# bug #855233 (MDEV-11914, MDEV-25633) at least
 	filter-lto
 	# bug 508724 mariadb cannot use ld.gold
-	tc-ld-force-bfd
+	tc-ld-is-gold && tc-ld-force-bfd
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
