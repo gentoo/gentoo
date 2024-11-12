@@ -284,9 +284,11 @@ app-i18n/kcm-fcitx
 >=net-libs/webkit-gtk-2.46.0
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-10-08)
-# Masked for testing and (mostly) to avoid upgrade noise given
-# PyQt6-6.7.x is known broken with it and depends on <6.8. Feel
-# free to unmask early if not using PyQt6.
+# Masked for testing, and odds are (at this point) that 6.8.0 will
+# never be unmasked and will skip to 6.8.1 instead given the large
+# amount of regressions there's been..
+=dev-python/PyQt6-6.8.0_pre*
+=dev-python/PyQt6-WebEngine-6.8.0_pre*
 =dev-python/pyside6-6.8.0*
 =dev-python/pyside6-tools-6.8.0*
 =dev-python/shiboken6-6.8.0*
