@@ -1,0 +1,64 @@
+https://bugs.gentoo.org/890302
+https://bugzilla.redhat.com/1866474
+https://sourceforge.net/p/dosemu/patches/129/
+
+commit b3320c3a67c0bb050b40e76831ec95a4d156890a
+Author: Matthew Ogilvie <mmogilvi+gnto@zoho.com>
+Date:   Thu Jun 15 21:55:30 2023 -0600
+
+    mem_base: avoid undefined behavior writing to const global with casts
+    
+    Fix crash under gcc 10 or later.
+
+--- a/src/arch/linux/mapping/mapping.c
++++ b/src/arch/linux/mapping/mapping.c
+@@ -47,8 +47,8 @@ static int kmem_mappings = 0;
+ static struct mem_map_struct kmem_map[MAX_KMEM_MAPPINGS];
+ 
+ static int init_done = 0;
+-unsigned char * const mem_base;
+-char * const lowmem_base;
++unsigned char * mem_base;
++char * lowmem_base;
+ 
+ static struct mappingdrivers *mappingdrv[] = {
+ #ifdef HAVE_SHM_OPEN
+@@ -205,7 +205,7 @@ void *alias_mapping(int cap, unsigned targ, size_t mapsize, int protect, void *s
+   addr = mappingdriver.alias(cap, target, mapsize, protect, source);
+   update_aliasmap(target, mapsize, (cap & MAPPING_VGAEMU) ? target : source);
+   if (cap & MAPPING_INIT_LOWRAM) {
+-    *(unsigned char **)&mem_base = addr;
++    mem_base = addr;
+   }
+   return addr;
+ }
+@@ -416,7 +416,7 @@ void *alloc_mapping(int cap, size_t mapsize, off_t target)
+ 
+   if (cap & MAPPING_INIT_LOWRAM) {
+     Q__printf("MAPPING: LOWRAM_INIT, cap=%s, base=%p\n", cap, addr);
+-    *(char **)(&lowmem_base) = addr;
++    lowmem_base = addr;
+   }
+   return addr;
+ }
+--- a/src/include/memory.h
++++ b/src/include/memory.h
+@@ -209,7 +209,7 @@ void *lowmemp(const void *ptr);
+    restrictions it can be non-zero. Non-zero values block vm86 but at least
+    give NULL pointer protection.
+ */
+-extern unsigned char * const mem_base;
++extern unsigned char * mem_base;
+ 
+ /* lowmem_base points to a shared memory image of the area 0--1MB+64K.
+    It does not have any holes or mapping for video RAM etc.
+@@ -221,7 +221,7 @@ extern unsigned char * const mem_base;
+    It is set "const" to help GCC optimize accesses. In reality it is set only
+    once, at startup
+ */
+-extern char * const lowmem_base;
++extern char * lowmem_base;
+ 
+ #define UNIX_READ_BYTE(addr)		(*(Bit8u *) (addr))
+ #define UNIX_WRITE_BYTE(addr, val)	(*(Bit8u *) (addr) = (val) )
+
