@@ -289,7 +289,7 @@ REQUIRED_USE="|| ( wayland X )"
 COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X?,wayland?]
 	X? ( x11-libs/libxcb:= )
 "
 
