@@ -15,10 +15,8 @@ LICENSE="MIT"
 SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-BDEPEND="sys-apps/hwdata"
-DEPEND="${RDEPEND}"
-
 BDEPEND="
 	${PYTHON_DEPS}
+	sys-apps/hwdata
 	virtual/pkgconfig
 "
