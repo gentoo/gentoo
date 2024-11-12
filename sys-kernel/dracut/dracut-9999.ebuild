@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+RUST_OPTIONAL=1
 
-inherit flag-o-matic bash-completion-r1 edo optfeature systemd toolchain-funcs
+inherit flag-o-matic bash-completion-r1 edo optfeature rust systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -21,7 +22,7 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux test"
+IUSE="+dracut-cpio selinux test"
 RESTRICT="test"
 PROPERTIES="test? ( test_privileged test_network )"
 
@@ -50,6 +51,7 @@ RDEPEND="
 "
 DEPEND="
 	>=sys-apps/kmod-23
+	dracut-cpio? ( ${RUST_DEPEND} )
 	elibc_musl? ( sys-libs/fts-standalone )
 "
 
@@ -101,12 +103,17 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
 )
 
+pkg_setup() {
+	use dracut-cpio && rust_pkg_setup
+}
+
 src_configure() {
 	local myconf=(
 		--prefix="${EPREFIX}/usr"
 		--sysconfdir="${EPREFIX}/etc"
 		--bashcompletiondir="$(get_bashcompdir)"
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		$(use_enable dracut-cpio)
 	)
 
 	# this emulates what the build system would be doing without us
