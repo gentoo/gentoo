@@ -21,6 +21,7 @@ KEYWORDS="-* amd64 x86"
 IUSE="X alsa debug fluidsynth gpm svga"
 
 BDEPEND="app-arch/unzip
+	sys-devel/bison
 	X? (
 		x11-apps/bdftopcf
 		>=x11-apps/mkfontscale-1.2.0
@@ -58,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-as.patch
 	"${FILESDIR}"/${P}-nm.patch
 	"${FILESDIR}"/${P}-pcm_write_interleaved-incompatiible-pointer-type.patch
+	"${FILESDIR}"/${P}-gcc10-const.patch
 )
 
 pkg_pretend() {
@@ -80,6 +82,8 @@ src_prepare() {
 }
 
 src_configure() {
+	unset YACC
+
 	# workaround binutils ld.gold bug #618366
 	local nopie_flag=
 	if tc-enables-pie; then
