@@ -11,13 +11,14 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="An in memory implementation of a JSR-203 file system."
 HOMEPAGE="https://github.com/marschall/memoryfilesystem"
 SRC_URI="https://github.com/marschall/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
-	dev-java/jakarta-annotations-api:0
+	dev-java/jakarta-annotation-api:0
 "
 
 DEPEND="
@@ -29,8 +30,6 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}
 "
-
-S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"

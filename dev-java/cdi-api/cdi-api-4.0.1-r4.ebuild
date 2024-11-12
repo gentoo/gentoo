@@ -22,7 +22,7 @@ EL_API_SLOT="5.0"
 
 DEPEND="
 	dev-java/injection-api:0
-	dev-java/jakarta-annotations-api:0
+	dev-java/jakarta-annotation-api:0
 	dev-java/jakarta-el-api:${EL_API_SLOT}
 	dev-java/jakarta-interceptors:0
 	>=virtual/jdk-11:*
@@ -64,7 +64,7 @@ src_compile() {
 	# getting the modulepath
 	DEPENDENCIES=(
 		jakarta-el-api-${EL_API_SLOT}
-		jakarta-annotations-api
+		jakarta-annotation-api
 		jakarta-interceptors
 		injection-api
 	)
