@@ -1,0 +1,42 @@
+From e40717bcf0d1851465a5d2531b92f6b1da2ce0c0 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 25 Jun 2021 10:20:18 +0200
+Subject: [PATCH] Fix crash at piano widget creation
+
+It was a failure in piano widget that assumed that the widget type is
+an integer.  It caused a segfault with the recent gtk.
+---
+ piano.c | 4 ++--
+ piano.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/piano.c b/piano.c
+index 7626373..931e3b9 100644
+--- a/piano.c
++++ b/piano.c
+@@ -69,10 +69,10 @@ static GdkColor c60clr = { red : 18000, green : 0, blue : 54000 };
+ 
+ static GtkWidgetClass *parent_class = NULL;
+ 
+-guint
++GType
+ piano_get_type (void)
+ {
+-  static guint piano_type = 0;
++  static GType piano_type = 0;
+ 
+   if (!piano_type)
+     {
+diff --git a/piano.h b/piano.h
+index 6dea3b6..c35d7da 100644
+--- a/piano.h
++++ b/piano.h
+@@ -71,7 +71,7 @@ struct _PianoClass
+ };
+ 
+ GtkWidget *piano_new (gboolean * selkeys);
+-guint piano_get_type (void);
++GType piano_get_type (void);
+ void piano_note_on (Piano * piano, guint8 keynum);
+ void piano_note_off (Piano * piano, guint8 keynum);
+ 
