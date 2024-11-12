@@ -62,10 +62,6 @@ app-alternatives/yacc reference
 # Causes crashes with e.g. dlz+samba (bug #938955)
 net-dns/bind jemalloc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
-# Prepare for dev-util/kdevelop:5 removal
-kde-apps/umbrello:5 php
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # Prepare for KDE PIM 5 removal and avoid conflicts w/ KDE PIM 6
 app-office/kmymoney:5 addressbook
