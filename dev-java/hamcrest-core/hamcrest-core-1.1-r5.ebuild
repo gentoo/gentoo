@@ -35,6 +35,6 @@ PATCHES=(
 
 src_prepare() {
 	default #780585
-	java-pkg-2_scr_prepare
+	java-pkg-2_src_prepare
 	java-pkg_clean
 }
