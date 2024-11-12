@@ -21,11 +21,11 @@
 # dev-qt/qtremoteobjects:6 has not been stabilized yet.
 dev-python/PyQt6 remoteobjects
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-24)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-07-24)
 # No stable versions of ROCm at the moment
 sys-apps/hwloc rocm
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
@@ -37,7 +37,7 @@ media-libs/opencv cudnn
 # Pulls in pandoc with all of its glory (haskell). #921501
 www-apps/hugo test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
 # This is still experimental, prebuilt images may not boot on all systems.
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki

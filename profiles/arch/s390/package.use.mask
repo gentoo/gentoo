@@ -53,7 +53,7 @@ dev-libs/mongo-c-driver test
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-12)
 # dracut is not keyworded here
 sys-kernel/installkernel dracut
 

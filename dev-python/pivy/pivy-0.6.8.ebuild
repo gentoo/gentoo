@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="
 		https://github.com/coin3d/pivy/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~andrewammerlaan/${P}-python312-unittests.patch
+		https://dev.gentoo.org/~nowa/${P}-python312-unittests.patch
 	"
 	KEYWORDS="amd64 x86"
 fi

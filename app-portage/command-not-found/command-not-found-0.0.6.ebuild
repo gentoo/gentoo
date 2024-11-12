@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit optfeature python-r1
 
 DESCRIPTION="Command-not-found handler for Gentoo"
-HOMEPAGE="https://github.com/AndrewAmmerlaan/command-not-found-gentoo"
-SRC_URI="https://github.com/AndrewAmmerlaan/command-not-found-gentoo/archive/${PV}.tar.gz
+HOMEPAGE="https://github.com/Nowa-Ammerlaan/command-not-found-gentoo"
+SRC_URI="https://github.com/Nowa-Ammerlaan/command-not-found-gentoo/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-gentoo-${PV}"
 

@@ -52,7 +52,7 @@ app-misc/gramps test
 app-forensics/volatility3 jsonschema
 app-emulation/libguestfs test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 sys-kernel/installkernel efistub
 
