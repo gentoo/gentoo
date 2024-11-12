@@ -29,6 +29,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "test? (
+	dev-ruby/activesupport
 	dev-ruby/dry-inflector
 	dev-ruby/dry-logic
 	dev-ruby/dry-types
