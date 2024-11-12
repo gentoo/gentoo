@@ -1,0 +1,18 @@
+From 818b95ed3eaf8deb92c5e590315342932508bcb6 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 21 Aug 2007 18:32:51 +0200
+Subject: [PATCH] Add AUTOMAKE_OPTIONS to make autoreconf happy
+
+---
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 02386b6..6c9d27f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -32,3 +32,4 @@ EXTRA_DIST = \
+ 
+ CONFIG_CLEAN_FILES = etc/aseqview.spec
+ 
++AUTOMAKE_OPTIONS = foreign

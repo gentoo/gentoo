@@ -1,0 +1,176 @@
+From bebad6475fe3b9fd0c794c1862c53ec9453b5607 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 21 Aug 2024 17:34:52 +0200
+Subject: [PATCH] Fix gcc14 build errors and warnings
+
+Some trivial fixes covering the compile errors and warnings:
+- include missing pthread.h
+- align to char * for all bitmap data
+- put parentheses around operations
+- drop unused variable and function declarations
+---
+ aseqview.c      | 18 +++++++++---------
+ bitmaps/gm.xbm  |  2 +-
+ bitmaps/gm2.xbm |  2 +-
+ bitmaps/gs.xbm  |  2 +-
+ bitmaps/xg.xbm  |  2 +-
+ piano.c         |  7 -------
+ portlib.c       |  1 +
+ 7 files changed, 14 insertions(+), 20 deletions(-)
+
+diff --git a/aseqview.c b/aseqview.c
+index 345d56d..20afcca 100644
+--- a/aseqview.c
++++ b/aseqview.c
+@@ -853,7 +853,7 @@ static int expose_temper_keysig(GtkWidget *w)
+ 	int y_ofs = (height - tk_height) / 2;
+ 	
+ 	i = (tk == TEMPER_UNKNOWN) ? 0 : (tk + 8) % 32;
+-	adj = (tk == TEMPER_UNKNOWN) ? 0 : tk + 8 & 0x20;
++	adj = (tk == TEMPER_UNKNOWN) ? 0 : (tk + 8) & 0x20;
+ 	p = (adj) ? st->w_tk_xpm_adj[i] : st->w_tk_xpm[i];
+ 	gdk_draw_pixmap(w->window, w->style->fg_gc[GTK_STATE_NORMAL], p, 0, 0,
+ 			x_ofs, y_ofs, tk_width, tk_height);
+@@ -873,7 +873,7 @@ static int expose_temper_type(GtkWidget *w)
+ 	int x_ofs = (width - tt_width) / 2;
+ 	int y_ofs = (height - tt_height - 6) / 2;
+ 	
+-	if (tt >= 0 && tt < 4 || tt >= 64 && tt < 68)
++	if ((tt >= 0 && tt < 4) || (tt >= 64 && tt < 68))
+ 		i = (tk == TEMPER_UNKNOWN) ? 0 : tt - ((tt >= 0x40) ? 0x3c : 0) + 1;
+ 	else
+ 		i = 0;
+@@ -930,9 +930,9 @@ static void suppress_temper_type(GtkToggleButton *w, midi_status_t *st)
+ 			continue;
+ 		for (i = 0; i < MIDI_CHANNELS; i++) {
+ 			chst = &port->ch[i], tt = chst->temper_type;
+-			if (tt >= 0 && tt < 4 || tt >= 64 && tt < 68)
++			if ((tt >= 0 && tt < 4) || (tt >= 64 && tt < 68))
+ 				av_mute_update(chst->w_chnum, st->temper_type_mute
+-						& 1 << tt - ((tt >= 0x40) ? 0x3c : 0), use_thread);
++					       & (1 << (tt - (tt >= 0x40) ? 0x3c : 0)), use_thread);
+ 		}
+ 	}
+ }
+@@ -1163,7 +1163,7 @@ static void replace_event(port_t *pp,
+ 			snd_seq_ev_set_sysex(ev, sizeof(tk_macro), tk_macro);
+ 			ev->queue = st->queue;
+ 			process_event(pp, type, ev, &st->ports[0]);
+-		} else if (tk + 8 & 0x20) {
++		} else if ((tk + 8) & 0x20) {
+ 			tk_macro[6] = (mi) ? 1 : 0;
+ 			snd_seq_ev_clear(ev);
+ 			snd_seq_ev_set_sysex(ev, sizeof(tk_macro), tk_macro);
+@@ -1197,7 +1197,7 @@ static void replace_event(port_t *pp,
+ 			&& mi != (ev->data.control.value >= 64)) {
+ 		mi = (ev->data.control.value >= 64);
+ 		if (tk != TEMPER_UNKNOWN) {
+-			adj = tk + 8 & 0x20;
++			adj = (tk + 8) & 0x20;
+ 			tk_macro[5] = (tk + 8) % 16 + 56;
+ 			tk_macro[6] = (mi) ? ((adj) ? 2 : 1) : ((adj) ? 3 : 0);
+ 			snd_seq_ev_clear(ev);
+@@ -1474,10 +1474,10 @@ static void parse_sysex(port_status_t *port,
+ 						tt = chst->temper_type = buf[7];
+ 						display_temper_type(chst->w_temper_type, in_buf);
+ 						if (st->temper_type_mute
+-								&& (tt >= 0 && tt < 4 || tt >= 64 && tt < 68))
++								&& ((tt >= 0 && tt < 4) || (tt >= 64 && tt < 68)))
+ 							av_mute_update(chst->w_chnum,
+-									st->temper_type_mute & 1 << tt
+-									- ((tt >= 0x40) ? 0x3c : 0), in_buf);
++								       st->temper_type_mute &
++								       (1 << (tt - ((tt >= 0x40) ? 0x3c : 0))), in_buf);
+ 					}
+ 			break;
+ 		}
+diff --git a/bitmaps/gm.xbm b/bitmaps/gm.xbm
+index 5ebfbf8..dfe39cb 100644
+--- a/bitmaps/gm.xbm
++++ b/bitmaps/gm.xbm
+@@ -1,6 +1,6 @@
+ #define gm_width 29
+ #define gm_height 20
+-static unsigned char gm_bits[] = {
++static char gm_bits[] = {
+    0x00, 0x00, 0x00, 0x00, 0xb0, 0xcd, 0x46, 0x02, 0xa8, 0x54, 0xae, 0x02,
+    0xb8, 0xd5, 0xea, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0xf8, 0x67, 0x7f, 0x06, 0xf8, 0x6f, 0xff, 0x06, 0xd8, 0x6d, 0xe0, 0x06,
+diff --git a/bitmaps/gm2.xbm b/bitmaps/gm2.xbm
+index ec97bf9..7e5f118 100644
+--- a/bitmaps/gm2.xbm
++++ b/bitmaps/gm2.xbm
+@@ -1,6 +1,6 @@
+ #define gm2_width 29
+ #define gm2_height 20
+-static unsigned char gm2_bits[] = {
++static char gm2_bits[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0xda, 0x16, 0xc5, 0x07, 0xc9, 0xb2, 0xe5, 0x0f, 0xdb, 0xb6, 0x6d, 0x1c,
+    0x00, 0x00, 0x60, 0x1c, 0x3f, 0xfb, 0x0c, 0x1c, 0x7f, 0xfb, 0x0d, 0x0e,
+diff --git a/bitmaps/gs.xbm b/bitmaps/gs.xbm
+index fa1ee6e..f327c01 100644
+--- a/bitmaps/gs.xbm
++++ b/bitmaps/gs.xbm
+@@ -1,6 +1,6 @@
+ #define gs_width 29
+ #define gs_height 20
+-static unsigned char gs_bits[] = {
++static char gs_bits[] = {
+    0x80, 0xff, 0xe3, 0x07, 0xc0, 0xff, 0xf1, 0x03, 0xe0, 0xff, 0xf8, 0x01,
+    0xf0, 0x7f, 0xfc, 0x00, 0xf8, 0x01, 0xf8, 0x01, 0xfc, 0xe0, 0xf1, 0x03,
+    0x7e, 0xf0, 0xe3, 0x07, 0x3f, 0xf8, 0xc7, 0x0f, 0x7e, 0xfc, 0x8f, 0x1f,
+diff --git a/bitmaps/xg.xbm b/bitmaps/xg.xbm
+index 0e45011..523cfc2 100644
+--- a/bitmaps/xg.xbm
++++ b/bitmaps/xg.xbm
+@@ -1,6 +1,6 @@
+ #define xg_width 29
+ #define xg_height 20
+-static unsigned char xg_bits[] = {
++static char xg_bits[] = {
+    0x1f, 0x80, 0xff, 0x1f, 0x3f, 0xc0, 0xff, 0x1f, 0x7e, 0xe0, 0x07, 0x10,
+    0xfc, 0xf0, 0x03, 0x10, 0xf8, 0xf9, 0x01, 0x10, 0xf0, 0xff, 0xf0, 0x1f,
+    0xe0, 0x7f, 0xf8, 0x1f, 0xc0, 0x3f, 0xfc, 0x1f, 0x80, 0x1f, 0xfe, 0x1f,
+diff --git a/piano.c b/piano.c
+index 931e3b9..7bec3c9 100644
+--- a/piano.c
++++ b/piano.c
+@@ -36,10 +36,6 @@ static void piano_size_request (GtkWidget * widget,
+ static void piano_size_allocate (GtkWidget * widget,
+   GtkAllocation * allocation);
+ static gint piano_expose (GtkWidget * widget, GdkEventExpose * event);
+-static gint piano_button_press (GtkWidget * widget, GdkEventButton * event);
+-static gint piano_button_release (GtkWidget * widget, GdkEventButton * event);
+-static gint piano_motion_notify (GtkWidget * widget, GdkEventMotion * event);
+-static void piano_update_mouse (Piano * piano, gint x, gint y);
+ 
+ #define POFSY 0
+ 
+@@ -458,14 +454,11 @@ piano_size_request (GtkWidget * widget, GtkRequisition * requisition)
+ static void
+ piano_size_allocate (GtkWidget * widget, GtkAllocation * allocation)
+ {
+-  Piano *piano;
+-
+   g_return_if_fail (widget != NULL);
+   g_return_if_fail (IS_PIANO (widget));
+   g_return_if_fail (allocation != NULL);
+ 
+   widget->allocation = *allocation;
+-  piano = PIANO (widget);
+ 
+   if (GTK_WIDGET_REALIZED (widget))
+     {
+diff --git a/portlib.c b/portlib.c
+index b2942ca..9a25b73 100644
+--- a/portlib.c
++++ b/portlib.c
+@@ -20,6 +20,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <pthread.h>
+ #include "portlib.h"
+ 
+ 
