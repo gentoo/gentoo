@@ -323,7 +323,7 @@ app-i18n/kcm-fcitx
 =dev-qt/qtwebsockets-6.8.0*
 =dev-qt/qtwebview-6.8.0*
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-05)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-05)
 # This version is known to break on certain systems. At the
 # same time it fixes several reported issues. Masked until
 # we can work out how to resolve the situation.

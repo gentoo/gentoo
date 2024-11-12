@@ -53,7 +53,7 @@ sys-kernel/installkernel -ugrd
 # uasm and jwasm include amd64-specific ASM
 app-arch/7zip -uasm -jwasm
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-04-25)
 # ROCm and Level-Zero are amd64-only at the moment
 sys-apps/hwloc -rocm -l0
 
@@ -65,7 +65,7 @@ media-gfx/blender -gnome -oneapi -renderdoc -vulkan
 # dev-qt/qtlanguageserver:6 is keyworded here
 dev-qt/qtdeclarative:6 -qmlls
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
 
@@ -86,7 +86,7 @@ sys-libs/glibc -cet
 # net-libs/paho-mqtt-c is only available for amd64 and x86
 app-admin/syslog-ng -mqtt
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-02-09)
 # Refind is only available on a subset of arches
 sys-kernel/installkernel -refind
 
@@ -94,7 +94,7 @@ sys-kernel/installkernel -refind
 # virtiofsd is available here
 app-emulation/libvirt -virtiofsd
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -102,7 +102,7 @@ sys-kernel/installkernel -grub
 # Requires dev-libs/level-zero.
 dev-lang/ispc -gpu
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
 # Experimental and only available on a subset of architectures
 sys-kernel/gentoo-kernel -generic-uki
 sys-kernel/gentoo-kernel-bin -generic-uki
@@ -156,7 +156,7 @@ dev-python/pymongo -test-full
 # net-libs/rustls-ffi is keyworded here
 www-servers/apache -apache2_modules_tls
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-04-22)
 # snap only works on amd64
 gnome-extra/gnome-software -snap
 kde-plasma/discover -snap
@@ -188,7 +188,7 @@ sys-libs/libomp -llvm_targets_AMDGPU
 # net-libs/rustls-ffi is keyworded here
 net-misc/curl -rustls -curl_ssl_rustls
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
+# Nowa Ammerlaan <nowa@gentoo.org> (2022-12-06)
 # Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv

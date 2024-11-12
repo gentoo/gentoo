@@ -46,7 +46,7 @@ mail-mta/postfix mongodb
 # tests require dev-db/mongodb which is not keyworded
 dev-libs/mongo-c-driver test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -88,12 +88,12 @@ dev-java/openjdk:17 systemtap
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-08-30)
 # Avoid keywordming more Qt stuff
 dev-python/pyside2 3d datavis scxml
 dev-python/pyside6 3d scxml
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-03-07)
 # nbval/nbclassic docs require pandoc which is not keyworded here yet
 dev-python/nbval doc
 dev-python/nbclassic doc
@@ -119,7 +119,7 @@ app-admin/conky doc
 # dev-cpp/notcurses not keyworded here
 media-sound/snd notcurses
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
 # pyside2 is not keyworded on powerpc at the moment.
 # Mask the other Qt4Python implementations
 dev-python/QtPy pyside2 pyside6

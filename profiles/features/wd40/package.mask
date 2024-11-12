@@ -177,7 +177,7 @@ app-backup/duply
 dev-util/bugbite-cli
 dev-util/cargo-nextest
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 app-emulation/virt-firmware
 

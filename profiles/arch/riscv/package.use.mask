@@ -52,7 +52,7 @@ media-gfx/openvdb alembic
 # No sys-block/nbdkit on riscv, yet
 app-emulation/libvirt nbd
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -65,7 +65,7 @@ media-libs/libplacebo -shaderc
 sys-apps/openrc s6
 sys-apps/openrc-navi s6
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-08-30)
 # Avoid keywording more Qt stuff
 dev-python/pyside2 datavis
 
