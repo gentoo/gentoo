@@ -27,14 +27,14 @@ media-libs/intel-hybrid-codec-driver
 net-analyzer/gsa
 net-analyzer/gsad
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
 sci-geosciences/gpsbabel
 sci-geosciences/qgis
 sci-geosciences/viking
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
+# Nowa Ammerlaan <nowa@gentoo.org> (2021-09-09)
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp

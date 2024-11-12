@@ -6,16 +6,18 @@ EAPI=8
 inherit go-module systemd
 
 # git rev-parse --short HEAD
-MY_GIT_COMMIT="4d3ee0d1"
+MY_GIT_COMMIT="b683756d"
 
 DESCRIPTION="Minimalist and opinionated feed reader"
 HOMEPAGE="https://miniflux.app https://github.com/miniflux/v2"
 SRC_URI="https://github.com/${PN}/v2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${P}-deps.tar.xz"
 
+S="${WORKDIR}/v2-${PV}"
+
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc64 ~riscv"
+KEYWORDS="~amd64 ~ppc64 ~riscv"
 
 RESTRICT="test" # requires network access
 
@@ -23,8 +25,6 @@ DEPEND="acct-user/miniflux"
 RDEPEND="${DEPEND}
 	>=dev-db/postgresql-9.5
 "
-
-S="${WORKDIR}/v2-${PV}"
 
 src_compile() {
 	ego build -ldflags="

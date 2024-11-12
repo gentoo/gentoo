@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2024-11-12)
+# Requires rust/cargo.
+sys-kernel/dracut dracut-cpio
+
 # Michał Górny <mgorny@gentoo.org> (2024-11-02)
 # Optional Rust extensions.
 dev-python/dulwich native-extensions
@@ -48,7 +52,7 @@ app-misc/gramps test
 app-forensics/volatility3 jsonschema
 app-emulation/libguestfs test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 sys-kernel/installkernel efistub
 

@@ -1,7 +1,7 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-08)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-08)
 # Not all required dependencies are keyworded here
 sys-kernel/dracut test
 
@@ -104,7 +104,7 @@ www-servers/nginx test
 # We only have MariaDB on loong, not MySQL.
 dev-perl/DBD-MariaDB mysql
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -160,7 +160,7 @@ sys-devel/llvm -debuginfod
 dev-python/cattrs test
 dev-python/requests-cache test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-08-30)
 # Avoid having to keyword more Qt deps
 dev-python/pyside2 3d datavis location scxml
 dev-python/pyside6 3d location scxml
