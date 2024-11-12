@@ -140,17 +140,8 @@ src_install() {
 		AUTHORS
 		NEWS.md
 		README.md
-		docs/HACKING.md
-		docs/README.cross
-		docs/README.kernel
-		docs/RELEASE.md
-		docs/SECURITY.md
 	)
-
 	default
-
-	docinto html
-	dodoc dracut.html
 }
 
 pkg_preinst() {
