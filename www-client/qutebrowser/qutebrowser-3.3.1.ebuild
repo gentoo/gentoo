@@ -129,6 +129,13 @@ python_test() {
 		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
 		# may fail if chromium version is unrecognized (aka newer qtwebengine)
 		tests/unit/utils/test_version.py
+		# new type added in (currently prerelease-only) PyQt6-WebEngine-6.8,
+		# *should* be safe to ignore until qutebrowser upstream updates this
+		# https://github.com/qutebrowser/qutebrowser/issues/8069#issuecomment-2439490061
+		tests/unit/browser/webengine/test_webengineinterceptor.py::test_no_missing_resource_types
+		# upstream is also ignoring this failure w/ Qt6.8 in live for now
+		# https://github.com/qutebrowser/qutebrowser/issues/8330
+		tests/unit/browser/webengine/test_webenginesettings.py::test_existing_dict
 	)
 
 	local epytestargs=(
