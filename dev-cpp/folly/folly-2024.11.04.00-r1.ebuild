@@ -13,7 +13,7 @@ EAPI=8
 # dev-cpp/wangle
 # dev-util/watchman
 
-inherit cmake
+inherit flag-o-matic cmake
 
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
 HOMEPAGE="https://github.com/facebook/folly"
@@ -74,6 +74,9 @@ src_configure() {
 		# https://github.com/gentoo/gentoo/pull/29393
 		-DCMAKE_LIBRARY_ARCHITECTURE=$(usex amd64 x86_64 ${ARCH})
 	)
+
+	# https://github.com/facebook/folly/issues/1984
+	use arm64 && append-cxxflags "-flax-vector-conversions"
 
 	cmake_src_configure
 }
