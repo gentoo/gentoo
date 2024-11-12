@@ -27,6 +27,7 @@ ruby_add_bdepend "
 	test? (
 		>=dev-ruby/activemodel-3.0.0:*
 		>=dev-ruby/activerecord-3.0.0:*[sqlite]
+		>=dev-ruby/sqlite3-1.4:0
 		dev-ruby/bundler
 		dev-ruby/net-smtp
 		>=dev-ruby/rails-3.0.0:*
