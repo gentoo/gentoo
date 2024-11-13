@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Out-of-kernel stateless NAT64 implementation based on TUN"
 HOMEPAGE="http://www.litech.org/tayga/"
@@ -25,6 +25,10 @@ src_prepare() {
 	sed -e '/^CFLAGS/d' \
 		-i configure.ac || die "sed failed"
 	eautoreconf
+}
+
+src_configure() {
+	append-lfs-flags
 }
 
 src_install() {
