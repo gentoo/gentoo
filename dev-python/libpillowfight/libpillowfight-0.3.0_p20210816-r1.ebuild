@@ -10,11 +10,16 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
 
 COMMIT="50d965879eb89fdef9be09d6e934329486ff585d"
-
+MY_P=libpillowfight-${COMMIT}
 DESCRIPTION="Small library containing various image processing algorithms"
-HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork/libpillowfight"
-SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/${PN}/-/archive/${COMMIT}/${P}.tar.bz2"
-S="${WORKDIR}/${PN}-${COMMIT}"
+HOMEPAGE="
+	https://gitlab.gnome.org/World/OpenPaperwork/libpillowfight/
+	https://pypi.org/project/pypillowfight/
+"
+SRC_URI="
+	https://gitlab.gnome.org/World/OpenPaperwork/libpillowfight/-/archive/${COMMIT}/${MY_P}.tar.bz2
+"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
