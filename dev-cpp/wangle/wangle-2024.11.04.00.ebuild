@@ -58,5 +58,11 @@ src_test() {
 		SSLContextManagerTest
 	)
 
+	if use arm64; then
+		# This test fails on arm64.
+		# https://github.com/facebook/wangle/issues/241
+		CMAKE_SKIP_TESTS+=(TLSInMemoryTicketProcessorTest)
+	fi
+
 	cmake_src_test
 }
