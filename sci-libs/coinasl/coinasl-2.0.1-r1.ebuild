@@ -8,8 +8,8 @@ inherit autotools
 DESCRIPTION="Ampl Solver Library (ASL)"
 HOMEPAGE="https://github.com/coin-or-tools/ThirdParty-ASL"
 BUILD_TOOLS_VERSION="20208f47f7bbc0056a92adefdfd43fded969f674"
-SOLVERS_SHA="64919f75f"
-SRC_URI="https://coin-or-tools.github.io/ThirdParty-ASL/solvers-${SOLVERS_SHA}.tgz
+SOLVERS_VERSION="1.0.1"
+SRC_URI="https://github.com/ampl/asl/archive/refs/tags/v${SOLVERS_VERSION}.tar.gz -> solvers-${SOLVERS_VERSION}.tar.gz
 	https://github.com/coin-or-tools/ThirdParty-ASL/archive/refs/tags/releases/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/coin-or-tools/BuildTools/archive/${BUILD_TOOLS_VERSION}.tar.gz -> coin-or-tools-BuildTools-${BUILD_TOOLS_VERSION}.tar.gz"
 S="${WORKDIR}/ThirdParty-ASL-releases-${PV}"
@@ -19,13 +19,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
-	"${FILESDIR}/${P}-getrusage.patch"
-	"${FILESDIR}/${P}-dtoa.patch"
+       # See 943309. Patch merged upstream https://github.com/coin-or-tools/ThirdParty-ASL/pull/7
+       "${FILESDIR}/${P}-getrusage.patch"
 )
 
 src_unpack() {
 	default
-	mv solvers "${S}" || die
+	mv "asl-${SOLVERS_VERSION}/src/solvers" "${S}" || die
 }
 
 src_prepare() {
