@@ -222,7 +222,7 @@ pkg_postinst() {
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-3.0.10" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
 	optfeature "necessary for HDF5-based storage" ">=dev-python/tables-3.7.0"
-	optfeature "R I/O support" dev-python/rpy
+	optfeature "R I/O support" dev-python/rpy2
 	optfeature "Needed for parts of pandas.stats" dev-python/statsmodels
 	optfeature "SQL database support" ">=dev-python/sqlalchemy-1.4.36"
 	optfeature "miscellaneous statistical functions" dev-python/scipy
