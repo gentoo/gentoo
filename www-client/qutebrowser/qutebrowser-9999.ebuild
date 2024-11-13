@@ -52,6 +52,7 @@ BDEPEND="
 			dev-python/cheroot[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]
 			dev-python/hypothesis[${PYTHON_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
 			dev-python/pytest-bdd[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/pytest-qt[${PYTHON_USEDEP}]
