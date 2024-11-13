@@ -35,7 +35,7 @@ RDEPEND="
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt5[network,svg,${PYTHON_USEDEP}]
-	>=dev-python/qscintilla-python-2.11.6[qt5(+),${PYTHON_USEDEP}]
+	>=dev-python/qscintilla-2.11.6[qt5(+),${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
@@ -71,7 +71,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	elog "When startup of ${PN} fails with an API version mismatch error"
 	elog "between dev-python/sip and dev-python/PyQt5 please rebuild"
-	elog "dev-python/qscintilla-python."
+	elog "dev-python/qscintilla."
 
 	optfeature "the core git extension support" dev-python/pygit2
 }
