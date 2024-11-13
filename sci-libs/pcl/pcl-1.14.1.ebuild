@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.1-fix-hardcoded-relative-directory-of-the-installed-cmake-files.patch
 	"${FILESDIR}/${PN}-1.14.1-gcc15.patch"
 	"${FILESDIR}/${PN}-1.14.1-tests.patch"
+	"${FILESDIR}/${PN}-1.14.1-boost.patch"
 )
 
 src_prepare() {
