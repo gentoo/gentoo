@@ -8,8 +8,8 @@ inherit autotools
 DESCRIPTION="Ampl Solver Library (ASL)"
 HOMEPAGE="https://github.com/coin-or-tools/ThirdParty-ASL"
 BUILD_TOOLS_VERSION="20208f47f7bbc0056a92adefdfd43fded969f674"
-SOLVERS_SHA="64919f75f"
-SRC_URI="https://coin-or-tools.github.io/ThirdParty-ASL/solvers-${SOLVERS_SHA}.tgz
+SOLVERS_VERSION="20241108"
+SRC_URI="https://coin-or-tools.github.io/ThirdParty-ASL/solvers-${SOLVERS_VERSION}.tgz
 	https://github.com/coin-or-tools/ThirdParty-ASL/archive/refs/tags/releases/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/coin-or-tools/BuildTools/archive/${BUILD_TOOLS_VERSION}.tar.gz -> coin-or-tools-BuildTools-${BUILD_TOOLS_VERSION}.tar.gz"
 S="${WORKDIR}/ThirdParty-ASL-releases-${PV}"
@@ -19,8 +19,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
+	# See 943309. Patch merged upstream https://github.com/coin-or-tools/ThirdParty-ASL/pull/7
 	"${FILESDIR}/${P}-getrusage.patch"
-	"${FILESDIR}/${P}-dtoa.patch"
+	# https://github.com/ampl/asl/pull/23
+	"${FILESDIR}/${P}-fix-f_ophol.patch"
 )
 
 src_unpack() {
