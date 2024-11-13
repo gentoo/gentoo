@@ -8,6 +8,8 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X Compositing manager"
+
+LICENSE="HPND"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
