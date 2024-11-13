@@ -57,7 +57,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
-		dev-python/cchardet[${PYTHON_USEDEP}]
+		dev-python/faust-cchardet[${PYTHON_USEDEP}]
 		>=dev-python/css-parser-1.0.4[${PYTHON_USEDEP}]
 		dev-python/dnspython[${PYTHON_USEDEP}]
 		>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
