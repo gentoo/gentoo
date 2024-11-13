@@ -86,6 +86,10 @@ src_install() {
 	# fix ACCESS DENIED issue when installing documentation
 	sed -e "s|\(exec ./WolframInstaller\) -noprompt|\1 -auto -targetdir=${S}/${M_TARGET}/Documentation -noexec|" -i "Unix/Installer/WolframInstaller" || die
 
+	# in the depths of the installer it tests whether it can write here
+	# addpredict is by far the simplest solution
+	addpredict /usr/share/thisisatest
+
 	/bin/sh "Unix/Installer/WolframInstaller" -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
 	popd > /dev/null || die
 
