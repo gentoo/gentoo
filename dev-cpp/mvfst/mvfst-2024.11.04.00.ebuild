@@ -47,3 +47,16 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_test() {
+	if use arm64; then
+		# These tests segfault on arm64.
+		# https://github.com/facebook/mvfst/issues/363
+		CMAKE_SKIP_TESTS=(
+			QuicClientTransportIntegrationTest.ResetClient
+			QuicClientTransportIntegrationTest.TestStatelessResetToken
+		)
+	fi
+
+	cmake_src_test
+}
