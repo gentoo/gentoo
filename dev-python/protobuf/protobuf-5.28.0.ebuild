@@ -21,7 +21,7 @@ HOMEPAGE="
 
 # Rename sdist to avoid conflicts with dev-libs/protobuf
 SRC_URI="
-	$(pypi_sdist_url) -> protobuf-python-${PV}.tar.gz
+	$(pypi_sdist_url) -> ${P}.py.tar.gz
 "
 
 LICENSE="BSD"
