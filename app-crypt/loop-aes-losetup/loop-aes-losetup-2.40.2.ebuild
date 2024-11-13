@@ -15,10 +15,10 @@ DESCRIPTION="Loop-AES losetup utility"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/util-linux/util-linux"
 SRC_URI="
 	https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
-	http://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2
+	https://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2
 	verify-sig? (
 		https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.sign
-		http://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2.sign
+		https://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2.sign
 	)
 "
 S="${WORKDIR}/${MY_P}"
