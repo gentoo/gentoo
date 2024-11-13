@@ -1,8 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit flag-o-matic
+EAPI=8
+
+inherit autotools flag-o-matic
 
 DESCRIPTION="The dnsproxy daemon is a proxy for DNS queries"
 HOMEPAGE="https://www.wolfermann.org/dnsproxy.html"
@@ -18,9 +19,17 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.16-include.patch
 )
+
+src_prepare() {
+	default
+
+	# bug #900288
+	eautoreconf
+}
 
 src_compile() {
 	# https://github.com/awaw/dnsproxy/commit/7eba35568c87a21a668722b3b04c113e9160e789
