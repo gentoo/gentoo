@@ -35,7 +35,7 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/protobuf-python-3.12[${PYTHON_USEDEP}]
+	>=dev-python/protobuf-3.12[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]

@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/protobuf[${PYTHON_USEDEP}]
 	)
 "
 

@@ -16,7 +16,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/protobuf-python[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/protobuf[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 python_install_all() {

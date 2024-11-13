@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/ConfigArgParse[${PYTHON_USEDEP}]
 	dev-python/consonance[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/python-axolotl[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
