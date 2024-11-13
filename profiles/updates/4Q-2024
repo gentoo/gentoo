@@ -84,3 +84,4 @@ move dev-ml/llvm-ocaml dev-ml/llvm
 move dev-python/clang-python dev-python/clang
 slotmove kde-frameworks/kapidox 5 0
 move dev-python/publicsuffix dev-python/publicsuffix2
+move dev-util/imediff2 dev-util/imediff
