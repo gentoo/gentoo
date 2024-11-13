@@ -3,15 +3,23 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
-DISTUTILS_EXT=1
+
 inherit distutils-r1
 
+MY_P=tlsh-${PV}
 DESCRIPTION="Fuzzy matching library - C++ extension for Python"
-HOMEPAGE="https://pypi.org/project/python-tlsh/"
-SRC_URI="https://github.com/trendmicro/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
-S=${WORKDIR}/${P}/py_ext
+HOMEPAGE="
+	https://github.com/trendmicro/tlsh/
+	https://pypi.org/project/python-tlsh/
+"
+SRC_URI="
+	https://github.com/trendmicro/tlsh/archive/${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}/py_ext
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
