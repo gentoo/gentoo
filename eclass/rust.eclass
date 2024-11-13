@@ -259,10 +259,10 @@ unset -f _rust_set_globals
 # and print its version number (i.e. SLOT) and type (source or bin[ary]).
 #
 # If -b is specified, the checks are performed relative to BROOT,
-# and BROOT-path is returned.
+# and BROOT-path is returned. -b is the default.
 #
 # If -d is specified, the checks are performed relative to ESYSROOT,
-# and ESYSROOT-path is returned. -d is the default.
+# and ESYSROOT-path is returned.
 #
 # If RUST_M{AX,IN}_SLOT is non-zero, then only Rust versions that
 # are not newer or older than the specified slot(s) will be considered.
@@ -278,7 +278,7 @@ unset -f _rust_set_globals
 _get_rust_slot() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local hv_switch=-d
+	local hv_switch=-b
 	while [[ ${1} == -* ]]; do
 		case ${1} in
 			-b|-d) hv_switch="${1}";;
@@ -412,7 +412,7 @@ get_rust_prefix() {
 	[[ ${1} == -d ]] && prefix=${ESYSROOT}
 
 	local slot rust_type
-	read -r slot rust_type <<< $(_get_rust_slot)
+	read -r slot rust_type <<< $(_get_rust_slot "$@")
 	get_rust_path "${prefix}" "${slot}" "${rust_type}"
 }
 
@@ -451,9 +451,9 @@ rust_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		read -r RUST_SLOT RUST_TYPE <<< $(_get_rust_slot)
+		read -r RUST_SLOT RUST_TYPE <<< $(_get_rust_slot -b)
 		rust_prepend_path "${RUST_SLOT}" "${RUST_TYPE}"
-		local prefix=$(get_rust_prefix)
+		local prefix=$(get_rust_path "${BROOT}" "${RUST_SLOT}" "${RUST_TYPE}")
 		CARGO="${prefix}bin/cargo"
 		RUSTC="${prefix}bin/rustc"
 		export CARGO RUSTC
