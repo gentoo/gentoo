@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ PATCHES=(
 )
 
 src_compile() {
+	# https://github.com/awaw/dnsproxy/commit/7eba35568c87a21a668722b3b04c113e9160e789
 	append-cppflags -D_GNU_SOURCE
 	emake ${PN}
 }
