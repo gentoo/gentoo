@@ -9,6 +9,9 @@
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/intel/vpl-gpu-rt/issues</bugs-to>
+		<changelog>https://github.com/intel/vpl-gpu-rt/releases</changelog>
+		<doc>https://github.com/intel/vpl-gpu-rt/tree/main/doc</doc>
 		<remote-id type="github">intel/vpl-gpu-rt</remote-id>
 	</upstream>
 </pkgmetadata>
