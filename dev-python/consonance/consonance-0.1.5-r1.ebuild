@@ -23,7 +23,7 @@ PROPERTIES="test_network"
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/dissononce[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/python-axolotl-curve25519[${PYTHON_USEDEP}]
 	dev-python/transitions[${PYTHON_USEDEP}]
 "

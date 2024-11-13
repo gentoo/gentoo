@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-python/googleapis-common-protos-1.56.2[${PYTHON_USEDEP}]
 	>=dev-python/google-auth-1.25.0[${PYTHON_USEDEP}]
 	>=dev-python/proto-plus-1.25.0[${PYTHON_USEDEP}]
-	>=dev-python/protobuf-python-3.19.5[${PYTHON_USEDEP}]
+	>=dev-python/protobuf-3.19.5[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 	<dev-python/requests-3[${PYTHON_USEDEP}]
 	grpc? (

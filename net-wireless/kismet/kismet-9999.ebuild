@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools flag-o-matic python-single-r1 udev systemd
 
@@ -56,7 +56,7 @@ CDEPEND="
 	dev-libs/protobuf-c:=
 	<dev-libs/protobuf-26:=
 	$(python_gen_cond_dep '
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/protobuf[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
 	')
 	lm-sensors? ( sys-apps/lm-sensors:= )

@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/pyspectrum2[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	net-im/yowsup[${PYTHON_USEDEP}]

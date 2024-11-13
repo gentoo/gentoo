@@ -19,7 +19,7 @@ IUSE="disableStaticReg"
 RESTRICT="test"
 
 RDEPEND="
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-libs/protobuf:=
 	dev-cpp/abseil-cpp:=

@@ -30,7 +30,7 @@ RDEPEND="<dev-libs/protobuf-22.5:=
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/protobuf-python[${PYTHON_USEDEP}]
+			dev-python/protobuf[${PYTHON_USEDEP}]
 		')
 	)
 	rdm-tests? (
@@ -56,7 +56,7 @@ BDEPEND="app-alternatives/yacc
 			${PYTHON_DEPS}
 			$(python_gen_cond_dep '
 				dev-python/numpy[${PYTHON_USEDEP}]
-				dev-python/protobuf-python[${PYTHON_USEDEP}]
+				dev-python/protobuf[${PYTHON_USEDEP}]
 			')
 		)
 	)"
