@@ -49,7 +49,8 @@ BDEPEND="
 	)
 "
 
-EPYTEST_XDIST=1
+# xdist can randomly break tests, depending on job count
+# https://bugs.gentoo.org/941429
 distutils_enable_tests pytest
 
 PATCHES=(
