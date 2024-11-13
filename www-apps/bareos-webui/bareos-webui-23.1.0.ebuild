@@ -25,9 +25,8 @@ fi
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bareos.org/"
-RESTRICT="mirror"
-
 LICENSE="AGPL-3"
+RESTRICT="mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}
