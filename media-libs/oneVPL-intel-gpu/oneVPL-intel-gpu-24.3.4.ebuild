@@ -1,6 +1,9 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NOTE: please bump with the other parts of intel's media stack, listed below
+# https://github.com/intel/vpl-gpu-rt/releases
+
 EAPI=8
 
 inherit cmake
