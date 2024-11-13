@@ -16,8 +16,6 @@ HOMEPAGE="
 	https://github.com/rpy2/rpy2
 	https://pypi.org/project/rpy/
 "
-SRC_URI="$(pypi_sdist_url rpy2)"
-S="${WORKDIR}/rpy2-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
