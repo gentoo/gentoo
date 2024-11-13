@@ -6,3 +6,4 @@ move dev-python/jinja dev-python/jinja2
 move dev-python/gmpy dev-python/gmpy2
 move dev-python/tlsh dev-python/python-tlsh
 move dev-python/tappy dev-python/tap-py
+move dev-python/subunit dev-python/python-subunit

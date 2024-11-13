@@ -44,7 +44,7 @@ BDEPEND="
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/oslotest[${PYTHON_USEDEP}]
 		dev-python/python-openstackclient[${PYTHON_USEDEP}]
-		dev-python/subunit[${PYTHON_USEDEP}]
+		dev-python/python-subunit[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
