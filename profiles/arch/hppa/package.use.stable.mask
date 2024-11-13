@@ -168,7 +168,7 @@ app-misc/mc spell
 net-nds/openldap smbkrb5passwd
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
-# dev-python/subunit is not stable on hppa
+# dev-python/python-subunit is not stable on hppa
 dev-libs/check subunit
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)

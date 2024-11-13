@@ -19,7 +19,7 @@ RESTRICT="ppc? ( test )
 	ppc64? ( test )
 	!test? ( test )"
 
-RDEPEND="subunit? ( dev-python/subunit[${MULTILIB_USEDEP}] )"
+RDEPEND="subunit? ( dev-python/python-subunit[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo"
 BDEPEND="doc? ( app-text/doxygen )"
