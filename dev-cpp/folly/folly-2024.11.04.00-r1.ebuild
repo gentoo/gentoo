@@ -90,5 +90,15 @@ src_test() {
 		'concurrency_concurrent_hash_map_test.*'
 	)
 
+	if use arm64; then
+		CMAKE_SKIP_TESTS+=(
+			# Tests are flaky/timing dependent on both QEMU chroot and real hardware
+			io_async_hh_wheel_timer_test.HHWheelTimerTest
+			# Times out on real hardware
+			concurrent_skip_list_test.ConcurrentSkipList
+			futures_retrying_test.RetryingTest.largeRetries
+		)
+	fi
+
 	cmake_src_test
 }
