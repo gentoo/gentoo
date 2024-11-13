@@ -6,7 +6,7 @@ EAPI=8
 MY_PV="${PV//./-}"
 DESCRIPTION="Spellchecker wrapping library"
 HOMEPAGE="https://github.com/rrthomas/enchant"
-SRC_URI="https://github.com/AbiWord/enchant/releases/download/${PN}-${MY_PV}/${P}.tar.gz"
+SRC_URI="https://github.com/rrthomas/enchant/releases/download/${PN}-${MY_PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
