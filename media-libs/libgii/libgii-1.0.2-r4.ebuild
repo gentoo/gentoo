@@ -18,14 +18,18 @@ RDEPEND="
 	X? (
 		>=x11-libs/libX11-1.6.2
 		>=x11-libs/libXxf86dga-1.1.4
-	)"
-DEPEND="${RDEPEND}
-	kernel_linux? ( >=sys-kernel/linux-headers-2.6.11 )"
+	)
+"
+DEPEND="
+	${RDEPEND}
+	kernel_linux? ( >=sys-kernel/linux-headers-2.6.11 )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0-linux26-headers.patch
 	"${FILESDIR}"/${P}-configure-cpuid-pic.patch
 	"${FILESDIR}"/${P}-libtool_1.5_compat.patch
+	"${FILESDIR}"/${P}-Wformat-security.patch
 )
 
 src_prepare() {
