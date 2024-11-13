@@ -8,3 +8,4 @@ move dev-python/tlsh dev-python/python-tlsh
 move dev-python/tappy dev-python/tap-py
 move dev-python/subunit dev-python/python-subunit
 move dev-python/rpy dev-python/rpy2
+move dev-python/qscintilla-python dev-python/qscintilla

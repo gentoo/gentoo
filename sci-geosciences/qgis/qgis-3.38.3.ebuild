@@ -84,12 +84,12 @@ COMMON_DEPEND="
 			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/pytz[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.1[${PYTHON_USEDEP}]
+			>=dev-python/qscintilla-2.10.1[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 			dev-python/PyQt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.1[qt6]
+			>=dev-python/qscintilla-2.10.1[qt6]
 		')
 	)
 	qml? ( dev-qt/qtdeclarative:6 )
