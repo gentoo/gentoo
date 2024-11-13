@@ -30,7 +30,7 @@ RDEPEND="
 	)
 	dev-python/libarchive-c[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
-	dev-python/tlsh[${PYTHON_USEDEP}]
+	dev-python/python-tlsh[${PYTHON_USEDEP}]
 	acl? ( sys-apps/acl )
 	binutils? ( sys-devel/binutils )
 	bzip2? ( app-arch/bzip2 )

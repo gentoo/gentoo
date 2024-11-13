@@ -4,3 +4,4 @@ slotmove media-sound/kmetronome 5 0
 move net-im/sendxmpp-amm net-im/sendxmpp-scala
 move dev-python/jinja dev-python/jinja2
 move dev-python/gmpy dev-python/gmpy2
+move dev-python/tlsh dev-python/python-tlsh
