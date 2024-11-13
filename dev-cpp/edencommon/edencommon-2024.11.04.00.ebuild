@@ -13,7 +13,7 @@ EAPI=8
 # dev-cpp/wangle
 # dev-util/watchman
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Shared library for Watchman and Eden projects"
 HOMEPAGE="https://github.com/facebookexperimental/edencommon"
@@ -46,4 +46,16 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	CMAKE_SKIP_TESTS=()
+
+	# This test fails on GCC 13.
+	# https://github.com/facebookexperimental/edencommon/issues/22
+	if tc-is-gcc && ver_test $(gcc-version) -lt 14.0.0; then
+		CMAKE_SKIP_TESTS+=(PathFuncs.move_or_copy)
+	fi
+
+	cmake_src_test
 }
