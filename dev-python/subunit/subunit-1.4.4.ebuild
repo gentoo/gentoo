@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 multilib-minimal autotools
 
+MY_P=subunit-${PV}
 DESCRIPTION="A streaming protocol for test results"
 HOMEPAGE="
 	https://launchpad.net/subunit/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/testing-cabal/subunit/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
