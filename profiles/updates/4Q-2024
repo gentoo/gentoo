@@ -13,3 +13,4 @@ move dev-python/python-netlink dev-python/netlink
 move dev-python/python-lhafile dev-python/lhafile
 move dev-python/pysvg dev-python/pysvg-py3
 move dev-python/libpillowfight dev-python/pypillowfight
+move dev-python/cchardet dev-python/faust-cchardet
