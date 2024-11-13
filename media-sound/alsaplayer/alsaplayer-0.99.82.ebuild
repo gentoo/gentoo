@@ -11,7 +11,7 @@ SRC_URI="https://github.com/alsaplayer/alsaplayer/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~riscv ~sparc x86"
+KEYWORDS="amd64 ~mips ~ppc ~riscv ~sparc x86"
 IUSE="+alsa doc flac gtk id3tag jack mad mikmod nas nls ogg opengl oss vorbis xosd"
 REQUIRED_USE="|| ( alsa jack nas oss )"
 
