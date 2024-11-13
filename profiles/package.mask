@@ -60,6 +60,7 @@ dev-php/realpath_turbo
 dev-php/snuffleupagus
 dev-php/swoole
 =virtual/httpd-php-8.1
+<www-apps/icingaweb2-2.12.1-r1
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-10)
 # Fails to build with gcc-14. Horrible code. Not touched by a
