@@ -171,6 +171,12 @@ LICENSE+=" Apache-2.0 BSD GPL-3 ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 IUSE="io-uring"
 
+RDEPEND="virtual/libudev:="
+# libdevmapper.h needed for devicemapper-sys crate
+DEPEND="
+	${RDEPEND}
+	sys-fs/lvm2
+"
 # Needed for bindgen
 BDEPEND="
 	$(llvm_gen_dep '
