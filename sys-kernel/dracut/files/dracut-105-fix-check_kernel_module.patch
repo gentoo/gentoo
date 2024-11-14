@@ -22,7 +22,7 @@ index 865c31290..245c69cb6 100755
  # 1 if the kernel module is not enabled
  check_kernel_module() {
 -    modprobe -d "$dracutsysrootdir" -S "$kernel" --dry-run "$1" &> /dev/null || return 1
-+    modprobe -d "$drivers_dir/../../" -S "$kernel" --dry-run "$1" &> /dev/null || return 1
++    modprobe -d "$drivers_dir/../../../" -S "$kernel" --dry-run "$1" &> /dev/null || return 1
  }
  
  # get_cpu_vendor
