@@ -96,10 +96,10 @@ src_prepare() {
 		cat <<-'EOF' > "${T}/disable_tests.patch"
 		--- a/Makefile
 		+++ b/Makefile
-		@@ -54 +54 @@
-		-all: bin/buildah bin/imgtype bin/copy bin/tutorial docs
+		@@ -56 +56 @@
+		-all: bin/buildah bin/imgtype bin/copy bin/inet bin/tutorial docs
 		+all: bin/buildah docs
-		@@ -123 +123 @@
+		@@ -122 +122 @@
 		-docs: install.tools ## build the docs on the host
 		+docs: ## build the docs on the host
 		EOF
