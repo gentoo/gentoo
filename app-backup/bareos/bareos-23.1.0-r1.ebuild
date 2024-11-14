@@ -41,6 +41,7 @@ DEPEND="
 	!x86? (
 		ceph? ( sys-cluster/ceph )
 	)
+	dev-libs/libfmt
 	glusterfs? ( sys-cluster/glusterfs )
 	lmdb? ( dev-db/lmdb )
 	dev-libs/gmp:0
