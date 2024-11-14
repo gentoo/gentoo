@@ -14,19 +14,20 @@ EAPI=8
 
 inherit toolchain-funcs
 
+# Split release channel (such as "2.1") from relver (such as "1727870382")
+VER_CHANNEL=${PV%.*}
+VER_RELVER=${PV##*.}
+
 DESCRIPTION="Just-In-Time Compiler for the Lua programming language"
 HOMEPAGE="https://luajit.org/"
 
-if [[ ${PV} == 2.1.9999999999 ]]; then
-	# This is the 2.1 rolling release live build. When a 2.2 or 3.x branch comes
-	# out, create a new ebuild for it.
-	#
-	# Upstream recommends pulling rolling releases from the v2.1 branch.
+if [[ ${VER_RELVER} == 9999999999 ]]; then
+	# Upstream recommends pulling rolling releases from versioned branches.
 	# > The old git master branch is phased out and stays pinned to the v2.0
 	# > branch. Please follow the versioned branches instead.
 	#
 	# See http://luajit.org/status.html for additional information.
-	EGIT_BRANCH="v2.1"
+	EGIT_BRANCH="v${VER_CHANNEL}"
 	EGIT_REPO_URI="https://luajit.org/git/luajit.git"
 	inherit git-r3
 else
@@ -73,7 +74,22 @@ src_compile() {
 
 src_install() {
 	_emake install
-	dosym luajit-"${PV}" /usr/bin/luajit
+
+	# For tarballs downloaded from github, the relver is provided in
+	# ${S}/.relver, a file populated when generating the tarball as directed by
+	# .gitattributes. That file will contain the same relver as the relver
+	# in our version number.
+	#
+	# For the live build, this is not populated, but luajit's build process
+	# inspects the git repository directly with this command:
+	#
+	#     git show -s --format=%ct
+	#
+	# In both cases, luajit puts the relver in src/luajit_relver.txt during
+	# the build. We read this file to ensure we're using the same source of
+	# truth as luajit's own build does when generating the binary's filename.
+	local relver="$(cat "${S}/src/luajit_relver.txt" || die 'error retrieving relver')"
+	dosym luajit-"${VER_CHANNEL}.${relver}" /usr/bin/luajit
 
 	HTML_DOCS="doc/." einstalldocs
 }
