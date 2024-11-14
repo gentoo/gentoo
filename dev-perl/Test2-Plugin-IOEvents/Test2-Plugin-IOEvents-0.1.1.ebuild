@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Turn STDOUT and STDERR into Test2 events"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="virtual/perl-Test2-Suite"
