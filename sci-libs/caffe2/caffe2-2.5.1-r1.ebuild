@@ -38,9 +38,10 @@ RDEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-cpp/gflags:=
 	>=dev-cpp/glog-0.5.0
+	dev-cpp/nlohmann_json
+	dev-cpp/opentelemetry-cpp
 	dev-libs/cpuinfo
 	dev-libs/libfmt
-	dev-cpp/opentelemetry-cpp
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef[cpu_flags_x86_avx512f(+),cpu_flags_x86_avx(+)]
@@ -95,6 +96,7 @@ RDEPEND="
 	mkl? ( sci-libs/mkl )
 	openblas? ( sci-libs/openblas )
 "
+
 DEPEND="
 	${RDEPEND}
 	cuda? ( >=dev-libs/cutlass-3.4.1 )
@@ -118,7 +120,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-functorch-install.patch
 	"${FILESDIR}"/${P}-cudnn_include_fix.patch
 	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-cpp-httplib.patch
+	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
 	"${FILESDIR}"/${P}-glog-0.6.0.patch
 )
 
@@ -132,6 +134,7 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		torch/CMakeLists.txt \
 		|| die
+
 	# Drop third_party from CMake tree
 	sed -i \
 		-e '/add_subdirectory.*third_party/d' \
@@ -140,10 +143,12 @@ src_prepare() {
 		cmake/ProtoBuf.cmake \
 		aten/src/ATen/CMakeLists.txt \
 		|| die
+
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
 	popd
+
 	# prefixify the hardcoded paths, after all patches are applied
 	hprefixify \
 		aten/CMakeLists.txt \
@@ -186,6 +191,7 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DBUILD_CUSTOM_PROTOBUF=OFF
 		-DLIBSHM_INSTALL_LIB_SUBDIR="${EPREFIX}"/usr/$(get_libdir)
 		-DPython_EXECUTABLE="${PYTHON}"
 		-DTORCH_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
@@ -213,7 +219,18 @@ src_configure() {
 		-DUSE_PYTORCH_QNNPACK=$(usex qnnpack)
 		-DUSE_PYTORCH_METAL=OFF
 		-DUSE_ROCM=$(usex rocm)
-		-DUSE_SYSTEM_LIBS=ON
+		-DUSE_SYSTEM_CPUINFO=ON
+		-DUSE_SYSTEM_EIGEN_INSTALL=ON
+		-DUSE_SYSTEM_FP16=ON
+		-DUSE_SYSTEM_FXDIV=ON
+		-DUSE_SYSTEM_GLOO=ON
+		-DUSE_SYSTEM_ONNX=ON
+		-DUSE_SYSTEM_PSIMD=ON
+		-DUSE_SYSTEM_PSIMD=ON
+		-DUSE_SYSTEM_PTHREADPOOL=ON
+		-DUSE_SYSTEM_PYBIND11=ON
+		-DUSE_SYSTEM_SLEEF=ON
+		-DUSE_SYSTEM_XNNPACK=$(usex xnnpack)
 		-DUSE_TENSORPIPE=$(usex distributed)
 		-DUSE_UCC=OFF
 		-DUSE_VALGRIND=OFF
@@ -286,20 +303,19 @@ src_install() {
 	cp torch/version.py python/torch/ || die
 	python_domodule python/torch
 
-	dodir $(python_get_sitedir)/torch/bin
-	dodir $(python_get_sitedir)/torch/lib
-	dodir $(python_get_sitedir)/torch/include
+	mkdir "${D}"$(python_get_sitedir)/torch/bin || die
+	mkdir "${D}"$(python_get_sitedir)/torch/lib || die
+	mkdir "${D}"$(python_get_sitedir)/torch/include || die
 
 	ln -s ../../../../../include/torch \
 		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
 
+	mv "${D}"/usr/bin/torch_shm_manager \
+		"${D}"/$(python_get_sitedir)/torch/bin/ || die
 
-	mv "${ED}"/usr/bin/torch_shm_manager \
-		"${ED}"/$(python_get_sitedir)/torch/bin/ || die
+	mv "${D}"/usr/$(get_libdir)/libtorch_global_deps.so \
+		"${D}"/$(python_get_sitedir)/torch/lib/ || die
 
-	mv "${ED}"/usr/$(get_libdir)/libtorch_global_deps.so \
-		"${ED}"/$(python_get_sitedir)/torch/lib/ || die
-
-	mv "${ED}"/usr/lib/libc10*.so \
-		"${ED}"/usr/$(get_libdir)/ || die
+	mv "${D}"/usr/lib/libc10*.so \
+		"${D}"/usr/$(get_libdir)/ || die
 }
