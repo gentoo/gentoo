@@ -1,0 +1,137 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	after openafs-server
+	use logger dns
+}
+
+BSD_MOD="/boot/modules/libafs.ko"
+
+choose_afsdoptions() {
+	CACHESIZE=$(cut -d ':' -f 3 /etc/openafs/cacheinfo)
+	if [ -z "$OPTIONS" ] || [ "$OPTIONS" = "AUTOMATIC" ] ; then
+		if [ $CACHESIZE -lt 131072 ] ; then
+			OPTIONS=$SMALL
+		elif [ $CACHESIZE -lt 524288 ] ; then
+			OPTIONS=$MEDIUM
+		elif [ $CACHESIZE -lt 1048576 ] ; then
+			OPTIONS=$LARGE
+		elif [ $CACHESIZE -lt 2097152 ] ; then
+			OPTIONS=$XLARGE
+		else
+			OPTIONS=$XXLARGE
+		fi
+	fi
+	AFSD_OPTIONS="$OPTIONS $VERBOSE"
+	[ "$ENABLE_AFSDB" = "yes" ] && AFSD_OPTIONS="$AFSD_OPTIONS -afsdb"
+	[ "$ENABLE_DYNROOT" = "yes" ] && AFSD_OPTIONS="$AFSD_OPTIONS -dynroot"
+}
+
+get_logfile() {
+	local redirect="/dev/null"
+	yesno ${ENABLE_STD_LOGGING} && redirect="/var/log/openafs/client.log"
+        echo ${redirect}
+}
+
+start() {
+	local ret=1
+	ebegin "Starting OpenAFS client"
+
+	eindent
+
+	# Check if afsd is already running -> abort
+	if pgrep -u 0 afsd >/dev/null ; then
+		eerror "afsd already running, not attempting to restart"
+	# Check if the openafs kernel module is loaded -> attempt unload
+	elif [ "${RC_UNAME}" = "Linux" ] && [ -d /proc/fs/openafs ] ; then
+		ewarn "OpenAFS already active, trying to unload module"
+		if ! modprobe -r libafs ; then
+			eerror "OpenAFS kernel module was loaded, unloading failed"
+		else
+			cleanstart
+			ret=$?
+		fi
+	elif [ "${RC_UNAME}" = "FreeBSD" ] && kldstat -n ${BSD_MOD} 2> /dev/null; then
+		ewarn "OpenAFS already active, trying to unload module"
+		if ! kldunload ${BSD_MOD}; then
+			eerror "OpenAFS kernel module was loaded, unloading failed"
+		else
+			cleanstart
+			ret=$?
+		fi
+	# Everything should be ok, start cleanly
+	else
+		cleanstart
+		ret=$?
+	fi
+
+	eend ${ret}
+	eoutdent
+	return ${ret}
+}
+
+cleanstart()
+{
+	# Make sure the mountpoint exists
+	mkdir /afs 2> /dev/null
+	# Make sure the cache directory exists
+	# If config doesn't exist, create one
+	if [ ! -e /etc/openafs/cacheinfo ]; then
+		echo "/afs:/var/cache/openafs:200000" > /etc/openafs/cacheinfo
+	fi
+	CACHEDIR=$(cut -d ':' -f 2 /etc/openafs/cacheinfo)
+	if ! mkdir -p "${CACHEDIR}"; then
+		eerror "Unable to create cache dir ${CACHEDIR}"
+		return 1
+	fi
+
+	# Start openafs: module and daemon
+	ebegin "Loading OpenAFS kernel module"
+	if [ "${RC_UNAME}" = "Linux" ]; then
+		modprobe libafs
+	elif [ "${RC_UNAME}" = "FreeBSD" ]; then
+		kldload ${BSD_MOD}
+	else
+		eerror "Unknown system.  Contact the package maintainer."
+	fi
+	eend $? || return 1
+
+	ebegin "Starting OpenAFS daemon"
+	choose_afsdoptions
+	/usr/sbin/afsd ${AFSD_OPTIONS} >$(get_logfile) 2>&1
+	eend $?
+}
+
+stop() {
+	local ret=1
+	ebegin "Stopping OpenAFS client"
+
+	eindent
+
+	# Three stage process: unmount / stop daemon / unload module
+	ebegin "Unmounting /afs"
+	umount /afs
+	if eend $? ; then
+		ebegin "Stopping OpenAFS daemon"
+		/usr/sbin/afsd -shutdown >$(get_logfile) 2>&1
+		if eend $? ; then
+			ebegin "Unloading OpenAFS module"
+			if [ "${RC_UNAME}" = "Linux" ]; then
+				modprobe -r libafs
+			elif [ "${RC_UNAME}" = "FreeBSD" ]; then
+				kldunload ${BSD_MOD}
+			else
+				eerror "Unknown system.  Contact the package maintainer."
+			fi
+			eend $? && ret=0
+		fi
+	fi
+
+	eoutdent
+	# Clean up: remove the mountpoint if it's an empty directory
+	rmdir /afs 2>/dev/null
+	return ${ret}
+}

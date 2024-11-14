@@ -1,0 +1,46 @@
+From d5a01932f821ab8ef9e21ff0857c744326f9c494 Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Tue, 1 Jan 2019 01:32:37 +0300
+Subject: [PATCH 02/13] pam-paths
+
+(cherry picked from commit ccb2133f6fa61b51d9ad65086c83a9740506d19f)
+(cherry picked from commit bd72ed729d5a17a4d135476f977b619615b64e0e)
+(cherry picked from commit 56caeaf664505c2b59d8a0fb323dd582a109d35b)
+---
+ src/pam/Makefile.in | 2 +-
+ src/pam/afs_util.h  | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/pam/Makefile.in b/src/pam/Makefile.in
+index f4f066618f79..c335e81ec657 100644
+--- a/src/pam/Makefile.in
++++ b/src/pam/Makefile.in
+@@ -31,7 +31,7 @@ LT_libs = \
+ 
+ INSTALL_KAUTH = @INSTALL_KAUTH@
+ 
+-MODULE_CFLAGS=${PAM_CFLAGS}
++MODULE_CFLAGS=${PAM_CFLAGS} -DBINDIR='"${bindir}"'
+ 
+ all: test_pam pam_afs.la pam_afs.krb.la
+ 
+diff --git a/src/pam/afs_util.h b/src/pam/afs_util.h
+index 56a42457be7c..ac2b01ca5126 100644
+--- a/src/pam/afs_util.h
++++ b/src/pam/afs_util.h
+@@ -24,9 +24,9 @@ extern int do_klog(const char *user, const char *password,
+ 		   const char *lifetime, const char *cell_name);
+ extern afs_int32 getPAG(void);
+ 
+-#define KLOG "/usr/afsws/bin/klog"
+-#define KLOGKRB "/usr/afsws/bin/klog.krb"
+-#define UNLOG "/usr/afsws/bin/unlog"
++#define KLOG BINDIR "/klog"
++#define KLOGKRB BINDIR "/klog.krb"
++#define UNLOG BINDIR "/unlog"
+ #define IGNORE_MAX 1000
+ 
+ #if	defined(AFS_HPUX_ENV)
+-- 
+2.45.2
+

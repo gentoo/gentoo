@@ -1,0 +1,127 @@
+From 4501337bab87ec8724ae45fa50713584a211fb3a Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Fri, 4 Jan 2019 16:37:35 +0300
+Subject: [PATCH 09/13] docbook2pdf
+
+Jadetex based converters require jadetex tuning:
+  save_size=50000
+  max_strings=1000000
+  pool_size=2000000
+  hash_extra=150000
+Otherwise TeX will run out of its capacity during large PDFs
+generation.
+
+docbook2pdf needs to ignore an ID reference value which no element
+has as its ID:
+  -e no-idref
+This is already done by other converters implicitly.
+
+(cherry picked from commit c81ef9c4109eb1bfc9cb42d952b9d5240f3d713b)
+(cherry picked from commit c4515998db6078ccf82fad23b774bc243ba1f020)
+(cherry picked from commit 876c27c8fb7cc3c80e31d3e642a7727313b4f0c0)
+---
+ doc/xml/AdminGuide/Makefile.in     | 5 ++++-
+ doc/xml/AdminRef/Makefile.in       | 5 ++++-
+ doc/xml/QuickStartUnix/Makefile.in | 5 ++++-
+ doc/xml/UserGuide/Makefile.in      | 5 ++++-
+ 4 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/doc/xml/AdminGuide/Makefile.in b/doc/xml/AdminGuide/Makefile.in
+index caf48ac66828..6763e95c8849 100644
+--- a/doc/xml/AdminGuide/Makefile.in
++++ b/doc/xml/AdminGuide/Makefile.in
+@@ -32,6 +32,7 @@ XSLTPROC = @XSLTPROC@
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ KINDLEGEN = @KINDLEGEN@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ index.html: $(SRCS)
+ 	$(XSLTPROC) --param navig.graphics 1 \
+@@ -42,8 +43,10 @@ $(BOOK).pdf: $(SRCS)
+ 	if test "x$(DOCBOOK2PDF)" = "xfop"; then \
+ 		$(XSLTPROC) $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl $(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) $(BOOK).xml; \
++		$(TEXOPTS) $(DOCBOOK2PDF) $(BOOK).xml; \
+ 	fi
+ 
+ $(BOOK).epub: $(SRCS)
+diff --git a/doc/xml/AdminRef/Makefile.in b/doc/xml/AdminRef/Makefile.in
+index a9d78d6a5515..c13c26965d73 100644
+--- a/doc/xml/AdminRef/Makefile.in
++++ b/doc/xml/AdminRef/Makefile.in
+@@ -15,6 +15,7 @@ XSLTPROC = @XSLTPROC@ --stringparam variablelist.as.blocks 1 --param use.id.as.f
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
+ KINDLEGEN = @KINDLEGEN@
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ entities.dtd sect1.xml sect5.xml sect8.xml:
+ 	./generate-xml.pl $(TOP_SRCDIR)
+@@ -23,8 +24,10 @@ $(BOOK).pdf: $(SRCS)
+ 	if test "x$(DOCBOOK2PDF)" = "xfop"; then \
+ 		$(XSLTPROC) $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl $(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) $(BOOK).xml; \
++		$(TEXOPTS) $(DOCBOOK2PDF) $(BOOK).xml; \
+ 	fi
+ 
+ $(BOOK).epub: $(SRCS)
+diff --git a/doc/xml/QuickStartUnix/Makefile.in b/doc/xml/QuickStartUnix/Makefile.in
+index b309015ce283..c52a171babea 100644
+--- a/doc/xml/QuickStartUnix/Makefile.in
++++ b/doc/xml/QuickStartUnix/Makefile.in
+@@ -30,6 +30,7 @@ XSLTPROC = @XSLTPROC@
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
+ KINDLEGEN = @KINDLEGEN@
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ index.html: $(SRCS)
+ 	$(XSLTPROC) --param navig.graphics 1 \
+@@ -40,8 +41,10 @@ $(BOOK).pdf: $(SRCS)
+ 	if test "x$(DOCBOOK2PDF)" = "xfop"; then \
+ 		$(XSLTPROC) $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl $(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) $(BOOK).xml; \
++		$(TEXOPTS) $(DOCBOOK2PDF) $(BOOK).xml; \
+ 	fi
+ 
+ $(BOOK).epub: $(SRCS)
+diff --git a/doc/xml/UserGuide/Makefile.in b/doc/xml/UserGuide/Makefile.in
+index 1a0fe66d6255..5dfc7d44e253 100644
+--- a/doc/xml/UserGuide/Makefile.in
++++ b/doc/xml/UserGuide/Makefile.in
+@@ -30,6 +30,7 @@ XSLTPROC = @XSLTPROC@
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
+ KINDLEGEN = @KINDLEGEN@
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ index.html: $(SRCS)
+ 	$(XSLTPROC) --param navig.graphics 1 \
+@@ -40,8 +41,10 @@ $(BOOK).pdf: $(SRCS)
+ 	if test "x$(DOCBOOK2PDF)" = "xfop"; then \
+ 		$(XSLTPROC) $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl $(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) $(BOOK).xml; \
++		$(TEXOPTS) $(DOCBOOK2PDF) $(BOOK).xml; \
+ 	fi
+ 
+ $(BOOK).epub: $(SRCS)
+-- 
+2.45.2
+
