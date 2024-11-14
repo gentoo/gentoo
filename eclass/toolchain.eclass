@@ -1065,7 +1065,7 @@ toolchain_src_configure() {
 
 	downgrade_arch_flags
 	gcc_do_filter_flags
-	if tc_version_is_at_least 14.2.1_p20241026 ${PV}; then
+	if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] && tc_version_is_at_least 14.2.1_p20241026 ${PV}; then
 		append-cppflags "-D_GENTOO_TIME64_FORCE=$(usex time64 1 0)"
 	fi
 
