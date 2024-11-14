@@ -27,6 +27,7 @@ IUSE="nls test"
 # Has deps that aren't available in ::gentoo repo
 RESTRICT="test"
 
+# <dev-libs/libfmt-11 https://github.com/giuspen/cherrytree/issues/2548
 RDEPEND="app-i18n/uchardet
 	app-text/gspell:=
 	>=dev-cpp/glibmm-2.64.2:2
@@ -37,7 +38,7 @@ RDEPEND="app-i18n/uchardet
 	dev-db/sqlite:3
 	dev-libs/fribidi
 	dev-libs/glib:2
-	dev-libs/libfmt:=
+	<dev-libs/libfmt-11:=
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
 	>=dev-libs/spdlog-1.5:=
