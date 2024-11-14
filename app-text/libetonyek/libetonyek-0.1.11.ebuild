@@ -3,8 +3,6 @@
 
 EAPI=8
 
-MDDS_VER="3.0"
-
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libetonyek.git"
 	inherit autotools git-r3
@@ -25,7 +23,7 @@ RDEPEND="
 	app-text/liblangtag
 	dev-libs/librevenge
 	dev-libs/libxml2
-	dev-util/mdds:1/${MDDS_VER}
+	>=dev-util/mdds-2.1:1=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
@@ -48,10 +46,11 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-werror
-		--with-mdds="${MDDS_VER}"
+		--with-mdds=2.1
 		$(use_with doc docs)
 		$(use_enable test tests)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
