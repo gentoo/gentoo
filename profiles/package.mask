@@ -373,12 +373,6 @@ app-i18n/kcm-fcitx
 # Beware that if you upgrade to it, you may need to reset your keyrings.
 >=app-crypt/gnupg-2.5
 
-# Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
-# Breaks parallel builds with fatal compiler errors.
-# Bug #939798, #939875.
->=dev-python/ensurepip-setuptools-75.1.0
->=dev-python/setuptools-75.1.0
-
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.0.9999:30-vcs
