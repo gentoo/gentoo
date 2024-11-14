@@ -25,7 +25,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND=">=virtual/pkgconfig-1"
 RDEPEND="
-	>=dev-libs/libxml2-2.9.11:2[${MULTILIB_USEDEP}]
+	<dev-libs/libxml2-2.13:2[${MULTILIB_USEDEP}]
 	crypt? ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 "
