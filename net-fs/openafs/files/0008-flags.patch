@@ -1,0 +1,33 @@
+From 4c317307b7985ec48e0fe6fb8a5764ef0e2041ae Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Fri, 4 Jan 2019 07:02:07 +0300
+Subject: [PATCH 08/13] flags
+
+(cherry picked from commit c46c9e03ba1464eecae7c974461c982ee00f5000)
+(cherry picked from commit 08b0d7d40710ac49cd8f4904b0985c9e5cdd88c5)
+(cherry picked from commit f00970cc1339971101d753c2a8fa3f414782a695)
+---
+ src/config/Makefile.config.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/config/Makefile.config.in b/src/config/Makefile.config.in
+index d4b9063dac54..8039bec1dc04 100644
+--- a/src/config/Makefile.config.in
++++ b/src/config/Makefile.config.in
+@@ -219,11 +219,11 @@ COMPILE_ET_C=${COMPILE_ET} -emit c
+ COMMON_INCL=$(MODULE_INCLUDE) -I${TOP_OBJDIR}/src/config -I${TOP_INCDIR} \
+ 	    -I${srcdir} -I. 
+ 
+-COMMON_CFLAGS=$(CFLAGS) ${DBG} ${OPTMZ} $(XCFLAGS) \
++COMMON_CFLAGS=$(CFLAGS) $(XCFLAGS) \
+ 	      ${COMMON_INCL} ${INCLUDE_LIBINTL} \
+ 	      $(CPPFLAGS_roken) $(ARCHFLAGS)
+ 
+-COMMON_LDFLAGS=$(LDFLAGS) $(LDFLAGS_hcrypto) $(LDFLAGS_roken) $(DBG) $(OPTMZ)
++COMMON_LDFLAGS=$(LDFLAGS) $(LDFLAGS_hcrypto) $(LDFLAGS_roken)
+ 
+ # LWP Flags
+ LWP_CFLAGS=$(MODULE_CFLAGS) $(COMMON_CFLAGS)
+-- 
+2.45.2
+
