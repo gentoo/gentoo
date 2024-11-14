@@ -1,0 +1,32 @@
+From 77fcdf422542d01610c36d1167cc59410bcc5e3a Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Tue, 1 Jan 2019 10:27:13 +0300
+Subject: [PATCH 06/13] resolv
+
+(cherry picked from commit 911939ee76440e2f23e5867cbf3f5991167e4ec8)
+(cherry picked from commit 577dc93125df68e3853cf934e412a6daf9e636f3)
+(cherry picked from commit 0bd7623ef05bbaa7dd30405007250d1e2dc86c1b)
+---
+ src/cf/osconf.m4 | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/cf/osconf.m4 b/src/cf/osconf.m4
+index aee81cfdb274..bd2ac89b728c 100644
+--- a/src/cf/osconf.m4
++++ b/src/cf/osconf.m4
+@@ -582,6 +582,12 @@ if test "x$enable_optimize_kernel" = "x" ; then
+     [enable_optimize_kernel=yes])
+ fi
+ 
++case $AFS_SYSNAME in
++	*linux*)
++		MT_LIBS="${MT_LIBS} -lresolv"
++		;;
++esac
++
+ #
+ # Special build targets
+ #
+-- 
+2.45.2
+

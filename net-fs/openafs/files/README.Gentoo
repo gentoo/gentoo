@@ -1,0 +1,297 @@
+README openafs for gentoo linux
+-------------------------------
+
+Changelog:
+
+13.11.2005 point to online documentation where relevant
+25.07.2005 update after ebuild overhaul
+04.06.2001 initial release
+
+INDEX
+A) Questions Likely to be Asked
+1) Overview
+2) Client installation
+3) Server installation
+3.1) Installing your afs server
+3.2) Configuring the Top Level of the AFS filespace
+
+A. Questions Likely to be Asked
+-------------------------------
+
+Q) How do I upgrade from a pre-1.4 version?
+A) Consult http://www.gentoo.org/doc/en/openafs.xml.  You will find
+   detailed instructions on how to safely upgrade.  If you're very very
+   impatient, please take note that the init-scripts have changed names
+   and that you shouldn't use the old script after upgrading.  Now go and play!
+
+Q) Why are the paths in the OpenAFS documentation different from the ones in
+   the gentoo package?
+A) When AFS was conceived, Transarc (at the time the developing company) chose
+   new seperate paths for everything related to AFS.  Though there are
+   advantages to this approach (like more easily copying an AFS-installation
+   from one machine to another), this is contrary to FHS, the standard for
+   filesystem layout as used in Gentoo and many other UNIX-systems.
+
+Q) Software package X requires the old path convention
+A) If the software in mind is OSS and has an ebuild in portage, please let us
+   know so we can patch the software to work with a gentoo installation.  If
+   you use third-party software that has the legacy paths hardcoded, we
+   recommend you take a look at the package "openafs-legacy".  It is meant to
+   provide soft-links to an existing openafs-installation, such that those
+   packages find the information they're looking for.  At the time of writing,
+   this packages is untested.  Please let us know how well / badly it works
+   for you!
+   (After installing the FHS compliant ebuild, you first need to remove the
+   configuration files in the old paths, so there is room for the soft-links.
+   See below on how to go about this)
+
+Q) The ebuild has done the automatic transfer from old path-config files to
+   the new standard.  But now my system won't start anymore.  What do I do?
+A) The ebuild was designed to not touch files that existed before, and also
+   leave the old configuration files there for a safe fallback.  One cause
+   for failure that comes to mind is a system that contained some configuration
+   files in new paths before the transfer.  In any case, we'd appreciate you
+   filing a bug report (http://bugs.gentoo.org).  I hope you've read the
+   guide on how to upgrade, btw?  It may very well give you better understanding
+   of what's happened.  See http://www.gentoo.org/doc/en/openafs.xml.
+
+Q) My openafs client has gone into a state where I can't stop nor start the
+   service.  What can I do, apart from rebooting?
+A) Though I hope I've adapted the init-scripts to cope with most circumstances,
+   a failure to stop the client may arise for some reason.  Here's a guideline
+	 to stop the openafs client so you can cleanly restart.
+   1) Check for kernel errors (caused by the client if you're running the
+      experimental version).  To do this, use "dmesg".  If you see errors
+      (like stack traces), it's recommended that you reboot after all (this is
+      known to happen when unload the kernel module when afsd is still running)
+   2) Check if the /afs filesystem is mounted (e.g. "grep AFS /proc/mounts").
+      If so, unmount it ("umount /afs").  Afterwards you'll need step 3:
+   3) Check if afsd is running (e.g. "pgrep afsd").  If so, shut it down by
+      issuing "afsd -shutdown"
+   4) Check if the kernel module is loaded ("lsmod | grep openafs").  If so,
+      unload it with "modprobe -r openafs"
+   5) Just to be safe, you may want to recheck step 1
+
+   6) Check if the bosserver is running ("pgrep bosserver").  If not, then
+      normally no part of the AFS server is running.  If you doubt this
+      for whatever reason (like strange bosserver behaviour), you can check
+      if individual services are running and the stop those using the "kill"
+      command.  Processes you're looking for are named like volserver,
+      fileserver, upserver, vlserver, ptserver, buserver, kaserver.
+      If it isn't running, and you're not feeling suspicious, go to step 9
+   7) Check the status of the bosserver by running
+      "bos status localhost -localauth".  If it reports running services,
+      shutdown by running "bos shutdown localhost -localauth -wait".
+   8) Shut down the bosserver ("killall bosserver" is the fastest know method)
+
+   9) Finally, every part of afs should be shutdown.  Let the initscript-
+      system know by running "/etc/init.d/afs-client zap".
+
+      Now you should be able to run "/etc/init.d/afs-client start" again
+   Please also report a bug stating the circumstances under which your
+   lockup situation occurred (including useful info like that produced by
+   "dmesg"
+	 		
+
+1. Overview
+-----------
+
+- There's an openafs faq available on
+  http://www.angelfire.com/hi/plutonic/afs-faq.html
+- Openafs main page is at http://www.openafs.org
+- AFS was originally developed by Transarc which is now owned by IBM.
+  You can find some information about AFS on
+  http://www-306.ibm.com/software/stormgmt/afs/
+
+2. Client installation
+----------------------
+
+NOTE: You need to have access to a running afs-server in your network.
+First edit ThisCell and CellServDB according to your local network structure.
+If you're unsure what to put there, either read the afs documentation or contact
+your local administrators. Just run "emerge openafs" on your gentoo linux
+machine to build the client. After building add the afs start script with
+rc-update add afs. Now you're ready to go !!
+
+3. Server installation
+----------------------
+
+NOTE: This is a quick quick beginnings manual !!! If you really want to use afs
+download and print out the afs documentation !!!
+
+3.1 Installing your afs server
+
+  1. Startup main afs server process
+     /usr/bin/bosserver -noauth &
+     Verify that /etc/openafs/server/ThisCell and CellServDB got created
+
+  2. Give your cell a name !!
+     /usr/bin/bos setcellname <server name> <cell name> -noauth
+     e.g.: /usr/bin/bos setcellname darks.net-labs.local gentoo -noauth
+     Verify that ThisCell and CellServDB got updated !!!
+
+  3. Startup authentification, backup, protection and volume loction servers
+
+     /usr/bin/bos create <server name> kaserver simple /usr/libexec/openafs/kaserver -cell <cell name> -noauth
+     e.g: /usr/bin/bos create darks.net-labs.local kaserver simple /usr/libexec/openafs/kaserver -cell gentoo -noauth
+
+     /usr/bin/bos create <server name> buserver simple /usr/libexec/openafs/buserver -cell <cell name> -noauth
+     e.g: /usr/bin/bos create darks.net-labs.local buserver simple /usr/libexec/openafs/buserver -cell gentoo -noauth
+
+     /usr/bin/bos create <server name> ptserver simple /usr/libexec/openafs/ptserver -cell <cell name> -noauth
+     e.g: /usr/bin/bos create darks.net-labs.local ptserver simple /usr/libexec/openafs/ptserver -cell gentoo -noauth
+
+     /usr/bin/bos create <server name> vlserver simple /usr/libexec/openafs/vlserver -cell <cell name> -noauth
+     e.g: /usr/bin/bos create darks.net-labs.local vlserver simple /usr/libexec/openafs/vlserver -cell gentoo -noauth
+
+     Verify that all servers are running:
+     /usr/bin/bos status <server name> -noauth
+     e.g.: /usr/bin/bos status darks.net-labs.local -noauth
+
+  4. Initialize Cell Security
+     .. which basically means creating afs admin account.
+
+     /usr/bin/kas -cell <cell name> -noauth
+     This should give you the ka> prompt.
+
+     ka> create afs
+     initial_password:
+     Verifying, please re-enter initial_password:
+     ka> create admin
+     initial_password:
+     Verifying, please re-enter initial_password:
+     ka>
+
+     Verfiy that users got created and set admin flag for user admin:
+
+     ka> examine afs
+
+     User data for afs
+       key (0) cksum is 2651715259, last cpw: Mon Jun  4 20:49:30 2001
+       password will never expire.
+       An unlimited number of unsuccessful authentications is permitted.
+       entry never expires.  Max ticket lifetime 100.00 hours.
+       last mod on Mon Jun  4 20:49:30 2001 by <none>
+       permit password reuse
+     ka> setfields admin -flags admin
+     ka> examine admin
+
+     User data for admin (ADMIN)
+       key (0) cksum is 2651715259, last cpw: Mon Jun  4 20:49:59 2001
+       password will never expire.
+       An unlimited number of unsuccessful authentications is permitted.
+       entry never expires.  Max ticket lifetime 25.00 hours.
+       last mod on Mon Jun  4 20:51:10 2001 by <none>
+       permit password reuse
+     ka>
+
+     Create users in the afs enviroment:
+
+     /usr/bin/bos adduser <server name> admin -cell <cell name> -noauth
+     e.g.: /usr/bin/bos adduser darks.net-labs.local admin -cell gentoo -noauth
+
+     /usr/bin/bos addkey <server name> -kvno 0 -cell <cell name> -noauth
+     e.g.:  /usr/bin/bos addkey  darks.net-labs.local -kvno 0 -cell gentoo -noauth
+            input key:
+            Retype input key:
+     NOTE: you need to give the password you provided for the afs account above
+
+     Create a protection database entry for the admin user:
+
+     /usr/bin/pts createuser -name admin -cell <cell name> [-id <AFS UID>] -noauth
+     MATCH UNIX ID'S AND AFS UID'S WITH THE -id FLAG !!
+     e.g.: /usr/bin/pts createuser -name admin -cell gentoo -noauth
+           User admin has id 1
+
+     /usr/bin/pts adduser admin system:administrators -cell <cell name> -noauth
+     e.g.: /usr/bin/pts adduser admin system:administrators -cell gentoo -noauth
+
+     Check admin privileges:
+
+     /usr/bin/pts membership admin -cell gentoo -noauth
+     Groups admin (id: 1) is a member of:
+       system:administrators
+
+     Restart afs processes:
+
+     /usr/bin/bos restart <server name> -all -cell <cell name> -noauth
+     e.g.: /usr/bin/bos restart darks.net-labs.local -all -cell gentoo -noauth
+
+  5. Start the file and volume servers and the salvager
+
+     /usr/bin/bos create <server name> fs fs /usr/libexec/openafs/fileserver /usr/libexec/openafs/volserver /usr/libexec/openafs/salvager -cell <cell name> -noauth
+     e.g.: /usr/bin/bos create darks.net-labs.local fs fs /usr/libexec/openafs/fileserver /usr/libexec/openafs/volserver /usr/libexec/openafs/salvager -cell gentoo -noauth
+
+     Verify that all processe are running:
+
+     /usr/bin/bos status darks.net-labs.local -long -noauth
+     Instance kaserver, (type is simple) currently running normally.
+         Process last started at Mon Jun  4 21:07:17 2001 (2 proc starts)
+         Last exit at Mon Jun  4 21:07:17 2001
+         Command 1 is '/usr/libexec/openafs/kaserver'
+
+     Instance buserver, (type is simple) currently running normally.
+         Process last started at Mon Jun  4 21:07:17 2001 (2 proc starts)
+         Last exit at Mon Jun  4 21:07:17 2001
+         Command 1 is '/usr/libexec/openafs/buserver'
+
+     Instance ptserver, (type is simple) currently running normally.
+         Process last started at Mon Jun  4 21:07:17 2001 (2 proc starts)
+         Last exit at Mon Jun  4 21:07:17 2001
+         Command 1 is '/usr/libexec/openafs/ptserver'
+
+     Instance vlserver, (type is simple) currently running normally.
+         Process last started at Mon Jun  4 21:07:17 2001 (2 proc starts)
+         Last exit at Mon Jun  4 21:07:17 2001
+         Command 1 is '/usr/libexec/openafs/vlserver'
+
+     Instance fs, (type is fs) currently running normally.
+         Auxiliary status is: file server running.
+         Process last started at Mon Jun  4 21:09:30 2001 (2 proc starts)
+         Command 1 is '/usr/libexec/openafs/fileserver'
+         Command 2 is '/usr/libexec/openafs/volserver'
+         Command 3 is '/usr/libexec/openafs/salvager'
+
+  6. Create the main volume or synchronize with existing servers
+
+     a) This is the first server:
+
+        /usr/bin/vos create <server name> <partition name> root.afs -cell <cell name> -noauth
+        e.g.: /usr/bin/vos create darks.net-labs.local /vicepa root.afs -cell gentoo -noauth
+
+     b) You're installing a backup server:
+
+        /usr/bin/vos syncvldb <server name> -cell <cell name> -verbose -noauth
+        /usr/bin/vos syncserv <server name> -cell <cell name> -verbose -noauth
+
+  7. Start the Update Server
+
+     /usr/bin/bos create <server name> upserver simple "/usr/libexec/openafs/upserver -crypt /etc/openafs -clear /usr/bin" -cell <cell name> -noauth
+     e.g.: /usr/bin/bos create darks.net-labs.local upserver simple "/usr/libexec/openafs/upserver -crypt /etc/openafs -clear /usr/bin" -cell gentoo -noauth
+
+  8. Modifiy /etc/openafs/afs.conf
+
+     Edit afs.conf to start afs server
+
+  That's it !! Your afs server should hopefully be up and running !!!
+
+3.2 Configuring the Top Level of the AFS filespace
+
+  1. Let anyuser lookup /afs
+     /usr/bin/fs setacl /afs system:anyuser rl
+
+  2. Create root volume
+
+     /usr/bin/vos create <server name> <partition name> root.cell
+     /usr/bin/fs mkmount /afs/cellname root.cell
+     e.g.: /usr/afs/bin/fs mkmount /afs/gentoo root.cell
+     /usr/bin/fs setacl /afs/cellname system:anyuser rl
+
+     Create read/write mountpoint
+
+     /usr/bin/fs mkmount /afs/.cellname root.cell -rw
+     e.g.: /usr/bin/fs mkmount /afs/.gentoo root.cell -rw
+
+
+OK .. you're ready to go !! Now it's time to read AFS documentation and learn how to
+create volumes, create users and groups, set acl's and so on .. Have Fun :))

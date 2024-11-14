@@ -1,0 +1,67 @@
+From 689b5b3b684210356f5764dbb28145aa5a4b70f9 Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gentoo.org>
+Date: Sun, 12 Dec 2021 01:04:10 +0300
+Subject: [PATCH 12/13] xml-dtd
+
+Fix xml docs to use local dtd files.
+Network should not be accessed during build.
+
+(cherry picked from commit 1cb479e32a055bd8786a8d0487a04ebdd104222b)
+---
+ doc/xml/AdminGuide/auagd000.xml     | 2 +-
+ doc/xml/AdminRef/auarf000.xml       | 2 +-
+ doc/xml/QuickStartUnix/auqbg000.xml | 2 +-
+ doc/xml/UserGuide/auusg000.xml      | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/doc/xml/AdminGuide/auagd000.xml b/doc/xml/AdminGuide/auagd000.xml
+index 6d5690dbea85..ebe52c452b58 100644
+--- a/doc/xml/AdminGuide/auagd000.xml
++++ b/doc/xml/AdminGuide/auagd000.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.3//EN"
+-        "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
++        "/usr/share/sgml/docbook/xml-dtd-4.3/docbookx.dtd" [
+ <!ENTITY version SYSTEM "version.xml">
+ <!ENTITY preface SYSTEM "auagd005.xml">
+ <!ENTITY chapter1 SYSTEM "auagd006.xml">
+diff --git a/doc/xml/AdminRef/auarf000.xml b/doc/xml/AdminRef/auarf000.xml
+index 6cbe7dce9f97..c52f6b10a70f 100644
+--- a/doc/xml/AdminRef/auarf000.xml
++++ b/doc/xml/AdminRef/auarf000.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.3//EN"
+-        "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
++        "/usr/share/sgml/docbook/xml-dtd-4.3/docbookx.dtd" [
+ <!ENTITY version SYSTEM "version.xml">
+ <!ENTITY preface SYSTEM "preface.xml">
+ <!ENTITY sect1 SYSTEM "sect1.xml">
+diff --git a/doc/xml/QuickStartUnix/auqbg000.xml b/doc/xml/QuickStartUnix/auqbg000.xml
+index 7c225bac2855..86fa6f91640a 100644
+--- a/doc/xml/QuickStartUnix/auqbg000.xml
++++ b/doc/xml/QuickStartUnix/auqbg000.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.3//EN"
+-	"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
++	"/usr/share/sgml/docbook/xml-dtd-4.3/docbookx.dtd" [
+ <!ENTITY version SYSTEM "version.xml">
+ <!ENTITY preface SYSTEM "auqbg003.xml">
+ <!ENTITY chapter1 SYSTEM "auqbg004.xml">
+diff --git a/doc/xml/UserGuide/auusg000.xml b/doc/xml/UserGuide/auusg000.xml
+index ffb965045bec..cf0e8e9c7455 100644
+--- a/doc/xml/UserGuide/auusg000.xml
++++ b/doc/xml/UserGuide/auusg000.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.3//EN"
+-	"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
++	"/usr/share/sgml/docbook/xml-dtd-4.3/docbookx.dtd" [
+ <!ENTITY version SYSTEM "version.xml">
+ <!ENTITY preface SYSTEM "auusg003.xml">
+ <!ENTITY chapter1 SYSTEM "auusg004.xml">
+-- 
+2.45.2
+
