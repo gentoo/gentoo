@@ -39,7 +39,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README doc/gutenprint-users-manual.{pdf,odt} )
-PATCHES=( "${FILESDIR}"/${PN}-5.3.1-cflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.3.1-cflags.patch
+	"${FILESDIR}"/${P}-invalidint.patch
+)
 
 src_prepare() {
 	default
