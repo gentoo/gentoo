@@ -1,0 +1,41 @@
+From fe9e67ac72039cf5482a1f40b4b3016610ac84b6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 14 Nov 2024 20:04:16 +0100
+Subject: [PATCH] Partially revert "Comment out all unused includes in shared/"
+
+Gentoo-Bug: https://bugs.gentoo.org/939673
+
+This reverts commit e1827812fc8f5b9a1aab6ed9bc056df0a2c74c48.
+---
+ src/shared/reboot-util.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/shared/reboot-util.c b/src/shared/reboot-util.c
+index 079db294a..c5eba45cb 100644
+--- a/src/shared/reboot-util.c
++++ b/src/shared/reboot-util.c
+@@ -1,8 +1,8 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ 
+ #include <errno.h>
+-//#include <stdint.h>
+-//#include <sys/ioctl.h>
++#include <stdint.h>
++#include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <unistd.h>
+ 
+@@ -14,8 +14,8 @@
+ #endif
+ 
+ #include "alloc-util.h"
+-//#include "errno-util.h"
+-//#include "fd-util.h"
++#include "errno-util.h"
++#include "fd-util.h"
+ #include "fileio.h"
+ #include "log.h"
+ //#include "proc-cmdline.h"
+-- 
+2.47.0
+
