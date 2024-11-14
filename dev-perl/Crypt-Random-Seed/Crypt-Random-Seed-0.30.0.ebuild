@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Simple method to get strong randomness"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
