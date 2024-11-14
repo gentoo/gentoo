@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="A collection of very basic statistics modules"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
