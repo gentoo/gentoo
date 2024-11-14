@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2024-11-16)
+# Masked for testing
+=dev-util/intel_clc-24.3*
+=media-libs/mesa-24.3*
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-17)
 # Fails to build on modern compilers, bug 874291. Various open bugs.
 # No maintainer. Removal in 30 days.
