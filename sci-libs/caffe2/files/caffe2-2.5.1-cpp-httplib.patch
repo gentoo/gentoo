@@ -1,0 +1,13 @@
+--- a/torch/lib/libshm/CMakeLists.txt	2024-09-04 06:09:51.943752841 +0200
++++ b/torch/lib/libshm/CMakeLists.txt	2024-09-04 06:10:52.243821438 +0200
+@@ -24,6 +24,10 @@
+   CXX_STANDARD 17)
+ target_link_libraries(shm PRIVATE ${TORCH_CPU_LIB})
+ 
++if (USE_DISTRIBUTED)
++  target_link_libraries(shm PRIVATE cpp-httplib)
++endif()
++
+ if(UNIX AND NOT APPLE)
+   include(CheckLibraryExists)
+   find_package(Threads REQUIRED)

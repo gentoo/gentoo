@@ -1,0 +1,22 @@
+--- a/torch/CMakeLists.txt	2024-11-09 20:50:21.806784527 +0100
++++ b/torch/CMakeLists.txt	2024-11-09 20:52:56.303892418 +0100
+@@ -67,7 +67,7 @@
+     ${TORCH_ROOT}/third_party/gloo
+     ${TORCH_ROOT}/third_party/onnx
+     ${TORCH_ROOT}/third_party/flatbuffers/include
+-    ${TORCH_ROOT}/third_party/kineto/libkineto/include
++    "/usr/include/kineto"
+     ${TORCH_ROOT}/third_party/cpp-httplib
+     ${TORCH_ROOT}/third_party/nlohmann/include
+ 
+--- a/caffe2/CMakeLists.txt	2024-11-09 20:58:37.698085144 +0100
++++ b/caffe2/CMakeLists.txt	2024-11-09 20:59:15.771391643 +0100
+@@ -1185,7 +1185,7 @@
+   ${TORCH_ROOT}/third_party/miniz-2.1.0)
+ 
+ target_include_directories(torch_cpu PRIVATE
+-  ${TORCH_ROOT}/third_party/kineto/libkineto/include)
++  "/usr/include/kineto")
+ 
+ if(USE_KINETO)
+   target_include_directories(torch_cpu PRIVATE
