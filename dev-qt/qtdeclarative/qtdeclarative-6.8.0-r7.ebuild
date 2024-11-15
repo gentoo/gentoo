@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.8.0-QTBUG-125053.patch
 	"${FILESDIR}"/${PN}-6.8.0-QTBUG-129797.patch
 	"${FILESDIR}"/${PN}-6.8.0-QTBUG-129500.patch
+	"${FILESDIR}"/${PN}-6.8.0-QTBUG-130767.patch
 )
 
 src_configure() {
