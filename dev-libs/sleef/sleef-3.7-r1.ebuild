@@ -13,7 +13,7 @@ SRC_URI="https://github.com/shibatch/${PN}/archive/refs/tags/${PV}.tar.gz
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_x86_fma4 cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -27,12 +27,6 @@ src_configure() {
 		-DSLEEF_DISABLE_FFTW=ON
 		-DSLEEF_BUILD_QUAD=ON
 		-DSLEEF_BUILD_TESTS=$(usex test ON OFF)
-		-DSLEEF_DISABLE_AVX=$(usex cpu_flags_x86_avx OFF ON)
-		-DSLEEF_DISABLE_AVX2=$(usex cpu_flags_x86_avx2 OFF ON)
-		-DSLEEF_DISABLE_AVX512F=$(usex cpu_flags_x86_avx512f OFF ON)
-		-DSLEEF_DISABLE_FMA4=$(usex cpu_flags_x86_fma4 OFF ON)
-		-DSLEEF_DISABLE_SSE2=$(usex cpu_flags_x86_sse2 OFF ON)
-		-DSLEEF_DISABLE_SSE4=$(usex cpu_flags_x86_sse4_1 OFF ON)
 	)
 
 	cmake_src_configure
