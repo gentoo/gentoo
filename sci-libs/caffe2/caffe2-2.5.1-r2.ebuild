@@ -44,9 +44,7 @@ RDEPEND="
 	dev-libs/libfmt
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
-	dev-libs/sleef[cpu_flags_x86_avx512f(+),cpu_flags_x86_avx(+)]
-	dev-libs/sleef[cpu_flags_x86_sse3(+),cpu_flags_x86_ssse3(+)]
-	dev-libs/sleef[cpu_flags_x86_sse4_1(+),cpu_flags_x86_sse4_2(+)]
+	dev-libs/sleef
 	virtual/lapack
 	sci-libs/onnx
 	sci-libs/foxi
