@@ -47,6 +47,7 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.13.0[${PYTHON_USEDEP}]
+	<dev-python/josepy-2[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-23.1.1[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
