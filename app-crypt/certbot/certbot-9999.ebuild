@@ -49,6 +49,7 @@ RDEPEND="
 	>=dev-python/cryptography-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.13.0[${PYTHON_USEDEP}]
+	<dev-python/josepy-2[${PYTHON_USEDEP}]
 	>=dev-python/parsedatetime-2.4[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
