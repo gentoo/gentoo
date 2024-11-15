@@ -90,12 +90,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# remove patch.* that breaks GIT_CRATES
-	local reqmw=${GIT_CRATES[reqwest-middleware]}
-	reqmw=${reqmw#*;}
-	reqmw=${reqmw%;*}
-	sed -i -e "/^\[patch/,\$s@^\(reqwest-middleware = \).*@\1 { path = \"${WORKDIR}/reqwest-middleware-${reqmw}/reqwest-middleware\" }@" Cargo.toml || die
-
 	# enable system libraries where supported
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 	# TODO: unbundle libz-ng-sys, tikv-jemalloc-sys?
