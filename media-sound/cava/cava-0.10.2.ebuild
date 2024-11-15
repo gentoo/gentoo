@@ -33,9 +33,15 @@ RDEPEND="
 	sndio? ( media-sound/sndio:= )
 "
 DEPEND="${RDEPEND}"
+# bug #941845 wrt autoconf-archive bounds
 BDEPEND="
 	virtual/pkgconfig
-	sdl? ( dev-build/autoconf-archive )
+	sdl? (
+		|| (
+			>dev-build/autoconf-archive-2024.10.16
+			<dev-build/autoconf-archive-2024.10.16
+		)
+	)
 "
 
 src_prepare() {
@@ -45,6 +51,10 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-0.8.0-gentoo-iniparser4.patch
 
 	default
+
+	# TODO: drop this when autoconf-archive is fixed (bug #941845), this is
+	# to handle the USE=-sdl case given it breaks it present
+	use sdl || sed -i 's/AX_CHECK_GL/&_DISABLED/' configure.ac || die
 
 	echo ${PV} > version || die
 	eautoreconf

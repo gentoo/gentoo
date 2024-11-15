@@ -33,9 +33,15 @@ RDEPEND="
 	sndio? ( media-sound/sndio:= )
 "
 DEPEND="${RDEPEND}"
+# bug #941845 wrt autoconf-archive bounds
 BDEPEND="
 	virtual/pkgconfig
-	sdl? ( dev-build/autoconf-archive )
+	sdl? (
+		|| (
+			>dev-build/autoconf-archive-2024.10.16
+			<dev-build/autoconf-archive-2024.10.16
+		)
+	)
 "
 
 src_prepare() {
@@ -48,6 +54,10 @@ src_prepare() {
 	fi
 
 	default
+
+	# TODO: drop this when autoconf-archive is fixed (bug #941845), this is
+	# to handle the USE=-sdl case given it breaks it present
+	use sdl || sed -i 's/AX_CHECK_GL/&_DISABLED/' configure.ac || die
 
 	# respect both ESYSROOT+slotting (can't use CPPFLAGS, comes before)
 	sed -i "s|/usr/include/iniparser|${ESYSROOT}&${inip} |" configure.ac || die
