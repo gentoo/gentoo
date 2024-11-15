@@ -30,6 +30,7 @@ ruby_add_bdepend "
 		dev-ruby/minitest:5
 		dev-ruby/nokogiri
 		<dev-ruby/rails-7.2
+		|| ( dev-ruby/sassc dev-ruby/sass )
 		dev-ruby/unindent
 	)
 	doc? (
