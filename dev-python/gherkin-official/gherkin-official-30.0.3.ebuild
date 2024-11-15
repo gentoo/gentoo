@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# note: only bump when there is a release on pypi, GH tags (which include
+# tests) are for the whole package and may have no changes to python/
+
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
@@ -29,6 +32,8 @@ python_install() {
 	distutils-r1_python_install
 
 	# dev-python/pytest-bdd tests currently fail without this
+	# https://github.com/cucumber/gherkin/pull/316
+	# TODO: drop this and run `make copy-gherkin-languages` after above PR
 	python_moduleinto gherkin
 	python_domodule ../gherkin-languages.json
 }
