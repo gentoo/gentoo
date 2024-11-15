@@ -33,6 +33,7 @@ ruby_add_bdepend "
 		dev-ruby/pry
 		dev-ruby/rspec:3
 		dev-ruby/shoulda-context
+		dev-ruby/yard
 	)
 "
 
