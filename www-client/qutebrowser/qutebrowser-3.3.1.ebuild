@@ -44,6 +44,7 @@ RDEPEND="
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
+# <pytest-bdd-8: https://github.com/qutebrowser/qutebrowser/issues/8342
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
