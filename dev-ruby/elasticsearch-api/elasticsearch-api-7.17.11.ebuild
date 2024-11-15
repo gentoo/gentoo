@@ -27,6 +27,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
 	test? (
+		dev-ruby/activesupport
 		dev-ruby/ansi
 		dev-ruby/elasticsearch-transport
 		dev-ruby/mocha:1.0
