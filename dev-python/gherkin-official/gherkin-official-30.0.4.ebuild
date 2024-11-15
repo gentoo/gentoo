@@ -27,13 +27,3 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
-
-python_install() {
-	distutils-r1_python_install
-
-	# dev-python/pytest-bdd tests currently fail without this
-	# https://github.com/cucumber/gherkin/pull/316
-	# TODO: drop this and run `make copy-gherkin-languages` after above PR
-	python_moduleinto gherkin
-	python_domodule ../gherkin-languages.json
-}
