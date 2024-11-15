@@ -23,5 +23,6 @@ all_ruby_prepare() {
 	# Avoid dependency on rubocop
 	sed -e '/rubocop/I s:^:#:' -i Rakefile || die
 
-	sed -i -e '/test_image_file/aomit "network"' test/test_image.rb || die
+	sed -e '/test_\(image_file\|file_output_with_keyword_arguments\|file_output_with_positional_arguments\|file_with_size_as_positional_argument\)/aomit "requires network"' \
+		-i test/test_image.rb || die
 }
