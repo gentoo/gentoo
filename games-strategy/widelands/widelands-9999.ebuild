@@ -3,21 +3,24 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake python-any-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/widelands/widelands.git"
 else
-	SRC_URI="https://github.com/widelands/widelands/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/widelands/widelands/archive/refs/tags/v${PV}.tar.gz
+			-> ${P}.tar.gz
+	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Game similar to Settlers 2"
 HOMEPAGE="https://www.widelands.org/"
 
-LICENSE="GPL-2+ || ( Apache-2.0 GPL-3 ) BitstreamVera CC-BY-SA-3.0 MIT OFL-1.1"
+LICENSE="GPL-2+ || ( Apache-2.0 GPL-3 ) BitstreamVera BSD CC-BY-SA-3.0 MIT OFL-1.1"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -44,8 +47,6 @@ BDEPEND="
 "
 
 src_configure() {
-	CMAKE_BUILD_TYPE=Release # disables -Werror
-
 	local mycmakeargs=(
 		-DWL_INSTALL_BASEDIR="${EPREFIX}"/usr/share/doc/${PF}
 		-DWL_INSTALL_BINDIR="${EPREFIX}"/usr/bin
