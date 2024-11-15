@@ -34,6 +34,7 @@ ruby_add_bdepend "
 		dev-ruby/mocha:2
 		dev-ruby/patron
 		dev-ruby/pry
+		dev-ruby/rspec:3
 		dev-ruby/shoulda-context
 	)
 "

@@ -31,6 +31,7 @@ ruby_add_bdepend "
 		dev-ruby/elasticsearch-transport
 		dev-ruby/mocha:1.0
 		dev-ruby/pry
+		dev-ruby/rspec:3
 		dev-ruby/shoulda-context
 	)
 "
