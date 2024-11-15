@@ -21,7 +21,7 @@ RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0.7"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/websocket-extensions-0.1.0"
