@@ -14,6 +14,7 @@
   on-the-fly plane switching.
   </longdescription>
   <upstream>
+    <remote-id type="github">xaos-project/XaoS</remote-id>
     <remote-id type="sourceforge">xaos</remote-id>
   </upstream>
 </pkgmetadata>
