@@ -5,7 +5,6 @@ EAPI=8
 
 ECM_HANDBOOK="true"
 KDE_ORG_NAME="${PN/-common/}"
-KFMIN=5.115.0
 inherit ecm-common plasma.kde.org
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
