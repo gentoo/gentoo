@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs autotools
 
 DESCRIPTION="Microsoft compress.exe/expand.exe compatible (de)compressor"
 HOMEPAGE="https://gnuwin32.sourceforge.net/packages/mscompress.htm"
@@ -17,6 +17,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-amd64.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	tc-export CC
