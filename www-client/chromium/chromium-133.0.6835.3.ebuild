@@ -6,7 +6,7 @@ EAPI=8
 # PACKAGING NOTES
 
 # This uses a gentoo-created tarball due to Google CI Failures.
-# Use 132 as a base for new official tarballs.
+# Use 133(?) as a base for new official tarballs.
 
 GN_MIN_VER=0.2165
 # chromium-tools/get-chromium-toolchain-strings.py
@@ -19,10 +19,10 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
 LLVM_COMPAT=( 18 19 )
-RUST_NEEDS_LLVM="yes please"
 PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 RUST_MIN_VER=1.78.0
+RUST_NEEDS_LLVM="yes please"
 
 inherit check-reqs chromium-2 desktop flag-o-matic llvm-r1 multiprocessing ninja-utils pax-utils
 inherit python-any-r1 qmake-utils readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg-utils
@@ -549,8 +549,6 @@ src_prepare() {
 		third_party/libaom/source/libaom/third_party/x86inc
 		third_party/libavif
 		third_party/libc++
-		third_party/llvm-libc
-		third_party/llvm-libc/src/shared/
 		third_party/libdrm
 		third_party/libevent
 		third_party/libgav1
@@ -559,6 +557,9 @@ src_prepare() {
 		third_party/libsecret
 		third_party/libsrtp
 		third_party/libsync
+		third_party/libtess2/libtess2
+		third_party/libtess2/src/Include
+		third_party/libtess2/src/Source
 		third_party/liburlpattern
 		third_party/libva_protected_content
 		third_party/libvpx
@@ -570,6 +571,8 @@ src_prepare() {
 		third_party/libyuv
 		third_party/libzip
 		third_party/lit
+		third_party/llvm-libc
+		third_party/llvm-libc/src/shared/
 		third_party/lottie
 		third_party/lss
 		third_party/lzma_sdk
