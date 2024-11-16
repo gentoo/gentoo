@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_PN=Pallets-Sphinx-Themes
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -17,10 +17,10 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-3[${PYTHON_USEDEP}]
 	dev-python/sphinx-notfound-page[${PYTHON_USEDEP}]

@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 
 RDEPEND="
-	>=dev-python/jinja-3.1.3[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1.3[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.11[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
 "

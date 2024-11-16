@@ -34,7 +34,8 @@
 #
 # Example for a package needing Rust w/ a specific target:
 # @CODE
-# RUST_USEDEP='clippy,${MULTILIB_USEDEP}'
+# RUST_REQ_USE='clippy'
+# RUST_MULTILIB=1
 #
 # inherit multilib-minimal meson rust
 #
@@ -49,9 +50,12 @@ if [[ -z ${_RUST_ECLASS} ]]; then
 _RUST_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-	if [[ -z ${_LLVM_R1_ECLASS} ]]; then
-		die "Please inherit llvm-r1.eclass before rust.eclass when using RUST_NEEDS_LLVM"
-	fi
+	inherit llvm-r1
+fi
+
+if [[ -n ${RUST_MULTILIB} ]]; then
+	inherit multilib-build
+	RUST_REQ_USE="${RUST_REQ_USE+${RUST_REQ_USE},}${MULTILIB_USEDEP}"
 fi
 
 # == internal control knobs ==
@@ -114,12 +118,19 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # an invalid combination of RUST and LLVM slots is detected; this probably
 # means that a LLVM slot in LLVM_COMPAT has had all of its Rust slots filtered.
 
+# @eclass-variable: RUST_MULTILIB
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value insert MULTILIB_USEDEP into the generated
+# Rust dependency. For this to be useful inherit a multilib eclass and
+# configure the appropriate phase functions.
+
 # @ECLASS_VARIABLE: RUST_DEPEND
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Rust dependency string, filtered by
 # RUST_MAX_VER and RUST_MIN_VER. If RUST_NEEDS_LLVM is set, this
-# is gropeda and gated by an appropriate `llvm_slot_x` USE for all
+# is grouped and gated by an appropriate `llvm_slot_x` USE for all
 # implementations listed in LLVM_COMPAT.
 
 # @ECLASS_VARIABLE: RUST_OPTIONAL
@@ -129,7 +140,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # to BDEPEND. This is useful for where packages need to gate rust behind
 # certain USE themselves.
 
-# @ECLASS_VARIABLE: RUST_USEDEP
+# @ECLASS_VARIABLE: RUST_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional USE-dependencies to be added to the Rust dependency.
@@ -150,7 +161,7 @@ _rust_set_globals() {
 
 	# and if it falls between slots we'll set it to the next highest slot
 	# We can skip this we match a slot exactly.
-	if ! [[ "${_RUST_SLOTS_ORDERED[@]}" == *"${RUST_MIN_VER}"* ]]; then
+	if [[ "${_RUST_SLOTS_ORDERED[@]}" != *"${RUST_MIN_VER}"* ]]; then
 		local i
 		for (( i=${#_RUST_SLOTS_ORDERED[@]}-1 ; i>=0 ; i-- )); do
 			if ver_test "${_RUST_SLOTS_ORDERED[$i]}" -gt "${RUST_MIN_VER}"; then
@@ -169,36 +180,37 @@ _rust_set_globals() {
 	local slot
 	# Try to keep this in order of newest to oldest
 	for slot in "${_RUST_SLOTS_ORDERED[@]}"; do
-		if ver_test "${slot}" -le "${RUST_MAX_VER:-9999}" && \
-			ver_test "${slot}" -ge "${RUST_MIN_VER:-0}"; then
-			_RUST_SLOTS+=( "${slot}" )
+		if ver_test "${slot}" -le "${RUST_MAX_VER:-9999}" &&
+			ver_test "${slot}" -ge "${RUST_MIN_VER:-0}"
+			then
+				_RUST_SLOTS+=( "${slot}" )
 		fi
 	done
 
 	_RUST_SLOTS=( "${_RUST_SLOTS[@]}" )
-
-	# We may have been passed a variable like ${MULTILIB_USEDEP}; expand it.
-	if [[ -n "${RUST_USEDEP}" ]]; then
-		eval $(echo RUST_USEDEP="${RUST_USEDEP}")
-		[[ -z "${RUST_USEDEP}" ]] && die "When evaluated, RUST_USEDEP is empty"
-	fi
-
 	readonly _RUST_SLOTS
 
 	local rust_dep=()
 	local llvm_slot
 	local rust_slot
-	local usedep
+	local usedep="${RUST_REQ_USE+[${RUST_REQ_USE}]}"
 
 	# If we're not using LLVM, we can just generate a simple Rust dependency
+	# In time we need to implement trivial dependencies
+	# (>=RUST_MIN_VER) where RUST_MAX_VER isnt't set,
+	# however the previous attempt to do this ran into issues
+	# where `emerge ... --keep-going` ate legacy non-slotted
+	# Rust blockers resutling in the non-slotted version never
+	# being removed and breaking builds. #943206 #943143
 	if [[ -z "${RUST_NEEDS_LLVM}" ]]; then
 		rust_dep=( "|| (" )
+		# depend on each slot between RUST_MIN_VER and RUST_MAX_VER; it's a bit specific but
+		# won't hurt as we only ever add newer Rust slots.
 		for slot in "${_RUST_SLOTS[@]}"; do
-				usedep="${RUST_USEDEP+[${RUST_USEDEP}]}"
-				rust_dep+=(
-					"dev-lang/rust-bin:${slot}${usedep}"
-					"dev-lang/rust:${slot}${usedep}"
-				)
+			rust_dep+=(
+				"dev-lang/rust-bin:${slot}${usedep}"
+				"dev-lang/rust:${slot}${usedep}"
+			)
 		done
 		rust_dep+=( ")" )
 		RUST_DEPEND="${rust_dep[*]}"
@@ -209,8 +221,8 @@ _rust_set_globals() {
 				# We're working a bit backwards here; iterate over _RUST_LLVM_MAP, check the
 				# LLVM slot, and if it matches add this to a new array because it may (and likely will)
 				# match multiple Rust slots. We already filtered Rust max/min slots.
-				# We always have a usedep for the LLVM slot, append `,RUST_USEDEP` if it's set
-				usedep="[llvm_slot_${llvm_slot}${RUST_USEDEP+,${RUST_USEDEP}}]"
+				# We always have a usedep for the LLVM slot, append `,RUST_REQ_USE` if it's set
+				usedep="[llvm_slot_${llvm_slot}${RUST_REQ_USE+,${RUST_REQ_USE}}]"
 				local slot_dep_content=()
 				for rust_slot in "${_RUST_SLOTS[@]}"; do
 					if [[ "${_RUST_LLVM_MAP[${rust_slot}]}" == "${llvm_slot}" ]]; then
@@ -220,7 +232,7 @@ _rust_set_globals() {
 						)
 					fi
 				done
-				if [ ${#slot_dep_content[@]} -ne 0 ]; then
+				if [[ "${#slot_dep_content[@]}" -ne 0 ]]; then
 					rust_dep+=( "llvm_slot_${llvm_slot}? ( || ( ${slot_dep_content[*]} ) )" )
 				else
 					die "${FUNCNAME}: no Rust slots found for LLVM slot ${llvm_slot}"
@@ -240,17 +252,17 @@ unset -f _rust_set_globals
 
 # == ebuild helpers ==
 
-# @FUNCTION: get_rust_slot
+# @FUNCTION: _get_rust_slot
 # @USAGE: [-b|-d]
 # @DESCRIPTION:
 # Find the newest Rust install that is acceptable for the package,
 # and print its version number (i.e. SLOT) and type (source or bin[ary]).
 #
 # If -b is specified, the checks are performed relative to BROOT,
-# and BROOT-path is returned.
+# and BROOT-path is returned. -b is the default.
 #
 # If -d is specified, the checks are performed relative to ESYSROOT,
-# and ESYSROOT-path is returned. -d is the default.
+# and ESYSROOT-path is returned.
 #
 # If RUST_M{AX,IN}_SLOT is non-zero, then only Rust versions that
 # are not newer or older than the specified slot(s) will be considered.
@@ -263,10 +275,10 @@ unset -f _rust_set_globals
 # The function should return a true status if the slot is acceptable,
 # false otherwise. If rust_check_deps() is not defined, the function
 # defaults to checking whether a suitable Rust package is installed.
-get_rust_slot() {
+_get_rust_slot() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local hv_switch=-d
+	local hv_switch=-b
 	while [[ ${1} == -* ]]; do
 		case ${1} in
 			-b|-d) hv_switch="${1}";;
@@ -295,8 +307,6 @@ get_rust_slot() {
 			if [[ "${LLVM_COMPAT[@]}" == *"${llvm_slot}"* ]]; then
 				# We can check for the USE
 				use "llvm_slot_${llvm_slot}" && llvm_r1_slot="${llvm_slot}"
-			else
-				continue
 			fi
 		done
 		if [[ -z "${llvm_r1_slot}" ]]; then
@@ -328,33 +338,30 @@ get_rust_slot() {
 			local LLVM_SLOT="${_RUST_LLVM_MAP[${slot}]}"
 			rust_check_deps && return
 		else
-			local rust_usedep="${RUST_USEDEP+[${RUST_USEDEP}]}"
+			local usedep="${RUST_REQ_USE+[${RUST_REQ_USE}]}"
 			# When checking for installed packages prefer the non `-bin` package
 			# if effort was put into building it we should use it.
 			local rust_pkgs=(
-				"dev-lang/rust:${slot}${rust_usedep}"
-				"dev-lang/rust-bin:${slot}${rust_usedep}"
+				"dev-lang/rust:${slot}${usedep}"
+				"dev-lang/rust-bin:${slot}${usedep}"
 			)
 			local _pkg
-			for _pkg in "${rust_pkgs[@]}"
-				do
-					if has_version "${hv_switch}" "${_pkg}"; then
-						echo "${slot}"
-						if [[ "${_pkg}" == "dev-lang/rust:${slot}${rust_usedep}" ]]; then
-							echo source
-						else
-							echo binary
-						fi
-						return
+			for _pkg in "${rust_pkgs[@]}"; do
+				if has_version "${hv_switch}" "${_pkg}"; then
+					if [[ "${_pkg}" == "dev-lang/rust:${slot}${usedep}" ]]; then
+						echo "${slot} source"
+					else
+						echo "${slot} binary"
 					fi
-				done
+					return
+				fi
+			done
 		fi
 
 		# We want to process the slot before escaping the loop if we've hit the minimum slot
 		if ver_test "${slot}" -eq "${RUST_MIN_VER}"; then
 			break
 		fi
-
 	done
 
 	# max_slot should have been unset in the iteration
@@ -366,7 +373,7 @@ get_rust_slot() {
 }
 
 # @FUNCTION: get_rust_path
-# @USAGE: prefix slot rust_type 
+# @USAGE: prefix slot rust_type
 # @DESCRIPTION:
 # Given argument of slot and rust_type, return an appropriate path
 # for the Rust install. The rust_type should be either "source"
@@ -383,15 +390,11 @@ get_rust_path() {
 		die "${FUNCNAME}: invalid number of arguments"
 	fi
 
-	if [[ "${rust_type}" != "source" && "${rust_type}" != "binary" ]]; then
-		die "${FUNCNAME}: invalid rust_type=${rust_type}"
-	fi
-
-	if [[ "${rust_type}" == "source" ]]; then
-		echo "${prefix}/usr/lib/rust/${slot}/"
-	else
-		echo "${prefix}/opt/rust-bin-${slot}/"
-	fi
+	case ${rust_type} in
+		source) echo "${prefix}/usr/lib/rust/${slot}/";;
+		binary) echo "${prefix}/opt/rust-bin-${slot}/";;
+		*) die "${FUNCNAME}: invalid rust_type=${rust_type}";;
+	esac
 }
 
 # @FUNCTION: get_rust_prefix
@@ -409,8 +412,8 @@ get_rust_prefix() {
 	[[ ${1} == -d ]] && prefix=${ESYSROOT}
 
 	local slot rust_type
-	{ read -r slot; read -r rust_type; } <<< $(get_rust_slot)
-	echo $(get_rust_path "${prefix}" "${slot}" "${rust_type}")
+	read -r slot rust_type <<< $(_get_rust_slot "$@")
+	get_rust_path "${prefix}" "${slot}" "${rust_type}"
 }
 
 # @FUNCTION: rust_prepend_path
@@ -421,16 +424,14 @@ rust_prepend_path() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 2 ]] && die "Usage: ${FUNCNAME} <slot> <type>"
-	local slot="${1}"
-	local type="${2}"
-	export PATH="$(get_rust_path "${BROOT}" "${slot}" "${type}")/bin:${PATH}"
+	export PATH="$(get_rust_path "${BROOT}" "$@")/bin:${PATH}"
 }
 
 # @FUNCTION: rust_pkg_setup
 # @DESCRIPTION:
 # Prepend the appropriate executable directory for the newest
 # acceptable Rust slot to the PATH. If used with LLVM, an appropriate
-# `llvm_pkg_setup` call should be made in addition to this function.
+# `llvm-r1_pkg_setup` call should be made in addition to this function.
 # For path determination logic, please see the get_rust_prefix documentation.
 #
 # The highest acceptable Rust slot can be set in RUST_MAX_VER variable.
@@ -450,10 +451,11 @@ rust_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		{ read -r RUST_SLOT; read -r RUST_TYPE; } <<< $(get_rust_slot)
+		read -r RUST_SLOT RUST_TYPE <<< $(_get_rust_slot -b)
 		rust_prepend_path "${RUST_SLOT}" "${RUST_TYPE}"
-		CARGO="$(get_rust_prefix)bin/cargo"
-		RUSTC="$(get_rust_prefix)bin/rustc"
+		local prefix=$(get_rust_path "${BROOT}" "${RUST_SLOT}" "${RUST_TYPE}")
+		CARGO="${prefix}bin/cargo"
+		RUSTC="${prefix}bin/rustc"
 		export CARGO RUSTC
 		einfo "Using Rust ${RUST_SLOT} (${RUST_TYPE})"
 	fi

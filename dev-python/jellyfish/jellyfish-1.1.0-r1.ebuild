@@ -74,11 +74,6 @@ distutils_enable_tests pytest
 
 export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 
-pkg_setup() {
-	distutils-r1_pkg_setup
-	cargo_src_prepare
-}
-
 python_test_all() {
 	cargo_src_test
 }

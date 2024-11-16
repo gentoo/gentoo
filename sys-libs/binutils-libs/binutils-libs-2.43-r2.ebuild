@@ -80,11 +80,10 @@ pkgversion() {
 }
 
 multilib_src_configure() {
-	filter-lto
+	# https://sourceware.org/PR32372
+	append-cflags -std=gnu17
 
-	# Workaround for lld-17 (bug #914640)
-	# Should be able to drop this w/ >=binutils-2.43
-	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+	filter-lto
 
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t

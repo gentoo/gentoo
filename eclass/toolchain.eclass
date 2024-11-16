@@ -1065,7 +1065,7 @@ toolchain_src_configure() {
 
 	downgrade_arch_flags
 	gcc_do_filter_flags
-	if tc_version_is_at_least 14.2.1_p20241026 ${PV}; then
+	if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] && tc_version_is_at_least 14.2.1_p20241026 ${PV}; then
 		append-cppflags "-D_GENTOO_TIME64_FORCE=$(usex time64 1 0)"
 	fi
 
@@ -1252,7 +1252,10 @@ toolchain_src_configure() {
 	# 	;;
 	# esac
 
-	### Cross-compiler options
+	### Cross-compiler option
+	#
+	# Note that 'newlib' here doesn't have to mean genuine newlib.
+	# See https://gcc.gnu.org/pipermail/gcc/2014-January/211653.html.
 	if is_crosscompile ; then
 		# Enable build warnings by default with cross-compilers when system
 		# paths are included (e.g. via -I flags).
@@ -1583,9 +1586,9 @@ toolchain_src_configure() {
 			fi
 		}
 
-		enable_cet_for 'i[34567]86' 'linux' 'cet'
 		enable_cet_for 'x86_64' 'gnu' 'cet'
 		enable_cet_for 'aarch64' 'gnu' 'standard-branch-protection'
+		[[ ${CTARGET} == i[34567]86-* ]] && confgcc+=( --disable-cet )
 	fi
 
 	if in_iuse systemtap ; then

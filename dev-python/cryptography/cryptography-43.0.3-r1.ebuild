@@ -79,6 +79,7 @@ DEPEND="
 "
 
 BDEPEND="
+	${RUST_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/certifi[${PYTHON_USEDEP}]

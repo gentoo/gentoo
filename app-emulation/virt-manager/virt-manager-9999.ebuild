@@ -4,9 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_SETUPTOOLS=no
-inherit gnome2 distutils-r1 optfeature
+inherit gnome2 python-single-r1 optfeature meson
 
 DESCRIPTION="A graphical tool for administering virtual machines"
 HOMEPAGE="https://virt-manager.org https://github.com/virt-manager/virt-manager"
@@ -17,13 +15,15 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 	inherit git-r3
 else
-	SRC_URI="https://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
+	SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="gui policykit sasl"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -53,33 +53,18 @@ BDEPEND="dev-python/docutils"
 
 DOCS=( README.md NEWS.md )
 
-DISTUTILS_ARGS=(
-	--no-update-icon-cache
-	--no-compile-schemas
-)
+src_configure() {
+	# While in the past we did allow test suite to run, any errors from
+	# test_cli.py were ignored. Since that's where like 90% of tests actually
+	# lives, just disable tests (and do not drag additional dependencies).
+	local emesonargs=(
+		-Dcompile-schemas=false
+		-Ddefault-graphics=spice
+		-Dtests=disabled
+		-Dupdate-icon-cache=false
+	)
 
-EPYTEST_IGNORE=(
-	# Wants to use /tmp osinfo config?
-	tests/test_cli.py
-
-	# These seem to be essentially coverage tests
-	tests/test_checkprops.py
-)
-
-distutils_enable_tests pytest
-
-python_configure() {
-	esetup.py configure --default-graphics=spice
-}
-
-python_test() {
-	export VIRTINST_TEST_SUITE_FORCE_LIBOSINFO=0
-
-	epytest
-}
-
-python_install() {
-	esetup.py install
+	meson_src_configure
 }
 
 pkg_preinst() {

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Circuit drawing and schematic capture program"
 SRC_URI="http://opencircuitdesign.com/xcircuit/archive/${P}.tgz"
@@ -39,6 +39,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu89 -Wno-incompatible-function-pointer-types
 	local myeconfargs=(
 		--with-cairo
 		--with-ngspice

@@ -33,6 +33,53 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-11-16)
+# Mask obsolete shoulda-related slots. Use the newer slots instead.
+# Removal on 2024-12-16.
+dev-ruby/shoulda:3
+dev-ruby/shoulda-context:0
+dev-ruby/shoulda-matchers:3
+
+# Hans de Graaff <graaff@gentoo.org> (2024-11-16)
+# Mask obsolete Rails 6.1-only slot. Please use the newer slot instead.
+# Removal on 2024-12-16.
+dev-ruby/database_cleaner-active_record:2.1
+
+# Jaco Kroon <jaco@uls.co.za> (2024-11-15)
+# clippy exists purely for frr (even comes from the same sources).  This
+# package split is no longer implemented from frr-9.1.2 onwards, so this
+# package is no longer required.
+dev-util/clippy
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
+# PHP 8.1.x no longer receives bug fixes unless they address security
+# issues. That means no build fixes, no updates for modern compilers,
+# and no tweaks for newer versions of dependencies. We can't really
+# afford to maintain our own little fork of this, so it's time to
+# upgrade (sorry). With it goes any unmaintained PECL packages
+# that don't support 8.2 or newer.
+dev-lang/php:8.1
+dev-php/pecl-dbase
+dev-php/pecl-gnupg
+dev-php/pecl-http
+dev-php/pecl-lzf
+dev-php/pecl-mcrypt
+dev-php/pecl-memcache
+dev-php/pecl-oauth
+dev-php/pecl-pam
+dev-php/pecl-ps
+dev-php/pecl-psr
+dev-php/pecl-raphf
+dev-php/pecl-timezonedb
+dev-php/pecl-translit
+dev-php/pecl-uuid
+dev-php/pecl-zmq
+dev-php/realpath_turbo
+dev-php/snuffleupagus
+dev-php/swoole
+=virtual/httpd-php-8.1
+<www-apps/icingaweb2-2.12.1-r1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-10)
 # Fails to build with gcc-14. Horrible code. Not touched by a
 # maintainer since 2010. Bugs 729134, 870541, 909625, 933773
@@ -242,12 +289,6 @@ dev-ml/opam-format
 dev-ml/opam-core
 dev-ml/opam-solver
 
-# Hans de Graaff <graaff@gentoo.org> (2024-10-13)
-# Obsolete slots without reverse dependencies. Use a newer slot
-# instead. Removal on 2024-11-13.
-dev-ruby/io-event:1.2
-dev-ruby/io-event:1.3
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
 # Bug #941185. Removal on 2024-12-03.
@@ -276,17 +317,12 @@ app-i18n/fcitx-unikey:4
 app-i18n/fcitx:4
 app-i18n/kcm-fcitx
 
-# Michael Orlitzky <mjo@gentoo.org> (2024-10-09)
-# This is the new stable series of webkit-gtk, but it has a new
-# less-portable rendering engine, and doesn't yet build on ~riscv for
-# reasons unrelated to that. It's easier to play around with it in
-# the tree, but it's not ready for end users yet.
->=net-libs/webkit-gtk-2.46.0
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-10-08)
-# Masked for testing and (mostly) to avoid upgrade noise given
-# PyQt6-6.7.x is known broken with it and depends on <6.8. Feel
-# free to unmask early if not using PyQt6.
+# Masked for testing, and odds are (at this point) that 6.8.0 will
+# never be unmasked and will skip to 6.8.1 instead given the large
+# amount of regressions there's been..
+=dev-python/PyQt6-6.8.0_pre*
+=dev-python/PyQt6-WebEngine-6.8.0_pre*
 =dev-python/pyside6-6.8.0*
 =dev-python/pyside6-tools-6.8.0*
 =dev-python/shiboken6-6.8.0*
@@ -323,7 +359,7 @@ app-i18n/kcm-fcitx
 =dev-qt/qtwebsockets-6.8.0*
 =dev-qt/qtwebview-6.8.0*
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-05)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-05)
 # This version is known to break on certain systems. At the
 # same time it fixes several reported issues. Masked until
 # we can work out how to resolve the situation.
@@ -341,12 +377,6 @@ app-i18n/kcm-fcitx
 # Upstream testing release; fails some tests as well here
 # Beware that if you upgrade to it, you may need to reset your keyrings.
 >=app-crypt/gnupg-2.5
-
-# Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
-# Breaks parallel builds with fatal compiler errors.
-# Bug #939798, #939875.
->=dev-python/ensurepip-setuptools-75.1.0
->=dev-python/setuptools-75.1.0
 
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
@@ -377,15 +407,6 @@ app-i18n/kcm-fcitx
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
-
-# Joonas Niilola <juippis@gentoo.org> (2024-07-04)
-# libxml2-2.13.1 removed "deprecated" symbols that other (older)
-# packages depend upon. It can be mitigated with a --with-legacy
-# configure option, but it's still not a perfect fix. Bug #935452
-# to track and work on tree-wide support. Masking the exact version
-# so we can revbump the package with a fix.
-=dev-libs/libxml2-2.13.1
-=dev-libs/libxslt-1.1.41
 
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.

@@ -7,7 +7,7 @@ LLVM_COMPAT=( {15..19} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit bash-completion-r1 linux-info llvm-r1 optfeature python-any-r1 toolchain-funcs
+inherit bash-completion-r1 linux-info llvm-r1 python-any-r1 toolchain-funcs
 
 DESCRIPTION="Tool for inspection and simple manipulation of eBPF programs and maps"
 HOMEPAGE="https://github.com/libbpf/bpftool"

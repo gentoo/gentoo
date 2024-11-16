@@ -8,7 +8,7 @@ RUST_MIN_VER="1.81.0"
 inherit cargo desktop optfeature xdg
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://code.videolan.org/videolan/libplacebo.git"
+	EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 	inherit git-r3
 else
 	MY_PV=nightly-${PV:3:4}-${PV:7:2}-${PV:9:2}

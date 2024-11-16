@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

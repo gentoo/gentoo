@@ -465,10 +465,7 @@ pkg_setup() {
 		if tc-is-lto; then
 			use_lto=yes
 			# LTO is handled via configure
-			# -Werror=lto-type-mismatch -Werror=odr are going to fail with GCC,
-			# bmo#1516758, bgo#942288
 			filter-lto
-			filter-flags -Werror=lto-type-mismatch -Werror=odr
 		fi
 
 		if use pgo ; then
@@ -482,6 +479,12 @@ pkg_setup() {
 			fi
 		fi
 
+		if [[ ${use_lto} = yes ]]; then
+			# -Werror=lto-type-mismatch -Werror=odr are going to fail with GCC,
+			# bmo#1516758, bgo#942288
+			filter-flags -Werror=lto-type-mismatch -Werror=odr
+		fi
+
 		# Ensure we have enough disk space to compile
 		if [[ ${use_lto} == "yes" ]] || use pgo || use debug ; then
 			CHECKREQS_DISK_BUILD="13500M"
@@ -490,17 +493,8 @@ pkg_setup() {
 		fi
 
 		check-reqs_pkg_setup
-
 		llvm-r1_pkg_setup
 		rust_pkg_setup
-
-		if [[ ${use_lto} == "yes" ]] && use clang; then
-			if ! (tc-ld-is-lld || tc-ld-is-mold) ; then
-				eerror "Building ${PN} with LTO and Clang requires the sys-devel/lld or sys-devel/mold linker!"
-				die "Please fix your toolchain configuration."
-			fi
-		fi
-
 		python-any-r1_pkg_setup
 
 		# Avoid PGO profiling problems due to enviroment leakage

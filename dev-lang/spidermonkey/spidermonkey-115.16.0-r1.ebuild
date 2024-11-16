@@ -75,9 +75,9 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
 		sys-devel/llvm:${LLVM_SLOT}
 		clang? (
+			sys-devel/clang:${LLVM_SLOT}
 			sys-devel/lld:${LLVM_SLOT}
 		)
 	')

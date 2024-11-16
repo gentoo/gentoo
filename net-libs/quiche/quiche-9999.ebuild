@@ -195,9 +195,9 @@ windows-targets@0.52.5
 ws2_32-sys@0.2.1
 "
 
-RUST_USEDEP='${MULTILIB_USEDEP}'
+RUST_MULTILIB=1
 
-inherit multilib-minimal cargo cmake flag-o-matic rust-toolchain
+inherit cargo cmake flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
 HOMEPAGE="https://github.com/cloudflare/quiche"

@@ -26,11 +26,8 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
+	>=app-editors/emacs-${NEED_EMACS}[json(+)]
 	app-emacs/transient
-	|| (
-		>=app-editors/emacs-31.0
-		>=app-editors/emacs-${NEED_EMACS}[json]
-	)
 "
 BDEPEND="
 	${RDEPEND}

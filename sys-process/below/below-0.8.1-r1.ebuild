@@ -294,7 +294,7 @@ CRATES="
 	zstd@0.13.0
 "
 
-RUST_USEDEP="rustfmt"
+RUST_REQ_USE="rustfmt"
 
 inherit cargo systemd
 

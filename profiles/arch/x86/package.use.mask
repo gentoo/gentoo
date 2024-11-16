@@ -60,7 +60,7 @@ dev-tex/abntex lyx
 # additional dev-qt/qtwebengine revdeps.
 kde-frameworks/purpose:5 kaccounts
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
 
@@ -72,7 +72,7 @@ sys-kernel/installkernel -efistub
 # net-libs/paho-mqtt-c is only available for amd64 and x86
 app-admin/syslog-ng -mqtt
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-02-09)
 # Refind is only available on a subset of arches
 sys-kernel/installkernel -refind
 
@@ -82,7 +82,7 @@ sys-kernel/installkernel -refind
 # supporting this arch.
 net-libs/xrootd xrdec
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 

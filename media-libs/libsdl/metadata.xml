@@ -24,7 +24,6 @@
 	<use>
 		<flag name="joystick">Control joystick support (disable at your own risk)</flag>
 		<flag name="sound">Control audio support (disable at your own risk)</flag>
-		<flag name="tslib">Build with tslib support for touchscreen devices</flag>
 		<flag name="video">Control video support (disable at your own risk)</flag>
 	</use>
 	<upstream>

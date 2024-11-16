@@ -11,7 +11,7 @@ SRC_URI="https://www.infodrom.org/projects/cgilib/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE="static-libs"
 
 DOCS=( AUTHORS ChangeLog README cookies.txt )

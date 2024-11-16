@@ -25,7 +25,7 @@
 	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
 		and <pkg>media-libs/libaom</pkg> library instead of bundled</flag>
 	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
-		and <pkg>media-gfx/graphite2</pkg> instead of bundled</flag>
+		instead of bundled and <pkg>media-gfx/graphite2</pkg> in most cases</flag>
 	<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
 		instead of bundled</flag>
 	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
@@ -39,6 +39,7 @@
 	<flag name="system-python-libs">Use system's python site instead of bundled python libraries</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled</flag>
+	<flag name="wasm">Sandbox certain third-party libraries through WebAssembly using RLBox</flag>
 	<flag name="wifi">Enable necko-wifi for NetworkManager integration, and access point MAC
 		address scanning for better precision with opt-in geolocation services</flag>
 </use>

@@ -65,6 +65,7 @@ DOCS=( docs/directory_structure.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-1.11.2_dont_compress_man.patch"
 	"${FILESDIR}/${PN}-13.4-gcc15.patch"
+	"${FILESDIR}/${PN}-13.4-icu-76.1.patch"
 )
 
 src_prepare() {

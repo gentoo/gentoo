@@ -25,8 +25,8 @@ SLOT="0"
 KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
-	<dev-python/protobuf-python-6[${PYTHON_USEDEP}]
-	>=dev-python/protobuf-python-3.19.0[${PYTHON_USEDEP}]
+	<dev-python/protobuf-6[${PYTHON_USEDEP}]
+	>=dev-python/protobuf-3.19.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

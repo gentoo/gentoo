@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PV="${PV//./-}"
 DESCRIPTION="Spellchecker wrapping library"
-HOMEPAGE="https://abiword.github.io/enchant/"
-SRC_URI="https://github.com/AbiWord/enchant/releases/download/${PN}-${MY_PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/rrthomas/enchant"
+SRC_URI="https://github.com/rrthomas/enchant/releases/download/${PN}-${MY_PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

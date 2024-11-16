@@ -3,27 +3,20 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.81.0"
-
+RUST_MIN_VER=1.81.0
 inherit cargo desktop optfeature xdg
 
-if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://code.videolan.org/videolan/libplacebo.git"
-	inherit git-r3
-else
-	MY_PV=nightly-${PV:3:4}-${PV:7:2}-${PV:9:2}
-	MY_P=${PN}-${MY_PV}
-	SRC_URI="
-		https://github.com/ruffle-rs/ruffle/archive/refs/tags/${MY_PV}.tar.gz
-			-> ${MY_P}.tar.gz
-		https://dev.gentoo.org/~ionen/distfiles/${MY_P}-vendor.tar.xz
-	"
-	S=${WORKDIR}/${MY_P}
-	KEYWORDS="~amd64"
-fi
+MY_PV=nightly-${PV:3:4}-${PV:7:2}-${PV:9:2}
+MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
+SRC_URI="
+	https://github.com/ruffle-rs/ruffle/archive/refs/tags/${MY_PV}.tar.gz
+		-> ${MY_P}.tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${MY_P}-vendor.tar.xz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( Apache-2.0 MIT )"
 LICENSE+="
@@ -31,6 +24,7 @@ LICENSE+="
 	MPL-2.0 OFL-1.1 openssl Unicode-3.0 Unicode-DFS-2016 ZLIB
 " # crates
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -57,15 +51,6 @@ QA_FLAGS_IGNORED="usr/bin/${PN}.*"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0_p20231216-skip-render-tests.patch
 )
-
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-		cargo_live_src_unpack
-	else
-		cargo_src_unpack
-	fi
-}
 
 src_configure() {
 	local workspaces=(

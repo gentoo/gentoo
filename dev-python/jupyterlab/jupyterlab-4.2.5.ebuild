@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/async-lru[${PYTHON_USEDEP}]
 	>=dev-python/httpx-0.25.0[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-6.5.0[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.0.3[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.0.3[${PYTHON_USEDEP}]
 	dev-python/jupyter-core[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-lsp-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-2.4.0[${PYTHON_USEDEP}]

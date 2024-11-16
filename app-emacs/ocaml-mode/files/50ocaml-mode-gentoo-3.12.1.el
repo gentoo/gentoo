@@ -6,5 +6,5 @@
   "Run camldebug on program FILE in buffer *camldebug-FILE*." t)
 (autoload 'inferior-caml-set-font-lock "caml-font")
 
-(eval-after-load "caml" '(require 'caml-font))
+(with-eval-after-load 'caml (require 'caml-font))
 (add-hook 'inferior-caml-mode-hooks 'inferior-caml-set-font-lock)

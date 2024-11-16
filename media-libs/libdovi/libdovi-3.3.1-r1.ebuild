@@ -89,8 +89,9 @@ CRATES="
 	windows_x86_64_msvc@0.52.6
 	wyz@0.5.1
 "
-RUST_USEDEP='${MULTILIB_USEDEP}'
-inherit multilib-minimal cargo edo rust-toolchain
+RUST_MULTILIB=1
+
+inherit cargo edo multilib-minimal rust-toolchain
 
 DESCRIPTION="Dolby Vision metadata parsing and writing"
 HOMEPAGE="https://github.com/quietvoid/dovi_tool/"

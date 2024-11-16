@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/software/utils/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 DESCRIPTION="Open Firmware device tree compiler"
@@ -31,7 +31,7 @@ BDEPEND="
 "
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
-	yaml? ( >=dev-libs/libyaml-0.2.3 )
+	yaml? ( >=dev-libs/libyaml-0.2.3[static-libs?] )
 "
 DEPEND="
 	${RDEPEND}

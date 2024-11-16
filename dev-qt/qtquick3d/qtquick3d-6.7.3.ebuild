@@ -36,7 +36,8 @@ PATCHES=(
 )
 
 CMAKE_SKIP_TESTS=(
-	# collada support is disabled in system media-libs/assimp (bug #891787)
+	# needs off-by-default assimp[collada] that is masked on some profiles,
+	# not worth the extra trouble
 	tst_qquick3dassetimport
 )
 

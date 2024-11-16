@@ -5,8 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-# py3.13: https://github.com/qutebrowser/qutebrowser/issues/8205
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -34,7 +33,7 @@ RDEPEND="
 		dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
 		dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 		dev-python/colorama[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -45,6 +44,7 @@ RDEPEND="
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
+# <pytest-bdd-8: https://github.com/qutebrowser/qutebrowser/issues/8342
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
@@ -53,7 +53,8 @@ BDEPEND="
 			dev-python/cheroot[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]
 			dev-python/hypothesis[${PYTHON_USEDEP}]
-			dev-python/pytest-bdd[${PYTHON_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
+			<dev-python/pytest-bdd-8[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/pytest-qt[${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
@@ -129,6 +130,13 @@ python_test() {
 		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
 		# may fail if chromium version is unrecognized (aka newer qtwebengine)
 		tests/unit/utils/test_version.py
+		# new type added in (currently prerelease-only) PyQt6-WebEngine-6.8,
+		# *should* be safe to ignore until qutebrowser upstream updates this
+		# https://github.com/qutebrowser/qutebrowser/issues/8069#issuecomment-2439490061
+		tests/unit/browser/webengine/test_webengineinterceptor.py::test_no_missing_resource_types
+		# upstream is also ignoring this failure w/ Qt6.8 in live for now
+		# https://github.com/qutebrowser/qutebrowser/issues/8330
+		tests/unit/browser/webengine/test_webenginesettings.py::test_existing_dict
 	)
 
 	local epytestargs=(

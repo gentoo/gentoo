@@ -42,7 +42,7 @@ RDEPEND="
 		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/protobuf[${PYTHON_USEDEP}]
 		dev-python/moddb[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont

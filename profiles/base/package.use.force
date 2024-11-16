@@ -1,6 +1,33 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2024-11-13)
+# Force the use of the appropriate llvm_slot_x USE for Rust.
+# This is strictly papercut prevention; the ebuild will enforce the correct
+# selection via LLVM_REQUIRED_USE. This prevents users from deselecting
+# the correct slot by (e.g.) setting -llvm_slot_# globally.
+# source ../eclass/rust.eclass
+# for slot in ${_RUST_SLOTS_ORDERED[@]}; do
+#    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
+#    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
+# done
+dev-lang/rust:1.82.0 llvm_slot_19
+dev-lang/rust-bin:1.82.0 llvm_slot_19
+dev-lang/rust:1.81.0 llvm_slot_18
+dev-lang/rust-bin:1.81.0 llvm_slot_18
+dev-lang/rust:1.80.1 llvm_slot_18
+dev-lang/rust-bin:1.80.1 llvm_slot_18
+dev-lang/rust:1.79.0 llvm_slot_18
+dev-lang/rust-bin:1.79.0 llvm_slot_18
+dev-lang/rust:1.77.1 llvm_slot_17
+dev-lang/rust-bin:1.77.1 llvm_slot_17
+dev-lang/rust:1.75.0 llvm_slot_17
+dev-lang/rust-bin:1.75.0 llvm_slot_17
+dev-lang/rust:1.74.1 llvm_slot_17
+dev-lang/rust-bin:1.74.1 llvm_slot_17
+dev-lang/rust:1.71.1 llvm_slot_16
+dev-lang/rust-bin:1.71.1 llvm_slot_16
+
 # Sam James <sam@gentoo.org> (2024-09-30)
 # gnat-gpl only exists for (bootstrapping) Ada. Until bug #940471 is handled,
 # force Ada on. Once it is split/moved/gutted, this won't be necessary

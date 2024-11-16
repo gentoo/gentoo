@@ -238,7 +238,7 @@ CRATES="
 LLVM_COMPAT=( 17 )
 RUST_NEEDS_LLVM=1
 
-inherit llvm-r1 cargo
+inherit cargo llvm-r1
 
 DESCRIPTION="Implementation of the RPM PGP interface using Sequoia"
 HOMEPAGE="https://sequoia-pgp.org/ https://github.com/rpm-software-management/rpm-sequoia"

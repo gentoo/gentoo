@@ -3,6 +3,16 @@
 
 # New entries go on top.
 
+# Joonas Niilola <juippis@gentoo.org> (2024-11-16)
+# Wasm support is (currently) only available on amd64 and arm64.
+www-client/firefox wasm
+
+# Matt Jolly <kangie@gentoo.org> (2024-11-11)
+# ICU 76.1 is not compatible with Chromium. Bug #943216.
+# We'll mask it for a few weeks to use the bundled ICU
+# while Google fixes the issue.
+www-client/chromium system-icu
+
 # Joonas Niilola <juippis@gentoo.org> (2024-11-07)
 # Dependency for generating docs not packaged in Gentoo. #942992
 dev-util/repolite doc
@@ -55,10 +65,6 @@ app-alternatives/yacc reference
 # Sam James <sam@gentoo.org> (2024-09-03)
 # Causes crashes with e.g. dlz+samba (bug #938955)
 net-dns/bind jemalloc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
-# Prepare for dev-util/kdevelop:5 removal
-kde-apps/umbrello:5 php
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # Prepare for KDE PIM 5 removal and avoid conflicts w/ KDE PIM 6

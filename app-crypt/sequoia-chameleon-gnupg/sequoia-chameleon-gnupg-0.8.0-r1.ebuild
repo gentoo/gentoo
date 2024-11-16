@@ -368,7 +368,7 @@ CRATES="
 LLVM_COMPAT=( 17 18 )
 RUST_NEEDS_LLVM=1
 
-inherit llvm-r1 cargo xdg-utils
+inherit cargo llvm-r1 xdg-utils
 
 DESCRIPTION="Sequoia's reimplementation of the GnuPG interface"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/"

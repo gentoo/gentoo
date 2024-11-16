@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+native-extensions"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594
@@ -55,6 +55,13 @@ distutils_enable_tests pytest
 # but simultaneously it might trash your system and fill up the cache with a giant wave of non-reproducible
 # test files (https://github.com/mypyc/mypyc/issues/1014)
 export CCACHE_DISABLE=1
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# don't force pytest-xdist, in case user asked for EPYTEST_JOBS=1
+	sed -i -e '/addopts/s:-nauto::' pyproject.toml || die
+}
 
 python_compile() {
 	local -x MYPY_USE_MYPYC=$(usex native-extensions 1 0)

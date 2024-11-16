@@ -38,7 +38,10 @@ RDEPEND="
 "
 
 # see https://bugs.gentoo.org/903897
-PATCHES=( "${FILESDIR}/mockito-2.28.2-skip-failing-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/mockito-2.28.2-skip-failing-tests.patch"
+	"${FILESDIR}/mockito-2.28.2-fix-unused-stubbings-test.patch"
+)
 
 JAVA_AUTOMATIC_MODULE_NAME="org.mockito"
 JAVA_CLASSPATH_EXTRA="junit-4 opentest4j"

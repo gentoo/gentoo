@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/python-axolotl-curve25519[${PYTHON_USEDEP}]
 "
 

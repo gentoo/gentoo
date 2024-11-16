@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/cookies[${PYTHON_USEDEP}]
 	>=dev-python/docker-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.5[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-2.10.1[${PYTHON_USEDEP}]
 	>=dev-python/jsondiff-1.1.2[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/botocore[${PYTHON_USEDEP}]

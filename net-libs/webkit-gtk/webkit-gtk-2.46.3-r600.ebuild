@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="6/0" # soname version of libwebkit2gtk-6.0
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
@@ -161,6 +161,9 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	# https://bugs.gentoo.org/943213
+	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
 }
 
 src_configure() {

@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.6.0-test.patch )
 
-RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/jinja2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm
 	test? (

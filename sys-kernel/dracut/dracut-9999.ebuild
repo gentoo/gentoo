@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+CARGO_OPTIONAL=1
 
-inherit flag-o-matic bash-completion-r1 edo optfeature systemd toolchain-funcs
+inherit cargo flag-o-matic bash-completion-r1 edo optfeature systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -21,7 +22,7 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux test"
+IUSE="+dracut-cpio selinux test"
 RESTRICT="test"
 PROPERTIES="test? ( test_privileged test_network )"
 
@@ -59,6 +60,7 @@ BDEPEND="
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
 	virtual/pkgconfig
+	dracut-cpio? ( ${RUST_DEPEND} )
 	test? (
 		net-nds/rpcbind
 		net-fs/nfs-utils
@@ -101,12 +103,17 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
 )
 
+pkg_setup() {
+	use dracut-cpio && rust_pkg_setup
+}
+
 src_configure() {
 	local myconf=(
 		--prefix="${EPREFIX}/usr"
 		--sysconfdir="${EPREFIX}/etc"
 		--bashcompletiondir="$(get_bashcompdir)"
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--disable-dracut-cpio
 	)
 
 	# this emulates what the build system would be doing without us
@@ -115,6 +122,19 @@ src_configure() {
 	tc-export CC PKG_CONFIG
 
 	edo ./configure "${myconf[@]}"
+	if use dracut-cpio; then
+		cargo_gen_config
+		cargo_src_configure
+	fi
+}
+
+src_compile() {
+	default
+	if use dracut-cpio; then
+		pushd src/dracut-cpio >/dev/null || die
+		cargo_src_compile
+		popd >/dev/null || die
+	fi
 }
 
 src_test() {
@@ -140,17 +160,30 @@ src_install() {
 		AUTHORS
 		NEWS.md
 		README.md
-		docs/HACKING.md
-		docs/README.cross
-		docs/README.kernel
-		docs/RELEASE.md
-		docs/SECURITY.md
 	)
-
 	default
+	if use dracut-cpio; then
+		exeinto /usr/lib/dracut
+		doexe "src/dracut-cpio/$(cargo_target_dir)/dracut-cpio"
+	fi
+}
 
-	docinto html
-	dodoc dracut.html
+pkg_preinst() {
+	# Remove directory/symlink conflicts
+	# https://bugs.gentoo.org/943007
+	local save_nullglob=$(shopt -p nullglob)
+	shopt -s nullglob
+	local module
+	for module in "${EROOT}"/usr/lib/dracut/modules.d/{80test,80test-makeroot,80test-root}; do
+		if [[ ! -L ${module} && -d ${module} ]]; then
+			rm -rv "${module}" || die
+		fi
+		local backups=( "${module}".backup.* )
+		if [[ ${#backups[@]} -gt 0 ]]; then
+			rm -v "${backups[@]}" || die
+		fi
+	done
+	eval "${save_nullglob}"
 }
 
 pkg_postinst() {

@@ -7,7 +7,7 @@ CRATES=" "
 LLVM_COMPAT=( {17..18} )
 RUST_MIN_VER="1.77.1"
 
-inherit edo llvm-r1 cargo
+inherit cargo edo llvm-r1
 
 DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"

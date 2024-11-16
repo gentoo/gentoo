@@ -29,7 +29,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 RDEPEND="
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/inflection[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

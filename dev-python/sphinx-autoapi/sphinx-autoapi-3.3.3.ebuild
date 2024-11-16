@@ -26,7 +26,7 @@ KEYWORDS="amd64 arm arm64 x86"
 
 RDEPEND="
 	>=dev-python/astroid-3.0.0[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-6.1.0[${PYTHON_USEDEP}]
 "

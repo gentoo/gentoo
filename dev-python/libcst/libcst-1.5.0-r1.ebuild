@@ -160,11 +160,6 @@ distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/libcst/native.*"
 
-pkg_setup() {
-	distutils_r1_pkg_setup
-	rust_pkg_setup
-}
-
 python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO

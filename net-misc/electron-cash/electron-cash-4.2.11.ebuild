@@ -47,7 +47,7 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	net-libs/stem[${PYTHON_USEDEP}]
 	amodem? ( dev-python/amodem[${PYTHON_USEDEP}] )
 	qrcode? ( media-gfx/zbar[v4l] )

@@ -21,7 +21,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/python-bugzilla[${PYTHON_USEDEP}]
 	')"

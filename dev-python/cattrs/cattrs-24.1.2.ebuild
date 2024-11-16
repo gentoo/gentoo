@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test-rust"
 
 RDEPEND="
@@ -49,7 +49,8 @@ BDEPEND="
 	)
 "
 
-EPYTEST_XDIST=1
+# xdist can randomly break tests, depending on job count
+# https://bugs.gentoo.org/941429
 distutils_enable_tests pytest
 
 PATCHES=(

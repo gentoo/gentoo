@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">ymnk/jsch-agent-proxy</remote-id>
+	</upstream>
 </pkgmetadata>

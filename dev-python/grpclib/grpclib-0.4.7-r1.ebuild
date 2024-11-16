@@ -29,7 +29,7 @@ RDEPEND="
 	dev-python/googleapis-common-protos[${PYTHON_USEDEP}]
 	dev-python/h2[${PYTHON_USEDEP}]
 	dev-python/multidict[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

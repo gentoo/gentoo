@@ -86,13 +86,13 @@ BDEPEND="
 		virtual/pandoc
 		$(python_gen_any_dep '
 			dev-python/pyyaml[${PYTHON_USEDEP}]
-			dev-python/jinja[${PYTHON_USEDEP}]
+			dev-python/jinja2[${PYTHON_USEDEP}]
 		')
 	)
 	extras? (
 		$(python_gen_any_dep '
 			dev-python/pyyaml[${PYTHON_USEDEP}]
-			dev-python/jinja[${PYTHON_USEDEP}]
+			dev-python/jinja2[${PYTHON_USEDEP}]
 		')
 	)
 	wayland? ( dev-util/wayland-scanner )
@@ -101,7 +101,7 @@ BDEPEND="
 python_check_deps() {
 	use doc || use extras || return 0
 	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/jinja2[${PYTHON_USEDEP}]"
 }
 
 REQUIRED_USE="

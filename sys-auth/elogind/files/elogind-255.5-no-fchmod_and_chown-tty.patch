@@ -1,0 +1,29 @@
+From 04354be1094d2010349700932327aa5cb965fc0a Mon Sep 17 00:00:00 2001
+From: Mark Hindley <mark@hindley.org.uk>
+Date: Thu, 9 Nov 2023 18:37:54 +0000
+Subject: [PATCH] Don't chown and chmod tty on VT reset.
+
+Elogind doesn't allocate VTs and shouldn't change those setup by login(1).
+
+Fixes: https://github.com/systemd/systemd/issues/10103
+---
+ src/basic/terminal-util.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/src/basic/terminal-util.c
++++ b/src/basic/terminal-util.c
+@@ -1487,12 +1487,14 @@
+                         q = -errno;
+         }
+ 
++#if 0 /// UNNEEDED by elogind
+         r = fchmod_and_chown(fd, TTY_MODE, 0, GID_INVALID);
+         if (r < 0) {
+                 log_debug_errno(r, "Failed to chmod()/chown() VT, ignoring: %m");
+                 if (q >= 0)
+                         q = r;
+         }
++#endif // 0
+ 
+         return q;
+ }

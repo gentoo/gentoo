@@ -1,0 +1,59 @@
+From bab62364812662c0f0f66436eec3a4c7b6f9d586 Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Tue, 1 Jan 2019 10:16:25 +0300
+Subject: [PATCH 04/13] sparc
+
+(cherry picked from commit 96739d61d6c8be1feabad0227ede3baa19519aaa)
+(cherry picked from commit 002c44ca274baddb358bdb73870cbd20b304264d)
+(cherry picked from commit 01a13e7b282ab6d58fdfa3d1a90c60fac925b7c6)
+---
+ src/afs/LINUX/osi_probe.c | 6 ++++++
+ src/cf/linux-test4.m4     | 6 +++---
+ 2 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_probe.c b/src/afs/LINUX/osi_probe.c
+index be42ecf85ee3..59e6ab46b1ec 100644
+--- a/src/afs/LINUX/osi_probe.c
++++ b/src/afs/LINUX/osi_probe.c
+@@ -231,7 +231,9 @@ extern int kallsyms_address_to_symbol(unsigned long address,
+ 				     ) __attribute__((weak));
+ #endif
+ 
++#ifdef LINUX_EXPORTS_SYS_CALL_TABLE
+ extern SYSCALLTYPE sys_call_table[] __attribute__((weak));
++#endif
+ extern SYSCALLTYPE ia32_sys_call_table[] __attribute__((weak));
+ extern SYSCALLTYPE sys_call_table32[] __attribute__((weak));
+ extern SYSCALLTYPE sys_call_table_emu[] __attribute__((weak));
+@@ -496,7 +498,11 @@ static probectl main_probe = {
+     0,
+ #endif
+ 
++#ifdef LINUX_EXPORTS_SYS_CALL_TABLE
+     sys_call_table,               /* weak symbol ref */
++#else
++    0,
++#endif
+     0, 0,                         /* module parameter answers */
+ #ifdef AFS_LINUX_sys_call_table
+     AFS_LINUX_sys_call_table,     /* compiled-in answer, if any */
+diff --git a/src/cf/linux-test4.m4 b/src/cf/linux-test4.m4
+index b22930690e4d..08552def3fc9 100644
+--- a/src/cf/linux-test4.m4
++++ b/src/cf/linux-test4.m4
+@@ -67,9 +67,9 @@ AC_DEFUN([LINUX_EXPORTS_SYS_CALL_TABLE], [
+   AC_CHECK_LINUX_BUILD([for exported sys_call_table],
+ 		       [ac_cv_linux_exports_sys_call_table],
+ 		       [#include <linux/modversions.h>],
+-[#ifndef __ver_sys_call_table
+-#error sys_call_table not exported
+-#endif],
++[
++extern SYSCALLTYPE sys_call_table[] __attribute__((weak));
++],
+ 		       [EXPORTED_SYS_CALL_TABLE],
+ 		       [define if your linux kernel exports sys_call_table],
+ 		       [])
+-- 
+2.45.2
+

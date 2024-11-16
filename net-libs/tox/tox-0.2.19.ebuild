@@ -14,7 +14,7 @@ SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/${MY_P}.ta
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+av debug daemon dht-node experimental ipv6 key-utils log-debug +log-error log-info log-trace log-warn test"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )

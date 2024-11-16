@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit libtool toolchain-funcs
+inherit autotools toolchain-funcs
 
 MYP="JAGS-${PV}"
 
@@ -31,9 +31,13 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-configure.patch"
+)
+
 src_prepare() {
 	default
-	elibtoolize
+	eautoreconf
 }
 
 src_configure() {

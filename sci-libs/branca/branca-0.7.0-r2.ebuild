@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 inherit distutils-r1
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.6.0-test.patch )
 
-RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/jinja2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm
 	test? (

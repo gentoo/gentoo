@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="BSD rpi-eeprom"
 SLOT="0"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 IUSE="pi4 pi5"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}

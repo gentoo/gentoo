@@ -28,7 +28,7 @@ SRC_URI+="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 DEPEND="
 	dev-libs/openssl:=
@@ -43,7 +43,7 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
-		>=dev-python/protobuf-python-5.26.1[${PYTHON_USEDEP}]
+		>=dev-python/protobuf-5.26.1[${PYTHON_USEDEP}]
 	)
 "
 

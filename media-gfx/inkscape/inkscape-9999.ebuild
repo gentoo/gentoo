@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Remember to check the release notes for a 'Important Changes for Packagers'
+# section, e.g. https://inkscape.org/doc/release_notes/1.4/Inkscape_1.4.html#Important_Changes_for_Packagers.
+
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
@@ -67,6 +70,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/lockfile[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[jpeg?,tiff,webp,${PYTHON_USEDEP}]
+		dev-python/tinycss2[${PYTHON_USEDEP}]
 		media-gfx/scour[${PYTHON_USEDEP}]
 	')
 	cdr? (

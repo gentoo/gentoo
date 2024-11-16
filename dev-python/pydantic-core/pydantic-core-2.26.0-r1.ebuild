@@ -133,9 +133,7 @@ BDEPEND="
 	test? (
 		>=dev-python/dirty-equals-0.5.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-6.63.0[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/inline-snapshot-0.13.3[${PYTHON_USEDEP}]
-		' 'python*')
+		>=dev-python/inline-snapshot-0.13.3[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.10.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-timeout-2.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pydantic-1.10.4[${PYTHON_USEDEP}]
@@ -160,12 +158,6 @@ python_test() {
 		# TODO: recursion till segfault
 		tests/serializers/test_functions.py::test_recursive_call
 	)
-
-	if ! has_version "dev-python/inline-snapshot[${PYTHON_USEDEP}]"; then
-		EPYTEST_IGNORE+=(
-			tests/validators/test_allow_partial.py
-		)
-	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	rm -rf pydantic_core || die

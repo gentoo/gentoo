@@ -29,7 +29,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		|| (
-			dev-python/cchardet[${PYTHON_USEDEP}]
+			dev-python/faust-cchardet[${PYTHON_USEDEP}]
 			dev-python/chardet[${PYTHON_USEDEP}]
 		)
 	)
