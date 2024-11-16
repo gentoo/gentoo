@@ -34,10 +34,9 @@ DEPEND="${RDEPEND}
 			dev-libs/onigmo
 			dev-libs/oniguruma
 		)
-		app-alternatives/yacc
-	)
-"
-BDEPEND="virtual/pkgconfig"
+	)"
+BDEPEND="virtual/pkgconfig
+	mruby? ( app-alternatives/yacc )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.3-mruby.patch )
 
