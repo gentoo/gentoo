@@ -103,6 +103,10 @@ src_configure() {
 	# It works fine in bash 4+. Backporting may not be worth it.
 	filter-lto
 
+	# bash 5.3 drops unprototyped functions, earlier versions are
+	# incompatible with C23.
+	append-cflags -std=gnu17
+
 	local myconf=(
 		--with-installed-readline=.
 
