@@ -38,8 +38,11 @@ DEPEND_COMMON="
 RDEPEND="
 	${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
+	lvm? ( virtual/tmpfiles )
+"
+
+PDEPEND="
 	lvm? (
-		virtual/tmpfiles
 		thin? ( >=sys-block/thin-provisioning-tools-1.0.6 )
 	)
 "
