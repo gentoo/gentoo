@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
+IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +repo-verify selinux test xattr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
