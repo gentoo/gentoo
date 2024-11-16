@@ -24,7 +24,7 @@ BDEPEND="
 "
 
 src_configure() {
-	# https://rt.cpan.org/Public/Bug/Display.html?id=157196
+	# https://rt.cpan.org/Ticket/Display.html?id=157196
 	append-cflags -std=gnu17
 
 	perl-module_src_configure
