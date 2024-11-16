@@ -150,6 +150,7 @@ src_test() {
 
 src_install() {
 	default
+	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
 	python_optimize
 
 	# Avoid file collision with dev-debug/dtrace
