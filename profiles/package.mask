@@ -317,13 +317,6 @@ app-i18n/fcitx-unikey:4
 app-i18n/fcitx:4
 app-i18n/kcm-fcitx
 
-# Michael Orlitzky <mjo@gentoo.org> (2024-10-09)
-# This is the new stable series of webkit-gtk, but it has a new
-# less-portable rendering engine, and doesn't yet build on ~riscv for
-# reasons unrelated to that. It's easier to play around with it in
-# the tree, but it's not ready for end users yet.
->=net-libs/webkit-gtk-2.46.0
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-10-08)
 # Masked for testing, and odds are (at this point) that 6.8.0 will
 # never be unmasked and will skip to 6.8.1 instead given the large
