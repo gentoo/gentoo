@@ -13,7 +13,6 @@
     <flag name="bittorrent">enable bittorrent support</flag>
     <flag name="fasttrack">enable fasttrack support</flag>
     <flag name="gnutella">enable gnutella and gnutella2 support</flag>
-    <flag name="guionly">enable client build only</flag>
   </use>
   <upstream>
     <remote-id type="github">ygrek/mldonkey</remote-id>
