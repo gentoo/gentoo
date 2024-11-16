@@ -50,24 +50,31 @@ src_prepare() {
 	java-pkg_clean javassist.jar
 	sed -e 's:\.\./\.\./::' -i src/test/javassist/JvstTest{4,Root}.java || die
 
-	# Tests run: 432,  Failures: 6
-	# https://bugs.gentoo.org/856364
-	# Cannot solve those test failures.
-	# replacing test... with notTest... for those tests
+	# There were 2 failures:
+	# 1) testURL(javassist.JvstTest2)
+	# junit.framework.AssertionFailedError
+	# 	at junit.framework.Assert.fail(Assert.java:55)
+	# 	at junit.framework.Assert.assertTrue(Assert.java:22)
+	# 	at junit.framework.Assert.assertTrue(Assert.java:31)
+	# 	at junit.framework.TestCase.assertTrue(TestCase.java:200)
+	# 	at javassist.JvstTest2.testURL(JvstTest2.java:336)
+	# 2) testMethodParameters(javassist.JvstTest4)
+	# junit.framework.ComparisonFailure: expected:<[i]> but was:<[arg0]>
+	# 	at junit.framework.Assert.assertEquals(Assert.java:100)
+	# 	at junit.framework.Assert.assertEquals(Assert.java:107)
+	# 	at junit.framework.TestCase.assertEquals(TestCase.java:260)
+	# 	at javassist.JvstTest4.testMethodParameters(JvstTest4.java:1010)
+	# 
+	# FAILURES!!!
+	# Tests run: 432,  Failures: 2
+
 	sed \
-		-e '/public void/s:testInsertAt:notTestInsertAt:' \
-		-e '/public void/s:testInsertLocal:notTestInsertLocal:' \
-		-e '/public void/s:testNewArray:notTestNewArray:' \
 		-e '/public void/s:testURL:notTestURL:' \
 		-i src/test/javassist/JvstTest2.java || die
 
 	sed \
 		-e '/public void/s:testMethodParameters:notTestMethodParameters:' \
 		-i src/test/javassist/JvstTest4.java || die
-
-	sed \
-		-e '/public void/s:testLocalVarAttribute:notTestLocalVarAttribute:' \
-		-i src/test/javassist/bytecode/BytecodeTest.java || die
 }
 
 src_test() {
@@ -75,5 +82,6 @@ src_test() {
 	einfo "Testing"
 	JAVA_PKG_WANT_SOURCE=11
 	JAVA_PKG_WANT_TARGET=11
+	JAVAC_ARGS="-g"
 	java-pkg-simple_src_test
 }
