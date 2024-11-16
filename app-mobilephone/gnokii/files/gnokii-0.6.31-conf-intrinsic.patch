@@ -1,0 +1,19 @@
+diff '--color=auto' -ruN gnokii-0.6.31.orig/configure.in gnokii-0.6.31/configure.in
+--- gnokii-0.6.31.orig/configure.in	2024-11-16 14:59:39.416370347 +0100
++++ gnokii-0.6.31/configure.in	2024-11-16 15:03:09.368586626 +0100
+@@ -940,6 +940,7 @@
+ AC_CACHE_CHECK(for ISO C99 compliant snprintf,ac_cv_func_snprintf_c99,
+ 	[AC_TRY_RUN([
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ int main()
+ {
+@@ -955,6 +956,7 @@
+ 	[AC_TRY_RUN([
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ int doit(char *buf, int len, const char *s, ...)
+ {
