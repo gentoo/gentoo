@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-11-16)
+# Mask obsolete Rails 6.1-only slot. Please use the newer slot instead.
+dev-ruby/database_cleaner-active_record:2.1
+
 # Jaco Kroon <jaco@uls.co.za> (2024-11-15)
 # clippy exists purely for frr (even comes from the same sources).  This
 # package split is no longer implemented from frr-9.1.2 onwards, so this
