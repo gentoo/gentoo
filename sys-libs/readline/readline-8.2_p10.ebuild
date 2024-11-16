@@ -166,6 +166,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# readline-8.3 drops unprototyped functions, earlier versions are
+	# incompatible with C23.
+	append-cflags -std=gnu17
+
 	# Fix implicit decls with widechar funcs
 	append-cppflags -D_GNU_SOURCE
 	# https://lists.gnu.org/archive/html/bug-readline/2010-07/msg00013.html
