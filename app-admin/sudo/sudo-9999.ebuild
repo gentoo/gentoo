@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit pam tmpfiles toolchain-funcs
+inherit flag-o-matic pam tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -147,6 +147,9 @@ src_configure() {
 
 	# bug #767712
 	tc-export PKG_CONFIG
+
+	# https://github.com/sudo-project/sudo/issues/420
+	append-cflags -std=gnu17
 
 	# - audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
