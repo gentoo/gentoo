@@ -6,7 +6,7 @@ EAPI=8
 REAL_PN="melonDS"
 REAL_P="${REAL_PN}-${PV}"
 
-inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
+inherit cmake readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
 HOMEPAGE="http://melonds.kuribo64.net
@@ -30,11 +30,9 @@ IUSE="+jit +opengl wayland"
 
 RDEPEND="
 	app-arch/libarchive
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[network,opengl,widgets]
+	dev-qt/qtmultimedia:6
+	dev-qt/qtsvg:6
 	media-libs/libsdl2[sound,video]
 	net-libs/enet:=
 	net-libs/libpcap
@@ -64,19 +62,13 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 Place them in ~/.config/melonDS
 Those files can be extracted from devices or found somewhere on the Internet ;-)"
 
-src_prepare() {
-	filter-lto
-	append-flags -fno-strict-aliasing
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	local -a mycmakeargs=(
 		-DBUILD_SHARED_LIBS="OFF"
 		-DENABLE_JIT="$(usex jit)"
 		-DENABLE_OGLRENDERER="$(usex opengl)"
 		-DENABLE_WAYLAND="$(usex wayland)"
+		-DUSE_SYSTEM_LIBSLIRP=ON
 	)
 	cmake_src_configure
 }
