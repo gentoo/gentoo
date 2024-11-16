@@ -17,14 +17,21 @@ LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RESTRICT="mirror"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+DEPEND="
+	test? ( dev-cpp/gtest )
+"
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLIPPER2_UTILS=OFF
-		-DCLIPPER2_EXAMPLES=OFF
-		-DCLIPPER2_TESTS=OFF
-		-DCLIPPER2_USINGZ=OFF  # manifold src/third_party/CMakeLists.txt
+		-DCLIPPER2_UTILS="no"
+		-DCLIPPER2_EXAMPLES="no"
+		-DCLIPPER2_TESTS="$(usex test)"
+		-DCLIPPER2_USINGZ="no"  # manifold src/third_party/CMakeLists.txt
+
+		-DUSE_EXTERNAL_GTEST="yes"
 	)
 	cmake_src_configure
 }
