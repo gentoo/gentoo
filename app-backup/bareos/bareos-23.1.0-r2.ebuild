@@ -97,6 +97,7 @@ BDEPEND="
 
 REQUIRED_USE="
 	static? ( clientonly )
+	clientonly? ( !director !storage-daemon !ceph !glusterfs !lmdb !ndmp !scsi-crypto )
 	x86? ( !ceph )
 "
 
@@ -165,8 +166,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=()
 
-	cmake_comment_add_subdirectory webui
-
 	if use clientonly; then
 		mycmakeargs+=(
 			-Dclient-only=ON
@@ -185,6 +184,9 @@ src_configure() {
 
 	mycmakeargs+=(
 		-DHAVE_PYTHON=0
+		-DCPM_USE_LOCAL_PACKAGES=1
+		-DCPM_LOCAL_PACKAGES_ONLY=1
+		-DENABLE_WEBUI=0
 		-Darchivedir=/var/lib/bareos/storage
 		-Dbackenddir=/usr/$(get_libdir)/${PN}/backend
 		-Dbasename="`hostname -s`"
