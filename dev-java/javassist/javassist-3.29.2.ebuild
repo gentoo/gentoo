@@ -28,6 +28,8 @@ RDEPEND=">=virtual/jre-1.8:*"
 DOCS=( Changes.md README.md )
 HTML_DOCS=( tutorial/{brown.css,tutorial.html,tutorial2.html,tutorial3.html} )
 
+PATCHES=( "${FILESDIR}/javassist-3.29.2-gentoo.patch" )
+
 JAVA_AUTOMATIC_MODULE_NAME="org.javassist"
 JAVA_MAIN_CLASS="javassist.CtClass"
 JAVA_SRC_DIR="src/main"
@@ -38,36 +40,9 @@ JAVA_TEST_RUN_ONLY="javassist.JvstTest" # pom.xml, line 167
 JAVA_TEST_SRC_DIR="src/test"
 
 src_prepare() {
-	default
+	default #780585
+	java-pkg-2_src_prepare
 	java-pkg_clean javassist.jar
-
-	sed -e 's:\.\./\.\./::' -i src/test/javassist/JvstTest{4,Root}.java || die
-
-	# There were 2 failures:
-	# 1) testURL(javassist.JvstTest2)
-	# junit.framework.AssertionFailedError
-	# 	at junit.framework.Assert.fail(Assert.java:55)
-	# 	at junit.framework.Assert.assertTrue(Assert.java:22)
-	# 	at junit.framework.Assert.assertTrue(Assert.java:31)
-	# 	at junit.framework.TestCase.assertTrue(TestCase.java:200)
-	# 	at javassist.JvstTest2.testURL(JvstTest2.java:336)
-	# 2) testMethodParameters(javassist.JvstTest4)
-	# junit.framework.ComparisonFailure: expected:<[i]> but was:<[arg0]>
-	# 	at junit.framework.Assert.assertEquals(Assert.java:100)
-	# 	at junit.framework.Assert.assertEquals(Assert.java:107)
-	# 	at junit.framework.TestCase.assertEquals(TestCase.java:260)
-	# 	at javassist.JvstTest4.testMethodParameters(JvstTest4.java:1010)
-	# 
-	# FAILURES!!!
-	# Tests run: 432,  Failures: 2
-
-	sed \
-		-e '/public void/s:testURL:notTestURL:' \
-		-i src/test/javassist/JvstTest2.java || die
-
-	sed \
-		-e '/public void/s:testMethodParameters:notTestMethodParameters:' \
-		-i src/test/javassist/JvstTest4.java || die
 }
 
 src_test() {
@@ -75,6 +50,6 @@ src_test() {
 	einfo "Testing"
 	JAVA_PKG_WANT_SOURCE=11
 	JAVA_PKG_WANT_TARGET=11
-	JAVAC_ARGS="-g"
+	JAVAC_ARGS="-g -parameters"
 	java-pkg-simple_src_test
 }
