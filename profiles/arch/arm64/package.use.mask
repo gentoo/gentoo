@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2024-11-16)
+# Available on arm64.
+www-client/firefox -wasm
+
 # Michał Górny <mgorny@gentoo.org> (2024-10-23)
 # Debug-enabled binary packages are built for a subset of architectures.
 sys-kernel/gentoo-kernel-bin -debug
