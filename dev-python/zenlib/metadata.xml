@@ -9,6 +9,7 @@
 		<email>nowa@gentoo.org</email>
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">desultory/zenlib</remote-id>
 	</upstream>
