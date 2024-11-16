@@ -117,7 +117,7 @@ multilib_src_configure() {
 		$(use_enable ldapdb)
 		$(multilib_native_use_enable sample)
 		$(use_enable kerberos gssapi)
-		$(multilib_native_use_with mysql mysql "${EPREFIX}"/usr)
+		$(multilib_native_use_with mysql mysql "${EPREFIX}/usr/$(get_libdir)")
 		$(multilib_native_use_with postgres pgsql "${EPREFIX}/usr/$(get_libdir)/postgresql")
 		$(use_with sqlite sqlite3 "${EPREFIX}/usr/$(get_libdir)")
 		$(use_enable srp)
