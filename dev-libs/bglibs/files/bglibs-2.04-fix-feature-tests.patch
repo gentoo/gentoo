@@ -1,0 +1,370 @@
+https://bugs.gentoo.org/870550
+diff -ru a/sys/trysigprocmask.c b/sys/trysigprocmask.c
+--- a/sys/trysigprocmask.c	2024-04-06 07:26:44.552478736 +0000
++++ b/sys/trysigprocmask.c	2024-04-06 07:27:39.755145808 +0000
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-main()
++int main()
+ {
+   sigset_t ss;
+  
+diff -ru a/sys/tryulong64.c b/sys/tryulong64.c
+--- a/sys/tryulong64.c	2024-04-06 07:26:44.553478730 +0000
++++ b/sys/tryulong64.c	2024-04-06 07:27:22.042252635 +0000
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+   unsigned long u;
+   u = 1;
+diff -ru a/sys/tryunsetenv.c b/sys/tryunsetenv.c
+--- a/sys/tryunsetenv.c	2024-04-06 07:46:26.883917979 +0000
++++ b/sys/tryunsetenv.c	2024-04-06 07:47:35.697387058 +0000
+@@ -1,5 +1,5 @@
+ #include <stdlib.h>
+ 
+-void main(void) {
++int main(void) {
+   unsetenv("PATH");
+ }
+diff -ru a/sys/tryflock.c b/sys/tryflock.c
+--- a/sys/tryflock.c	2024-04-06 07:52:56.004915771 +0000
++++ b/sys/tryflock.c	2024-04-06 07:53:34.802616433 +0000
+@@ -2,7 +2,7 @@
+ #include <sys/file.h>
+ #include <fcntl.h>
+ 
+-void main()
++int main()
+ {
+   flock(0,LOCK_EX | LOCK_UN | LOCK_NB);
+ }
+diff -ru a/sys/trygetpeereid.c b/sys/trygetpeereid.c
+--- a/sys/trygetpeereid.c	2024-04-06 07:52:56.004915771 +0000
++++ b/sys/trygetpeereid.c	2024-04-06 07:53:57.443441751 +0000
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
+-void main()
++int main()
+ {
+   getpeereid();
+ }
+diff -ru a/sys/trynamedpipebug.c b/sys/trynamedpipebug.c
+--- a/sys/trynamedpipebug.c	2024-04-06 07:52:56.003915779 +0000
++++ b/sys/trynamedpipebug.c	2024-04-06 07:56:25.196301785 +0000
+@@ -2,6 +2,7 @@
+ #include <fcntl.h>
+ #include <sys/time.h>
+ #include <unistd.h>
++#include <sys/stat.h>
+ 
+ int main(void)
+ {
+diff -ru a/sys/trypoll.c b/sys/trypoll.c
+--- a/sys/trypoll.c	2024-04-06 07:52:56.004915771 +0000
++++ b/sys/trypoll.c	2024-04-06 07:55:39.667653055 +0000
+@@ -1,6 +1,7 @@
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <poll.h>
++#include <unistd.h>
+ 
+ int main()
+ {
+diff -ru a/sys/trysendfile.c b/sys/trysendfile.c
+--- a/sys/trysendfile.c	2024-04-06 07:52:56.003915779 +0000
++++ b/sys/trysendfile.c	2024-04-06 07:54:35.219150298 +0000
+@@ -2,7 +2,7 @@
+ #include <asm/unistd.h>
+ #include <unistd.h>
+ 
+-void main(void) {
++int main(void) {
+   int x;
+   x = __NR_sendfile;
+   sendfile(0, 1, 0, 0);
+diff -ru a/sys/trysigaction.c b/sys/trysigaction.c
+--- a/sys/trysigaction.c	2024-04-06 07:52:56.004915771 +0000
++++ b/sys/trysigaction.c	2024-04-06 07:54:19.331272879 +0000
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-void main()
++int main()
+ {
+   struct sigaction sa;
+   sa.sa_handler = 0;
+diff -ru a/sys/tryspnam.c b/sys/tryspnam.c
+--- a/sys/tryspnam.c	2024-04-06 07:52:56.003915779 +0000
++++ b/sys/tryspnam.c	2024-04-06 08:00:54.349225174 +0000
+@@ -1,6 +1,7 @@
+ #include <shadow.h>
++#include <stdio.h>
+ 
+-void main()
++int main()
+ {
+   struct spwd *spw;
+ 
+diff -ru a/sys/tryulong32.c b/sys/tryulong32.c
+--- a/sys/tryulong32.c	2024-04-06 07:52:56.003915779 +0000
++++ b/sys/tryulong32.c	2024-04-06 08:00:19.509493975 +0000
+@@ -1,4 +1,6 @@
+-void main()
++#include <unistd.h>
++
++int main()
+ {
+   unsigned long u;
+   u = 1;
+diff -ru a/sys/tryulong64.c b/sys/tryulong64.c
+--- a/sys/tryulong64.c	2024-04-06 07:52:56.005915763 +0000
++++ b/sys/tryulong64.c	2024-04-06 07:57:51.587635245 +0000
+@@ -1,3 +1,5 @@
++#include <unistd.h>
++
+ int main()
+ {
+   unsigned long u;
+diff -ru a/sys/tryuserpw.c b/sys/tryuserpw.c
+--- a/sys/tryuserpw.c	2024-04-06 07:52:56.003915779 +0000
++++ b/sys/tryuserpw.c	2024-04-06 07:54:08.955352932 +0000
+@@ -1,6 +1,6 @@
+ #include <userpw.h>
+ 
+-void main()
++int main()
+ {
+   struct userpw *upw;
+ 
+diff -ru a/sys/trywaitp.c b/sys/trywaitp.c
+--- a/sys/trywaitp.c	2024-04-06 07:52:56.003915779 +0000
++++ b/sys/trywaitp.c	2024-04-06 07:53:22.882708399 +0000
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
+-void main()
++int main(void)
+ {
+   waitpid(0,0,0);
+ }
+diff -ruN a/sys/trydirent.c b/sys/trydirent.c
+--- a/sys/trydirent.c	2024-04-06 16:39:11.939631621 -0000
++++ b/sys/trydirent.c	2024-04-06 16:39:32.020509991 -0000
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ 
+-void foo()
++void foo(void)
+ {
+   DIR *dir;
+   struct dirent *d;
+diff -ruN a/sys/trydirentino.c b/sys/trydirentino.c
+--- a/sys/trydirentino.c	2024-04-06 16:39:11.936631640 -0000
++++ b/sys/trydirentino.c	2024-04-06 16:39:37.187478695 -0000
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ 
+-void foo()
++void foo(void)
+ {
+   struct dirent *d;
+   d->d_ino;
+diff -ruN a/sys/trydirenttype.c b/sys/trydirenttype.c
+--- a/sys/trydirenttype.c	2024-04-06 16:39:11.938631627 -0000
++++ b/sys/trydirenttype.c	2024-04-06 16:39:42.163448555 -0000
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ 
+-void foo()
++void foo(void)
+ {
+   struct dirent *d;
+   d->d_type;
+diff -ruN a/sys/tryflock.c b/sys/tryflock.c
+--- a/sys/tryflock.c	2024-04-06 16:39:11.944631591 -0000
++++ b/sys/tryflock.c	2024-04-06 16:39:47.355417108 -0000
+@@ -2,7 +2,7 @@
+ #include <sys/file.h>
+ #include <fcntl.h>
+ 
+-int main()
++int main(void)
+ {
+   flock(0,LOCK_EX | LOCK_UN | LOCK_NB);
+ }
+diff -ruN a/sys/trygetpeereid.c b/sys/trygetpeereid.c
+--- a/sys/trygetpeereid.c	2024-04-06 16:39:11.944631591 -0000
++++ b/sys/trygetpeereid.c	2024-04-06 16:39:51.540391759 -0000
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
+-int main()
++int main(void)
+ {
+   getpeereid();
+ }
+diff -ruN a/sys/trypeercred.c b/sys/trypeercred.c
+--- a/sys/trypeercred.c	2024-04-06 16:39:11.932631664 -0000
++++ b/sys/trypeercred.c	2024-04-06 16:40:00.972334630 -0000
+@@ -2,7 +2,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ 
+-int main()
++int main(void)
+ {
+   struct ucred peer;
+   int optlen = sizeof(peer);
+diff -ruN a/sys/trypoll.c b/sys/trypoll.c
+--- a/sys/trypoll.c	2024-04-06 16:39:11.945631585 -0000
++++ b/sys/trypoll.c	2024-04-06 16:40:04.380313988 -0000
+@@ -3,7 +3,7 @@
+ #include <poll.h>
+ #include <unistd.h>
+ 
+-int main()
++int main(void)
+ {
+   struct pollfd x;
+ 
+diff -ruN a/sys/trysetenv.c b/sys/trysetenv.c
+--- a/sys/trysetenv.c	2024-04-06 16:39:11.935631646 -0000
++++ b/sys/trysetenv.c	2024-04-06 16:40:08.044291795 -0000
+@@ -1,6 +1,6 @@
+ #include <stdlib.h>
+ 
+-int main()
++int main(void)
+ {
+   setenv("FOO", "bar", 1);
+   return 0;
+diff -ruN a/sys/trysigaction.c b/sys/trysigaction.c
+--- a/sys/trysigaction.c	2024-04-06 16:39:11.945631585 -0000
++++ b/sys/trysigaction.c	2024-04-06 16:40:13.676257682 -0000
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-int main()
++int main(void)
+ {
+   struct sigaction sa;
+   sa.sa_handler = 0;
+diff -ruN a/sys/trysigprocmask.c b/sys/trysigprocmask.c
+--- a/sys/trysigprocmask.c	2024-04-06 16:39:11.944631591 -0000
++++ b/sys/trysigprocmask.c	2024-04-06 16:40:18.363229293 -0000
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-int main()
++int main(void)
+ {
+   sigset_t ss;
+  
+diff -ruN a/sys/tryspnam.c b/sys/tryspnam.c
+--- a/sys/tryspnam.c	2024-04-06 16:39:11.945631585 -0000
++++ b/sys/tryspnam.c	2024-04-06 16:40:21.124212570 -0000
+@@ -1,7 +1,7 @@
+ #include <shadow.h>
+ #include <stdio.h>
+ 
+-int main()
++int main(void)
+ {
+   struct spwd *spw;
+ 
+diff -ruN a/sys/trysysselect.c b/sys/trysysselect.c
+--- a/sys/trysysselect.c	2024-04-06 16:39:11.933631658 -0000
++++ b/sys/trysysselect.c	2024-04-06 16:40:24.052194835 -0000
+@@ -2,7 +2,7 @@
+ #include <sys/time.h>
+ #include <sys/select.h> /* SVR4 silliness */
+ 
+-void foo()
++void foo(void)
+ {
+   ;
+ }
+diff -ruN a/sys/tryulong32.c b/sys/tryulong32.c
+--- a/sys/tryulong32.c	2024-04-06 16:39:11.945631585 -0000
++++ b/sys/tryulong32.c	2024-04-06 16:40:29.116164162 -0000
+@@ -1,6 +1,6 @@
+ #include <unistd.h>
+ 
+-int main()
++int main(void)
+ {
+   unsigned long u;
+   u = 1;
+diff -ruN a/sys/tryulong64.c b/sys/tryulong64.c
+--- a/sys/tryulong64.c	2024-04-06 16:39:11.945631585 -0000
++++ b/sys/tryulong64.c	2024-04-06 16:40:32.140145846 -0000
+@@ -1,6 +1,6 @@
+ #include <unistd.h>
+ 
+-int main()
++int main(void)
+ {
+   unsigned long u;
+   u = 1;
+diff -ruN a/sys/tryuserpw.c b/sys/tryuserpw.c
+--- a/sys/tryuserpw.c	2024-04-06 16:39:11.945631585 -0000
++++ b/sys/tryuserpw.c	2024-04-06 16:40:37.180115319 -0000
+@@ -1,6 +1,6 @@
+ #include <userpw.h>
+ 
+-int main()
++int main(void)
+ {
+   struct userpw *upw;
+ 
+--- bglibs-2.04.orig/sys/tryvfork.c	2024-05-09 08:37:27.068374529 -0000
++++ bglibs-2.04/sys/tryvfork.c	2024-05-09 08:37:48.579281229 -0000
+@@ -1,4 +1,6 @@
+-void main()
++#include <unistd.h>
++
++void main(void)
+ {
+   vfork();
+ }
+--- bglibs-2.04.orig/net/bindu.c	2024-05-09 08:44:45.289473808 +0000
++++ bglibs-2.04/net/bindu.c	2024-05-09 08:45:11.919358305 +0000
+@@ -20,6 +20,7 @@
+ #include <sys/param.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
++#include <string.h>
+ #include <unistd.h>
+ #include "socket.h"
+ 
+Let's not redefine a function
+--- bglibs-2.04.orig/sys/hassysselect.h1	2024-05-09 08:48:58.576404520 +0000
++++ bglibs-2.04/sys/hassysselect.h1	2024-05-09 08:51:11.410848179 +0000
+@@ -5,6 +5,6 @@
+ 
+ #include <sys/time.h>
+ #include <sys/select.h>
+-extern int select();
++/*extern int select();*/
+ 
+ #endif
+--- bglibs-2.04.orig/net/connectu.c	2024-05-09 08:53:35.304245520 +0000
++++ bglibs-2.04/net/connectu.c	2024-05-09 08:54:49.803933498 +0000
+@@ -20,6 +20,7 @@
+ #include <sys/param.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
++#include <string.h>
+ #include <unistd.h>
+ #include "socket.h"
+ 
