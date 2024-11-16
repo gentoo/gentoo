@@ -10,7 +10,6 @@
   </maintainer>
   <use>
     <flag name="symlink">Automatically symlink the kernel sources to /usr/src/linux</flag>
-    <flag name="rust">Pull in the Rust For Linux dependencies</flag>
   </use>
   <upstream>
     <remote-id type="github">AsahiLinux/linux</remote-id>
