@@ -30,12 +30,10 @@ CDEPEND="!mail-mta/courier
 	!gdbm? (
 		berkdb? ( sys-libs/db:= )
 	)
-	gdbm? ( net-mail/courier-imap[gdbm?,berkdb?] )
-	berkdb? ( net-mail/courier-imap[gdbm?,berkdb?] )
 	tools? (
 		!mail-mta/netqmail
 		!<net-mail/courier-imap-5.2.6
-		net-mail/courier-common
+		net-mail/courier-common[gdbm?,berkdb?]
 	)"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
