@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-inherit toolchain-funcs
+inherit toolchain-funcs autotools
 
 DESCRIPTION="An improved version of cli-crypt (encrypts data sent to it from the cli)"
 HOMEPAGE="http://xjack.org/pwcrypt/"
@@ -16,7 +16,11 @@ KEYWORDS="amd64 ppc x86"
 RDEPEND="virtual/libcrypt:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-gcc-10.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-gcc-10.patch
+	"${FILESDIR}"/${PN}-eautoreconf.patch
+)
+
 DOCS=( CREDITS README )
 
 src_prepare() {
@@ -29,4 +33,5 @@ src_prepare() {
 		src/Makefile.in || die
 
 	tc-export CC
+	eautoreconf
 }
