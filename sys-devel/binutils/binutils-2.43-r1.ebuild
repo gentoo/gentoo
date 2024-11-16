@@ -185,6 +185,9 @@ src_configure() {
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
+	# https://sourceware.org/PR32372
+	append-cflags -std=gnu17
+
 	local x
 	echo
 	for x in CATEGORY CBUILD CHOST CTARGET CFLAGS LDFLAGS ; do
