@@ -34,7 +34,15 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2024-11-16)
+# Mask obsolete shoulda-related slots. Use the newer slots instead.
+# Removal on 2024-12-16.
+dev-ruby/shoulda:3
+dev-ruby/shoulda-context:0
+dev-ruby/shoulda-matchers:3
+
+# Hans de Graaff <graaff@gentoo.org> (2024-11-16)
 # Mask obsolete Rails 6.1-only slot. Please use the newer slot instead.
+# Removal on 2024-12-16.
 dev-ruby/database_cleaner-active_record:2.1
 
 # Jaco Kroon <jaco@uls.co.za> (2024-11-15)
