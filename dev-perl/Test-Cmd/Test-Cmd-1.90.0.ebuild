@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Module for portable testing of commands and scripts"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc"
 
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"
