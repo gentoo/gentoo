@@ -56,6 +56,13 @@ distutils_enable_tests pytest
 # test files (https://github.com/mypyc/mypyc/issues/1014)
 export CCACHE_DISABLE=1
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# don't force pytest-xdist, in case user asked for EPYTEST_JOBS=1
+	sed -i -e '/addopts/s:-nauto::' pyproject.toml || die
+}
+
 python_compile() {
 	local -x MYPY_USE_MYPYC=$(usex native-extensions 1 0)
 	case ${EPYTHON} in
