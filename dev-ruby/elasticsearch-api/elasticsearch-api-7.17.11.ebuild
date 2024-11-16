@@ -29,6 +29,7 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/activesupport
 		dev-ruby/ansi
+		dev-ruby/elasticsearch
 		dev-ruby/elasticsearch-transport
 		dev-ruby/mocha:1.0
 		dev-ruby/pry
