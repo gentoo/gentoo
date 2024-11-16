@@ -40,6 +40,11 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog LICENSE.OpenSSL README )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# works as intended
+	makedev
+)
+
 src_configure() {
 	local myeconfargs=(
 		# Upstream recommended NSS in the past for licencing reasons but w/ OpenSSL 3 that's
