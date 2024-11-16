@@ -54,6 +54,9 @@ pkgversion() {
 }
 
 multilib_src_configure() {
+	# https://sourceware.org/PR32372
+	append-cflags -std=gnu17
+
 	filter-lto
 
 	local myconf=(
