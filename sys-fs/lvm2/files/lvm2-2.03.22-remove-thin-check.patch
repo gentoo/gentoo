@@ -1,0 +1,72 @@
+--- a/configure.ac	2023-08-02 13:51:38.000000000 +0100
++++ b/configure.ac	2024-11-17 11:27:03.462719772 +0000
+@@ -395,69 +395,6 @@
+ 			     [required if thin_check version is < 0.3.0]),
+ 	      THIN_CHECK_NEEDS_CHECK=$enableval, THIN_CHECK_NEEDS_CHECK="yes")
+ 
+-# Test if necessary thin tools are available
+-# if not - use plain defaults and warn user
+-AS_CASE(["$THIN"],
+-	[internal|shared], [
+-	# Empty means a config way to ignore thin checking
+-	AS_IF([test "$THIN_CHECK_CMD" = "autodetect"], [
+-		AC_PATH_TOOL(THIN_CHECK_CMD, thin_check, [], [$PATH_SBIN])
+-		AS_IF([test -z "$THIN_CHECK_CMD"], [
+-			AC_MSG_WARN([thin_check not found in path $PATH_SBIN])
+-			THIN_CHECK_CMD="/usr/sbin/thin_check"
+-			THIN_CONFIGURE_WARN="y"
+-		])
+-	])
+-	AS_IF([test "$THIN_CHECK_NEEDS_CHECK" = "yes" && test "$THIN_CONFIGURE_WARN" != "y"], [
+-		THIN_CHECK_VSN=$("$THIN_CHECK_CMD" -V 2>/dev/null)
+-		THIN_CHECK_VSN_MAJOR=$(echo "$THIN_CHECK_VSN" | $AWK -F '.' '{print $1}')
+-		THIN_CHECK_VSN_MINOR=$(echo "$THIN_CHECK_VSN" | $AWK -F '.' '{print $2}')
+-
+-		AS_IF([test -z "$THIN_CHECK_VSN_MAJOR" || test -z "$THIN_CHECK_VSN_MINOR"], [
+-			AC_MSG_WARN([$THIN_CHECK_CMD: Bad version "$THIN_CHECK_VSN" found])
+-			THIN_CHECK_VERSION_WARN="y"
+-			THIN_CHECK_NEEDS_CHECK="no"
+-		], [test "$THIN_CHECK_VSN_MAJOR" -eq 0 && test "$THIN_CHECK_VSN_MINOR" -lt 3], [
+-			AC_MSG_WARN([$THIN_CHECK_CMD: Old version "$THIN_CHECK_VSN" found])
+-			THIN_CHECK_VERSION_WARN="y"
+-			THIN_CHECK_NEEDS_CHECK="no"
+-		])
+-	])
+-	# Empty means a config way to ignore thin dumping
+-	AS_IF([test "$THIN_DUMP_CMD" = "autodetect"], [
+-		AC_PATH_TOOL(THIN_DUMP_CMD, thin_dump, [], [$PATH_SBIN])
+-		AS_IF([test -z "$THIN_DUMP_CMD"], [
+-			AC_MSG_WARN(["thin_dump not found in path $PATH_SBIN"])
+-			THIN_DUMP_CMD="/usr/sbin/thin_dump"
+-			THIN_CONFIGURE_WARN="y"
+-		])
+-	])
+-	# Empty means a config way to ignore thin repairing
+-	AS_IF([test "$THIN_REPAIR_CMD" = "autodetect"], [
+-		AC_PATH_TOOL(THIN_REPAIR_CMD, thin_repair, [], [$PATH_SBIN])
+-		AS_IF([test -z "$THIN_REPAIR_CMD"], [
+-			AC_MSG_WARN(["thin_repair not found in path $PATH_SBIN"])
+-			THIN_REPAIR_CMD="/usr/sbin/thin_repair"
+-			THIN_CONFIGURE_WARN="y"
+-		])
+-	])
+-	# Empty means a config way to ignore thin restoring
+-	AS_IF([test "$THIN_RESTORE_CMD" = "autodetect"], [
+-		AC_PATH_TOOL(THIN_RESTORE_CMD, thin_restore, [], [$PATH_SBIN])
+-		AS_IF([test -z "$THIN_RESTORE_CMD"], [
+-			AC_MSG_WARN(["thin_restore not found in path $PATH_SBIN"])
+-			THIN_RESTORE_CMD="/usr/sbin/thin_restore"
+-			THIN_CONFIGURE_WARN="y"
+-		])
+-	])
+-
+-	AC_MSG_CHECKING([whether thin_check supports the needs-check flag])
+-	AC_MSG_RESULT([$THIN_CHECK_NEEDS_CHECK])
+-	AS_IF([test "$THIN_CHECK_NEEDS_CHECK" = "yes"], [
+-		AC_DEFINE([THIN_CHECK_NEEDS_CHECK], 1, [Define to 1 if the external 'thin_check' tool requires the --clear-needs-check-flag option])
+-	])
+-])
+-
+ AC_DEFINE_UNQUOTED([THIN_CHECK_CMD], ["$THIN_CHECK_CMD"],
+ 		   [The path to 'thin_check', if available.])
+ 
