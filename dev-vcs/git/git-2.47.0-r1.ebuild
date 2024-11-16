@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd
+inherit flag-o-matic toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -326,6 +326,9 @@ git_emake() {
 }
 
 src_configure() {
+	# https://lore.kernel.org/git/87ed3apy2u.fsf@gentoo.org/
+	append-cflags -std=gnu17
+
 	exportmakeopts
 }
 
