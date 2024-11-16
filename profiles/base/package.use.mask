@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Joonas Niilola <juippis@gentoo.org> (2024-11-16)
+# Wasm support is (currently) only available on amd64 and arm64.
+www-client/firefox wasm
+
 # Matt Jolly <kangie@gentoo.org> (2024-11-11)
 # ICU 76.1 is not compatible with Chromium. Bug #943216.
 # We'll mask it for a few weeks to use the bundled ICU
