@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT=66bca6e3fdfce0f590ca84edc1a6256502636f4b
+COMMIT=e7e0780114881dcf6e5ad934323f2595966865f9
 PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake python-single-r1
 
@@ -19,17 +19,17 @@ KEYWORDS="~amd64"
 IUSE="debug python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RESTRICT="!test? ( test ) mirror"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/tbb
+	dev-cpp/tbb:=
 	sci-mathematics/clipper2
 	python? ( ${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
-	"
+"
 DEPEND="
 	python? (
 		$(python_gen_cond_dep '
@@ -37,27 +37,32 @@ DEPEND="
 		')
 	)
 	test? ( dev-cpp/gtest )
-	${RDEPEND}"
+	${RDEPEND}
+"
+
+src_prepare() {
+	cmake_src_prepare
+
+	sed \
+		-e "/list(APPEND MANIFOLD_FLAGS/s/^/# DONOTSET /" \
+		-i CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(
-		-DMANIFOLD_CROSS_SECTION=ON
-		-DMANIFOLD_DEBUG=$(usex debug)
-		-DMANIFOLD_DOWNLOADS=OFF
-		-DMANIFOLD_EXPORT=OFF
-		-DMANIFOLD_JSBIND=OFF
-		-DMANIFOLD_PAR=ON
-		-DMANIFOLD_PYBIND=$(usex python)
-		-DMANIFOLD_TEST=$(usex test)
+		-DMANIFOLD_CROSS_SECTION="yes"
+		-DMANIFOLD_DEBUG="$(usex debug)"
+		-DMANIFOLD_DOWNLOADS="no"
+		-DMANIFOLD_EXPORT="no"
+		-DMANIFOLD_JSBIND="no"
+		-DMANIFOLD_PAR="no"
+		-DMANIFOLD_PYBIND="$(usex python)"
+		-DMANIFOLD_TEST="$(usex test)"
 	)
-	if use debug; then
-		mycmakeargs+=(
-			-DMANIFOLD_FLAGS=-ggdb
-		)
-	fi
+
 	cmake_src_configure
 }
 
 src_test() {
-	"${BUILD_DIR}"/test/manifold_test || die
+	"${BUILD_DIR}/test/manifold_test" || die
 }
