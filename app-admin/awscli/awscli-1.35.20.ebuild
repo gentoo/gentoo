@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 
 # botocore is x.y.(z+34)
 BOTOCORE_PV="$(ver_cut 1).$(ver_cut 2).$(( $(ver_cut 3-) + 34 ))"
