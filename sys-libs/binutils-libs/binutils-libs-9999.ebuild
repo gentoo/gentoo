@@ -127,10 +127,6 @@ pkgversion() {
 multilib_src_configure() {
 	filter-lto
 
-	# Workaround for lld-17 (bug #914640)
-	# Should be able to drop this w/ >=binutils-2.43
-	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
-
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t
 		# because it greps only top-level ./configure. But not
