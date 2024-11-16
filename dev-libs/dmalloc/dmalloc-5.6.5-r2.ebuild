@@ -24,6 +24,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.5-fix-cxx-check.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	GetEnvironmentVariableA
+)
+
 src_prepare() {
 	default
 
