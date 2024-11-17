@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-11-17)
+# Superseded by dev-lang/pypy:3.10.  This version is vulnerable.
+# Removal on 2024-12-01.
+dev-python/pypy3_10
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-11-17)
 # Masked for testing
 >=dev-ml/findlib-1.9.7
