@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit bash-completion-r1 meson-multilib python-any-r1
+inherit bash-completion-r1 flag-o-matic meson-multilib python-any-r1
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
 HOMEPAGE="https://p11-glue.github.io/p11-glue/p11-kit.html"
@@ -43,6 +43,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# https://github.com/p11-glue/p11-kit/issues/664
+	append-cflags -std=gnu17
+
 	# Disable unsafe tests, bug#502088
 	export FAKED_MODE=1
 
