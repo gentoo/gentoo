@@ -17,10 +17,7 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
-ruby_add_rdepend "
-	dev-ruby/concurrent-ruby:1
-	>=dev-ruby/racc-1.7:0
-"
+ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
 
 ruby_add_bdepend "
 	test? (
@@ -35,23 +32,29 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	rm -f gemfiles/*.lock || die
 
-	# Remove optional unpackaged oj gem.
-	# Make mocha dependency more lenient.
-	sed -e '/oj/ s:^:#:' \
-		-e '/mocha/ s/2.1.0/2.1/' \
-		-i gemfiles/* || die
+	# Remove optional unpackaged oj gem
+	sed -i -e '/oj/ s:^:#:' gemfiles/* || die
+
+	# Update old test dependencies
+	sed -i -e '/rake/ s/~>/>=/' -e '/mocha/ s/1.7.0/2.0/' -e '3igem "json"' -e '4igem "racc"' gemfiles/* || die
+
+	# Use mocha 2 to avoid minitest deprecation issues.
+	sed -i -e 's:mocha/setup:mocha/minitest:' test/test_helper.rb || die
 }
 
 each_ruby_test() {
 	case ${RUBY} in
 		*ruby33)
-			versions="7.0 7.1"
+			versions="7.0"
 			;;
 		*ruby32)
-			versions="6.1 7.0 7.1"
+			versions="6.1 7.0"
 			;;
 		*ruby31)
-			versions="6.1 7.0 7.1"
+			versions="6.1 7.0"
+			;;
+		*ruby30)
+			versions="6.0 6.1 7.0"
 			;;
 	esac
 
