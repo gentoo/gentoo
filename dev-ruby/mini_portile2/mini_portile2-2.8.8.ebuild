@@ -18,7 +18,7 @@ IUSE="test"
 BDEPEND="test? ( dev-build/cmake )"
 
 ruby_add_bdepend "test? (
-	dev-ruby/minitar
+	dev-ruby/minitar:0
 	dev-ruby/minitest-hooks
 	dev-ruby/net-ftp
 	dev-ruby/webrick
