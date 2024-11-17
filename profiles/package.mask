@@ -42,6 +42,7 @@ app-misc/g15composer
 app-misc/g15daemon
 app-misc/g15macro
 app-misc/g15message
+app-misc/g15mpd
 app-misc/g15stats
 dev-libs/libg15
 dev-libs/libg15render
