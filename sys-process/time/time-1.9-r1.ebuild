@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="Displays info about resources used by a program"
 HOMEPAGE="https://www.gnu.org/directory/time.html"
@@ -16,3 +18,10 @@ BDEPEND="sys-apps/texinfo"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9-implicit-func-decl-clang.patch
 )
+
+src_configure() {
+	# https://savannah.gnu.org/bugs/index.php?66450
+	append-cflags -std=gnu17
+
+	econf
+}
