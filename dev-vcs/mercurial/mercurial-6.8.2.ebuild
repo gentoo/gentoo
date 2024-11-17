@@ -21,13 +21,13 @@ CRATES="
 	bitflags@2.6.0
 	bitmaps@2.1.0
 	bitvec@1.0.1
-	block-buffer@0.9.0
 	block-buffer@0.10.3
+	block-buffer@0.9.0
 	bstr@1.6.0
 	bumpalo@3.11.1
 	byteorder@1.4.3
-	bytes-cast@0.3.0
 	bytes-cast-derive@0.2.0
+	bytes-cast@0.3.0
 	cc@1.0.76
 	cfg-if@1.0.0
 	chrono@0.4.34
@@ -46,22 +46,22 @@ CRATES="
 	crossbeam-utils@0.8.12
 	crypto-common@0.1.6
 	ctor@0.1.26
-	cxx@1.0.81
 	cxx-build@1.0.81
+	cxx@1.0.81
 	cxxbridge-flags@1.0.81
 	cxxbridge-macro@1.0.81
 	derive_more@0.99.17
 	diff@0.1.13
-	digest@0.9.0
 	digest@0.10.5
-	dirs@5.0.1
+	digest@0.9.0
 	dirs-sys@0.4.1
+	dirs@5.0.1
 	either@1.8.0
 	env_logger@0.9.3
 	fastrand@1.8.0
 	flate2@1.0.24
-	format-bytes@0.3.0
 	format-bytes-macros@0.4.0
+	format-bytes@0.3.0
 	funty@2.0.0
 	generic-array@0.14.6
 	getrandom@0.1.16
@@ -73,8 +73,8 @@ CRATES="
 	hex@0.4.3
 	home@0.5.4
 	humantime@2.1.0
-	iana-time-zone@0.1.53
 	iana-time-zone-haiku@0.1.1
+	iana-time-zone@0.1.53
 	im-rc@15.1.0
 	indexmap@1.9.2
 	instant@0.1.12
@@ -82,7 +82,7 @@ CRATES="
 	jobserver@0.1.25
 	js-sys@0.3.60
 	lazy_static@1.4.0
-	libc@0.2.137
+	libc@0.2.155
 	libm@0.2.6
 	libredox@0.1.3
 	libz-sys@1.1.8
@@ -106,8 +106,8 @@ CRATES="
 	pkg-config@0.3.26
 	ppv-lite86@0.2.17
 	pretty_assertions@1.3.0
-	proc-macro-error@1.0.4
 	proc-macro-error-attr@1.0.4
+	proc-macro-error@1.0.4
 	proc-macro2@1.0.47
 	python3-sys@0.7.2
 	quote@1.0.21
@@ -122,13 +122,13 @@ CRATES="
 	rand_hc@0.2.0
 	rand_pcg@0.3.1
 	rand_xoshiro@0.6.0
-	rayon@1.7.0
 	rayon-core@1.11.0
+	rayon@1.7.0
 	redox_syscall@0.2.16
 	redox_users@0.4.5
-	regex@1.7.0
 	regex-automata@0.3.9
 	regex-syntax@0.6.28
+	regex@1.7.0
 	remove_dir_all@0.5.3
 	rustc_version@0.4.0
 	same-file@1.0.6
@@ -139,8 +139,8 @@ CRATES="
 	serde@1.0.152
 	serde_derive@1.0.152
 	serde_spanned@0.6.1
-	sha-1@0.9.8
 	sha-1@0.10.0
+	sha-1@0.9.8
 	shellexpand@3.1.0
 	sized-chunks@0.6.5
 	stable_deref_trait@1.2.0
@@ -150,8 +150,8 @@ CRATES="
 	tap@1.0.1
 	tempfile@3.3.0
 	termcolor@1.1.3
-	thiserror@1.0.39
 	thiserror-impl@1.0.39
+	thiserror@1.0.39
 	thread_local@1.1.4
 	toml@0.6.0
 	toml_datetime@0.5.1
@@ -163,20 +163,20 @@ CRATES="
 	vcpkg@0.2.15
 	vcsgraph@0.2.0
 	version_check@0.9.4
-	wasi@0.9.0+wasi-snapshot-preview1
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen@0.2.83
+	wasi@0.9.0+wasi-snapshot-preview1
 	wasm-bindgen-backend@0.2.83
-	wasm-bindgen-macro@0.2.83
 	wasm-bindgen-macro-support@0.2.83
+	wasm-bindgen-macro@0.2.83
 	wasm-bindgen-shared@0.2.83
+	wasm-bindgen@0.2.83
 	web-sys@0.3.60
 	which@4.3.0
 	whoami@1.4.0
-	winapi@0.3.9
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.5
 	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
 	windows-sys@0.48.0
 	windows-targets@0.48.5
 	windows-targets@0.52.0
@@ -196,9 +196,9 @@ CRATES="
 	windows_x86_64_msvc@0.52.0
 	wyz@0.5.1
 	yansi@0.5.1
-	zstd@0.12.3+zstd.1.5.2
 	zstd-safe@6.0.4+zstd.1.5.4
 	zstd-sys@2.0.7+zstd.1.5.4
+	zstd@0.12.3+zstd.1.5.2
 "
 
 # for stdsimd
@@ -213,7 +213,8 @@ SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz
 
 LICENSE="GPL-2+
 	rust? (
-		0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT MPL-2.0 PSF-2 Unicode-DFS-2016 Unlicense ZLIB )"
+		Apache-2.0 BSD MIT MPL-2.0 MPL-2.0 PYTHON Unicode-DFS-2016
+		 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+chg emacs gpg test tk rust"
