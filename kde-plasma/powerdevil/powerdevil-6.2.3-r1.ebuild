@@ -5,6 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
+PATCHSET="${P}-patchset"
 KFMIN=6.6.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.7.2
@@ -12,6 +13,7 @@ inherit ecm fcaps plasma.kde.org
 
 DESCRIPTION="Power management for KDE Plasma Shell"
 HOMEPAGE="https://invent.kde.org/plasma/powerdevil"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
@@ -66,6 +68,8 @@ BDEPEND="
 
 # -m 0755 to avoid suid with USE="-filecaps"
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/libexec/org_kde_powerdevil )
+
+PATCHES=( "${WORKDIR}/${PATCHSET}" ) # KDE-bugs #495661, #495918
 
 src_configure() {
 	local mycmakeargs=(
