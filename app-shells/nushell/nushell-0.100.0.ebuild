@@ -762,6 +762,10 @@ src_compile() {
 src_install() {
 	cargo_src_install
 	if use plugins ; then
+		# Clear features to compile plugins
+		local myfeatures=()
+		cargo_src_configure
+		
 		cargo_src_install --path crates/nu_plugin_custom_values
 		cargo_src_install --path crates/nu_plugin_example
 		cargo_src_install --path crates/nu_plugin_formats
