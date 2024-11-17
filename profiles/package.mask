@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (2024-11-17)
+# bug 943698
+# Poor upstream code quality, unmaintained upstream;
+# no hardware for testing # anymore.
+# https://public-inbox.gentoo.org/gentoo-dev/robbat2-20240529T185323-477923075Z@orbis-terrarum.net/
+app-misc/g15composer
+app-misc/g15daemon
+app-misc/g15macro
+app-misc/g15message
+app-misc/g15stats
+dev-libs/libg15
+dev-libs/libg15render
+
 # Michał Górny <mgorny@gentoo.org> (2024-11-17)
 # Superseded by dev-lang/pypy:3.10.  This version is vulnerable.
 # Removal on 2024-12-01.
