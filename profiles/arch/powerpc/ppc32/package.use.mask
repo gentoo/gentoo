@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2024-11-17)
+# Cannot compile rust-based thin-provisioning-tools (bug #922236).
+sys-fs/lvm2 thin
+
 # Michał Górny <mgorny@gentoo.org> (2024-11-16)
 # Generated C files are too big for PPC ISA to handle.
 dev-python/mypy native-extensions
