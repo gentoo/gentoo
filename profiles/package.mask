@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-11-17)
+# Included in dev-ml/odoc, the only rdep
+# Removal on 2024-12-17.
+dev-ml/odoc-parser
+
 # Matt Turner <mattst88@gentoo.org> (2024-11-16)
 # Masked for testing
 =dev-util/intel_clc-24.3*
