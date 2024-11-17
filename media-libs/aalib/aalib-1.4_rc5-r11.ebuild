@@ -7,11 +7,11 @@ inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
-S="${WORKDIR}/${PN}-1.4.0"
 
 DESCRIPTION="A ASCII-Graphics Library"
 HOMEPAGE="https://aa-project.sourceforge.net/aalib/"
 SRC_URI="https://download.sourceforge.net/project/aa-project/aa-lib/${MY_PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}-1.4.0"
 
 LICENSE="GPL-2"
 SLOT="0"
