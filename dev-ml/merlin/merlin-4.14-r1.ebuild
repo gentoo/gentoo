@@ -25,11 +25,9 @@ IUSE="emacs +ocamlopt test"
 RESTRICT="test"
 
 RDEPEND="
-	<dev-lang/ocaml-5
 	>=dev-lang/ocaml-4.14.1
 	>=dev-ml/dune-2.9:=
 	>=dev-ml/yojson-2.0.0:=
-	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/csexp:=
 	dev-ml/menhir:=
 	emacs? (
