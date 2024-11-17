@@ -15,7 +15,7 @@ SLOT="6/9"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
-RDEPEND="
+DEPEND="
 	dev-libs/libnl:3
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
@@ -31,10 +31,17 @@ RDEPEND="
 	sys-apps/lm-sensors:=
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	>=dev-qt/qt5compat-${QTMIN}:6[qml]
+"
 
 # -m 0755 to avoid suid with USE="-filecaps"
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/libexec/ksysguard/ksgrd_network_helper )
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-piechart-text.patch" # KDE-bug #494495
+	"${FILESDIR}/${P}-fix-saving-presets.patch" # KDE-bug #485164
+)
 
 src_configure() {
 	local mycmakeargs=(
