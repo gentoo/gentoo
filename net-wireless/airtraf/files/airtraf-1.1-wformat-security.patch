@@ -1,0 +1,201 @@
+--- a/src/libncurses/deskman.c
++++ b/src/libncurses/deskman.c
+@@ -136,7 +136,7 @@ void coloreol(WINDOW * win)
+     for (i = x; i <= COLS - 1; i++)
+ 	strcat(blankpad, " ");
+ 
+-    printw(blankpad);
++    printw("%s", blankpad);
+     free(blankpad);
+ }
+ 
+@@ -284,8 +284,8 @@ void indicate(char *message)
+     char sp_buf[10];
+     attrset(STATUSBARATTR);
+     sprintf(sp_buf, "%%%dc", COLS);
+-    mvprintw(LINES - 1, 0, sp_buf, ' ');
+-    mvprintw(LINES - 1, 1, message);
++    mvprintw(LINES - 1, 0, "%s%d", sp_buf, ' ');
++    mvprintw(LINES - 1, 1, "%s", message);
+     refresh();
+ }
+ 
+@@ -336,9 +336,9 @@ void infobox(char *text, char *prompt)
+     colorwin(win);
+     box(win, ACS_VLINE, ACS_HLINE);
+     wattrset(win, STDATTR);
+-    mvwprintw(win, 1, 2, text);
++    mvwprintw(win, 1, 2, "%s", text);
+     wattrset(win, HIGHATTR);
+-    mvwprintw(win, 2, 2, prompt);
++    mvwprintw(win, 2, 2, "%s", prompt);
+     update_panels();
+     doupdate();
+     wgetch(win);
+--- a/src/sniffd/gui_main.c
++++ b/src/sniffd/gui_main.c
+@@ -248,8 +248,8 @@ void print_selected_ap_results(WINDOW *win, PANEL *panel, struct access_point *a
+     mvwprintw(win, 3, 10, "                    ");
+     mvwprintw(win, 4, 10, "                    ");
+     mvwprintw(win, 6, 13, "      ");       
+-    mvwprintw(win, 3, 10, ap->ssid);
+-    mvwprintw(win, 4, 10, hexdump((__u8*)&ap->bssid,6));
++    mvwprintw(win, 3, 10, "%s", ap->ssid);
++    mvwprintw(win, 4, 10, "%s", hexdump((__u8*)&ap->bssid,6));
+     mvwprintw(win, 5, 10, "%s", ap->wep_status ? "encrypted " : "opensystem");
+     mvwprintw(win, 6, 13, "%02d", ap->channel);
+   }
+@@ -305,7 +305,7 @@ void print_system_results(WINDOW *win, PANEL *panel, struct SETTINGS *mySettings
+   else if (mySettings->card_type == WLANNG)
+     mvwprintw(win, 3, 19, "Wlan-ng       ");
+ 
+-  mvwprintw(win, 4, 19, mySettings->interface);
++  mvwprintw(win, 4, 19, "%s", mySettings->interface);
+ 
+   if (mySettings->capture_mode != CAPTURE_MODE_PLAYBACK)
+     mvwprintw(win, 5, 19, "Real-Time ");
+@@ -327,7 +327,7 @@ void print_system_results(WINDOW *win, PANEL *panel, struct SETTINGS *mySettings
+   else
+     mvwprintw(win, 8, 19, "OFF");
+ 
+-  mvwprintw(win, 10, 12, uptime);
++  mvwprintw(win, 10, 12, "%s", uptime);
+   
+   update_panels();
+   doupdate();
+@@ -373,7 +373,7 @@ void showcapturesetting(WINDOW *win, struct SETTINGS *mySettings)
+ {
+   wattrset(win, HIGHATTR);
+   mvwprintw(win, 1, 20, "                    ");
+-  mvwprintw(win, 1, 20, mySettings->capture_file);
++  mvwprintw(win, 1, 20, "%s", mySettings->capture_file);
+   mvwprintw(win, 2, 20, "%s", mySettings->capture_overwrite ? "YES" : " NO");
+   mvwprintw(win, 3, 20, "%-5.1f", mySettings->capture_interval);
+ }
+--- a/src/sniffd/gui_channel_scan.c
++++ b/src/sniffd/gui_channel_scan.c
+@@ -286,8 +286,8 @@ void print_breakdown_results(WINDOW * win, int offset)
+ 	  if (!strncmp(ap->ssid," ",32))
+ 	    mvwprintw(win, position+3, 11, "<cloaked>");
+ 	  else
+-	    mvwprintw(win, position+3, 11, ap->ssid);
+-	  mvwprintw(win, position+3, 39, hexdump((__u8*)&ap->bssid,6));
++	    mvwprintw(win, position+3, 11, "%s", ap->ssid);
++	  mvwprintw(win, position+3, 39, "%s", hexdump((__u8*)&ap->bssid,6));
+ 	  mvwprintw(win, position+3, 53, "%s", ap->wep_status ? "crypt" : "open   ");
+ 	  mvwprintw(win, position+3, 59, "%5d", ap->mgmt_count);
+ 	  mvwprintw(win, position+3, 65, "%4d", ap->ctrl_count);
+@@ -351,12 +351,12 @@ void print_status_msg(WINDOW * statuswin, int *location, char * msg)
+     scrollstatuswin(statuswin, SCROLLUP);
+     wmove(statuswin, 12, 0);
+     fill_line_blank(statuswin, 12);
+-    mvwprintw(statuswin, 12, 2, msg);
++    mvwprintw(statuswin, 12, 2, "%s", msg);
+   }
+   else{
+     wmove(statuswin, *location, 0);
+     fill_line_blank(statuswin, *location);
+-    mvwprintw(statuswin, *location, 2, msg);    
++    mvwprintw(statuswin, *location, 2, "%s", msg);    
+   }
+   *location = *location + 1;
+   update_panels();
+--- a/src/sniffd/gui_detailed_scan.c
++++ b/src/sniffd/gui_detailed_scan.c
+@@ -131,8 +131,8 @@ void printdetails(WINDOW * win)
+   
+   wattrset(win, HIGHATTR);
+   if (info != NULL){
+-    mvwprintw(win, 2, 10, hexdump((__u8*)&info->bssid,6));
+-    mvwprintw(win, 2, 33, info->ssid);
++    mvwprintw(win, 2, 10, "%s", hexdump((__u8*)&info->bssid,6));
++    mvwprintw(win, 2, 33, "%s", info->ssid);
+     mvwprintw(win, 2, 61, "%s", info->wep_status ? "encrypted " : "opensystem");
+     mvwprintw(win, 2, 85, "%d", info->channel);
+     
+--- a/src/sniffd/gui_gen_protocol_scan.c
++++ b/src/sniffd/gui_gen_protocol_scan.c
+@@ -150,8 +150,8 @@ void print_proto_activity_overview_results(WINDOW * win)
+   
+   wattrset(win, HIGHATTR);
+   /** access point info **/  
+-  mvwprintw(win, 4, 10, ap->ssid);
+-  mvwprintw(win, 5, 10, hexdump((__u8*)&ap->bssid,6));
++  mvwprintw(win, 4, 10, "%s", ap->ssid);
++  mvwprintw(win, 5, 10, "%s", hexdump((__u8*)&ap->bssid,6));
+   mvwprintw(win, 6, 10, "%s", ap->wep_status ? "encrypted " : "opensystem");
+   mvwprintw(win, 7, 13, "%02d", ap->channel);
+ 
+--- a/src/sniffd/gui_tcp_analysis_scan.c
++++ b/src/sniffd/gui_tcp_analysis_scan.c
+@@ -164,8 +164,8 @@ void print_tcp_activity_overview_results(WINDOW * win, int selected, int view)
+   
+   wattrset(win, HIGHATTR);
+   /** access point info **/  
+-  mvwprintw(win, 4, 10, ap->ssid);
+-  mvwprintw(win, 5, 10, hexdump((__u8*)&ap->bssid,6));
++  mvwprintw(win, 4, 10, "%s", ap->ssid);
++  mvwprintw(win, 5, 10, "%s", hexdump((__u8*)&ap->bssid,6));
+   mvwprintw(win, 6, 10, "%s", ap->wep_status ? "encrypted " : "opensystem");
+   mvwprintw(win, 7, 13, "%02d", ap->channel);
+   mvwprintw(win, 8, 18, "%3d", ap->num-1);
+--- a/src/sniffd/gui_tcp_analysis_scan.c
++++ b/src/sniffd/gui_tcp_analysis_scan.c
+@@ -437,7 +437,7 @@ void print_tcp_nodelist_row(WINDOW *win, int row, bss_node_t *node, int id, int
+     mvwprintw(win, row, 2, ">");
+     wattrset(win, STDATTR);
+     mvwprintw(win, row, 4, "%02d", id);
+-    mvwprintw(win, row, 10, hexdump((__u8*)&node->mac_addr,6));
++    mvwprintw(win, row, 10, "%s", hexdump((__u8*)&node->mac_addr,6));
+     mvwprintw(win, row, 30, "                 ");
+     mvwprintw(win, row, 30, "%s", inet_ntoa(node->ip_addr));
+     mvwprintw(win, row, 48, "%6d", node->tcp_connections);
+@@ -447,7 +447,7 @@ void print_tcp_nodelist_row(WINDOW *win, int row, bss_node_t *node, int id, int
+     wattrset(win, HIGHATTR);
+     mvwprintw(win, row, 2, " ");
+     mvwprintw(win, row, 4, "%02d", id);
+-    mvwprintw(win, row, 10, hexdump((__u8*)&node->mac_addr,6));
++    mvwprintw(win, row, 10, "%s", hexdump((__u8*)&node->mac_addr,6));
+     mvwprintw(win, row, 30, "                 ");
+     mvwprintw(win, row, 30, "%s", inet_ntoa(node->ip_addr));
+     mvwprintw(win, row, 48, "%6d", node->tcp_connections);
+--- a/src/sniffd/mon_ids.c
++++ b/src/sniffd/mon_ids.c
+@@ -76,9 +76,9 @@ void print_ids_statrow(WINDOW * win, node_stat_t * node, int seq_num)
+   int diagnosis = 0;
+   
+   mvwprintw(win, seq_num, 2, "%2d: ", seq_num);
+-  mvwprintw(win, seq_num, 6, hexdump((__u8*)&node->node_mac, 6));
++  mvwprintw(win, seq_num, 6, "%s", hexdump((__u8*)&node->node_mac, 6));
+   mvwprintw(win, seq_num, 18, " -> ");
+-  mvwprintw(win, seq_num, 22, hexdump((__u8*)&node->dest_mac, 6));
++  mvwprintw(win, seq_num, 22, "%s", hexdump((__u8*)&node->dest_mac, 6));
+   mvwprintw(win, seq_num, 25 * COLS / 80, "%6d", node->probe_request);
+   mvwprintw(win, seq_num, 30 * COLS / 80, "%6d", node->assoc_request);
+   mvwprintw(win, seq_num, 35 * COLS / 80, "%6d", node->reassoc_request);
+@@ -93,10 +93,10 @@ void print_ids_statrow(WINDOW * win, node_stat_t * node, int seq_num)
+ 	    node->deauth_status);
+   diagnosis = node->assoc_status + node->reassoc_status + node->auth_status;
+   if (diagnosis == 0){
+-    mvwprintw(win, seq_num, 70 * COLS/ 80, "  Normal ");
++    mvwprintw(win, seq_num, 70 * COLS/ 80, "%s", "  Normal ");
+   }
+   else{
+-    mvwprintw(win, seq_num, 70 * COLS/ 80, "Suspicious");
++    mvwprintw(win, seq_num, 70 * COLS/ 80, "%s", "Suspicious");
+   }
+ }
+ 
+@@ -115,10 +115,10 @@ void print_ids_details(WINDOW * win, ids_t *info, int page_num)
+       end_loc = MAX_STAT_ROW - 1;
+     }
+     if (end_loc < info->node_count){
+-      mvwprintw(win, LINES * 0.6, 2, " >> More >> ");
++      mvwprintw(win, LINES * 0.6, 2, "%s", " >> More >> ");
+     }
+     else{
+-      mvwprintw(win, LINES * 0.6, 2, " << END! >> ");
++      mvwprintw(win, LINES * 0.6, 2, "%s", " << END! >> ");
+     }
+     wattrset(win, HIGHATTR);
+     for (curr_loc = start_loc; curr_loc < end_loc; curr_loc++){
