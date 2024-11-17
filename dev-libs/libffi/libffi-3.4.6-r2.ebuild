@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-asan.patch
 	"${FILESDIR}"/${P}-tests.patch
 	"${FILESDIR}"/${P}-regenerate-autotools.patch
+	"${FILESDIR}"/${P}-c23-tests.patch
 )
 
 src_prepare() {
