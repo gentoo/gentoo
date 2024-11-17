@@ -1,4 +1,4 @@
-# Copyright 2022 James Calligeros <jcalligeros99@gmail.com>
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
