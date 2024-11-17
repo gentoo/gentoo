@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2024-11-17)
+# The example bindings fail to build.
+~sys-libs/ncurses-6.5_p20241109 cxx
+
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Wasm support is (currently) only available on amd64 and arm64.
 www-client/firefox wasm
