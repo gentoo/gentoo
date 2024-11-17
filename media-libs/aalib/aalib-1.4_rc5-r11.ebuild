@@ -57,8 +57,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# Gpm_Wgetch from sys-libs/gpm is unprototyped in gpm.h and
-	# gpm is dead upstream.
+	# Gpm_Wgetch from sys-libs/gpm is unprototyped in gpm.h
+	# https://github.com/telmich/gpm/issues/48
 	append-cflags -std=gnu17
 
 	ECONF_SOURCE=${S} econf \
