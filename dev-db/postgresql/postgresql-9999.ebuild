@@ -143,6 +143,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Fails to build with C23, fallback to the old default in < GCC 15
+	# for now. Reported upstream to pgsql-bugs ML but not yet through
+	# moderation filter.
+	append-cflags -std=gnu17
+
 	case ${CHOST} in
 		*-darwin*|*-solaris*)
 			use nls && append-libs intl
