@@ -1,0 +1,36 @@
+https://lore.kernel.org/dash/9f2a8ab063e595188df3fe0546484e5a8156318a.1731810617.git.sam@gentoo.org/
+
+From 9f2a8ab063e595188df3fe0546484e5a8156318a Mon Sep 17 00:00:00 2001
+Message-ID: <9f2a8ab063e595188df3fe0546484e5a8156318a.1731810632.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 17 Nov 2024 02:28:07 +0000
+Subject: [PATCH] bltin: fix timescmd with C23
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With C23 and LTO, we get the following warning (or error if promoted to such):
+```
+src/builtins.c:28:5: error: type of ‘timescmd’ does not match original declaration [-Werror=lto-type-mismatch]
+   28 | int timescmd(int, char **);
+      |     ^
+src/bltin/times.c:15:5: note: type mismatch in parameter 1
+src/bltin/times.c:15:5: note: type ‘void’ should match type ‘int’
+```
+
+Make the two consistent. This didn't show up before because pre-C23
+had unprototyped functions.
+--- a/src/bltin/times.c
++++ b/src/bltin/times.c
+@@ -12,7 +12,7 @@
+ #endif
+ #include "system.h"
+ 
+-int timescmd() {
++int timescmd(int argc, char *argv[]) {
+ 	struct tms buf;
+ 	long int clk_tck = sysconf(_SC_CLK_TCK);
+ 	int mutime, mstime, mcutime, mcstime;
+-- 
+2.47.0
+
