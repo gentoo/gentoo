@@ -7,8 +7,8 @@ inherit autotools flag-o-matic
 
 MY_P="LogMon-${PV}"
 DESCRIPTION="Split-screen terminal/ncurses based log viewer"
-HOMEPAGE="http://www.edespot.com/logmon/"
-SRC_URI="http://www.edespot.com/logmon/files/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.edespot.com/logmon/"
+SRC_URI="https://www.edespot.com/logmon/files/${MY_P}.tar.bz2"
 S="${WORKDIR}/${PV}/${MY_P}"
 
 LICENSE="Artistic"
