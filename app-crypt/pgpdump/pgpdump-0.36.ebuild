@@ -17,6 +17,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.32-respect-ldflags.patch
+	"${FILESDIR}"/${PN}-0.36-c23.patch
 )
 
 src_install() {
