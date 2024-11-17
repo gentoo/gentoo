@@ -30,7 +30,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 rust systemd toolchain-funcs 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="${PV%%\.*}"
+PATCH_V="${PV%%\.*}-1"
 SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}.tar.xz -> ${P}-gentoo.tar.xz
 		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 	test? (
@@ -356,8 +356,7 @@ src_unpack() {
 	fi
 
 	if use ppc64; then
-		unpack chromium_${PATCHSET_PPC64}.debian.tar.xz
-		unpack chromium-ppc64le-gentoo-patches-1.tar.xz
+		unpack chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
 	fi
 }
 
@@ -379,22 +378,42 @@ src_prepare() {
 		"${FILESDIR}/chromium-132-bindgen-custom-toolchain.patch"
 	)
 
-	PATCHES+=( "${WORKDIR}/chromium-patches-${PATCH_V}" )
+	shopt -s globstar nullglob
+	# 130: moved the PPC64 patches into the chromium-patches repo
+	local patch
+	for patch in "${WORKDIR}/chromium-patches-${PATCH_V}"/**/*.patch; do
+		elog "Applying patch: ${patch}"
+		if [[ ${patch} == *"ppc64le"* ]]; then
+			use ppc64 && PATCHES+=( "${patch}" )
+		else
+			PATCHES+=( "${patch}" )
+		fi
+	done
+
+	shopt -u globstar nullglob
+
 	# We can't use the bundled compiler builtins with the system toolchain
 	# `grep` is a development convenience to ensure we fail early when google changes something.
 	local builtins_match="if (is_clang && !is_nacl && !is_cronet_build) {"
 	grep -q "${builtins_match}" build/config/compiler/BUILD.gn || die "Failed to disable bundled compiler builtins"
 	sed -i -e "/${builtins_match}/,+2d" build/config/compiler/BUILD.gn
 
-	if use ppc64 ; then
-		local p
-		for p in $(grep -v "^#" "${WORKDIR}"/debian/patches/series | grep "^ppc64le" || die); do
-			if [[ ! $p =~ "fix-breakpad-compile.patch" ]]; then
-				eapply "${WORKDIR}/debian/patches/${p}"
-			fi
+	if use ppc64; then
+		local patchset_dir="${WORKDIR}/openpower-patches-${PPC64_HASH}/patches"
+		# patch causes build errors on 4K page systems (https://bugs.gentoo.org/show_bug.cgi?id=940304)
+		local page_size_patch="ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch"
+		# Apply the OpenPOWER patches (check for page size)
+		openpower_patches=( $(grep -E "^ppc64le|^upstream" "${patchset_dir}/series" | grep -v "${page_size_patch}" || die) )
+		for patch in "${openpower_patches[@]}"; do
+			PATCHES+=( "${patchset_dir}/${patch}" )
 		done
-		PATCHES+=( "${WORKDIR}/ppc64le" )
-		PATCHES+=( "${WORKDIR}/debian/patches/fixes/rust-clanglib.patch" )
+		if [[ $(getconf PAGESIZE) != 65536 ]]; then
+				PATCHES+=( "${patchset_dir}/${page_size_patch}" )
+		fi
+		# We use vsx3 as a proxy for 'want isa3.0' (POWER9)
+		if use cpu_flags_ppc_vsx3 ; then
+			PATCHES+=( "${patchset_dir}/ppc64le/core/baseline-isa-3-0.patch" )
+		fi
 	fi
 
 	# This is a nightly option that does not exist any current release
