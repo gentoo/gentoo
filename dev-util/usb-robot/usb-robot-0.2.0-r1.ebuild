@@ -16,7 +16,10 @@ KEYWORDS="amd64 ppc x86"
 DEPEND="virtual/libusb:0
 	sys-libs/readline:="
 RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}/usb-robot-0.2.0-configure.patch" )
+PATCHES=(
+	"${FILESDIR}/usb-robot-0.2.0-configure.patch"
+	"${FILESDIR}/usb-robot-0.2.0-clang-warn.patch"
+)
 
 src_prepare() {
 	default
