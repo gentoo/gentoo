@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multiprocessing
+inherit flag-o-matic multiprocessing
 
 DESCRIPTION="File archival tool which can also read and write tar files"
 HOMEPAGE="https://www.gnu.org/software/cpio/cpio.html"
@@ -30,6 +30,9 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 src_configure() {
+	# https://savannah.gnu.org/bugs/?66297
+	append-cflags -std=gnu17
+
 	local myeconfargs=(
 		$(use_enable nls)
 		--bindir="${EPREFIX}"/bin
