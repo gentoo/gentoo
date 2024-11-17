@@ -14,6 +14,7 @@ COMMIT="22e564626297b4df0a40570ad81d6c05cc7c38bd"
 COMMIT_MC="24d8485dc7eeda9ec8d08788dfacad75127aebc7"
 SRC_URI="https://github.com/googlefonts/noto-emoji/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 	https://github.com/zjaco13/Noto-Emoji-Monochrome/archive/${COMMIT_MC}.tar.gz -> ${P}-monochrome.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
@@ -21,8 +22,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="icons"
 
 RESTRICT="binchecks strip"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 # https://github.com/gentoo/gentoo/pull/32203
 FONT_CONF=( "${FILESDIR}"/75-noto-emoji-fallback.conf )
