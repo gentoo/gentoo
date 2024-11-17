@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit gnome.org gnome2-utils python-single-r1 meson virtualx xdg
 
 DESCRIPTION="Music management and playback software for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/rhythmbox"
 
 LICENSE="GPL-2"
 SLOT="0"
