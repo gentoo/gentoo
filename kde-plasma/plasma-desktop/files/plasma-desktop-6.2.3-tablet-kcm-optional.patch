@@ -1,0 +1,93 @@
+From 5296ef03a9b14a6a9324d506d04f78e61e8512f6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 4 Nov 2024 23:15:19 +0100
+Subject: [PATCH] cmake: Add BUILD_KCM_TABLET option to conditionalise Wayland
+ deps
+
+Follow-up to 240ca31717ebed55e43ffaf6ac906dea07e9f4c6
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit 8f0e9b4d625024469b4fbd0468e767e45b464872)
+---
+ CMakeLists.txt      | 30 ++++++++++++++++++------------
+ kcms/CMakeLists.txt |  5 ++++-
+ 2 files changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6f764d1ef4..8222cfaed5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,6 +40,7 @@ option(BUILD_KCM_MOUSE_KWIN_WAYLAND "Build the Mouse KCM's KWin+Wayland backend"
+ option(BUILD_KCM_MOUSE_X11 "Build the Mouse KCM's X11 backend" ON)
+ option(BUILD_KCM_TOUCHPAD_KWIN_WAYLAND "Build the Touchpad KCM's KWin+Wayland backend" ON)
+ option(BUILD_KCM_TOUCHPAD_X11 "Build the Touchpad KCM's X11 backend" ON)
++option(BUILD_KCM_TABLET "Build the Tablet KCM" ON)
+ 
+ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     Quick
+@@ -51,7 +52,10 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     Core5Compat
+     Sql # kcms/activities
+ )
+-find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WaylandClient)
++
++if(BUILD_KCM_TABLET)
++    find_package(Qt6WaylandClient ${QT_MIN_VERSION} CONFIG REQUIRED)
++endif()
+ 
+ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+     Auth
+@@ -139,17 +143,19 @@ set_package_properties(KF6QQC2DesktopStyle PROPERTIES
+     TYPE RUNTIME
+ )
+ 
+-find_package(WaylandProtocols 1.25)
+-set_package_properties(WaylandProtocols PROPERTIES
+-    TYPE REQUIRED
+-    PURPOSE "Collection of Wayland protocols that add functionality not available in the Wayland core protocol"
+-    URL "https://gitlab.freedesktop.org/wayland/wayland-protocols/"
+-)
+-find_package(Wayland 1.2)
+-set_package_properties(Wayland PROPERTIES
+-    TYPE REQUIRED
+-    PURPOSE "Required for building Tablet input KCM"
+-)
++if(BUILD_KCM_TABLET)
++    find_package(WaylandProtocols 1.25)
++    set_package_properties(WaylandProtocols PROPERTIES
++        TYPE REQUIRED
++        PURPOSE "Collection of Wayland protocols that add functionality not available in the Wayland core protocol"
++        URL "https://gitlab.freedesktop.org/wayland/wayland-protocols/"
++    )
++    find_package(Wayland 1.2)
++    set_package_properties(Wayland PROPERTIES
++        TYPE REQUIRED
++        PURPOSE "Required for building Tablet input KCM"
++    )
++endif()
+ 
+ find_package(SDL2 2.0.16)
+ set_package_properties(SDL2 PROPERTIES
+diff --git a/kcms/CMakeLists.txt b/kcms/CMakeLists.txt
+index 5b204a7c19..cea880c139 100644
+--- a/kcms/CMakeLists.txt
++++ b/kcms/CMakeLists.txt
+@@ -26,7 +26,6 @@ add_subdirectory(kded)
+ add_subdirectory(runners)
+ add_subdirectory(spellchecking)
+ add_subdirectory(qtquicksettings)
+-add_subdirectory(tablet)
+ add_subdirectory(touchscreen)
+ 
+ add_subdirectory(workspaceoptions)
+@@ -42,3 +41,7 @@ endif()
+ if (BUILD_KCM_TOUCHPAD_KWIN_WAYLAND OR BUILD_KCM_TOUCHPAD_X11)
+     add_subdirectory(touchpad)
+ endif()
++
++if(BUILD_KCM_TABLET)
++    add_subdirectory(tablet)
++endif()
+-- 
+2.47.0
+
