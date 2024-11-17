@@ -102,6 +102,7 @@ BDEPEND="${PYTHON_DEPS}
 			sys-devel/lld:${LLVM_SLOT}
 			pgo? ( sys-libs/compiler-rt-sanitizers:${LLVM_SLOT}[profile] )
 		)
+		wasm? ( sys-devel/lld:${LLVM_SLOT} )
 	')
 	app-alternatives/awk
 	app-arch/unzip
