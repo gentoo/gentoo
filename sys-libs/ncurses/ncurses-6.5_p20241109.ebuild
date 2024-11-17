@@ -168,7 +168,7 @@ src_configure() {
 	# bug #214642
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
 
-	# NCURSES_BOOL confusion, see
+	# NCURSES_BOOL confusion, see https://lists.gnu.org/archive/html/bug-ncurses/2024-11/msg00010.html
 	append-cflags -std=gnu17
 
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
