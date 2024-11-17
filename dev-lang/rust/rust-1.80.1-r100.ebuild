@@ -574,7 +574,6 @@ src_install() {
 		rust-gdb
 		rust-gdbgui
 		rust-lldb
-		rust-demangler
 	)
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
@@ -619,7 +618,6 @@ src_install() {
 	cat <<-_EOF_ > "${T}/provider-${P}"
 		/usr/bin/cargo
 		/usr/bin/rustdoc
-		/usr/bin/rust-demangler
 		/usr/bin/rust-gdb
 		/usr/bin/rust-gdbgui
 		/usr/bin/rust-lldb
