@@ -13,8 +13,10 @@
 # a given Rust slot. To use the eclass:
 #
 # 1. If required, set RUST_{MAX,MIN}_SLOT to the range of supported slots.
+#
 # 2. If rust is optional, set RUST_OPTIONAL to a non-empty value then
-#     appropriately gate ${RUST_DEPEND}
+#    appropriately gate ${RUST_DEPEND}
+#
 # 3. Use rust_pkg_setup, get_rust_prefix or RUST_SLOT.
 
 # Example use for a package supporting Rust 1.72.0 to 1.82.0:
