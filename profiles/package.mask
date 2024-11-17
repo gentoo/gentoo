@@ -44,6 +44,12 @@ dev-ml/odoc-parser
 =media-libs/mesa-24.3*
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-17)
+# Needs a header from libusb that doesnt exist anymore. Will never build.
+# Furthermore, modern C problems. Bug 874645. No maintainer.
+# Removal in 30 days.
+dev-util/usb-robot
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-17)
 # Fails to build on modern compilers, bug 874291. Various open bugs.
 # No maintainer. Removal in 30 days.
 app-emulation/spim
