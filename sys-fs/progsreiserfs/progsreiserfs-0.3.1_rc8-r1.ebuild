@@ -39,6 +39,9 @@ src_prepare() {
 
 src_configure() {
 	filter-lfs-flags
+	# bundled libintl gets used because dev-libs/libintl isn't an option on musl
+	# and fails to LTO: undefined reference to `__argz_count'
+	use elibc_glibc && filter-lto
 
 	econf \
 		$(use_enable static-libs static) \
