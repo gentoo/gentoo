@@ -53,10 +53,6 @@ dev-libs/libg15render
 dev-python/pypy3_10
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-11-17)
-# Masked for testing
->=dev-ml/findlib-1.9.7
-
-# Alfredo Tupone <tupone@gentoo.org> (2024-11-17)
 # Included in dev-ml/odoc, the only rdep
 # Removal on 2024-12-17.
 dev-ml/odoc-parser
