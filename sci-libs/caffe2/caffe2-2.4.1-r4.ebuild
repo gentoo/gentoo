@@ -100,7 +100,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-libs/clog
-	cuda? ( >=dev-libs/cutlass-3.4.1 )
+	cuda? ( <=dev-libs/cutlass-3.4.1 )
 	onednn? ( sci-libs/ideep )
 	dev-libs/psimd
 	dev-libs/FP16
