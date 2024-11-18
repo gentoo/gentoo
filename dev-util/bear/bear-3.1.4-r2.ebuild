@@ -18,8 +18,10 @@ KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="cuda test"
 RESTRICT="!test? ( test )"
 
+# <libfmt-11 https://github.com/rizsotto/Bear/issues/592
 RDEPEND="
 	>=dev-libs/libfmt-9.1.0:=
+	<dev-libs/libfmt-11
 	dev-libs/protobuf:=
 	>=dev-libs/spdlog-1.11.0:=
 	>=net-libs/grpc-1.49.2:=
