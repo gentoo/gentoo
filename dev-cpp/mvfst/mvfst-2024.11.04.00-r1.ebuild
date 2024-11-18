@@ -40,8 +40,8 @@ DEPEND="
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DIR="$(get_libdir)/cmake/${PN}"
-		-DLIB_INSTALL_DIR="$(get_libdir)"
+		-DCMAKE_INSTALL_MODULE_DIR="$(get_libdir)/cmake/${PN}"
+		-DCMAKE_INSTALL_LIBDIR="$(get_libdir)"
 		-DBUILD_TESTS="$(usex test ON OFF)"
 	)
 
