@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/828953
+
+From 88faaa7d7a9581d670cb581df933442cc75933b3 Mon Sep 17 00:00:00 2001
+From: "David C. Manuelda" <StormByte@gmail.com>
+Date: Thu, 14 Nov 2024 17:05:03 +0100
+Subject: [PATCH] Added a missing header to make musl compile
+
+---
+ filesystems/zstd/zstd_internal.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/filesystems/zstd/zstd_internal.h b/filesystems/zstd/zstd_internal.h
+index f90ac42..4918300 100644
+--- a/filesystems/zstd/zstd_internal.h
++++ b/filesystems/zstd/zstd_internal.h
+@@ -20,6 +20,7 @@
+ /*-*******************************************************
+ *  Compiler specifics
+ *********************************************************/
++#include <linux/stddef.h>
+ #define FORCE_INLINE static __always_inline
+ #define FORCE_NOINLINE static /*noinline*/
+ 
+-- 
+2.47.0
+
