@@ -4,6 +4,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Robin H. Johnson <robbat2@gentoo.org> (2024-11-17)
+# bug 943698
+# Poor upstream code quality, unmaintained upstream;
+# no hardware for testing # anymore.
+# https://public-inbox.gentoo.org/gentoo-dev/robbat2-20240529T185323-477923075Z@orbis-terrarum.net/
+lcd_devices_g15
+g15
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
 # The 8.1 slot is masked, so the USE flag that pulls it in has to be
 # masked too. The bare "php8-1" is for www-servers/nginx-unit which
