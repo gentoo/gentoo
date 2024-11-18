@@ -1,0 +1,32 @@
+Dante's packaging design has some very pretty macro usage, but also fragile.
+
+The error & getaddrinfo error checking tries to expand a macro outside a
+string, leading to it expanding empty in some cases. Quoting the string makes
+it show up as expected.
+
+```
+checking getaddrinfo() error symbols... configure: error: in `/var/tmp/portage/net-proxy/dante-1.4.3/work/dante-1.4.3':
+configure: error: error: getaddrinfo() error value count too low
+See `config.log' for more details`
+```
+
+--- dante-1.4.3//acinclude.m4	2017-01-23 11:28:08.000000000 -0800
++++ dante-1.4.3//acinclude.m4	2024-11-17 19:51:39.398597593 -0800
+@@ -1110,7 +1114,7 @@
+        [AC_LANG_PROGRAM([[#include <errno.h>]],
+                         [[
+ #ifdef $3
+-errnoval: $3
++"errnoval: $3"
+ #else
+ #error "errno value $3 not defined"
+ #endif]])],
+@@ -1134,7 +1138,7 @@
+ #include <netdb.h>]],
+                         [[
+ #ifdef $3
+-gaierrval: $3
++"gaierrval: $3"
+ #else
+ #error "gai error value $3 not defined"
+ #endif]])],
