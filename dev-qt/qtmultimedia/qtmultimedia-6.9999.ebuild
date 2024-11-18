@@ -79,9 +79,11 @@ CMAKE_SKIP_TESTS=(
 	tst_qmediacapture_gstreamer
 	tst_qmediacapturesession
 	tst_qmediaframeinputsbackend
+	tst_qmediaplayer_gstreamer
 	tst_qmediaplayerbackend
 	tst_qsoundeffect
 	# may try to use v4l2 or hardware acceleration depending on availability
+	tst_qmediarecorderbackend
 	tst_qscreencapture_integration
 	tst_qscreencapturebackend
 	tst_qvideoframebackend
