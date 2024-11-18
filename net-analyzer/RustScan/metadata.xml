@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ago@gentoo.org</email>
+		<name>Agostino Sarubbo</name>
+	</maintainer>
+	<use>
+		<flag name="nmap">Installs <pkg>net-analyzer/nmap</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">RustScan/RustScan</remote-id>
+	</upstream>
+</pkgmetadata>
