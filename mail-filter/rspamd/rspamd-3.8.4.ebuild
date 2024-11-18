@@ -55,10 +55,11 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc:= )
 	selinux? ( sec-policy/selinux-spamassassin )
 "
+# <libfmt-11 https://github.com/rspamd/rspamd/pull/5034
 DEPEND="
 	${RDEPEND}
 	dev-cpp/doctest
-	dev-libs/libfmt:=
+	<dev-libs/libfmt-11:=
 	>=dev-libs/xxhash-0.8.0
 "
 BDEPEND="
