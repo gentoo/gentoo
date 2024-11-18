@@ -129,6 +129,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-6.1.80-override-include-dirs.patch" # downstream patch
 	"${FILESDIR}/${P}-tablet-kcm-optional.patch" # bug 942817
+	"${FILESDIR}/${P}-panel-fix-flexible-spacer.patch" # KDE-bug 495378
 )
 
 src_prepare() {
