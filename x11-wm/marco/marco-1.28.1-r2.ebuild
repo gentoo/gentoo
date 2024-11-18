@@ -10,8 +10,8 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit mate meson python-any-r1
 
-MINOR=$(($(ver_cut 2) % 2))
-if [[ ${MINOR} -eq 0 ]]; then
+MINOR=$(ver_cut 2)
+if [[ $(( MINOR % 2 )) -eq 0 ]]; then
 	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
