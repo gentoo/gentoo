@@ -1,12 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit autotools java-pkg-opt-2 linux-info
 
 DESCRIPTION="A transparent low-overhead system-wide profiler"
-HOMEPAGE="http://oprofile.sourceforge.net"
-SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+HOMEPAGE="https://oprofile.sourceforge.io/news/"
+SRC_URI="https://downloads.sourceforge.net/project/oprofile/oprofile/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,7 +15,6 @@ IUSE="apidoc java pch static-libs"
 
 BDEPEND="
 	apidoc? ( app-text/doxygen[dot] )
-	java? ( >=virtual/jdk-1.8:= )
 "
 CDEPEND="
 	>=dev-libs/popt-1.7-r1
@@ -25,10 +24,12 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	>=sys-kernel/linux-headers-2.6.31
+	java? ( >=virtual/jdk-1.8:* )
 "
 RDEPEND="${CDEPEND}
 	acct-user/oprofile
 	acct-group/oprofile
+	java? ( >=virtual/jre-1.8:* )
 "
 
 CONFIG_CHECK="~PERF_EVENTS"
@@ -42,7 +43,7 @@ pkg_setup() {
 		echo
 	fi
 
-	use java && java-pkg_init
+	use java && java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
