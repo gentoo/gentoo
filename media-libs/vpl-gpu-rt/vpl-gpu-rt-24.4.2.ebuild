@@ -8,10 +8,10 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="oneAPI Video Processing Library Intel GPU implementation"
+DESCRIPTION="Intel Video Processing Library GPU Runtime"
 HOMEPAGE="https://github.com/intel/vpl-gpu-rt/"
-SRC_URI="https://github.com/intel/vpl-gpu-rt/archive/refs/tags/intel-onevpl-${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/vpl-gpu-rt-intel-onevpl-${PV}"
+SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/intel-onevpl-${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-intel-onevpl-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
