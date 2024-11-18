@@ -320,19 +320,6 @@ dev-python/sentry-sdk
 # Removal on 2024-11-14. Bug #247500.
 app-emacs/quilt-el
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-10-14)
-# These packages are no more needed.
-# Use dev-ml/opam, dev-ml/opam-file-format,
-# dev-ml/opam-installer
-# that include these
-# remove on 2024-11-14.
-dev-ml/opam-client
-dev-ml/opam-repository
-dev-ml/opam-state
-dev-ml/opam-format
-dev-ml/opam-core
-dev-ml/opam-solver
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
 # Bug #941185. Removal on 2024-12-03.
