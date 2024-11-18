@@ -1,0 +1,58 @@
+https://bugs.gentoo.org/943704
+https://lore.kernel.org/all/20241117001814.2149181-2-slyich@gmail.com/T/#m1770e7c457dbb58d6950ee981c68cdd39a996724
+
+From f5048a5412a0f046c58e1566569dfcc31cd5b5d6 Mon Sep 17 00:00:00 2001
+Message-ID: <f5048a5412a0f046c58e1566569dfcc31cd5b5d6.1731907744.git.sam@gentoo.org>
+In-Reply-To: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+References: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sun, 17 Nov 2024 00:18:14 +0000
+Subject: [PATCH 4/4] test-rtnl: fix -std=c23 build failure
+
+gcc-15 switched to -std=c23 by default:
+
+    https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=55e3bd376b2214e200fa76d12b67ff259b06c212
+
+As a result `ell` fails the build as:
+
+      passing argument 1 of 'l_idle_oneshot' from incompatible pointer type [-Wincompatible-pointer-types]
+      501 |         l_idle_oneshot(test_next, NULL, NULL);
+          |                        ^~~~~~~~~
+          |                        |
+          |                        void (*)(void)
+
+unit/test-rtnl.c: In function 'test_run':
+unit/test-rtnl.c:501:24: error:
+---
+ unit/test-rtnl.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/unit/test-rtnl.c b/unit/test-rtnl.c
+index 59d8492..6fbac9e 100644
+--- a/unit/test-rtnl.c
++++ b/unit/test-rtnl.c
+@@ -358,6 +358,12 @@ static void test_next()
+ 	test->start(rtnl, test->data);
+ }
+ 
++static void test_next_cb(void * unused)
++{
++	(void)unused;
++	test_next();
++}
++
+ #define test_assert(cond)	\
+ 	do {	\
+ 		if (!(cond)) {	\
+@@ -498,7 +504,7 @@ static void test_run(void)
+ {
+ 	success = false;
+ 
+-	l_idle_oneshot(test_next, NULL, NULL);
++	l_idle_oneshot(test_next_cb, NULL, NULL);
+ 	l_main_run_with_signal(signal_handler, NULL);
+ }
+ 
+-- 
+2.47.0
+

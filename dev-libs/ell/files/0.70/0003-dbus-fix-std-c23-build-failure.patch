@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/943704
+https://lore.kernel.org/all/20241117001814.2149181-2-slyich@gmail.com/T/#m1770e7c457dbb58d6950ee981c68cdd39a996724
+
+From 4aebc7cd5b40df939532bcf4c15e0407e2748750 Mon Sep 17 00:00:00 2001
+Message-ID: <4aebc7cd5b40df939532bcf4c15e0407e2748750.1731907744.git.sam@gentoo.org>
+In-Reply-To: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+References: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sun, 17 Nov 2024 00:18:13 +0000
+Subject: [PATCH 3/4] dbus: fix -std=c23 build failure
+
+gcc-15 switched to -std=c23 by default:
+
+    https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=55e3bd376b2214e200fa76d12b67ff259b06c212
+
+As a result `ell` fails the build as:
+
+     1700 |                 return false;
+          |                        ^~~~~
+
+ell/dbus.c:1700:24: error: incompatible types when returning type '_Bool' but 'void *' was expected
+---
+ ell/dbus.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ell/dbus.c b/ell/dbus.c
+index bd6e1b8..1ab4ded 100644
+--- a/ell/dbus.c
++++ b/ell/dbus.c
+@@ -1697,10 +1697,10 @@ LIB_EXPORT void *l_dbus_object_get_data(struct l_dbus *dbus, const char *object,
+ 					const char *interface)
+ {
+ 	if (unlikely(!dbus))
+-		return false;
++		return NULL;
+ 
+ 	if (unlikely(!dbus->tree))
+-		return false;
++		return NULL;
+ 
+ 	return _dbus_object_tree_get_interface_data(dbus->tree, object,
+ 							interface);
+-- 
+2.47.0
+
