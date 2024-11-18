@@ -32,7 +32,7 @@ if [[ ${VER_RELVER} == 9999999999 ]]; then
 	inherit git-r3
 else
 	# Update this commit hash to bump a pinned-commit ebuild.
-	GIT_COMMIT=97813fb924edf822455f91a5fbbdfdb349e5984f
+	GIT_COMMIT=fe71d0fb54ceadfb5b5f3b6baf29e486d97f6059
 	SRC_URI="https://github.com/LuaJIT/LuaJIT/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/LuaJIT-${GIT_COMMIT}"
 
@@ -43,7 +43,6 @@ LICENSE="MIT"
 # this should probably be pkgmoved to 2.1 for sake of consistency.
 SLOT="2/${PV}"
 IUSE="lua52compat static-libs"
-PATCHES=( "${FILESDIR}/${PN}-2.1.1727870382-fix-ljlibd-prefix.patch" )
 
 _emake() {
 	emake \
