@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,9 +11,9 @@ inherit elisp git-r3
 
 DESCRIPTION="Emacs major mode for editing eselect files"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
+S="${WORKDIR}/${MY_PN}/misc"
 
 LICENSE="GPL-2+"
 SLOT="0"
 
-S="${WORKDIR}/${MY_PN}/misc"
 SITEFILE="50${PN}-gentoo.el"
