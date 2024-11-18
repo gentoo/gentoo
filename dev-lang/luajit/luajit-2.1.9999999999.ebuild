@@ -43,7 +43,6 @@ LICENSE="MIT"
 # this should probably be pkgmoved to 2.1 for sake of consistency.
 SLOT="2/${PV}"
 IUSE="lua52compat static-libs"
-PATCHES=( "${FILESDIR}/${PN}-2.1.1727870382-fix-ljlibd-prefix.patch" )
 
 _emake() {
 	emake \
