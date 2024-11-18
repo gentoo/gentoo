@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}/cmake.patch"
 	"${FILESDIR}/gv10.patch"
 	"${FILESDIR}/boost.patch"
+	"${FILESDIR}/boost186.patch"
 )
 
 src_configure() {
