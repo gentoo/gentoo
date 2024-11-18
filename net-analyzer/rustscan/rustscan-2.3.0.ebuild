@@ -239,9 +239,8 @@ HOMEPAGE="https://github.com/RustScan/RustScan"
 SRC_URI="https://github.com/RustScan/RustScan/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-
+S="${WORKDIR}/RustScan-${PV}"
 LICENSE="MIT"
-# Dependent crate licenses
 LICENSE+="
 	BSD ISC MIT MPL-2.0 Unicode-DFS-2016
 	|| ( Apache-2.0 Boost-1.0 )
