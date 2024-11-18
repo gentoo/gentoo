@@ -42,8 +42,8 @@ QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 #
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
+	if [[ ${CATEGORY} == cross*-* ]] ; then
+		export CTARGET=${CATEGORY#cross*-}
 	fi
 fi
 

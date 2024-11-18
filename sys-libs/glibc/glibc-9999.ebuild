@@ -70,8 +70,8 @@ IUSE="audit caps cet compile-locales custom-cflags doc gd hash-sysv-compat heade
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
+	if [[ ${CATEGORY} == cross*-* ]] ; then
+		export CTARGET=${CATEGORY#cross*-}
 	fi
 fi
 
@@ -140,7 +140,7 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT="!test? ( test )"
 
-if [[ ${CATEGORY} == cross-* ]] ; then
+if [[ ${CATEGORY} == cross*-* ]] ; then
 	BDEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.27
 		>=${CATEGORY}/gcc-6.2

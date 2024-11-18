@@ -61,8 +61,8 @@ MIN_KERN_VER="2.6.16"
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
+	if [[ ${CATEGORY} == cross*-* ]] ; then
+		export CTARGET=${CATEGORY#cross*-}
 	fi
 fi
 
@@ -107,7 +107,7 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
 "
 
-if [[ ${CATEGORY} == cross-* ]] ; then
+if [[ ${CATEGORY} == cross*-* ]] ; then
 	DEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-4.9
