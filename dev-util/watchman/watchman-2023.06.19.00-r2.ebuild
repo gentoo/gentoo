@@ -148,6 +148,7 @@ IUSE="llvm-libunwind python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # See https://github.com/facebook/watchman/blob/main/CMakeLists.txt#L342 for libevent
+# <libfmt-10 https://github.com/facebook/watchman/issues/1140
 RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libpcre2
@@ -155,6 +156,7 @@ RDEPEND="
 	~dev-cpp/folly-${PV}:=
 	dev-cpp/glog:=
 	>=dev-libs/libfmt-8.1.1-r1:=
+	<dev-libs/libfmt-10
 	dev-libs/openssl:=
 	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
