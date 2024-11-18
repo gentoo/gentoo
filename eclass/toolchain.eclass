@@ -2270,10 +2270,6 @@ toolchain_src_test() {
 		GCC_TESTS_CFLAGS+=" -fno-stack-clash-protection"
 		GCC_TESTS_CXXFLAGS+=" -fno-stack-clash-protection"
 
-		# configure defaults to '-O2 -g' and some tests expect it
-		# accordingly.
-		GCC_TESTS_CFLAGS+=" -g"
-
 		# TODO: Does this handle s390 (-m31) correctly?
 		# TODO: What if there are multiple ABIs like x32 too?
 		# XXX: Disabled until validate_failures.py can handle 'variants'
