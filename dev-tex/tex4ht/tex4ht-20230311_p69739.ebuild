@@ -78,7 +78,7 @@ src_compile() {
 	for f in tex4ht t4ht; do
 		$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o $f $f.c \
 			-DENVFILE="\"${EPREFIX}${TEXMF}/tex4ht/base/tex4ht.env\"" \
-			-DHAVE_DIRENT_H -DKPATHSEA -lkpathsea \
+			-DANSI -DHAVE_DIRENT_H -DKPATHSEA -lkpathsea \
 			|| die "Compiling $f failed"
 	done
 	popd > /dev/null || die
