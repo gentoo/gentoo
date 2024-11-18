@@ -18,13 +18,13 @@ DESCRIPTION="An extension library to access a SQLite database from Ruby"
 HOMEPAGE="https://github.com/sparklemotion/sqlite3-ruby"
 LICENSE="BSD"
 
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 
 # We track the bundled sqlite version here
 RDEPEND+=" >=dev-db/sqlite-3.45.2:3"
-DEPEND+=" >=dev-db/sqlite-3.45.2:3 <dev-db/sqlite-3.46.0"
+DEPEND+=" >=dev-db/sqlite-3.45.2:3"
 
 ruby_add_bdepend "
 	doc? ( dev-ruby/rdoc )
@@ -37,6 +37,10 @@ all_ruby_prepare() {
 	# Remove the runtime dependency on mini_portile2. We build without
 	# it and it is not a runtime dependency for us.
 	sed -i -e '/^dependencies:/,/force_ruby_platform/d' ../metadata || die
+
+	# Avoid a failure about a specific syntax for an error, introduced with newer sqlite versions.
+	sed -e '/test_strict_mode/askip "Newer sqlite versions have different quoting"' \
+		-i test/test_database.rb || die
 }
 
 all_ruby_compile() {
