@@ -37,3 +37,13 @@
  #include <map>
  #include <iostream>
  
+--- a/fs/httpfs.cc
++++ b/fs/httpfs.cc
+@@ -38,6 +38,7 @@
+ #include <dlfcn.h>
+ #endif
+ 
++#include <algorithm>
+ #include <list>
+ #include <unordered_map>
+ 
