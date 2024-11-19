@@ -1,0 +1,18 @@
+diff --git a/configure.ac b/configure.ac
+index 5f3adb5..b7f21eb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -211,7 +211,12 @@ fi
+ if test "${enable_encrypt}" = "yes"; then
+ 	CONFIG_FEATURES="${CONFIG_FEATURES} encrypt"
+ 	AC_DEFINE([CONFIG_ENCRYPT], [1], [Define if encryption enabled])
+-	AM_PATH_LIBGCRYPT([1:1.6.3], [], [AC_MSG_ERROR([Cannot locate >=libgcrypt-1.6.3])])
++	PKG_CONFIG="pkg-config --static"
++		PKG_CHECK_MODULES([LIBGCRYPT],
++				  [libgcrypt >= 1.6.3],
++				  ,
++				  [AC_MSG_ERROR("Cannot locate >=libgcrypt-1.6.3")]
++		)
+ fi
+ 
+ if test "${enable_splashy}" = "yes"; then
