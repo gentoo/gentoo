@@ -1,0 +1,11 @@
+diff '--color=auto' -ruN macopix-3.4.0.orig/m4/intdiv0.m4 macopix-3.4.0/m4/intdiv0.m4
+--- macopix-3.4.0.orig/m4/intdiv0.m4	2019-12-26 03:40:38.000000000 +0100
++++ macopix-3.4.0/m4/intdiv0.m4	2024-11-19 01:03:00.472977096 +0100
+@@ -32,6 +32,7 @@
+         AC_RUN_IFELSE(
+           [AC_LANG_SOURCE([[
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <signal.h>
+ 
+ static void
