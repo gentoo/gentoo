@@ -5,6 +5,7 @@
 # We do this check to ensure that you haven't accidentally configured
 # something to run on the VT in your /etc/inittab file so that
 # you don't get a dead keyboard.
+# sddm ignores this env var and is configured at build-time to use VT7.
 CHECKVT=7
 
 # What display manager do you use ?
