@@ -1761,7 +1761,6 @@ toolchain_src_configure() {
 
 			--enable-host-shared
 			--enable-languages=jit
-			$(use_enable libdiagnostics)
 
 			# Might be used for the just-built GCC. Easier to just
 			# respect USE=graphite here in case the user passes some
@@ -1770,6 +1769,10 @@ toolchain_src_configure() {
 			$(use_with zstd)
 			--with-system-zlib
 		)
+
+		if tc_version_is_at_least 15.0.0_pre20241124 ; then
+			confgcc_jit+=( $(use_enable libdiagnostics) )
+		fi
 
 		if tc_version_is_at_least 13.1 ; then
 			confgcc_jit+=( --disable-fixincludes )
