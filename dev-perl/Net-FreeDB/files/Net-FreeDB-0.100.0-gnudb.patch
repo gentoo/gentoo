@@ -1,0 +1,52 @@
+https://rt.cpan.org/Public/Bug/Display.html?id=137752
+
+Description: replace default host freedb.freedb.org with gnudb.gnudb.org.
+ Also remove reference to inaccessible documentation, and fix the non-online
+ test which checks for the default host.
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/991089
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2021-07-16
+
+--- a/FreeDB.pm
++++ b/FreeDB.pm
+@@ -7,7 +7,7 @@
+ use File::Temp;
+ 
+ has hostname               => (is => 'ro', default => $ENV{HOSTNAME} // 'unknown');
+-has remote_host            => (is => 'rw', default => 'freedb.freedb.org');
++has remote_host            => (is => 'rw', default => 'gnudb.gnudb.org');
+ has remote_port            => (is => 'rw', default => 8880);
+ has user                   => (is => 'rw', default => $ENV{USER} // 'unknown');
+ has timeout                => (is => 'rw', default => 120);
+@@ -449,7 +449,7 @@
+ 
+ 
+     new() creates and returns a new Net::FreeDB object that is connected
+-    to either the given host or freedb.freedb.org as default.
++    to either the given host or gnudb.gnudb.org as default.
+ 
+ =item lscat
+ 
+@@ -723,10 +723,6 @@
+         giving the correct drive number will return in an
+         accurate return.
+ 
+-=head1 Resources
+-    The current version of the CDDB Server Protocol can be
+-    found at: http://ftp.freedb.org/pub/freedb/latest/CDDBPROTO
+-
+ =head1 AUTHOR
+     David Shultz E<lt>dshultz@cpan.orgE<gt>
+     Peter Pentchev E<lt>roam@ringlet.netE<gt>
+--- a/t/00-basic.t
++++ b/t/00-basic.t
+@@ -10,7 +10,7 @@
+     ok($freedb->hostname eq 'unknown', 'Error setting hostname');
+ }
+ 
+-ok($freedb->remote_host eq 'freedb.freedb.org', 'Error setting default host');
++ok($freedb->remote_host eq 'gnudb.gnudb.org', 'Error setting default host');
+ 
+ ok($freedb->remote_port == 8880, 'Error setting default port');
+ 
