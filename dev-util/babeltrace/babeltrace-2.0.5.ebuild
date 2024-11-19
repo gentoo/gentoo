@@ -9,13 +9,13 @@ inherit python-single-r1
 DESCRIPTION="A command-line tool and library to read and convert trace files"
 HOMEPAGE="https://babeltrace.org/"
 SRC_URI="https://www.efficios.com/files/${PN}/${PN}$(ver_cut 1)-${PV}.tar.bz2"
+S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc +elfutils +man plugins python"
 REQUIRED_USE="plugins? ( python ) python? ( ${PYTHON_REQUIRED_USE} )"
-S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
 RDEPEND=">=dev-libs/glib-2.28:2
 	elfutils? ( >=dev-libs/elfutils-0.154 )
