@@ -1,0 +1,69 @@
+https://bugs.gentoo.org/883603
+https://rt.cpan.org/Public/Bug/Display.html?id=152242
+
+Description: define read_toc() before using it in discdata get_disc_id()
+ otherwise the build fails with -Werror=implicit-function-declaration
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/1065999
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2024-03-10
+
+--- a/lib/linux.h
++++ b/lib/linux.h
+@@ -46,28 +46,6 @@
+     return ((n % 0xff) << 24 | t << 8 | tot_trks);
+ }
+ 
+-struct discdata get_disc_id(char* dev)
+-{
+-    struct discdata data;
+-    int i;
+-
+-    data.num_of_trks = read_toc(dev);
+-
+-    if (data.num_of_trks == -1) {
+-        return data;
+-    }
+-
+-    data.discid = cddb_discid(data.num_of_trks);
+-
+-    for (i = 0; i < data.num_of_trks; i++) {
+-        data.track_offsets[i] = (cdtoc[i].frame);
+-    }
+-
+-    data.seconds = (cdtoc[data.num_of_trks].frame)/75;
+-
+-    return data;
+-}
+-
+ int read_toc(char* dev)
+ {
+     int drive, i, status;
+@@ -151,4 +129,26 @@
+     return tochdr.cdth_trk1;
+ }
+ 
++struct discdata get_disc_id(char* dev)
++{
++    struct discdata data;
++    int i;
++
++    data.num_of_trks = read_toc(dev);
++
++    if (data.num_of_trks == -1) {
++        return data;
++    }
++
++    data.discid = cddb_discid(data.num_of_trks);
++
++    for (i = 0; i < data.num_of_trks; i++) {
++        data.track_offsets[i] = (cdtoc[i].frame);
++    }
++
++    data.seconds = (cdtoc[data.num_of_trks].frame)/75;
++
++    return data;
++}
++
+ #endif //LINUX_H
+
