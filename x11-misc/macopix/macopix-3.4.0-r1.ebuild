@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-fno-common.patch
 	"${FILESDIR}"/${PN}-3.4.0-windres.patch
 	"${FILESDIR}"/${PN}-3.4.0-openssl-1.1.0.patch
+	"${FILESDIR}"/${PN}-3.4.0-_exit.patch
 )
 
 src_prepare() {
