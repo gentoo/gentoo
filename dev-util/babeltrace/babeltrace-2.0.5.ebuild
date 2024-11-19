@@ -51,7 +51,8 @@ src_configure() {
 		$(usex python $(use_enable doc python-bindings-doc) --disable-python-bindings-doc) \
 		$(use_enable plugins python-plugins) \
 		--disable-built-in-plugins \
-		--disable-built-in-python-plugin-support
+		--disable-built-in-python-plugin-support \
+		--disable-Werror
 }
 
 src_install() {
