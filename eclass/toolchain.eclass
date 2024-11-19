@@ -1770,7 +1770,7 @@ toolchain_src_configure() {
 			--with-system-zlib
 		)
 
-		if tc_version_is_at_least 15.0.0_pre20241124 ; then
+		if tc_version_is_at_least 15.0.0_pre20241124 ${PV} ; then
 			confgcc_jit+=( $(use_enable libdiagnostics) )
 		fi
 
