@@ -23,6 +23,7 @@ LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
+IUSE="wayland"
 
 DEPEND="
 	|| (
@@ -158,7 +159,13 @@ src_install() {
 	local pngfile="$(find ${dst}/bin -maxdepth 1 -iname '*.png')"
 	newicon $pngfile "${PN}.png" || die "we died"
 
-	make_desktop_entry "/opt/idea-community/bin/idea" "IntelliJ Idea Community Edition" "${PN}" "Development;IDE;"
+	if use wayland; then
+		make_desktop_entry "/opt/idea-community/bin/idea -Dawt.toolkit.name=WLToolkit" "IntelliJ Idea Community Edition" "${PN}" "Development;IDE;"
+		ewarn "You have enabled the wayland USE flag."
+		ewarn "This is a support preview. Expect instability."
+	else
+		make_desktop_entry "/opt/idea-community/bin/idea" "IntelliJ Idea Community Edition" "${PN}" "Development;IDE;"
+	fi
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	mkdir -p "${D}/etc/sysctl.d/" || die
