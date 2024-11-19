@@ -333,6 +333,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	# it was disabled in 13.
 	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 	tc_version_is_at_least 14.2.1_p20241026 ${PV} && IUSE+=" time64"
+	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libdiagnostics"
 fi
 
 if tc_version_is_at_least 10; then
@@ -1732,8 +1733,8 @@ toolchain_src_configure() {
 		gcc_shell="${BROOT}"/bin/sh
 	fi
 
-	if is_jit ; then
-		einfo "Configuring JIT gcc"
+	if is_jit || _tc_use_if_iuse libdiagnostics ; then
+		einfo "Configuring shared gcc for JIT/libdiagnostics"
 
 		local confgcc_jit=(
 			"${confgcc[@]}"
@@ -1757,8 +1758,11 @@ toolchain_src_configure() {
 			--disable-nls
 			--disable-objc-gc
 			--disable-systemtap
+
 			--enable-host-shared
 			--enable-languages=jit
+			$(use_enable libdiagnostics)
+
 			# Might be used for the just-built GCC. Easier to just
 			# respect USE=graphite here in case the user passes some
 			# graphite flags rather than try strip them out.
