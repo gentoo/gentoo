@@ -33,6 +33,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
+# NVIDIA dropped support for the 470.xx branch in September 2024[1].
+#
+# Users are free to unmask and keep using, but be warned it is very
+# likely to be affected by security issues[2] as NVIDIA does not
+# track nor fix these for this branch anymore.
+#
+# Gentoo will keep it packaged for as long as reasonably possible
+# (albeit masked) but no true support will be given nor patches
+# for newer kernels. It is recommended to use 6.6.x LTS kernels or
+# older (6.6.x will be supported until at least December 2026).
+#
+# Major issues will lead to removal without further warning, e.g.
+# if no usable kernels left in tree, or if broken with a newer Xorg.
+#
+# >> It is recommended to switch to nouveau[3] drivers (regardless
+#    of its worse performance), or ideally replace the hardware.
+#
+# [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
+#     https://nvidia.custhelp.com/app/answers/detail/a_id/5202
+# [2] https://bugs.gentoo.org/942031#c7
+# [3] https://wiki.gentoo.org/wiki/Nouveau
+x11-drivers/nvidia-drivers:0/470
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-18)
 # All classes were moved to >=x11-libs/qwt-6.2.0. No revdeps.
 # Removal on 2024-12-18.
