@@ -64,6 +64,9 @@
 		<flag name="xen">Enables support for Xen backends</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://gitlab.com/qemu-project/qemu/-/issues</bugs-to>
+		<changelog>https://wiki.qemu.org/ChangeLog</changelog>
+		<doc>https://www.qemu.org/docs/master</doc>
 		<remote-id type="gitlab">qemu-project/qemu</remote-id>
 	</upstream>
 </pkgmetadata>
