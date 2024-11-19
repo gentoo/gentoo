@@ -34,6 +34,12 @@ RDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://bugs.gentoo.org/942207
+		# https://github.com/libgit2/pygit2/commit/eba710e45bb40e18641c6531394bb46631e7f295
+		"${FILESDIR}/${P}-gcc-14.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# unconditionally prevent it from using network
