@@ -385,6 +385,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-memory-leak.patch
 	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-libgcrypt.patch
 	"${FILESDIR}"/${PN}-6.1.1-amd-av1-vaapi.patch
+	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-vulkan.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
