@@ -298,7 +298,7 @@ src_configure() {
 	if use static; then
 		export LIBSECCOMP_LINK_TYPE="static"
 		export LIBSECCOMP_LIB_PATH=$(pkgconf --variable=libdir libseccomp)
-		export RUSTFLAGS+="-Clink-args=-static -Clink-args=-no-pie -Clink-args=-Wl,-Bstatic -Ctarget-feature=+crt-static"
+		export RUSTFLAGS+="-Ctarget-feature=+crt-static"
 		cargo_src_configure
 	else
 		local myfeatures=( "oci" )
