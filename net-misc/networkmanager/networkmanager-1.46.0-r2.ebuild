@@ -3,18 +3,15 @@
 
 EAPI=8
 GNOME_ORG_MODULE="NetworkManager"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 \
-		readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
+inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
@@ -32,6 +29,8 @@ REQUIRED_USE="
 	?? ( dhclient dhcpcd )
 	?? ( syslog systemd )
 "
+
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 COMMON_DEPEND="
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
@@ -121,10 +120,6 @@ BDEPEND="
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}"/networkmanager-1.48.4-fix-libsystemdless-build.patch
-)
 
 python_check_deps() {
 	if use introspection; then
@@ -315,7 +310,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	! use systemd && readme.gentoo_create_doc
 
-	newinitd "${FILESDIR}/init.d.NetworkManager-r3" NetworkManager
+	newinitd "${FILESDIR}/init.d.NetworkManager-r2" NetworkManager
 	newconfd "${FILESDIR}/conf.d.NetworkManager" NetworkManager
 
 	# Need to keep the /etc/NetworkManager/dispatched.d for dispatcher scripts
@@ -350,6 +345,9 @@ multilib_src_install_all() {
 
 	# Empty
 	rmdir "${ED}"/var{/lib{/NetworkManager,},} || die
+
+	# prebuilt manpages aren't installed by meson
+	use gtk-doc || doman man/*.[1578]
 }
 
 pkg_postinst() {
