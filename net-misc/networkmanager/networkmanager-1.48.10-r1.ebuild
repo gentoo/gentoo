@@ -350,6 +350,9 @@ multilib_src_install_all() {
 
 	# Empty
 	rmdir "${ED}"/var{/lib{/NetworkManager,},} || die
+
+	# prebuilt manpages aren't installed by meson
+	use gtk-doc || doman man/*.[1578]
 }
 
 pkg_postinst() {
