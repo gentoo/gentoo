@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="A library to support lingoteach-ui and for generic lesson development"
 HOMEPAGE="http://lingoteach.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/lingoteach/${P}.tar.gz"
@@ -18,6 +20,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	# bug #899826
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
