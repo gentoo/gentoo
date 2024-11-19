@@ -32,12 +32,14 @@ RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
+# <libfmt-11 https://gitlab.com/mbunkus/mkvtoolnix/-/merge_requests/2259
 RDEPEND="
 	app-text/cmark:0=
 	dev-libs/boost:=
 	dev-libs/gmp:=
 	>=dev-libs/libebml-1.4.5:=
 	>=dev-libs/libfmt-8.0.1:=
+	<dev-libs/libfmt-11
 	>=dev-libs/pugixml-1.11
 	>=dev-qt/qtbase-6.2:6[dbus]
 	media-libs/flac:=
