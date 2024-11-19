@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.9
+MODULES_KERNEL_MAX=6.6
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -515,4 +515,14 @@ pkg_postinst() {
 		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
 		elog "default, and for openrc+elogind a similar hook has been installed."
 	fi
+
+	ewarn
+	ewarn "Be warned/reminded that the 470.xx branch reached end-of-life and"
+	ewarn "NVIDIA is no longer fixing issues (including security). Free to keep"
+	ewarn "using (for now) but it is recommended to either switch to nouveau or"
+	ewarn "replace hardware. Will be kept in-tree while possible, but expect it"
+	ewarn "to be removed likely in early 2027 or earlier if major issues arise."
+	ewarn
+	ewarn "Note that there is no plans to patch in support for kernels branches"
+	ewarn "newer than 6.6.x which will be supported upstream until December 2026."
 }
