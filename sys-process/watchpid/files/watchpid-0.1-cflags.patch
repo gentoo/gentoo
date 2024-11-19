@@ -1,11 +1,9 @@
-https://bugs.gentoo.org/726054
---- a/src/Makefile.in
-+++ b/src/Makefile.in
-@@ -64,7 +64,6 @@ VERSION = @VERSION@
- 
+diff '--color=auto' -ruN watchpid-0.1.orig/src/Makefile.am watchpid-0.1/src/Makefile.am
+--- watchpid-0.1.orig/src/Makefile.am	2000-07-09 14:28:57.000000000 +0200
++++ watchpid-0.1/src/Makefile.am	2024-11-19 22:31:34.786561111 +0100
+@@ -1,5 +1,4 @@
  bin_PROGRAMS = watchpid
  watchpid_SOURCES = watchpid.c
 -CFLAGS = -Wall -Werror -O3
  man_MANS = watchpid.1
  EXTRA_DIST = $(man_MANS)
- mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
