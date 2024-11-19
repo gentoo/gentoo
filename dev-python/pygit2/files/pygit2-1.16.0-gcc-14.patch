@@ -1,0 +1,37 @@
+From eba710e45bb40e18641c6531394bb46631e7f295 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Tue, 5 Nov 2024 12:26:44 +0100
+Subject: [PATCH] fix: use correct type of the ninth parameter of
+ git_commit_create()
+
+It should be `const git_commit **`, not `git_commit **`.
+
+Breaks the build with GCC-14.
+---
+ src/repository.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/repository.c b/src/repository.c
+index d1d42ecf..3b5d57a1 100644
+--- a/src/repository.c
++++ b/src/repository.c
+@@ -1065,7 +1065,8 @@ Repository_create_commit(Repository *self, PyObject *args)
+ 
+     err = git_commit_create(&oid, self->repo, update_ref,
+                             py_author->signature, py_committer->signature,
+-                            encoding, message, tree, parent_count, parents);
++                            encoding, message, tree, parent_count,
++                            (const git_commit **)parents);
+     if (err < 0) {
+         Error_set(err);
+         goto out;
+@@ -1147,7 +1148,8 @@ Repository_create_commit_string(Repository *self, PyObject *args)
+ 
+     err = git_commit_create_buffer(&buf, self->repo,
+                                    py_author->signature, py_committer->signature,
+-                                   encoding, message, tree, parent_count, parents);
++                                   encoding, message, tree, parent_count,
++                                   (const git_commit **)parents);
+     if (err < 0) {
+         Error_set(err);
+         goto out;
