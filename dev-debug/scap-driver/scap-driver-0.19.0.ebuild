@@ -14,8 +14,6 @@ LICENSE="Apache-2.0 GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-RDEPEND="!<dev-debug/sysdig-${PV}[modules]"
-
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
 # We need to specify the driver version manually since we do not use a git tree.
