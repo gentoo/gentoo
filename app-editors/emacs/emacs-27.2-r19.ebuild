@@ -367,7 +367,7 @@ src_install() {
 	X
 	;;; ${EMACS_SUFFIX} site-lisp configuration
 	X
-	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
+	(when (string-equal emacs-version "${FULL_VERSION}")
 	Y  (setq find-function-C-source-directory
 	Y	"${EPREFIX}${cdir}")
 	X  (let ((path (getenv "INFOPATH"))
