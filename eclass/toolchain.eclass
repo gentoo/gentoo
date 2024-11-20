@@ -989,7 +989,7 @@ toolchain_setup_ada() {
 	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
 		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
 		#!/bin/sh
-		exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) "\$@"
+		exec $(type -P ${CHOST}-${tool}-${ada_bootstrap}) "\$@"
 		EOF
 
 		export "${tool^^}"="${T}"/ada-wrappers/${tool}
