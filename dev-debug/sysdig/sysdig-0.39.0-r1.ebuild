@@ -14,7 +14,7 @@ DESCRIPTION="A system exploration and troubleshooting tool"
 HOMEPAGE="https://sysdig.com/"
 
 # The version of falcosecurity-libs required by sysdig as source tree
-LIBS_VERSION="0.18.1"
+LIBS_VERSION="0.19.0"
 LIBS="falcosecurity-libs-${LIBS_VERSION}"
 
 SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -80,7 +80,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-    use bpf && llvm-r1_pkg_setup
+	use bpf && llvm-r1_pkg_setup
 }
 
 src_prepare() {
