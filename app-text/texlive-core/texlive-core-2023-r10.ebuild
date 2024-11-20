@@ -245,6 +245,13 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	# Needed for 32bit architectures, bug 928096
+	# This is upstream recommendation for the moment, see also
+	# https://www.tug.org/texlive/build.html
+	# I'm fairly sure it just hides a real bug in pdftex, keeping 928096
+	# thus open, but hey, at least it's not a regression...
+	append-cflags -Wno-incompatible-pointer-types
+
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"
 
