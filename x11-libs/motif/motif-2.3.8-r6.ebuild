@@ -54,7 +54,7 @@ src_prepare() {
 	filter-lto
 
 	# feel free to fix properly if you care
-	append-flags -fno-strict-aliasing
+	append-flags -std=gnu17 -fno-strict-aliasing
 
 	# for Solaris Xos_r.h :(
 	[[ ${CHOST} == *-solaris2.11 ]] \
