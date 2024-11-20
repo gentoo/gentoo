@@ -29,7 +29,7 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS} -Wall" \
+		CFLAGS="${CFLAGS} -std=gnu17 -Wall" \
 		LFLAGS="${LDFLAGS} $("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
