@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Mats Lidell <matsl@gentoo.org> (2024-11-20)
+# The dependency x11-libs/dnd blocks gcc-14, is only used by XEmacs,
+# and upstream is not sure it even works so dropping use. #908831
+app-editors/xemacs dnd
+
 # Sam James <sam@gentoo.org> (2024-11-17)
 # The example bindings fail to build.
 ~sys-libs/ncurses-6.5_p20241109 cxx
