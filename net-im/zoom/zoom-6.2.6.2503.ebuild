@@ -73,6 +73,7 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 		dev-qt/qtwidgets:5
 		dev-qt/qtx11extras:5
 		dev-qt/qtxml:5
+		dev-util/patchelf
 		wayland? ( dev-qt/qtwayland )
 	)"
 
@@ -171,6 +172,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use bundled-qt; then
+		patchelf --set-rpath /opt/zoom/Qt/lib /opt/zoom/zoom
+		patchelf --set-rpath /opt/zoom/Qt/lib /opt/zoom/ZoomWebviewHost
+		patchelf --set-rpath /opt/zoom/Qt/lib /opt/zoom/zopen
+	fi
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	readme.gentoo_print_elog
