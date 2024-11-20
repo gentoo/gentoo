@@ -8,7 +8,7 @@ inherit java-pkg-2 prefix systemd unpacker
 FAKE_OS="ubuntu-22.04"
 DESCRIPTION="Microsoft Authentication Broker to access a corporate environment"
 HOMEPAGE="https://learn.microsoft.com/mem/intune/"
-SRC_URI="https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/${PN:0:1}/${PN}/${PN}_${PV}_amd64.deb"
+SRC_URI="https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/${PN:0:1}/${PN}/${PN}_${PV%_p*}_amd64.deb"
 S="${WORKDIR}"
 LICENSE="all-rights-reserved"
 SLOT="0"
