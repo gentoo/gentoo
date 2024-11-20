@@ -37,6 +37,7 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/yacc
+	>=sys-fs/e2fsprogs-1.46.4-r51
 	cpu_flags_x86_aes? (
 		amd64? ( dev-lang/yasm )
 		x86? ( dev-lang/yasm )
