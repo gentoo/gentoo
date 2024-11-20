@@ -46,6 +46,8 @@ BDEPEND="
 
 DOCS=( CHANGES.md README.md )
 
+PATCHES=( "${FILESDIR}"/${P}-signum.patch )
+
 src_prepare() {
 	mv configure.in configure.ac || die
 
