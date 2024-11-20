@@ -956,10 +956,10 @@ toolchain_setup_ada() {
 	case ${ada_bootstrap_type} in
 		ada-bootstrap)
 			export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
-			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CHOST}/${ada_bootstrap}/gnat1
+			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
 			;;
 		*)
-			gnat1_path=${BROOT}/usr/libexec/gcc/${CHOST}/${ada_bootstrap}/gnat1
+			gnat1_path=${BROOT}/usr/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
 			;;
 	esac
 
@@ -976,7 +976,7 @@ toolchain_setup_ada() {
 	# work for us as the stage1 compiler doesn't necessarily have Ada
 	# support. Substitute the Ada compiler we found earlier.
 	local adalib
-	adalib=$(${CHOST}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
+	adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
 	adalib="${adalib%/*}/adalib"
 	sed -i \
 		-e "s:adalib=.*:adalib=${adalib}:" \
@@ -989,7 +989,7 @@ toolchain_setup_ada() {
 	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
 		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
 		#!/bin/sh
-		exec $(type -P ${CHOST}-${tool}-${ada_bootstrap}) "\$@"
+		exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) "\$@"
 		EOF
 
 		export "${tool^^}"="${T}"/ada-wrappers/${tool}
