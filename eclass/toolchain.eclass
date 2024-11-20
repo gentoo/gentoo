@@ -976,7 +976,7 @@ toolchain_setup_ada() {
 	# work for us as the stage1 compiler doesn't necessarily have Ada
 	# support. Substitute the Ada compiler we found earlier.
 	local adalib
-	adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
+	adalib=$(${CHOST}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
 	adalib="${adalib%/*}/adalib"
 	sed -i \
 		-e "s:adalib=.*:adalib=${adalib}:" \
