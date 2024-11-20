@@ -956,10 +956,10 @@ toolchain_setup_ada() {
 	case ${ada_bootstrap_type} in
 		ada-bootstrap)
 			export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
-			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
+			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CHOST}/${ada_bootstrap}/gnat1
 			;;
 		*)
-			gnat1_path=${BROOT}/usr/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
+			gnat1_path=${BROOT}/usr/libexec/gcc/${CHOST}/${ada_bootstrap}/gnat1
 			;;
 	esac
 
