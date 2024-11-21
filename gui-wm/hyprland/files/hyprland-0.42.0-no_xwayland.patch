@@ -1,0 +1,21 @@
+From e09ae925a5847b9af7b0d422997cb64f093c75ef Mon Sep 17 00:00:00 2001
+From: Nick H <gerkola@gmail.com>
+Date: Tue, 27 Aug 2024 00:59:21 +0200
+Subject: [PATCH] Fix NO_XWAYLAND compilation
+
+---
+ src/xwayland/XWayland.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/xwayland/XWayland.hpp b/src/xwayland/XWayland.hpp
+index d1cc4421887..40c0ba656cd 100644
+--- a/src/xwayland/XWayland.hpp
++++ b/src/xwayland/XWayland.hpp
+@@ -3,6 +3,7 @@
+ #include <memory>
+ #include "../helpers/signal/Signal.hpp"
+ #include "../helpers/memory/Memory.hpp"
++#include "../macros.hpp"
+ 
+ #include "XSurface.hpp"
+ 
