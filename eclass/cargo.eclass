@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
 # Georgy Yakovlev <gyakovlev@gentoo.org>
+# Matt Jolly <kangie@gentoo.org>
 # @SUPPORTED_EAPIS: 8
 # @PROVIDES: rust
 # @BLURB: common functions and variables for cargo builds
@@ -51,6 +52,10 @@ case ${EAPI} in
 		;;
 esac
 
+if [[ -n ${CRATE_PATHS_OVERRIDE} ]]; then
+	CRATES="${CRATES} ${CRATE_PATHS_OVERRIDE}"
+fi
+
 inherit flag-o-matic multiprocessing rust rust-toolchain toolchain-funcs
 
 IUSE="${IUSE} debug"
@@ -76,6 +81,41 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # bar@4.5.6
 # iron_oxide@0.0.1
 # "
+# inherit cargo
+# ...
+# SRC_URI="${CARGO_CRATE_URIS}"
+# @CODE
+
+# @ECLASS_VARIABLE: CRATE_PATHS_OVERRIDE
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Bash string containing crates that will be used to override
+# dependencies via generated `paths = ['/path/to/crate']` configuration.
+# This is not "smart", _all crates_ which match the `Cargo.toml`
+# for a given crate/path will be overridden, ignoring lockfiles,
+# version constraints, etc.
+#
+# This should be used as a last resort where (e.g.) you are
+# bootstrapping Rust and need to override a vendored crate
+# with a newer version, and all versions in use are compatible.
+#
+# Crate names and versions must be separated by a `@`;
+# multiple crates are separated by a space or newline.
+# Crates in CRATE_PATHS_OVERRIDE are implicitly added to CRATES;
+# they do not need to be listed.
+#
+# Example:
+# @CODE
+# CRATES="
+# 	foo@1.2.3
+# "
+#
+# CRATE_PATHS_OVERRIDE="
+# 	openssl@0.10.35
+# 	openssl-sys@0.9.65
+# "
+#
 # inherit cargo
 # ...
 # SRC_URI="${CARGO_CRATE_URIS}"
@@ -277,6 +317,26 @@ cargo_crate_uris() {
 	echo "${CARGO_CRATE_URIS}"
 }
 
+# @FUNCTION: _cargo_gen_override_paths_config
+# @INTERNAL
+# @DESCRIPTION:
+# Generate the TOML content for overriding crates using the package manager.
+# This is called from within cargo_gen_config to insert the appropriate snippet
+# into the generated config.toml. Does not support git crates.
+_cargo_gen_override_paths_config() {
+	if [[ ! ${#CRATE_PATHS_OVERRIDE[@]} -gt 0 ]]; then
+		return
+	fi
+	local content override path
+	content=( 'paths = [' )
+	for override in ${CRATE_PATHS_OVERRIDE}; do
+		local path="${ECARGO_VENDOR}/${override//@/-}"
+		content+=( "'${path}'," )
+	done
+	content+=( ']' )
+	printf "%s\n" "${content[@]}"
+}
+
 # @FUNCTION: cargo_gen_config
 # @DESCRIPTION:
 # Generate the $CARGO_HOME/config.toml necessary to use our local registry and settings.
@@ -293,6 +353,8 @@ cargo_gen_config() {
 	mkdir -p "${ECARGO_HOME}" || die
 
 	cat > "${ECARGO_HOME}/config.toml" <<- _EOF_ || die "Failed to create cargo config"
+	$(_cargo_gen_override_paths_config)
+
 	[source.gentoo]
 	directory = "${ECARGO_VENDOR}"
 
@@ -311,6 +373,7 @@ cargo_gen_config() {
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
 	$(_cargo_gen_git_config)
+
 	_EOF_
 
 	export CARGO_HOME="${ECARGO_HOME}"
@@ -356,6 +419,37 @@ _cargo_gen_git_config() {
 # target/aarch64-unknown-linux-gnu/release.
 cargo_target_dir() {
 	echo "${CARGO_TARGET_DIR:-target}/$(rust_abi)/$(usex debug debug release)"
+}
+
+# @FUNCTION: cargo_update_crates
+# @USAGE:
+# @DESCRIPTION:
+# Helper function to call `cargo update --offline` with the given Cargo.toml.
+# This will update Cargo.{toml,lock}. This should provide a straightforward
+# approach to updating vulnerable crates in a package.
+#
+# To use: replace any vulnerable crates in ${CRATES} with updated (and compatible)
+# versions, then call `cargo_update_crates` in src_prepare. If Cargo.toml is not
+# in the root of ${S}, pass the path to the Cargo.toml as the first argument.
+# It is up to the ebuild to ensure that the updated crates are compatible with the
+# package and that no unexpected breakage occurs.
+cargo_update_crates () {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ -z ${CARGO} ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	local path=${1:-"${S}/Cargo.toml"}
+	if [[ $# -gt 1 ]]; then
+		die "Usage: cargo_update_crates [path_to_Cargo.toml]"
+	fi
+	[[ -f ${path} ]] || die "${path} does not exist"
+
+	set -- "${CARGO}" update --offline --manifest-path "${path}"
+	einfo "${@}"
+	# This is overkill (we're not using rustflags (etc) here) but it's safe.
+	cargo_env "${@}" || die "Failed to update crates"
 }
 
 # @FUNCTION: cargo_src_unpack
