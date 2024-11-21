@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Meta ebuild for LXDE, the Lightweight X11 Desktop Environment"
 HOMEPAGE="https://wiki.lxde.org/en/Status_of_LXDE_components"
@@ -9,7 +9,6 @@ HOMEPAGE="https://wiki.lxde.org/en/Status_of_LXDE_components"
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
-IUSE=""
 
 RDEPEND="
 	>=lxde-base/menu-cache-1.1.0-r1
