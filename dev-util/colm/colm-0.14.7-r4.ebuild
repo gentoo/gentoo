@@ -56,6 +56,12 @@ src_configure() {
 	filter-lto
 	append-flags -fno-strict-aliasing
 
+	# bug #944324
+	append-cflags -std=gnu89
+
+	# bug #924163
+	append-lfs-flags
+
 	econf $(use_enable doc manual)
 }
 
