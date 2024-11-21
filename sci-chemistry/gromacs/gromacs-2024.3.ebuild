@@ -92,6 +92,8 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/${PN}-gcc-15.patch" )
+
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
