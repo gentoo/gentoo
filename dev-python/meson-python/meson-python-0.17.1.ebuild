@@ -31,6 +31,7 @@ RDEPEND="
 	' 3.10)
 "
 BDEPEND="
+	${RDEPEND}
 	>=dev-python/cython-0.29.34[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/packaging-23.1[${PYTHON_USEDEP}]
