@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic gap-pkg
+inherit gap-pkg
 
 DESCRIPTION="Collection of standard data structures for GAP"
 SRC_URI="https://github.com/gap-packages/datastructures/releases/download/v${PV}/${P}.tar.gz"
@@ -18,9 +18,3 @@ RDEPEND="${DEPEND}"
 DOCS=( CHANGES.md README.md )
 
 gap-pkg_enable_tests
-
-src_compile() {
-	# https://github.com/gap-packages/datastructures/issues/151
-	append-cflags -Wno-error=strict-prototypes
-	gap-pkg_src_compile
-}
