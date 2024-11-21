@@ -1,0 +1,32 @@
+From 0d9e8bc7d6df86381ac56770dc95fc75276f49ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 21 Nov 2024 20:40:14 +0100
+Subject: [PATCH] Add an option to disable using trove-classifiers package
+
+As requested in https://github.com/pypa/setuptools/issues/4459, add
+a VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS environment variable that can
+be used to disable using trove_classifiers package even if it is
+available.  This can be used when the system features an outdated
+trove_classifiers, and therefore incorrectly triggers validation error.
+The change is designed to be absolutely minimal and non-intrusive.
+---
+ setuptools/config/_validate_pyproject/formats.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/setuptools/config/_validate_pyproject/formats.py b/setuptools/config/_validate_pyproject/formats.py
+index aacf4092b..0b05ab17b 100644
+--- a/setuptools/config/_validate_pyproject/formats.py
++++ b/setuptools/config/_validate_pyproject/formats.py
+@@ -210,6 +210,9 @@ try:
+         """See https://pypi.org/classifiers/"""
+         return value in _trove_classifiers or value.lower().startswith("private ::")
+ 
++    if os.getenv("VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS"):  # pragma: no cover
++        raise ImportError()
++
+ except ImportError:  # pragma: no cover
+     trove_classifier = _TroveClassifier()
+ 
+-- 
+2.47.0
+
