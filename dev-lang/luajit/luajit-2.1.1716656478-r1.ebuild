@@ -42,6 +42,7 @@ _emake() {
 		TARGET_LD="$(tc-getCC)" \
 		TARGET_CFLAGS="${CPPFLAGS} ${CFLAGS}" \
 		TARGET_LDFLAGS="${LDFLAGS}" \
+		TARGET_SHLDFLAGS="${LDFLAGS}" \
 		TARGET_AR="$(tc-getAR) rcus" \
 		BUILDMODE="$(usex static-libs mixed dynamic)" \
 		TARGET_STRIP="true" \
