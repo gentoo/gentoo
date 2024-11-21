@@ -38,7 +38,7 @@ LICENSE="Apache-2.0 android BSD BSD-2 CDDL-1.1 CPL-0.5
 	MPL-1.1 MPL-2.0 NPL-1.1 OFL-1.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="selinux"
+IUSE="selinux wayland"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="${DEPEND}
@@ -112,7 +112,11 @@ src_install() {
 
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh
-	make_desktop_entry ${PN} "Android Studio" ${PN} "Development;IDE" "StartupWMClass=jetbrains-studio"
+	if use wayland; then
+		make_desktop_entry "${PN} -Dawt.toolkit.name=WLToolkit" "Android Studio" ${PN} "Development;IDE" "StartupWMClass=jetbrains-studio"
+	else
+		make_desktop_entry ${PN} "Android Studio" ${PN} "Development;IDE" "StartupWMClass=jetbrains-studio"
+	fi
 
 	# https://developer.android.com/studio/command-line/variables
 	newenvd - 99android-studio <<-EOF
