@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ml/swhid_core:=[ocamlopt?]
 	dev-ml/uchar:=[ocamlopt?]
 	dev-ml/uutf:=[ocamlopt?]
+	!<dev-ml/opam-2.2
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/findlib"
