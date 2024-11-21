@@ -65,6 +65,7 @@ src_prepare() {
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	eapply "${FILESDIR}/${PN}-21.5.35-mule-tests.patch"
 	eapply "${FILESDIR}/${PN}-21.5.35-configure-libc-version.patch"
+	eapply "${FILESDIR}/${PN}-21.5.35-unknown-command-test.patch"
 
 	eapply_user
 
