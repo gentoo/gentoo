@@ -30,7 +30,7 @@ else
 	# The Prism's files are unpacked to ${WORKDIR}/PrismLauncher-${PV}
 	S="${WORKDIR}/${MY_PN}-${PV}"
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 # GPL-3 for PolyMC (PrismLauncher is forked from it) and Prism itself
