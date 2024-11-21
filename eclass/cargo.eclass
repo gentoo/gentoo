@@ -320,7 +320,7 @@ cargo_crate_uris() {
 # @FUNCTION: _cargo_gen_override_paths_config
 # @INTERNAL
 # @DESCRIPTION:
-# Generate the TOML content for overriding crates using the package manager.
+# Generate the TOML content for overriding crates globally using the package manager.
 # This is called from within cargo_gen_config to insert the appropriate snippet
 # into the generated config.toml. Does not support git crates.
 _cargo_gen_override_paths_config() {
