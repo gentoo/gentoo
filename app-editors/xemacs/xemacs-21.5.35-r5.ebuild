@@ -70,6 +70,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-va_args.patch"
 	eapply "${FILESDIR}/${P}-linker-flags.patch"
 	eapply "${WORKDIR}/${P}-ootags-boolint.patch"
+	eapply "${FILESDIR}/${P}-unknown-command-test.patch"
 
 	eapply_user
 
