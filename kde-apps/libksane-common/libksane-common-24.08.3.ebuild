@@ -9,7 +9,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	!<kde-apps/libksane-24.02.2-r2:5
