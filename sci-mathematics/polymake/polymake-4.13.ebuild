@@ -46,14 +46,12 @@ DEPEND="
 	singular? ( sci-mathematics/singular:= )"
 
 RDEPEND="${DEPEND}
-	dev-lang/perl
+	dev-lang/perl:=
 	dev-perl/JSON
 	dev-perl/Term-ReadLine-Gnu
 	dev-perl/TermReadKey
 	dev-perl/XML-SAX
 	dev-perl/XML-Writer"
-
-PATCHES=( "${FILESDIR}/${P}-no-perl-constraints.patch" )
 
 src_configure() {
 	# Without this, the build system tries to use "the highest possible"
