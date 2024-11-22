@@ -26,7 +26,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 BDEPEND="
-	>=dev-python/GitPython-2.1.11[${PYTHON_USEDEP}]
+	>=dev-python/gitpython-2.1.11[${PYTHON_USEDEP}]
 	dev-python/PyGithub[${PYTHON_USEDEP}]
 	dev-python/atomicwrites[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]

@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-python/distro-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/kconfiglib-14.1.0[${PYTHON_USEDEP}]
-	>=dev-python/GitPython-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/gitpython-3.1.0[${PYTHON_USEDEP}]
 	dev-libs/newt[${PYTHON_USEDEP}]
 "
 

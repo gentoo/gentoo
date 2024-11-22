@@ -124,7 +124,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
-		addonmgr? ( dev-python/GitPython[${PYTHON_USEDEP}] )
+		addonmgr? ( dev-python/gitpython[${PYTHON_USEDEP}] )
 		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
 	')
 "
@@ -373,7 +373,7 @@ pkg_postinst() {
 	optfeature "Dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
 	optfeature_header "Import / Export"
-	optfeature "Interact with git repositories" dev-python/GitPython
+	optfeature "Interact with git repositories" dev-python/gitpython
 	optfeature "Work with COLLADA documents" dev-python/pycollada
 	optfeature "YAML importer and emitter" dev-python/pyyaml
 	optfeature "Importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg

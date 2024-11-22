@@ -23,7 +23,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		$(python_gen_any_dep '
-			>=dev-python/GitPython-3.1.40[${PYTHON_USEDEP}]
+			>=dev-python/gitpython-3.1.40[${PYTHON_USEDEP}]
 			>=dev-python/pytest-7.2[${PYTHON_USEDEP}]
 			dev-python/testpath[${PYTHON_USEDEP}]
 		')
@@ -31,7 +31,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	python_has_version ">=dev-python/GitPython-3.1.40[${PYTHON_USEDEP}]" &&
+	python_has_version ">=dev-python/gitpython-3.1.40[${PYTHON_USEDEP}]" &&
 		python_has_version ">=dev-python/pytest-7.2[${PYTHON_USEDEP}]" &&
 		python_has_version "dev-python/testpath[${PYTHON_USEDEP}]"
 }
