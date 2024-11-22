@@ -9,6 +9,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
+MY_P=${P^}
 DESCRIPTION="Functions for fast computation of Levenshtein distance, and edit operations"
 HOMEPAGE="
 	https://pypi.org/project/Levenshtein/
@@ -16,8 +17,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/rapidfuzz/Levenshtein/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0"
