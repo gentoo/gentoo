@@ -122,7 +122,7 @@ dev-python/jupyter-kernel-test
 dev-python/jellyfish
 www-apps/novnc
 dev-python/jsonmerge
-dev-python/jinja2_pluralize
+dev-python/jinja2-pluralize
 dev-python/fido2
 dev-python/github3-py
 dev-python/google-auth-oauthlib
