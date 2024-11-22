@@ -11,10 +11,13 @@ inherit distutils-r1
 DESCRIPTION="Bringing the elegance of C# EventHandler to Python"
 HOMEPAGE="
 	https://pypi.org/project/Events/
-	https://github.com/pyeve/events
+	https://github.com/pyeve/events/
 "
 # No sdist in pypi as of PV=0.5
-SRC_URI="https://github.com/pyeve/events/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/pyeve/events/archive/v${PV}.tar.gz
+		-> ${P,,}.gh.tar.gz
+"
 S=${WORKDIR}/${P,,}
 
 LICENSE="BSD"
