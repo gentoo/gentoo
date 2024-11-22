@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake python-any-r1
 
 CommitId=c07e3a0400713d546e0dea2d5466dd22ea389c73
@@ -32,7 +32,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	test? ( dev-cpp/gtest )
 	$(python_gen_any_dep '
-		dev-python/PeachPy[${PYTHON_USEDEP}]
+		dev-python/peachpy[${PYTHON_USEDEP}]
 	')
 "
 
@@ -41,7 +41,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 python_check_deps() {
-	python_has_version "dev-python/PeachPy[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/peachpy[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

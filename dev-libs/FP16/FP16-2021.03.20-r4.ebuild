@@ -1,8 +1,8 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit python-r1 cmake
 
 CommitId=0a92994d729ff76a58f692d3028ca1b64b145d91
@@ -22,7 +22,7 @@ DEPEND="dev-libs/psimd"
 RDEPEND="
 	${DEPEND}
 	${PYTHON_DEPS}
-	dev-python/PeachPy[${PYTHON_USEDEP}]
+	dev-python/peachpy[${PYTHON_USEDEP}]
 "
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"

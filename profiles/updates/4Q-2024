@@ -40,3 +40,4 @@ move dev-python/mypy_extensions dev-python/mypy-extensions
 move dev-python/Nuitka dev-python/nuitka
 move dev-python/Opcodes dev-python/opcodes
 move dev-python/OutputCheck dev-python/outputcheck
+move dev-python/PeachPy dev-python/peachpy
