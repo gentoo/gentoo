@@ -1966,6 +1966,7 @@ gcc_do_filter_flags() {
 
 	if ver_test -lt 15.1 ; then
 		filter-flags -fdiagnostics-explain-harder -fdiagnostics-details
+		filter-flags -fdiagnostics-set-output=text:experimental-nesting=yes
 	fi
 
 	if is_d ; then
