@@ -83,7 +83,7 @@ src_install() {
 	meson_src_install
 	fowners -R ${PN}: /etc/${PN}
 
-	newinitd "${FILESDIR}"/kresd.initd-r1 kresd
+	newinitd "${FILESDIR}"/kresd.initd-r2 kresd
 	newconfd "${FILESDIR}"/kresd.confd-r1 kresd
 }
 
