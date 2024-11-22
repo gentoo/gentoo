@@ -23,7 +23,9 @@ LICENSE="GPL-2+ LGPL-2.1"
 SLOT="0/5.0.0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="contrib selinux sensord static-libs"
+IUSE="contrib selinux sensord static-libs test"
+
+RESTRICT="!test? ( test )"
 
 COMMON_DEPS="
 	sensord? (
@@ -33,7 +35,8 @@ COMMON_DEPS="
 
 RDEPEND="${COMMON_DEPS}
 	dev-lang/perl
-	selinux? ( sec-policy/selinux-sensord )"
+	selinux? ( sec-policy/selinux-sensord )
+	test? ( dev-perl/Test-Cmd )"
 
 DEPEND="${COMMON_DEPS}
 	app-alternatives/yacc
