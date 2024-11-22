@@ -4,7 +4,7 @@
 EAPI=8
 
 PATCHSET="${PN}-5.15.14_p20240510-patchset"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs estack flag-o-matic multiprocessing python-any-r1 qt5-build toolchain-funcs
 
@@ -103,6 +103,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.14_p20240510-re2.patch" # bug 913923
 	"${FILESDIR}/${PN}-5.15.14_p20240510-gcc15-cstdint.patch"
 	"${FILESDIR}/${PN}-5.15.14_p20240510-gcc15-template-id-cdtor.patch"
+	"${FILESDIR}/${P}-py3.13-pipes.patch" # thx to Fedora
 )
 
 python_check_deps() {
