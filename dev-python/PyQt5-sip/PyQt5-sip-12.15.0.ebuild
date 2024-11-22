@@ -6,9 +6,11 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYPI_PN=${PN/-/_}
+# actually, it's PyQt5-sip but upstream uses incorrect sdist name
+PYPI_PN=PyQt5_sip
 # keep compat in sync with PyQt5 or else it confuses some revdeps
 PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="sip extension module for PyQt5"
