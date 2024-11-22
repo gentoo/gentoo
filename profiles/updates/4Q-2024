@@ -41,3 +41,4 @@ move dev-python/Nuitka dev-python/nuitka
 move dev-python/Opcodes dev-python/opcodes
 move dev-python/OutputCheck dev-python/outputcheck
 move dev-python/PeachPy dev-python/peachpy
+move dev-python/requests_download dev-python/requests-download
