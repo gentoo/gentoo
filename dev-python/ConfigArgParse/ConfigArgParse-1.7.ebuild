@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
+MY_P=ConfigArgParse-${PV}
 DESCRIPTION="Drop-in replacement for argparse supporting config files and env variables"
 HOMEPAGE="
 	https://github.com/bw2/ConfigArgParse/
 	https://pypi.org/project/ConfigArgParse/"
 SRC_URI="
 	https://github.com/bw2/ConfigArgParse/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
