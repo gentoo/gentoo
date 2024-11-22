@@ -9,17 +9,14 @@ PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
 
-MY_P="${PN,,}-${PV}"
-
 DESCRIPTION="Python library for communicating with AMQP peers using Twisted"
 HOMEPAGE="https://github.com/txamqp/txamqp"
 # pypi tarball misses doc files
 # https://github.com/txamqp/txamqp/pull/10
 SRC_URI="
 	https://github.com/txamqp/txamqp/archive/${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
