@@ -151,6 +151,7 @@ app-text/fblog
 app-shells/nushell
 app-misc/rpick
 app-misc/skim
+app-misc/anki
 app-i18n/yaskkserv2
 app-emulation/cloud-init
 app-forensics/yara-x
