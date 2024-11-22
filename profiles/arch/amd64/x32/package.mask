@@ -72,7 +72,6 @@ app-admin/calamares
 app-text/zeal
 app-editors/ghostwriter
 app-editors/retext
-app-misc/anki
 app-office/merkuro
 app-office/kmymoney
 app-office/skrooge
