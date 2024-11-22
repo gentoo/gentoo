@@ -11,15 +11,19 @@ SRC_URI="http://0pointer.de/lennart/projects/ifplugd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86"
 IUSE="doc selinux"
 
-DEPEND="virtual/pkgconfig
-	doc? ( www-client/lynx )
-	>=dev-libs/libdaemon-0.5"
-RDEPEND=">=dev-libs/libdaemon-0.5
+DEPEND=">=dev-libs/libdaemon-0.5"
+RDEPEND="
+	${DEPEND}
 	>=sys-apps/baselayout-1.12
-	selinux? ( sec-policy/selinux-ifplugd )"
+	selinux? ( sec-policy/selinux-ifplugd )
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( www-client/lynx )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-nlapi.diff"
@@ -34,8 +38,13 @@ PATCHES=(
 DOCS=( doc/README doc/SUPPORTED_DRIVERS )
 HTML_DOCS=( doc/README.html doc/style.css )
 
-src_configure() {
+src_prepare() {
+	default
+
 	eautoreconf
+}
+
+src_configure() {
 	econf \
 		$(use_enable doc lynx) \
 		--with-initdir=/etc/init.d \
