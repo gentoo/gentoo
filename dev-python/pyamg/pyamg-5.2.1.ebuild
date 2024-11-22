@@ -29,7 +29,7 @@ DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 RDEPEND="
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	dev-python/cppheaderparser[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.11.0[${PYTHON_USEDEP}]

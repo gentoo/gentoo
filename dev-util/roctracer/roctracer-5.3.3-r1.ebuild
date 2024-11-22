@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/rocr-runtime
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	dev-python/cppheaderparser[${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]
 	')
 "
@@ -35,7 +35,7 @@ PATCHES=( "${FILESDIR}"/roctracer-5.3.3-flat-lib-layout.patch
 	"${FILESDIR}"/roctracer-5.3.3-Werror.patch )
 
 python_check_deps() {
-	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" \
+	python_has_version "dev-python/cppheaderparser[${PYTHON_USEDEP}]" \
 		"dev-python/ply[${PYTHON_USEDEP}]"
 }
 
