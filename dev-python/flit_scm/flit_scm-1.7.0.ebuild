@@ -8,14 +8,16 @@ PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1
 
+MY_P=flit_scm-${PV}
 DESCRIPTION="A PEP 518 build backend combining flit with setuptools_scm"
 HOMEPAGE="
 	https://gitlab.com/WillDaSilva/flit_scm/
 	https://pypi.org/project/flit-scm/
 "
 SRC_URI="
-	https://gitlab.com/WillDaSilva/flit_scm/-/archive/${PV}/${P}.tar.bz2
+	https://gitlab.com/WillDaSilva/flit_scm/-/archive/${PV}/${MY_P}.tar.bz2
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,7 +29,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		<dev-python/tomli-3[${PYTHON_USEDEP}]
 		>=dev-python/tomli-2[${PYTHON_USEDEP}]
-	' 3.8 3.9 3.10 )
+	' 3.10)
 "
 BDEPEND="
 	${RDEPEND}
