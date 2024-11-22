@@ -13,7 +13,7 @@ SRC_URI="https://github.com/frescobaldi/frescobaldi/archive/refs/tags/v${PV}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-python/PyQt5[gui,network,printsupport,svg,widgets,${PYTHON_USEDEP}]
