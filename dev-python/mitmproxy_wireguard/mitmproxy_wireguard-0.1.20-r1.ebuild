@@ -206,12 +206,15 @@ CRATES="
 
 inherit cargo distutils-r1
 
+MY_P=mitmproxy_wireguard-${PV}
 DESCRIPTION="WireGuard frontend for mitmproxy"
 HOMEPAGE="https://github.com/decathorpe/mitmproxy_wireguard"
 SRC_URI="
-	https://github.com/decathorpe/mitmproxy_wireguard/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/decathorpe/mitmproxy_wireguard/archive/${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 	${CARGO_CRATE_URIS}
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -222,10 +225,13 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 
-RDEPEND=""
-BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/setuptools-rust[${PYTHON_USEDEP}]
+"
 
-QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/${PN}/${PN}.*.so"
+QA_FLAGS_IGNORED="
+	usr/lib.*/py.*/site-packages/mitmproxy_wireguard/mitmproxy_wireguard.*.so
+"
 
 src_test() {
 	cargo_src_test
