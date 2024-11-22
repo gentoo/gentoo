@@ -15,6 +15,12 @@ KEYWORDS="~amd64"
 
 IUSE="+ocamlopt"
 
+RDEPEND="
+	dev-ml/0install:=[ocamlopt?]
+	dev-ml/cudf:=[ocamlopt?]
+	dev-ml/extlib:=[ocamlopt?]
+"
+
 src_configure() {
 	:
 }
