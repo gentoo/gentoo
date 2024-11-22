@@ -213,6 +213,48 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 # 	ebuild foo.ebuild compile
 # @CODE
 
+# @ECLASS_VARIABLE: EBUILD_DEATH_HOOKS
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used internally.
+
+# @ECLASS_VARIABLE: JAVA_PKG_BUILD_DEPEND_FILE
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in ejunit_, java-pkg_do_write_ and java-pkg_record-jar_
+
+# @ECLASS_VARIABLE: JAVA_PKG_DEPEND_FILE
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in ejunit_, java-pkg_do_write_ and java-pkg_record-jar_
+
+# @ECLASS_VARIABLE: JAVA_PKG_EXTRA_ENV
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in java-pkg_register-environment-variable and java-pkg_do_write_,
+
+# @ECLASS_VARIABLE: JAVA_PKG_EXTRA_ENV_VARS
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in java-pkg_register-environment-variable and java-pkg_do_write_
+
+# @ECLASS_VARIABLE: JAVA_PKG_OPTIONAL_DEPEND_FILE
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in java-pkg_do_write_ and java-pkg_record-jar_
+
+# @ECLASS_VARIABLE: WANT_JAVA_CONFIG
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Gets exported to make sure we use java-config-2
+
 # @ECLASS_VARIABLE: JAVADOC_CLASSPATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
