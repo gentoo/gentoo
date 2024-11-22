@@ -253,9 +253,6 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 #	)
 # @CODE
 
-# TODO document me
-JAVA_PKG_QA_VIOLATIONS=0
-
 # @FUNCTION: java-pkg_doexamples
 # @USAGE: [--subdir <subdir>] <file1/dir1> [<file2> ...]
 # @DESCRIPTION:
@@ -2784,19 +2781,6 @@ java-pkg_die() {
 }
 
 
-# TODO document
-# List jars in the source directory, ${S}
-java-pkg_jar-list() {
-	if [[ -n "${JAVA_PKG_DEBUG}" ]]; then
-		einfo "Linked Jars"
-		find "${S}" -type l -name '*.jar' -print0 | xargs -0 -r -n 500 ls -ald | sed -e "s,${WORKDIR},\${WORKDIR},"
-		einfo "Jars"
-		find "${S}" -type f -name '*.jar' -print0 | xargs -0 -r -n 500 ls -ald | sed -e "s,${WORKDIR},\${WORKDIR},"
-		einfo "Classes"
-		find "${S}" -type f -name '*.class' -print0 | xargs -0 -r -n 500 ls -ald | sed -e "s,${WORKDIR},\${WORKDIR},"
-	fi
-}
-
 # @FUNCTION: java-pkg_verify-classes
 # @INTERNAL
 # @DESCRIPTION:
@@ -2958,14 +2942,7 @@ java-pkg_announce-qa-violation() {
 		nodie="true"
 		shift
 	fi
-	echo "Java QA Notice: $@" >&2
-	increment-qa-violations
 	[[ -z "${nodie}" ]] && is-java-strict && die "${@}"
-}
-
-increment-qa-violations() {
-	let "JAVA_PKG_QA_VIOLATIONS+=1"
-	export JAVA_PKG_QA_VIOLATIONS
 }
 
 # @FUNCTION: is-java-strict
