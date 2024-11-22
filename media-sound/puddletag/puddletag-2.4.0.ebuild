@@ -19,7 +19,7 @@ IUSE="acoustid quodlibet"
 
 RDEPEND="
 	>=dev-python/configobj-5.0.8[${PYTHON_USEDEP}]
-	>=dev-python/Levenshtein-0.25.1[${PYTHON_USEDEP}]
+	>=dev-python/levenshtein-0.25.1[${PYTHON_USEDEP}]
 	>=dev-python/lxml-5.2.2[${PYTHON_USEDEP}]
 	acoustid? ( >=dev-python/pyacoustid-1.3.0[${PYTHON_USEDEP}] )
 	>=dev-python/pyparsing-3.1.2[${PYTHON_USEDEP}]
