@@ -13,13 +13,15 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/0install:=[ocamlopt?]
 	dev-ml/cudf:=[ocamlopt?]
 	dev-ml/extlib:=[ocamlopt?]
 "
+BDEPEND="test? ( dev-ml/alcotest )"
 
 src_configure() {
 	:
