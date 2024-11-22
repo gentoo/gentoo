@@ -4,11 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_PN=PyQt-builder
 PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="The PEP 517 compliant PyQt build system"
-HOMEPAGE="https://github.com/Python-PyQt/PyQt-builder/"
+HOMEPAGE="
+	https://github.com/Python-PyQt/PyQt-builder/
+	https://pypi.org/project/PyQt-builder/
+"
 
 LICENSE="BSD-2"
 SLOT="0"
