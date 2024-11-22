@@ -16,9 +16,8 @@ HOMEPAGE="
 # No sdist in pypi as of PV=0.5
 SRC_URI="
 	https://github.com/pyeve/events/archive/v${PV}.tar.gz
-		-> ${P,,}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${P,,}
 
 LICENSE="BSD"
 SLOT="0"
