@@ -11,10 +11,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python implementation of DES and TRIPLE DES"
-HOMEPAGE="
-	https://twhiteman.netfirms.com/des.html
-	https://pypi.org/project/pyDes/
-"
+HOMEPAGE="https://pypi.org/project/pyDes/"
 
 LICENSE="MIT"
 SLOT="0"
