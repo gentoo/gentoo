@@ -64,4 +64,5 @@ src_install() {
 	default
 
 	systemd_dounit examples/systemd-root-shell/gs-root-shell.service
+	systemd_dounit "${FILESDIR}"/gs-socks-proxy.service
 }
