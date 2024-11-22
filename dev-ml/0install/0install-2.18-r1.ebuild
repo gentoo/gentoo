@@ -17,10 +17,15 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	dev-ml/lwt:=[ocamlopt?]
+	dev-ml/ocaml-sha:=[ocamlopt?]
+	dev-ml/ocplib-endian:=[ocamlopt?]
 	dev-ml/ocurl:=[ocamlopt?]
-	dev-ml/yojson:=[ocamlopt?]
+	dev-ml/react:=
+	dev-ml/stdlib-shims:=[ocamlopt?]
 	dev-ml/xmlm:=
+	dev-ml/yojson:=[ocamlopt?]
 "
+BDEPEND="dev-ml/findlib"
 
 RESTRICT="test"
 
