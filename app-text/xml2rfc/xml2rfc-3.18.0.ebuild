@@ -25,7 +25,7 @@ KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-python/platformdirs-3.6.0[${PYTHON_USEDEP}]
-	dev-python/ConfigArgParse[${PYTHON_USEDEP}]
+	dev-python/configargparse[${PYTHON_USEDEP}]
 	dev-python/intervaltree[${PYTHON_USEDEP}]
 	>=dev-python/google-i18n-address-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/html5lib-1.0.1[${PYTHON_USEDEP}]

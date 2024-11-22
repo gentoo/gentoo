@@ -21,3 +21,4 @@ move dev-python/APScheduler dev-python/apscheduler
 move dev-python/Arpeggio dev-python/arpeggio
 move dev-python/Babel dev-python/babel
 move dev-python/BitVector dev-python/bitvector
+move dev-python/ConfigArgParse dev-python/configargparse
