@@ -16,8 +16,8 @@ HOMEPAGE="
 	https://github.com/MDAnalysis/GridDataFormats/
 "
 
-SLOT="0"
 LICENSE="LGPL-3"
+SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
