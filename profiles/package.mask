@@ -33,6 +33,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-22)
+# Qt5 packages without any revdeps.
+dev-qt/pixeltool
+dev-qt/qdbus
+dev-qt/qdbusviewer
+dev-qt/qdoc
+dev-qt/qtbluetooth:5
+dev-qt/qtpaths
+dev-qt/qtplugininfo
+dev-qt/qtquicktimeline:5
+dev-qt/qtsensors:5
+dev-qt/qtserialbus:5
+dev-qt/qtvirtualkeyboard:5
+dev-qt/qtwebview:5
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
 #
