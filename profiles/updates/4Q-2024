@@ -17,3 +17,4 @@ move dev-python/cchardet dev-python/faust-cchardet
 move dev-python/protobuf-python dev-python/protobuf
 move media-libs/oneVPL-intel-gpu media-libs/vpl-gpu-rt
 move net-analyzer/RustScan net-analyzer/rustscan
+move dev-python/APScheduler dev-python/apscheduler

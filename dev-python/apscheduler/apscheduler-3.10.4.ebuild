@@ -40,7 +40,7 @@ PATCHES=(
 	# disable test fixtures using external servers (mongodb, redis...)
 	# these fixtures are using markers in git master, so the patch
 	# should be no longer necessary with next major bump
-	"${FILESDIR}"/APScheduler-3.8.1-external-server-tests.patch
+	"${FILESDIR}"/apscheduler-3.8.1-external-server-tests.patch
 )
 
 EPYTEST_DESELECT=(
