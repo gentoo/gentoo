@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
   <upstream>
+    <bugs-to>https://github.com/dimkr/loksh/issues/</bugs-to>
     <remote-id type="github">dimkr/loksh</remote-id>
   </upstream>
 </pkgmetadata>
