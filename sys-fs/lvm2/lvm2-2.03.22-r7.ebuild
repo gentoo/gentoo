@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.22-autoconf-2.72-egrep.patch
 	"${FILESDIR}"/${PN}-2.03.22-thin-version-checking.patch
 	"${FILESDIR}"/${PN}-2.03.22-thin-autodetect.patch
+	"${FILESDIR}"/${PN}-2.03.22-basename-musl.patch
 )
 
 pkg_setup() {
