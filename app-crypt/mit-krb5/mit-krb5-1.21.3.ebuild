@@ -71,6 +71,9 @@ src_configure() {
 	# lto-type-mismatch (bug #854225)
 	filter-lto
 
+	# https://github.com/krb5/krb5/pull/1304 (bug #944006)
+	append-cflags -std=gnu17
+
 	multilib-minimal_src_configure
 }
 
