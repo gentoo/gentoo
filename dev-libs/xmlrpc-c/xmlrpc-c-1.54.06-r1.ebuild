@@ -29,7 +29,12 @@ RDEPEND="
 	libxml2? ( dev-libs/libxml2 )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+
+# configure calls curl-config, hence curl in BDEPEND
+BDEPEND="
+	virtual/pkgconfig
+	curl? ( net-misc/curl )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.51.06-pkg-config-libxml2.patch
