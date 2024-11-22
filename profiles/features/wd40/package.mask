@@ -110,7 +110,7 @@ dev-python/pyghmi
 dev-python/omemo-dr
 net-im/transwhat
 dev-python/noiseprotocol
-dev-python/mitmproxy_wireguard
+dev-python/mitmproxy-wireguard
 dev-python/magic-wormhole
 dev-python/magic-wormhole-transit-relay
 dev-python/magic-wormhole-mailbox-server

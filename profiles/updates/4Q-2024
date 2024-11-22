@@ -35,3 +35,4 @@ move dev-python/IPy dev-python/ipy
 move dev-python/jinja2_pluralize dev-python/jinja2-pluralize
 move dev-python/Levenshtein dev-python/levenshtein
 move dev-python/MechanicalSoup dev-python/mechanicalsoup
+move dev-python/mitmproxy_wireguard dev-python/mitmproxy-wireguard
