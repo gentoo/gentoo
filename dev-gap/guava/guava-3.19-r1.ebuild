@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gap-pkg toolchain-funcs
+inherit gap-pkg flag-o-matic toolchain-funcs
 
 DESCRIPTION="GAP package for computing with error-correcting codes"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -25,6 +25,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# "false" conflicts with c23 bool type
+	append-cflags -std=c17
+
 	# This will run the top-level fake ./configure...
 	gap-pkg_src_configure
 
