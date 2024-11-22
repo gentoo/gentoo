@@ -96,6 +96,8 @@ src_configure() {
 	# bug #917662, bug #924659
 	filter-lto
 	append-flags -fno-strict-aliasing $(test-flags-CXX -fno-lifetime-dse)
+	# bug #943285
+	append-cxxflags -std=gnu++03
 
 	# otherwise this doesnt build with gcc-6
 	# http://tracker.firebirdsql.org/browse/CORE-5099

@@ -94,6 +94,8 @@ src_prepare() {
 	# bug #917662, bug #924659
 	filter-lto
 	append-flags -fno-strict-aliasing $(test-flags-CXX -fno-lifetime-dse)
+	# bug #943285
+	append-cxxflags -std=gnu++03
 
 	# use gentoo's CXXFLAGS instead of whatever firebird decided on
 	# doesn't replace all firebird's CXXFLAGS, but at least this is last,
