@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
+MY_P=eyeD3-${PV}
 DESCRIPTION="Module for manipulating ID3 (v1 + v2) tags in Python"
 HOMEPAGE="
 	https://eyed3.nicfit.net/
@@ -16,12 +17,13 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/nicfit/eyeD3/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 	test? (
 		https://eyed3.nicfit.net/releases/eyeD3-test-data.tgz
 			-> eyeD3-test-data-r1.tgz
 	)
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0.7"
