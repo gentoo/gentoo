@@ -3,18 +3,19 @@
 
 EAPI=8
 
-PYTHON_REQ_USE="sqlite"
-PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Distributed object middleware for Python (RPC)"
 HOMEPAGE="
-	https://pyro5.readthedocs.io
+	https://pyro5.readthedocs.io/
+	https://github.com/irmen/Pyro5/
 	https://pypi.org/project/Pyro5/
-	https://github.com/irmen/Pyro5
 "
 
 LICENSE="MIT"
@@ -33,11 +34,11 @@ distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/sphinx-rtd-theme
 
-EPYTEST_DESELECT=(
-	# https://github.com/irmen/Pyro5/issues/83 (pypy3 specific)
-	tests/test_server.py::TestServerOnce::testRegisterWeak
-)
-
 python_test() {
+	local EPYTEST_DESELECT=(
+		# https://github.com/irmen/Pyro5/issues/83 (pypy3 specific)
+		tests/test_server.py::TestServerOnce::testRegisterWeak
+	)
+
 	epytest -m 'not network'
 }
