@@ -55,6 +55,7 @@ media-libs/libva-intel-driver hybrid
 # dev-qt/qtwebengine requires net-libs/nodejs, plus mask all
 # reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
+app-misc/anki gui
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 games-util/lgogdownloader gui
