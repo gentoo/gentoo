@@ -208,7 +208,10 @@ inherit cargo distutils-r1
 
 MY_P=mitmproxy_wireguard-${PV}
 DESCRIPTION="WireGuard frontend for mitmproxy"
-HOMEPAGE="https://github.com/decathorpe/mitmproxy_wireguard"
+HOMEPAGE="
+	https://github.com/decathorpe/mitmproxy_wireguard/
+	https://pypi.org/project/mitmproxy-wireguard/
+"
 SRC_URI="
 	https://github.com/decathorpe/mitmproxy_wireguard/archive/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
