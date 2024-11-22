@@ -11,11 +11,13 @@ app-text/ttf2pk2
 app-text/xdvik
 dev-libs/kpathsea
 dev-libs/ptexenc
+dev-python/latexrestricted
 dev-tex/biber
 dev-tex/biblatex
 dev-tex/bibtexu
 dev-tex/glossaries
 dev-tex/latex-beamer
+dev-tex/latex2pydata
 dev-tex/latexdiff
 dev-tex/latexmk
 dev-tex/minted
