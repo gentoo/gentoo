@@ -105,6 +105,7 @@ pkg_setup() {
 		~DRM_KMS_HELPER
 		~SYSVIPC
 		~!LOCKDEP
+		~!PREEMPT_RT
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES
 		$(usev powerd '~CPU_FREQ')
@@ -130,6 +131,10 @@ pkg_setup() {
 	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of another option that requires it such as CONFIG_KVM."
+	local ERROR_PREEMPT_RT="CONFIG_PREEMPT_RT: is set but is unsupported by NVIDIA upstream and
+	will fail to build unless the env var IGNORE_PREEMPT_RT_PRESENCE=1 is
+	set. Please do not report issues if run into e.g. kernel panics while
+	ignoring this."
 
 	linux-mod-r1_pkg_setup
 }
