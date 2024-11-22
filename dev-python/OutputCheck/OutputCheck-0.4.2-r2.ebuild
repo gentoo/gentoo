@@ -4,14 +4,21 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=OutputCheck-${PV}
 DESCRIPTION="A tool for checking the output of console programs inspired by LLVM's FileCheck"
-HOMEPAGE="https://github.com/stp/OutputCheck/"
-SRC_URI="https://github.com/stp/${PN}/archive/${PV}.tar.gz
-	-> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/stp/OutputCheck/
+	https://pypi.org/project/OutputCheck/
+"
+SRC_URI="
+	https://github.com/stp/OutputCheck/archive/${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
@@ -19,11 +26,17 @@ KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-python/lit[${PYTHON_USEDEP}] )"
-
-PATCHES=( "${FILESDIR}/${PN}-0.4.2-Driver.patch" )
+BDEPEND="
+	test? (
+		dev-python/lit[${PYTHON_USEDEP}]
+	)
+"
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${PN}-0.4.2-Driver.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# Remove bad tests.
