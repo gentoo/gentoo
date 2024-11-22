@@ -27,3 +27,4 @@ move dev-python/Events dev-python/events
 move dev-python/eyeD3 dev-python/eyed3
 move dev-python/flit_scm dev-python/flit-scm
 move dev-python/Faker dev-python/faker
+move dev-python/Frozen-Flask dev-python/frozen-flask
