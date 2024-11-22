@@ -6,7 +6,9 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
 PYPI_NO_NORMALIZE=1
+PYPI_PN=PyQt6
 PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 # 'can' work with older Qt depending on features, but keeping it simple
