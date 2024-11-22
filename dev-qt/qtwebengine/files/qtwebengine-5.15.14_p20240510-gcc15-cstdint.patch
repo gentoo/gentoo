@@ -158,3 +158,13 @@
  #include <cstring>
  #include <memory>
  #include <string>
+--- a/src/3rdparty/chromium/base/task/thread_pool.h
++++ b/src/3rdparty/chromium/base/task/thread_pool.h
+@@ -5,6 +5,7 @@
+ #ifndef BASE_TASK_THREAD_POOL_H_
+ #define BASE_TASK_THREAD_POOL_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <utility>
+ 
