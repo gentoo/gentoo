@@ -14,7 +14,7 @@ SRC_URI="https://github.com/djs55/${PN}/releases/download/v${PV}/${MYP}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
