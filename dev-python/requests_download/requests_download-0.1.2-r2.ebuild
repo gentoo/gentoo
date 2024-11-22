@@ -8,15 +8,17 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
+MY_P=requests_download-${PV}
 DESCRIPTION="A convenient function to download to a file using requests"
 HOMEPAGE="
-	https://github.com/takluyver/requests_download
+	https://github.com/takluyver/requests_download/
 	https://pypi.org/project/requests_download/
 "
 SRC_URI="
 	https://github.com/takluyver/requests_download/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
