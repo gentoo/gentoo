@@ -15,13 +15,20 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-PATCHES=( "${FILESDIR}"/${PN}-test.patch )
+RDEPEND="
+	app-emacs/compat
+"
+BDEPEND="
+	${RDEPEND}
+"
+
+PATCHES=( "${FILESDIR}/${PN}-test.patch" )
 
 DOCS=( README.org )
 SITEFILE="50${PN}-gentoo.el"
 
 src_test() {
-	${EMACS} ${EMACSFLAGS} -L . --load ${PN}-test.el || die "test failed"
+	${EMACS} ${EMACSFLAGS} -L . --load "${PN}-test.el" || die "test failed"
 }
 
 src_install() {
