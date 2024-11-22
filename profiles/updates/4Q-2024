@@ -24,3 +24,4 @@ move dev-python/BitVector dev-python/bitvector
 move dev-python/ConfigArgParse dev-python/configargparse
 move dev-python/CppHeaderParser dev-python/cppheaderparser
 move dev-python/Events dev-python/events
+move dev-python/eyeD3 dev-python/eyed3

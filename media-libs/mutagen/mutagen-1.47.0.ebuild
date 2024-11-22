@@ -23,7 +23,7 @@ KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-li
 
 BDEPEND="
 	test? (
-		dev-python/eyeD3[${PYTHON_USEDEP}]
+		dev-python/eyed3[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		media-libs/flac[ogg]
 	)
