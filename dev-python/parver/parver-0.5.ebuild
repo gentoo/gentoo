@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
-	>=dev-python/Arpeggio-1.7[${PYTHON_USEDEP}]
+	>=dev-python/arpeggio-1.7[${PYTHON_USEDEP}]
 	>=dev-python/attrs-19.2[${PYTHON_USEDEP}]
 "
 
