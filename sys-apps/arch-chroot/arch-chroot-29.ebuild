@@ -9,13 +9,12 @@ DESCRIPTION="Wraps the chroot command while ensuring that important filesystems 
 HOMEPAGE="https://gitlab.archlinux.org/archlinux/arch-install-scripts"
 SRC_URI="https://gitlab.archlinux.org/archlinux/arch-install-scripts/-/archive/v${PV}/arch-install-scripts-v${PV}.tar.bz2"
 
+S="${WORKDIR}/arch-install-scripts-v${PV}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 BDEPEND="app-text/asciidoc"
-
-S="${WORKDIR}/arch-install-scripts-v${PV}"
 
 src_compile() {
 	emake MANS="doc/arch-chroot.8" BINPROGS="arch-chroot"
