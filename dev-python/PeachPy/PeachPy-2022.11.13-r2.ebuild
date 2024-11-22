@@ -4,15 +4,23 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
-CommitId=349e8f836142b2ed0efeb6bb99b1b715d87202e9
+EGIT_COMMIT=349e8f836142b2ed0efeb6bb99b1b715d87202e9
+MY_P=PeachPy-${EGIT_COMMIT}
 
 DESCRIPTION="Portable Efficient Assembly Code-generator in Higher-level Python"
-HOMEPAGE="https://pypi.org/project/PeachPy/"
-SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
-	-> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/Maratyszcza/PeachPy/
+	https://pypi.org/project/PeachPy/
+"
+SRC_URI="
+	https://github.com/Maratyszcza/PeachPy/archive/${EGIT_COMMIT}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -24,8 +32,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 DOCS=README.rst
 
