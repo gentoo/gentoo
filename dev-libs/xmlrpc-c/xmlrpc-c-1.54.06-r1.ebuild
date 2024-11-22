@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit flag-o-matic autotools toolchain-funcs
 
 # Upstream maintains 3 release channels: https://xmlrpc-c.sourceforge.net/release.html
 # 1. Only the "Super Stable" series is released as a tarball
@@ -53,6 +53,9 @@ src_prepare() {
 
 src_configure() {
 	tc-export PKG_CONFIG
+
+	# xmlrpc-c uses std::auto_ptr which has been removed in C++17
+	append-cxxflags "-std=c++14"
 
 	econf \
 		--disable-libwww-client \
