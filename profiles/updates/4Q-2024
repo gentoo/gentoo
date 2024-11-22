@@ -31,3 +31,4 @@ move dev-python/Frozen-Flask dev-python/frozen-flask
 move dev-python/GitPython dev-python/gitpython
 move dev-python/GridDataFormats dev-python/griddataformats
 move dev-python/ipython_genutils dev-python/ipython-genutils
+move dev-python/IPy dev-python/ipy
