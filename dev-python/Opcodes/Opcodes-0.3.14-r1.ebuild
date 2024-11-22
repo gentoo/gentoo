@@ -13,7 +13,7 @@ MY_P=${PN^}-${EGIT_COMMIT}
 DESCRIPTION="Opcodes Project"
 HOMEPAGE="
 	https://github.com/Maratyszcza/Opcodes/
-	https://pypi.org/project/Opcodes/
+	https://pypi.org/project/opcodes/
 "
 SRC_URI="
 	https://github.com/Maratyszcza/Opcodes/archive/${EGIT_COMMIT}.tar.gz
