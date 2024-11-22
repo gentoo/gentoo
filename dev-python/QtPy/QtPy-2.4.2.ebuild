@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_PN=QtPy
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 virtualx pypi
