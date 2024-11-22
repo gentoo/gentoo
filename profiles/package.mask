@@ -34,6 +34,18 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Qt5 packages without any revdeps.
+dev-qt/pixeltool
+dev-qt/qdbus
+dev-qt/qdbusviewer
+dev-qt/qdoc
+dev-qt/qtplugininfo
+dev-qt/qtquicktimeline:5
+dev-qt/qtserialbus:5
+dev-qt/qtvirtualkeyboard:5
+dev-qt/qtwebview:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Unmaintained in Gentoo, last release from 2022 needs Qt5WebEngine.
 # Bug #926655. Removal on 2025-02-22.
 app-text/bibletime
