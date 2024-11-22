@@ -29,7 +29,7 @@ IUSE="doc latex"
 
 RDEPEND="
 	>=dev-python/alabaster-0.7.14[${PYTHON_USEDEP}]
-	>=dev-python/Babel-2.13[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.13[${PYTHON_USEDEP}]
 	<dev-python/docutils-0.22[${PYTHON_USEDEP}]
 	>=dev-python/docutils-0.20[${PYTHON_USEDEP}]
 	>=dev-python/imagesize-1.3[${PYTHON_USEDEP}]

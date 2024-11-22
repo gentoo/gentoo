@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	dev-libs/libayatana-appindicator
-	dev-python/Babel[${PYTHON_USEDEP}]
+	dev-python/babel[${PYTHON_USEDEP}]
 	dev-python/croniter[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]

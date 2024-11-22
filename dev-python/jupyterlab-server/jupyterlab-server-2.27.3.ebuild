@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
-	>=dev-python/Babel-2.10[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.10[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/json5-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.18.0[${PYTHON_USEDEP}]

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="tk"  # for site-packages/Xlib/ext/randr.py
 DISTUTILS_USE_PEP517=setuptools
 
@@ -22,7 +22,7 @@ PATCHES=(
 
 RDEPEND="
 	dev-libs/libayatana-appindicator
-	dev-python/Babel[${PYTHON_USEDEP}]
+	dev-python/babel[${PYTHON_USEDEP}]
 	dev-python/croniter[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]

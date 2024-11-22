@@ -37,7 +37,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 # 	)
 # "
 RDEPEND="
-	>=dev-python/Babel-2.9.0[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-2.11.1[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.3.6[${PYTHON_USEDEP}]

@@ -19,7 +19,7 @@ RESTRICT="test" # needs coveralls
 
 BDEPEND=">=dev-python/docutils-0.13[${PYTHON_USEDEP}]" # needs rst2man to build manpage
 RDEPEND="${BDEPEND}
-	>=dev-python/Babel-2.6.0[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.3[${PYTHON_USEDEP}]
 	>=dev-python/doit-0.32[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.3.5[${PYTHON_USEDEP}]

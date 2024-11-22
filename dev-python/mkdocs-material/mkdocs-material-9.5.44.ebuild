@@ -31,7 +31,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="social"
 
 RDEPEND="
-	>=dev-python/Babel-2.10.3[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.10.3[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.4[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.6[${PYTHON_USEDEP}]

@@ -32,7 +32,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
-	>=dev-python/Babel-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.7.0[${PYTHON_USEDEP}]
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
