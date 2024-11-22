@@ -256,7 +256,7 @@ _distutils_set_globals() {
 				;;
 			flit_scm)
 				bdep+='
-					>=dev-python/flit_scm-1.7.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-scm-1.7.0[${PYTHON_USEDEP}]
 				'
 				;;
 			hatchling)
@@ -836,7 +836,7 @@ _distutils-r1_print_package_versions() {
 			flit_scm)
 				packages+=(
 					dev-python/flit-core
-					dev-python/flit_scm
+					dev-python/flit-scm
 					dev-python/setuptools-scm
 				)
 				;;
