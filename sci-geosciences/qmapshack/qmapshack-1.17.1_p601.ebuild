@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Maproom/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.g
 S="${WORKDIR}"/${PN}-${COMMIT}
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="dbus"
 
 RDEPEND="
