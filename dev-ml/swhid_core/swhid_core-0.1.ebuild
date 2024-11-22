@@ -11,6 +11,6 @@ SRC_URI="https://github.com/OCamlPro/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc ~riscv"
 
 IUSE="+ocamlopt"
