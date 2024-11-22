@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-python/requests-2.32.0[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
-	dev-python/Events[${PYTHON_USEDEP}]
+	dev-python/events[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
