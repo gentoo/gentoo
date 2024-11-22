@@ -30,3 +30,4 @@ move dev-python/Faker dev-python/faker
 move dev-python/Frozen-Flask dev-python/frozen-flask
 move dev-python/GitPython dev-python/gitpython
 move dev-python/GridDataFormats dev-python/griddataformats
+move dev-python/ipython_genutils dev-python/ipython-genutils
