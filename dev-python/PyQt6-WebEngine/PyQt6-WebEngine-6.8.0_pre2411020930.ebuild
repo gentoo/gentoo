@@ -6,8 +6,10 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
 PYPI_NO_NORMALIZE=1
-PYPI_PN=${PN/-/_}
+# actually, it's PyQt6-WebEngine but upstream uses incorrect sdist name
+PYPI_PN=PyQt6_WebEngine
 PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1 flag-o-matic multiprocessing qmake-utils # pypi
 
 QT_PV=$(ver_cut 1-2):6
@@ -16,7 +18,7 @@ DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
 
 # TODO: drop this and uncomment 'pypi' on a proper bump
-MY_P=${PN/-/_}-$(ver_cut 1-3).dev$(ver_cut 5)
+MY_P=${PYPI_PN}-$(ver_cut 1-3).dev$(ver_cut 5)
 SRC_URI="https://www.riverbankcomputing.com/pypi/packages/PyQt6-WebEngine/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
