@@ -38,3 +38,4 @@ move dev-python/MechanicalSoup dev-python/mechanicalsoup
 move dev-python/mitmproxy_wireguard dev-python/mitmproxy-wireguard
 move dev-python/mypy_extensions dev-python/mypy-extensions
 move dev-python/Nuitka dev-python/nuitka
+move dev-python/Opcodes dev-python/opcodes

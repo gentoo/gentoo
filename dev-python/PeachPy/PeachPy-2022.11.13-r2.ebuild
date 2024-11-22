@@ -28,7 +28,7 @@ KEYWORDS="~amd64"
 RESTRICT="test" # depends on an old version of werkzeug
 
 RDEPEND="
-	dev-python/Opcodes[${PYTHON_USEDEP}]
+	dev-python/opcodes[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
