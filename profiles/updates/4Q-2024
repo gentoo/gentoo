@@ -42,3 +42,4 @@ move dev-python/Opcodes dev-python/opcodes
 move dev-python/OutputCheck dev-python/outputcheck
 move dev-python/PeachPy dev-python/peachpy
 move dev-python/requests_download dev-python/requests-download
+move dev-python/sphinx_selective_exclude dev-python/sphinx-selective-exclude
