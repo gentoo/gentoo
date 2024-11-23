@@ -1,0 +1,6 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2024-11-23)
+# rust-bin is available for loongarch64-unknown-linux-musl
+-dev-lang/rust-bin
