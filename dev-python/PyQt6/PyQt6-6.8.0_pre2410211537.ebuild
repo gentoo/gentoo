@@ -90,7 +90,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	>=dev-python/PyQt6-sip-13.8[${PYTHON_USEDEP}]
+	>=dev-python/pyqt6-sip-13.8[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${COMMON_DEPEND}

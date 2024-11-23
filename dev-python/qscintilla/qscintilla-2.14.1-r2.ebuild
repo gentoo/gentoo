@@ -40,7 +40,7 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}
 	qt5? ( >=dev-python/PyQt5-sip-12.9:=[${PYTHON_USEDEP}] )
-	qt6? ( >=dev-python/PyQt6-sip-13.5:=[${PYTHON_USEDEP}] )
+	qt6? ( >=dev-python/pyqt6-sip-13.5:=[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	>=dev-python/pyqt-builder-1.10[${PYTHON_USEDEP}]
