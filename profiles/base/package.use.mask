@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
+# dev-python/pyside2 last-rites
+dev-python/qtpy pyside2
+media-gfx/freecad qt5
+
 # Mats Lidell <matsl@gentoo.org> (2024-11-20)
 # The dependency x11-libs/dnd blocks gcc-14, is only used by XEmacs,
 # and upstream is not sure it even works so dropping use. #908831
