@@ -31,7 +31,7 @@ RDEPEND="
 src_prepare() {
 	default
 
-	echo 'gentoo-autoheaders: $(AUTOHEADERS)' >> Makefile
+	echo 'gentoo-autoheaders: $(AUTOHEADERS)' >> Makefile || die
 }
 
 src_configure() {
@@ -46,6 +46,7 @@ src_configure() {
 
 	emake gentoo-autoheaders
 
+	local i
 	for i in has*.log
 	do
 		einfo "$i"
@@ -55,7 +56,7 @@ src_configure() {
 
 src_install() {
 	einstalldocs
-	emake install DESTDIR="$D" PREFIX=/usr
+	emake install DESTDIR="${D}" PREFIX=/usr
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
