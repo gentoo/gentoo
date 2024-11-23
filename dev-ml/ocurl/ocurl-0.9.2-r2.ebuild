@@ -15,7 +15,8 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="examples +ocamlopt"
 
 RDEPEND="net-misc/curl
-	dev-ml/lwt:=[ocamlopt?]"
+	dev-ml/lwt:=[ocamlopt?]
+	dev-ml/ocplib-endian:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
