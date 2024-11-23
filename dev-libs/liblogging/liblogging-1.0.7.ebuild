@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rsyslog/liblogging/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="BSD-2"
 SLOT="0/0"
-KEYWORDS="~amd64 arm ~arm64 ~hppa ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ~ppc64 ~riscv ~sparc ~x86"
 IUSE="systemd"
 
 RDEPEND="systemd? ( sys-apps/systemd )"
