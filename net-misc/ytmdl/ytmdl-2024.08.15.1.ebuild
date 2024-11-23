@@ -34,7 +34,7 @@ RDEPEND="
 	dev-python/ffmpeg-python[${PYTHON_USEDEP}]
 	dev-python/itunespy[${PYTHON_USEDEP}]
 	dev-python/musicbrainzngs[${PYTHON_USEDEP}]
-	dev-python/pyDes[${PYTHON_USEDEP}]
+	dev-python/pydes[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
