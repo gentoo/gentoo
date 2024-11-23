@@ -3,7 +3,7 @@ move dev-python/neovim-python-client dev-python/pynvim
 move games-action/openastromenace games-action/astromenace
 move dev-python/pyzor mail-filter/pyzor
 move dev-python/python-sqlparse dev-python/sqlparse
-move dev-python/git-python dev-python/GitPython
+move dev-python/git-python dev-python/gitpython
 move www-servers/automx2 net-mail/automx2
 move dev-python/pysnmp-apps net-analyzer/snmpclitools
 move net-im/slack-bin net-im/slack
