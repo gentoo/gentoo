@@ -10,7 +10,7 @@ SRC_URI="https://erratique.ch/software/${PN}/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 DEPEND="${RDEPEND}
 	dev-ml/topkg
