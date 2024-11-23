@@ -8,7 +8,7 @@ EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
 PYTHON_COMPAT=( python3_{10..13} )
-inherit flag-o-matic guile-single python-single-r1 strip-linguas toolchain-funcs
+inherit flag-o-matic guile-single linux-info python-single-r1 strip-linguas toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
 
@@ -126,6 +126,20 @@ PATCHES=(
 )
 
 pkg_setup() {
+	local CONFIG_CHECK
+
+	if kernel_is -ge 6.11.3 ; then
+		# https://forums.gentoo.org/viewtopic-p-8846891.html
+		#
+		# Either CONFIG_PROC_MEM_ALWAYS_FORCE or CONFIG_PROC_MEM_FORCE_PTRACE
+		# should be okay, but not CONFIG_PROC_MEM_NO_FORCE.
+		CONFIG_CHECK+="
+			~!PROC_MEM_NO_FORCE
+		"
+	fi
+
+	linux-info_pkg_setup
+
 	use guile && guile-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
