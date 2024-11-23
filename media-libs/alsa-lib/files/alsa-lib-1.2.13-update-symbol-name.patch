@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/943399
+https://github.com/alsa-project/alsa-lib/issues/420
+https://github.com/alsa-project/alsa-lib/pull/421
+https://github.com/alsa-project/alsa-lib/commit/76edab4e595bd5f3f4c636cccc8d7976d3c519d6
+
+From 76edab4e595bd5f3f4c636cccc8d7976d3c519d6 Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Thu, 14 Nov 2024 07:49:53 -0500
+Subject: [PATCH] src/Versions.in.in: Update *_tempo_base name
+
+Change @SYMBOL_PREFIX@snd_has_tempo_base to
+@SYMBOL_PREFIX@snd_has_queue_tempo_base.
+
+Starting with version 1.2.13, alsa-lib fails to link with ld.lld-19 due
+to "version script assignment of 'ALSA_1.2.13' to symbol
+'snd_seq_has_tempo_base' failed: symbol not defined".
+
+Per commit 769d1db1b0a213a39c7e59c0d1d724e7f45b1ac3 the correct name for
+the symbol is @SYMBOL_PREFIX@snd_has_queue_tempo_base; therefore, update
+src/Vesions.in.in to match.
+
+Fixes bug #420
+Fixes Gentoo bug 943399 (https://bugs.gentoo.org/943399)
+
+Closes: https://github.com/alsa-project/alsa-lib/pull/421
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+--- a/src/Versions.in.in
++++ b/src/Versions.in.in
+@@ -212,7 +212,7 @@ ALSA_1.2.13 {
+     @SYMBOL_PREFIX@snd_seq_create_ump_block;
+     @SYMBOL_PREFIX@snd_seq_queue_tempo_get_tempo_base;
+     @SYMBOL_PREFIX@snd_seq_queue_tempo_set_tempo_base;
+-    @SYMBOL_PREFIX@snd_seq_has_tempo_base;
++    @SYMBOL_PREFIX@snd_seq_has_queue_tempo_base;
+     @SYMBOL_PREFIX@snd_seq_port_info_get_ump_is_midi1;
+     @SYMBOL_PREFIX@snd_seq_port_info_set_ump_is_midi1;
+ #endif
