@@ -42,7 +42,7 @@ LICENSE="
 	W3C
 "
 SLOT="0"
-KEYWORDS="-* amd64 ~arm ~arm64"
+KEYWORDS="-* amd64 ~arm ~arm64 ~loong"
 IUSE="egl kerberos wayland"
 RESTRICT="strip bindist"
 
