@@ -35,6 +35,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
 # dev-python/pyside2 last-rites, no more revdeps
+# Removal on 2024-12-23
 dev-python/pyside2
 dev-python/pyside2-tools
 dev-python/shiboken2
