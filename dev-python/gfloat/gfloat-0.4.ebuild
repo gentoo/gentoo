@@ -26,6 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/ml-dtypes[${PYTHON_USEDEP}]
+		dev-python/tabulate[${PYTHON_USEDEP}]
 		test-rust? (
 			dev-python/nbval[${PYTHON_USEDEP}]
 		)
