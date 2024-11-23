@@ -76,7 +76,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,widgets,network,printsupport,svg,${PYTHON_USEDEP}]
-		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
+		>=dev-python/pyqtwebengine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/zeroconf[${PYTHON_USEDEP}]
 	')

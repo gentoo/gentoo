@@ -67,7 +67,7 @@ media-gfx/freecad
 dev-qt/qtwebengine
 dev-qt/qtwebview
 dev-python/pyqt6-webengine
-dev-python/PyQtWebEngine
+dev-python/pyqtwebengine
 app-admin/calamares
 app-text/zeal
 app-editors/ghostwriter

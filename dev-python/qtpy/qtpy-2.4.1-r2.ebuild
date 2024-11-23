@@ -79,7 +79,7 @@ RDEPEND="
 		dev-python/PyQt5[testlib?,webchannel?,websockets?,widgets?,xml(+)?]
 		qml? ( dev-python/PyQt5[declarative] )
 		quick? ( dev-python/PyQt5[declarative] )
-		webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
+		webengine? ( dev-python/pyqtwebengine[${PYTHON_USEDEP}] )
 	)
 	pyqt6? (
 		dev-python/PyQt6[${PYTHON_USEDEP}]
@@ -119,7 +119,7 @@ BDEPEND="
 			dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
 			dev-python/PyQt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
 			dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
-			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+			dev-python/pyqtwebengine[${PYTHON_USEDEP}]
 			dev-qt/qtsql:5[sqlite]
 		)
 		pyqt6? (

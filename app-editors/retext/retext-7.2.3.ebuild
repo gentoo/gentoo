@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Please don't add pypy support before testing if it's actually supported. The
 # old compat matrix is no longer accessible as of 2021-02-13 but stated back
 # in 2020-07-05 that PyQt5 was explicitly not supported.
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_10 )
 PYPI_NO_NORMALIZE=1
 PYPI_PN="ReText"
 
@@ -65,7 +65,7 @@ pkg_postinst() {
 
 	optfeature "dictionary support" dev-python/pyenchant
 	# See https://bugs.gentoo.org/772197.
-	optfeature "rendering with webengine" dev-python/PyQtWebEngine
+	optfeature "rendering with webengine" dev-python/pyqtwebengine
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
