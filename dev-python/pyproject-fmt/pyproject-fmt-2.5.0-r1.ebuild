@@ -158,5 +158,8 @@ src_prepare() {
 }
 
 python_test_all() {
-	cargo_src_test
+	# default features cause linking errors because they make pyo3
+	# wrongly assume it's compiling a Python extension
+	# https://github.com/tox-dev/toml-fmt/issues/23
+	cargo_src_test --no-default-features
 }
