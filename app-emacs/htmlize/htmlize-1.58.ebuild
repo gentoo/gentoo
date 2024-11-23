@@ -20,7 +20,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-release-${PV}"
 
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ppc x86"
 fi
 
 LICENSE="GPL-2+"
