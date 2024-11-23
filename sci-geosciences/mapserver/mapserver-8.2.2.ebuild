@@ -19,22 +19,10 @@ SRC_URI="https://download.osgeo.org/mapserver/${P}.tar.gz"
 LICENSE="Boost-1.0 BSD BSD-2 ISC MIT tcltk"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 # NOTE: opengl removed for now as no support for it in upstream CMake
-IUSE="apache bidi cairo geos java mysql oracle perl postgis python"
-
+IUSE="apache bidi cairo geos java mysql oracle perl postgis python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-# Tests:
-# Included tests (tests/*) are seriously outdated
-# Upstream's main test suite (msautotest/*) is not in the release tarball,
-# and upstream sets 'export-ignore' for that directory.
-#
-# The eclasses used normally try to run test suites themselves,
-# or skip if nothing was found.
-# However, because of the python-r1 eclass usage, this fails and would
-# cause errors running non-existent tests, so we have to restrict here.
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/expat-2.2.8
@@ -136,6 +124,8 @@ src_configure() {
 	# and reliant on defaults not changing.
 	# Readability and maintainability is better this way.
 	local mycmakeargs=(
+		"-DBUILD_TESTING=$(usex test)"
+		"-DBUILD_FUZZER_REPRODUCER=OFF"
 		"-DCMAKE_SKIP_RPATH=ON"
 		"-DINSTALL_LIB_DIR=/usr/$(get_libdir)"
 		"-DCMAKE_INSTALL_SYSCONFDIR=/usr/share/${PN}"
@@ -191,6 +181,12 @@ src_compile() {
 	if use python ; then
 		python_foreach_impl cmake_src_compile
 	fi
+}
+
+src_test() {
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}"
+
+	cmake_src_test
 }
 
 src_install() {
