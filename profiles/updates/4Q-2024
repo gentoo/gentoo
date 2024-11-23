@@ -52,3 +52,4 @@ move dev-python/PyGithub dev-python/pygithub
 move dev-python/Pyro5 dev-python/pyro5
 move dev-python/PyRSS2Gen dev-python/pyrss2gen
 move dev-python/PySDL2 dev-python/pysdl2
+move dev-python/PySocks dev-python/pysocks

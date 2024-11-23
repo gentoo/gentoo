@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	   dev-python/PyQt6[gui,multimedia,svg,widgets,${PYTHON_USEDEP}]
 	   dev-python/PyQt5[gui,multimedia,svg,widgets,${PYTHON_USEDEP}]
 	   )
-	dev-python/PySocks[${PYTHON_USEDEP}]
+	dev-python/pysocks[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]

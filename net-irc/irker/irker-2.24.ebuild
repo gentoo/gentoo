@@ -58,5 +58,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "SOCKS5 proxy support" dev-python/PySocks
+	optfeature "SOCKS5 proxy support" dev-python/pysocks
 }
