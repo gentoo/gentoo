@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake
 
 DESCRIPTION="Header-only library for parsing TOML"
 HOMEPAGE="https://github.com/skystrife/cpptoml"
@@ -16,16 +16,13 @@ IUSE="examples"
 
 PATCHES=(
 	"${FILESDIR}/${P}-limits.patch"
+	"${FILESDIR}/${P}-remove-libcxx-config.patch"
 )
 
 src_configure() {
 	local mycmakeargs=(
 		-DCPPTOML_BUILD_EXAMPLES=$(usex examples)
 	)
-
-	if [[ $(tc-get-cxx-stdlib) == libc++ ]]; then
-		mycmakeargs+=(-DENABLE_LIBCXX=ON)
-	fi
 
 	cmake_src_configure
 }
