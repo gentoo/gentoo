@@ -11,7 +11,7 @@ SRC_URI="https://www.nih.at/libzip/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bzip2 gnutls lzma mbedtls ssl static-libs test tools zstd"
 REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"
