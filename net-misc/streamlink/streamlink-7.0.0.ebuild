@@ -59,7 +59,6 @@ BDEPEND="
 		>=dev-python/versioningit-2.0.0[${PYTHON_USEDEP}]
 		test? (
 			>=dev-python/freezegun-1.0.0[${PYTHON_USEDEP}]
-			dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 			dev-python/pytest-trio[${PYTHON_USEDEP}]
 			dev-python/requests-mock[${PYTHON_USEDEP}]
 		)
