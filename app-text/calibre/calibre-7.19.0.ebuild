@@ -111,7 +111,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( $(python_gen_cond_dep '>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]') )
 "
 BDEPEND="$(python_gen_cond_dep '
-		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
+		>=dev-python/pyqt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig

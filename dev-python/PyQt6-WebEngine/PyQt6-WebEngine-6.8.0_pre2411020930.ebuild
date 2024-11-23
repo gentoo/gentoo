@@ -39,7 +39,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-python/PyQt-builder-1.11[${PYTHON_USEDEP}]
+	>=dev-python/pyqt-builder-1.11[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.8[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
 "

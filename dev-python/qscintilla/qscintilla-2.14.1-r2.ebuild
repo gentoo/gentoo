@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 	qt6? ( >=dev-python/PyQt6-sip-13.5:=[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	>=dev-python/PyQt-builder-1.10[${PYTHON_USEDEP}]
+	>=dev-python/pyqt-builder-1.10[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.2[${PYTHON_USEDEP}]
 	qt5? ( dev-qt/qtcore:5 )
 	qt6? ( dev-qt/qtbase:6 )

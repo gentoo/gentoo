@@ -54,3 +54,4 @@ move dev-python/PyRSS2Gen dev-python/pyrss2gen
 move dev-python/PySDL2 dev-python/pysdl2
 move dev-python/PySocks dev-python/pysocks
 move dev-python/QtPy dev-python/qtpy
+move dev-python/PyQt-builder dev-python/pyqt-builder
