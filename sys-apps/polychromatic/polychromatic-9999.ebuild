@@ -30,7 +30,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.20:3[introspection]
 	$(python_gen_cond_dep '
-		dev-python/PyQt6-WebEngine[${PYTHON_USEDEP}]
+		dev-python/pyqt6-webengine[${PYTHON_USEDEP}]
 		dev-python/PyQt6[svg,${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/colour[${PYTHON_USEDEP}]

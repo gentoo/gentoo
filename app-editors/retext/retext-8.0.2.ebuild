@@ -65,5 +65,5 @@ pkg_postinst() {
 	optfeature "a local copy of the MathJax JavaScript library" dev-libs/mathjax
 	optfeature "encoding detection" dev-python/chardet
 	optfeature "dictionary support" dev-python/pyenchant
-	optfeature "JavaScript support in preview" dev-python/PyQt6-WebEngine
+	optfeature "JavaScript support in preview" dev-python/pyqt6-webengine
 }

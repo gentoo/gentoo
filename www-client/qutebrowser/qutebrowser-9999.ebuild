@@ -30,7 +30,7 @@ IUSE="+adblock pdf widevine"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
+		dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets]
 		dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/jinja2[${PYTHON_USEDEP}]

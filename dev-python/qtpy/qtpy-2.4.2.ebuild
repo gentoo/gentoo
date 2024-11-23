@@ -85,7 +85,7 @@ RDEPEND="
 		dev-python/PyQt6[designer?,gui?,help?,multimedia?,network?,opengl?]
 		dev-python/PyQt6[positioning?,printsupport?,qml?,quick?,sensors?,serialport?,sql?]
 		dev-python/PyQt6[speech?,svg?,testlib?,webchannel?,websockets?,widgets?,xml?]
-		webengine? ( dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets?,quick?] )
+		webengine? ( dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets?,quick?] )
 
 	)
 	pyside2? (
@@ -127,7 +127,7 @@ BDEPEND="
 			dev-python/PyQt6[pdfium(-),positioning,printsupport,qml,quick,quick3d,serialport]
 			dev-python/PyQt6[sensors(-),spatialaudio(-),speech(-),sql,ssl,svg,testlib,webchannel]
 			dev-python/PyQt6[websockets,widgets,xml]
-			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets,quick]
+			dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets,quick]
 			dev-qt/qtbase:6[sqlite]
 		)
 		pyside2? (

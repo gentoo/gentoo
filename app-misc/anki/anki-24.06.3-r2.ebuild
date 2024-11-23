@@ -758,7 +758,7 @@ GUI_RDEPEND="
 		dev-python/protobuf[${PYTHON_USEDEP}]
 		>=dev-python/PyQt6-6.6.1[gui,network,opengl,quick,webchannel,widgets,${PYTHON_USEDEP}]
 		>=dev-python/PyQt6-sip-13.6.0[${PYTHON_USEDEP}]
-		>=dev-python/PyQt6-WebEngine-6.6.0[widgets,${PYTHON_USEDEP}]
+		>=dev-python/pyqt6-webengine-6.6.0[widgets,${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 		dev-python/waitress[${PYTHON_USEDEP}]
