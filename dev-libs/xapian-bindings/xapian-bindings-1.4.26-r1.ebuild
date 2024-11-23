@@ -159,6 +159,14 @@ src_configure() {
 			local -x PERL_LIB="$(perl -MConfig -e 'print $Config{installvendorlib}')"
 		fi
 
+		if use tcl; then
+			local tcl_version="$(echo 'puts $tcl_version;exit 0' | tclsh)"
+			if [[ -z ${tcl_version} ]]; then
+				die 'Unable to detect the installed version of dev-lang/tcl.'
+			fi
+			local -x TCL_LIB="${EPREFIX}/usr/$(get_libdir)/tcl${tcl_version}"
+		fi
+
 		econf "${conf[@]}"
 	fi
 
