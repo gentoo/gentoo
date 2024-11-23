@@ -13,7 +13,7 @@ EAPI=8
 # dev-cpp/wangle
 # dev-util/watchman
 
-inherit flag-o-matic cmake
+inherit flag-o-matic cmake toolchain-funcs
 
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
 HOMEPAGE="https://github.com/facebook/folly"
@@ -98,6 +98,14 @@ src_test() {
 			# Times out on real hardware
 			concurrent_skip_list_test.ConcurrentSkipList
 			futures_retrying_test.RetryingTest.largeRetries
+		)
+	fi
+
+	if [[ $(tc-get-cxx-stdlib) == libc++ ]]; then
+		CMAKE_SKIP_TESTS+=(
+			# Aborts with libc++.
+			# https://github.com/facebook/folly/issues/2345
+			buffered_atomic_test.BufferedAtomic.singleThreadUnguardedAccess
 		)
 	fi
 
