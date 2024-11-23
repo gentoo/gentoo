@@ -10,7 +10,6 @@
 	<name>Proxy Maintainers</name>
 </maintainer>
 <use>
-	<flag name="eigen">Enable support for eigenvalues through the header-only <pkg>dev-cpp/eigen</pkg> package.</flag>
 	<flag name="freeimage">Enable support for image i/o via <pkg>media-libs/freeimage</pkg></flag>
 	<flag name="freetype">Enable <pkg>media-libs/freetype</pkg> support</flag>
 	<flag name="inspector">Build Inspector tool</flag>
