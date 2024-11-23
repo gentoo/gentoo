@@ -170,6 +170,11 @@ BDEPEND="
 
 QA_FLAGS_IGNORED=".*"
 
+pkg_setup() {
+	llvm-r1_pkg_setup
+	rust_pkg_setup
+}
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
