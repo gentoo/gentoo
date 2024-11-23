@@ -1,0 +1,64 @@
+https://bugs.gentoo.org/938887#c11
+
+Fixes ambiguity of addActionGroup calls
+
+In all addActionGroup calls with ambiguous usage, use a vector of strings to disambiguate.
+--- a/src/MainEditor/UI/EntryPanel/TextEntryPanel.cpp
++++ b/src/MainEditor/UI/EntryPanel/TextEntryPanel.cpp
+@@ -93,7 +93,7 @@ TextEntryPanel::TextEntryPanel(wxWindow* parent) : EntryPanel(parent, "text")
+ 	text_area_->setJumpToControl(choice_jump_to_);
+ 
+ 	// Add 'Compile ACS' to end of toolbar
+-	toolbar_->addActionGroup("Compile", { "arch_scripts_compileacs" }, true);
++	toolbar_->addActionGroup("Compile", vector<string>{ "arch_scripts_compileacs" }, true);
+ 
+ 	// Bind events
+ 	choice_text_language_->Bind(wxEVT_CHOICE, &TextEntryPanel::onChoiceLanguageChanged, this);
+--- a/src/MainEditor/UI/TextureXEditor/PatchTablePanel.cpp
++++ b/src/MainEditor/UI/TextureXEditor/PatchTablePanel.cpp
+@@ -205,7 +205,7 @@ PatchTablePanel::PatchTablePanel(wxWindow* parent, PatchTable* patch_table, Text
+ 	list_patches_->setSearchColumn(1); // Want to search by patch name not index
+ 	toolbar_ = new SToolBar(this, false, wxVERTICAL);
+ 	toolbar_->addActionGroup(
+-		"_New", { "txed_pnames_add", "txed_pnames_addfile", "txed_pnames_delete", "txed_pnames_change" });
++		"_New", vector<string>{ "txed_pnames_add", "txed_pnames_addfile", "txed_pnames_delete", "txed_pnames_change" });
+ 	label_dimensions_ = new wxStaticText(this, -1, "Size: N/A");
+ 	label_textures_   = new wxStaticText(
+         this, -1, "In Textures: -", wxDefaultPosition, wxDefaultSize, wxST_ELLIPSIZE_END);
+--- a/src/MainEditor/UI/TextureXEditor/TextureEditorPanel.cpp
++++ b/src/MainEditor/UI/TextureXEditor/TextureEditorPanel.cpp
+@@ -295,6 +295,7 @@ wxPanel* TextureEditorPanel::createPatchControls(wxWindow* parent)
+ 	tb_patches_ = new SToolBar(panel, false, wxVERTICAL);
+ 	tb_patches_->addActionGroup(
+ 		"_Patch",
++    vector<string>
+ 		{ "txed_patch_add",
+ 		  "txed_patch_remove",
+ 		  "txed_patch_back",
+--- a/src/MainEditor/UI/TextureXEditor/TextureXPanel.cpp
++++ b/src/MainEditor/UI/TextureXEditor/TextureXPanel.cpp
+@@ -625,10 +625,10 @@ TextureXPanel::TextureXPanel(wxWindow* parent, TextureXEditor& tx_editor) :
+ 
+ 	// Toolbar
+ 	toolbar_ = new SToolBar(this, false, wxVERTICAL);
+-	toolbar_->addActionGroup("_Save", { "txed_savelist" });
+-	toolbar_->addActionGroup("_New", { "txed_new", "txed_new_file" });
+-	toolbar_->addActionGroup("_Texture", { "txed_rename", "txed_rename_each", "txed_delete" });
+-	toolbar_->addActionGroup("_Sorting", { "txed_up", "txed_down", "txed_sort" });
++	toolbar_->addActionGroup("_Save", vector<string>{ "txed_savelist" });
++	toolbar_->addActionGroup("_New", vector<string>{ "txed_new", "txed_new_file" });
++	toolbar_->addActionGroup("_Texture", vector<string>{ "txed_rename", "txed_rename_each", "txed_delete" });
++	toolbar_->addActionGroup("_Sorting", vector<string>{ "txed_up", "txed_down", "txed_sort" });
+ 	toolbar_->group("_Texture")->setAllButtonsEnabled(false);
+ 	toolbar_->group("_Sorting")->setAllButtonsEnabled(false);
+ 	toolbar_->findActionButton("txed_sort")->Enable();
+--- a/src/MainEditor/UI/TextureXEditor/ZTextureEditorPanel.cpp
++++ b/src/MainEditor/UI/TextureXEditor/ZTextureEditorPanel.cpp
+@@ -232,6 +232,7 @@ wxPanel* ZTextureEditorPanel::createPatchControls(wxWindow* parent)
+ 	tb_patches_ = new SToolBar(panel, false, wxVERTICAL);
+ 	tb_patches_->addActionGroup(
+ 		"_Patch",
++    vector<string>
+ 		{ "txed_patch_add",
+ 		  "txed_patch_remove",
+ 		  "txed_patch_back",

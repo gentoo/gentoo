@@ -49,6 +49,7 @@ S="${WORKDIR}/${PN^^}-${MY_PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.0_beta2-fluidsynth-driver.patch
 	"${FILESDIR}"/${PN}-3.2.2-wayland.patch
+	"${FILESDIR}"/${PN}-3.2.4-compile.patch
 )
 
 src_prepare() {
