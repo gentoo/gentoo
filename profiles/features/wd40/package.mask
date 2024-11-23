@@ -130,7 +130,7 @@ dev-python/elasticsearch
 dev-python/dns-lexicon
 dev-python/dissononce
 dev-python/consonance
-dev-python/PyGithub
+dev-python/pygithub
 dev-python/adblock
 dev-python/pysnmp
 dev-python/pysnmp-mibs
