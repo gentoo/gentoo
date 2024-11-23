@@ -39,7 +39,7 @@ DEPEND="${PYTHON_DEPS}
 	~x11-libs/qscintilla-${PV}:=[qt5(+)?,qt6(-)?]
 "
 RDEPEND="${DEPEND}
-	qt5? ( >=dev-python/PyQt5-sip-12.9:=[${PYTHON_USEDEP}] )
+	qt5? ( >=dev-python/pyqt5-sip-12.9:=[${PYTHON_USEDEP}] )
 	qt6? ( >=dev-python/pyqt6-sip-13.5:=[${PYTHON_USEDEP}] )
 "
 BDEPEND="

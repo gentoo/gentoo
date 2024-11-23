@@ -29,7 +29,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	>=dev-python/PyQt5-sip-12.15:=[${PYTHON_USEDEP}]
+	>=dev-python/pyqt5-sip-12.15:=[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pyqt-builder-1.9[${PYTHON_USEDEP}]
