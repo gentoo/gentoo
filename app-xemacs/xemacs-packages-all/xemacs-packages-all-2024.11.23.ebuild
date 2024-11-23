@@ -131,11 +131,9 @@ RDEPEND="
 	>=app-xemacs/edict-1.19
 	>=app-xemacs/egg-its-1.29
 	>=app-xemacs/latin-euro-standards-1.11
-	>=app-xemacs/latin-unity-1.23
 	>=app-xemacs/leim-1.39
 	>=app-xemacs/locale-1.30
 	>=app-xemacs/lookup-1.17
 	>=app-xemacs/mule-base-1.60
-	>=app-xemacs/mule-ucs-1.21
 	>=app-xemacs/skk-1.27
 "
