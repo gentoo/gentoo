@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
+# dev-python/pyside2 last-rites, no more revdeps
+dev-python/pyside2
+dev-python/pyside2-tools
+dev-python/shiboken2
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
 #
