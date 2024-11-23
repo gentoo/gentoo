@@ -57,8 +57,8 @@ RDEPEND="
 		dev-python/service-identity[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 
-		dev-python/QtPy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
-		|| ( dev-python/QtPy[pyside2] dev-python/QtPy[pyside6] )
+		dev-python/qtpy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
+		|| ( dev-python/qtpy[pyside2] dev-python/qtpy[pyside6] )
 
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
 		media-video/ffmpeg

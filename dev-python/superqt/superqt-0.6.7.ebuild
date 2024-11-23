@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
-	>=dev-python/QtPy-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/qtpy-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.7.4.3[${PYTHON_USEDEP}]
 "
 

@@ -19,7 +19,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-20)
 # dev-python/pyside6 is not stable here.
-dev-python/QtPy pyside6
+dev-python/qtpy pyside6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
 # kde-plasma/plasma-workspace is not stable here.

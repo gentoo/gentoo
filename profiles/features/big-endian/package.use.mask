@@ -24,7 +24,7 @@ media-plugins/gst-plugins-meta vpx
 net-p2p/ktorrent rss webengine
 net-irc/quassel urlpreview
 kde-apps/kalarm pim
-dev-python/QtPy pyqt5
+dev-python/qtpy pyqt5
 gnome-base/gnome extras
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)

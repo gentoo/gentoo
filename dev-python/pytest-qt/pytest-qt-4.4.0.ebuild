@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
-	dev-python/QtPy[gui,testlib,widgets(+),${PYTHON_USEDEP}]
+	dev-python/qtpy[gui,testlib,widgets(+),${PYTHON_USEDEP}]
 	>=dev-python/pluggy-1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="

@@ -15,7 +15,7 @@ sys-kernel/installkernel efistub
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-python/pyside6 is not stable here yet
-dev-python/QtPy pyside6
+dev-python/qtpy pyside6
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
 # This is still experimental, prebuilt images may not boot on all systems.

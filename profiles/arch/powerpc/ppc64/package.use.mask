@@ -22,7 +22,7 @@ media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
 # dev-qt/qtwebengine not available here
-dev-python/QtPy webengine test
+dev-python/qtpy webengine test
 
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is available here

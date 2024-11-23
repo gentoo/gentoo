@@ -34,7 +34,7 @@ BDEPEND="
 	>=dev-python/numpy-1.14.5[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	test? (
-		dev-python/QtPy[testlib,${PYTHON_USEDEP}]
+		dev-python/qtpy[testlib,${PYTHON_USEDEP}]
 	)
 "
 

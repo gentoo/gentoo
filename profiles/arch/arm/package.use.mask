@@ -120,7 +120,7 @@ dev-python/nbclassic doc
 app-i18n/fcitx-libpinyin dictionary-manager
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
-dev-python/QtPy test
+dev-python/qtpy test
 games-util/lgogdownloader gui
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent

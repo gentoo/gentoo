@@ -46,7 +46,7 @@ BDEPEND="
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
-		dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
+		dev-python/qtpy[gui,testlib,${PYTHON_USEDEP}]
 	)
 "
 

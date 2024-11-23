@@ -21,7 +21,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]
-		dev-python/QtPy[gui,network,${PYTHON_USEDEP}]
+		dev-python/qtpy[gui,network,${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 	')
 	dev-vcs/git

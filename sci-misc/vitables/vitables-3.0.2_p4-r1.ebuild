@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/numexpr[${PYTHON_USEDEP}]
-		dev-python/QtPy[gui,${PYTHON_USEDEP}]
+		dev-python/qtpy[gui,${PYTHON_USEDEP}]
 		dev-python/tables[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
