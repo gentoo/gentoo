@@ -12,7 +12,7 @@ HOMEPAGE="https://pypi.org/project/sphinx-inline-tabs/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/sphinx-6.0[${PYTHON_USEDEP}]
