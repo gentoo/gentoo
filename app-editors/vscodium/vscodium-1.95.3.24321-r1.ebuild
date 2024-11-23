@@ -19,6 +19,7 @@ SRC_URI="
 	$(arch_src_uri amd64 x64)
 	$(arch_src_uri arm armhf)
 	$(arch_src_uri arm64 arm64)
+	$(arch_src_uri loong loong64)
 "
 S="${WORKDIR}"
 
