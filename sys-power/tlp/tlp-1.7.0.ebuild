@@ -12,7 +12,7 @@ S="${WORKDIR}/TLP-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # It's uncertain if elogind/systemd is actually required, however, without the sleep
 # hooks working, which require one of them, it doesn't seem like this app is very useful.
