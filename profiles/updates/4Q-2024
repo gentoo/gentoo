@@ -47,3 +47,4 @@ move dev-python/txAMQP dev-python/txamqp
 move dev-python/textX dev-python/textx
 move dev-python/pyClamd dev-python/pyclamd
 move dev-python/pyDes dev-python/pydes
+move dev-python/pyxDamerauLevenshtein dev-python/pyxdameraulevenshtein
