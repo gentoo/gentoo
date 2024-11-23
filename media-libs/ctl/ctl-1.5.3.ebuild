@@ -5,8 +5,6 @@ EAPI=8
 
 inherit cmake flag-o-matic
 
-MY_COMMIT=3fc4ae7a8af35d380654e573d895216fd5ba407e
-
 DESCRIPTION="AMPAS' Color Transformation Language"
 HOMEPAGE="https://github.com/ampas/CTL"
 SRC_URI="https://github.com/ampas/CTL/archive/${P}.tar.gz"
