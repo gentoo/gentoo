@@ -77,7 +77,7 @@ RDEPEND="
 	qt6? (
 		$(python_gen_cond_dep '
 			|| (
-				dev-python/PyQt6[gui,widgets,${PYTHON_USEDEP}]
+				dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
 				dev-python/pyside6[gui,widgets,${PYTHON_USEDEP}]
 			)
 		' 'python3*')

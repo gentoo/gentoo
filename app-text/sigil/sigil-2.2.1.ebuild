@@ -61,7 +61,7 @@ RDEPEND="
 		dev-qt/qtwebengine:6[widgets]
 		dev-qt/qtsvg:6
 		plugins? ( $(python_gen_cond_dep '
-			dev-python/PyQt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
 			dev-python/pyqt6-webengine[${PYTHON_USEDEP}]
 		') )
 	)

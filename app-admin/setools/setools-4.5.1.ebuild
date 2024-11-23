@@ -33,13 +33,13 @@ RDEPEND="${PYTHON_DEPS}
 	>=sys-libs/libsepol-3.2:=
 	>=sys-libs/libselinux-3.2:=
 	X? (
-		dev-python/PyQt6[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
 		dev-python/pygraphviz[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-python/cython-0.29.14[${PYTHON_USEDEP}]
 	test? (
-		dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,testlib,widgets,${PYTHON_USEDEP}]
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		sys-apps/checkpolicy
 	)"

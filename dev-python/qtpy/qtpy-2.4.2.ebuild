@@ -81,10 +81,10 @@ RDEPEND="
 		webengine? ( dev-python/pyqtwebengine[${PYTHON_USEDEP}] )
 	)
 	pyqt6? (
-		dev-python/PyQt6[${PYTHON_USEDEP}]
-		dev-python/PyQt6[designer?,gui?,help?,multimedia?,network?,opengl?]
-		dev-python/PyQt6[positioning?,printsupport?,qml?,quick?,sensors?,serialport?,sql?]
-		dev-python/PyQt6[speech?,svg?,testlib?,webchannel?,websockets?,widgets?,xml?]
+		dev-python/pyqt6[${PYTHON_USEDEP}]
+		dev-python/pyqt6[designer?,gui?,help?,multimedia?,network?,opengl?]
+		dev-python/pyqt6[positioning?,printsupport?,qml?,quick?,sensors?,serialport?,sql?]
+		dev-python/pyqt6[speech?,svg?,testlib?,webchannel?,websockets?,widgets?,xml?]
 		webengine? ( dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets?,quick?] )
 
 	)
@@ -122,11 +122,11 @@ BDEPEND="
 			dev-qt/qtsql:5[sqlite]
 		)
 		pyqt6? (
-			dev-python/PyQt6[${PYTHON_USEDEP}]
-			dev-python/PyQt6[dbus,designer,gui,help,multimedia,network,nfc,opengl]
-			dev-python/PyQt6[pdfium(-),positioning,printsupport,qml,quick,quick3d,serialport]
-			dev-python/PyQt6[sensors(-),spatialaudio(-),speech(-),sql,ssl,svg,testlib,webchannel]
-			dev-python/PyQt6[websockets,widgets,xml]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6[dbus,designer,gui,help,multimedia,network,nfc,opengl]
+			dev-python/pyqt6[pdfium(-),positioning,printsupport,qml,quick,quick3d,serialport]
+			dev-python/pyqt6[sensors(-),spatialaudio(-),speech(-),sql,ssl,svg,testlib,webchannel]
+			dev-python/pyqt6[websockets,widgets,xml]
 			dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets,quick]
 			dev-qt/qtbase:6[sqlite]
 		)

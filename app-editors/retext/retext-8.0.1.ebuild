@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYPI_NO_NORMALIZE=1
 PYPI_PN="ReText"
 
@@ -32,12 +32,12 @@ RDEPEND="
 	>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
-	dev-python/PyQt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-qt/linguist-tools
-	test? ( dev-python/PyQt6[testlib,${PYTHON_USEDEP}] )
+	test? ( dev-python/pyqt6[testlib,${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests unittest

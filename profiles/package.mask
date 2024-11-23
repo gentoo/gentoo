@@ -377,7 +377,7 @@ app-i18n/kcm-fcitx
 # Masked for testing, and odds are (at this point) that 6.8.0 will
 # never be unmasked and will skip to 6.8.1 instead given the large
 # amount of regressions there's been..
-=dev-python/PyQt6-6.8.0_pre*
+=dev-python/pyqt6-6.8.0_pre*
 =dev-python/pyqt6-webengine-6.8.0_pre*
 =dev-python/pyside6-6.8.0*
 =dev-python/pyside6-tools-6.8.0*

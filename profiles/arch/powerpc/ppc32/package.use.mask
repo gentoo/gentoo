@@ -29,7 +29,7 @@ x11-misc/xdg-utils plasma
 # Ionen Wolkens <ionen@gentoo.org> (2024-07-02)
 # Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
 # is no longer keyworded here and currently fails tests (bug #935313).
-dev-python/PyQt6 quick3d
+dev-python/pyqt6 quick3d
 dev-qt/qtmultimedia:6 qml
 
 # Sam James <sam@gentoo.org> (2024-05-19)

@@ -16,7 +16,7 @@ dev-libs/libjcat gpg pkcs7
 # qtwebchannel package is fairly small, and python bindings are
 # required by some popular desktop packages such as calibre,
 # qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
-dev-python/PyQt6 webchannel
+dev-python/pyqt6 webchannel
 dev-python/pyside6 webchannel
 
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover

@@ -33,7 +33,7 @@ DEPEND="${PYTHON_DEPS}
 		dev-qt/qtwidgets:5
 	)
 	qt6? (
-		dev-python/PyQt6[gui,printsupport,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,printsupport,widgets,${PYTHON_USEDEP}]
 		dev-qt/qtbase:6[gui,widgets]
 	)
 	~x11-libs/qscintilla-${PV}:=[qt5(+)?,qt6(-)?]

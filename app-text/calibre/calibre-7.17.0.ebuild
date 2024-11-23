@@ -74,7 +74,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-		dev-python/PyQt6[gui,network,opengl,printsupport,quick,svg,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,network,opengl,printsupport,quick,svg,widgets,${PYTHON_USEDEP}]
 		dev-python/pyqt6-webengine[widgets,${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]

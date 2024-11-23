@@ -88,7 +88,7 @@ COMMON_DEPEND="
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-			dev-python/PyQt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
+			dev-python/pyqt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
 			>=dev-python/qscintilla-2.10.1[qt6]
 		')
 	)
@@ -114,7 +114,7 @@ BDEPEND="${PYTHON_DEPS}
 	test? (
 		python? (
 			$(python_gen_cond_dep '
-				dev-python/PyQt6[${PYTHON_USEDEP},testlib]
+				dev-python/pyqt6[${PYTHON_USEDEP},testlib]
 				dev-python/nose2[${PYTHON_USEDEP}]
 				dev-python/mock[${PYTHON_USEDEP}]
 			')

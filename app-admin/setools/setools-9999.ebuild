@@ -33,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=sys-libs/libsepol-3.2:=
 	>=sys-libs/libselinux-3.2:=
 	X? (
-		dev-python/PyQt6[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
 		dev-python/pygraphviz[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"

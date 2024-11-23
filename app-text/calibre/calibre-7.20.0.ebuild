@@ -74,7 +74,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-		dev-python/PyQt6[gui,network,opengl,printsupport,quick,svg,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,network,opengl,printsupport,quick,svg,widgets,${PYTHON_USEDEP}]
 		dev-python/pyqt6-webengine[widgets,${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
@@ -100,7 +100,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	speech? (
 		$(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]')
-		dev-python/PyQt6[multimedia,speech]
+		dev-python/pyqt6[multimedia,speech]
 	)
 	system-mathjax? ( >=dev-libs/mathjax-3:= )
 	udisks? ( virtual/libudev )

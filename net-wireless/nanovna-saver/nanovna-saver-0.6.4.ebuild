@@ -23,7 +23,7 @@ fi
 RDEPEND="${DEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
-	dev-python/PyQt6[${PYTHON_USEDEP},gui,widgets]
+	dev-python/pyqt6[${PYTHON_USEDEP},gui,widgets]
 	dev-python/pyqt6-sip[${PYTHON_USEDEP}]
 	dev-python/sip[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
