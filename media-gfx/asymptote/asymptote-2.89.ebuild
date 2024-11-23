@@ -43,7 +43,7 @@ RDEPEND="
 	)
 	X? (
 		${PYTHON_DEPS}
-		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,svg]
+		dev-python/pyqt5[${PYTHON_USEDEP},gui,widgets,svg]
 		dev-python/cson
 		dev-python/numpy
 		>=gnome-base/librsvg-2.40

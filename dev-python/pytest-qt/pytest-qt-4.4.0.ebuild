@@ -28,7 +28,7 @@ BDEPEND="
 	test? (
 		|| (
 			dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
-			dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
+			dev-python/pyqt5[gui,testlib,widgets,${PYTHON_USEDEP}]
 			dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
 			$(python_gen_cond_dep '
 				dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]

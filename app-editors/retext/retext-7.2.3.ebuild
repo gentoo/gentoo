@@ -37,12 +37,12 @@ RDEPEND="
 	>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
-	dev-python/PyQt5[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt5[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-qt/linguist-tools
-	test? ( dev-python/PyQt5[testlib,${PYTHON_USEDEP}] )
+	test? ( dev-python/pyqt5[testlib,${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests unittest

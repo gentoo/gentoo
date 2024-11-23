@@ -4,7 +4,7 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="gui">Installs GUI configuration utility and status bar applet.
-		Requires <pkg>dev-python/PyQt5</pkg></flag>
+		Requires <pkg>dev-python/pyqt5</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mbuesch/razer</remote-id>

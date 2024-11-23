@@ -20,7 +20,7 @@ KEYWORDS="amd64 arm64"
 IUSE="debug"
 
 DEPEND="
-	>=dev-python/PyQt5-5.15.5[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
+	>=dev-python/pyqt5-5.15.5[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5

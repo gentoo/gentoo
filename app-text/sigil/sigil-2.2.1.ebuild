@@ -51,7 +51,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 		plugins? ( $(python_gen_cond_dep '
-			dev-python/PyQt5[${PYTHON_USEDEP}]
+			dev-python/pyqt5[${PYTHON_USEDEP}]
 			dev-python/pyqtwebengine[${PYTHON_USEDEP}]
 		') )
 	)

@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 KFMIN=5.82.0
 QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"
@@ -31,7 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	dev-libs/quazip:0=[qt5(+)]
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[declarative,gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[declarative,gui,widgets,${PYTHON_USEDEP}]
 		dev-python/sip:=[${PYTHON_USEDEP}]
 	')
 	>=dev-qt/qtconcurrent-${QTMIN}:5

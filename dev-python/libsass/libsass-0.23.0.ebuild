@@ -33,7 +33,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
+		dev-python/pyqt5[testlib,${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
 	)
 "

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DOCS_BUILDER="doxygen"
 inherit cmake flag-o-matic desktop docs python-single-r1 qmake-utils toolchain-funcs xdg
 
@@ -72,7 +72,7 @@ RDEPEND="
 			dev-python/twisted[${PYTHON_USEDEP}]
 			dev-python/zope-interface[${PYTHON_USEDEP}]
 			mpi? ( dev-python/mpi4py )
-			qt5? ( dev-python/PyQt5[opengl,${PYTHON_USEDEP}] )
+			qt5? ( dev-python/pyqt5[opengl,${PYTHON_USEDEP}] )
 		')
 	)
 	qt5? (

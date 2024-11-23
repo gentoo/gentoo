@@ -29,13 +29,13 @@ REQUIRED_USE="test? ( opengl svg )"
 RDEPEND="
 	>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}]
+	dev-python/pyqt5[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}]
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
 		dev-python/h5py[${PYTHON_USEDEP}]
-		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
+		dev-python/pyqt5[testlib,${PYTHON_USEDEP}]
 		dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)

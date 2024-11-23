@@ -35,7 +35,7 @@ RDEPEND="
 	${DEPEND}
 	virtual/openssh
 	net-misc/rsync[xattr,acl]
-	qt5? ( dev-python/PyQt5[gui,widgets] )
+	qt5? ( dev-python/pyqt5[gui,widgets] )
 "
 BDEPEND="
 	sys-devel/gettext

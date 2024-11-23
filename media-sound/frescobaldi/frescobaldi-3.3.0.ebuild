@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64"
 
 DEPEND="
-	dev-python/PyQt5[gui,network,printsupport,svg,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt5[gui,network,printsupport,svg,widgets,${PYTHON_USEDEP}]
 	dev-python/pyqtwebengine[${PYTHON_USEDEP}]
 	dev-python/python-ly[${PYTHON_USEDEP}]
 	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]

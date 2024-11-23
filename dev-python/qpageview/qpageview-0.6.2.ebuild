@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-python/PyQt5[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt5[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
 	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
 "
 

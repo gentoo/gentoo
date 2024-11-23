@@ -76,7 +76,7 @@ RDEPEND="
 	)
 	qt5? (
 		$(python_gen_cond_dep '
-			dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+			dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 		' 'python3*')
 	)
 	webagg? (

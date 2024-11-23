@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-python/protobuf-3.12[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	ncurses? ( $(python_gen_impl_dep 'ncurses') )
 "

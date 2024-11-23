@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 CMAKE_BUILD_TYPE="None"
 inherit cmake desktop python-single-r1 virtualx xdg-utils
@@ -82,7 +82,7 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( virtual/jack )
 	portaudio? ( >=media-libs/portaudio-19_pre )
 	qt5? (
-		$(python_gen_cond_dep 'dev-python/PyQt5[opengl,${PYTHON_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/pyqt5[opengl,${PYTHON_USEDEP}]')
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		x11-libs/qwt:6=[qt5(+)]

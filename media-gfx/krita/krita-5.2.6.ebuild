@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libunibreak:=
 	dev-libs/quazip:0=[qt5(+)]
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[declarative,gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[declarative,gui,widgets,${PYTHON_USEDEP}]
 		dev-python/sip:=[${PYTHON_USEDEP}]
 	')
 	>=dev-qt/qtconcurrent-${QTMIN}:5

@@ -61,7 +61,7 @@ BDEPEND="
 RDEPEND="
 	${DEPEND}
 	monitor? ( $(python_gen_cond_dep '
-			dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+			dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 		')
 	)
 	selinux? ( sec-policy/selinux-nut )

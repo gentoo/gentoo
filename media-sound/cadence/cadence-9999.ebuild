@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
@@ -28,7 +28,7 @@ CDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
-		dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
 	')
 	media-sound/jack_capture
 	virtual/jack

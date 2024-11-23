@@ -26,7 +26,7 @@ RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
 	qt5? (
-		>=dev-python/PyQt5-5.15.5[gui,printsupport,widgets,${PYTHON_USEDEP}]
+		>=dev-python/pyqt5-5.15.5[gui,printsupport,widgets,${PYTHON_USEDEP}]
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5

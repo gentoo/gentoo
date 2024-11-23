@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/psutil-6.1.0[${PYTHON_USEDEP}]
 	>=dev-python/truststore-0.10.0[${PYTHON_USEDEP}]
 	~net-misc/gns3-server-${PV}[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,network,svg,websockets,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt5[gui,network,svg,websockets,widgets,${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

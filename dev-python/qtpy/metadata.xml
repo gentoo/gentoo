@@ -15,7 +15,7 @@
 		Basically, you can write your code as if you were using PySide2 but import Qt modules from qtpy instead of PySide2 (or PyQt5)
 	</longdescription>
 	<use>
-		<flag name="pyqt5">Use <pkg>dev-python/PyQt5</pkg> as Qt for Python implementation</flag>
+		<flag name="pyqt5">Use <pkg>dev-python/pyqt5</pkg> as Qt for Python implementation</flag>
 		<flag name="pyqt6">Use <pkg>dev-python/PyQt6</pkg> as Qt for Python implementation</flag>
 		<flag name="pyside2">Use <pkg>dev-python/pyside2</pkg> as Qt for Python implementation</flag>
 		<flag name="pyside6">Use <pkg>dev-python/pyside6</pkg> as Qt for Python implementation</flag>

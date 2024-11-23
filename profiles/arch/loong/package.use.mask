@@ -302,7 +302,7 @@ dev-libs/boost -context
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # dev-qt/qtlocation:5 fails to compile with gcc-13 for now.
-dev-python/PyQt5 location
+dev-python/pyqt5 location
 dev-python/qtpy test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit desktop python-single-r1 scons-utils toolchain-funcs udev multilib-minimal xdg
 
@@ -38,7 +38,7 @@ CDEPEND="${PYTHON_DEPS}
 	qt5? (
 		$(python_gen_cond_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
-			dev-python/PyQt5[dbus,${PYTHON_USEDEP}]
+			dev-python/pyqt5[dbus,${PYTHON_USEDEP}]
 		')
 		x11-misc/xdg-utils
 	)"

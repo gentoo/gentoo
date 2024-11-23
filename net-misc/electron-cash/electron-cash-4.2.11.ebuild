@@ -52,7 +52,7 @@ RDEPEND="
 	amodem? ( dev-python/amodem[${PYTHON_USEDEP}] )
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	ncurses? ( dev-lang/python )
 	dev-libs/libsecp256k1

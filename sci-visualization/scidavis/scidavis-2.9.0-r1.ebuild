@@ -42,7 +42,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
+			>=dev-python/pyqt5-5.15.6[${PYTHON_USEDEP}]
 			dev-python/pyqt5-sip[${PYTHON_USEDEP}]
 			>=dev-python/sip-6:5[${PYTHON_USEDEP}]
 		')

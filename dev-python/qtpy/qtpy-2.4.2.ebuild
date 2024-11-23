@@ -72,12 +72,12 @@ REQUIRED_USE="
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	pyqt5? (
-		dev-python/PyQt5[${PYTHON_USEDEP}]
-		dev-python/PyQt5[designer?,gui?,help?,multimedia?,network?,opengl?]
-		dev-python/PyQt5[positioning?,printsupport?,sensors?,serialport?,speech?,sql?,svg?]
-		dev-python/PyQt5[testlib?,webchannel?,websockets?,widgets?,xml(+)?]
-		qml? ( dev-python/PyQt5[declarative] )
-		quick? ( dev-python/PyQt5[declarative] )
+		dev-python/pyqt5[${PYTHON_USEDEP}]
+		dev-python/pyqt5[designer?,gui?,help?,multimedia?,network?,opengl?]
+		dev-python/pyqt5[positioning?,printsupport?,sensors?,serialport?,speech?,sql?,svg?]
+		dev-python/pyqt5[testlib?,webchannel?,websockets?,widgets?,xml(+)?]
+		qml? ( dev-python/pyqt5[declarative] )
+		quick? ( dev-python/pyqt5[declarative] )
 		webengine? ( dev-python/pyqtwebengine[${PYTHON_USEDEP}] )
 	)
 	pyqt6? (
@@ -113,11 +113,11 @@ BDEPEND="
 	test? (
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		pyqt5? (
-			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
-			dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
-			dev-python/PyQt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
-			dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
+			dev-python/pyqt5[${PYTHON_USEDEP}]
+			dev-python/pyqt5[bluetooth,dbus,declarative,designer,gui,help,location]
+			dev-python/pyqt5[multimedia,network,opengl,positioning,printsupport]
+			dev-python/pyqt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
+			dev-python/pyqt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 			dev-python/pyqtwebengine[${PYTHON_USEDEP}]
 			dev-qt/qtsql:5[sqlite]
 		)
