@@ -12,6 +12,7 @@ MY_PV="${PV/beta/b}"
 DESCRIPTION="Modern editor for Doom-engine based games and source ports"
 HOMEPAGE="https://slade.mancubus.net/"
 SRC_URI="https://github.com/sirjuddington/${PN^^}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN^^}-${MY_PV}"
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -43,8 +44,6 @@ BDEPEND="
 	app-arch/p7zip
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${PN^^}-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.0_beta2-fluidsynth-driver.patch
