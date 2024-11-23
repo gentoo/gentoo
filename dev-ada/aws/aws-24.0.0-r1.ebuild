@@ -21,6 +21,11 @@ IUSE="+shared ssl wsdl"
 RDEPEND="dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs]
 	dev-ada/libgpr:=[${ADA_USEDEP},shared?,static-libs]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared?,static-libs]
+	shared? (
+		dev-ada/xmlada[static-pic]
+		dev-ada/libgpr[static-pic]
+		dev-ada/gnatcoll-core[static-pic]
+	)
 	wsdl? (
 		dev-ada/libadalang:=[${ADA_USEDEP},static-libs]
 		dev-ada/langkit:=[${ADA_USEDEP},static-libs]
