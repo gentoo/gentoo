@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~x86"
+KEYWORDS="amd64 ~arm64 ~loong x86"
 
 RDEPEND="
 	>=dev-python/filelock-3.0.8[${PYTHON_USEDEP}]
