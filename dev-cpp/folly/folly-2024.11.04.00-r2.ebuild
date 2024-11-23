@@ -67,6 +67,7 @@ src_unpack() {
 src_configure() {
 	# TODO: liburing could in theory be optional but fails to link
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_DIR="$(get_libdir)/cmake/${PN}"
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 
 		-DBUILD_TESTS=$(usex test)
