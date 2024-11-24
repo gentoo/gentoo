@@ -40,9 +40,10 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
+# <libfmt-11 https://github.com/MusicPlayerDaemon/MPD/issues/2141
 RDEPEND="
 	acct-user/mpd
-	dev-libs/libfmt:=
+	<dev-libs/libfmt-11:=
 	dev-libs/libpcre2
 	media-libs/libogg
 	alsa? (
