@@ -61,9 +61,9 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXmu
 	)
-	vtk? (
-		sci-libs/vtk:=[qt5]
-	)"
+	vtk? ( sci-libs/vtk:=[qt5] )
+"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.11.0.2-musl-avoid-execinfo.patch
