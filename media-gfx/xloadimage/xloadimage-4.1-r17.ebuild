@@ -24,7 +24,8 @@ RDEPEND="x11-libs/libX11
 	png? ( media-libs/libpng:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	!media-gfx/xli"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-gentoo-r1.diff
