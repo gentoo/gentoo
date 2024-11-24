@@ -1,7 +1,7 @@
-From 0da7d93621651788505c3670890ee32c6619ddcd Mon Sep 17 00:00:00 2001
+From 2c3c008b5ee7bc87fc8f146b787533c334fa3cf9 Mon Sep 17 00:00:00 2001
 From: Evgeny Grin <k2k@narod.ru>
-Date: Sat, 23 Nov 2024 13:34:45 +0300
-Subject: [PATCH] Fixed missing changes for PTP on kernels >= 6.9
+Date: Sun, 24 Nov 2024 10:44:00 +0300
+Subject: [PATCH] Fixed missing changes for PTP on kernels >= 6.11
 
 ---
  src/r8125_ptp.h | 9 ++++++++-
@@ -9,7 +9,7 @@ Subject: [PATCH] Fixed missing changes for PTP on kernels >= 6.9
  2 files changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/src/r8125_ptp.h b/src/r8125_ptp.h
-index b24136a..50c0e50 100644
+index b24136a..ca137b1 100644
 --- a/src/r8125_ptp.h
 +++ b/src/r8125_ptp.h
 @@ -35,12 +35,19 @@
@@ -23,7 +23,7 @@ index b24136a..50c0e50 100644
  #include <linux/ptp_clock_kernel.h>
  #include <linux/ptp_classify.h>
  
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(6,9,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,11,0)
 +#  define rtl_ethtool_ts_info   ethtool_ts_info
 +#else
 +#  define rtl_ethtool_ts_info   kernel_ethtool_ts_info
@@ -56,4 +56,3 @@ index 812fced..02a6e41 100644
  
 -- 
 2.47.0.windows.2
-
