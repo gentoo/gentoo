@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml-opam/${PN}/releases/download/v${PV}/${P}.tar.g
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
