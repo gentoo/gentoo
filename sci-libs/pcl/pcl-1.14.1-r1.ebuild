@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 fi
 
 DESCRIPTION="2D/3D image and point cloud processing"
@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.1-fix-hardcoded-relative-directory-of-the-installed-cmake-files.patch
 	"${FILESDIR}"/${PN}-1.14.1-gcc15.patch
 	"${FILESDIR}"/${PN}-1.14.1-tests.patch
+	"${FILESDIR}"/${PN}-1.14.1-boost.patch
 )
 
 src_prepare() {
