@@ -11,7 +11,7 @@ SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.xz"
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	>=x11-libs/gtk+-3.20:3
