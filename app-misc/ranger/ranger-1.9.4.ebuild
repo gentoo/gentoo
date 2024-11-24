@@ -17,7 +17,7 @@ else
 		https://github.com/ranger/ranger/archive/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
 fi
 
 DESCRIPTION="Vim-inspired file manager for the console"
