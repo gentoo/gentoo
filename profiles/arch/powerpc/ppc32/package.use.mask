@@ -9,11 +9,6 @@ sys-fs/lvm2 thin
 # Generated C files are too big for PPC ISA to handle.
 dev-python/mypy native-extensions
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
-# KF6 and media-libs/phonon have dropped ppc keyword
-app-office/texstudio video
-net-irc/kvirc phonon
-
 # Matt Jolly <kangie@gentoo.org> (2024-08-14)
 # QUIC dependencies are not keyworded
 net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
