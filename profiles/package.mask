@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Takuya Wakazono <pastalian46@gmail.com> (2024-11-27)
+# Replaced by sys-boot/woeusb-ng, which has more recent upstream
+# activity and optional GUI support.
+# Removal on 2024-12-24.
+sys-boot/woeusb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-25)
 # 7.X series is masked for removal. Please migrate to 8.X series.
 <sci-electronics/kicad-8
