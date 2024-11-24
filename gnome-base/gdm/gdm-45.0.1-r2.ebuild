@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop gnome2 meson pam readme.gentoo-r1 systemd udev
+inherit desktop flag-o-matic gnome2 meson pam readme.gentoo-r1 systemd udev
 
 DESCRIPTION="GNOME Display Manager for managing graphical display servers and user logins"
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM https://gitlab.gnome.org/GNOME/gdm"
@@ -125,6 +125,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944223
+	append-cflags -std=gnu17
+
 	# --with-initial-vt=7 conflicts with plymouth, bug #453392
 	# gdm-3.30 now reaps (stops) the login screen when the login VT isn't active, which
 	# saves on memory. However this means if we don't start on VT1, gdm doesn't start up
