@@ -32,15 +32,13 @@ fi
 LICENSE="BSD"
 SLOT="0/6" # libcapstone.so.6
 
-IUSE="python static-libs test"
+IUSE="python static-libs"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 "
 BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# Currently "-Werror" is only added in the `next`-development branch, but
@@ -74,8 +72,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=true
-		-DCAPSTONE_BUILD_STATIC_RUNTIME=false
+		-DCAPSTONE_BUILD_SHARED_LIBS=true
+		-DCAPSTONE_BUILD_STATIC_LIBS=false
 	)
 	cmake_src_configure
 
