@@ -24,7 +24,7 @@ else
 		)
 	"
 
-	KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -86,7 +86,7 @@ RDEPEND="
 		dev-libs/libevent[threads(+)]
 	)
 	relp? ( >=dev-libs/librelp-1.2.17:= )
-	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
+	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195(+)] )
 	rfc5424hmac? (
 		>=dev-libs/openssl-0.9.8y:0=
 	)
@@ -119,7 +119,10 @@ fi
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
-PATCHES=( "${FILESDIR}/${PN}-8.2112.0-pr5024-configure.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-8.2112.0-pr5024-configure.patch"
+	"${FILESDIR}/signal_header.patch"
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -256,11 +259,16 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable debug diagtools)
 		$(use_enable debug valgrind)
+		# Transport security
+		$(use_enable openssl imdtls)
+		$(use_enable openssl omdtls)
+		$(use_enable openssl)
 		# Misc
 		$(use_enable clickhouse)
 		$(use_enable curl fmhttp)
 		$(use_enable elasticsearch)
 		$(use_enable gcrypt libgcrypt)
+		$(use_enable gnutls)
 		$(use_enable imhttp)
 		$(use_enable impcap)
 		$(use_enable jemalloc)
@@ -268,8 +276,8 @@ src_configure() {
 		$(use_enable kafka omkafka)
 		$(use_enable kerberos gssapi-krb5)
 		$(use_enable kubernetes mmkubernetes)
-		$(use_enable normalize mmnormalize)
 		$(use_enable mdblookup mmdblookup)
+		$(use_enable normalize mmnormalize)
 		$(use_enable omhttp)
 		$(use_enable omhttpfs)
 		$(use_enable omudpspoof)
@@ -277,10 +285,8 @@ src_configure() {
 		$(use_enable relp)
 		$(use_enable rfc3195)
 		$(use_enable rfc5424hmac mmrfc5424addhmac)
-		$(use_enable snmp)
 		$(use_enable snmp mmsnmptrapd)
-		$(use_enable gnutls)
-		$(use_enable openssl)
+		$(use_enable snmp)
 		$(use_enable systemd imjournal)
 		$(use_enable systemd omjournal)
 		$(use_enable usertools)
@@ -334,7 +340,7 @@ src_install() {
 	local -a DOCS=(
 		AUTHORS
 		ChangeLog
-		"${FILESDIR}"/README.gentoo
+		"${FILESDIR}"/README.gentoo-r1
 	)
 
 	use doc && local -a HTML_DOCS=( "${S}/docs/build/." )
@@ -346,7 +352,6 @@ src_install() {
 
 	systemd_newunit "${FILESDIR}/${PN}.service" ${PN}.service
 
-	keepdir /var/empty/dev
 	keepdir /var/spool/${PN}
 	keepdir /etc/ssl/${PN}
 	keepdir /etc/${PN}.d
@@ -355,7 +360,7 @@ src_install() {
 	newins "${FILESDIR}/${PN}.conf" ${PN}.conf
 
 	insinto /etc/rsyslog.d/
-	newins "${FILESDIR}/50-default-r1.conf" 50-default.conf
+	newins "${FILESDIR}/50-default-r2.conf" 50-default.conf
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}/${PN}-r1.logrotate" ${PN}
