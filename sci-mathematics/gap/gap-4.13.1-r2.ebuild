@@ -65,7 +65,10 @@ RDEPEND="${DEPEND}"
 # packages, use package.provided.
 PDEPEND="${REQUIRED_PKGS} !minimal? ( ${AUTOLOADED_PKGS} )"
 
-PATCHES=( "${FILESDIR}/gap-4.13.1-hash-fixes.patch" )
+PATCHES=(
+	"${FILESDIR}/gap-4.13.1-hash-fixes.patch"
+	"${FILESDIR}/gap-4.13.1-more-hash-fixes.patch"
+)
 
 pkg_setup() {
 	if use valgrind; then
