@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools bash-completion-r1 gnome2-utils python-r1 toolchain-funcs vala virtualx
+inherit autotools bash-completion-r1 gnome2-utils flag-o-matic python-r1 toolchain-funcs vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -117,6 +117,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944071
+	append-flags -std=gnu17
+
 	local unicodedir="${EPREFIX}"/usr/share/unicode
 	local python_conf=()
 	if use python; then
