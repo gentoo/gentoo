@@ -14,8 +14,8 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
-IUSE="kcm +config-qt test"
+KEYWORDS="amd64"
+IUSE="kcm +config-qt test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -27,9 +27,11 @@ RDEPEND="
 	kde-frameworks/kwidgetsaddons:6
 	sys-devel/gettext
 	virtual/libintl
-	x11-libs/libX11
-	x11-libs/libxkbfile
-	x11-misc/xkeyboard-config
+	X? (
+		x11-libs/libX11
+		x11-libs/libxkbfile
+		x11-misc/xkeyboard-config
+	)
 	config-qt? ( kde-frameworks/kitemviews:6 )
 	kcm? (
 		dev-qt/qtdeclarative:6
@@ -53,11 +55,14 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-make-x11-dependencies-optional.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=yes
 		-DENABLE_KCM=$(usex kcm)
 		-DENABLE_CONFIG_QT=$(usex config-qt)
+		-DENABLE_X11=$(usex X)
 		-DENABLE_TEST=$(usex test)
 		-DUSE_QT6=ON
 	)
