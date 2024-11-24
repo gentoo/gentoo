@@ -137,17 +137,16 @@ src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
-	# latest branches has proper fixes, but legacy have more issues and are
-	# not worth the trouble, so doing the lame "fix" for gcc14 (bug #921370)
-	# TODO: check if still needed on bumps given this branch is supported,
-	# and reminder to cleanup the CC="${KERNEL_CC}" in modargs if removing
-	local noerr=(
+	# dead branch that will never be fixed and due for eventual removal,
+	# so keeping lazy "fixes" (bug #921370)
+	local kcflags=(
+		-std=gnu17
 		-Wno-error=implicit-function-declaration
 		-Wno-error=incompatible-pointer-types
 	)
 	# not *FLAGS to ensure it's used everywhere including conftest.sh
-	CC+=" $(test-flags-CC "${noerr[@]}")"
-	use modules && KERNEL_CC+=" $(CC=${KERNEL_CC} test-flags-CC "${noerr[@]}")"
+	CC+=" $(test-flags-CC "${kcflags[@]}")"
+	use modules && KERNEL_CC+=" $(CC=${KERNEL_CC} test-flags-CC "${kcflags[@]}")"
 
 	local xnvflags=-fPIC #840389
 	# lto static libraries tend to cause problems without fat objects
@@ -164,7 +163,7 @@ src_compile() {
 
 	local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=video:kernel )
 	local modargs=(
-		CC="${KERNEL_CC}" # for the above gcc14 workarounds
+		CC="${KERNEL_CC}" # for the above kcflags workarounds
 		IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 	)
