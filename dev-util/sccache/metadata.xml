@@ -5,10 +5,10 @@
 	<use>
 		<flag name="azure">Enable Azure Blob Storage support</flag>
 		<flag name="dist-client">Enables distributed support in the sccache client</flag>
+		<flag name="dist-server">Enables the sccache-dist binary</flag>
 		<flag name="gcs">Enable Google Cloud Storage support</flag>
 		<flag name="redis">Enable Redis support</flag>
 		<flag name="s3">Enable full Amazon S3 support</flag>
-		<flag name="dist-server">Enables the sccache-dist binary</flag>
 		<flag name="webdav">Enable WebDAV storage endpoint support</flag>
 	</use>
 	<longdescription lang="en">
