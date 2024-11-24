@@ -3,6 +3,13 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-24)
+# sci-libs/vtk[qt5] cleanup, bug #944817
+sci-libs/vtk qt5
+~sci-chemistry/avogadro2-1.97.0 vtk
+~sci-libs/avogadrolibs-1.97.0 vtk
+~sci-physics/geant-4.11.2.0 vtk
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
 # dev-python/pyside2 last-rites
 dev-python/qtpy pyside2
