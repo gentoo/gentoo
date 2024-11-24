@@ -8,7 +8,6 @@
 		<flag name="gcs">Enable Google Cloud Storage support</flag>
 		<flag name="redis">Enable Redis support</flag>
 		<flag name="s3">Enable full Amazon S3 support</flag>
-		<flag name="simple-s3">Enable minimal Amazon S3 support</flag>
 		<flag name="dist-server">Enables the sccache-dist binary</flag>
 		<flag name="webdav">Enable WebDAV storage endpoint support</flag>
 	</use>
