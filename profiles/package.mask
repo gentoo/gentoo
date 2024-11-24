@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Takuya Wakazono <pastalian46@gmail.com> (2024-11-24)
+# Replaced by sys-boot/woeusb-ng, which has more recent upstream
+# activity and optional GUI support.
+# Removal on 2024-12-24.
+sys-boot/woeusb
+
 # Michał Górny <mgorny@gentoo.org> (2024-11-23)
 # Implementation detail of dev-python/pyproject-fmt.  New versions
 # integrate the Rust code into the main package.
