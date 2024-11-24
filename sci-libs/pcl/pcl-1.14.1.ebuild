@@ -9,7 +9,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PointCloudLibrary/pcl"
 else
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
 fi
