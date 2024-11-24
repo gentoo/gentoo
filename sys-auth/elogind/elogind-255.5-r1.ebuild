@@ -172,6 +172,22 @@ pkg_postinst() {
 			elog "configuration remember to migrate those to new configuration file."
 		fi
 	done
+
+	local file files
+	# find custom hooks excluding known (nvidia-drivers, sys-power/tlp)
+	if [[ -d "${EROOT}"/$(get_libdir)/elogind/system-sleep ]]; then
+		readarray -t files < <(find "${EROOT}"/$(get_libdir)/elogind/system-sleep/ \
+			-type f \( -not -iname ".keep_dir" -a \
+				-not -iname "nvidia" -a \
+				-not -iname "49-tlp-sleep" \) || die)
+	fi
+	if [[ ${#files[@]} -gt 0 ]]; then
+		ewarn "*** Custom hooks in obsolete path detected ***"
+		for file in "${files[@]}"; do
+			ewarn "    ${file}"
+		done
+		ewarn "Move these custom hooks to ${EROOT}/etc/elogind/system-sleep/ instead."
+	fi
 }
 
 pkg_postrm() {
