@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 qmake-utils xdg
 
-DESCRIPTION="QT based Computer Aided Design application"
+DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
 
 MY_PN=FreeCAD
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	S="${WORKDIR}/freecad-${PV}"
@@ -26,7 +26,7 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui netgen pcl qt5 +smesh spacenav test X"
+IUSE="debug designer +gui netgen pcl +smesh spacenav test X"
 # Modules are found in src/Mod/ and their options defined in:
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
@@ -43,12 +43,10 @@ REQUIRED_USE="
 	inspection? ( points )
 	mesh? ( smesh )
 	openscad? ( mesh )
-	python_single_target_python3_12? ( gui? ( !qt5 ) )
 	reverse? ( mesh points )
 	test? ( techdraw )
 "
 # Draft Workbench needs BIM
-# There is no py3.12 support planned for pyside2
 
 RESTRICT="!test? ( test )"
 
@@ -59,16 +57,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/libfmt:=
 	dev-libs/xerces-c[icu]
-	qt5? (
-		dev-qt/qtconcurrent:5
-		dev-qt/qtcore:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtxml:5
-		dev-qt/qtxmlpatterns:5
-	)
-	!qt5? (
-		dev-qt/qtbase:6[concurrent,network,xml]
-	)
+	dev-qt/qtbase:6[concurrent,network,xml]
 	media-libs/freetype
 	sci-libs/opencascade:=[json]
 	sys-libs/zlib
@@ -87,34 +76,17 @@ RDEPEND="
 	)
 	gui? (
 		>=media-libs/coin-4.0.0
+		dev-qt/qtbase:6[gui,opengl,widgets]
+		dev-qt/qtsvg:6
+		dev-qt/qttools:6[designer?,widgets]
+		$(python_gen_cond_dep '
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
+			dev-python/pyside6:=[designer,gui,svg,${PYTHON_USEDEP}]
+			dev-python/shiboken6:=[${PYTHON_USEDEP}]
+		' )
 		virtual/glu
 		virtual/opengl
-		qt5? (
-			dev-qt/designer:5
-			dev-qt/qtgui:5
-			dev-qt/qtopengl:5
-			dev-qt/qtprintsupport:5
-			dev-qt/qtsvg:5
-			dev-qt/qtwidgets:5
-			dev-qt/qtx11extras:5
-			$(python_gen_cond_dep '
-				dev-python/matplotlib[${PYTHON_USEDEP}]
-				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside2:=[gui,svg,${PYTHON_USEDEP}]
-				dev-python/shiboken2:=[${PYTHON_USEDEP}]
-			' python3_{10..11} )
-		)
-		!qt5? (
-			dev-qt/qtbase:6[gui,opengl,widgets]
-			dev-qt/qtsvg:6
-			dev-qt/qttools:6[designer?,widgets]
-			$(python_gen_cond_dep '
-				dev-python/matplotlib[${PYTHON_USEDEP}]
-				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside6:=[designer,gui,svg,${PYTHON_USEDEP}]
-				dev-python/shiboken6:=[${PYTHON_USEDEP}]
-			' )
-		)
 		spacenav? ( dev-libs/libspnav[X?] )
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
@@ -129,14 +101,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-cpp/eigen-3.3.1:3
 	dev-cpp/ms-gsl
-	test? ( qt5? ( dev-qt/qttest:5 ) )
 "
 BDEPEND="
 	dev-lang/swig
-	test? (
-		qt5? ( dev-qt/qttest:5 )
-		dev-cpp/gtest
-	)
+	test? ( dev-cpp/gtest )
 "
 
 PATCHES=(
@@ -254,7 +222,7 @@ src_configure() {
 		)
 	fi
 
-	if ! use qt5; then
+	if use gui; then
 		mycmakeargs+=(
 			-DFREECAD_QT_MAJOR_VERSION=6
 			-DFREECAD_QT_VERSION=6
@@ -264,17 +232,6 @@ src_configure() {
 			-DBUILD_QT5=OFF
 			# Drawing module unmaintained and not ported to qt6
 			-DBUILD_DRAWING=OFF
-		)
-	else
-		mycmakeargs+=(
-			-DFREECAD_QT_MAJOR_VERSION=5
-			-DFREECAD_QT_VERSION=5
-			-DQT_DEFAULT_MAJOR_VERSION=5
-			-DQt5Core_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
-			-DQt5Core_RCC_EXECUTABLE="$(qt5_get_bindir)/rcc"
-			-DBUILD_QT5=ON
-			# Drawing module unmaintained and not ported to qt6
-			-DBUILD_DRAWING=ON
 		)
 	fi
 
