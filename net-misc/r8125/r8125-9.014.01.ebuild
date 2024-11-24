@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+multi-tx-q ptp +rss use-firmware"
 
 PATCHES=(
-	"${FILESDIR}/${P}-ptp-linux-6.9.patch"
+	"${FILESDIR}/${P}-ptp-linux-6.11.patch"
 )
 
 CONFIG_CHECK="~!R8169"
