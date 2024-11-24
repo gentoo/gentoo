@@ -12,8 +12,6 @@ DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P/_/}.tar.bz2"
 
-S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
-
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
