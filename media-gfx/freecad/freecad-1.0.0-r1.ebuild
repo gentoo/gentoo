@@ -307,7 +307,7 @@ src_install() {
 		newbin - freecad <<- _EOF_
 		#!/bin/sh
 		# https://github.com/coin3d/coin/issues/451
-		: \${QT_QPA_PLATFORM:=xcb}
+		: "\${QT_QPA_PLATFORM:=xcb}"
 		export QT_QPA_PLATFORM
 		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD "\${@}"
 		_EOF_
