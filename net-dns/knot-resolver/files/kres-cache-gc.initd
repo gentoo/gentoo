@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${KRES_CACHE_GROUP:=knot-resolver}
+: ${KRES_CACHE_USER:=knot-resolver}
+: ${KRES_CACHE_DIR:=/var/cache/knot-resolver}
+: ${KRES_CACHE_PIDFILE:=/var/run/kres-cache-gc.pid}
+: ${KRES_CACHE_OPTS:="-d 1000"}
+
+command="/usr/bin/kres-cache-gc"
+command_args="-c ${KRES_CACHE_DIR} ${KRES_CACHE_OPTS}"
+command_user="${KRES_CACHE_USER}:${KRES_CACHE_GROUP}"
+pidfile="${KRES_CACHE_PIDFILE}"
+command_background=true
+
+name="kres-cache-gc"
+description="Knot Resolver Garbage Collector daemon"
+
+depend() {
+    need kresd
+}

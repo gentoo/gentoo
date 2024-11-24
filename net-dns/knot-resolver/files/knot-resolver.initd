@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${KNOT_RESOLVER_USER:=knot-resolver}
+: ${KNOT_RESOLVER_GROUP:=knot-resolver}
+: ${KNOT_RESOLVER_CONFIG:=/etc/knot-resolver/config.yaml}
+: ${KNOT_RESOLVER_PIDFILE:=/run/knot-resolver.pid}
+: ${KNOT_RESOLVER_LOG:=syslog}
+
+export KRES_LOGGING_TARGET="${KNOT_RESOLVER_LOG}"
+
+command="/usr/bin/knot-resolver"
+command_args="-c ${KNOT_RESOLVER_CONFIG}"
+command_user="${KNOT_RESOLVER_USER}:${KNOT_RESOLVER_GROUP}"
+pidfile="${KNOT_RESOLVER_PIDFILE}"
+command_background=true
+retry="TERM/60/KILL/5"
+
+extra_started_commands="reload"
+
+capabilities="^cap_net_bind_service,^cap_setpcap"
+
+name="knot-resolver manager"
+description="scaleable caching DNS resolver"
+
+depend() {
+    need net
+    use logger
+    provide dns
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	/usr/bin/kresctl --config=${KNOT_RESOLVER_CONFIG} reload
+	eend $?
+}
