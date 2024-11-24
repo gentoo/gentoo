@@ -6,7 +6,7 @@ EAPI=7
 DIST_AUTHOR=SREZIC
 DIST_VERSION=804.036
 DIST_EXAMPLES=("examples/*")
-inherit perl-module virtualx
+inherit flag-o-matic perl-module virtualx
 
 DESCRIPTION="A Perl Module for Tk"
 
@@ -66,6 +66,13 @@ src_prepare() {
 
 	# Restore test files
 	mv "${T}/stash/testimg.jpg" "${S}/JPEG/jpeg/testimg.jpg" || die "can't restore testimg.jpg"
+}
+
+src_configure() {
+	# bug #943847
+	append-cflags -std=gnu17
+
+	perl-module_src_configure
 }
 
 src_test() {
