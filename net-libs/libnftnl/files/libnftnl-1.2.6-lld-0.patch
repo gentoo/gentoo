@@ -1,0 +1,57 @@
+From 307ed295f487f671f7b17d96f5d08b90ba834b53 Mon Sep 17 00:00:00 2001
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+Date: Tue, 2 Jan 2024 14:22:50 +0100
+Subject: [PATCH] object: define nftnl_obj_unset()
+
+For consistency with existing objects, implement this interface.
+This is already defined in libnftnl.map so the intention was to
+provide it.
+
+Fixes: 5573d0146c1a ("src: support for stateful objects")
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ src/object.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/src/object.c b/src/object.c
+index 9e76861..0814be7 100644
+--- a/src/object.c
++++ b/src/object.c
+@@ -69,6 +69,34 @@ bool nftnl_obj_is_set(const struct nftnl_obj *obj, uint16_t attr)
+ 	return obj->flags & (1 << attr);
+ }
+ 
++EXPORT_SYMBOL(nftnl_obj_unset);
++void nftnl_obj_unset(struct nftnl_obj *obj, uint16_t attr)
++{
++	if (!(obj->flags & (1 << attr)))
++		return;
++
++	switch (attr) {
++	case NFTNL_OBJ_TABLE:
++		xfree(obj->table);
++		break;
++	case NFTNL_OBJ_NAME:
++		xfree(obj->name);
++		break;
++	case NFTNL_OBJ_USERDATA:
++		xfree(obj->user.data);
++		break;
++	case NFTNL_OBJ_TYPE:
++	case NFTNL_OBJ_FAMILY:
++	case NFTNL_OBJ_USE:
++	case NFTNL_OBJ_HANDLE:
++		break;
++	default:
++		break;
++	}
++
++	obj->flags &= ~(1 << attr);
++}
++
+ static uint32_t nftnl_obj_validate[NFTNL_OBJ_MAX + 1] = {
+ 	[NFTNL_OBJ_FAMILY]	= sizeof(uint32_t),
+ 	[NFTNL_OBJ_USE]		= sizeof(uint32_t),
+-- 
+2.43.2
+
