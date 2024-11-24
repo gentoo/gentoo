@@ -64,7 +64,6 @@
 # Michael Orlitzky <mjo@gentoo.org> (2018-01-07)
 # Oracle database stuff should work on amd64.
 -oci8
--oci8-instant-client
 -oracle
 
 # Sven Wegener <swegener@gentoo.org> (2017-05-31)
