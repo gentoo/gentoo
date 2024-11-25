@@ -40,7 +40,7 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy hdf5 +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
@@ -51,7 +51,6 @@ CDEPEND="
 		sys-devel/clang-runtime[openmp]
 	)
 	fftw? ( sci-libs/fftw:3.0= )
-	hdf5? ( sci-libs/hdf5 )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
 	mkl? ( sci-libs/mkl )
@@ -237,7 +236,7 @@ src_configure() {
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
 		-DGMX_BUILD_MANUAL=$(usex build-manual)
-		-DGMX_USE_HDF5=$(usex hdf5)
+		-DGMX_USE_HDF5=off
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_BUILD_HELP=on
