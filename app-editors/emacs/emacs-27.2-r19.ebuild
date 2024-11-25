@@ -166,46 +166,84 @@ src_configure() {
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
 
-	local myconf
+	local myconf=(
+		--program-suffix="-${EMACS_SUFFIX}"
+		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX}
+		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX}
+		--localstatedir="${EPREFIX}"/var
+		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}"
+		--without-compress-install
+		--without-hesiod
+		--without-pop
+		--with-file-notification=$(usev inotify || usev gfile || echo no)
+		--with-pdumper
+		$(use_enable acl)
+		$(use_with dbus)
+		$(use_with dynamic-loading modules)
+		$(use_with games gameuser ":gamestat")
+		$(use_with gmp libgmp)
+		$(use_with gpm)
+		$(use_with json)
+		$(use_with kerberos) $(use_with kerberos kerberos5)
+		$(use_with lcms lcms2)
+		$(use_with libxml2 xml2)
+		$(use_with mailutils)
+		$(use_with selinux)
+		$(use_with ssl gnutls)
+		$(use_with systemd libsystemd)
+		$(use_with threads)
+		$(use_with wide-int)
+		$(use_with zlib)
+	)
 
 	if use alsa; then
 		use sound || ewarn \
 			"USE flag \"alsa\" overrides \"-sound\"; enabling sound support."
-		myconf+=" --with-sound=alsa"
+		myconf+=( --with-sound=alsa )
 	else
-		myconf+=" --with-sound=$(usex sound oss)"
+		myconf+=( --with-sound=$(usex sound oss no) )
 	fi
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
-		myconf+=" --without-x --without-ns"
+		myconf+=(
+			--without-x --without-ns
+		)
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
-		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
+		myconf+=(
+			--with-ns --disable-ns-self-contained
+			--without-x
+		)
 	else
-		myconf+=" --with-x --without-ns"
-		myconf+=" --without-gconf"
-		myconf+=" $(use_with gsettings)"
-		myconf+=" $(use_with toolkit-scroll-bars)"
-		myconf+=" $(use_with gif)"
-		myconf+=" $(use_with jpeg)"
-		myconf+=" $(use_with png)"
-		myconf+=" $(use_with svg rsvg)"
-		myconf+=" $(use_with tiff)"
-		myconf+=" $(use_with xpm)"
-		myconf+=" $(use_with imagemagick)"
+		myconf+=(
+			--with-x --without-ns
+			--without-gconf
+			$(use_with gsettings)
+			$(use_with toolkit-scroll-bars)
+			$(use_with gif)
+			$(use_with jpeg)
+			$(use_with png)
+			$(use_with svg rsvg)
+			$(use_with tiff)
+			$(use_with xpm)
+			$(use_with imagemagick)
+		)
 
 		if use xft; then
-			myconf+=" --with-xft"
-			myconf+=" $(use_with cairo)"
-			myconf+=" $(use_with harfbuzz)"
-			myconf+=" $(use_with m17n-lib libotf)"
-			myconf+=" $(use_with m17n-lib m17n-flt)"
+			myconf+=(
+				--with-xft
+				$(use_with cairo)
+				$(use_with harfbuzz)
+				$(use_with m17n-lib libotf)
+				$(use_with m17n-lib m17n-flt)
+			)
 		else
-			myconf+=" --without-xft"
-			myconf+=" --without-cairo"
-			myconf+=" --without-libotf --without-m17n-flt"
+			myconf+=(
+				--without-xft
+				--without-cairo
+				--without-libotf --without-m17n-flt
+			)
 			use cairo && ewarn \
 				"USE flag \"cairo\" has no effect if \"xft\" is not set."
 			use m17n-lib && ewarn \
@@ -225,24 +263,24 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=" --with-x-toolkit=gtk3 --without-xwidgets"
+			myconf+=( --with-x-toolkit=gtk3 --without-xwidgets )
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
 			done
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
-			myconf+=" --with-x-toolkit=motif"
+			myconf+=( --with-x-toolkit=motif )
 			for f in Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"motif\" is set."
 			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
-			myconf+=" --with-x-toolkit=lucid $(use_with Xaw3d xaw3d)"
+			myconf+=( --with-x-toolkit=lucid $(use_with Xaw3d xaw3d) )
 		else
 			einfo "Configuring to build with no toolkit"
-			myconf+=" --with-x-toolkit=no"
+			myconf+=( --with-x-toolkit=no )
 		fi
 	fi
 
@@ -252,43 +290,15 @@ src_configure() {
 		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
-		myconf+=" --with-dumping=none"
+		myconf+=( --with-dumping=none )
 	elif use m68k; then
 		# Workaround for https://debbugs.gnu.org/44531
-		myconf+=" --with-dumping=unexec"
+		myconf+=( --with-dumping=unexec )
 	else
-		myconf+=" --with-dumping=pdumper"
+		myconf+=( --with-dumping=pdumper )
 	fi
 
-	econf \
-		--program-suffix="-${EMACS_SUFFIX}" \
-		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX} \
-		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
-		--localstatedir="${EPREFIX}"/var \
-		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--without-compress-install \
-		--without-hesiod \
-		--without-pop \
-		--with-file-notification=$(usev inotify || usev gfile || echo no) \
-		--with-pdumper \
-		$(use_enable acl) \
-		$(use_with dbus) \
-		$(use_with dynamic-loading modules) \
-		$(use_with games gameuser ":gamestat") \
-		$(use_with gmp libgmp) \
-		$(use_with gpm) \
-		$(use_with json) \
-		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with lcms lcms2) \
-		$(use_with libxml2 xml2) \
-		$(use_with mailutils) \
-		$(use_with selinux) \
-		$(use_with ssl gnutls) \
-		$(use_with systemd libsystemd) \
-		$(use_with threads) \
-		$(use_with wide-int) \
-		$(use_with zlib) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_compile() {
