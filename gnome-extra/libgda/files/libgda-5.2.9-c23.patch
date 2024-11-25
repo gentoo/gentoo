@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/944755
+https://gitlab.gnome.org/GNOME/libgda/-/issues/272
+https://gitlab.gnome.org/GNOME/libgda/-/merge_requests/208
+
+From 333dc9252e022a70f7a820aa63318ddd15edca83 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ahmed=20Ba=C3=AFzid?= <ahmed.baizid.0@gmail.com>
+Date: Sat, 31 Aug 2024 22:18:56 +0100
+Subject: [PATCH] error: function declaration without prototype
+
+Function declaration with no prototype are forbidden in C23.
+
+See: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2841.htm
+
+Closes #272.
+--- a/libgda/sql-parser/lemon.c
++++ b/libgda/sql-parser/lemon.c
+@@ -57,14 +57,6 @@ struct action;
+ static struct action *Action_new(void);
+ static struct action *Action_sort(struct action *);
+ 
+-/********** From the file "build.h" ************************************/
+-void FindRulePrecedences();
+-void FindFirstSets();
+-void FindStates();
+-void FindLinks();
+-void FindFollowSets();
+-void FindActions();
+-
+ /********* From the file "configlist.h" *********************************/
+ void Configlist_init(void);
+ struct config *Configlist_add(struct rule *, int);
+-- 
+GitLab

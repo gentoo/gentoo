@@ -113,6 +113,9 @@ src_prepare() {
 	# https://github.com/gentoo/gentoo/pull/36912#issuecomment-2171657215
 	eapply "${FILESDIR}/${PN}-5.2.9-fix-gcc14.patch"
 
+	# bug #944755
+	eapply "${FILESDIR}/${PN}-5.2.9-c23.patch"
+
 	gnome2_src_prepare
 	java-pkg-opt-2_src_prepare
 }
