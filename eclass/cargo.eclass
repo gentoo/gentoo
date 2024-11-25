@@ -30,6 +30,9 @@ fi
 # Either the lowest slot supported by rust.eclass _or_
 # reference the changelog for a particular feature requirement
 # https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
+# For reference the actual minimum version of cargo that can be used
+# is 1.53.0 for `cargo update --offline`; updated to 1.71.1 with rust eclass.
+# No need to enable usage of legacy rust versions in ebuilds; keep it as-is.
 _CARGO_ECLASS_RUST_MIN_VER="1.71.1"
 
 case ${EAPI} in
@@ -37,8 +40,10 @@ case ${EAPI} in
 		if [[ -n ${RUST_MIN_VER} ]]; then
 			# This is _very_ unlikely given that we leverage the rust eclass but just in case cargo requires a newer version
 			# than the oldest in-tree in future.
-			if ver_test "${RUST_MIN_VER}" -lt "${_CARGO_ECLASS_RUST_MIN_VER}"; then
-				die "RUST_MIN_VERSION must be at least ${_CARGO_ECLASS_RUST_MIN_VER}"
+			if [[ -z ${CARGO_BOOTSTRAP} ]]; then
+				if ver_test "${RUST_MIN_VER}" -lt "${_CARGO_ECLASS_RUST_MIN_VER}"; then
+					die "RUST_MIN_VERSION must be at least ${_CARGO_ECLASS_RUST_MIN_VER}"
+				fi
 			fi
 		else
 			RUST_MIN_VER="${_CARGO_ECLASS_RUST_MIN_VER}"
@@ -108,6 +113,13 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # 	[rustpython-parser]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/compiler/parser"
 # )
 # @CODE
+
+# @ECLASS_VARIABLE: CARGO_BOOTSTRAP
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Ignore `_CARGO_ECLASS_RUST_MIN_VER` checks.
+# If you aren't bootstrapping Rust you probably don't need this.
 
 # @ECLASS_VARIABLE: CARGO_OPTIONAL
 # @DEFAULT_UNSET
