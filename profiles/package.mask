@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-04)
+# Bugs #845294 #757543 #517744 #704198 #366739 #350302 #614318 #637422
+# #738898 #501586.
+# Blocks removal of dev-java/swt-3.7.2-r4, bug #944885.
+# Users should switch to dev-util/android-sdk-cmdline-tools for a CLI replacement
+# or dev-util/android-studio for a GUI replacement.
+# Removal on 2025-01-04
+dev-util/android-sdk-update-manager
+dev-java/swt:3.7
+
 # Pacho Ramos <pacho@gentoo.org> (2024-12-02)
 # Dead for ages, not ported to wxGTK 3.2
 # Removal on 2024-12-31.  Bug #929140.
