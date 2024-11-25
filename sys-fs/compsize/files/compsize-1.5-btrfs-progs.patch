@@ -1,5 +1,4 @@
-diff --git a/compsize.c b/compsize.c
-index 42ec304..0f533e5 100644
+See upstream PR: https://github.com/kilobyte/compsize/pull/54
 --- a/compsize.c
 +++ b/compsize.c
 @@ -5,12 +5,14 @@
