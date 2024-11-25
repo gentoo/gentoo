@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Utility to optimize JPEG files"
 HOMEPAGE="https://www.kokkonen.net/tjko/projects.html"
@@ -23,6 +23,8 @@ PATCHES=(
 )
 
 src_configure() {
+	use elibc_musl && append-cppflags -D__GNU_LIBRARY__ #944902
+
 	local mycmakeargs=(
 		-DUSE_MOZJPEG=no
 	)
