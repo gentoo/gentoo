@@ -21,7 +21,7 @@ VERSION_COREUTILS="9.4"
 VERSION_CRYPTSETUP="2.6.1"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2022.83"
-VERSION_EUDEV="3.2.14"
+VERSION_EUDEV="3.2.10"
 VERSION_EXPAT="2.5.0"
 VERSION_E2FSPROGS="1.47.0"
 VERSION_FUSE="2.9.9"
@@ -139,6 +139,8 @@ RDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}"/genkernel-4.3.16-globbing-workaround.patch
+	"${FILESDIR}"/${PN}-4.3.16-musl.patch
+	"${FILESDIR}"/${PN}-4.3.16-posix-shell.patch
 )
 
 src_unpack() {
@@ -199,7 +201,7 @@ src_install() {
 	doins ${A/${P}.tar.xz/}
 	popd &>/dev/null || die
 
-	# Workaround for bug 944499, for now this patch will live in FILESDIR and is
+	# Workaround for bug 944499, for now this patch will live in FILESDIR and is 
 	# conditionally installed but we could add it to genkernel.git and conditionally
 	# remove it here instead.
 	if ! use systemd; then
