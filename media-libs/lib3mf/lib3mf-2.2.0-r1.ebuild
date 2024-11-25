@@ -39,6 +39,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-include-cstdint.patch
 )
 
+src_prepare() {
+	cmake_src_prepare
+
+	rm -r Include/Libraries/{libzip,zlib} || die
+	ln -s "${EPREFIX}/usr/include" Include/Libraries/zlib || die
+	ln -s "${EPREFIX}/usr/include" Include/Libraries/libzip || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_INCLUDEDIR="include/${PN}"
