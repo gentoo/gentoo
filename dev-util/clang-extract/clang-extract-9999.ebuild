@@ -29,14 +29,15 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	app-arch/zstd:=
+	sys-libs/zlib
+	virtual/libelf
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
 		sys-devel/llvm:${LLVM_SLOT}
 	')
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}

@@ -29,7 +29,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	app-arch/zstd
+	app-arch/zstd:=
+	sys-libs/zlib
 	virtual/libelf
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
