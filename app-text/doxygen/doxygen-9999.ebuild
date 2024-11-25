@@ -3,7 +3,8 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 18 19 )
+LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
@@ -29,7 +30,7 @@ IUSE="clang debug doc dot doxysearch gui test"
 # - We keep the odd construct of noop USE=test because of
 #   the special relationship b/t RESTRICT & USE for tests.
 #   Also, it's a hint which avoids tests being silently skipped during arch testing.
-REQUIRED_USE="test? ( doc )"
+REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} ) test? ( doc )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
