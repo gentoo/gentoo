@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/919219
+https://src.fedoraproject.org/rpms/libgpod/blob/rawhide/f/pointer-types.patch
+--- a/src/ithumb-writer.c
++++ b/src/ithumb-writer.c
+@@ -968,7 +968,7 @@
+     else if (thumb->data_type == ITDB_THUMB_TYPE_PIXBUF)
+     {
+         Itdb_Thumb_Pixbuf *thumb_pixbuf = (Itdb_Thumb_Pixbuf *)thumb;
+-        pixbuf = g_object_ref (G_OBJECT (thumb_pixbuf->pixbuf));
++        pixbuf = (GdkPixbuf *)(g_object_ref (G_OBJECT (thumb_pixbuf->pixbuf)));
+     }
+ 
+     if (pixbuf == NULL)
+--- a/src/ithumb-writer.c
++++ b/src/ithumb-writer.c
+@@ -728,7 +728,7 @@
+   {
+       return gdk_pixbuf_rotate_simple (pixbuf, *rotation);
+   }
+-  return g_object_ref (G_OBJECT (pixbuf));
++  return (GdkPixbuf *)(g_object_ref (G_OBJECT (pixbuf)));
+ }
+ 
+ /* On the iPhone, thumbnails are presented as squares in a grid.
+
