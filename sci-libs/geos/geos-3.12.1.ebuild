@@ -27,9 +27,6 @@ src_configure() {
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
 		-DUSE_CCACHE=OFF
-
-		# bug #709368
-		$(usev arm '-DDISABLE_GEOS_INLINE=ON')
 	)
 
 	cmake_src_configure
