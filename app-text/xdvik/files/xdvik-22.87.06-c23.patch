@@ -1,0 +1,83 @@
+https://tug.org/pipermail/tex-live/2024-November/050931.html
+https://bugs.gentoo.org/944178
+--- a/dvi-draw.c
++++ b/dvi-draw.c
+@@ -198,7 +198,6 @@ bmUnitT bit_masks[] = {
+ #ifdef	VMS
+ #define	off_t	int
+ #endif
+-extern off_t lseek();
+ 
+ #ifndef	SEEK_SET	/* if <unistd.h> is not provided (or for <X11R5) */
+ #define	SEEK_SET	0
+@@ -4693,8 +4692,6 @@ anchor_search(const char *str)
+ 
+ #if GREY
+ 
+-extern	double	pow();
+-
+ static void
+ mask_shifts(Pixel mask, int *pshift1, int *pshift2)
+ {
+--- a/gui/menu.c
++++ b/gui/menu.c
+@@ -62,7 +62,7 @@ static struct button_info *m_button_info = NULL; /* toplevel node of pulldown me
+ 
+ 
+ static void
+-set_menu_info(void *val, XtActionProc proc, Boolean (*cmp)(), struct button_info *item)
++set_menu_info(void *val, XtActionProc proc, Boolean (*cmp)(void *, const char *), struct button_info *item)
+ {
+     size_t i;
+     ASSERT(item != NULL, "item in set_menu_info musn't be NULL!");
+@@ -96,7 +96,7 @@ set_menu_info(void *val, XtActionProc proc, Boolean (*cmp)(), struct button_info
+ 
+ /* set a menu according to val and the compare function cmp */
+ void
+-set_menu(void *val, XtActionProc proc, Boolean (*cmp)())
++set_menu(void *val, XtActionProc proc, Boolean (*cmp)(void *, const char *))
+ {
+     /* removed following since cast from function pointer to void pointer is not supported by ANSI C */
+     /* TRACE_GUI((stderr, "set_menu_info: %d, %p, %p", *(int *)val, (void *)proc, (void *)cmp)); */
+--- a/gui/menu.h
++++ b/gui/menu.h
+@@ -67,6 +67,6 @@ extern void create_menu_buttons(Widget parent,
+ #endif
+ 				);
+ 
+-extern void set_menu(void *val, XtActionProc proc, Boolean (*cmp)());
++extern void set_menu(void *val, XtActionProc proc, Boolean (*cmp)(void *, const char *));
+ 
+ #endif /* MENU_H_ */
+--- a/gui/sfDraw.c
++++ b/gui/sfDraw.c
+@@ -238,7 +238,6 @@ SFstatAndCheck(SFDir *dir, SFEntry *entry)
+     struct stat statBuf;
+     char save;
+     int last;
+-    extern int SFchdir();
+ 
+     /*
+      * must be restored before returning
+--- a/gui/sfDraw.h
++++ b/gui/sfDraw.h
+@@ -56,7 +56,7 @@ void SFhAreaSelectedCallback(Widget w, int n, int pnew);
+ void SFpathSliderMovedCallback(Widget w, XtPointer client_data, float *new);
+ void SFpathAreaSelectedCallback(Widget w, XtPointer client_data, int pnew);
+ Boolean SFworkProc(void);
+-extern int (*SFfunc)();
++extern int (*SFfunc)(char *entryReal, char **entryShown, struct stat *statBuf);
+ 
+ extern Widget selFileField, selFileForm, selFileHScroll, selFileHScrolls[], selFileLists[], selFileVScrolls[];
+ extern Display *SFdisplay;
+--- a/gui/sfSelFile.c
++++ b/gui/sfSelFile.c
+@@ -125,7 +125,7 @@ XtAppContext SFapp;
+ int SFpathScrollWidth, SFvScrollHeight, SFhScrollWidth;
+ char SFtextBuffer[MAXPATHLEN];
+ XtIntervalId SFdirModTimerId;
+-int (*SFfunc) ();
++int (*SFfunc) (char *entryReal, char **entryShown, struct stat *statBuf);
+ 
+ static int SFstatus = SEL_FILE_NULL;
+ 

@@ -1,0 +1,12 @@
+https://tug.org/pipermail/tex-live/2024-November/050930.html
+https://bugs.gentoo.org/944178
+--- a/squeeze/squeeze.c
++++ b/squeeze/squeeze.c
+@@ -118,7 +118,6 @@ main(int argc, char *argv[])
+     int c;
+     char *b;
+     char seeking;
+-    extern void exit();
+ 
+     if (argc > 3 || (in = (argc < 2 ? stdin : fopen(argv[1], "r"))) == NULL ||
+ 	(out = (argc < 3 ? stdout : fopen(argv[2], "w"))) == NULL) {
