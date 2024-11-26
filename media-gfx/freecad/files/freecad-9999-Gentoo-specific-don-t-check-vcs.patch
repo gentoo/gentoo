@@ -1,6 +1,6 @@
 --- a/src/Tools/SubWCRev.py
 +++ b/src/Tools/SubWCRev.py
-@@ -510,11 +510,6 @@ def main():
+@@ -511,11 +511,6 @@ def main():
  
      vcs = [
          GitControl(),
