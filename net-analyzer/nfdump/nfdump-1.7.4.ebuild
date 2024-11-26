@@ -76,7 +76,7 @@ src_configure() {
 		$(use_enable nsel)
 		$(use_enable readpcap)
 		$(use_enable sflow)
-		$(use_with zstd "zstdpath=${EPREFIX}/usr")
+		$(use_with zstd "zstdpath" "${EPREFIX}/usr")
 	)
 	econf "${myeconfargs[@]}"
 }
