@@ -379,9 +379,10 @@ kernel-build_src_install() {
 
 	local target
 	for target in "${targets[@]}" ; do
-		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" INSTALL_PATH="${ED}/boot" \
 			INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
-			INSTALL_PATH="${ED}/boot" "${compress[@]}" "${target}"
+			INSTALL_DTBS_PATH="${ED}/lib/modules/${KV_FULL}/dtb" \
+			"${compress[@]}" "${target}"
 	done
 
 	# note: we're using mv rather than doins to save space and time
