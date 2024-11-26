@@ -21,6 +21,7 @@ IUSE="bidi debug"
 
 DEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5=
 	dev-qt/qtnetwork:5[ssl]
