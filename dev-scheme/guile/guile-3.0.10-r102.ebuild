@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3-gentoo-sandbox.patch
 	"${FILESDIR}/${PN}-3.0-fix-32bit-BE.patch"
 	"${FILESDIR}/${PN}-3.0.10-backport-issue72913.patch"
+	"${FILESDIR}/${PN}-3.0.10-c23.patch"
 )
 
 # Where to install data files.

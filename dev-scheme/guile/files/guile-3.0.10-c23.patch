@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/943712
+https://git.savannah.gnu.org/cgit/guile.git/commit/?id=c2e7d834c26dca39e0a2dc6784fc47814969817a
+
+From c2e7d834c26dca39e0a2dc6784fc47814969817a Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@pobox.com>
+Date: Tue, 25 Jun 2024 09:30:21 +0200
+Subject: Fix compilation with C23
+
+* libguile/jit.c (is_unreachable): Rename from "unreachable", which is
+apparently a new reserved word in C23.
+--- a/libguile/jit.c
++++ b/libguile/jit.c
+@@ -370,7 +370,7 @@ set_register_state (scm_jit_state *j, uint32_t state)
+ }
+ 
+ static uint32_t
+-unreachable (scm_jit_state *j)
++is_unreachable (scm_jit_state *j)
+ {
+   return j->register_state & UNREACHABLE;
+ }
+@@ -382,7 +382,7 @@ has_register_state (scm_jit_state *j, uint32_t state)
+ }
+ 
+ #define ASSERT_HAS_REGISTER_STATE(state) \
+-  ASSERT (unreachable (j) || has_register_state (j, state));
++  ASSERT (is_unreachable (j) || has_register_state (j, state));
+ 
+ static void
+ record_gpr_clobber (scm_jit_state *j, jit_gpr_t r)
+-- 
+cgit v1.2.3-70-g09d2
