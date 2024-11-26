@@ -1,0 +1,26 @@
+From 73cc55ac619067339afc9741a62e6ad47f1cf2df Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 25 Nov 2024 21:53:19 +0100
+Subject: [PATCH] keditfiletype: KF6ConfigCore is used, not KF6ConfigWidgets
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ keditfiletype/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/keditfiletype/CMakeLists.txt b/keditfiletype/CMakeLists.txt
+index 7fdf6f2e..a3c6df3f 100644
+--- a/keditfiletype/CMakeLists.txt
++++ b/keditfiletype/CMakeLists.txt
+@@ -40,7 +40,7 @@ kcoreaddons_add_plugin(kcm_filetypes SOURCES ${kcm_filetypes_SRCS} INSTALL_NAMES
+ 
+ kcmutils_generate_desktop_file(kcm_filetypes)
+ target_link_libraries(kcm_filetypes
+-    KF6::ConfigWidgets
++    KF6::ConfigCore
+     KF6::IconThemes
+     KF6::IconWidgets
+     KF6::I18n
+-- 
+2.47.0
+
