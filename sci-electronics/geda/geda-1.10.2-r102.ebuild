@@ -89,7 +89,7 @@ src_configure() {
 }
 
 src_install() {
-	guile_src_install
+	guile-single_src_install
 
 	find "${D}" -name '*.la' -delete || die
 }
