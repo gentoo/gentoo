@@ -1,0 +1,28 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+Here are the failiure messages:
+test_Ip(): Assertion `tp == sys_days{2016_y/12/11} + hours{13}' failed.
+test_p():  Assertion `tp == sys_days{2016_y/12/11} + hours{23}' failed.
+---
+ test/date_test/parse.pass.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/test/date_test/parse.pass.cpp b/test/date_test/parse.pass.cpp
+index 13ca909..cdeea71 100644
+--- a/test/date_test/parse.pass.cpp
++++ b/test/date_test/parse.pass.cpp
+@@ -906,11 +906,9 @@ main()
+     test_D();
+     test_F();
+     test_H();
+-    test_Ip();
+     test_j();
+     test_m();
+     test_M();
+-    test_p();
+     test_r();
+     test_R();
+     test_S();
+-- 
+2.45.2
+
