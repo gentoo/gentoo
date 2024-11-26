@@ -26,19 +26,6 @@
 		<flag name="btrfs">
 			Enables btrfs support (graph driver) in Podman
 		</flag>
-		<flag name="cgroup-hybrid">
-			Use legacy (hybrid) cgroups instead of modern (unified) cgroups
-		</flag>
-		<flag name="fuse">
-			Enables fuse dependencies (fuse-overlayfs is especially useful
-			for rootless mode).
-		</flag>
-		<flag name="init">
-			Enables catatonit dependency required for podman run --init.
-		</flag>
-		<flag name="rootless">
-			Enables dependencies for running in rootless mode.
-		</flag>
 		<flag name="wrapper">
 			Install wrapper which lets use podman for command `docker`
 		</flag>
