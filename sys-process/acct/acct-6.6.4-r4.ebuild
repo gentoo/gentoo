@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd tmpfiles
+inherit autotools flag-o-matic systemd tmpfiles
 
 DESCRIPTION="GNU system accounting utilities"
 HOMEPAGE="https://savannah.gnu.org/projects/acct/"
@@ -28,6 +28,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944194
+	append-flags -std=gnu17
+
 	econf --enable-linux-multiformat
 }
 
