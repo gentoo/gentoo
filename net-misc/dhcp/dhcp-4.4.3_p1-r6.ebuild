@@ -147,6 +147,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944907
+	append-cflags -std=gnu17
+
 	# bind defaults to stupid `/usr/bin/ar`
 	tc-export AR BUILD_CC
 	export ac_cv_path_AR=${AR}
