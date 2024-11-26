@@ -3,9 +3,9 @@
 
 EAPI=8
 
-APP_REVISION=12583
+APP_REVISION="12583"
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Open source implementation of Object Rexx"
 HOMEPAGE="https://www.oorexx.org/about.html
@@ -34,4 +34,13 @@ src_unpack() {
 	mv "${WORKDIR}" "${T}/${P}" || die
 	mkdir -p "${WORKDIR}" || die
 	mv "${T}/${P}" "${S}" || die
+}
+
+src_configure() {
+	# bug 924171
+	if use elibc_musl ; then
+		append-cppflags -D_LARGEFILE64_SOURCE
+	fi
+
+	cmake_src_configure
 }
