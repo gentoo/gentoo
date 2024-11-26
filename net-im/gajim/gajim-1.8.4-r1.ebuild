@@ -21,7 +21,7 @@ SLOT="0"
 # when https://bugs.gentoo.org/912285 is fixed.
 
 KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
-IUSE="+crypt geolocation jingle remote rst +spell upnp +webp"
+IUSE="+crypt geolocation jingle remote rst +spell +webp"
 
 COMMON_DEPEND="
 	dev-libs/gobject-introspection[cairo(+)]
@@ -76,7 +76,6 @@ RDEPEND="${COMMON_DEPEND}
 			app-text/gspell[introspection]
 			app-text/hunspell
 		)
-		upnp? ( net-libs/gupnp-igd:0[introspection] )
 	')"
 
 python_compile() {
