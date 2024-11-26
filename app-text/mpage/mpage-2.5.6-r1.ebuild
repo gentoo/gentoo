@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Many to one page printing utility"
 HOMEPAGE="http://www.mesa.nl/"
@@ -24,6 +24,8 @@ PATCHES=(
 )
 
 src_configure() {
+	# bug #944758
+	append-flags -std=gnu17
 	tc-export CC
 }
 
