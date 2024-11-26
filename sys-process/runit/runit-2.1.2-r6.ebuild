@@ -47,6 +47,8 @@ src_configure() {
 
 	echo "$(tc-getCC) ${CFLAGS}"  > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
+	sed -i -e "s:ar cr:$(tc-getAR) cr:" print-ar.sh || die
+	sed -i -e "s:ranlib :$(tc-getRANLIB) :" print-ar.sh || die
 }
 
 src_install() {
