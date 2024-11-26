@@ -17,7 +17,10 @@ IUSE="systemd"
 
 RDEPEND="systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	dev-python/docutils
+	virtual/pkgconfig
+"
 
 DOCS=( ChangeLog )
 
