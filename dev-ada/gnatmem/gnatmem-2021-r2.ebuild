@@ -14,6 +14,8 @@ DESCRIPTION="Monitors dynamic allocation and deallocation activity in a program"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
+S="${WORKDIR}"/${MYP}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -24,8 +26,6 @@ DEPEND="${RDEPEND}
 	sys-libs/binutils-libs:="
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
-
-S="${WORKDIR}"/${MYP}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2018-gentoo.patch
