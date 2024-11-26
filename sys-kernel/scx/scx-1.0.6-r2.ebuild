@@ -359,6 +359,10 @@ src_prepare() {
 	# Inject the rust_abi value into install_rust_user_scheds
 	sed -i "s;\${MESON_BUILD_ROOT};\${MESON_BUILD_ROOT}/$(rust_abi);" \
 		meson-scripts/install_rust_user_scheds || die
+
+	# bug #944832
+	sed -i 's;^#!/usr/bin/;#!/sbin/;' \
+		services/openrc/scx.initrd || die
 }
 
 src_configure() {
