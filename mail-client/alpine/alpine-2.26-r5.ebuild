@@ -29,10 +29,7 @@ src_prepare() {
 	default
 
 	# apply patches from upstream git to fix compiler issues
-	local patches=$(find "${WORKDIR}/${P}-patches" -type f -name "0*.patch")
-	for patch in ${patches}; do
-		eapply "${patch}"
-	done
+	eapply "${WORKDIR}"/${P}-patches/0*.patch
 
 	# optional extra features, see https://alpineapp.email/alpine/index.html
 	use chappa && eapply "${WORKDIR}/${P}-patches/chappa-rebased.patch"
