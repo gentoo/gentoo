@@ -61,7 +61,7 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
+DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )
 
 haproxy_use() {
