@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Calculator of perceived sound level for Ogg Vorbis files"
 HOMEPAGE="https://sjeng.org/vorbisgain.html"
@@ -13,7 +15,8 @@ KEYWORDS="amd64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	media-libs/libogg
-	media-libs/libvorbis"
+	media-libs/libvorbis
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -22,6 +25,13 @@ PATCHES=(
 	# bug 634994
 	"${FILESDIR}"/${P}-wformat-security.patch
 )
+
+src_prepare() {
+	default
+
+	# bug #899862
+	eautoreconf
+}
 
 src_configure() {
 	econf --enable-recursive
