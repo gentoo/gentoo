@@ -27,7 +27,7 @@
     <flag name="libpfm">Enable <pkg>dev-libs/libpfm</pkg> support</flag>
     <flag name="libtraceevent">Enable <pkg>dev-libs/libtraceevent</pkg> support</flag>
     <flag name="libtracefs">Enable <pkg>dev-libs/libtracefs</pkg> support</flag>
-    <flag name="numa">Enable NUMA support</flag>
+    <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
     <flag name="perl">
       Add support for Perl as a scripting language for perf tools.
     </flag>
