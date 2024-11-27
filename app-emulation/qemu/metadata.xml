@@ -31,7 +31,7 @@
 		<pkg>sys-fs/multipath-tools</pkg>.</flag>
 		<flag name="ncurses">Enable the ncurses-based console</flag>
 		<flag name="nfs">Enable NFS support</flag>
-		<flag name="numa">Enable NUMA support</flag>
+		<flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
 		<flag name="pin-upstream-blobs">Pin the versions of BIOS firmware to the version included in the upstream release.
 		This is needed to sanely support migration/suspend/resume/snapshotting/etc... of instances.
 		When the blobs are different, random corruption/bugs/crashes/etc... may be observed.</flag>
