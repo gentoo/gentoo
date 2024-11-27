@@ -27,6 +27,10 @@ python_prepare_all() {
 		-e "/setuptools_git/d" \
 		-e "/setuptools_scm/d" \
 		setup.py || die
+
+	sed -i \
+		-e 's:test_lunr_search:_&:' \
+		pdoc/test/__init__.py || die
 }
 
 distutils_enable_tests unittest
