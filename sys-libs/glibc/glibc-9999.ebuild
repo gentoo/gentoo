@@ -309,9 +309,13 @@ do_run_test() {
 		# ignore build failures when installing a binary package #324685
 		do_compile_test "" "$@" 2>/dev/null || return 0
 	else
+		ebegin "Performing simple compile test for ABI=${ABI}"
 		if ! do_compile_test "" "$@" ; then
 			ewarn "Simple build failed ... assuming this is desired #324685"
+			eend 1
 			return 0
+		else
+			eend 0
 		fi
 	fi
 
