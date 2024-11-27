@@ -7,7 +7,7 @@
   <use>
     <flag name="10bit">Add support for producing 10bits HEVC.</flag>
     <flag name="12bit">Add support for producing 12bits HEVC.</flag>
-    <flag name="numa">Build with support for NUMA nodes.</flag>
+    <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
   </use>
   <upstream>
     <remote-id type="bitbucket">multicoreware/x265_git</remote-id>
