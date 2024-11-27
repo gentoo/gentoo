@@ -266,6 +266,7 @@ src_configure() {
 		$(use_with xcomposite)
 		$(use_with xinerama)
 
+		--without-piper # unpackaged, for tts but unusable without steam
 		--without-vosk # unpackaged, file a bug if you need this
 	)
 
