@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index b4fc2bc..828b649 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION=2.5.0
+ COMMIT=$(shell git describe --no-match --always --abbrev=7 --dirty)
+ VKBD=uinput
+-PREFIX?=/usr/local
++PREFIX=$(EPREFIX)/usr
+ 
+ CONFIG_DIR?=/etc/keyd
+ SOCKET_PATH=/var/run/keyd.socket
+@@ -69,7 +69,6 @@ install:
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/keyd/
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/keyd/examples/
+ 
+-	-groupadd keyd
+ 	install -m755 bin/* $(DESTDIR)$(PREFIX)/bin/
+ 	install -m644 docs/*.md $(DESTDIR)$(PREFIX)/share/doc/keyd/
+ 	install -m644 examples/* $(DESTDIR)$(PREFIX)/share/doc/keyd/examples/
