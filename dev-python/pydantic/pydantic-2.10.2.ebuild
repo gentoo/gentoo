@@ -34,6 +34,7 @@ BDEPEND="
 		>=dev-python/jsonschema-4.23.0[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
+		dev-python/rich[${PYTHON_USEDEP}]
 	)
 "
 
