@@ -13,7 +13,7 @@
 		<remote-id type="github">facebook/rocksdb</remote-id>
 	</upstream>
 	<use>
-		<flag name="numa">Enable NUMA support</flag>
+		<flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
 		<flag name="tbb">Enable support for <pkg>dev-cpp/tbb</pkg></flag>
 	</use>
 </pkgmetadata>
