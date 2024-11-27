@@ -44,7 +44,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
 	introspection? (
-		>=dev-libs/gobject-introspection-common-1.82.0
+		>=dev-libs/gobject-introspection-common-${INTROSPECTION_PV}
 	)
 	kernel_linux? ( >=sys-apps/util-linux-2.23[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r5[${MULTILIB_USEDEP}] )
