@@ -1,0 +1,42 @@
+From 91c23a57f39103201d305480eb24039942a376ad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julius=20K=C3=BCnzel?= <julius.kuenzel@kde.org>
+Date: Sat, 2 Nov 2024 17:17:09 +0100
+Subject: [PATCH] Don't try to access QDBusMessage if not successful reply
+
+In case it is a ErrorMessage the arguments QList is empty and calling
+reply.first() will cause a crash
+---
+ src/colors/kcolorschemewatcher_xdg.cpp | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/colors/kcolorschemewatcher_xdg.cpp b/src/colors/kcolorschemewatcher_xdg.cpp
+index 60693ad..535a54e 100644
+--- a/src/colors/kcolorschemewatcher_xdg.cpp
++++ b/src/colors/kcolorschemewatcher_xdg.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include <QDBusConnection>
+ #include <QDBusMessage>
++#include <QDBusReply>
+ #include <QDBusVariant>
+ #include <QDebug>
+ 
+@@ -27,10 +28,12 @@ KColorSchemeWatcherXDG::KColorSchemeWatcherXDG()
+                                                     QStringLiteral("Read"));
+     m.setArguments({QStringLiteral("org.freedesktop.appearance"), QStringLiteral("color-scheme")});
+ 
+-    auto reply = QDBusConnection::sessionBus().call(m);
++    QDBusReply<QDBusVariant> reply = QDBusConnection::sessionBus().call(m);
+ 
+-    const uint result = reply.arguments().first().value<QDBusVariant>().variant().value<QDBusVariant>().variant().toUInt();
+-    m_preference = fdoToInternal(result);
++    if (reply.isValid()) {
++        const uint result = reply.value().variant().toUInt();
++        m_preference = fdoToInternal(result);
++    }
+ }
+ 
+ KColorSchemeWatcher::ColorPreference KColorSchemeWatcherXDG::systemPreference() const
+-- 
+GitLab
+
