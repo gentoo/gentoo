@@ -11,6 +11,8 @@ DESCRIPTION="IJ Printer Driver"
 HOMEPAGE="https://www.usa.canon.com/support/p/pixma-g4270#idReference%3Dsoftware-drivers"
 SRC_URI="https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAxMTc1MzAx -> cnijfilter2-source-${PV}-1.tar.gz"
 
+S="${WORKDIR}"/${MY_P}
+
 LICENSE="Canon-IJ"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -19,8 +21,6 @@ DEPEND="virtual/libusb:1
 	dev-libs/libxml2
 	net-print/cups"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.50-gentoo.patch
