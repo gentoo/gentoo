@@ -1,0 +1,37 @@
+Bug: https://bugs.gentoo.org/715842
+https://github.com/baruch/gpart/commit/f16e53246396446ac50edcc9a0d7ae17449a0403
+
+From: Petr Vorel <petr.vorel@gmail.com>
+Date: Sat, 6 Jul 2019 21:23:59 +0200
+Subject: [PATCH] gm_s86dl.h: Use __kernel_daddr_t for
+ solaris_x86_slice.s_start
+
+musl libc does not define daddr_t as it's deprecated, therefore
+use __kernel_daddr_t from <linux/types.h>.
+
+Signed-off-by: Petr Vorel <petr.vorel@gmail.com>
+--- a/src/gm_s86dl.h
++++ b/src/gm_s86dl.h
+@@ -17,6 +17,7 @@
+ #ifndef _GM_S86DL_H
+ #define _GM_S86DL_H
+ 
++#include <linux/types.h>
+ 
+ #define SOLARIS_X86_NUMSLICE		8
+ #define SOLARIS_X86_VTOC_SANE		(0x600DDEEEUL)
+@@ -38,10 +39,10 @@
+ 
+ 
+ struct solaris_x86_slice {
+-	ushort	s_tag;			/* ID tag of partition */
+-	ushort	s_flag;			/* permision flags */
+-	daddr_t s_start;		/* start sector no of partition */
+-	long	s_size;			/* # of blocks in partition */
++	ushort	s_tag;				/* ID tag of partition */
++	ushort	s_flag;				/* permision flags */
++	__kernel_daddr_t s_start;	/* start sector no of partition */
++	long	s_size;				/* # of blocks in partition */
+ };
+ 
+ struct solaris_x86_vtoc {
