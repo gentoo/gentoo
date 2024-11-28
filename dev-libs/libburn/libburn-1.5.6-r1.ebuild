@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
 HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libburn"
@@ -21,6 +21,10 @@ DEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.6-c23.patch
+)
+
 src_prepare() {
 	default
 
@@ -29,9 +33,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #943701
-	append-cflags -std=gnu17
-
 	econf \
 		$(use_enable static-libs static) \
 		--disable-ldconfig-at-install \
