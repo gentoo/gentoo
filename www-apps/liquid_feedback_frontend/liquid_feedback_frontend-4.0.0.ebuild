@@ -12,6 +12,8 @@ HOMEPAGE="https://www.public-software-group.org/liquid_feedback"
 SRC_URI="https://www.public-software-group.org/pub/projects/liquid_feedback/frontend/v${PV}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~tupone/distfiles/${MY_P}.tar.gz"
 
+S="${WORKDIR}"/${MY_P}
+
 LICENSE="HPND CC-BY-2.5"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -20,8 +22,6 @@ RDEPEND="~www-apps/liquid_feedback_core-4.2.2
 	~www-servers/moonbridge-1.1.3
 	>=www-apps/webmcp-2.2.1"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}"/${MY_P}
 
 DOCS=( INSTALL.html INSTALL.mkd )
 
