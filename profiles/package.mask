@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-28)
+# Grave data loss bug. See also:
+# https://github.com/nicotine-plus/nicotine-plus/issues/3152
+=net-p2p/nicotine+-3.3.5
+
 # Takuya Wakazono <pastalian46@gmail.com> (2024-11-27)
 # Replaced by sys-boot/woeusb-ng, which has more recent upstream
 # activity and optional GUI support.
