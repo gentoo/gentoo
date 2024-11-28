@@ -176,7 +176,6 @@ dev-php/pecl-psr
 dev-php/pecl-raphf
 dev-php/pecl-timezonedb
 dev-php/pecl-translit
-dev-php/pecl-uuid
 dev-php/pecl-zmq
 dev-php/realpath_turbo
 dev-php/snuffleupagus
