@@ -1,9 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-if [[ ${PV} = 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libcdr.git"
 	inherit autotools git-r3
 else
@@ -39,12 +39,11 @@ BDEPEND="
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == 9999 ]] && eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		--disable-static
 		$(use_with doc docs)
 		$(use_enable test tests)
 	)
