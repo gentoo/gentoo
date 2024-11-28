@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,11 +8,11 @@ HOMEPAGE="https://chromium.googlesource.com/linux-syscall-support"
 #SRC_URI="https://chromium.googlesource.com/${PN}/+archive/refs/tags/v${PV}.tar.gz
 SRC_URI="https://dev.gentoo.org/~tupone/distfiles/${P}.tar.gz"
 
+S="${WORKDIR}"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
