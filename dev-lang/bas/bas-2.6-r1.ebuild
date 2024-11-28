@@ -13,21 +13,29 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-libs/ncurses
-	virtual/libintl"
-DEPEND="${RDEPEND}"
-BDEPEND="app-alternatives/lex
-	sys-devel/gettext"
+RDEPEND="
+	sys-libs/ncurses:=
+	virtual/libintl
+"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	app-alternatives/lex
+	sys-devel/gettext
+"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.1-makefile.patch )
+PATCHES=( "${FILESDIR}/${PN}-2.1-makefile.patch" )
 
 src_prepare() {
 	default
+
 	eautoconf
 }
 
 src_configure() {
 	tc-export AR
+
 	econf
 }
 
@@ -35,5 +43,5 @@ src_install() {
 	default
 
 	docinto pdf
-	dodoc bas.pdf
+	dodoc ./bas.pdf
 }
