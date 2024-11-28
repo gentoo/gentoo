@@ -12,6 +12,8 @@ HOMEPAGE="https://github.com/Maratyszcza/FP16/"
 SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -26,8 +28,6 @@ RDEPEND="
 "
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
