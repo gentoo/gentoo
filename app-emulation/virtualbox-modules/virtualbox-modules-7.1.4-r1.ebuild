@@ -31,4 +31,18 @@ src_install() {
 	linux-mod-r1_src_install
 	insinto /usr/lib/modules-load.d/
 	newins "${FILESDIR}"/virtualbox.conf-r1 virtualbox.conf
+
+	insinto /etc/modprobe.d # bug #945135
+	newins - virtualbox.conf <<-EOF
+			# modprobe.d configuration file for VBOXSF
+
+			# Starting with kernel 6.12,
+			#   KVM initializes virtualization on module loading by default.
+			# This prevents VirtualBox VMs from starting.
+			# See also:
+			#   https://bugs.gentoo.org/945135
+			#   https://www.virtualbox.org/wiki/Changelog-7.1
+			# ------------------------------
+			options kvm enable_virt_at_load=0
+	EOF
 }
