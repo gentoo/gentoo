@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools linux-info python-any-r1 systemd
+inherit autotools flag-o-matic linux-info python-any-r1 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="https://www.rsyslog.com/
@@ -186,6 +186,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/rsyslog/rsyslog/issues/5507 (bug #943899)
+	append-cflags -std=gnu17
+
 	# Maintainer notes:
 	# * Guardtime support is missing because libgt isn't yet available
 	#   in portage.
