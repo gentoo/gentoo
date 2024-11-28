@@ -42,6 +42,5 @@ src_configure() {
 		--disable-static \
 		--with-dist-version=Gentoo \
 		$(use_with gtk gnome) \
-		$(use_with gtk gtk4) \
-		--without-libnm-glib
+		$(use_with gtk gtk4)
 }
