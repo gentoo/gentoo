@@ -6,7 +6,4 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
-  <use>
-    <flag name="lr0">Use the LR0 parser instead of the recursive descending parser</flag>
-  </use>
 </pkgmetadata>
