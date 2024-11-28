@@ -31,6 +31,8 @@ src_unpack() {
 	default
 
 	# HACK: Dance around cmake.eclass S directory requirements.
+	# > * QA notice: S=WORKDIR is deprecated for cmake.eclass.
+	# > * Please relocate the sources in src_unpack.
 	mv "${WORKDIR}" "${T}/${P}" || die
 	mkdir -p "${WORKDIR}" || die
 	mv "${T}/${P}" "${S}" || die
