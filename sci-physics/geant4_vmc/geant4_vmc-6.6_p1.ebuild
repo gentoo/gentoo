@@ -42,6 +42,7 @@ DOCS=(history README.md)
 
 PATCHES=(
 	 "${FILESDIR}"/${PN}-6.6-fix-preinstall-tests.patch
+	 "${FILESDIR}"/${PN}-6.6_p1-no-g4root.patch
 )
 
 src_configure() {
