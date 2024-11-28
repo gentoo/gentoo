@@ -10,7 +10,7 @@ SRC_URI="https://www.gedanken.org.uk/software/${PN}/download/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~riscv sparc x86"
-IUSE="gnutls ipv6 zlib"
+IUSE="gnutls zlib"
 
 RDEPEND="
 	acct-group/wwwoffle
