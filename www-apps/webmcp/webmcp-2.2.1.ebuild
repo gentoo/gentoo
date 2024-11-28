@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,11 @@ HOMEPAGE="https://www.public-software-group.org/webmcp"
 SRC_URI="https://www.public-software-group.org/pub/projects/${PN}/v${PV}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~tupone/distfiles/${MY_P}.tar.gz"
 
+S="${WORKDIR}"/${MY_P}
+
 LICENSE="HPND"
-KEYWORDS="~amd64"
 SLOT=0
+KEYWORDS="~amd64"
 
 RDEPEND="
 	${LUA_DEPS}
@@ -24,8 +26,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
-
-S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
