@@ -11,6 +11,8 @@ HOMEPAGE="https://github.com/facebookincubator/gloo/"
 SRC_URI="https://github.com/facebookincubator/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -31,8 +33,6 @@ DEPEND="${RDEPEND}
 
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="test" # For some test the network is needed
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2022.05.18-gentoo.patch
