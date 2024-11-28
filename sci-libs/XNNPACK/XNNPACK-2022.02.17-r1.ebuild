@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,8 @@ DESCRIPTION="library of floating-point neural network inference operators"
 HOMEPAGE="https://github.com/google/XNNPACK/"
 SRC_URI="https://github.com/google/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
+
+S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,8 +30,6 @@ DEPEND="${RDEPEND}
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
