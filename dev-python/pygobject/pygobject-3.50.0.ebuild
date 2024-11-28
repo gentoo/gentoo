@@ -18,7 +18,7 @@ HOMEPAGE="
 LICENSE="LGPL-2.1+"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="+cairo examples test"
+IUSE="+cairo test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -72,9 +72,4 @@ python_test() {
 python_install() {
 	meson_src_install
 	python_optimize
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-	use examples && dodoc -r examples
 }
