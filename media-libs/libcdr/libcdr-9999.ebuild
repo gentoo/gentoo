@@ -21,7 +21,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/icu:=
+	>=dev-libs/icu-75:=
 	dev-libs/librevenge
 	media-libs/lcms:2
 	sys-libs/zlib
