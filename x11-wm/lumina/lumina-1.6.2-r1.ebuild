@@ -52,6 +52,7 @@ BDEPEND="
 S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
+	"${FILESDIR}/1.6.0-manpages.patch"
 	"${FILESDIR}/1.6.1-desktop-files.patch"
 )
 
