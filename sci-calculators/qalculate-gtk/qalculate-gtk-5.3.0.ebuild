@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/glib:2
 	>=sci-libs/libqalculate-${PV}:=
