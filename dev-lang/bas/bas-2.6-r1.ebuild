@@ -11,7 +11,7 @@ SRC_URI="http://www.moria.de/~michael/bas/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RDEPEND="
 	sys-libs/ncurses:=
