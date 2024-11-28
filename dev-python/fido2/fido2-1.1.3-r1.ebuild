@@ -23,7 +23,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="examples"
 
 RDEPEND="
-	<dev-python/cryptography-44[${PYTHON_USEDEP}]
+	<dev-python/cryptography-45[${PYTHON_USEDEP}]
 	<dev-python/pyscard-3[${PYTHON_USEDEP}]
 	examples? (
 		dev-python/flask[${PYTHON_USEDEP}]
