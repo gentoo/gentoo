@@ -36,7 +36,7 @@ RDEPEND="
 	>=sci-physics/fastjet-3.4.0[plugins]
 	>=sci-physics/fastjet-contrib-1.048
 	hepmc2? ( sci-physics/hepmc:2=[-cm(-),gev(+)] )
-	hepmc3? ( sci-physics/hepmc:3=[-cm(-),gev(+)] )
+	hepmc3? ( <sci-physics/hepmc-3.3.0:3=[-cm(-),gev(+)] )
 
 	sci-libs/gsl
 	zlib? ( sys-libs/zlib )
@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
 	"${FILESDIR}"/${PN}-3.1.9-pythontests.patch
 	"${FILESDIR}"/${PN}-3.1.10-ref_cin.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/844
+	"${FILESDIR}"/${PN}-3.1.10-versions.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/979
 )
 
 pkg_setup() {
