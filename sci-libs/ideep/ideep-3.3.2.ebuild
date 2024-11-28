@@ -9,11 +9,11 @@ HOMEPAGE="https://github.com/intel/ideep"
 SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MYP}.tar.gz
 	-> ${PF}.tar.gz"
 
+S="${WORKDIR}"/ideep-${MYP}
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-
-S="${WORKDIR}"/ideep-${MYP}
 
 src_install() {
 	doheader -r include/*
