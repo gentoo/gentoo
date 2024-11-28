@@ -140,7 +140,7 @@ multilib_src_install() {
 			while IFS=  read -r -d '' filename; do
 				patchelf_for_bin ${filename} ${interpreter} \; || die
 			done
-		eend $?
+		eend ${PIPESTATUS[0]}
 	fi
 
 	local symlinks=(
