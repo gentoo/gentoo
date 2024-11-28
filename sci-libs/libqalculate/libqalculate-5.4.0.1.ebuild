@@ -48,11 +48,11 @@ src_prepare() {
 		data/variables.xml.in
 		src/defs2doc.cc
 	EOF
+
+	eautoreconf
 }
 
 src_configure() {
-	eautoreconf
-
 	# Needed for po-defs/Makefile
 	export CXX_FOR_BUILD="$(tc-getBUILD_CXX)"
 	export CXXCPP_FOR_BUILD="$(tc-getBUILD_CXX) -E"
