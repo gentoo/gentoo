@@ -1,0 +1,13 @@
+--- a/lgmon3/src/common/libcnnet2_type.h	2024-11-28 10:21:02.088649219 +0100
++++ b/lgmon3/src/common/libcnnet2_type.h	2024-11-28 10:22:01.171874307 +0100
+@@ -48,8 +48,10 @@
+ } CNNET2_SETTING_FLAGS;
+ 
+ #ifndef __cplusplus
++#if (__STD_VERSION__ <= 201710L)
+ typedef char bool;
+ #endif
++#endif
+ 
+ typedef struct {
+   int nicIndex_;
