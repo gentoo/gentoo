@@ -15,7 +15,7 @@ INTROSPECTION_PV="1.80.1"
 INTROSPECTION_P="${INTROSPECTION_PN}-${INTROSPECTION_PV}"
 SRC_URI="
 	${SRC_URI}
-	mirror://gnome/sources/gobject-introspection/${INTROSPECTION_PV%.*}/gobject-introspection-${INTROSPECTION_PV}.tar.${GNOME_TARBALL_SUFFIX}
+	introspection? ( mirror://gnome/sources/gobject-introspection/${INTROSPECTION_PV%.*}/gobject-introspection-${INTROSPECTION_PV}.tar.${GNOME_TARBALL_SUFFIX} )
 "
 INTROSPECTION_SOURCE_DIR="${WORKDIR}/${INTROSPECTION_P}"
 INTROSPECTION_BUILD_DIR="${WORKDIR}/${INTROSPECTION_P}-build"
