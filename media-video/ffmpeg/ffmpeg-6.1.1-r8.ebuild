@@ -386,6 +386,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-libgcrypt.patch
 	"${FILESDIR}"/${PN}-6.1.1-amd-av1-vaapi.patch
 	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-vulkan.patch
+	"${FILESDIR}"/${PN}-6.1.1-incmptbl-pntr-types.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
