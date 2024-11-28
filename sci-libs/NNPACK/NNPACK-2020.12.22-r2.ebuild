@@ -13,6 +13,8 @@ HOMEPAGE="https://github.com/Maratyszcza/NNPACK/"
 SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -35,8 +37,6 @@ BDEPEND="
 		dev-python/peachpy[${PYTHON_USEDEP}]
 	')
 "
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
