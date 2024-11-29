@@ -214,7 +214,7 @@ pkg_postinst() {
 			eend $?
 
 			ebegin "Starting DTrace 'dtprobed' service"
-			rc-service start dtprobed
+			rc-service dtprobed start
 			eend $?
 		fi
 	fi
