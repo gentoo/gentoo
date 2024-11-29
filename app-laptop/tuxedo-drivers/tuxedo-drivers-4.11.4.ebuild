@@ -6,7 +6,7 @@ CONFIG_CHECK="ACPI_WMI INPUT_SPARSEKMAP"
 
 inherit linux-mod-r1
 
-DESCRIPTION="Kernel Module for Tuxedo Keyboard"
+DESCRIPTION="Kernel modules for TUXEDO laptops"
 HOMEPAGE="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
 SRC_URI="https://gitlab.com/tuxedocomputers/development/packages/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 
