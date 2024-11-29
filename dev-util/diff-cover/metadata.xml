@@ -9,4 +9,5 @@
 		<remote-id type="pypi">diff-cover</remote-id>
 		<remote-id type="github">Bachmann1234/diff_cover</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
