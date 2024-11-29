@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-  
+
 
 PATCHES=(
 	"${FILESDIR}/${P}"-pkg-config.patch
