@@ -1,0 +1,16 @@
+Fix failure when building webkit without wayland support
+
+--- tdesktop-5.8.3-full.orig/Telegram/lib_webview/webview/platform/linux/webview_linux_webkitgtk.cpp
++++ tdesktop-5.8.3-full/Telegram/lib_webview/webview/platform/linux/webview_linux_webkitgtk.cpp
+@@ -730,9 +730,11 @@
+ 
+ void Instance::setOpaqueBg(QColor opaqueBg) {
+ 	if (_remoting) {
++#ifdef DESKTOP_APP_WEBVIEW_WAYLAND_COMPOSITOR
+ 		if (const auto widget = qobject_cast<QQuickWidget*>(_widget.get())) {
+ 			widget->setClearColor(opaqueBg);
+ 		}
++#endif
+ 
+ 		if (!_helper) {
+ 			return;
