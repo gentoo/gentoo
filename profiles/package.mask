@@ -46,7 +46,7 @@
 dev-python/latexrestricted
 >=dev-tex/biber-3.20
 >=dev-tex/biblatex-3.20
->=dev-tex/bibtexu-20240311
+>=dev-tex/bibtexu-3.72_p20240311
 >=dev-tex/glossaries-4.55
 dev-tex/latex2pydata
 >=dev-tex/latexmk-4.85
