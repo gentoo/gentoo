@@ -44,7 +44,7 @@
 >=dev-libs/kpathsea-6.4.0
 >=dev-libs/ptexenc-1.4.6
 dev-python/latexrestricted
->=dev-tex/biber-3.20
+>=dev-tex/biber-2.20
 >=dev-tex/biblatex-3.20
 >=dev-tex/bibtexu-3.72_p20240311
 >=dev-tex/glossaries-4.55
