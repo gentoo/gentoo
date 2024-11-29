@@ -18,6 +18,23 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=( )
 
+pkg_setup() {
+	local CONFIG_CHECK="
+		ACPI_WMI
+		IIO
+		INPUT_SPARSEKMAP
+		LEDS_CLASS_MULTICOLOR
+	"
+
+	local ERROR_LEDS_CLASS_MULTICOLOR="CONFIG_LEDS_CLASS_MULTICOLOR: is required for keyboard backlight"
+
+	local ERROR_ACPI_WMI="CONFIG_ACPI_WMI: is required for tuxedo-drivers"
+	local ERROR_INPUT_SPARSEKMAP="CONFIG_INPUT_SPARSEKMAP: is required for tuxedo-drivers"
+	local ERROR_IIOP="CONFIG_IIO: is required for tuxedo-drivers"
+
+	linux-mod-r1_pkg_setup
+}
+
 src_compile() {
 	local modlist=(
 		clevo_acpi=tuxedo::src
