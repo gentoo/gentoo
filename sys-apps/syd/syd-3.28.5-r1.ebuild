@@ -314,8 +314,8 @@ src_compile() {
 
 src_install () {
 	cargo_src_install
-	mkdir -p ${D}/usr/share/man/man{1,2,5,7}
-	emake install-man DESTDIR=${D} PREFIX="/usr"
+	mkdir -p "${D}"/usr/share/man/man{1,2,5,7}
+	emake install-man DESTDIR="${D}" PREFIX="/usr"
 	dodoc README.md
 	insinto /usr/libexec
 	doins src/esyd.sh
