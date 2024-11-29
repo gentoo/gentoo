@@ -38,6 +38,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/backports-3
 	>=dev-ruby/rexml-3.2:3
 	dev-ruby/rspec:3
+	dev-ruby/rspec-block_is_expected
 	dev-ruby/rspec-pending_for
 	dev-ruby/rspec-stubbed_env
 )"
