@@ -23,7 +23,8 @@ LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="wayland"
+IUSE="experimental wayland"
+REQUIRED_USE="experimental? ( wayland )"
 
 DEPEND="
 	|| (
