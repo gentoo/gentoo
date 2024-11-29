@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 	inherit git-r3
 else
-	SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
+	SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
