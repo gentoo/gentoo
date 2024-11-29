@@ -20,7 +20,7 @@ RUBY_S="version_gem-v${PV}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec-block_is_expected )"
