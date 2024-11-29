@@ -22,7 +22,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-
 PATCHES=(
 	"${FILESDIR}/${P}"-pkg-config.patch
 	"${FILESDIR}/${P}"-musl-fix.patch
