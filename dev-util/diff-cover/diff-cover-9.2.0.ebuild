@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Find diff lines that do not have test coverage"
 HOMEPAGE="https://github.com/Bachmann1234/diff-cover"
-SRC_URI="https://github.com/Bachmann1234/diff-cover/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Bachmann1234/diff-cover/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${P/diff-cover/diff_cover}"
 
 LICENSE="Apache-2.0"
