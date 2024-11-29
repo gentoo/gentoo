@@ -479,15 +479,16 @@ src_test() {
 	DESTDIR="${T}" cmake_build install
 
 	blender_get_version
-	# Define custom blender data/script file paths not be able to find them otherwise during testing.
-	# (Because the data is in the image directory and it will default to look in /usr/share)
-	export BLENDER_SYSTEM_SCRIPTS="${T}/usr/share/blender/${BV}/scripts"
-	export BLENDER_SYSTEM_DATAFILES="${T}/usr/share/blender/${BV}/datafiles"
+	# By default, blender will look for system scripts and data in
+	# /usr/share/, but until this is installed, they are not necessarily
+	# available there.  Use this to have blender search the intermediate
+	# install directory instead.
+	export BLENDER_SYSTEM_RESOURCES="${T}/usr/share/blender/${BV}"
 
-	# Sanity check that the script and datafile path is valid.
-	# If they are not vaild, blender will fallback to the default path which is not what we want.
-	[ -d "$BLENDER_SYSTEM_SCRIPTS" ] || die "The custom script path is invalid, fix the ebuild!"
-	[ -d "$BLENDER_SYSTEM_DATAFILES" ] || die "The custom datafiles path is invalid, fix the ebuild!"
+	# Brake check:  Make sure the above path is valid.
+	# If not, blender will fallback to the default path which is not what
+	# we want.
+	[ -d "$BLENDER_SYSTEM_RESOURCES" ] || die "The custom script path is invalid, fix the ebuild!"
 
 	if use cuda; then
 		cuda_add_sandbox -w
@@ -521,10 +522,16 @@ src_install() {
 	fi
 
 	if use doc; then
-		# Define custom blender data/script file paths. Otherwise Blender will not be able to find them during doc building.
-		# (Because the data is in the image directory and it will default to look in /usr/share)
-		export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
-		export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
+		# By default, blender will look for system scripts and data in
+		# /usr/share/, but until this is installed, they are not necessarily
+		# available there.  Use this to have blender search the intermediate
+		# install directory instead.
+		export BLENDER_SYSTEM_RESOURCES="${ED}/usr/share/blender/${BV}"
+
+		# Brake check:  Make sure the above path is valid.
+		# If not, blender will fallback to the default path which is not what
+		# we want.
+		[ -d "$BLENDER_SYSTEM_RESOURCES" ] || die "The custom script path is invalid, fix the ebuild!"
 
 		# Workaround for binary drivers.
 		addpredict /dev/ati
