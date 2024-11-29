@@ -35,7 +35,7 @@ LICENSE="GPL-3+ cycles? ( Apache-2.0 )"
 SLOT="${PV%.*}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
-	debug doc +embree experimental +ffmpeg +fftw +fluid +gmp gnome hip jack
+	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip jack
 	jemalloc jpeg2k man +nanovdb ndof nls +oidn oneapi openal +openexr +openmp +openpgl
 	+opensubdiv +openvdb optix osl +otf +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff valgrind vulkan wayland +webp X
@@ -340,7 +340,6 @@ src_configure() {
 
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_DRACO="no" # TODO: Package Draco
-		-DWITH_EXPERIMENTAL_FEATURES="$(usex experimental)"
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD="no"
