@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SourceryTools/nvptx-tools"
 	inherit git-r3
 else
-	MY_COMMIT="93e00909ceb9cbbc104f0fcba56c0361ffb3ca4b"
+	MY_COMMIT="a0c1fff6534a4df9fb17937c3c4a4b1071212029"
 	SRC_URI="https://github.com/SourceryTools/nvptx-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${MY_COMMIT}
 
