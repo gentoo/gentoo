@@ -2710,10 +2710,10 @@ gcc_movelibs() {
 		mv "${ED}"/usr/nvptx-none/lib/mgomp/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mgomp/
 		mv "${ED}"/usr/nvptx-none/lib/mptx-3.1/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mptx-3.1/
 		mv "${ED}"/usr/nvptx-none/lib/mgomp/mptx-3.1/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mgomp/mptx-3.1/
-		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/*.a "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/ || die
-		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/mgomp/*.a "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mgomp/ || die
-		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/mptx-3.1/*.a "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mptx-3.1/ || die
-		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/mgomp/mptx-3.1/*.a "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mgomp/mptx-3.1/ || die
+		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/ || die
+		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/mgomp/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mgomp/ || die
+		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/mptx-3.1/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mptx-3.1/ || die
+		mv "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/mgomp/mptx-3.1/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/mgomp/mptx-3.1/ || die
 	fi
 
 	# We remove directories separately to avoid this case:
