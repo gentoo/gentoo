@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	libdeflate? ( app-arch/libdeflate )
 	lua? ( ${LUA_DEPS} )
 	maxminddb? ( dev-libs/libmaxminddb )
-	mbedtls? ( net-libs/mbedtls )
+	mbedtls? ( net-libs/mbedtls:0= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss )
 	pcre? ( dev-libs/libpcre2 )
