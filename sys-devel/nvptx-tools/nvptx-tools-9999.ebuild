@@ -1,10 +1,10 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Collection of tools for use with nvptx-none GCC toolchains"
-HOMEPAGE="https://github.com/SourceryTools/nvptx-tools https://gcc.gnu.org/wiki/nvptx"
+HOMEPAGE="https://github.com/SourceryTools/nvptx-tools https://gcc.gnu.org/wiki/nvptx https://gcc.gnu.org/wiki/Offloading"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SourceryTools/nvptx-tools"

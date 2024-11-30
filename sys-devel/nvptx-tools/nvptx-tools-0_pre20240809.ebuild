@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Collection of tools for use with nvptx-none GCC toolchains"
-HOMEPAGE="https://github.com/SourceryTools/nvptx-tools https://gcc.gnu.org/wiki/nvptx"
+HOMEPAGE="https://github.com/SourceryTools/nvptx-tools https://gcc.gnu.org/wiki/nvptx https://gcc.gnu.org/wiki/Offloading"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SourceryTools/nvptx-tools"
