@@ -9,15 +9,20 @@ inherit lua-single meson readme.gentoo-r1 systemd tmpfiles verify-sig
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
-SRC_URI="
-	https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz
-	verify-sig? ( https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz.asc )
-"
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://git.lighttpd.net/lighttpd/lighttpd1.4.git"
+	inherit git-r3
+else
+	SRC_URI="
+		https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz
+		verify-sig? ( https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz.asc )
+	"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+fi
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="+brotli dbi gnutls kerberos ldap +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
+IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -37,9 +42,10 @@ COMMON_DEPEND="
 	gnutls? ( net-libs/gnutls )
 	kerberos? ( virtual/krb5 )
 	ldap? ( >=net-nds/openldap-2.1.26:= )
+	libdeflate? ( app-arch/libdeflate )
 	lua? ( ${LUA_DEPS} )
 	maxminddb? ( dev-libs/libmaxminddb )
-	mbedtls? ( net-libs/mbedtls )
+	mbedtls? ( net-libs/mbedtls:0= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss )
 	pcre? ( dev-libs/libpcre2 )
@@ -49,7 +55,7 @@ COMMON_DEPEND="
 	unwind? ( sys-libs/libunwind:= )
 	webdav? (
 		dev-libs/libxml2
-		sys-fs/e2fsprogs
+		dev-db/sqlite
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	zlib? ( >=sys-libs/zlib-1.1 )
@@ -70,7 +76,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.75-sparc.patch
+	"${FILESDIR}"/${P}-sparc.patch
 )
 
 # update certain parts of lighttpd.conf based on conditionals
@@ -100,13 +106,17 @@ pkg_setup() {
 	fi
 
 	DOC_CONTENTS="IPv6 migration guide:\n
-		https://redmine.lighttpd.net/projects/lighttpd/wiki/IPv6-Config
+		https://wiki.lighttpd.net/IPv6-Config
 	"
 }
 
 src_configure() {
+	# (One specific library might be preferred on embedded systems via
+	#  MYMESONARGS with e.g. -DFORCE_blah_CRYPTO)
 	local emesonargs=(
 		-Dmoduledir="$(get_libdir)"/${PN}
+
+		${c_args}
 
 		$(meson_feature brotli with_brotli)
 
@@ -115,8 +125,6 @@ src_configure() {
 
 		$(meson_feature dbi with_dbi)
 
-		# Unpackaged in Gentoo
-		-Dwith_libdeflate=disabled
 		# Obsolete
 		-Dwith_fam=disabled
 
@@ -124,8 +132,7 @@ src_configure() {
 		$(meson_feature kerberos with_krb5)
 		$(meson_feature ldap with_ldap)
 
-		# TODO: revisit (was off in autotools ebuild)
-		-Dwith_libev=disabled
+		$(meson_feature libdeflate with_libdeflate)
 
 		$(meson_feature unwind with_libunwind)
 
@@ -164,15 +171,15 @@ src_install() {
 	meson_src_install
 
 	# Init script stuff
-	newinitd "${FILESDIR}"/lighttpd.initd-r1 lighttpd
+	newinitd "${FILESDIR}"/lighttpd.initd-r2 lighttpd
 	newconfd "${FILESDIR}"/lighttpd.confd lighttpd
 
 	# Configs
 	insinto /etc/lighttpd
-	newins "${FILESDIR}"/conf/lighttpd.conf-r1 lighttpd.conf
-	doins "${FILESDIR}"/conf/mime-types.conf
+	newins "${FILESDIR}"/conf/lighttpd.conf-r3 lighttpd.conf
 	doins "${FILESDIR}"/conf/mod_cgi.conf
 	doins "${FILESDIR}"/conf/mod_fastcgi.conf
+	doins doc/config/conf.d/mime.conf
 
 	# Update lighttpd.conf directives based on conditionals
 	update_config
@@ -195,7 +202,7 @@ src_install() {
 	fowners lighttpd:lighttpd /var/l{ib,og}/lighttpd
 	fperms 0750 /var/l{ib,og}/lighttpd
 
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles.conf ${PN}.conf
 }
 
@@ -217,10 +224,4 @@ pkg_postinst() {
 		elog "output compression!"
 		elog "https://wiki.lighttpd.net/Docs_ModDeflate"
 	fi
-
-	elog
-	elog "Upstream has deprecated a number of features. They are not missing"
-	elog "but have been migrated to other mechanisms. Please see upstream"
-	elog "changelog for details."
-	elog "https://www.lighttpd.net/2022/1/19/1.4.64/"
 }
