@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	ldap? ( >=net-nds/openldap-2.1.26:= )
 	lua? ( ${LUA_DEPS} )
 	maxminddb? ( dev-libs/libmaxminddb )
-	mbedtls? ( net-libs/mbedtls )
+	mbedtls? ( net-libs/mbedtls:0= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss )
 	pcre? ( dev-libs/libpcre2 )
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	unwind? ( sys-libs/libunwind:= )
 	webdav? (
 		dev-libs/libxml2
-		sys-fs/e2fsprogs
+		dev-db/sqlite
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	zlib? ( >=sys-libs/zlib-1.1 )
@@ -70,7 +70,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.75-sparc.patch
+	"${FILESDIR}"/${P}-sparc.patch
 )
 
 # update certain parts of lighttpd.conf based on conditionals
@@ -100,7 +100,7 @@ pkg_setup() {
 	fi
 
 	DOC_CONTENTS="IPv6 migration guide:\n
-		https://redmine.lighttpd.net/projects/lighttpd/wiki/IPv6-Config
+		https://wiki.lighttpd.net/IPv6-Config
 	"
 }
 
@@ -123,9 +123,6 @@ src_configure() {
 		$(meson_use gnutls with_gnutls)
 		$(meson_feature kerberos with_krb5)
 		$(meson_feature ldap with_ldap)
-
-		# TODO: revisit (was off in autotools ebuild)
-		-Dwith_libev=disabled
 
 		$(meson_feature unwind with_libunwind)
 
@@ -164,13 +161,12 @@ src_install() {
 	meson_src_install
 
 	# Init script stuff
-	newinitd "${FILESDIR}"/lighttpd.initd-r1 lighttpd
+	newinitd "${FILESDIR}"/lighttpd.initd-r2 lighttpd
 	newconfd "${FILESDIR}"/lighttpd.confd lighttpd
 
 	# Configs
 	insinto /etc/lighttpd
-	newins "${FILESDIR}"/conf/lighttpd.conf-r1 lighttpd.conf
-	doins "${FILESDIR}"/conf/mime-types.conf
+	newins "${FILESDIR}"/conf/lighttpd.conf-r2 lighttpd.conf
 	doins "${FILESDIR}"/conf/mod_cgi.conf
 	doins "${FILESDIR}"/conf/mod_fastcgi.conf
 
@@ -195,7 +191,7 @@ src_install() {
 	fowners lighttpd:lighttpd /var/l{ib,og}/lighttpd
 	fperms 0750 /var/l{ib,og}/lighttpd
 
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles.conf ${PN}.conf
 }
 
@@ -217,10 +213,4 @@ pkg_postinst() {
 		elog "output compression!"
 		elog "https://wiki.lighttpd.net/Docs_ModDeflate"
 	fi
-
-	elog
-	elog "Upstream has deprecated a number of features. They are not missing"
-	elog "but have been migrated to other mechanisms. Please see upstream"
-	elog "changelog for details."
-	elog "https://www.lighttpd.net/2022/1/19/1.4.64/"
 }

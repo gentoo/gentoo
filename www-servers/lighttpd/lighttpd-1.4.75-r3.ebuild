@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+brotli dbi gnutls kerberos ldap +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
 RESTRICT="!test? ( test )"
 
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	ldap? ( >=net-nds/openldap-2.1.26:= )
 	lua? ( ${LUA_DEPS} )
 	maxminddb? ( dev-libs/libmaxminddb )
-	mbedtls? ( net-libs/mbedtls )
+	mbedtls? ( net-libs/mbedtls:0= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss )
 	pcre? ( dev-libs/libpcre2 )
@@ -70,7 +70,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-sparc.patch
+	"${FILESDIR}"/${PN}-1.4.75-sparc.patch
 )
 
 # update certain parts of lighttpd.conf based on conditionals
