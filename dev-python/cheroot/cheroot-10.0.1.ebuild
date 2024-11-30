@@ -65,6 +65,10 @@ python_test() {
 		cheroot/test/test_server.py::test_high_number_of_file_descriptors
 		# known test failures with OpenSSL 3.2.0
 		cheroot/test/test_ssl.py::test_https_over_http_error
+		# hardcoded errno codes (sigh)
+		# https://github.com/cherrypy/cheroot/issues/736
+		cheroot/test/test_errors.py::test_plat_specific_errors
+		cheroot/test/test_ssl.py::test_http_over_https_error
 	)
 
 	case ${EPYTHON} in
