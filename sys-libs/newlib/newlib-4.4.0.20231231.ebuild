@@ -85,6 +85,12 @@ src_configure() {
 
 	export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_FULL}"
 	export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_FULL}"
+
+	[[ ${CTARGET} == nvptx* ]] && {
+		CFLAGS_FOR_TARGET+=" -Wa,--no-verify"
+		CCASFLAGS+=" -Wa,--no-verify"
+	}
+
 	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable unicode newlib-mb) \
@@ -98,6 +104,12 @@ src_configure() {
 		cd "${NEWLIBNANOBUILD}" || die
 		export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_NANO}"
 		export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_NANO}"
+
+		[[ ${CTARGET} == nvptx* ]] && {
+			CFLAGS_FOR_TARGET+=" -Wa,--no-verify"
+			CCASFLAGS+=" -Wa,--no-verify"
+		}
+
 		ECONF_SOURCE=${S} \
 		econf \
 			$(use_enable unicode newlib-mb) \
@@ -118,11 +130,23 @@ src_configure() {
 src_compile() {
 	export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_FULL}"
 	export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_FULL}"
+
+	[[ ${CTARGET} == nvptx* ]] && {
+		CFLAGS_FOR_TARGET+=" -Wa,--no-verify"
+		CCASFLAGS+=" -Wa,--no-verify"
+	}
+
 	emake -C "${NEWLIBBUILD}"
 
 	if use nano ; then
 		export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_NANO}"
 		export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_NANO}"
+
+		[[ ${CTARGET} == nvptx* ]] && {
+			CFLAGS_FOR_TARGET+=" -Wa,--no-verify"
+			CCASFLAGS+=" -Wa,--no-verify"
+		}
+
 		emake -C "${NEWLIBNANOBUILD}"
 	fi
 }
