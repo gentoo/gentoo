@@ -17,7 +17,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-10-23)
+# Viorel Munteanu <ceamac@gentoo.org> (2024-11-30)
 # Dependency dev-python/asyncssh is keyworded here.
 net-misc/dropbear -test-async
 
