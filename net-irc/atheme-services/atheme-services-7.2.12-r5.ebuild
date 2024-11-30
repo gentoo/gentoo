@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,11 @@ DESCRIPTION="A portable and secure set of open-source and modular IRC services"
 HOMEPAGE="https://github.com/atheme/atheme"
 SRC_URI="https://github.com/atheme/atheme/releases/download/v${PV}/${PN}-v${PV}.tar.xz -> ${P}.tar.xz"
 
+S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64"
 IUSE="cracklib largenet ldap nls +pcre perl profile ssl"
-S="${WORKDIR}/${PN}-v${PV}"
 
 RDEPEND="
 	acct-group/atheme-services
@@ -32,7 +32,8 @@ BDEPEND="
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.2.10_p2-configure-logdir.patch)
+	"${FILESDIR}"/${PN}-7.2.10_p2-configure-logdir.patch
+	"${FILESDIR}"/${PN}-7.2.12-libathemecore-account-fix-assertion-macro-return-type.patch)
 
 src_configure() {
 	# perl scriping module support is also broken in 7.0.0. Yay for QA failures.

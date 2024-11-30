@@ -1,0 +1,37 @@
+From a0410c301293736a09b52763d25893019ede3e3a Mon Sep 17 00:00:00 2001
+From: Aaron Jones <me@aaronmdjones.net>
+Date: Mon, 25 Nov 2024 05:31:26 +0000
+Subject: [PATCH] libathemecore/account: fix assertion macro return
+ types/values
+
+---
+ libathemecore/account.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libathemecore/account.c b/libathemecore/account.c
+index 80233ade2..985cf9ff6 100644
+--- a/libathemecore/account.c
++++ b/libathemecore/account.c
+@@ -1631,7 +1631,7 @@ chanacs_t *chanacs_find_host_by_user(mychan_t *mychan, user_t *u, unsigned int l
+ 	mowgli_node_t *n;
+ 	chanacs_t *ca;
+ 
+-	return_val_if_fail(mychan != NULL && u != NULL, 0);
++	return_val_if_fail(mychan != NULL && u != NULL, NULL);
+ 
+ 	for (n = next_matching_host_chanacs(mychan, u, mychan->chanacs.head); n != NULL; n = next_matching_host_chanacs(mychan, u, n->next))
+ 	{
+@@ -1779,8 +1779,8 @@ chanacs_t *chanacs_open(mychan_t *mychan, myentity_t *mt, const char *hostmask,
+ 	chanacs_t *ca;
+ 
+ 	/* wrt the second assert: only one of mu or hostmask can be not-NULL --nenolod */
+-	return_val_if_fail(mychan != NULL, false);
+-	return_val_if_fail((mt != NULL && hostmask == NULL) || (mt == NULL && hostmask != NULL), false);
++	return_val_if_fail(mychan != NULL, NULL);
++	return_val_if_fail((mt != NULL && hostmask == NULL) || (mt == NULL && hostmask != NULL), NULL);
+ 
+ 	if (mt != NULL)
+ 	{
+-- 
+2.45.2
+
