@@ -33,7 +33,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/libutf8proc-2.6.1:0=[-cjk]
 	>=dev-util/patchelf-0.13
-	>=net-libs/mbedtls-2.2
+	>=net-libs/mbedtls-2.2:0=
 	>=sci-mathematics/dsfmt-2.2.4
 	>=sys-libs/libunwind-1.1:0=
 	>=virtual/blas-3.6
