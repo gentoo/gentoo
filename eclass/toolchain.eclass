@@ -1995,6 +1995,9 @@ gcc_do_filter_flags() {
 		fi
 	fi
 
+	# https://gcc.gnu.org/PR100431
+	filter-flags -Werror=format-security
+
 	if ver_test -lt 13.6 ; then
 		# These aren't supported by the just-built compiler either.
 		filter-flags -fharden-compares -fharden-conditional-branches \
