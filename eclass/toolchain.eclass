@@ -1312,8 +1312,30 @@ toolchain_src_configure() {
 				;;
 			nvptx*)
 				needed_libc=newlib
-				# "LTO is not supported for this target"
-				confgcc+=( --disable-lto )
+				confgcc+=(
+					# "LTO is not supported for this target"
+					--disable-lto
+				)
+
+				# --enable-as-accelerator-for= seems to disable
+				# installing nvtpx-none-cc etc, so we have to
+				# avoid passing that for the stage1-build that
+				# crossdev does. If we pass it unconditionally,
+				# we can't build newlib after building stage1 gcc.
+				if has_version ${CATEGORY}/${PN} ; then
+					confgcc+=(
+						# It's unlikely that anyone will want
+						# to build nvptx-none as a pure standalone
+						# toolchain (which will be single-threaded, etc).
+						#
+						# If someone really wants it, we can see about
+						# adding a USE=offload or similar based on CTARGET
+						# for cross targets. But for now, we always assume
+						# we're being built as an offloading compiler (accelerator).
+						--enable-as-accelerator-for=${CHOST}
+						--disable-sjlj-exceptions
+					)
+				fi
 				;;
 		esac
 
@@ -1546,6 +1568,12 @@ toolchain_src_configure() {
 	# particular need this over --libdir for bug #255315.
 	[[ ${CTARGET} == *-darwin* ]] && \
 		confgcc+=( --enable-version-specific-runtime-libs )
+
+	# TODO: amdgcn-amdhsa?
+	[[ ${CTARGET} == x86_64* ]] && confgcc+=(
+		--enable-offload-defaulted
+		--enable-offload-targets=nvptx-none
+	)
 
 	### library options
 
