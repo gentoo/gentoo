@@ -311,20 +311,20 @@ pkg_setup() {
 			die "Please switch to a different linker."
 		fi
 
-		# Forcing clang; user choice respected by llvm_slot_x USE
+		llvm-r1_pkg_setup
+		rust_pkg_setup
+
+		# Forcing clang; respect llvm_slot_x to enable selection of impl from LLVM_COMPAT
 		AR=llvm-ar
-		CPP="${CHOST}-clang++ -E"
+		CPP="${CHOST}-clang++-${LLVM_SLOT} -E"
 		NM=llvm-nm
-		CC=${CHOST}-clang
-		CXX=${CHOST}-clang++
+		CC="${CHOST}-clang-${LLVM_SLOT}"
+		CXX="${CHOST}-clang++-${LLVM_SLOT}"
 
 		if tc-is-cross-compiler; then
 			use pgo && die "The pgo USE flag cannot be used when cross-compiling"
-			CPP="${CBUILD}-clang++ -E"
+			CPP="${CBUILD}-clang++-${LLVM_SLOT} -E"
 		fi
-
-		llvm-r1_pkg_setup
-		rust_pkg_setup
 
 		# I hate doing this but upstream Rust have yet to come up with a better solution for
 		# us poor packagers. Required for Split LTO units, which are required for CFI.

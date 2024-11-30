@@ -50,7 +50,6 @@ if [[ ${SLOT} != "0/dev" ]]; then
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
-
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo +proprietary-codecs pulseaudio"
 IUSE+=" qt5 qt6 +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
@@ -309,23 +308,20 @@ pkg_setup() {
 			die "Please switch to a different linker."
 		fi
 
-		# We're forcing Clang here. User choice is respected via llvm_slot_# USE flags.
-		AR=llvm-ar
-		CPP="${CHOST}-clang++ -E"
-		NM=llvm-nm
-		CC=${CHOST}-clang
-		CXX=${CHOST}-clang++
-
-		if tc-is-cross-compiler; then
-			use pgo && die "The pgo USE flag cannot be used when cross-compiling"
-			CPP="${CBUILD}-clang++ -E"
-		fi
-
 		llvm-r1_pkg_setup
 		rust_pkg_setup
 
-		einfo "Using LLVM/Clang slot ${LLVM_SLOT} to build"
-		einfo "Using Rust slot ${RUST_SLOT}, ${RUST_TYPE} to build"
+		# Forcing clang; respect llvm_slot_x to enable selection of impl from LLVM_COMPAT
+		AR=llvm-ar
+		CPP="${CHOST}-clang++-${LLVM_SLOT} -E"
+		NM=llvm-nm
+		CC="${CHOST}-clang-${LLVM_SLOT}"
+		CXX="${CHOST}-clang++-${LLVM_SLOT}"
+
+		if tc-is-cross-compiler; then
+			use pgo && die "The pgo USE flag cannot be used when cross-compiling"
+			CPP="${CBUILD}-clang++-${LLVM_SLOT} -E"
+		fi
 
 		# I hate doing this but upstream Rust have yet to come up with a better solution for
 		# us poor packagers. Required for Split LTO units, which are required for CFI.
