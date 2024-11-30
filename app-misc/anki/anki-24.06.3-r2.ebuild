@@ -772,7 +772,7 @@ RDEPEND="
 
 BDEPEND="
 	>=app-arch/zstd-1.5.5:=
-	dev-libs/protobuf
+	dev-libs/protobuf[protoc]
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
