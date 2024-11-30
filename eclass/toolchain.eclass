@@ -1311,6 +1311,7 @@ toolchain_src_configure() {
 				confgcc+=( --enable-shared --disable-threads )
 				;;
 			nvptx*)
+				needed_libc=newlib
 				# "LTO is not supported for this target"
 				confgcc+=( --disable-lto )
 				;;
@@ -1389,7 +1390,7 @@ toolchain_src_configure() {
 	# __cxa_atexit is "essential for fully standards-compliant handling of
 	# destructors", but apparently requires glibc.
 	case ${CTARGET} in
-		*-elf|*-eabi)
+		nvptx*|*-elf|*-eabi)
 			confgcc+=( --with-newlib )
 			;;
 		*-musl*)
