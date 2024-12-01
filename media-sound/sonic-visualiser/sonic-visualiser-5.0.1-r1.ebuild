@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio test"
 
+#	dev-qt/qtbase:6[test]
 BDEPEND="
-	dev-qt/qttest:5
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -23,12 +23,8 @@ RDEPEND="
 	dev-libs/capnproto:=
 	dev-libs/serd
 	dev-libs/sord
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
+	dev-qt/qtbase:6[gui,network,ssl,widgets,xml]
+	dev-qt/qtsvg:6
 	media-libs/alsa-lib
 	media-libs/dssi
 	media-libs/ladspa-sdk
