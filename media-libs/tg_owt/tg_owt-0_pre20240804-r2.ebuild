@@ -44,7 +44,7 @@ RDEPEND="
 	dev-libs/crc32c
 	screencast? (
 		dev-libs/glib:2
-		media-video/pipewire:=
+		>=media-video/pipewire-1.0.7:=
 	)
 	X? (
 		x11-libs/libX11
