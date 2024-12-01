@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit texlive-common
+inherit flag-o-matic texlive-common
 
 TL_VERSION="$(ver_cut 1)$(ver_cut 2)$(ver_cut 3)"
 DESCRIPTION="DVI-to-PostScript translator"
@@ -32,6 +32,9 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	# bug #943911
+	append-cflags -std=gnu17
+
 	econf --with-system-kpathsea
 }
 
