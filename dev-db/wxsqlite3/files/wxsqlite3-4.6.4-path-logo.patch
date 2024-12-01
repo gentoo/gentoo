@@ -1,0 +1,12 @@
+diff -Nudr wxsqlite3-4.6.4-orig/docs/Doxyfile wxsqlite3-4.6.4/docs/Doxyfile
+--- wxsqlite3-4.6.4-orig/docs/Doxyfile	2020-12-31 04:24:58.000000000 +0700
++++ wxsqlite3-4.6.4/docs/Doxyfile	2021-04-27 21:22:47.583388719 +0700
+@@ -51,7 +51,7 @@
+ # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
+ # the logo to the output directory.
+ 
+-PROJECT_LOGO           = E:/github/wxsqlite3-3.5.0/wxsqlite3.png
++PROJECT_LOGO           = ../wxsqlite3.png
+ 
+ # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
+ # into which the generated documentation will be written. If a relative path is
