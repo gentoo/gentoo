@@ -70,22 +70,15 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	python_fix_shebang "${ED}"
-}
-
-pkg_preinst() {
-	if use gui ; then
-		gnome2_pkg_preinst
-
-		cd "${ED}" || die
-		export GNOME2_ECLASS_ICONS=$(find 'usr/share/virt-manager/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null || die)
-	else
+	if ! use gui ; then
 		rm -r "${ED}/usr/share/virt-manager/ui/" || die
 		rm -r "${ED}/usr/share/virt-manager/icons/" || die
 		rm -r "${ED}/usr/share/icons/" || die
 		rm -r "${ED}/usr/share/applications/virt-manager.desktop" || die
 		rm -r "${ED}/usr/bin/virt-manager" || die
 	fi
+
+	python_fix_shebang "${ED}"
 }
 
 pkg_postinst() {
