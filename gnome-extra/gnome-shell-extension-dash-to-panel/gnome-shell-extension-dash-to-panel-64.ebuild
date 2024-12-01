@@ -12,6 +12,8 @@ SRC_URI="
 	https://github.com/home-sweet-gnome/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
 "
+S="${WORKDIR}/${MY_P}"
+extension_uuid="dash-to-panel@jderose9.github.com"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -28,9 +30,6 @@ BDEPEND="
 	dev-util/intltool
 	sys-devel/gettext
 "
-
-S="${WORKDIR}/${MY_P}"
-extension_uuid="dash-to-panel@jderose9.github.com"
 
 src_prepare() {
 	default
