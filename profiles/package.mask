@@ -602,28 +602,6 @@ dev-ml/ppx_js_style:0/0.17
 >=dev-ml/camlp4-5
 dev-ml/textutils_kernel:0/0.17
 
-# Michał Górny <mgorny@gentoo.org> (2024-06-08)
-# Prereleases of Xfce 4.20.  Masking upon popular request, due to
-# a large number of regressions in every new release.
->=dev-build/xfce4-dev-tools-4.19
->=xfce-base/exo-4.19
->=xfce-base/garcon-4.19
->=xfce-base/libxfce4ui-4.19
->=xfce-base/libxfce4util-4.19
->=xfce-base/libxfce4windowing-4.19.5
->=xfce-base/thunar-4.19
->=xfce-base/thunar-volman-4.19
->=xfce-base/tumbler-4.19
->=xfce-base/xfce4-appfinder-4.19
->=xfce-base/xfce4-meta-4.19
->=xfce-base/xfce4-panel-4.19
->=xfce-base/xfce4-power-manager-4.19
->=xfce-base/xfce4-session-4.19
->=xfce-base/xfce4-settings-4.19
->=xfce-base/xfconf-4.19
->=xfce-base/xfdesktop-4.19
->=xfce-base/xfwm4-4.19
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
