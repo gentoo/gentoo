@@ -45,6 +45,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.19-libft.patch
+	"${FILESDIR}"/${PN}-1.7.4-rrdtool-gcc14.patch
 )
 
 DOCS=( AUTHORS ChangeLog README.md )
