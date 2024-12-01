@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Christopher Byrne <salah.coronya@gmail.com> (2024-12-01)
+# requires dev-libs/hidapi to be keyworded
+dev-libs/libfido2 hidapi
+
 # Ian Jordan <immoloism@gmail.com> (2024-11-11)
 # net-misc/networkmanager modemmanger and iwd not keyworded
 net-misc/networkmanager modemmanager iwd
