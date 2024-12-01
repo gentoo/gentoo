@@ -23,7 +23,11 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 case ${PV} in
 	9999*)
 		# live git tree
-		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
+		EGIT_REPO_URI="
+			https://sourceware.org/git/binutils-gdb.git
+			https://git.sr.ht/~sourceware/binutils-gdb
+			https://gitlab.com/x86-binutils/binutils-gdb.git
+		"
 		inherit git-r3
 		SRC_URI=""
 		;;
