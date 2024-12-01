@@ -354,10 +354,6 @@ media-libs/opencv vtk
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
 
-# Pacho Ramos <pacho@gentoo.org> (2013-10-31)
-# Missing keywords, bug #478254
-gnome-base/gnome classic extras
-
 # Agostino Sarubbo <ago@gentoo.org> (2013-08-24)
 # Klibc does not work anymore on ppc
 app-shells/mksh static
