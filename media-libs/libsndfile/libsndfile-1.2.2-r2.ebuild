@@ -57,7 +57,8 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
+	# CONFIG_SHELL hack can be dropped >1.2.2 (bug #923921)
+	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf \
 		--disable-octave \
 		--disable-static \
 		--disable-werror \
