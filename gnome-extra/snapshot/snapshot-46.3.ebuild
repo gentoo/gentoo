@@ -1,0 +1,306 @@
+# Copyright 2023-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	aho-corasick@1.1.2
+	android-tzdata@0.1.1
+	android_system_properties@0.1.5
+	anyhow@1.0.80
+	ashpd@0.8.0
+	async-broadcast@0.7.0
+	async-channel@2.2.0
+	async-executor@1.8.0
+	async-fs@2.1.1
+	async-io@2.3.1
+	async-lock@2.8.0
+	async-lock@3.3.0
+	async-net@2.0.0
+	async-process@2.1.0
+	async-recursion@1.0.5
+	async-signal@0.2.5
+	async-task@4.7.0
+	async-trait@0.1.77
+	atomic-waker@1.1.2
+	atomic_refcell@0.1.13
+	autocfg@1.1.0
+	bitflags@2.4.2
+	block@0.1.6
+	block-buffer@0.10.4
+	blocking@1.5.1
+	bumpalo@3.15.3
+	cairo-rs@0.19.2
+	cairo-sys-rs@0.19.2
+	cc@1.0.88
+	cfg-expr@0.15.7
+	cfg-if@1.0.0
+	cfg_aliases@0.1.1
+	chrono@0.4.34
+	concurrent-queue@2.4.0
+	core-foundation-sys@0.8.6
+	cpufeatures@0.2.12
+	crossbeam-utils@0.8.19
+	crypto-common@0.1.6
+	derivative@2.2.0
+	digest@0.10.7
+	either@1.10.0
+	endi@1.1.0
+	enumflags2@0.7.9
+	enumflags2_derive@0.7.9
+	equivalent@1.0.1
+	errno@0.3.8
+	event-listener@2.5.3
+	event-listener@4.0.3
+	event-listener@5.1.0
+	event-listener-strategy@0.4.0
+	event-listener-strategy@0.5.0
+	fastrand@2.0.1
+	field-offset@0.3.6
+	form_urlencoded@1.2.1
+	futures-channel@0.3.30
+	futures-core@0.3.30
+	futures-executor@0.3.30
+	futures-io@0.3.30
+	futures-lite@2.2.0
+	futures-macro@0.3.30
+	futures-sink@0.3.30
+	futures-task@0.3.30
+	futures-util@0.3.30
+	gdk-pixbuf@0.19.2
+	gdk-pixbuf-sys@0.19.0
+	gdk4@0.8.0
+	gdk4-sys@0.8.0
+	gdk4-wayland@0.8.0
+	gdk4-wayland-sys@0.8.0
+	gdk4-win32@0.8.0
+	gdk4-win32-sys@0.8.0
+	gdk4-x11@0.8.0
+	gdk4-x11-sys@0.8.0
+	generic-array@0.14.7
+	getrandom@0.2.12
+	gettext-rs@0.7.0
+	gettext-sys@0.21.3
+	gio@0.19.2
+	gio-sys@0.19.0
+	glib@0.19.2
+	glib-macros@0.19.2
+	glib-sys@0.19.0
+	gobject-sys@0.19.0
+	graphene-rs@0.19.2
+	graphene-sys@0.19.0
+	gsk4@0.8.0
+	gsk4-sys@0.8.0
+	gst-plugin-gtk4@0.12.1
+	gst-plugin-version-helper@0.8.1
+	gstreamer@0.22.2
+	gstreamer-audio@0.22.0
+	gstreamer-audio-sys@0.22.0
+	gstreamer-base@0.22.0
+	gstreamer-base-sys@0.22.0
+	gstreamer-gl@0.22.0
+	gstreamer-gl-egl@0.22.0
+	gstreamer-gl-egl-sys@0.22.0
+	gstreamer-gl-sys@0.22.0
+	gstreamer-gl-wayland@0.22.0
+	gstreamer-gl-wayland-sys@0.22.0
+	gstreamer-gl-x11@0.22.0
+	gstreamer-gl-x11-sys@0.22.0
+	gstreamer-pbutils@0.22.0
+	gstreamer-pbutils-sys@0.22.0
+	gstreamer-sys@0.22.2
+	gstreamer-video@0.22.1
+	gstreamer-video-sys@0.22.1
+	gtk4@0.8.0
+	gtk4-macros@0.8.0
+	gtk4-sys@0.8.0
+	hashbrown@0.14.3
+	heck@0.4.1
+	hex@0.4.3
+	iana-time-zone@0.1.60
+	iana-time-zone-haiku@0.1.2
+	idna@0.5.0
+	indexmap@2.2.3
+	itertools@0.12.1
+	js-sys@0.3.68
+	lazy_static@1.4.0
+	libadwaita@0.6.0
+	libadwaita-sys@0.6.0
+	libc@0.2.153
+	linux-raw-sys@0.4.13
+	locale_config@0.3.0
+	log@0.4.20
+	malloc_buf@0.0.6
+	memchr@2.7.1
+	memoffset@0.9.0
+	muldiv@1.0.1
+	nix@0.28.0
+	nu-ansi-term@0.46.0
+	num-integer@0.1.46
+	num-rational@0.4.1
+	num-traits@0.2.18
+	objc@0.2.7
+	objc-foundation@0.1.1
+	objc_id@0.1.1
+	once_cell@1.19.0
+	option-operations@0.5.0
+	ordered-stream@0.2.0
+	overload@0.1.1
+	pango@0.19.2
+	pango-sys@0.19.0
+	parking@2.2.0
+	paste@1.0.14
+	percent-encoding@2.3.1
+	pin-project-lite@0.2.13
+	pin-utils@0.1.0
+	piper@0.2.1
+	pkg-config@0.3.30
+	polling@3.5.0
+	ppv-lite86@0.2.17
+	proc-macro-crate@3.1.0
+	proc-macro-error@1.0.4
+	proc-macro-error-attr@1.0.4
+	proc-macro2@1.0.78
+	quote@1.0.35
+	rand@0.8.5
+	rand_chacha@0.3.1
+	rand_core@0.6.4
+	regex@1.10.3
+	regex-automata@0.4.5
+	regex-syntax@0.8.2
+	rustc_version@0.4.0
+	rustix@0.38.31
+	semver@1.0.22
+	serde@1.0.197
+	serde_derive@1.0.197
+	serde_repr@0.1.18
+	serde_spanned@0.6.5
+	sha1@0.10.6
+	sharded-slab@0.1.7
+	signal-hook-registry@1.4.1
+	slab@0.4.9
+	smallvec@1.13.1
+	static_assertions@1.1.0
+	syn@1.0.109
+	syn@2.0.51
+	system-deps@6.2.0
+	target-lexicon@0.12.14
+	temp-dir@0.1.12
+	tempfile@3.10.0
+	thiserror@1.0.57
+	thiserror-impl@1.0.57
+	thread_local@1.1.8
+	tinyvec@1.6.0
+	tinyvec_macros@0.1.1
+	toml@0.8.10
+	toml_datetime@0.6.5
+	toml_edit@0.21.1
+	toml_edit@0.22.6
+	tracing@0.1.40
+	tracing-attributes@0.1.27
+	tracing-core@0.1.32
+	tracing-log@0.2.0
+	tracing-subscriber@0.3.18
+	typenum@1.17.0
+	uds_windows@1.1.0
+	unicode-bidi@0.3.15
+	unicode-ident@1.0.12
+	unicode-normalization@0.1.23
+	url@2.5.0
+	valuable@0.1.0
+	version-compare@0.1.1
+	version_check@0.9.4
+	wasi@0.11.0+wasi-snapshot-preview1
+	wasm-bindgen@0.2.91
+	wasm-bindgen-backend@0.2.91
+	wasm-bindgen-macro@0.2.91
+	wasm-bindgen-macro-support@0.2.91
+	wasm-bindgen-shared@0.2.91
+	winapi@0.3.9
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	windows-core@0.52.0
+	windows-sys@0.48.0
+	windows-sys@0.52.0
+	windows-targets@0.48.5
+	windows-targets@0.52.3
+	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_gnullvm@0.52.3
+	windows_aarch64_msvc@0.48.5
+	windows_aarch64_msvc@0.52.3
+	windows_i686_gnu@0.48.5
+	windows_i686_gnu@0.52.3
+	windows_i686_msvc@0.48.5
+	windows_i686_msvc@0.52.3
+	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnu@0.52.3
+	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_gnullvm@0.52.3
+	windows_x86_64_msvc@0.48.5
+	windows_x86_64_msvc@0.52.3
+	winnow@0.5.40
+	winnow@0.6.2
+	xdg-home@1.1.0
+	zbus@4.1.2
+	zbus_macros@4.1.2
+	zbus_names@3.0.0
+	zvariant@4.0.2
+	zvariant_derive@4.0.2
+	zvariant_utils@1.1.0
+"
+
+inherit cargo gnome2 meson xdg
+
+DESCRIPTION="Take pictures and videos"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/snapshot"
+SRC_URI+=" ${CARGO_CRATE_URIS}"
+
+LICENSE="GPL-3+"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT MPL-2.0 Unicode-DFS-2016"
+
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
+RDEPEND="
+	>=dev-libs/glib-2.75.0:2
+	>=gui-libs/gtk-4.11.0
+	>=gui-libs/libadwaita-1.4_alpha
+	>=media-libs/gstreamer-1.20.0
+	>=media-libs/gst-plugins-bad-1.20.0
+	media-video/pipewire[camera]
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	>=virtual/rust-1.70.0
+	x11-libs/gdk-pixbuf
+	virtual/pkgconfig
+"
+
+QA_FLAGS_IGNORED="usr/bin/${PN} usr/bin/${PN}-monitor"
+
+PATCHES=(
+	"${FILESDIR}/meson-fixes.patch"
+)
+
+src_compile() {
+	meson_src_compile
+	cargo_src_compile
+}
+
+src_install() {
+	meson_src_install
+	cargo_src_install
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
+	xdg_icon_cache_update
+}
