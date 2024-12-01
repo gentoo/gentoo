@@ -93,6 +93,7 @@ PATCHES=(
 )
 
 pkg_setup() {
+	lua-single_pkg_setup
 	use manager && python-single-r1_pkg_setup
 }
 
@@ -135,7 +136,7 @@ src_test() {
 }
 
 python_test() {
-	epytest tests/manager || die
+	epytest tests/manager
 }
 
 src_install() {
