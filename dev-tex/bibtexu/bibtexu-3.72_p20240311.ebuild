@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit texlive-common
+inherit flag-o-matic texlive-common
 
 DESCRIPTION="8-bit Implementation of BibTeX 0.99 with a Very Large Capacity"
 HOMEPAGE="https://tug.org/texlive/"
@@ -35,6 +35,9 @@ texlive-common_append_to_src_uri EXTRA_TL_DOC_MODULES
 SRC_URI="${SRC_URI} ) "
 
 src_configure() {
+	# bug #943986
+	append-cflags -std=gnu17
+
 	econf \
 		--with-system-kpathsea \
 		--with-system-icu
