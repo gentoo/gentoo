@@ -16,7 +16,10 @@ DESCRIPTION="An open-source memory debugger for GNU/Linux"
 HOMEPAGE="https://valgrind.org"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
+	EGIT_REPO_URI="
+		https://sourceware.org/git/${PN}.git
+		https://git.sr.ht/~sourceware/valgrind
+	"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.gpg
