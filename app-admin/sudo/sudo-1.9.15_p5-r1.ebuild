@@ -63,7 +63,7 @@ DEPEND="
 	selinux? ( sys-libs/libselinux )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	ssl? ( dev-libs/openssl:= )
-	sssd? ( sys-auth/sssd[sudo] )
+	sssd? ( sys-auth/sssd[sudo(+)] )
 "
 RDEPEND="
 	${DEPEND}
