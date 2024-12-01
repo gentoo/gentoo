@@ -11,7 +11,7 @@ SRC_URI="http://libndp.org/files/${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 PATCHES=(
 	# https://github.com/jpirko/libndp/issues/25
