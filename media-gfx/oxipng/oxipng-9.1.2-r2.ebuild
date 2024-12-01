@@ -110,13 +110,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 PATCHES=( "${FILESDIR}/oxipng-9.1.2-use-system-libdeflate.patch" )
 
-BDEPEND="
-	virtual/pkgconfig"
-# Any API/ABI-compatible versions (other than 1.20) would be ok for app-arch/libdeflate,
-# but in such case the build script of libdeflate_sys should be patched.
-# See <https://github.com/adamkewley/libdeflater/pull/32#issuecomment-1971198374>.
-DEPEND="
-	~app-arch/libdeflate-1.20"
+BDEPEND="virtual/pkgconfig"
+DEPEND=">=app-arch/libdeflate-1.20:="
 RDEPEND="${DEPEND}"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
@@ -125,6 +120,20 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
 
 src_prepare() {
+	# Relax the version restriction of libdeflate.
+	# https://bugs.gentoo.org/944285
+	#
+	# Any API/ABI-compatible versions would be ok for app-arch/libdeflate, but
+	# in such case the build script of libdeflate_sys should be patched to pick
+	# even if the system library is newer.
+	# See <https://github.com/adamkewley/libdeflater/pull/32#issuecomment-1971198374>.
+	#
+	# Also, don't forget updating `DEPNED` and `RDEPEND` in sync, or libdeflater
+	# crate will fail to pick system library and silently use the bundled
+	# version of libdeflate.
+	( cd "${WORKDIR}"/cargo_home/gentoo/libdeflate-sys-1.20.0 && \
+		eapply "${FILESDIR}"/libdeflater-1.20.0-relax-libdeflate-sys-version.patch )
+
 	# Remove the linker configs (in `.cargo/config.toml`) specific to GitHub CI.
 	# https://bugs.gentoo.org/924946
 	rm -rv "${S}/.cargo/config.toml" || die
