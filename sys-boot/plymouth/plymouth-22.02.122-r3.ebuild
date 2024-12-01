@@ -33,12 +33,13 @@ CDEPEND="
 	)
 	pango? (
 		x11-libs/cairo
-		>=x11-libs/pango-1.21[X]
+		>=x11-libs/pango-1.21
+		gtk? ( >=x11-libs/pango-1.21[X] )
 	)
 "
 DEPEND="${CDEPEND}
 	elibc_musl? ( sys-libs/rpmatch-standalone )
-	pango? ( x11-base/xorg-proto )
+	pango? ( gtk? ( x11-base/xorg-proto ) )
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig

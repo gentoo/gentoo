@@ -44,7 +44,8 @@ COMMON_DEPEND="
 	)
 	pango? (
 		x11-libs/cairo
-		>=x11-libs/pango-1.21[X]
+		>=x11-libs/pango-1.21
+		gtk? ( >=x11-libs/pango-1.21[X] )
 	)
 	systemd? ( sys-apps/systemd )
 	udev? ( virtual/libudev )
@@ -52,7 +53,7 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	elibc_musl? ( sys-libs/rpmatch-standalone )
-	pango? ( x11-base/xorg-proto )
+	pango? ( gtk? ( x11-base/xorg-proto ) )
 "
 
 RDEPEND="${COMMON_DEPEND}
