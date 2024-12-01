@@ -10,23 +10,20 @@ HOMEPAGE="https://qmmp.ylsoftware.com/"
 SRC_URI="https://qmmp.ylsoftware.com/files/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 x86"
+SLOT="0/6"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[gui,network,widgets]
 	media-libs/libsamplerate
 	media-libs/taglib
-	=media-sound/qmmp-$(ver_cut 1-2)*
+	=media-sound/qmmp-$(ver_cut 1-2)*:0/6
 	media-video/ffmpeg:=
 "
 DEPEND="${RDEPEND}
 	dev-lang/yasm
 "
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 src_configure() {
 	append-ldflags -Wl,-z,noexecstack

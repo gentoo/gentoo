@@ -11,7 +11,7 @@ SRC_URI="https://qmmp.ylsoftware.com/files/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-libs/libsamplerate
 	media-libs/taglib
-	=media-sound/qmmp-$(ver_cut 1-2)*
+	=media-sound/qmmp-$(ver_cut 1-2)*:0
 	media-video/ffmpeg:=
 "
 DEPEND="${RDEPEND}
