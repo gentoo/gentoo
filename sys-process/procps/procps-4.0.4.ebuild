@@ -16,12 +16,13 @@ S="${WORKDIR}"/${PN}-ng-${PV}
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/0-ng"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="elogind +kill modern-top +ncurses nls selinux static-libs systemd test unicode"
+IUSE="elogind +kill modern-top +ncurses nls numa selinux static-libs systemd test unicode"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	elogind? ( sys-auth/elogind )
 	ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode(+)?] )
+	numa? ( sys-process/numactl[${MULTILIB_USEDEP}] )
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd[${MULTILIB_USEDEP}] )
 "
@@ -74,6 +75,7 @@ multilib_src_configure() {
 		# bug #794997
 		$(multilib_native_use_enable !elibc_musl w)
 		$(use_enable nls)
+		$(use_enable numa)
 		$(use_enable selinux libselinux)
 		$(use_enable static-libs static)
 		$(use_with systemd)
