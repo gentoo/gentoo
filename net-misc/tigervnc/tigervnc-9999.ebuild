@@ -6,7 +6,7 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD=1
 inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.13"
+XSERVER_VERSION="21.1.14"
 XSERVER_PATCH_VERSION="21"
 
 DESCRIPTION="Remote desktop viewer display system"
@@ -206,10 +206,6 @@ src_install() {
 		newinitd "${FILESDIR}"/${PN}-1.14.0.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
-
-		# comment out pam_selinux.so, the server does not start if missing
-		# part of bug #746227
-		sed -i -e '/pam_selinux/s/^/#/' "${ED}"/etc/pam.d/tigervnc || die
 
 		# install vncserver to /usr/bin too, see bug #836620
 		dosym -r /usr/libexec/vncserver /usr/bin/vncserver
