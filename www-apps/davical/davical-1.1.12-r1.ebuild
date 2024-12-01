@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,12 +15,20 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="sys-devel/gettext"
 
 RDEPEND="app-admin/pwgen
-	dev-lang/php[calendar,curl,iconv,imap,nls,pdo,postgres,xml]
-	dev-perl/DBD-Pg
-	dev-perl/DBI
-	dev-perl/YAML
-	>=dev-php/awl-0.64
-	virtual/httpd-php"
+		|| (
+			(
+				dev-lang/php:8.2[calendar,curl,iconv,imap,nls,pdo,postgres,xml]
+				virtual/httpd-php:8.2
+			)
+			(
+				dev-lang/php:8.3[calendar,curl,iconv,imap,nls,pdo,postgres,xml]
+				virtual/httpd-php:8.3
+			)
+		)
+		dev-perl/DBD-Pg
+		dev-perl/DBI
+		dev-perl/YAML
+		>=dev-php/awl-0.64"
 
 need_httpd
 
