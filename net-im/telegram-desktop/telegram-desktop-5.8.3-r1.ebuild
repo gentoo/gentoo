@@ -27,7 +27,7 @@ CDEPEND="
 	>=dev-cpp/glibmm-2.77:2.68
 	dev-libs/glib:2
 	dev-libs/openssl:=
-	dev-libs/protobuf
+	>=dev-libs/protobuf-21.12
 	dev-libs/xxhash
 	media-libs/libjpeg-turbo:=
 	~media-libs/libtgvoip-2.4.4_p20240706
@@ -93,6 +93,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.2.2-libdispatch.patch
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-webkit-no-wayland.patch
+	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 )
 
 pkg_pretend() {
