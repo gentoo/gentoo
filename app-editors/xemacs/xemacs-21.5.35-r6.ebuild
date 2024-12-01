@@ -13,6 +13,7 @@ HOMEPAGE="https://www.xemacs.org/"
 
 SRC_URI="http://ftp.xemacs.org/pub/xemacs/xemacs-$(ver_cut 1-2)/${P}.tar.gz
 	https://dev.gentoo.org/~matsl/${P}-ootags-boolint.patch.xz
+	https://dev.gentoo.org/~matsl/${P}-info-handle-compress.patch.xz
 	neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
 LICENSE="GPL-3+"
@@ -71,6 +72,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-linker-flags.patch"
 	eapply "${WORKDIR}/${P}-ootags-boolint.patch"
 	eapply "${FILESDIR}/${P}-unknown-command-test.patch"
+	eapply "${WORKDIR}/${P}-info-handle-compress.patch"
 
 	eapply_user
 
