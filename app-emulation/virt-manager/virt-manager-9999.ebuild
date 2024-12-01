@@ -67,6 +67,12 @@ src_configure() {
 	meson_src_configure
 }
 
+src_install() {
+	meson_src_install
+
+	python_fix_shebang "${ED}"
+}
+
 pkg_preinst() {
 	if use gui ; then
 		gnome2_pkg_preinst
