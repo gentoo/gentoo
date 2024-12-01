@@ -16,7 +16,17 @@
 		libvirtd instances (e.g. Kerberos-protected instances).
 		</flag>
 	</use>
+	<longdescription>
+		Virtual Machine Manager provides a graphical tool for administering virtual
+		machines for KVM, Xen, and LXC. Start, stop, add or remove virtual devices,
+		connect to a graphical or serial console, and see resource usage statistics
+		for existing VMs on local or remote machines. Uses libvirt as the backend
+		management API.
+	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/virt-manager/virt-manager/issues</bugs-to>
+		<changelog>https://github.com/virt-manager/virt-manager/blob/main/NEWS.md</changelog>
+		<doc>https://virt-manager.org/documentation.html</doc> <!-- not of much use -->
 		<remote-id type="github">virt-manager/virt-manager</remote-id>
 	</upstream>
 </pkgmetadata>
