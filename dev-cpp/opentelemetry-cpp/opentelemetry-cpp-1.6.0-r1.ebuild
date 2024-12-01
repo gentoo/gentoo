@@ -20,7 +20,6 @@ IUSE="+jaeger prometheus test"
 RDEPEND="
 	net-misc/curl:=
 	dev-libs/thrift:=
-	!=dev-libs/thrift-0.18*
 	dev-libs/boost:=
 "
 DEPEND="
