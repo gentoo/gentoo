@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="Tool that converts a PostScript type1 font into a corresponding TeX PK font"
 HOMEPAGE="https://tug.org/texlive/"
 SRC_URI="https://mirrors.ctan.org/systems/texlive/Source/texlive-${PV#*_p}-source.tar.xz"
@@ -19,6 +21,9 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( "ChangeLog" "CHANGES.type1" "README" "README.14m" "README.type1" )
 
 src_configure() {
+	# bug #944098
+	append-cflags -std=gnu17
+
 	econf \
 		--with-system-kpathsea
 }
