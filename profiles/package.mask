@@ -456,20 +456,6 @@ app-i18n/kcm-fcitx
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
 
-# Pacho Ramos <pacho@gentoo.org> (2024-08-09)
-# Mask until we find out a way to deal better with the upstream
-# introduced circular dep, bug #937616
->=dev-libs/glib-2.80
->=dev-util/glib-utils-2.80
->=dev-util/gdbus-codegen-2.80
->=gnome-base/gnome-shell-46
->=gnome-extra/gnome-shell-extensions-46
->=gnome-extra/gnome-shell-frippery-46
->=gnome-base/nautilus-46
->=dev-libs/gobject-introspection-1.80
->=dev-libs/gobject-introspection-common-1.80
->=x11-terms/ptyxis-46
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
