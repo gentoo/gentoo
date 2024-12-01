@@ -40,6 +40,7 @@ fi
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
+		77_all_m2_docs_sandbox.patch
 	)
 	for p in "${upstreamed_patches[@]}"; do
 		rm -v "${WORKDIR}/patch/${p}" || die
