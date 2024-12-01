@@ -101,6 +101,10 @@ RDEPEND="
 
 DEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-desk-init.patch
+)
+
 src_configure() {
 	# Recommended by upstream for release. Doesn't really matter for live ebuilds.
 	append-flags -fno-strict-aliasing
