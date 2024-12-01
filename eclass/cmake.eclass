@@ -707,8 +707,8 @@ cmake_src_test() {
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 	[[ -n ${CMAKE_SKIP_TESTS} ]] && myctestargs+=( -E '('$( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}")')'  )
 
-	set -- ctest -j "${CTEST_JOBS:-$(makeopts_jobs "${MAKEOPTS}" 999)}" \
-		--test-load "${CTEST_LOADAVG:-$(makeopts_loadavg)}" \
+	set -- ctest -j "${CTEST_JOBS:-$(get_makeopts_jobs 999)}" \
+		--test-load "${CTEST_LOADAVG:-$(get_makeopts_loadavg)}" \
 		"${myctestargs[@]}" "$@"
 	echo "$@" >&2
 	if "$@" ; then
