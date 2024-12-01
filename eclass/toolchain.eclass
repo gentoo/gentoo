@@ -33,7 +33,12 @@ tc_is_live() {
 }
 
 if tc_is_live ; then
-	EGIT_REPO_URI="https://gcc.gnu.org/git/gcc.git https://github.com/gcc-mirror/gcc"
+	EGIT_REPO_URI="
+		https://gcc.gnu.org/git/gcc.git
+		https://git.sr.ht/~sourceware/gcc
+		https://gitlab.com/x86-gcc/gcc.git
+		https://github.com/gcc-mirror/gcc.git
+	"
 	# Naming style:
 	# gcc-10.1.0_pre9999 -> gcc-10-branch
 	#  Note that the micro version is required or lots of stuff will break.
