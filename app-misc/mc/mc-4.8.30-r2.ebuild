@@ -6,17 +6,18 @@ EAPI=8
 inherit autotools flag-o-matic
 
 MY_P="${P/_/-}"
-SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
-
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
 HOMEPAGE="https://midnight-commander.org"
+SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+edit gpm nls sftp +slang spell test unicode X"
 
 REQUIRED_USE="spell? ( edit )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.30.0:2
@@ -34,18 +35,18 @@ DEPEND="
 		x11-libs/libSM
 	)
 "
-RDEPEND="${DEPEND}
-	spell? ( app-dicts/aspell-en )"
+
+RDEPEND="
+	${DEPEND}
+	spell? ( app-dicts/aspell-en )
+"
+
 BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? ( dev-libs/check )
 "
-
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.26-ncurses-mouse.patch
@@ -103,6 +104,7 @@ src_test() {
 	# information.
 	CK_FORK=no emake check VERBOSE=1
 }
+
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS NEWS README

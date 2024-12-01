@@ -14,7 +14,7 @@ if [[ ${PV} = 9999* ]]; then
 	MY_P="${PN}-${PV}"
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
 	MY_P="${PN}_${PV}"
 fi
 

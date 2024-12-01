@@ -244,7 +244,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT Unicode-DFS-2016 WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="llvm-libunwind python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

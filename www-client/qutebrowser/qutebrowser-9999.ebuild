@@ -30,8 +30,8 @@ IUSE="+adblock pdf widevine"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
-		dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
+		dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets]
+		dev-python/pyqt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/markupsafe[${PYTHON_USEDEP}]
@@ -48,7 +48,7 @@ RDEPEND="
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
-			dev-python/PyQt6[testlib]
+			dev-python/pyqt6[testlib]
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/cheroot[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]

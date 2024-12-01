@@ -55,7 +55,7 @@ inherit estack
 
 # Some packages have additional homepages, but pretty much every GAP
 # package can be found at this URL.
-HOMEPAGE="https://www.gap-system.org/Packages/${PN}.html"
+HOMEPAGE="https://www.gap-system.org/packages/#${PN}"
 
 # _GAP_PKG_IS_REQUIRED is an internal variable that indicates whether or
 # not $PN is one of the four "required" GAP packages that are always

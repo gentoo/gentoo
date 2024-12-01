@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gmp iconv lzma openmp python readline +shared static-libs static-pic syslog"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	|| ( gmp iconv lzma openmp python readline syslog )

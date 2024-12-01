@@ -14,14 +14,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/polib[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/QtPy[pyqt6,gui,network,${PYTHON_USEDEP}]
+		dev-python/qtpy[pyqt6,gui,network,${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 	')
 	dev-vcs/git
@@ -32,7 +32,7 @@ BDEPEND="
 		dev-python/setuptools-scm[\${PYTHON_USEDEP}]
 		test? (
 			dev-python/pytest[\${PYTHON_USEDEP}]
-			dev-python/QtPy[pyqt6,gui,network,\${PYTHON_USEDEP}]
+			dev-python/qtpy[pyqt6,gui,network,\${PYTHON_USEDEP}]
 		)
 	")
 "

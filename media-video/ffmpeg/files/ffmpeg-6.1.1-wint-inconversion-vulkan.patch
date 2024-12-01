@@ -1,0 +1,35 @@
+From 5860a966d2fffbbda1af0014f0a4d37a21c4f2ca Mon Sep 17 00:00:00 2001
+From: Lynne <dev@lynne.ee>
+Date: Wed, 31 Jan 2024 14:15:04 +0100
+Subject: [PATCH] lavfi/vsrc_testsrc_vulkan: fix -Wint-conversion
+
+While VK_NULL_HANDLE is equivalent to NULL on 64-bit platforms, the same is not
+true across all platforms.
+
+Fixes building with gcc-14.
+---
+ libavfilter/vsrc_testsrc_vulkan.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libavfilter/vsrc_testsrc_vulkan.c b/libavfilter/vsrc_testsrc_vulkan.c
+index 8761c21dfd1ed..1720bfac5e3a2 100644
+--- a/libavfilter/vsrc_testsrc_vulkan.c
++++ b/libavfilter/vsrc_testsrc_vulkan.c
+@@ -231,7 +231,7 @@ static int testsrc_vulkan_activate(AVFilterContext *ctx)
+                 return AVERROR(ENOMEM);
+ 
+             err = ff_vk_filter_process_simple(&s->vkctx, &s->e, &s->pl, s->picref, NULL,
+-                                              NULL, &s->opts, sizeof(s->opts));
++                                              VK_NULL_HANDLE, &s->opts, sizeof(s->opts));
+             if (err < 0)
+                 return err;
+         }
+@@ -250,7 +250,7 @@ static int testsrc_vulkan_activate(AVFilterContext *ctx)
+     frame->sample_aspect_ratio = s->sar;
+     if (!s->draw_once) {
+         err = ff_vk_filter_process_simple(&s->vkctx, &s->e, &s->pl, frame, NULL,
+-                                          NULL, &s->opts, sizeof(s->opts));
++                                          VK_NULL_HANDLE, &s->opts, sizeof(s->opts));
+         if (err < 0) {
+             av_frame_free(&frame);
+             return err;

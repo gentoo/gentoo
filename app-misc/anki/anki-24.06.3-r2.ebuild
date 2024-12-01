@@ -756,9 +756,9 @@ GUI_RDEPEND="
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]
 		dev-python/protobuf[${PYTHON_USEDEP}]
-		>=dev-python/PyQt6-6.6.1[gui,network,opengl,quick,webchannel,widgets,${PYTHON_USEDEP}]
-		>=dev-python/PyQt6-sip-13.6.0[${PYTHON_USEDEP}]
-		>=dev-python/PyQt6-WebEngine-6.6.0[widgets,${PYTHON_USEDEP}]
+		>=dev-python/pyqt6-6.6.1[gui,network,opengl,quick,webchannel,widgets,${PYTHON_USEDEP}]
+		>=dev-python/pyqt6-sip-13.6.0[${PYTHON_USEDEP}]
+		>=dev-python/pyqt6-webengine-6.6.0[widgets,${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 		dev-python/waitress[${PYTHON_USEDEP}]
@@ -772,7 +772,7 @@ RDEPEND="
 
 BDEPEND="
 	>=app-arch/zstd-1.5.5:=
-	dev-libs/protobuf
+	dev-libs/protobuf[protoc(+)]
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
@@ -788,7 +788,7 @@ BDEPEND="
 		>=net-libs/nodejs-20.12.1
 		sys-apps/yarn
 		$(python_gen_cond_dep '
-			dev-python/PyQt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
 		')
 	)
@@ -957,9 +957,9 @@ pkg_postinst() {
 		xdg_pkg_postinst
 		optfeature "LaTeX in cards" "app-text/texlive[extra] app-text/dvipng"
 		optfeature "sound support" media-video/mpv media-video/mplayer
-		optfeature "recording support" "media-sound/lame[frontend] dev-python/PyQt6[multimedia]"
+		optfeature "recording support" "media-sound/lame[frontend] dev-python/pyqt6[multimedia]"
 		optfeature "faster database operations" dev-python/orjson
-		optfeature "compatibility with Qt5-dependent add-ons" dev-python/PyQt6[dbus,printsupport]
+		optfeature "compatibility with Qt5-dependent add-ons" dev-python/pyqt6[dbus,printsupport]
 		optfeature "Vulkan driver" "media-libs/vulkan-loader dev-qt/qtbase:6[vulkan]
 			dev-qt/qtdeclarative:6[vulkan] dev-qt/qtwebengine:6[vulkan]"
 

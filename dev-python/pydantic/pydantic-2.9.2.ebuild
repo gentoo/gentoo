@@ -30,7 +30,7 @@ BDEPEND="
 		dev-python/cloudpickle[${PYTHON_USEDEP}]
 		dev-python/dirty-equals[${PYTHON_USEDEP}]
 		>=dev-python/email-validator-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/Faker-18.13.0[${PYTHON_USEDEP}]
+		>=dev-python/faker-18.13.0[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-4.23.0[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]

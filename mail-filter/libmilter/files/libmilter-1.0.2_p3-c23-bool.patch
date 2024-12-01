@@ -1,0 +1,19 @@
+Building mail-filter/opendkim without this patch would fail because
+mfapi.h doesn't include libmilter's own config header which defines
+SM_CONF_STDBOOL_H.
+
+We certainly only care about >= C99 compilers so we can just always
+take that path.
+
+https://bugs.gentoo.org/944138
+--- a/include/libmilter/mfapi.h
++++ b/include/libmilter/mfapi.h
+@@ -89,7 +89,7 @@ typedef int	sfsistat;
+ # endif
+ #endif /* __P */
+ 
+-#if SM_CONF_STDBOOL_H
++#if 1 /* SM_CONF_STDBOOL_H */
+ # include <stdbool.h>
+ #else /* SM_CONF_STDBOOL_H */
+ # ifndef __cplusplus

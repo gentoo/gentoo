@@ -383,6 +383,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.1-alignment.patch
 	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-libgcrypt.patch
 	"${FILESDIR}"/${PN}-6.1.1-amd-av1-vaapi.patch
+	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-vulkan.patch
+	"${FILESDIR}"/${PN}-6.1.1-incmptbl-pntr-types.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -545,6 +547,10 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc htmlpages)
 		$(multilib_native_enable manpages)
 	)
+
+	if use elibc_musl ; then
+		append-cflags -D__musl__
+	fi
 
 	# Use --extra-libs if needed for LIBS
 	set -- "${S}/configure" \

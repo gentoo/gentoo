@@ -33,7 +33,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 RESTRICT="test"
 
 RDEPEND="
-	dev-python/GitPython[${PYTHON_USEDEP}]
+	dev-python/gitpython[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="

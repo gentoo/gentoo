@@ -23,8 +23,8 @@ RDEPEND="
 		x11-misc/xsel
 		x11-misc/xclip
 		kde-plasma/plasma-workspace
-		dev-python/PyQt5[${PYTHON_USEDEP}]
-		dev-python/QtPy[${PYTHON_USEDEP}]
+		dev-python/pyqt5[${PYTHON_USEDEP}]
+		dev-python/qtpy[${PYTHON_USEDEP}]
 	)
 "
 # test at least one backend

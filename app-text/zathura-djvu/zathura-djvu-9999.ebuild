@@ -29,4 +29,5 @@ RDEPEND="app-text/djvu
 	x11-libs/cairo"
 
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	virtual/pkgconfig"

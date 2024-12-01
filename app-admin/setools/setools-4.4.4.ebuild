@@ -33,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=sys-libs/libsepol-3.2:=
 	>=sys-libs/libselinux-3.2:=
 	X? (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-python/cython-0.27[${PYTHON_USEDEP}]

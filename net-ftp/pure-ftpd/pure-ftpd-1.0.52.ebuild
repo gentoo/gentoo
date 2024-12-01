@@ -12,7 +12,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/jedisct1/pure-ftpd.git"
 else
 	SRC_URI="https://download.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 fi
 
 LICENSE="BSD GPL-2"

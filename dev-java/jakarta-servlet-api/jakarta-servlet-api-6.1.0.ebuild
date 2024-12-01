@@ -17,7 +17,7 @@ S="${WORKDIR}/servlet-${PV}-RELEASE"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="6.1"
-KEYWORDS="~amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-11:*" # module-info
 RDEPEND=">=virtual/jre-1.8:*"

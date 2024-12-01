@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
-	dev-python/ConfigArgParse[${PYTHON_USEDEP}]
+	dev-python/configargparse[${PYTHON_USEDEP}]
 	dev-python/consonance[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/protobuf[${PYTHON_USEDEP}]

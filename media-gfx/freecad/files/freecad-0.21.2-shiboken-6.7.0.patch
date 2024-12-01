@@ -1,8 +1,0 @@
-https://bugs.gentoo.org/929973
---- a/src/Gui/PythonWrapper.cpp
-+++ b/src/Gui/PythonWrapper.cpp
-@@ -480,3 +480,3 @@
-             return false;
--        types = Shiboken::Module::getTypes(requiredModule);
-+        types = reinterpret_cast<PyTypeObject **>(Shiboken::Module::getTypes(requiredModule));
-     }

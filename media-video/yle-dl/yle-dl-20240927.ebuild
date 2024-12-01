@@ -26,7 +26,7 @@ RESTRICT="test"
 RDEPEND="media-video/ffmpeg
 	net-misc/wget
 	>=dev-python/attrs-18.1.0[${PYTHON_USEDEP}]
-	>=dev-python/ConfigArgParse-0.13.0[${PYTHON_USEDEP}]
+	>=dev-python/configargparse-0.13.0[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/progress[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"

@@ -11,7 +11,7 @@ inherit ecm flag-o-matic frameworks.kde.org
 DESCRIPTION="Library to allow separating the structure of documents from data they contain"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="

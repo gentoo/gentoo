@@ -30,7 +30,6 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/jq-1.6-r3-never-bundle-oniguruma.patch
-	"${FILESDIR}"/jq-1.7-runpath.patch
 )
 
 RESTRICT="!test? ( test )"

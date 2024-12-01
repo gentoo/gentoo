@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="dedicated +flac +opengl scripting test +truetype +vorbis"
 RESTRICT="!test? ( test )"
 
@@ -79,6 +79,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
 	"${FILESDIR}/${PN}-0.4.16-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.4.16-tileelement.patch"
 )
 
 src_unpack() {

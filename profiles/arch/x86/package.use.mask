@@ -137,9 +137,10 @@ media-tv/mythtv nvdec
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
 app-i18n/fcitx-libpinyin dictionary-manager
+app-misc/anki gui
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
-dev-python/QtPy test
+dev-python/qtpy test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent

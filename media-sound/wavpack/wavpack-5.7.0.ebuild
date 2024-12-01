@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="Hybrid lossless audio compression tools"
 HOMEPAGE="https://www.wavpack.com/"
@@ -15,6 +15,11 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~
 
 RDEPEND=">=virtual/libiconv-0-r1"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf $(multilib_native_enable apps)

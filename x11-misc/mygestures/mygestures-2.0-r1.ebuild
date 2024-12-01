@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Mouse gestures for X"
 HOMEPAGE="https://github.com/deters/mygestures/"
@@ -39,6 +39,8 @@ src_prepare() {
 	default
 
 	eautoreconf
+
+	append-cflags -std=gnu17 #944094
 }
 
 src_install() {

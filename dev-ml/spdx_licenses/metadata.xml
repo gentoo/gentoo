@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
+	<longdescription lang="en">
+		An OCaml library aiming to provide an up-to-date and strict SPDX
+		License Expression parser. It implements the format described in:
+		https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+		See https://spdx.org/licenses/ for more details.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">kit-ty-kate/spdx_licenses</remote-id>
+	</upstream>
+</pkgmetadata>

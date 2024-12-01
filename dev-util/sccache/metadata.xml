@@ -5,18 +5,17 @@
 	<use>
 		<flag name="azure">Enable Azure Blob Storage support</flag>
 		<flag name="dist-client">Enables distributed support in the sccache client</flag>
+		<flag name="dist-server">Enables the sccache-dist binary</flag>
 		<flag name="gcs">Enable Google Cloud Storage support</flag>
 		<flag name="redis">Enable Redis support</flag>
 		<flag name="s3">Enable full Amazon S3 support</flag>
-		<flag name="simple-s3">Enable minimal Amazon S3 support</flag>
-		<flag name="dist-server">Enables the sccache-dist binary</flag>
+		<flag name="webdav">Enable WebDAV storage endpoint support</flag>
 	</use>
 	<longdescription lang="en">
 		Sccache is a ccache-like tool.
-		It is used as a compiler wrapper and avoids compilation when possible,
-		storing a cache in a remote storage using the Amazon Simple Cloud Storage Service (S3) API,
-		the Google Cloud Storage (GCS) API, or Redis.
-		Includes experimental rust support.
+		It is used as a compiler wrapper and avoids compilation when possible.
+		Sccache has the capability to utilize caching in remote storage environments,
+		including various cloud storage options, or alternatively, in local storage.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">mozilla/sccache</remote-id>

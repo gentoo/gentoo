@@ -11,7 +11,7 @@ SRC_URI="https://github.com/c-cube/gen/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="+ocamlopt"
 RESTRICT="test"  # tests fail  > unused-open
 

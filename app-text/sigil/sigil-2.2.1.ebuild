@@ -51,8 +51,8 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 		plugins? ( $(python_gen_cond_dep '
-			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+			dev-python/pyqt5[${PYTHON_USEDEP}]
+			dev-python/pyqtwebengine[${PYTHON_USEDEP}]
 		') )
 	)
 	qt6? (
@@ -61,8 +61,8 @@ RDEPEND="
 		dev-qt/qtwebengine:6[widgets]
 		dev-qt/qtsvg:6
 		plugins? ( $(python_gen_cond_dep '
-			dev-python/PyQt6[${PYTHON_USEDEP}]
-			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP}]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6-webengine[${PYTHON_USEDEP}]
 		') )
 	)
 "

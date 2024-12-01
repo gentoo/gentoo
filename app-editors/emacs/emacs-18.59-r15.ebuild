@@ -80,8 +80,8 @@ src_configure() {
 	# all those missing prototypes.
 	strip-flags
 	filter-flags -finline-functions -fpie -flto
-	append-flags -fno-strict-aliasing -Wno-implicit -Wno-return-type \
-		-Wno-return-mismatch
+	append-flags -std=gnu17 -fno-strict-aliasing -Wno-implicit \
+		-Wno-return-type -Wno-return-mismatch
 	append-ldflags $(test-flags -no-pie)	#639562
 	replace-flags -O[3-9] -O2
 }

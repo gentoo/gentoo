@@ -1,6 +1,10 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
+# sci-libs/caffe2 is not keyworded on arm64
+sci-chemistry/gromacs nnpot
+
 # Benda Xu <heroxbd@gentoo.org> (2024-10-10)
 # dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on riscv
 sys-cluster/slurm nvml ucx
@@ -144,7 +148,7 @@ dev-libs/cyrus-sasl berkdb
 # Avoid dragging in "heavy"  parts of dev-qt/* unless/until
 # somebody needs them. bug #816981, bug #854261.
 # Unfortunately, tests demand qtwebengine too.
-dev-python/QtPy test
+dev-python/qtpy test
 
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available

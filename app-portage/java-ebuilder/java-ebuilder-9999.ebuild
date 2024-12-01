@@ -1,7 +1,7 @@
-# Copyright 2016-2021 Gentoo Authors
+# Copyright 2016-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} == 9999 ]]; then
 	ECLASS="git-r3"
@@ -15,25 +15,24 @@ inherit java-pkg-2 java-pkg-simple prefix ${ECLASS}
 
 DESCRIPTION="Java team tool for semi-automatic creation of ebuilds from pom.xml"
 HOMEPAGE="https://github.com/gentoo/java-ebuilder"
+S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=virtual/jdk-1.8:*"
-RDEPEND=">=virtual/jre-1.8:*
+RDEPEND="
+	>=virtual/jre-1.8:*
 	sys-process/parallel
-	>=dev-java/maven-bin-3"
+	>=dev-java/maven-bin-3
+"
 
-S="${WORKDIR}/${P}"
-
-JAVA_SRC_DIR="src/main/java"
-JAVA_RESOURCE_DIRS="src/main/resources"
-
-JAVA_LAUNCHER_FILENAME=${PN}
 JAVA_MAIN_CLASS="org.gentoo.java.ebuilder.Main"
+JAVA_RESOURCE_DIRS="src/main/resources"
+JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	hprefixify scripts/{bin/*,resources/Makefiles/*,movl} java-ebuilder.conf
 }
 

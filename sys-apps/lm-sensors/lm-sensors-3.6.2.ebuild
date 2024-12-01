@@ -22,8 +22,8 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/5.0.0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="contrib selinux sensord static-libs"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="contrib selinux sensord static-libs test"
 
 COMMON_DEPS="
 	sensord? (
@@ -31,6 +31,11 @@ COMMON_DEPS="
 		virtual/logger
 	)"
 
+BDEPEND="
+	test? (
+		dev-perl/Test-Cmd
+	)
+"
 RDEPEND="${COMMON_DEPS}
 	dev-lang/perl
 	selinux? ( sec-policy/selinux-sensord )"
@@ -38,6 +43,7 @@ RDEPEND="${COMMON_DEPS}
 DEPEND="${COMMON_DEPS}
 	app-alternatives/yacc
 	app-alternatives/lex"
+RESTRICT="!test? ( test )"
 
 CONFIG_CHECK="~HWMON ~I2C_CHARDEV ~I2C"
 WARNING_HWMON="${PN} requires CONFIG_HWMON to be enabled for use."

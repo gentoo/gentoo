@@ -11,7 +11,7 @@ SRC_URI="https://github.com/zealdocs/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 DEPEND="
 	app-arch/libarchive:=

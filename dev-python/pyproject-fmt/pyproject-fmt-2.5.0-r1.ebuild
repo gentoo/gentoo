@@ -134,7 +134,7 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	~dev-python/toml-fmt-common-1.0.1[${PYTHON_USEDEP}]
@@ -158,5 +158,8 @@ src_prepare() {
 }
 
 python_test_all() {
-	cargo_src_test
+	# default features cause linking errors because they make pyo3
+	# wrongly assume it's compiling a Python extension
+	# https://github.com/tox-dev/toml-fmt/issues/23
+	cargo_src_test --no-default-features
 }

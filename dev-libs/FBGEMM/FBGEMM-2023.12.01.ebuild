@@ -13,6 +13,8 @@ HOMEPAGE="https://github.com/pytorch/FBGEMM"
 SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -35,8 +37,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 python_check_deps() {
 	if use doc; then

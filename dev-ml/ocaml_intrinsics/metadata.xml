@@ -6,6 +6,6 @@
 		<name>ML</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">janestreet/ocaml_instrinsics</remote-id>
+		<remote-id type="github">janestreet/ocaml_intrinsics</remote-id>
 	</upstream>
 </pkgmetadata>

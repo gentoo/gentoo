@@ -122,7 +122,7 @@ media-sound/snd notcurses
 # Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
 # pyside2 is not keyworded on powerpc at the moment.
 # Mask the other Qt4Python implementations
-dev-python/QtPy pyside2 pyside6
+dev-python/qtpy pyside2 pyside6
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded

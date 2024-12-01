@@ -3,6 +3,21 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-24)
+# sci-libs/vtk[qt5] cleanup, bug #944817
+sci-libs/vtk qt5
+~sci-chemistry/avogadro2-1.97.0 vtk
+~sci-libs/avogadrolibs-1.97.0 vtk
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
+# dev-python/pyside2 last-rites
+dev-python/qtpy pyside2
+
+# Mats Lidell <matsl@gentoo.org> (2024-11-20)
+# The dependency x11-libs/dnd blocks gcc-14, is only used by XEmacs,
+# and upstream is not sure it even works so dropping use. #908831
+app-editors/xemacs dnd
+
 # Sam James <sam@gentoo.org> (2024-11-17)
 # The example bindings fail to build.
 ~sys-libs/ncurses-6.5_p20241109 cxx
@@ -341,11 +356,6 @@ app-misc/pax-utils seccomp
 # Sam James <sam@gentoo.org> (2022-12-17)
 # Broken when trying to use sys-libs/binutils-libs header, bug #879067
 >=x11-libs/cairo-1.17.6 debug
-
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-11-25)
-# USE=tbb is broken in 7.7.0
-# https://tracker.dev.opencascade.org/view.php?id=33152
-<sci-libs/opencascade-7.7.1 tbb
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not keyworded on most architectures

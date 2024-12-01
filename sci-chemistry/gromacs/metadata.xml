@@ -18,7 +18,6 @@
 		<flag name="gmxapi">Add support for gmxapi library</flag>
 		<flag name="gmxapi-legacy">Enable installing lagacy headers</flag>
 		<flag name="hwloc">Enable HWLoc lib support</flag>
-		<flag name="lmfit">Use external <pkg>sci-libs/lmfit</pkg></flag>
 		<flag name="nnpot">Allow to use <pkg>sci-libs/caffe2</pkg> for NN Potentials</flag>
 		<flag name="opencl">Enable opencl non-bonded kernels</flag>
 		<flag name="single-precision">Single precision version of gromacs (default)</flag>

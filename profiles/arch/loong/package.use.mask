@@ -23,7 +23,7 @@ media-libs/assimp collada
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-13)
 # dev-python/pyside6 isn't keyworded here
-dev-python/QtPy pyside6
+dev-python/qtpy pyside6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # kde-plasma/plasma-workspace:6 is not keyworded
@@ -245,7 +245,7 @@ net-vpn/openconnect test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-python/pyside2 not keyworded yet
-dev-python/QtPy pyside2
+dev-python/qtpy pyside2
 dev-python/qtconsole test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
@@ -302,8 +302,8 @@ dev-libs/boost -context
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # dev-qt/qtlocation:5 fails to compile with gcc-13 for now.
-dev-python/PyQt5 location
-dev-python/QtPy test
+dev-python/pyqt5 location
+dev-python/qtpy test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # Mask GRUB2 platforms not applicable to loong.

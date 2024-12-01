@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 FS_USE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 IUSE="${FS_USE} doc"
 
-DEPEND="sys-boot/gnu-efi"
+DEPEND="<sys-boot/gnu-efi-4.0.0"
 
 # for ld.bfd and objcopy
 BDEPEND="sys-devel/binutils"

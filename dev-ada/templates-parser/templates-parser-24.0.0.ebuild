@@ -13,7 +13,8 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
+IUSE="+shared static-libs"
 RESTRICT="test"
 
 RDEPEND="${ADA_DEPS}
@@ -22,7 +23,6 @@ RDEPEND="${ADA_DEPS}
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
-IUSE="+shared static-libs"
 REQUIRED_USE="|| ( shared static-libs )
 	${ADA_REQUIRED_USE}"
 

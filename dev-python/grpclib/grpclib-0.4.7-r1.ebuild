@@ -34,7 +34,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/async-timeout[${PYTHON_USEDEP}]
-		dev-python/Faker[${PYTHON_USEDEP}]
+		dev-python/faker[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)
 "

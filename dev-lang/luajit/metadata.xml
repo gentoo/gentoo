@@ -10,5 +10,6 @@
   </use>
   <upstream>
     <remote-id type="github">LuaJIT/LuaJIT</remote-id>
+    <remote-id type="cpe">cpe:/a:luajit:luajit</remote-id>
   </upstream>
 </pkgmetadata>

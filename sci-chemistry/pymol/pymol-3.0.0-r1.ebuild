@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_EXT=1
 
@@ -36,7 +36,7 @@ RDEPEND="
 	${DEPEND}
 	media-video/mpeg-tools
 	dev-python/pyopengl[${PYTHON_USEDEP}]
-	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
+	dev-python/pyqt5[opengl,${PYTHON_USEDEP}]
 	dev-python/pmw[${PYTHON_USEDEP}]
 	sci-chemistry/chemical-mime-data
 "

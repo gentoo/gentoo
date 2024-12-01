@@ -15,4 +15,7 @@
     <use>
         <flag name="system-mimalloc">Use system <pkg>dev-libs/mimalloc</pkg> instead of vendored library</flag>
     </use>
+    <upstream>
+        <remote-id type="github">solvespace/solvespace</remote-id>
+    </upstream>
 </pkgmetadata>

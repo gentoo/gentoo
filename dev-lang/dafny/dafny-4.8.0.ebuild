@@ -404,7 +404,7 @@ BDEPEND="
 		>=dev-lang/boogie-3.1.6
 		dev-go/go-tools
 		dev-lang/go
-		dev-python/OutputCheck
+		dev-python/outputcheck
 		dev-python/lit
 		dev-python/psutil
 		net-libs/nodejs[npm]

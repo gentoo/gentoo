@@ -4,10 +4,9 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-
 inherit cmake desktop lua-single pax-utils
 
-if [[ ${PV} == *9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 else
@@ -15,7 +14,7 @@ else
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-DESCRIPTION="A dynamic floating and tiling window manager"
+DESCRIPTION="Dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
 
 LICENSE="GPL-2"

@@ -199,11 +199,6 @@ pkg_setup() {
 
 	export LIBGIT2_NO_PKG_CONFIG=1 #749381
 	if tc-is-cross-compiler; then
-		export PKG_CONFIG_ALLOW_CROSS=1
-		export PKG_CONFIG_PATH="${ROOT}/usr/$(get_libdir)/pkgconfig"
-		export OPENSSL_INCLUDE_DIR="${ROOT}/usr/include"
-		export OPENSSL_LIB_DIR="${ROOT}/usr/$(get_libdir)"
-
 		use system-llvm && die "USE=system-llvm not allowed when cross-compiling"
 		local cross_llvm_target="$(llvm_tuple_to_target "${CBUILD}")"
 		use "llvm_targets_${cross_llvm_target}" || \
@@ -222,6 +217,13 @@ pkg_setup() {
 }
 
 src_configure() {
+	if tc-is-cross-compiler; then
+		export PKG_CONFIG_ALLOW_CROSS=1
+		export PKG_CONFIG_PATH="${ESYSROOT}/usr/$(get_libdir)/pkgconfig"
+		export OPENSSL_INCLUDE_DIR="${ESYSROOT}/usr/include"
+		export OPENSSL_LIB_DIR="${ESYSROOT}/usr/$(get_libdir)"
+	fi
+
 	filter-lto # https://bugs.gentoo.org/862109 https://bugs.gentoo.org/866231
 
 	local rust_target="" rust_targets="" arch_cflags
@@ -653,7 +655,44 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	# 943308 and friends; basically --keep-going can forget to unmerge old rust
+	# but the soft blocker allows us to install conflicting files.
+	# This results in duplicated .{rlib,so} files which confuses rustc and results in
+	# the need for manual intervention.
+	if has_version -b "dev-lang/rust:stable/$(ver_cut 1-2)"; then
+		# we need to find all .{rlib,so} files in the old rust lib directory
+		# and store them in an array for later use
+		readarray -d '' old_rust_libs < <(
+			find "${EROOT}/usr/lib/rust/${PV}/lib/rustlib" \
+			-type f \( -name '*.rlib' -o -name '*.so' \) -print0)
+		export old_rust_libs
+		if [[ ${#old_rust_libs[@]} -gt 0 ]]; then
+			einfo "Found old .rlib and .so files in the old rust lib directory"
+		else
+			die "Found no old .rlib and .so files but old rust version is installed. Bailing!"
+		fi
+	fi
+}
+
 pkg_postinst() {
+
+	if has_version -b "dev-lang/rust:stable/$(ver_cut 1-2)"; then
+		# Be _extra_ careful here as we're removing files from the live filesystem
+		local f
+		for f in "${old_rust_libs[@]}"; do
+			[[ -f ${f} ]] || die "old_rust_libs array contains non-existent file"
+			local base_name="${f%-*}"
+			local ext="${f##*.}"
+			local matching_files=("${base_name}"-*.${ext})
+			if [[ ${#matching_files[@]} -ne 2 ]]; then
+				die "Expected exactly two files matching ${base_name}-\*.rlib, but found ${#matching_files[@]}"
+			fi
+			einfo "Removing old .rlib file ${f}"
+			rm "${f}" || die
+		done
+	fi
+
 	eselect rust update
 
 	if has_version dev-debug/gdb || has_version dev-debug/lldb; then

@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="Cups filters"
 HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 SRC_URI="https://github.com/OpenPrinting/cups-filters/releases/download/${PV}/${P}.tar.xz"
@@ -33,6 +35,9 @@ BDEPEND="
 RESTRICT="test"
 
 src_configure() {
+	# https://github.com/OpenPrinting/cups-filters/issues/605 (bug #944074)
+	append-cflags -std=gnu17
+
 	local myeconfargs=(
 		--enable-imagefilters
 		--enable-driverless

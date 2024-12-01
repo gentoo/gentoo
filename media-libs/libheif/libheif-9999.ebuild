@@ -45,9 +45,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# https://github.com/strukturag/libheif/issues/1249
-PATCHES=( "${FILESDIR}"/${P}-prepend_DESTDIR_when_generating_heif-convert_symlink.patch )
-
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
 )

@@ -69,6 +69,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	sys-apps/which
 	virtual/pkgconfig
 	dynarec? ( dev-lang/nasm )
 	rust-plugin? ( ${RUST_DEPEND} )
@@ -80,7 +81,7 @@ PATCHES=(
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/RMG/Plugin/Input/libmupen64plus_input_gca.so"
-	rust_pkg_setup
+	use rust-plugin && rust_pkg_setup
 }
 
 src_unpack() {

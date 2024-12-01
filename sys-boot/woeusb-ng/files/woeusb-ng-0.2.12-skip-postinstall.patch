@@ -1,0 +1,13 @@
+Prevent installing files to hardcoded locations.
+
+There's an open PR to improve the packaging methods.
+https://github.com/WoeUSB/WoeUSB-ng/pull/79
+--- a/setup.py
++++ b/setup.py
+@@ -68,6 +68,5 @@ setup(
+     ],
+     cmdclass={
+         'develop': PostDevelopCommand,
+-        'install': PostInstallCommand
+     }
+ )

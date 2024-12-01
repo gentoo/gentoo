@@ -15,7 +15,7 @@ S="${WORKDIR}/jEdit"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 
 BDEPEND="
 	app-text/docbook-xsl-stylesheets:0

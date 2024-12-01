@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-djvu.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="amd64 arm ~riscv x86"
 	SRC_URI="https://pwmt.org/projects/zathura-djvu/download/${P}.tar.xz"
 fi
 
@@ -30,4 +30,5 @@ RDEPEND="app-text/djvu
 	x11-libs/cairo"
 
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	virtual/pkgconfig"

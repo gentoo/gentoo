@@ -38,7 +38,6 @@ DEPEND="
 	${CDEPEND}
 	app-alternatives/cpio
 	app-text/xmlto
-	$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	>=sys-devel/gettext-0.18.2
 
 	libvirt? ( dev-libs/libxml2 )
@@ -49,7 +48,10 @@ RDEPEND="
 	acct-group/stapsys
 	acct-group/stapusr
 "
-BDEPEND="test? ( dev-util/dejagnu )"
+BDEPEND="
+	$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
+	test? ( dev-util/dejagnu )
+"
 
 CONFIG_CHECK="~KPROBES ~RELAY ~DEBUG_FS"
 ERROR_KPROBES="${PN} requires support for KProbes Instrumentation (KPROBES) - this can be enabled in 'Instrumentation Support -> Kprobes'."

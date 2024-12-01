@@ -1,4 +1,4 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="gflags +libunwind llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
@@ -29,9 +29,16 @@ RDEPEND="gflags? ( dev-cpp/gflags:0=[${MULTILIB_USEDEP}] )
 	libunwind? (
 		llvm-libunwind? ( sys-libs/llvm-libunwind:0=[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:0=[${MULTILIB_USEDEP}] )
-	)"
+	)
+"
 DEPEND="${RDEPEND}
-	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"
+	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )
+"
+
+PATCHES=(
+	"${FILESDIR}/${P}-disable-symbolize-test.patch" # bug 863599
+	"${FILESDIR}/${P}-try-fix-logging-test.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

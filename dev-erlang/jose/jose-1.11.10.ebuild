@@ -16,7 +16,7 @@ S="${WORKDIR}/erlang-${P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc ~x86"
 
 DEPEND=">=dev-lang/erlang-19.0"
 RDEPEND="${DEPEND}"

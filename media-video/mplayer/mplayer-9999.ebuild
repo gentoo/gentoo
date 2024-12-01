@@ -125,10 +125,12 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	pnm? ( media-libs/netpbm )
 	pulseaudio? ( media-libs/libpulse )
-	rar? ( || (
+	rar? (
+		|| (
 			app-arch/unrar
 			app-arch/rar
-	) )
+		)
+	)
 	rtmp? ( media-video/rtmpdump )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl )
@@ -189,8 +191,13 @@ REQUIRED_USE="
 	vidix? ( X )
 	xinerama? ( X )
 	xscreensaver? ( X )
-	xv? ( X )"
+	xv? ( X )
+"
 RESTRICT="faac? ( bindist )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5_p20241125-c99.patch
+)
 
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
@@ -298,7 +305,6 @@ src_configure() {
 		--disable-libnut
 		--disable-libopus
 		--disable-svga --disable-svgalib_helper
-		--disable-xvmc
 		$(use_enable network networking)
 		$(use_enable joystick)
 	)

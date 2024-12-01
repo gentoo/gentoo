@@ -43,7 +43,6 @@ DEPEND="
 	${CDEPEND}
 	app-alternatives/cpio
 	app-text/xmlto
-	$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	>=sys-devel/gettext-0.18.2
 
 	libvirt? ( dev-libs/libxml2 )
@@ -56,6 +55,7 @@ RDEPEND="
 "
 # which: https://sourceware.org/PR32106
 BDEPEND="
+	$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	test? (
 		dev-util/dejagnu
 		|| (

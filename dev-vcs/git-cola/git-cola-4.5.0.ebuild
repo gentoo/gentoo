@@ -20,8 +20,8 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]
-		dev-python/QtPy[gui,network,${PYTHON_USEDEP}]
+		dev-python/pyqt5[${PYTHON_USEDEP},gui,widgets]
+		dev-python/qtpy[gui,network,${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 	')
 	dev-vcs/git
@@ -33,7 +33,7 @@ BDEPEND="
 		test? (
 			${VIRTUALX_DEPEND}
 			dev-python/pytest[\${PYTHON_USEDEP}]
-			dev-python/PyQt5[\${PYTHON_USEDEP},gui,widgets]
+			dev-python/pyqt5[\${PYTHON_USEDEP},gui,widgets]
 		)
 	")
 "

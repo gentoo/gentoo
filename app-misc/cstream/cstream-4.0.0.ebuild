@@ -11,7 +11,7 @@ SRC_URI="https://www.cons.org/cracauer/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-Fix-implicit-function-declaration.patch

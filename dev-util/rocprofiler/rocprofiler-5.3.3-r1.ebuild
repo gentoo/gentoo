@@ -22,7 +22,7 @@ RDEPEND="dev-libs/rocr-runtime
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	dev-python/cppheaderparser[${PYTHON_USEDEP}]
 	')
 "
 
@@ -34,7 +34,7 @@ PATCHES=( "${FILESDIR}/${PN}-4.3.0-nostrip.patch"
 		"${FILESDIR}/${PN}-5.3.3-remove-aql-in-cmake.patch" )
 
 python_check_deps() {
-	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/cppheaderparser[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

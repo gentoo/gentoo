@@ -3,14 +3,13 @@
 
 EAPI=8
 
-DESCRIPTION="A Cross platform Makefile tool"
+DESCRIPTION="Cross platform Makefile tool"
+HOMEPAGE="https://tmake.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/tmake/${P}.tar.bz2"
-HOMEPAGE="http://tmake.sourceforge.net"
 
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND=">=dev-lang/perl-5"
 

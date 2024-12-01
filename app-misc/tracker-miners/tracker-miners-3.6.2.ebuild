@@ -107,6 +107,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944218
+	append-cflags -std=gnu17
+
 	append-cflags -DTRACKER_DEBUG -DG_DISABLE_CAST_CHECKS
 
 	local media_extractor="none"

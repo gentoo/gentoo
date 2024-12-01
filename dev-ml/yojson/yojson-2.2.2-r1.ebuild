@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ocaml-community/${PN}/archive/${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="examples +ocamlopt test"
 RESTRICT="!test? ( test )"
 

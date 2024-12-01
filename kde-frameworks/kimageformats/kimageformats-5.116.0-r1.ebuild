@@ -13,7 +13,7 @@ DESCRIPTION="Framework providing additional format plugins for Qt's image I/O sy
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="avif eps heif jpegxl openexr raw"
 
 RDEPEND="

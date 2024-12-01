@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/motif/Motif%20${PV}%20Source%
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="examples jpeg +motif22-compatibility png static-libs unicode xft"
+IUSE="examples jpeg png static-libs unicode xft"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
@@ -54,7 +54,7 @@ src_prepare() {
 	filter-lto
 
 	# feel free to fix properly if you care
-	append-flags -fno-strict-aliasing
+	append-flags -std=gnu17 -fno-strict-aliasing
 
 	# for Solaris Xos_r.h :(
 	[[ ${CHOST} == *-solaris2.11 ]] \
@@ -78,9 +78,9 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--with-x \
+		--enable-motif22-compatibility \
 		--disable-printing \
 		$(use_enable static-libs static) \
-		$(use_enable motif22-compatibility) \
 		$(use_enable unicode utf8) \
 		$(use_enable xft) \
 		$(use_enable jpeg) \

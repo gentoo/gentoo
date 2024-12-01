@@ -34,8 +34,8 @@ RESTRICT="!test? ( test )"
 # [secure] extra is deprecated and slated for removal, we don't need it:
 # https://github.com/urllib3/urllib3/issues/2680
 RDEPEND="
-	>=dev-python/PySocks-1.5.8[${PYTHON_USEDEP}]
-	<dev-python/PySocks-2.0[${PYTHON_USEDEP}]
+	>=dev-python/pysocks-1.5.8[${PYTHON_USEDEP}]
+	<dev-python/pysocks-2.0[${PYTHON_USEDEP}]
 	brotli? ( >=dev-python/brotlicffi-0.8.0[${PYTHON_USEDEP}] )
 	http2? (
 		<dev-python/h2-5[${PYTHON_USEDEP}]

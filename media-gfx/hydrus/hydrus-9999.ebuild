@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="sqlite"
 
 DOCS_BUILDER=mkdocs
@@ -57,8 +57,8 @@ RDEPEND="
 		dev-python/service-identity[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 
-		dev-python/QtPy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
-		|| ( dev-python/QtPy[pyside2] dev-python/QtPy[pyside6] )
+		dev-python/qtpy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
+		|| ( dev-python/qtpy[pyside2] dev-python/qtpy[pyside6] )
 
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
 		media-video/ffmpeg
@@ -144,6 +144,6 @@ src_install() {
 pkg_postinst() {
 	optfeature "automatic port forwarding support" "net-libs/miniupnpc"
 	optfeature "memory compression in the client" "dev-python/lz4"
-	optfeature "SOCKS proxy support" "dev-python/requests[socks5]" "dev-python/PySocks"
+	optfeature "SOCKS proxy support" "dev-python/requests[socks5]" "dev-python/pysocks"
 	optfeature "bandwidth charts support" "dev-python/pyside2[charts]" "dev-python/pyside6[charts]"
 }

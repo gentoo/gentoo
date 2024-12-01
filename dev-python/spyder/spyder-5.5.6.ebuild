@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=dev-python/atomicwrites-1.2.0[${PYTHON_USEDEP}]
@@ -54,7 +54,7 @@ RDEPEND="
 	<dev-python/qtawesome-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.5.1[${PYTHON_USEDEP}]
 	<dev-python/qtconsole-5.6.0[${PYTHON_USEDEP}]
-	>=dev-python/QtPy-2.1.0[${PYTHON_USEDEP},pyqt5,svg,webengine]
+	>=dev-python/qtpy-2.1.0[${PYTHON_USEDEP},pyqt5,svg,webengine]
 	>=dev-python/rtree-0.9.7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-2.5.2[${PYTHON_USEDEP}]
@@ -77,7 +77,7 @@ RDEPEND="
 # 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 # 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 # 		dev-python/pyyaml[${PYTHON_USEDEP}]
-# 		dev-python/QtPy[${PYTHON_USEDEP},pyside2,pyqt5]
+# 		dev-python/qtpy[${PYTHON_USEDEP},pyside2,pyqt5]
 # 		dev-python/scipy[${PYTHON_USEDEP}]
 # 		dev-python/sympy[${PYTHON_USEDEP}]
 # 	)"

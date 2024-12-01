@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -32,6 +32,9 @@ src_prepare() {
 	# Upstream is aware but thinks this isn't a bug/problem in sharutils itself
 	# See http://lists.gnu.org/archive/html/bug-gnu-utils/2013-10/msg00011.html
 	append-cflags $(test-flags-CC -Wno-error=format-security)
+
+	# bug #943901
+	append-cflags -std=gnu17
 }
 
 src_configure() {

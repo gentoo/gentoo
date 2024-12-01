@@ -38,7 +38,7 @@ RDEPEND="
 	appindicator? ( dev-libs/libayatana-appindicator )
 "
 BDEPEND="
-	dev-python/Babel[${PYTHON_USEDEP}]
+	dev-python/babel[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 "
 

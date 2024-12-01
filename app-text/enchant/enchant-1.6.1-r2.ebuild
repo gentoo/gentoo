@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 MY_PV="${PV//./-}"
 DESCRIPTION="Spellchecker wrapping library"
 HOMEPAGE="https://github.com/rrthomas/enchant"
@@ -39,6 +41,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #932436
+	append-cflags -std=gnu89
+
 	local myconf=(
 		--datadir="${EPREFIX}"/usr/share/enchant-1
 		--disable-static

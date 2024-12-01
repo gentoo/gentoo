@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-python/aiohttp-3.9.3[${PYTHON_USEDEP}]
@@ -43,7 +43,7 @@ RDEPEND="
 	>=dev-python/pexpect-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
-	>=dev-python/PyGithub-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pygithub-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pylint-venv-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/python-lsp-black-2.0.0[${PYTHON_USEDEP}]
@@ -57,7 +57,7 @@ RDEPEND="
 	<dev-python/qtawesome-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.6.1[${PYTHON_USEDEP}]
 	<dev-python/qtconsole-5.7.0[${PYTHON_USEDEP}]
-	>=dev-python/QtPy-2.4.0[${PYTHON_USEDEP},quick,svg,webengine]
+	>=dev-python/qtpy-2.4.0[${PYTHON_USEDEP},quick,svg,webengine]
 	>=dev-python/rtree-0.9.7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-3.0.0[${PYTHON_USEDEP}]
@@ -83,7 +83,7 @@ RDEPEND="
 # 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 # 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 # 		dev-python/pyyaml[${PYTHON_USEDEP}]
-# 		dev-python/QtPy[${PYTHON_USEDEP}]
+# 		dev-python/qtpy[${PYTHON_USEDEP}]
 # 		dev-python/scipy[${PYTHON_USEDEP}]
 # 		dev-python/sympy[${PYTHON_USEDEP}]
 # 	)"

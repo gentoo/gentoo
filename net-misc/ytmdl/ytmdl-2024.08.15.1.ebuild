@@ -28,13 +28,13 @@ SLOT="0"
 
 RDEPEND="
 	>=net-misc/yt-dlp-2022.3.8.2[${PYTHON_USEDEP}]
-	dev-python/PySocks[${PYTHON_USEDEP}]
+	dev-python/pysocks[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/ffmpeg-python[${PYTHON_USEDEP}]
 	dev-python/itunespy[${PYTHON_USEDEP}]
 	dev-python/musicbrainzngs[${PYTHON_USEDEP}]
-	dev-python/pyDes[${PYTHON_USEDEP}]
+	dev-python/pydes[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]

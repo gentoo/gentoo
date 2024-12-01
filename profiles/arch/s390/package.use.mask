@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Christopher Byrne <salah.coronya@gmail.com> (2024-12-01)
+# requires dev-libs/hidapi to be keyworded
+dev-libs/libfido2 hidapi
+
+# Pacho Ramos <pacho@gentoo.org> (2024-11-28)
+# Needs gi-docgen
+dev-libs/glib doc
+
 # Hans de Graaff <graaff@gentoo.org> (2024-09-01)
 # Requires large parts of dev-ruby/rails to be keyworded
 dev-ruby/minitest-hooks test
@@ -244,8 +252,6 @@ app-editors/vim lua
 # not keyworded yet
 media-gfx/imagemagick raw
 dev-db/mariadb numa
-# not tested yet
-app-arch/rpm test
 # no ceph keyworded
 net-analyzer/rrdtool rados
 

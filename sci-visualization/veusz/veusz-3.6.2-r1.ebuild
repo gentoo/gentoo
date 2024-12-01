@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 qmake-utils virtualx xdg
 
@@ -18,7 +18,7 @@ IUSE="dbus hdf5"
 
 COMMON_DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/PyQt5[widgets,svg,printsupport,${PYTHON_USEDEP}]
+	dev-python/pyqt5[widgets,svg,printsupport,${PYTHON_USEDEP}]
 "
 RDEPEND="${COMMON_DEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )

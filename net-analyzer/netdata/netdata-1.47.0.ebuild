@@ -94,6 +94,10 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-dlib-global_optimization-add-template-argument-list.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=TRUE

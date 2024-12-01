@@ -139,6 +139,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944147
+	append-flags -std=gnu17
+
 	[[ ${CHOST} == i?86-* ]] && append-flags -fomit-frame-pointer #422519
 
 	local win32dir #197236

@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DESCRIPTION="A simple podcast aggregator, designed for cron"
-HOMEPAGE="http://podracer.sourceforge.net/"
+DESCRIPTION="Simple podcast aggregator, designed for cron"
+HOMEPAGE="https://podracer.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"

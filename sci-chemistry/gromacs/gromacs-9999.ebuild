@@ -26,7 +26,8 @@ else
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	# since 2022 arm support was dropped (but not arm64)
-	KEYWORDS="~amd64 -arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	# since 2025 x86-32 support was dropped
+	KEYWORDS="~amd64 -arm ~arm64 ~riscv -x86 ~amd64-linux -x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
@@ -39,7 +40,7 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hdf5 +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy hdf5 +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )

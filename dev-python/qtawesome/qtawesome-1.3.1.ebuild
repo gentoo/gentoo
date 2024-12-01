@@ -29,7 +29,7 @@ KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	media-fonts/fontawesome
-	dev-python/QtPy[gui,${PYTHON_USEDEP}]
+	dev-python/qtpy[gui,${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

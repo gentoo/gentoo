@@ -1,0 +1,21 @@
+--- msort-8.53.orig/configure.ac	2024-11-17 17:40:59.811316465 +0000
++++ msort-8.53/configure.ac	2024-11-17 17:44:22.697222141 +0000
+@@ -3,6 +3,8 @@
+ AM_CONFIG_HEADER([config.h])
+ AM_INIT_AUTOMAKE
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ AC_DEFUN([AC_C_LONG_LONG],
+ [AC_CACHE_CHECK(for long long int, ac_cv_c_long_long,
+ [if test "$GCC" = yes; then
+--- msort-8.53.orig/misc.c	2024-11-17 17:40:59.812316460 +0000
++++ msort-8.53/misc.c	2024-11-17 17:42:50.841717590 +0000
+@@ -419,7 +419,6 @@
+ OpenFile(char *file,char *mode,char *pgname)
+ {
+   FILE *fp;
+-  extern FILE *fopen();
+    
+   if((fp = fopen(file,mode)) != NULL) return fp;
+   else{

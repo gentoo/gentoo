@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_HANDBOOK="optional"
 KDE_ORG_NAME="konsole"
 KFMIN=5.106.0
 QTMIN=5.15.9
@@ -60,6 +59,7 @@ src_configure() {
 		-DBUILD_TESTING=OFF
 		-DENABLE_PLUGIN_SSHMANAGER=OFF
 		-DENABLE_PLUGIN_QUICKCOMMANDS=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON
 	)
 
 	ecm_src_configure
@@ -69,7 +69,7 @@ src_install() {
 	ecm_src_install
 
 	rm -r "${ED}"/{etc,usr/bin} \
-		"${ED}"/usr/share/{applications,doc,help,kconf_update,kglobalaccel,kio} \
+		"${ED}"/usr/share/{applications,doc,kconf_update,kglobalaccel,kio} \
 		"${ED}"/usr/share/{knsrcfiles,knotifications5,konsole,locale,qlogging-categories5,zsh} \
 		"${ED}"/usr/$(get_libdir)/kconf_update_bin || die
 }

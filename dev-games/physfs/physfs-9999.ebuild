@@ -9,8 +9,8 @@ DESCRIPTION="Abstraction layer for filesystem and archive access"
 HOMEPAGE="https://icculus.org/physfs/"
 
 if [[ ${PV} == *9999* ]]; then
-	EHG_REPO_URI="https://hg.icculus.org/icculus/physfs"
-	inherit mercurial
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/icculus/physfs.git"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~x86"
 	SRC_URI="https://icculus.org/physfs/downloads/${P}.tar.bz2"

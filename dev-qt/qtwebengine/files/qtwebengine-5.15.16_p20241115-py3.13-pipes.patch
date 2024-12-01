@@ -1,0 +1,21 @@
+diff --git a/src/3rdparty/chromium/build/android/gyp/util/build_utils.py b/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
+index 022980517..e3f82704a 100644
+--- a/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
++++ b/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
+@@ -12,7 +12,6 @@ import fnmatch
+ import json
+ import logging
+ import os
+-import pipes
+ import re
+ import shutil
+ import stat
+@@ -198,7 +197,7 @@ class CalledProcessError(Exception):
+     # A user should be able to simply copy and paste the command that failed
+     # into their shell.
+     copyable_command = '( cd {}; {} )'.format(os.path.abspath(self.cwd),
+-        ' '.join(map(pipes.quote, self.args)))
++                                              printed_cmd)
+     return 'Command failed: {}\n{}'.format(copyable_command, self.output)
+ 
+ 

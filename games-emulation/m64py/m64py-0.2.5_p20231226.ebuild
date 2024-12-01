@@ -28,8 +28,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="7z rar"
 
 RDEPEND="
-	dev-python/PyQt5[gui,opengl,widgets,${PYTHON_USEDEP}]
-	dev-python/PySDL2[${PYTHON_USEDEP}]
+	dev-python/pyqt5[gui,opengl,widgets,${PYTHON_USEDEP}]
+	dev-python/pysdl2[${PYTHON_USEDEP}]
 	media-libs/libsdl2[joystick,video]
 	>=games-emulation/mupen64plus-core-2.5:0/2-sdl2
 	7z? (

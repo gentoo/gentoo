@@ -42,8 +42,8 @@ RDEPEND="
 			dev-python/html5lib[${PYTHON_USEDEP}]
 			dev-python/pillow[${PYTHON_USEDEP}]
 			dev-python/regex[${PYTHON_USEDEP}]
-			dev-python/PyQt6[${PYTHON_USEDEP}]
-			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP}]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6-webengine[${PYTHON_USEDEP}]
 		')
 		$(python_gen_impl_dep 'tk')
 	)

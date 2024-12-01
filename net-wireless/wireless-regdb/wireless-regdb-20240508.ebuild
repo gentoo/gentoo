@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 REQUIRED_USE="kernel_linux"
 
 pkg_pretend() {
@@ -27,7 +27,7 @@ pkg_pretend() {
 				ewarn "  or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
 			fi
 			if ! linux_chkconfig_present CFG80211; then
-				ewarn "REGULARTORY DOMAIN PROBLEM:"
+				ewarn "REGULATORY DOMAIN PROBLEM:"
 				ewarn "  With CONFIG_CFG80211 unset, the driver(s) won't be able to load the regulatory.db from"
 				ewarn "  /lib/firmware, resulting in broken regulatory domain support. Please set CONFIG_CFG80211=m."
 			fi

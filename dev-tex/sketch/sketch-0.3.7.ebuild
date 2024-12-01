@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit edos2unix toolchain-funcs
+inherit edos2unix flag-o-matic toolchain-funcs
 
 DESCRIPTION="Produces drawings of two- or three-dimensional solid objects and scenes for TeX"
 HOMEPAGE="https://www.frontiernet.net/~eugene.ressler/"
@@ -24,6 +24,8 @@ src_prepare() {
 }
 
 src_compile() {
+	# bug #943829
+	append-cflags -std=gnu17
 	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
 }
 

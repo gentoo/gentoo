@@ -11,13 +11,13 @@ HOMEPAGE="https://github.com/houseroad/foxi/"
 SRC_URI="https://github.com/houseroad/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
 RESTRICT="test" # No test available
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch

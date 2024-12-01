@@ -26,24 +26,24 @@ RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
 	qt5? (
-		>=dev-python/PyQt5-5.15.5[gui,printsupport,widgets,${PYTHON_USEDEP}]
+		>=dev-python/pyqt5-5.15.5[gui,printsupport,widgets,${PYTHON_USEDEP}]
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 	)
 	qt6? (
-		dev-python/PyQt6[gui,printsupport,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,printsupport,widgets,${PYTHON_USEDEP}]
 		dev-qt/qtbase:6[gui,widgets]
 	)
 	~x11-libs/qscintilla-${PV}:=[qt5(+)?,qt6(-)?]
 "
 RDEPEND="${DEPEND}
-	qt5? ( >=dev-python/PyQt5-sip-12.9:=[${PYTHON_USEDEP}] )
-	qt6? ( >=dev-python/PyQt6-sip-13.5:=[${PYTHON_USEDEP}] )
+	qt5? ( >=dev-python/pyqt5-sip-12.9:=[${PYTHON_USEDEP}] )
+	qt6? ( >=dev-python/pyqt6-sip-13.5:=[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	>=dev-python/PyQt-builder-1.10[${PYTHON_USEDEP}]
+	>=dev-python/pyqt-builder-1.10[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.2[${PYTHON_USEDEP}]
 	qt5? ( dev-qt/qtcore:5 )
 	qt6? ( dev-qt/qtbase:6 )

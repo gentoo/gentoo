@@ -1,10 +1,10 @@
-# Copyright 2017-2023 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 EGO_PN=github.com/git-lfs/git-lfs
 # Update the ID as it's included in each build.
-COMMIT_ID="d06d6e9efd78ff4f958b072146ce167d87f60285"
+COMMIT_ID=""
 
 inherit go-module shell-completion
 
@@ -28,11 +28,11 @@ else
 	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
 	# xz -k -9eT0 --memlimit-decompress=256M $P-deps.tar
 	SRC_URI+=" https://files.holgersson.xyz/gentoo/distfiles/golang-pkg-deps/${P}-deps.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
+#KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 BDEPEND="

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11,12} )
+PYTHON_COMPAT=( python3_{10,11,12} )
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 inherit distutils-r1
@@ -26,8 +26,8 @@ CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
-	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
-	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.3.4[${PYTHON_USEDEP}]
+	!~dev-python/babel-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.10[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]

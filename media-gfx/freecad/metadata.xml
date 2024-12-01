@@ -14,6 +14,12 @@
 			Build the addon manager module for automatic handling of 3rd 
 			party addons
 		</flag>
+		<flag name="bim">
+			Build the BIM module and workbench
+		</flag>
+		<flag name="cam">
+			Build the CAM module and workbench
+		</flag>
 		<flag name="cloud">
 			Build the Cloud workbench, to access cloud providers (mostly
 			Amazon S3).
@@ -37,16 +43,12 @@
 			Build the IDF module to provide file exchange capabilities with
 			IDF files
 		</flag>
-		<flag name="image">
-			Build the image module and workbench for working with bitmap
-			images
-		</flag>
 		<flag name="inspection">
 			Build the inspection workbench which gives you specific tools
 			for examination of shapes (experimental)
 		</flag>
-		<flag name="material">
-			Build the material module and workbench to work with materials
+		<flag name="mesh">
+			Build the mesh module and workbench
 		</flag>
 		<flag name="netgen">
 			Build support for the netgen mesher through <pkg>media-gfx/netgen</pkg>.
@@ -55,31 +57,24 @@
 			Build the OpenSCAD module for interoperability with OpenSCAD 
 			and repairing Constructive Solid Geometry (CSG) history
 		</flag>
-		<flag name="part-design">
-			Build the part design module and workbench for build part shapes
-			from sketches
-		</flag>
-		<flag name="path"><!-- FIXME: auto-enable through robot? -->
-			Build the path module and workbench to procude G-Code instructions 
-			for CNC
-		</flag>
 		<flag name="pcl">
 			Use external <pkg>sci-libs/pcl</pkg> for point clouds support.
 		</flag>
 		<flag name="points">
 			Build the points module and workbench for working with point clouds
 		</flag>
-		<flag name="raytracing">
-			Build the raytracing module and workbench for raytracing and rendering
+		<flag name="reverse">
+			Build the reverse engineering module and workbench
 		</flag>
 		<flag name="robot">
 			Build the robot module and workbench for studying robot movements
 		</flag>
-		<flag name="show">
-			Build the show module, a helper module for visibility automation
-		</flag>
 		<flag name="smesh">
-			Build the Salome SMESH module
+			Build Salome SMESH
+		</flag>
+		<flag name="spacenav">
+			Add support for space navigator devices through
+			<pkg>dev-libs/libspnav</pkg>
 		</flag>
 		<flag name="surface">
 			Build the surface module and workbench
@@ -87,9 +82,6 @@
 		<flag name="techdraw">
 			Build the techdraw module and workbench, a more advanced and 
 			feature-rich successor of the drawing workbench
-		</flag>
-		<flag name="tux">
-			Build the Tux module
 		</flag>
 	</use>
 	<upstream>

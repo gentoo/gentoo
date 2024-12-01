@@ -14,14 +14,14 @@ HOMEPAGE="https://github.com/spyder-ide/spyder-notebook"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/notebook-7[${PYTHON_USEDEP}]
 	<dev-python/notebook-8[${PYTHON_USEDEP}]
 	dev-python/qdarkstyle[${PYTHON_USEDEP}]
-	dev-python/QtPy[${PYTHON_USEDEP}]
+	dev-python/qtpy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/spyder-5.4.3[${PYTHON_USEDEP}]
 	<dev-python/spyder-6[${PYTHON_USEDEP}]

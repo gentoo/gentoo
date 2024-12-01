@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit flag-o-matic
+
 DESCRIPTION="Replacement of the old unix crypt(1)"
 HOMEPAGE="https://mcrypt.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/mcrypt/${P}.tar.gz"
@@ -27,5 +29,8 @@ PATCHES=(
 )
 
 src_configure() {
+	# bug #943960
+	append-cflags -std=gnu17
+
 	econf $(use_enable nls)
 }

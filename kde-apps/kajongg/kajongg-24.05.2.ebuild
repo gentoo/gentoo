@@ -27,7 +27,7 @@ DEPEND="${PYTHON_DEPS}
 	>=kde-apps/libkdegames-${PVCUT}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	$(python_gen_cond_dep '
-		dev-python/QtPy[gui,svg,widgets,${PYTHON_USEDEP}]
+		dev-python/qtpy[gui,svg,widgets,${PYTHON_USEDEP}]
 		>=dev-python/twisted-16.6.0[${PYTHON_USEDEP}]
 	')
 "

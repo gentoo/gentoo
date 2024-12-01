@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/limitcpu/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"

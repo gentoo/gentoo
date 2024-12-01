@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz 
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="systemd xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

@@ -42,7 +42,7 @@ RDEPEND="
 	dev-python/pathvalidate[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
 	dev-python/pyaes[${PYTHON_USEDEP}]
-	dev-python/PySocks[${PYTHON_USEDEP}]
+	dev-python/pysocks[${PYTHON_USEDEP}]
 	dev-python/qrcode[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -52,7 +52,7 @@ RDEPEND="
 	amodem? ( dev-python/amodem[${PYTHON_USEDEP}] )
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	ncurses? ( dev-lang/python )
 	dev-libs/libsecp256k1

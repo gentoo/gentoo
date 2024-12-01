@@ -23,7 +23,7 @@ SRC_URI="https://github.com/facebook/wangle/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
@@ -57,6 +57,12 @@ src_test() {
 		# doesn't install.
 		SSLContextManagerTest
 	)
+
+	if use arm64; then
+		# This test fails on arm64.
+		# https://github.com/facebook/wangle/issues/241
+		CMAKE_SKIP_TESTS+=(TLSInMemoryTicketProcessorTest)
+	fi
 
 	cmake_src_test
 }

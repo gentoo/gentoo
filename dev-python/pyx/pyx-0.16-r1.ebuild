@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 #DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -33,7 +33,7 @@ BDEPEND="${RDEPEND}
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/sphinx[latex,${PYTHON_USEDEP}]
-			dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]
+			dev-python/sphinx-selective-exclude[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -43,7 +43,7 @@ S="${WORKDIR}"/${MY_P}
 python_check_deps() {
 	use doc || return 0
 	python_has_version "dev-python/sphinx[latex,${PYTHON_USEDEP}]" \
-		"dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]"
+		"dev-python/sphinx-selective-exclude[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

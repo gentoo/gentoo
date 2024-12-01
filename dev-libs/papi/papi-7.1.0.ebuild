@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}/src"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	>=dev-libs/libpfm-4.13.0[static-libs]

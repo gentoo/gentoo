@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,14 +22,8 @@ SLOT="0"
 IUSE="systemd"
 
 RDEPEND="
-	dev-libs/libdbusmenu-qt
-	dev-libs/quazip:0=[qt5(+)]
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-libs/quazip:0=[qt6(-)]
+	dev-qt/qtbase:6[dbus,gui,network,opengl,widgets]
 	|| (
 		media-libs/libpulse
 		media-sound/apulse[sdk]
@@ -38,12 +32,18 @@ RDEPEND="
 	x11-libs/libxcb:=
 	x11-libs/xcb-util-wm"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_UPDATER=yes
 		-DFORCE_INIT_SYSTEM=$(usex systemd systemd openrc)
+		# upstream has a knob that enables automagically using Qt6 with
+		# a Qt5 fallback
+		-DPREFER_QT6=yes
+		# but Qt itself has a more reliable knob for the
+		# default version to use
+		-DQT_DEFAULT_MAJOR_VERSION=6
 	)
 	cmake_src_configure
 }

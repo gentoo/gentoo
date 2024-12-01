@@ -19,7 +19,7 @@ RESTRICT="test" # needs coveralls
 
 BDEPEND=">=dev-python/docutils-0.13[${PYTHON_USEDEP}]" # needs rst2man to build manpage
 RDEPEND="${BDEPEND}
-	>=dev-python/Babel-2.6.0[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.3[${PYTHON_USEDEP}]
 	>=dev-python/doit-0.32[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.3.5[${PYTHON_USEDEP}]
@@ -28,7 +28,7 @@ RDEPEND="${BDEPEND}
 	>=dev-python/natsort-3.5.2[${PYTHON_USEDEP}]
 	>=dev-python/piexif-1.0.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-1.6[${PYTHON_USEDEP}]
-	>=dev-python/PyRSS2Gen-1.1[${PYTHON_USEDEP}]
+	>=dev-python/pyrss2gen-1.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]

@@ -1,0 +1,35 @@
+From aca455335ebcbc8818aacb75ffb7ef026ccc82e4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 2 Sep 2024 23:18:46 +0200
+Subject: [PATCH] Make all KF6 and Qt6 modules optional
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f1092bf8..4667f06d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ include(ECMDeprecationSettings)
+ 
+ include(KDEGitCommitHooks)
+ 
+-find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
++find_package(Qt6 ${QT_MIN_VERSION} CONFIG COMPONENTS
+     Widgets
+     Svg
+     DBus
+@@ -44,7 +44,7 @@ if (NOT Qt6Test_FOUND)
+     set(BUILD_TESTING OFF CACHE BOOL "Build the testing tree.")
+ endif()
+ 
+-find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
++find_package(KF6 ${KF6_MIN_VERSION} COMPONENTS
+     Config
+     DocTools
+     IconThemes
+-- 
+2.46.0
+

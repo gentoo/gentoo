@@ -48,6 +48,10 @@ src_prepare() {
 	use odbc && [[ -z $(type -P odbc_config) ]] && \
 		append-cppflags $($(tc-getPKG_CONFIG) --cflags libiodbc)
 
+	# Newer GNU standards fail to compile thanks to "bool", while using
+	# ISO C17 breaks thread safety... and also fails to compile.
+	append-cflags -std=gnu17
+
 	default
 
 	eautoreconf

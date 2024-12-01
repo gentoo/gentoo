@@ -84,6 +84,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943873
+	append-cflags -std=gnu17
 	append-flags -fno-strict-aliasing
 
 	if use guile; then

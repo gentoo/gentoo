@@ -97,6 +97,9 @@ src_configure() {
 	# This avoids a bunch of implicit decl. errors which only happen with USE=-Xaw3d(?!)
 	append-cppflags -DSTDC_HEADERS
 
+	# bug #943939
+	append-cflags -std=gnu17
+
 	local myeconfargs=(
 		--localstatedir=/var/state/${PN}
 		--with-module-dir="${EPREFIX}/usr/share/timidity"

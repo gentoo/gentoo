@@ -1,0 +1,13 @@
+diff --git a/build.rs b/build.rs
+index 9c5f169589aa..14f79d18d5f7 100644
+--- a/build.rs
++++ b/build.rs
+@@ -9,7 +9,7 @@ fn main() {
+     if pkg_config::Config::new()
+         .print_system_libs(false)
+         .cargo_metadata(true)
+-        .exactly_version("1.20")
++        .atleast_version("1.20")
+         .probe("libdeflate")
+         .is_ok()
+     {

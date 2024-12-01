@@ -126,6 +126,9 @@ src_configure() {
 	# Unsupported upstream, bug #884841
 	filter-lto
 
+	# bug #943857
+	append-cflags -std=gnu17
+
 	# bug #899952
 	append-lfs-flags
 

@@ -63,10 +63,8 @@ WINE_DLOPEN_DEPEND="
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 "
-# gcc: for -latomic with clang
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
-	sys-devel/gcc:*
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libdrm[video_cards_amdgpu?,${MULTILIB_USEDEP}]
@@ -102,6 +100,10 @@ RDEPEND="
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
+	|| (
+		sys-devel/gcc:*
+		sys-libs/compiler-rt:*[atomic-builtins(-)]
+	)
 	sys-kernel/linux-headers
 	x11-base/xorg-proto
 "
@@ -177,9 +179,16 @@ src_prepare() {
 		# drop as a quick fix for now which hopefully should be safe
 		sed -i '/MSVCRTFLAGS=/s/-mabi=ms//' configure.ac || die
 
-		# needed by Valve's fsync patches if using clang (undef atomic_load_8)
-		sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
-			-i dlls/{ntdll,winevulkan}/Makefile.in || die
+		# note: this is kind-of best effort and ignores llvm slots, rather
+		# than do LLVM_SLOT it may(?) be better to force atomic-builtins
+		# then could drop this altogether in the future
+		if [[ $(tc-get-c-rtlib) == compiler-rt ]] &&
+			has_version 'sys-libs/compiler-rt[-atomic-builtins(-)]'
+		then
+			# needed by Valve's fsync patches if using compiler-rt w/o atomics
+			sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
+				-i dlls/{ntdll,winevulkan}/Makefile.in || die
+		fi
 	fi
 
 	# ensure .desktop calls this variant + slot
@@ -266,6 +275,7 @@ src_configure() {
 		$(use_with xcomposite)
 		$(use_with xinerama)
 
+		--without-piper # unpackaged, for tts but unusable without steam
 		--without-vosk # unpackaged, file a bug if you need this
 	)
 

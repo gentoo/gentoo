@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="doc +elfutils +man plugins python"
 REQUIRED_USE="plugins? ( python ) python? ( ${PYTHON_REQUIRED_USE} )"
 

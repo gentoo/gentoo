@@ -104,6 +104,9 @@ export POWERSHELL_UPDATECHECK=0
 # Speeds up restore. Having this turned on is redundant with Portage manifests.
 # See also: https://github.com/NuGet/Home/issues/13062
 export DOTNET_NUGET_SIGNATURE_VERIFICATION=false
+# Disable the fancy terminal logger introduced in .NET 9.0.
+# It messes up the Portage log file output.
+export MSBUILDTERMINALLOGGER=off
 # Overwrite selected MSBuild properties ("-p:XYZ").
 export UseSharedCompilation=false
 

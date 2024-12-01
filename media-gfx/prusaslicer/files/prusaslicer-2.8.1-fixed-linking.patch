@@ -1,28 +1,3 @@
---- a/bundled_deps/admesh/CMakeLists.txt
-+++ b/bundled_deps/admesh/CMakeLists.txt
-@@ -13,4 +13,3 @@ add_library(admesh STATIC
- 
- target_include_directories(admesh PUBLIC .)
- target_link_libraries(admesh PRIVATE boost_headeronly localesutils)
--target_link_libraries(admesh PUBLIC Eigen3::Eigen)
---- a/src/clipper/CMakeLists.txt
-+++ b/src/clipper/CMakeLists.txt
-@@ -10,5 +10,4 @@ add_library(clipper STATIC
- )
- 
- target_link_libraries(clipper PRIVATE TBB::tbb TBB::tbbmalloc int128)
--target_link_libraries(clipper PUBLIC Eigen3::Eigen)
- target_include_directories(clipper PUBLIC .)
---- a/src/libslic3r/CMakeLists.txt
-+++ b/src/libslic3r/CMakeLists.txt
-@@ -629,7 +629,6 @@ target_link_libraries(libslic3r PRIVATE
-     int128
- )
- target_link_libraries(libslic3r PUBLIC
--    Eigen3::Eigen
-     semver
-     admesh
-     localesutils
 --- a/src/slic3r/CMakeLists.txt
 +++ b/src/slic3r/CMakeLists.txt
 @@ -383,6 +383,7 @@ set(SLIC3R_GUI_SOURCES

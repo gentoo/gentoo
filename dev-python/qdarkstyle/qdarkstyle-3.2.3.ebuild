@@ -21,13 +21,13 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
-	>=dev-python/QtPy-2.0.0[gui,${PYTHON_USEDEP}]
+	>=dev-python/qtpy-2.0.0[gui,${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? (
 		dev-python/qtsass[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
-		>=dev-python/QtPy-2.0.0[gui,testlib,${PYTHON_USEDEP}]
+		>=dev-python/qtpy-2.0.0[gui,testlib,${PYTHON_USEDEP}]
 	)
 "
 

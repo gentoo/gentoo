@@ -82,8 +82,12 @@ IUSE_TEST_BACKENDS=(
 
 IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} clang cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
-# Tests failing again because of compiler issues
-RESTRICT="!test? ( test )"
+REQUIRED_USE="
+	|| ( ${IUSE_TEST_BACKENDS[*]} )
+"
+
+# Tests failing again because of compiler issues; bugs #932646, #943401
+RESTRICT="test !test? ( test )"
 
 BDEPEND="
 	doc? (
@@ -140,10 +144,6 @@ DEPEND="
 		lapack? ( virtual/lapacke )
 		${TEST_BACKENDS}
 	)
-"
-
-REQUIRED_USE="
-	|| ( ${IUSE_TEST_BACKENDS[*]} )
 "
 
 PATCHES=(

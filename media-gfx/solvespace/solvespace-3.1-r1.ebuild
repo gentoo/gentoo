@@ -18,7 +18,7 @@ MIMALLOC_P="mimalloc-${MIMALLOC_PV}-${MIMALLOC_COMMIT}"
 inherit cmake toolchain-funcs xdg
 
 DESCRIPTION="Parametric 2d/3d CAD"
-HOMEPAGE="http://solvespace.com"
+HOMEPAGE="https://solvespace.com"
 SRC_URI="https://github.com/solvespace/solvespace/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/solvespace/libdxfrw/archive/${DXFRW_COMMIT}.tar.gz -> ${DXFRW_P}.tar.gz
 	!system-mimalloc? ( https://github.com/microsoft/mimalloc/archive/${MIMALLOC_COMMIT}.tar.gz -> ${MIMALLOC_P}.tar.gz )"
@@ -29,10 +29,10 @@ SRC_URI="https://github.com/solvespace/solvespace/archive/v${PV}.tar.gz -> ${P}.
 # + libdxfrw (GPL-2+)
 # + mimalloc (MIT)
 
-IUSE="openmp +system-mimalloc"
-KEYWORDS="amd64 ~arm64 ~x86"
 LICENSE="BitstreamVera GPL-2+ GPL-3+ !system-mimalloc? ( MIT )"
 SLOT="0"
+KEYWORDS="amd64 ~arm64 ~x86"
+IUSE="openmp +system-mimalloc"
 
 RDEPEND="
 	dev-cpp/atkmm:0

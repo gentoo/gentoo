@@ -15,7 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-lang/go-1.23.0"
+BDEPEND=">=dev-lang/go-1.23.2"
 
 # tests communicate with gitlab.com and require a personal access token
 RESTRICT="test"

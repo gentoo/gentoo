@@ -60,7 +60,7 @@ x11-wm/mutter screencast
 media-sound/abcde replaygain
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
-# dev-python/PyQt5 is not stable.
+# dev-python/pyqt5 is not stable.
 dev-python/matplotlib qt5 test
 net-print/hplip qt5
 dev-python/pyudev qt5

@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,8 @@ DESCRIPTION="Facebook GEneral Matrix Multiplication"
 HOMEPAGE="https://github.com/pytorch/FBGEMM"
 SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
+
+S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="BSD"
 SLOT="0"
@@ -35,8 +37,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 python_check_deps() {
 	if use doc; then

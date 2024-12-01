@@ -10,7 +10,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 GO_OPTIONAL=1
-inherit flag-o-matic go-module meson python-single-r1
+inherit flag-o-matic go-module meson optfeature python-single-r1
 
 DESCRIPTION="A multiple large virtual desktop window manager derived from fvwm"
 HOMEPAGE="https://www.fvwm.org/"
@@ -31,8 +31,10 @@ fi
 LICENSE="GPL-2+ FVWM
 	go? ( Apache-2.0 BSD MIT )"
 SLOT="0"
-IUSE="bidi +go netpbm nls perl readline svg"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="bidi +go nls readline svg"
+# Strictly speaking readline is not required for go,
+# but as most systems already have it installed we don't users to stub their toe on REQUIRED_USE
+REQUIRED_USE="${PYTHON_REQUIRED_USE} !go? ( readline )"
 
 DOCS=( NEWS )
 
@@ -50,54 +52,54 @@ fi
 BDEPEND="
 	virtual/pkgconfig
 	app-arch/unzip
-	go? ( >=dev-lang/go-1.14 )
+	go? ( >=dev-lang/go-1.20 )
 "
 
-if [[ ${FVWM3_DOCS_PREBUILT} == 0 ]]; then
+if [[ ${FVWM3_DOCS_PREBUILT} -ne 1 ]]; then
 	BDEPEND+="
 		dev-libs/libxslt
 		dev-ruby/asciidoctor
 	"
 fi
 
-RDEPEND="${PYTHON_DEPS}
-	${COMMON_DEPEND}
-	!x11-wm/fvwm
+COMMON_DEPEND="
 	dev-lang/perl
 	dev-libs/glib:2
 	dev-libs/libevent:=
 	media-libs/fontconfig
 	media-libs/libpng:=
-	sys-libs/zlib
+	x11-base/xorg-proto
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	x11-libs/libXau
 	x11-libs/libxcb
 	x11-libs/libXcursor
-	x11-libs/libXdmcp
 	x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libXft
+	x11-libs/libxkbcommon
 	x11-libs/libXpm
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	x11-misc/xlockmore
-	dev-lang/tk
-	dev-perl/Tk
-	>=dev-perl/X11-Protocol-0.56
+	x11-libs/xtrans
+	x11-libs/libXfixes
 	bidi? ( dev-libs/fribidi )
 	readline? (
-		sys-libs/ncurses:=
 		sys-libs/readline:=
 	)
 	svg? (
 		gnome-base/librsvg:2
 		x11-libs/cairo
-	)"
+	)
+"
 
-DEPEND="${COMMON_DEPEND}
-	x11-base/xorg-proto"
+RDEPEND="
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
+	!x11-wm/fvwm
+"
+
+DEPEND="${COMMON_DEPEND}"
 
 src_configure() {
 	# Recommended by upstream for release. Doesn't really matter for live ebuilds.
@@ -112,6 +114,7 @@ src_configure() {
 		"-Dpng=enabled"
 		"-Dsm=enabled"
 		"-Dxcursor=enabled"
+		"-Dxfixes=enabled"
 		"-Dxpm=enabled"
 		"-Dxrender=enabled"
 		$(meson_feature bidi)
@@ -126,7 +129,7 @@ src_configure() {
 		"-Ddocdir=${EPREFIX}/usr/share/doc/${PF}"
 	)
 
-	if [[ ${FVWM3_DOCS_PREBUILT} == 0 ]]; then
+	if [[ ${FVWM3_DOCS_PREBUILT} -ne 1 ]]; then
 		emesonargs+=(
 			"-Dhtmldoc=true"
 			"-Dmandoc=true"
@@ -171,4 +174,8 @@ pkg_postinst() {
 		ewarn "If you need FvwmPrompt or FvwmCommand, install ${PN} with USE=\"go\"."
 		ewarn "In that case, FvwmPrompt will replace FvwmConsole and provide the same functionality in a more flexible way."
 	fi
+
+	optfeature_header "Useful optional features:"
+	optfeature "Screen locking" x11-misc/xlockmore
+	optfeature "NetPBM support (used by FvwmScript-ScreenDump)" media-libs/netpbm
 }

@@ -13,9 +13,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc x86"
 
-RDEPEND="sys-libs/ncurses:0
-	net-libs/libpcap"
+RDEPEND="
+	sys-libs/ncurses:0
+	net-libs/libpcap
+"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}"-pkg-config.patch

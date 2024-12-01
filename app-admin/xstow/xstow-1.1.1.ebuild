@@ -9,7 +9,7 @@ SRC_URI="https://github.com/majorkingleo/${PN}/releases/download/${PV}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ncurses"
 
 DEPEND="ncurses? ( sys-libs/ncurses:= )"

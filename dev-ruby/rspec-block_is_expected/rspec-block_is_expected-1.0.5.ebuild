@@ -17,7 +17,7 @@ SRC_URI="https://github.com/pboling/rspec-block_is_expected/archive/refs/tags/v$
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 ruby_add_depend "test? ( >=dev-ruby/rspec-pending_for-0.1:0 )"

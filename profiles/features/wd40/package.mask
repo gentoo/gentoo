@@ -110,7 +110,7 @@ dev-python/pyghmi
 dev-python/omemo-dr
 net-im/transwhat
 dev-python/noiseprotocol
-dev-python/mitmproxy_wireguard
+dev-python/mitmproxy-wireguard
 dev-python/magic-wormhole
 dev-python/magic-wormhole-transit-relay
 dev-python/magic-wormhole-mailbox-server
@@ -122,7 +122,7 @@ dev-python/jupyter-kernel-test
 dev-python/jellyfish
 www-apps/novnc
 dev-python/jsonmerge
-dev-python/jinja2_pluralize
+dev-python/jinja2-pluralize
 dev-python/fido2
 dev-python/github3-py
 dev-python/google-auth-oauthlib
@@ -130,7 +130,7 @@ dev-python/elasticsearch
 dev-python/dns-lexicon
 dev-python/dissononce
 dev-python/consonance
-dev-python/PyGithub
+dev-python/pygithub
 dev-python/adblock
 dev-python/pysnmp
 dev-python/pysnmp-mibs
@@ -151,6 +151,7 @@ app-text/fblog
 app-shells/nushell
 app-misc/rpick
 app-misc/skim
+app-misc/anki
 app-i18n/yaskkserv2
 app-emulation/cloud-init
 app-forensics/yara-x

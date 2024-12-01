@@ -1,0 +1,10 @@
+--- OpenRCT2-0.4.16/src/openrct2/ride/RideRatings.cpp.orig	2024-11-10 09:48:55.356964603 +0100
++++ OpenRCT2-0.4.16/src/openrct2/ride/RideRatings.cpp	2024-11-10 09:50:34.049333283 +0100
+@@ -23,6 +23,7 @@
+ #include "../world/tile_element/PathElement.h"
+ #include "../world/tile_element/SurfaceElement.h"
++#include "../world/tile_element/TileElement.h"
+ #include "../world/tile_element/TrackElement.h"
+ #include "Ride.h"
+ #include "RideData.h"
+ #include "Station.h"

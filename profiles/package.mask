@@ -33,6 +33,134 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-12-01)
+# Superseded by dev-lang/pypy:2.7.
+# Removal on 2024-12-15.
+dev-python/pypy
+
+# Patrick Lauer <patrick@gentoo.org> (2024-12-01)
+# ROCm 6.2 builds but doesn't work at all for me
+>=dev-libs/roct-thunk-interface-6.2
+>=dev-libs/rocm-comgr-6.2
+>=dev-libs/rocm-device-libs-6.2
+>=dev-libs/rocr-runtime-6.2
+>=dev-libs/rocm-opencl-runtime-6.2
+>=dev-util/hipcc-6.2
+>=dev-util/hip-6.2
+
+
+# Florian Schmaus <flow@gentoo.org> (2024-11-29)
+# TeX Live 2024 is currently masked for testing.
+# Please report issues by creating a new bug report
+# at https://bugs.gentoo.org.
+>=app-text/dvisvgm-2024
+>=app-text/ps2pkm-1.8_p20240311
+>=app-text/texlive-2024
+>=app-text/texlive-core-2024
+>=dev-libs/kpathsea-6.4.0
+>=dev-libs/ptexenc-1.4.6
+dev-python/latexrestricted
+>=dev-tex/biber-2.20
+>=dev-tex/biblatex-3.20
+>=dev-tex/bibtexu-3.72_p20240311
+>=dev-tex/glossaries-4.55
+dev-tex/latex2pydata
+>=dev-tex/latexmk-4.85
+>=dev-tex/minted-3.4.0
+>=dev-tex/tex4ht-20240311
+>=dev-texlive/texlive-basic-2024
+>=dev-texlive/texlive-bibtexextra-2024
+>=dev-texlive/texlive-binextra-2024
+>=dev-texlive/texlive-context-2024
+>=dev-texlive/texlive-fontsextra-2024
+>=dev-texlive/texlive-fontsrecommended-2024
+>=dev-texlive/texlive-fontutils-2024
+>=dev-texlive/texlive-formatsextra-2024
+>=dev-texlive/texlive-games-2024
+>=dev-texlive/texlive-humanities-2024
+>=dev-texlive/texlive-langarabic-2024
+>=dev-texlive/texlive-langchinese-2024
+>=dev-texlive/texlive-langcjk-2024
+>=dev-texlive/texlive-langcyrillic-2024
+>=dev-texlive/texlive-langczechslovak-2024
+>=dev-texlive/texlive-langenglish-2024
+>=dev-texlive/texlive-langeuropean-2024
+>=dev-texlive/texlive-langfrench-2024
+>=dev-texlive/texlive-langgerman-2024
+>=dev-texlive/texlive-langgreek-2024
+>=dev-texlive/texlive-langitalian-2024
+>=dev-texlive/texlive-langjapanese-2024
+>=dev-texlive/texlive-langkorean-2024
+>=dev-texlive/texlive-langother-2024
+>=dev-texlive/texlive-langpolish-2024
+>=dev-texlive/texlive-langportuguese-2024
+>=dev-texlive/texlive-langspanish-2024
+>=dev-texlive/texlive-latex-2024
+>=dev-texlive/texlive-latexextra-2024
+>=dev-texlive/texlive-latexrecommended-2024
+>=dev-texlive/texlive-luatex-2024
+>=dev-texlive/texlive-mathscience-2024
+>=dev-texlive/texlive-metapost-2024
+>=dev-texlive/texlive-music-2024
+>=dev-texlive/texlive-pictures-2024
+>=dev-texlive/texlive-plaingeneric-2024
+>=dev-texlive/texlive-pstricks-2024
+>=dev-texlive/texlive-publishers-2024
+>=dev-texlive/texlive-xetex-2024
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-28)
+# Grave data loss bug. See also:
+# https://github.com/nicotine-plus/nicotine-plus/issues/3152
+=net-p2p/nicotine+-3.3.5
+
+# Takuya Wakazono <pastalian46@gmail.com> (2024-11-27)
+# Replaced by sys-boot/woeusb-ng, which has more recent upstream
+# activity and optional GUI support.
+# Removal on 2024-12-24.
+sys-boot/woeusb
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-11-25)
+# Several consumers are failing to build with this version, bugs 944380,
+# 944404, and others. Masking until we can figure out what's wrong.
+=dev-python/cysignals-1.12.0
+
+# Michał Górny <mgorny@gentoo.org> (2024-11-23)
+# Implementation detail of dev-python/pyproject-fmt.  New versions
+# integrate the Rust code into the main package.
+# Removal on 2024-12-07.  Bug #944782.
+dev-python/pyproject-fmt-rust
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
+# dev-python/pyside2 last-rites, no more revdeps
+# Removal on 2024-12-23
+dev-python/pyside2
+dev-python/pyside2-tools
+dev-python/shiboken2
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
+# NVIDIA dropped support for the 470.xx branch in September 2024[1].
+#
+# Users are free to unmask and keep using, but be warned it is very
+# likely to be affected by security issues[2] as NVIDIA does not
+# track nor fix these for this branch anymore.
+#
+# Gentoo will keep it packaged for as long as reasonably possible
+# (albeit masked) but no true support will be given nor patches
+# for newer kernels. It is recommended to use 6.6.x LTS kernels or
+# older (6.6.x will be supported until at least December 2026).
+#
+# Major issues will lead to removal without further warning, e.g.
+# if no usable kernels left in tree, or if broken with a newer Xorg.
+#
+# >> It is recommended to switch to nouveau[3] drivers (regardless
+#    of its worse performance), or ideally replace the hardware.
+#
+# [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
+#     https://nvidia.custhelp.com/app/answers/detail/a_id/5202
+# [2] https://bugs.gentoo.org/942031#c7
+# [3] https://wiki.gentoo.org/wiki/Nouveau
+x11-drivers/nvidia-drivers:0/470
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-18)
 # All classes were moved to >=x11-libs/qwt-6.2.0. No revdeps.
 # Removal on 2024-12-18.
@@ -117,7 +245,6 @@ dev-php/pecl-psr
 dev-php/pecl-raphf
 dev-php/pecl-timezonedb
 dev-php/pecl-translit
-dev-php/pecl-uuid
 dev-php/pecl-zmq
 dev-php/realpath_turbo
 dev-php/snuffleupagus
@@ -221,17 +348,6 @@ sci-chemistry/molden
 # slot instead. Removal on 2024-12-03.
 dev-ruby/pdf-reader:0
 
-# Hans de Graaff <graaff@gentoo.org> (2024-11-01)
-# Does not work with current versions of dependencies. ruby32-only
-# because of it. No release in two years. No reverse
-# dependencies. Removal on 2024-12-01.
-dev-ruby/typhoeus
-
-# Hans de Graaff <graaff@gentoo.org> (2024-11-01)
-# No longer compiles with modern C compilers, bug 881245. Last upstream
-# release 6 years ago. No reverse dependencies. Removal on 2024-12-01.
-dev-ruby/ruby-opengl
-
 # Michał Górny <mgorny@gentoo.org> (2024-10-29)
 # Unmaintained in Gentoo.  The latter is multiple versions behind.
 # Ebuilds without working tests.  The only revdep has its "doc" flag
@@ -239,46 +355,6 @@ dev-ruby/ruby-opengl
 # Removal on 2024-11-28.  Bug #942445.
 dev-python/mkdocs-ansible
 dev-python/mkdocs-macros-plugin
-
-# Marc Schiffbauer <mschiff@gentoo.org> (2024-10-28)
-# New style opencpn plugins depend on specific snapshots of
-# "opencpn-libs", a collection of bundled 3rd party libs or
-# forks thereof.
-# This makes it virtually impossible to package opencpn and
-# its plugins in a sane way.
-# Use the flatpak version instead.
-# removal on 2024-11-28.
-# Bug #928960, #933606
-sci-geosciences/opencpn
-sci-geosciences/opencpn-plugin-aisradar
-sci-geosciences/opencpn-plugin-climatology
-sci-geosciences/opencpn-plugin-dr
-sci-geosciences/opencpn-plugin-findit
-sci-geosciences/opencpn-plugin-gxradar
-sci-geosciences/opencpn-plugin-iacfleet
-sci-geosciences/opencpn-plugin-launcher
-sci-geosciences/opencpn-plugin-logbookkonni
-sci-geosciences/opencpn-plugin-objsearch
-sci-geosciences/opencpn-plugin-ocpn_draw
-sci-geosciences/opencpn-plugin-ocpndebugger
-sci-geosciences/opencpn-plugin-oesenc
-sci-geosciences/opencpn-plugin-otcurrent
-sci-geosciences/opencpn-plugin-polar
-sci-geosciences/opencpn-plugin-radar
-sci-geosciences/opencpn-plugin-route
-sci-geosciences/opencpn-plugin-squiddio
-sci-geosciences/opencpn-plugin-statusbar
-sci-geosciences/opencpn-plugin-watchdog
-sci-geosciences/opencpn-plugin-weather_routing
-sci-geosciences/opencpn-plugin-weatherfax
-sci-geosciences/opencpn-plugins-meta
-
-# Hans de Graaff <graaff@gentoo.org> (2024-10-27)
-# Obsolete slots without reverse dependencies. dev-util/cucumber will
-# use other slots when installed. Removal on 2024-11-27.
-dev-util/cucumber-gherkin:26
-dev-util/cucumber-messages:17
-dev-util/cucumber-messages:20
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-23)
 # Doesn't support latest Rust/Cargo ebuild format and standard. Confuses
@@ -353,8 +429,8 @@ app-i18n/kcm-fcitx
 # Masked for testing, and odds are (at this point) that 6.8.0 will
 # never be unmasked and will skip to 6.8.1 instead given the large
 # amount of regressions there's been..
-=dev-python/PyQt6-6.8.0_pre*
-=dev-python/PyQt6-WebEngine-6.8.0_pre*
+=dev-python/pyqt6-6.8.0_pre*
+=dev-python/pyqt6-webengine-6.8.0_pre*
 =dev-python/pyside6-6.8.0*
 =dev-python/pyside6-tools-6.8.0*
 =dev-python/shiboken6-6.8.0*
@@ -525,28 +601,6 @@ dev-ml/patience_diff:0/0.17
 dev-ml/ppx_js_style:0/0.17
 >=dev-ml/camlp4-5
 dev-ml/textutils_kernel:0/0.17
-
-# Michał Górny <mgorny@gentoo.org> (2024-06-08)
-# Prereleases of Xfce 4.20.  Masking upon popular request, due to
-# a large number of regressions in every new release.
->=dev-build/xfce4-dev-tools-4.19
->=xfce-base/exo-4.19
->=xfce-base/garcon-4.19
->=xfce-base/libxfce4ui-4.19
->=xfce-base/libxfce4util-4.19
->=xfce-base/libxfce4windowing-4.19.5
->=xfce-base/thunar-4.19
->=xfce-base/thunar-volman-4.19
->=xfce-base/tumbler-4.19
->=xfce-base/xfce4-appfinder-4.19
->=xfce-base/xfce4-meta-4.19
->=xfce-base/xfce4-panel-4.19
->=xfce-base/xfce4-power-manager-4.19
->=xfce-base/xfce4-session-4.19
->=xfce-base/xfce4-settings-4.19
->=xfce-base/xfconf-4.19
->=xfce-base/xfdesktop-4.19
->=xfce-base/xfwm4-4.19
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.

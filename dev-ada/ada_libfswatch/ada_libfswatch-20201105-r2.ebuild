@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,8 @@ HOMEPAGE="https://github.com/AdaCore/ada_libfswatch"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/${commitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${commitId}
+
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -22,8 +24,6 @@ RDEPEND="${ADA_DEPS}
 	sys-fs/fswatch"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
-
-S="${WORKDIR}"/${PN}-${commitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-link.patch

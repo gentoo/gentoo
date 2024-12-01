@@ -45,6 +45,8 @@ BDEPEND="app-alternatives/lex
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.87.06-configure-clang16.patch
+	"${FILESDIR}"/${PN}-22.87.06-squeeze-c23.patch
+	"${FILESDIR}"/${PN}-22.87.06-c23.patch
 )
 
 src_prepare() {

@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test-rust"
 
 RDEPEND="
@@ -26,6 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/ml-dtypes[${PYTHON_USEDEP}]
+		dev-python/tabulate[${PYTHON_USEDEP}]
 		test-rust? (
 			dev-python/nbval[${PYTHON_USEDEP}]
 		)

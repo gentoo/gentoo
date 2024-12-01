@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
 	if [[ ${PV} != *_beta* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm64 ~riscv x86"
 	fi
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi
@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-python/pyelftools-0.24[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pyserial-2.7[${PYTHON_USEDEP}]
-	dev-python/PySocks[${PYTHON_USEDEP}]
+	dev-python/pysocks[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.0[${PYTHON_USEDEP}]
 	dev-python/rpyc[${PYTHON_USEDEP}]

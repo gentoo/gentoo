@@ -19,11 +19,11 @@ IUSE="acoustid quodlibet"
 
 RDEPEND="
 	>=dev-python/configobj-5.0.8[${PYTHON_USEDEP}]
-	>=dev-python/Levenshtein-0.25.1[${PYTHON_USEDEP}]
+	>=dev-python/levenshtein-0.25.1[${PYTHON_USEDEP}]
 	>=dev-python/lxml-5.2.2[${PYTHON_USEDEP}]
 	acoustid? ( >=dev-python/pyacoustid-1.3.0[${PYTHON_USEDEP}] )
 	>=dev-python/pyparsing-3.1.2[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.15.10[${PYTHON_USEDEP},svg]
+	>=dev-python/pyqt5-5.15.10[${PYTHON_USEDEP},svg]
 	>=dev-python/unidecode-1.3.8[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.47.0[${PYTHON_USEDEP}]
 	quodlibet? ( >=media-sound/quodlibet-4.4.0[${PYTHON_USEDEP}] )

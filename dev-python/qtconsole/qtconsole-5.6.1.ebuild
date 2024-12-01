@@ -27,13 +27,13 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.2.2_p1[${PYTHON_USEDEP}]
-	>=dev-python/QtPy-2.4.0[${PYTHON_USEDEP},gui,printsupport,svg]
+	>=dev-python/qtpy-2.4.0[${PYTHON_USEDEP},gui,printsupport,svg]
 "
 BDEPEND="
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
-		dev-python/QtPy[${PYTHON_USEDEP},svg,testlib]
+		dev-python/qtpy[${PYTHON_USEDEP},svg,testlib]
 	)
 "
 
@@ -55,7 +55,7 @@ python_test() {
 	)
 	local -x QT_API
 	for QT_API in pyqt5 pyqt6 pyside2 pyside6; do
-		if has_version "dev-python/QtPy[${QT_API}]"; then
+		if has_version "dev-python/qtpy[${QT_API}]"; then
 			local -x PYTEST_QT_API=${QT_API}
 			einfo "Testing with ${QT_API}"
 			nonfatal epytest ||

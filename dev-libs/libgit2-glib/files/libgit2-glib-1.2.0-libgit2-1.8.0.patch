@@ -1,0 +1,54 @@
+https://gitlab.gnome.org/GNOME/libgit2-glib/-/merge_requests/40 (modified to drop const changes, dep increase)
+
+From a76fdf96c3af9ce9d21a3985c4be8a1aa6eea661 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Fri, 5 Apr 2024 10:28:16 +0200
+Subject: [PATCH] build: Fix build against, and require, libgit2 1.8.0
+
+---
+ libgit2-glib/ggit-clone-options.c        | 1 +
+ libgit2-glib/ggit-cred-ssh-interactive.c | 2 +-
+ libgit2-glib/ggit-remote-callbacks.h     | 1 +
+ libgit2-glib/ggit-repository.c           | 4 ++--
+ libgit2-glib/ggit-types.h                | 3 ++-
+ meson.build                              | 2 +-
+ 6 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/libgit2-glib/ggit-clone-options.c b/libgit2-glib/ggit-clone-options.c
+index b47fdb1..30c7d86 100644
+--- a/libgit2-glib/ggit-clone-options.c
++++ b/libgit2-glib/ggit-clone-options.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include <git2.h>
++#include <git2/sys/errors.h>
+ #include <gio/gio.h>
+ 
+ #include "ggit-clone-options.h"
+diff --git a/libgit2-glib/ggit-remote-callbacks.h b/libgit2-glib/ggit-remote-callbacks.h
+index 3005ff4..2340712 100644
+--- a/libgit2-glib/ggit-remote-callbacks.h
++++ b/libgit2-glib/ggit-remote-callbacks.h
+@@ -24,6 +24,7 @@
+ 
+ #include <glib-object.h>
+ #include <git2.h>
++#include <git2/sys/errors.h>
+ #include <libgit2-glib/ggit-cred.h>
+ 
+ G_BEGIN_DECLS
+diff --git a/libgit2-glib/ggit-types.h b/libgit2-glib/ggit-types.h
+index 7e28975..2a2ed99 100644
+--- a/libgit2-glib/ggit-types.h
++++ b/libgit2-glib/ggit-types.h
+@@ -355,7 +355,8 @@ typedef enum
+ 	GGIT_CONFIG_LEVEL_XDG         = 3,
+ 	GGIT_CONFIG_LEVEL_GLOBAL      = 4,
+ 	GGIT_CONFIG_LEVEL_LOCAL       = 5,
+-	GGIT_CONFIG_LEVEL_APP         = 6,
++	GGIT_CONFIG_LEVEL_WORKTREE    = 6,
++	GGIT_CONFIG_LEVEL_APP         = 7,
+ 	GGIT_CONFIG_LEVEL_HIGHEST     = -1
+ } GgitConfigLevel;
+ 

@@ -1,0 +1,20 @@
+diff --git a/src/lib-mpi/compat/mpich.h b/src/lib-mpi/compat/mpich.h
+index 2cd50c1..3ea9510 100644
+--- a/src/lib-mpi/compat/mpich.h
++++ b/src/lib-mpi/compat/mpich.h
+@@ -123,7 +123,6 @@ static int PyMPI_MPICH_MPI_Reduce_c(const void *sendbuf, void *recvbuf,
+ 
+ /* -------------------------------------------------------------------------- */
+ 
+-#if defined(CIBUILDWHEEL)
+ 
+ #define PyMPI_MPICH_CALL_WEAK_SYMBOL(function, ...) \
+   if (function) return function(__VA_ARGS__); \
+@@ -159,7 +158,6 @@ static int PyMPI_MPICH_MPI_Status_f2c(const MPI_Fint *fs, MPI_Status *cs)
+ { PyMPI_MPICH_CALL_WEAK_SYMBOL(MPI_Status_f2c, fs, cs); }
+ #define MPI_Status_f2c PyMPI_MPICH_MPI_Status_f2c
+ 
+-#endif
+ 
+ /* -------------------------------------------------------------------------- */
+ 

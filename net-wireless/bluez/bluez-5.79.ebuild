@@ -73,6 +73,9 @@ PATCHES=(
 	# https://bugs.gentoo.org/928365
 	# https://github.com/bluez/bluez/issues/726
 	"${FILESDIR}"/${PN}-disable-test-vcp.patch
+
+	# bug #944059
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 pkg_setup() {

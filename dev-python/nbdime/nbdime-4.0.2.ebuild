@@ -21,7 +21,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/GitPython[${PYTHON_USEDEP}]
+	dev-python/gitpython[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/jupyter-server[${PYTHON_USEDEP}]
 	dev-python/jupyter-server-mathjax[${PYTHON_USEDEP}]

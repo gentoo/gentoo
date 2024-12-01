@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~mips ppc ~s390 sparc x86"
 
 DEPEND="net-libs/liblockfile"
 RDEPEND="${DEPEND}"

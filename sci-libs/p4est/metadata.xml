@@ -17,7 +17,6 @@ processor cores.
 	</longdescription>
 	<use>
 		<flag name="vtk-binary">Enable binary vtk output. If disabled vtk files will be written in ASCII text format.</flag>
-		<flag name="romio">Build with support for the ROMIO MPI-IO component</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">cburstedde/libsc</remote-id>

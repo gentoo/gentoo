@@ -13,10 +13,8 @@ HOMEPAGE="https://pypi.org/project/sphinx-copybutton/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/sphinx-6.0[${PYTHON_USEDEP}]
 "
-
-distutils_enable_tests pytest

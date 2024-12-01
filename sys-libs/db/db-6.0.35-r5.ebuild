@@ -107,6 +107,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943726
+	append-cflags -std=gnu17
 	# Force bfd before calling multilib_toolchain_setup
 	tc-ld-force-bfd #470634 #729510
 	multilib-minimal_src_configure

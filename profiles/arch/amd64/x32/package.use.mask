@@ -55,6 +55,7 @@ media-libs/libva-intel-driver hybrid
 # dev-qt/qtwebengine requires net-libs/nodejs, plus mask all
 # reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
+app-misc/anki gui
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 games-util/lgogdownloader gui
@@ -95,7 +96,7 @@ dev-ruby/tilt test
 net-analyzer/netdata nodejs
 www-apps/jekyll test
 www-apps/xpra-html5 minify
-dev-python/QtPy test
+dev-python/qtpy test
 
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32 (bug #932192).

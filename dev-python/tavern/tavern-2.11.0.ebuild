@@ -38,7 +38,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/colorlog[${PYTHON_USEDEP}]
-		dev-python/Faker[${PYTHON_USEDEP}]
+		dev-python/faker[${PYTHON_USEDEP}]
 	)
 "
 

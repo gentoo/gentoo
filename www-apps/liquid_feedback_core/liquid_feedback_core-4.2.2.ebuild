@@ -12,6 +12,8 @@ HOMEPAGE="https://www.public-software-group.org/liquid_feedback"
 SRC_URI="https://www.public-software-group.org/pub/projects/liquid_feedback/backend/v${PV}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~tupone/distfiles/${MY_P}.tar.gz"
 
+S=${WORKDIR}/${MY_P}
+
 LICENSE="HPND CC-BY-2.5"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -20,8 +22,6 @@ DEPEND="dev-db/postgresql:="
 RDEPEND="${DEPEND}
 	acct-user/apache
 	dev-db/pgLatLon"
-
-S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.4-gentoo.patch

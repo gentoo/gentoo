@@ -109,6 +109,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944075
+	append-cflags -std=gnu17
+
 	# /usr/include/db.h is always db-1 on FreeBSD
 	# so include the right dir in CPPFLAGS
 	use berkdb && append-cppflags "-I$(db_includedir)"

@@ -31,6 +31,7 @@ BDEPEND="$(vala_depend)
 	')
 	>=dev-build/meson-1.3.2
 	virtual/pkgconfig
+	sys-apps/hwdata
 	gtk-doc? (
 		$(python_gen_cond_dep '
 			>=dev-python/markdown-3.2[${PYTHON_USEDEP}]

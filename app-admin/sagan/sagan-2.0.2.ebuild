@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-v-2-0.2/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="geoip +libdnet mysql redis +pcap smtp"
 
 BDEPEND="virtual/pkgconfig"

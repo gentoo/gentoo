@@ -1,0 +1,20 @@
+https://github.com/tavianator/bfs/commit/28c2b06a0477d2c84b7229d4e54056b1ec44ac36
+
+From 28c2b06a0477d2c84b7229d4e54056b1ec44ac36 Mon Sep 17 00:00:00 2001
+From: Tavian Barnes <tavianator@tavianator.com>
+Date: Mon, 11 Nov 2024 15:51:07 -0500
+Subject: [PATCH] color: Squelch a -Wmaybe-uninitialized warning on non-LTO
+ builds
+
+--- a/src/color.c
++++ b/src/color.c
+@@ -975,7 +975,7 @@ static const struct esc_seq *file_color(const struct colors *colors, const struc
+ 		goto error;
+ 	}
+ 
+-	const struct bfs_stat *statbuf;
++	const struct bfs_stat *statbuf = NULL;
+ 	const struct esc_seq *color = NULL;
+ 
+ 	switch (type) {
+

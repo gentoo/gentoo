@@ -1,0 +1,20 @@
+HAVE_STDARG_H isn't defined for readline consumers externally so we always
+end up using the ancient non-prototypes. Fix that as all compilers we care
+about since forever in Gentoo will support this path.
+
+This in particular shows up with rl_message in consumers:
+https://bugs.gentoo.org/943820
+https://bugs.gentoo.org/944059
+https://bugs.gentoo.org/944300
+https://bugs.gentoo.org/944344
+--- a/rlstdc.h
++++ b/rlstdc.h
+@@ -44,7 +44,7 @@
+ 
+ /* Moved from config.h.in because readline.h:rl_message depends on these
+    defines. */
+-#if defined (__STDC__) && defined (HAVE_STDARG_H)
++#if defined (__STDC__)
+ #  define PREFER_STDARG
+ #  define USE_VARARGS
+ #else

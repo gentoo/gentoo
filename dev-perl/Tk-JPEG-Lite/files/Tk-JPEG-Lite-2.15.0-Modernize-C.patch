@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/883707
+diff --git a/imgJPEG.c b/imgJPEG.c
+index cb62e40..4ca80b5 100644
+--- a/imgJPEG.c
++++ b/imgJPEG.c
+@@ -118,7 +118,7 @@ static int	ChnWriteJPEG _ANSI_ARGS_((Tcl_Interp *interp,
+ 		    char *fileName, Tcl_Obj *format,
+ 		    Tk_PhotoImageBlock *blockPtr));
+ static int	StringWriteJPEG _ANSI_ARGS_((Tcl_Interp *interp,
+-		    Tcl_DString *dataPtr, Tcl_Obj *format,
++		    Tcl_Obj *format,
+ 		    Tk_PhotoImageBlock *blockPtr));
+ 
+ Tk_PhotoImageFormat imgFmtJPEG = {
+@@ -970,7 +970,7 @@ CommonReadJPEG(interp, cinfo, format, imageHandle, destX, destY,
+     int srcX, srcY;		/* Coordinates of top-left pixel to be used
+ 				 * in image being read. */
+ {
+-    static char *jpegReadOptions[] = {"-fast", "-grayscale", NULL};
++    static const char *jpegReadOptions[] = {"-fast", "-grayscale", NULL};
+     int fileWidth, fileHeight, stopY, curY, outY, outWidth, outHeight;
+     myblock bl;
+ #define block bl.ck
+@@ -1262,7 +1262,7 @@ CommonWriteJPEG(interp, cinfo, format, blockPtr)
+     Tcl_Obj *format;
+     Tk_PhotoImageBlock *blockPtr;
+ {
+-    static char *jpegWriteOptions[] = {"-grayscale", "-optimize",
++    static const char *jpegWriteOptions[] = {"-grayscale", "-optimize",
+ 	"-progressive", "-quality", "-smooth", NULL};
+     JSAMPROW row_pointer[1];	/* pointer to original data scanlines */
+     JSAMPARRAY buffer;		/* Intermediate row buffer */

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,11 @@ BDEPEND="
 
 S="${WORKDIR}/${PN}"
 
-PATCHES=( "${WORKDIR}/${P}.patch" )
+PATCHES=(
+	"${WORKDIR}/${P}.patch"
+	"${FILESDIR}/${PN}-1.0_p20200924-Use-pkgconf-for-libgcrypt.patch"
+	"${FILESDIR}/${PN}-1.0_p20200924-fix-loff_t-for-musl.patch"
+	)
 
 src_prepare() {
 	default

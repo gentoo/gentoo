@@ -377,6 +377,7 @@ texlive-module_src_install() {
 				ctangle.1
 				ctie.1
 				ctwill.1
+				ctwill-proofsort.1
 				ctwill-refsort.1
 				ctwill-twinx.1
 				cweave.1
@@ -506,6 +507,7 @@ texlive-module_src_install() {
 				ttf2afm.1
 				ttfdump.1
 				twill.1
+				twill-refsort.1
 				upbibtex.1
 				updmap.1
 				updmap.cfg.5

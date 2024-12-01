@@ -33,4 +33,7 @@
 		<flag name="wad">Enable Doom WAD archive support</flag>
 		<flag name="qpak">Enable Quake I/II QPAK archive support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">icculus/physfs</remote-id>
+	</upstream>
 </pkgmetadata>

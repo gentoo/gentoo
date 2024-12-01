@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="ssl test"
 
 RDEPEND="
@@ -39,7 +39,11 @@ BDEPEND="
 		dev-python/objgraph[${PYTHON_USEDEP}]
 		dev-python/path[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
-		dev-python/pytest-services[${PYTHON_USEDEP}]
+		!sparc? (
+			net-misc/memcached
+			dev-python/pylibmc[${PYTHON_USEDEP}]
+			dev-python/pytest-services[${PYTHON_USEDEP}]
+		)
 	)
 "
 
@@ -56,11 +60,19 @@ python_prepare_all() {
 
 python_test() {
 	local EPYTEST_DESELECT=()
-	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
-		# broken by changes in traceback output
-		cherrypy/test/test_request_obj.py::RequestObjectTests::testErrorHandling
-		cherrypy/test/test_tools.py::ToolTests::testHookErrors
-	)
+	local opts=()
 
-	epytest
+	# These tests are gracefully skipped when pylibmc is missing but not
+	# if pytest-services is missing -- even though that's the only test
+	# using these fixtures.
+	if ! has_version "dev-python/pytest-services[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			cherrypy/test/test_session.py::MemcachedSessionTest
+		)
+	else
+		opts+=( -p pytest-services )
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest "${opts[@]}"
 }

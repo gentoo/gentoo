@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake prefix python-any-r1
 
@@ -23,7 +23,7 @@ RDEPEND="dev-libs/rocr-runtime:${SLOT}
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	dev-python/cppheaderparser[${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]
 	')
 "
@@ -38,7 +38,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" \
+	python_has_version "dev-python/cppheaderparser[${PYTHON_USEDEP}]" \
 		"dev-python/ply[${PYTHON_USEDEP}]"
 }
 

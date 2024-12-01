@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	dev-python/Levenshtein[${PYTHON_USEDEP}]
+	dev-python/levenshtein[${PYTHON_USEDEP}]
 "
 # pycodestyle imported unconditionally in the only test file, sigh
 BDEPEND="

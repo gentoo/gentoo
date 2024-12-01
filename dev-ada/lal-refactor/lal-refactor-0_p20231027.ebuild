@@ -13,6 +13,8 @@ HOMEPAGE="https://github.com/AdaCore/lal-refactor"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/${commitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${commitId}
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -23,8 +25,6 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 RDEPEND="${ADADEPS}
 	dev-ada/libadalang-tools[${ADA_USEDEP},shared?,static-libs?,static-pic?]"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
-
-S="${WORKDIR}"/${PN}-${commitId}
 
 src_compile() {
 	build () {

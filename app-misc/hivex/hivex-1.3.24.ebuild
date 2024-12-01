@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="ocaml +perl python readline ruby test"
 
 RDEPEND="

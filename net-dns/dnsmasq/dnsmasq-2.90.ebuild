@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit toolchain-funcs lua-single systemd
+inherit flag-o-matic toolchain-funcs lua-single systemd
 
 DESCRIPTION="Small forwarding DNS server"
 HOMEPAGE="https://thekelleys.org.uk/dnsmasq/doc.html"
@@ -114,6 +114,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2024q4/017855.html (bug #945183)
+	append-cflags -std=gnu17
+
 	COPTS=(
 		$(use_have -n auth-dns auth)
 		$(use_have conntrack)

@@ -25,7 +25,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND="
 	app-text/poppler[qt5]
-	dev-python/PyQt5[${PYTHON_USEDEP}]
+	dev-python/pyqt5[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}

@@ -56,8 +56,8 @@ OPTIONAL_DEPEND="
 	)
 	X? (
 		|| (
-			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
-			>=dev-python/QtPy-2.2.0[${PYTHON_USEDEP}]
+			>=dev-python/pyqt5-5.15.6[${PYTHON_USEDEP}]
+			>=dev-python/qtpy-2.2.0[${PYTHON_USEDEP}]
 			x11-misc/xclip
 			x11-misc/xsel
 		)
@@ -226,5 +226,5 @@ pkg_postinst() {
 	optfeature "Needed for parts of pandas.stats" dev-python/statsmodels
 	optfeature "SQL database support" ">=dev-python/sqlalchemy-1.4.36"
 	optfeature "miscellaneous statistical functions" dev-python/scipy
-	optfeature "necessary to use pandas.io.clipboard.read_clipboard support" dev-python/PyQt5 dev-python/QtPy dev-python/pygtk x11-misc/xclip x11-misc/xsel
+	optfeature "necessary to use pandas.io.clipboard.read_clipboard support" dev-python/pyqt5 dev-python/qtpy dev-python/pygtk x11-misc/xclip x11-misc/xsel
 }

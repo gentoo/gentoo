@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 BDEPEND="
 	test? (
@@ -34,11 +34,6 @@ BDEPEND="
 		>=dev-python/sqlalchemy-1.4[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="
-	!!dev-python/contextvars
-	!!dev-python/gevent
-"
-
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
 

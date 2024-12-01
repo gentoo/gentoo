@@ -1,10 +1,9 @@
 --- a/src/Tools/SubWCRev.py
 +++ b/src/Tools/SubWCRev.py
-@@ -509,12 +509,6 @@ def main():
-             bindir = a
+@@ -511,11 +511,6 @@ def main():
  
      vcs = [
--        GitControl(),
+         GitControl(),
 -        DebianGitHub(),
 -        BazaarControl(),
 -        Subversion(),

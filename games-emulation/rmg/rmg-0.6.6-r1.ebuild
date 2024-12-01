@@ -27,7 +27,7 @@ CRATES="
 	winapi@0.3.9
 "
 
-inherit cargo cmake flag-o-matic xdg
+inherit cargo cmake flag-o-matic toolchain-funcs xdg
 
 MY_PN="${PN^^}"
 MY_P="${MY_PN}-${PV}"
@@ -76,6 +76,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.6-parallel-rdp-standalone-musl.patch
+	# Use pkg-config(1) for SDL2 and don't depend on which(1)
+	"${FILESDIR}"/${P}-mupen64plus-core-sdl-pkgconfig.patch
+	# https://bugs.gentoo.org/941889
+	"${FILESDIR}"/${P}-mupen64plus-input-raphnetraw-pkgconfig.patch
 )
 
 pkg_setup() {
@@ -125,6 +129,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local mycmakeargs=(

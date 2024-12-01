@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/spyder-ide/spyder-terminal"
 
 LICENSE="MIT BSD Apache-2.0 BSD-2 ISC CC-BY-4.0 ZLIB WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/coloredlogs[${PYTHON_USEDEP}]

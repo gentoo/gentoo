@@ -5,44 +5,45 @@ EAPI=8
 
 inherit cmake cuda
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PointCloudLibrary/pcl"
 else
-	KEYWORDS="~amd64 ~arm"
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
+	KEYWORDS="~amd64 ~arm"
 fi
 
 DESCRIPTION="2D/3D image and point cloud processing"
 HOMEPAGE="https://pointclouds.org/"
+
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 qt6 usb vtk cpu_flags_x86_sse test tutorials"
+IUSE="cuda doc opengl openni openni2 pcap png +qhull qt6 usb vtk cpu_flags_x86_sse test tutorials"
+
+REQUIRED_USE="
+	openni? ( usb )
+	openni2? ( usb )
+	tutorials? ( doc )
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=sci-libs/flann-1.7.1
 	dev-libs/boost:=
 	dev-cpp/eigen:3
-	opengl? ( virtual/opengl media-libs/freeglut )
+	>=sci-libs/flann-1.7.1
+	opengl? (
+		media-libs/freeglut
+		virtual/opengl
+	)
 	openni? ( dev-libs/OpenNI )
 	openni2? ( dev-libs/OpenNI2 )
 	pcap? ( net-libs/libpcap )
 	png? ( media-libs/libpng:0= )
 	qhull? ( media-libs/qhull:= )
-	qt5? (
-		dev-qt/qtgui:5
-		dev-qt/qtcore:5
-		dev-qt/qtconcurrent:5
-		dev-qt/qtopengl:5
-		vtk? ( sci-libs/vtk[qt5] )
-	)
 	qt6? (
-		!qt5? (
-			dev-qt/qtbase:6[concurrent,gui,opengl]
-			vtk? ( sci-libs/vtk[-qt5,qt6] )
-		)
+		dev-qt/qtbase:6[concurrent,gui,opengl]
+		vtk? ( sci-libs/vtk[-qt5,qt6] )
 	)
 	usb? ( virtual/libusb:1 )
 	vtk? ( >=sci-libs/vtk-5.6:=[imaging,rendering,views] )
@@ -65,17 +66,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="
-	openni? ( usb )
-	openni2? ( usb )
-	tutorials? ( doc )
-"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.1-allow-configuration-of-install-dirs.patch
 	"${FILESDIR}"/${PN}-1.12.1-fix-hardcoded-relative-directory-of-the-installed-cmake-files.patch
-	"${FILESDIR}/${PN}-1.14.1-gcc15.patch"
-	"${FILESDIR}/${PN}-1.14.1-tests.patch"
+	"${FILESDIR}"/${PN}-1.14.1-gcc15.patch
+	"${FILESDIR}"/${PN}-1.14.1-tests.patch
 )
 
 src_prepare() {
@@ -107,9 +102,7 @@ src_configure() {
 		-DBUILD_global_tests="$(usex test)"
 	)
 
-	if use qt5; then
-		mycmakeargs+=( "-DWITH_QT=QT5" )
-	elif use qt6; then
+	if use qt6; then
 		mycmakeargs+=( "-DWITH_QT=QT6" )
 	else
 		mycmakeargs+=( "-DWITH_QT=NO" )

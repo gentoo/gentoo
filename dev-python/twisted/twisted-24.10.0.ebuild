@@ -58,6 +58,7 @@ RDEPEND="
 IDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	>=dev-python/constantly-15.1[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-4.2.0[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-5[${PYTHON_USEDEP}]
 "
 BDEPEND="

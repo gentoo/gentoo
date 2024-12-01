@@ -11,7 +11,7 @@ SRC_URI="https://github.com/coin3d/soqt/releases/download/v${PV}/${P/SoQt/soqt}-
 S="${WORKDIR}/soqt"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="debug doc"
 

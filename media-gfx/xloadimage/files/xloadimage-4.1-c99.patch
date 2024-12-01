@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/920772#c11
+Signed-off-by: Stephane Bakhos <nuitari@nuitari.net>
+--- a/pdsuncomp.c
++++ b/pdsuncomp.c
+@@ -421,8 +421,8 @@
+   static char obuf[2048];
+   char ibuf[2048];
+   int left;
+-  int in_length;
+-  static int out_length= 2048, out_ptr= 0;
++  long int in_length;
++  static long int out_length= 2048, out_ptr= 0;
+ 
+   if (Decompressing) {
+     left= size;

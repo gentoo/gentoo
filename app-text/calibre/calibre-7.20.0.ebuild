@@ -36,7 +36,7 @@ LICENSE="
 	PSF-2
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="+font-subsetting ios speech +system-mathjax test +udisks unrar"
 
 RESTRICT="!test? ( test )"
@@ -74,8 +74,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-		dev-python/PyQt6[gui,network,opengl,printsupport,quick,svg,widgets,${PYTHON_USEDEP}]
-		dev-python/PyQt6-WebEngine[widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,network,opengl,printsupport,quick,svg,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6-webengine[widgets,${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		>=dev-python/zeroconf-0.75.0[${PYTHON_USEDEP}]
@@ -100,7 +100,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	speech? (
 		$(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]')
-		dev-python/PyQt6[multimedia,speech]
+		dev-python/pyqt6[multimedia,speech]
 	)
 	system-mathjax? ( >=dev-libs/mathjax-3:= )
 	udisks? ( virtual/libudev )
@@ -112,7 +112,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( $(python_gen_cond_dep '>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]') )
 "
 BDEPEND="$(python_gen_cond_dep '
-		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
+		>=dev-python/pyqt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig

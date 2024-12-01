@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/bit-team/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2"
@@ -36,7 +36,7 @@ RDEPEND="
 	${DEPEND}
 	virtual/openssh
 	net-misc/rsync[xattr,acl]
-	gui? ( dev-python/PyQt6[gui,widgets] )
+	gui? ( dev-python/pyqt6[gui,widgets] )
 "
 BDEPEND="
 	sys-devel/gettext

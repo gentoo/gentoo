@@ -16,7 +16,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="Khronos-CLHPP"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Tests require CMock (NOT cmocka), which is currently not in Gentoo
 # and has been found to be extremely awkward to package.

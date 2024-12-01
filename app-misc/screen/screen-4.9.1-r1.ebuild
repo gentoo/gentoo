@@ -64,6 +64,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944429 (revisit this on >= 5.0.0)
+	append-cflags -std=gnu17
 	append-lfs-flags
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
