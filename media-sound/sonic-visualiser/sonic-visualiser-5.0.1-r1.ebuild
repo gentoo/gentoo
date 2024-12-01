@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio test"
 
-#	dev-qt/qtbase:6[test]
 BDEPEND="
 	virtual/pkgconfig
 "
