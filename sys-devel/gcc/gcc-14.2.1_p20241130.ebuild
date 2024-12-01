@@ -6,7 +6,7 @@ EAPI=8
 TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="14.2.0"
-PATCH_VER="4"
+PATCH_VER="5"
 MUSL_VER="1"
 MUSL_GCC_VER="14.1.0"
 PYTHON_COMPAT=( python3_{10..12} )
@@ -42,7 +42,6 @@ fi
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
-		77_all_m2_docs_sandbox.patch
 	)
 	for p in "${upstreamed_patches[@]}"; do
 		rm -v "${WORKDIR}/patch/${p}" || die
