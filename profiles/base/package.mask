@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2024-12-01)
+# Conflicts with glibc.
+sys-libs/error-standalone
+
 # Sam James <sam@gentoo.org> (2024-11-10)
 # Breaks suspend on elogind systems (bug #934314, bug #923614)
 # https://github.com/polkit-org/polkit/issues/451
