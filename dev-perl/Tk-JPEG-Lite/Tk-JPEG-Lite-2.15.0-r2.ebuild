@@ -12,16 +12,19 @@ DESCRIPTION="lite JPEG loader for Tk::Photo"
 SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"
 
-RDEPEND="virtual/jpeg:0
-	>=dev-perl/Tk-800.15.0"
-BDEPEND="${RDEPEND}
+RDEPEND="
+	media-libs/libjpeg-turbo:=
+	>=dev-perl/Tk-800.15.0
+"
+BDEPEND="
+	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.580.0
 	dev-perl/Devel-CheckLib
 "
 
 PATCHES=(
 	"${FILESDIR}/${P}-Modernize-C.patch"
-	)
+)
 
 src_test() {
 	virtx perl-module_src_test
