@@ -6,15 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="CLI for SQLite with auto-completion and syntax highlighting"
 HOMEPAGE="https://litecli.com/ https://github.com/dbcli/litecli"
-SRC_URI="https://github.com/dbcli/litecli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/dbcli/litecli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/click-4.1[${PYTHON_USEDEP}]
@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/prompt-toolkit-3.0.3[${PYTHON_USEDEP}]
 	<dev-python/prompt-toolkit-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-1.5[${PYTHON_USEDEP}]
-	dev-python/sqlparse[${PYTHON_USEDEP}]
+	>=dev-python/sqlparse-0.4.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
