@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="tif22pnm and png22pnm command-line converters"
 HOMEPAGE="http://pts.szit.bme.hu/ https://code.google.com/p/sam2p/"
@@ -27,6 +27,13 @@ src_prepare() {
 	default
 	mv configure.{in,ac} || die
 	eautoreconf
+}
+
+src_configure() {
+	# bug #944994
+	append-cflags -std=gnu17
+
+	default
 }
 
 src_install() {
