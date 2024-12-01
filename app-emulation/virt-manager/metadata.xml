@@ -17,6 +17,9 @@
 		</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/virt-manager/virt-manager/issues</bugs-to>
+		<changelog>https://github.com/virt-manager/virt-manager/blob/main/NEWS.md</changelog>
+		<doc>https://virt-manager.org/documentation.html</doc> <!-- not of much use -->
 		<remote-id type="github">virt-manager/virt-manager</remote-id>
 	</upstream>
 </pkgmetadata>
