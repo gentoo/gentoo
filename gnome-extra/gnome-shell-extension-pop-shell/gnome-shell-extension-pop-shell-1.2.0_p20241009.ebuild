@@ -9,11 +9,11 @@ EGIT_COMMIT="e25621e2595eb5235ecb1a41167d1324a2b2a297"
 DESCRIPTION="Keyboard-driven layer for GNOME Shell with tiling support"
 HOMEPAGE="https://github.com/pop-os/shell"
 SRC_URI="https://github.com/pop-os/shell/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/shell-${EGIT_COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE=""
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
@@ -21,8 +21,6 @@ RDEPEND="
 	sys-apps/fd
 "
 BDEPEND="dev-lang/typescript"
-
-S="${WORKDIR}/shell-${EGIT_COMMIT}"
 
 DOC_CONTENTS="To configure keybindings run /usr/lib/pop-shell/scripts/configure.sh as user"
 
