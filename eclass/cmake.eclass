@@ -681,6 +681,19 @@ cmake-utils_src_make() {
 	die "cmake-utils_src_make is banned. Use cmake_build instead"
 }
 
+# @ECLASS_VARIABLE: CTEST_JOBS
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Maximum number of CTest jobs to run in parallel.  If unset, the value
+# will be determined from make options.
+
+# @ECLASS_VARIABLE: CTEST_LOADAVG
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Maximum load, over which no new jobs will be started by CTest.  Note
+# that unlike make, CTest will not start *any* jobs if the load
+# is exceeded.  If unset, the value will be determined from make options.
+
 # @FUNCTION: cmake_src_test
 # @DESCRIPTION:
 # Function for testing the package. Automatically detects the build type.
@@ -694,8 +707,9 @@ cmake_src_test() {
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 	[[ -n ${CMAKE_SKIP_TESTS} ]] && myctestargs+=( -E '('$( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}")')'  )
 
-	set -- ctest -j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
-		--test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"
+	set -- ctest -j "${CTEST_JOBS:-$(makeopts_jobs "${MAKEOPTS}" 999)}" \
+		--test-load "${CTEST_LOADAVG:-$(makeopts_loadavg)}" \
+		"${myctestargs[@]}" "$@"
 	echo "$@" >&2
 	if "$@" ; then
 		einfo "Tests succeeded."
