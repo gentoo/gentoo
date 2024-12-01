@@ -30,7 +30,6 @@ ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
 
 PATCHES=(
 	"${FILESDIR}/0001-context-demote-abandoned-toxic-match-to-debug-log-le.patch"
-	"${FILESDIR}/0002-HACK-crucible-Work-around-kernel-memory-fragmentatio_v2.patch"
 )
 
 pkg_pretend() {
@@ -80,9 +79,21 @@ pkg_pretend() {
 				ewarn
 			fi
 		fi
+		if kernel_is -lt 5.7; then
+			ewarn "WARNING: Kernel versions lower than 5.7 are no longer really supported by"
+			ewarn "bees. While there should be no unexpected data loss, you may experience"
+			ewarn "severe slowdowns or even system lockups."
+			ewarn
+		fi
 
 		elog "Bees recommends running the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
+		elog
+		elog "NEWS: bees now defaults to a much improved extent-based scanner. It is compatible"
+		elog "with your existing state database in `\$BEESHOME` but it may start over from the"
+		elog "beginning. However, it will keep the state of the old scanner, so you can switch"
+		elog "back and forth. To actually use the new scanner, use scan mode 4 or remove the"
+		elog "scan mode parameter from your init script. Requires kernel 4.14 or higher!"
 	fi
 }
 
