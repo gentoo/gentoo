@@ -46,7 +46,7 @@ src_configure() {
 		-DBUILD_EXAMPLES=OFF
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 		-DNFC_LINUX=$(usex nfc)
-		-DUSE_PCSC=$(usex smartcard pcsc-lte)
+		-DUSE_PCSC=$(usex smartcard)
 		-DUSE_HIDAPI=$(usex hidapi)
 	)
 
