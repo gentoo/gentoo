@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.47.0-disable-metadata_csum_seed-and-orphan_file-by-default.patch
 
 	# Upstream patches (can usually removed with next version bump)
+	"${FILESDIR}"/${PN}-1.47.1-c23.patch
 )
 
 src_prepare() {
