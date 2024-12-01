@@ -957,12 +957,18 @@ src_unpack() {
 	use multilib-bootstrap && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
 	if [[ ${PV} == 9999* ]] ; then
-		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git"
+		EGIT_REPO_URI="
+			https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git
+			https://github.com/gentoo/glibc-patches.git
+		"
 		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
 		git-r3_src_unpack
 		mv patches-git/9999 patches || die
-
-		EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
+		EGIT_REPO_URI="
+			https://sourceware.org/git/glibc.git
+			https://git.sr.ht/~sourceware/glibc
+			https://gitlab.com/x86-glibc/glibc.git
+		"
 		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
 	else
