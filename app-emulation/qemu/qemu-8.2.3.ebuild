@@ -515,6 +515,7 @@ qemu_src_configure() {
 		--disable-guest-agent
 		--disable-strip
 		--disable-download
+		--python="${PYTHON}"
 
 		# bug #746752: TCG interpreter has a few limitations:
 		# - it does not support FPU
