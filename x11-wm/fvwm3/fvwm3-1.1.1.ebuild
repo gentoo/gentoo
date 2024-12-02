@@ -106,9 +106,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# Recommended by upstream for release. Doesn't really matter for live ebuilds.
-	append-flags -fno-strict-aliasing
-
 	# Signed chars are required.
 	for arch in arm arm64 ppc ppc64; do
 		use $arch && append-flags -fsigned-chars
