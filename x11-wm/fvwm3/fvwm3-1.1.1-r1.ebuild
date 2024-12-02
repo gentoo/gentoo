@@ -157,22 +157,21 @@ src_install() {
 
 	meson_src_install
 
-	if ! use go; then
-		python_scriptinto "/usr/bin"
-		python_doscript "${ED}/usr/bin/FvwmCommand" "${ED}/usr/bin/fvwm-menu-desktop"
-	fi
+	python_scriptinto "/usr/bin"
+	python_doscript "${ED}/usr/bin/FvwmCommand" "${ED}/usr/bin/fvwm-menu-desktop"
 }
 
 pkg_postinst() {
+
+	einfo "For compatibility with existing fvwm2 configurations, the ebuild will install a FvwmCommand wrapper."
+
 	if use go; then
-		ewarn "FvwmPrompt has been installed, it provides the functionality of both FvwmCommand and FvwmConsole."
-		ewarn "For compatibility with the existing fvwm2 configurations, the ebuild will install a FvwmCommand wrapper."
-		ewarn "If you need FvwmConsole, install ${PN} with USE=\"-go\";"
-		ewarn "however FvwmPrompt and FvwmCommand will not be installed."
+		einfo "FvwmPrompt has been installed, it provides the functionality of both FvwmCommand and FvwmConsole."
+		einfo "If you need FvwmConsole, install ${PN} with USE=\"-go\"; however FvwmPrompt will not be installed."
 	else
-		ewarn "FvwmConsole has been installed, but FvwmCommand and FvwmPrompt are no longer included in this ebuild."
-		ewarn "If you need FvwmPrompt or FvwmCommand, install ${PN} with USE=\"go\"."
-		ewarn "In that case, FvwmPrompt will replace FvwmConsole and provide the same functionality in a more flexible way."
+		einfo "FvwmConsole has been installed, hovever it is a legacy tool."
+		einfo "Consider installing with USE=\"go\" which will have FvwmPrompt replace FvwmConsole to"
+		einfo "provide the same functionality in a more flexible way."
 	fi
 
 	optfeature_header "Useful optional features:"
