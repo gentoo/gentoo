@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="experimental">Enables Wayland support preview.</flag>
-		<flag name="wayland">Support for the Wayland display server protocol.</flag>
 	</use>
 	<longdescription lang="en">
 	Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
