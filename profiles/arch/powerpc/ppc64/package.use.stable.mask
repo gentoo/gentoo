@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2024-12-02)
+# www-client/firefox doesn't have stable ppc64 keyword.
+dev-python/selenium test-rust
+dev-util/selenium-manager test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-12)
 # dev-python/pyside6 is not stable here
 dev-python/qtpy pyside6
