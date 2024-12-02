@@ -1,0 +1,34 @@
+previously was sed -i '/#define _LINUX_NETDEVICE_H/d' src/arpd/*.c in ebuild
+diff -ru linux-atm-2.5.2.orig/src/arpd/arp.c linux-atm-2.5.2/src/arpd/arp.c
+--- linux-atm-2.5.2.orig/src/arpd/arp.c	2024-05-08 11:33:01.308408399 +0000
++++ linux-atm-2.5.2/src/arpd/arp.c	2024-05-08 11:33:26.240260590 +0000
+@@ -15,7 +15,6 @@
+ #include <sys/types.h>
+ #include <sys/socket.h> /* for linux/if_arp.h */
+ #include <netinet/in.h> /* for ntohs, etc. */
+-#define _LINUX_NETDEVICE_H /* very crude hack for glibc2 */
+ #include <linux/types.h>
+ #include <linux/if_arp.h>
+ #include <linux/if_ether.h>
+diff -ru linux-atm-2.5.2.orig/src/arpd/io.c linux-atm-2.5.2/src/arpd/io.c
+--- linux-atm-2.5.2.orig/src/arpd/io.c	2024-05-08 11:33:01.308408399 +0000
++++ linux-atm-2.5.2/src/arpd/io.c	2024-05-08 11:33:26.240260590 +0000
+@@ -21,7 +21,6 @@
+ #include <atm.h>
+ #include <linux/atmclip.h> /* for CLIP_DEFAULT_IDLETIMER */
+ #include <linux/atmarp.h>
+-#define _LINUX_NETDEVICE_H /* glibc2 */
+ #include <linux/types.h>
+ #include <linux/if_arp.h>
+ 
+diff -ru linux-atm-2.5.2.orig/src/arpd/itf.c linux-atm-2.5.2/src/arpd/itf.c
+--- linux-atm-2.5.2.orig/src/arpd/itf.c	2024-05-08 11:33:01.308408399 +0000
++++ linux-atm-2.5.2/src/arpd/itf.c	2024-05-08 11:33:26.240260590 +0000
+@@ -12,7 +12,6 @@
+ #include <sys/types.h>
+ #include <linux/atmclip.h>
+ #include <sys/socket.h>
+-#define _LINUX_NETDEVICE_H /* glibc2 */
+ #include <linux/types.h>
+ #include <linux/if_arp.h>
+ 
