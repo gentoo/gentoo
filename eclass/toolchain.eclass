@@ -338,7 +338,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	# it was disabled in 13.
 	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 	tc_version_is_at_least 14.2.1_p20241026 ${PV} && IUSE+=" time64"
-	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libdiagnostics"
+	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libgdiagnostics"
 fi
 
 if tc_version_is_at_least 10; then
@@ -1836,8 +1836,8 @@ toolchain_src_configure() {
 		gcc_shell="${BROOT}"/bin/sh
 	fi
 
-	if is_jit || _tc_use_if_iuse libdiagnostics ; then
-		einfo "Configuring shared gcc for JIT/libdiagnostics"
+	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
+		einfo "Configuring shared gcc for JIT/libgdiagnostics"
 
 		local confgcc_jit=(
 			"${confgcc[@]}"
@@ -1874,7 +1874,7 @@ toolchain_src_configure() {
 		)
 
 		if tc_version_is_at_least 15.0.0_pre20241124 ${PV} ; then
-			confgcc_jit+=( $(use_enable libdiagnostics) )
+			confgcc_jit+=( $(use_enable libgdiagnostics) )
 		fi
 
 		if tc_version_is_at_least 13.1 ; then

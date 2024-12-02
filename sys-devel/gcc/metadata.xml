@@ -77,7 +77,7 @@
 		<flag name="graphite">Add support for the framework for loop optimizations based on a polyhedral intermediate representation</flag>
 		<flag name="ieee-long-double">Use accelerated 128-bit IEEE long double ABI (ppc64le only)</flag>
 		<flag name="jit">Enable libgccjit so other applications can embed gcc for Just-In-Time compilation.</flag>
-		<flag name="libdiagnostics">Provide libdiagnostics (https://gcc.gnu.org/wiki/libdiagnostics). This also installs the 'sarif-replay' tool.</flag>
+		<flag name="libgdiagnostics">Provide libgdiagnostics (https://gcc.gnu.org/wiki/libgdiagnostics). This also installs the 'sarif-replay' tool.</flag>
 		<flag name="libssp">Build SSP support into a dedicated library rather than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)</flag>
 		<flag name="lto">
 			Build using Link Time Optimizations (LTO).
