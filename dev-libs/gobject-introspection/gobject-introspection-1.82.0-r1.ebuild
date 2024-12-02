@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # virtual/pkgconfig needed at runtime, bug #505408
 RDEPEND="
 	>=dev-libs/gobject-introspection-common-${PV}
-	>=dev-libs/glib-2.79.0:2
+	>=dev-libs/glib-2.82.0:2[introspection]
 	dev-libs/libffi:=
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
@@ -54,11 +54,6 @@ BDEPEND="
 		')
 	)
 "
-
-PATCHES=(
-	# https://gitlab.gnome.org/GNOME/gobject-introspection/-/merge_requests/490
-	"${FILESDIR}/${PN}-1.80.1-setuptools-74.patch"
-)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
