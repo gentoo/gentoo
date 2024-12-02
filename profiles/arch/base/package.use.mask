@@ -62,6 +62,7 @@ media-gfx/blender gnome oneapi renderdoc vulkan
 # Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
 # dev-qt/qtlanguageserver:6 currently has very few keywords
 dev-qt/qtdeclarative:6 qmlls
+dev-qt/qttools:6 qmlls
 
 # Mike Gilbert <floppym@gentoo.org> (2024-04-13)
 # Missing keywords on dev-python/looseversion.
