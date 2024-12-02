@@ -171,4 +171,19 @@ llvm_prepend_path() {
 	export PATH=${new_path[*]}
 }
 
+# @FUNCTION: llvm_cmake_use_musl
+# @DESCRIPTION:
+# Determine whether the given LLVM project should be built with musl
+# support. That should be the case if the CTARGET (or CHOST) is a musl
+# environment.
+#
+# If musl should be used, echo "ON", otherwise echo "OFF".
+llvm_cmake_use_musl() {
+	if [[ "${CTARGET:-${CHOST}}" == *-*-*-musl* ]]; then
+		echo "ON"
+	else
+		echo "OFF"
+	fi
+}
+
 fi
