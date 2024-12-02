@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
+# media-video/pipewire is not keyworded here.
+dev-qt/qtmultimedia:6 screencast
+
 # Christopher Byrne <salah.coronya@gmail.com> (2024-12-01)
 # requires dev-libs/hidapi to be keyworded
 dev-libs/libfido2 hidapi
@@ -11,7 +15,6 @@ dev-libs/libfido2 hidapi
 # Ian Jordan <immoloism@gmail.com> (2024-11-11)
 # net-misc/networkmanager modemmanger and iwd not keyworded
 net-misc/networkmanager modemmanager iwd
-
 
 # Felix Janda <felix.janda@posteo.de> (2024-10-20)
 # requires dev-libs/libcss and net-libs/libdom to be keyworded
