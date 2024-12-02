@@ -676,12 +676,6 @@ sec-keys/openpgp-keys-jiatan
 =sci-libs/suitesparseconfig-7.0.0
 =sci-libs/umfpack-6.1.0
 
-# Sam James <sam@gentoo.org> (2023-05-10)
-# Lots of package breakage as usual for new versions. Masked until most/all
-# reverse dependencies are fixed. Tracker bug is bug #906077.
->=dev-libs/libfmt-10
->=games-emulation/dolphin-2407
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
