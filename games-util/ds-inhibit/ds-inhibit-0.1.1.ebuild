@@ -13,7 +13,6 @@
 # If an eclass doesn't support latest EAPI, use the previous EAPI instead.
 EAPI=8
 
-
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
 # without the following line:
@@ -30,14 +29,13 @@ HOMEPAGE="https://gitlab.com/evlaV/ds-inhibit/"
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
-SRC_URI="https://gitlab.com/evlaV/ds-inhibit/-/archive/main/ds-inhibit-main.tar.gz"
+SRC_URI="https://gitlab.com/evlaV/ds-inhibit/-/archive/main/ds-inhibit-main.tar.bz2"
 
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
 # If you don't need to change it, leave the S= line out of the ebuild
 # to keep it tidy.
 #S="${WORKDIR}/${P}"
-
 
 # License of the package.  This must match the name of file(s) in the
 # licenses/ directory.  For complex license combination see the developer
@@ -78,12 +76,11 @@ KEYWORDS="~amd64"
 # Comprehensive list of any and all USE flags leveraged in the ebuild,
 # with some exceptions, e.g., ARCH specific flags like "amd64" or "ppc".
 # Not needed if the ebuild doesn't use any USE flags.
-IUSE=""
+IUSE="systemd"
 
 # A space delimited list of portage features to restrict. man 5 ebuild
 # for details.  Usually not needed.
 #RESTRICT="strip"
-
 
 # Run-time dependencies. Must be defined to whatever this depends on to run.
 # Example:
@@ -93,8 +90,9 @@ IUSE=""
 # had installed on your system when you tested the package.  Then
 # other users hopefully won't be caught without the right version of
 # a dependency.
-RDEPEND="games-util/steam-launcher
-dev-python/pyinotify"
+RDEPEND="
+	systemd? ( sys-apps/systemd )
+	dev-python/pyinotify"
 
 # Build-time dependencies that need to be binary compatible with the system
 # being built (CHOST). These include libraries that we link against.
@@ -110,8 +108,8 @@ PATCHES=(
 )
 
 src_unpack() {
-	unpack ${A}
-	mv ${WORKDIR}/ds-inhibit-main ${S}
+	unpack "${A}"
+	mv "${WORKDIR}"/ds-inhibit-main "${S}"
 }
 
 # The following src_configure function is implemented as default by portage, so
@@ -151,6 +149,14 @@ src_unpack() {
 	#emake
 #}
 
+src_prepare() {
+	if ! usex systemd '' 'y'; then
+		default
+	else
+		true
+	fi
+}
+
 src_compile() {
 	true
 }
@@ -164,6 +170,8 @@ src_install() {
 	# This is the preferred way to install.
 
 	emake DESTDIR="${D}" install
-	mkdir --parents ${D}/etc/init.d/
-	cp -vr ${FILESDIR}/ds-inhibit ${D}/etc/init.d/
+	mkdir --parents "${D}"/etc/init.d/
+	if ! usex systemd '' 'y'; then
+		cp -vr "${FILESDIR}"/ds-inhibit "${D}"/etc/init.d/
+	fi
 }
