@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
+# Needs dev-qt/qtsvg:6 which is not keyworded here (bug #918896),
+# but neither is gnome so integration is not very useful either way.
+dev-qt/qtwayland:6 gnome
+
 # Felix Janda <felix.janda@posteo.de> (2024-10-20)
 # requires dev-libs/libcss and net-libs/libdom to be keyworded
 www-client/elinks libcss
