@@ -69,6 +69,7 @@ src_prepare() {
 	rm -r shapelib zlib || die
 
 	use doc && cp "${DISTDIR}/gpsbabel.org-style3.css" "${S}"
+	use gui || sed -i -e '/add_subdirectory(gui)/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -76,9 +77,6 @@ src_configure() {
 		-DGPSBABEL_WITH_LIBUSB=pkgconfig
 		-DGPSBABEL_WITH_SHAPELIB=pkgconfig
 		-DGPSBABEL_WITH_ZLIB=pkgconfig
-		-DGPSBABEL_MAPPREVIEW=$(usex gui)
-		-DGPSBABEL_EMBED_MAP=$(usex gui)
-		-DGPSBABEL_EMBED_TRANSLATIONS=$(usex gui)
 		-DUSE_QT6=ON
 	)
 
