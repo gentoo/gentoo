@@ -38,7 +38,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libcxx{abi,} llvm/cmake cmake )
-LLVM_TEST_COMPONENTS=( libc llvm/utils/llvm-lit )
+LLVM_TEST_COMPONENTS=( llvm/utils/llvm-lit )
 llvm.org_set_globals
 
 python_check_deps() {
@@ -81,6 +81,7 @@ multilib_src_configure() {
 		# this is broken with standalone builds, and also meaningless
 		-DLIBCXXABI_USE_LLVM_UNWINDER=OFF
 
+		-DLIBCXX_LIBDIR_SUFFIX=
 		-DLIBCXX_ENABLE_SHARED=ON
 		-DLIBCXX_ENABLE_STATIC=OFF
 		-DLIBCXX_CXX_ABI=libcxxabi
