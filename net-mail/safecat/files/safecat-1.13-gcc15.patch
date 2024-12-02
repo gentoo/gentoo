@@ -1,0 +1,11 @@
+diff -Nuar safecat-1.13.orig/exit.h safecat-1.13/exit.h
+--- safecat-1.13.orig/exit.h	2000-02-28 20:10:12.000000000 -0800
++++ safecat-1.13/exit.h	2024-12-01 20:31:38.729548653 -0800
+@@ -1,6 +1,6 @@
+ #ifndef EXIT_H
+ #define EXIT_H
+ 
+-extern void _exit();
++extern void _exit(int);
+ 
+ #endif

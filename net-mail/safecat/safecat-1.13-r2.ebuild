@@ -30,6 +30,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-include.patch
 	# Clang fixes
 	"${DISTDIR}"/${P}-clang-fixes.patch
+	# GCC15 fixes
+	"${FILESDIR}"/safecat-1.13-gcc15.patch
 )
 
 src_prepare() {
@@ -40,7 +42,8 @@ src_prepare() {
 
 src_configure() {
 	echo "/usr" > conf-root || die
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
+	# Verified that these are safe as of 2024/12/01.
+	echo "$(tc-getCC) ${CFLAGS} -Wno-discarded-qualifiers -Wno-misleading-indentation" > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo "$(tc-getAR)" > conf-ar || die
 }
