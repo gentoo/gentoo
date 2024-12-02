@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/firehol/firehol/releases/download/v${PV}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6 ipset"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~ppc ~x86"
 
 # Set the dependency versions to aid cross-compiling. Keep them at their
 # minimums as the configure script merely checks whether they are sufficient.
