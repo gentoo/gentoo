@@ -436,12 +436,3 @@ src_install() {
 	cargo_src_install
 	dodoc README.md
 }
-
-pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt "1.9.0"; then
-			einfo "Note that vicmd_symbol config option was renamed to vimcmd_symbol in version 1.9"
-		fi
-	done
-}
