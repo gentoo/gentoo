@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -109,7 +109,7 @@ multilib_src_configure() {
 			-DLIBCXX_ENABLE_STATIC=ON
 			-DLIBCXX_CXX_ABI=libcxxabi
 			-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
-			-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+			-DLIBCXX_HAS_MUSL_LIBC=$(llvm_cmake_use_musl)
 			-DLIBCXX_HAS_GCC_S_LIB=OFF
 			-DLIBCXX_INCLUDE_TESTS=OFF
 			-DLIBCXX_INCLUDE_BENCHMARKS=OFF

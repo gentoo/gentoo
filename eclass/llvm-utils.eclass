@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm-utils.eclass
@@ -169,6 +169,21 @@ llvm_prepend_path() {
 	[[ ${added} ]] || new_path+=( "${llvm_path}" )
 
 	export PATH=${new_path[*]}
+}
+
+# @FUNCTION: llvm_cmake_use_musl
+# @DESCRIPTION:
+# Determine whether the given LLVM project should be built with musl
+# support. That should be the case if the CTARGET (or CHOST) is a musl
+# environment.
+#
+# If musl should be used, echo "ON", otherwise echo "OFF".
+llvm_cmake_use_musl() {
+	if [[ "${CTARGET:-${CHOST}}" == *-*-*-musl* ]]; then
+		echo "ON"
+	else
+		echo "OFF"
+	fi
 }
 
 fi
