@@ -58,7 +58,7 @@ DOCS=( AUTHORS NEWS README.{contrib,igc,md} gui/README.gui )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.0-no-automagic-qt5-qt6.patch"
-	"${FILESDIR}"/${P}-qmake-xmldoc.patch
+	"${FILESDIR}"/${P}-xmldoc.patch
 	"${FILESDIR}"/${P}-xmllint.patch
 )
 
