@@ -379,3 +379,7 @@ dev-libs/libpcre jit
 www-servers/nginx pcre-jit
 
 # End snippets taken from riscv
+
+# Anthony Ryan <anthonyryan1@gmail.com> (2024-10-13)
+# Test dependency dev-libs/stb not keyworded on this arch.
+media-libs/zxing-cpp test
