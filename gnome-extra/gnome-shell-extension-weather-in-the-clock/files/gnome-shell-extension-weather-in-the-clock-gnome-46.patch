@@ -1,0 +1,76 @@
+From 42e6018943de5154971871f33599a66f10c17f26 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=D0=9E=D0=BB=D0=B5=D0=B3=20=D0=9C=D0=BE=D1=80=D0=BE=D0=B7?=
+ =?UTF-8?q?=D0=BE=D0=B2?= <mopo3ilo@gmail.com>
+Date: Thu, 12 Oct 2023 23:30:58 +0300
+Subject: [PATCH] Gnome 45 support
+
+---
+ .../extension.js                              | 37 +++++++++++--------
+ .../metadata.json                             |  2 +-
+ 2 files changed, 22 insertions(+), 17 deletions(-)
+
+diff --git a/weatherintheclock@JasonLG1979.github.io/extension.js b/weatherintheclock@JasonLG1979.github.io/extension.js
+index 7b097a4..dcb08b9 100644
+--- a/weatherintheclock@JasonLG1979.github.io/extension.js
++++ b/weatherintheclock@JasonLG1979.github.io/extension.js
+@@ -18,27 +18,32 @@
+  * If this extension breaks your desktop you get to keep all of the pieces...
+  */
+ 
+-const {Clutter, GLib, GObject, St} = imports.gi;
+-const [major, minor] = imports.misc.config.PACKAGE_VERSION.split('.').map(s => Number(s));
++import Clutter from "gi://Clutter";
++import GLib from "gi://GLib";
++import GObject from "gi://GObject";
++import St from "gi://St";
++import * as Main from "resource:///org/gnome/shell/ui/main.js";
+ 
+ let panelWeather = null;
+ 
+-function enable() {
+-    if (!panelWeather) {
+-        let statusArea = imports.ui.main.panel.statusArea;
+-        let dateMenu = statusArea.dateMenu;
+-        let weather = dateMenu._weatherItem._weatherClient;
+-        let network = (major < 43) ? statusArea.aggregateMenu._network : statusArea.quickSettings._network;
+-        let networkIcon = network ? network._primaryIndicator : null;
+-        panelWeather = new PanelWeather(weather, networkIcon);
+-        dateMenu.get_first_child().insert_child_above(panelWeather, dateMenu._clockDisplay);
++export default class weatherInTheClock {
++    enable() {
++        if (!panelWeather) {
++            let statusArea = Main.panel.statusArea;
++            let dateMenu = statusArea.dateMenu;
++            let weather = dateMenu._weatherItem._weatherClient;
++            let network = statusArea.quickSettings._network;
++            let networkIcon = network ? network._primaryIndicator : null;
++            panelWeather = new PanelWeather(weather, networkIcon);
++            dateMenu.get_first_child().insert_child_above(panelWeather, dateMenu._clockDisplay);
++        }
+     }
+-}
+ 
+-function disable() {
+-    if (panelWeather) {
+-        panelWeather.destroy();
+-        panelWeather = null;
++    disable() {
++        if (panelWeather) {
++            panelWeather.destroy();
++            panelWeather = null;
++        }
+     }
+ }
+ 
+diff --git a/weatherintheclock@JasonLG1979.github.io/metadata.json b/weatherintheclock@JasonLG1979.github.io/metadata.json
+index 2566fc3..1151690 100644
+--- a/weatherintheclock@JasonLG1979.github.io/metadata.json
++++ b/weatherintheclock@JasonLG1979.github.io/metadata.json
+@@ -3,6 +3,6 @@
+ "name": "Weather In The Clock",
+ "description": "Display the current Weather in the Clock. GNOME Weather is required for this extension to function.",
+ "original-author": "JasonLG1979@github.io",
+-"shell-version": ["3.38", "40", "41", "42", "43"],
++"shell-version": ["45", "46"],
+ "url": "https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock/"
+ }
