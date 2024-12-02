@@ -30,6 +30,7 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/jq-1.6-r3-never-bundle-oniguruma.patch
+	"${FILESDIR}"/jq-1.7.1-runpath.patch
 )
 
 RESTRICT="!test? ( test )"
@@ -58,7 +59,6 @@ src_configure() {
 		--disable-docs
 		--disable-valgrind
 		--disable-maintainer-mode
-		--enable-rpathhack
 		$(use_enable static-libs static)
 		$(use_with oniguruma oniguruma yes)
 	)
