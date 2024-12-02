@@ -11,13 +11,11 @@ SRC_URI="https://github.com/cloudflare/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0 BSD BSD-1 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64"
 IUSE="hardened"
 
-RDEPEND="!!dev-lang/mono" #File collision (bug 614364)
-
 PATCHES=(
-	"${FILESDIR}/${PN}-1.4.1-build-fix.patch"
+	"${FILESDIR}/${P}-build-fix.patch"
 )
 
 src_compile() {
@@ -30,4 +28,5 @@ src_compile() {
 src_install() {
 	dobin bin/*
 	dodoc CHANGELOG README.md
+	mv -iv "${ED}"/usr/bin/mkbundle{,.cfssl}
 }
