@@ -28,10 +28,12 @@ RDEPEND="zlib? ( sys-libs/zlib )
 	pace? ( dev-libs/openpace:= )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )
 	notify? ( dev-libs/glib:2 )"
+# vim-core needed for xxd in tests
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	test? (
+		app-editors/vim-core
 		dev-util/cmocka
 		dev-libs/softhsm
 	)"
