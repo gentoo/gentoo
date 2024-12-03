@@ -336,11 +336,6 @@ x11-drivers/xf86-video-omap
 # Removal on 2024-12-06. Bug #875233.
 x11-drivers/xf86-video-openchrome
 
-# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-11-03)
-# Vendors an unreleased libbpf version and announces incorrect version.
-# Please downgrade to 7.4.0. Bug Bug #941185. Removal on 2024-12-03.
-=dev-util/bpftool-7.5.0-r1
-
 # David Seifert <soap@gentoo.org> (2024-11-03)
 # Bug ridden package, extremely brittle build system, lots of QA issues,
 # terrible license, no other linux distro still packages this.
@@ -400,11 +395,6 @@ dev-python/sentry-sdk
 # installed by dev-util/quilt with USE=emacs.
 # Removal on 2024-11-14. Bug #247500.
 app-emacs/quilt-el
-
-# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
-# Vendors an unreleased libbpf version and generates ABI-breaking code.
-# Bug #941185. Removal on 2024-12-03.
-=dev-util/bpftool-7.5.0-r2
 
 # Michał Górny <mgorny@gentoo.org> (2024-10-10)
 # Gentoo package not updated for 4 years now.  No tests upstream.
