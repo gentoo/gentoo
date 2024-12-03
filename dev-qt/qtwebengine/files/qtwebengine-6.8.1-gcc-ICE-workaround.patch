@@ -1,0 +1,36 @@
+Patch status: temporary (see below)
+
+Workaround[1] proposed by GCC's upstream for a ICE that can newly occur
+when compiling chromium-122 in Qt 6.8.x (possibly only for gcc15+arm64,
+but could in theory trigger with other arches or gcc14 as well).
+
+May be some time before GCC is fixed and furthermore for it to be
+propagated on users' systems (we're not going to depend on a fixed
+version to enforce the upgrade), so it is simpler to workaround here
+for a while.
+
+Not yet merged as of writing of this, but Qt may include the same
+fix in a future version[2].
+
+Thanks-to: Andrew Pinski <pinskia@gmail.com>
+Thanks-to: Sam James <sam@gentoo.org>
+
+[1] https://gcc.gnu.org/PR117887#c11
+[2] https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/608812
+--- a/src/3rdparty/chromium/base/containers/flat_tree.h
++++ b/src/3rdparty/chromium/base/containers/flat_tree.h
+@@ -491,8 +491,11 @@
+ 
+   // If the compare is not transparent we want to construct key_type once.
+-  template <typename K>
+-  using KeyTypeOrK = std::conditional_t<requires {
++  static constexpr bool key_compare_is_transparent = requires {
+     typename key_compare::is_transparent;
+-  }, K, key_type>;
++  };
++
++  // If the compare is not transparent we want to construct key_type once.
++  template <typename K>
++  using KeyTypeOrK = std::conditional_t<key_compare_is_transparent, K, key_type>;
+ };
+ 
