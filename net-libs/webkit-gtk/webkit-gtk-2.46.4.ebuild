@@ -16,7 +16,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
-SLOT="6/0" # soname version of libwebkit2gtk-6.0
+SLOT="4/37" # soname version of libwebkit2gtk-4.0
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
@@ -37,15 +37,6 @@ RESTRICT="test"
 # * TODO: gst-plugins-base[X] is only needed when build configuration ends up
 #         with GLX set, but that's a bit automagic too to fix
 #
-# * Softblocking <webkit-gtk-2.38:4 and <webkit-gtk-2.44:4.1 as since
-#   2.44 this SLOT ships the WebKitWebDriver binary; WebKitWebDriver is
-#   an automation tool for web developers, which lets one control the
-#   browser via WebDriver API - only one SLOT can ship it.
-#
-# * at-spi2-core (atspi-2.pc) is checked at build time, but not linked
-#   to in the gtk4 SLOT - is it an upstream check bug and only gtk-4.14
-#   a11y support is used?
-#
 # * Cairo is only needed on big-endian systems, where Skia is not officially
 #   supported (the build system will choose a backend for you). We could probably
 #   hard-code a list of BE arches here, to avoid the extra dependency? But I am
@@ -55,8 +46,6 @@ RESTRICT="test"
 #   and we don't need any more new problems.
 #
 RDEPEND="
-	!<net-libs/webkit-gtk-2.38:4
-	!<net-libs/webkit-gtk-2.44:4.1
 	app-accessibility/at-spi2-core:2
 	dev-db/sqlite:3
 	dev-libs/glib:2
@@ -66,7 +55,6 @@ RDEPEND="
 	dev-libs/libtasn1:=
 	dev-libs/libxml2:2
 	dev-libs/libxslt
-	>=gui-libs/gtk-4.14.0:4[aqua?,introspection?,wayland?,X?]
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/harfbuzz:=[icu(+)]
@@ -77,9 +65,10 @@ RDEPEND="
 	media-libs/libwebp:=
 	media-libs/mesa
 	media-libs/woff2
-	net-libs/libsoup:3.0[introspection?]
+	net-libs/libsoup:2.4[introspection?]
 	sys-libs/zlib:0
 	x11-libs/cairo[X?]
+	x11-libs/gtk+:3[aqua?,introspection?,wayland?,X?]
 	x11-libs/libdrm
 	avif? ( media-libs/libavif:= )
 	gamepad? ( dev-libs/libmanette )
@@ -141,11 +130,6 @@ pkg_pretend() {
 
 		if ! test-flag-CXX -std=c++17 ; then
 			die "You need at least GCC 7.3.x or Clang >= 5 for C++17-specific compiler flags"
-		fi
-
-		if ! tc-is-clang ; then
-			ewarn "Upstream recommends that Clang be used to compile WebkitGTK:"
-			ewarn "  https://webkitgtk.org/2024/10/04/webkitgtk-2.46.html"
 		fi
 	fi
 }
@@ -224,7 +208,7 @@ src_configure() {
 		-DENABLE_VIDEO=$(usex gstreamer)
 		-DENABLE_WEB_AUDIO=$(usex gstreamer)
 		-DENABLE_WEB_CODECS=$(usex gstreamer) # https://bugs.webkit.org/show_bug.cgi?id=269147
-		-DENABLE_WEBDRIVER=ON
+		-DENABLE_WEBDRIVER=OFF
 		-DENABLE_WEBGL=ON
 		-DUSE_AVIF=$(usex avif)
 		-DUSE_GSTREAMER_WEBRTC=$(usex gstreamer)
@@ -237,33 +221,27 @@ src_configure() {
 		-DENABLE_WAYLAND_TARGET=$(usex wayland)
 		-DENABLE_X11_TARGET=$(usex X)
 		-DUSE_GBM=ON
-		-DUSE_GTK4=ON # webkit2gtk-6.0
+		-DUSE_GTK4=OFF
 		-DUSE_JPEGXL=$(usex jpegxl)
 		-DUSE_LCMS=$(usex lcms)
 		-DUSE_LIBBACKTRACE=OFF
 		-DUSE_LIBDRM=ON
 		-DUSE_LIBHYPHEN=ON
 		-DUSE_LIBSECRET=$(usex keyring)
-		-DUSE_SOUP2=OFF
+		-DUSE_SOUP2=ON
 		-DUSE_SYSPROF_CAPTURE=OFF
 		-DUSE_WOFF2=ON
 	)
 
 	# Temporary workaround for bug 938162 (upstream bug 271371).
-	use riscv && mycmakeargs+=( -DENABLE_JIT=OFF )
+	# The idea to disable WebAssembly and the FTL JIT instead
+	# of using ENABLE_JIT=OFF was stolen from OpenBSD.
+	use riscv && mycmakeargs+=( -DENABLE_WEBASSEMBLY=OFF -DENABLE_FTL_JIT=OFF )
 
 	# https://bugs.gentoo.org/761238
 	append-cppflags -DNDEBUG
 
 	WK_USE_CCACHE=NO cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	insinto /usr/share/gtk-doc/html
-	# This will install API docs specific to webkit2gtk-6.0
-	doins -r "${S}"/Documentation/{jsc-glib,webkitgtk,webkitgtk-web-process-extension}-6.0
 }
 
 pkg_postinst() {
