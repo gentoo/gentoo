@@ -1,0 +1,22 @@
+From f568d669465f5825006be2fba8a117060e832618 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 8 Sep 2024 22:27:09 +0200
+Subject: [PATCH] update for cuda 12.6
+
+https://github.com/NVIDIA/cccl/commit/733eb94a2b98b8d5b5ab1e39cbd8ac1aed9173ec
+
+Bug: https://bugs.gentoo.org/938673
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/exec/cuda/internal/WrappedOperators.h
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/exec/cuda/internal/WrappedOperators.h
+@@ -195,7 +195,7 @@ namespace detail
+ //
+ template <typename T, typename F>
+ struct is_commutative<vtkm::exec::cuda::internal::WrappedBinaryOperator<T, F>>
+-  : public thrust::detail::is_arithmetic<T>
++  : public ::cuda::std::is_arithmetic<T>
+ {
+ };
+ }
+

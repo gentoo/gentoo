@@ -1,3 +1,8 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Subject: [PATCH] vtkm: too many initializer values
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
 --- a/Accelerators/Vtkm/Core/vtkmlib/vtkmDataArray.hxx
 +++ b/Accelerators/Vtkm/Core/vtkmlib/vtkmDataArray.hxx
 @@ -334,7 +334,7 @@

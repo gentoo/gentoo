@@ -1,0 +1,20 @@
+From e9977b71f31525aea5084b3fef9c2bd4c9ad93f1 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 7 Sep 2024 13:29:24 +0200
+Subject: [PATCH] vtkm: drop template-id from cdtor
+
+warning: template-id not allowed for constructor in C++20 [-Wtemplate-id-cdtor]
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/cont/openmp/internal/RuntimeDeviceConfigurationOpenMP.h
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/cont/openmp/internal/RuntimeDeviceConfigurationOpenMP.h
+@@ -31,7 +31,7 @@ class RuntimeDeviceConfiguration<vtkm::cont::DeviceAdapterTagOpenMP>
+   : public vtkm::cont::internal::RuntimeDeviceConfigurationBase
+ {
+ public:
+-  RuntimeDeviceConfiguration<vtkm::cont::DeviceAdapterTagOpenMP>()
++  RuntimeDeviceConfiguration()
+     : HardwareMaxThreads(InitializeHardwareMaxThreads())
+     , CurrentNumThreads(this->HardwareMaxThreads)
+   {
