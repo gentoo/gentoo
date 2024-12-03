@@ -33,6 +33,10 @@ BDEPEND="
 
 QBS_PRODUCTS="tiled,csv,json"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-qt680.patch
+)
+
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
