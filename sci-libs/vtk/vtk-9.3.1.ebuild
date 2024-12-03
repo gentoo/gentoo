@@ -16,25 +16,24 @@ inherit check-reqs cmake cuda java-pkg-opt-2 multiprocessing python-single-r1 to
 
 # Short package version
 MY_PV="$(ver_cut 1-2)"
-MY_PV2="${PV/_rc/.rc}"
 
 DESCRIPTION="The Visualization Toolkit"
 HOMEPAGE="https://www.vtk.org/"
 SRC_URI="
-	https://www.vtk.org/files/release/${MY_PV}/VTK-${MY_PV2}.tar.gz
-	https://www.vtk.org/files/release/${MY_PV}/VTKData-${MY_PV2}.tar.gz
-	https://www.vtk.org/files/release/${MY_PV}/VTKDataFiles-${MY_PV2}.tar.gz
-	doc? ( https://www.vtk.org/files/release/${MY_PV}/vtkDocHtml-${MY_PV2}.tar.gz )
+	https://www.vtk.org/files/release/${MY_PV}/VTK-${PV}.tar.gz
+	doc? ( https://www.vtk.org/files/release/${MY_PV}/vtkDocHtml-${PV}.tar.gz )
 	examples? (
-		https://www.vtk.org/files/release/${MY_PV}/VTKLargeData-${MY_PV2}.tar.gz
-		https://www.vtk.org/files/release/${MY_PV}/VTKLargeDataFiles-${MY_PV2}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKLargeData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKLargeDataFiles-${PV}.tar.gz
 	)
 	test? (
-		https://www.vtk.org/files/release/${MY_PV}/VTKLargeData-${MY_PV2}.tar.gz
-		https://www.vtk.org/files/release/${MY_PV}/VTKLargeDataFiles-${MY_PV2}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKDataFiles-${PV}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKLargeData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKLargeDataFiles-${PV}.tar.gz
 	)
 "
-S="${WORKDIR}/VTK-${MY_PV2}"
+S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
@@ -281,8 +280,8 @@ src_prepare() {
 		ebegin "Copying data files to ${BUILD_DIR}"
 		mkdir -p "${BUILD_DIR}/ExternalData" || die
 		pushd "${BUILD_DIR}/ExternalData" >/dev/null || die
-		ln -sf "../../VTK-${MY_PV2}/.ExternalData/README.rst" . || die
-		ln -sf "../../VTK-${MY_PV2}/.ExternalData/SHA512" . || die
+		ln -sf "../../${S}/.ExternalData/README.rst" . || die
+		ln -sf "../../${S}/.ExternalData/SHA512" . || die
 		popd >/dev/null || die
 		eend "$?"
 	fi
