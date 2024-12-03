@@ -173,5 +173,6 @@ src_install() {
 	mkdir --parents "${D}"/etc/init.d/
 	if ! usex systemd '' 'y'; then
 		cp -vr "${FILESDIR}"/ds-inhibit "${D}"/etc/init.d/
+		chmod +x "${D}"/etc/init.d/ds-inhibit
 	fi
 }
