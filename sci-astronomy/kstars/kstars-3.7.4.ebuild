@@ -56,8 +56,9 @@ COMMON_DEPEND="
 	opencv? (
 		media-libs/opencv:=[ffmpeg]
 		|| (
-			media-libs/opencv[qt6]
-			media-libs/opencv[gtk3]
+			media-libs/opencv[qt5(-)]
+			media-libs/opencv[qt6(-)]
+			media-libs/opencv[gtk3(-)]
 		)
 	)
 	password? ( dev-libs/qtkeychain:=[qt5(+)] )
