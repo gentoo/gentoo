@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.24.1-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.21.1-fix-aliasing-violation.patch
+	"${FILESDIR}"/${PN}-1.24.8-c23.patch
 )
 
 src_prepare() {
