@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="doc embedded libusb policykit selinux systemd +udev"
+IUSE="embedded libusb policykit selinux systemd +udev"
 REQUIRED_USE="^^ ( udev libusb ) ${PYTHON_REQUIRED_USE}"
 
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
