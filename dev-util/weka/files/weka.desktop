@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Weka
+Comment=Waikato Environment for Knowledge Analysis
+Exec=/usr/bin/weka
+Icon=/usr/share/pixmaps/weka.ico
+Type=Application
+StartupNotify=false
+StartupWMClass=Weka
+Categories=Utility;Development
+Actions=new-empty-window;
+Keywords=weka
