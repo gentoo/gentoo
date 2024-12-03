@@ -5,5 +5,7 @@
 		<email>aud@asta.lgbt</email>
 		<name>Audrey Mendez-Pratt</name>
 	</maintainer>
-  <remote-id type="gitlab">evlaV/ds-inhibit</remote-id>
+  <upstream>
+    <remote-id type="gitlab">evlaV/ds-inhibit</remote-id>
+  </upstream>
 </pkgmetadata>
