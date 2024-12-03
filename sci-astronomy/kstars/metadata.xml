@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kstars</bugs-to>
+		<remote-id type="kde-invent">education/kstars</remote-id>
 	</upstream>
 	<use>
 		<flag name="opencv">Enable contrast type focus measures via <pkg>media-libs/opencv</pkg></flag>
