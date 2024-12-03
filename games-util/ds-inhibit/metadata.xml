@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>aud@asta.lgbt</email>
-		<name>Audrey Mendez-Pratt</name>
-	</maintainer>
-	<upstream>
-    <remote-id type="gitlab">evlaV/ds-inhibit</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>aud@asta.lgbt</email>
+    <name>Audrey Mendez-Pratt</name>
+  </maintainer>
+  <upstream>
+    <remote-ud type="gitlab">evlaV/ds-inhibit</remote-id>
+  </upstream>
 </pkgmetadata>
