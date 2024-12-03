@@ -19,10 +19,9 @@ fi
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="5"
-IUSE="opencv +password raw wcs"
+IUSE="opencv +password raw"
 
-# IUSE wcs needed by TestPolarAlign
-REQUIRED_USE="${PYTHON_REQUIRED_USE} test? ( wcs )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	>=dev-qt/qtdatavis3d-${QTMIN}:5
@@ -47,6 +46,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kplotting-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	sci-astronomy/wcslib:=
 	sci-libs/cfitsio:=
 	sci-libs/gsl:=
 	>=sci-libs/indilib-2.0.2
@@ -62,7 +62,6 @@ COMMON_DEPEND="
 	)
 	password? ( dev-libs/qtkeychain:=[qt5(+)] )
 	raw? ( media-libs/libraw:= )
-	wcs? ( sci-astronomy/wcslib:= )
 "
 # TODO: Add back when re-enabled by upstream
 # 	opengl? (
@@ -98,7 +97,6 @@ src_configure() {
 		$(cmake_use_find_package opencv OpenCV)
 		$(cmake_use_find_package password Qt5Keychain)
 		$(cmake_use_find_package raw LibRaw)
-		$(cmake_use_find_package wcs WCSLIB)
 	)
 
 	ecm_src_configure
