@@ -115,8 +115,9 @@ fi
 # @ECLASS_VARIABLE: JAVA_RESOURCE_DIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array of directories relative to ${S} which contain the
-# resources of the application. If you do not set the variable,
+# An array of files or directories relative to ${S} which contain the
+# resources of the application. Files are copied with parents directory,
+# directories are recursively copied. If you do not set the variable,
 # there will be no resources added to the compiled jar file.
 #
 # @CODE
@@ -339,8 +340,12 @@ java-pkg-simple_prepend_resources() {
 
 	# add resources directory to classpath
 	for resource in "${resources[@]}"; do
-		cp -rT "${resource:-.}" "${destination}"\
-			|| die "Could not copy resources from ${resource:-.} to ${destination}"
+		if [[ -f "${resource:-.}" ]]; then
+			cp --parents "${resource}" "${destination}"
+		else
+			cp -rT "${resource:-.}" "${destination}"
+		fi
+		[[ $? -ne 0 ]] && die "Could not copy resources from ${resource:-.} to ${destination}"
 	done
 }
 
