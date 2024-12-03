@@ -89,6 +89,10 @@ CMAKE_SKIP_TESTS=(
 	TestEkos{Capture,FilterWheel,Focus,Mount,Scheduler{,Ops},Simulator}
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch" # bug 895892
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PYKSTARS=OFF
