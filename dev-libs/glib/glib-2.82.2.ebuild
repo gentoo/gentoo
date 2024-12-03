@@ -317,6 +317,7 @@ multilib_src_configure() {
 multilib_src_test() {
 	export XDG_CONFIG_DIRS=/etc/xdg
 	export XDG_DATA_DIRS=/usr/local/share:/usr/share
+	# TODO: Use ${ABI} here to be unique for multilib?
 	export G_DBUS_COOKIE_SHA1_KEYRING_DIR="${T}/temp"
 	export LC_TIME=C # bug #411967
 	export TZ=UTC
@@ -328,7 +329,7 @@ multilib_src_test() {
 	addpredict /usr/b
 
 	# Related test is a bit nitpicking
-	mkdir "$G_DBUS_COOKIE_SHA1_KEYRING_DIR" || die
+	mkdir -p "$G_DBUS_COOKIE_SHA1_KEYRING_DIR" || die
 	chmod 0700 "$G_DBUS_COOKIE_SHA1_KEYRING_DIR" || die
 
 	meson_src_test --timeout-multiplier 20 --no-suite flaky
