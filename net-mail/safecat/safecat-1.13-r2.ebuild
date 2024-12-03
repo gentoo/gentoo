@@ -32,6 +32,8 @@ PATCHES=(
 	"${DISTDIR}"/${P}-clang-fixes.patch
 	# GCC15 fixes
 	"${FILESDIR}"/safecat-1.13-gcc15.patch
+	# Link fixes
+	"${FILESDIR}"/safecat-1.13-ar.patch
 )
 
 src_prepare() {
@@ -46,6 +48,7 @@ src_configure() {
 	echo "$(tc-getCC) ${CFLAGS} -Wno-discarded-qualifiers -Wno-misleading-indentation" > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo "$(tc-getAR)" > conf-ar || die
+	echo "$(tc-getRANLIB)" > conf-ranlib || die
 }
 
 src_install() {
