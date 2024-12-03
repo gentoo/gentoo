@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${MY_PV}/"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus network-map +ovf remote-api +usb"
 
 RDEPEND="
