@@ -1,0 +1,17 @@
+From aaf110d35ea191ef75407e6af6c9d142c123b6ad Mon Sep 17 00:00:00 2001
+From: Tor Andersson <tor@ccxvii.net>
+Date: Tue, 26 Nov 2024 20:16:35 +0100
+Subject: [PATCH] egl: fix fgPlatformDestroyContext prototype for C23
+
+C23 removes unprototyped functions, so this conflicted with the definition
+in fg_init_x11.c.
+--- a/thirdparty/freeglut/src/egl/fg_init_egl.h
++++ b/thirdparty/freeglut/src/egl/fg_init_egl.h
+@@ -28,6 +28,6 @@
+ 
+ extern void fghPlatformInitializeEGL();
+ extern void fghPlatformCloseDisplayEGL();
+-extern void fgPlatformDestroyContext();
++extern void fgPlatformDestroyContext(SFG_PlatformDisplay pDisplay, SFG_WindowContextType MContext);
+ 
+ #endif
