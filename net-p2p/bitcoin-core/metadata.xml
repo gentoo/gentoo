@@ -11,12 +11,10 @@
 	</maintainer>
 	<use>
 		<flag name="berkdb">Support legacy wallets in Berkeley DB format</flag>
-		<flag name="bitcoin-cli">Build and install bitcoin-cli command line interface</flag>
 		<flag name="cli">Build and install bitcoin-cli command line interface</flag>
 		<flag name="daemon">Build and install bitcoind daemon</flag>
 		<flag name="external-signer">Include support for external wallet signer programs</flag>
 		<flag name="gui">Build and install Bitcoin-Qt GUI</flag>
-		<flag name="libs">Build and install libbitcoinconsensus</flag>
 		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
 		<flag name="sqlite">Support descriptor wallets in SQLite format</flag>
