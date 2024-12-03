@@ -1,0 +1,13 @@
+diff --git a/SConstruct b/SConstruct
+index 3d831c9..f07feeb 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1201,7 +1201,7 @@ envDict = dict(BUILD_ROOT=buildDir,
+ if get_option('build-tools') == 'next':
+     SCons.Tool.DefaultToolpath.insert(0, os.path.abspath('site_scons/site_tools/next'))
+ 
+-env = Environment(variables=env_vars, **envDict)
++env = Environment(variables=env_vars, ENV={'PATH': os.environ['PATH']}, **envDict)
+ del envDict
+ 
+ if get_option('cache-signature-mode') == 'validate':
