@@ -224,6 +224,23 @@ multilib_src_configure() {
 			--force-fallback-for=glib
 			# Tell meson to make paths in pkgconfig files relative, because we arent doing an actual install
 			-Dpkgconfig.relocatable=true
+
+			# We want as minimal a build as possible here to speed things up
+			# and reduce the risk of failures.
+			-Dglib:selinux=disabled
+			-Dglib:xattr=false
+			-Dglib:libmount=disabled
+			-Dglib:man-pages=disabled
+			-Dglib:dtrace=false
+			-Dglib:systemtap=false
+			-Dglib:sysprof=disabled
+			-Dglib:documentation=false
+			-Dglib:tests=false
+			-Dglib:installed_tests=false
+			-Dglib:nls=disabled
+			-Dglib:oss_fuzz=disabled
+			-Dglib:libelf=disabled
+			-Dglib:multiarch=false
 		)
 
 		ORIG_SOURCE_DIR=${EMESON_SOURCE}
