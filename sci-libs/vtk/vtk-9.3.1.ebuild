@@ -39,7 +39,7 @@ LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
-# TODO: Like to simplifiy these. Mostly the flags related to Groups.
+# TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg +freetype gdal gles2-only imaging
 	java las +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
 	python qt5 qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
