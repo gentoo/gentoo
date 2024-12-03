@@ -138,6 +138,10 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # - optionally: the path to look for Cargo.toml in.
 #   - This will also replace the string "%commit%" with the commit's checksum.
 #   - Defaults to: "${crate}-%commit%"
+# - optionally: the git host so it would generate tarball download link.
+#   - E.g. gitlab
+#   - It fallbacks to detecting from URL if it's gitlab.com or github.com
+#     if no host provided.
 #
 # Example of a simple definition with no path to Cargo.toml:
 # @CODE
@@ -151,6 +155,13 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # declare -A GIT_CRATES=(
 # 	[rustpython-common]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/common"
 # 	[rustpython-parser]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/compiler/parser"
+# )
+# @CODE
+#
+# Example with host defined:
+# @CODE
+# declare -A GIT_CRATES=(
+#	[clapper]="https://gitlab.gnome.org/JanGernert/clapper-rs;530b6fd53a60563d8038f7a1d9d735d6dc496adb;clapper-rs-%commit%/libclapper-rs;gitlab"
 # )
 # @CODE
 
@@ -269,21 +280,37 @@ _cargo_set_crate_uris() {
 
 	if declare -p GIT_CRATES &>/dev/null; then
 		if [[ $(declare -p GIT_CRATES) == "declare -A"* ]]; then
-			local crate commit crate_uri crate_dir repo_ext feat_expr
+			local crate commit crate_uri crate_dir host repo_ext feat_expr
 
 			for crate in "${!GIT_CRATES[@]}"; do
-				IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+				IFS=';' read -r crate_uri commit crate_dir host <<< "${GIT_CRATES[${crate}]}"
 
-				case "${crate_uri}" in
-					https://github.com/*)
+				if [[ -z ${host} ]]; then
+					case "${crate_uri}" in
+						https://github.com/*)
+							host="github"
+						;;
+						https://gitlab.com/*)
+							host="gitlab"
+						;;
+					esac
+				fi
+
+				case "${host}" in
+					github)
 						repo_ext=".gh"
 						repo_name="${crate_uri##*/}"
 						crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
 					;;
-					https://gitlab.com/*)
+					gitlab)
 						repo_ext=".gl"
 						repo_name="${crate_uri##*/}"
 						crate_uri="${crate_uri%/}/-/archive/%commit%/${repo_name}-%commit%.tar.gz"
+					;;
+					gitea)
+						repo_ext=".gt"
+						repo_name="${crate_uri##*/}"
+						crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
 					;;
 					*)
 						repo_ext=
@@ -395,11 +422,11 @@ _cargo_gen_git_config() {
 	git_crates_type="$(declare -p GIT_CRATES 2>&-)"
 
 	if [[ ${git_crates_type} == "declare -A "* ]]; then
-		local crate commit crate_uri crate_dir
+		local crate commit crate_uri crate_dir host
 		local -A crate_patches
 
 		for crate in "${!GIT_CRATES[@]}"; do
-			IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+			IFS=';' read -r crate_uri commit crate_dir host <<< "${GIT_CRATES[${crate}]}"
 			: "${crate_dir:=${crate}-%commit%}"
 			crate_patches["${crate_uri}"]+="${crate} = { path = \"${WORKDIR}/${crate_dir//%commit%/${commit}}\" };;"
 		done
