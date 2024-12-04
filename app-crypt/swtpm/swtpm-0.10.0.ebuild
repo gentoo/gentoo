@@ -67,6 +67,7 @@ src_configure() {
 
 src_install() {
 	default
+	rm -fr "${ED}/usr/libexec/installed-tests/swtpm"
 	fowners -R tss:root /var/lib/swtpm-localca
 	fperms 750 /var/lib/swtpm-localca
 	keepdir /var/lib/swtpm-localca
