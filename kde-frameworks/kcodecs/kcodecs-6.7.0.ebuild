@@ -16,3 +16,9 @@ BDEPEND="
 	>=dev-qt/qttools-${QTMIN}:6[linguist]
 	dev-util/gperf
 "
+
+CMAKE_SKIP_TESTS=(
+	# bug 938317
+	rfc2047test
+	kemailaddresstest
+)

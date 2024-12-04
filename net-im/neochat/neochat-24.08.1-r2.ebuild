@@ -57,3 +57,10 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/prison-${KFMIN}:6[qml]
 "
 BDEPEND="virtual/pkgconfig"
+
+CMAKE_SKIP_TESTS=(
+	# bug 938530, i18n bs
+	eventhandlertest
+	# bug 909816, tries access /proc/PID/mem
+	texthandlertest # ki18n (KLocalizedString) failure
+)

@@ -1,0 +1,62 @@
+From 5c66594069b836e0fe806653e344f4e36d1e9c1e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 3 Dec 2024 19:46:01 +0100
+Subject: [PATCH] Thanks, but no thanks
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 091078e4c..af6ec66f4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -343,7 +343,7 @@ add_definitions(-DQT_NO_CAST_TO_ASCII)
+ # Needed for htmesh, and libraw
+ kde_enable_exceptions()
+ 
+-if (UNIX)
++if (0)
+ 
+   # TEMPORARY: To disable QCustomPlot warning until 2.0.0 is released which fixes these warnings
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-non-virtual-dtor")
+@@ -362,7 +362,7 @@ if (ANDROID)
+ endif ()
+ 
+ # Add security (hardening flags)
+-IF (UNIX OR APPLE OR ANDROID)
++IF (0)
+     SET(SEC_COMP_FLAGS "${SEC_COMP_FLAGS} -fstack-protector-all -Wcast-align -fPIE")
+     # This is ill-defined, but I searched for a solution for quite a long time to no avail
+     # - FORTIFY_SOURCE generates a warning when there is no code optimization, and warnings will become errors at some point
+@@ -394,7 +394,7 @@ IF (UNIX OR APPLE OR ANDROID)
+ ENDIF ()
+ 
+ # Clang Format support
+-IF (UNIX OR APPLE)
++IF (0)
+     SET(FORMAT_CODE OFF CACHE BOOL "Enable Clang Format")
+     IF (FORMAT_CODE MATCHES ON)
+         FILE(GLOB_RECURSE ALL_SOURCE_FILES *.c *.cpp *.h)
+@@ -415,7 +415,7 @@ ENDIF ()
+ 
+ SET(FIX_WARNINGS OFF CACHE BOOL "Enable strict compilation mode to turn compiler warnings to errors")
+ # Warning, debug and linker flags
+-IF (UNIX OR APPLE)
++IF (0)
+     SET(COMP_FLAGS "")
+     SET(LINKER_FLAGS "")
+     # Verbose warnings and turns all to errors
+@@ -479,7 +479,7 @@ ENDIF ()
+ 
+ # Sanitizer support
+ SET(SANITIZERS OFF CACHE BOOL "Sanitizer support for gcc and Clang")
+-IF (SANITIZERS AND
++IF (0 AND
+     ((UNIX AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang") OR CMAKE_COMPILER_IS_GNUCXX) OR
+      (APPLE AND (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR CMAKE_COMPILER_IS_GNUCXX))))
+     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address,undefined -fno-omit-frame-pointer")
+-- 
+2.47.1
+

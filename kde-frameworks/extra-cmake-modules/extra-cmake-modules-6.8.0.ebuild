@@ -17,6 +17,12 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="app-arch/libarchive[bzip2]"
+DEPEND="
+	test? (
+		>=dev-qt/qtbase-${QTMIN}:6[dbus,gui]
+		>=dev-qt/qtdeclarative-${QTMIN}:6
+	)
+"
 BDEPEND="
 	doc? (
 		${PYTHON_DEPS}
@@ -24,8 +30,8 @@ BDEPEND="
 		>=dev-qt/qttools-${QTMIN}:6[assistant]
 	)
 	test? (
-		>=dev-qt/qttools-${QTMIN}:6[linguist]
 		>=dev-qt/qtbase-${QTMIN}:6
+		>=dev-qt/qttools-${QTMIN}:6[linguist]
 	)
 "
 
@@ -53,6 +59,9 @@ src_configure() {
 		-DBUILD_MAN_DOCS=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
 	)
+	if use test; then
+		mycmakeargs+=( -DQT_MAJOR_VERSION=6 ) # bug 938316
+	fi
 
 	cmake_src_configure
 }
