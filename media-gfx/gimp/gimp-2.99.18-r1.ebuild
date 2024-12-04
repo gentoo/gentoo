@@ -54,7 +54,6 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.16:3[introspection]
 	>=x11-libs/pango-1.50.0
-	>=x11-libs/libXmu-1.1.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	fits? ( sci-libs/cfitsio )
@@ -81,7 +80,10 @@ COMMON_DEPEND="
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
 	webp? ( >=media-libs/libwebp-0.6.0:= )
 	wmf? ( >=media-libs/libwmf-0.2.8 )
-	X? ( x11-libs/libXcursor )
+	X? (
+		x11-libs/libXcursor
+		>=x11-libs/libXmu-1.1.4
+	)
 	xpm? ( x11-libs/libXpm )
 "
 
