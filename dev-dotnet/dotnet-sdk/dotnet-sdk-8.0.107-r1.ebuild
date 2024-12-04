@@ -63,10 +63,13 @@ NUGETS_DEPEND="
 	${EXTRA_NUGETS_DEPEND}
 "
 RDEPEND="
+	app-arch/brotli
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
 	dev-libs/openssl:=
+	dev-libs/rapidjson
 	dev-util/lttng-ust:=
+	sys-libs/libunwind
 	sys-libs/zlib:0/1
 "
 BDEPEND="
