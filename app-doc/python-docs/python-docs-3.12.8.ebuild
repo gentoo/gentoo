@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="HTML documentation for Python"
 HOMEPAGE="https://www.python.org/doc/"
 SRC_URI="https://www.python.org/ftp/python/doc/${PV}/python-${PV}-docs-html.tar.bz2"
-S="${WORKDIR}/python-3.12-docs-html"
+S="${WORKDIR}/python-${PV}-docs-html"
 
 LICENSE="PSF-2"
 SLOT="$(ver_cut 1-2)"
