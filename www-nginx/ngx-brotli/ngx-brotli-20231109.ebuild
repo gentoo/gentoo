@@ -1,0 +1,30 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+DESCRIPTION="NGINX module for Brotli compression"
+HOMEPAGE="https://github.com/google/ngx_brotli"
+
+NGX_BROTLI_P="ngx-brotli-a71f9312c2deb28875acc7bacfdd5695a111aa53"
+# A submodule.
+BROTLI_P="brotli-ed738e842d2fbdf2d6459e39267a633c4a9b2f5d"
+SRC_URI="
+	https://github.com/google/ngx_brotli/archive/${NGX_BROTLI_P#ngx-brotli-}.tar.gz -> ${NGX_BROTLI_P}.tar.gz
+	https://github.com/google/brotli/archive/${BROTLI_P#brotli-}.tar.gz -> ${BROTLI_P}.tar.gz
+"
+LICENSE="BSD-2"
+
+SLOT=0
+
+MY_PN="${PN//-/_}"
+inherit nginx-module
+
+NGINX_MOD_S="${WORKDIR}/${MY_PN}-${NGX_BROTLI_P#ngx-brotli-}"
+
+src_unpack() {
+	nginx-module_src_unpack
+
+	# Move submodule to its place.
+	rmdir "${NGINX_MOD_S}/deps/brotli" || die "rmdir failed"
+	mv "./${BROTLI_P}" "${NGINX_MOD_S}/deps/brotli" || die "mv failed"
+}
