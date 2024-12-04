@@ -116,13 +116,26 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of files or directories relative to ${S} which contain the
-# resources of the application. Files are copied with parents directory,
+# resources of the application. Files are copied without parents directory,
 # directories are recursively copied. If you do not set the variable,
 # there will be no resources added to the compiled jar file.
 #
 # @CODE
 #	JAVA_RESOURCE_DIRS=("src/java/resources/")
 # @CODE
+#
+# It's possible to define a different destination path with the
+# following syntax:
+#
+# @CODE
+#	JAVA_RESOURCE_DIRS=(
+#		"src/java/resources/ -> path/to/other/dir"
+#	)
+# @CODE
+#
+# where the source folder "resources" will be copied recursively
+# below "path/to/other/dir/" (the new destination folder is
+# automatically created when needed).
 
 # @ECLASS_VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
@@ -323,7 +336,7 @@ java-pkg-simple_test_with_pkgdiff_() {
 # @USAGE: java-pkg-simple_prepend-resources <${classes}> <"${RESOURCE_DIRS[@]}">
 # @INTERNAL
 # @DESCRIPTION:
-# Copy things under "${JAVA_RESOURCE_DIRS[@]}" or "${JAVA_TEST_RESOURCE_DIRS[@]}"
+# Copy files or directories listed in "${JAVA_RESOURCE_DIRS[@]}" or "${JAVA_TEST_RESOURCE_DIRS[@]}"
 # to ${classes}, so that `jar` will package resources together with classes.
 #
 # Note that you need to define a "classes" variable before calling
@@ -334,18 +347,46 @@ java-pkg-simple_prepend_resources() {
 	local destination="${1}"
 	shift 1
 
-	# return if there is no resource dirs defined
+	# return if there is no resource defined
 	[[ "$@" ]] || return
 	local resources=("${@}")
+	local dir_destination
+	local resource_regexp="[ ]*([^\ ]*)[ ]*->[ ]*([^\ ]*)[ ]*"
 
-	# add resources directory to classpath
+	# add resources to classpath
 	for resource in "${resources[@]}"; do
-		if [[ -f "${resource:-.}" ]]; then
-			cp --parents "${resource}" "${destination}"
+		# support of syntax ->
+		if [[ $resource =~ $resource_regexp ]] ; then
+			dir_destination=${BASH_REMATCH[2]}
+			resource=${BASH_REMATCH[1]}
+
+			mkdir -p "${destination}/${dir_destination}"
 		else
-			cp -rT "${resource:-.}" "${destination}"
+			dir_destination=""
 		fi
-		[[ $? -ne 0 ]] && die "Could not copy resources from ${resource:-.} to ${destination}"
+
+		resource=${resource:-.}
+
+		# support resources specified as wildcards
+		for res in $resource
+		do
+			[[ ! -e $res ]] && die "resource '$res' does not exist"
+
+			if [[ -f "${res}" ]]; then
+				if [[ -z $dir_destination ]] ; then
+					cp "${res}" "${destination}"
+				else
+					cp "${res}" "${destination}/${dir_destination}/"
+				fi
+			else
+				if [[ -z ${dir_destination} ]] ; then
+					cp -r "${res}" "${destination}"
+				else
+					cp -r "${res}" "${destination}/${dir_destination}/"
+				fi
+			fi
+			[[ $? -ne 0 ]] && die "Could not copy resources from ${res} to ${destination}"
+		done
 	done
 }
 
