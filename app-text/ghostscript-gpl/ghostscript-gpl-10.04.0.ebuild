@@ -127,7 +127,9 @@ src_configure() {
 	filter-lto
 
 	# bug #943857
-	append-cflags -std=gnu17
+	# Build system passes CFLAGS to C++ compiler (bug #945826)
+	tc-export CC
+	CC+=" -std=gnu17"
 
 	# bug #899952
 	append-lfs-flags
