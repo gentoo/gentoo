@@ -32,17 +32,20 @@ DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
 	https://github.com/dotnet/dotnet/"
 SRC_URI="
-amd64? (
-	elibc_glibc? (
-		https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}-prepared-gentoo-amd64.tar.xz
+	amd64? (
+		elibc_glibc? (
+			https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}-prepared-gentoo-amd64.tar.xz
+		)
+		elibc_musl? (
+			https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}-prepared-gentoo-musl-amd64.tar.xz
+		)
 	)
-)
 "
 S="${WORKDIR}/${PN}-${RUNTIME_SLOT}"
 
 LICENSE="MIT"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
-# KEYWORDS="~amd64"  # KEYWORD-less for testing and since musl is not prepared yet.
+# KEYWORDS="~amd64"  # KEYWORD-less for testing.
 
 # STRIP="llvm-strip" corrupts some executables when using the patchelf hack.
 # Be safe and restrict it for source-built too, bug https://bugs.gentoo.org/923430
@@ -171,6 +174,9 @@ src_prepare() {
 	unset DOTNET_ROOT
 	unset NUGET_PACKAGES
 
+	unset CLR_ICU_VERSION_OVERRIDE
+	unset USER_CLR_ICU_VERSION_OVERRIDE
+
 	export DOTNET_CLI_TELEMETRY_OPTOUT="1"
 	export DOTNET_NUGET_SIGNATURE_VERIFICATION="false"
 	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE="1"
@@ -208,12 +214,13 @@ src_compile() {
 		# How it should be built.
 		--source-build
 		--clean-while-building
-		--with-system-libs "+brotli+libunwind+rapidjson+zlib+"
+		--with-system-libs "+brotli+icu+libunwind+rapidjson+zlib+"
 		--configuration "Release"
 
 		# Auxiliary options.
 		--
 		-maxCpuCount:"$(makeopts_jobs)"
+		-p:MaxCpuCount="$(makeopts_jobs)"
 		-p:ContinueOnPrebuiltBaselineError="true"
 
 		# Verbosity settings.
@@ -231,11 +238,14 @@ src_install() {
 	dodir "${dest}"
 
 	ebegin "Extracting the .NET SDK archive"
-	tar xzf artifacts/*/Release/${PN}-${SDK_SLOT}.*.tar.gz -C "${ED}/${dest}"
+	tar xzf ./artifacts/*/Release/${PN}-${SDK_SLOT}.*.tar.gz -C "${ED}/${dest}"
 	eend ${?} || die "extraction failed"
 
 	fperms 0755 "${dest}"
 	dosym -r "${dest}/dotnet" "/usr/bin/dotnet-${SDK_SLOT}"
+
+	# Fix permissions again for what is already marked as executable.
+	find "${ED}" -type f -executable -exec chmod +x {} + || die
 }
 
 pkg_postinst() {
