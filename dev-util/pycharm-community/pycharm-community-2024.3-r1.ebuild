@@ -185,7 +185,7 @@ src_install() {
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	dodir /usr/lib/sysctl.d
 	cat > "${ED}/usr/lib/sysctl.d/30-${PN}-inotify-watches.conf" <<-EOF || die
-		fs.inotify.max_user_watches = 524288"
+		fs.inotify.max_user_watches = 524288
 	EOF
 }
 
