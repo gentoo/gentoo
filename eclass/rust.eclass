@@ -98,26 +98,6 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 	"1.54.0"
 )
 
-# == user control knobs ==
-
-# @ECLASS_VARIABLE: ERUST_SLOT
-# @USER_VARIABLE
-# @DESCRIPTION:
-# Specify the version (slot) of Rust to be used by the package. This is
-# useful for troubleshooting and debugging purposes; If unset, the newest
-# acceptable Rust version will be used. May be combined with ERUST_TYPE.
-# This variable must not be set in ebuilds.
-
-# @ECLASS_VARIABLE: ERUST_TYPE
-# @USER_VARIABLE
-# @DESCRIPTION:
-# Specify the type of Rust to be used by the package from options:
-# 'source' or 'binary' (-bin). This is useful for troubleshooting and
-# debugging purposes. If unset, the standard eclass logic will be used
-# to determine the type of Rust to use (i.e. prefer source if binary
-# is also available). May be combined with ERUST_SLOT.
-# This variable must not be set in ebuilds.
-
 # == control variables ==
 
 # @ECLASS_VARIABLE: RUST_MAX_VER
@@ -352,10 +332,6 @@ _get_rust_slot() {
 			fi
 		fi
 
-		if [[ -n "${ERUST_SLOT}" && "${slot}" != "${ERUST_SLOT}" ]]; then
-			continue
-		fi
-
 		# If we're in LLVM mode we can skip any slots that don't match the selected USE
 		if [[ -n "${RUST_NEEDS_LLVM}" ]]; then
 			if [[ "${llvm_slot}" != "${llvm_r1_slot}" ]]; then
@@ -369,27 +345,12 @@ _get_rust_slot() {
 			rust_check_deps && return
 		else
 			local usedep="${RUST_REQ_USE+[${RUST_REQ_USE}]}"
-			# When checking for installed packages prefer the source package;
+			# When checking for installed packages prefer the non `-bin` package
 			# if effort was put into building it we should use it.
-			local rust_pkgs
-			case "${ERUST_TYPE}" in
-				source)
-					rust_pkgs=(
-						"dev-lang/rust:${slot}${usedep}"
-					)
-					;;
-				binary)
-					rust_pkgs=(
-						"dev-lang/rust-bin:${slot}${usedep}"
-					)
-					;;
-				*)
-					rust_pkgs=(
-						"dev-lang/rust:${slot}${usedep}"
-						"dev-lang/rust-bin:${slot}${usedep}"
-					)
-					;;
-			esac
+			local rust_pkgs=(
+				"dev-lang/rust:${slot}${usedep}"
+				"dev-lang/rust-bin:${slot}${usedep}"
+			)
 			local _pkg
 			for _pkg in "${rust_pkgs[@]}"; do
 				if has_version "${hv_switch}" "${_pkg}"; then
