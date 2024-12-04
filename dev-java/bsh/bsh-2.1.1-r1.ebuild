@@ -44,7 +44,7 @@ PATCHES=( "${FILESDIR}/bsh-2.1.1-skip-tests.patch" )
 
 JAVA_LAUNCHER_FILENAME="bsh-console"
 JAVA_MAIN_CLASS="bsh.Console"
-JAVA_RESOURCE_DIRS=(
+JAVA_RESOURCES=(
 	"src/bsh/commands/*.bsh     -> bsh/commands"
 	"src/bsh/servlet/*.template -> bsh/servlet"
 	"src/bsh/servlet/*.bsh      -> bsh/servlet"
