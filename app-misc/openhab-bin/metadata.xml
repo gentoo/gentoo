@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">openhab/openhab-core</remote-id>
+		<changelog>https://github.com/openhab/openhab-distro/releases</changelog>
 	</upstream>
 </pkgmetadata>
