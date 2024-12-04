@@ -228,6 +228,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	rust_pkg_setup
 	use jit && llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
