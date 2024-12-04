@@ -26,7 +26,7 @@ else
 	[[ ${QTC_PV} == ${PV} ]] && QTC_REL=official || QTC_REL=development
 	SRC_URI="
 		https://download.qt.io/${QTC_REL}_releases/qtcreator/$(ver_cut 1-2)/${PV/_/-}/${QTC_P}.tar.xz
-		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+		https://dev.gentoo.org/~ionen/distfiles/${QTC_P}-vendor.tar.xz
 	"
 	S=${WORKDIR}/${QTC_P}
 	KEYWORDS="~amd64"
@@ -112,7 +112,7 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
-		cd "${S}/src/libs/gocmdbridge/server" || die
+		cd -- "${S}"/src/libs/gocmdbridge/server || die
 		edo go mod vendor
 	else
 		default
@@ -125,6 +125,9 @@ src_prepare() {
 	# needed for finding docs at runtime in PF
 	sed -e "/_IDE_DOC_PATH/s/qtcreator/${PF}/" \
 		-i cmake/QtCreatorAPIInternal.cmake || die
+
+	# avoid stripping for Go, use sed to avoid rebases as may be there forever
+	sed -i 's/-s -w //' src/libs/gocmdbridge/server/CMakeLists.txt || die
 
 	if use plugin-dev; then #928423
 		# cmake --install --component integrates poorly with the cmake
