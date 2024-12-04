@@ -19,7 +19,7 @@ KEYWORDS="amd64 arm64 ppc64"
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
 
-JAVA_RESOURCE_DIRS=(
+JAVA_RESOURCES=(
 	"dtd/*                           -> javax/servlet/resources"
 	"javax/servlet/*.properties      -> javax/servlet"
 	"javax/servlet/http/*.properties -> javax/servlet/http"
