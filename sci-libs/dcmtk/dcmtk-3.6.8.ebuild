@@ -11,7 +11,7 @@ SRC_URI="https://dicom.offis.de/download/dcmtk/release/${P}.tar.gz"
 
 LICENSE="OFFIS"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc png ssl tcpd tiff +threads xml zlib"
 
 RDEPEND="
