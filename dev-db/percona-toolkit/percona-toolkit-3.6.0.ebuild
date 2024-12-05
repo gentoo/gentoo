@@ -22,7 +22,7 @@ COMMON_DEPEND="dev-perl/DBI
 RDEPEND="${COMMON_DEPEND}
 	dev-perl/JSON
 	dev-perl/Role-Tiny
-	dev-perl/TermReadKey"
+	dev-perl/TermReadKey
 	dev-perl/libwww-perl
 	virtual/perl-Digest-MD5
 	virtual/perl-File-Path
@@ -31,7 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/perl-Getopt-Long
 	virtual/perl-IO-Compress
 	virtual/perl-Scalar-List-Utils
-	virtual/perl-Time-Local
+	virtual/perl-Time-Local"
 DEPEND="${COMMON_DEPEND}
 	virtual/perl-ExtUtils-MakeMaker"
 
