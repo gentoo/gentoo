@@ -8,7 +8,7 @@ PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/.}
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 pypi
+inherit check-reqs distutils-r1 pypi
 
 DESCRIPTION="Oslo Utility library"
 HOMEPAGE="
@@ -36,6 +36,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
 	test? (
+		app-cdr/cdrtools
 		app-emulation/qemu
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
@@ -46,6 +47,17 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+# note this only applies to USE=test
+CHECKREQS_DISK_BUILD=8G
+
+pkg_pretend() {
+	use test && check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	use test && check-reqs_pkg_setup
+}
 
 src_prepare() {
 	distutils-r1_src_prepare
