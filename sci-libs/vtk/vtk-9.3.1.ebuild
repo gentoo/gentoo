@@ -51,7 +51,7 @@ REQUIRED_USE="
 		boost cgns ffmpeg freetype gdal imaging las mysql netcdf odbc opencascade openvdb pdal
 		postgres rendering views
 	)
-	cuda? ( video_cards_nvidia vtkm !tbb )
+	cuda? ( video_cards_nvidia vtkm )
 	java? ( rendering )
 	minimal? ( !rendering )
 	!minimal? ( cgns netcdf rendering )
@@ -156,6 +156,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.3.0-opencascade.patch"
 	"${FILESDIR}/${PN}-9.3.0-ThrustPatches.patch"
 	"${FILESDIR}/${PN}-9.3.0-ThirdParty-gcc15.patch"
+	"${FILESDIR}/${PN}-9.3.0-update-for-cuda-12.6.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
@@ -186,54 +187,153 @@ vtk_check_reqs() {
 	"check-reqs_pkg_${EBUILD_PHASE}"
 }
 
-vtk_check_compiler() {
-	[[ -z "$1" ]] && die "no compiler specified"
-	local compiler="$1"
-	local package="sys-devel/${compiler}"
-	local version="${package}"
-	local CUDAHOSTCXX_test
-	while
-		CUDAHOSTCXX="${CUDAHOSTCXX_test}"
-		version=$(best_version "${version}")
-		if [[ -z "${version}" ]]; then
-			if [[ -z "${CUDAHOSTCXX}" ]]; then
-				die "could not find supported version of ${package}"
+cuda_get_host_compiler() {
+	if [[ -n "${NVCC_CCBIN}" ]]; then
+		echo "${NVCC_CCBIN}"
+		return
+	fi
+
+	if [[ -n "${CUDAHOSTCXX}" ]]; then
+		echo "${CUDAHOSTCXX}"
+		return
+	fi
+
+	einfo "Trying to find working CUDA host compiler"
+
+	if ! tc-is-gcc && ! tc-is-clang; then
+		die "$(tc-get-compiler-type) compiler is not supported"
+	fi
+
+	local compiler compiler_type compiler_version
+	local package package_version
+	local NVCC_CCBIN_default
+
+	compiler_type="$(tc-get-compiler-type)"
+	compiler_version="$("${compiler_type}-major-version")"
+
+	# try the default compiler first
+	NVCC_CCBIN="$(tc-getCXX)"
+	NVCC_CCBIN_default="${NVCC_CCBIN}-${compiler_version}"
+
+	compiler="${NVCC_CCBIN/%-${compiler_version}}"
+
+	# store the package so we can re-use it later
+	package="sys-devel/${compiler_type}"
+	package_version="${package}"
+
+	ebegin "testing ${NVCC_CCBIN_default} (default)"
+
+	while ! nvcc -v -ccbin "${NVCC_CCBIN}" - -x cu <<<"int main(){}" &>> "${T}/cuda_get_host_compiler.log" ; do
+		eend 1
+
+		while true; do
+			# prepare next version
+			if ! package_version="<$(best_version "${package_version}")"; then
+				die "could not find a supported version of ${compiler}"
 			fi
-			break
-		fi
-		CUDAHOSTCXX_test="$(
-			dirname "$(
-				realpath "$(
-					which "${compiler}-$(echo "${version}" | grep -oP "(?<=${package}-)[0-9]*")"
-				)"
-			)"
+
+			NVCC_CCBIN="${compiler}-$(ver_cut 1 "${package_version/#<${package}-/}")"
+
+			[[ "${NVCC_CCBIN}" != "${NVCC_CCBIN_default}" ]] && break
+		done
+		ebegin "testing ${NVCC_CCBIN}"
+	done
+	eend $?
+
+	# clean temp file
+	rm -f a.out
+
+	echo "${NVCC_CCBIN}"
+	export NVCC_CCBIN
+}
+
+cuda_get_host_native_arch() {
+	[[ -n ${CUDAARCHS} ]] && echo "${CUDAARCHS}"
+
+	__nvcc_device_query || die "failed to query the native device"
+}
+
+vtk_add_sandbox() {
+	local WRITE=()
+
+	# mesa via virtx will make use of udmabuf if it exists
+	[[ -c "/dev/udmabuf" ]] && WRITE+=( "/dev/udmabuf" )
+
+	readarray -t dris <<<"$(
+		for dri in /sys/class/drm/*/dev; do
+			realpath "/dev/char/$(cat "${dri}")"
+			eqawarn "dri ${dri} $(cat "${dri}") $(realpath "/dev/char/$(cat "${dri}")")"
+		done
+	)"
+
+	[[ -n "${dris[*]}" ]] && WRITE+=( "${dris[@]}" )
+
+	if [[ -d /sys/module/nvidia ]]; then
+		# /dev/nvidia{0-9}
+		readarray -t nvidia_devs <<<"$(
+			find /dev -regextype posix-extended  -regex '/dev/nvidia(|-(nvswitch|vgpu))[0-9]*'
 		)"
-		version="<${version}"
-	do ! echo "int main(){}" | nvcc "-ccbin=${CUDAHOSTCXX_test}" - -x cu &>/dev/null; done
+		[[ -n "${nvidia_devs[*]}" ]] && WRITE+=( "${nvidia_devs[@]}" )
+
+		WRITE+=(
+			"/dev/nvidiactl"
+			"/dev/nvidia-modeset"
+
+			"/dev/nvidia-vgpuctl"
+
+			"/dev/nvidia-nvlink"
+			"/dev/nvidia-nvswitchctl"
+
+			"/dev/nvidia-uvm"
+			"/dev/nvidia-uvm-tools"
+
+			# "/dev/nvidia-caps/nvidia-cap%d"
+			"/dev/nvidia-caps/"
+			# "/dev/nvidia-caps-imex-channels/channel%d"
+			"/dev/nvidia-caps-imex-channels/"
+		)
+	fi
+
+	# for portage
+	WRITE+=( "/proc/self/task/" )
+
+	local dev
+	for dev in "${WRITE[@]}"; do
+		[[ ! -e "${dev}" ]] && return
+
+		[[ -w "${dev}" ]] && return
+
+		eqawarn "addwrite ${dev}"
+		addwrite "${dev}"
+		if [[ ! -d "${dev}" ]] && [[ ! -w "${dev}" ]]; then
+			eerror "can not access ${dev} after addwrite"
+		fi
+	done
 }
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && has openmp && tc-check-openmp
 
-	if [[ $(tc-is-gcc) && $(gcc-majorversion) = 11 ]] && use cuda ; then
-		# FIXME: better use eerror?
-		ewarn "GCC 11 is know to fail building with CUDA support in some cases."
-		ewarn "See bug #820593"
-	fi
-
 	vtk_check_reqs
+
+	# When building binpkgs you probably want to include all targets
+	if use cuda && [[ ${MERGE_TYPE} == "buildonly" ]] && [[ -n "${CUDA_GENERATION}" || -n "${CUDA_ARCH_BIN}" ]]; then
+		local info_message="When building a binary package it's recommended to unset CUDA_GENERATION and CUDA_ARCH_BIN"
+		einfo "$info_message so all available architectures are build."
+	fi
 }
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && has openmp && tc-check-openmp
 
-	if [[ $(tc-is-gcc) && $(gcc-majorversion) = 11 ]] && use cuda ; then
-		# FIXME: better use eerror?
-		ewarn "GCC 11 is know to fail building with CUDA support in some cases."
-		ewarn "See bug #820593"
-	fi
-
 	vtk_check_reqs
+
+	if use cuda && [[ ! -e /dev/nvidia-uvm ]]; then
+		# NOTE We try to load nvidia-uvm and nvidia-modeset here,
+		# so __nvcc_device_query does not fail later.
+
+		nvidia-modprobe -m -u -c 0 || true
+	fi
 
 	use java && java-pkg-opt-2_pkg_setup
 	use python && python-single-r1_pkg_setup
@@ -436,15 +536,36 @@ src_configure() {
 
 	if use cuda; then
 		cuda_add_sandbox -w
-		tc-is-gcc && vtk_check_compiler "gcc"
-		tc-is-clang && vtk_check_compiler "clang"
-		[[ -z "${CUDAARCHS}" ]] && einfo "trying to determine host CUDAARCHS"
-		: "${CUDAARCHS:=$(__nvcc_device_query)}"
-		einfo "building for CUDAARCHS = ${CUDAARCHS}"
+		addwrite "/proc/self/task"
 
-		export CUDAARCHS
-		export CUDAHOSTCXX
-		unset NVCCFLAGS
+		if ! test -w /dev/nvidiactl; then
+			# eqawarn "Can't access the GPU at /dev/nvidiactl."
+			# eqawarn "User $(id -nu) is not in the group \"video\"."
+			if [[ -z "${CUDA_GENERATION}" ]] && [[ -z "${CUDA_ARCH_BIN}" ]]; then
+				# build all targets
+				mycmakeargs+=(
+					-DCUDA_GENERATION=""
+				)
+			fi
+		else
+			local -x CUDAARCHS
+			: "${CUDAARCHS:="$(cuda_get_host_native_arch)"}"
+		fi
+
+		# set NVCC_CCBIN
+		local -x CUDAHOSTCXX CUDAHOSTLD
+		CUDAHOSTCXX="$(cuda_get_host_compiler)"
+		CUDAHOSTLD="$(tc-getCXX)"
+		export NVCC_CCBIN="${CUDAHOSTCXX}"
+
+		if tc-is-gcc; then
+			# Filter out IMPLICIT_LINK_DIRECTORIES picked up by CMAKE_DETERMINE_COMPILER_ABI(CUDA)
+			# See /usr/share/cmake/Help/variable/CMAKE_LANG_IMPLICIT_LINK_DIRECTORIES.rst
+			CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES_EXCLUDE=$(
+				"${CUDAHOSTLD}" -E -v - <<<"int main(){}" |& \
+				grep LIBRARY_PATH | cut -d '=' -f 2 | cut -d ':' -f 1
+			)
+		fi
 	fi
 
 	if use debug; then
@@ -695,9 +816,7 @@ src_compile() {
 }
 
 src_test() {
-	if use cuda; then
-		cuda_add_sandbox -w
-	fi
+	vtk_add_sandbox
 
 	# don't work at all
 	REALLY_BAD_TESTS=(
