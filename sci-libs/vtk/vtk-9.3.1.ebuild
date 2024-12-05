@@ -42,7 +42,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg +freetype gdal gles2-only imaging
 	java las +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
-	python qt5 qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
+	python qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
 
 RESTRICT="!test? ( test )"
 
@@ -56,7 +56,6 @@ REQUIRED_USE="
 	minimal? ( !rendering )
 	!minimal? ( cgns netcdf rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	qt5? ( rendering )
 	qt6? ( rendering )
 	sdl? ( rendering )
 	tk? ( python rendering )
@@ -111,20 +110,11 @@ RDEPEND="
 		$(python_gen_cond_dep 'mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )')
 		$(python_gen_cond_dep 'rendering? ( dev-python/matplotlib[${PYTHON_USEDEP}] )')
 	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtopengl:5
-		dev-qt/qtquickcontrols2:5
-		dev-qt/qtsql:5
-		dev-qt/qtwidgets:5
-	)
 	qt6? (
-		!qt5? (
-			dev-qt/qtbase:6[gui,opengl,sql,widgets]
-			dev-qt/qtdeclarative:6[opengl]
-			dev-qt/qtshadertools:6
-			x11-libs/libxkbcommon
-		)
+		dev-qt/qtbase:6[gui,opengl,sql,widgets]
+		dev-qt/qtdeclarative:6[opengl]
+		dev-qt/qtshadertools:6
+		x11-libs/libxkbcommon
 	)
 	sdl? ( media-libs/libsdl2 )
 	rendering? (
@@ -231,8 +221,6 @@ pkg_pretend() {
 		ewarn "See bug #820593"
 	fi
 
-	use qt6 && use qt5 && ewarn "Both qt5 and qt6 USE flags have been selected. Using qt5!"
-
 	vtk_check_reqs
 }
 
@@ -244,8 +232,6 @@ pkg_setup() {
 		ewarn "GCC 11 is know to fail building with CUDA support in some cases."
 		ewarn "See bug #820593"
 	fi
-
-	use qt6 && use qt5 && ewarn "Both qt5 and qt6 USE flags have been selected. Using qt5!"
 
 	vtk_check_reqs
 
@@ -570,32 +556,23 @@ src_configure() {
 		use rendering && mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_PythonContext2D="YES" )
 	fi
 
-	if use qt5; then
-		# prefer Qt5: https://wiki.gentoo.org/wiki/Project:qt/Policies
-		mycmakeargs+=(
-			-DCMAKE_INSTALL_QMLDIR="${EPREFIX}/usr/$(get_libdir)/qt5/qml"
-			-DVTK_QT_VERSION="5"
-		)
-		has_version "dev-qt/qtopengl:5[gles2-only]" || use gles2-only && mycmakeargs+=(
-			# Force using EGL & GLES
-			-DVTK_OPENGL_HAS_EGL=ON
-			-DVTK_OPENGL_USE_GLES=ON
-		)
-	elif use qt6; then
+	if use qt6; then
 		mycmakeargs+=(
 			-DCMAKE_INSTALL_QMLDIR="${EPFREIX}/usr/$(get_libdir)/qt6/qml"
 			-DVTK_QT_VERSION="6"
 		)
-		has_version "dev-qt/qtbase:6[gles2-only]" || use gles2-only && mycmakeargs+=(
-			# Force using EGL & GLES
-			-DVTK_OPENGL_HAS_EGL=ON
-			-DVTK_OPENGL_USE_GLES=ON
-		)
+		if has_version "dev-qt/qtbase:6[gles2-only]" || use gles2-only; then
+			mycmakeargs+=(
+				# Force using EGL & GLES
+				-DVTK_OPENGL_HAS_EGL=ON
+				-DVTK_OPENGL_USE_GLES=ON
+			)
+		fi
 	else
 		mycmakeargs+=( -DVTK_GROUP_ENABLE_Qt="NO" )
 	fi
 
-	if use qt5 || use qt6; then
+	if use qt6; then
 		mycmakeargs+=(
 			-DVTK_GROUP_ENABLE_Qt:STRING="YES"
 			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="YES"
