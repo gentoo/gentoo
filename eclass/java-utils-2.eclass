@@ -1938,20 +1938,11 @@ etestng() {
 		tests+="${test},"
 	done
 
-	local test_resource_args=()
-	for res in ${JAVA_TEST_RESOURCES[@]}
-	do
-		for res1 in $res
-		do
-			test_resource_args+="-Dtest.resources.dir=${res1}"
-		done
-	done
-
 	local args=(
 		-cp ${cp}
 		-Djava.io.tmpdir="${T}"
 		-Djava.awt.headless=true
-		${test_resource_args[@]}
+		-Dtest.resources.dir="${JAVA_TEST_RESOURCE_DIRS}"
 		${JAVA_TEST_EXTRA_ARGS[@]}
 		${runner}
 		${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}
