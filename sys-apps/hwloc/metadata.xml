@@ -28,6 +28,8 @@
 		<flag name="X">use the X Window System</flag>
 	</use>
 	<upstream>
+		<doc>https://www.open-mpi.org/projects/hwloc/doc/</doc>
+		<bugs-to>https://github.com/open-mpi/hwloc/issues</bugs-to>
 		<remote-id type="github">open-mpi/hwloc</remote-id>
 	</upstream>
 </pkgmetadata>
