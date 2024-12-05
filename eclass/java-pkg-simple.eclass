@@ -129,26 +129,29 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of files or directories relative to ${S} which contain the
-# resources of the application. Files are copied without parents directory,
+# resources of the application. Files are copied without parent directories,
 # directories are recursively copied. If you do not set the variable,
-# there will be no resources added to the compiled jar file.
+# then no resources will be added to the compiled jar file.
 #
 # @CODE
 #	JAVA_RESOURCES=("src/java/resources/")
 # @CODE
 #
-# It's possible to define a different destination path with the
-# following syntax:
+# It's possible to use bash wildcards or define a different destination path
+# with the following syntax:
 #
 # @CODE
 #	JAVA_RESOURCES=(
-#		"src/java/resources/ -> path/to/other/dir"
+#		"src/java/resources/             -> path/to/other/dir"
+#		"src/java/resources2/single_file -> path/to/other/dir2"
+#		"src/java/resources3/*"
 #	)
 # @CODE
 #
 # where the source folder "resources" will be copied recursively
 # below "path/to/other/dir/" (the new destination folder is
-# automatically created when needed).
+# automatically created when needed). When pointing to files, the name
+# cannot be changed.
 
 # @ECLASS_VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
