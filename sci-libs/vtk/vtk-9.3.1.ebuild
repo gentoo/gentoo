@@ -40,16 +40,16 @@ SLOT="0/${MY_PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 # TODO: Like to simplify these. Mostly the flags related to Groups.
-IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg +freetype gdal gles2-only imaging
+IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg gdal gles2-only imaging
 	java las +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
-	python qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
+	python qt6 +rendering sdl tbb test +threads tk +truetype video_cards_nvidia +views vtkm web"
 
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	all-modules? (
-		boost cgns ffmpeg freetype gdal imaging las mysql netcdf odbc opencascade openvdb pdal
-		postgres rendering views
+		boost cgns ffmpeg gdal imaging las mysql netcdf odbc opencascade openvdb pdal
+		postgres rendering truetype views
 	)
 	cuda? ( video_cards_nvidia vtkm )
 	java? ( rendering )
@@ -60,7 +60,7 @@ REQUIRED_USE="
 	sdl? ( rendering )
 	tk? ( python rendering )
 	web? ( python )
-	rendering? ( freetype views )
+	rendering? ( truetype views )
 "
 
 # eigen, nlohmann_json, pegtl and utfcpp are referenced in the cmake files
@@ -89,7 +89,6 @@ RDEPEND="
 	cgns? ( >=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=] )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:= )
-	freetype? ( media-libs/fontconfig )
 	gdal? ( sci-libs/gdal:= )
 	java? ( >=virtual/jdk-11:= )
 	las? ( sci-geosciences/liblas )
@@ -127,6 +126,7 @@ RDEPEND="
 	)
 	tbb? ( dev-cpp/tbb:= )
 	tk? ( dev-lang/tk:= )
+	truetype? ( media-libs/fontconfig )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 	views? (
 		x11-libs/libICE
@@ -429,14 +429,14 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_IOPDAL="$(usex pdal "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOXML="YES"
 		-DVTK_MODULE_ENABLE_VTK_IOXMLParser="YES"
-		-DVTK_MODULE_ENABLE_VTK_RenderingFreeType="$(usex freetype "YES" "NO")"
-		-DVTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig="$(usex freetype "YES" "NO")"
+		-DVTK_MODULE_ENABLE_VTK_RenderingFreeType="$(usex truetype "YES" "NO")"
+		-DVTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig="$(usex truetype "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_cgns="$(usex cgns "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_doubleconversion="YES"
 		-DVTK_MODULE_ENABLE_VTK_eigen="YES"
 		-DVTK_MODULE_ENABLE_VTK_expat="YES"
 		-DVTK_MODULE_ENABLE_VTK_fmt="YES"
-		-DVTK_MODULE_ENABLE_VTK_freetype="YES"
+		-DVTK_MODULE_ENABLE_VTK_freetype="$(usex truetype "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_hdf5="YES"
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"
