@@ -11,7 +11,7 @@ SRC_URI="https://github.com/thestk/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0/7"
-KEYWORDS="~amd64 arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="+alsa doc jack pulseaudio static-libs"
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
