@@ -369,19 +369,19 @@ java-pkg-simple_prepend_resources() {
 	# return if there is no resource defined
 	[[ "$@" ]] || return
 	local resources=("${@}")
-	local dir_destination
+	local full_destination
 	local resource_regexp="[ ]*([^\ ]*)[ ]*->[ ]*([^\ ]*)[ ]*"
 
 	# add resources to classpath
 	for resource in "${resources[@]}"; do
 		# support of syntax ->
 		if [[ $resource =~ $resource_regexp ]] ; then
-			dir_destination=${BASH_REMATCH[2]}
+			full_destination="${destination}/${BASH_REMATCH[2]}"
 			resource=${BASH_REMATCH[1]}
 
-			mkdir -p "${destination}/${dir_destination}"
+			mkdir -p "${full_destination}"
 		else
-			dir_destination=""
+			full_destination="${destination}"
 		fi
 
 		resource=${resource:-.}
@@ -392,19 +392,11 @@ java-pkg-simple_prepend_resources() {
 			[[ ! -e $res ]] && die "resource '$res' does not exist"
 
 			if [[ -f "${res}" ]]; then
-				if [[ -z $dir_destination ]] ; then
-					cp "${res}" "${destination}"
-				else
-					cp "${res}" "${destination}/${dir_destination}/"
-				fi
+				cp "${res}" "${full_destination}"
 			else
-				if [[ -z ${dir_destination} ]] ; then
-					cp -r "${res}" "${destination}"
-				else
-					cp -r "${res}" "${destination}/${dir_destination}/"
-				fi
+				cp -r "${res}" "${full_destination}"
 			fi
-			[[ $? -ne 0 ]] && die "Could not copy resources from ${res} to ${destination}"
+			[[ $? -ne 0 ]] && die "Could not copy resources from ${res} to ${full_destination}"
 		done
 	done
 }
