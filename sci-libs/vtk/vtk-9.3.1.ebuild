@@ -119,7 +119,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2 )
 	rendering? (
 		media-libs/glew:=
-		virtual/opengl
+		media-libs/libglvnd[X]
 		x11-libs/gl2ps
 		x11-libs/libICE
 		x11-libs/libXcursor
