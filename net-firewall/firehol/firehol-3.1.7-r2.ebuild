@@ -12,7 +12,7 @@ SRC_URI="https://github.com/firehol/firehol/releases/download/v${PV}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6 ipset"
-KEYWORDS="~amd64 arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~x86"
 
 # Set the dependency versions to aid cross-compiling. Keep them at their
 # minimums as the configure script merely checks whether they are sufficient.
