@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-12-05)
+# 6.12.2 does not boot for me.
+=sys-kernel/gentoo-kernel-6.12.2
+=sys-kernel/gentoo-kernel-bin-6.12.2
+=sys-kernel/vanilla-kernel-6.12.2
+=virtual/dist-kernel-6.12.2
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-04)
 # Bugs #845294 #757543 #517744 #704198 #366739 #350302 #614318 #637422
 # #738898 #501586.
