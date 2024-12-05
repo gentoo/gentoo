@@ -1942,7 +1942,6 @@ etestng() {
 		-cp ${cp}
 		-Djava.io.tmpdir="${T}"
 		-Djava.awt.headless=true
-		-Dtest.resources.dir="${JAVA_TEST_RESOURCE_DIRS}"
 		${JAVA_TEST_EXTRA_ARGS[@]}
 		${runner}
 		${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}
