@@ -5,6 +5,6 @@ EAPI=8
 
 inherit acct-group
 
-DESCRIPTION="A group for sys-login/sssd"
+DESCRIPTION="A group for sys-auth/sssd"
 
 ACCT_GROUP_ID="543"
