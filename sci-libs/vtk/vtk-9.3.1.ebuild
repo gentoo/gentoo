@@ -843,183 +843,137 @@ src_compile() {
 src_test() {
 	vtk_add_sandbox
 
-	# don't work at all
-	REALLY_BAD_TESTS=(
-		"VTK::RenderingRayTracing-HeaderTest$" # (Failed)                                                          #   82
-		"VTK::RenderingFreeTypeFontConfigCxx-TestSystemFontRendering$" # (Failed)                                  #  309
-		"VTK::IOMPIParallelPython-MPI-Plot3DMPIIO$" # (Failed)                                                     #  376
-		"VTK::IOExportPDFCxx-TestPDFTransformedText-VerifyRasterizedPDFPNG$" # (Failed)                            #  483
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster$" # (Failed)                                          #  494
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-VerifyRasterizedPNG$" # (Failed)                      #  518
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-VerifyRasterizedPDFPNG$" # (Failed)                   #  519
-		"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderItem$" # (Failed)                                            #  732
-		"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderItemWidget$" # (Failed)                                      #  733
-		"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderWindow$" # (Failed)                                          #  734
-		"VTK::FiltersSelectionCxx-TestLinearSelector3D$" # (Failed)                                                # 1102
-		"VTK::FiltersParallelDIY2Cxx-MPI-TestProbeLineFilter$" # (Failed)                                          # 1180
-		"VTK::FiltersFlowPathsCxx-TestEvenlySpacedStreamlines2D$" # (Failed)                                       # 1215
-		"VTK::ChartsCoreCxx-TestChartDoubleColors$" # (Failed)                                                     # 1555
-		"VTK::ChartsCoreCxx-TestChartDoubleColorsOpaque$" # (Failed)                                               # 1556
-		"VTK::ChartsCoreCxx-TestParallelCoordinatesDouble$" # (Failed)                                             # 1599
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMExternalFaces$" # (Failed)                                        # 2142
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMHistogram$" # (Failed)                                            # 2146
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMMarchingCubes$" # (Failed)                                        # 2148
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMMarchingCubes2$" # (Failed)                                       # 2149
-		"VTK::FiltersGeneralCxx-TestContourTriangulatorHoles$" # (Failed)                                          # 2305
-		"VTK::FiltersCoreCxx-TestDecimatePolylineFilter$" # (Failed)                                               # 2497
-		"VTK::FiltersCorePython-TestSphereTreeFilter$" # (Failed)                                                  # 2617
-		"VTK::CommonDataModelCxx-TestTriangle$" # (Failed)                                                         # 2770
-		"VTK::CommonDataModelCxx-UnitTestCells$" # (Failed)                                                        # 2793
-		"VTK::CommonDataModelCxx-TestHyperTreeGridGeometricLocator$" # (Failed)                                    # 2799
+	addwrite /dev/fuse
+
+	# The build system prepends /usr/$(get_libdir) to the RUNPATH instead of appending.
+	# Set LD_LIBRARY_PATH to use the just build libraries.
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}/$(get_libdir)${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+	# export VTK_SMP_BACKEND_IN_USE="STDThread"
+
+	local -x -a CMAKE_SKIP_TESTS
+
+	if [[ "${CMAKE_RUN_OPTIONAL_TESTS:=yes}" != "yes" ]]; then
+		local -a REALLY_BAD_TESTS BAD_TESTS RANDOM_FAIL_TESTS
+		# don't work at all
+		REALLY_BAD_TESTS=(
+			# File missing? ExternalData/Testing/Data/MotionFX/position_file/Sprocket_New.prn
+			"VTK::IOMotionFXCxx-TestMotionFXCFGReaderPositionFile$" # (Subprocess aborted)
+
+			"VTK::InteractionWidgetsCxx-TestBrokenLineWidget$"
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMClipWithImplicitFunction$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMHistogram$" # (Failed)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMMarchingCubes$" # (Failed)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMMarchingCubes2$" # (Failed)
+			"VTK::ChartsCoreCxx-TestChartDoubleColors$" # (Failed)
+			"VTK::ChartsCoreCxx-TestChartDoubleColorsOpaque$" # (Failed)
+			"VTK::ChartsCoreCxx-TestParallelCoordinatesDouble$" # (Failed)
+			"VTK::CommonDataModelCxx-TestHyperTreeGridGeometricLocator$" # (Failed)
+			"VTK::CommonDataModelCxx-TestTriangle$" # (Failed)
+			"VTK::CommonDataModelCxx-UnitTestCells$" # (Failed)
+			"VTK::FiltersCoreCxx-TestDecimatePolylineFilter$" # (Failed)
+			"VTK::FiltersCoreCxx-TestImplicitPolyDataDistanceCube$" # (Failed)
+			"VTK::FiltersCorePython-TestSphereTreeFilter$" # (Failed)
+			"VTK::FiltersFlowPathsCxx-TestEvenlySpacedStreamlines2D$" # (Failed)
+			"VTK::FiltersGeneralCxx-TestContourTriangulatorHoles$" # (Failed)
+			"VTK::FiltersParallelCxx-TestAngularPeriodicFilter$" # (Failed)
+			"VTK::FiltersParallelDIY2Cxx-MPI-TestProbeLineFilter$" # (Failed)
+			"VTK::FiltersSelectionCxx-TestLinearSelector3D$" # (Failed)
+			"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderItem$" # (Failed)
+			"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderItemWidget$" # (Failed)
+			"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderWindow$" # (Failed)
+			"VTK::RenderingExternalCxx-TestGLUTRenderWindow$" # (Failed)
+			"VTK::RenderingFreeTypeFontConfigCxx-TestSystemFontRendering$" # (Failed)
+			"VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster" # (Failed)
+			# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-RasterizePNG$" # (Not Run)
+			# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-VerifyRasterizedPDFPNG$" # (Failed)
+			# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-VerifyRasterizedPNG$" # (Failed)
+			"VTK::IOExportPDFCxx-TestPDFTransformedText-VerifyRasterizedPDFPNG$" # (Failed)
+			"VTK::IOOCCTCxx-TestOCCTReader$" # (Failed)
+			"VTK::RenderingCorePython-pickImageData$" # (Failed)
+			"VTK::RenderingRayTracing-HeaderTest$" # (Failed)
+		)
+
+		# don't work in src_test but when on their own
+		BAD_TESTS=(
+			"VTK::AcceleratorsVTKmCoreCxx-TestVTKMImplicitDataArray$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMCleanGrid$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMClip$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMExternalFaces$" # (Failed)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMExtractVOI$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMLevelOfDetail$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMPointElevation$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMPointTransform$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMPolyDataNormals$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMThreshold$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMThreshold2$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMTriangleMeshPointNormals$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMWarpScalar$" # (NUMERICAL)
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMWarpVector$" # (NUMERICAL)
+			"VTK::ImagingOpenGL2Cxx-TestOpenGLImageGradient$" # (NUMERICAL)
+			"VTK::InteractionWidgetsCxx-TestResliceCursorWidget2$" # (Failed)
+			"VTK::InteractionWidgetsCxx-TestResliceCursorWidget3$" # (Failed)
+			"VTK::InteractionWidgetsPython-TestTensorWidget2$" # (Failed)
+			"VTK::RenderingCoreCxx-TestTextureRGBADepthPeeling$" # (Failed)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedBlended$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedBlendedSmallGrain$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorBlendedSmallGrain$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorBlendedSmallGrainMask$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorMappedSmallGrain$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorMappedSmallGrainMask$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedMapped$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedMappedSmallGrain$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedMappedSmallVectorNormalizeOff$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedSmallGrainMask$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedDefaults$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedDefaultsColor$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedEnhancedVectorNormalizeOff$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICMultiBlockContrastEnhancedPerlin$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarContrastEnhanced$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarDefaults$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarVectorNormalizeOff$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarVectorNormalizeOffMediumGrainPerlin$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarVectorNormalizeOffMediumGrainUniform$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-TestImageDataLIC2D$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-TestStructuredGridLIC2DXSlice$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-TestStructuredGridLIC2DYSlice$" # (NUMERICAL)
+			"VTK::RenderingLICOpenGL2Cxx-TestStructuredGridLIC2DZSlice$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestContextMathTextImage$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestIndexedLookupScalarBar$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestMathTextActor$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestMathTextActor3D$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestRenderString$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestScalarBarCombinatorics$" # (NUMERICAL)
+			"VTK::RenderingMatplotlibCxx-TestStringToPath$" # (NUMERICAL)
+			"VTK::RenderingOpenGL2Cxx-TestGlyph3DMapperPickability$" # (Failed)
+		)
+
+		RANDOM_FAIL_TESTS=(
+			"VTK::FiltersFlowPathsCxx-TestStreamSurface$"
+			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMAbort$"
+			"VTK::AcceleratorsVTKmFiltersPython-TestVTKMSlice$"
+		)
+
+		CMAKE_SKIP_TESTS+=(
+			"${REALLY_BAD_TESTS[@]}"
+			"${BAD_TESTS[@]}"
+			"${RANDOM_FAIL_TESTS[@]}"
+		)
+	fi
+
+	CMAKE_SKIP_TESTS+=(
+		# requires VTK_USE_MICROSOFT_MEDIA_FOUNDATION
+		"VTK::IOMovieCxx-Test" # Skipped
 	)
 
-	# don't work in src_test but when on their own
-	BAD_TESTS=(
-		"VTK::IOMotionFXCxx-TestMotionFXCFGReaderPositionFile$" # (Subprocess aborted)                             #  374
+	if use openmp; then
+		# TODO Times out under openmp
+		CMAKE_SKIP_TESTS+=(
+			"^VTK::CommonCoreCxx-TestSMP$"
+		)
+	fi
 
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-RasterizePNG$" # (Not Run)                            #  517
-
-		"VTK::FiltersParallelDIY2Cxx-MPI-TestGhostCellsGenerator$" # (Timeout)                                     # 1173
-		"VTK::FiltersParallelDIY2Cxx-MPI-TestRedistributeDataSetFilterOnIOSS$" # (Timeout)                         # 1185
-		"VTK::FiltersParallelDIY2Cxx-TestOverlappingCellsDetector$" # (Timeout)                                    # 1193
-		"VTK::FiltersParallelDIY2Cxx-TestRedistributeDataSetFilter$" # (Timeout)                                   # 1196
-		"VTK::FiltersParallelDIY2Cxx-TestRedistributeDataSetFilterOnIOSS$" # (Timeout)                             # 1197
-		"VTK::FiltersParallelDIY2Cxx-TestRedistributeDataSetFilterWithPolyData$" # (Timeout)                       # 1198
-		"VTK::CommonCoreCxx-TestSMP$"                                                                              # 2945
-
-		# "VTK::IOMovieCxx-TestAVIWriter$" # (Skipped)                                                               #  470
-		# "VTK::IOMovieCxx-TestMP4Writer$" # (Skipped)                                                               #  471
-
-		"VTK::RenderingMatplotlibCxx-TestContextMathTextImage$" # (NUMERICAL)                                      #  243
-		"VTK::RenderingMatplotlibCxx-TestMathTextActor$" # (NUMERICAL)                                             #  244
-		"VTK::RenderingMatplotlibCxx-TestMathTextActor3D$" # (NUMERICAL)                                           #  245
-		"VTK::RenderingMatplotlibCxx-TestRenderString$" # (NUMERICAL)                                              #  246
-		"VTK::RenderingMatplotlibCxx-TestStringToPath$" # (NUMERICAL)                                              #  247
-		"VTK::RenderingMatplotlibCxx-TestIndexedLookupScalarBar$" # (NUMERICAL)                                    #  248
-		"VTK::RenderingMatplotlibCxx-TestScalarBarCombinatorics$" # (NUMERICAL)                                    #  249
-		"VTK::RenderingLICOpenGL2Cxx-TestImageDataLIC2D$" # (NUMERICAL)                                            #  266
-		"VTK::RenderingLICOpenGL2Cxx-TestStructuredGridLIC2DXSlice$" # (NUMERICAL)                                 #  267
-		"VTK::RenderingLICOpenGL2Cxx-TestStructuredGridLIC2DYSlice$" # (NUMERICAL)                                 #  268
-		"VTK::RenderingLICOpenGL2Cxx-TestStructuredGridLIC2DZSlice$" # (NUMERICAL)                                 #  269
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedDefaults$" # (NUMERICAL)                                      #  270
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedBlended$" # (NUMERICAL)                       #  271
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedMapped$" # (NUMERICAL)                        #  272
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedEnhancedVectorNormalizeOff$" # (NUMERICAL)                    #  273
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedBlendedSmallGrain$" # (NUMERICAL)             #  274
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedMappedSmallGrain$" # (NUMERICAL)              #  275
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedMappedSmallVectorNormalizeOff$" # (NUMERICAL) #  276
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedDefaultsColor$" # (NUMERICAL)                                 #  277
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorBlendedSmallGrain$" # (NUMERICAL)        #  278
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorMappedSmallGrain$" # (NUMERICAL)         #  279
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorBlendedSmallGrainMask$" # (NUMERICAL)    #  280
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedColorMappedSmallGrainMask$" # (NUMERICAL)     #  281
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICCurvedContrastEnhancedSmallGrainMask$" # (NUMERICAL)                #  282
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarDefaults$" # (NUMERICAL)                                      #  283
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarContrastEnhanced$" # (NUMERICAL)                              #  284
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarVectorNormalizeOff$" # (NUMERICAL)                            #  285
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarVectorNormalizeOffMediumGrainUniform$" # (NUMERICAL)          #  286
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICPlanarVectorNormalizeOffMediumGrainPerlin$" # (NUMERICAL)           #  287
-		"VTK::RenderingLICOpenGL2Cxx-SurfaceLICMultiBlockContrastEnhancedPerlin$" # (NUMERICAL)                    #  288
-		"VTK::RenderingExternalCxx-TestGLUTRenderWindow$" # (Failed)                                               #  311
-		"VTK::ImagingOpenGL2Cxx-TestOpenGLImageGradient$" # (NUMERICAL)                                            #  722
-		# "VTK::InteractionWidgetsCxx-TestPickingManagerSeedWidget$" # (Timeout)                                     #  838
-		"VTK::InteractionWidgetsCxx-TestResliceCursorWidget2$" # (Failed)                                          #  847
-		"VTK::InteractionWidgetsCxx-TestResliceCursorWidget3$" # (Failed)                                          #  848
-		"VTK::InteractionWidgetsPython-TestTensorWidget2$" # (Failed)                                              #  919
-		# "VTK::FiltersModelingPython-TestCookieCutter4$" # (Timeout)                                                # 1319
-		"VTK::RenderingOpenGL2Cxx-TestGlyph3DMapperPickability$" # (Failed)                                        # 1404
-		"VTK::RenderingCoreCxx-TestTextureRGBADepthPeeling$" # (Failed)                                            # 2020
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMCleanGrid$" # (NUMERICAL)                                         # 2138
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMClip$" # (NUMERICAL)                                              # 2140
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMClipWithImplicitFunction$" # (NUMERICAL)                          # 2141
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMExtractVOI$" # (NUMERICAL)                                        # 2143
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMLevelOfDetail$" # (NUMERICAL)                                     # 2147
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMPointElevation$" # (NUMERICAL)                                    # 2152
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMPointTransform$" # (NUMERICAL)                                    # 2153
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMPolyDataNormals$" # (NUMERICAL)                                   # 2155
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMThreshold$" # (NUMERICAL)                                         # 2157
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMThreshold2$" # (NUMERICAL)                                        # 2158
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMTriangleMeshPointNormals$" # (NUMERICAL)                          # 2159
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMWarpScalar$" # (NUMERICAL)                                        # 2160
-		"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMWarpVector$" # (NUMERICAL)                                        # 2161
-		"VTK::AcceleratorsVTKmCoreCxx-TestVTKMImplicitDataArray$" # (NUMERICAL)                                    # 2897
-	)
-
-	SEQUENTIAL_TESTS=(
-		# TODO requires die -n
-		# "VTK::IOExportGL2PSCxx-.*$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSBillboardTextActor3D$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSContext$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSLabeledDataMapper$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSScalarBar$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextActor3D$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextActor$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextMapper$"
-		"VTK::IOExportGL2PSCxx-TestStackedPlotGL2PS$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterMultipleRenderers$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterRaster$"
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster$" # (Failed)                                          #  494
-		"VTK::IOExportGL2PSCxx-TestGL2PSBillboardTextActor3D-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSBillboardTextActor3D-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSContext-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSContext-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSLabeledDataMapper-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSLabeledDataMapper-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSScalarBar-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSScalarBar-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextActor3D-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextActor3D-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextActor-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextActor-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextMapper-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSTextMapper-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestStackedPlotGL2PS-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestStackedPlotGL2PS-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterMultipleRenderers-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterMultipleRenderers-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterMultipleRenderers-VerifyRasterizedPDFPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterRaster-RasterizePNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterRaster-VerifyRasterizedPNG$"
-		"VTK::IOExportGL2PSCxx-TestGL2PSExporterRaster-VerifyRasterizedPDFPNG$"
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-RasterizePNG$" # (Not Run)                            #  517
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-VerifyRasterizedPNG$" # (Failed)                      #  518
-		# "VTK::IOExportGL2PSCxx-TestGL2PSExporterVolumeRaster-VerifyRasterizedPDFPNG$" # (Failed)                   #  519
-		"VTK::InteractionWidgetsCxx-TestPickingManagerSeedWidget$" # (Timeout)                                     #  838
-		"VTK::FiltersModelingPython-TestCookieCutter4$" # (Timeout)                                                # 1319
-	)
-
-	CMAKE_SKIP_TESTS=(
-		"${BAD_TESTS[@]}"
-		"${REALLY_BAD_TESTS[@]}"
-		"${SEQUENTIAL_TESTS[@]}"
-	)
-
-	virtx cmake_src_test
-	unset CMAKE_SKIP_TESTS
-
-	myctestargs=(
-		-R "($( IFS='|'; echo "${SEQUENTIAL_TESTS[*]}"))"
-		-j1
-	)
-	# TODO requires die -n
-	# nonfatal \
-		virtx cmake_src_test || einfo "These tests are known to fail"
-
-	# TODO requires die -n
-	# myctestargs=(
-	# 	-R "($( IFS='|'; echo "${REALLY_BAD_TESTS[*]}"))"
-	# 	--timeout 600
-	# )
-	# nonfatal \
-	# 	virtx cmake_src_test || einfo "These tests are known to fail"
-
-	# TODO requires die -n
-	# myctestargs=(
-	# 	-R "($( IFS='|'; echo "${BAD_TESTS[*]}"))"
-	# 	--timeout 600
-	# )
-	# nonfatal \
-	# 	virtx cmake_src_test || einfo "These tests are known to only fail inside src_test"
+	virtx cmake_src_test -j1
 }
 
 src_install() {
