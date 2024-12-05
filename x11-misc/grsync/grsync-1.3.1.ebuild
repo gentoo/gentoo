@@ -10,7 +10,7 @@ SRC_URI="http://www.opbyte.it/release/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="+gtk3"
 
 DEPEND="
