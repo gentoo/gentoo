@@ -1,0 +1,70 @@
+From a811c0c4aca246a89f85a1eecc805e388a645178 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 17 Sep 2024 18:45:03 +0200
+Subject: [PATCH] fix fmt-11
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_Decomposition.C b/ThirdParty/ioss/vtkioss/Ioss_Decomposition.C
+index 388d524..a94afc6 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_Decomposition.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_Decomposition.C
+@@ -15,6 +15,7 @@
+ #include <cassert>
+ #include "vtk_fmt.h"
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ #include <numeric>
+ 
+ #if !defined(NO_ZOLTAN_SUPPORT)
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_IOFactory.C b/ThirdParty/ioss/vtkioss/Ioss_IOFactory.C
+index 440f352..ca71a90 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_IOFactory.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_IOFactory.C
+@@ -12,6 +12,7 @@
+ #include <cstddef> // for nullptr
+ #include "vtk_fmt.h"
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ #include <map>     // for _Rb_tree_iterator, etc
+ #include <ostream> // for basic_ostream, etc
+ #include <set>
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_StructuredBlock.C b/ThirdParty/ioss/vtkioss/Ioss_StructuredBlock.C
+index 1609c31..85b67e2 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_StructuredBlock.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_StructuredBlock.C
+@@ -15,6 +15,7 @@
+ #include <Ioss_StructuredBlock.h>
+ #include "vtk_fmt.h"
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ 
+ #include <cstddef> // for size_t
+ #include <numeric>
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_Utils.C b/ThirdParty/ioss/vtkioss/Ioss_Utils.C
+index 57021ab..cc5b8a4 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_Utils.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_Utils.C
+@@ -21,6 +21,7 @@
+ #include VTK_FMT(fmt/chrono.h)
+ #include VTK_FMT(fmt/format.h)
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ #include <fstream>
+ #include <sstream>
+ #include <string>
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_ZoneConnectivity.C b/ThirdParty/ioss/vtkioss/Ioss_ZoneConnectivity.C
+index 5d32481..5cb3c02 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_ZoneConnectivity.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_ZoneConnectivity.C
+@@ -9,6 +9,7 @@
+ #include <cstddef> // for size_t
+ #include "vtk_fmt.h"
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ #include <string> // for string
+ #include <vector> // for vector
+ 
+-- 
+2.46.0
+
