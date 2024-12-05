@@ -155,6 +155,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.3.0-java.patch"
 	"${FILESDIR}/${PN}-9.3.0-opencascade.patch"
 	"${FILESDIR}/${PN}-9.3.0-ThrustPatches.patch"
+	"${FILESDIR}/${PN}-9.3.0-core-octree_node.txx.patch"
 	"${FILESDIR}/${PN}-9.3.0-ThirdParty-gcc15.patch"
 	"${FILESDIR}/${PN}-9.3.0-update-for-cuda-12.6.patch"
 	"${FILESDIR}/${PN}-9.3.1-fix-fmt-11.patch"
@@ -379,9 +380,16 @@ src_prepare() {
 #	VTK_DISPATCH_{AOS,SOA,TYPED}_ARRAYS
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
+		-DVTK_GIT_DESCRIBE="v${PV}"
+		-DVTK_VERSION_FULL="${PV}"
+		-DGIT_EXECUTABLE="${T}/notgit"
+
+		-DCMAKE_POLICY_DEFAULT_CMP0167="OLD"
+		-DCMAKE_POLICY_DEFAULT_CMP0174="OLD"
+		-DCMAKE_POLICY_DEFAULT_CMP0177="OLD"
+
 		-DCMAKE_INSTALL_LICENSEDIR="share/${PN}/licenses"
-		-DVTK_DEBUG_MODULE=ON
-		-DVTK_DEBUG_MODULE_ALL=ON
 		-DVTK_IGNORE_CMAKE_CXX11_CHECKS=yes
 
 		-DVTK_ANDROID_BUILD=OFF
@@ -400,7 +408,7 @@ src_configure() {
 		-DVTK_ENABLE_REMOTE_MODULES=OFF
 
 		# disable fetching files during build
-		-DVTK_FORBID_DOWNLOADS=OFF
+		-DVTK_FORBID_DOWNLOADS="yes"
 
 		-DVTK_GROUP_ENABLE_Imaging="$(usex imaging "YES" "NO")"
 		-DVTK_GROUP_ENABLE_Rendering="$(usex rendering "YES" "NO")"
@@ -457,12 +465,11 @@ src_configure() {
 		-DVTK_MODULE_USE_EXTERNAL_VTK_verdict=OFF
 
 		-DVTK_RELOCATABLE_INSTALL=ON
+		-DVTK_UNIFIED_INSTALL_TREE=ON
 
 		-DVTK_SMP_ENABLE_OPENMP="$(usex openmp)"
 		-DVTK_SMP_ENABLE_STDTHREAD="$(usex threads)"
 		-DVTK_SMP_ENABLE_TBB="$(usex tbb)"
-
-		-DVTK_UNIFIED_INSTALL_TREE=ON
 
 		-DVTK_USE_CUDA="$(usex cuda)"
 		# use system libraries where possible
@@ -478,35 +485,6 @@ src_configure() {
 		-DVTK_WRAP_JAVA="$(usex java)"
 		-DVTK_WRAP_PYTHON="$(usex python)"
 	)
-
-	if use minimal; then
-		mycmakeargs+=(
-			-DVTK_MODULE_ENABLE_VTK_CommonComputationalGeometry="YES"
-			-DVTK_MODULE_ENABLE_VTK_CommonExecutionModel="YES"
-			-DVTK_MODULE_ENABLE_VTK_CommonMath="YES"
-			-DVTK_MODULE_ENABLE_VTK_CommonMisc="YES"
-			-DVTK_MODULE_ENABLE_VTK_CommonSystem="YES"
-			-DVTK_MODULE_ENABLE_VTK_CommonTransforms="YES"
-
-			-DVTK_MODULE_ENABLE_VTK_FiltersCore="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersExtraction="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersGeneral="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersGeneric="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersGeometry="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersHybrid="NO"
-			-DVTK_MODULE_ENABLE_VTK_FiltersHyperTree="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersSources="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersStatistics="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersVerdict="YES"
-
-			-DVTK_MODULE_ENABLE_VTK_IOCore="YES"
-			-DVTK_MODULE_ENABLE_VTK_IOGeometry="NO"
-			-DVTK_MODULE_ENABLE_VTK_IOLegacy="YES"
-
-			-DVTK_MODULE_ENABLE_VTK_ParallelCore="YES"
-			-DVTK_MODULE_ENABLE_VTK_ParallelDIY="YES"
-		)
-	fi
 
 	if use all-modules; then
 		mycmakeargs+=(
@@ -581,6 +559,9 @@ src_configure() {
 		if use rendering; then
 			mycmakeargs+=( -DVTK_OPENGL_ENABLE_STREAM_ANNOTATIONS=ON )
 		fi
+	else
+		: "${CMAKE_BUILD_TYPE:="Release"}"
+		export CMAKE_BUILD_TYPE
 	fi
 
 	if use examples || use test; then
@@ -625,13 +606,41 @@ src_configure() {
 	fi
 
 	if use java; then
-		export JAVA_HOME="${EPREFIX}/etc/java-config-2/current-system-vm"
 		mycmakeargs+=(
 			-DCMAKE_INSTALL_JARDIR="share/${PN}"
 			-DVTK_ENABLE_WRAPPING=ON
 			-DVTK_MODULE_ENABLE_VTK_Java="YES"
 			-DVTK_JAVA_SOURCE_VERSION="$(java-config -g PROVIDES_VERSION)"
 			-DVTK_JAVA_TARGET_VERSION="$(java-config -g PROVIDES_VERSION)"
+		)
+	fi
+
+	if use minimal; then
+		mycmakeargs+=(
+			-DVTK_MODULE_ENABLE_VTK_CommonComputationalGeometry="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonExecutionModel="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonMath="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonMisc="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonSystem="YES"
+			-DVTK_MODULE_ENABLE_VTK_CommonTransforms="YES"
+
+			-DVTK_MODULE_ENABLE_VTK_FiltersCore="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersExtraction="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersGeneral="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersGeneric="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersGeometry="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersHybrid="NO"
+			-DVTK_MODULE_ENABLE_VTK_FiltersHyperTree="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersSources="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersStatistics="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersVerdict="YES"
+
+			-DVTK_MODULE_ENABLE_VTK_IOCore="YES"
+			-DVTK_MODULE_ENABLE_VTK_IOGeometry="NO"
+			-DVTK_MODULE_ENABLE_VTK_IOLegacy="YES"
+
+			-DVTK_MODULE_ENABLE_VTK_ParallelCore="YES"
+			-DVTK_MODULE_ENABLE_VTK_ParallelDIY="YES"
 		)
 	fi
 
@@ -794,9 +803,24 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_AcceleratorsVTKmCore="YES"
 			-DVTK_MODULE_ENABLE_VTK_AcceleratorsVTKmDataModel="YES"
 			-DVTK_MODULE_ENABLE_VTK_AcceleratorsVTKmFilters="YES"
-
-			-DVTKm_NO_INSTALL_README_LICENSE=ON # bug #793221
-			-DVTKm_Vectorization=native
+			-DVTKm_ENABLE_CPACK="no" # "Enable CPack packaging of VTKm" ON
+			-DVTKm_ENABLE_CUDA="$(usex cuda)" # "Enable Cuda support" OFF
+			-DVTKm_ENABLE_DOCUMENTATION="$(usex doc)" # "Build Doxygen documentation" OFF
+			-DVTKm_ENABLE_EXAMPLES="$(usex examples)" # "Build examples" OFF
+			-DVTKm_ENABLE_HDF5_IO="yes" # "Enable HDF5 support" OFF
+			-DVTKm_ENABLE_LOGGING="$(usex logging)" # "Enable VTKm Logging" ON
+			-DVTKm_ENABLE_MPI="$(usex mpi)" # "Enable MPI support" OFF
+			-DVTKm_ENABLE_OPENMP="$(usex openmp)" # "Enable OpenMP support" OFF
+			-DVTKm_ENABLE_RENDERING="$(usex rendering)" # "Enable rendering library" ON
+			-DVTKm_ENABLE_TBB="$(usex tbb)" # "Enable TBB support" OFF
+			-DVTKm_ENABLE_TESTING="$(usex test)" # "Enable VTKm Testing" ON
+			-DVTKm_ENABLE_TUTORIALS="no" # "Build tutorials" OFF
+			-DVTKm_NO_ASSERT_CUDA="yes" # "Disable assertions for CUDA devices." ON
+			-DVTKm_NO_ASSERT_HIP="yes" # "Disable assertions for HIP devices." ON
+			-DVTKm_NO_ASSERT="no" # "Disable assertions in debugging builds." OFF
+			-DVTKm_NO_INSTALL_README_LICENSE="ON" # bug #793221 # "disable the installation of README and LICENSE files" OFF
+			-DVTKm_SKIP_LIBRARY_VERSIONS="no" # "Skip versioning VTK-m libraries" OFF
+			-DVTKm_Vectorization="none" # only sets compiler flags
 		)
 	fi
 
