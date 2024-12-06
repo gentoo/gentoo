@@ -169,7 +169,7 @@ src_configure() {
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
 
 	# NCURSES_BOOL confusion, see https://lists.gnu.org/archive/html/bug-ncurses/2024-11/msg00010.html
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
 	# Order matters here -- we want unicode/thread versions to come last so that the
