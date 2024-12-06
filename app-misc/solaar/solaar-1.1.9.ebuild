@@ -30,6 +30,7 @@ RDEPEND="
 		dev-python/evdev[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/python-xlib[${PYTHON_USEDEP}]
 		>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
