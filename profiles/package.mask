@@ -201,11 +201,6 @@ app-misc/g15stats
 dev-libs/libg15
 dev-libs/libg15render
 
-# Michał Górny <mgorny@gentoo.org> (2024-11-17)
-# Superseded by dev-lang/pypy:3.10.  This version is vulnerable.
-# Removal on 2024-12-01.
-dev-python/pypy3_10
-
 # Alfredo Tupone <tupone@gentoo.org> (2024-11-17)
 # Included in dev-ml/odoc, the only rdep
 # Removal on 2024-12-17.
