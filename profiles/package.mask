@@ -369,13 +369,6 @@ sci-chemistry/molden
 # slot instead. Removal on 2024-12-03.
 dev-ruby/pdf-reader:0
 
-# Michał Górny <mgorny@gentoo.org> (2024-10-29)
-# Unmaintained in Gentoo.  The latter is multiple versions behind.
-# Ebuilds without working tests.  The only revdep has its "doc" flag
-# masked for over a year.
-# Removal on 2024-11-28.  Bug #942445.
-dev-python/mkdocs-macros-plugin
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
