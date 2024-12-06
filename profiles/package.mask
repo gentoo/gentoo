@@ -374,7 +374,6 @@ dev-ruby/pdf-reader:0
 # Ebuilds without working tests.  The only revdep has its "doc" flag
 # masked for over a year.
 # Removal on 2024-11-28.  Bug #942445.
-dev-python/mkdocs-ansible
 dev-python/mkdocs-macros-plugin
 
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
