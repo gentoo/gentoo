@@ -144,7 +144,7 @@ src_prepare() {
 src_configure() {
 	# readline-8.3 drops unprototyped functions, earlier versions are
 	# incompatible with C23.
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# fix implicit decls with widechar funcs
 	append-cppflags -D_GNU_SOURCE
