@@ -423,12 +423,6 @@ app-emacs/quilt-el
 # Bug #941185. Removal on 2024-12-03.
 =dev-util/bpftool-7.5.0-r2
 
-# Michał Górny <mgorny@gentoo.org> (2024-10-10)
-# Gentoo package not updated for 4 years now.  No tests upstream.
-# No revdeps.
-# Removal on 2024-11-09.  Bug #941245.
-dev-python/beagle
-
 # Yongxiang Liang <tanekliang@gmail.org> (2024-10-10)
 # Fcitx 4 has been archived. Users can upgrade to Fcitx 5
 app-i18n/fcitx-anthy:4
