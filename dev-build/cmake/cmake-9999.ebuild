@@ -229,12 +229,13 @@ src_test() {
 		"${S}"/Tests/{OutDir,CMakeOnly/SelectLibraryConfigurations}/CMakeLists.txt \
 		|| die
 
-	unset CLICOLOR CLICOLOR_FORCE CMAKE_COMPILER_COLOR_DIAGNOSTICS CMAKE_COLOR_DIAGNOSTICS
+	# TODO: Still relevant after https://gitlab.kitware.com/cmake/cmake/-/merge_requests/10070?
+	unset CMAKE_COMPILER_COLOR_DIAGNOSTICS CMAKE_COLOR_DIAGNOSTICS
 
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	# Excluded tests:
-	#    BootstrapTest: we actualy bootstrap it every time so why test it.
+	#    BootstrapTest: we actually bootstrap it every time so why test it?
 	#    BundleUtilities: bundle creation broken
 	#    CMakeOnly.AllFindModules: pthread issues
 	#    CTest.updatecvs: which fails to commit as root
