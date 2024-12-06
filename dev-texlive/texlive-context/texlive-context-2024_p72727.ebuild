@@ -76,18 +76,18 @@ DEPEND="
 "
 
 TEXLIVE_MODULE_BINSCRIPTS="
-	texmf-dist/scripts/context/stubs-mkiv/unix/contextjit
-	texmf-dist/scripts/context/stubs-mkiv/unix/luatools
-	texmf-dist/scripts/context/stubs-mkiv/unix/mtxrunjit
+	texmf-dist/scripts/context-texlive/stubs-mkiv/unix/contextjit
+	texmf-dist/scripts/context-texlive/stubs-mkiv/unix/luatools
+	texmf-dist/scripts/context-texlive/stubs-mkiv/unix/mtxrunjit
 
-	texmf-dist/scripts/context/stubs/unix/texexec
-	texmf-dist/scripts/context/stubs/unix/texmfstart
+	texmf-dist/scripts/context-texlive/stubs/unix/texexec
+	texmf-dist/scripts/context-texlive/stubs/unix/texmfstart
 "
 
 src_prepare() {
 	default
 	# No need to install these .exe
-	rm -rf texmf-dist/scripts/context/stubs/{mswin,win64} || die
+	rm -r texmf-dist/scripts/context-texlive/stubs/win64 || die
 }
 
 src_install() {
