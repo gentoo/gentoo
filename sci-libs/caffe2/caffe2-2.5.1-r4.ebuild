@@ -51,7 +51,7 @@ RDEPEND="
 	cuda? (
 		dev-libs/cudnn
 		>=dev-libs/cudnn-frontend-1.0.3:0/8
-		<dev-util/nvidia-cuda-toolkit-12.5:=[profiler]
+		dev-util/nvidia-cuda-toolkit:=[profiler]
 	)
 	fbgemm? ( >=dev-libs/FBGEMM-2023.12.01 )
 	gloo? ( sci-libs/gloo[cuda?] )
