@@ -11,7 +11,7 @@ S="${WORKDIR}/${PN}-1.5.4"
 # are LGPL-2.1+
 LICENSE="GPL-3 LGPL-3 LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	dev-libs/gmp:0=
