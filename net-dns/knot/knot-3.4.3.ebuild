@@ -87,7 +87,7 @@ src_prepare() {
 		return 0;
 		}
 	_EOF_
-	cp tests/contrib/test_{atomic,spinlock}.c
+	cp tests/contrib/test_{atomic,spinlock}.c || die
 	default
 }
 
