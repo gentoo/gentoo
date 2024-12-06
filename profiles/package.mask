@@ -398,12 +398,6 @@ net-irc/epic5
 # Bug #941566.
 app-emulation/virtualbox-kvm
 
-# Michał Górny <mgorny@gentoo.org> (2024-10-18)
-# Low-quality, test-restricted package with multiple unresolved bugs
-# and version bump pending.  Removal requested by the maintainer.
-# Removal on 2024-11-17.  Bug #941436.
-net-misc/electron-cash
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
 # Bug #941185. Removal on 2024-12-03.
