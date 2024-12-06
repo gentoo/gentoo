@@ -175,7 +175,8 @@ dist-kernel_get_module_suffix() {
 		echo .ko
 	elif [[ ! -r ${config} ]]; then
 		die "Cannot find kernel config ${config}"
-	elif grep -q "CONFIG_MODULE_COMPRESS_NONE=y" "${config}"; then
+	elif grep -q "CONFIG_MODULE_COMPRESS_NONE=y" "${config}" ||
+		grep -q "# CONFIG_MODULE_COMPRESS is not set" "${config}"; then
 		echo .ko
 	elif grep -q "CONFIG_MODULE_COMPRESS_GZIP=y" "${config}"; then
 		echo .ko.gz
