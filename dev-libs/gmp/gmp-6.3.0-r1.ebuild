@@ -117,7 +117,9 @@ multilib_src_configure() {
 
 	# https://gmplib.org/manual/Notes-for-Package-Builds
 	local myeconfargs=(
-		CC_FOR_BUILD="$(tc-getBUILD_CC)"
+		# -std=gnu99 appended here for bug #919935 to help
+		# prefix building w/ older compilers.
+		CC_FOR_BUILD="$(tc-getBUILD_CC) -std=gnu99"
 
 		--localstatedir="${EPREFIX}"/var/state/gmp
 		--enable-shared
