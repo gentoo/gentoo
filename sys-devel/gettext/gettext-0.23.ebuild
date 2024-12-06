@@ -75,6 +75,7 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21-CVE-2020-12825.patch
 	"${FILESDIR}"/${PN}-0.23-libxml2-2.12.0.patch
+	"${FILESDIR}"/${PN}-0.23-no-nls.patch
 )
 
 QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
