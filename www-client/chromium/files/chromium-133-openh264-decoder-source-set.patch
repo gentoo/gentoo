@@ -1,0 +1,24 @@
+From 3cdb3cdccbaafc1d41713894dac7affc9e4cab6d Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Fri, 6 Dec 2024 10:46:55 +1000
+Subject: [PATCH] unbundle: add decoder source set to openh264
+
+--- a/build/linux/unbundle/openh264.gn
++++ b/build/linux/unbundle/openh264.gn
+@@ -40,6 +40,13 @@ source_set("processing") {
+   public_configs = [ ":config" ]
+ }
+ 
++source_set("decoder") {
++  deps = [ ":openh264_shim" ]
++  public_configs = [
++    ":config",
++  ]
++}
++
+ source_set("encoder") {
+   deps = [ ":openh264_shim" ]
+   public_configs = [
+-- 
+2.47.0
+

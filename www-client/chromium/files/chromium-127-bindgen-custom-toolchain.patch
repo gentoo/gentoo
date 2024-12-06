@@ -11,13 +11,6 @@ bindgen (in our rust toolchain), but distributions may want to
 override this and use a system path.
 
 Additionally enable distros to feed in appropriate library paths.
----
- build/config/rust.gni       | 11 +++++++++++
- build/rust/rust_bindgen.gni | 28 ++++++++++++++++++----------
- 2 files changed, 29 insertions(+), 10 deletions(-)
-
-diff --git a/build/config/rust.gni b/build/config/rust.gni
-index 97e788a227..78b9daa7e8 100644
 --- a/build/config/rust.gni
 +++ b/build/config/rust.gni
 @@ -60,6 +60,17 @@ declare_args() {
@@ -38,8 +31,6 @@ index 97e788a227..78b9daa7e8 100644
    # If you're using a Rust toolchain as specified by rust_sysroot_absolute,
    # set this to the output of `rustc -V`. Changing this string will cause all
    # Rust targets to be rebuilt, which allows you to update your toolchain and
-diff --git a/build/rust/rust_bindgen.gni b/build/rust/rust_bindgen.gni
-index bf110ca93c..d7eb04eb00 100644
 --- a/build/rust/rust_bindgen.gni
 +++ b/build/rust/rust_bindgen.gni
 @@ -16,13 +16,13 @@ if (host_os == "win") {
