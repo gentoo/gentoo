@@ -178,7 +178,7 @@ src_configure() {
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
 	# https://sourceware.org/PR32372
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local x
