@@ -14,23 +14,19 @@ HOMEPAGE="
 	https://pypi.org/project/latex2pydata/
 "
 SRC_URI="
-	https://github.com/gpoore/${PN}/archive/refs/tags/latex/v${PV}.tar.gz
+	https://github.com/gpoore/${PN}/archive/refs/tags/python/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	https://github.com/gpoore/latex2pydata/commit/539ea2c24769a509728ac6ba52a20df588576376.patch
-		-> ${PN}-0.4.0-explicitly-set-build-backend.patch
 "
 
-S="${WORKDIR}/${PN}-latex-v${PV}"
+S="${WORKDIR}/${PN}-python-v${PV}"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"
 KEYWORDS="~amd64"
 
-PATCHES=(
-	"${DISTDIR}"/${PN}-0.4.0-explicitly-set-build-backend.patch
-)
-
 BDEPEND=">=dev-texlive/texlive-latexextra-2024"
+
+distutils_enable_tests pytest
 
 src_compile() {
 	pushd python > /dev/null || die
@@ -39,6 +35,12 @@ src_compile() {
 
 	pushd latex/latex2pydata > /dev/null || die
 	latex-package_src_compile
+	popd > /dev/null || die
+}
+
+src_test() {
+	pushd python > /dev/null || die
+	distutils-r1_src_test
 	popd > /dev/null || die
 }
 
