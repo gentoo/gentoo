@@ -66,7 +66,7 @@ src_prepare() {
 
 src_configure() {
 	# https://savannah.gnu.org/support/index.php?111150
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	local -a myeconfargs=(
 		--enable-changeword
