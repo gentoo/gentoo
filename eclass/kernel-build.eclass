@@ -371,8 +371,7 @@ kernel-build_src_install() {
 	local compress=()
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && ! use modules-compress; then
 		compress+=(
-			# force installing uncompressed modules even if compression
-			# is enabled via config
+			# Workaround for <6.12, does not have CONFIG_MODULE_COMPRESS_ALL
 			suffix-y=
 		)
 	fi
@@ -656,12 +655,22 @@ kernel-build_merge_configs() {
 
 	# Only semi-related but let's use that to avoid changing stable ebuilds.
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
-		# NB: we enable this even with USE=-modules-compress, in order
-		# to support both uncompressed and compressed modules in prebuilt
-		# kernels
+		# NB: we enable support for compressed modules even with
+		# USE=-modules-compress, in order to support both uncompressed and
+		# compressed modules in prebuilt kernels.
 		cat <<-EOF > "${WORKDIR}/module-compress.config" || die
+			CONFIG_MODULE_COMPRESS=y
 			CONFIG_MODULE_COMPRESS_XZ=y
 		EOF
+		# CONFIG_MODULE_COMPRESS_ALL is supported only by >=6.12, for older
+		# versions we accomplish the same by overriding suffix-y=
+		if use modules-compress; then
+			echo "CONFIG_MODULE_COMPRESS_ALL=y" \
+				>> "${WORKDIR}/module-compress.config" || die
+		else
+			echo "# CONFIG_MODULE_COMPRESS_ALL is not set" \
+				>> "${WORKDIR}/module-compress.config" || die
+		fi
 		merge_configs+=( "${WORKDIR}/module-compress.config" )
 	fi
 
