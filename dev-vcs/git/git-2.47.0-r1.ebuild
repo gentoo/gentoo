@@ -327,7 +327,7 @@ git_emake() {
 
 src_configure() {
 	# https://lore.kernel.org/git/87ed3apy2u.fsf@gentoo.org/
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	exportmakeopts
 }
