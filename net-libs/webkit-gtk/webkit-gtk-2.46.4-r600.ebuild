@@ -159,6 +159,8 @@ src_prepare() {
 
 	# https://bugs.gentoo.org/943213
 	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
+	# https://bugs.gentoo.org/945827
+	eapply "${FILESDIR}"/2.46.4-no-egl.patch
 }
 
 src_configure() {
