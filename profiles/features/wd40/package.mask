@@ -91,7 +91,6 @@ dev-util/rustup
 dev-util/sccache
 dev-util/bindgen
 dev-util/cargo-license
-dev-util/cargo-ebuild
 dev-util/cargo-audit
 dev-util/bingrep
 dev-python/trimesh

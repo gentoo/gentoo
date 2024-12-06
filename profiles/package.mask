@@ -377,15 +377,6 @@ dev-ruby/pdf-reader:0
 dev-python/mkdocs-ansible
 dev-python/mkdocs-macros-plugin
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-10-23)
-# Doesn't support latest Rust/Cargo ebuild format and standard. Confuses
-# developers who tries to use it, and then see pkgcheck warnings on the
-# result.
-# Superior replacement is app-portage/pycargoebuild, which is maintained,
-# and supports more features.
-# Removal on 2024-11-22.  Bugs #942026, #934381, #724162, #930011.
-dev-util/cargo-ebuild
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
