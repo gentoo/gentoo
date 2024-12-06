@@ -44,6 +44,8 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 
+PATCHES=( "${FILESDIR}/paper-clip-5.5.1-document-vala-return.patch" )
+
 DOCS=( README.md )
 
 src_prepare() {
