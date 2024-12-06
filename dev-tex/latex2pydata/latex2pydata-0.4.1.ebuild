@@ -24,7 +24,12 @@ LICENSE="LPPL-1.3c"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-texlive/texlive-latexextra-2024"
+# fontsextra for fourier.sty
+# latexextra for upquote.sty
+BDEPEND="
+	>=dev-texlive/texlive-fontsextra-2024
+	>=dev-texlive/texlive-latexextra-2024
+"
 
 distutils_enable_tests pytest
 
