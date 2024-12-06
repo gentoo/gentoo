@@ -97,7 +97,7 @@ multilib_src_configure() {
 	# of platforms. Fix was maybe https://gmplib.org/repo/gmp-6.3/rev/9c324044f4b5.
 	filter-lto
 	# https://gmplib.org/list-archives/gmp-bugs/2024-November/005550.html
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
