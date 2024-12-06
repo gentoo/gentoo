@@ -9,7 +9,7 @@ PLOCALE_BACKUP="sv"
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools linux-info multilib-minimal optfeature plocale \
-	python-single-r1 pam systemd udev toolchain-funcs
+	python-single-r1 pam systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
@@ -182,8 +182,6 @@ multilib_src_configure() {
 		--with-mcache-path="${EPREFIX}"/var/lib/sss/mc
 		--with-secrets-db-path="${EPREFIX}"/var/lib/sss/secrets
 		--with-log-path="${EPREFIX}"/var/log/sssd
-		--with-tmpfilesdir=/usr/lib/tmpfiles.d
-		--with-udevrulesdir="$(get_udevdir)/rules.d"
 		--with-kcm
 		--enable-kcm-renewal
 		--with-os=gentoo
