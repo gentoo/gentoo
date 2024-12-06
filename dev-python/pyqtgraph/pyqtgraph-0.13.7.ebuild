@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -23,19 +23,22 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
-IUSE="opengl svg"
-REQUIRED_USE="test? ( opengl svg )"
+IUSE="opengl svg pyside6 qt5 +qt6"
+REQUIRED_USE="test? ( opengl svg ) || ( pyside6 qt5 qt6 )"
 
 RDEPEND="
 	>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
-	dev-python/pyqt5[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}]
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
+	qt5? ( dev-python/pyqt5[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}] )
+	qt6? ( dev-python/pyqt6[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}] )
+	pyside6? ( dev-python/pyside6[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
 		dev-python/h5py[${PYTHON_USEDEP}]
-		dev-python/pyqt5[testlib,${PYTHON_USEDEP}]
+		qt5? ( dev-python/pyqt5[testlib,${PYTHON_USEDEP}] )
+		qt6? ( dev-python/pyqt6[testlib,${PYTHON_USEDEP}] )
 		dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
@@ -49,6 +52,117 @@ python_prepare_all() {
 
 	if ! use opengl; then
 		rm -r pyqtgraph/opengl || die
+	fi
+
+	# pyqtgraph will automatically use any QT bindings it finds,
+	# patch the supported Qt versions to only include the ones we have enabled
+	local upstream_supported_qt=(
+		PySide
+		PySide2
+		PySide6
+		PyQt4
+		PyQt5
+		PyQt6
+	)
+	local gentoo_qt=()
+	local is_supported_impl use_qt qt
+	# It does comparisons using these variables; set deselected or unsupported to None to avoid more patching
+	for qt in "${upstream_supported_qt[@]}"; do
+		is_supported_impl=0
+		case ${qt} in
+			PySide6) is_supported_impl=1; use_qt=${qt} ;;
+			PyQt5) is_supported_impl=1; use_qt=${qt:2} ;;
+			PyQt6) is_supported_impl=1; use_qt=${qt:2} ;;
+		esac
+		if [[ "${is_supported_impl}" -eq 0 ]]; then
+			gentoo_qt+=( "${qt^^} = None" )
+			continue
+		fi
+		if use ${use_qt,,}; then
+			gentoo_qt+=( "${qt^^} = '${qt}'" )
+		else
+			gentoo_qt+=( "${qt^^} = None" )
+		fi
+	done
+
+	awk -v qt_string="$(printf "%s\n" "${gentoo_qt[@]}")" -i inplace '
+	BEGIN {
+		i = 0
+		split(qt_string, qt_array, "\n")
+		j = 1
+	}
+	/PYSIDE = '"'"'PySide'"'"'/ {
+		i = 6 # length of upstream_supported_qt
+		for (k = 1; k <= length(qt_array); k++) {
+		print qt_array[k]
+		j++
+		}
+	}
+	i > 0 {
+		i--
+		next
+	}
+	{ print }
+	' pyqtgraph/Qt/__init__.py || die "Failed to patch supported Qt versions"
+
+	# We also need to remove them from load order.
+	local liborder=()
+	local qt
+	# The order is important (we want to load the newest at runtime)
+	# so newest first here; check the file for the original order
+	for qt in qt6 pyside6 qt5; do
+		if use ${qt}; then
+			if [[ "${qt}" == qt* ]]; then
+				liborder+=( "PY${qt^^}" )
+			else
+				liborder+=( "${qt^^}" )
+			fi
+		fi
+	done
+
+	awk -v libOrder="$(printf "%s, " "${liborder[@]}")" -i inplace '
+	BEGIN {
+		libOrder = "[" substr(libOrder, 1, length(libOrder) - 2) "]"
+	}
+	/libOrder = \[PYQT6, PYSIDE6, PYQT5, PYSIDE2\]/ {
+		sub(/\[PYQT6, PYSIDE6, PYQT5, PYSIDE2\]/, libOrder)
+	}
+	{ print }
+	' pyqtgraph/Qt/__init__.py || die "Failed to patch qt version order"
+
+	# Finally update the list of supported frontends in test to never try unsupported or deselected
+	if use test; then
+		local frontends=()
+		for qt in pyside6 qt5 qt6; do
+			if use ${qt}; then
+				if [[ "${qt}" == qt* ]]; then
+					frontends+=( "Qt.PY${qt^^}: False," )
+				else
+					frontends+=( "Qt.${qt^^}: False," )
+				fi
+			fi
+		done
+		awk -v frontends="$(printf "%s\n" "${frontends[@]}")" -i inplace '
+		BEGIN {
+			i = 0
+			split(frontends, frontend_array, "\n")
+			j = 1
+		}
+		/frontends = {/ {
+			i = 6 # length of frontends
+
+		print "frontends = {"
+		for (k = 1; k <= length(frontend_array); k++) {
+			print "    " frontend_array[k]
+		}
+		print "}"
+		}
+		i > 0 {
+			i--
+			next
+		}
+		{ print }
+		' pyqtgraph/examples/test_examples.py || die "Failed to patch test frontends"
 	fi
 }
 
