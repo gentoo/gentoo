@@ -94,7 +94,7 @@ src_prepare() {
 src_configure() {
 	# bash 5.3 drops unprototyped functions, earlier versions are
 	# incompatible with C23.
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	local myconf=(
 		--with-installed-readline=.
