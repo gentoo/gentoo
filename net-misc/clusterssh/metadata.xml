@@ -21,6 +21,6 @@
   All windows may also be typed into directly.
   </longdescription>
   <upstream>
-    <remote-id type="sourceforge">clusterssh</remote-id>
+    <remote-id type="github">duncs/clusterssh</remote-id>
   </upstream>
 </pkgmetadata>
