@@ -61,32 +61,24 @@ KDE_ORG_SCHEDULE_URI+="/Frameworks"
 # Helper variable to construct release group specific SRC_URI.
 _KDE_SRC_URI="mirror://kde/"
 
-case ${KDE_BUILD_TYPE} in
-	live)
-		if [[ ${PV} == 5.239.9999 ]]; then
-			EGIT_BRANCH="kf5"
-		fi
-		;;
-	*)
-		if [[ -z ${KDE_ORG_COMMIT} ]]; then
-			_KDE_SRC_URI+="stable/frameworks/$(ver_cut 1-2)/"
-			case ${KDE_ORG_NAME} in
-				kdelibs4support | \
-				kdesignerplugin | \
-				kdewebkit | \
-				khtml | \
-				kjs | \
-				kjsembed | \
-				kmediaplayer | \
-				kross | \
-				kxmlrpcclient)
-					_KDE_SRC_URI+="portingAids/"
-					;;
-			esac
+# TODO: Remove after last KF5 PortingAid treecleaned; bug 755956
+if [[ ${KDE_BUILD_TYPE} != live && -z ${KDE_ORG_COMMIT} ]]; then
+	_KDE_SRC_URI+="stable/frameworks/$(ver_cut 1-2)/"
+	case ${KDE_ORG_NAME} in
+		kdelibs4support | \
+		kdesignerplugin | \
+		kdewebkit | \
+		khtml | \
+		kjs | \
+		kjsembed | \
+		kmediaplayer | \
+		kross | \
+		kxmlrpcclient)
+			_KDE_SRC_URI+="portingAids/"
+			;;
+	esac
 
-			SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
-		fi
-		;;
-esac
+	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
+fi
 
 fi
