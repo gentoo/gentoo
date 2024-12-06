@@ -358,12 +358,6 @@ x11-drivers/xf86-video-openchrome
 # Please downgrade to 7.4.0. Bug Bug #941185. Removal on 2024-12-03.
 =dev-util/bpftool-7.5.0-r1
 
-# David Seifert <soap@gentoo.org> (2024-11-03)
-# Bug ridden package, extremely brittle build system, lots of QA issues,
-# terrible license, no other linux distro still packages this.
-# Removal on 2024-12-03. Bug #929069.
-sci-chemistry/molden
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
