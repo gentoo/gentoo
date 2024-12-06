@@ -86,3 +86,22 @@ src_install() {
 
 	systemd_newuserunit dunst.systemd.service.in dunst.service
 }
+
+pkg_postinst() {
+	if [[ ${REPLACING_VERSIONS} ]]; then
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test "${v}" -ge 1.12.0; then
+				return
+			fi
+		done
+	fi
+
+	einfo "The behaviour of the setting 'height' has been changed in a breaking way."
+	einfo "The way of specifying a maximum height before was:"
+	einfo "    height = 300"
+	einfo "The equivalent way now is:"
+	einfo "    height = (0, 300)"
+	einfo "For more information read the official RELEASE_NOTES [1]."
+	einfo ""
+	einfo "[1] https://dunst-project.org/release/#v1.12.0"
+}
