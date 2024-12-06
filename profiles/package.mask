@@ -329,13 +329,6 @@ dev-ruby/jquery-ui-rails:6
 # Removal on 2024-12-07.  Bug #942972.
 sci-libs/QNNPACK
 
-# Matt Turner <mattst88@gentoo.org> (2024-11-06)
-# Replaced by kernel modesetting (CONFIG_DRM_VBOXVIDEO) and the
-# xf86-video-modesetting driver in the Xserver. Bug #929007
-#
-# Removal on 2024-12-06. Bug #924715.
-x11-drivers/xf86-video-vboxvideo
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-11-03)
 # Vendors an unreleased libbpf version and announces incorrect version.
 # Please downgrade to 7.4.0. Bug Bug #941185. Removal on 2024-12-03.
