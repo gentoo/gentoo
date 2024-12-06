@@ -44,7 +44,6 @@ RDEPEND="
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
-# <pytest-bdd-8: https://github.com/qutebrowser/qutebrowser/issues/8342
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
@@ -54,7 +53,7 @@ BDEPEND="
 			dev-python/flask[${PYTHON_USEDEP}]
 			dev-python/hypothesis[${PYTHON_USEDEP}]
 			dev-python/pillow[${PYTHON_USEDEP}]
-			<dev-python/pytest-bdd-8[${PYTHON_USEDEP}]
+			dev-python/pytest-bdd[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/pytest-qt[${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
