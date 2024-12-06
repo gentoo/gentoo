@@ -72,7 +72,7 @@ src_prepare() {
 src_configure() {
 	# https://lists.gnu.org/archive/html/bug-texinfo/2024-08/msg00020.html
 	# https://git.savannah.gnu.org/cgit/texinfo.git/commit/?id=7e8d0093b411729c8c570b25280bef6b55415594
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# Respect compiler and CPPFLAGS/CFLAGS/LDFLAGS for Perl extensions
 	# bug #622576
