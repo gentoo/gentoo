@@ -36,7 +36,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# https://puszcza.gnu.org.ua/bugs/index.php?642
-	append-cflags -std=gnu17
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# gdbm doesn't appear to use either of these libraries
 	export ac_cv_lib_dbm_main=no ac_cv_lib_ndbm_main=no
