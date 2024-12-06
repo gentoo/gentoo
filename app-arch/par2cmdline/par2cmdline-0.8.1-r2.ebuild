@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Parchive/${PN}/releases/download/v${PV}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="openmp"
 
 PATCHES=( "${FILESDIR}"/${P}-big-endian.patch )
