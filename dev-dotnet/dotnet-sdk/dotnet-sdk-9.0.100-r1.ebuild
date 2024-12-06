@@ -45,7 +45,7 @@ S="${WORKDIR}/${PN}-${RUNTIME_SLOT}"
 
 LICENSE="MIT"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
-# KEYWORDS="~amd64"  # KEYWORD-less for testing.
+KEYWORDS="~amd64"
 
 # STRIP="llvm-strip" corrupts some executables when using the patchelf hack.
 # Be safe and restrict it for source-built too, bug https://bugs.gentoo.org/923430
@@ -94,7 +94,7 @@ CHECKREQS_DISK_USR="1200M"
 
 # Created by dotnet itself:
 QA_PREBUILT="
-usr/lib.*/dotnet-sdk-.*/dotnet
+.*/dotnet
 .*/ilc
 "
 
@@ -102,6 +102,7 @@ usr/lib.*/dotnet-sdk-.*/dotnet
 QA_FLAGS_IGNORED="
 .*/apphost
 .*/createdump
+.*/dotnet
 .*/ilc
 .*/libSystem.Globalization.Native.so
 .*/libSystem.IO.Compression.Native.so
