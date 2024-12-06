@@ -26,7 +26,7 @@ else
 	[[ ${QTC_PV} == ${PV} ]] && QTC_REL=official || QTC_REL=development
 	SRC_URI="
 		https://download.qt.io/${QTC_REL}_releases/qtcreator/$(ver_cut 1-2)/${PV/_/-}/${QTC_P}.tar.xz
-		https://dev.gentoo.org/~ionen/distfiles/${QTC_P}-vendor.tar.xz
+		cmdbridge-server? ( https://dev.gentoo.org/~ionen/distfiles/${QTC_P}-vendor.tar.xz )
 	"
 	S=${WORKDIR}/${QTC_P}
 	KEYWORDS="~amd64"
@@ -39,8 +39,8 @@ LICENSE="GPL-3"
 LICENSE+=" BSD MIT" # go
 SLOT="0"
 IUSE="
-	+clang designer doc +help keyring plugin-dev qmldesigner
-	serialterminal +svg test +tracing webengine
+	+clang cmdbridge-server designer doc +help keyring plugin-dev
+	qmldesigner serialterminal +svg test +tracing webengine
 "
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -92,8 +92,8 @@ DEPEND="${COMMON_DEPEND}"
 # worth a massive rebuild every time for the minor go usage
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-lang/go-1.21.7
 	>=dev-qt/qttools-${QT_PV}[linguist]
+	cmdbridge-server? ( >=dev-lang/go-1.21.7 )
 	doc? ( >=dev-qt/qttools-${QT_PV}[qdoc,qtattributionsscanner] )
 "
 
@@ -113,8 +113,10 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
-		cd -- "${S}"/src/libs/gocmdbridge/server || die
-		edo go mod vendor
+		if use cmdbridge-server; then
+			cd -- "${S}"/src/libs/gocmdbridge/server || die
+			edo go mod vendor
+		fi
 	else
 		default
 	fi
@@ -140,8 +142,10 @@ src_prepare() {
 }
 
 src_configure() {
-	go-env_set_compile_environment
-	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false -buildmode=pie"
+	if use cmdbridge-server; then
+		go-env_set_compile_environment
+		local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false -buildmode=pie"
+	fi
 
 	# -Werror=lto-type-mismatch issues, needs looking into
 	filter-lto
@@ -185,9 +189,8 @@ src_configure() {
 		$(use help && usev !webengine -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=yes)
 
 		-DBUILD_PLUGIN_SERIALTERMINAL=$(usex serialterminal)
-
 		-DENABLE_SVG_SUPPORT=$(usex svg)
-
+		$(usev !cmdbridge-server -DGO_BIN=GO_BIN-NOTFOUND) #945925
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
 
 		# meant to be in sync with qtbase[journald], but think(?) not worth
