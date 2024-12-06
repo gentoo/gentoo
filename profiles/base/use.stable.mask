@@ -8,10 +8,6 @@
 # Postgresql 17 isn't stable yet
 postgres_targets_postgres17
 
-# Sam James <sam@gentoo.org> (2024-09-18)
-# LLVM slots without stable keywords.
-llvm_slot_19
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Python implementations without stable keywords.
 python_targets_python3_13t
