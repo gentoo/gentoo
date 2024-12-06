@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic systemd tmpfiles
+inherit flag-o-matic systemd tmpfiles
 
 # subslot: libknot major.libdnssec major.libzscanner major
 KNOT_SUBSLOT="15.9.4"
@@ -78,16 +78,17 @@ BDEPEND="
 "
 
 src_prepare() {
+	# https://gitlab.nic.cz/knot/knot-dns/-/issues/946
+	cat > tests/contrib/test_atomic.c <<-_EOF_ || die
+		#include <tap/basic.h>
+		int main(int argc, char *argv[])
+		{
+		skip_all("not supported");
+		return 0;
+		}
+	_EOF_
+	cp tests/contrib/test_{atomic,spinlock}.c || die
 	default
-
-	# these tests call this daemon file knot/server/dthreads.h
-	if use test && use !daemon; then
-		sed -i \
-		-e '/test_atomic/d' \
-		-e '/test_spinlock/d' \
-		tests/Makefile.am || die
-		eautoreconf
-	fi
 }
 
 src_configure() {
@@ -149,7 +150,7 @@ src_install() {
 	if use daemon; then
 		rmdir "${D}/var/run/${PN}" "${D}/var/run/" || die
 
-		newinitd "${FILESDIR}"/knot-2.init knot
+		newinitd "${FILESDIR}"/knot-3.init knot
 		newconfd "${FILESDIR}"/knot.confd knot
 
 		newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
