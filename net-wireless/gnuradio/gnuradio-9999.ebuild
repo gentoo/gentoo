@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 CMAKE_BUILD_TYPE="None"
 inherit cmake desktop python-single-r1 virtualx xdg-utils
@@ -26,17 +26,18 @@ IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filt
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	audio? ( || ( alsa oss jack portaudio ) )
 	alsa? ( audio )
-	jack? ( audio )
-	oss? ( audio )
-	portaudio? ( audio )
 	analog? ( filter )
+	audio? ( || ( alsa oss jack portaudio ) )
 	channels? ( filter analog qt5 )
 	digital? ( filter analog )
 	dtv? ( filter analog fec )
+	jack? ( audio )
 	modtool? ( utils )
+	oss? ( audio )
+	portaudio? ( audio )
 	qt5? ( filter )
+	test? ( channels )
 	trellis? ( analog digital )
 	uhd? ( filter analog )
 	vocoder? ( filter analog )
@@ -124,7 +125,10 @@ DEPEND="${RDEPEND}
 	grc? ( x11-misc/xdg-utils )
 	modtool? ( $(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]') )
 	oss? ( virtual/os-headers )
-	test? ( >=dev-util/cppunit-1.9.14 )
+	test? (
+		>=dev-util/cppunit-1.9.14
+		dev-python/pyzmq
+	)
 	zeromq? ( net-libs/cppzmq )
 "
 
@@ -222,7 +226,7 @@ src_install() {
 
 src_test() {
 	# skip test which needs internet
-	virtx cmake_src_test -E metainfo_test --output-on-failure
+	virtx MAKEOPTS=-j1 cmake_src_test -E metainfo_test --output-on-failure
 }
 
 pkg_postinst() {
