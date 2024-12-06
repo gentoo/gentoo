@@ -403,7 +403,7 @@ src_test() {
 	sed -i \
 		-e 's;dvispc.test;;' \
 		texk/dviout-util/Makefile || die
-	local -x KpsDir="${EROOT}"/usr/bin
+	local -x KpsDir="${ESYSROOT}"/usr/bin
 	emake check
 }
 
