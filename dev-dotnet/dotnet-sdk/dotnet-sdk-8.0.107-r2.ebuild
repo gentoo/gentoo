@@ -92,10 +92,12 @@ IDEPEND="
 "
 
 CHECKREQS_DISK_BUILD="20G"
+CHECKREQS_DISK_USR="650M"
 
 # Created by dotnet itself:
 QA_PREBUILT="
-usr/lib.*/dotnet-sdk-.*/dotnet
+.*/dotnet
+.*/ilc
 "
 
 # .NET runtime, better to not touch it if they want some specific flags.
@@ -166,9 +168,14 @@ src_prepare() {
 	unset DOTNET_ROOT
 	unset NUGET_PACKAGES
 
+	unset CLR_ICU_VERSION_OVERRIDE
+	unset USER_CLR_ICU_VERSION_OVERRIDE
+
 	export DOTNET_CLI_TELEMETRY_OPTOUT="1"
+	export DOTNET_NUGET_SIGNATURE_VERIFICATION="false"
 	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE="1"
 	export MSBUILDDISABLENODEREUSE="1"
+	export MSBUILDTERMINALLOGGER="off"
 	export UseSharedCompilation="false"
 
 	local dotnet_sdk_tmp_directory="${WORKDIR}/dotnet-sdk-tmp"
@@ -194,17 +201,24 @@ src_compile() {
 
 	ebegin "Building the .NET SDK ${SDK_SLOT}"
 	local -a buildopts=(
-		--clean-while-building
+		# URLs, version specification, etc. ...
 		--source-repository "${source_repository}"
 		--source-version "${COMMIT}"
 
+		# How it should be built.
+		--clean-while-building
+
+		# Auxiliary options.
 		--
 		-maxCpuCount:"$(makeopts_jobs)"
-		-verbosity:"${verbosity}"
+		-p:MaxCpuCount="$(makeopts_jobs)"
 		-p:ContinueOnPrebuiltBaselineError="true"
+
+		# Verbosity settings.
+		-verbosity:"${verbosity}"
 		-p:LogVerbosity="${verbosity}"
-		-p:MinimalConsoleLogOutput="false"
 		-p:verbosity="${verbosity}"
+		-p:MinimalConsoleLogOutput="false"
 	)
 	bash ./build.sh	"${buildopts[@]}"
 	eend ${?} || die "build failed"
@@ -220,6 +234,9 @@ src_install() {
 
 	fperms 0755 "${dest}"
 	dosym -r "${dest}/dotnet" "/usr/bin/dotnet-${SDK_SLOT}"
+
+	# Fix permissions again for what is already marked as executable.
+	find "${ED}" -type f -executable -exec chmod +x {} + || die
 }
 
 pkg_postinst() {
