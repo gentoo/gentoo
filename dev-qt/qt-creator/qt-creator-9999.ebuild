@@ -100,6 +100,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-15.0.0-musl-no-execinfo.patch
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
+	"${FILESDIR}"/${PN}-14.0.1-clang19.patch
 )
 
 QA_FLAGS_IGNORED="usr/libexec/qtcreator/cmdbridge-.*" # written in Go
