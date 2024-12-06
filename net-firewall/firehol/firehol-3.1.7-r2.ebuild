@@ -46,12 +46,16 @@ pkg_setup() {
 		~NETFILTER_XT_MATCH_OWNER \
 		~NETFILTER_XT_MATCH_STATE \
 		~NF_CONNTRACK \
-		~NF_CONNTRACK_IPV4 \
 		~NF_CONNTRACK_MARK \
 		~NF_NAT \
 		~NF_NAT_FTP \
 		~NF_NAT_IRC \
 	"
+
+	if kernel_is -lt 4 19; then
+		CONFIG_CHECK+=" ~NF_CONNTRACK_IPV4"
+	fi
+
 	linux-info_pkg_setup
 }
 
