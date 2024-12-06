@@ -61,7 +61,6 @@ sys-kernel/installkernel efistub
 dev-python/botocore test
 dev-python/ipython nbconvert test
 dev-python/pip-run test
-dev-python/sentry-sdk test
 dev-python/sphinx-autodoc-typehints test
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)

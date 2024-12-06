@@ -404,14 +404,6 @@ app-emulation/virtualbox-kvm
 # Removal on 2024-11-17.  Bug #941436.
 net-misc/electron-cash
 
-# Michał Górny <mgorny@gentoo.org> (2024-10-18)
-# Causing issues since forever.  We are already deselecting a lot
-# of tests because of cryptic failures.  On top of that, upstream shows
-# no interest in porting to >=dev-python/pytest-8.  No (non-optional)
-# revdeps left.
-# Removal on 2024-11-17.  Bug #937896.
-dev-python/sentry-sdk
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
 # Bug #941185. Removal on 2024-12-03.

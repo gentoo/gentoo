@@ -17,13 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2024-10-09)
-# The package still does not support dev-python/pytest-8 (effectively
-# blocking Python 3.13 support), suffers from tons of test failures
-# we were never able to solve, and new releases frequently introduce
-# regressions.  Bug #937896.
-dev-python/sentry-sdk
-
 # Michał Górny <mgorny@gentoo.org> (2024-06-15)
 # Stop-gap compatibility package.  Upstreams really need to move away
 # from the removed cgi module rather than rely on this.

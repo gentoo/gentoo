@@ -26,7 +26,6 @@ app-admin/syslog-ng grpc
 # almost one year to this this date. bug 915548#c6
 dev-libs/hiredis test
 dev-python/redis test
-dev-python/sentry-sdk test
 
 # Matt Turner <mattst88@gentoo.org> (2023-10-30)
 # libei not stable yet
