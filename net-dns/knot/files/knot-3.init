@@ -21,7 +21,7 @@ extra_started_commands="reload"
 capabilities="^cap_net_bind_service,^cap_setpcap"
 
 checkconfig() {
-	/usr/bin/knotc conf-check 1>/dev/null || return 1
+	/usr/sbin/knotc conf-check 1>/dev/null || return 1
 }
 
 reload() {
