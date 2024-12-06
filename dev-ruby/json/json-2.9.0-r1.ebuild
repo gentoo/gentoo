@@ -48,4 +48,7 @@ all_ruby_prepare() {
 
 	# Avoid setting gem since it will not be available yet when installing
 	sed -i -e '/gem/ s:^:#:' test/json/test_helper.rb || die
+
+	# Fix version number
+	sed -e 's/2.8.2/2.9.0/' -i lib/json/version.rb || die
 }
