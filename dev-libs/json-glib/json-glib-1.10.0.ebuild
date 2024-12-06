@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-libs/libxslt
+	dev-python/docutils
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gi-docgen-2021.6 )
 	>=sys-devel/gettext-0.18
