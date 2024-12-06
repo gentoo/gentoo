@@ -3,6 +3,7 @@
 
 EAPI=8
 
+ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
 KFMIN=6.6.0
 PVCUT=$(ver_cut 1-3)
@@ -40,3 +41,11 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
 	>=kde-frameworks/kirigami-${KFMIN}:6
 "
+
+src_prepare() {
+	# bug 945980
+	sed -e "s/^ *kdoctools_create_manpage.*(.*)/#& # disabled by USE !handbook/" \
+		-i {engineexplorer,kqml,plasmoidviewer}/CMakeLists.txt || die
+
+	ecm_src_prepare
+}
