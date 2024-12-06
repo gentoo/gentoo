@@ -96,8 +96,8 @@ DEPEND="
 	vulkan? ( dev-util/vulkan-headers )
 "
 BDEPEND="
-	>=dev-python/pyqt-builder-1.15[${PYTHON_USEDEP}]
-	>=dev-python/sip-6.8.6[${PYTHON_USEDEP}]
+	>=dev-python/pyqt-builder-1.17[${PYTHON_USEDEP}]
+	>=dev-python/sip-6.9[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
 	dbus? ( virtual/pkgconfig )
 "
