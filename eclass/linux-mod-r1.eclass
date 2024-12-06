@@ -1263,7 +1263,8 @@ _modules_set_makeargs() {
 		# these are only needed if using these arguments for installing, lets
 		# eclass handle strip, sign, compress, and depmod (CONFIG_ should
 		# have no impact on building, only used by Makefile.modinst)
-		CONFIG_MODULE_{SIG_ALL,COMPRESS_{GZIP,XZ,ZSTD}}=
+		# note: COMPRESS_ALL is enough for kernel >=6.12, rest is for compat
+		CONFIG_MODULE_{SIG_ALL,COMPRESS_{ALL,GZIP,XZ,ZSTD}}=
 		DEPMOD=true #916587
 		STRIP=true
 	)
