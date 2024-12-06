@@ -1,0 +1,345 @@
+https://bugs.gentoo.org/945770
+https://bugs.gentoo.org/945769
+https://github.com/mesonbuild/meson/issues/13850
+https://github.com/mesonbuild/meson/commit/d8ea5c4d8875bf198f088c603868edf66a3c7c65
+
+From d8ea5c4d8875bf198f088c603868edf66a3c7c65 Mon Sep 17 00:00:00 2001
+From: Charles Brunet <charles.brunet@optelgroup.com>
+Date: Tue, 29 Oct 2024 16:51:36 -0400
+Subject: [PATCH] fix generate_gir with BothLibraries dependency
+
+Co-authored-by: Xavier Claessens <xclaesse@gmail.com>
+---
+ mesonbuild/build.py                           | 52 ++++++++++++-------
+ mesonbuild/interpreter/interpreter.py         | 22 ++++----
+ mesonbuild/interpreter/interpreterobjects.py  | 10 ++--
+ .../frameworks/38 gir both_libraries/bar.c    |  7 +++
+ .../frameworks/38 gir both_libraries/bar.h    |  1 +
+ .../frameworks/38 gir both_libraries/foo.c    |  6 +++
+ .../frameworks/38 gir both_libraries/foo.h    |  1 +
+ .../38 gir both_libraries/meson.build         | 42 +++++++++++++++
+ .../38 gir both_libraries/test.json           |  3 ++
+ 9 files changed, 111 insertions(+), 33 deletions(-)
+ create mode 100644 test cases/frameworks/38 gir both_libraries/bar.c
+ create mode 100644 test cases/frameworks/38 gir both_libraries/bar.h
+ create mode 100644 test cases/frameworks/38 gir both_libraries/foo.c
+ create mode 100644 test cases/frameworks/38 gir both_libraries/foo.h
+ create mode 100644 test cases/frameworks/38 gir both_libraries/meson.build
+ create mode 100644 test cases/frameworks/38 gir both_libraries/test.json
+
+diff --git a/mesonbuild/build.py b/mesonbuild/build.py
+index a00209ad45a8..35f1f24a42f8 100644
+--- a/mesonbuild/build.py
++++ b/mesonbuild/build.py
+@@ -774,6 +774,7 @@ def __init__(
+         }
+         self.pic = False
+         self.pie = False
++        self.both_lib: T.Optional[T.Union[StaticLibrary, SharedLibrary]] = None
+         # Track build_rpath entries so we can remove them at install time
+         self.rpath_dirs_to_remove: T.Set[bytes] = set()
+         self.process_sourcelist(sources)
+@@ -1740,16 +1741,20 @@ def process_vs_module_defs_kw(self, kwargs: T.Dict[str, T.Any]) -> None:
+     def extract_targets_as_list(self, kwargs: T.Dict[str, T.Union[LibTypes, T.Sequence[LibTypes]]], key: T.Literal['link_with', 'link_whole']) -> T.List[LibTypes]:
+         bl_type = self.environment.coredata.get_option(OptionKey('default_both_libraries'))
+         if bl_type == 'auto':
+-            bl_type = 'static' if isinstance(self, StaticLibrary) else 'shared'
+-
+-        def _resolve_both_libs(lib: LibTypes) -> LibTypes:
+-            if isinstance(lib, BothLibraries):
+-                return lib.get(bl_type)
+-            return lib
++            if isinstance(self, StaticLibrary):
++                bl_type = 'static'
++            elif isinstance(self, SharedLibrary):
++                bl_type = 'shared'
+ 
+         self_libs: T.List[LibTypes] = self.link_targets if key == 'link_with' else self.link_whole_targets
+-        lib_list = listify(kwargs.get(key, [])) + self_libs
+-        return [_resolve_both_libs(t) for t in lib_list]
++
++        lib_list = []
++        for lib in listify(kwargs.get(key, [])) + self_libs:
++            if isinstance(lib, (Target, BothLibraries)):
++                lib_list.append(lib.get(bl_type))
++            else:
++                lib_list.append(lib)
++        return lib_list
+ 
+     def get(self, lib_type: T.Literal['static', 'shared', 'auto']) -> LibTypes:
+         """Base case used by BothLibraries"""
+@@ -2204,6 +2209,14 @@ def is_linkable_target(self):
+     def is_internal(self) -> bool:
+         return not self.install
+ 
++    def set_shared(self, shared_library: SharedLibrary) -> None:
++        self.both_lib = shared_library
++
++    def get(self, lib_type: T.Literal['static', 'shared', 'auto']) -> LibTypes:
++        if lib_type == 'shared':
++            return self.both_lib or self
++        return self
++
+ class SharedLibrary(BuildTarget):
+     known_kwargs = known_shlib_kwargs
+ 
+@@ -2470,6 +2483,14 @@ def type_suffix(self):
+     def is_linkable_target(self):
+         return True
+ 
++    def set_static(self, static_library: StaticLibrary) -> None:
++        self.both_lib = static_library
++
++    def get(self, lib_type: T.Literal['static', 'shared']) -> LibTypes:
++        if lib_type == 'static':
++            return self.both_lib or self
++        return self
++
+ # A shared library that is meant to be used with dlopen rather than linking
+ # into something else.
+ class SharedModule(SharedLibrary):
+@@ -2506,7 +2527,7 @@ def get_default_install_dir(self) -> T.Union[T.Tuple[str, str], T.Tuple[None, No
+         return self.environment.get_shared_module_dir(), '{moduledir_shared}'
+ 
+ class BothLibraries(SecondLevelHolder):
+-    def __init__(self, shared: SharedLibrary, static: StaticLibrary, preferred_library: Literal['shared', 'static', 'auto']) -> None:
++    def __init__(self, shared: SharedLibrary, static: StaticLibrary, preferred_library: Literal['shared', 'static']) -> None:
+         self._preferred_library = preferred_library
+         self.shared = shared
+         self.static = static
+@@ -2914,23 +2935,14 @@ class AliasTarget(RunTarget):
+ 
+     typename = 'alias'
+ 
+-    def __init__(self, name: str, dependencies: T.Sequence[T.Union[Target, BothLibraries]],
++    def __init__(self, name: str, dependencies: T.Sequence[Target],
+                  subdir: str, subproject: str, environment: environment.Environment):
+-        super().__init__(name, [], list(self._deps_generator(dependencies)), subdir, subproject, environment)
++        super().__init__(name, [], dependencies, subdir, subproject, environment)
+ 
+     def __repr__(self):
+         repr_str = "<{0} {1}>"
+         return repr_str.format(self.__class__.__name__, self.get_id())
+ 
+-    @staticmethod
+-    def _deps_generator(dependencies: T.Sequence[T.Union[Target, BothLibraries]]) -> T.Iterator[Target]:
+-        for dep in dependencies:
+-            if isinstance(dep, BothLibraries):
+-                yield dep.shared
+-                yield dep.static
+-            else:
+-                yield dep
+-
+ class Jar(BuildTarget):
+     known_kwargs = known_jar_kwargs
+ 
+diff --git a/mesonbuild/interpreter/interpreter.py b/mesonbuild/interpreter/interpreter.py
+index 58385c58c5f7..10ca3e6bb2e8 100644
+--- a/mesonbuild/interpreter/interpreter.py
++++ b/mesonbuild/interpreter/interpreter.py
+@@ -31,7 +31,7 @@
+ from ..interpreterbase import Disabler, disablerIfNotFound
+ from ..interpreterbase import FeatureNew, FeatureDeprecated, FeatureBroken, FeatureNewKwargs
+ from ..interpreterbase import ObjectHolder, ContextManagerObject
+-from ..interpreterbase import stringifyUserArguments, resolve_second_level_holders
++from ..interpreterbase import stringifyUserArguments
+ from ..modules import ExtensionModule, ModuleObject, MutableModuleObject, NewExtensionModule, NotFoundExtensionModule
+ from ..optinterpreter import optname_regex
+ 
+@@ -681,7 +681,6 @@ def func_files(self, node: mparser.FunctionNode, args: T.Tuple[T.List[str]], kwa
+         KwargInfo('version', (str, NoneType)),
+         KwargInfo('objects', ContainerTypeInfo(list, build.ExtractedObjects), listify=True, default=[], since='1.1.0'),
+     )
+-    @noSecondLevelHolderResolving
+     def func_declare_dependency(self, node: mparser.BaseNode, args: T.List[TYPE_var],
+                                 kwargs: kwtypes.FuncDeclareDependency) -> dependencies.Dependency:
+         deps = kwargs['dependencies']
+@@ -1906,15 +1905,12 @@ def func_jar(self, node: mparser.BaseNode,
+     @permittedKwargs(known_build_target_kwargs)
+     @typed_pos_args('build_target', str, varargs=SOURCES_VARARGS)
+     @typed_kwargs('build_target', *BUILD_TARGET_KWS, allow_unknown=True)
+-    @noSecondLevelHolderResolving
+     def func_build_target(self, node: mparser.BaseNode,
+                           args: T.Tuple[str, SourcesVarargsType],
+                           kwargs: kwtypes.BuildTarget
+                           ) -> T.Union[build.Executable, build.StaticLibrary, build.SharedLibrary,
+                                        build.SharedModule, build.BothLibraries, build.Jar]:
+         target_type = kwargs['target_type']
+-        if target_type not in {'both_libraries', 'library'}:
+-            args, kwargs = resolve_second_level_holders(args, kwargs)
+ 
+         if target_type == 'executable':
+             return self.build_target(node, args, kwargs, build.Executable)
+@@ -2176,13 +2172,19 @@ def func_run_target(self, node: mparser.FunctionNode, args: T.Tuple[str],
+     @FeatureNew('alias_target', '0.52.0')
+     @typed_pos_args('alias_target', str, varargs=(build.Target, build.BothLibraries), min_varargs=1)
+     @noKwargs
+-    @noSecondLevelHolderResolving
+     def func_alias_target(self, node: mparser.BaseNode, args: T.Tuple[str, T.List[T.Union[build.Target, build.BothLibraries]]],
+                           kwargs: TYPE_kwargs) -> build.AliasTarget:
+         name, deps = args
+         if any(isinstance(d, build.RunTarget) for d in deps):
+             FeatureNew.single_use('alias_target that depends on run_targets', '0.60.0', self.subproject)
+-        tg = build.AliasTarget(name, deps, self.subdir, self.subproject, self.environment)
++        real_deps: T.List[build.Target] = []
++        for d in deps:
++            if isinstance(d, build.BothLibraries):
++                real_deps.append(d.shared)
++                real_deps.append(d.static)
++            else:
++                real_deps.append(d)
++        tg = build.AliasTarget(name, real_deps, self.subdir, self.subproject, self.environment)
+         self.add_target(name, tg)
+         return tg
+ 
+@@ -3286,16 +3288,18 @@ def build_both_libraries(self, node: mparser.BaseNode, args: T.Tuple[str, Source
+             # Keep only compilers used for linking
+             static_lib.compilers = {k: v for k, v in static_lib.compilers.items() if k in compilers.clink_langs}
+ 
++        # Cross reference them to implement as_shared() and as_static() methods.
++        shared_lib.set_static(static_lib)
++        static_lib.set_shared(shared_lib)
++
+         return build.BothLibraries(shared_lib, static_lib, preferred_library)
+ 
+     def build_library(self, node: mparser.BaseNode, args: T.Tuple[str, SourcesVarargsType], kwargs: kwtypes.Library):
+         default_library = self.coredata.get_option(OptionKey('default_library', subproject=self.subproject))
+         assert isinstance(default_library, str), 'for mypy'
+         if default_library == 'shared':
+-            args, kwargs = resolve_second_level_holders(args, kwargs)
+             return self.build_target(node, args, T.cast('kwtypes.StaticLibrary', kwargs), build.SharedLibrary)
+         elif default_library == 'static':
+-            args, kwargs = resolve_second_level_holders(args, kwargs)
+             return self.build_target(node, args, T.cast('kwtypes.SharedLibrary', kwargs), build.StaticLibrary)
+         elif default_library == 'both':
+             return self.build_both_libraries(node, args, kwargs)
+diff --git a/mesonbuild/interpreter/interpreterobjects.py b/mesonbuild/interpreter/interpreterobjects.py
+index a919102607be..f4a2b4107ed3 100644
+--- a/mesonbuild/interpreter/interpreterobjects.py
++++ b/mesonbuild/interpreter/interpreterobjects.py
+@@ -1001,8 +1001,6 @@ class SharedLibraryHolder(BuildTargetHolder[build.SharedLibrary]):
+ 
+ class BothLibrariesHolder(BuildTargetHolder[build.BothLibraries]):
+     def __init__(self, libs: build.BothLibraries, interp: 'Interpreter'):
+-        # FIXME: This build target always represents the shared library, but
+-        # that should be configurable.
+         super().__init__(libs, interp)
+         self.methods.update({'get_shared_lib': self.get_shared_lib_method,
+                              'get_static_lib': self.get_static_lib_method,
+@@ -1017,12 +1015,16 @@ def __repr__(self) -> str:
+     @noPosargs
+     @noKwargs
+     def get_shared_lib_method(self, args: T.List[TYPE_var], kwargs: TYPE_kwargs) -> build.SharedLibrary:
+-        return self.held_object.shared
++        lib = copy.copy(self.held_object.shared)
++        lib.both_lib = None
++        return lib
+ 
+     @noPosargs
+     @noKwargs
+     def get_static_lib_method(self, args: T.List[TYPE_var], kwargs: TYPE_kwargs) -> build.StaticLibrary:
+-        return self.held_object.static
++        lib = copy.copy(self.held_object.static)
++        lib.both_lib = None
++        return lib
+ 
+ class SharedModuleHolder(BuildTargetHolder[build.SharedModule]):
+     pass
+diff --git a/test cases/frameworks/38 gir both_libraries/bar.c b/test cases/frameworks/38 gir both_libraries/bar.c
+new file mode 100644
+index 000000000000..4cb41f798294
+--- /dev/null
++++ b/test cases/frameworks/38 gir both_libraries/bar.c	
+@@ -0,0 +1,7 @@
++#include "bar.h"
++#include "foo.h"
++
++int bar_func(void)
++{
++    return foo_func() + 42;
++}
+diff --git a/test cases/frameworks/38 gir both_libraries/bar.h b/test cases/frameworks/38 gir both_libraries/bar.h
+new file mode 100644
+index 000000000000..d22827b837f7
+--- /dev/null
++++ b/test cases/frameworks/38 gir both_libraries/bar.h	
+@@ -0,0 +1 @@
++int bar_func(void);
+diff --git a/test cases/frameworks/38 gir both_libraries/foo.c b/test cases/frameworks/38 gir both_libraries/foo.c
+new file mode 100644
+index 000000000000..b88aa91dabb4
+--- /dev/null
++++ b/test cases/frameworks/38 gir both_libraries/foo.c	
+@@ -0,0 +1,6 @@
++#include "foo.h"
++
++int foo_func(void)
++{
++    return 42;
++}
+diff --git a/test cases/frameworks/38 gir both_libraries/foo.h b/test cases/frameworks/38 gir both_libraries/foo.h
+new file mode 100644
+index 000000000000..2a0867249307
+--- /dev/null
++++ b/test cases/frameworks/38 gir both_libraries/foo.h	
+@@ -0,0 +1 @@
++int foo_func(void);
+diff --git a/test cases/frameworks/38 gir both_libraries/meson.build b/test cases/frameworks/38 gir both_libraries/meson.build
+new file mode 100644
+index 000000000000..cb9cdd31f3ed
+--- /dev/null
++++ b/test cases/frameworks/38 gir both_libraries/meson.build	
+@@ -0,0 +1,42 @@
++project('gir both libraries', 'c')
++
++gir = dependency('gobject-introspection-1.0', required: false)
++if not gir.found()
++  error('MESON_SKIP_TEST gobject-introspection not found.')
++endif
++
++if host_machine.system() == 'cygwin'
++  # FIXME: g-ir-scanner seems broken on cygwin:
++  # ERROR: can't resolve libraries to shared libraries: foo++
++  error('MESON_SKIP_TEST g-ir-scanner is broken on cygwin.')
++endif
++
++gnome = import('gnome')
++
++# Regression test simulating how GStreamer generate its GIRs.
++# Generated gobject-introspection binaries for every GStreamer libraries must
++# first call gst_init() defined in the main libgstreamer, which means they need
++# to link on that lib.
++# A regression caused by https://github.com/mesonbuild/meson/pull/12632 made
++# Meson not link the binary generated for bar with libfoo in the case it uses
++# both_libraries().
++
++libfoo = both_libraries('foo', 'foo.c')
++foo_gir = gnome.generate_gir(libfoo,
++  namespace: 'foo',
++  nsversion: '1.0',
++  sources: ['foo.c', 'foo.h'],
++)
++foo_dep = declare_dependency(
++  link_with: libfoo,
++  sources: foo_gir,
++)
++
++libbar = both_libraries('bar', 'bar.c', dependencies: foo_dep)
++gnome.generate_gir(libbar,
++  namespace: 'bar',
++  nsversion: '1.0',
++  sources: ['bar.c', 'bar.h'],
++  extra_args: '--add-init-section=extern void foo_func(void);foo_func();',
++  dependencies: foo_dep,
++)
+diff --git a/test cases/frameworks/38 gir both_libraries/test.json b/test cases/frameworks/38 gir both_libraries/test.json
+new file mode 100644
+index 000000000000..82ac42a293b3
+--- /dev/null
++++ b/test cases/frameworks/38 gir both_libraries/test.json	
+@@ -0,0 +1,3 @@
++{
++    "expect_skip_on_jobname": ["azure", "macos", "msys2", "cygwin"]
++}
+\ No newline at end of file
+
