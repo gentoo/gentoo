@@ -330,7 +330,6 @@ src_configure() {
 		$(use_enable tk texdoctk)
 		$(use_with X x)
 		$(use_enable xindy)
-		--enable-ptex=no
 		--enable-autosp=yes
 		--enable-axodraw2=yes
 		--enable-devnag=yes
