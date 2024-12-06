@@ -62,6 +62,9 @@ NUGETS_DEPEND="
 	${CURRENT_NUGETS_DEPEND}
 	${EXTRA_NUGETS_DEPEND}
 "
+PDEPEND="
+	${NUGETS_DEPEND}
+"
 RDEPEND="
 	app-arch/brotli
 	app-crypt/mit-krb5:0/0
@@ -71,6 +74,9 @@ RDEPEND="
 	dev-util/lttng-ust:=
 	sys-libs/libunwind
 	sys-libs/zlib:0/1
+"
+DEPEND="
+	${RDEPEND}
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -83,9 +89,6 @@ BDEPEND="
 "
 IDEPEND="
 	app-eselect/eselect-dotnet
-"
-PDEPEND="
-	${NUGETS_DEPEND}
 "
 
 CHECKREQS_DISK_BUILD="20G"
