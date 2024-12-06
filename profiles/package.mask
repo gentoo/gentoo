@@ -336,14 +336,6 @@ sci-libs/QNNPACK
 # Removal on 2024-12-06. Bug #924715.
 x11-drivers/xf86-video-vboxvideo
 
-# Matt Turner <mattst88@gentoo.org> (2024-11-06)
-# Driver for integrated GPU paired only with Texas Instruments ARM CPUs.
-#
-# Not maintained upstream. No releases since 2016. No sign of users.
-#
-# Removal on 2024-12-06. Bug #924715.
-x11-drivers/xf86-video-omap
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-11-03)
 # Vendors an unreleased libbpf version and announces incorrect version.
 # Please downgrade to 7.4.0. Bug Bug #941185. Removal on 2024-12-03.
