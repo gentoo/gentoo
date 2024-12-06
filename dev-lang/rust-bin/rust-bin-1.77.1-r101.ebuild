@@ -3,14 +3,14 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 17 )
 LLVM_OPTIONAL="yes"
 
 inherit llvm-r1 multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
 
 MY_P="rust-${PV}"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
-MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-08-08/rust-src-${PV}.tar.xz"
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-03-28/rust-src-${PV}.tar.xz"
 GENTOO_BIN_BASEURI="https://dev.gentoo.org/~arthurzam/distfiles/${CATEGORY}/${PN}" # omit leading slash
 
 DESCRIPTION="Systems programming language from Mozilla"
@@ -30,29 +30,23 @@ SRC_URI+=" mips? (
 		!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips64el-unknown-linux-gnuabi64.tar.xz )
 	)
 )"
-SRC_URI+=" riscv? (
-	elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-riscv64gc-unknown-linux-musl.tar.xz )
-)"
-SRC_URI+=" ppc64? ( elibc_musl? (
-	big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64-unknown-linux-musl.tar.xz )
-	!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64le-unknown-linux-musl.tar.xz )
-) )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix llvm-libunwind rust-analyzer rust-src rustfmt"
 
 RDEPEND="
 	>=app-eselect/eselect-rust-20190311
 	dev-libs/openssl
 	sys-apps/lsb-release
-	sys-devel/gcc:*
+	!llvm-libunwind? ( sys-devel/gcc:* )
 	!dev-lang/rust:stable
 	!dev-lang/rust-bin:stable
 "
 BDEPEND="
 	prefix? ( dev-util/patchelf )
+	llvm-libunwind? ( dev-util/patchelf )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
 "
 
@@ -64,7 +58,7 @@ RESTRICT="strip"
 
 QA_PREBUILT="
 	opt/${P}/bin/.*
-	opt/${P}/lib/.*.so*
+	opt/${P}/lib/.*.so
 	opt/${P}/libexec/.*
 	opt/${P}/lib/rustlib/.*/bin/.*
 	opt/${P}/lib/rustlib/.*/lib/.*
@@ -143,6 +137,16 @@ multilib_src_install() {
 		find "${ED}/opt/${P}/bin" -type f -print0 | \
 			while IFS=  read -r -d '' filename; do
 				patchelf_for_bin ${filename} ${interpreter} \; || die
+			done
+		eend ${PIPESTATUS[0]}
+	fi
+
+	if use llvm-libunwind; then
+		ebegin "Replacing libgcc_s with libunwind"
+		find "${ED}/opt/${P}"/{bin,lib,libexec} -type f -print0 | \
+			while IFS=  read -r -d '' filename; do
+				# just ignore wrong filetype error, instead of checking redundantly
+				patchelf --replace-needed libgcc_s.so.1 libunwind.so.1 ${filename} 2>/dev/null
 			done
 		eend ${PIPESTATUS[0]}
 	fi
