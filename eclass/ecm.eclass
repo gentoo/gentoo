@@ -116,6 +116,14 @@ else
 	ECM_PO_DIRS=( po poqm )
 fi
 
+# @ECLASS_VARIABLE: ECM_PYTHON_BINDINGS
+# @DESCRIPTION:
+# Default value is "false", which means do nothing.
+# If set to "off", pass -DBUILD_PYTHON_BINDINGS=OFF to mycmakeargs, and also
+# disable cmake finding Python3, PySide6 and Shiboken6 to make it quiet.
+# No other value is implemented as python bindings are not supported in Gentoo.
+: "${ECM_PYTHON_BINDINGS:=false}"
+
 # @ECLASS_VARIABLE: ECM_QTHELP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -251,6 +259,15 @@ case ${ECM_HANDBOOK} in
 	*)
 		eerror "Unknown value for \${ECM_HANDBOOK}"
 		die "Value ${ECM_HANDBOOK} is not supported"
+		;;
+esac
+
+case ${ECM_PYTHON_BINDINGS} in
+	off|false) ;;
+	true) ;& # TODO if you really really want
+	*)
+		eerror "Unknown value for \${ECM_PYTHON_BINDINGS}"
+		die "Value ${ECM_PYTHON_BINDINGS} is not supported"
 		;;
 esac
 
@@ -608,6 +625,13 @@ ecm_src_configure() {
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
 		cmakeargs+=( -DBUILD_DESIGNERPLUGIN=$(usex designer) )
+	fi
+
+	if [[ ${ECM_PYTHON_BINDINGS} == off ]]; then
+		cmakeargs+=(
+			-DBUILD_PYTHON_BINDINGS=OFF
+			-DCMAKE_DISABLE_FIND_PACKAGE_{Python3,PySide6,Shiboken6}=ON
+		)
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then
