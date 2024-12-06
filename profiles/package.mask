@@ -412,12 +412,6 @@ net-misc/electron-cash
 # Removal on 2024-11-17.  Bug #937896.
 dev-python/sentry-sdk
 
-# Ulrich Müller <ulm@gentoo.org> (2024-10-15)
-# No longer provided as a separate package; the Emacs mode is now
-# installed by dev-util/quilt with USE=emacs.
-# Removal on 2024-11-14. Bug #247500.
-app-emacs/quilt-el
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
 # Vendors an unreleased libbpf version and generates ABI-breaking code.
 # Bug #941185. Removal on 2024-12-03.
