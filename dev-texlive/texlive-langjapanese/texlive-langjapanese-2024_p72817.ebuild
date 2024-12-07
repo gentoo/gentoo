@@ -181,6 +181,9 @@ src_prepare() {
 	# e(u)ptex are installed by texlive-core[cjk]
 	sed -i '/AddFormat name=eptex /d' tlpkg/tlpobj/ptex.tlpobj || die
 	sed -i '/AddFormat name=euptex /d' tlpkg/tlpobj/uptex.tlpobj || die
-	# ptekf.1 is installed by dev-libs/ptexenc
-	rm texmf-dist/doc/man/man1/ptekf.1 || die
+
+	if use doc; then
+		# ptekf.1 is installed by dev-libs/ptexenc
+		rm texmf-dist/doc/man/man1/ptekf.1 || die
+	fi
 }
