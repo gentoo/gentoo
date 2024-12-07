@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -17,26 +16,22 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-	)
-"
-distutils_enable_tests pytest
-distutils_enable_sphinx doc
 
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
+distutils_enable_tests pytest
+distutils_enable_sphinx docs
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# namespace
+	rm src/sphinxcontrib/__init__.py || die
 }
 
 python_test() {
-	distutils_write_namespace sphinxcontrib
-	cd "${T}" || die
 	epytest --pyargs sphinxcontrib.programoutput.tests
 }
