@@ -1,0 +1,20 @@
+--- a/src/base/Instrument.cpp
++++ b/src/base/Instrument.cpp
+@@ -31,6 +31,7 @@
+ #include <utility>  // for std::pair
+ 
+ #include <QtGlobal>  // for Q_ASSERT()
++#include <QCoreApplication>
+ 
+ namespace Rosegarden
+ {
+--- a/src/base/MidiDevice.cpp
++++ b/src/base/MidiDevice.cpp
+@@ -32,6 +32,7 @@
+ #include <sstream>
+ 
+ #include <QString>
++#include <QCoreApplication>
+ 
+ namespace Rosegarden
+ {
