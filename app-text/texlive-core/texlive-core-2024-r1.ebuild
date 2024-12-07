@@ -145,6 +145,7 @@ MODULAR_X_DEPEND="
 
 COMMON_DEPEND="
 	${MODULAR_X_DEPEND}
+	sci-libs/mpfi
 	sys-libs/zlib
 	>=media-libs/harfbuzz-1.4.5:=[icu,graphite]
 	>=media-libs/libpng-1.2.43-r2:0=
@@ -280,6 +281,7 @@ src_configure() {
 		--with-system-libpaper
 		--with-system-gmp
 		--with-system-gd
+		--with-system-mpfi
 		--with-system-mpfr
 		--with-system-potrace
 		--disable-multiplatform
