@@ -19,7 +19,7 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})
 	rust-src? ( ${MY_SRC_URI} )
 "
 # Keep this separate to allow easy commenting out if not yet built
-#SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz ) "
+SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz ) "
 #SRC_URI+=" mips? (
 #	abi_mips_o32? (
 #		big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips-unknown-linux-gnu.tar.xz )
@@ -33,14 +33,14 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})
 #SRC_URI+=" riscv? (
 #	elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-riscv64gc-unknown-linux-musl.tar.xz )
 #)"
-#SRC_URI+=" ppc64? ( elibc_musl? (
-#	big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64-unknown-linux-musl.tar.xz )
+SRC_URI+=" ppc64? ( elibc_musl? (
+	big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64-unknown-linux-musl.tar.xz )
+) )"
 #	!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64le-unknown-linux-musl.tar.xz )
-#) )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 RDEPEND="
