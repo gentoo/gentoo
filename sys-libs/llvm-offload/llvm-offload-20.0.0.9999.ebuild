@@ -48,6 +48,14 @@ LLVM_COMPONENTS=( offload cmake runtimes/cmake libc/shared )
 LLVM_TEST_COMPONENTS=( openmp/cmake )
 llvm.org_set_globals
 
+pkg_pretend() {
+	if [[ ${LLVM_ALLOW_GPU_TESTING} ]]; then
+		ewarn "LLVM_ALLOW_GPU_TESTING set.  This package will run tests against your"
+		ewarn "GPU if it is supported.  Note that these tests may be flaky, fail or"
+		ewarn "hang, or even cause your GPU to crash (requiring a reboot)."
+	fi
+}
+
 pkg_setup() {
 	if use test; then
 		python-any-r1_pkg_setup
@@ -95,7 +103,9 @@ src_configure() {
 
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
+	)
 
+	[[ ! ${LLVM_ALLOW_GPU_TESTING} ]] && mycmakeargs+=(
 		# prevent trying to access the GPU
 		-DLIBOMPTARGET_AMDGPU_ARCH=LIBOMPTARGET_AMDGPU_ARCH-NOTFOUND
 		-DLIBOMPTARGET_NVPTX_ARCH=LIBOMPTARGET_NVPTX_ARCH-NOTFOUND
