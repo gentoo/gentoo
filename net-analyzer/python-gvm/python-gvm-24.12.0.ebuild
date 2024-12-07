@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1
@@ -12,12 +12,11 @@ DESCRIPTION="Greenbone Vulnerability Management Python Library"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/python-gvm/"
 SRC_URI="https://github.com/greenbone/python-gvm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-3+"
-KEYWORDS="amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="
-	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-2.7.1[${PYTHON_USEDEP}]
 	test? (
