@@ -14,9 +14,9 @@ SRC_URI="
 	https://github.com/greenbone/${PN}/releases/download/v${PV}/${PN}-${MY_NODE_N}-${PV}.tar.xz
 "
 
-SLOT="0"
 LICENSE="AGPL-3+"
-KEYWORDS="amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="
 	>=net-libs/nodejs-18.0.0[ssl]
