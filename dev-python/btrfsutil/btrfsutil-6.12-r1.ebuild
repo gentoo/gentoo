@@ -44,3 +44,10 @@ src_unpack() {
 		default
 	fi
 }
+
+src_install() {
+	distutils-r1_src_install
+
+	rm "${ED}"/usr/share/doc/${PF}/README.md || die
+	dodoc "${S}"/../README.md
+}
