@@ -22,16 +22,16 @@ SLOT="4.33"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 BDEPEND="app-arch/unzip"
-COMMON_DEP="app-eselect/eselect-java"
 # ElementsImpl9.java:206: error:
 # method does not override or implement a method from a supertype
-DEPEND="${COMMON_DEP}
+DEPEND="
 	>=dev-java/ant-1.10.14-r3:0
-	>=virtual/jdk-21:*"
+	>=virtual/jdk-21:*
+"
+
 # Parser.java:1095: error:
 # pattern matching in instanceof is not supported in -source 11
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-17:*"
+RDEPEND=">=virtual/jre-17:*"
 
 DOCS=( org/eclipse/jdt/core/README.md )
 
