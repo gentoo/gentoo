@@ -21,7 +21,7 @@ S="${WORKDIR}/python-${P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/pylatexenc-2.10[${PYTHON_USEDEP}]
