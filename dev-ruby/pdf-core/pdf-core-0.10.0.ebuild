@@ -20,8 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
-ruby_add_bdepend "test? ( =dev-ruby/pdf-inspector-1*
-	|| ( dev-ruby/pdf-reader:2 >=dev-ruby/pdf-reader-1.2:0 )
+ruby_add_bdepend "test? (
+	=dev-ruby/pdf-inspector-1*
+	dev-ruby/pdf-reader:2
 )"
 
 all_ruby_prepare() {
