@@ -12,11 +12,12 @@ HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
 SRC_URI="https://github.com/Mbed-TLS/mbedtls/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 GPL-2+ )"
-SLOT="0/16.21.7" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
+SLOT="3/16.21.7" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="cpu_flags_x86_sse2 doc programs static-libs test threads"
 RESTRICT="!test? ( test )"
 
+RDEPEND="!>net-libs/mbedtls-3:0"
 BDEPEND="
 	${PYTHON_DEPS}
 	doc? (
@@ -25,6 +26,13 @@ BDEPEND="
 	)
 	test? ( dev-lang/perl )
 "
+
+PATCHES=(
+	"${FILESDIR}/mbedtls-3.6.2-allow-install-headers-to-different-location.patch"
+	"${FILESDIR}/mbedtls-3.6.2-add-version-suffix-for-all-installable-targets.patch"
+	"${FILESDIR}/mbedtls-3.6.2-add-version-suffix-for-pkg-config-files.patch"
+	"${FILESDIR}/mbedtls-3.6.2-exclude-static-3dparty.patch"
+)
 
 enable_mbedtls_option() {
 	local myopt="$@"
@@ -47,7 +55,7 @@ multilib_src_configure() {
 		-DENABLE_PROGRAMS=$(multilib_native_usex programs)
 		-DENABLE_TESTING=$(usex test)
 		-DINSTALL_MBEDTLS_HEADERS=ON
-		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DCMAKE_INSTALL_INCLUDEDIR="include/mbedtls3"
 		-DLINK_WITH_PTHREAD=$(usex threads)
 		-DMBEDTLS_FATAL_WARNINGS=OFF # Don't use -Werror, #744946
 		-DUSE_SHARED_MBEDTLS_LIBRARY=ON

@@ -9,20 +9,15 @@ inherit lua-single meson readme.gentoo-r1 systemd tmpfiles verify-sig
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
-if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="https://git.lighttpd.net/lighttpd/lighttpd1.4.git"
-	inherit git-r3
-else
-	SRC_URI="
-		https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz
-		verify-sig? ( https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz.asc )
-	"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-fi
+SRC_URI="
+	https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz
+	verify-sig? ( https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz.asc )
+"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+IUSE="+brotli dbi gnutls kerberos ldap +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -42,10 +37,9 @@ COMMON_DEPEND="
 	gnutls? ( net-libs/gnutls )
 	kerberos? ( virtual/krb5 )
 	ldap? ( >=net-nds/openldap-2.1.26:= )
-	libdeflate? ( app-arch/libdeflate )
 	lua? ( ${LUA_DEPS} )
 	maxminddb? ( dev-libs/libmaxminddb )
-	mbedtls? ( net-libs/mbedtls )
+	mbedtls? ( net-libs/mbedtls:0= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss )
 	pcre? ( dev-libs/libpcre2 )
@@ -111,12 +105,8 @@ pkg_setup() {
 }
 
 src_configure() {
-	# (One specific library might be preferred on embedded systems via
-	#  MYMESONARGS with e.g. -DFORCE_blah_CRYPTO)
 	local emesonargs=(
 		-Dmoduledir="$(get_libdir)"/${PN}
-
-		${c_args}
 
 		$(meson_feature brotli with_brotli)
 
@@ -125,14 +115,14 @@ src_configure() {
 
 		$(meson_feature dbi with_dbi)
 
+		# Unpackaged in Gentoo
+		-Dwith_libdeflate=disabled
 		# Obsolete
 		-Dwith_fam=disabled
 
 		$(meson_use gnutls with_gnutls)
 		$(meson_feature kerberos with_krb5)
 		$(meson_feature ldap with_ldap)
-
-		$(meson_feature libdeflate with_libdeflate)
 
 		$(meson_feature unwind with_libunwind)
 
@@ -176,10 +166,9 @@ src_install() {
 
 	# Configs
 	insinto /etc/lighttpd
-	newins "${FILESDIR}"/conf/lighttpd.conf-r3 lighttpd.conf
+	newins "${FILESDIR}"/conf/lighttpd.conf-r2 lighttpd.conf
 	doins "${FILESDIR}"/conf/mod_cgi.conf
 	doins "${FILESDIR}"/conf/mod_fastcgi.conf
-	doins doc/config/conf.d/mime.conf
 
 	# Update lighttpd.conf directives based on conditionals
 	update_config
