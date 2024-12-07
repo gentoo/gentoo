@@ -2261,6 +2261,13 @@ gcc_do_make() {
 			STAGE1_CXXFLAGS="-O2"
 		fi
 
+		# Workaround -march=native not working for stage1 with
+		# non-GCC (bug #933772).
+		if ! tc-is-gcc ; then
+			STAGE1_CFLAGS+=" $(test-flags-CC -fcf-protection=none)"
+			STAGE1_CXXFLAGS+=" $(test-flags-CXX -fcf-protection=none)"
+		fi
+
 		# We only want to use the system's CFLAGS if not building a
 		# cross-compiler.
 		STAGE1_CFLAGS=${STAGE1_CFLAGS-"$(get_abi_CFLAGS ${TARGET_DEFAULT_ABI}) ${CFLAGS}"}
