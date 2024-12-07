@@ -1,0 +1,58 @@
+Upstream: https://github.com/storaged-project/udisks/pull/1333
+
+From d5f0bc5aa005d116b513992a6ae8ee1fd2dd65a1 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sat, 7 Dec 2024 16:45:40 -0500
+Subject: [PATCH] build: use -export-dynamic instead of -export_dynamic
+
+GNU libtool accepts either, but slibtool's option parsing is more strict
+and just ends up passing -export_dynamic to the compiler, which
+obviously causes an error. Use -export-dynamic to fix building with
+slibtool.
+--- a/modules/btrfs/Makefile.am
++++ b/modules/btrfs/Makefile.am
+@@ -64,7 +64,7 @@ libudisks2_btrfs_la_CFLAGS =                                                   \
+ 	$(NULL)
+ 
+ libudisks2_btrfs_la_LDFLAGS =                                                  \
+-	-export_dynamic                                                        \
++	-export-dynamic                                                        \
+ 	-avoid-version                                                         \
+ 	-module                                                                \
+ 	-no-undefined                                                          \
+--- a/modules/iscsi/Makefile.am
++++ b/modules/iscsi/Makefile.am
+@@ -68,7 +68,7 @@ libudisks2_iscsi_la_CFLAGS =                                                   \
+ 	$(NULL)
+ 
+ libudisks2_iscsi_la_LDFLAGS =                                                  \
+-	-export_dynamic                                                        \
++	-export-dynamic                                                        \
+ 	-avoid-version                                                         \
+ 	-module                                                                \
+ 	-no-undefined                                                          \
+--- a/modules/lsm/Makefile.am
++++ b/modules/lsm/Makefile.am
+@@ -62,7 +62,7 @@ libudisks2_lsm_la_CFLAGS =                                                     \
+ 	$(NULL)
+ 
+ libudisks2_lsm_la_LDFLAGS =                                                    \
+-	-export_dynamic                                                        \
++	-export-dynamic                                                        \
+ 	-avoid-version                                                         \
+ 	-module                                                                \
+ 	-no-undefined                                                          \
+--- a/modules/lvm2/Makefile.am
++++ b/modules/lvm2/Makefile.am
+@@ -67,7 +67,7 @@ libudisks2_lvm2_la_CFLAGS =                                                    \
+ 	$(NULL)
+ 
+ libudisks2_lvm2_la_LDFLAGS =                                                   \
+-	-export_dynamic                                                        \
++	-export-dynamic                                                        \
+ 	-avoid-version                                                         \
+ 	-module                                                                \
+ 	-no-undefined                                                          \
+-- 
+2.47.1
+
