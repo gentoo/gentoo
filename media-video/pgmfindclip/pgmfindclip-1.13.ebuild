@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,11 @@ inherit toolchain-funcs
 DESCRIPTION="automatically find a clipping border for a sequence of pgm images"
 HOMEPAGE="http://www.lallafa.de/bp/pgmfindclip.html"
 SRC_URI="http://www.lallafa.de/bp/files/${P}.tgz"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default

@@ -19,10 +19,10 @@ else
 	SRC_URI="https://github.com/ozmartian/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	>=media-video/mpv-0.25:=[libmpv]
@@ -36,8 +36,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 src_install() {
 	distutils-r1_src_install

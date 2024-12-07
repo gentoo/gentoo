@@ -21,7 +21,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	>=media-video/mpv-0.25:=[libmpv]
