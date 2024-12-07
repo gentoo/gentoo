@@ -775,7 +775,7 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DDEF_GENTOO_ZNOW"
 	fi
 
-	if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux-gnu* ]] ; then
+	if _tc_use_if_iuse cet && [[ -z ${CLANG_DISABLE_CET_HACK} && ${CTARGET} == *x86_64*-linux-gnu* ]] ; then
 		einfo "Updating gcc to use x86-64 control flow protection by default ..."
 		hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
 	fi
@@ -1149,6 +1149,11 @@ toolchain_src_configure() {
 		export ac_cv_std_swap_in_utility=no
 	fi
 
+	# Workaround -march=native not working for stage1 with non-GCC (bug #933772).
+	if ! tc-is-gcc && [[ "${CFLAGS}${CXXFLAGS}" == *-march=native* ]] ; then
+		CLANG_DISABLE_CET_HACK=1
+	fi
+
 	local flag
 	for flag in $(all-flag-vars) ; do
 		einfo "${flag}=\"${!flag}\""
@@ -1308,7 +1313,7 @@ toolchain_src_configure() {
 		BUILD_CONFIG_TARGETS+=( bootstrap-lto )
 	fi
 
-	if tc_version_is_at_least 12 && _tc_use_if_iuse cet && [[ ${CTARGET} == x86_64-*-gnu* ]] ; then
+	if tc_version_is_at_least 12 && _tc_use_if_iuse cet && [[ -z ${CLANG_DISABLE_CET_HACK} && ${CTARGET} == x86_64-*-gnu* ]] ; then
 		BUILD_CONFIG_TARGETS+=( bootstrap-cet )
 	fi
 
@@ -1694,7 +1699,7 @@ toolchain_src_configure() {
 
 		enable_cet_for 'x86_64' 'gnu' 'cet'
 		enable_cet_for 'aarch64' 'gnu' 'standard-branch-protection'
-		[[ ${CTARGET} == i[34567]86-* ]] && confgcc+=( --disable-cet )
+		[[ -n ${CLANG_DISABLE_CET_HACK} || ${CTARGET} == i[34567]86-* ]] && confgcc+=( --disable-cet )
 	fi
 
 	if in_iuse systemtap ; then
@@ -2259,13 +2264,6 @@ gcc_do_make() {
 		elif _tc_use_if_iuse ada || _tc_use_if_iuse d; then
 			STAGE1_CFLAGS="-O2"
 			STAGE1_CXXFLAGS="-O2"
-		fi
-
-		# Workaround -march=native not working for stage1 with
-		# non-GCC (bug #933772).
-		if ! tc-is-gcc ; then
-			STAGE1_CFLAGS+=" $(test-flags-CC -fcf-protection=none)"
-			STAGE1_CXXFLAGS+=" $(test-flags-CXX -fcf-protection=none)"
 		fi
 
 		# We only want to use the system's CFLAGS if not building a
