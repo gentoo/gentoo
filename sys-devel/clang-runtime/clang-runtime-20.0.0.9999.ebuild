@@ -10,7 +10,7 @@ HOMEPAGE="https://clang.llvm.org/"
 
 LICENSE="metapackage"
 SLOT="${PV%%.*}"
-IUSE="+compiler-rt libcxx openmp +sanitize"
+IUSE="+compiler-rt libcxx offload openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
 
 RDEPEND="
@@ -21,7 +21,12 @@ RDEPEND="
 		)
 	)
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )
+	openmp? (
+		>=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}]
+		offload? (
+			>=sys-libs/llvm-offload-${PV}
+		)
+	)
 "
 
 pkg_pretend() {
