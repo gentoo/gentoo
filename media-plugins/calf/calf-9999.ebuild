@@ -43,8 +43,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.4-no-automagic.patch"
-	"${FILESDIR}/${PN}-0.9.4-htmldir.patch"
+	"${FILESDIR}/${PN}-0.90.4-no-automagic.patch"
+	"${FILESDIR}/${PN}-0.90.4-htmldir.patch"
 	"${FILESDIR}/${PN}-0.90.4-desktop.patch"
 )
 
