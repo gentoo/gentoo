@@ -74,7 +74,7 @@ dev-python/pypy
 # TeX Live 2024 is currently masked for testing.
 # Please report issues by creating a new bug report
 # at https://bugs.gentoo.org.
->=app-text/dvisvgm-2024
+>=app-test/dvipsk-2024
 >=app-text/ps2pkm-1.8_p20240311
 >=app-text/texlive-2024
 >=app-text/texlive-core-2024
