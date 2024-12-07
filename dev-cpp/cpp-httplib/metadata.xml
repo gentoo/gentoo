@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>xgqt@gentoo.org</email>
-		<name>Maciej Barć</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>alexey+gentoo@asokolov.org</email>
 		<name>Alexey Sokolov</name>
