@@ -107,7 +107,7 @@ PATCHES=(
 src_configure() {
 	# Signed chars are required.
 	for arch in arm arm64 ppc ppc64; do
-		use $arch && append-flags -fsigned-chars
+		use $arch && append-flags -fsigned-char
 	done
 
 	local emesonargs=(
