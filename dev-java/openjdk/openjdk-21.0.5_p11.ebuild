@@ -224,6 +224,8 @@ src_configure() {
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
 
+	[[ $(tc-get-cxx-stdlib) = libc++ ]] && myconf+=( --with-stdc++lib=dynamic )
+
 	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
 
 	# Werror=odr
