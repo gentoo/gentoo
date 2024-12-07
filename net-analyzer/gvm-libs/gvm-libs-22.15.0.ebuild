@@ -11,7 +11,7 @@ SRC_URI="https://github.com/greenbone/gvm-libs/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="doc ldap test radius"
 RESTRICT="!test? ( test )"
 
@@ -22,6 +22,7 @@ DEPEND="
 	>=dev-libs/hiredis-0.10.1:=
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error
+	>=dev-libs/cJSON-1.7.14
 	>=dev-libs/libxml2-2.0:2
 	>=net-libs/gnutls-3.2.15:=
 	net-libs/libnet:1.1
@@ -31,6 +32,7 @@ DEPEND="
 	sys-libs/libxcrypt:=
 	>=sys-libs/zlib-1.2.8
 	net-libs/paho-mqtt-c:1.3
+	>=net-misc/curl-7.74.0
 	ldap? ( net-nds/openldap:= )
 	radius? ( net-dialup/freeradius-client )
 "
