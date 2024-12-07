@@ -324,20 +324,10 @@ dev-ruby/jquery-ui-rails:6
 # Removal on 2024-12-07.  Bug #942972.
 sci-libs/QNNPACK
 
-# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-11-03)
-# Vendors an unreleased libbpf version and announces incorrect version.
-# Please downgrade to 7.4.0. Bug Bug #941185. Removal on 2024-12-03.
-=dev-util/bpftool-7.5.0-r1
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
 app-emulation/virtualbox-kvm
-
-# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-10-11)
-# Vendors an unreleased libbpf version and generates ABI-breaking code.
-# Bug #941185. Removal on 2024-12-03.
-=dev-util/bpftool-7.5.0-r2
 
 # Yongxiang Liang <tanekliang@gmail.org> (2024-10-10)
 # Fcitx 4 has been archived. Users can upgrade to Fcitx 5
