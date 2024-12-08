@@ -17,9 +17,12 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-util/hip
+RDEPEND="
+	dev-util/hip:${SLOT}
+	sci-libs/hipBLAS-common:${SLOT}
 	sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}]
-	sci-libs/rocSOLVER:${SLOT}[${ROCM_USEDEP}]"
+	sci-libs/rocSOLVER:${SLOT}[${ROCM_USEDEP}]
+"
 DEPEND="${RDEPEND}"
 
 src_configure() {
