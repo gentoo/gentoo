@@ -18,6 +18,9 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCmSoftwarePlatform/hipSPARSE</remote-id>
+    <remote-id type="github">ROCm/hipSPARSE</remote-id>
   </upstream>
+  <use>
+    <flag name="benchmark">Build and install hipsparse-bench.</flag>
+  </use>
 </pkgmetadata>
