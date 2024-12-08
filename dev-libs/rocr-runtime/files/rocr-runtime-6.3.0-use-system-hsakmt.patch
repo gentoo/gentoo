@@ -1,0 +1,20 @@
+libhsakmt is a part of dev-libs/roct-thunk-interface
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -96,11 +96,16 @@ if (HSA_DEP_ROCPROFILER_REGISTER)
+   string(APPEND CPACK_RPM_BINARY_PACKAGE_REQUIRES " rocprofiler-register")
+ endif()
+ 
++if (BUILD_HSAKMT)
+ add_rocm_subdir(libhsakmt "${THUNK_DEFINITIONS}")
+ set_target_properties(hsakmt PROPERTIES
+                                 ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libhsakmt/archive"
+                                 LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libhsakmt/lib"
+                                 RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libhsakmt/runtime")
++else()
++  find_package(hsakmt REQUIRED)
++  add_library(hsakmt ALIAS hsakmt::hsakmt)
++endif()
+ 
+ if (BUILD_ROCR)
+   add_rocm_subdir(runtime/hsa-runtime "${ROCR_DEFINITIONS}")
