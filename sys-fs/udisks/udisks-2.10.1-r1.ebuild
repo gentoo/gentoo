@@ -66,6 +66,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-targetcli_config.json_netif_timeout.patch
 	"${FILESDIR}"/${P}-udiskslinuxmanager_use_after_free.patch
 	"${FILESDIR}"/${P}-udiskslinuxblock_survive_missing_fstab.patch
+
+	"${FILESDIR}"/${PN}-2.10.1-slibtool-export-dynamic.patch
 )
 
 pkg_setup() {
