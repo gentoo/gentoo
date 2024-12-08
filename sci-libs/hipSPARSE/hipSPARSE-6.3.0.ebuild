@@ -37,20 +37,31 @@ S="${WORKDIR}/hipSPARSE-rocm-${PV}"
 LICENSE="MIT"
 SLOT="0"/$(ver_cut 1-2)
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE="benchmark test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-util/rocminfo
-		dev-util/hip:${SLOT}
-		sci-libs/rocSPARSE:${SLOT}[${ROCM_USEDEP}]"
+RDEPEND="
+	dev-util/rocminfo:${SLOT}
+	dev-util/hip:${SLOT}
+	sci-libs/rocSPARSE:${SLOT}[${ROCM_USEDEP}]
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-build/rocm-cmake
-	>=dev-build/cmake-3.22
-	test? ( dev-cpp/gtest )"
+BDEPEND="
+	dev-build/rocm-cmake
+	test? ( dev-cpp/gtest )
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-6.3.0-fix-filesystem.patch"
+	"${FILESDIR}/${PN}-6.3.0-no-gtest-in-benchmark.patch"
+)
 
 src_prepare() {
+	# include <filesystem> issue - https://github.com/ROCm/hipSPARSE/issues/555
+	sed -e "s/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 17/" -i CMakeLists.txt clients/CMakeLists.txt || die
+
 	cmake_src_prepare
 
 	if use test; then
@@ -59,9 +70,9 @@ src_prepare() {
 		edo $(tc-getCXX) deps/convert.cpp -o deps/convert
 		find "${WORKDIR}" -maxdepth 2 -regextype egrep -regex ".*/(.*)/\1\.mtx" -print0 |
 			while IFS= read -r -d '' mtxfile; do
-				destination=${BUILD_DIR}/clients/matrices/$(basename -s '.mtx' ${mtxfile}).bin
+				destination=${BUILD_DIR}/clients/matrices/$(basename -s '.mtx' "${mtxfile}").bin
 				ebegin "Converting ${mtxfile} to ${destination}"
-				deps/convert ${mtxfile} ${destination}
+				deps/convert "${mtxfile}" "${destination}"
 				eend $?
 			done
 	fi
@@ -76,6 +87,7 @@ src_configure() {
 		-DHIP_RUNTIME="ROCclr"
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 		-DBUILD_CLIENTS_SAMPLES=OFF
+		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
 		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 	)
