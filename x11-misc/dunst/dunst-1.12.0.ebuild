@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit git-r3 systemd toolchain-funcs
-
-EGIT_REPO_URI="https://github.com/dunst-project/dunst"
+inherit systemd toolchain-funcs
 
 DESCRIPTION="Lightweight replacement for common notification daemons"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
+SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="+completions +dunstify wayland +X +xdg"
 
 DEPEND="
@@ -85,4 +85,23 @@ src_install() {
 	emake "${myemakeargs[@]}" install
 
 	systemd_newuserunit dunst.systemd.service.in dunst.service
+}
+
+pkg_postinst() {
+	if [[ ${REPLACING_VERSIONS} ]]; then
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test "${v}" -ge 1.12.0; then
+				return
+			fi
+		done
+	fi
+
+	einfo "The behaviour of the setting 'height' has been changed in a breaking way."
+	einfo "The way of specifying a maximum height before was:"
+	einfo "    height = 300"
+	einfo "The equivalent way now is:"
+	einfo "    height = (0, 300)"
+	einfo "For more information read the official RELEASE_NOTES [1]."
+	einfo ""
+	einfo "[1] https://dunst-project.org/release/#v1.12.0"
 }
