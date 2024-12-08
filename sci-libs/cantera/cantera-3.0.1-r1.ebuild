@@ -68,6 +68,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0_env.patch"
 	"${FILESDIR}/${P}_fix_fmt_with_c++20.patch"
+	"${FILESDIR}/${P}_add_fmt11_support.patch"
 )
 
 pkg_setup() {
