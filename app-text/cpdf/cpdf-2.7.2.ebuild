@@ -10,15 +10,17 @@ HOMEPAGE="https://community.coherentpdf.com/ https://github.com/johnwhitington/c
 SRC_URI="https://github.com/johnwhitington/cpdf-source/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-source-${PV}"
 
-# ISC is only for cpdfxmlm.ml{,i}
-LICENSE="AGPL-3 ISC"
+# BSD is only for xmlm.ml
+LICENSE="Coherent-Graphics BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt]
 	~dev-ml/camlpdf-${PV}:="
 DEPEND="${RDEPEND}"
+
+RESTRICT="mirror bindist"
 
 src_compile() {
 	# parallel make issues
