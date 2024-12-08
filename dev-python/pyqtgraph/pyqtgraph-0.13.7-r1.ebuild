@@ -23,7 +23,7 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
-IUSE="opengl pyside6 qt5 +qt6 svg"
+IUSE="opengl svg"
 REQUIRED_USE="test? ( opengl svg )"
 
 RDEPEND="

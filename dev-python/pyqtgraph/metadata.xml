@@ -13,9 +13,6 @@
 		and Qt's GraphicsView framework for fast display.
 	</longdescription>
 	<stabilize-allarches/>
-	<use>
-		<flag name="pyside6">Enable support for PySide6 bindings for Qt6.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">pyqtgraph/pyqtgraph</remote-id>
 		<remote-id type="pypi">pyqtgraph</remote-id>
