@@ -1,0 +1,20 @@
+--- a/Tensile/ClientExecutable.py
++++ b/Tensile/ClientExecutable.py
+@@ -42,7 +42,7 @@ class CMakeEnvironment:
+     def generate(self):
+ 
+         args = ['cmake']
+-        args += ['-G', 'Ninja'] if (os.name == 'nt') else []
++        args += ['-G', 'Ninja']
+         args += itertools.chain.from_iterable([ ['-D{}={}'.format(key, value)] for key,value in self.options.items()])
+         args += [self.sourceDir]
+         args = [cmake_path(arg) for arg in args]
+@@ -59,7 +59,7 @@ class CMakeEnvironment:
+             
+ 
+     def build(self):
+-        args = [('ninja' if (os.name == "nt") else 'make'), f'-j{CPUThreadCount()}']
++        args = ['ninja', f'-j{CPUThreadCount()}']
+         Common.tPrint(3, ' '.join(args))
+         with Common.ClientExecutionLock():
+             # change to use  check_output to force windows cmd block util command finish
