@@ -1,0 +1,13 @@
+There is no ROCM_LIBPATCH_VERSION outside of AMD farm.
+Upstream bug: https://github.com/ROCm/clr/issues/112
+--- a/opencl/amdocl/CMakeLists.txt
++++ b/opencl/amdocl/CMakeLists.txt
+@@ -66,6 +66,8 @@ set(AMDOCL_LIB_VERSION_MAJOR "2")
+ set(AMDOCL_LIB_VERSION_MINOR "1")
+ if(DEFINED ENV{ROCM_LIBPATCH_VERSION})
+   set(AMDOCL_LIB_VERSION_PATCH "${AMDOCL_LIB_VERSION_MAJOR}.${AMDOCL_LIB_VERSION_MINOR}.$ENV{ROCM_LIBPATCH_VERSION}")
++else()
++  set(AMDOCL_LIB_VERSION_PATCH "${AMDOCL_LIB_VERSION_MAJOR}.${AMDOCL_LIB_VERSION_MINOR}")
+ endif()
+ 
+ set_target_properties(amdocl PROPERTIES
