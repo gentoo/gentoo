@@ -1,0 +1,30 @@
+Fix compilation with libc++ (ROCM/clr part)
+--- a/hipamd/include/hip/amd_detail/amd_hip_runtime.h
++++ b/hipamd/include/hip/amd_detail/amd_hip_runtime.h
+@@ -386,15 +386,26 @@ hc_get_workitem_absolute_id(int dim)
+ #pragma push_macro("__CUDA__")
+ #define __CUDA__
+ #include <__clang_cuda_math_forward_declares.h>
++// __clang_cuda_complex_builtins wants ::max
++#include <__clang_hip_math.h>
+ #include <__clang_cuda_complex_builtins.h>
+ // Workaround for using libc++ with HIP-Clang.
+ // The following headers requires clang include path before standard C++ include path.
+ // However libc++ include path requires to be before clang include path.
+ // To workaround this, we pass -isystem with the parent directory of clang include
+ // path instead of the clang include path itself.
++
++// libc++: <include/cuda_wrappers/complex> transitively includes <queue>, which uses __local
++#define ORIGINAL__LOCAL __local
++#undef __local
++
+ #include <include/cuda_wrappers/algorithm>
+ #include <include/cuda_wrappers/complex>
+ #include <include/cuda_wrappers/new>
++
++#define __local ORIGINAL__LOCAL
++#undef ORIGINAL__LOCAL
++
+ #undef __CUDA__
+ #pragma pop_macro("__CUDA__")
+ #endif // !_OPENMP || __HIP_ENABLE_CUDA_WRAPPER_FOR_OPENMP__
