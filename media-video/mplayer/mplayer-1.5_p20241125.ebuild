@@ -75,7 +75,7 @@ X_RDEPS="
 #   https://sourceforge.net/p/giflib/bugs/132/
 RDEPEND="
 	app-arch/bzip2
-	>=media-video/ffmpeg-4.0:=[vdpau?]
+	>=media-video/ffmpeg-5.1:=[vdpau?]
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	a52? ( media-libs/a52dec )
