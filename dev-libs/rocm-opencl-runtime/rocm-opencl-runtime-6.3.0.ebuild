@@ -18,16 +18,24 @@ KEYWORDS="~amd64"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-libs/rocr-runtime-6.0
-	>=dev-libs/rocm-comgr-6.0
-	>=dev-libs/rocm-device-libs-6.0
+RDEPEND="
+	dev-libs/rocr-runtime:${SLOT}
+	dev-libs/rocm-comgr:${SLOT}
+	dev-libs/rocm-device-libs:${SLOT}
 	>=virtual/opencl-3
-	media-libs/mesa[-opencl]"
+	media-libs/mesa[-opencl]
+"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-build/rocm-cmake-5.3
+BDEPEND="
+	>=dev-build/rocm-cmake-6.0
 	media-libs/glew
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-6.2.4-fix-lib-version.patch"
+	"${FILESDIR}/${PN}-6.1.2-musl.patch"
+)
 
 src_configure() {
 	# -Werror=strict-aliasing
@@ -62,7 +70,7 @@ src_install() {
 
 	cd "${BUILD_DIR}"/opencl || die
 	insinto /usr/lib64
-	doins amdocl/libamdocl64.so
+	doins amdocl/libamdocl64.so*
 	doins tools/cltrace/libcltrace.so
 }
 
