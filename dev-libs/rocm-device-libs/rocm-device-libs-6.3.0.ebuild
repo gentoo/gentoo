@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 inherit cmake flag-o-matic llvm-r1
 
 MY_P=llvm-project-rocm-${PV}
@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Radeon Open Compute Device Libraries"
-HOMEPAGE="https://github.com/ROCm/ROCm-Device-Libs"
+HOMEPAGE="https://github.com/ROCm/llvm-project/tree/amd-staging/amd/device-libs"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
@@ -40,6 +40,7 @@ CMAKE_BUILD_TYPE=Release
 PATCHES=(
 	"${FILESDIR}/${PN}-6.1.0-fix-llvm-link.patch"
 	"${FILESDIR}/${PN}-6.1.2-fix-build.patch"
+	"${FILESDIR}/${PN}-6.2.0-test-bitcode-dir.patch"
 )
 
 src_unpack() {
@@ -57,8 +58,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed -e "s:amdgcn/bitcode:lib/amdgcn/bitcode:" -i "${S}/cmake/OCL.cmake" || die
-	sed -e "s:amdgcn/bitcode:lib/amdgcn/bitcode:" -i "${S}/cmake/Packages.cmake" || die
+	sed -e "s:amdgcn/bitcode:lib/amdgcn/bitcode:" \
+		-i "${S}/cmake/OCL.cmake" \
+		-i "${S}/cmake/Packages.cmake" || die
 	cmake_src_prepare
 }
 
@@ -82,4 +84,16 @@ src_install() {
 	# install symlink, so that clang won't ask for "--rocm-device-lib-path" flag anymore
 	local bitcodedir="$("${CLANG_EXE}" -print-resource-dir)/$(get_libdir)/amdgcn/bitcode"
 	dosym -r "/usr/lib/amdgcn/bitcode" "${bitcodedir#${EPREFIX}}"
+}
+
+src_test() {
+	# https://github.com/ROCm/llvm-project/issues/76
+	# "Failing tests are on gfx that are not supported"
+	local CMAKE_SKIP_TESTS=(
+		compile_frexp__gfx600
+		compile_fract__gfx600
+		compile_fract__gfx700
+	)
+
+	cmake_src_test
 }
