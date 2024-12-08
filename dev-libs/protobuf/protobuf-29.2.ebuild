@@ -130,6 +130,14 @@ src_test() {
 
 	multilib_foreach_abi setup_test_env
 
+	# Do headstands for LTO # 942985
+	local -x GTEST_FILTER
+	GTEST_FILTER="-FileDescriptorSetSource/EncodeDecodeTest*"
+
+	cmake-multilib_src_test
+
+	GTEST_FILTER="${GTEST_FILTER//-/}"
+
 	cmake-multilib_src_test
 }
 

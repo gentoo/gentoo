@@ -1,4 +1,4 @@
-# Copyright 2008-2024 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -126,6 +126,14 @@ src_test() {
 	}
 
 	multilib_foreach_abi setup_test_env
+
+	# Do headstands for LTO # 942985
+	local -x GTEST_FILTER
+	GTEST_FILTER="-FileDescriptorSetSource/EncodeDecodeTest*"
+
+	cmake-multilib_src_test
+
+	GTEST_FILTER="${GTEST_FILTER//-/}"
 
 	cmake-multilib_src_test
 }
