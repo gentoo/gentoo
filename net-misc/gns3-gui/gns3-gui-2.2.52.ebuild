@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 virtualx xdg
@@ -20,8 +20,8 @@ KEYWORDS="~amd64"
 RDEPEND="
 	>=dev-python/distro-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.23.0[${PYTHON_USEDEP}]
-	>=dev-python/psutil-6.0.0[${PYTHON_USEDEP}]
-	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
+	>=dev-python/psutil-6.1.0[${PYTHON_USEDEP}]
+	>=dev-python/truststore-0.10.0[${PYTHON_USEDEP}]
 	~net-misc/gns3-server-${PV}[${PYTHON_USEDEP}]
 	dev-python/pyqt5[gui,network,svg,websockets,widgets,${PYTHON_USEDEP}]
 "
