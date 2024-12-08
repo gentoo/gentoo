@@ -173,7 +173,7 @@ multilib_src_configure() {
 		--sbindir="${EPREFIX}"/usr/sbin
 		--with-pid-path="${EPREFIX}"/run
 		--with-plugin-path="${EPREFIX}"/usr/$(get_libdir)/sssd
-		--enable-pammoddir="${EPREFIX}"/$(getpam_mod_dir)
+		--enable-pammoddir="${EPREFIX}$(getpam_mod_dir)"
 		--with-ldb-lib-dir="${EPREFIX}"/usr/$(get_libdir)/samba/ldb
 		--with-db-path="${EPREFIX}"/var/lib/sss/db
 		--with-gpo-cache-path="${EPREFIX}"/var/lib/sss/gpo_cache
