@@ -1,11 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# shellcheck disable=SC2317
 EAPI=8
 
 ROCM_VERSION=${PV}
+PYTHON_COMPAT=( python3_{10..13} python3_13t )
 
-inherit cmake flag-o-matic rocm
+inherit cmake flag-o-matic python-r1 rocm
 
 GTEST_COMMIT="b85864c64758dec007208e56af933fc3f52044ee"
 GTEST_FILE="gtest-1.14.0_p20220421.tar.gz"
@@ -20,17 +22,13 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-IUSE="debug test"
-REQUIRED_USE="${ROCM_REQUIRED_USE}"
+IUSE="debug profiler test"
+REQUIRED_USE="${ROCM_REQUIRED_USE} ${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/hip:${SLOT}
-	>=dev-db/sqlite-3.17
-	sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}]
-	>=dev-libs/boost-1.72
-	dev-cpp/nlohmann_json
-	dev-cpp/frugally-deep
+	${PYTHON_DEPS}
 "
 
 DEPEND="${RDEPEND}"
@@ -41,10 +39,20 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-enable-examples.patch
-	"${FILESDIR}"/${PN}-6.1.1-fix-clang-17-no-offload-uniform-block.patch
 	"${FILESDIR}"/${PN}-6.1.1-no-git-no-hash.patch
-	"${FILESDIR}"/${PN}-6.1.1-fix-libcxx.patch
+	"${FILESDIR}"/${PN}-6.3.0-no-inline-all.patch
+	"${FILESDIR}"/${PN}-6.3.0-conditional-kernels.patch
+	"${FILESDIR}"/${PN}-6.3.0-conditional-ckprofiler.patch
 )
+
+pkg_pretend() {
+	targets=($AMDGPU_TARGETS)
+	if [[ ${#targets[@]} -gt 1 ]]; then
+		ewarn "composable-kernel will be compiled for multiple GPU architectures,"
+		ewarn "which will take a significant amount of time."
+		ewarn "Please consider setting AMDGPU_TARGETS USE_EXPAND variable to a single architecture."
+	fi
+}
 
 src_prepare() {
 	sed -e '/-Werror/d' -i cmake/EnableCompilerWarnings.cmake || die
@@ -68,15 +76,41 @@ src_configure() {
 		-DGPU_TARGETS="$(get_amdgpu_flags)"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DBUILD_TESTING=$(usex test ON OFF)
+		-DCK_USE_PROFILER=$(usex profiler ON OFF)
+		-Wno-dev
 	)
 
 	if use test; then
 		mycmakeargs+=(
-			-DGOOGLETEST_DIR="${WORKDIR}/googletest-${GTEST_COMMIT}"
+			-DFETCHCONTENT_SOURCE_DIR_GTEST="${WORKDIR}/googletest-${GTEST_COMMIT}"
 		)
 	fi
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	installation() {
+		python_domodule python/ck4inductor
+
+		# install package-data manually, as there is no PEP517 compliance
+		shopt -s globstar
+		package_data=(
+			include/ck/**/*.hpp
+			library/src/tensor_operation_instance/gpu/gemm_universal/**/*.hpp
+		)
+		shopt -u globstar
+
+		inst_path="${D}$(python_get_sitedir)/ck4inductor"
+		for file in "${package_data[@]}"; do
+			location="${inst_path}/$(dirname "$file")"
+			mkdir -p "${location}"
+			cp "${file}" "${location}"
+		done
+	}
+	python_foreach_impl installation
 }
 
 src_test() {

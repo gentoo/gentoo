@@ -1,0 +1,17 @@
+Add a flag to build without ckprofiler, which takes few GB of space and not used in many cases.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -561,11 +561,13 @@ if(NOT GPU_ARCHS AND USER_GPU_TARGETS)
+    endif()
+ endif()
+ 
++if(CK_USE_PROFILER)
+ rocm_package_setup_component(profiler
+     LIBRARY_NAME composablekernel
+     PACKAGE_NAME ckprofiler
+ )
+ add_subdirectory(profiler)
++endif()
+ 
+ if(CK_USE_CODEGEN AND (GPU_TARGETS MATCHES "gfx9" OR GPU_ARCHS))
+   add_subdirectory(codegen)
