@@ -5,4 +5,8 @@
     The dev-gap category contains packages for the GAP computer algebra
     system, available at https://www.gap-system.org/packages/.
   </longdescription>
+  <longdescription lang="de">
+    Die Kategorie dev-gap enthält Pakete für das Computeralgebrasystem
+    GAP, verfügbar unter https://www.gap-system.org/packages/.
+  </longdescription>
 </catmetadata>
