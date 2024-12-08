@@ -3,10 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 ROCM_VERSION=${PV}
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 
 inherit cmake distutils-r1 llvm-r1 prefix rocm
 
@@ -21,7 +21,8 @@ KEYWORDS="~amd64"
 IUSE="client test"
 REQUIRED_USE="client? ( ${ROCM_REQUIRED_USE} )"
 
-RESTRICT="!test? ( test )"
+# tests can freeze machine depending on gpu/kernel
+RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	client? ( dev-libs/boost )
@@ -48,12 +49,10 @@ BDEPEND="
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
-	"${FILESDIR}"/${PN}-5.4.2-use-ninja.patch
+	"${FILESDIR}"/${PN}-6.3.0-use-ninja.patch
 	"${FILESDIR}"/${PN}-6.1.1-fix-msgpack-dependency.patch
 	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
-	"${FILESDIR}"/${PN}-6.1.1-ignore-asm-cap.patch
 )
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
@@ -115,7 +114,8 @@ python_install() {
 	python_moduleinto Tensile
 	pushd Tensile || die
 	python_domodule Components
-	python_newexe Utilities/merge.py ${PN}-merge
+	python_domodule Utilities
+	python_domodule TensileCreateLib
 }
 
 src_install() {
