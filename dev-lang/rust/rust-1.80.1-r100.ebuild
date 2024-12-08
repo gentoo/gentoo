@@ -267,7 +267,7 @@ src_configure() {
 		assertions = $(toml_usex debug)
 		ninja = true
 		targets = "${LLVM_TARGETS// /;}"
-		experimental-targets = ""
+		experimental-targets = "all"
 		link-shared = $(toml_usex system-llvm)
 		$(if is_libcxx_linked; then
 			# https://bugs.gentoo.org/732632
