@@ -1,0 +1,29 @@
+Fix compilation with clang-19
+Backports https://github.com/ROCm/rocPRIM/commit/c57b04baea872078bfb5b4af1165c7584fd3a95b
+--- a/rocprim/include/rocprim/device/detail/device_radix_sort.hpp
++++ b/rocprim/include/rocprim/device/detail/device_radix_sort.hpp
+@@ -526,15 +526,15 @@ ROCPRIM_DEVICE ROCPRIM_FORCE_INLINE void sort_single(KeysInputIterator    keys_i
+ 
+     ROCPRIM_SHARED_MEMORY typename sort_single_helper::storage_type storage;
+ 
+-    sort_single_helper().template sort_single(keys_input,
+-                                              keys_output,
+-                                              values_input,
+-                                              values_output,
+-                                              size,
+-                                              decomposer,
+-                                              bit,
+-                                              current_radix_bits,
+-                                              storage);
++    sort_single_helper().template sort_single<>(keys_input,
++                                                keys_output,
++                                                values_input,
++                                                values_output,
++                                                size,
++                                                decomposer,
++                                                bit,
++                                                current_radix_bits,
++                                                storage);
+ }
+ 
+ template<class T>

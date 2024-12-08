@@ -1,0 +1,71 @@
+Fix ambiguous declarations for libc++, which treats __int128_t as integral.
+The issue was fixed in develop branch, but not in release.
+Upstream commit: https://github.com/ROCm/rocPRIM/commit/81f6073790dee8d310e5b68cf46aae4b797cc059
+--- a/rocprim/include/rocprim/thread/radix_key_codec.hpp
++++ b/rocprim/include/rocprim/thread/radix_key_codec.hpp
+@@ -78,6 +78,7 @@ struct radix_key_codec_integral<Key,
+     }
+ };
+ 
++#ifndef _LIBCPP_VERSION
+ template<class Key, class BitKey>
+ struct radix_key_codec_integral<
+     Key,
+@@ -104,6 +105,7 @@ struct radix_key_codec_integral<
+         return static_cast<unsigned int>(bit_key >> start) & mask;
+     }
+ };
++#endif
+ 
+ template<class Key, class BitKey>
+ struct radix_key_codec_integral<Key,
+@@ -135,6 +137,7 @@ struct radix_key_codec_integral<Key,
+     }
+ };
+ 
++#ifndef _LIBCPP_VERSION
+ template<class Key, class BitKey>
+ struct radix_key_codec_integral<Key,
+                                 BitKey,
+@@ -164,6 +167,7 @@ struct radix_key_codec_integral<Key,
+         return static_cast<unsigned int>(bit_key >> start) & mask;
+     }
+ };
++#endif
+ 
+ template<class Key, class BitKey>
+ struct radix_key_codec_floating
+@@ -225,6 +229,7 @@ struct radix_key_codec_base<Key, typename std::enable_if<::rocprim::is_integral<
+     : radix_key_codec_integral<Key, typename std::make_unsigned<Key>::type>
+ {};
+ 
++#ifndef _LIBCPP_VERSION
+ template<class Key>
+ struct radix_key_codec_base<Key,
+                             typename std::enable_if<std::is_same<Key, __int128_t>::value>::type>
+@@ -236,6 +241,7 @@ struct radix_key_codec_base<Key,
+                             typename std::enable_if<std::is_same<Key, __uint128_t>::value>::type>
+     : radix_key_codec_integral<Key, __uint128_t>
+ {};
++#endif
+ 
+ template<>
+ struct radix_key_codec_base<bool>
+--- a/test/rocprim/test_utils_data_generation.hpp
++++ b/test/rocprim/test_utils_data_generation.hpp
+@@ -268,6 +268,7 @@ inline OutputIter segmented_generate_n(OutputIter it, size_t size, Generator&& g
+     return it + size;
+ }
+ 
++#ifndef _LIBCPP_VERSION
+ template<class OutputIter, class U, class V, class Generator>
+ inline auto generate_random_data_n(OutputIter it, size_t size, U min, V max, Generator&& gen)
+     -> std::enable_if_t<std::is_same<it_value_t<OutputIter>, __int128_t>::value, OutputIter>
+@@ -299,6 +300,7 @@ inline auto generate_random_data_n(OutputIter it, size_t size, U min, V max, Gen
+ 
+     return segmented_generate_n(it, size, [&]() { return static_cast<T>(distribution(gen)); });
+ }
++#endif
+ 
+ template<class OutputIter, class U, class V, class Generator>
+ inline auto generate_random_data_n(OutputIter it, size_t size, U min, V max, Generator&& gen)
