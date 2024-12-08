@@ -1,0 +1,23 @@
+Remove unused libraries and updates from pypi.org
+--- a/cmake/virtualenv.cmake
++++ b/cmake/virtualenv.cmake
+@@ -24,10 +24,6 @@ endfunction()
+ 
+ function(virtualenv_install)
+     virtualenv_create()
+-    execute_process(
+-      COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install --upgrade pip
+-      COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install --upgrade setuptools
+-    )
+     message("${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install ${ARGN}")
+     execute_process(
+       RESULT_VARIABLE rc
+--- a/tensilelite/requirements.txt
++++ b/tensilelite/requirements.txt
+@@ -3,6 +3,3 @@ pyyaml
+ msgpack
+ joblib>=1.4.0; python_version >= '3.8'
+ joblib>=1.1.1; python_version < '3.8'
+-simplejson
+-ujson
+-orjson
