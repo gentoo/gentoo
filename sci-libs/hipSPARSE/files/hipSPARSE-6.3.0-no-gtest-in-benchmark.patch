@@ -1,0 +1,22 @@
+GTest is linked/required for hipsparse-bench, but not used
+https://github.com/ROCm/hipSPARSE/issues/557
+--- a/clients/benchmarks/CMakeLists.txt
++++ b/clients/benchmarks/CMakeLists.txt
+@@ -21,8 +21,6 @@
+ #
+ # ########################################################################
+ 
+-find_package(GTest REQUIRED)
+-
+ set(HIPSPARSE_BENCHMARK_SOURCES
+   client.cpp
+   hipsparse_arguments_config.cpp
+@@ -48,7 +46,7 @@ target_compile_options(hipsparse-bench PRIVATE -Wno-deprecated -Wno-unused-comma
+ target_include_directories(hipsparse-bench PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>)
+ 
+ # Target link libraries
+-target_link_libraries(hipsparse-bench PRIVATE GTest::GTest roc::hipsparse)
++target_link_libraries(hipsparse-bench PRIVATE roc::hipsparse)
+ 
+ # Add OpenMP if available
+ if(OPENMP_FOUND AND THREADS_FOUND)

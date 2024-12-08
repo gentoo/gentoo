@@ -1,0 +1,40 @@
+Incorrect usage of C++ filesystem for libc++ and libstdc++
+https://github.com/ROCm/hipSPARSE/issues/555
+--- a/clients/common/utility.cpp
++++ b/clients/common/utility.cpp
+@@ -34,16 +34,22 @@
+ #define strSUITEcmp(A, B) _stricmp(A, B)
+ #endif
+ 
++#ifdef __has_include
++#if __has_include(<version>)
++#include <version>
++#endif
++#endif
++
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
++
++namespace fs = std::filesystem;
+ #else
+ #include <experimental/filesystem>
+ 
+-namespace std
+-{
+-    namespace filesystem = experimental::filesystem;
+-}
++namespace fs = std::experimental::filesystem;
+ #endif
++
+ #if 0
+ #ifdef WIN32
+ #include <windows.h>
+@@ -91,7 +97,7 @@ std::string hipsparse_exepath()
+         result.resize(result.size() * 2);
+     }
+ 
+-    std::filesystem::path exepath(result.begin(), result.end());
++    fs::path exepath(result.begin(), result.end());
+     exepath = exepath.remove_filename();
+     exepath += exepath.empty() ? "" : "/";
+     return exepath.string();
