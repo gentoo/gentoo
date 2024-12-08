@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-04)
+# Depends on kde-plasma/kdesu-gui which is not stable here.
+sys-block/gparted kde
+
 # Joonas Niilola <juippis@gentoo.org> (2024-12-02)
 # www-client/firefox{-bin} doesn't have stable x86 keywords anymore.
 dev-python/selenium test-rust
