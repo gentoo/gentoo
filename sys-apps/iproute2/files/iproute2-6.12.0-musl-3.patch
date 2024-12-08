@@ -1,0 +1,37 @@
+https://github.com/iproute2/iproute2/pull/71
+
+From cdc6a1759ea1858d65fdbbfe825999b3d4ed377e Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 8 Dec 2024 13:19:14 +0100
+Subject: [PATCH] musl: include <limits.h> for PATH_MAX macro
+
+https://bugs.gentoo.org/946088
+---
+ ip/iplink.c  | 1 +
+ ip/ipnetns.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/ip/iplink.c b/ip/iplink.c
+index aa2332fcc..27863b981 100644
+--- a/ip/iplink.c
++++ b/ip/iplink.c
+@@ -21,6 +21,7 @@
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include <stdbool.h>
++#include <limits.h>
+ #include <linux/mpls.h>
+ 
+ #include "rt_names.h"
+diff --git a/ip/ipnetns.c b/ip/ipnetns.c
+index 5c9434009..de16b2790 100644
+--- a/ip/ipnetns.c
++++ b/ip/ipnetns.c
+@@ -15,6 +15,7 @@
+ #include <errno.h>
+ #include <unistd.h>
+ #include <ctype.h>
++#include <limits.h>
+ #include <linux/limits.h>
+ 
+ #include <linux/net_namespace.h>
