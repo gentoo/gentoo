@@ -6,8 +6,7 @@ EAPI=8
 ROCM_SKIP_GLOBALS=1
 PYTHON_COMPAT=( python3_{10..13} )
 
-# gfx941 and gfx942 assembly uses directives of LLVM >= 18.1.0
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 
 inherit cmake python-any-r1 llvm-r1 prefix rocm
 DESCRIPTION="General matrix-matrix operations library for AMD Instinct accelerators"
@@ -19,7 +18,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-SUPPORTED_GPUS=( gfx90a gfx940 gfx941 gfx942 )
+SUPPORTED_GPUS=( gfx908 gfx90a gfx940 gfx941 gfx942 gfx1100 gfx1101 )
 IUSE_TARGETS=( "${SUPPORTED_GPUS[@]/#/amdgpu_targets_}" )
 IUSE="${IUSE_TARGETS[@]/#/+} test"
 RESTRICT="!test? ( test )"
@@ -27,12 +26,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-util/hip:${SLOT}
 	dev-cpp/msgpack-cxx
-	sci-libs/hipBLAS:${SLOT}
 "
 
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-build/rocm-cmake
+	sci-libs/hipBLAS-common
 	$(python_gen_any_dep '
 		dev-python/msgpack[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -50,6 +49,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-no-git.patch
 	"${FILESDIR}"/${PN}-6.1.1-clang-19.patch
 	"${FILESDIR}"/${PN}-6.1.1-fix-libcxx.patch
+	"${FILESDIR}"/${PN}-6.3.0-no-arch-extra.patch
+	"${FILESDIR}"/${PN}-6.3.0-no-json-libs.patch
 )
 
 python_check_deps() {
@@ -80,6 +81,9 @@ src_prepare() {
 	local shebangs=($(grep -rl "#!/usr/bin/env python3" tensilelite/Tensile || die))
 	python_fix_shebang -q ${shebangs[*]}
 
+	sed -e "s:\${rocm_path}/bin/amdclang++:$(get_llvm_prefix)/bin/clang++:" \
+		-i library/src/amd_detail/rocblaslt/src/kernels/compile_code_object.sh || die
+
 	cmake_src_prepare
 }
 
@@ -94,11 +98,12 @@ src_configure() {
 		-DBUILD_WITH_TENSILE="${build_with_tensile}"
 		-DAMDGPU_TARGETS="${targets}"
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
+		-Wno-dev
 	)
 
 	use test && mycmakeargs+=( -DBUILD_FORTRAN_CLIENTS=ON )
 
-	cmake_src_configure
+	CXX="$(get_llvm_prefix)/bin/clang++" cmake_src_configure
 }
 
 src_compile() {
@@ -106,6 +111,8 @@ src_compile() {
 	# set PYTHONPATH to load Tensile from virtualenv, not the system-wide one
 	local -x PYTHONPATH="${S}_build/virtualenv/lib/${EPYTHON}/site-packages"
 	local -x TENSILE_ROCM_ASSEMBLER_PATH="$(get_llvm_prefix)/bin/clang++"
+	# TensileCreateLibrary reads CMAKE_CXX_COMPILER again
+	local -x CMAKE_CXX_COMPILER="$(get_llvm_prefix)/bin/clang++"
 	cmake_src_compile
 }
 
