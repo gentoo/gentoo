@@ -18,6 +18,7 @@
 		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) from <pkg>app-admin/mongo-tools</pkg></flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:mongodb:mongodb</remote-id>
 		<remote-id type="github">mongodb/mongo</remote-id>
 	</upstream>
 </pkgmetadata>
