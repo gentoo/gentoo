@@ -1,0 +1,25 @@
+Fix for: class template specialization of '__numeric_type' not in a namespace enclosing '__hip'
+
+Backports https://github.com/ROCm/clr/pull/109
+--- a/hipamd/include/hip/amd_detail/amd_math_functions.h
++++ b/hipamd/include/hip/amd_detail/amd_math_functions.h
+@@ -41,19 +41,6 @@ THE SOFTWARE.
+ #include <stdint.h>
+ #endif // !defined(__HIPCC_RTC__)
+ 
+-#if _LIBCPP_VERSION && __HIP__
+-namespace std {
+-template <>
+-struct __numeric_type<_Float16>
+-{
+-   static _Float16 __test(_Float16);
+-
+-   typedef _Float16 type;
+-   static const bool value = true;
+-};
+-}
+-#endif // _LIBCPP_VERSION
+-
+ #pragma push_macro("__DEVICE__")
+ #pragma push_macro("__RETURN_TYPE")
+ 
