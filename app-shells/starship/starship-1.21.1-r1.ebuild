@@ -397,7 +397,7 @@ CRATES="
 "
 
 RUST_MIN_VER="1.80.0"
-inherit cargo
+inherit cargo optfeature
 
 DESCRIPTION="The minimal, blazing-fast, and infinitely customizable prompt for any shell"
 HOMEPAGE="https://starship.rs/"
@@ -435,4 +435,8 @@ src_configure() {
 src_install() {
 	cargo_src_install
 	dodoc README.md
+}
+
+pkg_postinst() {
+	optfeature "font support" media-fonts/iosevka media-fonts/noto-emoji
 }
