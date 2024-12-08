@@ -1,0 +1,24 @@
+Fix "basename" and "__cpu_mask" definitions for musl
+
+Upstream PR: https://github.com/ROCm/clr/pull/83
+--- a/rocclr/os/os.hpp
++++ b/rocclr/os/os.hpp
+@@ -29,6 +29,7 @@
+ 
+ #if defined(__linux__)
+ #include <sched.h>
++#include <libgen.h>
+ #endif
+ 
+ #ifdef _WIN32
+@@ -377,6 +378,10 @@ ALWAYSINLINE address Os::currentStackPtr() {
+ 
+ #if defined(__linux__)
+ 
++#ifndef __GLIBC__
++typedef unsigned long int __cpu_mask;
++#endif
++
+ inline void Os::ThreadAffinityMask::init() { CPU_ZERO(&mask_); }
+ 
+ inline void Os::ThreadAffinityMask::set(uint cpu) { CPU_SET(cpu, &mask_); }
