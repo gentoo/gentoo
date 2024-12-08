@@ -29,6 +29,10 @@ BDEPEND=">=dev-build/rocm-cmake-5.3
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-6.2.4-fix-lib-version.patch"
+)
+
 src_configure() {
 	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/856088
@@ -62,7 +66,7 @@ src_install() {
 
 	cd "${BUILD_DIR}"/opencl || die
 	insinto /usr/lib64
-	doins amdocl/libamdocl64.so
+	doins amdocl/libamdocl64.so*
 	doins tools/cltrace/libcltrace.so
 }
 
