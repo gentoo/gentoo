@@ -45,7 +45,7 @@ DEPEND="
 	${RDEPEND}
 	dev-cpp/eigen:3
 	dev-libs/boost:=
-	<dev-libs/libfmt-11
+	dev-libs/libfmt
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/cython[${PYTHON_USEDEP}]
@@ -68,6 +68,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0_env.patch"
 	"${FILESDIR}/${P}_fix_fmt_with_c++20.patch"
+	"${FILESDIR}/${P}_add_fmt11_support.patch"
 )
 
 pkg_setup() {

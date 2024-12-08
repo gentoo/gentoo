@@ -1,0 +1,46 @@
+This is upstream patch with removed changes for "doc/sphinx/develop/compiling/dependencies.md" file
+Upstream issue: https://github.com/Cantera/cantera/issues/1735
+Gentoo issue: https://bugs.gentoo.org/945800
+
+From c8f190928fd7a074944f0f4c58661f84a282a35e Mon Sep 17 00:00:00 2001
+From: Ray Speth <speth@mit.edu>
+Date: Wed, 24 Jul 2024 20:12:18 -0400
+Subject: [PATCH] Add support for fmt 11.0
+
+Resolves #1735
+---
+ SConstruct                                   | 2 +-
+ doc/sphinx/develop/compiling/dependencies.md | 2 +-
+ include/cantera/base/fmt.h                   | 8 ++++++++
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 3863fe3a32..0b607ac891 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -216,7 +216,7 @@ config_options = [
+            options with spaces, for example, "cxx_flags='-g -Wextra -O3 --std=c++14'"
+            """,
+         {
+-            "cl": "/EHsc /std:c++17",
++            "cl": "/EHsc /std:c++17 /utf-8",
+             "default": "-std=c++17"
+         }),
+     Option(
+diff --git a/include/cantera/base/fmt.h b/include/cantera/base/fmt.h
+index 1e0b3a0423..6b4d734fe3 100644
+--- a/include/cantera/base/fmt.h
++++ b/include/cantera/base/fmt.h
+@@ -42,4 +42,12 @@ void fmt_append(fmt::memory_buffer& b, const std::string& tmpl, Args... args) {
+ }
+ #endif
+ 
++#if FMT_VERSION > 100000
++  #if CT_USE_SYSTEM_FMT
++    #include <fmt/ranges.h>
++  #else
++    #include <fmt/join.h>
++  #endif
++#endif
++
+ #endif
