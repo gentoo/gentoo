@@ -5,6 +5,11 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<use>
+		<flag name="completions">Install shell completions (for bash, fish and zsh)</flag>
+		<flag name="dunstify">Build dunstify (notify-send alternative)</flag>
+		<flag name="xdg">Install xdg-utils for opening links with xdg-open</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">dunst-project/dunst</remote-id>
 	</upstream>
