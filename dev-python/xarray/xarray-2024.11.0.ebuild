@@ -121,6 +121,12 @@ python_test() {
 		)
 	fi
 
+	if ! has_version "dev-python/seaborn[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			xarray/tests/test_plot.py::TestContour::test_colors
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
