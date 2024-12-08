@@ -5,6 +5,9 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<use>
+		<flag name="mercurial">Support mercurial sync-type.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">projg2/eselect-repository</remote-id>
 	</upstream>
