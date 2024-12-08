@@ -142,6 +142,8 @@ src_configure() {
 
 multilib_src_configure() {
 	local emesonargs=(
+		# default is developer, bug 918671
+		-Dmode=release
 		-Dsysvinit-path=
 		$(meson_native_use_bool boot bootloader)
 		$(meson_native_use_bool kernel-install)
