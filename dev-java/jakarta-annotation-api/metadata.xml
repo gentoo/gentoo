@@ -5,6 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">eclipse-ee4j/common-annotations-api</remote-id>
+		<doc>https://jakarta.ee/specifications/annotations/</doc>
+		<remote-id type="github">jakartaee/common-annotations-api</remote-id>
 	</upstream>
 </pkgmetadata>
