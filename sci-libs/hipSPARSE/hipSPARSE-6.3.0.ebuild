@@ -51,6 +51,9 @@ BDEPEND="dev-build/rocm-cmake
 	test? ( dev-cpp/gtest )"
 
 src_prepare() {
+	# include <filesystem> issue - https://github.com/ROCm/hipSPARSE/issues/555
+	sed -e "s/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 17/" -i CMakeLists.txt clients/CMakeLists.txt || die
+
 	cmake_src_prepare
 
 	if use test; then
