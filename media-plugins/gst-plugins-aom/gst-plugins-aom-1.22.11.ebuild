@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer-meson
 
 DESCRIPTION="Alliance for Open Media AV1 plugin for GStreamer"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 
 RDEPEND="media-libs/libaom:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
