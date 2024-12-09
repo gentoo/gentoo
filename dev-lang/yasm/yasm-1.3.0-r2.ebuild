@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
@@ -51,6 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943747
+	append-flags -std=gnu17
+
 	local myconf=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		CCLD_FOR_BUILD="$(tc-getBUILD_CC)"
