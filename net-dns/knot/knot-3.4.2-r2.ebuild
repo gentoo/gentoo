@@ -77,6 +77,10 @@ BDEPEND="
 	)
 "
 
+# Used to check cpuset_t in sched.h with NetBSD.
+# False positive because linux have sched.h too but with cpu_set_t
+QA_CONFIG_IMPL_DECL_SKIP=( cpuset_create cpuset_destroy )
+
 src_prepare() {
 	default
 

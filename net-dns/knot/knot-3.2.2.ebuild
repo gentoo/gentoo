@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,6 +11,8 @@ KNOT_SUBSLOT="13.9.4"
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/ https://gitlab.nic.cz/knot/knot-dns"
 SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
+
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-3+"
 SLOT="0/${KNOT_SUBSLOT}"
@@ -53,8 +55,8 @@ RDEPEND="
 	quic? ( net-libs/ngtcp2:=[gnutls] )
 	systemd? ( sys-apps/systemd:= )
 	xdp? (
-		 dev-libs/libbpf:=
-		 net-libs/libmnl:=
+		dev-libs/libbpf:=
+		net-libs/libmnl:=
 	)
 "
 DEPEND="${RDEPEND}"
@@ -63,7 +65,9 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 "
 
-S="${WORKDIR}/${P/_/-}"
+# Used to check cpuset_t in sched.h with NetBSD.
+# False positive because linux have sched.h too but with cpu_set_t
+QA_CONFIG_IMPL_DECL_SKIP=( cpuset_create cpuset_destroy )
 
 src_configure() {
 	local u
