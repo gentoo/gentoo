@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
@@ -54,6 +54,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: Drop on next release > 1.7.1
+	# bug #944014
+	append-cflags -std=gnu17
+
 	local econfargs=(
 		# don't try to rebuild docs
 		--disable-docs
