@@ -41,11 +41,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.4-out-of-source.patch
 )
 
-pkg_setup() {
-	# GNU Make's $(COMPILE.S) passes ASFLAGS to $(CCAS), CCAS=$(CC)
-	export ASFLAGS="${CCASFLAGS}"
-}
-
 src_prepare() {
 	default
 
@@ -60,6 +55,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# GNU Make's $(COMPILE.S) passes ASFLAGS to $(CCAS), CCAS=$(CC)
+	export ASFLAGS="${CCASFLAGS}"
+
 	local myeconfargs=(
 		$(use_with booke)
 		$(use_with lzma)
