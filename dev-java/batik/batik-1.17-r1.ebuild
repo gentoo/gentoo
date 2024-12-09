@@ -17,7 +17,7 @@ S="${WORKDIR}/batik-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="1.16"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 CP_DEPEND="
 	dev-java/jacl:0
