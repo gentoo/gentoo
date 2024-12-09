@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info pam tmpfiles
+inherit flag-o-matic linux-info pam tmpfiles
 
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
@@ -70,6 +70,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944065
+	append-cflags -std=gnu17
+
 	local args=(
 		--localstatedir="${EPREFIX}"/var
 		--runstatedir="${EPREFIX}"/run
