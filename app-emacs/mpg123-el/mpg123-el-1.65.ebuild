@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp toolchain-funcs
+inherit elisp flag-o-matic toolchain-funcs
 
 DESCRIPTION="Emacs front-end to mpg123 audio player and OggVorbis audio player"
 HOMEPAGE="https://www.gentei.org/~yuuji/software/mpg123el/"
@@ -20,6 +20,7 @@ PATCHES=( "${FILESDIR}/${PN}-1.61-stdlib.patch" )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
+	append-flags -std=gnu17
 	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o tagput tagput.c || die
 	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o id3put id3put.c || die
 	elisp-compile *.el
