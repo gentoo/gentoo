@@ -157,16 +157,6 @@ kde-frameworks/kemoticons
 dev-util/android-sdk-update-manager
 dev-java/swt:3.7
 
-# Patrick Lauer <patrick@gentoo.org> (2024-12-01)
-# ROCm 6.2 builds but doesn't work at all for me
->=dev-libs/roct-thunk-interface-6.2
->=dev-libs/rocm-comgr-6.2
->=dev-libs/rocm-device-libs-6.2
->=dev-libs/rocr-runtime-6.2
->=dev-libs/rocm-opencl-runtime-6.2
->=dev-util/hipcc-6.2
->=dev-util/hip-6.2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-28)
 # Grave data loss bug. See also:
 # https://github.com/nicotine-plus/nicotine-plus/issues/3152
