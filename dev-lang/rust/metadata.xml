@@ -23,11 +23,9 @@
 		<flag name="miri">Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)</flag>
 		<flag name="nightly">Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
-		<flag name="profiler">Build the profiler runtime and rust-demangler tool (needed for '-C profile-generate' or '-C instrument-coverage' codegen opts)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
-		<flag name="system-bootstrap">Bootstrap using installed rust compiler</flag>
 		<flag name="system-llvm">Use the system LLVM installation</flag>
 		<flag name="wasm">Build support for the wasm32-unknown-unknown target</flag>
 	</use>
