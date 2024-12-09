@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,6 +41,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943909
+	append-cflags -std=gnu17
 	append-cxxflags -std=c++11
 
 	filter-lto # https://bugs.gentoo.org/854219
