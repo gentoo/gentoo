@@ -9,6 +9,9 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<use>
+		<flag name="logging">Enable logging</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">unicorn-engine/unicorn</remote-id>
 		<remote-id type="pypi">unicorn</remote-id>
