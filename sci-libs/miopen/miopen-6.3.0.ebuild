@@ -4,7 +4,7 @@
 EAPI=8
 
 ROCM_VERSION=${PV}
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 
 inherit cmake flag-o-matic llvm-r1 rocm
 
@@ -17,18 +17,24 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-IUSE="debug test"
+IUSE="composable-kernel debug hipblaslt rocblas roctracer test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/hip:${SLOT}
 	>=dev-db/sqlite-3.17
-	sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}]
-	sci-libs/composable-kernel:${SLOT}[${ROCM_USEDEP}]
-	dev-util/roctracer:${SLOT}[${ROCM_USEDEP}]
+	sci-libs/rocRAND:${SLOT}[${ROCM_USEDEP}]
 	>=dev-libs/boost-1.72
 	dev-cpp/nlohmann_json
 	dev-cpp/frugally-deep
+
+	composable-kernel? ( sci-libs/composable-kernel:${SLOT}[${ROCM_USEDEP}] )
+	hipblaslt? (
+		sci-libs/hipBLAS:${SLOT}[${ROCM_USEDEP}]
+		sci-libs/hipBLASLt:${SLOT}
+	)
+	rocblas? ( sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}] )
+	roctracer? ( dev-util/roctracer:${SLOT}[${ROCM_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"
@@ -41,6 +47,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-build-all-tests.patch
+	"${FILESDIR}"/${PN}-6.1.1-fix-libcxx.patch
+	"${FILESDIR}"/${PN}-6.3.0-conditional-ck-components.patch
+	"${FILESDIR}"/${PN}-6.3.0-isnan-include.patch
 )
 
 src_prepare() {
@@ -75,6 +84,10 @@ src_configure() {
 		-DMIOPEN_BACKEND=HIP
 		-DBoost_USE_STATIC_LIBS=OFF
 		-DMIOPEN_USE_MLIR=OFF
+		-DMIOPEN_USE_ROCTRACER=$(usex roctracer ON OFF)
+		-DMIOPEN_USE_ROCBLAS=$(usex rocblas ON OFF)
+		-DMIOPEN_USE_HIPBLASLT=$(usex hipblaslt ON OFF)
+		-DMIOPEN_USE_COMPOSABLEKERNEL=$(usex composable-kernel ON OFF)
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCM_SYMLINK_LIBS=OFF
