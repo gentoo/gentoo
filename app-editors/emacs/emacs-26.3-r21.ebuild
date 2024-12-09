@@ -8,7 +8,7 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-10.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-11.tar.xz"
 # FULL_VERSION keeps the full version number, which is needed in
 # order to determine some path information correctly for copy/move
 # operations later on
