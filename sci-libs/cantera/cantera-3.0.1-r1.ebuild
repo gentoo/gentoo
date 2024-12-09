@@ -45,7 +45,7 @@ DEPEND="
 	${RDEPEND}
 	dev-cpp/eigen:3
 	dev-libs/boost:=
-	dev-libs/libfmt
+	<dev-libs/libfmt-11
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/cython[${PYTHON_USEDEP}]
