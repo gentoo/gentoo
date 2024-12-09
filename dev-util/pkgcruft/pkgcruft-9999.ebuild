@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=" "
-RUST_MIN_VER="1.80.0"
+RUST_MIN_VER="1.82.0"
 
 inherit cargo edo flag-o-matic toolchain-funcs
 
