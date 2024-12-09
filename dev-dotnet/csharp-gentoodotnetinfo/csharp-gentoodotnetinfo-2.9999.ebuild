@@ -42,7 +42,7 @@ S="${WORKDIR}/${P}/Source/v${MAJOR}"
 LICENSE="GPL-2+"
 SLOT="0/${MAJOR}"
 
-DOTNET_PKG_PROJECTS=( gentoo-dotnet-info-app/GentooDotnetInfo )
+DOTNET_PKG_PROJECTS=( gentoo-dotnet-info-app/src/main/csharp/GentooDotnetInfo )
 
 src_unpack() {
 	dotnet-pkg_src_unpack
