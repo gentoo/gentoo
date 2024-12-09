@@ -8,7 +8,6 @@
 <use>
 	<flag name="clang">Use Clang compiler instead of GCC</flag>
 	<flag name="eme-free">Disable EME (DRM plugin) capability at build time</flag>
-	<flag name="geckodriver">Enable WebDriver support</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="gnome-shell">Integrate with gnome-base/gnome-shell search</flag>
@@ -36,7 +35,6 @@
 		instead of bundled</flag>
 	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
 		instead of bundled (requires APNG patches)</flag>
-	<flag name="system-python-libs">Use system's python site instead of bundled python libraries</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled</flag>
 	<flag name="wasm">Sandbox certain third-party libraries through WebAssembly using RLBox</flag>
