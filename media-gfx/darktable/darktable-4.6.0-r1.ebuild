@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 	LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 else
 	#DOC_PV=$(ver_cut 1-2)
-	DOC_PV="4.6"
+	DOC_PV="4.4"
 	MY_PV="${PV/_/}"
 	MY_P="${P/_/.}"
 
@@ -32,8 +32,8 @@ else
 			)
 		)"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
-	LANGS=" cs de es fi fr hu it ja nl pl pt-BR ru sl sq tr uk zh-CN zh-TW"
+	KEYWORDS="amd64 ~arm64 -x86"
+	LANGS=" cs de es fi fr hu it ja nl pl pt-BR ru sl sq uk zh-CN zh-TW"
 fi
 
 IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi nls opencl openmp openexr test tools webp
@@ -69,7 +69,6 @@ DEPEND="dev-db/sqlite:3
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	net-libs/libsoup:2.4
 	net-misc/curl
 	sys-libs/zlib:=
 	x11-libs/cairo
@@ -133,7 +132,6 @@ src_prepare() {
 }
 
 src_configure() {
-	CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
 		-DBUILD_CURVE_TOOLS=$(usex tools)
 		-DBUILD_NOISE_TOOLS=$(usex tools)
@@ -171,10 +169,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	# This USE flag is masked for -9999
-	if use doc; then
-		dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.en.pdf
-		use l10n_uk && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.uk.pdf
-	fi
+	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.*.pdf
 
 	if use nls; then
 		for lang in ${LANGS} ; do
