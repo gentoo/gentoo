@@ -32,7 +32,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.1.1-find-cholmod.patch
+	"${FILESDIR}"/${PN}-6.3.0-find-cholmod.patch
 )
 
 src_configure() {
