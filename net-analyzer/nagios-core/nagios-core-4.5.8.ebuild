@@ -15,6 +15,8 @@ GENTOO_ICONS="${PN}-gentoo-icons-20141125"
 SRC_URI="https://downloads.sourceforge.net/nagios/${MY_P}.tar.gz
 	web? ( https://dev.gentoo.org/~mjo/distfiles/${GENTOO_ICONS}.tar )"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
@@ -87,8 +89,6 @@ RDEPEND="${CONFIGURE_DEPEND}
 		)
 	)
 	vim-syntax? ( app-vim/nagios-syntax )"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local myconf
