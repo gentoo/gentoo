@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>Kangie@gentoo.org</email>
+    <name>Matt Jolly</name>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>rust@gentoo.org</email>
+    <name>Gentoo Rust Project</name>
+  </maintainer>
+  <longdescription>
+     A "simple" rust compiler written in C++ that is able to bootstrap a "recent" rustc.
+  </longdescription>
+  <upstream>
+     <remote-id type="github">thepowersgang/mrustc</remote-id>
+  </upstream>
+</pkgmetadata>
