@@ -10,7 +10,7 @@ S="${WORKDIR}/package"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="=net-p2p/airdcpp-webclient-${PV%.*}*"
 
