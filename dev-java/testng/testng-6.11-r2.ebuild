@@ -75,8 +75,6 @@ src_test() {
 
 	JAVA_GENTOO_CLASSPATH_EXTRA=":${DISTDIR}/spock-core-${SCV}.jar"
 
-	JAVA_TEST_EXTRA_ARGS+=( -Dtest.resources.dir="src/test/resources" )
-
 	ejavac -cp "${JAVA_TEST_SRC_DIR}:${PN}.jar:$(java-pkg_getjars guava)" \
 		src/test/java/test/SimpleBaseTest.java || die
 
@@ -89,6 +87,7 @@ src_test() {
 		src/test/groovy/test/groovy/* || die
 
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/groovy-all-${GAV}.jar"
+	JAVA_TEST_EXTRA_ARGS=( -Dtest.resources.dir=src/test/resources )
 	java-pkg-simple_src_test
 }
 
