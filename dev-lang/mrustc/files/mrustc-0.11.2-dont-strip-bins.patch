@@ -1,0 +1,28 @@
+From e14e4e2e49d32827729bf41e08db1902fdf26911 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Fri, 17 Jan 2025 10:39:02 +1000
+Subject: [PATCH] don't strip bins
+
+--- a/Makefile
++++ b/Makefile
+@@ -176,7 +176,6 @@ else
+ 	$V$(CXX) -o $@ $(LINKFLAGS) $(OBJDIR)main.o -Wl,--whole-archive bin/mrustc.a -Wl,--no-whole-archive bin/common_lib.a $(LIBS)
+ 	$(OBJCOPY) --only-keep-debug $(BIN) $(BIN).debug
+ 	$(OBJCOPY) --add-gnu-debuglink=$(BIN).debug $(BIN)
+-	$(STRIP) $(BIN)
+ endif
+ 
+ $(OBJDIR)%.o: src/%.cpp
+--- a/tools/minicargo/Makefile
++++ b/tools/minicargo/Makefile
+@@ -46,7 +46,6 @@ else ifeq ($(shell uname -s || echo not),Darwin)
+ else
+ 	$(OBJCOPY) --only-keep-debug $(BIN) $(BIN).debug
+ 	$(OBJCOPY) --add-gnu-debuglink=$(BIN).debug $(BIN)
+-	$(STRIP) $(BIN)
+ endif
+ 
+ $(OBJDIR)%.o: %.cpp
+-- 
+2.48.0
+
