@@ -1,0 +1,23 @@
+From 0615d38df2c47fa7dc3f64ca54fd35e70e75ee59 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Thu, 5 Dec 2024 17:18:29 +1000
+Subject: [PATCH] git-be-gone
+
+--- a/Makefile
++++ b/Makefile
+@@ -178,7 +178,7 @@ $(OBJDIR)%.o: src/%.cpp
+ $(OBJDIR)version.o: $(OBJDIR)%.o: src/%.cpp $(filter-out $(OBJDIR)version.o,$(OBJ)) Makefile
+ 	@+mkdir -p $(dir $@)
+ 	@echo [CXX] -o $@
+-	$V$(CXX) -o $@ -c $< $(CXXFLAGS) $(CPPFLAGS) -MMD -MP -MF $@.dep -D VERSION_GIT_FULLHASH=\"$(shell git show --pretty=%H -s --no-show-signature)\" -D VERSION_GIT_BRANCH="\"$(shell git symbolic-ref -q --short HEAD || git describe --tags --exact-match)\"" -D VERSION_GIT_SHORTHASH=\"$(shell git show -s --pretty=%h --no-show-signature)\" -D VERSION_BUILDTIME="\"$(shell date -uR)\"" -D VERSION_GIT_ISDIRTY=$(shell git diff-index --quiet HEAD; echo $$?)
++	$V$(CXX) -o $@ -c $< $(CXXFLAGS) $(CPPFLAGS) -MMD -MP -MF $@.dep -D VERSION_GIT_FULLHASH=\"gentoo\" -D VERSION_GIT_BRANCH=\"gentoo\" -D VERSION_GIT_SHORTHASH=\"gentoo\" -D VERSION_BUILDTIME="\"$(shell date -uR)\"" -D VERSION_GIT_ISDIRTY="0"
+ 
+ src/main.cpp: $(PCHS:%=src/%.gch)
+ 
+@@ -192,4 +192,3 @@ bin/common_lib.a:
+ -include $(OBJ:%=%.dep)
+ 
+ # vim: noexpandtab ts=4
+-
+-- 
+2.47.0

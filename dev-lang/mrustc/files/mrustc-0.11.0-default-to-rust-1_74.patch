@@ -1,0 +1,19 @@
+From f422e43cc314e4cfda059ddb63d31973c9e8b5b7 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 17 Dec 2024 17:55:59 +1000
+Subject: [PATCH] default to Rust 1_74
+
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -39,7 +39,7 @@
+ # undef max
+ #endif
+ 
+-TargetVersion	gTargetVersion = TargetVersion::Rustc1_29;
++TargetVersion	gTargetVersion = TargetVersion::Rustc1_74;
+ 
+ struct ProgramParams
+ {
+-- 
+2.47.1
+
