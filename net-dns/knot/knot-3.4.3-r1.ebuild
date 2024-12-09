@@ -77,6 +77,10 @@ BDEPEND="
 	)
 "
 
+# Used to check cpuset_t in sched.h with NetBSD.
+# False positive because linux have sched.h too but with cpu_set_t
+QA_CONFIG_IMPL_DECL_SKIP=( cpuset_create cpuset_destroy )
+
 src_prepare() {
 	# https://gitlab.nic.cz/knot/knot-dns/-/issues/946
 	cat > tests/contrib/test_atomic.c <<-_EOF_ || die
