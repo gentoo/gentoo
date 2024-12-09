@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0-no-exec-stack.patch
 	"${FILESDIR}"/${PN}-6.0-format-security.patch
 	"${FILESDIR}"/${PN}-6.0-fix-false-overlap-detection-on-32bit-systems.patch
+	"${FILESDIR}"/${PN}-6.0-fix-zip64.patch
 )
 
 src_prepare() {
