@@ -115,7 +115,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-unbundle_fmt.patch
 	"${FILESDIR}"/${P}-unbundle_kineto.patch
-	"${FILESDIR}"/${P}-fix-functorch-install.patch
 	"${FILESDIR}"/${P}-cudnn_include_fix.patch
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
@@ -293,8 +292,13 @@ src_compile() {
 src_install() {
 	cmake_src_install
 
+	# Used by pytorch ebuild
 	insinto "/var/lib/${PN}"
 	doins "${BUILD_DIR}"/CMakeCache.txt
+	mv "${D}${S}"/functorch/functorch.so \
+		"${D}"/var/lib/${PN}/functorch.so || die
+	rm -r "${D}"/var/tmp || die
+	dostrip -x /var/lib/${PN}/functorch.so
 
 	rm -rf python
 	mkdir -p python/torch || die
