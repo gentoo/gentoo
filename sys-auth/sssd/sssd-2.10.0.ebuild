@@ -191,7 +191,7 @@ src_prepare() {
 
 	# requires valgrind headers installed
 	sed -i \
-		-e '/^\s*test-iobuf[ \\]*$/d' \
+		-e '/^\s*test_iobuf[ \\]*$/d' \
 		Makefile.am \
 		|| die
 
@@ -252,7 +252,7 @@ multilib_src_configure() {
 		--with-subid
 		$(use_enable systemtap)
 		--without-python2-bindings
-		--with-python3-bindings
+		$(multilib_native_with python3-bindings)
 		# Annoyingly configure requires that you pick systemd XOR sysv
 		--with-initscript=$(usex systemd systemd sysv)
 		--with-sssd-user=sssd
