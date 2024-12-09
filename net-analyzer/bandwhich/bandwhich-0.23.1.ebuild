@@ -312,7 +312,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD CC0-1.0 MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 FILECAPS=(
 	cap_sys_ptrace,cap_dac_read_search,cap_net_raw,cap_net_admin+ep "usr/bin/${PN}"
