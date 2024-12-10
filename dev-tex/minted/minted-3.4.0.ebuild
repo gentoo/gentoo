@@ -31,7 +31,12 @@ RDEPEND="
 	>=dev-tex/latex2pydata-0.4.0
 	dev-texlive/texlive-latexextra
 "
-BDEPEND="doc? ( dev-texlive/texlive-fontsextra )"
+BDEPEND="
+	doc? (
+		>=dev-tex/minted-${PV}
+		dev-texlive/texlive-fontsextra
+	)
+"
 
 PATCHES=(
 	"${DISTDIR}"/${PN}-3.4.0-explicitly-set-build-backend.patch
