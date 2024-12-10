@@ -9,9 +9,10 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-<!-- 		<flag name="analitza">Enable <pkg>kde-apps/analitza</pkg> backend support</flag> -->
+		<flag name="analitza">Enable <pkg>kde-apps/analitza</pkg> backend support</flag>
 		<flag name="julia">Enable <pkg>dev-lang/julia</pkg> backend support</flag>
 		<flag name="qalculate">Enable <pkg>sci-libs/libqalculate</pkg> backend support</flag>
 		<flag name="R">Enable <pkg>dev-lang/R</pkg> backend support</flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> as embedded QtHelp documentation browser</flag>
 	</use>
 </pkgmetadata>
