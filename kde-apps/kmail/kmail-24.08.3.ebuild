@@ -81,7 +81,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=kde-apps/kcalutils-${PVCUT}:6
 	>=kde-apps/kldap-${PVCUT}:6
-	test? ( >=kde-apps/akonadi-${PVCUT}:6[sqlite] )
+	test? ( =kde-apps/akonadi-${PVCUT}*:6[sqlite] )
 "
 RDEPEND="${COMMON_DEPEND}
 	>=kde-apps/kdepim-runtime-${PVCUT}:6

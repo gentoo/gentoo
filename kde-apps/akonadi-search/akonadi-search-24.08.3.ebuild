@@ -41,7 +41,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	test? ( >=kde-apps/akonadi-${PVCUT}:6[mysql,postgres,sqlite] )
+	test? ( =kde-apps/akonadi-${PVCUT}*:6[mysql,postgres,sqlite] )
 "
 BDEPEND="
 	test? ( >=kde-apps/akonadi-${PVCUT}:6[tools] )
