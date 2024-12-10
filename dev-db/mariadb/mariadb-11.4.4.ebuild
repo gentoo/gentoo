@@ -362,6 +362,12 @@ src_configure() {
 		mycmakeargs+=( -DWITH_SSL=bundled )
 	fi
 
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		mycmakeargs+=(
+			-DDTRACE="${BROOT}"/usr/bin/stap-dtrace
+		)
+	fi
+
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
 	mycmakeargs+=(
 		-DWITH_READLINE=$(usex bindist 1 0)
