@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -168,6 +168,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.3.0-core-octree_node.txx.patch"
 	"${FILESDIR}/${PN}-9.3.0-ThirdParty-gcc15.patch"
 	"${FILESDIR}/${PN}-9.3.0-r1-expat-2.6.0.patch"
+	"${FILESDIR}/${PN}-9.3.1-fix-fmt-11.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
