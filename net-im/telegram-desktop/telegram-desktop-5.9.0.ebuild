@@ -17,16 +17,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
-IUSE="dbus enchant +fonts +jemalloc +libdispatch screencast qt6 qt6-imageformats wayland webkit +X"
-REQUIRED_USE="
-	qt6-imageformats? ( qt6 )
-"
+IUSE="dbus enchant +fonts +jemalloc +libdispatch screencast qt6 wayland webkit +X"
 
-KIMAGEFORMATS_RDEPEND="
-	media-libs/libavif:=
-	media-libs/libheif:=
-	>=media-libs/libjxl-0.8.0:=
-"
 CDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
@@ -35,7 +27,7 @@ CDEPEND="
 	>=dev-cpp/glibmm-2.77:2.68
 	dev-libs/glib:2
 	dev-libs/openssl:=
-	dev-libs/protobuf
+	>=dev-libs/protobuf-21.12
 	dev-libs/xxhash
 	media-libs/libjpeg-turbo:=
 	~media-libs/libtgvoip-2.4.4_p20240706
@@ -57,23 +49,19 @@ CDEPEND="
 		>=dev-qt/qtsvg-5.15:5
 		>=dev-qt/qtwidgets-5.15:5[png,X?]
 		kde-frameworks/kcoreaddons:5
-		webkit? (
+		webkit? ( wayland? (
 			>=dev-qt/qtdeclarative-5.15:5
 			>=dev-qt/qtwayland-5.15:5[compositor(+)]
-		)
+		) )
 	)
 	qt6? (
 		>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,wayland?,widgets,X?]
 		>=dev-qt/qtimageformats-6.5:6
 		>=dev-qt/qtsvg-6.5:6
-		webkit? (
+		webkit? ( wayland? (
 			>=dev-qt/qtdeclarative-6.5:6
 			>=dev-qt/qtwayland-6.5:6[compositor,qml]
-		)
-		qt6-imageformats? (
-			>=dev-qt/qtimageformats-6.5:6=
-			${KIMAGEFORMATS_RDEPEND}
-		)
+		) )
 	)
 	X? (
 		x11-libs/libxcb:=
@@ -104,6 +92,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.2.2-qt6-no-wayland.patch
 	"${FILESDIR}"/tdesktop-5.2.2-libdispatch.patch
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
+	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 )
 
 pkg_pretend() {
@@ -116,19 +105,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	# Bundle kde-frameworks/kimageformats for qt6, since it's impossible to
-	#   build in gentoo right now.
-	if use qt6-imageformats; then
-		sed -e 's/DESKTOP_APP_USE_PACKAGED_LAZY/TRUE/' -i \
-			cmake/external/kimageformats/CMakeLists.txt || die
-		printf '%s\n' \
-			'Q_IMPORT_PLUGIN(QAVIFPlugin)' \
-			'Q_IMPORT_PLUGIN(HEIFPlugin)' \
-			'Q_IMPORT_PLUGIN(QJpegXLPlugin)' \
-			>> cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp || die
-	fi
-	# kde-frameworks/kcoreaddons is bundled when using qt6.
-
 	# Happily fail if libraries aren't found...
 	find -type f \( -name 'CMakeLists.txt' -o -name '*.cmake' \) \
 		\! -path './Telegram/lib_webview/CMakeLists.txt' \
@@ -149,6 +125,12 @@ src_prepare() {
 			-i cmake/external/qt/package.cmake || die
 	fi
 
+	# Control automagic dep only needed when USE="webkit wayland"
+	if ! use webkit || ! use wayland; then
+		sed -e 's/QT_CONFIG(wayland_compositor_quick)/0/' \
+			-i Telegram/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.h
+	fi
+
 	cmake_src_prepare
 }
 
@@ -165,11 +147,12 @@ src_configure() {
 	# The ABI of media-libs/tg_owt breaks if the -DNDEBUG flag doesn't keep
 	# the same state across both projects.
 	# See https://bugs.gentoo.org/866055
-	append-cppflags '-DNDEBUG'
+	append-cppflags -DNDEBUG
 
 	# https://github.com/telegramdesktop/tdesktop/issues/17437#issuecomment-1001160398
 	use !libdispatch && append-cppflags -DCRL_FORCE_QT
 
+	local use_webkit_wayland=$(use webkit && use wayland && echo yes || echo no)
 	local qt=$(usex qt6 6 5)
 	local mycmakeargs=(
 		-DQT_VERSION_MAJOR=${qt}
@@ -181,11 +164,10 @@ src_configure() {
 		# Control automagic dependencies on certain packages
 		## Header-only lib, some git version.
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}Quick=$(usex !webkit)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}QuickWidgets=$(usex !webkit)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}Quick=${use_webkit_wayland}
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}QuickWidgets=${use_webkit_wayland}
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}WaylandClient=$(usex !wayland)
-		## Only used in Telegram/lib_webview/CMakeLists.txt
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}WaylandCompositor=$(usex !webkit)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}WaylandCompositor=${use_webkit_wayland}
 		## KF6CoreAddons is currently unavailable in ::gentoo
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF${qt}CoreAddons=$(usex qt6)
 
@@ -251,12 +233,10 @@ pkg_postinst() {
 		ewarn "These integrations are only supported when built with Qt6."
 		ewarn
 	fi
-	if use qt6 && ! use qt6-imageformats; then
-		elog "Enable USE=qt6-imageformats for AVIF, HEIF and JpegXL support"
-		elog
-	fi
 	optfeature_header
 	if ! use qt6; then
-		optfeature "AVIF, HEIF and JpegXL image support" kde-frameworks/kimageformats[avif,heif,jpegxl]
+		optfeature "AVIF, HEIF and JpegXL image support" kde-frameworks/kimageformats:5[avif,heif,jpegxl]
+	else
+		optfeature "AVIF, HEIF and JpegXL image support" kde-frameworks/kimageformats:6[avif,heif,jpegxl]
 	fi
 }
