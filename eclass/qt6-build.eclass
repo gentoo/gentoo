@@ -22,6 +22,7 @@ _QT6_BUILD_ECLASS=1
 	die "${ECLASS} is only to be used for building Qt6"
 
 inherit cmake flag-o-matic toolchain-funcs
+[[ ${EAPI} == 8 ]] && inherit eapi9-pipestatus
 
 # @ECLASS_VARIABLE: QT6_BUILD_TYPE
 # @DESCRIPTION:
@@ -321,7 +322,7 @@ _qt6-build_sanitize_cpu_flags() {
 					bad
 					#endif
 				EOF
-				assert
+				pipestatus || die
 			)"
 			[[ ${_} == bad ]] && bad=1 && break
 		done
@@ -342,7 +343,7 @@ _qt6-build_sanitize_cpu_flags() {
 			#  endif
 			#endif
 		EOF
-		assert
+		pipestatus || die
 	)
 
 	cpuflags+=("${cpuflags_filter_only[@]}")
