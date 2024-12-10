@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hurikhan77+bgo@gmail.com</email>
+		<name>Kai Krakow</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="neuralnet">
+			Build NeuralNet face tracker using a webcam as input device
+			(requires opencv openmp)
+		</flag>
+		<flag name="opencv">
+			Enable webcam video driver via computer vision (required
+			for NeuralNet to work)
+		</flag>
+		<flag name="wine">
+			Support injecting a FreeTrack driver into a running wine prefix
+		</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/opentrack/opentrack/issues</bugs-to>
+		<remote-id type="github">opentrack/opentrack</remote-id>
+	</upstream>
+</pkgmetadata>
