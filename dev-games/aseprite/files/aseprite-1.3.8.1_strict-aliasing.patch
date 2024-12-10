@@ -1,14 +1,8 @@
-From 4e2066a7eb108503bfea2092672329e19ffbde49 Mon Sep 17 00:00:00 2001
+From 49a1e9a1355dd48c79712b95994b53529f3d5144 Mon Sep 17 00:00:00 2001
 From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
 Date: Tue, 2 Jan 2024 21:09:04 +0300
-Subject: [PATCH] Fix strict-aliasing warnings
+Subject: [PATCH 5/5] Fix strict-aliasing warnings
 
----
- src/dio/aseprite_decoder.cpp | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
-
-diff --git a/src/dio/aseprite_decoder.cpp b/src/dio/aseprite_decoder.cpp
-index e01fbba32..209a67307 100644
 --- a/src/dio/aseprite_decoder.cpp
 +++ b/src/dio/aseprite_decoder.cpp
 @@ -28,10 +28,20 @@
@@ -51,5 +45,5 @@ index e01fbba32..209a67307 100644
  
  doc::Palette* AsepriteDecoder::readColorChunk(doc::Palette* prevPal,
 -- 
-2.41.0
+2.44.2
 
