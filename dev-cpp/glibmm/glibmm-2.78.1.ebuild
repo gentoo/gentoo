@@ -29,6 +29,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-libcxx-fix.patch )
+
 src_prepare() {
 	default
 
