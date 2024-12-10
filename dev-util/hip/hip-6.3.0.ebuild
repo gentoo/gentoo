@@ -7,7 +7,7 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 ROCM_SKIP_GLOBALS=1
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 
 inherit cmake docs flag-o-matic llvm-r1 rocm
 
@@ -74,8 +74,10 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
-	"${FILESDIR}/${PN}-6.1.0-install.patch"
+	"${FILESDIR}/${PN}-6.3.0-install.patch"
 	"${FILESDIR}/${PN}-6.1.1-fix-musl.patch"
+	"${FILESDIR}/${PN}-6.2.4-libcxx.patch"
+	"${FILESDIR}/${PN}-6.3.0-no-isystem-usr-include.patch"
 )
 
 hip_test_wrapper() {
@@ -103,6 +105,8 @@ src_prepare() {
 		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d)/bin\"):" \
 		-i "${WORKDIR}/HIP-rocm-${PV}/cmake/FindHIP.cmake" || die
 
+	sed -e "s/ -Werror//g" -i "hipamd/src/CMakeLists.txt" || die
+
 	cmake_src_prepare
 
 	# With Clang>17 -amdgpu-early-inline-all=true causes OOMs in dependencies
@@ -118,6 +122,7 @@ src_prepare() {
 			"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
 			"${FILESDIR}"/hip-test-6.1.1-fix-musl.patch
 		)
+		sed -e "s/ -Werror//g" -i "${TEST_S}/CMakeLists.txt" || die
 		hip_test_wrapper cmake_src_prepare
 	fi
 }
@@ -146,6 +151,7 @@ src_configure() {
 		-DCLR_BUILD_OCL="$(usex opencl)"
 
 		-DHIP_COMMON_DIR="${WORKDIR}/HIP-rocm-${PV}"
+		-DHIP_ENABLE_ROCPROFILER_REGISTER=OFF
 		-DHIPCC_BIN_DIR="${EPREFIX}/usr/bin"
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DUSE_PROF_API="no"
@@ -171,19 +177,23 @@ src_configure() {
 	if use test; then
 		local mycmakeargs=(
 			-DCMAKE_MODULE_PATH="${TEST_S}/external/Catch2/cmake/Catch2"
+			-DROCM_PATH="${EPREFIX}/usr"
+
+			# 1) Use custom build of hipamd instead of system one
+			# 2) Build fails with libc++: https://github.com/llvm/llvm-project/issues/119076
+			-DCMAKE_CXX_FLAGS="-I${BUILD_DIR}/hipamd/include -stdlib=libstdc++"
+			-DCMAKE_EXE_LINKER_FLAGS="-L${BUILD_DIR}/hipamd/lib"
 		)
 		if use video_cards_amdgpu; then
 			mycmakeargs+=(
-				-DROCM_PATH="${BUILD_DIR}/hipamd"
 				-DHIP_PLATFORM="amd"
 			)
 		elif use video_cards_nvidia; then
 			mycmakeargs+=(
-				-DROCM_PATH="${BUILD_DIR}/hipother"
 				-DHIP_PLATFORM="nvidia"
 			)
 		fi
-		HIP_PATH="${EPREFIX}/usr" hip_test_wrapper cmake_src_configure
+		hip_test_wrapper cmake_src_configure
 	fi
 }
 
@@ -191,8 +201,7 @@ src_compile() {
 	cmake_src_compile
 
 	if use test; then
-		HIP_PATH="${BUILD_DIR}"/hipamd \
-			hip_test_wrapper cmake_src_compile build_tests
+		hip_test_wrapper cmake_src_compile build_tests
 	fi
 }
 

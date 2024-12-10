@@ -1,0 +1,65 @@
+Combination of upstream patches to make comgr compatible with LLVM 19
+https://github.com/ROCm/llvm-project/commit/91c18ff3482abdf90239e9b482797403f6e7e9bc
+https://github.com/ROCm/llvm-project/commit/971fd662887f21877d29f936c2f818eac37589d3
+https://github.com/ROCm/llvm-project/commit/7a784d7acfd7dadfa8516054adfbe7c884e70786
+https://github.com/ROCm/llvm-project/commit/1fb58bcb4868087ed314e2f5e7363d871d69f4da
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -384,15 +384,14 @@ static bool executeAssemblerImpl(AssemblerInvocation &Opts,
+   assert(MRI && "Unable to create target register info!");
+ 
+   llvm::MCTargetOptions MCOptions;
++  MCOptions.X86RelaxRelocations = Opts.RelaxELFRelocations;
++  MCOptions.CompressDebugSections = Opts.CompressDebugSections;
+   std::unique_ptr<MCAsmInfo> MAI(
+       TheTarget->createMCAsmInfo(*MRI, Opts.Triple, MCOptions));
+   assert(MAI && "Unable to create target asm info!");
+ 
+   // Ensure MCAsmInfo initialization occurs before any use, otherwise sections
+   // may be created with a combination of default and explicit settings.
+-  MAI->setCompressDebugSections(Opts.CompressDebugSections);
+-
+-  MAI->setRelaxELFRelocations(Opts.RelaxELFRelocations);
+ 
+   bool IsBinary = Opts.OutputType == AssemblerInvocation::FT_Obj;
+   std::unique_ptr<raw_fd_ostream> FDOS = getOutputStream(Opts, Diags, IsBinary);
+@@ -428,9 +427,6 @@ static bool executeAssemblerImpl(AssemblerInvocation &Opts,
+   }
+ 
+   MOFI->initMCObjectFileInfo(Ctx, PIC);
+-  if (Opts.SaveTemporaryLabels) {
+-    Ctx.setAllowTemporaryLabels(false);
+-  }
+   if (Opts.GenDwarfForAssembly) {
+     Ctx.setGenDwarfForAssembly(true);
+   }
+--- a/src/comgr-symbol.cpp
++++ b/src/comgr-symbol.cpp
+@@ -146,7 +146,7 @@ SymbolContext *SymbolHelper::createBinary(StringRef Ins, const char *Name,
+         return NULL;
+       }
+       StringRef SymName = *SymNameOrErr;
+-      if (SymName.equals(Sname)) {
++      if (SymName == Sname) {
+ #if DEBUG
+         outs() << "Found! " << sname.data() << "\n";
+ #endif
+--- a/src/comgr.cpp
++++ b/src/comgr.cpp
+@@ -51,6 +51,7 @@
+ #include "llvm/Object/ObjectFile.h"
+ #include "llvm/Support/TargetSelect.h"
+ #include "llvm/IR/Constants.h"
++#include "llvm/IR/Module.h"
+ #include <fstream>
+ #include <mutex>
+ #include <string>
+@@ -2126,7 +2127,7 @@ amd_comgr_populate_name_expression_map(amd_comgr_data_t Data,
+         }
+         StringRef SecName = std::move(SecNameOrError.get());
+ 
+-        if (SecName.equals(StringRef(".rodata")))
++        if (SecName == StringRef(".rodata"))
+           rodataShdr = Shdr;
+       }
+     }

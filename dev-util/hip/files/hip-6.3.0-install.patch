@@ -1,0 +1,12 @@
+hipcc files are already installed by dev-util/hipcc, which is a runtime dep
+--- a/hipamd/CMakeLists.txt
++++ b/hipamd/CMakeLists.txt
+@@ -393,7 +393,7 @@ endif()
+ install(FILES ${PROJECT_BINARY_DIR}/include/hip/hip_version.h
+         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hip)
+ 
+-if (NOT ${HIPCC_BIN_DIR} STREQUAL "")
++if (INSTALL_HIPCC AND NOT ${HIPCC_BIN_DIR} STREQUAL "")
+   file(TO_CMAKE_PATH "${HIPCC_BIN_DIR}" HIPCC_BIN_DIR)
+   if(EXISTS ${HIPCC_BIN_DIR})
+     install(PROGRAMS ${HIPCC_BIN_DIR}/${HIPCC_EXECUTABLE} DESTINATION bin)

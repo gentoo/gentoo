@@ -68,6 +68,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Note: hipcc is enforced; clang fails when libc++ is enabled
+	# with an error similar to https://github.com/boostorg/config/issues/392
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DHIP_RUNTIME="ROCclr"
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
