@@ -65,7 +65,7 @@ DEPEND="
 		>=media-libs/rtaudio-4.1.2
 		kernel_linux? ( media-libs/alsa-lib )
 	)
-	rubberband? ( media-libs/rubberband )
+	rubberband? ( media-libs/rubberband:= )
 	sdl? (
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
