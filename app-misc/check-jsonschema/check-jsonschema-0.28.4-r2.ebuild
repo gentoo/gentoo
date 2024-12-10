@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
 inherit optfeature distutils-r1
 
@@ -45,8 +45,8 @@ DOCS=(
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
-		dev-python/sphinx-issues \
-		dev-python/furo
+	dev-python/sphinx-issues \
+	dev-python/furo
 
 python_prepare_all() {
 	# relax deps in setup.cfg
