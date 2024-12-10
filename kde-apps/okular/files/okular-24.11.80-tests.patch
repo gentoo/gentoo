@@ -1,0 +1,83 @@
+From 2e0f29193a74081362fffa22765d84b633996fee Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 18 Nov 2024 22:48:47 +0100
+Subject: [PATCH] generators: Conditionalise tests behind BUILD_TESTING
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ generators/comicbook/CMakeLists.txt | 12 +++++++-----
+ generators/epub/CMakeLists.txt      | 13 +++++++------
+ generators/poppler/CMakeLists.txt   | 10 ++++++----
+ 3 files changed, 20 insertions(+), 15 deletions(-)
+
+diff --git a/generators/comicbook/CMakeLists.txt b/generators/comicbook/CMakeLists.txt
+index 53075836d..0daf94121 100644
+--- a/generators/comicbook/CMakeLists.txt
++++ b/generators/comicbook/CMakeLists.txt
+@@ -30,11 +30,13 @@ endif()
+ 
+ ########### autotests ###############
+ 
+-add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
+-ecm_add_test(autotests/comicbooktest.cpp
+-    TEST_NAME "comicbooktest"
+-    LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore okular_comicbook
+-)
++if(BUILD_TESTING)
++    add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
++    ecm_add_test(autotests/comicbooktest.cpp
++        TEST_NAME "comicbooktest"
++        LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore okular_comicbook
++    )
++endif()
+ 
+ ########### install files ###############
+ install( PROGRAMS okularApplication_comicbook.desktop org.kde.mobile.okular_comicbook.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+diff --git a/generators/epub/CMakeLists.txt b/generators/epub/CMakeLists.txt
+index 5f45820c0..ab4e43b0d 100644
+--- a/generators/epub/CMakeLists.txt
++++ b/generators/epub/CMakeLists.txt
+@@ -19,12 +19,13 @@ target_link_libraries(okularGenerator_epub okularcore ${EPUB_LIBRARIES} KF6::I18
+ 
+ ########### autotests ###############
+ 
+-add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
+-ecm_add_test(autotests/epubgeneratortest.cpp
+-    TEST_NAME "epubgeneratortest"
+-    LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore
+-)
+-
++if(BUILD_TESTING)
++  add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
++  ecm_add_test(autotests/epubgeneratortest.cpp
++      TEST_NAME "epubgeneratortest"
++      LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore
++  )
++endif()
+ 
+ ########### install files ###############
+ install( PROGRAMS okularApplication_epub.desktop org.kde.mobile.okular_epub.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+diff --git a/generators/poppler/CMakeLists.txt b/generators/poppler/CMakeLists.txt
+index a7ec0bc51..cb18f4e81 100644
+--- a/generators/poppler/CMakeLists.txt
++++ b/generators/poppler/CMakeLists.txt
+@@ -32,10 +32,12 @@ target_link_libraries(okularGenerator_poppler okularcore KF6::I18n KF6::Completi
+ 
+ ########### autotests ###############
+ 
+-ecm_add_test(autotests/testimagescaling.cpp
+-    TEST_NAME "imageScalingTest"
+-    LINK_LIBRARIES Qt6::Test Qt6::Gui
+-)
++if(BUILD_TESTING)
++    ecm_add_test(autotests/testimagescaling.cpp
++        TEST_NAME "imageScalingTest"
++        LINK_LIBRARIES Qt6::Test Qt6::Gui
++    )
++endif()
+ 
+ ########### install files ###############
+ install( PROGRAMS okularApplication_pdf.desktop org.kde.mobile.okular_pdf.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+-- 
+2.47.0
+
