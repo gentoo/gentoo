@@ -1,0 +1,211 @@
+diff --git a/Makefile.in b/Makefile.in
+index 4ce427b..c2278ad 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -323,7 +323,7 @@ JUNK = *.o *.so.$(OBJ) $(STATICLIB) execiser$(binarybitprefix)$(EXE) threader$(b
+ #
+ .SUFFIXES:
+ 
+-all : rexx$(binarybitprefix)$(EXE) $(STATICLIB) execiser$(binarybitprefix)$(EXE) $(SHL_TARGETS) $(THREADSAFE_TARGET) rxstack$(binarybitprefix)$(EXE) rxqueue$(binarybitprefix)$(EXE) $(MTBFILES)
++all : rexx$(binarybitprefix)$(EXE) execiser$(binarybitprefix)$(EXE) $(SHL_TARGETS) $(THREADSAFE_TARGET) rxstack$(binarybitprefix)$(EXE) rxqueue$(binarybitprefix)$(EXE) $(MTBFILES)
+ 
+ $(srcdir)/rexx.h : $(srcdir)/extern.h $(srcdir)/strengs.h $(srcdir)/defs.h $(srcdir)/regina_t.h $(srcdir)/mt.h
+ 
+@@ -1070,11 +1070,6 @@ installbase: all
+ 	$(INSTALL) -m 644 -c $(srcdir)/regina-config.1 $(DESTDIR)$(mandir)/man1/regina-config.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rxstack.1 $(DESTDIR)$(mandir)/man1/rxstack.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rxqueue.1 $(DESTDIR)$(mandir)/man1/rxqueue.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/regina.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rexx.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/regina-config.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rxstack.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rxqueue.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rexxsaa.h $(DESTDIR)$(includedir)/rexxsaa.h
+ 	$(INSTALL) -m 644 -c ./en.mtb $(DESTDIR)$(sharedir)/en.mtb
+ 	$(INSTALL) -m 644 -c ./pt.mtb $(DESTDIR)$(sharedir)/pt.mtb
+diff --git a/common/incdebug.m4 b/common/incdebug.m4
+index 14c106e..86e4135 100644
+--- a/common/incdebug.m4
++++ b/common/incdebug.m4
+@@ -15,67 +15,6 @@ DEBUGGING=""
+ cflags_g="`echo $CFLAGS | grep -c '\-g'`"
+ cflags_O="`echo $CFLAGS | grep -c '\-O'`"
+ 
+-if test "$with_debug" = yes; then
+-   DEBUG="-DDEBUG"
+-   DEBUGGING="-g"
+-   if test "$cflags_g" = "0"; then
+-      CFLAGS="${CFLAGS} -g"
+-   fi
+-   if test "$cflags_O" != "0"; then
+-      CFLAGS="`echo ${CFLAGS} | sed -e s/-O.//`"
+-   fi
+-else
+-   DEBUG="-DNDEBUG"
+-   if test "$cflags_O" = "0"; then
+-      CFLAGS="${CFLAGS} -O"
+-   fi
+-   if test "$cflags_g" = "0"; then
+-      CFLAGS="${CFLAGS} -g"
+-   fi
+-fi
+-if test "$ac_cv_prog_CC" = "gcc" -o "$ac_cv_prog_CC" = "g++" -o "$ac_cv_prog_CC" = "clang"; then
+-   if test "$with_debug" = yes; then
+-      CFLAGS="${CFLAGS} -Wall"
+-   else
+-      CFLAGS="${CFLAGS} -O3 -Wall -fomit-frame-pointer -fno-strict-aliasing -Wno-char-subscripts"
+-   fi
+-fi
+-if test "$on_qnx4" = yes; then
+-   if test "$ac_cv_prog_CC" = "gcc"; then
+-      QNX4_CFLAGS=""
+-   else
+-      if test "$SIMPLE_CFLAGS" = "yes"; then
+-         QNX4_CFLAGS="-O"
+-      else
+-         QNX4_CFLAGS="-Wc,-r -b -j -Wc,-ei -N4096000 -mf -DNO_REGEX -DQNX -DQNX4 -D__QNX__ -DSTRINGS_ALIGNED -Q"
+-      fi
+-   fi
+-   if test "$with_debug" = yes; then
+-      CFLAGS="-g $QNX4_CFLAGS"
+-   else
+-      CFLAGS="-Otax $QNX4_CFLAGS"
+-   fi
+-fi
+-if test "$on_beos" = yes; then
+-   if test "$with_debug" = yes; then
+-      CFLAGS="${CFLAGS} -Wall"
+-   else
+-      CFLAGS="${CFLAGS} -O2 -Wall"
+-   fi
+-   if test "$datadir" = "\${prefix}/share"; then
+-      datadir="/boot/home/config/add-ons"
+-   fi
+-fi
+-if test "$on_haiku" = yes; then
+-   if test "$with_debug" = yes; then
+-      CFLAGS="${CFLAGS} -Wall"
+-   else
+-      CFLAGS="${CFLAGS} -O2 -Wall"
+-   fi
+-   if test "$datadir" = "\${prefix}/share"; then
+-      datadir="/boot/home/config/non-packaged/add-ons"
+-   fi
+-fi
+ AC_SUBST(DEBUG)
+ AC_SUBST(DEBUGGING)
+ 
+diff --git a/common/inclibarch.m4 b/common/inclibarch.m4
+index 993daf2..6a0a11d 100644
+--- a/common/inclibarch.m4
++++ b/common/inclibarch.m4
+@@ -25,96 +25,7 @@ AC_ARG_ENABLE(64bit,
+ gcc_64bit="-m64"
+ gcc_32bit="-m32"
+ on_osx="no"
+-osis64bit=no
+-bitflag="32"
+ MACH_ARCH=`$ac_config_guess | cut -f1 -d-`
+-case "$target" in
+-   *hp-hpux*)
+-      ;;
+-   *ibm-aix*)
+-      rc=`lsconf -k | grep -c 64-bit`
+-      if test $rc -eq 1; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-      #
+-      # AIX gcc has its own special bit switches :-(
+-      #
+-      gcc_64bit="-maix64"
+-      gcc_32bit="-maix32"
+-      ;;
+-   powerpc-ibm-os400)
+-      bitflag="64"
+-      osis64bit=yes
+-      gcc_64bit=""
+-      ;;
+-   *dec-osf4*)
+-      ;;
+-   *dec-osf*)
+-      ;;
+-   *sequent-dynix*)
+-      ;;
+-   i*86*solaris*)
+-      ;;
+-   *solaris*)
+-      rc=`isainfo -v | grep -c 64-bit`
+-      if test $rc -eq 1; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-      ;;
+-   sparc*sunos*)
+-      ;;
+-   *linux* | *kfreebsd*-gnu*)
+-      mach="`uname -m`"
+-      if test "$mach" = "x86_64" -o "$mach" = "ia86" -o "$mach" = "alpha" -o "$mach" = "ppc64" -o "$mach" = "s390x" -o "$mach" = "aarch64" -o "$mach" = "ppc64le"; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-#      if test -f "/etc/os-release"; then
+-         # get Linux ID...
+-#      fi
+-      if test -f "/etc/apk/arch"; then
+-         # get Alpine Linux architecture for APK
+-         MACH_ARCH="`cat /etc/apk/arch`"
+-      fi
+-      ;;
+-   *-freebsd* | *-openbsd* | *-netbsd*)
+-      mach="`uname -m`"
+-      if test "$mach" = "amd64"; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-      ;;
+-   *nto-qnx*)
+-      ;;
+-   *qnx*)
+-      ;;
+-   *beos*)
+-      ;;
+-   *haiku*)
+-      mach="`uname -m`"
+-      if test "$mach" = "x86_64"; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-      ;;
+-   *cygwin*)
+-      mach="`uname -m`"
+-      if test "$mach" = "x86_64"; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-      ;;
+-   *apple-darwin*)
+-      on_osx="yes"
+-      osx_64bit=`sysctl hw.cpu64bit_capable | cut -f2 -d' '`
+-      if test $osx_64bit -eq 1; then
+-         bitflag="64"
+-         osis64bit=yes
+-      fi
+-      ;;
+-esac
+ 
+ if test "x$bitflag32" = "xyes" -a "x$bitflag64" = "xyes"; then
+    AC_MSG_ERROR(--enable-32bit and --enable-64bit flags cannot both be specified.)
+diff --git a/configure.in b/configure.in
+index bed60d6..ffc5b83 100644
+--- a/configure.in
++++ b/configure.in
+@@ -30,7 +30,7 @@ cp $srcdir/common/config.sub $srcdir
+ 
+ dnl ---------------------- check for C compiler -----------------
+ dnl Checks for one of the C compilers below - change if yours not there.
+-MH_PROG_CC
++AC_PROG_CC
+ 
+ AC_CONFIG_HEADER(config.h)
+ AC_ISC_POSIX
