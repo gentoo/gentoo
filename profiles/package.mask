@@ -33,16 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2024-12-07)
-# Breaks Mozilla's build system `mach`: bug #945882, bug #945857, and bug #946002.
-# Upstream bug is at https://bugzilla.mozilla.org/show_bug.cgi?id=1935621.
-=dev-lang/python-3.12.8
-=dev-lang/python-3.13.1
-=dev-python/python-tests-3.12.8
-=dev-python/python-tests-3.13.1
-=app-doc/python-docs-3.12.8
-=app-doc/python-docs-3.13.1
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
