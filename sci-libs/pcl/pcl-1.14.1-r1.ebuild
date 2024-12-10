@@ -43,7 +43,7 @@ RDEPEND="
 	qhull? ( media-libs/qhull:= )
 	qt6? (
 		dev-qt/qtbase:6[concurrent,gui,opengl]
-		vtk? ( sci-libs/vtk[-qt5,qt6] )
+		vtk? ( sci-libs/vtk[-qt5(-),qt6] )
 	)
 	usb? ( virtual/libusb:1 )
 	vtk? ( >=sci-libs/vtk-5.6:=[imaging,rendering,views] )
