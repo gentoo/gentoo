@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop flag-o-matic linux-mod-r1 readme.gentoo-r1
+inherit desktop eapi9-pipestatus flag-o-matic linux-mod-r1 readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.12
@@ -371,7 +371,8 @@ documentation that is installed alongside this README."
 
 		case ${m[2]} in
 			MANPAGE)
-				gzip -dc ${m[0]} | newman - ${m[0]%.gz}; assert
+				gzip -dc ${m[0]} | newman - ${m[0]%.gz}
+				pipestatus || die
 				continue
 			;;
 			GBM_BACKEND_LIB_SYMLINK) m[4]=../${m[4]};; # missing ../
