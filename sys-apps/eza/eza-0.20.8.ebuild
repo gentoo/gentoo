@@ -229,6 +229,7 @@ IUSE="+git"
 
 DEPEND="git? ( >=dev-libs/libgit2-1.8.1:= )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
