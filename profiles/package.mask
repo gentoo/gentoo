@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
+# KF5 Porting Aids removal; bugs 755956, 759778
+# Removal on 2025-01-09
+media-sound/soundkonverter
+kde-frameworks/countryflags
+kde-frameworks/kapidox
+kde-frameworks/kdelibs4support
+kde-frameworks/kemoticons
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
