@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
+# Depends on kde-plasma/kdesu-gui which is not keyworded here.
+sys-block/gparted kde
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-11)
 # depends on java packages, not keyworded on arm
 app-office/libreoffice java
