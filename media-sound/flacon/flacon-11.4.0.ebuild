@@ -23,7 +23,7 @@ BDEPEND="
 RDEPEND="
 	app-i18n/uchardet
 	dev-qt/qtbase:6[gui,network,widgets,concurrent]
-	media-libs/taglib
+	media-libs/taglib:=
 	media-sound/sox[flac,wavpack]
 	media-video/mediainfo
 "
