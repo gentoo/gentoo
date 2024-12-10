@@ -56,6 +56,9 @@ src_configure() {
 	append-lfs-flags
 	tc-export CC
 
+	# bug #943875
+	append-cflags "-std=gnu17"
+
 	# Not an autoconf script
 	edo ./configure \
 		--prefix=/usr \
