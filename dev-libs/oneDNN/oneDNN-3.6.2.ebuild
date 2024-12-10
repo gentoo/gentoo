@@ -23,7 +23,7 @@ KEYWORDS="~amd64"
 
 IUSE="test mkl cblas static-libs +openmp"
 
-RESTRICT="!test? ( test )"
+RESTRICT="test" # Some test are very long to execute
 
 DEPEND="
 	mkl? ( sci-libs/mkl )
@@ -73,6 +73,7 @@ src_configure() {
 		-DDNNL_VERBOSE=ON
 		-DDNNL_DEV_MODE=OFF
 		-DDNNL_AARCH64_USE_ACL=OFF
+		-DDNNL_EXPERIMENTAL_UKERNEL=ON
 		-DDNNL_GPU_VENDOR=INTEL
 		-DDNNL_LIBRARY_NAME=dnnl
 		-DONEDNN_BUILD_GRAPH=ON
