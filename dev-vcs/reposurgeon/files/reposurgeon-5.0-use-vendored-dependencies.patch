@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 498efd6b..8c881220 100644
+--- a/Makefile
++++ b/Makefile
+@@ -43,7 +43,7 @@ endif
+ # Binaries need to be built before generated documentation parts can be made.
+ all: build cuttercommands.inc toolcommands.inc $(MANPAGES) $(HTMLFILES)
+ 
+-GOFLAGS=-ldflags='-X main.version=$(VERS)'
++GOFLAGS=-ldflags='-X main.version=$(VERS)' -mod=vendor
+ # The following would produce reproducible builds, but it breaks Gitlab CI.
+ #GOFLAGS=-gcflags 'all=-N -l -trimpath $(GOPATH)/src' -asmflags 'all=-trimpath $(GOPATH)/src'
+ # The following could be used for escape analysis
