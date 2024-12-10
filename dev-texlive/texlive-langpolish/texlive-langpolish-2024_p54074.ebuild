@@ -50,7 +50,7 @@ DESCRIPTION="TeXLive Polish"
 
 LICENSE="FDL-1.1+ GPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3c TeX public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2024
 	>=dev-texlive/texlive-latex-2024

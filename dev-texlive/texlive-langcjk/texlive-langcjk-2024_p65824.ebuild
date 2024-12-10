@@ -56,7 +56,7 @@ DESCRIPTION="TeXLive Chinese/Japanese/Korean (base)"
 
 LICENSE="BSD GPL-2 GPL-3 LPPL-1.3 LPPL-1.3c MIT TeX"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64"
 COMMON_DEPEND="
 	>=app-text/texlive-core-2024[cjk]
 	>=dev-texlive/texlive-basic-2024
