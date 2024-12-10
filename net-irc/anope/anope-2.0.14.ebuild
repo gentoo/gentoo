@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Anope IRC Services"
-HOMEPAGE="https://anope.org/ https://github.com/anope/anope/"
+HOMEPAGE="https://www.anope.org/ https://github.com/anope/anope/"
 SRC_URI="https://github.com/anope/anope/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
