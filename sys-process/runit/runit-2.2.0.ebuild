@@ -37,6 +37,7 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 
+	append-flags -std=gnu17  # XXX https://bugs.gentoo.org/946137, workaround for gcc15
 	echo "$(tc-getCC) ${CFLAGS}"  > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	sed -i -e "s:ar cr:$(tc-getAR) cr:" print-ar.sh || die
