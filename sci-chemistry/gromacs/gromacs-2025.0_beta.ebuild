@@ -94,7 +94,10 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}/${PN}-gcc-15.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-gcc-15.patch"
+	"${FILESDIR}/${PN}-2025.0-beta-fix-man-build.patch"
+)
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
@@ -241,7 +244,7 @@ src_configure() {
 		-DGMX_USE_HDF5=off
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
-		#-DGMX_BUILD_HELP=on
+		-DGMX_BUILD_HELP=on
 		-DGMX_SIMD="$acce"
 		-DGMX_NNPOT="$nnpot"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
@@ -286,8 +289,8 @@ src_compile() {
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake_src_compile
-		#BUILD_DIR="${WORKDIR}/${P}_${x}"\
-		#	cmake_src_compile man
+		BUILD_DIR="${WORKDIR}/${P}_${x}"\
+			cmake_src_compile man
 		if use python; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake_src_compile	python_packaging/all
