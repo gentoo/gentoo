@@ -208,7 +208,6 @@ dev-php/pecl-oauth
 dev-php/pecl-pam
 dev-php/pecl-ps
 dev-php/pecl-psr
-dev-php/pecl-raphf
 dev-php/pecl-timezonedb
 dev-php/pecl-translit
 dev-php/pecl-zmq
