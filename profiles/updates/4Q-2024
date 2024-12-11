@@ -68,3 +68,4 @@ move sys-libs/libomp llvm-runtimes/openmp
 move sys-libs/libcxxabi llvm-runtimes/libcxxabi
 move sys-libs/libcxx llvm-runtimes/libcxx
 move sys-libs/compiler-rt-sanitizers llvm-runtimes/compiler-rt-sanitizers
+move sys-libs/compiler-rt llvm-runtimes/compiler-rt

@@ -1,5 +1,5 @@
 # will be pulled by stage1
-sys-libs/compiler-rt
+llvm-runtimes/compiler-rt
 llvm-runtimes/libcxxabi
 llvm-runtimes/libcxx
 sys-devel/llvm

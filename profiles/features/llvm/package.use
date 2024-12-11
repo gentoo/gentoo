@@ -5,7 +5,7 @@ llvm-runtimes/libunwind static-libs
 sys-devel/llvm -binutils-plugin
 
 # use all defaults
-sys-libs/compiler-rt clang
+llvm-runtimes/compiler-rt clang
 
 # disable sanitizers for now
 sys-devel/clang-runtime compiler-rt libcxx -sanitize

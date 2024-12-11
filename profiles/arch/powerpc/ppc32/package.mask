@@ -16,5 +16,5 @@ sci-libs/pdal
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-02-17)
 # Not ported to ppc32. See ALL_.*_SUPPORTED_ARCH
 # in compiler-rt/cmake/. Bug #708344
-sys-libs/compiler-rt
+llvm-runtimes/compiler-rt
 llvm-runtimes/compiler-rt-sanitizers

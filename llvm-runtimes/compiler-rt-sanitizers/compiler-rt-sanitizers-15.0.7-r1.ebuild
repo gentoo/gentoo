@@ -41,7 +41,7 @@ DEPEND="
 BDEPEND="
 	clang? (
 		sys-devel/clang:${LLVM_MAJOR}
-		sys-libs/compiler-rt:${LLVM_VERSION}
+		llvm-runtimes/compiler-rt:${LLVM_VERSION}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
@@ -135,7 +135,7 @@ src_configure() {
 		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${LLVM_VERSION}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
-		# builtins & crt installed by sys-libs/compiler-rt
+		# builtins & crt installed by llvm-runtimes/compiler-rt
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
 		-DCOMPILER_RT_BUILD_CRT=OFF
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)

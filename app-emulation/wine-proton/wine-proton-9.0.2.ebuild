@@ -102,7 +102,7 @@ DEPEND="
 	${WINE_COMMON_DEPEND}
 	|| (
 		sys-devel/gcc:*
-		sys-libs/compiler-rt:*[atomic-builtins(-)]
+		llvm-runtimes/compiler-rt:*[atomic-builtins(-)]
 	)
 	sys-kernel/linux-headers
 	x11-base/xorg-proto
@@ -183,7 +183,7 @@ src_prepare() {
 		# than do LLVM_SLOT it may(?) be better to force atomic-builtins
 		# then could drop this altogether in the future
 		if [[ $(tc-get-c-rtlib) == compiler-rt ]] &&
-			has_version 'sys-libs/compiler-rt[-atomic-builtins(-)]'
+			has_version 'llvm-runtimes/compiler-rt[-atomic-builtins(-)]'
 		then
 			# needed by Valve's fsync patches if using compiler-rt w/o atomics
 			sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \

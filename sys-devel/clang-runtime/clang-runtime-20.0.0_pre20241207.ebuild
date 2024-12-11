@@ -15,7 +15,7 @@ REQUIRED_USE="sanitize? ( compiler-rt )"
 
 RDEPEND="
 	compiler-rt? (
-		~sys-libs/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
+		~llvm-runtimes/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
 		sanitize? (
 			~llvm-runtimes/compiler-rt-sanitizers-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
 		)
