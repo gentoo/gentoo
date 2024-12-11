@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/scummvm/scummvm"
 else
 	SRC_URI="https://downloads.scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 	S=${WORKDIR}/${P/_/}
 fi
 
