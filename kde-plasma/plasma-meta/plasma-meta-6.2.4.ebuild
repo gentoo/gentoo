@@ -131,10 +131,10 @@ pkg_postinst() {
 	if [[ $(tc-get-cxx-stdlib) == "libc++" ]] ; then
 		# Workaround for bug #923292 (KDE-bug 479679)
 		ewarn "plasmashell and other KDE Plasma components are known to misbehave"
-		ewarn "when built with sys-libs/libcxx, e.g. crashing when right-clicking"
+		ewarn "when built with llvm-runtimes/libcxx, e.g. crashing when right-clicking"
 		ewarn "on a panel. See bug #923292."
 		ewarn ""
-		ewarn "A possible (no warranty!) workaround is building sys-libs/libcxx and"
+		ewarn "A possible (no warranty!) workaround is building llvm-runtimes/libcxx and"
 		ewarn "llvm-runtimes/libcxxabi with the following in package.env:"
 		ewarn " MYCMAKEARGS=\"-DLIBCXX_TYPEINFO_COMPARISON_IMPLEMENTATION=2\""
 		ewarn "You may then need to rebuild dev-qt/* and kde-*/*."

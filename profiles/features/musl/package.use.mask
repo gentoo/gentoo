@@ -16,7 +16,7 @@ gui-libs/neatvnc tracing
 gui-apps/wayvnc tracing
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
-# Requires sys-libs/libcxx.
+# Requires llvm-runtimes/libcxx.
 dev-cpp/benchmark libcxx
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-07-25)

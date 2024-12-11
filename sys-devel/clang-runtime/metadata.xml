@@ -6,7 +6,7 @@
 	</maintainer>
 	<use>
 		<flag name="compiler-rt">Install <pkg>sys-libs/compiler-rt</pkg> for -rtlib=compiler-rt</flag>
-		<flag name="libcxx">Install <pkg>sys-libs/libcxx</pkg> for -stdlib=libc++</flag>
+		<flag name="libcxx">Install <pkg>llvm-runtimes/libcxx</pkg> for -stdlib=libc++</flag>
 		<flag name="offload">Install <pkg>llvm-runtimes/offload</pkg> for -fopenmp GPU offloading</flag>
 		<flag name="openmp">Install <pkg>llvm-runtimes/openmp</pkg> for -fopenmp support</flag>
 		<flag name="sanitize">Enable compiler-rt sanitizer (-fsanitize*) support</flag>

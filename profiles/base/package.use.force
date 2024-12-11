@@ -217,7 +217,7 @@ net-misc/wget ssl
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # libcxxabi is the only supported option.  The support for libsupc++
 # is maintained for experts only.
-sys-libs/libcxx libcxxabi
+llvm-runtimes/libcxx libcxxabi
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-08-17)
 # USE=-cxx us a sure way to break native install as modern gcc

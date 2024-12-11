@@ -1242,7 +1242,7 @@ gen_usr_ldscript() {
 # If the library is identified, the function returns 0 and prints one
 # of the following:
 #
-# - ``libc++`` for ``sys-libs/libcxx``
+# - ``libc++`` for ``llvm-runtimes/libcxx``
 # - ``libstdc++`` for ``sys-devel/gcc``'s libstdc++
 #
 # If the library is not recognized, the function returns 1.

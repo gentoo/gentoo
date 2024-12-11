@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="tools? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
-	libcxx? ( sys-libs/libcxx[${MULTILIB_USEDEP}] )
+	libcxx? ( llvm-runtimes/libcxx[${MULTILIB_USEDEP}] )
 	libpfm? ( dev-libs/libpfm:= )
 "
 

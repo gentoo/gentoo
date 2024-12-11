@@ -66,3 +66,4 @@ move dev-libs/libclc llvm-core/libclc
 move sys-libs/llvm-libunwind llvm-runtimes/libunwind
 move sys-libs/libomp llvm-runtimes/openmp
 move sys-libs/libcxxabi llvm-runtimes/libcxxabi
+move sys-libs/libcxx llvm-runtimes/libcxx

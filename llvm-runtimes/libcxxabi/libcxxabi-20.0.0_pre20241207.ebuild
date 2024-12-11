@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 # in 15.x, cxxabi.h is moving from libcxx to libcxxabi
 RDEPEND+="
-	!<sys-libs/libcxx-15
+	!<llvm-runtimes/libcxx-15
 "
 DEPEND="
 	${RDEPEND}

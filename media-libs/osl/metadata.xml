@@ -16,7 +16,7 @@
 	</longdescription>
 	<use>
 		<flag name="gui">Build the osltoy binary (with Qt5)</flag>
-		<flag name="libcxx">Build against <pkg>sys-libs/libcxx</pkg> when using clang</flag>
+		<flag name="libcxx">Build against <pkg>llvm-runtimes/libcxx</pkg> when using clang</flag>
 		<flag name="nofma">Do not use Fuse-Multiply-Add operations</flag>
 		<flag name="optix">Add support for NVIDIA's OptiX Raytracing Engine</flag>
 		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>

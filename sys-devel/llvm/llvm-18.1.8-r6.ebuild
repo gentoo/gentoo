@@ -49,7 +49,7 @@ BDEPEND="
 	dev-lang/perl
 	sys-devel/gnuconfig
 	kernel_Darwin? (
-		<sys-libs/libcxx-${LLVM_VERSION}.9999
+		<llvm-runtimes/libcxx-${LLVM_VERSION}.9999
 	)
 	libffi? ( virtual/pkgconfig )
 "

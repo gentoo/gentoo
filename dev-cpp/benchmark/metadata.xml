@@ -11,13 +11,13 @@
 	</maintainer>
 	<use>
 		<flag name="exceptions">Enable the use of exceptions in the benchmark library</flag>
-		<flag name="libcxx">Use <pkg>sys-libs/libcxx</pkg> instead of libstdc++ as the default stdlib</flag>
+		<flag name="libcxx">Use <pkg>llvm-runtimes/libcxx</pkg> instead of libstdc++ as the default stdlib</flag>
 		<flag name="libpfm">Enable <pkg>dev-libs/libpfm</pkg> support</flag>
 		<flag name="tools">Install some additional Python tools</flag>
 	</use>
 	<use lang="fr">
 		<flag name="exceptions">Utiliser les exceptions inclues dans la bibliothèque</flag>
-		<flag name="libcxx">Utiliser <pkg>sys-libs/libcxx</pkg> à la place de libstdc++ comme bibliothèque standard</flag>
+		<flag name="libcxx">Utiliser <pkg>llvm-runtimes/libcxx</pkg> à la place de libstdc++ comme bibliothèque standard</flag>
 		<flag name="libpfm">Activer le support de <pkg>dev-libs/libpfm</pkg></flag>
 		<flag name="tools">Installer des outils Python additionnels</flag>
 	</use>

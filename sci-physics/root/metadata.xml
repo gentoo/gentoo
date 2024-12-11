@@ -31,7 +31,7 @@
     <flag name="gdml">Enable GDML writer and reader</flag>
     <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
     <flag name="jupyter">Install dependencies to enable ROOT's C++ kernel in Jupyter notebooks</flag>
-    <flag name="libcxx">Build ROOT against <pkg>sys-libs/libcxx</pkg></flag>
+    <flag name="libcxx">Build ROOT against <pkg>llvm-runtimes/libcxx</pkg></flag>
     <flag name="minuit">Build ROOT's internal versions of minuit (fortran) and minuit2 (C++)</flag>
     <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>
     <flag name="pythia8">Build the interface for <pkg>sci-physics/pythia</pkg> version 8.x </flag>
