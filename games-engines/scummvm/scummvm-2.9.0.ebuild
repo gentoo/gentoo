@@ -21,8 +21,8 @@ LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
 IUSE="
 	a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2
-	mp3 musepack +net opengl png sndio speech theora truetype unsupported
-	vorbis vpx zlib
+	mp3 musepack +net opengl png readline sndio speech theora truetype
+	unsupported vorbis vpx zlib
 "
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -54,6 +54,7 @@ DEPEND="
 		)
 	)
 	png? ( media-libs/libpng:0 )
+	readline? ( sys-libs/readline:= )
 	sndio? ( media-sound/sndio:= )
 	speech? ( app-accessibility/speech-dispatcher )
 	truetype? ( media-libs/freetype:2 )
@@ -118,6 +119,7 @@ src_configure() {
 		$(use_enable net libcurl)
 		$(use_enable net sdlnet)
 		$(use_enable png)
+		$(use_enable readline)
 		$(use_enable sndio)
 		$(use_enable speech tts)
 		--enable-text-console
