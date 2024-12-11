@@ -226,7 +226,7 @@ src_install() {
 
 src_test() {
 	# skip test which needs internet
-	virtx MAKEOPTS=-j1 cmake_src_test -E metainfo_test --output-on-failure
+	virtx cmake_src_test -E metainfo_test --output-on-failure
 }
 
 pkg_postinst() {
