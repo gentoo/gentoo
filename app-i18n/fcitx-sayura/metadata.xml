@@ -14,6 +14,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">fcitx/fcitx-sayura</remote-id>
+		<remote-id type="github">fcitx/fcitx5-sayura</remote-id>
 	</upstream>
 </pkgmetadata>
