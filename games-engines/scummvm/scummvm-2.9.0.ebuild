@@ -21,8 +21,8 @@ LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
 IUSE="
 	a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2
-	mp3 +net opengl png sndio speech theora truetype unsupported vorbis
-	zlib
+	mp3 musepack +net opengl png sndio speech theora truetype unsupported
+	vorbis zlib
 "
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -42,6 +42,7 @@ DEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	mp3? ( media-libs/libmad )
 	mpeg2? ( media-libs/libmpeg2 )
+	musepack? ( media-sound/musepack-tools:= )
 	net? (
 		media-libs/sdl2-net
 		net-misc/curl
@@ -112,6 +113,7 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable mp3 mad)
 		$(use_enable mpeg2)
+		$(use_enable musepack mpcdec)
 		$(use_enable net libcurl)
 		$(use_enable net sdlnet)
 		$(use_enable png)
