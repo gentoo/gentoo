@@ -1,9 +1,9 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs
 
@@ -25,7 +25,7 @@ BDEPEND="
 DEPEND="||
 	(
 		>="${CATEGORY}"/gcc-4.7:*
-		>="${CATEGORY}"/clang-3.5:*
+		>="${CATEGORY/sys-devel/llvm-core}"/clang-3.5:*
 	)
 "
 
