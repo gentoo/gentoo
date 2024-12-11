@@ -28,7 +28,6 @@
 	<flag name="qrcode">Enable generating QRCodes for server URL via <pkg>media-gfx/qrencode</pkg></flag>
 	<flag name="trayicon">Enable system tray icon</flag>
 	<flag name="server">Build server-side code</flag>
-	<flag name="vpx">Enable vpx image format support</flag>
 	<flag name="webcam">Enable webcam support via opencv</flag>
 	<flag name="xdg">Enable support for XDG-based menus</flag>
 </use>

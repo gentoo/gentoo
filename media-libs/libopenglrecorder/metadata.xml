@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
-		<flag name="vpx">Enable VP8/VP9 codec support via <pkg>media-libs/libvpx</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Benau/libopenglrecorder</remote-id>

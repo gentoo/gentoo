@@ -49,7 +49,6 @@
 		<flag name="tremor">Enable tremor, a fixed-point version of the Ogg Vorbis decoder</flag>
 		<flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)</flag>
 		<flag name="upnp">Enable support for the Intel SDK stack based UPnP discovery module instead of CyberLink</flag>
-		<flag name="vpx">Enable the decoder(s) from the WebM VP8 / VP9 Codec SDK</flag>
 		<flag name="X">Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface</flag>
 		<flag name="x265">Support X265 Encoder</flag>
 		<flag name="zeroconf">Enable support for zero-configuration networking via avahi</flag>

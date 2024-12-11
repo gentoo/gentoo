@@ -27,7 +27,6 @@
 		<flag name="tools">Install the support tools for mapster32.</flag>
 		<flag name="voidsw">Enable support for Shadow Warrior (Classic) through VoidSW.</flag>
 		<flag name="voxels">Install the Duke Nukem 3D Voxels Pack.</flag>
-		<flag name="vpx">Enable support for <pkg>media-libs/libvpx</pkg>.</flag>
 		<flag name="xmp">Enable support for <pkg>media-libs/exempi</pkg>.</flag>
 	</use>
 </pkgmetadata>

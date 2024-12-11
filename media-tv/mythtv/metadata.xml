@@ -26,7 +26,6 @@
 		<flag name="nvdec">Enable NVDEC (NVCUVID) hardware accelerated video decoding</flag>
 		<flag name="perl">Build the perl bindings for MythTV</flag>
 		<flag name="vbox">V@Box Communications network-attached tuner devices support</flag>
-		<flag name="vpx">Enable VP8/VP9 support for <pkg>media-libs/libvpx</pkg></flag>
 		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper</flag>
 		<flag name="x265">Enable h265 encoding using x265</flag>
 		<flag name="xmltv">Support <pkg>media-tv/xmltv</pkg> TV listing - not used by Schedules Direct]</flag>

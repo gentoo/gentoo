@@ -12,7 +12,6 @@
     <flag name="fdk">Adds support for encoding AAC using <pkg>media-libs/fdk-aac</pkg>.</flag>
     <flag name="fribidi">Enable unicode bidirectional algorithm support via <pkg>dev-libs/fribidi</pkg>.</flag>
     <flag name="twolame">Enable TwoLAME support via <pkg>media-sound/twolame</pkg>, an optimised MPEG Audio Layer 2 (MP2) encoder.</flag>
-    <flag name="vpx">Enable WebM VP8 Codec SDK support via <pkg>media-libs/libvpx</pkg>.</flag>
     <flag name="x265">Enables HEVC support with <pkg>media-libs/x265</pkg>.</flag>
   </use>
   <upstream>

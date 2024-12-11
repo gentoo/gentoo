@@ -15,7 +15,5 @@ since gstreamer plugins are all run-time dependencies.
 	<flag name="http">Enable http streaming via <pkg>net-libs/libsoup</pkg></flag>
 	<flag name="libvisual">Enable visualization effects via 
 		<pkg>media-libs/libvisual</pkg></flag>
-	<flag name="vpx">Enables vp8 codec support using libvpx, required to
-		play some HTML5 videos</flag>
 </use>
 </pkgmetadata>
