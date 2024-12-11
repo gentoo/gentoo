@@ -156,6 +156,8 @@ qt6-build_src_configure() {
 		# cmake defaults to "STATUS" but Qt changes that to "NOTICE" which
 		# hides a lot of information that is useful for bug reports
 		--log-level=STATUS
+		# ...but dev messages are noisy and not really useful downstream
+		-Wno-dev
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
 		# note that if qtbase was built with tests, this is default ON
