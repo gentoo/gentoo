@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to enable unprivileged run support</flag>
-		<flag name="clang">Use <pkg>sys-devel/clang</pkg> instead of <pkg>sys-devel/bpf-toolchain</pkg> for BPF CO-RE support</flag>
+		<flag name="clang">Use <pkg>llvm-core/clang</pkg> instead of <pkg>sys-devel/bpf-toolchain</pkg> for BPF CO-RE support</flag>
 		<flag name="llvm">Use <pkg>sys-devel/llvm</pkg> instead of libbfd (<pkg>sys-libs/binutils-libs</pkg>) for JIT disassembly</flag>
 	</use>
 	<upstream>

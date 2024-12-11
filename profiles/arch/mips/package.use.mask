@@ -341,7 +341,7 @@ dev-qt/qtchooser test
 dev-python/numpydoc test
 
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
-# sys-devel/clang is not keyworded
+# llvm-core/clang is not keyworded
 app-text/doxygen clang
 
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)

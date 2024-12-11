@@ -82,7 +82,7 @@ dev-lang/php capstone
 x11-base/xwayland libei
 
 # James Le Cuirot (2023-12-12)
-# USE=bpf depends on sys-devel/clang which is not keyworded on hppa
+# USE=bpf depends on llvm-core/clang which is not keyworded on hppa
 media-libs/libv4l bpf
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)

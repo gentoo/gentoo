@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):="
+RDEPEND="<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):="
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
@@ -28,7 +28,7 @@ PATCHES=(
 )
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}" && has_version "sys-devel/llvm:${LLVM_SLOT}"
+	has_version "llvm-core/clang:${LLVM_SLOT}" && has_version "sys-devel/llvm:${LLVM_SLOT}"
 }
 
 pkg_setup() {

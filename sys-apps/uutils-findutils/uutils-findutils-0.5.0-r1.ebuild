@@ -164,7 +164,7 @@ RDEPEND=">=dev-libs/oniguruma-6.9.9:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 	')
 "
 

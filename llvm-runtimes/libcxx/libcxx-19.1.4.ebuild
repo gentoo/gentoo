@@ -29,7 +29,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		sys-devel/clang:${LLVM_MAJOR}
+		llvm-core/clang:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}

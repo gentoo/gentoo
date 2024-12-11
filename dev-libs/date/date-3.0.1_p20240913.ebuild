@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="only-c-locale test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( sys-devel/clang )" # tests call clang++
+BDEPEND="test? ( llvm-core/clang )" # tests call clang++
 
 PATCHES=(
 	"$FILESDIR"/${PN}-3.0.1_p20240913_remove-failing-tests.patch

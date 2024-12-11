@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 inherit llvm.org python-r1
 
-DESCRIPTION="Python bindings for sys-devel/clang"
+DESCRIPTION="Python bindings for llvm-core/clang"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
@@ -19,9 +19,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
 DEPEND="
-	>=sys-devel/clang-${PV}:*
+	>=llvm-core/clang-${PV}:*
 	!sys-devel/llvm:0[clang(-),python(-)]
-	!sys-devel/clang:0[python(-)]
+	!llvm-core/clang:0[python(-)]
 "
 RDEPEND="
 	${DEPEND}
@@ -30,7 +30,7 @@ RDEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	test? (
-		sys-devel/clang:${LLVM_MAJOR}
+		llvm-core/clang:${LLVM_MAJOR}
 	)
 "
 

@@ -38,7 +38,7 @@ sys-boot/grub:2 grub_platforms_efi-64 grub_platforms_pc
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the GPU targets matching the default VIDEO_CARDS
 dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX
-sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 
 # Doug Goldstein <cardoe@gentoo.org> (2012-10-29)

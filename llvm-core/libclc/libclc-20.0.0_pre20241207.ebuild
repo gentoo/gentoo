@@ -17,7 +17,7 @@ IUSE="+spirv video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 BDEPEND="
 	${PYTHON_DEPS}
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 		spirv? ( dev-util/spirv-llvm-translator:${LLVM_SLOT} )
 	')
 "

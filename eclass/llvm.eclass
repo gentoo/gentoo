@@ -49,12 +49,12 @@
 # # note: do not use := on both clang and llvm, it can match different
 # # slots then. clang pulls llvm in, so we can skip the latter.
 # RDEPEND="
-#	>=sys-devel/clang-9:=[llvm_targets_AMDGPU(+)]
+#	>=llvm-core/clang-9:=[llvm_targets_AMDGPU(+)]
 # "
 # DEPEND=${RDEPEND}
 #
 # llvm_check_deps() {
-#	has_version -d "sys-devel/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]"
+#	has_version -d "llvm-core/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]"
 # }
 # @CODE
 

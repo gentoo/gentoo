@@ -62,7 +62,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/sonnet-${KFMIN}:6
 	>=kde-frameworks/threadweaver-${KFMIN}:6
-	$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}')
+	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}')
 	gdbui? ( kde-plasma/libksysguard:6= )
 	plasma? (
 		>=kde-frameworks/krunner-${KFMIN}:6

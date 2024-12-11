@@ -57,7 +57,7 @@ BDEPEND="
 	dev-util/cbindgen
 	>=sys-devel/binutils-2.16.1
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
 		sys-devel/llvm:${LLVM_SLOT}=
 	 ')
 	virtual/pkgconfig

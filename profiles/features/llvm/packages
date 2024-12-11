@@ -1,7 +1,7 @@
 # now part of @system set
 *sys-devel/lld
 *sys-devel/llvm
-*sys-devel/clang
+*llvm-core/clang
 *llvm-runtimes/libcxx
 *llvm-runtimes/libcxxabi
 *llvm-runtimes/compiler-rt

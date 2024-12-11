@@ -83,7 +83,7 @@ RDEPEND="
 "
 # clang needed by bindgen
 BDEPEND="
-	sys-devel/clang
+	llvm-core/clang
 "
 
 # Rust

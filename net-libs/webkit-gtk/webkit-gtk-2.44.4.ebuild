@@ -100,7 +100,7 @@ BDEPEND="
 	>=dev-util/gperf-3.0.1
 	dev-util/unifdef
 	>=sys-devel/bison-2.4.3
-	|| ( >=sys-devel/gcc-7.3 >=sys-devel/clang-5 )
+	|| ( >=sys-devel/gcc-7.3 >=llvm-core/clang-5 )
 	sys-devel/gettext
 	virtual/pkgconfig
 

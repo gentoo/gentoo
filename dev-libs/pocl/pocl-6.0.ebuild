@@ -21,11 +21,11 @@ RESTRICT="!test? ( test ) test"
 CLANG_DEPS="
 	$(llvm_gen_dep '
 		!cuda? (
-			sys-devel/clang:${LLVM_SLOT}=
+			llvm-core/clang:${LLVM_SLOT}=
 			sys-devel/llvm:${LLVM_SLOT}=
 		)
 		cuda? (
-			sys-devel/clang:${LLVM_SLOT}=[llvm_targets_NVPTX]
+			llvm-core/clang:${LLVM_SLOT}=[llvm_targets_NVPTX]
 			sys-devel/llvm:${LLVM_SLOT}=[llvm_targets_NVPTX]
 		)
 	')

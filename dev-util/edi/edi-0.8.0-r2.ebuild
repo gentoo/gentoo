@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	>=dev-libs/efl-1.22.0[eet]
 	clang? (
 		dev-util/bear
-		sys-devel/clang:=
+		llvm-core/clang:=
 	)"
 DEPEND="${RDEPEND}
 	dev-libs/check"
@@ -30,7 +30,7 @@ BDEPEND="virtual/libintl
 PATCHES=( "${FILESDIR}"/edi-0.8.0-meson-0.61.1-fix.patch )
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
+	has_version "llvm-core/clang:${LLVM_SLOT}"
 }
 
 pkg_setup() {

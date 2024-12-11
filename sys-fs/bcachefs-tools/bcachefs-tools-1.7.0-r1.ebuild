@@ -141,7 +141,7 @@ BDEPEND="
 	')
 	$(unpacker_src_uri_depends)
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 	')
 	virtual/pkgconfig
 "

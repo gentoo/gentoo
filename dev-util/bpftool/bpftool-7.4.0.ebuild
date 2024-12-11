@@ -59,7 +59,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-arch/tar
 	dev-python/docutils
-	$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}[llvm_targets_BPF]')
+	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}[llvm_targets_BPF]')
 "
 
 CONFIG_CHECK="~DEBUG_INFO_BTF"

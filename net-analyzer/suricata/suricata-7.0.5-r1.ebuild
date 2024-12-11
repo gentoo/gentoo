@@ -202,7 +202,7 @@ pkg_postinst() {
 
 	if use bpf; then
 		elog
-		elog "eBPF/XDP files must be compiled (using sys-devel/clang[llvm_targets_BPF]) before use"
+		elog "eBPF/XDP files must be compiled (using llvm-core/clang[llvm_targets_BPF]) before use"
 		elog "because their configuration is hard-coded. You can find the default ones in"
 		elog "    ${EPREFIX}/usr/share/doc/${PF}/ebpf"
 		elog "and the common location for eBPF bytecode is"

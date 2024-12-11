@@ -37,7 +37,7 @@ RESTRICT="!test? ( test )"
 # clang needed for bindgen
 BDEPEND+="
 	dev-util/cargo-c
-	sys-devel/clang
+	llvm-core/clang
 "
 
 QA_FLAGS_IGNORED="usr/lib.*/libpkgcraft.so.*"

@@ -36,7 +36,7 @@ RDEPEND="
 	sys-kernel/linux-headers
 	sys-libs/ncurses:=[tinfo]
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
 		sys-devel/llvm:${LLVM_SLOT}=
 	')
 	lzma? ( || (

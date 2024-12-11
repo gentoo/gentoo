@@ -25,7 +25,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-devel/clang
+	llvm-core/clang
 	sys-devel/llvm
 	virtual/pkgconfig
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2022-06-18)
@@ -9,5 +9,5 @@ sys-auth/polkit duktape
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_SystemZ
 dev-lang/rust llvm_targets_SystemZ
-sys-devel/clang llvm_targets_SystemZ
+llvm-core/clang llvm_targets_SystemZ
 sys-devel/llvm llvm_targets_SystemZ

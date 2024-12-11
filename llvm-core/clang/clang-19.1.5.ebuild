@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake llvm llvm.org multilib multilib-minimal
+inherit cmake llvm.org llvm-utils multilib multilib-minimal
 inherit prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -16,7 +16,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~x64-macos"
 IUSE="debug doc +extra ieee-long-double +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -34,10 +34,7 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( $(python_gen_cond_dep '
-		dev-python/recommonmark[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	') )
+	test? ( ~sys-devel/lld-${PV} )
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
@@ -47,15 +44,22 @@ PDEPEND="
 
 LLVM_COMPONENTS=(
 	clang clang-tools-extra cmake
-	llvm/lib/Transforms/Hello
 )
 LLVM_MANPAGES=1
-LLVM_PATCHSET=${PV}-r1
 LLVM_TEST_COMPONENTS=(
 	llvm/utils
 )
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
+
+[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" doc? ( "
+BDEPEND+="
+	$(python_gen_cond_dep '
+		dev-python/myst-parser[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	')
+"
+[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" ) "
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
@@ -65,13 +69,8 @@ llvm.org_set_globals
 # 3. ${CHOST}-clang wrappers are always installed for all ABIs included
 #    in the current profile (i.e. alike supported by sys-devel/gcc).
 #
-# Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
+# Therefore: use llvm-core/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	# create extra parent dir for relative CLANG_RESOURCE_DIR access
@@ -194,7 +193,9 @@ get_distribution_components() {
 			c-index-test
 			clang
 			clang-format
+			clang-installapi
 			clang-linker-wrapper
+			clang-nvlink-wrapper
 			clang-offload-bundler
 			clang-offload-packager
 			clang-refactor
@@ -253,6 +254,8 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
@@ -275,12 +278,6 @@ multilib_src_configure() {
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
-
-		# disable using CUDA to autodetect GPU, just build for all
-		-DCMAKE_DISABLE_FIND_PACKAGE_CUDAToolkit=ON
-		# disable linking to HSA to avoid automagic dep,
-		# load it dynamically instead
-		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
 
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
 
@@ -334,15 +331,9 @@ multilib_src_configure() {
 		)
 	fi
 
-	if [[ -n ${EPREFIX} ]]; then
-		mycmakeargs+=(
-			-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
-		)
-	fi
-
 	if tc-is-cross-compiler; then
-		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
-			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
+		has_version -b llvm-core/clang:${LLVM_MAJOR} ||
+			die "llvm-core/clang:${LLVM_MAJOR} is required on the build host."
 		local tools_bin=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin
 		mycmakeargs+=(
 			-DLLVM_TOOLS_BINARY_DIR="${tools_bin}"

@@ -106,7 +106,7 @@ BDEPEND="
 	sys-devel/gettext
 	sys-devel/mold
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
 		sys-devel/llvm:${LLVM_SLOT}=
 	')
 "

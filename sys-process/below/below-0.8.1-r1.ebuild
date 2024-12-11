@@ -313,7 +313,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64"
 
 BDEPEND="
-	sys-devel/clang
+	llvm-core/clang
 	virtual/pkgconfig
 "
 RDEPEND="

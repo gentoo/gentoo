@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ S=${WORKDIR}/Csu-${PV}
 # for now it seems FSF GCC can't compile this thing, so we need
 # gcc-apple or clang (which is also sort of "-apple")
 DEPEND="|| (
-		sys-devel/clang
+		llvm-core/clang
 		=sys-devel/gcc-apple-4.2.1*
 	)"
 

@@ -284,7 +284,7 @@ RDEPEND="${DEPEND}"
 # Clang is required for bindgen
 BDEPEND="
 	virtual/pkgconfig
-	nettle? ( $(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}') )
+	nettle? ( $(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}') )
 "
 
 QA_FLAGS_IGNORED="usr/lib.*/librpm_sequoia.so.1"

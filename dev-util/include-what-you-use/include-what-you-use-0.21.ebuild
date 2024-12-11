@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm64 ~x86"
 LLVM_MAX_SLOT=17
 
 RDEPEND="
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	llvm-core/clang:${LLVM_MAX_SLOT}
 	sys-devel/llvm:${LLVM_MAX_SLOT}
 	${PYTHON_DEPS}
 "
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
+	has_version "llvm-core/clang:${LLVM_SLOT}"
 }
 
 pkg_setup() {
@@ -56,7 +56,7 @@ src_configure() {
 }
 
 src_test() {
-	local clang_version=$(best_version sys-devel/clang:${LLVM_MAX_SLOT})
+	local clang_version=$(best_version llvm-core/clang:${LLVM_MAX_SLOT})
 	clang_version=${clang_version#*/*-} # reduce it to ${PV}-${PR}
 	clang_version=${clang_version%%[_-]*} # main version without beta/pre/patch/revision
 

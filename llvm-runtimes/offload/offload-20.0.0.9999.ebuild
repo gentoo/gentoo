@@ -26,22 +26,22 @@ DEPEND="
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
-# - sys-devel/clang provides the compiler to run tests
+# - llvm-core/clang provides the compiler to run tests
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
-	llvm_targets_AMDGPU? ( sys-devel/clang )
-	llvm_targets_NVPTX? ( sys-devel/clang )
+	llvm_targets_AMDGPU? ( llvm-core/clang )
+	llvm_targets_NVPTX? ( llvm-core/clang )
 	test? (
 		$(python_gen_any_dep '
 			dev-python/lit[${PYTHON_USEDEP}]
 		')
-		sys-devel/clang
+		llvm-core/clang
 	)
 "
 # TODO: can it be fixed to compile with gcc?
 BDEPEND+="
-	sys-devel/clang
+	llvm-core/clang
 "
 
 LLVM_COMPONENTS=( offload cmake runtimes/cmake libc/shared )

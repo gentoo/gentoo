@@ -3,10 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-
-inherit cmake llvm.org llvm-utils multilib multilib-minimal
-inherit prefix python-single-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{10..12} )
+inherit cmake llvm llvm.org multilib multilib-minimal \
+	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -15,15 +14,14 @@ HOMEPAGE="https://llvm.org/"
 # sorttable.js: MIT
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
-SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~x64-macos"
+SLOT="${LLVM_MAJOR}/${LLVM_SOABI}g1"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x64-macos"
 IUSE="debug doc +extra ieee-long-double +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	~sys-devel/llvm-${PV}:${LLVM_MAJOR}=[debug=,${MULTILIB_USEDEP}]
-	>=sys-devel/llvm-${PV}-r6:${LLVM_MAJOR}=[debug=,${MULTILIB_USEDEP}]
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 "
@@ -35,12 +33,15 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	test? ( ~sys-devel/lld-${PV} )
+	doc? ( $(python_gen_cond_dep '
+		dev-python/recommonmark[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	') )
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
-	~llvm-core/clang-runtime-${PV}
 	llvm-core/clang-toolchain-symlinks:${LLVM_MAJOR}
+	~llvm-core/clang-runtime-${PV}
 "
 
 LLVM_COMPONENTS=(
@@ -48,21 +49,14 @@ LLVM_COMPONENTS=(
 	llvm/lib/Transforms/Hello
 )
 LLVM_MANPAGES=1
-LLVM_PATCHSET=${PV}-r6
 LLVM_TEST_COMPONENTS=(
-	llvm/utils
+	llvm/lib/Testing/Support
+	llvm/utils/{lit,llvm-lit,unittest}
+	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
+LLVM_PATCHSET=${PV/_/-}-r3
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
-
-[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" doc? ( "
-BDEPEND+="
-	$(python_gen_cond_dep '
-		dev-python/myst-parser[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	')
-"
-[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" ) "
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
@@ -72,8 +66,13 @@ BDEPEND+="
 # 3. ${CHOST}-clang wrappers are always installed for all ABIs included
 #    in the current profile (i.e. alike supported by sys-devel/gcc).
 #
-# Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
+# Therefore: use llvm-core/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
+
+pkg_setup() {
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
+	python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	# create extra parent dir for relative CLANG_RESOURCE_DIR access
@@ -192,20 +191,18 @@ get_distribution_components() {
 			libclang-python-bindings
 
 			# tools
-			amdgpu-arch
 			c-index-test
 			clang
 			clang-format
-			clang-linker-wrapper
 			clang-offload-bundler
 			clang-offload-packager
+			clang-offload-wrapper
 			clang-refactor
 			clang-repl
 			clang-rename
 			clang-scan-deps
 			diagtool
 			hmaptool
-			nvptx-arch
 
 			# needed for cross-compiling Clang
 			clang-tblgen
@@ -217,7 +214,6 @@ get_distribution_components() {
 				clang-apply-replacements
 				clang-change-namespace
 				clang-doc
-				clang-include-cleaner
 				clang-include-fixer
 				clang-move
 				clang-pseudo
@@ -255,43 +251,37 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
 		# relative to bindir
-		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${LLVM_MAJOR}"
+		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${LLVM_VERSION}"
 
 		-DBUILD_SHARED_LIBS=OFF
 		-DCLANG_LINK_CLANG_DYLIB=ON
 		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
-		-DCLANG_INCLUDE_TESTS=$(usex test)
 
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 
+		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
 
 		# disable using CUDA to autodetect GPU, just build for all
-		-DCMAKE_DISABLE_FIND_PACKAGE_CUDAToolkit=ON
-		# disable linking to HSA to avoid automagic dep,
-		# load it dynamically instead
-		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
 
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
 
-		-DCLANG_ENABLE_LIBXML2=$(usex xml)
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
-		# TODO: CLANG_ENABLE_HLSL?
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
@@ -303,7 +293,8 @@ multilib_src_configure() {
 	fi
 
 	use test && mycmakeargs+=(
-		-DLLVM_BUILD_TESTS=ON
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLLVM_EXTERNAL_LIT="${BUILD_DIR}/bin/llvm-lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 
@@ -345,8 +336,8 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
-			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
+		has_version -b llvm-core/clang:${LLVM_MAJOR} ||
+			die "llvm-core/clang:${LLVM_MAJOR} is required on the build host."
 		local tools_bin=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin
 		mycmakeargs+=(
 			-DLLVM_TOOLS_BINARY_DIR="${tools_bin}"
@@ -367,6 +358,12 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake_build distribution
+
+	# provide a symlink for tests
+	if [[ ! -L ${WORKDIR}/lib/clang ]]; then
+		mkdir -p "${WORKDIR}"/lib || die
+		ln -s "${BUILD_DIR}/$(get_libdir)/clang" "${WORKDIR}"/lib/clang || die
+	fi
 }
 
 multilib_src_test() {
@@ -431,11 +428,18 @@ src_install() {
 multilib_src_install() {
 	DESTDIR=${D} cmake_build install-distribution
 
+	if multilib_is_native_abi; then
+		# install clang-*-wrapper tools
+		# https://bugs.gentoo.org/904143
+		exeinto "/usr/lib/llvm/${LLVM_MAJOR}/bin"
+		doexe "${BUILD_DIR}"/bin/clang-{linker,nvlink}-wrapper
+	fi
+
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)
 	rm -rf "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include "${ED}"/usr/include || die
-	mv "${ED}"/usr/lib/clang "${ED}"/usr/include/clangrt || die
+	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/clang "${ED}"/usr/include/clangrt || die
 	if multilib_native_use extra; then
 		# don't wrap clang-tidy headers, the list is too long
 		# (they're fine for non-native ABI but enabling the targets is problematic)

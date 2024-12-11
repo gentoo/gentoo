@@ -16,8 +16,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~x64-macos"
-IUSE="debug doc +extra ieee-long-double +pie +static-analyzer test xml"
+IUSE="+debug doc +extra ieee-long-double +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -69,7 +68,7 @@ BDEPEND+="
 # 3. ${CHOST}-clang wrappers are always installed for all ABIs included
 #    in the current profile (i.e. alike supported by sys-devel/gcc).
 #
-# Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
+# Therefore: use llvm-core/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
 src_prepare() {
@@ -138,9 +137,10 @@ check_distribution_components() {
 		done
 
 		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
-			eqawarn "get_distribution_components() is outdated!"
-			eqawarn "   Add: ${add[*]}"
-			eqawarn "Remove: ${remove[*]}"
+			eerror "get_distribution_components() is outdated!"
+			eerror "   Add: ${add[*]}"
+			eerror "Remove: ${remove[*]}"
+			die "Update get_distribution_components()!"
 		fi
 		cd - >/dev/null || die
 	fi
@@ -200,8 +200,8 @@ get_distribution_components() {
 			clang-offload-packager
 			clang-refactor
 			clang-repl
-			clang-rename
 			clang-scan-deps
+			clang-sycl-linker
 			diagtool
 			hmaptool
 			nvptx-arch
@@ -219,7 +219,6 @@ get_distribution_components() {
 				clang-include-cleaner
 				clang-include-fixer
 				clang-move
-				clang-pseudo
 				clang-query
 				clang-reorder-fields
 				clang-tidy
@@ -332,8 +331,8 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
-			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
+		has_version -b llvm-core/clang:${LLVM_MAJOR} ||
+			die "llvm-core/clang:${LLVM_MAJOR} is required on the build host."
 		local tools_bin=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin
 		mycmakeargs+=(
 			-DLLVM_TOOLS_BINARY_DIR="${tools_bin}"

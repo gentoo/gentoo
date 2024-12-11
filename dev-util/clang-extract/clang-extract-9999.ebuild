@@ -33,14 +33,14 @@ DEPEND="
 	sys-libs/zlib
 	virtual/libelf
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 		sys-devel/llvm:${LLVM_SLOT}
 	')
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 	')
 	test? ( ${PYTHON_DEPS} )
 "

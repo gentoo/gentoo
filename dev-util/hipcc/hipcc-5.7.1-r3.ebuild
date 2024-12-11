@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 S=${WORKDIR}/HIPCC-rocm-${PV}
 
 DEPEND="<sys-devel/llvm-18:=
-	<sys-devel/clang-18:=
+	<llvm-core/clang-18:=
 	"
 RDEPEND="${DEPEND}
 	!<dev-util/hip-5.7"

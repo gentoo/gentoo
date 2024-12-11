@@ -67,7 +67,7 @@ RDEPEND="
 		>=dev-python/pygobject-3.22.0:3[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
-	clang? ( sys-devel/clang:= )
+	clang? ( llvm-core/clang:= )
 	spell? (
 		app-text/enchant:2
 		dev-libs/icu:=
@@ -133,7 +133,7 @@ PATCHES=(
 )
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
+	has_version "llvm-core/clang:${LLVM_SLOT}"
 }
 
 pkg_setup() {

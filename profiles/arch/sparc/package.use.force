@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-06-25)
@@ -14,6 +14,6 @@ sys-auth/polkit duktape
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_Sparc
-sys-devel/clang llvm_targets_Sparc
+llvm-core/clang llvm_targets_Sparc
 sys-devel/llvm llvm_targets_Sparc
 dev-lang/rust llvm_targets_Sparc

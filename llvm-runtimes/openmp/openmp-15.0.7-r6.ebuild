@@ -30,20 +30,20 @@ RDEPEND="
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
-# - sys-devel/clang provides the compiler to run tests
+# - llvm-core/clang provides the compiler to run tests
 DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
 	dev-lang/perl
 	offload? (
-		llvm_targets_AMDGPU? ( sys-devel/clang )
-		llvm_targets_NVPTX? ( sys-devel/clang )
+		llvm_targets_AMDGPU? ( llvm-core/clang )
+		llvm_targets_NVPTX? ( llvm-core/clang )
 		virtual/pkgconfig
 	)
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
-		sys-devel/clang
+		llvm-core/clang
 	)
 "
 

@@ -33,7 +33,7 @@ RESTRICT="!test? ( test )"
 
 # clang needed for bindgen
 BDEPEND+="
-	sys-devel/clang
+	llvm-core/clang
 	test? ( dev-util/cargo-nextest )
 "
 

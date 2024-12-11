@@ -17,7 +17,7 @@
 		<remote-id type="sourceforge">doxygen</remote-id>
 	</upstream>
 	<use>
-		<flag name="clang">support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
+		<flag name="clang">support for <pkg>llvm-core/clang</pkg> assisted parsing</flag>
 		<flag name="dot">allow to create dot graphs using <pkg>media-gfx/graphviz</pkg></flag>
 		<flag name="doxysearch">build doxyindexer and doxysearch.cgi</flag>
 	</use>

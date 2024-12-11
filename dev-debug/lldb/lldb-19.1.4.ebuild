@@ -25,7 +25,7 @@ DEPEND="
 	lzma? ( app-arch/xz-utils:= )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	xml? ( dev-libs/libxml2:= )
-	~sys-devel/clang-${PV}
+	~llvm-core/clang-${PV}
 	~sys-devel/llvm-${PV}[debuginfod=]
 "
 RDEPEND="

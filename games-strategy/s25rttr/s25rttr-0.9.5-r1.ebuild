@@ -33,7 +33,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	test? ( >=sys-devel/clang-5 )
+	test? ( >=llvm-core/clang-5 )
 "
 
 BDEPEND="

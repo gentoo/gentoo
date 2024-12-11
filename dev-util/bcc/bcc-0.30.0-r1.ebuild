@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 LLVM_MAX_SLOT=18
 
 inherit cmake linux-info llvm lua-single python-r1 toolchain-funcs
@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-libs/elfutils-0.166:=
 	>=dev-libs/libbpf-1.2.0:=[static-libs(-)]
 	sys-kernel/linux-headers
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}
 	lua? ( ${LUA_DEPS} )

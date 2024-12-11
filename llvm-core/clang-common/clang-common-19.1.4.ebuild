@@ -41,13 +41,13 @@ pkg_pretend() {
 
 	local flag missing_flags=()
 	for flag in default-{compiler-rt,libcxx,lld}; do
-		if ! use "${flag}" && has_version "sys-devel/clang[${flag}]"; then
+		if ! use "${flag}" && has_version "llvm-core/clang[${flag}]"; then
 			missing_flags+=( "${flag}" )
 		fi
 	done
 
 	if [[ ${missing_flags[@]} ]]; then
-		eerror "It seems that you have the following flags set on sys-devel/clang:"
+		eerror "It seems that you have the following flags set on llvm-core/clang:"
 		eerror
 		eerror "  ${missing_flags[*]}"
 		eerror
@@ -58,7 +58,7 @@ pkg_pretend() {
 		eerror "  llvm-core/clang-common ${missing_flags[*]}"
 		eerror
 		eerror "or build with CLANG_IGNORE_DEFAULT_RUNTIMES=1."
-		die "Mismatched defaults detected between sys-devel/clang and llvm-core/clang-common"
+		die "Mismatched defaults detected between llvm-core/clang and llvm-core/clang-common"
 	fi
 }
 

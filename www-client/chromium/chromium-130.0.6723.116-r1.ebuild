@@ -176,7 +176,7 @@ BDEPEND="
 		qt6? ( dev-qt/qtbase:6 )
 	)
 	$(llvm_gen_dep "
-		sys-devel/clang:\${LLVM_SLOT}
+		llvm-core/clang:\${LLVM_SLOT}
 		sys-devel/llvm:\${LLVM_SLOT}
 		sys-devel/lld:\${LLVM_SLOT}
 	")

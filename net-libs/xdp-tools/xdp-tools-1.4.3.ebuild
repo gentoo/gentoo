@@ -24,7 +24,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-apps/grep[pcre]
-	>=sys-devel/clang-11.0.0
+	>=llvm-core/clang-11.0.0
 	sys-devel/m4
 "
 

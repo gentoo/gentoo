@@ -40,13 +40,13 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		sys-devel/clang:${LLVM_MAJOR}
+		llvm-core/clang:${LLVM_MAJOR}
 		llvm-runtimes/compiler-rt:${LLVM_MAJOR}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
+		=llvm-core/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}

@@ -31,7 +31,7 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-11 )"
 DEPEND="${CDEPEND}"
 BDEPEND="${CDEPEND}
-	clang? ( sys-devel/clang )
+	clang? ( llvm-core/clang )
 	java? ( >=virtual/jdk-11 )
 	dev-lang/perl"
 

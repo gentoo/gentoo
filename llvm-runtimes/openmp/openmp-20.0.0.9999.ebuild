@@ -24,7 +24,7 @@ RDEPEND="
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
-# - sys-devel/clang provides the compiler to run tests
+# - llvm-core/clang provides the compiler to run tests
 DEPEND="
 	${RDEPEND}
 "
@@ -35,7 +35,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/lit[${PYTHON_USEDEP}]
 		')
-		sys-devel/clang
+		llvm-core/clang
 	)
 "
 

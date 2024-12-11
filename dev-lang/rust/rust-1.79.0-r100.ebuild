@@ -56,7 +56,7 @@ BDEPEND="${PYTHON_DEPS}
 	app-eselect/eselect-rust
 	|| (
 		>=sys-devel/gcc-4.7
-		>=sys-devel/clang-3.5
+		>=llvm-core/clang-3.5
 	)
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4

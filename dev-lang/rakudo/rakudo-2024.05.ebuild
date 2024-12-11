@@ -27,7 +27,7 @@ CDEPEND="~dev-lang/nqp-${PV}:${SLOT}=[java?,moar?,clang=]"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.9 )"
 DEPEND="${CDEPEND}
-	clang? ( sys-devel/clang )
+	clang? ( llvm-core/clang )
 	java? ( >=virtual/jdk-1.9 )
 	>=dev-lang/perl-5.10"
 

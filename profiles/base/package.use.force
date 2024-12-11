@@ -105,7 +105,7 @@ media-video/mpv lua_single_target_luajit
 
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Always build with PIE-default, just like GCC.
-sys-devel/clang pie
+llvm-core/clang pie
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
 # Force to use installed openjdk{,-bin} for bootstrapping
@@ -121,16 +121,16 @@ dev-java/openjdk:21 system-bootstrap
 # potential, the increase of build time is a minor problem.  Users who
 # really insist of building a smaller system can un-force the flags
 # at their own responsibility. See bug #767700.
->=sys-devel/clang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
->=sys-devel/clang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
->=sys-devel/clang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
->=sys-devel/clang-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
->=sys-devel/clang-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
->=sys-devel/clang-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
->=sys-devel/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
->=sys-devel/clang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
->=sys-devel/clang-14 llvm_targets_VE
->=sys-devel/clang-16 llvm_targets_LoongArch
+>=llvm-core/clang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/clang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/clang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/clang-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/clang-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/clang-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/clang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/clang-14 llvm_targets_VE
+>=llvm-core/clang-16 llvm_targets_LoongArch
 >=sys-devel/llvm-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/llvm-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/llvm-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai

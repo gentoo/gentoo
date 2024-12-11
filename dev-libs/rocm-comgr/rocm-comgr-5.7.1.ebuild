@@ -39,7 +39,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}
-	sys-devel/clang:${LLVM_MAX_SLOT}=
+	llvm-core/clang:${LLVM_MAX_SLOT}=
 	llvm-core/clang-runtime:=
 	sys-devel/lld:${LLVM_MAX_SLOT}="
 DEPEND="${RDEPEND}"

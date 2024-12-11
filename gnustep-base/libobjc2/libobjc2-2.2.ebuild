@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/robin-map"
 BDEPEND="${RDEPEND}
-	sys-devel/clang"
+	llvm-core/clang"
 
 src_configure() {
 	export CC="clang"

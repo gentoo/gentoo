@@ -26,7 +26,7 @@ RDEPEND="dev-libs/libatomic_ops
 	dev-libs/libffi:=
 	dev-libs/mimalloc"
 DEPEND="${RDEPEND}
-	clang? ( >=sys-devel/clang-3.1 )
+	clang? ( >=llvm-core/clang-3.1 )
 	dev-lang/perl"
 
 DOCS=( CREDITS README.markdown )

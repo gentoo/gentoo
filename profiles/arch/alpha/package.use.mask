@@ -351,7 +351,7 @@ sys-block/thin-provisioning-tools test
 media-video/ffmpeg dav1d libaribb24 libtesseract
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
-# USE=bpf depends on sys-devel/clang which is not keyworded on alpha.
+# USE=bpf depends on llvm-core/clang which is not keyworded on alpha.
 media-libs/libv4l bpf
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)

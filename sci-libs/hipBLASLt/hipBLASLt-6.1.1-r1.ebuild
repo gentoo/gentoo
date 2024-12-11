@@ -38,7 +38,7 @@ BDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/joblib[${PYTHON_USEDEP}]
 	')
-	$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}')
+	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}')
 	test? (
 		dev-cpp/gtest
 	)

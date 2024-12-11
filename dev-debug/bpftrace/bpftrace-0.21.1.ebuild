@@ -27,8 +27,8 @@ RDEPEND="
 	>=dev-util/bcc-0.25.0:=
 	lldb? ( >=dev-debug/lldb-15 )
 	>=sys-devel/llvm-15[llvm_targets_BPF(+)]
-	>=sys-devel/clang-15
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	>=llvm-core/clang-15
+	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	sys-process/procps
 	sys-libs/binutils-libs:=

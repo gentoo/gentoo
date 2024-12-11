@@ -29,7 +29,7 @@ SLOT="0"
 # See comment in llvm.eclass docs
 DEPEND="
 	dev-libs/rapidjson
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
 "
 RDEPEND="${DEPEND}"
 

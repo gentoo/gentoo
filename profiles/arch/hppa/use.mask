@@ -84,7 +84,7 @@ connman
 vaapi
 
 # Jeroen Roovers <jer@gentoo.org> (2014-12-24)
-# sys-devel/clang has not been ported to HPPA
+# llvm-core/clang has not been ported to HPPA
 clang
 
 # Jeroen Roovers <jer@gentoo.org> (2014-11-07)

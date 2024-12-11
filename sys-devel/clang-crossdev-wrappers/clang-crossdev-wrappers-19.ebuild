@@ -16,7 +16,7 @@ KEYWORDS=""
 PROPERTIES="live"
 
 RDEPEND="
-	sys-devel/clang:${SLOT}
+	llvm-core/clang:${SLOT}
 	sys-devel/lld:${SLOT}
 "
 

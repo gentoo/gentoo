@@ -525,7 +525,7 @@ RDEPEND="
 # Clang needed for bindgen
 BDEPEND="
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 	')
 	virtual/pkgconfig
 "

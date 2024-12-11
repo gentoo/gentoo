@@ -59,7 +59,7 @@ DEPEND="
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
-	bpf? ( sys-devel/clang:*[llvm_targets_BPF] )
+	bpf? ( llvm-core/clang:*[llvm_targets_BPF] )
 	doc? ( app-text/doxygen )
 	utils? (
 		dev-lang/perl
@@ -80,7 +80,7 @@ check_llvm() {
 }
 
 pkg_pretend() {
-	has_version -b sys-devel/clang && check_llvm
+	has_version -b llvm-core/clang && check_llvm
 }
 
 pkg_setup() {

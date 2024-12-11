@@ -19,15 +19,15 @@ BDEPEND="
 	${PYTHON_DEPS}
 	|| (
 		(
-			sys-devel/clang:15
+			llvm-core/clang:15
 			spirv? ( dev-util/spirv-llvm-translator:15 )
 		)
 		(
-			sys-devel/clang:14
+			llvm-core/clang:14
 			spirv? ( dev-util/spirv-llvm-translator:14 )
 		)
 		(
-			sys-devel/clang:13
+			llvm-core/clang:13
 			spirv? ( dev-util/spirv-llvm-translator:13 )
 		)
 	)
@@ -41,7 +41,7 @@ llvm_check_deps() {
 		has_version -b "dev-util/spirv-llvm-translator:${LLVM_SLOT}" ||
 			return 1
 	fi
-	has_version -b "sys-devel/clang:${LLVM_SLOT}"
+	has_version -b "llvm-core/clang:${LLVM_SLOT}"
 }
 
 pkg_setup() {

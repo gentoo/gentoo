@@ -24,7 +24,7 @@ RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	jemalloc? ( dev-libs/jemalloc:= )
-	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
+	jit? ( || ( sys-devel/gcc:* llvm-core/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
 	)

@@ -44,10 +44,10 @@ BOOTSTRAP_USE="${BOOTSTRAP_USE} ssl curl_ssl_openssl"
 # sys-devel/llvm
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -binutils-plugin"
 
-# sys-devel/clang, llvm-core/clang-runtime, llvm-runtimes/libunwind, llvm-runtimes/libcxx, llvm-runtimes/libcxxabi
+# llvm-core/clang, llvm-core/clang-runtime, llvm-runtimes/libunwind, llvm-runtimes/libcxx, llvm-runtimes/libcxxabi
 BOOTSTRAP_USE="${BOOTSTRAP_USE} compiler-rt clang libunwind"
 
-# sys-devel/clang
+# llvm-core/clang
 BOOTSTRAP_USE="${BOOTSTRAP_USE} default-compiler-rt default-lld default-libcxx llvm-libunwind"
 
 # llvm-core/clang-runtime

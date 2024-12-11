@@ -103,7 +103,7 @@ dev-util/diffoscope opendocument pascal pdf R
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Fails to compile because of size, bug #829602.
-sys-devel/clang extra
+llvm-core/clang extra
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
@@ -201,7 +201,7 @@ sys-block/tgt rbd
 dev-python/pyopengl test
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
-# USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+# USE=bpf depends on llvm-core/clang which is not keyworded on ppc.
 media-libs/libv4l bpf
 
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)

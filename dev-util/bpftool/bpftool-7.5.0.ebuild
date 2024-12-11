@@ -59,7 +59,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-arch/tar
 	dev-python/docutils
-	clang? ( $(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}[llvm_targets_BPF]') )
+	clang? ( $(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}[llvm_targets_BPF]') )
 	!clang? ( sys-devel/bpf-toolchain )
 "
 

@@ -62,7 +62,7 @@ CDEPEND="
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
-	clang? ( >=sys-devel/clang-6:* )
+	clang? ( >=llvm-core/clang-6:* )
 	build-manual? (
 		app-text/doxygen
 		$(python_gen_cond_dep '

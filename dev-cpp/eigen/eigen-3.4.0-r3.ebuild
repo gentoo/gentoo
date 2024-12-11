@@ -137,7 +137,7 @@ DEPEND="
 				dev-util/nvidia-cuda-toolkit
 			)
 			clang? (
-				sys-devel/clang[llvm_targets_NVPTX]
+				llvm-core/clang[llvm_targets_NVPTX]
 				openmp? ( llvm-runtimes/openmp[llvm_targets_NVPTX,offload] )
 			)
 		)

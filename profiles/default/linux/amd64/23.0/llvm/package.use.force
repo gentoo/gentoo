@@ -4,7 +4,7 @@
 # in a multilib profile we need multilib madness
 dev-libs/libffi abi_x86_32 abi_x86_64
 dev-libs/libxml2 abi_x86_32 abi_x86_64
-sys-devel/clang abi_x86_32 abi_x86_64
+llvm-core/clang abi_x86_32 abi_x86_64
 llvm-core/clang-runtime abi_x86_32 abi_x86_64
 sys-devel/llvm abi_x86_32 abi_x86_64
 llvm-runtimes/compiler-rt abi_x86_32 abi_x86_64

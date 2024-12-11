@@ -78,7 +78,7 @@ dev-lang/php capstone
 x11-base/xwayland libei
 
 # James Le Cuirot (2023-12-12)
-# USE=bpf depends on sys-devel/clang which is not keyworded on s390
+# USE=bpf depends on llvm-core/clang which is not keyworded on s390
 media-libs/libv4l bpf
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)

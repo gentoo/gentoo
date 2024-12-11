@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-python/lit
-		sys-devel/clang:${SLOT}
+		llvm-core/clang:${SLOT}
 	)
 "
 

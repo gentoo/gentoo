@@ -17,7 +17,7 @@ IUSE="gcc-symlinks multilib-symlinks +native-symlinks"
 # Blocker for bug #872416
 RDEPEND="
 	!<sys-devel/gcc-config-2.6
-	sys-devel/clang:${SLOT}
+	llvm-core/clang:${SLOT}
 "
 
 src_install() {

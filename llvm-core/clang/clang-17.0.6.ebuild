@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake flag-o-matic llvm llvm.org multilib multilib-minimal
+inherit cmake llvm llvm.org multilib multilib-minimal
 inherit prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -50,12 +50,10 @@ LLVM_COMPONENTS=(
 	llvm/lib/Transforms/Hello
 )
 LLVM_MANPAGES=1
+LLVM_PATCHSET=${PV}-r1
 LLVM_TEST_COMPONENTS=(
-	llvm/lib/Testing
 	llvm/utils
-	third-party
 )
-LLVM_PATCHSET=${PV}
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
@@ -67,7 +65,7 @@ llvm.org_set_globals
 # 3. ${CHOST}-clang wrappers are always installed for all ABIs included
 #    in the current profile (i.e. alike supported by sys-devel/gcc).
 #
-# Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
+# Therefore: use llvm-core/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
 pkg_setup() {
@@ -255,8 +253,6 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
-	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
-
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
@@ -276,21 +272,22 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 
-		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
 
 		# disable using CUDA to autodetect GPU, just build for all
-		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDAToolkit=ON
 		# disable linking to HSA to avoid automagic dep,
 		# load it dynamically instead
 		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
 
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
 
+		-DCLANG_ENABLE_LIBXML2=$(usex xml)
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+		# TODO: CLANG_ENABLE_HLSL?
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
@@ -344,8 +341,8 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
-			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
+		has_version -b llvm-core/clang:${LLVM_MAJOR} ||
+			die "llvm-core/clang:${LLVM_MAJOR} is required on the build host."
 		local tools_bin=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin
 		mycmakeargs+=(
 			-DLLVM_TOOLS_BINARY_DIR="${tools_bin}"
@@ -366,12 +363,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake_build distribution
-
-	# provide a symlink for tests
-	if [[ ! -L ${WORKDIR}/lib/clang ]]; then
-		mkdir -p "${WORKDIR}"/lib || die
-		ln -s "${BUILD_DIR}/$(get_libdir)/clang" "${WORKDIR}"/lib/clang || die
-	fi
 }
 
 multilib_src_test() {
@@ -440,7 +431,7 @@ multilib_src_install() {
 	# (also drop the version suffix from runtime headers)
 	rm -rf "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include "${ED}"/usr/include || die
-	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/clang "${ED}"/usr/include/clangrt || die
+	mv "${ED}"/usr/lib/clang "${ED}"/usr/include/clangrt || die
 	if multilib_native_use extra; then
 		# don't wrap clang-tidy headers, the list is too long
 		# (they're fine for non-native ABI but enabling the targets is problematic)

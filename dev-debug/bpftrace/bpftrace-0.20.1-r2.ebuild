@@ -28,8 +28,8 @@ RDEPEND="
 	>=dev-libs/libbpf-1.1:=
 	>=dev-util/bcc-0.25.0:=
 	>=sys-devel/llvm-10[llvm_targets_BPF(+)]
-	>=sys-devel/clang-10
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	>=llvm-core/clang-10
+	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	sys-process/procps
 	sys-libs/binutils-libs:=

@@ -62,7 +62,7 @@ RDEPEND="
 
 	>=dev-libs/gobject-introspection-1.74.0:=
 	${PYTHON_DEPS}
-	clang? ( sys-devel/clang:= )
+	clang? ( llvm-core/clang:= )
 	spell? (
 		app-text/enchant:2
 		dev-libs/icu:=
@@ -123,7 +123,7 @@ that are currently available with packages include:
 # gvls for vala language-server integration
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
+	has_version "llvm-core/clang:${LLVM_SLOT}"
 }
 
 pkg_setup() {
