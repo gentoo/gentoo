@@ -200,7 +200,6 @@ dev-util/clippy
 dev-lang/php:8.1
 dev-php/pecl-dbase
 dev-php/pecl-gnupg
-dev-php/pecl-http
 dev-php/pecl-lzf
 dev-php/pecl-mcrypt
 dev-php/pecl-memcache
