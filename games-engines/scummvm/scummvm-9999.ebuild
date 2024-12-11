@@ -21,8 +21,8 @@ LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
 IUSE="
 	a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2
-	mp3 musepack +net opengl png readline sndio speech theora truetype
-	unsupported vorbis vpx zlib
+	mp3 musepack +net opengl openmpt png readline sndio speech theora
+	truetype unsupported vorbis vpx zlib
 "
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -53,6 +53,7 @@ DEPEND="
 			media-libs/libglvnd
 		)
 	)
+	openmpt? ( media-libs/libopenmpt:= )
 	png? ( media-libs/libpng:0 )
 	readline? ( sys-libs/readline:= )
 	sndio? ( media-sound/sndio:= )
@@ -113,11 +114,14 @@ src_configure() {
 		$(use_enable gtk)
 		$(use_enable jpeg)
 		$(use_enable lua)
+		# it's exclusive to openmpt, and openmpt is preferred upstream
+		--disable-mikmod
 		$(use_enable mp3 mad)
 		$(use_enable mpeg2)
 		$(use_enable musepack mpcdec)
 		$(use_enable net libcurl)
 		$(use_enable net sdlnet)
+		$(use_enable openmpt)
 		$(use_enable png)
 		$(use_enable readline)
 		$(use_enable sndio)
