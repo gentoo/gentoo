@@ -15,6 +15,7 @@
     <flag name="mpeg2">enable mpeg2 codec for cutscenes</flag>
     <flag name="net">enable cloud support via <pkg>media-libs/sdl2-net</pkg></flag>
     <flag name="openmpt">Enable mod/tracker music file support via <pkg>media-libs/libopenmpt</pkg></flag>
+    <flag name="parport">Enable parallel port support via <pkg>sys-libs/libieee1284</pkg></flag>
     <flag name="sndio">Enable support for MIDI music using <pkg>media-sound/sndio</pkg></flag>
     <flag name="unsupported">enable unsupported and/or broken game engines (you're on your own)</flag>
     <flag name="vpx">Enable VP8/VP9 codec support via <pkg>media-libs/libvpx</pkg></flag>
