@@ -7,7 +7,7 @@ sys-auth/polkit duktape
 
 # Michał Górny <mgorny@gentoo.org> (2016-11-11)
 # Force the host target to avoid dependency hell
-dev-ml/llvm-ocaml llvm_targets_SystemZ
+dev-ml/llvm llvm_targets_SystemZ
 dev-lang/rust llvm_targets_SystemZ
 llvm-core/clang llvm_targets_SystemZ
 llvm-core/llvm llvm_targets_SystemZ

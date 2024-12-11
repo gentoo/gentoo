@@ -7,6 +7,6 @@ dev-lang/rust llvm_targets_Mips
 
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Force the host target to avoid dependency hell
-dev-ml/llvm-ocaml llvm_targets_Mips
+dev-ml/llvm llvm_targets_Mips
 llvm-core/clang llvm_targets_Mips
 llvm-core/llvm llvm_targets_Mips

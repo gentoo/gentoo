@@ -1,4 +1,4 @@
-dev-ml/llvm-ocaml
+dev-ml/llvm
 dev-python/clang-python
 dev-python/lit
 llvm-core/clang

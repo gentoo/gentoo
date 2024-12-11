@@ -52,7 +52,7 @@ media-video/wireplumber lua_single_target_lua5-4
 
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the BPF target by default
-dev-ml/llvm-ocaml llvm_targets_BPF
+dev-ml/llvm llvm_targets_BPF
 llvm-core/clang llvm_targets_BPF
 llvm-core/llvm llvm_targets_BPF
 

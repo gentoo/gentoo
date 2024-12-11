@@ -629,19 +629,19 @@ app-office/abiword ots
 # Mask the experimental targets in release ebuilds.
 # Note to self: remember to move still-applicable masks to the newer
 # version when master is bumped.
-<dev-ml/llvm-ocaml-16 llvm_targets_LoongArch
+<dev-ml/llvm-16 llvm_targets_LoongArch
 <llvm-core/clang-16 llvm_targets_LoongArch
 <llvm-core/llvm-16 llvm_targets_LoongArch
-<dev-ml/llvm-ocaml-17 llvm_targets_ARC llvm_targets_CSKY
+<dev-ml/llvm-17 llvm_targets_ARC llvm_targets_CSKY
 <llvm-core/clang-17 llvm_targets_ARC llvm_targets_CSKY
 <llvm-core/llvm-17 llvm_targets_ARC llvm_targets_CSKY
-<dev-ml/llvm-ocaml-17 llvm_targets_DirectX
+<dev-ml/llvm-17 llvm_targets_DirectX
 <llvm-core/clang-17 llvm_targets_DirectX
 <llvm-core/llvm-17 llvm_targets_DirectX
-<dev-ml/llvm-ocaml-17 llvm_targets_M68k llvm_targets_SPIRV
+<dev-ml/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
 <llvm-core/clang-17 llvm_targets_M68k llvm_targets_SPIRV
 <llvm-core/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
-<dev-ml/llvm-ocaml-17 llvm_targets_Xtensa
+<dev-ml/llvm-17 llvm_targets_Xtensa
 <llvm-core/clang-17 llvm_targets_Xtensa
 <llvm-core/llvm-17 llvm_targets_Xtensa
 

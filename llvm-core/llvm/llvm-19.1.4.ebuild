@@ -409,7 +409,7 @@ multilib_src_configure() {
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 
-		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
+		# disable OCaml bindings (now in dev-ml/llvm)
 		-DOCAMLFIND=NO
 	)
 

@@ -80,3 +80,4 @@ move sys-devel/llvmgold llvm-core/llvmgold
 move sys-devel/llvm-toolchain-symlinks llvm-core/llvm-toolchain-symlinks
 move sys-devel/llvm-common llvm-core/llvm-common
 move sys-devel/llvm llvm-core/llvm
+move dev-ml/llvm-ocaml dev-ml/llvm
