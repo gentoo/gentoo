@@ -79,7 +79,7 @@ esac
 if [[ -z ${_TEXLIVE_MODULE_ECLASS} ]]; then
 _TEXLIVE_MODULE_ECLASS=1
 
-inherit texlive-common
+inherit eapi9-pipestatus texlive-common
 
 HOMEPAGE="https://www.tug.org/texlive/"
 
@@ -537,16 +537,15 @@ texlive-module_src_install() {
 				grep_expressions+=(-e "/${f//./\\.}\$")
 			done
 
+			local status
+			# "success-status aware grep", returning exit status 0 instead of 1.
+			_sgrep() { grep "$@"; return "$(( $? <= 1 ? 0 : $? ))"; }
 			ebegin "Installing man pages"
 			find texmf-dist/doc/man -type f -name '*.[0-9n]' -print |
-				grep -v "${grep_expressions[@]}" |
+				_sgrep -v "${grep_expressions[@]}" |
 				xargs -d '\n' --no-run-if-empty nonfatal doman
-			local pipestatus="${PIPESTATUS[*]}"
-			# The grep in the middle of the pipe may return 1 in case
-			# everything from the input is dropped.
-			# See https://bugs.gentoo.org/931994
-			[[ ${pipestatus} == "0 "[01]" 0" ]]
-			eend $? || die "error installing man pages (pipestatus: ${pipestatus})"
+			status=$(pipestatus -v)
+			eend $? || die "error installing man pages (PIPESTATUS: ${status})"
 
 			# Delete all man pages under texmf-dist/doc/man
 			find texmf-dist/doc/man -type f -name '*.[0-9n]' -delete ||
