@@ -58,7 +58,7 @@ pkg_postinst() {
 	optfeature "runlevel: -I fallback to Perl" sys-apps/sysvinit
 	optfeature "sensors: -s sensors output (optional, /sys supplies most)" sys-apps/lm-sensors
 	optfeature "smartctl: -Da advanced data" sys-apps/smartmontools
-	# TODO optfeature "strings: -I sysvinit version" sys-devel/llvm-toolchain-symlinks
+	# TODO optfeature "strings: -I sysvinit version" llvm-core/llvm-toolchain-symlinks
 	optfeature "sudo: -Dx hddtemp-user; -o file-user (try doas!)" app-admin/sudo
 	optfeature "tree: --debugger 20,21 /sys tree" app-text/tree
 	optfeature "udevadm: -m ram data for non-root, or no dmidecode" sys-apps/systemd
