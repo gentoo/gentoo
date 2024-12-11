@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="
 	a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2
 	mp3 musepack +net opengl png sndio speech theora truetype unsupported
-	vorbis zlib
+	vorbis vpx zlib
 "
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -62,6 +62,7 @@ DEPEND="
 		media-libs/libogg
 		media-libs/libvorbis
 	)
+	vpx? ( media-libs/libvpx:= )
 	zlib? ( sys-libs/zlib:= )
 "
 RDEPEND="
@@ -123,6 +124,7 @@ src_configure() {
 		$(use_enable truetype freetype2)
 		$(usex unsupported --enable-all-engines '')
 		$(use_enable vorbis)
+		$(use_enable vpx)
 		$(use_enable zlib)
 		$(use_enable x86 nasm)
 	)

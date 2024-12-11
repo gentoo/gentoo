@@ -26,6 +26,7 @@ net-irc/quassel urlpreview
 kde-apps/kalarm pim
 dev-python/qtpy pyqt5
 gnome-base/gnome extras
+games-engines/scummvm vpx
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libaom casualties

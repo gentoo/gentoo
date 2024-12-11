@@ -16,6 +16,7 @@
     <flag name="net">enable cloud support via <pkg>media-libs/sdl2-net</pkg></flag>
     <flag name="sndio">Enable support for MIDI music using <pkg>media-sound/sndio</pkg></flag>
     <flag name="unsupported">enable unsupported and/or broken game engines (you're on your own)</flag>
+    <flag name="vpx">Enable VP8/VP9 codec support via <pkg>media-libs/libvpx</pkg></flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">scummvm</remote-id>
