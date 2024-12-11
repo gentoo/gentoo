@@ -37,7 +37,7 @@ gnome-base/gvfs google test
 
 # Michał Górny <mgorny@gentoo.org> (2024-09-08)
 # libcxx is broken on mips, https://bugs.gentoo.org/939297#c2
-sys-devel/clang-common default-libcxx
+llvm-core/clang-common default-libcxx
 llvm-core/clang-runtime libcxx
 
 # Hans de Graaff <graaff@gentoo.org> (2024-09-08)

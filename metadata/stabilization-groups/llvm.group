@@ -2,6 +2,7 @@ dev-debug/lldb
 dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
+llvm-core/clang-common
 llvm-core/clang-runtime
 llvm-core/clang-toolchain-symlinks
 llvm-core/libclc
@@ -13,7 +14,6 @@ llvm-runtimes/libunwind
 llvm-runtimes/offload
 llvm-runtimes/openmp
 sys-devel/clang
-sys-devel/clang-common
 sys-devel/lld
 sys-devel/lld-toolchain-symlinks
 sys-devel/llvm

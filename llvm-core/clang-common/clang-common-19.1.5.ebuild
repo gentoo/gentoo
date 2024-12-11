@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
 	bootstrap-prefix cet hardened llvm-libunwind
@@ -51,14 +51,14 @@ pkg_pretend() {
 		eerror
 		eerror "  ${missing_flags[*]}"
 		eerror
-		eerror "The default runtimes are now set via flags on sys-devel/clang-common."
+		eerror "The default runtimes are now set via flags on llvm-core/clang-common."
 		eerror "The build is being aborted to prevent breakage.  Please either set"
 		eerror "the respective flags on this ebuild, e.g.:"
 		eerror
-		eerror "  sys-devel/clang-common ${missing_flags[*]}"
+		eerror "  llvm-core/clang-common ${missing_flags[*]}"
 		eerror
 		eerror "or build with CLANG_IGNORE_DEFAULT_RUNTIMES=1."
-		die "Mismatched defaults detected between sys-devel/clang and sys-devel/clang-common"
+		die "Mismatched defaults detected between sys-devel/clang and llvm-core/clang-common"
 	fi
 }
 

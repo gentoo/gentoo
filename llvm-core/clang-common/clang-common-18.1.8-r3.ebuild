@@ -10,6 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
 	bootstrap-prefix cet hardened llvm-libunwind
@@ -50,14 +51,14 @@ pkg_pretend() {
 		eerror
 		eerror "  ${missing_flags[*]}"
 		eerror
-		eerror "The default runtimes are now set via flags on sys-devel/clang-common."
+		eerror "The default runtimes are now set via flags on llvm-core/clang-common."
 		eerror "The build is being aborted to prevent breakage.  Please either set"
 		eerror "the respective flags on this ebuild, e.g.:"
 		eerror
-		eerror "  sys-devel/clang-common ${missing_flags[*]}"
+		eerror "  llvm-core/clang-common ${missing_flags[*]}"
 		eerror
 		eerror "or build with CLANG_IGNORE_DEFAULT_RUNTIMES=1."
-		die "Mismatched defaults detected between sys-devel/clang and sys-devel/clang-common"
+		die "Mismatched defaults detected between sys-devel/clang and llvm-core/clang-common"
 	fi
 }
 
@@ -226,20 +227,19 @@ src_install() {
 	#  define __GENTOO_HAS_FEATURE(x) 0
 	# endif
 	#
-	# if !defined(__OPTIMIZE__) || __OPTIMIZE__ == 0
-	# elif !defined(__STDC_HOSTED__) || __STDC_HOSTED__ != 1
-	# elif defined(__SANITIZE_ADDRESS__)
-	# elif __GENTOO_HAS_FEATURE(address_sanitizer)
-	# elif __GENTOO_HAS_FEATURE(hwaddress_sanitizer)
-	# elif __GENTOO_HAS_FEATURE(memory_sanitizer)
-	# elif __GENTOO_HAS_FEATURE(numerical_stability_sanitizer)
-	# elif __GENTOO_HAS_FEATURE(realtime_sanitizer)
-	# elif __GENTOO_HAS_FEATURE(thread_sanitizer)
+	# if defined(__STDC_HOSTED__) && __STDC_HOSTED__ == 1
+	#  define __GENTOO_NOT_FREESTANDING 1
 	# else
-	#  define _FORTIFY_SOURCE ${fortify_level}
+	#  define __GENTOO_NOT_FREESTANDING 0
 	# endif
 	#
+	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0 && __GENTOO_NOT_FREESTANDING > 0
+	#  if !defined(__SANITIZE_ADDRESS__) && !__GENTOO_HAS_FEATURE(address_sanitizer) && !__GENTOO_HAS_FEATURE(memory_sanitizer)
+	#   define _FORTIFY_SOURCE ${fortify_level}
+	#  endif
+	# endif
 	# undef __GENTOO_HAS_FEATURE
+	# undef __GENTOO_NOT_FREESTANDING
 	#endif
 	EOF
 
@@ -274,6 +274,10 @@ src_install() {
 		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
 			# Gentoo Prefix on Darwin
 			-Wl,-search_paths_first
+			-Wl,-rpath,${EPREFIX}/usr/lib
+			-L ${EPREFIX}/usr/lib
+			-isystem ${EPREFIX}/usr/include
+			-isysroot ${EPREFIX}/MacOSX.sdk
 		EOF
 		if use bootstrap-prefix ; then
 			# bootstrap-prefix is only set during stage2 of bootstrapping
@@ -282,18 +286,8 @@ src_install() {
 			# EPREFIX.
 			cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
 				-Wl,-rpath,${EPREFIX}/../usr/lib
-				-Wl,-L,${EPREFIX}/../usr/lib
-				-isystem ${EPREFIX}/../usr/include
 			EOF
 		fi
-		# Using -Wl,-L instead of -L to trick compiler driver to put it
-		# after -isysroot's internal -L
-		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
-			-Wl,-rpath,${EPREFIX}/usr/lib
-			-Wl,-L,${EPREFIX}/usr/lib
-			-isystem ${EPREFIX}/usr/include
-			-isysroot ${EPREFIX}/MacOSX.sdk
-		EOF
 	fi
 }
 

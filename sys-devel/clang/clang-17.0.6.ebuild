@@ -30,7 +30,7 @@ DEPEND="
 RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
-	>=sys-devel/clang-common-${PV}
+	>=llvm-core/clang-common-${PV}
 "
 BDEPEND="
 	${PYTHON_DEPS}

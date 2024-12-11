@@ -12,4 +12,4 @@ app-emulation/wine-vanilla mingw
 # default-libcxx in particular changes ABI so can't be toggled at-will, and other
 # profile settings expect it.
 # TODO: Make a profile without default-libcxx too?
-sys-devel/clang-common default-compiler-rt default-lld default-libcxx
+llvm-core/clang-common default-compiler-rt default-lld default-libcxx

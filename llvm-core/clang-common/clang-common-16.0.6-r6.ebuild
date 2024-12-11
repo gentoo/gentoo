@@ -10,15 +10,15 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
-	default-compiler-rt default-libcxx default-lld llvm-libunwind
-	hardened stricter
+	default-compiler-rt default-libcxx default-lld
+	bootstrap-prefix hardened llvm-libunwind
 "
 
 PDEPEND="
 	default-compiler-rt? (
-		llvm-core/clang-runtime:${PV}[compiler-rt]
+		llvm-core/clang-runtime:${LLVM_MAJOR}[compiler-rt]
 		llvm-libunwind? ( llvm-runtimes/libunwind[static-libs] )
 		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
 	)
@@ -51,14 +51,14 @@ pkg_pretend() {
 		eerror
 		eerror "  ${missing_flags[*]}"
 		eerror
-		eerror "The default runtimes are now set via flags on sys-devel/clang-common."
+		eerror "The default runtimes are now set via flags on llvm-core/clang-common."
 		eerror "The build is being aborted to prevent breakage.  Please either set"
 		eerror "the respective flags on this ebuild, e.g.:"
 		eerror
-		eerror "  sys-devel/clang-common ${missing_flags[*]}"
+		eerror "  llvm-core/clang-common ${missing_flags[*]}"
 		eerror
 		eerror "or build with CLANG_IGNORE_DEFAULT_RUNTIMES=1."
-		die "Mismatched defaults detected between sys-devel/clang and sys-devel/clang-common"
+		die "Mismatched defaults detected between sys-devel/clang and llvm-core/clang-common"
 	fi
 }
 
@@ -91,11 +91,10 @@ src_install() {
 	EOF
 
 	# Baseline hardening (bug #851111)
-	# (-fstack-clash-protection is omitted because of a possible Clang bug,
-	# see bug #892537 and bug #865339.)
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
+		-Xarch_host -fstack-clash-protection
 		-Xarch_host -fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
@@ -146,22 +145,6 @@ src_install() {
 		EOF
 	fi
 
-	if use stricter; then
-		newins - gentoo-stricter.cfg <<-EOF
-			# This file increases the strictness of older clang versions
-			# to match the newest upstream version.
-
-			# clang-16 defaults
-			-Werror=implicit-function-declaration
-			-Werror=implicit-int
-			-Werror=incompatible-function-pointer-types
-		EOF
-
-		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
-			@gentoo-stricter.cfg
-		EOF
-	fi
-
 	local tool
 	for tool in clang{,++,-cpp}; do
 		newins - "${tool}.cfg" <<-EOF
@@ -169,6 +152,29 @@ src_install() {
 			@gentoo-common.cfg
 		EOF
 	done
+
+	if use kernel_Darwin; then
+		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+			# Gentoo Prefix on Darwin
+			-Wl,-search_paths_first
+			-Wl,-rpath,${EPREFIX}/usr/lib
+			-L ${EPREFIX}/usr/lib
+			-isystem ${EPREFIX}/usr/include
+			-isysroot ${EPREFIX}/MacOSX.sdk
+		EOF
+		if use bootstrap-prefix ; then
+			# bootstrap-prefix is only set during stage2 of bootstrapping
+			# Prefix, where EPREFIX is set to EPREFIX/tmp.
+			# Here we need to point it at the future lib dir of the stage3's
+			# EPREFIX.
+			cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+				-Wl,-rpath,${EPREFIX}/../usr/lib
+			EOF
+		fi
+		cat >> "${ED}/etc/clang/clang++.cfg" <<-EOF || die
+			-lc++abi
+		EOF
+	fi
 }
 
 pkg_preinst() {
