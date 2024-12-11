@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
+# Declared unmaintained by upstream, will be broken by akonadi-24.12.
+# Use app-text/marknote https://apps.kde.org/marknote/ as alternative,
+# importing existing notes is possible.
+app-text/kjots
+kde-apps/knotes
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
 # KF5 Porting Aids removal; bugs 755956, 759778
 # Removal on 2025-01-09
