@@ -70,3 +70,4 @@ move sys-libs/libcxx llvm-runtimes/libcxx
 move sys-libs/compiler-rt-sanitizers llvm-runtimes/compiler-rt-sanitizers
 move sys-libs/compiler-rt llvm-runtimes/compiler-rt
 move sys-devel/clang-runtime llvm-core/clang-runtime
+move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks

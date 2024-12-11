@@ -39,7 +39,7 @@ BDEPEND="
 "
 PDEPEND="
 	~llvm-core/clang-runtime-${PV}
-	sys-devel/clang-toolchain-symlinks:${LLVM_MAJOR}
+	llvm-core/clang-toolchain-symlinks:${LLVM_MAJOR}
 "
 
 LLVM_COMPONENTS=(
