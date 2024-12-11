@@ -24,7 +24,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
 IUSE="opengl svg qt5 +qt6"
-REQUIRED_USE="test? ( opengl svg )"
+REQUIRED_USE="test? ( opengl svg ) || ( qt5 qt6 )"
 
 RDEPEND="
 	>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
