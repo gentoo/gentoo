@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/894508
+https://github.com/iXit/wine-nine-standalone/issues/167
+https://github.com/iXit/wine-nine-standalone/commit/8c940ca13e299f9ce461ffa6cd3a5a659e81e6dc
+
+From 8c940ca13e299f9ce461ffa6cd3a5a659e81e6dc Mon Sep 17 00:00:00 2001
+From: Andre Heider <a.heider@gmail.com>
+Date: Wed, 12 Jun 2024 16:51:19 +0200
+Subject: [PATCH] d3d9-nine: extend includes to fix compile error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+d3d9-nine/present.c: In function ‘present_has_d3dadapter’:
+d3d9-nine/present.c:1774:24: error: implicit declaration of function ‘XrmUniqueQuark’ [-Wimplicit-function-declaration]
+ 1774 |     d3d_hwnd_context = XUniqueContext();
+      |                        ^~~~~~~~~~~~~~
+
+Fixes: #167
+---
+ d3d9-nine/present.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/d3d9-nine/present.c b/d3d9-nine/present.c
+index ba87a76..7c9f8c8 100644
+--- a/d3d9-nine/present.c
++++ b/d3d9-nine/present.c
+@@ -23,6 +23,7 @@
+ #include <d3dadapter/drm.h>
+ #include <X11/Xatom.h>
+ #include <X11/Xlib.h>
++#include <X11/Xresource.h>
+ #include <X11/Xutil.h>
+ #include <stdio.h>
+ #include <stdlib.h>
