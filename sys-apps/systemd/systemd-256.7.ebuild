@@ -442,8 +442,10 @@ multilib_src_install_all() {
 	if use pam; then
 		if use selinux; then
 			newpamd "${FILESDIR}"/systemd-user-selinux.pam systemd-user
+			newpamd "${FILESDIR}"/systemd-run0-selinux.pam systemd-run0
 		else
 			newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+			newpamd "${FILESDIR}"/systemd-run0.pam systemd-run0
 		fi
 	fi
 
