@@ -3,6 +3,7 @@ dev-libs/libclc
 dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
+llvm-runtimes/offload
 sys-devel/clang
 sys-devel/clang-common
 sys-devel/clang-runtime
