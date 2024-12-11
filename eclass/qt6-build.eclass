@@ -309,12 +309,16 @@ _qt6-build_sanitize_cpu_flags() {
 		avx512vp2intersect
 	)
 
+	local sanitize
+
 	# check if any known problematic -mno-* C(XX)FLAGS
-	if ! is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))"; then
-		# check if qsimd_p.h (search for "enable all") will accept -march, and
-		# further check when -march=haswell is appended (which Qt uses for some
-		# parts) given combination with other -m* could lead to partial support
-		local bad flags
+	is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))" && sanitize=1
+
+	# check if qsimd_p.h (search for "enable all") will accept -march, and
+	# further check when -march=haswell is appended (which Qt uses for some
+	# parts) given combination with other -m* could lead to partial support
+	if [[ ! -v sanitize ]]; then
+		local flags
 		for flags in '' '-march=haswell'; do
 			: "$($(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} ${flags} - <<-EOF | tail -n 1
 					#if (defined(__AVX2__) && (__BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __POPCNT__) != 6) || \
@@ -324,10 +328,14 @@ _qt6-build_sanitize_cpu_flags() {
 				EOF
 				pipestatus || die
 			)"
-			[[ ${_} == bad ]] && bad=1 && break
+			if [[ ${_} == bad ]]; then
+				sanitize=1
+				break
+			fi
 		done
-		[[ -v bad ]] || return 0 # *should* be fine as-is
 	fi
+
+	[[ -v sanitize ]] || return 0 # *should* be fine as-is
 
 	# determine highest(known) usable x86-64 feature level
 	local march=$(
