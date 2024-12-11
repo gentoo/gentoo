@@ -17,7 +17,7 @@ MY_P=mongo-${MY_PV}
 
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="https://www.mongodb.com"
-SRC_URI="https://github.com/mongodb/mongo/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mongodb/mongo/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
