@@ -626,4 +626,4 @@ dev-util/mingw64-runtime
 sys-libs/newlib
 dev-embedded/avr-libc
 sys-devel/nvptx-tools
-llvm-core/clang-crossdev-wrappers
+sys-devel/clang-crossdev-wrappers
