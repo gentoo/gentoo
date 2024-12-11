@@ -8,6 +8,3 @@
 
 -hardened
 -selinux
-
-# no policy yet
-homed
