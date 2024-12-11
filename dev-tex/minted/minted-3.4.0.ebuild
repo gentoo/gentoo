@@ -72,10 +72,10 @@ src_install() {
 	popd &> /dev/null || die
 
 	pushd latex/minted &> /dev/null || die
-	local -x LATEX_DOC_ARGUMENTS="-shell-escape"
 	latex-package_src_doinstall styles fonts bin
 	if use doc; then
 		python_setup
+		local -x LATEX_DOC_ARGUMENTS="-shell-escape"
 		local -x PYTHONPATH="${ED}/usr/lib/${EPYTHON}/site-packages"
 		local -x PATH="${ED}/usr/lib/python-exec/${EPYTHON}:${PATH}"
 		latex-package_src_doinstall doc
