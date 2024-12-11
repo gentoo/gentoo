@@ -1,5 +1,5 @@
 dev-ml/llvm
-dev-python/clang-python
+dev-python/clang
 dev-python/lit
 llvm-core/clang
 llvm-core/clang-common
