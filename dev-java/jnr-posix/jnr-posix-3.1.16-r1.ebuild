@@ -15,11 +15,11 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="EPL-2.0 GPL-2 LGPL-2.1"
-SLOT="3.0"
+SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
-	>=dev-java/jnr-ffi-2.2.12:2
+	>=dev-java/jnr-ffi-2.2.12-r1:0
 	dev-java/jnr-constants:0
 "
 
