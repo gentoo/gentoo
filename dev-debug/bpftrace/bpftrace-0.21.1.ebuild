@@ -25,7 +25,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/libbpf-1.1:=
 	>=dev-util/bcc-0.25.0:=
-	lldb? ( >=dev-debug/lldb-15 )
+	lldb? ( >=llvm-core/lldb-15 )
 	>=sys-devel/llvm-15[llvm_targets_BPF(+)]
 	>=llvm-core/clang-15
 	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=

@@ -19,7 +19,7 @@
   </maintainer>
   <use>
     <flag name="fuzzing">Build bpftrace for fuzzing</flag>
-    <flag name="lldb">Parse debug info using<pkg>dev-debug/lldb</pkg></flag>
+    <flag name="lldb">Parse debug info using<pkg>llvm-core/lldb</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">bpftrace/bpftrace</remote-id>

@@ -1,4 +1,3 @@
-dev-debug/lldb
 dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
@@ -7,6 +6,7 @@ llvm-core/clang-common
 llvm-core/clang-runtime
 llvm-core/clang-toolchain-symlinks
 llvm-core/libclc
+llvm-core/lldb
 llvm-runtimes/compiler-rt
 llvm-runtimes/compiler-rt-sanitizers
 llvm-runtimes/libcxx
