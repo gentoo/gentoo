@@ -60,7 +60,7 @@ RDEPEND="
 	!sys-devel/llvm:0
 "
 PDEPEND="
-	sys-devel/llvm-common
+	llvm-core/llvm-common
 	llvm-core/llvm-toolchain-symlinks:${LLVM_MAJOR}
 	binutils-plugin? ( >=llvm-core/llvmgold-${LLVM_MAJOR} )
 "

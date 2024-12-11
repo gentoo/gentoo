@@ -9,6 +9,7 @@ llvm-core/libclc
 llvm-core/lld
 llvm-core/lld-toolchain-symlinks
 llvm-core/lldb
+llvm-core/llvm-common
 llvm-core/llvm-toolchain-symlinks
 llvm-core/llvmgold
 llvm-runtimes/compiler-rt
@@ -19,4 +20,3 @@ llvm-runtimes/libunwind
 llvm-runtimes/offload
 llvm-runtimes/openmp
 sys-devel/llvm
-sys-devel/llvm-common
