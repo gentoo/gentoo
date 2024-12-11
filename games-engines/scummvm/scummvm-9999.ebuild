@@ -1,7 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
@@ -103,7 +104,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable !debug release-mode)
 		$(use_enable flac)
-		$(usex fluidsynth '' --disable-fluidsynth)
+		$(use_enable fluidsynth)
 		$(use_enable fribidi)
 		$(use_enable gif)
 		$(use_enable gtk)
@@ -125,7 +126,7 @@ src_configure() {
 	)
 	echo "configure ${myconf[@]}"
 	# not an autoconf script, so don't call econf
-	SDL_CONFIG="sdl2-config" \
+	local -x SDL_CONFIG="sdl2-config"
 	./configure "${myconf[@]}" ${EXTRA_ECONF} || die
 }
 
