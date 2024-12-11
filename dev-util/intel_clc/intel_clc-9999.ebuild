@@ -28,8 +28,8 @@ SLOT="0"
 IUSE="debug"
 
 RDEPEND="
-	dev-libs/libclc
 	dev-util/spirv-tools
+	llvm-core/libclc
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
 	$(llvm_gen_dep '
