@@ -11,8 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~arm64-macos"
-IUSE="debug test zstd"
+IUSE="+debug test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -22,7 +21,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!sys-devel/lld:0
+	!llvm-core/lld:0
 "
 BDEPEND="
 	sys-devel/llvm:${LLVM_MAJOR}

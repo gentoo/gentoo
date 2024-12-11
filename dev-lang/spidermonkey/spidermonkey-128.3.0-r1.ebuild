@@ -73,7 +73,7 @@ BDEPEND="${PYTHON_DEPS}
 	$(llvm_gen_dep '
 		clang? (
 			llvm-core/clang:${LLVM_SLOT}
-			sys-devel/lld:${LLVM_SLOT}
+			llvm-core/lld:${LLVM_SLOT}
 			sys-devel/llvm:${LLVM_SLOT}
 		)
 	')
@@ -103,8 +103,8 @@ llvm_check_deps() {
 		fi
 
 		if ! tc-ld-is-mold ; then
-			if ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
-				einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+			if ! has_version -b "llvm-core/lld:${LLVM_SLOT}" ; then
+				einfo "llvm-core/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 				return 1
 			fi
 		fi

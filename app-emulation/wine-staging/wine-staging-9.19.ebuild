@@ -147,7 +147,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	|| (
 		sys-devel/binutils
-		sys-devel/lld
+		llvm-core/lld
 	)
 	dev-lang/perl
 	dev-vcs/git

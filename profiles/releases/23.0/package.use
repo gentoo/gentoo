@@ -8,4 +8,4 @@
 sys-devel/gcc zstd
 sys-devel/binutils zstd
 sys-devel/llvm zstd
-sys-devel/lld zstd
+llvm-core/lld zstd

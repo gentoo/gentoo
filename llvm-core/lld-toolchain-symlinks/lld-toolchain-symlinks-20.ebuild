@@ -14,7 +14,7 @@ SLOT="${PV}"
 IUSE="multilib-symlinks +native-symlinks"
 
 RDEPEND="
-	sys-devel/lld:${SLOT}
+	llvm-core/lld:${SLOT}
 "
 
 src_install() {

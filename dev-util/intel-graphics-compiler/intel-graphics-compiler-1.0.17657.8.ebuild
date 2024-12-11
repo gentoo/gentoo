@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/opencl-clang:15[${LLVM_USEDEP}]
 	dev-util/spirv-tools
 	$(llvm_gen_dep '
-		sys-devel/lld:${LLVM_SLOT}
+		llvm-core/lld:${LLVM_SLOT}
 		sys-devel/llvm:${LLVM_SLOT}
 	')
 	vc? (
@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
-	$(llvm_gen_dep 'sys-devel/lld:${LLVM_SLOT}')
+	$(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}')
 	${PYTHON_DEPS}
 "
 

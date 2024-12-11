@@ -24,7 +24,7 @@ sys-apps/sandbox
 dev-util/ccache
 llvm-core/clang
 sys-devel/llvm
-sys-devel/lld
+llvm-core/lld
 sys-devel/gcc
 sys-devel/gcc-config
 dev-java/java-config

@@ -236,7 +236,7 @@ app-admin/conky doc
 dev-util/pkgcheck emacs
 
 # Sam James <sam@gentoo.org> (2022-07-27)
-# sys-devel/lld is not keyworded on sparc
+# llvm-core/lld is not keyworded on sparc
 >=dev-lang/spidermonkey-78 lto
 >=dev-lang/spidermonkey-115 clang
 
@@ -245,7 +245,7 @@ dev-util/pkgcheck emacs
 net-misc/modemmanager qrtr
 
 # Sam James <sam@gentoo.org> (2022-06-25)
-# sys-devel/lld lacks sparc support right now
+# llvm-core/lld lacks sparc support right now
 dev-lang/rust wasm
 
 # Sam James <sam@gentoo.org> (2022-06-25)

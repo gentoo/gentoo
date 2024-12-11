@@ -3,7 +3,7 @@ llvm-runtimes/compiler-rt
 llvm-runtimes/libcxxabi
 llvm-runtimes/libcxx
 sys-devel/llvm
-sys-devel/lld
+llvm-core/lld
 llvm-core/clang
 llvm-runtimes/libunwind
 

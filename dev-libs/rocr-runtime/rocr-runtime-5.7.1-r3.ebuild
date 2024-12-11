@@ -36,7 +36,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/rocm-device-libs-${PV}
 	<=dev-libs/rocm-device-libs-6.0
 	llvm-core/clang:${LLVM_MAX_SLOT}=
-	sys-devel/lld:${LLVM_MAX_SLOT}="
+	llvm-core/lld:${LLVM_MAX_SLOT}="
 RDEPEND="${DEPEND}"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"

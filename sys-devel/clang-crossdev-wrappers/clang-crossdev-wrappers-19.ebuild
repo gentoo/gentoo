@@ -17,7 +17,7 @@ PROPERTIES="live"
 
 RDEPEND="
 	llvm-core/clang:${SLOT}
-	sys-devel/lld:${SLOT}
+	llvm-core/lld:${SLOT}
 "
 
 src_install() {

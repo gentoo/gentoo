@@ -50,7 +50,7 @@ LLVM_DEPEND=()
 for _x in "${ALL_LLVM_TARGETS[@]}"; do
 	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "sys-devel/llvm:\${LLVM_SLOT}[${_x}]") )" )
 done
-LLVM_DEPEND+=( "	wasm? ( $(llvm_gen_dep 'sys-devel/lld:${LLVM_SLOT}') )" )
+LLVM_DEPEND+=( "	wasm? ( $(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}') )" )
 LLVM_DEPEND+=( "	$(llvm_gen_dep 'sys-devel/llvm:${LLVM_SLOT}')" )
 
 BDEPEND="${PYTHON_DEPS}

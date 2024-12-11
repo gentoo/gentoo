@@ -53,7 +53,7 @@ BUILD_DIR="${S}/build"
 # options that are passed to LLVM CMake building (excluding "static" ofc).
 DEPEND="
 	llvm-core/clang:${LLVM_MAX_SLOT}=
-	sys-devel/lld:${LLVM_MAX_SLOT}=
+	llvm-core/lld:${LLVM_MAX_SLOT}=
 	sys-devel/llvm:${LLVM_MAX_SLOT}=[zstd]
 "
 

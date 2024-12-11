@@ -267,16 +267,16 @@ BDEPEND="
 		|| (
 			(	llvm-core/clang:18
 				sys-devel/llvm:18
-				=sys-devel/lld-18*	)
+				=llvm-core/lld-18*	)
 			(	llvm-core/clang:17
 				sys-devel/llvm:17
-				=sys-devel/lld-17*	)
+				=llvm-core/lld-17*	)
 			(	llvm-core/clang:16
 				sys-devel/llvm:16
-				=sys-devel/lld-16*	)
+				=llvm-core/lld-16*	)
 			(	llvm-core/clang:15
 				sys-devel/llvm:15
-				=sys-devel/lld-15*	)
+				=llvm-core/lld-15*	)
 		)
 	)
 	odk? ( >=app-text/doxygen-1.8.4 )

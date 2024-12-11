@@ -95,10 +95,10 @@ BDEPEND="${PYTHON_DEPS}
 		llvm-core/clang:${LLVM_SLOT}
 		sys-devel/llvm:${LLVM_SLOT}
 		clang? (
-			sys-devel/lld:${LLVM_SLOT}
+			llvm-core/lld:${LLVM_SLOT}
 			pgo? ( llvm-runtimes/compiler-rt-sanitizers:${LLVM_SLOT}[profile] )
 		)
-		wasm? ( sys-devel/lld:${LLVM_SLOT} )
+		wasm? ( llvm-core/lld:${LLVM_SLOT} )
 	')
 	app-alternatives/awk
 	app-arch/unzip
@@ -226,8 +226,8 @@ llvm_check_deps() {
 	fi
 
 	if use clang && ! tc-ld-is-mold ; then
-		if ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
-			einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+		if ! has_version -b "llvm-core/lld:${LLVM_SLOT}" ; then
+			einfo "llvm-core/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 			return 1
 		fi
 	fi

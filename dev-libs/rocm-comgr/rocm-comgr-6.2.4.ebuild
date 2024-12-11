@@ -36,7 +36,7 @@ RDEPEND=">=dev-libs/rocm-device-libs-${PV}
 	llvm-core/clang-runtime:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
-		sys-devel/lld:${LLVM_SLOT}=
+		llvm-core/lld:${LLVM_SLOT}=
 	')
 	dev-util/hipcc:${SLOT}
 "

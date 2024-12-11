@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux 
 
 RDEPEND="
 	llvm-core/clang:${SLOT}
-	sys-devel/lld:${SLOT}
+	llvm-core/lld:${SLOT}
 "
 
 src_install() {

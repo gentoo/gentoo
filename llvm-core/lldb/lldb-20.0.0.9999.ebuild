@@ -43,7 +43,7 @@ BDEPEND="
 			~dev-python/lit-${PV}[\${PYTHON_USEDEP}]
 			dev-python/psutil[\${PYTHON_USEDEP}]
 		")
-		sys-devel/lld
+		llvm-core/lld
 	)
 "
 

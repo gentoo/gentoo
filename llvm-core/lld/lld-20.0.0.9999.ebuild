@@ -3,16 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{10..13} )
+inherit cmake flag-o-matic llvm.org llvm-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86 ~arm64-macos"
-IUSE="debug test zstd"
+IUSE="+debug test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -22,7 +21,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!sys-devel/lld:0
+	!llvm-core/lld:0
 "
 BDEPEND="
 	sys-devel/llvm:${LLVM_MAJOR}
@@ -42,7 +41,6 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -58,8 +56,7 @@ src_unpack() {
 }
 
 src_configure() {
-	# ODR violations (https://github.com/llvm/llvm-project/issues/83529, bug #922353)
-	filter-lto
+	llvm_prepend_path "${LLVM_MAJOR}"
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"

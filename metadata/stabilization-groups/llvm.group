@@ -6,6 +6,7 @@ llvm-core/clang-common
 llvm-core/clang-runtime
 llvm-core/clang-toolchain-symlinks
 llvm-core/libclc
+llvm-core/lld
 llvm-core/lld-toolchain-symlinks
 llvm-core/lldb
 llvm-runtimes/compiler-rt
@@ -15,7 +16,6 @@ llvm-runtimes/libcxxabi
 llvm-runtimes/libunwind
 llvm-runtimes/offload
 llvm-runtimes/openmp
-sys-devel/lld
 sys-devel/llvm
 sys-devel/llvm-common
 sys-devel/llvm-toolchain-symlinks

@@ -138,7 +138,7 @@ DEPEND="
 BDEPEND="
 	|| (
 		sys-devel/binutils
-		sys-devel/lld
+		llvm-core/lld
 	)
 	dev-lang/perl
 	sys-devel/bison

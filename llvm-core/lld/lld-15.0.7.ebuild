@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM linker (link editor)"
@@ -11,18 +11,17 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86 ~arm64-macos"
-IUSE="debug test zstd"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	~sys-devel/llvm-${PV}[zstd=]
+	~sys-devel/llvm-${PV}
 	sys-libs/zlib:=
-	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	${DEPEND}
-	!sys-devel/lld:0
+	!llvm-core/lld:0
 "
 BDEPEND="
 	sys-devel/llvm:${LLVM_MAJOR}
@@ -31,12 +30,11 @@ BDEPEND="
 	)
 "
 PDEPEND="
-	>=llvm-core/lld-toolchain-symlinks-16-r2:${LLVM_MAJOR}
+	>=llvm-core/lld-toolchain-symlinks-15-r2:${LLVM_MAJOR}
 "
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
-LLVM_TEST_COMPONENTS=( llvm/utils third-party )
-LLVM_PATCHSET=${PV}-r1
+LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
 llvm.org_set_globals
 
 python_check_deps() {
@@ -69,11 +67,12 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_INCLUDE_TESTS=$(usex test)
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_ENABLE_ZLIB=FORCE_ON
-		-DLLVM_ENABLE_ZSTD=$(usex zstd FORCE_ON OFF)
 	)
 
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 		-DPython3_EXECUTABLE="${PYTHON}"
