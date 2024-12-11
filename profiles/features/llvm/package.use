@@ -8,7 +8,7 @@ sys-devel/llvm -binutils-plugin
 llvm-runtimes/compiler-rt clang
 
 # disable sanitizers for now
-sys-devel/clang-runtime compiler-rt libcxx -sanitize
+llvm-core/clang-runtime compiler-rt libcxx -sanitize
 # llvm-runtimes/compiler-rt-sanitizers clang
 
 llvm-runtimes/libcxx libcxxabi

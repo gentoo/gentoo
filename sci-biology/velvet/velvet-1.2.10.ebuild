@@ -21,7 +21,7 @@ BDEPEND="
 	openmp? (
 		|| (
 			sys-devel/gcc[openmp]
-			sys-devel/clang-runtime[openmp]
+			llvm-core/clang-runtime[openmp]
 		)
 	)
 "

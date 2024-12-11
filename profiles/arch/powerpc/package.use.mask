@@ -285,7 +285,7 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang-common default-libcxx
-sys-devel/clang-runtime libcxx
+llvm-core/clang-runtime libcxx
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.

@@ -33,7 +33,7 @@ PATCHES=(
 )
 
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}
-	sys-devel/clang-runtime:=
+	llvm-core/clang-runtime:=
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=
 		sys-devel/lld:${LLVM_SLOT}=

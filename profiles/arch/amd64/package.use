@@ -24,7 +24,7 @@ sys-apps/memtest86+ bios64 uefi64
 
 # Theo Anderson <telans@posteo.de> (2021-03-06)
 # Enable 32-bit clang runtime to ease -m32 builds with non-GCC runtime
-sys-devel/clang-runtime abi_x86_32
+llvm-core/clang-runtime abi_x86_32
 llvm-runtimes/libcxxabi abi_x86_32
 llvm-runtimes/libcxx abi_x86_32
 llvm-runtimes/openmp abi_x86_32

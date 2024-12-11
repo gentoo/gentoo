@@ -47,7 +47,7 @@ CDEPEND="
 	opencl? ( virtual/opencl )
 	openmp? (
 		sys-devel/gcc[openmp]
-		sys-devel/clang-runtime[openmp]
+		llvm-core/clang-runtime[openmp]
 	)
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )

@@ -31,7 +31,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
-	sys-devel/clang-runtime:=
+	llvm-core/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
 
 PATCHES=(

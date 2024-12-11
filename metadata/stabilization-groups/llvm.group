@@ -2,6 +2,7 @@ dev-debug/lldb
 dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
+llvm-core/clang-runtime
 llvm-core/libclc
 llvm-runtimes/compiler-rt
 llvm-runtimes/compiler-rt-sanitizers
@@ -12,7 +13,6 @@ llvm-runtimes/offload
 llvm-runtimes/openmp
 sys-devel/clang
 sys-devel/clang-common
-sys-devel/clang-runtime
 sys-devel/clang-toolchain-symlinks
 sys-devel/lld
 sys-devel/lld-toolchain-symlinks

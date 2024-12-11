@@ -37,7 +37,7 @@ BDEPEND="
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
-	~sys-devel/clang-runtime-${PV}
+	~llvm-core/clang-runtime-${PV}
 	sys-devel/clang-toolchain-symlinks:${LLVM_MAJOR}
 "
 

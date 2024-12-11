@@ -35,7 +35,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
-	sys-devel/clang-runtime:=
+	llvm-core/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
 BDEPEND="profile? ( $(python_gen_any_dep '
 	dev-python/cppheaderparser[${PYTHON_USEDEP}]

@@ -37,7 +37,7 @@ media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
 # llvm-runtimes/openmp does not support ppc32 (bug #907213).
-sys-devel/clang-runtime openmp
+llvm-core/clang-runtime openmp
 
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
 # Fails tests, potential false negatives #911402
@@ -175,7 +175,7 @@ dev-lang/php avif
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
-sys-devel/clang-runtime compiler-rt sanitize
+llvm-core/clang-runtime compiler-rt sanitize
 sys-devel/clang-common default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
