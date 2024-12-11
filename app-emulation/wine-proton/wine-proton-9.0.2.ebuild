@@ -12,10 +12,10 @@ WINE_GECKO=2.47.4
 WINE_MONO=9.1.0
 WINE_PV=$(ver_rs 2 -)
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ValveSoftware/wine.git"
-	EGIT_BRANCH="experimental_$(ver_cut 1-2)"
+	EGIT_BRANCH="bleeding-edge"
 else
 	SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
 	S="${WORKDIR}/${PN}-wine-${WINE_PV}"

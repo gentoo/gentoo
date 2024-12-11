@@ -12,7 +12,7 @@ WINE_GECKO=2.47.4
 WINE_MONO=9.3.1
 WINE_PV=$(ver_rs 2 -)
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ValveSoftware/wine.git"
 	EGIT_BRANCH="bleeding-edge"
