@@ -48,6 +48,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.15.0-glib-docs.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use doc with_docs)
