@@ -42,7 +42,7 @@ sys-apps/sandbox abi_x86_32
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_X86
 llvm-core/clang llvm_targets_X86
-sys-devel/llvm llvm_targets_X86
+llvm-core/llvm llvm_targets_X86
 
 # Diego Elio Pettenò <flameeyes@gmail.com> (2011-04-21)
 # The plugin is 32-bit only (and I'm not even sure if it works with

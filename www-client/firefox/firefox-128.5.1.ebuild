@@ -93,7 +93,7 @@ FF_ONLY_DEPEND="!www-client/firefox:0
 BDEPEND="${PYTHON_DEPS}
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 		clang? (
 			llvm-core/lld:${LLVM_SLOT}
 			pgo? ( llvm-runtimes/compiler-rt-sanitizers:${LLVM_SLOT}[profile] )
@@ -1160,7 +1160,7 @@ src_install() {
 	rm "${ED}${MOZILLA_FIVE_HOME}/${PN}-bin" || die
 	dosym ${PN} ${MOZILLA_FIVE_HOME}/${PN}-bin
 
-	# Don't install llvm-symbolizer from sys-devel/llvm package
+	# Don't install llvm-symbolizer from llvm-core/llvm package
 	if [[ -f "${ED}${MOZILLA_FIVE_HOME}/llvm-symbolizer" ]] ; then
 		rm -v "${ED}${MOZILLA_FIVE_HOME}/llvm-symbolizer" || die
 	fi

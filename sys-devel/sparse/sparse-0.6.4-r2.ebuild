@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ IUSE="gtk llvm sqlite test xml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="gtk? ( x11-libs/gtk+:3 )
-	llvm? ( <sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
+	llvm? ( <llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	sqlite? ( dev-db/sqlite:= )
 	xml? ( dev-libs/libxml2 )"
 DEPEND="${RDEPEND}"
@@ -31,8 +31,8 @@ BDEPEND="gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
 
 llvm_check_deps() {
-	has_version "sys-devel/llvm:${LLVM_SLOT}" && \
-		has_version -r "sys-devel/llvm:${LLVM_SLOT}"
+	has_version "llvm-core/llvm:${LLVM_SLOT}" && \
+		has_version -r "llvm-core/llvm:${LLVM_SLOT}"
 }
 
 pkg_setup() {

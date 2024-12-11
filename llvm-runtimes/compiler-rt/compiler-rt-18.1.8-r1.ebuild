@@ -17,7 +17,7 @@ IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 DEPEND="
-	sys-devel/llvm:${LLVM_MAJOR}
+	llvm-core/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
 	clang? ( llvm-core/clang:${LLVM_MAJOR} )

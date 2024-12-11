@@ -27,13 +27,13 @@ RDEPEND="
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
-		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
+		~llvm-core/llvm-${PV}[${MULTILIB_USEDEP}]
 		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
 	)
 "
 # tests:
 # - dev-python/lit provides the test runner
-# - sys-devel/llvm provide test utils (e.g. FileCheck)
+# - llvm-core/llvm provide test utils (e.g. FileCheck)
 # - llvm-core/clang provides the compiler to run tests
 DEPEND="
 	${RDEPEND}

@@ -37,7 +37,7 @@ DEPEND="
 	dev-libs/libpcre2:=[unicode]
 	dev-libs/pcl:=
 	$(llvm_gen_dep '
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 	llvm-libunwind? (
 		llvm-runtimes/libunwind:=

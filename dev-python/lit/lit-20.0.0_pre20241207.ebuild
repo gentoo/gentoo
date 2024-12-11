@@ -20,14 +20,14 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
-		sys-devel/llvm
+		llvm-core/llvm
 	)
 "
 
 LLVM_COMPONENTS=( llvm/utils/lit )
 llvm.org_set_globals
 
-# TODO: move the manpage generation here (from sys-devel/llvm)
+# TODO: move the manpage generation here (from llvm-core/llvm)
 
 src_prepare() {
 	# flaky test

@@ -46,7 +46,7 @@ RDEPEND="${PYTHON_DEPS}
 	=dev-qt/qtcore-${QT_PV}
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 	')
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32

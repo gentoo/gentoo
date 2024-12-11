@@ -1,6 +1,6 @@
 # now part of @system set
 *llvm-core/lld
-*sys-devel/llvm
+*llvm-core/llvm
 *llvm-core/clang
 *llvm-runtimes/libcxx
 *llvm-runtimes/libcxxabi

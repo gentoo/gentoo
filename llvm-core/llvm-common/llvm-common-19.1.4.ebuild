@@ -14,7 +14,7 @@ KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~
 IUSE="emacs"
 
 RDEPEND="
-	!sys-devel/llvm:0
+	!llvm-core/llvm:0
 "
 BDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )

@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-libs/libbpf-1.2.0:=[static-libs(-)]
 	sys-kernel/linux-headers
 	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
-	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
+	<llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}
 	lua? ( ${LUA_DEPS} )
 "

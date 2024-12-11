@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm64 ~x86"
 RDEPEND="
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 	')
 	${PYTHON_DEPS}
 "

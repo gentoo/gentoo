@@ -20,7 +20,7 @@ RDEPEND="
 	dev-util/spirv-llvm-translator:${SLOT}=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=[static-analyzer]
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 

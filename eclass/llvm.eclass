@@ -24,11 +24,11 @@
 # inherit cmake llvm
 #
 # RDEPEND="
-#	<sys-devel/llvm-11:=
+#	<llvm-core/llvm-11:=
 #	|| (
-#		sys-devel/llvm:9
-#		sys-devel/llvm:10
-#		sys-devel/llvm:11
+#		llvm-core/llvm:9
+#		llvm-core/llvm:10
+#		llvm-core/llvm:11
 #	)
 # "
 # DEPEND=${RDEPEND}
@@ -70,7 +70,7 @@ inherit llvm-utils
 
 # make sure that the versions installing straight into /usr/bin
 # are uninstalled
-DEPEND="!!sys-devel/llvm:0"
+DEPEND="!!llvm-core/llvm:0"
 
 # @ECLASS_VARIABLE: LLVM_MAX_SLOT
 # @DEFAULT_UNSET
@@ -116,7 +116,7 @@ declare -g -r _LLVM_KNOWN_SLOTS=( {19..8} )
 # the function scope, LLVM_SLOT will be defined to the SLOT value
 # (0, 4, 5...). The function should return a true status if the slot
 # is acceptable, false otherwise. If llvm_check_deps() is not defined,
-# the function defaults to checking whether sys-devel/llvm:${LLVM_SLOT}
+# the function defaults to checking whether llvm-core/llvm:${LLVM_SLOT}
 # is installed.
 get_llvm_slot() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -147,7 +147,7 @@ get_llvm_slot() {
 			llvm_check_deps || continue
 		else
 			# check if LLVM package is installed
-			has_version ${hv_switch} "sys-devel/llvm:${slot}" || continue
+			has_version ${hv_switch} "llvm-core/llvm:${slot}" || continue
 		fi
 
 		echo "${slot}"

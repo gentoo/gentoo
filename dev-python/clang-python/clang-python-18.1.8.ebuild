@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # on top of it.
 DEPEND="
 	>=llvm-core/clang-${PV}:*
-	!sys-devel/llvm:0[clang(-),python(-)]
+	!llvm-core/llvm:0[clang(-),python(-)]
 	!llvm-core/clang:0[python(-)]
 "
 RDEPEND="

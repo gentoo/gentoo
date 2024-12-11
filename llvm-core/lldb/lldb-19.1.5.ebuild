@@ -26,7 +26,7 @@ DEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	xml? ( dev-libs/libxml2:= )
 	~llvm-core/clang-${PV}
-	~sys-devel/llvm-${PV}[debuginfod=]
+	~llvm-core/llvm-${PV}[debuginfod=]
 "
 RDEPEND="
 	${DEPEND}

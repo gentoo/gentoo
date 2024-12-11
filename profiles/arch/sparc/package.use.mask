@@ -322,7 +322,7 @@ dev-cpp/eigen test
 # Deps not yet tested/keyworded.
 llvm-core/clang-common default-compiler-rt default-lld
 llvm-core/clang-runtime compiler-rt
-sys-devel/llvm z3
+llvm-core/llvm z3
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]

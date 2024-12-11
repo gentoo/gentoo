@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/HIPCC-rocm-${PV}
 
-DEPEND="<sys-devel/llvm-18:=
+DEPEND="<llvm-core/llvm-18:=
 	<llvm-core/clang-18:=
 	"
 RDEPEND="${DEPEND}

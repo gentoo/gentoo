@@ -30,7 +30,7 @@ RDEPEND="
 		media-libs/freealut
 		media-libs/openal
 	)
-	debug? ( llvm? ( sys-devel/llvm:* ) )
+	debug? ( llvm? ( llvm-core/llvm:* ) )
 	notification? ( x11-libs/libnotify )
 	python? ( ${PYTHON_DEPS} )
 	qrcode? (

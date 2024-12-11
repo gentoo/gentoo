@@ -96,7 +96,7 @@ RDEPEND="
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	llvm? (
 		$(llvm_gen_dep "
-			sys-devel/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+			llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
 			opencl? (
 				dev-util/spirv-llvm-translator:\${LLVM_SLOT}
 				llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
@@ -273,8 +273,8 @@ python_check_deps() {
 
 pkg_setup() {
 	# warning message for bug 459306
-	if use llvm && has_version sys-devel/llvm[!debug=]; then
-		ewarn "Mismatch between debug USE flags in media-libs/mesa and sys-devel/llvm"
+	if use llvm && has_version llvm-core/llvm[!debug=]; then
+		ewarn "Mismatch between debug USE flags in media-libs/mesa and llvm-core/llvm"
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 

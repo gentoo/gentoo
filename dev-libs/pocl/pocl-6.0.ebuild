@@ -22,11 +22,11 @@ CLANG_DEPS="
 	$(llvm_gen_dep '
 		!cuda? (
 			llvm-core/clang:${LLVM_SLOT}=
-			sys-devel/llvm:${LLVM_SLOT}=
+			llvm-core/llvm:${LLVM_SLOT}=
 		)
 		cuda? (
 			llvm-core/clang:${LLVM_SLOT}=[llvm_targets_NVPTX]
-			sys-devel/llvm:${LLVM_SLOT}=[llvm_targets_NVPTX]
+			llvm-core/llvm:${LLVM_SLOT}=[llvm_targets_NVPTX]
 		)
 	')
 "

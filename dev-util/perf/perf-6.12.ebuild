@@ -67,7 +67,7 @@ RDEPEND="
 		dev-util/pahole
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
-			sys-devel/llvm:${LLVM_SLOT}=
+			llvm-core/llvm:${LLVM_SLOT}=
 		')
 	)
 	caps? ( sys-libs/libcap )

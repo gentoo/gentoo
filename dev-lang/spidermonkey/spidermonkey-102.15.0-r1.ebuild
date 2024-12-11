@@ -75,7 +75,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 		clang? (
 			llvm-core/lld:${LLVM_SLOT}
 		)
@@ -93,8 +93,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/firefox-${MY_PV}/js/src"
 
 llvm_check_deps() {
-	if ! has_version -b "sys-devel/llvm:${LLVM_SLOT}" ; then
-		einfo "sys-devel/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+	if ! has_version -b "llvm-core/llvm:${LLVM_SLOT}" ; then
+		einfo "llvm-core/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 		return 1
 	fi
 

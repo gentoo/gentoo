@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/valijson
 	bpf? ( $(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
-			sys-devel/llvm:${LLVM_SLOT}=[llvm_targets_BPF(+)]
+			llvm-core/llvm:${LLVM_SLOT}=[llvm_targets_BPF(+)]
 		')
 	)
 	virtual/os-headers"

@@ -93,7 +93,7 @@ media-libs/libplacebo -shaderc
 # Michał Górny <mgorny@gentoo.org> (2023-09-19)
 # dev-cpp/cpp-httplib is keyworded here.
 llvm-core/lldb -debuginfod
-sys-devel/llvm -debuginfod
+llvm-core/llvm -debuginfod
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
@@ -523,7 +523,7 @@ www-client/links -suid
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2010-11-28)
-# sys-devel/llvm is keyworded on x86
+# llvm-core/llvm is keyworded on x86
 media-libs/mesa -llvm
 
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)

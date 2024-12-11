@@ -32,7 +32,7 @@
 #   dev-libs/libfoo[${LLVM_USEDEP}]
 #   $(llvm_gen_dep '
 #     llvm-core/clang:${LLVM_SLOT}=
-#     sys-devel/llvm:${LLVM_SLOT}=
+#     llvm-core/llvm:${LLVM_SLOT}=
 #   ')
 # "
 # @CODE
@@ -164,7 +164,7 @@ unset -f _llvm_set_globals
 # DEPEND="
 #   $(llvm_gen_dep '
 #     llvm-core/clang:${LLVM_SLOT}=
-#     sys-devel/llvm:${LLVM_SLOT}=
+#     llvm-core/llvm:${LLVM_SLOT}=
 #   ')
 # "
 # @CODE

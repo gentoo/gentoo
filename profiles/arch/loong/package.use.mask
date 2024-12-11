@@ -153,7 +153,7 @@ dev-util/librnp man
 # Michał Górny <mgorny@gentoo.org> (2023-09-19)
 # dev-cpp/cpp-httplib is keyworded here.
 llvm-core/lldb -debuginfod
-sys-devel/llvm -debuginfod
+llvm-core/llvm -debuginfod
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-10)
 # Revdeps of dev-python/ujson which is masked.

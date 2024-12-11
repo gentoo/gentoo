@@ -18,8 +18,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
-	~sys-devel/llvm-${PV}:=[debug?]
-	!sys-devel/llvm[ocaml(-)]
+	~llvm-core/llvm-${PV}:=[debug?]
+	!llvm-core/llvm[ocaml(-)]
 "
 
 DEPEND="

@@ -17,7 +17,7 @@ REQUIRED_USE="atomic-builtins? ( clang )"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 DEPEND="
-	sys-devel/llvm:${LLVM_MAJOR}
+	llvm-core/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
 	clang? ( llvm-core/clang:${LLVM_MAJOR} )

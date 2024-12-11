@@ -20,7 +20,7 @@ BDEPEND=">=dev-build/cmake-3.22"
 DEPEND="
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 

@@ -5,4 +5,4 @@
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_AArch64
 llvm-core/clang llvm_targets_AArch64
-sys-devel/llvm llvm_targets_AArch64
+llvm-core/llvm llvm_targets_AArch64

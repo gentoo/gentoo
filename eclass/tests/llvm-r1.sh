@@ -149,11 +149,11 @@ test_globals '19' \
 LLVM_COMPAT=( {14..18} )
 inherit llvm-r1
 
-test_gen_dep 'sys-devel/llvm:${LLVM_SLOT} llvm-core/clang:${LLVM_SLOT}' <<-EOF
-	llvm_slot_15? ( sys-devel/llvm:15 llvm-core/clang:15 )
-	llvm_slot_16? ( sys-devel/llvm:16 llvm-core/clang:16 )
-	llvm_slot_17? ( sys-devel/llvm:17 llvm-core/clang:17 )
-	llvm_slot_18? ( sys-devel/llvm:18 llvm-core/clang:18 )
+test_gen_dep 'llvm-core/llvm:${LLVM_SLOT} llvm-core/clang:${LLVM_SLOT}' <<-EOF
+	llvm_slot_15? ( llvm-core/llvm:15 llvm-core/clang:15 )
+	llvm_slot_16? ( llvm-core/llvm:16 llvm-core/clang:16 )
+	llvm_slot_17? ( llvm-core/llvm:17 llvm-core/clang:17 )
+	llvm_slot_18? ( llvm-core/llvm:18 llvm-core/clang:18 )
 EOF
 
 texit

@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/spirv-tools
-	sys-devel/llvm:${SLOT}=
+	llvm-core/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
 	dev-util/spirv-headers

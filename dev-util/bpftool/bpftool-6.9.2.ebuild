@@ -33,7 +33,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/libelf:=
 	caps? ( sys-libs/libcap:= )
-	llvm? ( sys-devel/llvm:= )
+	llvm? ( llvm-core/llvm:= )
 "
 DEPEND="
 	${RDEPEND}

@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}')
-	$(llvm_gen_dep 'sys-devel/llvm:${LLVM_SLOT}')
+	$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

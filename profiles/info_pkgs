@@ -23,7 +23,7 @@ app-misc/pax-utils
 sys-apps/sandbox
 dev-util/ccache
 llvm-core/clang
-sys-devel/llvm
+llvm-core/llvm
 llvm-core/lld
 sys-devel/gcc
 sys-devel/gcc-config

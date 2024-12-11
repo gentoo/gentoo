@@ -15,7 +15,7 @@ IUSE="+debug test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	~sys-devel/llvm-${PV}[debug=,zstd=]
+	~llvm-core/llvm-${PV}[debug=,zstd=]
 	sys-libs/zlib:=
 	zstd? ( app-arch/zstd:= )
 "
@@ -24,7 +24,7 @@ RDEPEND="
 	!llvm-core/lld:0
 "
 BDEPEND="
-	sys-devel/llvm:${LLVM_MAJOR}
+	llvm-core/llvm:${LLVM_MAJOR}
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 	)

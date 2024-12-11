@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-
 IUSE="multilib-symlinks +native-symlinks"
 
 RDEPEND="
-	sys-devel/llvm:${SLOT}
+	llvm-core/llvm:${SLOT}
 "
 
 src_install() {

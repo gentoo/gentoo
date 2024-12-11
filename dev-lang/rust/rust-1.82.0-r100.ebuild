@@ -47,10 +47,10 @@ IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto mir
 LLVM_DEPEND=()
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
 for _x in "${ALL_LLVM_TARGETS[@]}"; do
-	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "sys-devel/llvm:\${LLVM_SLOT}[${_x}]") )" )
+	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "llvm-core/llvm:\${LLVM_SLOT}[${_x}]") )" )
 done
 LLVM_DEPEND+=( "	wasm? ( $(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}') )" )
-LLVM_DEPEND+=( "	$(llvm_gen_dep 'sys-devel/llvm:${LLVM_SLOT}')" )
+LLVM_DEPEND+=( "	$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')" )
 
 BDEPEND="${PYTHON_DEPS}
 	app-eselect/eselect-rust
@@ -174,7 +174,7 @@ pre_build_checks() {
 }
 
 llvm_check_deps() {
-	has_version -r "sys-devel/llvm:${LLVM_SLOT}[${LLVM_TARGET_USEDEPS// /,}]"
+	has_version -r "llvm-core/llvm:${LLVM_SLOT}[${LLVM_TARGET_USEDEPS// /,}]"
 }
 
 # Is LLVM being linked against libc++?

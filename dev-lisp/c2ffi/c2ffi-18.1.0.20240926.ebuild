@@ -18,5 +18,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="llvm-core/clang:${LLVM_MAX_SLOT}
-	sys-devel/llvm:${LLVM_MAX_SLOT}"
+	llvm-core/llvm:${LLVM_MAX_SLOT}"
 RDEPEND="${DEPEND}"

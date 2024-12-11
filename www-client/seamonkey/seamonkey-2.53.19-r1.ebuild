@@ -58,7 +58,7 @@ BDEPEND="
 	>=sys-devel/binutils-2.16.1
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	 ')
 	virtual/pkgconfig
 	amd64? ( >=dev-lang/yasm-1.1 )

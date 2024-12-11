@@ -285,16 +285,16 @@ BDEPEND="
 	clang? (
 		|| (
 			(	llvm-core/clang:18
-				sys-devel/llvm:18
+				llvm-core/llvm:18
 				=llvm-core/lld-18*	)
 			(	llvm-core/clang:17
-				sys-devel/llvm:17
+				llvm-core/llvm:17
 				=llvm-core/lld-17*	)
 			(	llvm-core/clang:16
-				sys-devel/llvm:16
+				llvm-core/llvm:16
 				=llvm-core/lld-16*	)
 			(	llvm-core/clang:15
-				sys-devel/llvm:15
+				llvm-core/llvm:15
 				=llvm-core/lld-15*	)
 		)
 	)

@@ -98,7 +98,7 @@ luajittex
 systemtap
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
-# sys-devel/llvm is not keyworded, bug #320221
+# llvm-core/llvm is not keyworded, bug #320221
 llvm
 
 # Jeroen Roovers <jer@gentoo.org> (2013-08-22)

@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libffi:=
-	~sys-devel/llvm-${PV}
+	~llvm-core/llvm-${PV}
 	~llvm-runtimes/openmp-${PV}[ompt?]
 	llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
 "
@@ -25,7 +25,7 @@ DEPEND="
 "
 # tests:
 # - dev-python/lit provides the test runner
-# - sys-devel/llvm provide test utils (e.g. FileCheck)
+# - llvm-core/llvm provide test utils (e.g. FileCheck)
 # - llvm-core/clang provides the compiler to run tests
 BDEPEND="
 	dev-lang/perl

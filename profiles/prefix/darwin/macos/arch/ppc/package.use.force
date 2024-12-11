@@ -9,4 +9,4 @@ sys-devel/gcc -pie
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_PowerPC
 llvm-core/clang llvm_targets_PowerPC
-sys-devel/llvm llvm_targets_PowerPC
+llvm-core/llvm llvm_targets_PowerPC

@@ -25,6 +25,6 @@ app-editors/neovim lua_single_target_lua5-1
 dev-lang/ghc llvm
 
 # we, kinda, need this on riscv ...
-sys-devel/llvm llvm_targets_RISCV
+llvm-core/llvm llvm_targets_RISCV
 llvm-core/clang llvm_targets_RISCV
 dev-lang/rust llvm_targets_RISCV

@@ -28,7 +28,7 @@ PATCHES=(
 )
 
 llvm_check_deps() {
-	has_version "llvm-core/clang:${LLVM_SLOT}" && has_version "sys-devel/llvm:${LLVM_SLOT}"
+	has_version "llvm-core/clang:${LLVM_SLOT}" && has_version "llvm-core/llvm:${LLVM_SLOT}"
 }
 
 pkg_setup() {

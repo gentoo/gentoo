@@ -46,7 +46,7 @@ REQUIRED_USE="llvm? ( ${LLVM_REQUIRED_USE} )"
 
 RDEPEND="
 	caps? ( sys-libs/libcap:= )
-	llvm? ( $(llvm_gen_dep 'sys-devel/llvm:${LLVM_SLOT}') )
+	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}') )
 	!llvm? ( sys-libs/binutils-libs:= )
 	sys-libs/zlib:=
 	virtual/libelf:=

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11,12} )
+PYTHON_COMPAT=( python3_{10,11,12} )
 
 inherit python-single-r1 xdg
 
@@ -30,7 +30,7 @@ RDEPEND="net-libs/tox:=
 		media-libs/openal
 	)
 	notification? ( x11-libs/libnotify )
-	debug? ( llvm? ( sys-devel/llvm:* ) )
+	debug? ( llvm? ( llvm-core/llvm:* ) )
 	python? ( ${PYTHON_DEPS} )
 	qrcode? (
 		media-gfx/qrencode:=

@@ -23,7 +23,7 @@ RDEPEND="
 "
 # tests:
 # - dev-python/lit provides the test runner
-# - sys-devel/llvm provide test utils (e.g. FileCheck)
+# - llvm-core/llvm provide test utils (e.g. FileCheck)
 # - llvm-core/clang provides the compiler to run tests
 DEPEND="
 	${RDEPEND}

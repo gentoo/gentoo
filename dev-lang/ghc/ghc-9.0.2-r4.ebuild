@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 	fi
 fi
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit python-any-r1
 inherit autotools bash-completion-r1 flag-o-matic ghc-package
 inherit multiprocessing pax-utils toolchain-funcs prefix
@@ -135,9 +135,9 @@ RDEPEND="
 	!ghcmakebinary? ( dev-libs/libffi:= )
 	numa? ( sys-process/numactl )
 	llvm? (
-		<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
+		<llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):=
 		|| (
-			sys-devel/llvm:14
+			llvm-core/llvm:14
 		)
 	)
 "

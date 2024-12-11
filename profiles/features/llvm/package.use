@@ -2,7 +2,7 @@
 llvm-runtimes/libunwind static-libs
 
 # use lld by default
-sys-devel/llvm -binutils-plugin
+llvm-core/llvm -binutils-plugin
 
 # use all defaults
 llvm-runtimes/compiler-rt clang

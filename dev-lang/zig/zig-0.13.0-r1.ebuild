@@ -54,7 +54,7 @@ BUILD_DIR="${S}/build"
 DEPEND="
 	llvm-core/clang:${LLVM_MAX_SLOT}=
 	llvm-core/lld:${LLVM_MAX_SLOT}=
-	sys-devel/llvm:${LLVM_MAX_SLOT}=[zstd]
+	llvm-core/llvm:${LLVM_MAX_SLOT}=[zstd]
 "
 
 RDEPEND="

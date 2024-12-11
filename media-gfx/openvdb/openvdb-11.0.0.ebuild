@@ -43,7 +43,7 @@ RDEPEND="
 	dev-libs/jemalloc:=
 	dev-libs/imath:=
 	ax? (
-		<sys-devel/llvm-$(( LLVM_MAX_SLOT + 1 )):=
+		<llvm-core/llvm-$(( LLVM_MAX_SLOT + 1 )):=
 	)
 	blosc? (
 		dev-libs/c-blosc:=

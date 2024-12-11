@@ -98,7 +98,7 @@ RDEPEND="
 		dev-qt/qtbase:6[gui,widgets]
 		dev-qt/qtsvg:6
 	)
-	llvm? ( $(llvm_gen_dep 'sys-devel/llvm:${LLVM_SLOT}=') )
+	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}=') )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl2 )

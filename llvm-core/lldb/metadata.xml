@@ -11,7 +11,7 @@
 		<flag name="debuginfod">
 			Expose the transitive dependencies on <pkg>net-misc/curl</pkg>
 			and <pkg>dev-cpp/cpp-httplib</pkg>) to match
-			<pkg>sys-devel/llvm</pkg>.
+			<pkg>llvm-core/llvm</pkg>.
 		</flag>
 	</use>
 </pkgmetadata>

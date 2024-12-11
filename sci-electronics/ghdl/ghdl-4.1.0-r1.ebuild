@@ -34,7 +34,7 @@ RDEPEND="
 	${ADA_DEPS}
 	llvm? (
 		$(llvm_gen_dep '
-			sys-devel/llvm:${LLVM_SLOT}=
+			llvm-core/llvm:${LLVM_SLOT}=
 		')
 	)
 "

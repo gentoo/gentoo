@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake cuda flag-o-matic llvm python-single-r1
 
@@ -36,7 +36,7 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libXrandr
-	ax? ( <sys-devel/llvm-15:= )
+	ax? ( <llvm-core/llvm-15:= )
 	blosc? ( dev-libs/c-blosc:= )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-11 )
 	python? (

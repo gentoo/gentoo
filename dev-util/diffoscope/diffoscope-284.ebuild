@@ -52,7 +52,7 @@ RDEPEND="
 	imagemagick? ( media-gfx/imagemagick )
 	iso? ( app-cdr/cdrtools )
 	java? ( virtual/jdk )
-	llvm? ( sys-devel/llvm )
+	llvm? ( llvm-core/llvm )
 	lzma? ( app-arch/xz-utils )
 	mono? ( dev-lang/mono )
 	opendocument? ( app-text/odt2txt )

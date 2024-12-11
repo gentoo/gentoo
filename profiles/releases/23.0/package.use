@@ -7,5 +7,5 @@
 #
 sys-devel/gcc zstd
 sys-devel/binutils zstd
-sys-devel/llvm zstd
+llvm-core/llvm zstd
 llvm-core/lld zstd

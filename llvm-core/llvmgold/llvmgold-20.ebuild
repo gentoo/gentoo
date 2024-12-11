@@ -11,8 +11,8 @@ LICENSE="public-domain"
 SLOT="0"
 
 RDEPEND="
-	sys-devel/llvm:${PV}[binutils-plugin]
-	!sys-devel/llvm:0
+	llvm-core/llvm:${PV}[binutils-plugin]
+	!llvm-core/llvm:0
 "
 
 src_install() {

@@ -68,7 +68,7 @@ RDEPEND="
 	caps? ( sys-libs/libcap )
 	bpf? (
 		llvm-core/clang:=
-		sys-devel/llvm:=
+		llvm-core/llvm:=
 	)
 	crypt? ( dev-libs/openssl:= )
 	gtk? ( x11-libs/gtk+:2 )

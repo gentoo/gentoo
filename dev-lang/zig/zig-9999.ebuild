@@ -58,7 +58,7 @@ DEPEND="
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}
 			llvm-core/lld:${LLVM_SLOT}
-			sys-devel/llvm:${LLVM_SLOT}[zstd]
+			llvm-core/llvm:${LLVM_SLOT}[zstd]
 		')
 	)
 "

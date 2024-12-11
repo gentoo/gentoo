@@ -26,10 +26,10 @@ RDEPEND="
 	>=dev-libs/libbpf-1.1:=
 	>=dev-util/bcc-0.25.0:=
 	lldb? ( >=llvm-core/lldb-15 )
-	>=sys-devel/llvm-15[llvm_targets_BPF(+)]
+	>=llvm-core/llvm-15[llvm_targets_BPF(+)]
 	>=llvm-core/clang-15
 	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
-	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
+	<llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	sys-process/procps
 	sys-libs/binutils-libs:=
 	virtual/libelf:=

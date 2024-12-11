@@ -38,7 +38,7 @@ kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? ( $(llvm_gen_dep '
 	llvm-core/clang:${LLVM_SLOT}
-	sys-devel/llvm:${LLVM_SLOT}
+	llvm-core/llvm:${LLVM_SLOT}
 	') )
 lz4? ( app-arch/lz4 )
 pam? ( sys-libs/pam )

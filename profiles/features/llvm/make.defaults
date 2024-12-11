@@ -41,7 +41,7 @@ CXXSTDLIB="c++"
 # curl needed by cmake
 BOOTSTRAP_USE="${BOOTSTRAP_USE} ssl curl_ssl_openssl"
 
-# sys-devel/llvm
+# llvm-core/llvm
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -binutils-plugin"
 
 # llvm-core/clang, llvm-core/clang-runtime, llvm-runtimes/libunwind, llvm-runtimes/libcxx, llvm-runtimes/libcxxabi

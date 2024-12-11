@@ -72,7 +72,7 @@ BDEPEND="${PYTHON_DEPS}
 		clang? (
 			llvm-core/clang:${LLVM_SLOT}
 			llvm-core/lld:${LLVM_SLOT}
-			sys-devel/llvm:${LLVM_SLOT}
+			llvm-core/llvm:${LLVM_SLOT}
 		)
 	')
 	>=dev-util/cbindgen-0.26.0
@@ -95,8 +95,8 @@ llvm_check_deps() {
 			return 1
 		fi
 
-		if ! has_version -b "sys-devel/llvm:${LLVM_SLOT}" ; then
-			einfo "sys-devel/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+		if ! has_version -b "llvm-core/llvm:${LLVM_SLOT}" ; then
+			einfo "llvm-core/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 			return 1
 		fi
 

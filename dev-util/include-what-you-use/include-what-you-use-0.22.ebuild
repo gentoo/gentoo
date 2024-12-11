@@ -21,7 +21,7 @@ LLVM_MAX_SLOT=18
 
 RDEPEND="
 	llvm-core/clang:${LLVM_MAX_SLOT}
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	llvm-core/llvm:${LLVM_MAX_SLOT}
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"

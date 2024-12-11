@@ -200,7 +200,7 @@ COMMON_DEPEND="
 	!libclamav-only? ( net-misc/curl )
 	clamapp? ( sys-libs/ncurses:= net-misc/curl )
 	elibc_musl? ( sys-libs/fts-standalone )
-	jit? ( <sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
+	jit? ( <llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	milter? ( mail-filter/libmilter:= )
 	rar? ( app-arch/unrar )
 	system-mspack? ( dev-libs/libmspack )
@@ -283,7 +283,7 @@ src_configure() {
 		# https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md#bytecode-runtime
 		mycmakeargs+=(
 			-DLLVM_ROOT_DIR="$(get_llvm_prefix -d ${LLVM_MAX_SLOT})"
-			-DLLVM_FIND_VERSION="$(best_version sys-devel/llvm:${LLVM_MAX_SLOT} | cut -c 16-)"
+			-DLLVM_FIND_VERSION="$(best_version llvm-core/llvm:${LLVM_MAX_SLOT} | cut -c 16-)"
 		)
 	fi
 

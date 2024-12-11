@@ -13,7 +13,7 @@ SLOT="0"
 IUSE="emacs"
 
 RDEPEND="
-	!sys-devel/llvm:0
+	!llvm-core/llvm:0
 "
 BDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )

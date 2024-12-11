@@ -67,7 +67,7 @@ BDEPEND="
 	dev-util/intltool
 	llvm-core/clang
 	>=sys-devel/gettext-0.21
-	sys-devel/llvm
+	llvm-core/llvm
 	virtual/pkgconfig
 "
 
