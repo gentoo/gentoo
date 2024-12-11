@@ -120,6 +120,7 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable sndio)
 		$(use_enable speech tts)
+		--enable-text-console
 		$(use_enable theora theoradec)
 		$(use_enable truetype freetype2)
 		$(usex unsupported --enable-all-engines '')
