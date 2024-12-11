@@ -31,7 +31,7 @@ RDEPEND="
 	~dev-cpp/fb303-${PV}:=
 	~dev-cpp/wangle-${PV}:=
 	~dev-cpp/fbthrift-${PV}:=
-	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 "
 DEPEND="

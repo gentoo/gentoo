@@ -5,7 +5,7 @@
 *sys-libs/libcxx
 *sys-libs/libcxxabi
 *sys-libs/compiler-rt
-*sys-libs/llvm-libunwind
+*llvm-runtimes/libunwind
 
 # not needed with clang
 -*sys-devel/gcc

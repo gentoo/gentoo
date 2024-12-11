@@ -74,7 +74,7 @@ DEPEND="
 	dev-libs/openssl:0=
 	system-llvm? (
 		${LLVM_DEPEND[*]}
-		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	)
 	!system-llvm? (
 		!llvm-libunwind? (

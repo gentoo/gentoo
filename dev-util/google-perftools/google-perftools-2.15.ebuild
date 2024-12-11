@@ -25,7 +25,7 @@ REQUIRED_USE="?? ( pagesize-16k pagesize-32k pagesize-64k pagesize-128k pagesize
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 "
 RDEPEND="${DEPEND}"

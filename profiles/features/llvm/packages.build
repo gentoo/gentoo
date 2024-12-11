@@ -5,7 +5,7 @@ sys-libs/libcxx
 sys-devel/llvm
 sys-devel/lld
 sys-devel/clang
-sys-libs/llvm-libunwind
+llvm-runtimes/libunwind
 
 # remove gcc & friends
 -sys-devel/gcc

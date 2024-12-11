@@ -1,5 +1,5 @@
 # Make static linking work by default for simple binaries (bug #892956)
-sys-libs/llvm-libunwind static-libs
+llvm-runtimes/libunwind static-libs
 
 # use lld by default
 sys-devel/llvm -binutils-plugin

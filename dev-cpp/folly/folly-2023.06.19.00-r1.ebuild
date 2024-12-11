@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	>=sys-libs/liburing-2.3:=
 	sys-libs/zlib
-	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 "
 # libiberty is linked statically

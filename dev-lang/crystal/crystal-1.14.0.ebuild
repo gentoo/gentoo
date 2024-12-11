@@ -40,7 +40,7 @@ DEPEND="
 		sys-devel/llvm:${LLVM_SLOT}=
 	')
 	llvm-libunwind? (
-		sys-libs/llvm-libunwind:=
+		llvm-runtimes/libunwind:=
 	)
 	!llvm-libunwind? (
 		sys-libs/libunwind:=

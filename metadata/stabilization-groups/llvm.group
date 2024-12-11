@@ -3,6 +3,7 @@ dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
 llvm-core/libclc
+llvm-runtimes/libunwind
 llvm-runtimes/offload
 sys-devel/clang
 sys-devel/clang-common
@@ -19,4 +20,3 @@ sys-libs/compiler-rt-sanitizers
 sys-libs/libcxx
 sys-libs/libcxxabi
 sys-libs/libomp
-sys-libs/llvm-libunwind

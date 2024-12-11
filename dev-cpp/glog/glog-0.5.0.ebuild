@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="gflags? ( dev-cpp/gflags:0=[${MULTILIB_USEDEP}] )
 	libunwind? (
-		llvm-libunwind? ( sys-libs/llvm-libunwind:0=[${MULTILIB_USEDEP}] )
+		llvm-libunwind? ( llvm-runtimes/libunwind:0=[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:0=[${MULTILIB_USEDEP}] )
 	)"
 DEPEND="${RDEPEND}

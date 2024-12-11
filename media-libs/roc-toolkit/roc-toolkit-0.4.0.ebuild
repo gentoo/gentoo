@@ -26,7 +26,7 @@ DEPEND="
 	sndfile? ( >=media-libs/libsndfile-1.0.28 )
 	ssl? ( >=dev-libs/openssl-3.0.8:= )
 	unwind? (
-		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		llvm-libunwind? ( llvm-runtimes/libunwind:= )
 		!llvm-libunwind? ( >=sys-libs/libunwind-1.2.1:= )
 	)
 "

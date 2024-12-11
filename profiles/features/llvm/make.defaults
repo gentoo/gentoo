@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # this is for now highly experimental -dilfridge
@@ -44,7 +44,7 @@ BOOTSTRAP_USE="${BOOTSTRAP_USE} ssl curl_ssl_openssl"
 # sys-devel/llvm
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -binutils-plugin"
 
-# sys-devel/clang, sys-devel/clang-runtime, sys-libs/llvm-libunwind, sys-libs/libcxx, sys-libs/libcxxabi
+# sys-devel/clang, sys-devel/clang-runtime, llvm-runtimes/libunwind, sys-libs/libcxx, sys-libs/libcxxabi
 BOOTSTRAP_USE="${BOOTSTRAP_USE} compiler-rt clang libunwind"
 
 # sys-devel/clang

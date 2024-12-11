@@ -262,7 +262,7 @@ RDEPEND="
 	~dev-cpp/fizz-${PV}:=
 	~dev-cpp/folly-${PV}:=
 	~dev-cpp/wangle-${PV}:=
-	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 	python? ( ${PYTHON_DEPS} )
 "

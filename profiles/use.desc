@@ -178,7 +178,7 @@ libsamplerate - Build with support for converting sample rates using libsamplera
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
-llvm-libunwind - Use sys-libs/llvm-libunwind instead of sys-libs/libunwind
+llvm-libunwind - Use llvm-runtimes/libunwind instead of sys-libs/libunwind
 lm-sensors - Add linux lm-sensors (hardware sensors) support
 lto - Enable Link-Time Optimization (LTO) to optimize the build
 lua - Enable Lua scripting support

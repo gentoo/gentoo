@@ -158,7 +158,7 @@ RDEPEND="
 	>=dev-libs/libfmt-8.1.1-r1:=
 	<dev-libs/libfmt-10
 	dev-libs/openssl:=
-	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 	python? ( ${PYTHON_DEPS} )
 "

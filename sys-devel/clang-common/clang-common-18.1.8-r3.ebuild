@@ -19,7 +19,7 @@ IUSE="
 PDEPEND="
 	default-compiler-rt? (
 		sys-devel/clang-runtime:${LLVM_MAJOR}[compiler-rt]
-		llvm-libunwind? ( sys-libs/llvm-libunwind[static-libs] )
+		llvm-libunwind? ( llvm-runtimes/libunwind[static-libs] )
 		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
 	)
 	!default-compiler-rt? ( sys-devel/gcc )

@@ -28,7 +28,7 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:= )
 	unwind? (
 		!llvm-libunwind? ( sys-libs/libunwind:= )
-		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	)
 	kernel_linux? (
 		caps? ( sys-libs/libcap )

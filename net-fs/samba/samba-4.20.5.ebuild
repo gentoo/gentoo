@@ -113,7 +113,7 @@ COMMON_DEPEND="
 	!system-heimdal? ( !system-mitkrb5? ( sys-apps/keyutils[${MULTILIB_USEDEP}] ) )
 	systemd? ( sys-apps/systemd:= )
 	unwind? (
-		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		llvm-libunwind? ( llvm-runtimes/libunwind:= )
 		!llvm-libunwind? ( sys-libs/libunwind:= )
 	)
 	zeroconf? ( net-dns/avahi[dbus] )

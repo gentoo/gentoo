@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="gflags? ( dev-cpp/gflags:0=[${MULTILIB_USEDEP}] )
 	libunwind? (
-		llvm-libunwind? ( sys-libs/llvm-libunwind:0=[${MULTILIB_USEDEP}] )
+		llvm-libunwind? ( llvm-runtimes/libunwind:0=[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:0=[${MULTILIB_USEDEP}] )
 	)
 "

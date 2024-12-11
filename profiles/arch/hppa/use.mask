@@ -33,7 +33,7 @@ bluetooth
 pipewire
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
-# sys-libs/llvm-libunwind not supported on HPPA.
+# llvm-runtimes/libunwind not supported on HPPA.
 llvm-libunwind
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
