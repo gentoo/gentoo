@@ -33,7 +33,6 @@ RDEPEND="
 "
 BDEPEND="
 	doc? (
-		>=dev-tex/minted-${PV}
 		dev-texlive/texlive-fontsextra
 	)
 "
@@ -74,8 +73,16 @@ src_install() {
 
 	pushd latex/minted &> /dev/null || die
 	local -x LATEX_DOC_ARGUMENTS="-shell-escape"
-	latex-package_src_install
+	latex-package_src_doinstall styles fonts bin
 	if use doc; then
+		python_setup
+		local -x PYTHONPATH="${ED}/usr/lib/${EPYTHON}/site-packages"
+		local -x PATH="${ED}/usr/lib/python-exec/${EPYTHON}:${PATH}"
+		latex-package_src_doinstall doc
+		# The following line shouldn't be required, as 'doc' is expaned
+		# by latex-package.eclass to "… dtx … pdf", but without this,
+		# the pdf is *not* installed. Maybe a bug in
+		# latex-package.eclass?
 		latex-package_src_doinstall pdf
 	fi
 	popd &> /dev/null || die
