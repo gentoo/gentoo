@@ -133,7 +133,7 @@ DEPEND="
 			)
 			clang? (
 				sys-devel/clang[llvm_targets_NVPTX]
-				openmp? ( sys-libs/libomp[llvm_targets_NVPTX,offload] )
+				openmp? ( llvm-runtimes/openmp[llvm_targets_NVPTX,offload] )
 			)
 		)
 		hip? ( dev-util/hip )

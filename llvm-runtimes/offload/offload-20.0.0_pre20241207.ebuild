@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/libffi:=
 	~sys-devel/llvm-${PV}
-	~sys-libs/libomp-${PV}[ompt?]
+	~llvm-runtimes/openmp-${PV}[ompt?]
 	llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
 "
 DEPEND="

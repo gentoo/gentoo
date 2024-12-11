@@ -5,6 +5,7 @@ dev-python/lit
 llvm-core/libclc
 llvm-runtimes/libunwind
 llvm-runtimes/offload
+llvm-runtimes/openmp
 sys-devel/clang
 sys-devel/clang-common
 sys-devel/clang-runtime
@@ -19,4 +20,3 @@ sys-libs/compiler-rt
 sys-libs/compiler-rt-sanitizers
 sys-libs/libcxx
 sys-libs/libcxxabi
-sys-libs/libomp

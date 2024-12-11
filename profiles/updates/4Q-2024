@@ -64,3 +64,4 @@ move dev-python/PyQt6 dev-python/pyqt6
 move sys-libs/llvm-offload llvm-runtimes/offload
 move dev-libs/libclc llvm-core/libclc
 move sys-libs/llvm-libunwind llvm-runtimes/libunwind
+move sys-libs/libomp llvm-runtimes/openmp

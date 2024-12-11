@@ -33,7 +33,7 @@ RDEPEND="
 	>=media-libs/libmypaint-1.5.0[openmp?]
 	media-libs/libpng:=
 	sys-devel/gettext
-	sys-libs/libomp
+	llvm-runtimes/openmp
 	x11-libs/gdk-pixbuf[jpeg]
 	x11-libs/gtk+:3
 "

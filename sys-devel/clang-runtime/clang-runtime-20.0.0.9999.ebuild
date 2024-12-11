@@ -22,7 +22,7 @@ RDEPEND="
 	)
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? (
-		>=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}]
+		>=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}]
 		offload? (
 			>=llvm-runtimes/offload-${PV}
 		)

@@ -672,7 +672,7 @@ tc-check-openmp() {
 		if tc-is-gcc; then
 			eerror "Enable OpenMP support by building sys-devel/gcc with USE=\"openmp\"."
 		elif tc-is-clang; then
-			eerror "OpenMP support in sys-devel/clang is provided by sys-libs/libomp."
+			eerror "OpenMP support in sys-devel/clang is provided by llvm-runtimes/openmp."
 		fi
 
 		die "Active compiler does not have required support for OpenMP"

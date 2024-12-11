@@ -27,7 +27,7 @@ sys-apps/memtest86+ bios64 uefi64
 sys-devel/clang-runtime abi_x86_32
 sys-libs/libcxxabi abi_x86_32
 sys-libs/libcxx abi_x86_32
-sys-libs/libomp abi_x86_32
+llvm-runtimes/openmp abi_x86_32
 llvm-runtimes/libunwind abi_x86_32
 
 # Mike Gilbert <floppym@gentoo.org> (2016-11-17)

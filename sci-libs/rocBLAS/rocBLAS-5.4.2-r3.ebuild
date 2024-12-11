@@ -33,11 +33,11 @@ DEPEND="
 	test? (
 		virtual/blas
 		dev-cpp/gtest
-		sys-libs/libomp
+		llvm-runtimes/openmp
 	)
 	benchmark? (
 		virtual/blas
-		sys-libs/libomp
+		llvm-runtimes/openmp
 	)
 "
 

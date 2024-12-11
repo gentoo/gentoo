@@ -338,7 +338,7 @@ sci-libs/vtk debug
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
-sys-libs/libomp llvm_targets_AMDGPU
+llvm-runtimes/openmp llvm_targets_AMDGPU
 
 # Joonas Niilola <juippis@gentoo.org> (2023-01-08)
 # Doesn't compile currently, bug #853094.

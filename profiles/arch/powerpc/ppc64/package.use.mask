@@ -46,7 +46,7 @@ dev-python/nbval test
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
->=sys-libs/libomp-16.0.0_pre20230124 -offload
+>=llvm-runtimes/openmp-16.0.0_pre20230124 -offload
 
 # Niccolò Belli <niccolo.belli@linuxsystems.it> (2022-11-29)
 # media-libs/webrtc-audio-processing only has amd64, x86 and ppc64 keywords

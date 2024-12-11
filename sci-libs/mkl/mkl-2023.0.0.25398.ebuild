@@ -29,7 +29,7 @@ RDEPEND="
 	dev-cpp/tbb
 	dev-libs/opencl-icd-loader
 	sys-cluster/mpich
-	sys-libs/libomp
+	llvm-runtimes/openmp
 "
 # bug #801460
 BDEPEND="

@@ -36,7 +36,7 @@ dev-qt/qtmultimedia:6 qml
 media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
-# sys-libs/libomp does not support ppc32 (bug #907213).
+# llvm-runtimes/openmp does not support ppc32 (bug #907213).
 sys-devel/clang-runtime openmp
 
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
