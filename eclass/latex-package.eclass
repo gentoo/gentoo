@@ -200,6 +200,9 @@ latex-package_src_doinstall() {
 			"all")
 				latex-package_src_doinstall styles fonts bin doc
 				;;
+			*)
+				die "Unknown module: ${1}"
+				;;
 		esac
 	shift
 	done
