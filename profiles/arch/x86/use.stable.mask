@@ -22,10 +22,6 @@ openvdb
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
 mkl
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
-# dev-db/firebird is keyworded ~x86
-firebird
-
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is unstable on this arch.
 python_targets_pypy3

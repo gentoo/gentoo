@@ -64,10 +64,6 @@ webengine
 # libvirt is supported on x86
 -libvirt
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
-# dev-db/firebird is keyworded ~x86
--firebird
-
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
 -python_targets_pypy3

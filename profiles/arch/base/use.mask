@@ -48,9 +48,7 @@ big-endian
 libvirt
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
-# The dev-db/firebird and dev-db/oracle-instantclient* packages
-# only support amd64 and x86.
-firebird
+# dev-db/oracle-instantclient* only supports amd64 and x86.
 oci8
 
 # cuda/NVENC only works on amd64/arm64
