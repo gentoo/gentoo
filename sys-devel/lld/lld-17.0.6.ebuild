@@ -31,7 +31,7 @@ BDEPEND="
 	)
 "
 PDEPEND="
-	>=sys-devel/lld-toolchain-symlinks-16-r2:${LLVM_MAJOR}
+	>=llvm-core/lld-toolchain-symlinks-16-r2:${LLVM_MAJOR}
 "
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )

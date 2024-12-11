@@ -74,3 +74,4 @@ move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 move sys-devel/clang-common llvm-core/clang-common
 move sys-devel/clang llvm-core/clang
 move dev-debug/lldb llvm-core/lldb
+move sys-devel/lld-toolchain-symlinks llvm-core/lld-toolchain-symlinks
