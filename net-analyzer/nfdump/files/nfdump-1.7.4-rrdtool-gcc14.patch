@@ -1,0 +1,156 @@
+https://github.com/phaag/nfdump/issues/507
+https://github.com/phaag/nfdump/commit/5e08f546877be781bff279ca45981c844eb85f50
+
+From: Peter Haag <peter@people.ops-trust.net>
+Date: Thu, 22 Aug 2024 21:38:53 +0200
+Subject: [PATCH] Fix #507 - gcc-14 issues with rrd version 1.9.x
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -206,6 +206,8 @@ cat >>config.h <<_ACEOF
+ #define HAVE_LIBRRD 1
+ _ACEOF
+ RRD_LIBS="-lrrd"
++saved_LIBS=$LIBS
++LIBS="${LIBS} -lrrd"
+ AC_SUBST(RRD_LIBS)
+ ]
+ , AC_MSG_ERROR(Can not link librrd. Please specify --with-rrdpath=.. configure failed! ))
+@@ -215,17 +217,29 @@ AC_SUBST(RRD_LIBS)
+ 	else
+ 		AC_MSG_ERROR(Required rrd.h header file not found!)
+ 	fi
+-	AC_RUN_IFELSE(
+-		[ AC_LANG_PROGRAM(
+-			[[
++	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 				#include <stdio.h>
++				#include <stdlib.h>
+ 				#include <rrd.h>
+-			]],
+-            [[ 
+-				rrd_value_t d; 
++      
++			int main(int argc, char **argv) {
++
++				char *s = rrd_strversion();
++    		if ( s != NULL && strlen(s) == 5 ) {
++        	if ( s[0] == '1' && s[1] == '.' ) {
++            int ver = s[2] - 0x30;
++            if ( argc > 1 ) printf("%d\n", ver);
++        	}
++    		} else {
++					exit(255);
++    		}
++				return 0;
++			}
+ 			]])
+-		],, AC_MSG_ERROR(Can not load rrd library. Not in loader search path! ))
+-
++		],rrdversion=$(./conftest$EXEEXT print 2>&1)
++		LIBS=$saved_LIBS
++    AC_DEFINE_UNQUOTED(HAVE_RRDVERSION, $rrdversion, [ ])
++		, AC_MSG_ERROR(Can not load rrd library. Not in loader search path! ))
+ ]
+ ,
+ build_nfprofile="no"
+--- a/src/nfsen/nftrack_rrd.c
++++ b/src/nfsen/nftrack_rrd.c
+@@ -48,6 +48,12 @@
+ #include "rrd.h"
+ #include "util.h"
+ 
++#if HAVE_RRDVERSION > 8
++#define rrdchar const char
++#else
++#define rrdchar char
++#endif
++
+ #define BUFF_CHECK(num, buffsize)                               \
+     if ((num) >= (buffsize)) {                                  \
+         fprintf(stderr, "No enough space to create RRD arg\n"); \
+@@ -153,7 +159,7 @@ static void CreateRRDB(char *filename, time_t when) {
+     */
+ 
+     rrd_clear_error();
+-    if ((i = rrd_create(argc, rrd_arg))) {
++    if ((i = rrd_create(argc, (rrdchar **)rrd_arg))) {
+         fprintf(stderr, "Create DB Error: %ld %s\n", i, rrd_get_error());
+     }
+ 
+@@ -329,12 +335,12 @@ int RRD_StoreDataRow(char *path, char *iso_time, data_row *row) {
+                 optind = 0;
+                 opterr = 0;
+                 rrd_clear_error();
+-                if ((i = rrd_update(argc, rrd_arg))) {
++                if ((i = rrd_update(argc, (rrdchar **)rrd_arg))) {
+                     fprintf(stderr, "RRD: %s Insert Error: %d %s\n", rrd_filename, i, rrd_get_error());
+                 }
+             }  // for all 64 rrd files
+-        }      // for every type flows - packets - bytes
+-    }          // for every protocol TCP - UDP
++        }  // for every type flows - packets - bytes
++    }  // for every protocol TCP - UDP
+ 
+     return 1;
+ }  // End of RRD_StoreDataRow
+@@ -423,7 +429,7 @@ data_row *RRD_GetDataRow(char *path, time_t when) {
+                 optind = 0;
+                 opterr = 0;
+                 rrd_clear_error();
+-                if ((ret = rrd_fetch(argc, rrd_arg, &when, &when, &step, &ds_cnt, &ds_namv, &data))) {
++                if ((ret = rrd_fetch(argc, (rrdchar **)rrd_arg, &when, &when, &step, &ds_cnt, &ds_namv, &data))) {
+                     fprintf(stderr, "RRD: %s Fetch Error: %d %s\n", rrd_filename, ret, rrd_get_error());
+                 }
+                 if (ds_cnt != 1024) {
+@@ -442,8 +448,8 @@ data_row *RRD_GetDataRow(char *path, time_t when) {
+                 free(data);
+ 
+             }  // for all 64 rrd files
+-        }      // for every type flows - packets - bytes
+-    }          // for every protocol TCP - UDP
++        }  // for every type flows - packets - bytes
++    }  // for every protocol TCP - UDP
+ 
+     return row;
+ 
+@@ -474,7 +480,7 @@ time_t RRD_LastUpdate(char *path) {
+     rrd_arg[argc++] = rrd_filename;
+     rrd_arg[argc] = NULL;
+ 
+-    when = rrd_last(argc, rrd_arg);
++    when = rrd_last(argc, (rrdchar **)rrd_arg);
+ 
+     return when;
+ 
+--- a/src/nfsen/profile.c
++++ b/src/nfsen/profile.c
+@@ -1,5 +1,5 @@
+ /*
+- *  Copyright (c) 2009-2023, Peter Haag
++ *  Copyright (c) 2009-2024, Peter Haag
+  *  Copyright (c) 2004-2008, SWITCH - Teleinformatikdienste fuer Lehre und Forschung
+  *  All rights reserved.
+  *
+@@ -59,6 +59,12 @@ extern char influxdb_url[1024];
+ static char influxdb_measurement[] = "nfsen_stats";
+ #endif
+ 
++#if HAVE_RRDVERSION > 8
++#define rrdchar const char
++#else
++#define rrdchar char
++#endif
++
+ /* imported vars */
+ extern char yyerror_buff[256];
+ 
+@@ -449,7 +455,7 @@ void UpdateRRD(time_t tslot, profile_channel_info_t *channel) {
+     opterr = 0;
+     rrd_clear_error();
+     int i = 0;
+-    if ((i = rrd_update(argc, rrd_arg)) != 0) {
++    if ((i = rrd_update(argc, (rrdchar **)rrd_arg)) != 0) {
+         LogError("RRD: %s Insert Error: %d %s\n", channel->rrdfile, i, rrd_get_error());
+     }
+ 
