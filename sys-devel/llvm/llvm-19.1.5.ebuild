@@ -61,7 +61,7 @@ RDEPEND="
 PDEPEND="
 	sys-devel/llvm-common
 	sys-devel/llvm-toolchain-symlinks:${LLVM_MAJOR}
-	binutils-plugin? ( >=sys-devel/llvmgold-${LLVM_MAJOR} )
+	binutils-plugin? ( >=llvm-core/llvmgold-${LLVM_MAJOR} )
 "
 
 LLVM_COMPONENTS=( llvm cmake third-party )
