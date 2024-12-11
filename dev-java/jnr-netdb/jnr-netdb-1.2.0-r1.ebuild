@@ -13,11 +13,11 @@ HOMEPAGE="https://github.com/jnr/jnr-netdb"
 SRC_URI="https://github.com/jnr/jnr-netdb/archive/jnr-netdb-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="1.0"
+SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
-	dev-java/jnr-ffi:2"
+	>=dev-java/jnr-ffi-2.2.12-r1:0"
 
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"

@@ -15,7 +15,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
-SLOT="1.3"
+SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-1.8:*

@@ -18,12 +18,12 @@ HOMEPAGE="https://github.com/jnr/jnr-ffi"
 SRC_URI="https://github.com/jnr/${PN}/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="2"
+SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	dev-java/asm:9
-	>=dev-java/jffi-1.3.8:1.3
+	>=dev-java/jffi-1.3.10-r1:0
 	dev-java/jnr-a64asm:2
 	dev-java/jnr-x86asm:1.0
 "
