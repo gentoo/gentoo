@@ -3,7 +3,7 @@
 *sys-devel/llvm
 *sys-devel/clang
 *sys-libs/libcxx
-*sys-libs/libcxxabi
+*llvm-runtimes/libcxxabi
 *sys-libs/compiler-rt
 *llvm-runtimes/libunwind
 

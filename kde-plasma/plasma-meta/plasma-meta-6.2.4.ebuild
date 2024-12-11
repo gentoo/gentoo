@@ -135,7 +135,7 @@ pkg_postinst() {
 		ewarn "on a panel. See bug #923292."
 		ewarn ""
 		ewarn "A possible (no warranty!) workaround is building sys-libs/libcxx and"
-		ewarn "sys-libs/libcxxabi with the following in package.env:"
+		ewarn "llvm-runtimes/libcxxabi with the following in package.env:"
 		ewarn " MYCMAKEARGS=\"-DLIBCXX_TYPEINFO_COMPARISON_IMPLEMENTATION=2\""
 		ewarn "You may then need to rebuild dev-qt/* and kde-*/*."
 	fi
