@@ -32,7 +32,10 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	test? ( dev-ml/ounit2 )
+	test? (
+		dev-ml/ounit2
+		dev-ml/ppx_expect
+	)
 "
 
 PATCHES=( "${FILESDIR}"/${P}-noSeq.patch )
