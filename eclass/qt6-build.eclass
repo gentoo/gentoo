@@ -335,6 +335,18 @@ _qt6-build_sanitize_cpu_flags() {
 		done
 	fi
 
+	# some cpus have broken rdrand/rdseed and it's enabled regardless
+	# with -march=native, Qt detects this and fails (bug #922498)
+	if [[ ! -v sanitize ]] &&
+		! tc-is-cross-compiler &&
+		# the kernel also detects this and removes it from cpuinfo
+		[[ -r /proc/cpuinfo && $(</proc/cpuinfo) != *rdrand* ]] &&
+		tc-cpp-is-true __RDRND__ ${CXXFLAGS} ${CPPFLAGS}
+	then
+		einfo "Detected CPU with (likely) broken rdrand/rdseed (bug #922498)"
+		sanitize=1
+	fi
+
 	[[ -v sanitize ]] || return 0 # *should* be fine as-is
 
 	# determine highest(known) usable x86-64 feature level
