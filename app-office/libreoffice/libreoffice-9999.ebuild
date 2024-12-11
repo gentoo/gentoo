@@ -86,7 +86,7 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds firebird
+IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds
 googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
@@ -190,7 +190,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=gnome-base/dconf-0.40.0
 		gnome-extra/evolution-data-server
 	)
-	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1[server] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -494,6 +493,7 @@ src_configure() {
 		--disable-ccache
 		--disable-epm
 		--disable-fetch-external
+		--disable-firebird-sdbc
 		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
@@ -530,7 +530,6 @@ src_configure() {
 		$(use_enable dbus)
 		$(use_enable debug)
 		$(use_enable eds evolution2)
-		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
 		$(use_enable kde kf6)
