@@ -24,7 +24,7 @@ RDEPEND="
 	openmp? (
 		>=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}]
 		offload? (
-			>=sys-libs/llvm-offload-${PV}
+			>=llvm-runtimes/offload-${PV}
 		)
 	)
 "
