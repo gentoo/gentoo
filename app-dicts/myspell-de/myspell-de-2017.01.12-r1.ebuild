@@ -15,12 +15,12 @@ HOMEPAGE="
 "
 SRC_URI="
 	l10n_de? (
-		https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_AT-frami_${MY_PV}.oxt
-		https://extensions.libreoffice.org/extensions/german-de-ch-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_CH-frami_${MY_PV}.oxt
-		https://extensions.libreoffice.org/extensions/german-de-de-frami-dictionaries/${MY_PV}/@@download/file/dict-de_DE-frami_${MY_PV}.oxt )
-	l10n_de-AT? ( https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_AT-frami_${MY_PV}.oxt )
-	l10n_de-CH? ( https://extensions.libreoffice.org/extensions/german-de-ch-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_CH-frami_${MY_PV}.oxt )
-	l10n_de-DE? ( https://extensions.libreoffice.org/extensions/german-de-de-frami-dictionaries/${MY_PV}/@@download/file/dict-de_DE-frami_${MY_PV}.oxt )
+		https://extensions.libreoffice.org/assets/downloads/z/dict-de_AT-frami_${MY_PV}.oxt
+		https://extensions.libreoffice.org/assets/downloads/z/dict-de_CH-frami_${MY_PV}.oxt
+		https://extensions.libreoffice.org/assets/downloads/z/dict-de_DE-frami_${MY_PV}.oxt )
+	l10n_de-AT? ( https://extensions.libreoffice.org/assets/downloads/z/dict-de_AT-frami_${MY_PV}.oxt )
+	l10n_de-CH? ( https://extensions.libreoffice.org/assets/downloads/z/dict-de_CH-frami_${MY_PV}.oxt )
+	l10n_de-DE? ( https://extensions.libreoffice.org/assets/downloads/z/dict-de_DE-frami_${MY_PV}.oxt )
 "
 
 LICENSE="GPL-3 GPL-2 LGPL-3+"
