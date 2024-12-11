@@ -137,11 +137,16 @@ latex-package_src_doinstall() {
 						continue
 
 						einfo "Making documentation: ${i}"
+						local mypdflatex=(
+							pdflatex
+							${LATEX_DOC_ARGUMENTS}
+							--halt-on-error
+							--interaction=nonstopmode
+							"${i}"
+						)
 						# some macros need compiler called twice, do it here.
-						set -- pdflatex ${LATEX_DOC_ARGUMENTS} \
-							--halt-on-error --interaction=nonstopmode "${i}"
-						if "${@}"; then
-							"${@}"
+						if "${mypdflatex[@]}"; then
+							"${mypdflatex[@]}"
 						else
 							einfo "pdflatex failed, trying texi2dvi"
 							texi2dvi -q -c --language=latex "${i}" || die
