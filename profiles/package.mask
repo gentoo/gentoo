@@ -36,7 +36,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
 # Declared unmaintained by upstream, will be broken by akonadi-24.12.
 # Use app-text/marknote https://apps.kde.org/marknote/ as alternative,
-# importing existing notes is possible.
+# importing existing notes is possible. Removal on 2025-01-10.
 app-text/kjots
 kde-apps/knotes
 
