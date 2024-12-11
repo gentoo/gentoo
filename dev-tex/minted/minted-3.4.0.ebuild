@@ -79,11 +79,6 @@ src_install() {
 		local -x PYTHONPATH="${ED}/usr/lib/${EPYTHON}/site-packages"
 		local -x PATH="${ED}/usr/lib/python-exec/${EPYTHON}:${PATH}"
 		latex-package_src_doinstall doc
-		# The following line shouldn't be required, as 'doc' is expaned
-		# by latex-package.eclass to "… dtx … pdf", but without this,
-		# the pdf is *not* installed. Maybe a bug in
-		# latex-package.eclass?
-		latex-package_src_doinstall pdf
 	fi
 	popd &> /dev/null || die
 }
