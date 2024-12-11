@@ -24,7 +24,7 @@ media-libs/libdvbcsa cpu_flags_ppc_altivec
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Additional sanitizers supported on ppc64le.
-sys-libs/compiler-rt-sanitizers -xray
+llvm-runtimes/compiler-rt-sanitizers -xray
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is unmasked on little-endian ppc64

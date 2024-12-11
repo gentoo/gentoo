@@ -97,9 +97,9 @@ sys-block/tgt rbd
 
 # jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
 # Sanitizers supported on riscv64.
-sys-libs/compiler-rt-sanitizers -asan -lsan
->=sys-libs/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
->=sys-libs/compiler-rt-sanitizers-19 -ubsan -scudo
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan
+>=llvm-runtimes/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
+>=llvm-runtimes/compiler-rt-sanitizers-19 -ubsan -scudo
 
 # Yixun Lan <dlan@gentoo.org> (2023-02-16)
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V

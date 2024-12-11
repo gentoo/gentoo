@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="|| (
 	sys-devel/gcc[sanitize]
-	sys-libs/compiler-rt-sanitizers[asan(-)]
+	llvm-runtimes/compiler-rt-sanitizers[asan(-)]
 	)
 	dev-vcs/git
 "

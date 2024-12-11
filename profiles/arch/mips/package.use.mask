@@ -133,7 +133,7 @@ dev-lang/python jit
 
 # matoro <matoro_gentoo@matoro.tk> (2024-05-01)
 # Sanitizers supported on both 32-bit and 64-bit mips, #779742
-sys-libs/compiler-rt-sanitizers -asan -profile -ubsan -safestack -scudo -xray
+llvm-runtimes/compiler-rt-sanitizers -asan -profile -ubsan -safestack -scudo -xray
 
 # matoro <matoro_gentoo@matoro.tk> (2024-03-21)
 # Test suite is very fragile and doesn't even run on amd64.

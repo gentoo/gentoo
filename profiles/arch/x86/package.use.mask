@@ -257,11 +257,11 @@ app-text/pdfpc gstreamer
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -lsan
-sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
-sys-libs/compiler-rt-sanitizers -gwp-asan
-sys-libs/compiler-rt-sanitizers -profile
->=sys-libs/compiler-rt-sanitizers-16 -libfuzzer
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
+llvm-runtimes/compiler-rt-sanitizers -gwp-asan
+llvm-runtimes/compiler-rt-sanitizers -profile
+>=llvm-runtimes/compiler-rt-sanitizers-16 -libfuzzer
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
 # - aesni plugin is supported on x86

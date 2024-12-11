@@ -3,6 +3,7 @@ dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
 llvm-core/libclc
+llvm-runtimes/compiler-rt-sanitizers
 llvm-runtimes/libcxx
 llvm-runtimes/libcxxabi
 llvm-runtimes/libunwind
@@ -19,4 +20,3 @@ sys-devel/llvm-common
 sys-devel/llvm-toolchain-symlinks
 sys-devel/llvmgold
 sys-libs/compiler-rt
-sys-libs/compiler-rt-sanitizers

@@ -104,10 +104,10 @@ dev-util/diffoscope haskell
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
-sys-libs/compiler-rt-sanitizers -ubsan -scudo
-sys-libs/compiler-rt-sanitizers -profile
->=sys-libs/compiler-rt-sanitizers-19 -orc
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan -msan -tsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -scudo
+llvm-runtimes/compiler-rt-sanitizers -profile
+>=llvm-runtimes/compiler-rt-sanitizers-19 -orc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # fwupd keyworded now on ppc64

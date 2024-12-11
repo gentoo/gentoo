@@ -17,4 +17,4 @@ sci-libs/pdal
 # Not ported to ppc32. See ALL_.*_SUPPORTED_ARCH
 # in compiler-rt/cmake/. Bug #708344
 sys-libs/compiler-rt
-sys-libs/compiler-rt-sanitizers
+llvm-runtimes/compiler-rt-sanitizers

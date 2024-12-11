@@ -222,10 +222,10 @@ app-text/enchant voikko
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -lsan
-sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
-sys-libs/compiler-rt-sanitizers -profile -xray
->=sys-libs/compiler-rt-sanitizers-16 -gwp-asan -libfuzzer -orc
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -cfi -scudo
+llvm-runtimes/compiler-rt-sanitizers -profile -xray
+>=llvm-runtimes/compiler-rt-sanitizers-16 -gwp-asan -libfuzzer -orc
 
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # net-wireless/libxtrx et all needs testing

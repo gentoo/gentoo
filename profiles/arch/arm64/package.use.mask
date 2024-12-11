@@ -242,11 +242,11 @@ app-text/enchant voikko
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
-sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
-sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
-sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
->=sys-libs/compiler-rt-sanitizers-16 -orc
+llvm-runtimes/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
+llvm-runtimes/compiler-rt-sanitizers -gwp-asan -shadowcallstack
+llvm-runtimes/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
+>=llvm-runtimes/compiler-rt-sanitizers-16 -orc
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896

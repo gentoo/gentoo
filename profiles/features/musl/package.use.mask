@@ -209,7 +209,7 @@ sys-apps/util-linux nls
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
-sys-libs/compiler-rt-sanitizers gwp-asan
+llvm-runtimes/compiler-rt-sanitizers gwp-asan
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-19)
 # check does not work on musl, bug #713138

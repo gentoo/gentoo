@@ -54,9 +54,9 @@ BDEPEND="
 pkg_setup() {
 	if tc-is-clang; then
 		local clang_major_version=$(clang-major-version);
-		if ! has_version "sys-libs/compiler-rt-sanitizers:${clang_major_version}[profile]"; then
-			eerror "Compiling this package with clang requires sys-libs/compiler-rt-sanitizers to be built with 'profile' USE flag enabled"
-			die "Clang detected, but sys-libs/compiler-rt-sanitizers not build with 'profile' USE flag enabled"
+		if ! has_version "llvm-runtimes/compiler-rt-sanitizers:${clang_major_version}[profile]"; then
+			eerror "Compiling this package with clang requires llvm-runtimes/compiler-rt-sanitizers to be built with 'profile' USE flag enabled"
+			die "Clang detected, but llvm-runtimes/compiler-rt-sanitizers not build with 'profile' USE flag enabled"
 		fi
 	fi
 }

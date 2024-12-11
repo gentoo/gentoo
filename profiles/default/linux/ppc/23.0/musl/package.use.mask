@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2024-06-16)
-# Avoid pulling in sys-libs/compiler-rt-sanitizers which fails to build
+# Avoid pulling in llvm-runtimes/compiler-rt-sanitizers which fails to build
 # See bug #928936.
 sys-devel/clang-runtime sanitize
 
