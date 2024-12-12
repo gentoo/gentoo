@@ -2514,8 +2514,6 @@ toolchain_src_install() {
 		pushd "${WORKDIR}"/build-jit > /dev/null || die
 		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" -j1 install
 
-		# Punt some tools which are really only useful while building gcc
-		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \; || die
 		# This one comes with binutils
 		find "${ED}" -name libiberty.a -delete || die
 
@@ -2538,8 +2536,6 @@ toolchain_src_install() {
 	# - https://gcc.gnu.org/PR109898
 	S="${WORKDIR}"/build emake DESTDIR="${D}" -j1 install
 
-	# Punt some tools which are really only useful while building gcc
-	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \; || die
 	# This one comes with binutils
 	find "${ED}" -name libiberty.a -delete || die
 
