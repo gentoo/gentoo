@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake llvm.org llvm-utils multilib multilib-minimal
+inherit cmake llvm.org multilib multilib-minimal
 inherit prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -255,12 +255,11 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
+		-DLLVM_CMAKE_DIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/cmake"
 		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${LLVM_MAJOR}"
