@@ -9,7 +9,11 @@ inherit autotools flag-o-matic linux-mod-r1 multiprocessing
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
+<<<<<<< HEAD
 MODULES_KERNEL_MAX=6.10
+=======
+MODULES_KERNEL_MAX=6.12
+>>>>>>> ff734d4771 (sys-fs/zfs-kmod: add 2.2.7)
 MODULES_KERNEL_MIN=3.10
 
 if [[ ${PV} == 9999 ]] ; then
