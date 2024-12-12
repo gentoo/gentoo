@@ -24,8 +24,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"
 
+# https://bugs.gentoo.org/945735
+# https://github.com/lundberg/respx/issues/277
 RDEPEND="
-	dev-python/httpx[${PYTHON_USEDEP}]
+	<dev-python/httpx-0.28.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
