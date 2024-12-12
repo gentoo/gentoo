@@ -44,6 +44,7 @@ src_unpack() {
 src_prepare() {
 	default
 	eapply "${FILESDIR}"/${P}-gentoo.patch
+	eapply "${FILESDIR}"/${P}-fastcall.patch
 	sed -i \
 		-e 's:JPEG_LIB_VERSION < 80:JPEG_LIB_VERSION < 62:' \
 		code/renderer/tr_image_jpg.c || die #479652
