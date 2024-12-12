@@ -84,11 +84,6 @@ src_configure() {
 }
 
 src_test() {
-	local CMAKE_SKIP_TESTS=(
-		# https://github.com/rui314/mold/issues/1370
-		x86_64-range-extension-thunk2
-	)
-
 	export TEST_CC="$(tc-getCC)" TEST_GCC="$(tc-getCC)" \
 		TEST_CXX="$(tc-getCXX)" TEST_GXX="$(tc-getCXX)"
 	cmake_src_test
