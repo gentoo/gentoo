@@ -1,0 +1,417 @@
+From dbc06510a115241fcfd07de49c0b991cad633721 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 11 Sep 2024 10:50:26 +1000
+Subject: [PATCH] scanner: switch to using dataclasses
+
+This drops one dependency that we're not fully using anyway. Except for
+the per-attribute validators that can be done in __post_init() we're not
+using attrs for anything that dataclasses cannot do.
+---
+ .gitlab-ci.yml         |   9 ++-
+ .gitlab-ci/ci.template |   1 +
+ .gitlab-ci/config.yml  |   4 +-
+ proto/ei-scanner       | 164 ++++++++++++++++++++---------------------
+ proto/meson.build      |   2 +-
+ 5 files changed, 90 insertions(+), 90 deletions(-)
+
+diff --git ./.gitlab-ci.yml ./.gitlab-ci.yml
+index 1e5d956..caeedfa 100644
+--- ./.gitlab-ci.yml
++++ ./.gitlab-ci.yml
+@@ -40,9 +40,9 @@ variables:
+   # See the documentation here:                                                 #
+   # https://wayland.freedesktop.org/libinput/doc/latest/building_libinput.html  #
+   ###############################################################################
+-  FEDORA_PACKAGES: 'git diffutils gcc gcc-c++ pkgconf-pkg-config systemd-devel libxkbcommon-devel libxml2 doxygen python3-attrs python3-pytest python3-dbusmock python3-jinja2 python3-pip python3-pyyaml golang libabigail '
++  FEDORA_PACKAGES: 'git diffutils gcc gcc-c++ pkgconf-pkg-config systemd-devel libxkbcommon-devel libxml2 doxygen python3-pytest python3-dbusmock python3-jinja2 python3-pip python3-pyyaml golang libabigail '
+   FEDORA_PIP_PACKAGES: 'meson ninja structlog strenum '
+-  DEBIAN_PACKAGES: 'git gcc g++ pkg-config libsystemd-dev libxkbcommon-dev libxml2 doxygen python3-attr python3-pytest python3-dbusmock python3-jinja2 python3-pip python3-yaml '
++  DEBIAN_PACKAGES: 'git gcc g++ pkg-config libsystemd-dev libxkbcommon-dev libxml2 doxygen python3-pytest python3-dbusmock python3-jinja2 python3-pip python3-yaml '
+   DEBIAN_PIP_PACKAGES: 'meson ninja structlog strenum '
+   ############################ end of package lists #############################
+ 
+@@ -50,8 +50,8 @@ variables:
+   # changing these will force rebuilding the associated image
+   # Note: these tags have no meaning and are not tied to a particular
+   # libinput version
+-  FEDORA_TAG:  '2024-07-24.3'
+-  DEBIAN_TAG:  '2024-07-24.3'
++  FEDORA_TAG:  '2024-09-11.0'
++  DEBIAN_TAG:  '2024-09-11.0'
+ 
+   FDO_UPSTREAM_REPO: libinput/libei
+ 
+@@ -285,6 +285,7 @@ abicheck@fedora:40:
+       meson compile -C _build
+       meson install -C _build
+       popd
++    - pip install attrs
+   script:
+     - git remote add upstream$CI_JOB_ID https://gitlab.freedesktop.org/$FDO_UPSTREAM_REPO
+     - git fetch --tags upstream$CI_JOB_ID
+diff --git ./.gitlab-ci/ci.template ./.gitlab-ci/ci.template
+index 0c8aeb2..7e7cad5 100644
+--- ./.gitlab-ci/ci.template
++++ ./.gitlab-ci/ci.template
+@@ -285,6 +285,7 @@ abicheck@{{distro.name}}:{{version}}:
+       meson compile -C _build
+       meson install -C _build
+       popd
++    - pip install attrs
+   script:
+     - git remote add upstream$CI_JOB_ID https://gitlab.freedesktop.org/$FDO_UPSTREAM_REPO
+     - git fetch --tags upstream$CI_JOB_ID
+diff --git ./.gitlab-ci/config.yml ./.gitlab-ci/config.yml
+index d89d0fd..42db0bc 100644
+--- ./.gitlab-ci/config.yml
++++ ./.gitlab-ci/config.yml
+@@ -3,7 +3,7 @@
+ #
+ 
+ # We're happy to rebuild all containers when one changes.
+-.default_tag: &default_tag '2024-07-24.3'
++.default_tag: &default_tag '2024-09-11.0'
+ 
+ last_abi_break: abe85e051e7029bfd2e7913ab980a9e0042b6d0d
+ minimum_meson_version: 0.57.0
+@@ -24,7 +24,6 @@ distributions:
+       - libxkbcommon-devel
+       - libxml2
+       - doxygen
+-      - python3-attrs
+       - python3-pytest
+       - python3-dbusmock
+       - python3-jinja2
+@@ -51,7 +50,6 @@ distributions:
+       - libxkbcommon-dev
+       - libxml2
+       - doxygen
+-      - python3-attr
+       - python3-pytest
+       - python3-dbusmock
+       - python3-jinja2
+diff --git ./proto/ei-scanner ./proto/ei-scanner
+index 11edb85..d23fea7 100755
+--- ./proto/ei-scanner
++++ ./proto/ei-scanner
+@@ -20,9 +20,9 @@ appear in the XML file.
+ from typing import Any, Dict, List, Optional, Tuple, Union
+ from pathlib import Path
+ from textwrap import dedent
++from dataclasses import dataclass, field
+ 
+ import argparse
+-import attr
+ import jinja2
+ import jinja2.environment
+ import os
+@@ -55,48 +55,54 @@ def snake2camel(s: str) -> str:
+     return s.replace("_", " ").title().replace(" ", "")
+ 
+ 
+-@attr.s
++@dataclass
+ class Description:
+-    summary: str = attr.ib(default="")
+-    text: str = attr.ib(default="")
++    summary: str = ""
++    text: str = ""
+ 
+ 
+-@attr.s
++@dataclass
+ class Argument:
+     """
+     Argument to a request or a reply
+     """
+ 
+-    name: str = attr.ib()
+-    protocol_type: str = attr.ib()
+-    summary: str = attr.ib()
+-    enum: Optional["Enum"] = attr.ib()
+-    interface: Optional["Interface"] = attr.ib()
+-    interface_arg: Optional["Argument"] = attr.ib(default=None)
++    name: str
++    protocol_type: str
++    summary: str
++    enum: Optional["Enum"]
++    interface: Optional["Interface"]
++    interface_arg: Optional["Argument"] = None
+     """
+     For an argument with "interface_arg", this field points to the argument that
+     contains the interface name.
+     """
+-    interface_arg_for: Optional["Argument"] = attr.ib(default=None)
++    interface_arg_for: Optional["Argument"] = None
+     """
+     For an argument referenced by another argument through "interface_name", this field
+     points to the other argument that references this argument.
+     """
+-    version_arg: Optional["Argument"] = attr.ib(default=None)
++    version_arg: Optional["Argument"] = None
+     """
+     For an argument with type "new_id", this field points to the argument that
+     contains the version for this new object.
+     """
+-    version_arg_for: Optional["Argument"] = attr.ib(default=None)
++    version_arg_for: Optional["Argument"] = None
+     """
+     For an argument referenced by another argument of type "new_id", this field
+     points to the other argument that references this argument.
+     """
+-    allow_null: bool = attr.ib(default=False)
++    allow_null: bool = False
+     """
+     For an argument of type string, specify if the argument may be NULL.
+     """
+ 
++    def __post_init(self):
++        if self.protocol_type is None or self.protocol_type not in PROTOCOL_TYPES:
++            raise ValueError(f"Failed to parse protocol_type {self.protocol_type}")
++        if self.interface is not None and self.signature not in ["n", "o"]:
++            raise ValueError("Interface may only be set for object types")
++
+     @property
+     def signature(self) -> str:
+         """
+@@ -104,11 +110,6 @@ class Argument:
+         """
+         return PROTOCOL_TYPES[self.protocol_type]
+ 
+-    @interface.validator  # type: ignore
+-    def _validate_interface(self, attribute, value):
+-        if value is not None and self.signature not in ["n", "o"]:
+-            raise ValueError("Interface may only be set for object types")
+-
+     @property
+     def as_c_arg(self) -> str:
+         return f"{self.c_type} {self.name}"
+@@ -127,12 +128,6 @@ class Argument:
+             "new_id": "new_id_t",
+         }[self.protocol_type]
+ 
+-    @protocol_type.validator  # type: ignore
+-    def _validate_protocol_type(self, attribute, value):
+-        assert (
+-            value is not None and value in PROTOCOL_TYPES
+-        ), f"Failed to parse protocol_type {value}"
+-
+     @classmethod
+     def create(
+         cls,
+@@ -153,26 +148,25 @@ class Argument:
+         )
+ 
+ 
+-@attr.s
++@dataclass
+ class Message:
+     """
+     Parent class for a wire message (Request or Event).
+     """
+ 
+-    name: str = attr.ib()
+-    since: int = attr.ib()
+-    opcode: int = attr.ib()
+-    interface: "Interface" = attr.ib()
+-    description: Optional[Description] = attr.ib(default=None)
+-    is_destructor: bool = attr.ib(default=False)
+-    context_type: Optional[str] = attr.ib(default=None)
++    name: str
++    since: int
++    opcode: int
++    interface: "Interface"
++    description: Optional[Description] = None
++    is_destructor: bool = False
++    context_type: Optional[str] = None
+ 
+-    arguments: List[Argument] = attr.ib(init=False, factory=list)
++    arguments: List[Argument] = field(init=False, default_factory=list)
+ 
+-    @context_type.validator  # type: ignore
+-    def _context_type_validate(self, attr, value):
+-        if value not in [None, "sender", "receiver"]:
+-            raise ValueError(f"Invalid context type {value}")
++    def __post_init(self):
++        if self.context_type not in [None, "sender", "receiver"]:
++            raise ValueError(f"Invalid context type {self.context_type}")
+ 
+     def add_argument(self, arg: Argument) -> None:
+         if arg.name in [a.name for a in self.arguments]:
+@@ -198,7 +192,7 @@ class Message:
+         return None
+ 
+ 
+-@attr.s
++@dataclass
+ class Request(Message):
+     @classmethod
+     def create(
+@@ -225,7 +219,7 @@ class Request(Message):
+         return f"{self.interface.name}_request_{self.name}"
+ 
+ 
+-@attr.s
++@dataclass
+ class Event(Message):
+     @classmethod
+     def create(
+@@ -252,17 +246,17 @@ class Event(Message):
+         return f"{self.interface.name}_event_{self.name}"
+ 
+ 
+-@attr.s
++@dataclass
+ class Entry:
+     """
+     An enum entry
+     """
+ 
+-    name: str = attr.ib()
+-    value: int = attr.ib()
+-    enum: "Enum" = attr.ib()
+-    summary: str = attr.ib()
+-    since: int = attr.ib()
++    name: str
++    value: int
++    enum: "Enum"
++    summary: str
++    since: int
+ 
+     @classmethod
+     def create(
+@@ -278,15 +272,15 @@ class Entry:
+         return f"{self.enum.fqdn}_{self.name}"
+ 
+ 
+-@attr.s
++@dataclass
+ class Enum:
+-    name: str = attr.ib()
+-    since: int = attr.ib()
+-    interface: "Interface" = attr.ib()
+-    is_bitfield: bool = attr.ib(default=False)
+-    description: Optional[Description] = attr.ib(default=None)
++    name: str
++    since: int
++    interface: "Interface"
++    is_bitfield: bool = False
++    description: Optional[Description] = None
+ 
+-    entries: List[Entry] = attr.ib(init=False, factory=list)
++    entries: List[Entry] = field(init=False, default_factory=list)
+ 
+     @classmethod
+     def create(
+@@ -329,16 +323,20 @@ class Enum:
+         return snake2camel(self.name)
+ 
+ 
+-@attr.s
++@dataclass
+ class Interface:
+-    protocol_name: str = attr.ib()  # name as in the XML, e.g. ei_pointer
+-    version: int = attr.ib()
+-    requests: List[Request] = attr.ib(init=False, factory=list)
+-    events: List[Event] = attr.ib(init=False, factory=list)
+-    enums: List[Enum] = attr.ib(init=False, factory=list)
++    protocol_name: str  # name as in the XML, e.g. ei_pointer
++    version: int
++    requests: List[Request] = field(init=False, default_factory=list)
++    events: List[Event] = field(init=False, default_factory=list)
++    enums: List[Enum] = field(init=False, default_factory=list)
++
++    mode: str
++    description: Optional[Description] = None
+ 
+-    mode: str = attr.ib(validator=attr.validators.in_(["ei", "eis", "brei"]))
+-    description: Optional[Description] = attr.ib(default=None)
++    def __post_init(self):
++        if self.mode not in ["ei", "eis", "brei"]:
++            raise ValueError(f"Invalid mode {self.mode}")
+ 
+     @property
+     def name(self) -> str:
+@@ -444,11 +442,11 @@ class Interface:
+         return cls(protocol_name=protocol_name, version=version, mode=mode)
+ 
+ 
+-@attr.s
++@dataclass
+ class XmlError(Exception):
+-    line: int = attr.ib()
+-    column: int = attr.ib()
+-    message: str = attr.ib()
++    line: int
++    column: int
++    message: str
+ 
+     def __str__(self) -> str:
+         return f"line {self.line}:{self.column}: {self.message}"
+@@ -458,32 +456,34 @@ class XmlError(Exception):
+         return cls(line=location[0], column=location[1], message=message)
+ 
+ 
+-@attr.s
++@dataclass
+ class Copyright:
+-    text: str = attr.ib(default="")
+-    is_complete: bool = attr.ib(init=False, default=False)
++    text: str = ""
++    is_complete: bool = field(init=False, default=False)
+ 
+ 
+-@attr.s
++@dataclass
+ class Protocol:
+-    copyright: Optional[str] = attr.ib(default=None)
+-    interfaces: List[Interface] = attr.ib(factory=list)
++    copyright: Optional[str] = None
++    interfaces: List[Interface] = field(default_factory=list)
+ 
+ 
+-@attr.s
++@dataclass
+ class ProtocolParser(xml.sax.handler.ContentHandler):
+-    component: str = attr.ib()
+-    interfaces: List[Interface] = attr.ib(factory=list)
+-    copyright: Optional[Copyright] = attr.ib(init=False, default=None)
++    component: str
++    interfaces: List[Interface] = field(default_factory=list)
++    copyright: Optional[Copyright] = field(init=False, default=None)
+ 
+-    current_interface: Optional[Interface] = attr.ib(init=False, default=None)
+-    current_message: Optional[Union[Message, Enum]] = attr.ib(init=False, default=None)
+-    current_description: Optional[Description] = attr.ib(init=False, default=None)
++    current_interface: Optional[Interface] = field(init=False, default=None)
++    current_message: Optional[Union[Message, Enum]] = field(init=False, default=None)
++    current_description: Optional[Description] = field(init=False, default=None)
+     # A dict of arg name to interface_arg name mappings
+-    current_interface_arg_names: Dict[str, str] = attr.ib(init=False, default=attr.Factory(dict))  # type: ignore
+-    current_new_id_arg: Optional[Argument] = attr.ib(init=False, default=None)
++    current_interface_arg_names: Dict[str, str] = field(
++        init=False, default_factory=dict
++    )
++    current_new_id_arg: Optional[Argument] = field(init=False, default=None)
+ 
+-    _run_counter: int = attr.ib(init=False, default=0, repr=False)
++    _run_counter: int = field(init=False, default=0, repr=False)
+ 
+     @property
+     def location(self) -> Tuple[int, int]:
+diff --git ./proto/meson.build ./proto/meson.build
+index 95e9d07..db01a8b 100644
+--- ./proto/meson.build
++++ ./proto/meson.build
+@@ -13,7 +13,7 @@ if xmllint.found()
+ endif
+ 
+ pymod = import('python')
+-required_python_modules = ['attr', 'jinja2']
++required_python_modules = ['jinja2']
+ python = pymod.find_installation('python3', modules: required_python_modules)
+ if python.language_version().version_compare('<3.9')
+     error('Python 3.9 or later required')
+-- 
+2.45.2
+
