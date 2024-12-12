@@ -63,6 +63,15 @@ CDEPEND="
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	clang? ( >=llvm-core/clang-6:* )
+	doc? (
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
+			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
+			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
+			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
+		')
+	)
 	build-manual? (
 		app-text/doxygen
 		$(python_gen_cond_dep '
@@ -244,7 +253,7 @@ src_configure() {
 		-DGMX_USE_HDF5=off
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
-		-DGMX_BUILD_HELP=on
+		-DGMX_BUILD_HELP=$(usex doc)
 		-DGMX_SIMD="$acce"
 		-DGMX_NNPOT="$nnpot"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
