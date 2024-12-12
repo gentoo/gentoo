@@ -10,7 +10,7 @@ DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
 MODULES_KERNEL_MAX=6.12
-MODULES_KERNEL_MIN=3.10
+MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
