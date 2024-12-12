@@ -17,6 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic test"
 
 DEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
+BDEPEND="test? ( dev-ada/e3-testsuite )"
+
 REQUIRED_USE="${ADA_REQUIRED_USE}
 	|| ( shared static-libs static-pic )
 	test? ( static-libs )"
