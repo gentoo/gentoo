@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>zhixu.liu@gmail.com</email>
+    <name>Z. Liu</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Passook is a perl script that generates passwords. You can
+    customize the security of the password generated.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">mackers/passook</remote-id>
+  </upstream>
+</pkgmetadata>
