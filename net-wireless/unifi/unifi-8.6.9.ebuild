@@ -15,7 +15,7 @@ S="${WORKDIR}/UniFi"
 
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="systemd system-mongodb"
 RESTRICT="bindist mirror"
 
