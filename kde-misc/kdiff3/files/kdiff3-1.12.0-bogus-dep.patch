@@ -1,0 +1,27 @@
+From b187d9235e466d5fc876dc513da2ed16c8bd7611 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 12 Dec 2024 01:46:44 +0100
+Subject: [PATCH] Drop unused Qt6Core5Compat
+
+Amends https://invent.kde.org/sdk/kdiff3/-/commit/342924de5000a2821736f2c4cd58f92c6ad9c159
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 56f68e1a..4e61a6cb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -77,7 +77,6 @@ find_package(
+     Gui
+     Widgets
+     PrintSupport
+-    Core5Compat
+ )
+ 
+ find_package(
+-- 
+GitLab
+
