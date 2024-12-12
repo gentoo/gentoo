@@ -35,10 +35,3 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( CHANGELOG.rst README.md )
-
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_QT6=ON
-	)
-	ecm_src_configure
-}
