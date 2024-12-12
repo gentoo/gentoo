@@ -204,7 +204,7 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 # @INTERNAL
 # @DESCRIPTION:
 # Controls whether fixincludes should be used.
-GCC_RUN_FIXINCLUDES=0
+: "${GCC_RUN_FIXINCLUDES:=0}"
 
 tc_use_major_version_only() {
 	local use_major_version_only=0
