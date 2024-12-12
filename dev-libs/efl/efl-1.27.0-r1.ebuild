@@ -132,6 +132,8 @@ BDEPEND="${PYTHON_DEPS}
 	nls? ( sys-devel/gettext )
 	wayland? ( dev-util/wayland-scanner )"
 
+PATCHES=( "${FILESDIR}/${PN}-1.27-eina_string_view.patch" )
+
 pkg_setup() {
 	# Deprecated, provided for backward-compatibility. Everything is moved to libefreet.so.
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libefreet_trash.so.${PV}
