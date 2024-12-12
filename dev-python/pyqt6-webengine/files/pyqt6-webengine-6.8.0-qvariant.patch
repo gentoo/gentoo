@@ -1,0 +1,15 @@
+This was removed between 6.8.0.dev2411020930 and 6.8.0 final, but
+results in a build failure if missing (or at least with Qt6.8.1).
+
+qwebengineframe.sip:52:64: error: invalid use of incomplete type 'class QVariant'
+--- a/sip/QtWebEngineCore/qwebengineframe.sip
++++ b/sip/QtWebEngineCore/qwebengineframe.sip
+@@ -29,4 +29,8 @@
+ %End
+ 
++%TypeCode
++#include <QVariant>
++%End
++
+ public:
+     bool isValid() const;
