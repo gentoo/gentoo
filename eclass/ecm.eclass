@@ -46,15 +46,11 @@ fi
 # @DESCRIPTION:
 # By default, for all CATEGORIES except kde-frameworks, assume we are building
 # a GUI application. Add dependency on kde-frameworks/breeze-icons or
-# kde-frameworks/oxygen-icons and run the xdg.eclass routines for pkg_preinst,
-# pkg_postinst and pkg_postrm. If set to "true", do nothing.
+# kde-frameworks/oxygen-icons. With KFMIN lower than 6.9.0, inherit xdg.eclass,
+# run pkg_preinst, pkg_postinst and pkg_postrm. If set to "true", do nothing.
 : "${ECM_NONGUI:=false}"
 if [[ ${CATEGORY} == kde-frameworks ]]; then
 	ECM_NONGUI=true
-fi
-
-if [[ ${ECM_NONGUI} = false ]] ; then
-	inherit xdg
 fi
 
 # @ECLASS_VARIABLE: ECM_KDEINSTALLDIRS
@@ -179,6 +175,10 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${KFMIN:=$(ver_cut 1-2)}"
 fi
 : "${KFMIN:=5.116.0}"
+
+if ver_test ${KFMIN} -lt 6.9 && [[ ${ECM_NONGUI} == false ]]; then
+	inherit xdg
+fi
 
 # @ECLASS_VARIABLE: _KFSLOT
 # @INTERNAL
@@ -759,46 +759,59 @@ ecm_src_install() {
 	done
 }
 
+if [[ ${EAPI} == 8 ]]; then
+# @FUNCTION: _ecm_nongui_deprecated
+# @INTERNAL
+# @DESCRIPTION:
+# Carryall for ecm_pkg_preinst, ecm_pkg_postinst and ecm_pkg_postrm.
+_ecm_nongui_deprecated() {
+	if ver_test ${KFMIN} -ge 6.9; then
+		eqawarn "QA notice: ecm_pkg_${1} has become a no-op."
+		eqawarn "It is no longer being exported with KFMIN >=6.9.0."
+	else
+		case ${ECM_NONGUI} in
+			false) xdg_pkg_${1} ;;
+			*) ;;
+		esac
+	fi
+}
+
 # @FUNCTION: ecm_pkg_preinst
 # @DESCRIPTION:
 # Sets up environment variables required in ecm_pkg_postinst.
+# Phase function is only exported if KFMIN is <6.9.0.
 ecm_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	case ${ECM_NONGUI} in
-		false) xdg_pkg_preinst ;;
-		*) ;;
-	esac
+	_ecm_nongui_deprecated preinst
 }
 
 # @FUNCTION: ecm_pkg_postinst
 # @DESCRIPTION:
 # Updates the various XDG caches (icon, desktop, mime) if necessary.
+# Phase function is only exported if KFMIN is <6.9.0.
 ecm_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	case ${ECM_NONGUI} in
-		false) xdg_pkg_postinst ;;
-		*) ;;
-	esac
+	_ecm_nongui_deprecated postinst
 }
 
 # @FUNCTION: ecm_pkg_postrm
 # @DESCRIPTION:
 # Updates the various XDG caches (icon, desktop, mime) if necessary.
+# Phase function is only exported if KFMIN is <6.9.0.
 ecm_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	case ${ECM_NONGUI} in
-		false) xdg_pkg_postrm ;;
-		*) ;;
-	esac
+	_ecm_nongui_deprecated postrm
 }
+fi
 
+fi
+
+if ver_test ${KFMIN} -lt 6.9; then
+	EXPORT_FUNCTIONS pkg_preinst pkg_postinst pkg_postrm
 fi
 
 if [[ -v ${KDE_GCC_MINIMAL} ]]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test src_install pkg_preinst pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test src_install
