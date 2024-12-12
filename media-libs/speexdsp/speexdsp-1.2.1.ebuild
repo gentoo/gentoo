@@ -12,14 +12,14 @@ DESCRIPTION="Audio compression format designed for speech -- DSP"
 HOMEPAGE="https://www.speex.org/"
 SRC_URI="https://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_arm_neon"
 
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0-configure.patch
