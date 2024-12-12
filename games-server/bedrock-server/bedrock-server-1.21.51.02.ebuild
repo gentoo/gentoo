@@ -23,7 +23,7 @@ RDEPEND="
 
 BDEPEND="app-arch/unzip"
 
-RESTRICT="bindist mirror"
+RESTRICT="bindist fetch mirror"
 
 DOCS=(
 	"bedrock_server_how_to.html"
@@ -31,6 +31,14 @@ DOCS=(
 )
 
 QA_PREBUILT="opt/bedrock-server/bedrock_server"
+
+pkg_nofetch() {
+	einfo "Unfortunately downloading Bedrock server via CLI doesn't work anymore,"
+	einfo "as Microsoft checks for user agent and otherwise you will get only timeout."
+	einfo "Please download yourself the Bedrock server from:"
+	einfo "https://www.minecraft.net/download/server/bedrock"
+	einfo "and place it in your DISTDIR."
+}
 
 src_compile() {
 	:;
