@@ -36,6 +36,7 @@ REQUIRED_USE="
 	inventor? ( opengl )
 	motif? ( opengl )
 	qt6? ( opengl )
+	raytracerx? ( opengl )
 	tbb? ( threads )
 	vtk? ( qt6 )
 "
@@ -49,14 +50,14 @@ RDEPEND="
 	hdf5? ( sci-libs/hdf5:=[threads?] )
 	inventor? ( media-libs/SoXt )
 	motif? ( x11-libs/motif:0 )
-	opengl? ( virtual/opengl )
+	opengl? (
+		virtual/opengl
+		x11-libs/libX11
+		x11-libs/libXmu
+	)
 	qt6? (
 		dev-qt/qt3d:6
 		dev-qt/qtbase:6[gui,opengl?,widgets]
-	)
-	raytracerx? (
-		x11-libs/libX11
-		x11-libs/libXmu
 	)
 	vtk? ( sci-libs/vtk:=[qt6] )
 "
