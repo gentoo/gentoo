@@ -5,6 +5,7 @@
     <email>xemacs@gentoo.org</email>
     <name>Gentoo XEmacs project</name>
   </maintainer>
+  <stabilize-allarches/>
   <use>
     <flag name="mule">Add multi-language support to XEmacs</flag>
   </use>
