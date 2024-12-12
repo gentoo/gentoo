@@ -33,6 +33,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0-configure.patch
 	"${FILESDIR}"/${P}-vla-detection.patch
+	"${FILESDIR}"/${P}-slibtoolize.patch
 	"${FILESDIR}"/${PN}-1.2.1-valgrind.patch
 )
 
