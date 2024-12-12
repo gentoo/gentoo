@@ -137,7 +137,7 @@ src_configure() {
 		-DMOD_RTAUDIO=$(usex rtaudio)
 		-DMOD_RUBBERBAND=$(usex rubberband)
 		-DMOD_SDL2=$(usex sdl)
-		-DBUILD_TESTING=$(usex test)
+		-DBUILD_TESTING=OFF # Needs unpackaged 'kwalify'; restricted anyway.
 		-DMOD_VIDSTAB=$(usex vidstab)
 		-DMOD_XINE=$(usex xine)
 		-DMOD_XML=$(usex xml)
