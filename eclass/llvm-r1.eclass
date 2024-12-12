@@ -14,8 +14,10 @@
 # in a matching slot.  To use the eclass:
 #
 # 1. Set LLVM_COMPAT to the list of supported LLVM slots.
+#
 # 2. Use llvm_gen_dep and/or LLVM_USEDEP to add appropriate
 #    dependencies.
+#
 # 3. Use llvm-r1_pkg_setup, get_llvm_prefix or LLVM_SLOT.
 #
 # The eclass sets IUSE and REQUIRED_USE.  The flag corresponding
