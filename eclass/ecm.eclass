@@ -43,16 +43,15 @@ inherit virtualx
 fi
 
 # @ECLASS_VARIABLE: ECM_NONGUI
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, for all CATEGORIES except kde-frameworks, assume we are building
 # a GUI application. Add dependency on kde-frameworks/breeze-icons or
 # kde-frameworks/oxygen-icons and run the xdg.eclass routines for pkg_preinst,
 # pkg_postinst and pkg_postrm. If set to "true", do nothing.
-if [[ ${CATEGORY} = kde-frameworks ]] ; then
-	: "${ECM_NONGUI:=true}"
-fi
 : "${ECM_NONGUI:=false}"
+if [[ ${CATEGORY} == kde-frameworks ]]; then
+	ECM_NONGUI=true
+fi
 
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
