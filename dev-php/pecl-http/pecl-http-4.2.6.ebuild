@@ -16,7 +16,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"
 SLOT="8"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="ssl curl_ssl_gnutls +curl_ssl_openssl"
 
 COMMON_DEPEND="app-arch/brotli:=
