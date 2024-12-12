@@ -21,7 +21,7 @@ KEYWORDS="-* amd64 ~arm64"
 IUSE="demos doc gui"
 
 RDEPEND="
-	dev-libs/libfmt
+	<dev-libs/libfmt-11
 	virtual/libusb:1
 	gui? ( virtual/jre )
 "
