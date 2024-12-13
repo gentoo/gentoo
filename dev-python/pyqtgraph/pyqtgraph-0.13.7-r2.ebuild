@@ -41,6 +41,7 @@ BDEPEND="
 		dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
+	sys-apps/gawk
 "
 
 EPYTEST_XDIST=1
@@ -83,7 +84,7 @@ python_prepare_all() {
 		fi
 	done
 
-	awk -v qt_string="$(printf "%s\n" "${gentoo_qt[@]}")" -i inplace '
+	gawk -v qt_string="$(printf "%s\n" "${gentoo_qt[@]}")" -i inplace '
 	BEGIN {
 		i = 0
 		split(qt_string, qt_array, "\n")
@@ -109,15 +110,11 @@ python_prepare_all() {
 	# The order is important (we want to prefer the newest at runtime)
 	for qt in qt6 qt5; do
 		if use ${qt}; then
-			if [[ "${qt}" == qt* ]]; then
-				liborder+=( "PY${qt^^}" )
-			else
-				liborder+=( "${qt^^}" )
-			fi
+			liborder+=( "PY${qt^^}" )
 		fi
 	done
 
-	awk -v libOrder="$(printf "%s, " "${liborder[@]}")" -i inplace '
+	gawk -v libOrder="$(printf "%s, " "${liborder[@]}")" -i inplace '
 	BEGIN {
 		libOrder = "[" substr(libOrder, 1, length(libOrder) - 2) "]"
 	}
@@ -135,7 +132,7 @@ python_prepare_all() {
 				frontends+=( "Qt.PY${qt^^}: False," )
 			fi
 		done
-		awk -v frontends="$(printf "%s\n" "${frontends[@]}")" -i inplace '
+		gawk -v frontends="$(printf "%s\n" "${frontends[@]}")" -i inplace '
 		BEGIN {
 			i = 0
 			split(frontends, frontend_array, "\n")
@@ -167,13 +164,6 @@ python_test() {
 		# TODO
 		tests/exporters/test_svg.py::test_plotscene
 		tests/graphicsItems/test_ROI.py::test_PolyLineROI
-
-		# pyside2 is normally skipped if not installed but these two
-		# fail if it is installed
-		# TODO: this could be due to USE flags, revisit when pyside2
-		# gains py3.9
-		'pyqtgraph/examples/test_examples.py::testExamples[ DateAxisItem_QtDesigner.py - PySide2 ]'
-		'pyqtgraph/examples/test_examples.py::testExamples[ designerExample.py - PySide2 ]'
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
