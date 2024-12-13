@@ -22,7 +22,7 @@ S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~mips ~ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
