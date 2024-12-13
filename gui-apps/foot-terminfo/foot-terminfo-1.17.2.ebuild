@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/-terminfo/}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="!>=sys-libs/ncurses-6.3[-minimal]"
 BDEPEND="sys-libs/ncurses"
