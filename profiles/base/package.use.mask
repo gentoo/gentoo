@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# John M. Harris, Jr. <johnmh@johnmh.me> (2024-12-12)
+# seccomp is only supported with systemd
+sys-apps/fwupd seccomp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-24)
 # sci-libs/vtk[qt5] cleanup, bug #944817
 sci-libs/vtk qt5
