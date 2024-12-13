@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>zhixu.liu@gmail.com</email>
+		<name>Z. Liu</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/Syllo/nvtop/issues</bugs-to>
+		<changelog>https://github.com/Syllo/nvtop/releases</changelog>
+		<remote-id type="github">Syllo/nvtop</remote-id>
+	</upstream>
+	<longdescription lang="en">
+	NVTOP stands for Neat Videocard TOP, a (h)top like task monitor
+	for GPUs and accelerators. It can handle multiple GPUs and print
+	information about them in a htop-familiar way.
+
+	Currently supported vendors are AMD (Linux amdgpu driver), Apple
+	(limited M1 &amp; M2 support), Huawei (Ascend), Intel (Linux i915/Xe
+	drivers), NVIDIA (Linux proprietary divers), Qualcomm Adreno (Linux
+	MSM driver), Broadcom VideoCore (Linux v3d driver).
+	</longdescription>
+	<use>
+		<flag name="unicode">Enable support for ncurses Unicode choice</flag>
+	</use>
+</pkgmetadata>
