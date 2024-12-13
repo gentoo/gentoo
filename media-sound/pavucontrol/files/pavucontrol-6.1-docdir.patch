@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index bc1a300..553abc1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -28,7 +28,7 @@ configinc = include_directories('.')
+ 
+ prefix = get_option('prefix')
+ datadir = join_paths(prefix, get_option('datadir'))
+-docdir = join_paths(datadir, 'doc', 'pavucontrol')
++docdir = join_paths(datadir, 'doc', 'pavucontrol-' + meson.project_version())
+ localedir = join_paths(prefix, get_option('localedir'))
+ 
+ cdata = configuration_data()
