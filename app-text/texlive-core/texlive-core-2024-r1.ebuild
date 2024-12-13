@@ -15,8 +15,6 @@ SRC_URI="
 	https://mirrors.ctan.org/systems/texlive/Source/${MY_P}.tar.xz
 	https://gitweb.gentoo.org/proj/tex-patches.git/snapshot/tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
 		-> gentoo-tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
-	https://raw.githubusercontent.com/debian-tex/texlive-bin/58a00e704a15ec3dd8abbf3826f28207eb095251/debian/patches/1054218.patch
-		-> ${PN}-2023-pdflatex-big-endian-fix.patch
 	https://bugs.gentoo.org/attachment.cgi?id=908573
 		-> ${PN}-2023-mplib-h.patch
 	https://github.com/TeX-Live/texlive-source/commit/aec02cd7402652f00460b47a73db0e46e9fb48aa.patch
