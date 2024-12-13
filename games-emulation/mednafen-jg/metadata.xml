@@ -18,6 +18,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/mednafen/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/mednafen/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/mednafen</remote-id>
 	</upstream>
 </pkgmetadata>
