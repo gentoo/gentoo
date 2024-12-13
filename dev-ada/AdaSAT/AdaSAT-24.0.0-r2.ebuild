@@ -3,8 +3,9 @@
 
 EAPI=8
 ADA_COMPAT=( gcc_12 gcc_13 )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit ada multiprocessing
+inherit ada python-any-r1 multiprocessing
 
 DESCRIPTION="Implementation of a DPLL-based SAT solver in Ada"
 HOMEPAGE="https://github.com/AdaCore/AdaSAT"
@@ -17,12 +18,25 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic test"
 
 DEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
-BDEPEND="test? ( dev-ada/e3-testsuite )"
+BDEPEND="test? (
+	$(python_gen_any_dep '
+		dev-ada/e3-testsuite[${PYTHON_USEDEP}]
+	')
+)"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}
 	|| ( shared static-libs static-pic )
 	test? ( static-libs )"
 RESTRICT="!test? ( test )"
+
+python_check_deps() {
+	use test || return 0
+	python_has_version "dev-ada/e3-testsuite[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_compile() {
 	build () {
@@ -52,5 +66,5 @@ src_install() {
 
 src_test() {
 	export ADA_PROJECT_PATH="${S}"
-	python3 testsuite/testsuite.py || die
+	${EPYTHON} testsuite/testsuite.py || die
 }
