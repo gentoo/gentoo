@@ -20,6 +20,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/bsnes/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/bsnes/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/bsnes</remote-id>
 	</upstream>
 </pkgmetadata>
