@@ -539,10 +539,10 @@ texlive-module_src_install() {
 
 			local status
 			# "success-status aware grep", returning exit status 0 instead of 1.
-			_sgrep() { grep "$@"; return "$(( $? <= 1 ? 0 : $? ))"; }
+			_tl_sgrep() { grep "$@"; return "$(( $? <= 1 ? 0 : $? ))"; }
 			ebegin "Installing man pages"
 			find texmf-dist/doc/man -type f -name '*.[0-9n]' -print |
-				_sgrep -v "${grep_expressions[@]}" |
+				_tl_sgrep -v "${grep_expressions[@]}" |
 				xargs -d '\n' --no-run-if-empty nonfatal doman
 			status=$(pipestatus -v)
 			eend $? || die "error installing man pages (PIPESTATUS: ${status})"
