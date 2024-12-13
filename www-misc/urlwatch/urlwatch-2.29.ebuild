@@ -42,12 +42,15 @@ DOCS=( CHANGELOG.md README.md )
 distutils_enable_sphinx docs/source dev-python/alabaster
 distutils_enable_tests pytest
 
+EPYTEST_IGNORE=(
+	# Skip code quality check
+	"lib/urlwatch/tests/test_pep8.py"
+)
+
 EPYTEST_DESELECT=(
 	# Require the pdftotext module
 	"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/pdf-test.pdf]"
 	"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/pdf-test-password.pdf]"
-	# Skip code quality check
-	"lib/urlwatch/tests/test_handler.py::test_pep8_conformance"
 )
 
 pkg_postinst() {
