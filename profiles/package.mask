@@ -286,11 +286,6 @@ dev-ruby/faker:2
 # version is no longer supported upstream. Removal on 2024-12-08.
 dev-ruby/jquery-ui-rails:6
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-11-07)
-# No more used (caffe2 used to)
-# Removal on 2024-12-07.  Bug #942972.
-sci-libs/QNNPACK
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
