@@ -27,6 +27,7 @@ DOCS=( README.md RELNOTES.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.10.1-drop-forced-debugging-symbols.patch
 	"${FILESDIR}"/${PN}-3.17.1-Unbundle-cJSON.patch
+	"${FILESDIR}"/${PN}-3.17.1-c23.patch
 )
 
 src_prepare() {
