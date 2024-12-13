@@ -51,6 +51,9 @@
 		<flag name="pkcs11">
 			Add support for PKCS#11
 		</flag>
+		<flag name="prometheus">
+			A Prometheus exporter for server and query statistics.
+		</flag>
 		<flag name="queryacl">
 			Enable the module for query access control
 		</flag>

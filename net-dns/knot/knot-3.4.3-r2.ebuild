@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit flag-o-matic systemd tmpfiles
+PYTHON_COMPAT=( python3_{10..13} )
+
+inherit python-single-r1 flag-o-matic systemd tmpfiles
 
 # subslot: libknot major.libdnssec major.libzscanner major
 KNOT_SUBSLOT="15.9.4"
@@ -33,8 +35,12 @@ KNOT_MODULES=(
 	"+whoami"
 )
 
-IUSE="caps +daemon dbus +doc doh +fastparser +idn pkcs11 quic systemd test +utils xdp ${KNOT_MODULES[@]}"
+IUSE="caps +daemon dbus +doc doh +fastparser +idn pkcs11 prometheus python quic systemd test +utils xdp ${KNOT_MODULES[@]}"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="
+	prometheus? ( python )
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 COMMON_DEPEND="
 	dev-libs/libedit
@@ -62,6 +68,13 @@ RDEPEND="
 		doh? ( net-libs/nghttp2:= )
 		idn? ( net-dns/libidn2:= )
 	)
+	python? ( ${PYTHON_DEPS} )
+	prometheus? (
+		$(python_gen_cond_dep '
+			dev-python/prometheus-client[${PYTHON_USEDEP}]
+			dev-python/psutil[${PYTHON_USEDEP}]
+		')
+	)
 	xdp? (
 		>=dev-libs/libbpf-1.0:=
 		net-libs/xdp-tools
@@ -72,6 +85,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
+	python? (
+		${PYTHON_DEPS}
+	)
 	test? (
 		pkcs11? ( dev-libs/softhsm )
 	)
@@ -80,6 +96,10 @@ BDEPEND="
 # Used to check cpuset_t in sched.h with NetBSD.
 # False positive because linux have sched.h too but with cpu_set_t
 QA_CONFIG_IMPL_DECL_SKIP=( cpuset_create cpuset_destroy )
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	# https://gitlab.nic.cz/knot/knot-dns/-/issues/946
@@ -148,6 +168,18 @@ src_compile() {
 
 src_install() {
 	use doc && local HTML_DOCS=( doc/_build/html/{*.html,*.js,_sources,_static} )
+
+	if use python; then
+		python_domodule python/libknot/libknot
+		newdoc python/libknot/README.md README.python.md
+	fi
+
+	if use prometheus; then
+		python_domodule python/knot_exporter/knot_exporter
+		python_scriptinto /usr/sbin
+		python_newscript python/knot_exporter/knot_exporter/knot_exporter.py knot-exporter
+		newdoc python/knot_exporter/README.md README.knot_exporter.md
+	fi
 
 	default
 
