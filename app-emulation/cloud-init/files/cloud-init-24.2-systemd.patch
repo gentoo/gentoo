@@ -1,0 +1,152 @@
+From 3f97be6df5c59339e09ff50e97a94869c29741d0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Fri, 6 Dec 2024 22:46:31 +0100
+Subject: [PATCH] feat(gentoo): Add compatibility for Gentoo with systemd
+ (#5918)
+
+---
+ cloudinit/distros/gentoo.py            | 37 +++++++++++++++++---------
+ tests/unittests/distros/test_gentoo.py | 34 ++++++++++++++++-------
+ 2 files changed, 48 insertions(+), 23 deletions(-)
+
+diff --git a/cloudinit/distros/gentoo.py b/cloudinit/distros/gentoo.py
+index 5ab41bbd9db..94fa6f7aa01 100644
+--- a/cloudinit/distros/gentoo.py
++++ b/cloudinit/distros/gentoo.py
+@@ -1,8 +1,10 @@
+ # Copyright (C) 2014 Rackspace, US Inc.
+ # Copyright (C) 2016 Matthew Thode.
++# Copyright (C) 2024 Andreas K. Huettel
+ #
+ # Author: Nate House <nathan.house@rackspace.com>
+ # Author: Matthew Thode <prometheanfire@gentoo.org>
++# Author: Andreas K. Huettel <dilfridge@gentoo.org>
+ #
+ # This file is part of cloud-init. See LICENSE file for license information.
+ 
+@@ -18,7 +20,6 @@
+ 
+ class Distro(distros.Distro):
+     locale_gen_fn = "/etc/locale.gen"
+-    hostname_conf_fn = "/etc/conf.d/hostname"
+     default_locale = "en_US.UTF-8"
+ 
+     # C.UTF8 makes sense to generate, but is not selected
+@@ -27,20 +28,23 @@ class Distro(distros.Distro):
+ 
+     def __init__(self, name, cfg, paths):
+         distros.Distro.__init__(self, name, cfg, paths)
++
++        if distros.uses_systemd():
++            self.hostname_conf_fn = "/etc/hostname"
++        else:
++            self.hostname_conf_fn = "/etc/conf.d/hostname"
++
+         # This will be used to restrict certain
+         # calls from repeatedly happening (when they
+         # should only happen say once per instance...)
+         self._runner = helpers.Runners(paths)
+         self.osfamily = "gentoo"
+-        # Fix sshd restarts
+-        cfg["ssh_svcname"] = "/etc/init.d/sshd"
+-        if distros.uses_systemd():
+-            LOG.error("Cloud-init does not support systemd with gentoo")
++        if not distros.uses_systemd():
++            # Fix sshd restarts (openrc-specific?)
++            cfg["ssh_svcname"] = "/etc/init.d/sshd"
+ 
+     def apply_locale(self, _, out_fn=None):
+-        """rc-only - not compatible with systemd
+-
+-        Locales need to be added to /etc/locale.gen and generated prior
++        """Locales need to be added to /etc/locale.gen and generated prior
+         to selection. Default to en_US.UTF-8 for simplicity.
+         """
+         util.write_file(self.locale_gen_fn, "\n".join(self.locales), mode=644)
+@@ -48,7 +52,7 @@ def apply_locale(self, _, out_fn=None):
+         # generate locales
+         subp.subp(["locale-gen"], capture=False)
+ 
+-        # select locale
++        # select locale, works for both openrc and systemd
+         subp.subp(
+             ["eselect", "locale", "set", self.default_locale], capture=False
+         )
+@@ -77,10 +81,17 @@ def _write_hostname(self, hostname, filename):
+         if not conf:
+             conf = HostnameConf("")
+ 
+-        # Many distro's format is the hostname by itself, and that is the
+-        # way HostnameConf works but gentoo expects it to be in
+-        #     hostname="the-actual-hostname"
+-        conf.set_hostname('hostname="%s"' % hostname)
++        if distros.uses_systemd():
++            # Gentoo uses the same format for /etc/hostname as everyone else-
++            # only the hostname by itself. Works for openrc and systemd, but
++            # openrc has its own config file and /etc/hostname is generated.
++            conf.set_hostname(hostname)
++        else:
++            # Openrc generates /etc/hostname from /etc/conf.d/hostname with the
++            # differing format
++            #     hostname="the-actual-hostname"
++            conf.set_hostname('hostname="%s"' % hostname)
++
+         util.write_file(filename, str(conf), 0o644)
+ 
+     def _read_system_hostname(self):
+diff --git a/tests/unittests/distros/test_gentoo.py b/tests/unittests/distros/test_gentoo.py
+index a307b9a29ba..979e6d82638 100644
+--- a/tests/unittests/distros/test_gentoo.py
++++ b/tests/unittests/distros/test_gentoo.py
+@@ -2,27 +2,41 @@
+ 
+ from cloudinit import atomic_helper, util
+ from tests.unittests.distros import _get_distro
+-from tests.unittests.helpers import CiTestCase
++from tests.unittests.helpers import CiTestCase, mock
+ 
+ 
+ class TestGentoo(CiTestCase):
+-    def test_write_hostname(self):
++    def test_write_hostname(self, whatever=False):
+         distro = _get_distro("gentoo")
+         hostname = "myhostname"
+         hostfile = self.tmp_path("hostfile")
+         distro._write_hostname(hostname, hostfile)
+-        self.assertEqual(
+-            'hostname="myhostname"\n', util.load_text_file(hostfile)
+-        )
++        if distro.uses_systemd():
++            self.assertEqual("myhostname\n", util.load_text_file(hostfile))
++        else:
++            self.assertEqual(
++                'hostname="myhostname"\n', util.load_text_file(hostfile)
++            )
+ 
+-    def test_write_existing_hostname_with_comments(self):
++    def test_write_existing_hostname_with_comments(self, whatever=False):
+         distro = _get_distro("gentoo")
+         hostname = "myhostname"
+         contents = '#This is the hostname\nhostname="localhost"'
+         hostfile = self.tmp_path("hostfile")
+         atomic_helper.write_file(hostfile, contents, omode="w")
+         distro._write_hostname(hostname, hostfile)
+-        self.assertEqual(
+-            '#This is the hostname\nhostname="myhostname"\n',
+-            util.load_text_file(hostfile),
+-        )
++        if distro.uses_systemd():
++            self.assertEqual(
++                "#This is the hostname\nmyhostname\n",
++                util.load_text_file(hostfile),
++            )
++        else:
++            self.assertEqual(
++                '#This is the hostname\nhostname="myhostname"\n',
++                util.load_text_file(hostfile),
++            )
++
++
++@mock.patch("cloudinit.distros.uses_systemd", return_value=False)
++class TestGentooOpenRC(TestGentoo):
++    pass
