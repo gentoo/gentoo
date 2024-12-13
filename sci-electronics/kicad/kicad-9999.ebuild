@@ -17,8 +17,8 @@ if [[ ${PV} == *9999* ]]; then
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
-	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
-	S="${WORKDIR}/${PN}-${MY_PV}"
+	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
+	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
