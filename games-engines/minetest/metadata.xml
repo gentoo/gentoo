@@ -44,7 +44,8 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/minetest/minetest/issues</bugs-to>
-		<doc lang="en">https://wiki.minetest.net/Main_Page</doc>
+		<changelog>https://dev.minetest.net/Changelog</changelog>
+		<doc>https://wiki.luanti.org/Main_Page</doc>
 		<remote-id type="github">minetest/minetest</remote-id>
 	</upstream>
 </pkgmetadata>
