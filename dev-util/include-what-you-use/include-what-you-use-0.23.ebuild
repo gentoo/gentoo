@@ -30,10 +30,6 @@ DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-llvm_check_deps() {
-	has_version "llvm-core/clang:${LLVM_SLOT}"
-}
-
 pkg_setup() {
 	llvm-r1_pkg_setup
 	python-single-r1_pkg_setup
