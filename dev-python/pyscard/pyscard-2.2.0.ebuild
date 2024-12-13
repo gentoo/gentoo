@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~mips ~ppc64 ~riscv ~s390 x86"
 
 DEPEND="
 	sys-apps/pcsc-lite
