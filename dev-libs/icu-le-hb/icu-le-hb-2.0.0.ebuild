@@ -11,7 +11,7 @@ SRC_URI="https://github.com/harfbuzz/icu-le-hb/releases/download/${PV}/${P}.tar.
 
 LICENSE="icu"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ppc ~ppc64 sparc ~x86"
 
 # dev-libs/icu is not linked into icu-le-hb but the latter still needs
 # to be rebuilt on dev-libs/icu upgrades (see bug #621786).
