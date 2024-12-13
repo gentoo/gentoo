@@ -11,7 +11,4 @@
 	file metadata that revison control systems do not normally support, but that
 	is important for /etc, such as the permissions of /etc/shadow.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">joeyh/etckeeper</remote-id>
-	</upstream>
 </pkgmetadata>
