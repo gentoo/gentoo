@@ -10,7 +10,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 GO_OPTIONAL=1
-inherit flag-o-matic go-module meson optfeature python-single-r1
+inherit go-module meson optfeature python-single-r1
 
 DESCRIPTION="A multiple large virtual desktop window manager derived from fvwm"
 HOMEPAGE="https://www.fvwm.org/"
@@ -101,11 +101,6 @@ RDEPEND="
 DEPEND="${COMMON_DEPEND}"
 
 src_configure() {
-	# Signed chars are required.
-	for arch in arm arm64 ppc ppc64; do
-		use $arch && append-flags -fsigned-chars
-	done
-
 	local emesonargs=(
 		"-Dpng=enabled"
 		"-Dsm=enabled"

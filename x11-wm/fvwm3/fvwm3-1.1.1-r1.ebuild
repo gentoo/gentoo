@@ -105,11 +105,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# Signed chars are required.
-	for arch in arm arm64 ppc ppc64; do
-		use $arch && append-flags -fsigned-chars
-	done
-
 	local emesonargs=(
 		"-Dpng=enabled"
 		"-Dsm=enabled"
