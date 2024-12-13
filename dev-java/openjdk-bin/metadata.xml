@@ -19,5 +19,6 @@
 		<remote-id type="github">adoptium/temurin11-binaries</remote-id>
 		<remote-id type="github">adoptium/temurin17-binaries</remote-id>
 		<remote-id type="github">adoptium/temurin21-binaries</remote-id>
+		<remote-id type="github">adoptium/temurin25-binaries</remote-id>
 	</upstream>
 </pkgmetadata>
