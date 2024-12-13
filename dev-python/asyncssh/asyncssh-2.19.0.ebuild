@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="|| ( EPL-2.0 GPL-2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~s390"
 
 RDEPEND="
 	virtual/openssh
