@@ -23,6 +23,13 @@ src_prepare() {
 	cmake_src_prepare
 }
 
+src_configure() {
+	local -a mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
+	)
+	cmake_src_configure
+}
+
 src_test() {
 	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:"${BUILD_DIR}"/src/ cmake_src_test
 }
