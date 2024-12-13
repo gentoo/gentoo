@@ -16,6 +16,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/sameboy/-/issues</bugs-to>
+		<changelog>https://sameboy.github.io/changelog/</changelog>
 		<remote-id type="gitlab">jgemu/sameboy</remote-id>
 	</upstream>
 </pkgmetadata>
