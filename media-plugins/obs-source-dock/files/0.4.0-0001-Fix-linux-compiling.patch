@@ -1,0 +1,36 @@
+From b97b1bfb342310661908eda40e595bfc3c578aab Mon Sep 17 00:00:00 2001
+From: Exeldro <exelsor@hotmail.com>
+Date: Mon, 9 Dec 2024 12:54:59 +0100
+Subject: [PATCH] Fix linux compiling
+
+---
+ qt-display.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/qt-display.cpp b/qt-display.cpp
+index 05d07f5..f0723b5 100644
+--- a/qt-display.cpp
++++ b/qt-display.cpp
+@@ -173,14 +173,18 @@ bool QTToGSWindow(QWindow *window, gs_window &gswindow)
+ 		gswindow.display = obs_get_nix_platform_display();
+ 		break;
+ #ifdef ENABLE_WAYLAND
+-	case OBS_NIX_PLATFORM_WAYLAND:
++	case OBS_NIX_PLATFORM_WAYLAND: {
+ 		QPlatformNativeInterface *native =
+ 			QGuiApplication::platformNativeInterface();
+ 		gswindow.display =
+ 			native->nativeResourceForWindow("surface", window);
+ 		success = gswindow.display != nullptr;
+ 		break;
++	}
+ #endif
++	default:
++		success = false;
++		break;
+ 	}
+ #endif
+ 	return success;
+-- 
+2.45.2
+
