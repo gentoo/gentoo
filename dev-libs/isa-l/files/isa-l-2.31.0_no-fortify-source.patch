@@ -1,0 +1,38 @@
+From: Filip Kobierski <fkobi@pm.me>
+Date: Fri, 6 Sep 2024 12:49:09 +0200
+Upstream hardcodes FORTIFY_SOURCE to 2. This patch removes it so it is not redefined when we set it.
+This fixes https://bugs.gentoo.org/935525
+
+---
+ configure.ac | 1 -
+ make.inc     | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 72500ee..72bbb54 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -301,7 +301,6 @@ my_CFLAGS="\
+ -Wstrict-prototypes \
+ -Wtype-limits \
+ -fstack-protector \
+--D_FORTIFY_SOURCE=2 \
+ "
+ AC_SUBST([my_CFLAGS])
+ 
+diff --git a/make.inc b/make.inc
+index 33baf49..0cfc571 100644
+--- a/make.inc
++++ b/make.inc
+@@ -57,7 +57,7 @@ DEBUG_yasm = -g dwarf2
+ DEBUG_nasm = -g
+ 
+ # Default arch= build options
+-CFLAGS_    = -Wall -Wchar-subscripts -Wformat-security -Wnested-externs -Wpointer-arith -Wshadow -Wstrict-prototypes -Wtype-limits -fstack-protector -D_FORTIFY_SOURCE=2
++CFLAGS_    = -Wall -Wchar-subscripts -Wformat-security -Wnested-externs -Wpointer-arith -Wshadow -Wstrict-prototypes -Wtype-limits -fstack-protector
+ ASFLAGS_   = -f elf64
+ ARFLAGS_   = cr $@
+ STRIP_gcc  = strip -d -R .comment $@
+-- 
+2.44.2
+
