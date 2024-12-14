@@ -72,7 +72,9 @@ src_install() {
 		for pkg in "${!LIST[@]}"; do
 			doins "${pkg}-${LIST[$pkg]}"/*[!AUTHORS\|LICENSE\|README.md\|check.py]
 			for f in AUTHORS LICENSE README.md; do
-				newdoc "${pkg}-${LIST[$pkg]}/${f}" "${pkg}_${f}"
+				if [ -f "${pkg}-${LIST[$pkg]}/${f}" ]; then
+					newdoc "${pkg}-${LIST[$pkg]}/${f}" "${pkg}_${f}"
+				fi
 			done
 		done
 	}
