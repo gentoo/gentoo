@@ -971,12 +971,16 @@ toolchain_setup_ada() {
 	if ver_test ${ada_bootstrap} -gt ${PV} || [[ -z ${ada_bootstrap} ]] ; then
 		ebegin "Testing fallback dev-lang/ada-bootstrap for Ada"
 		if has_version -b "<dev-lang/ada-bootstrap-${SLOT}" ; then
-			# TODO: Figure out ada-bootstrap versioning/slots
+			# Workaround the old scheme
+			if has_version -b "=dev-lang/ada-bootstrap-0_p2021*" ; then
+				ada_bootstrap=10
+			else
+				local latest_ada_bootstrap=$(best_version -b "<dev-lang/ada-bootstrap-${SLOT}")
+				latest_ada_bootstrap="${latest_ada_bootstrap#dev-lang/ada-bootstrap-}"
+				latest_ada_bootstrap=$(ver_cut 1 ${latest_ada_bootstrap})
+				ada_bootstrap="${latest_ada_bootstrap}"
+			fi
 
-			#local latest_ada_bootstrap=$(best_version -b "<dev-lang/ada-bootstrap-${SLOT}")
-			#latest_ada_bootstrap="${latest_ada_bootstrap#dev-lang/ada-bootstrap-}"
-			#latest_ada_bootstrap=$(ver_cut 1 ${latest_ada_bootstrap})
-			ada_bootstrap="10"
 			ada_bootstrap_type=ada-bootstrap
 			ada_bootstrap_bin_dir="${BROOT}/usr/lib/ada-bootstrap/bin"
 
