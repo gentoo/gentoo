@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common desktop gnome2-utils readme.gentoo-r1
+inherit elisp-common desktop eapi9-pipestatus gnome2-utils readme.gentoo-r1
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -22,7 +22,7 @@ IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
 src_install() {
 	insinto "${SITELISP}"
 	sed -e "s:@libdir@:$(get_libdir):g" subdirs.el.in | newins - subdirs.el
-	assert
+	pipestatus || die
 	newins site-gentoo.el{,.orig}
 
 	keepdir /etc/emacs
