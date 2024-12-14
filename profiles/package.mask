@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
+# Last "release" seems to have been an AUR special, and even that is now
+# >6 years old and still KF5 based. No known repository, no tarball source
+# except AUR. Removal on 2025-01-13.
+app-crypt/kencfs-plasma
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
 # Archived and unmaintained upstream; see also:
 # https://invent.kde.org/libraries/atcore/-/issues/2
 # Library without revdeps. Removal on 2025-01-13.
