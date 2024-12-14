@@ -277,6 +277,17 @@ src_install() {
 }
 
 pkg_postinst() {
+	if [[ -z ${EPREFIX} ]] ; then
+		local file
+		# See bug #599684 and  bug #753581 (at least)
+		for file in /etc/arch-release /etc/redhat-release /etc/debian_version ; do
+			eerror "Errant ${file} found!"
+			eerror "The presence of these files is known to confuse CMake's"
+			eerror "library path logic. Please (re)move this file:"
+			eerror " mv ${file} ${file}.bak"
+		done
+	fi
+
 	if use gui; then
 		xdg_icon_cache_update
 		xdg_desktop_database_update
