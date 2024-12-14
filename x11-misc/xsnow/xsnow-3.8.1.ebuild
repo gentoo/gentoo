@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit autotools xdg
 
 DESCRIPTION="let it snow on your desktop and windows"
@@ -10,7 +11,10 @@ SRC_URI="https://www.ratrabbit.nl/downloads/xsnow/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -29,6 +33,12 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
+	test? (
+		media-gfx/scrot
+		x11-apps/xdpyinfo
+		x11-base/xorg-server[xvfb]
+		x11-misc/xdotool
+	)
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.7-gamesdir.patch
