@@ -11,7 +11,7 @@ MY_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="A GUI application that allows to manage multiple target systems through BMC"
 HOMEPAGE="https://www.supermicro.com/"
-SRC_URI="https://www.supermicro.com/Bios/sw_download/588/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz"
+SRC_URI="https://www.supermicro.com/Bios/sw_download/832/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz"
 
 LICENSE="supermicro"
 SLOT="0"
