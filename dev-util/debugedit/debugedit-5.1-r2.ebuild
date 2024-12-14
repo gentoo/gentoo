@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 DEPEND="
 	>=dev-libs/elfutils-0.176-r1:=
 	>=dev-libs/xxhash-0.8:=
-	elibc_musl? ( sys-libs/error-standalone )
+	elibc_musl? ( <sys-libs/error-standalone-2.0 )
 "
 RDEPEND="
 	${DEPEND}
