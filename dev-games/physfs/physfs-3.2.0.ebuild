@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/icculus/physfs.git"
 else
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc64 ~riscv x86"
 	SRC_URI="https://github.com/icculus/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
 fi
