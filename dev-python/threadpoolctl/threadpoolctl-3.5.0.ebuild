@@ -26,6 +26,7 @@ BDEPEND="
 	test? (
 		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
 "
