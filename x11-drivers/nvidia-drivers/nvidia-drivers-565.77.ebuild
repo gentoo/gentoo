@@ -122,15 +122,15 @@ pkg_setup() {
 	use kernel-open && CONFIG_CHECK+=" MMU_NOTIFIER" #843827
 
 	local drm_helper_msg="Cannot be directly selected in the kernel's config menus, and may need
-	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
-	DRM_QXL=m, DRM_NOUVEAU=m also acceptable if a module and *not* built-in."
+	selection of a DRM device even if unused, e.g. CONFIG_DRM_QXL=m or
+	DRM_AMDGPU=m (among others, consult the kernel config's help), can
+	also use DRM_NOUVEAU=m as long as built as module *not* built-in."
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	${drm_helper_msg}"
 	local ERROR_DRM_TTM_HELPER="CONFIG_DRM_TTM_HELPER: is not set but is needed to compile when using
 	kernel version 6.11.x or newer while DRM_FBDEV_EMULATION is set.
-	${drm_helper_msg}
-	Many DRM devices like DRM_I915 cannot currently be used to enable this."
+	${drm_helper_msg}"
 	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of another option that requires it such as CONFIG_KVM."
