@@ -1,0 +1,38 @@
+From: https://github.com/cjd/mtpfs/commit/3b7b0d3ac7e15c9b654e19489bb4be84d48698f7.patch
+From: Rudi Heitbaum <rudi@heitbaum.com>
+Date: Mon, 9 Dec 2024 12:49:20 +0000
+Subject: [PATCH] fix gcc-15 build
+
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -812,7 +812,7 @@ mtpfs_release (const char *path, struct fuse_file_info *fi)
+ }
+ 
+ void
+-mtpfs_destroy ()
++mtpfs_destroy (void *buf)
+ {
+   enter_lock ("destroy");
+   if (files)
+@@ -1622,7 +1622,7 @@ mtpfs_init ()
+ }
+ 
+ int
+-mtpfs_blank()
++mtpfs_blank (const char *path, mode_t mode)
+ {
+   // Do nothing
+ }
+
+--- a/mtpfs.h
++++ b/mtpfs.h
+@@ -49,9 +49,9 @@ static int find_storage(const gchar * path);
+  
+     /* fuse functions */
+ static void * mtpfs_init (void);
+-static int mtpfs_blank ();
++static int mtpfs_blank (const char *path, mode_t mode);
+ static int mtpfs_release (const char *path, struct fuse_file_info *fi);
+-void mtpfs_destroy ();
++void mtpfs_destroy (void *buf);
+ static int mtpfs_readdir (const gchar * path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fi);

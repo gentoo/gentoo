@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,8 @@ PATCHES=( "${FILESDIR}"/${P}-fix-mutex-crash.patch
 	"${FILESDIR}"/${P}-unitialized-variable.patch
 	"${FILESDIR}"/${P}-wking-patches/
 	"${FILESDIR}"/${P}-g_printf.patch
-	"${FILESDIR}"/${P}-deprecated_lock_init.patch )
+	"${FILESDIR}"/${P}-deprecated_lock_init.patch 
+	"${FILESDIR}"/${P}-c23-fix.patch )
 
 src_prepare() {
 	default
