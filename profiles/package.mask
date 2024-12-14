@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
+# Archived and unmaintained upstream; see also:
+# https://invent.kde.org/libraries/atcore/-/issues/2
+# Library without revdeps. Removal on 2025-01-13.
+dev-libs/atcore
+
 # Ulrich Müller <ulm@gentoo.org> (2024-12-13)
 # Unmaintained upstream: last release (2.40) in 2009, last commit
 # to upstream repository in 2017. Broken with Emacs 29.
