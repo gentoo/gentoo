@@ -64,6 +64,7 @@ and rerun mkdhparams if needed. Location has changed
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.8-aclocal-fix.patch"
 	"${FILESDIR}/${PN}-5.0.8-ar-fix.patch"
+	"${FILESDIR}/${PN}-5.2.10-gcc15.patch"
 )
 
 src_prepare() {
