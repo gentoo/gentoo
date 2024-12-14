@@ -284,6 +284,11 @@ src_configure() {
 				-x test_strtod
 			)
 			;;
+		hppa*)
+			COMMON_TEST_SKIPS+=(
+				-x test_gdb
+			)
+			;;
 		mips*)
 			COMMON_TEST_SKIPS+=(
 				-x test_ctypes
