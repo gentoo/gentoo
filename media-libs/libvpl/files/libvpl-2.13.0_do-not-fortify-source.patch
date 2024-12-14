@@ -1,0 +1,23 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+---
+ cmake/CompileOptions.cmake | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/cmake/CompileOptions.cmake b/cmake/CompileOptions.cmake
+index 02926c4..bba557d 100644
+--- a/cmake/CompileOptions.cmake
++++ b/cmake/CompileOptions.cmake
+@@ -51,9 +51,6 @@ else()
+   add_compile_options("-Werror=format-security")
+   if(NOT MINGW)
+     string(TOLOWER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE)
+-    if(NOT CMAKE_BUILD_TYPE MATCHES debug)
+-      add_definitions("-D_FORTIFY_SOURCE=2")
+-    endif()
+   endif()
+   if(NOT MINGW)
+     add_compile_options("-fstack-protector-strong")
+-- 
+2.45.2
+
