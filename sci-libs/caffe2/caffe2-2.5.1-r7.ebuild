@@ -141,6 +141,12 @@ src_prepare() {
 		cmake/ProtoBuf.cmake \
 		aten/src/ATen/CMakeLists.txt \
 		|| die
+	# Change libc10* path
+	sed -i \
+		-e "/EXPORT/s|DESTINATION lib)|DESTINATION $(get_libdir))|" \
+		c10/cuda/CMakeLists.txt \
+		c10/CMakeLists.txt \
+		|| die
 
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
@@ -315,7 +321,4 @@ src_install() {
 
 	mv "${D}"/usr/$(get_libdir)/libtorch_global_deps.so \
 		"${D}"/$(python_get_sitedir)/torch/lib/ || die
-
-	mv "${D}"/usr/lib/libc10*.so \
-		"${D}"/usr/$(get_libdir)/ || die
 }
