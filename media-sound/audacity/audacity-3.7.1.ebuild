@@ -41,6 +41,7 @@ IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 +ogg
 REQUIRED_USE="
 	audiocom? ( wavpack )
 	opus? ( ogg )
+	test? ( mpg123 )
 	vorbis? ( ogg )
 "
 RESTRICT="!test? ( test )"
