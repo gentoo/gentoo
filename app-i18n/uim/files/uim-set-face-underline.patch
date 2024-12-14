@@ -1,0 +1,32 @@
+https://github.com/uim/uim/commit/7b903ddf144344e49da12cc070f7c11f82ae61db
+
+commit 7b903ddf144344e49da12cc070f7c11f82ae61db
+Author: Sutou Kouhei <kou@clear-code.com>
+Date:   Fri Aug 11 10:44:26 2023 +0900
+
+    emacs: use set-face-underline
+    
+    set-face-underline-p is removed in Emacs 29.
+
+diff --git a/emacs/uim-var.el b/emacs/uim-var.el
+index 189f91c9..ce40b6db 100644
+--- a/emacs/uim-var.el
++++ b/emacs/uim-var.el
+@@ -435,7 +435,7 @@ keeps the size of it when showing the candidates.")
+ (make-face 'uim-preedit-face)
+ 
+ (copy-face 'uim-preedit-face 'uim-preedit-underline-face)
+-(set-face-underline-p        'uim-preedit-underline-face t)
++(set-face-underline          'uim-preedit-underline-face t)
+ 
+ ;; highlight
+ (make-face 'uim-preedit-highlight-face)
+@@ -443,7 +443,7 @@ keeps the size of it when showing the candidates.")
+ (set-face-background 'uim-preedit-highlight-face "Blue3")
+ 
+ (copy-face 'uim-preedit-highlight-face 'uim-preedit-highlight-underline-face)
+-(set-face-underline-p 'uim-preedit-highlight-underline-face t)
++(set-face-underline   'uim-preedit-highlight-underline-face t)
+ 
+ ;; separator
+ (make-face 'uim-separator-face)

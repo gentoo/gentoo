@@ -90,6 +90,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-Wconversion.patch
 	"${FILESDIR}"/${PN}-xkb.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
+	"${FILESDIR}"/${PN}-set-face-underline.patch
 )
 
 DOCS=( AUTHORS NEWS README RELNOTE doc )
