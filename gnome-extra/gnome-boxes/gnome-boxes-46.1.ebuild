@@ -76,7 +76,7 @@ If you have an AMD Processor, run:
 # modprobe kvm-amd"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-46.1-c99.patch
+	"${FILESDIR}"/${PN}-45.0-c99.patch
 )
 
 pkg_pretend() {

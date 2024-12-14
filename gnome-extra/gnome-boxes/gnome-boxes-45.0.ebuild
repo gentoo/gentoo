@@ -74,6 +74,10 @@ If you have an Intel Processor, run:
 If you have an AMD Processor, run:
 # modprobe kvm-amd"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-45.0-c99.patch
+)
+
 pkg_pretend() {
 	linux-info_get_any_version
 
