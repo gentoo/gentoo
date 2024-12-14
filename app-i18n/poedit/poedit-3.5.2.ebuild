@@ -15,7 +15,7 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}-oss/${P}.tar.
 LICENSE="MIT"
 SLOT="0"
 
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
 	app-text/gtkspell:3
