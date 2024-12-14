@@ -142,6 +142,12 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	statvfs64 re_set_syntax re_compile_pattern re_search re_match
 )
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != "binary" ]] && use jit && ! tc-is-gcc ; then
+		die "Emacs must be built with gcc[jit] if USE=jit is enabled."
+	fi
+}
+
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[^0-9.]*\([0-9.]*\).*/\1/p' \
