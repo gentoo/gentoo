@@ -151,6 +151,8 @@ python_test() {
 	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	# avoid other stuff being multithreaded when using xdist
+	local -x PYTHON_CPU_COUNT=1
 	epytest scipy
 }
 
