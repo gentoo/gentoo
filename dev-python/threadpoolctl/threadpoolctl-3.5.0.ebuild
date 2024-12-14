@@ -24,14 +24,19 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# Asserts against a hardcoded list of CPUs.  Either we skip it
-	# or file bugs about missing architectures until upstream realizes
-	# how bad idea that were.
-	tests/test_threadpoolctl.py::test_architecture
-	# This test fails if the Python executable (or any library that it
-	# links to) uses OpenMP.  This can particularly be the case with
-	# CPython 3.12 that links to app-crypt/libb2.
-	# https://github.com/joblib/threadpoolctl/issues/146
-	tests/test_threadpoolctl.py::test_command_line_empty
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Asserts against a hardcoded list of CPUs.  Either we skip it
+		# or file bugs about missing architectures until upstream realizes
+		# how bad idea that were.
+		tests/test_threadpoolctl.py::test_architecture
+		# This test fails if the Python executable (or any library that it
+		# links to) uses OpenMP.  This can particularly be the case with
+		# CPython 3.12 that links to app-crypt/libb2.
+		# https://github.com/joblib/threadpoolctl/issues/146
+		tests/test_threadpoolctl.py::test_command_line_empty
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
