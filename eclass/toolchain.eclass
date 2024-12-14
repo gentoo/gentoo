@@ -1635,8 +1635,9 @@ toolchain_src_configure() {
 	[[ ${CTARGET} == *-darwin* ]] && \
 		confgcc+=( --enable-version-specific-runtime-libs )
 
+	# Linux specifically here for bug #946397.
 	# TODO: amdgcn-amdhsa?
-	[[ ${CTARGET} == x86_64* ]] && confgcc+=(
+	[[ ${CTARGET} == x86_64*-*-linux-* ]] && confgcc+=(
 		--enable-offload-defaulted
 		--enable-offload-targets=nvptx-none
 	)
