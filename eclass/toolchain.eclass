@@ -1085,19 +1085,26 @@ toolchain_setup_ada() {
 
 	# Create bin wrappers because not all of the build system respects
 	# GNATBIND or GNATMAKE.
-	mkdir "${T}"/ada-wrappers || die
-	local tool
-	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
-		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
-		#!/bin/sh
-		exec "${ada_bootstrap_bin_dir}"/${CHOST}-${tool} "\$@"
-		EOF
+	_toolchain_make_gnat_wrappers() {
+		mkdir "${T}"/ada-wrappers || die
+		local tool
+		for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
+			cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
+			#!/bin/sh
+			exec "${ada_bootstrap_bin_dir}"/${CHOST}-${tool} "\$@"
+			EOF
 
-		export "${tool^^}"="${T}"/ada-wrappers/${tool}
-	done
-	chmod +x "${T}"/ada-wrappers/gnat{,bind,chop,clean,kr,link,ls,make,name,prep} || die
+			export "${tool^^}"="${T}"/ada-wrappers/${tool}
+		done
+		chmod +x "${T}"/ada-wrappers/gnat{,bind,chop,clean,kr,link,ls,make,name,prep} || die
 
-	export PATH="${T}/ada-wrappers:${old_path}"
+		export PATH="${T}/ada-wrappers:${old_path}"
+	}
+
+	# Only make the wrappers for native builds. For cross, we can't
+	# do it as CBUILD vs CHOST will get mixed up then.
+	! tc-is-cross-compiler && _toolchain_make_gnat_wrappers
+
 	export CC="$(tc-getCC) -specs=${T}/ada.spec"
 }
 
