@@ -22,7 +22,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}${MAJOR}-${PV/_/-}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="Apache-2.0"
