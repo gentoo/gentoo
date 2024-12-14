@@ -9,6 +9,8 @@
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/intel/libvpl/issues</bugs-to>
+		<changelog>https://github.com/intel/libvpl/blob/main/CHANGELOG.md</changelog>
 		<remote-id type="github">intel/libvpl</remote-id>
 	</upstream>
 </pkgmetadata>
