@@ -53,7 +53,7 @@ DEPEND="
 	brightness-control? ( app-misc/ddcutil:= )
 "
 RDEPEND="${DEPEND}
-	!<kde-plasma/plasma-workspace-6.1.90:6
+	!<kde-plasma/plasma-workspace-6.1.90:*
 	>=dev-libs/plasma-wayland-protocols-1.14.0
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	|| (
