@@ -214,8 +214,8 @@ multilib_src_configure() {
 	# Build internal copy of gobject-introspection to avoid circular dependency (Built for native abi only)
 	if multilib_native_use introspection && ! has_version ">=dev-libs/${INTROSPECTION_P}" ; then
 		einfo "Bootstrapping gobject-introspection..."
-		INTROSPECTION_BIN_DIR="${T}/usr/bin"
-		INTROSPECTION_LIB_DIR="${T}/usr/$(get_libdir)"
+		INTROSPECTION_BIN_DIR="${T}/${EPREFIX}/usr/bin"
+		INTROSPECTION_LIB_DIR="${T}/${EPREFIX}/usr/$(get_libdir)"
 
 		local emesonargs=(
 			-Dpython="${EPYTHON}"
