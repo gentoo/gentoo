@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/elfutils
 	dev-libs/xxhash
 	elibc_musl? (
-		sys-libs/error-standalone
+		<sys-libs/error-standalone-2.0
 		sys-libs/obstack-standalone
 	)
 "
