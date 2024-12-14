@@ -20,6 +20,13 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 
 distutils_enable_tests pytest
 
+BDEPEND="
+	test? (
+		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/tzdata[${PYTHON_USEDEP}]
+	)
+"
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
