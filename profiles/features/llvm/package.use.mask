@@ -13,3 +13,4 @@ sys-devel/binutils pgo
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Works on pure LLVM systems: bug #870211.
 dev-lang/rust -llvm-libunwind
+dev-lang/rust-bin -llvm-libunwind

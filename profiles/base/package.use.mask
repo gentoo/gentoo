@@ -404,6 +404,7 @@ dev-util/schroot nls
 # on glibc, so it doesn't prevent usage of llvm-libunwind for other packages.
 # bug #870211.
 dev-lang/rust llvm-libunwind
+dev-lang/rust-bin llvm-libunwind
 
 # Matt Jolly <kangie@gentoo.org> (2022-09-09)
 # app-antivirus/clamav JIT support requires LLVM <=13
