@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
+inherit cmake flag-o-matic llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
@@ -19,7 +19,7 @@ DEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
-	clang? ( llvm-core/clang:${LLVM_MAJOR} )
+	clang? ( >=llvm-core/clang-${LLVM_VERSION} )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=llvm-core/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
@@ -43,16 +43,6 @@ pkg_pretend() {
 		ewarn "Building using a compiler other than clang may result in broken atomics"
 		ewarn "library. Enable USE=clang unless you have a very good reason not to."
 	fi
-}
-
-pkg_setup() {
-	# Darwin Prefix builds do not have llvm installed yet, so rely on
-	# bootstrap-prefix to set the appropriate path vars to LLVM instead
-	# of using llvm_pkg_setup.
-	if [[ ${CHOST} != *-darwin* ]] || has_version llvm-core/llvm; then
-		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	fi
-	python-any-r1_pkg_setup
 }
 
 test_compiler() {
@@ -95,6 +85,8 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_VERSION}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
@@ -112,6 +104,15 @@ src_configure() {
 		mycmakeargs+=(
 			-DCAN_TARGET_i386=$(usex abi_x86_32)
 			-DCAN_TARGET_x86_64=$(usex abi_x86_64)
+		)
+	fi
+
+	# Darwin Prefix builds do not have llvm installed yet, so rely on
+	# bootstrap-prefix to set the appropriate path vars to LLVM instead
+	# of setting LLVM_CONFIG_PATH.
+	if [[ ${CHOST} != *-darwin* ]] || has_version llvm-core/llvm; then
+		mycmakeargs+=(
+			-DLLVM_CONFIG_PATH="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin/${CHOST}-llvm-config"
 		)
 	fi
 
