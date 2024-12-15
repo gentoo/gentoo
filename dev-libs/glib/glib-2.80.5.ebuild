@@ -246,6 +246,11 @@ multilib_src_configure() {
 		ORIG_SOURCE_DIR=${EMESON_SOURCE}
 		EMESON_SOURCE=${INTROSPECTION_SOURCE_DIR}
 
+		# g-ir-scanner has some relocatable logic but it searches
+		# for 'lib', not 'lib64', so it can't find itself and eventually
+		# falls back to the system installation. See bug #946221.
+		sed -i -e "/^pylibdir =/s:'lib:'$(get_libdir):" "${EMESON_SOURCE}"/tools/g-ir-tool-template.in || die
+
 		ORIG_BUILD_DIR=${BUILD_DIR}
 		BUILD_DIR=${INTROSPECTION_BUILD_DIR}
 
