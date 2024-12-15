@@ -66,5 +66,4 @@ pkg_postinst() {
 	optfeature "RAID monitoring" dev-python/pymdstat
 	optfeature "RAID support" dev-python/pymdstat
 	optfeature "SNMP support" dev-python/pysnmp
-	optfeature "WIFI plugin" net-wireless/python-wifi
 }
