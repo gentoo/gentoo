@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
+inherit cmake-multilib flag-o-matic llvm.org python-any-r1
 inherit toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
@@ -27,7 +27,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
+		>=llvm-core/clang-${LLVM_VERSION}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -47,8 +47,6 @@ python_check_deps() {
 }
 
 multilib_src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
@@ -61,6 +59,7 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx"
