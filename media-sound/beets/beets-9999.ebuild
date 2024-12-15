@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..12} )
+# Passes tests with python3_13 but dev-python/audioread is problematic
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="sqlite"
 
 # These envvars are used to treat github tarball builds differently
@@ -17,6 +18,8 @@ inherit distutils-r1 bash-completion-r1 multiprocessing optfeature
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/beetbox/beets.git"
+	IS_VCS_SOURCE="yes"
+	UPDATE_VERSION="yes"
 	inherit git-r3
 else
 	inherit pypi
@@ -62,12 +65,14 @@ BDEPEND="
 			dev-db/sqlite[icu]
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/bluelet[${PYTHON_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 			dev-python/python3-discogs-client[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/pyacoustid[${PYTHON_USEDEP}]
 			dev-python/pylast[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			dev-python/pytest-flask[${PYTHON_USEDEP}]
 			dev-python/python-mpd2[${PYTHON_USEDEP}]
 			dev-python/pyxdg[${PYTHON_USEDEP}]
 			dev-python/reflink[${PYTHON_USEDEP}]
@@ -105,13 +110,10 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
-	# https://github.com/beetbox/beets/commit/8b4983fe7cae9397acd3e23602e419d8dc1041d4
-	# merged code coverage into standard test runs; since we disable coverage globally
-	# we need to sed out some 'addopts' for coverage in setup.cfg that cause tests to choke.
-	#sed -i -e "/--cov=beets/,+9d" setup.cfg || die "Failed to disable code coverage options in setup.cfg"
-	# Update the version if we're not building from pypy; it's probably a _pre or live ebuild.
 	if  [[ ${PV} == "9999" ]] || [[ ${UPDATE_VERSION} == "yes" ]]; then
-		    sed -i -e "s/^version = \".*\"$/version = \"${PV}\"/" pyproject.toml || die "Failed to update version in VCS sources"
+		sed -i -e "s/^version = \".*\"$/version = \"${PV}\"/" \
+			pyproject.toml \
+			|| die "Failed to update version in VCS sources"
 			sed -i -e "s/__version__ = \".*\"/__version__ = \"${PV}\"/" beets/__init__.py
 	fi
 	default
@@ -137,11 +139,8 @@ python_compile_all() {
 }
 
 python_test() {
-	# https://github.com/beetbox/beets/issues/5243 testing bash completions is broken.
-	local EPYTEST_DESELECT=(
-		test/test_ui.py::CompletionTest::test_completion
-	)
-	epytest -n$(makeopts_jobs) -v --no-cov
+	# test/test_art_resize.py can be flaky, parallelisation?
+	epytest -n$(makeopts_jobs) -v
 }
 
 python_install_all() {
@@ -169,4 +168,5 @@ python_install_all() {
 	optfeature "thumbnail support" dev-python/pyxdg "dev-python/pillow media-gfx/imagemagick"
 	optfeature "webserver support" dev-python/flask
 	optfeature "webserver cors support" dev-python/flask-cors
+	optfeature "Amarok metadata synchronisation" dev-python/dbus-python
 }
