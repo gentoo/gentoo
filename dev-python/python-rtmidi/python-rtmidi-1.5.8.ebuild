@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DOCS_BUILDER="sphinx"
 DOCS_DEPEND="dev-python/myst-parser"
 DOCS_DIR="docs"
