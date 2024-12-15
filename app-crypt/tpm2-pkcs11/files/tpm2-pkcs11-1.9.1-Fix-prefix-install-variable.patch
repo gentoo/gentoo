@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 1ec6eb4..9e47feb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -487,7 +487,7 @@ AM_CONDITIONAL([HAVE_P11KIT], [test "x$have_p11kit" = "xyes"])
+ 
+ # check for --prefix and set flag HAVE_PREFIX if found
+ #   do not change install location if --prefix is given and with P11_KIT found
+-AM_CONDITIONAL([HAVE_PREFIX], [test ! -z "$(prefix)"])
++AM_CONDITIONAL([HAVE_PREFIX], [test ! -z "${prefix}"])
+ 
+ # END P11 CONFIG
+ 
