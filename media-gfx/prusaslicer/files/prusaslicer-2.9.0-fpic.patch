@@ -1,0 +1,57 @@
+--- a/bundled_deps/admesh/CMakeLists.txt
++++ b/bundled_deps/admesh/CMakeLists.txt
+@@ -14,3 +14,4 @@ add_library(admesh STATIC
+ target_include_directories(admesh PUBLIC .)
+ target_link_libraries(admesh PRIVATE boost_headeronly localesutils)
+ target_link_libraries(admesh PUBLIC Eigen3::Eigen)
++set_target_properties(admesh PROPERTIES POSITION_INDEPENDENT_CODE ON)
+--- a/bundled_deps/glu-libtess/CMakeLists.txt
++++ b/bundled_deps/glu-libtess/CMakeLists.txt
+@@ -34,3 +34,4 @@ if(UNIX)
+ endif(UNIX)
+ 
+ target_include_directories(glu-libtess PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
++set_target_properties(glu-libtess PROPERTIES POSITION_INDEPENDENT_CODE ON)
+--- a/bundled_deps/miniz/CMakeLists.txt
++++ b/bundled_deps/miniz/CMakeLists.txt
+@@ -7,6 +7,7 @@ add_library(miniz_static STATIC
+     miniz.c
+     miniz.h
+ )
++set_target_properties(miniz_static PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ 
+ if(${CMAKE_C_COMPILER_ID} STREQUAL "GNU")
+     target_compile_definitions(miniz_static PRIVATE _GNU_SOURCE)
+--- a/bundled_deps/CMakeLists.txt
++++ b/bundled_deps/CMakeLists.txt
+@@ -33,6 +33,7 @@ add_library(localesutils STATIC
+ )
+ target_include_directories(localesutils PUBLIC localesutils)
+ target_link_libraries(localesutils PRIVATE fastfloat)
++set_target_properties(localesutils PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ 
+ add_library(ankerl INTERFACE)
+ target_include_directories(ankerl INTERFACE ankerl)
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -532,6 +532,7 @@ add_library(libslic3r_cgal STATIC
+     TryCatchSignal.hpp TryCatchSignal.cpp
+     Triangulation.hpp Triangulation.cpp
+ )
++set_target_properties(libslic3r_cgal PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ target_include_directories(libslic3r_cgal PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+ target_include_directories(libslic3r_cgal PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
+ 
+@@ -622,3 +623,5 @@ endif ()
+ if (SLIC3R_PCH AND NOT SLIC3R_SYNTAXONLY)
+     add_precompiled_header(libslic3r pchheader.hpp FORCEINCLUDE)
+ endif ()
++
++set_target_properties(libslic3r PROPERTIES POSITION_INDEPENDENT_CODE ON)
+--- a/src/clipper/CMakeLists.txt
++++ b/src/clipper/CMakeLists.txt
+@@ -12,3 +12,4 @@ add_library(clipper STATIC
+ target_link_libraries(clipper PRIVATE TBB::tbb TBB::tbbmalloc int128)
+ target_link_libraries(clipper PUBLIC Eigen3::Eigen)
+ target_include_directories(clipper PUBLIC .)
++set_target_properties(clipper PROPERTIES POSITION_INDEPENDENT_CODE ON)

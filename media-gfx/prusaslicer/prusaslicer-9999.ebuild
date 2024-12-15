@@ -64,10 +64,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
 	"${FILESDIR}/${PN}-2.8.0-missing-includes.patch"
 	"${FILESDIR}/${PN}-2.8.0-wxwidgets-3.2.4.patch"
-	"${FILESDIR}/${PN}-2.8.1-fixed-linking.patch"
 	"${FILESDIR}/${PN}-2.8.1-cgal-6.0.patch"
 	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
 	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
+	"${FILESDIR}/${PN}-2.9.0-fpic.patch"
 )
 
 src_prepare() {
@@ -79,9 +79,6 @@ src_prepare() {
 
 	sed -i -e 's/find_package(OpenCASCADE 7.6.[0-9] REQUIRED)/find_package(OpenCASCADE REQUIRED)/g' \
 		src/occt_wrapper/CMakeLists.txt || die
-
-	# remove broken cmake find file: https://github.com/prusa3d/PrusaSlicer/issues/13608
-	rm cmake/modules/FindEigen3.cmake || die
 
 	cmake_src_prepare
 }
