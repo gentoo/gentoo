@@ -60,7 +60,7 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	pipewire? ( >=media-video/pipewire-0.3:= )
-	rdp? ( >=net-misc/freerdp-2.3.0:2=[server] )
+	rdp? ( >=net-misc/freerdp-2.3.0:=[server] )
 	remoting? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
