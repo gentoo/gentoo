@@ -3,6 +3,7 @@
 
 # John Helmert III <ajak@gentoo.org> (2024-12-14)
 # Requires libpcre2[jit] which is now masked on x32
+dev-util/cutter
 dev-util/rizin
 
 # Ben Kohler <bkohler@gentoo.org> (2024-05-27)
