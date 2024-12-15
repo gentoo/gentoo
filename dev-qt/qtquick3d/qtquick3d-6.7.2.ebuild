@@ -28,6 +28,9 @@ DEPEND="
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
 	vulkan? ( dev-util/vulkan-headers )
 "
+BDEPEND="
+	~dev-qt/qtshadertools-${PV}:6
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
