@@ -63,6 +63,7 @@ src_configure() {
 		-DCMAKE_INSTALL_LIBDIR="$(get_libdir)"
 		-DBUILD_WITH_L0="$(usex l0)"
 		-DDISABLE_LIBVA="$(usex !vaapi)"
+		-DNEO_ALLOW_LEGACY_PLATFORMS_SUPPORT="ON"
 		-DNEO_DISABLE_LTO="ON"
 		-DNEO__METRICS_LIBRARY_INCLUDE_DIR="${ESYSROOT}/usr/include"
 		-DKHRONOS_GL_HEADERS_DIR="${ESYSROOT}/usr/include"
