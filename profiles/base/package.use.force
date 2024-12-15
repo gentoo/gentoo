@@ -38,7 +38,7 @@ dev-lang/gnat-gpl ada cxx
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215).
-kde-plasma/kwin caps
+kde-plasma/kwin filecaps
 
 # James Le Cuirot <chewi@gentoo.org> (2024-06-02)
 # Requires FFmpeg 7.0, which we don't have yet, so force Chromium fork.
