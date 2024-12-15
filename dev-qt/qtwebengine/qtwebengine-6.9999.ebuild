@@ -70,6 +70,7 @@ RDEPEND="
 	designer? ( ~dev-qt/qttools-${PV}:6[designer] )
 	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
+	opengl? ( media-libs/libglvnd[X] )
 	pulseaudio? ( media-libs/libpulse[glib] )
 	screencast? (
 		dev-libs/glib:2
@@ -85,11 +86,7 @@ DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXi
 	x11-libs/libxshmfence
-	opengl? ( media-libs/libglvnd[X] )
 	screencast? ( media-libs/libepoxy[egl(+)] )
-	test? (
-		widgets? ( app-text/poppler[cxx(+)] )
-	)
 	vaapi? (
 		vulkan? ( dev-util/vulkan-headers )
 	)
@@ -212,10 +209,11 @@ src_configure() {
 		-DQT_FEATURE_webengine_system_libvpx=OFF
 
 		# not necessary to pass these (default), but in case detection fails
+		# given qtbase's force_system_libs does not affect these right now
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype gbm glib harfbuzz lcms2 libevent libjpeg \
 			libopenjpeg2 libpci libpng libtiff libwebp libxml \
-			minizip opus poppler snappy zlib)
+			minizip opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
