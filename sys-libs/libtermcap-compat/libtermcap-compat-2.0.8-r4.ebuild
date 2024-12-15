@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # We only want this for binary-only packages, so we will only be installing
@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib-minimal
 
 PATCHVER="2"
 
@@ -56,6 +56,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	# bug #943733
+	append-flags -std=gnu17
 }
 
 multilib_src_install() {
