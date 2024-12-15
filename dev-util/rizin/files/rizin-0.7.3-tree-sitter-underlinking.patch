@@ -1,0 +1,31 @@
+From 2d5a70879b8e0b7b2bbd9ce48b2bb459dc22203a Mon Sep 17 00:00:00 2001
+From: ajakk <ajak@gentoo.org>
+Date: Tue, 3 Sep 2024 08:46:24 -0500
+Subject: [PATCH] librz: link to tree-sitter directly (#4603)
+
+tree-sitter symbols are included in this library, so we need to
+specify the dependency to avoid linking failures due to missing
+tree-sitter symbols.
+
+See-Also: https://bugs.gentoo.org/928301
+
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+---
+ librz/type/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/librz/type/meson.build b/librz/type/meson.build
+index 06d6807bc3..7c58e82486 100644
+--- a/librz/type/meson.build
++++ b/librz/type/meson.build
+@@ -31,6 +31,7 @@ rz_type = library('rz_type', rz_type_sources,
+   include_directories: rz_type_inc,
+   dependencies: [
+     rz_util_dep,
++    tree_sitter_dep,
+     tree_sitter_c_dep,
+     lrt
+   ],
+-- 
+2.45.2
+
