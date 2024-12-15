@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
+inherit cmake-multilib flag-o-matic llvm.org python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
@@ -25,7 +25,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
+		>=llvm-core/clang-${LLVM_VERSION}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -42,11 +42,6 @@ llvm.org_set_globals
 python_check_deps() {
 	use test || return 0
 	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	python-any-r1_pkg_setup
 }
 
 multilib_src_configure() {
@@ -77,6 +72,7 @@ multilib_src_configure() {
 	use debug || append-cppflags -DNDEBUG
 
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libunwind"
