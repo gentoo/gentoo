@@ -37,8 +37,7 @@ DEPEND="
 BDEPEND="
 	dev-lang/perl
 	offload? (
-		llvm_targets_AMDGPU? ( llvm-core/clang )
-		llvm_targets_NVPTX? ( llvm-core/clang )
+		llvm-core/clang:${LLVM_MAJOR}
 		virtual/pkgconfig
 	)
 	test? (
