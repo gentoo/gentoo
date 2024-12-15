@@ -35,6 +35,7 @@ BDEPEND="doc? ( >=app-text/doxygen-1.2.6 )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
 	"${FILESDIR}/${PN}-1.2.13-update-symbol-name.patch" # bug #943399
+	"${FILESDIR}/${PN}-1.2.13-seq-ump-headers.patch" # bug #943696
 )
 
 pkg_setup() {
