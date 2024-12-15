@@ -979,6 +979,9 @@ toolchain_setup_ada() {
 				latest_ada_bootstrap="${latest_ada_bootstrap#dev-lang/ada-bootstrap-}"
 				latest_ada_bootstrap=$(ver_cut 1 ${latest_ada_bootstrap})
 				ada_bootstrap="${latest_ada_bootstrap}"
+
+				export ADA_INCLUDE_PATH="${BROOT}/usr/lib/ada-bootstrap/usr/lib/gcc/${CHOST}/${ada_bootstrap}/adainclude::${ADA_INCLUDE_PATH}"
+				export ADA_OBJECTS_PATH="${BROOT}/usr/lib/ada-bootstrap/usr/lib/gcc/${CHOST}/${ada_bootstrap}/adalib:${ADA_OBJECTS_PATH}"
 			fi
 
 			ada_bootstrap_type=ada-bootstrap
