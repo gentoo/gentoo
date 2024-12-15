@@ -64,6 +64,7 @@ EPYTEST_IGNORE=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-24.2-systemd.patch"
+	"${FILESDIR}/${PN}-24.4-netcat.patch"
 )
 
 distutils_enable_tests pytest
