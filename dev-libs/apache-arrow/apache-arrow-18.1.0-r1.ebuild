@@ -84,27 +84,27 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DARROW_BUILD_STATIC=OFF
-		-DARROW_BUILD_TESTS=$(usex test)
-		-DARROW_COMPUTE=$(usex compute)
+		-DARROW_BUILD_TESTS=$(usex test ON OFF)
+		-DARROW_COMPUTE=$(usex compute ON OFF)
 		-DARROW_CSV=ON
-		-DARROW_DATASET=$(usex dataset)
+		-DARROW_DATASET=$(usex dataset ON OFF)
 		-DARROW_DEPENDENCY_SOURCE=SYSTEM
 		-DARROW_DOC_DIR=share/doc/${PF}
 		-DARROW_FILESYSTEM=ON
 		-DARROW_HDFS=ON
 		-DARROW_JEMALLOC=OFF
-		-DARROW_JSON=$(usex json)
-		-DARROW_PARQUET=$(usex parquet)
-		-DPARQUET_REQUIRE_ENCRYPTION=$(usex ssl)
+		-DARROW_JSON=$(usex json ON OFF)
+		-DARROW_PARQUET=$(usex parquet ON OFF)
+		-DPARQUET_REQUIRE_ENCRYPTION=$(usex ssl ON OFF)
 		-DARROW_USE_CCACHE=OFF
 		-DARROW_USE_SCCACHE=OFF
-		-DARROW_WITH_BROTLI=$(usex brotli)
-		-DARROW_WITH_BZ2=$(usex bzip2)
-		-DARROW_WITH_LZ4=$(usex lz4)
-		-DARROW_WITH_RE2=$(usex re2)
-		-DARROW_WITH_SNAPPY=$(usex snappy)
-		-DARROW_WITH_ZLIB=$(usex zlib)
-		-DARROW_WITH_ZSTD=$(usex zstd)
+		-DARROW_WITH_BROTLI=$(usex brotli ON OFF)
+		-DARROW_WITH_BZ2=$(usex bzip2 ON OFF)
+		-DARROW_WITH_LZ4=$(usex lz4 ON OFF)
+		-DARROW_WITH_RE2=$(usex re2 ON OFF)
+		-DARROW_WITH_SNAPPY=$(usex snappy ON OFF)
+		-DARROW_WITH_ZLIB=$(usex zlib ON OFF)
+		-DARROW_WITH_ZSTD=$(usex zstd ON OFF)
 		-DCMAKE_CXX_STANDARD=17
 	)
 	cmake_src_configure
