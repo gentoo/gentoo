@@ -27,6 +27,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1_p3-ncurses-format-security.patch
+	"${FILESDIR}"/${PN}-2.1_p3-ncurses-opaque.patch
 )
 
 src_prepare() {
