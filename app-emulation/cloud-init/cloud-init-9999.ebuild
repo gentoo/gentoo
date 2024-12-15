@@ -49,7 +49,7 @@ BDEPEND="
 RDEPEND="
 	${CDEPEND}
 	net-analyzer/macchanger
-	net-analyzer/netcat
+	net-analyzer/openbsd-netcat
 	sys-apps/iproute2
 	sys-fs/growpart
 	virtual/logger
