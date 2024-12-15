@@ -96,6 +96,8 @@ src_prepare() {
 	# bug #926330
 	sed -i -e '/-Wthread-safety/d' CMakeLists.txt cmake/config-ix.cmake || die
 
+	sed -e '/^#include <cassert>$/a#include <cstdint>' -i lib/orc/error.h || die
+
 	# TODO: fix these tests to be skipped upstream
 	if use asan && ! use profile; then
 		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
