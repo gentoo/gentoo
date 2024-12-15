@@ -287,11 +287,13 @@ multilib_src_configure() {
 		export PYTHONPATH="${INTROSPECTION_LIB_DIR}/gobject-introspection:${PYTHONPATH}"
 	fi
 
+	# TODO: Can this be cleaned up now we have -Dglib_debug? (bug #946485)
 	use debug && EMESON_BUILD_TYPE=debug
 
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
 		-Druntime_dir="${EPREFIX}"/run
+		$(meson_feature debug glib_debug)
 		$(meson_feature selinux)
 		$(meson_use xattr)
 		-Dlibmount=enabled # only used if host_system == 'linux'
