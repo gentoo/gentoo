@@ -49,6 +49,13 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	llvm.org_src_prepare
+
+	# upstream tests CXX for flag support but then tries to pass them to CC
+	sed -e '/^\s*LINKER_LANGUAGE C$/d' -i "${WORKDIR}/libunwind/src/CMakeLists.txt" || die
+}
+
 multilib_src_configure() {
 	local libdir=$(get_libdir)
 

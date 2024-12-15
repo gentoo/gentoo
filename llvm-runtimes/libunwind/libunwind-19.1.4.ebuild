@@ -44,6 +44,13 @@ python_check_deps() {
 	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+src_prepare() {
+	llvm.org_src_prepare
+
+	# upstream tests CXX for flag support but then tries to pass them to CC
+	sed -e '/^\s*LINKER_LANGUAGE C$/d' -i "${WORKDIR}/libunwind/src/CMakeLists.txt" || die
+}
+
 multilib_src_configure() {
 	llvm_prepend_path "${LLVM_MAJOR}"
 
