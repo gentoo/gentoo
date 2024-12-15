@@ -11,7 +11,7 @@
   </maintainer>
   <use>
     <flag name="fuidshift">Install the fuidshift binary - currently conflicts with app-containers/lxd</flag>
-	<flag name="qemu">Pull dependencies needed to manage QEMU-based virtual machines with Incus</flag>
+    <flag name="qemu">Pull dependencies needed to manage QEMU-based virtual machines with Incus</flag>
   </use>
   <longdescription>
     Incus is a modern, secure and powerful system container and virtual machine manager.
