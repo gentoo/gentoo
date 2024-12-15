@@ -95,6 +95,9 @@
 		as required, so always pin dependencies to this slot when appropriate.</slot>
 	</slots>
 	<upstream>
+		<bugs-to>https://trac.ffmpeg.org</bugs-to>
+		<changelog>https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/HEAD:/Changelog</changelog><!-- original upstream -->
+		<doc>https://ffmpeg.org/documentation.html</doc>
 		<remote-id type="github">FFmpeg/FFmpeg</remote-id>
 		<remote-id type="cpe">cpe:/a:ffmpeg:ffmpeg</remote-id>
 	</upstream>
