@@ -21,14 +21,14 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="debug quick +widgets"
 
 RDEPEND="
-	>=dev-python/pyqt6-${QT_PV%:*}[gui,ssl,${PYTHON_USEDEP}]
+	>=dev-python/pyqt6-${QT_PV%:*}[gui,ssl,webchannel,${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}[gui,widgets?]
 	>=dev-qt/qtwebengine-${QT_PV}[widgets]
 	quick? (
 		dev-python/pyqt6[qml]
 		>=dev-qt/qtwebengine-${QT_PV}[qml]
 	)
-	widgets? ( dev-python/pyqt6[network,printsupport,webchannel,widgets] )
+	widgets? ( dev-python/pyqt6[network,printsupport,widgets] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
