@@ -11,18 +11,20 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
-IUSE="+spell"
+IUSE="+sound +spell"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtsvg-${PV}:6
+	sound? ( ~dev-qt/qtmultimedia-${PV}:6 )
 	spell? ( app-text/hunspell:= )
 "
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake_use_find_package sound Qt6Multimedia)
 		$(qt_feature spell hunspell)
 		-DINPUT_vkb_handwriting=no # neither cerence nor myscript are packaged
 	)
