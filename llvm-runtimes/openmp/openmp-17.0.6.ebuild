@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit flag-o-matic cmake-multilib linux-info llvm llvm.org
+inherit flag-o-matic cmake-multilib linux-info llvm.org
 inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -74,7 +74,6 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use offload && LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	if use gdb-plugin || use test; then
 		python-single-r1_pkg_setup
 	fi
@@ -115,6 +114,9 @@ multilib_src_configure() {
 	)
 
 	if [[ ${build_omptarget} == ON ]]; then
+		mycmakeargs+=(
+			-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
+		)
 		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 			mycmakeargs+=(
 				-DLIBOMPTARGET_BUILD_AMDGPU_PLUGIN=$(usex llvm_targets_AMDGPU)
