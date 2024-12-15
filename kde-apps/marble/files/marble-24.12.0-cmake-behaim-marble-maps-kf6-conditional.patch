@@ -1,0 +1,29 @@
+From 5a6bf3c71cd017f3e43a74d9ac39efa3921c6d99 Mon Sep 17 00:00:00 2001
+From: Joshua Goins <josh@redstrate.com>
+Date: Sat, 14 Dec 2024 20:18:24 -0500
+Subject: [PATCH] Don't build behaim or marble-maps targets in non-KF builds
+
+These depend on KDE frameworks, so don't try to build them when don't
+have them.
+---
+ src/apps/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/apps/CMakeLists.txt b/src/apps/CMakeLists.txt
+index 6f9dc25420..013cd3c52f 100644
+--- a/src/apps/CMakeLists.txt
++++ b/src/apps/CMakeLists.txt
+@@ -11,6 +11,8 @@ if(BUILD_MARBLE_APPS)
+         endif()
+     endif()
+ 
+-    add_subdirectory(behaim)
+-    add_subdirectory(marble-maps)
++    if (TARGET KF6::Config AND TARGET KF6::I18n AND TARGET KF6::CoreAddons)
++        add_subdirectory(behaim)
++        add_subdirectory(marble-maps)
++    endif()
+ endif()
+-- 
+GitLab
+
