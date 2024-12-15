@@ -35,7 +35,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
 	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
-	"${FILESDIR}"/${PN}-6.7.2-gcc15.patch
 )
 
 CMAKE_SKIP_TESTS=(
@@ -47,7 +46,8 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		# TODO: if someone wants it, openxr should likely have its own
-		# USE and be packaged rather than use the bundled copy
+		# USE and be packaged rather than use the bundled copy (if use
+		# bundled, note need to setup python-any-r1)
 		-DQT_FEATURE_quick3dxr_openxr=OFF
 		-DQT_FEATURE_system_assimp=ON
 		-DQT_FEATURE_system_openxr=ON
