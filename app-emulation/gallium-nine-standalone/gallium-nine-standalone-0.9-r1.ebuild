@@ -43,6 +43,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/0.8-cross-files.patch
 	"${FILESDIR}"/0.9-nine-dll-path.patch
+	"${FILESDIR}"/0.9-implicit.patch
 )
 
 bits() {
