@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/greenbone/gvm-tools/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	>=net-analyzer/python-gvm-23.4.2[${PYTHON_USEDEP}]
