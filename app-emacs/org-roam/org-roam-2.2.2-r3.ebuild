@@ -27,7 +27,7 @@ SLOT="0"
 RDEPEND="
 	app-emacs/dash
 	app-emacs/magit
-	app-emacs/emacsql[sqlite]
+	app-emacs/emacsql[sqlite(+)]
 "
 BDEPEND="${RDEPEND}"
 
