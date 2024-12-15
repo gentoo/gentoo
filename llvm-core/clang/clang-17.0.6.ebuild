@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake llvm llvm.org multilib multilib-minimal
+inherit cmake llvm.org multilib multilib-minimal
 inherit prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -67,11 +67,6 @@ llvm.org_set_globals
 #
 # Therefore: use llvm-core/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	# create extra parent dir for relative CLANG_RESOURCE_DIR access
@@ -255,6 +250,7 @@ get_distribution_components() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
