@@ -190,6 +190,7 @@ src_configure() {
 
 		-DQT_UNITY_BUILD=ON # ~30% faster build, affects other dev-qt/* too
 
+		-DQT_FEATURE_force_system_libs=ON
 		-DQT_FEATURE_relocatable=OFF #927691
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)
