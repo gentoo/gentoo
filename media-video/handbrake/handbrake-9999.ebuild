@@ -3,9 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools edo python-any-r1 toolchain-funcs xdg
+inherit edo flag-o-matic multiprocessing python-any-r1 toolchain-funcs xdg
+
+DESCRIPTION="Open-source, GPL-licensed, multiplatform, multithreaded video transcoder"
+HOMEPAGE="https://handbrake.fr/ https://github.com/HandBrake/HandBrake"
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
@@ -17,27 +20,49 @@ else
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
-DESCRIPTION="Open-source, GPL-licensed, multiplatform, multithreaded video transcoder"
-HOMEPAGE="https://handbrake.fr/ https://github.com/HandBrake/HandBrake"
+# contrib/<project>/module.defs
+declare -A BUNDLED=(
+	# Heavily patched in an incompatible way.
+	# Issues related to using system ffmpeg historically.
+	# See bug #829595 and #922828
+	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-7.1.tar.bz2;"
+	# Patched in an incompatible way
+	[x265]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
+	[x265_8bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
+	[x265_10bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
+	[x265_12bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
+)
+
+bundle_src_uri() {
+	for name in "${!BUNDLED[@]}"; do
+		IFS=$';' read -r uri use <<< ${BUNDLED[${name}]}
+		local tarball=${uri##*/}
+		if [[ -n ${use} ]]; then
+			SRC_URI+=" ${use}? ( ${uri} -> handbrake-${tarball} )"
+		else
+			SRC_URI+=" ${uri} -> handbrake-${tarball}"
+		fi
+	done
+}
+
+bundle_src_uri
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+fdk gstreamer gtk numa nvenc x265" # TODO: qsv vce
+IUSE="amf +fdk gui libdovi numa nvenc qsv x265"
 
 REQUIRED_USE="numa? ( x265 )"
 
-RDEPEND="
+COMMON_DEPEND="
+	app-arch/bzip2
 	>=app-arch/xz-utils-5.2.6
 	dev-libs/jansson:=
-	>=dev-libs/libxml2-2.10.3
-	media-libs/a52dec
 	>=media-libs/dav1d-1.0.0:=
 	>=media-libs/libjpeg-turbo-2.1.4:=
 	>=media-libs/libass-0.16.0:=
 	>=media-libs/libbluray-1.3.4:=
 	media-libs/libdvdnav
 	>=media-libs/libdvdread-6.1.3:=
-	media-libs/libsamplerate
 	media-libs/libtheora
 	media-libs/libvorbis
 	>=media-libs/libvpx-1.12.0:=
@@ -47,95 +72,119 @@ RDEPEND="
 	>=media-libs/x264-0.0.20220222:=
 	>=media-libs/zimg-3.0.4
 	media-sound/lame
-	>=media-video/ffmpeg-5.1.2:=[postproc,fdk?]
 	sys-libs/zlib
 	fdk? ( media-libs/fdk-aac:= )
-	gstreamer? (
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
-		media-libs/gst-plugins-good:1.0
-		media-libs/gst-plugins-bad:1.0
-		media-libs/gst-plugins-ugly:1.0
-		media-plugins/gst-plugins-a52dec:1.0
-		media-plugins/gst-plugins-libav:1.0
-		media-plugins/gst-plugins-x264:1.0
-		media-plugins/gst-plugins-gdkpixbuf:1.0
-	)
-	gtk? (
-		>=x11-libs/gtk+-3.10
-		dev-libs/dbus-glib
+	libdovi? ( media-libs/libdovi:= )
+	gui? (
+		>=gui-libs/gtk-4.4:4[gstreamer]
 		dev-libs/glib:2
-		dev-libs/libgudev:=
-		x11-libs/cairo
+		>=dev-libs/libxml2-2.10.3
 		x11-libs/gdk-pixbuf:2
-		x11-libs/libnotify
 		x11-libs/pango
 	)
-	nvenc? (
-		media-libs/nv-codec-headers
-		media-video/ffmpeg[nvenc]
+	numa? ( sys-process/numactl )
+	nvenc? ( media-libs/nv-codec-headers )
+	qsv? (
+		media-libs/libva:=
+		media-libs/libvpl:=
 	)
-	x265? ( >=media-libs/x265-3.5-r2:=[10bit,12bit,numa?] )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${COMMON_DEPEND}
+	amf? ( media-video/amdgpu-pro-amf )
+"
+DEPEND="
+	${COMMON_DEPEND}
+	amf? ( media-libs/amf-headers )
+"
 # cmake needed for custom script: bug #852701
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-build/cmake
 	dev-lang/nasm
+	gui? (
+		dev-build/meson
+		sys-devel/gettext
+	)
 "
 
 PATCHES=(
-	# Remove libdvdnav duplication and call it on the original instead.
-	# It may work this way; if not, we should try to mimic the duplication.
-	"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
-
-	# Detect system tools - bug 738110
-	"${FILESDIR}/${PN}-9999-system-tools.patch"
-
-	# Use whichever python is set by portage
-	"${FILESDIR}/${PN}-9999-dont-search-for-python.patch"
-
-	# Fix x265 linkage... again again #730034
-	"${FILESDIR}/${PN}-1.3.3-x265-link.patch"
+	"${FILESDIR}"/handbrake-1.9.0-link-libdovi-properly.patch
+	"${FILESDIR}"/handbrake-1.9.0-include-vpl-properly.patch
 )
 
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+	else
+		unpack ${P}.tar.bz2
+	fi
+}
+
 src_prepare() {
-	# Get rid of leftover bundled library build definitions,
-	sed -i 's:.*\(/contrib\|contrib/\).*::g' \
-		"${S}"/make/include/main.defs \
-		|| die "Contrib removal failed."
+	mkdir download || die
+	for name in "${!BUNDLED[@]}"; do
+		IFS=$';' read -r uri use <<< ${BUNDLED[${name}]}
+		local tarball="${uri##*/}"
+		if [[ -n ${use} ]]; then
+			use ${use} || continue
+		fi
+		cp "${DISTDIR}/handbrake-${tarball}" download/${tarball} || die
+	done
+
+	# Get rid of leftover bundled library build definitions
+	sed -i -E \
+		-e "/MODULES \+= contrib\// { /($(IFS=$'|'; echo "${!BUNDLED[*]}"))$/! d }" \
+		"${S}"/make/include/main.defs || die
+
+	# noop fetching
+	sed -i -e '/DF..*.exe/ { s/= .*/= true/ }' make/include/tool.defs || die
+
+	# noop strip
+	sed -i \
+			-e "s/\(strip\s*= ToolProbe( 'STRIP.exe',\s*'strip',\s*\)'strip'/\1'true'/" \
+			make/configure.py || die
+
+	# Use whichever python is set by portage
+	sed -i -e "s/for p in .*/for p in ${EPYTHON}/" configure || die
+
+	for tool in ar ranlib libtool; do
+		# Detect system tools - bug 738110
+		sed -i \
+			-e "s/\(${tool}\s*= ToolProbe( '${tool^^}.exe',\s*'${tool}',\s*\)'${tool}'/\1os.environ.get('${tool^^}', '${tool}')/" \
+			make/configure.py || die
+	done
 
 	default
-
-	cd "${S}/gtk" || die
-	eautoreconf
 }
 
 src_configure() {
-	tc-export AR RANLIB STRIP
+	tc-export AR RANLIB
 
-	# Libav was replaced in 1.2 with ffmpeg by default
-	# but I've elected to not make people change their use flags for AAC
-	# as its the same code anyway
+	# ODR violations, lto-type-mismatches
+	# bug #878899
+	filter-lto
+
 	local myconfargs=(
 		--force
 		--verbose
+		--disable-df-fetch
+		--disable-df-verify
+		--launch-jobs=$(get_makeopts_jobs)
 		--prefix="${EPREFIX}/usr"
 		--disable-flatpak
-		$(usex !gtk --disable-gtk)
-		--disable-gtk4
-		$(usex !gstreamer --disable-gst)
-		$(use_enable x265)
-		$(use_enable numa)
+		--no-harden #bug #890279
+		$(use_enable amf vce)
 		$(use_enable fdk fdk-aac)
-		--enable-ffmpeg-aac # Forced on
+		$(use_enable gui gtk)
+		$(use_enable libdovi)
+		$(use_enable numa)
 		$(use_enable nvenc)
-		# TODO: $(use_enable qsv)
-		# TODO: $(use_enable vce)
+		$(use_enable x265)
+		$(use_enable qsv)
 	)
 
-	edo ./configure "${myconfargs[@]}"
+	edo ./configure ${myconfargs[@]}
 }
 
 src_compile() {
@@ -155,8 +204,8 @@ pkg_postinst() {
 	einfo "report bugs to Gentoo's bugzilla or Multimedia forum instead."
 
 	einfo "For the CLI version of HandBrake, you can use \`HandBrakeCLI\`."
-	if use gtk ; then
-		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
+	if use gui ; then
+		einfo "For the GUI version of HandBrake, you can run \`ghb\`."
 	fi
 
 	xdg_pkg_postinst
