@@ -3,6 +3,12 @@
 
 # New entries go on top.
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-12-16)
+# sci-libs/atlas requires you to disable frequency scaling to build.
+# This barely works on older Intel CPUs on good days.
+# Avoid someone enabling without knowing what they do.
+media-libs/opencv atlas
+
 # John M. Harris, Jr. <johnmh@johnmh.me> (2024-12-12)
 # seccomp is only supported with systemd
 sys-apps/fwupd seccomp
