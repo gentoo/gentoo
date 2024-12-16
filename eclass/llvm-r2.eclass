@@ -248,16 +248,35 @@ llvm_cbuild_setup() {
 	llvm_prepend_path -b "${LLVM_SLOT}"
 }
 
+# @FUNCTION: llvm_chost_setup
+# @DESCRIPTION:
+# Set the environment for finding selected LLVM slot installed
+# for CHOST.
+#
+# This function is meant to be used when the package in question uses
+# LLVM compiles against and links to LLVM.  It is called automatically
+# by llvm-r2_pkg_setup if LLVM is found installed in ESYSROOT.
+llvm_chost_setup() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local esysroot_prefix=$(get_llvm_prefix -d)
+	einfo "Using ${esysroot_prefix} for CHOST LLVM ${LLVM_SLOT}"
+	[[ -d ${esysroot_prefix} ]] ||
+		die "LLVM ${LLVM_SLOT} not found installed in ESYSROOT (expected: ${esysroot_prefix})"
+
+	# satisfies find_package() in CMake
+	export LLVM_ROOT="${esysroot_prefix}"
+	export Clang_ROOT="${esysroot_prefix}"
+	export LLD_ROOT="${esysroot_prefix}"
+}
+
 # @FUNCTION: llvm-r2_pkg_setup
 # @DESCRIPTION:
-# Prepend the appropriate executable directory for the selected LLVM
-# slot to PATH.
+# Handle all supported setup actions automatically.  If LLVM is found
+# installed for CBUILD, call llvm_cbuild_setup.  If it is found
+# installed for CHOST, call llvm_chost_setup.
 #
-# The PATH manipulation is only done for source builds. The function
-# is a no-op when installing a binary package.
-#
-# If any other behavior is desired, the contents of the function
-# should be inlined into the ebuild and modified as necessary.
+# This function is a no-op when installing a binary package.
 #
 # Note that this function is not exported if LLVM_OPTIONAL is set.
 # In that case, it needs to be called manually.
@@ -269,6 +288,10 @@ llvm-r2_pkg_setup() {
 
 		if [[ -d $(get_llvm_prefix -b)/bin ]]; then
 			llvm_cbuild_setup
+		fi
+
+		if [[ -d $(get_llvm_prefix -d) ]]; then
+			llvm_chost_setup
 		fi
 	fi
 }
