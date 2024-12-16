@@ -13,6 +13,7 @@
 		<flag name="x265">Support for encoding h265 using <pkg>media-libs/x265</pkg>.</flag>
 	</use>
 	<upstream>
+		<doc lang="en">https://handbrake.fr/docs/en/</doc>
 		<remote-id type="github">HandBrake/HandBrake</remote-id>
 	</upstream>
 </pkgmetadata>
