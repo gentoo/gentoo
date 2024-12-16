@@ -150,6 +150,7 @@ dev-libs/oneDNN mkl
 kde-apps/kdenetwork-meta dropbox
 media-libs/opencv atlas mkl
 media-video/ffmpeg amf
+media-video/handbrake amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
 sys-apps/hwloc gl

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> <2024-12-16)
+# Only available on amd64.
+media-video/handbrake -qsv
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-11-30)
 # Dependency dev-python/asyncssh is keyworded here.
 net-misc/dropbear -test-async
@@ -85,6 +89,7 @@ sys-kernel/installkernel -efistub
 # Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
 # media-libs/libdovi is keyworded here
 media-libs/libplacebo -libdovi
+media-video/handbrake -libdovi
 
 # Sam James <sam@gentoo.org> (2024-02-24)
 # Only works on amd64 (and x32).
@@ -228,6 +233,7 @@ media-libs/libva-intel-driver -hybrid
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Unmask AMF keyword on amd64 only
 media-video/ffmpeg -amf
+media-video/handbrake -amf
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
