@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-10-11)
-# No suitable version of dev-libs/protobuf available.
-=dev-java/protobuf-java-4.28.1 system-protoc
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
 # Pin down kf6compat mask to currently stable versions.
 <kde-apps/kio-extras-24.02.2-r2 kf6compat
