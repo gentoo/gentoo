@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	>=app-admin/ansible-2.12.0[${PYTHON_USEDEP}]
+	>=app-admin/ansible-core-2.12.0[${PYTHON_USEDEP}]
 	>=dev-python/hvac-1.2.1[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
