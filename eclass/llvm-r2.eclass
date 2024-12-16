@@ -18,11 +18,18 @@
 # 2. Use llvm_gen_dep and/or LLVM_USEDEP to add appropriate
 #    dependencies.
 #
-# 3. Use llvm-r2_pkg_setup, get_llvm_prefix or LLVM_SLOT.
+# 3. Use llvm-r2_pkg_setup, llvm_chost_setup, llvm_cbuild_setup,
+#    get_llvm_prefix or LLVM_SLOT.
 #
 # The eclass sets IUSE and REQUIRED_USE.  The flag corresponding
 # to the newest supported stable LLVM slot (or the newest testing,
 # if no stable slots are supported) is enabled by default.
+#
+# Note that the eclass aims for a best-effort support of CHOST builds
+# (i.e. compiling/linking against LLVM) and CBUILD use (i.e. calling
+# LLVM tools at build time).  You need to determine what the package
+# in question needs, and put the appropriate packages in DEPEND and/or
+# BDEPEND appropriately.
 #
 # Example:
 # @CODE
