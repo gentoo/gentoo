@@ -13,7 +13,7 @@ declare -A GIT_CRATES=(
 	[version-ranges]='https://github.com/astral-sh/pubgrub;57832d0588fbb7aab824813481104761dc1c7740;pubgrub-%commit%/version-ranges'
 )
 
-RUST_MIN_VER="1.80.1"
+RUST_MIN_VER="1.81.0"
 
 inherit cargo check-reqs
 
