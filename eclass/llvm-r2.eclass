@@ -216,6 +216,130 @@ get_llvm_prefix() {
 	echo "${prefix}/usr/lib/llvm/${LLVM_SLOT}"
 }
 
+# @FUNCTION: generate_llvm_config
+# @DESCRIPTION:
+# Output a llvm-config compatible script that yields paths specific
+# to the requested LLVM version.
+generate_llvm_config() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local bindir=$(get_llvm_prefix -b)/bin
+	[[ ! -d ${bindir} ]] && bindir=
+
+	local prefix=$(get_llvm_prefix -d)
+	local includedir=${prefix}/include
+	local libdir=${prefix}/$(get_libdir)
+	local cmake_conf=${libdir}/cmake/llvm/LLVMConfig.cmake
+	if [[ ! -f ${cmake_conf} ]]; then
+		cat <<-EOF
+			#!/usr/bin/env sh
+			echo "LLVM ${LLVM_SLOT} not installed for ABI=${ABI}" >&2
+			exit 127
+		EOF
+		return
+	fi
+
+	local version=$(
+		sed -ne 's:set(LLVM_PACKAGE_VERSION \(.*\)):\1:p' "${cmake_conf}" || die
+	)
+	[[ -n ${version} ]] || die
+	local cppdefs=$(
+		sed -ne 's:set(LLVM_DEFINITIONS "\(.*\)"):\1:p' "${cmake_conf}" || die
+	)
+	[[ -n ${cppdefs} ]] || die
+	local targets=$(
+		sed -ne 's:set(LLVM_TARGETS_TO_BUILD \(.*\)):\1:p' "${cmake_conf}" || die
+	)
+	[[ -n ${targets} ]] || die
+	local libs=$(
+		sed -ne 's:set(LLVM_AVAILABLE_LIBS \(.*\)):\1:p' "${cmake_conf}" || die
+	)
+	[[ -n ${libs} ]] || die
+
+	readarray -d';' -t targets <<<"${targets}"
+	readarray -d';' -t libs <<<"${libs}"
+
+	local components=(
+		"${libs[@]#LLVM}" "${targets[@]}"
+		# special component groups (grep for add_llvm_component_group)
+		all all-targets engine native nativecodegen
+	)
+
+	cat <<-EOF
+		#!/usr/bin/env sh
+
+		echo "\${0} \${*}" >> "${T}/llvm-config-calls.txt"
+
+		do_echo() {
+			echo "  \${*}" >> "${T}/llvm-config-calls.txt"
+			echo "\${@}"
+		}
+
+		for arg; do
+			case \${arg} in
+				--version)
+					do_echo "${version}"
+					;;
+				--components)
+					do_echo "${components[*],,}"
+					;;
+				--targets-built)
+					do_echo "${targets[*]}"
+					;;
+				--cflags|--cppflags)
+					do_echo "-I${includedir} ${cppdefs[*]}"
+					;;
+				--cxxflags)
+					do_echo "-I${includedir} -std=c++17 ${cppdefs[*]}"
+					;;
+				--ldflags)
+					do_echo "-L${libdir}"
+					;;
+				--libs)
+					# llvm-config returns LLVM-<ver> but we're passing -L
+					# so we should be fine (and avoid NNgit... versions)
+					do_echo "-lLLVM"
+					;;
+				--libfiles)
+					do_echo "${libdir}/libLLVM.so"
+					;;
+				--system-libs)
+					do_echo
+					;;
+				--shared-mode)
+					do_echo shared
+					;;
+				--has-rtti)
+					do_echo YES
+					;;
+				--link-shared|--link-static)
+					# ignored
+					;;
+				--bindir)
+					if [ -n "${bindir}" ]; then
+						do_echo "${bindir}"
+					else
+						do_echo "CBUILD LLVM not available" >&2
+						exit 1
+					fi
+					;;
+				--includedir)
+					do_echo "${includedir}"
+					;;
+				--libdir)
+					do_echo "${libdir}"
+					;;
+				-*)
+					do_echo "Unsupported option: \${arg}" >&2
+					exit 1
+					;;
+				*)
+					# ignore components, we always return the dylib
+					;;
+			esac
+		done
+	EOF
+}
 # @FUNCTION: llvm_cbuild_setup
 # @DESCRIPTION:
 # Prepend the PATH for selected LLVM version in CBUILD.
@@ -251,11 +375,14 @@ llvm_cbuild_setup() {
 # @FUNCTION: llvm_chost_setup
 # @DESCRIPTION:
 # Set the environment for finding selected LLVM slot installed
-# for CHOST.
+# for CHOST.  Create llvm-config wrappers to satisfy legacy lookups.
 #
 # This function is meant to be used when the package in question uses
 # LLVM compiles against and links to LLVM.  It is called automatically
 # by llvm-r2_pkg_setup if LLVM is found installed in ESYSROOT.
+#
+# Note that the generated llvm-config may refer to CBUILD installation
+# of LLVM via --bindir, if it is found available.
 llvm_chost_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -268,6 +395,18 @@ llvm_chost_setup() {
 	export LLVM_ROOT="${esysroot_prefix}"
 	export Clang_ROOT="${esysroot_prefix}"
 	export LLD_ROOT="${esysroot_prefix}"
+
+	# satisfies llvm-config calls, e.g. from meson
+	export PATH="${T}/llvm-bin:${PATH}"
+	mkdir "${T}"/llvm-bin || die
+	# we need to generate it per-ABI, since libdir changes
+	local ABI
+	for ABI in $(get_all_abis); do
+		local path="${T}/llvm-bin/$(get_abi_CHOST)-llvm-config"
+		generate_llvm_config > "${path}" || die
+		chmod +x "${path}" || die
+	done
+	ln -s "$(get_abi_CHOST)-llvm-config" "${T}/llvm-bin/llvm-config" || die
 }
 
 # @FUNCTION: llvm-r2_pkg_setup
