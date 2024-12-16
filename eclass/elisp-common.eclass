@@ -260,7 +260,6 @@ elisp-emacs-version() {
 }
 
 # @FUNCTION: elisp-check-emacs-version
-# @USAGE: [version]
 # @DESCRIPTION:
 # Test if the eselected Emacs version is at least the version of
 # GNU Emacs specified in the NEED_EMACS variable, or die otherwise.
