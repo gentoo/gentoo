@@ -39,7 +39,7 @@ BDEPEND="
 	doc? (
 		dev-libs/libxslt
 		|| (
-			dev-java/fop
+			>=dev-java/fop-2.10-r1:0
 			app-text/dblatex
 			app-text/docbook-sgml-utils[jadetex]
 		)
