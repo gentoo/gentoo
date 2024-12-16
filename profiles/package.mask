@@ -291,23 +291,6 @@ dev-ruby/jquery-ui-rails:6
 # Bug #941566.
 app-emulation/virtualbox-kvm
 
-# Yongxiang Liang <tanekliang@gmail.org> (2024-10-10)
-# Fcitx 4 has been archived. Users can upgrade to Fcitx 5
-app-i18n/fcitx-anthy:4
-app-i18n/fcitx-chewing:4
-app-i18n/fcitx-cloudpinyin:4
-app-i18n/fcitx-configtool:4
-app-i18n/fcitx-hangul:4
-app-i18n/fcitx-libpinyin:4
-app-i18n/fcitx-m17n:4
-app-i18n/fcitx-qt5:4
-app-i18n/fcitx-rime:4
-app-i18n/fcitx-sayura:4
-app-i18n/fcitx-table-extra:4
-app-i18n/fcitx-unikey:4
-app-i18n/fcitx:4
-app-i18n/kcm-fcitx
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-10-05)
 # This version is known to break on certain systems. At the
 # same time it fixes several reported issues. Masked until
