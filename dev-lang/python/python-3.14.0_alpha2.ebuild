@@ -5,6 +5,7 @@ EAPI="8"
 
 LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL=1
+VERIFY_SIG_METHOD=sigstore
 WANT_LIBTOOL="none"
 
 inherit autotools check-reqs flag-o-matic linux-info llvm-r1
@@ -104,7 +105,6 @@ if [[ ${PV} != *_alpha* ]]; then
 fi
 
 # https://www.python.org/downloads/metadata/sigstore/
-VERIFY_SIG_METHOD=sigstore
 VERIFY_SIG_CERT_IDENTITY=hugo@python.org
 VERIFY_SIG_CERT_OIDC_ISSUER=https://github.com/login/oauth
 
