@@ -1,0 +1,36 @@
+https://github.com/koverstreet/bcachefs-tools/commit/10dc29d5b9a44e7bb8aff657e73c0c68dccc32b9
+From: Alyssa Ross <hi@alyssa.is>
+Date: Sat, 12 Oct 2024 18:13:19 +0200
+Subject: [PATCH] Pass -C default-linker-libraries to rustc
+
+By default, rustc passes -nodefaultlibs to the linker.  In some cases,
+this can cause compiler builtins (e.g. __cpu_model, used by
+__builtin_cpu_supports) not to be linked in:
+
+= note: /nix/store/s2cjhni3s6shh0n35ay1hpj8d85k44qk-x86_64-unknown-linux-musl-binutils-2.43.1/bin/x86_64-unknown-linux-musl-ld: ./libbcachefs.a(tools-util.o): in function `resolve_crc32c':
+        /build/source/c_src/tools-util.c:457:(.text+0x1023): undefined reference to `__cpu_model'
+        collect2: error: ld returned 1 exit status
+
+I saw this with static musl GCC builds, and others have reported it with
+Clang.
+
+Link: https://github.com/koverstreet/bcachefs-tools/issues/300
+Signed-off-by: Alyssa Ross <hi@alyssa.is>
+Signed-off-by: Kent Overstreet <kent.overstreet@linux.dev>
+--- a/Makefile
++++ b/Makefile
+@@ -73,12 +73,13 @@ CFLAGS+=$(call cc-disable-warning, zero-length-array)
+ CFLAGS+=$(call cc-disable-warning, shift-overflow)
+ CFLAGS+=$(call cc-disable-warning, enum-conversion)
+ CFLAGS+=$(call cc-disable-warning, gnu-variable-sized-type-not-at-end)
++export RUSTFLAGS=-C default-linker-libraries
+ 
+ PKGCONFIG_LIBS="blkid uuid liburcu libsodium zlib liblz4 libzstd libudev libkeyutils"
+ ifdef BCACHEFS_FUSE
+ 	PKGCONFIG_LIBS+="fuse3 >= 3.7"
+ 	CFLAGS+=-DBCACHEFS_FUSE
+-	export RUSTFLAGS=--cfg fuse
++	RUSTFLAGS+=--cfg fuse
+ endif
+ 
+ PKGCONFIG_CFLAGS:=$(shell $(PKG_CONFIG) --cflags $(PKGCONFIG_LIBS))

@@ -90,7 +90,8 @@ CRATES="
 LLVM_COMPAT=( {17..19} )
 PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
-inherit cargo flag-o-matic llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
+
+inherit cargo flag-o-matic  llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"
@@ -142,6 +143,10 @@ BDEPEND="
 
 QA_FLAGS_IGNORED="/sbin/bcachefs"
 
+PATCHES=(
+	"${FILESDIR}/${P}-rustc-default-libs.patch"
+)
+
 python_check_deps() {
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
@@ -178,6 +183,11 @@ src_compile() {
 	export VERSION=${PV}
 
 	default
+
+	# This version mangles the symbolic link,
+	# please check if this can be removed before bumping
+	rm "${S}"/bcachefs
+	ln -s "${S}"/target/release/bcachefs bcachefs
 
 	local shell
 	for shell in bash fish zsh; do
