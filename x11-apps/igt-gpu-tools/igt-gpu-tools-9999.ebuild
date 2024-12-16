@@ -19,14 +19,13 @@ if [[ ${PV} != *9999* ]]; then
 fi
 LICENSE="MIT"
 SLOT="0"
-IUSE="chamelium doc man overlay runner tests unwind valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv"
+IUSE="chamelium man overlay runner tests unwind valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv"
 REQUIRED_USE="
 	|| ( video_cards_amdgpu video_cards_intel video_cards_nouveau )
 	overlay? (
 		video_cards_intel
 		|| ( X xv )
 	)
-	doc? ( tests )
 	runner? ( tests )
 "
 RESTRICT="test"
@@ -60,7 +59,6 @@ RDEPEND="
 	valgrind? ( dev-debug/valgrind )
 	"
 DEPEND="${RDEPEND}
-	doc? ( >=dev-util/gtk-doc-1.25-r1 )
 	man? ( dev-python/docutils )
 	overlay? (
 		>=dev-util/peg-0.1.18
@@ -96,7 +94,7 @@ src_configure() {
 		$(meson_feature man)
 		-Dtestplan=disabled
 		-Dsphinx=disabled
-		$(meson_feature doc docs)
+		-Ddocs=disabled
 		$(meson_feature tests)
 		-Dxe_driver=disabled
 		-Dlibdrm_drivers=${gpus%?}
