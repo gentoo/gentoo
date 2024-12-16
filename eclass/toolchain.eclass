@@ -1323,7 +1323,7 @@ toolchain_src_configure() {
 	confgcc+=( --enable-lto )
 
 	# Build compiler itself using LTO
-	if tc_use_if_iuse lto ; then
+	if _tc_use_if_iuse lto ; then
 		# GCC 11 at least has a -Wlto-type-mismatch issue with Ada
 		if ! tc_version_is_at_least 12.1 && is_ada ; then
 			:;
