@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools edo python-any-r1 toolchain-funcs xdg
+inherit autotools edo flag-o-matic python-any-r1 toolchain-funcs xdg
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
@@ -117,6 +117,10 @@ src_prepare() {
 src_configure() {
 	tc-export AR RANLIB STRIP
 
+	# ODR violations, lto-type-mismatches
+	# bug #878899
+	filter-lto
+
 	# Libav was replaced in 1.2 with ffmpeg by default
 	# but I've elected to not make people change their use flags for AAC
 	# as its the same code anyway
@@ -125,6 +129,7 @@ src_configure() {
 		--verbose
 		--prefix="${EPREFIX}/usr"
 		--disable-flatpak
+		--no-harden #bug #890279
 		$(usex !gtk --disable-gtk)
 		--disable-gtk4
 		$(usex !gstreamer --disable-gst)
