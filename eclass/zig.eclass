@@ -520,9 +520,10 @@ zig_src_test() {
 	# by whitespaces is not enough for some cases.
 	# We probably need something like  "--list-steps names_only".
 	# In practice, almost nobody sets such names.
+	# Ignore failures like rare random "error.BrokenPipe" here.
+	# If they are real, they would appear in "ezig build test" anyway.
 	if grep -q '^[ ]*test[ ]' < <(
-		nonfatal ezig build --list-steps "${args[@]}" ||
-			die "ZBS: listing steps failed"
+		nonfatal ezig build --list-steps "${args[@]}"
 	); then
 		einfo "ZBS: testing with: ${args[@]}"
 		nonfatal ezig build test "${args[@]}" ||
