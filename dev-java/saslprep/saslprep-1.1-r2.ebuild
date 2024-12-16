@@ -16,7 +16,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ppc64"
 
-CP_DEPEND="dev-java/stringprep:0"
+CP_DEPEND="~dev-java/stringprep-${PV}:0"
 DEPEND=">=virtual/jdk-1.8:*
 	${CP_DEPEND}"
 RDEPEND=">=virtual/jre-1.8:*
