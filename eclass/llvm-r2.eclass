@@ -216,6 +216,38 @@ get_llvm_prefix() {
 	echo "${prefix}/usr/lib/llvm/${LLVM_SLOT}"
 }
 
+# @FUNCTION: llvm_cbuild_setup
+# @DESCRIPTION:
+# Prepend the PATH for selected LLVM version in CBUILD.
+#
+# This function is meant to be used when the package in question uses
+# LLVM tools at build time.  It is called automatically
+# by llvm-r2_pkg_setup if LLVM is found installed in BROOT.
+#
+# Note that llvm-config from this path must not be used to build against
+# LLVM, as that will break cross-compilation.
+llvm_cbuild_setup() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local broot_prefix=$(get_llvm_prefix -b)
+	einfo "Using ${broot_prefix} for CBUILD LLVM ${LLVM_SLOT}"
+	[[ -d ${broot_prefix}/bin ]] ||
+		die "LLVM ${LLVM_SLOT} not found installed in BROOT (expected: ${broot_prefix}/bin)"
+
+	llvm_fix_clang_version CC CPP CXX
+	# keep in sync with profiles/features/llvm/make.defaults!
+	llvm_fix_tool_path ADDR2LINE AR AS LD NM OBJCOPY OBJDUMP RANLIB
+	llvm_fix_tool_path READELF STRINGS STRIP
+
+	# Set LLVM_CONFIG to help Meson (bug #907965) but only do it
+	# for empty ESYSROOT (as a proxy for "are we cross-compiling?").
+	if [[ -z ${ESYSROOT} ]] ; then
+		llvm_fix_tool_path LLVM_CONFIG
+	fi
+
+	llvm_prepend_path -b "${LLVM_SLOT}"
+}
+
 # @FUNCTION: llvm-r2_pkg_setup
 # @DESCRIPTION:
 # Prepend the appropriate executable directory for the selected LLVM
@@ -235,18 +267,9 @@ llvm-r2_pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -z ${LLVM_SLOT} ]] && die "LLVM_SLOT unset (broken USE_EXPAND?)"
 
-		llvm_fix_clang_version CC CPP CXX
-		# keep in sync with profiles/features/llvm/make.defaults!
-		llvm_fix_tool_path ADDR2LINE AR AS LD NM OBJCOPY OBJDUMP RANLIB
-		llvm_fix_tool_path READELF STRINGS STRIP
-
-		# Set LLVM_CONFIG to help Meson (bug #907965) but only do it
-		# for empty ESYSROOT (as a proxy for "are we cross-compiling?").
-		if [[ -z ${ESYSROOT} ]] ; then
-			llvm_fix_tool_path LLVM_CONFIG
+		if [[ -d $(get_llvm_prefix -b)/bin ]]; then
+			llvm_cbuild_setup
 		fi
-
-		llvm_prepend_path "${LLVM_SLOT}"
 	fi
 }
 
