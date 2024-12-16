@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-16)
+# Destabilising app-emulation/qemu on ppc
+sys-boot/grub test grub_platforms_qemu
+sys-boot/grub test
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-02)
 # Destabilizing ppc keywords on sci-*/* packages
 dev-perl/PDL gsl
