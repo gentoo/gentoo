@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -6,13 +6,13 @@
 # The office team <office@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for installing libreoffice extensions
 # @DESCRIPTION:
 # Eclass for easing maintenance of libreoffice extensions.
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -70,11 +70,13 @@ fi
 # @CODE
 : "${OFFICE_EXTENSIONS_LOCATION:=${DISTDIR}}"
 
-IUSE=""
-RDEPEND=""
+# Most projects actually do not provide any relevant sourcedir as they are oxt.
+S="${WORKDIR}"
+
+IUSE="$(printf 'office_implementation_%s ' ${OFFICE_IMPLEMENTATIONS[@]})"
+REQUIRED_USE="|| ( $(printf 'office_implementation_%s ' ${OFFICE_IMPLEMENTATIONS[@]}) )"
 
 for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
-	IUSE+=" office_implementation_${i}"
 	if [[ ${i} == "libreoffice" ]]; then
 		RDEPEND+="
 			office_implementation_${i}? (
@@ -86,19 +88,7 @@ for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
 		"
 	fi
 done
-
-REQUIRED_USE="|| ( "
-for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
-	REQUIRED_USE+=" office_implementation_${i} "
-done
-REQUIRED_USE+=" )"
-
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
-
-# Most projects actually do not provide any relevant sourcedir as they are oxt.
-S="${WORKDIR}"
+BDEPEND="app-arch/unzip"
 
 # @FUNCTION: office-ext-r1_src_unpack
 # @DESCRIPTION:
