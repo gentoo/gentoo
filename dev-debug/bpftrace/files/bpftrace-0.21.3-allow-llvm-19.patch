@@ -1,0 +1,18 @@
+
+Patch adapted from from https://github.com/bpftrace/bpftrace/pull/3433
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b60fa26d990..11927a434731 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -156,8 +156,8 @@ else()
+   find_package(LLVM REQUIRED)
+ endif()
+ 
+-set(MIN_LLVM_MAJOR 6)
++set(MIN_LLVM_MAJOR 13)
+-set(MAX_LLVM_MAJOR 18)
++set(MAX_LLVM_MAJOR 19)
+ 
+ if((${LLVM_VERSION_MAJOR} VERSION_LESS ${MIN_LLVM_MAJOR}) OR (${LLVM_VERSION_MAJOR} VERSION_GREATER ${MAX_LLVM_MAJOR}))
+   message(SEND_ERROR "Unsupported LLVM version found via ${LLVM_INCLUDE_DIRS}: ${LLVM_VERSION_MAJOR}")
