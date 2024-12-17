@@ -37,6 +37,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-23.3.4-Remove-unwanted-CFLAGS.patch
 	"${FILESDIR}"/${PN}-23.3.4_testing_in_src_test.patch
+	"${FILESDIR}"/${PN}-24.4.4-c23-fix.patch
 )
 
 multilib_src_configure() {
