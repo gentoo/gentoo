@@ -1,0 +1,28 @@
+
+Patch from: https://github.com/bpftrace/bpftrace/commit/9996177e80f66e1d991f960fa9eb39c221ed7f45
+
+From 9996177e80f66e1d991f960fa9eb39c221ed7f45 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Tue, 20 Aug 2024 12:12:45 +0200
+Subject: [PATCH] Explicitly include <cstdint> for gcc-15
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes: https://github.com/bpftrace/bpftrace/issues/3406
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ src/disasm.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/disasm.h b/src/disasm.h
+index b5411f2e416c..d8d7fde8aa46 100644
+--- a/src/disasm.h
++++ b/src/disasm.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
