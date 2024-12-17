@@ -19,7 +19,7 @@
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here (but is not yet marked stable)
-sys-devel/gcc ada
+>=sys-devel/gcc-14 ada
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-16)
 # Destabilising app-emulation/qemu on ppc

@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
-sys-devel/gcc -ada
+>=sys-devel/gcc-14 -ada
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
 # sci-libs/caffe2 is not keyworded on arm64

@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
-sys-devel/gcc -ada
+>=sys-devel/gcc-14 -ada
 
 # Matt Jolly <kangie@gentoo.org> (2024-12-08)
 # dev-vcs/mercurial is not keyworded on sparc

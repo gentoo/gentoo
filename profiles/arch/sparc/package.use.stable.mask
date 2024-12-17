@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here (but is not yet marked stable)
-sys-devel/gcc ada
+>=sys-devel/gcc-14 ada
 
 # Sam James <sam@gentoo.org> (2024-07-31)
 # Qt 6 not stable here.

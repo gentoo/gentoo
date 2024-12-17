@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
-sys-devel/gcc -ada
+>=sys-devel/gcc-14 -ada
 
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak is not keyworded
