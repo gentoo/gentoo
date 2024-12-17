@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arianxdehghani@gmail.com</email>
+  </maintainer>
+  <longdescription>
+    SOPS is an editor of encrypted files that supports YAML, JSON, ENV,
+    INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key
+    Vault, age, and PGP.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">getsops/sops</remote-id>
+  </upstream>
+</pkgmetadata>
