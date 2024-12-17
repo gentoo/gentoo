@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -334,6 +334,18 @@ DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
+# @FUNCTION: _ecm_handbook_optional
+# @DESCRIPTION:
+# Use with ECM_HANDBOOK=optional; ticks either -DBUILD_DOC if available,
+# or -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools
+_ecm_handbook_optional() {
+	if grep -Eq "option.*BUILD_DOC" CMakeLists.txt; then
+		echo "-DBUILD_DOC=$(usex handbook)"
+	else
+		echo "-DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools=$(usex !handbook)"
+	fi
+}
+
 # @FUNCTION: _ecm_strip_handbook_translations
 # @INTERNAL
 # @DESCRIPTION:
@@ -621,7 +633,7 @@ ecm_src_configure() {
 	fi
 
 	if [[ ${ECM_HANDBOOK} = optional ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools=$(usex !handbook) )
+		cmakeargs+=( $(_ecm_handbook_optional) )
 	fi
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
