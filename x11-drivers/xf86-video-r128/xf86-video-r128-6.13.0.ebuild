@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 inherit flag-o-matic xorg-3
 
 DESCRIPTION="ATI Rage128 video driver"

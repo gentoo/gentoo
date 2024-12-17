@@ -4,7 +4,6 @@
 EAPI=8
 
 XORG_DRI=always
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="VMware SVGA video driver"

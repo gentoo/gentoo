@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="Alter a monitor's gamma correction through the X server"

@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 inherit linux-info xorg-3
 
 DESCRIPTION="Generic VESA video driver"

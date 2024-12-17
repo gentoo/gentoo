@@ -4,7 +4,6 @@
 EAPI=8
 
 XORG_DRI=always
-XORG_TARBALL_SUFFIX="xz"
 inherit linux-info xorg-3
 
 if [[ ${PV} != 9999* ]]; then

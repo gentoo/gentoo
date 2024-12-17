@@ -5,7 +5,6 @@ EAPI=8
 
 XORG_DOC=doc
 XORG_MULTILIB=yes
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X Present Extension C Library"

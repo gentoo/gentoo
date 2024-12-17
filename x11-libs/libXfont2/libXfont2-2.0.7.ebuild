@@ -5,7 +5,6 @@ EAPI=8
 
 XORG_DOC=doc
 XORG_PACKAGE_NAME=libxfont
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X.Org Xfont library"

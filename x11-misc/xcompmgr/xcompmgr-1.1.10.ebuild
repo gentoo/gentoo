@@ -4,7 +4,6 @@
 EAPI=8
 
 XORG_MODULE=app/
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X Compositing manager"

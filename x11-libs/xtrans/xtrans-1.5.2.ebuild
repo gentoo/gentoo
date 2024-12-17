@@ -6,7 +6,6 @@ EAPI=8
 XORG_PACKAGE_NAME="lib${PN}"
 # this package just installs some .c and .h files, no libraries
 XORG_DOC=doc
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X.Org xtrans library"
