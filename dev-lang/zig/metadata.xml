@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="debug">Build with debug extensions enabled.</flag>
 		<flag name="llvm">Build with LLVM backend and extensions enabled.</flag>
 	</use>
 	<upstream>
