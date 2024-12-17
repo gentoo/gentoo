@@ -59,8 +59,30 @@ RDEPEND="
 	virtual/libiconv
 "
 
+src_unpack() {
+	# We want to unpack only the appropriate tarball for CHOST (e.g. on arm).
+	TARBALL_TO_UNPACK=
+
+	local archive
+	for archive in ${A} ; do
+		local tarball_chost=${archive/${P}-}
+		tarball_chost=${tarball_chost%%.gpkg.tar}
+
+		if [[ ${tarball_chost} == ${CHOST} ]] ; then
+			TARBALL_TO_UNPACK=${archive}
+			break
+		fi
+	done
+
+	if [[ -z ${TARBALL_TO_UNPACK} ]] ; then
+		die "No tarball found for CHOST=${CHOST}. Please file a bug at bugs.gentoo.org."
+	fi
+
+	unpack_gpkg "${TARBALL_TO_UNPACK}"
+}
+
 src_install() {
-	local chost=${A/${P}-}
+	local chost=${TARBALL_TO_UNPACK/${P}-}
 	chost=${chost%%.gpkg.tar}
 
 	dodir /usr/lib/ada-bootstrap
