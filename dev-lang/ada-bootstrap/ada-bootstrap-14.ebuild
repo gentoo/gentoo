@@ -30,9 +30,9 @@ SRC_URI="
 	)
 	arm? (
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv6j-softfp-linux-gnueabi.gpkg.tar
-                https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv6j-unknown-linux-gnueabihf.gpkg.tar
-                https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-softfp-linux-gnueabi.gpkg.tar
-                https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-unknown-linux-gnueabihf.gpkg.tar
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv6j-unknown-linux-gnueabihf.gpkg.tar
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-softfp-linux-gnueabi.gpkg.tar
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-unknown-linux-gnueabihf.gpkg.tar
 	)
 	ppc? (
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc-unknown-linux-gnu.gpkg.tar
