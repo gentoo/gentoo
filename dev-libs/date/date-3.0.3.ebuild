@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="A date and time library based on the C++11/14/17 <chrono> header"
 HOMEPAGE="https://github.com/HowardHinnant/date"
@@ -14,8 +14,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64"
 IUSE="only-c-locale test"
 RESTRICT="!test? ( test )"
-
-BDEPEND="test? ( llvm-core/clang )" # tests call clang++
 
 PATCHES=( "${FILESDIR}"/${PN}-3.0.3_remove-failing-tests.patch )
 
@@ -31,5 +29,5 @@ src_configure() {
 
 src_test() {
 	cd "${SRC_DIR}"test/ || die
-	./testit || die
+	CC="$(tc-getCC)" ./testit || die
 }
