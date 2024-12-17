@@ -24,6 +24,8 @@ BDEPEND="
 	>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-building-against-me.patch" )
+
 distutils_enable_tests pytest
 
 python_test() {
