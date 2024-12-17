@@ -450,6 +450,10 @@ KEYWORDS="~amd64"
 
 IUSE="man"
 
+DEPEND="
+	x11-libs/libdrm:=
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	man? (
 		|| (
