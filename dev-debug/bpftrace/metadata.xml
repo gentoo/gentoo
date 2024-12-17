@@ -18,7 +18,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="fuzzing">Build bpftrace for fuzzing</flag>
     <flag name="lldb">Parse debug info using<pkg>llvm-core/lldb</pkg></flag>
   </use>
   <upstream>
