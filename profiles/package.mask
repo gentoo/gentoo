@@ -121,11 +121,6 @@ dev-python/pypy
 # Removal on 2024-12-24.
 sys-boot/woeusb
 
-# Michael Orlitzky <mjo@gentoo.org> (2024-11-25)
-# Several consumers are failing to build with this version, bugs 944380,
-# 944404, and others. Masking until we can figure out what's wrong.
-=dev-python/cysignals-1.12.0
-
 # Michał Górny <mgorny@gentoo.org> (2024-11-23)
 # Implementation detail of dev-python/pyproject-fmt.  New versions
 # integrate the Rust code into the main package.
