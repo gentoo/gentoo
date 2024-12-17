@@ -411,16 +411,29 @@ if tc_has_feature valgrind ; then
 fi
 
 if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
-	BDEPEND+="
-		ada? (
-			|| (
-				sys-devel/gcc:${SLOT}[ada]
-				<sys-devel/gcc-${SLOT}[ada]
-				<dev-lang/ada-bootstrap-${SLOT}
-				dev-lang/gnat-gpl[ada]
+	if tc_use_major_version_only ; then
+		BDEPEND+="
+			ada? (
+				|| (
+					sys-devel/gcc:${SLOT}[ada]
+					<sys-devel/gcc-${SLOT}[ada]
+					<dev-lang/ada-bootstrap-$((${SLOT} + 1))
+					dev-lang/gnat-gpl[ada]
+				)
 			)
-		)
-	"
+		"
+	else
+                BDEPEND+="
+                        ada? (
+                                || (
+                                        sys-devel/gcc:${SLOT}[ada]
+                                        <sys-devel/gcc-${SLOT}[ada]
+                                        <dev-lang/ada-bootstrap-${SLOT}
+                                        dev-lang/gnat-gpl[ada]
+                                )
+                        )
+                "
+	fi
 fi
 
 # TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
