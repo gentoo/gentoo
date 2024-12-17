@@ -17,11 +17,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( sys-devel/clang )" # tests call clang++
 
-PATCHES=( "$FILESDIR"/${PN}-3.0.3_remove-failing-tests.patch )
-
-src_prepare() {
-	cmake_src_prepare
-}
+PATCHES=( "${FILESDIR}"/${PN}-3.0.3_remove-failing-tests.patch )
 
 src_configure() {
 	local mycmakeargs=(
