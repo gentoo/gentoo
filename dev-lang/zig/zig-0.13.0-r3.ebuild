@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 19 )
+LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL=1
 
 ZIG_SLOT="$(ver_cut 1-2)"
@@ -24,6 +24,7 @@ else
 	SRC_URI="
 		https://ziglang.org/download/${PV}/${P}.tar.xz
 		verify-sig? ( https://ziglang.org/download/${PV}/${P}.tar.xz.minisig )
+		https://codeberg.org/BratishkaErik/distfiles/releases/download/dev-lang%2Fzig-${PV}/${P}-llvm-18.1.8-r6-fix.patch
 	"
 	KEYWORDS="~amd64 ~arm ~arm64"
 
@@ -73,6 +74,12 @@ RDEPEND="${DEPEND}"
 IDEPEND="app-eselect/eselect-zig"
 
 DOCS=( "README.md" "doc/build.zig.zon.md" )
+
+PATCHES=(
+	"${FILESDIR}/zig-0.13.0-test-std-kernel-version.patch"
+	"${FILESDIR}/zig-0.13.0-skip-test-stack_iterator.patch"
+	"${DISTDIR}/${P}-llvm-18.1.8-r6-fix.patch"
+)
 
 # zig.eclass does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
