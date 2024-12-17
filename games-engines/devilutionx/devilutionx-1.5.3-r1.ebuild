@@ -13,11 +13,15 @@ SRC_URI="
 "
 S=${WORKDIR}/${PN}-src-${PV}
 
-LICENSE="Sustainable-Use-1.0 BSD CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1 zerotier? ( BUSL-1.1 )"
+LICENSE="
+	Sustainable-Use-1.0
+	BSD CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1
+	zerotier? ( BUSL-1.1 )
+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +sodium test zerotier"
-RESTRICT="!test? ( test )"
+RESTRICT="bindist mirror !test? ( test )"
 
 RDEPEND="
 	app-arch/bzip2:=
