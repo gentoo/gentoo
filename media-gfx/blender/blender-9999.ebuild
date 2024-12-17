@@ -339,7 +339,7 @@ src_configure() {
 		-DWITH_CYCLES_STANDALONE_GUI=no
 
 		-DWITH_DOC_MANPAGE=$(usex man)
-		-DWITH_DRACO="no" # TODO: Package Draco
+		-DWITH_DRACO="yes" # TODO: Package Draco
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD="no"
