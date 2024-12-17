@@ -144,7 +144,8 @@ dev-python/shiboken2
 # Gentoo will keep it packaged for as long as reasonably possible
 # (albeit masked) but no true support will be given nor patches
 # for newer kernels. It is recommended to use 6.6.x LTS kernels or
-# older (6.6.x will be supported until at least December 2026).
+# older (6.6.x will be supported upstream until December 2026,
+# and 6.1.x a year further to December 2027).
 #
 # Major issues will lead to removal without further warning, e.g.
 # if no usable kernels left in tree, or if broken with a newer Xorg.
@@ -520,7 +521,7 @@ sec-keys/openpgp-keys-jiatan
 # Gentoo will keep it packaged for as long as reasonably possible
 # (albeit masked) but no true support will be given nor patches
 # for newer kernels. It is recommended to use 6.1.x LTS kernels or
-# older (6.1.x will be supported until at least December 2026).
+# older (6.1.x will be supported upstream until December 2027).
 #
 # Major issues will lead to removal without further warning, e.g.
 # if no usable kernels left in tree, or if broken with a newer Xorg.
