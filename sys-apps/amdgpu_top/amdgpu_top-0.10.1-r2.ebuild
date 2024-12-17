@@ -451,7 +451,7 @@ KEYWORDS="~amd64"
 IUSE="man"
 
 DEPEND="
-	x11-libs/libdrm:=
+	x11-libs/libdrm:=[video_cards_amdgpu]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
