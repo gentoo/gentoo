@@ -29,7 +29,7 @@ BDEPEND="
 	test? ( dev-util/wayland-scanner )
 "
 
-ecm_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON # ecm.eclass
 		-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help" # ecm.eclass
