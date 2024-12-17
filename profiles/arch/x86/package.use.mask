@@ -1,10 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-17)
-# app-office/libreoffice is no longer stable on x86
-x11-misc/mugshot libreoffice
-
 # Ben Kohler <bkohler@gentoo.org> (2024-10-23)
 # Upstream dropbox no longer producing x86 releases
 kde-apps/kdenetwork-meta dropbox
