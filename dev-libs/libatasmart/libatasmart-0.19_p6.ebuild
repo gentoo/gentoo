@@ -13,7 +13,7 @@ SRC_URI="
 "
 S="${WORKDIR}/${P/_p*}"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0/4"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
@@ -25,7 +25,10 @@ src_prepare() {
 	# bug #470874
 	PATCHES=(
 		$(sed -e 's:^:../debian/patches/:' "${WORKDIR}"/debian/patches/series || die)
+
+		"${FILESDIR}"/${PN}-0.19_p5_do-not-fortify-source.patch
 	)
+
 	default
 	eautoreconf
 }
