@@ -14,6 +14,8 @@
     <flag name="X">Enable intel-gpu-overlay xlib/cairo backend</flag>
   </use>
   <upstream>
+    <changelog>https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/blob/master/NEWS</changelog>
+    <doc>https://drm.pages.freedesktop.org/igt-gpu-tools/</doc>
     <remote-id type="freedesktop-gitlab">drm/igt-gpu-tools</remote-id>
   </upstream>
 </pkgmetadata>
