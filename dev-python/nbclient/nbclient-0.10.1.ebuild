@@ -33,6 +33,7 @@ BDEPEND="
 		dev-python/ipywidgets[${PYTHON_USEDEP}]
 		dev-python/nbconvert[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 		dev-python/xmltodict[${PYTHON_USEDEP}]
 	)
