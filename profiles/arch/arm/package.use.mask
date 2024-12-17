@@ -434,10 +434,10 @@ mail-filter/opendkim opendbx stats
 
 # S. Suominen <ssuominen@g.o> (2014-04-17)
 # First GTK+-3.x version of EasyTAG!
-# Keyword as reqiuired, ~arch is enough for now:
+# Keyword as required, ~arch is enough for now:
 # media-libs/opusfile for USE opus
 # media-libs/opus for USE opus
-# app-text/apadata-tools for FEAATURES and USE test
+# app-text/apadata-tools for FEATURES and USE test
 # Do it! No reason to ask permission before!
 >=media-sound/easytag-2.2.0 opus test
 
