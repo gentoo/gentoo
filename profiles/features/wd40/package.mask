@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2024-12-17)
+# steam-overlay packages requiring Rust.
+x11-libs/extest
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-24)
 # Requires already masked packages (dev-python/bcrypt,
 # dev-python/cryptography, dev-python/fido2, dev-python/pyopenssl)
