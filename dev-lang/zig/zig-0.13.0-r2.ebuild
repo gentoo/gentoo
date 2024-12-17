@@ -44,7 +44,7 @@ fi
 # lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
 LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="${ZIG_SLOT}"
-IUSE="doc +llvm"
+IUSE="debug doc +llvm"
 REQUIRED_USE="
 	!llvm? ( !doc )
 	llvm? ( ${LLVM_REQUIRED_USE} )
@@ -149,7 +149,10 @@ src_configure() {
 		-Dno-langref
 		-Dstd-docs=false
 
-		--release=fast
+		# More commands and options if "debug" is enabled.
+		-Ddebug-extensions=$(usex debug true false)
+		# More asserts and so on by default if "debug" is enabled.
+		--release=$(usex debug safe fast)
 	)
 	if use llvm; then
 		my_zbs_args+=(
