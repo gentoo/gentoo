@@ -81,6 +81,8 @@ PDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-python3.13-debugger-pdb-curframe.patch ) # bug #946568
+
 python_prepare_all() {
 	# Rename the test directory to reduce sys.path pollution
 	# https://github.com/ipython/ipython/issues/12892
