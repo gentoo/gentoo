@@ -488,18 +488,9 @@ _ecm_deprecated_check_gcc_version() {
 	if ver_test ${KFMIN} -ge 6.9; then
 		eqawarn "QA notice: ecm_pkg_${1} has become a no-op."
 		eqawarn "It is no longer being exported with KFMIN >=6.9.0."
-		return
-	fi
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
-
-		local version=$(gcc-version)
-
-		debug-print "GCC version check activated"
-		debug-print "Version detected: ${version}"
-		debug-print "Version required: ${KDE_GCC_MINIMAL}"
-
-		ver_test ${version} -lt ${KDE_GCC_MINIMAL} &&
-			die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
+	else
+		[[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] &&
+			tc-check-min_ver gcc ${KDE_GCC_MINIMAL}
 	fi
 }
 
