@@ -6,7 +6,7 @@ EAPI=8
 inherit java-vm-2 toolchain-funcs
 
 abi_uri() {
-	local baseuri="https://github.com/adoptium/temurin$(ver_cut 1)-binaries/releases/download/jdk-${MY_PV}/"
+	local baseuri="https://github.com/adoptium/temurin$(ver_cut 1)-binaries/releases/download/jdk-${MY_PV1}/"
 	local musl=
 	local os=linux
 
@@ -22,11 +22,13 @@ abi_uri() {
 
 	echo "${2-$1}? (
 		${musl:+ elibc_musl? ( }
-			${baseuri}/OpenJDK$(ver_cut 1)U-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
+			${baseuri}/OpenJDK-jdk_${1}_${os}_hotspot_${MY_PV2//+/_}.tar.gz
 		${musl:+ ) } )"
 }
 
 MY_PV=${PV/_p/+}
+MY_PV1=${MY_PV/_beta/-ea-beta}
+MY_PV2=${MY_PV1/-beta/}
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"

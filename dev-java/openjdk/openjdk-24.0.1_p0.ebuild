@@ -30,12 +30,14 @@ bootstrap_uri() {
 # you will see, for example, jdk-17.0.4.1-ga and jdk-17.0.4.1+1, both point
 # to exact same commit sha. we should always use the full version.
 # -ga tag is just for humans to easily identify General Availability release tag.
-MY_PV="${PV%_p*}-ga"
+#	MY_PV="${PV%_p*}-ga" # '-ga' isn't available
+MY_PV="${PV/_p/+}"
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="
-	https://github.com/${PN}/jdk23u/archive/jdk-${MY_PV}.tar.gz
+	https://github.com/${PN}/jdk24u/archive/jdk-${MY_PV}.tar.gz
+
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
@@ -108,8 +110,6 @@ DEPEND="
 		)
 	)
 "
-
-PATCHES=( "${FILESDIR}/openjdk-23_p37-LIBFONTMANAGER_CFLAGS.patch" )
 
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
