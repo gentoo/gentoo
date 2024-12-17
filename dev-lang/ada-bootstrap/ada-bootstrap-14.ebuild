@@ -49,7 +49,7 @@ S=${WORKDIR}
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="-* ~arm ~arm64 ~sparc"
+KEYWORDS="-* ~arm ~arm64 ~ppc ~ppc64 ~sparc"
 
 RDEPEND="
 	>=dev-libs/gmp-4.3.2:=
