@@ -27,7 +27,6 @@ RDEPEND="
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/defusedxml[${PYTHON_USEDEP}]
 	dev-python/passlib[${PYTHON_USEDEP}]
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 	sys-apps/util-linux
 "
