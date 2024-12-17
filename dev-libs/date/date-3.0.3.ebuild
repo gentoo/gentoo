@@ -28,6 +28,6 @@ src_configure() {
 }
 
 src_test() {
-	cd "${SRC_DIR}"test/ || die
-	CC="$(tc-getCC)" ./testit || die
+	cd test/ || die
+	CC="$(tc-getCC)" CXX="$(tc-getCXX)" ./testit || die
 }
