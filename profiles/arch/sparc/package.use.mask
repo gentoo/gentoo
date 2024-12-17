@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-12-18)
+# dev-qt/* is not keyworded here
+app-text/doxygen gui
+dev-build/cmake gui
+
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
 >=sys-devel/gcc-14 -ada
@@ -8,11 +13,6 @@
 # Matt Jolly <kangie@gentoo.org> (2024-12-08)
 # dev-vcs/mercurial is not keyworded on sparc
 app-eselect/eselect-repository mercurial
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
-# Needs dev-qt/qtsvg:6 which is not keyworded here (bug #918896),
-# but neither is gnome so integration is not very useful either way.
-dev-qt/qtwayland:6 gnome
 
 # Felix Janda <felix.janda@posteo.de> (2024-10-20)
 # requires dev-libs/libcss and net-libs/libdom to be keyworded
@@ -74,18 +74,9 @@ media-gfx/graphicsmagick jpeg2k
 # Requires dev-util/shelltestrunner
 app-arch/mt-st test
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-04-02)
-# dev-qt/qtsvg:6 is not keyworded here yet (bug #918896)
-dev-qt/qtdeclarative:6 svg
-
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
 # mongodb dependencies are not keyworded
 mail-mta/postfix mongodb
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-02-13)
-# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
-# is not keyworded here and currently fails tests (bug #924430).
-dev-qt/qtmultimedia:6 qml
 
 # Eray Aslan <eras@gentoo.org> (2024-02-13)
 # tests require dev-db/mongodb which is not keyworded
@@ -145,12 +136,6 @@ dev-python/nbconvert test
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
 # dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
-# Vulkan is not available on sparc.
-dev-qt/qtdeclarative vulkan
-dev-qt/qtgui vulkan
->=dev-qt/qtwayland-5.15.11:5 compositor
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
@@ -432,10 +417,6 @@ net-analyzer/pnp4nagios icinga
 net-im/pidgin gstreamer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
-# dev-qt/designer is not keyworded on sparc
-x11-libs/qwt designer
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # USE=bpf depends on llvm-core/clang which is not keyworded on sparc
 media-libs/libv4l bpf
 
@@ -596,10 +577,6 @@ dev-python/pyquery test
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
-
-# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
