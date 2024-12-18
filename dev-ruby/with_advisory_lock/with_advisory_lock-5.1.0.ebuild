@@ -27,6 +27,8 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/activerecord-6.1:*[sqlite]
 	dev-ruby/maxitest
 	dev-ruby/mocha
+	dev-ruby/sqlite3:0
+	dev-ruby/yard
 )
 "
 
