@@ -58,6 +58,10 @@ pkg_pretend() {
 	fi
 }
 
+python_check_deps() {
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
 	if use test; then
 		python-any-r1_pkg_setup
