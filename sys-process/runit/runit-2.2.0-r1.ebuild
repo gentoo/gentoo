@@ -10,27 +10,17 @@ HOMEPAGE="https://smarden.org/runit/"
 PATCH_VER=20240905
 SRC_URI="
 	https://smarden.org/runit/${P}.tar.gz
-	https://github.com/clan/runit/releases/download/${PV}-r5/${P}-patches-${PATCH_VER}.tar.xz
 "
 S=${WORKDIR}/admin/${P}/src
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="split-usr static"
-
-RDEPEND="sys-apps/openrc"
-
-src_unpack() {
-	unpack ${P}.tar.gz
-	unpack ${P}-patches-${PATCH_VER}.tar.xz
-}
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="+scripts split-usr static"
 
 src_prepare() {
 	default
 
-	cd "${S}"/.. || die
-	eapply -p3 "${WORKDIR}"/patches
 	cd "${S}" || die
 
 	# We either build everything or nothing static
@@ -62,16 +52,22 @@ src_install() {
 		dosym ../../etc/runit/2 /sbin/runsvdir-start
 	fi
 
-	DOCS=( ../package/{CHANGES,README,THANKS,TODO} )
+	DOCS=( ../package/{CHANGES,README,THANKS} )
 	HTML_DOCS=( ../doc/*.html )
 	einstalldocs
 	doman ../man/*.[18]
 
-	exeinto /etc/runit
-	doexe "${FILESDIR}"/ctrlaltdel
-	newexe "${FILESDIR}"/1-r1 1
-	newexe "${FILESDIR}"/2-r1 2
-	newexe "${FILESDIR}"/3-r1 3
+	if use scripts ; then
+		exeinto /etc/runit
+		doexe "${FILESDIR}"/ctrlaltdel
+		newexe "${FILESDIR}"/1-r2 1
+		newexe "${FILESDIR}"/2-r1 2
+		newexe "${FILESDIR}"/3-r2 3
+		doexe "${FILESDIR}"/rc.sh
+		insinto /etc/runit/rc
+		doins "${FILESDIR}"/1.openrc.example
+		doins "${FILESDIR}"/3.openrc.example
+	fi
 
 	dodir /etc/sv
 	for tty in tty1 tty2 tty3 tty4 tty5 tty6; do
@@ -129,11 +125,21 @@ pkg_postinst() {
 		migrate_from_211
 	fi
 
-	ewarn "To make sure sv works correctly in your currently open"
-	ewarn "shells, please run the following command:"
-	ewarn
-	ewarn "source /etc/profile"
-	ewarn
+	if use scripts; then
+		ewarn "To make sure sv works correctly in your currently open"
+		ewarn "shells, please run the following command:"
+		ewarn
+		ewarn "source /etc/profile"
+		ewarn
+		ewarn "Currently, no task(s) will run in stage 1 & 3, you're on your own"
+		ewarn "to put script(s) into /etc/runit/rc/, please see /etc/runit/rc.sh"
+		ewarn "for name in different stages."
+	else
+		ewarn "This build with USE=\"-scripts\" doesn\'t include any boot scripts"
+		ewarn "into /etc/runit, you are on your own to put the scripts."
+		ewarn "Also, /sbin/runsvdir-start is a broken symlink to /etc/runit/2, you will"
+		ewarn "need to create script /etc/runit/2 before use it."
+	fi
 
 	if [[ -L "${EROOT}"/var/service ]]; then
 		ewarn "Once this version of runit is active, please remove the"
