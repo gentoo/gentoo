@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,9 +38,23 @@ src_install() {
 
 	fperms 0711 /usr/bin/beep
 
+	local DOCS=(
+		CREDITS.md DEVELOPMENT.md INSTALL.md NEWS.md PACKAGING.md PERMISSIONS.md README.md
+	)
 	einstalldocs
 }
 
 pkg_postinst() {
-	fcaps cap_dac_override,cap_sys_tty_config "${EROOT}/usr/bin/beep"
+	FILECAPS=(
+		-m0711 cap_dac_override,cap_sys_tty_config "${EROOT}/usr/bin/beep"
+	)
+
+	elog "Please note that for security reasons, beep will no longer allow"
+	elog "to running w/ SUID or as root under sudo. You will need to give"
+	elog "permissions for the PC speaker device to allow non-root users to"
+	elog "use 'beep' by either:"
+	elog "  setfacl -m u:<youruser>:rw /dev/input/by-path/platform-pcspkr-event-spkr"
+	elog "or add yourself to the 'input' group:"
+	elog "  usermod -aG input <youruser>"
+	elog "It's preferred to use setfacl with least privilege."
 }
