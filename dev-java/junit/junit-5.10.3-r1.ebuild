@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ IUSE="doc migration-support suite vintage"
 CP_DEPEND="
 	dev-java/apiguardian-api:0
 	dev-java/opentest4j:0
-	dev-java/open-test-reporting-events:0
+	<=dev-java/open-test-reporting-events-0.1.0_pre1:0
 	dev-java/picocli:0
 	dev-java/univocity-parsers:0
 "
