@@ -12,4 +12,7 @@
   <upstream>
     <remote-id type="github">clan/runit</remote-id>
   </upstream>
+  <use>
+    <flag name="scripts">Install boot scripts into /etc/runit/.</flag>
+  </use>
 </pkgmetadata>
