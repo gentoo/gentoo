@@ -16,9 +16,7 @@ S=${WORKDIR}/admin/${P}/src
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="split-usr static"
-
-RDEPEND="sys-apps/openrc"
+IUSE="+scripts split-usr static"
 
 src_prepare() {
 	default
@@ -50,10 +48,15 @@ src_install() {
 	dobin $(<../package/commands)
 	dodir /sbin
 	mv "${ED}"/usr/bin/{runit-init,runit,utmpset} "${ED}"/sbin/ || die "dosbin"
-	if use split-usr ; then
-		dosym ../etc/runit/2 /sbin/runsvdir-start
+	if use scripts ; then
+		if use split-usr ; then
+			dosym ../etc/runit/2 /sbin/runsvdir-start
+		else
+			dosym ../../etc/runit/2 /sbin/runsvdir-start
+		fi
 	else
-		dosym ../../etc/runit/2 /sbin/runsvdir-start
+		exeinto /sbin
+		newexe "${FILESDIR}"/2-${ver_runit_cfg} runsvdir-start
 	fi
 
 	DOCS=( ../package/{CHANGES,README,THANKS} )
@@ -61,11 +64,18 @@ src_install() {
 	einstalldocs
 	doman ../man/*.[18]
 
-	exeinto /etc/runit
-	doexe "${FILESDIR}"/ctrlaltdel
-	newexe "${FILESDIR}"/1-${ver_runit_cfg} 1
-	newexe "${FILESDIR}"/2-${ver_runit_cfg} 2
-	newexe "${FILESDIR}"/3-${ver_runit_cfg} 3
+	if use scripts ; then
+		exeinto /etc/runit
+		doexe "${FILESDIR}"/ctrlaltdel
+		newexe "${FILESDIR}"/1-${ver_runit_cfg} 1
+		newexe "${FILESDIR}"/2-${ver_runit_cfg} 2
+		newexe "${FILESDIR}"/3-${ver_runit_cfg} 3
+		doexe "${FILESDIR}"/rc.sh
+		insinto /etc/runit/rc
+		doins "${FILESDIR}"/1.openrc.example
+		doins "${FILESDIR}"/3.openrc.example
+
+	fi
 
 	dodir /etc/sv
 	for tty in tty1 tty2 tty3 tty4 tty5 tty6; do

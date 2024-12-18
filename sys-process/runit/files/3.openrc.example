@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# example script in stage 3 using openrc, sys-apps/openrc must be installed
+
+test -x /etc/runit/reboot && LAST=6    || LAST=0
+test -x /etc/runit/reboot && RC=reboot || RC=shutdown
+RUNLEVEL=$LAST /sbin/openrc $RC
