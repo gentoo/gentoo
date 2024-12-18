@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# example script in stage 3 using openrc, openrc must be installed to use
+
+test -x /etc/runit/reboot && LAST=6    || LAST=0
+test -x /etc/runit/reboot && RC=reboot || RC=shutdown
+RUNLEVEL=$LAST /sbin/openrc $RC
