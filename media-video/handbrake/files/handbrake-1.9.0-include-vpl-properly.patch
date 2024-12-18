@@ -1,0 +1,18 @@
+diff --git a/libhb/module.defs b/libhb/module.defs
+index 177ddefe4..dd3f274a6 100644
+--- a/libhb/module.defs
++++ b/libhb/module.defs
+@@ -52,11 +52,7 @@ LIBHB.GCC.D += __LIBHB__
+ LIBHB.GCC.I += $(LIBHB.build/) $(CONTRIB.build/)include
+ 
+ ifeq (1,$(FEATURE.qsv))
+-    ifeq ($(HOST.system),freebsd)
+-        LIBHB.GCC.I += $(LOCALBASE)/include/vpl
+-    else
+-        LIBHB.GCC.I += $(CONTRIB.build/)include/vpl
+-    endif
++    LIBHB.GCC.I += $(PREFIX)/include/vpl
+ endif
+ 
+ ifneq (,$(filter $(HOST.system),freebsd netbsd openbsd))
+

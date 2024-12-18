@@ -76,6 +76,7 @@ sys-kernel/installkernel efistub
 # media-libs/libdovi has very few keywords and there is little interest
 # in adding extras unless requested (also needs rust+cargo-c)
 media-libs/libplacebo libdovi
+media-video/handbrake libdovi
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
 # net-libs/paho-mqtt-c is only available for amd64 and x86
@@ -108,6 +109,7 @@ dev-python/pyqt6 pdfium remoteobjects
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
 # media-libs/libvpl is only keyworded for amd64 at this time.
+media-video/handbrake qsv
 media-video/obs-studio qsv
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
@@ -215,6 +217,7 @@ sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
+media-video/handbrake amf
 
 # Sam James <sam@gentoo.org> (2021-11-15)
 # Only available on PPC*.
