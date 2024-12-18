@@ -279,6 +279,7 @@ perf_make() {
 		NO_LIBCRYPTO=$(puse crypt)
 		NO_LIBDW_DWARF_UNWIND="${disable_libdw}"
 		NO_LIBELF=
+		NO_LIBLLVM=$(puse bpf)
 		NO_LIBNUMA=$(puse numa)
 		NO_LIBPERL=$(puse perl)
 		NO_LIBPFM4=$(puse libpfm)
