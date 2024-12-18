@@ -37,6 +37,9 @@ SRC_URI="
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-softfp-linux-gnueabi.gpkg.tar
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-unknown-linux-gnueabihf.gpkg.tar
 	)
+	loong? (
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-loongarch64-unknown-linux-gnu.gpkg.tar
+	)
 	ppc? (
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc-unknown-linux-gnu.gpkg.tar
 	)
@@ -44,8 +47,15 @@ SRC_URI="
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc64le-unknown-linux-gnu.gpkg.tar
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc64-unknown-linux-gnu.gpkg.tar
 	)
+	riscv? (
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-riscv64-unknown-linux-gnu.gpkg.tar
+	)
 	sparc? (
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-sparc64-unknown-linux-gnu.gpkg.tar
+	)
+	s390? (
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-s390-ibm-linux-gnu.gpkg.tar
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-s390x-ibm-linux-gnu.gpkg.tar
 	)
 "
 S=${WORKDIR}
