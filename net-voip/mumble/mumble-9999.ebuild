@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-cpp/ms-gsl
 	>=dev-libs/openssl-1.0.0b:0=
-	dev-libs/poco[util,xml,zip]
+	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtbase:6[dbus,gui,network,sqlite,widgets,xml]
 	dev-qt/qtsvg:6
