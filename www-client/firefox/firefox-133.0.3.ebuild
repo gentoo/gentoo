@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-133-patches-03.tar.xz"
+FIREFOX_PATCHSET="firefox-133-patches-04.tar.xz"
 
 LLVM_COMPAT=( 17 18 19 )
 
@@ -979,6 +979,9 @@ src_configure() {
 		if use clang ; then
 			# Used in build/pgo/profileserver.py
 			export LLVM_PROFDATA="llvm-profdata"
+		else
+			export GCOV_PREFIX="${BUILD_DIR}"/instrumented
+			export GCOV_PREFIX_STRIP=$(( $(echo "${BUILD_DIR}"|tr -c -d '/' |wc -c )+2 ))
 		fi
 	fi
 
