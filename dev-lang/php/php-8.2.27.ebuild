@@ -358,6 +358,13 @@ src_prepare() {
 
 	# https://github.com/php/php-src/pull/14439
 	rm ext/openssl/tests/bug74341.phpt || die
+
+	# Test for https://github.com/php/php-src/issues/16390 relies
+	# on the inifile handler to be present, so we have to skip
+	# this test in case the inifile USE flag is _not_ set.
+	if ! use inifile ; then
+		rm ext/dba/tests/gh16390.phpt || die
+	fi
 }
 
 src_configure() {
