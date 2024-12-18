@@ -70,11 +70,13 @@ src_configure() {
 
 	# ABI needs to be unset because flint uses it internally for
 	# an incompatible purpose.
+	# --disable-assembly in an attempt to fix bug 946501
 	# --enable-debug just adds -g to your CFLAGS
 	# --enable-avx2 and --enable-avx512 just add "-mfoo" to CFLAGS
 	# --enable-gc affects thread-safety
 	local myeconfargs=(
 		ABI=""
+		--disable-assembly
 		--disable-debug
 		--with-blas
 		--with-gmp
