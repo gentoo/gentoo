@@ -286,6 +286,13 @@ src_prepare() {
 	   ext/gd/tests/bug73272.phpt \
 	   || die
 
+	# Test for https://github.com/php/php-src/issues/16390 relies
+	# on the inifile handler to be present, so we have to skip
+	# this test in case the inifile USE flag is _not_ set.
+	if ! use inifile ; then
+		rm ext/dba/tests/gh16390.phpt || die
+	fi
+
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
 
