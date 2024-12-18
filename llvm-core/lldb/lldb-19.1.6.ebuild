@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake flag-o-matic llvm.org llvm-utils python-single-r1
+inherit cmake flag-o-matic llvm.org python-single-r1
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
@@ -53,8 +53,6 @@ LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
 llvm.org_set_globals
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	# bug #858389 (https://github.com/llvm/llvm-project/issues/83636)
 	filter-lto
 
@@ -62,6 +60,9 @@ src_configure() {
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+		-DClang_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DLLDB_ENABLE_CURSES=$(usex ncurses)
 		-DLLDB_ENABLE_LIBEDIT=$(usex libedit)
 		-DLLDB_ENABLE_PYTHON=$(usex python)
