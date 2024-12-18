@@ -9,7 +9,7 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-  <upstream>
-    <remote-id type="github">Ondsel-Development/OndselSolver</remote-id>
-  </upstream>
+	<upstream>
+		<remote-id type="github">Ondsel-Development/OndselSolver</remote-id>
+	</upstream>
 </pkgmetadata>
