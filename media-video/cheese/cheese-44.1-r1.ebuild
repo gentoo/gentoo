@@ -65,6 +65,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-43.0-buildfix.patch
+	"${FILESDIR}"/${PN}-44.1-c99.patch
 )
 
 src_prepare() {
