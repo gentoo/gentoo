@@ -23,6 +23,7 @@ if [[ "${PV}" == 9999 ]] ; then
 		3rdparty/renamenoise
 		3rdparty/speexdsp
 		3rdparty/tracy
+		3rdparty/utfcpp
 	)
 else
 	if [[ "${PV}" == *_pre* ]] ; then
@@ -46,14 +47,8 @@ RDEPEND="
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
+	dev-qt/qtbase:6[dbus,gui,network,sqlite,widgets,xml]
+	dev-qt/qtsvg:6
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.3.1
 	>=media-libs/speex-1.2.0
@@ -73,13 +68,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	dev-cpp/nlohmann_json
-	dev-qt/qtconcurrent:5
-	dev-qt/qttest:5
+	dev-qt/qtbase:6[concurrent]
 	dev-libs/boost
 	x11-base/xorg-proto
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 
