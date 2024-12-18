@@ -1,6 +1,16 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-12-18)
+# Force building these LLVM runtimes with Clang.  GCC builds are not
+# supported upstream (to the point of refusing bug fixes), and are
+# likely to result in runtimes that are not fully functional.
+llvm-runtimes/compiler-rt clang
+llvm-runtimes/compiler-rt-sanitizers clang
+llvm-runtimes/libunwind clang
+llvm-runtimes/libcxx clang
+llvm-runtimes/libcxxabi clang
+
 # Matt Jolly <kangie@gentoo.org> (2024-11-13)
 # Force the use of the appropriate llvm_slot_x USE for Rust.
 # This is strictly papercut prevention; the ebuild will enforce the correct
