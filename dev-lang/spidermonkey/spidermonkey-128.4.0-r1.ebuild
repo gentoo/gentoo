@@ -8,7 +8,7 @@ SPIDERMONKEY_PATCHSET="spidermonkey-128-patches-02.tar.xz"
 
 LLVM_COMPAT=( 17 18 19 )
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="ncurses,ssl,xml(+)"
 
 WANT_AUTOCONF="2.1"
@@ -229,6 +229,8 @@ src_prepare() {
 	if use elibc_glibc ; then
 		rm -v "${WORKDIR}"/firefox-patches/*bgo-748849-RUST_TARGET_override.patch || die
 	fi
+
+	eapply "${FILESDIR}"/spidermonkey-128.4.0-tests-add-python3.13-support.patch
 
 	eapply "${WORKDIR}"/firefox-patches
 	eapply "${WORKDIR}"/spidermonkey-patches
