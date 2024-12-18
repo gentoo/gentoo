@@ -58,6 +58,17 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
+
+	if ! use clang && tc-is-gcc ; then
+		local gcc_version=$(gcc-version)
+		case "${gcc_version}" in
+			13.*|14.*|15.*)
+				eerror "${P} cannot be compiled by GCC ${gcc_version}."
+				eerror 'Please set USE="clang" and try again.'
+				die "GCC ${gcc_version} is not supported"
+				;;
+		esac
+	fi
 }
 
 test_compiler() {
