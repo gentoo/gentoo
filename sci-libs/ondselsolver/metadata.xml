@@ -5,6 +5,10 @@
 		<email>ydmorenoc@unal.edu.co</email>
 		<name>David Moreno</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
   <upstream>
     <remote-id type="github">Ondsel-Development/OndselSolver</remote-id>
   </upstream>
