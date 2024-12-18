@@ -93,6 +93,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/clementine-1.4.0_rc2-lz.patch"
 	"${FILESDIR}/clementine-1.4.0_rc2-c17.patch"
 	"${FILESDIR}/clementine-1.4.0_rc2-absl.patch"
 	"${FILESDIR}/clementine-1.4.0_rc2-projectm-dir.patch"
@@ -115,16 +116,19 @@ src_prepare() {
 		cmake_comment_add_subdirectory tests
 	fi
 
-	rm -r 3rdparty/{libmygpo-qt5,taglib} || die
+	rm -r 3rdparty/{libmygpo-qt,libmygpo-qt5,taglib} || die
 }
 
 src_configure() {
+	# spotify is not in portage
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
 		-DENABLE_BREAKPAD=OFF  #< disable crash reporting
 		-DENABLE_GIO=ON
+		-DENABLE_SPOTIFY=OFF
+		-DENABLE_SPOTIFY_BLOB=OFF
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
