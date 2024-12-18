@@ -1,0 +1,11 @@
+--- a/src/server/cpulimit-unix.c	2024-11-20 22:37:00.519645455 +0100
++++ b/src/server/cpulimit-unix.c	2024-11-20 22:39:55.096447774 +0100
+@@ -42,7 +42,7 @@
+   }
+ }
+ 
+-void wallclock_timelimit_reached() {
++void wallclock_timelimit_reached(__attribute__((unused)) int signum) {
+   fprintf(stderr,
+           "Why3cpulimit: wallclock timelimit %d reached, killing command\n",
+           wallclock_timelimit);

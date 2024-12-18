@@ -1,0 +1,14 @@
+--- /dev/null	2024-11-05 18:50:26.176666244 +0000
++++ b/src/elfmips.h	2024-11-10 19:02:29.662347993 +0000
+@@ -0,0 +1,3 @@
++#ifndef DT_MIPS_XHASH
++#define DT_MIPS_XHASH 0x70000036
++#endif
+--- a/src/patchelf.h	2024-11-10 18:59:50.300318823 +0000
++++ b/src/patchelf.h	2024-11-10 19:11:20.597382739 +0000
+@@ -1,3 +1,5 @@
++#include "elfmips.h"
++
+ using FileContents = std::shared_ptr<std::vector<unsigned char>>;
+ 
+ #define ElfFileParams class Elf_Ehdr, class Elf_Phdr, class Elf_Shdr, class Elf_Addr, class Elf_Off, class Elf_Dyn, class Elf_Sym, class Elf_Verneed, class Elf_Versym

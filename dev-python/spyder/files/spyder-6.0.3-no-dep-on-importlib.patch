@@ -1,0 +1,50 @@
+diff --git a/requirements/main.yml b/requirements/main.yml
+index 7371c0ecd..74b3b55ac 100644
+--- a/requirements/main.yml
++++ b/requirements/main.yml
+@@ -14,8 +14,6 @@ dependencies:
+   - cookiecutter >=1.6.0
+   - diff-match-patch >=20181111
+   - fzf >=0.42.0
+-  # Need at least some compatibility with python 3.10 features
+-  - importlib-metadata >=4.6.0
+   - intervaltree >=3.0.2
+   - ipython >=8.13.0,<9.0.0,!=8.17.1
+   - jedi >=0.17.2,<0.20.0
+diff --git a/setup.py b/setup.py
+index bde2452a4..36ba50ff5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -260,9 +260,6 @@ def run(self):
+     'cloudpickle>=0.5.0',
+     'cookiecutter>=1.6.0',
+     'diff-match-patch>=20181111',
+-    # While this is only required for python <3.10, it is safe enough to
+-    # install in all cases and helps the tests to pass.
+-    'importlib-metadata>=4.6.0',
+     'intervaltree>=3.0.2',
+     'ipython>=8.12.2,<8.13.0; python_version=="3.8"',
+     'ipython>=8.13.0,<9.0.0,!=8.17.1; python_version>"3.8"',
+diff --git a/spyder/dependencies.py b/spyder/dependencies.py
+index 67eea346d..e1026f8e5 100644
+--- a/spyder/dependencies.py
++++ b/spyder/dependencies.py
+@@ -42,7 +42,6 @@
+ CLOUDPICKLE_REQVER = '>=0.5.0'
+ COOKIECUTTER_REQVER = '>=1.6.0'
+ DIFF_MATCH_PATCH_REQVER = '>=20181111'
+-IMPORTLIB_METADATA_REQVER = '>=4.6.0'
+ INTERVALTREE_REQVER = '>=3.0.2'
+ IPYTHON_REQVER = ">=8.12.2,<8.13.0" if PY38 else ">=8.13.0,<9.0.0,!=8.17.1"
+ JEDI_REQVER = '>=0.17.2,<0.20.0'
+@@ -130,10 +129,6 @@
+      'package_name': "diff-match-patch",
+      'features': _("Compute text file diff changes during edition"),
+      'required_version': DIFF_MATCH_PATCH_REQVER},
+-    {'modname': 'importlib_metadata',
+-     'package_name': 'importlib-metadata',
+-     'features': _('Access the metadata for a Python package'),
+-     'required_version': IMPORTLIB_METADATA_REQVER},
+     {'modname': "intervaltree",
+      'package_name': "intervaltree",
+      'features': _("Compute folding range nesting levels"),

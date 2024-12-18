@@ -3,7 +3,6 @@
 
 EAPI=8
 FONT_DIR="OTF"
-XORG_TARBALL_SUFFIX="xz"
 XORG_PACKAGE_NAME="misc-meltho"
 inherit xorg-3
 

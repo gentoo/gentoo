@@ -7,7 +7,6 @@
   <use>
     <flag name="exceptions">Compile with C++ exceptions</flag>
     <flag name="qch">Install API documentation in QCH format</flag>
-    <flag name="qthelp">Build API documentation in QtHelp format</flag>
   </use>
   <upstream>
     <remote-id type="github">coin3d/coin</remote-id>

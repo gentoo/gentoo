@@ -9,12 +9,15 @@ SRC_URI="https://www.kernel.org/pub/software/network/ethtool/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="+netlink"
 
 RDEPEND="netlink? ( net-libs/libmnl )"
 DEPEND="${RDEPEND}"
-BDEPEND="app-arch/xz-utils"
+BDEPEND="
+	app-arch/xz-utils
+	netlink? ( virtual/pkgconfig )
+"
 
 src_configure() {
 	econf $(use_enable netlink)

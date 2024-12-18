@@ -101,6 +101,12 @@ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
 export MSBUILDDISABLENODEREUSE=1
 export POWERSHELL_TELEMETRY_OPTOUT=1
 export POWERSHELL_UPDATECHECK=0
+# Speeds up restore. Having this turned on is redundant with Portage manifests.
+# See also: https://github.com/NuGet/Home/issues/13062
+export DOTNET_NUGET_SIGNATURE_VERIFICATION=false
+# Disable the fancy terminal logger introduced in .NET 9.0.
+# It messes up the Portage log file output.
+export MSBUILDTERMINALLOGGER=off
 # Overwrite selected MSBuild properties ("-p:XYZ").
 export UseSharedCompilation=false
 
@@ -289,6 +295,18 @@ edotnet() {
 	fi
 
 	edo "${DOTNET_PKG_EXECUTABLE}" "${@}"
+}
+
+# @FUNCTION: efsi
+# @USAGE: <command> [args...]
+# @DESCRIPTION:
+# Call dotnet fsi, passing the supplied arguments.
+# FSI is the F# interpreter shipped with .NET SDK, it is useful for running F#
+# maintenance scripts.
+efsi() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	edotnet fsi --nologo "${@}"
 }
 
 # @FUNCTION: dotnet-pkg-base_info

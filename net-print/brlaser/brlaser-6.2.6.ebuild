@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Owl-Maintain/brlaser/archive/refs/tags/v${PV}.tar.gz
 # https://github.com/Owl-Maintain/brlaser/blob/master/src/main.cc#L5C1-L8C39
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="net-print/cups"
 RDEPEND="

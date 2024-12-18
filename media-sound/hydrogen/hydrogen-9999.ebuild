@@ -59,7 +59,7 @@ RDEPEND="${CDEPEND}"
 DOCS=( AUTHORS ChangeLog DEVELOPERS.md README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.0-gnuinstalldirs.patch"
+	"${FILESDIR}/${PN}-1.2.3-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-1.3.0-cflags.patch"
 )
 

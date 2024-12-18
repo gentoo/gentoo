@@ -1,0 +1,8 @@
+Fails to build likely(?) with >=clang-19
+SymbolGuardian.cpp:19:7: error: no member named 'unique_lock' in namespace 'std'
+--- a/pcsx2/DebugTools/SymbolGuardian.h
++++ b/pcsx2/DebugTools/SymbolGuardian.h
+@@ -6,2 +6,3 @@
+ #include <atomic>
++#include <mutex>
+ #include <thread>

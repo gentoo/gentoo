@@ -1,0 +1,7 @@
+dev-lang/execline
+dev-libs/skalibs
+sys-apps/s6
+sys-apps/s6-linux-init
+sys-apps/s6-linux-utils
+sys-apps/s6-portable-utils
+sys-apps/s6-rc

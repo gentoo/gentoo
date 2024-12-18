@@ -112,7 +112,7 @@ RDEPEND="
 			>=dev-libs/openssl-0.9.7:=[sslv3(-)=,static-libs?,${MULTILIB_USEDEP}]
 		)
 		rustls? (
-			>=net-libs/rustls-ffi-0.13.0:=[${MULTILIB_USEDEP}]
+			>=net-libs/rustls-ffi-0.14.0:=[${MULTILIB_USEDEP}]
 		)
 	)
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
@@ -156,8 +156,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-prefix-2.patch
-	"${FILESDIR}"/${PN}-respect-cflags-3.patch
+	"${FILESDIR}/${PN}-prefix-3.patch"
+	"${FILESDIR}/${PN}-respect-cflags-3.patch"
 )
 
 src_prepare() {

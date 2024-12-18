@@ -23,7 +23,7 @@ KEYWORDS="amd64"
 DEPEND="
 	dev-libs/libxml2:2=
 	$(llvm_gen_dep '
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 	')
 	sys-libs/zlib
 "

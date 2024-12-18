@@ -1,0 +1,44 @@
+From 528092d80bc6835efaf9a7b75e4da74f27ac4850 Mon Sep 17 00:00:00 2001
+From: Ivana Hrivnacova <Ivana.Hrivnacova@cern.ch>
+Date: Thu, 28 Nov 2024 12:30:48 +0100
+Subject: [PATCH] Fix compilation with -DGeant4VMC_USE_G4Root=OFF: (#69)
+
+Added compilation flag for unprotected use of G4Root in TG4GeometryManager
+
+Bug: https://bugs.gentoo.org/943657
+Bug: https://github.com/vmc-project/geant4_vmc/issues/68
+---
+ source/geometry/src/TG4GeometryManager.cxx | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/source/geometry/src/TG4GeometryManager.cxx b/source/geometry/src/TG4GeometryManager.cxx
+index 02751e8458..d8d9db65ec 100644
+--- a/source/geometry/src/TG4GeometryManager.cxx
++++ b/source/geometry/src/TG4GeometryManager.cxx
+@@ -29,12 +29,15 @@
+ #include "TG4ModelConfigurationManager.h"
+ #include "TG4OpGeometryManager.h"
+ #include "TG4RadiatorDescription.h"
+-#include "TG4RootDetectorConstruction.h"
+ #include "TG4SDManager.h"
+ #include "TG4StateManager.h"
+ #include "TG4VUserPostDetConstruction.h"
+ #include "TG4VUserRegionConstruction.h"
+ 
++#ifdef USE_G4ROOT
++#include "TG4RootDetectorConstruction.h"
++#endif
++
+ #include <G4FieldManager.hh>
+ #include <G4LogicalVolumeStore.hh>
+ #include <G4Material.hh>
+@@ -521,7 +524,9 @@ void TG4GeometryManager::FillMediumMapFromRoot()
+       geoVolume = gGeoManager->GetVolume(volName.data());
+     }
+     else {
++#ifdef USE_G4ROOT
+       geoVolume = fRootDetectorConstruction->GetVolume(lv);
++#endif
+     }
+ 
+     if (!geoVolume) {

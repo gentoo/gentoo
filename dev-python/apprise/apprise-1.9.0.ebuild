@@ -29,7 +29,7 @@ RDEPEND="
 	mqtt? ( dev-python/paho-mqtt[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	dev-python/Babel[${PYTHON_USEDEP}]
+	dev-python/babel[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)

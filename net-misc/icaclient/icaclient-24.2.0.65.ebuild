@@ -75,8 +75,8 @@ RDEPEND="
 	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:4.1
 	sys-apps/util-linux
-	sys-libs/libcxx
-	sys-libs/libcxxabi
+	llvm-runtimes/libcxx
+	llvm-runtimes/libcxxabi
 	sys-libs/zlib
 	virtual/krb5
 	virtual/libudev

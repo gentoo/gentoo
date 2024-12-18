@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature xdg
@@ -74,7 +74,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "track length detection for device sync (only one package is needed)" media-video/mplayer dev-python/eyeD3
+	optfeature "track length detection for device sync (only one package is needed)" media-video/mplayer dev-python/eyed3
 	optfeature "for the YouTube extension" net-misc/yt-dlp
 	optfeature "iPod sync support" media-libs/libgpod
 }

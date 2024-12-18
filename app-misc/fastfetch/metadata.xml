@@ -6,6 +6,9 @@
 	<description>Primary maintainer</description>
 </maintainer>
 <upstream>
+	<bugs-to>https://github.com/fastfetch-cli/fastfetch/issues</bugs-to>
+	<changelog>https://github.com/fastfetch-cli/fastfetch/blob/dev/CHANGELOG.md</changelog>
+	<doc>https://github.com/fastfetch-cli/fastfetch/wiki</doc>
 	<remote-id type="github">fastfetch-cli/fastfetch</remote-id>
 </upstream>
 <use>

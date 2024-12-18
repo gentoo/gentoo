@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="Controls host and/or user access to a running X server"

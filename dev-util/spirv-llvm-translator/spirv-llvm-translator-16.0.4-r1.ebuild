@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/spirv-tools
-	sys-devel/llvm:${SLOT}=
+	llvm-core/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
 	dev-util/spirv-headers
@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-python/lit
-		sys-devel/clang:${SLOT}
+		llvm-core/clang:${SLOT}
 	)
 "
 

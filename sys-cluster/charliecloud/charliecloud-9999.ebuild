@@ -9,11 +9,11 @@ inherit autotools optfeature python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/hpc/${PN}.git"
-	S="${WORKDIR}/${P}"
+	EGIT_REPO_URI="https://gitlab.com/${PN}/main.git"
 else
-	SRC_URI="https://github.com/hpc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.com/${PN}/main/-/archive/v${PV}/main-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86 ~x86-linux"
+	S="${WORKDIR}/main-v${PV}"
 fi
 
 DESCRIPTION="Lightweight user-defined software stacks for high-performance computing"
@@ -27,6 +27,8 @@ IUSE="ch-image doc"
 # directly and via Docker and installs packages inside using apt/yum.
 # Additionally, clashes with portage namespacing and sandbox.
 RESTRICT="test"
+
+DOCS=( NOTICE README.rst )
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -55,6 +57,8 @@ DEPEND="
 
 src_prepare() {
 	default
+	# Remove -W from SPHINXOPTS to prevent failure due to warnings
+	sed -i 's#^SPHINXOPTS .*=.*#SPHINXOPTS =#' doc/Makefile.am || die "Makefile patching failed"
 	eautoreconf
 }
 

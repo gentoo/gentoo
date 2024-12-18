@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/936138
+```
+libmpdemux/muxer_lavf.c:395:90: error: passing argument 6 of 'avio_alloc_context' from incompatible pointer type [-Wincompatible-pointer-types]
+  395 |         priv->oc->pb = avio_alloc_context(priv->buffer, BIO_BUFFER_SIZE, 1, muxer, NULL, mp_write, mp_seek);
+      |                                                                                          ^~~~~~~~
+      |                                                                                          |
+      |                                                                                          int (*)(void *, const uint8_t *, int) {aka int (*)(void *, const unsigned char *, int)}
+In file included from /usr/include/libavformat/avformat.h:319:
+/usr/include/libavformat/avio.h:420:25: note: expected 'int (*)(void *, uint8_t *, int)' {aka 'int (*)(void *, unsigned char *, int)'} but argument is of type 'int (*)(void *, const uint
+8_t *, int)' {aka 'int (*)(void *, const unsigned char *, int)'}
+  420 |                   int (*write_packet)(void *opaque, uint8_t *buf, int buf_size),
+      |                   ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+--- a/libmpcodecs/ad_spdif.c
++++ b/libmpcodecs/ad_spdif.c
+@@ -54,7 +54,7 @@ static int read_packet(void *p, uint8_t *buf, int buf_size)
+     return 0;
+ }
+ 
+-static int write_packet(void *p, const uint8_t *buf, int buf_size)
++static int write_packet(void *p, unsigned char *buf, int buf_size)
+ {
+     int len;
+     struct spdifContext *ctx = p;
+--- a/libmpdemux/muxer_lavf.c
++++ b/libmpdemux/muxer_lavf.c
+@@ -77,7 +77,7 @@ const m_option_t lavfopts_conf[] = {
+ 	{NULL, NULL, 0, 0, 0, 0, NULL}
+ };
+ 
+-static int mp_write(void *opaque, const uint8_t *buf, int size)
++static int mp_write(void *opaque, unsigned char *buf, int size)
+ {
+ 	muxer_t *muxer = opaque;
+ 	return stream_write_buffer(muxer->stream, buf, size);

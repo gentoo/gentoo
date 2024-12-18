@@ -1,0 +1,30 @@
+This is an adapted version of:
+
+From 7b5f56ec441fb472b61bae14e1efa353db4d7aca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sun, 18 Dec 2022 13:37:35 +0100
+Subject: [PATCH] Allow using local dependency for threadpool
+
+REBASED
+
+--- a/cmake-proxies/cmake-modules/DependenciesList.cmake
++++ b/cmake-proxies/cmake-modules/DependenciesList.cmake
+@@ -63,7 +63,6 @@ endif()
+ audacity_find_package(PortAudio REQUIRED)
+ 
+ if( ${_OPT}has_networking )
+-   audacity_find_package(ThreadPool REQUIRED)
+    audacity_find_package(CURL REQUIRED CONAN_PACKAGE_NAME libcurl)
+ endif()
+ 
+--- a/libraries/lib-network-manager/CMakeLists.txt
++++ b/libraries/lib-network-manager/CMakeLists.txt
+@@ -53,4 +53,8 @@ PRIVATE
+ set ( DEFINES INTERFACE "HAS_NETWORKING" PRIVATE "WIN32_LEAN_AND_MEAN" )
+ 
+ 
++add_library ( threadpool::threadpool INTERFACE IMPORTED GLOBAL )
++target_include_directories ( threadpool::threadpool INTERFACE
++  ${CMAKE_SOURCE_DIR}/lib-src/threadpool
++)
+ audacity_library( ${TARGET} "${SOURCES}" "${LIBRARIES}" "${DEFINES}" "" )

@@ -17,11 +17,11 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3+ CC-BY-SA-4.0 CC0-1.0 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/boolean-py-3.8[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/license-expression-1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-debian-0.1.48[${PYTHON_USEDEP}]"
 

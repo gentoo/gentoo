@@ -13,7 +13,7 @@ DESCRIPTION="Binary Data Conversion using C Types"
 
 LICENSE="|| ( GPL-1+ Artistic ) BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # bison >= 1.31?
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"

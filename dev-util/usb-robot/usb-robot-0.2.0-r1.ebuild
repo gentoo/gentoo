@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs autotools
 
 DESCRIPTION="USB Reverse engineering tools"
 HOMEPAGE="https://usb-robot.sourceforge.net/"
@@ -16,6 +16,15 @@ KEYWORDS="amd64 ppc x86"
 DEPEND="virtual/libusb:0
 	sys-libs/readline:="
 RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}/usb-robot-0.2.0-configure.patch"
+	"${FILESDIR}/usb-robot-0.2.0-clang-warn.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)"

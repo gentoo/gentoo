@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>zhixu.liu@gmail.com</email>
+		<name>Z. Liu</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">NVIDIA/libnvidia-container</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		NVIDIA container runtime library, this repository provides a library and
+		a simple CLI utility to automatically configure GNU/Linux containers
+		leveraging NVIDIA hardware.
+		The implementation relies on kernel primitives and is designed to be
+		agnostic of the container runtime.
+	</longdescription>
+	<longdescription lang="zh">
+		NVIDIA容器运行时库，这个仓库提供了一个库和一个简单的命令行工具，用于自动
+		配置利用NVIDIA硬件的GNU/Linux容器。这个实现依赖于内核原语，并旨在与容器
+		运行时无关。
+	</longdescription>
+</pkgmetadata>

@@ -12,22 +12,24 @@ HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="wayland"
+IUSE="+completions +dunstify wayland +X +xdg"
 
 DEPEND="
 	dev-libs/glib:2
 	sys-apps/dbus
-	x11-libs/cairo[X,glib]
+	x11-libs/cairo[X?,glib]
 	x11-libs/gdk-pixbuf:2
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXScrnSaver
-	x11-libs/libXinerama
-	x11-libs/libXrandr
-	x11-libs/libnotify
-	x11-libs/pango[X]
-	x11-misc/xdg-utils
+	x11-libs/pango[X?]
+	dunstify? ( x11-libs/libnotify )
 	wayland? ( dev-libs/wayland )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXScrnSaver
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+	)
+	xdg? ( x11-misc/xdg-utils )
 "
 
 RDEPEND="${DEPEND}"
@@ -38,14 +40,17 @@ BDEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 
+REQUIRED_USE="|| ( wayland X )"
+
 src_prepare() {
 	default
 
 	# Respect users CFLAGS
 	sed -e 's/-Os//' -i config.mk || die
 
-	# Use correct path for system unit
+	# Use correct path for dbus and system unit
 	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i dunst.systemd.service.in || die
+	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i org.knopwob.dunst.service.in || die
 }
 
 src_configure() {
@@ -56,9 +61,11 @@ src_configure() {
 
 src_compile() {
 	local myemakeargs=(
+		DUNSTIFY="$(usex dunstify 1 0)"
 		SYSCONFDIR="${EPREFIX}/etc/xdg"
 		SYSTEMD="0"
 		WAYLAND="$(usex wayland 1 0)"
+		X11="$(usex X 1 0)"
 	)
 
 	emake "${myemakeargs[@]}"
@@ -66,10 +73,13 @@ src_compile() {
 
 src_install() {
 	local myemakeargs=(
+		COMPLETIONS="$(usex completions 1 0)"
+		DUNSTIFY="$(usex dunstify 1 0)"
 		PREFIX="${ED}/usr"
 		SYSCONFDIR="${ED}/etc/xdg"
 		SYSTEMD="0"
 		WAYLAND="$(usex wayland 1 0)"
+		X11="$(usex X 1 0)"
 	)
 
 	emake "${myemakeargs[@]}" install

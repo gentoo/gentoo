@@ -108,6 +108,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Should be fixed upstream in next release (>3.3.0) (bug #943745)
+	append-cflags $(test-flags-CC -std=gnu17)
+
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt

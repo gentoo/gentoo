@@ -14,7 +14,7 @@ PATCHES=("${DISTDIR}/${P}-bug-933073-GNU_SOURCE.patch")
 MY_PV=${PV}
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="apparmor +forced-devmode gtk kde systemd"
 REQUIRED_USE="!forced-devmode? ( apparmor ) systemd"

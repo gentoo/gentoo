@@ -40,7 +40,7 @@ DEPEND="=dev-util/hip-6*
 		dev-cpp/gtest
 		dev-libs/boost
 		>=sci-libs/fftw-3
-		sys-libs/libomp
+		llvm-runtimes/openmp
 		sci-libs/hipRAND:${SLOT}[${ROCM_USEDEP}]
 	)
 "

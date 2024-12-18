@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Distribution builder; installer not included!"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="minimal"
 
 ## CPAN->Gentoo resolution map for grepping in case upstream split a dep

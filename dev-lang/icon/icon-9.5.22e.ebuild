@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gtownsend/icon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain HPND"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 hppa ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="X"
 
 S="${WORKDIR}/icon-${PV}"

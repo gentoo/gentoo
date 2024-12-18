@@ -27,7 +27,7 @@ else
 	# 		https://projects.blender.org/blender/blender-test-data/archive/blender-v$(ver_cut 1-2)-release.tar.gz
 	# 	)
 	# "
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 	RESTRICT="test" # the test archive returns LFS references.
 fi
 

@@ -22,16 +22,17 @@ RDEPEND="
 	>=dev-libs/libgcrypt-1.8.0:0=
 	>=net-libs/gnutls-3.6.0:0=
 	>=sys-libs/zlib-1.2.11
-	sasl? ( >=dev-libs/cyrus-sasl-2.1.27:2 )
 	>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 	>=x11-libs/cairo-1.15.0
-	>=x11-libs/libX11-1.6.5
-	pulseaudio? ( media-libs/libpulse )
 	introspection? ( >=dev-libs/gobject-introspection-1.56.0:= )
+	pulseaudio? ( media-libs/libpulse )
+	sasl? ( >=dev-libs/cyrus-sasl-2.1.27:2 )
+	X? ( >=x11-libs/libX11-1.6.5 )
 "
 # Keymap databases code is generated with python3; configure picks up $PYTHON exported from python-any-r1_pkg_setup
 # perl for pod2man
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5

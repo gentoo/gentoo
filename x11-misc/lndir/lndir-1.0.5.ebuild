@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="create a shadow directory of symbolic links to another directory tree"

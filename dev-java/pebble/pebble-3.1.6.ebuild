@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 
 CP_DEPEND="
 	dev-java/caffeine:0

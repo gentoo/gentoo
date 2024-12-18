@@ -1,0 +1,27 @@
+From 6fd3ca877e3095a93e9c25381e53a792ceb24160 Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Tue, 1 Jan 2019 11:12:56 +0300
+Subject: [PATCH 07/13] afsauthent-symbols
+
+(cherry picked from commit a443fcbbe03ff0d6c9b790cfd9283cd0952d3a0b)
+(cherry picked from commit bebe3f25a63dd7365e10c1bbc588168fd448a4d8)
+(cherry picked from commit c5de3eed6bea7ba33cd612e7dd2246509ab4dd6e)
+---
+ src/util/liboafs_util.la.sym | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/util/liboafs_util.la.sym b/src/util/liboafs_util.la.sym
+index 04842e6ebf76..0f83ff5faaac 100644
+--- a/src/util/liboafs_util.la.sym
++++ b/src/util/liboafs_util.la.sym
+@@ -13,6 +13,7 @@ Int32To_ktimeRelDate
+ LogCommandLine
+ LogLevel
+ LogThreadNum
++ka_GetAFSTicket
+ OpenLog
+ ReOpenLog
+ SetLogThreadNumProgram
+-- 
+2.45.2
+

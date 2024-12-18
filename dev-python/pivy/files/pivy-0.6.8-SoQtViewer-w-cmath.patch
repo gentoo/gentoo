@@ -1,0 +1,14 @@
+From a5fad6bb07d994d6e727d5759965611c6e4d57d6 Mon Sep 17 00:00:00 2001
+From: Konstantin Podsvirov <konstantin@podsvirov.pro>
+Date: Fri, 24 Nov 2023 21:09:53 +0300
+Subject: [PATCH] Add fake header for recently introduced cmath include in
+ SoQtViewer.h
+
+---
+ fake_headers/cmath | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fake_headers/cmath
+
+diff --git a/fake_headers/cmath b/fake_headers/cmath
+new file mode 100644
+index 00000000..e69de29b

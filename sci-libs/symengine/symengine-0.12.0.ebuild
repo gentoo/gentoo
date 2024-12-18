@@ -25,7 +25,7 @@ RDEPEND="
 	flint? ( sci-mathematics/flint:= )
 	mpc? ( dev-libs/mpc:= )
 	mpfr? ( dev-libs/mpfr:= )
-	llvm? ( <sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
+	llvm? ( <llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	tcmalloc? ( dev-util/google-perftools )
 "
 DEPEND="

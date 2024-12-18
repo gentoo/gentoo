@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-XORG_TARBALL_SUFFIX="xz"
 inherit toolchain-funcs xorg-3
 
 DESCRIPTION="C preprocessor interface to the make utility"

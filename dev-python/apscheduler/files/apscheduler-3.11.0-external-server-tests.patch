@@ -1,0 +1,36 @@
+diff --git a/tests/test_jobstores.py b/tests/test_jobstores.py
+index b90df0a..e962103 100644
+--- a/tests/test_jobstores.py
++++ b/tests/test_jobstores.py
+@@ -59,6 +59,7 @@ def rethinkdbjobstore():
+ 
+ @pytest.fixture
+ def mongodbjobstore():
++    pytest.skip("requires external server")
+     mongodb = pytest.importorskip("apscheduler.jobstores.mongodb")
+     store = mongodb.MongoDBJobStore(database="apscheduler_unittest")
+     store.start(None, "mongodb")
+@@ -69,6 +70,7 @@ def mongodbjobstore():
+ 
+ @pytest.fixture
+ def redisjobstore():
++    pytest.skip("requires external server")
+     redis = pytest.importorskip("apscheduler.jobstores.redis")
+     store = redis.RedisJobStore()
+     store.start(None, "redis")
+@@ -79,6 +81,7 @@ def redisjobstore():
+ 
+ @pytest.fixture
+ def zookeeperjobstore():
++    pytest.skip("requires external server")
+     zookeeper = pytest.importorskip("apscheduler.jobstores.zookeeper")
+     store = zookeeper.ZooKeeperJobStore(path="/apscheduler_unittest")
+     store.start(None, "zookeeper")
+@@ -89,6 +92,7 @@ def zookeeperjobstore():
+ 
+ @pytest.fixture
+ def etcdjobstore():
++    pytest.skip("requires external server")
+     etcd = pytest.importorskip("apscheduler.jobstores.etcd")
+     store = etcd.EtcdJobStore(path="/apscheduler_unittest")
+     store.start(None, "etcd")

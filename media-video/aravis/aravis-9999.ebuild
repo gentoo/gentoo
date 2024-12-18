@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 # FIXME: As of right now tests are always built, once that changes a USE flag
 # should be added. c.f. https://github.com/AravisProject/aravis/issues/286
-IUSE="gtk-doc fast-heartbeat gstreamer introspection packet-socket usb viewer"
+IUSE="doc fast-heartbeat gstreamer introspection packet-socket usb viewer"
 
 GST_DEPEND="
 	media-libs/gstreamer:1.0
@@ -29,14 +29,17 @@ GST_DEPEND="
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
-	gtk-doc? (
+	doc? (
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3
 	)
 	introspection? ( dev-libs/gobject-introspection:= )
 "
 DEPEND="
-	dev-libs/glib:2[gtk-doc?]
+	dev-libs/glib:2
+	doc? (
+		dev-libs/glib:2[gtk-doc(+),doc(+)]
+	)
 	dev-libs/libxml2:2
 	sys-libs/zlib
 	gstreamer? ( ${GST_DEPEND} )
@@ -56,7 +59,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use gtk-doc documentation)
+		$(meson_use doc documentation)
 		$(meson_use fast-heartbeat)
 		$(meson_use gstreamer gst-plugin)
 		$(meson_use introspection)

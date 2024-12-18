@@ -31,7 +31,7 @@ RDEPEND="
 	cdr? ( app-cdr/cdrtools )
 	flac? ( media-libs/flac )
 	id3tag? (
-		dev-python/eyeD3:0.7
+		dev-python/eyed3:0.7
 		>=media-sound/id3-0.12
 		media-sound/id3v2
 	)

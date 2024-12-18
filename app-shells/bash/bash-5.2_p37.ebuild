@@ -174,6 +174,10 @@ src_configure() {
 	# may misbehave at runtime.
 	unset -v YACC
 
+	# bash 5.3 drops unprototyped functions, earlier versions are
+	# incompatible with C23.
+	append-cflags $(test-flags-CC -std=gnu17)
+
 	myconf=(
 		--disable-profiling
 

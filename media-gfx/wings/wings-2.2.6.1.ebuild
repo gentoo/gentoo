@@ -5,7 +5,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Wings 3D is an advanced subdivision modeler"
-HOMEPAGE="http://www.wings3d.com/"
+HOMEPAGE="https://www.wings3d.com/"
 SRC_URI="https://downloads.sourceforge.net/wings/${P}.tar.bz2"
 
 LICENSE="BSD"

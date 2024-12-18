@@ -29,12 +29,12 @@ RDEPEND="
 	dev-python/googleapis-common-protos[${PYTHON_USEDEP}]
 	dev-python/h2[${PYTHON_USEDEP}]
 	dev-python/multidict[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
 		dev-python/async-timeout[${PYTHON_USEDEP}]
-		dev-python/Faker[${PYTHON_USEDEP}]
+		dev-python/faker[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)
 "

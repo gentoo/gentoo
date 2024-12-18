@@ -170,6 +170,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944076 (check if we can remove it w/ 3.x)
+	append-cflags -std=gnu17
+
 	# Stabilize things, for your own good
 	strip-flags
 	replace-flags -O? -O2

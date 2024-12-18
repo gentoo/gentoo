@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
-		dev-python/Faker[${PYTHON_USEDEP}]
+		dev-python/faker[${PYTHON_USEDEP}]
 	)
 "
 

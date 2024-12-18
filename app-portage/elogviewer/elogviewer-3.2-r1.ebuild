@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
 	')
 "

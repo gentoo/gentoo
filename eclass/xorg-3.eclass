@@ -8,7 +8,7 @@
 # Author: Tomáš Chvátal <scarabeus@gentoo.org>
 # Author: Donnie Berkholz <dberkholz@gentoo.org>
 # Author: Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: multilib-minimal
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
 # @DESCRIPTION:
@@ -23,7 +23,7 @@
 # everything else should be automatic.
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -111,9 +111,8 @@ HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MOD
 # @ECLASS_VARIABLE: XORG_TARBALL_SUFFIX
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
-# to bz2.
-: "${XORG_TARBALL_SUFFIX:="bz2"}"
+# Most X11 projects provide tarballs as tar.xz. This eclass defaults to xz.
+: "${XORG_TARBALL_SUFFIX:="xz"}"
 
 if [[ ${PV} == *9999* ]]; then
 	: "${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}"

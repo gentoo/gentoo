@@ -1,0 +1,11 @@
+diff '--color=auto' -ruN oprofile-1.4.0.orig/configure.ac oprofile-1.4.0/configure.ac
+--- oprofile-1.4.0.orig/configure.ac	2024-11-17 20:45:17.223265547 +0100
++++ oprofile-1.4.0/configure.ac	2024-11-17 20:52:05.146394249 +0100
+@@ -118,6 +118,7 @@
+ 				#include <asm/unistd.h>
+ 				#include <sys/types.h>
+ 				#include <string.h>
++				#include <unistd.h>
+ 			]],
+ 			[[struct perf_event_attr attr;
+ 				pid_t pid;

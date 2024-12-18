@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_PEP517=setuptools
-
 inherit distutils-r1 pypi
 
 DESCRIPTION="Stem is a Python controller library for Tor"

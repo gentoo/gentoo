@@ -12,7 +12,7 @@ DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applic
 HOMEPAGE="https://www.qt.io/"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm64 ~x86"
+	KEYWORDS="amd64 arm64"
 	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${PN}-5.15.13_p20240510.tar.xz"
 		S="${WORKDIR}/${PN}-5.15.13_p20240510"
@@ -103,6 +103,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.13_p20240510-gcc15.patch"
 	"${FILESDIR}/${P}-re2.patch"
 	"${FILESDIR}/${PN}-5.15.14_p20240510-gcc15-cstdint.patch"
+	"${FILESDIR}/${PN}-5.15.14_p20240510-gcc15-template-id-cdtor.patch"
 )
 
 python_check_deps() {
@@ -198,7 +199,7 @@ src_prepare() {
 
 	# src/3rdparty/gn fails with libc++ due to passing of `-static-libstdc++`
 	if tc-is-clang ; then
-		if has_version 'sys-devel/clang[default-libcxx(-)]' || has_version 'sys-devel/clang-common[default-libcxx(-)]' ; then
+		if has_version 'llvm-core/clang[default-libcxx(-)]' || has_version 'llvm-core/clang-common[default-libcxx(-)]' ; then
 			eapply "${FILESDIR}/${PN}-5.15.2_p20210521-clang-libc++.patch"
 		fi
 	fi

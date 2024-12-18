@@ -5,4 +5,7 @@
 		<email>flow@gentoo.org</email>
 		<name>Florian Schmaus</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">marvinkreis/rofi-file-browser-extended</remote-id>
+	</upstream>
 </pkgmetadata>

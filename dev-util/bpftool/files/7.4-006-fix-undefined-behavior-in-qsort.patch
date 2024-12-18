@@ -1,0 +1,49 @@
+From 37e304df400c69347189449b38864705cc88b987 Mon Sep 17 00:00:00 2001
+From: Kuan-Wei Chiu <visitorckw@gmail.com>
+Date: Tue, 10 Sep 2024 23:02:07 +0800
+Subject: [PATCH] bpftool: Fix undefined behavior in qsort(NULL, 0, ...)
+
+When netfilter has no entry to display, qsort is called with
+qsort(NULL, 0, ...). This results in undefined behavior, as UBSan
+reports:
+
+net.c:827:2: runtime error: null pointer passed as argument 1, which is declared to never be null
+
+Although the C standard does not explicitly state whether calling qsort
+with a NULL pointer when the size is 0 constitutes undefined behavior,
+Section 7.1.4 of the C standard (Use of library functions) mentions:
+
+"Each of the following statements applies unless explicitly stated
+otherwise in the detailed descriptions that follow: If an argument to a
+function has an invalid value (such as a value outside the domain of
+the function, or a pointer outside the address space of the program, or
+a null pointer, or a pointer to non-modifiable storage when the
+corresponding parameter is not const-qualified) or a type (after
+promotion) not expected by a function with variable number of
+arguments, the behavior is undefined."
+
+To avoid this, add an early return when nf_link_info is NULL to prevent
+calling qsort with a NULL pointer.
+
+Signed-off-by: Kuan-Wei Chiu <visitorckw@gmail.com>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Reviewed-by: Quentin Monnet <qmo@kernel.org>
+Link: https://lore.kernel.org/bpf/20240910150207.3179306-1-visitorckw@gmail.com
+---
+ src/net.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/net.c b/src/net.c
+index 3c50fc6..d2242d9 100644
+--- a/src/net.c
++++ b/src/net.c
+@@ -880,6 +880,9 @@ static void show_link_netfilter(void)
+ 		nf_link_count++;
+ 	}
+ 
++	if (!nf_link_info)
++		return;
++
+ 	qsort(nf_link_info, nf_link_count, sizeof(*nf_link_info), netfilter_link_compar);
+ 
+ 	for (id = 0; id < nf_link_count; id++) {

@@ -22,7 +22,7 @@ DEPEND="
 	dev-lang/perl:*
 	$(python_gen_cond_dep '
 		dev-python/progressbar2[${PYTHON_USEDEP}]
-		dev-python/requests_download[${PYTHON_USEDEP}]
+		dev-python/requests-download[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="

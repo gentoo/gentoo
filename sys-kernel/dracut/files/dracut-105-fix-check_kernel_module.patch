@@ -1,0 +1,28 @@
+From b90eda4b431af23d1101f1ea68b656929c6a82b2 Mon Sep 17 00:00:00 2001
+From: Nowa Ammerlaan <andrewammerlaan@gentoo.org>
+Date: Fri, 8 Nov 2024 20:01:54 +0100
+Subject: [PATCH] fix(dracut-functions.sh): check for modules in --kmoddir, not
+ in --sysroot
+
+Modules are installed from the directory specified by --kmoddir, but currently
+the check_kernel_module() function is checking for the module in
+--sysroot/lib/modules. This is notably not the same when kernels packages are
+being built inside some docker container. We should check for the modules
+existence in the directory we are actually going to install it from.
+---
+ dracut-functions.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dracut-functions.sh b/dracut-functions.sh
+index 865c31290..245c69cb6 100755
+--- a/dracut-functions.sh
++++ b/dracut-functions.sh
+@@ -761,7 +761,7 @@ check_kernel_config() {
+ # 0 if the kernel module is either built-in or available
+ # 1 if the kernel module is not enabled
+ check_kernel_module() {
+-    modprobe -d "$dracutsysrootdir" -S "$kernel" --dry-run "$1" &> /dev/null || return 1
++    modprobe -d "$drivers_dir/../../../" -S "$kernel" --dry-run "$1" &> /dev/null || return 1
+ }
+ 
+ # get_cpu_vendor

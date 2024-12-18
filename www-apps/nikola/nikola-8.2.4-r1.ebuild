@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit bash-completion-r1 distutils-r1 optfeature pypi
@@ -19,7 +19,7 @@ RESTRICT="test" # needs coveralls
 
 BDEPEND=">=dev-python/docutils-0.13[${PYTHON_USEDEP}]" # needs rst2man to build manpage
 RDEPEND="${BDEPEND}
-	>=dev-python/Babel-2.6.0[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.3[${PYTHON_USEDEP}]
 	>=dev-python/doit-0.32[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.3.5[${PYTHON_USEDEP}]
@@ -28,7 +28,7 @@ RDEPEND="${BDEPEND}
 	>=dev-python/natsort-3.5.2[${PYTHON_USEDEP}]
 	>=dev-python/piexif-1.0.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-1.6[${PYTHON_USEDEP}]
-	>=dev-python/PyRSS2Gen-1.1[${PYTHON_USEDEP}]
+	>=dev-python/pyrss2gen-1.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
@@ -62,7 +62,7 @@ pkg_postinst() {
 	optfeature "chart generation" dev-python/pygal
 	optfeature "hyphenation support" dev-python/pyphen
 	optfeature "notebook compilation and LESS support" dev-python/ipython
-	optfeature "alternative templating engine to Mako" dev-python/jinja
+	optfeature "alternative templating engine to Mako" dev-python/jinja2
 	optfeature "built-in web server support" dev-python/aiohttp
 	optfeature "monitoring file system events" dev-python/watchdog
 	optfeature "extracting metadata from web media links" dev-python/micawber

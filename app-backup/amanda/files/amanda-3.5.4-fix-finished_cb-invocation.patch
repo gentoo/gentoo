@@ -1,0 +1,12 @@
+diff '--color=auto' -ur amanda-tag-community-3.5.4.orig/perl/Amanda/Taper/Scribe.pm amanda-tag-community-3.5.4/perl/Amanda/Taper/Scribe.pm
+--- amanda-tag-community-3.5.4.orig/perl/Amanda/Taper/Scribe.pm	2023-07-26 06:27:30.000000000 -0400
++++ amanda-tag-community-3.5.4/perl/Amanda/Taper/Scribe.pm	2024-10-25 06:09:33.265064134 -0400
+@@ -1084,7 +1084,7 @@
+ 	if ($chg->{'global_space'}) {
+ 	    $chg->inventory(inventory_cb => $steps->{'got_inventory'});
+ 	} else {
+-	    return $finished_cb();
++	    return $finished_cb->();
+ 	}
+     };
+ 

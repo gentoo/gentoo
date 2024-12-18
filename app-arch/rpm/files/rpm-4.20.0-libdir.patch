@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,7 @@
+ option(WITH_LIBLZMA "Build with liblzma support" ON)
+ option(WITH_DOXYGEN "Build API docs with doxygen" OFF)
+ 
+-set(RPM_CONFIGDIR "${CMAKE_INSTALL_PREFIX}/lib/rpm" CACHE PATH "rpm home")
++set(RPM_CONFIGDIR "${CMAKE_INSTALL_PREFIX}/libexec/rpm" CACHE PATH "rpm home")
+ set(RPM_MACROSDIR "${RPM_CONFIGDIR}/macros.d")
+ set(RPM_VENDOR "vendor" CACHE STRING "rpm vendor string")
+ 

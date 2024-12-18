@@ -1,11 +1,11 @@
 # will be pulled by stage1
-sys-libs/compiler-rt
-sys-libs/libcxxabi
-sys-libs/libcxx
-sys-devel/llvm
-sys-devel/lld
-sys-devel/clang
-sys-libs/llvm-libunwind
+llvm-runtimes/compiler-rt
+llvm-runtimes/libcxxabi
+llvm-runtimes/libcxx
+llvm-core/llvm
+llvm-core/lld
+llvm-core/clang
+llvm-runtimes/libunwind
 
 # remove gcc & friends
 -sys-devel/gcc

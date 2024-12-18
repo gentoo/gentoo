@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="smi">Build with <pkg>net-libs/libsmi</pkg> to load MIBs on the fly to decode SNMP packets</flag>
-		<flag name="drop-root">Drop privileges to pcap:pcap when run as root</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:tcpdump:tcpdump</remote-id>

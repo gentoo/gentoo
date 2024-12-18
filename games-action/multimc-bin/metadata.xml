@@ -6,8 +6,8 @@
 		<bugs-to>https://github.com/MultiMC/Launcher/issues</bugs-to>
 	</upstream>
 	<maintainer type="person">
-		<email>andrewammerlaan@gentoo.org</email>
-		<name>Andrew Ammerlaan</name>
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<longdescription>
 		MultiMC is a custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once. It also allows you to easily install and remove mods by simply dragging and dropping. Here are the current features of MultiMC:

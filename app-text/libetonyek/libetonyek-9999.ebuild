@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-IUSE="doc static-libs test"
+IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -41,7 +41,7 @@ BDEPEND="
 
 src_prepare() {
 	default
-	[[ -d m4 ]] || mkdir "m4"
+	[[ -d m4 ]] || mkdir "m4" || die
 	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
@@ -50,7 +50,6 @@ src_configure() {
 		--disable-werror
 		--with-mdds="${MDDS_VER}"
 		$(use_with doc docs)
-		$(use_enable static-libs static)
 		$(use_enable test tests)
 	)
 	econf "${myeconfargs[@]}"
@@ -58,5 +57,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }

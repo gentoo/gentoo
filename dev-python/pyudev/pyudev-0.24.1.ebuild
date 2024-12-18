@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Python binding to libudev"
@@ -48,5 +48,5 @@ python_prepare_all() {
 }
 
 pkg_postinst() {
-	optfeature "PyQt5 bindings" "dev-python/PyQt5"
+	optfeature "PyQt5 bindings" "dev-python/pyqt5"
 }

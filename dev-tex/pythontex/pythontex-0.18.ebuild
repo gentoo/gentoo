@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gpoore/pythontex/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 SLOT="0"
 LICENSE="LPPL-1.3 BSD"
-KEYWORDS="amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 IUSE="doc highlighting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

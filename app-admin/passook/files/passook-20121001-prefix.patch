@@ -1,0 +1,26 @@
+--- a/passook
++++ b/passook
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!@GENTOO_PORTAGE_EPREFIX@/usr/bin/perl
+ 
+ srand;
+ $p = 3; #default pronouce level
+@@ -38,7 +38,7 @@
+ }
+ 
+ sub fourletterword {
+-	my $grepstring = 'egrep "^....$" /usr/dict/words';
++	my $grepstring = 'egrep "^....$" @GENTOO_PORTAGE_EPREFIX@/usr/share/dict/words';
+ 	my @fourletters = split(/\n/,`$grepstring`); 
+ 	my $word = $fourletters[rand(@fourletters)];
+         $word = &tangle($word) if ($p<5);
+@@ -46,7 +46,7 @@
+ }
+ 
+ sub threeletterword {
+-	my $grepstring = 'egrep "^...$" /usr/dict/words';
++	my $grepstring = 'egrep "^...$" @GENTOO_PORTAGE_EPREFIX@/usr/share/dict/words';
+ 	my @threeletters = split(/\n/,`$grepstring`);
+ 	my $word = $threeletters[rand(@threeletters)];
+ 	$word = &tangle($word) if ($p<5);

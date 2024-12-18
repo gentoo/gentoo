@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://git.adelielinux.org/adelie/musl-locales/uploads/7e855b894b18ca4
 
 LICENSE="LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~m68k ~mips ~ppc ppc64 ~riscv ~x86"
 
 RDEPEND="!sys-libs/glibc"
 

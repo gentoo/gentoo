@@ -33,7 +33,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/libelf:=
 	caps? ( sys-libs/libcap:= )
-	llvm? ( sys-devel/llvm:= )
+	llvm? ( llvm-core/llvm:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -119,5 +119,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "clang-bpf-co-re support" sys-devel/clang[llvm_targets_BPF]
+	optfeature "clang-bpf-co-re support" llvm-core/clang[llvm_targets_BPF]
 }

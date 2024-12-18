@@ -1,0 +1,12 @@
+diff '--color=auto' -ruN rcs-5.10.1.orig/src/b-divvy.c rcs-5.10.1/src/b-divvy.c
+--- rcs-5.10.1.orig/src/b-divvy.c	2022-01-27 03:13:37.000000000 +0100
++++ rcs-5.10.1/src/b-divvy.c	2024-11-11 01:25:31.633541338 +0100
+@@ -40,7 +40,7 @@
+   struct divvy *divvy = TMALLOC (struct divvy);
+ 
+   divvy->name = name;
+-  obstack_alloc_failed_handler = xalloc_die;
++  obstack_alloc_failed_handler = (__attribute_noreturn__ void (*)(void))xalloc_die;
+   obstack_init (&divvy->space);
+ 
+   /* Set alignment to avoid segfault (on some hosts).

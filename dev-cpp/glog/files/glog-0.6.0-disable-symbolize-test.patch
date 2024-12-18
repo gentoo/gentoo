@@ -1,0 +1,30 @@
+From 9ad08ac6cc7899947deb934a695d150f0ae360d0 Mon Sep 17 00:00:00 2001
+From: Rodrigo Queiro <rodrigoq@google.com>
+Date: Tue, 13 Sep 2022 11:53:24 +0200
+Subject: [PATCH] Remove symbolize Bazel test
+
+It is broken on Windows CI (#859) in a way that I don't understand.
+
+* asturmlechner 2024-11-28: backported to cmake
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/CMakeLists.txt	2022-04-05 00:03:27.000000000 +0200
++++ b/CMakeLists.txt	2024-11-28 22:58:18.584982147 +0100
+@@ -804,13 +804,13 @@
+       GLOG_STL_LOGGING_FOR_EXT_SLIST)
+   endif (HAVE_EXT_SLIST)
+ 
+-  if (HAVE_SYMBOLIZE)
++  if (0)
+     add_executable (symbolize_unittest
+       src/symbolize_unittest.cc
+     )
+ 
+     target_link_libraries (symbolize_unittest PRIVATE ${_GLOG_TEST_LIBS})
+-  endif (HAVE_SYMBOLIZE)
++  endif ()
+ 
+   add_executable (demangle_unittest
+     src/demangle_unittest.cc

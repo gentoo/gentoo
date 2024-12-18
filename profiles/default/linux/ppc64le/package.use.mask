@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
-# Requires sys-libs/libcxx.
+# Requires llvm-runtimes/libcxx.
 dev-cpp/benchmark libcxx
 
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)

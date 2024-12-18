@@ -10,6 +10,8 @@ DESCRIPTION="Mail delivery agent/filter"
 [[ -z ${SRC_URI}   ]] && SRC_URI="https://www.courier-mta.org/beta/${PN}/${P%%_pre}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/maildrop/"
 
+S=${WORKDIR}/${P%%_pre}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
@@ -44,8 +46,6 @@ REQUIRED_USE="
 	mysql? ( authlib )
 	postgres? ( authlib )
 	ldap? ( authlib )"
-
-S=${WORKDIR}/${P%%_pre}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-testsuite.patch

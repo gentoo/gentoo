@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/932110
+https://sources.debian.org/data/main/c/cunit/2.1-3-dfsg-2.7/debian/patches/curses_ftbfs.patch
+
+Description: Use getters for accessing fields of opaque type WINDOW in Curses.c
+Author: Mate Kukri <mate.kukri@canonical.com>
+Last-Update: 2024-01-04
+
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/CUnit/Sources/Curses/Curses.c
++++ b/CUnit/Sources/Curses/Curses.c
+@@ -256,10 +256,10 @@
+ 
+   start_color();
+ 
+-  f_nLeft = application_windows.pMainWin->_begx;
+-  f_nTop = application_windows.pMainWin->_begy;
+-  f_nWidth = application_windows.pMainWin->_maxx;
+-  f_nHeight = application_windows.pMainWin->_maxy;
++  f_nLeft = getbegx(application_windows.pMainWin);
++  f_nTop = getbegy(application_windows.pMainWin);
++  f_nWidth = getmaxx(application_windows.pMainWin) - 1;
++  f_nHeight = getmaxy(application_windows.pMainWin) - 1;
+ 
+   if (NULL == (application_windows.pTitleWin = newwin(3, f_nWidth, 0, 0))) {
+     goto title_fail;
+@@ -358,10 +358,10 @@
+ {
+   refresh();
+ 
+-  f_nLeft = application_windows.pMainWin->_begx;
+-  f_nTop = application_windows.pMainWin->_begy;
+-  f_nWidth = application_windows.pMainWin->_maxx;
+-  f_nHeight = application_windows.pMainWin->_maxy;
++  f_nLeft = getbegx(application_windows.pMainWin);
++  f_nTop = getbegy(application_windows.pMainWin);
++  f_nWidth = getmaxx(application_windows.pMainWin) - 1;
++  f_nHeight = getmaxy(application_windows.pMainWin) - 1;
+ 
+   refresh_title_window();
+   refresh_progress_window();
+@@ -907,10 +907,10 @@
+   pPad->uiColumns = uiCols;
+   pPad->uiPadRow = 0;
+   pPad->uiPadCol = 0;
+-  pPad->uiWinLeft = application_windows.pDetailsWin->_begx + 1;
+-  pPad->uiWinTop = application_windows.pDetailsWin->_begy + 1;
+-  pPad->uiWinColumns = application_windows.pDetailsWin->_maxx - 2;
+-  pPad->uiWinRows = application_windows.pDetailsWin->_maxy - 2;
++  pPad->uiWinLeft = getbegx(application_windows.pDetailsWin) + 1;
++  pPad->uiWinTop = getbegy(application_windows.pDetailsWin) + 1;
++  pPad->uiWinColumns = getmaxx(application_windows.pDetailsWin) - 3;
++  pPad->uiWinRows = getmaxy(application_windows.pDetailsWin) - 3;
+ 
+   bStatus = true;
+ 

@@ -17,7 +17,7 @@ EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png motif xft xim athena neXt Xaw3d gdbm berkdb +bignum"
+IUSE="alsa debug gif gpm pop postgres ldap xface nas X jpeg tiff png motif xft xim athena neXt Xaw3d gdbm berkdb +bignum"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
@@ -33,7 +33,6 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	nas? ( media-libs/nas )
 	X? ( $X_DEPEND !Xaw3d? ( !neXt? ( x11-libs/libXaw ) ) )
-	dnd? ( x11-libs/dnd )
 	motif? ( >=x11-libs/motif-2.3:0[xft=] )
 	athena? ( x11-libs/libXaw )
 	Xaw3d? ( x11-libs/libXaw3d[unicode(+)] )
@@ -66,6 +65,7 @@ src_prepare() {
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	eapply "${FILESDIR}/${PN}-21.5.35-mule-tests.patch"
 	eapply "${FILESDIR}/${PN}-21.5.35-configure-libc-version.patch"
+	eapply "${FILESDIR}/${PN}-21.5.35-unknown-command-test.patch"
 
 	eapply_user
 
@@ -109,8 +109,6 @@ src_configure() {
 		else
 			myconf="${myconf} --with-athena=xaw"
 		fi
-
-		use dnd && myconf="${myconf} --with-dragndrop"
 
 		myconf="${myconf} $(use_with tiff )"
 		myconf="${myconf} $(use_with png )"

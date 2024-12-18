@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Portable version of Joe's Own Editor"
 HOMEPAGE="http://www.mirbsd.org/jupp.htm"
-SRC_URI="http://www.mirbsd.org/MirOS/dist/${PN}/joe-${PV/_p/"${PN}"}.tgz"
+SRC_URI="http://www.mirbsd.org/MirOS/dist/${PN}/joe-${PV/_p/jupp}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-1"
@@ -24,5 +24,6 @@ src_configure() {
 	econf \
 		--enable-search_libs \
 		--enable-termcap \
-		$(use_enable ncurses curses)
+		$(use_enable ncurses curses) \
+		CFLAGS="-std=gnu17 ${CFLAGS}"
 }

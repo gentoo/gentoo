@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
+KEYWORDS="amd64 -x86"
 IUSE="+openmp test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,27 @@
+--- a/cl_headers/CMakeLists.txt
++++ b/cl_headers/CMakeLists.txt
+@@ -19,15 +19,15 @@
+ endfunction(copy_file)
+ 
+ if(USE_PREBUILT_LLVM)
+-  set(OPENCL_HEADERS_DIR
+-      "${LLVM_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/include/")
+-  if(NOT EXISTS ${OPENCL_HEADERS_DIR})
+-    set(OPENCL_HEADERS_DIR
+-        "${LLVM_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}/include/")
+-  endif()
+-  if(NOT EXISTS ${OPENCL_HEADERS_DIR})
+-    message(FATAL_ERROR "[OPENCL-CLANG] Unable to find clang include folder at ${OPENCL_HEADERS_DIR}")
+-  endif()
++    if(EXISTS "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/")
++      set(OPENCL_HEADERS_DIR
++          "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/include/")
++    elseif(EXISTS "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}/")
++      set(OPENCL_HEADERS_DIR
++          "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}/include/")
++    else()
++        message(FATAL_ERROR "[OPENCL-CLANG] Couldn't find prebuilt LLVM include directory.")
++    endif()
+ else(USE_PREBUILT_LLVM)
+     set(OPENCL_HEADERS_DIR "${CLANG_SOURCE_DIR}/lib/Headers")
+ endif(USE_PREBUILT_LLVM)

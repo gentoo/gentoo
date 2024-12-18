@@ -4,3 +4,7 @@
 # For better testing of time64, we use gcc-14 here already in an otherwise stable
 # environment.
 sys-devel/gcc:14 ~x86
+
+# We need glibc-2.39-r11 at least so we can handle the compiler that auto-sets _TIME_BITS
+# etc
+=sys-libs/glibc-2.39* ~x86

@@ -6,7 +6,6 @@
 		<flag name="gstreamer">Support for the streaming media framework from <pkg>media-libs/gstreamer</pkg>.</flag>
 		<flag name="gtk">Install the GTK UI, ghb.</flag>
 		<flag name="fdk">Support for encoding AAC using <pkg>media-libs/fdk-aac</pkg>.</flag>
-		<flag name="libav-aac">Support for encoding AAC using libav's internal encoder.</flag>
 		<flag name="numa">Adds support for x265's NUMA capabilities.</flag>
 		<flag name="x265">Support for encoding h265 using <pkg>media-libs/x265</pkg>.</flag>
 	</use>

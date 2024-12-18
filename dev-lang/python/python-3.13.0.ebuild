@@ -32,7 +32,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	bluetooth build debug +ensurepip examples gdbm jit
 	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
@@ -90,8 +90,8 @@ BDEPEND="
 	virtual/pkgconfig
 	jit? (
 		$(llvm_gen_dep '
-			sys-devel/clang:${LLVM_SLOT}
-			sys-devel/llvm:${LLVM_SLOT}
+			llvm-core/clang:${LLVM_SLOT}
+			llvm-core/llvm:${LLVM_SLOT}
 		')
 	)
 	verify-sig? ( >=sec-keys/openpgp-keys-python-20221025 )
@@ -262,6 +262,8 @@ src_configure() {
 	COMMON_TEST_SKIPS=(
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
+		# https://bugs.gentoo.org/933840
+		-x test_perf_profiler
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
@@ -283,6 +285,11 @@ src_configure() {
 				-x test_strtod
 			)
 			;;
+		hppa*)
+			COMMON_TEST_SKIPS+=(
+				-x test_gdb
+			)
+			;;
 		mips*)
 			COMMON_TEST_SKIPS+=(
 				-x test_ctypes
@@ -292,7 +299,7 @@ src_configure() {
 			;;
 		powerpc64-*) # big endian
 			COMMON_TEST_SKIPS+=(
-				-x test_descr
+				-x test_gdb
 			)
 			;;
 		riscv*)
@@ -305,9 +312,10 @@ src_configure() {
 				# bug 788022
 				-x test_multiprocessing_fork
 				-x test_multiprocessing_forkserver
+				-x test_multiprocessing_spawn
 
 				-x test_ctypes
-				-x test_descr
+				-x test_gdb
 				# bug 931908
 				-x test_exceptions
 			)

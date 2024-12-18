@@ -18,6 +18,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/jg/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/jg/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/jg</remote-id>
 	</upstream>
 </pkgmetadata>

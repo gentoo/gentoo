@@ -1,0 +1,29 @@
+https://github.com/dracut-ng/dracut-ng/pull/921
+https://bugs.gentoo.org/943035
+
+From 2d4b550c71cc79ac7a3f18afc09d8263963d5de2 Mon Sep 17 00:00:00 2001
+From: Jo Zzsi <jozzsicsataban@gmail.com>
+Date: Sat, 9 Nov 2024 14:06:57 -0500
+Subject: [PATCH] fix(dracut-systemd): check systemd-cryptsetup before
+ including
+
+---
+ modules.d/98dracut-systemd/module-setup.sh | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/modules.d/98dracut-systemd/module-setup.sh b/modules.d/98dracut-systemd/module-setup.sh
+index 0438e40f0..f2502cd78 100755
+--- a/modules.d/98dracut-systemd/module-setup.sh
++++ b/modules.d/98dracut-systemd/module-setup.sh
+@@ -19,7 +19,10 @@ depends() {
+     # systemd-cryptsetup is mandatory dependency
+     # see https://github.com/dracut-ng/dracut-ng/issues/563
+     if dracut_module_included "crypt"; then
+-        deps+=" systemd-cryptsetup"
++        module_check systemd-cryptsetup > /dev/null 2>&1
++        if [[ $? == 255 ]]; then
++            deps+=" systemd-cryptsetup"
++        fi
+     fi
+ 
+     echo "$deps"

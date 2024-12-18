@@ -44,7 +44,9 @@
     <flag name="yajl">Enable JSON parsing via <pkg>dev-libs/yajl</pkg></flag>
   </use>
   <upstream>
-    <remote-id type="github">MusicPlayerDaemon/MPD</remote-id>
     <bugs-to>https://github.com/MusicPlayerDaemon/MPD/issues</bugs-to>
+    <changelog>https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/refs/heads/master/NEWS</changelog>
+    <doc>https://mpd.readthedocs.io/en/latest/index.html</doc>
+    <remote-id type="github">MusicPlayerDaemon/MPD</remote-id>
   </upstream>
 </pkgmetadata>

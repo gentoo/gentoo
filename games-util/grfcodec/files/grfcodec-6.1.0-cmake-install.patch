@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -158,7 +158,6 @@
+ 
+ install(FILES
+ 	${CMAKE_CURRENT_SOURCE_DIR}/changelog.txt
+-	${CMAKE_CURRENT_SOURCE_DIR}/COPYING
+ 	DESTINATION ${CMAKE_INSTALL_DOCDIR}
+ )
+ 
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ 	${CMAKE_CURRENT_SOURCE_DIR}/grfid.1
+ 	${CMAKE_CURRENT_SOURCE_DIR}/grfstrip.1
+ 	${CMAKE_CURRENT_SOURCE_DIR}/nforenum.1
+-	DESTINATION ${CMAKE_INSTALL_MANDIR}
++	DESTINATION ${CMAKE_INSTALL_MANDIR}/man1
+ )
+ 
+ install(FILES

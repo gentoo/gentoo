@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenAFS Server Service
+After=syslog.target network.target
+
+[Service]
+ExecStartPre=/bin/sh -c "/bin/mkdir -p $(cut -d : -f 2 /etc/openafs/cacheinfo)"
+ExecStart=/usr/sbin/bosserver -nofork $BOSSERVER_ARGS
+ExecStop=/usr/bin/bos shutdown localhost -wait -localauth
+
+[Install]
+WantedBy=multi-user.target

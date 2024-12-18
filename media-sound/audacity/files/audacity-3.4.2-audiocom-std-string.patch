@@ -9,12 +9,6 @@ std::string {aka std::_cxx11::basic_string<char>}`
 See: https://bugs.gentoo.org/920363
 
 Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
----
- libraries/lib-cloud-audiocom/OAuthService.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/libraries/lib-cloud-audiocom/OAuthService.h b/libraries/lib-cloud-audiocom/OAuthService.h
-index bd01f1656..18761df6d 100644
 --- a/libraries/lib-cloud-audiocom/OAuthService.h
 +++ b/libraries/lib-cloud-audiocom/OAuthService.h
 @@ -12,6 +12,7 @@

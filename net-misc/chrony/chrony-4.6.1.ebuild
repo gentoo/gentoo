@@ -19,7 +19,7 @@ else
 	SRC_URI+=" verify-sig? ( https://chrony-project.org/releases/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
 
 	if [[ ${PV} != *_pre* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ppc ppc64 ~riscv sparc x86"
 	fi
 fi
 
@@ -40,8 +40,6 @@ REQUIRED_USE="
 
 DEPEND="
 	caps? (
-		acct-group/ntp
-		acct-user/ntp
 		sys-libs/libcap
 	)
 	libtomcrypt? ( dev-libs/libtomcrypt:= )
@@ -54,9 +52,17 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	caps? (
+		acct-group/ntp
+		acct-user/ntp
+	)
 	selinux? ( sec-policy/selinux-chronyd )
 "
 BDEPEND="
+	caps? (
+		acct-group/ntp
+		acct-user/ntp
+	)
 	html? ( dev-ruby/asciidoctor )
 	nts? ( virtual/pkgconfig )
 	sechash? (

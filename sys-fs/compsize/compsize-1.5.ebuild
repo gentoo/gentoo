@@ -22,6 +22,8 @@ IUSE="debug"
 
 DEPEND="sys-fs/btrfs-progs"
 
+PATCHES=( "${FILESDIR}/${P}-btrfs-progs.patch" )
+
 src_prepare() {
 	default
 	# Don't try to install a gzipped manfile during emake install

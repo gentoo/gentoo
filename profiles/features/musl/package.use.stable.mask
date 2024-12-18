@@ -3,7 +3,7 @@
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-07)
 # This doesn't work yet with musl-1.2.4, bug 906603
-sys-libs/compiler-rt-sanitizers msan
+llvm-runtimes/compiler-rt-sanitizers msan
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # libxcrypt migration isn't yet stable on musl.

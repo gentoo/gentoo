@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc5.patch
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${PN}-0.6.31-sqlite-typo.patch
+	"${FILESDIR}"/${PN}-0.6.31-conf-intrinsic.patch
 )
 
 src_prepare() {

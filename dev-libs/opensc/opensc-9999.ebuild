@@ -13,10 +13,10 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/OpenSC/OpenSC.git"
 else
 	SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+ BSD"
 SLOT="0/11"
 IUSE="ctapi doc openct notify pace +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"

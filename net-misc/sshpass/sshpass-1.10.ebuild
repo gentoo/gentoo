@@ -9,6 +9,6 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 
 RDEPEND="virtual/openssh"

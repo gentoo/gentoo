@@ -37,7 +37,7 @@ BDEPEND="
 	)
 	test? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		dev-python/tappy[${PYTHON_USEDEP}]
+		dev-python/tap-py[${PYTHON_USEDEP}]
 	)
 "
 

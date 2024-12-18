@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(python_gen_any_dep '
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 	')
 	doc? ( sys-apps/help2man )
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
@@ -37,7 +37,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	python_has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/jinja2[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

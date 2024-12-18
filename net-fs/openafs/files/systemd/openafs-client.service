@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenAFS Client Service
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+ExecStartPre=/bin/sh -c "/bin/mkdir -p $(cut -d : -f 2 /etc/openafs/cacheinfo)"
+ExecStartPre=/bin/sh -c "fs sysname > /dev/null 2>/dev/null; test $? -ne 0 || (echo AFS client appears to be running -- not starting && exit 1)"
+ExecStartPre=/sbin/modprobe libafs
+ExecStart=/usr/sbin/afsd $AFSD_ARGS $AFSD_CACHE_ARGS
+ExecStop=/bin/umount /afs
+ExecStopPost=/usr/sbin/afsd -shutdown
+ExecStopPost=/sbin/rmmod libafs
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target remote-fs.target

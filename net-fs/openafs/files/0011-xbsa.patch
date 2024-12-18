@@ -1,0 +1,31 @@
+From 523c217f8f1002814a54b2818ebb4490c3d2aa01 Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gentoo.org>
+Date: Sun, 13 Sep 2020 10:15:51 +0300
+Subject: [PATCH 11/13] xbsa
+
+When xbsa (tsm) support is enabled, butxInfo is defined in the
+butc_xbsa.h, so it should not be redefined here, otherwise multiple
+definitions of the butxInfo symbol error will occur.
+
+(cherry picked from commit 032844997f8c57168b91550c929ac1dd6544bafa)
+(cherry picked from commit 84c3422235048eea573f103adb9e2e22b7be2ca1)
+---
+ src/butc/lwps.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/butc/lwps.c b/src/butc/lwps.c
+index 3078d738238f..9769862bf0aa 100644
+--- a/src/butc/lwps.c
++++ b/src/butc/lwps.c
+@@ -53,7 +53,7 @@ extern int forcemultiple;
+ /* XBSA Global Parameters */
+ extern afs_int32 xbsaType;
+ #ifdef xbsa
+-struct butx_transactionInfo butxInfo;
++extern struct butx_transactionInfo butxInfo;
+ #endif
+ 
+ static struct TapeBlock {		/* A 16KB tapeblock */
+-- 
+2.45.2
+

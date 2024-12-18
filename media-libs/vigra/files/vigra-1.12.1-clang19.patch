@@ -1,0 +1,27 @@
+https://github.com/ukoethe/vigra/issues/591
+https://github.com/msys2/MINGW-packages/commit/bd697fd68cd657cfc3c746a290335b1faaf5371b
+
+--- a/include/vigra/multi_iterator_coupled.hxx
++++ b/include/vigra/multi_iterator_coupled.hxx
+@@ -490,7 +490,7 @@
+     CoupledScanOrderIterator operator--(int)
+     {
+         CoupledScanOrderIterator res(*this);
+-        --this;
++        --(*this);
+         return res;
+     }
+
+--- a/include/vigra/random_access_set.hxx
++++ b/include/vigra/random_access_set.hxx
+@@ -400,8 +400,8 @@
+    const typename RandomAccessSet<Key,Compare,Alloc>::value_type& value
+ )
+ {
+-   if((position == begin() || this->operator()(*(position-1),value))
+-   && (position == end() || this->operator()(value, *position))) {
++   if((position == begin() || key_comp()(*(position-1),value))
++   && (position == end() || key_comp()(value, *position))) {
+        return vector_.insert(position, value);
+    }
+    return insert(value).first;

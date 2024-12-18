@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
@@ -13,8 +13,8 @@ S="${WORKDIR}/${MyPN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0/2"  # subslot is "$((_LIB_VERSION_CURRENT-_LIB_VERSION_AGE))" from configure.ac
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+asm +ecdh +ellswift experimental +extrakeys lowmem +recovery +schnorr test valgrind"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="asm +ecdh +ellswift experimental +extrakeys lowmem +recovery +schnorr test valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -40,6 +40,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/729888
+	tc-export_build_env BUILD_CC BUILD_CPP
+	export CC_FOR_BUILD="${BUILD_CC}" CPP_FOR_BUILD="${BUILD_CPP}"
+
 	local myeconfargs=(
 		--disable-benchmark
 		$(use_enable experimental)

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic libtool
 
 DESCRIPTION="versatile and fast Unicode/ASCII/ANSI graphics renderer"
 HOMEPAGE="https://hpjansson.org/chafa/ https://github.com/hpjansson/chafa"
@@ -11,7 +11,7 @@ SRC_URI="https://hpjansson.org/chafa/releases/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="+tools webp"
 
 RDEPEND="
@@ -21,6 +21,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# checking for intrinsics, will fail where not supported. bug #927102
+	_mm_popcnt_u64
+)
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	# bug 909429

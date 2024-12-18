@@ -53,12 +53,10 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.46.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.22.6:=
-	=dev-libs/tree-sitter-bash-0.21*
-	=dev-libs/tree-sitter-c-0.21*
-	=dev-libs/tree-sitter-lua-0.1*
-	=dev-libs/tree-sitter-markdown-0.2*
-	=dev-libs/tree-sitter-python-0.21*
+	>=dev-libs/tree-sitter-0.24.3:=
+	=dev-libs/tree-sitter-c-0.23*
+	=dev-libs/tree-sitter-lua-0.2*
+	=dev-libs/tree-sitter-markdown-0.3*
 	=dev-libs/tree-sitter-query-0.4*
 	=dev-libs/tree-sitter-vim-0.4*
 	=dev-libs/tree-sitter-vimdoc-3*
@@ -109,7 +107,7 @@ src_install() {
 
 	# symlink tree-sitter parsers
 	dodir /usr/share/nvim/runtime
-	for parser in bash c lua markdown python query vim vimdoc; do
+	for parser in c lua markdown query vim vimdoc; do
 		dosym ../../../../$(get_libdir)/libtree-sitter-${parser}.so /usr/share/nvim/runtime/parser/${parser}.so
 	done
 

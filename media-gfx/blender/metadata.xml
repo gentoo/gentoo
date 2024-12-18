@@ -37,8 +37,7 @@
 			Build cycles renderer with AMD HIP support.
 		</flag>
 		<flag name="cycles">
-			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
-			<pkg>dev-libs/boost</pkg>).
+			Enable the Cycles raytracing render engine.
 		</flag>
 		<flag name="cycles-bin-kernels">
 			Precompile the cycles render kernels for the CUDA/HIP/OneAPI backends, if they are enabled, at compile time.
@@ -57,9 +56,6 @@
 		<flag name="fluid">
 			Adds fluid simulation support via the built-in Mantaflow library.
 		</flag>
-		<flag name="headless">
-			Build without graphical support (renderfarm, server mode only).
-		</flag>
 		<flag name="nanovdb">
 			Enable nanoVDB support in Cycles. Uses less memory than regular openVDB when rendering.
 		</flag>
@@ -68,7 +64,6 @@
 		</flag>
 		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
 		<flag name="oneapi">Build OIDN with Intel oneAPI SyCL support</flag>
-		<flag name="openimageio">Enable OpenImageIO Support</flag>
 		<flag name="openpgl">Enable path guiding support in Cycles</flag>
 		<flag name="opensubdiv">
 			Add rendering support form OpenSubdiv from Dreamworks Animation

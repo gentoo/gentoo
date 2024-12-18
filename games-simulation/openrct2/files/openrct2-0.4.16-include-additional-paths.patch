@@ -1,0 +1,18 @@
+--- a/src/openrct2/platform/Platform.Linux.cpp
++++ b/src/openrct2/platform/Platform.Linux.cpp
+@@ -336,6 +336,7 @@
+     std::vector<std::string_view> GetSearchablePathsRCT1()
+     {
+         return {
++            "/usr/share/openrct2/rct1_data",
+             // game-data-packager uses this path when installing game files
+             "/usr/share/games/roller-coaster-tycoon",
+         };
+@@ -344,6 +345,7 @@
+     std::vector<std::string_view> GetSearchablePathsRCT2()
+     {
+         return {
++            "/usr/share/openrct2/rct2_data",
+             // game-data-packager uses this path when installing game files
+             "/usr/share/games/roller-coaster-tycoon2",
+         };

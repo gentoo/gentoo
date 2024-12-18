@@ -1,6 +1,18 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2024-12-08)
+# dev-vcs/mercurial is not keyworded on s390
+app-eselect/eselect-repository mercurial
+
+# Christopher Byrne <salah.coronya@gmail.com> (2024-12-01)
+# requires dev-libs/hidapi to be keyworded
+dev-libs/libfido2 hidapi
+
+# Pacho Ramos <pacho@gentoo.org> (2024-11-28)
+# Needs gi-docgen
+dev-libs/glib doc
+
 # Hans de Graaff <graaff@gentoo.org> (2024-09-01)
 # Requires large parts of dev-ruby/rails to be keyworded
 dev-ruby/minitest-hooks test
@@ -53,7 +65,7 @@ dev-libs/mongo-c-driver test
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-12)
 # dracut is not keyworded here
 sys-kernel/installkernel dracut
 
@@ -66,7 +78,7 @@ dev-lang/php capstone
 x11-base/xwayland libei
 
 # James Le Cuirot (2023-12-12)
-# USE=bpf depends on sys-devel/clang which is not keyworded on s390
+# USE=bpf depends on llvm-core/clang which is not keyworded on s390
 media-libs/libv4l bpf
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
@@ -184,6 +196,8 @@ net-fs/cifs-utils acl
 
 # Sam James <sam@gentoo.org> (2022-04-20)
 # x11-themes/sound-theme-freedesktop unkeyworded here
+app-editors/gvim sound
+app-editors/vim sound
 media-libs/libcanberra sound
 
 # Sam James <sam@gentoo.org> (2022-04-24)
@@ -242,8 +256,6 @@ app-editors/vim lua
 # not keyworded yet
 media-gfx/imagemagick raw
 dev-db/mariadb numa
-# not tested yet
-app-arch/rpm test
 # no ceph keyworded
 net-analyzer/rrdtool rados
 

@@ -21,6 +21,11 @@
 	</longdescription>
 	<use>
 		<flag name="ldns">Use LDNS for DNSSEC/SSHFP validation.</flag>
+		<flag name="legacy-ciphers">
+			Enable support for deprecated, soon-to-be-dropped DSA keys.
+
+			See https://marc.info/?l=openssh-unix-dev&gt;m=170494903207436&gt;w=2.
+		</flag>
 		<flag name="livecd">Enable root password logins for live-cd environment.</flag>
 		<flag name="security-key">Include builtin U2F/FIDO support</flag>
 		<flag name="ssl">Enable additional crypto algorithms via OpenSSL</flag>

@@ -6,8 +6,9 @@ EAPI=7
 inherit latex-package toolchain-funcs
 
 DESCRIPTION="Offers syntax/railroad diagrams"
-HOMEPAGE="http://www.ctan.org/tex-archive/support/rail/"
-SRC_URI="http://mirror.ctan.org/support/${PN}.zip -> ${P}.zip"
+HOMEPAGE="https://www.ctan.org/tex-archive/support/rail/"
+SRC_URI="https://mirror.ctan.org/support/${PN}.zip -> ${P}.zip"
+S="${WORKDIR}/${PN}"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -16,8 +17,6 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="app-arch/unzip
 	app-alternatives/yacc
 	app-alternatives/lex"
-
-S="${WORKDIR}/${PN}"
 
 src_compile() {
 	emake -j1 \

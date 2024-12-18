@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 
@@ -29,16 +29,16 @@ IUSE="debug profile"
 
 DEPEND="
 	>=dev-util/rocminfo-5
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	llvm-core/clang:${LLVM_MAX_SLOT}
 	dev-libs/rocm-comgr:${SLOT}
 	virtual/opengl
 "
 RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
-	sys-devel/clang-runtime:=
+	llvm-core/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
 BDEPEND="profile? ( $(python_gen_any_dep '
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	dev-python/cppheaderparser[${PYTHON_USEDEP}]
 	') )
 "
 
@@ -57,7 +57,7 @@ PATCHES=(
 
 python_check_deps() {
 	if use profile; then
-		python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/cppheaderparser[${PYTHON_USEDEP}]"
 	fi
 }
 

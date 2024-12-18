@@ -1,0 +1,94 @@
+https://bugs.gentoo.org/932138
+--- a/src/libncurses/deskman.c
++++ b/src/libncurses/deskman.c
+@@ -110,12 +110,12 @@ void colorwin(WINDOW * win)
+ 
+     strcpy(blankpad, "");
+ 
+-    for (ctr = 0; ctr <= win->_maxx; ctr++) {
++    for (ctr = 0; ctr <= getmaxx(win); ctr++) {
+ 	strcat(blankpad, " ");
+     }
+ 
+     scrollok(win, 0);
+-    for (ctr = 0; ctr <= win->_maxy; ctr++) {
++    for (ctr = 0; ctr <= getmaxy(win); ctr++) {
+ 	wmove(win, ctr, 0);
+ 	wprintw(win, "%s", blankpad);
+     }
+--- a/src/sniffd/gui_channel_scan.c
++++ b/src/sniffd/gui_channel_scan.c
+@@ -339,7 +339,7 @@ void make_status_window(WINDOW ** statuswin, PANEL ** statuspanel)
+ void fill_line_blank(WINDOW * win, int line)
+ {
+   int i;
+-  for (i = 0; i < win->_maxx; i++)
++  for (i = 0; i < getmaxx(win); i++)
+     mvwprintw(win, line, i, " ");
+ }
+ 
+--- a/src/sniffd/gui_tcp_analysis_scan.c
++++ b/src/sniffd/gui_tcp_analysis_scan.c
+@@ -463,7 +463,7 @@ void print_tcp_nodelist_row(WINDOW *win, int row, bss_node_t *node, int id, int
+ void print_tcp_nodelist_results(WINDOW * win, int * selected_node, int offset)
+ {
+   int i;
+-  int max_view = win->_maxy - 6;
++  int max_view = getmaxy(win) - 6;
+   int last_item = 0;
+   int selected = 0;
+   
+@@ -476,7 +476,7 @@ void print_tcp_nodelist_results(WINDOW * win, int * selected_node, int offset)
+   wattrset(win, STDATTR);
+ 
+   if (ap->num < 2){
+-    mvwprintw(win, 4, (win->_maxx - 26) /2, "No Detected Wireless Nodes!");
++    mvwprintw(win, 4, (getmaxx(win) - 26) /2, "No Detected Wireless Nodes!");
+     return;
+   }
+ 
+@@ -485,15 +485,15 @@ void print_tcp_nodelist_results(WINDOW * win, int * selected_node, int offset)
+   if (*selected_node == 0){
+     *selected_node = 1;
+   }
+-  mvwprintw(win, 4, (win->_maxx - 26) /2, "                            ");
++  mvwprintw(win, 4, (getmaxx(win) - 26) /2, "                            ");
+   
+   if ((offset + max_view) < ap->num){
+     last_item = offset + max_view;
+-    mvwprintw(win, win->_maxy - 1, 4, ">> More >>");
++    mvwprintw(win, getmaxy(win) - 1, 4, ">> More >>");
+   }
+   else{
+     last_item = ap->num;
+-    mvwprintw(win, win->_maxy - 1, 4, "-- End  --");
++    mvwprintw(win, getmaxy(win) - 1, 4, "-- End  --");
+   }
+   for (i = offset; i < last_item; i++){
+     if (node == NULL) break;
+@@ -542,7 +542,7 @@ void scrollbreakdownwin(int direction, int select_node, int * offset)
+ 
+ void scrollnodelistwin(WINDOW *win, int direction, int * select_node, int * list_pos)
+ {
+-  int max_view = win->_maxy - 6;
++  int max_view = getmaxy(win) - 6;
+   
+   bss_t * ap = get_detailed_snapshot()->bss_list_top;
+ 
+@@ -581,11 +581,11 @@ void reset_active_win(WINDOW *win, int toggle)
+ {
+   if (toggle){
+     wattrset(win, ACTIVEATTR);
+-    mvwprintw(win, win->_maxy, win->_maxx - 10, " ACTIVE ");    
++    mvwprintw(win, getmaxy(win), getmaxx(win) - 10, " ACTIVE ");    
+   }
+   else{
+     wattrset(win, BOXATTR);
+-    wmove(win, win->_maxy, win->_maxx - 10);
++    wmove(win, getmaxy(win), getmaxx(win) - 10);
+     whline(win, ACS_HLINE, 8);	    
+   }
+ }
+-- 
+2.47.0
+

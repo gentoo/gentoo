@@ -67,7 +67,7 @@ python_test() {
 		# require old version of antlr4
 		sympy/parsing/tests/test_autolev.py
 		sympy/parsing/tests/test_latex.py
-		# crash due to assertions in sys-devel/llvm[debug]
+		# crash due to assertions in llvm-core/llvm[debug]
 		sympy/parsing/tests/test_c_parser.py
 
 		# TODO: pytest?

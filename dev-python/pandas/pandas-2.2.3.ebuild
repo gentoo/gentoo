@@ -21,7 +21,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 IUSE="big-endian full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -37,7 +37,7 @@ OPTIONAL_DEPEND="
 	>=dev-python/beautifulsoup4-4.11.1[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
 	>=dev-python/html5lib-1.1[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1.2[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.8.0[${PYTHON_USEDEP}]
 	>=dev-python/matplotlib-3.6.1[${PYTHON_USEDEP}]
 	>=dev-python/openpyxl-3.0.7[${PYTHON_USEDEP}]
@@ -56,8 +56,8 @@ OPTIONAL_DEPEND="
 	)
 	X? (
 		|| (
-			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
-			>=dev-python/QtPy-2.2.0[${PYTHON_USEDEP}]
+			>=dev-python/pyqt5-5.15.6[${PYTHON_USEDEP}]
+			>=dev-python/qtpy-2.2.0[${PYTHON_USEDEP}]
 			x11-misc/xclip
 			x11-misc/xsel
 		)
@@ -218,13 +218,13 @@ pkg_postinst() {
 	optfeature "accelerating certain numerical operations, using multiple cores as well as smart chunking and caching to achieve large speedups" ">=dev-python/numexpr-2.1"
 	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup4 dev-python/html5lib dev-python/lxml
 	optfeature "for msgpack compression using blosc" dev-python/blosc
-	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
+	optfeature "Template engine for conditional HTML formatting" dev-python/jinja2
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-3.0.10" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
 	optfeature "necessary for HDF5-based storage" ">=dev-python/tables-3.7.0"
-	optfeature "R I/O support" dev-python/rpy
+	optfeature "R I/O support" dev-python/rpy2
 	optfeature "Needed for parts of pandas.stats" dev-python/statsmodels
 	optfeature "SQL database support" ">=dev-python/sqlalchemy-1.4.36"
 	optfeature "miscellaneous statistical functions" dev-python/scipy
-	optfeature "necessary to use pandas.io.clipboard.read_clipboard support" dev-python/PyQt5 dev-python/QtPy dev-python/pygtk x11-misc/xclip x11-misc/xsel
+	optfeature "necessary to use pandas.io.clipboard.read_clipboard support" dev-python/pyqt5 dev-python/qtpy dev-python/pygtk x11-misc/xclip x11-misc/xsel
 }

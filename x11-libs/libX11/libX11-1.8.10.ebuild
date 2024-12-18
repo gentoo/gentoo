@@ -5,7 +5,6 @@ EAPI=8
 
 XORG_DOC=doc
 XORG_MULTILIB=yes
-XORG_TARBALL_SUFFIX=xz
 inherit toolchain-funcs xorg-3
 
 # Note: please bump this with x11-misc/compose-tables

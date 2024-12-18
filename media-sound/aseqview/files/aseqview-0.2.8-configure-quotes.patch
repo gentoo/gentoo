@@ -1,0 +1,25 @@
+From b31044aeddd0b406ddbc262f20a4f069baf26783 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 25 Jun 2021 10:19:39 +0200
+Subject: [PATCH] Fix quote in configure.in
+
+---
+ configure.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index e125908..4b6907f 100644
+--- a/configure.in
++++ b/configure.in
+@@ -12,9 +12,9 @@ AC_C_INLINE
+ 
+ AH_TEMPLATE([HAVE_LIBCAP], [Hey, we have libcap])
+ AC_CHECK_HEADER(sys/capability.h,
+-		AC_CHECK_LIB(cap, cap_get_proc,
++		[AC_CHECK_LIB(cap, cap_get_proc,
+ 			     [AC_DEFINE(HAVE_LIBCAP)
+-			      LIBS="$LIBS -lcap"]))
++			      LIBS="$LIBS -lcap"])])
+ 
+ AM_PATH_ALSA(0.5.0)
+ AC_CHECK_HEADERS(alsa/asoundlib.h)

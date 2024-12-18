@@ -1,0 +1,13 @@
+# Created by Quincy Fleming
+# Bug: https://bugs.gentoo.org/942294
+# Upstream pull request: https://github.com/rsyslog/rsyslog/pull/5486
+--- a/plugins/imdtls/imdtls.c
++++ b/plugins/imdtls/imdtls.c
+@@ -24,6 +24,7 @@
+ #include "config.h"
+ 
+ #include <stdio.h>
++#include <signal.h>
+ #include <arpa/inet.h>
+ #include <fcntl.h>
+ #include <unistd.h>

@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="github">tpope/vim-rails</remote-id>
+    <remote-id type="vim">1567</remote-id>
   </upstream>
   <stabilize-allarches/>
 </pkgmetadata>

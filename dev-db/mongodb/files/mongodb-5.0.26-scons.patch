@@ -1,0 +1,27 @@
+https://jira.mongodb.org/browse/SERVER-94430 Upstream respond:
+
+> we intentionally do not ingest the environment PATH as this makes build
+> reproducibility and hermiticity much harder. Instead, you should set the
+> absolute paths to the tools you want to use on the command line, instead of
+> relying on the PATH.
+
+Gentoo bug https://bugs.gentoo.org/829340
+
+In Gentoo, we have LLVM slotted and we put clang in /usr/lib/llvm/18/bin (or
+whatever), not in /usr/bin, and if upstream strip PATH and construct it
+themselves, they surely won't contain this location.
+
+So we add PATH backup for scons.
+diff --git a/SConstruct b/SConstruct
+index 3d831c9..f07feeb 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1201,7 +1201,7 @@ envDict = dict(BUILD_ROOT=buildDir,
+ if get_option('build-tools') == 'next':
+     SCons.Tool.DefaultToolpath.insert(0, os.path.abspath('site_scons/site_tools/next'))
+ 
+-env = Environment(variables=env_vars, **envDict)
++env = Environment(variables=env_vars, ENV={'PATH': os.environ['PATH']}, **envDict)
+ del envDict
+ 
+ if get_option('cache-signature-mode') == 'validate':

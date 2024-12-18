@@ -4,7 +4,7 @@
                        G_CALLBACK (window_inserted_text_cb), entry);
      gtk_container_add (GTK_CONTAINER (window), entry);
      gtk_widget_show_all (window);
-+    gtk_window_present (window);
++    gtk_window_present (GTK_WINDOW(window));
  }
  
  static void

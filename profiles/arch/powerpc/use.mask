@@ -40,7 +40,7 @@ physfs
 opencl
 
 # Matt Turner <mattst88@gentoo.org> (2017-03-24)
-# We don't have sys-devel/llvm
+# We don't have llvm-core/llvm
 llvm
 video_cards_amdgpu
 video_cards_radeonsi

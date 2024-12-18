@@ -4,7 +4,6 @@
 EAPI=8
 
 XORG_MODULE=doc/
-XORG_TARBALL_SUFFIX="xz"
 
 inherit xorg-3
 

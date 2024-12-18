@@ -75,6 +75,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.16-arm64-assert.patch"
 	"${FILESDIR}/${PN}-4.4.29-no-enterprise.patch"
 	"${FILESDIR}/${PN}-5.0.26-boost-1.85.patch"
+	"${FILESDIR}/${PN}-5.0.26-boost-1.85-extra.patch"
+	"${FILESDIR}/${PN}-5.0.26-scons.patch"
+	"${FILESDIR}/${PN}-5.0.26-mozjs-remove-unused-constructor.patch"
 )
 
 python_check_deps() {

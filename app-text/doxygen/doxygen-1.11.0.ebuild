@@ -46,7 +46,7 @@ RDEPEND="
 	media-libs/libpng:=
 	virtual/libiconv
 	clang? (
-		<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+		<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	)
 	dot? (
 		media-gfx/graphviz

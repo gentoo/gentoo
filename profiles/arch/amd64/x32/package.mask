@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# John Helmert III <ajak@gentoo.org> (2024-12-14)
+# Requires libpcre2[jit] which is now masked on x32
+dev-util/cutter
+dev-util/rizin
+
 # Ben Kohler <bkohler@gentoo.org> (2024-05-27)
 # Requires libpcre2[jit] which is now masked on x32
 mail-filter/rspamd
@@ -27,14 +32,14 @@ media-libs/intel-hybrid-codec-driver
 net-analyzer/gsa
 net-analyzer/gsad
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
 sci-geosciences/gpsbabel
 sci-geosciences/qgis
 sci-geosciences/viking
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
+# Nowa Ammerlaan <nowa@gentoo.org> (2021-09-09)
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
@@ -66,13 +71,12 @@ media-gfx/freecad
 # reverse-dependencies.
 dev-qt/qtwebengine
 dev-qt/qtwebview
-dev-python/PyQt6-WebEngine
-dev-python/PyQtWebEngine
+dev-python/pyqt6-webengine
+dev-python/pyqtwebengine
 app-admin/calamares
 app-text/zeal
 app-editors/ghostwriter
 app-editors/retext
-app-misc/anki
 app-office/merkuro
 app-office/kmymoney
 app-office/skrooge
@@ -99,7 +103,7 @@ kde-apps/akonadiconsole
 kde-apps/akregator
 kde-apps/calendarjanitor
 kde-apps/calendarsupport
-kde-apps/cantor
+<kde-apps/cantor-24.11.80
 kde-apps/eventviews
 kde-apps/grantlee-editor
 kde-apps/incidenceeditor

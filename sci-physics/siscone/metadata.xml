@@ -10,4 +10,7 @@
 		N^2*ln(N) time to find jets among N particles, comparing to N*2^N time of
 		other algorithms.
 	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">fastjet/siscone</remote-id>
+	</upstream>
 </pkgmetadata>

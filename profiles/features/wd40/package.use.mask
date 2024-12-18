@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2024-11-12)
+# Requires rust/cargo.
+sys-kernel/dracut dracut-cpio
+
+# Michał Górny <mgorny@gentoo.org> (2024-11-02)
+# Optional Rust extensions.
+dev-python/dulwich native-extensions
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-10-04)
 # >=media-libs/libopenraw-0.3.2 depends on rust
 xfce-base/tumbler raw
@@ -44,7 +52,7 @@ app-misc/gramps test
 app-forensics/volatility3 jsonschema
 app-emulation/libguestfs test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 sys-kernel/installkernel efistub
 
@@ -53,7 +61,6 @@ sys-kernel/installkernel efistub
 dev-python/botocore test
 dev-python/ipython nbconvert test
 dev-python/pip-run test
-dev-python/sentry-sdk test
 dev-python/sphinx-autodoc-typehints test
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
@@ -158,6 +165,7 @@ dev-libs/tree-sitter-vimdoc test
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
+dev-libs/libpeas javascript
 dev-util/glade gjs
 gnome-base/gnome-menus test
 gnome-base/gnome-settings-daemon modemmanager
@@ -234,7 +242,7 @@ x11-misc/xscreensaver gdm
 >=media-libs/libheif-1.10.0 rav1e
 
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no ${arch} keyword
+# Rust has no ${arch} keyword
 dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
@@ -248,7 +256,7 @@ media-libs/gd avif
 net-libs/webkit-gtk avif
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# ${arch} has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+# ${arch} has no Rust support, needed by newer gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)

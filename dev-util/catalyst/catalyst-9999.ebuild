@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/${MY_P/_/-}"
 fi
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
@@ -25,7 +25,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="doc +iso"
+IUSE="doc +iso qcow2"
 
 BDEPEND="
 	app-text/asciidoc
@@ -72,12 +72,22 @@ RDEPEND="
 			sys-boot/grub[grub_platforms_efi-32]
 		)
 	)
+
+	qcow2? (
+		amd64? (
+			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
+			sys-fs/dosfstools
+			sys-fs/xfsprogs
+			sys-block/parted
+			app-emulation/qemu
+		)
+	)
 "
 
 pkg_setup() {
 	CONFIG_CHECK="
 		~UTS_NS ~IPC_NS
-		~SQUASHFS ~SQUASHFS_ZLIB
+		~SQUASHFS ~SQUASHFS_ZLIB ~XFS_FS ~VFAT_FS
 	"
 	linux-info_pkg_setup
 }

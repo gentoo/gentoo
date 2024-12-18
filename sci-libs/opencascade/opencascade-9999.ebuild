@@ -101,15 +101,12 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-7.7.0-fix-installation-of-cmake-config-files.patch"
-	"${FILESDIR}/${PN}-7.7.0-avoid-pre-stripping-binaries.patch"
-	"${FILESDIR}/${PN}-7.7.0-build-against-vtk-9.2.patch"
 	"${FILESDIR}/${PN}-7.7.0-musl.patch"
-	"${FILESDIR}/${PN}-7.7.0-tbb-detection.patch"
-	"${FILESDIR}/${PN}-7.7.0-jemalloc-lib-type.patch"
-	"${FILESDIR}/${PN}-7.8.0-cmake-min-version.patch"
 	"${FILESDIR}/${PN}-7.8.0-tests.patch"
 	"${FILESDIR}/${PN}-7.8.0-jemalloc-noexcept.patch"
 	"${FILESDIR}/${PN}-7.8.1-vtk_components.patch"
+	"${FILESDIR}/${PN}-7.8.2-avoid-pre-stripping-binaries.patch"
+	"${FILESDIR}/${PN}-7.8.2-jemalloc-lib-type.patch"
 )
 
 src_unpack() {

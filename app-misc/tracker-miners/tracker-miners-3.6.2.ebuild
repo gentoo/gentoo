@@ -72,7 +72,7 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
-		$(python_gen_any_dep 'dev-python/tappy[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep 'dev-python/tap-py[${PYTHON_USEDEP}]')
 		gstreamer? (
 			media-libs/gstreamer:1.0[introspection]
 			|| (
@@ -86,7 +86,7 @@ BDEPEND="
 python_check_deps() {
 	python_has_version -b \
 		"dev-python/pygobject[${PYTHON_USEDEP}]" \
-		"dev-python/tappy[${PYTHON_USEDEP}]"
+		"dev-python/tap-py[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -107,6 +107,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944218
+	append-cflags -std=gnu17
+
 	append-cflags -DTRACKER_DEBUG -DG_DISABLE_CAST_CHECKS
 
 	local media_extractor="none"

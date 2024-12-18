@@ -17,7 +17,7 @@ SRC_URI="https://github.com/pboling/rspec-stubbed_env/archive/refs/tags/v${PV}.t
 LICENSE="MIT"
 
 SLOT="1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/rspec-3.0"

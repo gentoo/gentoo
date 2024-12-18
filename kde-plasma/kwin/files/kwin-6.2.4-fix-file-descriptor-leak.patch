@@ -1,0 +1,42 @@
+From da1bebbb4480cfc26467ad3b31737b0df044b551 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Thu, 28 Nov 2024 17:08:53 +0000
+Subject: [PATCH] opengl/eglnativefence: fix file descriptor leak
+
+eglCreateSyncKHR only takes ownership of the file descriptor on success; on failure
+it got leaked before.
+
+This should fix https://crash-reports.kde.org/organizations/kde/issues/18341
+
+
+(cherry picked from commit 2eac8c7783ef6963662b1015c211e8a8d81414d9)
+
+Co-authored-by: Xaver Hugl <xaver.hugl@gmail.com>
+---
+ src/opengl/eglnativefence.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/opengl/eglnativefence.cpp b/src/opengl/eglnativefence.cpp
+index 41f950590c6..a36fcfb5444 100644
+--- a/src/opengl/eglnativefence.cpp
++++ b/src/opengl/eglnativefence.cpp
+@@ -64,9 +64,14 @@ bool EGLNativeFence::waitSync() const
+ EGLNativeFence EGLNativeFence::importFence(EglDisplay *display, FileDescriptor &&fd)
+ {
+     EGLint attributes[] = {
+-        EGL_SYNC_NATIVE_FENCE_FD_ANDROID, fd.take(),
++        EGL_SYNC_NATIVE_FENCE_FD_ANDROID, fd.get(),
+         EGL_NONE};
+-    return EGLNativeFence(display, eglCreateSyncKHR(display->handle(), EGL_SYNC_NATIVE_FENCE_ANDROID, attributes));
++    auto ret = eglCreateSyncKHR(display->handle(), EGL_SYNC_NATIVE_FENCE_ANDROID, attributes);
++    if (ret != EGL_NO_SYNC_KHR) {
++        // eglCreateSyncKHR takes ownership only on success
++        fd.take();
++    }
++    return EGLNativeFence(display, ret);
+ }
+ 
+ } // namespace KWin
+-- 
+GitLab
+

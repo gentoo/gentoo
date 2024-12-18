@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,5 +24,6 @@ BDEPEND="${RDEPEND}"
 PATCHES=("${FILESDIR}/${PN}-1.22-no-lnsl.patch")
 
 src_compile() {
-	emake AR="$(tc-getAR)" OTHERLDFLAGS="${LDFLAGS}"
+	# bug #944140 for gnu17
+	emake AR="$(tc-getAR)" CC="$(tc-getCC) -std=gnu17" OTHERLDFLAGS="${LDFLAGS}"
 }

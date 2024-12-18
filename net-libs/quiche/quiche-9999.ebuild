@@ -195,7 +195,9 @@ windows-targets@0.52.5
 ws2_32-sys@0.2.1
 "
 
-inherit cargo cmake flag-o-matic rust-toolchain multilib-minimal
+RUST_MULTILIB=1
+
+inherit cargo cmake flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
 HOMEPAGE="https://github.com/cloudflare/quiche"
@@ -225,7 +227,6 @@ IUSE=""
 DOCS=( COPYING README.md )
 
 BDEPEND="
-	>=virtual/rust-1.66.0[${MULTILIB_USEDEP}]
 	dev-build/cmake
 "
 DEPEND=""
@@ -248,6 +249,10 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+src_configure() {
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	append-flags "-fPIC"
 	local mycmakeargs=(
@@ -257,13 +262,25 @@ multilib_src_configure() {
 	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_configure
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+}
+
 multilib_src_compile() {
 	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_compile bssl
 	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta" --target="$(rust_abi)"
 }
 
+src_test() {
+	multilib-minimal_src_test
+}
+
 multilib_src_test() {
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test  --target="$(rust_abi)"
+	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test --target="$(rust_abi)"
+}
+
+src_install() {
+	multilib-minimal_src_install
 }
 
 multilib_src_install() {

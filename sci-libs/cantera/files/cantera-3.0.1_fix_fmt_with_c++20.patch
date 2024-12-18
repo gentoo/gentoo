@@ -1,0 +1,323 @@
+This is upstream patch.
+Upstream issue: https://github.com/Cantera/cantera/issues/1711
+
+From edc8243577020b7dd6cd0fd85285cc8ca043b5ea Mon Sep 17 00:00:00 2001
+From: Ray Speth <speth@mit.edu>
+Date: Wed, 19 Jun 2024 00:09:02 -0400
+Subject: [PATCH] Fix usage of fmt when compiling in C++20 mode
+
+Resolves #1711
+---
+ include/cantera/base/AnyMap.h       |  6 ++--
+ include/cantera/base/ctexceptions.h |  2 +-
+ include/cantera/base/fmt.h          |  8 ++---
+ include/cantera/base/global.h       |  8 ++---
+ src/base/AnyMap.cpp                 |  4 +--
+ src/base/SolutionArray.cpp          | 51 ++++++++++++++++-------------
+ src/thermo/PureFluidPhase.cpp       |  2 +-
+ src/thermo/ThermoPhase.cpp          |  2 +-
+ 8 files changed, 46 insertions(+), 37 deletions(-)
+
+diff --git a/include/cantera/base/AnyMap.h b/include/cantera/base/AnyMap.h
+index 81ac0071a7..b1f0747f33 100644
+--- a/include/cantera/base/AnyMap.h
++++ b/include/cantera/base/AnyMap.h
+@@ -746,7 +746,8 @@ class InputFileError : public CanteraError
+         : CanteraError(
+             procedure,
+             formatError(
+-                (sizeof...(args) == 0) ? message : fmt::format(message, args...),
++                (sizeof...(args) == 0) ? message
++                                       : fmt::format(fmt::runtime(message), args...),
+                 node.m_line, node.m_column, node.m_metadata))
+         {
+         }
+@@ -761,7 +762,8 @@ class InputFileError : public CanteraError
+         : CanteraError(
+             procedure,
+             formatError2(
+-                (sizeof...(args) == 0) ? message : fmt::format(message, args...),
++                (sizeof...(args) == 0) ? message
++                                       : fmt::format(fmt::runtime(message), args...),
+                 node1.m_line, node1.m_column, node1.m_metadata,
+                 node2.m_line, node2.m_column, node2.m_metadata))
+         {
+diff --git a/include/cantera/base/ctexceptions.h b/include/cantera/base/ctexceptions.h
+index fb21d3ef22..476e16bf46 100644
+--- a/include/cantera/base/ctexceptions.h
++++ b/include/cantera/base/ctexceptions.h
+@@ -86,7 +86,7 @@ class CanteraError : public std::exception
+         if (sizeof...(args) == 0) {
+             msg_ = msg;
+         } else {
+-            msg_ = fmt::format(msg, args...);
++            msg_ = fmt::format(fmt::runtime(msg), args...);
+         }
+     }
+ 
+diff --git a/include/cantera/base/fmt.h b/include/cantera/base/fmt.h
+index 8341be115e..f613e17b31 100644
+--- a/include/cantera/base/fmt.h
++++ b/include/cantera/base/fmt.h
+@@ -26,13 +26,13 @@
+ 
+ #if FMT_VERSION < 80000
+ template <typename... Args>
+-void fmt_append(fmt::memory_buffer& b, Args... args) {
+-    format_to(b, args...);
++void fmt_append(fmt::memory_buffer& b, const std::string& tmpl, Args... args) {
++    format_to(b, tmpl, args...);
+ }
+ #else
+ template <typename... Args>
+-void fmt_append(fmt::memory_buffer& b, Args... args) {
+-    format_to(fmt::appender(b), args...);
++void fmt_append(fmt::memory_buffer& b, const std::string& tmpl, Args... args) {
++    format_to(fmt::appender(b), fmt::runtime(tmpl), args...);
+ }
+ #endif
+ 
+diff --git a/include/cantera/base/global.h b/include/cantera/base/global.h
+index c0092c43ee..aa0f636754 100644
+--- a/include/cantera/base/global.h
++++ b/include/cantera/base/global.h
+@@ -176,7 +176,7 @@ void writelog(const string& fmt, const Args&... args) {
+     if (sizeof...(args) == 0) {
+         writelog_direct(fmt);
+     } else {
+-        writelog_direct(fmt::format(fmt, args...));
++        writelog_direct(fmt::format(fmt::runtime(fmt), args...));
+     }
+ }
+ 
+@@ -228,7 +228,7 @@ void warn_deprecated(const string& method, const string& msg, const Args&... arg
+     if (sizeof...(args) == 0) {
+         _warn_deprecated(method, msg);
+     } else {
+-        _warn_deprecated(method, fmt::format(msg, args...));
++        _warn_deprecated(method, fmt::format(fmt::runtime(msg), args...));
+     }
+ }
+ 
+@@ -253,7 +253,7 @@ void warn(const string& warning, const string& method,
+     if (sizeof...(args) == 0) {
+         _warn(warning, method, msg);
+     } else {
+-        _warn(warning, method, fmt::format(msg, args...));
++        _warn(warning, method, fmt::format(fmt::runtime(msg), args...));
+     }
+ }
+ 
+@@ -268,7 +268,7 @@ void warn_user(const string& method, const string& msg, const Args&... args) {
+     if (sizeof...(args) == 0) {
+         _warn("Cantera", method, msg);
+     } else {
+-        _warn("Cantera", method, fmt::format(msg, args...));
++        _warn("Cantera", method, fmt::format(fmt::runtime(msg), args...));
+     }
+ }
+ 
+diff --git a/src/base/AnyMap.cpp b/src/base/AnyMap.cpp
+index 84d74c1358..b35aabb8c3 100644
+--- a/src/base/AnyMap.cpp
++++ b/src/base/AnyMap.cpp
+@@ -164,7 +164,7 @@ string formatDouble(double x, long int precision)
+     size_t last;
+     string s0;
+     if (useExp) {
+-        s0 = fmt::format(fmt::format("{:.{}e}", x, precision));
++        s0 = fmt::format(fmt::runtime(fmt::format("{:.{}e}", x, precision)));
+         // last digit of significand
+         last = s0.size() - 5;
+         if (s0[last + 1] == 'e') {
+@@ -195,7 +195,7 @@ string formatDouble(double x, long int precision)
+     if (s0[last - 1] == '0') {
+         s1 = s0; // Recycle original string
+     } else if (useExp) {
+-        s1 = fmt::format(fmt::format("{:.{}e}", x, precision - 2));
++        s1 = fmt::format(fmt::runtime(fmt::format("{:.{}e}", x, precision - 2)));
+     } else {
+         s1 = fmt::format("{:.{}f}", x, precision - log10x - 2);
+     }
+diff --git a/src/base/SolutionArray.cpp b/src/base/SolutionArray.cpp
+index 4819aaa756..986c3e2373 100644
+--- a/src/base/SolutionArray.cpp
++++ b/src/base/SolutionArray.cpp
+@@ -232,17 +232,19 @@ vector<string> doubleColumn(string name, const vector<double>& comp,
+     if (csize <= rows) {
+         for (const auto& val : comp) {
+             data.push_back(val);
+-            raw.push_back(boost::trim_copy(fmt::format(notation, val)));
++            raw.push_back(boost::trim_copy(fmt::format(fmt::runtime(notation), val)));
+         }
+     } else {
+         dots = (rows + 1) / 2;
+         for (int row = 0; row < dots; row++) {
+             data.push_back(comp[row]);
+-            raw.push_back(boost::trim_copy(fmt::format(notation, comp[row])));
++            raw.push_back(boost::trim_copy(
++                fmt::format(fmt::runtime(notation), comp[row])));
+         }
+         for (int row = csize - rows / 2; row < csize; row++) {
+             data.push_back(comp[row]);
+-            raw.push_back(boost::trim_copy(fmt::format(notation, comp[row])));
++            raw.push_back(boost::trim_copy(
++                fmt::format(fmt::runtime(notation), comp[row])));
+         }
+     }
+ 
+@@ -292,17 +294,17 @@ vector<string> doubleColumn(string name, const vector<double>& comp,
+         // all entries are integers
+         notation = fmt::format(" {{:>{}.0f}}", over + maxLen);
+     }
+-    maxLen = fmt::format(notation, 0.).size();
++    maxLen = fmt::format(fmt::runtime(notation), 0.).size();
+ 
+     // assemble output
+     string section = fmt::format("{{:>{}}}", maxLen);
+-    vector<string> col = {fmt::format(section, name)};
++    vector<string> col = {fmt::format(fmt::runtime(section), name)};
+     int count = 0;
+     for (const auto& val : data) {
+-        col.push_back(fmt::format(notation, val));
++        col.push_back(fmt::format(fmt::runtime(notation), val));
+         count++;
+         if (count == dots) {
+-            col.push_back(fmt::format(section, "..."));
++            col.push_back(fmt::format(fmt::runtime(section), "..."));
+         }
+     }
+     return col;
+@@ -320,7 +322,8 @@ vector<string> integerColumn(string name, const vector<long int>& comp,
+     if (csize <= rows) {
+         for (const auto& val : comp) {
+             data.push_back(val);
+-            string formatted = boost::trim_copy(fmt::format(notation, val));
++            string formatted = boost::trim_copy(
++                fmt::format(fmt::runtime(notation), val));
+             if (formatted[0] == '-') {
+                 formatted = formatted.substr(1);
+             }
+@@ -330,7 +333,8 @@ vector<string> integerColumn(string name, const vector<long int>& comp,
+         dots = (rows + 1) / 2;
+         for (int row = 0; row < dots; row++) {
+             data.push_back(comp[row]);
+-            string formatted = boost::trim_copy(fmt::format(notation, comp[row]));
++            string formatted = boost::trim_copy(
++                fmt::format(fmt::runtime(notation), comp[row]));
+             if (formatted[0] == '-') {
+                 formatted = formatted.substr(1);
+             }
+@@ -338,7 +342,8 @@ vector<string> integerColumn(string name, const vector<long int>& comp,
+         }
+         for (int row = csize - rows / 2; row < csize; row++) {
+             data.push_back(comp[row]);
+-            string formatted = boost::trim_copy(fmt::format(notation, comp[row]));
++            string formatted = boost::trim_copy(
++                fmt::format(fmt::runtime(notation), comp[row]));
+             if (formatted[0] == '-') {
+                 formatted = formatted.substr(1);
+             }
+@@ -356,13 +361,13 @@ vector<string> integerColumn(string name, const vector<long int>& comp,
+     }
+ 
+     // assemble output
+-    vector<string> col = {fmt::format(notation, name)};
++    vector<string> col = {fmt::format(fmt::runtime(notation), name)};
+     int count = 0;
+     for (const auto& val : data) {
+-        col.push_back(fmt::format(notation, val));
++        col.push_back(fmt::format(fmt::runtime(notation), val));
+         count++;
+         if (count == dots) {
+-            col.push_back(fmt::format(notation, ".."));
++            col.push_back(fmt::format(fmt::runtime(notation), ".."));
+         }
+     }
+     return col;
+@@ -381,31 +386,33 @@ vector<string> stringColumn(string name, const vector<string>& comp,
+         for (const auto& val : comp) {
+             data.push_back(val);
+             maxLen = std::max(maxLen,
+-                boost::trim_copy(fmt::format(notation, val)).size());
++                boost::trim_copy(fmt::format(fmt::runtime(notation), val)).size());
+         }
+     } else {
+         dots = (rows + 1) / 2;
+         for (int row = 0; row < dots; row++) {
+             data.push_back(comp[row]);
+             maxLen = std::max(maxLen,
+-                boost::trim_copy(fmt::format(notation, comp[row])).size());
++                boost::trim_copy(
++                    fmt::format(fmt::runtime(notation), comp[row])).size());
+         }
+         for (int row = csize - rows / 2; row < csize; row++) {
+             data.push_back(comp[row]);
+             maxLen = std::max(maxLen,
+-                boost::trim_copy(fmt::format(notation, comp[row])).size());
++                boost::trim_copy(
++                    fmt::format(fmt::runtime(notation), comp[row])).size());
+         }
+     }
+ 
+     // assemble output
+     notation = fmt::format("  {{:>{}}}", maxLen);
+-    vector<string> col = {fmt::format(notation, name)};
++    vector<string> col = {fmt::format(fmt::runtime(notation), name)};
+     int count = 0;
+     for (const auto& val : data) {
+-        col.push_back(fmt::format(notation, val));
++        col.push_back(fmt::format(fmt::runtime(notation), val));
+         count++;
+         if (count == dots) {
+-            col.push_back(fmt::format(notation, "..."));
++            col.push_back(fmt::format(fmt::runtime(notation), "..."));
+         }
+     }
+     return col;
+@@ -443,8 +450,8 @@ vector<string> formatColumn(string name, const AnyValue& comp, int rows, int wid
+ 
+     // assemble output
+     string notation = fmt::format("  {{:>{}}}", maxLen);
+-    repr = fmt::format(notation, repr);
+-    vector<string> col = {fmt::format(notation, name)};
++    repr = fmt::format(fmt::runtime(notation), repr);
++    vector<string> col = {fmt::format(fmt::runtime(notation), name)};
+     if (size <= rows) {
+         for (int row = 0; row < size; row++) {
+             col.push_back(repr);
+@@ -454,7 +461,7 @@ vector<string> formatColumn(string name, const AnyValue& comp, int rows, int wid
+         for (int row = 0; row < dots; row++) {
+             col.push_back(repr);
+         }
+-        col.push_back(fmt::format(notation, "..."));
++        col.push_back(fmt::format(fmt::runtime(notation), "..."));
+         for (int row = size - rows / 2; row < size; row++) {
+             col.push_back(repr);
+         }
+diff --git a/src/thermo/PureFluidPhase.cpp b/src/thermo/PureFluidPhase.cpp
+index 65e27c52d7..3e45009422 100644
+--- a/src/thermo/PureFluidPhase.cpp
++++ b/src/thermo/PureFluidPhase.cpp
+@@ -393,7 +393,7 @@ string PureFluidPhase::report(bool show_thermo, double threshold) const
+ 
+     string one_property = fmt::format("{{:>{}}}   {{:<.5g}} {{}}\n", name_width);
+ 
+-    string two_prop_header = "{}   {:^15}   {:^15}\n";
++    constexpr auto two_prop_header = "{}   {:^15}   {:^15}\n";
+     string kg_kmol_header = fmt::format(
+         two_prop_header, blank_leader, "1 kg", "1 kmol"
+     );
+diff --git a/src/thermo/ThermoPhase.cpp b/src/thermo/ThermoPhase.cpp
+index 31b2c0ee9f..2b3993be35 100644
+--- a/src/thermo/ThermoPhase.cpp
++++ b/src/thermo/ThermoPhase.cpp
+@@ -1291,7 +1291,7 @@ string ThermoPhase::report(bool show_thermo, double threshold) const
+ 
+     string one_property = fmt::format("{{:>{}}}   {{:<.5g}} {{}}\n", name_width);
+ 
+-    string two_prop_header = "{}   {:^15}   {:^15}\n";
++    constexpr auto two_prop_header = "{}   {:^15}   {:^15}\n";
+     string kg_kmol_header = fmt::format(
+         two_prop_header, blank_leader, "1 kg", "1 kmol"
+     );

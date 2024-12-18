@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Azure/azure-sdk-for-cpp/archive/${COMMIT}.tar.gz -> 
 S="${WORKDIR}/${MY_P}/sdk/identity/${PN}"
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 RESTRICT="test" # Too many online tests.
 

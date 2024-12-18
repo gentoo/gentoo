@@ -16,11 +16,11 @@ IUSE="libobjc2 native-exceptions"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=dev-build/make-3.75
 	libobjc2? ( gnustep-base/libobjc2
-		sys-devel/clang:* )
+		llvm-core/clang:* )
 	!libobjc2? ( !!gnustep-base/libobjc2
 		|| (
 			sys-devel/gcc:*[objc]
-			sys-devel/clang:*
+			llvm-core/clang:*
 		) )"
 RDEPEND="${DEPEND}"
 

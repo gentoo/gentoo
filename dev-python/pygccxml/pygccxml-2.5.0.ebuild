@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -36,6 +36,9 @@ distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 EPYTEST_DESELECT=(
 	# TODO; too new LLVM?  upstream tests against LLVM 13
 	unittests/test_overrides.py::Test::test
+	# fails with >=GCC-15.0.2 (bug #940578)
+	unittests/test_smart_pointer.py::Test::test_smart_pointer_value_type
+
 )
 
 python_prepare_all() {
@@ -44,6 +47,8 @@ python_prepare_all() {
 		"${FILESDIR}/${PN}-2.4.0-doc.patch"
 		# https://github.com/CastXML/pygccxml/pull/179
 		"${FILESDIR}/${P}-which.patch"
+		# fixes tests with clang-19
+		"${FILESDIR}/${PN}-2.5.0-fix-test-flags.patch"
 	)
 
 	distutils-r1_python_prepare_all

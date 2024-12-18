@@ -1,0 +1,181 @@
+Combination of upstream commits:
+1f0ee66aecbb52f8c423128aa7e0dd35822e989c
+a198d2da3cf958d7c1de3bc02a2ea49c25a3f785
+
+--- a/src/protocol/curl/ftp.c
++++ b/src/protocol/curl/ftp.c
+@@ -55,6 +55,8 @@
+ #include "util/memory.h"
+ #include "util/string.h"
+ 
++#ifdef CONFIG_FTP
++
+ static char el_curlversion[256];
+ 
+ static void
+@@ -616,7 +618,7 @@
+ 	abort_connection(conn, connection_state(S_OK));
+ }
+ 
+-static void
++void
+ ftp_curl_handle_error(struct connection *conn, CURLcode res)
+ {
+ 	if (res == CURLE_OK) {
+@@ -635,45 +637,6 @@
+ 	abort_connection(conn, connection_state(S_CURL_ERROR - res));
+ }
+ 
+-/* Check for completed transfers, and remove their easy handles */
+-void
+-check_multi_info(GlobalInfo *g)
+-{
+-	//char *eff_url;
+-	CURLMsg *msg;
+-	int msgs_left;
+-	struct connection *conn;
+-	CURL *easy;
+-	CURLcode res;
+-
+-	//fprintf(stderr, "REMAINING: %d\n", g->still_running);
+-
+-	while ((msg = curl_multi_info_read(g->multi, &msgs_left))) {
+-		if (msg->msg == CURLMSG_DONE) {
+-			easy = msg->easy_handle;
+-			res = msg->data.result;
+-			curl_easy_getinfo(easy, CURLINFO_PRIVATE, &conn);
+-
+-			if (conn->uri->protocol == PROTOCOL_HTTP || conn->uri->protocol == PROTOCOL_HTTPS) {
+-				http_curl_handle_error(conn, res);
+-				continue;
+-			}
+-
+-			if (conn->uri->protocol == PROTOCOL_FTP || conn->uri->protocol == PROTOCOL_FTPES || conn->uri->protocol == PROTOCOL_SFTP) {
+-				ftp_curl_handle_error(conn, res);
+-				continue;
+-			} else {
+-				abort_connection(conn, connection_state(S_OK));
+-			}
+-		}
+-	}
+-#if 0
+-	if (g->still_running == 0 && g->stopped) {
+-		event_base_loopbreak(g->evbase);
+-	}
+-#endif
+-}
+-
+ void
+ ftpes_protocol_handler(struct connection *conn)
+ {
+@@ -689,3 +652,4 @@
+ 		do_ftpes(conn);
+ 	}
+ }
++#endif
+\ No newline at end of file
+--- a/src/protocol/curl/ftpes.h
++++ b/src/protocol/curl/ftpes.h
+@@ -1,6 +1,10 @@
+ #ifndef EL__PROTOCOL_CURL_FTPES_H
+ #define EL__PROTOCOL_CURL_FTPES_H
+ 
++#ifdef CONFIG_LIBCURL
++#include <curl/curl.h>
++#endif
++
+ #include "main/module.h"
+ #include "protocol/protocol.h"
+ 
+@@ -12,6 +16,7 @@
+ 
+ #if defined(CONFIG_FTP) && defined(CONFIG_LIBCURL)
+ extern protocol_handler_T ftpes_protocol_handler;
++void ftp_curl_handle_error(struct connection *conn, CURLcode res);
+ #else
+ #define ftpes_protocol_handler NULL
+ #endif
+--- a/src/protocol/curl/http.c
++++ b/src/protocol/curl/http.c
+@@ -461,3 +461,45 @@
+ 		do_http(conn);
+ 	}
+ }
++
++/* Check for completed transfers, and remove their easy handles */
++void
++check_multi_info(GlobalInfo *g)
++{
++	//char *eff_url;
++	CURLMsg *msg;
++	int msgs_left;
++	struct connection *conn;
++	CURL *easy;
++	CURLcode res;
++
++	//fprintf(stderr, "REMAINING: %d\n", g->still_running);
++
++	while ((msg = curl_multi_info_read(g->multi, &msgs_left))) {
++		if (msg->msg == CURLMSG_DONE) {
++			easy = msg->easy_handle;
++			res = msg->data.result;
++			curl_easy_getinfo(easy, CURLINFO_PRIVATE, &conn);
++
++			if (conn->uri->protocol == PROTOCOL_HTTP || conn->uri->protocol == PROTOCOL_HTTPS) {
++				http_curl_handle_error(conn, res);
++				continue;
++			}
++
++#ifdef CONFIG_FTP
++			if (conn->uri->protocol == PROTOCOL_FTP || conn->uri->protocol == PROTOCOL_FTPES || conn->uri->protocol == PROTOCOL_SFTP) {
++				ftp_curl_handle_error(conn, res);
++				continue;
++			}
++#endif
++			else {
++				abort_connection(conn, connection_state(S_OK));
++			}
++		}
++	}
++#if 0
++	if (g->still_running == 0 && g->stopped) {
++		event_base_loopbreak(g->evbase);
++	}
++#endif
++}
+--- a/src/protocol/curl/http.h
++++ b/src/protocol/curl/http.h
+@@ -19,6 +19,10 @@ extern protocol_handler_T http_curl_prot
+
+ void http_curl_handle_error(struct connection *conn, CURLcode res);
+
++#ifdef CONFIG_FTP
++void ftp_curl_handle_error(struct connection *conn, CURLcode res);
++#endif
++
+ #endif
+
+ #ifdef __cplusplus
+
+--- a/src/protocol/curl/sftp.h
++++ b/src/protocol/curl/sftp.h
+@@ -10,7 +10,7 @@
+ 
+ extern struct module sftp_protocol_module;
+ 
+-#if defined(CONFIG_LIBCURL)
++#if defined(CONFIG_FTP) && defined(CONFIG_LIBCURL)
+ extern protocol_handler_T sftp_protocol_handler;
+ #else
+ #define sftp_protocol_handler NULL
+--- a/src/protocol/protocol.c
++++ b/src/protocol/protocol.c
+@@ -336,7 +336,7 @@
+ #ifdef CONFIG_NNTP
+ 	&nntp_protocol_module,
+ #endif
+-#if defined(CONFIG_LIBCURL)
++#if defined(CONFIG_FTP) && defined(CONFIG_LIBCURL)
+ 	&sftp_protocol_module,
+ #endif
+ #ifdef CONFIG_SMB

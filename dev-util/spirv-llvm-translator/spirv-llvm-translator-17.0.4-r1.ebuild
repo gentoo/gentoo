@@ -16,13 +16,13 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/spirv-tools
-	sys-devel/llvm:${SLOT}=
+	llvm-core/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
 	>=dev-util/spirv-headers-1.3.275
@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-python/lit
-		sys-devel/clang:${SLOT}
+		llvm-core/clang:${SLOT}
 	)
 "
 

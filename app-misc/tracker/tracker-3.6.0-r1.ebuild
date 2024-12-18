@@ -39,7 +39,7 @@ BDEPEND="
 	gtk-doc? ( dev-util/gi-docgen )
 	test? (
 		$(python_gen_any_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
-		$(python_gen_any_dep 'dev-python/tappy[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep 'dev-python/tap-py[${PYTHON_USEDEP}]')
 	)
 	${PYTHON_DEPS}
 "
@@ -53,7 +53,7 @@ PATCHES=(
 python_check_deps() {
 	python_has_version -b \
 		"dev-python/pygobject[${PYTHON_USEDEP}]" \
-		"dev-python/tappy[${PYTHON_USEDEP}]"
+		"dev-python/tap-py[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

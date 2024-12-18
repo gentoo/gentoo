@@ -17,8 +17,7 @@ fi
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://sites.google.com/site/fullycapable/"
 
-# it's available under either of the licenses
-LICENSE="|| ( GPL-2 BSD )"
+LICENSE="|| ( GPL-2 BSD ) pam? ( || ( LGPL-2+ BSD ) )"
 SLOT="0"
 IUSE="pam static-libs tools"
 

@@ -25,10 +25,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 CMAKE_SKIP_TESTS=(
-	# bug 650214
-	plasma-plasmoidpackagetest
-	# requires network access
-	testpackage-appstream
+	plasma-plasmoidpackagetest # bug 650214
+	testpackage-appstream # requires network access
+	plasma-querytest # bug 943643, fails randomly
 )
 
 src_configure() {

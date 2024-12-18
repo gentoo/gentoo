@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,6 +96,8 @@ multilib_src_configure() {
 	# 6.3.0 says it now supports LTO, but needs retesting on a variety
 	# of platforms. Fix was maybe https://gmplib.org/repo/gmp-6.3/rev/9c324044f4b5.
 	filter-lto
+	# https://gmplib.org/list-archives/gmp-bugs/2024-November/005550.html
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
@@ -115,7 +117,9 @@ multilib_src_configure() {
 
 	# https://gmplib.org/manual/Notes-for-Package-Builds
 	local myeconfargs=(
-		CC_FOR_BUILD="$(tc-getBUILD_CC)"
+		# -std=gnu99 appended here for bug #919935 to help
+		# prefix building w/ older compilers.
+		CC_FOR_BUILD="$(tc-getBUILD_CC) -std=gnu99"
 
 		--localstatedir="${EPREFIX}"/var/state/gmp
 		--enable-shared

@@ -1,0 +1,44 @@
+Bug: https://bugs.gentoo.org/741708
+From: Ian Jordan <immoloism@gmail.com>
+Date: Thu, 01 Nov 204 15:28:39 +0100
+Subject: Change Pentium4 baseline to i586
+
+Based on the Debian patch at https://sources.debian.org/patches/rustc/1.80.1%2Bdfsg1-1/behaviour/d-rustc-i686-baseline.patch/
+This lowers baseline from Pentium4 to i586.
+
+Thanks-to: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>
+
+--- a/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
++++ b/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
+@@ -2,7 +2,7 @@ use crate::spec::{base, Cc, LinkerFlavor, Lld, SanitizerSet, StackProbeType, Tar
+ 
+ pub fn target() -> Target {
+     let mut base = base::linux_gnu::opts();
+-    base.cpu = "pentium4".into();
++    base.cpu = "pentiumpro".into();
+     base.max_atomic_width = Some(64);
+     base.supported_sanitizers = SanitizerSet::ADDRESS;
+     base.add_pre_link_args(LinkerFlavor::Gnu(Cc::Yes, Lld::No), &["-m32"]);
+--- a/tests/ui/abi/homogenous-floats-target-feature-mixup.rs
++++ b/tests/ui/abi/homogenous-floats-target-feature-mixup.rs
+@@ -24,7 +24,8 @@ fn main() {
+     match std::env::var("TARGET") {
+         Ok(s) => {
+             // Skip this tests on i586-unknown-linux-gnu where sse2 is disabled
+-            if s.contains("i586") {
++            // Debian: our i686 doesn't have SSE 2..
++            if s.contains("i586") || s.contains("i686") {
+                 return
+             }
+         }
+--- a/tests/ui/sse2.rs
++++ b/tests/ui/sse2.rs
+@@ -16,7 +16,7 @@ fn main() {
+         }
+         Err(_) => return,
+     }
+-    if cfg!(any(target_arch = "x86", target_arch = "x86_64")) {
++    if cfg!(any(target_arch = "x86_64")) {
+         assert!(cfg!(target_feature = "sse2"),
+                 "SSE2 was not detected as available on an x86 platform");
+     }

@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.2.2204-disable-python-tests.patch"
 	"${FILESDIR}/${PN}-6.2.2301-find-libjpeg-turbo-library.patch"
 	"${FILESDIR}/${PN}-6.2.2301-fix-nullptr-deref-in-archive.patch"
+	"${FILESDIR}/${PN}-6.2.2302-opencascade-7.8.0.patch"
 )
 
 pkg_setup() {

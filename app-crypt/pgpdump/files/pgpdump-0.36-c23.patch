@@ -1,0 +1,35 @@
+https://github.com/kazu-yamamoto/pgpdump/pull/45
+
+From 541442dc04259bde680b46742522177be40cc065 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 17 Nov 2024 02:04:03 +0000
+Subject: [PATCH] Fix C23 compatibility
+
+C23 removes unprototyped functions, so fix the function pointer type.
+---
+ packet.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/packet.c b/packet.c
+index b6f3665..bdd3d3e 100644
+--- a/packet.c
++++ b/packet.c
+@@ -4,7 +4,7 @@
+ 
+ #include "pgpdump.h"
+ 
+-typedef void (*funcptr)();
++typedef void (*funcptr)(int);
+ 
+ private int get_new_len(int);
+ private int is_partial(int);
+@@ -91,7 +91,7 @@ TAG[] = {
+ #define TAG_NUM (sizeof(TAG) * sizeof(string))
+ 
+ private void
+-(*tag_func[])() = {
++(*tag_func[])(int) = {
+ 	Reserved,
+ 	Public_Key_Encrypted_Session_Key_Packet,
+ 	Signature_Packet,
+

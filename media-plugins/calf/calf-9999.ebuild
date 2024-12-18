@@ -13,7 +13,7 @@ if [[ "${PV}" = "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/calf-studio-gear/calf.git"
 else
 	SRC_URI="https://github.com/calf-studio-gear/calf/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -43,9 +43,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-no-automagic.patch"
-	"${FILESDIR}/${PN}-9999-htmldir.patch"
-	"${FILESDIR}/${PN}-9999-desktop.patch"
+	"${FILESDIR}/${PN}-0.90.4-no-automagic.patch"
+	"${FILESDIR}/${PN}-0.90.4-htmldir.patch"
+	"${FILESDIR}/${PN}-0.90.4-desktop.patch"
 )
 
 src_prepare() {
@@ -53,7 +53,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+src_configure()  {
 	# Upstream append -ffast-math by default, however since libtool links C++
 	# shared libs with -nostdlib, this causes symbol resolution error for
 	# __powidn2 when using compiler-rt. Disable fast math on compiler-rt until

@@ -11,6 +11,5 @@
 	</upstream>
 	<use>
 		<flag name="brightness-control">Enable screen brightness control using <pkg>app-misc/ddcutil</pkg></flag>
-		<flag name="caps">Capabilities support for scheduled wakeup which can wake from suspend (CAP_WAKE_ALARM)</flag>
 	</use>
 </pkgmetadata>

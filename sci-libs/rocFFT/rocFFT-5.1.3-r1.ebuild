@@ -34,7 +34,7 @@ DEPEND="dev-util/hip
 
 BDEPEND="
 	test? ( dev-cpp/gtest dev-libs/boost
-	>=sci-libs/fftw-3 sys-libs/libomp )
+	>=sci-libs/fftw-3 llvm-runtimes/openmp )
 	>=dev-build/cmake-3.22
 	dev-build/rocm-cmake
 "

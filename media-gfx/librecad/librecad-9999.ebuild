@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl hi hu id_ID it ja ko lv mk nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sv ta tr uk zh_cn zh_tw"
+PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl he hi hu id_ID it ja ka ko lv mk nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sr sv ta th tr uk zh_cn zh_tw"
 
 inherit desktop edo plocale qmake-utils
 
@@ -25,19 +25,16 @@ IUSE="debug doc tools"
 RDEPEND="
 	dev-cpp/muParser
 	dev-libs/boost:=
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[gui,widgets]
+	dev-qt/qtsvg:6
 	media-libs/freetype:2
 "
 DEPEND="${RDEPEND}
-	dev-qt/qthelp:5
-	dev-qt/qtxml:5
+	dev-qt/qtbase:6[xml]
+	dev-qt/qttools:6[assistant]
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 "
 
 src_prepare() {
@@ -52,14 +49,14 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 -r
+	eqmake6 -r
 }
 
 src_compile() {
 	default
 
 	build_locale() {
-		local lrelease="$(qt5_get_bindir)/lrelease"
+		local lrelease="$(qt6_get_bindir)/lrelease"
 		edo "${lrelease}" "librecad/ts/librecad_${1}.ts" \
 			-qm "unix/resources/qm/librecad_${1}.qm"
 		edo "${lrelease}" "plugins/ts/plugins_${1}.ts" \

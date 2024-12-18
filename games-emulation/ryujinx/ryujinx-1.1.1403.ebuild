@@ -225,7 +225,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "

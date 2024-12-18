@@ -24,16 +24,16 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc latex"
 
 RDEPEND="
 	>=dev-python/alabaster-0.7.14[${PYTHON_USEDEP}]
-	>=dev-python/Babel-2.13[${PYTHON_USEDEP}]
+	>=dev-python/babel-2.13[${PYTHON_USEDEP}]
 	<dev-python/docutils-0.22[${PYTHON_USEDEP}]
 	>=dev-python/docutils-0.20[${PYTHON_USEDEP}]
 	>=dev-python/imagesize-1.3[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-23.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.14[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.30.0[${PYTHON_USEDEP}]

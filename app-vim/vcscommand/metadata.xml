@@ -10,5 +10,8 @@
 		bzr, and hg within VIM, including committing changes and performing diffs
 		using the vimdiff system.
 	</longdescription>
+	<upstream>
+		<remote-id type="vim">90</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

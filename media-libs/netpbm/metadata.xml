@@ -8,6 +8,12 @@
 	<use>
 		<flag name="rle">Build converters for the RLE format (utah raster toolkit)</flag>
 	</use>
+	<slots>
+		<subslots>
+			0/stable: the upstream  stable branch, stabilized in Gentoo at 30+ days.
+			0/advanced: the upstream advanced branch, never stabilized in Gentoo.
+		</subslots>
+	</slots>
 	<upstream>
 		<remote-id type="sourceforge">netpbm</remote-id>
 	</upstream>

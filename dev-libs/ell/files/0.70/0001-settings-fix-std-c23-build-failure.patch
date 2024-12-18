@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/943704
+https://lore.kernel.org/all/20241117001814.2149181-2-slyich@gmail.com/T/#m1770e7c457dbb58d6950ee981c68cdd39a996724
+
+From fdfed58104edd309431f738eaf3a7b5361ff9c86 Mon Sep 17 00:00:00 2001
+Message-ID: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sun, 17 Nov 2024 00:18:11 +0000
+Subject: [PATCH 1/4] settings: fix -std=c23 build failure
+
+gcc-15 switched to -std=c23 by default:
+
+    https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=55e3bd376b2214e200fa76d12b67ff259b06c212
+
+As a result `ell` fails the build as:
+
+    ell/settings.c: In function 'l_settings_get_embedded_value':
+    ell/settings.c:1521:24: error: incompatible types when returning type '_Bool' but 'const char *' was expected
+     1521 |                 return false;
+          |                        ^~~~~
+
+The change uses poiter instead of a bool to return the zero value.
+---
+ ell/settings.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ell/settings.c b/ell/settings.c
+index a5f17d1..b46d00b 100644
+--- a/ell/settings.c
++++ b/ell/settings.c
+@@ -1518,7 +1518,7 @@ LIB_EXPORT const char *l_settings_get_embedded_value(
+ 	struct embedded_group_data *group;
+ 
+ 	if (unlikely(!settings))
+-		return false;
++		return NULL;
+ 
+ 	group = l_queue_find(settings->embedded_groups,
+ 					embedded_group_match, group_name);
+
+base-commit: 373b828093fd48e5f33558bfba9fceaed311486c
+-- 
+2.47.0
+

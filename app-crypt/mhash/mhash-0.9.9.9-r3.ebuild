@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library providing a uniform interface to a large number of hash algorithms"
 HOMEPAGE="https://mhash.sourceforge.net/"
@@ -52,6 +52,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943960
+	append-cflags -std=gnu17
+
 	econf $(use_enable static-libs static)
 }
 

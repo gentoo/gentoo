@@ -1,0 +1,37 @@
+From bfb98b0f1e0ffdc187e87c79e1c3114eadc3fa0e Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Sat, 23 Nov 2024 20:28:52 +0100
+Subject: [PATCH] Remove custom configuration for libc++
+
+This doesn't seem to be necessary anymore for libc++ support, and
+actually breaks builds on system-libcxx systems.
+---
+ CMakeLists.txt | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4ec25cc..6f4753b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,6 @@ include(CMakePushCheckState)
+ 
+ cmake_push_check_state()
+ 
+-option(ENABLE_LIBCXX "Use libc++ for the C++ standard library" ON)
+ option(CPPTOML_BUILD_EXAMPLES "Build examples" ON)
+ 
+ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+@@ -25,11 +24,6 @@ if(UNIX OR MINGW)
+     if(CMAKE_GENERATOR STREQUAL "Ninja")
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
+     endif()
+-
+-    if(ENABLE_LIBCXX)
+-      find_package(LIBCXX REQUIRED)
+-      set_libcxx_required_flags()
+-    endif()
+   endif()
+ endif()
+ 
+-- 
+2.45.2

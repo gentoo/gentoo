@@ -6,6 +6,10 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
+    <flag name="crypt">Enable transport encryption</flag>
+    <flag name="gcrypt">Enable Backend library to implement transport encryption via <pkg>dev-libs/libgcrypt</pkg></flag>
+    <flag name="gnutls">Enable Backend library to implement transport encryption via <pkg>net-libs/gnutls</pkg></flag>
+    <flag name="pam">Build PAM module</flag>
     <flag name="tpm">Enable Trusted Platform Module support via <pkg>app-crypt/tpm2-tss</pkg></flag>
   </use>
   <upstream>

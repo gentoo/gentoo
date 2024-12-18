@@ -18,19 +18,13 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname major version
-IUSE="debug doc examples gcrypt gssapi mbedtls pcap server +sftp static-libs test zlib"
+IUSE="debug doc examples gssapi mbedtls pcap server +sftp static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
-REQUIRED_USE="?? ( gcrypt mbedtls )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!gcrypt? (
-		!mbedtls? (
-			>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
-		)
-	)
-	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
+	!mbedtls? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
@@ -91,7 +85,7 @@ multilib_src_configure() {
 		-DWITH_STACK_PROTECTOR_STRONG=OFF
 		-DWITH_DEBUG_CALLTRACE=$(usex debug)
 		-DWITH_DEBUG_CRYPTO=$(usex debug)
-		-DWITH_GCRYPT=$(usex gcrypt)
+		-DWITH_GCRYPT=OFF
 		-DWITH_GSSAPI=$(usex gssapi)
 		-DWITH_MBEDTLS=$(usex mbedtls)
 		-DWITH_PCAP=$(usex pcap)

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,20 +6,16 @@ EAPI=7
 inherit latex-package
 
 DESCRIPTION="LaTeX package used to create foils and slides"
-HOMEPAGE="ftp://ftp.dante.de/tex-archive/help/Catalogue/entries/foiltex.html"
+HOMEPAGE="https://ctan.org/pkg/foiltex"
 # Taken from http://www.ctan.org/get/macros/latex/contrib/foiltex.zip
 SRC_URI="mirror://gentoo/${P}.zip"
-KEYWORDS="amd64 ppc x86"
+S=${WORKDIR}/${PN}
 
 LICENSE="FoilTeX"
 SLOT="0"
-IUSE=""
+KEYWORDS="amd64 ppc x86"
 
 BDEPEND="app-arch/unzip"
-
-TEXMF=/usr/share/texmf-site
-
-S=${WORKDIR}/${PN}
 
 src_install() {
 	latex-package_src_doinstall all

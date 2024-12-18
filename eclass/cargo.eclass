@@ -7,7 +7,9 @@
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
 # Georgy Yakovlev <gyakovlev@gentoo.org>
+# Matt Jolly <kangie@gentoo.org>
 # @SUPPORTED_EAPIS: 8
+# @PROVIDES: rust
 # @BLURB: common functions and variables for cargo builds
 
 case ${EAPI} in
@@ -18,25 +20,43 @@ esac
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-# check and document RUST_DEPEND and options we need below in case conditions.
+if [[ -n ${RUST_NEEDS_LLVM} ]]; then
+		inherit llvm-r1
+fi
+
+if [[ -n ${CARGO_OPTIONAL} ]]; then
+	RUST_OPTIONAL=1
+fi
+
+# Either the lowest slot supported by rust.eclass _or_
+# reference the changelog for a particular feature requirement
 # https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
-RUST_DEPEND="virtual/rust"
+# For reference the actual minimum version of cargo that can be used
+# is 1.53.0 for `cargo update --offline`; updated to 1.71.1 with rust eclass.
+# No need to enable usage of legacy rust versions in ebuilds; keep it as-is.
+_CARGO_ECLASS_RUST_MIN_VER="1.71.1"
 
 case ${EAPI} in
 	8)
-		# 1.39 added --workspace
-		# 1.46 added --target dir
-		# 1.48 added term.progress config option
-		# 1.51 added split-debuginfo profile option
-		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
-		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
-		RUST_DEPEND=">=virtual/rust-1.53"
+		if [[ -n ${RUST_MIN_VER} ]]; then
+			# This is _very_ unlikely given that we leverage the rust eclass but just in case cargo requires a newer version
+			# than the oldest in-tree in future.
+			if [[ -z ${CARGO_BOOTSTRAP} ]]; then
+				if ver_test "${RUST_MIN_VER}" -lt "${_CARGO_ECLASS_RUST_MIN_VER}"; then
+					die "RUST_MIN_VERSION must be at least ${_CARGO_ECLASS_RUST_MIN_VER}"
+				fi
+			fi
+		else
+			RUST_MIN_VER="${_CARGO_ECLASS_RUST_MIN_VER}"
+		fi
 		;;
 esac
 
-inherit flag-o-matic multiprocessing rust-toolchain toolchain-funcs
+if [[ -n ${CRATE_PATHS_OVERRIDE} ]]; then
+	CRATES="${CRATES} ${CRATE_PATHS_OVERRIDE}"
+fi
 
-[[ ! ${CARGO_OPTIONAL} ]] && BDEPEND="${RUST_DEPEND}"
+inherit flag-o-matic multiprocessing rust rust-toolchain toolchain-funcs
 
 IUSE="${IUSE} debug"
 
@@ -66,6 +86,41 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # SRC_URI="${CARGO_CRATE_URIS}"
 # @CODE
 
+# @ECLASS_VARIABLE: CRATE_PATHS_OVERRIDE
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Bash string containing crates that will be used to override
+# dependencies via generated `paths = ['/path/to/crate']` configuration.
+# This is not "smart", _all crates_ which match the `Cargo.toml`
+# for a given crate/path will be overridden, ignoring lockfiles,
+# version constraints, etc.
+#
+# This should be used as a last resort where (e.g.) you are
+# bootstrapping Rust and need to override a vendored crate
+# with a newer version, and all versions in use are compatible.
+#
+# Crate names and versions must be separated by a `@`;
+# multiple crates are separated by a space or newline.
+# Crates in CRATE_PATHS_OVERRIDE are implicitly added to CRATES;
+# they do not need to be listed.
+#
+# Example:
+# @CODE
+# CRATES="
+# 	foo@1.2.3
+# "
+#
+# CRATE_PATHS_OVERRIDE="
+# 	openssl@0.10.35
+# 	openssl-sys@0.9.65
+# "
+#
+# inherit cargo
+# ...
+# SRC_URI="${CARGO_CRATE_URIS}"
+# @CODE
+
 # @ECLASS_VARIABLE: GIT_CRATES
 # @DEFAULT_UNSET
 # @PRE_INHERIT
@@ -83,6 +138,10 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # - optionally: the path to look for Cargo.toml in.
 #   - This will also replace the string "%commit%" with the commit's checksum.
 #   - Defaults to: "${crate}-%commit%"
+# - optionally: the git host so it would generate tarball download link.
+#   - E.g. gitlab
+#   - It fallbacks to detecting from URL if it's gitlab.com or github.com
+#     if no host provided.
 #
 # Example of a simple definition with no path to Cargo.toml:
 # @CODE
@@ -98,6 +157,20 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # 	[rustpython-parser]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/compiler/parser"
 # )
 # @CODE
+#
+# Example with host defined:
+# @CODE
+# declare -A GIT_CRATES=(
+#	[clapper]="https://gitlab.gnome.org/JanGernert/clapper-rs;530b6fd53a60563d8038f7a1d9d735d6dc496adb;clapper-rs-%commit%/libclapper-rs;gitlab"
+# )
+# @CODE
+
+# @ECLASS_VARIABLE: CARGO_BOOTSTRAP
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Ignore `_CARGO_ECLASS_RUST_MIN_VER` checks.
+# If you aren't bootstrapping Rust you probably don't need this.
 
 # @ECLASS_VARIABLE: CARGO_OPTIONAL
 # @DEFAULT_UNSET
@@ -107,9 +180,8 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # be considered optional. No dependencies will be added and no phase
 # functions will be exported.
 #
-# If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
-# for your package and call at least cargo_gen_config manually before using
-# other src_functions or cargo_env of this eclass.
+# If you enable CARGO_OPTIONAL call at least cargo_gen_config manually
+# before using other src_functions or cargo_env of this eclass.
 # Note that cargo_gen_config is automatically called by cargo_src_unpack.
 
 # @ECLASS_VARIABLE: myfeatures
@@ -129,6 +201,11 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
+# @ECLASS_VARIABLE: ECARGO_HOME
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Location of the cargo home directory.
+
 # @ECLASS_VARIABLE: ECARGO_REGISTRY_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -147,6 +224,11 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # If non-empty, this variable prevents online operations in
 # cargo_live_src_unpack.
 # Inherits value of EVCS_OFFLINE if not set explicitly.
+
+# @ECLASS_VARIABLE: ECARGO_VENDOR
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Location of the cargo vendor directory.
 
 # @ECLASS_VARIABLE: EVCS_UMASK
 # @USER_VARIABLE
@@ -198,21 +280,37 @@ _cargo_set_crate_uris() {
 
 	if declare -p GIT_CRATES &>/dev/null; then
 		if [[ $(declare -p GIT_CRATES) == "declare -A"* ]]; then
-			local crate commit crate_uri crate_dir repo_ext feat_expr
+			local crate commit crate_uri crate_dir host repo_ext feat_expr
 
 			for crate in "${!GIT_CRATES[@]}"; do
-				IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+				IFS=';' read -r crate_uri commit crate_dir host <<< "${GIT_CRATES[${crate}]}"
 
-				case "${crate_uri}" in
-					https://github.com/*)
+				if [[ -z ${host} ]]; then
+					case "${crate_uri}" in
+						https://github.com/*)
+							host="github"
+						;;
+						https://gitlab.com/*)
+							host="gitlab"
+						;;
+					esac
+				fi
+
+				case "${host}" in
+					github)
 						repo_ext=".gh"
 						repo_name="${crate_uri##*/}"
 						crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
 					;;
-					https://gitlab.com/*)
+					gitlab)
 						repo_ext=".gl"
 						repo_name="${crate_uri##*/}"
 						crate_uri="${crate_uri%/}/-/archive/%commit%/${repo_name}-%commit%.tar.gz"
+					;;
+					gitea)
+						repo_ext=".gt"
+						repo_name="${crate_uri##*/}"
+						crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
 					;;
 					*)
 						repo_ext=
@@ -246,6 +344,26 @@ cargo_crate_uris() {
 	echo "${CARGO_CRATE_URIS}"
 }
 
+# @FUNCTION: _cargo_gen_override_paths_config
+# @INTERNAL
+# @DESCRIPTION:
+# Generate the TOML content for overriding crates globally using the package manager.
+# This is called from within cargo_gen_config to insert the appropriate snippet
+# into the generated config.toml. Does not support git crates.
+_cargo_gen_override_paths_config() {
+	if [[ ! ${#CRATE_PATHS_OVERRIDE[@]} -gt 0 ]]; then
+		return
+	fi
+	local content override path
+	content=( 'paths = [' )
+	for override in ${CRATE_PATHS_OVERRIDE}; do
+		local path="${ECARGO_VENDOR}/${override//@/-}"
+		content+=( "'${path}'," )
+	done
+	content+=( ']' )
+	printf "%s\n" "${content[@]}"
+}
+
 # @FUNCTION: cargo_gen_config
 # @DESCRIPTION:
 # Generate the $CARGO_HOME/config.toml necessary to use our local registry and settings.
@@ -262,6 +380,8 @@ cargo_gen_config() {
 	mkdir -p "${ECARGO_HOME}" || die
 
 	cat > "${ECARGO_HOME}/config.toml" <<- _EOF_ || die "Failed to create cargo config"
+	$(_cargo_gen_override_paths_config)
+
 	[source.gentoo]
 	directory = "${ECARGO_VENDOR}"
 
@@ -280,6 +400,7 @@ cargo_gen_config() {
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
 	$(_cargo_gen_git_config)
+
 	_EOF_
 
 	export CARGO_HOME="${ECARGO_HOME}"
@@ -301,11 +422,11 @@ _cargo_gen_git_config() {
 	git_crates_type="$(declare -p GIT_CRATES 2>&-)"
 
 	if [[ ${git_crates_type} == "declare -A "* ]]; then
-		local crate commit crate_uri crate_dir
+		local crate commit crate_uri crate_dir host
 		local -A crate_patches
 
 		for crate in "${!GIT_CRATES[@]}"; do
-			IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+			IFS=';' read -r crate_uri commit crate_dir host <<< "${GIT_CRATES[${crate}]}"
 			: "${crate_dir:=${crate}-%commit%}"
 			crate_patches["${crate_uri}"]+="${crate} = { path = \"${WORKDIR}/${crate_dir//%commit%/${commit}}\" };;"
 		done
@@ -325,6 +446,37 @@ _cargo_gen_git_config() {
 # target/aarch64-unknown-linux-gnu/release.
 cargo_target_dir() {
 	echo "${CARGO_TARGET_DIR:-target}/$(rust_abi)/$(usex debug debug release)"
+}
+
+# @FUNCTION: cargo_update_crates
+# @USAGE:
+# @DESCRIPTION:
+# Helper function to call `cargo update --offline` with the given Cargo.toml.
+# This will update Cargo.{toml,lock}. This should provide a straightforward
+# approach to updating vulnerable crates in a package.
+#
+# To use: replace any vulnerable crates in ${CRATES} with updated (and compatible)
+# versions, then call `cargo_update_crates` in src_prepare. If Cargo.toml is not
+# in the root of ${S}, pass the path to the Cargo.toml as the first argument.
+# It is up to the ebuild to ensure that the updated crates are compatible with the
+# package and that no unexpected breakage occurs.
+cargo_update_crates () {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ -z ${CARGO} ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	local path=${1:-"${S}/Cargo.toml"}
+	if [[ $# -gt 1 ]]; then
+		die "Usage: cargo_update_crates [path_to_Cargo.toml]"
+	fi
+	[[ -f ${path} ]] || die "${path} does not exist"
+
+	set -- "${CARGO}" update --offline --manifest-path "${path}"
+	einfo "${@}"
+	# This is overkill (we're not using rustflags (etc) here) but it's safe.
+	cargo_env "${@}" || die "Failed to update crates"
 }
 
 # @FUNCTION: cargo_src_unpack
@@ -531,6 +683,8 @@ cargo_src_configure() {
 # take affect due to Cargo limitations, so add these to your ebuild's RUSTFLAGS
 # if they seem important.
 cargo_env() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
@@ -604,7 +758,11 @@ cargo_env() {
 cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	if [[ -z "${CARGO}" ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	set -- "${CARGO}" build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo build failed"
 }
@@ -618,7 +776,11 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- cargo install $(has --path ${@} || echo --path ./) \
+	if [[ -z "${CARGO}" ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	set -- "${CARGO}" install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
 		${GIT_CRATES[@]:+--frozen} \
 		$(usex debug --debug "") \
@@ -636,7 +798,11 @@ cargo_src_install() {
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	if [[ -z "${CARGO}" ]]; then
+		die "CARGO is not set; was rust_pkg_setup run?"
+	fi
+
+	set -- "${CARGO}" test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo test failed"
 }

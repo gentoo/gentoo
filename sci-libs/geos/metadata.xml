@@ -19,6 +19,8 @@
 		functions, and topological validity checking.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/libgeos/geos/issues</bugs-to>
+		<changelog>https://libgeos.org/posts</changelog>
 		<remote-id type="github">libgeos/geos</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -102,7 +102,7 @@ BDEPEND="
 	>=dev-util/gperf-3.0.1
 	dev-util/unifdef
 	>=sys-devel/bison-2.4.3
-	|| ( >=sys-devel/gcc-7.3 >=sys-devel/clang-5 )
+	|| ( >=sys-devel/gcc-7.3 >=llvm-core/clang-5 )
 	sys-devel/gettext
 	virtual/pkgconfig
 
@@ -147,6 +147,9 @@ src_prepare() {
 
 	# Fix USE=-jumbo-build on all arches
 	eapply "${FILESDIR}"/2.44.1-non-unified-build-fixes.patch
+
+	# https://bugs.gentoo.org/943213
+	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
 }
 
 src_configure() {

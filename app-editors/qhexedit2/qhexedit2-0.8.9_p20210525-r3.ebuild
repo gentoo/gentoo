@@ -33,7 +33,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/PyQt5-5.15.6[gui,widgets,${PYTHON_USEDEP}]
+			>=dev-python/pyqt5-5.15.6[gui,widgets,${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	python? (
 		$(python_gen_cond_dep '
-			>=dev-python/PyQt-builder-1.10[${PYTHON_USEDEP}]
+			>=dev-python/pyqt-builder-1.10[${PYTHON_USEDEP}]
 			>=dev-python/sip-5:=[${PYTHON_USEDEP}]
 		')
 	)

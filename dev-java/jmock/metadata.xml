@@ -5,4 +5,7 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">jmock-developers/jmock-library</remote-id>
+</upstream>
 </pkgmetadata>

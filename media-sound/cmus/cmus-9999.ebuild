@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Ncurses based music player with plugin support for many formats"
-HOMEPAGE="https://cmus.github.io/"
+HOMEPAGE="https://cmus.github.io/ https://github.com/cmus/cmus"
 
 S="${WORKDIR}/${P/_/-}"
 

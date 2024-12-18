@@ -16,7 +16,10 @@ DESCRIPTION="An open-source memory debugger for GNU/Linux"
 HOMEPAGE="https://valgrind.org"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
+	EGIT_REPO_URI="
+		https://sourceware.org/git/${PN}.git
+		https://git.sr.ht/~sourceware/valgrind
+	"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.gpg
@@ -29,7 +32,9 @@ else
 		https://sourceware.org/pub/valgrind/${MY_P}.tar.bz2
 		verify-sig? ( https://sourceware.org/pub/valgrind/${MY_P}.tar.bz2.asc )
 	"
-	# Rollups of backports on ${PV}_STABLE branch upstream.
+	# Rollups of backports on ${PV}_STABLE branch upstream. This branch
+	# is usually announced on the mailing list and distros are encouraged
+	# to pull from it regularly.
 	if [[ ${PV} == *_p* ]] ; then
 		SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${VALGRIND_PATCH_TARBALL}.tar.xz"
 	fi

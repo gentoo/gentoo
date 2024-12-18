@@ -10,7 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="authcram">Enable AUTHCRAM support</flag>
 		<flag name="gencertdaily">Generate SSL certificates daily instead of
 			hourly</flag>
 		<flag name="highvolume">Prepare netqmail for high volume servers</flag>

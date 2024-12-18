@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit fortran-2 cmake python-single-r1
+inherit fortran-2 cmake flag-o-matic python-single-r1
 
 MYP=HepMC3-${PV}
 
@@ -46,6 +46,7 @@ BDEPEND="
 "
 
 src_configure() {
+	filter-lto # 941937 941936
 	local mycmakeargs=(
 		-DHEPMC3_ENABLE_ROOTIO=$(usex root ON OFF)
 		-DHEPMC3_ENABLE_PYTHON=$(usex python ON OFF)

@@ -11,7 +11,7 @@ DESCRIPTION="Anonymous encrypted VPN client powered by Bitmask"
 HOMEPAGE="https://riseup.net/en/vpn https://0xacab.org/leap/bitmask-vpn https://bitmask.net"
 SRC_URI="
 	https://0xacab.org/leap/bitmask-vpn/-/archive/${PV}/bitmask-vpn-${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~andrewammerlaan/${P}-deps.tar.xz
+	https://dev.gentoo.org/~nowa/${P}-deps.tar.xz
 "
 S="${WORKDIR}/bitmask-vpn-${PV}"
 

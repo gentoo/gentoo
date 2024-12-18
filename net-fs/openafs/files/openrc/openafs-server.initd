@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use logger dns
+}
+
+start() {
+	ebegin "Starting OpenAFS BOS server"
+	start-stop-daemon \
+		--quiet --start --background \
+		--make-pidfile --pidfile /var/run/bosserver.pid \
+		--exec /usr/sbin/bosserver \
+		-- -nofork ${BOSSERVER_OPTIONS}
+	eend $?
+}
+
+stop() {
+	local ret
+	ebegin "Stopping OpenAFS BOS server"
+
+	# This kindly kills all server processes
+	/usr/bin/bos shutdown localhost -localauth -wait
+	ret=$?
+	if [ ${ret} -eq 0 ] ; then
+		start-stop-daemon --quiet --stop --pidfile /var/run/bosserver.pid
+		ret=$?
+	fi
+
+	eend ${ret}
+}

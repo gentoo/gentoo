@@ -1,0 +1,48 @@
+From 1579bb0c77d9e1e4599623a165c54a0dccdaf875 Mon Sep 17 00:00:00 2001
+From: Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+Date: Thu, 31 Oct 2024 11:28:37 +0100
+Subject: [PATCH] fix(dracut.sh): ensure abs path for objcopy args
+
+Closes: https://github.com/dracut-ng/dracut-ng/issues/833
+Signed-off-by: Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+---
+ dracut.sh | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index 90927136e..8b666a1ac 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -35,6 +35,19 @@ readonly dracut_cmd=$(readlink -f "$0")
+ 
+ set -o pipefail
+ 
++# below we sometimes cd, which causes problems if we're building an UKI
++# and relative paths are passed on to us. Store the pwd before we do anything.
++pwd=$(pwd)
++path_rel_to_abs() {
++    for var in "$@"; do
++        if [[ $var == /* ]]; then
++            echo "$var"
++        else
++            echo "$pwd/$var"
++        fi
++    done
++}
++
+ usage() {
+     [[ $sysroot_l ]] && dracutsysrootdir="$sysroot_l"
+     [[ $dracutbasedir ]] || dracutbasedir="$dracutsysrootdir"/usr/lib/dracut
+@@ -1095,9 +1108,9 @@ drivers_dir="${drivers_dir%"${drivers_dir##*[!/]}"}"
+ [[ $reproducible_l ]] && reproducible="$reproducible_l"
+ [[ $loginstall_l ]] && loginstall="$loginstall_l"
+ [[ $uefi_l ]] && uefi=$uefi_l
+-[[ $uefi_stub_l ]] && uefi_stub="$uefi_stub_l"
+-[[ $uefi_splash_image_l ]] && uefi_splash_image="$uefi_splash_image_l"
+-[[ $kernel_image_l ]] && kernel_image="$kernel_image_l"
++[[ $uefi_stub_l ]] && uefi_stub=$(path_rel_to_abs "$uefi_stub_l")
++[[ $uefi_splash_image_l ]] && uefi_splash_image=$(path_rel_to_abs "$uefi_splash_image_l")
++[[ $kernel_image_l ]] && kernel_image=$(path_rel_to_abs "$kernel_image_l")
+ [[ $sbat_l ]] && sbat="$sbat_l"
+ [[ $machine_id_l ]] && machine_id="$machine_id_l"
+ 

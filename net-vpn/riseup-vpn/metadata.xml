@@ -3,8 +3,8 @@
 
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrewammerlaan@gentoo.org</email>
-		<name>Andrew Ammerlaan</name>
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<upstream>
 		<bugs-to>https://0xacab.org/leap/bitmask-vpn/-/issues/new</bugs-to>

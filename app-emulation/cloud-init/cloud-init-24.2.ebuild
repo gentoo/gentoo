@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
 	SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~loong ppc64 x86"
 fi
 
 DESCRIPTION="Cloud instance initialisation magic"
@@ -26,7 +26,7 @@ SLOT="0"
 IUSE="selinux"
 
 CDEPEND="
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.2[${PYTHON_USEDEP}]

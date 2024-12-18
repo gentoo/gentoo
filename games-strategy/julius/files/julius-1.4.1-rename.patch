@@ -1,20 +1,20 @@
-Avoid conflict with app-accessibility/julius.
+Avoid conflict with app-accessibility/julius
 
-diff --color -Naur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2020-06-01 14:53:28.000000000 +0100
-+++ b/CMakeLists.txt	2021-02-14 11:51:30.364704957 +0000
-@@ -27,7 +27,7 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,7 @@ if(${TARGET_PLATFORM} STREQUAL "emscripten" AND NOT DEFINED CMAKE_TOOLCHAIN_FILE
      endif()
  endif()
  
 -set(SHORT_NAME julius)
 +set(SHORT_NAME julius-game)
+ set(USER_FRIENDLY_NAME Julius)
  project(${SHORT_NAME} C)
  
- if (VITA_BUILD)
-diff --color -Naur a/res/julius.desktop b/res/julius.desktop
---- a/res/julius.desktop	2020-06-01 14:53:28.000000000 +0100
-+++ b/res/julius.desktop	2021-02-14 11:51:45.518122772 +0000
+diff --git a/res/julius.desktop b/res/julius.desktop
+--- a/res/julius.desktop
++++ b/res/julius.desktop
 @@ -2,7 +2,7 @@
  [Desktop Entry]
  Type=Application

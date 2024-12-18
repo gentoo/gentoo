@@ -83,6 +83,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943722
+	append-cflags -std=gnu17
+
 	LC_ALL=C \
 	econf \
 		--x-includes="${EPREFIX}/usr/include" \

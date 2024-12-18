@@ -1,0 +1,22 @@
+Author: John M. Harris Jr. <johnmh@johnmh.me>
+Date:   Mon Nov 11 00:26:19 2024 -0700
+
+Remove unnecessary warning
+    
+On Gentoo systems, this check normally throws unnecessary warnings.
+Assume we're using system-provided ansible when the path begins with
+"/usr/lib/python-exec/python3."
+
+diff --git a/src/ansiblelint/__main__.py b/src/ansiblelint/__main__.py
+index ca4a33b6..c2dd3cef 100755
+--- a/src/ansiblelint/__main__.py
++++ b/src/ansiblelint/__main__.py
+@@ -461,7 +461,7 @@ def path_inject(own_location: str = "") -> None:
+     if own_location:
+         own_location = os.path.realpath(own_location)
+         parent = Path(own_location).parent
+-        if (parent / "ansible").exists() and str(parent) not in paths:
++        if not str(parent).startswith("/usr/lib/python-exec/python3.") and (parent / "ansible").exists() and str(parent) not in paths:
+             inject_paths.append(str(parent))
+ 
+     if not os.environ.get("PYENV_VIRTUAL_ENV", None):

@@ -74,5 +74,5 @@ python_install_all() {
 
 pkg_postinst() {
 	optfeature "sending email support" x11-misc/xdg-utils
-	optfeature "tatt subcommand" "app-portage/nattka dev-python/jinja"
+	optfeature "tatt subcommand" "app-portage/nattka dev-python/jinja2"
 }

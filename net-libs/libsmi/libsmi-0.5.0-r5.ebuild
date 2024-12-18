@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A Library to Access SMI MIB Information"
 HOMEPAGE="https://www.ibr.cs.tu-bs.de/projects/libsmi/ https://gitlab.ibr.cs.tu-bs.de/nm/libsmi"
@@ -29,6 +29,13 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# bug #944131
+	append-cflags -std=gnu17
+
+	econf
 }
 
 src_test() {

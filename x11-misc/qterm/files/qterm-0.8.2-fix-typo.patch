@@ -1,0 +1,22 @@
+From c929c3f38deeee9a9151f7ba0eb1f43baeada4ed Mon Sep 17 00:00:00 2001
+From: Xiaoqiang Wang <xiaoqiangwang@gmail.com>
+Date: Fri, 20 Sep 2024 09:30:31 +0200
+Subject: [PATCH] fix typo
+
+---
+ src/qtermglobal.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qtermglobal.cpp b/src/qtermglobal.cpp
+index 5055928..6b7ed79 100644
+--- a/src/qtermglobal.cpp
++++ b/src/qtermglobal.cpp
+@@ -858,7 +858,7 @@ void Global::openUrl(const QString & urlStr)
+     command += " &";
+     success = system(command.toUtf8().data()) == 0;
+ #else
+-    succes = QProcess::startDetached(command);
++    success = QProcess::startDetached(command);
+ #endif
+     if (!success)
+         qDebug() << "Failed to open the url with the system command";

@@ -180,7 +180,7 @@ d
 topal
 
 # Matt Turner <mattst88@gentoo.org> (2010-12-13)
-# We don't have sys-devel/llvm
+# We don't have llvm-core/llvm
 llvm
 
 # Matt Turner <mattst88@gentoo.org> (2012-05-27)

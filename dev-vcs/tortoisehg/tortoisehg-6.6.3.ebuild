@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 optfeature xdg-utils
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${PV}/thg-${PV}.tar.gz -> ${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-6.2[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '>=dev-vcs/mercurial-6.3.2[${PYTHON_USEDEP}]' python3_11 )
@@ -34,8 +34,8 @@ RDEPEND="
 	${HG_DEPEND}
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/PyQt5[network,svg,${PYTHON_USEDEP}]
-	>=dev-python/qscintilla-python-2.11.6[qt5(+),${PYTHON_USEDEP}]
+	dev-python/pyqt5[network,svg,${PYTHON_USEDEP}]
+	>=dev-python/qscintilla-2.11.6[qt5(+),${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
@@ -70,8 +70,8 @@ python_install_all() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	elog "When startup of ${PN} fails with an API version mismatch error"
-	elog "between dev-python/sip and dev-python/PyQt5 please rebuild"
-	elog "dev-python/qscintilla-python."
+	elog "between dev-python/sip and dev-python/pyqt5 please rebuild"
+	elog "dev-python/qscintilla."
 
 	optfeature "the core git extension support" dev-python/pygit2
 }

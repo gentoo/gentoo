@@ -38,8 +38,9 @@ src_unpack() {
 }
 
 src_configure() {
+	# TOOD: -std=gnu99 can be dropped on next release > 1.20.2
 	edo ./configure \
-		CC="$(tc-getCC)" \
+		CC="$(tc-getCC) -std=gnu99" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CPPFLAGS="${CPPFLAGS}" \

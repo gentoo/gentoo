@@ -1,0 +1,89 @@
+From 7a297c5469247c8391673b1d12d1279ace26ae28 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 26 Sep 2024 00:53:12 +0200
+Subject: [PATCH] Add dedicated WITH_X11 option to avoid automagic
+
+So we can configure to build without it even if the header is present.
+
+Amends 7a16bd22527f58dcf909bffeb9be9a865075e660
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                 | 4 ++++
+ src/CMakeLists.txt             | 4 +++-
+ src/config-kjobwidgets.h.cmake | 1 +
+ src/kdialogjobuidelegate.cpp   | 8 +++-----
+ 4 files changed, 11 insertions(+), 6 deletions(-)
+ create mode 100644 src/config-kjobwidgets.h.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 580140a0..3662379e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,6 +28,10 @@ include(CMakePackageConfigHelpers)
+ set(REQUIRED_QT_VERSION 6.5.0)
+ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
+ 
++if(NOT WIN32 AND NOT APPLE AND NOT ANDROID)
++    option(WITH_X11 "Build with support for QX11Info::appUserTime()" ON)
++endif()
++
+ # shall we use DBus?
+ # enabled per default on Linux & BSD systems
+ set(USE_DBUS_DEFAULT OFF)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f7fbba29..f79cfb8a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,3 +1,5 @@
++configure_file(config-kjobwidgets.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kjobwidgets.h )
++
+ add_library(KF6JobWidgets)
+ add_library(KF6::JobWidgets ALIAS KF6JobWidgets)
+ 
+@@ -81,7 +83,7 @@ if (HAVE_QTDBUS)
+     target_link_libraries(KF6JobWidgets PRIVATE Qt6::DBus)
+ endif()
+ 
+-if (NOT WIN32 AND NOT APPLE AND NOT ANDROID)
++if (WITH_X11)
+     target_link_libraries(KF6JobWidgets PRIVATE Qt6::GuiPrivate) # qtx11extras_p.h
+ endif ()
+ 
+diff --git a/src/config-kjobwidgets.h.cmake b/src/config-kjobwidgets.h.cmake
+new file mode 100644
+index 00000000..03550c09
+--- /dev/null
++++ b/src/config-kjobwidgets.h.cmake
+@@ -0,0 +1 @@
++#cmakedefine01 WITH_X11
+diff --git a/src/kdialogjobuidelegate.cpp b/src/kdialogjobuidelegate.cpp
+index 81343df2..86982587 100644
+--- a/src/kdialogjobuidelegate.cpp
++++ b/src/kdialogjobuidelegate.cpp
+@@ -17,11 +17,9 @@
+ #include <KJobWidgets>
+ #include <KMessageBox>
+ 
+-#if __has_include(<private/qtx11extras_p.h>)
++#include <config-kjobwidgets.h>
++#if WITH_X11
+ #include <private/qtx11extras_p.h>
+-#define HAVE_X11 1
+-#else
+-#define HAVE_X11 0
+ #endif
+ 
+ enum DialogType { ErrorDialog, WarningDialog };
+@@ -121,7 +119,7 @@ KDialogJobUiDelegate::~KDialogJobUiDelegate() = default;
+ bool KDialogJobUiDelegate::setJob(KJob *job)
+ {
+     bool ret = KJobUiDelegate::setJob(job);
+-#if HAVE_X11
++#if WITH_X11
+     if (ret) {
+         unsigned long time = QX11Info::appUserTime();
+         KJobWidgets::updateUserTimestamp(job, time);
+-- 
+GitLab
+

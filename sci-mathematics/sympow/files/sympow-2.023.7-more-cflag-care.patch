@@ -1,0 +1,53 @@
+From b59b1fd567007d2565b708426c83221189c6d939 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 3 Nov 2024 21:22:32 -0500
+Subject: [PATCH] Configure: fix "last resort" flag logic
+
+Towards the end of ./Configure, there is a "last resort" attempt to
+add -ffloat-store and -O0 to the user's CFLAGS to make the program
+config/fpubits succeed. But the logic is wrong: the try_add_CFLAG()
+function always appends the given flag to CFLAGS, even if it builds a
+broken config/fpubits with it. If config/fpubits is failing for some
+other reason (like on a non-x86 architecture), the end result is that
+both -ffloat-store and -O0 will be added to the user's CFLAGS, even
+though they don't help.
+
+To fix this, the loop has been rewritten to attempt -ffloat-store
+only, and to revert the user's CFLAGS afterwards if adding that flag
+did not materially improve the situation. The -O0 flag is no longer
+tried because it should have no effect on the number of FPU bits.
+---
+ Configure | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/Configure b/Configure
+index 066d415..0733d88 100755
+--- a/Configure
++++ b/Configure
+@@ -148,12 +148,17 @@ for FLAG in '-DISOC99_FENV' '-DFPUCONTROLH' '-Dx86'; do
+     try_add_CFLAG $FLAG && break
+ done
+ 
+-# Some flags to try as last resort.  These hurt performance, so only add
+-# them if needed.
+-for FLAG in '' '-ffloat-store' '-O0'; do
+-    # Stop the loop if the FPU precision already is 53 bits
+-    try_add_CFLAG $FLAG && break
+-done
++# Try to add -ffloat-store as a last resort, but only retain it if it
++# makes config/fpubits succeed. We run try_add_CFLAG() once beforehand
++# with no additional flags in case the last call to it resulted in a
++# broken config/fpubits.
++try_add_CFLAG ''
++if ! config/fpubits; then
++    _SAVED_CFLAGS="${CFLAGS}"
++    if ! try_add_CFLAG -ffloat-store; then
++	CFLAGS="${_SAVED_CFLAGS}"
++    fi
++fi
+ 
+ # Check the actual FPU precision with our new flags.
+ CC_ARGS="$ORIGINALCFLAGS -O3 $CFLAGS config/fpubits1.c config/fpubits2.c fpu.c -o config/fpubits"
+-- 
+2.47.0
+

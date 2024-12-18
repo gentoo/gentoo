@@ -1,0 +1,14 @@
+--- jove-4.17.5.3/jove.h
++++ jove-4.17.5.3/jove.h
+@@ -148,7 +148,12 @@
+ 
+ #define private		static
+ 
++#if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
++# include <stdbool.h>
++#else
+ typedef int	bool;
++#endif
++
+ #define NO		0
+ #define YES		1

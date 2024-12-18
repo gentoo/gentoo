@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,9 +40,9 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}
-	sys-devel/clang:${LLVM_MAX_SLOT}=
-	sys-devel/clang-runtime:=
-	sys-devel/lld:${LLVM_MAX_SLOT}="
+	llvm-core/clang:${LLVM_MAX_SLOT}=
+	llvm-core/clang-runtime:=
+	llvm-core/lld:${LLVM_MAX_SLOT}="
 DEPEND="${RDEPEND}"
 
 CMAKE_BUILD_TYPE=Release

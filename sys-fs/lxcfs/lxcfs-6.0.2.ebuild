@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(python_gen_any_dep '
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 	')
 	doc? ( sys-apps/help2man )
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
@@ -33,7 +33,7 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/linuxcontainers.asc
 
 python_check_deps() {
-	python_has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/jinja2[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

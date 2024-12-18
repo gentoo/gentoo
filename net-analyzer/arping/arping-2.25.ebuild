@@ -30,7 +30,7 @@ RDEPEND="net-libs/libpcap
 DEPEND="${RDEPEND}
 	test? (
 		dev-libs/check
-		dev-python/subunit
+		dev-python/python-subunit
 	)"
 
 FILECAPS=( cap_net_raw usr/sbin/arping )

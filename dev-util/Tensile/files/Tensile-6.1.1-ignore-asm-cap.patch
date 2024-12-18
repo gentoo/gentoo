@@ -1,0 +1,11 @@
+--- a/Tensile/Common.py	2024-11-09 20:38:11.186998794 -0000
++++ b/Tensile/Common.py	2024-11-09 20:43:18.524804845 -0000
+@@ -2030,7 +2030,7 @@
+     if len(compilerVer) >= 2:
+       ignoreCacheCheck = ignoreCacheCheck or \
+                          compilerVer[0] < 5 or \
+-                         (compilerVer[0] == 5 and compilerVer[1] <= 2) 
++                         (compilerVer[0] == 6 and compilerVer[1] <= 1)
+       
+     if not derivedAsmCaps["SupportedISA"] and CACHED_ASM_CAPS[isaVersion]["SupportedISA"]:
+       printWarning("Architecture {} not supported by ROCm {}".format(isaVersion, globalParameters['HipClangVersion']))

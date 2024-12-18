@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~loong ~x86"
 
 RDEPEND="
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/colorlog[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]

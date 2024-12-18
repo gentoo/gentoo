@@ -33,8 +33,8 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
 	<=dev-libs/rocm-device-libs-6.0
-	sys-devel/clang
-	sys-devel/lld"
+	llvm-core/clang
+	llvm-core/lld"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
 

@@ -1,19 +1,15 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2024-07-31)
-# Qt 6 not stable here.
-dev-build/cmake gui
+# Sam James <sam@gentoo.org> (2024-12-17)
+# dev-lang/ada-bootstrap exists here (but is not yet marked stable)
+>=sys-devel/gcc-14 ada
 
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
 # app-text/mupdf is not stable. bug #923811
 net-print/cups-filters pdf
 net-print/libcupsfilters pdf
 net-print/cups-meta pdf
-
-# Sam James <sam@gentoo.org> (2023-12-30)
-# Qt not marked stable here.
-app-text/doxygen gui
 
 # Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
 # media-libs/libavif isn't stable here

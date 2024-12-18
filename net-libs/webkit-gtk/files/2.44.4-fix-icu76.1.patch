@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/943213
+https://bugs.webkit.org/show_bug.cgi?id=282120
+https://github.com/WebKit/WebKit/commit/63f7badbada070ebaadd318b2801818ecf7e7ea0
+https://github.com/WebKit/WebKit/pull/35743
+https://unicode-org.atlassian.net/jira/software/c/projects/ICU/issues/ICU-22954
+
+From 63f7badbada070ebaadd318b2801818ecf7e7ea0 Mon Sep 17 00:00:00 2001
+From: Don Olmstead <don.olmstead@sony.com>
+Date: Sat, 26 Oct 2024 08:27:01 -0700
+Subject: [PATCH] Support ICU 76.1 build
+ https://bugs.webkit.org/show_bug.cgi?id=282120
+
+Reviewed by Yusuke Suzuki.
+
+In ICU 76.1 an additional macro `U_SHOW_CPLUSPLUS_HEADER_API` was added to
+control visibility of the C++ API within ICU. Set this value to `0` since WebKit
+wants to only use the C API.
+
+* Source/WTF/wtf/Platform.h:
+
+Canonical link: https://commits.webkit.org/285727@main
+--- a/Source/WTF/wtf/Platform.h
++++ b/Source/WTF/wtf/Platform.h
+@@ -115,6 +115,7 @@
+ /* ICU configuration. Some of these match ICU defaults on some platforms, but we would like them consistently set everywhere we build WebKit. */
+ #define U_HIDE_DEPRECATED_API 1
+ #define U_SHOW_CPLUSPLUS_API 0
++#define U_SHOW_CPLUSPLUS_HEADER_API 0
+ #ifdef __cplusplus
+ #define UCHAR_TYPE char16_t
+ #endif

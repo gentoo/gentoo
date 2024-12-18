@@ -32,7 +32,7 @@ RDEPEND="
 		dev-python/markdown[${PYTHON_USEDEP}]
 		>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 	')
 "
 # qmake6 from qtbase is used to find lrelease
@@ -42,7 +42,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep '
-			dev-python/PyQt6[testlib,${PYTHON_USEDEP}]
+			dev-python/pyqt6[testlib,${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -65,5 +65,5 @@ pkg_postinst() {
 	optfeature "a local copy of the MathJax JavaScript library" dev-libs/mathjax
 	optfeature "encoding detection" dev-python/chardet
 	optfeature "dictionary support" dev-python/pyenchant
-	optfeature "JavaScript support in preview" dev-python/PyQt6-WebEngine
+	optfeature "JavaScript support in preview" dev-python/pyqt6-webengine
 }

@@ -1,0 +1,66 @@
+From 88e0d4645af6e4d4fb1b0dd320b83dd83ca6e73c Mon Sep 17 00:00:00 2001
+Message-ID: <88e0d4645af6e4d4fb1b0dd320b83dd83ca6e73c.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Sun, 27 Oct 2024 13:28:11 +1100
+Subject: [PATCH 8/8] htole64() etc for systems without endian.h
+
+(cherry picked from commit 33c5f384ae03a5d1a0bd46ca0fac3c62e4eaf784)
+---
+ configure.ac |  1 -
+ defines.h    | 26 ++++++++++++++++++++++++++
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 591d5a388..9053a9a2b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2013,7 +2013,6 @@ AC_CHECK_FUNCS([ \
+ 	strtoll \
+ 	strtoul \
+ 	strtoull \
+-	swap32 \
+ 	sysconf \
+ 	tcgetpgrp \
+ 	timegm \
+diff --git a/defines.h b/defines.h
+index ed860e78b..b02f2942a 100644
+--- a/defines.h
++++ b/defines.h
+@@ -646,6 +646,32 @@ struct winsize {
+ # endif /* WORDS_BIGENDIAN */
+ #endif /* BYTE_ORDER */
+ 
++#ifndef HAVE_ENDIAN_H
++# define openssh_swap32(v)					\
++	(uint32_t)(((uint32_t)(v) & 0xff) << 24 |		\
++	((uint32_t)(v) & 0xff00) << 8 |				\
++	((uint32_t)(v) & 0xff0000) >> 8 |			\
++	((uint32_t)(v) & 0xff000000) >> 24)
++# define openssh_swap64(v)					\
++	(__uint64_t)((((__uint64_t)(v) & 0xff) << 56) |		\
++	((__uint64_t)(v) & 0xff00ULL) << 40 |			\
++	((__uint64_t)(v) & 0xff0000ULL) << 24 |			\
++	((__uint64_t)(v) & 0xff000000ULL) << 8 |		\
++	((__uint64_t)(v) & 0xff00000000ULL) >> 8 |		\
++	((__uint64_t)(v) & 0xff0000000000ULL) >> 24 |		\
++	((__uint64_t)(v) & 0xff000000000000ULL) >> 40 |		\
++	((__uint64_t)(v) & 0xff00000000000000ULL) >> 56)
++# ifdef WORDS_BIGENDIAN
++#  define le32toh(v) (openssh_swap32(v))
++#  define le64toh(v) (openssh_swap64(v))
++#  define htole64(v) (openssh_swap64(v))
++# else
++#  define le32toh(v) ((uint32_t)v)
++#  define le64toh(v) ((uint64_t)v)
++#  define htole64(v) ((uint64_t)v)
++# endif
++#endif
++
+ /* Function replacement / compatibility hacks */
+ 
+ #if !defined(HAVE_GETADDRINFO) && (defined(HAVE_OGETADDRINFO) || defined(HAVE_NGETADDRINFO))
+-- 
+2.47.0
+

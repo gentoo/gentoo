@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv"
 
 COMMON_DEPEND="acct-group/prometheus
 	acct-user/prometheus"

@@ -16,8 +16,8 @@ KEYWORDS=""
 PROPERTIES="live"
 
 RDEPEND="
-	sys-devel/clang:${SLOT}
-	sys-devel/lld:${SLOT}
+	llvm-core/clang:${SLOT}
+	llvm-core/lld:${SLOT}
 "
 
 src_install() {

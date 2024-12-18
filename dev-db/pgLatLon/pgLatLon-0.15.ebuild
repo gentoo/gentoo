@@ -10,11 +10,11 @@ HOMEPAGE="https://www.public-software-group.org/pgLatLon"
 SRC_URI="https://www.public-software-group.org/pub/projects/${PN}/v${PV}/${MYP}.tar.gz
 	https://dev.gentoo.org/~tupone/distfiles/${MYP}.tar.gz"
 
+S="${WORKDIR}"/${MYP}
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="dev-db/postgresql:="
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${MYP}

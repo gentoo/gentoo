@@ -1,0 +1,59 @@
+https://github.com/mupen64plus/mupen64plus-core/pull/1093
+https://github.com/mupen64plus/mupen64plus-core/commit/966a5df3165afede21204610c396dba1ed8a5bf3
+https://github.com/mupen64plus/mupen64plus-core/commit/b007759b9ed9d1473c732b4f3abcd9257165c65c
+https://github.com/Rosalie241/RMG/commit/4cd4f4c6ea37c82cdda6b0a57e79af1b71df17fe
+
+From: orbea <orbea@riseup.net>
+Date: Mon, 21 Oct 2024 09:10:57 -0700
+Subject: [PATCH 3/3] build: drop SDL1 support
+
+SDL1 is unmaintained upstream and using it only leads to a degraded
+experience. Especially when it recives far less testing.
+
+build: use pkg-config for SDL2
+
+SDL2 hasn't required suing sdl2-config in a long time and using
+pkg-config can have better results for distros.
+---
+ projects/unix/Makefile | 28 ++++++++++------------------
+ 1 file changed, 10 insertions(+), 18 deletions(-)
+
+--- a/Source/3rdParty/mupen64plus-core/projects/unix/Makefile
++++ b/Source/3rdParty/mupen64plus-core/projects/unix/Makefile
+@@ -351,26 +351,18 @@ endif
+ 
+ # test for presence of SDL
+ ifeq ($(origin SDL_CFLAGS) $(origin SDL_LDLIBS), undefined undefined)
+-  SDL_CONFIG = $(CROSS_COMPILE)sdl2-config
+-  ifeq ($(shell which $(SDL_CONFIG) 2>/dev/null),)
+-    SDL_CONFIG = $(CROSS_COMPILE)sdl-config
+-    ifeq ($(shell which $(SDL_CONFIG) 2>/dev/null),)
+-      $(error No SDL development libraries found!)
+-    else
+-      ifeq ($(NETPLAY), 1)
+-        SDL_LDLIBS += -lSDL_net
+-      endif
+-      # SDL1 doesn't support vulkan
+-      VULKAN = 0
+-      $(warning Using SDL 1.2 libraries)
+-    endif
+-  else
+-    ifeq ($(NETPLAY), 1)
+-      SDL_LDLIBS += -lSDL2_net
++  ifeq ($(shell $(PKG_CONFIG) --modversion sdl2 2>/dev/null),)
++    $(error No SDL2 development libraries found!)
++  endif
++  ifeq ($(NETPLAY), 1)
++    ifeq ($(shell $(PKG_CONFIG) --modversion SDL2_net 2>/dev/null),)
++      $(error No SDL2_net development libraries found!)
+     endif
++    SDL_CFLAGS += $(shell $(PKG_CONFIG) --cflags SDL2_net)
++    SDL_LDLIBS += $(shell $(PKG_CONFIG) --libs SDL2_net)
+   endif
+-  SDL_CFLAGS  += $(shell $(SDL_CONFIG) --cflags)
+-  SDL_LDLIBS += $(shell $(SDL_CONFIG) --libs)
++  SDL_CFLAGS += $(shell $(PKG_CONFIG) --cflags sdl2)
++  SDL_LDLIBS += $(shell $(PKG_CONFIG) --libs sdl2)
+ endif
+ CFLAGS += $(SDL_CFLAGS)
+ LDLIBS += $(SDL_LDLIBS)

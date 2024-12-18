@@ -40,7 +40,7 @@ RDEPEND="
 	>=dev-python/black-23.1.0[${PYTHON_USEDEP}]
 	>=dev-python/grpclib-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/isort-5.11.5[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.0.3[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.8[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.7.1[${PYTHON_USEDEP}]
 "

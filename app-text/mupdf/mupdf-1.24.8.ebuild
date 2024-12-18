@@ -15,7 +15,7 @@ S="${WORKDIR}"/${P}-source
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="archive +javascript opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.24.1-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.21.1-fix-aliasing-violation.patch
+	"${FILESDIR}"/${PN}-1.24.8-c23.patch
 )
 
 src_prepare() {

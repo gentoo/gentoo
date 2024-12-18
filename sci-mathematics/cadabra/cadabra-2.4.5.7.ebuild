@@ -43,7 +43,7 @@ RDEPEND="
 	dev-libs/libsigc++:2
 	dev-texlive/texlive-basic
 	$(python_gen_cond_dep '
-		dev-python/gmpy:2[${PYTHON_USEDEP}]
+		dev-python/gmpy2:2[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
 		jupyter? ( dev-python/jupyter[${PYTHON_USEDEP}] )

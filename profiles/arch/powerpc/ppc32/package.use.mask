@@ -1,10 +1,21 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
-# KF6 and media-libs/phonon have dropped ppc keyword
-app-office/texstudio video
-net-irc/kvirc phonon
+# Sam James <sam@gentoo.org> (2024-12-17)
+# dev-lang/ada-bootstrap exists here
+>=sys-devel/gcc-14 -ada
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
+# net-wireless/neard is not keyworded here.
+dev-qt/qtconnectivity:6 neard
+
+# Mike Gilbert <floppym@gentoo.org> (2024-11-17)
+# Cannot compile rust-based thin-provisioning-tools (bug #922236).
+sys-fs/lvm2 thin
+
+# Michał Górny <mgorny@gentoo.org> (2024-11-16)
+# Generated C files are too big for PPC ISA to handle.
+dev-python/mypy native-extensions
 
 # Matt Jolly <kangie@gentoo.org> (2024-08-14)
 # QUIC dependencies are not keyworded
@@ -21,7 +32,7 @@ x11-misc/xdg-utils plasma
 # Ionen Wolkens <ionen@gentoo.org> (2024-07-02)
 # Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
 # is no longer keyworded here and currently fails tests (bug #935313).
-dev-python/PyQt6 quick3d
+dev-python/pyqt6 quick3d
 dev-qt/qtmultimedia:6 qml
 
 # Sam James <sam@gentoo.org> (2024-05-19)
@@ -29,8 +40,8 @@ dev-qt/qtmultimedia:6 qml
 media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
-# sys-libs/libomp does not support ppc32 (bug #907213).
-sys-devel/clang-runtime openmp
+# llvm-runtimes/openmp does not support ppc32 (bug #907213).
+llvm-core/clang-runtime openmp
 
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
 # Fails tests, potential false negatives #911402
@@ -96,12 +107,12 @@ dev-util/diffoscope opendocument pascal pdf R
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Fails to compile because of size, bug #829602.
-sys-devel/clang extra
+llvm-core/clang extra
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location speech
+dev-python/pyqt5 bluetooth location speech
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
@@ -168,8 +179,8 @@ dev-lang/php avif
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
-sys-devel/clang-runtime compiler-rt sanitize
-sys-devel/clang-common default-compiler-rt
+llvm-core/clang-runtime compiler-rt sanitize
+llvm-core/clang-common default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and
@@ -194,7 +205,7 @@ sys-block/tgt rbd
 dev-python/pyopengl test
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
-# USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+# USE=bpf depends on llvm-core/clang which is not keyworded on ppc.
 media-libs/libv4l bpf
 
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)

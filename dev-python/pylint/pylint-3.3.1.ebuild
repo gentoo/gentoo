@@ -43,7 +43,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
-			>=dev-python/GitPython-3[${PYTHON_USEDEP}]
+			>=dev-python/gitpython-3[${PYTHON_USEDEP}]
 		' 'python*' )
 		>=dev-python/pytest-8.3[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
@@ -67,7 +67,7 @@ python_test() {
 		tests/benchmark/test_baseline_benchmarks.py
 	)
 
-	if ! has_version "dev-python/GitPython[${PYTHON_USEDEP}]"; then
+	if ! has_version "dev-python/gitpython[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=(
 			tests/profile/test_profile_against_externals.py
 			tests/testutils/_primer/test_package_to_lint.py

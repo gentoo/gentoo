@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/chenxiaolong/${PN}"
 else
 	SRC_URI="https://github.com/chenxiaolong/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		$(cargo_crate_uris)"
+		${CARGO_CRATE_URIS}"
 	# supported boards are x86_64 only, do not keyword elsewhere
 	# technically it could run on remote host and issue commands via ipmitool lanplus, but that's very edgy case
 	KEYWORDS="-* ~amd64"
@@ -26,7 +26,7 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 GPL-3+ ISC MIT
 SLOT="0"
 
 BDEPEND="
-	sys-devel/clang
+	llvm-core/clang
 	virtual/pkgconfig
 "
 

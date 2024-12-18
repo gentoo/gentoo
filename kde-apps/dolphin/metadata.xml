@@ -9,7 +9,4 @@
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=dolphin</bugs-to>
 		<remote-id type="kde-invent">system/dolphin</remote-id>
 	</upstream>
-	<use>
-		<flag name="activities">Track which folders are frequently accessed on a Plasma desktop</flag>
-	</use>
 </pkgmetadata>

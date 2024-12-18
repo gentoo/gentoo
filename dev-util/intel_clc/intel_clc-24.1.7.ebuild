@@ -28,14 +28,14 @@ SLOT="0"
 IUSE="debug"
 
 RDEPEND="
-	dev-libs/libclc
+	llvm-core/libclc
 	dev-util/spirv-tools
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
 	$(llvm_gen_dep '
 		dev-util/spirv-llvm-translator:${LLVM_SLOT}
-		sys-devel/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 	')
 "
 DEPEND="${RDEPEND}

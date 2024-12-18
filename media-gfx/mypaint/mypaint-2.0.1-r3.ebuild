@@ -24,7 +24,7 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pycairo-1.4[${PYTHON_USEDEP}]
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/protobuf[${PYTHON_USEDEP}]
 	')
 	>=dev-libs/json-c-0.11:=
 	gnome-base/librsvg
@@ -33,7 +33,7 @@ RDEPEND="
 	>=media-libs/libmypaint-1.5.0[openmp?]
 	media-libs/libpng:=
 	sys-devel/gettext
-	sys-libs/libomp
+	llvm-runtimes/openmp
 	x11-libs/gdk-pixbuf[jpeg]
 	x11-libs/gtk+:3
 "

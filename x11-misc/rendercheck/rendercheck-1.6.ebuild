@@ -4,7 +4,6 @@
 EAPI=8
 
 XORG_MODULE=test/
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3 meson
 
 if [[ ${PV} != *9999* ]]; then

@@ -42,7 +42,7 @@ RDEPEND="
 		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/protobuf[${PYTHON_USEDEP}]
 		dev-python/moddb[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont
@@ -143,6 +143,7 @@ pkg_postinst() {
 	# TODO: Package TIC-80 tiny computer
 	optfeature "playing Commodore games through an emulator" app-emulation/vice
 	# TODO: Package Atari Jaguar emulator
+	# TODO: Package Vita3K PS Vita emulator
 	# TODO: Package runner for HTML5 web games
 	# TODO: Package Xbox emulator
 	optfeature "playing Nintendo Switch games through an emulator (available in GURU overlay)" games-emulation/yuzu

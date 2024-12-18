@@ -11,7 +11,7 @@ SRC_URI="https://github.com/phaag/nfdump/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc jnat ftconv nfpcapd nfprofile nftrack nsel readpcap sflow zstd"
 
 REQUIRED_USE="?? ( jnat nsel )"
@@ -67,7 +67,7 @@ src_configure() {
 
 	# --without-ftconf is not handled well, bug #322201
 	local myeconfargs=(
-		$(usex ftconv "--enable-ftconv --with-ftpath=/usr")
+		$(usex ftconv "--enable-ftconv --with-ftpath=${EPREFIX}/usr")
 		$(usex nfpcapd --enable-nfpcapd)
 		$(usex nfprofile --enable-nfprofile)
 		$(usex nftrack --enable-nftrack)
@@ -76,7 +76,7 @@ src_configure() {
 		$(use_enable nsel)
 		$(use_enable readpcap)
 		$(use_enable sflow)
-		$(use_with zstd zstdpath)
+		$(use_with zstd "zstdpath" "${EPREFIX}/usr")
 	)
 	econf "${myeconfargs[@]}"
 }

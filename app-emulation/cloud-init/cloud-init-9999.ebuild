@@ -26,7 +26,7 @@ SLOT="0"
 IUSE="selinux"
 
 CDEPEND="
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.2[${PYTHON_USEDEP}]
@@ -49,6 +49,7 @@ BDEPEND="
 RDEPEND="
 	${CDEPEND}
 	net-analyzer/macchanger
+	net-analyzer/openbsd-netcat
 	sys-apps/iproute2
 	sys-fs/growpart
 	virtual/logger

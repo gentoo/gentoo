@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs
 
@@ -25,7 +25,7 @@ BDEPEND="
 DEPEND="||
 	(
 		>="${CATEGORY}"/gcc-4.7:*
-		>="${CATEGORY}"/clang-3.5:*
+		>="${CATEGORY/sys-devel/llvm-core}"/clang-3.5:*
 	)
 "
 

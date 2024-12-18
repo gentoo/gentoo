@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 x86"
 IUSE="sasl"
 
 DEPEND="
@@ -59,5 +59,6 @@ python_test() {
 		tests/test_autoconf.py
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest --doctest-modules --doctest-glob='doctests.txt' src/pylibmc tests
 }

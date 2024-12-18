@@ -5,7 +5,7 @@ EAPI=8
 
 DIST_AUTHOR=PEVANS
 DIST_VERSION=0.46
-inherit perl-module
+inherit flag-o-matic perl-module
 
 DESCRIPTION="XS functions to assist in parsing keyword syntax"
 
@@ -22,3 +22,10 @@ BDEPEND="
 	>=virtual/perl-ExtUtils-ParseXS-3.160.0
 	test? ( virtual/perl-Test2-Suite )
 "
+
+src_configure() {
+	# https://rt.cpan.org/Ticket/Display.html?id=157196
+	append-cflags -std=gnu17
+
+	perl-module_src_configure
+}

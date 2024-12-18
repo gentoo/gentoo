@@ -50,7 +50,7 @@ BDEPEND="
 	$(python_gen_any_dep '
 		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	')
-	|| ( >=sys-devel/gcc-11:* >=sys-devel/clang-14:* )
+	|| ( >=sys-devel/gcc-11:* >=llvm-core/clang-14:* )
 	verify-sig? ( sec-keys/openpgp-keys-botan )
 "
 
@@ -76,7 +76,7 @@ pkg_pretend() {
 		die "GCC version is too old to compile Botan!"
 	elif tc-is-clang && ver_test $(clang-version) -lt 14 ; then
 		eerror "Botan needs >=gcc-11 or >=clang-14 to compile."
-		eerror "Please upgrade Clang: emerge -v1 sys-devel/clang"
+		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
 		die "Clang version is too old to compile Botan!"
 	fi
 }

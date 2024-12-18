@@ -1,0 +1,25 @@
+https://github.com/curl/curl/commit/0cdde0fdfbeb8c35420f6d03fa4b77ed73497694
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Thu, 7 Nov 2024 17:03:54 +0100
+Subject: [PATCH] netrc: support large file, longer lines, longer tokens
+
+Regression from 3b43a05e000aa8f6 (shipped in 8.11.0)
+
+Reported-by: Moritz
+Fixes #15513
+Closes #15514
+--- a/lib/netrc.c
++++ b/lib/netrc.c
+@@ -58,9 +58,9 @@ enum found_state {
+ #define NETRC_FAILED -1
+ #define NETRC_SUCCESS 0
+ 
+-#define MAX_NETRC_LINE 4096
+-#define MAX_NETRC_FILE (64*1024)
+-#define MAX_NETRC_TOKEN 128
++#define MAX_NETRC_LINE 16384
++#define MAX_NETRC_FILE (128*1024)
++#define MAX_NETRC_TOKEN 4096
+ 
+ static CURLcode file2memory(const char *filename, struct dynbuf *filebuf)
+ {

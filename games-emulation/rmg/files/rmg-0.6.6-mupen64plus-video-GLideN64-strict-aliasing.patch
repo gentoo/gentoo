@@ -1,0 +1,207 @@
+https://github.com/gonetz/GLideN64/issues/2877
+https://github.com/gonetz/GLideN64/pull/2884
+https://github.com/gonetz/GLideN64/commit/a1320da566c03503ea755447458bb2b79a610cb5
+https://github.com/Rosalie241/RMG/commit/e68483fce2a977c07fee38e1d8d8f8dc22bb6072
+
+From a1320da566c03503ea755447458bb2b79a610cb5 Mon Sep 17 00:00:00 2001
+From: Sergey Lipskiy <gonetz@ngs.ru>
+Date: Sat, 19 Oct 2024 16:18:29 +0700
+Subject: [PATCH] Fix -Wstrict-aliasing warnings
+
+---
+ Source/3rdParty/mupen64plus-video-GLideN64/src/Textures.cpp | 56 ++++++++++++++++++++++++------------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/Source/3rdParty/mupen64plus-video-GLideN64/src/Textures.cpp b/Source/3rdParty/mupen64plus-video-GLideN64/src/Textures.cpp
+index 4739ec31c..22edf608d 100644
+--- a/Source/3rdParty/mupen64plus-video-GLideN64/src/Textures.cpp
++++ b/Source/3rdParty/mupen64plus-video-GLideN64/src/Textures.cpp
+@@ -52,9 +52,9 @@ u32 GetCI4IA_RGBA4444(u16 offset, u16 x, u16 i, u8 palette)
+ 	const u8 color4B = Get4BitPaletteColor(offset, x, i);
+ 
+ 	if (x & 1)
+-		return IA88_RGBA4444(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF]);
++		return IA88_RGBA4444(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF] & 0xFFFF));
+ 	else
+-		return IA88_RGBA4444(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF]);
++		return IA88_RGBA4444(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetCI4IA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+@@ -62,9 +62,9 @@ u32 GetCI4IA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+ 	const u8 color4B = Get4BitPaletteColor(offset, x, i);
+ 
+ 	if (x & 1)
+-		return IA88_RGBA8888(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF]);
++		return IA88_RGBA8888(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF] & 0xFFFF));
+ 	else
+-		return IA88_RGBA8888(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF]);
++		return IA88_RGBA8888(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetCI4RGBA_RGBA5551(u16 offset, u16 x, u16 i, u8 palette)
+@@ -72,9 +72,9 @@ u32 GetCI4RGBA_RGBA5551(u16 offset, u16 x, u16 i, u8 palette)
+ 	const u8 color4B = Get4BitPaletteColor(offset, x, i);
+ 
+ 	if (x & 1)
+-		return RGBA5551_RGBA5551(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF]);
++		return RGBA5551_RGBA5551(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF] & 0xFFFF));
+ 	else
+-		return RGBA5551_RGBA5551(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF]);
++		return RGBA5551_RGBA5551(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetCI4RGBA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+@@ -82,9 +82,9 @@ u32 GetCI4RGBA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+ 	const u8 color4B = Get4BitPaletteColor(offset, x, i);
+ 
+ 	if (x & 1)
+-		return RGBA5551_RGBA8888(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF]);
++		return RGBA5551_RGBA8888(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B & 0x0F)) & 0x1FF] & 0xFFFF));
+ 	else
+-		return RGBA5551_RGBA8888(*(u16*)&TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF]);
++		return RGBA5551_RGBA8888(static_cast<u16>(TMEM[(0x100 + (palette << 4) + (color4B >> 4)) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetIA31_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+@@ -120,25 +120,25 @@ inline u8 Get8BitPaletteColor(u16 offset, u16 x, u16 i)
+ u32 GetCI8IA_RGBA4444(u16 offset, u16 x, u16 i, u8 palette)
+ {
+ 	const u8 color = Get8BitPaletteColor(offset, x, i);
+-	return IA88_RGBA4444(*(u16*)&TMEM[(0x100 + color) & 0x1FF]);
++	return IA88_RGBA4444(static_cast<u16>(TMEM[(0x100 + color) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetCI8IA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+ {
+ 	const u8 color = Get8BitPaletteColor(offset, x, i);
+-	return IA88_RGBA8888(*(u16*)&TMEM[(0x100 + color) & 0x1FF]);
++	return IA88_RGBA8888(static_cast<u16>(TMEM[(0x100 + color) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetCI8RGBA_RGBA5551(u16 offset, u16 x, u16 i, u8 palette)
+ {
+ 	const u8 color = Get8BitPaletteColor(offset, x, i);
+-	return RGBA5551_RGBA5551(*(u16*)&TMEM[(0x100 + color) & 0x1FF]);
++	return RGBA5551_RGBA5551(static_cast<u16>(TMEM[(0x100 + color) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetCI8RGBA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+ {
+ 	const u8 color = Get8BitPaletteColor(offset, x, i);
+-	return RGBA5551_RGBA8888(*(u16*)&TMEM[(0x100 + color) & 0x1FF]);
++	return RGBA5551_RGBA8888(static_cast<u16>(TMEM[(0x100 + color) & 0x1FF] & 0xFFFF));
+ }
+ 
+ u32 GetIA44_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+@@ -193,7 +193,7 @@ u32 GetI16_RGBA4444(u16 offset, u16 x, u16 i, u8 palette)
+ u32 GetCI16IA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+ {
+ 	const u16 tex = Get16BitColor(offset, x, i);
+-	const u16 col = (*(u16*)&TMEM[0x100 + (tex & 0xFF)]);
++	const u16 col = (static_cast<u16>(TMEM[0x100 + (tex & 0xFF)] & 0xFFFF));
+ 	const u16 c = col >> 8;
+ 	const u16 a = col & 0xFF;
+ 	return (a << 24) | (c << 16) | (c << 8) | c;
+@@ -202,7 +202,7 @@ u32 GetCI16IA_RGBA8888(u16 offset, u16 x, u16 i, u8 palette)
+ u32 GetCI16IA_RGBA4444(u16 offset, u16 x, u16 i, u8 palette)
+ {
+ 	const u16 tex = Get16BitColor(offset, x, i);
+-	const u16 col = (*(u16*)&TMEM[0x100 + (tex & 0xFF)]);
++	const u16 col = (static_cast<u16>(TMEM[0x100 + (tex & 0xFF)] & 0xFFFF));
+ 	const u16 c = col >> 12;
+ 	const u16 a = col & 0x0F;
+ 	return (a << 12) | (c << 8) | (c << 4) | c;
+@@ -303,9 +303,9 @@ u32 GetCI4IA_RGBA4444_BG(u64 *src, u16 x, u16 i, u8 palette)
+ 	u8 color4B = ((u8*)src)[(x >> 1) ^ (i << 1)];
+ 
+ 	if (x & 1)
+-		return IA88_RGBA4444(*(u16*)&TMEM[256 + (palette << 4) + (color4B & 0x0F)]);
++		return IA88_RGBA4444(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B & 0x0F)] & 0xFFFF));
+ 	else
+-		return IA88_RGBA4444(*(u16*)&TMEM[256 + (palette << 4) + (color4B >> 4)]);
++		return IA88_RGBA4444(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B >> 4)] & 0xFFFF));
+ }
+ 
+ u32 GetCI4IA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+@@ -313,9 +313,9 @@ u32 GetCI4IA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+ 	u8 color4B = ((u8*)src)[(x >> 1) ^ (i << 1)];
+ 
+ 	if (x & 1)
+-		return IA88_RGBA8888(*(u16*)&TMEM[256 + (palette << 4) + (color4B & 0x0F)]);
++		return IA88_RGBA8888(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B & 0x0F)] & 0xFFFF));
+ 	else
+-		return IA88_RGBA8888(*(u16*)&TMEM[256 + (palette << 4) + (color4B >> 4)]);
++		return IA88_RGBA8888(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B >> 4)] & 0xFFFF));
+ }
+ 
+ u32 GetCI4RGBA_RGBA5551_BG(u64 *src, u16 x, u16 i, u8 palette)
+@@ -323,9 +323,9 @@ u32 GetCI4RGBA_RGBA5551_BG(u64 *src, u16 x, u16 i, u8 palette)
+ 	u8 color4B = ((u8*)src)[(x >> 1) ^ (i << 1)];
+ 
+ 	if (x & 1)
+-		return RGBA5551_RGBA5551(*(u16*)&TMEM[256 + (palette << 4) + (color4B & 0x0F)]);
++		return RGBA5551_RGBA5551(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B & 0x0F)] & 0xFFFF));
+ 	else
+-		return RGBA5551_RGBA5551(*(u16*)&TMEM[256 + (palette << 4) + (color4B >> 4)]);
++		return RGBA5551_RGBA5551(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B >> 4)] & 0xFFFF));
+ }
+ 
+ u32 GetCI4RGBA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+@@ -333,9 +333,9 @@ u32 GetCI4RGBA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+ 	u8 color4B = ((u8*)src)[(x >> 1) ^ (i << 1)];
+ 
+ 	if (x & 1)
+-		return RGBA5551_RGBA8888(*(u16*)&TMEM[256 + (palette << 4) + (color4B & 0x0F)]);
++		return RGBA5551_RGBA8888(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B & 0x0F)] & 0xFFFF));
+ 	else
+-		return RGBA5551_RGBA8888(*(u16*)&TMEM[256 + (palette << 4) + (color4B >> 4)]);
++		return RGBA5551_RGBA8888(static_cast<u16>(TMEM[256 + (palette << 4) + (color4B >> 4)] & 0xFFFF));
+ }
+ 
+ u32 GetIA31_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+@@ -368,22 +368,22 @@ u32 GetI4_RGBA4444_BG(u64 *src, u16 x, u16 i, u8 palette)
+ 
+ u32 GetCI8IA_RGBA4444_BG(u64 *src, u16 x, u16 i, u8 palette)
+ {
+-	return IA88_RGBA4444(*(u16*)&TMEM[256 + ((u8*)src)[x ^ (i << 1)]]);
++	return IA88_RGBA4444(static_cast<u16>(TMEM[256 + ((u8*)src)[x ^ (i << 1)]] & 0xFFFF));
+ }
+ 
+ u32 GetCI8IA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+ {
+-	return IA88_RGBA8888(*(u16*)&TMEM[256 + ((u8*)src)[x ^ (i << 1)]]);
++	return IA88_RGBA8888(static_cast<u16>(TMEM[256 + ((u8*)src)[x ^ (i << 1)]] & 0xFFFF));
+ }
+ 
+ u32 GetCI8RGBA_RGBA5551_BG(u64 *src, u16 x, u16 i, u8 palette)
+ {
+-	return RGBA5551_RGBA5551(*(u16*)&TMEM[256 + ((u8*)src)[x ^ (i << 1)]]);
++	return RGBA5551_RGBA5551(static_cast<u16>(TMEM[256 + ((u8*)src)[x ^ (i << 1)]] & 0xFFFF));
+ }
+ 
+ u32 GetCI8RGBA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+ {
+-	return RGBA5551_RGBA8888(*(u16*)&TMEM[256 + ((u8*)src)[x ^ (i << 1)]]);
++	return RGBA5551_RGBA8888(static_cast<u16>(TMEM[256 + ((u8*)src)[x ^ (i << 1)]] & 0xFFFF));
+ }
+ 
+ u32 GetIA44_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+@@ -429,7 +429,7 @@ u32 GetI16_RGBA4444_BG(u64 *src, u16 x, u16 i, u8 palette)
+ u32 GetCI16IA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+ {
+ 	const u16 tex = ((u16*)src)[x^i];
+-	const u16 col = (*(u16*)&TMEM[256 + (tex & 0xFF)]);
++	const u16 col = (static_cast<u16>(TMEM[256 + (tex & 0xFF)] & 0xFFFF));
+ 	const u16 c = col >> 8;
+ 	const u16 a = col & 0xFF;
+ 	return (a << 24) | (c << 16) | (c << 8) | c;
+@@ -438,7 +438,7 @@ u32 GetCI16IA_RGBA8888_BG(u64 *src, u16 x, u16 i, u8 palette)
+ u32 GetCI16IA_RGBA4444_BG(u64 *src, u16 x, u16 i, u8 palette)
+ {
+ 	const u16 tex = ((u16*)src)[x^i];
+-	const u16 col = (*(u16*)&TMEM[256 + (tex & 0xFF)]);
++	const u16 col = (static_cast<u16>(TMEM[256 + (tex & 0xFF)] & 0xFFFF));
+ 	const u16 c = col >> 12;
+ 	const u16 a = col & 0x0F;
+ 	return (a << 12) | (c << 8) | (c << 4) | c;

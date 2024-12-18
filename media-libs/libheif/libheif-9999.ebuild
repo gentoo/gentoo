@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake xdg multilib-minimal
 
-if [[ ${PV} == *9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/strukturag/libheif.git"
 	inherit git-r3
 else
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+aom gdk-pixbuf go rav1e svt-av1 test +threads x265"
+IUSE="+aom gdk-pixbuf go rav1e svt-av1 test +threads +webp x265"
 REQUIRED_USE="test? ( go )"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +30,7 @@ BDEPEND="
 "
 DEPEND="
 	media-libs/dav1d:=[${MULTILIB_USEDEP}]
-	media-libs/libde265:=[${MULTILIB_USEDEP}]
+	media-libs/libde265[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	media-libs/tiff:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
@@ -40,12 +40,10 @@ DEPEND="
 	go? ( dev-lang/go )
 	rav1e? ( media-video/rav1e:= )
 	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
+	webp? ( media-libs/libwebp:= )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
-
-# https://github.com/strukturag/libheif/issues/1249
-PATCHES=( "${FILESDIR}"/${P}-prepend_DESTDIR_when_generating_heif-convert_symlink.patch )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
@@ -73,6 +71,7 @@ multilib_src_configure() {
 		-DWITH_GDK_PIXBUF=$(usex gdk-pixbuf)
 		-DWITH_RAV1E="$(multilib_native_usex rav1e)"
 		-DWITH_SvtEnc="$(usex svt-av1)"
+		-DWITH_LIBSHARPYUV=$(usex webp)
 		-DWITH_X265=$(usex x265)
 		-DWITH_KVAZAAR=true
 		-DWITH_JPEG_DECODER=true

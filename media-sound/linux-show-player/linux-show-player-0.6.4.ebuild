@@ -25,7 +25,7 @@ RDEPEND="$(python_gen_cond_dep '
 		dev-python/appdirs[${PYTHON_USEDEP}]
 		dev-python/gst-python[${PYTHON_USEDEP}]
 		dev-python/humanize[${PYTHON_USEDEP}]
-		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/pyqt5[${PYTHON_USEDEP}]
 		dev-python/pygobject[${PYTHON_USEDEP}]
 		dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	')

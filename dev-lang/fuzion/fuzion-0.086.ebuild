@@ -35,7 +35,7 @@ DEPEND="
 "
 BDEPEND="
 	test? (
-		sys-devel/clang:*
+		llvm-core/clang:*
 	)
 "
 

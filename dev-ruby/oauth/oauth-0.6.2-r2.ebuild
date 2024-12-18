@@ -19,7 +19,7 @@ RUBY_S="${PN}-ruby-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
-IUSE=""
+IUSE="test"
 
 ruby_add_rdepend "
 	dev-ruby/snaky_hash:1
@@ -33,15 +33,15 @@ ruby_add_bdepend "test? (
 	dev-ruby/webmock
 	dev-ruby/rack
 	dev-ruby/rest-client
-	dev-ruby/actionpack:6.1
-	dev-ruby/railties:6.1
+	dev-ruby/actionpack:7.0
+	dev-ruby/railties:7.0
 )"
 
 all_ruby_prepare() {
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Require compatible versions of dependencies
-	sed -i -e '1igem "railties", "~>6.1.0" ; gem "actionpack", "~>6.1.0"; require "action_dispatch"' \
+	sed -i -e '1igem "railties", "~>7.0.0" ; gem "actionpack", "~>7.0.0"; require "action_dispatch"' \
 		-e '/mocha/ s/mini_test/minitest/' \
 		-e 's/if RUN_COVERAGE/if false/' test/test_helper.rb || die
 

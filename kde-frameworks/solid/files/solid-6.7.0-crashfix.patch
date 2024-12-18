@@ -1,0 +1,68 @@
+From 11a21dfad782c3862f6a3fba9bcf4fd5c5005777 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 11 Dec 2024 22:58:47 +0100
+Subject: [PATCH] Add null check for StorageAccess interface in
+ storageAccessFromPath
+
+In slotInterfacesRemoved we do a remove+add cycle
+
+During that cycle the backend object is null, so querying the StorageAccess
+interface will return null.
+
+This means that when something calls storageAccessFromPath in reaction to
+the removed signal we will get a null StorageAccess.
+
+The overall design is a bit shaky here, but we can handle it more gracefully
+by checking the result for null
+
+BUG: 497299
+
+CCBUG: 492578
+
+SENTRY: PLASMA-WORKSPACE-11Q1
+
+SENTRY: KDECONNECT-KDE-BK
+
+SENTRY: DOLPHIN-320
+
+SENTRY: KDED-7M
+
+SENTRY: FALLTHROUGH-62S
+
+SENTRY: KATE-Y3
+
+SENTRY: KDENLIVE-VR
+
+SENTRY: XDG-DESKTOP-PORTAL-KDE-3R
+
+SENTRY: KDEVELOP-93
+
+SENTRY: KRUNNER-GD
+
+SENTRY: PLASMA-WORKSPACE-1986
+
+SENTRY: ELISA-9H
+(cherry picked from commit 2f8825b489ecc69bed67a49abdcb643d1fa42b4a)
+---
+ src/solid/devices/frontend/devicemanager.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/solid/devices/frontend/devicemanager.cpp b/src/solid/devices/frontend/devicemanager.cpp
+index 896a1826..9559592a 100644
+--- a/src/solid/devices/frontend/devicemanager.cpp
++++ b/src/solid/devices/frontend/devicemanager.cpp
+@@ -161,6 +161,11 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
+         }
+ 
+         auto storageAccess = device.as<StorageAccess>();
++
++        if (!storageAccess) {
++            continue;
++        }
++
+         QString mountPath = storageAccess->filePath();
+ 
+         if (mountPath.size() <= match_length || !path.startsWith(mountPath)) {
+-- 
+GitLab
+

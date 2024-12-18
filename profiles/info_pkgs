@@ -22,9 +22,9 @@ dev-lang/rust-bin
 app-misc/pax-utils
 sys-apps/sandbox
 dev-util/ccache
-sys-devel/clang
-sys-devel/llvm
-sys-devel/lld
+llvm-core/clang
+llvm-core/llvm
+llvm-core/lld
 sys-devel/gcc
 sys-devel/gcc-config
 dev-java/java-config

@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/docutils-0.18.1[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-5.5[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.8[${PYTHON_USEDEP}]

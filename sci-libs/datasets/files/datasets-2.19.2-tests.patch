@@ -1,0 +1,23 @@
+--- a/tests/test_arrow_dataset.py	2024-02-20 21:53:24.248470991 +0100
++++ b/tests/test_arrow_dataset.py	2024-02-20 21:53:29.441804737 +0100
+@@ -4109,7 +4109,6 @@
+     [
+         "relative/path",
+         "/absolute/path",
+-        "s3://bucket/relative/path",
+         "hdfs://relative/path",
+         "hdfs:///absolute/path",
+     ],
+--- a/tests/packaged_modules/test_audiofolder.py	2023-05-06 14:00:39.560876163 +0200
++++ b/tests/packaged_modules/test_audiofolder.py	2023-05-06 14:01:26.005212423 +0200
+@@ -1,10 +1,8 @@
+ import shutil
+ import textwrap
+ 
+-import librosa
+ import numpy as np
+ import pytest
+-import soundfile as sf
+ 
+ from datasets import Audio, ClassLabel, Features, Value
+ from datasets.data_files import DataFilesDict, get_data_patterns

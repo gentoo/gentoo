@@ -41,7 +41,7 @@ BDEPEND="
 	sys-apps/which
 	sys-devel/gettext
 	test? (
-		dev-python/libpillowfight[${PYTHON_USEDEP}]
+		dev-python/pypillowfight[${PYTHON_USEDEP}]
 		media-libs/libinsane
 	)
 "

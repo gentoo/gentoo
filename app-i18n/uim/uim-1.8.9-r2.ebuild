@@ -100,8 +100,9 @@ src_prepare() {
 	default
 	sed -i "s:\$libedit_path/lib:/$(get_libdir):g" configure.ac
 	use nls || sed -i "/^if .*USE_NLS/,/^fi/d" configure.ac
-	# fix build with "-march=pentium4 -O2", bug #661806
-	use x86 && append-cflags $(test-flags-CC -fno-inline-small-functions)
+
+	# bug #661806, bug #921399
+	append-cflags $(test-flags-CC -fno-inline-small-functions)
 
 	# Fix build w/ Clang 16+ and >= openssl 1.1.x, tries to use
 	# SSLv2_method otherwise.

@@ -1,0 +1,31 @@
+From 70d2254de37555167cf60b60d1539ecc9d798fea Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Mon, 25 Nov 2024 22:21:07 +0000
+Subject: [PATCH] use tomli instead toml for pytest
+
+---
+ tests/manager/test_knot_resolver_manager.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/manager/test_knot_resolver_manager.py b/tests/manager/test_knot_resolver_manager.py
+index 05d0e61d..b45c79a4 100644
+--- a/tests/manager/test_knot_resolver_manager.py
++++ b/tests/manager/test_knot_resolver_manager.py
+@@ -1,11 +1,11 @@
+-import toml
++import tomli
+ 
+ from knot_resolver import __version__
+ 
+ 
+ def test_version():
+-    with open("pyproject.toml", "r") as f:
+-        pyproject = toml.load(f)
++    with open("pyproject.toml", "rb") as f:
++        pyproject = tomli.load(f)
+ 
+     version = pyproject["tool"]["poetry"]["version"]
+     assert __version__ == version
+-- 
+2.45.2
+

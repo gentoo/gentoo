@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.apache.commons:commons-imaging:${PV/_/-}"
+MAVEN_ID="org.apache.commons:commons-imaging:1.0-alpha3"
 
 inherit java-pkg-2 java-pkg-simple verify-sig
 

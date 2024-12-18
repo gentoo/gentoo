@@ -218,7 +218,7 @@ COMMON_DEPEND="
 		)
 	)
 	quirc? ( media-libs/quirc )
-	tesseract? ( app-text/tesseract[opencl=,${MULTILIB_USEDEP}] )
+	tesseract? ( app-text/tesseract[opencl(+),${MULTILIB_USEDEP}] )
 	tbb? ( dev-cpp/tbb:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	v4l? ( >=media-libs/libv4l-0.8.3[${MULTILIB_USEDEP}] )
@@ -804,7 +804,7 @@ multilib_src_test() {
 		'AsyncAPICancelation/cancel*basic'
 	)
 
-	if ! use gtk && ! use qt5 && ! use qt6; then
+	if ! use gtk3 && ! use qt5 && ! use qt6; then
 		CMAKE_SKIP_TESTS+=(
 			# these fail with parallism
 			'^Highgui_*'

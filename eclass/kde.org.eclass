@@ -235,6 +235,14 @@ kde.org_src_unpack() {
 	esac
 }
 
+kde.org_pkg_info() {
+	if [[ ${KDE_BUILD_TYPE} = live ]]; then
+		echo "WARNING! This is an experimental live ebuild of ${CATEGORY}/${PN}"
+		echo "Use it at your own risk."
+		echo "Only file bugs at bugs.gentoo.org if convinced that ebuild needs an update!"
+	fi
+}
+
 fi
 
-EXPORT_FUNCTIONS pkg_nofetch src_unpack
+EXPORT_FUNCTIONS pkg_nofetch src_unpack pkg_info

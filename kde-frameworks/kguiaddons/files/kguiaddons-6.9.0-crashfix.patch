@@ -1,0 +1,46 @@
+From ad7f80857647cef7408d81bb1270312cf6acc20d Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Tue, 17 Dec 2024 09:04:46 +0100
+Subject: [PATCH] Dont crash if the compostior doesnt support the shortcut
+ inhibit protocol
+
+BUG:497457
+FIXED-IN:6.10
+---
+ src/recorder/waylandinhibition.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/recorder/waylandinhibition.cpp b/src/recorder/waylandinhibition.cpp
+index 2bbb5c7..d559f85 100644
+--- a/src/recorder/waylandinhibition.cpp
++++ b/src/recorder/waylandinhibition.cpp
+@@ -5,6 +5,8 @@
+ 
+ #include "waylandinhibition_p.h"
+ 
++#include "kguiaddons_debug.h"
++
+ #include <QDebug>
+ #include <QGuiApplication>
+ #include <QSharedPointer>
+@@ -121,10 +123,17 @@ bool WaylandInhibition::shortcutsAreInhibited() const
+ 
+ void WaylandInhibition::enableInhibition()
+ {
++    if (!m_manager->isActive()) {
++        qCInfo(KGUIADDONS_LOG) << "The compositor does not support the keyboard-shortcuts-inhibit-unstable-v1 protocol. Inhibiting shortcuts will not work.";
++        return;
++    }
+     m_manager->startInhibition(m_window);
+ }
+ 
+ void WaylandInhibition::disableInhibition()
+ {
++    if (!m_manager->isActive()) {
++        return;
++    }
+     m_manager->stopInhibition(m_window);
+ }
+-- 
+GitLab
+

@@ -25,7 +25,7 @@ SLOT="0/$(ver_cut 1-2)"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-devel/clang:${LLVM_MAX_SLOT}"
+RDEPEND="llvm-core/clang:${LLVM_MAX_SLOT}"
 DEPEND="${RDEPEND}"
 
 CMAKE_BUILD_TYPE=Release

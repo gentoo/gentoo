@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
-		<flag name="libunwind">Use libunwind library (<pkg>sys-libs/libunwind</pkg> or <pkg>sys-libs/llvm-libunwind</pkg>) instead of built-in fallback implementation for stack unwinding</flag>
+		<flag name="libunwind">Use libunwind library (<pkg>sys-libs/libunwind</pkg> or <pkg>llvm-runtimes/libunwind</pkg>) instead of built-in fallback implementation for stack unwinding</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">google/glog</remote-id>

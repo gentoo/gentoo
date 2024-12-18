@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-USE_RUBY="ruby30 ruby31 ruby32"
+PYTHON_COMPAT=( python3_{10..12} )
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_NAME="RbST"
 RUBY_FAKEGEM_GEMSPEC="RbST.gemspec"
@@ -34,7 +34,7 @@ DEPEND="
 ruby_add_bdepend "
 	test? (
 		>=dev-ruby/minitest-5.14.0:5
-		>=dev-ruby/mocha-1.1.0:1.0
+		dev-ruby/mocha:2
 	)
 "
 
@@ -57,4 +57,12 @@ all_ruby_prepare() {
 	# force our python version
 	sed -i -e "s:\(python_path=\"\)python:\1${EPYTHON}:" lib/rbst.rb || die
 	python_fix_shebang lib/rst2parts
+
+	# Update test file for latest docutils output
+	sed -e '/footnote/ s/id1/footnote-1/' \
+		-e '/backref/ s/id3/footnote-reference-1/' \
+		-e '/backref/ s/id4/citation-reference-1/' \
+		-e '/footnote-reference/ s/id3/footnote-reference-1/' \
+		-e '/citation-reference/ s/id4/citation-reference-1/' \
+		-i test/files/test.html || die
 }

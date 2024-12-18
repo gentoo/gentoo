@@ -1,0 +1,74 @@
+From 1e43299b9ad548c9395edfd456cbba017ca02b9f Mon Sep 17 00:00:00 2001
+From: Rick Calixte <10281587+rcalixte@users.noreply.github.com>
+Date: Wed, 2 Oct 2024 11:09:58 -0400
+Subject: [PATCH] docs: Remove recorder.xml.in (#12395)
+
+This file references another for inclusion that no longer exists. With
+gtk-doc-tools 1.34.0, stricter checking is enabled that results in a failure
+which halts the build process due to this invalid file reference.
+---
+ docs/reference/cinnamon/cinnamon-docs.sgml |  1 -
+ docs/reference/cinnamon/meson.build        | 15 +--------------
+ docs/reference/cinnamon/recorder.xml.in    | 12 ------------
+ 3 files changed, 1 insertion(+), 27 deletions(-)
+ delete mode 100644 docs/reference/cinnamon/recorder.xml.in
+
+diff --git a/docs/reference/cinnamon/cinnamon-docs.sgml b/docs/reference/cinnamon/cinnamon-docs.sgml
+index bd5bebd793..4e79c29933 100644
+--- a/docs/reference/cinnamon/cinnamon-docs.sgml
++++ b/docs/reference/cinnamon/cinnamon-docs.sgml
+@@ -35,7 +35,6 @@
+     <xi:include href="xml/cinnamon-tray-icon.xml"/>
+     <xi:include href="xml/cinnamon-tray-manager.xml"/>
+   </chapter>
+-  <xi:include href="recorder.xml"/>
+   <chapter>
+     <title>Integration helpers and utilities</title>
+     <xi:include href="xml/cinnamon-global.xml"/>
+diff --git a/docs/reference/cinnamon/meson.build b/docs/reference/cinnamon/meson.build
+index fec3ed34de..0123077f0e 100644
+--- a/docs/reference/cinnamon/meson.build
++++ b/docs/reference/cinnamon/meson.build
+@@ -7,23 +7,10 @@ ignore = [
+     sniffer_headers,
+ ]
+ 
+-recorder_conf = configuration_data()
+-
+-if get_option('build_recorder')
+-    recorder_conf.set('BUILD_RECORDER_XML_START', '-->')
+-    recorder_conf.set('BUILD_RECORDER_XML_END', '<!--')
+-else
+-    recorder_conf.set('BUILD_RECORDER_XML_START', '')
+-    recorder_conf.set('BUILD_RECORDER_XML_END', '')
++if not get_option('build_recorder')
+     ignore += 'cinnamon-recorder.h'
+ endif
+ 
+-configure_file(
+-    input: 'recorder.xml.in',
+-    output: 'recorder.xml',
+-    configuration: recorder_conf,
+-)
+-
+ gnome.gtkdoc(
+     'cinnamon',
+     mode: 'xml',
+diff --git a/docs/reference/cinnamon/recorder.xml.in b/docs/reference/cinnamon/recorder.xml.in
+deleted file mode 100644
+index 133c57bfac..0000000000
+--- a/docs/reference/cinnamon/recorder.xml.in
++++ /dev/null
+@@ -1,12 +0,0 @@
+-<?xml version="1.0"?>
+-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+-               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+-[
+-  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+-]>
+-  <!-- @BUILD_RECORDER_XML_START@
+-  <chapter>
+-    <title>Recorder</title>
+-    <xi:include href="xml/cinnamon-recorder.xml"/>
+-  </chapter>
+-  @BUILD_RECORDER_XML_END@ -->

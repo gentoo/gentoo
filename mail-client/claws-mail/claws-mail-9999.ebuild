@@ -66,7 +66,10 @@ COMMONDEPEND="
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
-		libcanberra? (  media-libs/libcanberra[gtk3] )
+		libcanberra? ( || (
+			media-libs/libcanberra-gtk3
+			media-libs/libcanberra[gtk3(-)]
+		) )
 		libnotify? ( x11-libs/libnotify )
 	)
 	perl? ( dev-lang/perl:= )
@@ -102,6 +105,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-arch/xz-utils
 	virtual/pkgconfig
+	doc? ( app-text/docbook-sgml-utils )
 "
 RDEPEND="${COMMONDEPEND}
 	app-misc/mime-types

@@ -83,6 +83,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.6.1-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
+	"${FILESDIR}"/${P}-poppler-24.10.0.patch # bug 941932
+	"${FILESDIR}"/${P}-poppler-24.11.0-{1,2}.patch
 )
 
 src_prepare() {

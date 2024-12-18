@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">xtables-addons</remote-id>
+		<remote-id type="codeberg">jengelh/xtables-addons</remote-id>
 	</upstream>
 </pkgmetadata>

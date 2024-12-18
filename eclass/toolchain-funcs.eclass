@@ -647,6 +647,50 @@ _tc-has-openmp() {
 	return ${ret}
 }
 
+# @FUNCTION: tc-check-min_ver
+# @USAGE: <gcc or clang> <minimum version>
+# @DESCRIPTION:
+# Minimum version of active GCC or Clang to require.
+#
+# You should test for any necessary minimum version in pkg_pretend in order to
+# warn the user of required toolchain changes.  You must still check for it at
+# build-time, e.g.
+# @CODE
+# pkg_pretend() {
+#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2.0
+# }
+#
+# pkg_setup() {
+#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2.0
+# }
+# @CODE
+tc-check-min_ver() {
+	do_check() {
+		debug-print "Compiler version check for ${1}"
+		debug-print "Detected: ${2}"
+		debug-print "Required: ${3}"
+		if ver_test ${2} -lt ${3}; then
+			eerror "Your current compiler is too old for this package!"
+			die "Active compiler is too old for this package (found ${1} ${2})."
+		fi
+	}
+
+	case ${1} in
+		gcc)
+			tc-is-gcc || return
+			do_check GCC $(gcc-version) ${2}
+			;;
+		clang)
+			tc-is-clang || return
+			do_check Clang $(clang-version) ${2}
+			;;
+		*)
+			eerror "Unknown first parameter for ${FUNCNAME} - must be gcc or clang"
+			die "${FUNCNAME}: Parameter ${1} unknown"
+			;;
+	esac
+}
+
 # @FUNCTION: tc-check-openmp
 # @DESCRIPTION:
 # Test for OpenMP support with the current compiler and error out with
@@ -672,7 +716,7 @@ tc-check-openmp() {
 		if tc-is-gcc; then
 			eerror "Enable OpenMP support by building sys-devel/gcc with USE=\"openmp\"."
 		elif tc-is-clang; then
-			eerror "OpenMP support in sys-devel/clang is provided by sys-libs/libomp."
+			eerror "OpenMP support in llvm-core/clang is provided by llvm-runtimes/openmp."
 		fi
 
 		die "Active compiler does not have required support for OpenMP"
@@ -1242,7 +1286,7 @@ gen_usr_ldscript() {
 # If the library is identified, the function returns 0 and prints one
 # of the following:
 #
-# - ``libc++`` for ``sys-libs/libcxx``
+# - ``libc++`` for ``llvm-runtimes/libcxx``
 # - ``libstdc++`` for ``sys-devel/gcc``'s libstdc++
 #
 # If the library is not recognized, the function returns 1.
@@ -1278,7 +1322,7 @@ tc-get-cxx-stdlib() {
 # If the runtime is identifed, the function returns 0 and prints one
 # of the following:
 #
-# - ``compiler-rt`` for ``sys-libs/compiler-rt``
+# - ``compiler-rt`` for ``llvm-runtimes/compiler-rt``
 # - ``libgcc`` for ``sys-devel/gcc``'s libgcc
 #
 # If the runtime is not recognized, the function returns 1.

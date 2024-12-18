@@ -22,7 +22,7 @@ SRC_URI+="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 IUSE="conch http2 serial ssl test"
 RESTRICT="!test? ( test )"
 
@@ -58,6 +58,7 @@ RDEPEND="
 IDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	>=dev-python/constantly-15.1[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-4.2.0[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-5[${PYTHON_USEDEP}]
 "
 BDEPEND="

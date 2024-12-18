@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	=dev-util/hip-5*
 	>=dev-util/rocm-smi-4.3.0
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	llvm-core/clang:${LLVM_MAX_SLOT}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

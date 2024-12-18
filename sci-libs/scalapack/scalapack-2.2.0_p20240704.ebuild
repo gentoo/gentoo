@@ -47,6 +47,9 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	# https://github.com/Reference-ScaLAPACK/scalapack/issues/31
+	append-cflags -std=gnu89
+
 	scalapack_configure() {
 		local mycmakeargs=(
 			-DUSE_OPTIMIZED_LAPACK_BLAS=ON

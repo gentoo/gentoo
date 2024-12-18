@@ -51,6 +51,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.6-tests-non-bash.patch
 	# bug #910487
 	"${FILESDIR}"/${P}-underlinked-util-linux.patch
+	# bug #943690
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 # false positive

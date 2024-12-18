@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="archive">Use <pkg>app-arch/libarchive</pkg> to use zip and tar archives from scripts.</flag>
-  </use>
-</pkgmetadata>

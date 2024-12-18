@@ -26,7 +26,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://www.hepforge.org/downloads/lhapdf/${MY_PF}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PF}"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -34,7 +34,10 @@ SLOT="0"
 IUSE="examples +python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="
+	dev-cpp/yaml-cpp
+	python? ( ${PYTHON_DEPS} )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	python? (
@@ -55,9 +58,10 @@ src_prepare() {
 }
 
 src_configure() {
-	CONFIG_SHELL="${EPREFIX}/bin/bash" \
+	local -x CONFIG_SHELL="${EPREFIX}/bin/bash"
 	econf \
 		--disable-static \
+		--with-yaml-cpp="${EPREFIX}/usr" \
 		$(use_enable python)
 }
 

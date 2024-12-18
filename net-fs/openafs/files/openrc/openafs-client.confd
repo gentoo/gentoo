@@ -1,0 +1,55 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# ENABLE_AFSDB and ENABLE_DYNROOT determine whether AFSDB support and
+# Dynroot support (dynamically generated /afs), respectively, should be
+# enabled in the AFS client.
+ENABLE_AFSDB="yes"
+ENABLE_DYNROOT="yes"
+
+# Log stdout/stderr to /var/log/openafs/client.log (disabled by default)
+# ENABLE_STD_LOGGING="no"
+
+# AFS client configuration options:
+# ---------------------------------------------------------------------------
+# possible AFS client afsd configuration options (from 1.3.74) are
+#      -blocks     The number of blocks available in the workstation cache.
+#      -files      The target number of files in the workstation cache (Default:
+#                  1000).
+#      -rootvol            The name of the root volume to use.
+#      -stat       The number of stat cache entries.
+#      -hosts      List of servers to check for volume location info FOR THE
+#                  HOME CELL.
+#      -memcache   Use an in-memory cache rather than disk.
+#      -cachedir    The base directory for the workstation cache.
+#      -mountdir   The directory on which the AFS is to be mounted.
+#      -confdir    The configuration directory .
+#      -nosettime  Don't keep checking the time to avoid drift.
+#      -verbose     Be chatty.
+#      -debug     Print out additional debugging info.
+#      -kerndev    [OBSOLETE] The kernel device for AFS.
+#      -dontfork   [OBSOLETE] Don't fork off as a new process.
+#      -daemons   The number of background daemons to start (Default: 2).
+#      -rmtsys    Also fires up an afs remote sys call (e.g. pioctl, setpag)
+#                 support daemon
+#      -chunksize [n]   2^n is the chunksize to be used.  0 is default.
+#      -dcache    The number of data cache entries.
+#      -biods     Number of bkg I/O daemons (AIX3.1 only)
+#      -prealloc  Number of preallocated "small" memory blocks
+#      -pininodes Number of inodes which can be spared from inode[] for
+#                 pointing at Vfiles.  If this is set too high, you may have
+#                 system problems, which can only be ameliorated by changing
+#                 NINODE (or equivalent) and rebuilding the kernel.
+#                 This option is now disabled.
+#      -logfile   Place where to put the logfile (default in <cache>/etc/AFSLog.
+#      -waitclose make close calls always synchronous (slows em down, tho)
+#      -files_per_subdir [n]   number of files per cache subdir. (def=2048)
+#      -shutdown  Shutdown afs daemons
+# ---------------------------------------------------------------------------
+XXLARGE="-fakestat -stat 4000 -dcache 4000 -daemons 6 -volumes 256 -files 50000"
+XLARGE="-fakestat -stat 3600 -dcache 3600 -daemons 5 -volumes 196 -files 50000"
+LARGE="-fakestat -stat 2800 -dcache 2400 -daemons 5 -volumes 128"
+MEDIUM="-fakestat -stat 2000 -dcache 800 -daemons 3 -volumes 70"
+SMALL="-fakestat -stat 300 -dcache 100 -daemons 2 -volumes 50"
+OPTIONS="AUTOMATIC"
+

@@ -16,7 +16,7 @@ SRC_URI="https://downloads.sourceforge.net/skfans/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 
 DEPEND="net-libs/enet:1.3=
 	media-libs/libsdl2[X,video]

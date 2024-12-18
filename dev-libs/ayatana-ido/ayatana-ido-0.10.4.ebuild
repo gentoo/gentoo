@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AyatanaIndicators/${PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-2.1 LGPL-3 GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -21,9 +21,12 @@ RDEPEND="
 	>=dev-libs/glib-2.58:2
 	>=x11-libs/gtk+-3.24:3[introspection]
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	$(vala_depend)
+	dev-util/glib-utils
 	test? ( dev-cpp/gtest )
 "
 

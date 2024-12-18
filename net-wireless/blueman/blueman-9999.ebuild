@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools distutils-r1 gnome2-utils linux-info systemd xdg-utils
 
@@ -80,7 +80,6 @@ RDEPEND="
 		|| (
 			media-sound/pulseaudio-daemon[bluetooth]
 			media-video/pipewire[bluetooth]
-			<media-sound/pulseaudio-15.99.1[bluetooth]
 		)
 	)
 "

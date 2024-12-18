@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,12 @@ DESCRIPTION="Web-based administration for Postgres database in php"
 HOMEPAGE="http://phppgadmin.sourceforge.net/"
 SRC_URI="https://github.com/ReimuHakurei/phpPgAdmin/archive/refs/tags/v${PV}-mod.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="dev-lang/php[postgres,session,unicode]"
-
-S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	webapp_src_preinst

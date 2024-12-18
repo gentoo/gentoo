@@ -17,6 +17,8 @@ SRC_URI="
 		-> gentoo-tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
 	https://raw.githubusercontent.com/debian-tex/texlive-bin/58a00e704a15ec3dd8abbf3826f28207eb095251/debian/patches/1054218.patch
 		-> ${PN}-2023-pdflatex-big-endian-fix.patch
+	https://bugs.gentoo.org/attachment.cgi?id=908573
+		-> ${PN}-2023-mplib-h.patch
 "
 
 # Macros that are not a part of texlive-sources or or pulled in from collection-binextra
@@ -127,7 +129,7 @@ SRC_URI+=" )"
 S="${WORKDIR}/${MY_P}"
 LICENSE="BSD GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist
@@ -224,13 +226,17 @@ src_prepare() {
 	# https://git.texlive.info/texlive/commit/?id=c45afdc843154fcb09b583f54a2f802c6069b50e
 	eapply "${DISTDIR}"/texlive-core-2023-pdflatex-big-endian-fix.patch
 
+	# bug #837875
+	eapply "${DISTDIR}"/texlive-core-2023-mplib-h.patch
+
 	default
 
 	elibtoolize
 
-	# Drop this once cairo's autoconf patches are gone. See
-	# https://bugs.gentoo.org/927714#c4 and https://bugs.gentoo.org/853121.
-	"${S}"/reautoconf libs/cairo || die
+	# Drop this once cairo's and mplibdir's (texlive-core-2023-mplib-h.patch)
+	# autoconf patches are gone. See bug #927714#c4, bug #853121 for cairo,
+	# and bug #837875 for mplibdir (in web2c).
+	"${S}"/reautoconf libs/cairo texk/web2c || die
 }
 
 src_configure() {
@@ -238,6 +244,13 @@ src_configure() {
 	# bug #915223
 	append-flags -fno-strict-aliasing
 	filter-lto
+
+	# Needed for 32bit architectures, bug 928096
+	# This is upstream recommendation for the moment, see also
+	# https://www.tug.org/texlive/build.html
+	# I'm fairly sure it just hides a real bug in pdftex, keeping 928096
+	# thus open, but hey, at least it's not a regression...
+	append-cflags -Wno-incompatible-pointer-types
 
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"

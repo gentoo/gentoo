@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~loong ~ppc64 ~riscv x86"
 elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
@@ -28,6 +28,9 @@ DEPEND="
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
 	vulkan? ( dev-util/vulkan-headers )
 "
+BDEPEND="
+	~dev-qt/qtshadertools-${PV}:6
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
@@ -36,7 +39,8 @@ PATCHES=(
 )
 
 CMAKE_SKIP_TESTS=(
-	# collada support is disabled in system media-libs/assimp (bug #891787)
+	# needs off-by-default assimp[collada] that is masked on some profiles,
+	# not worth the extra trouble
 	tst_qquick3dassetimport
 )
 

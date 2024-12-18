@@ -1,0 +1,32 @@
+https://git.enlightenment.org/enlightenment/efl/issues/71
+
+commit 6c3630ffda0884b86e6ffc9d00d7315ab67858e5
+Author: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date:   Wed Aug 21 10:56:13 2024 -0400
+
+    eina_string_view.hh change lenght to length
+    
+    fixes #71
+
+diff --git a/src/bindings/cxx/eina_cxx/eina_string_view.hh b/src/bindings/cxx/eina_cxx/eina_string_view.hh
+index 77798db70f..f0bbcb705d 100644
+--- a/src/bindings/cxx/eina_cxx/eina_string_view.hh
++++ b/src/bindings/cxx/eina_cxx/eina_string_view.hh
+@@ -181,7 +181,7 @@ public:
+    size_type rfind(basic_string_view<CharT, Traits> const& s) const
+    {
+       const_reverse_iterator iter = std::search(crbegin(), crend(), s.crbegin(), s.crend(), Traits::eq);
+-      return iter == crend() ? npos : reverse_distance(crbegin(), iter) - s.lenght();
++      return iter == crend() ? npos : reverse_distance(crbegin(), iter) - s.length();
+    }
+ 
+    size_type rfind(basic_string_view<CharT, Traits> const& s, size_type pos) const
+@@ -189,7 +189,7 @@ public:
+       if (pos >= _len)
+         return npos;
+       const_reverse_iterator iter = std::search(crbegin()+pos, crend(), s.crbegin(), s.crend(), Traits::eq);
+-      return iter == crend() ? npos : reverse_distance(crbegin(), iter) - s.lenght();
++      return iter == crend() ? npos : reverse_distance(crbegin(), iter) - s.length();
+    }
+ 
+    size_type rfind(CharT c) const

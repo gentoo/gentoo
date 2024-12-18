@@ -34,6 +34,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.34.1-linux-6.11.patch
+)
+
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -79,6 +83,12 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	export TEST_CC="$(tc-getCC)" TEST_GCC="$(tc-getCC)" \
+		TEST_CXX="$(tc-getCXX)" TEST_GXX="$(tc-getCXX)"
+	cmake_src_test
+}
+
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
 
@@ -92,12 +102,4 @@ src_install() {
 	dosym ${PN} /usr/bin/ld.${PN}
 	dosym ${PN} /usr/bin/ld64.${PN}
 	dosym -r /usr/bin/${PN} /usr/libexec/${PN}/ld
-}
-
-src_test() {
-	export TEST_CC="$(tc-getCC)" \
-		   TEST_GCC="$(tc-getCC)" \
-		   TEST_CXX="$(tc-getCXX)" \
-		   TEST_GXX="$(tc-getCXX)"
-	cmake_src_test
 }

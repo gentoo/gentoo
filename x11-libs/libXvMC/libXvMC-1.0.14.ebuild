@@ -4,7 +4,6 @@
 EAPI=8
 
 XORG_MULTILIB=yes
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3 meson-multilib
 
 DESCRIPTION="X.Org XvMC library"

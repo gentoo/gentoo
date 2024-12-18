@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 distutils_enable_tests pytest
 
@@ -27,6 +27,7 @@ python_test() {
 		tests/test_linux.py::TestRootFsDeviceFinder::test_disk_partitions_mocked
 		tests/test_linux.py::TestSystemDiskPartitions::test_zfs_fs
 		tests/test_linux.py::TestSystemNetIfAddrs::test_ips
+		tests/test_posix.py::TestProcess::test_nice
 		tests/test_process.py::TestProcess::test_ionice_linux
 		tests/test_system.py::TestDiskAPIs::test_disk_partitions
 
@@ -51,6 +52,8 @@ python_test() {
 		tests/test_linux.py::TestSystemCPUCountLogical::test_emulate_fallbacks
 		tests/test_linux.py::TestSystemCPUFrequency::test_emulate_use_cpuinfo
 		tests/test_linux.py::TestSystemCPUFrequency::test_emulate_use_second_file
+		tests/test_system.py::TestCpuAPIs::test_cpu_freq
+		tests/test_system.py::TestCpuAPIs::test_cpu_times_comparison
 
 		# broken in some setups
 		tests/test_linux.py::TestMisc::test_issue_687
@@ -61,6 +64,13 @@ python_test() {
 		tests/test_posix.py::TestSystemAPIs::test_users
 		tests/test_process.py::TestProcess::test_terminal
 		tests/test_unicode.py::TestFSAPIs::test_memory_maps
+
+		# fails on all AT containers
+		tests/test_system.py::TestMiscAPIs::test_users
+
+		# failing without /sys/class/power_supply?
+		tests/test_memleaks.py::TestModuleFunctionsLeaks::test_sensors_battery
+		tests/test_misc.py::TestMisc::test_serialization
 	)
 
 	# Since we are running in an environment a bit similar to CI,

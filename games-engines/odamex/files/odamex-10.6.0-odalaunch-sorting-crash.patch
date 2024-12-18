@@ -1,0 +1,28 @@
+From e8dfbdc08a58d709fa7c23e38911c421cdb2a76d Mon Sep 17 00:00:00 2001
+From: Pavel Miksha <89637241+keyboardcrash32@users.noreply.github.com>
+Date: Sun, 20 Oct 2024 15:53:14 +0300
+Subject: [PATCH] Fix odalaunch crashing when sorting servers
+
+---
+ odalaunch/src/lst_custom.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/odalaunch/src/lst_custom.cpp b/odalaunch/src/lst_custom.cpp
+index 1ad0387fa..22182b6cb 100644
+--- a/odalaunch/src/lst_custom.cpp
++++ b/odalaunch/src/lst_custom.cpp
+@@ -319,6 +319,14 @@ int wxCALLBACK wxCompareFunction(wxIntPtr item1, wxIntPtr item2,
+ 	Item.SetColumn(SortCol);
+ 	Item.SetMask(wxLIST_MASK_TEXT);
+ 
++	long id1 = ListCtrl->FindItem(-1, item1);
++	long id2 = ListCtrl->FindItem(-1, item2);
++
++	if (id1 == -1 || id2 == -1)
++	{
++		return 0;
++	}
++
+ 	if(SortCol == ListCtrl->GetSpecialSortColumn())
+ 	{
+ 		int Img1, Img2;

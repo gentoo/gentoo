@@ -1,0 +1,77 @@
+https://github.com/mapeditor/tiled/pull/4077
+
+From 5a771722aa31c7ce1611ada3fa5b636166e3e3e1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thorbj=C3=B8rn=20Lindeijer?= <bjorn@lindeijer.nl>
+Date: Thu, 10 Oct 2024 12:22:36 +0200
+Subject: [PATCH] Fixed compile against Qt 6.8
+
+Using the QT_VERSION_CHECK macro as value for the
+QT_DISABLE_DEPRECATED_BEFORE define is causing issues since Qt 6.8, for
+example when QByteArray is included without first explicitly including
+QtGlobal.
+--- a/qbs/imports/TiledPlugin.qbs
++++ b/qbs/imports/TiledPlugin.qbs
+@@ -23,7 +23,7 @@ DynamicLibrary {
+             return ["$ORIGIN/../.."];
+     }
+     cpp.defines: [
+-        "QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(5,15,0)",
++        "QT_DISABLE_DEPRECATED_BEFORE=0x050F00",
+         "QT_NO_DEPRECATED_WARNINGS",
+         "QT_NO_FOREACH",
+         "QT_NO_URL_CAST_FROM_STRING"
+--- a/qbs/imports/TiledQtGuiApplication.qbs
++++ b/qbs/imports/TiledQtGuiApplication.qbs
+@@ -16,7 +16,7 @@ QtGuiApplication {
+         return flags;
+     }
+     cpp.defines: [
+-        "QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(5,15,0)",
++        "QT_DISABLE_DEPRECATED_BEFORE=0x050F00",
+         "QT_NO_DEPRECATED_WARNINGS",
+         "QT_NO_CAST_FROM_ASCII",
+         "QT_NO_CAST_TO_ASCII",
+--- a/src/libtiled/libtiled.qbs
++++ b/src/libtiled/libtiled.qbs
+@@ -30,7 +30,7 @@ DynamicLibrary {
+             "QT_NO_CAST_FROM_ASCII",
+             "QT_NO_CAST_TO_ASCII",
+             "QT_NO_URL_CAST_FROM_STRING",
+-            "QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(5,15,0)",
++            "QT_DISABLE_DEPRECATED_BEFORE=0x050F00",
+             "QT_NO_DEPRECATED_WARNINGS",
+             "_USE_MATH_DEFINES",
+         ]
+--- a/src/libtiledquick/libtiledquick.qbs
++++ b/src/libtiledquick/libtiledquick.qbs
+@@ -21,7 +21,7 @@ DynamicLibrary {
+         "QT_NO_CAST_FROM_ASCII",
+         "QT_NO_CAST_TO_ASCII",
+         "QT_NO_URL_CAST_FROM_STRING",
+-        "QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(5,15,0)",
++        "QT_DISABLE_DEPRECATED_BEFORE=0x050F00",
+         "QT_NO_DEPRECATED_WARNINGS",
+         "QT_NO_FOREACH"
+     ]
+--- a/src/tiled/libtilededitor.qbs
++++ b/src/tiled/libtilededitor.qbs
+@@ -39,7 +39,7 @@ DynamicLibrary {
+         var defs = [
+             "TILED_EDITOR_LIBRARY",
+             "TILED_VERSION=" + project.version,
+-            "QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(5,15,0)",
++            "QT_DISABLE_DEPRECATED_BEFORE=0x050F00",
+             "QT_NO_DEPRECATED_WARNINGS",
+             "QT_NO_CAST_FROM_ASCII",
+             "QT_NO_CAST_TO_ASCII",
+--- a/src/tiledquickplugin/tiledquickplugin.qbs
++++ b/src/tiledquickplugin/tiledquickplugin.qbs
+@@ -19,7 +19,7 @@ DynamicLibrary {
+         return flags;
+     }
+     cpp.defines: [
+-        "QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(5,15,0)",
++        "QT_DISABLE_DEPRECATED_BEFORE=0x050F00",
+         "QT_NO_DEPRECATED_WARNINGS",
+         "QT_NO_CAST_FROM_ASCII",
+         "QT_NO_CAST_TO_ASCII",

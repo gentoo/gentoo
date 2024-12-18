@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/capistrano/sshkit"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 
 ruby_add_rdepend "
 	dev-ruby/base64

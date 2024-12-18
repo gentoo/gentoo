@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ EAPI=8
 # It's upstreamed so should be able to drop in future
 # bug #778041
 GNOME2_EAUTORECONF="yes"
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="A library for using 3D graphics hardware to draw pretty pictures"
 HOMEPAGE="https://www.cogl3d.org/"
@@ -81,6 +81,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943759
+	append-cflags -std=gnu17
+
 	# TODO: think about quartz, sdl
 	# Prefer gl over gles2 if both are selected
 	# Profiling needs uprof, which is not available in portage yet, bug #484750

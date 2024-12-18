@@ -13,14 +13,14 @@ SRC_URI="https://github.com/greenbone/notus-scanner/archive/refs/tags/v${PV}.tar
 
 LICENSE="AGPL-3 AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	acct-user/gvm
 	net-libs/paho-mqtt-c
 	>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.1[${PYTHON_USEDEP}]
-	<dev-python/packaging-24.2[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		<dev-python/tomli-3[${PYTHON_USEDEP}]

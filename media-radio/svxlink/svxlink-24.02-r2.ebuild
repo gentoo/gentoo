@@ -45,9 +45,10 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )"
 
 src_prepare() {
-	# fix build for MUSL (bug #936813)
+	# fix build for MUSL (bug #936813, #942749)
 	if use elibc_musl ; then
 		eapply -p1 "${FILESDIR}/${P}-musl.patch"
+		eapply -p1 "${FILESDIR}/${P}-musl-2.patch"
 	fi
 	if ! use ogg ; then
 		# drop automatic discovery of dependency

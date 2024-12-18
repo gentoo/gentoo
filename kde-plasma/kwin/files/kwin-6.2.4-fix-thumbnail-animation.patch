@@ -1,0 +1,43 @@
+From c402845961fa10185d7c28a49a9b72e7581258f8 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Tue, 26 Nov 2024 13:03:15 +0000
+Subject: [PATCH] effects/overview: Animate if the thumbnail is dropped in an
+ heap
+
+If the new position the thumbnail was dropped intersects the geometry of
+an heap in any way, then execute the animation, otherwise skip it
+(the case of drop on a desktop thumbnails in the overview)
+previous patch attempted that but with not completely correct logic
+
+BUG:496646
+
+
+(cherry picked from commit 0e9f1e721c7b45b6b7d31a44df925483c1ec1155)
+
+0e9f1e72 effects/overview: Animate if the thumbnail is dropped in an heap
+
+Co-authored-by: Marco Martin <notmart@gmail.com>
+---
+ src/plugins/private/qml/WindowHeapDelegate.qml | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/plugins/private/qml/WindowHeapDelegate.qml b/src/plugins/private/qml/WindowHeapDelegate.qml
+index fee45b6c643..0088f2ce981 100644
+--- a/src/plugins/private/qml/WindowHeapDelegate.qml
++++ b/src/plugins/private/qml/WindowHeapDelegate.qml
+@@ -162,10 +162,8 @@ ExpoCell {
+                 returnAnimation.restart();
+ 
+                 // If we dropped on another desktop, don't make the window fly off  the screen
+-                if (oldGlobalRect.x < heapRect.x ||
+-                    oldGlobalRect.y < heapRect.y ||
+-                    heapRect.x + heapRect.width < oldGlobalRect.x + oldGlobalRect.width ||
+-                    heapRect.y + heapRect.height < oldGlobalRect.y + oldGlobalRect.height) {
++                if ((oldGlobalRect.x < heapRect.x && heapRect.x + heapRect.width < oldGlobalRect.x + oldGlobalRect.width) ||
++                    (oldGlobalRect.y < heapRect.y && heapRect.y + heapRect.height < oldGlobalRect.y + oldGlobalRect.height)) {
+                     returnAnimation.complete();
+                 }
+             }
+-- 
+GitLab
+

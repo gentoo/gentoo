@@ -11,7 +11,7 @@ SRC_URI="https://www.seasip.info/Unix/LibDsk/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DOCS=( doc/${PN}.{txt,pdf} )
 

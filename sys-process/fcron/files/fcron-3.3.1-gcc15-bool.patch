@@ -1,0 +1,71 @@
+Fix for GCC 15
+
+Fixed upstream in a larger https://github.com/yo8192/fcron/commit/2b18ac9cd8647dd32367fdf07eafa24c51cbe410#diff-9fc4ab3ff6d27d1cb665e161fac24bc5d31ce38c12c6653fb8a63640033691d4
+
+--- a/fcrondyn_svr.c
++++ b/fcrondyn_svr.c
+@@ -250,7 +250,7 @@ auth_client_so_peercred(struct fcrondyn_cl *client)
+      * Sets client->fcl_user on success, don't do anything on failure
+      * so that the client stays unauthenticated */
+ {
+-    const int true = 1;
++    const int value = 1;
+     /* There is no ucred.h (or equivalent) on linux to define struct ucred (!!)
+      * so we do it here */
+ #if ! ( defined(HAVE_CRED_H) && defined(HAVE_UCRED_H) \
+@@ -265,8 +265,8 @@ auth_client_so_peercred(struct fcrondyn_cl *client)
+     socklen_t cred_size = sizeof(cred);
+     struct passwd *p_entry = NULL;
+ 
+-    setsockopt(client->fcl_sock_fd, SOL_SOCKET, SO_PASSCRED, &true,
+-               sizeof(true));
++    setsockopt(client->fcl_sock_fd, SOL_SOCKET, SO_PASSCRED, &value,
++               sizeof(value));
+     if (getsockopt
+         (client->fcl_sock_fd, SOL_SOCKET, SO_PEERCRED, &cred,
+          &cred_size) != 0) {
+--- a/fileconf.c
++++ b/fileconf.c
+@@ -464,34 +464,34 @@ get_bool(char *ptr, int *i)
+      * return NULL on error */
+ {
+     if (*ptr == '1')
+-        goto true;
++        goto conf_true;
+     else if (*ptr == '0')
+-        goto false;
++        goto conf_false;
+     else if (strncmp(ptr, "true", 4) == 0) {
+         ptr += 3;
+-        goto true;
++        goto conf_true;
+     }
+     else if (strncmp(ptr, "yes", 3) == 0) {
+         ptr += 2;
+-        goto true;
++        goto conf_true;
+     }
+     else if (strncmp(ptr, "false", 5) == 0) {
+         ptr += 4;
+-        goto false;
++        goto conf_false;
+     }
+     else if (strncmp(ptr, "no", 2) == 0) {
+         ptr += 1;
+-        goto false;
++        goto conf_false;
+     }
+     else
+         return NULL;
+ 
+- true:
++ conf_true:
+     *i = 1;
+     ptr++;
+     return ptr;
+ 
+- false:
++ conf_false:
+     *i = 0;
+     ptr++;
+     return ptr;

@@ -1,0 +1,12 @@
+diff -r fd166650770a tests/automated/process-tests.el
+--- a/tests/automated/process-tests.el	Sat May 13 15:18:19 2023 +0100
++++ b/tests/automated/process-tests.el	Thu Nov 21 15:24:34 2024 +0100
+@@ -52,7 +52,7 @@
+     (goto-char (point-min))
+     (Assert (looking-at "foo"))):
+ 
+-  (Assert (= 127 (shell-command "unknown_command")))
++  ;;(Assert (= 127 (shell-command "unknown_command")))
+   (Assert (= 2 (shell-command "exit 2")))
+   (Assert (equal "(Shell command failed with code 2 and no output)" (message-displayed-p t)))
+   

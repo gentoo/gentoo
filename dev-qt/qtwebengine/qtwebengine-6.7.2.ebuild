@@ -249,7 +249,7 @@ src_configure() {
 	# TODO: drop this when <=llvm-18.1.5-r1 >=18 been gone for some time
 	use amd64 && tc-is-clang && is-flagq -march=native &&
 		[[ $(clang-major-version) -ge 18 ]] &&
-		has_version '<sys-devel/llvm-18.1.5-r1' &&
+		has_version '<llvm-core/llvm-18.1.5-r1' &&
 		tc-cpp-is-true "!defined(__AVX512F__)" ${CXXFLAGS} &&
 		append-flags -mevex512
 

@@ -5,7 +5,6 @@ EAPI=8
 
 # font eclass is inherited directly, since this package is a special case that
 # would greatly complicate the fonts logic of xorg-3
-XORG_TARBALL_SUFFIX="xz"
 inherit font xorg-3 meson
 
 DESCRIPTION="X.Org font encodings"

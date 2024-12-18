@@ -14,7 +14,7 @@ SRC_URI="http://ftp.barfooze.de/pub/sabotage/tarballs/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ppc ~riscv ~sparc x86"
 
 S=${WORKDIR}/${MY_P}
 

@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:bison</remote-id>
 		<remote-id type="github">akimd/bison</remote-id>
+		<remote-id type="savannah">bison</remote-id>
 	</upstream>
 </pkgmetadata>

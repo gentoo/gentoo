@@ -1,0 +1,12 @@
+diff '--color=auto' -ruN ctags-abc8fca7499f44c725122881cd380a88c37abe0e.orig/configure.ac ctags-abc8fca7499f44c725122881cd380a88c37abe0e/configure.ac
+--- ctags-abc8fca7499f44c725122881cd380a88c37abe0e.orig/configure.ac	2024-11-05 00:55:57.281788938 +0100
++++ ctags-abc8fca7499f44c725122881cd380a88c37abe0e/configure.ac	2024-11-05 00:59:21.852536947 +0100
+@@ -451,7 +451,7 @@
+ #include <sys/types.h>
+ #include <regex.h>
+ #include <stdlib.h>
+-main() {
++int main() {
+ 	regex_t patbuf;
+ 	exit (regcomp (&patbuf, "/hello/", 0) != 0);
+ }],regcomp_works=yes,regcomp_works=no,AC_DEFINE(CHECK_REGCOMP))

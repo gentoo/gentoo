@@ -1,0 +1,25 @@
+From b5600e28b0720a9a43d20717e79ba26dae6b9359 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 10 Nov 2024 22:22:07 +0100
+Subject: [PATCH] move clazy script to CMAKE_RUNTIME_OUTPUT_DIRECTORY
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 765083c..c7c1cea 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -229,8 +229,8 @@ if (NOT CLAZY_BUILD_WITH_CLANG)
+     endif()
+     file(RELATIVE_PATH BIN_RELATIVE_LIBDIR "${CMAKE_INSTALL_FULL_BINDIR}" "${CMAKE_INSTALL_FULL_LIBDIR}")
+     file(RELATIVE_PATH BIN_RELATIVE_SHAREDIR "${CMAKE_INSTALL_FULL_BINDIR}" "${CMAKE_INSTALL_FULL_DATAROOTDIR}")
+-    configure_file(${CMAKE_CURRENT_LIST_DIR}/clazy.cmake ${CMAKE_BINARY_DIR}/clazy @ONLY)
+-    install(PROGRAMS ${CMAKE_BINARY_DIR}/clazy DESTINATION bin)
++    configure_file(${CMAKE_CURRENT_LIST_DIR}/clazy.cmake ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/clazy @ONLY)
++    install(PROGRAMS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/clazy DESTINATION bin)
+   else()
+     install(PROGRAMS ${CMAKE_CURRENT_LIST_DIR}/clazy.bat DESTINATION ${CMAKE_INSTALL_BINDIR})
+     if(MSVC)
+-- 
+2.47.0
+

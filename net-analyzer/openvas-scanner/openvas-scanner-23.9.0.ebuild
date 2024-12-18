@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc snmp test"
 RESTRICT="!test? ( test )"
 

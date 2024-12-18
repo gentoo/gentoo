@@ -27,7 +27,8 @@ ruby_add_bdepend "
 		dev-ruby/activesupport
 		>=dev-ruby/json-1.8.5
 		dev-ruby/open4
-		>=dev-ruby/rack-2.2.7-r1:2.2
+		>=dev-ruby/rack-2.2.7-r1
+		dev-ruby/rackup
 		dev-ruby/rdoc
 		dev-ruby/sinatra
 		dev-ruby/webrick

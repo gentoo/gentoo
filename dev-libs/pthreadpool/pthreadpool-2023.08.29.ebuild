@@ -10,6 +10,8 @@ HOMEPAGE="https://github.com/Maratyszcza/pthreadpool"
 SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -19,8 +21,6 @@ DEPEND="dev-libs/FXdiv"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2022.05.09-gentoo.patch

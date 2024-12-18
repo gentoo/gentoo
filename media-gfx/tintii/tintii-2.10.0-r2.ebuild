@@ -23,12 +23,8 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="app-alternatives/bc"
 
-src_prepare() {
-	default
-	setup-wxwidgets
-}
-
 src_configure() {
+	setup-wxwidgets
 	econf --disable-assert
 }
 

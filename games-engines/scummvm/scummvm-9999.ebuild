@@ -1,7 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
@@ -20,8 +21,8 @@ LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
 IUSE="
 	a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2
-	mp3 +net opengl png sndio speech theora truetype unsupported vorbis
-	zlib
+	mp3 musepack +net opengl openmpt parport png readline sndio speech
+	theora truetype unsupported vorbis vpx zlib
 "
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -41,6 +42,7 @@ DEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	mp3? ( media-libs/libmad )
 	mpeg2? ( media-libs/libmpeg2 )
+	musepack? ( media-sound/musepack-tools:= )
 	net? (
 		media-libs/sdl2-net
 		net-misc/curl
@@ -51,7 +53,10 @@ DEPEND="
 			media-libs/libglvnd
 		)
 	)
+	openmpt? ( media-libs/libopenmpt:= )
+	parport? ( sys-libs/libieee1284:= )
 	png? ( media-libs/libpng:0 )
+	readline? ( sys-libs/readline:= )
 	sndio? ( media-sound/sndio:= )
 	speech? ( app-accessibility/speech-dispatcher )
 	truetype? ( media-libs/freetype:2 )
@@ -60,6 +65,7 @@ DEPEND="
 		media-libs/libogg
 		media-libs/libvorbis
 	)
+	vpx? ( media-libs/libvpx:= )
 	zlib? ( sys-libs/zlib:= )
 "
 RDEPEND="
@@ -103,29 +109,37 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable !debug release-mode)
 		$(use_enable flac)
-		$(usex fluidsynth '' --disable-fluidsynth)
+		$(use_enable fluidsynth)
 		$(use_enable fribidi)
 		$(use_enable gif)
 		$(use_enable gtk)
 		$(use_enable jpeg)
 		$(use_enable lua)
+		# it's exclusive to openmpt, and openmpt is preferred upstream
+		--disable-mikmod
 		$(use_enable mp3 mad)
 		$(use_enable mpeg2)
+		$(use_enable musepack mpcdec)
 		$(use_enable net libcurl)
 		$(use_enable net sdlnet)
+		$(use_enable openmpt)
+		$(use_enable parport opl2lpt)
 		$(use_enable png)
+		$(use_enable readline)
 		$(use_enable sndio)
 		$(use_enable speech tts)
+		--enable-text-console
 		$(use_enable theora theoradec)
 		$(use_enable truetype freetype2)
 		$(usex unsupported --enable-all-engines '')
 		$(use_enable vorbis)
+		$(use_enable vpx)
 		$(use_enable zlib)
 		$(use_enable x86 nasm)
 	)
 	echo "configure ${myconf[@]}"
 	# not an autoconf script, so don't call econf
-	SDL_CONFIG="sdl2-config" \
+	local -x SDL_CONFIG="sdl2-config"
 	./configure "${myconf[@]}" ${EXTRA_ECONF} || die
 }
 

@@ -25,14 +25,10 @@ index 57dd7e68a..af2af9ffa 100644
  def install_pth_link(
      venv: VirtualEnvironment, project_name: str, lib_dir: Path
  ) -> None:
-@@ -430,7 +423,6 @@ def virtualenv_template(
-     pip_src: Path,
+@@ -431,3 +424,2 @@ def virtualenv_template(
      setuptools_install: Path,
      wheel_install: Path,
 -    coverage_install: Path,
- ) -> Iterator[VirtualEnvironment]:
-     venv_type: VirtualEnvironmentType
-     if request.config.getoption("--use-venv"):
 @@ -457,13 +449,6 @@ def virtualenv_template(
          [os.fspath(venv.bin / "python"), "setup.py", "-q", "develop"], cwd=pip_editable
      )

@@ -10,12 +10,12 @@ DESCRIPTION="an implementation of the Microsoft Language Server Protocol for Ada
 HOMEPAGE="https://github.com/AdaCore/ada_language_server"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
-IUSE="test"
-RESTRICT="test" # Tests do not work
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="test" # Tests do not work
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/ada_libfswatch[${ADA_USEDEP}]

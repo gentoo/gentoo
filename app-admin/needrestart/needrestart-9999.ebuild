@@ -22,7 +22,6 @@ RDEPEND="
 	dev-lang/perl:=
 	dev-perl/libintl-perl
 	dev-perl/Module-Find
-	dev-perl/Module-ScanDeps
 	dev-perl/Proc-ProcessTable
 	dev-perl/Sort-Naturally
 	dev-perl/TermReadKey

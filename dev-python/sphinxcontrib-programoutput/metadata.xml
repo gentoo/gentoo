@@ -13,12 +13,12 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">sphinxcontrib-programoutput</remote-id>
-    <remote-id type="github">NextThought/sphinxcontrib-programoutput</remote-id>
+    <remote-id type="github">OpenNTI/sphinxcontrib-programoutput</remote-id>
     <bugs-to>
-      https://github.com/NextThought/sphinxcontrib-programoutput/issues
+      https://github.com/OpenNTI/sphinxcontrib-programoutput/issues
     </bugs-to>
     <changelog>
-      https://raw.githubusercontent.com/NextThought/sphinxcontrib-programoutput/master/CHANGES.rst
+      https://raw.githubusercontent.com/OpenNTI/sphinxcontrib-programoutput/master/CHANGES.rst
     </changelog>
     <doc lang="en">
       https://sphinxcontrib-programoutput.readthedocs.org

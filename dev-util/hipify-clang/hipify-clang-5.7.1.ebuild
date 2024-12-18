@@ -15,8 +15,8 @@ SLOT="0/$(ver_cut 1-2)"
 
 BDEPEND=">=dev-build/cmake-3.22"
 DEPEND="
-	sys-devel/clang:17
-	sys-devel/llvm:17"
+	llvm-core/clang:17
+	llvm-core/llvm:17"
 
 S="${WORKDIR}/HIPIFY-rocm-${PV}"
 

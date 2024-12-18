@@ -1,0 +1,41 @@
+From 5c9a86c6c6ae3e9202e2feb0e1d33df40818c251 Mon Sep 17 00:00:00 2001
+From: Andrey Alekseenko <al42and@gmail.com>
+Date: Tue, 10 Dec 2024 16:21:55 +0100
+Subject: [PATCH] Don't require GMXAPI for building man pages
+
+Refs #4767
+Fixes #5241
+---
+ docs/conf.cmakein.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/docs/conf.cmakein.py b/docs/conf.cmakein.py
+index 577bcba9bd8..46986adbc07 100644
+--- a/docs/conf.cmakein.py
++++ b/docs/conf.cmakein.py
+@@ -55,7 +55,12 @@ gmxapi_staging_path = "@GMXAPI_PYTHON_STAGING_DIR@"
+ if gmxapi_staging_path and os.path.isdir(gmxapi_staging_path):
+     sys.path.append(gmxapi_staging_path)
+ 
+-import gmxapi
++try:
++    import gmxapi
++except ImportError:
++    gmxapi_version_string = "N/A"
++else:
++    gmxapi_version_string = gmxapi.__version__
+ 
+ gmx_admin_scripts_path = "@GMX_ADMIN_DIR@"
+ gmx_containers_path = "@GMX_ADMIN_DIR@/containers"
+@@ -277,7 +282,7 @@ rst_epilog += """
+ .. |thisyear| replace:: {thisyear_string}
+ """.format(
+     gmx_version_string=gmx_version_string,
+-    gmxapi_version_string=gmxapi.__version__,
++    gmxapi_version_string=gmxapi_version_string,
+     regressiontest_version=regressiontest_version,
+     thisyear_string=thisyear_string,
+ )
+-- 
+GitLab
+

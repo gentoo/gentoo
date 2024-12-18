@@ -87,7 +87,7 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
-LLVM_COMPAT=( {16..18} )
+LLVM_COMPAT=( {17..19} )
 PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 inherit cargo flag-o-matic llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
@@ -124,7 +124,7 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}"
-#
+
 # Clang is required for bindgen
 BDEPEND="
 	${PYTHON_DEPS}
@@ -133,11 +133,10 @@ BDEPEND="
 	')
 	$(unpacker_src_uri_depends)
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
 	')
 	elibc_musl? ( >=sys-libs/musl-1.2.5 )
 	virtual/pkgconfig
-	virtual/rust
 	verify-sig? ( >=sec-keys/openpgp-keys-kentoverstreet-20241012 )
 "
 
@@ -166,8 +165,6 @@ src_prepare() {
 	default
 	tc-export CC
 
-	# Version sed needed because the Makefile hasn't been bumped yet
-	# Check if it is no longer before bumping
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \

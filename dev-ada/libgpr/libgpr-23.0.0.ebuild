@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,6 +13,9 @@ DESCRIPTION="Ada library to handle GPRbuild project files"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="https://github.com/AdaCore/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${MYP}.tar.gz"
+
+S="${WORKDIR}"/${MYP}
+
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
@@ -23,8 +26,6 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 REQUIRED_USE="${ADA_REQUIRED_USE}
 	|| ( shared static-libs static-pic )"
-
-S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${PN}-2020-gentoo.patch )
 

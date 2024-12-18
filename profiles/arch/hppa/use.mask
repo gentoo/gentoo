@@ -33,7 +33,7 @@ bluetooth
 pipewire
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
-# sys-libs/llvm-libunwind not supported on HPPA.
+# llvm-runtimes/libunwind not supported on HPPA.
 llvm-libunwind
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
@@ -84,7 +84,7 @@ connman
 vaapi
 
 # Jeroen Roovers <jer@gentoo.org> (2014-12-24)
-# sys-devel/clang has not been ported to HPPA
+# llvm-core/clang has not been ported to HPPA
 clang
 
 # Jeroen Roovers <jer@gentoo.org> (2014-11-07)
@@ -98,7 +98,7 @@ luajittex
 systemtap
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
-# sys-devel/llvm is not keyworded, bug #320221
+# llvm-core/llvm is not keyworded, bug #320221
 llvm
 
 # Jeroen Roovers <jer@gentoo.org> (2013-08-22)
@@ -181,10 +181,6 @@ ocamlopt
 # sys-devel/gcc fails to build with USE=d (bug #178896).
 d
 
-# Jeroen Roovers <jer@gentoo.org> (2007-05-02)
-# Lack of user/dev support for WiFi (bug #176517)
-networkmanager
-
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
 # See bug #157881#c3
 battery
@@ -231,10 +227,6 @@ ieee1394
 # Guy Martin <gmsoft@gentoo.org> (2005-06-25)
 # mono is not yet supported on hppa
 mono
-
-# Guy Martin <gmsoft@gentoo.org> (2004-08-08)
-# Wifi stuff not test yet because of lack of hardware
-wifi
 
 # Guy Martin <gmsoft@gentoo.org> (2003-02-26)
 # No lirc support on hppa

@@ -1,0 +1,51 @@
+From 226cb71737b24ab602e26b72b183888cd1385e86 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Fri, 1 Nov 2024 15:02:07 +0100
+Subject: [PATCH 1/2] Workaround automagic properties of CMakeList.txt
+
+The GENTOO_BACKENDS variable is controlled from the ebuild, therefore it
+can be synchronised with users USE preference, unlike the BACKENDS which
+is filled automagically based on detected libraries.
+
+Additionally, BACKEND_${DBTYPE}_LIBS variable needs to be propagated to
+the parent scope, otherwise non-dynamic db backend cannot link properly.
+---
+ CMakeLists.txt       | 2 +-
+ keydb/CMakeLists.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ed47ba3..d46dcdf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -123,7 +123,7 @@ add_subdirectory(keydb)
+ if (DBTYPE STREQUAL "dynamic")
+ 	LIST(APPEND LIBONAK_LIBRARIES "dl")
+ else()
+-	list (FIND BACKENDS ${DBTYPE} _index)
++	list (FIND GENTOO_BACKENDS ${DBTYPE} _index)
+ 	if (${_index} LESS 0)
+ 		message(FATAL_ERROR "${DBTYPE} is not a supported DB backend.")
+ 	endif()
+diff --git a/keydb/CMakeLists.txt b/keydb/CMakeLists.txt
+index 7567b6c..724f208 100644
+--- a/keydb/CMakeLists.txt
++++ b/keydb/CMakeLists.txt
+@@ -50,7 +50,7 @@ if (KEYD STREQUAL "ON")
+ endif()
+ 
+ if (DBTYPE STREQUAL "dynamic")
+-	foreach(BACKEND IN LISTS BACKENDS)
++	foreach(BACKEND IN LISTS GENTOO_BACKENDS)
+ 		add_library(keydb_${BACKEND} SHARED keydb_${BACKEND}.c)
+ 		target_include_directories(keydb_${BACKEND} SYSTEM PUBLIC
+ 			${BACKEND_${BACKEND}_INC})
+@@ -59,4 +59,6 @@ if (DBTYPE STREQUAL "dynamic")
+ 		install(TARGETS keydb_${BACKEND} LIBRARY DESTINATION
+ 			${CMAKE_INSTALL_LIBDIR}/onak/backends/)
+ 	endforeach(BACKEND)
++else()
++	set(BACKEND_${DBTYPE}_LIBS ${BACKEND_${DBTYPE}_LIBS} PARENT_SCOPE)
+ endif()
+-- 
+2.45.2

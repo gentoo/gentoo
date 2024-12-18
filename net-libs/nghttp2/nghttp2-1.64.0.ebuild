@@ -34,6 +34,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.64.0-munit-c23.patch
+)
+
 multilib_src_configure() {
 	#TODO: enable HTTP3
 	#requires quictls/openssl, libngtcp2, libngtcp2_crypto_quictls, libnghttp3

@@ -1,0 +1,31 @@
+https://gitlab.com/openconnect/ocserv/-/merge_requests/444
+https://bugs.gentoo.org/942899
+
+From e58139e49752dffb6983b3ccc5455d612912dd66 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 6 Nov 2024 13:53:51 -0500
+Subject: [PATCH] Allow the readlinkat syscall when socket_wrapper is in use
+
+On arm64, the realpath function calls readlinkat instead of readlink.
+
+Fixes: https://gitlab.com/openconnect/ocserv/-/issues/627
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/worker-privs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/worker-privs.c b/src/worker-privs.c
+index 54985999b..6e0762780 100644
+--- a/src/worker-privs.c
++++ b/src/worker-privs.c
+@@ -105,6 +105,7 @@ int disable_system_calls(struct worker_st *ws)
+ 	 * them when socket wrapper is active */
+ 	if (getenv("SOCKET_WRAPPER_DIR") != NULL) {
+ 		ADD_SYSCALL(readlink, 0);
++		ADD_SYSCALL(readlinkat, 0);
+ 	}
+ 
+ 	/* we use quite some system calls here, and in the end
+-- 
+GitLab
+

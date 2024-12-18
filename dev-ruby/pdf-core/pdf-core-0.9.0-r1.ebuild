@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,8 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
-ruby_add_bdepend "test? ( =dev-ruby/pdf-inspector-1*
-	|| ( dev-ruby/pdf-reader:2 >=dev-ruby/pdf-reader-1.2:0 )
+ruby_add_bdepend "test? (
+	=dev-ruby/pdf-inspector-1*
+	dev-ruby/pdf-reader:2
 )"
 
 all_ruby_prepare() {

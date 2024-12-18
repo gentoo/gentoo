@@ -1,0 +1,25 @@
+From 34dcc4b9787eb73a658acded7fa93469f4b5cb8b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 25 Nov 2024 23:02:56 +0100
+Subject: [PATCH] keditfiletype: Drop unused KMessageBox include
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ keditfiletype/kservicelistwidget.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/keditfiletype/kservicelistwidget.cpp b/keditfiletype/kservicelistwidget.cpp
+index 6c638fd5..32b2a413 100644
+--- a/keditfiletype/kservicelistwidget.cpp
++++ b/keditfiletype/kservicelistwidget.cpp
+@@ -17,7 +17,6 @@
+ 
+ // KDE
+ #include <KLocalizedString>
+-#include <KMessageBox>
+ #include <KOpenWithDialog>
+ #include <KPropertiesDialog>
+ 
+-- 
+2.47.0
+

@@ -1,0 +1,482 @@
+Patch by  Vladislav Dudar from https://bugs.gentoo.org/874963
+diff -Naur a/alloc.c b/alloc.c
+--- a/alloc.c	2024-03-02 22:40:29.336632203 +0300
++++ b/alloc.c	2024-03-02 22:44:54.890055799 +0300
+@@ -1,7 +1,6 @@
++#include <stdlib.h>
+ #include "alloc.h"
+ #include "error.h"
+-extern char *malloc();
+-extern void free();
+ 
+ #define ALIGNMENT 16 /* XXX: assuming that this alignment is enough */
+ #define SPACE 4096 /* must be multiple of ALIGNMENT */
+diff -Naur a/auto-str.c b/auto-str.c
+--- a/auto-str.c	2024-03-02 22:40:29.336632203 +0300
++++ b/auto-str.c	2024-03-02 22:44:23.263775501 +0300
+@@ -1,17 +1,17 @@
++#include <stdio.h>
+ #include "buffer.h"
+-#include "readwrite.h"
+ #include "exit.h"
+ 
+ char buf1[256];
+ buffer ss1 = BUFFER_INIT(write,1,buf1,sizeof(buf1));
+ 
+-void puts(s)
++void puts_djb(s)
+ char *s;
+ {
+   if (buffer_puts(&ss1,s) == -1) _exit(111);
+ }
+ 
+-main(argc,argv)
++void main(argc,argv)
+ int argc;
+ char **argv;
+ {
+@@ -25,20 +25,20 @@
+   value = argv[2];
+   if (!value) _exit(100);
+ 
+-  puts("char ");
+-  puts(name);
+-  puts("[] = \"\\\n");
++  puts_djb("char ");
++  puts_djb(name);
++  puts_djb("[] = \"\\\n");
+ 
+   while (ch = *value++) {
+-    puts("\\");
++    puts_djb("\\");
+     octal[3] = 0;
+     octal[2] = '0' + (ch & 7); ch >>= 3;
+     octal[1] = '0' + (ch & 7); ch >>= 3;
+     octal[0] = '0' + (ch & 7);
+-    puts(octal);
++    puts_djb(octal);
+   }
+ 
+-  puts("\\\n\";\n");
++  puts_djb("\\\n\";\n");
+   if (buffer_flush(&ss1) == -1) _exit(111);
+   _exit(0);
+ }
+diff -Naur a/buffer_0.c b/buffer_0.c
+--- a/buffer_0.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer_0.c	2024-03-02 22:44:23.267108794 +0300
+@@ -1,4 +1,3 @@
+-#include "readwrite.h"
+ #include "buffer.h"
+ 
+ int buffer_0_read(fd,buf,len) int fd; char *buf; int len;
+diff -Naur a/buffer_1.c b/buffer_1.c
+--- a/buffer_1.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer_1.c	2024-03-02 22:44:23.267108794 +0300
+@@ -1,4 +1,3 @@
+-#include "readwrite.h"
+ #include "buffer.h"
+ 
+ char buffer_1_space[BUFFER_OUTSIZE];
+diff -Naur a/buffer_1s.c b/buffer_1s.c
+--- a/buffer_1s.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer_1s.c	2024-03-02 22:44:23.280441964 +0300
+@@ -1,4 +1,3 @@
+-#include "readwrite.h"
+ #include "buffer.h"
+ 
+ char buffer_1small_space[256];
+diff -Naur a/buffer_2.c b/buffer_2.c
+--- a/buffer_2.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer_2.c	2024-03-02 22:44:23.280441964 +0300
+@@ -1,4 +1,3 @@
+-#include "readwrite.h"
+ #include "buffer.h"
+ 
+ char buffer_2_space[256];
+diff -Naur a/buffer.c b/buffer.c
+--- a/buffer.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer.c	2024-03-02 22:44:23.280441964 +0300
+@@ -1,6 +1,6 @@
+ #include "buffer.h"
+ 
+-void buffer_init(buffer *s,int (*op)(),int fd,char *buf,unsigned int len)
++void buffer_init(buffer *s,ssize_t (*op)(),int fd,char *buf,unsigned int len)
+ {
+   s->x = buf;
+   s->fd = fd;
+diff -Naur a/buffer_get.c b/buffer_get.c
+--- a/buffer_get.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer_get.c	2024-03-02 22:44:23.280441964 +0300
+@@ -2,9 +2,9 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int oneread(int (*op)(),int fd,char *buf,unsigned int len)
++static int oneread(long int (*op)(),int fd,char *buf,unsigned int len)
+ {
+-  int r;
++  long int r;
+ 
+   for (;;) {
+     r = op(fd,buf,len);
+diff -Naur a/buffer.h b/buffer.h
+--- a/buffer.h	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer.h	2024-03-02 22:44:23.280441964 +0300
+@@ -1,19 +1,21 @@
+ #ifndef BUFFER_H
+ #define BUFFER_H
+ 
++#include <unistd.h>
++
+ typedef struct buffer {
+   char *x;
+   unsigned int p;
+   unsigned int n;
+   int fd;
+-  int (*op)();
++  ssize_t (*op)();
+ } buffer;
+ 
+-#define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
++#define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (long(*)())(op) }
+ #define BUFFER_INSIZE 8192
+ #define BUFFER_OUTSIZE 8192
+ 
+-extern void buffer_init(buffer *,int (*)(),int,char *,unsigned int);
++extern void buffer_init(buffer *,ssize_t (*)(),int,char *,unsigned int);
+ 
+ extern int buffer_flush(buffer *);
+ extern int buffer_put(buffer *,char *,unsigned int);
+diff -Naur a/buffer_put.c b/buffer_put.c
+--- a/buffer_put.c	2024-03-02 22:40:29.336632203 +0300
++++ b/buffer_put.c	2024-03-02 22:44:23.280441964 +0300
+@@ -3,9 +3,9 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int allwrite(int (*op)(),int fd,char *buf,unsigned int len)
++static int allwrite(long int (*op)(),int fd,char *buf,unsigned int len)
+ {
+-  int w;
++  long int w;
+ 
+   while (len) {
+     w = op(fd,buf,len);
+diff -Naur a/cdb.c b/cdb.c
+--- a/cdb.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdb.c	2024-03-02 22:44:23.280441964 +0300
+@@ -3,7 +3,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/mman.h>
+-#include "readwrite.h"
+ #include "error.h"
+ #include "seek.h"
+ #include "byte.h"
+diff -Naur a/cdbdump.c b/cdbdump.c
+--- a/cdbdump.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdbdump.c	2024-03-02 22:44:23.280441964 +0300
+@@ -58,7 +58,7 @@
+ 
+ char strnum[FMT_ULONG];
+ 
+-main()
++void main()
+ {
+   uint32 eod;
+   uint32 klen;
+diff -Naur a/cdbget.c b/cdbget.c
+--- a/cdbget.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdbget.c	2024-03-02 22:44:23.280441964 +0300
+@@ -23,7 +23,7 @@
+ static struct cdb c;
+ char buf[1024];
+ 
+-main(int argc,char **argv)
++void main(int argc,char **argv)
+ {
+   char *key;
+   int r;
+diff -Naur a/cdb.h b/cdb.h
+--- a/cdb.h	2024-03-02 22:40:29.333298910 +0300
++++ b/cdb.h	2024-03-02 22:44:23.280441964 +0300
+@@ -3,6 +3,7 @@
+ #ifndef CDB_H
+ #define CDB_H
+ 
++#include <unistd.h>
+ #include "uint32.h"
+ 
+ #define CDB_HASHSTART 5381
+diff -Naur a/cdb_make.c b/cdb_make.c
+--- a/cdb_make.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdb_make.c	2024-03-02 22:44:23.283775257 +0300
+@@ -1,6 +1,5 @@
+ /* Public domain. */
+ 
+-#include "readwrite.h"
+ #include "seek.h"
+ #include "error.h"
+ #include "alloc.h"
+diff -Naur a/cdbmake.c b/cdbmake.c
+--- a/cdbmake.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdbmake.c	2024-03-02 22:44:23.283775257 +0300
+@@ -36,7 +36,7 @@
+ 
+ static struct cdb_make c;
+ 
+-main(int argc,char **argv)
++void main(int argc,char **argv)
+ {
+   unsigned int klen;
+   unsigned int dlen;
+diff -Naur a/cdb_make.h b/cdb_make.h
+--- a/cdb_make.h	2024-03-02 22:40:29.333298910 +0300
++++ b/cdb_make.h	2024-03-02 22:44:23.283775257 +0300
+@@ -3,6 +3,7 @@
+ #ifndef CDB_MAKE_H
+ #define CDB_MAKE_H
+ 
++#include <stdio.h>
+ #include "buffer.h"
+ #include "uint32.h"
+ 
+diff -Naur a/cdbstats.c b/cdbstats.c
+--- a/cdbstats.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdbstats.c	2024-03-02 22:44:23.283775257 +0300
+@@ -3,6 +3,7 @@
+ #include "buffer.h"
+ #include "strerr.h"
+ #include "seek.h"
++#include "str.h"
+ #include "cdb.h"
+ 
+ #define FATAL "cdbstats: fatal: "
+@@ -68,7 +69,7 @@
+ static unsigned long numrecords;
+ static unsigned long numd[11];
+ 
+-main()
++void main()
+ {
+   uint32 eod;
+   uint32 klen;
+diff -Naur a/cdbtest.c b/cdbtest.c
+--- a/cdbtest.c	2024-03-02 22:40:29.333298910 +0300
++++ b/cdbtest.c	2024-03-02 22:44:23.283775257 +0300
+@@ -3,6 +3,7 @@
+ #include "buffer.h"
+ #include "strerr.h"
+ #include "seek.h"
++#include "str.h"
+ #include "cdb.h"
+ 
+ #define FATAL "cdbtest: fatal: "
+@@ -66,7 +67,7 @@
+ 
+ static struct cdb c;
+ 
+-main()
++void main()
+ {
+   uint32 eod;
+   uint32 klen;
+diff -Naur a/FILES b/FILES
+--- a/FILES	2024-03-02 22:40:29.333298910 +0300
++++ b/FILES	2024-03-02 22:44:23.283775257 +0300
+@@ -55,12 +55,12 @@
+ fmt.h
+ fmt_ulong.c
+ hier.c
++hier.h
+ install.c
+ instcheck.c
+ open.h
+ open_read.c
+ open_trunc.c
+-readwrite.h
+ scan.h
+ scan_ulong.c
+ seek.h
+diff -Naur a/hier.c b/hier.c
+--- a/hier.c	2024-03-02 22:40:29.336632203 +0300
++++ b/hier.c	2024-03-02 22:44:23.283775257 +0300
+@@ -1,4 +1,5 @@
+ #include "auto_home.h"
++#include "hier.h"
+ 
+ void hier()
+ {
+diff -Naur a/hier.h b/hier.h
+--- a/hier.h	1970-01-01 03:00:00.000000000 +0300
++++ b/hier.h	2024-03-02 22:44:23.283775257 +0300
+@@ -0,0 +1,8 @@
++#ifndef HIER_H
++#define HIER_H
++
++void h(char *home,int uid,int gid,int mode);
++void d(char *home,char *subdir,int uid,int gid,int mode);
++void c(char *home,char *subdir,char *file,int uid,int gid,int mode);
++
++#endif
+diff -Naur a/install.c b/install.c
+--- a/install.c	2024-03-02 22:40:29.336632203 +0300
++++ b/install.c	2024-03-02 22:44:23.283775257 +0300
+@@ -1,8 +1,8 @@
++#include <sys/stat.h>
+ #include "buffer.h"
+ #include "strerr.h"
+ #include "error.h"
+ #include "open.h"
+-#include "readwrite.h"
+ #include "exit.h"
+ 
+ extern void hier();
+@@ -137,7 +137,7 @@
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-main()
++void main()
+ {
+   fdsourcedir = open_read(".");
+   if (fdsourcedir == -1)
+diff -Naur a/instcheck.c b/instcheck.c
+--- a/instcheck.c	2024-03-02 22:40:29.336632203 +0300
++++ b/instcheck.c	2024-03-02 22:44:23.283775257 +0300
+@@ -1,8 +1,8 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "strerr.h"
+ #include "error.h"
+-#include "readwrite.h"
+ #include "exit.h"
+ 
+ extern void hier();
+@@ -101,7 +101,7 @@
+   perm("",home,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-main()
++void main()
+ {
+   hier();
+   _exit(0);
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2024-03-02 22:40:29.333298910 +0300
++++ b/Makefile	2024-03-02 22:44:23.300441719 +0300
+@@ -17,7 +17,7 @@
+ 	./load auto-str buffer.a unix.a byte.a 
+ 
+ auto-str.o: \
+-compile auto-str.c buffer.h readwrite.h exit.h
++compile auto-str.c buffer.h exit.h
+ 	./compile auto-str.c
+ 
+ auto_home.c: \
+@@ -40,19 +40,19 @@
+ 	./compile buffer.c
+ 
+ buffer_0.o: \
+-compile buffer_0.c readwrite.h buffer.h
++compile buffer_0.c buffer.h
+ 	./compile buffer_0.c
+ 
+ buffer_1.o: \
+-compile buffer_1.c readwrite.h buffer.h
++compile buffer_1.c buffer.h
+ 	./compile buffer_1.c
+ 
+ buffer_1s.o: \
+-compile buffer_1s.c readwrite.h buffer.h
++compile buffer_1s.c buffer.h
+ 	./compile buffer_1s.c
+ 
+ buffer_2.o: \
+-compile buffer_2.c readwrite.h buffer.h
++compile buffer_2.c buffer.h
+ 	./compile buffer_2.c
+ 
+ buffer_copy.o: \
+@@ -91,7 +91,7 @@
+ 	./makelib cdb.a cdb.o cdb_hash.o cdb_make.o
+ 
+ cdb.o: \
+-compile cdb.c readwrite.h error.h seek.h byte.h cdb.h uint32.h
++compile cdb.c error.h seek.h byte.h cdb.h uint32.h
+ 	./compile cdb.c
+ 
+ cdb_hash.o: \
+@@ -99,7 +99,7 @@
+ 	./compile cdb_hash.c
+ 
+ cdb_make.o: \
+-compile cdb_make.c readwrite.h seek.h error.h alloc.h cdb.h uint32.h \
++compile cdb_make.c seek.h error.h alloc.h cdb.h uint32.h \
+ cdb_make.h buffer.h uint32.h
+ 	./compile cdb_make.c
+ 
+@@ -184,7 +184,7 @@
+ 	./compile fmt_ulong.c
+ 
+ hier.o: \
+-compile hier.c auto_home.h
++compile hier.c hier.h auto_home.h
+ 	./compile hier.c
+ 
+ install: \
+@@ -192,7 +192,7 @@
+ 	./load install hier.o auto_home.o buffer.a unix.a byte.a 
+ 
+ install.o: \
+-compile install.c buffer.h strerr.h error.h open.h readwrite.h exit.h
++compile install.c buffer.h strerr.h error.h open.h exit.h
+ 	./compile install.c
+ 
+ instcheck: \
+@@ -200,7 +200,7 @@
+ 	./load instcheck hier.o auto_home.o buffer.a unix.a byte.a 
+ 
+ instcheck.o: \
+-compile instcheck.c strerr.h error.h readwrite.h exit.h
++compile instcheck.c strerr.h error.h exit.h
+ 	./compile instcheck.c
+ 
+ it: \
+diff -Naur a/readwrite.h b/readwrite.h
+--- a/readwrite.h	2024-03-02 22:40:29.336632203 +0300
++++ b/readwrite.h	1970-01-01 03:00:00.000000000 +0300
+@@ -1,7 +0,0 @@
+-#ifndef READWRITE_H
+-#define READWRITE_H
+-
+-extern int read();
+-extern int write();
+-
+-#endif
+diff -Naur a/seek.h b/seek.h
+--- a/seek.h	2024-03-02 22:40:29.336632203 +0300
++++ b/seek.h	2024-03-02 22:44:23.300441719 +0300
+@@ -1,6 +1,8 @@
+ #ifndef SEEK_H
+ #define SEEK_H
+ 
++#include <unistd.h>
++
+ typedef unsigned long seek_pos;
+ 
+ extern seek_pos seek_cur(int);
+diff -Naur a/testzero.c b/testzero.c
+--- a/testzero.c	2024-03-02 22:40:29.333298910 +0300
++++ b/testzero.c	2024-03-02 22:44:23.300441719 +0300
+@@ -14,7 +14,7 @@
+ static char data[65536];
+ struct cdb_make c;
+ 
+-main(int argc,char **argv)
++void main(int argc,char **argv)
+ {
+   int fd;
+   unsigned long loop;

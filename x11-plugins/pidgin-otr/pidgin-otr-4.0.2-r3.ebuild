@@ -11,7 +11,7 @@ SRC_URI="http://www.cypherpunks.ca/otr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-libs/libgcrypt:0

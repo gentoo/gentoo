@@ -42,7 +42,7 @@ DEPEND="${PYTHON_DEPS}
 		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
-		dev-python/PyQt5[${PYTHON_USEDEP},testlib]
+		dev-python/pyqt5[${PYTHON_USEDEP},testlib]
 		net-wireless/gr-osmosdr"
 
 distutils_enable_tests pytest

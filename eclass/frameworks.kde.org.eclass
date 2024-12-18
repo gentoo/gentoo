@@ -25,6 +25,13 @@ esac
 if [[ -z ${_FRAMEWORKS_KDE_ORG_ECLASS} ]]; then
 _FRAMEWORKS_KDE_ORG_ECLASS=1
 
+# @ECLASS_VARIABLE: KDE_CATV
+# @DESCRIPTION:
+# Holds main Frameworks release number (major.minor) for use on same-category
+# dependencies.
+KDE_CATV=$(ver_cut 1-2)
+readonly KDE_CATV
+
 # @ECLASS_VARIABLE: KDE_PV_UNRELEASED
 # @INTERNAL
 # @DESCRIPTION:
@@ -43,7 +50,7 @@ if [[ ${PN} == extra-cmake-modules ]]; then
 	SLOT=0
 else
 	if [[ ${KDE_BUILD_TYPE} == release ]]; then
-		SLOT=${SLOT}/$(ver_cut 1-2)
+		SLOT=${SLOT}/${KDE_CATV}
 	else
 		SLOT=${SLOT}/9999
 	fi
@@ -61,32 +68,24 @@ KDE_ORG_SCHEDULE_URI+="/Frameworks"
 # Helper variable to construct release group specific SRC_URI.
 _KDE_SRC_URI="mirror://kde/"
 
-case ${KDE_BUILD_TYPE} in
-	live)
-		if [[ ${PV} == 5.239.9999 ]]; then
-			EGIT_BRANCH="kf5"
-		fi
-		;;
-	*)
-		if [[ -z ${KDE_ORG_COMMIT} ]]; then
-			_KDE_SRC_URI+="stable/frameworks/$(ver_cut 1-2)/"
-			case ${KDE_ORG_NAME} in
-				kdelibs4support | \
-				kdesignerplugin | \
-				kdewebkit | \
-				khtml | \
-				kjs | \
-				kjsembed | \
-				kmediaplayer | \
-				kross | \
-				kxmlrpcclient)
-					_KDE_SRC_URI+="portingAids/"
-					;;
-			esac
+# TODO: Remove after last KF5 PortingAid treecleaned; bug 755956
+if [[ ${KDE_BUILD_TYPE} != live && -z ${KDE_ORG_COMMIT} ]]; then
+	_KDE_SRC_URI+="stable/frameworks/${KDE_CATV}/"
+	case ${KDE_ORG_NAME} in
+		kdelibs4support | \
+		kdesignerplugin | \
+		kdewebkit | \
+		khtml | \
+		kjs | \
+		kjsembed | \
+		kmediaplayer | \
+		kross | \
+		kxmlrpcclient)
+			_KDE_SRC_URI+="portingAids/"
+			;;
+	esac
 
-			SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
-		fi
-		;;
-esac
+	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
+fi
 
 fi

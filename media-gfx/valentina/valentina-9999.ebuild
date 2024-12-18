@@ -30,7 +30,9 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-qt/qtxmlpatterns:5"
+	dev-qt/qtxmlpatterns:5
+	!sci-biology/tree-puzzle
+"
 DEPEND="
 	${RDEPEND}
 	dev-qt/qttest:5

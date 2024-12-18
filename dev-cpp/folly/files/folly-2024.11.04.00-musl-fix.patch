@@ -1,0 +1,30 @@
+# Elf.cpp expects __ELF_NATIVE_CLASS to be defined at least for platforms
+# besides FreeBSD-based ones, and so it defines FOLLY_ELF_NATIVE_CLASS with it.
+# Without __ELF_NATIVE_CLASS (and apparently musl does not define it),
+# FOLLY_ELF_NATIVE_CLASS is also not defined so what was supposed to be
+# expanded to ELFCLASS32 or ELFCLASS64 ends up being
+# ELFCLASSFOLLY_ELF_NATIVE_CLASS.
+#
+# Please refer: https://github.com/facebook/folly/issues/1478
+#
+# Closes: https://bugs.gentoo.org/835744
+--- a/folly/debugging/symbolizer/Elf.cpp
++++ b/folly/debugging/symbolizer/Elf.cpp
+@@ -40,14 +40,12 @@
+ 
+ #if defined(__ELF_NATIVE_CLASS)
+ #define FOLLY_ELF_NATIVE_CLASS __ELF_NATIVE_CLASS
+-#elif defined(__FreeBSD__)
+-#if defined(__LP64__)
++#elif defined(__ANDROID__)
++#define FOLLY_ELF_NATIVE_CLASS __WORDSIZE
++#elif defined(__LP64__)
+ #define FOLLY_ELF_NATIVE_CLASS 64
+ #else
+ #define FOLLY_ELF_NATIVE_CLASS 32
+-#endif
+-#elif defined(__ANDROID__)
+-#define FOLLY_ELF_NATIVE_CLASS __WORDSIZE
+ #endif // __ELF_NATIVE_CLASS
+ 
+ namespace folly {

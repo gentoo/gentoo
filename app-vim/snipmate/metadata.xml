@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">garbas/vim-snipmate</remote-id>
+		<remote-id type="vim">2540</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

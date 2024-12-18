@@ -1,0 +1,50 @@
+From e51d045f6bc2d70538c24a9997ca90500019d567 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Fri, 29 Nov 2024 00:42:32 -0500
+Subject: [PATCH] tests: make benchmarking optional
+
+It can be disabled by running `pytest -m 'not benchmark'`. In this case,
+we don't need pytest-benchmark or py-cpuinfo installed.
+
+To make this work, we need to tell pytest that the benchmarking hooks in
+conftest.py are optional, and only needed when a particular plugin is
+installed.
+
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+---
+ tests/conftest.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 524b813..374899d 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,7 +1,6 @@
+ import os
+ import sys
+ 
+-import cpuinfo
+ import pytest
+ 
+ import kakasidict
+@@ -18,6 +17,7 @@ def dictionary_setup_fixture():
+     Configurations.data_path = dpath
+ 
+ 
++@pytest.hookimpl(optionalhook=True)
+ def pytest_benchmark_update_json(config, benchmarks, output_json):
+     """Calculate speed and add as extra_info"""
+     for benchmark in output_json["benchmarks"]:
+@@ -26,7 +26,9 @@ def pytest_benchmark_update_json(config, benchmarks, output_json):
+             benchmark["extra_info"]["rate"] = rate
+ 
+ 
++@pytest.hookimpl(optionalhook=True)
+ def pytest_benchmark_update_machine_info(config, machine_info):
++    import cpuinfo
+     cpu_info = cpuinfo.get_cpu_info()
+     brand = cpu_info.get("brand_raw", None)
+     if brand is None:
+-- 
+2.45.2
+

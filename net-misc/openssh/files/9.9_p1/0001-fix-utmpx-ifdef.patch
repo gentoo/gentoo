@@ -1,0 +1,39 @@
+From 27996b32a8b0fe908effc469e5c7d496e40c6671 Mon Sep 17 00:00:00 2001
+Message-ID: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: Christoph Ostarek <christoph@zededa.com>
+Date: Wed, 3 Jul 2024 12:46:59 +0200
+Subject: [PATCH 1/8] fix utmpx ifdef
+
+02e16ad95fb1f56ab004b01a10aab89f7103c55d did a copy-paste for
+utmpx, but forgot to change the ifdef appropriately
+
+(cherry picked from commit c7fda601186ff28128cfe3eab9c9c0622de096e1)
+---
+ loginrec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/loginrec.c b/loginrec.c
+index 7460bb2c0..45f13dee8 100644
+--- a/loginrec.c
++++ b/loginrec.c
+@@ -723,7 +723,7 @@ set_utmpx_time(struct logininfo *li, struct utmpx *utx)
+ void
+ construct_utmpx(struct logininfo *li, struct utmpx *utx)
+ {
+-# ifdef HAVE_ADDR_V6_IN_UTMP
++# ifdef HAVE_ADDR_V6_IN_UTMPX
+ 	struct sockaddr_in6 *sa6;
+ #  endif
+ 	memset(utx, '\0', sizeof(*utx));
+@@ -769,7 +769,7 @@ construct_utmpx(struct logininfo *li, struct utmpx *utx)
+ 	if (li->hostaddr.sa.sa_family == AF_INET)
+ 		utx->ut_addr = li->hostaddr.sa_in.sin_addr.s_addr;
+ # endif
+-# ifdef HAVE_ADDR_V6_IN_UTMP
++# ifdef HAVE_ADDR_V6_IN_UTMPX
+ 	/* this is just a 128-bit IPv6 address */
+ 	if (li->hostaddr.sa.sa_family == AF_INET6) {
+ 		sa6 = ((struct sockaddr_in6 *)&li->hostaddr.sa);
+-- 
+2.47.0
+

@@ -17,7 +17,6 @@
   </upstream>
   <use>
     <flag name="float32">Support float for model training and text recognition (faster, requires less RAM)</flag>
-    <flag name="opencl">Enable opencl support for speedup using GPU computation.</flag>
     <flag name="training">Install training applications to add support for new languages.</flag>
   </use>
 </pkgmetadata>

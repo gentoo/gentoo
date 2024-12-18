@@ -5,7 +5,6 @@ EAPI=8
 
 XORG_MODULE=lib/
 XORG_MULTILIB=yes
-XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="Pthread functions stubs for platforms missing them"

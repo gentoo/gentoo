@@ -1,0 +1,12 @@
+diff --git a/Telegram/lib_base/base/basic_types.h b/Telegram/lib_base/base/basic_types.h
+index 241417f..4204fae 100644
+--- a/Telegram/lib_base/base/basic_types.h
++++ b/Telegram/lib_base/base/basic_types.h
+@@ -17,6 +17,7 @@
+ #include <QtCore/QString>
+ 
+ #include <string>
++#include <cstring>
+ #include <exception>
+ #include <memory>
+ #include <ctime>

@@ -1,0 +1,53 @@
+https://sqlite.org/forum/info/14274389fb2
+https://bugs.gentoo.org/942917
+https://bugs.gentoo.org/942918
+https://github.com/sqlite/sqlite/commit/a40e6e927313ed97a895ff7c022eff705e50b1e6
+
+From a40e6e927313ed97a895ff7c022eff705e50b1e6 Mon Sep 17 00:00:00 2001
+From: stephan <stephan@noemail.net>
+Date: Wed, 30 Oct 2024 00:35:08 +0000
+Subject: [PATCH] Replace 3 instances of the == 'test' shell command operator
+ with =, as == is apparently not as portable across shells. Problem reported
+ in [forum:14274389fb2|forum post 14274389fb2].
+
+FossilOrigin-Name: 68199c40fedeb07a3f9c5024fac6376a0579a13b0e5690aef6238e3e22b9c1b7
+--- a/configure
++++ b/configure
+@@ -10334,7 +10334,7 @@ else
+ fi
+ 
+ original_use_tcl=${use_tcl}
+-if test x"${with_tclsh}" == x -a x"${with_tcl}" == x; then
++if test x"${with_tclsh}" = x -a x"${with_tcl}" = x; then
+   for ac_prog in tclsh9.0 tclsh8.6 tclsh
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+@@ -10453,7 +10453,7 @@ $as_echo "unable to run tests because no tclConfig.sh file could be located" >&6
+   HAVE_TCL=0
+ fi
+ 
+-if test x"$TCLSH_CMD" == x; then
++if test x"$TCLSH_CMD" = x; then
+   TCLSH_CMD=${TCL_EXEC_PREFIX}/bin/tclsh${TCL_VERSION}
+   if test ! -x ${TCLSH_CMD}; then
+     TCLSH_CMD_2=${TCL_EXEC_PREFIX}/bin/tclsh
+--- a/configure.ac
++++ b/configure.ac
+@@ -124,7 +124,7 @@ AC_ARG_WITH(tcl, AS_HELP_STRING([--with-tcl=DIR],[directory containing (tclConfi
+ AC_ARG_ENABLE(tcl, AS_HELP_STRING([--disable-tcl],[omit building accessory programs that require TCL-dev]),
+       [use_tcl=$enableval],[use_tcl=yes])
+ original_use_tcl=${use_tcl}
+-if test x"${with_tclsh}" == x -a x"${with_tcl}" == x; then
++if test x"${with_tclsh}" = x -a x"${with_tcl}" = x; then
+   AC_CHECK_PROGS(TCLSH_CMD, [tclsh9.0 tclsh8.6 tclsh],none)
+   with_tclsh=${TCLSH_CMD}
+ fi
+@@ -195,7 +195,7 @@ else
+   HAVE_TCL=0
+ fi
+ AC_SUBST(HAVE_TCL)
+-if test x"$TCLSH_CMD" == x; then
++if test x"$TCLSH_CMD" = x; then
+   TCLSH_CMD=${TCL_EXEC_PREFIX}/bin/tclsh${TCL_VERSION}
+   if test ! -x ${TCLSH_CMD}; then
+     TCLSH_CMD_2=${TCL_EXEC_PREFIX}/bin/tclsh

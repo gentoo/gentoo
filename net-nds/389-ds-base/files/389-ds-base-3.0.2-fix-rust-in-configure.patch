@@ -1,0 +1,34 @@
+From 28d4871c5844b41d63a5cbc093b4453c98d5427e Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Thu, 7 Nov 2024 20:08:44 +1000
+Subject: [PATCH] Fix rust in configure
+
+RUSTC and CARGO are standard variables that are often used to indicate
+the desired implementation to build systems.
+
+Prefix existing usage of these variables with `HAS_` so that this
+does not just break
+--- a/configure.ac
++++ b/configure.ac
+@@ -95,10 +95,10 @@ AS_IF([test "$enable_rust_offline" = yes],
+     [rust_vendor_sources=""])
+ AC_SUBST([rust_vendor_sources])
+ if test "$enable_rust_offline" = yes; then
+-    AC_CHECK_PROG(CARGO, [cargo], [yes], [no])
+-    AC_CHECK_PROG(RUSTC, [rustc], [yes], [no])
++    AC_CHECK_PROG(HAS_CARGO, [cargo], [yes], [no])
++    AC_CHECK_PROG(HAS_RUSTC, [rustc], [yes], [no])
+ 
+-    AS_IF([test "$CARGO" != "yes" -o "$RUSTC" != "yes"], [
++    AS_IF([test "$HAS_CARGO" != "yes" -o "$HAS_RUSTC" != "yes"], [
+       AC_MSG_FAILURE("Rust based plugins cannot be built cargo=$CARGO rustc=$RUSTC")
+     ])
+ fi
+@@ -944,4 +944,3 @@ AC_CONFIG_FILES([Makefile rpm/389-ds-base.spec  ])
+ AC_CONFIG_FILES([.cargo/config])
+ 
+ AC_OUTPUT
+-
+-- 
+2.47.0
+

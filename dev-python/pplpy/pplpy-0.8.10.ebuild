@@ -25,7 +25,7 @@ IUSE="doc"
 DEPEND="
 	dev-libs/ppl
 	dev-python/cysignals[${PYTHON_USEDEP}]
-	>=dev-python/gmpy-2.1.0_beta1[${PYTHON_USEDEP}]
+	>=dev-python/gmpy2-2.1.0_beta1[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}

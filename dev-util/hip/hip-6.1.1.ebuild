@@ -41,7 +41,7 @@ DEPEND="
 	video_cards_amdgpu? (
 		>=dev-util/rocminfo-5
 		$(llvm_gen_dep '
-			sys-devel/clang:${LLVM_SLOT}
+			llvm-core/clang:${LLVM_SLOT}
 		')
 		dev-libs/rocm-comgr:${SLOT}
 		dev-libs/rocr-runtime:${SLOT}
@@ -58,7 +58,7 @@ BDEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	sys-devel/clang-runtime:=
+	llvm-core/clang-runtime:=
 	opencl? (
 		!dev-libs/opencl-icd-loader
 		!dev-libs/rocm-opencl-runtime

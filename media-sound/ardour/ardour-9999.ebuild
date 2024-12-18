@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{9..13} python3_13t )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
 inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
@@ -25,8 +25,9 @@ SLOT="9"
 IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
+	dev-cpp/cairomm:0
 	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:2.4
+	dev-cpp/pangomm:1.4
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
@@ -50,15 +51,14 @@ RDEPEND="
 	sci-libs/fftw:3.0[threads]
 	virtual/libusb:1
 	x11-libs/cairo
-	x11-libs/gtk+:2
 	x11-libs/pango
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil[X,gtk2]
 	media-libs/lv2"
+#	media-libs/suil[X,gtk2] bundled suil is used, maybe probably because of ytk
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
 DEPEND="${RDEPEND}
@@ -138,7 +138,6 @@ src_configure() {
 		--freedesktop
 		--noconfirm
 		--optimize
-		--no-ytk
 		--with-backends=${backends}
 		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
 			echo '' || echo "--no-fpu-optimization")

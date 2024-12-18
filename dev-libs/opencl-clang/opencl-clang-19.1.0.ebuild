@@ -19,8 +19,8 @@ KEYWORDS="~amd64 ~riscv"
 RDEPEND="
 	dev-util/spirv-llvm-translator:${SLOT}=
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=[static-analyzer]
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=[static-analyzer]
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 

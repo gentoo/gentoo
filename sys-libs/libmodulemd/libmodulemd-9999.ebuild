@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit meson python-single-r1
 
@@ -20,7 +20,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-IUSE="gtk-doc test"
+IUSE="doc test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -39,8 +39,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/gobject-introspection
 	dev-util/glib-utils
-	gtk-doc? (
-		dev-libs/glib[gtk-doc]
+	doc? (
+		dev-libs/glib[gtk-doc(+),doc(+)]
 		dev-util/gtk-doc
 	)
 	test? (
@@ -50,7 +50,7 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use gtk-doc with_docs)
+		$(meson_use doc with_docs)
 	)
 	meson_src_configure
 }

@@ -1,0 +1,27 @@
+https://gitlab.gnome.org/GNOME/json-glib/-/commit/a5eb23ca06a6ec345fba376296bd4236b7fb7635
+
+From a5eb23ca06a6ec345fba376296bd4236b7fb7635 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Sun, 26 Nov 2023 17:20:29 +0000
+Subject: [PATCH] build: Gate GIR fatal warnings to werror
+
+This way we consistently fail early.
+---
+ json-glib/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/json-glib/meson.build b/json-glib/meson.build
+index e13e688..9e51931 100644
+--- a/json-glib/meson.build
++++ b/json-glib/meson.build
+@@ -113,7 +113,7 @@ if gir.found()
+     header: 'json-glib/json-glib.h',
+     install: true,
+     extra_args: gir_args,
+-    fatal_warnings: true,
++    fatal_warnings: get_option('werror'),
+   )
+ else
+   json_glib_gir = []
+-- 
+GitLab

@@ -39,7 +39,7 @@ S="${WORKDIR}/${MY_PN}-${PV}/sources/pyside6"
 # x11extras (for X)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="6/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="
 	3d bluetooth charts +concurrent +dbus designer gles2-only +gui help location
 	multimedia +network network-auth nfc positioning +opengl pdfium positioning
@@ -123,8 +123,8 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 	')
 	test? ( =dev-qt/qtbase-${QT_PV}[gui] )
 "

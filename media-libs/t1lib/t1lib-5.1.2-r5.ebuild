@@ -50,6 +50,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943882
+	append-cflags -std=gnu17
 	# lto-type-mismatch
 	filter-lto
 

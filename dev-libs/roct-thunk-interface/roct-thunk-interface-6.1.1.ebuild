@@ -24,7 +24,7 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND="sys-process/numactl
 	x11-libs/libdrm[video_cards_amdgpu]"
 DEPEND="${RDEPEND}
-	test? ( sys-devel/llvm
+	test? ( llvm-core/llvm
 	dev-cpp/gtest )"
 
 IUSE="test"

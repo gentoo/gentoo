@@ -8,7 +8,4 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
-	<use>
-		<flag name="php">Enable PHP import support using <pkg>dev-util/kdevelop</pkg> and <pkg>dev-util/kdevelop-pg-qt</pkg></flag>
-	</use>
 </pkgmetadata>

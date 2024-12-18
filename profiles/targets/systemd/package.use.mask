@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# John M. Harris, Jr. <johnmh@johnmh.me> (2024-12-12)
+# seccomp is only supported with systemd
+sys-apps/fwupd -seccomp
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Dependency requires sys-apps/systemd.

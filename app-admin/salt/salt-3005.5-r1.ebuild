@@ -31,7 +31,7 @@ IUSE="
 RDEPEND="
 	sys-apps/pciutils
 	>=dev-python/distro-1.5[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1.2[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]

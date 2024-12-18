@@ -14,7 +14,7 @@ HOMEPAGE="https://cgit.gentoo.org/fork/gitolite-gentoo.git/"
 
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://dev.gentoo.org/~robbat2/distfiles/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"

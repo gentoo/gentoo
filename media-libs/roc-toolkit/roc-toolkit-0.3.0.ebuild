@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ DEPEND="
 	sox? ( media-sound/sox )
 	ssl? ( dev-libs/openssl:= )
 	unwind? (
-		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		llvm-libunwind? ( llvm-runtimes/libunwind:= )
 		!llvm-libunwind? ( sys-libs/libunwind:= )
 	)
 "

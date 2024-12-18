@@ -3,4 +3,4 @@
 
 # matoro <matoro_gentoo@matoro.tk> (2024-05-01)
 # Sanitizers supported on 64-bit mips only, #779742
-sys-libs/compiler-rt-sanitizers -dfsan -lsan -msan -tsan -cfi
+llvm-runtimes/compiler-rt-sanitizers -dfsan -lsan -msan -tsan -cfi

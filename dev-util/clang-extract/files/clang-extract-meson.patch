@@ -1,0 +1,54 @@
+TODO: Upstream the LLVM includedir parts.
+NOTE: The add_languages part is commented out as it interferes with
+      which LLVM we choose in the ebuild. Might be:
+      https://github.com/mesonbuild/meson/issues/13906.
+--- a/libcextract/meson.build
++++ b/libcextract/meson.build
+@@ -37,4 +37,4 @@ libcextract_sources = [
+   'ASTUnitHack.cpp'
+ ]
+ 
+-libcextract_static = static_library('cextract', libcextract_sources)
++libcextract_static = static_library('cextract', libcextract_sources, include_directories: llvm_incdir)
+--- a/meson.build
++++ b/meson.build
+@@ -61,11 +61,16 @@ foreach line : gcc_output
+ endforeach
+ 
+ # Check if we got the gcc installation dir and add it to the project arguments.
+-assert(gcc_install_dir != '', 'GCC headers dir not found. Check \'gcc -v\'')
+-add_project_arguments('--gcc-install-dir=' + gcc_install_dir, language: 'cpp')
++#assert(gcc_install_dir != '', 'GCC headers dir not found. Check \'gcc -v\'')
++#add_project_arguments('--gcc-install-dir=' + gcc_install_dir, language: 'cpp')
+ 
+ ########## Dependency: clang libraries ################
+-llvm_libdir = dependency('llvm', version : '>=16').get_variable(cmake : 'LLVM_LIBRARY_DIR', configtool: 'libdir')
++# This is needed to lookup LLVM via CMake, per a Meson warning.
++#add_languages('c', native : false)
++llvm_dep = dependency('llvm', version : '>=16')
++llvm_bindir = llvm_dep.get_variable(cmake : 'LLVM_BINARY_DIR', configtool : 'bindir')
++llvm_incdir = llvm_dep.get_variable(cmake : 'LLVM_MAIN_INCLUDE_DIR', configtool : 'includedir')
++llvm_libdir = llvm_dep.get_variable(cmake : 'LLVM_LIBRARY_DIR', configtool : 'libdir')
+ 
+ clang_dep = []
+ clang_dep += cpp.find_library('clang-cpp', dirs : llvm_libdir)
+@@ -80,15 +85,17 @@ subdir('libcextract')
+ incdir = include_directories('libcextract')
+ 
+ executable('ce-inline', 'Inline.cpp',
+-  include_directories : incdir,
++  include_directories : [llvm_incdir, incdir],
+   install : true,
++  install_dir : llvm_bindir,
+   link_with : libcextract_static,
+   dependencies : [elf_dep, zlib_dep, zstd_dep]
+ )
+ 
+ executable('clang-extract', 'Main.cpp',
+-  include_directories : incdir,
++  include_directories : [llvm_incdir, incdir],
+   install : true,
++  install_dir : llvm_bindir,
+   link_with : libcextract_static,
+   dependencies : [elf_dep, clang_dep, zlib_dep, zstd_dep]
+ )

@@ -11,7 +11,7 @@ SRC_URI="https://files.janikrabe.com/pub/${PN}/releases/${PV}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="debug masquerade selinux"
 
 DEPEND="masquerade? ( net-libs/libnetfilter_conntrack )"

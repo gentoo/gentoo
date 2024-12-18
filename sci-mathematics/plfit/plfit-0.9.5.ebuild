@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ntamas/${PN}/archive/refs/tags/${PV}.tar.gz
 # doc/ directory contains MIT and BSD licenses for two components.
 LICENSE="BSD GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2"
 
 DOCS=( CHANGELOG.md README.rst doc/THANKS )

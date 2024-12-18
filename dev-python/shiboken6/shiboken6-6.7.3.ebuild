@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}/sources/shiboken6"
 # arbitrarily relicensed. (TODO)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 ) GPL-3"
 SLOT="6/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+docstrings numpy test vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -45,8 +45,8 @@ QT_PV="$(ver_cut 1-3)*:6"
 RDEPEND="${PYTHON_DEPS}
 	=dev-qt/qtbase-${QT_PV}
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
-		sys-devel/llvm:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}
+		llvm-core/llvm:${LLVM_SLOT}
 	')
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32

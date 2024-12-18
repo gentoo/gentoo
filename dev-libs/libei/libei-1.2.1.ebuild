@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		dev-python/attrs[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 	')
 	test? (
 		$(python_gen_any_dep '
@@ -54,7 +54,7 @@ python_check_deps() {
 	fi
 	python_has_version \
 		"dev-python/attrs[${PYTHON_USEDEP}]" \
-		"dev-python/jinja[${PYTHON_USEDEP}]" \
+		"dev-python/jinja2[${PYTHON_USEDEP}]" \
 		|| return 1
 }
 

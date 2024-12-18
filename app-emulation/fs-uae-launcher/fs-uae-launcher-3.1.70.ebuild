@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=yes
 
@@ -21,10 +21,10 @@ RESTRICT="test" # The test files are just boilerplate.
 RDEPEND="
 	app-emulation/fs-uae
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
+		dev-python/pyqt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
 		dev-python/pyopengl[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		lha? ( dev-python/python-lhafile[${PYTHON_USEDEP}] )
+		lha? ( dev-python/lhafile[${PYTHON_USEDEP}] )
 	')
 "
 

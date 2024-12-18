@@ -404,7 +404,7 @@ BDEPEND="
 		>=dev-lang/boogie-3.1.6
 		dev-go/go-tools
 		dev-lang/go
-		dev-python/OutputCheck
+		dev-python/outputcheck
 		dev-python/lit
 		dev-python/psutil
 		net-libs/nodejs[npm]
@@ -668,5 +668,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "Dafny GO language backend" dev-go/go-tools
-	optfeature "Dafny Rust language backend" virtual/rust
+	optfeature "Dafny Rust language backend" dev-lang/rust dev-lang/rust-bin
 }

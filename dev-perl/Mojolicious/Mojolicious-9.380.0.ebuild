@@ -13,7 +13,7 @@ DESCRIPTION="Real-time web framework"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 IUSE="minimal"
 
 RDEPEND="

@@ -27,7 +27,7 @@ RESTRICT="strip"
 RDEPEND="
 	app-eselect/eselect-blas
 	app-eselect/eselect-lapack
-	sys-libs/libomp[${MULTILIB_USEDEP}]
+	llvm-runtimes/openmp[${MULTILIB_USEDEP}]
 "
 # bug #801460
 BDEPEND="app-arch/xz-utils[extra-filters(+)]"

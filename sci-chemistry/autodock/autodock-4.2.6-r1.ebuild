@@ -12,7 +12,7 @@ DESCRIPTION="A suite of automated docking tools"
 HOMEPAGE="https://autodock.scripps.edu/"
 SRC_URI="
 	https://autodock.scripps.edu/downloads/autodock-registration/tars/dist$(ver_rs 1- '')/${MY_P}-src.tar.gz
-	https://dev.gentoo.org/~andrewammerlaan/${PN}-4.2.6-drop-register-keyword.patch
+	https://dev.gentoo.org/~nowa/${PN}-4.2.6-drop-register-keyword.patch
 "
 S="${WORKDIR}/src"
 

@@ -34,6 +34,6 @@
   </use>
 
   <upstream>
-    <remote-id type="github">SpiderLabs/ModSecurity</remote-id>
+    <remote-id type="github">owasp-modsecurity/ModSecurity</remote-id>
   </upstream>
 </pkgmetadata>

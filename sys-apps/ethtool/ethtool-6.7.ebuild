@@ -14,7 +14,10 @@ IUSE="+netlink"
 
 RDEPEND="netlink? ( net-libs/libmnl )"
 DEPEND="${RDEPEND}"
-BDEPEND="app-arch/xz-utils"
+BDEPEND="
+	app-arch/xz-utils
+	netlink? ( virtual/pkgconfig )
+"
 
 src_configure() {
 	econf $(use_enable netlink)

@@ -16,7 +16,7 @@ S="${WORKDIR}"/AFLplusplus-${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -27,8 +27,8 @@ RESTRICT="test"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 	!app-forensics/afl
 "
@@ -89,6 +89,6 @@ src_install() {
 
 pkg_postinst() {
 	# TODO: Any others?
-	optfeature "fuzzing with AFL_USE_ASAN" sys-libs/compiler-rt-sanitizers[asan]
-	optfeature "fuzzing with AFL_USE_MSAN" sys-libs/compiler-rt-sanitizers[msan]
+	optfeature "fuzzing with AFL_USE_ASAN" llvm-runtimes/compiler-rt-sanitizers[asan]
+	optfeature "fuzzing with AFL_USE_MSAN" llvm-runtimes/compiler-rt-sanitizers[msan]
 }

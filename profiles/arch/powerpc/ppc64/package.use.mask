@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-12-17)
+# dev-lang/ada-bootstrap exists here
+>=sys-devel/gcc-14 -ada
+
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak is not keyworded
 media-libs/libass libunibreak
@@ -22,7 +26,7 @@ media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
 # dev-qt/qtwebengine not available here
-dev-python/QtPy webengine test
+dev-python/qtpy webengine test
 
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is available here
@@ -46,7 +50,7 @@ dev-python/nbval test
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
->=sys-libs/libomp-16.0.0_pre20230124 -offload
+>=llvm-runtimes/openmp-16.0.0_pre20230124 -offload
 
 # Niccolò Belli <niccolo.belli@linuxsystems.it> (2022-11-29)
 # media-libs/webrtc-audio-processing only has amd64, x86 and ppc64 keywords
@@ -104,10 +108,10 @@ dev-util/diffoscope haskell
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
-sys-libs/compiler-rt-sanitizers -ubsan -scudo
-sys-libs/compiler-rt-sanitizers -profile
->=sys-libs/compiler-rt-sanitizers-19 -orc
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan -msan -tsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -scudo
+llvm-runtimes/compiler-rt-sanitizers -profile
+>=llvm-runtimes/compiler-rt-sanitizers-19 -orc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # fwupd keyworded now on ppc64

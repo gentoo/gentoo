@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,8 @@ MYP=why3-${PV}-20210519-19ADF-src
 DESCRIPTION="Platform for deductive program verification"
 HOMEPAGE="https://why3.lri.fr/"
 SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
+
+S="${WORKDIR}"/${MYP}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -46,8 +48,6 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 "
-
-S="${WORKDIR}"/${MYP}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2020-gentoo.patch

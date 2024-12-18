@@ -20,6 +20,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
+	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
@@ -61,7 +62,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	x86? ( dev-lang/yasm )
 "
-# <ffmpeg-5 dep for USE="ffmpeg vaapi" for bug #864721
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
@@ -191,7 +191,7 @@ RDEPEND="
 		gnome-base/librsvg:2
 		x11-libs/cairo
 	)
-	taglib? ( >=media-libs/taglib-1.9 )
+	taglib? ( <media-libs/taglib-2 )
 	theora? ( media-libs/libtheora )
 	tremor? ( media-libs/tremor )
 	truetype? (
@@ -203,10 +203,7 @@ RDEPEND="
 	udev? ( virtual/udev )
 	upnp? ( net-libs/libupnp:=[ipv6(+)] )
 	v4l? ( media-libs/libv4l:= )
-	vaapi? (
-		<media-video/ffmpeg-5
-		media-libs/libva:=[drm(+),wayland?,X?]
-	)
+	vaapi? ( media-libs/libva:=[drm(+),wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
 	vpx? ( media-libs/libvpx:= )
@@ -232,15 +229,14 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
-	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
+	"${FILESDIR}"/${PN}-3.0.21-freerdp-2.patch # bug 919296, 590164
+	"${FILESDIR}"/${PN}-3.0.21-vaapi-without-ffmepg4.patch # bug 864721, thx Fedora
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use lua; then

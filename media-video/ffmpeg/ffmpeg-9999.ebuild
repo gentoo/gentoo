@@ -344,7 +344,7 @@ BDEPEND+="
 	>=dev-build/make-3.81
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
-	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
+	cuda? ( >=llvm-core/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
 	test? ( net-misc/wget app-alternatives/bc )
 "
@@ -548,6 +548,10 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc htmlpages)
 		$(multilib_native_enable manpages)
 	)
+
+	if use elibc_musl ; then
+		append-cflags -DHAVE_POSIX_IOCTL
+	fi
 
 	# Use --extra-libs if needed for LIBS
 	set -- "${S}/configure" \

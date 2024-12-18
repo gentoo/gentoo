@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,8 @@ HOMEPAGE="http://libre.adacore.com"
 SRC_URI="${ADA_MIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz
 	${ADA_MIRROR}/${GNATID}?filename=${GNATDIR}.tar.gz -> ${GNATDIR}.tar.gz"
 
+S="${WORKDIR}"/${MYP}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -31,8 +33,6 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
-
-S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 

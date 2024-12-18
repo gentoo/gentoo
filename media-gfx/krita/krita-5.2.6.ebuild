@@ -4,14 +4,14 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 KFMIN=5.115.0
 QTMIN=5.15.12
 inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libunibreak:=
 	dev-libs/quazip:0=[qt5(+)]
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[declarative,gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt5[declarative,gui,widgets,${PYTHON_USEDEP}]
 		dev-python/sip:=[${PYTHON_USEDEP}]
 	')
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -96,6 +96,8 @@ PATCHES=(
 	# downstream
 	"${FILESDIR}"/${PN}-5.2.3-tests-optional.patch
 	"${FILESDIR}"/${PN}-5.2.2-fftw.patch # bug 913518
+	# Fedora, non-upstreamed:
+	"${FILESDIR}"/${P}-py3.13.patch # bug 943149
 	# git master
 	"${FILESDIR}"/${PN}-5.1.5-sip-6.8.patch # bug 919139
 )

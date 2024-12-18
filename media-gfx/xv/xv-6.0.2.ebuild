@@ -9,7 +9,7 @@ JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
 HOMEPAGE="https://github.com/jasper-software/xv/"
 SRC_URI="https://github.com/jasper-software/xv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	mirror://gentoo/xv-3.10a.png.bz2"
+	https://dev.gentoo.org/~bkohler/dist/xv-3.10a.png.bz2"
 
 LICENSE="xv"
 SLOT="0"

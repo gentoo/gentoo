@@ -1,0 +1,21 @@
+From 7b7f66d78901166a9b68f3d6e81770e0c038bade Mon Sep 17 00:00:00 2001
+From: Xiaoqiang Wang <xiaoqiangwang@gmail.com>
+Date: Wed, 18 Sep 2024 23:22:02 +0200
+Subject: [PATCH] fix case fall-through
+
+---
+ src/ssh/auth.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ssh/auth.cpp b/src/ssh/auth.cpp
+index 37870e9..a7dc5ef 100644
+--- a/src/ssh/auth.cpp
++++ b/src/ssh/auth.cpp
+@@ -163,6 +163,7 @@ void SSH2Auth::authPacketReceived(int flag)
+         qDebug() << "====== success! ======";
+ #endif
+         emit authFinished();
++        break;
+     default:
+         qDebug() << "Unknown message: " << flag;
+         break;

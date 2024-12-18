@@ -10,7 +10,7 @@
 		It is intended for use in mathematics / scientific / engineering applications.
 		Despite being written entirely in python, the library is very fast
 		due to its heavy leverage of numpy for number crunching
-		and Qt's GraphicsView framework for fast display. 
+		and Qt's GraphicsView framework for fast display.
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>

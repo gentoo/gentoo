@@ -48,7 +48,7 @@ BDEPEND="
 	sys-apps/help2man
 	test? (
 		dev-cpp/gtest
-		dev-python/OutputCheck
+		dev-python/outputcheck
 		dev-python/lit
 	)
 "

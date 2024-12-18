@@ -1,13 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="AirTraf 802.11b Wireless traffic sniffer"
-LICENSE="GPL-2"
 HOMEPAGE="http://www.elixar.com/"
 SRC_URI="http://www.elixar.com/${P}.tar.gz"
+
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 

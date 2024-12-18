@@ -9,7 +9,7 @@ SRC_URI="https://github.com/Talinx/jp2a/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="curl"
 
 # TODO: restore ncurses support?

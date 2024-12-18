@@ -21,7 +21,7 @@ LICENSE="MPL-2.0 BSD LGPL-2.1+ public-domain discord? ( MIT )"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="
 	debug discord elf ffmpeg gles2 gles3 gui libretro
-	lua +opengl qt6 +sdl +sqlite test
+	lua +opengl +sdl +sqlite test
 "
 REQUIRED_USE="
 	gui? ( || ( gles2 gles3 opengl ) sqlite )
@@ -43,17 +43,8 @@ RDEPEND="
 	)
 	opengl? ( media-libs/libglvnd )
 	gui? (
-		qt6? (
-			dev-qt/qtbase:6[gui,network,opengl,widgets]
-			dev-qt/qtmultimedia:6
-		)
-		!qt6? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtmultimedia:5
-			dev-qt/qtnetwork:5
-			dev-qt/qtwidgets:5
-		)
+		dev-qt/qtbase:6[gui,network,opengl,widgets]
+		dev-qt/qtmultimedia:6
 	)
 	sdl? ( media-libs/libsdl2[sound,joystick,gles2?,opengl?,video] )
 	sqlite? ( dev-db/sqlite:3 )
@@ -63,7 +54,7 @@ DEPEND="
 	test? ( dev-util/cmocka )
 "
 BDEPEND="
-	gui? ( dev-qt/linguist-tools:5 )
+	gui? ( dev-qt/qttools:6[linguist] )
 	lua? ( virtual/pkgconfig )
 "
 
@@ -83,7 +74,7 @@ src_configure() {
 		-DBUILD_GLES3=$(usex gles3)
 		-DBUILD_LIBRETRO=$(usex libretro)
 		-DBUILD_QT=$(usex gui)
-		$(usev gui -DFORCE_QT_VERSION=$(usex qt6 6 5))
+		$(usev gui -DFORCE_QT_VERSION=6)
 		-DBUILD_ROM_TEST=yes #918855
 		-DBUILD_SDL=$(usex sdl) # also used for gamepads in QT build
 		-DBUILD_SUITE=$(usex test)

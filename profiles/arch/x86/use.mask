@@ -20,7 +20,7 @@ openimageio
 # media-libs/jasper works on x86
 -jasper
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot
 
@@ -63,10 +63,6 @@ webengine
 # Sven Wegener <swegener@gentoo.org> (2017-05-31)
 # libvirt is supported on x86
 -libvirt
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
-# dev-db/firebird is keyworded ~x86
--firebird
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
@@ -181,8 +177,6 @@ webengine
 -video_cards_vmware
 -video_cards_geode
 -video_cards_vesa
--video_cards_via
--video_cards_virtualbox
 -video_cards_qxl
 
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)

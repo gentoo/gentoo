@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/joe-editor/${P}.tar.gz"
 
 LICENSE="GPL-1+ CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="xterm"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2:0="

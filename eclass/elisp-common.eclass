@@ -25,7 +25,7 @@
 # When relying on the emacs USE flag, you need to add
 #
 # @CODE
-# 	emacs? ( >=app-editors/emacs-25.3:* )
+# emacs? ( >=app-editors/emacs-25.3:* )
 # @CODE
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
@@ -39,7 +39,7 @@
 # NEED_EMACS with the Emacs version, as in the following example:
 #
 # @CODE
-# 	NEED_EMACS=26.1
+# NEED_EMACS=26.1
 # @CODE
 #
 # Please note that this should be done only for packages that are known
@@ -54,7 +54,7 @@
 # are loadable.
 #
 # @CODE
-# 	elisp-compile *.el
+# elisp-compile *.el
 # @CODE
 #
 # Function elisp-make-autoload-file() can be used to generate a file
@@ -75,7 +75,7 @@
 # (see below) the change, as it defaults to ${PN}.
 #
 # @CODE
-# 	elisp-install ${PN} *.el *.elc
+# elisp-install ${PN} *.el *.elc
 # @CODE
 #
 # To let the Emacs support be activated by Emacs on startup, you need
@@ -84,9 +84,9 @@
 # Normally this would look like this:
 #
 # @CODE
-# 	(add-to-list 'load-path "@SITELISP@")
-# 	(add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
-# 	(autoload 'csv-mode "csv-mode" "Major mode for csv files." t)
+# (add-to-list 'load-path "@SITELISP@")
+# (add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
+# (autoload 'csv-mode "csv-mode" "Major mode for csv files." t)
 # @CODE
 #
 # If your Emacs support files are installed in a subdirectory of
@@ -117,13 +117,13 @@
 # your ebuild (e.g., right after S or RDEPEND):
 #
 # @CODE
-# 	SITEFILE="50${PN}-gentoo.el"
+# SITEFILE="50${PN}-gentoo.el"
 # @CODE
 #
 # Which is then installed by
 #
 # @CODE
-# 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+# elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 # @CODE
 #
 # in src_install().  Any characters after the "-gentoo" part and before
@@ -137,7 +137,7 @@
 # and install a site-init file that does just that:
 #
 # @CODE
-# 	elisp-make-site-file "${SITEFILE}"
+# elisp-make-site-file "${SITEFILE}"
 # @CODE
 #
 # Again, this must be called in src_install().  See the function's
@@ -153,7 +153,7 @@
 # version.  In this case, you can add an explicit check in pkg_setup:
 #
 # @CODE
-# 	elisp-check-emacs-version
+# elisp-check-emacs-version
 # @CODE
 #
 # When having optional Emacs support, you should prepend "use emacs &&"
@@ -165,13 +165,13 @@
 # emerging and unmerging by using
 #
 # @CODE
-# 	pkg_postinst() {
-# 		elisp-site-regen
-# 	}
+# pkg_postinst() {
+# 	elisp-site-regen
+# }
 #
-# 	pkg_postrm() {
-# 		elisp-site-regen
-# 	}
+# pkg_postrm() {
+# 	elisp-site-regen
+# }
 # @CODE
 #
 # Again, with optional Emacs support, you should prepend "use emacs &&"
@@ -260,7 +260,6 @@ elisp-emacs-version() {
 }
 
 # @FUNCTION: elisp-check-emacs-version
-# @USAGE: [version]
 # @DESCRIPTION:
 # Test if the eselected Emacs version is at least the version of
 # GNU Emacs specified in the NEED_EMACS variable, or die otherwise.
@@ -356,8 +355,8 @@ elisp-make-autoload-file() {
 #
 # Example:
 # @CODE
-# 	elisp-org-export-to texinfo README.org
-# 	mv README.texi ${PN}.texi || die
+# elisp-org-export-to texinfo README.org
+# mv README.texi ${PN}.texi || die
 # @CODE
 
 elisp-org-export-to() {
@@ -512,16 +511,16 @@ elisp-test-ert() {
 #
 # Example:
 # @CODE
-# 	inherit elisp-common
+# inherit elisp-common
 #
-# 	...
+# ...
 #
-# 	elisp-enable-tests --optional ert-runner "${S}"/elisp -t "!org"
+# elisp-enable-tests --optional ert-runner "${S}"/elisp -t "!org"
 #
-# 	src_test() {
-# 		emake -C tests test
-# 		elisp-test
-# 	}
+# src_test() {
+# 	emake -C tests test
+# 	elisp-test
+# }
 # @CODE
 
 elisp-enable-tests() {
@@ -662,7 +661,7 @@ elisp-site-file-install() {
 # this will add the package's SITELISP subdirectory to Emacs' load-path:
 #
 # @CODE
-# 	(add-to-list 'load-path "@SITELISP@")
+# (add-to-list 'load-path "@SITELISP@")
 # @CODE
 #
 # Additional arguments are appended as lines to the destination file.

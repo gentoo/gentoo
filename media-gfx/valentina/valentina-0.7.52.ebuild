@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/smart-pattern/${PN}/-/archive/v${PV}/${PN}-v${PV}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
 
@@ -30,7 +30,9 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-qt/qtxmlpatterns:5"
+	dev-qt/qtxmlpatterns:5
+	!sci-biology/tree-puzzle
+"
 DEPEND="
 	${RDEPEND}
 	dev-qt/qttest:5

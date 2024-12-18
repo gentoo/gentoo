@@ -11,8 +11,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="google-code">prettytable</remote-id>
     <remote-id type="pypi">prettytable</remote-id>
-    <remote-id type="github">jazzband/prettytable</remote-id>
+    <remote-id type="github">prettytable/prettytable</remote-id>
   </upstream>
 </pkgmetadata>

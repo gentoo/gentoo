@@ -12,10 +12,6 @@ hip
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
 mkl
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
-# dev-db/firebird is keyworded ~amd64
-firebird
-
 # Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # The modern versions of CUDA SDK are not suitable for stabilization.
 cuda

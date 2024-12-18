@@ -1,0 +1,22 @@
+[Unit]
+Description=Global Socket Socks Proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=always
+RestartSec=10
+RestartSteps=10
+RestartMaxDelaySec=30m
+
+DynamicUser=yes
+RuntimeDirectory=gs-socks-proxy
+
+ExecStartPre=+gs-init-secret /etc/gsocket/gs-socks-proxy-key
+ExecStartPre=+install --owner %u /etc/gsocket/gs-socks-proxy-key /run/gs-socks-proxy/key
+
+ExecStart=gs-netcat -k /run/gs-socks-proxy/key -lS
+
+
+[Install]
+WantedBy=multi-user.target

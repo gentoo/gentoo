@@ -213,6 +213,48 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 # 	ebuild foo.ebuild compile
 # @CODE
 
+# @ECLASS_VARIABLE: EBUILD_DEATH_HOOKS
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used internally.
+
+# @ECLASS_VARIABLE: JAVA_PKG_BUILD_DEPEND_FILE
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in ejunit_, java-pkg_do_write_ and java-pkg_record-jar_
+
+# @ECLASS_VARIABLE: JAVA_PKG_DEPEND_FILE
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in ejunit_, java-pkg_do_write_ and java-pkg_record-jar_
+
+# @ECLASS_VARIABLE: JAVA_PKG_EXTRA_ENV
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in java-pkg_register-environment-variable and java-pkg_do_write_,
+
+# @ECLASS_VARIABLE: JAVA_PKG_EXTRA_ENV_VARS
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in java-pkg_register-environment-variable and java-pkg_do_write_
+
+# @ECLASS_VARIABLE: JAVA_PKG_OPTIONAL_DEPEND_FILE
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used in java-pkg_do_write_ and java-pkg_record-jar_
+
+# @ECLASS_VARIABLE: WANT_JAVA_CONFIG
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Gets exported to make sure we use java-config-2
+
 # @ECLASS_VARIABLE: JAVADOC_CLASSPATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -252,9 +294,6 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 #	    "${PN}-connector-factory"
 #	)
 # @CODE
-
-# TODO document me
-JAVA_PKG_QA_VIOLATIONS=0
 
 # @FUNCTION: java-pkg_doexamples
 # @USAGE: [--subdir <subdir>] <file1/dir1> [<file2> ...]
@@ -1636,10 +1675,6 @@ java-pkg_is-vm-version-ge() {
 	fi
 }
 
-java-pkg_set-current-vm() {
-	export GENTOO_VM=${1}
-}
-
 # @FUNCTION: java-pkg_current-vm-matches
 # @USAGE: <vm_string1> [<vm_string2> [<vm_string3>...]]
 # @RETURN: 0: the current vm matches any of the provided strings
@@ -1946,7 +1981,6 @@ etestng() {
 		-cp ${cp}
 		-Djava.io.tmpdir="${T}"
 		-Djava.awt.headless=true
-		-Dtest.resources.dir="${JAVA_TEST_RESOURCE_DIRS}"
 		${JAVA_TEST_EXTRA_ARGS[@]}
 		${runner}
 		${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}
@@ -2032,25 +2066,6 @@ java-utils-2_pkg_preinst() {
 # @CODE
 eant() {
 	debug-print-function ${FUNCNAME} $*
-
-	if [[ ${!JAVA_PKG_BSFIX*} ]] \
-		|| [[ ${JAVA_ANT_BSFIX_EXTRA_ARGS} ]] \
-		|| [[ ${JAVA_ANT_CLASSPATH_TAGS} ]] \
-		|| [[ ${JAVA_ANT_JAVADOC_INPUT_DIRS} ]] \
-		|| [[ ${JAVA_ANT_REWRITE_CLASSPATH} ]] \
-		|| [[ ${EANT_BUILD_XML} ]] \
-		|| [[ ${!EANT_GENTOO_CLASSPATH*} ]] \
-		|| [[ ${EANT_TEST_GENTOO_CLASSPATH} ]]
-	then
-		if [[ ${EBUILD_PHASE} = compile ]]; then
-			java-ant-2_src_configure
-		fi
-
-		if ! has java-ant-2 ${INHERITED}; then
-			local msg="You should inherit java-ant-2 when using eant"
-			java-pkg_announce-qa-violation "${msg}"
-		fi
-	fi
 
 	local antflags="-Dnoget=true -Dmaven.mode.offline=true -Dbuild.sysclasspath=ignore"
 
@@ -2808,19 +2823,6 @@ java-pkg_die() {
 }
 
 
-# TODO document
-# List jars in the source directory, ${S}
-java-pkg_jar-list() {
-	if [[ -n "${JAVA_PKG_DEBUG}" ]]; then
-		einfo "Linked Jars"
-		find "${S}" -type l -name '*.jar' -print0 | xargs -0 -r -n 500 ls -ald | sed -e "s,${WORKDIR},\${WORKDIR},"
-		einfo "Jars"
-		find "${S}" -type f -name '*.jar' -print0 | xargs -0 -r -n 500 ls -ald | sed -e "s,${WORKDIR},\${WORKDIR},"
-		einfo "Classes"
-		find "${S}" -type f -name '*.class' -print0 | xargs -0 -r -n 500 ls -ald | sed -e "s,${WORKDIR},\${WORKDIR},"
-	fi
-}
-
 # @FUNCTION: java-pkg_verify-classes
 # @INTERNAL
 # @DESCRIPTION:
@@ -2982,14 +2984,7 @@ java-pkg_announce-qa-violation() {
 		nodie="true"
 		shift
 	fi
-	echo "Java QA Notice: $@" >&2
-	increment-qa-violations
 	[[ -z "${nodie}" ]] && is-java-strict && die "${@}"
-}
-
-increment-qa-violations() {
-	let "JAVA_PKG_QA_VIOLATIONS+=1"
-	export JAVA_PKG_QA_VIOLATIONS
 }
 
 # @FUNCTION: is-java-strict

@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/942467
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=c0cb0175c9e6e8d6a3bdd2e40f85fa730fa325af
+
+From c0cb0175c9e6e8d6a3bdd2e40f85fa730fa325af Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 9 Jul 2024 10:48:02 +0900
+Subject: [PATCH] scd: Add <unistd.h> for read(2) / write(2) .
+
+* scd/app.c: Include <unistd.h>.
+
+--
+
+Reported-by: David Bohman
+GnuPG-bug-id: 7193
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+(cherry picked from commit 1d5cfa9b7fd22e1c46eeed5fa9fed2af6f81d34f)
+--- a/scd/app.c
++++ b/scd/app.c
+@@ -22,6 +22,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <npth.h>
+ 
+ #ifndef HAVE_W32_SYSTEM
+-- 
+2.30.2

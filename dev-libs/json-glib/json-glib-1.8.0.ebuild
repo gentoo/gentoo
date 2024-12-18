@@ -29,6 +29,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-werror.patch
+)
+
 src_prepare() {
 	xdg_environment_reset
 	default

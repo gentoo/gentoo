@@ -2,15 +2,6 @@ diff --git a/WDL/swell/Makefile b/WDL/swell/Makefile
 index c0a52312..fb09826b 100644
 --- a/WDL/swell/Makefile
 +++ b/WDL/swell/Makefile
-@@ -17,7 +17,7 @@ PKG_CONFIG = pkg-config
- 
- COMPILER=GCC
- 
--CFLAGS = -pipe -fvisibility=hidden -fno-math-errno -fPIC -DPIC -Wall -Wshadow -Wno-unused-function -Wno-multichar -Wtype-limits -Wno-unused-value -fstrict-aliasing
-+CFLAGS += -fvisibility=hidden -fno-math-errno -fPIC -DPIC -Wall -Wshadow -Wno-unused-function -Wno-multichar -Wtype-limits -Wno-unused-value -fstrict-aliasing -Wno-error=array-bounds
- 
- CFLAGS += -DSWELL_MAKING_DYLIB
- 
 @@ -72,16 +72,9 @@ endif
  
  

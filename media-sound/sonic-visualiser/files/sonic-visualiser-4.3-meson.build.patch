@@ -1,5 +1,3 @@
-diff --git a/meson.build b/meson.build
-index d1771e1..b18a5b6 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -90,17 +90,7 @@ if system == 'linux'
@@ -166,9 +164,6 @@ index d1771e1..b18a5b6 100644
    ]
    
  elif system == 'darwin'
-diff --git a/meson_options.txt b/meson_options.txt
-new file mode 100644
-index 0000000..e0da4fb
 --- /dev/null
 +++ b/meson_options.txt
 @@ -0,0 +1,8 @@

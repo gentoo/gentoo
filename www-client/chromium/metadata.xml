@@ -22,7 +22,6 @@
 		<flag name="system-harfbuzz">Use system <pkg>media-libs/harfbuzz</pkg> instead of the bundled library.</flag>
 		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled one</flag>
 		<flag name="system-png">Use system <pkg>media-libs/libpng</pkg> instead of the bundled library</flag>
-		<flag name="system-toolchain">Use system toolchain instead of the bundled one (if possible)</flag>
 		<flag name="system-zstd">Use system <pkg>app-arch/zstd</pkg> instead of the bundled one.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>

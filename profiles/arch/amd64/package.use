@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Whitlock <gentoo@mattwhitlock.name> (2024-11-06)
+# Assembly optimization is experimental except on amd64, so we leave it
+# disabled by default on all other arches. Bug #941226
+dev-libs/libsecp256k1 asm
+
 # Michał Górny <mgorny@gentoo.org> (2024-09-04)
 # Build with debugging support by default to facilitate dev-debug/dtrace
 # and sys-apps/systemd[bpf].
@@ -19,11 +24,11 @@ sys-apps/memtest86+ bios64 uefi64
 
 # Theo Anderson <telans@posteo.de> (2021-03-06)
 # Enable 32-bit clang runtime to ease -m32 builds with non-GCC runtime
-sys-devel/clang-runtime abi_x86_32
-sys-libs/libcxxabi abi_x86_32
-sys-libs/libcxx abi_x86_32
-sys-libs/libomp abi_x86_32
-sys-libs/llvm-libunwind abi_x86_32
+llvm-core/clang-runtime abi_x86_32
+llvm-runtimes/libcxxabi abi_x86_32
+llvm-runtimes/libcxx abi_x86_32
+llvm-runtimes/openmp abi_x86_32
+llvm-runtimes/libunwind abi_x86_32
 
 # Mike Gilbert <floppym@gentoo.org> (2016-11-17)
 # Enable both efi and pc by default.
@@ -32,9 +37,9 @@ sys-boot/grub:2 grub_platforms_efi-64 grub_platforms_pc
 
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the GPU targets matching the default VIDEO_CARDS
-dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX
-sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
-sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
+dev-ml/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/clang llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 
 # Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
 # Enable the native arch as the default qemu target

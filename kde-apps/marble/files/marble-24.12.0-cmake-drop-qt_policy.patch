@@ -1,0 +1,69 @@
+From 98d2d37dcec8ec8b5b7f4c24c85120ed9468a33a Mon Sep 17 00:00:00 2001
+From: Joshua Goins <josh@redstrate.com>
+Date: Sat, 14 Dec 2024 20:08:44 -0500
+Subject: [PATCH] Remove usage of some Qt CMake usage with ECMQmlModule
+
+We use this, so we don't need to set qt_policy ourselves or
+ecm_add_qml_module. Also fixes non-KF6 builds.
+---
+ CMakeLists.txt                           | 2 --
+ examples/cpp/marbleQuick2/CMakeLists.txt | 2 +-
+ src/apps/behaim/CMakeLists.txt           | 2 +-
+ src/apps/marble-maps/CMakeLists.txt      | 2 +-
+ 4 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0681500d06..f708cacd52 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,8 +110,6 @@ set_package_properties(KF6 PROPERTIES
+     TYPE RECOMMENDED
+ )
+ 
+-qt_policy(SET QTP0001 NEW)
+-
+ find_package(Protobuf)
+ set_package_properties(Protobuf PROPERTIES TYPE OPTIONAL PURPOSE "Parsing of OSM PBF files.")
+ 
+diff --git a/examples/cpp/marbleQuick2/CMakeLists.txt b/examples/cpp/marbleQuick2/CMakeLists.txt
+index c9c3809e85..493684f409 100644
+--- a/examples/cpp/marbleQuick2/CMakeLists.txt
++++ b/examples/cpp/marbleQuick2/CMakeLists.txt
+@@ -5,7 +5,7 @@ add_executable(marbleQuick2 main.cpp)
+ 
+ target_link_libraries(marbleQuick2 PUBLIC Qt::Quick Qt::Widgets)
+ 
+-qt_add_qml_module(marbleQuick2
++ecm_add_qml_module(marbleQuick2
+     URI org.kde.marble.quick
+     QML_FILES
+         Main.qml
+diff --git a/src/apps/behaim/CMakeLists.txt b/src/apps/behaim/CMakeLists.txt
+index 8011e0bc52..13219b663a 100644
+--- a/src/apps/behaim/CMakeLists.txt
++++ b/src/apps/behaim/CMakeLists.txt
+@@ -19,7 +19,7 @@ if(NOT MARBLE_NO_WEBKITWIDGETS)
+     add_definitions(-DMARBLE_WEBKITWIDGETS=1)
+ endif()
+ 
+-qt_add_qml_module(marble-behaim
++ecm_add_qml_module(marble-behaim
+     URI org.kde.marble.behaim
+     QML_FILES
+         MainScreen.qml
+diff --git a/src/apps/marble-maps/CMakeLists.txt b/src/apps/marble-maps/CMakeLists.txt
+index 39f9940322..79a4897304 100644
+--- a/src/apps/marble-maps/CMakeLists.txt
++++ b/src/apps/marble-maps/CMakeLists.txt
+@@ -22,7 +22,7 @@ if(NOT ANDROID)
+     target_link_libraries(marble-maps PUBLIC KF6::Crash)
+ endif()
+ 
+-qt_add_qml_module(marble-maps
++ecm_add_qml_module(marble-maps
+     URI org.kde.marble.maps
+     QML_FILES
+         MainScreen.qml
+-- 
+GitLab
+

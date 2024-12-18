@@ -44,6 +44,10 @@ RDEPEND="${DEPEND}"
 BDEPEND="app-alternatives/yacc
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-malloc.patch"
+)
+
 pkg_setup() {
 	CONFLICTING=$(usex tmux "tmux " "")$(usex wayland "wayland " "")$(usex X "X" "")
 	if ( use tmux && ( use wayland || use X ) ) ; then
@@ -55,7 +59,7 @@ pkg_setup() {
 	fi
 
 	# Run lua setup
-	lua-single_pkg_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {

@@ -9,8 +9,8 @@ HOMEPAGE="http://www.tobias-elze.de/pdfsandwich"
 SRC_URI="https://downloads.sourceforge.net/pdfsandwich/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
 SLOT="0"
+KEYWORDS="amd64 ~x86"
 IUSE="png"
 
 RDEPEND="app-text/tesseract

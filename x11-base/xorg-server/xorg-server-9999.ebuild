@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 XORG_EAUTORECONF="no"
 inherit flag-o-matic xorg-3 meson
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"

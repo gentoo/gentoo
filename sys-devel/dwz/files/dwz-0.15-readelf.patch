@@ -1,0 +1,43 @@
+From 2ae1b0ee518ba40fe985aa644d3a66ebca1165e4 Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Upstream: https://sourceware.org/pipermail/dwz/2024q4/001435.html
+Date: Fri, 22 Nov 2024 07:33:09 +0100
+Subject: [PATCH 2/2] Makefile: use $READELF variable instead of hardcoding
+ 'readelf'
+
+---
+ Makefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3dc6c6f..f0841aa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,6 +19,8 @@ endif
+ 
+ override CFLAGS += $(CFLAGS_COMMON) $(CFLAGS_VERSION) $(CFLAGS_COPYRIGHT)
+ 
++READELF ?= $(CROSS_COMPILE)readelf
++
+ prefix = /usr
+ exec_prefix = $(prefix)
+ bindir = $(exec_prefix)/bin
+@@ -35,13 +37,13 @@ args.o: native.o
+ args.o: CFLAGS_FOR_SOURCE = \
+ 	-DNATIVE_ENDIAN_VAL=$(NATIVE_ENDIAN_VAL) \
+ 	-DNATIVE_POINTER_SIZE=$(NATIVE_POINTER_SIZE)
+-NATIVE_ENDIAN=$(shell readelf -h native.o \
++NATIVE_ENDIAN=$(shell ${READELF} -h native.o \
+ 	| grep Data \
+ 	| sed 's/.*, //;s/ endian//')
+ NATIVE_ENDIAN_LITTLE=$(findstring $(NATIVE_ENDIAN),$(findstring little,$(NATIVE_ENDIAN)))
+ NATIVE_ENDIAN_BIG=$(findstring $(NATIVE_ENDIAN),$(findstring big,$(NATIVE_ENDIAN)))
+ NATIVE_ENDIAN_VAL=$(if $(NATIVE_ENDIAN_LITTLE),ELFDATA2LSB,$(if $(NATIVE_ENDIAN_BIG),ELFDATA2MSB,ELFDATANONE))
+-NATIVE_POINTER_SIZE=$(shell readelf -wi native.o \
++NATIVE_POINTER_SIZE=$(shell ${READELF} -wi native.o \
+ 	| grep "Pointer Size:" \
+ 	| sed 's/.*: *//')
+ %.o: %.c
+-- 
+2.45.2
+

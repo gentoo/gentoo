@@ -47,7 +47,7 @@ CDEPEND="
 	opencl? ( virtual/opencl )
 	openmp? (
 		sys-devel/gcc[openmp]
-		sys-devel/clang-runtime[openmp]
+		llvm-core/clang-runtime[openmp]
 	)
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
@@ -60,7 +60,7 @@ CDEPEND="
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
-	clang? ( >=sys-devel/clang-6:* )
+	clang? ( >=llvm-core/clang-6:* )
 	build-manual? (
 		app-text/doxygen
 		$(python_gen_cond_dep '

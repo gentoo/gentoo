@@ -4,10 +4,30 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
+# dev-db/firebird last-rites preparation
+firebird
+
+# Robin H. Johnson <robbat2@gentoo.org> (2024-11-17)
+# bug 943698
+# Poor upstream code quality, unmaintained upstream;
+# no hardware for testing # anymore.
+# https://public-inbox.gentoo.org/gentoo-dev/robbat2-20240529T185323-477923075Z@orbis-terrarum.net/
+lcd_devices_g15
+g15
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
+# The 8.1 slot is masked, so the USE flag that pulls it in has to be
+# masked too. The bare "php8-1" is for www-servers/nginx-unit which
+# has a non-standard flag name.
+php_targets_php8-1
+php8-1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-21)
 # Mechanism for coping with the time64 transition of 32bit arches
 # Will be unmasked in the time64 profiles
 perl_features_time64
+time64
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-01)
 # PERL_FEATURES=debug is not a setting that should be used lightly.

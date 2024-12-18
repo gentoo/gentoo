@@ -1,0 +1,75 @@
+https://github.com/alisarctl/davfs2/pull/1
+
+From 789656d8c8144d4781795658524b3f8b15fb0d11 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Wed, 20 Nov 2024 19:49:53 +0100
+Subject: [PATCH] Do not compress manpages
+
+* In general, manpage compression should be left to packagers.
+---
+ man/Makefile.am    | 7 ++-----
+ man/de/Makefile.am | 7 ++-----
+ man/es/Makefile.am | 5 +----
+ 3 files changed, 5 insertions(+), 14 deletions(-)
+
+diff --git a/man/Makefile.am b/man/Makefile.am
+index ea10e83..d1f34db 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -42,13 +42,10 @@ edit = sed \
+        -e 's|@USER[@]|$(dav_user)|g' \
+        -e 's|@GROUP[@]|$(dav_group)|g'
+ 
+-manual5_DATA = davfs2.conf.5.gz
+-manual8_DATA = mount.davfs.8.gz umount.davfs.8.gz
++manual5_DATA = davfs2.conf.5
++manual8_DATA = mount.davfs.8 umount.davfs.8
+ 
+ EXTRA_DIST = davfs2.conf.5 mount.davfs.8 umount.davfs.8 \
+              davfs2.conf.5.pot mount.davfs.8.pot umount.davfs.8.pot \
+              po4a.conf template.translator
+ CLEANFILES = $(manual5_DATA) $(manual8_DATA)
+-
+-%.gz: %
+-	$(edit) $< | gzip -9 > $@
+diff --git a/man/de/Makefile.am b/man/de/Makefile.am
+index 6965857..8489c9f 100644
+--- a/man/de/Makefile.am
++++ b/man/de/Makefile.am
+@@ -40,14 +40,11 @@ edit = sed \
+        -e 's|@USER[@]|$(dav_user)|g' \
+        -e 's|@GROUP[@]|$(dav_group)|g'
+ 
+-manual5_DATA = davfs2.conf.5.gz
+-manual8_DATA = mount.davfs.8.gz umount.davfs.8.gz
++manual5_DATA = davfs2.conf.5
++manual8_DATA = mount.davfs.8 umount.davfs.8
+ 
+ EXTRA_DIST = davfs2.conf.5 mount.davfs.8 umount.davfs.8 \
+              davfs2.conf.5.po mount.davfs.8.po umount.davfs.8.po \
+              davfs2.conf.5.translator mount.davfs.8.translator \
+              umount.davfs.8.translator
+ CLEANFILES = $(manual5_DATA) $(manual8_DATA)
+-
+-%.gz: %
+-	$(edit) $< | gzip -9 > $@
+diff --git a/man/es/Makefile.am b/man/es/Makefile.am
+index 4a427b6..2ccf0d8 100644
+--- a/man/es/Makefile.am
++++ b/man/es/Makefile.am
+@@ -40,7 +40,7 @@ edit = sed \
+        -e 's|@USER[@]|$(dav_user)|g' \
+        -e 's|@GROUP[@]|$(dav_group)|g'
+ 
+-manual5_DATA = davfs2.conf.5.gz
++manual5_DATA = davfs2.conf.5
+ #manual8_DATA = mount.davfs.8.gz umount.davfs.8.gz
+ 
+ #EXTRA_DIST = davfs2.conf.5 mount.davfs.8 umount.davfs.8 \
+@@ -49,6 +49,3 @@ manual5_DATA = davfs2.conf.5.gz
+ #             umount.davfs.8.translator
+ EXTRA_DIST = davfs2.conf.5 davfs2.conf.5.po
+ CLEANFILES = $(manual5_DATA) $(manual8_DATA)
+-
+-%.gz: %
+-	$(edit) $< | gzip -9 > $@

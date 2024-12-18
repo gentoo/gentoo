@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 xdg
 
@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="~app-text/openpaperwork-core-${PV}[${PYTHON_USEDEP}]
 	~app-text/openpaperwork-gtk-${PV}[${PYTHON_USEDEP}]
 	~app-text/paperwork-backend-${PV}[${PYTHON_USEDEP}]
-	dev-python/libpillowfight[${PYTHON_USEDEP}]
+	dev-python/pypillowfight[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]

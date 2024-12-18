@@ -71,6 +71,9 @@ src_configure() {
 	# bug #855233 (MDEV-11914, MDEV-25633) at least
 	filter-lto
 
+	# bug #943757
+	append-cflags -std=gnu17
+
 	cmake-multilib_src_configure
 }
 

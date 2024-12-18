@@ -28,7 +28,7 @@ sasl
 ldap
 
 # Sam James <sam@gentoo.org> (2022-02-03)
-# sys-libs/llvm-libunwind isn't marked stable here
+# llvm-runtimes/libunwind isn't marked stable here
 llvm-libunwind
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-08-13)

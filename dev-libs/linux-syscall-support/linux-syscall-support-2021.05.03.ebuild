@@ -10,11 +10,11 @@ HOMEPAGE="https://github.com/mikey/linux-syscall-support/"
 SRC_URI="https://github.com/mikey/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${CommitId}
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-test.patch

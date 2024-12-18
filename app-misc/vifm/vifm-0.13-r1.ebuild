@@ -34,9 +34,11 @@ RDEPEND="
 BDEPEND="|| ( dev-lang/perl app-editors/vim )"
 
 PATCHES=(
-	# Bacported fix from upstream,
+	# Backported fix from upstream,
 	# see also https://github.com/vifm/vifm/issues/913
 	"${FILESDIR}/${P}-musl.patch"
+	# https://github.com/vifm/vifm/pull/1035
+	"${FILESDIR}/${P}-c23.patch"
 )
 
 src_prepare() {

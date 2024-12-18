@@ -5,6 +5,10 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 	<use>
 		<flag name="initramfs">Install a small initramfs for use with CONFIG_MICROCODE_EARLY</flag>
 		<flag name="hostonly">Only install ucode(s) supported by currently available (=online) processor(s)</flag>

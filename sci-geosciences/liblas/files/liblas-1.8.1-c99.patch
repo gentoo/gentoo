@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/933089
+https://github.com/libLAS/libLAS/commit/e789d43df4500da0c12d2f6d3ac1d031ed835493
+
+From e789d43df4500da0c12d2f6d3ac1d031ed835493 Mon Sep 17 00:00:00 2001
+From: Ben Boeckel <ben.boeckel@kitware.com>
+Date: Wed, 31 Oct 2018 11:38:19 -0400
+Subject: [PATCH] las2col: use fflush for FILE*
+
+The `fsync` function operates on file descriptors, not C `FILE`
+pointers. Instead, use `fflush`.
+--- a/apps/las2col.c
++++ b/apps/las2col.c
+@@ -1042,7 +1042,7 @@ int main(int argc, char *argv[])
+         fflush(files_out[i]);
+         if (verbose)
+             printf("close file %d\n", i);
+-        fsync(files_out[i]);
++        fflush(files_out[i]);
+         fclose(files_out[i]);
+     }
+     free(files_out);
+

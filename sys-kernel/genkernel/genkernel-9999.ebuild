@@ -21,7 +21,7 @@ VERSION_COREUTILS="9.4"
 VERSION_CRYPTSETUP="2.6.1"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2022.83"
-VERSION_EUDEV="3.2.10"
+VERSION_EUDEV="3.2.14"
 VERSION_EXPAT="2.5.0"
 VERSION_E2FSPROGS="1.47.0"
 VERSION_FUSE="2.9.9"
@@ -107,7 +107,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Genkernel https://gitweb.gentoo.org/proj/
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ibm +firmware"
+IUSE="ibm +firmware systemd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Note:
@@ -138,6 +138,7 @@ RDEPEND="${PYTHON_DEPS}
 "
 
 PATCHES=(
+	"${FILESDIR}"/genkernel-4.3.16-globbing-workaround.patch
 )
 
 src_unpack() {
@@ -197,6 +198,14 @@ src_install() {
 	insinto /usr/share/genkernel/distfiles
 	doins ${A/${P}.tar.xz/}
 	popd &>/dev/null || die
+
+	# Workaround for bug 944499, for now this patch will live in FILESDIR and is
+	# conditionally installed but we could add it to genkernel.git and conditionally
+	# remove it here instead.
+	if ! use systemd; then
+		insinto /usr/share/genkernel/patches/lvm/${VERSION_LVM}/
+		doins "${FILESDIR}"/lvm2-2.03.20-dm_lvm_rules_no_systemd.patch
+	fi
 }
 
 pkg_postinst() {

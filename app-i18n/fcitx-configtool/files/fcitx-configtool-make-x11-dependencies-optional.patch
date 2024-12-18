@@ -1,0 +1,112 @@
+https://github.com/fcitx/fcitx5-configtool/pull/79
+
+Add configure option "ENABLE_X11". When turned off, most parts of
+fcitx5-configtool except kbd-layout-viewer5 could be built without X11
+dependencies. This includes no behavior change.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,9 +40,13 @@ include(GenerateExportHeader)
+ option(ENABLE_KCM "Enable KDE Config Module" On)
+ option(ENABLE_CONFIG_QT "Enable fcitx5-config-qt" On)
+ option(ENABLE_TEST "Enable test" Off)
++option(ENABLE_X11 "Enable X11 integration" On)
+ add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx5\")
+ add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
+ add_definitions(-DQT_NO_KEYWORDS)
++if (ENABLE_X11)
++add_definitions(-DENABLE_X11)
++endif ()
+ 
+ if (ENABLE_CONFIG_QT)
+     find_package(KF${QT_MAJOR_VERSION}ItemViews REQUIRED)
+@@ -95,15 +99,19 @@ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cma
+ 
+ find_package(PkgConfig REQUIRED)
+ find_package(Gettext REQUIRED)
++if (ENABLE_X11)
+ find_package(X11 REQUIRED)
+ find_package(XKeyboardConfig REQUIRED)
+ pkg_check_modules(XkbFile "xkbfile" REQUIRED IMPORTED_TARGET)
++endif ()
+ 
+ configure_file(config.h.in config.h)
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ add_subdirectory(po)
+ add_subdirectory(src)
++if (ENABLE_X11)
+ add_subdirectory(layout)
++endif ()
+ 
+ feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+--- a/src/lib/configwidgetslib/CMakeLists.txt
++++ b/src/lib/configwidgetslib/CMakeLists.txt
+@@ -28,5 +28,7 @@ target_link_libraries(configwidgetslib
+     Fcitx5::Utils
+     Fcitx5Qt${QT_MAJOR_VERSION}::DBusAddons
+     Fcitx5Qt${QT_MAJOR_VERSION}::WidgetsAddons
+-    configlib
+-    layoutlib)
++    configlib)
++if (ENABLE_X11)
++target_link_libraries(configwidgetslib layoutlib)
++endif ()
+--- a/src/lib/configwidgetslib/layoutselector.cpp
++++ b/src/lib/configwidgetslib/layoutselector.cpp
+@@ -6,7 +6,9 @@
+ 
+ #include "layoutselector.h"
+ #include "dbusprovider.h"
++#ifdef ENABLE_X11
+ #include "keyboardlayoutwidget.h"
++#endif	// ENABLE_X11
+ #include "layoutmodel.h"
+ #include "ui_layoutselector.h"
+ #include <QDBusPendingCallWatcher>
+@@ -45,6 +47,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
+     connect(ui_->variantComboBox,
+             qOverload<int>(&QComboBox::currentIndexChanged), this,
+             &LayoutSelector::variantComboBoxChanged);
++#ifdef ENABLE_X11
+     if (qApp->platformName() == "xcb") {
+         keyboardLayoutWidget_ = new KeyboardLayoutWidget(this);
+         keyboardLayoutWidget_->setMinimumSize(QSize(400, 200));
+@@ -52,6 +55,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
+                                              QSizePolicy::Expanding);
+         ui_->verticalLayout->addWidget(keyboardLayoutWidget_);
+     }
++#endif	// ENABLE_X11
+ }
+ 
+ LayoutSelector::~LayoutSelector() {}
+@@ -128,6 +132,7 @@ void LayoutSelector::layoutComboBoxChanged() {
+     ui_->variantComboBox->setCurrentIndex(0);
+ }
+ 
++#ifdef ENABLE_X11
+ void LayoutSelector::variantComboBoxChanged() {
+     if (!keyboardLayoutWidget_) {
+         return;
+@@ -142,6 +147,9 @@ void LayoutSelector::variantComboBoxChanged() {
+         keyboardLayoutWidget_->setVisible(true);
+     }
+ }
++#else
++void LayoutSelector::variantComboBoxChanged() { return; }
++#endif	// ENABLE_X11
+ 
+ } // namespace kcm
+ } // namespace fcitx
+--- a/src/lib/configwidgetslib/layoutselector.h
++++ b/src/lib/configwidgetslib/layoutselector.h
+@@ -53,7 +53,9 @@ private Q_SLOTS:
+     std::unique_ptr<Ui::LayoutSelector> ui_;
+     DBusProvider *dbus_;
+     LayoutProvider *layoutProvider_;
++#ifdef ENABLE_X11
+     KeyboardLayoutWidget *keyboardLayoutWidget_ = nullptr;
++#endif
+     Iso639 iso639_;
+ 
+     QString preSelectLayout_;

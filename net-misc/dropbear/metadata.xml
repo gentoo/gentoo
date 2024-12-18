@@ -22,8 +22,14 @@
   </longdescription>
   <use>
     <flag name="bsdpty">Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it</flag>
+    <flag name="legacy-ciphers">
+        Enable support for deprecated, soon-to-be-dropped DSA keys.
+
+        See https://marc.info/?l=openssh-unix-dev&gt;m=170494903207436&gt;w=2.
+    </flag>
     <flag name="multicall">Build all the programs as one little binary (to save space)</flag>
     <flag name="shadow">Enable shadow password support</flag>
+    <flag name="test-async">Enable tests using <pkg>dev-python/asyncssh</pkg></flag>
   </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:matt_johnston:dropbear_ssh_server</remote-id>

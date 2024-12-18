@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common flag-o-matic toolchain-funcs
+inherit elisp-common toolchain-funcs
 
 DESCRIPTION="Functional programming language with dependent types"
 HOMEPAGE="https://www.cs.bu.edu/~hwxi/atslangweb/
@@ -12,10 +12,10 @@ HOMEPAGE="https://www.cs.bu.edu/~hwxi/atslangweb/
 SRC_URI="
 	http://downloads.sourceforge.net/sourceforge/ats2-lang/ATS2-Postiats-gmp-${PV}.tgz
 
-	https://sources.debian.org/data/main/a/ats2-lang/0.4.2-2/debian/patches/deprecated-cl-package
-		-> ${PN}-0.4.2-2-deprecated-cl-package.patch
-	https://sources.debian.org/data/main/a/ats2-lang/0.4.2-2/debian/patches/prelude-function-prototypes
-		-> ${PN}-0.4.2-2-prelude-function-prototypes.patch
+	https://sources.debian.org/data/main/a/ats2-lang/${PV}-2/debian/patches/deprecated-cl-package
+		-> ${PN}-${PV}-2-deprecated-cl-package.patch
+	https://sources.debian.org/data/main/a/ats2-lang/${PV}-2/debian/patches/prelude-function-prototypes
+		-> ${PN}-${PV}-2-prelude-function-prototypes.patch
 "
 S="${WORKDIR}/ATS2-Postiats-gmp-${PV}"
 
@@ -61,14 +61,15 @@ src_prepare() {
 		-e "s|ar -r|$(tc-getAR) ${ARFLAGS} -r|g"	\
 		|| die
 
+	sed -i contrib/CATS-atscc2js/Makefile		\
+		-i src/CBOOT/Makefile					\
+		-e "/^AR=/s|ar|$(tc-getAR) ${ARFLAGS}|"	\
+		|| die
+
 	rm utils/emacs/flycheck-ats2.el || die
 }
 
 src_compile() {
-	# Not really accurate but need Makefile investigation and patches.
-	# See: https://bugs.gentoo.org/941105 and https://bugs.gentoo.org/923881
-	filter-lto
-
 	emake -j1 CC="$(tc-getCC)" GCC="$(tc-getCC)" CCOMP="$(tc-getCC)" all
 
 	if use emacs ; then
@@ -79,7 +80,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake -j1 DESTDIR="${D}" install
 
 	if use emacs ; then
 		cd utils/emacs || die

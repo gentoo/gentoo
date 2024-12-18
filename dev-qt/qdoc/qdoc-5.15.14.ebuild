@@ -17,7 +17,7 @@ IUSE="qml"
 
 DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*:5=
-	sys-devel/clang:=
+	llvm-core/clang:=
 	qml? ( =dev-qt/qtdeclarative-${QT5_PV}* )
 "
 RDEPEND="${DEPEND}"

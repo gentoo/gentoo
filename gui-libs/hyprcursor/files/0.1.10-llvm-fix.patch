@@ -1,0 +1,27 @@
+From f8e8455e998e0ff8b4708220006a479d1d7e4e8b Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Tue, 1 Oct 2024 01:01:47 +0200
+Subject: [PATCH] lib: add missing header for libc++ after 5a95d8512b3e
+
+libhyprcursor/hyprcursor.cpp:23:27: error: implicit instantiation of undefined template 'std::basic_stringstream<char>'
+   23 |         std::stringstream envXdgStream(envXdgData);
+      |                           ^
+/usr/include/c++/v1/__fwd/sstream.h:29:28: note: template is declared here
+   29 | class _LIBCPP_TEMPLATE_VIS basic_stringstream;
+      |                            ^
+---
+ libhyprcursor/hyprcursor.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libhyprcursor/hyprcursor.cpp b/libhyprcursor/hyprcursor.cpp
+index 3a83a26..f7fb82c 100644
+--- a/libhyprcursor/hyprcursor.cpp
++++ b/libhyprcursor/hyprcursor.cpp
+@@ -2,6 +2,7 @@
+ #include "internalSharedTypes.hpp"
+ #include "internalDefines.hpp"
+ #include <array>
++#include <sstream>
+ #include <cstdio>
+ #include <filesystem>
+ #include <zip.h>

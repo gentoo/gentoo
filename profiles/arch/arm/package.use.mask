@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-12-17)
+# dev-lang/ada-bootstrap exists here
+>=sys-devel/gcc-14 -ada
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
+# Depends on kde-plasma/kdesu-gui which is not keyworded here.
+sys-block/gparted kde
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-11)
 # depends on java packages, not keyworded on arm
 app-office/libreoffice java
@@ -9,6 +17,10 @@ media-libs/libbluray java
 media-libs/opencv java
 net-misc/plowshare javascript
 sci-libs/gdal java
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # kde-plasma/plasma-workspace:6 is not keyworded
@@ -45,11 +57,11 @@ kde-frameworks/purpose:5 kaccounts
 app-crypt/pinentry qt6
 app-office/libreoffice qt6
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-06-01)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-06-01)
 # qtnetworkauth not yet keyworded here
 dev-python/pyside6 network-auth
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
 
@@ -77,7 +89,7 @@ media-libs/zita-resampler cpu_flags_arm_neon
 # No sys-block/nbdkit on arm, yet
 app-emulation/libvirt nbd
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -105,7 +117,7 @@ sys-block/tgt rbd
 # media-libs/openpgl and media-libs/embree only supports amd64 and arm64
 media-gfx/blender embree openpgl
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-03-07)
 # nbval/nbclassic docs require pandoc which is not keyworded here yet
 dev-python/nbval doc
 dev-python/nbclassic doc
@@ -116,7 +128,7 @@ dev-python/nbclassic doc
 app-i18n/fcitx-libpinyin dictionary-manager
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
-dev-python/QtPy test
+dev-python/qtpy test
 games-util/lgogdownloader gui
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
@@ -214,10 +226,10 @@ app-text/enchant voikko
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -lsan
-sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
-sys-libs/compiler-rt-sanitizers -profile -xray
->=sys-libs/compiler-rt-sanitizers-16 -gwp-asan -libfuzzer -orc
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -cfi -scudo
+llvm-runtimes/compiler-rt-sanitizers -profile -xray
+>=llvm-runtimes/compiler-rt-sanitizers-16 -gwp-asan -libfuzzer -orc
 
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # net-wireless/libxtrx et all needs testing
@@ -426,10 +438,10 @@ mail-filter/opendkim opendbx stats
 
 # S. Suominen <ssuominen@g.o> (2014-04-17)
 # First GTK+-3.x version of EasyTAG!
-# Keyword as reqiuired, ~arch is enough for now:
+# Keyword as required, ~arch is enough for now:
 # media-libs/opusfile for USE opus
 # media-libs/opus for USE opus
-# app-text/apadata-tools for FEAATURES and USE test
+# app-text/apadata-tools for FEATURES and USE test
 # Do it! No reason to ask permission before!
 >=media-sound/easytag-2.2.0 opus test
 

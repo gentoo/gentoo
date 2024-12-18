@@ -1,0 +1,24 @@
+--- a/libs/tcpd/starttls.c	2024-11-26 08:53:04.567473386 +0100
++++ b/libs/tcpd/starttls.c	2024-11-26 08:53:25.764198066 +0100
+@@ -522,8 +522,9 @@
+ 	return (1);
+ }
+ 
+-static void child_handler()
++static void child_handler(int signum)
+ {
++        (void)signum;
+ 	alarm(10);
+ }
+ 
+--- a/libs/tcpd/tcpd.c	2024-11-26 08:54:56.315021691 +0100
++++ b/libs/tcpd/tcpd.c	2024-11-26 08:55:12.192818500 +0100
+@@ -1590,7 +1590,7 @@
+ 
+ 	if (p == 0)
+ 	{
+-		wait_restore(childsig);
++		wait_restore();
+ 
+ 		if (accesslocal) /* Lookup local interface address too? */
+ 		{

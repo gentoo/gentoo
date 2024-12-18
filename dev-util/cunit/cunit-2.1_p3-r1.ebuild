@@ -10,7 +10,7 @@ MY_PV="${PV/_p*}-3"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="C Unit Test Framework"
-HOMEPAGE="http://cunit.sourceforge.net"
+HOMEPAGE="https://cunit.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/cunit/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
@@ -27,6 +27,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1_p3-ncurses-format-security.patch
+	"${FILESDIR}"/${PN}-2.1_p3-ncurses-opaque.patch
 )
 
 src_prepare() {

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true"
 
@@ -29,7 +29,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "test? (
-	|| ( dev-ruby/activerecord:7.0 dev-ruby/activerecord:6.1 )
+	|| ( dev-ruby/activerecord:7.1 dev-ruby/activerecord:7.0 )
 	dev-ruby/sqlite3
 	dev-ruby/rexml
 )"
@@ -37,7 +37,10 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -i -e '/datetime.*created_at/ s:^:#:' -e '2igem "activerecord", "<7.1"' test/helper.rb || die
+	sed -e '/datetime.*created_at/ s:^:#:' \
+		-e '2igem "activerecord", "<7.2"' \
+		-e 's/ActiveRecord::Base.default_timezone/ActiveRecord.default_timezone/' \
+		-i test/helper.rb || die
 
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 }

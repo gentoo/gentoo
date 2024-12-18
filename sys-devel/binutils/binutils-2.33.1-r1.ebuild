@@ -144,6 +144,8 @@ src_configure() {
 	# Keep things sane
 	strip-flags
 
+	# https://sourceware.org/PR32372
+	append-cflags $(test-flags-CC -std=gnu17)
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local x

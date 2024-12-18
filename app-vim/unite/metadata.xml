@@ -14,5 +14,8 @@
 		that unite doesn't use the built-in completion interface of Vim, and integrates
 		sources at the same time.
 	</longdescription>
+	<upstream>
+		<remote-id type="vim">3396</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

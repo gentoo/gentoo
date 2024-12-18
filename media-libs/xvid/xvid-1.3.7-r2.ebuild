@@ -49,6 +49,9 @@ src_prepare() {
 multilib_src_configure() {
 	use sparc && append-cflags -mno-vis #357149
 
+	# bug #943748
+	append-cflags -std=gnu17
+
 	local myconf=(
 		--enable-pthread
 		# On x86, only available for mmx+sse2 and non-PIC.

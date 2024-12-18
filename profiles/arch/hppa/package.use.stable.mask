@@ -21,7 +21,7 @@
 # Qt 6 not stable here.
 dev-build/cmake gui
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-25)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-07-25)
 # Moved to stable.mask, issue is fixed in unstable v40
 # Sam James <sam@gentoo.org> (2024-06-19)
 # The systemd implementation of installkernel doesn't currently support
@@ -168,7 +168,7 @@ app-misc/mc spell
 net-nds/openldap smbkrb5passwd
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
-# dev-python/subunit is not stable on hppa
+# dev-python/python-subunit is not stable on hppa
 dev-libs/check subunit
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)

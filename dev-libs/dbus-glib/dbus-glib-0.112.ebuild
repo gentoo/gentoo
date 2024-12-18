@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools bash-completion-r1 multilib-minimal toolchain-funcs
+inherit autotools bash-completion-r1 flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="D-Bus bindings for glib"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -43,6 +43,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #943768
+	append-cflags -std=gnu17
+
 	local myconf=(
 		--localstatedir="${EPREFIX}"/var
 		--enable-bash-completion

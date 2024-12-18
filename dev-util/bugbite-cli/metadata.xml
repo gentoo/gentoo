@@ -13,4 +13,7 @@
 	<upstream>
 		<remote-id type="github">radhermit/bugbite</remote-id>
 	</upstream>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as a crypto backend</flag>
+	</use>
 </pkgmetadata>

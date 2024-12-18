@@ -1,0 +1,23 @@
+Merged by upstream: https://github.com/Syllo/nvtop/pull/338
+From 28328c5a6931786e57c9a205b2415114fa68a1ce Mon Sep 17 00:00:00 2001
+From: Takuya Wakazono <pastalian46@gmail.com>
+Date: Sat, 30 Nov 2024 21:54:23 +0900
+Subject: [PATCH] Include libdrm for builds with panfrost and panthor support
+
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 169e112..25e4865 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -74,7 +74,7 @@ if(AMDGPU_SUPPORT OR INTEL_SUPPORT)
+   target_sources(nvtop PRIVATE device_discovery_linux.c)
+ endif()
+ 
+-if(AMDGPU_SUPPORT OR MSM_SUPPORT)
++if(AMDGPU_SUPPORT OR MSM_SUPPORT OR PANFROST_SUPPORT OR PANTHOR_SUPPORT)
+   # Search for libdrm for AMDGPU support
+   find_package(Libdrm)
+ 

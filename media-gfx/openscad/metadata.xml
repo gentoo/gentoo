@@ -27,14 +27,17 @@
 	<flag name="experimental">
 		Enable experimental features
 	</flag>
-	<flag name="gamepad">
-		Add support for gamepads through <pkg>dev-qt/qtgamepad</pkg>
+	<flag name="glx">
+		Enable GLX to interface OpenGL and X11
 	</flag>
 	<flag name="gui">
 		Enable or disable building of the GUI
 	</flag>
 	<flag name="hidapi">
 		Build in support for HID-Class devices using <pkg>dev-libs/hidapi</pkg>
+	</flag>
+	<flag name="manifold">
+		Enable Manifold render backend via <pkg>sci-mathematics/manifold</pkg>
 	</flag>
 	<flag name="mimalloc">
 		Build using <pkg>dev-libs/mimalloc</pkg> as memory allocator

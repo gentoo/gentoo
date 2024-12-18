@@ -173,7 +173,7 @@ BDEPEND="
 	dev-libs/libxslt:0
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep "
-		dev-python/jinja[\${PYTHON_USEDEP}]
+		dev-python/jinja2[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
 		boot? (
 			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
@@ -272,7 +272,6 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/systemd-test-process-util.patch"
 	)
 
 	if ! use vanilla; then

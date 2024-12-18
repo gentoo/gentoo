@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="GNOME contact management application"
-HOMEPAGE="https://wiki.gnome.org/Design/Apps/Contacts"
+HOMEPAGE="https://apps.gnome.org/en/Contacts/"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-libs/libgee-0.10:0.8=
 	>=dev-libs/glib-2.64:2
 	>=gui-libs/gtk-4.12:4
-	>=gui-libs/libadwaita-1.4_alpha:1
+	>=gui-libs/libadwaita-1.4_alpha:1[vala]
 	>=gnome-extra/evolution-data-server-3.42:=[gnome-online-accounts?]
 	>=dev-libs/libportal-0.6:=
 	>=media-gfx/qrencode-4.1.1:=

@@ -18,6 +18,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/geolith/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/geolith/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/geolith</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2024-12-17)
+# steam-overlay packages requiring Rust.
+x11-libs/extest
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-24)
 # Requires already masked packages (dev-python/bcrypt,
 # dev-python/cryptography, dev-python/fido2, dev-python/pyopenssl)
@@ -91,7 +95,6 @@ dev-util/rustup
 dev-util/sccache
 dev-util/bindgen
 dev-util/cargo-license
-dev-util/cargo-ebuild
 dev-util/cargo-audit
 dev-util/bingrep
 dev-python/trimesh
@@ -110,7 +113,7 @@ dev-python/pyghmi
 dev-python/omemo-dr
 net-im/transwhat
 dev-python/noiseprotocol
-dev-python/mitmproxy_wireguard
+dev-python/mitmproxy-wireguard
 dev-python/magic-wormhole
 dev-python/magic-wormhole-transit-relay
 dev-python/magic-wormhole-mailbox-server
@@ -122,7 +125,7 @@ dev-python/jupyter-kernel-test
 dev-python/jellyfish
 www-apps/novnc
 dev-python/jsonmerge
-dev-python/jinja2_pluralize
+dev-python/jinja2-pluralize
 dev-python/fido2
 dev-python/github3-py
 dev-python/google-auth-oauthlib
@@ -130,7 +133,7 @@ dev-python/elasticsearch
 dev-python/dns-lexicon
 dev-python/dissononce
 dev-python/consonance
-dev-python/PyGithub
+dev-python/pygithub
 dev-python/adblock
 dev-python/pysnmp
 dev-python/pysnmp-mibs
@@ -151,6 +154,7 @@ app-text/fblog
 app-shells/nushell
 app-misc/rpick
 app-misc/skim
+app-misc/anki
 app-i18n/yaskkserv2
 app-emulation/cloud-init
 app-forensics/yara-x
@@ -177,7 +181,7 @@ app-backup/duply
 dev-util/bugbite-cli
 dev-util/cargo-nextest
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 app-emulation/virt-firmware
 
@@ -227,6 +231,7 @@ dev-python/cramjam
 dev-python/dirty-equals
 dev-python/hatch-jupyter-builder
 dev-python/inflect
+dev-python/inline-snapshot
 dev-python/ipyparallel
 dev-python/ipywidgets
 dev-python/jaraco-itertools

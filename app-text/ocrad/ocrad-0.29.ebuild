@@ -11,7 +11,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 
 BDEPEND="$(unpacker_src_uri_depends)"
 

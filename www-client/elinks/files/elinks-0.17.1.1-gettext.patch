@@ -1,0 +1,73 @@
+commit 8a7413665f7e9a6ca135c79486f0277f0dde9f7a
+Author: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date:   Wed Sep 11 09:34:16 2024 +0200
+
+    [meson] Detect if gettext has _nl_msg_cat_cntr . Refs #325
+
+diff --git a/config2.h.in b/config2.h.in
+index 41f2552a..1e6e138d 100644
+--- a/config2.h.in
++++ b/config2.h.in
+@@ -616,6 +616,9 @@
+    file. */
+ #mesondefine HAVE_NSS_COMPAT_OSSL_NSS_COMPAT_OSSL_H
+ 
++/* Define to 1 if gettext has _nl_msg_cat_cntr */
++#mesondefine HAVE_NL_MSG_CAT_CNTR
++
+ /* Define if you have off_t */
+ #mesondefine HAVE_OFF_T
+ 
+diff --git a/meson.build b/meson.build
+index e0e4d634..572b5e0e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -987,6 +987,16 @@ if compiler.compiles('int a; typeof(a) b;')
+     conf_data.set('HAVE_TYPEOF', 1)
+ endif
+ 
++if conf_data.get('CONFIG_GETTEXT') and conf_data.get('CONFIG_NLS')
++    code = '''#include <libintl.h>
++    extern int _nl_msg_cat_cntr;
++    void main() { _nl_msg_cat_cntr = 1; }
++    '''
++    if compiler.links(code, name: 'test')
++        conf_data.set('HAVE_NL_MSG_CAT_CNTR', 1)
++    endif
++endif
++
+ conf_data.set('ICONV_CONST', true)
+ 
+ sysconfdir = get_option('prefix') / get_option('sysconfdir')/'elinks'
+diff --git a/src/intl/libintl.c b/src/intl/libintl.c
+index f07c538d..a30d4ab8 100644
+--- a/src/intl/libintl.c
++++ b/src/intl/libintl.c
+@@ -217,8 +217,12 @@ set_language(int language)
+ 		}
+ 	}
+ 	env_set("LANGUAGE", LANGUAGE, -1);
+-
+-	_nl_msg_cat_cntr++;
++	{
++#ifdef HAVE_NL_MSG_CAT_CNTR
++		extern int _nl_msg_cat_cntr;
++		_nl_msg_cat_cntr++;
++#endif
++	}
+ }
+ 
+ static void
+diff --git a/src/intl/libintl.h b/src/intl/libintl.h
+index 324fe79f..c07e6e10 100644
+--- a/src/intl/libintl.h
++++ b/src/intl/libintl.h
+@@ -13,8 +13,6 @@ extern "C" {
+ extern struct module gettext_module;
+ 
+ #ifdef CONFIG_GETTEXT
+-extern int _nl_msg_cat_cntr;
+-
+ #include <libintl.h>
+ 
+ extern int current_charset;

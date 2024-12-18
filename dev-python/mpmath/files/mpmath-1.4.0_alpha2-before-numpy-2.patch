@@ -1,0 +1,22 @@
+https://github.com/mpmath/mpmath/pull/878
+https://github.com/mpmath/mpmath/commit/728db99cd92dde589dc0cbe89f7f3f444af046ad
+
+From 9dd08e59dff0a0992b92d31e4f614e43881b301d Mon Sep 17 00:00:00 2001
+From: Doug Torrance <dtorrance@piedmont.edu>
+Date: Tue, 15 Oct 2024 18:48:40 -0400
+Subject: [PATCH] Only check for NumPy array copy ValueError w/ NumPy >= 2.0
+
+No such error is raised when using NumPy < 2.0.
+--- a/mpmath/tests/test_matrices.py
++++ b/mpmath/tests/test_matrices.py
+@@ -203,7 +203,8 @@ def test_matrix_numpy():
+ 
+     if sys.version_info < (3, 9):
+         pytest.skip("latest numpy dropped support for CPython 3.8")
+-    pytest.raises(ValueError, lambda: numpy.array(matrix(l), copy=False))
++    if numpy.__version__ >= '2':
++        pytest.raises(ValueError, lambda: numpy.array(matrix(l), copy=False))
+ 
+ def test_interval_matrix_scalar_mult():
+     """Multiplication of iv.matrix and any scalar type"""
+

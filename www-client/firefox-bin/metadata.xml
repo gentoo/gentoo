@@ -6,7 +6,6 @@
     <name>Gentoo Mozilla Team</name>
   </maintainer>
   <use>
-    <flag name="alsa">When pulseaudio isn't set, this prefers apulse</flag>
     <flag name="gmp-autoupdate">
       Allow Gecko Media Plugins (binary blobs) to be automatically
       downloaded and kept up-to-date in user profiles

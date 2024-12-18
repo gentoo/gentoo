@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,11 +7,11 @@ inherit cmake xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/qTox/qTox.git"
+	EGIT_REPO_URI="https://github.com/TokTok/qTox.git"
 else
 	MY_P="qTox-${PV}"
-	SRC_URI="https://github.com/qTox/qTox/releases/download/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/TokTok/qTox/releases/download/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/qTox"
 fi
 
@@ -20,65 +20,51 @@ HOMEPAGE="https://qtox.github.io/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+spellcheck test X"
-
-RESTRICT="!test? ( test )"
+IUSE="spellcheck X"
 
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 RDEPEND="
 	dev-db/sqlcipher
 	dev-libs/libsodium:=
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5[gif(+),jpeg,png,X(-)]
-	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
+	dev-qt/qtbase:6[concurrent,gui,network,opengl,widgets,xml]
+	dev-qt/qtsvg:6
 	media-gfx/qrencode:=
 	media-libs/libexif
 	media-libs/openal
 	media-video/ffmpeg:=[webp,v4l]
-	>=net-libs/tox-0.2.13:=[av]
-	>=net-libs/toxext-0.0.3
-	>=net-libs/tox_extension_messages-0.0.3
-	spellcheck? ( kde-frameworks/sonnet:5 )
+	>=net-libs/tox-0.2.20:=[av]
+	spellcheck? (
+		|| (
+			kde-frameworks/sonnet:6[aspell]
+			kde-frameworks/sonnet:6[hunspell]
+		)
+	)
 	X? (
+		dev-qt/qtbase:6=[X]
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 	)
 "
 DEPEND="${RDEPEND}
-	test? ( dev-qt/qttest:5 )
 	X? ( x11-base/xorg-proto )
 "
 
 DOCS=( CHANGELOG.md README.md doc/user_manual_en.md )
 
-src_prepare() {
-	cmake_src_prepare
-
-	# bug 628574
-	if ! use test; then
-		sed -i CMakeLists.txt -e "/include(Testing)/d" || die
-		sed -i cmake/Dependencies.cmake -e "/find_package(Qt5Test/d" || die
-	fi
-}
-
 src_configure() {
 	local mycmakeargs=(
+		-DASAN=OFF
 		-DPLATFORM_EXTENSIONS=$(usex X)
+		-DSPELL_CHECK=$(usex spellcheck)
+		-DSTRICT_OPTIONS=OFF
+		-DSVGZ_ICON=ON
+		-DTSAN=OFF
+		-DUBSAN=ON
 		-DUPDATE_CHECK=OFF
 		-DUSE_CCACHE=OFF
-		-DSPELL_CHECK=$(usex spellcheck)
-		-DSVGZ_ICON=ON
-		-DASAN=OFF
-		-DDESKTOP_NOTIFICATIONS=OFF
-		-DSTRICT_OPTIONS=OFF
 	)
 
 	[[ ${PV} != 9999 ]] && mycmakeargs+=( -DGIT_DESCRIBE=${PV} )

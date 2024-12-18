@@ -29,7 +29,7 @@ PATCHES=(
 RDEPEND="
 	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
 	dev-python/pikepdf[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]
+	dev-python/pyqt5[${PYTHON_USEDEP},gui,widgets]
 "
 
 src_install() {

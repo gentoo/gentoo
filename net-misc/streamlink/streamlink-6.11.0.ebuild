@@ -26,7 +26,7 @@ fi
 LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
 if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 fi
 
 # See https://github.com/streamlink/streamlink/commit/9d8156dd794ee0919297cd90d85bcc11b8a28358 for chardet/charset-normalizer dep
@@ -47,7 +47,7 @@ RDEPEND="
 		>=dev-python/websocket-client-1.2.1[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
-		>dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
+		>dev-python/pysocks-1.5.7[${PYTHON_USEDEP}]
 		>=dev-python/trio-0.22.0[${PYTHON_USEDEP}]
 		>=dev-python/trio-websocket-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]

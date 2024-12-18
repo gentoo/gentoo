@@ -22,12 +22,12 @@ RESTRICT="!test? ( test ) test"
 # Note: No := on LLVM because it pulls in Clang
 # see llvm.eclass for why
 CLANG_DEPS="
-	!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
-	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )
+	!cuda? ( <llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):= )
+	cuda? ( <llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )
 "
 RDEPEND="
 	dev-libs/libltdl
-	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):*
+	<llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):*
 	virtual/opencl
 
 	${CLANG_DEPS}
@@ -44,9 +44,9 @@ llvm_check_deps() {
 	local usedep=$(usev cuda "[llvm_targets_NVPTX]")
 
 	# Clang is used at both build time (executed) and runtime
-	has_version -r "sys-devel/llvm:${LLVM_SLOT}${usedep}" && \
-		has_version -r "sys-devel/clang:${LLVM_SLOT}${usedep}" && \
-		has_version -b "sys-devel/clang:${LLVM_SLOT}${usedep}"
+	has_version -r "llvm-core/llvm:${LLVM_SLOT}${usedep}" && \
+		has_version -r "llvm-core/clang:${LLVM_SLOT}${usedep}" && \
+		has_version -b "llvm-core/clang:${LLVM_SLOT}${usedep}"
 }
 
 src_configure() {

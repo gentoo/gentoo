@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/gtkpod/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 IUSE="+gtk ios +udev"
 
 RDEPEND="

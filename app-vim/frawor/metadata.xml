@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">vim-scripts/frawor</remote-id>
+		<remote-id type="vim">3631</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

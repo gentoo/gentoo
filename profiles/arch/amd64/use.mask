@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Thomas Bettler <thomas.bettler@gmail.com> (2024-11-04)
+# media-libs/tiff only keyworded on amd64
+-lerc
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
 # media-libs/quirc is keyworded on amd64
 -quirc
@@ -28,7 +32,7 @@
 # ROCm/HIP works here
 -hip
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot
 
@@ -60,16 +64,11 @@
 # Michael Orlitzky <mjo@gentoo.org> (2018-01-07)
 # Oracle database stuff should work on amd64.
 -oci8
--oci8-instant-client
 -oracle
 
 # Sven Wegener <swegener@gentoo.org> (2017-05-31)
 # libvirt is supported on amd64
 -libvirt
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
-# dev-db/firebird is keyworded ~amd64
--firebird
 
 # Mike Gilbert <floppym@gentoo.org> (2014-10-19)
 # Requires the following packages to be keyworded/stable:
@@ -144,8 +143,6 @@
 -video_cards_nvk
 -video_cards_siliconmotion
 -video_cards_vesa
--video_cards_via
--video_cards_virtualbox
 -video_cards_vmware
 -video_cards_qxl
 

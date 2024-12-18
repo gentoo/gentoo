@@ -9,8 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Official Realtek r8125 vendor linux driver. The following cards are currently supported:
-RTL8125 RTL8125A RTL8125B(S)(G)</longdescription>
+	<longdescription>Official Realtek r8125 vendor linux driver. This driver supports NICs based on RTL8125 family.</longdescription>
 	<use>
 		<flag name="multi-tx-q">Enable Multiple Tx Queue (&#34;RSS&#34; for sending)</flag>
 		<flag name="ptp">Enable Precision Time Protocol support</flag>

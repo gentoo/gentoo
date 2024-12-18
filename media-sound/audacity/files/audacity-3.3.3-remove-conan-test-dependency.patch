@@ -9,12 +9,6 @@ Subject: [PATCH] Remove dependency on conan for unit tests
 
 These run fine with catch2 installed from system package manager; there
 is no reason to enforce conan dependency.
----
- CMakeLists.txt | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index cbe79a43b933..7b682c4e729d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -228,15 +228,11 @@ cmd_option( ${_OPT}has_url_schemes_support

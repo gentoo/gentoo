@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ofalk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 ~riscv sparc x86"
 
 DEPEND="
 	dev-libs/libdnet

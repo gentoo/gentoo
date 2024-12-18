@@ -1,0 +1,13 @@
+--- gutenprint-5.3.4.orig/src/gimp2/print.c	2024-09-17 01:59:12.666943714 -0400
++++ gutenprint-5.3.4/src/gimp2/print.c	2024-09-17 02:02:46.637482947 -0400
+@@ -114,8 +114,8 @@
+ {
+   if (gimp_thumbnail_data)
+     g_free(gimp_thumbnail_data);
+-  gint x = gimp_image_width(image_ID);
+-  gint y = gimp_image_height(image_ID);
++  gint x = gimp_image_width((gint32)(intptr_t)image_ID);
++  gint y = gimp_image_height((gint32)(intptr_t)image_ID);
+   if (*width > x)
+     *width = x;
+   if (*height > y)

@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
+
 # Ian Jordan <immoloism@gmail.com> (2024-08-22)
 # Browser uses a prebuilt binary built against glibc (bug #934005)
 media-video/obs-studio browser
@@ -12,17 +16,17 @@ gui-libs/neatvnc tracing
 gui-apps/wayvnc tracing
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
-# Requires sys-libs/libcxx.
+# Requires llvm-runtimes/libcxx.
 dev-cpp/benchmark libcxx
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-25)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-07-25)
 # Requires systemd-detect-virt
 app-emulation/virt-firmware test
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215) but it doesn't
 # work on musl.
-kde-plasma/kwin caps
+kde-plasma/kwin filecaps
 
 # Violet Purcell <vimproved@inventati.org> (2024-05-15)
 # Python does not support JIT on musl, see
@@ -36,7 +40,7 @@ dev-php/pecl-mongodb test
 dev-python/pymongo test-full
 net-analyzer/zmap mongo
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-04-25)
 # No Level-Zero on musl
 sys-apps/hwloc l0
 
@@ -67,7 +71,7 @@ dev-qt/qtbase renderdoc
 dev-debug/gdb cet
 sys-devel/binutils cet
 sys-devel/binutils-hppa64 cet
-sys-devel/clang-common cet
+llvm-core/clang-common cet
 sys-devel/gcc cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
@@ -83,7 +87,7 @@ sys-devel/binutils gprofng
 # this, however it seems to be unreliable, see bug #922897.
 gui-libs/gtk cpu_flags_x86_f16c
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-12)
 # The systemd flag is globally masked on musl. But we need
 # systemd's kernel-install to use systemd-boot which is still
 # possible on musl via systemd-utils[boot].
@@ -93,7 +97,7 @@ sys-kernel/installkernel -systemd
 # Requires dev-libs/level-zero.
 dev-lang/ispc gpu
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
 # Requires systemd
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
@@ -205,7 +209,7 @@ sys-apps/util-linux nls
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
-sys-libs/compiler-rt-sanitizers gwp-asan
+llvm-runtimes/compiler-rt-sanitizers gwp-asan
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-19)
 # check does not work on musl, bug #713138

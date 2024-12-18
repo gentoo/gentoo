@@ -1,0 +1,137 @@
+https://gitlab.com/lvmteam/lvm2/-/merge_requests/18
+
+From 25f0398b1c9d108160a39de43af6f2fa3f952db5 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 17 Nov 2024 10:45:29 -0500
+Subject: [PATCH] configure: update thin_check_needs_check logic
+
+If the user has explicitly passed a value for thin_check_needs_check,
+skip the autodetection logic entirely. Same for cache_check_needs_check.
+
+This allows lvm2 to be built consistently without having
+thin-provisioning-tools installed.
+---
+ configure.ac | 84 ++++++++++++++++++++++++++++------------------------
+ 1 file changed, 46 insertions(+), 38 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index cbea6adc6..4f77b4e6f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -422,7 +422,7 @@ dnl -- thin_check needs-check flag
+ AC_ARG_ENABLE(thin_check_needs_check,
+ 	      AS_HELP_STRING([--disable-thin_check_needs_check],
+ 			     [required if thin_check version is < 0.3.0]),
+-	      THIN_CHECK_NEEDS_CHECK=$enableval, THIN_CHECK_NEEDS_CHECK="yes")
++	      THIN_CHECK_NEEDS_CHECK=$enableval, THIN_CHECK_NEEDS_CHECK="autodetect")
+ 
+ # Test if necessary thin tools are available
+ # if not - use plain defaults and warn user
+@@ -437,20 +437,24 @@ AS_CASE(["$THIN"],
+ 			THIN_CONFIGURE_WARN="y"
+ 		])
+ 	])
+-	AS_IF([test "$THIN_CHECK_NEEDS_CHECK" = "yes" && test "$THIN_CONFIGURE_WARN" != "y"], [
+-		THIN_CHECK_VSN=$("$THIN_CHECK_CMD" -V 2>/dev/null)
+-		THIN_CHECK_VSN=${THIN_CHECK_VSN##* }  # trim away all before the first space
+-		THIN_CHECK_VSN_MAJOR=$(echo "$THIN_CHECK_VSN" | $AWK -F '.' '{print $1}')
+-		THIN_CHECK_VSN_MINOR=$(echo "$THIN_CHECK_VSN" | $AWK -F '.' '{print $2}')
+-
+-		AS_IF([test -z "$THIN_CHECK_VSN_MAJOR" || test -z "$THIN_CHECK_VSN_MINOR"], [
+-			AC_MSG_WARN([$THIN_CHECK_CMD: Bad version "$THIN_CHECK_VSN" found])
+-			THIN_CHECK_VERSION_WARN="y"
+-			THIN_CHECK_NEEDS_CHECK="no"
+-		], [test "$THIN_CHECK_VSN_MAJOR" -eq 0 && test "$THIN_CHECK_VSN_MINOR" -lt 3], [
+-			AC_MSG_WARN([$THIN_CHECK_CMD: Old version "$THIN_CHECK_VSN" found])
+-			THIN_CHECK_VERSION_WARN="y"
+-			THIN_CHECK_NEEDS_CHECK="no"
++	AS_IF([test "$THIN_CHECK_NEEDS_CHECK" = "autodetect"], [
++		AS_IF([test "$THIN_CONFIGURE_WARN" != "y"], [
++			THIN_CHECK_VSN=$("$THIN_CHECK_CMD" -V 2>/dev/null)
++			THIN_CHECK_VSN=${THIN_CHECK_VSN##* }  # trim away all before the first space
++			THIN_CHECK_VSN_MAJOR=$(echo "$THIN_CHECK_VSN" | $AWK -F '.' '{print $1}')
++			THIN_CHECK_VSN_MINOR=$(echo "$THIN_CHECK_VSN" | $AWK -F '.' '{print $2}')
++
++			AS_IF([test -z "$THIN_CHECK_VSN_MAJOR" || test -z "$THIN_CHECK_VSN_MINOR"], [
++				AC_MSG_WARN([$THIN_CHECK_CMD: Bad version "$THIN_CHECK_VSN" found])
++				THIN_CHECK_VERSION_WARN="y"
++				THIN_CHECK_NEEDS_CHECK="no"
++			], [test "$THIN_CHECK_VSN_MAJOR" -eq 0 && test "$THIN_CHECK_VSN_MINOR" -lt 3], [
++				AC_MSG_WARN([$THIN_CHECK_CMD: Old version "$THIN_CHECK_VSN" found])
++				THIN_CHECK_VERSION_WARN="y"
++				THIN_CHECK_NEEDS_CHECK="no"
++			], [
++				THIN_CHECK_NEEDS_CHECK="yes"
++			])
+ 		])
+ 	])
+ 	# Empty means a config way to ignore thin dumping
+@@ -535,7 +539,7 @@ dnl -- cache_check needs-check flag
+ AC_ARG_ENABLE(cache_check_needs_check,
+ 	      AS_HELP_STRING([--disable-cache_check_needs_check],
+ 			     [required if cache_check version is < 0.5]),
+-	      CACHE_CHECK_NEEDS_CHECK=$enableval, CACHE_CHECK_NEEDS_CHECK="yes")
++	      CACHE_CHECK_NEEDS_CHECK=$enableval, CACHE_CHECK_NEEDS_CHECK="autodetect")
+ 
+ # Test if necessary cache tools are available
+ # if not - use plain defaults and warn user
+@@ -550,30 +554,34 @@ AS_CASE(["$CACHE"],
+ 			CACHE_CONFIGURE_WARN="y"
+ 		])
+ 	])
+-	AS_IF([test "$CACHE_CHECK_NEEDS_CHECK" = "yes" && test "$CACHE_CONFIGURE_WARN" != "y"], [
+-		"$CACHE_CHECK_CMD" -V 2>/dev/null >conftest.tmp
+-		read -r CACHE_CHECK_VSN < conftest.tmp
+-		IFS=.- read -r CACHE_CHECK_VSN_MAJOR CACHE_CHECK_VSN_MINOR CACHE_CHECK_VSN_PATCH LEFTOVER < conftest.tmp
+-		rm -f conftest.tmp
+-
+-		# Require version >= 0.5.4 for --clear-needs-check-flag
+-		CACHE_CHECK_VSN_MAJOR=${CACHE_CHECK_VSN_MAJOR##* }
+-		AS_IF([test -z "$CACHE_CHECK_VSN_MAJOR" \
+-			|| test -z "$CACHE_CHECK_VSN_MINOR" \
+-			|| test -z "$CACHE_CHECK_VSN_PATCH"], [
+-			AC_MSG_WARN([$CACHE_CHECK_CMD: Bad version "$CACHE_CHECK_VSN" found])
+-			CACHE_CHECK_VERSION_WARN="y"
+-			CACHE_CHECK_NEEDS_CHECK="no"
+-		], [test "$CACHE_CHECK_VSN_MAJOR" -eq 0], [
+-			AS_IF([test "$CACHE_CHECK_VSN_MINOR" -lt 5 \
+-				|| ( test "$CACHE_CHECK_VSN_MINOR" -eq 5 && test "$CACHE_CHECK_VSN_PATCH" -lt 4 )], [
+-				AC_MSG_WARN([$CACHE_CHECK_CMD: Old version "$CACHE_CHECK_VSN" found])
++	AS_IF([test "$CACHE_CHECK_NEEDS_CHECK" = "autodetect"], [
++		AS_IF([test "$CACHE_CONFIGURE_WARN" != "y"], [
++			"$CACHE_CHECK_CMD" -V 2>/dev/null >conftest.tmp
++			read -r CACHE_CHECK_VSN < conftest.tmp
++			IFS=.- read -r CACHE_CHECK_VSN_MAJOR CACHE_CHECK_VSN_MINOR CACHE_CHECK_VSN_PATCH LEFTOVER < conftest.tmp
++			rm -f conftest.tmp
++
++			# Require version >= 0.5.4 for --clear-needs-check-flag
++			CACHE_CHECK_VSN_MAJOR=${CACHE_CHECK_VSN_MAJOR##* }
++			AS_IF([test -z "$CACHE_CHECK_VSN_MAJOR" \
++				|| test -z "$CACHE_CHECK_VSN_MINOR" \
++				|| test -z "$CACHE_CHECK_VSN_PATCH"], [
++				AC_MSG_WARN([$CACHE_CHECK_CMD: Bad version "$CACHE_CHECK_VSN" found])
+ 				CACHE_CHECK_VERSION_WARN="y"
+ 				CACHE_CHECK_NEEDS_CHECK="no"
+-			])
+-			AS_IF([test "$CACHE_CHECK_VSN_MINOR" -lt 7], [
+-				AC_MSG_WARN([$CACHE_CHECK_CMD: Old version "$CACHE_CHECK_VSN" does not support new cache format V2])
+-				CACHE_CHECK_VERSION_WARN=y
++			], [test "$CACHE_CHECK_VSN_MAJOR" -eq 0], [
++				AS_IF([test "$CACHE_CHECK_VSN_MINOR" -lt 5 \
++					|| ( test "$CACHE_CHECK_VSN_MINOR" -eq 5 && test "$CACHE_CHECK_VSN_PATCH" -lt 4 )], [
++					AC_MSG_WARN([$CACHE_CHECK_CMD: Old version "$CACHE_CHECK_VSN" found])
++					CACHE_CHECK_VERSION_WARN="y"
++					CACHE_CHECK_NEEDS_CHECK="no"
++				])
++				AS_IF([test "$CACHE_CHECK_VSN_MINOR" -lt 7], [
++					AC_MSG_WARN([$CACHE_CHECK_CMD: Old version "$CACHE_CHECK_VSN" does not support new cache format V2])
++					CACHE_CHECK_VERSION_WARN=y
++				])
++			], [
++				CACHE_CHECK_NEEDS_CHECK="yes"
+ 			])
+ 		])
+ 	])
+-- 
+2.47.0
+

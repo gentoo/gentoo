@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos"
 
 # xtools uses c++11 features, not available in gcc-apple, hence gcc/clang dep
 DEPEND="sys-devel/binutils-config
-	|| ( sys-devel/gcc:* sys-devel/clang:* )
+	|| ( sys-devel/gcc:* llvm-core/clang:* )
 	app-arch/xar
 	dev-libs/libyaml"
 RDEPEND="${DEPEND}"

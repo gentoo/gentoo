@@ -34,7 +34,7 @@ BDEPEND="
 		dev-python/python-glanceclient[${PYTHON_USEDEP}]
 		>=dev-python/oslo-config-6.1.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
-		dev-python/subunit[${PYTHON_USEDEP}]
+		dev-python/python-subunit[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 	)

@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc debug llvm-libunwind"
 
 # Upstream test suite not reliable
@@ -37,10 +37,10 @@ DEPEND="
 	dev-libs/libpcre2:=[unicode]
 	dev-libs/pcl:=
 	$(llvm_gen_dep '
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 	llvm-libunwind? (
-		sys-libs/llvm-libunwind:=
+		llvm-runtimes/libunwind:=
 	)
 	!llvm-libunwind? (
 		sys-libs/libunwind:=

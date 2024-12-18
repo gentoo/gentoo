@@ -19,13 +19,13 @@
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-09-27)
 # dev-qt/qtremoteobjects:6 has not been stabilized yet.
-dev-python/PyQt6 remoteobjects
+dev-python/pyqt6 remoteobjects
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-24)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-07-24)
 # No stable versions of ROCm at the moment
 sys-apps/hwloc rocm
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
@@ -37,7 +37,7 @@ media-libs/opencv cudnn
 # Pulls in pandoc with all of its glory (haskell). #921501
 www-apps/hugo test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
 # This is still experimental, prebuilt images may not boot on all systems.
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
@@ -62,7 +62,8 @@ dev-python/nbval -doc
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
-sys-libs/libomp llvm_targets_AMDGPU
+llvm-runtimes/offload llvm_targets_AMDGPU
+llvm-runtimes/openmp llvm_targets_AMDGPU
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable

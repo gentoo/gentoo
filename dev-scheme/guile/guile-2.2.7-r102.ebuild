@@ -9,7 +9,7 @@ SRC_URI="mirror://gnu/guile/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="$(ver_cut 1-2)"  # See (guile)Parallel Installations.
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
 REQUIRED_USE="regex" # workaround for bug 596322
 RESTRICT="strip"
@@ -104,9 +104,6 @@ src_install() {
 	mv "${ED}"/usr/share/aclocal/guile{,-"${SLOT}"}.m4 || die
 	mv "${ED}"/usr/$(get_libdir)/pkgconfig/ \
 	   "${ED}/${pcdir}" || die
-
-	[[ -f "${pcdir}"/guile-2.2.pc ]]
-	assert "failed to install .pc file?"
 
 	guile_slot_info
 

@@ -15,8 +15,8 @@ SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~x64-macos"
 
 RDEPEND="
-	sys-devel/clang:${SLOT}
-	sys-devel/lld:${SLOT}
+	llvm-core/clang:${SLOT}
+	llvm-core/lld:${SLOT}
 "
 
 src_install() {

@@ -21,7 +21,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/arrow[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

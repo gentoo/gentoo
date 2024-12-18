@@ -30,7 +30,7 @@ RDEPEND="
 "
 # See bug #847133 re binutils check
 BDEPEND="
-	|| ( >=sys-devel/binutils-2.37:* sys-devel/lld sys-devel/native-cctools )
+	|| ( >=sys-devel/binutils-2.37:* llvm-core/lld sys-devel/native-cctools )
 	kmod? ( virtual/pkgconfig )
 "
 

@@ -76,7 +76,7 @@ COMMON_DEPEND="
 		>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/httplib2[${PYTHON_USEDEP}]
-			dev-python/jinja[${PYTHON_USEDEP}]
+			dev-python/jinja2[${PYTHON_USEDEP}]
 			dev-python/markupsafe[${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/owslib[${PYTHON_USEDEP}]
@@ -84,12 +84,12 @@ COMMON_DEPEND="
 			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/pytz[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.1[${PYTHON_USEDEP}]
+			>=dev-python/qscintilla-2.10.1[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-			dev-python/PyQt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.1[qt6]
+			dev-python/pyqt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
+			>=dev-python/qscintilla-2.10.1[qt6]
 		')
 	)
 	qml? ( dev-qt/qtdeclarative:6 )
@@ -114,7 +114,7 @@ BDEPEND="${PYTHON_DEPS}
 	test? (
 		python? (
 			$(python_gen_cond_dep '
-				dev-python/PyQt6[${PYTHON_USEDEP},testlib]
+				dev-python/pyqt6[${PYTHON_USEDEP},testlib]
 				dev-python/nose2[${PYTHON_USEDEP}]
 				dev-python/mock[${PYTHON_USEDEP}]
 			')

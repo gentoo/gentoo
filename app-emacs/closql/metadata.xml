@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <description>Arsen Arsenović</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>sam@gentoo.org</email>
+    <description>Sam James</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">magit/closql</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	dev-python/cppheaderparser[${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]
 	')
 "
@@ -37,7 +37,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" \
+	python_has_version "dev-python/cppheaderparser[${PYTHON_USEDEP}]" \
 		"dev-python/ply[${PYTHON_USEDEP}]"
 }
 

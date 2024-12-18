@@ -1,0 +1,83 @@
+From dda28e63d1fb4497ad823273c511bcc0c27d137f Mon Sep 17 00:00:00 2001
+From: Xiaoqiang Wang <xiaoqiangwang@gmail.com>
+Date: Fri, 20 Sep 2024 06:41:41 +0200
+Subject: [PATCH] check return values from system call (#40)
+
+---
+ src/main.cpp        | 12 +++++++++---
+ src/qtermframe.cpp  |  4 +++-
+ src/qtermglobal.cpp |  8 +++++---
+ 3 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 9dce864..474814c 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -57,12 +57,14 @@ void sig_fatal_init();
+ void sig_fatal_handler (int sig)
+ {
+     int num, fd, i;
+-
++    ssize_t written;
+     i = 0;
+ 
+     sig_fatal_finish ();
+ 
+-    chdir (QTERM_SIG_LOG_DIR);
++    if (chdir (QTERM_SIG_LOG_DIR) == -1) {
++       return;
++    }
+ 
+     if ((fd = creat (_sig_fname, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0) {
+         i = errno;
+@@ -73,7 +75,11 @@ void sig_fatal_handler (int sig)
+ 
+     sprintf (_buf, "Hit with signal %d! Stack trace of last %d functions:\n",
+             sig, num);
+-    write (fd, _buf, strlen (_buf));
++    written = write (fd, _buf, strlen (_buf));
++    if (written == -1) {
++        close (fd);
++        return;
++    }
+ 
+     backtrace_symbols_fd (_rets, num, fd);
+ 
+diff --git a/src/qtermframe.cpp b/src/qtermframe.cpp
+index f450fae..bc19f8d 100644
+--- a/src/qtermframe.cpp
++++ b/src/qtermframe.cpp
+@@ -818,7 +818,9 @@ void Frame::keyClicked(int id)
+     } else if (strTmp[0] == '1') { // script
+         qobject_cast<Window *>(mdiArea->activeSubWindow())->runScript(strTmp.mid(1));
+     } else if (strTmp[0] == '2') { // program
+-        system((strTmp.mid(1) + " &").toLocal8Bit());
++        if (system((strTmp.mid(1) + " &").toLocal8Bit()) != 0) {
++           QMessageBox::warning(this, tr("Run program error"), tr("Error in running program '%1'").arg(strTmp));
++        }
+     }
+ }
+ 
+diff --git a/src/qtermglobal.cpp b/src/qtermglobal.cpp
+index 0bc4a86..48c36cc 100644
+--- a/src/qtermglobal.cpp
++++ b/src/qtermglobal.cpp
+@@ -852,13 +852,15 @@ void Global::openUrl(const QString & urlStr)
+         command.replace("%L",  "\"" + urlStr + "\"");
+         //cstrCmd.replace("%L",  strUrl.toLocal8Bit());
+ 
++    bool success;
+ #if !defined(_OS_WIN32_) && !defined(Q_OS_WIN32)
+     command += " &";
+-    system(command.toUtf8().data());
++    success = system(command.toUtf8().data()) == 0;
+ #else
+-    QProcess::startDetached(command);
++    succes = QProcess::startDetached(command);
+ #endif
+-
++    if (!success)
++        qDebug() << "Failed to open the url with the system command";
+ }
+ 
+ QString Global::convert(const QString & source, Global::Conversion flag)

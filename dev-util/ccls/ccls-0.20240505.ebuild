@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/MaskRay/ccls"
 
 if [[ ${PV} != *9999 ]] ; then
 	SRC_URI="https://github.com/MaskRay/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"
@@ -28,8 +28,8 @@ SLOT="0"
 DEPEND="
 	dev-libs/rapidjson
 	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 RDEPEND="${DEPEND}"

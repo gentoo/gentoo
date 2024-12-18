@@ -20,7 +20,7 @@ RUBY_S="ruby-${P}"
 
 LICENSE="|| ( BSD-2 Ruby-BSD )"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
 RDEPEND="dev-db/postgresql:*"

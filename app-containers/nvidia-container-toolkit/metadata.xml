@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>zhixu.liu@gmail.com</email>
+		<name>Z. Liu</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">NVIDIA/container-toolkit</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		NVIDIA container runtime toolkit, build and run containers leveraging
+		NVIDIA GPUs. tl;dr: nvidia-docker is deprecated because docker now has
+		native gpu support, which this package is required to use. The NVIDIA
+		Container Toolkit (formerly known as NVIDIA Docker) allows containers to
+		access full GPU acceleration. OpenGL, OpenCL and CUDA are supported for
+		production use. Vulkan support is currently in beta. This only works for
+		Linux containers running on Linux host systems with NVIDIA GPUs.
+	</longdescription>
+	<longdescription lang="zh">
+		NVIDIA容器运行时工具包，构建和运行利用NVIDIA GPU的容器。简而言之：
+		nvidia-docker已经过时，因为docker现在具有原生的GPU支持，而这个包是使用它
+		所必需的。NVIDIA容器工具包（以前称为NVIDIA Docker）允许容器访问完整的
+		GPU加速。OpenGL、OpenCL和CUDA支持生产使用。Vulkan支持目前处于测试阶段。
+		这只适用于在配备NVIDIA GPU的Linux主机系统上运行的Linux容器。
+	</longdescription>
+</pkgmetadata>

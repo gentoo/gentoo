@@ -28,9 +28,9 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	$(llvm_gen_dep '
-		sys-libs/compiler-rt:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
-		sys-devel/clang:${LLVM_SLOT}=
+		llvm-runtimes/compiler-rt:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
 	')
 "
 RDEPEND="${DEPEND}

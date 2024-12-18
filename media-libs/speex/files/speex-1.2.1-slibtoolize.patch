@@ -1,0 +1,28 @@
+https://github.com/xiph/speex/pull/24
+https://github.com/xiph/speex/commit/1de1260d24e01224df5fbb8b92893106c89bb8de
+
+From 1de1260d24e01224df5fbb8b92893106c89bb8de Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 4 Jun 2024 08:59:02 -0700
+Subject: [PATCH] configure.ac: don't use internal GNU libtool functions
+
+This doesn't work when using slibtoolize instead of GNU libtoolize and
+is not necessary anyways.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ configure.ac | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0a7d5c1c..0a631b15 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,7 +27,6 @@ AM_INIT_AUTOMAKE([foreign no-define])
+ AM_MAINTAINER_MODE([enable])
+ 
+ AC_CANONICAL_HOST
+-_LT_SET_OPTION([LT_INIT],[win32-dll])
+ LT_INIT
+ 
+ AC_C_BIGENDIAN

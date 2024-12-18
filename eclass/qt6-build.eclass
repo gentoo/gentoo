@@ -22,6 +22,7 @@ _QT6_BUILD_ECLASS=1
 	die "${ECLASS} is only to be used for building Qt6"
 
 inherit cmake flag-o-matic toolchain-funcs
+[[ ${EAPI} == 8 ]] && inherit eapi9-pipestatus
 
 # @ECLASS_VARIABLE: QT6_BUILD_TYPE
 # @DESCRIPTION:
@@ -155,6 +156,8 @@ qt6-build_src_configure() {
 		# cmake defaults to "STATUS" but Qt changes that to "NOTICE" which
 		# hides a lot of information that is useful for bug reports
 		--log-level=STATUS
+		# ...but dev messages are noisy and not really useful downstream
+		-Wno-dev
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
 		# note that if qtbase was built with tests, this is default ON
@@ -308,12 +311,16 @@ _qt6-build_sanitize_cpu_flags() {
 		avx512vp2intersect
 	)
 
+	local sanitize
+
 	# check if any known problematic -mno-* C(XX)FLAGS
-	if ! is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))"; then
-		# check if qsimd_p.h (search for "enable all") will accept -march, and
-		# further check when -march=haswell is appended (which Qt uses for some
-		# parts) given combination with other -m* could lead to partial support
-		local bad flags
+	is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))" && sanitize=1
+
+	# check if qsimd_p.h (search for "enable all") will accept -march, and
+	# further check when -march=haswell is appended (which Qt uses for some
+	# parts) given combination with other -m* could lead to partial support
+	if [[ ! -v sanitize ]]; then
+		local flags
 		for flags in '' '-march=haswell'; do
 			: "$($(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} ${flags} - <<-EOF | tail -n 1
 					#if (defined(__AVX2__) && (__BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __POPCNT__) != 6) || \
@@ -321,12 +328,28 @@ _qt6-build_sanitize_cpu_flags() {
 					bad
 					#endif
 				EOF
-				assert
+				pipestatus || die
 			)"
-			[[ ${_} == bad ]] && bad=1 && break
+			if [[ ${_} == bad ]]; then
+				sanitize=1
+				break
+			fi
 		done
-		[[ -v bad ]] || return 0 # *should* be fine as-is
 	fi
+
+	# some cpus have broken rdrand/rdseed and it's enabled regardless
+	# with -march=native, Qt detects this and fails (bug #922498)
+	if [[ ! -v sanitize ]] &&
+		! tc-is-cross-compiler &&
+		# the kernel also detects this and removes it from cpuinfo
+		[[ -r /proc/cpuinfo && $(</proc/cpuinfo) != *rdrand* ]] &&
+		tc-cpp-is-true __RDRND__ ${CXXFLAGS} ${CPPFLAGS}
+	then
+		einfo "Detected CPU with (likely) broken rdrand/rdseed (bug #922498)"
+		sanitize=1
+	fi
+
+	[[ -v sanitize ]] || return 0 # *should* be fine as-is
 
 	# determine highest(known) usable x86-64 feature level
 	local march=$(
@@ -342,7 +365,7 @@ _qt6-build_sanitize_cpu_flags() {
 			#  endif
 			#endif
 		EOF
-		assert
+		pipestatus || die
 	)
 
 	cpuflags+=("${cpuflags_filter_only[@]}")

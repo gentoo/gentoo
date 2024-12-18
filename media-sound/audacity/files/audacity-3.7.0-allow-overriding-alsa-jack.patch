@@ -1,0 +1,39 @@
+From e46dbcb9763f4367705c66009703f15ff0ff5558 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sat, 17 Dec 2022 21:13:56 +0100
+Subject: [PATCH] portmixer: Allow overriding PA_HAS_{ALSA,JACK}
+
+Not included for OSS as OSS is always included AFAICT.
+
+REBASED
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -615,6 +607,9 @@ cmd_option( ${_OPT}use_portmixer "Build PortMixer support into Audacity" On)
+ if( ${_OPT}use_portmixer )
+    set(USE_PORTMIXER Yes)
+    add_subdirectory( "lib-src/portmixer" )
++else()
++  # Suppress bogus warnings about unused variables
++  set (unusedIgnore "${PA_HAS_ALSA}${PA_HAS_JACK}${PA_HAS_OSS}")
+ endif()
+ 
+ cmd_option( ${_OPT}use_nyquist "Build Nyquist support into Audacity" On)
+--- a/lib-src/portmixer/CMakeLists.txt
++++ b/lib-src/portmixer/CMakeLists.txt
+@@ -8,9 +8,12 @@ if (UNIX AND NOT APPLE)
+    include(CheckIncludeFile)
+    set(CMAKE_REQUIRED_LIBRARIES portaudio::portaudio)
+ 
+-   check_include_file( "pa_jack.h" PA_HAS_JACK )
+-
+-   check_include_file( "pa_linux_alsa.h" PA_HAS_ALSA )
++   if ( NOT DEFINED PA_HAS_JACK )
++     check_include_file( "pa_jack.h" PA_HAS_JACK )
++   endif()
++   if ( NOT DEFINED PA_HAS_ALSA )
++     check_include_file( "pa_linux_alsa.h" PA_HAS_ALSA )
++   endif()
+    if( PA_HAS_ALSA )
+       find_package( ALSA REQUIRED QUIET )
+    endif()

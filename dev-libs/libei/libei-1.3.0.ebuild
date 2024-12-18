@@ -14,7 +14,7 @@ SRC_URI+=" https://github.com/nemequ/munit/archive/${MUNIT_COMMIT}.tar.gz -> mun
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="elogind systemd test"
 RESTRICT="!test? ( test )"
 
@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		dev-python/attrs[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 	')
 	test? (
 		$(python_gen_any_dep '
@@ -58,7 +58,7 @@ python_check_deps() {
 	fi
 	python_has_version \
 		"dev-python/attrs[${PYTHON_USEDEP}]" \
-		"dev-python/jinja[${PYTHON_USEDEP}]" \
+		"dev-python/jinja2[${PYTHON_USEDEP}]" \
 		|| return 1
 }
 

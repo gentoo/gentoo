@@ -1,0 +1,150 @@
+diff --git a/src/platform/common.h b/src/platform/common.h
+index 007f7ece..e3827d33 100644
+--- a/src/platform/common.h
++++ b/src/platform/common.h
+@@ -23,6 +23,14 @@ extern "C" {
+ 
+ using namespace std::literals;
+ 
++#if BOOST_VERSION < 108600
++#include <boost/process.hpp>
++namespace bp = boost::process;
++#else
++#include <boost/process/v1.hpp>
++namespace bp = boost::process::v1;
++#endif
++
+ struct sockaddr;
+ struct AVFrame;
+ struct AVBufferRef;
+@@ -39,7 +47,11 @@ namespace boost {
+   namespace filesystem {
+     class path;
+   }
++#if BOOST_VERSION < 108600
+   namespace process {
++#else
++  namespace process::inline v1 {
++#endif
+     class child;
+     class group;
+     template <typename Char>
+@@ -585,8 +597,8 @@ namespace platf {
+   bool
+   needs_encoder_reenumeration();
+ 
+-  boost::process::child
+-  run_command(bool elevated, bool interactive, const std::string &cmd, boost::filesystem::path &working_dir, const boost::process::environment &env, FILE *file, std::error_code &ec, boost::process::group *group);
++  bp::child
++  run_command(bool elevated, bool interactive, const std::string &cmd, boost::filesystem::path &working_dir, const bp::environment &env, FILE *file, std::error_code &ec, bp::group *group);
+ 
+   enum class thread_priority_e : int {
+     low,
+diff --git a/src/platform/linux/misc.cpp b/src/platform/linux/misc.cpp
+index 980c0804..1eed6c76 100644
+--- a/src/platform/linux/misc.cpp
++++ b/src/platform/linux/misc.cpp
+@@ -15,7 +15,6 @@
+ // lib includes
+ #include <arpa/inet.h>
+ #include <boost/asio/ip/address.hpp>
+-#include <boost/process.hpp>
+ #include <dlfcn.h>
+ #include <fcntl.h>
+ #include <ifaddrs.h>
+@@ -40,7 +39,6 @@
+ 
+ using namespace std::literals;
+ namespace fs = std::filesystem;
+-namespace bp = boost::process;
+ 
+ window_system_e window_system;
+ 
+@@ -269,7 +267,7 @@ namespace platf {
+     auto working_dir = boost::filesystem::path(std::getenv("HOME"));
+     std::string cmd = R"(xdg-open ")" + url + R"(")";
+ 
+-    boost::process::environment _env = boost::this_process::environment();
++    bp::environment _env = boost::this_process::environment();
+     std::error_code ec;
+     auto child = run_command(false, false, cmd, working_dir, _env, nullptr, ec, nullptr);
+     if (ec) {
+diff --git a/src/process.cpp b/src/process.cpp
+index 89dc4dc5..678a48f6 100644
+--- a/src/process.cpp
++++ b/src/process.cpp
+@@ -40,7 +40,6 @@
+ 
+ namespace proc {
+   using namespace std::literals;
+-  namespace bp = boost::process;
+   namespace pt = boost::property_tree;
+ 
+   proc_t proc;
+@@ -131,7 +130,7 @@ namespace proc {
+     // If the cmd path is not an absolute path, resolve it using our PATH variable
+     boost::filesystem::path cmd_path(parts.at(0));
+     if (!cmd_path.is_absolute()) {
+-      cmd_path = boost::process::search_path(parts.at(0));
++      cmd_path = bp::search_path(parts.at(0));
+       if (cmd_path.empty()) {
+         BOOST_LOG(error) << "Unable to find executable ["sv << parts.at(0) << "]. Is it in your PATH?"sv;
+         return boost::filesystem::path();
+diff --git a/src/process.h b/src/process.h
+index c8754992..771af105 100644
+--- a/src/process.h
++++ b/src/process.h
+@@ -11,8 +11,6 @@
+ #include <optional>
+ #include <unordered_map>
+ 
+-#include <boost/process.hpp>
+-
+ #include "config.h"
+ #include "platform/common.h"
+ #include "rtsp.h"
+@@ -68,7 +66,7 @@ namespace proc {
+     KITTY_DEFAULT_CONSTR_MOVE_THROW(proc_t)
+ 
+     proc_t(
+-      boost::process::environment &&env,
++      bp::environment &&env,
+       std::vector<ctx_t> &&apps):
+         _app_id(0),
+         _env(std::move(env)),
+@@ -99,7 +97,7 @@ namespace proc {
+   private:
+     int _app_id;
+ 
+-    boost::process::environment _env;
++    bp::environment _env;
+     std::vector<ctx_t> _apps;
+     ctx_t _app;
+     std::chrono::steady_clock::time_point _app_launch_time;
+@@ -107,8 +105,8 @@ namespace proc {
+     // If no command associated with _app_id, yet it's still running
+     bool placebo {};
+ 
+-    boost::process::child _process;
+-    boost::process::group _process_group;
++    bp::child _process;
++    bp::group _process_group;
+ 
+     file_t _pipe;
+     std::vector<cmd_t>::const_iterator _app_prep_it;
+diff --git a/src/system_tray.cpp b/src/system_tray.cpp
+index c34c3d75..e684ec83 100644
+--- a/src/system_tray.cpp
++++ b/src/system_tray.cpp
+@@ -33,7 +33,11 @@
+   // lib includes
+   #include "tray/tray.h"
+   #include <boost/filesystem.hpp>
++#if BOOST_VERSION < 108600
+   #include <boost/process/environment.hpp>
++#else
++  #include <boost/process/v1/environment.hpp>
++#endif
+ 
+   // local includes
+   #include "confighttp.h"

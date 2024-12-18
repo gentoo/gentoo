@@ -56,7 +56,7 @@ RDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
-			qt5? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
+			qt5? ( dev-python/pyqt5[${PYTHON_USEDEP}] )
 		')
 	)
 	qhull? ( media-libs/qhull:0= )

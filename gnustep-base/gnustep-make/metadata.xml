@@ -13,7 +13,7 @@ configuration, building, installation, and packaging.  It also allows
 the user to easily create cross-compiled binaries.
 </longdescription>
 <use>
-	<flag name="libobjc2">Enables use of the GNUstep Objective-C runtime (<pkg>gnustep-base/libobjc2</pkg>) with non-fragile ABI and <pkg>sys-devel/clang</pkg> compiler</flag>
+	<flag name="libobjc2">Enables use of the GNUstep Objective-C runtime (<pkg>gnustep-base/libobjc2</pkg>) with non-fragile ABI and <pkg>llvm-core/clang</pkg> compiler</flag>
 	<flag name="native-exceptions">Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it </flag>
 </use>
 </pkgmetadata>

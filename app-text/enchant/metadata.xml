@@ -12,6 +12,6 @@
     <flag name="voikko">Adds support for <pkg>dev-libs/libvoikko</pkg> spell checker</flag>
   </use>
   <upstream>
-    <remote-id type="github">AbiWord/enchant</remote-id>
+    <remote-id type="github">rrthomas/enchant</remote-id>
   </upstream>
 </pkgmetadata>

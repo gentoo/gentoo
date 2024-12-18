@@ -1,0 +1,39 @@
+--- a/GNUmakefile	2024-12-10 19:17:18.107965992 -0000
++++ b/GNUmakefile	2024-12-10 19:17:25.319850369 -0000
+@@ -19,7 +19,6 @@
+ LUAPATH_FN = $(shell env CC='$(subst ',\\',$(CC))' CPPFLAGS='$(subst ',\\',$(CPPFLAGS))' LDFLAGS='$(subst ',\\',$(LDFLAGS))' $(LUAPATH) -krxm3 -I '$(subst ',\\',$(DESTDIR)$(includedir))' -I/usr/include -I/usr/local/include -P '$(subst ',\\',$(DESTDIR)$(bindir))' -P '$(subst ',\\',$(bindir))' -L '$(subst ',\\',$(DESTDIR)$(libdir))' -L '$(subst ',\\',$(libdir))' -v$(1) $(2))
+ 
+ # check whether luapath can locate Lua $(1) headers
+-HAVE_API_FN = $(and $(filter $(1),$(call LUAPATH_FN,$(1),version)),$(1)$(info enabling Lua $(1)))
+ 
+ # check whether $(1) in LUA_APIS or $(LUA$(1:.=)_CPPFLAGS) is non-empty
+ WITH_API_FN = $$(and $$(or $$(filter $(1),$$(LUA_APIS)),$$(LUA$(subst .,,$(1))_CPPFLAGS)),$(1))
+@@ -168,18 +167,15 @@
+ ifeq ($(origin ALL_CFLAGS), undefined)
+ 
+ ifeq ($(VENDOR_CC_$(d)), gcc)
+-ALL_CFLAGS += -O2 -std=gnu99 -fPIC
+-ALL_CFLAGS += -g -Wall -Wextra $(call cc-option, -Wno-missing-field-initializers) $(call cc-option, -Wno-override-init) -Wno-unused
++ALL_CFLAGS +=  -std=gnu99 -fPIC
+ endif
+ 
+ ifeq ($(VENDOR_CC_$(d)), clang)
+-ALL_CFLAGS += -O2 -std=gnu99 -fPIC
+-ALL_CFLAGS += -g -Wall -Wextra -Wno-missing-field-initializers -Wno-initializer-overrides -Wno-unused -Wno-dollar-in-identifier-extension
++ALL_CFLAGS +=  -std=gnu99 -fPIC
+ endif
+ 
+ ifeq ($(VENDOR_CC_$(d)), sunpro)
+ ALL_CFLAGS += -xcode=pic13
+-ALL_CFLAGS += -g
+ #
+ # Solaris Studio supports anonymous unions just fine; but it complains
+ # incessantly about them.
+@@ -215,7 +211,6 @@
+ #
+ ifeq ($(origin ALL_LDFLAGS), undefined)
+ 
+-ALL_LDFLAGS += -L$(DESTDIR)$(libdir) -L$(libdir)
+ ALL_LDFLAGS += $(LDFLAGS)
+ 
+ endif # ALL_LDFLAGS

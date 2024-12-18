@@ -11,7 +11,6 @@
 		developed. It has support for multiple different IRCd linking protocols.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">anope</remote-id>
 		<remote-id type="github">anope/anope</remote-id>
 	</upstream>
 	<use>

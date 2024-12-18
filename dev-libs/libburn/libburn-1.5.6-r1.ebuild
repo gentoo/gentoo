@@ -21,6 +21,10 @@ DEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.6-c23.patch
+)
+
 src_prepare() {
 	default
 

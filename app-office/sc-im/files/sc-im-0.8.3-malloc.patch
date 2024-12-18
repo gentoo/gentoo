@@ -1,0 +1,21 @@
+From b6fcd0658d566dac0fa0b7e83235c8721877d7a0 Mon Sep 17 00:00:00 2001
+From: Ryan Jaskulski <ryan.jaskulski@gmail.com>
+Date: Fri, 17 May 2024 20:57:46 -0400
+Subject: [PATCH] fixed compiler error related to missing include
+
+---
+ formats/ods.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/formats/ods.c b/formats/ods.c
+index a2e701a5..f7d7372d 100644
+--- a/formats/ods.c
++++ b/formats/ods.c
+@@ -50,6 +50,7 @@
+ #include <errno.h>
+ #include <zip.h>
+ #include <libxml/parser.h>
++#include <stdlib.h>
+ 
+ #include "../tui.h"
+ #include "../cmds/cmds.h"

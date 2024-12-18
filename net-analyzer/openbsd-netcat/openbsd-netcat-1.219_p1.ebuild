@@ -47,7 +47,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" PKG_CONFIG="$(tc-getPKG_CONFIG)"
+	# gnu99 for bug #943711
+	emake CC="$(tc-getCC) -std=gnu99" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install() {

@@ -25,6 +25,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.13-pkgconfig.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	localtime_s # bug #898318
+)
+
 src_prepare() {
 	default
 

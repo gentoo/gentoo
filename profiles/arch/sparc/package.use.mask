@@ -1,9 +1,30 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-12-18)
+# dev-qt/* is not keyworded here
+app-text/doxygen gui
+dev-build/cmake gui
+
+# Sam James <sam@gentoo.org> (2024-12-17)
+# dev-lang/ada-bootstrap exists here
+>=sys-devel/gcc-14 -ada
+
+# Matt Jolly <kangie@gentoo.org> (2024-12-08)
+# dev-vcs/mercurial is not keyworded on sparc
+app-eselect/eselect-repository mercurial
+
+# Felix Janda <felix.janda@posteo.de> (2024-10-20)
+# requires dev-libs/libcss and net-libs/libdom to be keyworded
+www-client/elinks libcss
+
 # Sam James <sam@gentoo.org> (2024-10-12)
 # Exposes a kernel bug which causes system lockup (bug #899540)
 sys-libs/liburing test
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
 
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak not keyworded here
@@ -53,18 +74,9 @@ media-gfx/graphicsmagick jpeg2k
 # Requires dev-util/shelltestrunner
 app-arch/mt-st test
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-04-02)
-# dev-qt/qtsvg:6 is not keyworded here yet (bug #918896)
-dev-qt/qtdeclarative:6 svg
-
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
 # mongodb dependencies are not keyworded
 mail-mta/postfix mongodb
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-02-13)
-# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
-# is not keyworded here and currently fails tests (bug #924430).
-dev-qt/qtmultimedia:6 qml
 
 # Eray Aslan <eras@gentoo.org> (2024-02-13)
 # tests require dev-db/mongodb which is not keyworded
@@ -74,7 +86,7 @@ dev-libs/mongo-c-driver test
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -125,12 +137,6 @@ dev-python/nbconvert test
 # dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
-# Vulkan is not available on sparc.
-dev-qt/qtdeclarative vulkan
-dev-qt/qtgui vulkan
->=dev-qt/qtwayland-5.15.11:5 compositor
-
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
@@ -176,7 +182,7 @@ dev-python/nbval test
 # Needs dev-db/mariadb for tests, see entry in use.mask
 dev-python/pymysql test
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-03-07)
 # nbval/nbclassic docs require pandoc which is not keyworded here yet
 dev-python/nbval doc
 dev-python/nbclassic doc
@@ -200,6 +206,7 @@ app-crypt/gcr:4 gtk
 
 # Sam James <sam@gentoo.org> (2022-11-24)
 # Pulls in gjs which is broken on sparc, bug #882071
+dev-libs/libpeas javascript
 app-crypt/libsecret test-rust
 dev-util/glade gjs
 gnome-base/gnome-menus test
@@ -218,7 +225,7 @@ app-admin/conky doc
 dev-util/pkgcheck emacs
 
 # Sam James <sam@gentoo.org> (2022-07-27)
-# sys-devel/lld is not keyworded on sparc
+# llvm-core/lld is not keyworded on sparc
 >=dev-lang/spidermonkey-78 lto
 >=dev-lang/spidermonkey-115 clang
 
@@ -227,7 +234,7 @@ dev-util/pkgcheck emacs
 net-misc/modemmanager qrtr
 
 # Sam James <sam@gentoo.org> (2022-06-25)
-# sys-devel/lld lacks sparc support right now
+# llvm-core/lld lacks sparc support right now
 dev-lang/rust wasm
 
 # Sam James <sam@gentoo.org> (2022-06-25)
@@ -302,9 +309,9 @@ dev-cpp/eigen test
 
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
-sys-devel/clang-common default-compiler-rt default-lld
-sys-devel/clang-runtime compiler-rt
-sys-devel/llvm z3
+llvm-core/clang-common default-compiler-rt default-lld
+llvm-core/clang-runtime compiler-rt
+llvm-core/llvm z3
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
@@ -410,11 +417,7 @@ net-analyzer/pnp4nagios icinga
 net-im/pidgin gstreamer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
-# dev-qt/designer is not keyworded on sparc
-x11-libs/qwt designer
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
-# USE=bpf depends on sys-devel/clang which is not keyworded on sparc
+# USE=bpf depends on llvm-core/clang which is not keyworded on sparc
 media-libs/libv4l bpf
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
@@ -533,7 +536,7 @@ xfce-base/xfwm4 xpresent
 
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
-sys-devel/clang-runtime openmp sanitize
+llvm-core/clang-runtime openmp sanitize
 
 # Pacho Ramos <pacho@gentoo.org> (2017-02-04)
 # Missing keywords, bug #599572
@@ -574,10 +577,6 @@ dev-python/pyquery test
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
-
-# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested

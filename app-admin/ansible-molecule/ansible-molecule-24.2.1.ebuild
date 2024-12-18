@@ -39,7 +39,7 @@ RDEPEND="$(python_gen_cond_dep '
 	<dev-python/click-9[${PYTHON_USEDEP}]
 	>=dev-python/click-help-colors-0.9[${PYTHON_USEDEP}]
 	>=dev-python/enrich-1.2.7[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.11.3[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-2.11.3[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.9.1[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/pluggy-2.0[${PYTHON_USEDEP}]

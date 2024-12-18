@@ -5,7 +5,6 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-XORG_TARBALL_SUFFIX="xz"
 inherit python-any-r1 xorg-3
 
 DESCRIPTION="Library that gives human readable names to XCB error, event, & request codes"

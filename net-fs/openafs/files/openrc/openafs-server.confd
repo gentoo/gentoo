@@ -1,0 +1,7 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Add -syslog here AND in BosConfig to every daemon, if don't want to use
+# OpenAFS's own logging system
+BOSSERVER_OPTIONS=""
+

@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	|| (
 		>=sys-devel/gcc-4.2:*[openmp]
-		sys-devel/clang-runtime:*[openmp]
+		llvm-core/clang-runtime:*[openmp]
 	)
 	dev-libs/gmp:0=
 	sci-mathematics/gmp-ecm"

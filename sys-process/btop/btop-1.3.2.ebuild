@@ -19,10 +19,10 @@ pkg_setup() {
 	if [[ "${MERGE_TYPE}" != "binary" ]]; then
 		if tc-is-clang ; then
 			if [[ "$(clang-major-version)" -lt 16 ]]; then
-				die "sys-process/btop requires >=sys-devel/clang-16.0.0 to build."
+				die "sys-process/btop requires >=llvm-core/clang-16.0.0 to build."
 			fi
 		elif ! tc-is-gcc ; then
-			die "$(tc-getCXX) is not a supported compiler. Please use sys-devel/gcc or >=sys-devel/clang-16.0.0 instead."
+			die "$(tc-getCXX) is not a supported compiler. Please use sys-devel/gcc or >=llvm-core/clang-16.0.0 instead."
 		fi
 	fi
 }

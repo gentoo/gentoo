@@ -10,5 +10,8 @@
 		files, and automatic filetype detection for these files based upon
 		filename.
 	</longdescription>
+	<upstream>
+		<remote-id type="vim">2261</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

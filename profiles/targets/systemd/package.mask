@@ -1,0 +1,8 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-11-10)
+# Breaks suspend on elogind systems (bug #934314, bug #923614) but
+# works fine on systemd machines.
+# https://github.com/polkit-org/polkit/issues/451
+->=sys-auth/polkit-124

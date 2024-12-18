@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gdbm.asc
-inherit libtool multilib-minimal multiprocessing verify-sig
+inherit flag-o-matic libtool multilib-minimal multiprocessing verify-sig
 
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="https://www.gnu.org/software/gdbm/"
@@ -35,6 +35,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# https://puszcza.gnu.org.ua/bugs/index.php?642
+	append-cflags $(test-flags-CC -std=gnu17)
+
 	# gdbm doesn't appear to use either of these libraries
 	export ac_cv_lib_dbm_main=no ac_cv_lib_ndbm_main=no
 

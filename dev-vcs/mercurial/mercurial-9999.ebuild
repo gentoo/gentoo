@@ -9,6 +9,9 @@ DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
+# for stdsimd
+RUST_MAX_VER=1.77.1
+
 inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic multiprocessing
 
 DESCRIPTION="Scalable distributed SCM"
@@ -37,6 +40,10 @@ DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 SITEFILE="70${PN}-gentoo.el"
 
 RESTRICT="!test? ( test )"
+
+pkg_setup() {
+	use rust && rust_pkg_setup
+}
 
 src_unpack() {
 	mercurial_src_unpack

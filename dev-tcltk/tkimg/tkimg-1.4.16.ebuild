@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/$(ver_cut 1-2)/${PN}%20${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test static-libs"
 
 RDEPEND="

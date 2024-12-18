@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/releases/download/v${PV}/${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0/100"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="debug doc examples systemd test"
 RESTRICT="!test? ( test )"
 

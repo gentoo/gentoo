@@ -13,6 +13,8 @@ DESCRIPTION="Translates addresses into filename, line number, and function names
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
+S="${WORKDIR}"/${MYP}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -20,8 +22,6 @@ KEYWORDS="amd64 x86"
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
-
-S="${WORKDIR}"/${MYP}
 
 src_compile() {
 	gnatmake -v gnatsymbolize -cargs ${ADAFLAGS} -largs ${LDFLAGS} || die

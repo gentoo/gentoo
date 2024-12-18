@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc kerberos +native-extensions +test-full"
 
 RDEPEND="
@@ -145,7 +145,7 @@ python_test() {
 	if ! use test-full; then
 		# .invalid is guaranteed to return NXDOMAIN per RFC 6761
 		local -x DB_IP=mongodb.invalid
-		epytest
+		epytest -p asyncio
 		return
 	fi
 

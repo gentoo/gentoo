@@ -1,0 +1,37 @@
+From f87403aba3e7926ab47f4c9a821300a705b070f2 Mon Sep 17 00:00:00 2001
+Message-ID: <f87403aba3e7926ab47f4c9a821300a705b070f2.1730162536.git.sam@gentoo.org>
+In-Reply-To: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+References: <27996b32a8b0fe908effc469e5c7d496e40c6671.1730162536.git.sam@gentoo.org>
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Sun, 27 Oct 2024 02:06:59 +0000
+Subject: [PATCH 7/8] upstream: explicitly include endian.h
+
+OpenBSD-Commit-ID: 13511fdef7535bdbc35b644c90090013da43a318
+(cherry picked from commit fe8d28a7ebbaa35cfc04a21263627f05c237e460)
+---
+ kexmlkem768x25519.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/kexmlkem768x25519.c b/kexmlkem768x25519.c
+index 679446e97..2b5d39608 100644
+--- a/kexmlkem768x25519.c
++++ b/kexmlkem768x25519.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: kexmlkem768x25519.c,v 1.1 2024/09/02 12:13:56 djm Exp $ */
++/* $OpenBSD: kexmlkem768x25519.c,v 1.2 2024/10/27 02:06:59 djm Exp $ */
+ /*
+  * Copyright (c) 2023 Markus Friedl.  All rights reserved.
+  *
+@@ -34,6 +34,9 @@
+ #include <stdbool.h>
+ #include <string.h>
+ #include <signal.h>
++#ifdef HAVE_ENDIAN_H
++# include <endian.h>
++#endif
+ 
+ #include "sshkey.h"
+ #include "kex.h"
+-- 
+2.47.0
+

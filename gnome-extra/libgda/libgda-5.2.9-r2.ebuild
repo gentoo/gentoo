@@ -13,7 +13,7 @@ HOMEPAGE="https://www.gnome-db.org/"
 LICENSE="GPL-2+ LGPL-2+"
 
 SLOT="5/4" # subslot = libgda-5.0 soname version
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="berkdb canvas debug firebird keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres sourceview ssl vala"
 REQUIRED_USE="
@@ -112,6 +112,9 @@ src_prepare() {
 	# Fix build with gcc14
 	# https://github.com/gentoo/gentoo/pull/36912#issuecomment-2171657215
 	eapply "${FILESDIR}/${PN}-5.2.9-fix-gcc14.patch"
+
+	# bug #944755
+	eapply "${FILESDIR}/${PN}-5.2.9-c23.patch"
 
 	gnome2_src_prepare
 	java-pkg-opt-2_src_prepare

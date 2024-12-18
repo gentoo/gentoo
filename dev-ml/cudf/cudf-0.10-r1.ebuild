@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ml/extlib:=
 	dev-ml/findlib:=
 	dev-libs/glib:2
-	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 	sys-libs/ncurses:=
 	app-arch/zstd

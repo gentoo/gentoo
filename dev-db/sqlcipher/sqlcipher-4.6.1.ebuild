@@ -14,7 +14,7 @@ SRC_URI="https://github.com/sqlcipher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug libedit readline tcl test"
 # Testsuite requires compilation with TCL, bug #582584
 REQUIRED_USE="

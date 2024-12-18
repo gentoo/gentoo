@@ -24,6 +24,6 @@ BDEPEND="
 	~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
 	dev-python/cairocffi[${PYTHON_USEDEP}]
 	media-gfx/cairosvg[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-2.1[${PYTHON_USEDEP}]
 	dev-python/klein[${PYTHON_USEDEP}]
 "

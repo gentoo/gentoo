@@ -19,7 +19,7 @@ else
 		-> ${P}.tar.bz2"
 	S="${WORKDIR}/guile-${PV}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="BSD"

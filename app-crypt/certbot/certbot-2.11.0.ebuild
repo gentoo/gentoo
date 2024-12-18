@@ -19,7 +19,7 @@ else
 		https://github.com/certbot/certbot/archive/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Let’s Encrypt client to automate deployment of X.509 certificates"
@@ -44,7 +44,7 @@ BDEPEND="
 # See certbot/setup.py for acme >= dep
 RDEPEND="
 	>=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
-	>=dev-python/ConfigArgParse-1.5.3[${PYTHON_USEDEP}]
+	>=dev-python/configargparse-1.5.3[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]

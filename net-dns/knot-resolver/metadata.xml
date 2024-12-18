@@ -9,8 +9,17 @@
 		<flag name="kresc">
 			Build (experimental) command-line client
 		</flag>
+		<flag name="manager">
+			Manager is a user-friendly interface and a component handling rolling restarts, config update logic and more.
+		</flag>
 		<flag name="nghttp2">
 			DNS-over-HTTPS support
+		</flag>
+		<flag name="prometheus">
+			Metrics exported in Prometheus
+		</flag>
+		<flag name="xdp">
+			Enable eXpress Data Path
 		</flag>
 	</use>
 </pkgmetadata>

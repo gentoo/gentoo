@@ -25,15 +25,6 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# adjust pycryptodome and drop optional dependencies (bug #828466)
-	sed -Ei pyproject.toml \
-		-e 's/("pycryptodome)x/\1/' \
-		-e '/"(brotli.*|certifi|mutagen|requests|urllib3|websockets)/d' || die
-}
-
 python_compile() {
 	# generate missing files in live, not in compile_all nor prepare
 	# given need lazy before compile and it needs a usable ${PYTHON}

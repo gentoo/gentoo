@@ -3,7 +3,7 @@
 
 EAPI="8"
 SSL_DEPS_SKIP=1
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit cmake git-r3 ruby-single ssl-cert systemd toolchain-funcs
 
@@ -34,10 +34,9 @@ DEPEND="${RDEPEND}
 			dev-libs/onigmo
 			dev-libs/oniguruma
 		)
-		app-alternatives/yacc
-	)
-"
-BDEPEND="virtual/pkgconfig"
+	)"
+BDEPEND="virtual/pkgconfig
+	mruby? ( app-alternatives/yacc )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.3-mruby.patch )
 

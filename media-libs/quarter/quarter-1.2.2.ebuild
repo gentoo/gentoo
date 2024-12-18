@@ -12,7 +12,7 @@ S="${WORKDIR}/quarter"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug designer doc qch"
 
 REQUIRED_USE="qch? ( doc )"

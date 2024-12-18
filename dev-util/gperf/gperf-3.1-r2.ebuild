@@ -28,6 +28,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944112
+	append-cflags -std=gnu17
+
 	# Aliasing violation (bug #858377)
 	append-flags -fno-strict-aliasing
 	filter-lto

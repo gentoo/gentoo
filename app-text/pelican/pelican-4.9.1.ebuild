@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,14 +20,14 @@ SRC_URI="
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="doc examples markdown"
 
 RDEPEND="
 	>=dev-python/docutils-0.20.1[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/feedgenerator-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.1.2[${PYTHON_USEDEP}]
 	>=dev-python/ordered-set-4.1.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.16.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]

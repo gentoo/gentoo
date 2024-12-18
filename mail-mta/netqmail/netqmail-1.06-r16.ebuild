@@ -41,7 +41,7 @@ SRC_URI="http://qmail.org/${P}.tar.gz
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc64 ~s390 ~sparc ~x86"
-IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl vanilla"
+IUSE="gencertdaily highvolume pop3 qmail-spp ssl vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"
 
@@ -63,7 +63,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	sys-apps/ucspi-tcp
-	authcram? ( >=net-mail/cmd5checkpw-0.30 )
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
@@ -135,12 +134,8 @@ src_prepare() {
 	qmail_src_postunpack
 
 	# Fix bug #33818 but for netqmail (Bug 137015)
-	if ! use authcram; then
-		einfo "Disabled CRAM_MD5 support"
-		sed -e 's,^#define CRAM_MD5$,/*&*/,' -i "${S}"/qmail-smtpd.c || die
-	else
-		einfo "Enabled CRAM_MD5 support"
-	fi
+	einfo "Disabled CRAM_MD5 support"
+	sed -e 's,^#define CRAM_MD5$,/*&*/,' -i "${S}"/qmail-smtpd.c || die
 
 	ht_fix_file Makefile*
 }

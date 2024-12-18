@@ -17,6 +17,7 @@
 </longdescription>
 <stabilize-allarches/>
 <upstream>
+  <changelog>https://raw.githubusercontent.com/magit/magit/refs/heads/main/CHANGELOG</changelog>
   <remote-id type="github">magit/magit</remote-id>
 </upstream>
 </pkgmetadata>

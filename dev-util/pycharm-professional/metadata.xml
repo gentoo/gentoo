@@ -4,5 +4,6 @@
 <!-- maintainer-needed -->
 <use>
 	<flag name="bundled-jdk">Use bundled jdk</flag>
+	<flag name="bundled-xvfb">Use bundled Xvfb</flag>
 </use>
 </pkgmetadata>

@@ -73,7 +73,7 @@ SRC_URI="
 
 LICENSE="OTN"
 SLOT="0/${MY_SOVER}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 RESTRICT="mirror splitdebug test"
 
 RDEPEND="

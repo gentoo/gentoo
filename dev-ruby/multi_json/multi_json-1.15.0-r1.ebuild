@@ -43,6 +43,8 @@ all_ruby_prepare() {
 		-e '/with Oj.default_settings/,/^    end/ s:^:#:' \
 		-e '/using one-shot parser/,/^  end/ s:^:#:' \
 		-e '/jrjackson/askip "unpackaged"' \
+		-e '/\(when JSON pure is already loaded\|can set adapter for a block\)/askip "JSON pure no longer exists"' \
+		-e '/require.*pure/ s:^:#:' \
 		spec/multi_json_spec.rb
 
 	# Avoid simplecov which only works with ruby 1.9
@@ -52,7 +54,7 @@ all_ruby_prepare() {
 	sed -i -e '/coveralls/d' spec/spec_helper.rb || die
 
 	# Avoid testing unpackaged adapters
-	rm spec/{gson,nsjsonserialization,jr_jackson,oj}_adapter_spec.rb || die
+	rm spec/{gson,nsjsonserialization,jr_jackson,json_pure,oj}_adapter_spec.rb || die
 
 	# Fix expectations confused by ruby30 kwargs
 	sed -e "/expect/ s/:foo => 'bar', :fizz => 'buzz'/{:foo => 'bar', :fizz => 'buzz'}/" \

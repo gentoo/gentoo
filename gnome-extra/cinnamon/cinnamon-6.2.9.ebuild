@@ -127,6 +127,10 @@ PATCHES=(
 	# Fix path for settings panels on arm64
 	# https://github.com/linuxmint/cinnamon/pull/12278
 	"${FILESDIR}/${PN}-6.2.0-fix-arm64-settings-panel-path.patch"
+
+	# Remove reference to non-existant gtk-doc file
+	# https://github.com/linuxmint/cinnamon/commit/1e43299b9ad548c9395edfd456cbba017ca02b9f
+	"${FILESDIR}/${PN}-6.2.0-remove-gtk-doc-recorder.patch"
 )
 
 src_prepare() {

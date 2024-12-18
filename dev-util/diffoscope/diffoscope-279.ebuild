@@ -16,7 +16,7 @@ SRC_URI="https://diffoscope.org/archive/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="acl binutils bzip2 libcaca colord cpio +diff docx dtc e2fsprogs file
 find gettext gif gpg haskell hdf5 hex imagemagick iso java llvm lzma
 mono opendocument pascal pdf postscript R rpm sqlite squashfs
@@ -30,7 +30,7 @@ RDEPEND="
 	)
 	dev-python/libarchive-c[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
-	dev-python/tlsh[${PYTHON_USEDEP}]
+	dev-python/python-tlsh[${PYTHON_USEDEP}]
 	acl? ( sys-apps/acl )
 	binutils? ( sys-devel/binutils )
 	bzip2? ( app-arch/bzip2 )
@@ -52,7 +52,7 @@ RDEPEND="
 	imagemagick? ( media-gfx/imagemagick )
 	iso? ( app-cdr/cdrtools )
 	java? ( virtual/jdk )
-	llvm? ( sys-devel/llvm )
+	llvm? ( llvm-core/llvm )
 	lzma? ( app-arch/xz-utils )
 	mono? ( dev-lang/mono )
 	opendocument? ( app-text/odt2txt )

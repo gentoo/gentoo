@@ -46,10 +46,6 @@ If have audio/video playback issues, note to look at GStreamer plugins.
 Notably USE=ffmpeg on media-plugins/gst-plugins-meta which Proton normally
 provide by default.
 
-Note that upstream may not be interested in bug reports without first
-reproducing using the actual Steam+Proton rather than this custom
-standalone build (esp. if lacking certain things like dxvk).
-
 ---
 
 If have other Wine variants installed, remember to either use `eselect wine`

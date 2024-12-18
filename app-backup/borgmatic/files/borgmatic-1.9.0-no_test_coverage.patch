@@ -1,0 +1,18 @@
+no test coverage
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 6197d3df..713554e9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -50,7 +50,7 @@ skip-string-normalization = true
+ 
+ [tool.pytest.ini_options]
+ testpaths = "tests"
+-addopts = "--cov-report term-missing:skip-covered --cov=borgmatic --ignore=tests/end-to-end"
++addopts = "--ignore=tests/end-to-end"
+ 
+ [tool.isort]
+ profile = "black"
+-- 
+2.45.2
+

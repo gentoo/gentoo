@@ -72,7 +72,11 @@ src_unpack() {
 		if [[ ${PV} != 9999 ]] ; then
 			EGIT_BRANCH=binutils-$(ver_cut 1)_$(ver_cut 2)-branch
 		fi
-		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
+		EGIT_REPO_URI="
+			https://sourceware.org/git/binutils-gdb.git
+			https://git.sr.ht/~sourceware/binutils-gdb
+			https://gitlab.com/x86-binutils/binutils-gdb.git
+		"
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
@@ -126,10 +130,6 @@ pkgversion() {
 
 multilib_src_configure() {
 	filter-lto
-
-	# Workaround for lld-17 (bug #914640)
-	# Should be able to drop this w/ >=binutils-2.43
-	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t

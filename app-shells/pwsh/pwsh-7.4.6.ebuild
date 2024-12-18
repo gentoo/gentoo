@@ -246,7 +246,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 arm arm64"
 IUSE="gui vanilla"
 
 # TODO: "LibraryImports.g.cs", "PSVersionInfo.g.cs" not found.
@@ -351,7 +351,7 @@ src_prepare() {
 
 src_compile() {
 	einfo 'Copying DLL files for the missing "ref" directory'
-	edotnet fsi "${FILESDIR}/pwsh-7.3.3-copy-ref.fsx" "${WORKDIR}/${P}_ref"
+	efsi "${FILESDIR}/pwsh-7.3.3-copy-ref.fsx" "${WORKDIR}/${P}_ref"
 
 	dotnet-pkg_src_compile
 }

@@ -12,4 +12,7 @@
 		passing for interprocessor communication. It assumes matrices are laid out
 		in a two-dimensional block cyclic decomposition.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Reference-ScaLAPACK/scalapack</remote-id>
+	</upstream>
 </pkgmetadata>

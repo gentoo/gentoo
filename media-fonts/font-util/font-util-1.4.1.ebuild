@@ -3,7 +3,6 @@
 
 EAPI=8
 
-XORG_TARBALL_SUFFIX="xz"
 XORG_PACKAGE_NAME="util"
 inherit xorg-3
 

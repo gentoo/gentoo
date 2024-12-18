@@ -11,7 +11,7 @@ SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/16/06/85/fddc1d5996d0cab4dc
 S="${WORKDIR}/${MY_P}"
 LICENSE="EPSON LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 QA_FLAGS_IGNORED="/usr/lib64/libescpr2.so.1.0.0"
 

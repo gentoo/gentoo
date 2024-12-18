@@ -47,7 +47,7 @@ RDEPEND="
 		>=dev-python/websocket-client-1.2.1[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
-		>dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
+		>dev-python/pysocks-1.5.7[${PYTHON_USEDEP}]
 		>=dev-python/trio-0.22.0[${PYTHON_USEDEP}]
 		>=dev-python/trio-websocket-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]
@@ -59,6 +59,7 @@ BDEPEND="
 		>=dev-python/versioningit-2.0.0[${PYTHON_USEDEP}]
 		test? (
 			>=dev-python/freezegun-1.0.0[${PYTHON_USEDEP}]
+			dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 			dev-python/pytest-trio[${PYTHON_USEDEP}]
 			dev-python/requests-mock[${PYTHON_USEDEP}]
 		)

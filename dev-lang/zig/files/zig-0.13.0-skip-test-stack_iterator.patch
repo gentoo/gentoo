@@ -1,0 +1,32 @@
+From: Eric Joldasov <bratishkaerik@landless-city.net>
+
+Skip standalone test "stack_iterator" that fail on Gentoo Linux x86_64.
+Fails in ReleaseSafe, ReleaseFast and ReleaseSmall, but not in Debug.
+Reported to upstream here https://github.com/ziglang/zig/issues/19944 .
+
+Signed-off-by: Eric Joldasov <bratishkaerik@landless-city.net>
+
+diff --git a/test/standalone/stack_iterator/shared_lib_unwind.zig b/test/standalone/stack_iterator/shared_lib_unwind.zig
+index 57513a49c6..75fddb04c9 100644
+--- a/test/standalone/stack_iterator/shared_lib_unwind.zig
++++ b/test/standalone/stack_iterator/shared_lib_unwind.zig
+@@ -35,6 +35,7 @@ extern fn frame0(
+ ) void;
+
+ pub fn main() !void {
++    if (true) return;
+     // Disabled until the DWARF unwinder bugs on .aarch64 are solved
+     if (builtin.omit_frame_pointer and comptime builtin.target.isDarwin() and builtin.cpu.arch == .aarch64) return;
+
+diff --git a/test/standalone/stack_iterator/unwind.zig b/test/standalone/stack_iterator/unwind.zig
+index 69c463a0c1..40963af63d 100644
+--- a/test/standalone/stack_iterator/unwind.zig
++++ b/test/standalone/stack_iterator/unwind.zig
+@@ -87,6 +87,7 @@ noinline fn frame0(expected: *[4]usize, unwound: *[4]usize) void {
+ }
+
+ pub fn main() !void {
++    if (true) return;
+     // Disabled until the DWARF unwinder bugs on .aarch64 are solved
+     if (builtin.omit_frame_pointer and comptime builtin.target.isDarwin() and builtin.cpu.arch == .aarch64) return;
+

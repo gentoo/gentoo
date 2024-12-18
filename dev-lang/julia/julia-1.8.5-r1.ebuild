@@ -67,6 +67,7 @@ CHECKREQS_DISK_BUILD="4G"
 PATCHES=(
 	"${DISTDIR}"/${PN}-0b211609.patch
 	"${DISTDIR}"/${PN}-a48ad530.patch
+	"${FILESDIR}"/${PN}-1.8.5-cstdint-includes.patch
 	"${FILESDIR}"/${PN}-1.8.0-llvm-no-bindings.patch
 	"${FILESDIR}"/${PN}-1.8.3-gcc13.patch
 )

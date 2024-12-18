@@ -72,6 +72,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# https://github.com/telmich/gpm/issues/48
+	append-cflags $(test-flags-CC -std=gnu17)
+
 	# bug #885323
 	# src/headers/daemon.h:175:25: error: type of ‘cinfo’ does not match original declaration [-Werror=lto-type-mismatch]
 	filter-lto

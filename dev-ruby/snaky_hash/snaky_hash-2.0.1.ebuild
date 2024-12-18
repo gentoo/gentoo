@@ -18,7 +18,7 @@ RUBY_S="snaky_hash-v${PV}"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 IUSE="test"
 
 ruby_add_rdepend "

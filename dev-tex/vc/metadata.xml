@@ -16,4 +16,7 @@
   The vc bundle works with LaTeX and plain TeX. Currently, Bazaar, Git,
   Mercurial and Subversion are supported.
 </longdescription>
+<upstream>
+  <remote-id type="ctan">vc</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,0 +1,24 @@
+diff --git a/configure.ac b/configure.ac
+index 5f3adb5..0c544c8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -126,6 +126,7 @@ AC_CHECK_PROGS([M4], [m4])
+ AC_CHECK_PROG(PERL, perl, perl)
+ 
+ AC_SYS_LARGEFILE
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ if test "${enable_create_device}" = "yes"; then
+ 	AC_CHECK_PROGS([MKNOD], [mknod])
+diff --git a/swsusp.h b/swsusp.h
+index 5f89902..6f4863e 100644
+--- a/swsusp.h
++++ b/swsusp.h
+@@ -9,6 +9,7 @@
+  *
+  */
+ 
++#include "config.h"
+ #include <stdint.h>
+ #include <linux/fs.h>
+ #include <linux/suspend_ioctls.h>

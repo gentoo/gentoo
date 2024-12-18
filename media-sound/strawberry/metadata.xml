@@ -6,11 +6,14 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
+		<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg></flag>
+		<flag name="loudness">Enable loudness normalisation according to the EBU R128 standard using <pkg>media-libs/libebur128</pkg></flag>
 		<flag name="moodbar">Enable moodbar support</flag>
 		<flag name="soup">Allow streaming with <pkg>media-plugins/gst-plugins-soup</pkg></flag>
+		<flag name="streaming">Enable Online Streaming Support</flag>
+		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">jonaski/strawberry</remote-id>
+		<remote-id type="github">strawberrymusicplayer/strawberry</remote-id>
 	</upstream>
 </pkgmetadata>

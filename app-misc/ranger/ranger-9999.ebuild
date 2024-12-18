@@ -13,8 +13,11 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
 else
-	SRC_URI="https://github.com/ranger/ranger/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+	SRC_URI="
+		https://github.com/ranger/ranger/archive/v${PV}.tar.gz
+			-> ${P}.gh.tar.gz
+	"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 fi
 
 DESCRIPTION="Vim-inspired file manager for the console"

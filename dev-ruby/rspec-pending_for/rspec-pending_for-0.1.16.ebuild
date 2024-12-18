@@ -17,7 +17,7 @@ SRC_URI="https://github.com/pboling/rspec-pending_for/archive/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 ruby_add_rdepend "
 	dev-ruby/rspec-core

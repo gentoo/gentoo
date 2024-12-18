@@ -28,22 +28,26 @@ DEPEND="
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
 	vulkan? ( dev-util/vulkan-headers )
 "
+BDEPEND="
+	~dev-qt/qtshadertools-${PV}:6
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
 	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
-	"${FILESDIR}"/${PN}-6.7.2-gcc15.patch
 )
 
 CMAKE_SKIP_TESTS=(
-	# collada support is disabled in system media-libs/assimp (bug #891787)
+	# needs off-by-default assimp[collada] that is masked on some profiles,
+	# not worth the extra trouble
 	tst_qquick3dassetimport
 )
 
 src_configure() {
 	local mycmakeargs=(
 		# TODO: if someone wants it, openxr should likely have its own
-		# USE and be packaged rather than use the bundled copy
+		# USE and be packaged rather than use the bundled copy (if use
+		# bundled, note need to setup python-any-r1)
 		-DQT_FEATURE_quick3dxr_openxr=OFF
 		-DQT_FEATURE_system_assimp=ON
 		-DQT_FEATURE_system_openxr=ON

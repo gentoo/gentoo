@@ -4,13 +4,6 @@ Date: Sat, 17 Dec 2022 21:13:56 +0100
 Subject: [PATCH] portmixer: Allow overriding PA_HAS_{ALSA,JACK}
 
 Not included for OSS as OSS is always included AFAICT.
----
- CMakeLists.txt                   | 3 +++
- lib-src/portmixer/CMakeLists.txt | 9 ++++++---
- 2 files changed, 9 insertions(+), 3 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 42e765691..c18a939e6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -624,6 +624,9 @@ cmd_option( ${_OPT}use_portmixer "Build PortMixer support into Audacity" On)
@@ -23,8 +16,6 @@ index 42e765691..c18a939e6 100644
  endif()
  
  cmd_option( ${_OPT}use_nyquist "Build Nyquist support into Audacity" On)
-diff --git a/lib-src/portmixer/CMakeLists.txt b/lib-src/portmixer/CMakeLists.txt
-index 65a384fa0..1ddc8ed50 100644
 --- a/lib-src/portmixer/CMakeLists.txt
 +++ b/lib-src/portmixer/CMakeLists.txt
 @@ -8,9 +8,12 @@ if (UNIX AND NOT APPLE)

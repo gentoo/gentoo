@@ -39,6 +39,7 @@ inherit flag-o-matic toolchain-funcs toolchain
 
 DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
+S="${WORKDIR}"/${MYP}
 
 LICENSE+=" GPL-2 GPL-3"
 KEYWORDS="amd64 x86"
@@ -47,8 +48,6 @@ RESTRICT="test"
 
 RDEPEND="!=sys-devel/gcc-${TOOLCHAIN_GCC_PV}*"
 BDEPEND=sys-devel/binutils
-
-S="${WORKDIR}"/${MYP}
 
 pkg_pretend() {
 	toolchain_pkg_pretend

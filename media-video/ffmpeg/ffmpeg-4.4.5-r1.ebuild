@@ -64,7 +64,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -305,7 +305,7 @@ BDEPEND+="
 	>=dev-build/make-3.81
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
-	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
+	cuda? ( >=llvm-core/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
 	test? ( net-misc/wget app-alternatives/bc )
 "
@@ -348,6 +348,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.4-glslang.patch
 	"${FILESDIR}"/${PN}-4.4.4-amd-av1-vaapi.patch
 	"${FILESDIR}"/${PN}-4.4.5-incmptbl-pntr-types.patch
+	"${FILESDIR}"/${PN}-4.4.5-wint-inconversion-libgcrypt.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

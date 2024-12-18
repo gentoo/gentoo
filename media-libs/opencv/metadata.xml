@@ -15,7 +15,7 @@
 	Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
 	</longdescription>
 	<use>
-		<flag name="atlas">Use <pkg>sci-libs/atlas</pkg> for blas, lapack and sparse blas routines</flag>
+		<flag name="atlas">Use <pkg>sci-libs/atlas</pkg> for blas, lapack and sparse blas routines (Experimental!)</flag>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
 		<flag name="contribcvv">Enable CVV in contrib (requires Qt5)</flag>
 		<flag name="contribdnn">Enable DNN module contrib (requires tinydnn)</flag>
@@ -42,10 +42,13 @@
 		<flag name="tbb">Enable multithreading with the Intel Threads Building Block (<pkg>dev-cpp/tbb</pkg>)</flag>
 		<flag name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
+		<flag name="truetype">Enable <pkg>media-libs/freetype</pkg> support for gapi module</flag>
 		<flag name="video_cards_intel">Enable Video Acceleration API for hardware decoding for Intel cards</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
 	</use>
 	<upstream>
+		<changelog>https://github.com/opencv/opencv/wiki/ChangeLog</changelog>
+		<doc>https://docs.opencv.org</doc>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
 		<remote-id type="github">opencv/opencv</remote-id>
 		<remote-id type="github">opencv/opencv_contrib</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-devel/clang"
+RDEPEND="llvm-core/clang"
 
 src_prepare() {
 	default

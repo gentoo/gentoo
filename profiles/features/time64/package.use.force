@@ -1,5 +1,0 @@
-# Copyright 2024 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-21)
-sys-devel/gcc time64

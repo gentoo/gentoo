@@ -1,6 +1,10 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
+# sci-libs/caffe2 is not keyworded on arm64
+sci-chemistry/gromacs nnpot
+
 # Benda Xu <heroxbd@gentoo.org> (2024-10-10)
 # dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on riscv
 sys-cluster/slurm nvml ucx
@@ -52,7 +56,7 @@ media-gfx/openvdb alembic
 # No sys-block/nbdkit on riscv, yet
 app-emulation/libvirt nbd
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -65,7 +69,7 @@ media-libs/libplacebo -shaderc
 sys-apps/openrc s6
 sys-apps/openrc-navi s6
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-08-30)
 # Avoid keywording more Qt stuff
 dev-python/pyside2 datavis
 
@@ -93,9 +97,9 @@ sys-block/tgt rbd
 
 # jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
 # Sanitizers supported on riscv64.
-sys-libs/compiler-rt-sanitizers -asan -lsan
->=sys-libs/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
->=sys-libs/compiler-rt-sanitizers-19 -ubsan -scudo
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan
+>=llvm-runtimes/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
+>=llvm-runtimes/compiler-rt-sanitizers-19 -ubsan -scudo
 
 # Yixun Lan <dlan@gentoo.org> (2023-02-16)
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
@@ -144,7 +148,7 @@ dev-libs/cyrus-sasl berkdb
 # Avoid dragging in "heavy"  parts of dev-qt/* unless/until
 # somebody needs them. bug #816981, bug #854261.
 # Unfortunately, tests demand qtwebengine too.
-dev-python/QtPy test
+dev-python/qtpy test
 
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available

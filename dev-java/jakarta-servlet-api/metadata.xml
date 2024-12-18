@@ -5,6 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<doc>https://jakarta.ee/specifications/servlet/</doc>
 		<remote-id type="github">jakartaee/servlet</remote-id>
 	</upstream>
 	<slots>

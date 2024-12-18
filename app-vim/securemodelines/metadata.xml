@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ciaranm/securemodelines</remote-id>
+		<remote-id type="vim">1876</remote-id>
 	</upstream>
 </pkgmetadata>

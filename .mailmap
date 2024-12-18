@@ -5,11 +5,6 @@
 # Use "grep -v '^#' .mailmap | LC_ALL=en_US.utf-8 sort".
 Alexey Shvetsov <alexxy@gentoo.org> <alexxy@omrb.pnpi.spb.ru>
 Alexey Sokolov <alexey+gentoo@asokolov.org> <sokolov@google.com>
-Andrew Ammerlaan <andrewammerlaan@gentoo.org> <aammerlaan@science.ru.nl>
-Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@gentoo.org>
-Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@riseup.net>
-Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrew.ammerlaan@ru.nl>
-Andrew Ammerlaan <andrewammerlaan@gentoo.org> <nowa-ammerlaan@riseup.net>
 Arsen Arsenović <arsen@gentoo.org> <arsen@aarsen.me>
 Christopher Bayliss <cjbdev@icloud.com> <cjb@cjb.sh>
 Eric Joldasov <bratishkaerik@landless-city.net> BratishkaErik <bratishkaerik@getgoogleoff.me>
@@ -24,6 +19,12 @@ Martin Dummer <martin.dummer@gmx.net> <martin.dummer@ts.fujitsu.com>
 Michal Privoznik <michal.privoznik@gmail.com> Michal Prívozník <michal.privoznik@gmail.com>
 Michal Privoznik <michal.privoznik@gmail.com> <miso.privoznik@gmail.com>
 Michal Privoznik <michal.privoznik@gmail.com> <mprivozn@redhat.com>
+Nils Freydank <holgersson@posteo.de> <nils.freydank@posteo.de>
+Nowa Ammerlaan <nowa@gentoo.org> <aammerlaan@science.ru.nl>
+Nowa Ammerlaan <nowa@gentoo.org> <andrewammerlaan@gentoo.org>
+Nowa Ammerlaan <nowa@gentoo.org> <andrewammerlaan@riseup.net>
+Nowa Ammerlaan <nowa@gentoo.org> <andrew.ammerlaan@ru.nl>
+Nowa Ammerlaan <nowa@gentoo.org> <nowa-ammerlaan@riseup.net>
 Petr Vaněk <arkamar@gentoo.org> <arkamar () atlas ! cz>
 Petr Vaněk <arkamar@gentoo.org> <arkamar@atlas.cz>
 Petr Vaněk <arkamar@gentoo.org> <pv@excello.cz>

@@ -38,6 +38,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needed for tricky configure tests w/ C23 (bug #943727)
+	export CC="$(tc-getCC) -std=gnu89"
 	# Needed for Clang 16
 	append-flags -std=gnu89
 

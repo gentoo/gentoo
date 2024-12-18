@@ -1,0 +1,115 @@
+https://bugs.gentoo.org/945827
+https://bugs.webkit.org/show_bug.cgi?id=283750
+https://github.com/WebKit/WebKit/commit/1cfbdd74e97ea29636ce442322b5399b43937401
+
+From 9cd50ae71cd463145529f86ca0306319cc9a4321 Mon Sep 17 00:00:00 2001
+From: Philippe Normand <philn@igalia.com>
+Date: Wed, 27 Nov 2024 07:20:41 -0800
+Subject: [PATCH] [WPE][GTK] Build fixes for gbm disabled and release logs
+ disabled https://bugs.webkit.org/show_bug.cgi?id=283750
+
+* Source/WebCore/Modules/mediastream/PeerConnectionBackend.cpp:
+(WebCore::PeerConnectionBackend::PeerConnectionBackend):
+* Source/WebCore/Modules/mediastream/PeerConnectionBackend.h:
+* Source/WebCore/Modules/mediastream/gstreamer/GStreamerMediaEndpoint.cpp:
+(WebCore::GStreamerMediaEndpoint::startRTCLogs):
+* Source/WebCore/platform/graphics/gstreamer/GStreamerCommon.cpp:
+* Source/WebCore/platform/graphics/gstreamer/mse/MediaSourcePrivateGStreamer.h:
+(WKWPE::ViewPlatform::ViewPlatform):
+
+Cherrypicked https://commits.webkit.org/287124@main to 2.46.4
+--- a/Source/WebCore/Modules/mediastream/PeerConnectionBackend.cpp
++++ b/Source/WebCore/Modules/mediastream/PeerConnectionBackend.cpp
+@@ -165,6 +165,10 @@ PeerConnectionBackend::PeerConnectionBackend(RTCPeerConnection& peerConnection)
+         m_shouldFilterICECandidates = page->webRTCProvider().isSupportingMDNS();
+ #endif
+ 
++#if RELEASE_LOG_DISABLED
++    m_logIdentifierString = makeString(hex(reinterpret_cast<uintptr_t>(this)));
++#endif
++
+ #if !RELEASE_LOG_DISABLED && (PLATFORM(WPE) || PLATFORM(GTK))
+     m_jsonFilePath = String::fromUTF8(getenv("WEBKIT_WEBRTC_JSON_EVENTS_FILE"));
+     if (!m_jsonFilePath.isEmpty())
+--- a/Source/WebCore/Modules/mediastream/PeerConnectionBackend.h
++++ b/Source/WebCore/Modules/mediastream/PeerConnectionBackend.h
+@@ -281,8 +281,8 @@ private:
+ #if !RELEASE_LOG_DISABLED
+     Ref<const Logger> m_logger;
+     const void* m_logIdentifier;
+-    String m_logIdentifierString;
+ #endif
++    String m_logIdentifierString;
+     bool m_finishedGatheringCandidates { false };
+     bool m_isProcessingLocalDescriptionAnswer { false };
+ 
+--- a/Source/WebCore/Modules/mediastream/gstreamer/GStreamerMediaEndpoint.cpp
++++ b/Source/WebCore/Modules/mediastream/gstreamer/GStreamerMediaEndpoint.cpp
+@@ -2228,7 +2228,9 @@ std::optional<bool> GStreamerMediaEndpoint::canTrickleIceCandidates() const
+ void GStreamerMediaEndpoint::startRTCLogs()
+ {
+     m_isGatheringRTCLogs = true;
++#if !RELEASE_LOG_DISABLED
+     startLoggingStats();
++#endif
+ }
+ 
+ void GStreamerMediaEndpoint::stopRTCLogs()
+--- a/Source/WebCore/platform/graphics/gstreamer/GStreamerCommon.cpp
++++ b/Source/WebCore/platform/graphics/gstreamer/GStreamerCommon.cpp
+@@ -1726,7 +1726,7 @@ void gstStructureFilterAndMapInPlace(GstStructure* structure, Function<bool(GstI
+ #endif
+ }
+ 
+-#if !GST_CHECK_VERSION(1, 24, 0)
++#if USE(GBM) && !GST_CHECK_VERSION(1, 24, 0)
+ static GstVideoFormat drmFourccToGstVideoFormat(uint32_t fourcc)
+ {
+     switch (fourcc) {
+@@ -1761,7 +1761,7 @@ static GstVideoFormat drmFourccToGstVideoFormat(uint32_t fourcc)
+     RELEASE_ASSERT_NOT_REACHED();
+     return GST_VIDEO_FORMAT_UNKNOWN;
+ }
+-#endif // !GST_CHECK_VERSION(1, 24, 0)
++#endif // USE(GBM) && !GST_CHECK_VERSION(1, 24, 0)
+ 
+ #if USE(GBM)
+ GRefPtr<GstCaps> buildDMABufCaps()
+@@ -1805,7 +1805,7 @@ GRefPtr<GstCaps> buildDMABufCaps()
+                 gst_value_list_append_and_take_value(&supportedFormats, &value);
+             }
+         }
+-#else
++#elif USE(GBM)
+         GValue value = G_VALUE_INIT;
+         g_value_init(&value, G_TYPE_STRING);
+         g_value_set_string(&value, gst_video_format_to_string(drmFourccToGstVideoFormat(format.fourcc)));
+@@ -1815,7 +1815,7 @@ GRefPtr<GstCaps> buildDMABufCaps()
+ 
+ #if GST_CHECK_VERSION(1, 24, 0)
+     gst_caps_set_value(caps.get(), "drm-format", &supportedFormats);
+-#else
++#elif USE(GBM)
+     gst_caps_set_value(caps.get(), "format", &supportedFormats);
+ #endif
+     g_value_unset(&supportedFormats);
+--- a/Source/WebCore/platform/graphics/gstreamer/mse/MediaSourcePrivateGStreamer.h
++++ b/Source/WebCore/platform/graphics/gstreamer/mse/MediaSourcePrivateGStreamer.h
+@@ -93,13 +93,14 @@ private:
+ #if !RELEASE_LOG_DISABLED
+     Ref<const Logger> m_logger;
+     const void* m_logIdentifier;
++#endif
++
+     uint64_t m_nextSourceBufferID { 0 };
+ 
+     // Stores known track IDs, so we can work around ID collisions between multiple source buffers.
+     // The registry is placed here to enforce ID uniqueness specifically by player, not by process,
+     // since its not an issue if multiple players use the same ID, and we want to preserve IDs as much as possible.
+     HashSet<TrackID, WTF::IntHash<TrackID>, WTF::UnsignedWithZeroKeyHashTraits<TrackID>> m_trackIdRegistry;
+-#endif
+ };
+ 
+ } // namespace WebCore
+-- 
+2.47.1

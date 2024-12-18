@@ -11,7 +11,7 @@ SRC_URI="https://bino3d.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-qt/qtbase:6[gui,opengl,widgets]

@@ -35,7 +35,7 @@ RDEPEND="
 	dev-libs/pugixml
 	>=media-libs/openexr-3:0=
 	>=media-libs/openimageio-2.3.12.0:=
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	<llvm-core/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	sys-libs/zlib:=
 	python? (
 		${PYTHON_DEPS}
@@ -64,7 +64,7 @@ BDEPEND="
 "
 
 llvm_check_deps() {
-	has_version -r "sys-devel/clang:${LLVM_SLOT}"
+	has_version -r "llvm-core/clang:${LLVM_SLOT}"
 }
 
 pkg_setup() {

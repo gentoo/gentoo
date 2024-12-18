@@ -10,7 +10,9 @@
 memcached
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# Needs bug #918896 for missing Qt6 keywords
+# dev-qt/* is not keyworded here, and is mostly known buggy so that is
+# unlikely to change without real interest (e.g. bug #914033, #916867).
+qt5
 qt6
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-17)
@@ -232,10 +234,6 @@ alsa_cards_wavefront
 # if a sub-profile want's it, it can -use.mask it
 multilib
 
-# Ben de Groot <yngwin@gentoo.org> (2009-02-11)
-# Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
-phonon
-
 # nvidia toolkit for binary drivers
 cg
 
@@ -247,12 +245,8 @@ opencl
 unwind
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
-# sys-devel/llvm is not keyworded, bug #320221
+# llvm-core/llvm is not keyworded, bug #320221
 llvm
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp
-
-# Ben de Groot <yngwin@gentoo.org> (2015-02-01)
-# please remove when keyworded
-qt5

@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-11-19)
+# Not ported to musl (bug #717252, bug #938613)
+sys-apps/dog
+
+# Robert Siebeck <gentoo.2019@r123.de> (2024-10-30)
+# musl not supported by upstream
+app-editors/zed
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-24)
 # Using a glibc interface, and with that on musl pretty much useless
 sys-auth/nss-mdns
@@ -15,7 +23,7 @@ net-nds/nsscache
 
 # Sam James <sam@gentoo.org> (2024-09-30)
 # Needs porting to musl (bug #940130)
-=sys-auth/elogind-255.5
+=sys-auth/elogind-255.5-r1
 
 # Sam James <sam@gentoo.org> (2024-08-31)
 # sys-devel/binutils[gprofng] is masked on musl
@@ -209,7 +217,7 @@ www-client/chromium
 net-misc/netkit-telnetd
 net-misc/sitecopy
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-20)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
 app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
@@ -353,7 +361,7 @@ sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
 www-apps/chromedriver-bin
-www-apps/grafana-bin
+<www-apps/grafana-bin-11.2
 www-apps/jellyfin-bin
 www-apps/kibana-bin
 www-client/firefox-bin

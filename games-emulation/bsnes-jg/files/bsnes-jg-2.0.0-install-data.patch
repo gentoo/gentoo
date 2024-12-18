@@ -1,0 +1,53 @@
+Upstream-PR: https://gitlab.com/jgemu/bsnes/-/merge_requests/431
+Upstream-Commit: https://gitlab.com/jgemu/bsnes/-/commit/a94bae4241ffe91f868fb0e359686769e05b7d3c
+
+From a94bae4241ffe91f868fb0e359686769e05b7d3c Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 2 Nov 2024 10:12:49 -0700
+Subject: [PATCH] build: fix installing data files with the example
+
+During install with DISABLE_MODULE=1 and ENABLE_EXAMPLE=1 it will fail
+to install the .bml files.
+---
+ Makefile | 8 ++++----
+ mk/jg.mk | 6 ++++++
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7371ff4..5a7800b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -236,10 +236,10 @@ $(DATA_BIN_TARGET): $(DATA_BASE:%=$(SOURCEDIR)/%) $(BIN_OUT)/.tag
+ 
+ install-data: all
+ 	@mkdir -p $(DESTDIR)$(DATADIR)/jollygood/$(NAME)
+-	cp $(NAME)/boards.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
+-	cp $(NAME)/BSMemory.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
+-	cp $(NAME)/SufamiTurbo.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
+-	cp $(NAME)/SuperFamicom.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
++	cp $(DATA_OUT)/boards.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
++	cp $(DATA_OUT)/BSMemory.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
++	cp $(DATA_OUT)/SufamiTurbo.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
++	cp $(DATA_OUT)/SuperFamicom.bml $(DESTDIR)$(DATADIR)/jollygood/$(NAME)/
+ 
+ install-docs::
+ 	cp $(DEPDIR)/byuuML/LICENSE $(DESTDIR)$(DOCDIR)/LICENSE-byuuML
+diff --git a/mk/jg.mk b/mk/jg.mk
+index 5086d35..a6789b4 100644
+--- a/mk/jg.mk
++++ b/mk/jg.mk
+@@ -143,6 +143,12 @@ else
+ 	endif
+ endif
+ 
++ifeq (,$(filter 0,$(ENABLE_EXAMPLE) $(DISABLE_MODULE)))
++	override DATA_OUT := $(BIN_OUT)
++else
++	override DATA_OUT := $(NAME)
++endif
++
+ ifeq ($(INSTALL_SHARED), 0)
+ 	override HEADERS :=
+ 	override SYMBOLS_LIST :=
+-- 
+GitLab

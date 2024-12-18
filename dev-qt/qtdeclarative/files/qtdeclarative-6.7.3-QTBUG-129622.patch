@@ -1,0 +1,84 @@
+https://bugreports.qt.io/browse/QTBUG-129622
+https://bugs.kde.org/show_bug.cgi?id=493854
+https://codereview.qt-project.org/c/qt/qtdeclarative/+/598853
+--- a/src/quick/items/qquickitemview.cpp
++++ b/src/quick/items/qquickitemview.cpp
+@@ -2481,5 +2481,7 @@
+                 QQuickItemPrivate::get(item->item)->setCulled(true);
+             }
+-            if (!isClearing)
++            // If deleteLater was called, the item isn't long for this world and so we shouldn't store references to it.
++            // This can happen when a Repeater is used to populate items in SwipeView's ListView contentItem.
++            if (!isClearing && !QObjectPrivate::get(item->item)->deleteLaterCalled)
+                 unrequestedItems.insert(item->item, model->indexOf(item->item, q));
+         } else if (flags & QQmlInstanceModel::Destroyed) {
+--- a/tests/auto/quickcontrols/controls/data/tst_swipeview.qml
++++ b/tests/auto/quickcontrols/controls/data/tst_swipeview.qml
+@@ -5,4 +5,5 @@
+ import QtTest
+ import QtQuick.Controls
++import QtQuick.Layouts
+ 
+ TestCase {
+@@ -761,3 +762,61 @@
+         compare(item2.x, swipeListView.width)
+     }
++
++    Component {
++        id: zeroSizeSwipeViewWithRepeatersComponent
++
++        Item {
++            objectName: "rootItem"
++            anchors.fill: parent
++
++            property alias swipeView: swipeView
++            property int d
++
++            Timer {
++                interval: 2
++                running: true
++                repeat: false
++                onTriggered: d = 2
++            }
++
++            SwipeView {
++                id: swipeView
++                contentItem.objectName: "swipeViewListView"
++
++                Repeater {
++                    objectName: "swipeViewContentItemRepeater"
++                    model: [
++                        {
++                            title: d
++                        }
++                    ]
++
++                    delegate: GridLayout {
++                        objectName: "gridLayoutDelegate"
++
++                        Repeater {
++                            id: repeater
++                            objectName: "delegateRepeater"
++                            model: d
++                            delegate: Item {
++                                objectName: "delegate" + index
++
++                                required property int index
++                            }
++                        }
++                    }
++                }
++            }
++        }
++    }
++
++    // QTBUG-129622
++    function test_zeroSizeSwipeViewWithRepeaters() {
++        let root = createTemporaryObject(zeroSizeSwipeViewWithRepeatersComponent, testCase)
++        verify(root)
++
++        let swipeView = root.swipeView
++        tryCompare(root, "d", 2)
++        // Shouldn't crash when the model is changed.
++    }
+ }

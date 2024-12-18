@@ -28,7 +28,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="X autotype browser doc keeshare +network test yubikey"
+IUSE="X autotype browser doc keeshare +keyring +network +ssh-agent test yubikey"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="autotype? ( X )"
@@ -96,10 +96,10 @@ src_configure() {
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_BROWSER_PASSKEYS="$(usex browser)"
 		-DWITH_XC_BOTAN3=ON
-		-DWITH_XC_FDOSECRETS=ON
+		-DWITH_XC_FDOSECRETS="$(usex keyring)"
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
 		-DWITH_XC_NETWORKING="$(usex network)"
-		-DWITH_XC_SSHAGENT=ON
+		-DWITH_XC_SSHAGENT="$(usex ssh-agent)"
 		-DWITH_XC_UPDATECHECK=OFF
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 		-DWITH_XC_X11="$(usex X)"

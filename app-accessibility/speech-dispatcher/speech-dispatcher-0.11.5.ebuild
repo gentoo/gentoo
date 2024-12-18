@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit python-r1 systemd
+inherit flag-o-matic python-r1 systemd
 
 DESCRIPTION="Speech synthesis interface"
 HOMEPAGE="https://freebsoft.org/speechd"
@@ -35,6 +35,9 @@ BDEPEND="
 	virtual/pkgconfig"
 
 src_configure() {
+	# bug #944193
+	append-cflags -std=gnu17
+
 	# bug 573732
 	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
 

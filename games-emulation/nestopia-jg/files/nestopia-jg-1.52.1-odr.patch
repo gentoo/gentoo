@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/945404
+https://gitlab.com/jgemu/nestopia/-/commit/7f6b5bf12e02011533c054d587dba6297defe868
+
+From 7f6b5bf12e02011533c054d587dba6297defe868 Mon Sep 17 00:00:00 2001
+From: Rupert Carmichael <5050061-carmiker@users.noreply.gitlab.com>
+Date: Sat, 30 Nov 2024 11:24:58 -0500
+Subject: [PATCH] NstVideoRenderer: Move filter disable defines into the Video
+ API header
+
+---
+ src/NstVideoRenderer.cpp | 6 ------
+ src/api/NstApiVideo.hpp  | 5 +++++
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/src/NstVideoRenderer.cpp b/src/NstVideoRenderer.cpp
+index 22ac092..e55d264 100644
+--- a/src/NstVideoRenderer.cpp
++++ b/src/NstVideoRenderer.cpp
+@@ -22,18 +22,12 @@
+ //
+ ////////////////////////////////////////////////////////////////////////////////////////
+ 
+-#define NST_NO_SCALEX 1
+-#define NST_NO_HQ2X 1
+-#define NST_NO_2XSAI 1
+-#define NST_NO_XBR 1
+-
+ #include <cstring>
+ #include <cmath>
+ #include <new>
+ #include "NstCore.hpp"
+ #include "NstAssert.hpp"
+ #include "NstFpuPrecision.hpp"
+-#include "api/NstApiVideo.hpp"
+ #include "NstVideoRenderer.hpp"
+ #include "NstVideoFilterNone.hpp"
+ 
+diff --git a/src/api/NstApiVideo.hpp b/src/api/NstApiVideo.hpp
+index 4b137ae..30bd9fb 100644
+--- a/src/api/NstApiVideo.hpp
++++ b/src/api/NstApiVideo.hpp
+@@ -39,6 +39,11 @@
+ #pragma warning( disable : 4512 )
+ #endif
+ 
++#define NST_NO_SCALEX 1
++#define NST_NO_HQ2X 1
++#define NST_NO_2XSAI 1
++#define NST_NO_XBR 1
++
+ namespace Nes
+ {
+ 	namespace Core
+-- 
+GitLab
+

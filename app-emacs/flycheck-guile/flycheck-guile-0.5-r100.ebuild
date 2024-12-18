@@ -14,7 +14,7 @@ SRC_URI="https://github.com/flatwhatson/${PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 REQUIRED_USE="${GUILE_REQUIRED_USE}"
 
 BDEPEND="

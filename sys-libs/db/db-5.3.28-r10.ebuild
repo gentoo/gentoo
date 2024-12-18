@@ -21,15 +21,15 @@ RESTRICT="!test? ( test )"
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
-HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
-SRC_URI="http://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
+HOMEPAGE="https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
+SRC_URI="https://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
 for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
-	SRC_URI+=" http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
+	SRC_URI+=" https://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
 done
 
 LICENSE="Sleepycat"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -113,6 +113,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943726
+	append-cflags -std=gnu17
 	# Force bfd before calling multilib_toolchain_setup
 	tc-ld-force-bfd #470634 #729510
 	multilib-minimal_src_configure

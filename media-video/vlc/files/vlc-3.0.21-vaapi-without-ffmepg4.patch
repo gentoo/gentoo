@@ -1,0 +1,18 @@
+avcodec_vaapi requires ffmpeg-4, but other vaapi modules can be built
+
+diff --git a/configure.ac b/configure.ac
+index 69beb77..c7f7142 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2454,9 +2454,9 @@ AS_IF([test "${have_vaapi}" = "yes" -a "${have_avcodec}" = "yes"], [
+     have_avcodec_vaapi="yes"
+   ],[
+     AS_IF([test -n "${enable_libva}"], [
+-      AC_MSG_ERROR([libva is present but libavcodec/vaapi.h is missing])
++      AC_MSG_WARN([libva is present but libavcodec/vaapi.h is missing])
+     ], [
+-      AC_MSG_WARN([libva is present but libavcodec/vaapi.h is missing ])
++      AC_MSG_NOTICE([libva is present but libavcodec/vaapi.h is missing ])
+     ])
+   ])
+   VLC_RESTORE_FLAGS

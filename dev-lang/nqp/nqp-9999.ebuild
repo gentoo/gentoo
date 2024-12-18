@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-11 )"
 DEPEND="${CDEPEND}"
 BDEPEND="${CDEPEND}
-	clang? ( sys-devel/clang )
+	clang? ( llvm-core/clang )
 	java? ( >=virtual/jdk-11 )
 	dev-lang/perl"
 

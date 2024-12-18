@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="acct-user/ossec
 DEPEND="${RDEPEND}
 	test? (
 		dev-libs/check
-		dev-python/subunit
+		dev-python/python-subunit
 	)"
 S="${WORKDIR}/${P}/src"
 

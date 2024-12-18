@@ -20,6 +20,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/jgrf/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/jgrf/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/jgrf</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -88,6 +88,8 @@ kde-apps
 kde-frameworks
 kde-misc
 kde-plasma
+llvm-core
+llvm-runtimes
 lxde-base
 lxqt-base
 mail-client

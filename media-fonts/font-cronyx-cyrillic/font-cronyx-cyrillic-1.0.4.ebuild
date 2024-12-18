@@ -3,7 +3,6 @@
 
 EAPI=8
 FONT_OPENTYPE_COMPAT=1
-XORG_TARBALL_SUFFIX="xz"
 XORG_PACKAGE_NAME="cronyx-cyrillic"
 inherit xorg-3
 

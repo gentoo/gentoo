@@ -75,7 +75,7 @@ X_RDEPS="
 #   https://sourceforge.net/p/giflib/bugs/132/
 RDEPEND="
 	app-arch/bzip2
-	>=media-video/ffmpeg-4.0:=[vdpau?]
+	>=media-video/ffmpeg-5.1:=[vdpau?]
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	a52? ( media-libs/a52dec )
@@ -124,7 +124,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:= )
 	pnm? ( media-libs/netpbm )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	rar? (
 		|| (
 			app-arch/unrar
@@ -191,8 +191,13 @@ REQUIRED_USE="
 	vidix? ( X )
 	xinerama? ( X )
 	xscreensaver? ( X )
-	xv? ( X )"
+	xv? ( X )
+"
 RESTRICT="faac? ( bindist )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5_p20241125-c99.patch
+)
 
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
@@ -300,7 +305,6 @@ src_configure() {
 		--disable-libnut
 		--disable-libopus
 		--disable-svga --disable-svgalib_helper
-		--disable-xvmc
 		$(use_enable network networking)
 		$(use_enable joystick)
 	)

@@ -21,10 +21,10 @@ RESTRICT="!test? ( test )"
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
-HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
-SRC_URI="http://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
+HOMEPAGE="https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
+SRC_URI="https://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
 for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
-	SRC_URI+=" http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
+	SRC_URI+=" https://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
 done
 
 LICENSE="Sleepycat"
@@ -112,6 +112,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943726
+	append-cflags -std=gnu17
 	# Force bfd before calling multilib_toolchain_setup
 	tc-ld-force-bfd #470634 #729510
 	multilib-minimal_src_configure

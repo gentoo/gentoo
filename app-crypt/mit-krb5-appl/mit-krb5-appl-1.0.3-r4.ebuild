@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="openafs-krb5-a BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~m68k ~mips ~ppc ppc64 ~s390 sparc x86"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND=">=app-crypt/mit-krb5-1.8.0

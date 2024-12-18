@@ -29,6 +29,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	MAKEOPTS+=" -j1" # bug #943866
+
 	# multilib for default search paths
 	sed -i -e "s:/usr/lib/vamp:${EPREFIX}/usr/$(get_libdir)/vamp:" \
 		src/vamp-hostsdk/PluginHostAdapter.cpp || die

@@ -1,12 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+inherit flag-o-matic
+
 MY_PV="${PV//./-}"
 DESCRIPTION="Spellchecker wrapping library"
-HOMEPAGE="https://abiword.github.io/enchant/"
-SRC_URI="https://github.com/AbiWord/enchant/releases/download/${PN}-${MY_PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/rrthomas/enchant"
+SRC_URI="https://github.com/rrthomas/enchant/releases/download/${PN}-${MY_PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -39,6 +41,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #932436
+	append-cflags -std=gnu89
+
 	local myconf=(
 		--datadir="${EPREFIX}"/usr/share/enchant-1
 		--disable-static

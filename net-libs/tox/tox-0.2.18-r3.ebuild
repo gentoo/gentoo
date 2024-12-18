@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 		acct-group/tox
 		acct-user/tox
 	)
-	key-utils? ( || ( sys-devel/gcc[openmp] sys-devel/clang-runtime[openmp] ) )"
+	key-utils? ( || ( sys-devel/gcc[openmp] llvm-core/clang-runtime[openmp] ) )"
 
 src_prepare() {
 	cmake_src_prepare

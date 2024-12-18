@@ -60,7 +60,7 @@ dev-tex/abntex lyx
 # additional dev-qt/qtwebengine revdeps.
 kde-frameworks/purpose:5 kaccounts
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
 
@@ -72,7 +72,7 @@ sys-kernel/installkernel -efistub
 # net-libs/paho-mqtt-c is only available for amd64 and x86
 app-admin/syslog-ng -mqtt
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-02-09)
 # Refind is only available on a subset of arches
 sys-kernel/installkernel -refind
 
@@ -82,7 +82,7 @@ sys-kernel/installkernel -refind
 # supporting this arch.
 net-libs/xrootd xrdec
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
@@ -92,8 +92,8 @@ media-libs/libplacebo -shaderc
 
 # Michał Górny <mgorny@gentoo.org> (2023-09-19)
 # dev-cpp/cpp-httplib is keyworded here.
-dev-debug/lldb -debuginfod
-sys-devel/llvm -debuginfod
+llvm-core/lldb -debuginfod
+llvm-core/llvm -debuginfod
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
@@ -137,9 +137,10 @@ media-tv/mythtv nvdec
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
 app-i18n/fcitx-libpinyin dictionary-manager
+app-misc/anki gui
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
-dev-python/QtPy test
+dev-python/qtpy test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
@@ -256,11 +257,11 @@ app-text/pdfpc gstreamer
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
-sys-libs/compiler-rt-sanitizers -asan -lsan
-sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
-sys-libs/compiler-rt-sanitizers -gwp-asan
-sys-libs/compiler-rt-sanitizers -profile
->=sys-libs/compiler-rt-sanitizers-16 -libfuzzer
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
+llvm-runtimes/compiler-rt-sanitizers -gwp-asan
+llvm-runtimes/compiler-rt-sanitizers -profile
+>=llvm-runtimes/compiler-rt-sanitizers-16 -libfuzzer
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
 # - aesni plugin is supported on x86
@@ -522,7 +523,7 @@ www-client/links -suid
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2010-11-28)
-# sys-devel/llvm is keyworded on x86
+# llvm-core/llvm is keyworded on x86
 media-libs/mesa -llvm
 
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)

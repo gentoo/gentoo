@@ -19,6 +19,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/gambatte/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/gambatte/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/gambatte</remote-id>
 	</upstream>
 </pkgmetadata>

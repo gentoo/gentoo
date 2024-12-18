@@ -6,12 +6,6 @@
 		<name>ML</name>
 	</maintainer>
 	<use>
-		<flag name="glade" restrict="&lt;dev-ml/lablgtk-3">
-			Enable <pkg>gnome-base/libglade</pkg> bindings compilation
-		</flag>
-		<flag name="gnomecanvas" restrict="&lt;dev-ml/lablgtk-3">
-			Enable <pkg>gnome-base/libgnomecanvas</pkg> bindings compilation
-		</flag>
 		<flag name="sourceview">
 			Enable GtkSourceView (<pkg>x11-libs/gtksourceview</pkg>) support
 		</flag>

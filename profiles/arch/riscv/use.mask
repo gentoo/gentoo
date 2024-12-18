@@ -11,7 +11,7 @@
 -ecl
 -gcl
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot
 

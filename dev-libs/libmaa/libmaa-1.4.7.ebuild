@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/dict/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
 
 BDEPEND="dev-util/mk-configure"
 

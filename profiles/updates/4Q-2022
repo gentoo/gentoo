@@ -7,4 +7,3 @@ move dev-python/retworkx dev-python/rustworkx
 move dev-lang/open-cobol dev-lang/gnucobol
 move virtual/awk app-alternatives/awk
 move virtual/yacc app-alternatives/yacc
-move dev-python/nuitka dev-python/Nuitka

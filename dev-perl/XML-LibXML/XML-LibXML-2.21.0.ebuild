@@ -47,6 +47,10 @@ PERL_RM_FILES=(
 	"t/11memory.t"
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.21.0-libxml2-2.13.patch
+)
+
 src_compile() {
 	export SKIP_SAX_INSTALL=1
 	perl-module_src_compile

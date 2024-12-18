@@ -55,7 +55,7 @@ RDEPEND="
 			dev-python/distro[${PYTHON_USEDEP}]
 			fax? ( dev-python/reportlab[${PYTHON_USEDEP}] )
 			qt5? (
-				>=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}]
+				>=dev-python/pyqt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}]
 				libnotify? ( dev-python/notify2[${PYTHON_USEDEP}] )
 			)
 			scanner? (

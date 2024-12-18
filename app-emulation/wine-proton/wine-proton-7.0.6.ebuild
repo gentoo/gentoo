@@ -12,10 +12,10 @@ WINE_GECKO=2.47.3
 WINE_MONO=7.4.0
 WINE_PV=$(ver_rs 2 -)
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ValveSoftware/wine.git"
-	EGIT_BRANCH="experimental_$(ver_cut 1-2)"
+	EGIT_BRANCH="bleeding-edge"
 else
 	SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
 	S="${WORKDIR}/${PN}-wine-${WINE_PV}"
@@ -76,7 +76,7 @@ WINE_COMMON_DEPEND="
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	unwind? (
-		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
+		llvm-libunwind? ( llvm-runtimes/libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
@@ -247,6 +247,9 @@ src_configure() {
 	use custom-cflags || strip-flags # can break in obscure ways at runtime
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
+	# broken with gcc-15's c23 default (TODO: try w/o occasionally, bug #943849)
+	append-cflags -std=gnu17
+
 	# temporary workaround for tc-ld-force-bfd not yet enforcing with mold
 	# https://github.com/gentoo/gentoo/pull/28355
 	[[ $($(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) == mold* ]] &&
@@ -371,6 +374,13 @@ pkg_postinst() {
 			ewarn "applications under ${PN} will likely not be usable."
 		fi
 	fi
+
+	ewarn
+	ewarn "Warning: please consider ${PN} provided as-is without real"
+	ewarn "support. Upstream does not want bug reports unless can reproduce"
+	ewarn "with real Steam+Proton, and Gentoo is largely unable to help"
+	ewarn "unless it is a build/packaging issue. So, if need support, try"
+	ewarn "normal Wine or Proton instead."
 
 	eselect wine update --if-unset || die
 }
