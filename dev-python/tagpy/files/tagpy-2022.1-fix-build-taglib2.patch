@@ -1,0 +1,235 @@
+https://github.com/palfrey/tagpy/pull/16.patch
+diff --git a/src/wrapper/basics.cpp b/src/wrapper/basics.cpp
+index b84f672..d58f7e0 100644
+--- a/src/wrapper/basics.cpp
++++ b/src/wrapper/basics.cpp
+@@ -80,15 +80,15 @@ namespace
+       String album() const { return this->get_override("album")(); }
+       String comment() const { return this->get_override("comment")(); }
+       String genre() const { return this->get_override("genre")(); }
+-      TagLib::uint year() const { return this->get_override("year")(); }
+-      TagLib::uint track() const { return this->get_override("track")(); }
++      uint year() const { return this->get_override("year")(); }
++      uint track() const { return this->get_override("track")(); }
+       void setTitle(const String &v) const { this->get_override("setTitle")(v); }
+       void setArtist(const String &v) const { this->get_override("setArtist")(v); }
+       void setAlbum(const String &v) const { this->get_override("setAlbum")(v); }
+       void setComment(const String &v) const { this->get_override("setComment")(v); }
+       void setGenre(const String &v) const { this->get_override("setGenre")(v); }
+-      void setYear(TagLib::uint i) const { this->get_override("setYear")(i); }
+-      void setTrack(TagLib::uint i) const { this->get_override("setTrack")(i); }
++      void setYear(uint i) const { this->get_override("setYear")(i); }
++      void setTrack(uint i) const { this->get_override("setTrack")(i); }
+   };
+ 
+ 
+@@ -169,7 +169,7 @@ BOOST_PYTHON_MODULE(_tagpy)
+   {
+     typedef AudioProperties cl;
+     class_<AudioPropertiesWrap, boost::noncopyable>("AudioProperties", no_init)
+-      .add_property("length", &cl::length)
++      .add_property("length", &cl::lengthInSeconds)
+       .add_property("bitrate", &cl::bitrate)
+       .add_property("sampleRate", &cl::sampleRate)
+       .add_property("channels", &cl::channels)
+diff --git a/src/wrapper/common.hpp b/src/wrapper/common.hpp
+index 2fbdf74..febaa16 100644
+--- a/src/wrapper/common.hpp
++++ b/src/wrapper/common.hpp
+@@ -129,7 +129,7 @@ namespace {
+   // List
+   // -------------------------------------------------------------
+   template<typename Value>
+-  Value &List_getitem(List<Value> &l, TagLib::uint i)
++  Value &List_getitem(List<Value> &l, uint i)
+   {
+     if (i >= l.size())
+     {
+@@ -140,7 +140,7 @@ namespace {
+   }
+ 
+   template<typename Value>
+-  void List_setitem(List<Value> &l, TagLib::uint i, Value v)
++  void List_setitem(List<Value> &l, uint i, Value v)
+   {
+     if (i >= l.size())
+     {
+@@ -177,7 +177,7 @@ namespace {
+   // PointerList
+   // -------------------------------------------------------------
+   template<typename Value>
+-  Value *&PointerList_getitem(List<Value *> &l, TagLib::uint i)
++  Value *&PointerList_getitem(List<Value *> &l, uint i)
+   {
+     if (i >= l.size())
+     {
+@@ -188,7 +188,7 @@ namespace {
+   }
+ 
+   template<typename Value>
+-  void PointerList_setitem(List<Value *> &l, TagLib::uint i, auto_ptr<Value> v)
++  void PointerList_setitem(List<Value *> &l, uint i, auto_ptr<Value> v)
+   {
+     if (i >= l.size())
+     {
+diff --git a/src/wrapper/id3.cpp b/src/wrapper/id3.cpp
+index cc0eb53..74d5923 100644
+--- a/src/wrapper/id3.cpp
++++ b/src/wrapper/id3.cpp
+@@ -58,7 +58,7 @@ namespace
+ 
+   void id3v2_Tag_addFrame(ID3v2::Tag &t, ID3v2::Frame *f)
+   {
+-    ID3v2::Frame *f_clone = ID3v2::FrameFactory::instance()->createFrame(f->render());
++    ID3v2::Frame *f_clone = ID3v2::FrameFactory::instance()->createFrame(f->render(), t.header());
+     t.addFrame(f_clone);
+   }
+ 
+@@ -71,7 +71,7 @@ namespace
+   #define MF_OL(MF, MIN, MAX) \
+   BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(MF##_overloads, MF, MIN, MAX);
+ 
+-  MF_OL(createFrame, 1, 2);
++  MF_OL(createFrame, 2, 2);
+   MF_OL(volumeAdjustmentIndex, 0, 1);
+   MF_OL(volumeAdjustment, 0, 1);
+   MF_OL(peakVolume, 0, 1);
+@@ -121,15 +121,12 @@ void exposeID3()
+   {
+     typedef ID3v2::FrameFactory cl;
+ 
+-    ID3v2::Frame *(ID3v2::FrameFactory::*cf1)(const ByteVector &, bool) const
+-      = &cl::createFrame;
+-    ID3v2::Frame *(ID3v2::FrameFactory::*cf2)(const ByteVector &, TagLib::uint) const
++    ID3v2::Frame *(ID3v2::FrameFactory::*cf)(const ByteVector &, const ID3v2::Header *) const
+       = &cl::createFrame;
+ 
+     class_<ID3v2::FrameFactory, boost::noncopyable>
+       ("id3v2_FrameFactory", no_init)
+-      .def("createFrame", cf1, return_value_policy<manage_new_object>())
+-      .def("createFrame", cf2, createFrame_overloads()[return_value_policy<manage_new_object>()])
++      .def("createFrame", cf, createFrame_overloads()[return_value_policy<manage_new_object>()])
+       .def("instance", &cl::instance,
+           return_value_policy<reference_existing_object>())
+       .staticmethod("instance")
+@@ -150,10 +147,10 @@ void exposeID3()
+       .DEF_SIMPLE_METHOD(render)
+ 
+       .def("headerSize",
+-           (TagLib::uint (*)())
++           (uint (*)())
+            &ID3v2::Frame::headerSize)
+       .def("headerSize",
+-           (TagLib::uint (*)(TagLib::uint))
++           (uint (*)(uint))
+            &ID3v2::Frame::headerSize)
+       // MISSING: textDelimiter
+       ;
+@@ -210,7 +207,6 @@ void exposeID3()
+     class_<cl, boost::noncopyable, bases<Tag> >("id3v2_Tag")
+       .def("header", &ID3v2::Tag::header, return_internal_reference<>())
+       .def("extendedHeader", &ID3v2::Tag::extendedHeader, return_internal_reference<>())
+-      .def("footer", &ID3v2::Tag::footer, return_internal_reference<>())
+ 
+       .def("frameListMap", &ID3v2::Tag::frameListMap, return_internal_reference<>())
+       .def("frameList", fl1, return_internal_reference<>())
+@@ -224,7 +220,7 @@ void exposeID3()
+         // Commented out following comment at:
+         // https://github.com/inducer/tagpy/commit/fb6d9a95f8ed1b0f347a82569a13e60a75c7e6d6
+         // .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)() const)
+-        .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)(int) const)
++        .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)(ID3v2::Version) const)
+       #else
+         .def("render", (ByteVector (cl::*)() const) &cl::render)
+       #endif
+@@ -323,7 +319,6 @@ void exposeID3()
+       ("id3v2_RelativeVolumeFrame", init<const ByteVector &>())
+       // MISSING: Empty constructor, gives symbol errors
+       .def("channels", id3v2_rvf_channels)
+-      .DEF_SIMPLE_METHOD(setChannelType)
+       .DEF_OVERLOADED_METHOD(volumeAdjustmentIndex, short (cl::*)(cl::ChannelType) const)
+       .DEF_OVERLOADED_METHOD(setVolumeAdjustmentIndex, void (cl::*)(short, cl::ChannelType))
+       .DEF_OVERLOADED_METHOD(volumeAdjustment, float (cl::*)(cl::ChannelType) const)
+@@ -424,7 +419,7 @@ void exposeID3()
+       .def(init<const char *, ID3v2::FrameFactory *, optional<bool, AudioProperties::ReadStyle> >())
+       .def("save",
+            #if (TAGPY_TAGLIB_HEX_VERSION >= 0x10800)
+-             (bool (MPEG::File::*)(int, bool, int))
++             (bool (MPEG::File::*)(int, TagLib::File::StripTags, TagLib::ID3v2::Version, TagLib::File::DuplicateTags))
+            #else
+              (bool (MPEG::File::*)(int, bool))
+            #endif
+@@ -444,7 +439,6 @@ void exposeID3()
+       .def("strip",
+            (bool (cl::*)(int)) &cl::strip,
+            strip_overloads())
+-      .DEF_SIMPLE_METHOD(setID3v2FrameFactory)
+       .DEF_SIMPLE_METHOD(firstFrameOffset)
+       .DEF_SIMPLE_METHOD(nextFrameOffset)
+       .DEF_SIMPLE_METHOD(previousFrameOffset)
+diff --git a/src/wrapper/rest.cpp b/src/wrapper/rest.cpp
+index 0a94bc8..dd843bf 100644
+--- a/src/wrapper/rest.cpp
++++ b/src/wrapper/rest.cpp
+@@ -51,7 +51,7 @@ namespace
+   // Ogg
+   // -------------------------------------------------------------
+   MF_OL(addField, 2, 3);
+-  MF_OL(removeField, 1, 2);
++  MF_OL(removeFields, 1, 2);
+   MF_OL(render, 0, 1);
+ 
+   // -------------------------------------------------------------
+@@ -62,7 +62,6 @@ namespace
+   // -------------------------------------------------------------
+   // MPC
+   // -------------------------------------------------------------
+-  MF_OL(remove, 0, 1);
+   //MF_OL(ID3v1Tag, 0, 1);
+   MF_OL(APETag, 0, 1);
+ 
+@@ -90,8 +89,8 @@ void exposeRest()
+            return_internal_reference<>())
+       .DEF_SIMPLE_METHOD(vendorID)
+       .DEF_OVERLOADED_METHOD(addField, void (cl::*)(const String &, const String &, bool))
+-      .DEF_OVERLOADED_METHOD(removeField, void (cl::*)(const String &, const String &))
+-      .DEF_OVERLOADED_METHOD(removeField, void (cl::*)(const String &, const String &))
++      .DEF_OVERLOADED_METHOD(removeFields, void (cl::*)(const String &, const String &))
++      .DEF_OVERLOADED_METHOD(removeFields, void (cl::*)(const String &, const String &))
+       .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)(bool) const)
+       ;
+   }
+@@ -159,10 +158,10 @@ void exposeRest()
+       .def(init<const String &, const StringList &>())
+       .def(init<const cl &>())
+       .DEF_SIMPLE_METHOD(key)
+-      .DEF_SIMPLE_METHOD(value)
++      .DEF_SIMPLE_METHOD(binaryData)
+       .DEF_SIMPLE_METHOD(size)
+       .DEF_SIMPLE_METHOD(toString)
+-      .DEF_SIMPLE_METHOD(toStringList)
++      .DEF_SIMPLE_METHOD(values)
+       .DEF_SIMPLE_METHOD(render)
+       .DEF_SIMPLE_METHOD(parse)
+       .DEF_SIMPLE_METHOD(setReadOnly)
+@@ -207,9 +206,6 @@ void exposeRest()
+            (Ogg::XiphComment *(FLAC::File::*)(bool))
+            &FLAC::File::xiphComment,
+            xiphComment_overloads()[return_internal_reference<>()])
+-      .DEF_SIMPLE_METHOD(setID3v2FrameFactory)
+-      .DEF_SIMPLE_METHOD(streamInfoData)
+-      .DEF_SIMPLE_METHOD(streamLength)
+       ;
+   }
+ 
+@@ -238,8 +234,8 @@ void exposeRest()
+            APETag_overloads()[return_internal_reference<>()])
+       .def("remove",
+            (void (cl::*)(int))
+-           &cl::remove,
+-           remove_overloads())
++           &cl::strip,
++           strip_overloads())
+       ;
+   }
+ 
