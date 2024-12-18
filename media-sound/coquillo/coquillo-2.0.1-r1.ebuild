@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop qmake-utils
 
@@ -21,9 +21,11 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	media-libs/musicbrainz:5=
-	media-libs/taglib
+	media-libs/taglib:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.0.1-fix-build-taglib2.patch )
 
 src_configure() {
 	eqmake5
