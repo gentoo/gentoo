@@ -97,6 +97,8 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DOFFLOAD_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLIBOMPTARGET_PLUGINS_TO_BUILD="${plugins}"
 		-DLIBOMPTARGET_OMPT_SUPPORT="$(usex ompt)"

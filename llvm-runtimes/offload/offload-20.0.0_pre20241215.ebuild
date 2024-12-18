@@ -97,7 +97,7 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DCMAKE_PREFIX_PATH="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DOFFLOAD_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLIBOMPTARGET_PLUGINS_TO_BUILD="${plugins}"
