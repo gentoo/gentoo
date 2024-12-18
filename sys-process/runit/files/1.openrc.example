@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# example script in stage 1 using openrc, sys-apps/openrc must be installed
+
+RUNLEVEL=S /sbin/openrc sysinit
+RUNLEVEL=S /sbin/openrc boot
