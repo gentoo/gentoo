@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake-multilib
 
 DESCRIPTION="Library for reading and editing audio meta data"
-HOMEPAGE="https://taglib.github.io/"
+HOMEPAGE="https://taglib.org"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MPL-1.1"
@@ -16,10 +16,10 @@ IUSE="doc examples test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
+RDEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-libs/utfcpp
-	test? ( >=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}] )
+	test? ( dev-util/cppunit[${MULTILIB_USEDEP}] )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -41,19 +41,18 @@ multilib_src_configure() {
 multilib_src_compile() {
 	cmake_src_compile
 
-	if multilib_is_native_abi; then
-		use doc && cmake_build docs
+	if multilib_is_native_abi && use doc; then
+		cmake_build docs
 	fi
 }
 
 multilib_src_test() {
-	eninja check
+	eninja -C "${BUILD_DIR}" check
 }
 
 multilib_src_install() {
-	cmake_src_install
-
 	if multilib_is_native_abi && use doc; then
 		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	fi
+	cmake_src_install
 }
