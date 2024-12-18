@@ -133,8 +133,8 @@ pkg_pretend() {
 
 		# See bug #599684 and  bug #753581 (at least)
 		for file in /etc/arch-release /etc/redhat-release /etc/debian_version ; do
-			if [[ -e $file ]]; then
-				errant_files+=("$file")
+			if [[ -e ${file} ]]; then
+				errant_files+=( "${file}" )
 			fi
 		done
 
