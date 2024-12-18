@@ -73,9 +73,6 @@ python_test() {
 		# to figure this out
 		tests/translate/tools/test_pocount.py::test_{cases,output}
 		tests/translate/tools/test_junitmsgfmt.py::test_output
-		# gettext 0.23
-		# https://github.com/translate/translate/issues/5436
-		tests/translate/storage/test_cpo.py::TestCPOFile::test_wrap_gettext
 	)
 	local EPYTEST_IGNORE=(
 		# unpackaged fluent.*
