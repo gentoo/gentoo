@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
+inherit cmake-multilib flag-o-matic llvm.org python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
@@ -27,7 +27,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
+		>=llvm-core/clang-${LLVM_VERSION}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -46,15 +46,6 @@ python_check_deps() {
 	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
-pkg_setup() {
-	# darwin prefix builds do not have llvm installed yet, so rely on bootstrap-prefix
-	# to set the appropriate path vars to LLVM instead of using llvm_pkg_setup.
-	if [[ ${CHOST} != *-darwin* ]] || has_version llvm-core/llvm; then
-		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	fi
-	python-any-r1_pkg_setup
-}
-
 multilib_src_configure() {
 	if use clang; then
 		local -x CC=${CHOST}-clang
@@ -68,6 +59,7 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx"

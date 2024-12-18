@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
+inherit check-reqs cmake flag-o-matic llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -40,7 +40,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
+		>=llvm-core/clang-${LLVM_VERSION}
 		llvm-runtimes/compiler-rt:${LLVM_VERSION}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
@@ -77,7 +77,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	check_space
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -95,6 +94,8 @@ src_prepare() {
 
 	# bug #926330
 	sed -i -e '/-Wthread-safety/d' CMakeLists.txt cmake/config-ix.cmake || die
+
+	sed -e '/^#include <cassert>$/a#include <cstdint>' -i lib/orc/error.h || die
 
 	# TODO: fix these tests to be skipped upstream
 	if use asan && ! use profile; then
@@ -129,6 +130,8 @@ src_configure() {
 	done
 
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_VERSION}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang

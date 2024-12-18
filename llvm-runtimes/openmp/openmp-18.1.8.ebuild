@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit flag-o-matic cmake-multilib linux-info llvm.org llvm-utils
+inherit flag-o-matic cmake-multilib linux-info llvm.org
 inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -41,8 +41,7 @@ DEPEND="
 BDEPEND="
 	dev-lang/perl
 	offload? (
-		llvm_targets_AMDGPU? ( llvm-core/clang )
-		llvm_targets_NVPTX? ( llvm-core/clang )
+		llvm-core/clang:${LLVM_MAJOR}
 		virtual/pkgconfig
 	)
 	test? (
@@ -81,8 +80,6 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	use offload && llvm_prepend_path "${LLVM_MAJOR}"
-
 	# LTO causes issues in other packages building, #870127
 	filter-lto
 
@@ -120,6 +117,7 @@ multilib_src_configure() {
 		local ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
 		local ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 		mycmakeargs+=(
+			-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
 			-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 			-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
 		)

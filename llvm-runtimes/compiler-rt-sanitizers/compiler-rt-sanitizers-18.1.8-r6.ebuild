@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit check-reqs cmake flag-o-matic llvm.org llvm-utils python-any-r1
+inherit check-reqs cmake flag-o-matic llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -40,7 +40,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
+		>=llvm-core/clang-${LLVM_VERSION}
 		llvm-runtimes/compiler-rt:${LLVM_MAJOR}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
@@ -105,8 +105,6 @@ src_prepare() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
@@ -128,6 +126,8 @@ src_configure() {
 	done
 
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang

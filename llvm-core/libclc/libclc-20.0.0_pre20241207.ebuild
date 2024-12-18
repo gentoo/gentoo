@@ -25,11 +25,6 @@ BDEPEND="
 LLVM_COMPONENTS=( libclc )
 llvm.org_set_globals
 
-pkg_setup() {
-	llvm-r1_pkg_setup
-	python-any-r1_pkg_setup
-}
-
 src_configure() {
 	local libclc_targets=()
 
@@ -55,6 +50,7 @@ src_configure() {
 
 	libclc_targets=${libclc_targets[*]}
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
 		-DLIBCLC_TARGETS_TO_BUILD="${libclc_targets// /;}"
 	)
 	cmake_src_configure

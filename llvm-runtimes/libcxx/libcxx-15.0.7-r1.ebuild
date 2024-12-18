@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
+inherit cmake-multilib flag-o-matic llvm.org python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
@@ -29,7 +29,7 @@ DEPEND="
 "
 BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
+		>=llvm-core/clang-${LLVM_VERSION}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -50,12 +50,6 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	# Darwin Prefix builds do not have llvm installed yet, so rely on
-	# bootstrap-prefix to set the appropriate path vars to LLVM instead
-	# of using llvm_pkg_setup.
-	if [[ ${CHOST} != *-darwin* ]] || has_version llvm-core/llvm; then
-		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	fi
 	python-any-r1_pkg_setup
 
 	if ! use libcxxabi && ! tc-is-gcc ; then
@@ -63,6 +57,17 @@ pkg_setup() {
 		eerror "compilers are not supported. Please set CC=gcc and CXX=g++"
 		eerror "and try again."
 		die
+	fi
+
+	if ! use clang && tc-is-gcc ; then
+		local gcc_version=$(gcc-version)
+		case "${gcc_version}" in
+			13.*)
+				eerror "${P} cannot be compiled by GCC ${gcc_version}."
+				eerror 'Please set USE="clang" and try again.'
+				die "GCC ${gcc_version} is not supported"
+				;;
+		esac
 	fi
 }
 
@@ -109,6 +114,7 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES=libcxx

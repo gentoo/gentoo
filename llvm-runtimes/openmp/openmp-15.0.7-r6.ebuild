@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-any-r1
+inherit flag-o-matic cmake-multilib linux-info llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -37,8 +37,7 @@ DEPEND="
 BDEPEND="
 	dev-lang/perl
 	offload? (
-		llvm_targets_AMDGPU? ( llvm-core/clang )
-		llvm_targets_NVPTX? ( llvm-core/clang )
+		llvm-core/clang:${LLVM_MAJOR}
 		virtual/pkgconfig
 	)
 	test? (
@@ -73,7 +72,6 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use offload && LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -100,6 +98,9 @@ multilib_src_configure() {
 	)
 
 	if use offload; then
+		mycmakeargs+=(
+			-DCMAKE_PREFIX_PATH="${ESYSROOT%/}/usr/lib/llvm/${LLVM_MAJOR}"
+		)
 		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 			mycmakeargs+=(
 				-DLIBOMPTARGET_BUILD_AMDGPU_PLUGIN=$(usex llvm_targets_AMDGPU)
