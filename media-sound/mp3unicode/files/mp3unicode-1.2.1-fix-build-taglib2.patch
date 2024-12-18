@@ -1,0 +1,14 @@
+https://github.com/alonbl/mp3unicode/pull/5.patch
+diff --git a/mp3unicode.cpp b/mp3unicode.cpp
+index ca25941..7fe6411 100644
+--- a/mp3unicode.cpp
++++ b/mp3unicode.cpp
+@@ -192,7 +192,7 @@ protected:
+ 	bool
+ 	heuristicIsUnicode (TagLib::String string) {
+ 		unsigned u0080 = 0;
+-		for(TagLib::uint i = 0; i < string.size(); i++) {
++		for(unsigned int i = 0; i < string.size(); i++) {
+ 			if(string[i] > 255) {
+ 				return true;
+ 			}
