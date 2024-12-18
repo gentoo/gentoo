@@ -87,6 +87,7 @@ IUSE+=" +gmp-autoupdate gnome-shell +jumbo-build openh264 +telemetry wasm"
 
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
+	pgo? ( jumbo-build )
 	wayland? ( dbus )
 	wifi? ( dbus )
 "
