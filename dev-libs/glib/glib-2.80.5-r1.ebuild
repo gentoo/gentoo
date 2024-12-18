@@ -193,6 +193,11 @@ src_prepare() {
 		ln -s "${S}" "${INTROSPECTION_SOURCE_DIR}/subprojects/glib"
 	fi
 
+	# bug #946578
+	cd "${INTROSPECTION_SOURCE_DIR}" || die
+	eapply "${FILESDIR}"/glib-2.80.5-gobject-introspection-1.80.patch
+	cd "${S}" || die
+
 	default
 	gnome2_environment_reset
 	# TODO: python_name sedding for correct python shebang? Might be relevant mainly for glib-utils only
