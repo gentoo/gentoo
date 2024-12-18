@@ -18,15 +18,13 @@ SLOT="0"
 
 BDEPEND="
 	dev-libs/libpcre2:*
-	>=kde-frameworks/extra-cmake-modules-5.115.0:*
-	|| (
-		dev-qt/qtbase:6
-		dev-qt/qtcore:5
-	)
+	dev-qt/qtbase:6
+	>=kde-frameworks/extra-cmake-modules-6.0:*
 "
 
 src_configure() {
 	local mycmakeargs=(
+		-DQT_MAJOR_VERSION=6
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON # ecm.eclass
 		-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help" # ecm.eclass
 	)
