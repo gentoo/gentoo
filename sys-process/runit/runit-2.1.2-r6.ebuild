@@ -19,8 +19,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="split-usr static"
 
-RDEPEND="sys-apps/openrc"
-
 src_unpack() {
 	unpack ${P}.tar.gz
 	unpack ${P}-patches-${PATCH_VER}.tar.xz
@@ -72,6 +70,10 @@ src_install() {
 	newexe "${FILESDIR}"/1-${PV} 1
 	newexe "${FILESDIR}"/2-${PV} 2
 	newexe "${FILESDIR}"/3-${PV} 3
+	doexe "${FILESDIR}"/rc.sh
+	insinto /etc/runit/rc
+	doins "${FILESDIR}"/1.openrc.example
+	doins "${FILESDIR}"/3.openrc.example
 
 	dodir /etc/sv
 	for tty in tty1 tty2 tty3 tty4 tty5 tty6; do
