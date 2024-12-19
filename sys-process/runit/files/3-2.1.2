@@ -9,6 +9,7 @@ echo 'Waiting for services to stop...'
 sv -w 300 force-shutdown /etc/service/*
 
 echo 'Shutdown...'
-test -x /etc/runit/reboot && LAST=6    || LAST=0
-test -x /etc/runit/reboot && RC=reboot || RC=shutdown
-RUNLEVEL=$LAST /sbin/openrc $RC
+
+source /etc/runit/rc.sh
+
+run_rc_files 3
