@@ -27,7 +27,7 @@ CRATES="
 	winapi@0.3.9
 "
 
-inherit cargo cmake flag-o-matic xdg
+inherit cargo cmake toolchain-funcs xdg
 
 MY_PN="${PN^^}"
 MY_P="${MY_PN}-${PV}"
@@ -69,7 +69,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-apps/which
 	virtual/pkgconfig
 	dynarec? ( dev-lang/nasm )
 	rust-plugin? ( ${RUST_DEPEND} )
@@ -119,13 +118,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://github.com/gonetz/GLideN64/issues/2877
-	#
-	# Disable strict-aliasing until its handled upstream.
-	append-flags -fno-strict-aliasing
-	filter-lto
-
+	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local mycmakeargs=(
