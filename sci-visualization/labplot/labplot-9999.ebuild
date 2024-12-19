@@ -18,14 +18,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="eigen fftw fits hdf5 libcerf markdown matio netcdf ods origin root serial share telemetry xlsx"
+IUSE="eigen cantor fftw fits hdf5 libcerf markdown matio netcdf ods origin root serial share telemetry xlsx"
 
-# IUSE="cantor"
-# 	cantor? (
-# 		>=kde-apps/cantor-19.12.0:6
-# 		>=kde-frameworks/kparts-${KFMIN}:6
-# 		>=kde-frameworks/kservice-${KFMIN}:6
-# 	)
 DEPEND="
 	app-text/poppler[qt6(-)]
 	>=dev-qt/qtbase-${QTMIN}:6=[concurrent,gui,network,sql,widgets]
@@ -45,6 +39,11 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 	>=sci-libs/gsl-1.15:=
+	cantor? (
+		>=kde-apps/cantor-24.12.0:6
+		>=kde-frameworks/kparts-${KFMIN}:6
+		>=kde-frameworks/kservice-${KFMIN}:6
+	)
 	eigen? ( dev-cpp/eigen:3= )
 	xlsx? ( dev-libs/qxlsx:= )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -88,7 +87,7 @@ src_configure() {
 		-DENABLE_MQTT=OFF # not packaged
 		-DENABLE_READSTAT=OFF # not packaged
 		-DENABLE_VECTOR_BLF=OFF # not packaged
-		-DENABLE_CANTOR=OFF # $(usex cantor)
+		-DENABLE_CANTOR=$(usex cantor)
 		-DENABLE_EIGEN3=$(usex eigen)
 		-DENABLE_XLSX=$(usex xlsx)
 		-DENABLE_FFTW=$(usex fftw)
