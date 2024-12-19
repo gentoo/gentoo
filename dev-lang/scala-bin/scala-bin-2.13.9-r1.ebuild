@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc"
 
@@ -13,6 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="The Scala Programming Language"
 HOMEPAGE="https://scala.epfl.ch/"
 SRC_URI="https://downloads.lightbend.com/${MY_PN}/${PV}/${MY_P}.tgz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -22,8 +23,6 @@ IUSE="doc"
 RDEPEND="
 	>=virtual/jre-1.8
 	!dev-lang/scala"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
