@@ -3,19 +3,15 @@
 
 EAPI=8
 
-inherit meson
-
-MY_P="${PN}-v${PV}"
+inherit meson bash-completion-r1
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
-HOMEPAGE="https://flashrom.org/Flashrom"
-SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
-
-S="${WORKDIR}"/${MY_P}
+HOMEPAGE="https://www.flashrom.org/"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 # The defaults should match the upstream "default" flags in meson.build
 IUSE_PROGRAMMERS="
@@ -100,11 +96,7 @@ DEPEND="${COMMON}
 	realtek-mst-i2c-spi? ( sys-kernel/linux-headers )"
 BDEPEND="test? ( dev-util/cmocka )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.0_spi-master.patch
-)
-
-DOCS=( README Documentation/ )
+DOCS=( README.rst doc/ )
 
 src_configure() {
 	local programmers="$(printf '%s,' $(for flag in ${IUSE_PROGRAMMERS//+/}; do usev ${flag}; done))"
@@ -113,6 +105,8 @@ src_configure() {
 	local emesonargs=(
 		-Dclassic_cli="enabled"
 		-Dprogrammer="${programmers}"
+		-Dman-pages="disabled"
+		-Ddocumentation="disabled"
 		$(meson_feature test tests)
 		$(meson_feature tools ich_descriptors_tool)
 	)
@@ -122,10 +116,15 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	# Upstream requires libflashrom.a to be present at build time because the classic CLI
-	# executable uses internal symbols from that library. Therefore, we let it be built
-	# but keep it out of the installed tree.
+	# Upstream requires libflashrom.a to be present at build time
+	# because the classic CLI executable uses internal symbols from that
+	# library.  Therefore, we let it be built but keep it out of the
+	# installed tree.
 	find "${ED}" -name '*.a' -delete || die
+
+	# bash completion file is not up to standards, #941844
+	rm -Rf "${ED}"/usr/share/bash-completion
+	newbashcomp "${BUILD_DIR}/${PN}.bash" "${PN}"
 
 	if use tools; then
 		dosbin "${BUILD_DIR}"/util/ich_descriptors_tool/ich_descriptors_tool
