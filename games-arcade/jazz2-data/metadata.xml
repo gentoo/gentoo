@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">deathkiller/jazz2</remote-id>
-	</upstream>
 	<use>
 		<flag name="cc">Install The Christmas Chronicles additional data</flag>
 		<flag name="demo">Use the free demo data instead of the full retail game data</flag>
