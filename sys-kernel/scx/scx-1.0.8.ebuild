@@ -304,7 +304,7 @@ RDEPEND="
 "
 BDEPEND="
 	app-misc/jq
-	dev-util/bpftool
+	>=dev-util/bpftool-7.5.0
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=[llvm_targets_BPF(-)]
 	')
