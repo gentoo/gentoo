@@ -27,21 +27,13 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		${RDEPEND}
 		dev-python/pytest-lazy-fixtures[${PYTHON_USEDEP}]
 		>=dev-python/requests-mock-1.8[${PYTHON_USEDEP}]
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.5-lazy_fixtures.patch"
+	"${FILESDIR}/${P}-license.patch"
 )
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	default
-
-	# Don't install license files
-	sed -e '/^include = \["LICENSE"\]$/d' -i pyproject.toml || die
-}
