@@ -23,6 +23,10 @@ RDEPEND="dev-util/hip
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# Note: hipcc is enforced; clang fails when libc++ is enabled
+	# with an error similar to https://github.com/boostorg/config/issues/392
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		# currently hipBLAS is a wrapper of rocBLAS which has tests, so no need to perform test here
 		-DBUILD_CLIENTS_TESTS=OFF

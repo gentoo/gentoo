@@ -3,8 +3,9 @@
 
 EAPI=8
 
+LLVM_COMPAT=( 18 )
 ROCM_SKIP_GLOBALS=1
-inherit cmake linux-info rocm
+inherit cmake linux-info llvm-r1 rocm
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ROCm/ROCT-Thunk-Interface/"
@@ -24,8 +25,10 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND="sys-process/numactl
 	x11-libs/libdrm[video_cards_amdgpu]"
 DEPEND="${RDEPEND}
-	test? ( llvm-core/llvm
-	dev-cpp/gtest )"
+	test? (
+		$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')
+		dev-cpp/gtest
+	)"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -62,6 +65,9 @@ src_configure() {
 
 	if use test; then
 		export LIBHSAKMT_PATH="${BUILD_DIR}"
+		local mycmakeargs=(
+			-DLLVM_DIR="$(get_llvm_prefix)"
+		)
 		test_wrapper "${S}/tests/kfdtest" cmake_src_configure
 	fi
 }

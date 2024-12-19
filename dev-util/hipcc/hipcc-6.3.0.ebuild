@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 inherit cmake perl-functions llvm-r1
 
 DESCRIPTION="Radeon Open Compute hipcc"
-HOMEPAGE="https://github.com/ROCm/hipcc"
+HOMEPAGE="https://github.com/ROCm/llvm-project/tree/amd-staging/amd/hipcc"
 
 MY_P=llvm-project-rocm-${PV}
 components=( "amd/hipcc" )
@@ -34,7 +34,8 @@ DEPEND="
 	')
 "
 RDEPEND="${DEPEND}
-	!<dev-util/hip-5.7"
+	!<dev-util/hip-5.7
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-hipcc-hip-version.patch"
@@ -57,21 +58,21 @@ src_unpack() {
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "s:\$ROCM_PATH/llvm/bin:$(get_llvm_prefix)/bin:" \
-		-e "s:/opt/rocm:/usr:" \
-		-e "s:$ROCM_PATH/lib/llvm/bin:$ROCM_PATH/lib64/llvm/18/bin:" \
-		-i bin/hipvars.pm || die
+	sed -e "s:lib/llvm/bin:lib/llvm/${LLVM_SLOT}/bin:" \
+		-e "s:/opt/rocm:/usr:g" \
+		-i bin/hipvars.pm \
+		-i src/hipBin_base.h \
+		-i src/hipBin_amd.h || die
 
 	sed -e "s:\$ENV{'DEVICE_LIB_PATH'}:'${EPREFIX}/usr/lib/amdgcn/bitcode':" \
 		-e "s:\$ENV{'HIP_LIB_PATH'}:'${EPREFIX}/usr/$(get_libdir)':" \
-		-e "/HIP.*FLAGS.*isystem.*HIP_INCLUDE_PATH/d" \
 		-i bin/hipcc.pl || die
 
 	# With Clang>17 -amdgpu-early-inline-all=true causes OOMs in dependencies
 	# https://github.com/llvm/llvm-project/issues/86332
-	if [ "$LLVM_SLOT" != "17" ]; then
-		sed -e "s/-mllvm -amdgpu-early-inline-all=true //g" -i bin/hipcc.pl || die
-	fi
+	sed -e "s/-mllvm -amdgpu-early-inline-all=true //g" \
+		-i bin/hipcc.pl \
+		-i src/hipBin_amd.h || die
 }
 
 src_install() {
