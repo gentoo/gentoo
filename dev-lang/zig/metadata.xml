@@ -12,6 +12,7 @@
 	<use>
 		<flag name="debug">Build with debug extensions enabled.</flag>
 		<flag name="llvm">Build with LLVM backend and extensions enabled.</flag>
+		<flag name="system-bootstrap">Bootstrap using installed Zig toolchain.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ziglang/zig</remote-id>

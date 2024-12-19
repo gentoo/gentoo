@@ -44,7 +44,7 @@ fi
 # lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
 LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="${ZIG_SLOT}"
-IUSE="debug doc +llvm"
+IUSE="debug doc +llvm system-bootstrap"
 REQUIRED_USE="
 	!llvm? ( !doc )
 	llvm? ( ${LLVM_REQUIRED_USE} )
@@ -64,7 +64,16 @@ LLVM_DEPEND="$(llvm_gen_dep '
 	llvm-core/llvm:${LLVM_SLOT}[zstd]
 ')"
 
-BDEPEND+="llvm? ( ${LLVM_DEPEND} )"
+BDEPEND+="
+	system-bootstrap? (
+		llvm? ( !!dev-lang/zig:${ZIG_SLOT}[-llvm(+)] )
+		|| (
+			dev-lang/zig-bin:${ZIG_SLOT}
+			dev-lang/zig:${ZIG_SLOT}
+		)
+	)
+	!system-bootstrap? ( llvm? ( ${LLVM_DEPEND} ) )
+"
 DEPEND="llvm? ( ${LLVM_DEPEND} )"
 RDEPEND="${DEPEND}"
 IDEPEND="app-eselect/eselect-zig"
@@ -85,15 +94,26 @@ QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 CHECKREQS_MEMORY="4G"
 
 pkg_setup() {
-	# Skip detecting zig executable.
-	declare -r -g ZIG_VER="${PV}"
-	ZIG_EXE="not-applicable" zig_pkg_setup
+	if use system-bootstrap; then
+		zig_pkg_setup
+		if [[ ${PV} == 9999 ]]; then
+			ewarn "TODO blabla if you don't update too long"
+			ewarn "please retry without \"system-bootstrap\" to build"
+		fi
+	else
+		# Skip detecting zig executable.
+		declare -r -g ZIG_VER="${PV}"
+		ZIG_EXE="not-applicable" zig_pkg_setup
+
+		if use doc && tc-is-cross-compiler; then
+			eerror "When cross-compiling without \"system-bootstrap\""
+			eerror "doc building is not supported. Please disable \"doc\""
+			eerror "USE-flag or enable \"system-bootstrap\"."
+			die "Doc generation not supported in this configuration"
+		fi
+	fi
 
 	declare -r -g ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
-
-	if use doc && tc-is-cross-compiler; then
-		die "Doc building is not yet supported when cross-compiling"
-	fi
 
 	if use llvm; then
 		[[ ${MERGE_TYPE} != binary ]] && llvm_cbuild_setup
@@ -156,7 +176,7 @@ src_configure() {
 	)
 	if use llvm; then
 		local config_h
-		if tc-is-cross-compiler; then
+		if use system-bootstrap || tc-is-cross-compiler; then
 			config_h="${T}/target_config.h"
 		else
 			config_h="${BUILD_DIR}/config.h"
@@ -173,6 +193,27 @@ src_configure() {
 	fi
 	zig_src_configure
 
+	# TODO what is more readable, first or second variant?
+
+	# Scenarios of compilation:
+	# With LLVM:
+	# * "+system-bootstrap": build "zigcpp and stage3" for target
+	# * "-system-bootstrap", native: build "zigcpp, zig2 and stage3" for native
+	# * "-system-bootstrap", target: build "zigcpp and zig2" for native, "zigcpp and stage3" for target
+	# Without LLVM:
+	# * "+system-bootstrap": build "stage3" for target
+	# * "-system-bootstrap": build "zig2" for native, "stage3" for target
+
+	# Scenarios of compilation:
+	# When bootstrapping with system Zig:
+	# * "+llvm": build "zigcpp and stage3" for target
+	# * "-llvm": build "stage3" for target
+	# When bootstrapping from scratch:
+	# * "+llvm":
+	# * 1. build "zigcpp and zig2" for native
+	# * 2. if native: build "stage3" for native, reuse "zigcpp"
+	# * 2. if cross-compile: build "zigcpp and stage3" for target
+	# * "-llvm": build "zig2" for native, "stage3" for target
 	if use llvm; then
 		local mycmakeargs=(
 			-DZIG_SHARED_LLVM=ON
@@ -192,7 +233,7 @@ src_configure() {
 			# LLVM_ROOT, Clang_ROOT, LLD_ROOT from "llvm_chost_setup".
 			-DCMAKE_FIND_USE_PACKAGE_ROOT_PATH=OFF
 		)
-		if tc-is-cross-compiler; then
+		if use system-bootstrap || tc-is-cross-compiler; then
 			# Enable cross-compilation for CMake when filling "config.h"
 			# and building "zigcpp". They would be used for stage3 build.
 			# Here we are using LLVM from ESYSROOT/DEPEND.
@@ -209,57 +250,81 @@ src_configure() {
 			mv "${BUILD_DIR}/config.h" "${T}/target_config.h" || die
 			mv "${BUILD_DIR}/zigcpp/" "${T}/target_zigcpp/" || die
 			rm -rf "${BUILD_DIR}" || die
+			# If using system-bootstrap, `cmake.eclass` won't do this for us
+			mkdir -p "${BUILD_DIR}" || die
 		fi
 
-		# Force disable cross-compilation for CMake when building "zig2".
-		# Here we are using LLVM from BROOT/BDEPEND.
-		# Uses native llvm-config.
+		if use !system-bootstrap; then
+			# Force disable cross-compilation for CMake when building "zig2".
+			# Here we are using LLVM from BROOT/BDEPEND.
+			# Uses native llvm-config.
 
-		# Isolate environment changes in subshell so that it would not
-		# affect next phases.
-		(
-			export BUILD_CFLAGS="${CFLAGS}"
-			export BUILD_CXXFLAGS="${CXXFLAGS}"
-			export BUILD_CPPFLAGS="${CPPFLAGS}"
-			export BUILD_LDFLAGS="${LDFLAGS}"
-			tc-env_build
+			# Isolate environment changes in subshell so that it would
+			# not affect next phases.
+			(
+				export BUILD_CFLAGS="${CFLAGS}"
+				export BUILD_CXXFLAGS="${CXXFLAGS}"
+				export BUILD_CPPFLAGS="${CPPFLAGS}"
+				export BUILD_LDFLAGS="${LDFLAGS}"
+				tc-env_build
 
-			unset SYSROOT
-			export CHOST="${CBUILD:-${CHOST}}"
-			strip-unsupported-flags
-			cmake_src_configure
-		)
+				unset SYSROOT
+				export CHOST="${CBUILD:-${CHOST}}"
+				strip-unsupported-flags
+				cmake_src_configure
+			)
+		fi
 	fi
 }
 
 src_compile() {
-	if use llvm; then
-		cmake_build zig2
-
-		if tc-is-cross-compiler; then
+	# Native build which can compile at least part of language
+	# needed for stage3, like zig2 (relative to BUILD_DIR)
+	if use system-bootstrap; then
+		if use llvm; then
 			rm -rf "${BUILD_DIR}/zigcpp/" || die
 			mv "${T}/target_zigcpp/" "${BUILD_DIR}/zigcpp/" || die
 		fi
+		declare -r -g stage2_zig="${ZIG_EXE}"
 	else
-		cd "${BUILD_DIR}" || die
-		ln -s "${S}/stage1/" . || die
-		ln -s "${S}/src/" . || die
-		ln -s "${S}/lib/" . || die
+		if use llvm; then
+			cmake_build zig2
 
-		local native_cc="$(tc-getBUILD_CC)"
-		"${native_cc}" -o bootstrap "${S}/bootstrap.c" || die "Zig's bootstrap.c compilation failed"
-		ZIG_HOST_TARGET_TRIPLE="${ZIG_HOST_AS_TARGET}" CC="${native_cc}" edo ./bootstrap
+			if tc-is-cross-compiler; then
+				rm -rf "${BUILD_DIR}/zigcpp/" || die
+				mv "${T}/target_zigcpp/" "${BUILD_DIR}/zigcpp/" || die
+			fi
+		else
+			cd "${BUILD_DIR}" || die
+			ln -s "${S}/stage1/" . || die
+			ln -s "${S}/src/" . || die
+			ln -s "${S}/lib/" . || die
+
+			local native_cc="$(tc-getBUILD_CC)"
+			"${native_cc}" -o bootstrap "${S}/bootstrap.c" || die "Zig's bootstrap.c compilation failed"
+			ZIG_HOST_TARGET_TRIPLE="${ZIG_HOST_AS_TARGET}" CC="${native_cc}" edo ./bootstrap
+		fi
+		declare -r -g stage2_zig="./zig2"
 	fi
 
 	cd "${BUILD_DIR}" || die
-	ZIG_EXE="./zig2" zig_src_compile --prefix stage3/
+	ZIG_EXE="${stage2_zig}" zig_src_compile --prefix stage3/
 
 	if ! tc-is-cross-compiler; then
 		./stage3/bin/zig env || die "Zig compilation failed"
+	fi
 
-		if use doc; then
-			ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix "${S}/docgen/"
+	if use doc; then
+		# Native build which can compile full Zig language
+		# zig2 not suitable here because "core = .dev" and less support
+		local stage3_zig
+		if tc-is-cross-compiler; then
+			# Assume "USE=system-bootstrap" here
+			stage3_zig="${ZIG_EXE}"
+		else
+			stage3_zig="./stage3/bin/zig"
 		fi
+		ZIG_EXE="${stage3_zig}" zig_src_compile langref --prefix "${S}/docgen/"
 	fi
 }
 
@@ -271,7 +336,7 @@ src_test() {
 src_install() {
 	use doc && local HTML_DOCS=( "docgen/doc/langref.html" )
 
-	ZIG_EXE="./zig2" zig_src_install --prefix "${ZIG_SYS_INSTALL_DEST}"
+	ZIG_EXE="${stage2_zig}" zig_src_install --prefix "${ZIG_SYS_INSTALL_DEST}"
 
 	cd "${D}/${ZIG_SYS_INSTALL_DEST}" || die
 	mv lib/zig/ lib2/ || die
