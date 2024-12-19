@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 CP_DEPEND="dev-java/jide-oss:0
-	dev-java/xmlgraphics-commons:2"
+	>=dev-java/xmlgraphics-commons-2.10:0"
 
 DEPEND=">=virtual/jdk-1.8:*
 	${CP_DEPEND}"
