@@ -1,16 +1,9 @@
-From 06d5d4cd307e9ee0b83bdbff71729dab1305ea9a Mon Sep 17 00:00:00 2001
+From 5feabc582b9e243aec2f88ac590a6ce089c01a62 Mon Sep 17 00:00:00 2001
 From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
 Date: Sun, 10 Jul 2022 20:14:00 +0300
-Subject: [PATCH 2/4] Use shared webp library
+Subject: [PATCH 3/5] Use shared webp library
 
 Added option -DUSE_SHARED_WEBP
----
- CMakeLists.txt             | 28 ++++++++++++++++++----------
- third_party/CMakeLists.txt |  2 +-
- 2 files changed, 19 insertions(+), 11 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c4f364185..ba05f8d84 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -47,6 +47,7 @@ option(USE_SHARED_LIBARCHIVE "Use your installed copy of libarchive" off)
@@ -21,11 +14,7 @@ index c4f364185..ba05f8d84 100644
  option(USE_SHARED_FREETYPE "Use shared FreeType library" off)
  option(USE_SHARED_HARFBUZZ "Use shared HarfBuzz library" off)
  option(ENABLE_ASEPRITE_EXE "Compile main Aseprite executable" on)
-@@ -342,24 +343,31 @@ set(UNDO_TESTS     ${ENABLE_TESTS} CACHE BOOL "Enable undo tests")
- if(ENABLE_DRM)
-   add_subdirectory(drm)
- endif()
--add_subdirectory(laf)
+@@ -352,17 +353,23 @@ add_subdirectory(laf)
  
  # libwebp
  if(ENABLE_WEBP)
@@ -58,13 +47,6 @@ index c4f364185..ba05f8d84 100644
  endif()
  message(STATUS "aseprite libwebp: ${WEBP_LIBRARIES}")
  
-+add_subdirectory(laf)
-+
- # LAF libraries + Aseprite are compiled with config.h
- target_include_directories(laf-base PUBLIC src)
- target_compile_definitions(laf-base PUBLIC HAVE_CONFIG_H)
-diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
-index 88eea9b5e..31aa3e52f 100644
 --- a/third_party/CMakeLists.txt
 +++ b/third_party/CMakeLists.txt
 @@ -33,7 +33,7 @@ if(NOT USE_SHARED_GIFLIB)
@@ -77,5 +59,5 @@ index 88eea9b5e..31aa3e52f 100644
    set(WEBP_BUILD_ANIM_UTILS OFF CACHE BOOL "Build animation utilities.")
    set(WEBP_BUILD_CWEBP OFF CACHE BOOL "Build the cwebp command line tool.")
 -- 
-2.41.0
+2.44.2
 
