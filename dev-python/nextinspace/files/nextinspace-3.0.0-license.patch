@@ -1,0 +1,20 @@
+commit 6e03e0f5cc94f039df06506a340b70d38860b84b
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Thu Dec 19 18:40:53 2024 +0100
+Upstream: https://github.com/gideonshaked/nextinspace/pull/18
+
+    Don't install LICENSE file in site-diretory
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -58,7 +58,9 @@ classifiers = [
+   "Programming Language :: Python :: 3 :: Only",
+   "Natural Language :: English"
+ ]
+-include = ["LICENSE"]
++include = [
++  { path = "LICENSE", format = "sdist" },
++]
+ 
+ [tool.poetry.dependencies]
+ python = "^3.10"
