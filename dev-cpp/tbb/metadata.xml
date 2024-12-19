@@ -13,6 +13,8 @@
   for performance and scalability.
   </longdescription>
   <upstream>
-    <remote-id type="github">oneapi-src/oneTBB</remote-id>
+    <bugs-to>https://github.com/uxlfoundation/oneTBB/issues</bugs-to>
+    <doc>https://github.com/uxlfoundation/oneTBB?tab=readme-ov-file#documentation</doc>
+    <remote-id type="github">uxlfoundation/oneTBB</remote-id>
   </upstream>
 </pkgmetadata>
