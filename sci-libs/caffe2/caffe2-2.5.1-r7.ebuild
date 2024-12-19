@@ -146,6 +146,7 @@ src_prepare() {
 		-e "/EXPORT/s|DESTINATION lib)|DESTINATION $(get_libdir))|" \
 		c10/cuda/CMakeLists.txt \
 		c10/CMakeLists.txt \
+		c10/hip/CMakeLists.txt \
 		|| die
 
 	cmake_src_prepare
