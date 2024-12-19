@@ -75,6 +75,9 @@ PATCHES=(
 
 	# backward compatibility with <dev-libs/libfmt-11
 	"${FILESDIR}/${PN}-3.9.0-older-libfmt.patch"
+
+	# bug 946676
+	"${FILESDIR}/${P}-simdutf-hdr.patch"
 )
 
 src_prepare() {
