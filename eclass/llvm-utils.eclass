@@ -113,17 +113,38 @@ llvm_fix_tool_path() {
 }
 
 # @FUNCTION: llvm_prepend_path
-# @USAGE: <slot>
+# @USAGE: [-b|-d] <slot>
 # @DESCRIPTION:
 # Prepend the path to the specified LLVM slot to PATH variable,
 # and reexport it.
+#
+# With no option or "-d", the path is prefixed by ESYSROOT.  LLVM
+# dependencies should be in DEPEND then.
+#
+# With "-b" option, the path is prefixed by BROOT. LLVM dependencies
+# should be in BDEPEND then.
 llvm_prepend_path() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <slot>"
+	local prefix
+	case ${1--d} in
+		-d)
+			prefix=${ESYSROOT}
+			shift
+			;;
+		-b)
+			prefix=${BROOT}
+			shift
+			;;
+		-*)
+			die "${FUNCNAME}: invalid option: ${1}"
+			;;
+	esac
+
+	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} [-b|-d] <slot>"
 	local slot=${1}
 
-	local llvm_path=${ESYSROOT}/usr/lib/llvm/${slot}/bin
+	local llvm_path=${prefix}/usr/lib/llvm/${slot}/bin
 	local IFS=:
 	local split_path=( ${PATH} )
 	local new_path=()
