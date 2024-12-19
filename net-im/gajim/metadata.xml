@@ -11,6 +11,5 @@
     <flag name="spell">Spellchecking of composed messages</flag>
     <flag name="upnp">Ability to request your router to forward port for file transfer</flag>
     <flag name="webp">Support WebP avatars</flag>
-    <flag name="omemo">Install dependencies for OMEMO encryption plugin</flag>
   </use>
 </pkgmetadata>
