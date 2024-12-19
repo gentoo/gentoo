@@ -10,6 +10,7 @@
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/geoffreybennett/alsa-scarlett-gui/issues</bugs-to>
 		<remote-id type="github">geoffreybennett/alsa-scarlett-gui</remote-id>
 	</upstream>
 </pkgmetadata>
