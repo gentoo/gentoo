@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ECM_HANDBOOK="forceoptional"
+ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 KFMIN=6.3.0
 QTMIN=6.6.2
