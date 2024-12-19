@@ -16,7 +16,7 @@ IUSE="fop xslt"
 
 RDEPEND="
 	xslt? ( dev-libs/libxslt )
-	fop? ( dev-java/fop )"
+	fop? ( >=dev-java/fop-2.10-r1:0 )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-portage.patch
