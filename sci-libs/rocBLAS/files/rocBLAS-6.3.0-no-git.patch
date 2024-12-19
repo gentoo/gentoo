@@ -1,0 +1,22 @@
+Git should not be a required dependency, as hash is not available for releases.
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -144,17 +144,8 @@ if( BUILD_VERBOSE )
+   message( STATUS "\t==>CMAKE_SHARED_LINKER_FLAGS_RELEASE: ${CMAKE_SHARED_LINKER_FLAGS_RELEASE}" )
+ endif( )
+ 
+-find_package(Git REQUIRED)
+-
+-# Get the git hash of the rocBLAS branch
+-execute_process(
+-          COMMAND "${GIT_EXECUTABLE}" rev-parse HEAD
+-          WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
+-          OUTPUT_VARIABLE GIT_HASH_ROCBLAS
+-          OUTPUT_STRIP_TRAILING_WHITESPACE)
+-
+ #set the rocBLAS commit hash
+-set(rocblas_VERSION_COMMIT_ID "${GIT_HASH_ROCBLAS}")
++set(rocblas_VERSION_COMMIT_ID "")
+ 
+ #set the Tensile commit hash
+ set(tensile_VERSION_COMMIT_ID "${tensile_tag}")

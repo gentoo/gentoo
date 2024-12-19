@@ -19,4 +19,10 @@
   <upstream>
     <remote-id type="github">ROCm/MIOpen</remote-id>
   </upstream>
+  <use>
+    <flag name="composable-kernel">Use composable-kernel for GEMM-like and reduction-like operators.</flag>
+    <flag name="hipblaslt">Use hipBLASLt for some non-batched and strided batched problems.</flag>
+    <flag name="rocblas">Build with rocBLAS support</flag>
+    <flag name="roctracer">Build with roctracer support</flag>
+  </use>
 </pkgmetadata>

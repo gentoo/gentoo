@@ -25,7 +25,7 @@ REQUIRED_USE="${ROCM_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-util/hip
+	dev-util/hip:${SLOT}
 	>=dev-db/sqlite-3.17
 	sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}]
 	>=dev-libs/boost-1.72

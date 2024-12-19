@@ -33,7 +33,7 @@ BDEPEND="
 
 DEPEND="
 	>=dev-cpp/msgpack-cxx-6.0.0
-	=dev-util/hip-6*
+	dev-util/hip:${SLOT}
 	test? (
 		virtual/blas
 		dev-cpp/gtest
@@ -57,6 +57,10 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 	sed -e "s:,-rpath=.*\":\":" -i clients/CMakeLists.txt || die
+
+	# bug 944820: f16c instuctions cause SIGILL on pre-AVX512 CPUs
+	sed -i -e "s/-mf16c /" clients/benchmarks/CMakeLists.txt \
+		clients/gtest/CMakeLists.txt clients/samples/CMakeLists.txt library/CMakeLists.txt || die
 }
 
 src_configure() {

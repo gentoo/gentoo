@@ -1,0 +1,12 @@
+In Gentoo rocm_agent_enumerator is installed by rocminfo and is in PATH.
+--- a/hipTestMain/hip_test_context.cc
++++ b/hipTestMain/hip_test_context.cc
+@@ -37,7 +37,7 @@ std::string TestContext::substringFound(
+ 
+ std::string TestContext::getCurrentArch() {
+ #if HT_LINUX
+-  const char* cmd = "/opt/rocm/bin/rocm_agent_enumerator | sort -u | xargs | sed -e 's/ /;/g'";
++  const char* cmd = "rocm_agent_enumerator | sort -u | xargs | sed -e 's/ /;/g'";
+   std::array<char, 1024> buffer;
+   std::string result;
+   std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);

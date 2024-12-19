@@ -1,0 +1,14 @@
+Add header for llvm_shutdown.
+Backports https://github.com/ROCm/ROCT-Thunk-Interface/commit/8bb5764ee1c4e3a8dc7588b597831389b4481345
+--- a/tests/kfdtest/src/Assemble.cpp
++++ b/tests/kfdtest/src/Assemble.cpp
+@@ -69,6 +69,9 @@
+ #else
+ #include <llvm/Support/TargetRegistry.h>
+ #endif
++#if LLVM_VERSION_MAJOR > 18
++#include "llvm/Support/ManagedStatic.h"
++#endif
+ 
+ #include <linux/elf.h>
+ #include "OSWrapper.hpp"
