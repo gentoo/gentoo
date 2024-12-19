@@ -1,0 +1,30 @@
+FAILED IPython/core/tests/test_run.py::TestMagicRunPass::test_run_debug_twice - AttributeError: 'Pdb' object has no attribute 'curframe'. Did you mean: 'botframe'?
+FAILED IPython/core/tests/test_run.py::TestMagicRunPass::test_run_debug_twice_with_breakpoint - AttributeError: 'Pdb' object has no attribute 'curframe'. Did you mean: 'botframe'?
+https://bugs.gentoo.org/946568
+https://github.com/ipython/ipython/pull/14598
+https://github.com/ipython/ipython/commit/c1e945b5bc8fb673109cf32c4f238f6d5e0f5149.patch
+
+From c1e945b5bc8fb673109cf32c4f238f6d5e0f5149 Mon Sep 17 00:00:00 2001
+From: M Bussonnier <bussonniermatthias@gmail.com>
+Date: Sun, 8 Dec 2024 11:37:11 +0100
+Subject: [PATCH] Fix pdb issues in Python 3.13.1
+
+For some reason it is not always set, it was/is a bug in IPython to not
+check.
+---
+ IPython/core/debugger.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/IPython/core/debugger.py b/IPython/core/debugger.py
+index 1f0d7b2fba..76c42e0230 100644
+--- a/IPython/core/debugger.py
++++ b/IPython/core/debugger.py
+@@ -550,7 +550,7 @@ def _get_frame_locals(self, frame):
+         So if frame is self.current_frame we instead return self.curframe_locals
+ 
+         """
+-        if frame is self.curframe:
++        if frame is getattr(self, "curframe", None):
+             return self.curframe_locals
+         else:
+             return frame.f_locals
