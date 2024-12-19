@@ -9,6 +9,9 @@
     <flag name="server">Enable compilation of server</flag>
   </use>
   <upstream>
+    <bugs-to>https://github.com/wesnoth/wesnoth/issues/</bugs-to>
+    <doc>https://wiki.wesnoth.org/StartingPoints</doc>
+    <changelog>https://github.com/wesnoth/wesnoth/blob/master/changelog.md</changelog>
     <remote-id type="sourceforge">wesnoth</remote-id>
     <remote-id type="github">wesnoth/wesnoth</remote-id>
   </upstream>
