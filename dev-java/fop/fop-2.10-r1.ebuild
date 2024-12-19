@@ -20,7 +20,7 @@ SRC_URI="
 S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
-SLOT="2.8"
+SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
@@ -206,6 +206,6 @@ src_install() {
 	if use doc; then
 		java-pkg_dojavadoc target/api
 	fi
-	java-pkg_dolauncher "fop-${SLOT}" --main "org.apache.fop.cli.Main"
+	java-pkg_dolauncher "fop" --main "org.apache.fop.cli.Main"
 	einstalldocs
 }
