@@ -118,6 +118,7 @@ BDEPEND="
 	test? (
 		dev-lang/perl
 		>=net-dns/libidn2-2.3.0
+		sys-apps/gawk[mpfr]
 	)
 "
 COMMON_DEPEND="
