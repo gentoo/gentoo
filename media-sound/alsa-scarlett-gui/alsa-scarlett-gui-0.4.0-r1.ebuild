@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg
+inherit toolchain-funcs xdg
 
 DESCRIPTION="A UI for Focusrite Scarlett and Clarett audio interfaces"
 HOMEPAGE="https://github.com/geoffreybennett/alsa-scarlett-gui"
@@ -22,9 +22,13 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.4.0-no-Werror.patch"
+	"${FILESDIR}"/${PN}-0.4.0_adjust-cflags.patch
 )
 
 MAKEOPTS="${MAKEOPTS} -C src"
 
 export PREFIX="/usr"
+
+src_compile() {
+	emake CC="$(tc-getCC)"
+}
