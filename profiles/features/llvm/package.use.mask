@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michal Rostecki <vadorovsky@protonmail.com> (2024-12-27)
+# Use llvm-libgcc as a replacement for GCC.
+dev-lang/rust-bin -llvm-libgcc
+
 # Jimi Huotari <chiitoo@gentoo.org> (2024-08-22)
 # Fails to compile due to a pre-built binary.
 # Gentoo bug: 922163

@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Michal Rostecki <vadorovsky@protonmail.com> (2024-12-27)
+# llvm-libgcc should be uses only on llvm profiles.
+dev-lang/rust-bin llvm-libgcc
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-20)
 # openjfx for OpenJDK 24 is not yet available.
 dev-java/openjdk:24 javafx

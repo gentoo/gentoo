@@ -19,6 +19,7 @@
 	</maintainer>
 	<use>
 		<flag name="clippy">Install clippy, Rust code linter</flag>
+		<flag name="llvm-libgcc">Install llvm-libgcc (llvm-libunwind with GNU symbols) as a replacement for GCC</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>

@@ -1,3 +1,7 @@
+# Michal Rostecki <vadorovsky@protonmail.com> (2024-12-27)
+# Use llvm-libgcc as a replacement for GCC.
+dev-lang/rust-bin llvm-libgcc
+
 # Make static linking work by default for simple binaries (bug #892956)
 llvm-runtimes/libunwind static-libs
 
