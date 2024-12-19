@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-16)
+# Bug #946526. There is a newer version in dev-java/stringprep-2.2 pending for
+# stabilization. Then dev-java/saslprep should be last-rited.
+dev-java/saslprep
+
 # Michał Górny <mgorny@gentoo.org> (2024-06-15)
 # Stop-gap compatibility package.  Upstreams really need to move away
 # from the removed cgi module rather than rely on this.
