@@ -1,0 +1,20 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+This also deletes -Werror as that was done anyway and it's simpler to apply one patch
+
+Bug: https://bugs.gentoo.org/936815
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -13,6 +13,6 @@ DEPDIR := .deps
+ DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+ 
+ CFLAGS ?= -ggdb -fno-omit-frame-pointer -O2
+-CFLAGS += -Wall -Werror -D_FORTIFY_SOURCE=2
++CFLAGS += -Wall
+ CFLAGS += -DVERSION=\"$(VERSION)\"
+ CFLAGS += -Wno-error=deprecated-declarations
