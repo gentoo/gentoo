@@ -3,17 +3,11 @@
 
 EAPI=8
 
-inherit cmake xdg-utils
+inherit cmake optfeature prefix xdg
 
 DESCRIPTION="Open source reimplementation of Jazz Jackrabbit 2"
-HOMEPAGE="
-	https://deat.tk/jazz2/
-	https://github.com/deathkiller/jazz2-native
-"
-SRC_URI="
-	https://github.com/deathkiller/jazz2-native/archive/refs/tags/${PV}.tar.gz
-		-> ${P}.tar.gz
-"
+HOMEPAGE="https://deat.tk/jazz2/"
+SRC_URI="https://github.com/deathkiller/jazz2-native/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-native-${PV}"
 
 LICENSE="GPL-3"
@@ -22,8 +16,8 @@ KEYWORDS="~amd64"
 IUSE="+openal sdl"
 
 DEPEND="
-	sys-libs/zlib:=
 	media-libs/libglvnd
+	sys-libs/zlib:=
 	openal? (
 		media-libs/libopenmpt
 		media-libs/openal
@@ -33,16 +27,20 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-system-source.patch
+)
+
 src_prepare() {
+	cmake_src_prepare
+	hprefixify Sources/Shared/Environment.cpp
+
 	# We need to install README.md to a different directory, default
 	# src_install will handle that.
 	sed -i '/README_INSTALL_DESTINATION/d' cmake/ncine_installation.cmake || die
-	cmake_src_prepare
 }
 
 src_configure() {
-	local backend=GLFW
-	use sdl && backend=SDL2
 	local mycmakeargs=(
 		-DNCINE_LINUX_PACKAGE="${PN}"
 
@@ -54,7 +52,7 @@ src_configure() {
 
 		-DNCINE_WITH_GLEW=OFF
 
-		-DNCINE_PREFERRED_BACKEND=${backend}
+		-DNCINE_PREFERRED_BACKEND=$(usex sdl SDL2 GLFW)
 
 		-DNCINE_WITH_AUDIO=$(usex openal)
 	)
@@ -62,9 +60,6 @@ src_configure() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
+	optfeature "game data unless you want to install it manually" ${CATEGORY}/${PN}-data
 }
