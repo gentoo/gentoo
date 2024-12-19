@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # TODO: Figure out a way to disable SRTP from pjproject entirely.
 EAPI=8
@@ -7,22 +7,21 @@ inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="https://github.com/pjsip/pjproject https://www.pjsip.org/"
-SRC_URI="https://github.com/pjsip/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
-
+SRC_URI="https://github.com/pjsip/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 # g729 not included due to special bcg729 handling.
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"
 VIDEO_FLAGS="sdl ffmpeg v4l2 openh264 libyuv vpx"
 SOUND_FLAGS="alsa portaudio"
-IUSE="amr debug epoll examples opus resample silk ssl static-libs webrtc
+IUSE="amr debug epoll examples opus resample silk srtp ssl static-libs webrtc
 	${CODEC_FLAGS} g729
 	${VIDEO_FLAGS}
 	${SOUND_FLAGS}"
 
-RDEPEND=">=net-libs/libsrtp-2.3.0:=
+RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	amr? ( media-libs/opencore-amr )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -38,18 +37,11 @@ RDEPEND=">=net-libs/libsrtp-2.3.0:=
 		media-libs/speex
 		media-libs/speexdsp
 	)
-	ssl? (
-		dev-libs/openssl:0=
-	)
+	srtp? ( >=net-libs/libsrtp-2.3.0:= )
+	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/pjproject-2.13-r1-Make-sure-that-NOTIFY-tdata-is-set-before-sending-it_new.patch"
-	"${FILESDIR}/pjproject-2.13-r1-CVE-2022-23537-buffer-overread-on-STUN-error-decode.patch"
-	"${FILESDIR}/pjproject-2.13-r1-CVE-2022-23547-buffer-overread-on-STUN-decode.patch"
-)
 
 src_prepare() {
 	default
@@ -57,7 +49,8 @@ src_prepare() {
 	mv aconfigure.ac configure.ac || die "Unable to rename configure script source"
 	eautoreconf
 
-	cp "${FILESDIR}/pjproject-2.12.1-config_site.h" "${S}/pjlib/include/pj/config_site.h" || die "Unable to create config_site.h"
+	cp "${FILESDIR}/pjproject-2.13.1-r1-config_site.h" "${S}/pjlib/include/pj/config_site.h" \
+		|| die "Unable to create config_site.h"
 }
 
 _pj_enable() {
@@ -73,7 +66,8 @@ _pj_get_define() {
 _pj_set_define() {
 	local c=$(_pj_get_define "$1")
 	[[ "$c" = "$2" ]] && return 0
-	sed -re "s/^#define[[:space:]]+$1[[:space:]].*/#define $1 $2/" -i "${S}/pjlib/include/pj/config_site.h" || die "sed failed updating $1 to $2."
+	sed -re "s/^#define[[:space:]]+$1[[:space:]].*/#define $1 $2/" -i "${S}/pjlib/include/pj/config_site.h" \
+		|| die "sed failed updating $1 to $2."
 	[[ "$(_pj_get_define "$1")" != "$2" ]] && die "sed failed to perform update for $1 to $2."
 }
 
@@ -100,9 +94,8 @@ src_configure() {
 
 	[ "${videnable}" = "--enable-video" ] && _pj_set_define PJMEDIA_HAS_VIDEO 1 || _pj_set_define PJMEDIA_HAS_VIDEO 0
 
-	LD="$(tc-getCC)" econf \
+	LD="$(tc-getCXX)" econf \
 		--enable-shared \
-		--with-external-srtp \
 		${videnable} \
 		$(_pj_enable alsa sound) \
 		$(_pj_enable amr opencore-amr) \
@@ -119,14 +112,15 @@ src_configure() {
 		$(use_with gsm external-gsm) \
 		$(use_with portaudio external-pa) \
 		$(use_with speex external-speex) \
+		$(usex srtp --with-external-srtp --disable-libsrtp) \
 		"${myconf[@]}"
 }
 
-src_compile() {
-	emake dep LD="$(tc-getCC)"
-	emake LD="$(tc-getCC)"
-}
-
+#src_compile() {
+#	emake dep
+#	emake
+#}
+#
 src_install() {
 	default
 
