@@ -16,5 +16,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">shiboken6</remote-id>
+		<remote-id type="github">qtproject/pyside-pyside-setup</remote-id>
 	</upstream>
 </pkgmetadata>
