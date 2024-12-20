@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64 ~arm64 ppc64"
+KEYWORDS="amd64 ~arm64 ppc64"
 
 # Tests need a version of byte-buddy supporting Java 21. #930103
 CP_DEPEND="
