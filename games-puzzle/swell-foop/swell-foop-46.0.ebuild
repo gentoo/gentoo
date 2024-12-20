@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/swell-foop"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.74:2
