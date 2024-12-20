@@ -14,7 +14,7 @@ S="${WORKDIR}/control-blur-effect-on-lockscreen-${COMMIT}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 # glib for glib-compile-schemas at build time, needed at runtime anyways
 COMMON_DEPEND="
