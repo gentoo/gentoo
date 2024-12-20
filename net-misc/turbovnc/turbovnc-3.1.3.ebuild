@@ -53,6 +53,7 @@ RDEPEND="
 # but cmake will look for them, so add them here
 DEPEND="
 	${COMMON_DEPEND}
+	media-libs/mesa
 	x11-libs/xtrans
 	viewer? ( >=virtual/jdk-1.8:* )
 	server? (
