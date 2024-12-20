@@ -13,7 +13,7 @@ extension_uuid="applications-overview-tooltip@RaphaelRochet"
 # https://github.com/RaphaelRochet/applications-overview-tooltip/issues/7
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
