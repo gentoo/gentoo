@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-rel_${PV//./_}_ga"
 
 LICENSE="Apache-2.0 LGPL-2.1 MPL-1.1"
 SLOT="3"
-KEYWORDS="~amd64 ~arm64 ppc64 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	>=virtual/jdk-11:*
