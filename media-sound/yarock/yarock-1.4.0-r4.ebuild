@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	media-libs/taglib
+	media-libs/taglib:=
 	x11-libs/libX11
 	mpv? ( media-video/mpv:=[libmpv] )
 	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-1.4.0-fix-build-taglib2.patch )
 
 DOCS=( CHANGES.md README.md )
 
