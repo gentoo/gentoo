@@ -25,7 +25,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
-	>=dev-python/httpx-0.25.0[${PYTHON_USEDEP}]
+	>=dev-python/httpx-0.28.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
