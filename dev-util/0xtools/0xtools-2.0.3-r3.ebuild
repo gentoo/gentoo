@@ -65,6 +65,7 @@ src_install() {
 	systemd_dounit xcapture.service
 	systemd_dounit xcapture-restart.service
 	systemd_dounit xcapture-restart.timer
+	newinitd "${FILESDIR}/0xtools-2.0.3-xcapture-r0.initd" xcapture
 
 	# Setup for "xcapture-bpf".
 	exeinto "/lib/${PN}/xcapture"
