@@ -1,0 +1,44 @@
+https://github.com/sebaro/Yarock/commit/3cdc8910a6dec9054913dcdd8e804bb79b53b861.patch
+--- a/src/core/mediaitem/tag.cpp
++++ b/src/core/mediaitem/tag.cpp
+@@ -28,6 +28,7 @@
+
+ #include <taglib/mpegfile.h>
+ #include <taglib/asffile.h>
++#include <taglib/attachedpictureframe.h>
+ #include <taglib/vorbisfile.h>
+ #include <taglib/oggfile.h>
+ #include <taglib/oggflacfile.h>
+@@ -289,10 +290,10 @@
+ /*----------------------------------------------------------------------------*/
+ static void readMP4Tags(TagLib::MP4::Tag *tag, MEDIA::TrackPtr track, QString& s_disc )
+ {
+-    const TagLib::MP4::ItemListMap& items = tag->itemListMap();
++    const TagLib::MP4::ItemMap& items = tag->itemMap();
+ 
+     /* album artists tags */
+-    TagLib::MP4::ItemListMap::ConstIterator it = items.find("aART");
++    TagLib::MP4::ItemMap::ConstIterator it = items.find("aART");
+     if ( it != items.end() ) 
+     {
+         TagLib::StringList album_artists = it->second.toStringList();
+@@ -665,7 +666,7 @@
+     else if (TagLib::MP4::File* file = dynamic_cast<TagLib::MP4::File*>(fileref.file())) 
+     {
+       TagLib::MP4::Tag* tag = file->tag();
+-      tag->itemListMap()[kMP4_FMPS_Rating_ID] = TagLib::StringList(QStringToTaglibString(QString::number( rating )));
++      tag->setItem(kMP4_FMPS_Rating_ID, TagLib::StringList(QStringToTaglibString(QString::number( rating ))));
+     }
+     else 
+     {
+@@ -772,8 +773,8 @@
+     if (aac_file) 
+     {
+       TagLib::MP4::Tag* tag = aac_file->tag();
+-      const TagLib::MP4::ItemListMap& items = tag->itemListMap();
+-      TagLib::MP4::ItemListMap::ConstIterator it = items.find("covr");
++      const TagLib::MP4::ItemMap& items = tag->itemMap();
++      TagLib::MP4::ItemMap::ConstIterator it = items.find("covr");
+       if (it != items.end()) 
+       {
+         const TagLib::MP4::CoverArtList& art_list = it->second.toCoverArtList();
