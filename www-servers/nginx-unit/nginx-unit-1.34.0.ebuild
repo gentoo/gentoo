@@ -4,11 +4,13 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..13} )
-USE_PHP="php8-3"
 
 inherit flag-o-matic python-single-r1 systemd toolchain-funcs
 
 MY_P="unit-${PV}"
+MY_USE="perl python ruby"
+MY_USE_PHP="php8-3"
+
 DESCRIPTION="Dynamic web and application server"
 HOMEPAGE="https://unit.nginx.org"
 SRC_URI="https://unit.nginx.org/download/${MY_P}.tar.gz -> ${P}.tar.gz"
@@ -17,12 +19,13 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="perl php python ruby ssl"
+IUSE="${MY_USE} ${MY_USE_PHP} perl ssl"
+
 REQUIRED_USE="|| ( ${IUSE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="perl? ( dev-lang/perl:= )
-	php? ( dev-lang/php:8.3[embed] )
+	php8-3? ( dev-lang/php:8.3[embed] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		dev-lang/ruby:=
@@ -85,8 +88,6 @@ src_install() {
 	default
 
 	if use perl ; then
-		echo "1"
-		echo "D is ${D}"
 		emake DESTDIR="${D}/" perl-install
 	fi
 
