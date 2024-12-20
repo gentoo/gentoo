@@ -63,6 +63,80 @@ test_gen_dep() {
 	tend ${?}
 }
 
+LLVM_CONFIG_OPTIONS=(
+	--assertion-mode
+	--bindir
+	--build-mode
+	--build-system
+	--cflags
+	--cmakedir
+	--components
+	--cppflags
+	--cxxflags
+	--has-rtti
+	--host-target
+	--ignore-libllvm
+	--includedir
+	--ldflags
+	--libdir
+	--libfiles
+	--libnames
+	--libs
+	--link-shared
+	--link-static
+	--obj-root
+	--prefix
+	--shared-mode
+	--system-libs
+	--targets-built
+	--version
+)
+
+normalize_list() {
+	"${@}" |
+		sed -e 's:\s\+:\n:g' |
+		sed -e '/^$/d' |
+		sort
+	local ps=${PIPESTATUS[*]}
+	[[ ${ps} == '0 0 0 0' ]] || die "normalize_list pipe failed: ${ps}"
+}
+
+test_llvm_config() {
+	einfo "llvm-config for slot ${LLVM_SLOT}, libdir ${LLVM_LIBDIR}"
+	eindent
+
+	generate_llvm_config > "${TMP}/llvm-config" || die
+	local triple=$(sh "${TMP}/llvm-config" --host-target || die)
+	local llvm_config=/usr/lib/llvm/${LLVM_SLOT}/bin/${triple}-llvm-config
+
+	local option res
+	for option in "${LLVM_CONFIG_OPTIONS[@]}"; do
+		tbegin "${option}"
+
+		normalize_list sh "${TMP}/llvm-config" "${option}" > "${TMP}/our"
+		normalize_list "${llvm_config}" "${option}" > "${TMP}/upstream"
+		case ${option} in
+			--components)
+				# our components are a superset of what llvm-config yields
+				res=$(comm -13 "${TMP}/our" "${TMP}/upstream")
+				;;
+			*)
+				# expect all elements to match
+				res=$(comm -3 "${TMP}/our" "${TMP}/upstream")
+				;;
+		esac
+
+		if [[ -z ${res} ]]; then
+			tend 0
+		else
+			eerror "$(diff -u "${TMP}/our" "${TMP}/upstream")"
+			tend 1
+		fi
+	done
+	
+	eoutdent
+}
+
 # full range
 test_globals '14 15 16 17 18 19' \
 	"+llvm_slot_19 llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_18" \
@@ -97,5 +171,18 @@ test_gen_dep 'llvm-core/llvm:${LLVM_SLOT} llvm-core/clang:${LLVM_SLOT}' <<-EOF
 	llvm_slot_17? ( llvm-core/llvm:17 llvm-core/clang:17 )
 	llvm_slot_18? ( llvm-core/llvm:18 llvm-core/clang:18 )
 EOF
+
+TMP=$(mktemp -d || die)
+trap 'rm -rf \"${TMP}\"' EXIT
+get_libdir() { echo "${LLVM_LIBDIR}"; }
+
+for installed_llvm_cmake in /usr/lib/llvm/*/lib*/cmake; do
+	installed_llvm_libdir=${installed_llvm_cmake%/*}
+	LLVM_LIBDIR=${installed_llvm_libdir##*/}
+	installed_llvm=${installed_llvm_libdir%/*}
+	LLVM_SLOT=${installed_llvm##*/}
+
+	test_llvm_config
+done
 
 texit
