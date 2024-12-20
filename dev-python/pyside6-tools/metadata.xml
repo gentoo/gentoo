@@ -9,4 +9,7 @@
 		<email>waebbl-gentoo@posteo.net</email>
 		<name>Bernd Waibel</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">qtproject/pyside-pyside-setup</remote-id>
+	</upstream>
 </pkgmetadata>
