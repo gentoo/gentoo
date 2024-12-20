@@ -12,7 +12,7 @@ HOMEPAGE="https://apps.gnome.org/Totem/ https://gitlab.gnome.org/GNOME/totem/"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="gtk-doc +python test"
 # see bug #359379
 REQUIRED_USE="
