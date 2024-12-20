@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/en/DiskUtility/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="fat elogind gnome systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
