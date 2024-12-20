@@ -16,7 +16,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
-SLOT="4/37" # soname version of libwebkit2gtk-4.0
+SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
 KEYWORDS="amd64 arm64 ppc ppc64"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
@@ -65,7 +65,7 @@ RDEPEND="
 	media-libs/libwebp:=
 	media-libs/mesa
 	media-libs/woff2
-	net-libs/libsoup:2.4[introspection?]
+	net-libs/libsoup:3.0[introspection?]
 	sys-libs/zlib:0
 	x11-libs/cairo[X?]
 	x11-libs/gtk+:3[aqua?,introspection?,wayland?,X?]
@@ -148,8 +148,6 @@ src_prepare() {
 
 	# https://bugs.gentoo.org/943213
 	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
-	# https://bugs.gentoo.org/945827
-	eapply "${FILESDIR}"/2.46.4-no-egl.patch
 }
 
 src_configure() {
@@ -230,7 +228,7 @@ src_configure() {
 		-DUSE_LIBDRM=ON
 		-DUSE_LIBHYPHEN=ON
 		-DUSE_LIBSECRET=$(usex keyring)
-		-DUSE_SOUP2=ON
+		-DUSE_SOUP2=OFF
 		-DUSE_SYSPROF_CAPTURE=OFF
 		-DUSE_WOFF2=ON
 	)
