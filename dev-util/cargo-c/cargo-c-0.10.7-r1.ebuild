@@ -407,12 +407,11 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-# zlib[static-libs]: bug #938018
 RDEPEND=">=dev-libs/libgit2-1.8.1:=
 	dev-libs/openssl:=
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
-	sys-libs/zlib[static-libs]"
+	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/cargo-capi usr/bin/cargo-cbuild usr/bin/cargo-ctest usr/bin/cargo-cinstall"
@@ -422,7 +421,10 @@ src_configure() {
 	# Tracker bug #709568
 	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export LIBGIT2_NO_VENDOR=1
+	export OPENSSL_NO_VENDOR=1
 	export PKG_CONFIG_ALLOW_CROSS=1
+
+	#use elibc_musl && export LIBZ_SYS_STATIC=1
 
 	cargo_src_configure
 }
