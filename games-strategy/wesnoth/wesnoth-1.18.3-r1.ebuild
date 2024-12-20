@@ -6,11 +6,11 @@ EAPI=8
 inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
-HOMEPAGE="http://www.wesnoth.org
+HOMEPAGE="https://www.wesnoth.org
 	https://github.com/wesnoth/wesnoth"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ CC-BY-SA-4.0"
 SLOT="0"
 # uneven minor versions are development versions
 if [[ $(( $(ver_cut 2) % 2 )) == 0 ]] ; then
@@ -22,7 +22,7 @@ RDEPEND="
 	acct-group/wesnoth
 	acct-user/wesnoth
 	dev-libs/boost:=[bzip2,context,icu,nls]
-	>=media-libs/libsdl2-2.0.18:0[joystick,video,X]
+	>=media-libs/libsdl2-2.0.10:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2
 		dev-libs/openssl:0=
