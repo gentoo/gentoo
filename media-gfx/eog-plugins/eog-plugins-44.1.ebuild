@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/eog-plugins"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="+exif map +python test"
 RESTRICT="!test? ( test )"
