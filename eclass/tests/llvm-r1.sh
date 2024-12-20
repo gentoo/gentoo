@@ -65,7 +65,7 @@ test_gen_dep() {
 
 # full range
 test_globals '14 15 16 17 18 19' \
-	"+llvm_slot_18 llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_19" \
+	"+llvm_slot_19 llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_18" \
 	"^^ ( llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_18 llvm_slot_19 )" \
 	"llvm_slot_15(-)?,llvm_slot_16(-)?,llvm_slot_17(-)?,llvm_slot_18(-)?,llvm_slot_19(-)?"
 test_globals '14 15 16 17 18' \
@@ -78,10 +78,10 @@ test_globals '14 15 16' \
 	"^^ ( llvm_slot_15 llvm_slot_16 )" \
 	"llvm_slot_15(-)?,llvm_slot_16(-)?"
 # old + newer than current stable
-test_globals '15 19' \
-	"+llvm_slot_15 llvm_slot_19" \
-	"^^ ( llvm_slot_15 llvm_slot_19 )" \
-	"llvm_slot_15(-)?,llvm_slot_19(-)?"
+test_globals '15 20' \
+	"+llvm_slot_15 llvm_slot_20" \
+	"^^ ( llvm_slot_15 llvm_slot_20 )" \
+	"llvm_slot_15(-)?,llvm_slot_20(-)?"
 # newer than current stable
 test_globals '19' \
 	"+llvm_slot_19" \
