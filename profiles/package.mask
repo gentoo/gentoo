@@ -159,11 +159,6 @@ dev-python/shiboken2
 # [3] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/470
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-18)
-# All classes were moved to >=x11-libs/qwt-6.2.0. No revdeps.
-# Removal on 2024-12-18.
-x11-libs/qwtpolar
-
 # Robin H. Johnson <robbat2@gentoo.org> (2024-11-17)
 # bug 943698
 # Poor upstream code quality, unmaintained upstream;
