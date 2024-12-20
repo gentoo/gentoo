@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,14 +24,17 @@ RDEPEND="
 	media-libs/libmad
 	media-libs/libvorbis
 	media-libs/portaudio
-	media-libs/taglib
+	media-libs/taglib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${P}-gcc-11.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-11.patch
+	"${FILESDIR}"/${P}-fix-build-taglib2.patch
+)
 
 src_install() {
 	einstalldocs
