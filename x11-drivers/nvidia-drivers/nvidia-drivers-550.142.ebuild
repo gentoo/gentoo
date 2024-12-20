@@ -7,6 +7,9 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop eapi9-pipestatus flag-o-matic linux-mod-r1 readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
+# note: currently builds with 6.13, but (at least) fbdev=1 is known
+# broken and not planning to patch
+# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/749
 MODULES_KERNEL_MAX=6.12
 NV_URI="https://download.nvidia.com/XFree86/"
 
