@@ -26,6 +26,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.0.20240619-xlib.patch"
+)
+
 src_configure() {
 	if [[ ${CHOST} == *-*-darwin* ]] ; then
 		export ac_cv_prog_LIBTOOL=glibtool
