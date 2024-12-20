@@ -1,0 +1,217 @@
+diff '--color=auto' -uNr a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-12-16 12:38:42.412438061 -0000
++++ b/CMakeLists.txt	2024-12-16 12:42:48.608780120 -0000
+@@ -532,6 +532,9 @@
+ )
+ 
+ if(ENABLE_CATEGORIZED_VIEW)
++    find_package(KF6ItemViews REQUIRED)
++    ADD_COMPILE_DEFINITIONS(cantata CAT_VIEW)
++    target_link_libraries(cantata PRIVATE KF6::ItemViews)
+     target_sources(cantata PRIVATE widgets/categorizedview.cpp)
+ endif()
+ if(ENABLE_SIMPLE_MPD_SUPPORT)
+@@ -628,7 +630,8 @@
+     # Cantata still links to taglib, even if external tag reader/writer is used, because JamendoService uses taglib for ID3 genres.
+     target_link_libraries(cantata PRIVATE TagLib::TagLib)
+     if(ENABLE_DEVICES_SUPPORT)
+-        target_link_libraries(cantata PRIVATE solidlite)
++	    find_package(KF6Solid REQUIRED)
++	    target_link_libraries(cantata PRIVATE KF6::Solid)
+     endif()
+ 
+     if(FFMPEG_FOUND OR MPG123_FOUND)
+@@ -646,7 +649,6 @@
+     add_subdirectory(tags)
+ 
+     if(ENABLE_DEVICES_SUPPORT)
+-        add_subdirectory(3rdparty/solid-lite)
+         if(MTP_FOUND)
+             target_sources(cantata PRIVATE devices/mtpdevice.cpp)
+             target_link_libraries(cantata PRIVATE MTP::MTP)
+@@ -797,11 +799,6 @@
+     install(TARGETS cantata)
+ endif()
+ 
+-if(ENABLE_CATEGORIZED_VIEW)
+-    add_subdirectory(3rdparty/kcategorizedview)
+-    target_link_libraries(cantata PRIVATE kcategorizedview)
+-endif()
+-
+ if(WIN32 OR APPLE OR HAIKU)
+     add_subdirectory(3rdparty/qtsingleapplication)
+     target_link_libraries(cantata PRIVATE qtsingleapplication)
+diff '--color=auto' -uNr a/devices/audiocddevice.cpp b/devices/audiocddevice.cpp
+--- a/devices/audiocddevice.cpp	2024-12-16 12:38:42.416438001 -0000
++++ b/devices/audiocddevice.cpp	2024-12-16 12:39:03.128130278 -0000
+@@ -35,7 +35,7 @@
+ #include "models/musiclibraryitemsong.h"
+ #include "models/playqueuemodel.h"
+ #include "mpd-interface/mpdconnection.h"
+-#include "solid-lite/block.h"
++#include <solid/block.h>
+ #include "support/utils.h"
+ #include "widgets/icons.h"
+ #include <QDir>
+diff '--color=auto' -uNr a/devices/audiocddevice.h b/devices/audiocddevice.h
+--- a/devices/audiocddevice.h	2024-12-16 12:38:42.416438001 -0000
++++ b/devices/audiocddevice.h	2024-12-16 12:39:03.128130278 -0000
+@@ -27,7 +27,7 @@
+ #include "device.h"
+ #include "gui/covers.h"
+ #include "http/httpserver.h"
+-#include "solid-lite/opticaldrive.h"
++#include <solid/opticaldrive.h>
+ #include <QImage>
+ 
+ class CddbInterface;
+diff '--color=auto' -uNr a/devices/device.cpp b/devices/device.cpp
+--- a/devices/device.cpp	2024-12-16 12:38:42.416438001 -0000
++++ b/devices/device.cpp	2024-12-16 12:39:03.128130278 -0000
+@@ -46,11 +46,11 @@
+ #include "models/musiclibrarymodel.h"
+ #include "mpd-interface/mpdparseutils.h"
+ #include "mpd-interface/song.h"
+-#include "solid-lite/genericinterface.h"
+-#include "solid-lite/opticaldisc.h"
+-#include "solid-lite/portablemediaplayer.h"
+-#include "solid-lite/storageaccess.h"
+-#include "solid-lite/storagedrive.h"
++#include <solid/genericinterface.h>
++#include <solid/opticaldisc.h>
++#include <solid/portablemediaplayer.h>
++#include <solid/storageaccess.h>
++#include <solid/storagedrive.h>
+ #include "tags/tags.h"
+ #include "widgets/icons.h"
+ #endif// ENABLE_DEVICES_SUPPORT
+diff '--color=auto' -uNr a/devices/device.h b/devices/device.h
+--- a/devices/device.h	2024-12-16 12:38:42.416438001 -0000
++++ b/devices/device.h	2024-12-16 12:39:03.128130278 -0000
+@@ -30,7 +30,7 @@
+ #include "mpd-interface/song.h"
+ #ifdef ENABLE_DEVICES_SUPPORT
+ #include "deviceoptions.h"
+-#include "solid-lite/device.h"
++#include <solid/device.h>
+ #endif
+ 
+ class QWidget;
+diff '--color=auto' -uNr a/devices/mtpdevice.h b/devices/mtpdevice.h
+--- a/devices/mtpdevice.h	2024-12-16 12:38:42.416438001 -0000
++++ b/devices/mtpdevice.h	2024-12-16 12:39:03.128130278 -0000
+@@ -27,7 +27,7 @@
+ #include "config.h"
+ #include "fsdevice.h"
+ #include "mpd-interface/song.h"
+-#include "solid-lite/portablemediaplayer.h"
++#include <solid/portablemediaplayer.h>
+ #include <libmtp.h>
+ 
+ class MusicLibraryItemRoot;
+diff '--color=auto' -uNr a/devices/umsdevice.cpp b/devices/umsdevice.cpp
+--- a/devices/umsdevice.cpp	2024-12-16 12:38:42.420437942 -0000
++++ b/devices/umsdevice.cpp	2024-12-16 12:39:03.128130278 -0000
+@@ -25,7 +25,7 @@
+ #include "actiondialog.h"
+ #include "devicepropertiesdialog.h"
+ #include "devicepropertieswidget.h"
+-#include "solid-lite/storagedrive.h"
++#include <solid/storagedrive.h>
+ #include "support/icon.h"
+ #include "support/utils.h"
+ #include <QDir>
+diff '--color=auto' -uNr a/devices/umsdevice.h b/devices/umsdevice.h
+--- a/devices/umsdevice.h	2024-12-16 12:38:42.420437942 -0000
++++ b/devices/umsdevice.h	2024-12-16 12:39:03.128130278 -0000
+@@ -25,7 +25,7 @@
+ #define UMSDEVICE_H
+ 
+ #include "fsdevice.h"
+-#include "solid-lite/storageaccess.h"
++#include <solid/storageaccess.h>
+ 
+ class UmsDevice : public FsDevice {
+ 	Q_OBJECT
+diff '--color=auto' -uNr a/models/devicesmodel.cpp b/models/devicesmodel.cpp
+--- a/models/devicesmodel.cpp	2024-12-16 12:38:42.424437883 -0000
++++ b/models/devicesmodel.cpp	2024-12-16 12:39:03.128130278 -0000
+@@ -42,14 +42,14 @@
+ #if defined CDDB_FOUND || defined MusicBrainz5_FOUND
+ #include "devices/audiocddevice.h"
+ #endif
+-#include "solid-lite/device.h"
+-#include "solid-lite/deviceinterface.h"
+-#include "solid-lite/devicenotifier.h"
+-#include "solid-lite/opticaldisc.h"
+-#include "solid-lite/portablemediaplayer.h"
+-#include "solid-lite/storageaccess.h"
+-#include "solid-lite/storagedrive.h"
+-#include "solid-lite/storagevolume.h"
++#include <solid/device.h>
++#include <solid/deviceinterface.h>
++#include <solid/devicenotifier.h>
++#include <solid/opticaldisc.h>
++#include <solid/portablemediaplayer.h>
++#include <solid/storageaccess.h>
++#include <solid/storagedrive.h>
++#include <solid/storagevolume.h>
+ #include "support/globalstatic.h"
+ #include "support/utils.h"
+ #include <QMimeData>
+diff '--color=auto' -uNr a/models/mpdlibrarymodel.cpp b/models/mpdlibrarymodel.cpp
+--- a/models/mpdlibrarymodel.cpp	2024-12-16 12:38:42.424437883 -0000
++++ b/models/mpdlibrarymodel.cpp	2024-12-16 12:48:07.420043294 -0000
+@@ -25,7 +25,9 @@
+ #include "db/mpdlibrarydb.h"
+ #include "gui/covers.h"
+ #include "gui/settings.h"
+-#include "kcategorizedview/kcategorizedsortfilterproxymodel.h"
++#ifdef CAT_VIEW
++#include <kcategorizedsortfilterproxymodel.h>
++#endif
+ #include "roles.h"
+ #include "support/configuration.h"
+ #include "support/globalstatic.h"
+@@ -110,6 +112,7 @@
+ 		}
+ 		return v;
+ 	}
++	#ifdef CAT_VIEW
+ 	case KCategorizedSortFilterProxyModel::CategoryDisplayRole: {
+ 		Item* item = static_cast<Item*>(index.internalPointer());
+ 		if (T_Album == item->getType()) {
+@@ -125,6 +128,7 @@
+ 		}
+ 		break;
+ 	}
++	#endif
+ 	}
+ 	return SqlLibraryModel::data(index, role);
+ }
+diff '--color=auto' -uNr a/widgets/categorizedview.cpp b/widgets/categorizedview.cpp
+--- a/widgets/categorizedview.cpp	2024-12-16 12:38:42.436437705 -0000
++++ b/widgets/categorizedview.cpp	2024-12-16 12:39:03.132130217 -0000
+@@ -24,8 +24,8 @@
+ #include "categorizedview.h"
+ #include "config.h"
+ #include "icons.h"
+-#include "kcategorizedview/kcategorizedsortfilterproxymodel.h"
+-#include "kcategorizedview/kcategorydrawer.h"
++#include <kcategorizedsortfilterproxymodel.h>
++#include <kcategorydrawer.h>
+ #include "support/utils.h"
+ #include <QApplication>
+ #include <QDrag>
+diff '--color=auto' -uNr a/widgets/categorizedview.h b/widgets/categorizedview.h
+--- a/widgets/categorizedview.h	2024-12-16 12:38:42.436437705 -0000
++++ b/widgets/categorizedview.h	2024-12-16 12:39:03.132130217 -0000
+@@ -24,7 +24,7 @@
+ #ifndef CATEGORIZEDVIEW_H
+ #define CATEGORIZEDVIEW_H
+ 
+-#include "kcategorizedview/kcategorizedview.h"
++#include <kcategorizedview.h>
+ #include "treeview.h"
+ 
+ class QIcon;
