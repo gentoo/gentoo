@@ -4,7 +4,6 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
-CMAKE_BUILD_TYPE="None"
 inherit cmake desktop python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
