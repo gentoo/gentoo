@@ -18,6 +18,7 @@
 		<flag name="gles2-only">Build QtGui "QOpenGL*" classes</flag>
 		<flag name="gui">Build QtGui module</flag>
 		<flag name="help">Build QtHelp module</flag>
+		<flag name="httpserver">Build QtHttpServer module</flag>
 		<flag name="location">Build QtLocation module</flag>
 		<flag name="multimedia">Build QtMultimedia and QtMultimediaWidgets modules</flag>
 		<flag name="network">Build QtNetwork module</flag>
@@ -36,7 +37,9 @@
 		<flag name="speech">Build QtTextToSpeech module</flag>
 		<flag name="sql">Build QtSql module</flag>
 		<flag name="svg">Build QtSvg module</flag>
+		<flag name="remoteobjects">Build QtRemoteObjects module</flag>
 		<flag name="testlib">Build QtTest module</flag>
+		<flag name="uitools">Build UITools module</flag>
 		<flag name="webchannel">Build QtWebChannel module</flag>
 		<flag name="webengine">Build QtWebEngine and QtWebEngineWidgets modules</flag>
 		<flag name="websockets">Build QtWebSockets module</flag>
@@ -45,5 +48,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">PySide6</remote-id>
+		<remote-id type="github">qtproject/pyside-pyside-setup</remote-id>
 	</upstream>
 </pkgmetadata>
