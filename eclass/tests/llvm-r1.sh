@@ -63,64 +63,6 @@ test_gen_dep() {
 	tend ${?}
 }
 
-test_fix_clang_version() {
-	local var=${1}
-	local tool=${2}
-	local version=${3}
-	local expected=${4}
-
-	eval "${tool}() {
-		cat <<-EOF
-			clang version ${version}
-			Target: x86_64-pc-linux-gnu
-			Thread model: posix
-			InstalledDir: /usr/lib/llvm/17/bin
-			Configuration file: /etc/clang/x86_64-pc-linux-gnu-clang.cfg
-		EOF
-	}"
-
-	declare -g ${var}=${tool}
-	tbegin "llvm_fix_clang_version ${var}=${tool} for ${version}"
-	llvm_fix_clang_version "${var}"
-	if [[ ${!var} != ${expected} ]]; then
-		eerror "llvm_fix_clang_version ${var}"
-		eerror "    gave: ${!var}"
-		eerror "expected: ${expected}"
-	fi
-	tend ${?}
-}
-
-test_fix_tool_path() {
-	local var=${1}
-	local tool=${2}
-	local expected_subst=${3}
-	local expected=${tool}
-
-	tbegin "llvm_fix_tool_path ${1}=${2} (from llvm? ${expected_subst})"
-
-	local matches=( "${BROOT}"/usr/lib/llvm/*/bin/"${tool}" )
-	if [[ ${expected_subst} == 1 ]]; then
-		if [[ ! -x ${matches[0]} ]]; then
-			ewarn "- skipping, test requires ${tool}"
-			return
-		fi
-
-		expected=${matches[0]}
-		local -x PATH=${matches[0]%/*}
-	else
-		local -x PATH=
-	fi
-
-	declare -g ${var}=${tool}
-	llvm_fix_tool_path "${var}"
-	if [[ ${!var} != ${expected} ]]; then
-		eerror "llvm_fix_tool_path ${var}"
-		eerror "    gave: ${!var}"
-		eerror "expected: ${expected}"
-	fi
-	tend ${?}
-}
-
 # full range
 test_globals '14 15 16 17 18 19' \
 	"+llvm_slot_18 llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_19" \
