@@ -23,7 +23,7 @@ RDEPEND="
 		media-libs/aalib
 		media-libs/libjpeg-turbo
 	)
-	ncurses? ( dev-libs/cdk:= )
+	ncurses? ( >=dev-libs/cdk-5.0.20240331:= )
 	readline? ( sys-libs/readline:= )
 "
 DEPEND="${RDEPEND}"
