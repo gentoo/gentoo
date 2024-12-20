@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/django-4.2.9[${PYTHON_USEDEP}]
+	elibc_musl? ( sys-libs/timezone-data )
 "
 
 BDEPEND="
