@@ -54,7 +54,7 @@ RDEPEND="
 	<dev-python/qtawesome-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.5.1[${PYTHON_USEDEP}]
 	<dev-python/qtconsole-5.6.0[${PYTHON_USEDEP}]
-	>=dev-python/qtpy-2.1.0[${PYTHON_USEDEP},pyqt5,svg,webengine]
+	>=dev-python/qtpy-2.1.0[${PYTHON_USEDEP},pyqt5(-),svg,webengine]
 	>=dev-python/rtree-0.9.7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-2.5.2[${PYTHON_USEDEP}]
