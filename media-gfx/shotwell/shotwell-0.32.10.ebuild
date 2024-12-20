@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/shotwell"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~sparc x86"
 IUSE="opencv udev"
 
 DEPEND="
