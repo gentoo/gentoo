@@ -80,7 +80,6 @@ RDEPEND="${PYTHON_DEPS}
 	iio? (
 		net-libs/libiio:=
 		net-libs/libad9361-iio:=
-		!net-wireless/gr-iio
 	)
 	jack? ( virtual/jack )
 	portaudio? ( >=media-libs/portaudio-19_pre )
