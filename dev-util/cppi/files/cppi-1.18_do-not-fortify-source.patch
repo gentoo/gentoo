@@ -1,0 +1,30 @@
+From: Filip Kobierski <fkobi@pm.me>
+Bug: https://bugs.gentoo.org/894304
+
+configure.ac gets changed, so autoreconf needs to be run
+
+---
+ configure.ac | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 81e5fbb..4f685c1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -75,13 +75,6 @@ if test "$gl_gcc_warnings" = yes; then
+   AC_SUBST([WARN_CFLAGS])
+ 
+   AC_DEFINE([lint], [1], [Define to 1 if the compiler is checking for lint.])
+-  AH_VERBATIM([FORTIFY_SOURCE],
+-  [/* Enable compile-time and run-time bounds-checking, and some warnings,
+-      without upsetting glibc 2.15+. */
+-   #if defined __OPTIMIZE__ && __OPTIMIZE__
+-   # define _FORTIFY_SOURCE 2
+-   #endif
+-  ])
+   AC_DEFINE([GNULIB_PORTCHECK], [1], [enable some gnulib portability checks])
+ fi
+ 
+-- 
+2.45.2
+
