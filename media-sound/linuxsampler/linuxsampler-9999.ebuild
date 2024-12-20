@@ -56,7 +56,7 @@ src_configure() {
 		$(use_enable sqlite instruments-db)
 		$(use_enable sf2 sf2-engine)
 	)
-	econf "${myeconfargs[@]}"
+	HAVE_UNIX98=1 econf "${myeconfargs[@]}"
 }
 
 src_compile() {
