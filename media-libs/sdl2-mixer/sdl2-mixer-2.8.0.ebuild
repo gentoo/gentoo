@@ -78,7 +78,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	dodoc {CHANGES,README}.txt
-	find "${D}" -name '*.la' -delete || die
+	rm -r "${ED}"/usr/share/licenses || die
 }
 
 pkg_postinst() {
