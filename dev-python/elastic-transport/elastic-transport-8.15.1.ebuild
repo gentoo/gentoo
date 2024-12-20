@@ -53,9 +53,10 @@ distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# Fails in upstream CI as well as of 8.13.1
-		# https://github.com/elastic/elastic-transport-python/commit/39488817cd5da824101322e40652d17938f0acac
-		tests/node/test_tls_versions.py::test_unsupported_tls_versions[https://tls-v1-2.badssl.com:1012-772-RequestsHttpNode]
+		# >=aiohttp-3.11 throws DeprecationWarning which cannot be filtered for this test
+		# https://github.com/aio-libs/aiohttp/pull/9726
+		# https://github.com/elastic/elastic-transport-python/pull/61
+		tests/async_/test_httpserver.py::test_simple_request
 		# fragile to random warnings
 		tests/node/test_http_aiohttp.py::TestAiohttpHttpNode::test_uses_https_if_verify_certs_is_off
 		tests/node/test_urllib3_chain_certs.py::test_assert_fingerprint_in_cert_chain
