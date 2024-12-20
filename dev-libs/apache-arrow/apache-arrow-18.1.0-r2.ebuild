@@ -49,6 +49,7 @@ RDEPEND="
 	dataset? (
 		dev-libs/libutf8proc:=
 	)
+	elibc_musl? ( sys-libs/timezone-data )
 	lz4? ( app-arch/lz4:= )
 	parquet? (
 		dev-libs/libutf8proc:=
