@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-remote-desktop"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="doc +rdp systemd +vnc"
 REQUIRED_USE="|| ( rdp vnc )"
 RESTRICT="test" # Tests run xvfb-run directly
