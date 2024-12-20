@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/geary"
 
 LICENSE="LGPL-2.1+ CC-BY-3.0 CC-BY-SA-3.0" # code is LGPL-2.1+, CC licenses for some icons
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test ytnef"
 RESTRICT="!test? ( test )"
 
