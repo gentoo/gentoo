@@ -105,6 +105,7 @@ sys-kernel/gentoo-kernel-bin generic-uki
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 and dev-qt/qtremoteobjects:6 have few keywords.
 dev-python/pyqt6 pdfium remoteobjects
+dev-python/qtpy pdfium remoteobjects
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
 # media-libs/libvpl is only keyworded for amd64 at this time.

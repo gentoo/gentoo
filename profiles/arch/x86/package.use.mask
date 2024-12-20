@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-12-20)
+# qtremoteobjects and qthttpserver not yet keyworded here
+dev-python/pyside6 httpserver remoteobjects
+dev-python/qtpy remoteobjects
+
 # Ben Kohler <bkohler@gentoo.org> (2024-10-23)
 # Upstream dropbox no longer producing x86 releases
 kde-apps/kdenetwork-meta dropbox

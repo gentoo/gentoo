@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-12-20)
+# qtremoteobjects and qthttpserver not yet keyworded here
+dev-python/pyside6 httpserver remoteobjects
+dev-python/qtpy remoteobjects
+
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
 >=sys-devel/gcc-14 -ada
@@ -87,6 +92,7 @@ sys-kernel/gentoo-kernel-bin -generic-uki
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 is keyworded here.
 dev-python/pyqt6 -pdfium
+dev-python/qtpy -pdfium
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # app-crypt/rpm-sequoia is keyworded here.

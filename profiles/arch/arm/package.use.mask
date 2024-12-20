@@ -58,8 +58,9 @@ app-crypt/pinentry qt6
 app-office/libreoffice qt6
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-06-01)
-# qtnetworkauth not yet keyworded here
-dev-python/pyside6 network-auth
+# qtnetworkauth, qtremoteobjects and qthttpserver not yet keyworded here
+dev-python/pyside6 network-auth httpserver remoteobjects
+dev-python/qtpy remoteobjects
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
