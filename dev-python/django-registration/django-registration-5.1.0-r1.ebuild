@@ -25,6 +25,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	>=dev-python/confusable-homoglyphs-3.0[${PYTHON_USEDEP}]
 	>=dev-python/django-4.2[${PYTHON_USEDEP}]
+	elibc_musl? ( dev-python/tzdata )
 "
 
 python_test() {
