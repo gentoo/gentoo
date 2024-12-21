@@ -1,0 +1,18 @@
+From 09c89be8732d4b11f64980c7ac5368cd506847dd Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Fri, 20 Dec 2024 20:15:51 +0100
+Subject: [PATCH] cmake: Install slic3r-arrange-wrapper
+
+Fixes #13805
+--- a/src/slic3r-arrange-wrapper/CMakeLists.txt
++++ b/src/slic3r-arrange-wrapper/CMakeLists.txt
+@@ -33,3 +33,9 @@ add_library(slic3r-arrange-wrapper
+ target_include_directories(slic3r-arrange-wrapper PRIVATE src)
+ target_include_directories(slic3r-arrange-wrapper PUBLIC include)
+ target_link_libraries(slic3r-arrange-wrapper PUBLIC slic3r-arrange)
++
++if (WIN32)
++    install(TARGETS slic3r-arrange-wrapper LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX})
++else()
++    install(TARGETS slic3r-arrange-wrapper LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++endif()

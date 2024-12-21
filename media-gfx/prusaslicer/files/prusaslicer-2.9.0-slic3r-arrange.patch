@@ -1,0 +1,18 @@
+From 5f450dc269ff99af3f0e056ae4b30d254789500b Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Fri, 20 Dec 2024 20:14:52 +0100
+Subject: [PATCH] cmake: Install slic3r-arrange
+
+Fixes #13805
+--- a/src/slic3r-arrange/CMakeLists.txt
++++ b/src/slic3r-arrange/CMakeLists.txt
+@@ -32,3 +32,9 @@ add_library(slic3r-arrange
+ target_include_directories(slic3r-arrange PRIVATE src)
+ target_include_directories(slic3r-arrange PUBLIC include)
+ target_link_libraries(slic3r-arrange PUBLIC libslic3r)
++
++if (WIN32)
++    install(TARGETS slic3r-arrange LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX})
++else()
++    install(TARGETS slic3r-arrange LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++endif()
