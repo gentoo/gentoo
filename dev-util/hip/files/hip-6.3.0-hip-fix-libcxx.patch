@@ -1,0 +1,27 @@
+Fix compilation with libc++ (ROCm/HIP part)
+--- a/include/hip/hip_runtime.h
++++ b/include/hip/hip_runtime.h
+@@ -49,10 +49,6 @@ THE SOFTWARE.
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <assert.h>
+-
+-#if __cplusplus > 199711L
+-#include <thread>
+-#endif
+ #endif // !defined(__HIPCC_RTC__)
+ 
+ #include <hip/hip_version.h>
+@@ -67,6 +63,12 @@ THE SOFTWARE.
+ #endif
+ 
+ #if !defined(__HIPCC_RTC__)
++// libc++ transitively includes thread->string_view->cuda_wrappers/algorithm,
++// which uses __host__, which is included via hip runtime above
++#if __cplusplus > 199711L
++#include <thread>
++#endif
++
+ #include <hip/hip_runtime_api.h>
+ #include <hip/library_types.h>
+ #endif // !defined(__HIPCC_RTC__)

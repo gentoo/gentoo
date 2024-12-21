@@ -24,6 +24,7 @@ SRC_URI="
 "
 S="${WORKDIR}/clr-rocm-${PV}/"
 TEST_S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
+HIP_S="${WORKDIR}/HIP-rocm-${PV}"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
@@ -53,6 +54,9 @@ BDEPEND="
 	video_cards_amdgpu? (
 		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
 	)
+	test? (
+		media-libs/freeglut
+	)
 "
 RDEPEND="${DEPEND}
 	opencl? (
@@ -74,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1.1-fix-musl.patch"
 	"${FILESDIR}/${PN}-6.2.4-libcxx.patch"
 	"${FILESDIR}/${PN}-6.3.0-no-isystem-usr-include.patch"
+	"${FILESDIR}/${PN}-6.3.0-clr-fix-libcxx.patch"
 )
 
 hip_test_wrapper() {
@@ -94,12 +99,16 @@ src_prepare() {
 		-e 's:AMDGCN_TARGET_TRIPLE:kAmdgcnTargetTriple:g' \
 		-i hipamd/src/hip_code_object.cpp || die
 
+	pushd "${HIP_S}" >/dev/null || die
+	eapply "${FILESDIR}/${PN}-6.3.0-hip-fix-libcxx.patch"
+
 	# hipamd is itself built by cmake, and should never provide a
 	# FindHIP.cmake module. But the reality is some package relies on it.
 	# Set HIP and HIP Clang paths directly, don't search using heuristics
 	sed -e "s:# Search for HIP installation:set(HIP_ROOT_DIR \"${EPREFIX}/usr\"):" \
 		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d)/bin\"):" \
-		-i "${WORKDIR}/HIP-rocm-${PV}/cmake/FindHIP.cmake" || die
+		-i "cmake/FindHIP.cmake" || die
+	popd >/dev/null || die
 
 	sed -e "s/ -Werror//g" -i "hipamd/src/CMakeLists.txt" || die
 
@@ -140,7 +149,7 @@ src_configure() {
 		-DCLR_BUILD_HIP="$(usex hip)"
 		-DCLR_BUILD_OCL="$(usex opencl)"
 
-		-DHIP_COMMON_DIR="${WORKDIR}/HIP-rocm-${PV}"
+		-DHIP_COMMON_DIR="${HIP_S}"
 		-DHIP_ENABLE_ROCPROFILER_REGISTER=OFF
 		-DHIPCC_BIN_DIR="${EPREFIX}/usr/bin"
 		-DROCM_PATH="${EPREFIX}/usr"
@@ -168,6 +177,7 @@ src_configure() {
 		local mycmakeargs=(
 			-DCMAKE_MODULE_PATH="${TEST_S}/external/Catch2/cmake/Catch2"
 			-DROCM_PATH="${EPREFIX}/usr"
+			-DCMAKE_NO_SYSTEM_FROM_IMPORTED=ON
 			-Wno-dev
 
 			# 1) Use custom build of hipamd instead of system one
