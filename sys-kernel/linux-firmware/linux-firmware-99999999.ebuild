@@ -72,6 +72,9 @@ IDEPEND="
 "
 
 QA_PREBUILT="*"
+PATCHES=(
+    "${FILESDIR}"/${PN}-copy-firmware-r7.patch
+)
 
 pkg_pretend() {
 	if use initramfs; then
@@ -231,6 +234,16 @@ src_install() {
 
 	local FW_OPTIONS=( "-v" )
 	git config --global --add safe.directory "${S}" || die
+	local files_to_keep=
+
+	if use savedconfig; then
+        if [[ -s "${S}/${PN}.conf" ]]; then
+            files_to_keep="${T}/files_to_keep.lst"
+            grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
+            [[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
+            FW_OPTIONS+=( "--firmware-list" "${files_to_keep}" )
+        fi
+    fi
 
 	if use compress-xz; then
 		FW_OPTIONS+=( "--xz" )
@@ -295,29 +308,6 @@ src_install() {
 	# especially use !redistributable will cause some broken symlinks
 	einfo "Removing broken symlinks ..."
 	find * -xtype l -print -delete || die
-
-	if use savedconfig; then
-		if [[ -s "${S}/${PN}.conf" ]]; then
-			local files_to_keep="${T}/files_to_keep.lst"
-			grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
-			[[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
-
-			einfo "Applying USE=savedconfig; Removing all files not listed in config ..."
-			find ! -type d -printf "%P\n" \
-				| grep -Fvx -f "${files_to_keep}" \
-				| xargs -d '\n' --no-run-if-empty rm -v
-
-			if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-				die "Find failed to print installed files"
-			elif [[ ${PIPESTATUS[1]} -eq 2 ]]; then
-				# grep returns exit status 1 if no lines were selected
-				# which is the case when we want to keep all files
-				die "Grep failed to select files to keep"
-			elif [[ ${PIPESTATUS[2]} -ne 0 ]]; then
-				die "Failed to remove files not listed in config"
-			fi
-		fi
-	fi
 
 	# remove empty directories, bug #396073
 	find -type d -empty -delete || die
