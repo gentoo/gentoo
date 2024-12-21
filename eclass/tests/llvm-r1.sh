@@ -54,7 +54,7 @@ test_gen_dep() {
 	local value=$(llvm_gen_dep "${arg}")
 
 	if [[ ${value} != ${expected} ]]; then
-		eerror "python_get_usedep ${arg}"
+		eerror "llvm_gen_dep ${arg}"
 		eerror "gave:"
 		eerror "  ${value}"
 		eerror "expected:"
