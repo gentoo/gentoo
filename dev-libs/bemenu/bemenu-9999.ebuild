@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Cloudef/bemenu.git"
 else
 	SRC_URI="https://github.com/Cloudef/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -49,6 +49,8 @@ BDEPEND="
 		dev-util/wayland-scanner
 	)
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-0.6.23_do-not-fortify-source.patch )
 
 src_compile() {
 	tc-export CC
