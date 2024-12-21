@@ -58,11 +58,14 @@ src_prepare() {
 	# Remove all install commands for tests
 	sed -E '/^ *install\(.+/d' -i test/CMakeLists.txt || die
 
+	# Test fails: https://github.com/ROCm/roctracer/issues/109
+	sed '/load_unload_reload_test/d' -i test/run.sh || die
+
 	# Fix search path for HIP cmake
 	sed -e "s,\${ROCM_PATH}/lib/cmake,/usr/$(get_libdir)/cmake,g" -i test/CMakeLists.txt || die
 
 	# bug #892732
-	sed -i -e 's/-Werror//' CMakeLists.txt || die
+	sed -e 's/-Werror//' -i CMakeLists.txt || die
 
 	# libc++ may have no experimental/filesystem
 	sed -e 's|experimental/||' -e 's|experimental::||' \
