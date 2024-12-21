@@ -9,10 +9,12 @@ SRC_URI="https://github.com/simple-evcorr/sec/releases/download/${PV}/${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux"
 
-RDEPEND=">=dev-lang/perl-5.8.0
-	virtual/perl-JSON-PP"
+RDEPEND="
+	>=dev-lang/perl-5.8.0
+	virtual/perl-JSON-PP
+"
 
 src_install() {
 	dobin sec
