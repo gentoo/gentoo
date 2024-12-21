@@ -1,0 +1,29 @@
+https://gitlab.gnome.org/GNOME/glib/-/commit/99382cfb4b5edf56f7c62eccc155f361a640298a.patch
+https://bugs.gentoo.org/946789
+
+From 99382cfb4b5edf56f7c62eccc155f361a640298a Mon Sep 17 00:00:00 2001
+From: Andoni Morales Alastruey <ylatuya@gmail.com>
+Date: Tue, 28 May 2024 17:26:38 +0200
+Subject: [PATCH] girepository: fix autoptr tests build
+
+In macOS compilation fails with the following error:
+```
+In file included from ../girepository/tests/autoptr.c:23:
+../girepository/girffi.h:30:10: fatal error: 'ffi.h' file not found
+```
+---
+ girepository/tests/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/girepository/tests/meson.build b/girepository/tests/meson.build
+index 6fa947cfdf..f9928267d5 100644
+--- a/girepository/tests/meson.build
++++ b/girepository/tests/meson.build
+@@ -72,6 +72,7 @@ if enable_gir
+   if cc.get_id() != 'msvc'
+     girepository_tests += {
+       'autoptr-girepository' : {
++        'dependencies': [libffi_dep],
+         'source' : 'autoptr.c',
+         'depends': gio_gir_testing_dep,
+       },
