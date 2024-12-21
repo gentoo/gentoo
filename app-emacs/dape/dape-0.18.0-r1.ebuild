@@ -60,8 +60,9 @@ src_compile() {
 # 	elisp-test
 # }
 
-elisp_src_install() {
+src_install() {
 	# Need to ignore dape-tests.el.
 	einstalldocs
 	elisp-install "${PN}" dape.el dape.elc dape-autoloads.el
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 }
