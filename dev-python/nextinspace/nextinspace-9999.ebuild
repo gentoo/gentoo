@@ -32,8 +32,4 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-license.patch"
-)
-
 distutils_enable_tests pytest
