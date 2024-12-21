@@ -73,7 +73,7 @@ IDEPEND="
 
 QA_PREBUILT="*"
 PATCHES=(
-    "${FILESDIR}"/${PN}-copy-firmware-r7.patch
+	"${FILESDIR}"/${PN}-copy-firmware-r7.patch
 )
 
 pkg_pretend() {
@@ -237,13 +237,13 @@ src_install() {
 	local files_to_keep=
 
 	if use savedconfig; then
-        if [[ -s "${S}/${PN}.conf" ]]; then
-            files_to_keep="${T}/files_to_keep.lst"
-            grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
-            [[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
-            FW_OPTIONS+=( "--firmware-list" "${files_to_keep}" )
-        fi
-    fi
+		if [[ -s "${S}/${PN}.conf" ]]; then
+			files_to_keep="${T}/files_to_keep.lst"
+			grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
+			[[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
+			FW_OPTIONS+=( "--firmware-list" "${files_to_keep}" )
+		fi
+	fi
 
 	if use compress-xz; then
 		FW_OPTIONS+=( "--xz" )
