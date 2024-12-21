@@ -33,8 +33,8 @@ IUSE="debug"
 COMMON_DEPEND="dev-libs/elfutils
 	x11-libs/libdrm"
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/roct-thunk-interface-${PV}
-	>=dev-libs/rocm-device-libs-${PV}
+	dev-libs/roct-thunk-interface:${SLOT}
+	dev-libs/rocm-device-libs:${SLOT}
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
 		llvm-core/lld:${LLVM_SLOT}=
