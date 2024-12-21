@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit autotools multilib-minimal python-any-r1
 
 DESCRIPTION="Disassembler library for the x86/-64 architecture sets"
-HOMEPAGE="http://udis86.sourceforge.net/"
+HOMEPAGE="https://udis86.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -22,6 +22,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	test? (
 		amd64? ( dev-lang/yasm )
+		arm64? ( dev-lang/yasm )
 		x86? ( dev-lang/yasm )
 	)"
 
