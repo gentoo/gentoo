@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2024-12-20)
+# New taglib major version, binary incompatible with 1.x
+>=media-libs/taglib-2.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
 # Last "release" seems to have been an AUR special, and even that is now
 # >6 years old and still KF5 based. No known repository, no tarball source
