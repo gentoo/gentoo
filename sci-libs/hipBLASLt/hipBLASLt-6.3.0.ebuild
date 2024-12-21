@@ -40,6 +40,7 @@ BDEPEND="
 	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}')
 	test? (
 		dev-cpp/gtest
+		virtual/blas
 	)
 "
 
