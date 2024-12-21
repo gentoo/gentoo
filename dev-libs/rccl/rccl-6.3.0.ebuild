@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="
-	=dev-util/hip-6*
+	dev-util/hip:${SLOT}
 	dev-util/rocm-smi:${SLOT}"
 DEPEND="${RDEPEND}
 	sys-libs/binutils-libs"
@@ -32,6 +32,8 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0.2-fix-version-check.patch"
+	"${FILESDIR}/${PN}-6.3.0-same-rank-sendrecv.patch"
+	"${FILESDIR}/${PN}-6.3.0-headers-fix.patch"
 )
 
 src_prepare() {
@@ -42,6 +44,9 @@ src_prepare() {
 
 	# complete fix-version-check patch
 	sed "s/@rocm_version@/${PV}/" -i CMakeLists.txt || die
+
+	# don't install tests
+	sed "/rocm_install(TARGETS rccl-UnitTests/d" -i test/CMakeLists.txt || die
 }
 
 src_configure() {
