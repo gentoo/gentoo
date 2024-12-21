@@ -1,0 +1,18 @@
+From a48acef85b34b52085378b8ee39a79f7eaeac0fa Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Fri, 20 Dec 2024 20:49:23 +0100
+Subject: [PATCH] cmake: Turn on position independent code for all targets
+
+Fixes: #13694
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,9 @@
+ cmake_minimum_required(VERSION 3.13)
+ project(PrusaSlicer-native)
+ 
++# This enables -fPIC for shared libaries and -fpie for binaries
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
+ add_subdirectory(clipper)
+ find_package(Qhull 7.2 REQUIRED)
+ add_library(qhull INTERFACE)

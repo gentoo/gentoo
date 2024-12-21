@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
 	"${FILESDIR}/${PN}-2.9.0-missing-includes.patch"
 	"${FILESDIR}/${PN}-2.9.0-fpic.patch"
+	"${FILESDIR}/${PN}-2.9.0-fpic-all.patch"
 	"${FILESDIR}/${PN}-2.9.0-slic3r-arrange.patch"
 	"${FILESDIR}/${PN}-2.9.0-slic3r-arrange-wrapper.patch"
 )
