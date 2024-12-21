@@ -33,6 +33,9 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( doc/rtorrent.rc )
 
 PATCHES=(
+	# Merged in upstream. To be removed for the next release.
+	"${FILESDIR}"/${PN}-0.10.0-fix-calls-ar.patch
+
 	"${FILESDIR}"/${PN}-0.10.0-scgi-software-crash.patch
 )
 
