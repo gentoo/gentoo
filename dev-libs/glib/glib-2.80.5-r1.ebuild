@@ -191,12 +191,12 @@ src_prepare() {
 	# Link the glib source to the introspection subproject directory so it can be built there first
 	if use introspection ; then
 		ln -s "${S}" "${INTROSPECTION_SOURCE_DIR}/subprojects/glib"
-	fi
 
-	# bug #946578
-	cd "${INTROSPECTION_SOURCE_DIR}" || die
-	eapply "${FILESDIR}"/glib-2.80.5-gobject-introspection-1.80.patch
-	cd "${S}" || die
+		# bug #946578
+		cd "${INTROSPECTION_SOURCE_DIR}" || die
+		eapply "${FILESDIR}"/glib-2.80.5-gobject-introspection-1.80.patch
+		cd "${S}" || die
+	fi
 
 	default
 	gnome2_environment_reset
