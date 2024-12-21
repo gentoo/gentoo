@@ -61,6 +61,9 @@ BDEPEND="
 	doc? ( >=dev-util/gi-docgen-2023.1 )
 	dev-python/docutils
 	systemtap? ( >=dev-debug/systemtap-1.3 )
+	$(python_gen_any_dep '
+		dev-python/packaging[${PYTHON_USEDEP}]
+	')
 	${PYTHON_DEPS}
 	test? ( >=sys-apps/dbus-1.2.14 )
 	virtual/pkgconfig
@@ -94,7 +97,10 @@ PATCHES=(
 
 python_check_deps() {
 	if use introspection ; then
+		python_has_version "dev-python/packaging[${PYTHON_USEDEP}]" &&
 		python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
+	else
+		python_has_version "dev-python/packaging[${PYTHON_USEDEP}]"
 	fi
 }
 
