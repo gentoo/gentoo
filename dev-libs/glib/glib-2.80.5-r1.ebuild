@@ -288,6 +288,9 @@ multilib_src_configure() {
 			export LD_LIBRARY_PATH="${BUILD_DIR}/${gliblib}:${LD_LIBRARY_PATH}"
 		done
 
+		# Add the path to introspection libraries so that glib can call gir utilities
+		export LD_LIBRARY_PATH="${INTROSPECTION_LIB_DIR}:${LD_LIBRARY_PATH}"
+
 		# Add the paths to the gobject-introspection python modules to python path so they can be imported
 		export PYTHONPATH="${INTROSPECTION_LIB_DIR}/gobject-introspection:${PYTHONPATH}"
 	fi
