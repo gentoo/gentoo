@@ -31,6 +31,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.3.0-expand-isa-compatibility.patch
+	"${FILESDIR}"/${PN}-6.3.0-fix-clang-template.patch
 )
 
 src_prepare() {
