@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-21)
+# Older version with ~ppc64 keywords which the newer version doesn't have.
+# Removal on 2025-01-21.
+=sci-mathematics/geogebra-bin-5.0.752.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
 # Last "release" seems to have been an AUR special, and even that is now
 # >6 years old and still KF5 based. No known repository, no tarball source
