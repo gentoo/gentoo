@@ -55,6 +55,19 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
+	# complementary replacements for conditional-ck-components patch
+	find src -name '*mha*.cpp' -type f | while IFS= read -r file; do
+		sed -i "s/MIOPEN_USE_COMPOSABLEKERNEL/MIOPEN_USE_CK_MHA_OPS/g" "$file" || die
+	done
+
+	sed -i "s/MIOPEN_USE_COMPOSABLEKERNEL/MIOPEN_USE_CK_XDL_OPS/g" \
+		src/mlo_dir_conv.cpp \
+		src/solver/conv_ck_igemm_fwd_bias_res_add_activ_fused.cpp \
+		src/solver/conv_ck_igemm_fwd_bias_activ_fused.cpp || die
+	find src -name '*xdl*.cpp' -type f | while IFS= read -r file; do
+		sed -i "s/MIOPEN_USE_COMPOSABLEKERNEL/MIOPEN_USE_CK_XDL_OPS/g" "$file" || die
+	done
+
 	sed -e '/MIOPEN_TIDY_ERRORS ALL/d' \
 		-e 's/FLAGS_RELEASE} -s/FLAGS_RELEASE}/g' \
 		-i CMakeLists.txt || die
