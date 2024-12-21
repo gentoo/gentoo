@@ -49,7 +49,7 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.1-Fix-prefix-install-variable.patch"
-	)
+)
 
 src_prepare() {
 	default
