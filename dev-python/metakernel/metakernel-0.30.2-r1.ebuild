@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
+	<dev-python/ipykernel-7[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-5.5.6[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.9.2[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.18[${PYTHON_USEDEP}]
