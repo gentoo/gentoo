@@ -12,4 +12,7 @@
   <upstream>
     <remote-id type="github">clan/runit</remote-id>
   </upstream>
+  <use>
+    <flag name="scripts">Install helper scripts using openrc, not enabled by default.</flag>
+  </use>
 </pkgmetadata>
