@@ -18,7 +18,7 @@ IUSE+=" +ctx-profile +libfuzzer +memprof +orc +profile +xray"
 # NB: ubsan, scudo deliberately match two entries
 SANITIZER_FLAGS=(
 	asan dfsan lsan msan hwasan tsan ubsan safestack cfi scudo
-	shadowcallstack gwp-asan nsan rtsan
+	shadowcallstack gwp-asan nsan rtsan tysan
 )
 IUSE+=" ${SANITIZER_FLAGS[@]/#/+}"
 REQUIRED_USE="

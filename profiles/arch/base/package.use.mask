@@ -268,7 +268,7 @@ llvm-runtimes/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 llvm-runtimes/compiler-rt-sanitizers ubsan safestack cfi scudo
 llvm-runtimes/compiler-rt-sanitizers shadowcallstack gwp-asan
 llvm-runtimes/compiler-rt-sanitizers libfuzzer memprof orc profile xray
-llvm-runtimes/compiler-rt-sanitizers ctx-profile nsan rtsan
+llvm-runtimes/compiler-rt-sanitizers ctx-profile nsan rtsan tysan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
