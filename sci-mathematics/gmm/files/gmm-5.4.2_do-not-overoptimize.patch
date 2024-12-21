@@ -1,0 +1,24 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+This patches removes -O3 for g++ and unknown compilers.
+
+Bug: https://bugs.gentoo.org/886443
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,7 +115,7 @@
+                 WSHADOW="-Wshadow"
+                 ;;
+         esac
+-        CXXFLAGS="$CXXFLAGS -ftemplate-depth-40 -pedantic -O3 -Wall -W $WSHADOW -Wpointer-arith -Wcast-qual -Wwrite-strings -Wconversion -Wredundant-decls -Wno-long-long"
++        CXXFLAGS="$CXXFLAGS -ftemplate-depth-40 -pedantic -Wall -W $WSHADOW -Wpointer-arith -Wcast-qual -Wwrite-strings -Wconversion -Wredundant-decls -Wno-long-long"
+         ;;
+  icc | icpc)
+         echo "Using INTEL icc"
+@@ -125,7 +125,6 @@
+         ;;
+  *)
+         echo "Using a unknown compiler"
+-        CXXFLAGS="$CXXFLAGS -O3"
+         ;;
+ esac
+ 
