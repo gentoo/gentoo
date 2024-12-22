@@ -20,6 +20,8 @@ RESTRICT="!test? ( test )"
 
 PDEPEND="server? ( =dev-ruby/builder-3* )"
 
+PATCHES=( "${FILESDIR}/rubygems-rdoc.patch" )
+
 ruby_add_depend "virtual/ruby-ssl"
 
 ruby_add_bdepend "
