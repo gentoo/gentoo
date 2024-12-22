@@ -1,0 +1,52 @@
+https://github.com/randombit/botan/commit/698c383b050591ae1a239c9e6d4ebe05532d2eee
+
+From 698c383b050591ae1a239c9e6d4ebe05532d2eee Mon Sep 17 00:00:00 2001
+From: Luke Valenta <lvalenta@cloudflare.com>
+Date: Thu, 11 Apr 2024 14:24:36 -0400
+Subject: [PATCH] Backport: Update roughtime.cloudflare.com public key and port
+
+See also #4002.
+
+Fixes #3937. Note that the old Cloudflare public key is still present in
+test vectors in the codebase.
+---
+ src/cli/roughtime.cpp        | 2 +-
+ src/tests/test_roughtime.cpp | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/cli/roughtime.cpp b/src/cli/roughtime.cpp
+index ff38fe1c43c..6c1561efacd 100644
+--- a/src/cli/roughtime.cpp
++++ b/src/cli/roughtime.cpp
+@@ -72,7 +72,7 @@ class Roughtime final : public Command
+       <name> <key type> <base 64 encoded public key> <protocol> <host:port>
+ 
+    Example servers:
+-      Cloudflare-Roughtime ed25519 gD63hSj3ScS+wuOeGrubXlq35N1c5Lby/S+T7MNTjxo= udp roughtime.cloudflare.com:2002
++      Cloudflare-Roughtime ed25519 0GD7c3yP8xEc4Zl2zeuN2SlLvDVVocjsPSL8/Rl/7zg= udp roughtime.cloudflare.com:2003
+       Google-Sandbox-Roughtime ed25519 etPaaIxcBMY1oUeGpwvPMCJMwlRVNxv51KK/tktoJTQ= udp roughtime.sandbox.google.com:2002
+ 
+ --chain-file=<filename>
+diff --git a/src/tests/test_roughtime.cpp b/src/tests/test_roughtime.cpp
+index 48ac545876b..4b29837e9b6 100644
+--- a/src/tests/test_roughtime.cpp
++++ b/src/tests/test_roughtime.cpp
+@@ -191,7 +191,7 @@ class Roughtime final : public Test
+ 
+          const auto servers = Botan::Roughtime::servers_from_str(
+                                  "Chainpoint-Roughtime ed25519 bbT+RPS7zKX6w71ssPibzmwWqU9ffRV5oj2OresSmhE= udp roughtime.chainpoint.org:2002\n"
+-                                 "Cloudflare-Roughtime ed25519 gD63hSj3ScS+wuOeGrubXlq35N1c5Lby/S+T7MNTjxo= udp roughtime.cloudflare.com:2002\n"
++                                 "Cloudflare-Roughtime ed25519 0GD7c3yP8xEc4Zl2zeuN2SlLvDVVocjsPSL8/Rl/7zg= udp roughtime.cloudflare.com:2003\n"
+                                  "Google-Sandbox-Roughtime ed25519 etPaaIxcBMY1oUeGpwvPMCJMwlRVNxv51KK/tktoJTQ= udp roughtime.sandbox.google.com:2002\n"
+                                  "int08h-Roughtime ed25519 AW5uAoTSTDfG5NfY1bTh08GUnOqlRb+HVhbJ3ODJvsE= udp roughtime.int08h.com:2002\n"
+                                  "ticktock ed25519 cj8GsiNlRkqiDElAeNMSBBMwrAl15hYPgX50+GWX/lA= udp ticktock.mixmin.net:5333\n"
+@@ -224,7 +224,7 @@ class Roughtime final : public Test
+          Botan::Roughtime::Nonce nonce(Test::rng());
+          try
+             {
+-            const auto response_raw = Botan::Roughtime::online_request("roughtime.cloudflare.com:2002", nonce,
++            const auto response_raw = Botan::Roughtime::online_request("roughtime.cloudflare.com:2003", nonce,
+                                       std::chrono::seconds(5));
+             const auto now = std::chrono::system_clock::now();
+             const auto response = Botan::Roughtime::Response::from_bits(response_raw, nonce);
+
