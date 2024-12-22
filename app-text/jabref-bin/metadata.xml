@@ -6,10 +6,6 @@
 		<name>Nicolas Bock</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>java@gentoo.org</email>
-		<name>Java</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
