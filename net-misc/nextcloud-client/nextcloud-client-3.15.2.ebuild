@@ -10,6 +10,8 @@ HOMEPAGE="https://github.com/nextcloud/desktop"
 SRC_URI="
 	https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz
 		-> ${P}.tar.gz
+	https://github.com/nextcloud/desktop/commit/49a7c8d7874643da2550793877115c7f3dbd2d05.patch
+		-> ${PN}-3.15.2-fix-macosvfs-file-sharing.png
 "
 S="${WORKDIR}/desktop-${PV/_/-}"
 
@@ -66,6 +68,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.6-no-redefine-fortify-source.patch
 	# https://github.com/nextcloud/desktop/pull/7383
 	"${FILESDIR}"/${PN}-3.14.2-doc-fix.patch
+	# https://github.com/nextcloud/desktop/pull/7691
+	"${DISTDIR}"/${PN}-3.15.2-fix-macosvfs-file-sharing.png
 )
 
 src_prepare() {
