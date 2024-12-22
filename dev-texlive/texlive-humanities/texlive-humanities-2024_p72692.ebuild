@@ -166,6 +166,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	!<dev-texlive/texlive-formatsextra-2024
 "
 DEPEND="
 	${COMMON_DEPEND}
