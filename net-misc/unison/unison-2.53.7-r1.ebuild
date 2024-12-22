@@ -117,7 +117,7 @@ src_install() {
 
 	if use gui ; then
 		newicon -s scalable icons/U.svg "${PN}-${SLOT}.svg"
-		make_desktop_entry "${PN}-gui-${SLOT}" "${PN^} GUI (${SLOT})" "${PN}-${SLOT}"
+		make_desktop_entry "${PN}-${SLOT}" "${PN^} GUI (${SLOT})" "${PN}-${SLOT}"
 	fi
 
 	if use doc ; then
