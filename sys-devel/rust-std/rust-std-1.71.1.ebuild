@@ -15,7 +15,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable/$(ver_cut 1-2)"
 # please do not keyword
 #KEYWORDS="" #nowarn
-IUSE="debug"
+IUSE="debug +shared"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -65,6 +65,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if ! use shared; then
+		PATCHES+=( "${FILESDIR}"/${PN}-disable-shared.patch )
+	fi
 	default
 }
 
@@ -87,6 +90,8 @@ src_configure() {
 	done
 
 	cat <<- EOF > "${S}"/config.toml
+		[llvm]
+		download-ci-llvm = false
 		[build]
 		build = "${rbuild}"
 		host = ["${rhost}"]
