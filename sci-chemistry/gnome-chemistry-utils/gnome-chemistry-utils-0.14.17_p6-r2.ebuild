@@ -10,10 +10,11 @@ SRC_URI="
 	http://download.savannah.gnu.org/releases/gchemutils/$(ver_cut 1-2)/${P/_p*}.tar.xz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
 "
+S="${WORKDIR}/${P/_p*}"
 
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-3"
 IUSE="gnumeric"
 
 RDEPEND="
@@ -37,8 +38,6 @@ BDEPEND="
 	app-text/yelp-tools
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${P/_p*}"
 
 src_prepare() {
 	default
