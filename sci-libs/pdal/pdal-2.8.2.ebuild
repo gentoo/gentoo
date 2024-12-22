@@ -32,7 +32,7 @@ RDEPEND="
 "
 
 DEPEND="
-	test? ( sci-libs/gdal[geos,jpeg,png] )
+	test? ( sci-libs/gdal[geos,jpeg,png,sqlite] )
 	${RDEPEND}
 "
 
