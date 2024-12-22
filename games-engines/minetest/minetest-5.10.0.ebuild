@@ -9,13 +9,15 @@ LUA_COMPAT=( lua5-1 luajit )
 inherit cmake flag-o-matic lua-single systemd xdg
 
 DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
-HOMEPAGE="https://www.minetest.net"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.luanti.org/"
+SRC_URI="https://github.com/minetest/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 IUSE="+client +curl doc leveldb ncurses nls postgres prometheus redis +server +sound spatial test"
+# NOTE: test USE flag controls compiling the tests, they need to be run
+# manually. we do that in src_test but maybe USE=test-install could be used?
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	|| ( client server )"
@@ -31,7 +33,6 @@ RDEPEND="lua_single_target_luajit? ( ${LUA_DEPS} )
 	dev-libs/jsoncpp:=
 	sys-libs/zlib
 	client? (
-		~dev-games/irrlicht-mt-1.9.0.13
 		media-libs/freetype:2
 		media-libs/libpng:0=
 		media-libs/libjpeg-turbo
@@ -53,7 +54,6 @@ RDEPEND="lua_single_target_luajit? ( ${LUA_DEPS} )
 	server? (
 		acct-group/minetest
 		acct-user/minetest
-		~dev-games/irrlicht-mt-headers-1.9.0.13
 	)
 	spatial? ( sci-libs/libspatialindex:= )"
 DEPEND="${RDEPEND}"
@@ -65,8 +65,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.7.0-no_upstream_optflags.patch
-	"${FILESDIR}"/${PN}-5.8.0-include_algorithm.patch
+	"${FILESDIR}"/${PN}-5.9.1-no_upstream_optflags.patch
 )
 
 src_prepare() {
@@ -115,6 +114,10 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	"${S}"/bin/./minetest --run-unittests || die
+}
+
 src_install() {
 	cmake_src_install
 
@@ -135,17 +138,4 @@ src_install() {
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/${PN}server.logrotate ${PN}-server
 	fi
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-
-	elog "Since 5.7.0-r2 new ${PN} configurations no longer check if newer versions are available upstream,"
-	elog "a feature unnecessary when ${PN} is installed using distro packages."
-	elog "To disable this check for existing configurations open the file ~/.minetest/minetest.conf"
-	elog "in a text editor while ${PN} is not running, locate the keyword 'update_last_checked',"
-	elog "and change that line to say:"
-	elog
-	elog "	update_last_checked = disabled"
-	elog
 }
