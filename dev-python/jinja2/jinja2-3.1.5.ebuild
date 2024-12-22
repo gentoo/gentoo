@@ -39,6 +39,19 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
+python_test() {
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/trio[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/test_async.py
+			tests/test_async_filters.py
+		)
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
+
 pkg_postinst() {
 	if ! has_version dev-python/babel; then
 		elog "For i18n support, please emerge dev-python/babel."
