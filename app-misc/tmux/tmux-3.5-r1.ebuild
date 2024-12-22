@@ -9,7 +9,6 @@ DESCRIPTION="Terminal multiplexer"
 HOMEPAGE="https://tmux.github.io/"
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
-	SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b"
 	EGIT_REPO_URI="https://github.com/tmux/tmux.git"
 else
 	SRC_URI="https://github.com/tmux/tmux/releases/download/${PV}/${P/_/-}.tar.gz"
