@@ -194,18 +194,6 @@ dev-util/usb-robot
 # No maintainer. Removal in 30 days.
 app-emulation/spim
 
-# Hans de Graaff <graaff@gentoo.org> (2024-11-16)
-# Mask obsolete shoulda-related slots. Use the newer slots instead.
-# Removal on 2024-12-16.
-dev-ruby/shoulda:3
-dev-ruby/shoulda-context:0
-dev-ruby/shoulda-matchers:3
-
-# Hans de Graaff <graaff@gentoo.org> (2024-11-16)
-# Mask obsolete Rails 6.1-only slot. Please use the newer slot instead.
-# Removal on 2024-12-16.
-dev-ruby/database_cleaner-active_record:2.1
-
 # Jaco Kroon <jaco@uls.co.za> (2024-11-15)
 # clippy exists purely for frr (even comes from the same sources).  This
 # package split is no longer implemented from frr-9.1.2 onwards, so this
@@ -279,15 +267,6 @@ app-accessibility/powiedz
 # Matt Jolly <kangie@gentoo.org> (2024-11-09)
 # Does not build with any rust version in the tree. Removal in 30 days.
 =dev-util/wasmer-0.11.0
-
-# Hans de Graaff <graaff@gentoo.org> (2024-11-08)
-# Obsolete slot. Use a newer slot instead. Removal on 2024-12-08.
-dev-ruby/faker:2
-
-# Hans de Graaff <graaff@gentoo.org> (2024-11-08)
-# Obsolete slot. Use a newer slot instead. The included jquery-ui
-# version is no longer supported upstream. Removal on 2024-12-08.
-dev-ruby/jquery-ui-rails:6
 
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
