@@ -52,6 +52,9 @@ src_prepare() {
 		eapply -p1 "${WORKDIR}/debian/patches/${p}"
 	done
 
+	# From Fedora
+	eapply "${FILESDIR}"/${PN}-fix_pointer_types.patch
+
 	eautoreconf
 }
 
