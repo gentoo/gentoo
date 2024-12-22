@@ -56,6 +56,10 @@ distutils_enable_tests pytest
 # test files (https://github.com/mypyc/mypyc/issues/1014)
 export CCACHE_DISABLE=1
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.0-no-werror.patch
+)
+
 src_prepare() {
 	distutils-r1_src_prepare
 

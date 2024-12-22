@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/916577
+--- a/mypyc/build.py
++++ b/mypyc/build.py
+@@ -551,7 +551,6 @@ def mypycify(
+         cflags += [
+             f"-O{opt_level}",
+             f"-g{debug_level}",
+-            "-Werror",
+             "-Wno-unused-function",
+             "-Wno-unused-label",
+             "-Wno-unreachable-code",
