@@ -427,6 +427,7 @@ llvm_chost_setup() {
 	export LLVM_ROOT="${esysroot_prefix}"
 	export Clang_ROOT="${esysroot_prefix}"
 	export LLD_ROOT="${esysroot_prefix}"
+	export MLIR_ROOT="${esysroot_prefix}"
 
 	# satisfies llvm-config calls, e.g. from meson
 	export PATH="${T}/llvm-bin:${PATH}"
