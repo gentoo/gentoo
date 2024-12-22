@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="Sympow-BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 # Pari is used at build time to generate data.
 BDEPEND="sys-apps/help2man
