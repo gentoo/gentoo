@@ -194,7 +194,7 @@ src_test() {
 src_install() {
 	default
 
-	if [[ -d "${ED}"/usr/share/doc/${P} ]] ; then
+	if [[ -d "${ED}"/usr/share/doc/${P} && ${P} != ${PF} ]] ; then
 		# --docdir in configure controls the parent directory unfortunately
 		mv "${ED}"/usr/share/doc/${P} "${ED}"/usr/share/doc/${PF} || die
 	fi
