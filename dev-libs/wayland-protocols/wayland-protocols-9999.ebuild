@@ -25,7 +25,7 @@ DEPEND="
 	test? ( dev-libs/wayland )
 "
 BDEPEND="
-	dev-util/wayland-scanner
+	>=dev-util/wayland-scanner-1.23.0
 	virtual/pkgconfig
 "
 
