@@ -471,9 +471,8 @@ get_rust_prefix() {
 	local prefix=${BROOT}
 	[[ ${1} == -d ]] && prefix=${ESYSROOT}
 
-	local slot rust_type
-	read -r slot rust_type <<< $(_get_rust_slot "$@")
-	get_rust_path "${prefix}" "${slot}" "${rust_type}"
+	_get_rust_slot "$@"
+	get_rust_path "${prefix}" "${RUST_SLOT}" "${RUST_TYPE}"
 }
 
 # @FUNCTION: rust_prepend_path
