@@ -19,8 +19,6 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-BDEPEND="dev-build/libtool"
-
 PATCHES=(
 	# This release doesn't install the header file.
 	"${FILESDIR}/install_header_file.patch"

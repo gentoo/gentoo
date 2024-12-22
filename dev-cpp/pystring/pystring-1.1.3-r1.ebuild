@@ -19,8 +19,6 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-BDEPEND="dev-build/libtool"
-
 PATCHES=(
 	# Patch to convert the project into cmake. Taken from:
 	# https://github.com/imageworks/pystring/pull/29
