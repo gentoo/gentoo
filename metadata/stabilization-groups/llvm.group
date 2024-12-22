@@ -4,6 +4,7 @@ llvm-core/llvm
 llvm-core/llvm-toolchain-symlinks
 llvm-core/llvmgold
 dev-ml/llvm
+llvm-core/mlir
 llvm-core/clang-common
 llvm-core/clang
 llvm-core/clang-toolchain-symlinks
