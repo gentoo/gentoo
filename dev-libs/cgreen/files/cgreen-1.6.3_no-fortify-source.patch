@@ -1,0 +1,27 @@
+From 9854dd0f8a955cea4b3a5e2c8956e0a69027aac6 Mon Sep 17 00:00:00 2001
+From: Filip Kobierski <fkobi@pm.me>
+Date: Fri, 6 Sep 2024 13:03:12 +0200
+Upstream hardcodes FORTIFY_SOURCE to 2. This patch removes it so it is not redefined when we set it.
+This fixes https://bugs.gentoo.org/935525
+---
+ cmake/Modules/DefineCompilerFlags.cmake | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/cmake/Modules/DefineCompilerFlags.cmake b/cmake/Modules/DefineCompilerFlags.cmake
+index 4d90f36..df45f50 100644
+--- a/cmake/Modules/DefineCompilerFlags.cmake
++++ b/cmake/Modules/DefineCompilerFlags.cmake
+@@ -52,10 +52,6 @@ if (UNIX)
+         endif (WITH_FPIC)
+     endif (NOT CYGWIN)
+ 
+-    check_c_compiler_flag("-D_FORTIFY_SOURCE=2" WITH_FORTIFY_SOURCE)
+-    if (WITH_FORTIFY_SOURCE)
+-      add_definitions(-D_FORTIFY_SOURCE=2)
+-    endif (WITH_FORTIFY_SOURCE)
+ 
+     if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+       add_definitions(-O)
+-- 
+2.44.2
+
