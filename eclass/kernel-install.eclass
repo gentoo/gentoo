@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -162,9 +162,10 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-apps/rng-tools"]="GPL-2"
 		["sys-apps/sed"]="GPL-3+"
 		["sys-apps/shadow"]="BSD GPL-2"
-		["sys-apps/systemd[boot(-),cryptsetup,pkcs11,policykit,tpm,ukify(-)]"]="GPL-2 LGPL-2.1 MIT public-domain"
+		[">=sys-apps/systemd-257[boot(-),cryptsetup,pkcs11,policykit,tpm,ukify(-)]"]="GPL-2 LGPL-2.1 MIT public-domain"
 		["sys-apps/util-linux"]="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 		["sys-auth/polkit"]="LGPL-2"
+		["sys-boot/plymouth[drm,systemd(+),udev]"]="GPL-2+"
 		["sys-block/nbd"]="GPL-2"
 		["sys-devel/gcc"]="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
 		["sys-fs/btrfs-progs"]="GPL-2"
@@ -190,6 +191,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-libs/readline"]="GPL-3+"
 		["sys-libs/zlib"]="ZLIB"
 		["sys-process/procps"]="GPL-2+ LGPL-2+ LGPL-2.1+"
+		["x11-libs/libdrm"]="MIT"
 		["amd64? ( sys-firmware/intel-microcode )"]="amd64? ( intel-ucode )"
 		["x86? ( sys-firmware/intel-microcode )"]="x86? ( intel-ucode )"
 	)

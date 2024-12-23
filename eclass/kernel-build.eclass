@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -108,10 +108,14 @@ IUSE="+strip"
 # @ECLASS_VARIABLE: KERNEL_GENERIC_UKI_CMDLINE
 # @USER_VARIABLE
 # @DESCRIPTION:
-# If KERNEL_IUSE_GENERIC_UKI is set, this variable allows setting the
-# built-in kernel command line for the UKI. If unset, the default is
-# root=/dev/gpt-auto-root ro
-: "${KERNEL_GENERIC_UKI_CMDLINE:="root=/dev/gpt-auto-root ro"}"
+# If KERNEL_IUSE_GENERIC_UKI is set, and this variable is not
+# empty, then the contents are used as the first kernel cmdline
+# option of the multi-profile generic UKI. Supplementing the four
+# standard options of:
+# - root=/dev/gpt-auto-root ro
+# - root=/dev/gpt-auto-root ro quiet splash
+# - root=/dev/gpt-auto-root ro lockdown=integrity
+# - root=/dev/gpt-auto-root ro quiet splash lockdown=integrity
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
@@ -497,10 +501,10 @@ kernel-build_src_install() {
 
 			local dracut_modules=(
 				base bash btrfs cifs crypt crypt-gpg crypt-loop dbus dbus-daemon
-				dm dmraid dracut-systemd fido2 i18n fs-lib kernel-modules
+				dm dmraid dracut-systemd drm fido2 i18n fs-lib kernel-modules
 				kernel-network-modules kernel-modules-extra lunmask lvm nbd
 				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
-				pkcs11 qemu qemu-net resume rngd rootfs-block shutdown
+				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
 				systemd systemd-ac-power systemd-ask-password systemd-initrd
 				systemd-integritysetup systemd-pcrphase systemd-sysusers
 				systemd-udevd systemd-veritysetup terminfo tpm2-tss udev-rules
@@ -526,7 +530,7 @@ kernel-build_src_install() {
 				--ro-mnt
 				--modules "${dracut_modules[*]}"
 				# Pulls in huge firmware files
-				--omit-drivers "nfp"
+				--omit-drivers "amdgpu i915 nfp nouveau nvidia xe"
 			)
 
 			# Tries to update ld cache
@@ -534,29 +538,77 @@ kernel-build_src_install() {
 			dracut "${dracut_args[@]}" "${image%/*}/initrd" ||
 				die "Failed to generate initramfs"
 
+			# Note, we cannot use an associative array here because those are
+			# not ordered.
+			local profiles=()
+			local cmdlines=()
+
+			# If defined, make the user entry the first and default
+			if [[ -n ${KERNEL_GENERIC_UKI_CMDLINE} ]]; then
+				profiles+=(
+					$'TITLE=User specified at build time\nID=user'
+				)
+				cmdlines+=( "${KERNEL_GENERIC_UKI_CMDLINE}" )
+			fi
+
+			profiles+=(
+				$'TITLE=Default\nID=default'
+				$'TITLE=Default with splash\nID=splash'
+				$'TITLE=Default with lockdown\nID=lockdown'
+				$'TITLE=Default with splash and lockdown\nID=splash-lockdown'
+			)
+
+			cmdlines+=(
+				"root=/dev/gpt-auto-root ro"
+				"root=/dev/gpt-auto-root ro quiet splash"
+				"root=/dev/gpt-auto-root ro lockdown=integrity"
+				"root=/dev/gpt-auto-root ro quiet splash lockdown=integrity"
+			)
+
 			local ukify_args=(
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
-				--cmdline="${KERNEL_GENERIC_UKI_CMDLINE}"
 				--uname="${KV_FULL}"
 				--output="${image%/*}/uki.efi"
-			)
+				--profile="${profiles[0]}"
+				--cmdline="${cmdlines[0]}"
+			) # 0th profile is default
+
+			# Additional profiles have to be added with --join-profile
+			local i
+			for (( i=1; i<"${#profiles[@]}"; i++ )); do
+				ukify build \
+					--profile="${profiles[i]}" \
+					--cmdline="${cmdlines[i]}" \
+					--output="${T}/profile${i}.efi" ||
+						die "Failed to create profile ${i}"
+
+				ukify_args+=( --join-profile="${T}/profile${i}.efi" )
+			done
 
 			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
+				openssl x509 \
+					-in "${SECUREBOOT_SIGN_CERT}" -inform PEM \
+					-out ${T}/pcrpkey.der -outform DER ||
+						die "Failed to convert certificate to DER format"
 				ukify_args+=(
-					--signtool=sbsign
 					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
 					--secureboot-certificate="${SECUREBOOT_SIGN_CERT}"
+					--pcrpkey="${T}/pcrpkey.der"
+					--measure
 				)
 				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
 					ukify_args+=(
 						--signing-engine="pkcs11"
+						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--pcr-public-key="${SECUREBOOT_SIGN_CERT}"
+						--phases="enter-initrd"
+						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--pcr-public-key="${SECUREBOOT_SIGN_CERT}"
+						--phases="enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready"
 					)
 				else
-					# Sytemd-measure does not currently support pkcs11
 					ukify_args+=(
-						--measure
-						--pcrpkey="${ED}${kernel_dir}/certs/signing_key.x509"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
 						--phases="enter-initrd"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
@@ -565,9 +617,7 @@ kernel-build_src_install() {
 				fi
 			fi
 
-			# systemd<255 does not install ukify in /usr/bin
-			PATH="${PATH}:${BROOT}/usr/lib/systemd:${BROOT}/lib/systemd" \
-				ukify build "${ukify_args[@]}" || die "Failed to generate UKI"
+			ukify build "${ukify_args[@]}" || die "Failed to generate UKI"
 
 			# Overwrite unnecessary image types to save space
 			> "${image}" || die
