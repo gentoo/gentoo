@@ -82,3 +82,4 @@ move sys-devel/llvm-common llvm-core/llvm-common
 move sys-devel/llvm llvm-core/llvm
 move dev-ml/llvm-ocaml dev-ml/llvm
 move dev-python/clang-python dev-python/clang
+slotmove kde-frameworks/kapidox 5 0

@@ -47,7 +47,7 @@ if ver_test ${PV} -lt 5.240; then
 	SLOT=5
 fi
 case ${PN} in
-	extra-cmake-modules)
+	extra-cmake-modules|kapidox)
 		SLOT=0
 		;;
 	*)
