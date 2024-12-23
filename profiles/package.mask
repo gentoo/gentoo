@@ -178,11 +178,6 @@ dev-libs/libg15render
 # Removal on 2024-12-17.
 dev-ml/odoc-parser
 
-# Matt Turner <mattst88@gentoo.org> (2024-11-16)
-# Masked for testing
-=dev-util/intel_clc-24.3*
-=media-libs/mesa-24.3*
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-17)
 # Needs a header from libusb that doesnt exist anymore. Will never build.
 # Furthermore, modern C problems. Bug 874645. No maintainer.
