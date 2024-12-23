@@ -13,7 +13,9 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv x86"
 IUSE="static-libs test"
-RESTRICT="!test? ( test )"
+
+# Tests are for manual testing
+RESTRICT="test"
 
 PATCHES=( "${FILESDIR}/${PN}-3.1.11-cflags.patch" )
 
