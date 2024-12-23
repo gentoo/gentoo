@@ -50,5 +50,6 @@ src_prepare() {
 	toolchain_src_prepare
 
 	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+	eapply "${FILESDIR}"/gcc-14.2.1_p20241221-arm-Revert-arm-MVE-intrinsics-Fix-support-for-predicate-.patch
 	eapply_user
 }

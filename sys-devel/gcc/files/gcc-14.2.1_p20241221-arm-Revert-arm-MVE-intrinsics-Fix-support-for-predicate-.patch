@@ -1,0 +1,144 @@
+https://gcc.gnu.org/PR118176
+
+From ecd031a9470257324484c66b51c6baff943e01ab Mon Sep 17 00:00:00 2001
+Message-ID: <ecd031a9470257324484c66b51c6baff943e01ab.1734954594.git.sam@gentoo.org>
+From: Christophe Lyon <christophe.lyon@linaro.org>
+Date: Mon, 23 Dec 2024 08:11:34 +0000
+Subject: [PATCH] Revert "arm: [MVE intrinsics] Fix support for predicate
+ constants [PR target/114801]"
+
+This reverts commit 0631c5770e8162dbe67c73dee0327313c19822c2.
+---
+ gcc/config/arm/arm-mve-builtins.cc            | 32 +--------------
+ .../gcc.target/arm/mve/pr108443-run.c         |  2 +-
+ gcc/testsuite/gcc.target/arm/mve/pr108443.c   |  4 +-
+ gcc/testsuite/gcc.target/arm/mve/pr114801.c   | 39 -------------------
+ 4 files changed, 4 insertions(+), 73 deletions(-)
+ delete mode 100644 gcc/testsuite/gcc.target/arm/mve/pr114801.c
+
+diff --git a/gcc/config/arm/arm-mve-builtins.cc b/gcc/config/arm/arm-mve-builtins.cc
+index ec856f7d6168..e1826ae40527 100644
+--- a/gcc/config/arm/arm-mve-builtins.cc
++++ b/gcc/config/arm/arm-mve-builtins.cc
+@@ -2107,37 +2107,7 @@ function_expander::add_input_operand (insn_code icode, rtx x)
+       mode = GET_MODE (x);
+     }
+   else if (VALID_MVE_PRED_MODE (mode))
+-    {
+-      if (CONST_INT_P (x))
+-	{
+-	  if (mode == V8BImode || mode == V4BImode)
+-	    {
+-	      /* In V8BI or V4BI each element has 2 or 4 bits, if those bits
+-		 aren't all the same, gen_lowpart might ICE.  Canonicalize all
+-		 the 2 or 4 bits to all ones if any of them is non-zero.  V8BI
+-		 and V4BI multi-bit masks are interpreted byte-by-byte at
+-		 instruction level, but such constants should describe lanes,
+-		 rather than bytes.  See the section on MVE intrinsics in the
+-		 Arm ACLE specification.  */
+-	      unsigned HOST_WIDE_INT xi = UINTVAL (x);
+-	      xi |= ((xi & 0x5555) << 1) | ((xi & 0xaaaa) >> 1);
+-	      if (mode == V4BImode)
+-		xi |= ((xi & 0x3333) << 2) | ((xi & 0xcccc) >> 2);
+-	      if (xi != UINTVAL (x))
+-		warning_at (location, 0, "constant predicate argument %d"
+-			    " (%wx) does not map to %d lane numbers,"
+-			    " converted to %wx",
+-			    opno, UINTVAL (x) & 0xffff,
+-			    mode == V8BImode ? 8 : 4,
+-			    xi & 0xffff);
+-
+-	      x = gen_int_mode (xi, HImode);
+-	    }
+-	  x = gen_lowpart (mode, x);
+-	}
+-      else
+-	x = force_lowpart_subreg (mode, x, GET_MODE (x));
+-    }
++    x = gen_lowpart (mode, x);
+ 
+   m_ops.safe_grow (m_ops.length () + 1, true);
+   create_input_operand (&m_ops.last (), x, mode);
+diff --git a/gcc/testsuite/gcc.target/arm/mve/pr108443-run.c b/gcc/testsuite/gcc.target/arm/mve/pr108443-run.c
+index b894f019b8bb..cb4b45bd3056 100644
+--- a/gcc/testsuite/gcc.target/arm/mve/pr108443-run.c
++++ b/gcc/testsuite/gcc.target/arm/mve/pr108443-run.c
+@@ -16,7 +16,7 @@ __attribute__ ((noipa)) partial_write (uint32_t *a, uint32x4_t v, unsigned short
+ 
+ int main (void)
+ {
+-  unsigned short p = 0x00FF;
++  unsigned short p = 0x00CC;
+   uint32_t a[] = {0, 0, 0, 0};
+   uint32_t b[] = {0, 0, 0, 0};
+   uint32x4_t v = vdupq_n_u32 (0xFFFFFFFFU);
+diff --git a/gcc/testsuite/gcc.target/arm/mve/pr108443.c b/gcc/testsuite/gcc.target/arm/mve/pr108443.c
+index 0c0e2dd6eb8f..c5fbfa4a1bb7 100644
+--- a/gcc/testsuite/gcc.target/arm/mve/pr108443.c
++++ b/gcc/testsuite/gcc.target/arm/mve/pr108443.c
+@@ -7,8 +7,8 @@
+ void
+ __attribute__ ((noipa)) partial_write_cst (uint32_t *a, uint32x4_t v)
+ {
+-  vstrwq_p_u32 (a, v, 0x00FF);
++  vstrwq_p_u32 (a, v, 0x00CC);
+ }
+ 
+-/* { dg-final { scan-assembler {mov\tr[0-9]+, #255} } } */
++/* { dg-final { scan-assembler {mov\tr[0-9]+, #204} } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/arm/mve/pr114801.c b/gcc/testsuite/gcc.target/arm/mve/pr114801.c
+deleted file mode 100644
+index ab3130fd4ce8..000000000000
+--- a/gcc/testsuite/gcc.target/arm/mve/pr114801.c
++++ /dev/null
+@@ -1,39 +0,0 @@
+-/* { dg-do compile } */
+-/* { dg-require-effective-target arm_v8_1m_mve_ok } */
+-/* { dg-options "-O2" } */
+-/* { dg-add-options arm_v8_1m_mve } */
+-/* { dg-final { check-function-bodies "**" "" "" } } */
+-
+-#include <arm_mve.h>
+-
+-/*
+-** test_32:
+-**...
+-**	mov	r[0-9]+, #65295	@ movhi
+-**...
+-*/
+-uint32x4_t test_32() {
+-  /* V4BI predicate converted to 0xff0f.  */
+-  return vdupq_m_n_u32(vdupq_n_u32(0xffffffff), 0, 0x4f02); /* { dg-warning {constant predicate argument 3 \(0x4f02\) does not map to 4 lane numbers, converted to 0xff0f} } */
+-}
+-
+-/*
+-** test_16:
+-**...
+-**	mov	r[0-9]+, #12339	@ movhi
+-**...
+-*/
+-uint16x8_t test_16() {
+-  /* V8BI predicate converted to 0x3033.  */
+-  return vdupq_m_n_u16(vdupq_n_u16(0xffff), 0, 0x3021); /* { dg-warning {constant predicate argument 3 \(0x3021\) does not map to 8 lane numbers, converted to 0x3033} } */
+-}
+-
+-/*
+-** test_8:
+-**...
+-**	mov	r[0-9]+, #23055	@ movhi
+-**...
+-*/
+-uint8x16_t test_8() {
+-  return vdupq_m_n_u8(vdupq_n_u8(0xff), 0, 0x5a0f);
+-}
+
+base-commit: e883a7082fecfd85694b275bec4a2e428ac9a081
+prerequisite-patch-id: 4000f228fd3953eb9877fab7b9493cd86f6bc771
+prerequisite-patch-id: d61e09af01bb7358c1df6abf5d2c4b7849ab4676
+prerequisite-patch-id: 54a4cfb376547141937d7e321d7b4554c1e3afe7
+prerequisite-patch-id: 3117f4e58bd5c0a1aca48af82106bb7f779842fa
+prerequisite-patch-id: a470cf090a6867789c0722d012786c6066d3e706
+-- 
+2.47.1
+
