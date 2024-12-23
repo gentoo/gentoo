@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic meson-multilib python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
+HOMEPAGE="https://harfbuzz.github.io/"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/harfbuzz/harfbuzz.git"
