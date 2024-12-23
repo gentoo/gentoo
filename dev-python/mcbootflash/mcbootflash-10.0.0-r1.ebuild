@@ -20,6 +20,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-python/bincopy-20.0.0[${PYTHON_USEDEP}]
+	dev-python/datastructclass[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 "
 BDEPEND="
