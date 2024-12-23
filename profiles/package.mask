@@ -131,7 +131,6 @@ dev-python/pyproject-fmt-rust
 # dev-python/pyside2 last-rites, no more revdeps
 # Removal on 2024-12-23
 dev-python/pyside2
-dev-python/pyside2-tools
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
