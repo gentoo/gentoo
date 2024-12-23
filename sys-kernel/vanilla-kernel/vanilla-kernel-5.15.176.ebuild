@@ -59,10 +59,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
 
 src_unpack() {
 	if use verify-sig; then
-		einfo "Unpacking linux-${PV}.tar.xz ..."
-		verify-sig_verify_detached - "${DISTDIR}"/linux-${PV}.tar.sign \
-			< <(xz -cd "${DISTDIR}"/linux-${PV}.tar.xz | tee >(tar -xf -))
-		assert "Unpack failed"
+		verify-sig_uncompress_verify_unpack \
+			"${DISTDIR}"/linux-${PV}.tar.{xz,sign}
 		unpack "gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz"
 	else
 		default
