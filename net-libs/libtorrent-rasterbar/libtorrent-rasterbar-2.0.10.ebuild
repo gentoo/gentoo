@@ -29,22 +29,16 @@ RDEPEND="
 	${DEPEND}
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-libs/boost[python,${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep 'dev-libs/boost[python,${PYTHON_USEDEP}]')
 	)
 "
 BDEPEND="
 	dev-util/patchelf
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	)
-	test? (
-		${PYTHON_DEPS}
-	)
+	test? (	${PYTHON_DEPS} )
 "
 
 pkg_setup() {
@@ -59,12 +53,12 @@ src_configure() {
 		-DCMAKE_CXX_STANDARD=17
 		-DBUILD_SHARED_LIBS=ON
 		-Dbuild_examples=$(usex examples)
+		-Dbuild_tests=$(usex test)
 		-Ddht=$(usex dht)
 		-Dencryption=$(usex ssl)
 		-Dgnutls=$(usex gnutls)
 		-Dlogging=$(usex debug)
 		-Dpython-bindings=$(usex python)
-		-Dbuild_tests=$(usex test)
 	)
 
 	# We need to drop the . from the Python version to satisfy Boost's
