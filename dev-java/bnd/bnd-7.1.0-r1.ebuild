@@ -10,12 +10,12 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="bndlib: A Swiss Army Knife for OSGi"
 HOMEPAGE="https://bnd.bndtools.org/"
-SRC_URI="https://github.com/bndtools/bnd/archive/${PV}.tar.gz -> aQute.bnd-${PV}.tar.gz"
-S="${WORKDIR}/${P}"
+SRC_URI="https://github.com/bndtools/bnd/archive/${PV/_rc/.RC}.tar.gz -> aQute.bnd-${PV}.tar.gz"
+S="${WORKDIR}/${P/_rc/.RC}"
 
 LICENSE="Apache-2.0 EPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="app-arch/zip"
 
@@ -23,7 +23,7 @@ CP_DEPEND="
 	~dev-java/bndlib-${PV}:0
 	dev-java/felix-resolver:0
 	dev-java/guava:0
-	dev-java/javaparser-core:0
+	<=dev-java/javaparser-core-3.13.10:0
 	dev-java/jline:2
 	dev-java/jtwig-core:0
 	dev-java/osgi-annotation:0
