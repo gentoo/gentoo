@@ -23,7 +23,7 @@ CP_DEPEND="
 	~dev-java/bndlib-${PV}:0
 	dev-java/felix-resolver:0
 	dev-java/guava:0
-	dev-java/javaparser-core:0
+	<=dev-java/javaparser-core-3.13.10:0
 	dev-java/jline:2
 	dev-java/jtwig-core:0
 	dev-java/osgi-annotation:0
