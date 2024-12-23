@@ -36,7 +36,7 @@ src_install() {
 	insinto /etc/modprobe.d
 	doins hid-${PN}/etc-modprobe.d/${PN}.conf
 
-	udev_dorules hid-${PN}/etc-udev-rules.d/60-${PN}.rules
+	udev_dorules hid-${PN}/etc-udev-rules.d/*.rules
 }
 
 pkg_postinst() {
