@@ -33,7 +33,6 @@ RDEPEND="${LUA_DEPS}
 		dev-lua/luaposix[${LUA_USEDEP}]
 		dev-lua/lua-term[${LUA_USEDEP}]
 	')
-	virtual/pkgconfig
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
@@ -44,6 +43,7 @@ BDEPEND="${RDEPEND}
 		')
 		app-shells/tcsh
 	)
+	virtual/pkgconfig
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch )
