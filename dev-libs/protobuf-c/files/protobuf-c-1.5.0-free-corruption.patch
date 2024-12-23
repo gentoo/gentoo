@@ -1,0 +1,44 @@
+https://github.com/protobuf-c/protobuf-c/issues/690
+https://github.com/protobuf-c/protobuf-c/pull/703
+
+From 55c8b0dc688b070f4fa860d055a6365c0ae11bb3 Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Sun, 21 Jan 2024 11:04:34 +0100
+Subject: [PATCH] Fix memory corruption by initlizalizing pointer
+
+A memory corruption in protobuf_c_message_free_unpacked happens at the
+following line:
+
+        if (message->unknown_fields != NULL)
+                do_free(allocator, message->unknown_fields);
+
+The do_free will free ->unknown_fields. This is may be wrong, because
+protobuf_c_message_unpack uses malloc as the default allocator, allocates
+rv with malloc. At the end, however, ->unknown_fields is only initialized
+if there are some. That means if there are no such fields ->unknown_fields
+is an uninitialized pointer.
+
+The patch initializes the pointer to NULL to ensure the check before free
+is performed on initialized memory in case there is no unknown_field.
+
+This fixes https://github.com/protobuf-c/protobuf-c/issues/690
+
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ protobuf-c/protobuf-c.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/protobuf-c/protobuf-c.c b/protobuf-c/protobuf-c.c
+index 776ee4fb..0c18f89b 100644
+--- a/protobuf-c/protobuf-c.c
++++ b/protobuf-c/protobuf-c.c
+@@ -3278,6 +3278,8 @@ protobuf_c_message_unpack(const ProtobufCMessageDescriptor *desc,
+ 					      n_unknown * sizeof(ProtobufCMessageUnknownField));
+ 		if (rv->unknown_fields == NULL)
+ 			goto error_cleanup;
++	} else {
++		rv->unknown_fields = NULL;
+ 	}
+ 
+ 	/* do real parsing */
+
