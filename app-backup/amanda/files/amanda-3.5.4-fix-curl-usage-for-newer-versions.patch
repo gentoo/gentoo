@@ -1,0 +1,54 @@
+diff '--color=auto' -ur amanda-tag-community-3.5.4.orig/device-src/s3.c amanda-tag-community-3.5.4/device-src/s3.c
+--- amanda-tag-community-3.5.4.orig/device-src/s3.c	2024-12-23 15:25:31.444515603 -0500
++++ amanda-tag-community-3.5.4/device-src/s3.c	2024-12-23 15:36:40.430093293 -0500
+@@ -2654,18 +2654,27 @@
+ 	}
+ #endif
+ 
+-        if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_HTTPGET, curlopt_httpget)))
+-            goto curl_error;
+-        if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_UPLOAD, curlopt_upload)))
+-            goto curl_error;
+-        if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_POST, curlopt_post)))
+-            goto curl_error;
+-        if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_NOBODY, curlopt_nobody)))
+-            goto curl_error;
+-        if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_CUSTOMREQUEST,
+-                                          curlopt_customrequest)))
+-            goto curl_error;
+-
++        // set only required http method, these toggle on only, not off
++        if (curlopt_httpget) {
++            if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_HTTPGET, curlopt_httpget)))
++                goto curl_error;
++        }
++        if (curlopt_upload) {
++            if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_UPLOAD, curlopt_upload)))
++                goto curl_error;
++        }
++        if (curlopt_post) {
++            if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_POST, curlopt_post)))
++                goto curl_error;
++        }
++        if (curlopt_nobody) {
++            if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_NOBODY, curlopt_nobody)))
++                goto curl_error;
++        }
++	if (curlopt_customrequest) {
++            if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_CUSTOMREQUEST, curlopt_customrequest)))
++                goto curl_error;
++        }
+ 
+         if (curlopt_upload || curlopt_post) {
+             if ((curl_code = curl_easy_setopt(hdl->curl, CURLOPT_READFUNCTION, read_func)))
+@@ -3437,6 +3446,10 @@
+         /* We don't call curl_easy_reset here, because doing that in curl
+          * < 7.16 blanks the default CA certificate path, and there's no way
+          * to get it back. */
++#if LIBCURL_VERSION_NUM >= 0x071000
++        curl_easy_reset(hdl->curl);
++#endif
++
+         if (hdl->last_message) {
+             g_free(hdl->last_message);
+             hdl->last_message = NULL;
