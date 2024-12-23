@@ -28,7 +28,7 @@ src_prepare() {
 	# Respect users [CL]FLAGS
 	# Don't strip, as portage does this part
 	# Don't use 'which'
-	sed -e 's/-O2/$(CFLAGS) -lgmp $(LDFLAGS)/g' -e '/strip/d' -e 's/which/type -P/g' -i Makefile || die
+	sed -e 's/-O2/$(CFLAGS) -lgmp $(LDFLAGS)/g' -e '/strip/d' -e 's/which/command -v/g' -i Makefile || die
 }
 
 src_install() {
