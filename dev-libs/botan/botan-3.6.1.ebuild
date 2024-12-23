@@ -58,6 +58,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.87.patch
 	"${FILESDIR}"/${P}-tests-glibcxx_assertions.patch
+	"${FILESDIR}"/${PN}-3.6.1-no-avx2.patch
 )
 
 python_check_deps() {
