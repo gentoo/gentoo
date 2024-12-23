@@ -69,7 +69,6 @@ kde-apps/knotes
 # Removal on 2025-01-09
 media-sound/soundkonverter
 kde-frameworks/countryflags
-kde-frameworks/kapidox
 kde-frameworks/kdelibs4support
 kde-frameworks/kemoticons
 
