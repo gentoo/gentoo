@@ -1,0 +1,43 @@
+last/lastb/mesg/mountpoint/sulogin/utmpdump/wall have moved to util-linux
+pidof has moved to >=procps-3.3.9
+logsave is already in e2fsprogs
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -22,19 +22,17 @@ MNTPOINT=
+ 
+ # For some known distributions we do not build all programs, otherwise we do.
+ BIN	=
+-SBIN	= init halt shutdown runlevel killall5 fstab-decode logsave
+-USRBIN	= last mesg readbootlog
++SBIN	= init halt shutdown runlevel killall5 fstab-decode
++USRBIN	= readbootlog
+ 
+-MAN1	= last.1 lastb.1 mesg.1 readbootlog.1
++MAN1	= readbootlog.1
+ MAN5	= initscript.5 inittab.5 initctl.5
+-MAN8	= halt.8 init.8 killall5.8 pidof.8 poweroff.8 reboot.8 runlevel.8
+-MAN8	+= shutdown.8 telinit.8 fstab-decode.8 logsave.8
++MAN8	= halt.8 init.8 killall5.8 poweroff.8 reboot.8 runlevel.8
++MAN8	+= shutdown.8 telinit.8 fstab-decode.8
+ 
+ ifeq ($(DISTRO),)
+-SBIN	+= sulogin bootlogd
+-USRBIN	+= utmpdump wall
+-MAN1	+= utmpdump.1 wall.1
+-MAN8	+= sulogin.8 bootlogd.8
++SBIN	+= bootlogd
++MAN8	+= bootlogd.8
+ endif
+ 
+ ifeq ($(DISTRO),Debian)
+@@ -215,10 +213,6 @@ install:	all
+ 		ln -sf halt $(ROOT)$(base_sbindir)/reboot
+ 		ln -sf halt $(ROOT)$(base_sbindir)/poweroff
+ 		ln -sf init $(ROOT)$(base_sbindir)/telinit
+-		ln -sf $(base_sbindir)/killall5 $(ROOT)$(base_bindir)/pidof
+-		if [ ! -f $(ROOT)$(bindir)/lastb ]; then \
+-			ln -sf last $(ROOT)$(bindir)/lastb; \
+-		fi
+ 		$(INSTALL_DIR) $(ROOT)$(includedir)/
+ 		$(INSTALL_DATA) initreq.h $(ROOT)$(includedir)/
+ 		for lang in  '' $(patsubst ../man/po/%.po,%,$(wildcard ../man/po/??.po)); do \
