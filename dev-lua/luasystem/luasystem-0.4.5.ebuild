@@ -38,7 +38,7 @@ src_prepare() {
 }
 
 lua_src_test() {
-	busted --lua=${ELUA} || die
+	busted --exclude-tags=manual --lua=${ELUA} || die
 }
 
 src_test() {
