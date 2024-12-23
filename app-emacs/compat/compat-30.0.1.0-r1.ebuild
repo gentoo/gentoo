@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS="29.1"
-
 inherit elisp
 
 DESCRIPTION="Compatibility libraries for Emacs"
