@@ -67,4 +67,6 @@ http {
 
 	#	root /var/www/localhost/htdocs;
 	#}
+
+	include /etc/nginx/*_vhost.conf;
 }

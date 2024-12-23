@@ -808,6 +808,12 @@ src_install() {
 	if use nginx_modules_http_lua; then
 		docinto ${HTTP_LUA_MODULE_P}
 		dodoc "${HTTP_LUA_MODULE_WD}"/README.markdown
+		insinto /etc/nginx
+		newins - 00-config.lua_vhost.conf <<-EOF
+			lua_package_path "/etc/nginx/?.lua;;";
+		EOF
+		insinto /etc/nginx/resty
+		touch "${ED}"/etc/nginx/resty/core.lua
 	fi
 
 	if use nginx_modules_http_auth_pam; then
