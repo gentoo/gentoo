@@ -33,6 +33,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.3-json-glib-1.9.2.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use introspection gir)
