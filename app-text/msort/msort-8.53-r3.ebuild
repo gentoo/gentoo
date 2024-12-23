@@ -9,9 +9,9 @@ DESCRIPTION="A program for sorting files in sophisticated ways"
 HOMEPAGE="https://billposer.org/Software/msort.html"
 SRC_URI="https://billposer.org/Software/Downloads/${P}.tar.bz2"
 
-KEYWORDS="amd64 x86"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE="heap +icu +libuninum"
 
 RDEPEND="dev-libs/tre
