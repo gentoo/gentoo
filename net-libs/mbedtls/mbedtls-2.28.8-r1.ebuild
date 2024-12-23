@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake multilib-minimal python-any-r1
+inherit cmake flag-o-matic multilib-minimal python-any-r1
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
@@ -47,6 +47,13 @@ src_prepare() {
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_PTHREAD
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	# Workaround for https://github.com/Mbed-TLS/mbedtls/issues/9814 (bug #946544)
+	append-flags $(test-flags-CC -fzero-init-padding-bits=unions)
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

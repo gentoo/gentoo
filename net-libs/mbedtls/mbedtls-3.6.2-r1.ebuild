@@ -5,21 +5,18 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake multilib-minimal python-any-r1
+inherit cmake flag-o-matic multilib-minimal python-any-r1
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
 SRC_URI="https://github.com/Mbed-TLS/mbedtls/releases/download/${P}/${P}.tar.bz2"
+
 LICENSE="|| ( Apache-2.0 GPL-2+ )"
-SLOT="0/7.14.1" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="cmac cpu_flags_x86_sse2 doc havege programs static-libs test threads zlib"
+SLOT="0/16.21.7" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="cpu_flags_x86_sse2 doc programs static-libs test threads"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-"
-DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	doc? (
@@ -34,25 +31,28 @@ enable_mbedtls_option() {
 	# check that config.h syntax is the same at version bump
 	sed -i \
 		-e "s://#define ${myopt}:#define ${myopt}:" \
-		include/mbedtls/config.h || die
+		include/mbedtls/mbedtls_config.h || die
 }
 
 src_prepare() {
-	use cmac && enable_mbedtls_option MBEDTLS_CMAC_C
 	use cpu_flags_x86_sse2 && enable_mbedtls_option MBEDTLS_HAVE_SSE2
-	use zlib && enable_mbedtls_option MBEDTLS_ZLIB_SUPPORT
-	use havege && enable_mbedtls_option MBEDTLS_HAVEGE_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_PTHREAD
 
 	cmake_src_prepare
 }
 
+src_configure() {
+	# Workaround for https://github.com/Mbed-TLS/mbedtls/issues/9814 (bug #946544)
+	append-flags $(test-flags-CC -fzero-init-padding-bits=unions)
+
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PROGRAMS=$(multilib_native_usex programs)
 		-DENABLE_TESTING=$(usex test)
-		-DENABLE_ZLIB_SUPPORT=$(usex zlib)
 		-DINSTALL_MBEDTLS_HEADERS=ON
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DLINK_WITH_PTHREAD=$(usex threads)
