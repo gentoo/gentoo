@@ -1,0 +1,7 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-12-30)
+# Generic images are built with systemd and only available on arm64 and amd64
+sys-kernel/gentoo-kernel -generic-uki
+sys-kernel/gentoo-kernel-bin -generic-uki
