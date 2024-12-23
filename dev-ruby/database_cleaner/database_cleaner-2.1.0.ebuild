@@ -17,4 +17,4 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-ruby_add_rdepend "|| ( dev-ruby/database_cleaner-active_record:2.2 dev-ruby/database_cleaner-active_record:2.1 )"
+ruby_add_rdepend "dev-ruby/database_cleaner-active_record:2.2"
