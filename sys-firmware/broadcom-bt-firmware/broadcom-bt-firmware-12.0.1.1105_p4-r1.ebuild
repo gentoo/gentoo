@@ -56,7 +56,7 @@ src_install() {
 		fi
 		find . -type f -print0 | \
 			xargs -0 -P $(makeopts_jobs) -I'{}' ${compressor} '{}'
-	assert
+		assert
 		popd &>/dev/null || die
 	fi
 	dodoc DEVICES.md README.md
