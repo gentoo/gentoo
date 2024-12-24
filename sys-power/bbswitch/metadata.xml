@@ -5,10 +5,6 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>mva@gentoo.org</email>
-		<name>Vadim Misbakh-Soloviov</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>rei4dan@gmail.com</email>
 		<name>My Th</name>
