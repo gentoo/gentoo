@@ -22,8 +22,8 @@ LICENSE="GPL-3 LGPL-2.1+"
 # <libgnutls.so number>.<libgnutlsxx.so number>
 SLOT="0/30.30"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="brotli +cxx dane doc examples +idn nls +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools zlib zstd"
-REQUIRED_USE="test-full? ( cxx dane doc examples idn nls openssl pkcs11 seccomp tls-heartbeat tools )"
+IUSE="brotli +cxx dane doc examples +idn nls +openssl pkcs11 sslv2 sslv3 static-libs test test-full +tls-heartbeat tools zlib zstd"
+REQUIRED_USE="test-full? ( cxx dane doc examples idn nls openssl pkcs11 tls-heartbeat tools )"
 RESTRICT="!test? ( test )"
 
 # >=nettle-3.10 as a workaround for bug #936011
@@ -42,9 +42,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? (
-		seccomp? ( sys-libs/libseccomp )
-	)
+	test-full? ( sys-libs/libseccomp )
 "
 BDEPEND="
 	dev-build/gtk-doc-am
@@ -124,9 +122,9 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 		$(multilib_native_use_enable doc gtk-doc)
 		$(multilib_native_use_enable doc)
-		$(multilib_native_use_enable seccomp seccomp-tests)
 		$(multilib_native_use_enable test tests)
 		$(multilib_native_use_enable test-full full-test-suite)
+		$(multilib_native_use_enable test-full seccomp-tests)
 		$(multilib_native_use_enable tools)
 		$(use_enable cxx)
 		$(use_enable dane libdane)
