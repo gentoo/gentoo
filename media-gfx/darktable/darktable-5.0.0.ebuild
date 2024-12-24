@@ -9,6 +9,7 @@ inherit cmake flag-o-matic lua-single toolchain-funcs xdg
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="https://www.darktable.org/"
+S="${WORKDIR}/${P/_/~}"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 
@@ -33,14 +34,13 @@ else
 		)"
 
 	KEYWORDS="~amd64 ~arm64 -x86"
-	LANGS=" cs de es fi fr hu it ja nl pl pt-BR ru sl sq tr uk zh-CN zh-TW"
+	LANGS=" cs de es fi fr ja nl pt-BR sl sq uk zh-CN zh-TW"
 fi
 
-IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi nls opencl openmp openexr test tools webp
+IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
-
 RESTRICT="!test? ( test )"
 
 # It is sometimes requested, by both users and certain devs, to have sys-devel/gcc[graphite]
@@ -54,8 +54,8 @@ RESTRICT="!test? ( test )"
 #    more likely to pull in Clang to build darktable with than to request enabling USE=graphite
 #    on GCC; that might be a bug though)
 BDEPEND="dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 	test? ( >=dev-python/jsonschema-3.2.0 )"
 DEPEND="dev-db/sqlite:3
 	dev-libs/icu:=
@@ -98,10 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
 	"${FILESDIR}"/${PN}-4.2.1_cmake-musl.patch
-	"${FILESDIR}"/${PN}-4.4.2_fix-has-attribute-musl.patch
 )
-
-S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -155,7 +152,6 @@ src_configure() {
 		-DUSE_LIBSECRET=$(usex keyring)
 		-DUSE_LUA=$(usex lua)
 		-DUSE_MAP=$(usex geolocation)
-		-DUSE_NLS=$(usex nls)
 		-DUSE_OPENCL=$(usex opencl)
 		-DUSE_OPENEXR=$(usex openexr)
 		-DUSE_OPENJPEG=$(usex jpeg2k)
@@ -176,13 +172,11 @@ src_install() {
 		use l10n_uk && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.uk.pdf
 	fi
 
-	if use nls; then
-		for lang in ${LANGS} ; do
-			if ! use l10n_${lang}; then
-				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
-			fi
-		done
-	fi
+	for lang in ${LANGS} ; do
+		if ! use l10n_${lang}; then
+			rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
+		fi
+	done
 }
 
 pkg_postinst() {
