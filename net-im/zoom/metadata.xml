@@ -7,9 +7,6 @@
   <maintainer type="person">
     <email>dilfridge@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
-    <email>mva@gentoo.org</email>
-  </maintainer>
   <use>
     <flag name="bundled-qt">
       Use bundled Qt and icu instead of system-wide libs
