@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-01-04)
+# ptp-helper is written in Rust
+media-libs/gstreamer ptp
 
 # Mike Gilbert <floppym@gentoo.org> (2024-11-12)
 # Requires rust/cargo.

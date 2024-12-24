@@ -8,5 +8,7 @@
 	<use>
 		<flag name="unwind">Enable <pkg>sys-libs/libunwind</pkg> usage for better
 			backtrace support in leaks tracer module</flag>
+		<flag name="ptp">Controls Precision Time Protocol (PTP) helper.
+			Written in Rust.</flag>
 	</use>
 </pkgmetadata>
