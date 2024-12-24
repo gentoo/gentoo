@@ -245,6 +245,9 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	# bug #946142
+	append-flags -std=gnu17
+
 	# Needed for 32bit architectures, bug 928096
 	# This is upstream recommendation for the moment, see also
 	# https://www.tug.org/texlive/build.html
