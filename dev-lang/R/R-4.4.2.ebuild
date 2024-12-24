@@ -137,6 +137,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944066 (try reomving after 4.4.2)
+	append-cflags -std=gnu17
+
 	filter-ldflags -Wl,-Bdirect -Bdirect
 
 	econf \
