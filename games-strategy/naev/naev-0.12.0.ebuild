@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-1 luajit )
+LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{10..13} )
 inherit lua-single meson python-any-r1 virtualx xdg
 
@@ -87,18 +87,16 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# use eclass' generated lua.pc first rather than as fallback
-	sed -i "s/'lua51'/'lua'/" meson.build || die
-
 	# don't probe OpenGL for tests (avoids sandbox violations, bug #829369)
 	sed -i "/subdir('glcheck')/d" test/meson.build || die
 }
 
 src_configure() {
 	local emesonargs=(
+		# *can* do lua5-1 but upstream uses+test luajit most (bug #946881)
+		-Dluajit=enabled
 		$(meson_feature doc docs_c)
 		$(meson_feature doc docs_lua)
-		$(meson_feature lua_single_target_luajit luajit)
 	)
 
 	meson_src_configure

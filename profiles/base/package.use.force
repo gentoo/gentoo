@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-12-24)
+# ebuild currently only support luajit, spare users from having
+# to set it by forcing it here (bug #946881)
+>=games-strategy/naev-0.12 lua_single_target_luajit
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-18)
 # Force building these LLVM runtimes with Clang.  GCC builds are not
 # supported upstream (to the point of refusing bug fixes), and are
