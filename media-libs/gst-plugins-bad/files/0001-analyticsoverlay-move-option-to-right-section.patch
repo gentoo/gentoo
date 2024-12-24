@@ -1,0 +1,39 @@
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8238
+
+From 30bce05f5cc6ed0b0f2cf43fcb5558900eeaa198 Mon Sep 17 00:00:00 2001
+Message-ID: <30bce05f5cc6ed0b0f2cf43fcb5558900eeaa198.1736022660.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 4 Jan 2025 19:52:48 +0000
+Subject: [PATCH 1/2] analyticsoverlay: move option to right section
+
+It has an external dependency (pango/cairo) so should be under
+that heading. Also, fix an inconsistency with the ':' style.
+
+Fixes: 95464c89772e144088af54c1e8a4c1fecc45f09a
+---
+ meson_options.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index 28448ec6db..b3ec11e911 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -6,7 +6,6 @@ option('accurip', type : 'feature', value : 'auto')
+ option('adpcmdec', type : 'feature', value : 'auto')
+ option('adpcmenc', type : 'feature', value : 'auto')
+ option('aiff', type : 'feature', value : 'auto')
+-option('analyticsoverlay', type:'feature', value : 'auto')
+ option('asfmux', type : 'feature', value : 'auto')
+ option('audiobuffersplit', type : 'feature', value : 'auto')
+ option('audiofxbad', type : 'feature', value : 'auto')
+@@ -92,6 +91,7 @@ option('aja', type : 'feature', value : 'auto', description : 'AJA audio/video s
+ option('aom', type : 'feature', value : 'auto', description : 'AOM AV1 video codec plugin')
+ option('avtp', type : 'feature', value : 'auto', description : 'Audio/Video Transport Protocol (AVTP) plugin')
+ option('amfcodec', type : 'feature', value : 'auto', description : 'AMD AMF codec plugin')
++option('analyticsoverlay', type: 'feature', value : 'auto')
+ option('androidmedia', type : 'feature', value : 'auto', description : 'Video capture and codec plugins for Android')
+ option('applemedia', type : 'feature', value : 'auto', description : 'Video capture and codec access plugins for macOS and iOS')
+ option('asio', type : 'feature', value : 'auto', description : 'Steinberg Audio Streaming Input Output (ASIO) plugin')
+-- 
+2.47.1
+
