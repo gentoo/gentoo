@@ -26,17 +26,18 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui netgen pcl smesh spacenav test X"
+IUSE="debug designer +gui netgen pcl +smesh spacenav test X"
 # Modules are found in src/Mod/ and their options defined in:
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
 # To get their dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
-IUSE+=" addonmgr assembly bim cam cloud fem idf inspection mesh openscad points reverse robot surface +techdraw"
+IUSE+=" addonmgr assembly +bim cam cloud fem idf inspection +mesh openscad points reverse robot surface +techdraw"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bim? ( mesh )
 	cam? ( mesh )
+	gui? ( bim )
 	designer? ( gui )
 	fem? ( smesh )
 	inspection? ( points )
@@ -45,6 +46,7 @@ REQUIRED_USE="
 	reverse? ( mesh points )
 	test? ( techdraw )
 "
+# Draft Workbench needs BIM
 
 RESTRICT="!test? ( test )"
 
@@ -107,7 +109,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
 )
@@ -152,7 +154,7 @@ src_configure() {
 		-DBUILD_CAM=$(usex cam)
 		-DBUILD_CLOUD=$(usex cloud)
 		-DBUILD_DRAFT=ON
-		-DBUILD_DRAWING=OFF						# Unmaintained and not ported to Qt 6
+		# see below for DRAWING
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=$(usex fem $(usex netgen))
 		-DBUILD_FLAT_MESH=$(usex mesh)			# a submodule of MeshPart
@@ -190,6 +192,7 @@ src_configure() {
 
 		-DFREECAD_BUILD_DEBIAN=OFF
 
+		-DFREECAD_USE_EXTERNAL_ONDSELSOLVER=$(usex assembly)
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
 		-DFREECAD_USE_EXTERNAL_ZIPIOS=OFF		# doesn't work yet, also no package in Gentoo tree
 		-DFREECAD_USE_FREETYPE=ON
@@ -229,6 +232,8 @@ src_configure() {
 			-DQt6Core_MOC_EXECUTABLE="$(qt6_get_bindir)/moc"
 			-DQt6Core_RCC_EXECUTABLE="$(qt6_get_bindir)/rcc"
 			-DBUILD_QT5=OFF
+			# Drawing module unmaintained and not ported to qt6
+			-DBUILD_DRAWING=OFF
 		)
 	fi
 
