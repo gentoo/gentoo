@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets xdg virtualx
+inherit cmake flag-o-matic wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://www.audacityteam.org/"
@@ -161,6 +161,9 @@ src_prepare() {
 
 src_configure() {
 	setup-wxwidgets
+
+	# bug #944212
+	append-cflags -std=gnu17
 
 	# * always use system libraries if possible
 	# * USE_VST was omitted, it appears to no longer have dependencies
