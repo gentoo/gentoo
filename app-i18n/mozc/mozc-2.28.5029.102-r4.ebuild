@@ -35,7 +35,6 @@ else
 		https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
 		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.28.5029.102-patches.tar.xz
-		fcitx4? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz )
 		fcitx5? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz )
 	"
 fi
@@ -47,8 +46,8 @@ fi
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
 KEYWORDS="~amd64 ~loong ~x86"
-IUSE="debug emacs fcitx4 fcitx5 +gui ibus renderer test"
-REQUIRED_USE="|| ( emacs fcitx4 fcitx5 ibus )"
+IUSE="debug emacs fcitx5 +gui ibus renderer test"
+REQUIRED_USE="|| ( emacs fcitx5 ibus )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -58,16 +57,11 @@ BDEPEND="
 	app-alternatives/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
-	fcitx4? ( sys-devel/gettext )
 	fcitx5? ( sys-devel/gettext )
 "
 DEPEND="
 	>=dev-cpp/abseil-cpp-20240116.0:=
 	>=dev-libs/protobuf-3.0.0:=
-	fcitx4? (
-		app-i18n/fcitx:4
-		virtual/libintl
-	)
 	fcitx5? (
 		app-i18n/fcitx:5
 		app-i18n/libime
@@ -98,10 +92,6 @@ RDEPEND="
 	>=dev-cpp/abseil-cpp-20230802.0:=[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	emacs? ( app-editors/emacs:* )
-	fcitx4? (
-		app-i18n/fcitx:4
-		virtual/libintl
-	)
 	fcitx5? (
 		app-i18n/fcitx:5
 		app-i18n/libime
@@ -145,12 +135,10 @@ src_unpack() {
 	if [[ "${PV}" == "9999" ]]; then
 		git-r3_src_unpack
 
-		if use fcitx4 || use fcitx5; then
+		if use fcitx5; then
 			local EGIT_SUBMODULES=()
 			git-r3_fetch https://github.com/fcitx/mozc refs/heads/fcitx
 			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
-		fi
-		if use fcitx5; then
 			cp -pr "${WORKDIR}"/fcitx{,5}-mozc || die
 		fi
 	else
@@ -162,24 +150,15 @@ src_unpack() {
 		unpack japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
 		cp -p japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}/usage_dict.txt ${P}/src/third_party/japanese_usage_dictionary || die
 
-		if use fcitx4 || use fcitx5; then
+		if use fcitx5; then
 			unpack fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz
-			if use fcitx4; then
-				cp -pr mozc-${FCITX_MOZC_GIT_REVISION} fcitx-${PN} || die
-			fi
-			if use fcitx5; then
-				cp -pr mozc-${FCITX_MOZC_GIT_REVISION} fcitx5-${PN} || die
-			fi
+			cp -pr mozc-${FCITX_MOZC_GIT_REVISION} fcitx5-${PN} || die
 			rm -r mozc-${FCITX_MOZC_GIT_REVISION} || die
 		fi
 	fi
 }
 
 src_prepare() {
-	if use fcitx4; then
-		cp -pr "${WORKDIR}/fcitx-mozc/src/unix/fcitx" unix || die
-		PATCHES+=( "${FILESDIR}"/mozc-2.28.5029.102-abseil-20230802.0-fcitx4.patch )
-	fi
 	if use fcitx5; then
 		cp -pr "${WORKDIR}/fcitx5-mozc/src/unix/fcitx5" unix || die
 		PATCHES+=( "${FILESDIR}"/mozc-2.28.5029.102-abseil-20230802.0-fcitx5.patch )
@@ -253,7 +232,6 @@ src_configure() {
 	gyp_arguments+=(-D debug_extra_cflags=)
 	gyp_arguments+=(-D release_extra_cflags=)
 
-	gyp_arguments+=(-D use_fcitx=$(usex fcitx4 YES NO))
 	gyp_arguments+=(-D use_fcitx5=$(usex fcitx5 YES NO))
 	gyp_arguments+=(-D use_libibus=$(usex ibus 1 0))
 	gyp_arguments+=(-D use_libprotobuf=1)
@@ -284,9 +262,6 @@ src_compile() {
 	local targets=(server/server.gyp:mozc_server)
 	if use emacs; then
 		targets+=(unix/emacs/emacs.gyp:mozc_emacs_helper)
-	fi
-	if use fcitx4; then
-		targets+=(unix/fcitx/fcitx.gyp:fcitx-mozc)
 	fi
 	if use fcitx5; then
 		targets+=(unix/fcitx5/fcitx5.gyp:fcitx5-mozc)
@@ -340,32 +315,6 @@ src_install() {
 		dobin out_linux/${BUILD_TYPE}/mozc_emacs_helper
 		elisp-install ${PN} unix/emacs/*.{el,elc}
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" ${PN}
-	fi
-
-	if use fcitx4; then
-		exeinto /usr/$(get_libdir)/fcitx
-		doexe out_linux/${BUILD_TYPE}/fcitx-mozc.so
-
-		insinto /usr/share/fcitx/addon
-		doins unix/fcitx/fcitx-mozc.conf
-
-		insinto /usr/share/fcitx/inputmethod
-		doins unix/fcitx/mozc.conf
-
-		insinto /usr/share/fcitx/mozc/icon
-		newins data/images/product_icon_32bpp-128.png mozc.png
-		local image
-		for image in ../../fcitx-${PN}/src/data/images/unix/ui-*.png; do
-			newins "${image}" "mozc-${image#../../fcitx-${PN}/src/data/images/unix/ui-}"
-		done
-
-		local locale mo_file
-		for mo_file in out_linux/${BUILD_TYPE}/gen/unix/fcitx/po/*.mo; do
-			locale="${mo_file##*/}"
-			locale="${locale%.mo}"
-			insinto /usr/share/locale/${locale}/LC_MESSAGES
-			newins "${mo_file}" fcitx-mozc.mo
-		done
 	fi
 
 	if use fcitx5; then
