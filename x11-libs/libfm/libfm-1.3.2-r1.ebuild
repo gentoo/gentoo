@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_P="${PN}-${PV/_/}"
-inherit autotools vala xdg
+inherit autotools flag-o-matic vala xdg
 
 DESCRIPTION="Library for file management"
 HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
@@ -85,6 +85,9 @@ EOF
 }
 
 src_configure() {
+	# bug #944077
+	append-cflags -std=gnu17
+
 	local myeconfargs=(
 		--disable-static
 		--with-html-dir=/usr/share/doc/${PF}/html
