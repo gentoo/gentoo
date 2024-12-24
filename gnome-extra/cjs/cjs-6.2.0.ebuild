@@ -41,6 +41,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.2.0-glib-closure.patch
+)
+
 src_prepare() {
 	default
 	python_fix_shebang build

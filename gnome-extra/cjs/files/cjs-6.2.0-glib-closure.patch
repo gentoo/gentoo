@@ -1,0 +1,103 @@
+https://bugs.gentoo.org/946055
+https://github.com/linuxmint/cjs/commit/a4d0b0241582fdc5357a6bfc2b0ef2e05fea4893
+
+From a4d0b0241582fdc5357a6bfc2b0ef2e05fea4893 Mon Sep 17 00:00:00 2001
+From: Rick Calixte <10281587+rcalixte@users.noreply.github.com>
+Date: Mon, 18 Nov 2024 13:16:15 -0500
+Subject: [PATCH] gjs-util: Backport private closure annotations patch (#126)
+
+From: Philip Chimento <philip.chimento@gmail.com>
+Date: Sat, 27 Jul 2024 20:17:39 -0700
+Subject: GjsPrivate: Fix closure annotations
+
+Apparently the closure annotation can be omitted if the parameter is named
+user_data. If it is needed because the parameter is not named
+user_data then the annotation should be on the callback argument and
+refer to the user data argument.
+
+Ref:
+https://gitlab.gnome.org/GNOME/gjs/-/commit/1df5d72d8df383199dcd88cd1d16209617bf32ca
+
+Co-authored-by: Fabio Fantoni <fantonifabio@tiscali.it>
+--- a/libgjs-private/gjs-util.c
++++ b/libgjs-private/gjs-util.c
+@@ -235,7 +235,7 @@ void gjs_gtk_container_child_set_property(GObject* container, GObject* child,
+  * @store: a #GListStore
+  * @item: the new item
+  * @compare_func: (scope call): pairwise comparison function for sorting
+- * @user_data: (closure): user data for @compare_func
++ * @user_data: user data for @compare_func
+  *
+  * Inserts @item into @store at a position to be determined by the
+  * @compare_func.
+@@ -258,7 +258,7 @@ unsigned int gjs_list_store_insert_sorted(GListStore *store, GObject *item,
+  * gjs_list_store_sort:
+  * @store: a #GListStore
+  * @compare_func: (scope call): pairwise comparison function for sorting
+- * @user_data: (closure): user data for @compare_func
++ * @user_data: user data for @compare_func
+  *
+  * Sort the items in @store according to @compare_func.
+  */
+@@ -270,7 +270,7 @@ void gjs_list_store_sort(GListStore *store, GjsCompareDataFunc compare_func,
+ /**
+  * gjs_gtk_custom_sorter_new:
+  * @sort_func: (nullable) (scope call): function to sort items
+- * @user_data: (closure): user data for @compare_func
++ * @user_data: user data for @sort_func
+  * @destroy: destroy notify for @user_data
+  *
+  * Creates a new `GtkSorter` that works by calling @sort_func to compare items.
+@@ -305,7 +305,7 @@ GObject* gjs_gtk_custom_sorter_new(GjsCompareDataFunc sort_func,
+  * gjs_gtk_custom_sorter_set_sort_func:
+  * @sorter: a `GtkCustomSorter`
+  * @sort_func: (nullable) (scope call): function to sort items
+- * @user_data: (closure): user data to pass to @sort_func
++ * @user_data: user data to pass to @sort_func
+  * @destroy: destroy notify for @user_data
+  *
+  * Sets (or unsets) the function used for sorting items.
+@@ -423,7 +423,7 @@ void gjs_log_set_writer_default() {
+ /**
+  * gjs_log_set_writer_func:
+  * @func: (scope notified): callback with log data
+- * @user_data: (closure): user data for @func
++ * @user_data: user data for @func
+  * @user_data_free: (destroy user_data_free): destroy for @user_data
+  *
+  * Sets a given function as the writer function for structured logging,
+--- a/libgjs-private/gjs-util.h
++++ b/libgjs-private/gjs-util.h
+@@ -124,11 +124,11 @@ typedef gboolean (*GjsBindingTransformFunc)(GBinding* binding,
+  * @target:
+  * @target_property:
+  * @flags:
+- * @to_callback: (scope notified) (nullable):
+- * @to_data: (closure to_callback):
++ * @to_callback: (scope notified) (nullable) (closure to_data):
++ * @to_data:
+  * @to_notify: (destroy to_data):
+- * @from_callback: (scope notified) (nullable):
+- * @from_data: (closure from_callback):
++ * @from_callback: (scope notified) (nullable) (closure from_data):
++ * @from_data:
+  * @from_notify: (destroy from_data):
+  *
+  * Returns: (transfer none):
+@@ -149,11 +149,11 @@ GBinding* gjs_g_object_bind_property_full(
+  * @target:
+  * @target_property:
+  * @flags:
+- * @to_callback: (scope notified) (nullable):
+- * @to_data: (closure to_callback):
++ * @to_callback: (scope notified) (nullable) (closure to_data):
++ * @to_data:
+  * @to_notify: (destroy to_data):
+- * @from_callback: (scope notified) (nullable):
+- * @from_data: (closure from_callback):
++ * @from_callback: (scope notified) (nullable) (closure from_data):
++ * @from_data:
+  * @from_notify: (destroy from_data):
+  */
+ GJS_EXPORT
+
