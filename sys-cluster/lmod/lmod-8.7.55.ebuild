@@ -122,7 +122,6 @@ src_install() {
 	doenvd "${FILESDIR}"/99lmod
 	keepdir /etc/modulefiles
 	keepdir /etc/lmod_cache
-
 }
 
 pkg_postinst() {
