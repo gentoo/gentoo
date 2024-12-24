@@ -33,8 +33,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0.230.0-parallel-make.patch"
-	# https://github.com/JRaspass/Cache-Memcached-Fast/pull/11
-	"${FILESDIR}/${PN}-0.270.0-no-flto.patch"
 )
 
 PERL_RM_FILES=(
