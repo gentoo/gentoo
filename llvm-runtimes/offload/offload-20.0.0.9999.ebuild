@@ -126,6 +126,8 @@ src_configure() {
 
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
+		# requires flang
+		-DOPENMP_TEST_Fortran_COMPILER=
 	)
 
 	cmake_src_configure
