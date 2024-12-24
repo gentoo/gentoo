@@ -30,13 +30,10 @@ src_compile() {
 }
 
 src_install() {
-	local DOCS=( docs/{[^i]*.md,descriptors,reports} NEWS.md )
 	linux-mod-r1_src_install
 
-	insinto /etc/modprobe.d
-	doins hid-${PN}/etc-modprobe.d/${PN}.conf
-
-	udev_dorules hid-${PN}/etc-udev-rules.d/*.rules
+	# install modprobe.d/rules.d files and docs
+	emake PREFIX="${ED}" ETC_PREFIX=/usr/lib DOC_PREFIX=/usr/share/doc/${PF} install
 }
 
 pkg_postinst() {
