@@ -21,6 +21,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
+# tests are very basic, equivalent of just starting the game and checking if
+# can see the main menu -- but this breaks easily with software rendering and
+# some Xorg/mesa versions, simpler to do manually than try to keep this working
+RESTRICT="test"
+
 # dlopen: libglvnd
 RDEPEND="
 	${LUA_DEPS}
@@ -78,8 +83,7 @@ src_prepare() {
 	# use eclass' generated lua.pc first rather than as fallback
 	sed -i "s/'lua51'/'lua'/" meson.build || die
 
-	# don't probe OpenGL for tests (avoids sandbox violations, bug #829369),
-	# mesa[llvm] should ensure software rendering will work
+	# don't probe OpenGL for tests (avoids sandbox violations, bug #829369)
 	sed -i "/subdir('glcheck')/d" test/meson.build || die
 }
 
