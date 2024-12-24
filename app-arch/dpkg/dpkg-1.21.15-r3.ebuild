@@ -21,6 +21,7 @@ RDEPEND="
 	>=dev-lang/perl-5.14.2:=
 	sys-libs/ncurses:=[unicode(+)]
 	bzip2? ( app-arch/bzip2 )
+	elibc_musl? ( sys-libs/obstack-standalone )
 	lzma? ( app-arch/xz-utils )
 	nls? ( virtual/libintl )
 	selinux? ( sys-libs/libselinux )
