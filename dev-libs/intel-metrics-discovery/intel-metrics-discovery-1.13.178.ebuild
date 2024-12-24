@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_PN}-${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="x11-libs/libdrm"
 RDEPEND="${DEPEND}"
