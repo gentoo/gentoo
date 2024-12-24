@@ -35,7 +35,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		# tests are non-automated examples that open interactive dialogues
+		# tests are non-automated examples that open interactive dialogs
 		-DNFD_BUILD_TESTS=no
 		-DNFD_PORTAL=$(usex desktop-portal)
 	)
