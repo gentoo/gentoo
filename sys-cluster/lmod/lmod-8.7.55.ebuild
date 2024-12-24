@@ -34,7 +34,6 @@ RDEPEND="${LUA_DEPS}
 		dev-lua/lua-term[${LUA_USEDEP}]
 	')
 "
-DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
 	app-alternatives/bc
 	test? (
