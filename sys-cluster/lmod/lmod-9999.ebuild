@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..3} )
 inherit autotools lua-single prefix
@@ -33,16 +33,16 @@ RDEPEND="${LUA_DEPS}
 		dev-lua/luaposix[${LUA_USEDEP}]
 		dev-lua/lua-term[${LUA_USEDEP}]
 	')
-	virtual/pkgconfig
 "
-DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
+	app-alternatives/bc
 	test? (
 		$(lua_gen_cond_dep '
 			dev-util/hermes[${LUA_SINGLE_USEDEP}]
 		')
 		app-shells/tcsh
 	)
+	virtual/pkgconfig
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch )
@@ -90,7 +90,6 @@ src_configure() {
 		--with-caseIndependentSorting
 		--without-hiddenItalic
 		--with-exportedModuleCmd
-		--with-useDotFiles
 		--without-redirect
 		--with-extendedDefault
 		$(use_with cache cachedLoads)
@@ -112,6 +111,10 @@ src_test() {
 }
 
 src_install() {
+	dosym -r /usr/share/Lmod/init/profile /etc/bash/bashrc.d/z00_lmod.sh
+	dosym -r /usr/share/Lmod/init/profile /etc/profile.d/z00_lmod.sh
+	dosym -r /usr/share/Lmod/init/cshrc /etc/profile.d/z00_lmod.csh
+	dosym -r /usr/share/Lmod/init/profile.fish /etc/fish/conf.d/z00_lmod.fish
 	default
 	newman "${FILESDIR}"/module.1-8.4.20 module.1
 	# not a real man page
