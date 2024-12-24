@@ -195,8 +195,9 @@ src_configure() {
 		-DQT_FEATURE_webengine_webchannel=ON
 		-DQT_FEATURE_webengine_webrtc=ON
 
-		# needs a modified ffmpeg to be usable, and even then it may not
-		# cooperate with new major ffmpeg versions (bug #831487)
+		# needs a modified ffmpeg to be usable (bug #831487), and even then
+		# it is picky about codecs/version and system's can lead to unexpected
+		# issues (e.g. builds but some files don't play even with support)
 		-DQT_FEATURE_webengine_system_ffmpeg=OFF
 
 		# use bundled re2 to avoid complications, Qt has also disabled
