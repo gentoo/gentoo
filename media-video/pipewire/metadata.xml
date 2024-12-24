@@ -16,6 +16,7 @@
 		<remote-id type="freedesktop-gitlab">pipewire/pipewire</remote-id>
 	</upstream>
 	<use>
+		<flag name="camera">Enable libcamera spa plugin integration via <pkg>media-libs/libcamera</pkg></flag>
 		<flag name="echo-cancel">Enable WebRTC-based echo canceller via <pkg>media-libs/webrtc-audio-processing</pkg></flag>
 		<flag name="extra">Build pw-cat/pw-play/pw-record</flag>
 		<flag name="flatpak">Enable Flatpak support</flag>
