@@ -12,7 +12,7 @@ S="${WORKDIR}/abcl-src-${PV}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND=">=dev-java/ant-1.10.15:0"
 DEPEND=">=virtual/jdk-1.8:*"
