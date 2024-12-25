@@ -57,7 +57,7 @@ RDEPEND="
 	pulseaudio? ( media-libs/libpulse )
 	sid? ( media-libs/libsidplayfp )
 	shaders? ( >=media-libs/shaderc-2020.1 )
-	taglib? ( media-libs/taglib	)
+	taglib? ( media-libs/taglib:=	)
 	vaapi? ( media-libs/libva[X] )
 	vulkan? ( >=media-libs/vulkan-loader-1.2.133 )
 	xv? ( x11-libs/libXv )
