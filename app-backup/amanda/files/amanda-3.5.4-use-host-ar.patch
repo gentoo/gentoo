@@ -1,0 +1,12 @@
+diff '--color=auto' -ur amanda-tag-community-3.5.4.orig/config/amanda/progs.m4 amanda-tag-community-3.5.4/config/amanda/progs.m4
+--- amanda-tag-community-3.5.4.orig/config/amanda/progs.m4	2024-12-23 13:31:07.911347884 -0500
++++ amanda-tag-community-3.5.4/config/amanda/progs.m4	2024-12-23 13:31:27.275666103 -0500
+@@ -358,7 +358,7 @@
+ AC_DEFUN([AMANDA_PROG_AR],
+ [
+     AC_REQUIRE([AMANDA_INIT_PROGS])
+-    AC_PATH_PROG(AR,ar,,$LOCSYSPATH)
++    AC_PATH_TOOL(AR,ar,,$LOCSYSPATH)
+ ])
+ 
+ AC_DEFUN([AMANDA_PROG_BASH],
