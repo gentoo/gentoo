@@ -193,7 +193,6 @@ DEPEND="
 	>=dev-libs/miniaudio-0.11.11
 	>=dev-libs/rapidjson-1.1.0
 	media-libs/libsdl2[X,sound,video]
-	>=x11-libs/fltk-1.3.5[opengl]
 "
 RDEPEND="
 	${DEPEND}
