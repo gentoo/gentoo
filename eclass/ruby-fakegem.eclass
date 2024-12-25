@@ -624,7 +624,7 @@ each_fakegem_install() {
 	ruby_fakegem_install_gemspec
 
 	local _gemlibdirs="${RUBY_FAKEGEM_EXTRAINSTALL}"
-	for directory in "${RUBY_FAKEGEM_BINDIR}" lib; do
+	for directory in "${RUBY_FAKEGEM_BINDIR}" lib sig; do
 		[[ -d ${directory} ]] && _gemlibdirs="${_gemlibdirs} ${directory}"
 	done
 
