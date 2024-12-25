@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 COMMIT=0e74fe022ddbb689f7bae0460a21be303114029b
@@ -21,7 +21,7 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	media-libs/taglib
+	media-libs/taglib:=
 "
 RDEPEND="${DEPEND}"
 
