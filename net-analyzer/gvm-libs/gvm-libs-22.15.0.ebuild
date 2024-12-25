@@ -24,6 +24,7 @@ DEPEND="
 	dev-libs/libgpg-error
 	>=dev-libs/cJSON-1.7.14
 	>=dev-libs/libxml2-2.0:2
+	>=dev-libs/json-glib-1.4.4
 	>=net-libs/gnutls-3.2.15:=
 	net-libs/libnet:1.1
 	net-libs/libpcap
