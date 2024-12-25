@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="ID3v2/APEv2 tagger plugin for GStreamer"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-RDEPEND=">=media-libs/taglib-1.9.1[${MULTILIB_USEDEP}]"
+RDEPEND="media-libs/taglib:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
