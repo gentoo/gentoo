@@ -1,0 +1,13 @@
+diff --git a/src/wrapper/basics.cpp b/src/wrapper/basics.cpp
+index b84f672..ba037dc 100644
+--- a/src/wrapper/basics.cpp
++++ b/src/wrapper/basics.cpp
+@@ -51,7 +51,7 @@ namespace
+   {
+       static PyObject *convert(ByteVector const& s)
+         {
+-          return PyUnicode_FromStringAndSize(s.data(), s.size());
++          return PyBytes_FromStringAndSize(s.data(), s.size());
+         }
+   };
+ 

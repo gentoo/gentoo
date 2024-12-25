@@ -1,0 +1,9 @@
+https://github.com/sjuvonen/coquillo/pull/12.patch
+--- a/src/crawler/tag/xiphcomment.cpp
++++ b/src/crawler/tag/xiphcomment.cpp
+@@ -1,4 +1,5 @@
+ 
++#include <taglib/taglib.h>
+ #include <taglib/xiphcomment.h>
+ #include <QImage>
+ #include "xiphcomment.hpp"

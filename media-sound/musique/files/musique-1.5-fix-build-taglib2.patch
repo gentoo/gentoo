@@ -1,0 +1,40 @@
+https://github.com/flaviotordini/musique/commit/7277d40defe9cde40f947a81d624195ddf683f44.patch
+
+- replace MP4::ItemListMap by TagLib::MP4::ItemMap
+- replace MP4::Tag::itemListMap() by MP4::Tag::itemMap()
+
+diff --git a/src/coverutils.cpp b/src/coverutils.cpp
+index ae89330..4ba717e 100644
+--- a/src/coverutils.cpp
++++ b/src/coverutils.cpp
+@@ -158,7 +158,7 @@ bool CoverUtils::coverFromMP4(const QString &filename, Album *album) {
+     TagLib::MP4::Tag *tag = static_cast<TagLib::MP4::Tag *>(f.tag());
+     if (!tag) return false;
+ 
+-    TagLib::MP4::ItemListMap itemsListMap = tag->itemListMap();
++    TagLib::MP4::ItemMap itemsListMap = tag->itemMap();
+     TagLib::MP4::Item coverItem = itemsListMap["covr"];
+     TagLib::MP4::CoverArtList coverArtList = coverItem.toCoverArtList();
+     TagLib::MP4::CoverArt coverArt = coverArtList.front();
+diff --git a/src/tags/mp4utils.h b/src/tags/mp4utils.h
+index 138c5b5..6b4bcef 100644
+--- a/src/tags/mp4utils.h
++++ b/src/tags/mp4utils.h
+@@ -9,7 +9,7 @@
+ namespace Mp4Utils {
+ 
+ void load(TagLib::MP4::Tag *tag, Tags *tags) {
+-    const TagLib::MP4::ItemListMap &map = tag->itemListMap();
++    const TagLib::MP4::ItemMap &map = tag->itemMap();
+ 
+     if (map.contains("trkn")) {
+         TagLib::MP4::Item::IntPair intPair = map["trkn"].toIntPair();
+@@ -31,7 +31,7 @@ void load(TagLib::MP4::Tag *tag, Tags *tags) {
+         tags->setComposerSort(v);
+     }
+ 
+-    TagLib::MP4::ItemListMap::ConstIterator it = map.find("aART");
++    TagLib::MP4::ItemMap::ConstIterator it = map.find("aART");
+     if (it != map.end()) {
+         TagLib::StringList sl = it->second.toStringList();
+         if (!sl.isEmpty())

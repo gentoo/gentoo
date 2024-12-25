@@ -130,7 +130,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
 	media-libs/mesa[egl(+),gbm(+)?,wayland?,X?]
-	>=media-libs/taglib-1.9.0
+	media-libs/taglib:=
 	virtual/libiconv
 	virtual/ttf-fonts
 	x11-libs/libdrm

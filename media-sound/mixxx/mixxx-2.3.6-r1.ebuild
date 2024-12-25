@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/mixxxdj/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-release-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 LICENSE="GPL-2"
 SLOT="0"
@@ -89,7 +89,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-docs.patch
+	"${FILESDIR}"/${PN}-2.3.0-docs.patch
+	"${FILESDIR}"/${PN}-2.3.0-cmake.patch
+	"${FILESDIR}"/${PN}-2.3.1-benchmark_compile_fix.patch
 	"${FILESDIR}"/${PN}-2.3.6-fix-build-taglib2.patch
 )
 
