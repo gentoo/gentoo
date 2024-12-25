@@ -25,6 +25,10 @@ dev-ml/yojson test
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
 
+# Zurab Kvachadze <zurabid2016@gmail.com> (2025-02-18)
+# www-servers/uwsgi, required for tests, is not keyworded on riscv.
+www-servers/nginx test
+
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
 # sci-ml/caffe2 is not keyworded on riscv
 sci-chemistry/gromacs nnpot
