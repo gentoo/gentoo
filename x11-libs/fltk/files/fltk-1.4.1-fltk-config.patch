@@ -1,0 +1,25 @@
+The "CFLAGS" variable here concatenates user's CFLAGS (unwanted in
+fltk-config's @CFLAGS@) and FLTK_CFLAGS a bit below (wanted).
+
+So prevent addition of CMAKE_C_FLAGS_* and keep the rest.
+
+CXXFLAGS not touched given it does set(CXXFLAGS "${CFLAGS}").
+
+Also drop @LDFLAGS@ as a precaution, it's not currently set by cmake
+but it's likely an oversight. @LARGEFILE@ (currently still in .in) and
+such are only used by autoconf (cmake appends into @CFLAGS@).
+--- a/CMake/variables.cmake
++++ b/CMake/variables.cmake
+@@ -139,6 +139 @@
+-string(TOUPPER "${CMAKE_BUILD_TYPE}" BUILD_UPPER)
+-if(${BUILD_UPPER})
+-  set(CFLAGS "${CMAKE_C_FLAGS_${BUILD_UPPER}} ${CFLAGS}")
+-endif(${BUILD_UPPER})
+-
+-set(CFLAGS "${FLTK_OPTION_OPTIM} ${CMAKE_C_FLAGS} ${CFLAGS}")
++set(CFLAGS "${FLTK_OPTION_OPTIM} ${CFLAGS}")
+--- a/fltk-config.in
++++ b/fltk-config.in
+@@ -38 +38 @@
+-LDFLAGS="@LDFLAGS@"
++LDFLAGS=""

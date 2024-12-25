@@ -1,0 +1,9 @@
+We only use the unittests-shared example and this unused one has ODR
+violations. Skip building it for now rather than filter-lto w/ tests
+to avoid triggering -Werror=odr -flto CI (ideally would want to only
+build unittests and not have to worry about build time + quirks of
+all examples).
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -100 +99,0 @@
+-fl_create_example(coordinates coordinates.cxx fltk::fltk)
