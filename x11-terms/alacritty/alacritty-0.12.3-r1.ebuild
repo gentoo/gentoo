@@ -303,6 +303,7 @@ src_unpack() {
 }
 
 src_configure() {
+	rust_pkg_setup
 	local myfeatures=(
 		$(usex X x11 '')
 		$(usev wayland)
