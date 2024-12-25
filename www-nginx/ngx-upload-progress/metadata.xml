@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-upload-proress module is an NGINX module that implements an upload progress system
+		which monitors RFC1867 POST upload as they are transmitted to upstream servers.
+
+		The module works by tracking the uploads proxied by NGINX to upstream servers without analysing the
+		uploaded content and offers a web API to report upload progress in JavaScript, JSON or any
+		other format (with the help of templates).
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/masterzen/nginx-upload-progress-module/issues</bugs-to>
+		<remote-id type="github">masterzen/nginx-upload-progress-module</remote-id>
+	</upstream>
+</pkgmetadata>
