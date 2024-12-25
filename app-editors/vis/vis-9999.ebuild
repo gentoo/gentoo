@@ -4,7 +4,7 @@
 EAPI=8
 
 VIS_TEST_COMMIT="783b7ef67aa360f0b9bd44fa5ea47e644bc49d69"
-LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
+LUA_COMPAT=( lua5-{2..4} )
 
 inherit lua-single
 
@@ -14,9 +14,11 @@ if [ "${PV}" == "9999" ]; then
 else
 	SRC_URI="
 		https://github.com/martanne/vis/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		test? ( https://github.com/martanne/vis-test/archive/${VIS_TEST_COMMIT}.tar.gz -> vis-test-${VIS_TEST_COMMIT}.tar.gz )
+		test? ( https://github.com/martanne/vis-test/archive/${VIS_TEST_COMMIT}.tar.gz
+			-> vis-test-${VIS_TEST_COMMIT}.tar.gz
+		 )
 	"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
@@ -43,10 +45,13 @@ RDEPEND="
 	)
 "
 # lpeg: https://github.com/martanne/vis-test/issues/28
-BDEPEND="test? (
-	$(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]')
-	$(lua_gen_cond_dep 'dev-lua/busted[${LUA_USEDEP}]')
-)"
+BDEPEND="
+	virtual/pkgconfig
+	test? (
+		$(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]')
+		$(lua_gen_cond_dep 'dev-lua/busted[${LUA_USEDEP}]')
+	)
+"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -71,14 +76,15 @@ src_prepare() {
 }
 
 src_configure() {
-	./configure \
-		--prefix="${EPREFIX}"/usr \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--disable-lpeg-static \
-		$(use_enable lua) \
-		$(use_enable ncurses curses) \
-		$(use_enable selinux) \
-		$(use_enable tre) || die
+	local myeconfargs=(
+		--disable-lpeg-static
+		$(use_enable lua)
+		$(use_enable ncurses curses)
+		$(use_enable selinux)
+		$(use_enable tre)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 update_symlinks() {
