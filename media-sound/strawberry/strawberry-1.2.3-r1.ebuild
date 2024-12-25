@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/icu:=
 	media-libs/alsa-lib
-	media-libs/taglib
+	media-libs/taglib:=
 	dev-libs/kdsingleapplication[qt6(+)]
 	dev-qt/qtbase:6[concurrent,dbus?,gui,network,ssl,sql,sqlite,widgets,X?]
 	media-libs/gstreamer:1.0
