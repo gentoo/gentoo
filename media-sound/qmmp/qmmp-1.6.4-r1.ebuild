@@ -94,10 +94,6 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-udisks_plugin.patch"
-)
-
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia ; then
 		sed -i \
