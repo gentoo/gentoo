@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit gnustep-2
 
 MY_P=${P/c/C}
@@ -17,7 +17,7 @@ IUSE="alsa ao flac mad modplug musepack oss timidity vorbis"
 
 # musicbrainz disabled upstream for now
 RDEPEND="media-libs/audiofile:=
-	media-libs/taglib
+	media-libs/taglib:=
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao:= )
 	flac? ( media-libs/flac:= )
