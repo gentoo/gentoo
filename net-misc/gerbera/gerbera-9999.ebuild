@@ -49,7 +49,7 @@ RDEPEND="
 	magic? ( sys-apps/file )
 	matroska? ( media-libs/libmatroska:= )
 	mysql? ( dev-db/mysql-connector-c:= )
-	taglib? ( media-libs/taglib )
+	taglib? ( media-libs/taglib:= )
 "
 
 DEPEND="${RDEPEND}"
