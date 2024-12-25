@@ -23,7 +23,7 @@ LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 
 RDEPEND="
-	media-libs/taglib
+	media-libs/taglib:=
 "
 BDEPEND="
 	${RDEPEND}
