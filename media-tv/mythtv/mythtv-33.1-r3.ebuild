@@ -58,7 +58,7 @@ RDEPEND="
 	media-libs/libbluray:=[java?]
 	media-libs/libsamplerate
 	media-libs/libsoundtouch
-	media-libs/taglib
+	media-libs/taglib:=
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	autostart? (
