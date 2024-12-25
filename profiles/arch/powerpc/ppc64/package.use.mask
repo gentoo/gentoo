@@ -13,6 +13,10 @@ media-libs/libavif libyuv
 # media-libs/zint is not keyworded here
 media-libs/zxing-cpp experimental
 
+# Zurab Kvachadze <zurabid2016@gmail.com> (2025-02-18)
+# www-servers/uwsgi, required for tests, is not keyworded on ppc64.
+www-servers/nginx test
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-core/clang-runtime -offload
