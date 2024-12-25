@@ -21,11 +21,6 @@ sys-kernel/installkernel efistub
 # dev-python/pyside6 is not stable here yet
 dev-python/qtpy pyside6
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
-# This is still experimental, prebuilt images may not boot on all systems.
-sys-kernel/gentoo-kernel generic-uki
-sys-kernel/gentoo-kernel-bin generic-uki
-
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # Needs unkeyworded dev-python/sympy
 dev-python/nbval test
