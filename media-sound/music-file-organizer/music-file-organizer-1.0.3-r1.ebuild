@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Organizes audio files into directories based on metadata tags"
 HOMEPAGE="https://git.zx2c4.com/music-file-organizer/about/"
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/icu:=
-	media-libs/taglib
+	media-libs/taglib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
