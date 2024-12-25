@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mats Lidell <matsl@gentoo.org> (2024-12-25)
+# Packages used by XEmacs 21.4, now removed from tree.  Not needed with
+# XEmacs 21.5.  Removal on 2025-01-24.
+app-xemacs/latin-unity
+app-xemacs/mule-ucs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
 # Last "release" seems to have been an AUR special, and even that is now
 # >6 years old and still KF5 based. No known repository, no tarball source
