@@ -28,6 +28,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost.patch
+	"${FILESDIR}"/${P}-wformat-security.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
