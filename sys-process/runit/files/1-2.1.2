@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 # system one time tasks
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 
-RUNLEVEL=S /sbin/openrc sysinit
-RUNLEVEL=S /sbin/openrc boot
+. /etc/runit/rc.sh
+
+run_rc_stage 1
 
 touch /etc/runit/stopit
 chmod 0 /etc/runit/stopit
