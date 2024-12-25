@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="9"
+SLOT="8"
 IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -58,7 +58,7 @@ RDEPEND="
 	media-libs/sratom
 	dev-libs/sord
 	media-libs/lv2"
-#	media-libs/suil[X,gtk2] bundled suil is used, maybe probably because of ytk
+#	media-libs/suil[X,gtk2] bundled suil is now used, probably because of ytk
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
 DEPEND="${RDEPEND}
@@ -71,6 +71,9 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
+	"${FILESDIR}/${PN}-9.0.0-fix-clang-crash.patch"
+	"${FILESDIR}/${PN}-9.0.0-properly-check-for-syscall.patch"
+	"${FILESDIR}/${PN}-9.0.0-fix-unlikely-buffer-overflow.patch"
 )
 
 pkg_pretend() {
