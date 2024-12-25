@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ DEPEND="
 	dev-libs/libxml2
 	>=media-libs/libshout-2.2
 	!taglib? ( media-libs/libvorbis )
-	taglib? ( media-libs/taglib )"
+	taglib? ( media-libs/taglib:= )"
 RDEPEND="
 	${DEPEND}
 	net-misc/icecast"
