@@ -22,7 +22,7 @@ IUSE="sparse"
 RESTRICT="test"
 
 RDEPEND="
-	dev-util/hip
+	dev-util/hip:${SLOT}
 	sci-libs/rocSOLVER:${SLOT}[${ROCM_USEDEP}]
 	sparse? (
 		sci-libs/suitesparseconfig

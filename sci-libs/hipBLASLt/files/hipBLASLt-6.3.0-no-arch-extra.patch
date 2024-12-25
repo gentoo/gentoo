@@ -1,0 +1,16 @@
+--- a/library/src/amd_detail/rocblaslt/src/kernels/CompileSourceKernel.cmake
++++ b/library/src/amd_detail/rocblaslt/src/kernels/CompileSourceKernel.cmake
+@@ -25,6 +25,13 @@ function(CompileSourceKernel source archs buildIdKind outputFolder)
+     message("Setup source kernel targets")
+     string(REGEX MATCHALL "gfx[a-z0-9]+" archs "${archs}")
+     list(REMOVE_DUPLICATES archs)
++
++    list(LENGTH archs archs_length)
++    if(archs_length EQUAL 0)
++        message("No architectures specified.")
++        return()
++    endif()
++
+     list(JOIN archs "," archs)
+     message("archs for source kernel compilation: ${archs}")
+     add_custom_target(MatrixTransformKernels ALL

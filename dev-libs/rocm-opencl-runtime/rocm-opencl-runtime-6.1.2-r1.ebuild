@@ -29,7 +29,10 @@ BDEPEND=">=dev-build/rocm-cmake-5.3
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
 "
 
-PATCHES=( "${FILESDIR}/rocm-opencl-runtime-6.1.2-fix-segfault.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.1.2-fix-segfault.patch"
+	"${FILESDIR}/${PN}-6.1.2-musl.patch"
+)
 
 src_configure() {
 	# -Werror=strict-aliasing

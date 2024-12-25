@@ -1,0 +1,19 @@
+diff --git a/clients/CMakeLists.txt b/clients/CMakeLists.txt
+index 4485fee..51eedc9 100644
+--- a/clients/CMakeLists.txt
++++ b/clients/CMakeLists.txt
+@@ -140,10 +140,12 @@ if( BUILD_CLIENTS_BENCHMARKS OR BUILD_CLIENTS_TESTS)
+         set( BLAS_LIBRARY /usr/local/lib/libblis.a )
+         set( BLIS_INCLUDE_DIR /usr/local/include/blis )
+       else()
+-        message( WARNING "Could not find libblis" )
++        message( FATAL_ERROR "Could not find libblis" )
+       endif()
+     else()
+-      set( BLAS_LIBRARY "blas -lcblas" )
++      find_package( CBLAS CONFIG REQUIRED )
++      set( BLAS_LIBRARY ${CBLAS_LIBRARIES} )
++      set( BLAS_INCLUDE_DIR ${CBLAS_INCLUDE_DIRS} )
+     endif()
+   else() # WIN32
+     file(TO_CMAKE_PATH "C:/Program\ Files/AMD/AOCL-Windows/amd-blis/lib/ILP64/AOCL-LibBlis-Win-MT.lib" AOCL_BLAS_LIBRARY)

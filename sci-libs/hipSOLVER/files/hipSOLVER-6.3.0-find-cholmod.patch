@@ -1,0 +1,56 @@
+Builds with -DBUILD_WITH_SPARSE=ON are broken
+Upstream bug: https://github.com/ROCm/hipSOLVER/issues/347
+--- a/library/src/amd_detail/dlopen/cholmod.hpp
++++ b/library/src/amd_detail/dlopen/cholmod.hpp
+@@ -24,7 +24,7 @@
+ #include "lib_macros.hpp"
+ 
+ #ifdef HAVE_ROCSPARSE
+-#include <suitesparse/cholmod.h>
++#include <cholmod.h>
+ #else
+ 
+ // constants
+--- a/library/src/CMakeLists.txt
++++ b/library/src/CMakeLists.txt
+@@ -42,8 +42,6 @@ prepend_path(".." hipsolver_headers_public relative_hipsolver_headers_public)
+ 
+ if(NOT USE_CUDA)
+   set(hipsolver_source
+-    "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/dlopen/cholmod.cpp"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/dlopen/rocsparse.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/hipsolver_conversions.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/hipsolver.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/hipsolver_dense.cpp"
+@@ -52,6 +50,12 @@ if(NOT USE_CUDA)
+     "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/hipsolver_sparse.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/common/hipsolver_dense_common.cpp"
+   )
++  if (NOT BUILD_WITH_SPARSE)
++    list(APPEND hipsolver_source
++      "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/dlopen/cholmod.cpp"
++      "${CMAKE_CURRENT_SOURCE_DIR}/amd_detail/dlopen/rocsparse.cpp"
++    )
++  endif()
+ else()
+   set(hipsolver_source
+     "${CMAKE_CURRENT_SOURCE_DIR}/nvidia_detail/hipsolver_conversions.cpp"
+@@ -149,14 +153,11 @@ if(NOT USE_CUDA)
+       list(APPEND static_depends PACKAGE rocsparse)
+     endif()
+ 
+-    find_package(CHOLMOD QUIET)
+-    if(NOT TARGET SuiteSparse::CHOLMOD)
+-      # try again with the custom find modules for older versions of suitesparse
+-      list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/suitesparse)
+-      find_package(CHOLMOD REQUIRED)
+-    endif()
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(CHOLMOD REQUIRED IMPORTED_TARGET cholmod)
++
++    target_link_libraries(hipsolver PRIVATE roc::rocsparse PkgConfig::CHOLMOD)
+ 
+-    target_link_libraries( hipsolver PRIVATE roc::rocsparse SuiteSparse::CHOLMOD)
+     set_source_files_properties(${hipsolver_source}
+       PROPERTIES
+         COMPILE_DEFINITIONS HAVE_ROCSPARSE

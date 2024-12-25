@@ -25,7 +25,7 @@ IUSE="${IUSE_TARGETS[@]/#/+} test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-util/hip
+	dev-util/hip:${SLOT}
 	dev-cpp/msgpack-cxx
 	sci-libs/hipBLAS:${SLOT}
 "
