@@ -23,7 +23,7 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/readline:=
-	taglib? ( media-libs/taglib )
+	taglib? ( media-libs/taglib:= )
 	visualizer? ( sci-libs/fftw:3.0= )
 "
 DEPEND="${RDEPEND}"
