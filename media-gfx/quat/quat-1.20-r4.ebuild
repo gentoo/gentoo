@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="X debug"
 DEPEND="
 	>=sys-libs/zlib-1.1.4
 	X? (
-		=x11-libs/fltk-1*
+		x11-libs/fltk:1=
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXft
@@ -25,7 +25,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-fix-build-for-clang16.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-build-for-clang16.patch"
+	"${FILESDIR}/${P}-fltk1.4.patch"
+)
 
 src_configure() {
 	# throws tons of warnings otherwise

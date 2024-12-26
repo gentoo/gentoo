@@ -1,0 +1,6 @@
+Deprecated compatibility symlinks are removed.
+--- a/gui/MainWindow.cxx
++++ b/gui/MainWindow.cxx
+@@ -56 +56 @@
+-#include <FL/fl_file_chooser.H>
++#include <FL/Fl_File_Chooser.H>
