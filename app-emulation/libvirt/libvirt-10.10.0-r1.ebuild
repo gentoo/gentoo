@@ -159,6 +159,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-10.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-10.10.0-qemu-tpm-do-not-update-profile-name-for-transient-do.patch
 )
 
 python_check_deps() {
