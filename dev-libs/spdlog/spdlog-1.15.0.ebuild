@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${PN}-1.15.0-libfmt-11.1.0.patch"
 )
 
 multilib_src_prepare() {
