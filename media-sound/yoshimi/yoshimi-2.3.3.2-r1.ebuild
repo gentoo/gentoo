@@ -27,12 +27,16 @@ DEPEND="
 	sys-libs/zlib
 	virtual/jack
 	x11-libs/cairo[X]
-	x11-libs/fltk:1[opengl]
+	x11-libs/fltk:1=[X(+),opengl]
 	lv2? ( media-libs/lv2 )
 "
 RDEPEND="${DEPEND}"
 
 DOCS=( ../Changelog ../README.txt )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.3.1-fltk1.4.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
