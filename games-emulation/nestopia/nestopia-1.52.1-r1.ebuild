@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libglvnd
 	media-libs/libsdl2[joystick,sound]
 	sys-libs/zlib:=
-	x11-libs/fltk:1[opengl]
+	x11-libs/fltk:1=[opengl]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
