@@ -24,7 +24,7 @@ DEPEND="
 	doc? ( dev-texlive/texlive-fontutils )
 	dssi? ( media-libs/dssi )
 	fltk? (
-		x11-libs/fltk:1
+		x11-libs/fltk:1=[X(+)]
 		x11-libs/libX11
 		x11-libs/libXpm
 	)
@@ -42,6 +42,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-docs.patch
 	"${FILESDIR}"/${P}-stdint.patch
+	"${FILESDIR}"/${P}-fltk1.4.patch
 )
 
 DOCS=( AUTHORS.txt NEWS.txt README.adoc )
