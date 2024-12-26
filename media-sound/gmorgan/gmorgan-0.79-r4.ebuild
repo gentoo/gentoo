@@ -16,7 +16,7 @@ IUSE="nls"
 
 RDEPEND="
 	media-libs/alsa-lib
-	x11-libs/fltk:1"
+	x11-libs/fltk:1="
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 
