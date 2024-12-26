@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="Kernel coredump file access"
 HOMEPAGE="https://github.com/ptesarik/libkdumpfile"
 SRC_URI="https://github.com/ptesarik/libkdumpfile/releases/download/v${PV}/${P}.tar.bz2"
