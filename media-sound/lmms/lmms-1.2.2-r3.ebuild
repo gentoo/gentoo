@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=media-libs/libsndfile-1.0.11
 	sci-libs/fftw:3.0
 	sys-libs/zlib
-	>=x11-libs/fltk-1.3.0_rc3:1
+	x11-libs/fltk:1=
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth )
 	jack? ( virtual/jack )
