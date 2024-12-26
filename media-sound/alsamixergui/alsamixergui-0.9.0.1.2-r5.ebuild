@@ -19,7 +19,7 @@ KEYWORDS="amd64 arm ppc ppc64 sparc x86"
 RDEPEND="
 	media-libs/alsa-lib:=
 	media-sound/alsa-utils
-	x11-libs/fltk:1"
+	x11-libs/fltk:1="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
