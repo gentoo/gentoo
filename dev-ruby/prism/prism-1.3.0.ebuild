@@ -21,15 +21,12 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
-# all_ruby_prepare() {
-# 	sed -e "s:_relative ':'./:" \
-# 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
-# }
+all_ruby_prepare() {
+	# Avoid a dependency on rake-compiler
+	sed -e '/PRISM_FFI_BACKEND/ s/$/ and false/' \
+		-i Rakefile || die
+}
 
 each_ruby_prepare() {
 	${RUBY} -S rake templates || die
 }
-
-# each_ruby_test() {
-# 	${RUBY} -Ilib:.:test/reline -rhelper -e 'Dir["test/**/test_*.rb"].each{|f| require f}' || die
-# }
