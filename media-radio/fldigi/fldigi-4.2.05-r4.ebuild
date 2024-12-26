@@ -16,7 +16,7 @@ IUSE="hamlib nls pulseaudio"
 IUSE_CPU_FLAGS=" sse sse2 sse3"
 IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
 
-RDEPEND="x11-libs/fltk:1[threads,xft]
+RDEPEND="x11-libs/fltk:1=[threads(+),xft(+)]
 	x11-libs/libX11
 	virtual/libudev:=
 	media-libs/libsamplerate
