@@ -37,6 +37,7 @@ DEPEND="
 	~dev-cpp/wangle-${PV}:=
 	dev-libs/boost:=[nls(+)]
 	dev-libs/libevent:=
+	dev-libs/libfmt:=
 	dev-libs/openssl:=
 	dev-libs/xxhash:=
 	sys-libs/zlib:=
