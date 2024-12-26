@@ -3,7 +3,9 @@
 
 EAPI=8
 
-WX_GTK_VER="3.2-gtk3"
+# odalaunch crashes with 3.2. Check it before updating!
+# https://github.com/odamex/odamex/issues/879
+WX_GTK_VER="3.0-gtk3"
 inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
@@ -27,7 +29,7 @@ RDEPEND="
 		media-libs/sdl2-mixer
 		net-misc/curl
 		x11-libs/libX11
-		!hidpi? ( x11-libs/fltk:1 )
+		!hidpi? ( x11-libs/fltk:1= )
 		portmidi? ( media-libs/portmidi )
 	)
 	odalaunch? ( x11-libs/wxGTK:${WX_GTK_VER} )
@@ -40,19 +42,18 @@ BDEPEND="games-util/deutex"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-unbundle-fltk.patch
-	"${FILESDIR}"/${P}-odalaunch-sorting-crash.patch
 )
 
 src_prepare() {
 	rm -r libraries/miniupnp || die
 	hprefixify common/d_main.cpp
 
+	use odalaunch && setup-wxwidgets
+
 	cmake_src_prepare
 }
 
 src_configure() {
-	use odalaunch && setup-wxwidgets
-
 	local mycmakeargs=(
 		-DUSE_INTERNAL_FLTK=$(usex hidpi)
 		-DUSE_INTERNAL_JSONCPP=0
