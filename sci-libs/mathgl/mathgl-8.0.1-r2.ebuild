@@ -24,7 +24,7 @@ unset l
 
 RDEPEND="
 	virtual/opengl
-	fltk? ( x11-libs/fltk:1 )
+	fltk? ( x11-libs/fltk:1= )
 	gif? ( media-libs/giflib )
 	glut? ( media-libs/freeglut )
 	gsl? ( >=sci-libs/gsl-2:= )
