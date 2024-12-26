@@ -118,7 +118,7 @@ PATCHES=(
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
 	"${FILESDIR}/${P}-import-qif.patch"
-	"${FILESDIR}/${PN}-5.10-guile-load-path.patch"
+	"${FILESDIR}/${PN}-5.8-guile-load-path.patch"
 )
 
 pkg_setup() {

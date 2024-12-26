@@ -10,21 +10,19 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake flag-o-matic gnome2-utils guile-single python-single-r1
 
 # Please bump with app-doc/gnucash-docs
-DESCRIPTION="A personal finance manager"
+DESCRIPTION="Personal finance manager"
 HOMEPAGE="https://www.gnucash.org/"
 SRC_URI="https://github.com/Gnucash/gnucash/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
-
 IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres python quotes smartcard sqlite test"
-
-# Currently restricting due to the following:
-# https://bugs.gnucash.org/show_bug.cgi?id=799159#c1
-#
-# Tests can be run but must first unmerge any existing GnuCash installation.
-RESTRICT="test"
+# Tests were previously restricted because guile would try to use installed,
+# not just-built modules. See https://bugs.gnucash.org/show_bug.cgi?id=799159#c1.
+# TODO: as of 5.10, the ebuild should handle this OK. If no issues come up,
+# need to forward those findings (and tidy up the patch for) upstream.
+RESTRICT="!test? ( test )"
 
 # Examples doesn't build unless GUI is also built
 REQUIRED_USE="
@@ -116,15 +114,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0-exclude-license.patch"
 	"${FILESDIR}/${PN}-4.12-drop-broken-test.patch"
 	"${FILESDIR}/${PN}-5.6-no-werror.patch"
-
 	# This is only to prevent webkit2gtk-4 from being selected.
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
-
 	# GCC 15 backport
 	"${FILESDIR}/${PN}-5.8-gcc15.patch"
-
 	"${FILESDIR}/${PN}-5.8-boost-1.87.patch"
+	"${FILESDIR}/${PN}-5.8-guile-load-path.patch"
 )
 
 pkg_setup() {
@@ -155,13 +151,16 @@ src_prepare() {
 		libgnucash/backend/dbi/test/test-backend-dbi-basic.cpp
 		libgnucash/backend/xml/test/test-xml-pricedb.cpp
 	)
+	local x
 	for x in "${fixtestfiles[@]}"; do
 		sed -i -e "s|\"/tmp/|\"${T}/|g" "${S}/${x}" || die "sed of ${S}/${x} failed"
 	done
 }
 
 src_configure() {
-	export GUILE_AUTO_COMPILE=0
+	# Used in src_test but the value has to be available at `cmake`
+	# generation time.
+	export GENTOO_TEMPORARY_TEST_INSTALLDIR="${BUILD_DIR}/test_install"
 
 	local sql_on_off="OFF"
 	if use mysql || use postgres || use sqlite ; then
@@ -203,8 +202,20 @@ src_test() {
 	fi
 
 	cd "${BUILD_DIR}" || die "Failed to enter ${BUILD_DIR}"
-	XDG_DATA_HOME="${T}/$(whoami)" eninja check
-	cmake_src_test
+
+	# We need e.g. `options.scm` to be available for loading by tests
+	# and the compiled `options.go` isn't enough. Do a temporary install
+	# for the benefit of the testsuite.
+	DESTDIR="${GENTOO_TEMPORARY_TEST_INSTALLDIR}" cmake_build install
+	# This is needed for `load-path` to be correct, as it lacks `/usr` in there.
+	local dir
+	for dir in bin include "$(get_libdir)" share ; do
+		ln -s "${GENTOO_TEMPORARY_TEST_INSTALLDIR}/usr/${dir}" "${GENTOO_TEMPORARY_TEST_INSTALLDIR}/${dir}" || die
+	done
+
+	# Avoid cmake_src_test as we don't get the test binaries built first
+	# and get various failures as a result. Copy what upstream do in CI.
+	eninja check
 }
 
 src_install() {
