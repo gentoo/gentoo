@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/ptesarik/libkdumpfile"
 SRC_URI="https://github.com/ptesarik/libkdumpfile/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64"
 IUSE="lzo snappy zlib zstd"
 
