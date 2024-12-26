@@ -1,0 +1,27 @@
+https://github.com/Gnucash/gnucash/commit/6531d3e46b7bee1add61aa6c6aaf8fb1f889a586
+
+From 6531d3e46b7bee1add61aa6c6aaf8fb1f889a586 Mon Sep 17 00:00:00 2001
+From: John Ralls <jralls@ceridwen.us>
+Date: Mon, 23 Dec 2024 17:34:19 -0800
+Subject: [PATCH] Bug 799494 - Version 5.10 Fails to import QIF file
+
+Require only one split in qif-import:qif-to-gnc, apparently it's too
+early to require two.
+---
+ gnucash/import-export/qif-imp/qif-to-gnc.scm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gnucash/import-export/qif-imp/qif-to-gnc.scm b/gnucash/import-export/qif-imp/qif-to-gnc.scm
+index 899f8b9f9b8..dc57a3a0322 100644
+--- a/gnucash/import-export/qif-imp/qif-to-gnc.scm
++++ b/gnucash/import-export/qif-imp/qif-to-gnc.scm
+@@ -434,7 +434,7 @@
+             ;; there aren't at least 2 splits and that will cause a
+             ;; UAF in xaccTransRecordPrice. See https://bugs.gnucash.org/show_bug.cgi?id=799420
+             (let ((splits (qif-xtn:splits xtn)))
+-              (if (not (or (qif-xtn:mark xtn) (or (null? splits) (null? (cdr splits)))))
++              (if (not (or (qif-xtn:mark xtn) (null? splits)))
+                 ;; Convert into a GnuCash transaction.
+                 (let ((gnc-xtn (xaccMallocTransaction
+                                 (gnc-get-current-book))))
+
