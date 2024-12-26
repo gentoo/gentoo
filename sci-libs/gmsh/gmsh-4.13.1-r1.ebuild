@@ -33,7 +33,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	virtual/fortran
-	X? ( x11-libs/fltk:1[xft] )
+	X? ( x11-libs/fltk:1=[xft(+)] )
 	alglib? ( sci-libs/alglib )
 	blas? (
 		virtual/blas

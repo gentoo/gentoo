@@ -33,7 +33,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	virtual/fortran
-	X? ( x11-libs/fltk:1[xft] )
+	X? ( x11-libs/fltk:1=[xft(+)] )
 	alglib? ( sci-libs/alglib )
 	blas? (
 		virtual/blas
@@ -71,7 +71,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.5-opencascade.patch
-	"${FILESDIR}"/${PN}-4.11.1-metis-5-2.patch
+	"${FILESDIR}"/${P}_gcc13_fix_cstdint_include.patch
+	"${FILESDIR}"/${P}-metis-5-2.patch
 )
 
 pkg_setup() {
