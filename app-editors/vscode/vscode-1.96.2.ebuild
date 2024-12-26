@@ -119,8 +119,13 @@ src_install() {
 		"${FILESDIR}/code.desktop" \
 		> "${T}/code.desktop" || die
 
+	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
+		"${FILESDIR}/code-open-in-new-window.desktop" \
+		> "${T}/code-open-in-new-window.desktop" || die
+
 	domenu "${T}/code.desktop"
 	domenu "${T}/code-url-handler.desktop"
+	domenu "${T}/code-open-in-new-window.desktop"
 	newicon "resources/app/resources/linux/code.png" "vscode.png"
 }
 
