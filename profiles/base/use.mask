@@ -38,15 +38,6 @@ perl_features_debug
 # Telepathy is dead and packages masked for removal.
 telepathy
 
-# Hans de Graaff <graaff@gentoo.org> (2023-08-19)
-# Ruby 3.0 is not compatible with OpenSSL 3. Please upgrade to a newer
-# Ruby version.
-ruby_targets_ruby30
-
-# Hans de Graaff <graaff@gentoo.org> (2023-04-10)
-# Ruby 2.7 is masked for removal.
-ruby_targets_ruby27
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof
