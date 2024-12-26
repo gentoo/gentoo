@@ -23,7 +23,7 @@ IUSE="openmp"
 
 DEPEND="
 	>=dev-libs/elfutils-0.165
-	dev-libs/libkdumpfile
+	dev-libs/libkdumpfile:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
