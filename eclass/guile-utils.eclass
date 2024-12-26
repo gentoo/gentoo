@@ -84,9 +84,13 @@ guile_check_compat
 # @FUNCTION: guile_set_common_vars
 # @DESCRIPTION:
 # Sets common variables that apply to all Guile packages, namely,
-# QA_PREBUILT.
+# GUILE_AUTO_COMPILE and QA_PREBUILT.
 guile_set_common_vars() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	# We don't want Guile making decisions based on the system cache
+	# files. Always recompile so we're deterministic.
+	export GUILE_AUTO_COMPILE=fresh
 
 	# These aren't strictly speaking prebuilt. but they do generated a
 	# nonstandard ELF object.
