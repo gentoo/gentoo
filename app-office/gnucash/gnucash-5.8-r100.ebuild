@@ -123,6 +123,8 @@ PATCHES=(
 
 	# GCC 15 backport
 	"${FILESDIR}/${PN}-5.8-gcc15.patch"
+
+	"${FILESDIR}/${PN}-5.8-boost-1.87.patch"
 )
 
 pkg_setup() {
