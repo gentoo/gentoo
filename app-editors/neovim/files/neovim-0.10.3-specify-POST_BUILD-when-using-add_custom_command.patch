@@ -1,0 +1,43 @@
+https://github.com/neovim/neovim/pull/31121
+From: dundargoc <gocdundar@gmail.com>
+Date: Fri, 8 Nov 2024 17:16:43 +0100
+Subject: [PATCH] build: specify POST_BUILD when using add_custom_command
+
+This is needed specifically for the second signature of
+add_custom_command, which appends an operation to an existing target.
+This will prevent the cmake warning CMP0175.
+
+Reference: https://cmake.org/cmake/help/latest/policy/CMP0175.html
+--- a/cmake/Util.cmake
++++ b/cmake/Util.cmake
+@@ -61,6 +61,7 @@ function(add_glob_target)
+   if(NOT ARG_COMMAND)
+     add_custom_target(${ARG_TARGET})
+     add_custom_command(TARGET ${ARG_TARGET}
++      POST_BUILD
+       COMMAND ${CMAKE_COMMAND} -E echo "${ARG_TARGET} SKIP: ${ARG_COMMAND} not found")
+     return()
+   endif()
+--- a/src/nvim/CMakeLists.txt
++++ b/src/nvim/CMakeLists.txt
+@@ -750,6 +750,7 @@ add_custom_target(nvim_runtime_deps)
+ if(WIN32)
+   # Copy DLLs and third-party tools to bin/ and install them along with nvim
+   add_custom_command(TARGET nvim_runtime_deps
++    POST_BUILD
+     COMMAND ${CMAKE_COMMAND} -E ${COPY_DIRECTORY} ${PROJECT_BINARY_DIR}/windows_runtime_deps/
+       ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+   install(DIRECTORY ${PROJECT_BINARY_DIR}/windows_runtime_deps/
+@@ -791,7 +792,10 @@ file(MAKE_DIRECTORY ${BINARY_LIB_DIR})
+ 
+ # install treesitter parser if bundled
+ if(EXISTS ${DEPS_PREFIX}/lib/nvim/parser)
+-  add_custom_command(TARGET nvim_runtime_deps COMMAND ${CMAKE_COMMAND} -E ${COPY_DIRECTORY} ${DEPS_PREFIX}/lib/nvim/parser ${BINARY_LIB_DIR}/parser)
++  add_custom_command(
++    TARGET nvim_runtime_deps
++    POST_BUILD
++    COMMAND ${CMAKE_COMMAND} -E ${COPY_DIRECTORY} ${DEPS_PREFIX}/lib/nvim/parser ${BINARY_LIB_DIR}/parser)
+ endif()
+ 
+ install(DIRECTORY ${BINARY_LIB_DIR}
+
