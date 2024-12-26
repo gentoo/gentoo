@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Hans de Graaff <graaff@gentoo.org> (2024-12-26)
+# Currently in testing and not ready to go stable yet.
+ruby_targets_ruby34
+ruby_targets_ruby33
+
 # Patrick Lauer <patrick@gentoo.org> (2024-09-26)
 # Postgresql 17 isn't stable yet
 postgres_targets_postgres17
@@ -14,10 +19,6 @@ python_targets_python3_13t
 python_single_target_python3_13t
 python_targets_pypy3
 python_single_target_pypy3
-
-# Hans de Graaff <graaff@gentoo.org> (2023-12-25)
-# Currently in testing and not ready to go stable yet.
-ruby_targets_ruby33
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
 # New unstable PHP slot.
