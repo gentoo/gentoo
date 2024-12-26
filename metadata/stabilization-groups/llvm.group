@@ -13,6 +13,7 @@ dev-python/lit
 llvm-core/lld
 llvm-core/lld-toolchain-symlinks
 llvm-core/lldb
+llvm-core/polly
 llvm-runtimes/compiler-rt
 llvm-runtimes/compiler-rt-sanitizers
 llvm-runtimes/libunwind
