@@ -223,7 +223,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=x11-libs/libxkbcommon-0.4.1[wayland]
 	)
 	webserver? (
-		>=net-libs/libmicrohttpd-0.9.77:=[messages(+)]
+		>=net-libs/libmicrohttpd-0.9.77:=
 	)
 	X? (
 		x11-libs/libX11
