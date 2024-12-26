@@ -133,6 +133,10 @@ DEPEND="${RDEPEND}
 	zeromq? ( net-libs/cppzmq )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.10.11.0-boost-1.87.patch
+)
+
 src_prepare() {
 	xdg_environment_reset #534582
 
