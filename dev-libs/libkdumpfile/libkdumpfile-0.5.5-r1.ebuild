@@ -13,6 +13,7 @@ KEYWORDS="~amd64"
 IUSE="lzo snappy zlib zstd"
 
 DEPEND="
+	sys-libs/binutils-libs:=
 	lzo? ( dev-libs/lzo )
 	snappy? ( app-arch/snappy:= )
 	zlib? ( sys-libs/zlib )
