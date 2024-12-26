@@ -5,13 +5,16 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="a backup program for disk array for home media centers"
+DESCRIPTION="Backup program with disk array for cold data on existing filesystems"
 HOMEPAGE="https://www.snapraid.it/"
 SRC_URI="https://github.com/amadvance/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
+BDEPEND="test? ( sys-apps/smartmontools )"
 
 DOCS=( "AUTHORS" "HISTORY" "README" "TODO" "snapraid.conf.example" )
 
