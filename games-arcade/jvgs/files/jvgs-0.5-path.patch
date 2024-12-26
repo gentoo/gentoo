@@ -1,0 +1,32 @@
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include <string>
+ using namespace std;
++#include <unistd.h>
+ 
+ /* Needed on windows to link main with SDLmain. */
+ #include <SDL/SDL.h>
+@@ -20,9 +21,20 @@
+ 
+     if(argc < 2) {
+         /* Some default. */
++	chdir("/usr/share/jvgs/");
+         fileName = "main.lua";
+     } else {
+-        fileName = argv[1];
++    	char *pos;
++	pos = strrchr(argv[1],'/');
++	if(pos) {
++		*pos='\0';
++		pos++;
++		chdir(argv[1]);
++		fileName=pos;
++	}
++	else {
++		fileName = argv[1];
++	}
+     }
+ 
+     scriptManager->runScript(fileName);
