@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	x11-libs/fltk:1
+	x11-libs/fltk:1=
 	x11-libs/wxGTK:${WX_GTK_VER}
 	net-wireless/soapysdr:=
 	virtual/opengl
