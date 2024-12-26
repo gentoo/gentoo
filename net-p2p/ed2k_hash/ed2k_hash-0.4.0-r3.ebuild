@@ -16,7 +16,8 @@ IUSE="" # fltk support is broken, bug #359643
 
 RESTRICT="mirror"
 
-#DEPEND="fltk? ( x11-libs/fltk:1 )"
+#DEPEND="fltk? ( x11-libs/fltk:1= )"
+#RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/ed2k_64bit.patch"
