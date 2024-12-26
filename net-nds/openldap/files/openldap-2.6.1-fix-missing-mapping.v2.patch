@@ -1,0 +1,53 @@
+Fix of lber.mao & ldap.map from Fedora with URL below:
+  https://src.fedoraproject.org/rpms/openldap/raw/rawhide/f/openldap-add-export-symbols-LDAP_CONNECTIONLESS.patch
+
+  From 6779e56fafb0aa8ae5efa7068da34a630b51b530 Mon Sep 17 00:00:00 2001
+  From: Simon Pichugin <spichugi@redhat.com>
+  Date: Fri, 5 Aug 2022 13:23:52 -0700
+  Subject: [PATCH] Add export symbols related to LDAP_CONNECTIONLESS
+
+Upstream Issue: https://bugs.openldap.org/show_bug.cgi?id=9739
+
+But above patch is not complete, 'ber_sockbuf_io_udp' is part of an unsupported
+feature (cldap or ldap over udp), only built when the unsupported
+LDAP_CONNECTIONLESS flag is defined. All the user of 'ber_sockbuf_io_udp'
+are included by #ifdef, so it make no sense to not include it too.
+
+diff --git a/include/lber.h b/include/lber.h
+index 530359dc92..fd4957ddcd 100644
+--- a/include/lber.h
++++ b/include/lber.h
+@@ -590,7 +590,9 @@ LBER_V( Sockbuf_IO ) ber_sockbuf_io_tcp;
+ LBER_V( Sockbuf_IO ) ber_sockbuf_io_readahead;
+ LBER_V( Sockbuf_IO ) ber_sockbuf_io_fd;
+ LBER_V( Sockbuf_IO ) ber_sockbuf_io_debug;
++#ifdef LDAP_CONNECTIONLESS
+ LBER_V( Sockbuf_IO ) ber_sockbuf_io_udp;
++#endif
+ 
+ /*
+  * LBER memory.c
+diff --git a/libraries/liblber/lber.map b/libraries/liblber/lber.map
+index 9a4094b0fe..083cd1f322 100644
+--- a/libraries/liblber/lber.map
++++ b/libraries/liblber/lber.map
+@@ -121,6 +121,7 @@ OPENLDAP_2.200
+     ber_sockbuf_io_fd;
+     ber_sockbuf_io_readahead;
+     ber_sockbuf_io_tcp;
++    ber_sockbuf_io_udp;
+     ber_sockbuf_remove_io;
+     ber_sos_dump;
+     ber_start;
+diff --git a/libraries/libldap/ldap.map b/libraries/libldap/ldap.map
+index b28c9c21e7..021aaba63c 100644
+--- a/libraries/libldap/ldap.map
++++ b/libraries/libldap/ldap.map
+@@ -200,6 +200,7 @@ OPENLDAP_2.200
+     ldap_is_ldap_url;
+     ldap_is_ldapi_url;
+     ldap_is_ldaps_url;
++    ldap_is_ldapc_url;
+     ldap_is_read_ready;
+     ldap_is_write_ready;
+     ldap_ld_free;
