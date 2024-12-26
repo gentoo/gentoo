@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
@@ -10,8 +10,8 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 S="${WORKDIR}/lispref"
 
 LICENSE="FDL-1.3+"
-SLOT="25"
-KEYWORDS="amd64 ppc x86"
+SLOT="${PV%%.*}"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 BDEPEND="sys-apps/texinfo"
 
@@ -23,10 +23,10 @@ src_prepare() {
 }
 
 src_compile() {
-	makeinfo -I "${WORKDIR}"/emacs elisp.texi || die
+	makeinfo --no-split -I "${WORKDIR}"/emacs elisp.texi || die
 }
 
 src_install() {
-	doinfo elisp${SLOT}.info*
+	doinfo elisp${SLOT}.info
 	dodoc README
 }

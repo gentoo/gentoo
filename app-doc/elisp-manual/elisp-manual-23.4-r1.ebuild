@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
@@ -19,10 +19,10 @@ BDEPEND="sys-apps/texinfo"
 PATCHES=("${WORKDIR}/patch")
 
 src_compile() {
-	makeinfo elisp.texi || die
+	makeinfo --no-split elisp.texi || die
 }
 
 src_install() {
-	doinfo elisp${SLOT}.info*
+	doinfo elisp${SLOT}.info
 	dodoc ChangeLog README
 }
