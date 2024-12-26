@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="mpeg"
 
 DEPEND="
 	sys-libs/zlib
-	x11-libs/fltk:1
+	x11-libs/fltk:1=
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
@@ -30,6 +30,10 @@ RDEPEND="${DEPEND}"
 CONFIG_CHECK="~USB_SN9C102"
 ERROR_USB_SN9C102="Please make sure the SN9C1xx PC Camera Controller driver is \
 enabled, under V4L USB devices, as a module in your kernel."
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fltk1.4.patch
+)
 
 src_prepare() {
 	# fix bad assumptions
