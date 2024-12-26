@@ -35,12 +35,19 @@ RDEPEND="
 	${HYPRPM_RDEPEND}
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
-	dev-libs/libinput
+	dev-libs/hyprlang
+	dev-libs/libinput:=
+	dev-libs/hyprgraphics:=
+	dev-libs/re2:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
 	>=gui-libs/aquamarine-0.4.2
 	>=gui-libs/hyprcursor-0.1.9
+	gui-libs/hyprutils:=
+	gui-libs/hyprland-qtutils
 	media-libs/libglvnd
+	media-libs/mesa
+	sys-apps/util-linux
 	x11-libs/cairo
 	x11-libs/libdrm
 	x11-libs/libxkbcommon
@@ -57,9 +64,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	>=dev-libs/hyprland-protocols-0.4
-	>=dev-libs/hyprlang-0.3.2
 	>=dev-libs/wayland-protocols-1.36
-	>=gui-libs/hyprutils-0.2.3
 "
 BDEPEND="
 	|| ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
