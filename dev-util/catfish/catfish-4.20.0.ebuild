@@ -41,6 +41,8 @@ BDEPEND="
 
 src_install() {
 	meson_src_install
+	# stupid meson
+	rm -r "${ED}/usr/share/doc/catfish" || die
 	python_optimize
 }
 
