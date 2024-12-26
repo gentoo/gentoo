@@ -26,7 +26,7 @@ RDEPEND="
 BDEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
 	test? (
-		$(python_gen_any_dep ">=dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
 "
 PDEPEND="
@@ -37,7 +37,7 @@ LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
 llvm.org_set_globals
 
 python_check_deps() {
-	python_has_version ">=dev-python/lit-${PV}[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
