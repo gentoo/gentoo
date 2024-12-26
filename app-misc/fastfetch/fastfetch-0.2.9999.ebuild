@@ -29,7 +29,6 @@ RDEPEND="
 	>=dev-libs/yyjson-0.10.0
 	sys-apps/hwdata
 	sys-libs/zlib
-	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
 	ddcutil? ( app-misc/ddcutil:= )
@@ -41,7 +40,10 @@ RDEPEND="
 	)
 	imagemagick? ( media-gfx/imagemagick:= )
 	opencl? ( virtual/opencl )
-	opengl? ( media-libs/libglvnd[X] )
+	opengl? (
+		media-libs/libglvnd[X?]
+		X? ( x11-libs/libX11 )
+	)
 	osmesa? ( media-libs/mesa[osmesa] )
 	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
@@ -56,14 +58,23 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	opengl? ( X? ( x11-base/xorg-proto ) )
+	xcb? ( x11-base/xorg-proto )
+	xrandr? ( x11-base/xorg-proto )
 	vulkan? ( dev-util/vulkan-headers )
 "
 BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
-	xrandr? ( X )
 	chafa? ( imagemagick )
 "
+
+pkg_pretend() {
+	if use X && ! use opengl; then
+		einfo 'USE="X" adds GLX support for USE="opengl"'
+		einfo 'This build with USE="X -opengl" will not include any extra X support.'
+	fi
+}
 
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
@@ -73,12 +84,18 @@ src_configure() {
 		fastfetch_enable_imagemagick6=$(has_version '<media-gfx/imagemagick-7.0.0' && echo yes || echo no)
 	fi
 
+	local glx=no
+	if use opengl && use X; then
+		glx=yes
+	fi
+
 	local mycmakeargs=(
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
 		-DIS_MUSL=$(usex elibc_musl)
 		-DINSTALL_LICENSE=no
+		-DBUILD_FLASHFETCH=no
 
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
@@ -88,7 +105,7 @@ src_configure() {
 		-DENABLE_ELF=$(usex elf)
 		-DENABLE_EGL=$(usex opengl)
 		-DENABLE_GIO=$(usex gnome)
-		-DENABLE_GLX=$(usex opengl)
+		-DENABLE_GLX=${glx}
 		-DENABLE_IMAGEMAGICK6=${fastfetch_enable_imagemagick6}
 		-DENABLE_IMAGEMAGICK7=${fastfetch_enable_imagemagick7}
 		-DENABLE_OPENCL=$(usex opencl)
@@ -97,8 +114,6 @@ src_configure() {
 		-DENABLE_SQLITE3=$(usex sqlite)
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENABLE_WAYLAND=$(usex wayland)
-		-DENABLE_X11=$(usex X)
-		-DENABLE_XCB=$(usex xcb)
 		-DENABLE_XCB_RANDR=$(usex xcb)
 		-DENABLE_XFCONF=$(usex xfce)
 		-DENABLE_XRANDR=$(usex xrandr)
