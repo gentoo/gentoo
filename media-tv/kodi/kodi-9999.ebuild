@@ -129,7 +129,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
-	media-libs/mesa[egl(+),gbm(+)?,wayland?,X?]
+	media-libs/mesa[opengl,wayland?,X?]
 	media-libs/taglib:=
 	virtual/libiconv
 	virtual/ttf-fonts
@@ -164,12 +164,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=dev-libs/libinput-1.10.5:=
 		media-libs/libdisplay-info:=
 		x11-libs/libxkbcommon
-	)
-	gles? (
-		|| (
-			>=media-libs/mesa-24.1.0_rc1[opengl]
-			<media-libs/mesa-24.1.0_rc1[gles2]
-		)
 	)
 	!gles? (
 		media-libs/glu
