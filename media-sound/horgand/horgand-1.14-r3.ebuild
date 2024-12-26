@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,13 +18,16 @@ RDEPEND="
 	media-libs/libsndfile
 	media-sound/alsa-utils
 	virtual/jack
-	x11-libs/fltk:1
+	x11-libs/fltk:1=
 	x11-libs/libXpm
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-overflow.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-overflow.patch"
+	"${FILESDIR}/${P}-fltk1.4.patch"
+)
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} $(fltk-config --cxxflags) \

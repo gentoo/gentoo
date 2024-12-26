@@ -1,0 +1,6 @@
+Deprecated compatibility symlinks are removed.
+--- a/src/organ.C
++++ b/src/organ.C
+@@ -31 +31 @@
+-#include <Fl/Fl_Preferences.H>
++#include <FL/Fl_Preferences.H>
