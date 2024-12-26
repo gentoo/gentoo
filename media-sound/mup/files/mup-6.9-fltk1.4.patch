@@ -1,0 +1,11 @@
+Main.C:751:9: error: 'fl_register_images' was not declared ...
+--- a/src/mupmate/Main.C
++++ b/src/mupmate/Main.C
+@@ -68,6 +68,7 @@
+ 
+ #include <FL/Fl.H>
+ #include <FL/fl_ask.H>
++#include <FL/Fl_Shared_Image.H>
+ #include <FL/Fl_Tooltip.H>
+ 
+ #include "globals.H"

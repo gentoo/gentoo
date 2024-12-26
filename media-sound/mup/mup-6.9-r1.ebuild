@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/libpng:=
 	x11-libs/libX11
 	x11-libs/libXext
-	>=x11-libs/fltk-1.3:1
+	x11-libs/fltk:1=
 	x11-libs/libXpm
 "
 DEPEND="
@@ -35,6 +35,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.9-build-system.patch
+	"${FILESDIR}"/${PN}-6.9-fltk1.4.patch
 )
 
 src_prepare() {
