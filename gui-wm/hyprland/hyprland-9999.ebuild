@@ -36,6 +36,7 @@ RDEPEND="
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/libinput
+	dev-libs/re2
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
 	>=gui-libs/aquamarine-0.4.2
