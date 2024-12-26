@@ -72,7 +72,8 @@ RDEPEND="
 	app-arch/xz-utils
 	>=app-arch/zstd-1.4.0:=
 	dev-libs/hidapi
-	>=dev-libs/libfmt-10.1:=
+	<dev-libs/libfmt-11.1:=
+	>=dev-libs/libfmt-10.1
 	dev-libs/lzo:2
 	dev-libs/pugixml
 	dev-libs/xxhash
