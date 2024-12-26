@@ -111,6 +111,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/handbrake-1.9.0-link-libdovi-properly.patch
 	"${FILESDIR}"/handbrake-1.9.0-include-vpl-properly.patch
+	"${FILESDIR}"/handbrake-1.9.0-arm64-c99.patch
 )
 
 src_unpack() {
