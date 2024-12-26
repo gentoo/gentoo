@@ -22,7 +22,7 @@ SLOT="0"
 COMMON_DEPEND="
 	dev-libs/boost:=
 	media-libs/netpbm
-	x11-libs/fltk:1[opengl]
+	x11-libs/fltk:1=[opengl]
 	app-text/ghostscript-gpl
 	virtual/glu
 "
@@ -35,6 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/spyview-no-user-dirs.patch"
+	"${FILESDIR}/${P}-fltk1.4.patch"
 )
 
 src_unpack() {

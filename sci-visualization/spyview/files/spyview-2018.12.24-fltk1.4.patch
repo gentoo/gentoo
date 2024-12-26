@@ -1,0 +1,33 @@
+Deprecated compatibility symlinks are removed.
+--- a/spyview/ImageData.C
++++ b/spyview/ImageData.C
+@@ -4 +4 @@
+-#include <Fl/filename.H>
++#include <FL/filename.H>
+--- a/spyview/spybrowse.C
++++ b/spyview/spybrowse.C
+@@ -5,2 +5,2 @@
+-#include <Fl/filename.H>
+-#include <Fl/fl_ask.H>
++#include <FL/filename.H>
++#include <FL/fl_ask.H>
+--- a/spyview/spybrowse_ui.fl
++++ b/spyview/spybrowse_ui.fl
+@@ -11 +11 @@
+-decl {\#include <Fl/Fl_File_Chooser.H>} {public
++decl {\#include <FL/Fl_File_Chooser.H>} {public
+--- a/spyview/spybrowse_ui.h
++++ b/spyview/spybrowse_ui.h
+@@ -8 +8 @@
+-#include <Fl/Fl_File_Chooser.H>
++#include <FL/Fl_File_Chooser.H>
+--- a/spyview/spyview.C
++++ b/spyview/spyview.C
+@@ -13 +13 @@
+-#include <Fl/fl_ask.H>
++#include <FL/fl_ask.H>
+@@ -15,2 +15,2 @@
+-#include <Fl/Fl_File_Chooser.H>
+-#include <Fl/filename.H>
++#include <FL/Fl_File_Chooser.H>
++#include <FL/filename.H>
