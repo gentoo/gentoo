@@ -32,6 +32,7 @@ REQUIRED_USE="
 "
 
 # TODO: sys-libs/libselinux
+# <fltk-1.4: https://github.com/TigerVNC/tigervnc/pull/1887#issuecomment-2545662546
 COMMON_DEPEND="
 	dev-libs/gmp:=
 	dev-libs/nettle:=
@@ -68,7 +69,7 @@ COMMON_DEPEND="
 	)
 	viewer? (
 		media-video/ffmpeg:=
-		x11-libs/fltk:1
+		<x11-libs/fltk-1.4:1=
 		x11-libs/libXi
 		x11-libs/libXrender
 		!net-misc/turbovnc[viewer]

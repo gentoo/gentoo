@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	)
 	viewer? (
 		media-video/ffmpeg:=
-		x11-libs/fltk:1
+		x11-libs/fltk:1=
 		x11-libs/libXi
 		x11-libs/libXrender
 		!net-misc/turbovnc[viewer]
