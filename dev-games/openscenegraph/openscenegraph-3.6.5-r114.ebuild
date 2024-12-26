@@ -49,7 +49,7 @@ RDEPEND="
 	collada? ( dev-libs/collada-dom:= )
 	curl? ( net-misc/curl )
 	examples? (
-		fltk? ( x11-libs/fltk:1[opengl] )
+		fltk? ( x11-libs/fltk:1=[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
 		sdl2? ( media-libs/libsdl2 )
