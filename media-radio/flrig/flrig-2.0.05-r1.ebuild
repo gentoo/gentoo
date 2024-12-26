@@ -17,7 +17,7 @@ IUSE="nls"
 DOCS=(AUTHORS ChangeLog README)
 
 RDEPEND="x11-libs/libX11
-	x11-libs/fltk:1
+	x11-libs/fltk:1=
 	x11-misc/xdg-utils"
 
 DEPEND="${RDEPEND}
