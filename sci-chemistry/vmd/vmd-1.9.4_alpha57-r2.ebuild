@@ -28,14 +28,14 @@ RESTRICT="fetch"
 
 CDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/numpy-2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	>=dev-lang/tk-8.6.1:0=
 	dev-lang/perl
 	dev-libs/expat
 	sci-libs/netcdf:0=
 	virtual/opengl
-	>=x11-libs/fltk-1.1.10-r2:1
+	x11-libs/fltk:1=
 	x11-libs/libXft
 	x11-libs/libXi
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= )
@@ -96,8 +96,8 @@ src_prepare() {
 		-e "s:LOPTO = .*\":LOPTO = ${LDFLAGS} -fPIC -o \":" \
 		-e "s:CCFLAGS =.*\":CCFLAGS = ${CFLAGS}\":" \
 		-e "s:CXXFLAGS =.*\":CXXFLAGS = ${CXXFLAGS}\":" \
-		-e "s:SHLD = gcc:SHLD = $(tc-getCC):" \
-		-e "s:SHXXLD = g++:SHXXLD = $(tc-getCXX):" \
+		-e "s:SHLD = gcc:SHLD = $(tc-getCC) -shared:" \
+		-e "s:SHXXLD = g++:SHXXLD = $(tc-getCXX) -shared:" \
 		-e "s:-ltcl8.5:-ltcl:" \
 		-i Make-arch || die "Failed to set up plugins Makefile"
 
@@ -171,18 +171,21 @@ src_prepare() {
 	EMAKEOPTS=(
 		TCLINC="-I${EPREFIX}/usr/include"
 		TCLLIB="-L${EPREFIX}/usr/$(get_libdir)"
+		TCLLDFLAGS="-shared"
 		NETCDFLIB="$($(tc-getPKG_CONFIG) --libs-only-L netcdf)${EPREFIX}/usr/$(get_libdir)/libnetcdf.so"
 		NETCDFINC="$($(tc-getPKG_CONFIG) --cflags-only-I netcdf)${EPREFIX}/usr/include"
 		NETCDFLDFLAGS="$($(tc-getPKG_CONFIG) --libs netcdf)"
 		NETCDFDYNAMIC=1
 		EXPATINC="-I${EPREFIX}/usr/include"
 		EXPATLIB="$($(tc-getPKG_CONFIG) --libs expat)"
+		EXPATLDFLAGS="-shared"
 		EXPATDYNAMIC=1
 	)
 	if use gromacs; then
 		EMAKEOPTS+=(
 			TNGLIB="$($(tc-getPKG_CONFIG) --libs libgromacs)"
 			TNGINC="-I${EPREFIX}/usr/include"
+			TNGLDFLAGS="-shared"
 			TNGDYNAMIC=1
 		)
 	fi
@@ -190,6 +193,7 @@ src_prepare() {
 		EMAKEOPTS+=(
 			SQLITELIB="$($(tc-getPKG_CONFIG) --libs sqlite3)"
 			SQLITEINC="-I${EPREFIX}/usr/include"
+			SQLITELDFLAGS="-shared"
 			SQLITEDYNAMIC=1
 		)
 	fi
@@ -208,8 +212,8 @@ src_configure() {
 		PYTHON_INCLUDE_DIR="$(python_get_includedir)" \
 		PYTHON_LIBRARY_DIR="$(python_get_library_path)" \
 		PYTHON_LIBRARY="$(python_get_LIBS)" \
-		NUMPY_INCLUDE_DIR="$(python_get_sitedir)/numpy/_core/include" \
-		NUMPY_LIBRARY_DIR="$(python_get_sitedir)/numpy/_core/include"
+		NUMPY_INCLUDE_DIR="$(python_get_sitedir)/numpy/core/include" \
+		NUMPY_LIBRARY_DIR="$(python_get_sitedir)/numpy/core/include"
 
 	perl ./configure LINUX \
 		${myconf} || die
