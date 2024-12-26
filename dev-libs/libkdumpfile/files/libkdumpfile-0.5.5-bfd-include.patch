@@ -1,0 +1,918 @@
+https://github.com/ptesarik/libkdumpfile/pull/84
+
+From 0afee0c8783978d7a470beedaef672d3b8cce41b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 26 Dec 2024 04:25:40 +0000
+Subject: [PATCH 1/3] tools: kdumpid: include config.h before <dis-asm.h>
+
+Before including bfd.h (or any of the headers installed by binutils),
+one has to define PACKAGE_NAME and PACKAGE_VERSION for kind of painful
+reasons described in binutils bug PR14243.
+
+This doesn't show up on some distros as they patch out the #ifdef check
+in the headers, but it does on Gentoo where we don't, at least.
+
+Moreover, we want to include config.h before *any* headers anyway, so
+that e.g. AC_SYSTEM_EXTENSIONS and various other autoconf macros work
+correctly if used.
+
+Bug: https://sourceware.org/PR14243
+--- a/tools/kdumpid/main.c
++++ b/tools/kdumpid/main.c
+@@ -14,6 +14,8 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "config.h"
++
+ #include <stdio.h>
+ #include <errno.h>
+ #include <stdlib.h>
+--- a/tools/kdumpid/ppc.c
++++ b/tools/kdumpid/ppc.c
+@@ -12,6 +12,8 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include "config.h"
++
+ #include <stdarg.h>
+ #include <string.h>
+ 
+--- a/tools/kdumpid/ppc64.c
++++ b/tools/kdumpid/ppc64.c
+@@ -12,6 +12,8 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include "config.h"
++
+ #include <stdarg.h>
+ #include <string.h>
+ 
+--- a/tools/kdumpid/s390.c
++++ b/tools/kdumpid/s390.c
+@@ -12,6 +12,8 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include "config.h"
++
+ #include <stdarg.h>
+ #include <string.h>
+ 
+--- a/tools/kdumpid/search.c
++++ b/tools/kdumpid/search.c
+@@ -12,6 +12,8 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include "config.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ 
+--- a/tools/kdumpid/util.c
++++ b/tools/kdumpid/util.c
+@@ -12,6 +12,8 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include "config.h"
++
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+--- a/tools/kdumpid/x86.c
++++ b/tools/kdumpid/x86.c
+@@ -1,3 +1,5 @@
++#include "config.h"
++
+ #include <stdarg.h>
+ #include <stdlib.h>
+ #include <string.h>
+
+From 859fd4f8b192c06857ab5bf3c696b10acf12b162 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 26 Dec 2024 04:35:16 +0000
+Subject: [PATCH 2/3] Always include addrxlat-priv.h (or config.h) where
+ appropriate
+
+addrxlat-priv.h includes config.h for us, but we should include it first
+to ensure it affects standard headers too given config.h may set feature
+test macros and so on.
+
+Where addrxlat-priv.h is not already used, add config.h instead.
+--- a/src/addrxlat/aarch64.c
++++ b/src/addrxlat/aarch64.c
+@@ -28,10 +28,11 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "addrxlat-priv.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "addrxlat-priv.h"
+ #include <linux/version.h>
+ 
+ /** Maximum virtual address bits (architectural limit). */
+--- a/src/addrxlat/arm.c
++++ b/src/addrxlat/arm.c
+@@ -28,10 +28,10 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+-#include <stdint.h>
+-
+ #include "addrxlat-priv.h"
+ 
++#include <stdint.h>
++
+ /* Maximum physical address bits (architectural limit) */
+ #define PHYSADDR_BITS_MAX	40
+ #define PHYSADDR_MASK		ADDR_MASK(PHYSADDR_BITS_MAX)
+--- a/src/addrxlat/ctx.c
++++ b/src/addrxlat/ctx.c
+@@ -28,12 +28,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "addrxlat-priv.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdarg.h>
+ 
+-#include "addrxlat-priv.h"
+-
+ /** Maximum length of the static error message. */
+ #define ERRBUF	64
+ 
+--- a/src/addrxlat/ia32.c
++++ b/src/addrxlat/ia32.c
+@@ -28,12 +28,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "addrxlat-priv.h"
++
+ #include <stdint.h>
+ #include <string.h>
+ #include <stdlib.h>
+ 
+-#include "addrxlat-priv.h"
+-
+ #define PGD_PSE_HIGH_SHIFT	13
+ #define PGD_PSE_HIGH_BITS	8
+ #define PGD_PSE_HIGH_MASK	ADDR_MASK(PGD_PSE_HIGH_BITS)
+--- a/src/addrxlat/map.c
++++ b/src/addrxlat/map.c
+@@ -28,11 +28,11 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "addrxlat-priv.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "addrxlat-priv.h"
+-
+ DEFINE_ALIAS(map_new);
+ 
+ addrxlat_map_t *
+--- a/src/addrxlat/riscv64.c
++++ b/src/addrxlat/riscv64.c
+@@ -28,10 +28,11 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "addrxlat-priv.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "addrxlat-priv.h"
+ #include <linux/version.h>
+ 
+ /** Maximum physical address bits (architectural limit) */
+--- a/src/addrxlat/step.c
++++ b/src/addrxlat/step.c
+@@ -28,10 +28,10 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+-#include <string.h>
+-
+ #include "addrxlat-priv.h"
+ 
++#include <string.h>
++
+ int
+ addrxlat_pteval_shift(addrxlat_pte_format_t fmt)
+ {
+--- a/src/addrxlat/sys.c
++++ b/src/addrxlat/sys.c
+@@ -28,11 +28,11 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "addrxlat-priv.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "addrxlat-priv.h"
+-
+ addrxlat_sys_t *
+ addrxlat_sys_new(void)
+ {
+--- a/src/addrxlat/x86_64.c
++++ b/src/addrxlat/x86_64.c
+@@ -28,10 +28,10 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+-#include <stdlib.h>
+-
+ #include "addrxlat-priv.h"
+ 
++#include <stdlib.h>
++
+ /* Maximum physical address bits (architectural limit) */
+ #define PHYSADDR_BITS_MAX	52
+ #define PHYSADDR_MASK		ADDR_MASK(PHYSADDR_BITS_MAX)
+--- a/src/errmsg.h
++++ b/src/errmsg.h
+@@ -31,6 +31,8 @@
+ #ifndef _ERRMSG_H
+ #define _ERRMSG_H 1
+ 
++#include "config.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdarg.h>
+--- a/src/list.h
++++ b/src/list.h
+@@ -31,6 +31,8 @@
+ #ifndef _LIST_H
+ #define _LIST_H	1
+ 
++#include "config.h"
++
+ #include <stddef.h>
+ 
+ /**  Cast a structure field out to the containing structure.
+--- a/src/threads.h
++++ b/src/threads.h
+@@ -31,6 +31,8 @@
+ #ifndef _THREADS_H
+ #define _THREADS_H	1
+ 
++#include "config.h"
++
+ /* Multi-threading */
+ #if USE_PTHREAD
+ 
+--- a/tests/diskdump.h
++++ b/tests/diskdump.h
+@@ -29,6 +29,8 @@
+ #ifndef _DISKDUMP_H
+ #define _DISKDUMP_H 1
+ 
++#include "config.h"
++
+ #include <stdint.h>
+ 
+ #define MDF_SIGNATURE		"makedumpfile"
+--- a/tests/lkcd.h
++++ b/tests/lkcd.h
+@@ -29,6 +29,8 @@
+ #ifndef _LKCD_H
+ #define _LKCD_H 1
+ 
++#include "config.h"
++
+ #include <stdint.h>
+ 
+ #define DUMP_MAGIC_NUMBER  0xa8190173618f23edULL
+--- a/tests/sadump.h
++++ b/tests/sadump.h
+@@ -29,6 +29,8 @@
+ #ifndef _SADUMP_H
+ #define _SADUMP_H 1
+ 
++#include "config.h"
++
+ #include <stdint.h>
+ 
+ /** Standard EFI time specification. */
+--- a/tests/testutil.h
++++ b/tests/testutil.h
+@@ -29,6 +29,8 @@
+ #ifndef _TESTUTIL_H
+ #define _TESTUTIL_H 1
+ 
++#include "config.h"
++
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <stdbool.h>
+
+From f2de47962860027889b773da05e876ea0e3d24f9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 26 Dec 2024 04:39:23 +0000
+Subject: [PATCH 3/3] Always include testutil.h (or config.h) where appropriate
+
+testutil.h includes config.h for us, but we should include it first
+to ensure it affects standard headers too given config.h may set feature
+test macros and so on.
+
+Where testutil.h is not already used, add config.h instead.
+
+(Same as done earlier for addrxlat-priv.h.)
+--- a/tests/addrmap.c
++++ b/tests/addrmap.c
+@@ -26,12 +26,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ static void
+ printmap(const addrxlat_map_t *map)
+ {
+--- a/tests/addrxlat.c
++++ b/tests/addrxlat.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -33,8 +35,6 @@
+ #include <getopt.h>
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ #define ALLOC_INC 32
+ 
+ static size_t nentries;
+--- a/tests/attriter.c
++++ b/tests/attriter.c
+@@ -26,12 +26,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <string.h>
+ #include <stdio.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ struct attrdef {
+ 	const char *name;
+ 	const char *value;
+--- a/tests/checkattr.c
++++ b/tests/checkattr.c
+@@ -28,6 +28,8 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdio.h>
+@@ -37,8 +39,6 @@
+ #include <unistd.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ static int
+ check_noattr(kdump_ctx_t *ctx, char *key)
+ {
+--- a/tests/clearattr.c
++++ b/tests/clearattr.c
+@@ -26,12 +26,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define ATTRPATH	"linux.uts.sysname"
+ #define ATTRVALUE	"Linux"
+ 
+--- a/tests/custom-meth.c
++++ b/tests/custom-meth.c
+@@ -28,12 +28,12 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ 
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ #define STEPS		2
+ #define XOR_VALUE	0xabcd
+ #define OFFSET		0x1111
+--- a/tests/data.c
++++ b/tests/data.c
+@@ -26,13 +26,13 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include "testutil.h"
+-
+ #define ALLOC_INC	4096
+ 
+ static int
+--- a/tests/dumpdata.c
++++ b/tests/dumpdata.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -34,8 +36,6 @@
+ #include <unistd.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define CHUNKSZ 256
+ #define BYTES_PER_LINE 16
+ 
+--- a/tests/elf-prstatus-mod-x86_64.c
++++ b/tests/elf-prstatus-mod-x86_64.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <sys/stat.h>
+@@ -35,8 +37,6 @@
+ #include <endian.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ struct timeval_64 {
+ 	int64_t tv_sec;
+ 	int64_t tv_usec;
+--- a/tests/err-addrxlat.c
++++ b/tests/err-addrxlat.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+@@ -35,8 +37,6 @@
+ 
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ /* To test all corner cases, this string should be bigger than
+  * the internal fallback buffer (ERRBUF in addrxlat-priv.h)
+  */
+--- a/tests/fdset.c
++++ b/tests/fdset.c
+@@ -26,13 +26,13 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define FILENAME_0	"fileA"
+ #define FILENAME_1	"fileB"
+ 
+--- a/tests/mkbinary.c
++++ b/tests/mkbinary.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <endian.h>
+ #include <getopt.h>
+ #include <stdio.h>
+@@ -33,8 +35,6 @@
+ #include <string.h>
+ #include <ctype.h>
+ 
+-#include "testutil.h"
+-
+ static int
+ parseheader(struct page_data *pg, char *p)
+ {
+--- a/tests/mkdiskdump.c
++++ b/tests/mkdiskdump.c
+@@ -26,6 +26,9 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "config.h"
++#include "testutil.h"
++
+ #include <string.h>
+ #include <endian.h>
+ #include <sys/time.h>
+@@ -34,8 +37,6 @@
+ #include <ctype.h>
+ #include <errno.h>
+ 
+-#include "config.h"
+-#include "testutil.h"
+ #include "diskdump.h"
+ 
+ #if USE_ZLIB
+--- a/tests/mkelf.c
++++ b/tests/mkelf.c
+@@ -26,6 +26,9 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "config.h"
++#include "testutil.h"
++
+ #include <string.h>
+ #include <endian.h>
+ #include <sys/time.h>
+@@ -36,8 +39,6 @@
+ #include <ctype.h>
+ #include <elf.h>
+ 
+-#include "config.h"
+-#include "testutil.h"
+ #include "diskdump.h"
+ 
+ typedef int write_fn(FILE *);
+--- a/tests/mklkcd.c
++++ b/tests/mklkcd.c
+@@ -26,6 +26,9 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "config.h"
++#include "testutil.h"
++
+ #include <string.h>
+ #include <endian.h>
+ #include <sys/time.h>
+@@ -33,8 +36,6 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ 
+-#include "config.h"
+-#include "testutil.h"
+ #include "lkcd.h"
+ 
+ #if USE_ZLIB
+--- a/tests/mksadump.c
++++ b/tests/mksadump.c
+@@ -26,6 +26,9 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "config.h"
++#include "testutil.h"
++
+ #include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -33,8 +36,6 @@
+ #include <ctype.h>
+ #include <time.h>
+ 
+-#include "config.h"
+-#include "testutil.h"
+ #include "sadump.h"
+ 
+ #define WS_CHARS	" \f\n\r\t\v"
+--- a/tests/multiread.c
++++ b/tests/multiread.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <time.h>
+@@ -36,8 +38,6 @@
+ #include <pthread.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define DEFITER		1000
+ #define DEFTHREADS	1
+ 
+--- a/tests/multixlat.c
++++ b/tests/multixlat.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <time.h>
+@@ -35,8 +37,6 @@
+ #include <unistd.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define CHUNKSZ 256
+ #define BYTES_PER_LINE 16
+ 
+--- a/tests/nometh.c
++++ b/tests/nometh.c
+@@ -28,12 +28,12 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ 
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ static int
+ setup_pgt(addrxlat_ctx_t *ctx, addrxlat_sys_t *sys)
+ {
+--- a/tests/param.c
++++ b/tests/param.c
+@@ -26,13 +26,13 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include "testutil.h"
+-
+ #define ARRAY_SEPARATORS  " \t"
+ 
+ static char
+--- a/tests/slurp.c
++++ b/tests/slurp.c
+@@ -26,13 +26,13 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+ 
+-#include "testutil.h"
+-
+ #define WATERMARK_LOW	256
+ #define WATERMARK_HIGH	1024
+ 
+--- a/tests/subattr.c
++++ b/tests/subattr.c
+@@ -26,12 +26,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define ATTRDIR		"linux.uts"
+ #define ATTRNAME	"sysname"
+ #define ATTRPATH	ATTRDIR "." ATTRNAME
+--- a/tests/sys-xlat.c
++++ b/tests/sys-xlat.c
+@@ -28,6 +28,8 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+@@ -36,8 +38,6 @@
+ #include <unistd.h>
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ static char *data_file;
+ static char *cfg_file;
+ 
+--- a/tests/thread-errstr.c
++++ b/tests/thread-errstr.c
+@@ -26,6 +26,8 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -35,8 +37,6 @@
+ #include <pthread.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ static pthread_mutex_t attr_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
+ static enum {
+--- a/tests/typed-attr.c
++++ b/tests/typed-attr.c
+@@ -26,10 +26,10 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+-#include <libkdumpfile/kdumpfile.h>
+-
+ #include "testutil.h"
+ 
++#include <libkdumpfile/kdumpfile.h>
++
+ #define ATTR_CACHE_SIZE	"cache.size"
+ #define ATTR_SYSNAME	"linux.uts.sysname"
+ #define ATTR_PHYS_BASE	"linux.phys_base"
+--- a/tests/vmci-cleanup.c
++++ b/tests/vmci-cleanup.c
+@@ -26,13 +26,13 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ static const char vmcore1[] =
+ 	"DIR.SUB.VAL=test1\n";
+ 
+--- a/tests/vmci-lines-post.c
++++ b/tests/vmci-lines-post.c
+@@ -26,12 +26,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define xstr(s)	#s
+ #define str(s)	xstr(s)
+ 
+--- a/tests/vmci-post.c
++++ b/tests/vmci-post.c
+@@ -26,12 +26,12 @@
+    not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <libkdumpfile/kdumpfile.h>
+ 
+-#include "testutil.h"
+-
+ #define xstr(s)	#s
+ #define str(s)	xstr(s)
+ 
+--- a/tests/xlat-os.c
++++ b/tests/xlat-os.c
+@@ -28,6 +28,8 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -37,8 +39,6 @@
+ 
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ struct cbdata {
+ 	addrxlat_ctx_t *ctx;
+ 	addrxlat_sys_t *sys;
+--- a/tests/xlatmap.c
++++ b/tests/xlatmap.c
+@@ -28,14 +28,14 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <dlfcn.h>
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ #define NMAPS 15
+ static addrxlat_map_t *map[NMAPS];
+ 
+--- a/tests/xlatop.c
++++ b/tests/xlatop.c
+@@ -28,12 +28,12 @@
+ 
+ #define _GNU_SOURCE
+ 
++#include "testutil.h"
++
+ #include <stdio.h>
+ 
+ #include <libkdumpfile/addrxlat.h>
+ 
+-#include "testutil.h"
+-
+ struct test {
+ 	addrxlat_fulladdr_t addr;
+ 	addrxlat_fulladdr_t expect;
+
