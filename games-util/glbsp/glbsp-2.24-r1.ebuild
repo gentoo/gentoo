@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="fltk"
 
-DEPEND="fltk? ( x11-libs/fltk:1 )"
+DEPEND="fltk? ( x11-libs/fltk:1= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
