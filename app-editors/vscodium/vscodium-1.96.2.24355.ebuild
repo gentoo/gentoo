@@ -115,8 +115,13 @@ src_install() {
 		"${FILESDIR}/codium.desktop" \
 		> "${T}/codium.desktop" || die
 
+	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
+		"${FILESDIR}/codium-open-in-new-window.desktop" \
+		> "${T}/codium-open-in-new-window.desktop" || die
+
 	domenu "${T}/codium.desktop"
 	domenu "${T}/codium-url-handler.desktop"
+	domenu "${T}/codium-open-in-new-window.desktop"
 	newicon "resources/app/resources/linux/code.png" "vscodium.png"
 }
 
