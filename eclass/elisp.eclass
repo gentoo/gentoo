@@ -139,7 +139,7 @@ elisp_src_configure() { :; }
 elisp_src_compile() {
 	elisp-compile *.el
 	if [[ -n ${ELISP_TEXINFO} ]]; then
-		makeinfo ${ELISP_TEXINFO} || die
+		makeinfo --no-split ${ELISP_TEXINFO} || die
 	fi
 }
 
