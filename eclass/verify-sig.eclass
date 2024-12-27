@@ -48,6 +48,8 @@ esac
 if [[ -z ${_VERIFY_SIG_ECLASS} ]]; then
 _VERIFY_SIG_ECLASS=1
 
+inherit eapi9-pipestatus
+
 IUSE="verify-sig"
 
 # @ECLASS_VARIABLE: VERIFY_SIG_METHOD
@@ -421,6 +423,36 @@ verify-sig_verify_signed_checksums() {
 			die "${FUNCNAME} not supported with ${VERIFY_SIG_METHOD}"
 			;;
 	esac
+}
+
+# @FUNCTION: verify-sig_uncompress_verify_unpack
+# @USAGE: <compressed-tar> <sig-file> [<key-file>]
+# @DESCRIPTION:
+# Uncompress the <compressed-tar> tarball, verify the uncompressed
+# archive against the signature in <sig-file> and unpack it.  This is
+# useful for kernel.org packages that sign the uncompressed tarball
+# instead of the compressed archive.  <key-file> can either be passed
+# directly, or it defaults to VERIFY_SIG_OPENPGP_KEY_PATH.  The function
+# dies if verification or any of the unpacking steps fail.
+verify-sig_uncompress_verify_unpack() {
+	local file=${1}
+	local unpacker
+
+	# TODO: integrate with unpacker.eclass somehow?
+	case ${file} in
+		*.tar.xz)
+			unpacker=( xz -cd )
+			;;
+		*)
+			die "${FUNCNAME}: only .tar.xz archives are supported at the moment"
+			;;
+	esac
+
+	einfo "Unpacking ${file} ..."
+	verify-sig_verify_detached - "${@:2}" < <(
+		"${unpacker[@]}" "${file}" | tee >(tar -xf - || die)
+		pipestatus || die
+	)
 }
 
 # @FUNCTION: verify-sig_src_unpack
