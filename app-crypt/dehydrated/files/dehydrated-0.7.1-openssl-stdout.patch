@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/942637
+
+commit 4fd777e87e589652b1127b79ac6688ed7cb151fe
+Author: Wilfried Teiken <wteiken@teiken.org>
+Date:   Sun Dec 3 15:07:01 2023 -0500
+
+    Ignore output of 'openssl req -verify'.
+
+--- a/dehydrated
++++ b/dehydrated
+@@ -1011,7 +1011,7 @@ signed_request() {
+ extract_altnames() {
+   csr="${1}" # the CSR itself (not a file)
+ 
+-  if ! <<<"${csr}" "${OPENSSL}" req -verify -noout 2>/dev/null; then
++  if ! <<<"${csr}" "${OPENSSL}" req -verify -noout >/dev/null 2>&1; then
+     _exiterr "Certificate signing request isn't valid"
+   fi
+ 
