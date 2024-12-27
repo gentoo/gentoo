@@ -38,7 +38,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[widgets?]
-	assistant? ( ~dev-qt/qtbase-${PV}:6[network,sql,sqlite] )
+	assistant? ( ~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite] )
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
