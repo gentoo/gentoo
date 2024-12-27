@@ -31,4 +31,7 @@
 		<flag name="tray">Build tray icon</flag>
 		<flag name="xmp">Enable module files renderer (modplug replacement)</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">qmmp-dev</remote-id>
+	</upstream>
 </pkgmetadata>
