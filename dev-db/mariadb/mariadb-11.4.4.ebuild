@@ -40,11 +40,13 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 #
 # libfmt-10 contains a bug which was fixed in libfmt-11, see
 # https://jira.mariadb.org/browse/MDEV-32815, bug 946074
+# libfmt-11.1 works with # FMT_STATIC_THOUSANDS_SEPARATOR
+# differently, bug 946924
 COMMON_DEPEND="
 	dev-libs/libfmt:=
 	|| (
 		<dev-libs/libfmt-10
-		>=dev-libs/libfmt-11
+		=dev-libs/libfmt-11.0*
 	)
 	>=dev-libs/libpcre2-10.34:=
 	>=sys-apps/texinfo-4.7-r1
