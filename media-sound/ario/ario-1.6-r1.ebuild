@@ -6,7 +6,7 @@ EAPI=8
 inherit xdg-utils
 
 DESCRIPTION="GTK client for MPD inspired by Rhythmbox but much lighter and faster"
-HOMEPAGE="http://ario-player.sourceforge.net"
+HOMEPAGE="https://ario-player.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/${PN}-player/${P}.tar.gz"
 
 LICENSE="GPL-2+"
