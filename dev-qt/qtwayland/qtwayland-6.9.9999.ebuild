@@ -49,6 +49,7 @@ CMAKE_SKIP_TESTS=(
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake_use_find_package compositor Qt6Quick)
 		$(cmake_use_find_package qml Qt6Quick)
 		$(qt_feature compositor wayland_server)
 		$(qt_feature gnome wayland_decoration_adwaita)
