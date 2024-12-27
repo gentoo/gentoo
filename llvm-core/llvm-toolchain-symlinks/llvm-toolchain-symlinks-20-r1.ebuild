@@ -38,7 +38,7 @@ src_install() {
 	local dest=/usr/lib/llvm/${SLOT}/bin
 	dodir "${dest}"
 	for t in "${tools[@]}"; do
-		dosym "llvm-${t}" "${dest}/${t}"
+		dosym "llvm-${t%:*}" "${dest}/${t#*:}"
 	done
 	for chost in "${chosts[@]}"; do
 		for t in "${tools[@]}"; do
