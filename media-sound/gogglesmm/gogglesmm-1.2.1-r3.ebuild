@@ -12,40 +12,41 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+dbus +flac +mad +vorbis +ogg +opus +aac +pulseaudio +opengl nls"
+IUSE="+aac +dbus +flac +mad nls +ogg +opengl +opus +pulseaudio +vorbis"
 
-RDEPEND="x11-libs/fox:1.7
-	x11-libs/libSM
-	x11-libs/libICE
+RDEPEND="
 	dev-db/sqlite
-	media-libs/taglib:=
 	dev-libs/expat
 	dev-libs/libgcrypt:=
+	media-libs/taglib:=
+	x11-libs/fox:1.7
+	x11-libs/libICE
+	x11-libs/libSM
+	aac? ( media-libs/faad2 )
 	dbus? ( sys-apps/dbus )
 	flac? ( media-libs/flac:= )
 	mad? ( media-libs/libmad )
-	vorbis? ( media-libs/libvorbis )
 	ogg? ( media-libs/libogg )
+	opengl? (
+		media-libs/libepoxy
+		virtual/glu
+	)
 	opus? ( media-libs/opus )
-	aac? ( media-libs/faad2 )
 	pulseaudio? ( media-libs/libpulse )
-	opengl? ( media-libs/libepoxy virtual/glu )"
-DEPEND="dev-build/cmake ${RDEPEND}"
+	vorbis? ( media-libs/libvorbis )
+"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/"${P}"-use-fox-1.7.67.patch
 	"${FILESDIR}"/"${P}"-fix-build-taglib2.patch
 )
 
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_DBUS="$(usex dbus)"
-		-DWITH_OPENGL="$(usex opengl)"
 		-DWITH_NLS="$(usex nls)"
+		-DWITH_OPENGL="$(usex opengl)"
 		-DWITH_CFOX=OFF
 	)
 	cmake_src_configure
