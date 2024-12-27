@@ -67,6 +67,8 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# XXX: should be able to drop -j1 on next release (>2.0.16)
+	# https://github.com/dajobe/raptor/commit/f3aaf48b44a9ba7d01461245ca47649a82b3eb5f
 	emake -j1 test
 }
 
