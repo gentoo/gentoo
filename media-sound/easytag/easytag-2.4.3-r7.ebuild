@@ -81,5 +81,5 @@ src_configure() {
 src_install() {
 	gnome2_src_install
 	# https://gitlab.gnome.org/GNOME/easytag/-/issues/82
-	mv "${ED}"/usr/share/{appdata,metainfo}
+	mv "${ED}"/usr/share/{appdata,metainfo} || die
 }
