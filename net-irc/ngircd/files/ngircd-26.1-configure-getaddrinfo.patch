@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/946998
+
+configure report getaddrinfo not works because of stricter compiler check:
+  configure:6303: x86_64-pc-linux-gnu-gcc -o conftest -g -O2 -pipe -W -Wall -Wpointer-arith -Wstrict-prototypes -fstack-protector -DSYSCONFDIR='"$(sysconfdir)"' -DDOCDIR='"$(docdir)"' conftest.c >&5
+  conftest.c: In function 'main':
+  conftest.c:99:9: error: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+
+configure.ac still use de-ANSI-fication (which is only available in old
+automake) in order to support old systems. So we can't patch configure.ac
+and run eautoreconf. see https://github.com/ngircd/ngircd/issues/261
+
+diff --git a/configure b/configure
+index e4023a3..9337a85 100755
+--- a/configure
++++ b/configure
+@@ -6283,6 +6283,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netdb.h>
