@@ -63,9 +63,12 @@ KEYWORDS="~amd64"
 # TODO: simdutf integration (missing Gentoo version)
 # TODO: spirv-cross integration (missing Gentoo package)
 # TODO: glfw integration (no option from upstream)
+# NOTE: gtk backend requires X right now since ghostty unconditionally
+#       includes gdk/x11/gdkx.h.
+#       https://github.com/ghostty-org/ghostty/issues/3477
 RDEPEND="
 	adwaita? ( gui-libs/libadwaita:1= )
-	gtk? ( gui-libs/gtk:4= )
+	gtk? ( gui-libs/gtk:4=[X] )
 
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
 	system-freetype? ( >=media-libs/freetype-2.13.2:=[bzip2] )
