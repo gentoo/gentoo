@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1..4} )
 inherit cmake lua-single xdg
 
 MY_PN="CorsixTH"
-MY_PV="${PV/_/-}.0"
+MY_PV="${PV/_/-}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Open source clone of Theme Hospital"
@@ -65,6 +65,7 @@ src_configure() {
 		-DWITH_AUDIO=$(usex sound)
 		-DWITH_FREETYPE2=$(usex truetype)
 		-DWITH_MOVIES=$(usex videos)
+		-DWITH_UPDATE_CHECK=OFF
 	)
 
 	cmake_src_configure
