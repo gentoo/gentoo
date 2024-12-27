@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/934665
+https://github.com/nanomsg/nanomsg/issues/1111#issuecomment-2113151297
+(acked by upstream at https://github.com/nanomsg/nanomsg/issues/1111#issuecomment-2305516234)
+
+--- a/src/utils/chunkref.c
++++ b/src/utils/chunkref.c
+@@ -52,6 +52,7 @@
+ {
+     if (self->size == NN_CHUNKREF_EXT) {
+         nn_chunk_free (self->u.chunk);
++        self->size = 0;
+     }
+ }
+ 
+@@ -80,6 +81,8 @@
+     dst->size = src->size;
+     if (src->size == NN_CHUNKREF_EXT) {
+         dst->u.chunk = src->u.chunk;
++        // self->u.chunk = NULL;
++        // src->size = 0;
+     } else {
+         nn_assert (src->size <= NN_CHUNKREF_MAX);
+         memcpy (dst->u.ref, src->u.ref, src->size);
+@@ -100,7 +103,7 @@
+ 
+ void *nn_chunkref_data (struct nn_chunkref *self)
+ {
+-    if (self->size > NN_CHUNKREF_MAX) {
++    if (self->size == NN_CHUNKREF_EXT) {
+         return self->u.chunk;
+     } else {
+         return self->u.ref;
+@@ -109,7 +112,7 @@
+ 
+ size_t nn_chunkref_size (struct nn_chunkref *self)
+ {
+-    if (self->size > NN_CHUNKREF_MAX) {
++    if (self->size == NN_CHUNKREF_EXT) {
+         return (nn_chunk_size(self->u.chunk));
+     }
+     return self->size;
+@@ -118,7 +121,7 @@
+ void nn_chunkref_trim (struct nn_chunkref *self, size_t n)
+ {
+     if (self->size == NN_CHUNKREF_EXT) {
+-        nn_chunk_trim (self->u.chunk, n);
++        self->u.chunk = nn_chunk_trim(self->u.chunk, n);
+         return;
+     }
