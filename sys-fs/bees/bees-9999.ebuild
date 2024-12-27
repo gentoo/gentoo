@@ -85,12 +85,16 @@ pkg_pretend() {
 			ewarn "severe slowdowns or even system lockups."
 			ewarn
 		fi
+	fi
+}
 
+pkg_postinst() {
+	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		elog "Bees recommends running the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
 		elog
 		elog "NEWS: bees now defaults to a much improved extent-based scanner. It is compatible"
-		elog "with your existing state database in `\$BEESHOME` but it may start over from the"
+		elog "with your existing state database in \`\$BEESHOME\` but it may start over from the"
 		elog "beginning. However, it will keep the state of the old scanner, so you can switch"
 		elog "back and forth. To actually use the new scanner, use scan mode 4 or remove the"
 		elog "scan mode parameter from your init script. Requires kernel 4.14 or higher!"
