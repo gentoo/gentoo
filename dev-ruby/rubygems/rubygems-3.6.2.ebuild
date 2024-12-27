@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 inherit ruby-ng prefix
 
@@ -28,6 +28,7 @@ ruby_add_bdepend "
 		dev-ruby/minitest:5
 		dev-ruby/rake
 		dev-ruby/rdoc
+		dev-ruby/test-unit
 		dev-ruby/webrick
 	)"
 
