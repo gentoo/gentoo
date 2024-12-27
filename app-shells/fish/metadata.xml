@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Smart and user-friendly command line shell for macOS, Linux, and the rest of the family.
-		It includes features like syntax highlighting, autosuggest-as-you-type,
-		and fancy tab completions that just work, with no configuration required.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">fish-shell/fish-shell</remote-id>
-	</upstream>
+    <maintainer type="person" proxied="yes">
+        <email>realidealseal@protonmail.com</email>
+        <name>idealseal</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription lang="en">
+        Smart and user-friendly command line shell for macOS, Linux, and the rest of the family.
+        It includes features like syntax highlighting, autosuggest-as-you-type,
+        and fancy tab completions that just work, with no configuration required.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">fish-shell/fish-shell</remote-id>
+    </upstream>
 </pkgmetadata>
