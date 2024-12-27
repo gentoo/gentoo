@@ -25,8 +25,9 @@ app-emulation/virt-firmware test
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215) but it doesn't
-# work on musl.
+# work on musl. Bugs #946505, #946643
 kde-plasma/kwin filecaps
+kde-plasma/powerdevil filecaps
 
 # Violet Purcell <vimproved@inventati.org> (2024-05-15)
 # Python does not support JIT on musl, see
