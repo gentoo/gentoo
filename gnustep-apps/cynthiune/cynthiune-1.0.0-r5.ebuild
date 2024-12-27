@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnustep-2
 
 MY_P=${P/c/C}
-DESCRIPTION="Free software and romantic music player for GNUstep"
-HOMEPAGE="http://gap.nongnu.org/cynthiune/"
-SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
+inherit gnustep-2
 
-KEYWORDS="~amd64 ~ppc ~x86"
+DESCRIPTION="Free software and romantic music player for GNUstep"
+HOMEPAGE="https://gap.nongnu.org/cynthiune/"
+SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2"
 SLOT="0"
-
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa ao flac mad modplug musepack oss timidity vorbis"
 
 # musicbrainz disabled upstream for now
@@ -34,8 +35,6 @@ RDEPEND="media-libs/audiofile:=
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="mad? ( virtual/pkgconfig )"
-
-S=${WORKDIR}/${MY_P}
 
 cynthiune_get_config() {
 	local myconf="disable-windowsmedia=yes disable-esound=yes"
