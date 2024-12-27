@@ -44,6 +44,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
+
 python_check_deps() {
 	python_has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
