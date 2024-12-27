@@ -9,7 +9,7 @@
 		<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/wangqr/Aegisub/issues</bugs-to>
-		<remote-id type="github">wangqr/Aegisub</remote-id>
+		<bugs-to>https://github.com/TypesettingTools/Aegisub/issues</bugs-to>
+		<remote-id type="github">TypesettingTools/Aegisub</remote-id>
 	</upstream>
 </pkgmetadata>

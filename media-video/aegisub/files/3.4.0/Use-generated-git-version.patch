@@ -1,0 +1,20 @@
+diff --git a/tools/version.sh b/tools/version.sh
+index 8df33e175..1293d1578 100755
+--- a/tools/version.sh
++++ b/tools/version.sh
+@@ -3,7 +3,6 @@ srcdir="$2"
+ 
+ # If no git repo try to read from the existing git_version.h, for building from tarballs
+ version_h_path="${builddir}/git_version.h"
+-if ! test -d "${srcdir}/.git"; then
+   if test -f "${version_h_path}"; then
+     while read line; do
+       set -- $line
+@@ -19,7 +18,6 @@ if ! test -d "${srcdir}/.git"; then
+     echo "git repo not found and no cached git_version.h"
+     exit 2
+   fi
+-fi
+ osx_bundle_sed_path="${builddir}/osx-bundle.sed"
+ 
+ last_svn_revision=6962
