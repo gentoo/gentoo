@@ -5,4 +5,7 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="launcher">Install FLTK-based launcher that you probably don't need</flag>
+	</use>
 </pkgmetadata>
