@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -15,26 +15,33 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="amd64 ~arm"
-	SRC_URI="https://github.com/occipital/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/structureio/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_/-}"
 fi
 
 DESCRIPTION="OpenNI2 SDK"
-HOMEPAGE="https://structure.io/openni"
+HOMEPAGE="https://structure.io/openni/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cpu_flags_arm_neon doc java opengl static-libs"
 
-RDEPEND="
+COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	virtual/libusb:1
 	virtual/libudev
 	opengl? ( media-libs/freeglut )
-	java? ( virtual/jre:1.8 )
 "
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${COMMON_DEPEND}
 	doc? ( app-text/doxygen )
-	java? ( virtual/jdk:1.8 )"
+	java? ( >=virtual/jdk-1.8:* !dev-libs/OpenNI[java] )
+"
+
+RDEPEND="
+	${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.8:* !dev-libs/OpenNI[java] )
+"
 
 PATCHES=(
 	"${FILESDIR}/jpeg.patch"
