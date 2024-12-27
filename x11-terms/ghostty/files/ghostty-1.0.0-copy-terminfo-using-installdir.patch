@@ -1,0 +1,38 @@
+diff --git a/build.zig b/build.zig
+index c3f73026..983fb3a7 100644
+--- a/build.zig
++++ b/build.zig
+@@ -481,21 +481,21 @@ pub fn build(b: *std.Build) !void {
+             run_step.step.dependOn(&src_install.step);
+ 
+             {
+-                const copy_step = RunStep.create(b, "copy terminfo db");
+-                copy_step.addArgs(&.{ "cp", "-R" });
+-                copy_step.addFileArg(path);
+-                copy_step.addArg(b.fmt("{s}/share", .{b.install_prefix}));
+-                b.getInstallStep().dependOn(&copy_step.step);
++                const install_dir_step = b.addInstallDirectory(.{
++                    .source_dir = path,
++                    .install_dir = .prefix,
++                    .install_subdir = "share/terminfo",
++                });
++                b.getInstallStep().dependOn(&install_dir_step.step);
+             }
+ 
+             if (target.result.os.tag == .macos and exe_ != null) {
+-                const copy_step = RunStep.create(b, "copy terminfo db");
+-                copy_step.addArgs(&.{ "cp", "-R" });
+-                copy_step.addFileArg(path);
+-                copy_step.addArg(
+-                    b.fmt("{s}/Ghostty.app/Contents/Resources", .{b.install_prefix}),
+-                );
+-                b.getInstallStep().dependOn(&copy_step.step);
++                const install_dir_step = b.addInstallDirectory(.{
++                    .source_dir = path,
++                    .install_dir = .prefix,
++                    .install_subdir = "Ghostty.app/Contents/Resources/terminfo",
++                });
++                b.getInstallStep().dependOn(&install_dir_step.step);
+             }
+         }
+     }
