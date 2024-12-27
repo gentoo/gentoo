@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-12-27)
+# Unfixable modern C issues because of reliance on ancient automake.
+# Out of date. See bug #946998. Removal on 2025-01-27.
+net-irc/ngircd
+
 # Mats Lidell <matsl@gentoo.org> (2024-12-25)
 # Packages used by XEmacs 21.4, now removed from tree.  Not needed with
 # XEmacs 21.5.  Removal on 2025-01-24.
