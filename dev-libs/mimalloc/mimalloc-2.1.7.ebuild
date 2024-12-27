@@ -12,13 +12,14 @@ SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="MIT"
 SLOT="0/2"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="hardened test valgrind"
+IUSE="debug hardened test valgrind"
 RESTRICT="!test? ( test )"
 
 DEPEND="valgrind? ( dev-debug/valgrind )"
 
 src_configure() {
 	local mycmakeargs=(
+		-DMI_DEBUG_FULL=$(usex debug)
 		-DMI_SECURE=$(usex hardened)
 		-DMI_INSTALL_TOPLEVEL=ON
 		-DMI_BUILD_TESTS=$(usex test)
