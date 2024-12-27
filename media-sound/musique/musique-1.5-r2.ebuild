@@ -21,7 +21,7 @@ RDEPEND="
 	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	media-libs/phonon[qt5(+)]
+	>=media-libs/phonon-4.12.0[qt5(-)]
 	media-libs/taglib:=
 "
 DEPEND="${RDEPEND}"
