@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 BDEPEND="dev-build/cmake
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4.1-includes.patch
+)
+
 python_check_deps() {
 	has_version "dev-util/cram[${PYTHON_USEDEP}]"
 }
