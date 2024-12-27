@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="README.md doc-install/text/*.md"
 
@@ -20,6 +20,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 
 IUSE="doc test"
 
 ruby_add_rdepend "dev-ruby/power_assert"
+
+ruby_add_bdepend "test? ( dev-ruby/bigdecimal dev-ruby/csv )"
 
 all_ruby_prepare() {
 	mv doc doc-install || die "moving doc directory out of the way failed"
