@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake python-any-r1 readme.gentoo-r1 xdg
+inherit cargo cmake python-any-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="Friendly Interactive SHell"
 HOMEPAGE="https://fishshell.com/"
@@ -13,27 +13,27 @@ HOMEPAGE="https://fishshell.com/"
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN}-shell/${PN}-shell.git"
+	EGIT_REPO_URI="https://github.com/fish-shell/fish-shell.git"
 else
-	SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/${MY_P}.tar.xz"
+	SRC_URI="
+		https://github.com/fish-shell/fish-shell/releases/download/${MY_PV}/${MY_P}.tar.xz
+		${CARGO_CRATE_URIS}
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2 BSD BSD-2 CC0-1.0 GPL-2+ ISC LGPL-2+ MIT PSF-2 ZLIB"
+# Dependent crate licenses
+LICENSE+=" MIT Unicode-DFS-2016 WTFPL-2 ZLIB"
 SLOT="0"
 IUSE="+doc nls split-usr test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	>=dev-libs/libpcre2-10.32:=[pcre32]
-	sys-apps/coreutils
-	sys-libs/ncurses:=[unicode(+)]
-"
-
-DEPEND="${RDEPEND}"
 BDEPEND="
 	nls? ( sys-devel/gettext )
 	test? (
@@ -45,13 +45,27 @@ BDEPEND="
 	)
 "
 # we don't need shpinx dep for release tarballs
-[[ ${PV} == 9999 ]] && DEPEND+=" doc? ( dev-python/sphinx )"
+[[ ${PV} == 9999 ]] && BDEPEND+=" doc? ( dev-python/sphinx )"
 
-S="${WORKDIR}/${MY_P}"
+QA_FLAGS_IGNORED="**bin/fish*"
 
 python_check_deps() {
 	use test || return 0
 	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+	rust_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+		cargo_live_src_unpack
+	else
+		cargo_src_unpack
+	fi
 }
 
 src_prepare() {
@@ -60,6 +74,15 @@ src_prepare() {
 		sed -i 's#${TEST_INSTALL_DIR}/${CMAKE_INSTALL_PREFIX}#${TEST_INSTALL_DIR}#' \
 			cmake/Tests.cmake || die
 	fi
+
+	# remove the build targets from the default build set so they are not wanted
+	# if cmake_src_install is called
+	sed -i \
+		-e '
+		/function(CREATE_TARGET target)/,/endfunction(CREATE_TARGET)/ {
+			s/${target} ALL/${target}/
+		}' CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
@@ -72,7 +95,6 @@ src_configure() {
 		$(usex split-usr "-DCMAKE_INSTALL_BINDIR=${EPREFIX}/bin" \
 			"-DCMAKE_INSTALL_SBINDIR=${EPREFIX}/usr/bin")
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
-		-DCURSES_NEED_NCURSES=ON
 		-DINSTALL_DOCS="$(usex doc)"
 		-DWITH_GETTEXT="$(usex nls)"
 	)
@@ -82,7 +104,23 @@ src_configure() {
 	else
 		mycmakeargs+=( -DBUILD_DOCS=OFF )
 	fi
+	cargo_src_configure --no-default-features --bin fish --bin fish_indent --bin fish_key_reader
 	cmake_src_configure
+}
+
+src_compile() {
+	local -x PREFIX="${EPREFIX}/usr"
+	local -x DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
+	local -x CMAKE_WITH_GETTEXT
+	CMAKE_WITH_GETTEXT="$(usex nls 1 0)"
+	cargo_src_compile
+
+	# copy files built with cargo_src_compile into the cmake build directory,
+	# so when we run cmake_src_install they are not rebuild
+	for target in fish fish_indent fish_key_reader; do
+		cp "$(cargo_target_dir)/${target}" "${BUILD_DIR}" || die
+	done
+	cmake_src_compile
 }
 
 src_install() {
@@ -92,6 +130,9 @@ src_install() {
 }
 
 src_test() {
+	# tests will create temporary files
+	local -x TMPDIR="${T}"
+
 	# some tests are fragile, sanitize environment
 	local -x COLUMNS=80
 	local -x LINES=24
@@ -102,17 +143,12 @@ src_test() {
 		rm -v tests/pexpects/terminal.py || :
 	fi
 
-	# zfs completion test will fail with "Permission denied the ZFS utilities must be run as root."
-	mv "${S}"/share/completions/zfs.{fish,disabled} || die
-
 	# TODO: fix tests & submit upstream
 	# tests are confused by usr/sbin -> bin symlink, no die is intentional for repeated test runs
 	use split-usr || rm -v tests/checks/{redirect,type}.fish || :
 
-	cmake_build test
-
-	# now restore zfs completions
-	mv "${S}"/share/completions/zfs.{disabled,fish} || die
+	# cmake_src_test will invoke ctest but required files are missing
+	cargo_env cmake_build test
 }
 
 pkg_postinst() {
