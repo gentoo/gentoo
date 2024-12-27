@@ -11,23 +11,17 @@ HOMEPAGE="https://www.gnu.org/software/emms/
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emms.git"
 else
 	SRC_URI="https://git.savannah.gnu.org/cgit/emms.git/snapshot/${P}.tar.gz"
-
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 
-RDEPEND="
-	media-libs/taglib:=
-"
-BDEPEND="
-	${RDEPEND}
-"
+RDEPEND="media-libs/taglib:="
+DEPEND="${RDEPEND}"
 
 # EMMS can use almost anything for playing media files therefore the dependency
 # possibilities are so broad that we refrain from setting anything explicitly
