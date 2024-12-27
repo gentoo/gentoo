@@ -70,7 +70,8 @@ src_configure() {
 }
 
 src_test() {
-	emake check
+	# bug #947014
+	emake check -j1
 }
 
 src_install() {
