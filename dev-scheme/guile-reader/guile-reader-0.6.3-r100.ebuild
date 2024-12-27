@@ -4,7 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-inherit	guile autotools
+inherit guile autotools
 
 DESCRIPTION="Simple framework for building readers for GNU Guile"
 HOMEPAGE="https://www.nongnu.org/guile-reader/"
