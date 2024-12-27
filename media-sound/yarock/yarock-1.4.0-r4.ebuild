@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/taglib:=
 	x11-libs/libX11
 	mpv? ( media-video/mpv:=[libmpv] )
-	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
+	phonon? ( >=media-libs/phonon-4.12.0[qt5(-)] )
 	vlc? ( media-video/vlc:= )
 "
 DEPEND="${RDEPEND}
