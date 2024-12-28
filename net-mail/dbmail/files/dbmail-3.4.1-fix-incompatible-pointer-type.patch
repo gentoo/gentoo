@@ -1,0 +1,13 @@
+Take from: https://github.com/dbmail/dbmail/commit/01d5d422f88c5edd6f1f77787cd6459d756d00b4
+
+--- a/src/dm_mailboxstate.c
++++ b/src/dm_mailboxstate.c
+@@ -643,7 +643,7 @@
+ 
+ gboolean MailboxState_hasKeyword(T M, const char *keyword)
+ {
+-	if (g_list_find_custom(M->keywords, (gpointer)keyword, dm_strcmpdata))
++	if (g_list_find_custom(M->keywords, (gpointer)keyword, (GCompareFunc) dm_strcmpdata))
+ 		return TRUE;
+ 	return FALSE;
+ }
