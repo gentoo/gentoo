@@ -65,6 +65,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5.4-remove-amanda-message-severity-use.patch
 	"${FILESDIR}"/${PN}-3.5.4-fix-tapelist-null-usage.patch
 	"${FILESDIR}"/${PN}-3.5.4-fix-finished_cb-invocation.patch
+	"${FILESDIR}"/${PN}-3.5.4-use-host-ar.patch
+	"${FILESDIR}"/${PN}-3.5.4-fix-curl-usage-for-newer-versions.patch
 )
 
 MYFILESDIR="${T}/files"
@@ -200,11 +202,11 @@ src_prepare() {
 	done
 
 	if use minimal; then
-		cat "${MYFILESDIR}"/amanda-amandahosts-server-2.5.1_p3-r1 > "${T}"/amandahosts || die
+		cat "${MYFILESDIR}"/amanda-amandahosts-client-2.5.1_p3-r1 > "${T}"/amandahosts || die
 	else
 		sed -i -e 's:^\(my $amandahomedir\)=.*:\1 = $localstatedir;:' \
 			server-src/am{addclient,serverconfig}.pl || die
-		cat "${MYFILESDIR}"/amanda-amandahosts-client-2.5.1_p3-r1 > "${T}"/amandahosts || die
+		cat "${MYFILESDIR}"/amanda-amandahosts-server-2.5.1_p3-r1 > "${T}"/amandahosts || die
 	fi
 
 	eapply_user
@@ -404,15 +406,19 @@ src_install() {
 		newins "${MYFILESDIR}"/amanda-cron amanda
 	fi
 
+	# Install amandahosts file into /etc/amanda so it gets config protection
 	insinto /etc/amanda
 	einfo "Installing .amandahosts File for ${AMANDA_USER_NAME} user"
 	doins "${T}/amandahosts"
 	fperms 600 /etc/amanda/amandahosts
 
-	dosym "${AMANDA_USER_HOMEDIR}/.amandahosts" /etc/amanda/amandahosts
+	dosym ../../../etc/amanda/amandahosts "${AMANDA_USER_HOMEDIR}/.amandahosts"
+	fowners -h ${AMANDA_USER_NAME}:${AMANDA_GROUP_NAME} "${AMANDA_USER_HOMEDIR}/.amandahosts"
+
 	insinto "${AMANDA_USER_HOMEDIR}"
 	einfo "Installing .profile for ${AMANDA_USER_NAME} user"
 	newins "${MYFILESDIR}"/amanda-profile .profile
+	fowners ${AMANDA_USER_NAME}:${AMANDA_GROUP_NAME} "${AMANDA_USER_HOMEDIR}/.profile"
 
 	insinto /etc/amanda
 	doins example/amanda-client.conf
@@ -424,9 +430,13 @@ src_install() {
 	fi
 
 	keepdir "${AMANDA_TAR_LISTDIR}"
+	fowners ${AMANDA_USER_NAME}:${AMANDA_GROUP_NAME} "${AMANDA_TAR_LISTDIR}"
 	keepdir "${AMANDA_USER_HOMEDIR}/amanda"
+	fowners ${AMANDA_USER_NAME}:${AMANDA_GROUP_NAME} "${AMANDA_USER_HOMEDIR}/amanda"
 	# Just make sure it exists for XFS to work...
 	use xfs && keepdir /var/xfsdump/inventory
+
+	fowners ${AMANDA_USER_NAME}:${AMANDA_GROUP_NAME} "${AMANDA_USER_HOMEDIR}"
 
 	newtmpfiles - amanda.conf <<- _EOF_
 		d	${AMANDA_TMPDIR}	0700	${AMANDA_USER_NAME}	${AMANDA_GROUP_NAME}
@@ -477,6 +487,14 @@ src_install() {
 	perl_set_version
 
 	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_preinst() {
+	[[ -h "${EROOT}/etc/amanda/amandahosts" ]] && rm "${EROOT}/etc/amanda/amandahosts"
+	if [[ -f "${EROOT}/${AMANDA_USER_HOMEDIR}/.amandahosts" && ! -f ${EROOT}/etc/amanda/amandahosts ]]; then
+		einfo "Migrating amandahosts from ${AMANDA_USER_HOMEDIR} to /etc"
+		mv "${EROOT}/${AMANDA_USER_HOMEDIR}/.amandahosts" "${EROOT}/etc/amanda/amandahosts"
+	fi
 }
 
 pkg_postinst() {
