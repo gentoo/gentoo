@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X legacy-renderer systemd"
+IUSE="X legacy-renderer +qtutils systemd"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
@@ -44,7 +44,6 @@ RDEPEND="
 	>=gui-libs/aquamarine-0.4.2
 	>=gui-libs/hyprcursor-0.1.9
 	gui-libs/hyprutils:=
-	gui-libs/hyprland-qtutils
 	media-libs/libglvnd
 	media-libs/mesa
 	sys-apps/util-linux
@@ -54,6 +53,7 @@ RDEPEND="
 	x11-libs/pango
 	x11-libs/pixman
 	x11-libs/libXcursor
+	qtutils? ( gui-libs/hyprland-qtutils )
 	X? (
 		x11-libs/libxcb:0=
 		x11-base/xwayland
