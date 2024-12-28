@@ -1,0 +1,49 @@
+https://github.com/shssoichiro/oxipng/pull/659
+
+From 161b184373092742e9867a8b8cabad92a0395f15 Mon Sep 17 00:00:00 2001
+From: Josh Holmer <jholmer.in@gmail.com>
+Date: Tue, 3 Dec 2024 06:33:36 -0500
+Subject: [PATCH] Add feature flag to use system libdeflate
+
+---
+ Cargo.lock | 7 +++++++
+ Cargo.toml | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 66d5b005..69df3be2 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -331,6 +331,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "2f4ae7b48098016dc3bc64a35605668f0af4425ec1a4a175ce2d0c1129067932"
+ dependencies = [
+  "cc",
++ "pkg-config",
+ ]
+ 
+ [[package]]
+@@ -416,6 +417,12 @@ dependencies = [
+  "zopfli",
+ ]
+ 
++[[package]]
++name = "pkg-config"
++version = "0.3.31"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "953ec861398dccce10c670dfeaf3ec4911ca479e9c02154b3a215178c5f566f2"
++
+ [[package]]
+ name = "png"
+ version = "0.17.14"
+diff --git a/Cargo.toml b/Cargo.toml
+index d4f152cc..974db6ed 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -87,6 +87,7 @@ freestanding = ["libdeflater/freestanding"]
+ sanity-checks = ["dep:image"]
+ zopfli = ["dep:zopfli"]
+ filetime = ["dep:filetime"]
++system-libdeflate = ["libdeflater/dynamic"]
+ 
+ [lib]
+ name = "oxipng"
