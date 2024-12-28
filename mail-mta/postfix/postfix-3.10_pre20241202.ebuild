@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit pam systemd toolchain-funcs
+inherit flag-o-matic pam systemd toolchain-funcs
 
 MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
@@ -74,6 +74,9 @@ src_prepare() {
 src_configure() {
 	# bug #915670
 	unset LD_LIBRARY_PATH
+
+	# https://marc.info/?l=postfix-users&m=173542420611213&w=2 (bug #945733)
+	append-cflags -std=gnu17
 
 	for name in CDB LDAP LMDB MONGODB MYSQL PCRE PGSQL SDBM SQLITE
 	do
