@@ -170,12 +170,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	statvfs64 re_set_syntax re_compile_pattern re_search re_match
 )
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use jit && ! tc-is-gcc; then
-		die "Emacs must be built with gcc[jit] if USE=jit is enabled."
-	fi
-}
-
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[^0-9.]*\([0-9.]*\).*/\1/p' \
@@ -197,11 +191,21 @@ src_prepare() {
 		# for live ebuilds FULL_VERSION doesn't exist in global scope
 		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
 
+		# The build system requires gcc for native compilation #874657
+		if ! tc-is-gcc; then
+			ewarn "Emacs must be built with gcc[jit] if USE=jit is enabled."
+			ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+			export CC=${CHOST}-gcc AR=${CHOST}-gcc-ar NM=${CHOST}-gcc-nm \
+				RANLIB=${CHOST}-gcc-ranlib
+			tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+		fi
+
 		# gccjit doesn't play well with ccache or distcc #801580
 		# For now, work around the problem with an explicit LIBRARY_PATH
-		has ccache ${FEATURES} || has distcc ${FEATURES} && tc-is-gcc \
-			&& export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
+		if has ccache ${FEATURES} || has distcc ${FEATURES} && tc-is-gcc; then
+			export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
 				| sed -n '/^libraries:/{s:^[^/]*::;p}')
+		fi
 	fi
 
 	# Fix filename reference in redirected man page
