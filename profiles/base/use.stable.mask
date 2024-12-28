@@ -9,10 +9,6 @@
 ruby_targets_ruby34
 ruby_targets_ruby33
 
-# Patrick Lauer <patrick@gentoo.org> (2024-09-26)
-# Postgresql 17 isn't stable yet
-postgres_targets_postgres17
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Python implementations without stable keywords.
 python_targets_python3_13t
