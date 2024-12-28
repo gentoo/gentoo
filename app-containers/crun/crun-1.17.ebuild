@@ -50,15 +50,6 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	emake "DESTDIR=${D}" install-exec
-	doman crun.1
-	einstalldocs
-
-	einfo "Cleaning up .la files"
-	find "${ED}" -name '*.la' -delete || die
-}
-
 src_test() {
 	emake check-TESTS -C ./libocispec
 
@@ -72,4 +63,13 @@ src_test() {
 		"tests/test_oci_features"
 	)
 	emake check-TESTS TESTS="${supported_tests[*]}"
+}
+
+src_install() {
+	emake "DESTDIR=${D}" install-exec
+	doman crun.1
+	einstalldocs
+
+	einfo "Cleaning up .la files"
+	find "${ED}" -name '*.la' -delete || die
 }
