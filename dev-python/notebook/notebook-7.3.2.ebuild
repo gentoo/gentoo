@@ -34,7 +34,7 @@ RDEPEND="
 
 BDEPEND="
 	dev-python/hatch-jupyter-builder[${PYTHON_USEDEP}]
-	>=dev-python/jupyterlab-4.3.2[${PYTHON_USEDEP}]
+	>=dev-python/jupyterlab-4.3.4[${PYTHON_USEDEP}]
 	<dev-python/jupyterlab-4.4[${PYTHON_USEDEP}]
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
