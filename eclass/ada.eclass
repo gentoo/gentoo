@@ -282,7 +282,7 @@ ada_export() {
 				debug-print "${FUNCNAME}: GNATBIND = ${GNATBIND}"
 				;;
 			GNATMAKE)
-				export GNATMAKE=${EPREFIX}/usr/bin/gnatmake-${gcc_pv}
+				export GNATMAKE=${EPREFIX}/usr/bin/${CHOST}-gnatmake-${gcc_pv}
 				debug-print "${FUNCNAME}: GNATMAKE = ${GNATMAKE}"
 				;;
 			GNATLS)
