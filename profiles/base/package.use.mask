@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
+# Prepare virtual/bitcoin-leveldb last-rites, bug #945359
+net-p2p/bitcoin-core system-leveldb
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-20)
 # openjfx for OpenJDK 24 is not yet available.
 dev-java/openjdk:24 javafx
