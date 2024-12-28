@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "
-			>=dev-python/pyside6-${QTMIN}[designer,gui,positioning,webengine,widgets,\${PYTHON_USEDEP}] \
+			>=dev-python/pyside6-${QTMIN}[gui,positioning,uitools(-),webengine,widgets,\${PYTHON_USEDEP}]
 			>=dev-python/shiboken6-${QTMIN}[\${PYTHON_USEDEP}]
 		")
 	)
