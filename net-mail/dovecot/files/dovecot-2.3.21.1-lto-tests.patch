@@ -1,0 +1,86 @@
+https://github.com/dovecot/core/pull/230
+
+From 33cda8cbbc445d27ce38234b17442a9abe66167f Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Fri, 24 Mar 2023 13:33:13 +0100
+Subject: [PATCH 1/2] lib: md4 - Fix violation of strict aliasing.
+
+Fix miscompilation when LTO is enabled.
+
+(cherry picked from commit f0c1cf42ea78d22e2674b03fe65f0ee6545c5b99)
+--- a/src/lib/md4.c
++++ b/src/lib/md4.c
+@@ -34,23 +34,6 @@
+ 	(a) = ((a) << (s)) | ((a) >> (32 - (s)))
+ 
+ 
+-/*
+- * SET reads 4 input bytes in little-endian byte order and stores them
+- * in a properly aligned word in host byte order.
+- *
+- * The check for little-endian architectures which tolerate unaligned
+- * memory accesses is just an optimization.  Nothing will break if it
+- * doesn't work.
+- */
+-#if defined(__i386__) || defined(__x86_64__) || defined(__vax__)
+-/* uint_fast32_t might be 64 bit, and thus may read 4 more bytes
+- * beyond the end of the buffer. So only read precisely 32 bits
+- */
+-#define SET(n)				\
+-	(*(const uint32_t *)&ptr[(n) * 4])
+-#define GET(n) \
+-	SET(n)
+-#else
+ #define SET(n) \
+ 	(ctx->block[(n)] = \
+ 	(uint_fast32_t)ptr[(n) * 4] | \
+@@ -59,7 +42,6 @@
+ 	((uint_fast32_t)ptr[(n) * 4 + 3] << 24))
+ #define GET(n) \
+ 	(ctx->block[(n)])
+-#endif
+ 
+ /*
+  * This processes one or more 64-byte data blocks, but does NOT update
+
+From 6cdd0b1428ab393ec5996ed10a98e7a7043c501f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 27 Mar 2023 02:25:12 +0100
+Subject: [PATCH 2/2] lib: md5: Fix strict aliasing violation
+
+Followup to f0c1cf42ea78d22e2674b03fe65f0ee6545c5b99. It's exactly the
+same code as in md4, so let's rip it out here too.
+
+(cherry picked from commit 6de2e4ac0b9abd4ab09b68f1f7e5f032705080b1)
+--- a/src/lib/md5.c
++++ b/src/lib/md5.c
+@@ -38,20 +38,6 @@
+ 	(a) = (((a) << (s)) | (((a) & 0xffffffff) >> (32 - (s)))); \
+ 	(a) += (b);
+ 
+-/*
+- * SET reads 4 input bytes in little-endian byte order and stores them
+- * in a properly aligned word in host byte order.
+- *
+- * The check for little-endian architectures which tolerate unaligned
+- * memory accesses is just an optimization.  Nothing will break if it
+- * doesn't work.
+- */
+-#if defined(__i386__) || defined(__x86_64__) || defined(__vax__)
+-#define SET(n) \
+-	(*(const uint32_t *)&ptr[(n) * 4])
+-#define GET(n) \
+-	SET(n)
+-#else
+ #define SET(n) \
+ 	(ctx->block[(n)] = \
+ 	(uint_fast32_t)ptr[(n) * 4] | \
+@@ -60,7 +46,6 @@
+ 	((uint_fast32_t)ptr[(n) * 4 + 3] << 24))
+ #define GET(n) \
+ 	(ctx->block[(n)])
+-#endif
+ 
+ /*
+  * This processes one or more 64-byte data blocks, but does NOT update
+
