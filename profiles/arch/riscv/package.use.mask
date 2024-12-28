@@ -9,10 +9,6 @@ sci-chemistry/gromacs nnpot
 # dev-util/nvidia-cuda-toolkit or sys-cluster/ucx are not keyworded on riscv
 sys-cluster/slurm nvml ucx
 
-# David Roman <davidroman96@gmail.com> (2024-10-04)
-# dev-libs/libunibreak not keyworded here
-media-libs/libass libunibreak
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-09-08)
 # needs re-keywording and clean-up of media-libs/opencollada
 media-libs/assimp collada
