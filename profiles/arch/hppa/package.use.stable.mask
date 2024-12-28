@@ -180,7 +180,6 @@ app-text/doxygen doxysearch
 # Mask USE=test for packages using virtualx.eclass.
 dev-lang/tk test
 dev-python/cmd2 test
-dev-python/fonttools test
 dev-python/pillow test
 dev-python/pygobject test
 dev-python/pyperclip test
