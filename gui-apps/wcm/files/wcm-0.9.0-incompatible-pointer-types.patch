@@ -1,0 +1,37 @@
+https://github.com/artizirk/wdisplays/pull/25
+https://bugs.gentoo.org/946954
+
+--- a/subprojects/wdisplays/src/outputs.c
++++ b/subprojects/wdisplays/src/outputs.c
+@@ -526,7 +526,7 @@
+ static const struct zwlr_output_manager_v1_listener output_manager_listener = {
+   .head = output_manager_handle_head,
+   .done = output_manager_handle_done,
+-  .finished = noop,
++  .finished = (void (*)(void *, struct zwlr_output_manager_v1 *))noop,
+ };
+ static void registry_handle_global(void *data, struct wl_registry *registry,
+     uint32_t name, const char *interface, uint32_t version) {
+@@ -553,7 +553,7 @@
+ 
+ static const struct wl_registry_listener registry_listener = {
+   .global = registry_handle_global,
+-  .global_remove = noop,
++  .global_remove = (void (*)(void *, struct wl_registry *, uint32_t))noop,
+ };
+ 
+ void wd_add_output_management_listener(struct wd_state *state, struct
+@@ -603,10 +603,10 @@
+ 
+ static const struct zxdg_output_v1_listener output_listener = {
+   .logical_position = output_logical_position,
+-  .logical_size = noop,
+-  .done = noop,
++  .logical_size = (void (*)(void *, struct zxdg_output_v1 *, int32_t,  int32_t))noop,
++  .done = (void (*)(void *, struct zxdg_output_v1 *))noop,
+   .name = output_name,
+-  .description = noop
++  .description = (void (*)(void *, struct zxdg_output_v1 *, const char *))noop
+ };
+ 
+ void wd_add_output(struct wd_state *state, struct wl_output *wl_output,

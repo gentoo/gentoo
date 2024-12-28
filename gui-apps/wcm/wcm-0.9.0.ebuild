@@ -48,6 +48,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-incompatible-pointer-types.patch
+)
+
 src_prepare() {
 	default
 
