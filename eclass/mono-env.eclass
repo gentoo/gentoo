@@ -4,7 +4,7 @@
 # @ECLASS: mono-env.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Set environment variables commonly used by dotnet packages.
 # @DESCRIPTION:
 # Set environment variables commonly used by dotnet packages.
