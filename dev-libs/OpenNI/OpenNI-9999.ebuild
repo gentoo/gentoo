@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -25,16 +25,24 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc java opengl"
 
-RDEPEND="
+COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	virtual/libusb:1
 	virtual/libudev
 	dev-libs/tinyxml
 	opengl? ( media-libs/freeglut !dev-libs/OpenNI2[opengl] )
-	java? ( virtual/jre:1.8 )
 "
-DEPEND="${RDEPEND}
-	java? ( virtual/jdk:1.8 )"
+
+DEPEND="
+	${COMMON_DEPEND}
+	java? ( >=virtual/jdk-1.8:* !dev-libs/OpenNI2[java] )
+"
+
+RDEPEND="
+	${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.8:* !dev-libs/OpenNI2[java] )
+"
+
 BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
@@ -52,7 +60,8 @@ src_prepare() {
 		echo "" > ${i}
 	done
 
-	find . -type f -print0 | xargs -0 sed -i "s:\".*/SamplesConfig.xml:\"${EPREFIX}/usr/share/${PN}/SamplesConfig.xml:" || die
+	find . -type f -print0 |
+		xargs -0 sed -i "s:\".*/SamplesConfig.xml:\"${EPREFIX}/usr/share/${PN}/SamplesConfig.xml:" || die
 }
 
 src_compile() {
