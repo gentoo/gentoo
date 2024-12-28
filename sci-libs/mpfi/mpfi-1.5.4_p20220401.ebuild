@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Multiple precision interval arithmetic library based on MPFR"
-HOMEPAGE="https://perso.ens-lyon.fr/nathalie.revol/software.html"
+HOMEPAGE="https://perso.ens-lyon.fr/nathalie.revol/software.html https://gitlab.inria.fr/mpfi/mpfi"
 SRC_URI=" https://perso.ens-lyon.fr/nathalie.revol/softwares/${PN}-1.5.4.tar.xz -> ${P}.tar.xz"
 S="${WORKDIR}/${PN}-1.5.4"
 # COPYING is GPL-3, COPYING.LESSER is LGPL-3, source file headers
