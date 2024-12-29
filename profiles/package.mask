@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-02)
+# No more revdeps, depends on Qt5. Removal on 2025-01-29.
+dev-libs/libqt5pas
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-01)
 # Transitional package without any revdeps left.
 # Removal on 2025-01-31
