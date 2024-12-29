@@ -211,18 +211,21 @@ multilib_src_configure() {
 		#esac
 	#fi
 
-	# Build internal copy of gobject-introspection to avoid circular dependency (Built for native abi only)
+	# Build internal copy of gobject-introspection to avoid circular dependency (built for native abi only)
 	if multilib_native_use introspection && ! has_version ">=dev-libs/${INTROSPECTION_P}" ; then
 		einfo "Bootstrapping gobject-introspection..."
-		INTROSPECTION_BIN_DIR="${T}/${EPREFIX}/usr/bin"
-		INTROSPECTION_LIB_DIR="${T}/${EPREFIX}/usr/$(get_libdir)"
+		INTROSPECTION_BIN_DIR="${T}/bootstrap-gi-prefix/usr/bin"
+		INTROSPECTION_LIB_DIR="${T}/bootstrap-gi-prefix/usr/$(get_libdir)"
 
 		local emesonargs=(
+			--prefix="${T}/bootstrap-gi-prefix/usr"
 			-Dpython="${EPYTHON}"
 			-Dbuild_introspection_data=true
 			# Build an internal copy of glib for the internal copy of gobject-introspection
 			--force-fallback-for=glib
-			# Tell meson to make paths in pkgconfig files relative, because we arent doing an actual install
+			# Make the paths in pkgconfig files relative as we used to not
+			# do a proper install here and it seems less risky to keep it
+			# this way.
 			-Dpkgconfig.relocatable=true
 
 			# We want as minimal a build as possible here to speed things up
@@ -258,8 +261,10 @@ multilib_src_configure() {
 
 		meson_src_configure
 		meson_src_compile
-		# Install to the portage temp directory so that pkgconfig relative paths resolve correctly
-		meson_src_install --destdir "${T}" --skip-subprojects glib
+		# We already provide a prefix in ${T} above. Blank DESTDIR
+		# as it may be set in the environment by Portage (though not
+		# guaranteed in src_configure).
+		meson_src_install --destdir ""
 
 		popd || die
 
