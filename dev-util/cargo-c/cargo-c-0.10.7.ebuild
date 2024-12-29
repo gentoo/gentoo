@@ -407,11 +407,13 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-RDEPEND=">=dev-libs/libgit2-1.8.1:=
+RDEPEND="
+	=dev-libs/libgit2-1.8*:=
 	dev-libs/openssl:=
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
-	sys-libs/zlib"
+	sys-libs/zlib
+"
 DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/cargo-capi usr/bin/cargo-cbuild usr/bin/cargo-ctest usr/bin/cargo-cinstall"
