@@ -220,8 +220,9 @@ pkg_postinst() {
 	fi
 
 	# Initialize log file if there is none
+	dodir /var/log
 	local log=${ROOT}/var/log/installkernel.log
-	if [[ ! -f ${log} ]]; then
+	if [[ ! -s ${log} ]]; then
 		echo -e \
 "DATE\t"\
 "KI_VENDOR\t"\
