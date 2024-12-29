@@ -3,8 +3,8 @@
 
 EAPI=8
 
-KFMIN=5.245.0
-QTMIN=6.6.2
+KFMIN=6.5.0
+QTMIN=6.7.2
 KDE_ORG_CATEGORY="system"
 inherit ecm kde.org
 
@@ -20,8 +20,9 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 
+# dev-qt/qtbase:= slot op: Uses Qt::GuiPrivate for qtx11extras_p.h
 DEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
+	>=dev-qt/qtbase-${QTMIN}:6=[dbus,gui,widgets,X]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
