@@ -82,12 +82,33 @@ dist-kernel_install_kernel() {
 	local success=
 	# not an actual loop but allows error handling with 'break'
 	while true; do
+		if [[ -n ${ROOT} ]] && in_iuse initramfs && use initramfs; then
+			if ! in_iuse generic-uki || ! use generic-uki; then
+				eerror
+				eerror "ROOT is set, and (re-)generation of an initramfs is requested"
+				eerror "via the USE=initramfs flag. However, this is currently not"
+				eerror "supported via the sys-kernel/installkernel mechanism."
+				eerror
+				if in_iuse generic-uki && ! use generic-uki; then
+					eerror "Generation and installation of a generic initramfs and/or"
+					eerror "Unified Kernel Image is possible via portage by enabling the"
+					eerror "USE=generic-uki flag. Please enable the generic-uki flag, or"
+					eerror "chroot into: ROOT=${ROOT}"
+				else
+					eerror "Please chroot into: ROOT=${ROOT}"
+				fi
+				break
+			fi
+		fi
+
 		nonfatal mount-boot_check_status || break
+		mkdir -p "${EROOT}/boot" || break
 
 		ebegin "Installing the kernel via installkernel"
 		# note: .config is taken relatively to System.map;
 		# initrd relatively to bzImage
-		ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}" || break
+		ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}" \
+			"${EROOT}/boot" || break
 		eend ${?} || die -n "Installing the kernel failed"
 
 		success=1

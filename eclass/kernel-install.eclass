@@ -716,9 +716,7 @@ kernel-install_pkg_postinst() {
 	dist-kernel_compressed_module_cleanup \
 		"${EROOT}/lib/modules/${KV_FULL}"
 
-	if [[ -z ${ROOT} ]]; then
-		kernel-install_install_all "${KV_FULL}"
-	fi
+	kernel-install_install_all "${KV_FULL}"
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && use generic-uki; then
 		ewarn "The prebuilt initramfs and unified kernel image are highly experimental!"
@@ -740,7 +738,7 @@ kernel-install_pkg_postinst() {
 kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -z ${ROOT} && ! ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+	if [[ ! ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		local kernel_dir=${EROOT}/usr/src/linux-${KV_FULL}
 		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
@@ -754,8 +752,6 @@ kernel-install_pkg_postrm() {
 # @DESCRIPTION:
 # Rebuild the initramfs and reinstall the kernel.
 kernel-install_pkg_config() {
-	[[ -z ${ROOT} ]] || die "ROOT!=/ not supported currently"
-
 	if [[ -z ${KV_FULL} ]]; then
 		KV_FULL=${PV}${KV_LOCALVERSION}
 	fi

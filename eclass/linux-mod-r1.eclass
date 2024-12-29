@@ -508,7 +508,7 @@ linux-mod-r1_pkg_postinst() {
 	dist-kernel_compressed_module_cleanup "${EROOT}/lib/modules/${KV_FULL}"
 	_modules_update_depmod
 
-	if [[ -z ${ROOT} && ${MODULES_INITRAMFS_IUSE} ]] &&
+	if [[ ${MODULES_INITRAMFS_IUSE} ]] &&
 		use dist-kernel && use ${MODULES_INITRAMFS_IUSE#+}
 	then
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
