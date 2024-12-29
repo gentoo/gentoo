@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="d384b22ac"
+EGIT_COMMIT="8d79c372a"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
@@ -13,7 +13,7 @@ MY_PV_OFFENSIVE_XXX="1.33"
 MY_PV_OPL="2.01"
 MY_PV_PSX="1.11"
 MY_PV_SC55="4.02"
-MY_PV_VOXELS="1.21"
+MY_PV_VOXELS="2.0-rc2"
 
 DESCRIPTION="An open source engine port of the classic PC first person shooter Duke Nukem 3D"
 HOMEPAGE="http://www.eduke32.com/"
@@ -25,7 +25,7 @@ SRC_URI="
 	opl? ( https://www.moddb.com/downloads/mirror/95750/102/ce9e8f422c6cccdb297852426e96740a -> duke3d_musopl-${MY_PV_OPL}.zip )
 	psx? ( http://www.duke4.org/files/nightfright/related/duke3d_psx.zip -> duke3d_psx-${MY_PV_PSX}.zip )
 	sc-55? ( http://www.duke4.org/files/nightfright/music/duke3d_music-sc55.zip -> duke3d_music-sc55-${MY_PV_SC55}.zip )
-	voxels? ( https://www.dropbox.com/s/yaxfahyvskyvt4r/duke3d_voxels.zip -> duke3d_voxels-${MY_PV_VOXELS}.zip )
+	voxels? ( https://github.com/NightFright2k19/duke3d_voxelpack/releases/download/${MY_PV_VOXELS}/duke3d_voxels.zip -> duke3d_voxels-${MY_PV_VOXELS}.zip )
 "
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}"
 
