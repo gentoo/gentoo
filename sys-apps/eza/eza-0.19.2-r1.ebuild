@@ -219,7 +219,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+git"
 
-DEPEND="git? ( >=dev-libs/libgit2-1.8.1:= )"
+DEPEND="git? ( =dev-libs/libgit2-1.8*:= )"
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
