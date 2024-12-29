@@ -622,6 +622,10 @@ src_install() {
 	dozshcomp "completions/_${PN}"
 	dofishcomp "completions/${PN}.fish"
 
+	if use daemon; then
+		systemd_douserunit "${FILESDIR}"/atuin-daemon.{service,socket}
+	fi
+
 	if ! use client; then
 		return 0
 	fi
