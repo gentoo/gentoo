@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-12-29)
+# As of 3.1.0, upstream has removed all mocking and made it impossible
+# to test the package locally.  As such, we cannot maintain it going
+# forward.  Removal on 2025-01-28.  Bug #947144.
+dev-python/pslab
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
 # Cleanup transitional Bitcoin Core meta packages, as well as
 # unmaintainable net-p2p/bitcoin-core[system-leveldb] and
