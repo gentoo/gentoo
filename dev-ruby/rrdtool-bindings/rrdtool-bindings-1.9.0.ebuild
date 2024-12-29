@@ -6,7 +6,7 @@ EAPI=8
 MY_P="${P/-bindings}"
 MY_P="${MY_P/_/-}"
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 RUBY_FAKEGEM_TASK_DOC=""
 
 inherit ruby-ng
