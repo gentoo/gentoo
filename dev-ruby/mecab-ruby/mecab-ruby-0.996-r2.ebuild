@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 inherit ruby-ng
 
@@ -14,7 +14,6 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE=""
 
 DEPEND="~app-text/mecab-${PV}"
 RDEPEND="${DEPEND}"
