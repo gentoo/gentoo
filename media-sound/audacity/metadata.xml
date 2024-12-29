@@ -15,22 +15,23 @@
     <name>Matthew White</name>
   </maintainer>
   <upstream>
-	<bugs-to>https://github.com/audacity/audacity/issues</bugs-to>
-	<!-- There also is the changelog file and the website but only this is up to date -->
-	<changelog>https://github.com/audacity/audacity/releases</changelog>
-	<doc>https://manual.audacityteam.org/</doc>
+    <bugs-to>https://github.com/audacity/audacity/issues</bugs-to>
+    <!-- There also is the changelog file and the website but only this is up to date -->
+    <changelog>https://github.com/audacity/audacity/releases</changelog>
+    <doc>https://manual.audacityteam.org/</doc>
     <remote-id type="github">audacity/audacity</remote-id>
   </upstream>
   <use>
     <flag name="audiocom">Enable integrated uploading to audio.com</flag>
-    <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
+    <flag name="id3tag">Enable ID3 tagging via <pkg>media-libs/libid3tag</pkg></flag>
     <flag name="lv2">Add support for Ladspa V2</flag>
     <flag name="mpg123">Use <pkg>media-sound/mpg123-base</pkg> instead of
       <pkg>media-libs/libmad</pkg> for MPEG decoding</flag>
     <flag name="portmixer">Enable the internal portmixer feature</flag>
-    <flag name="sbsms">Enables sbsms library support for slower, more
-      accurate pitch and tempo changing</flag>
-    <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
-    <flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
+    <flag name="sbsms">Enable slower, more accurate pitch and tempo changing
+      via <pkg>media-libs/libsbsms</pkg></flag>
+    <flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)
+      via <pkg>media-sound/twolame</pkg></flag>
+    <flag name="vamp">Enable vamp plugins support (Audio analysing plugins)</flag>
   </use>
 </pkgmetadata>
