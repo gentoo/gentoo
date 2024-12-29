@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -33,6 +33,11 @@ all_ruby_prepare() {
 		-e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
 		-e 's/git ls-files -z/find * -print0/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Ensure the new code in lib is tested also when calling out to
+	# another ruby instance.
+	sed -e '/rubybin/ s:-rdrb/drb:-Ilib -rdrb/drb:' \
+		-i test/rinda/test_rinda.rb || die
 }
 
 each_ruby_test() {
