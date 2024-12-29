@@ -48,7 +48,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="dicom doc ffmpeg fits gif gui jpeg2k opencv openvdb ptex python qt6 raw test +tools +truetype ${CPU_FEATURES[*]%:*}"
+IUSE="dicom doc ffmpeg fits gif gui jpeg2k opencv openvdb ptex python raw test +tools +truetype ${CPU_FEATURES[*]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) gui? ( tools ) test? ( tools truetype )"
 
 RESTRICT="!test? ( test )"
@@ -99,15 +99,7 @@ RDEPEND="
 	)
 	gui? (
 		media-libs/libglvnd
-		!qt6? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtopengl:5
-			dev-qt/qtwidgets:5
-		)
-		qt6? (
-			dev-qt/qtbase:6[gui,widgets,opengl]
-		)
+		dev-qt/qtbase:6[gui,widgets,opengl]
 	)
 	raw? ( media-libs/libraw:= )
 	truetype? ( media-libs/freetype:2= )
@@ -246,9 +238,6 @@ src_configure() {
 
 	if use gui; then
 		mycmakeargs+=( -DUSE_IV="yes" -DUSE_OPENGL="yes" -DUSE_QT="yes" )
-		if ! use qt6; then
-			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt6="yes" )
-		fi
 	else
 		mycmakeargs+=(
 			-DUSE_QT="no"
