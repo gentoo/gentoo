@@ -15,6 +15,10 @@
     <name>Matthew White</name>
   </maintainer>
   <upstream>
+	<bugs-to>https://github.com/audacity/audacity/issues</bugs-to>
+	<!-- There also is the changelog file and the website but only this is up to date -->
+	<changelog>https://github.com/audacity/audacity/releases</changelog>
+	<doc>https://manual.audacityteam.org/</doc>
     <remote-id type="github">audacity/audacity</remote-id>
   </upstream>
   <use>
