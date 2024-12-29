@@ -10,6 +10,10 @@
 		<flag name="offload">Install <pkg>llvm-runtimes/offload</pkg> for -fopenmp GPU offloading</flag>
 		<flag name="openmp">Install <pkg>llvm-runtimes/openmp</pkg> for -fopenmp support</flag>
 		<flag name="sanitize">Enable compiler-rt sanitizer (-fsanitize*) support</flag>
+
+		<flag name="default-compiler-rt">Use compiler-rt + libunwind instead of libgcc as the default rtlib for clang</flag>
+		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
+		<flag name="default-lld">Use lld as the default linker for clang</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
