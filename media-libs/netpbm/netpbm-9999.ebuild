@@ -158,9 +158,6 @@ src_prepare() {
 			-e 's:pnmindex.*::' \
 			-i test/Test-Order || die
 	fi
-
-	# broken in 11.9.0, upstream informed.  Skip it for now.
-	sed -e 's:pammixmulti-identity.*::' -i test/Test-Order
 }
 
 src_configure() {
