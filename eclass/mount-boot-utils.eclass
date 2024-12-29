@@ -16,6 +16,18 @@
 # This eclass provides the functions used by mount-boot.eclass in an "inherit-
 # safe" way. This allows these functions to be used in other eclasses cleanly.
 
+# @ECLASS_VARIABLE: DONT_MOUNT_BOOT
+# @USER_VARIABLE
+# @DESCRIPTION:
+# May be set by the user or an ebuild to completely disable mount checking
+# of the /boot partition and the EFI System Partition.
+
+# @ECLASS_VARIABLE: DONT_MOUNT_ESP
+# @USER_VARIABLE
+# @DESCRIPTION:
+# May be set by the user or an ebuild to disable mount checking of the
+# EFI System Partition only.
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -62,7 +74,7 @@ mount-boot_check_status() {
 	local candidates=( /boot )
 
 	# If system is booted with UEFI, check for ESP as well
-	if [[ -d /sys/firmware/efi ]]; then
+	if [[ -d /sys/firmware/efi && -z ${DONT_MOUNT_ESP} ]]; then
 		# Use same candidates for ESP as installkernel and eclean-kernel
 		candidates+=( /efi /boot/efi /boot/EFI )
 	fi
