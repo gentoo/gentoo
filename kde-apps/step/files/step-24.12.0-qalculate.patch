@@ -1,0 +1,37 @@
+From 32ef71cac432dd61d7f631e88dece23721a793e9 Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Sun, 29 Dec 2024 23:49:39 +0100
+Subject: [PATCH] Enable qalculate, which is not a Qt library
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Qalculate has a separate Qt based interface (and a Gtk one)
+but the library does not depend on Qt.
+Enabling the library allows the program to parse the units
+again when setting some values with a unit in the property editor
+(for example 32 dm ± 10 cm is converted into 3.2 [m] ± 0.1 [m]).
+
+(cherry picked from commit bba6986d36f0857463be8bc945951079d300f6ed)
+---
+ CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 76a494c..4c352a5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -73,10 +73,6 @@ set_package_properties(GSL PROPERTIES
+ set(STEPCORE_WITH_GSL ${GSL_FOUND} CACHE BOOL "Enable GSL-powered features for StepCore")
+ set(STEPCORE_WITH_QT ON) # CACHE BOOL "Enable QT-powered features for StepCore")
+ set(STEP_WITH_QALCULATE ${QALCULATE_FOUND} CACHE BOOL "Enable unit conversion support using libqalculate")
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    MESSAGE(STATUS "QALCULATE was not ported to QT6 yet")
+-    set(STEP_WITH_QALCULATE false)
+-endif()
+ 
+ # Compiler specific options
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+-- 
+GitLab
+
