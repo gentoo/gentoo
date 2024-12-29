@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,12 +14,17 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# HACK: libX11 produces .pc files that depend on xproto.pc. When libX11
+#       is installed as a binpkg, DEPEND packages are not pulled in,
+#       but to build source packages against libX11, xorg-proto is
+#       needed. Until a "build-against-depend" option is available in
+#       ebuilds, we RDEPEND on xproto. See bug #903707 and others.
 RDEPEND="
 	>=x11-libs/libxcb-1.11.1[${MULTILIB_USEDEP}]
 	x11-misc/compose-tables
+	x11-base/xorg-proto
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
 	x11-libs/xtrans
 "
 BDEPEND="test? ( dev-lang/perl )"
