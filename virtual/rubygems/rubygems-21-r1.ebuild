@@ -14,7 +14,7 @@ RDEPEND="
 	ruby_targets_ruby31? ( >=dev-ruby/rubygems-3.3.26[ruby_targets_ruby31] )
 	ruby_targets_ruby32? ( >=dev-ruby/rubygems-3.4.19[ruby_targets_ruby32] )
 	ruby_targets_ruby33? ( >=dev-ruby/rubygems-3.5.22[ruby_targets_ruby33] )
-	ruby_targets_ruby34? ( >=dev-ruby/rubygems-3.6.2[ruby_targets_ruby33] )
+	ruby_targets_ruby34? ( >=dev-ruby/rubygems-3.6.2[ruby_targets_ruby34] )
 "
 
 pkg_setup() { :; }
