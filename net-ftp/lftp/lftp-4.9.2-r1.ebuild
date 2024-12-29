@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.2-ac-270.patch
 	"${FILESDIR}"/${PN}-4.9.2-configure-clang16.patch
 	"${FILESDIR}"/${PN}-4.9.2-libressl.patch #903001
+	"${FILESDIR}"/${PN}-4.9.2-socks.patch #903001
 )
 
 # Gnulib false positive #900064
