@@ -13,13 +13,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="aubio cpu_flags_x86_sse debug dssi ladspa libsamplerate mad osc qt5 rubberband vorbis zlib"
+IUSE="aubio cpu_flags_x86_sse debug dssi ladspa libsamplerate mad osc rubberband vorbis zlib"
 REQUIRED_USE="dssi? ( ladspa )"
 
 BDEPEND="
 	virtual/pkgconfig
-	qt5? ( dev-qt/linguist-tools:5 )
-	!qt5? ( dev-qt/qttools:6[linguist] )
+	dev-qt/qttools:6[linguist]
 "
 DEPEND="
 	media-libs/alsa-lib
@@ -35,18 +34,8 @@ DEPEND="
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( media-libs/libmad )
 	osc? ( media-libs/liblo )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-		dev-qt/qtx11extras:5
-	)
-	!qt5? (
-		dev-qt/qtbase:6[gui,widgets,xml]
-		dev-qt/qtsvg:6
-	)
+	dev-qt/qtbase:6[gui,widgets,xml]
+	dev-qt/qtsvg:6
 	rubberband? ( media-libs/rubberband )
 	vorbis? (
 		media-libs/libogg
@@ -55,10 +44,6 @@ DEPEND="
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -79,7 +64,7 @@ src_configure() {
 		-DCONFIG_LV2=1
 		-DCONFIG_LV2_UI_GTK2=0
 		-DCONFIG_NSM=0
-		-DCONFIG_QT6=$(usex qt5 0 1)
+		-DCONFIG_QT6=1
 		-DCONFIG_SSE=$(usex cpu_flags_x86_sse 1 0)
 		-DCONFIG_STACKTRACE=$(usex debug 1 0)
 		-DCONFIG_VESTIGE=1
