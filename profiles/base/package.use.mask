@@ -29,10 +29,6 @@ app-emulation/pcem experimental
 # Prepare virtual/bitcoin-leveldb last-rites, bug #945359
 net-p2p/bitcoin-core system-leveldb
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-20)
-# openjfx for OpenJDK 24 is not yet available.
-dev-java/openjdk:24 javafx
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-12-16)
 # sci-libs/atlas requires you to disable frequency scaling to build.
 # This barely works on older Intel CPUs on good days.
