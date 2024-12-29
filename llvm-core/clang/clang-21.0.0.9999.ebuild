@@ -258,7 +258,7 @@ multilib_src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 		-DLLVM_ROOT="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
-		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
+		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang/${LLVM_MAJOR}"
 		-DCLANG_CONFIG_FILE_USER_DIR="~/.config/clang"
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${LLVM_MAJOR}"
