@@ -9,7 +9,6 @@
 		<name>Michael Corvinus</name>
 	</maintainer>
 	<use>
-		<flag name="minimal">Don't build extra packages from the bigide component</flag>
 		<flag name="gui">Build GUI IDE.</flag>
 		<flag name="gtk2">Use gtk:2 for widgets.</flag>
 		<flag name="extras">Build a lot of extra packages, including lhelp chm viewer program.</flag>
