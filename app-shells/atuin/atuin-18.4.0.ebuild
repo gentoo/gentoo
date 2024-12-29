@@ -610,8 +610,7 @@ src_test() {
 }
 
 src_install() {
-	exeinto "/usr/bin"
-	doexe "${ATUIN_BIN}"
+	dobin "${ATUIN_BIN}"
 
 	if use server; then
 		systemd_dounit "${FILESDIR}/atuin.service"
