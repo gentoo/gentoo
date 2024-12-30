@@ -1,0 +1,13 @@
+_VSTD macro was removed from libcxx
+Upstream commit: https://github.com/ROCm/rocThrust/commit/bc24ef2613e282d57d96dcf4263e2fa2cab171e4
+--- a/thrust/type_traits/is_contiguous_iterator.h
++++ b/thrust/type_traits/is_contiguous_iterator.h
+@@ -139,7 +139,7 @@ struct is_libcxx_wrap_iter : false_type {};
+ #if defined(_LIBCPP_VERSION)
+ template <typename Iterator>
+ struct is_libcxx_wrap_iter<
+-  _VSTD::__wrap_iter<Iterator>
++  std::__wrap_iter<Iterator>
+ > : true_type {};
+ #endif
+ 

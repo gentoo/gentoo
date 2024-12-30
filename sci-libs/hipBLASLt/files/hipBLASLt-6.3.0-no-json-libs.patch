@@ -1,0 +1,10 @@
+tensilelite builds fine without these libraries
+--- a/tensilelite/requirements.txt
++++ b/tensilelite/requirements.txt
+@@ -3,6 +3,3 @@ pyyaml
+ msgpack
+ joblib>=1.4.0; python_version >= '3.8'
+ joblib>=1.1.1; python_version < '3.8'
+-simplejson
+-ujson
+-orjson

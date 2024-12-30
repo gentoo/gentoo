@@ -39,7 +39,7 @@ REQUIRED_USE="
 
 DEPEND="
 	video_cards_amdgpu? (
-		>=dev-util/rocminfo-5
+		dev-util/rocminfo:${SLOT}
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}
 		')
@@ -67,8 +67,8 @@ RDEPEND="${DEPEND}
 	)
 	video_cards_amdgpu? (
 		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
-		>=dev-libs/rocm-device-libs-${PV}
-		>=dev-libs/roct-thunk-interface-5
+		dev-libs/rocm-device-libs:${SLOT}
+		dev-libs/roct-thunk-interface:${SLOT}
 	)
 "
 

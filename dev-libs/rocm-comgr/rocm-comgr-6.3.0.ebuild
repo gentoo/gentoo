@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 
 inherit cmake llvm-r1 prefix
 
@@ -11,7 +11,7 @@ MY_P=llvm-project-rocm-${PV}
 components=( "amd/comgr" )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
-HOMEPAGE="https://github.com/ROCm/ROCm-CompilerSupport"
+HOMEPAGE="https://github.com/ROCm/llvm-project/tree/amd-staging/amd/comgr"
 SRC_URI="https://github.com/ROCm/llvm-project/archive/rocm-${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}/${components[0]}"
 
@@ -27,9 +27,10 @@ PATCHES=(
 	"${FILESDIR}/0001-Find-CLANG_RESOURCE_DIR-using-clang-print-resource-d.patch"
 	"${FILESDIR}/${PN}-6.0.0-extend-isa-compatibility-check.patch"
 	"${FILESDIR}/${PN}-6.1.0-enforce-oop-compiler.patch"
-	"${FILESDIR}/${PN}-6.1.0-fix-comgr-default-flags.patch"
+	"${FILESDIR}/${PN}-6.3.0-fix-comgr-default-flags.patch"
 	"${FILESDIR}/${PN}-6.1.0-dont-add-nogpulib.patch"
-	"${FILESDIR}/${PN}-6.2.2-missing-isa.patch"
+	"${FILESDIR}/${PN}-6.3.0-llvm-19-compat.patch"
+	"${FILESDIR}/${PN}-6.3.0-bypass-device-libs-copy.patch"
 )
 
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}

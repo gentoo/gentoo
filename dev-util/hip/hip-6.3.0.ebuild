@@ -7,7 +7,7 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 ROCM_SKIP_GLOBALS=1
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 
 inherit cmake docs flag-o-matic llvm-r1 rocm
 
@@ -24,13 +24,16 @@ SRC_URI="
 "
 S="${WORKDIR}/clr-rocm-${PV}/"
 TEST_S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
+HIP_S="${WORKDIR}/HIP-rocm-${PV}"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
 IUSE="debug +hip opencl test video_cards_amdgpu video_cards_nvidia"
-RESTRICT="!test? ( test )"
+
+# some tests are broken
+RESTRICT="test"
 
 REQUIRED_USE="
 	|| ( hip opencl )
@@ -39,10 +42,7 @@ REQUIRED_USE="
 
 DEPEND="
 	video_cards_amdgpu? (
-		>=dev-util/rocminfo-5
-		$(llvm_gen_dep '
-			llvm-core/clang:${LLVM_SLOT}
-		')
+		dev-util/rocminfo:${SLOT}
 		dev-libs/rocm-comgr:${SLOT}
 		dev-libs/rocr-runtime:${SLOT}
 	)
@@ -56,9 +56,11 @@ BDEPEND="
 	video_cards_amdgpu? (
 		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
 	)
+	test? (
+		media-libs/freeglut
+	)
 "
 RDEPEND="${DEPEND}
-	llvm-core/clang-runtime:=
 	opencl? (
 		!dev-libs/opencl-icd-loader
 		!dev-libs/rocm-opencl-runtime
@@ -67,15 +69,18 @@ RDEPEND="${DEPEND}
 	)
 	video_cards_amdgpu? (
 		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
-		>=dev-libs/rocm-device-libs-${PV}
-		>=dev-libs/roct-thunk-interface-5
+		dev-libs/rocm-device-libs:${SLOT}
+		dev-libs/roct-thunk-interface:${SLOT}
 	)
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
-	"${FILESDIR}/${PN}-6.1.0-install.patch"
+	"${FILESDIR}/${PN}-6.3.0-install.patch"
 	"${FILESDIR}/${PN}-6.1.1-fix-musl.patch"
+	"${FILESDIR}/${PN}-6.2.4-libcxx.patch"
+	"${FILESDIR}/${PN}-6.3.0-no-isystem-usr-include.patch"
+	"${FILESDIR}/${PN}-6.3.0-clr-fix-libcxx.patch"
 )
 
 hip_test_wrapper() {
@@ -96,28 +101,29 @@ src_prepare() {
 		-e 's:AMDGCN_TARGET_TRIPLE:kAmdgcnTargetTriple:g' \
 		-i hipamd/src/hip_code_object.cpp || die
 
+	pushd "${HIP_S}" >/dev/null || die
+	eapply "${FILESDIR}/${PN}-6.3.0-hip-fix-libcxx.patch"
+
 	# hipamd is itself built by cmake, and should never provide a
 	# FindHIP.cmake module. But the reality is some package relies on it.
 	# Set HIP and HIP Clang paths directly, don't search using heuristics
 	sed -e "s:# Search for HIP installation:set(HIP_ROOT_DIR \"${EPREFIX}/usr\"):" \
 		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d)/bin\"):" \
-		-i "${WORKDIR}/HIP-rocm-${PV}/cmake/FindHIP.cmake" || die
+		-i "cmake/FindHIP.cmake" || die
+	popd >/dev/null || die
+
+	sed -e "s/ -Werror//g" -i "hipamd/src/CMakeLists.txt" || die
 
 	cmake_src_prepare
 
-	# With Clang>17 -amdgpu-early-inline-all=true causes OOMs in dependencies
-	# https://github.com/llvm/llvm-project/issues/86332
-	if [ "$LLVM_SLOT" -le "17" ]; then
-		sed -e "s/-mllvm=-amdgpu-early-inline-all=true //" -i hipamd/hip-config-amd.cmake || die
-		sed -e "s/-mllvm=-amdgpu-early-inline-all=true;//" -i "${WORKDIR}/HIP-rocm-${PV}/hip-lang-config.cmake.in"
-	fi
-
 	if use test; then
 		local PATCHES=(
-			"${FILESDIR}"/hip-test-6.0.2-hipcc-system-install.patch
+			"${FILESDIR}"/hip-test-6.3.0-hipcc-system-install.patch
 			"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
 			"${FILESDIR}"/hip-test-6.1.1-fix-musl.patch
 		)
+		sed -e "s/-Werror //" -e "s/-Wall -Wextra //" -i "${TEST_S}/CMakeLists.txt" || die
+
 		hip_test_wrapper cmake_src_prepare
 	fi
 }
@@ -140,19 +146,20 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
 		-DCMAKE_SKIP_RPATH=ON
-		-D__HIP_ENABLE_PCH="no"
+		-D__HIP_ENABLE_PCH=OFF
 
 		-DCLR_BUILD_HIP="$(usex hip)"
 		-DCLR_BUILD_OCL="$(usex opencl)"
 
-		-DHIP_COMMON_DIR="${WORKDIR}/HIP-rocm-${PV}"
+		-DHIP_COMMON_DIR="${HIP_S}"
+		-DHIP_ENABLE_ROCPROFILER_REGISTER=OFF
 		-DHIPCC_BIN_DIR="${EPREFIX}/usr/bin"
 		-DROCM_PATH="${EPREFIX}/usr"
-		-DUSE_PROF_API="no"
-		-DFILE_REORG_BACKWARD_COMPATIBILITY="no"
+		-DUSE_PROF_API=OFF
+		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
 
 		-DOpenGL_GL_PREFERENCE="GLVND"
-		-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
 	)
 
 	if use video_cards_amdgpu; then
@@ -171,19 +178,25 @@ src_configure() {
 	if use test; then
 		local mycmakeargs=(
 			-DCMAKE_MODULE_PATH="${TEST_S}/external/Catch2/cmake/Catch2"
+			-DROCM_PATH="${EPREFIX}/usr"
+			-DCMAKE_NO_SYSTEM_FROM_IMPORTED=ON
+			-Wno-dev
+
+			# 1) Use custom build of hipamd instead of system one
+			# 2) Build fails with libc++: https://github.com/llvm/llvm-project/issues/119076
+			-DCMAKE_CXX_FLAGS="-I${BUILD_DIR}/hipamd/include -stdlib=libstdc++"
+			-DCMAKE_EXE_LINKER_FLAGS="-L${BUILD_DIR}/hipamd/lib"
 		)
 		if use video_cards_amdgpu; then
 			mycmakeargs+=(
-				-DROCM_PATH="${BUILD_DIR}/hipamd"
 				-DHIP_PLATFORM="amd"
 			)
 		elif use video_cards_nvidia; then
 			mycmakeargs+=(
-				-DROCM_PATH="${BUILD_DIR}/hipother"
 				-DHIP_PLATFORM="nvidia"
 			)
 		fi
-		HIP_PATH="${EPREFIX}/usr" hip_test_wrapper cmake_src_configure
+		hip_test_wrapper cmake_src_configure
 	fi
 }
 
@@ -191,8 +204,7 @@ src_compile() {
 	cmake_src_compile
 
 	if use test; then
-		HIP_PATH="${BUILD_DIR}"/hipamd \
-			hip_test_wrapper cmake_src_compile build_tests
+		hip_test_wrapper cmake_src_compile build_tests
 	fi
 }
 

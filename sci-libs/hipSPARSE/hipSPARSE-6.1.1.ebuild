@@ -43,7 +43,7 @@ REQUIRED_USE="${ROCM_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-util/rocminfo
-		dev-util/hip
+		dev-util/hip:${SLOT}
 		sci-libs/rocSPARSE:${SLOT}[${ROCM_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-build/rocm-cmake
@@ -68,6 +68,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Note: hipcc is enforced; clang fails when libc++ is enabled
+	# with an error similar to https://github.com/boostorg/config/issues/392
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DHIP_RUNTIME="ROCclr"
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)

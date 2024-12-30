@@ -1,0 +1,46 @@
+composable_kernel does not build some functions/targets depending on GPU.
+Upstream bug: https://github.com/ROCm/composable_kernel/issues/1646
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -847,10 +847,6 @@ target_include_directories(MIOpen PUBLIC
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/include>
+ )
+ 
+-if(MIOPEN_USE_COMPOSABLEKERNEL)
+-set(MIOPEN_CK_LINK_FLAGS composable_kernel::device_other_operations composable_kernel::device_gemm_operations composable_kernel::device_conv_operations composable_kernel::device_reduction_operations composable_kernel::device_mha_operations hip::host)
+-endif()
+-
+ if(WIN32)
+     # Refer to https://en.cppreference.com/w/cpp/language/types for details.
+     target_compile_options(MIOpen PRIVATE $<BUILD_INTERFACE:$<$<CXX_COMPILER_ID:Clang>:-U__LP64__>>)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -327,7 +327,27 @@ add_compile_definitions($<$<COMPILE_LANGUAGE:CXX>:HIP_COMPILER_FLAGS=${HIP_COMPI
+ # HIP
+ if( MIOPEN_BACKEND STREQUAL "HIP" OR MIOPEN_BACKEND STREQUAL "HIPOC" OR MIOPEN_BACKEND STREQUAL "HIPNOGPU")
+     if(MIOPEN_USE_COMPOSABLEKERNEL)
+-        find_package(composable_kernel 1.0.0 COMPONENTS device_other_operations device_gemm_operations device_conv_operations device_reduction_operations device_mha_operations)
++        set(MIOPEN_CK_LINK_FLAGS hip::host)
++        set(COMPONENTS_LIST device_other_operations device_gemm_operations device_conv_operations device_reduction_operations device_mha_operations)
++        foreach(component IN LISTS COMPONENTS_LIST)
++            find_package(composable_kernel 1.0.0 COMPONENTS ${component} QUIET)
++            if(TARGET composable_kernel::${component})
++                list(APPEND MIOPEN_CK_LINK_FLAGS "composable_kernel::${component}")
++            else()
++                message(WARNING "CK component '${component}' not found.")
++            endif()
++        endforeach()
++        if(AMDGPU_TARGETS MATCHES "gfx94" OR AMDGPU_TARGETS MATCHES "gfx90a")
++            add_definitions(-DMIOPEN_USE_CK_MHA_OPS=1)
++        else()
++            add_definitions(-DMIOPEN_USE_CK_MHA_OPS=0)
++        endif()
++        if(AMDGPU_TARGETS MATCHES "gfx9")
++            add_definitions(-DMIOPEN_USE_CK_XDL_OPS=1)
++        else()
++            add_definitions(-DMIOPEN_USE_CK_XDL_OPS=0)
++        endif()
++
+     endif()
+     if( MIOPEN_BACKEND STREQUAL "HIPNOGPU")
+         set(MIOPEN_MODE_NOGPU 1)
