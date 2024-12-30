@@ -20,6 +20,7 @@
 		<remote-id type="github">hyprwm/Hyprland</remote-id>
 	</upstream>
 	<use>
+		<flag name="hyprpm">Enable the Hyprland Plugin Manager</flag>
 		<flag name="legacy-renderer">Enable legacy renderer</flag>
 		<flag name="qtutils">Install Hyprland QT utility apps</flag>
 	</use>
