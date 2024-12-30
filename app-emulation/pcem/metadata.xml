@@ -14,7 +14,9 @@
 		which can then be used to launch programs.
 	</longdescription>
 	<use>
+		<flag name="experimental">Enable experimental devices like printers.</flag>
 		<flag name="networking">Enable support for emulation of network cards.</flag>
+		<flag name="plugins">Enable support for dynamic plugins, which can add additional features.</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://pcem-emulator.co.uk/phpBB3/viewforum.php?f=2</bugs-to>

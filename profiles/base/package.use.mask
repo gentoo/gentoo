@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Conrad Kostecki <conikost@gentoo.org> (2024-12-30)
+# Currently experimental features do not compile.
+app-emulation/pcem experimental
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
 # Prepare virtual/bitcoin-leveldb last-rites, bug #945359
 net-p2p/bitcoin-core system-leveldb
