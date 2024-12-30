@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain.eclass
@@ -2641,7 +2641,7 @@ toolchain_src_install() {
 	#  - "${D}${LIBPATH}"
 	# As dostrip does not specify host to override ${CHOST} tools just skip
 	# non-native binary stripping.
-	is_crosscompile && dostrip -x "${LIBPATH}"
+	is_crosscompile && dostrip -x "${LIBPATH#"${EPREFIX}"}"
 
 	cd "${S}" || die
 	if is_crosscompile; then
