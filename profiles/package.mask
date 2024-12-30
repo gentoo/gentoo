@@ -33,16 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-12-30)
-# No "real" problem with this version, but it intentionally aborts if
-# it fails to find a defined version in pyproject.toml (that should
-# exist).  While this is something upstreams should fix, maturin
-# intends to downgrade this from an error to a warning in the next
-# version[1] and so there is little need for downstream to worry about
-# this in the interim.  Bug #946966, #947040, #947166, #947209
-# [1] https://github.com/PyO3/maturin/issues/2416
-~dev-util/maturin-1.8.0
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-29)
 # As of 3.1.0, upstream has removed all mocking and made it impossible
 # to test the package locally.  As such, we cannot maintain it going
