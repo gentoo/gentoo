@@ -28,5 +28,7 @@ all_ruby_prepare() {
 }
 
 each_ruby_prepare() {
+	# rake imports all rakelib/* (bug #947054)
+	rm rakelib/rdoc.rake || die
 	${RUBY} -S rake templates || die
 }
