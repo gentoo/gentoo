@@ -57,4 +57,8 @@ src_install() {
 
 	docinto html
 	dodoc doc/*.html doc/*.css
+
+	if use elibc_musl; then
+		QA_CONFIG_IMPL_DECL_SKIP=( getprotobynumber_r )
+	fi
 }
