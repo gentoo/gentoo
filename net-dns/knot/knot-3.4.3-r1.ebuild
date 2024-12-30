@@ -10,7 +10,7 @@ KNOT_SUBSLOT="15.9.4"
 
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/ https://gitlab.nic.cz/knot/knot-dns"
-SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
+SRC_URI="https://knot-dns.nic.cz/release/${P/_/-}.tar.xz"
 
 S="${WORKDIR}/${P/_/-}"
 
