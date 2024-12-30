@@ -34,7 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlink.patch
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
 	"${FILESDIR}"/${P}-clang.patch
-	"${FILESDIR}"/${P}-freetype-2.13.3.patch
+	#"${FILESDIR}"/${P}-freetype-2.13.3.patch
 )
 
 src_prepare() {
