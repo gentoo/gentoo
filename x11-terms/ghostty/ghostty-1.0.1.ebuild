@@ -102,7 +102,6 @@ QA_PRESTRIPPED="usr/bin/ghostty"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-bzip2-dependency.patch
-	"${FILESDIR}"/${PN}-1.0.1-copy-terminfo-using-installdir.patch
 )
 
 src_configure() {
@@ -137,13 +136,4 @@ src_configure() {
 	fi
 
 	zig_src_configure
-}
-
-src_install() {
-	zig_src_install
-
-	# HACK: Zig 0.13.0 build system's InstallDir step has a bug where it
-	#       fails to install symbolic links, so we manually create it
-	#       here.
-	dosym -r /usr/share/terminfo/x/xterm-ghostty /usr/share/terminfo/g/ghostty
 }

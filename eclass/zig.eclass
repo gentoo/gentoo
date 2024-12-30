@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig.eclass
@@ -293,13 +293,13 @@ zig_init_base_args() {
 		-Dcpu="${ZIG_CPU}"
 		--release=safe
 
-		--prefix-exe-dir bin/
-		--prefix-lib-dir "$(get_libdir)/"
-		--prefix-include-dir include/
+		# We use an absolute path here, but DESTDIR below will make it
+		# so that files are installed to ${DESTDIR}/${prefix}.
+		--prefix "${EPREFIX}/usr"
 
-		# Should be relative path to make other calls easier,
-		# so remove leading slash here.
-		--prefix "${EPREFIX:+${EPREFIX#/}/}usr/"
+		--prefix-exe-dir bin
+		--prefix-lib-dir "$(get_libdir)"
+		--prefix-include-dir include
 
 		--libc "${T}/zig_libc.txt"
 	)
@@ -492,7 +492,15 @@ zig_src_compile() {
 
 	local args=( "${ZBS_ARGS[@]}" "${@}" )
 	einfo "ZBS: compiling with: ${args[@]}"
-	nonfatal ezig build "${args[@]}" || die "ZBS: compilation failed"
+
+	# XXX: Some packages rely on ${DESTDIR}${PREFIX} being writable
+	#      during zig build. We don't want to install to ${D} just yet
+	#      so we install to a temporary directory during src_compile.
+	# TODO: Instead of installing twice, copy this install to ${D}
+	#       during src_install. I couldn't find prior art for this in
+	#       any other eclass.
+	DESTDIR="${T}/src_compile-image" nonfatal ezig build "${args[@]}" ||
+		die "ZBS: compilation failed"
 
 	popd > /dev/null || die
 }
