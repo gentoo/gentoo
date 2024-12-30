@@ -9,5 +9,4 @@ Type=Application
 StartupNotify=false
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;application/x-code-workspace;
-Actions=new-empty-window;
 Keywords=vscode;code;
