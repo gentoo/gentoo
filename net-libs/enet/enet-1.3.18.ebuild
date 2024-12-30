@@ -11,7 +11,7 @@ SRC_URI="http://enet.bespin.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.3/8"
-KEYWORDS="amd64 ~arm64 ~loong ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="static-libs"
 
 RDEPEND="!${CATEGORY}/${PN}:0"
