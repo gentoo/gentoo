@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 2007-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=${RC_PREFIX}/usr/bin/stalwart-mail
+pidfile=${RC_PREFIX}/var/run/stalwart-mail/pid
+command_args="--config /opt/stalwart-mail/etc/config.toml"
+command_background="yes"
+name="Stalwart mail server"
+
+depend()
+{
+	need net
+	use postgresql mysql
+	before provide mta
+}
