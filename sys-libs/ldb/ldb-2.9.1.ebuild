@@ -9,7 +9,7 @@ inherit python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="LDAP-like embedded database"
 HOMEPAGE="https://ldb.samba.org"
-SRC_URI="https://samba.org/ftp/pub/${PN}/${P}.tar.gz"
+SRC_URI="https://download.samba.org/pub/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
