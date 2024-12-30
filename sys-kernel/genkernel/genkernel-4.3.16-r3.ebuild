@@ -201,7 +201,7 @@ src_install() {
 	doins ${A/${P}.tar.xz/}
 	popd &>/dev/null || die
 
-	# Workaround for bug 944499, for now this patch will live in FILESDIR and is 
+	# Workaround for bug 944499, for now this patch will live in FILESDIR and is
 	# conditionally installed but we could add it to genkernel.git and conditionally
 	# remove it here instead.
 	if ! use systemd; then

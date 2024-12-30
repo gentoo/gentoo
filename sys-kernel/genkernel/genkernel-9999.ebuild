@@ -204,7 +204,7 @@ src_install() {
 	# remove it here instead.
 	if ! use systemd; then
 		insinto /usr/share/genkernel/patches/lvm/${VERSION_LVM}/
-		doins "${FILESDIR}"/lvm2-2.03.20-dm_lvm_rules_no_systemd.patch
+		doins "${FILESDIR}"/lvm2-2.03.20-dm_lvm_rules_no_systemd_v2.patch
 	fi
 }
 
