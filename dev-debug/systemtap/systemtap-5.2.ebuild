@@ -77,6 +77,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test ) test"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.1-ia64.patch"
+	"${FILESDIR}/${PN}-5.2-support-clang-libcxx.patch"
 )
 
 pkg_setup() {
