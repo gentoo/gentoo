@@ -10,7 +10,7 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">lotabout/skim</remote-id>
-        <changelog>https://github.com/lotabout/skim/blob/master/CHANGELOG.md</changelog>
+        <remote-id type="github">skim-rs/skim</remote-id>
+        <changelog>https://github.com/skim-rs/skim/blob/master/CHANGELOG.md</changelog>
     </upstream>
 </pkgmetadata>
