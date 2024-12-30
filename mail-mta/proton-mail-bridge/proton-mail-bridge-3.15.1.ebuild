@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop go-module systemd xdg-utils
+inherit cmake desktop go-env go-module systemd xdg-utils
 
 MY_PN="${PN/-mail/}"
 MY_P="${MY_PN}-${PV}"
