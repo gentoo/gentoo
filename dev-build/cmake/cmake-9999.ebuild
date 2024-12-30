@@ -26,7 +26,7 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="https://cmake.org/"
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	CMAKE_DOCS_PREBUILT=0
 
 	EGIT_REPO_URI="https://gitlab.kitware.com/cmake/cmake.git"
@@ -59,7 +59,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="${CMAKE_DOCS_USEFLAG} dap gui ncurses qt6 test"
+IUSE="${CMAKE_DOCS_USEFLAG} dap gui ncurses test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -72,14 +72,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/pkgconfig
 	dap? ( dev-cpp/cppdap )
-	gui? (
-		!qt6? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtwidgets:5
-		)
-		qt6? ( dev-qt/qtbase:6[gui,widgets] )
-	)
+	gui? ( dev-qt/qtbase:6[gui,widgets] )
 	ncurses? ( sys-libs/ncurses:= )
 "
 DEPEND="${RDEPEND}"
@@ -244,7 +237,7 @@ src_configure() {
 		-DBUILD_QtDialog=$(usex gui)
 	)
 
-	use gui && mycmakeargs+=( -DCMake_QT_MAJOR_VERSION=$(usex qt6 6 5) )
+	use gui && mycmakeargs+=( -DCMake_QT_MAJOR_VERSION=6 )
 
 	cmake_src_configure
 }
