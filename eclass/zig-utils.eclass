@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig-utils.eclass
@@ -76,6 +76,15 @@ if [[ ! ${ZIG_OPTIONAL} ]]; then
 		)
 	"
 fi
+
+# @ECLASS_VARIABLE: ZIG_STAGED_DESTDIR
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The DESTDIR used by default in ezig.  zig_src_compile will
+# install to this directory by default.  You can use this to
+# call host tools by building paths like
+# "${ZIG_STAGED_DESTDIR}${EPREFIX}/usr/bin/tool".
+: "${ZIG_STAGED_DESTDIR:="${T}/zig-install"}"
 
 # @ECLASS_VARIABLE: ZIG_TARGET
 # @DEFAULT_UNSET
@@ -521,6 +530,13 @@ ezig() {
 	if [[ -z "${ZIG_EXE}" ]] ; then
 		die "${FUNCNAME[0]}: ZIG_EXE is not set. Was 'zig-utils_setup' called before using ezig?"
 	fi
+
+	# Each `zig build` step may contain targets that install
+	# files. Things like tests can require these files. Therefore,
+	# there should always be a valid DESTDIR. The user can override
+	# the DESTDIR from the outside e.g. during the src_install
+	# phase.
+	local -x DESTDIR="${DESTDIR:-${ZIG_STAGED_DESTDIR}}"
 
 	# Progress tree is helpful indicator in TTY, but unfortunately
 	# they make Portage logs harder to read in plaintext.

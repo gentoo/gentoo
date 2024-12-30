@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -93,10 +93,16 @@ pkg_setup() {
 	ZIG_EXE="not-applicable" ZIG_VER="${PV}" zig_pkg_setup
 
 	export ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
+	export ZIG_TARGET_STAGE3_EXE="${ZIG_STAGED_DESTDIR}${EPREFIX}/usr/bin/zig"
 
 	if use llvm; then
 		tc-is-cross-compiler && die "USE=llvm is not yet supported when cross-compiling"
 		llvm-r1_pkg_setup
+	fi
+
+	# FIXME: Make USE=doc work when cross-compiling by building a host stage3 Zig as well.
+	if use doc && tc-is-cross-compiler; then
+		die "USE=doc is not yet supported when cross-compiling"
 	fi
 
 	check-reqs_pkg_setup
@@ -199,26 +205,28 @@ src_compile() {
 	fi
 
 	cd "${BUILD_DIR}" || die
-	ZIG_EXE="./zig2" zig_src_compile --prefix "${BUILD_DIR}/stage3/"
+	ZIG_EXE="./zig2" zig_src_compile
 
-	./stage3/bin/zig env || die "Zig compilation failed"
+	if ! tc-is-cross-compiler; then
+		${ZIG_TARGET_STAGE3_EXE} env || die "Zig compilation failed"
 
-	if use doc; then
-		ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix "${S}/docgen/"
+		if use doc; then
+			ZIG_EXE="${ZIG_TARGET_STAGE3_EXE}" zig_src_compile langref
+		fi
 	fi
 }
 
 src_test() {
 	cd "${BUILD_DIR}" || die
-	ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native
+	ZIG_EXE="${ZIG_TARGET_STAGE3_EXE}" zig_src_test -Dskip-non-native
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "docgen/doc/langref.html" )
+	use doc && local HTML_DOCS=( "${ZIG_STAGED_DESTDIR}${EPREFIX}/usr/doc/langref.html" )
 
 	ZIG_EXE="./zig2" zig_src_install --prefix "${ZIG_SYS_INSTALL_DEST}"
 
-	cd "${D}/${ZIG_SYS_INSTALL_DEST}" || die
+	cd "${D}${ZIG_SYS_INSTALL_DEST}" || die
 	mv lib/zig/ lib2/ || die
 	rm -rf lib/ || die
 	mv lib2/ lib/ || die
