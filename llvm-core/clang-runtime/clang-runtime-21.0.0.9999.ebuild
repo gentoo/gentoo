@@ -13,7 +13,7 @@ LICENSE="metapackage"
 SLOT="${PV%%.*}"
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
-	default-compiler-rt default-libcxx default-lld llvm-libunwind
+	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
 "
 REQUIRED_USE="
 	sanitize? ( compiler-rt )
@@ -45,6 +45,7 @@ RDEPEND="
 	!default-libcxx? ( sys-devel/gcc )
 	default-lld? ( ~llvm-core/lld-${PV} )
 	!default-lld? ( sys-devel/binutils )
+	polly? ( ~llvm-core/polly-${PV} )
 "
 
 _doclang_cfg() {
@@ -55,6 +56,7 @@ _doclang_cfg() {
 		newins - "${tool}.cfg" <<-EOF
 			# This configuration file is used by ${tool} driver.
 			@../${tool}.cfg
+			@gentoo-plugins.cfg
 			@gentoo-runtimes.cfg
 		EOF
 	done
@@ -114,6 +116,15 @@ src_install() {
 		--stdlib=$(usex default-libcxx libc++ libstdc++)
 		-fuse-ld=$(usex default-lld lld bfd)
 	EOF
+	newins - gentoo-plugins.cfg <<-EOF
+		# This file is used to load optional LLVM plugins.
+	EOF
+	if use polly; then
+		cat >> "${ED}/etc/clang/${SLOT}/gentoo-plugins.cfg" <<-EOF || die
+			-fpass-plugin=LLVMPolly.so
+			-fplugin=LLVMPolly.so
+		EOF
+	fi
 
 	multilib_foreach_abi doclang_cfg
 }
