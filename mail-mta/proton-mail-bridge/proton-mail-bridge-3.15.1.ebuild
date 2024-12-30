@@ -12,6 +12,7 @@ DESCRIPTION="Serves Proton Mail to IMAP/SMTP clients"
 HOMEPAGE="https://proton.me/mail/bridge https://github.com/ProtonMail/proton-bridge/"
 SRC_URI="https://github.com/ProtonMail/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-3+ ISC LGPL-3+ MIT MPL-2.0 Unlicense"
 SLOT="0"
@@ -22,7 +23,8 @@ IUSE="gui"
 PROPERTIES="test_network"
 RESTRICT="test"
 
-RDEPEND="app-crypt/libsecret
+RDEPEND="
+	app-crypt/libsecret
 	gui? (
 		>=dev-libs/protobuf-21.12:=
 		>=dev-libs/sentry-native-0.6.5-r1
@@ -38,8 +40,6 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.15.1-gui_gentoo.patch
 )
-
-S="${WORKDIR}"/${MY_P}
 
 src_unpack() {
 	default
