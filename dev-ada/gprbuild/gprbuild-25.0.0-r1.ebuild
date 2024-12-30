@@ -62,6 +62,7 @@ src_compile() {
 		emake -C doc txt
 		emake -C doc info
 		emake -C doc html
+		emake -C doc pdf
 	fi
 }
 
@@ -74,7 +75,7 @@ src_install() {
 	local HTML_DOCS=
 	local DOCS=README.md
 	if use doc; then
-		DOCS+=" examples doc/txt/gprbuild_ug.txt"
+		DOCS+=" examples doc/txt/gprbuild_ug.txt doc/pdf/gprbuild_ug.pdf"
 		HTML_DOCS+="doc/html/*"
 		doinfo doc/info/gprbuild_ug.info
 	fi
