@@ -14,11 +14,11 @@ MY_P=python-publicsuffix2-${MY_PV}
 
 DESCRIPTION="Get a public suffix for a domain name using the Public Suffix List"
 HOMEPAGE="
-	https://github.com/nexB/python-publicsuffix2/
+	https://github.com/aboutcode-org/python-publicsuffix2/
 	https://pypi.org/project/publicsuffix2/
 "
 SRC_URI="
-	https://github.com/nexB/python-publicsuffix2/archive/${MY_PV}.tar.gz
+	https://github.com/aboutcode-org/python-publicsuffix2/archive/${MY_PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

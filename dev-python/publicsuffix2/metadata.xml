@@ -11,6 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">publicsuffix2</remote-id>
-		<remote-id type="github">nexB/python-publicsuffix2</remote-id>
+		<remote-id type="github">aboutcode-org/python-publicsuffix2</remote-id>
 	</upstream>
 </pkgmetadata>
