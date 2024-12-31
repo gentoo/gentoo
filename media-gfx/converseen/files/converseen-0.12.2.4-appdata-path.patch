@@ -1,0 +1,13 @@
+diff --git a/converseen.pro b/converseen.pro
+index c85620d..da49a71 100755
+--- a/converseen.pro
++++ b/converseen.pro
+@@ -171,7 +171,7 @@ win32 {
+  desktopFile.files = res/converseen.desktop
+  kdeservicemenu.path = $${SHARE_DIR}/kio/servicemenus
+  kdeservicemenu.files = res/converseen_import.desktop
+- appdata.path = /usr/share/appdata/
++ appdata.path = /usr/share/metainfo/
+  appdata.files = converseen.appdata.xml
+ 
+  isEmpty(QMAKE_LRELEASE) {
