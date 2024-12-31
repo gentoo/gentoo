@@ -10,7 +10,7 @@ ID=dd74ae7ecfd7d56aff7b17cee7a35559384a600f
 MYP=why3-${PV}-20210519-19ADF-src
 
 DESCRIPTION="Platform for deductive program verification"
-HOMEPAGE="https://why3.lri.fr/"
+HOMEPAGE="https://www.why3.org/ https://github.com/AdaCore/why3"
 SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 S="${WORKDIR}"/${MYP}
