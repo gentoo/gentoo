@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="gitlab">menelkir/g15message</remote-id>
-		<remote-id type="sourceforge">g15daemon</remote-id>
-	</upstream>
-</pkgmetadata>
