@@ -1,0 +1,11 @@
+--- a/converseen.pro	2024-10-29 16:39:33.000000000 +0100
++++ b/converseen.pro	2025-01-01 19:30:59.323494846 +0100
+@@ -171,7 +171,7 @@
+  desktopFile.files = res/converseen.desktop
+  kdeservicemenu.path = $${SHARE_DIR}/kio/servicemenus
+  kdeservicemenu.files = res/converseen_import.desktop
+- appdata.path = /usr/share/appdata/
++ appdata.path = /usr/share/metainfo/
+  appdata.files = converseen.appdata.xml
+ 
+  isEmpty(QMAKE_LRELEASE) {
