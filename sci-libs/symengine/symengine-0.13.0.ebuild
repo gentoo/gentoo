@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc64 ~riscv"
 IUSE="
 	boost debug ecm +flint llvm +mpc +mpfr openmp primesieve tcmalloc
 	test
