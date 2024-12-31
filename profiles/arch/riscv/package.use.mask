@@ -111,10 +111,6 @@ app-editors/neovim lua_single_target_luajit
 # depend on dev-libs/libpcre2[jit] which not supported yet, bug #879511
 www-servers/varnish jit
 
-# Xin Yang <yangmame@icloud.com> (2022-10-18)
-# requires qtwebengine, bug #876301
-app-i18n/fcitx-libpinyin dictionary-manager
-
 # Yixun Lan <dlan@gentoo.org> (2022-01-27)
 # This target supports ASAN/etc...
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-09-25)
