@@ -74,7 +74,7 @@ RDEPEND="
 		scripting? ( dev-qt/qtscript:5 )
 		telescope? ( dev-qt/qtserialport:5 )
 		webengine? ( dev-qt/qtwebengine:5[widgets] )
-		xlsx? ( dev-libs/qxlsx:=[qt5] )
+		xlsx? ( dev-libs/qxlsx:=[qt5(-)] )
 	)
 	qt6? (
 		dev-qt/qtbase:6=[gui,network,widgets]
@@ -90,7 +90,7 @@ RDEPEND="
 		scripting? ( dev-qt/qtdeclarative:6 )
 		telescope? ( dev-qt/qtserialport:6 )
 		webengine? ( dev-qt/qtwebengine:6[widgets] )
-		xlsx? ( dev-libs/qxlsx:=[qt6] )
+		xlsx? ( dev-libs/qxlsx:=[qt6(+)] )
 	)
 "
 DEPEND="${RDEPEND}
