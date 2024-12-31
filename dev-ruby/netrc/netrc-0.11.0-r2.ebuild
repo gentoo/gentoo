@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="changelog.txt Readme.md"
 
@@ -12,9 +12,8 @@ DESCRIPTION="This library reads and writes .netrc files"
 HOMEPAGE="https://github.com/heroku/netrc"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
 SLOT="0"
-IUSE=""
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
 
 all_ruby_prepare() {
 	# Avoid broken test that wrongly tests ruby internal code, bug 643922
