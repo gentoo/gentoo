@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_TEST="test:unit"
 
@@ -20,7 +20,6 @@ HOMEPAGE="https://github.com/davidfstr/rdiscount"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-IUSE=""
 
 all_ruby_prepare() {
 	# Hanna is broken for us and therefore we don't have it in portage.
