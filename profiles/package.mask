@@ -199,11 +199,6 @@ dev-ml/odoc-parser
 # Removal in 30 days.
 dev-util/usb-robot
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-17)
-# Fails to build on modern compilers, bug 874291. Various open bugs.
-# No maintainer. Removal in 30 days.
-app-emulation/spim
-
 # Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
 # PHP 8.1.x no longer receives bug fixes unless they address security
 # issues. That means no build fixes, no updates for modern compilers,
