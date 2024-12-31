@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools findlib
 
 DESCRIPTION="Platform for deductive program verification"
-HOMEPAGE="https://why3.lri.fr/"
+HOMEPAGE="https://www.why3.org/"
 SRC_URI="https://why3.gitlabpages.inria.fr/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
