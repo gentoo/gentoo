@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_EXTRAINSTALL="data"
@@ -13,9 +13,9 @@ inherit ruby-fakegem
 
 DESCRIPTION="Color features for Ruby"
 HOMEPAGE="https://github.com/red-data-tools/red-colors"
+LICENSE="MIT"
 
 SLOT="0"
-LICENSE="MIT"
 KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 ruby_add_rdepend "
