@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <upstream>
+    <doc>https://docs.duplicati.com/</doc>
+    <bugs-to>https://github.com/duplicati/duplicati/issues/</bugs-to>
+    <remote-id type="github">duplicati/duplicati</remote-id>
+  </upstream>
+</pkgmetadata>
