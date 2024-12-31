@@ -6,17 +6,21 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Useful python decorators and utilities"
 HOMEPAGE="https://github.com/desultory/zenlib/"
-EGIT_REPO_URI="https://github.com/desultory/zenlib.git"
+SRC_URI="
+	https://github.com/desultory/zenlib/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
 
 distutils_enable_tests unittest
 
 python_test() {
-	CI=true eunittest tests  # Disable namespace module tests and imports with CI=true
+	CI=true eunittest tests  # Set CI=true to disable namespace module tests and imports
 }
