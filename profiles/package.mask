@@ -204,12 +204,6 @@ dev-util/usb-robot
 # No maintainer. Removal in 30 days.
 app-emulation/spim
 
-# Jaco Kroon <jaco@uls.co.za> (2024-11-15)
-# clippy exists purely for frr (even comes from the same sources).  This
-# package split is no longer implemented from frr-9.1.2 onwards, so this
-# package is no longer required.
-dev-util/clippy
-
 # Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
 # PHP 8.1.x no longer receives bug fixes unless they address security
 # issues. That means no build fixes, no updates for modern compilers,
