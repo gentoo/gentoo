@@ -188,11 +188,6 @@ app-misc/g15stats
 dev-libs/libg15
 dev-libs/libg15render
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-11-17)
-# Included in dev-ml/odoc, the only rdep
-# Removal on 2024-12-17.
-dev-ml/odoc-parser
-
 # Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
 # PHP 8.1.x no longer receives bug fixes unless they address security
 # issues. That means no build fixes, no updates for modern compilers,
