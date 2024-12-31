@@ -26,6 +26,6 @@
 		<flag name="zip">Enable compression of session files</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">AdaCore/why3</remote-id> 
+		<remote-id type="github">AdaCore/why3</remote-id>
 	</upstream>
 </pkgmetadata>
