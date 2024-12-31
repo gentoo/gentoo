@@ -12,13 +12,12 @@ SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
-IUSE="dmalloc ldap +libtirpc mount-locking sasl selinux systemd"
+IUSE="ldap +libtirpc mount-locking sasl selinux systemd"
 
 # currently, sasl code assumes the presence of kerberosV
 RDEPEND="
 	net-libs/libnsl:=
 	>=sys-apps/util-linux-2.20
-	dmalloc? ( dev-libs/dmalloc[threads] )
 	ldap? (
 		>=net-nds/openldap-2.0:=
 		sasl? (
@@ -77,7 +76,7 @@ src_configure() {
 	local myeconfargs=(
 		--with-confdir=/etc/conf.d
 		--with-mapdir=/etc/autofs
-		$(use_with dmalloc)
+		--without-dmalloc
 		$(use_with ldap openldap)
 		$(use_with libtirpc)
 		$(use_with sasl)
