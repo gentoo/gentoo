@@ -143,12 +143,6 @@ dev-python/pypy
 # Removal on 2024-12-24.
 sys-boot/woeusb
 
-# Michał Górny <mgorny@gentoo.org> (2024-11-23)
-# Implementation detail of dev-python/pyproject-fmt.  New versions
-# integrate the Rust code into the main package.
-# Removal on 2024-12-07.  Bug #944782.
-dev-python/pyproject-fmt-rust
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
 #
