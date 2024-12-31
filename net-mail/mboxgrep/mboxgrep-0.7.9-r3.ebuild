@@ -11,13 +11,11 @@ SRC_URI="https://downloads.sourceforge.net/mboxgrep/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE="dmalloc"
 
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/libpcre
 	sys-libs/zlib
-	dmalloc? ( dev-libs/dmalloc )
 "
 DEPEND="
 	${RDEPEND}
@@ -36,7 +34,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_with dmalloc dmalloc $(usex dmalloc yes no))
+		--without-dmalloc
 }
 
 src_install() {
