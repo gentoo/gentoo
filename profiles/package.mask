@@ -179,7 +179,6 @@ x11-drivers/nvidia-drivers:0/470
 # Poor upstream code quality, unmaintained upstream;
 # no hardware for testing # anymore.
 # https://public-inbox.gentoo.org/gentoo-dev/robbat2-20240529T185323-477923075Z@orbis-terrarum.net/
-app-misc/g15mpd
 app-misc/g15stats
 dev-libs/libg15
 dev-libs/libg15render
