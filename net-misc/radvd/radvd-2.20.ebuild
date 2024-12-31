@@ -23,6 +23,7 @@ DEPEND="test? ( dev-libs/check )"
 RDEPEND="
 	acct-group/radvd
 	acct-user/radvd
+	dev-libs/libbsd
 	selinux? ( sec-policy/selinux-radvd )"
 
 PATCHES=(
