@@ -39,6 +39,7 @@ sys-apps/lsd
 sys-apps/fd
 net-wireless/urh
 net-proxy/mitmproxy
+net-proxy/mitmproxy-rs
 net-wireless/gr-ieee802154
 net-wireless/gr-rds
 net-wireless/gr-scopy
@@ -226,6 +227,7 @@ dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
 dev-python/cfn-lint
 >=dev-python/cryptography-36
+dev-python/aioquic
 dev-python/apprise
 dev-python/cramjam
 dev-python/dirty-equals
