@@ -14,9 +14,7 @@ S=${WORKDIR}/enblend
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"
-IUSE="cpu_flags_x86_sse2 debug doc openmp tcmalloc"
-
-REQUIRED_USE="tcmalloc? ( !debug )"
+IUSE="cpu_flags_x86_sse2 doc openmp tcmalloc"
 
 BDEPEND="
 	sys-apps/help2man
@@ -40,7 +38,6 @@ RDEPEND="
 	media-libs/tiff:=
 	media-libs/vigra[openexr]
 	sci-libs/gsl:=
-	debug? ( dev-libs/dmalloc[threads] )
 	tcmalloc? ( dev-util/google-perftools )
 "
 DEPEND="${RDEPEND}
@@ -65,7 +62,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
-		-DENABLE_DMALLOC=$(usex debug)
+		-DENABLE_DMALLOC=no
 		-DDOC=$(usex doc)
 		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_TCMALLOC=$(usex tcmalloc)
