@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,10 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
-PATCHES=( "${FILESDIR}"/${P}-qt-6.8-buildfix.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-qt-6.8-buildfix.patch
+	"${FILESDIR}"/${P}-qt-6.8-profiles.patch
+)
 
 src_prepare() {
 	default
