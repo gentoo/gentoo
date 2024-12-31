@@ -209,6 +209,7 @@ src_configure() {
 		--with-lcms="${XPAK_BOOTSTRAP:-system}"
 		--with-libjpeg="${XPAK_BOOTSTRAP:-system}"
 		--with-libpng="${XPAK_BOOTSTRAP:-system}"
+		--with-stdc++lib=dynamic
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
