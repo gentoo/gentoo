@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-12-31)
+# Many open bugs and requires a large amount of patching to build correctly
+# as a shared library. Breaks reverse dependencies in a few ways.
+# Removal on 2025-01-30. bug #924174 and friends.
+dev-libs/dmalloc
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-29)
 # As of 3.1.0, upstream has removed all mocking and made it impossible
 # to test the package locally.  As such, we cannot maintain it going
