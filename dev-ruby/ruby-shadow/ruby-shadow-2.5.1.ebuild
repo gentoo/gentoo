@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_TEST=""
 
@@ -19,7 +19,6 @@ HOMEPAGE="https://github.com/apalmblad/ruby-shadow"
 LICENSE="|| ( public-domain Unlicense )"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}/${P}-ruby32.patch"
