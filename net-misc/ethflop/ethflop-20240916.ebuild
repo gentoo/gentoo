@@ -13,13 +13,13 @@ SRC_URI="
 	https://ethflop.sourceforge.net/${PN}d-${PV}-src.tar.gz
 	tsr? ( https://ethflop.sourceforge.net/${PN}-${MY_PV_TSR}-src.zip )
 "
-
 S="${WORKDIR}"
 
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="tsr"
+RESTRICT="test"
 
 BDEPEND="
 	app-arch/unzip
