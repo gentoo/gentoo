@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {16..18} )
+LLVM_COMPAT=( {16..19} )
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit llvm-r1 meson python-any-r1
@@ -28,8 +28,8 @@ SLOT="0"
 IUSE="debug"
 
 RDEPEND="
-	llvm-core/libclc
 	dev-util/spirv-tools
+	llvm-core/libclc
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
 	$(llvm_gen_dep '
