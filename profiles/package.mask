@@ -174,13 +174,6 @@ dev-python/pyproject-fmt-rust
 # [3] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/470
 
-# Robin H. Johnson <robbat2@gentoo.org> (2024-11-17)
-# bug 943698
-# Poor upstream code quality, unmaintained upstream;
-# no hardware for testing # anymore.
-# https://public-inbox.gentoo.org/gentoo-dev/robbat2-20240529T185323-477923075Z@orbis-terrarum.net/
-dev-libs/libg15render
-
 # Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
 # PHP 8.1.x no longer receives bug fixes unless they address security
 # issues. That means no build fixes, no updates for modern compilers,
