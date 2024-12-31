@@ -112,11 +112,6 @@ kde-frameworks/kemoticons
 dev-util/android-sdk-update-manager
 dev-java/swt:3.7
 
-# Michał Górny <mgorny@gentoo.org> (2024-12-01)
-# Superseded by dev-lang/pypy:2.7.
-# Removal on 2024-12-15.
-dev-python/pypy
-
 # Patrick Lauer <patrick@gentoo.org> (2024-12-01)
 # ROCm 6.2 builds but doesn't work at all for me
 >=dev-libs/roct-thunk-interface-6.2
