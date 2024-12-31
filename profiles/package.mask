@@ -137,12 +137,6 @@ dev-python/pypy
 # https://github.com/nicotine-plus/nicotine-plus/issues/3152
 =net-p2p/nicotine+-3.3.5
 
-# Takuya Wakazono <pastalian46@gmail.com> (2024-11-27)
-# Replaced by sys-boot/woeusb-ng, which has more recent upstream
-# activity and optional GUI support.
-# Removal on 2024-12-24.
-sys-boot/woeusb
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
 #
