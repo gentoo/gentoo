@@ -12,7 +12,7 @@ LICENSE="GPL-3+ GPL-2+"
 API_VERSION="4"
 SLOT="0/${API_VERSION}"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="gtk test"
+IUSE="gtk systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -23,6 +23,7 @@ RDEPEND="
 		x11-libs/cairo
 		x11-libs/pango
 	)
+	systemd? ( sys-apps/systemd )
 	dev-libs/json-glib
 	>=dev-libs/libdex-0.3.1
 	>=gui-libs/libpanel-1.3.0
@@ -31,7 +32,10 @@ RDEPEND="
 	>=dev-util/sysprof-common-${PV}
 	>=dev-util/sysprof-capture-${PV}:${API_VERSION}
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	!systemd? ( !!sys-apps/systemd )
+"
 BDEPEND="
 	dev-libs/appstream-glib
 	dev-util/gdbus-codegen
