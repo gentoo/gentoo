@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools pam ssl-cert
 
@@ -12,12 +12,11 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-with-attribution"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
-IUSE="debug ipv6 freeipmi kerberos pam ssl test tcpd"
+IUSE="ipv6 freeipmi kerberos pam ssl test tcpd"
 RESTRICT="!test? ( test )"
 
 DEPEND="net-libs/libnsl:=
 	virtual/libcrypt:=
-	debug? ( dev-libs/dmalloc:= )
 	freeipmi? ( sys-libs/freeipmi:= )
 	kerberos? (
 		virtual/krb5
@@ -45,13 +44,13 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		$(use_with debug dmalloc)
 		$(use_with ipv6)
 		$(use_with freeipmi)
 		$(use_with kerberos gssapi)
 		$(use_with ssl openssl)
 		$(use_with pam)
 		$(use_with tcpd libwrap)
+		--without-dmalloc
 		--with-cffile=conserver/conserver.cf
 		--with-logfile=/var/log/conserver.log
 		--with-master=localhost
