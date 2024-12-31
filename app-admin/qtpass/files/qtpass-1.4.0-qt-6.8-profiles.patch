@@ -1,0 +1,42 @@
+From 315397bb882a840eba68b343659b567a7409f34f Mon Sep 17 00:00:00 2001
+From: John Doe <johndoe@example.com>
+Date: Sat, 25 May 2024 01:23:33 +0800
+Subject: [PATCH] Fix multiple profiles issue for Qt6
+
+---
+ src/mainwindow.cpp | 4 ++++
+ src/mainwindow.h   | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index b39d3147..66b87dc2 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -787,7 +787,11 @@ void MainWindow::updateProfileBox() {
+  * correct "profile"
+  * @param name
+  */
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ void MainWindow::on_profileBox_currentIndexChanged(QString name) {
++#else
++void MainWindow::on_profileBox_currentTextChanged(QString name) {
++#endif
+   if (m_qtPass->isFreshStart() || name == QtPassSettings::getProfile())
+     return;
+ 
+diff --git a/src/mainwindow.h b/src/mainwindow.h
+index 172e326f..b5325f61 100644
+--- a/src/mainwindow.h
++++ b/src/mainwindow.h
+@@ -97,7 +97,11 @@ private slots:
+   void clearPanel(bool notify = true);
+   void on_lineEdit_textChanged(const QString &arg1);
+   void on_lineEdit_returnPressed();
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+   void on_profileBox_currentIndexChanged(QString);
++#else
++  void on_profileBox_currentTextChanged(QString);
++#endif
+   void showContextMenu(const QPoint &pos);
+   void showBrowserContextMenu(const QPoint &pos);
+   void openFolder();
