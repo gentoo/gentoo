@@ -85,6 +85,7 @@ BDEPEND="
 	dev-vcs/git
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
+		llvm-core/lld:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
 	')
 "
@@ -177,9 +178,13 @@ src_prepare() {
 	filter-flags -Wlto-type-mismatch
 	filter-lto
 
+	local llvm_prefix="$(get_llvm_prefix -b)"
+	export CC="${llvm_prefix}/bin/clang-${LLVM_SLOT}"
+	export CXX="${llvm_prefix}/bin/clang++-${LLVM_SLOT}"
+	export LD="${llvm_prefix}/bin/lld"
+
 	unset DOTNET_ROOT
 	unset NUGET_PACKAGES
-
 	unset CLR_ICU_VERSION_OVERRIDE
 	unset USER_CLR_ICU_VERSION_OVERRIDE
 
@@ -209,6 +214,20 @@ src_prepare() {
 echo "$(makeopts_jobs)"
 EOF
 	chmod +x "${fake_bin}/nproc" || die
+
+	# Overwrite "init-compiler" scripts.
+	# TODO: Consider - this probably overshadows CCache.
+	cat <<EOF > ./init-compiler.sh || die
+export CC="${CC}"
+export CXX="${CXX}"
+export LDFLAGS="${LDFLAGS} -fuse-ld=lld"
+export SCAN_BUILD_COMMAND="scan-build"
+EOF
+	local init_compiler=""
+	for init_compiler in diagnostics runtime ; do
+		mv "./src/${init_compiler}/eng/common/native/init-compiler.sh"{,.orig} || die
+		cp ./init-compiler.sh "./src/${init_compiler}/eng/common/native/" || die
+	done
 }
 
 src_compile() {
@@ -219,6 +238,10 @@ src_compile() {
 		rm "${package_versions_path}" ||
 			ewarn "Failed to remove ${package_versions_path}, build may fail!"
 	fi
+
+	local -x EXTRA_CFLAGS="${CFLAGS}"
+	local -x EXTRA_CXXFLAGS="${CXXFLAGS}"
+	local -x EXTRA_LDFLAGS="${LDFLAGS}"
 
 	# The "source_repository" should always be the same.
 	local source_repository="https://github.com/dotnet/dotnet"
