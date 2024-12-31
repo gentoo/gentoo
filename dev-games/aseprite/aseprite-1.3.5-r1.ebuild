@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.2_shared_fmt.patch"
 	"${FILESDIR}/${PN}-1.3.2_strict-aliasing.patch"
 	"${FILESDIR}/${P}_laf-strict-aliasing.patch"
+	"${FILESDIR}/${P}-no-fetch-in-cmake-kthx.patch" # bug 935448
 )
 
 src_unpack() {
@@ -166,6 +167,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_CCACHE=OFF
 		-DENABLE_DESKTOP_INTEGRATION=ON
+		-DENABLE_I18N_STRINGS=OFF
 		-DENABLE_STEAM=OFF
 		-DENABLE_TESTS="$(usex test)"
 		-DENABLE_QT_THUMBNAILER=OFF
