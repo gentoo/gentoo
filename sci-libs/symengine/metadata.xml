@@ -37,5 +37,8 @@
 			Add support for multiprecision floating point rounding
 			(<pkg>dev-libs/mpfr</pkg>)
 		</flag>
+		<flag name="primesieve">
+			Add support for <pkg>sci-mathematics/primesieve</pkg>
+		</flag>
 	</use>
 </pkgmetadata>

@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2024-12-31)
+# None of the sci-libs/symengine versions work with the modern versions
+# of dev-libs/boost in Gentoo.
+sci-libs/symengine boost
+
 # Conrad Kostecki <conikost@gentoo.org> (2024-12-30)
 # Currently experimental features do not compile.
 app-emulation/pcem experimental
