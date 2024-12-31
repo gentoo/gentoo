@@ -35,6 +35,9 @@ SRC_URI="
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-softfp-linux-gnueabi.gpkg.tar
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-unknown-linux-gnueabihf.gpkg.tar
 	)
+	hppa? (
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-hppa2.0-unknown-linux-gnu.gpkg.tar
+	)
 	loong? (
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-loongarch64-unknown-linux-gnu.gpkg.tar
 	)
