@@ -236,12 +236,6 @@ dev-php/swoole
 =virtual/httpd-php-8.1
 <www-apps/icingaweb2-2.12.1-r1
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-11-10)
-# Fails to build with gcc-14. Horrible code. Not touched by a
-# maintainer since 2010. Bugs 729134, 870541, 909625, 933773
-# Removal in 30 days.
-app-accessibility/powiedz
-
 # Matt Jolly <kangie@gentoo.org> (2024-11-09)
 # The legacy Rust ebuilds are no longer maintained and have been
 # replaced by the new slotted Rust. Removal in 30 days.
