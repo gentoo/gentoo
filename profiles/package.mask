@@ -112,11 +112,6 @@ kde-frameworks/kemoticons
 dev-util/android-sdk-update-manager
 dev-java/swt:3.7
 
-# Pacho Ramos <pacho@gentoo.org> (2024-12-02)
-# Dead for ages, not ported to wxGTK 3.2
-# Removal on 2024-12-31.  Bug #929140.
-games-board/blokish
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-01)
 # Superseded by dev-lang/pypy:2.7.
 # Removal on 2024-12-15.
