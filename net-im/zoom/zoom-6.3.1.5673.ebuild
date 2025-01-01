@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+bundled-qt opencl pulseaudio wayland +zoom-symlink"
+IUSE="opencl pulseaudio wayland +zoom-symlink"
 RESTRICT="mirror bindist strip"
 
 RDEPEND="zoom-symlink? ( !games-engines/zoom )
@@ -23,7 +23,6 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	>=dev-libs/quazip-1.0:0=[qt5(+)]
 	media-libs/alsa-lib
 	media-libs/fdk-aac:0/2
 	media-libs/fontconfig
@@ -56,25 +55,7 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	x11-libs/xcb-util-wm
 	opencl? ( virtual/opencl )
 	pulseaudio? ( media-libs/libpulse )
-	wayland? ( dev-libs/wayland )
-	!bundled-qt? (
-		dev-libs/icu
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtdeclarative:5[widgets]
-		dev-qt/qtdiag:5
-		dev-qt/qtgraphicaleffects:5
-		dev-qt/qtgui:5
-		dev-qt/qtlocation:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtquickcontrols:5[widgets]
-		dev-qt/qtquickcontrols2:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-		dev-qt/qtxml:5
-		wayland? ( dev-qt/qtwayland )
-	)"
+	wayland? ( dev-libs/wayland )"
 
 BDEPEND="dev-util/bbe"
 
@@ -105,12 +86,11 @@ src_install() {
 		scheduler sip timezones translations
 	doins *.pcm Embedded.properties version.txt
 	doexe zoom zopen ZoomLauncher ZoomWebviewHost *.sh \
-		aomhost libaomagent.so libcml.so libdvf.so libmkldnn.so \
+		aomhost libaomagent.so libcml.so libdvf.so libmkldnn.so libquazip.so \
 		libavcodec.so* libavformat.so* libavutil.so* libswresample.so*
 	fperms a+x /opt/zoom/cef/chrome-sandbox
 	dosym -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
-	dosym -r "/usr/$(get_libdir)/libquazip1-qt5.so" /opt/zoom/libquazip.so
 
 	if use opencl; then
 		doexe libclDNN64.so
@@ -122,33 +102,21 @@ src_install() {
 		rm "${ED}"/opt/zoom/cef/libGLESv2.so || die
 	fi
 
-	if use bundled-qt; then
-		doins -r Qt
-		find Qt -type f '(' -name '*.so' -o -name '*.so.*' ')' \
-			-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
-		(	# Remove libs and plugins with unresolved soname dependencies.
-			# Why does the upstream package contain such garbage? :-(
-			cd "${ED}"/opt/zoom/Qt || die
-			rm -r plugins/audio plugins/egldeviceintegrations \
-				plugins/platforms/libqeglfs.so \
-				plugins/platforms/libqlinuxfb.so \
-				plugins/platformthemes/libqgtk3.so \
-				qml/Qt/labs/lottieqt qml/QtQml/RemoteObjects \
-				qml/QtQuick/LocalStorage qml/QtQuick/Particles.2 \
-				qml/QtQuick/Scene2D qml/QtQuick/Scene3D \
-				qml/QtQuick/XmlListModel || die
-			use wayland || rm -r lib/libQt5Wayland*.so* plugins/wayland* \
-				plugins/platforms/libqwayland*.so qml/QtWayland || die
-		)
-	else
-		local qtzoom="5.15" qtver=$(best_version dev-qt/qtcore:5)
-		if [[ ${qtver} != dev-qt/qtcore-${qtzoom}.* ]]; then
-			ewarn "You have disabled the bundled-qt USE flag."
-			ewarn "You may experience problems when running Zoom with"
-			ewarn "a version of the system-wide Qt libs other than ${qtzoom}."
-			ewarn "See https://bugs.gentoo.org/798681 for details."
-		fi
-	fi
+	doins -r Qt
+	find Qt -type f '(' -name '*.so' -o -name '*.so.*' ')' \
+		-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
+	(	# Remove libs and plugins with unresolved soname dependencies.
+		# Why does the upstream package contain such garbage? :-(
+		cd "${ED}"/opt/zoom/Qt || die
+		rm -r plugins/audio plugins/egldeviceintegrations \
+			plugins/platforms/libqeglfs.so plugins/platforms/libqlinuxfb.so \
+			plugins/platformthemes/libqgtk3.so qml/Qt/labs/lottieqt \
+			qml/QtQml/RemoteObjects qml/QtQuick/LocalStorage \
+			qml/QtQuick/Particles.2 qml/QtQuick/Scene2D qml/QtQuick/Scene3D \
+			qml/QtQuick/XmlListModel || die
+		use wayland || rm -r lib/libQt5Wayland*.so* plugins/wayland* \
+			plugins/platforms/libqwayland*.so qml/QtWayland || die
+	)
 
 	use zoom-symlink && dosym -r /opt/zoom/ZoomLauncher /usr/bin/zoom
 

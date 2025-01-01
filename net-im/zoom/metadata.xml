@@ -8,9 +8,6 @@
     <email>dilfridge@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="bundled-qt">
-      Use bundled Qt and icu instead of system-wide libs
-    </flag>
     <flag name="opencl">
       Use OpenCL for virtual background support (<pkg>virtual/opencl</pkg>)
     </flag>
