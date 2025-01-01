@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="sqlcipher test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	app-editors/qhexedit2
 	dev-db/sqlite:3
 	dev-libs/qcustomplot
@@ -34,20 +34,15 @@ DEPEND="
 	>=x11-libs/qscintilla-2.8.10:=[qt5(+)]
 	sqlcipher? ( dev-db/sqlcipher )
 "
-
+DEPEND="${RDEPEND}
+	>=dev-qt/qtconcurrent-5.15.9:5
+"
 BDEPEND="
 	>=dev-qt/linguist-tools-5.15.9:5
 	test? ( >=dev-qt/qttest-5.15.9:5 )
 "
 
-RDEPEND="${DEPEND}"
-
-DOCS=(
-	images/
-	BUILDING.md
-	CHANGELOG.md
-	README.md
-)
+DOCS=( images/ {BUILDING,CHANGELOG,README}.md )
 
 src_prepare() {
 	cmake_src_prepare
@@ -77,7 +72,6 @@ src_configure() {
 }
 
 src_install() {
+	[[ ${PV} == *9999* ]] && DOCS+=( SECURITY.md )
 	cmake_src_install
-
-	[[ "${PV}" = 9999 ]] && dodoc SECURITY.md
 }
