@@ -67,7 +67,6 @@ RDEPEND="
 
 	adwaita? ( gui-libs/libadwaita:1= )
 	X? ( x11-libs/libX11 )
-
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
 	system-freetype? (
 		system-harfbuzz? ( >=media-libs/freetype-2.13.2:=[bzip2,harfbuzz] )
@@ -89,10 +88,8 @@ BDEPEND="
 
 IUSE="+X +adwaita man"
 # System integrations
-IUSE+="
-	+system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2
-	+system-oniguruma +system-zlib
-"
+IUSE+=" +system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2"
+IUSE+=" +system-oniguruma +system-zlib"
 
 # XXX: Because we set --release=fast below, Zig will automatically strip
 #      the binary. Until Ghostty provides a way to disable the banner while
