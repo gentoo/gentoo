@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/947316
+
+--- a/lib/makefile.src
++++ b/lib/makefile.src
+@@ -50,8 +50,8 @@
+ 		echo cp $(LIBNAME) $(DEST)/ ; \
+ 		cp $(LIBNAME)* $(DEST)/ ; \
+ 		if test x$(RANLIB) != x ; then \
+-			echo ranlib $(DEST)/$(STATIC) ; \
+-			ranlib $(DEST)/$(STATIC) ; \
++			echo $(RANLIB) $(DEST)/$(STATIC) ; \
++			$(RANLIB) $(DEST)/$(STATIC) ; \
+ 		else \
+ 			true ; \
+ 		fi ; \
+@@ -60,11 +60,11 @@
+ 			cp $(LIBNAME)* $(DEST)/debug/ ; \
+ 			if test x$(RANLIB) != x ; then \
+ 				cp $(LIBNAME) $(DEST)/debug/$(STATIC) ; \
+-				echo ranlib $(DEST)/debug/$(STATIC) ; \
++				echo $(RANLIB) $(DEST)/debug/$(STATIC) ; \
+ 			else \
+ 				true ; \
+ 			fi ; \
+-			ranlib $(DEST)/debug/$(STATIC) ; \
++			$(RANLIB) $(DEST)/debug/$(STATIC) ; \
+ 		else \
+ 			true ; \
+ 		fi ; \
+@@ -82,9 +82,9 @@
+ 	touch buildshared
+ 
+ buildlib: $(OBJS)
+-	ar rcs $(STATIC) $(OBJS)
++	$(AR) rcs $(STATIC) $(OBJS)
+ #ifndef NO_RANLIB
+-	ranlib $(STATIC)
++	$(RANLIB) $(STATIC)
+ #endif
+ 	touch buildlib
+ 

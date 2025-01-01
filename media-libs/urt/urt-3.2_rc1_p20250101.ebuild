@@ -30,6 +30,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-respect-ldflags.patch
+	"${FILESDIR}"/${P}-ar.patch
 )
 
 urt_config() {
@@ -60,9 +61,7 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR RANLIB
-
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
