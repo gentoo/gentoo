@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,8 @@ BDEPEND="
 	dev-util/intltool
 	dev-lang/sassc
 "
+
+PATCHES=( "${FILESDIR}/polychromatic-0.9.3-command-v.patch" )
 
 DOC_CONTENTS="To automatically start up Polychromatic on session login copy
 /usr/share/polychromatic/polychromatic-autostart.desktop file into Your user's
