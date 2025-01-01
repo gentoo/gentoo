@@ -68,7 +68,6 @@ KEYWORDS="~amd64"
 RDEPEND="
 	adwaita? ( gui-libs/libadwaita:1= )
 	gtk? ( gui-libs/gtk:4=[X] )
-
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
 	system-freetype? ( >=media-libs/freetype-2.13.2:=[bzip2] )
 	system-glslang? ( >=dev-util/glslang-1.3.296.0:= )
@@ -85,10 +84,8 @@ BDEPEND="
 
 IUSE="+adwaita man +gtk glfw"
 # System integrations
-IUSE+="
-	+system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2
-	+system-oniguruma +system-zlib
-"
+IUSE+=" +system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2"
+IUSE+=" +system-oniguruma +system-zlib"
 
 REQUIRED_USE="
 	adwaita? ( gtk )
