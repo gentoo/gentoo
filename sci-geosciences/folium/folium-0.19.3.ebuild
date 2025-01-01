@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,14 +35,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	rm -r tests/selenium || die # require chromedriver
-	rm tests/test_folium.py || die # require geopandas
-	rm tests/test_raster_layers.py || die # require xyzservices
-	rm tests/plugins/test_time_slider_choropleth.py || die # require geopandas
-	rm tests/test_repr.py || die # require geckodriver
-	default
-}
+EPYTEST_IGNORE=(
+	tests/selenium									# require chromedriver
+	tests/test_folium.py							# require geopandas
+	tests/plugins/test_time_slider_choropleth.py	# require geopandas
+	tests/test_repr.py								# require geckodriver
+)
 
 python_test() {
 	epytest -m 'not web'
