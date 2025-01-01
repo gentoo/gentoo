@@ -6,7 +6,12 @@
 	</maintainer>
 	<use>
 		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
 	</use>
+	<longdescription lang="en">
+		The templates parser package has been designed to parse files and to
+		replace some specific tags into these files by some specified values.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">AdaCore/templates-parser</remote-id>
 	</upstream>
