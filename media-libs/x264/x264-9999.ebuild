@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,8 @@ DEPEND="
 "
 RDEPEND="opencl? ( >=virtual/opencl-0-r3[${MULTILIB_USEDEP}] )"
 
+# TODO: Consider implementing src_test which does what doc/regression_test says
+# https://code.videolan.org/videolan/x264/-/blob/master/doc/regression_test.txt
 DOCS=( AUTHORS doc/{ratecontrol,regression_test,standards,threads,vui}.txt )
 
 multilib_src_configure() {
