@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,4 +31,12 @@ all_ruby_prepare() {
 	# The extension is only compiled on win32
 	sed -e '/if RUBY_ENGINE/ s/$/ and false/' \
 		-i Rakefile || die
+}
+
+each_ruby_install() {
+	each_fakegem_install
+
+	# The extension is only compiled on Win32, but we still need to mark
+	# that task as done.
+	ruby_fakegem_extensions_installed
 }
