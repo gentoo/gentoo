@@ -23,6 +23,9 @@ inherit unpacker
 DESCRIPTION="Binary bootstrap compiler for GNAT (Ada compiler)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Ada"
 SRC_URI="
+	alpha? (
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-alpha-unknown-linux-gnu.gpkg.tar
+	)
 	amd64? (
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-x86_64-pc-linux-gnu.gpkg.tar
 	)
