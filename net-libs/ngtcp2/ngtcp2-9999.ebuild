@@ -24,13 +24,14 @@ REQUIRED_USE="ssl? ( || ( gnutls openssl ) ) test? ( static-libs )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	ssl? (
-		gnutls? ( >=net-libs/gnutls-3.7.2:0= )
-		openssl? (
-			>=dev-libs/openssl-1.1.1:0=
-		)
-	)"
-DEPEND="${RDEPEND}
-	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
+		gnutls? ( >=net-libs/gnutls-3.7.2:=[${MULTILIB_USEDEP}] )
+		openssl? ( >=dev-libs/openssl-1.1.1:=[${MULTILIB_USEDEP}] )
+	)
+"
+DEPEND="
+	${RDEPEND}
+	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )
+"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
