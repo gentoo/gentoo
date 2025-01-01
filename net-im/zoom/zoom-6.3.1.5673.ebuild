@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop linux-info readme.gentoo-r1 xdg-utils
+inherit desktop eapi9-pipestatus linux-info readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
@@ -104,7 +104,8 @@ src_install() {
 
 	doins -r Qt
 	find Qt -type f '(' -name '*.so' -o -name '*.so.*' ')' \
-		-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
+		-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755
+	pipestatus || die
 	(	# Remove libs and plugins with unresolved soname dependencies.
 		# Why does the upstream package contain such garbage? :-(
 		cd "${ED}"/opt/zoom/Qt || die
