@@ -57,7 +57,7 @@ LICENSE="
 	!system-zlib? ( ZLIB )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # TODO: simdutf integration (missing Gentoo version)
 # TODO: spirv-cross integration (missing Gentoo package)
