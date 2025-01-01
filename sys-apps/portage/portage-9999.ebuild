@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -181,18 +181,22 @@ pkg_preinst() {
 			-u PORTDIR \
 			-u PORTDIR_OVERLAY \
 			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			ED="${ED}" \
 			"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
 		env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
 			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			ED="${ED}" \
 			"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
 
 		env -u FEATURES -u PORTAGE_REPOSITORIES \
 			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			ED="${ED}" \
 			"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
 
 		env -u BINPKG_FORMAT \
 			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			ED="${ED}" \
 			"${PYTHON}" -m portage._compat_upgrade.binpkg_format || die
 	fi
 
