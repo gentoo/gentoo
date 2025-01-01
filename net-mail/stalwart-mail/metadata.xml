@@ -8,4 +8,7 @@
   <use>
     <flag name="rocks">Enables rocksdb storage backend</flag>
   </use>
+  <upstream>
+    <remote-id type="github">stalwartlabs/mail-server</remote-id>
+  </upstream>
 </pkgmetadata>
