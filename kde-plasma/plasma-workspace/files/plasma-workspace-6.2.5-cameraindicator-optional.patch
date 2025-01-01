@@ -1,0 +1,118 @@
+From a64403d26fc7dd445b726aa4465825585c2ac7e0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 12 Oct 2024 22:56:11 +0200
+Subject: [PATCH] Introduce BUILD_CAMERAINDICATOR option, default depending on
+ PipeWire_FOUND
+
+... but overrideable even if not, since PipeWire is no build time requirement.
+- Drop unused Libdrm dependency
+- Drop unused KPipeWire dependency
+- Only autotests link to PipeWire, so only bail out there if not found
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit b2a5a2caf1c1be2acbf9ce6c3c25f1c82d4c8792)
+(cherry picked from commit 039315ab9f6360c12dfbfc5f7b3dbf5d294175c7)
+(cherry picked from commit 33733d5edceb35a8b1b2626a3217bd14c141f199)
+(cherry picked from commit b2a10a33aa5860abd3ba35f7b450f5ca16401887)
+---
+ CMakeLists.txt                                 | 18 +++++++++---------
+ applets/CMakeLists.txt                         |  4 +++-
+ applets/cameraindicator/CMakeLists.txt         |  3 ---
+ .../cameraindicator/autotests/CMakeLists.txt   |  4 ++++
+ 4 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d1ac1bdccd..333a4c64c7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,6 +42,15 @@ include(ECMGenerateQmlTypes)
+ include(ECMDeprecationSettings)
+ include(ECMQmlModule)
+ 
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(PipeWire QUIET IMPORTED_TARGET libpipewire-0.3)
++add_feature_info(PipeWire PipeWire_FOUND "Required for camera indicator applet and Wayland screencasting testing")
++set(BUILD_CAMERAINDICATOR_DEFAULT OFF)
++if(PipeWire_FOUND)
++    set(BUILD_CAMERAINDICATOR_DEFAULT ON)
++endif()
++option(BUILD_CAMERAINDICATOR "Build the camera indicator Plasma applet" ${BUILD_CAMERAINDICATOR_DEFAULT})
++
+ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Svg Widgets Quick QuickWidgets Concurrent Network Core5Compat DBus ShaderTools Positioning)
+ find_package(QCoro6 REQUIRED COMPONENTS Core DBus)
+ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+@@ -64,7 +73,6 @@ if (BUILD_TESTING)
+ endif()
+ 
+ find_package(KF6KDED CONFIG REQUIRED)
+-find_package(KPipeWire CONFIG)
+ 
+ find_package(KF6NetworkManagerQt ${KF6_MIN_VERSION})
+ set_package_properties(KF6NetworkManagerQt PROPERTIES DESCRIPTION "Qt wrapper for NetworkManager API"
+@@ -100,7 +108,6 @@ set_package_properties(KF6Baloo PROPERTIES DESCRIPTION "File Searching"
+                        PURPOSE "Needed for the File Search runner."
+                       )
+ 
+-find_package(PkgConfig REQUIRED)
+ pkg_check_modules(QALCULATE libqalculate>2.0 REQUIRED IMPORTED_TARGET)
+ pkg_check_modules(DBus dbus-1 REQUIRED IMPORTED_TARGET)
+ 
+@@ -194,13 +201,6 @@ else()
+     set(HAVE_XFIXES 0)
+ endif()
+ 
+-pkg_check_modules(PipeWire IMPORTED_TARGET libpipewire-0.3)
+-add_feature_info(PipeWire PipeWire_FOUND "Required for Wayland screencasting")
+-
+-if(PipeWire_FOUND)
+-  find_package(Libdrm REQUIRED)
+-endif()
+-
+ # FreeBSD systems might have libxcrypt but their shadow equivalent doesn't use it
+ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+     pkg_check_modules(libxcrypt libxcrypt>=4)
+diff --git a/applets/CMakeLists.txt b/applets/CMakeLists.txt
+index 6cdbd529b0..c9ab0073e8 100644
+--- a/applets/CMakeLists.txt
++++ b/applets/CMakeLists.txt
+@@ -14,7 +14,9 @@ add_subdirectory(keyboardindicator)
+ add_subdirectory(kicker)
+ add_subdirectory(mediacontroller)
+ add_subdirectory(panelspacer)
+-add_subdirectory(cameraindicator)
++if(BUILD_CAMERAINDICATOR)
++    add_subdirectory(cameraindicator)
++endif()
+ plasma_install_package(clipboard org.kde.plasma.clipboard)
+ 
+ add_subdirectory(notifications)
+diff --git a/applets/cameraindicator/CMakeLists.txt b/applets/cameraindicator/CMakeLists.txt
+index fb9b4c0d2c..78b9f3246b 100644
+--- a/applets/cameraindicator/CMakeLists.txt
++++ b/applets/cameraindicator/CMakeLists.txt
+@@ -1,8 +1,5 @@
+ # SPDX-FileCopyrightText: 2023 Fushan Wen <qydwhotmail@gmail.com>
+ # SPDX-License-Identifier: BSD-3-Clause
+-if(NOT TARGET K::KPipeWire)
+-    RETURN()
+-endif()
+ plasma_install_package(package org.kde.plasma.cameraindicator)
+ if (BUILD_TESTING)
+     add_subdirectory(autotests)
+diff --git a/applets/cameraindicator/autotests/CMakeLists.txt b/applets/cameraindicator/autotests/CMakeLists.txt
+index 0f10f5ecbe..5611496ffa 100644
+--- a/applets/cameraindicator/autotests/CMakeLists.txt
++++ b/applets/cameraindicator/autotests/CMakeLists.txt
+@@ -1,5 +1,9 @@
+ # SPDX-FileCopyrightText: 2024 Fushan Wen <qydwhotmail@gmail.com>
+ # SPDX-License-Identifier: BSD-3-Clause
++if(NOT TARGET PkgConfig::PipeWire)
++    return()
++endif()
++
+ add_executable(pipewiremockcamera videosource.cpp)
+ target_link_libraries(pipewiremockcamera PkgConfig::PipeWire)
+ 
+-- 
+2.47.1
+
