@@ -1,0 +1,135 @@
+From 2f235c32d055d0a2f0683855a283a049a1905e7c Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Mon, 9 Dec 2024 00:24:08 -0500
+Subject: [PATCH] Add options to call generate-tz-header as part of the build
+ process.
+
+---
+ meson_options.txt                   | 12 +++++++++++
+ plugins/color/generate-tz-header.py | 33 +++++++++++++++++------------
+ plugins/color/meson.build           | 14 +++++++++++-
+ 3 files changed, 45 insertions(+), 14 deletions(-)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index e3c89f3..81db2ba 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -58,3 +58,15 @@ option(
+     value: false,
+     description: 'Show additional build warnings'
+ )
++option(
++    'generate_tz_coords',
++    type: 'boolean',
++    value: false,
++    description: 'Generate TZCoords header from tzdata'
++)
++option(
++    'zone_tab',
++    type: 'string',
++    value: '/usr/share/zoneinfo/zone.tab',
++    description: 'Path to tzdata zone.tab or zone1970.tab'
++)
+diff --git a/plugins/color/generate-tz-header.py b/plugins/color/generate-tz-header.py
+index cc1d399..d725727 100755
+--- a/plugins/color/generate-tz-header.py
++++ b/plugins/color/generate-tz-header.py
+@@ -1,20 +1,27 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ 
+ import re
++from argparse import ArgumentParser
++from pathlib import Path
++
++COORDS_RE = re.compile(r"([+-])([0-9]+)([+-])([0-9]+)")
+ 
+ d = {}
+ 
++parser = ArgumentParser(prog='generate-tz-header',
++                        description='Generate tz-coords.h header from timezone-data')
++parser.add_argument('-i', '--zone_tab', nargs='?', default='/usr/share/zoneinfo/zone.tab', type=Path)
++parser.add_argument('-o', '--out_file', nargs='?', default='tz-coords.h', type=Path)
++args = parser.parse_args()
+ 
+-with open("/usr/share/zoneinfo/zone.tab", "r") as f:
++with open(args.zone_tab, "r") as f:
+     for line in f:
+-        if line.startswith("#"):
++        line = line.strip()
++        if not line or line.startswith("#"):
+             continue
+ 
+-        res = re.search(r"([A-Z]{2})\s([0-9-+]+)\s([\w/_\-]+)\s", line)
+-        code, coords, tz = res.groups()
+-
+-        res = re.search(r"([+-]{1})([0-9]+)([+-]{1})([0-9]+)", coords)
+-        lat_sign, lat_val, long_sign, long_val = res.groups()
++        coords, tz = line.split('\t')[1:3]
++        lat_sign, lat_val, long_sign, long_val = COORDS_RE.search(coords).groups()
+ 
+         lat_str = lat_sign + lat_val[0:2] + "." + lat_val[2:]
+         long_str = long_sign + long_val[0:3] + "." + long_val[3:]
+@@ -25,17 +32,17 @@
+         d[tz] = [lat, long]
+ 
+ header = """
+-// Generated from /usr/share/zoneinfo/zone.tab, used by csd-nightlight.c to calculate sunrise and sunset based on the system timezone
++// Generated from %s, used by csd-nightlight.c to calculate sunrise and sunset based on the system timezone
+ 
+ typedef struct
+ {
+-    const char *timezone;
++    const gchar *timezone;
+     double latitude;
+     double longitude;
+ } TZCoords;
+ 
+ static TZCoords tz_coord_list[] = {
+-"""
++""" % (args.zone_tab)
+ 
+ for zone in sorted(d.keys()):
+     latitude, longitude = d[zone]
+@@ -44,7 +51,7 @@
+ 
+ header += "};"
+ 
+-with open("tz-coords.h", "w") as f:
++with open(args.out_file, "w") as f:
+     f.write(header)
+ 
+-quit()
+\ No newline at end of file
++quit()
+diff --git a/plugins/color/meson.build b/plugins/color/meson.build
+index 42638cf..e421e52 100644
+--- a/plugins/color/meson.build
++++ b/plugins/color/meson.build
+@@ -1,5 +1,17 @@
+ plugin_name='color'
+ 
++if get_option('generate_tz_coords')
++  prog_python = find_program('python3')
++
++  tz_coords_h = custom_target(
++    'tz_coords_h',
++    input: get_option('zone_tab'),
++    output: 'tz-coords.h',
++    command: [prog_python, '@CURRENT_SOURCE_DIR@/generate-tz-header.py', '-i', '@INPUT@', '-o', '@OUTPUT@']
++  )
++else
++  tz_coords_h = files('tz-coords.h')
++endif
+ 
+ built_sources = gnome.gdbus_codegen(
+   'cinnamon-session-dbus',
+@@ -32,7 +44,7 @@ color_deps = [
+ 
+ executable(
+   'csd-' + plugin_name,
+-  sources + built_sources,
++  sources + built_sources + [tz_coords_h],
+   include_directories: [include_dirs, common_inc],
+   dependencies: color_deps,
+   c_args: [
