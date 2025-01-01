@@ -4,7 +4,8 @@
 EAPI=8
 
 ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
-inherit ada multiprocessing
+PYTHON_COMPAT=( python3_{10..13} python3_13t )
+inherit ada python-any-r1 multiprocessing
 
 DESCRIPTION="A template engine"
 HOMEPAGE="https://github.com/AdaCore/templates-parser"
@@ -14,8 +15,8 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc man +shared static-libs static-pic"
-RESTRICT="test"
+IUSE="doc man +shared static-libs static-pic test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?]
@@ -29,15 +30,38 @@ BDEPEND="doc? (
 man? (
 	dev-python/sphinx
 	dev-python/sphinx-rtd-theme
+)
+test? (
+	${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-ada/e3-testsuite[${PYTHON_USEDEP}]
+	')
+	dev-ada/gnatmem
 )"
 
-REQUIRED_USE="|| ( shared static-libs )
+REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}
-	doc? ( man )"
+	doc? ( man )
+	test? ( static-libs )
+"
+
+python_check_deps() {
+	use test || return 0
+	python_has_version "dev-ada/e3-testsuite[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	# Drop tests that require TP_XMLADA
+	rm -r regtests/tests/010{7,9}* || die
+	default
+}
 
 src_configure() {
 	emake PROCESSORS=$(makeopts_jobs) \
-		DEFAULT_LIBRARY_TYPE=$(usex shared relocatable static) \
 		ENABLE_STATIC=$(usex static-libs true false) \
 		ENABLE_SHARED=$(usex shared true false) \
 		prefix=/usr \
@@ -126,4 +150,8 @@ src_install() {
 	einstalldocs
 	use man && doman docs/build/man/templates_parser.1
 	rm -r "${D}"/usr/share/gpr/manifests
+}
+
+src_test() {
+	emake -j1 test
 }
