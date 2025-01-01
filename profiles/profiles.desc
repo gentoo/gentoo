@@ -226,6 +226,7 @@ arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 arm64		default/linux/arm64/23.0					stable
 arm64		default/linux/arm64/23.0/hardened				dev
+arm64		default/linux/arm64/23.0/hardened/systemd			dev
 arm64		default/linux/arm64/23.0/hardened/selinux			dev
 arm64		default/linux/arm64/23.0/hardened/selinux/systemd		dev
 arm64		default/linux/arm64/23.0/desktop				stable
