@@ -1,0 +1,6 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="loongarch64-unknown-linux-musl"
+CHOST_lp64d="loongarch64-unknown-linux-musl"
+LIBDIR_lp64d="lib"
