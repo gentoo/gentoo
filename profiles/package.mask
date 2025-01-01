@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ####################################################################
@@ -32,6 +32,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-01-01)
+# Broken with Qt6 and in wayland sessions. Archived upstream. Has been on life
+# support for several years already.
+# Removal on 2025-02-01
+media-video/vidify
+media-video/vidify-audiosync
+net-misc/lyricwikia
 
 # Sam James <sam@gentoo.org> (2024-12-31)
 # Many open bugs and requires a large amount of patching to build correctly
