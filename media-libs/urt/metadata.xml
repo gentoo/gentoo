@@ -5,4 +5,7 @@
 	<use>
 		<flag name="tools">Install tools</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sarnold/urt</remote-id>
+	</upstream>
 </pkgmetadata>

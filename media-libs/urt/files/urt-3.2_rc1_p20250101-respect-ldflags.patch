@@ -1,0 +1,11 @@
+--- a/get/getx11/makefile.src
++++ b/get/getx11/makefile.src
+@@ -50,7 +50,7 @@
+ 
+ # getx11 - read RLE file to X11 display
+ getx11.out: $(X_O_FILES) 
+-	${CC} $(CFLAGS) $(X_O_FILES) -o getx11.new $(LIBS)
++	${CC} $(CFLAGS) $(X_O_FILES) -o getx11.new $(LDFLAGS) $(LIBS)
+ 	mv getx11.new getx11.out
+ 
+ # Make prototypes.h and fn_decls.h.  Only happens if HAVE_CPROTO is defined.
