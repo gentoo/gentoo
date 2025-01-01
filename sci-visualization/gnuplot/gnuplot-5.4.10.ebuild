@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="gnuplot"
 SLOT="0"
-IUSE="aqua bitmap cairo doc examples +gd ggi latex libcaca libcerf lua qt5 readline regis wxwidgets X"
+IUSE="aqua bitmap cairo doc examples +gd ggi latex libcaca libcerf lua readline regis wxwidgets X"
 REQUIRED_USE="
 	doc? ( gd )
 	lua? ( ${LUA_REQUIRED_USE} )"
@@ -45,13 +45,6 @@ RDEPEND="
 			>=dev-texlive/texlive-latexrecommended-2008-r2 ) )
 	libcaca? ( media-libs/libcaca )
 	lua? ( ${LUA_DEPS} )
-	qt5? (
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtnetwork:5=
-		dev-qt/qtprintsupport:5=
-		dev-qt/qtsvg:5=
-		dev-qt/qtwidgets:5= )
 	readline? ( sys-libs/readline:0= )
 	libcerf? ( sci-libs/libcerf )
 	wxwidgets? (
@@ -73,8 +66,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-langgreek
 		dev-texlive/texlive-mathscience
-		app-text/ghostscript-gpl )
-	qt5? ( dev-qt/linguist-tools:5 )"
+		app-text/ghostscript-gpl )"
 
 IDEPEND="latex? ( virtual/latex-base )"
 
@@ -137,8 +129,8 @@ src_configure() {
 		$(use_with lua) \
 		$(use_with regis) \
 		$(use_with X x) \
+		--without-qt \
 		--enable-stats \
-		$(use_with qt5 qt qt5) \
 		$(use_enable wxwidgets) \
 		DIST_CONTACT="https://bugs.gentoo.org/" \
 		EMACS=no
