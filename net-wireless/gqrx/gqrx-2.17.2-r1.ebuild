@@ -18,8 +18,8 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="gr-audio portaudio pulseaudio"
-REQUIRED_USE="^^ ( pulseaudio portaudio gr-audio )"
+IUSE="portaudio pulseaudio"
+REQUIRED_USE="?? ( pulseaudio portaudio )"
 
 RDEPEND="
 	dev-qt/qtbase:6[gui,network,widgets]
@@ -39,7 +39,7 @@ src_configure() {
 		LINUX_AUDIO_BACKEND=Pulseaudio
 	elif use portaudio; then
 		LINUX_AUDIO_BACKEND=Portaudio
-	elif use gr-audio; then
+	else
 		LINUX_AUDIO_BACKEND=Gr-audio
 	fi
 
