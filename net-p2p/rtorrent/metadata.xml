@@ -5,6 +5,11 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<use>
+		<flag name="tinyxml2">
+		Use vendor tinyxml2 instead of xmlrpc-c. This allows significant reduction in overhead (experimental)
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">rakshasa/rtorrent</remote-id>
 	</upstream>
