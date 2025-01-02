@@ -510,6 +510,7 @@ zig_src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	local args=( "${ZBS_ARGS[@]}" "${@}" )
+	local return_code=0
 
 	# UPSTREAM std.testing.tmpDir and a lot of other functions
 	# do not respect --cache-dir or ZIG_LOCAL_CACHE_DIR:
@@ -528,12 +529,15 @@ zig_src_test() {
 	); then
 		einfo "ZBS: testing with: ${args[@]}"
 		nonfatal ezig build test "${args[@]}" ||
-			die "ZBS: tests failed"
+			die -n "ZBS: tests failed"
+		return_code=$?
 	else
 		einfo "Test step not found, skipping."
 	fi
 
 	popd > /dev/null || die
+
+	return ${return_code}
 }
 
 # @FUNCTION: zig_src_install

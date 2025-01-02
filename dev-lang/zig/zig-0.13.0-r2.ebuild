@@ -236,7 +236,12 @@ src_test() {
 		fi
 	done
 
-	ZIG_EXE="${ZIG_TARGET_STAGE3_EXE}" zig_src_test -Dskip-non-native
+	if ! ZIG_EXE="${ZIG_TARGET_STAGE3_EXE}" nonfatal zig_src_test -Dskip-non-native; then
+		eerror "Zig tests failed.  This may happen if you have binfmt_misc hooks"
+		eerror "enabled for emulating foreign architectures (e.g. qemu-binfmt)."
+		eerror "Please disable qemu-binfmt hooks and try again."
+		die "Zig tests failed"
+	fi
 
 	ZBS_ARGS=("${args_backup[@]}")
 }
