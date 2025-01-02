@@ -9,6 +9,7 @@
 	<upstream>
 		<remote-id type="github">com-lihaoyi/Ammonite</remote-id>
 		<bugs-to>https://github.com/com-lihaoyi/Ammonite/issues</bugs-to>
+		<changelog>https://github.com/com-lihaoyi/Ammonite/releases</changelog>
 		<maintainer status='active'>
 			<name>Li Haoyi</name>
 			<email>haoyi.sg@gmail.com</email>
