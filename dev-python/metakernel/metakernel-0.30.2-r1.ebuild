@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -45,4 +45,10 @@ EPYTEST_DESELECT=(
 	metakernel/tests/test_replwrap.py::REPLWrapTestCase::test_bash
 	# requires starting ipycluster
 	metakernel/magics/tests/test_parallel_magic.py::test_parallel_magic
+	# Broken with custom command not found handler
+	metakernel/magics/tests/test_shell_magic.py::test_shell_magic
+	metakernel/magics/tests/test_shell_magic.py::test_shell_magic3
+	# https://github.com/Calysto/metakernel/issues/279
+	metakernel/tests/test_magic.py::test_get_help
+	metakernel/tests/test_replwrap.py::REPLWrapTestCase::test_python
 )
