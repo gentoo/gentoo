@@ -1,0 +1,22 @@
+--- a/NickvisionTagger.GNOME/NickvisionTagger.GNOME.csproj
++++ b/NickvisionTagger.GNOME/NickvisionTagger.GNOME.csproj
+@@ -2,7 +2,7 @@
+ 
+   <PropertyGroup>
+     <OutputType>Exe</OutputType>
+-    <TargetFramework>net8.0</TargetFramework>
++    <TargetFramework>net9.0</TargetFramework>
+     <Nullable>enable</Nullable>
+     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+   </PropertyGroup>
+--- a/NickvisionTagger.Shared/NickvisionTagger.Shared.csproj
++++ b/NickvisionTagger.Shared/NickvisionTagger.Shared.csproj
+@@ -1,7 +1,7 @@
+ ﻿<Project Sdk="Microsoft.NET.Sdk">
+ 
+   <PropertyGroup>
+-    <TargetFramework>net8.0</TargetFramework>
++    <TargetFramework>net9.0</TargetFramework>
+     <Nullable>enable</Nullable>
+   </PropertyGroup>
+ 

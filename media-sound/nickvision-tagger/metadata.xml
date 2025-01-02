@@ -12,7 +12,7 @@
     Convert filenames to tags and tags to filenames with ease.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/nlogozzo/NickvisionTagger/issues/</bugs-to>
-    <remote-id type="github">nlogozzo/NickvisionTagger</remote-id>
+    <bugs-to>https://github.com/NickvisionApps/Tagger/issues</bugs-to>
+    <remote-id type="github">NickvisionApps/Tagger</remote-id>
   </upstream>
 </pkgmetadata>
