@@ -2961,6 +2961,12 @@ toolchain_pkg_postrm() {
 			rm -f "${EROOT}"/usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
 		fi
 		return 0
+	else
+		# Removed the last GCC installed (bug #906040)
+		if ! has_version "sys-devel/gcc" && has_version "sys-devel/clang" ; then
+			einfo "Last GCC version removed. Cleaning up ${EROOT}/etc/clang/gentoo-gcc-install.cfg."
+			echo > "${EROOT}"/etc/clang/gentoo-gcc-install.cfg
+		fi
 	fi
 
 	# gcc stopped installing .la files fixer in June 2020.
