@@ -12,5 +12,7 @@
 	<upstream>
 		<remote-id type="gitlab">sequoia-pgp/sequoia</remote-id>
 		<remote-id type="gitlab">sequoia-pgp/sequoia-sq</remote-id>
+		<changelog>https://gitlab.com/sequoia-pgp/sequoia-sq/-/tags</changelog>
+		<bugs-to>https://gitlab.com/sequoia-pgp/sequoia-sq/-/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
