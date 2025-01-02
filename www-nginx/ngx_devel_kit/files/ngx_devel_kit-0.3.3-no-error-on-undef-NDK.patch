@@ -1,0 +1,37 @@
+From cf3ad3298c15ff22af196902c2af4cb76627d18c Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Mon, 23 Dec 2024 14:03:31 +0100
+Subject: [PATCH] src/ndk.h: do not #error if 'NDK' is undefined
+
+The 'NDK' is only ever used to abort the compilation if it is not
+defined. It has no other uses.
+
+Passing `-DNDK` around each time a consumer of NDK is compiled
+complicates packaging. As such, the #error line is removed as being
+totally irrelevant.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ src/ndk.h | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/ndk.h b/src/ndk.h
+index febcc32..97d2d65 100644
+--- a/src/ndk.h
++++ b/src/ndk.h
+@@ -27,12 +27,6 @@
+ #endif
+ #endif
+ 
+-
+-#if !(NDK)
+-#error At least one module requires the Nginx Development Kit to be compiled with \
+-the source (add --with-module=/path/to/devel/kit/src to configure command)
+-#endif
+-
+ #include    <ndk_config.h>
+ 
+ 
+-- 
+2.45.2
+
