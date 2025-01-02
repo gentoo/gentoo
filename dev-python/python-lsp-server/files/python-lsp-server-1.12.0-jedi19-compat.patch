@@ -1,0 +1,16 @@
+https://github.com/python-lsp/python-lsp-server/pull/609
+diff --git a/test/plugins/test_completion.py b/test/plugins/test_completion.py
+index d1ca5ef8..3e768f06 100644
+--- a/test/plugins/test_completion.py
++++ b/test/plugins/test_completion.py
+@@ -179,9 +179,7 @@ def test_jedi_completion_with_fuzzy_enabled(config, workspace) -> None:
+ 
+     assert items
+ 
+-    expected = "commonprefix(m)"
+-    if JEDI_VERSION == "0.18.0":
+-        expected = "commonprefix(list)"
++    expected = "isabs(s)"
+     assert items[0]["label"] == expected
+ 
+     # Test we don't throw with big character
