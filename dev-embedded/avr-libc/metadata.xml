@@ -9,4 +9,7 @@
 		This package is part of the avr- binutils, -gcc, -lib toolchain for the Atmel microcontrollers.
 		These ebuilds have been created and submitted by Scott L. Price (dflytech.com).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">avrdudes/avr-libc</remote-id>
+	</upstream>
 </pkgmetadata>
