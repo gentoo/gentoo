@@ -11,6 +11,8 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<bugs-to>https://github.com/desultory/zenlib/issues</bugs-to>
+		<changelog>https://github.com/desultory/zenlib/releases</changelog>
 		<remote-id type="github">desultory/zenlib</remote-id>
 	</upstream>
 </pkgmetadata>
