@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/intltool-0.31
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=("${FILESDIR}"/${PN}-5.8.0-gettext.patch)
 
 src_prepare() {
 	default
