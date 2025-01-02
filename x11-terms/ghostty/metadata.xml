@@ -14,8 +14,6 @@
 	</upstream>
 	<use>
 		<flag name="adwaita">Use <pkg>gui-libs/libadwaita</pkg> for better GNOME integration</flag>
-		<flag name="gtk">Use the GTK 4 backend for windowing</flag>
-		<flag name="glfw">Use the GLFW backend for windowing</flag>
 		<flag name="system-fontconfig">Use system fontconfig instead of the bundled one</flag>
 		<flag name="system-freetype">Use system freetype instead of the bundled one</flag>
 		<flag name="system-glslang">Use system glslang instead of the bundled one</flag>
