@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -234,6 +234,9 @@ src_configure() {
 
 	if use !custom-cflags; then
 		strip-flags # fragile
+
+		# temporary workaround for bug #947356, should be fixed in Qt 6.9.x
+		append-cppflags -U_GLIBCXX_ASSERTIONS
 
 		if is-flagq '-g?(gdb)?([2-9])'; then #914475
 			replace-flags '-g?(gdb)?([2-9])' -g1
