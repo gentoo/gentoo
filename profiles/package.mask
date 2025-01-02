@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2025-01-02)
+# Upstream dead, repo archived (https://github.com/mono/xsp). Uses deprecated
+# "dotnet" eclass. Depends on old mono. As a replacement one can use official
+# .NET 6.0-9.0 ASP.NET instead.
+# Removal on 2025-02-02
+acct-group/aspnet
+acct-user/aspnet
+www-servers/xsp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-02)
 # No more revdeps, depends on Qt5. Removal on 2025-01-29.
 dev-libs/libqt5pas
