@@ -404,7 +404,7 @@ zune-jpeg@0.4.14
 "
 
 RUST_MIN_VER="1.79.0"
-inherit bash-completion-r1 cargo
+inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"
 HOMEPAGE="https://dystroy.org/broot/ https://github.com/Canop/broot"
@@ -453,11 +453,6 @@ src_install() {
 	newbashcomp ${PN}.bash ${PN}
 	newbashcomp br.bash br
 
-	insinto /usr/share/zsh/site-functions
-	doins _${PN}
-	doins _br
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins ${PN}.fish
-	doins br.fish
+	dozshcomp _${PN} _br
+	dofishcomp ${PN}.fish br.fish
 }
