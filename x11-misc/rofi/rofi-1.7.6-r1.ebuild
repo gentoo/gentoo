@@ -36,6 +36,7 @@ RDEPEND="
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-libs/xcb-util-cursor
+	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-misc/xkeyboard-config
 "
