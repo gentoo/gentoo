@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,9 +21,9 @@ LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
 IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
-ffmpeg flac game gnome jack ladspa lyrics +mad midi mms mplayer musepack
+ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer musepack
 notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler shout sid
-sndfile soxr stereo tray udisks +vorbis wavpack xmp"
+sndfile soxr stereo tray udisks +vorbis wavpack"
 
 REQUIRED_USE="
 	gnome? ( dbus )
@@ -59,6 +59,7 @@ RDEPEND="
 		virtual/jack
 	)
 	ladspa? ( media-plugins/cmt-plugins )
+	libxmp? ( media-libs/libxmp )
 	mad? (
 		media-libs/libmad:=
 		media-sound/mpg123:=
@@ -87,7 +88,6 @@ RDEPEND="
 		media-libs/libvorbis
 	)
 	wavpack? ( media-sound/wavpack )
-	xmp? ( media-libs/libxmp )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
@@ -150,7 +150,7 @@ src_configure() {
 		-DUSE_UDISKS="$(usex udisks)"
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
-		-DUSE_XMP="$(usex xmp)"
+		-DUSE_XMP="$(usex libxmp)"
 	)
 
 	cmake_src_configure
