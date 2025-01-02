@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DOCS_BUILDER="doxygen"
 # File is hardcoded to be run from ../ so we use this instead of DOCS_DIR
 DOCS_CONFIG_NAME="doc/Doxyfile"
@@ -23,11 +23,11 @@ LICENSE="GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# https://github.com/LibreDWG/libredwg/issues/342
-RESTRICT="test"
-
 IUSE="debug python perl static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+# https://github.com/LibreDWG/libredwg/issues/342
+RESTRICT="test"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
