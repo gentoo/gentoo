@@ -4,6 +4,11 @@
 # New entries go on top.
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
+# Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
+kde-frameworks/kfilemetadata:5 mobi
+media-gfx/okularpart:5 mobi
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
 # Prepare cleanup of kde-apps/kaccounts-integration:6[qt5]
 kde-frameworks/purpose:5 kaccounts
 
