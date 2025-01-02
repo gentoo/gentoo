@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
+# Blocks cleanup of dev-libs/quazip:0/1 and dev-qt/qtwebengine:5
+# Bug #926665
+media-sound/teamspeak-client:3
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
 # Last release from 2012, dead upstream for 7 years, no Gentoo maintainer.
 # Depends on dev-qt/qtwebengine:5, removed from almost every other distro.
 # Bugs #741849, #830220, #851507 and #926672. Removal on 2025-02-10.
