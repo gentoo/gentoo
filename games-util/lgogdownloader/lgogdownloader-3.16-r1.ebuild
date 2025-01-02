@@ -5,13 +5,19 @@ EAPI=8
 
 inherit cmake
 
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/Sude-/lgogdownloader.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/Sude-/${PN}/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="Unofficial GOG.com downloader for Linux"
 HOMEPAGE="https://sites.google.com/site/gogdownloader/"
-SRC_URI="https://github.com/Sude-/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="gui"
 
 RDEPEND="
