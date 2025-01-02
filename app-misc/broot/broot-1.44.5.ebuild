@@ -418,7 +418,6 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/libgit2:=
-	dev-libs/oniguruma
 	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
