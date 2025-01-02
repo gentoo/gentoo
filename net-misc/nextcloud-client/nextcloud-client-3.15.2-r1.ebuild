@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.1.0:0=
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
 	dev-qt/qt5compat:6
-	>=dev-qt/qtbase-6.6.0:6[dbus,gui,network,sql,sqlite,widgets]
+	>=dev-qt/qtbase-6.6.0:6[dbus,gui,network,sql,sqlite,ssl,widgets]
 	dev-qt/qtdeclarative:6[widgets]
 	dev-qt/qtsvg:6
 	dev-qt/qtwebsockets:6
