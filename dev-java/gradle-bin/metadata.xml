@@ -9,4 +9,9 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">gradle/gradle</remote-id>
+		<bugs-to>https://github.com/gradle/gradle/issues</bugs-to>
+		<changelog>https://github.com/gradle/gradle/releases</changelog>
+	</upstream>
 </pkgmetadata>
