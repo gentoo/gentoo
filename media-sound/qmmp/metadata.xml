@@ -16,7 +16,7 @@
 		<flag name="enca">Detects the character encoding automatically</flag>
 		<flag name="game">Enable Game music support</flag>
 		<flag name="gnome">Enable Gnome hotkey support (requires QtDBus)</flag>
-		<flag name="libxmp">Enable module files renderer (modplug replacement)</flag>
+		<flag name="libxmp">Enable module files renderer (modplug replacement) via <pkg>media-libs/libxmp</pkg></flag>
 		<flag name="lyrics">Fetch track lyrics from the web</flag>
 		<flag name="midi">Enable midi support using wildmidi library</flag>
 		<flag name="notifier">Enable qmmps' notifier system</flag>
@@ -33,6 +33,9 @@
 		<flag name="xmp">Enable module files renderer (modplug replacement)</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://sourceforge.net/p/qmmp-dev/tickets/</bugs-to>
+		<changelog>https://sourceforge.net/p/qmmp-dev/code/HEAD/tree/trunk/qmmp/ChangeLog</changelog>
+		<doc>https://sourceforge.net/p/qmmp-dev/wiki/browse_pages/</doc>
 		<remote-id type="sourceforge">qmmp-dev</remote-id>
 	</upstream>
 </pkgmetadata>
