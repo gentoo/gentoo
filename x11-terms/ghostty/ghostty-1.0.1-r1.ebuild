@@ -42,6 +42,7 @@ declare -g -r -A ZBS_DEPENDENCIES=(
 )
 
 ZIG_SLOT="0.13"
+ZIG_NEEDS_LLVM=1
 inherit zig xdg
 
 SRC_URI="
