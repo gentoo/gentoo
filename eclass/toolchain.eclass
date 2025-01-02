@@ -1804,7 +1804,7 @@ toolchain_src_configure() {
 		fi
 
 		case ${CBUILD}-${CHOST}-${CTARGET} in
-			*i686-w64-mingw32*|*x86_64-w64-mingw32*|*x86_64-w32-mingw32*)
+			*-w*-mingw*)
 				# config/i386/t-cygming requires fixincludes (bug #925204)
 				GCC_RUN_FIXINCLUDES=1
 				;;
