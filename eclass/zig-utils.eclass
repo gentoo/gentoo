@@ -54,6 +54,14 @@ inherit edo flag-o-matic linux-info
 # and most likely changed to more common in other eclasses ZIG_MIN/
 # ZIG_MAX form.
 
+# @ECLASS_VARIABLE: ZIG_NEEDS_LLVM
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, the package will BDEPEND on a Zig package
+# with LLVM enabled.  This is currently required for packages that require
+# C/C++ source files to be compiled with Zig.
+
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
 # @DEFAULT_UNSET
@@ -69,9 +77,15 @@ inherit edo flag-o-matic linux-info
 # For zig.eclass users: see documentation in zig.eclass
 # instead.
 if [[ ! ${ZIG_OPTIONAL} ]]; then
+	_ZIG_USEDEP=""
+	if [[ ${ZIG_NEEDS_LLVM} ]]; then
+		_ZIG_USEDEP="[llvm(+)]"
+	fi
+
+	# NOTE: zig-bin is always built with LLVM support, so no USE needed.
 	BDEPEND="
 		|| (
-			dev-lang/zig:${ZIG_SLOT}
+			dev-lang/zig:${ZIG_SLOT}${_ZIG_USEDEP}
 			dev-lang/zig-bin:${ZIG_SLOT}
 		)
 	"
