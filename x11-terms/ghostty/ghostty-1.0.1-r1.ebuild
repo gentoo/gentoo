@@ -62,13 +62,13 @@ KEYWORDS="~amd64"
 
 # TODO: simdutf integration (missing Gentoo version)
 # TODO: spirv-cross integration (missing Gentoo package)
-# TODO: glfw integration (no option from upstream)
 # NOTE: gtk backend requires X right now since ghostty unconditionally
 #       includes gdk/x11/gdkx.h.
 #       https://github.com/ghostty-org/ghostty/issues/3477
 RDEPEND="
+	gui-libs/gtk:4=[X]
+
 	adwaita? ( gui-libs/libadwaita:1= )
-	gtk? ( gui-libs/gtk:4=[X] )
 
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
 	system-freetype? (
@@ -87,16 +87,11 @@ BDEPEND="
 	man? ( virtual/pandoc )
 "
 
-IUSE="+adwaita man +gtk glfw"
+IUSE="+adwaita man"
 # System integrations
 IUSE+="
 	+system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2
 	+system-oniguruma +system-zlib
-"
-
-REQUIRED_USE="
-	adwaita? ( gtk )
-	^^ ( gtk glfw )
 "
 
 # XXX: Because we set --release=fast below, Zig will automatically strip
@@ -114,6 +109,7 @@ src_configure() {
 		# XXX: Ghostty displays a banner saying it is a debug build unless ReleaseFast is used.
 		--release=fast
 
+		-Dapp-runtime=gtk
 		-Dfont-backend=fontconfig_freetype
 		-Drenderer=opengl
 		-Dgtk-adwaita=$(usex adwaita true false)
@@ -129,16 +125,6 @@ src_configure() {
 		-f$(usex system-oniguruma sys no-sys)=oniguruma
 		-f$(usex system-zlib sys no-sys)=zlib
 	)
-
-	if use gtk; then
-		my_zbs_args+=(
-			-Dapp-runtime=gtk
-		)
-	elif use glfw; then
-		my_zbs_args+=(
-			-Dapp-runtime=glfw
-		)
-	fi
 
 	zig_src_configure
 }
