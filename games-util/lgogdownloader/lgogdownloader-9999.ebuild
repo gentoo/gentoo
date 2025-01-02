@@ -38,6 +38,7 @@ DEPEND="
 "
 
 BDEPEND="
+	dev-qt/qtbase:6
 	virtual/pkgconfig
 "
 
