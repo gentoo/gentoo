@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,11 @@ else
 	SRC_URI="https://github.com/ftilmann/latexdiff/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
+
+SRC_URI+="
+	https://github.com/ftilmann/latexdiff/pull/314/commits/94e13c799d2e218a814d007ceff37e91828fb4a4.patch
+		-> ${PN}-1.3.4-makefile-fix-example-diff-target.patch
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -33,13 +38,13 @@ BDEPEND="
 	test? ( app-shells/tcsh )
 "
 
-src_compile() {
-	export VARTEXFONTS="${T}/fonts"
-	PATH="${S}/dist:${PATH}" emake -j1 distribution
-}
+PATCHES=(
+	"${DISTDIR}"/${PN}-1.3.4-makefile-fix-example-diff-target.patch
+)
 
-src_test() {
-	emake test
+src_compile() {
+	local -x VARTEXFONTS="${T}/fonts"
+	emake -j1 distribution
 }
 
 src_install() {
