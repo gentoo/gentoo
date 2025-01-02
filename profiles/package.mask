@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Maciej Barć <xgqt@gentoo.org> (2025-01-02)
+# Deprecated LEAN 3 packages. The "mathlib-tools" repo is archived
+# (https://github.com/leanprover-community/mathlib-tools). Migrate to LEAN 4.
+# Removal on 2025-02-02
+sci-mathematics/lean:0/3
+sci-mathematics/mathlib-tools
+
+# Maciej Barć <xgqt@gentoo.org> (2025-01-02)
 # Upstream dead, repo archived (https://github.com/mono/xsp). Uses deprecated
 # "dotnet" eclass. Depends on old mono. As a replacement one can use official
 # .NET 6.0-9.0 ASP.NET instead.
