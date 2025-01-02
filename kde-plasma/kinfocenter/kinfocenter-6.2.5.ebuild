@@ -48,7 +48,6 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package usb USB1)
-		-DCMAKE_DISABLE_FIND_PACKAGE_SeleniumWebDriverATSPI=ON # missing
 	)
 
 	ecm_src_configure
