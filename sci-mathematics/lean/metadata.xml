@@ -8,10 +8,15 @@
   </maintainer>
   <longdescription>
     The Lean theorem prover is a proof assistant developed principally
-    by Leonardo de Moura at Microsoft Research.
+    by Leonardo de Moura at Microsoft Research.  Lean is a functional
+    programming language that makes it easy to write correct and
+    maintainable code. You can also use Lean as an interactive theorem
+    prover. Lean programming primarily involves defining types and
+    functions. This allows your focus to remain on the problem domain and
+    manipulating its data, rather than the details of programming.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/leanprover-community/lean/issues</bugs-to>
-    <remote-id type="github">leanprover-community/lean</remote-id>
+    <bugs-to>https://github.com/leanprover/lean4/issues</bugs-to>
+    <remote-id type="github">leanprover/lean4</remote-id>
   </upstream>
 </pkgmetadata>
