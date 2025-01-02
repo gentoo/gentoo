@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig-utils.eclass
@@ -54,6 +54,14 @@ inherit edo flag-o-matic linux-info
 # and most likely changed to more common in other eclasses ZIG_MIN/
 # ZIG_MAX form.
 
+# @ECLASS_VARIABLE: ZIG_NEEDS_LLVM
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, the package will BDEPEND on a Zig package
+# with LLVM enabled.  This is currently required for packages that require
+# C/C++ source files to be compiled with Zig.
+
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
 # @DEFAULT_UNSET
@@ -69,9 +77,15 @@ inherit edo flag-o-matic linux-info
 # For zig.eclass users: see documentation in zig.eclass
 # instead.
 if [[ ! ${ZIG_OPTIONAL} ]]; then
+	_ZIG_USEDEP=""
+	if [[ ${ZIG_NEEDS_LLVM} ]]; then
+		_ZIG_USEDEP="[llvm(+)]"
+	fi
+
+	# NOTE: zig-bin is always built with LLVM support, so no USE needed.
 	BDEPEND="
 		|| (
-			dev-lang/zig:${ZIG_SLOT}
+			dev-lang/zig:${ZIG_SLOT}${_ZIG_USEDEP}
 			dev-lang/zig-bin:${ZIG_SLOT}
 		)
 	"
@@ -440,6 +454,10 @@ zig-utils_find_installation() {
 
 	local base_path="${BROOT}/usr/bin"
 
+	local -x ZIG_GLOBAL_CACHE_DIR="${T}/zig-detect"
+	mkdir -p "${ZIG_GLOBAL_CACHE_DIR}" || die
+	touch "${ZIG_GLOBAL_CACHE_DIR}/empty.zig" || die
+
 	local selected_path selected_ver
 	for selected_ver in "${zig_supported_versions[@]}"; do
 		# Check if candidate satisfies ZIG_SLOT condition.
@@ -451,6 +469,9 @@ zig-utils_find_installation() {
 		local candidate_path
 		for candidate_path in "${base_path}"/zig{,-bin}-"${selected_ver}"; do
 			if [[ -x "${candidate_path}" ]]; then
+				if [[ ${ZIG_NEEDS_LLVM} ]]; then
+					"${candidate_path}" test -fllvm -OReleaseSmall "${ZIG_GLOBAL_CACHE_DIR}/empty.zig" &> /dev/null || continue
+				fi
 				selected_path="${candidate_path}"
 				break 2
 			fi
