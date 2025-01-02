@@ -1,0 +1,12 @@
+diff --git a/form.c b/form.c
+index 24c601d..c6c15f5 100644
+--- a/form.c
++++ b/form.c
+@@ -5,6 +5,7 @@
+ #include <slang.h>
+ #include <stdarg.h>
+ #include <stdlib.h>
++#include <string.h>
+ #ifdef HAVE_SYS_SELECT_H
+ #include <sys/select.h>
+ #endif

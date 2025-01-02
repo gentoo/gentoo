@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ BDEPEND="sys-devel/gettext"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.52.23-gold.patch
 	"${FILESDIR}"/${PN}-0.52.21-python-sitedir.patch
+	"${FILESDIR}"/${PN}-0.52.24-c99-fix.patch
 )
 
 S=${WORKDIR}/${PN}-${MY_PV}
