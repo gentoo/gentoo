@@ -71,7 +71,10 @@ RDEPEND="
 	gtk? ( gui-libs/gtk:4=[X] )
 
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
-	system-freetype? ( >=media-libs/freetype-2.13.2:=[bzip2] )
+	system-freetype? (
+		system-harfbuzz? ( >=media-libs/freetype-2.13.2:=[bzip2,harfbuzz] )
+		!system-harfbuzz? ( >=media-libs/freetype-2.13.2:=[bzip2] )
+	)
 	system-glslang? ( >=dev-util/glslang-1.3.296.0:= )
 	system-harfbuzz? ( >=media-libs/harfbuzz-8.4.0:= )
 	system-libpng? ( >=media-libs/libpng-1.6.43:= )
