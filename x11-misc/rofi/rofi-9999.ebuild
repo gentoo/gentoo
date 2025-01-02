@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs xdg-utils
+inherit meson toolchain-funcs xdg-utils
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
 HOMEPAGE="https://github.com/davatorium/rofi"
@@ -13,7 +13,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -27,7 +27,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	dev-libs/glib:2
+	>=dev-libs/glib-2.72:2
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/gdk-pixbuf:2
 	x11-libs/libxcb:=
@@ -45,11 +45,6 @@ DEPEND="
 	test? ( >=dev-libs/check-0.11 )
 "
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	# Doesn't work with reflex, bug #887049
 	export LEX=flex
@@ -59,12 +54,13 @@ src_configure() {
 
 	tc-export CC
 
-	local myeconfargs=(
-		$(use_enable drun)
-		$(use_enable test check)
-		$(use_enable windowmode)
+	local emesonargs=(
+		$(meson_use drun)
+		$(meson_use windowmode window)
+		$(meson_feature test check)
+	   -Dimdkit=false
 	)
-	econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
 pkg_postinst() {
