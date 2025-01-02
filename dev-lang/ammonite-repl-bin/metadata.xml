@@ -20,5 +20,7 @@
 		<flag name="scala3-0">Install Ammonite for Scala 3.0</flag>
 		<flag name="scala3-1">Install Ammonite for Scala 3.1</flag>
 		<flag name="scala3-2">Install Ammonite for Scala 3.2</flag>
+		<flag name="scala3-3">Install Ammonite for Scala 3.3</flag>
+		<flag name="scala3-5">Install Ammonite for Scala 3.5</flag>
 	</use>
 </pkgmetadata>
