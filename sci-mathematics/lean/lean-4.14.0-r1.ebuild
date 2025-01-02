@@ -32,6 +32,7 @@ IUSE="debug source"
 
 RDEPEND="
 	dev-libs/gmp:=
+	dev-libs/libuv:=
 	sci-mathematics/cadical
 "
 DEPEND="
