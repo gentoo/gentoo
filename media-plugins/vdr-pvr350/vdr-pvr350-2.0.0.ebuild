@@ -8,13 +8,13 @@ inherit vdr-plugin-2
 DESCRIPTION="VDR plugin: use a PVR350 as output device"
 HOMEPAGE="https://github.com/vdr-projects/vdr-plugin-pvr350/"
 SRC_URI="https://github.com/vdr-projects/vdr-plugin-pvr350/archive/refs/tags/${PV}.tar.gz -> ${P}.tgz"
-S="${WORKDIR}/pvr350-${PV}"
+S="${WORKDIR}/vdr-plugin-pvr350-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=media-video/vdr-2
+DEPEND=">=media-video/vdr-2.6
 	media-sound/twolame
 	media-sound/mpg123-base
 	media-libs/a52dec"
