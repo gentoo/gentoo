@@ -1,0 +1,16 @@
+Require specific gettext version, as otherwise using
+>=sys-devel/gettext-0.23 may lead to a build error due
+to misaligned gettext versions.
+https://bugs.gentoo.org/945976
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -52,7 +52,7 @@ AC_TYPE_SIZE_T
+ # i18n / text translations
+ # The choice for version of gettext is only based on what was installed on the developers desktop (2021).
+ # If another version is more convenient, go for it.
+-AM_GNU_GETTEXT_VERSION([0.21])
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.21])
+ AM_GNU_GETTEXT([external])
+ 
+ GETTEXT_PACKAGE="$PACKAGE"
