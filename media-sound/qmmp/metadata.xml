@@ -32,6 +32,9 @@
 		<flag name="xmp">Enable module files renderer (modplug replacement)</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://sourceforge.net/p/qmmp-dev/tickets/</bugs-to>
+		<changelog>https://sourceforge.net/p/qmmp-dev/code/HEAD/tree/trunk/qmmp/ChangeLog</changelog>
+		<doc>https://sourceforge.net/p/qmmp-dev/wiki/browse_pages/</doc>
 		<remote-id type="sourceforge">qmmp-dev</remote-id>
 	</upstream>
 </pkgmetadata>
