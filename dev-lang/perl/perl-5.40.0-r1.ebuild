@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -754,7 +754,7 @@ src_configure() {
 		-Dmyhostname='localhost' \
 		-Dperladmin='root@localhost' \
 		-Ud_csh \
-		-Dsh="${EPREFIX}"/bin/sh \
+		-Dsh="${BROOT}"/bin/sh \
 		-Dtargetsh="${EPREFIX}"/bin/sh \
 		-Uusenm \
 		"${EXTRA_ECONF[@]}"
