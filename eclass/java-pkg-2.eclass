@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-2.eclass
@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: java-utils-2
 # @BLURB: Eclass for Java Packages
 # @DESCRIPTION:
@@ -17,7 +17,7 @@ if [[ -z ${_JAVA_PKG_2_ECLASS} ]] ; then
 _JAVA_PKG_2_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
