@@ -426,13 +426,6 @@ DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
-src_configure() {
-	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
-	local myfeatures=( $(usev X clipboard) trash )
-
-	cargo_src_configure --no-default-features
-}
-
 src_prepare() {
 	default
 
@@ -440,6 +433,13 @@ src_prepare() {
 	sed -e "s|#version|${PV}|" \
 		-e "s|#date|${mandate}|" \
 		man/page > "${T}"/${PN}.1 || die
+}
+
+src_configure() {
+	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
+	local myfeatures=( $(usev X clipboard) trash )
+
+	cargo_src_configure --no-default-features
 }
 
 src_install() {
