@@ -18,7 +18,6 @@
     <flag name="latency-timing">support latency timing information</flag>
     <flag name="ntp">Enable <pkg>net-misc/ntp</pkg> shared memory interface
     and PPS kernel support for GPS time</flag>
-    <flag name="sockets">export gpsd over unix sockets</flag>
     <flag name="shm">export gpsd over shared memory</flag>
   </use>
   <upstream>
