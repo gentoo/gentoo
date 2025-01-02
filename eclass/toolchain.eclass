@@ -721,7 +721,7 @@ toolchain_src_prepare() {
 
 	gnuconfig_update
 
-	if ! use prefix-guest && [[ -n ${EPREFIX} ]] ; then
+	if ! is_crosscompile && ! use prefix-guest && [[ -n ${EPREFIX} ]] ; then
 		einfo "Prefixifying dynamic linkers..."
 		for f in gcc/config/*/*linux*.h ; do
 			ebegin "  Updating ${f}"
