@@ -42,8 +42,16 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
+	x11-libs/xcb-util-keysyms
 	test? ( >=dev-libs/check-0.11 )
 "
+
+DOCS=(
+	AUTHORS
+	Changelog
+	Examples/
+	README.md
+)
 
 src_configure() {
 	# Doesn't work with reflex, bug #887049
