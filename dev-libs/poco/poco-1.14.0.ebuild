@@ -37,7 +37,7 @@ BDEPEND="
 "
 
 RDEPEND="
-	>=dev-libs/libpcre2-10.40
+	>=dev-libs/libpcre2-10.40:=
 	dev-libs/libutf8proc:=
 
 	activerecord? ( !app-arch/arc )
