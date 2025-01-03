@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/947300
+https://github.com/ngtcp2/ngtcp2/pull/1464
+https://github.com/ngtcp2/ngtcp2/commit/60ab2b73aa02e6c99597b975724c6b58008c4869
+https://github.com/ngtcp2/ngtcp2/commit/416698347d60968eba635182dfdedc44d1aa7c3b
+
+From 60ab2b73aa02e6c99597b975724c6b58008c4869 Mon Sep 17 00:00:00 2001
+From: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+Date: Fri, 3 Jan 2025 10:05:55 +0900
+Subject: [PATCH] tests: Fix uninitialized variable reference
+
+--- a/tests/ngtcp2_transport_params_test.c
++++ b/tests/ngtcp2_transport_params_test.c
+@@ -419,11 +419,16 @@ void test_ngtcp2_transport_params_convert_to_latest(void) {
+   ngtcp2_cid rcid, scid, dcid;
+   uint8_t available_versions[sizeof(uint32_t) * 3];
+   ngtcp2_sockaddr_in6 *sa_in6;
++  size_t i;
+ 
+   rcid_init(&rcid);
+   scid_init(&scid);
+   dcid_init(&dcid);
+ 
++  for (i = 0; i < sizeof(available_versions); i += sizeof(uint32_t)) {
++    ngtcp2_put_uint32be(&available_versions[i], (uint32_t)(0xff000000u + i));
++  }
++
+   ngtcp2_transport_params_default_versioned(NGTCP2_TRANSPORT_PARAMS_V1,
+                                             &srcbuf);
+ 
+
+From 416698347d60968eba635182dfdedc44d1aa7c3b Mon Sep 17 00:00:00 2001
+From: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+Date: Fri, 3 Jan 2025 10:13:56 +0900
+Subject: [PATCH] Fix uninitialized connection close frame_type
+
+--- a/lib/ngtcp2_conn.c
++++ b/lib/ngtcp2_conn.c
+@@ -13765,6 +13765,7 @@ ngtcp2_ssize ngtcp2_pkt_write_connection_close(
+ 
+   fr.type = NGTCP2_FRAME_CONNECTION_CLOSE;
+   fr.connection_close.error_code = error_code;
++  fr.connection_close.frame_type = 0;
+   fr.connection_close.reasonlen = reasonlen;
+   fr.connection_close.reason = (uint8_t *)reason;
+ 
+
