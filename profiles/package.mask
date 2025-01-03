@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-01-03)
+# Contains a serious bug that can cause deletion of the users home dir.
+# See-also: https://github.com/keshavbhatt/whatsie/issues/230
+# Removal on 2025-03-03 unless upstream fixes the issue
+net-im/whatsie
+
 # Maciej Barć <xgqt@gentoo.org> (2025-01-02)
 # Deprecated LEAN 3 packages. The "mathlib-tools" repo is archived
 # (https://github.com/leanprover-community/mathlib-tools). Migrate to LEAN 4.
