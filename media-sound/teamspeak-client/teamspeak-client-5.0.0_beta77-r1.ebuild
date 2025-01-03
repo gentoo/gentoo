@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,37 +13,33 @@ S="${WORKDIR}"
 LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="5"
 
-IUSE="+alsa pulseaudio"
-REQUIRED_USE="|| ( alsa pulseaudio )"
-
 RDEPEND="
-	app-accessibility/at-spi2-core
+	app-accessibility/at-spi2-core:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/olm
 	media-libs/alsa-lib
-	media-libs/fontconfig:1.0
+	media-libs/harfbuzz
+	media-libs/mesa
 	net-print/cups
-	sys-power/upower
 	sys-apps/dbus
 	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
-	x11-libs/libXcursor
 	x11-libs/libXdamage
+	x11-libs/libdrm
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
+	x11-libs/libnotify
+	x11-libs/libxcb
+	x11-libs/libxkbcommon
 	x11-libs/libXrandr
-	x11-libs/libXrender
 	x11-libs/libXScrnSaver
-	x11-libs/libXtst
 	x11-libs/pango
-	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-libs/libpulse )
 "
 
 RESTRICT="bindist mirror"
@@ -61,10 +57,6 @@ QA_PREBUILT="
 
 src_prepare() {
 	default
-
-	if ! use alsa; then
-		rm soundbackends/libalsa_linux_*.so || die
-	fi
 }
 
 src_install() {
@@ -78,17 +70,25 @@ src_install() {
 	dodir /opt/bin
 	dosym ../teamspeak5-client/TeamSpeak /opt/bin/ts5client
 
+	for iconsize in 48 128 256; do
+		newicon -s ${iconsize} logo-${iconsize}.png teamspeak5.png
+	done
+
 	make_desktop_entry \
 		/opt/bin/ts5client "Teamspeak 5 Client" \
-		/opt/teamspeak5-client/html/client_ui/images/icons/teamspeak_logo.svg "Audio;AudioVideo;Network"
+		"teamspeak5" "Audio;AudioVideo;Network"
+
+	dodoc docs/*
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
