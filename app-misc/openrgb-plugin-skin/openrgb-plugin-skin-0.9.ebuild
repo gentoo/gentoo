@@ -1,21 +1,22 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit qmake-utils
 
-SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin/-/archive/release_${PV}/OpenRGBSkinPlugin-release_${PV}.tar.bz2"
-S="${WORKDIR}/OpenRGBSkinPlugin-release_${PV}"
-KEYWORDS="amd64"
-
 DESCRIPTION="Plugin for OpenRGB that allows you to customize the look and feel of OpenRGB"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin"
+
+SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin/-/archive/release_${PV}/OpenRGBSkinPlugin-release_${PV}.tar.bz2"
+S="${WORKDIR}/OpenRGBSkinPlugin-release_${PV}"
+
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64"
 
 RDEPEND="
-	>=app-misc/openrgb-0.9:=
+	>=app-misc/openrgb-0.9:=[-qt6(-)]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
