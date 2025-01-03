@@ -42,6 +42,7 @@ declare -g -r -A ZBS_DEPENDENCIES=(
 )
 
 ZIG_SLOT="0.13"
+ZIG_NEEDS_LLVM=1
 inherit zig xdg
 
 SRC_URI="
@@ -61,14 +62,16 @@ KEYWORDS="~amd64"
 
 # TODO: simdutf integration (missing Gentoo version)
 # TODO: spirv-cross integration (missing Gentoo package)
-# TODO: glfw integration (no option from upstream)
-# NOTE: gtk backend requires X right now since ghostty unconditionally
-#       includes gdk/x11/gdkx.h.
-#       https://github.com/ghostty-org/ghostty/issues/3477
 RDEPEND="
-	adwaita? ( gui-libs/libadwaita:1= )
-	gtk? ( gui-libs/gtk:4=[X] )
+	gui-libs/gtk:4=[X?]
 
+	adwaita? ( gui-libs/libadwaita:1= )
+	X? ( x11-libs/libX11 )
+	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
+	system-freetype? (
+		system-harfbuzz? ( >=media-libs/freetype-2.13.2:=[bzip2,harfbuzz] )
+		!system-harfbuzz? ( >=media-libs/freetype-2.13.2:=[bzip2] )
+	)
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
 	system-freetype? ( >=media-libs/freetype-2.13.2:=[bzip2] )
 	system-glslang? ( >=dev-util/glslang-1.3.296.0:= )
@@ -83,17 +86,10 @@ BDEPEND="
 	man? ( virtual/pandoc )
 "
 
-IUSE="+adwaita man +gtk glfw"
+IUSE="+X +adwaita man"
 # System integrations
-IUSE+="
-	+system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2
-	+system-oniguruma +system-zlib
-"
-
-REQUIRED_USE="
-	adwaita? ( gtk )
-	^^ ( gtk glfw )
-"
+IUSE+=" +system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2"
+IUSE+=" +system-oniguruma +system-zlib"
 
 # XXX: Because we set --release=fast below, Zig will automatically strip
 #      the binary. Until Ghostty provides a way to disable the banner while
@@ -110,9 +106,11 @@ src_configure() {
 		# XXX: Ghostty displays a banner saying it is a debug build unless ReleaseFast is used.
 		--release=fast
 
+		-Dapp-runtime=gtk
 		-Dfont-backend=fontconfig_freetype
 		-Drenderer=opengl
 		-Dgtk-adwaita=$(usex adwaita true false)
+		-Dgtk-x11=$(usex X true false)
 		-Demit-docs=$(usex man true false)
 		-Dversion-string="${PV}"
 
@@ -125,16 +123,6 @@ src_configure() {
 		-f$(usex system-oniguruma sys no-sys)=oniguruma
 		-f$(usex system-zlib sys no-sys)=zlib
 	)
-
-	if use gtk; then
-		my_zbs_args+=(
-			-Dapp-runtime=gtk
-		)
-	elif use glfw; then
-		my_zbs_args+=(
-			-Dapp-runtime=glfw
-		)
-	fi
 
 	zig_src_configure
 }
