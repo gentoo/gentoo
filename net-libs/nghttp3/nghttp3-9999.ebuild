@@ -27,10 +27,6 @@ REQUIRED_USE="
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.0-munit-c23.patch
-)
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_LIB_ONLY=ON
