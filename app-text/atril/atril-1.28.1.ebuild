@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MATE_LA_PUNT="yes"
 
@@ -19,7 +19,7 @@ IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synct
 
 REQUIRED_USE="t1lib? ( dvi )"
 
-COMMON_DEPEND="
+DEPEND="
 	app-accessibility/at-spi2-core:2
 	app-text/poppler[cairo]
 	dev-libs/glib:2
@@ -51,12 +51,12 @@ COMMON_DEPEND="
 	xps? ( app-text/libgxps )
 "
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	gnome-base/gvfs
 	virtual/libintl
 "
 
-BDEPEND="${COMMON_DEPEND}
+BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/yelp-tools
 	dev-util/gdbus-codegen
