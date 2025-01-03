@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: atm, libbz2.a is always PIC :(, so it is always built quickly
@@ -70,6 +70,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	cp "${S}"/sample* "${BUILD_DIR}" || die
+	ln -s libbz2.so.1.0 libbz2.so.1 || die
 	bemake -f "${S}"/Makefile check
 }
 
