@@ -21,9 +21,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="io-uring">Enable efficient I/O via <pkg>sys-libs/liburing</pkg>.</flag>
-	</use>
 	<longdescription>
 	plocate works by creating an inverted index over trigrams (combinations of
 	three bytes) in the search strings, which allows it to rapidly narrow down the

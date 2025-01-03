@@ -20,7 +20,6 @@
     <flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis (discouraged)</flag>
     <flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
     <flag name="id3tag">Support for ID3 tags</flag>
-    <flag name="io-uring">Enable support for io_uring</flag>
     <flag name="inotify">Use the Linux kernel inotify subsystem to notice changes to mpd music library</flag>
     <flag name="lame">Support for MP3 streaming via Icecast2</flag>
     <flag name="libmpdclient">Enable support for remote mpd databases</flag>

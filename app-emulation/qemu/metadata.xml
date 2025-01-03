@@ -26,7 +26,6 @@
 		<flag name="iscsi">Enable direct iSCSI support via
 		<pkg>net-libs/libiscsi</pkg> instead of indirectly via the Linux
 		block layer that <pkg>sys-block/open-iscsi</pkg> does.</flag>
-		<flag name="io-uring">Enable efficient I/O via <pkg>sys-libs/liburing</pkg>.</flag>
 		<flag name="keyutils">Support Linux keyrings via <pkg>sys-apps/keyutils</pkg></flag>
 		<flag name="multipath">Enable multipath persistent reservation passthrough via
 		<pkg>sys-fs/multipath-tools</pkg>.</flag>

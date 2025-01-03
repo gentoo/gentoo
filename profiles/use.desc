@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -144,6 +144,7 @@ infiniband - Enable Infiniband RDMA transport support
 initramfs - Include kernel modules in the initramfs, and re-install the kernel (only effective for distribution kernels)
 inotify - Enable inotify filesystem monitoring support
 introspection - Add support for GObject based introspection
+io-uring - Enable the use of io_uring for efficient asynchronous IO and system requests
 iodbc - Add support for iODBC library
 ios - Enable support for Apple's iDevice with iOS operating system (iPad, iPhone, iPod, etc)
 ipod - Enable support for iPod device access
