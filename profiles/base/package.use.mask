@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-29)
+# openjfx for OpenJDK 25 is not yet available.
+dev-java/openjdk:25 javafx
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
 # of dev-libs/boost in Gentoo.
@@ -15,10 +19,6 @@ app-emulation/pcem experimental
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
 # Prepare virtual/bitcoin-leveldb last-rites, bug #945359
 net-p2p/bitcoin-core system-leveldb
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-20)
-# openjfx for OpenJDK 24 is not yet available.
-dev-java/openjdk:24 javafx
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-12-16)
 # sci-libs/atlas requires you to disable frequency scaling to build.

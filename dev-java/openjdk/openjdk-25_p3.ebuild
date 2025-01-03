@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ MY_PV="${PV/_p/+}"
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="
-	https://github.com/${PN}/jdk24u/archive/jdk-${MY_PV}.tar.gz
+	https://github.com/${PN}/jdk/archive/jdk-${MY_PV}.tar.gz
 
 		-> ${P}.tar.gz
 	!system-bootstrap? (
@@ -44,11 +44,12 @@ SRC_URI="
 		$(bootstrap_uri x86 ${X86_XPAK})
 	)
 "
-S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
+# S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
+S="${WORKDIR}/jdk-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="${MY_PV%%[.+]*}"
-#	KEYWORDS="" # not LTS
+#	KEYWORDS="" # LTS but not yet released
 
 # lto temporarily disabled due to https://bugs.gentoo.org/916735
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
@@ -211,6 +212,7 @@ src_configure() {
 		--with-lcms="${XPAK_BOOTSTRAP:-system}"
 		--with-libjpeg="${XPAK_BOOTSTRAP:-system}"
 		--with-libpng="${XPAK_BOOTSTRAP:-system}"
+		--with-stdc++lib=dynamic
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
