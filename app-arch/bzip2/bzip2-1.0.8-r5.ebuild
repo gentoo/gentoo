@@ -71,7 +71,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	cp "${S}"/sample* "${BUILD_DIR}" || die
 	ln -s libbz2.so.1.0 libbz2.so.1 || die
-	bemake -f "${S}"/Makefile check
+	LD_LIBRARY_PATH=".:${LD_LIBRARY_PATH}" bemake -f "${S}"/Makefile check
 }
 
 multilib_src_install() {
