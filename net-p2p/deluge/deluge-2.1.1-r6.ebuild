@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 systemd xdg
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-ayatana.patch"
 	# https://dev.deluge-torrent.org/ticket/3582
 	"${FILESDIR}/${P}-consoleui-deferred.patch"
+	"${FILESDIR}/${P}-email-module-replace.patch"
 )
 
 distutils_enable_tests pytest
