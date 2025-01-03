@@ -1,0 +1,22 @@
+--- a/chessx.pro	2024-09-06 00:12:14.000000000 +0200
++++ b/chessx.pro	2025-01-03 22:31:22.225021206 +0100
+@@ -67,18 +67,13 @@
+     BINDIR = $$PREFIX/bin
+     DATADIR = $$PREFIX/share
+ 
+-    INSTALLS += appdata desktop icons binfiles
++    INSTALLS += appdata desktop binfiles
+ 
+     appdata.files = unix/io.sourceforge.ChessX.metainfo.xml
+     appdata.path = $$DATADIR/metainfo
+     desktop.files = unix/chessx.desktop
+     desktop.path = $$DATADIR/applications
+ 
+-    icons.path = $$DATADIR/icons/hicolor
+-    icons.commands = install -Dm644 data/images/chessx.png    $${icons.path}/128x128/apps/chessx.png; \
+-                     install -Dm644 data/images/chessx-32.png $${icons.path}/32x32/apps/chessx.png; \
+-                     install -Dm644 data/images/chessx-64.png $${icons.path}/64x64/apps/chessx.png;
+-
+     binfiles.files = release/chessx
+     binfiles.path = $$BINDIR
+ 
