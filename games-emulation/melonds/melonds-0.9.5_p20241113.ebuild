@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ else
 		-> ${REAL_P}.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-${COMMIT}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="BSD-2 GPL-2 GPL-3 Unlicense"
