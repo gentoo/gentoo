@@ -20,6 +20,7 @@ LICENSE="MIT"
 SLOT="0/0"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
+# Without static-libs, src_test just won't run any tests and "pass".
 REQUIRED_USE="
 	test? ( static-libs )
 "
