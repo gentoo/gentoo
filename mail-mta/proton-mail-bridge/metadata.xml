@@ -3,11 +3,14 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-		ProtonMail bridge has been Open Source since April 2020. Note that this package
-		is CLI-only for now, as we have run into some problems with Qt vendoring
-		(see https://github.com/ProtonMail/proton-bridge/issues/16).
+		ProtonMail bridge has been Open Source since April 2020.
+		It is a daemon that essentialy is an interface to Proton's servers.
+		It can be built with or without it's QT GUI.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/ProtonMail/proton-bridge/issues</bugs-to>
+		<changelog>https://github.com/ProtonMail/proton-bridge/blob/master/Changelog.md</changelog>
+		<doc>https://github.com/ProtonMail/proton-bridge/wiki</doc>
 		<remote-id type="github">ProtonMail/proton-bridge</remote-id>
 	</upstream>
 </pkgmetadata>
