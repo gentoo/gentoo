@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ else
 
 	SRC_URI="
 		https://github.com/openscad/openscad/archive/${COMMIT}.tar.gz
-			-> ${P}.tar.gz
+			-> ${PN}-20241114.tar.gz
 		https://github.com/arsenm/sanitizers-cmake/archive/${SANITIZERS_CMAKE_COMMIT}.tar.gz
 			-> sanitizers-cmake-${SANITIZERS_CMAKE_COMMIT}.tar.gz
 		test? (
