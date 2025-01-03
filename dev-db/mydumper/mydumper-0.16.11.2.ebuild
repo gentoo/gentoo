@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre
 	dev-libs/openssl:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
