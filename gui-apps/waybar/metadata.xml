@@ -28,8 +28,9 @@
 		<flag name="wifi">Enable support for wifi/rfkill</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">Alexays/Waybar</remote-id>
 		<bugs-to>https://github.com/Alexays/Waybar/issues</bugs-to>
 		<changelog>https://github.com/Alexays/Waybar/releases</changelog>
+		<doc>https://github.com/Alexays/Waybar/wiki</doc>
+		<remote-id type="github">Alexays/Waybar</remote-id>
 	</upstream>
 </pkgmetadata>
