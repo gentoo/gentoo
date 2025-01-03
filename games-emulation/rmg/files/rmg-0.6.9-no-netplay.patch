@@ -1,0 +1,80 @@
+https://github.com/Rosalie241/RMG/commit/91feda3427a869d426e0ee64e4436c411d40fdc6
+
+From 91feda3427a869d426e0ee64e4436c411d40fdc6 Mon Sep 17 00:00:00 2001
+From: Rosalie Wanders <rosalie@mailbox.org>
+Date: Sun, 29 Dec 2024 18:32:57 +0100
+Subject: [PATCH] RMG-Core: fix compilation when compiling with netplay
+ disabled
+
+---
+ Source/RMG-Core/CMakeLists.txt |  4 +---
+ Source/RMG-Core/Netplay.cpp    | 12 ++++++++++++
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/Source/RMG-Core/CMakeLists.txt b/Source/RMG-Core/CMakeLists.txt
+index b6bb89ec..f58ccdd2 100644
+--- a/Source/RMG-Core/CMakeLists.txt
++++ b/Source/RMG-Core/CMakeLists.txt
+@@ -43,6 +43,7 @@ set(RMG_CORE_SOURCES
+     SaveState.cpp
+     Callback.cpp
+     Settings.cpp
++    Netplay.cpp
+     Plugins.cpp
+     Version.cpp
+     Cheats.cpp
+@@ -76,9 +77,6 @@ if (DISCORD_RPC)
+ endif(DISCORD_RPC)
+ 
+ if (NETPLAY)
+-    list(APPEND RMG_CORE_SOURCES 
+-        Netplay.cpp
+-    )
+     add_definitions(-DNETPLAY)
+ endif(NETPLAY)
+ 
+diff --git a/Source/RMG-Core/Netplay.cpp b/Source/RMG-Core/Netplay.cpp
+index aec2a484..ccde80d5 100644
+--- a/Source/RMG-Core/Netplay.cpp
++++ b/Source/RMG-Core/Netplay.cpp
+@@ -29,6 +29,7 @@ static bool l_HasInitNetplay = false;
+ 
+ bool CoreInitNetplay(std::string address, int port, int player)
+ {
++#ifdef NETPLAY
+     std::string error;
+     m64p_error ret;
+     uint32_t id = 0;
+@@ -76,15 +77,23 @@ bool CoreInitNetplay(std::string address, int port, int player)
+ 
+     l_HasInitNetplay = true;
+     return true;
++#else
++    return false;
++#endif // NETPLAY
+ }
+ 
+ bool CoreHasInitNetplay(void)
+ {
++#ifdef NETPLAY
+     return l_HasInitNetplay;
++#else
++    return false;
++#endif // NETPLAY
+ }
+ 
+ bool CoreShutdownNetplay(void)
+ {
++#ifdef NETPLAY
+     std::string error;
+     m64p_error ret;
+ 
+@@ -99,4 +108,7 @@ bool CoreShutdownNetplay(void)
+ 
+     l_HasInitNetplay = false;
+     return true;
++#else
++    return false;
++#endif // NETPLAY
+ }
+\ No newline at end of file
