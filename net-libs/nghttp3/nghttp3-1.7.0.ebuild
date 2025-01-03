@@ -18,7 +18,6 @@ HOMEPAGE="https://github.com/ngtcp2/nghttp3/"
 
 LICENSE="MIT"
 SLOT="0/0"
-
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -36,11 +35,11 @@ multilib_src_configure() {
 		-DENABLE_LIB_ONLY=ON
 		-DENABLE_STATIC_LIB=$(usex static-libs)
 		-DENABLE_EXAMPLES=OFF
+		-DBUILD_TESTING=$(usex test)
 	)
-	use test && mycmakeargs+=( -DBUILD_TESTING=ON )
 	cmake_src_configure
 }
 
 multilib_src_test() {
-	multilib_is_native_abi && cmake_build check
+	cmake_build check
 }
