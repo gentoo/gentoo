@@ -110,6 +110,7 @@ PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.8.1-QTBUG-131156.patch
 	"${FILESDIR}"/${PN}-6.8.1-aarch64-xnnpack.patch
+	"${FILESDIR}"/${PN}-6.8.1-cstdint.patch
 )
 
 python_check_deps() {
