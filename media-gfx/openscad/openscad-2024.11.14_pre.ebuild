@@ -34,7 +34,7 @@ else
 	# doc downloads are not versioned and found at:
 	# https://files.openscad.org/documentation/
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 # Code is GPL-3+, MCAD library is LGPL-2.1
