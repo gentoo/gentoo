@@ -17,7 +17,8 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.1.1:=
-	>=dev-libs/quazip-1.3-r2:=[qt6(+)]
+	>=dev-libs/quazip-1.4:=[qt6(+)]
+	>=dev-qt/qt5compat-${QTMIN}:6
 	>=dev-qt/qtbase-${QTMIN}:6[gui,network,sql,sqlite,widgets]
 	>=dev-qt/qtsvg-${QTMIN}:6
 	>=dev-qt/qtwebsockets-${QTMIN}:6
