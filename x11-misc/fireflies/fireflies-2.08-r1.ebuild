@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,8 @@ RDEPEND="
 	elibc_musl? ( sys-libs/argp-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-build/autoconf-archive"  # for AX_CXX_BOOL macro
+
+PATCHES=( "${FILESDIR}"/${P}-header_case.patch )
 
 src_prepare() {
 	default
