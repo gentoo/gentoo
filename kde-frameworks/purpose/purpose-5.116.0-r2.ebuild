@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ DEPEND="
 	=kde-frameworks/prison-${PVCUT}*:5
 	kaccounts? (
 		|| (
-			kde-apps/kaccounts-integration:6[qt5]
+			kde-apps/kaccounts-integration:6[qt5(-)]
 			kde-apps/kaccounts-integration:5
 		)
 		>=net-libs/accounts-qt-1.16_p20220803[qt5(-)]
