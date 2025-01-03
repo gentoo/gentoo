@@ -42,7 +42,7 @@ PATCHES=(
 
 src_prepare() {
 	# copy in docs
-	rm -rv ${WORKDIR}/${MY_P}/docs || die
+	rm -rv "${WORKDIR}"/"${MY_P}"/docs || die
 	mv -v "${WORKDIR}/${PN}_docs-${DOCS_COMMIT}" "${WORKDIR}/${MY_P}/docs" || die
 
 	# fix doc install path
