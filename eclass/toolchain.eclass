@@ -688,6 +688,11 @@ toolchain_src_prepare() {
 
 	eapply_user
 
+	# Workaround -march=native not working for stage1 with non-GCC (bug #933772).
+	if ! tc-is-gcc && [[ "${CFLAGS}${CXXFLAGS}" == *-march=native* ]] ; then
+		CLANG_DISABLE_CET_HACK=1
+	fi
+
 	if ! use vanilla ; then
 		tc_enable_hardened_gcc
 	fi
@@ -1176,11 +1181,6 @@ toolchain_src_configure() {
 	if ! tc_version_is_at_least 11 && [[ $(gcc-major-version) -ge 12 ]] ; then
 		# https://gcc.gnu.org/PR105695 (bug #849359)
 		export ac_cv_std_swap_in_utility=no
-	fi
-
-	# Workaround -march=native not working for stage1 with non-GCC (bug #933772).
-	if ! tc-is-gcc && [[ "${CFLAGS}${CXXFLAGS}" == *-march=native* ]] ; then
-		CLANG_DISABLE_CET_HACK=1
 	fi
 
 	local flag
