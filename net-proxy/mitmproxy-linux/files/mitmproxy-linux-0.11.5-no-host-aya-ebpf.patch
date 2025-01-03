@@ -1,0 +1,36 @@
+diff --git a/mitmproxy-linux-ebpf-common/Cargo.toml b/mitmproxy-linux-ebpf-common/Cargo.toml
+index aed3112..90254e3 100644
+--- a/mitmproxy-linux-ebpf-common/Cargo.toml
++++ b/mitmproxy-linux-ebpf-common/Cargo.toml
+@@ -8,9 +8,5 @@ edition.workspace = true
+ rust-version.workspace = true
+ publish.workspace = true
+ 
+-# aya-ebpf currently does not compile on Windows.
+-[target.'cfg(target_os = "linux")'.dependencies]
+-aya-ebpf = { workspace = true }
+-
+ [lib]
+ path = "src/lib.rs"
+diff --git a/mitmproxy-linux-ebpf-common/src/lib.rs b/mitmproxy-linux-ebpf-common/src/lib.rs
+index 0562ba7..1378f78 100644
+--- a/mitmproxy-linux-ebpf-common/src/lib.rs
++++ b/mitmproxy-linux-ebpf-common/src/lib.rs
+@@ -1,9 +1,5 @@
+ #![no_std]
+ 
+-// aya-ebpf currently does not compile on Windows.
+-#[cfg(target_os = "linux")]
+-use aya_ebpf::TASK_COMM_LEN;
+-#[cfg(not(target_os = "linux"))]
+ const TASK_COMM_LEN: usize = 16;
+ 
+ type Pid = u32;
+diff --git a/mitmproxy-linux/Cargo.toml b/mitmproxy-linux/Cargo.toml
+index 55e3c57..0b02dd9 100644
+--- a/mitmproxy-linux/Cargo.toml
++++ b/mitmproxy-linux/Cargo.toml
+@@ -35,3 +35,2 @@ const-sha1 = "0.3.0"
+-mitmproxy-linux-ebpf = { path = "../mitmproxy-linux-ebpf" }
+ 
+ [target.'cfg(target_os = "linux")'.dev-dependencies]
