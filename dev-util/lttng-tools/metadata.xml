@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">lttng/lttng-tools</remote-id>
+		<changelog>https://github.com/lttng/lttng-tools/releases</changelog>
 	</upstream>
 </pkgmetadata>
