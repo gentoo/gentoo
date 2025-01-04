@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X legacy-renderer +qtutils systemd"
+IUSE="hyprpm X legacy-renderer +qtutils systemd"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
@@ -32,7 +32,9 @@ HYPRPM_RDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	${HYPRPM_RDEPEND}
+	hyprpm? (
+		${HYPRPM_RDEPEND}
+	)
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/hyprlang
@@ -70,7 +72,7 @@ BDEPEND="
 	|| ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
 	app-misc/jq
 	dev-build/cmake
-	>=dev-util/hyprwayland-scanner-0.3.10
+	>=dev-util/hyprwayland-scanner-0.4.4
 	virtual/pkgconfig
 "
 
@@ -85,6 +87,14 @@ pkg_setup() {
 		eerror "Hyprland requires >=llvm-core/clang-18 to build"
 		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
 		die "Clang version is too old to compile Hyprland!"
+	fi
+}
+
+src_prepare() {
+	default
+
+	if use !hyprpm; then
+		sed -i "/subdir('hyprpm\/src')/d" meson.build || die "Failed to remove hyprpm from meson.build"
 	fi
 }
 
