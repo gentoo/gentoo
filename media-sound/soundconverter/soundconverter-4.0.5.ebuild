@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/kassoulet/${PN}/archive/${MY_PV}.tar.gz -> ${P}.gh.t
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="aac flac mp3 ogg opus vorbis"
 
 # gst-plugins-meta for any decoders, USE flags for specific encoders used by code
