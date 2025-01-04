@@ -1,0 +1,92 @@
+--- qt5-sqlcipher-1.0.11/qt-file-cache/5.15.16/qsql_sqlite.cpp
++++ qt5-sqlcipher-1.0.11/qt-file-cache/5.15.16/qsql_sqlite.cpp
+@@ -74,13 +74,18 @@
+ 
+ QT_BEGIN_NAMESPACE
+ 
+-static QString _q_escapeIdentifier(const QString &identifier)
++static QString _q_escapeIdentifier(const QString &identifier, QSqlDriver::IdentifierType type)
+ {
+     QString res = identifier;
++    // If it contains [ and ] then we assume it to be escaped properly already as this indicates
++    // the syntax is exactly how it should be
++    if (identifier.contains(QLatin1Char('[')) && identifier.contains(QLatin1Char(']')))
++        return res;
+     if (!identifier.isEmpty() && !identifier.startsWith(QLatin1Char('"')) && !identifier.endsWith(QLatin1Char('"'))) {
+         res.replace(QLatin1Char('"'), QLatin1String("\"\""));
+         res.prepend(QLatin1Char('"')).append(QLatin1Char('"'));
+-        res.replace(QLatin1Char('.'), QLatin1String("\".\""));
++        if (type == QSqlDriver::TableName)
++            res.replace(QLatin1Char('.'), QLatin1String("\".\""));
+     }
+     return res;
+ }
+@@ -478,7 +483,12 @@
+         for (int i = 0, currentIndex = 0; i < values.size(); ++i) {
+             if (handledIndexes.contains(i))
+                 continue;
+-            const auto placeHolder = QString::fromUtf8(sqlite3_bind_parameter_name(d->stmt, currentIndex + 1));
++            const char *parameterName = sqlite3_bind_parameter_name(d->stmt, currentIndex + 1);
++            if (!parameterName) {
++                paramCountIsValid = false;
++                continue;
++            }
++            const auto placeHolder = QString::fromUtf8(parameterName);
+             const auto &indexes = d->indexes.value(placeHolder);
+             handledIndexes << indexes;
+             prunedValues << values.at(indexes.first());
+@@ -491,7 +501,7 @@
+     if (paramCountIsValid) {
+         for (int i = 0; i < paramCount; ++i) {
+             res = SQLITE_OK;
+-            const QVariant value = values.at(i);
++            const QVariant &value = values.at(i);
+ 
+             if (value.isNull()) {
+                 res = sqlite3_bind_null(d->stmt, i + 1);
+@@ -900,13 +910,24 @@
+ {
+     QString schema;
+     QString table(tableName);
+-    int indexOfSeparator = tableName.indexOf(QLatin1Char('.'));
++    const int indexOfSeparator = tableName.indexOf(QLatin1Char('.'));
+     if (indexOfSeparator > -1) {
+-        schema = tableName.left(indexOfSeparator).append(QLatin1Char('.'));
+-        table = tableName.mid(indexOfSeparator + 1);
++        const int indexOfCloseBracket = tableName.indexOf(QLatin1Char(']'));
++        if (indexOfCloseBracket != tableName.size() - 1) {
++            // Handles a case like databaseName.tableName
++            schema = tableName.left(indexOfSeparator + 1);
++            table = tableName.mid(indexOfSeparator + 1);
++        } else {
++            const int indexOfOpenBracket = tableName.lastIndexOf(QLatin1Char('['), indexOfCloseBracket);
++            if (indexOfOpenBracket > 0) {
++                // Handles a case like databaseName.[tableName]
++                schema = tableName.left(indexOfOpenBracket);
++                table = tableName.mid(indexOfOpenBracket);
++            }
++        }
+     }
+-    q.exec(QLatin1String("PRAGMA ") + schema + QLatin1String("table_info (") + _q_escapeIdentifier(table) + QLatin1Char(')'));
+-
++    q.exec(QLatin1String("PRAGMA ") + schema + QLatin1String("table_info (") +
++           _q_escapeIdentifier(table, QSqlDriver::TableName) + QLatin1Char(')'));
+     QSqlIndex ind;
+     while (q.next()) {
+         bool isPk = q.value(5).toInt();
+@@ -968,8 +989,7 @@
+ 
+ QString QSQLiteDriver::escapeIdentifier(const QString &identifier, IdentifierType type) const
+ {
+-    Q_UNUSED(type);
+-    return _q_escapeIdentifier(identifier);
++    return _q_escapeIdentifier(identifier, type);
+ }
+ 
+ static void handle_sqlite_callback(void *qobj,int aoperation, char const *adbname, char const *atablename,
+@@ -1046,3 +1066,5 @@
+ }
+ 
+ QT_END_NAMESPACE
++
++#include "moc_qsql_sqlite_p.cpp"
