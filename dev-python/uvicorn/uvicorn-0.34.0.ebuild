@@ -38,7 +38,7 @@ BDEPEND="
 		dev-python/a2wsgi[${PYTHON_USEDEP}]
 		dev-python/anyio[${PYTHON_USEDEP}]
 		>=dev-python/httptools-0.6.3[${PYTHON_USEDEP}]
-		dev-python/httpx[${PYTHON_USEDEP}]
+		>=dev-python/httpx-0.28[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-dotenv[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
