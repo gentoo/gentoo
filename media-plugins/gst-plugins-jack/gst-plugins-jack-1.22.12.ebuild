@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer-meson
 
 DESCRIPION="JACK audio server source/sink plugin for GStreamer"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # >=jack-1.9.7 is provided by pipewire[jack-sdk] as well
 RDEPEND="|| (
