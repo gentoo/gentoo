@@ -36,9 +36,9 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/a2wsgi[${PYTHON_USEDEP}]
+		dev-python/anyio[${PYTHON_USEDEP}]
 		>=dev-python/httptools-0.6.3[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-dotenv[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -73,7 +73,8 @@ python_test() {
 			;;
 	esac
 
-	epytest
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p anyio -p pytest_mock
 }
 
 pkg_postinst() {
