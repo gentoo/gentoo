@@ -1,0 +1,55 @@
+bug https://bugs.gentoo.org/876346
+diff -ru a/wmsystray/systray.h b/wmsystray/systray.h
+--- a/wmsystray/systray.h	2025-01-04 23:45:21.765262521 +0400
++++ b/wmsystray/systray.h	2025-01-04 23:48:21.590340299 +0400
+@@ -36,5 +36,7 @@
+ int event_is_systray_event(XEvent *ev);
+ int handle_systray_event(XEvent *ev);
+ void repaint_systray();
++struct systray_item *find_systray_item (Window id);
++int systray_property_update (struct systray_item *item);
+ 
+ #endif
+diff -ru a/wmsystray/ui.c b/wmsystray/ui.c
+--- a/wmsystray/ui.c	2025-01-04 23:45:21.765262521 +0400
++++ b/wmsystray/ui.c	2025-01-04 23:49:04.894118218 +0400
+@@ -10,6 +10,7 @@
+ 
+ #include <stdlib.h>
+ #include <signal.h>
++#include <unistd.h>
+ 
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+diff -ru a/wmsystray/ui.h b/wmsystray/ui.h
+--- a/wmsystray/ui.h	2025-01-04 23:45:21.766262516 +0400
++++ b/wmsystray/ui.h	2025-01-04 23:48:51.661186082 +0400
+@@ -24,5 +24,6 @@
+ extern Display *main_disp;
+ extern Window main_wind, icon_wind, sel_wind, draw_wind;
+ extern char * wmsystray_xpm[];
++void draw_ui_elements();
+ 
+ #endif
+--- a/xembed/xembed.c	2025-01-04 23:45:21.766262516 +0400
++++ b/xembed/xembed.c	2025-01-04 23:46:29.884913173 +0400
+@@ -2,6 +2,8 @@
+  xembed.c
+  ****************************************************************************/
+ 
++#include <string.h>
++
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include "xembed.h"
+diff -ru a/wmsystray/Makefile b/wmsystray/Makefile
+--- a/wmsystray/Makefile	2025-01-05 00:02:39.013943053 +0400
++++ b/wmsystray/Makefile	2025-01-05 00:07:41.053394062 +0400
+@@ -1,6 +1,6 @@
+ include ../Rules.make
+ 
+-CFLAGS = ${X11CFLAGS} -DTRACE_LEVEL=${TRACE_LEVEL} -I../xembed -g ${EXTRACFLAGS}
++CFLAGS = ${X11CFLAGS} -DTRACE_LEVEL=${TRACE_LEVEL} -I../xembed -g -D_POSIX_C_SOURCE=199309L -D_XOPEN_SOURCE=500 ${EXTRACFLAGS}
+ LDFLAGS = ${X11LDFLAGS} -lXpm
+ 
+ OBJS = main.o ui.o systray.o xpms.o
