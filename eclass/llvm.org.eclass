@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -74,18 +74,6 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			case ${PV} in
 				20.0.0_pre20241227)
 					EGIT_COMMIT=ccfe0de0e1e37ed369c9bf89dd0188ba0afb2e9a
-					;;
-				20.0.0_pre20241221)
-					EGIT_COMMIT=665d79f2e967a5eee6fff93685e45f50cf24cab2
-					;;
-				20.0.0_pre20241215)
-					EGIT_COMMIT=49a5ad8e5714fd404210279303acc97b495d66d0
-					;;
-				20.0.0_pre20241207)
-					EGIT_COMMIT=32f7f0010bca99ee4bd917f57272733fb2bf3bd9
-					;;
-				20.0.0_pre20241130)
-					EGIT_COMMIT=a348f223cab54b21a7b1c38dec7bc6aa2f81c949
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
