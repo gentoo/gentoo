@@ -53,6 +53,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_test() {
