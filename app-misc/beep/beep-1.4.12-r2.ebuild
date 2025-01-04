@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,20 +34,12 @@ src_prepare() {
 
 src_install() {
 	dobin beep
-	doman "${PN}.1"
-
-	fperms 0711 /usr/bin/beep
-
-	local DOCS=(
-		CREDITS.md DEVELOPMENT.md INSTALL.md NEWS.md PACKAGING.md PERMISSIONS.md README.md
-	)
-	einstalldocs
+	doman ${PN}.1
+	dodoc CREDITS.md DEVELOPMENT.md NEWS.md PERMISSIONS.md README.md
 }
 
 pkg_postinst() {
-	FILECAPS=(
-		-m0711 cap_dac_override,cap_sys_tty_config "${EROOT}/usr/bin/beep"
-	)
+	fcaps -m 0755 cap_dac_override,cap_sys_tty_config usr/bin/beep
 
 	elog "Please note that for security reasons, beep will no longer allow"
 	elog "to running w/ SUID or as root under sudo. You will need to give"
