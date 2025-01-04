@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -468,6 +468,15 @@ multilib_src_configure() {
 
 	if ! multilib_is_native_abi && use video_cards_nvk; then
 		sed -i -E '{N; s/(rule rust_COMPILER_FOR_BUILD\n command = rustc) --target=[a-zA-Z0-9=:-]+ (.*) -C link-arg=-m[[:digit:]]+/\1 \2/g}' build.ninja || die
+	fi
+}
+
+multilib_src_compile() {
+	if [[ ${ABI} == x86 ]]; then
+		# Bug 939803
+		BINDGEN_EXTRA_CLANG_ARGS="-m32" meson_src_compile
+	else
+		meson_src_compile
 	fi
 }
 
