@@ -103,6 +103,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-4.10.0-system-cppgir.patch
 	"${FILESDIR}"/tdesktop-5.2.2-qt6-no-wayland.patch
 	"${FILESDIR}"/tdesktop-5.2.2-libdispatch.patch
+	"${FILESDIR}"/tdesktop-5.5.5-qt6.8-QT_IMPLICIT_QCHAR_CONSTRUCTION.patch #bug #946911
 )
 
 pkg_pretend() {
