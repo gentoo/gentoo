@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer-meson.eclass
@@ -37,11 +37,6 @@ esac
 
 PYTHON_COMPAT=( python3_{10..12} )
 [[ ${EAPI} == 8 ]] && inherit python-any-r1
-
-# TODO: Remove after all older versions are gone from tree
-if ver_test ${PV} -lt 1.22.10 ; then
-	inherit virtualx
-fi
 
 # multilib-minimal goes last
 inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
@@ -133,10 +128,7 @@ gstreamer_system_package() {
 			pc=${tuple#*:}-${SLOT}
 			sed -e "1i${dependency} = dependency('${pc}', required : true)" \
 				-i "${pdir}"/meson.build || die
-			# TODO: Remove conditional applying once older versions are all gone
-			if ver_test ${PV} -gt 1.22.5 ; then
-				sed -e "/meson\.override_dependency[(]pkg_name, ${dependency}[)]/d" -i "${S}"/gst-libs/gst/*/meson.build || die
-			fi
+			sed -e "/meson\.override_dependency[(]pkg_name, ${dependency}[)]/d" -i "${S}"/gst-libs/gst/*/meson.build || die
 		done
 	done
 }
