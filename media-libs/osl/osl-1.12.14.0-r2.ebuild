@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="debug doc gui libcxx nofma partio qt6 test ${CPU_FEATURES[*]%:*} python"
+IUSE="debug doc gui libcxx nofma partio test ${CPU_FEATURES[*]%:*} python"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -55,15 +55,7 @@ RDEPEND="
 	)
 	partio? ( media-libs/partio )
 	gui? (
-		!qt6? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtwidgets:5
-			dev-qt/qtopengl:5
-		)
-		qt6? (
-			dev-qt/qtbase:6[gui,widgets,opengl]
-		)
+		dev-qt/qtbase:6[gui,widgets,opengl]
 	)
 "
 
@@ -177,6 +169,7 @@ src_configure() {
 		-DUSE_BATCHED="$(IFS=","; echo "${mybatched[*]}")"
 		-DUSE_LIBCPLUSPLUS="$(usex libcxx)"
 		-DUSE_OPTIX="no"
+		-DUSE_QT="$(usex gui)"
 
 		-DOpenImageIO_ROOT="${EPREFIX}/usr"
 	)
@@ -185,15 +178,6 @@ src_configure() {
 		mycmakeargs+=(
 			-DVEC_REPORT="yes"
 		)
-	fi
-
-	if use gui; then
-		mycmakeargs+=( -DUSE_QT="yes" )
-		if ! use qt6; then
-			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt6="yes" )
-		fi
-	else
-		mycmakeargs+=( -DUSE_QT="no" )
 	fi
 
 	if use partio; then
