@@ -1,0 +1,86 @@
+https://sourceforge.net/p/guvcview/git-master/ci/39f76eda4d66ef7b2303ce795e701e43fafadff2
+From 39f76eda4d66ef7b2303ce795e701e43fafadff2 Mon Sep 17 00:00:00 2001
+From: Paulo Assis <pj.assis@gmail.com>
+Date: Mon, 2 Dec 2024 14:19:01 +0000
+Subject: [PATCH] Fix desktop file for cmake
+
+---
+ data/guvcview.desktop.in | 64 +++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 60 insertions(+), 4 deletions(-)
+
+diff --git a/data/guvcview.desktop.in b/data/guvcview.desktop.in
+index c086c21..ca02856 100644
+--- a/data/guvcview.desktop.in
++++ b/data/guvcview.desktop.in
+@@ -1,8 +1,64 @@
+ [Desktop Entry]
+-_Name=guvcview
+-_GenericName=GTK UVC video viewer
+-_X-GNOME-FullName=GTK UVC video viewer
+-_Comment=A video viewer and capturer for the linux uvc driver
++Name=guvcview
++Name[cs]=guvcview
++Name[de]=GUVCView
++Name[en_AU]=guvcview
++Name[es]=guvcview
++Name[fr]=guvcview
++Name[it]=guvcview
++Name[lv]=guvcview
++Name[nl]=guvcview
++Name[pt]=guvcview
++Name[pt_BR]=guvcview
++Name[ru]=guvcview
++Name[si]=guvcview
++Name[sr]=Камерица
++Name[tr]=guvcview
++GenericName=GTK UVC video viewer
++GenericName[cs]=Prohlížeč videa GTK UVC
++GenericName[de]=UVC-Video-Betrachter in GTK
++GenericName[en_AU]=GTK UVC video viewer
++GenericName[es]=Visualizador GTK de vídeo UVC
++GenericName[fr]=Logiciel GTK de visualisation de vidéo UVC
++GenericName[it]=GTK UVC visualizzatore video
++GenericName[lv]=GTK UVC video skatītājs
++GenericName[nl]=GTK UVC videokijker
++GenericName[pt]=Visualizador de vídeo GTK UVC
++GenericName[pt_BR]=Visualizador de vídeo GTK UVC
++GenericName[ru]=GTK UVC видео обозреватель
++GenericName[si]=GTK UVC වීඩියෝ දකින්නා
++GenericName[sr]=ГТК УВЦ видео приказивач
++GenericName[tr]=GTK UVC video görüntüleyici
++X-GNOME-FullName=GTK UVC video viewer
++X-GNOME-FullName[cs]=Prohlížeč videa GTK UVC
++X-GNOME-FullName[de]=UVC-Video-Betrachter in GTK
++X-GNOME-FullName[en_AU]=GTK UVC video viewer
++X-GNOME-FullName[es]=Visualizador GTK de vídeo UVC
++X-GNOME-FullName[fr]=Logiciel GTK de visualisation de vidéo UVC
++X-GNOME-FullName[it]=GTK UVC visualizzatore video
++X-GNOME-FullName[lv]=GTK UVC video skatītājs
++X-GNOME-FullName[nl]=GTK UVC videokijker
++X-GNOME-FullName[pt]=Visualizador de vídeo GTK UVC
++X-GNOME-FullName[pt_BR]=Visualizador de vídeo GTK UVC
++X-GNOME-FullName[ru]=GTK UVC видео обозреватель
++X-GNOME-FullName[si]=GTK UVC වීඩියෝ දකින්නා
++X-GNOME-FullName[sr]=ГТК УВЦ видео приказивач
++X-GNOME-FullName[tr]=GTK UVC video görüntüleyici
++Comment=A video viewer and capturer for the linux uvc driver
++Comment[cs]=Prohlížení a zachytávání videa z linuxových uvc ovladačů
++Comment[de]=Ein Video-Betrachter und Aufnahmewerkzeug für den Linux-UVC-Treiber
++Comment[en_AU]=A video viewer and capturer for the linux uvc driver
++Comment[es]=Un visualizador y capturador de vídeo para el controlador UVC de Linux
++Comment[fr]=Logiciel de visualisation et de capture vidéo pour le pilote uvc Linux
++Comment[it]=Un visualizzatore e catturatore video per il driver uvc di linux
++Comment[lv]=Video skatītājs un uzņēmējs Linux UVC draiverim
++Comment[nl]=Een programma voor het bekijken en opnemen van video, voor het Linuxstuurprogramma uvc
++Comment[pt]=Um visualizador e capturador de de vídeo para o controlador linux uvc
++Comment[pt_BR]=Um visualizador e capturador de de vídeo para o controlador linux uvc
++Comment[ru]=Программа просмотра и записи видео для драйвера Linux UVC
++Comment[si]=ලිනක්ස් uvc ඩ්‍රයිවරය සඳහා වීඩියෝ පෙන්වන්නා සහ ග්‍රහණය කරන්නා
++Comment[sr]=Приказивач и снимач видеа за линуксов увц управљачки програм
++Comment[tr]=Linux uvc sürücüsü için video görüntüleyici ve yakalayıcı
+ TryExec=guvcview
+ Exec=guvcview
+ Icon=@DATADIR@/pixmaps/guvcview.png
+-- 
+2.45.2
+

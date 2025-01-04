@@ -1,0 +1,11 @@
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -16,7 +16,7 @@
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/guvcview DESTINATION ${DATADIR}/menu)
+ endif()
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/guvcview.appdata.xml DESTINATION ${DATADIR}/appdata)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/guvcview.appdata.xml DESTINATION ${DATADIR}/metainfo)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/guvcview.desktop DESTINATION ${DATADIR}/applications)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/guvcview.1.gz DESTINATION ${DATADIR}/man/man1)
+ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/icons/guvcview.png DESTINATION ${DATADIR}/pixmaps)
