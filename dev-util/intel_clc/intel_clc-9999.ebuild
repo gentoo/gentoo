@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,12 +29,12 @@ IUSE="debug"
 
 RDEPEND="
 	dev-util/spirv-tools
-	llvm-core/libclc
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
 	$(llvm_gen_dep '
 		dev-util/spirv-llvm-translator:${LLVM_SLOT}
 		llvm-core/clang:${LLVM_SLOT}=
+		=llvm-core/libclc-${LLVM_SLOT}*
 		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
