@@ -38,11 +38,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	setup-wxwidgets
 	default
 
 	# -Werror=odr, -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/854414
 	# https://github.com/EUA/wxHexEditor/issues/222
 	filter-lto
+}
+
+src_configure() {
+	setup-wxwidgets
+	default
 }
