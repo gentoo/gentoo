@@ -46,11 +46,6 @@ QA_FLAGS_IGNORED="usr/libexec/gstreamer-1.0/gst-ptp-helper"
 multilib_src_configure() {
 	local emesonargs=(
 		-Dtools=$(multilib_is_native_abi && echo enabled || echo disabled)
-		# Only enable registry for native as gst_gstregistry fails if it
-		# can't find gst-plugin-scanner which is only built as part of 'tools'.
-		# It's not clear if registry can even work correctly as-is given
-		# it looks like it embeds the wrong paths at the moment for multilib.
-		#-Dregistry=$(multilib_is_native_abi && echo true || echo false)
 		-Dbenchmarks=disabled
 		-Dexamples=disabled
 		-Dcheck=enabled
