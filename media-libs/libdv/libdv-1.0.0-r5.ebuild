@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,12 +32,16 @@ src_prepare() {
 	default
 	eautoreconf
 
+	# bug #927212
+	append-cflags -std=gnu89
+	# bug #877709
+	append-cflags -fno-strict-aliasing $(test-flags-CC -fno-aggressive-loop-optimizations)
 	append-cppflags "-I${S}"
 }
 
 multilib_src_configure() {
-	# bug #622662
-	tc-ld-disable-gold
+	# bug #622662, bug #910291
+	tc-ld-force-bfd
 
 	ECONF_SOURCE="${S}" econf \
 		--disable-static \
