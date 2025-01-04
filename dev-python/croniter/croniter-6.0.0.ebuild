@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Python module to provide iteration for datetime object"
 HOMEPAGE="
-	https://github.com/kiorky/croniter/
+	https://github.com/corpusops/croniter/
 	https://pypi.org/project/croniter/
 "
 
