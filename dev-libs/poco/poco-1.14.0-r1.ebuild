@@ -59,6 +59,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-missing-utf8proc.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 
