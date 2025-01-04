@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig-utils.eclass
@@ -54,6 +54,14 @@ inherit edo flag-o-matic linux-info
 # and most likely changed to more common in other eclasses ZIG_MIN/
 # ZIG_MAX form.
 
+# @ECLASS_VARIABLE: ZIG_NEEDS_LLVM
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, the package will BDEPEND on a Zig package
+# with LLVM enabled.  This is currently required for packages that require
+# C/C++ source files to be compiled with Zig.
+
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
 # @DEFAULT_UNSET
@@ -69,13 +77,28 @@ inherit edo flag-o-matic linux-info
 # For zig.eclass users: see documentation in zig.eclass
 # instead.
 if [[ ! ${ZIG_OPTIONAL} ]]; then
+	_ZIG_USEDEP=""
+	if [[ ${ZIG_NEEDS_LLVM} ]]; then
+		_ZIG_USEDEP="[llvm(+)]"
+	fi
+
+	# NOTE: zig-bin is always built with LLVM support, so no USE needed.
 	BDEPEND="
 		|| (
-			dev-lang/zig:${ZIG_SLOT}
+			dev-lang/zig:${ZIG_SLOT}${_ZIG_USEDEP}
 			dev-lang/zig-bin:${ZIG_SLOT}
 		)
 	"
 fi
+
+# @ECLASS_VARIABLE: ZIG_STAGED_DESTDIR
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The DESTDIR used by default in ezig.  zig_src_compile will
+# install to this directory by default.  You can use this to
+# call host tools by building paths like
+# "${ZIG_STAGED_DESTDIR}${EPREFIX}/usr/bin/tool".
+: "${ZIG_STAGED_DESTDIR:="${T}/zig-install"}"
 
 # @ECLASS_VARIABLE: ZIG_TARGET
 # @DEFAULT_UNSET
@@ -521,6 +544,13 @@ ezig() {
 	if [[ -z "${ZIG_EXE}" ]] ; then
 		die "${FUNCNAME[0]}: ZIG_EXE is not set. Was 'zig-utils_setup' called before using ezig?"
 	fi
+
+	# Each `zig build` step may contain targets that install
+	# files. Things like tests can require these files. Therefore,
+	# there should always be a valid DESTDIR. The user can override
+	# the DESTDIR from the outside e.g. during the src_install
+	# phase.
+	local -x DESTDIR="${DESTDIR:-${ZIG_STAGED_DESTDIR}}"
 
 	# Progress tree is helpful indicator in TTY, but unfortunately
 	# they make Portage logs harder to read in plaintext.
