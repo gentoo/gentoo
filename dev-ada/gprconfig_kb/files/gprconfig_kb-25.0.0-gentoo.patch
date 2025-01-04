@@ -99,6 +99,45 @@
     package Linker is
        for Export_File_Format use "GNU";
        for Export_File_Switch use "-Wl,--version-script=";
+@@ -696,34 +696,19 @@
+   <configuration>
+     <!-- aarch64-linux - native compiler. -->
+     <targets>
+-      <target name="^aarch64-linux-gnu$" />
++      <target name="^aarch64(-unknown)-linux-gnu$" />
+     </targets>
+     <hosts>
+-      <host name="^aarch64-linux-gnu$" />
++      <host name="^aarch64(-unknown)-linux-gnu$" />
+     </hosts>
+     <config>
+-   for Archive_Builder  use ("ar", "cr");
++   AR := External("AR", "ar");
++   for Archive_Builder  use (AR, "cr");
+    for Archive_Builder_Append_Option use ("q");
+    for Archive_Indexer  use ("ranlib");
+    for Archive_Suffix   use ".a";
+     </config>
+   </configuration>
+-
+-  <configuration>
+-    <!-- aarch64-linux - cross compiler. -->
+-    <targets>
+-      <target name="^aarch64-.*linux-gnu$" />
+-    </targets>
+-    <hosts negate="true">
+-      <host name="^aarch64-linux-gnu$" />
+-    </hosts>
+-    <config>
+-   for Archive_Builder  use ("aarch64-linux-gnu-ar", "cr");
+-   for Archive_Builder_Append_Option use ("q");
+-   for Archive_Indexer  use ("aarch64-linux-gnu-ranlib");
+-   for Archive_Suffix   use ".a";
+-    </config>
+-  </configuration>
+ 
+   <configuration>
+     <targets>
 @@ -1022,7 +1026,8 @@
        <host name="^x86_64-.*linux.*" />
      </hosts>
@@ -127,3 +166,5 @@
        &amp; GCC_No_Pie
        &amp; ("-Wl,-r", "-o");
      </config>
+--- db/linker.xml.old	2025-01-04 23:22:02.343268592 +0100
++++ db/linker.xml	2025-01-04 23:24:11.562660779 +0100
