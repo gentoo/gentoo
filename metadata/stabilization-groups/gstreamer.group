@@ -18,7 +18,6 @@ media-plugins/gst-plugins-cairo
 media-plugins/gst-plugins-cdio
 media-plugins/gst-plugins-cdparanoia
 media-plugins/gst-plugins-chromaprint
-media-plugins/gst-plugins-colormanagement
 media-plugins/gst-plugins-dash
 media-plugins/gst-plugins-dtls
 media-plugins/gst-plugins-dts
@@ -33,7 +32,6 @@ media-plugins/gst-plugins-gtk
 media-plugins/gst-plugins-hls
 media-plugins/gst-plugins-jack
 media-plugins/gst-plugins-jpeg
-media-plugins/gst-plugins-kate
 media-plugins/gst-plugins-ladspa
 media-plugins/gst-plugins-lame
 media-plugins/gst-plugins-ldac
@@ -51,7 +49,6 @@ media-plugins/gst-plugins-mpg123
 media-plugins/gst-plugins-mplex
 media-plugins/gst-plugins-neon
 media-plugins/gst-plugins-openaptx
-media-plugins/gst-plugins-opencv
 media-plugins/gst-plugins-openh264
 media-plugins/gst-plugins-opus
 media-plugins/gst-plugins-oss
@@ -59,7 +56,6 @@ media-plugins/gst-plugins-pulse
 media-plugins/gst-plugins-raw1394
 media-plugins/gst-plugins-resindvd
 media-plugins/gst-plugins-rtmp
-media-plugins/gst-plugins-sbc
 media-plugins/gst-plugins-sctp
 media-plugins/gst-plugins-shout2
 media-plugins/gst-plugins-sidplay
@@ -67,7 +63,6 @@ media-plugins/gst-plugins-smoothstreaming
 media-plugins/gst-plugins-soundtouch
 media-plugins/gst-plugins-soup
 media-plugins/gst-plugins-speex
-media-plugins/gst-plugins-srt
 media-plugins/gst-plugins-srtp
 media-plugins/gst-plugins-taglib
 media-plugins/gst-plugins-twolame
@@ -83,6 +78,5 @@ media-plugins/gst-plugins-webrtc
 media-plugins/gst-plugins-x264
 media-plugins/gst-plugins-x265
 media-plugins/gst-plugins-ximagesrc
-media-plugins/gst-plugins-zbar
 media-sound/soundconverter
 media-video/pitivi
