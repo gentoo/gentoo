@@ -587,14 +587,18 @@ kernel-build_src_install() {
 			done
 
 			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
+				# --pcrpkey is appended as is. If the certificate and key
+				# are in the same file, we could accidentally leak the key
+				# into the UKI. Pass the certificate through openssl to ensure
+				# that it truly contains *only* the certificate.
 				openssl x509 \
 					-in "${SECUREBOOT_SIGN_CERT}" -inform PEM \
-					-out ${T}/pcrpkey.der -outform DER ||
-						die "Failed to convert certificate to DER format"
+					-out "${T}/pcrpkey.pem" -outform PEM ||
+						die "Failed to extract certificate"
 				ukify_args+=(
 					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
 					--secureboot-certificate="${SECUREBOOT_SIGN_CERT}"
-					--pcrpkey="${T}/pcrpkey.der"
+					--pcrpkey="${T}/pcrpkey.pem"
 					--measure
 				)
 				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
