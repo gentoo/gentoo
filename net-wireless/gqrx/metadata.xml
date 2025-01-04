@@ -9,9 +9,6 @@
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>
 	</maintainer>
-	<use>
-		<flag name="gr-audio">Use audio support from <pkg>net-wireless/gnuradio</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">gqrx-sdr/gqrx</remote-id>
 	</upstream>
