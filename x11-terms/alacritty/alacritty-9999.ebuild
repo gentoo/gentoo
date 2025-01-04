@@ -94,7 +94,7 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install --path alacritty
+	cargo_src_install --locked --path alacritty
 
 	doman alacritty.1 alacritty.5 alacritty-msg.1 alacritty-bindings.5
 
