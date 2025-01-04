@@ -8,10 +8,6 @@
 # x11-drivers/xf86-video-vmware is not stable yet
 video_cards_vmware
 
-# Matt Turner <mattst88@gentoo.org> (2024-05-10)
-# dev-util/directx-headers is not stable yet
-video_cards_d3d12
-
 # Mart Raudsepp <leio@gentoo.org> (2023-10-03)
 # dev-util/sysprof-capture and dev-util/sysprof are not stable yet
 sysprof
