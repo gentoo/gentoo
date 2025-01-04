@@ -1,0 +1,23 @@
+From b0c644b818cc8adac9251cf3d8625009ffbb0905 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Sun, 1 Dec 2024 21:33:35 -0500
+Subject: [PATCH] solvers: Fix incorrect f_OPHOL declarations
+
+---
+ src/solvers/fgh_read.c  | 2 +-
+ src/solvers2/fgh_read.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/solvers/fgh_read.c b/src/solvers/fgh_read.c
+index d7d82af..1b0787f 100644
+--- a/solvers/fgh_read.c
++++ b/solvers/fgh_read.c
+@@ -98,7 +98,7 @@ sorry_CLP(EdRead *R, const char *what)
+ #define memadj(x) (((x) + (sizeof(long)-1)) & ~(sizeof(long)-1))
+ #endif
+
+- extern char* f_OPHOL;
++ extern char *f_OPHOL ANSI((expr *e));
+  extern efunc f_OPPLTERM, f_OPVARVAL, f_OPFUNCALL;
+  extern sfunc f_OPIFSYM;
+
