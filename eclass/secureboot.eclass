@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: secureboot.eclass
@@ -57,6 +57,13 @@ BDEPEND="
 # @DESCRIPTION:
 # Used with USE=secureboot.  Should be set to the path of the private
 # key in PEM format to use, or a PKCS#11 URI.
+# If unspecified the following locations are tried in order:
+# - /etc/portage/secureboot.pem
+# - /var/lib/sbctl/keys/db/db.{key,pem} (from app-crypt/sbctl)
+# - the MODULES_SIGN_KEY (and MODULES_SIGN_CERT if set)
+# - the contents of CONFIG_MODULE_SIG_KEY in the current kernel
+# If none of these exist, a new key will be generated at
+# /etc/portage/secureboot.pem.
 
 # @ECLASS_VARIABLE: SECUREBOOT_SIGN_CERT
 # @USER_VARIABLE
@@ -64,36 +71,13 @@ BDEPEND="
 # @DESCRIPTION:
 # Used with USE=secureboot.  Should be set to the path of the public
 # key certificate in PEM format to use.
+# If unspecified the SECUREBOOT_SIGN_KEY is assumed to also contain the
+# certificate belonging to it.
 
 if [[ -z ${_SECUREBOOT_ECLASS} ]]; then
 _SECUREBOOT_ECLASS=1
 
-# @FUNCTION: _secureboot_die_if_unset
-# @INTERNAL
-# @DESCRIPTION:
-# If USE=secureboot is enabled die if the required user variables are unset
-# and die if the keys can't be found.
-_secureboot_die_if_unset() {
-	debug-print-function ${FUNCNAME} "$@"
-	use secureboot || return
-
-	if [[ -z ${SECUREBOOT_SIGN_KEY} || -z ${SECUREBOOT_SIGN_CERT} ]]; then
-		die "USE=secureboot enabled but SECUREBOOT_SIGN_KEY and/or SECUREBOOT_SIGN_CERT not set."
-	fi
-
-	# Sanity check: fail early if key/cert in DER format or does not exist
-	local openssl_args=(
-		-inform PEM -in "${SECUREBOOT_SIGN_CERT}"
-		-noout -nocert
-	)
-	if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
-		openssl_args+=( -engine pkcs11 -keyform ENGINE -key "${SECUREBOOT_SIGN_KEY}" )
-	else
-		openssl_args+=( -keyform PEM -key "${SECUREBOOT_SIGN_KEY}" )
-	fi
-	openssl x509 "${openssl_args[@]}" ||
-		die "Secure Boot signing certificate or key not found or not PEM format."
-}
+inherit linux-info
 
 # @FUNCTION: secureboot_pkg_setup
 # @DESCRIPTION:
@@ -105,7 +89,114 @@ secureboot_pkg_setup() {
 	# If we are merging a binary then the files in this binary
 	# are already signed, no need to check the variables.
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		_secureboot_die_if_unset
+		if [[ -z ${SECUREBOOT_SIGN_KEY} ]]; then
+			# No key specified, try some usual suspects
+			linux-info_pkg_setup
+			local module_sig_key=
+			if linux_config_exists MODULE_SIG_KEY; then
+				: "$(linux_chkconfig_string MODULE_SIG_KEY)"
+				module_sig_key=${_//\"}
+				# Convert to absolute path if required
+				if [[ ${module_sig_key} != pkcs11:* &&
+					${module_sig_key} != /* ]]
+				then
+					module_sig_key=${KV_OUT_DIR}/${module_sig_key}
+				fi
+			fi
+
+			# Check both the SYSROOT and ROOT, like linux-info.eclass
+			ewarn "No Secure Boot signing key specified."
+			if [[ -r ${SYSROOT}/etc/portage/secureboot.pem ]]; then
+				ewarn "Using ${SYSROOT}/etc/portage/secureboot.pem as signing key"
+				export SECUREBOOT_SIGN_KEY=${SYSROOT}/etc/portage/secureboot.pem
+				export SECUREBOOT_SIGN_CERT=${SYSROOT}/etc/portage/secureboot.pem
+			elif [[ -r ${ROOT}/etc/portage/secureboot.pem ]]; then
+				ewarn "Using ${ROOT}/etc/portage/secureboot.pem as signing key"
+				export SECUREBOOT_SIGN_KEY=${ROOT}/etc/portage/secureboot.pem
+				export SECUREBOOT_SIGN_CERT=${ROOT}/etc/portage/secureboot.pem
+			elif [[ -r ${SYSROOT}/var/lib/sbctl/keys/db/db.key &&
+				-r ${SYSROOT}/var/lib/sbctl/keys/db/db.pem ]]
+			then
+				ewarn "Using keys maintained by app-crypt/sbctl"
+				export SECUREBOOT_SIGN_KEY=${SYSROOT}/var/lib/sbctl/keys/db/db.key
+				export SECUREBOOT_SIGN_CERT=${SYSROOT}/var/lib/sbctl/keys/db/db.pem
+			elif [[ -r ${ROOT}/var/lib/sbctl/keys/db/db.key &&
+				-r ${ROOT}/var/lib/sbctl/keys/db/db.pem ]]
+			then
+				ewarn "Using keys maintained by app-crypt/sbctl"
+				export SECUREBOOT_SIGN_KEY=${ROOT}/var/lib/sbctl/keys/db/db.key
+				export SECUREBOOT_SIGN_CERT=${ROOT}/var/lib/sbctl/keys/db/db.pem
+			elif [[ -r ${MODULES_SIGN_KEY} ]]; then
+				ewarn "Using the kernel module signing key"
+				export SECUREBOOT_SIGN_KEY=${MODULES_SIGN_KEY}
+				if [[ -r ${MODULES_SIGN_CERT} ]]; then
+					export SECUREBOOT_SIGN_CERT=${MODULES_SIGN_CERT}
+				else
+					export SECUREBOOT_SIGN_CERT=${MODULES_SIGN_KEY}
+				fi
+			elif [[ -r ${KV_OUT_DIR}/certs/signing_key.x509 ]] &&
+				[[ -r ${module_sig_key} || ${module_sig_key} == pkcs11:* ]]
+			then
+				ewarn "Using keys maintained by the kernel"
+				openssl x509 \
+					-in "${KV_OUT_DIR}/certs/signing_key.x509" -inform DER \
+					-out "${T}/secureboot.pem" -outform PEM ||
+						die "Failed to convert kernel certificate to PEM format"
+				export SECUREBOOT_SIGN_KEY=${module_sig_key}
+				export SECUREBOOT_SIGN_CERT=${T}/secureboot.pem
+			else
+				ewarn "No candidate keys found, generating a new key"
+				local openssl_gen_args=(
+					req -new -batch -nodes -utf8 -sha256 -days 36500 -x509
+					-outform PEM -out "${SYSROOT}/etc/portage/secureboot.pem"
+					-keyform PEM -keyout "${SYSROOT}/etc/portage/secureboot.pem"
+					)
+				if [[ -r ${KV_OUT_DIR}/certs/x509.genkey ]]; then
+					openssl_gen_args+=(
+						-config "${KV_OUT_DIR}/certs/x509.genkey"
+					)
+				elif [[ -r ${KV_OUT_DIR}/certs/default_x509.genkey ]]; then
+					openssl_gen_args+=(
+						-config "${KV_OUT_DIR}/certs/default_x509.genkey"
+					)
+				else
+					openssl_gen_args+=(
+						-subj '/CN=Build time autogenerated kernel key'
+					)
+				fi
+				(
+					umask 066
+					openssl "${openssl_gen_args[@]}" ||
+						die "Failed to generate new signing key"
+					# Generate DER format key as well for easy inclusion in
+					# either the UEFI dB or MOK list.
+					openssl x509 \
+						-in "${SYSROOT}/etc/portage/secureboot.pem" -inform PEM \
+						-out "${ROOT}/etc/portage/secureboot.x509" -outform DER ||
+							die "Failed to convert signing certificate to DER format"
+				)
+				export SECUREBOOT_SIGN_KEY=${SYSROOT}/etc/portage/secureboot.pem
+				export SECUREBOOT_SIGN_CERT=${SYSROOT}/etc/portage/secureboot.pem
+			fi
+		elif [[ -z ${SECUREBOOT_SIGN_CERT} ]]; then
+			ewarn "A SECUREBOOT_SIGN_KEY was specified but no SECUREBOOT_SIGN_CERT"
+			ewarn "was set. Assuming the certificate is in the same file as the key."
+			export SECUREBOOT_SIGN_CERT=${SECUREBOOT_SIGN_KEY}
+		fi
+
+		# Sanity check: fail early if key/cert in DER format or does not exist
+		local openssl_args=(
+			-inform PEM -in "${SECUREBOOT_SIGN_CERT}"
+			-noout -nocert
+		)
+		if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+			openssl_args+=( -engine pkcs11 -keyform ENGINE -key "${SECUREBOOT_SIGN_KEY}" )
+		else
+			openssl_args+=( -keyform PEM -key "${SECUREBOOT_SIGN_KEY}" )
+		fi
+
+		openssl x509 "${openssl_args[@]}" ||
+			die "Secure Boot signing certificate or key not found or not PEM format."
 	fi
 }
 
@@ -122,8 +213,6 @@ secureboot_sign_efi_file() {
 
 	local input_file=${1}
 	local output_file=${2:-${1}}
-
-	_secureboot_die_if_unset
 
 	ebegin "Signing ${input_file}"
 	local return=1
