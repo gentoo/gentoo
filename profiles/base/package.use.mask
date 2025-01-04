@@ -3,9 +3,10 @@
 
 # New entries go on top.
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-29)
-# openjfx for OpenJDK 25 is not yet available.
-dev-java/openjdk:25 javafx
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-04)
+# No suitable versions of dev-libs/protobuf available.
+# Bug #947534.
+=dev-java/protobuf-java-4.29.1 system-protoc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
 # Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
@@ -24,6 +25,10 @@ sci-libs/symengine boost
 # Conrad Kostecki <conikost@gentoo.org> (2024-12-30)
 # Currently experimental features do not compile.
 app-emulation/pcem experimental
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-29)
+# openjfx for OpenJDK 25 is not yet available.
+dev-java/openjdk:25 javafx
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
 # Prepare virtual/bitcoin-leveldb last-rites, bug #945359
@@ -66,10 +71,6 @@ www-client/chromium system-icu
 # Joonas Niilola <juippis@gentoo.org> (2024-11-07)
 # Dependency for generating docs not packaged in Gentoo. #942992
 dev-util/repolite doc
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-11-01)
-# No suitable versions of dev-libs/protobuf available.
->=dev-java/protobuf-java-4.28.1 system-protoc
 
 # Sam James <sam@gentoo.org> (2024-10-29)
 # Currently needs patched dev-util/sysprof.
