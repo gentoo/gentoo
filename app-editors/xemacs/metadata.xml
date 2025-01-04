@@ -6,8 +6,6 @@
   </maintainer>
   <use>
     <flag name="athena">Chooses the MIT Athena widget set</flag>
-    <flag name="dnd">Enables support for the <pkg>x11-libs/dnd</pkg>
-      drag-n-drop library</flag>
     <flag name="pop">Support POP for mail retrieval</flag>
     <flag name="xim">Enable X11 XiM input method</flag>
     <flag name="bignum">Support for OpenSSL bignum implementation</flag>
