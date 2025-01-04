@@ -15,7 +15,7 @@ S="${WORKDIR}"/${P}-source
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="archive +javascript opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
@@ -50,13 +50,14 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.19.0-Makefile.patch
-	"${FILESDIR}"/${PN}-1.21.0-add-desktop-pc-files.patch
-	"${FILESDIR}"/${P}-cross-fixes.patch
-	"${FILESDIR}"/${P}-darwin.patch
+	"${FILESDIR}"/${PN}-1.24.8-add-desktop-pc-files.patch
+	"${FILESDIR}"/${PN}-1.24.1-cross-fixes.patch
+	"${FILESDIR}"/${PN}-1.24.1-darwin.patch
 	# See bugs #662352
-	"${FILESDIR}"/${P}-openssl-x11.patch
+	"${FILESDIR}"/${PN}-1.24.1-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.21.1-fix-aliasing-violation.patch
+	"${FILESDIR}"/${PN}-1.24.8-c23.patch
 )
 
 src_prepare() {
@@ -76,7 +77,7 @@ src_prepare() {
 		-i Makerules || die "Failed adding build variables to Makerules in src_prepare()"
 
 	# Adjust MuPDF version in .pc file created by the
-	# mupdf-1.21.0-add-desktop-pc-files.patch file
+	# [...]-add-desktop-pc-files.patch file
 	sed -e "s/Version: \(.*\)/Version: ${PV}/" \
 		-i platform/debian/${PN}.pc || die "Failed substituting version in ${PN}.pc"
 }
@@ -131,7 +132,7 @@ src_compile() {
 src_install() {
 	if use opengl || use X ; then
 		domenu platform/debian/${PN}.desktop
-		doicon -s scalable docs/logo/new-${PN}-icon.svg
+		doicon -s scalable docs/logo/${PN}-icon.svg
 	else
 		rm docs/man/${PN}.1 || die "Failed to remove man page in src_install()"
 	fi
