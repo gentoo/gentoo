@@ -199,8 +199,14 @@ S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
 LICENSE="GPL-2"
 SLOT="1.0"
 
+if ver_test ${GST_ORG_PVP} -ge 1.24 ; then
+	GLIB_VERSION=2.64.0
+else
+	GLIB_VERSION=2.62.0
+fi
+
 RDEPEND="
-	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-${GLIB_VERSION}:2[${MULTILIB_USEDEP}]
 "
 BDEPEND="
 	virtual/pkgconfig
