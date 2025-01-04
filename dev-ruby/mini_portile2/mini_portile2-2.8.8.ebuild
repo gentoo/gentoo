@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 inherit ruby-fakegem
 
@@ -15,7 +15,7 @@ SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
 IUSE="test"
 
-BDEPEND="test? ( dev-build/cmake )"
+BDEPEND="test? ( app-crypt/gnupg dev-build/cmake )"
 
 ruby_add_bdepend "test? (
 	dev-ruby/minitar:0
@@ -29,6 +29,10 @@ all_ruby_prepare() {
 	# cannot guarantee.
 	sed -e '/test_configure_defaults_with/askip("Requires gcc to be the C/C++ compiler.")' \
 		-i test/test_cmake.rb || die
+
+	# Keep gpg from creating a default common.conf with broken keyboxd support.
+	mkdir -m 700 "${HOME}/.gnupg" || die
+	touch "${HOME}/.gnupg/common.conf" || die
 }
 
 each_ruby_test() {
