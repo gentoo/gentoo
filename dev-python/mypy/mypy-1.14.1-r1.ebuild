@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,12 +69,6 @@ src_prepare() {
 
 python_compile() {
 	local -x MYPY_USE_MYPYC=$(usex native-extensions 1 0)
-	case ${EPYTHON} in
-		python3.13)
-			# https://github.com/mypyc/mypyc/issues/1056
-			MYPY_USE_MYPYC=0
-			;;
-	esac
 	distutils-r1_python_compile
 }
 
