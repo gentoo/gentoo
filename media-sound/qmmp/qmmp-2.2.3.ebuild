@@ -1,0 +1,189 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake xdg
+
+DESCRIPTION="Qt6-based audio player with winamp/xmms skins support"
+HOMEPAGE="https://qmmp.ylsoftware.com"
+SRC_URI="https://downloads.sourceforge.net/${PN}-dev/files/${P}.tar.bz2"
+
+LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+# TODO: could use those USE flags
+# - X
+# - doc -- by doxygen
+IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
+ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer musepack
+notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler shout sid
+sndfile soxr stereo tray udisks +vorbis wavpack"
+
+REQUIRED_USE="
+	gnome? ( dbus )
+	shout? ( soxr vorbis )
+	udisks? ( dbus )
+"
+# NOTE: automagic finds both mpg123 and libmad
+RDEPEND="
+	dev-qt/qtbase:6[X,dbus,gui,network,sqlite,widgets]
+	media-libs/taglib:=
+	x11-libs/libX11
+	aac? ( media-libs/faad2:= )
+	alsa? ( media-libs/alsa-lib:= )
+	archive? ( app-arch/libarchive:= )
+	bs2b? ( media-libs/libbs2b:= )
+	cdda? (
+		dev-libs/libcdio
+		dev-libs/libcdio-paranoia
+	)
+	curl? ( net-misc/curl:= )
+	dbus? ( dev-qt/qtbase:6[dbus] )
+	enca? ( app-i18n/enca:= )
+	ffmpeg? ( media-video/ffmpeg:= )
+	flac? ( media-libs/flac:= )
+	game? ( media-libs/game-music-emu:= )
+	jack? (
+		media-libs/libsamplerate
+		virtual/jack
+	)
+	ladspa? ( media-plugins/cmt-plugins )
+	libxmp? ( media-libs/libxmp:= )
+	mad? ( media-libs/libmad:= )
+	!mad? ( media-sound/mpg123 )
+	midi? ( media-sound/wildmidi:= )
+	mms? ( media-libs/libmms:= )
+	mplayer? ( media-video/mplayer )
+	musepack? ( >=media-sound/musepack-tools-444:= )
+	opus? ( media-libs/opusfile:= )
+	pipewire? ( media-video/pipewire:= )
+	projectm? (
+		dev-qt/qtbase:6[-gles2-only,opengl]
+		media-libs/libprojectm:=
+	)
+	pulseaudio? ( media-libs/libpulse:= )
+	qtmedia? ( dev-qt/qtmultimedia:6 )
+	scrobbler? ( net-misc/curl:= )
+	shout? ( media-libs/libshout:= )
+	sid? ( >=media-libs/libsidplayfp-1.1.0:= )
+	sndfile? ( media-libs/libsndfile:= )
+	soxr? ( media-libs/soxr:= )
+	udisks? ( sys-fs/udisks:2 )
+	vorbis? (
+		media-libs/libogg:=
+		media-libs/libvorbis:=
+	)
+	wavpack? ( media-sound/wavpack:= )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/qttools:6[linguist]"
+
+DOCS=( AUTHORS ChangeLog README )
+
+src_prepare() {
+	if has_version dev-libs/libcdio-paranoia ; then
+		sed -i \
+			-e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' \
+			src/plugins/Input/cdaudio/decoder_cdaudio.cpp || die
+	fi
+
+	# silences Cmake Warning 'Failed to find Qt5 component "WinExtras"'
+	sed -i 's/ WinExtras//g' CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=( # configure order
+		# Transports
+		-DUSE_CURL="$(usex curl)" # http
+		-DUSE_MMS="$(usex mms)"
+
+		# Input plugins
+		-DUSE_FLAC="$(usex flac)"
+		-DUSE_VORBIS="$(usex vorbis)"
+		-DUSE_MPC="$(usex musepack)"
+		-DUSE_XMP="$(usex libxmp)" # MOD
+		-DUSE_SNDFILE="$(usex sndfile)" # wave
+		-DUSE_WAVPACK="$(usex wavpack)"
+		-DUSE_FFMPEG="$(usex ffmpeg)"
+		-DUSE_AAC="$(usex aac)"
+		-DUSE_CUE="$(usex cue)"
+		-DUSE_MPLAYER="$(usex mplayer)"
+		-DUSE_CDA="$(usex cdda)"
+		-DUSE_MIDI="$(usex midi)"
+		-DUSE_GME="$(usex game)"
+		-DUSE_OPUS="$(usex opus)"
+		-DUSE_SID="$(usex sid)"
+		-DUSE_ARCHIVE="$(usex archive)"
+
+		# Output plugins
+		-DUSE_ALSA="$(usex alsa)"
+		-DUSE_OSS="$(usex oss)"
+		-DUSE_OSS4="$(usex oss)" # TODO: we probably need just one
+		-DUSE_JACK="$(usex jack)"
+		-DUSE_PULSE="$(usex pulseaudio)"
+		-DUSE_PIPEWIRE="$(usex pipewire)"
+		-DUSE_NULL=no
+		-DUSE_WAVEOUT=no # windows only
+		-DUSE_DSOUND=no  # windows only
+		-DUSE_WASAPI=no  # windows only
+		-DUSE_QTMULTIMEDIA="$(usex qtmedia)"
+		-DUSE_SHOUT="$(usex shout)"
+
+		# Effect plugins
+		-DUSE_SOXR="$(usex soxr)"
+		-DUSE_BS2B="$(usex bs2b)"
+		-DUSE_LADSPA="$(usex ladspa)"
+		-DUSE_CROSSFADE="$(usex crossfade)"
+		-DUSE_STEREO="$(usex stereo)"
+		-DUSE_FILEWRITER="$(usex vorbis)"
+		-DUSE_MONOTOSTEREO=yes
+
+		# Visual plugins
+		-DUSE_ANALYZER="$(usex analyzer)"
+		-DUSE_PROJECTM="$(usex projectm)"
+
+		# General plugins
+		-DUSE_MPRIS="$(usex dbus)"
+		-DUSE_SCROBBLER="$(usex scrobbler)"
+		-DUSE_LISTENBRAINZ=yes # default
+		-DUSE_STATICON="$(usex tray)"
+		-DUSE_NOTIFIER="$(usex notifier)"
+		-DUSE_LYRICS="$(usex lyrics)"
+		-DUSE_UDISKS="$(usex udisks)"
+		-DUSE_HOTKEY=no
+		-DUSE_GNOMEHOTKEY="$(usex gnome)"
+		-DUSE_FILEOPS=yes
+		-DUSE_COVER="$(usex cover)"
+		-DUSE_KDENOTIFY="$(usex dbus)"
+		-DUSE_CONVERTER=yes # taglib is an unconditional dependency
+		-DUSE_RGSCAN=yes # taglib is an unconditional dependency
+		-DUSE_SB=yes # default
+		-DUSE_TRACKCHANGE=yes # default
+		-DUSE_COPYPASTE=yes # default
+		-DUSE_HISTORY=yes # qtsql is an unconditional dependency
+		-DUSE_SLEEPINHIBITOR="$(usex dbus)"
+		-DUSE_LIBRARY=yes # qtsql is an unconditional dependency
+		-DUSE_TASKBAR=no #windows only
+		-DUSE_RDETECT=no #windows only
+
+		# File dialogs
+		-DUSE_QMMP_DIALOG=yes # default
+		-DUSE_TWO_PANEL_DIALOG=yes # default
+
+		# User interfaces
+		-DUSE_SKINNED=yes # TODO: research if this is right: seems to be X11 related
+		-DUSE_QSUI="$(usex qsui)"
+
+		# Advanced
+		-DUSE_ENCA="$(usex enca)"
+		-D_USE_LIBRCD=no # could be behind a USE flag
+		-D_USE_LIBCDDB=no # could be behind a USE flag
+		-DUSE_DIR_ASSOC=yes # default
+	)
+
+	cmake_src_configure
+}
