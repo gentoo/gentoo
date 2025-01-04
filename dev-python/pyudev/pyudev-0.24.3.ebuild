@@ -72,6 +72,15 @@ python_test() {
 	epytest tests
 }
 
+src_test() {
+	local virt=$(systemd-detect-virt 2>/dev/null)
+	if [[ ${virt} == systemd-nspawn ]] ; then
+		ewarn "Skipping tests because in systemd-nspawn container"
+	else
+		distutils-r1_src_test
+	fi
+}
+
 pkg_postinst() {
 	optfeature "PyQt5 bindings" "dev-python/pyqt5"
 }
