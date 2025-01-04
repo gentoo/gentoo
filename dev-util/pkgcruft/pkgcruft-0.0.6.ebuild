@@ -1,12 +1,13 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CRATES=" "
+LLVM_COMPAT=( {17..19} )
 RUST_MIN_VER="1.80.0"
 
-inherit cargo edo flag-o-matic toolchain-funcs
+inherit cargo edo flag-o-matic llvm-r2 toolchain-funcs
 
 DESCRIPTION="QA library and tools based on pkgcraft"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -33,11 +34,18 @@ RESTRICT="!test? ( test )"
 
 # clang needed for bindgen
 BDEPEND+="
-	llvm-core/clang
+	$(llvm_gen_dep '
+		llvm-core/clang:${LLVM_SLOT}
+	')
 	test? ( dev-util/cargo-nextest )
 "
 
 QA_FLAGS_IGNORED="usr/bin/pkgcruft"
+
+pkg_setup() {
+	llvm-r2_pkg_setup
+	rust_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
