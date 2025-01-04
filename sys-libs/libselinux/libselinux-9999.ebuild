@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -55,9 +55,6 @@ src_prepare() {
 multilib_src_compile() {
 	tc-export AR CC PKG_CONFIG RANLIB
 
-	# bug 905711
-	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
-
 	local -x CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
 	emake \
@@ -65,6 +62,7 @@ multilib_src_compile() {
 		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
 		USE_PCRE2=y \
+		USE_LFS=y \
 		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 		all
 
@@ -75,6 +73,7 @@ multilib_src_compile() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2=y \
+				USE_LFS=y \
 				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				pywrap
 		}
@@ -91,6 +90,7 @@ multilib_src_compile() {
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
+				USE_LFS=y \
 				USE_PCRE2=y \
 				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				rubywrap
@@ -107,6 +107,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)" \
+		USE_LFS=y \
 		USE_PCRE2=y \
 		install
 
@@ -115,6 +116,7 @@ multilib_src_install() {
 			emake DESTDIR="${D}" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
+				USE_LFS=y \
 				USE_PCRE2=y \
 				install-pywrap
 			python_optimize # bug 531638
@@ -131,6 +133,7 @@ multilib_src_install() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				RUBY=${1} \
+				USE_LFS=y \
 				USE_PCRE2=y \
 				install-rubywrap
 		}
