@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,6 +73,7 @@ RDEPEND="
 	ivorbis? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
 	ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
+	kernel_linux? ( >=x11-libs/libdrm-2.4.55[${MULTILIB_USEDEP}] )
 	pango? ( >=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}] )
 	theora? ( >=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}] )
 	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
@@ -105,6 +106,7 @@ multilib_src_configure() {
 		-Dtools=enabled
 
 		$(meson_feature alsa)
+		$(meson_feature kernel_linux drm)
 		$(meson_feature ogg)
 		$(meson_feature pango)
 		$(meson_feature theora)
@@ -115,7 +117,7 @@ multilib_src_configure() {
 	)
 
 	if use opengl || use gles2; then
-		# because meson doesn't likes extraneous commas
+		# because meson doesn't like extraneous commas
 		local gl_api=( $(use opengl && echo opengl) $(use gles2 && echo gles2) )
 		local gl_platform=( $(use X && use opengl && echo glx) $(use egl && echo egl) )
 		local gl_winsys=(
