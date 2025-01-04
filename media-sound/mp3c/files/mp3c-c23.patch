@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/899854
+also, feature-macro'd glibc functions
+--- a/configure.ac	2025-01-05 00:30:25.475280699 +0400
++++ b/configure.ac	2025-01-05 00:30:38.800207692 +0400
+@@ -6,7 +6,8 @@
+ 
+ AM_INIT_AUTOMAKE
++AC_USE_SYSTEM_EXTENSIONS
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION
++AM_GNU_GETTEXT_VERSION(0.21)
+ AM_ICONV
+ 
+ AC_PROG_CC
+Bad definition, fails with C23
+https://bugs.gentoo.org/945206
+--- a/src/keys.c	2025-01-05 00:39:12.053395586 +0400
++++ b/src/keys.c	2025-01-05 00:39:42.420229207 +0400
+@@ -76,7 +76,7 @@
+ extern int build_data_tree(char *cddb_server, char *local_cddb_db,
+ 			   song_typ **ret_tree, BOOL force_sampler);
+ extern int cddb_internet_lookup (char *addr, char *cddb_path, BOOL force);
+-extern void option_menu();
++extern void option_menu(WINDOW *win);
+ extern int output_batch(song_typ *anchor, char *filenm, BOOL ask_overwrite);
+ extern void calc_tot_frm();
+ extern int add_to_m3u(song_typ *song);
