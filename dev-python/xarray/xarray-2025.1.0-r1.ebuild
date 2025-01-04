@@ -21,7 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="big-endian"
 
 RDEPEND="
-	<dev-python/numpy-2.1[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.24[${PYTHON_USEDEP}]
 	>=dev-python/pandas-2.1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-23.2[${PYTHON_USEDEP}]
