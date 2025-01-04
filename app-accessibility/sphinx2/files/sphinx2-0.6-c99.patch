@@ -1,0 +1,500 @@
+bug https://bugs.gentoo.org/943765
+bug https://bugs.gentoo.org/919360
+bug https://bugs.gentoo.org/880537
+Port to C23 (and, accidentally, to C99) of codebase, plus one mistype in define guard
+--- a/configure.in	2024-12-29 18:59:29.315644986 +0400
++++ b/configure.in	2024-12-29 18:59:49.600524367 +0400
+@@ -12,6 +12,7 @@
+ AC_HEADER_STDC
+ AC_WORDS_BIGENDIAN
+ AC_TYPE_SIGNAL
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ hmmdata=`ls -1 $srcdir/model/hmm/6k | egrep -v '(Makefile|CVS)'`
+ hmmdata=`echo $hmmdata`
+diff -ur a/src/examples/clicore.c b/src/examples/clicore.c
+--- a/src/examples/clicore.c	2024-12-29 17:02:47.003099554 +0400
++++ b/src/examples/clicore.c	2024-12-29 17:16:06.292289840 +0400
+@@ -323,7 +323,7 @@
+ 	memcpy (&addr.sin_addr, hp->h_addr, hp->h_length);
+ 	addr.sin_port = htons((u_short) port);
+ 	
+-	if (connect (conn_sd, &addr, sizeof(addr)) == 0)
++	if (connect (conn_sd, (struct sockaddr *)(&addr), sizeof(addr)) == 0)
+ 	    break;
+ 	print_errno ("connect");
+ 	cli_close (conn_sd);
+diff -ur a/src/examples/srvcore.c b/src/examples/srvcore.c
+--- a/src/examples/srvcore.c	2024-12-29 17:02:47.003099554 +0400
++++ b/src/examples/srvcore.c	2024-12-29 17:16:22.164194331 +0400
+@@ -381,7 +381,7 @@
+ 
+     ERRLOG((stderr, "%s(%d): Listening at port %d\n", __FILE__, __LINE__, bindport));
+ 
+-    if ((conn_sd = accept (listen_sd, &address, &address_len)) == INVALID_SOCKET) {
++    if ((conn_sd = accept (listen_sd, (struct sockaddr *)(&address), &address_len)) == INVALID_SOCKET) {
+ 	print_errno ("conn_accept");
+ 	return INVALID_SOCKET;
+     }
+diff -ur a/src/libsphinx2/include/c.h b/src/libsphinx2/include/c.h
+--- a/src/libsphinx2/include/c.h	2024-12-29 17:22:38.269931119 +0400
++++ b/src/libsphinx2/include/c.h	2001-12-11 04:24:48.000000000 +0400
+@@ -85,7 +85,7 @@
+ #define	CERROR		(-1)
+ 
+ #ifndef	bool
+-typedef enum	{ false = 0, true = 1 } bool;
++#include <stdbool.h>
+ #endif /* bool */
+ 
+ #define	sizeofS(string)	(sizeof(string) - 1)
+diff -ur a/src/libsphinx2ad/ad_oss.c b/src/libsphinx2ad/ad_oss.c
+--- a/src/libsphinx2ad/ad_oss.c	2024-12-29 17:02:47.002099560 +0400
++++ b/src/libsphinx2ad/ad_oss.c	2024-12-29 17:05:05.392266798 +0400
+@@ -230,7 +230,7 @@
+   }
+ 
+   if ((handle = (ad_rec_t *) calloc (1, sizeof(ad_rec_t))) == NULL) {
+-      fprintf(stderr, "calloc(%d) failed\n", sizeof(ad_rec_t));
++      fprintf(stderr, "calloc(%ld) failed\n", sizeof(ad_rec_t));
+       abort();
+   }
+     
+diff -ur a/src/libsphinx2/get_a_word.c b/src/libsphinx2/get_a_word.c
+--- a/src/libsphinx2/get_a_word.c	2024-12-29 17:37:40.712568800 +0400
++++ b/src/libsphinx2/get_a_word.c	2024-12-29 17:40:42.677508705 +0400
+@@ -46,8 +46,7 @@
+ #include <ctype.h>
+ 
+ /* default: more_separator = ' ' */
+-char *get_a_word (line, word, more_separator)
+-char *line, *word, more_separator;
++char *get_a_word (char *line, char* word, char more_separator)
+ {
+   register int i;
+ 
+diff -ur a/src/libsphinx2/resfft.c b/src/libsphinx2/resfft.c
+--- a/src/libsphinx2/resfft.c	2024-12-29 17:37:40.712568800 +0400
++++ b/src/libsphinx2/resfft.c	2024-12-29 17:39:14.910020022 +0400
+@@ -36,6 +36,9 @@
+ #include <math.h>
+ #include <stdlib.h>
+ 
++//declaring before defining
++void rsfft (float *x, int n, int m);
++
+ /************************************************************************
+  *
+  * This work was supported in part by funding from the Defense Advanced 
+diff -ur a/src/libsphinx2/list.c b/src/libsphinx2/list.c
+--- a/src/libsphinx2/list.c	2024-12-29 17:43:46.365438572 +0400
++++ b/src/libsphinx2/list.c	2024-12-29 18:04:59.159919708 +0400
+@@ -50,7 +50,7 @@
+ #define ERR_ARG		1
+ #define ERR_MALLOC	2
+ 
+-static int32 exception();
++static int32 exception(char *rname, char *s, int32 exc);
+ 
+ /* NEW_LIST
+  *-----------------------------------------------------------*
+diff -ur a/src/libsphinx2/lm_3g.c b/src/libsphinx2/lm_3g.c
+--- a/src/libsphinx2/lm_3g.c	2024-12-29 17:43:46.365438572 +0400
++++ b/src/libsphinx2/lm_3g.c	2024-12-29 18:03:34.688423361 +0400
+@@ -446,12 +446,7 @@
+  * returns a pointer to a new language model record.  The size is passed in
+  * as a parameter.
+  */
+-lm_t *
+-NewModel (n_ug, n_bg, n_tg, n_dict)
+-    int32 n_ug;
+-    int32 n_bg;
+-    int32 n_tg;
+-    int32 n_dict;
++lm_t *NewModel (int32 n_ug, int32 n_bg, int32 n_tg, int32 n_dict)
+ {
+     lm_t *model;
+ 
+@@ -1340,8 +1335,7 @@
+  * dict base wid; check if present in LM.  
+  * return TRUE if present, FALSE otherwise.
+  */
+-int32 dictwd_in_lm (wid)
+-    int32 wid;
++int32 dictwd_in_lm (int32 wid)
+ {
+     return (lmp->dictwid_map[wid] >= 0);
+ }
+diff -ur a/src/libsphinx2/pconf.c b/src/libsphinx2/pconf.c
+--- a/src/libsphinx2/pconf.c	2024-12-29 17:43:46.365438572 +0400
++++ b/src/libsphinx2/pconf.c	2024-12-29 17:44:17.791255490 +0400
+@@ -201,7 +201,6 @@
+ static char *
+ env_scan(char const *str)
+ {
+-    extern char *getenv();
+     char buf[1024];		/* buffer for temp use */
+     register char *p = buf;	/* holds place in the buffer */
+     char var[50];		/* holds the name of the env variable */
+diff -ur a/src/libsphinx2/prime.c b/src/libsphinx2/prime.c
+--- a/src/libsphinx2/prime.c	2024-12-29 17:43:46.365438572 +0400
++++ b/src/libsphinx2/prime.c	2024-12-29 17:45:06.343972631 +0400
+@@ -39,12 +39,11 @@
+ #include <math.h>
+ #include <s2types.h>
+ 
+-int32 primeNext (val)
++int32 primeNext (int32 val)
+ /*--------------------------------------*
+  * Decsription
+  *	Return a prime number greater than or equal to val
+  */
+-int32 val;
+ {
+     int32                maxFactor;
+     int32		i;
+diff -ur a/src/libsphinx2/resfft.c b/src/libsphinx2/resfft.c
+--- a/src/libsphinx2/resfft.c	2024-12-29 17:43:46.367438560 +0400
++++ b/src/libsphinx2/resfft.c	2024-12-29 18:05:34.888706678 +0400
+@@ -68,8 +68,6 @@
+     float  b0, yt, *y;
+     double e;
+ 
+-    void rsfft();
+-
+     n2 = n;
+     n4 = n2 / 2;
+     for (b0 = 0, i = 1; i < n2; i += 2)
+diff -ur a/src/libsphinx2/time_align.c b/src/libsphinx2/time_align.c
+--- a/src/libsphinx2/time_align.c	2024-12-29 17:43:46.365438572 +0400
++++ b/src/libsphinx2/time_align.c	2024-12-29 18:01:25.144195756 +0400
+@@ -2455,7 +2455,7 @@
+ va_traverse_back_trace(BACK_POINTER_T *bp_table,
+ 		       int bp_idx,
+ 		       int *score,
+-		       void (*segment_op)(),
++		       void (*segment_op)(int id, int begin, int end, int score, va_list ap),
+ 		       va_list ap)
+ {
+     int prior_end;
+@@ -2491,7 +2491,7 @@
+ traverse_back_trace(BACK_POINTER_T *bp_table,
+ 		    int bp_idx,
+ 		    int *score,
+-		    void (*segment_op)(),
++		    void (*segment_op)(int id, int begin, int end, int score, va_list ap),
+ 		    ...)
+ {
+     int rv;
+diff -ur a/src/libsphinx2/util.c b/src/libsphinx2/util.c
+--- a/src/libsphinx2/util.c	2024-12-29 17:43:46.365438572 +0400
++++ b/src/libsphinx2/util.c	2024-12-29 17:46:59.345314305 +0400
+@@ -41,11 +41,10 @@
+ 
+ #include "s2types.h"
+ 
+-void swapLong(intp)
++void swapLong(int32 *intp)
+ /*------------------------------------------------------------*
+  * Swap the int32 integer at intp
+  */
+-int32 *intp;
+ {
+   *intp = ((*intp << 24) & 0xFF000000) |
+ 	  ((*intp <<  8) & 0x00FF0000) |
+@@ -53,9 +52,7 @@
+ 	  ((*intp >> 24) & 0x000000FF);
+ }
+ 
+-void swapShortBuf (p, cnt)
+-int16 *p;
+-int32 cnt;
++void swapShortBuf (int16 *p, int32 cnt)
+ {
+     while (cnt-- > 0) {
+ 	*p = ((*p << 8) & 0x0FF00) |
+@@ -64,9 +61,7 @@
+     }
+ }
+ 
+-void swapLongBuf (p, cnt)
+-int32 *p;
+-int32 cnt;
++void swapLongBuf (int32 *p, int32 cnt)
+ {
+     while (cnt-- > 0) {
+ 	*p = ((*p << 24) & 0xFF000000) |
+diff -ur a/src/libsphinx2/uttproc.c b/src/libsphinx2/uttproc.c
+--- a/src/libsphinx2/uttproc.c	2024-12-29 17:43:46.366438566 +0400
++++ b/src/libsphinx2/uttproc.c	2024-12-29 17:49:57.818349115 +0400
+@@ -2060,9 +2060,14 @@
+ search_hyp_t *uttproc_allphone_file (char const *utt)
+ {
+     int32 nfr;
+-    extern search_hyp_t *allphone_utt();
++    extern search_hyp_t *allphone_utt(int32 nfr,
++                                      float *cep,
++                                      float *dcep,
++                                      float *dcep_80ms,
++                                      float *pcep,
++                                      float *ddcep);
+     extern char *build_uttid (const char *utt); /* in fbs_main.c */
+-    extern int32 utt_file2feat();       /* in fbs_main.c */
++    extern int32 utt_file2feat(char *utt, int32 nosearch);       /* in fbs_main.c */
+     search_hyp_t *hyplist, *h;
+     
+     build_uttid (utt);
+diff -ur a/include/err.h b/include/err.h
+--- a/include/err.h	2024-12-29 18:10:58.131814449 +0400
++++ b/include/err.h	2024-12-29 18:11:05.778769777 +0400
+@@ -52,7 +52,7 @@
+ 
+ 
+ #ifndef _LIBUTIL_ERR_H_
+-#define _LIBUTIL_ERR_H
++#define _LIBUTIL_ERR_H_
+ 
+ #include <stdarg.h>
+ #include <errno.h>
+diff -ur a/src/examples/lm3g2dmp.c b/src/examples/lm3g2dmp.c
+--- a/src/examples/lm3g2dmp.c	2024-12-29 18:10:58.180814163 +0400
++++ b/src/examples/lm3g2dmp.c	2024-12-29 18:27:31.906999550 +0400
+@@ -226,21 +226,21 @@
+ #define TG_PROB_F(m,t)		((m)->prob3[(m)->trigrams[t].prob3].f)
+ #define TG_PROB_L(m,t)		((m)->prob3[(m)->trigrams[t].prob3].l)
+ 
+-extern char *salloc();
++extern char *salloc(char const *);
+ 
+-extern char *listelem_alloc ();
+-extern void  listelem_free ();
++extern char *listelem_alloc (int32 elem_size);
++extern void  listelem_free (void *elem, int32 elem_size);
+ 
+ static char   *start_sym = "<s>";
+ static char   *end_sym = "</s>";
+ static char   *darpa_hdr = "Darpa Trigram LM";
+ 
+-static int32	lmname_to_id ();
+-static int32	lm3g_load ();
+-static int32	lm3g_dump ();
+-static void	lm_set_param ();
+-static void     lm3g2dmp_lm_add ();
+-static int32    lm3g2dmp_lm_delete ();
++static int32	lmname_to_id (char const * name);
++static int32	lm3g_load (char *file, lm_t *model, char *lmfile, int32 mtime);
++static int32	lm3g_dump (char *file, lm_t *model, char *lmfile, int32 mtime);
++static void	lm_set_param (lm_t *model, double lw, double uw, double wip, int32 word_pair);
++static void     lm3g2dmp_lm_add (char const *lmname, lm_t *model, double lw, double uw, double wip);
++static int32    lm3g2dmp_lm_delete (char const * name);
+ 
+ /* Structure for maintaining multiple, named LMs */
+ static struct lmset_s {
+@@ -304,8 +304,7 @@
+  * Initialize sorted list with the 0-th entry = MIN_PROB_F, which may be needed
+  * to replace spurious values in the Darpa LM file.
+  */
+-static void init_sorted_list (l)
+-    sorted_list_t *l;
++static void init_sorted_list (sorted_list_t *l)
+ {
+     l->list =
+ 	(sorted_entry_t *) CM_calloc (MAX_SORTED_ENTRIES, sizeof (sorted_entry_t));
+@@ -315,14 +314,12 @@
+     l->free = 1;
+ }
+ 
+-static void free_sorted_list (l)
+-    sorted_list_t *l;
++static void free_sorted_list (sorted_list_t *l)
+ {
+     free (l->list);
+ }
+ 
+-static log_t *vals_in_sorted_list (l)
+-    sorted_list_t *l;
++static log_t *vals_in_sorted_list (sorted_list_t *l)
+ {
+     log_t *vals;
+     int32 i;
+@@ -333,9 +330,7 @@
+     return (vals);
+ }
+ 
+-static int32 sorted_id (l, val)
+-    sorted_list_t *l;
+-    float *val;
++static int32 sorted_id (sorted_list_t *l, float *val)
+ {
+     int32 i = 0;
+     
+@@ -378,8 +373,7 @@
+ /*
+  * allocate, initialize and return pointer to an array of unigram entries.
+  */
+-static unigram_t *NewUnigramTable (n_ug)
+-    int32 n_ug;
++static unigram_t *NewUnigramTable (int32 n_ug)
+ {
+     unigram_t *table;
+     int32 i;
+@@ -398,11 +392,7 @@
+  * as a parameter.
+  */
+ static lm_t *
+-lm3g2dmp_NewModel (n_ug, n_bg, n_tg, n_dict)
+-    int32 n_ug;
+-    int32 n_bg;
+-    int32 n_tg;
+-    int32 n_dict;
++lm3g2dmp_NewModel (int32 n_ug, int32 n_bg, int32 n_tg, int32 n_dict)
+ {
+     lm_t *model;
+     int32 i;
+@@ -464,9 +454,8 @@
+ /*
+  * Read and return #unigrams, #bigrams, #trigrams as stated in input file.
+  */
+-static void ReadNgramCounts (fp, n_ug, n_bg, n_tg)
+-    FILE *fp;
+-    int32 *n_ug, *n_bg, *n_tg;		/* return the info here */
++static void ReadNgramCounts (FILE *fp, int32 *n_ug, int32* n_bg, int32* n_tg)
++    					/* return the info here */
+ {
+     char string[256];
+     int32 ngram, ngram_cnt;
+@@ -510,9 +499,8 @@
+  * entry to this procedure, the file pointer is positioned just after the
+  * header line '\1-grams:'.
+  */
+-static void ReadUnigrams (fp, model)
+-    FILE *fp;		/* input file */
+-    lm_t *model;	/* to be filled in */
++static void ReadUnigrams (FILE *fp, lm_t *model)
++				    /* to be filled in */
+ {
+     char string[256];
+     char name[128];
+@@ -764,9 +752,7 @@
+     }
+ }
+ 
+-static FILE *lm_file_open (filename, usepipe)
+-    char *filename;
+-    int32 usepipe;
++static FILE *lm_file_open (char *filename, int32 usepipe)
+ {
+     char command[1024];
+     FILE *fp;
+@@ -1231,16 +1217,12 @@
+ /*
+  * dict base wid; check if present in LM.  return TRUE if present, FALSE otherwise.
+  */
+-static int32 lm3g2dmp_dictwd_in_lm (wid)
+-    int32 wid;
++static int32 lm3g2dmp_dictwd_in_lm (int32 wid)
+ {
+     return (lmp->dictwid_map[wid] >= 0);
+ }
+ 
+-static int32 fread_int32(fp, min, max, name)
+-    FILE *fp;
+-    int32 min, max;
+-    char *name;
++static int32 fread_int32(FILE *fp, int32 min, int32 max, char *name)
+ {
+     int32 k;
+     
+@@ -1252,17 +1234,13 @@
+     return (k);
+ }
+ 
+-static void fwrite_int32 (fp, val)
+-    FILE *fp;
+-    int32 val;
++static void fwrite_int32 (FILE *fp, int32 val)
+ {
+     SWAP_LE_32(&val);
+     fwrite (&val, sizeof(int32), 1, fp);
+ }
+ 
+-static void fwrite_ug (fp, ug)
+-    FILE *fp;
+-    unigram_t *ug;
++static void fwrite_ug (FILE *fp, unigram_t *ug)
+ {
+     unigram_t tmp_ug = *ug;
+     
+@@ -1273,9 +1251,7 @@
+     fwrite (&tmp_ug, sizeof(unigram_t), 1, fp);
+ }
+ 
+-static void fwrite_bg (fp, bg)
+-    FILE *fp;
+-    bigram_t *bg;
++static void fwrite_bg (FILE *fp, bigram_t *bg)
+ {
+     bigram_t tmp_bg = *bg;
+     
+@@ -1286,9 +1262,7 @@
+     fwrite (&tmp_bg, sizeof(bigram_t), 1, fp);
+ }
+ 
+-static void fwrite_tg (fp, tg)
+-    FILE *fp;
+-    trigram_t *tg;
++static void fwrite_tg (FILE *fp, trigram_t *tg)
+ {
+     trigram_t tmp_tg = *tg;
+     
+@@ -1301,11 +1275,9 @@
+  * Load pre-compiled trigram LM file, if it exists, into model.  If file
+  * does not exist return 0.  Otherwise, if successful, return 1.
+  */
+-static int32 lm3g_load (file, model, lmfile, mtime)
+-    char *file;
+-    lm_t *model;
+-    char *lmfile;	/* the original Darpa LM filename */
+-    int32 mtime;	/* original LM file last modification timestamp */
++static int32 lm3g_load (char *file, lm_t *model, char *lmfile, int32 mtime)
++    /* char *lmfile - the original Darpa LM filename */
++    /* int32 mtime - original LM file last modification timestamp */
+ {
+     int32 i, j, k, vn, ts, err;
+     FILE *fp;
+@@ -1528,11 +1500,10 @@
+  * Dump internal LM to file.  Format described above.
+  * Remember to swap bytes if necessary.
+  */
+-static int32 lm3g_dump (file, model, lmfile, mtime)
+-    char *file;		/* output file */
+-    lm_t *model;
+-    char *lmfile;	/* original Darpa LM filename */
+-    int32 mtime;	/* lmfile last mod time */
++static int32 lm3g_dump (char *file, lm_t *model, char *lmfile, int32 mtime)
++    /* char *file	output file */
++    /* char *lmfile 	original Darpa LM filename */
++    /*int32 mtime		lmfile last mod time */
+ {
+     int32 i, k;
+     FILE *fp;
+@@ -1685,9 +1656,7 @@
+     }
+ }
+ 
+-int main (argc, argv)
+-    int32 argc;
+-    char *argv[];
++int main (int32 argc, char *argv[])
+ {
+     char *lmfile;
+     float64 lw, uw, wip;
+@@ -1945,7 +1914,7 @@
+       lm3g2dmp_get_current_lmname ();
+       lm3g2dmp_lm_get_current ();
+       lm3g2dmp_get_n_lm ();
+-      lm3g2dmp_dictwd_in_lm ();
++      lm3g2dmp_dictwd_in_lm (0);
+       lm3g2dmp_lmSetStartSym ("");
+       lm3g2dmp_lmSetEndSym ("");
+       lm3g2dmp_lm3g_ug_score (0);
