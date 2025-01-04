@@ -66,7 +66,7 @@ RDEPEND+="
 	acct-group/tor
 	selinux? ( sec-policy/selinux-tor )
 "
-BDEPEND="
+BDEPEND+="
 	acct-user/tor
 	acct-group/tor
 "
