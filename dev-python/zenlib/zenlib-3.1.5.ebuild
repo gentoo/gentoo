@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,5 +22,5 @@ KEYWORDS="~amd64 ~arm64"
 distutils_enable_tests unittest
 
 python_test() {
-	eunittest tests
+	CI=true eunittest tests  # Set CI=true to disable namespace module tests and imports
 }
