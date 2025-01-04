@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cargo meson
 
 MY_P=glycin-${PV/_/.}
 DESCRIPTION="Loaders for glycin clients (glycin crate or libglycin)"
-HOMEPAGE="https://gitlab.gnome.org/sophie-h/glycin/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/glycin/"
 SRC_URI="
 	https://download.gnome.org/sources/glycin/$(ver_cut 1-2)/${MY_P}.tar.xz
 "
@@ -56,7 +56,7 @@ QA_FLAGS_IGNORED="usr/libexec/glycin-loaders/.*"
 src_prepare() {
 	default
 
-	# https://gitlab.gnome.org/sophie-h/glycin/-/issues/81
+	# https://gitlab.gnome.org/GNOME/glycin/-/issues/81
 	sed -i -e '\|/fonts|d' tests/tests.rs || die
 }
 
