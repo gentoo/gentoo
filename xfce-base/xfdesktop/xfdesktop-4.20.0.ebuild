@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.24.0:3[wayland?,X?]
 	>=xfce-base/exo-0.11:=
 	>=xfce-base/garcon-0.6:=
-	>=xfce-base/libxfce4ui-4.18.0:=
+	>=xfce-base/libxfce4ui-4.18.0:=[X?]
 	>=xfce-base/libxfce4util-4.13:=
 	>=xfce-base/libxfce4windowing-4.19.8:=[X?]
 	>=xfce-base/xfconf-4.19.3:=
