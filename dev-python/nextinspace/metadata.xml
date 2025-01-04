@@ -15,6 +15,7 @@
 		application. You can also get data printed to the terminal in JSON,
 		which can be piped into another program.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">gideonshaked/nextinspace</remote-id>
 		<remote-id type="pypi">nextinspace</remote-id>
