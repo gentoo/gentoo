@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
 inherit ada multiprocessing
 
 MYPN=gprbuild
@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MYP}
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]"
