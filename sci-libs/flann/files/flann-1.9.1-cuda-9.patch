@@ -4,12 +4,6 @@ Date: Fri, 4 May 2018 07:50:24 +0000
 Subject: [PATCH] fix compilation via gcc and cuda 9.1 add missing #include
  <thrust/gather> to kdtree_cuda_3d_index.cu
 
----
- src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu b/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu
-index e9b05080..8465322e 100644
 --- a/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu
 +++ b/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu
 @@ -32,6 +32,7 @@

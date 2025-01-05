@@ -1,5 +1,5 @@
---- a/src/cpp/CMakeLists.txt	2019-02-14 21:58:41.567625108 +0100
-+++ b/src/cpp/CMakeLists.txt	2019-02-14 21:59:04.017920926 +0100
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
 @@ -34,7 +34,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AN
      target_link_libraries(flann_cpp -Wl,-whole-archive flann_cpp_s -Wl,-no-whole-archive)
  

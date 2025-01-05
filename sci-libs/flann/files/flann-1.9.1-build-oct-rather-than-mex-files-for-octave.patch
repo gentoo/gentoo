@@ -9,12 +9,6 @@ Subject: [PATCH] build *.oct rather than *.mex files for octave
    LOCATION
 
 Signed-off-by: Alexander Golubev <fatzer2@gmail.com>
----
- src/matlab/CMakeLists.txt | 28 ++++++++++++++++++----------
- 1 file changed, 18 insertions(+), 10 deletions(-)
-
-diff --git a/src/matlab/CMakeLists.txt b/src/matlab/CMakeLists.txt
-index a89b6b8..ebacaea 100755
 --- a/src/matlab/CMakeLists.txt
 +++ b/src/matlab/CMakeLists.txt
 @@ -16,9 +16,6 @@ endif()

@@ -40,14 +40,6 @@ http://autobuild.buildroot.net/results/b2f/b2febfaf8c44ce477b3e4a5b9b976fd25e8d7
 [3] https://github.com/mariusmuja/flann/commit/0fd62b43be2fbb0b8d791ee36290791224dc030c
 
 Signed-off-by: Romain Naour <romain.naour@gmail.com>
----
- src/cpp/CMakeLists.txt | 4 ++--
- src/cpp/empty.cpp      | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
- create mode 100644 src/cpp/empty.cpp
-
-diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
-index b44a735..a816863 100644
 --- a/src/cpp/CMakeLists.txt
 +++ b/src/cpp/CMakeLists.txt
 @@ -29,7 +29,7 @@ if (BUILD_CUDA_LIB)
@@ -68,9 +60,6 @@ index b44a735..a816863 100644
          set_target_properties(flann PROPERTIES LINKER_LANGUAGE CXX)
          target_link_libraries(flann -Wl,-whole-archive flann_s -Wl,-no-whole-archive)
      else()
-diff --git a/src/cpp/empty.cpp b/src/cpp/empty.cpp
-new file mode 100644
-index 0000000..40a8c17
 --- /dev/null
 +++ b/src/cpp/empty.cpp
 @@ -0,0 +1 @@
