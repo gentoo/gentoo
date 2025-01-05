@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/java-diff-utils-java-diff-utils-parent-${PV}/java-diff-utils"
 
 LICENSE="Apache-2.0"
 SLOT="4"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 arm64 ~ppc64"
 RESTRICT="test" #839681
 
 DEPEND=">=virtual/jdk-1.8:*"
