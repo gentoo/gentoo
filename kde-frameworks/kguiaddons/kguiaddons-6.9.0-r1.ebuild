@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,12 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!${CATEGORY}/${PN}:5[-kf6compat(-)]
 "
-BDEPEND="wayland? ( >=dev-qt/qtwayland-${QTMIN}:6 )"
+BDEPEND="
+	wayland? (
+		>=dev-qt/qtwayland-${QTMIN}:6
+		dev-util/wayland-scanner
+	)
+"
 
 PATCHES=( "${FILESDIR}/${P}-crashfix.patch" ) # KDE-bug 497457
 
