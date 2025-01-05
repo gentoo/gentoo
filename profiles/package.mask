@@ -535,11 +535,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
 dev-build/automake:1.11
 
-# Joonas Niilola <juippis@gentoo.org> (2021-07-29)
-# Upstream provided migration instructions from 2. -> 3. update,
-# breaks if not all at least many revdeps. #805011 for tracker bug.
->=net-libs/mbedtls-3.0.0
-
 # Michał Górny <mgorny@gentoo.org> (2021-07-06)
 # Upstream changed license to GPL-3+ in order to deliberately cause
 # incompatiblity with revdep licenses.  Mask until the situation
