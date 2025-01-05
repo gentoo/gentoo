@@ -1,9 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-NEED_EMACS=27.1
+NEED_EMACS="27.1"
+
 inherit elisp
 
 DESCRIPTION="Work with Git forges from the comfort of Magit"
@@ -26,22 +27,22 @@ S="${WORKDIR}/${P}/lisp"
 LICENSE="GPL-3+"
 SLOT="0"
 
-DOCS=( ../README.org )
-ELISP_TEXINFO="../docs/*.texi"
-SITEFILE="50${PN}-gentoo.el"
-
 RDEPEND="
-	app-emacs/compat
+	>=app-emacs/compat-30.0.1.0
+	>=app-emacs/ghub-4.1.1
+	>=app-emacs/magit-4.1.3
+	>=app-emacs/transient-0.7.6
 	app-emacs/closql
 	app-emacs/dash
 	app-emacs/emacsql
-	>=app-emacs/ghub-4.1.1
-	>=app-emacs/magit-4.1.1
 	app-emacs/markdown-mode
-	>=app-emacs/transient-9999
 	app-emacs/yaml
 "
 BDEPEND="
 	${RDEPEND}
 	sys-apps/texinfo
 "
+
+DOCS=( ../README.org )
+ELISP_TEXINFO="../docs/*.texi"
+SITEFILE="50${PN}-gentoo.el"
