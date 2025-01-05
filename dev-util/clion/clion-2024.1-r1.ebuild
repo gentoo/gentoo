@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-debug/gdb
 	dev-libs/expat
 	dev-libs/glib:2
-	~dev-util/lttng-ust-2.12.1
+	dev-util/lttng-ust:0/2.12
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/wayland
