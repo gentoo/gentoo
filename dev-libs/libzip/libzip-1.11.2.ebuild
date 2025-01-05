@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://www.nih.at/libzip/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="bzip2 gnutls lzma mbedtls ssl static-libs test tools zstd"
 REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"
