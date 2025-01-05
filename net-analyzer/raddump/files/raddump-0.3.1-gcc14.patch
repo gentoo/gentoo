@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/919358
+diff -ru a/pktrecord.h b/pktrecord.h
+--- a/pktrecord.h	2025-01-05 15:55:08.349684611 +0400
++++ b/pktrecord.h	2025-01-05 15:57:49.645807285 +0400
+@@ -25,7 +25,7 @@
+   unsigned int included_len;   /* how much of it we actually have here */
+   unsigned int ts_secs;	       /* timestamp, seconds component */
+   unsigned int ts_usecs;       /* timestamp, microseconds component */
+-  unsigned char *pkt_data;     /* pointer to the actual packet data */
++  const unsigned char *pkt_data;     /* pointer to the actual packet data */
+ };
+ 
+ struct prec_handle;
