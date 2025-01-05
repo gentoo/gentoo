@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2024-11-19)
@@ -68,6 +68,7 @@ sci-electronics/ghdl
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-03-13)
 # To bootstrap uses an ada compiler built using glibc
+dev-lang/ada-bootstrap
 dev-lang/gnat-gpl
 dev-lang/spark
 dev-ada/gnatcoll-db
