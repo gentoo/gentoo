@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strawberrymusicplayer/strawberry/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-3"
@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/icu:=
 	media-libs/alsa-lib
-	media-libs/taglib:=
+	media-libs/taglib
 	dev-libs/kdsingleapplication[qt6(+)]
 	dev-qt/qtbase:6[concurrent,dbus?,gui,network,ssl,sql,sqlite,widgets,X?]
 	media-libs/gstreamer:1.0
@@ -48,7 +48,8 @@ COMMON_DEPEND="
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
 RDEPEND="${COMMON_DEPEND}
-	media-plugins/gst-plugins-meta:1.0[taglib]
+	media-plugins/gst-plugins-meta:1.0
+	media-plugins/gst-plugins-taglib
 	udisks? ( sys-fs/udisks:2 )
 	kde? ( kde-frameworks/kglobalaccel )
 "
