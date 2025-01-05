@@ -6,12 +6,6 @@ Subject: [PATCH] Fix boost hash data type (#6053)
 * Fix boost hash data type
 
 * Change file name generation.
----
- visualization/src/pcl_visualizer.cpp | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/visualization/src/pcl_visualizer.cpp b/visualization/src/pcl_visualizer.cpp
-index 5f073646ac1..bc9b959c246 100644
 --- a/visualization/src/pcl_visualizer.cpp
 +++ b/visualization/src/pcl_visualizer.cpp
 @@ -4591,10 +4591,12 @@ pcl::visualization::PCLVisualizer::getUniqueCameraFile (int argc, char **argv)
