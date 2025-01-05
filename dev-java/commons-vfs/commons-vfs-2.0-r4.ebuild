@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}/core"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc64 ~amd64-linux ~x86-linux"
 
 CP_DEPEND="
 	>=dev-java/ant-1.10.14-r3:0
