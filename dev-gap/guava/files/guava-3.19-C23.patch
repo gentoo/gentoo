@@ -1,0 +1,25 @@
+From 3dc3b1a2e1f5935fa105531ad9f4cf604aeefcb1 Mon Sep 17 00:00:00 2001
+From: Joe Fields <fieldsj1@southernct.edu>
+Date: Sat, 4 Jan 2025 15:45:01 -0500
+Subject: [PATCH] Put def of bool type in #ifdef for C23 compatability
+
+---
+ src/ctjhai/types.h | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/ctjhai/types.h b/src/ctjhai/types.h
+index d805dae..c295752 100644
+--- a/src/ctjhai/types.h
++++ b/src/ctjhai/types.h
+@@ -24,7 +24,10 @@ typedef struct {
+ 	unsigned int **m;
+ } MATRIX;
+ 
+-typedef enum { false = 0, true = 1 } bool;
++#if __STDC_VERSION__ <= 201710L
++    typedef enum { false = 0, true = 1 } bool;
++#endif
++
+ typedef enum { C_0MOD2 = 1, C_1MOD2, C_3MOD4, C_0MOD4, C_0MOD3 } mod_t;
+ 
+ typedef struct {
