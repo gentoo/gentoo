@@ -10,7 +10,7 @@ inherit ada multiprocessing
 XMLADA=xmlada-${PV}
 
 DESCRIPTION="Multi-Language Management"
-HOMEPAGE="http://libre.adacore.com/"
+HOMEPAGE="https://github.com/AdaCore/gprbuild"
 SRC_URI="
 	https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
@@ -34,6 +34,10 @@ src_prepare() {
 	sed -i \
 		-e "s:@GNATBIND@:${GNATBIND}:g" \
 		src/gprlib.adb \
+		|| die
+	sed -i \
+		-e "s|\"gnatbind\"|\"gnatbind-${GCC_PV}\"|" \
+		src/gprbind.adb \
 		|| die
 	cd gpr/src || die
 	ln -s gpr-util-put_resource_usage__unix.adb \
