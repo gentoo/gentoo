@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm64 ~loong"
 IUSE="fuse libdeflate +lz4 +lzma selinux static-libs +threads +uuid +zlib +zstd"
 
 RDEPEND="
+	dev-libs/xxhash:0=
 	fuse? ( sys-fs/fuse:0 )
 	lz4? ( app-arch/lz4:0= )
 	lzma? ( >=app-arch/xz-utils-5.4.0:0= )
@@ -53,6 +54,9 @@ src_configure() {
 		$(use_with zlib)
 		$(use_with zstd libzstd)
 		--without-qpl  # not packaged
+		# do not use bundled xxhash; also upstream says "expected to be
+		# faster than the internal one"
+		--with-xxhash
 	)
 
 	econf "${myeconfargs[@]}"
