@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
@@ -48,11 +48,6 @@ sci-libs/vtk qt5
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
 # dev-python/pyside2 last-rites
 dev-python/qtpy pyside2
-
-# Mats Lidell <matsl@gentoo.org> (2024-11-20)
-# The dependency x11-libs/dnd blocks gcc-14, is only used by XEmacs,
-# and upstream is not sure it even works so dropping use. #908831
-app-editors/xemacs dnd
 
 # Sam James <sam@gentoo.org> (2024-11-17)
 # The example bindings fail to build.
