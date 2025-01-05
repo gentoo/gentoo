@@ -1,8 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Sam James <sam@gentoo.org> (2025-01-05)
+# Older targets don't have an old enough dev-lang/ada-bootstrap available
+ada_target_gnat_2021
+ada_target_gcc_12
+ada_target_gcc_13
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
 # dev-libs/optix works on arm64
