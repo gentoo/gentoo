@@ -43,13 +43,18 @@ PATCHES=(
 # Rust
 QA_FLAGS_IGNORED="usr/libexec/gstreamer-1.0/gst-ptp-helper"
 
+pkg_setup() {
+	gstreamer-meson_pkg_setup
+	use ptp && rust_pkg_setup
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dtools=$(multilib_is_native_abi && echo enabled || echo disabled)
 		-Dbenchmarks=disabled
 		-Dexamples=disabled
 		-Dcheck=enabled
-		-Dptp-helper=$(multilib_is_native_abi && echo enabled || echo disabled)
+		-Dptp-helper=$(multilib_is_native_abi && echo $(usex 'ptp' 'enabled' 'disabled') || echo disabled)
 		$(meson_feature unwind libunwind)
 		$(meson_feature unwind libdw)
 	)
