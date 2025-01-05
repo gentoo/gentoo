@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -18,7 +18,7 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-RDEPEND+=" x11-misc/shared-mime-info"
+RDEPEND="x11-misc/shared-mime-info"
 
 ruby_add_rdepend "
 	dev-ruby/nokogiri
