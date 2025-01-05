@@ -1,0 +1,27 @@
+:bulkrename is broken[1] when using >=ncurses-6.4_p20231209 or so.
+
+Backport of [2].
+
+[1] https://github.com/ranger/ranger/issues/2934
+[2] https://github.com/ranger/ranger/pull/3039
+--- a/ranger/gui/ui.py
++++ b/ranger/gui/ui.py
+@@ -119,7 +119,8 @@
+             self.setup()
+             self.win.addstr("loading...")
+-            self.win.refresh()
+             self._draw_title = curses.tigetflag('hs')  # has_status_line
+ 
++        self.win.refresh()
++
+         self.update_size()
+         self.is_on = True
+@@ -142,8 +143,4 @@
+         curses.nocbreak()
+         curses.echo()
+-        try:
+-            curses.curs_set(1)
+-        except curses.error:
+-            pass
+         if self.settings.mouse_enabled:
+             _setup_mouse(dict(value=False))
