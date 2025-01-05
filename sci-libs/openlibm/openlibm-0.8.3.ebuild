@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-stack-protection.patch
+	"${FILESDIR}"/${P}-fix-loong-riscv-fenv.patch
 )
 
 src_prepare() {
@@ -28,8 +29,11 @@ src_prepare() {
 }
 
 src_compile() {
-	# Build system uses the riscv64 arch variable
-	use riscv && export ARCH=riscv64
+	# Build system uses different ARCH for the following arches
+	case "${ARCH}" in
+		loong) export ARCH=loongarch64 ;;
+		riscv) export ARCH=riscv64 ;;
+	esac
 
 	emake \
 		CC="$(tc-getCC)" \

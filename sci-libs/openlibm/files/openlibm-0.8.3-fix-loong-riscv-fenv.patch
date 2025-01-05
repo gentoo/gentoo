@@ -1,0 +1,27 @@
+https://github.com/JuliaMath/openlibm/commit/c4667caea25ae3487adf6760b4a1dcf32477a4b8
+https://github.com/JuliaMath/openlibm/pull/308
+shipped in openlibm 0.8.4
+From: Li Bohai <lbhlbhlbh2002@icloud.com>
+Date: Sat, 9 Nov 2024 21:40:26 +0800
+Subject: [PATCH] Fix fenv_t initializer (#308)
+
+--- a/loongarch64/fenv.c
++++ b/loongarch64/fenv.c
+@@ -1,5 +1,5 @@
+ #define	__fenv_static
+-#include <fenv.h>
++#include <openlibm_fenv.h>
+ 
+ #ifdef __GNUC_GNU_INLINE__
+ #error "This file must be compiled with C99 'inline' semantics"
+--- a/riscv64/fenv.c
++++ b/riscv64/fenv.c
+@@ -27,7 +27,7 @@
+  */
+ 
+ #define	__fenv_static
+-#include "fenv.h"
++#include <openlibm_fenv.h>
+ 
+ #ifdef __GNUC_GNU_INLINE__
+ #error "This file must be compiled with C99 'inline' semantics"
