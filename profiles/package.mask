@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-01-05)
+# Removed upstream in gstreamer-1.24. See bug #947522. Removal on 2025-02-05.
+media-plugins/gst-plugins-kate
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-01-05)
 # Masked for testing
 >=dev-build/rocm-cmake-6.3.0
