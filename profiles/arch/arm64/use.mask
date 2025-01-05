@@ -80,10 +80,6 @@ cpu_flags_arm_neon
 -cpu_flags_arm_vfpv4
 -cpu_flags_arm_vfp-d32
 
-# Michał Górny <mgorny@gentoo.org> (2018-07-09)
-# No OpenCL provider is available on arm64.
-opencl
-
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet
 smi
