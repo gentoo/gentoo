@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="hppa"
@@ -9,6 +9,12 @@ CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 
 FEATURES="sandbox sfperms strict"
+
+# Sam James <sam@gentoo.org> (2025-01-05)
+# Temporary USE until the global default catches up. dev-lang/ada-bootstrap
+# starts with sys-devel/gcc:14 so ADA_TARGET needs to be >= that. This
+# entry can be dropped once the global one is >= gcc_14.
+ADA_TARGET="gcc_14"
 
 # Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
