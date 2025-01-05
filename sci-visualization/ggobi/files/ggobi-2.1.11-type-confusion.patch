@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/875044
+diff '--color=auto' -ru a/src/jitter_ui.c b/src/jitter_ui.c
+--- a/src/jitter_ui.c	2024-06-28 08:17:02.434353432 -0000
++++ b/src/jitter_ui.c	2024-06-28 08:22:20.159791487 -0000
+@@ -125,7 +125,7 @@
+       gg->jitter_ui.window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+ 
+ 
+-      gtk_window_set_transient_for(GTK_WINDOW(gg->jitter_ui.window), gg->main_window);
++      gtk_window_set_transient_for(GTK_WINDOW(gg->jitter_ui.window), GTK_WINDOW(gg->main_window));
+       gtk_window_set_destroy_with_parent(GTK_WINDOW(gg->jitter_ui.window), true);
+ 
+ 
+diff '--color=auto' -ru a/src/splot.c b/src/splot.c
+--- a/src/splot.c	2024-06-28 08:17:02.446353373 -0000
++++ b/src/splot.c	2024-06-28 08:19:08.357734390 -0000
+@@ -932,7 +932,7 @@
+     if (sp->cursor != NULL)
+       gdk_cursor_destroy (sp->cursor);
+     sp->jcursor = (gint) NULL;
+-    sp->cursor = (gint) NULL;
++    sp->cursor = NULL;
+     gdk_window_set_cursor (window, NULL);
+   } else {
+     sp->jcursor = (gint) jcursor;
+diff '--color=auto' -ru a/src/varcircles.c b/src/varcircles.c
+--- a/src/varcircles.c	2024-06-28 08:17:02.435353427 -0000
++++ b/src/varcircles.c	2024-06-28 08:23:50.871345547 -0000
+@@ -368,7 +368,7 @@
+   GtkWidget *vb, *da;
+ 
+   d->vcirc_ui.jcursor = (gint) NULL;  /*-- start with the default cursor --*/
+-  d->vcirc_ui.cursor = (gint) NULL;
++  d->vcirc_ui.cursor = NULL;
+ 
+   /*-- don't pack this in the hpane yet --*/
+   d->vcirc_ui.ebox = gtk_event_box_new ();
