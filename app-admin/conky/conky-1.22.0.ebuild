@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python3_{10,11,12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake linux-info lua-single python-any-r1 readme.gentoo-r1 xdg
 
