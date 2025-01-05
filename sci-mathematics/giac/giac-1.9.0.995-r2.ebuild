@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0.67-system-gl2ps.patch"
 	"${FILESDIR}/${P}-glibcxx-assertions.patch"
 	"${FILESDIR}/${P}-fix-undefined-behavior.patch"
+	"${FILESDIR}/${P}-dont-call-g++.patch"
 )
 
 REQUIRED_USE="test? ( gui )"

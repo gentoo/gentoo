@@ -1,0 +1,29 @@
+From 7328ad0895add9acb91f28312c80770530c8be52 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 5 Jan 2025 08:13:35 -0500
+Subject: [PATCH] src/Makefile.am: delete mkjs rule
+
+There's a custom rule to build mkjs from mkjs.cc, and it hard-codes
+the compiler name (g++). But since building an executable from C++
+source is built-in to Make, we can just delete the rule to fix it.
+---
+ src/Makefile.am | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7524632..a6c4767 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -70,9 +70,6 @@ js.c: mkjs qjscalcjs.js xcasjs.js
+ js.h: mkjs qjscalcjs.js xcasjs.js
+ 	./mkjs
+ 
+-mkjs: mkjs.cc
+-	g++ mkjs.cc -o mkjs
+-
+ AM_CPPFLAGS = -DIN_GIAC -I$(srcdir) -I$(top_srcdir) -I$(builddir) \
+ 	      -I$(top_builddir) $(GMP_CFLAGS) $(NTL_CFLAGS) \
+ 	      $(COCOA_CFLAGS) $(PARI_CFLAGS)
+-- 
+2.45.2
+
