@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${ADA_REQUIRED_USE}"
+REQUIRED_USE="${ADA_REQUIRED_USE}
+	test? ( static-libs )"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]"
