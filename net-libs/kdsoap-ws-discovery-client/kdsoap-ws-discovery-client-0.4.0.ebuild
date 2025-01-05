@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-qt/qtbase:6[network]
-	>=net-libs/kdsoap-2.2.0[qt6]
+	>=net-libs/kdsoap-2.2.0[qt6(+)]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qtbase:6[xml] )
