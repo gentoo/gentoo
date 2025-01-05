@@ -7,7 +7,6 @@ inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-f
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="21.0.0_p35" # big-endian bootstrap tarball
-X86_XPAK="21.0.0_p35"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
@@ -41,7 +40,6 @@ SRC_URI="
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
-		$(bootstrap_uri x86 ${X86_XPAK})
 	)
 "
 # S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
@@ -57,7 +55,7 @@ IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap se
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
 	!system-bootstrap? ( jbootstrap )
-	!system-bootstrap? ( || ( ppc64 x86 ) )
+	!system-bootstrap? ( ppc64 )
 "
 
 COMMON_DEPEND="
@@ -177,9 +175,6 @@ src_configure() {
 		JDK_HOME=${BROOT}/opt/${JDK_HOME%-r*}
 		export JDK_HOME
 	fi
-
-	# Work around stack alignment issue, bug #647954. in case we ever have x86
-	use x86 && append-flags -mincoming-stack-boundary=2
 
 	# bug 906987; append-cppflags doesnt work
 	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
