@@ -5,8 +5,7 @@
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-04)
 # No suitable versions of dev-libs/protobuf available.
-# Bug #947534.
->=dev-java/protobuf-java-4.29.1 system-protoc
+=dev-java/protobuf-java-4.29.1 system-protoc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
 # Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
