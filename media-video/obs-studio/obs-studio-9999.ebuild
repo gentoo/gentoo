@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,7 +69,7 @@ DEPEND="
 	media-libs/x264:=
 	>=media-video/ffmpeg-6.1:=[nvenc?,opus,x264]
 	net-misc/curl
-	net-libs/mbedtls:=
+	net-libs/mbedtls:0=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-apps/util-linux
