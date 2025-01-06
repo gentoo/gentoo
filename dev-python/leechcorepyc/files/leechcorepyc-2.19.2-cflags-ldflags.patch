@@ -1,0 +1,19 @@
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Bug: https://bugs.gentoo.org/927935
+Bug: https://bugs.gentoo.org/934210
+
+Remove debugging warning treatment CFLAGS which should only be set by
+make.conf. Move linker flags from CFLAGS to LDFLAGS.
+
+--- a/leechcore_device_qemu/Makefile
++++ b/leechcore_device_qemu/Makefile
+@@ -1,7 +1,7 @@
+ CC=gcc
+ # -Wno-unused-variable -> unused variable in leechcore.h
+-CFLAGS  += -I. -I../includes -D LINUX -shared -fPIC -lrt -l:leechcore.so -L. -lm -fvisibility=hidden -g -Wall -Werror -Wextra -Wno-unused-variable
+-LDFLAGS += -Wl,-rpath,'$$ORIGIN' -g -ldl -shared
++CFLAGS  += -I. -I../includes -D LINUX -shared -fPIC -fvisibility=hidden
++LDFLAGS += -Wl,-rpath,'$$ORIGIN' -lrt -lm -ldl -shared -L. -lleechcore.so
+ OBJ = leechcore_device_qemu.o
+ 
+ %.o: %.c $(DEPS)
