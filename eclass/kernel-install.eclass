@@ -607,6 +607,15 @@ kernel-install_pkg_preinst() {
 	[[ ! -d ${kernel_dir} ]] &&
 		die "Kernel directory ${kernel_dir} not installed!"
 
+	# We moved this in order to omit it from the binpkg, move it back
+	if [[ -r "${T}/signing_key.pem" ]]; then
+		# cp instead of mv to set owner to root in one go
+		(
+			umask 066 &&
+				cp "${T}/signing_key.pem" "${kernel_dir}/certs/signing_key.pem"
+		) || die
+	fi
+
 	# perform the version check for release ebuilds only
 	if [[ ${PV} != *9999 ]]; then
 		local expected_ver=$(dist-kernel_PV_to_KV "${PV}")
