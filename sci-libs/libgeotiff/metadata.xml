@@ -6,6 +6,8 @@
     <name>Gentoo Geosciences Project</name>
   </maintainer>
   <upstream>
+    <bugs-to>https://github.com/OSGeo/libgeotiff/issues</bugs-to>
+    <changelog>https://github.com/OSGeo/libgeotiff/blob/master/libgeotiff/NEWS</changelog>
     <remote-id type="github">OSGeo/libgeotiff</remote-id>
   </upstream>
 </pkgmetadata>
