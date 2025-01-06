@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ S="${WORKDIR}/${MY_P}/sources/pyside6"
 # x11extras (for X)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="6/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 IUSE="
 	3d bluetooth charts +concurrent +dbus designer gles2-only +gui help
 	httpserver location multimedia +network network-auth nfc positioning +opengl
