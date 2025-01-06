@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,12 +27,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-perl/Capture-Tiny
 	dev-perl/DateTime
-	|| (
-		dev-perl/JSON-XS
-		dev-perl/Cpanel-JSON-XS
-		virtual/perl-JSON-PP
-		dev-perl/JSON
-	)
+	dev-perl/JSON
 	dev-perl/PerlIO-gzip
 "
 BDEPEND="
