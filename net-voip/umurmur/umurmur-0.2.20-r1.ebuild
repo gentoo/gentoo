@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 fi
+S="${WORKDIR}/${P/_}"
 LICENSE="BSD"
 SLOT="0"
 IUSE="gnutls mbedtls shm"
@@ -26,7 +27,7 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=
 		>=net-libs/gnutls-3.0.0:=
 	)
 	!gnutls? (
-		mbedtls? ( net-libs/mbedtls:= )
+		mbedtls? ( net-libs/mbedtls:0= )
 		!mbedtls? ( dev-libs/openssl:0= )
 	)
 "
@@ -44,8 +45,6 @@ DOC_CONTENTS="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.20-openssl3.patch" #806154
 )
-
-S="${WORKDIR}/${P/_}"
 
 get_ssl_impl() {
 	local ssl_provider=()
