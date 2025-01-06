@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ada/e3-core[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-ada/e3-core[${PYTHON_USEDEP}]
+	test? ( dev-python/coverage[${PYTHON_USEDEP}] )
+"
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
