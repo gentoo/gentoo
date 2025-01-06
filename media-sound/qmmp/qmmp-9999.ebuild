@@ -32,12 +32,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtsql:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtbase:6[X,dbus,gui,network,sqlite,widgets]
 	media-libs/taglib:=
 	x11-libs/libX11
 	aac? ( media-libs/faad2 )
@@ -49,7 +44,7 @@ RDEPEND="
 		dev-libs/libcdio-paranoia
 	)
 	curl? ( net-misc/curl )
-	dbus? ( dev-qt/qtdbus:5 )
+	dbus? ( dev-qt/qtbase:6[dbus] )
 	enca? ( app-i18n/enca )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac:= )
@@ -71,12 +66,11 @@ RDEPEND="
 	opus? ( media-libs/opusfile )
 	pipewire? ( media-video/pipewire )
 	projectm? (
-		dev-qt/qtgui:5[-gles2-only]
-		dev-qt/qtopengl:5
+		dev-qt/qtbase:6[-gles2-only,opengl]
 		media-libs/libprojectm:=
 	)
 	pulseaudio? ( media-libs/libpulse )
-	qtmedia? ( dev-qt/qtmultimedia:5 )
+	qtmedia? ( dev-qt/qtmultimedia:6 )
 	scrobbler? ( net-misc/curl )
 	shout? ( media-libs/libshout )
 	sid? ( >=media-libs/libsidplayfp-1.1.0 )
@@ -90,13 +84,9 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( AUTHORS ChangeLog README )
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-udisks_plugin.patch"
-)
 
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia ; then
