@@ -333,7 +333,7 @@ linux-mod-r1_pkg_setup() {
 	_MODULES_GLOBAL[ran:pkg_setup]=1
 	_modules_check_function ${#} 0 0 || return 0
 
-	if [[ -z ${ROOT} && ${MODULES_INITRAMFS_IUSE} ]] &&
+	if [[ ${MODULES_INITRAMFS_IUSE} ]] &&
 		use dist-kernel && use ${MODULES_INITRAMFS_IUSE#+}
 	then
 		# Check, but don't die because we can fix the problem and then
