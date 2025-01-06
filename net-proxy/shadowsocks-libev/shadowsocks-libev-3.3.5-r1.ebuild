@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="debug doc"
 
-RDEPEND="net-libs/mbedtls:=
+RDEPEND="net-libs/mbedtls:0=
 	>=net-libs/libbloom-1.6
 	net-libs/libcork
 	net-libs/libcorkipset
