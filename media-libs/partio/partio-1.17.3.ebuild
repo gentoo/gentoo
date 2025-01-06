@@ -19,7 +19,9 @@ HOMEPAGE="https://partio.us/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -29,7 +31,11 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opengl
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+	)
+"
 
 BDEPEND="
 	dev-lang/swig
@@ -57,4 +63,12 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	CMAKE_SKIP_TESTS=(
+		# fail on import partjson, partio
+		testpartjson
+		testpartio
+	)
 }
