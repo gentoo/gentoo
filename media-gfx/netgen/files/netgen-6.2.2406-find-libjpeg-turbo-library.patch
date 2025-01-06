@@ -12,8 +12,8 @@ diff --git a/nglib/CMakeLists.txt b/nglib/CMakeLists.txt
 index b1036ea..78340b6 100644
 --- a/nglib/CMakeLists.txt
 +++ b/nglib/CMakeLists.txt
-@@ -11,6 +11,11 @@ if(EMSCRIPTEN)
-   target_include_directories(nglib PUBLIC $<TARGET_PROPERTY:ngcore,INTERFACE_INCLUDE_DIRECTORIES>)
+@@ -13,6 +13,11 @@ if(EMSCRIPTEN)
+   target_link_libraries(nglib PRIVATE ${ZLIB_LIBRARIES} $<BUILD_INTERFACE:$<TARGET_PROPERTY:occ_libs,INTERFACE_LINK_LIBRARIES>>)
  else(EMSCRIPTEN)
    target_link_libraries(nglib PUBLIC ngcore)
 +  if(TARGET JPEG::JPEG)
@@ -21,7 +21,7 @@ index b1036ea..78340b6 100644
 +  else()
 +    set(JPEG_LIBRARIES ${JPEG_LIBRARY_RELEASE})
 +  endif()
-   target_link_libraries( nglib PRIVATE ${MPI_CXX_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${JPEG_LIBRARIES} ${MKL_LIBRARIES} ${ZLIB_LIBRARIES} occ_libs netgen_cgns )
+   target_link_libraries( nglib PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${JPEG_LIBRARIES} ${MKL_LIBRARIES} ${ZLIB_LIBRARIES} occ_libs netgen_cgns )
  endif(EMSCRIPTEN)
  
 -- 
