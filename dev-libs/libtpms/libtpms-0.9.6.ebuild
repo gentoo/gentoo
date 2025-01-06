@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools
 
-DESCRIPTION="Library providing software emultion of a TPM"
+DESCRIPTION="Library providing software emulation of a TPM"
 HOMEPAGE="https://github.com/stefanberger/libtpms"
 SRC_URI="https://github.com/stefanberger/libtpms/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"

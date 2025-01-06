@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="Library providing software emultion of a TPM"
+DESCRIPTION="Library providing software emulation of a TPM"
 HOMEPAGE="https://github.com/stefanberger/libtpms"
 SRC_URI="https://github.com/stefanberger/libtpms/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
