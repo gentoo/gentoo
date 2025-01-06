@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,8 @@ inherit autotools systemd toolchain-funcs
 DESCRIPTION="A web proxy with advanced filtering capabilities for enhancing privacy"
 HOMEPAGE="https://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
 SRC_URI="https://downloads.sourceforge.net/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
+
+S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -28,7 +30,7 @@ DEPEND="
 	dev-libs/libpcre
 	brotli? ( app-arch/brotli )
 	ssl? (
-		mbedtls? ( net-libs/mbedtls:= )
+		mbedtls? ( net-libs/mbedtls:0= )
 		openssl? ( dev-libs/openssl:= )
 	)
 	zlib? ( sys-libs/zlib:= )
@@ -50,8 +52,6 @@ REQUIRED_USE="
 	ssl? ( ^^ ( mbedtls openssl ) threads )
 	toggle? ( editor )
 "
-
-S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.32-gentoo.patch
