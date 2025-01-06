@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cheyenne Wills <cwills@witznd.net> (2025-01-05)
+# Not ported to musl, bug #832428
+# openafs hasn't been tested with musl
+# would require a patch to get past the configure step
+net-fs/openafs
+
 # Sam James <sam@gentoo.org> (2024-11-19)
 # Not ported to musl (bug #717252, bug #938613)
 sys-apps/dog
