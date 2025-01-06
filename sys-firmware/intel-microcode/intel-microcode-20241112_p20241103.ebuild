@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,7 +95,7 @@ pkg_pretend() {
 		if use dist-kernel; then
 			# Check, but don't die because we can fix the problem and then
 			# emerge --config ... to re-run installation.
-			[[ -z ${ROOT} ]] && nonfatal mount-boot_check_status
+			nonfatal mount-boot_check_status
 		else
 			mount-boot_pkg_pretend
 		fi
@@ -311,7 +311,7 @@ pkg_postrm() {
 pkg_postinst() {
 	if use initramfs; then
 		if use dist-kernel; then
-			[[ -z ${ROOT} ]] && dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 		else
 			# Don't forget to umount /boot if it was previously mounted by us.
 			mount-boot_pkg_postinst
