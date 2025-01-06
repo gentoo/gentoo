@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-06)
+# necessary dep is keyworded and passes tests
+dev-db/mariadb -galera
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-06)
 # 2 test cases abort with "LLVM ERROR: Relocation type not implemented yet!"
 sci-libs/symengine llvm
 
