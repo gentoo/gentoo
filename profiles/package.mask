@@ -294,10 +294,6 @@ dev-php/swoole
 # Does not build with any rust version in the tree. Removal in 30 days.
 =dev-lang/starlark-rust-0.8.0
 
-# Matt Jolly <kangie@gentoo.org> (2024-11-09)
-# Does not build with any rust version in the tree. Removal in 30 days.
-=dev-util/wasmer-0.11.0
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
