@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!mbedtls? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
+	mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
