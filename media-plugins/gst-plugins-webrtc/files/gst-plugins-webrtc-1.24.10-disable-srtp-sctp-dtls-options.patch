@@ -27,9 +27,8 @@ https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/fd4828bafe613eec33e8
  ]
  
 -sctp_option = get_option('sctp').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
--if sctp_option.disabled()
 +sctp_option = get_option('sctp')
-+if srtp_option.disabled()
+ if sctp_option.disabled()
    subdir_done()
  endif
  
@@ -40,9 +39,8 @@ https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/fd4828bafe613eec33e8
  
  srtp_cargs = []
 -srtp_option = get_option('srtp').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
--if srtp_option.disabled()
 +srtp_option = get_option('srtp')
-+if get_option('srtp').disabled()
+ if srtp_option.disabled()
    srtp_dep = dependency('', required : false)
    subdir_done()
  endif
