@@ -85,13 +85,17 @@ src_configure() {
 }
 
 src_compile() {
-	emake build-nogui
+	emake -Onone build-nogui
 
 	if use gui; then
 		BUILD_DIR="${WORKDIR}"/gui_build \
 			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \
 			cmake_src_compile
 	fi
+}
+
+src_test() {
+	emake -Onone test
 }
 
 src_install() {
