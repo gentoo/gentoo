@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-01-06)
+# ruby32-only package. Depends on assumptions that are no longer true in
+# ruby33. No reverse dependencies left. Last release in 2007. Upstream
+# gone. Removal on 2025-02-06.
+dev-ruby/dust
+
 # Sam James <sam@gentoo.org> (2025-01-05)
 # Removed upstream in gstreamer-1.24. See bug #947522. Removal on 2025-02-05.
 media-plugins/gst-plugins-kate
