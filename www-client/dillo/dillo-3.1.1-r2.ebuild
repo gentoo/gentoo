@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.2:= )
 	ssl? (
-		mbedtls? ( net-libs/mbedtls:= )
+		mbedtls? ( net-libs/mbedtls:0= )
 		openssl? ( dev-libs/openssl:= )
 	)
 	test? (
