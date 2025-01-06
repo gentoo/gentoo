@@ -27,13 +27,19 @@ RDEPEND="
 	dev-lang/perl
 	dev-perl/Capture-Tiny
 	dev-perl/DateTime
-	dev-perl/JSON
+	|| (
+		dev-perl/JSON-XS
+		dev-perl/Cpanel-JSON-XS
+		virtual/perl-JSON-PP
+		dev-perl/JSON
+	)
 	dev-perl/PerlIO-gzip
 "
 BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-perl/GD
+		dev-perl/JSON
 		$(python_gen_any_dep '
 			dev-python/xlsxwriter[${PYTHON_USEDEP}]
 		')
