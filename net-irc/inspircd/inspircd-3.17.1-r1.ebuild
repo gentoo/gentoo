@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="
 	gnutls? ( net-libs/gnutls:= dev-libs/libgcrypt:0 )
 	ldap? ( net-nds/openldap:= )
 	maxminddb? ( dev-libs/libmaxminddb:= )
-	mbedtls? ( net-libs/mbedtls:= )
+	mbedtls? ( net-libs/mbedtls:0= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	pcre? ( dev-libs/libpcre )
 	pcre2? ( dev-libs/libpcre2 )
