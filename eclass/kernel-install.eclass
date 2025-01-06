@@ -738,9 +738,9 @@ kernel-install_pkg_postinst() {
 kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ! ${KERNEL_IUSE_GENERIC_UKI} ]]; then
-		local kernel_dir=${EROOT}/usr/src/linux-${KV_FULL}
-		local image_path=$(dist-kernel_get_image_path)
+	local kernel_dir=${EROOT}/usr/src/linux-${KV_FULL}
+	local image_path=$(dist-kernel_get_image_path)
+	if [[ ! ${KERNEL_IUSE_GENERIC_UKI} && -d ${kernel_dir} ]]; then
 		ebegin "Removing initramfs"
 		rm -f "${kernel_dir}/${image_path%/*}"/{initrd,uki.efi} &&
 			find "${kernel_dir}" -depth -type d -empty -delete
