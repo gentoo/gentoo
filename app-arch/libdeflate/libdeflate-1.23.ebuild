@@ -1,9 +1,9 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="Heavily optimized DEFLATE/zlib/gzip (de)compression"
 HOMEPAGE="https://github.com/ebiggers/libdeflate"
@@ -35,6 +35,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# Workaround for bug #946876 (gcc PR118206)
+	tc-is-gcc && [[ $(gcc-major-version) -eq 15 ]] && append-flags -fdisable-tree-ifcombine
+
 	local mycmakeargs=(
 		-DLIBDEFLATE_BUILD_SHARED_LIB="yes"
 		-DLIBDEFLATE_BUILD_STATIC_LIB="no"
