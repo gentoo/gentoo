@@ -137,6 +137,9 @@ fi
 kernel-build_pkg_setup() {
 	python-any-r1_pkg_setup
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} && ${MERGE_TYPE} != binary ]]; then
+		# inherits linux-info to check config values for keys
+		# ensure KV_FULL will not be set globally, that breaks configure
+		local KV_FULL
 		secureboot_pkg_setup
 
 		if use modules-sign && [[ -n ${MODULES_SIGN_KEY} ]]; then
