@@ -37,10 +37,6 @@ virtual/notification-daemon kde
 # dnstap USE masked due to missing keywords
 net-dns/bind dnstap
 
-# Sam James <sam@gentoo.org> (2024-08-23)
-# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
-sys-apps/systemd bpf
-
 # WANG Xuerui <xen0n@gentoo.org> (2024-08-22)
 # dev-lang/spidermonkey gained JIT support for loong since version 107,
 # but the nearest packaged version is 115.
