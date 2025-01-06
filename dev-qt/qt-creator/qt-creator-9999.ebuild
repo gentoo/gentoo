@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( {15..19} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake edo flag-o-matic go-env llvm-r1 multiprocessing
+inherit cmake edo flag-o-matic go-env llvm-r2 multiprocessing
 inherit python-any-r1 readme.gentoo-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -104,11 +104,6 @@ PATCHES=(
 
 QA_FLAGS_IGNORED="usr/libexec/qtcreator/cmdbridge-.*" # written in Go
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-	use clang && llvm-r1_pkg_setup
-}
-
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
@@ -141,6 +136,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use clang && llvm_chost_setup
+
 	if use cmdbridge-server; then
 		go-env_set_compile_environment
 		local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false -buildmode=pie"
