@@ -1,0 +1,12 @@
+diff -ru a/src/yersinia.c b/src/yersinia.c
+--- a/src/yersinia.c	2025-01-06 20:10:12.501482780 +0400
++++ b/src/yersinia.c	2025-01-06 20:11:08.635172681 +0400
+@@ -927,7 +927,7 @@
+  * POSIX functions for signals 
+  */
+ int 
+-posix_signal( int signo, void (*handler)() )
++posix_signal( int signo, void (*handler)(int) )
+ {
+     struct sigaction act;
+ 
