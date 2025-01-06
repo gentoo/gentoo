@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -131,7 +131,10 @@ DEPEND="${RDEPEND}
 	zeromq? ( net-libs/cppzmq )
 "
 
-PATCHES=( "${FILESDIR}/PR7093.patch" )
+PATCHES=(
+	"${FILESDIR}/PR7093.patch"
+	"${FILESDIR}"/${PN}-3.10.9.2-libfmt-11.patch
+)
 
 src_prepare() {
 	xdg_environment_reset #534582
