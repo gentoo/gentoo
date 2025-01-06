@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	"${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
 )
+
+# In 2.5.3/2.5.4, the only difference is something harmless in Makefile.in (bug #940302)
+QA_AM_MAINTAINER_MODE=".*libltdl.*autoconf"
 
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
