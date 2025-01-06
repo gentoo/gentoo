@@ -447,6 +447,11 @@ kernel-build_src_install() {
 
 	# Copy built key/certificate files
 	cp -p build/certs/* "${ED}${kernel_dir}/certs/" || die
+	# If a key was generated, exclude it from the binpkg
+	local generated_key=${ED}${kernel_dir}/certs/signing_key.pem
+	if [[ -r ${generated_key} ]]; then
+		mv "${generated_key}" "${T}/signing_key.pem" || die
+	fi
 
 	# building modules fails with 'vmlinux has no symtab?' if stripped
 	use ppc64 && dostrip -x "${kernel_dir}/${image_path}"
@@ -654,7 +659,6 @@ kernel-build_pkg_postinst() {
 			ewarn "MODULES_SIGN_KEY was not set, this means the kernel build system"
 			ewarn "automatically generated the signing key. This key was installed"
 			ewarn "in ${EROOT}/usr/src/linux-${KV_FULL}/certs"
-			ewarn "and will also be included in any binary packages."
 			ewarn "Please take appropriate action to protect the key!"
 			ewarn
 			ewarn "Recompiling this package causes a new key to be generated. As"
