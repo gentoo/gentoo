@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
+	<longdescription>
 	EiskaltDC++ is a cross-platform program that uses the Direct Connect and
 	Advanced Direct Connect protocols. It is compatible with DC++, AirDC++,
 	FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all
@@ -16,6 +16,9 @@
 		<flag name="minimal">Don't install headers</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/eiskaltdcpp/eiskaltdcpp/issues</bugs-to>
+		<changelog>https://github.com/eiskaltdcpp/eiskaltdcpp/blob/master/ChangeLog.txt</changelog>
+		<doc>https://github.com/eiskaltdcpp/eiskaltdcpp/wiki</doc>
 		<remote-id type="github">eiskaltdcpp/eiskaltdcpp</remote-id>
 	</upstream>
 </pkgmetadata>
