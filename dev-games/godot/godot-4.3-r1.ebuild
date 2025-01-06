@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,7 @@ RESTRICT="test"
 # builds it #undef MBEDTLS_SSL_PROTO_TLS1_3 + a patch or else will get
 # "ERROR: TLS handshake error: -27648" with system's on startup
 # https://github.com/godotengine/godot/commit/40fa684c181d
+# (detect.py also needs to use mbedtls3.pc to find slotted mbedtls:3)
 # dlopen: libglvnd
 RDEPEND="
 	app-arch/brotli:=
@@ -49,7 +50,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libpng:=
 	media-libs/libvorbis
-	<net-libs/mbedtls-3:=
+	net-libs/mbedtls:0=
 	net-libs/wslay
 	sys-libs/zlib:=
 	alsa? ( media-libs/alsa-lib )
