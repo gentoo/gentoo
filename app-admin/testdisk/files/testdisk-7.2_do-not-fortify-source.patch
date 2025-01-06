@@ -1,0 +1,25 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+Bug: https://bugs.gentoo.org/892902
+---
+ configure.ac | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0e4e8851..476228cd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -900,10 +900,6 @@ done
+ unset option
+ AC_LANG_POP([C++])
+ 
+-#if defined __GNUC__ && !defined _FORTIFY_SOURCE
+-AC_DEFINE([_FORTIFY_SOURCE], 2, [enable compile-time and run-time bounds-checking, and some warnings])
+-#endif
+-
+ case "$target" in
+   *hpux*)
+ 	;;
+-- 
+2.45.2
+
