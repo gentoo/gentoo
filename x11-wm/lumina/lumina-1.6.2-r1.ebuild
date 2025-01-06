@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ inherit plocale qmake-utils xdg
 DESCRIPTION="Lumina desktop environment"
 HOMEPAGE="https://lumina-desktop.org/"
 SRC_URI="https://github.com/trueos/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -48,8 +49,6 @@ RDEPEND="${DEPEND}
 
 BDEPEND="
 	dev-qt/linguist-tools:5"
-
-S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}/1.6.1-desktop-files.patch"
