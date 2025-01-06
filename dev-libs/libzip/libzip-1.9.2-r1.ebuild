@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="
 			>=net-libs/gnutls-3.6.5:=
 		)
 		!gnutls? (
-			mbedtls? ( net-libs/mbedtls:= )
+			mbedtls? ( net-libs/mbedtls:0= )
 			!mbedtls? ( dev-libs/openssl:0= )
 		)
 	)
