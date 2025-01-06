@@ -1,0 +1,36 @@
+From 4001b11f20ccfc291a355c52a090fa16e2f5a5f1 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 6 Jan 2025 16:13:09 +0100
+Subject: [PATCH] system gtest
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cmake/flann_utils.cmake b/cmake/flann_utils.cmake
+index e02a6ff..544f87a 100644
+--- a/cmake/flann_utils.cmake
++++ b/cmake/flann_utils.cmake
+@@ -41,6 +41,13 @@ macro(find_hdf5)
+ endmacro(find_hdf5)
+ 
+ 
++if(BUILD_TESTS)
++enable_testing()
++find_package(GTest)
++if(GTest_FOUND)
++    set(googletest_LIBRARIES GTest::gtest)
++    add_library(googletest ALIAS GTest::gtest)
++else()
+ # Enable ExternalProject CMake module
+ include(ExternalProject)
+ 
+@@ -69,6 +76,8 @@ set(googletest_INCLUDE_DIRS ${source_dir}/googletest/include)
+ ExternalProject_Get_Property(googletest binary_dir)
+ set(googletest_LIBRARIES ${binary_dir}/lib/libgtest.a)
+ include_directories(${googletest_INCLUDE_DIRS})
++endif()
++endif()
+ 
+ 
+ macro(flann_add_gtest exe src)
+-- 
+2.47.1
