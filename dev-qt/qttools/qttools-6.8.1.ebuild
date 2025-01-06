@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ LLVM_OPTIONAL=1
 # and 3rdparty/ tries to FetchContent gtest)
 QT6_RESTRICT_TESTS=1
 
-inherit desktop llvm-r1 optfeature qt6-build
+inherit desktop llvm-r2 optfeature qt6-build
 
 DESCRIPTION="Qt Tools Collection"
 
@@ -62,11 +62,9 @@ DEPEND="
 	)
 "
 
-pkg_setup() {
-	use clang && llvm-r1_pkg_setup
-}
-
 src_configure() {
+	use clang && llvm_chost_setup
+
 	local mycmakeargs=(
 		# prevent the clang test as it can abort due to bug #916098
 		$(cmake_use_find_package clang WrapLibClang)
