@@ -26,7 +26,7 @@ DEPEND="
 			>=net-libs/gnutls-3.6.5:=
 		)
 		!gnutls? (
-			mbedtls? ( net-libs/mbedtls:= )
+			mbedtls? ( net-libs/mbedtls:0= )
 			!mbedtls? ( dev-libs/openssl:= )
 		)
 	)
