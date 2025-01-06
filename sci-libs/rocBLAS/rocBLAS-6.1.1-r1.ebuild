@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,7 @@ src_prepare() {
 	sed -e "s:,-rpath=.*\":\":" -i clients/CMakeLists.txt || die
 
 	# bug 944820: f16c instuctions cause SIGILL on pre-AVX512 CPUs
-	sed -i -e "s/-mf16c /" clients/benchmarks/CMakeLists.txt \
+	sed -i -e "s/-mf16c //" clients/benchmarks/CMakeLists.txt \
 		clients/gtest/CMakeLists.txt clients/samples/CMakeLists.txt library/CMakeLists.txt || die
 }
 
