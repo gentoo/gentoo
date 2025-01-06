@@ -196,16 +196,6 @@ kde-frameworks/kemoticons
 =sys-kernel/vanilla-kernel-6.12.2
 =virtual/dist-kernel-6.12.2
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-04)
-# Bugs #845294 #757543 #517744 #704198 #366739 #350302 #614318 #637422
-# #738898 #501586.
-# Blocks removal of dev-java/swt-3.7.2-r4, bug #944885.
-# Users should switch to dev-util/android-sdk-cmdline-tools for a CLI replacement
-# or dev-util/android-studio for a GUI replacement.
-# Removal on 2025-01-04
-dev-util/android-sdk-update-manager
-dev-java/swt:3.7
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-11-28)
 # Grave data loss bug. See also:
 # https://github.com/nicotine-plus/nicotine-plus/issues/3152
