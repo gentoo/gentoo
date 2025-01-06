@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ DOCS=( AUTHORS ChangeLog FAQ README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1-no-ncurses.patch
 	"${FILESDIR}"/${PN}-0.7.3-tinfo.patch
+	"${FILESDIR}"/${PN}-0.8.2-C23.patch
 )
 
 src_prepare() {
