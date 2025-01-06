@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ RDEPEND=">=media-libs/opencv-4.1.2-r3:=[contrib,contribdnn,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/gst-plugins-bad-1.22.3-use-system-libs-opencv.patch
+	"${FILESDIR}"/gst-plugins-bad-1.24.10-use-system-libs-opencv.patch
 )
 
 multilib_src_configure() {
