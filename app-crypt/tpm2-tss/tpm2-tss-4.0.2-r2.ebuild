@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 		dev-libs/json-c:=[${MULTILIB_USEDEP}]
 		>=net-misc/curl-7.80.0[${MULTILIB_USEDEP}]
 	)
-	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
+	mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
 	openssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
 "
 
@@ -49,6 +49,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.2-Dont-install-files-into-run.patch"
+	"${FILESDIR}/${PN}-4.0.1-Make-sysusers-and-tmpfiles-optional.patch"
+	"${FILESDIR}/${PN}-4.0.1-Do-not-consider-failures-to-write-files-in-sys-hard.patch"
+	"${FILESDIR}/${PN}-4.0.2-Hide-write-all-function.patch"
 )
 
 pkg_setup() {
@@ -78,9 +81,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable test integration)
 		$(multilib_native_use_enable test self-generated-certificate)
 		--disable-tcti-libtpms
-		--disable-tcti-spi-ltt2go
-		--disable-tcti-spi-ftdi
-		--disable-tcti-i2c-ftdi
 		--disable-defaultflags
 		--disable-weakcrypto
 		--with-crypto="$(usex mbedtls mbed ossl)"
