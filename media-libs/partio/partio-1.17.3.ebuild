@@ -71,4 +71,6 @@ src_test() {
 		testpartjson
 		testpartio
 	)
+
+	cmake_src_test
 }
