@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -29,7 +29,7 @@ ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
 	test? (
 		dev-ruby/ansi
-		dev-ruby/mocha:1.0
+		dev-ruby/mocha:2
 		dev-ruby/pry
 		dev-ruby/rspec:3
 		dev-ruby/shoulda-context
