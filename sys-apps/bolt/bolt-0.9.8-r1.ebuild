@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_1{0..2} )
+PYTHON_COMPAT=( python3_1{0..3} )
 inherit linux-info python-any-r1 meson udev
 
 DESCRIPTION="Userspace system daemon to enable security levels for Thunderbolt 3"
@@ -43,6 +43,8 @@ BDEPEND="
 		)
 	)
 "
+
+PATCHES=( "${FILESDIR}"/${P}-sockaddr.patch )
 
 pkg_setup() {
 	if use kernel_linux && kernel_is lt 5 6; then
