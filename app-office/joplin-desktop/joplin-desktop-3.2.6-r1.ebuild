@@ -83,17 +83,15 @@ src_install() {
 	doins -r ./usr/share/icons
 
 	local apphome="/opt/${PN}"
-	local toremove=(
+	local -a toremove=(
 		.DirIcon
-		@joplinapp-desktop.desktop
-		@joplinapp-desktop.png
 		AppRun
 		LICENSE.electron.txt
 		LICENSES.chromium.html
+		joplin.png
 		resources/app.asar.unpacked/node_modules/7zip-bin-linux/arm
 		resources/app.asar.unpacked/node_modules/7zip-bin-linux/arm64
 		resources/app.asar.unpacked/node_modules/node-notifier
-		resources/build
 		usr
 	)
 	rm -f -r "${toremove[@]}" || die
@@ -101,7 +99,7 @@ src_install() {
 	mkdir -p "${ED}/${apphome}" || die
 	cp -r . "${ED}/${apphome}" || die
 
-	dosym -r "${apphome}/@joplinapp-desktop" "/usr/bin/${PN}"
-	make_desktop_entry "${PN}" Joplin @joplinapp-desktop "Office;" \
+	dosym -r "${apphome}/joplin" "/usr/bin/${PN}"
+	make_desktop_entry "${PN}" Joplin joplin "Office;" \
 		"StartupWMClass=Joplin\nMimeType=x-scheme-handler/joplin;"
 }
