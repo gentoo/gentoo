@@ -15,7 +15,7 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
-IUSE="debugger nsight profiler vis-profiler sanitizer"
+IUSE="debugger nsight profiler sanitizer static-libs vis-profiler"
 RESTRICT="bindist mirror"
 
 # since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
@@ -213,6 +213,11 @@ src_install() {
 		# TODO: unbundle mesa
 		# TODO: unbundle libSshClient
 		# TODO: unbundle sqlite
+	fi
+
+	# remove static libs (unless USE=static-libs)
+	if ! use static-libs; then
+		find "${ED}" -name '*_static*.a' -delete || die
 	fi
 
 	# Add include and lib symlinks
