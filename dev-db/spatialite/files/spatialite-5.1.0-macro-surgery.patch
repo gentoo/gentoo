@@ -1,0 +1,80 @@
+https://bugs.gentoo.org/919177
+https://www.gaia-gis.it/fossil/libspatialite/tktview?name=d5c8f926be
+https://www.gaia-gis.it/fossil/libspatialite/tktview/af38159360a2e740b2339e279103bcdaf951498e
+Macro out things upstream forgot to conditionally exclude, macro in things upstream forgot
+In particular, functions that appear only when GEOM is enabled should not be used
+when GEOM is disabled, and having fallback for ancient version of PROJ is well and good;
+upstream forgot version for modern one in one place.
+--- a/src/gaiageo/gg_advanced.c
++++ b/src/gaiageo/gg_advanced.c
+@@ -2286,6 +2286,7 @@
+ / identifying toxic geometries 
+ / i.e. geoms making GEOS to crash !!!
+ */
++#ifndef OMIT_GEOS  /* don't do anything if there's no GEOS */
+     int ib;
+     gaiaPointPtr point;
+     gaiaLinestringPtr line;
+@@ -2350,6 +2351,7 @@
+ 	    }
+ 	  polyg = polyg->Next;
+       }
++#endif /* OMIT_GEOS */
+     return 0;
+ }
+ 
+@@ -2377,11 +2379,13 @@
+ 	return 0;
+     else
+       {
++#ifndef OMIT_GEOS /*can't report error if GEOS is not build, skipping */
+ 	  if (cache != NULL)
+ 	      gaiaSetGeosAuxErrorMsg_r (cache,
+ 					"gaia detected a not-closed Ring");
+ 	  else
+ 	      gaiaSetGeosAuxErrorMsg ("gaia detected a not-closed Ring");
++#endif
+ 	  return 1;
+       }
+ }
+--- a/src/spatialite/spatialite.c
++++ b/src/spatialite/spatialite.c
+@@ -23472,9 +23472,11 @@
+ 	sqlite3_result_null (context);
+     else
+       {
++#ifndef OMIT_GEOS /* Only if GEOS enabled */
+ 	  if (!gaiaInterpolatePoint (cache, line, point, &m_value))
+ 	      sqlite3_result_null (context);
+ 	  else
++#endif
+ 	      sqlite3_result_double (context, m_value);
+       }
+     if (line != NULL)
+--- a/src/connection_cache/alloc_cache.c
++++ b/connection_cache/alloc_cache.c
+@@ -646,8 +646,12 @@
+ #endif
+ 
+ #else /* supporting old PROJ.4 */
++#ifdef PROJ_NEW /* PROJ.6* */
++    cache->PROJ_handle = proj_context_create ();
++#else
+     cache->PROJ_handle = pj_ctx_alloc ();
+ #endif
++#endif
+ #endif /* end PROJ.4  */
+ 
+ #ifdef ENABLE_RTTOPO		/* initializing the RTTOPO context */
+@@ -706,7 +706,11 @@
+ #endif /* end GEOS  */
+ 
+ #ifndef OMIT_PROJ		/* initializing the PROJ.4 context */
++#ifndef PROJ_NEW		/* Only in case where PROJ.5 not needed */
+     cache->PROJ_handle = pj_ctx_alloc ();
++#else				/* PROJ.6* */
++    cache->PROJ_handle = proj_context_create ();
++#endif
+ #endif /* end PROJ.4  */
+ 
+   done:
