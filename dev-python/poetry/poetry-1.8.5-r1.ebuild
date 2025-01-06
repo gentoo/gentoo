@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
+	<dev-python/poetry-core-2[${PYTHON_USEDEP}]
 	>=dev-python/poetry-core-1.9.1[${PYTHON_USEDEP}]
 	>=dev-python/poetry-plugin-export-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/build-1.0.3[${PYTHON_USEDEP}]
