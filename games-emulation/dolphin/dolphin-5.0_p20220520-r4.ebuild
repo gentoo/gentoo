@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,7 +54,7 @@ RDEPEND="
 	media-libs/libsfml:=
 	media-libs/mesa[egl(+)]
 	net-libs/enet:1.3
-	net-libs/mbedtls:=
+	net-libs/mbedtls:0=
 	net-misc/curl:=
 	sys-libs/readline:=
 	sys-libs/zlib:=[minizip]
