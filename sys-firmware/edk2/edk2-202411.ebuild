@@ -93,6 +93,14 @@ pkg_setup() {
 		UNIT1="QEMU_VARS.qcow2"
 		FMT="qcow2"
 		;;
+	riscv)
+		TARGET_ARCH="RISCV64"
+		QEMU_ARCH="riscv64"
+		ARCH_DIRS="${DIR}/RiscVVirtQemu"
+		UNIT0="RISCV_VIRT_CODE.qcow2"
+		UNIT1="RISCV_VIRT_VARS.qcow2"
+		FMT="qcow2"
+		;;
 	esac
 
 	DOC_CONTENTS="This package includes the TianoCore EDK II UEFI firmware for ${QEMU_ARCH}
@@ -252,6 +260,10 @@ src_compile() {
 		mk_fw_vars arm64 Build/ArmVirtQemu-AARCH64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
 		raw_to_qcow2 64m Build/ArmVirtQemu-AARCH64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		;;
+	riscv)
+		mybuild -a RISCV64 -p OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc
+		raw_to_qcow2 32m Build/RiscVVirtQemu/"${BUILD_DIR}"/FV/RISCV_VIRT_{CODE,VARS}.fd
+		;;
 	esac
 }
 
@@ -281,6 +293,10 @@ src_install() {
 			newins Build/ArmVirtQemu-AARCH64${TYPE}/"${BUILD_DIR}"/FV/QEMU_EFI.qcow2 QEMU_EFI${TYPE}.qcow2
 			newins Build/ArmVirtQemu-AARCH64${TYPE}/"${BUILD_DIR}"/FV/QEMU_VARS.qcow2 QEMU_VARS${TYPE}.qcow2
 		done
+		;;
+	riscv)
+		insinto ${DIR}/RiscVVirtQemu
+		doins Build/RiscVVirtQemu/"${BUILD_DIR}"/FV/RISCV_VIRT_{CODE,VARS}.qcow2
 		;;
 	esac
 
