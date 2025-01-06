@@ -23,7 +23,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	system-act? ( dev-go/act )
 	test? (
 		dev-cpp/gtest
 		dev-libs/openssl
@@ -32,19 +31,16 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.0-0001-Gentoo-specific-avoid-pre-stripping-library.patch
-	"${FILESDIR}"/${P}-0001-use-system-provided-act-binary.patch
-	"${FILESDIR}"/${P}-0002-Gentoo-specific-remove-add_dependencies.patch
-	"${FILESDIR}"/${P}-0001-remove-std-and-opt-flags.patch
-	"${FILESDIR}"/${P}-include-cstdint.patch
+	"${FILESDIR}"/${PN}-2.3.2-remove-std-and-opt-flags.patch
+	"${FILESDIR}"/${PN}-2.2.0-include-cstdint.patch
+	"${FILESDIR}"/${PN}-2.3.2-include-cstdint.patch
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	rm -r Include/Libraries/{libzip,zlib} || die
-	ln -s "${EPREFIX}/usr/include" Include/Libraries/zlib || die
-	ln -s "${EPREFIX}/usr/include" Include/Libraries/libzip || die
+	# DO NOT WANT!
+	rm -r Libraries/libressl || die
 }
 
 src_configure() {
@@ -53,12 +49,11 @@ src_configure() {
 		-DLIB3MF_TESTS=$(usex test)
 		-DUSE_INCLUDED_LIBZIP=OFF
 		-DUSE_INCLUDED_ZLIB=OFF
-		-DUSE_SYSTEM_ACT=$(usex system-act)
+		-DSTRIP_BINARIES=OFF
 	)
 
 	if use test; then
 		mycmakeargs+=(
-			-DUSE_INCLUDED_GTEST=OFF
 			# code says it uses libressl, but works with openssl too
 			-DUSE_INCLUDED_SSL=OFF
 		)
