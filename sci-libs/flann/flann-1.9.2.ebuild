@@ -34,10 +34,6 @@ RDEPEND="${DEPEND}"
 # requires multiple ruby dependencies
 
 PATCHES=(
-	# "${FILESDIR}"/${PN}-1.9.1-cmake-3.11{,-1}.patch # bug 678030
-	# "${FILESDIR}"/${PN}-1.9.1-cuda-9.patch
-	# "${FILESDIR}"/${PN}-1.9.1-system-lz4.patch # bug 681898
-	# "${FILESDIR}"/${PN}-1.9.1-system-lz4-pkgconfig.patch # bug 827263
 	"${FILESDIR}"/${PN}-1.9.1-build-oct-rather-than-mex-files-for-octave.patch # bug 830424
 	"${FILESDIR}"/${PN}-1.9.2-asio-boost187.patch
 	"${FILESDIR}"/${PN}-1.9.2-boost-config.patch
@@ -61,14 +57,11 @@ src_prepare() {
 }
 
 src_configure() {
-	# append-cxxflags -std=c++17
-
 	# python bindings are split off into dev-python/pyflann
 	local mycmakeargs=(
 		-DCMAKE_CXX_STANDARD=17
 		-DBUILD_C_BINDINGS=ON
 		-DBUILD_PYTHON_BINDINGS=OFF
-		-DPYTHON_EXECUTABLE=python3.12
 		-DBUILD_CUDA_LIB="$(usex cuda)"
 		-DBUILD_EXAMPLES="$(usex examples)"
 		-DBUILD_DOC="$(usex doc)"
@@ -81,7 +74,7 @@ src_configure() {
 	# einfo "NVCCFLAGS ${NVCCFLAGS}"
 	use cuda && mycmakeargs+=(
 		# -DCUDA_NVCC_FLAGS="${NVCCFLAGS} --linker-options \"-arsch\""
-		-DCUDA_NVCC_FLAGS="-ccbin /usr/x86_64-pc-linux-gnu/gcc-bin/13/g++"
+		-DCUDA_NVCC_FLAGS="--compiler-bindir;$(cuda_gccdir)"
 	)
 	use doc && mycmakeargs+=( -DDOCDIR="share/doc/${PF}" )
 
@@ -92,7 +85,7 @@ src_install() {
 	cmake_src_install
 	find "${ED}" -name 'lib*.a' -delete || die
 
-	# bug 795828; mpicc volunterely adds some runpaths
+	# bug 795828; mpicc voluntarily adds some runpaths
 	if use mpi; then
 		chrpath -d "${ED}/usr/bin/flann_mpi_"{client,server} || die
 	fi
