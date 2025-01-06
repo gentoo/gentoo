@@ -86,10 +86,9 @@ IUSE+=" +system-libvpx system-png +system-webp valgrind wayland wifi +X"
 IUSE+=" +gmp-autoupdate gnome-shell +jumbo-build openh264 +telemetry wasm-sandbox"
 
 # "wasm-sandbox? ( llvm_slot_19 )" - most likely due to wasi-sdk-25.0 being llvm-19 based, and
-# llvm/clang-19 turning on reference types for wasm targets. While I hate this REQUIRED_USE
-# constraint, it's either this or removing llvm-17/18 compat, or having upstream to patch
-# clang-17/18 (not going to happen ever). Luckily clang-19 is already stable in Gentoo so it should
-# be widely adopted already.
+# llvm/clang-19 turning on reference types for wasm targets. Luckily clang-19 is already stable in
+# Gentoo so it should be widely adopted already - however, it might be possible to workaround
+# the constraint simply by modifying CFLAGS when using clang-17/18. Will need to investigate (bmo#1905251)
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
 	pgo? ( jumbo-build )
