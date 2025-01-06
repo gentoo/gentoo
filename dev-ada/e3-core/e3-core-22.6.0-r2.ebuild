@@ -47,7 +47,17 @@ python_compile() {
 }
 
 src_compile() {
-	local PLATFORM=x86_64-linux
+	local PLATFORM
+	if use amd64; then
+		PLATFORM=x86_64
+	elif use x86; then
+		PLATFORM=x86
+	elif use arm64; then
+		PLATFORM=aarch64
+	else
+		die "Not a recognized platform"
+	fi
+	PLATFORM+="-linux"
 	rm src/e3/os/data/rlimit* || die
 	$(tc-getCC) ${CFLAGS} -o src/e3/os/data/rlimit-${PLATFORM} \
 		tools/rlimit/rlimit.c ${LDFLAGS}
