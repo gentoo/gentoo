@@ -38,8 +38,8 @@ DEPEND="
 "
 
 BDEPEND="
-	dev-qt/qtbase:6
 	virtual/pkgconfig
+	gui? ( dev-qt/qtbase:6 )
 "
 
 src_configure() {
