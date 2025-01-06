@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3= )
 	ssl? (
 		dev-libs/openssl:=
-		net-libs/mbedtls:=
+		net-libs/mbedtls:0=
 	)
 "
 DEPEND="${RDEPEND}"
