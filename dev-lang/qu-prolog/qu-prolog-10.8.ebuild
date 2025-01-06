@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://staff.itee.uq.edu.au/pjr/HomePages/QPFiles/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="debug doc examples pcre pedro qt5 readline threads"
 
 RDEPEND="
