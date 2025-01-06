@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
 
-PATCHES_PV="7.1.0"
+PATCHES_PV="7.1.4-r1"
 ORIGIN_PN="VirtualBox"
 ORIGIN_PV=${PV%_pre*}
 
