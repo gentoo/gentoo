@@ -34,10 +34,6 @@ net-voip/yate ilbc
 # needs re-keywording and clean-up of media-libs/opencollada
 media-libs/assimp collada
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-13)
-# dev-python/pyside6 isn't keyworded here
-dev-python/qtpy pyside6
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # kde-plasma/plasma-workspace:6 is not keyworded
 virtual/notification-daemon kde
