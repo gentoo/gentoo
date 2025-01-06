@@ -140,7 +140,7 @@ src_configure() {
 
 	if use cmdbridge-server; then
 		go-env_set_compile_environment
-		local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false -buildmode=pie"
+		export GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false -buildmode=pie"
 	fi
 
 	# -Werror=lto-type-mismatch issues, needs looking into
