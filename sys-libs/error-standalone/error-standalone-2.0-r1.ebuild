@@ -1,7 +1,9 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="standalone <error.h> implementation intended for musl"
 HOMEPAGE="https://hacktivis.me/git/error-standalone/"
@@ -16,6 +18,8 @@ RDEPEND="!sys-libs/glibc"
 IUSE="static-libs"
 
 src_compile() {
+	append-flags -fPIC
+
 	emake liberror.so $(usex static-libs liberror.a '')
 }
 
