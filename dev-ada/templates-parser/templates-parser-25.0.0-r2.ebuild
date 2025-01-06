@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12 gcc_13 )
+ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
 inherit ada python-any-r1 multiprocessing
 
@@ -19,8 +19,8 @@ IUSE="doc man +shared static-libs static-pic test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?]
-	shared? ( dev-ada/xmlada[static-pic] )"
+	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 BDEPEND="doc? (
@@ -61,11 +61,9 @@ src_prepare() {
 }
 
 src_configure() {
-	emake PROCESSORS=$(makeopts_jobs) \
-		ENABLE_STATIC=$(usex static-libs true false) \
-		ENABLE_SHARED=$(usex shared true false) \
-		prefix=/usr \
-		setup
+	cp config/tp_xmlada_dummy.gpr tp_xmlada.gpr
+	echo "PRJ_TARGET = Linux" > makefile.setup
+	echo "VERSION = $(ver_cut 1-2)" >> makefile.setup
 }
 
 src_compile() {
