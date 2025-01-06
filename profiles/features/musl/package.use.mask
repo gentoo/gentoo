@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cheyenne Wills <cwills@witznd.net> (2025-01-05)
+# openafs hasn't been ported to / tested with musl bug #832428
+app-crypt/heimdal afs
+app-crypt/kstart afs
+net-mail/cyrus-imapd afs
+www-apps/webdavcgi afs
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-10-08)
 # Not all required dependencies are keyworded here
 sys-kernel/dracut test
