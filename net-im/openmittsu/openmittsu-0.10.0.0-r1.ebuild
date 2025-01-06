@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,16 @@ DOCS=(
 )
 
 CMAKE_BUILD_TYPE="Gentoo"
+
+src_prepare() {
+	cmake_src_prepare
+
+	# Replace the root certificate
+	# https://crt.sh/?id=2841410 - USERTrust ECC Certification Authority
+	local cert=$(base64 -w 0 "${FILESDIR}"/${P}-root-cert.pem || die)
+	sed -i -e "/Certificate.*Literal/s/\".*\"/\"${cert}\"/" \
+		src/network/ServerConfiguration.cpp || die
+}
 
 src_configure() {
 	local mycmakeargs=(
