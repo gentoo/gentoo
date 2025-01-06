@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/docutils
 	sys-devel/gettext
-	verify-sig? ( sec-keys/openpgp-keys-virt-manager )
+	verify-sig? ( >=sec-keys/openpgp-keys-virt-manager-20250106 )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/virt-manager.asc
