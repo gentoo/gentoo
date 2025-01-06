@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -94,6 +94,7 @@ CMAKE_SKIP_TESTS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.3-eigen-ppc-no-vsx.patch
+	"${FILESDIR}"/${PN}-6.8.1-qversionnumber.patch
 )
 
 src_configure() {

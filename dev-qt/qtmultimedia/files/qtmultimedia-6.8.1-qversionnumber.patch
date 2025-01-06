@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/947606
+TODO: needs upstreaming
+--- a/src/plugins/multimedia/gstreamer/common/qgstreameraudiooutput.cpp
++++ b/src/plugins/multimedia/gstreamer/common/qgstreameraudiooutput.cpp
+@@ -13,2 +13,3 @@
+ #if QT_CONFIG(pulseaudio)
++#  include <QVersionNumber>
+ #  include <pulse/version.h>
