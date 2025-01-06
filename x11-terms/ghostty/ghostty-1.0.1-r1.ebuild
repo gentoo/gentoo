@@ -42,6 +42,7 @@ declare -g -r -A ZBS_DEPENDENCIES=(
 )
 
 ZIG_SLOT="0.13"
+ZIG_NEEDS_LLVM=1
 inherit zig xdg
 
 SRC_URI="
@@ -68,7 +69,6 @@ KEYWORDS="~amd64"
 RDEPEND="
 	adwaita? ( gui-libs/libadwaita:1= )
 	gtk? ( gui-libs/gtk:4=[X] )
-
 	system-fontconfig? ( >=media-libs/fontconfig-2.14.2:= )
 	system-freetype? ( >=media-libs/freetype-2.13.2:=[bzip2] )
 	system-glslang? ( >=dev-util/glslang-1.3.296.0:= )
@@ -85,10 +85,8 @@ BDEPEND="
 
 IUSE="+adwaita man +gtk glfw"
 # System integrations
-IUSE+="
-	+system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2
-	+system-oniguruma +system-zlib
-"
+IUSE+=" +system-fontconfig +system-freetype +system-glslang +system-harfbuzz +system-libpng +system-libxml2"
+IUSE+=" +system-oniguruma +system-zlib"
 
 REQUIRED_USE="
 	adwaita? ( gtk )
@@ -102,7 +100,6 @@ QA_PRESTRIPPED="usr/bin/ghostty"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-bzip2-dependency.patch
-	"${FILESDIR}"/${PN}-1.0.1-copy-terminfo-using-installdir.patch
 )
 
 src_configure() {
@@ -137,13 +134,4 @@ src_configure() {
 	fi
 
 	zig_src_configure
-}
-
-src_install() {
-	zig_src_install
-
-	# HACK: Zig 0.13.0 build system's InstallDir step has a bug where it
-	#       fails to install symbolic links, so we manually create it
-	#       here.
-	dosym -r /usr/share/terminfo/x/xterm-ghostty /usr/share/terminfo/g/ghostty
 }

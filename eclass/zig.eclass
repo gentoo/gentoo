@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig.eclass
@@ -293,13 +293,13 @@ zig_init_base_args() {
 		-Dcpu="${ZIG_CPU}"
 		--release=safe
 
-		--prefix-exe-dir bin/
-		--prefix-lib-dir "$(get_libdir)/"
-		--prefix-include-dir include/
+		# We use an absolute path here, but DESTDIR will make it
+		# so that files are installed to ${DESTDIR}/${prefix}.
+		--prefix "${EPREFIX}/usr"
 
-		# Should be relative path to make other calls easier,
-		# so remove leading slash here.
-		--prefix "${EPREFIX:+${EPREFIX#/}/}usr/"
+		--prefix-exe-dir bin
+		--prefix-lib-dir "$(get_libdir)"
+		--prefix-include-dir include
 
 		--libc "${T}/zig_libc.txt"
 	)
@@ -492,6 +492,7 @@ zig_src_compile() {
 
 	local args=( "${ZBS_ARGS[@]}" "${@}" )
 	einfo "ZBS: compiling with: ${args[@]}"
+
 	nonfatal ezig build "${args[@]}" || die "ZBS: compilation failed"
 
 	popd > /dev/null || die
@@ -509,6 +510,7 @@ zig_src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	local args=( "${ZBS_ARGS[@]}" "${@}" )
+	local return_code=0
 
 	# UPSTREAM std.testing.tmpDir and a lot of other functions
 	# do not respect --cache-dir or ZIG_LOCAL_CACHE_DIR:
@@ -527,12 +529,15 @@ zig_src_test() {
 	); then
 		einfo "ZBS: testing with: ${args[@]}"
 		nonfatal ezig build test "${args[@]}" ||
-			die "ZBS: tests failed"
+			die -n "ZBS: tests failed"
+		return_code=$?
 	else
 		einfo "Test step not found, skipping."
 	fi
 
 	popd > /dev/null || die
+
+	return ${return_code}
 }
 
 # @FUNCTION: zig_src_install

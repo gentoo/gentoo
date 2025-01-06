@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -93,10 +93,16 @@ pkg_setup() {
 	ZIG_EXE="not-applicable" ZIG_VER="${PV}" zig_pkg_setup
 
 	export ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
+	export ZIG_TARGET_STAGE3_EXE="${ZIG_STAGED_DESTDIR}${EPREFIX}/usr/bin/zig"
 
 	if use llvm; then
 		tc-is-cross-compiler && die "USE=llvm is not yet supported when cross-compiling"
 		llvm-r1_pkg_setup
+	fi
+
+	# FIXME: Make USE=doc work when cross-compiling by building a host stage3 Zig as well.
+	if use doc && tc-is-cross-compiler; then
+		die "USE=doc is not yet supported when cross-compiling"
 	fi
 
 	check-reqs_pkg_setup
@@ -199,26 +205,53 @@ src_compile() {
 	fi
 
 	cd "${BUILD_DIR}" || die
-	ZIG_EXE="./zig2" zig_src_compile --prefix "${BUILD_DIR}/stage3/"
+	ZIG_EXE="./zig2" zig_src_compile
 
-	./stage3/bin/zig env || die "Zig compilation failed"
+	if ! tc-is-cross-compiler; then
+		${ZIG_TARGET_STAGE3_EXE} env || die "Zig compilation failed"
 
-	if use doc; then
-		ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix "${S}/docgen/"
+		if use doc; then
+			ZIG_EXE="${ZIG_TARGET_STAGE3_EXE}" zig_src_compile langref
+		fi
 	fi
 }
 
 src_test() {
 	cd "${BUILD_DIR}" || die
-	ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native
+
+	# XXX: When we pass a libc installation to Zig, it will fail to find
+	#      the bundled libraries for targets like aarch64-macos and
+	#      *-linux-musl. Zig doesn't run binaries for these targets when
+	#      -Dskip-non-native is passed, but they are still compiled, so
+	#      the test will fail. There's no way to disable --libc once passed,
+	#      so we need to strip it from ZBS_ARGS.
+	#      See: https://github.com/ziglang/zig/issues/22383
+	local args_backup=("${ZBS_ARGS[@]}")
+
+	for ((i = 0; i < ${#ZBS_ARGS[@]}; i++)); do
+		if [[ ${ZBS_ARGS[i]} == "--libc" ]]; then
+			unset ZBS_ARGS[i]
+			unset ZBS_ARGS[i+1]
+			break
+		fi
+	done
+
+	if ! ZIG_EXE="${ZIG_TARGET_STAGE3_EXE}" nonfatal zig_src_test -Dskip-non-native; then
+		eerror "Zig tests failed.  This may happen if you have binfmt_misc hooks"
+		eerror "enabled for emulating foreign architectures (e.g. qemu-binfmt)."
+		eerror "Please disable qemu-binfmt hooks and try again."
+		die "Zig tests failed"
+	fi
+
+	ZBS_ARGS=("${args_backup[@]}")
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "docgen/doc/langref.html" )
+	use doc && local HTML_DOCS=( "${ZIG_STAGED_DESTDIR}${EPREFIX}/usr/doc/langref.html" )
 
 	ZIG_EXE="./zig2" zig_src_install --prefix "${ZIG_SYS_INSTALL_DEST}"
 
-	cd "${D}/${ZIG_SYS_INSTALL_DEST}" || die
+	cd "${D}${ZIG_SYS_INSTALL_DEST}" || die
 	mv lib/zig/ lib2/ || die
 	rm -rf lib/ || die
 	mv lib2/ lib/ || die
