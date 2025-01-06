@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ inherit distutils-r1
 DESCRIPTION="Examine the address space of a QEMU-based virtual machine"
 HOMEPAGE="https://github.com/martinradev/gdb-pt-dump"
 
-GDB_PT_DUMP_COMMIT="89ea252f6efc5d75eacca16fc17ff8966a389690"
+GDB_PT_DUMP_COMMIT="7ccdd8bb35762d24386990ba91e43da234fe7437"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
