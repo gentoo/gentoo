@@ -38,6 +38,7 @@
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled</flag>
 	<flag name="wasm">Sandbox certain third-party libraries through WebAssembly using RLBox</flag>
+	<flag name="wasm-sandbox">Sandbox certain third-party libraries through WebAssembly using RLBox</flag>
 	<flag name="wifi">Enable necko-wifi for NetworkManager integration, and access point MAC
 		address scanning for better precision with opt-in geolocation services</flag>
 </use>
