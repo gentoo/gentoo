@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -31,13 +31,13 @@ REQUIRED_USE="
 	dco? ( !iproute2 )
 "
 
-CDEPEND="
+COMMON_DEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
 	)
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
-	mbedtls? ( net-libs/mbedtls:= )
+	mbedtls? ( net-libs/mbedtls:0= )
 	openssl? ( >=dev-libs/openssl-1.0.2:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
@@ -46,12 +46,16 @@ CDEPEND="
 	sys-libs/libcap-ng:=
 "
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+"
 
-DEPEND="${CDEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	test? ( dev-util/cmocka )
 "
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	acct-group/openvpn
 	acct-user/openvpn
 	selinux? ( sec-policy/selinux-openvpn )

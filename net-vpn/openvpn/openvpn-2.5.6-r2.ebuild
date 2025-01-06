@@ -1,25 +1,27 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-inherit autotools systemd linux-info tmpfiles
+inherit autotools flag-o-matic systemd linux-info tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 HOMEPAGE="https://openvpn.net/"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
+	EGIT_SUBMODULES=(-cmocka)
+
 	inherit git-r3
 else
-	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.xz"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="dco down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
+IUSE="down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
 IUSE+=" pam pkcs11 +plugins selinux systemd test"
 
 RESTRICT="!test? ( test )"
@@ -28,34 +30,27 @@ REQUIRED_USE="
 	pkcs11? ( !mbedtls )
 	!plugins? ( !pam !down-root )
 	inotify? ( plugins )
-	dco? ( !iproute2 )
 "
 
-COMMON_DEPEND="
+CDEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
 	)
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
-	mbedtls? ( net-libs/mbedtls:= )
-	openssl? ( >=dev-libs/openssl-1.0.2:0= )
+	mbedtls? ( net-libs/mbedtls:0= )
+	openssl? ( >=dev-libs/openssl-0.9.8:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )
-	dco? ( >=net-vpn/ovpn-dco-0.2 >=dev-libs/libnl-3.2.29:= )
-	sys-libs/libcap-ng:=
 "
 
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
-DEPEND="
-	${COMMON_DEPEND}
+DEPEND="${CDEPEND}
 	test? ( dev-util/cmocka )
 "
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${CDEPEND}
 	acct-group/openvpn
 	acct-user/openvpn
 	selinux? ( sec-policy/selinux-openvpn )
@@ -64,6 +59,10 @@ RDEPEND="
 if [[ ${PV} = "9999" ]]; then
 	BDEPEND+=" dev-python/docutils"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/openvpn-2.5.0-auth-pam-missing-header.patch
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
@@ -95,7 +94,6 @@ src_configure() {
 		$(use_enable pam plugin-auth-pam)
 		$(use_enable down-root plugin-down-root)
 		$(use_enable systemd)
-		$(use_enable dco)
 	)
 
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
@@ -122,7 +120,7 @@ src_install() {
 	find "${ED}/usr" -name '*.la' -delete || die
 
 	# install documentation
-	dodoc AUTHORS ChangeLog PORTS README
+	dodoc AUTHORS ChangeLog PORTS README README.IPv6
 
 	# Install some helper scripts
 	keepdir /etc/openvpn

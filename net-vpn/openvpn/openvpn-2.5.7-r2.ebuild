@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -38,7 +38,7 @@ CDEPEND="
 	)
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
-	mbedtls? ( net-libs/mbedtls:= )
+	mbedtls? ( net-libs/mbedtls:0= )
 	openssl? ( >=dev-libs/openssl-0.9.8:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
@@ -59,10 +59,6 @@ RDEPEND="${CDEPEND}
 if [[ ${PV} = "9999" ]]; then
 	BDEPEND+=" dev-python/docutils"
 fi
-
-PATCHES=(
-	"${FILESDIR}"/openvpn-2.5.0-auth-pam-missing-header.patch
-)
 
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
