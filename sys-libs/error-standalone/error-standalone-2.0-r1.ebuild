@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="standalone <error.h> implementation intended for musl"
 HOMEPAGE="https://hacktivis.me/git/error-standalone/"
 SRC_URI="https://hacktivis.me/releases/error-standalone/${P}.tar.gz"
@@ -16,6 +18,8 @@ RDEPEND="!sys-libs/glibc"
 IUSE="static-libs"
 
 src_compile() {
+	append-flags -fPIC
+
 	emake liberror.so $(usex static-libs liberror.a '')
 }
 
