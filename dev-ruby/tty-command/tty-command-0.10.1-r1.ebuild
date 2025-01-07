@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,6 @@ SRC_URI="https://github.com/piotrmurach/tty-command/archive/v${PV}.tar.gz -> ${P
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/pastel-0.8:0"
 
@@ -29,4 +28,8 @@ all_ruby_prepare() {
 	echo '-rspec_helper' > .rspec || die
 
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Avoid flaky spec that fails with unimportant output differences
+	sed -e '/logs phased output in pseudo terminal mode/ s/it/xit/' \
+		-i spec/unit/pty_spec.rb || die
 }
