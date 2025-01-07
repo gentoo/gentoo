@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">rtyley/bfg-repo-cleaner</remote-id>
+		<changelog>https://github.com/rtyley/bfg-repo-cleaner/releases</changelog>
+		<bugs-to>https://github.com/rtyley/bfg-repo-cleaner/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
