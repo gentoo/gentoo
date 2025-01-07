@@ -1,0 +1,102 @@
+Upstream commit https://gitlab.xiph.org/xiph/libfishsound/-/commit/e1ee9862e89b362ac49cf66f1485d91a75cffe9f
+https://bugs.gentoo.org/929253
+From e1ee9862e89b362ac49cf66f1485d91a75cffe9f Mon Sep 17 00:00:00 2001
+From: Petter Reinholdtsen <pere@hungry.com>
+Date: Sat, 8 Feb 2025 20:22:51 +0100
+Subject: [PATCH] Use correct oggz argument type in examples.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The examples using oggz must use oggz_package as the
+second argument to read_package for the callback to be acceptable by
+oggz_set_read_callback().  Adjust the method signature to use
+oggz_package and extract the required ogg_package members from this
+one to avoid compiler message like this:
+
+fishsound-identify.c: In function ‘main’:
+fishsound-identify.c:101:37: warning: passing argument 3 of ‘oggz_set_read_callback’ from incompatible pointer type [-Wincompatible-pointer-types]
+  101 |   oggz_set_read_callback (oggz, -1, read_packet, NULL);
+      |                                     ^~~~~~~~~~~
+      |                                     |
+      |                                     int (*)(OGGZ *, ogg_packet *, long int,  void *) {aka int (*)(void *, ogg_packet *, long int,  void *)}
+In file included from /usr/include/oggz/oggz.h:576,
+                 from fishsound-identify.c:39:
+/usr/include/oggz/oggz_read.h:109:44: note: expected ‘OggzReadPacket’ {aka ‘int (*)(void *, oggz_packet *, long int,  void *)’} but argument is of type ‘int (*)(OGGZ *, ogg_packet *, long int,  void *)’ {aka ‘int (*)(void *, ogg_packet *, long int,  void *)’}
+  109 |                             OggzReadPacket read_packet, void * user_data);
+      |                             ~~~~~~~~~~~~~~~^~~~~~~~~~~
+
+Fixes #13
+---
+ src/examples/fishsound-decenc.c   | 3 ++-
+ src/examples/fishsound-decode.c   | 3 ++-
+ src/examples/fishsound-identify.c | 4 ++--
+ src/examples/fishsound-info.c     | 3 ++-
+ 4 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/examples/fishsound-decenc.c b/src/examples/fishsound-decenc.c
+index 96261ad..f9e8674 100644
+--- a/src/examples/fishsound-decenc.c
++++ b/src/examples/fishsound-decenc.c
+@@ -129,9 +129,10 @@ decoded (FishSound * fsound, float ** pcm, long frames, void * user_data)
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * ozp, long serialno, void * user_data)
+ {
+   FS_DecEnc * ed = (FS_DecEnc *) user_data;
++  ogg_packet *op = &ozp->op;
+   
+   fish_sound_prepare_truncation (ed->decoder, op->granulepos, op->e_o_s);
+   fish_sound_decode (ed->decoder, op->packet, op->bytes);
+diff --git a/src/examples/fishsound-decode.c b/src/examples/fishsound-decode.c
+index d9c178d..9c61d0a 100644
+--- a/src/examples/fishsound-decode.c
++++ b/src/examples/fishsound-decode.c
+@@ -82,9 +82,10 @@ decoded_float (FishSound * fsound, float ** pcm, long frames, void * user_data)
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * ozp, long serialno, void * user_data)
+ {
+   FishSound * fsound = (FishSound *)user_data;
++  ogg_packet *op = &ozp->op;
+ 
+   /* If we have not yet selected an audio track to decode, then try
+    * to identify this one. If it is a known audio codec, then remember its
+diff --git a/src/examples/fishsound-identify.c b/src/examples/fishsound-identify.c
+index c5ff943..5a89e34 100644
+--- a/src/examples/fishsound-identify.c
++++ b/src/examples/fishsound-identify.c
+@@ -60,9 +60,9 @@ dump_identity (unsigned char * buf, long bytes)
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * ozp, long serialno, void * user_data)
+ {
+-
++  ogg_packet *op = &ozp->op;
+   if (op->bytes < 8) {
+     printf ("too short\n");
+   } else {
+diff --git a/src/examples/fishsound-info.c b/src/examples/fishsound-info.c
+index 65138a1..d119d33 100644
+--- a/src/examples/fishsound-info.c
++++ b/src/examples/fishsound-info.c
+@@ -76,8 +76,9 @@ decoded (FishSound * fsound, float ** pcm, long frames, void * user_data)
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * ozp, long serialno, void * user_data)
+ {
++  ogg_packet *op = &ozp->op;
+   FishSound * fsound = (FishSound *)user_data;
+ 
+   if (op->e_o_s) {
+-- 
+GitLab
+
