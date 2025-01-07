@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 fi
 
