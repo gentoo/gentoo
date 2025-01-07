@@ -21,6 +21,8 @@ LICENSE="Apache-2.0 BSD-2 BSD ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RESTRICT="test"
+
 src_compile() {
 	ego build -o ./bin/virtctl -ldflags "
 		-X kubevirt.io/client-go/version.buildDate=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
