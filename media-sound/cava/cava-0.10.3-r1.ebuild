@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 IUSE="alsa jack +ncurses pipewire portaudio pulseaudio sdl sndio"
 
 RDEPEND="
-	dev-libs/iniparser:4
+	>=dev-libs/iniparser-4.1-r2:=
 	sci-libs/fftw:3.0=
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
@@ -45,22 +45,15 @@ BDEPEND="
 "
 
 src_prepare() {
-	# TODO: depend on >=4.2.2 and remove after 4.2.2 is stable unless bug
-	# #933610 reintroduces slotting hacks (also drop ${inip} below)
-	local inip=
-	if has_version '<dev-libs/iniparser-4.2.2:4'; then
-		inip=4
-		eapply "${FILESDIR}"/${PN}-0.10.3-gentoo-iniparser4.patch
-	fi
-
 	default
 
 	# TODO: drop this when autoconf-archive is fixed (bug #941845), this is
 	# to handle the USE=-sdl case given it breaks it present
 	use sdl || sed -i 's/AX_CHECK_GL/&_DISABLED/' configure.ac || die
 
-	# respect both ESYSROOT+slotting (can't use CPPFLAGS, comes before)
-	sed -i "s|/usr/include/iniparser|${ESYSROOT}&${inip} |" configure.ac || die
+	# respect ESYSROOT for iniparser (can't use CPPFLAGS, comes before),
+	# ideally upstream could try pkg-config first (only in >=iniparser-4.2)
+	[[ -z ${ESYSROOT} ]] || sed -i "s|/usr|${ESYSROOT}&|" configure.ac || die
 
 	echo ${PV} > version || die
 	eautoreconf
