@@ -40,6 +40,7 @@ media-gfx/openscad -manifold
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Available on amd64.
 www-client/firefox -wasm
+www-client/firefox -wasm-sandbox
 
 # Sam James <sam@gentoo.org> (2024-10-29)
 # Only available on amd64 for now
