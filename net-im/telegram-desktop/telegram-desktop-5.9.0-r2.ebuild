@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv"
 IUSE="dbus enchant +fonts +jemalloc +libdispatch screencast qt6 wayland webkit +X"
 
 CDEPEND="
@@ -129,7 +129,7 @@ src_prepare() {
 	# Control automagic dep only needed when USE="webkit wayland"
 	if ! use webkit || ! use wayland; then
 		sed -e 's/QT_CONFIG(wayland_compositor_quick)/0/' \
-			-i Telegram/Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.h
+			-i Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.h || die
 	fi
 
 	cmake_src_prepare
