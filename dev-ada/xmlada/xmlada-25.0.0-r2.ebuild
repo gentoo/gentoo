@@ -4,37 +4,47 @@
 EAPI=8
 
 ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
-inherit ada multiprocessing
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
+inherit ada python-any-r1 multiprocessing
 
 DESCRIPTION="Set of modules that provide a simple manipulation of XML streams"
-HOMEPAGE="http://libre.adacore.com/"
+HOMEPAGE="https://github.com/AdaCore/xmlada"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc man +shared static-libs static-pic"
+IUSE="doc +shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
-	${ADA_REQUIRED_USE}
-	doc? ( man )"
+	${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 BDEPEND="doc? (
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+	')
 	dev-tex/latexmk
 	dev-texlive/texlive-latexextra
-)
-man? (
-	dev-python/sphinx
-	dev-python/sphinx-rtd-theme
 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-23.0.0-gentoo.patch
 	"${FILESDIR}"/${PN}-24.0.0-gentoo.patch
 )
+
+python_check_deps() {
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+	ada_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -60,12 +70,7 @@ src_compile() {
 	if use static-pic; then
 		build static-pic
 	fi
-	if use doc; then
-		emake -C docs html
-		emake -C docs epub
-		emake -C docs latexpdf
-	fi
-	use man && emake -C docs man
+	use doc && emake -C docs html
 }
 
 src_test() {
@@ -104,11 +109,6 @@ src_install() {
 	if use static-pic; then
 		build static-pic
 	fi
-	DOCS="AUTHORS README.md TODO xmlada-roadmap.txt"
-	if use doc; then
-		DOCS+=" docs/_build/epub/XMLAdatheXMLLibraryforAda.epub"
-	fi
 	einstalldocs
-	use man && doman docs/_build/man/xmlada.1
 	rm -r "${D}"/usr/share/gpr/manifests
 }
