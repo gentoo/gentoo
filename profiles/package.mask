@@ -35,6 +35,10 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-08)
 # Qt5-based library without any revdeps. Removal on 2025-02-07.
+dev-libs/kqoauth
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-08)
+# Qt5-based library without any revdeps. Removal on 2025-02-07.
 dev-libs/qcoro5
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-01-06)
