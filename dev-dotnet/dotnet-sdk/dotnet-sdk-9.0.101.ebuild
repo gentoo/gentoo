@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Pre-build (and distribution preparation)
@@ -15,7 +15,7 @@
 # Build ("src_compile")
 # To learn about arguments that are passed to the "build.sh" script see:
 # https://github.com/dotnet/source-build/discussions/4082
-# User variable: GENTOO_DOTNET_BUILD_VERBOSITY - set other verbosity log level.
+# User variable: DOTNET_VERBOSITY - set other verbosity log level.
 
 EAPI=8
 
@@ -245,7 +245,7 @@ src_compile() {
 
 	# The "source_repository" should always be the same.
 	local source_repository="https://github.com/dotnet/dotnet"
-	local verbosity="${GENTOO_DOTNET_BUILD_VERBOSITY:-minimal}"
+	local verbosity="${DOTNET_VERBOSITY:-minimal}"
 
 	ebegin "Building the .NET SDK ${SDK_SLOT}"
 	local -a buildopts=(
