@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindRuby"
+CMAKE_REMOVE_MODULES_LIST=( ${CMAKE_REMOVE_MODULES_LIST} FindRuby )
 inherit cmake
 
 DESCRIPTION="Dislocker is used to read BitLocker encrypted partitions"
@@ -13,7 +13,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/Aorimn/dislocker.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/Aorimn/dislocker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	EGIT_COMMIT="3e7aea196eaa176c38296a9bc75c0201df0a3679"
+	SRC_URI="https://github.com/Aorimn/dislocker/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,10 +25,14 @@ IUSE="ruby"
 
 DEPEND="
 	sys-fs/fuse:0=
-	net-libs/mbedtls:0=
+	net-libs/mbedtls:3=
 	ruby? ( dev-lang/ruby:* )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/dislocker-0.7.3_slotted-mbedtls3.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
