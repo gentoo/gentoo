@@ -27,6 +27,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${P}-pc.patch
 	"${FILESDIR}"/${PN}-1.0.0-c99.patch
+	"${FILESDIR}"/${PN}-1.0.0-oggz-interop.patch
 )
 
 src_prepare() {
