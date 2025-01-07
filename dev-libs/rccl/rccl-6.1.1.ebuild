@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0.2-fix-version-check.patch"
+	"${FILESDIR}/${PN}-6.1.1-headers-fix.patch"
 )
 
 src_prepare() {
@@ -67,5 +68,6 @@ src_configure() {
 src_test() {
 	check_amdgpu
 	cd "${BUILD_DIR}" || die
-	LD_LIBRARY_PATH="${BUILD_DIR}" edob test/rccl-UnitTests
+	# APU (as second device, if any) expectedly breaks tests
+	HIP_VISIBLE_DEVICES=0 LD_LIBRARY_PATH="${BUILD_DIR}" edob test/rccl-UnitTests
 }
