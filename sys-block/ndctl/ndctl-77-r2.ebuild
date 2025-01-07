@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="doc libtracefs systemd test"
 
 DEPEND="
-	dev-libs/iniparser:4=
+	>=dev-libs/iniparser-4.1-r2:=
 	dev-libs/json-c:=
 	sys-apps/keyutils:=
 	sys-apps/kmod:=
@@ -42,10 +42,6 @@ RESTRICT+=" test"
 DOCS=(
 	README.md
 	CONTRIBUTING.md
-)
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-77-iniparser4.patch
 )
 
 src_configure() {
