@@ -11,7 +11,7 @@ DESCRIPTION="Perl class to determine actual memory usage"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~s390 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~s390 ~sparc"
 
 RDEPEND="
 	dev-perl/Memory-Usage
