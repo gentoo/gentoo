@@ -41,7 +41,6 @@ BDEPEND="
 "
 DEPEND="
 	dev-libs/libfmt:=
-	media-libs/glew:0=
 	media-libs/libepoxy
 	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:0=
