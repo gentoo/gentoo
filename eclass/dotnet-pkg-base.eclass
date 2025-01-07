@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dotnet-pkg-base.eclass
@@ -31,6 +31,23 @@ if [[ -z ${_DOTNET_PKG_BASE_ECLASS} ]] ; then
 _DOTNET_PKG_BASE_ECLASS=1
 
 inherit edo multiprocessing nuget
+
+# @ECLASS_VARIABLE: DOTNET_VERBOSITY
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Controls verbosity of the dotnet restore/build/test processes.
+#
+# Defaults to "minimal" - this only reports which projects are being built
+# and warnings/errors, if any. All the possible values are: "quiet", "minimal",
+# "normal", "detailed" and "diagnostic". For more information on verbosity
+# levels, see the official .NET SDK documentation on:
+# * https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet
+# * https://learn.microsoft.com/en-us/dotnet/api/microsoft.build.framework.loggerverbosity
+#
+# This variable can be used to debug package build process (by selecting
+# anything above "minimal") but generally warnings/errors provide all
+# the necessary info.
+: "${DOTNET_VERBOSITY:=minimal}"
 
 # @ECLASS_VARIABLE: DOTNET_PKG_COMPAT
 # @REQUIRED
@@ -385,6 +402,7 @@ dotnet-pkg-base_restore() {
 	local -a restore_args=(
 		--runtime "${DOTNET_PKG_RUNTIME}"
 		--source "${NUGET_PACKAGES}"
+		--verbosity "${DOTNET_VERBOSITY}"
 		-maxCpuCount:$(makeopts_jobs)
 		"${@}"
 	)
@@ -407,6 +425,7 @@ dotnet-pkg-base_restore-tools() {
 
 	local -a tool_restore_args=(
 		--add-source "${NUGET_PACKAGES}"
+		--verbosity "${DOTNET_VERBOSITY}"
 	)
 
 	if [[ -n "${1}" ]] ; then
@@ -447,6 +466,7 @@ dotnet-pkg-base_build() {
 		--no-self-contained
 		--output "${DOTNET_PKG_OUTPUT}"
 		--runtime "${DOTNET_PKG_RUNTIME}"
+		--verbosity "${DOTNET_VERBOSITY}"
 		-maxCpuCount:$(makeopts_jobs)
 	)
 
@@ -482,6 +502,7 @@ dotnet-pkg-base_test() {
 	local -a test_args=(
 		--configuration "${DOTNET_PKG_CONFIGURATION}"
 		--no-restore
+		--verbosity "${DOTNET_VERBOSITY}"
 		-maxCpuCount:$(makeopts_jobs)
 		"${@}"
 	)
