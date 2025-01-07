@@ -21,6 +21,7 @@ sci-chemistry/gromacs nnpot
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Available on arm64.
 www-client/firefox -wasm
+www-client/firefox -wasm-sandbox
 
 # Michał Górny <mgorny@gentoo.org> (2024-10-23)
 # Debug-enabled binary packages are built for a subset of architectures.
