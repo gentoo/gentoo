@@ -7,7 +7,7 @@ DIST_AUTHOR=DONEILL
 DIST_VERSION=0.201
 inherit perl-module
 
-DESCRIPTION="ools to determine actual memory usage"
+DESCRIPTION="Tools to determine actual memory usage"
 
 SLOT="0"
 KEYWORDS="~amd64"
