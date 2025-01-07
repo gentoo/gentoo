@@ -100,6 +100,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
+	"${FILESDIR}"/${PN}-5.13.0-cmake-3.31-compat.patch
 )
 
 # false positive when checking for available HDF5 interface, bug #904731
