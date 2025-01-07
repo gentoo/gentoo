@@ -1,0 +1,23 @@
+From: Rene Engelhard <rene@debian.org>
+Subject: Check version of server
+
+diff -urNad /home/rene/xkbset-0.3/main.c xkbset-0.3/main.c
+--- /home/rene/xkbset-0.3/main.c	2000-08-17 06:36:15.000000000 +0200
++++ xkbset-0.3/main.c	2003-10-17 04:14:31.000000000 +0200
+@@ -79,10 +79,14 @@
+   if (reason_rtrn != XkbOD_Success) {
+     switch(reason_rtrn) {
+       case XkbOD_BadLibraryVersion:
+-      case XkbOD_BadServerVersion:
+-      case XkbOD_NonXkbServer:
+         fprintf(stderr,"Non-existent or incompatible XKB library version\n");
+         break;
++      case XkbOD_BadServerVersion:
++        fprintf(stderr,"Bad X server version\n");
++	 break;
++      case XkbOD_NonXkbServer:
++	 fprintf(stderr,"X Server does not support XKB...");
++	 break;
+       case XkbOD_ConnectionRefused:
+         fprintf(stderr, "Unable to open display\n");
+         break;
