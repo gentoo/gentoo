@@ -48,6 +48,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-wrong-error-code.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/xlsxwriter[${PYTHON_USEDEP}]"
 }
