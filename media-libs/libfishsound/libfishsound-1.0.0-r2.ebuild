@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${P}-pc.patch
 	"${FILESDIR}"/${PN}-1.0.0-c99.patch
+	"${FILESDIR}"/${PN}-1.0.0-oggz-interop.patch
 )
 
 src_prepare() {
