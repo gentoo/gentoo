@@ -474,12 +474,6 @@ sys-libs/ncurses stack-realign
 # Not ready for general use.
 >=www-client/chromium-104 pgo
 
-# Joonas Niilola <juippis@gentoo.org> (2022-05-03)
-# system-python-libs is HIGHLY EXPERIMENTAL according to upstream, and
-# still being worked on in Gentoo.
->=mail-client/thunderbird-100.0 system-python-libs
->=www-client/firefox-100.0 system-python-libs
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-04-29)
 # There's a bug with gnutls support leading TLS certificates
 # validation failures on some certificates that are otherwise valid.
