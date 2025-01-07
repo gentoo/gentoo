@@ -39,7 +39,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	>=dev-libs/glib-2.76
+	>=dev-libs/glib-2.82
 	>=gui-libs/gtk-4.16:4
 	>=gui-libs/libadwaita-1.6:1
 
