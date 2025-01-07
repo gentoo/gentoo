@@ -40,9 +40,9 @@ DEPEND="
 	>=x11-libs/pango-1.46[introspection?]
 	>=x11-libs/cairo-1.14[X]
 	>=x11-libs/pixman-0.42
-	>=dev-libs/fribidi-1.0.0
+	>=dev-libs/fribidi-1.10.2
 	>=gnome-base/gsettings-desktop-schemas-47.0[introspection?]
-	>=dev-libs/glib-2.75.1:2
+	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
 	>=x11-libs/libxkbcommon-0.4.3
 	x11-libs/libICE
@@ -61,12 +61,12 @@ DEPEND="
 	media-libs/libglvnd[X]
 
 	wayland? (
-		>=dev-libs/wayland-protocols-1.33
-		>=dev-libs/wayland-1.22.0
+		>=dev-libs/wayland-protocols-1.38
+		>=dev-libs/wayland-1.23.0
 
 		>=x11-libs/libdrm-2.4.118
 		media-libs/mesa[gbm(+)]
-		>=dev-libs/libinput-1.19.0:=
+		>=dev-libs/libinput-1.26.0:=
 
 		elogind? ( sys-auth/elogind )
 		>=x11-base/xwayland-23.2.1[libei(+)]
