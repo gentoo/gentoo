@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/14" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
@@ -52,6 +52,7 @@ DEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
+	media-libs/libdisplay-info:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -73,7 +74,7 @@ DEPEND="
 	)
 	udev? (
 		>=virtual/libudev-232-r1:=
-		>=dev-libs/libgudev-232
+		>=dev-libs/libgudev-238
 	)
 	systemd? ( sys-apps/systemd )
 	x11-libs/libSM

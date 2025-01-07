@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,7 @@ DEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
+	media-libs/libdisplay-info:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
