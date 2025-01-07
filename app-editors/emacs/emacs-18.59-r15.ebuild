@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -154,9 +154,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	eselect emacs update ifunset
+	eselect --root="${ROOT}" emacs update ifunset
 }
 
 pkg_postrm() {
-	eselect emacs update ifunset
+	eselect --root="${ROOT}" emacs update ifunset
 }

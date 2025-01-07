@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -438,16 +438,13 @@ pkg_postinst() {
 	elisp-site-regen
 	readme.gentoo_print_elog
 
-	if use livecd; then
-		# force an update of the emacs symlink for the livecd/dvd,
-		# because some microemacs packages set it with USE=livecd
-		eselect emacs update
-	else
-		eselect emacs update ifunset
-	fi
+	# Force an update of the emacs symlink for the livecd/dvd,
+	# because some microemacs packages set it with USE=livecd.
+	# Otherwise, create it only when it is not yet set.
+	eselect --root="${ROOT}" emacs update $(usev !livecd ifunset)
 }
 
 pkg_postrm() {
 	elisp-site-regen
-	eselect emacs update ifunset
+	eselect --root="${ROOT}" emacs update ifunset
 }
