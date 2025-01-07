@@ -33,6 +33,7 @@ RDEPEND="
 		virtual/perl-JSON-PP
 		dev-perl/JSON
 	)
+	dev-perl/TimeDate
 	dev-perl/PerlIO-gzip
 "
 BDEPEND="
