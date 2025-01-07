@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs xdg-utils
+inherit flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Graphical CD image editor for reading, modifying and writing ISO images"
 HOMEPAGE="http://littlesvr.ca/isomaster"
@@ -14,27 +14,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls"
 
-RDEPEND=">=dev-libs/iniparser-4.1:4
+RDEPEND=">=dev-libs/iniparser-4.1-r2:=
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.1 )"  # bug 512448
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.14-include-path.patch
-)
-
-pkg_setup() {
-	myisoconf=(
-		DEFAULT_EDITOR=leafpad
-		MYDOCPATH=/usr/share/doc/${PF}/bkisofs
-		USE_SYSTEM_INIPARSER=1
-		LIB_INIPARSER=iniparser4
-		PREFIX=/usr
-		)
-
-	use nls || myisoconf+=( WITHOUT_NLS=1 )
-}
 
 src_prepare() {
 	default
@@ -44,6 +28,20 @@ src_prepare() {
 
 src_compile() {
 	tc-export AR CC
+
+	# iniparser.pc only exists in >=4.2 and it changes headers location
+	has_version '>=dev-libs/iniparser-4.2' &&
+		append-cflags $($(tc-getPKG_CONFIG) --cflags iniparser || die)
+
+	myisoconf=(
+		DEFAULT_EDITOR=leafpad
+		MYDOCPATH=/usr/share/doc/${PF}/bkisofs
+		USE_SYSTEM_INIPARSER=1
+		PREFIX=/usr
+	)
+
+	use nls || myisoconf+=( WITHOUT_NLS=1 )
+
 	emake "${myisoconf[@]}"
 }
 
