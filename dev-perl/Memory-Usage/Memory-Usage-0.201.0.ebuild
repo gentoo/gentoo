@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Tools to determine actual memory usage"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
 
 BDEPEND="dev-perl/Module-Install"
