@@ -19,11 +19,11 @@ fi
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="dbus doc gnome plasma X"
+IUSE="dbus doc gnome perl plasma X"
 REQUIRED_USE="gnome? ( dbus )"
 
+# dev-perl/File-MimeInfo: mimeopen used by xdg-open
 RDEPEND="
-	dev-perl/File-MimeInfo
 	dev-util/desktop-file-utils
 	x11-misc/shared-mime-info
 	dbus? (
@@ -33,6 +33,7 @@ RDEPEND="
 			dev-perl/X11-Protocol
 		)
 	)
+	perl? ( dev-perl/File-MimeInfo )
 	plasma? (
 		virtual/pkgconfig
 	)
