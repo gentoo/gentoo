@@ -76,9 +76,4 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	if [[ ${REPLACING_VERSIONS} ]]; then
-		ewarn "The menu entries foot installs have been renamed."
-		ewarn "This might result in shortcuts (in, for instance, KDE)"
-		ewarn "being forgotten."
-	fi
 }
