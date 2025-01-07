@@ -9,14 +9,14 @@ DESCRIPTION="A faster alternative to git-filter-branch for removing bad data fro
 HOMEPAGE="https://rtyley.github.io/bfg-repo-cleaner/"
 SRC_URI="https://repo1.maven.org/maven2/com/madgag/${PN}/${PV}/${P}.jar"
 
+S="${WORKDIR}"
 LICENSE="GPL-3+"
 SLOT="0"
+
 KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 BDEPEND="app-arch/unzip"
-
-S=${WORKDIR}
 
 src_install() {
 	java-pkg_newjar "${DISTDIR}"/${P}.jar
