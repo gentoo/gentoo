@@ -24,6 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
+distutils_enable_sphinx doc dev-python/sphinx-rtd-theme dev-python/sphinx-autoapi
 
 python_compile() {
 	distutils-r1_python_compile
