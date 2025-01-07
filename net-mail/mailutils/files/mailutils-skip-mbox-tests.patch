@@ -1,0 +1,60 @@
+diff --git a/mail/testsuite/mail/Followup.exp b/mail/testsuite/mail/Followup.exp
+index c9f9d11..a7927e9 100644
+--- a/mail/testsuite/mail/Followup.exp
++++ b/mail/testsuite/mail/Followup.exp
+@@ -17,7 +17,9 @@
+ 
+ mail_version
+ 
+-if ![mu_check_capability ENABLE_SENDMAIL] {
++if { [mu_check_capability SCHEME] == "maildir" } {
++    unsupported "Does not work when default mailbox type is maildir"
++} elseif ![mu_check_capability ENABLE_SENDMAIL] {
+     unsupported "Support for sendmail not compiled in"
+ } else {
+     mail_start "--file=%teaparty.mbox" \
+diff --git a/mail/testsuite/mail/Reply.exp b/mail/testsuite/mail/Reply.exp
+index c492aee..543a857 100644
+--- a/mail/testsuite/mail/Reply.exp
++++ b/mail/testsuite/mail/Reply.exp
+@@ -17,7 +17,9 @@
+ 
+ mail_version
+ 
+-if ![mu_check_capability ENABLE_SENDMAIL] {
++if { [mu_check_capability SCHEME] == "maildir" } {
++    unsupported "Does not work when default mailbox type is maildir"
++} elseif ![mu_check_capability ENABLE_SENDMAIL] {
+     unsupported "Support for sendmail not compiled in"
+ } else {
+     mail_start "--file=%teaparty.mbox" \
+diff --git a/mail/testsuite/mail/followup.exp b/mail/testsuite/mail/followup.exp
+index ca15317..ce042b5 100644
+--- a/mail/testsuite/mail/followup.exp
++++ b/mail/testsuite/mail/followup.exp
+@@ -17,7 +17,9 @@
+ 
+ mail_version
+ 
+-if ![mu_check_capability ENABLE_SENDMAIL] {
++if { [mu_check_capability SCHEME] == "maildir" } {
++    unsupported "Does not work when default mailbox type is maildir"
++} elseif ![mu_check_capability ENABLE_SENDMAIL] {
+     unsupported "Support for sendmail not compiled in"
+ } else {
+     mail_start "--file=%teaparty.mbox" \
+diff --git a/mail/testsuite/mail/reply.exp b/mail/testsuite/mail/reply.exp
+index 8d66e99..7b178b3 100644
+--- a/mail/testsuite/mail/reply.exp
++++ b/mail/testsuite/mail/reply.exp
+@@ -17,7 +17,9 @@
+ 
+ mail_version
+ 
+-if ![mu_check_capability ENABLE_SENDMAIL] {
++if { [mu_check_capability SCHEME] == "maildir" } {
++    unsupported "Does not work when default mailbox type is maildir"
++} elseif ![mu_check_capability ENABLE_SENDMAIL] {
+     unsupported "Support for sendmail not compiled in"
+ } else {
+     mail_start "--file=%teaparty.mbox" \
