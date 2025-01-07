@@ -41,7 +41,7 @@ DEPEND="
 	>=x11-libs/cairo-1.14[X]
 	>=x11-libs/pixman-0.42
 	>=dev-libs/fribidi-1.0.0
-	>=gnome-base/gsettings-desktop-schemas-42.0[introspection?]
+	>=gnome-base/gsettings-desktop-schemas-47.0[introspection?]
 	>=dev-libs/glib-2.75.1:2
 	gnome-base/gnome-settings-daemon
 	>=x11-libs/libxkbcommon-0.4.3
