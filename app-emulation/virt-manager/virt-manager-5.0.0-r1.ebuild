@@ -89,7 +89,8 @@ src_install() {
 
 	if ! use gui; then
 		rm -r "${ED}/usr/share/applications/${PN}.desktop" || die
-		rm -r "${ED}/usr/share/${PN}/{ui,icons}/" || die
+		rm -r "${ED}/usr/share/${PN}/icons/" || die
+		rm -r "${ED}/usr/share/${PN}/ui/" || die
 		rm -r "${ED}/usr/share/icons/" || die
 		rm -r "${ED}/usr/bin/${PN}" || die
 	fi
