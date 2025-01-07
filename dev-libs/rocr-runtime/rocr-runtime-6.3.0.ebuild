@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ src_prepare() {
 	cd "${S}/runtime/hsa-runtime" || die
 	eapply "${FILESDIR}/${PN}-4.3.0_no-aqlprofiler.patch"
 	eapply "${FILESDIR}/${PN}-5.7.1-extend-isa-compatibility-check.patch"
-	eapply "${FILESDIR}/${PN}-6.2.2-gcc15-stdint.patch"
+	eapply "${FILESDIR}/${PN}-6.1.2-gcc15-stdint.patch"
 
 	# Gentoo installs "*.bc" to "/usr/lib" instead of a "[path]/bitcode" directory ...
 	sed -e "s:-O2:--rocm-path=${EPREFIX}/usr/lib/ -O2:" -i image/blit_src/CMakeLists.txt || die
