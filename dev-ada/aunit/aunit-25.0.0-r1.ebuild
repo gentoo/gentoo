@@ -4,7 +4,8 @@
 EAPI=8
 
 ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
-inherit ada multiprocessing
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
+inherit ada python-any-r1 multiprocessing
 
 DESCRIPTION="Ada unit testing framework"
 HOMEPAGE="https://github.com/AdaCore/aunit"
@@ -15,18 +16,27 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc"
+REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 BDEPEND="doc? (
-	dev-tex/latexmk
-	dev-texlive/texlive-latexextra
-	dev-python/sphinx
-	dev-python/sphinx-rtd-theme
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+	')
 )"
 
-REQUIRED_USE="${ADA_REQUIRED_USE}"
+python_check_deps() {
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+	ada_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -38,23 +48,14 @@ src_prepare() {
 
 src_compile() {
 	emake GPROPTS_EXTRA="-j$(makeopts_jobs) -v -cargs ${ADAFLAGS}"
-	use doc && emake -C doc all
+	use doc && emake -C doc aunit_cb.html
 }
 
 src_install() {
 	emake INSTALL="${D}"/usr install
 	DOCS="README"
-	if use doc; then
-		DOCS+=" doc/build/aunit_cb/pdf/aunit_cb.pdf"
-		DOCS+=" doc/build/aunit_cb/txt/aunit_cb.txt"
-		HTML_DOCS="doc/build/aunit_cb/html"
-	fi
+	use doc && HTML_DOCS="doc/build/aunit_cb/html/*"
 	einstalldocs
-	if use doc; then
-		insinto /usr/share/info
-		doins doc/build/aunit_cb/info/aunit_cb.info
-		docompress -x /usr/share/info
-	fi
 	mv "${D}"/usr/share/examples "${D}"/usr/share/doc/${PF}/
 	rm -r "${D}"/usr/share/gpr/manifests || die
 }
