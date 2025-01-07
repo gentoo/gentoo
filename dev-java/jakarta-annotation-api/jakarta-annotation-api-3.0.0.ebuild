@@ -15,7 +15,7 @@ S="${WORKDIR}/common-annotations-api-${PV}"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~ppc64"
+KEYWORDS="~amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
