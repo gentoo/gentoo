@@ -27,8 +27,6 @@ BDEPEND="doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 	')
-	dev-tex/latexmk
-	dev-texlive/texlive-latexextra
 )"
 
 PATCHES=(
