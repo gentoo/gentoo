@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -94,7 +94,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/clementine-1.4.0_rc2-c17.patch"
-	"${FILESDIR}/clementine-1.4.0_rc2-absl.patch"
+	"${FILESDIR}/clementine-1.4.0_rc2-absl2.patch"
 	"${FILESDIR}/clementine-1.4.0_rc2-projectm-dir.patch"
 	"${FILESDIR}/clementine-1.4.0_rc2-fix-build-taglib2.patch"
 )
@@ -145,7 +145,6 @@ src_configure() {
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
 		"$(cmake_use_find_package alsa ALSA)"
-		-DGENTOO_FIX_ABSL_LIBS="$(test-flags-CCLD -labsl_log_internal_check_op -labsl_log_internal_message)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
