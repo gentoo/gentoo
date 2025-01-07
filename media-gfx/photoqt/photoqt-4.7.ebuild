@@ -4,10 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-
-ECM_KDEINSTALLDIRS=false
-KFMIN=6.5.0
-inherit ecm optfeature python-single-r1 toolchain-funcs
+inherit cmake optfeature python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="Simple but powerful Qt-based image viewer"
 HOMEPAGE="https://photoqt.org/"
@@ -48,19 +45,18 @@ COMMON_DEPEND="
 		media-libs/vips:=
 	)
 "
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	geolocation? (
 		dev-qt/qtlocation:6
 		dev-qt/qtpositioning:6[qml]
 	)
 "
-DEPEND="
-	${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}
 	vips? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	dev-qt/qttools:6[linguist]
+	>=kde-frameworks/extra-cmake-modules-6.5.0:*
 	virtual/pkgconfig
 	chromecast? ( ${PYTHON_DEPS} )
 "
@@ -94,10 +90,10 @@ src_configure() {
 		)
 	fi
 
-	ecm_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
-	optfeature "additional image formats like AVIF, EPS, HEIF/HEIC, PSD, etc." kde-frameworks/kimageformats
-	ecm_pkg_postinst
+	optfeature "additional image formats like AVIF, EPS, HEIF/HEIC, PSD, etc." "kde-frameworks/kimageformats:6"
+	xdg_pkg_postinst
 }
