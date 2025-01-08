@@ -35,8 +35,7 @@ fi
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-# Unkeyworded until man pages are figured out
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb elogind examples debug nis nls selinux systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
@@ -45,7 +44,6 @@ BDEPEND+="
 	|| ( sys-devel/bison dev-util/byacc )
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/w3m
 	nls? ( sys-devel/gettext )
 "
 DEPEND="
@@ -79,10 +77,13 @@ multilib_src_configure() {
 	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
 	# Workaround for docbook5 not being packaged (bug #913087#c4)
 	# It's only used for validation of output, so stub it out.
+	# Also, stub out elinks+w3m which are only used for an index.
 	cat >> ${native_file} <<-EOF || die
 	[binaries]
 	xmlcatalog='true'
 	xmllint='true'
+	elinks='true'
+	w3m='true'
 	EOF
 
 	local emesonargs=(
