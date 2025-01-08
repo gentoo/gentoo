@@ -10,7 +10,8 @@ SRC_URI="https://plx.im/gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
+S=${WORKDIR}/${P/_p*/}
 IUSE="tk"
 
 CDEPEND="
@@ -23,8 +24,6 @@ RDEPEND="
 	${CDEPEND}
 	tk? ( dev-perl/Tk )
 "
-
-S=${WORKDIR}/${P/_p*/}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clarify-errors.patch
