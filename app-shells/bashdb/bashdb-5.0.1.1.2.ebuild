@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,10 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=app-shells/bash-5
-	!>=app-shells/bash-${PV:0:1}.$((${PV:2:1}+1))"
+DEPEND="
+	>=app-shells/bash-5
+	!>=app-shells/bash-${PV:0:1}.$((${PV:2:1}+1))
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -36,5 +38,5 @@ src_prepare() {
 src_configure() {
 	# This path matches the bash sources.  If we ever change bash,
 	# we'll probably have to change this to match.  #591994
-	econf --with-dbg-main='$(PKGDATADIR)/bashdb-main.inc'
+	CONFIG_SHELL="${BROOT}"/bin/bash econf --with-dbg-main='$(PKGDATADIR)/bashdb-main.inc'
 }
