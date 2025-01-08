@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -63,7 +63,7 @@ fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
-SLOT="0"
+SLOT="${MY_PV}"
 if (( PLEVEL >= 0 )); then
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
@@ -248,115 +248,15 @@ src_compile() {
 }
 
 src_install() {
-	local d f
+	into /
+	newbin bash bash-${SLOT}
 
-	default
+	newman doc/bash.1 bash-${SLOT}.1
+	newman doc/builtins.1 builtins-${SLOT}.1
 
-	my_prefixify() {
-		while read -r; do
-			if [[ $REPLY == *$1* ]]; then
-				REPLY=${REPLY/"/etc/"/"${EPREFIX}/etc/"}
-			fi
-			printf '%s\n' "${REPLY}" || ! break
-		done < "$2" || die
-	}
+	insinto /usr/share/info
+	newins doc/bashref.info bash-${SLOT}.info
+	dosym bash-${SLOT}.info /usr/share/info/bashref-${SLOT}.info
 
-	dodir /bin
-	mv -- "${ED}"/usr/bin/bash "${ED}"/bin/ || die
-	dosym bash /bin/rbash
-
-	insinto /etc/bash
-	doins "${FILESDIR}"/bash_logout
-	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
-
-	insinto /etc/bash/bashrc.d
-	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
-	doins "${FILESDIR}"/bashrc.d/10-gentoo-title.bash
-	if [[ ! ${EPREFIX} ]]; then
-		doins "${FILESDIR}"/bashrc.d/15-gentoo-bashrc-check.bash
-	fi
-
-	insinto /etc/skel
-	for f in bash{_logout,_profile,rc}; do
-		newins "${FILESDIR}/dot-${f}" ".${f}"
-	done
-
-	if use plugins; then
-		exeinto "/usr/$(get_libdir)/bash"
-		set -- examples/loadables/*.o
-		doexe "${@%.o}"
-
-		insinto /usr/include/bash-plugins
-		doins *.h builtins/*.h include/*.h lib/{glob/glob.h,tilde/tilde.h}
-	fi
-
-	if use examples; then
-		for d in examples/{functions,misc,scripts,startup-files}; do
-			exeinto "/usr/share/doc/${PF}/${d}"
-			docinto "${d}"
-			for f in "${d}"/*; do
-				if [[ ${f##*/} != @(PERMISSION|*README) ]]; then
-					doexe "${f}"
-				else
-					dodoc "${f}"
-				fi
-			done
-		done
-	fi
-
-	# Install bash_builtins.1 and rbash.1.
-	emake -C doc DESTDIR="${D}" install_builtins
-	sed 's:bash\.1:man1/&:' doc/rbash.1 > "${T}"/rbash.1 || die
-	doman "${T}"/rbash.1
-
-	newdoc CWRU/changelog ChangeLog
-	dosym bash.info /usr/share/info/bashref.info
-}
-
-pkg_preinst() {
-	if [[ -e ${EROOT}/etc/bashrc ]] && [[ ! -d ${EROOT}/etc/bash ]]; then
-		mkdir -p -- "${EROOT}"/etc/bash \
-		&& mv -f -- "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/ \
-		|| die
-	fi
-}
-
-pkg_postinst() {
-	local old_ver
-
-	# If /bin/sh does not exist, provide it.
-	if [[ ! -e ${EROOT}/bin/sh ]]; then
-		ln -sf -- bash "${EROOT}"/bin/sh || die
-	fi
-
-	read -r old_ver <<<"${REPLACING_VERSIONS}"
-	if [[ ! $old_ver ]]; then
-		:
-	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r6"; then
-		return
-	elif ver_test "$old_ver" -lt "5.2" && ver_test "$old_ver" -ge "5.1_p16-r13"; then
-		return
-	fi
-
-	while read -r; do ewarn "${REPLY}"; done <<'EOF'
-Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash.
-
-Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the
-characteristics of the operating environment, this array may contain a command
-to set the terminal's window title. Those already choosing to customise the
-PROMPT_COMMAND variable are now advised to append their commands like so:
-
-PROMPT_COMMAND+=('custom command goes here')
-
-Gentoo no longer defaults to having bash manipulate the window title in the case
-that the terminal is controlled by sshd(8), unless screen or tmux are in use.
-Those wanting to set the title unconditionally may adjust ~/.bashrc - or create
-a custom /etc/bash/bashrc.d drop-in - to set PROMPT_COMMMAND like so:
-
-PROMPT_COMMAND=(genfun_set_win_title)
-
-Those who would prefer for bash never to interfere with the window title may
-now opt out of the default title setting behaviour, either with the "unset -v
-PROMPT_COMMAND" command or by re-defining PROMPT_COMMAND as desired.
-EOF
+	dodoc README NEWS AUTHORS CHANGES COMPAT Y2K doc/FAQ doc/INTRO
 }
