@@ -51,7 +51,7 @@ DEPEND="
 	>=media-video/pipewire-0.3.0:=[gstreamer]
 	>=media-libs/libwebp-1.0.0:=
 	>=dev-libs/openssl-1.0.1:=
-	>=media-libs/libshumate-1.0.0:1.0
+	>=media-libs/libshumate-1.2:1.0
 	>=dev-db/sqlite-3.24.0:3
 	>=sys-apps/xdg-desktop-portal-1.14.1
 
