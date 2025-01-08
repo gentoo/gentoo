@@ -259,11 +259,15 @@ src_compile() {
 }
 
 src_test() {
+	# t0610-reftable-basics.sh uses $A
+	local -x A=
+
 	meson_src_test
 
-	if use perl ; then
-		git_emake -C contrib/credential/netrc testverbose
-	fi
+	# TODO: Needs help finding built git with meson
+	#if use perl ; then
+	#	git_emake -C contrib/credential/netrc testverbose
+	#fi
 }
 
 src_install() {
