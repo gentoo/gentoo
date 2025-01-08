@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-09)
+# Last release from 2017; fails to build w/ GCC-14 and qscintilla-2.14.1.
+# Depends on Qt5. Removal on 2025-02-08.
+dev-db/tora
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-08)
 # Qt5-based library without any revdeps. Removal on 2025-02-07.
 dev-libs/kqoauth
