@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs autotools
 
 DESCRIPTION="SSH wrapper enabling zmodem up/download in ssh"
 HOMEPAGE="https://zssh.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="nls readline"
 
 DEPEND="readline? (
@@ -19,20 +19,23 @@ DEPEND="readline? (
 		sys-libs/readline:0
 	)"
 RDEPEND="${DEPEND}
-	net-dialup/lrzsz
+	net-dialup/lrzsz[nls?]
 	virtual/openssh"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5a-gentoo-include.diff"
+	"${FILESDIR}/${P}-C23.patch"
+	)
+
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-1.5a-gentoo-include.diff"
+	default
 
-	# Fix linking with sys-libs/ncurses[tinfo], bug #527036
-	sed -i -e 's/-ltermcap/-ltinfo/g' configure || die
-
-	eapply_user
+	eautoreconf
 }
 
 src_configure() {
 	tc-export AR CC RANLIB
+	#actually, nls isn't supported in this software, but in bundled lrzsz
 	econf \
 		$(use_enable nls) \
 		$(use_enable readline)
