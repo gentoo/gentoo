@@ -61,6 +61,7 @@ SLOT="0"
 IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
+# TODO: what purpose does USE=tk serve w/ meson port?
 DEPEND="
 	dev-libs/openssl:=
 	sys-libs/zlib
