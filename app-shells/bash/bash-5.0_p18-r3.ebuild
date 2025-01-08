@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,7 +53,7 @@ if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 fi
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="${MY_PV}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
@@ -130,7 +130,7 @@ src_configure() {
 
 	# bash 5.3 drops unprototyped functions, earlier versions are
 	# incompatible with C23.
-	append-cflags $(test-flags-CC -std=gnu17)
+	append-cflags $(test-flags-CC -std=gnu89)
 
 	local myconf=(
 		--disable-profiling
@@ -209,80 +209,15 @@ src_compile() {
 }
 
 src_install() {
-	local d f
+	into /
+	newbin bash bash-${SLOT}
 
-	default
+	newman doc/bash.1 bash-${SLOT}.1
+	newman doc/builtins.1 builtins-${SLOT}.1
 
-	dodir /bin
-	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
-	dosym bash /bin/rbash
+	insinto /usr/share/info
+	newins doc/bashref.info bash-${SLOT}.info
+	dosym bash-${SLOT}.info /usr/share/info/bashref-${SLOT}.info
 
-	insinto /etc/bash
-	doins "${FILESDIR}"/bash_logout
-	doins "$(prefixify_ro "${FILESDIR}"/bashrc)"
-
-	keepdir /etc/bash/bashrc.d
-
-	insinto /etc/skel
-	for f in bash{_logout,_profile,rc} ; do
-		newins "${FILESDIR}"/dot-${f} .${f}
-	done
-
-	local sed_args=(
-		-e 's:#GNU#@::'
-		-e '/#@/d'
-	)
-
-	if ! use readline ; then
-		# bug #432338
-		sed_args+=(
-			-e '/^shopt -s histappend/s:^:#:'
-			-e 's:use_color=true:use_color=false:'
-		)
-	fi
-
-	sed -i \
-		"${sed_args[@]}" \
-		"${ED}"/etc/skel/.bashrc \
-		"${ED}"/etc/bash/bashrc || die
-
-	if use plugins ; then
-		exeinto /usr/$(get_libdir)/bash
-		doexe $(echo examples/loadables/*.o | sed 's:\.o::g')
-
-		insinto /usr/include/bash-plugins
-		doins *.h builtins/*.h include/*.h lib/{glob/glob.h,tilde/tilde.h}
-	fi
-
-	if use examples ; then
-		for d in examples/{functions,misc,scripts,startup-files} ; do
-			exeinto /usr/share/doc/${PF}/${d}
-			docinto ${d}
-			for f in ${d}/* ; do
-				if [[ ${f##*/} != PERMISSION ]] && [[ ${f##*/} != *README ]] ; then
-					doexe ${f}
-				else
-					dodoc ${f}
-				fi
-			done
-		done
-	fi
-
-	doman doc/*.1
-	newdoc CWRU/changelog ChangeLog
-	dosym bash.info /usr/share/info/bashref.info
-}
-
-pkg_preinst() {
-	if [[ -e ${EROOT}/etc/bashrc ]] && [[ ! -d ${EROOT}/etc/bash ]] ; then
-		mkdir -p "${EROOT}"/etc/bash
-		mv -f "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/
-	fi
-}
-
-pkg_postinst() {
-	# If /bin/sh does not exist, provide it
-	if [[ ! -e ${EROOT}/bin/sh ]] ; then
-		ln -sf bash "${EROOT}"/bin/sh
-	fi
+	dodoc README NEWS AUTHORS CHANGES COMPAT Y2K doc/FAQ doc/INTRO
 }
