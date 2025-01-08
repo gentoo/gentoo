@@ -16,4 +16,7 @@
   <upstream>
     <remote-id type="github">shssoichiro/oxipng</remote-id>
   </upstream>
+  <use>
+    <flag name="system-libdeflate">use <pkg>app-arch/libdeflate</pkg> instead of the bundled one</flag>
+  </use>
 </pkgmetadata>
