@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,7 +69,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #944065
+	# https://bugs.gentoo.org/943931
 	append-cflags -std=gnu17
 
 	local args=(
