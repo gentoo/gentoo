@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt6-build.eclass
@@ -296,7 +296,7 @@ _qt6-build_sanitize_cpu_flags() {
 	# extras only needed by chromium in qtwebengine
 	# (see also chromium's ebuild wrt bug #530248,#544702,#546984,#853646)
 	[[ ${PN} == qtwebengine ]] && cpuflags+=(
-		mmx xop
+		avx512vnni mmx xop
 
 		# unclear if these two are really needed given (current) chromium
 		# does not pass these flags, albeit it may side-disable something
