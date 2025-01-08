@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,7 +73,7 @@ DEPEND="
 	>=gui-libs/gtksourceview-5.0.0:5
 	>=media-video/pipewire-0.3.0:=[gstreamer]
 	>=dev-libs/openssl-1.0.1:=
-	>=media-libs/libshumate-1.0.0:1.0
+	>=media-libs/libshumate-1.2:1.0
 	>=dev-db/sqlite-3.24.0:3
 	>=sys-apps/xdg-desktop-portal-1.14.1
 "
