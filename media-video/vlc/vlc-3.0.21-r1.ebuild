@@ -1,4 +1,4 @@
-# Copyright 2000-2024 Gentoo Authors
+# Copyright 2000-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
 	"${FILESDIR}"/${PN}-3.0.21-freerdp-2.patch # bug 919296, 590164
 	"${FILESDIR}"/${PN}-3.0.21-vaapi-without-ffmpeg4.patch # bug 864721, thx Fedora
+	"${FILESDIR}"/${PN}-3.0.2.1-vdpau.patch # bug 946178
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
