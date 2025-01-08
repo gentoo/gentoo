@@ -32,6 +32,7 @@ RDEPEND="
 	dev-python/python-xlib[${PYTHON_USEDEP}]
 	>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	appindicator? ( dev-libs/libayatana-appindicator )
 	libnotify? ( x11-libs/libnotify[introspection] )
