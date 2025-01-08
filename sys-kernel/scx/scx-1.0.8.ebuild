@@ -1,9 +1,9 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( {16..18} )
+LLVM_COMPAT=( {16..19} )
 
 # List of crates for pycargoebuild:
 # rust/scx_{loader,rustland_core,stats,utils}
