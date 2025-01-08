@@ -99,6 +99,7 @@ QA_PRESTRIPPED="usr/bin/ghostty"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-bzip2-dependency.patch
 	"${FILESDIR}"/${PN}-1.0.1-copy-terminfo-using-installdir.patch
+	"${FILESDIR}"/${PN}-1.0.1-apprt-gtk-move-most-version-checks-to-runtime.patch
 )
 
 src_configure() {

@@ -1,0 +1,125 @@
+From 83bb35ffa3dae7093b829aec380d1ef322a10efb Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Tue, 7 Jan 2025 19:12:53 +0000
+Subject: [PATCH 1/2] apprt/gtk: Add version.runtimeAtLeast
+
+This will be used for version checks that are independent of the version
+of GTK we built against.
+---
+ src/apprt/gtk/version.zig | 38 ++++++++++++++++++++++++++++++--------
+ 1 file changed, 30 insertions(+), 8 deletions(-)
+
+diff --git a/src/apprt/gtk/version.zig b/src/apprt/gtk/version.zig
+index af7ad12ea0..d8686fa28a 100644
+--- a/src/apprt/gtk/version.zig
++++ b/src/apprt/gtk/version.zig
+@@ -7,6 +7,11 @@ const c = @import("c.zig").c;
+ /// in the headers. If it is run in a runtime context, it will
+ /// check the actual version of the library we are linked against.
+ ///
++/// This function should be used in cases where the version check
++/// would affect code generation, such as using symbols that are
++/// only available beyond a certain version. For checks which only
++/// depend on GTK's runtime behavior, use `runtimeAtLeast`.
++///
+ /// This is inlined so that the comptime checks will disable the
+ /// runtime checks if the comptime checks fail.
+ pub inline fn atLeast(
+@@ -26,6 +31,20 @@ pub inline fn atLeast(
+     // If we're in comptime then we can't check the runtime version.
+     if (@inComptime()) return true;
+ 
++    return runtimeAtLeast(major, minor, micro);
++}
++
++/// Verifies that the GTK version at runtime is at least the given
++/// version.
++///
++/// This function should be used in cases where the only the runtime
++/// behavior is affected by the version check. For checks which would
++/// affect code generation, use `atLeast`.
++pub inline fn runtimeAtLeast(
++    comptime major: u16,
++    comptime minor: u16,
++    comptime micro: u16,
++) bool {
+     // We use the functions instead of the constants such as
+     // c.GTK_MINOR_VERSION because the function gets the actual
+     // runtime version.
+@@ -44,15 +63,18 @@ test "atLeast" {
+     const std = @import("std");
+     const testing = std.testing;
+ 
+-    try testing.expect(atLeast(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION));
++    const funs = &.{ atLeast, runtimeAtLeast };
++    inline for (funs) |fun| {
++        try testing.expect(fun(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION));
+ 
+-    try testing.expect(!atLeast(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION + 1));
+-    try testing.expect(!atLeast(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION + 1, c.GTK_MICRO_VERSION));
+-    try testing.expect(!atLeast(c.GTK_MAJOR_VERSION + 1, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION));
++        try testing.expect(!fun(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION + 1));
++        try testing.expect(!fun(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION + 1, c.GTK_MICRO_VERSION));
++        try testing.expect(!fun(c.GTK_MAJOR_VERSION + 1, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION));
+ 
+-    try testing.expect(atLeast(c.GTK_MAJOR_VERSION - 1, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION));
+-    try testing.expect(atLeast(c.GTK_MAJOR_VERSION - 1, c.GTK_MINOR_VERSION + 1, c.GTK_MICRO_VERSION));
+-    try testing.expect(atLeast(c.GTK_MAJOR_VERSION - 1, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION + 1));
++        try testing.expect(fun(c.GTK_MAJOR_VERSION - 1, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION));
++        try testing.expect(fun(c.GTK_MAJOR_VERSION - 1, c.GTK_MINOR_VERSION + 1, c.GTK_MICRO_VERSION));
++        try testing.expect(fun(c.GTK_MAJOR_VERSION - 1, c.GTK_MINOR_VERSION, c.GTK_MICRO_VERSION + 1));
+ 
+-    try testing.expect(atLeast(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION - 1, c.GTK_MICRO_VERSION + 1));
++        try testing.expect(fun(c.GTK_MAJOR_VERSION, c.GTK_MINOR_VERSION - 1, c.GTK_MICRO_VERSION + 1));
++    }
+ }
+
+From 8a7e6c050c556463b126181e01f256a0043ca14a Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Tue, 7 Jan 2025 19:53:27 +0000
+Subject: [PATCH 2/2] apprt/gtk: Move most version checks to runtime
+
+Unless we are guarding against symbols added in new versions we now
+check against the runtime version of GTK to handle them even when we
+didn't build against that version.
+---
+ src/apprt/gtk/App.zig | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/apprt/gtk/App.zig b/src/apprt/gtk/App.zig
+index 3cc1782c86..993dfcc328 100644
+--- a/src/apprt/gtk/App.zig
++++ b/src/apprt/gtk/App.zig
+@@ -104,12 +104,12 @@ pub fn init(core_app: *CoreApp, opts: Options) !App {
+     // Disabling Vulkan can improve startup times by hundreds of
+     // milliseconds on some systems. We don't use Vulkan so we can just
+     // disable it.
+-    if (version.atLeast(4, 16, 0)) {
++    if (version.runtimeAtLeast(4, 16, 0)) {
+         // From gtk 4.16, GDK_DEBUG is split into GDK_DEBUG and GDK_DISABLE.
+         // For the remainder of "why" see the 4.14 comment below.
+         _ = internal_os.setenv("GDK_DISABLE", "gles-api,vulkan");
+         _ = internal_os.setenv("GDK_DEBUG", "opengl");
+-    } else if (version.atLeast(4, 14, 0)) {
++    } else if (version.runtimeAtLeast(4, 14, 0)) {
+         // We need to export GDK_DEBUG to run on Wayland after GTK 4.14.
+         // Older versions of GTK do not support these values so it is safe
+         // to always set this. Forwards versions are uncertain so we'll have to
+@@ -131,7 +131,7 @@ pub fn init(core_app: *CoreApp, opts: Options) !App {
+         _ = internal_os.setenv("GDK_DEBUG", "vulkan-disable");
+     }
+ 
+-    if (version.atLeast(4, 14, 0)) {
++    if (version.runtimeAtLeast(4, 14, 0)) {
+         // We need to export GSK_RENDERER to opengl because GTK uses ngl by
+         // default after 4.14
+         _ = internal_os.setenv("GSK_RENDERER", "opengl");
+@@ -983,7 +983,7 @@ fn loadRuntimeCss(
+         unfocused_fill.b,
+     });
+ 
+-    if (version.atLeast(4, 16, 0)) {
++    if (version.runtimeAtLeast(4, 16, 0)) {
+         switch (window_theme) {
+             .ghostty => try writer.print(
+                 \\:root {{
