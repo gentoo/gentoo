@@ -98,6 +98,7 @@ multilib_src_configure() {
 
 		-Disadir='.'
 		-Dxml-catalog="${BROOT}"/etc/xml/catalog
+		-Dsbindir="${EPREFIX}"/sbin
 		-Dsecuredir="${EPREFIX}"/$(get_libdir)/security
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		-Dhtmldir="${EPREFIX}"/usr/share/doc/${PF}/html
