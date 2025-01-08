@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-01-08)
+# Depends on currently-masked elogind version on musl profiles (bug #947739)
+sys-libs/pam elogind
 
 # Cheyenne Wills <cwills@witznd.net> (2025-01-05)
 # openafs hasn't been ported to / tested with musl bug #832428
