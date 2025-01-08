@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ RDEPEND="
 	nat-pmp? ( >=net-libs/libnatpmp-20230423:= )
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
 	sqlite? ( >=dev-db/sqlite-3.38.5:= )
-	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.4.0:=[ellswift,extrakeys,recovery,schnorr] )
+	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[ellswift,extrakeys,recovery,schnorr] )
 	upnp? ( >=net-libs/miniupnpc-2.2.7:= )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
 "
