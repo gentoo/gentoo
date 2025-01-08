@@ -52,6 +52,9 @@ src_prepare() {
 	default
 	rm -r dependencies/{httplib,hidapi,libusb,mdns,json,mbedtls}* \
 		|| die "Failed to remove unneded deps"
+
+	rm dependencies/hueplusplus-1.1.0/include/json/json.hpp || die
+	echo "#include <nlohmann/json.hpp>" > dependencies/hueplusplus-1.1.0/include/json/json.hpp || die
 }
 
 src_configure() {
