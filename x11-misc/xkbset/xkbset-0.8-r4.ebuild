@@ -7,11 +7,11 @@ inherit toolchain-funcs
 DESCRIPTION="User preference utility for XKB extensions for X"
 HOMEPAGE="https://github.com/stephenmontgomerysmith/xkbset"
 SRC_URI="https://plx.im/gentoo/${P}.tar.gz"
+S=${WORKDIR}/${P/_p*/}
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-S=${WORKDIR}/${P/_p*/}
 IUSE="tk"
 
 CDEPEND="
