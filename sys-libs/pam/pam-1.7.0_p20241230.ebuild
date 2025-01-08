@@ -45,6 +45,7 @@ BDEPEND+="
 	|| ( sys-devel/bison dev-util/byacc )
 	sys-devel/flex
 	virtual/pkgconfig
+	virtual/w3m
 	nls? ( sys-devel/gettext )
 "
 DEPEND="
@@ -75,7 +76,18 @@ src_configure() {
 }
 
 multilib_src_configure() {
+	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
+	# Workaround for docbook5 not being packaged (bug #913087#c4)
+	# It's only used for validation of output, so stub it out.
+	cat >> ${native_file} <<-EOF || die
+	[binaries]
+	xmlcatalog='true'
+	xmllint='true'
+	EOF
+
 	local emesonargs=(
+		--native-file "${native_file}"
+
 		$(meson_feature audit)
 		$(meson_native_use_bool examples)
 		$(meson_use debug pam-debug)
@@ -86,17 +98,14 @@ multilib_src_configure() {
 		-Disadir='.'
 		-Dxml-catalog="${BROOT}"/etc/xml/catalog
 		-Dsecuredir="${EPREFIX}"/$(get_libdir)/security
+		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
+		-Dhtmldir="${EPREFIX}"/usr/share/doc/${PF}/html
+		-Dpdfdir="${EPREFIX}"/usr/share/doc/${PF}/pdf
 
 		-Ddb=$(usex berkdb 'db' 'gdbm')
 		-Ddb-uniquename=$(db_findver sys-libs/db)
 
-		# TODO: Docs are currently disabled as would need to either
-		# add the deps (some appear unpackaged too?) and possibly
-		# generate a tarball for them, but not so critical of an issue
-		# to handle with the Meson migration given this was disabled
-		# before too (see bug #913087).
-		#$(meson_native_enabled docs)
-		-Ddocs=disabled
+		$(meson_native_enabled docs)
 
 		-Dpam_unix=enabled
 
@@ -140,12 +149,6 @@ multilib_src_install_all() {
 	use selinux && cat ->> "${ED}"/usr/lib/tmpfiles.d/${CATEGORY}-${PN}-selinux.conf <<-_EOF_
 		d /run/sepermit 0755 root root
 	_EOF_
-
-	# TODO: See bug #913087
-	#local page
-	#for page in doc/man/*.{3,5,8} modules/*/*.{5,8} ; do
-	#	doman ${page}
-	#done
 }
 
 pkg_postinst() {
