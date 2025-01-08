@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ago/distfiles/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 src_compile() {
 	ego build -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.versionPrerelease=gentoo" ./cmd/${PN}
