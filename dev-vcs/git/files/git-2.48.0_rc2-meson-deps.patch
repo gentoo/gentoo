@@ -1,0 +1,74 @@
+--- a/perl/FromCPAN/Mail/meson.build
++++ b/perl/FromCPAN/Mail/meson.build
+@@ -4,4 +4,5 @@ test_dependencies += custom_target(
+   command: generate_perl_command,
+   install: true,
+   install_dir: get_option('datadir') / 'perl5/FromCPAN/Mail',
++  depends: [git_version_file],
+ )
+--- a/perl/FromCPAN/meson.build
++++ b/perl/FromCPAN/meson.build
+@@ -4,6 +4,7 @@ test_dependencies += custom_target(
+   command: generate_perl_command,
+   install: true,
+   install_dir: get_option('datadir') / 'perl5/FromCPAN',
++  depends: [git_version_file],
+ )
+ 
+ subdir('Mail')
+--- a/perl/Git/LoadCPAN/Mail/meson.build
++++ b/perl/Git/LoadCPAN/Mail/meson.build
+@@ -4,4 +4,5 @@ test_dependencies += custom_target(
+   command: generate_perl_command,
+   install: true,
+   install_dir: get_option('datadir') / 'perl5/Git/LoadCPAN/Mail',
++  depends: [git_version_file],
+ )
+--- a/perl/Git/LoadCPAN/meson.build
++++ b/perl/Git/LoadCPAN/meson.build
+@@ -4,6 +4,7 @@ test_dependencies += custom_target(
+   command: generate_perl_command,
+   install: true,
+   install_dir: get_option('datadir') / 'perl5/Git/LoadCPAN',
++  depends: [git_version_file],
+ )
+ 
+ subdir('Mail')
+--- a/perl/Git/SVN/Memoize/meson.build
++++ b/perl/Git/SVN/Memoize/meson.build
+@@ -4,4 +4,5 @@ test_dependencies += custom_target(
+   command: generate_perl_command,
+   install: true,
+   install_dir: get_option('datadir') / 'perl5/Git/SVN',
++  depends: [git_version_file],
+ )
+--- a/perl/Git/SVN/meson.build
++++ b/perl/Git/SVN/meson.build
+@@ -14,6 +14,7 @@ foreach source : [
+     command: generate_perl_command,
+     install: true,
+     install_dir: get_option('datadir') / 'perl5/Git/SVN',
++    depends: [git_version_file],
+   )
+ endforeach
+ 
+--- a/perl/Git/meson.build
++++ b/perl/Git/meson.build
+@@ -11,6 +11,7 @@ foreach source : [
+     command: generate_perl_command,
+     install: true,
+     install_dir: get_option('datadir') / 'perl5/Git',
++    depends: [git_version_file],
+   )
+ endforeach
+ 
+--- a/perl/meson.build
++++ b/perl/meson.build
+@@ -4,6 +4,7 @@ test_dependencies += custom_target(
+   command: generate_perl_command,
+   install: true,
+   install_dir: get_option('datadir') / 'perl5',
++  depends: [git_version_file],
+ )
+ 
+ subdir('Git')
