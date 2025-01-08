@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${PN}-1.15.0-libfmt-11.1.0.patch"
 )
 
 multilib_src_prepare() {
