@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -149,7 +149,7 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	newicon bin/resources/icons/AppIconLarge.png pcsx2-qt.png
+	newicon bin/resources/icons/AppIconLarge.png pcsx2.png
 	make_desktop_entry pcsx2-qt PCSX2
 
 	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,debugger.txt}
