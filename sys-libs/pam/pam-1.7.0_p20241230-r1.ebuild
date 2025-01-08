@@ -42,6 +42,7 @@ REQUIRED_USE="?? ( elogind systemd )"
 # meson.build specifically checks for bison and then byacc
 BDEPEND+="
 	|| ( sys-devel/bison dev-util/byacc )
+	app-text/docbook-xsl-ns-stylesheets
 	sys-devel/flex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
