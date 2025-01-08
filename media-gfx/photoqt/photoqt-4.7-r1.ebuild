@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	app-arch/libarchive:=
 	dev-libs/pugixml
 	dev-qt/qtbase:6[dbus,concurrent,gui,network,sql,widgets,xml]
-	dev-qt/qtdeclarative:6
+	dev-qt/qtdeclarative:6[opengl]
 	dev-qt/qtimageformats:6
 	dev-qt/qtmultimedia:6[qml]
 	dev-qt/qtsvg:6
