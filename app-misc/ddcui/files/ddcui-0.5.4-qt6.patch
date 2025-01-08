@@ -1,0 +1,51 @@
+From d1773d3625388f4e56f0debabff3a3b6bd4100cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Pereira?= <luis.artur.pereira@gmail.com>
+Date: Tue, 15 Oct 2024 18:22:50 +0100
+Subject: [PATCH] Fixes a FTBFS using Qt6
+
+Also builds with Qt5.
+The use of "universal" headers allows source compatibility between Qt5 and
+Qt6.
+---
+ src/main/mainwindow.cpp  |  2 +-
+ src/main/mainwindow_ui.h | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/main/mainwindow.cpp b/src/main/mainwindow.cpp
+index fbf3fc5..4b42ea1 100644
+--- a/src/main/mainwindow.cpp
++++ b/src/main/mainwindow.cpp
+@@ -15,7 +15,7 @@
+ #include <QtGui/QKeyEvent>
+ #include <QtWidgets/QMessageBox>
+ #include <QtWidgets/QWidget>
+-#include <QtWidgets/QShortcut>     // 5.9
++#include <QShortcut>     // 5.9
+ 
+ #include <ddcutil_c_api.h>
+ #include <ddcutil_status_codes.h>
+diff --git a/src/main/mainwindow_ui.h b/src/main/mainwindow_ui.h
+index edd7d88..2665fe4 100644
+--- a/src/main/mainwindow_ui.h
++++ b/src/main/mainwindow_ui.h
+@@ -9,13 +9,13 @@
+ #include <iostream>
+ 
+ #include <QtGui/QFont>
+-#include <QtWidgets/QAction>
+-#include <QtWidgets/QApplication>
+-#include <QtWidgets/QMainWindow>
+-#include <QtWidgets/QMenuBar>
+-#include <QtWidgets/QStackedWidget>
+-#include <QtWidgets/QStatusBar>
+-#include <QtWidgets/QToolBar>
++#include <QAction>
++#include <QApplication>
++#include <QMainWindow>
++#include <QMenuBar>
++#include <QStackedWidget>
++#include <QStatusBar>
++#include <QToolBar>
+ #include <QtGui/QKeyEvent>
+ 
+ #include "base/ddcui_core.h"
