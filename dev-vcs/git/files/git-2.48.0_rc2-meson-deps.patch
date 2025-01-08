@@ -1,3 +1,17 @@
+https://lore.kernel.org/git/371571630df201b0b0c680f6437decc6c60ecd3b.1736307757.git.sam@gentoo.org/
+
+From 371571630df201b0b0c680f6437decc6c60ecd3b Mon Sep 17 00:00:00 2001
+Message-ID: <371571630df201b0b0c680f6437decc6c60ecd3b.1736307813.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Wed, 8 Jan 2025 03:40:55 +0000
+Subject: [PATCH] meson: fix perl dependencies
+
+`generate_perl_command` needs `depends: [git_version_file]` and the uses
+in top-level meson.build were fine, but the ones in perl/ weren't, causing
+parallel build failures in some cases as GIT-BUILD-OPTIONS wasn't yet
+available.
+
+Signed-off-by: Sam James <sam@gentoo.org>
 --- a/perl/FromCPAN/Mail/meson.build
 +++ b/perl/FromCPAN/Mail/meson.build
 @@ -4,4 +4,5 @@ test_dependencies += custom_target(
@@ -72,3 +86,6 @@
  )
  
  subdir('Git')
+-- 
+2.48.0.rc2.29.g7bab57bd98
+
