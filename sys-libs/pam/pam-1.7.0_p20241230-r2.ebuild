@@ -53,9 +53,9 @@ DEPEND="
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	!berkdb? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
-	elogind? ( sys-auth/elogind )
+	elogind? ( >=sys-auth/elogind-254 )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
-	systemd? ( sys-apps/systemd:= )
+	systemd? ( >=sys-apps/systemd-254:= )
 	nis? (
 		net-libs/libnsl:=[${MULTILIB_USEDEP}]
 		>=net-libs/libtirpc-0.2.4-r2:=[${MULTILIB_USEDEP}]
