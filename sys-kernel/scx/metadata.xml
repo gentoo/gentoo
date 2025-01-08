@@ -22,5 +22,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">sched-ext/scx</remote-id>
+		<changelog>https://github.com/sched-ext/scx/releases</changelog>
+		<bugs-to>https://github.com/sched-ext/scx/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
