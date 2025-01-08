@@ -52,7 +52,7 @@ RDEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
-	media-libs/libdisplay-info:=
+	>=media-libs/libdisplay-info-0.2:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
