@@ -19,6 +19,7 @@
   </maintainer>
   <use>
     <flag name="lldb">Parse debug info using<pkg>llvm-core/lldb</pkg></flag>
+    <flag name="pcap">Enable skb_output using <pkg>net-libs/libpcap</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">bpftrace/bpftrace</remote-id>
