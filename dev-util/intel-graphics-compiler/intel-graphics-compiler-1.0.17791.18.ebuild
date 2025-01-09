@@ -13,7 +13,7 @@ inherit cmake flag-o-matic llvm-r1 python-any-r1
 
 DESCRIPTION="LLVM-based OpenCL compiler for OpenCL targetting Intel Gen graphics hardware"
 HOMEPAGE="https://github.com/intel/intel-graphics-compiler"
-SRC_URI="https://github.com/intel/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="MIT"
@@ -81,6 +81,8 @@ src_configure() {
 	! use debug && append-cppflags -DNDEBUG
 
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS="OFF"
+		-DCCLANG_FROM_SYSTEM="ON"
 		-DCCLANG_SONAME_VERSION="${LLVM_SLOT}"
 		-DCMAKE_LIBRARY_PATH="$(get_llvm_prefix)/$(get_libdir)"
 		-DIGC_BUILD__VC_ENABLED="$(usex vc)"
@@ -88,12 +90,14 @@ src_configure() {
 		-DIGC_OPTION__CLANG_MODE="Prebuilds"
 		-DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR="ON"
 		-DIGC_OPTION__LLD_MODE="Prebuilds"
-		-DIGC_OPTION__LLDELF_H_DIR="${EPREFIX}/usr/include/lld/Common"
+		-DIGC_OPTION__LLDELF_H_DIR="$(get_llvm_prefix)/include/lld/Common"
 		-DIGC_OPTION__LLVM_MODE="Prebuilds"
 		-DIGC_OPTION__LLVM_PREFERRED_VERSION="${llvm_version##*-}"
 		-DIGC_OPTION__OPENCL_HEADER_PATH="/usr/lib/clang/${llvm_version##*-}/include/opencl-c.h"
 		-DIGC_OPTION__SPIRV_TOOLS_MODE="Prebuilds"
 		-DIGC_OPTION__SPIRV_TRANSLATOR_MODE="Prebuilds"
+		-DIGC_OPTION__USE_KHRONOS_SPIRV_TRANSLATOR_IN_SC="ON"
+		-DIGC_OPTION__USE_PREINSTALLED_SPIRV_HEADERS="ON"
 		$(usex vc '-DIGC_OPTION__VC_INTRINSICS_MODE=Prebuilds' '')
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DINSTALL_GENX_IR="ON"
