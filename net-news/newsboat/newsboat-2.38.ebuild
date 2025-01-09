@@ -67,12 +67,7 @@ src_prepare() {
 	# for older lib versions.
 	sed -i -e "s/^check_ssl_implementation$//g" config.sh || die
 
-	if use doc; then
-		local docdir="${WORKDIR}/${PN}-docs-${PV}"
-		mkdir doc/xhtml || die
-		mv "${docdir}"/*.1 doc || die
-		mv "${docdir}"/*.html doc/xhtml || die
-	else
+	if use !doc; then
 		sed -i Makefile -e "s#^doc: .*#doc: doc/example-config#" || die
 	fi
 }
