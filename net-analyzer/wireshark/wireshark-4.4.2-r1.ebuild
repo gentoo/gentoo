@@ -253,6 +253,11 @@ src_configure() {
 src_test() {
 	cmake_build test-programs
 
+	EPYTEST_DESELECT=(
+		# https://gitlab.com/wireshark/wireshark/-/issues/20330
+		suite_sharkd.py::TestSharkd::test_sharkd_req_follow_http2
+	)
+
 	# https://www.wireshark.org/docs/wsdg_html_chunked/ChTestsRunPytest.html
 	epytest \
 		--disable-capture \
