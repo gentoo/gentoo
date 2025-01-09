@@ -5,6 +5,7 @@
 		<email>ada@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="projects">Build gnatcoll_projects</flag>
 		<flag name="shared">Build shared library</flag>
 		<flag name="static-pic">Build static library with pic code</flag>
 	</use>

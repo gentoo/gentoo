@@ -1,0 +1,11 @@
+--- a/projects/src/gnatcoll-projects.ads	2025-01-04 15:16:43.534598733 +0100
++++ b/projects/src/gnatcoll-projects.ads	2025-01-04 15:17:23.548103890 +0100
+@@ -2093,7 +2093,7 @@
+       Predefined_Source_Files : GNATCOLL.VFS.File_Array_Access;
+       --  The list of source files in Predefined_Source_Path
+ 
+-      Default_Gnatls : GNAT.Strings.String_Access := new String'("gnatls");
++      Default_Gnatls : GNAT.Strings.String_Access := new String'("@GNATLS@");
+       --  The default gnatls command to run.
+ 
+       Xrefs_Subdir : GNAT.Strings.String_Access;
