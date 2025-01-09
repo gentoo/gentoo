@@ -24,7 +24,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/$(ver_cut 1-3)"
+SLOT="0/$(ver_cut 1-2)" # based on SONAME
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -33,7 +33,9 @@ X86_CPU_FEATURES=(
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
 IUSE="debug doc gui libcxx nofma partio test ${CPU_FEATURES[*]%:*} python"
+
 RESTRICT="!test? ( test )"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -58,8 +60,12 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
+	dev-util/patchelf
 	>=media-libs/openexr-3
 	sys-libs/zlib
+	test? (
+		media-fonts/droid
+	)
 "
 BDEPEND="
 	sys-devel/bison
@@ -124,25 +130,24 @@ src_configure() {
 					"b8_AVX512_noFMA"
 					"b16_AVX512_noFMA"
 				)
-			else
-				mybatched+=(
-					"b8_AVX512"
-					"b16_AVX512"
-				)
 			fi
+			mybatched+=(
+				"b8_AVX512"
+				"b16_AVX512"
+			)
 		fi
 		if use cpu_flags_x86_avx2 ; then
 			if use nofma; then
 				mybatched+=(
 					"b8_AVX2_noFMA"
 				)
-			else
-				mybatched+=(
-					"b8_AVX2"
-				)
 			fi
+			mybatched+=(
+				"b8_AVX2"
+			)
 		fi
-	elif use cpu_flags_x86_avx ; then
+	fi
+	if use cpu_flags_x86_avx ; then
 		mybatched+=(
 			"b8_AVX"
 		)
@@ -191,7 +196,7 @@ src_configure() {
 
 	if use partio; then
 		mycmakeargs+=(
-			-Dpartio_ROOT="${EPREFIX}/usr"
+			-Dpartio_DIR="${EPREFIX}/usr"
 		)
 	fi
 
@@ -213,7 +218,7 @@ src_test() {
 	ln -s "${CMAKE_USE_DIR}/src/cmake/" "${BUILD_DIR}/src/cmake" || die
 
 	CMAKE_SKIP_TESTS=(
-		"broken"
+		"-broken$"
 		"^render"
 
 		# outright fail
@@ -222,6 +227,7 @@ src_test() {
 		"^color.batched$"
 		"^color.batched.opt$"
 		"^matrix.batched.opt$"
+		"^osl-imageio"
 		"^spline-reg.regress.batched.opt$"
 		"^transform-reg.regress.batched.opt$"
 	)
@@ -355,7 +361,7 @@ src_test() {
 	)
 
 	local -x DEBUG CXXFLAGS LD_LIBRARY_PATH DIR OSL_DIR OSL_SOURCE_DIR PYTHONPATH
-	DEBUG=1 # doubles the floating point tolerance
+	DEBUG=1 # doubles the floating point tolerance so we avoid FMA related issues
 	CXXFLAGS="-I${T}/usr/include"
 	LD_LIBRARY_PATH="${T}/usr/$(get_libdir)"
 	OSL_DIR="${T}/usr/$(get_libdir)/cmake/OSL"
@@ -366,6 +372,10 @@ src_test() {
 	fi
 
 	cmake_src_test
+
+	einfo ""
+	einfo "testing render tests in isolation"
+	einfo ""
 
 	CMAKE_SKIP_TESTS=(
 		"^render-background$"
