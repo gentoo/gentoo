@@ -141,11 +141,6 @@ dev-lang/rust nightly system-bootstrap
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
 
-# Kent Fredric <kentnl@gentoo.org> (2019-08-29)
-# Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
-# instead if you can.
-dev-perl/DBD-mysql mariadb
-
 # Kent Fredric <kentnl@gentoo.org> (2019-07-30)
 # These features require dev-perl/GD, which currently can't be
 # considered stable due to serious defects upstream. Bug #661634
