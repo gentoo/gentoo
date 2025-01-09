@@ -16,7 +16,11 @@ KEYWORDS="amd64 x86"
 PATCHES=("${FILESDIR}"/${P}-make-instability.patch)
 
 src_configure() {
-	# NIH configure script
+	# NIH configure script that uses hardcoded cc for discovery
+	# https://bugs.gentoo.org/947767
+	sed -i -e "s:cc=\"gcc\":cc=\"$(tc-getCC)\":" configure \
+	|| die failed to patch CC
+
 	./configure \
 		--ar="$(tc-getAR)" \
 		--cc="$(tc-getCC)" \
