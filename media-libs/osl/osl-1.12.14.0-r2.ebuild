@@ -67,6 +67,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-include-cstdint.patch"
 	"${FILESDIR}/${PN}-1.12.14.0-libfmt11.patch"
 	"${FILESDIR}/${PN}-1.12.14.0-m_dz.patch"
 )

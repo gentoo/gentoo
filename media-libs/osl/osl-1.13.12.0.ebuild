@@ -75,6 +75,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-include-cstdint.patch"
+)
+
 pkg_setup() {
 	llvm-r1_pkg_setup
 
