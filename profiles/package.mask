@@ -216,11 +216,6 @@ dev-db/firebird
 app-text/kjots
 kde-apps/knotes
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
-# KF5 Porting Aids removal; bugs 755956, 759778
-# Removal on 2025-01-09
-kde-frameworks/countryflags
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
