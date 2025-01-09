@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">bashdb</remote-id>
+		<remote-id type="github">Trepan-Debuggers/bashdb</remote-id>
 	</upstream>
 </pkgmetadata>
