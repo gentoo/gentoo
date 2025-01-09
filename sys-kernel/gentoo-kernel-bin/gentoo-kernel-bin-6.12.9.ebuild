@@ -53,6 +53,8 @@ BDEPEND="
 	dev-util/pahole
 	virtual/libelf
 	app-alternatives/yacc
+	amd64? ( app-crypt/sbsigntools )
+	arm64? ( app-crypt/sbsigntools )
 "
 
 QA_PREBUILT='*'

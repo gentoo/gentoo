@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,6 +53,8 @@ BDEPEND="
 	dev-util/pahole
 	virtual/libelf
 	app-alternatives/yacc
+	amd64? ( app-crypt/sbsigntools )
+	arm64? ( app-crypt/sbsigntools )
 "
 
 QA_PREBUILT='*'
