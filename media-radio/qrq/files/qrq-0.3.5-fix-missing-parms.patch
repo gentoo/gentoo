@@ -1,0 +1,26 @@
+diff --git a/pulseaudio.c b/pulseaudio.c
+index 7a791a0..ee08dbb 100644
+--- a/pulseaudio.c
++++ b/pulseaudio.c
+@@ -33,7 +33,7 @@ short int *buf = 0;
+ int bufsize = 0;
+ int bufpos = 0;
+ 
+-void *open_dsp () {
++void *open_dsp (char *dummy) {
+ 	static int opened = 0;
+ 
+ 	/* with PA we only open the device once and then leave it
+diff --git a/pulseaudio.h b/pulseaudio.h
+index a915f88..fea4d0c 100644
+--- a/pulseaudio.h
++++ b/pulseaudio.h
+@@ -21,7 +21,7 @@ Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #ifndef QRQ_PA
+ #define QRQ_PA
+ 
+-void *open_dsp (); 
++void *open_dsp (char *dummy);
+ void write_audio (void *unused, int *in, int size);
+ void close_audio (void *s);
+ 
