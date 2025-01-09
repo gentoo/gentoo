@@ -44,8 +44,8 @@ RDEPEND="
 	dev-libs/pugixml
 	>=media-libs/openimageio-2.4:=
 	$(llvm_gen_dep '
-		llvm-core/clang:${LLVM_SLOT}
-		llvm-core/llvm:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 	optix? ( dev-libs/optix[-headers-only] )
 	python? (
@@ -76,6 +76,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-boost-config.patch"
+	"${FILESDIR}/${PN}-oslfile.patch"
 	"${FILESDIR}/${PN}-include-cstdint.patch"
 	"${FILESDIR}/${PN}-1.12.14.0-m_dz.patch"
 )
@@ -269,6 +271,15 @@ src_test() {
 		"^osl-imageio.opt.rs_bitcode$"
 	)
 
+	if use optix; then
+		CMAKE_SKIP_TESTS+=(
+			"^color2.optix$"
+			"^color4.optix(|.opt|.fused)$"
+			"^vector2.optix$"
+			"^vector4.optix$"
+		)
+	fi
+
 	myctestargs=(
 		# src/build-scripts/ci-test.bash
 		'--force-new-ctest-process'
@@ -317,7 +328,7 @@ src_install() {
 	cmake_src_install
 
 	if [[ -d "${ED}/usr/build-scripts" ]]; then
-		rm -rf "${ED}/usr/build-scripts" || die
+		rm -vr "${ED}/usr/build-scripts" || die
 	fi
 
 	if use test; then

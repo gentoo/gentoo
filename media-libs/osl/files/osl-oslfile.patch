@@ -1,0 +1,26 @@
+From 9abc5d56c8ae830355a10d6008b5925faef30af2 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 9 Jan 2025 19:59:01 +0100
+Subject: [PATCH] oslsrc
+
+This was snuck in via 
+https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1914
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/src/shaders/CMakeLists.txt b/src/shaders/CMakeLists.txt
+index 1ea7bee..e96207d 100644
+--- a/src/shaders/CMakeLists.txt
++++ b/src/shaders/CMakeLists.txt
+@@ -40,7 +40,7 @@ macro (oslc_compile)
+     list (APPEND oslc_args "-I${CMAKE_SOURCE_DIR}/src/shaders")
+     add_custom_command (OUTPUT ${osofile}
+         COMMAND oslc ${oslc_args} "${oslfile}" -o "${osofile}"
+-        MAIN_DEPENDENCY ${oslsrc}
++        MAIN_DEPENDENCY ${oslfile}
+         DEPENDS ${_shader_DEPENDS} "${stdosl_header}" oslc
+         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+         COMMENT "oslc ${oslsrc_we}")
+-- 
+2.47.1
+

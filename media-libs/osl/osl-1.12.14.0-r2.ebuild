@@ -41,8 +41,8 @@ RDEPEND="
 	dev-libs/pugixml
 	>=media-libs/openimageio-2.4:=
 	$(llvm_gen_dep '
-		llvm-core/clang:${LLVM_SLOT}
-		llvm-core/llvm:${LLVM_SLOT}
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 	python? (
 		${PYTHON_DEPS}
@@ -68,6 +68,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-boost-config.patch"
+	"${FILESDIR}/${PN}-oslfile.patch"
 	"${FILESDIR}/${PN}-include-cstdint.patch"
 	"${FILESDIR}/${PN}-1.12.14.0-libfmt11.patch"
 	"${FILESDIR}/${PN}-1.12.14.0-m_dz.patch"
