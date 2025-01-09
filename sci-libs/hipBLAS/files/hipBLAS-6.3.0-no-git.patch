@@ -1,0 +1,18 @@
+Git is not required and rev-parse does nothing for tarballs.
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -44,14 +44,6 @@ if( BUILD_VERBOSE )
+   message( STATUS "\t==>CMAKE_EXE_LINKER link flags: " ${CMAKE_EXE_LINKER_FLAGS} )
+ endif( )
+ 
+-# Get the git hash of the hipBLAS branch
+-find_package(Git REQUIRED)
+-
+-execute_process(COMMAND "${GIT_EXECUTABLE}" rev-parse HEAD
+-                WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
+-                OUTPUT_VARIABLE GIT_HASH_HIPBLAS
+-                OUTPUT_STRIP_TRAILING_WHITESPACE)
+-
+ set(hipblas_VERSION_COMMIT_ID "${GIT_HASH_HIPBLAS}")
+ 
+ # log build commits
