@@ -36,6 +36,7 @@
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-09)
 # New version, which dropps support for legacy devices.
 # Will be unmasked, when split to legacy-branch is done.
+>=dev-libs/intel-compute-runtime-24.52.32224.5
 >=dev-util/intel-graphics-compiler-2.5.7
 
 # Andrey Grozin <grozin@gentoo.org> (2024-01-09)
