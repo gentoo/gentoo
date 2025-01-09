@@ -23,6 +23,7 @@ BDEPEND="xft? ( virtual/pkgconfig )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-cc.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-implicit-int.patch
 )
 
 src_prepare() {
