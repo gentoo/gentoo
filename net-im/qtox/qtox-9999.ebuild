@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/TokTok/qTox.git"
 else
 	MY_P="qTox-${PV}"
-	SRC_URI="https://github.com/TokTok/qTox/releases/download/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/TokTok/qTox/archive/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/qTox"
 fi
@@ -35,7 +35,7 @@ RDEPEND="
 	media-libs/libexif
 	media-libs/openal
 	media-video/ffmpeg:=[webp,v4l]
-	>=net-libs/tox-0.2.20:=[av]
+	>=net-libs/tox-0.2.19:=[av]
 	spellcheck? (
 		|| (
 			kde-frameworks/sonnet:6[aspell]
