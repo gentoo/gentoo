@@ -121,7 +121,7 @@ multilib_src_configure() {
 		# probably need a news item.
 		$(meson_native_use_feature systemd logind)
 		$(meson_native_use_feature elogind)
-		-Dpam_lastlog=enabled
+		$(meson_feature !elibc_musl pam_lastlog)
 	)
 
 	# This whole weird has_version libxcrypt block can go once
