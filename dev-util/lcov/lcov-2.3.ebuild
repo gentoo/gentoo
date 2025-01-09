@@ -62,6 +62,19 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Disable failing tests for now
+	# https://github.com/linux-test-project/lcov/issues/378
+	# https://github.com/linux-test-project/lcov/issues/380
+	sed \
+		-e 's, extract/,,' \
+		-e 's, mcdc$,,' \
+		-i.bak tests/lcov/Makefile || die
+	# https://github.com/linux-test-project/lcov/issues/381
+	sed \
+		-e 's, gendiffcov,,' \
+		-e 's, py2lcov,,' \
+		-i.bak tests/Makefile || die
+
 	default
 	if use prefix; then
 		hprefixify bin/*.{pl,sh}
