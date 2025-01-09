@@ -1,4 +1,4 @@
-# Copyright 2008-2023 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -10,7 +10,7 @@ heif
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # dev-db/mysql doesn't work well on PPC, especially 8.x, but should be fine on PPC64
--mysql
+mysql
 
 # Matt Turner <mattst88@gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
