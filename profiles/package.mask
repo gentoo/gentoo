@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2025-01-09)
+# Obsolete and needs to be dropped along with Qt5. The GTK theme has been
+# superseded by dev-qt/qtbase[gtk], which uses GTK 3 rather than GTK 2.
+# Removal on 2025-02-09. See bug #947787.
+dev-qt/qtstyleplugins
+
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-09)
 # New version, which dropps support for legacy devices.
 # Will be unmasked, when split to legacy-branch is done.
