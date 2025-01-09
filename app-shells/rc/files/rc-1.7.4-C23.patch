@@ -1,0 +1,30 @@
+just use build-ins when C is modern enough
+and other glibc defines that need enablement
+diff -ru a/rc.h b/rc.h
+--- a/rc.h	2025-01-05 21:16:39.487999355 +0400
++++ b/rc.h	2025-01-05 21:21:13.688559101 +0400
+@@ -44,9 +44,14 @@
+ 	eError, eBreak, eReturn, eVarstack, eArena, eFifo, eFd
+ } ecodes;
+ 
++#if __STDC_VERSION__ <= 201710L
+ typedef enum bool {
+ 	FALSE, TRUE
+ } bool;
++#else
++#define FALSE false
++#define TRUE true
++#endif
+ 
+ typedef enum redirtype {
+ 	rFrom, rCreate, rAppend, rHeredoc, rHerestring
+diff -ru a/configure.ac b/configure.ac
+--- a/configure.ac	2025-01-05 21:33:03.952267739 +0400
++++ b/configure.ac	2025-01-05 21:33:20.702194221 +0400
+@@ -1,5 +1,6 @@
+ dnl Our package name, version, ...
+ AC_INIT([rc], [1.7.4])
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ dnl ... and release date
+ RELDATE=`date -I`

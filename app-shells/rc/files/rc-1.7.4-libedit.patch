@@ -1,0 +1,17 @@
+bug https://bugs.gentoo.org/925558
+truncating number of lines from long uint to int and hoping
+for the best, due to API mismatch
+diff -ru a/edit-edit.c b/edit-edit.c
+--- a/edit-edit.c	2025-01-05 20:59:08.759555902 +0400
++++ b/edit-edit.c	2025-01-05 21:01:03.040010129 +0400
+@@ -50,8 +50,8 @@
+ 
+ 	oldint = sys_signal(SIGINT, edit_catcher);
+ 	oldquit = sys_signal(SIGQUIT, edit_catcher);
+-
+-	r = el_gets(c->el, count);
++	int trunc_count = *count;
++	r = el_gets(c->el, &trunc_count);
+ 
+ 	sys_signal(SIGINT, oldint);
+ 	sys_signal(SIGQUIT, oldquit);
