@@ -1,0 +1,141 @@
+From f871a87de325c753c90314371b72510bae24a6db Mon Sep 17 00:00:00 2001
+From: Filip Kobierski <fkobi@pm.me>
+Date: Sun, 29 Dec 2024 19:13:26 +0100
+Subject: [PATCH] fix gcc 14 errors
+
+namely:
+- implicit declarations
+- missing headers
+- implicit int variable
+
+Signed-off-by: Filip Kobierski <fkobi@pm.me>
+---
+ bcc/dbprintf.c      | 4 ++++
+ cpp/cpp.c           | 2 +-
+ unproto/strsave.c   | 4 ++++
+ unproto/symbol.c    | 4 ++++
+ unproto/tok_class.c | 1 +
+ unproto/tok_io.c    | 2 ++
+ unproto/unproto.c   | 1 +
+ 7 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/bcc/dbprintf.c b/bcc/dbprintf.c
+index a77a012..1694262 100644
+--- a/bcc/dbprintf.c
++++ b/bcc/dbprintf.c
+@@ -1,4 +1,6 @@
+ 
++#include <unistd.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
+ 
+@@ -10,6 +12,8 @@
+ #define va_strt(p,i) va_start(p)
+ #endif
+ 
++int vdbprintf(__const char *fmt, va_list ap);
++
+ #if defined(__STDC__) && !defined(__FIRST_ARG_IN_AX__)
+ int dbprintf(const char * fmt, ...)
+ #else
+diff --git a/cpp/cpp.c b/cpp/cpp.c
+index a6e7337..1ca4422 100644
+--- a/cpp/cpp.c
++++ b/cpp/cpp.c
+@@ -545,7 +545,7 @@ chget()
+ }
+ 
+ static void 
+-unchget(ch)
++unchget(int ch)
+ {
+ #if CPP_DEBUG
+    fprintf(stderr, "\b", ch);
+diff --git a/unproto/strsave.c b/unproto/strsave.c
+index c2a4b15..e1051c2 100644
+--- a/unproto/strsave.c
++++ b/unproto/strsave.c
+@@ -26,11 +26,15 @@ static char strsave_sccsid[] = "@(#) strsave.c 1.1 92/01/15 21:53:13";
+ 
+ /* C library */
+ 
++#import <string.h>
++
+ extern char *strcpy();
+ extern char *malloc();
+ 
+ /* Application-specific stuff */
+ 
++extern int hash(char *s, unsigned size);
++
+ #include "error.h"
+ 
+ #define	STR_TABSIZE	100
+diff --git a/unproto/symbol.c b/unproto/symbol.c
+index ce9f7d9..b725eb5 100644
+--- a/unproto/symbol.c
++++ b/unproto/symbol.c
+@@ -42,11 +42,15 @@ static char symbol_sccsid[] = "@(#) symbol.c 1.4 92/02/15 18:59:56";
+ 
+ /* C library */
+ 
++#include <string.h>
++
+ extern char *strcpy();
+ extern char *malloc();
+ 
+ /* Application-specific stuff */
+ 
++extern int hash(char *s, unsigned size);
++
+ #include "error.h"
+ #include "token.h"
+ #include "symbol.h"
+diff --git a/unproto/tok_class.c b/unproto/tok_class.c
+index 38ccd0d..0d71f89 100644
+--- a/unproto/tok_class.c
++++ b/unproto/tok_class.c
+@@ -48,6 +48,7 @@ static char class_sccsid[] = "@(#) tok_class.c 1.4 92/01/15 21:53:02";
+ 
+ /* C library */
+ 
++#include <string.h>
+ #include <stdio.h>
+ 
+ extern char *strcpy();
+diff --git a/unproto/tok_io.c b/unproto/tok_io.c
+index 3cae52e..15c7417 100644
+--- a/unproto/tok_io.c
++++ b/unproto/tok_io.c
+@@ -78,6 +78,7 @@ static char io_sccsid[] = "@(#) tok_io.c 1.3 92/01/15 21:52:59";
+ 
+ /* C library */
+ 
++#include <string.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ 
+@@ -88,6 +89,7 @@ extern char *strcpy();
+ 
+ /* Application-specific stuff */
+ 
++#include "../unproto/stdlib.h"
+ #include "token.h"
+ #include "vstring.h"
+ #include "error.h"
+diff --git a/unproto/unproto.c b/unproto/unproto.c
+index 1f29bff..0771d68 100644
+--- a/unproto/unproto.c
++++ b/unproto/unproto.c
+@@ -136,6 +136,7 @@ static char unproto_sccsid[] = "@(#) unproto.c 1.6 93/06/18 22:29:37";
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <string.h>
+ #include <stdio.h>
+ #include <errno.h>
+ 
+-- 
+2.45.2
+

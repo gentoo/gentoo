@@ -1,0 +1,19 @@
+diff --git a/bcc/dbprintf.c b/bcc/dbprintf.c
+index a77a012..ac32f25 100644
+--- a/bcc/dbprintf.c
++++ b/bcc/dbprintf.c
+@@ -2,6 +2,11 @@
+ #include <sys/types.h>
+ #include <fcntl.h>
+ 
++#include <stdio.h>
++#include <stdarg.h>
++#include <string.h>
++#include <unistd.h>
++
+ #if defined(__STDC__) && !defined(__FIRST_ARG_IN_AX__)
+ #include <stdarg.h>
+ #define va_strt      va_start
+-- 
+2.44.2
+
