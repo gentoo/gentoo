@@ -1,0 +1,105 @@
+https://bugs.gentoo.org/921126
+Fix for incompatible pointer types: Just upsize the size
+everywhere it's used, so it fits in largest, gsize
+diff -ru a/blib/bpacket.c a/blib/bpacket.c
+--- a/blib/bpacket.c	2025-01-09 18:10:29.298407575 +0400
++++ a/blib/bpacket.c	2025-01-09 18:13:09.318508466 +0400
+@@ -48,10 +48,10 @@
+               gint  height,
+               gint  channels,
+               gint  maxval,
+-              gint *data_size)
++              gsize *data_size)
+ {
+   BPacket *packet;
+-  gint     size;
++  gsize     size;
+ 
+   g_return_val_if_fail (width > 0, NULL);
+   g_return_val_if_fail (height > 0, NULL);
+diff -ru a/blib/bpacket.h a/blib/bpacket.h
+--- a/blib/bpacket.h	2025-01-09 18:10:29.297407580 +0400
++++ a/blib/bpacket.h	2025-01-09 18:12:22.749770123 +0400
+@@ -42,7 +42,7 @@
+ 			 gint     height,
+ 			 gint     channels,
+ 			 gint     maxval,
+-			 gint    *data_size);
++			 gsize    *data_size);
+ gsize     b_packet_size (BPacket *packet);
+ void      b_packet_hton (BPacket *packet);
+ void      b_packet_ntoh (BPacket *packet);
+diff -ru a/blib/breceiver.c b/blib/breceiver.c
+--- a/blib/breceiver.c	2025-01-09 18:23:21.159070702 +0400
++++ b/blib/breceiver.c	2025-01-09 18:24:36.299648508 +0400
+@@ -354,7 +354,7 @@
+ 
+     case MAGIC_BLFRAME:
+       {
+-	gint size;
++	gsize size;
+ 
+ 	fake = b_packet_new (18, 8, 1, 1, &size);
+ 
+Dealing with implicit declarations: autoreconf and #include "config.h"
+in places where they were not included previously
+diff -ru a/configure.in a/configure.in
+--- a/configure.in	2025-01-09 18:10:29.297407580 +0400
++++ a/configure.in	2025-01-09 18:15:55.400575296 +0400
+@@ -20,6 +20,8 @@
+ BLIB_API_VERSION=$BLIB_MAJOR_VERSION.$BLIB_MINOR_VERSION
+ BLIB_VERSION=$BLIB_MAJOR_VERSION.$BLIB_MINOR_VERSION.$BLIB_MICRO_VERSION
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ AC_SUBST(BLIB_MAJOR_VERSION)
+ AC_SUBST(BLIB_MINOR_VERSION)
+ AC_SUBST(BLIB_MICRO_VERSION)
+diff -ru a/modules/bcountdown.c b/modules/bcountdown.c
+--- a/modules/bcountdown.c	2025-01-09 18:23:21.161070691 +0400
++++ b/modules/bcountdown.c	2025-01-09 18:25:27.179362628 +0400
+@@ -21,6 +21,8 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include "config.h"
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/time.h>
+diff -ru a/modules/bdropout.c b/modules/bdropout.c
+--- a/modules/bdropout.c	2025-01-09 18:23:21.161070691 +0400
++++ b/modules/bdropout.c	2025-01-09 18:25:53.499214744 +0400
+@@ -18,6 +18,8 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include "config.h"
++
+ #include <stdlib.h>
+ 
+ #include <glib.h>
+diff -ru a/modules/bpushline.c b/modules/bpushline.c
+--- a/modules/bpushline.c	2025-01-09 18:23:21.161070691 +0400
++++ b/modules/bpushline.c	2025-01-09 18:23:30.867016155 +0400
+@@ -18,6 +18,8 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include "config.h"
++
+ #include <stdlib.h>
+ 
+ #include <glib.h>
+diff -ru a/modules/btetris.c b/modules/btetris.c
+--- a/modules/btetris.c	2025-01-09 18:23:21.161070691 +0400
++++ b/modules/btetris.c	2025-01-09 18:25:36.835308374 +0400
+@@ -18,6 +18,8 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include "config.h"
++
+ #include <string.h>
+ #include <stdlib.h>
+ #include <unistd.h>
