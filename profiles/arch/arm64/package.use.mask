@@ -403,16 +403,6 @@ app-emulation/xen-tools doc
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
 
-# Mart Raudsepp <leio@gentoo.org> (2018-04-08)
-# Tests fail for bundled luajit, USE=luajit is globally
-# masked too (no-one has tested it yet).
-# Florian Schmaus <flow@gentoo.org> (2024-03-29)
-# Restricted to pre texlive 2023 releases, as we have users
-# reporting that luajittex works with 2023 on arm64.
-# For example https://bugs.gentoo.org/928122#c7
-<app-text/texlive-core-2023 luajittex
-<dev-texlive/texlive-basic-2023 luajittex
-
 # Mart Raudsepp <leio@gentoo.org> (2018-03-31)
 # Boost.Context can be built on arm64
 dev-libs/boost -context
