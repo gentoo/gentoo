@@ -220,7 +220,6 @@ kde-apps/knotes
 # KF5 Porting Aids removal; bugs 755956, 759778
 # Removal on 2025-01-09
 kde-frameworks/countryflags
-kde-frameworks/kemoticons
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
