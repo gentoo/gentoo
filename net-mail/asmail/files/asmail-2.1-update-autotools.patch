@@ -1,4 +1,4 @@
-I order to compile this package with clang we need to run autoreconf. Newer autotools complain about
+In order to compile this package with clang we need to run autoreconf. Newer autotools complain about
 the several declarations of the same header.
 
 MD5 calculation is split from libssl into libcrypto. 
