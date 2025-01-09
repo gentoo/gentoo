@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,6 @@ PHP_RDEPEND="(
 RDEPEND="|| (
 	${PHP_RDEPEND//@SLOT@/8.3}
 	${PHP_RDEPEND//@SLOT@/8.2}
-	${PHP_RDEPEND//@SLOT@/8.1}
 )"
 
 need_httpd_cgi
