@@ -320,7 +320,10 @@ src_install() {
 		rm -rf "${ED}/usr/build-scripts" || die
 	fi
 
-	for batched_lib in "${ED}/usr/$(get_libdir)/lib_"*"_oslexec.so"; do
-		patchelf --set-soname "$(basename "${batched_lib}")" "${batched_lib}" || die
-	done
+	if use amd64; then
+		find "${ED}/usr/$(get_libdir)" -type f  -name 'lib_*_oslexec.so' -print0 \
+			| while IFS= read -r -d $'\0' batched_lib; do
+			patchelf --set-soname "$(basename "${batched_lib}")" "${batched_lib}" || die
+		done
+	fi
 }
