@@ -391,6 +391,13 @@ src_test() {
 src_install() {
 	cmake_src_install
 
+	if use test; then
+		rm \
+			"${ED}/usr/bin/test"{render,shade{,_dso}} \
+			"${ED}/usr/$(get_libdir)/libtestshade.so"* \
+			|| die
+	fi
+
 	if use amd64; then
 		find "${ED}/usr/$(get_libdir)" -type f  -name 'lib_*_oslexec.so' -print0 \
 			| while IFS= read -r -d $'\0' batched_lib; do
