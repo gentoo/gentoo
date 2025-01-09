@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,8 @@ BDEPEND="dev-lang/perl"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.4-0001-Fix-function-prototypes-in-configure.patch
 	"${FILESDIR}"/${PN}-0.10.4-0002-Add-missing-includes-implicit-function-declarations.patch
+	"${FILESDIR}"/${PN}-0.10.4-0003-Fix-incompatible-pointer.patch
+	"${FILESDIR}"/${PN}-0.10.4-0004-Always-call-linker.patch
 )
 
 src_prepare() {

@@ -1,0 +1,44 @@
+From 465a30ec74c5053ac93ecd58d71427a3e2b4f393 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Sun, 18 Dec 2022 21:19:39 -0500
+Subject: [PATCH] Always use the compiler to call the linker
+
+Let the compiler call the linker to handle LDFLAGS correctly.
+---
+ configure    | 5 +----
+ configure.ac | 6 +-----
+ 2 files changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/configure b/configure
+index 0090b34..ca8cd7f 100755
+--- a/configure
++++ b/configure
+@@ -7577,10 +7577,7 @@ _ACEOF
+ 
+ fi
+ 
+-if test -z "$LD" ; then
+-	LD=$CC
+-fi
+-
++LD=$CC
+ 
+ 
+ ac_fn_c_check_decl "$LINENO" "LLONG_MAX" "ac_cv_have_decl_LLONG_MAX" "#include <limits.h>
+diff --git a/configure.ac b/configure.ac
+index 6496679..7cfd8fc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,11 +116,7 @@ if test ! -z "$PATH_PASSWD_PROG" ; then
+ 		[Full path of your "passwd" program])
+ fi
+ 
+-if test -z "$LD" ; then
+-	LD=$CC
+-fi
+-AC_SUBST(LD)
+-
++AC_SUBST(LD, $CC)
+ 
+ AC_CHECK_DECL(LLONG_MAX, have_llong_max=1, , [#include <limits.h>])
+ 
