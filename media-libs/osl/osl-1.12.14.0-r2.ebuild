@@ -68,6 +68,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.12.14.0-libfmt11.patch"
+	"${FILESDIR}/${PN}-1.12.14.0-m_dz.patch"
 )
 
 pkg_setup() {
