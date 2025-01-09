@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # John Helmert III <ajak@gentoo.org> (2024-12-14)
@@ -120,7 +120,6 @@ kde-apps/kimagemapeditor
 kde-apps/kmail
 kde-apps/kmail-account-wizard
 kde-apps/kmailtransport
-kde-apps/knotes
 kde-apps/konqueror
 kde-apps/konsolekalendar
 kde-apps/kontact

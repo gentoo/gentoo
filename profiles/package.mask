@@ -214,7 +214,6 @@ dev-db/firebird
 # Use app-text/marknote https://apps.kde.org/marknote/ as alternative,
 # importing existing notes is possible. Removal on 2025-01-10.
 app-text/kjots
-kde-apps/knotes
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
