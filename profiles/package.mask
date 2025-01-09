@@ -39,7 +39,7 @@
 # Bugs 499030, 437262, 597268, 603592, 734890, 745495, 947740.
 # Use app-text/crqt-ng instead.
 # Removal on 2025-02-08.
-dev-db/tora
+app-text/fbreader
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-09)
 # Last release from 2017; fails to build w/ GCC-14 and qscintilla-2.14.1.
