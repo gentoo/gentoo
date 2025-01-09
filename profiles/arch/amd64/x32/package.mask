@@ -85,7 +85,6 @@ app-text/bibletime
 app-text/calibre
 app-text/cb2bib
 app-text/kchmviewer
-app-text/kjots
 app-text/sigil
 dev-python/spyder
 dev-python/spyder-terminal

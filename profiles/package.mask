@@ -209,12 +209,6 @@ app-emacs/ecb
 # Removal on 2025-01-10
 dev-db/firebird
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
-# Declared unmaintained by upstream, will be broken by akonadi-24.12.
-# Use app-text/marknote https://apps.kde.org/marknote/ as alternative,
-# importing existing notes is possible. Removal on 2025-01-10.
-app-text/kjots
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
