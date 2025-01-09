@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,10 @@ RDEPEND="
 	sci-libs/rocSOLVER:${SLOT}[${ROCM_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.3.0-no-git.patch
+)
 
 src_configure() {
 	# Note: hipcc is enforced; clang fails when libc++ is enabled
