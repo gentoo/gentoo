@@ -219,7 +219,6 @@ kde-apps/knotes
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
 # KF5 Porting Aids removal; bugs 755956, 759778
 # Removal on 2025-01-09
-media-sound/soundkonverter
 kde-frameworks/countryflags
 kde-frameworks/kdelibs4support
 kde-frameworks/kemoticons
