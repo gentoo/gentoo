@@ -31,3 +31,27 @@ diff -ru a/flake/Makefile b/flake/Makefile
  flake_g$(EXESUF): flake.o wav.o $(DEP_LIBS)
  	$(CC) $(FLAKE_LIBDIRS) $(LDFLAGS) -o $@ flake.o wav.o $(FLAKE_LIBS) $(EXTRALIBS)
  	cp -p flake_g$(EXESUF) flake$(EXESUF)
+Clean up implicit declaration in configure and prepare for C23
+diff -ru a/configure b/configure
+@@ -666,6 +667,7 @@
+ # test for strnlen in string.h
+ check_exec <<EOF && have_strnlen=yes || have_strnlen=no
+ #define _ISOC9X_SOURCE  1
++#define _GNU_SOURCE  1
++#include <strings.h>
+ #include <string.h>
+ int main( void ) { return (strnlen("help", 6) == 4)?0:1; }
+ EOF
+diff -ru a/common.h b/common.h
+--- a/common.h	2025-01-09 16:06:00.978525674 +0400
++++ b//common.h	2025-01-09 16:07:06.592168373 +0400
+@@ -87,7 +87,8 @@
+     return i;
+ }
+ #elif !defined(__USE_GNU)
+-extern size_t strnlen(const char *s, size_t maxlen);
++#include <strings.h>
++//extern size_t strnlen(const char *s, size_t maxlen);
+ #endif
+ 
+ #endif /* COMMON_H */
