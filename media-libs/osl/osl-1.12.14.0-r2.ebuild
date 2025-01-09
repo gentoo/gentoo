@@ -66,6 +66,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.12.14.0-libfmt11.patch"
+)
+
 pkg_setup() {
 	llvm-r1_pkg_setup
 

@@ -1,0 +1,431 @@
+From 62ab57dcaa96587c9c7d014571c4b83da1181090 Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Mon, 13 Mar 2023 09:58:11 -0700
+Subject: [PATCH] oslc: simple constant folding of binary expressions on the
+ oslc side
+
+The runtime optimization does a great job of constant folding, and
+we'd pushed it there because, with instance parameter values and
+shader network connections known, it can find so much more opportunity
+to optimize than we could in oslc.
+
+However, there is one pesky problem, which is that shader parameters
+that are initialized to even simple expressions such as 3+1 end up
+with "init ops", which although later constant folded by the time the
+shader is JITed, make it impossible to know the value via OSLQuery.
+
+So this patch just takes the simplest cases -- certain `int OP int`
+and `float OP float` expressions involving literal constants, and
+performs the operation as it's parsing the code. So
+
+         int val = 3 + 1;
+
+actually just immediately is turned into `val = 4` instead of making
+an "add".
+
+To reiterate, the add would never have happened while executing the
+shader -- at runtime in the renderer, when it's time to optimize and
+JIT the shader, it would know it's a constant 4 value. This is
+strictly about making oslc directly output an .oso file that knows
+that parameter `val` has default value 4 instead of throwing up its
+hands and saying "it's math code that will be evaluated later."
+
+Signed-off-by: Larry Gritz <lg@larrygritz.com>
+---
+ src/cmake/testing.cmake                |  1 +
+ src/liboslcomp/ast.cpp                 | 63 +++++++++++++++++++++++
+ src/liboslcomp/ast.h                   |  4 ++
+ src/liboslcomp/oslgram.y               | 36 +++++++-------
+ testsuite/oslc-literalfold/ref/out.txt | 28 +++++++++++
+ testsuite/oslc-literalfold/run.py      |  7 +++
+ testsuite/oslc-literalfold/test.osl    | 69 ++++++++++++++++++++++++++
+ 7 files changed, 190 insertions(+), 18 deletions(-)
+ create mode 100644 testsuite/oslc-literalfold/ref/out.txt
+ create mode 100755 testsuite/oslc-literalfold/run.py
+ create mode 100644 testsuite/oslc-literalfold/test.osl
+
+diff --git a/src/cmake/testing.cmake b/src/cmake/testing.cmake
+index 0ae2c200e..3ce6f2a3d 100644
+--- a/src/cmake/testing.cmake
++++ b/src/cmake/testing.cmake
+@@ -299,6 +299,7 @@ macro (osl_add_all_tests)
+                 oslc-err-struct-dup oslc-err-struct-print
+                 oslc-err-type-as-variable
+                 oslc-err-unknown-ctr
++                oslc-literalfold
+                 oslc-pragma-warnerr
+                 oslc-warn-commainit
+                 oslc-variadic-macro
+diff --git a/src/liboslcomp/ast.cpp b/src/liboslcomp/ast.cpp
+index 0ae74db48..74873e1c1 100644
+--- a/src/liboslcomp/ast.cpp
++++ b/src/liboslcomp/ast.cpp
+@@ -1187,6 +1187,69 @@ ASTbinary_expression::ASTbinary_expression(OSLCompilerImpl* comp, Operator op,
+ 
+ 
+ 
++ASTNode*
++ASTbinary_expression::make(OSLCompilerImpl* comp, Operator op, ASTNode* left,
++                           ASTNode* right)
++{
++    // If the left and right are both literal constants, fold the expression
++    if (left->nodetype() == literal_node && right->nodetype() == literal_node) {
++        ASTNode* cf = nullptr;  // constant-folded result
++        if (left->typespec().is_int() && right->typespec().is_int()) {
++            int lv = dynamic_cast<ASTliteral*>(left)->intval();
++            int rv = dynamic_cast<ASTliteral*>(right)->intval();
++            switch (op) {
++            case Mul: cf = new ASTliteral(comp, lv * rv); break;
++            case Div: cf = new ASTliteral(comp, rv ? lv / rv : 0); break;
++            case Add: cf = new ASTliteral(comp, lv + rv); break;
++            case Sub: cf = new ASTliteral(comp, lv - rv); break;
++            case Mod: cf = new ASTliteral(comp, rv ? lv % rv : 0); break;
++            case Equal: cf = new ASTliteral(comp, lv == rv ? 1 : 0); break;
++            case NotEqual: cf = new ASTliteral(comp, lv != rv ? 1 : 0); break;
++            case Greater: cf = new ASTliteral(comp, lv > rv ? 1 : 0); break;
++            case Less: cf = new ASTliteral(comp, lv < rv ? 1 : 0); break;
++            case GreaterEqual:
++                cf = new ASTliteral(comp, lv >= rv ? 1 : 0);
++                break;
++            case LessEqual: cf = new ASTliteral(comp, lv <= rv ? 1 : 0); break;
++            case BitAnd: cf = new ASTliteral(comp, lv & rv); break;
++            case BitOr: cf = new ASTliteral(comp, lv | rv); break;
++            case Xor: cf = new ASTliteral(comp, lv ^ rv); break;
++            case ShiftLeft: cf = new ASTliteral(comp, lv << rv); break;
++            case ShiftRight: cf = new ASTliteral(comp, lv >> rv); break;
++            default: break;
++            }
++        } else if (left->typespec().is_float()
++                   && right->typespec().is_float()) {
++            float lv = dynamic_cast<ASTliteral*>(left)->floatval();
++            float rv = dynamic_cast<ASTliteral*>(right)->floatval();
++            switch (op) {
++            case Mul: cf = new ASTliteral(comp, lv * rv); break;
++            case Div: cf = new ASTliteral(comp, rv ? lv / rv : 0.0f); break;
++            case Add: cf = new ASTliteral(comp, lv + rv); break;
++            case Sub: cf = new ASTliteral(comp, lv - rv); break;
++            case Equal: cf = new ASTliteral(comp, lv == rv ? 1 : 0); break;
++            case NotEqual: cf = new ASTliteral(comp, lv != rv ? 1 : 0); break;
++            case Greater: cf = new ASTliteral(comp, lv > rv ? 1 : 0); break;
++            case Less: cf = new ASTliteral(comp, lv < rv ? 1 : 0); break;
++            case GreaterEqual:
++                cf = new ASTliteral(comp, lv >= rv ? 1 : 0);
++                break;
++            case LessEqual: cf = new ASTliteral(comp, lv <= rv ? 1 : 0); break;
++            default: break;
++            }
++        }
++        if (cf) {
++            delete left;
++            delete right;
++            return cf;
++        }
++    }
++
++    return new ASTbinary_expression(comp, op, left, right);
++}
++
++
++
+ const char*
+ ASTbinary_expression::childname(size_t i) const
+ {
+diff --git a/src/liboslcomp/ast.h b/src/liboslcomp/ast.h
+index db9bd14e5..f4bd2eeec 100644
+--- a/src/liboslcomp/ast.h
++++ b/src/liboslcomp/ast.h
+@@ -832,6 +832,10 @@ class ASTbinary_expression final : public ASTNode {
+     ASTbinary_expression(OSLCompilerImpl* comp, Operator op, ASTNode* left,
+                          ASTNode* right);
+ 
++    // Special consructor wrapper that can collapse ops between literals
++    static ASTNode* make(OSLCompilerImpl* comp, Operator op, ASTNode* left,
++                         ASTNode* right);
++
+     const char* nodetypename() const { return "binary_expression"; }
+     const char* childname(size_t i) const;
+     const char* opname() const;
+diff --git a/src/liboslcomp/oslgram.y b/src/liboslcomp/oslgram.y
+index b65818193..b4f3ad2e1 100644
+--- a/src/liboslcomp/oslgram.y
++++ b/src/liboslcomp/oslgram.y
+@@ -858,109 +858,109 @@ variable_ref
+ binary_expression
+         : expression OR_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Or, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression AND_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::And, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '|' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::BitOr, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '^' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Xor, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '&' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::BitAnd, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression EQ_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Equal, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression NE_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::NotEqual, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '>' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Greater, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression GE_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::GreaterEqual, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '<' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Less, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression LE_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::LessEqual, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression SHL_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::ShiftLeft, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression SHR_OP expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::ShiftRight, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '+' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Add, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '-' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Sub, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '*' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Mul, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '/' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Div, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+         | expression '%' expression
+                 {
+-                    $$ = new ASTbinary_expression (oslcompiler,
++                    $$ = ASTbinary_expression::make(oslcompiler,
+                                     ASTNode::Mod, $1, $3);
+                     $$->sourceline (@2.first_line);
+                 }
+diff --git a/testsuite/oslc-literalfold/ref/out.txt b/testsuite/oslc-literalfold/ref/out.txt
+new file mode 100644
+index 000000000..9397357ff
+--- /dev/null
++++ b/testsuite/oslc-literalfold/ref/out.txt
+@@ -0,0 +1,28 @@
++Compiled test.osl -> test.oso
++int add_i = 8
++int sub_i = 2
++int mul_i = 15
++int div_i = 1
++int mod_i = 2
++int eq_i = 0
++int ne_i = 1
++int gt_i = 1
++int ge_i = 1
++int lt_i = 0
++int le_i = 0
++int and_i = 1
++int or_i = 7
++int xor_i = 6
++int shl_i = 40
++int shr_i = 0
++float add_f = 8.000000
++float sub_f = 2.000000
++float mul_f = 15.000000
++float div_f = 1.666667
++float eq_f = 0
++float ne_f = 1
++float gt_f = 1
++float ge_f = 1
++float lt_f = 0
++float le_f = 0
++
+diff --git a/testsuite/oslc-literalfold/run.py b/testsuite/oslc-literalfold/run.py
+new file mode 100755
+index 000000000..6836d5554
+--- /dev/null
++++ b/testsuite/oslc-literalfold/run.py
+@@ -0,0 +1,7 @@
++#!/usr/bin/env python
++
++# Copyright Contributors to the Open Shading Language project.
++# SPDX-License-Identifier: BSD-3-Clause
++# https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
++
++command = testshade("test")
+diff --git a/testsuite/oslc-literalfold/test.osl b/testsuite/oslc-literalfold/test.osl
+new file mode 100644
+index 000000000..0f1b09e36
+--- /dev/null
++++ b/testsuite/oslc-literalfold/test.osl
+@@ -0,0 +1,69 @@
++// Copyright Contributors to the Open Shading Language project.
++// SPDX-License-Identifier: BSD-3-Clause
++// https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
++
++// Test oslc-side constant folding of simple binary operators on literal
++// values
++
++#define three 3
++#define five 5
++
++
++shader test(
++    int add_i = five + three,
++    int sub_i = five - three,
++    int mul_i = five * three,
++    int div_i = five / three,
++    int mod_i = five % three,
++    int eq_i = five == three,
++    int ne_i = five != three,
++    int gt_i = five > three,
++    int ge_i = five >= three,
++    int lt_i = five < three,
++    int le_i = five <= three,
++    int and_i = five & three,
++    int or_i = five | three,
++    int xor_i = five ^ three,
++    int shl_i = five << three,
++    int shr_i = five >> three,
++
++    float add_f = float(five) + float(three),
++    float sub_f = float(five) - float(three),
++    float mul_f = float(five) * float(three),
++    float div_f = float(five) / float(three),
++    int eq_f = float(five) == float(three),
++    int ne_f = float(five) != float(three),
++    int gt_f = float(five) > float(three),
++    int ge_f = float(five) >= float(three),
++    int lt_f = float(five) < float(three),
++    int le_f = float(five) <= float(three),
++)
++{
++    printf("int add_i = %d\n", add_i);
++    printf("int sub_i = %d\n", sub_i);
++    printf("int mul_i = %d\n", mul_i);
++    printf("int div_i = %d\n", div_i);
++    printf("int mod_i = %d\n", mod_i);
++    printf("int eq_i = %d\n", eq_i);
++    printf("int ne_i = %d\n", ne_i);
++    printf("int gt_i = %d\n", gt_i);
++    printf("int ge_i = %d\n", ge_i);
++    printf("int lt_i = %d\n", lt_i);
++    printf("int le_i = %d\n", le_i);
++    printf("int and_i = %d\n", and_i);
++    printf("int or_i = %d\n", or_i);
++    printf("int xor_i = %d\n", xor_i);
++    printf("int shl_i = %d\n", shl_i);
++    printf("int shr_i = %d\n", shr_i);
++
++    printf("float add_f = %f\n", add_f);
++    printf("float sub_f = %f\n", sub_f);
++    printf("float mul_f = %f\n", mul_f);
++    printf("float div_f = %f\n", div_f);
++    printf("float eq_f = %d\n", eq_f);
++    printf("float ne_f = %d\n", ne_f);
++    printf("float gt_f = %d\n", gt_f);
++    printf("float ge_f = %d\n", ge_f);
++    printf("float lt_f = %d\n", lt_f);
++    printf("float le_f = %d\n", le_f);
++}
+From 977f2898b10b9688c4bd65260884e1e477d29806 Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Sun, 20 Aug 2023 21:36:59 -0700
+Subject: [PATCH] fix: Recent journaling changes break with some fmtlib
+ versions
+
+Certain fmt library versions don't automatically know how to format
+atomics. Explicitly load them to turn into regular ints to avoid new
+build errors introduced by the recent journaling changes.
+
+Signed-off-by: Larry Gritz <lg@larrygritz.com>
+---
+ .github/workflows/ci.yml   | 2 +-
+ src/liboslcomp/ast.cpp     | 2 +-
+ src/liboslexec/journal.cpp | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/liboslcomp/ast.cpp b/src/liboslcomp/ast.cpp
+index 74873e1c1..a8e5d75e4 100644
+--- a/src/liboslcomp/ast.cpp
++++ b/src/liboslcomp/ast.cpp
+@@ -46,7 +46,7 @@ ScopeExit print_node_counts([]() {
+     for (int i = 0; i < ASTNode::_last_node; ++i)
+         if (node_counts[i] > 0)
+             Strutil::print("ASTNode type {:2}: {:5}   (peak {:5})\n", i,
+-                           node_counts[i], node_counts_peak[i]);
++                           node_counts[i].load(), node_counts_peak[i].load());
+ });
+ }  // namespace
+ #endif
