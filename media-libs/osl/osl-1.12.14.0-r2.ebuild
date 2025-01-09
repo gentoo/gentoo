@@ -39,13 +39,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/pugixml
-	>=media-libs/openexr-3:0=
 	>=media-libs/openimageio-2.4:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
 	')
-	sys-libs/zlib:=
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -59,7 +57,10 @@ RDEPEND="
 	)
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=media-libs/openexr-3
+	sys-libs/zlib
+"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex

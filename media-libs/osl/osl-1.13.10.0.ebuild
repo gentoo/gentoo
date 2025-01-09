@@ -42,13 +42,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/pugixml
-	>=media-libs/openexr-3:0=
 	>=media-libs/openimageio-2.4:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
 	')
-	sys-libs/zlib:=
 	optix? ( dev-libs/optix[-headers-only] )
 	python? (
 		${PYTHON_DEPS}
@@ -65,6 +63,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-util/patchelf
+	>=media-libs/openexr-3
+	sys-libs/zlib
 	test? (
 		media-fonts/droid
 	)
