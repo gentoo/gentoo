@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ MY_PN_RPL="replays"
 MY_PN_SFX="opensound"
 MY_PN_TS="title-sequences"
 MY_PV_MSX="1.6"
-MY_PV_OBJ="1.4.11"
+MY_PV_OBJ="1.4.12"
 MY_PV_RPL="0.0.84"
 MY_PV_SFX="1.0.5"
 MY_PV_TS="0.4.14"
