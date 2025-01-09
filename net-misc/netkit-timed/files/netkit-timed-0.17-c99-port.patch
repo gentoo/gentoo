@@ -1,0 +1,44 @@
+Simple port to C99
+#bug https://bugs.gentoo.org/919876
+--- a/timed/lib/measure.c
++++ b/timed/lib/measure.c
+@@ -75,7 +75,7 @@ measure(u_long maxmsec,			/* wait this many msec at most */
+ 	struct sockaddr_in *xaddr,
+ 	int doprint)			/* print complaints on stderr */
+ {
+-	size_t length;
++	socklen_t length;
+ 	int measure_status;
+ 	int rcvcount, trials = 0;
+ 	int cc, count;
+--- a/timed/timed/correct.c
++++ b/timed/timed/correct.c
+@@ -165,7 +165,7 @@ adjclock(struct timeval *corr)
+ 		}
+ 	} else {
+ 		syslog(LOG_WARNING,
+-		       "clock correction %d sec too large to adjust",
++		       "clock correction %ld sec too large to adjust",
+ 		       adj.tv_sec);
+ 		(void) gettimeofday(&now, 0);
+ 		timevaladd(&now, corr);
+--- a/timed/timed/networkdelta.c
++++ b/timed/timed/networkdelta.c
+@@ -40,7 +40,7 @@ char nd_rcsid[] =
+ #ifdef sgi
+ #ident "$Revision: 1.4 $"
+ #endif
+-
++#include <math.h>
+ #include "globals.h"
+ 
+ static long median(float, float*, long*, long*, unsigned int);
+@@ -238,7 +238,7 @@ median(float a,				/* initial guess for the median */
+ 				        (long)a, pass, npts);
+ 			return a;
+ 		}
+-		eps = AFAC*abs(aa - a);
++		eps = AFAC*fabsf(aa - a);
+ 		*eps_ptr = eps;
+ 		a = aa;
+ 	}
