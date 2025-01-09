@@ -204,6 +204,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	"
 	IDEPEND="
 		generic-uki? (
+			app-crypt/sbsigntools
 			>=sys-kernel/installkernel-14[-dracut(-),-ugrd(-),-ukify(-)]
 		)
 		!generic-uki? (
@@ -660,13 +661,65 @@ kernel-install_extract_from_uki() {
 	local extract_type=${1}
 	local uki=${2}
 	local out=${3}
+	local out_temp=${T}/${extract_type}-section-dumped
 
 	# objcopy overwrites input if there is no output, dump the output in T.
 	# We unfortunately cannot use /dev/null here
 	$(tc-getOBJCOPY) "${uki}" "${T}/dump.efi" \
-		--dump-section ".${extract_type}=${out}" ||
-		die "Failed to extract ${extract_type}"
-	chmod 644 "${out}" || die
+		--dump-section ".${extract_type}=${out_temp}" ||
+			die "Failed to extract ${extract_type}"
+
+	# Sanity checks for kernel images
+	if [[ ${extract_type} == linux ]] &&
+		{ ! in_iuse secureboot || use secureboot ;}
+	then
+		# Extract the used SECUREBOOT_SIGN_CERT to verify the kernel image
+		local cert=${T}/pcrpkey
+		kernel-install_extract_from_uki pcrpkey "${uki}" "${cert}"
+		if [[ $(head -n1 "${cert}") != "-----BEGIN CERTIFICATE-----" ]]; then
+			# This is a DER format certificate, convert it to PEM
+			openssl x509 \
+				-inform DER -in "${cert}" \
+				-outform PEM -out "${cert}" ||
+					die "Failed to convert pcrpkey to PEM format"
+		fi
+
+		# Check if the signature on the UKI is valid
+		sbverify --cert "${cert}" "${uki}" ||
+			die "ERROR: UKI signature is invalid"
+
+		# Check if the signature on the kernel image is valid
+		local sbverify_err=$(
+			sbverify --cert "${cert}" "${out_temp}" 2>&1 >/dev/null
+		)
+
+		# Check if there was a padding warning
+		if [[ ${sbverify_err} == "warning: data remaining"*": gaps between PE/COFF sections?"* ]]
+		then
+			# https://github.com/systemd/systemd/issues/35851
+			local proper_size=${sbverify_err#"warning: data remaining["}
+			proper_size=${proper_size%" vs"*}
+			# Strip the padding
+			head "${out_temp}" --bytes "${proper_size}" \
+				>"${out_temp}_trimmed" || die
+			# Check if the signature verifies now
+			sbverify_err=$(
+				sbverify --cert "${cert}" "${out_temp}_trimmed" 2>&1 >/dev/null
+			)
+			[[ -z ${sbverify_err} ]] && out_temp=${out_temp}_trimmed
+		fi
+
+		# Something has gone wrong, stop here to prevent installing a kernel
+		# with an invalid signature or a completely broken kernel image.
+		if [[ -n ${sbverify_err} ]]; then
+			eerror "${sbverify_err}"
+			die "ERROR: Kernel image signature is invalid"
+		else
+			einfo "Signature verification OK"
+		fi
+	fi
+
+	install -m 644 "${out_temp}" "${out}" || die
 }
 
 # @FUNCTION: kernel-install_install_all
