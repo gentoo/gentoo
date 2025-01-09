@@ -4,12 +4,12 @@
 EAPI=8
 
 # Set to 1 for older versions of bash (that are hence slotted)
-BASH_IS_SLOTTED=1
+SLOTTED_BASH=1
 
-if [[ ${BASH_IS_SLOTTED} == 1 ]] ; then
-	BASH_SLOT="${PV:0:3}"
+if [[ ${SLOTTED_BASH} == 1 ]] ; then
+	MANGLED_PV="${PV:0:3}"
 else
-	BASH_SLOT="0"
+	MANGLED_PV="0"
 fi
 MY_P="${PN}-${PV:0:3}-${PV:4}"
 DESCRIPTION="bash source code debugging"
@@ -36,7 +36,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-DEPEND=">=app-shells/bash-${BASH_SLOT}:${BASH_SLOT}"
+DEPEND=">=app-shells/bash-${MANGLED_PV}:${MANGLED_PV}"
 RDEPEND="${DEPEND}"
 
 # test-bug-loc fails with formatting differences
@@ -53,8 +53,8 @@ src_prepare() {
 
 src_configure() {
 	local bash_suffix
-	if [[ ${BASH_IS_SLOTTED} == 1 ]] ; then
-		bash_suffix="-${BASH_SLOT}"
+	if [[ ${SLOTTED_BASH} == 1 ]] ; then
+		bash_suffix="-${MANGLED_PV}"
 	fi
 
 	# This path matches the bash sources.  If we ever change bash,
