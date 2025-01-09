@@ -26,7 +26,7 @@ DEPEND="
 		llvm-core/llvm:${LLVM_SLOT}
 	')
 	vc? (
-		>=dev-libs/intel-vc-intrinsics-0.19.0[${LLVM_USEDEP}]
+		>=dev-libs/intel-vc-intrinsics-0.21.0[${LLVM_USEDEP}]
 		dev-util/spirv-llvm-translator:15=
 	)
 "
@@ -49,8 +49,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.9-no_Werror.patch"
 	"${FILESDIR}/${PN}-1.0.8365-disable-git.patch"
 )
-
-# "${FILESDIR}/${PN}-1.0.8173-opencl-clang_version.patch"
 
 pkg_setup() {
 	llvm-r1_pkg_setup
