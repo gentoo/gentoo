@@ -1,0 +1,23 @@
+was sed -i -e '/^LDFLAGS=/d' configure || die "sed configure"
+--- a/configure	2024-05-09 06:02:18.884496589 -0000
++++ b/configure	2024-05-09 06:02:26.304490777 -0000
+@@ -115,7 +115,6 @@
+      echo 'no'
+ fi
+ 
+-LDFLAGS=
+ LIBS=
+ 
+ rm -f __conftest*
+was sed -i -e "s|ar -cruv|\${AR} -cruv|g" timed/lib/Makefile || die
+--- a/timed/lib/Makefile	2024-05-09 06:02:18.886496588 -0000
++++ b/timed/lib/Makefile	2024-05-09 06:02:31.568486653 -0000
+@@ -7,7 +7,7 @@
+ OBJS = byteorder.o measure.o cksum.o
+ 
+ libtimed.a: $(OBJS)
+-	ar -cruv $@ $^
++	${AR} -cruv $@ $^
+ 
+ install: ;
+ clean:
