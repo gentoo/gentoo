@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://passt.top/passt/snapshot/passt-${MY_PV}.tar.xz -> ${PF}.tar.xz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+	KEYWORDS="~amd64 arm64 ~loong ~riscv"
 fi
 
 LICENSE="BSD GPL-2+"
