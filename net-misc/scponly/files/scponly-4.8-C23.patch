@@ -1,0 +1,26 @@
+diff -ru a/helper.c b/helper.c
+--- a/helper.c	2025-01-10 17:16:03.332900358 +0400
++++ b/helper.c	2025-01-10 17:17:24.801652374 +0400
+@@ -1,7 +1,9 @@
+ /*
+  *	helper functions for scponly
+  */
++#define _DEFAULT_SOURCE /* for strsep */
+ #include <stdio.h>	/* io */
++#include <strings.h>	/* for bzero */
+ #include <string.h>	/* for str* */
+ #include <sys/types.h>	/* for stat, getpwuid */
+ #include <sys/stat.h>	/* for stat */
+diff -ru a/scponly.c b/scponly.c
+--- a/scponly.c	2025-01-10 17:16:03.332900358 +0400
++++ b/scponly.c	2025-01-10 17:18:13.274524840 +0400
+@@ -6,7 +6,8 @@
+  *
+  *	see CONTRIB for additional credits
+  */
+- 
++
++#define _DEFAULT_SOURCE /* for seteuid */
+ #include <stdio.h>	/* io */
+ #include <string.h>	/* for str* */
+ #include <sys/types.h>	/* for fork, wait, stat */
