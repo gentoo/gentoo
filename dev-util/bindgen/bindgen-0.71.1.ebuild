@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -109,7 +109,7 @@ LICENSE="BSD"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 
 DEPEND="${RUST_DEPEND}"
 RDEPEND="${DEPEND}
