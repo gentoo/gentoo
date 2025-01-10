@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/910693
+Fix implicit declarations by regenerating configure,
+Fix config header templates, manually define _GNU_SOURCE  when
+correct header was not cooperating
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,6 +29,7 @@
+ AC_CONFIG_AUX_DIR(config)
+ AC_CONFIG_MACRO_DIR(m4)
+ AC_LANG(C)
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ dnl Compute the canonical host (run-time) system type variable
+ AC_CANONICAL_HOST
+--- a/libtiff/tif_config.h.in
++++ b/libtiff/tif_config.h.in
+@@ -139,6 +139,11 @@
+ /* Support zstd compression */
+ #undef ZSTD_SUPPORT
+ 
++/* Enable GNU extensions on systems that have them.  */
++#ifndef _GNU_SOURCE
++# undef _GNU_SOURCE
++#endif
++
+ /* Enable large inode numbers on Mac OS X 10.5.  */
+ #ifndef _DARWIN_USE_64_BIT_INODE
+ # define _DARWIN_USE_64_BIT_INODE 1
+--- a/libtiff/tiffconf.h.in
++++ b/libtiff/tiffconf.h.in
+@@ -90,6 +90,11 @@
+ /* Support Deflate compression */
+ #undef ZIP_SUPPORT
+ 
++/* Enable GNU extensions on systems that have them.  */
++#ifndef _GNU_SOURCE
++# undef _GNU_SOURCE
++#endif
++
+ /* Support libdeflate enhanced compression */
+ #undef LIBDEFLATE_SUPPORT
+ 
+--- a/libtiff/mkg3states.c
++++ b/libtiff/mkg3states.c
+@@ -27,6 +27,7 @@
+  * in Frank Cringle's viewfax program;
+  *      Copyright (C) 1990, 1995  Frank D. Cringle.
+  */
++#define _GNU_SOURCE 1
+ #include "tif_config.h"
+ #include "libport.h"
+ 
