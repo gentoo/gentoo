@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ else
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.com/Connectors/c/connector-c-${PV}/${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 fi
 
 inherit cmake-multilib flag-o-matic toolchain-funcs
@@ -108,8 +108,15 @@ multilib_src_test() {
 	mysql_install_db --no-defaults --datadir="${T}/mysql/data" || die
 	mysqld --no-defaults --datadir="${T}/mysql/data" --socket="${T}/mysql/mysql.sock" --skip-grant-tables --skip-networking &
 
+	local attempts=0
 	while ! mysqladmin ping --socket="${T}/mysql/mysql.sock" --silent ; do
+		# 5 minutes should be more than enough
+		if [[ ${attempts} -gt 300 ]] ; then
+			die "mysqld not found after 300 seconds, aborting"
+		fi
+
 		sleep 1
+		attempts=$((attempts + 1))
 	done
 
 	cd unittest/libmariadb || die
