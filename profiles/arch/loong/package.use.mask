@@ -46,10 +46,6 @@ net-voip/yate ilbc
 # needs re-keywording and clean-up of media-libs/opencollada
 media-libs/assimp collada
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
-# kde-plasma/plasma-workspace:6 is not keyworded
-virtual/notification-daemon kde
-
 # Sam James <sam@gentoo.org> (2024-08-31)
 # dnstap USE masked due to missing keywords
 net-dns/bind dnstap
@@ -85,11 +81,6 @@ kde-frameworks/purpose:5 kaccounts
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-15)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
 kde-plasma/plasma-nm openconnect
-
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needs as-yet-unkeyworded KF6 (bug #934215)
-app-crypt/pinentry qt6
-app-office/libreoffice qt6
 
 # WANG Xuerui <xen0n@gentoo.org> (2024-06-03)
 # Requires arch-specific code in python (relocs handling), in addition to
