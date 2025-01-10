@@ -148,10 +148,6 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.48.0_rc2-meson-deps.patch
-)
-
 pkg_setup() {
 	if use subversion && has_version "dev-vcs/subversion[dso]" ; then
 		ewarn "Per Gentoo bugs #223747, #238586, when subversion is built"
