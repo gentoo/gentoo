@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://passt.top/passt/snapshot/passt-${MY_PV}.tar.xz -> ${PF}.tar.xz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 arm64 ~loong ~riscv"
+	KEYWORDS="amd64 arm64 ~loong ~riscv"
 fi
 
 LICENSE="BSD GPL-2+"
