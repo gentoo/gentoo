@@ -61,7 +61,7 @@ app-text/fbreader
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-09)
 # Last release from 2017; fails to build w/ GCC-14 and qscintilla-2.14.1.
-# Depends on Qt5. Removal on 2025-02-08.
+# Depends on Qt5. Bugs #914918, #917408. Removal on 2025-02-08.
 dev-db/tora
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-08)
@@ -149,13 +149,12 @@ acct-group/aspnet
 acct-user/aspnet
 www-servers/xsp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-02)
-# No more revdeps, depends on Qt5. Removal on 2025-01-29.
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-02)
+# No more revdeps, depends on Qt5, bug #942178. Removal on 2025-01-29.
 dev-libs/libqt5pas
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-01)
-# Transitional package without any revdeps left.
-# Removal on 2025-01-31
+# Transitional package without any revdeps left. Removal on 2025-01-31
 kde-apps/konsolepart
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-01)
