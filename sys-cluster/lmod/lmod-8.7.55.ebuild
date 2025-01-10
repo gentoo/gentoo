@@ -45,7 +45,10 @@ BDEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch
+	"${FILESDIR}"/${P}-fix-bashism-in-configure-script.patch
+)
 
 pkg_pretend() {
 	elog "You can control the siteName and syshost settings by"
