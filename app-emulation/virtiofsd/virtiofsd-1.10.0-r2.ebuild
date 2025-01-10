@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -117,7 +117,10 @@ DEPEND="
 	sys-libs/libcap-ng
 	sys-libs/libseccomp
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	sys-apps/shadow
+	${DEPEND}
+"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /

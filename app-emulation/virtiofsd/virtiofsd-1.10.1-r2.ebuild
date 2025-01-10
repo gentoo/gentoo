@@ -11,12 +11,10 @@ CRATES="
 	anstyle-query@1.0.0
 	anstyle-wincon@1.0.1
 	arc-swap@1.5.0
-	atomic-polyfill@0.1.11
 	atty@0.2.14
 	autocfg@1.1.0
 	bitflags@1.3.2
 	bitflags@2.4.1
-	byteorder@1.4.3
 	capng@0.2.2
 	cc@1.0.79
 	cfg-if@1.0.0
@@ -24,9 +22,7 @@ CRATES="
 	clap_builder@4.3.11
 	clap_derive@4.3.2
 	clap_lex@0.5.0
-	cobs@0.2.3
 	colorchoice@1.0.0
-	critical-section@1.1.2
 	env_logger@0.8.4
 	errno@0.3.1
 	errno-dragonfly@0.1.2
@@ -40,8 +36,6 @@ CRATES="
 	futures-sink@0.3.21
 	futures-task@0.3.21
 	futures-util@0.3.21
-	hash32@0.2.1
-	heapless@0.7.16
 	heck@0.4.1
 	hermit-abi@0.1.19
 	hermit-abi@0.3.2
@@ -49,10 +43,9 @@ CRATES="
 	humantime@2.1.0
 	is-terminal@0.4.9
 	itoa@1.0.2
-	libc@0.2.155
+	libc@0.2.147
 	libseccomp-sys@0.2.1
 	linux-raw-sys@0.4.5
-	lock_api@0.4.10
 	log@0.4.17
 	match_cfg@0.1.0
 	memchr@2.5.0
@@ -61,24 +54,16 @@ CRATES="
 	once_cell@1.18.0
 	pin-project-lite@0.2.9
 	pin-utils@0.1.0
-	postcard@1.0.6
 	proc-macro2@1.0.63
 	quote@1.0.29
 	regex@1.6.0
 	regex-syntax@0.6.27
-	rustc_version@0.4.0
 	rustix@0.38.7
-	scopeguard@1.2.0
-	semver@1.0.18
-	serde@1.0.168
-	serde_derive@1.0.168
 	slab@0.4.7
-	spin@0.9.8
-	stable_deref_trait@1.2.0
 	strsim@0.10.0
 	syn@1.0.98
 	syn@2.0.23
-	syslog@6.1.1
+	syslog@6.0.1
 	termcolor@1.1.3
 	thiserror@1.0.41
 	thiserror-impl@1.0.41
@@ -86,11 +71,11 @@ CRATES="
 	unicode-ident@1.0.2
 	utf8parse@0.2.1
 	version_check@0.9.4
-	vhost@0.11.0
-	vhost-user-backend@0.15.0
+	vhost@0.10.0
+	vhost-user-backend@0.13.1
 	virtio-bindings@0.2.2
-	virtio-queue@0.12.0
-	vm-memory@0.14.1
+	virtio-queue@0.11.0
+	vm-memory@0.14.0
 	vmm-sys-util@0.12.1
 	winapi@0.3.9
 	winapi-i686-pc-windows-gnu@0.4.0
@@ -132,7 +117,10 @@ DEPEND="
 	sys-libs/libcap-ng
 	sys-libs/libseccomp
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	sys-apps/shadow
+	${DEPEND}
+"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
