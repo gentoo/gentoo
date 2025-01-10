@@ -65,7 +65,6 @@ valgrind
 
 # Temporarily masked during initial keywording
 doc
-emacs
 fam
 mpi
 tpm
