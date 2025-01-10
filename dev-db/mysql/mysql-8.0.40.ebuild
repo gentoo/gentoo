@@ -97,9 +97,9 @@ PATCHES=(
 	"${FILESDIR}"/mysql-8.0.36-boost-clang-fix.patch
 	# Needed due to bundled boost-1.77, this fix is included in boost-1.79
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-boost.patch
-	# Needed due to bundles abseil-cpp, this fix is included in abseil-cpp-20240722
+	# Needed due to bundled abseil-cpp-20230802, this fix is included in abseil-cpp-20240722
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-abseil.patch
-	# Needed due to bundles abseil-cpp, this fix is in no release as of 2025-01-09
+	# Needed due to bundled abseil-cpp-20230802, this fix is in no release as of 2025-01-09
 	"${FILESDIR}"/mysql-8.0.40-fix-bundled-abseil-gcc15.patch
 )
 
