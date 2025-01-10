@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
 SLOT="4.33"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 BDEPEND="app-arch/unzip"
 COMMON_DEP="app-eselect/eselect-java"
