@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ "$PV" == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/containers/${PN}.git"
 else
 	SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc64 ~riscv"
 fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
