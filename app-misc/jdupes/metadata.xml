@@ -13,6 +13,6 @@
 		<flag name="dedupe">Enable deduplication support</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">jbruchon/jdupes</remote-id>
+		<remote-id type="codeberg">jbruchon/jdupes</remote-id>
 	</upstream>
 </pkgmetadata>
