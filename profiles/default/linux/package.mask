@@ -1,5 +1,14 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-01-10)
+# These packages are only relevant on musl systems.
+sys-libs/argp-standalone
+sys-libs/error-standalone
+sys-libs/fts-standalone
+sys-libs/obstack-standalone
+sys-libs/queue-standalone
+sys-libs/rpmatch-standalone
 
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Only available on Linux.
