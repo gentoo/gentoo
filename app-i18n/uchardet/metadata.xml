@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
-    <upstream>
-        <bugs-to>https://gitlab.freedesktop.org/uchardet/uchardet/-/issues</bugs-to>
-        <doc>https://www.freedesktop.org/wiki/Software/uchardet/#usage</doc>
-        <remote-id type="gitlab">uchardet/uchardet</remote-id>
-    </upstream>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">uchardet/uchardet</remote-id>
+	</upstream>
 </pkgmetadata>
