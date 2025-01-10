@@ -3,7 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="sourceforge">fdm</remote-id>
     <remote-id type="github">nicm/fdm</remote-id>
   </upstream>
 </pkgmetadata>
