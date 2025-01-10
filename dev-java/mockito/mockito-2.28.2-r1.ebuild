@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Tests need a version of byte-buddy supporting Java 21. #930103
 CP_DEPEND="
