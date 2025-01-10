@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main LoongArch profile directory. Common settings for all loong profiles.
@@ -44,3 +44,9 @@ FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
 # ABI
 # DEFAULT_ABI
 # MULTILIB_ABIS
+
+# Sam James <sam@gentoo.org> (2025-01-10)
+# Temporary USE until the global default catches up. dev-lang/ada-bootstrap
+# starts with sys-devel/gcc:14 so ADA_TARGET needs to be >= that. This
+# entry can be dropped once the global one is >= gcc_14.
+ADA_TARGET="gcc_14"
