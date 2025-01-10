@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Generate syntax-hightlighted HTML for Perl using PPI"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-perl/CSS-Tiny-1.100.0
