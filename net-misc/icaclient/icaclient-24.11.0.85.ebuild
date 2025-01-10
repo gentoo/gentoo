@@ -67,6 +67,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libpng
 	media-libs/libpulse
+	media-libs/libva
 	media-libs/libvorbis
 	media-libs/mesa
 	media-libs/speex
