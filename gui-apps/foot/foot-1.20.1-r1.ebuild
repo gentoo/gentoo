@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pixman
 	grapheme-clustering? (
-		dev-libs/libutf8proc:=
+		dev-libs/libutf8proc:=[-cjk]
 		media-libs/fcft[harfbuzz]
 	)
 "
