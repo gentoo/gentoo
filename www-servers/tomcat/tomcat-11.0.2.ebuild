@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="11"
-KEYWORDS="~amd64 ~arm64 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~amd64-linux"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
