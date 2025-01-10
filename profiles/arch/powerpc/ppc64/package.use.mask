@@ -13,6 +13,10 @@ media-libs/libavif libyuv
 # media-libs/zint is not keyworded here
 media-libs/zxing-cpp experimental
 
+# Sv. Lockal <lockalsash@gmail.com> (2025-01-11)
+# dev-cpp/prometheus-cpp is not keyworded
+dev-cpp/opentelemetry-cpp prometheus
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-core/clang-runtime -offload
