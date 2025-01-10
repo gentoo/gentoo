@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Libraries to write tests in C, C++ and shell"
 HOMEPAGE="https://github.com/freebsd/atf"
@@ -16,6 +16,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-getopt-solaris.patch )
+
+src_prepare() {
+	default
+	# Refresh autotools, bug 879659
+	eautoreconf
+}
 
 src_configure() {
 	# Uses std::auto_ptr (deprecated in c++11, removed in c++17)
