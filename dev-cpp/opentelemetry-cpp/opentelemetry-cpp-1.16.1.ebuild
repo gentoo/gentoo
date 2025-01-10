@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	prometheus? (
+		dev-cpp/prometheus-cpp
+	)
 	test? (
 		dev-cpp/gtest
 		dev-cpp/benchmark
@@ -33,7 +36,9 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# remove tests the need network
-	"${FILESDIR}/opentelemetry-cpp-1.5.0-tests.patch"
+	"${FILESDIR}/${PN}-1.5.0-tests.patch"
+	"${FILESDIR}/${PN}-1.16.1-cstdint.patch"
+	"${FILESDIR}/${PN}-1.16.1-fix-clang-template.patch"
 )
 
 src_configure() {
