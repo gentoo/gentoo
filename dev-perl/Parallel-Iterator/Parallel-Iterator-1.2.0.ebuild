@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Simple parallel execution"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~x86"
 
 RDEPEND="
 	virtual/perl-IO
