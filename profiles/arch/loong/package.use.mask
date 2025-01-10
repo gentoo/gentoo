@@ -167,7 +167,6 @@ dev-python/requests-cache test
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-26)
 # no llvm:15 or lld:16 on loong
-app-office/libreoffice clang
 <dev-db/postgresql-16 llvm
 <dev-lang/rust-1.73.0 wasm
 
