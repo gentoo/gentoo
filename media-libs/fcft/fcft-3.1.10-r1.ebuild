@@ -35,7 +35,7 @@ RDEPEND="
 		media-libs/harfbuzz:=[truetype]
 	)
 	libutf8proc? (
-		dev-libs/libutf8proc:=
+		dev-libs/libutf8proc:=[-cjk]
 	)
 "
 DEPEND="
