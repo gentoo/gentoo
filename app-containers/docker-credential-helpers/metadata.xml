@@ -20,4 +20,7 @@
 			Build pass helper for the pass utility.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">docker/docker-credential-helpers</remote-id>
+	</upstream>
 </pkgmetadata>
