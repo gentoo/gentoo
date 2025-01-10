@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-10)
+# EAPI=7, maintainer needed, no reverse dependencies, fails to compile,
+# uses deprecated Go eclass.
+# Removal on 2025-02-09.  Bugs #947810, #856319, #844730, #771048, #679078.
+sys-cluster/zetcd
+
 # James Le Cuirot <chewi@gentoo.org> (2025-01-09)
 # Obsolete and needs to be dropped along with Qt5. The GTK theme has been
 # superseded by dev-qt/qtbase[gtk], which uses GTK 3 rather than GTK 2.
