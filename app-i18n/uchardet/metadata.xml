@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person" proxied="yes">
-        <email>coppens.matthias.abc@gmail.com</email>
-        <name>Matthias Coppens</name>
-    </maintainer>
-    <maintainer type="project" proxied="proxy">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-    </maintainer>
+    <!-- maintainer-needed -->
     <upstream>
         <bugs-to>https://gitlab.freedesktop.org/uchardet/uchardet/-/issues</bugs-to>
         <doc>https://www.freedesktop.org/wiki/Software/uchardet/#usage</doc>
