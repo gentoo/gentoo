@@ -13,7 +13,7 @@ inherit cmake flag-o-matic llvm-r1 python-any-r1
 
 DESCRIPTION="LLVM-based OpenCL compiler for OpenCL targetting Intel Gen graphics hardware"
 HOMEPAGE="https://github.com/intel/intel-graphics-compiler"
-SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MY_P}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="MIT"
