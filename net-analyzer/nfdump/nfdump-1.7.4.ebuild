@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.19-libft.patch
+	"${FILESDIR}"/${PN}-1.7.2-musl.patch
+	"${FILESDIR}"/${PN}-1.7.2-nfreplay-gcc14.patch
 	"${FILESDIR}"/${PN}-1.7.4-rrdtool-gcc14.patch
 )
 

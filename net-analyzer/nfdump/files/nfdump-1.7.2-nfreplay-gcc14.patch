@@ -1,0 +1,21 @@
+
+https://github.com/phaag/nfdump/commit/0b2796b52e1793b6e2eba29baf7f456217372965
+
+From: Peter Haag <peter@people.ops-trust.net>
+Date: Tue, 20 Aug 2024 21:00:18 +0200
+Subject: [PATCH] Make gcc-14 happy
+
+--- a/src/nfreplay/nfreplay.c
++++ b/src/nfreplay/nfreplay.c
+@@ -74,9 +74,11 @@
+ #ifdef HAVE___FPURGE
+ #define FPURGE __fpurge
+ #endif
++#ifndef FPURGE
+ #ifdef HAVE_FPURGE
+ #define FPURGE fpurge
+ #endif
++#endif
+ 
+ /* Local Variables */
+ static int verbose = 0;
