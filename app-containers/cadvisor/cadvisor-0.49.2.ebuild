@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module
+inherit go-module systemd
 
 COMMIT=6876475afe3755d62b65df0d32b005047fc69377
 
@@ -40,6 +40,7 @@ src_test() {
 
 src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
+	systemd_dounit "${FILESDIR}/${PN}.service"
 	dobin _output/${PN}
 	keepdir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
