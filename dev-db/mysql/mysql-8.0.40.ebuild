@@ -16,7 +16,7 @@ HOMEPAGE="https://www.mysql.com/"
 # https://dev.mysql.com/downloads/mysql/
 SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz"
 # https://downloads.mysql.com/archives/community/
-SRC_URI+=" https://downloads.mysql.com/archives/get/p/23/file/mysql-boost-${MY_PV}.tar.gz"
+SRC_URI+=" https://cdn.mysql.com/archives/mysql-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz"
 SRC_URI+=" ${PATCH_SET[@]}"
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
