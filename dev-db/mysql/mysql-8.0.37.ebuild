@@ -94,6 +94,8 @@ PATCHES=(
 	"${WORKDIR}"/mysql-patches
 	# Needed due to bundled boost-1.77, this fix is included in boost-1.81
 	"${FILESDIR}"/mysql-8.0.36-boost-clang-fix.patch
+	# Needed due to bundled boost-1.77, this fix is included in boost-1.79
+	"${FILESDIR}"/mysql-8.0.37-fix-bundled-boost.patch
 	# Needed due to bundles abseil-cpp, this fix is included in abseil-cpp-20240722
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-abseil.patch
 )
