@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Code coverage metrics for Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~x86"
 IUSE="minimal"
 
 RDEPEND="
