@@ -11,7 +11,7 @@ DESCRIPTION="Framework providing additional format plugins for Qt's image I/O sy
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="avif eps heif jpeg2k jpegxl openexr raw"
+IUSE="avif eps heif jpegxl openexr raw"
 
 RDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui]
@@ -19,7 +19,6 @@ RDEPEND="
 	avif? ( >=media-libs/libavif-0.8.2:= )
 	eps? ( >=dev-qt/qtbase-${QTMIN}:6[widgets] )
 	heif? ( >=media-libs/libheif-1.10.0:= )
-	jpeg2k? ( media-libs/openjpeg:= )
 	jpegxl? ( >=media-libs/libjxl-0.7.0:= )
 	openexr? ( >=media-libs/openexr-3:= )
 	raw? ( media-libs/libraw:= )
@@ -39,7 +38,6 @@ src_configure() {
 		$(cmake_use_find_package avif libavif)
 		$(cmake_use_find_package eps Qt6PrintSupport)
 		-DKIMAGEFORMATS_HEIF=$(usex heif)
-		-DKIMAGEFORMATS_JP2=$(usex jpeg2k)
 		-DKIMAGEFORMATS_JXL=$(usex jpegxl)
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package raw LibRaw)
