@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="optional" # see src/apps/marble-kde/CMakeLists.txt
 ECM_TEST="true"
-KFMIN=6.7.0
+KFMIN=6.5.0
 QTMIN=6.7.2
 inherit ecm gear.kde.org
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://marble.kde.org/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="aprs +dbus designer +geolocation gps +kde +pbf phonon shapefile +webengine"
 
 # bug 588320
@@ -40,6 +40,7 @@ DEPEND="
 		>=kde-frameworks/kio-${KFMIN}:6
 		>=kde-frameworks/kparts-${KFMIN}:6
 		>=kde-frameworks/krunner-${KFMIN}:6
+		webengine? ( >=dev-qt/qtwebengine-${QTMIN}:6[qml] )
 	)
 	pbf? ( dev-libs/protobuf:= )
 	phonon? ( >=media-libs/phonon-4.12.0[qt6(+)] )
@@ -60,6 +61,11 @@ BDEPEND="
 	>=dev-qt/qttools-${QTMIN}:6[linguist]
 	aprs? ( dev-lang/perl )
 "
+
+PATCHES=( # bug 946470
+	"${FILESDIR}/${P}-cmake-drop-qt_policy.patch"
+	"${FILESDIR}/${P}-cmake-behaim-marble-maps-kf6-conditional.patch"
+)
 
 src_prepare() {
 	ecm_src_prepare
