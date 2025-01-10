@@ -11,6 +11,6 @@ SRC_URI="https://github.com/richgel999/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ppc ppc64 ~s390 sparc x86"
 
 DOCS=( ChangeLog.md readme.md )
