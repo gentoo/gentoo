@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kmymoney</bugs-to>
+		<remote-id type="kde-invent">office/kmymoney</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable <pkg>kde-plasma/plasma-activities</pkg> integration</flag>
