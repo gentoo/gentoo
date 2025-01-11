@@ -17,11 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2025-01-11)
+# We can bootstrap with mrustc on amd64.
+dev-lang/rust -mrustc-bootstrap
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-core/clang-runtime -offload
 
-# Alfred Wingate <parona@protonmail.com> <2024-12-16)
+# Alfred Wingate <parona@protonmail.com> (2024-12-16)
 # Only available on amd64.
 media-video/handbrake -qsv
 
