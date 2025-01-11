@@ -20,7 +20,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/tvraman/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
@@ -30,6 +30,7 @@ IUSE="+espeak"
 # Usually need := dep with tcl anyway but in particular, it's needed
 # here as we do a version check in src_compile and bake in the results.
 DEPEND="
+	app-emacs/hydra
 	dev-lang/tcl:=
 	espeak? ( app-accessibility/espeak-ng )
 "
