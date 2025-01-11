@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
+# Last release from 2012, dead upstream for 7 years, no Gentoo maintainer.
+# Depends on dev-qt/qtwebengine:5, removed from almost every other distro.
+# Bugs #741849, #830220, #851507 and #926672. Removal on 2025-02-10.
+net-misc/fatrat
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
 # Last release from 2020, effectively unmaintained in Gentoo as its
 # maintainer has moved on to taking care of it in rion overlay instead.
 # Depends on Qt5, app-crypt/qca[qt5], dev-qt/qtwebengine:5.
