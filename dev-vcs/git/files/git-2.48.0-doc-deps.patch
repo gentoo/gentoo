@@ -1,0 +1,18 @@
+--- a/Documentation/technical/meson.build
++++ b/Documentation/technical/meson.build
+@@ -42,6 +42,7 @@ api_index = custom_target(
+     '@OUTPUT@',
+   ],
+   env: script_environment,
++  depends: documentation_deps,
+   input: api_docs,
+   output: 'api-index.txt',
+ )
+@@ -60,6 +61,7 @@ foreach article : api_docs + articles
+     command: asciidoc_html_options,
+     input: article,
+     output: fs.stem(article) + '.html',
++    depends: documentation_deps,
+     install: true,
+     install_dir: get_option('datadir') / 'doc/git-doc/technical',
+   )

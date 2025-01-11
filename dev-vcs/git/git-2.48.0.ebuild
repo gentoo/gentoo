@@ -148,6 +148,10 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.48.0-doc-deps.patch
+)
+
 pkg_setup() {
 	if use subversion && has_version "dev-vcs/subversion[dso]" ; then
 		ewarn "Per Gentoo bugs #223747, #238586, when subversion is built"
@@ -193,7 +197,7 @@ src_configure() {
 	)
 
 	# For non-live, we use a downloaded docs tarball instead.
-	if [[ ${PV} == *9999 ]] ; then
+	if [[ ${PV} == *9999 ]] || use doc ; then
 		emesonargs+=(
 			-Ddocs="man$(usev doc ',html')"
 		)
@@ -248,8 +252,13 @@ src_compile() {
 		git_emake -C contrib/mw-to-git
 	fi
 
-	git_emake -C contrib/diff-highlight
+	if use doc ; then
+		# Workaround fragments that still use the Makefile and can't
+		# find the bits from Meson's out-of-source build
+		ln -s "${BUILD_DIR}"/Documentation/asciidoc.conf "${S}"/Documentation/asciidoc.conf || die
+	fi
 
+	git_emake -C contrib/diff-highlight
 	git_emake -C contrib/subtree git-subtree
 	# git-subtree.1 requires the full USE=doc dependency stack
 	use doc && git_emake -C contrib/subtree git-subtree.html git-subtree.1
@@ -274,11 +283,17 @@ src_install() {
 		dobin contrib/credential/osxkeychain/git-credential-osxkeychain
 	fi
 
+	if use doc ; then
+		cp -r "${ED}"/usr/share/doc/git-doc/. "${ED}"/usr/share/doc/${PF}/html || die
+		rm -rf "${ED}"/usr/share/doc/git-doc/ || die
+	fi
+
 	# Depending on the tarball and manual rebuild of the documentation, the
 	# manpages may exist in either OR both of these directories.
 	find man?/*.[157] >/dev/null 2>&1 && doman man?/*.[157]
 	find Documentation/*.[157] >/dev/null 2>&1 && doman Documentation/*.[157]
 	dodoc README* Documentation/{SubmittingPatches,CodingGuidelines}
+
 	use doc && dodir /usr/share/doc/${PF}/html
 	local d
 	for d in / /howto/ /technical/ ; do
@@ -290,8 +305,6 @@ src_install() {
 		fi
 	done
 	docinto /
-	# Upstream does not ship this pre-built :-(
-	use doc && doinfo Documentation/{git,gitman}.info
 
 	newbashcomp contrib/completion/git-completion.bash ${PN}
 	bashcomp_alias git gitk
