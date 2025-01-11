@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,9 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 # See bug #616762 for more information.
 RDEPEND="!sys-cluster/charm"
 
-src_configure() {
-	# https://github.com/concurrencykit/ck/issues/200
-	append-cflags -fno-strict-aliasing
+PATCHES=( "${FILESDIR}/${PN}-0.7.2-strict-aliasing.patch" )
 
+src_configure() {
 	tc-export AR CC LD
 
 	local myeconfargs=(
