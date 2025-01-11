@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">remvee/exifr</remote-id>
+    <remote-id type="codeberg">rwv/exifr</remote-id>
   </upstream>
 </pkgmetadata>
