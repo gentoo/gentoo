@@ -54,6 +54,13 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# we don't install .dist-info for uv
+	sed -i -e '/uv/d' pyproject.toml || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# Internet
