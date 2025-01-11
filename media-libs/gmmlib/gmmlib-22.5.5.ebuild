@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
 	S="${WORKDIR}/${PN}-intel-${P}"
 fi
