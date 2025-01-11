@@ -11,7 +11,19 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+inherit autotools flag-o-matic
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-autoconf.patch
+)
+
+src_prepare() {
+	default
+	eautoconf # 879679
+}
+
 src_configure() {
+	use elibc_musl && append-cflags -D_GNU_SOURCE # 906864
 	econf --disable-static
 }
 
