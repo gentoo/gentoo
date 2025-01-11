@@ -1,21 +1,25 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-NEED_EMACS=26.1
-FORCE_PRINT_ELOG=1
-DISABLE_AUTOFORMATTING=1
+NEED_EMACS="29.1"
+FORCE_PRINT_ELOG="1"
+DISABLE_AUTOFORMATTING="1"
+
 inherit elisp toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="The emacspeak audio desktop"
-HOMEPAGE="http://emacspeak.sourceforge.net/"
+HOMEPAGE="http://emacspeak.sourceforge.net/
+	https://github.com/tvraman/emacspeak/"
 
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/tvraman/emacspeak.git"
+if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/tvraman/${PN}"
 else
-	SRC_URI="https://github.com/tvraman/emacspeak/releases/download/${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/tvraman/${PN}/releases/download/${PV}/${P}.tar.bz2"
+
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
@@ -37,39 +41,52 @@ RDEPEND="
 DOC_CONTENTS='
 As of version 39.0 and later, the /usr/bin/emacspeak
 shell script has been removed downstream in Gentoo.
-You should launch emacspeak by another method, for instance
-by adding the following to your ~/.emacs file:
+You should launch emacspeak by another method, for instance by adding
+the following to your init file (~/.emacs or ~/.config/emacs/init.el):
 (load "/usr/share/emacs/site-lisp/emacspeak/lisp/emacspeak-setup.el")
 '
 
 HTML_DOCS=( etc/ info/ )
 
-src_configure() {
-	MAKEOPTS+=" -j1"
+src_prepare() {
+	elisp_src_prepare
 
+	# A Make rule will regenerate it.
+	rm -f ./lisp/emacspeak-loaddefs.el || die
+}
+
+src_configure() {
+	MAKEOPTS+=" -j1 "
 	tc-export CXX
 
 	emake config
 }
 
 src_compile() {
-	emake emacspeak
-	if use espeak; then
+	emake README
+
+	cd "${S}/lisp" || die
+	emake emacspeak-loaddefs.el
+	local -x BYTECOMPFLAGS="-L . -l emacspeak-preamble.el -l emacspeak-loaddefs.el"
+	elisp_src_compile
+
+	if use espeak ; then
 		local tcl_version="$(echo 'puts $tcl_version;exit 0' |tclsh)"
+
 		if [[ -z ${tcl_version} ]]; then
 			die 'Unable to detect the installed version of dev-lang/tcl.'
 		fi
 
-		cd servers/native-espeak || die
+		cd "${S}/servers/native-espeak" || die
 		emake TCL_VERSION="${tcl_version}"
 	fi
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	elisp-install emacspeak/lisp ./lisp/*.el{,c}
 
-	if use espeak; then
-		pushd servers/native-espeak > /dev/null || die
+	if use espeak ; then
+		pushd ./servers/native-espeak > /dev/null || die
 
 		emake DESTDIR="${D}" install
 		local orig_serverdir="/usr/share/emacs/site-lisp/emacspeak/servers/native-espeak"
@@ -80,15 +97,19 @@ src_install() {
 		rm -f "${serverfile}" || die
 
 		dosym -r "/usr/$(get_libdir)/emacspeak/tclespeak.so" \
-			"${orig_serverdir}/tclespeak.so"
+			  "${orig_serverdir}/tclespeak.so"
+
 		popd > /dev/null || die
+
+		exeinto /usr/share/emacs/site-lisp/emacspeak/servers
+		doexe ./servers/espeak
+
+		insinto /usr/share/emacs/site-lisp/emacspeak/servers
+		doins ./servers/tts-lib.tcl
 	fi
 
 	dodoc README etc/NEWS* etc/COPYRIGHT
 	einstalldocs
 
-	cd "${ED}"/usr/share/emacs/site-lisp/${PN} || die
-	rm -rf README etc/NEWS* etc/COPYRIGHT install-guide \
-		user-guide || die
 	readme.gentoo_create_doc
 }
