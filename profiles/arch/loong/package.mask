@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-10)
@@ -7,10 +7,10 @@
 dev-python/ujson
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# sys-boot/gnu-efi upstream hasn't merged the loong port yet
+# sys-boot/gnu-efi applications that need porting (sbsigntools & refind) or
+# is abandoned upstream (elilo)
 app-crypt/efitools
 app-crypt/pesign
 app-crypt/sbsigntools
-sys-apps/fwupd-efi
 sys-boot/elilo
 sys-boot/refind
