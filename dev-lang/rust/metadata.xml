@@ -21,6 +21,7 @@
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="dist">Install dist tarballs (used for bootstrapping)</flag>
 		<flag name="miri">Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)</flag>
+		<flag name="mrustc-bootstrap">Use <pkg>dev-lang/mrustc</pkg> to build the bootstrap Rust sysroot from this package's source</flag>
 		<flag name="nightly">Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
