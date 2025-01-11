@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,7 @@ DOCS="AUTHORS NEWS README*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.4-default-cxx.patch
+	"${FILESDIR}"/${PN}-4.4.1-r100-c23-fix.patch
 )
 
 src_unpack() {
