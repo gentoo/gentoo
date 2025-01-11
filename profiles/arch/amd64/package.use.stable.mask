@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2025-01-11)
+# Stable-mask until mrustc is stabilised
+dev-lang/rust mrustc-bootstrap
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-09-27)
 # dev-qt/qtremoteobjects:6 has not been stabilized yet.
 dev-python/pyqt6 remoteobjects

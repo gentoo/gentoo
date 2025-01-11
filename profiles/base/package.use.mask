@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Matt Jolly <kangie@gentoo.org> (2025-01-11)
+# mrustc currenly only works on amd64.
+dev-lang/rust mrustc-bootstrap
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-09)
 # No suitable versions of dev-libs/protobuf available.
 =dev-java/protobuf-java-4.29.3 system-protoc
