@@ -27,7 +27,10 @@ src_configure() {
 	# Uses std::auto_ptr (deprecated in c++11, removed in c++17)
 	append-cxxflags "-std=c++14"
 
-	default
+	local myconf=(
+		ATF_SHELL="${EPREFIX}/bin/sh"
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {
