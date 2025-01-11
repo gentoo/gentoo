@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -25,7 +25,7 @@ ruby_add_rdepend "dev-ruby/roadie:5
 ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
-		|| ( dev-ruby/rails:7.0 dev-ruby/rails:6.1 )
+		|| ( dev-ruby/rails:8.0 dev-ruby/rails:7.2 dev-ruby/rails:7.1 dev-ruby/rails:7.0 dev-ruby/rails:6.1 )
 		dev-ruby/rspec-rails
 		dev-ruby/rspec-collection_matchers
 		dev-ruby/sass-rails )"
@@ -54,6 +54,14 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	sed -i -e '/run_in_app_context/ s:bin/rails:'${RUBY}' -S bin/rails:' spec/support/rails_app.rb || die
+
+	case ${RUBY} in
+		*ruby33)
+			# Rails 7.0 does not have a ruby33 target so we can't test it.
+			sed -e '/rails_70/ s:^:#:' \
+				-i spec/integration_spec.rb || die
+			;;
+	esac
 }
 
 each_ruby_test() {
