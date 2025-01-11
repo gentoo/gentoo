@@ -1,12 +1,12 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools readme.gentoo-r1
 
 DESCRIPTION="Graphical display of directories and globs referenced at the shell prompt"
-HOMEPAGE="http://viewglob.sourceforge.net/"
+HOMEPAGE="https://viewglob.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/viewglob/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-underlinking.patch
 	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${P}-C23.patch
 )
 
 src_prepare() {

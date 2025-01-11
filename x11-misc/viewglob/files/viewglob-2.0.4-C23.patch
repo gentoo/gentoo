@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/944019
+https://bugs.gentoo.org/921573
+Fix implicit defines in configure by defaulting to GNU_SOURCES, set include
+ordering straight for implicit define in code and fix sizes/declarations
+for C23
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,6 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT([viewglob], [2.0.4])
+ AM_INIT_AUTOMAKE
++AC_USE_SYSTEM_EXTENSIONS
+ AM_CONFIG_HEADER([config.h])
+ RELEASE_DATE="April 26, 2006"
+ 
+--- a/common/conf-to-args.c
++++ b/common/conf-to-args.c
+@@ -32,7 +32,7 @@
+ 	GString* arg_str = NULL;
+ 
+ 	gchar buf[1024];
+-	gint nread;
++	gssize nread;
+ 
+ 	gchar* home = getenv("HOME");
+ 	if (!home) {
+--- a/vgd/tcp-listen.c
++++ b/vgd/tcp-listen.c
+@@ -26,6 +26,8 @@
+ 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+ 
++#include "common.h"
++
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+@@ -34,7 +36,6 @@
+ 
+ #include <string.h>
+ 
+-#include "common.h"
+ #include "tcp-listen.h"
+ 
+ 
+--- a/vgseer/ptytty.c
++++ b/vgseer/ptytty.c
+@@ -112,7 +112,7 @@
+ #if defined(HAVE_GRANTPT) && defined(HAVE_UNLOCKPT)
+ # if defined(PTYS_ARE_GETPT) || defined(PTYS_ARE_PTMX)
+     {
+-	extern char    *ptsname();
++	extern char    *ptsname(int fd);
+ 
+ #  ifdef PTYS_ARE_GETPT
+ 	pfd = getpt();
