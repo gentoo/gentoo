@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
+# Last release from 2020, effectively unmaintained in Gentoo.
+# Depends on Qt5, app-crypt/qca[qt5], dev-qt/qtwebengine:5.
+# Bugs #755446, #926138, #926670. Removal on 2025-02-10.
+net-im/psi
+net-im/psimedia
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
 # Qt5-based library without any revdeps. Depends on app-crypt/qca[qt5].
 # Removal on 2025-02-10.
 dev-libs/qoauth
