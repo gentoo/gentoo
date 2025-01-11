@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,8 +21,8 @@ S="${WORKDIR}/wxWidgets-${PV}"
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+X curl doc debug keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit"
-REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) keyring? ( X )"
+IUSE="+X curl doc debug egl keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit"
+REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) keyring? ( X ) egl? ( opengl )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -166,7 +166,7 @@ multilib_src_configure() {
 	#
 	# Check that the macro wxUSE_GLCANVAS_EGL is set to 1.
 	#
-	myeconfargs+=( "--disable-glcanvasegl" )
+	use egl || myeconfargs+=( "--disable-glcanvasegl" )
 
 	# debug in >=2.9
 	# there is no longer separate debug libraries (gtk2ud)
