@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -527,6 +527,12 @@ cargo_src_unpack() {
 		done < <(sha256sum -z "${crates[@]}" || die)
 
 		popd >/dev/null || die
+
+		if [[ ${#crates[@]} -ge 300 ]]; then
+			eqawarn "This package uses a very large number of CRATES.  Please provide"
+			eqawarn "a crate tarball instead and fetch it via SRC_URI.  You can use"
+			eqawarn "'pycargoebuild --crate-tarball' to create one."
+		fi
 	fi
 
 	cargo_gen_config
