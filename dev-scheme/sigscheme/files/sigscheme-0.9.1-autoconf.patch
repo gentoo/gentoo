@@ -1,0 +1,31 @@
+From 1fd438ede105509488ae2f8a9f2d363097f4467d Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sat, 11 Jan 2025 10:09:31 +0800
+Subject: [PATCH] m4/ax_check_page_aligned_malloc: Make macros
+ `-Wstrict-prototypes` compatible
+
+elimate compiler's warning:
+
+  warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ m4/ax_check_page_aligned_malloc.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/ax_check_page_aligned_malloc.m4 b/m4/ax_check_page_aligned_malloc.m4
+index 4bfa930..7aa7f74 100644
+--- a/m4/ax_check_page_aligned_malloc.m4
++++ b/m4/ax_check_page_aligned_malloc.m4
+@@ -35,7 +35,7 @@ AC_DEFUN([AX_CHECK_PAGE_ALIGNED_MALLOC],
+ # include <unistd.h>
+ #endif
+ 
+-int main()
++int main(void)
+ {
+   int pagesize = getpagesize();
+   int i;
+-- 
+2.45.2
+
