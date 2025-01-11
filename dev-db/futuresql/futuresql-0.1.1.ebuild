@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/futuresql/html/index.html https://invent.kde.org/l
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~riscv ~x86"
 fi
 
 LICENSE="MIT"
