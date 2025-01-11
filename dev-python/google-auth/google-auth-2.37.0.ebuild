@@ -26,6 +26,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/aioresponses[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-38.0.3[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
