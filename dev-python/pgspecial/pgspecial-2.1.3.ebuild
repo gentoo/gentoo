@@ -41,6 +41,9 @@ EPYTEST_DESELECT=(
 	# change in postgres? *shrug*
 	tests/test_specials.py::test_slash_d_view_verbose
 	tests/test_specials.py::test_slash_dn
+	# fails with postgresql:17
+	tests/test_specials.py::test_slash_ddp
+	tests/test_specials.py::test_slash_ddp_pattern
 )
 
 src_test() {
