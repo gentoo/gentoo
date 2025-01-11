@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Read/Write .css files with as little code as possible"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86"
