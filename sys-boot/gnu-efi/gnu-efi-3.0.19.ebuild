@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -88,6 +88,7 @@ efimake() {
 		aarch64*) arch=aarch64 ;;
 		ia64*) arch=ia64 ;;
 		i?86*) arch=ia32 ;;
+		loongarch64*) arch=loongarch64 ;;
 		riscv64*) arch=riscv64;;
 		x86_64*) arch=x86_64 ;;
 		*) die "Unknown CHOST" ;;
