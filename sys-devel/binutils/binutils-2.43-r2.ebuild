@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -184,6 +184,9 @@ src_configure() {
 	strip-flags
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
+
+	# Workaround for gcc PR118409
+	tc-is-gcc && [[ $(gcc-major-version) -eq 15 ]] && append-flags -fdisable-tree-ifcombine
 
 	# https://sourceware.org/PR32372
 	append-cflags $(test-flags-CC -std=gnu17)
