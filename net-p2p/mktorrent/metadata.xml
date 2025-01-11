@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">Rudde/mktorrent</remote-id>
+		<remote-id type="github">pobrn/mktorrent</remote-id>
 	</upstream>
 </pkgmetadata>
