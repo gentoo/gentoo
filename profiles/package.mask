@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
+# Last release from 2020, dead upstream; Depends on app-crypt/qca[qt5].
+# Bug #935556. Removal on 2025-02-10.
+net-im/dianara
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-10)
 # EAPI=7, maintainer needed, no reverse dependencies, fails to compile,
 # uses deprecated Go eclass.
