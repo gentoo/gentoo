@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc ~x86"
 
 DEPEND="
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
