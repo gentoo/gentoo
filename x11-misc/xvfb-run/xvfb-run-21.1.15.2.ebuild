@@ -13,7 +13,7 @@ S="${WORKDIR}"/
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 BDEPEND="dev-util/patchutils"
 RDEPEND="x11-apps/xauth
