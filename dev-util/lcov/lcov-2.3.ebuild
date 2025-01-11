@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/linux-test-project/lcov/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~s390 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86"
 fi
 
 LICENSE="GPL-2+"
