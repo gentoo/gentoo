@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
@@ -78,14 +78,6 @@ PATCHES=(
 )
 
 QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
-
-QA_CONFIG_IMPL_DECL_SKIP=(
-	# bug #898570
-	unreachable
-	MIN
-	alignof
-	static_assert
-)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
