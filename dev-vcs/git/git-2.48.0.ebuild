@@ -317,10 +317,6 @@ src_install() {
 	dodoc git-subtree.txt
 	popd &>/dev/null || die
 
-	if use mediawiki ; then
-		git_emake -C contrib/mw-to-git DESTDIR="${D}" install
-	fi
-
 	# diff-highlight
 	dobin contrib/diff-highlight/diff-highlight
 	newdoc contrib/diff-highlight/README README.diff-highlight
@@ -395,6 +391,10 @@ src_install() {
 		mv "${ED}"/usr/share/perl5/Git "${ED}/$(perl_get_vendorlib)" || die
 
 		dobin contrib/credential/netrc/git-credential-netrc
+	fi
+
+	if use mediawiki ; then
+		git_emake -C contrib/mw-to-git DESTDIR="${D}" install
 	fi
 
 	if ! use subversion ; then

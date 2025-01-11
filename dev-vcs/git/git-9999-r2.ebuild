@@ -148,10 +148,6 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.48.0_rc2-meson-deps.patch
-)
-
 pkg_setup() {
 	if use subversion && has_version "dev-vcs/subversion[dso]" ; then
 		ewarn "Per Gentoo bugs #223747, #238586, when subversion is built"
@@ -321,10 +317,6 @@ src_install() {
 	dodoc git-subtree.txt
 	popd &>/dev/null || die
 
-	if use mediawiki ; then
-		git_emake -C contrib/mw-to-git DESTDIR="${D}" install
-	fi
-
 	# diff-highlight
 	dobin contrib/diff-highlight/diff-highlight
 	newdoc contrib/diff-highlight/README README.diff-highlight
@@ -399,6 +391,10 @@ src_install() {
 		mv "${ED}"/usr/share/perl5/Git "${ED}/$(perl_get_vendorlib)" || die
 
 		dobin contrib/credential/netrc/git-credential-netrc
+	fi
+
+	if use mediawiki ; then
+		git_emake -C contrib/mw-to-git DESTDIR="${D}" install
 	fi
 
 	if ! use subversion ; then
