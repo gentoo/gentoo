@@ -14,9 +14,9 @@ HOMEPAGE="http://emacspeak.sourceforge.net/
 	https://github.com/tvraman/emacspeak/"
 
 if [[ "${PV}" == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/tvraman/${PN}"
-
 	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/tvraman/${PN}"
 else
 	SRC_URI="https://github.com/tvraman/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
@@ -43,10 +43,17 @@ As of version 39.0 and later, the /usr/bin/emacspeak
 shell script has been removed downstream in Gentoo.
 You should launch emacspeak by another method, for instance by adding
 the following to your init file (~/.emacs or ~/.config/emacs/init.el):
-(load "/usr/share/emacs/site-lisp/emacspeak/lisp/emacspeak.el")
+(load "/usr/share/emacs/site-lisp/emacspeak/lisp/emacspeak-setup.el")
 '
 
 HTML_DOCS=( etc/ info/ )
+
+src_prepare() {
+	elisp_src_prepare
+
+	# A Make rule will regenerate it.
+	rm ./lisp/emacspeak-loaddefs.el || die
+}
 
 src_configure() {
 	MAKEOPTS+=" -j1 "
@@ -56,16 +63,21 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C lisp
 	emake README
+
+	cd "${S}/lisp" || die
+	emake emacspeak-loaddefs.el
+	local -x BYTECOMPFLAGS="-L . -l emacspeak-preamble.el -l emacspeak-loaddefs.el"
+	elisp_src_compile
 
 	if use espeak ; then
 		local tcl_version="$(echo 'puts $tcl_version;exit 0' |tclsh)"
+
 		if [[ -z ${tcl_version} ]]; then
 			die 'Unable to detect the installed version of dev-lang/tcl.'
 		fi
 
-		cd servers/native-espeak || die
+		cd "${S}/servers/native-espeak" || die
 		emake TCL_VERSION="${tcl_version}"
 	fi
 }
