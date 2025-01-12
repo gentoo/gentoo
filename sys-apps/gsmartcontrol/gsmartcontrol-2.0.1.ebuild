@@ -16,7 +16,7 @@ else
 		https://github.com/ashaduri/gsmartcontrol/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 	"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 0BSD Boost-1.0 ZLIB"
