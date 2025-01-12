@@ -61,6 +61,7 @@ S="${WORKDIR}/rocFFT-rocm-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.1-fix-rocm-link-path.patch
+	"${FILESDIR}"/${PN}-6.1.1-find-hip-use-config.patch
 )
 
 required_mem() {
