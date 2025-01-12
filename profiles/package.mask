@@ -232,12 +232,6 @@ app-crypt/kencfs-plasma
 # Library without revdeps. Removal on 2025-01-13.
 dev-libs/atcore
 
-# Ulrich Müller <ulm@gentoo.org> (2024-12-13)
-# Unmaintained upstream: last release (2.40) in 2009, last commit
-# to upstream repository in 2017. Broken with Emacs 29.
-# Removal on 2025-01-12. Bug #911288.
-app-emacs/ecb
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
