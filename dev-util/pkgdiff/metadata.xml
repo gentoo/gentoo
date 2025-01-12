@@ -5,4 +5,7 @@
 	<email>fordfrog@gentoo.org</email>
 	<name>Miroslav Šulc</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">lvc/pkgdiff</remote-id>
+</upstream>
 </pkgmetadata>

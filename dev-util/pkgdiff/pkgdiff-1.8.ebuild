@@ -3,15 +3,13 @@
 
 EAPI=8
 
-inherit git-r3
-
 DESCRIPTION="Package Changes Analyzer (pkgdiff)"
 HOMEPAGE="https://github.com/lvc/pkgdiff"
-EGIT_REPO_URI="https://github.com/lvc/${PN}.git"
+SRC_URI="https://github.com/lvc/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 DEPEND=">=dev-lang/perl-5"
 RDEPEND="${DEPEND}
