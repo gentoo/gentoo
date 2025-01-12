@@ -16,7 +16,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/atf-0.21-getopt-solaris.patch )
+PATCHES=(
+	"${FILESDIR}"/atf-0.21-getopt-solaris.patch
+	"${FILESDIR}"/atf-0.22-atf_check-temp.patch
+)
 
 src_prepare() {
 	default
