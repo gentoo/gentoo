@@ -1,0 +1,11 @@
+--- a/Directory.Build.props
++++ b/Directory.Build.props
+@@ -40,7 +40,7 @@ Some common use cases include:
+         <!-- https://www.gresearch.co.uk/blog/article/improve-nuget-restores-with-static-graph-evaluation/ -->
+         <RestoreUseStaticGraphEvaluation>true</RestoreUseStaticGraphEvaluation>
+         <ServerGarbageCollection>true</ServerGarbageCollection>
+-        <OtherFlags>$(OtherFlags) --test:GraphBasedChecking --test:ParallelOptimization --test:ParallelIlxGen --strict-indentation+ --realsig+</OtherFlags>
++        <OtherFlags>$(OtherFlags) --test:GraphBasedChecking --test:ParallelOptimization --test:ParallelIlxGen --strict-indentation+ </OtherFlags>
+     </PropertyGroup>
+     
+     <!-- Versions -->
