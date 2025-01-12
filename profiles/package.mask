@@ -220,12 +220,6 @@ virtual/bitcoin-leveldb
 app-xemacs/latin-unity
 app-xemacs/mule-ucs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
-# Last "release" seems to have been an AUR special, and even that is now
-# >6 years old and still KF5 based. No known repository, no tarball source
-# except AUR. Removal on 2025-01-13.
-app-crypt/kencfs-plasma
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
