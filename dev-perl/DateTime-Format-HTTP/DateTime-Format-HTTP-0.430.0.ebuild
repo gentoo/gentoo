@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Date conversion routines"
 
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/DateTime-0.170.0
