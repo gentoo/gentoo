@@ -70,9 +70,3 @@ src_test() {
 	# uses HMM to fit tests to default <512M iGPU VRAM
 	ROCTHRUST_USE_HMM="1" cmake_src_test -j1
 }
-
-src_install() {
-	cmake_src_install
-
-	use benchmark && dobin "${BUILD_DIR}"/benchmarks/benchmark_thrust_bench
-}
