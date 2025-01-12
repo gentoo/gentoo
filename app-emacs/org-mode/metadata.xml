@@ -25,4 +25,10 @@
   <flag name="odt-schema">Install non-free schema files
     for OpenDocument Text exporter</flag>
 </use>
+<upstream>
+  <bugs-to>https://orgmode.org/manual/Feedback.html</bugs-to>
+  <changelog>https://orgmode.org/Changes.html</changelog>
+  <doc>https://orgmode.org/manuals.html</doc>
+  <remote-id type="savannah">emacs</remote-id> <!-- Development Tools → Emacs Org mode -->
+</upstream>
 </pkgmetadata>
