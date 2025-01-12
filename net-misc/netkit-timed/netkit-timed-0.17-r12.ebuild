@@ -9,17 +9,17 @@ DESCRIPTION="Netkit - timed: Time daemon"
 HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
 SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
 
-KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 LICENSE="BSD GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-src_prepare() {
-	eapply "${FILESDIR}"/0.17-CFLAG-DEF-fix.patch
-	eapply "${FILESDIR}"/0.17-timed-opt-parsing.patch
-	sed -i -e '/^LDFLAGS=/d' configure || die "sed configure"
-	sed -i -e "s|ar -cruv|\${AR} -cruv|g" timed/lib/Makefile || die
-	default
-}
+PATCHES=(
+	"${FILESDIR}/0.17-CFLAG-DEF-fix.patch"
+	"${FILESDIR}/0.17-timed-opt-parsing.patch"
+	"${FILESDIR}/${P}-c99-port.patch"
+	"${FILESDIR}/${P}-accept-build-flags.patch"
+	"${FILESDIR}/${P}-c23-port.patch"
+)
 
 src_configure() {
 	tc-export AR
