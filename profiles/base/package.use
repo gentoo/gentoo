@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2025-01-12)
+# Requires >= lua-5.3.
+>=dev-lua/lutok-0.6 lua_single_target_lua5-4
 
 # Michał Górny <mgorny@gentoo.org> (2024-09-15)
 # Each flag is used by exactly one version, so let's default-enable
