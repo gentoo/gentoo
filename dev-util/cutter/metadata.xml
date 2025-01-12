@@ -6,6 +6,6 @@
 		<name>John Helmert III</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">radareorg/cutter</remote-id>
+		<remote-id type="github">rizinorg/cutter</remote-id>
 	</upstream>
 </pkgmetadata>
