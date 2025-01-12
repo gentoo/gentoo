@@ -61,7 +61,6 @@ SLOT="0"
 IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
-# TODO: what purpose does USE=tk serve w/ meson port?
 DEPEND="
 	dev-libs/openssl:=
 	sys-libs/zlib
@@ -252,6 +251,10 @@ src_compile() {
 		git_emake -C contrib/mw-to-git
 	fi
 
+	if use tk ; then
+		git_emake -C gitk-git
+	fi
+
 	if use doc ; then
 		# Workaround fragments that still use the Makefile and can't
 		# find the bits from Meson's out-of-source build
@@ -425,6 +428,10 @@ src_install() {
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
+	fi
+
+	if use tk ; then
+		git_emake -C gitk-git DESTDIR="${D}" install
 	fi
 
 	perl_delete_localpod

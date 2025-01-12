@@ -61,7 +61,6 @@ SLOT="0"
 IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
-# TODO: what purpose does USE=tk serve w/ meson port?
 DEPEND="
 	dev-libs/openssl:=
 	sys-libs/zlib
@@ -147,6 +146,10 @@ REQUIRED_USE="
 "
 
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.48.0-doc-deps.patch
+)
 
 pkg_setup() {
 	if use subversion && has_version "dev-vcs/subversion[dso]" ; then
@@ -246,6 +249,10 @@ src_compile() {
 
 	if use mediawiki ; then
 		git_emake -C contrib/mw-to-git
+	fi
+
+	if use tk ; then
+		git_emake -C gitk-git
 	fi
 
 	if use doc ; then
@@ -421,6 +428,10 @@ src_install() {
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
+	fi
+
+	if use tk ; then
+		git_emake -C gitk-git DESTDIR="${D}" install
 	fi
 
 	perl_delete_localpod
