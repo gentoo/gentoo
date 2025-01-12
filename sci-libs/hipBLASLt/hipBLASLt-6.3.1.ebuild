@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 
 SUPPORTED_GPUS=( gfx908 gfx90a gfx940 gfx941 gfx942 gfx1100 gfx1101 )
 IUSE_TARGETS=( "${SUPPORTED_GPUS[@]/#/amdgpu_targets_}" )
-IUSE="${IUSE_TARGETS[@]/#/+} test"
+IUSE="${IUSE_TARGETS[@]/#/+} test benchmark"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -42,6 +42,10 @@ BDEPEND="
 		dev-cpp/gtest
 		virtual/blas
 		dev-util/rocm-smi:${SLOT}
+	)
+	benchmark? (
+		virtual/blas
+		llvm-runtimes/openmp
 	)
 "
 
@@ -103,6 +107,7 @@ src_configure() {
 		-DBUILD_WITH_TENSILE="${build_with_tensile}"
 		-DAMDGPU_TARGETS="${targets}"
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
+		-DBUILD_CLIENTS_BENCHMARKS="$(usex benchmark ON OFF)"
 		-Wno-dev
 	)
 
