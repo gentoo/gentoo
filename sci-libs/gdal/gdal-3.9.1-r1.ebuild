@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -102,6 +102,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
+	"${FILESDIR}"/${P}-poppler-24.12.patch
 )
 
 pkg_setup() {
