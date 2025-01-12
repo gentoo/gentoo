@@ -32,7 +32,9 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.60-Makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.60-Makefile.patch"
+	"${FILESDIR}/${PN}-5.41-makefile.patch" )
 
 src_compile() {
 	# bug https://bugs.gentoo.org/939771
