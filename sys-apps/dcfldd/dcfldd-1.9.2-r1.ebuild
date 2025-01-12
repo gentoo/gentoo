@@ -44,10 +44,9 @@ src_test() {
 
 	# Smoke test for Gentoo bug #930996
 	# Inspired by https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114698#c0
-	expected_sha256sum="$(sha256sum <<<TestInput | awk '{print $1}' \
-		| tee /dev/stderr)"
+	expected_sha256sum="$(sha256sum <<<TestInput | awk '{print $1}')"
 	actual_sha256sum="$(dcfldd hash=sha256 2>&1 <<<TestInput \
-		| grep -F sha256 | awk '{print $3}' | tee /dev/stderr)"
+		| grep -F sha256 | awk '{print $3}')"
 	[[ ${actual_sha256sum} = ${expected_sha256sum} ]] \
-		|| die "dcfldd did not produce the expected SHA256 sum."
+		|| die "dcfldd produced \"${actual_sha256sum}\" instead of expected \"${expected_sha256sum}\"."
 }
