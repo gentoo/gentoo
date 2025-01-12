@@ -1,0 +1,103 @@
+https://bugs.gentoo.org/929253
+This worked oggz_packet embedded ogg_packet as first member, so oggz_packet->whatever and ogg_packet->whatever
+were equivalent before modern C. Fix is both trivial and increases correctness if oggz decides to move
+it's insides for some reason
+diff -ru a/src/examples/fishsound-decenc.c b/src/examples/fishsound-decenc.c
+--- a/src/examples/fishsound-decenc.c	2025-01-07 16:38:09.731537446 +0400
++++ b/src/examples/fishsound-decenc.c	2025-01-07 16:45:58.532169522 +0400
+@@ -129,12 +129,12 @@
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * op, long serialno, void * user_data)
+ {
+   FS_DecEnc * ed = (FS_DecEnc *) user_data;
+   
+-  fish_sound_prepare_truncation (ed->decoder, op->granulepos, op->e_o_s);
+-  fish_sound_decode (ed->decoder, op->packet, op->bytes);
++  fish_sound_prepare_truncation (ed->decoder, op->op.granulepos, op->op.e_o_s);
++  fish_sound_decode (ed->decoder, op->op.packet, op->op.bytes);
+ 
+   return 0;
+ }
+diff -ru a/src/examples/fishsound-decode.c b/src/examples/fishsound-decode.c
+--- a/src/examples/fishsound-decode.c	2025-01-07 16:38:09.731537446 +0400
++++ b/src/examples/fishsound-decode.c	2025-01-07 16:48:46.757810869 +0400
+@@ -82,7 +82,7 @@
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * op, long serialno, void * user_data)
+ {
+   FishSound * fsound = (FishSound *)user_data;
+ 
+@@ -94,15 +94,15 @@
+    * than 8 bytes of data, fish_sound_identify would simply return
+    * FISH_SOUND_ERR_SHORT_IDENTIFY.
+    */
+-  if (decode_serialno == -1 && op->b_o_s && op->bytes >= 8) {
+-    if (fish_sound_identify (op->packet, op->bytes) != FISH_SOUND_UNKNOWN)
++  if (decode_serialno == -1 && op->op.b_o_s && op->op.bytes >= 8) {
++    if (fish_sound_identify (op->op.packet, op->op.bytes) != FISH_SOUND_UNKNOWN)
+       decode_serialno = serialno;
+   }
+ 
+   /* If this is the track we are decoding, go ahead and decode it */
+   if (serialno == decode_serialno) {
+-    fish_sound_prepare_truncation (fsound, op->granulepos, op->e_o_s);
+-    fish_sound_decode (fsound, op->packet, op->bytes);
++    fish_sound_prepare_truncation (fsound, op->op.granulepos, op->op.e_o_s);
++    fish_sound_decode (fsound, op->op.packet, op->op.bytes);
+   }
+ 
+   return 0;
+diff -ru a/src/examples/fishsound-identify.c b/src/examples/fishsound-identify.c
+--- a/src/examples/fishsound-identify.c	2025-01-07 16:38:09.731537446 +0400
++++ b/src/examples/fishsound-identify.c	2025-01-07 16:49:26.918638588 +0400
+@@ -60,17 +60,17 @@
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ * oggz, oggz_packet * op, long serialno, void * user_data)
+ {
+ 
+-  if (op->bytes < 8) {
++  if (op->op.bytes < 8) {
+     printf ("too short\n");
+   } else {
+     printf ("Weak identity:\t");
+-    dump_identity (op->packet, 8);
++    dump_identity (op->op.packet, 8);
+ 
+     printf ("Strong identity:\t");
+-    dump_identity (op->packet, op->bytes);
++    dump_identity (op->op.packet, op->op.bytes);
+   }
+ 
+   oggz_set_read_callback (oggz, -1, NULL, NULL);
+diff -ru a/src/examples/fishsound-info.c b/src/examples/fishsound-info.c
+--- a/src/examples/fishsound-info.c	2025-01-07 16:38:09.731537446 +0400
++++ b/src/examples/fishsound-info.c	2025-01-07 16:47:15.325131361 +0400
+@@ -76,15 +76,15 @@
+ }
+ 
+ static int
+-read_packet (OGGZ * oggz, ogg_packet * op, long serialno, void * user_data)
++read_packet (OGGZ* oggz, oggz_packet * op, long serialno, void * user_data)
+ {
+   FishSound * fsound = (FishSound *)user_data;
+ 
+-  if (op->e_o_s) {
+-    fish_sound_prepare_truncation (fsound, op->e_o_s, op->granulepos);
++  if (op->op.e_o_s) {
++    fish_sound_prepare_truncation (fsound, op->op.e_o_s, op->op.granulepos);
+   }
+ 
+-  fish_sound_decode (fsound, op->packet, op->bytes);
++  fish_sound_decode (fsound, op->op.packet, op->op.bytes);
+ 
+   return OGGZ_CONTINUE;
+ }
