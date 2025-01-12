@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="github">KDAB/KDStateMachineEditor</remote-id>
 	</upstream>
+	<use>
+		<flag name="gui">A proof-of-concept application called kdstatemachineditor</flag>
+	</use>
 </pkgmetadata>
