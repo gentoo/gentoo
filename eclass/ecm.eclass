@@ -749,18 +749,18 @@ ecm_src_install() {
 
 	if [[ -n ${_KDE_ORG_ECLASS} && -d "${ED}"/usr/share/metainfo/ ]]; then
 		if [[ ${KDE_ORG_NAME} != ${PN} ]]; then
-			local ecm_metainfo
+			local ecm_metainfo mainslot=${SLOT%/*}
 			pushd "${ED}"/usr/share/metainfo/ > /dev/null || die
 			for ecm_metainfo in find * -type f -iname "*metainfo.xml"; do
 				case ${ecm_metainfo} in
 					*${KDE_ORG_NAME}*)
-						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME} ${PN}${SLOT/0*/}
+						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME} ${PN}${mainslot/0*/}
 						;;
 					*${KDE_ORG_NAME/-/_}*)
-						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME/-/_} ${PN}${SLOT/0*/}
+						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME/-/_} ${PN}${mainslot/0*/}
 						;;
 					org.kde.*)
-						mv_metainfo ${ecm_metainfo} "org.kde." "org.kde.${PN}${SLOT/0*/}-"
+						mv_metainfo ${ecm_metainfo} "org.kde." "org.kde.${PN}${mainslot/0*/}-"
 						;;
 				esac
 			done
