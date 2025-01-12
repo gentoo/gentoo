@@ -33,6 +33,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-01-12)
+# Rails 6.1 is no longer supported upstream. Use a newer Rails version
+# instead. Packages depending exclusively on Rails 6.1 will also be
+# removed. Removal on 2025-02-12.
+dev-ruby/rails:6.1
+dev-ruby/actiontext:6.1
+dev-ruby/actionmailbox:6.1
+dev-ruby/activestorage:6.1
+dev-ruby/actionmailer:6.1
+dev-ruby/actioncable:6.1
+dev-ruby/railties:6.1
+dev-ruby/activejob:6.1
+dev-ruby/actionpack:6.1
+dev-ruby/actionview:6.1
+dev-ruby/activerecord:6.1
+dev-ruby/activemodel:6.1
+dev-ruby/activesupport:6.1
+dev-ruby/actionpack-action_caching
+dev-ruby/coffee-rails
+dev-ruby/will_paginate:3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
 # Last release from 2012, dead upstream for 7 years, no Gentoo maintainer.
 # Depends on dev-qt/qtwebengine:5, removed from almost every other distro.
