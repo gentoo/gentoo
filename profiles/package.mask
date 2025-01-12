@@ -226,12 +226,6 @@ app-xemacs/mule-ucs
 # except AUR. Removal on 2025-01-13.
 app-crypt/kencfs-plasma
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-14)
-# Archived and unmaintained upstream; see also:
-# https://invent.kde.org/libraries/atcore/-/issues/2
-# Library without revdeps. Removal on 2025-01-13.
-dev-libs/atcore
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
