@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{{11..13},13t} )
 inherit edo flag-o-matic multiprocessing python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A general purpose tile map editor"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="minimal python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -86,6 +86,8 @@ src_compile() {
 src_install() {
 	edo qbs install -p ${QBS_PRODUCTS} --install-root "${D}"
 
-	docompress -x /usr/share/doc/${PF}/examples
-	dodoc -r examples
+	if ! use minimal; then
+		docompress -x /usr/share/doc/${PF}/examples
+		dodoc -r examples
+	fi
 }
