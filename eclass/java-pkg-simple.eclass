@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -11,7 +11,9 @@
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
 # without the use of any build instructions shipped with the sources.
-# There is no support for generating source files, or for controlling
+# It can generate module-info.java files and supports adding the Main-Class
+# and the Automatic-Module-Name attributes to MANIFEST.MF. There is no
+# further support for generating source files, or for controlling
 # the META-INF of the resulting jar, although these issues may be
 # addressed by an ebuild by putting corresponding files into the target
 # directory before calling the src_compile function of this eclass.
@@ -111,7 +113,6 @@ fi
 #	)
 # @CODE
 
-# @DESCRIPTION:
 # @ECLASS_VARIABLE: JAVA_RESOURCE_DIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -225,6 +226,44 @@ fi
 # @DESCRIPTION:
 # It is almost equivalent to ${JAVA_RESOURCE_DIRS} in src_test.
 
+# @ECLASS_VARIABLE: JAVA_MODULE_NAME
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of directories which are named according to the requirements of
+# 'jdeps --generate-module-info' and in which the module's sources will be
+# placed or generated.
+# @CODE
+# Example:
+# 	JAVA_MODULE_NAME=(
+# 		jakarta.cdi
+# 		jakarta.cdi.lang.model
+# 	)
+# @CODE
+
+# @ECLASS_VARIABLE: JAVA_MODULES_DIR
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The parent of the JAVA_MODULE_NAME directories
+# @CODE
+# Example:
+# 	JAVA_MODULES_DIR="src/main"
+# @CODE
+
+# @ECLASS_VARIABLE: JAVA_RELEASE_SRC_DIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An associative array of directories with release-specific sources which are
+# used for building multi-release jar files.
+# @CODE
+# Example:
+#	JAVA_RELEASE_SRC_DIRS=(
+#		["9"]="prov/src/main/jdk1.9"
+#		["11"]="prov/src/main/jdk1.11"
+#		["15"]="prov/src/main/jdk1.15"
+#		["21"]="prov/src/main/jdk21"
+#	)
+# @CODE
+
 # @FUNCTION: java-pkg-simple_getclasspath
 # @USAGE: java-pkg-simple_getclasspath
 # @INTERNAL
@@ -274,6 +313,84 @@ java-pkg-simple_getclasspath() {
 	classpath=${classpath#:}
 
 	debug-print "CLASSPATH=${classpath}"
+}
+
+# @FUNCTION: java-pkg-simple_getmodulepath
+# @USAGE: java-pkg-simple_getmodulepath
+# @INTERNAL
+# @DESCRIPTION:
+# Cloned from java-pkg-simple_getclasspath, dropped 'deep_jars'
+# and replaced s/classpath/modulepath/g.
+#
+# It is needed for java-pkg-simple_generate-module-info where using classpath
+# would cause problems with '--with-dependencies'.
+# And it is also used for compilation.
+#
+# Note that the variable "modulepath" needs to be defined before
+# calling this function.
+java-pkg-simple_getmodulepath() {
+	debug-print-function ${FUNCNAME} $*
+
+	local dependency
+	local buildonly_jars="--build-only"
+
+	# the extra classes that are not installed by portage
+	modulepath+=":${JAVA_GENTOO_CLASSPATH_EXTRA}"
+
+	# the extra classes that are installed by portage
+	for dependency in ${JAVA_CLASSPATH_EXTRA}; do
+		modulepath="${modulepath}:$(java-pkg_getjars ${buildonly_jars} \
+			${dependency})"
+	done
+
+	# add test dependencies if USE FLAG 'test' is set
+	if has test ${JAVA_PKG_IUSE} && use test; then
+		for dependency in ${JAVA_TEST_GENTOO_CLASSPATH}; do
+			modulepath="${modulepath}:$(java-pkg_getjars ${buildonly_jars} \
+				${dependency})"
+		done
+	fi
+
+	# add the RUNTIME dependencies
+	for dependency in ${JAVA_GENTOO_CLASSPATH}; do
+		modulepath="${modulepath}:$(java-pkg_getjars ${dependency})"
+	done
+
+	# purify modulepath
+	while [[ $modulepath = *::* ]]; do modulepath="${modulepath//::/:}"; done
+	modulepath=${modulepath%:}
+	modulepath=${modulepath#:}
+
+	debug-print "modulepath=${modulepath}"
+}
+
+# @FUNCTION: java-pkg-simple_generate-module-info
+# @USAGE: java-pkg-simple_generate-module-info
+# @INTERNAL
+# @DESCRIPTION:
+# Calls jdeps --generate-module-info which generates the module-info.java file
+# into the "${JAVA_MODULES_DIR}/${JAVA_MODULE_NAME}/versions/9" directory. This
+# function requires an intermediate jar to be named as "${JAVA_MODULE_NAME}.jar".
+java-pkg-simple_generate-module-info() {
+	debug-print-function ${FUNCNAME} $*
+
+	local modulepath=""
+	java-pkg-simple_getmodulepath
+
+	if [[ -z ${modulepath} ]]; then
+		jdeps \
+			--generate-module-info "${JAVA_MODULES_DIR}" \
+			--multi-release 9 \
+			"${JAVA_MODULE_NAME}.jar" || die
+	else
+		jdeps \
+			--module-path "${modulepath}" \
+			--add-modules=ALL-MODULE-PATH \
+			--generate-module-info "${JAVA_MODULES_DIR}" \
+			--multi-release 9 \
+			"${JAVA_MODULE_NAME}.jar" || die
+	fi
+	moduleinfo=$(find -type f -name module-info.java)
 }
 
 # @FUNCTION: java-pkg-simple_test_with_pkgdiff_
@@ -374,50 +491,132 @@ java-pkg-simple_src_compile() {
 		java-pkg_gen-cp JAVA_GENTOO_CLASSPATH
 	fi
 
-	# gather sources
-	# if target < 9, we need to compile module-info.java separately
-	# as this feature is not supported before Java 9
-	local target="$(java-pkg_get-target)"
-	if [[ ${target#1.} -lt 9 ]]; then
+	# JEP 238 multi-release support, https://openjdk.org/jeps/238 #900433
+	#
+	# Basic support for building multi-release jar files according to JEP 238.
+	# A multi-release jar file has release-specific classes in directories
+	# under META-INF/versions/.
+	# Its META-INF/MANIFEST.MF contains the line: 'Multi-Release: true'.
+	#
+	# The second condition, {JAVA_MODULE_NAME}, is used to allow generating
+	# module-info.java without setting JAVA_RELEASE_SRC_DIRS in the ebuild.
+	if [[ -n ${JAVA_RELEASE_SRC_DIRS[@]} || -n ${JAVA_MODULE_NAME} ]]; then
+		# multi-release and --generate-module-info both are available only
+		# since java 11.
+		if ! java-pkg_is-vm-version-ge "9" ; then
+			die || "Wrong vm version, needs >=virtual/jdk-11:*"
+		fi
+
+		local classpath=""
+		java-pkg-simple_getclasspath
+
+		# gather sources and compile classes for the intermediate jar file
+		# TODO: error message if module-info.java is in {JAVA_SRC_DIR[@]}
+		# because we want it release-specific in {JAVA_RELEASE_SRC_DIRS[@]}
 		find "${JAVA_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${sources}
-	else
-		find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
-	fi
-	moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
-
-	# create the target directory
-	mkdir -p ${classes} || die "Could not create target directory"
-
-	# compile
-	local classpath=""
-	java-pkg-simple_getclasspath
-	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
-
-	if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
 		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
+
+		java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
+
+		# package the intermediate jar file
+		# The intermediate jar file is a precondition for jdeps to generate
+		# a module-info.java file.
+		jar cvf "${JAVA_MODULE_NAME}.jar" \
+			-C target/classes . || die
+
+		# generate module-info.java only if it does not exist
+		# If module-info.java needs to get generated we add it generally
+		# to a release-specific source directory.
+		if [[ -z $(find "${JAVA_RELEASE_SRC_DIRS[@]}" -name module-info.java) ]]; then
+			debug-print "moduleinfo does not exist, generating one."
+			java-pkg-simple_generate-module-info
+			debug-print "generated moduleinfo is ${moduleinfo}"
+
+			# If JAVA_RELEASE_SRC_DIRS was not set in the ebuild, set it now:
+			if [[ -z ${JAVA_RELEASE_SRC_DIRS[@]} ]]; then
+				JAVA_RELEASE_SRC_DIRS=( ["9"]="src/main/"${JAVA_MODULE_NAME}"/versions/9" )
+		#	else
+		#		# TODO: If set in the ebuild, move module-info.java to the correct place
+			fi
+		fi
+
+		local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+		# compile content of release-specific source directories
+		local version
+		for version in "${!JAVA_RELEASE_SRC_DIRS[@]}"; do
+			local release="${version}"
+			local reldir="${JAVA_RELEASE_SRC_DIRS[${version}]}"
+			debug-print "Release is ${release}, directory is ${reldir}"
+
+			JAVA_PKG_WANT_SOURCE="${release}"
+			JAVA_PKG_WANT_TARGET="${release}"
+
+			local modulepath=""
+			java-pkg-simple_getmodulepath
+
+			# compile sources in ${reldir}
+			ejavac \
+				-d target/versions/${release} \
+				-encoding ${JAVA_ENCODING} \
+				-classpath "${modulepath}:${JAVA_MODULE_NAME}.jar" \
+				--module-path "${modulepath}:${JAVA_MODULE_NAME}.jar" \
+				--module-version ${PV} \
+				--patch-module "${JAVA_MODULE_NAME}"="${JAVA_MODULE_NAME}.jar" \
+				${JAVAC_ARGS} $(find ${reldir} -type f -name '*.java')
+
+			JAVA_GENTOO_CLASSPATH_EXTRA+=":target/versions/${release}"
+		done
+
+		JAVA_PKG_WANT_SOURCE=${tmp_source}
+		JAVA_PKG_WANT_TARGET=${tmp_target}
 	else
-		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
-			${classpath:+--module-path ${classpath}} --module-version ${PV}\
-			${JAVAC_ARGS} @${sources}
-	fi
+		# gather sources
+		# if target < 9, we need to compile module-info.java separately
+		# as this feature is not supported before Java 9
+		local target="$(java-pkg_get-target)"
+		if [[ ${target#1.} -lt 9 ]]; then
+			find "${JAVA_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${sources}
+		else
+			find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
+		fi
+		moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
 
-	# handle module-info.java separately as it needs at least JDK 9
-	if [[ -n ${moduleinfo} ]] && [[ ${target#1.} -lt 9 ]]; then
-		if java-pkg_is-vm-version-ge "9" ; then
-			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+		# create the target directory
+		mkdir -p ${classes} || die "Could not create target directory"
 
-			JAVA_PKG_WANT_SOURCE="9"
-			JAVA_PKG_WANT_TARGET="9"
+		# compile
+		local classpath=""
+		java-pkg-simple_getclasspath
+		java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
+
+		if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
+		else
 			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 				${classpath:+--module-path ${classpath}} --module-version ${PV}\
-				${JAVAC_ARGS} "${moduleinfo}"
+				${JAVAC_ARGS} @${sources}
+		fi
 
-			JAVA_PKG_WANT_SOURCE=${tmp_source}
-			JAVA_PKG_WANT_TARGET=${tmp_target}
-		else
-			eqawarn "Need at least JDK 9 to compile module-info.java in src_compile."
-			eqawarn "Please adjust DEPEND accordingly. See https://bugs.gentoo.org/796875#c3"
+		# handle module-info.java separately as it needs at least JDK 9
+		if [[ -n ${moduleinfo} ]] && [[ ${target#1.} -lt 9 ]]; then
+			if java-pkg_is-vm-version-ge "9" ; then
+				local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+				JAVA_PKG_WANT_SOURCE="9"
+				JAVA_PKG_WANT_TARGET="9"
+				ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+					${classpath:+--module-path ${classpath}} --module-version ${PV}\
+					${JAVAC_ARGS} "${moduleinfo}"
+
+				JAVA_PKG_WANT_SOURCE=${tmp_source}
+				JAVA_PKG_WANT_TARGET=${tmp_target}
+			else
+				eqawarn "Need at least JDK 9 to compile module-info.java in src_compile."
+				eqawarn "Please adjust DEPEND accordingly. See https://bugs.gentoo.org/796875#c3"
+			fi
 		fi
 	fi
 
@@ -442,14 +641,29 @@ java-pkg-simple_src_compile() {
 	fi
 
 	# package
-	local jar_args
+	local jar_args multi_release=""
+	if [[ -n ${JAVA_RELEASE_SRC_DIRS[@]} ]]; then
+		# Preparing the multi_release variable. From multi-release compilation
+		# the release-specific classes are sorted in target/versions/${release}
+		# directories.
+
+		# TODO:
+		# Could this possibly be simplified with printf?
+		pushd target/versions >> /dev/null || die
+			for version in $(ls -d * | sort -g); do
+				debug-print "Version is ${version}"
+				multi_release="${multi_release} --release ${version} -C target/versions/${version} . "
+			done
+		popd >> /dev/null || die
+	fi
+
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
 		sed '/Created-By: /Id' -i ${classes}/META-INF/MANIFEST.MF
 		jar_args="cfm ${JAVA_JAR_FILENAME} ${classes}/META-INF/MANIFEST.MF"
 	else
 		jar_args="cf ${JAVA_JAR_FILENAME}"
 	fi
-	jar ${jar_args} -C ${classes} . || die "jar failed"
+	jar ${jar_args} -C ${classes} . ${multi_release} || die "jar failed"
 	if  [[ -n "${JAVA_AUTOMATIC_MODULE_NAME}" ]]; then
 		echo "Automatic-Module-Name: ${JAVA_AUTOMATIC_MODULE_NAME}" \
 			>> "${T}/add-to-MANIFEST.MF" || die "adding module name failed"
@@ -463,6 +677,10 @@ java-pkg-simple_src_compile() {
 			|| die "updating MANIFEST.MF failed"
 		rm -f "${T}/add-to-MANIFEST.MF" || die "cannot remove"
 	fi
+
+	unset JAVA_MODULE_NAME
+	unset JAVA_MODULES_DIR
+	unset JAVA_RELEASE_SRC_DIRS
 }
 
 # @FUNCTION: java-pkg-simple_src_install
