@@ -10,7 +10,9 @@
 		All jobs are run with `/bin/sh` for conformity and portability.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/dubiousjim/dcron/issues</bugs-to>
-		<remote-id type="github">dubiousjim/dcron</remote-id>
+		<bugs-to>https://github.com/ptchinster/dcron/issues</bugs-to>
+		<!-- readme's the doc -->
+		<changelog>https://github.com/ptchinster/dcron/blob/master/CHANGELOG</changelog>
+		<remote-id type="github">ptchinster/dcron</remote-id>
 	</upstream>
 </pkgmetadata>
