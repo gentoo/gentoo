@@ -1,0 +1,173 @@
+From 71c1f42d85ee1819741786255dc8876047398e8e Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 12 Jan 2025 19:22:48 +0100
+Subject: [PATCH] properly demangle typenames
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/OndselSolver/ASMTItem.cpp b/OndselSolver/ASMTItem.cpp
+index a18e7c9..9d5383a 100644
+--- a/OndselSolver/ASMTItem.cpp
++++ b/OndselSolver/ASMTItem.cpp
+@@ -12,6 +12,7 @@
+ #include "ASMTAssembly.h"
+ #include "Constant.h"
+ #include <algorithm>
++#include "Demangle.h"
+ 
+ using namespace MbD;
+ 
+@@ -41,9 +42,7 @@ void MbD::ASMTItem::noop()
+ 
+ std::string MbD::ASMTItem::classname()
+ {
+-	std::string str = typeid(*this).name();
+-	auto answer = str.substr(11, str.size() - 11);
+-	return answer;
++	return demangle(typeid(*this).name());
+ }
+ 
+ void MbD::ASMTItem::setName(const std::string& str)
+diff --git a/OndselSolver/ASMTJoint.cpp b/OndselSolver/ASMTJoint.cpp
+index 40edd52..bb710e3 100644
+--- a/OndselSolver/ASMTJoint.cpp
++++ b/OndselSolver/ASMTJoint.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "ASMTJoint.h"
+ #include "Joint.h"
++#include "Demangle.h"
+ 
+ using namespace MbD;
+ 
+@@ -47,9 +48,7 @@ void MbD::ASMTJoint::storeOnLevel(std::ofstream& os, size_t level)
+ 
+ void MbD::ASMTJoint::storeOnTimeSeries(std::ofstream& os)
+ {
+-	std::string label = typeid(*this).name();
+-	label = label.substr(15, label.size() - 15);
+-	os << label << "Series\t" << fullName("") << std::endl;
++	os << demangle(typeid(*this).name()) << "Series\t" << fullName("") << std::endl;
+ 	ASMTItemIJ::storeOnTimeSeries(os);
+ }
+ 
+diff --git a/OndselSolver/Array.h b/OndselSolver/Array.h
+index 636e9a5..e270795 100644
+--- a/OndselSolver/Array.h
++++ b/OndselSolver/Array.h
+@@ -16,6 +16,7 @@
+ #include "Numeric.h"
+ #include <limits>
+ 
++#include "Demangle.h"
+ //#include "Symbolic.h"
+ 
+ namespace MbD {
+@@ -51,10 +52,7 @@ namespace MbD {
+ 		void atitimes(size_t i, double factor);
+ 
+ 		virtual std::ostream& printOn(std::ostream& s) const {
+-			std::string str = typeid(*this).name();
+-			auto classname = str.substr(11, str.size() - 11);
+-			s << classname << std::endl;
+-			return s;
++			return s << demangle(typeid(*this).name()) << std::endl;
+ 		}
+ 		friend std::ostream& operator<<(std::ostream& s, const Array& array)
+ 		{
+diff --git a/OndselSolver/Demangle.h b/OndselSolver/Demangle.h
+new file mode 100644
+index 0000000..810936d
+--- /dev/null
++++ b/OndselSolver/Demangle.h
+@@ -0,0 +1,39 @@
++#ifndef DEMANGLE_H
++#define DEMANGLE_H 1
++#include <string>
++
++#ifdef _WIN32
++#include <typeinfo>
++namespace {
++std::string demangle(const char* mangled_name) noexcept {
++  return mangled_name;
++}
++}
++#else // __linux__
++#include <cxxabi.h>
++namespace {
++std::string demangle(const char* mangled_name) noexcept {
++  int error = 0;
++  char *demang_name = abi::__cxa_demangle(mangled_name, 0, 0, &error);
++
++  switch (error) {
++  case 0:
++    break;
++  case -1:
++    return "memory allocation failed";
++  case -2:
++    return "not a valid mangled name";
++  case -3:
++    return "invalid arguments";
++  default:
++    return "__cxa_demangle failed";
++  }
++
++  std::string name(demang_name);
++  free(demang_name);
++
++  return name.substr(name.find_last_of("::") + 1);
++}
++}
++#endif // __linux__
++#endif
+diff --git a/OndselSolver/Item.cpp b/OndselSolver/Item.cpp
+index 4435d5d..120cd3c 100644
+--- a/OndselSolver/Item.cpp
++++ b/OndselSolver/Item.cpp
+@@ -15,6 +15,7 @@
+ #include "Item.h"
+ #include "System.h"
+ #include "Symbolic.h"
++#include "Demangle.h"
+ 
+ using namespace MbD;
+ 
+@@ -44,10 +45,7 @@ void Item::initialize()
+ 
+ std::ostream& Item::printOn(std::ostream& s) const
+ {
+-	std::string str = typeid(*this).name();
+-	auto classname = str.substr(11, str.size() - 11);
+-	s << classname << std::endl;
+-	return s;
++	return s << demangle(typeid(*this).name()) << std::endl;
+ }
+ 
+ void Item::initializeLocally()
+diff --git a/OndselSolver/Symbolic.cpp b/OndselSolver/Symbolic.cpp
+index 75bcbb6..4961964 100644
+--- a/OndselSolver/Symbolic.cpp
++++ b/OndselSolver/Symbolic.cpp
+@@ -15,6 +15,7 @@
+ #include "Product.h"
+ #include "Sum.h"
+ #include "Power.h"
++#include "Demangle.h"
+ 
+ using namespace MbD;
+ 
+@@ -160,10 +161,7 @@ bool Symbolic::isConstant()
+ 
+ std::ostream& Symbolic::printOn(std::ostream& s) const
+ {
+-	std::string str = typeid(*this).name();
+-	auto classname = str.substr(11, str.size() - 11);
+-	s << classname;
+-	return s;
++	return s << demangle(typeid(*this).name());
+ }
+ 
+ std::shared_ptr<std::vector<Symsptr>> Symbolic::getTerms()
+-- 
+2.48.0
+

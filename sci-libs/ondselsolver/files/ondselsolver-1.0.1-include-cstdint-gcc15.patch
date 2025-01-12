@@ -1,0 +1,70 @@
+From 432aa45ca37ecc3e15a8fb4a62ebf85b0a189775 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 11 Jan 2025 00:14:18 +0100
+Subject: [PATCH] include cstdint [gcc15]
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/OndselSolver/Constraint.h b/OndselSolver/Constraint.h
+index 119b627..a7409a8 100644
+--- a/OndselSolver/Constraint.h
++++ b/OndselSolver/Constraint.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ #include "enum.h"
+diff --git a/OndselSolver/DirectionCosineConstraintIqcJqc.h b/OndselSolver/DirectionCosineConstraintIqcJqc.h
+index 5d68fcd..c81a41f 100644
+--- a/OndselSolver/DirectionCosineConstraintIqcJqc.h
++++ b/OndselSolver/DirectionCosineConstraintIqcJqc.h
+@@ -9,6 +9,7 @@
+ #pragma once
+ 
+ #include "DirectionCosineConstraintIqcJc.h"
++#include <cstdint>
+ 
+ namespace MbD {
+     class DirectionCosineConstraintIqcJqc : public DirectionCosineConstraintIqcJc
+diff --git a/OndselSolver/DispCompIecJecO.h b/OndselSolver/DispCompIecJecO.h
+index 74a1ca4..da3243a 100644
+--- a/OndselSolver/DispCompIecJecO.h
++++ b/OndselSolver/DispCompIecJecO.h
+@@ -9,6 +9,7 @@
+ #pragma once
+ 
+ #include "KinematicIeJe.h"
++#include <cstdint>
+ 
+ namespace MbD {
+ 	class DispCompIecJecO : public KinematicIeJe
+diff --git a/OndselSolver/FullMatrix.h b/OndselSolver/FullMatrix.h
+index 1013791..90e54aa 100644
+--- a/OndselSolver/FullMatrix.h
++++ b/OndselSolver/FullMatrix.h
+@@ -9,6 +9,7 @@
+ #pragma once
+ 
+ #include <cmath>
++#include <cstdint>
+ #include <memory>
+ 
+ #include "RowTypeMatrix.h"
+diff --git a/OndselSolver/NewtonRaphson.h b/OndselSolver/NewtonRaphson.h
+index 9d9fb19..bf0c517 100644
+--- a/OndselSolver/NewtonRaphson.h
++++ b/OndselSolver/NewtonRaphson.h
+@@ -8,6 +8,7 @@
+  
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+-- 
+2.47.1
+
