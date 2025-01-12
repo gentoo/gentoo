@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 # gfx941 and gfx942 assembly uses directives of LLVM >= 18.1.0
 LLVM_COMPAT=( 18 )
 
-inherit cmake python-any-r1 llvm-r1 prefix rocm
+inherit cmake python-any-r1 llvm-r1 rocm
 DESCRIPTION="General matrix-matrix operations library for AMD Instinct accelerators"
 HOMEPAGE="https://github.com/ROCm/hipBLASLt"
 SRC_URI="https://github.com/ROCm/hipBLASLt/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
@@ -75,7 +75,7 @@ pkg_pretend() {
 src_prepare() {
 	sed -e "s,\@LLVM_PATH\@,$(get_llvm_prefix),g" \
 		"${FILESDIR}"/${PN}-6.1.1-gentoopath.patch > "${S}"/gentoopath.patch || die
-	eapply $(prefixify_ro "${S}"/gentoopath.patch)
+	eapply "${S}"/gentoopath.patch
 
 	local shebangs=($(grep -rl "#!/usr/bin/env python3" tensilelite/Tensile || die))
 	python_fix_shebang -q ${shebangs[*]}

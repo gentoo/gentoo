@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 LLVM_COMPAT=( 19 )
 
-inherit cmake flag-o-matic llvm-r1 prefix python-any-r1 rocm
+inherit cmake flag-o-matic llvm-r1 python-any-r1 rocm
 DESCRIPTION="General matrix-matrix operations library for AMD Instinct accelerators"
 HOMEPAGE="https://github.com/ROCm/hipBLASLt"
 SRC_URI="https://github.com/ROCm/hipBLASLt/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
@@ -78,7 +78,7 @@ pkg_pretend() {
 src_prepare() {
 	sed -e "s,\@LLVM_PATH\@,$(get_llvm_prefix),g" \
 		"${FILESDIR}"/${PN}-6.1.1-gentoopath.patch > "${S}"/gentoopath.patch || die
-	eapply $(prefixify_ro "${S}"/gentoopath.patch)
+	eapply "${S}"/gentoopath.patch
 
 	local shebangs=($(grep -rl "#!/usr/bin/env python3" tensilelite/Tensile || die))
 	python_fix_shebang -q ${shebangs[*]}
