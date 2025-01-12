@@ -45,6 +45,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-yamlcpp.patch # 937405
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
