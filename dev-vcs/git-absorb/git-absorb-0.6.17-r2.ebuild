@@ -116,7 +116,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
-	>=dev-libs/libgit2-1.8:=
+	>=dev-libs/libgit2-1.9:=
 	<dev-libs/libgit2-1.10
 "
 DEPEND="${RDEPEND}"
