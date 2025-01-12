@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/USBGuard/usbguard/releases/download/${P}/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0/1"  # due to libusbguard.so.<1>.0.0
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="dbus ldap policykit selinux static-libs systemd test umockdev"
 
 # https://github.com/USBGuard/usbguard/issues/449
