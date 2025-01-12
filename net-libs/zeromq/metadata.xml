@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>davidroman96@gmail.com</email>
+		<name>David Roman</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<maintainer>
 			<email>sustrik@fastmq.com</email>
@@ -28,6 +35,9 @@
 		<flag name="drafts">
 			Build draft API, which may change at any time without any notice, and
 			is therefore not recommended for normal use.
+		</flag>
+		<flag name="intrinsics">
+			Build using compiler intrinsics for atomic ops.
 		</flag>
 		<flag name="libbsd">
 			Use strlcpy() from <pkg>dev-libs/libbsd</pkg> instead of internal
