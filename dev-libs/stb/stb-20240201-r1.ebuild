@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${CHECKSUM}"
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 src_prepare() {
 	default
