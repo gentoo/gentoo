@@ -13,28 +13,29 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	inherit subversion
-	QMMP_DEV_BRANCH="1.3"
+	QMMP_DEV_BRANCH="2.2"
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
-IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
-ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer musepack
-notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler shout sid
-sndfile soxr stereo tray udisks +vorbis wavpack"
+IUSE="aac +alsa analyzer archive bs2b cdda cddb cover crossfade cue curl +dbus
+enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer
+musepack notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler
+shout sid sndfile soxr stereo tray udisks +vorbis wavpack +X"
 
 REQUIRED_USE="
+	cddb? ( cdda )
 	gnome? ( dbus )
+	notifier? ( X )
 	shout? ( soxr vorbis )
 	udisks? ( dbus )
 "
 
 RDEPEND="
-	dev-qt/qtbase:6[X,dbus,gui,network,sqlite,widgets]
+	dev-qt/qtbase:6[X?,dbus?,gui,network,sqlite,widgets]
 	media-libs/taglib:=
-	x11-libs/libX11
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	archive? ( app-arch/libarchive )
@@ -43,14 +44,13 @@ RDEPEND="
 		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia
 	)
+	cddb? ( media-libs/libcddb )
 	curl? ( net-misc/curl )
-	dbus? ( dev-qt/qtbase:6[dbus] )
 	enca? ( app-i18n/enca )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac:= )
 	game? ( media-libs/game-music-emu )
 	jack? (
-		media-libs/libsamplerate
 		virtual/jack
 	)
 	ladspa? ( media-plugins/cmt-plugins )
@@ -82,21 +82,14 @@ RDEPEND="
 		media-libs/libvorbis
 	)
 	wavpack? ( media-sound/wavpack )
+	X? ( x11-libs/libX11 )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( AUTHORS ChangeLog README )
-
-src_prepare() {
-	if has_version dev-libs/libcdio-paranoia ; then
-		sed -i \
-			-e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' \
-			src/plugins/Input/cdaudio/decoder_cdaudio.cpp || die
-	fi
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -106,6 +99,7 @@ src_configure() {
 		-DUSE_ARCHIVE="$(usex archive)"
 		-DUSE_BS2B="$(usex bs2b)"
 		-DUSE_CDA="$(usex cdda)"
+		-DUSE_LIBCDDB="$(usex cddb)"
 		-DUSE_COVER="$(usex cover)"
 		-DUSE_CROSSFADE="$(usex crossfade)"
 		-DUSE_CUE="$(usex cue)"
@@ -118,6 +112,7 @@ src_configure() {
 		-DUSE_FLAC="$(usex flac)"
 		-DUSE_GME="$(usex game)"
 		-DUSE_GNOMEHOTKEY="$(usex gnome)"
+		-DUSE_HOTKEY="$(usex X)"
 		-DUSE_JACK="$(usex jack)"
 		-DUSE_LADSPA="$(usex ladspa)"
 		-DUSE_LYRICS="$(usex lyrics)"
@@ -137,6 +132,7 @@ src_configure() {
 		-DUSE_SCROBBLER="$(usex scrobbler)"
 		-DUSE_SHOUT="$(usex shout)"
 		-DUSE_SID="$(usex sid)"
+		-DUSE_SKINNED="$(usex X)"
 		-DUSE_SNDFILE="$(usex sndfile)"
 		-DUSE_SOXR="$(usex soxr)"
 		-DUSE_STEREO="$(usex stereo)"
@@ -148,4 +144,14 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
