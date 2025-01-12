@@ -10,6 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/PurpleI2P/i2pd/issues</bugs-to>
+		<changelog>https://github.com/PurpleI2P/i2pd/blob/openssl/ChangeLog</changelog>
+		<doc>https://i2pd.readthedocs.io/</doc>
 		<remote-id type="github">PurpleI2P/i2pd</remote-id>
 	</upstream>
 </pkgmetadata>
