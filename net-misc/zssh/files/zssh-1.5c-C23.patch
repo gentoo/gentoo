@@ -1,0 +1,178 @@
+Fix compilation errors with GCC-14 and C23
+https://bugs.gentoo.org/875242
+https://bugs.gentoo.org/898974
+and also fold linking with ncurces[tinfo] from sed to configure.ac
+https://bugs.gentoo.org/527036
+diff -ru a/configure.in b/configure.in
+--- a/configure.in	2025-01-08 21:48:25.202798412 +0400
++++ b/configure.in	2025-01-08 21:50:36.184060767 +0400
+@@ -5,7 +5,7 @@
+ EXTRA_DEPS=""
+ EXTRA_LIBS=""
+ EXTRA_CFLAGS=""
+-TERMCAP_LIB=""
++TINFO_LIB=""
+ 
+ dnl Check configure arguments
+ AC_MSG_CHECKING(whether to use libreadline for cmd-line editing)
+@@ -65,8 +65,8 @@
+ if test -z "$fakereadline"; then
+ 
+   dnl libtermcap (or (n)curses) is only needed by libreadline
+-  BASH_CHECK_LIB_TERMCAP
+-  LIBS="$LIBS $TERMCAP_LIB"
++  BASH_CHECK_LIB_TINFO
++  LIBS="$LIBS $TINFO_LIB"
+ 
+   dnl check for readline headers
+   AC_CHECK_HEADERS(readline/readline.h readline/history.h, , 
+@@ -127,7 +127,7 @@
+ AC_SUBST(EXTRA_DEPS)
+ AC_SUBST(EXTRA_CFLAGS)
+ AC_SUBST(EXTRA_LIBS)
+-AC_SUBST(TERMCAP_LIB)
++AC_SUBST(TINFO_LIB)
+ 
+ AC_OUTPUT(Makefile fake_readline/Makefile test/Makefile)
+ 
+diff -ru a/completion.c b/completion.c
+--- a/completion.c	2025-01-08 21:55:33.535386179 +0400
++++ b/completion.c	2025-01-08 21:59:46.899959311 +0400
+@@ -41,7 +41,8 @@
+ /* Tell the GNU Readline library how to complete.  We want to try to complete
+  on command names if this is the first word in the line, or on filenames
+  if not. */
+-void	initialize_readline()
++void 
++initialize_readline (void)
+ {
+ #ifdef DEBUG
+    printf("Using readline library version: %s\n", rl_library_version);
+@@ -53,7 +54,7 @@
+     so that if zssh_completion() fails nothing is completed */
+    rl_completion_entry_function = fake_generator;
+    /* Tell the completer that we want a crack first. */
+-   rl_attempted_completion_function = (CPPFunction *) zssh_completion;
++   rl_attempted_completion_function = zssh_completion;
+    
+ }
+ 
+@@ -62,10 +63,8 @@
+  the word to complete.  We can use the entire contents of rl_line_buffer
+  in case we want to do some simple parsing.  Return the array of matches,
+  or NULL if there aren't any. */
+-char		**zssh_completion(text, start, end)
+-char		*text;
+-int		start;
+-int		end;
++char **
++zssh_completion (const char *text, int start, int end)
+ {
+    char		**matches;
+    
+@@ -89,9 +88,8 @@
+ /* Generator function for command completion.  STATE lets us know whether
+  to start from scratch; without any state (i.e. STATE == 0), then we
+  start at the top of the list. */
+-char		*command_generator(text, state)
+-const char	*text;
+-int		state;
++char *
++command_generator (const char *text, int state)
+ {
+    static int	list_index, len;
+    char		*name;
+@@ -123,9 +121,8 @@
+  to start from scratch; without any state (i.e. STATE == 0), then we
+  start at the top of the list. */
+ #if 0
+-char			*tilde_generator(text, state)
+-char			*text;
+-int			state;
++char *
++tilde_generator (char *text, int state)
+ {
+    struct passwd	*pwd;
+    static int		len;
+@@ -154,9 +151,8 @@
+ }
+ #endif /* 0 */
+ 
+-char			*fake_generator(text, state)
+-const char		*text;
+-int			state;
++char *
++fake_generator (const char *text, int state)
+ {
+    return (0);
+ }
+diff -ru a/fun.h b/fun.h
+--- a/fun.h	2025-01-08 21:55:33.531386202 +0400
++++ b/fun.h	2025-01-08 22:00:12.795813473 +0400
+@@ -1,7 +1,7 @@
+ 
+ /* completion.c */
+ void initialize_readline(void);
+-char **zssh_completion(char *text, int start, int end);
++char **zssh_completion(const char *text, int start, int end);
+ char *command_generator(const char *text, int state);
+ char *tilde_generator(char *text, int state);
+ char *fake_generator(const char *text, int state);
+diff -ru a/init.c b/init.c
+--- a/init.c	2025-01-08 21:55:33.535386179 +0400
++++ b/init.c	2025-01-08 21:58:35.526361264 +0400
+@@ -90,7 +90,8 @@
+       exit (0);
+ }
+ 
+-void	usage()
++void 
++usage (void)
+ {
+    printf("\
+ Usage: zssh    [zssh options] [--] [ssh options]\n\
+@@ -143,7 +144,8 @@
+  * ^@ -> C-Space
+  * ^X -> C-x
+  */
+-char	*escape_help()
++char *
++escape_help (void)
+ {
+    static char	str[40];
+    
+@@ -154,9 +156,8 @@
+    return (str);
+ }
+ 
+-void	command_line_options(argc,argv)
+-int	*argc;
+-char	***argv;
++void 
++command_line_options (int *argc, char ***argv)
+ {
+    int	ac = *argc;
+    char	**av = *argv;
+@@ -213,9 +214,8 @@
+ }
+ 
+ 
+-void			init(argc,argv)
+-int			*argc;
+-char			***argv;
++void 
++init (int *argc, char ***argv)
+ {
+    char			*str;
+ 
+diff -ru a/zssh.h b/zssh.h
+--- a/zssh.h	2025-01-08 21:55:33.535386179 +0400
++++ b/zssh.h	2025-01-08 21:57:02.938882687 +0400
+@@ -45,6 +45,7 @@
+ #include <utmp.h>
+ #include <signal.h>
+ #include <ctype.h>
++#include <pty.h>
+ 
+ /*#include <term.h> alpha */
+ 
