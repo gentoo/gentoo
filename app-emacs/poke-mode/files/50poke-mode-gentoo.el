@@ -1,4 +1,3 @@
-;;; poke-mode site configuration
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'poke-mode "poke-mode"
