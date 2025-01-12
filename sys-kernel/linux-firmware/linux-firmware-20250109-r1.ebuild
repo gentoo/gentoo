@@ -285,7 +285,7 @@ src_prepare() {
 
 src_install() {
 
-	local FW_OPTIONS=( "-v" )
+	local FW_OPTIONS=( "-v" "-j1" )
 	local files_to_keep=
 
 	if use savedconfig; then
