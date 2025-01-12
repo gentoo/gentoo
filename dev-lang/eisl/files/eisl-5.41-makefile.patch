@@ -1,0 +1,52 @@
+Upstream commit https://github.com/sasagawa888/eisl/commit/5bd9332998e23298a3d0a3fb7066bdf98dbe5b0b
+Fixes for https://github.com/sasagawa888/eisl/issues/335 https://github.com/sasagawa888/eisl/issues/334
+Edited to accomodate our makefile patch
+Bug https://bugs.gentoo.org/939771
+Bug https://bugs.gentoo.org/942206
+should be fropped from 5.42
+
+From 5bd9332998e23298a3d0a3fb7066bdf98dbe5b0b Mon Sep 17 00:00:00 2001
+From: sasagawa888 <ken-s@tkcnf.or.jp>
+Date: Sun, 12 Jan 2025 09:08:47 +0900
+Subject: [PATCH] Modify makefile
+
+---
+ makefile | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index 2755d0c8..b666f95d 100644
+--- a/makefile
++++ b/makefile
+@@ -42,7 +42,7 @@ else
+ 		endif
+ 	endif
+ endif
+-CFLAGS += $(INCS) -g $(CURSES_CFLAGS) -U_XOPEN_SOURCE -Inana/src
++CFLAGS += $(INCS) -g $(CURSES_CFLAGS) -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -Inana/src
+ DFLAGS := --preview=all --de -w --O3 --release --betterC
+ SRC_CII := cii/src/except.c cii/src/fmt.c cii/src/str.c cii/src/text.c
+ SRC_D := dextension.d disl.d
+@@ -1545,6 +155,22 @@ ifeq ($(DEBUG),1)
+ main.o: nana/src/nana-config.h
+ endif
+ 
++main.o: function.o extension.o syntax.o data.o gbc.o cell.o error.o bignum.o compute.o edit.o syn_highlight.o long.o link.o
++function.o: function.c eisl.h 
++extension.o: extension.c eisl.h 
++syntax.o: syntax.c eisl.h 
++data.o: data.c eisl.h 
++gbc.o: gbc.c eisl.h 
++cell.o: cell.c eisl.h 
++error.o: error.c eisl.h 
++bignum.o: bignum.c eisl.h 
++compute.o: compute.c eisl.h 
++edit.o: edit.c eisl.h 
++syntax_highlight.o: syntax_highlight.c eisl.h 
++long.o: long.c eisl.h 
++link.o: link.c eisl.h 
++
++
+ nana/src/nana-config.h:
+ 	-cd nana; autoreconf -fi; ./configure
+ 
