@@ -232,7 +232,7 @@ src_prepare() {
 
 src_install() {
 
-	local FW_OPTIONS=( "-v" )
+	local FW_OPTIONS=( "-v" "-j1" )
 	git config --global --add safe.directory "${S}" || die
 	local files_to_keep=
 
