@@ -1,0 +1,22 @@
+https://gitlab.alpinelinux.org/alpine/aports/-/issues/16797
+https://gitlab.alpinelinux.org/alpine/aports/-/commit/5482d8c22c7c560b285ed1df1f691242fc4d5782
+https://bugs.astron.com/view.php?id=579
+https://github.com/file/file/commit/b3384a1fbfa1fee99986e5750ab8e700de4f24ad
+
+From b3384a1fbfa1fee99986e5750ab8e700de4f24ad Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Thu, 5 Dec 2024 18:35:40 +0000
+Subject: [PATCH] PR/579: net147: Fix stack overrun.
+
+--- a/src/readelf.c
++++ b/src/readelf.c
+@@ -1726,7 +1726,7 @@ dophn_exec(struct magic_set *ms, int clazz, int swap, int fd, off_t off,
+ 	Elf64_Phdr ph64;
+ 	const char *linking_style;
+ 	unsigned char nbuf[NBUFSIZE];
+-	char interp[128];
++	char interp[NBUFSIZE];
+ 	ssize_t bufsize;
+ 	size_t offset, align, need = 0;
+ 	int pie = 0, dynamic = 0;
+
