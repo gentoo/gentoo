@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -116,6 +116,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4-gcc15.patch
 	"${FILESDIR}"/${PN}-1.4-poppler-24.10-fix-backport.patch
 	"${FILESDIR}"/${P}-poppler-24.11.0.patch # bug 943499
+	"${FILESDIR}"/${P}-poppler-24.12.0.patch # bug 946597
 )
 
 pkg_pretend() {
