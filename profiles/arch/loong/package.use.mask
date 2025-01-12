@@ -1,6 +1,11 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
+# Vulkan works on loong.
+gui-libs/gtk -vulkan
+media-video/mpv -vulkan
+
 # Sam James <sam@gentoo.org> (2025-01-10)
 # dev-lang/ada-bootstrap exists here
 >=sys-devel/gcc-14 -ada
