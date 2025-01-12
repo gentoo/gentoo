@@ -1,10 +1,11 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_MAX_SLOT=18
-inherit cmake llvm
+LLVM_COMPAT=( 18 )
+
+inherit cmake llvm-r2
 
 MY_COMMIT="0de81efb64acc82c08c5eee4a7108ddcb1b00d86"
 
@@ -17,6 +18,14 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="llvm-core/clang:${LLVM_MAX_SLOT}
-	llvm-core/llvm:${LLVM_MAX_SLOT}"
+DEPEND="
+	$(llvm_gen_dep '
+	llvm-core/clang:${LLVM_SLOT}=
+	llvm-core/llvm:${LLVM_SLOT}=
+	')
+"
 RDEPEND="${DEPEND}"
+
+pkg_setup() {
+	llvm-r2_pkg_setup
+}
