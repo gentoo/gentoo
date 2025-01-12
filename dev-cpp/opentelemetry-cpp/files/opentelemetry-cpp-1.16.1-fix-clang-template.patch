@@ -1,0 +1,43 @@
+Fix clang-19 error: a template argument list is expected after a name prefixed by the template keyword
+Upstream PR: https://github.com/open-telemetry/opentelemetry-cpp/pull/3133
+--- a/api/include/opentelemetry/logs/event_logger.h
++++ b/api/include/opentelemetry/logs/event_logger.h
+@@ -65,9 +65,8 @@ class EventLogger
+     }
+     nostd::unique_ptr<LogRecord> log_record = delegate_logger->CreateLogRecord();
+ 
+-    IgnoreTraitResult(
+-        detail::LogRecordSetterTrait<typename std::decay<ArgumentType>::type>::template Set(
+-            log_record.get(), std::forward<ArgumentType>(args))...);
++    IgnoreTraitResult(detail::LogRecordSetterTrait<typename std::decay<ArgumentType>::type>::Set(
++        log_record.get(), std::forward<ArgumentType>(args))...);
+ 
+     EmitEvent(event_name, std::move(log_record));
+   }
+--- a/api/include/opentelemetry/logs/logger.h
++++ b/api/include/opentelemetry/logs/logger.h
+@@ -72,9 +72,8 @@ class Logger
+       return;
+     }
+ 
+-    IgnoreTraitResult(
+-        detail::LogRecordSetterTrait<typename std::decay<ArgumentType>::type>::template Set(
+-            log_record.get(), std::forward<ArgumentType>(args))...);
++    IgnoreTraitResult(detail::LogRecordSetterTrait<typename std::decay<ArgumentType>::type>::Set(
++        log_record.get(), std::forward<ArgumentType>(args))...);
+ 
+     EmitLogRecord(std::move(log_record));
+   }
+--- a/api/include/opentelemetry/logs/logger_type_traits.h
++++ b/api/include/opentelemetry/logs/logger_type_traits.h
+@@ -166,8 +166,8 @@ struct LogRecordSetterTrait
+                 * = nullptr>
+   inline static LogRecord *Set(LogRecord *log_record, ArgumentType &&arg) noexcept
+   {
+-    return LogRecordSetterTrait<common::KeyValueIterable>::template Set(
+-        log_record, std::forward<ArgumentType>(arg));
++    return LogRecordSetterTrait<common::KeyValueIterable>::Set(log_record,
++                                                               std::forward<ArgumentType>(arg));
+   }
+ 
+   template <class ArgumentType,
