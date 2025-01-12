@@ -1,0 +1,30 @@
+Backported from https://github.com/ROCm/rocRAND/commit/ad8cdd8dd0dee6ef4166b0b560fe63127c06e08b
+Index: rocRAND-rocm-6.3.0/benchmark/custom_csv_formater.hpp
+===================================================================
+--- rocRAND-rocm-6.3.0.orig/benchmark/custom_csv_formater.hpp
++++ rocRAND-rocm-6.3.0/benchmark/custom_csv_formater.hpp
+@@ -152,10 +152,8 @@ void customCSVReporter::ReportRuns(const
+ void customCSVReporter::PrintRunData(const Run& run)
+ {
+     std::ostream& Out = GetOutputStream();
+-    std::ostream& Err = GetErrorStream();
+ 
+     //get the name of the engine and distribution:
+-
+     std::string temp = run.benchmark_name();
+ 
+     std::string deviceName = std::string(temp.begin(), temp.begin() + temp.find("<"));
+@@ -186,13 +184,6 @@ void customCSVReporter::PrintRunData(con
+ 
+     Out << engineName << "," << disName << "," << mode << ",";
+     Out << CsvEscape(run.benchmark_name()) << ",";
+-    if(run.error_occurred)
+-    {
+-        Err << std::string(elements.size() - 3, ',');
+-        Err << "true,";
+-        Err << CsvEscape(run.error_message) << "\n";
+-        return;
+-    }
+ 
+     // Do not print iteration on bigO and RMS report
+     if(!run.report_big_o && !run.report_rms)

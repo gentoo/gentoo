@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.1_fix_generator_alignment.patch
+	"${FILESDIR}"/${PN}-6.3.0-benchmark-1.8.patch
 )
 
 RDEPEND="dev-util/hip"
