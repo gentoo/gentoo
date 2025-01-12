@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit readme.gentoo-r1 toolchain-funcs
+inherit readme.gentoo-r1 toolchain-funcs autotools
 
 DESCRIPTION="A tiny pseudoshell which only permits scp and sftp"
 HOMEPAGE="https://github.com/scponly/scponly"
@@ -32,18 +32,25 @@ PATCHES=(
 	"${FILESDIR}/${P}-rsync.patch"
 	"${FILESDIR}/${P}-gcc4.4.0.patch"
 	"${FILESDIR}/${P}-sftp-server-path.patch"
+	"${FILESDIR}/${P}-C23.patch"
 )
+
+src_prepare() {
+	default
+
+	# bug #900316
+	eautoreconf
+}
 
 src_configure() {
 	CFLAGS="${CFLAGS} ${LDFLAGS}" econf \
-		--with-sftp-server="/usr/$(get_libdir)/misc/sftp-server" \
 		--disable-restrictive-names \
 		$(use_enable chroot chrooted-binary) \
-		$(use_enable chroot chrooted-checkdir) \
+		$(use_enable chroot chroot-checkdir) \
 		$(use_enable winscp winscp-compat) \
 		$(use_enable gftp gftp-compat) \
 		$(use_enable scp scp-compat) \
-		$(use_enable sftp sftp) \
+		$(use_with sftp sftp-server "/usr/$(get_libdir)/misc/sftp-server") \
 		$(use_enable quota quota-compat) \
 		$(use_enable passwd passwd-compat) \
 		$(use_enable rsync rsync-compat) \
