@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -322,6 +322,7 @@ PATCHES=(
 
 	# 24.8 branch
 	"${FILESDIR}/${P}-no-std-basic_string-int.patch" # bug #923950
+	"${FILESDIR}/${P}-poppler-24.12.patch" # bug #943695
 
 	# git master
 	# bug #917618, thx to Debian:

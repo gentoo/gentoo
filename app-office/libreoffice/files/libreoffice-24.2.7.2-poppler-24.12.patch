@@ -1,0 +1,38 @@
+From db12ee77c17ea9ed477c310bd1e58f00d519f653 Mon Sep 17 00:00:00 2001
+From: Michael Stahl <michael.stahl@allotropia.de>
+Date: Tue, 7 Jan 2025 18:42:29 +0100
+Subject: sdext: adapt xpdfwrapper to poppler 24.12
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: Ia47edf2ac821e3ef5c40f7582253f894eac74060
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/179902
+Tested-by: Jenkins
+Reviewed-by: Michael Stahl <michael.stahl@allotropia.de>
+(cherry picked from commit aa94faf493945e854a888e809a9c5cc8d6d0b978)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/179945
+Reviewed-by: Caolán McNamara <caolan.mcnamara@collabora.com>
+---
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index 57164f27cb42..6748431e53d2 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -1090,7 +1090,12 @@ void PDFOutDev::drawImageMask(GfxState* pState, Object*, Stream* str,
+ 
+     int bitsPerComponent = 1;
+     StreamColorSpaceMode csMode = streamCSNone;
++#if POPPLER_CHECK_VERSION(24, 12, 0)
++    bool hasAlpha;
++    str->getImageParams( &bitsPerComponent, &csMode, &hasAlpha );
++#else
+     str->getImageParams( &bitsPerComponent, &csMode );
++#endif
+     if( bitsPerComponent == 1 && (csMode == streamCSNone || csMode == streamCSDeviceGray) )
+     {
+         GfxRGB oneColor = { dblToCol( 1.0 ), dblToCol( 1.0 ), dblToCol( 1.0 ) };
+-- 
+cgit v1.2.3
