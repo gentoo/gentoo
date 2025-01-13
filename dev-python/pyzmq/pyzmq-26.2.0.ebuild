@@ -57,6 +57,8 @@ src_configure() {
 	DISTUTILS_ARGS=(
 		-DZMQ_DRAFT_API="$(usex drafts)"
 		-DPYZMQ_NO_BUNDLE=ON
+		# unnecessarily adds /usr/lib* to rpath
+		-DPYZMQ_LIBZMQ_RPATH=OFF
 	)
 }
 
