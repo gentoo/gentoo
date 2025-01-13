@@ -122,6 +122,7 @@ src_prepare() {
 
 	# bug (912315)
 	eapply "${FILESDIR}/${PN}-2.10-allow-legacy-renegotiation.patch"
+	eapply "${FILESDIR}/${PN}-2.10-Drop-security-level-to-0-with-OpenSSL-3.0-wh.patch"
 
 	# bug (948052)
 	eapply "${FILESDIR}/${PN}-2.10-use-qt6.patch"
