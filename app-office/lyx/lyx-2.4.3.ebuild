@@ -9,7 +9,10 @@ inherit desktop font optfeature python-single-r1 cmake xdg
 
 DESCRIPTION="WYSIWYM (What You See Is What You Mean) document processor based on LaTeX"
 HOMEPAGE="https://www.lyx.org/"
-SRC_URI="http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P}.tar.xz"
+SRC_URI="
+	http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P}.tar.xz
+	http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P}.tar.xz
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
