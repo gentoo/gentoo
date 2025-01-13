@@ -1,0 +1,34 @@
+From a78d690da54f3afbd3213502c997ba68b29aa404 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 14 Jan 2025 08:47:54 +0800
+Subject: [PATCH] configure: add <sys/timex.h> for clock_adjtime on musl
+ (#2085)
+
+for glibc, if _GNU_SOURCE is defined, <time.h> will include <sys/timex.h>
+but not for musl, so add "#include <sys/timex.h>"
+
+although `man clock_adjtime` said "#include <sys/timex.h>", but it won't
+work for glibc w/o "#include <time.h>", I don't known why yet.
+
+PS it seems clock_adjtime is used nowhere?
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ qemu/configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/qemu/configure b/qemu/configure
+index db820ca1..47d4a4c6 100755
+--- a/qemu/configure
++++ b/qemu/configure
+@@ -1455,6 +1455,7 @@ fi
+ clock_adjtime=no
+ cat > $TMPC <<EOF
+ #include <time.h>
++#include <sys/timex.h>
+ 
+ int main(void)
+ {
+-- 
+2.45.2
+
