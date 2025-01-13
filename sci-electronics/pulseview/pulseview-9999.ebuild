@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 inherit cmake xdg-utils
 
@@ -20,24 +20,24 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="+decode static"
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
 RDEPEND="
 	>=dev-cpp/glibmm-2.28.0:2
 	dev-libs/boost:=
 	>=dev-libs/glib-2.28.0:2
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[gui,widgets]
+	dev-qt/qtsvg:6
 	>=sci-libs/libsigrok-0.6.0:=[cxx]
 	decode? ( >=sci-libs/libsigrokdecode-0.6.0:= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	virtual/pkgconfig
+"
 
 DOCS=( HACKING NEWS README )
+
+PATCHES=( "${FILESDIR}/${PN}-0.5.0-glibmm-2.68-required.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -47,6 +47,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_WERROR=TRUE
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5=ON
 		-DENABLE_DECODE=$(usex decode)
 		-DSTATIC_PKGDEPS_LIBS=$(usex static)
 	)
