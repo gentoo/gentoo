@@ -41,7 +41,6 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 src_prepare() {
 	sed -i Makefile.in \
-		-e 's|$(SHCFLAGS) -o|$(LDFLAGS) &|g' \
 		-e 's|-g -o|$(CFLAGS) $(LDFLAGS) -o|g' \
 		-e 's|-shared -o|$(CFLAGS) $(LDFLAGS) &|g' \
 		-e 's|instroot|DESTDIR|g' \
