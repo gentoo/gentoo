@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ SLOT="0"
 IUSE="avif libei pipewire +sdl +wsi-layer"
 
 RDEPEND="
+	dev-lang/luajit:2=
 	>=dev-libs/wayland-1.23
 	gui-libs/libdecor
 	<media-libs/libdisplay-info-0.3:=
