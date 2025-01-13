@@ -504,7 +504,7 @@ java-pkg-simple_src_compile() {
 		# multi-release and --generate-module-info both are available only
 		# since java 11.
 		if ! java-pkg_is-vm-version-ge "9" ; then
-			die || "Wrong vm version, needs >=virtual/jdk-11:*"
+			die "Wrong DEPEND, needs at least >=virtual/jdk-11:*"
 		fi
 
 		local classpath=""
@@ -542,6 +542,22 @@ java-pkg-simple_src_compile() {
 		fi
 
 		local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+		# Initialize a variable to track the highest key
+		local highest_key=-1
+
+		# Loop through the keys of the associative array
+		for key in "${!JAVA_RELEASE_SRC_DIRS[@]}"; do
+		    # Compare the numeric value of the key
+		    if [[ key > highest_key ]]; then
+		        highest_key="$key"
+		    fi
+		done
+
+		local jdk="$(depend-java-query --get-lowest "${DEPEND}")"
+		if [[ "${jdk#1.}" -lt "${highest_key}" ]]; then
+			die "Wrong DEPEND, needs at least virtual/jdk-${highest_key}"
+		fi
 
 		# compile content of release-specific source directories
 		local version
