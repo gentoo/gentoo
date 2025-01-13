@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="+decode static"
 
 RDEPEND="
-	>=dev-cpp/glibmm-2.28.0:2
+	>=dev-cpp/glibmm-2.68.0:2.68
 	dev-libs/boost:=
 	>=dev-libs/glib-2.28.0:2
 	dev-qt/qtbase:6[gui,widgets]
