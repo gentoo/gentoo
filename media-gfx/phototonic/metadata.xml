@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">oferkv/phototonic</remote-id>
+    <remote-id type="github">luebking/phototonic</remote-id>
   </upstream>
 </pkgmetadata>
