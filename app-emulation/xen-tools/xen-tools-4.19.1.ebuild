@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://xenbits.xen.org/git-http/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 x86"
 
 	SEABIOS_VER="1.16.0"
 	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"
