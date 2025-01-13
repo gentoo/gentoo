@@ -33,6 +33,8 @@ DEPEND="
 	X? ( x11-libs/libX11:0= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-gcc15-swap-conflict.patch" )
+
 src_prepare() {
 	default
 

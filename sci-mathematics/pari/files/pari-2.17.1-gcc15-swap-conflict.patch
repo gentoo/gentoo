@@ -1,0 +1,53 @@
+From 4cce8c7b9107053ffd1bb0d6510797dafd632151 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 12 Jan 2025 21:02:40 -0500
+Subject: [PATCH] src/graph/plotfltk.c: swap PARI and FLTK includes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+PARI defines a swap() macro that conflicts with the swap() function
+declared in some C++ headers used by FLTK. This can lead to build
+failures like
+
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/bits/alloc_traits.h
+  :1005:46:error: macro ‘swap’ requires 2 arguments, but only 1 given
+   1005 |                 __c.get_allocator()).swap(__c);
+        |                                              ^
+
+when using the forthcoming g++-15 to build PARI. Basically this fails
+because the macro is defined before the C++ headers are included. If
+we swap the includes, then the macro clobbers the function, but that's
+okay because PARI only expects the macro to be in scope.
+---
+ src/graph/plotfltk.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/graph/plotfltk.c b/src/graph/plotfltk.c
+index f81515d..e95275e 100644
+--- a/src/graph/plotfltk.c
++++ b/src/graph/plotfltk.c
+@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+ //
+ //  Based on plotQt by Nils-Peter Skoruppa (www.countnumber.de)
+ /////////////////////////////////////////////////////////////////////////////
++#include <FL/Fl.H>
++#include <FL/Fl_Window.H>
++#include <FL/fl_draw.H>
++
+ extern "C" {
+ #include "pari.h"
+ #include "paripriv.h"
+ #include "rect.h"
+ }
+ 
+-#include <FL/Fl.H>
+-#include <FL/Fl_Window.H>
+-#include <FL/fl_draw.H>
+-
+ class Plotter: public Fl_Window {
+ 
+ public:
+-- 
+2.47.1
+
