@@ -54,7 +54,7 @@ BDEPEND="
 
 src_prepare() {
 	# unpin
-	sed -e 's:,<[0-9.]*::' -e 's:==:>=:' -i pyproject.toml || die
+	sed -e 's:,<[0-9.]*::' -e 's:==\([0-9]\):>=\1:' -i pyproject.toml || die
 
 	distutils-r1_src_prepare
 }
