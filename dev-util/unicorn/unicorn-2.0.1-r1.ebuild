@@ -37,15 +37,9 @@ BDEPEND="virtual/pkgconfig
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 
 PATCHES=(
+	"${FILESDIR}/${PN}-2.0.1-configure.patch"
 	"${FILESDIR}/${P}-strict-prototypes.patch"
 	"${FILESDIR}/${P}-old-style-declaration.patch"
-)
-
-# suppress warning wrt 'implicit function declaration' in config logs due to
-# auto-detection of some libc functions (bug #906919)
-QA_CONFIG_IMPL_DECL_SKIP=(
-	clock_adjtime
-	malloc_trim
 )
 
 wrap_python() {
@@ -66,6 +60,10 @@ src_prepare() {
 
 	cmake_src_prepare
 	wrap_python ${FUNCNAME}
+
+	if use elibc_musl ; then
+		QA_CONFIG_IMPL_DECL_SKIP=( malloc_trim )
+	fi
 }
 
 src_configure(){
