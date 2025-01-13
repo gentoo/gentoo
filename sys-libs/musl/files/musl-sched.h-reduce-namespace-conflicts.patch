@@ -1,0 +1,58 @@
+commit 1a98576401ff604ff06a030a3644e2780b2a837d
+Author: Rich Felker <dalias@aerifal.cx>
+Date:   Mon Jan 13 08:31:02 2025 -0500
+
+    sched.h: reduce namespace conflicts in _GNU_SOURCE profile
+    
+    we have the cpuset macros call calloc/free/memset/memcmp directly so
+    that they don't depend on any further ABI surface. this is not
+    namespace-clean, but only affects the _GNU_SOURCE feature profile,
+    which is not intended to be namespace-clean. nonetheless, reports come
+    up now and then of things which are gratuitously broken, usually when
+    an application has wrapped malloc with macros.
+    
+    this patch parenthesizes the function names so that function-like
+    macros will not be expanded, and removes the unused declaration of
+    memcpy. this is not a complete solution, but it should improve things
+    for affected applications, particularly ones which are not even trying
+    to use the cpuset interfaces which got them just because g++ always
+    defines _GNU_SOURCE.
+
+diff --git a/include/sched.h b/include/sched.h
+index 204c34f5..8c3b53f0 100644
+--- a/include/sched.h
++++ b/include/sched.h
+@@ -78,11 +78,10 @@ int clone (int (*)(void *), void *, int, void *, ...);
+ int unshare(int);
+ int setns(int, int);
+ 
+-void *memcpy(void *__restrict, const void *__restrict, size_t);
+-int memcmp(const void *, const void *, size_t);
+-void *memset (void *, int, size_t);
+-void *calloc(size_t, size_t);
+-void free(void *);
++int (memcmp)(const void *, const void *, size_t);
++void *(memset)(void *, int, size_t);
++void *(calloc)(size_t, size_t);
++void (free)(void *);
+ 
+ typedef struct cpu_set_t { unsigned long __bits[128/sizeof(long)]; } cpu_set_t;
+ int __sched_cpucount(size_t, const cpu_set_t *);
+@@ -116,13 +115,13 @@ __CPU_op_func_S(XOR, ^)
+ #define CPU_XOR_S(a,b,c,d) __CPU_XOR_S(a,b,c,d)
+ 
+ #define CPU_COUNT_S(size,set) __sched_cpucount(size,set)
+-#define CPU_ZERO_S(size,set) memset(set,0,size)
+-#define CPU_EQUAL_S(size,set1,set2) (!memcmp(set1,set2,size))
++#define CPU_ZERO_S(size,set) (memset)(set,0,size)
++#define CPU_EQUAL_S(size,set1,set2) (!(memcmp)(set1,set2,size))
+ 
+ #define CPU_ALLOC_SIZE(n) (sizeof(long) * ( (n)/(8*sizeof(long)) \
+ 	+ ((n)%(8*sizeof(long)) + 8*sizeof(long)-1)/(8*sizeof(long)) ) )
+-#define CPU_ALLOC(n) ((cpu_set_t *)calloc(1,CPU_ALLOC_SIZE(n)))
+-#define CPU_FREE(set) free(set)
++#define CPU_ALLOC(n) ((cpu_set_t *)(calloc)(1,CPU_ALLOC_SIZE(n)))
++#define CPU_FREE(set) (free)(set)
+ 
+ #define CPU_SETSIZE 1024
+ 

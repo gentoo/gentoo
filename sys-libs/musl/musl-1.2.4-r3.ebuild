@@ -4,11 +4,7 @@
 EAPI=8
 
 inherit crossdev flag-o-matic toolchain-funcs prefix
-
-DESCRIPTION="Light, fast and, simple C library focused on standards-conformance and safety"
-HOMEPAGE="https://musl.libc.org"
-
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.musl-libc.org/git/musl"
 	inherit git-r3
 else
@@ -21,7 +17,6 @@ else
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi
-
 GETENT_COMMIT="93a08815f8598db442d8b766b463d0150ed8e2ab"
 GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
 SRC_URI+="
@@ -29,6 +24,9 @@ SRC_URI+="
 	https://gitlab.alpinelinux.org/alpine/aports/-/raw/${GETENT_COMMIT}/main/musl/getent.c -> ${GETENT_FILE}
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c
 "
+
+DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
+HOMEPAGE="https://musl.libc.org"
 
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
@@ -51,7 +49,9 @@ else
 fi
 
 PATCHES=(
+	"${FILESDIR}"/${P}-elfutils-0.190-relr.patch
 	"${FILESDIR}"/${PN}-1.2.4-arm64-crti-alignment.patch
+	"${FILESDIR}"/${PN}-sched.h-reduce-namespace-conflicts.patch
 )
 
 just_headers() {
@@ -61,12 +61,12 @@ just_headers() {
 pkg_setup() {
 	if [[ ${CTARGET} == ${CHOST} ]] ; then
 		case ${CHOST} in
-			*-musl*) ;;
-			*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
+		*-musl*) ;;
+		*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
 		esac
 	fi
 
-	# Fix for bug #667126, copied from glibc ebuild:
+	# fix for #667126, copied from glibc ebuild
 	# make sure host make.conf doesn't pollute us
 	if target_is_not_host || tc-is-cross-compiler ; then
 		CHOST=${CTARGET} strip-unsupported-flags
@@ -124,7 +124,7 @@ src_compile() {
 			VPATH="${WORKDIR}/misc"
 	fi
 
-	$(tc-getCC) ${CPPFLAGS} ${CFLAGS} -c -o libssp_nonshared.o "${FILESDIR}"/stack_chk_fail_local.c || die
+	$(tc-getCC) ${CFLAGS} -c -o libssp_nonshared.o  "${FILESDIR}"/stack_chk_fail_local.c || die
 	$(tc-getAR) -rcs libssp_nonshared.a libssp_nonshared.o || die
 }
 
@@ -192,17 +192,17 @@ src_install() {
 }
 
 pkg_preinst() {
-	# Nothing to do if just installing headers
+	# nothing to do if just installing headers
 	just_headers && return
 
-	# Prepare /etc/ld.so.conf.d/ for files
+	# prepare /etc/ld.so.conf.d/ for files
 	mkdir -p "${EROOT}"/etc/ld.so.conf.d
 }
 
 pkg_postinst() {
 	target_is_not_host && return 0
 
-	[[ -n "${ROOT}" ]] && return 0
+	[ -n "${ROOT}" ] && return 0
 
 	ldconfig || die
 }
