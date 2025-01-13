@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic toolchain-funcs
+inherit cmake-multilib
 
 DESCRIPTION="Heavily optimized DEFLATE/zlib/gzip (de)compression"
 HOMEPAGE="https://github.com/ebiggers/libdeflate"
@@ -35,9 +35,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# Workaround for bug #946876 (gcc PR118206)
-	tc-is-gcc && [[ $(gcc-major-version) -eq 15 ]] && append-flags -fdisable-tree-ifcombine
-
 	local mycmakeargs=(
 		-DLIBDEFLATE_BUILD_SHARED_LIB="yes"
 		-DLIBDEFLATE_BUILD_STATIC_LIB="no"
