@@ -56,6 +56,10 @@ else
 	PDEPEND="!crypt? ( sys-libs/libxcrypt[system] )"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-sched.h-reduce-namespace-conflicts.patch
+)
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
