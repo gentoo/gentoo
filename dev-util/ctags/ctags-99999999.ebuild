@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,6 +55,8 @@ src_prepare() {
 
 	default
 
+	# Don't automagically use Valgrind
+	sed -i -e '/if type valgrind/s:valgrind:valgrind-falseified:' Tmain/optscript.d/run.sh || die
 	#./misc/dist-test-cases > makefiles/test-cases.mak || die
 
 	eautoreconf
