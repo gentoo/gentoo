@@ -259,7 +259,8 @@ multilib_src_configure() {
 		# Annoyingly configure requires that you pick systemd XOR sysv
 		--with-initscript=$(usex systemd systemd sysv)
 		--with-sssd-user=sssd
-		 CPPFLAGS="${CPPFLAGS} -I/usr/include/samba-4.0"
+		KRB5_CONFIG="${ESYSROOT}"/usr/bin/krb5-config
+		CPPFLAGS="${CPPFLAGS} -I${ESYSROOT}/usr/include/samba-4.0"
 	)
 
 	use systemd && myconf+=(
