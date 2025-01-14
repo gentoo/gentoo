@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-debug-toolbar</remote-id>
-		<remote-id type="github">jazzband/django-debug-toolbar</remote-id>
+		<remote-id type="github">django-commons/django-debug-toolbar</remote-id>
 	</upstream>
 </pkgmetadata>
