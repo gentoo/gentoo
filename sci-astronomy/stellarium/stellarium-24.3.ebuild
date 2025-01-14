@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,7 +65,7 @@ RDEPEND="
 		dev-qt/qtgui:5=
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
-		>=sci-astronomy/calcmysky-0.3.0:=[qt5]
+		>=sci-astronomy/calcmysky-0.3.0:=[qt5(-)]
 		gps? (
 			dev-qt/qtpositioning:5
 			dev-qt/qtserialport:5
@@ -82,7 +82,7 @@ RDEPEND="
 	qt6? (
 		dev-qt/qtbase:6=[concurrent,gui,network,widgets]
 		dev-qt/qtcharts:6
-		>=sci-astronomy/calcmysky-0.3.0:=[qt6]
+		>=sci-astronomy/calcmysky-0.3.0:=[qt6(+)]
 		gps? (
 			dev-qt/qtpositioning:6
 			dev-qt/qtserialport:6
