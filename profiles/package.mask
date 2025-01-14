@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2025-03-10)
+# Masked for testing
+dev-db/mysql:8.4
+
 # Sam James <sam@gentoo.org> (2025-03-09)
 # Obsolete in favour of dev-lang/ada-bootstrap. Using sys-devel/gcc[ada]
 # should now Just Work. Removal on 2025-04-10.
