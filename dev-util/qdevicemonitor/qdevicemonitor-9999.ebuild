@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,15 +22,14 @@ IUSE=""
 
 RDEPEND="
 	app-pda/usbmuxd
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtbase:6[gui,widgets]
 	dev-util/android-tools"
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	cd "${PN}" || die
 	export VERSION_WITH_BUILD_NUMBER="${PV}"
-	eqmake5
+	eqmake6
 }
 
 src_compile() {
