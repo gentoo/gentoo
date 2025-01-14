@@ -119,6 +119,8 @@ src_configure() {
 
 	# LTO compiler flags are handled by configure.py itself
 	filter-lto
+	# The warnings are *so* noisy and make build.logs massive
+	append-cxxflags $(test-flags-CXX -Wno-template-id-cdtor)
 	# GCC with -ftree-vectorize miscompiles node's exception handling code
 	# causing it to fail to catch exceptions sometimes
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116057
