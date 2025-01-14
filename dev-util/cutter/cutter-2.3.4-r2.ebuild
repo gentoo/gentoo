@@ -21,7 +21,7 @@ IUSE="graphviz"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	dev-qt/qtbase:6[gui,network,widgets]
+	dev-qt/qtbase:6[gui,network,opengl,widgets]
 	dev-qt/qt5compat:6
 	dev-qt/qtsvg:6
 	>=dev-util/rizin-0.7.1:=
