@@ -4,8 +4,3 @@
 # Sam James <sam@gentoo.org> (2023-03-28)
 # Needs explicit porting to each platform (bug 894078#c6)
 dev-python/py-cpuinfo
-
-# Quote from <eike@s...l.de>:
-# "Compilation fails with: #error You need to define CycleTimer for
-#  your OS and CPU"
-dev-cpp/benchmark

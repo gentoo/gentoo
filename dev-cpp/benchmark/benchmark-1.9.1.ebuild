@@ -1,65 +1,82 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11,12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
-inherit cmake-multilib python-single-r1
+inherit cmake-multilib flag-o-matic python-single-r1
 
 DESCRIPTION="A microbenchmark support library"
 HOMEPAGE="https://github.com/google/benchmark/"
 SRC_URI="https://github.com/google/benchmark/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
-IUSE="doc +exceptions libcxx libpfm lto test +tools"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+IUSE="doc debug libpfm test +tools"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="tools? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
-	libcxx? ( llvm-runtimes/libcxx[${MULTILIB_USEDEP}] )
 	libpfm? ( dev-libs/libpfm:= )
 "
-
-BDEPEND="
-	>=dev-build/cmake-3.10
-	doc? ( app-text/doxygen )
-	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )
-"
-
 RDEPEND="
+	${DEPEND}
 	tools? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 			>=dev-python/scipy-1.10.0[${PYTHON_USEDEP}]
 		')
-
 		${PYTHON_DEPS}
 	)
 "
+BDEPEND="
+	doc? ( app-text/doxygen )
+	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )
+"
 
-PATCHES=( "${FILESDIR}/${P}-fix-documentation-installation.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.9.0-fix-documentation-installation.patch"
+	"${FILESDIR}/${P}-clock-detection-portability.patch"
+)
 
 pkg_setup() {
 	use tools && python-single-r1_pkg_setup
 }
 
 multilib_src_configure() {
+	# bug #943629
+	use debug || append-cppflags -DNDEBUG
+
 	local mycmakeargs=(
 		-DBENCHMARK_ENABLE_DOXYGEN="$(usex doc)"
-		-DBENCHMARK_ENABLE_EXCEPTIONS="$(usex exceptions)"
 		-DBENCHMARK_ENABLE_GTEST_TESTS="$(usex test)"
-		-DBENCHMARK_ENABLE_LTO="$(usex lto)"
-		-DBENCHMARK_ENABLE_LIBPFM="$(usex libpfm)"
+		# Users should control this via *FLAGS
+		-DBENCHMARK_ENABLE_LTO=OFF
+		-DBENCHMARK_ENABLE_LIBPFM="$(multilib_native_usex libpfm)"
 		-DBENCHMARK_ENABLE_TESTING="$(usex test)"
 		-DBENCHMARK_ENABLE_WERROR=OFF
 		-DBENCHMARK_INSTALL_DOCS="$(usex doc)"
 		-DBENCHMARK_USE_BUNDLED_GTEST=OFF
-		-DBENCHMARK_USE_LIBCXX="$(usex libcxx)"
+		# This is determined by profile.
+		-DBENCHMARK_USE_LIBCXX=OFF
 	)
 
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	CMAKE_SKIP_TESTS=(
+		# CMake already warns on these being brittle w/ diff
+		# compiler versions. Could do with investigation if bored
+		# but not critical. See bug #941538.
+		run_donotoptimize_assembly_test_CHECK
+		run_state_assembly_test_CHECK
+		run_clobber_memory_assembly_test_CHECK
+	)
+
+	cmake_src_test
 }
 
 multilib_src_install_all() {
