@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/945194 - guard bool for modern compilers
+https://bugs.gentoo.org/712644 - type aliaces for musl
+--- a/src/iplog.h
++++ b/src/iplog.h
+@@ -21,6 +21,9 @@
+ #ifndef __IPLOG_H
+ #define __IPLOG_H
+ 
++#define _GNU_SOURCE 1
++#include <sys/types.h> /* for u_* types */
++
+ #ifndef HAVE_IPADDR_T
+ 	typedef u_int32_t ipaddr_t;
+ #endif
+@@ -82,7 +82,9 @@
+ #	define min(x,y) ((x) < (y) ? (x) : (y))
+ #endif
+ 
++#if __STDC_VERSION__ <= 201710L
+ typedef enum { false, true } bool;
++#endif
+ 
+ #ifdef HAVE_PATHS_H
+ #	include <paths.h>
+C23 and GNU-15 compatibility, explicitly cast sockaddr
+--- a/src/iplog_tcp.c
++++ b/src/iplog_tcp.c
+@@ -144,7 +144,7 @@
+ 
+ 		ret = sendto(raw_sock, (char *) xip,
+ 				sizeof(struct ip) + sizeof(struct tcphdr), 0,
+-#if !defined(__GLIBC__) || (__GLIBC__ < 2)
++#if !defined(__GLIBC__) || (__GLIBC__ < 2) || (__STDC_VERSION__ > 201710L)
+ 				(struct sockaddr *)
+ #endif
+ 				&fn_sin,
