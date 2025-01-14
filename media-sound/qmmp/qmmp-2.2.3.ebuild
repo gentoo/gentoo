@@ -20,7 +20,7 @@ fi
 LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
-IUSE="aac +alsa analyzer archive bs2b cdda cddb cover crossfade cue curl +dbus
+IUSE="X aac +alsa analyzer archive bs2b cdda cddb cover crossfade cue curl +dbus
 enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer
 musepack notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler
 shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
@@ -28,14 +28,15 @@ shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
 REQUIRED_USE="
 	cddb? ( cdda )
 	gnome? ( dbus )
+	notifier? ( X )
 	shout? ( soxr vorbis )
 	udisks? ( dbus )
 "
 
 RDEPEND="
-	dev-qt/qtbase:6[X,dbus?,gui,network,sqlite,widgets]
+	dev-qt/qtbase:6[X?,dbus?,gui,network,sqlite,widgets]
 	media-libs/taglib:=
-	x11-libs/libX11
+	X? ( x11-libs/libX11 )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	archive? ( app-arch/libarchive )
@@ -81,7 +82,10 @@ RDEPEND="
 	)
 	wavpack? ( media-sound/wavpack )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( AUTHORS ChangeLog README )
@@ -107,6 +111,7 @@ src_configure() {
 		-DUSE_FLAC="$(usex flac)"
 		-DUSE_GME="$(usex game)"
 		-DUSE_GNOMEHOTKEY="$(usex gnome)"
+		-DUSE_HOTKEY="$(usex X)"
 		-DUSE_JACK="$(usex jack)"
 		-DUSE_LADSPA="$(usex ladspa)"
 		-DUSE_LYRICS="$(usex lyrics)"
@@ -126,6 +131,7 @@ src_configure() {
 		-DUSE_SCROBBLER="$(usex scrobbler)"
 		-DUSE_SHOUT="$(usex shout)"
 		-DUSE_SID="$(usex sid)"
+		-DUSE_SKINNED="$(usex X)"
 		-DUSE_SNDFILE="$(usex sndfile)"
 		-DUSE_SOXR="$(usex soxr)"
 		-DUSE_STEREO="$(usex stereo)"
