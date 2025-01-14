@@ -77,6 +77,8 @@ RDEPEND="${DEPEND}
 	acct-group/sssd
 	passkey? ( sys-apps/pcsc-lite[policykit] )
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
+DEPEND+="
+	sys-apps/shadow"
 BDEPEND="
 	acct-user/sssd
 	acct-group/sssd
