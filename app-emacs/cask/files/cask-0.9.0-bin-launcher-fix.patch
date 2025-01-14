@@ -1,0 +1,26 @@
+--- a/bin/cask
++++ b/bin/cask
+@@ -41,11 +41,13 @@ if [ -z "$SRCDIR__" ]; then
+     SRCDIR__=$(python -c "import os, sys; print(os.path.realpath(sys.argv[1]))" "$CASK")
+ fi
+ SRCDIR_=$(dirname "$SRCDIR__")
+-SRCDIR=$(dirname "$SRCDIR_")
++# SRCDIR=$(dirname "$SRCDIR_")
++SRCDIR="@SITELISP@"
++
+ case $subcommand in
+ 	emacs)
+ 		EMACS="$EMACS" \
+-                "$EMACS" -Q -L "$SRCDIR" -l "$SRCDIR/cask" \
++                "$EMACS" -q -L "$SRCDIR" -l "$SRCDIR/cask" \
+                 --eval "(cask--initialize (expand-file-name default-directory))" \
+                 "$@"
+ 		;;
+@@ -53,6 +55,6 @@ case $subcommand in
+ 		EMACSLOADPATH="$($CASK load-path)" PATH="$($CASK path)" EMACS="$EMACS" "$@"
+ 		;;
+ 	*)
+-		"$EMACS" -Q --script "$SRCDIR/cask-cli.el" -- $subcommand "$@"
++		"$EMACS" -q --script "$SRCDIR/cask-cli.el" -- $subcommand "$@"
+ 		;;
+ esac
