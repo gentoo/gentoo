@@ -1,0 +1,16 @@
+diff '--color=auto' -Naur a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2024-12-05 12:16:16.000000000 +0000
++++ b/Makefile.am	2025-01-14 12:31:45.831435116 +0000
+@@ -21,7 +21,11 @@
+ endif
+ 
+ SUBDIRS += . src/tests/cwrap src/tests/intg src/tests/test_CA \
+-             src/tests/test_ECC_CA src/tools/analyzer
++             src/tests/test_ECC_CA
++
++if BUILD_PYTHON_BINDINGS
++SUBDIRS += src/tools/analyzer
++endif
+ 
+ # Some old versions of automake don't define builddir
+ builddir ?= .
