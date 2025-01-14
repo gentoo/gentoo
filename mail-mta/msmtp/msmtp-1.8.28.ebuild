@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="daemon doc keyring +gnutls idn +mta nls sasl ssl"
 
 # fcaps.eclass unconditionally defines "filecaps" USE flag which we need for
@@ -24,7 +24,7 @@ DEPEND="
 	idn? ( net-dns/libidn2:= )
 	nls? ( virtual/libintl )
 	keyring? ( app-crypt/libsecret )
-	sasl? ( net-misc/gsasl[client] )
+	sasl? ( >=net-misc/gsasl-2.1[client] )
 	ssl? (
 		gnutls? ( net-libs/gnutls[idn?] )
 		!gnutls? ( dev-libs/libretls:= )
@@ -105,8 +105,10 @@ src_install() {
 		dosym ../bin/msmtp /usr/$(get_libdir)/sendmail
 	fi
 
-	insinto /usr/share/vim/vimfiles/syntax
-	doins scripts/vim/msmtp.vim
+	for i in syntax ftdetect ftplugin; do
+		insinto /usr/share/vim/vimfiles/$i
+		doins scripts/vim/$i/msmtp.vim
+	done
 
 	insinto /etc
 	newins doc/msmtprc-system.example msmtprc
