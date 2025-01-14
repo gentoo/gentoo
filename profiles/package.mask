@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2025-05-17)
+# Masked for testing
+dev-db/mysql:8.4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-15)
 # Very dead upstream, very many open bugs for years without anyone fixing.
 # Bugs #314835, #632432, #827131, #874429, #908830, #925513, #934808.
