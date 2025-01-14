@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-01-14)
+# dev-libs/libpfm is not yet keyworded here
+dev-cpp/benchmark libpfm
 
 # Sam James <sam@gentoo.org> (2025-01-10)
 # Many unkeyworded dependencies like parts of TL (bug #947788)
