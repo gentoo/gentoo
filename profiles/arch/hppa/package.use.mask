@@ -5,6 +5,11 @@
 # request bug for the hppa arch.
 
 # Sam James <sam@gentoo.org> (2025-01-14)
+# dev-cpp/benchmark isn't (yet) keyworded here, although >=1.9.1 should
+# work fine with patching as the ebuild does.
+dev-libs/re2 benchmark
+
+# Sam James <sam@gentoo.org> (2025-01-14)
 # libpfm: needs unkeyworded dev-libs/libpfm but I don't think HPPA has
 # any performance counters anyway.
 # tools: needs dev-python/numpy and dev-python/scipy which aren't keyworded here
