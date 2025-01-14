@@ -9,7 +9,6 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/sandbox.git
 		https://github.com/gentoo/sandbox.git"
-	EGIT_BRANCH="stable-2.x"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
