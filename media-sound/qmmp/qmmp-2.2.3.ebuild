@@ -48,10 +48,7 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac:= )
 	game? ( media-libs/game-music-emu )
-	jack? (
-		media-libs/libsamplerate
-		virtual/jack
-	)
+	jack? (	virtual/jack )
 	ladspa? ( media-plugins/cmt-plugins )
 	libxmp? ( media-libs/libxmp )
 	mad? (
