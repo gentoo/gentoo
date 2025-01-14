@@ -88,6 +88,8 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( AUTHORS ChangeLog README )
 
+PATCHES=( "${FILESDIR}"/${P}_build-with-projectm4.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		# turn off windows specific stuff
