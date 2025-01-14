@@ -20,12 +20,13 @@ fi
 LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
-IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
-ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer musepack
-notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler shout sid
-sndfile soxr stereo tray udisks +vorbis wavpack"
+IUSE="aac +alsa analyzer archive bs2b cdda cddb cover crossfade cue curl +dbus
+enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer
+musepack notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler
+shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
 
 REQUIRED_USE="
+	cddb? ( cdda )
 	gnome? ( dbus )
 	shout? ( soxr vorbis )
 	udisks? ( dbus )
@@ -43,6 +44,7 @@ RDEPEND="
 		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia:=
 	)
+	cddb? ( media-libs/libcddb )
 	curl? ( net-misc/curl )
 	enca? ( app-i18n/enca )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -92,6 +94,7 @@ src_configure() {
 		-DUSE_ARCHIVE="$(usex archive)"
 		-DUSE_BS2B="$(usex bs2b)"
 		-DUSE_CDA="$(usex cdda)"
+		-DUSE_LIBCDDB="$(usex cddb)"
 		-DUSE_COVER="$(usex cover)"
 		-DUSE_CROSSFADE="$(usex crossfade)"
 		-DUSE_CUE="$(usex cue)"
