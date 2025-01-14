@@ -253,6 +253,7 @@ src_compile() {
 
 	if use tk ; then
 		git_emake -C gitk-git
+		git_emake -C git-gui
 	fi
 
 	if use doc ; then
@@ -432,6 +433,7 @@ src_install() {
 
 	if use tk ; then
 		git_emake -C gitk-git DESTDIR="${D}" install
+		git_emake -C git-gui DESTDIR="${D}" install
 	fi
 
 	perl_delete_localpod
