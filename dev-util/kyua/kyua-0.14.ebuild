@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Testing framework for infrastructure software"
 HOMEPAGE="https://github.com/freebsd/kyua"
@@ -32,6 +32,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #948053
+	filter-lto
+
 	# Skip coredump tests; they fail when sudo sets RLIMIT_CORE = 0.
 	cat >"${T}/kyua.conf" <<-EOF || die
 	syntax(2)
