@@ -32,7 +32,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-qt/qtbase:6[X,dbus,gui,network,sqlite,widgets]
+	dev-qt/qtbase:6[X,dbus?,gui,network,sqlite,widgets]
 	media-libs/taglib:=
 	x11-libs/libX11
 	aac? ( media-libs/faad2 )
@@ -44,7 +44,6 @@ RDEPEND="
 		dev-libs/libcdio-paranoia:=
 	)
 	curl? ( net-misc/curl )
-	dbus? ( dev-qt/qtbase:6[dbus] )
 	enca? ( app-i18n/enca )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac:= )
