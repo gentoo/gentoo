@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="cpu_flags_x86_aes cpu_flags_x86_avx2 lzo lzma cpu_flags_x86_rdrand cpu_flags_x86_sha cpu_flags_x86_sse4_2 static test xattr"
+IUSE="cpu_flags_x86_avx2 lzo lzma cpu_flags_x86_sse4_2 static test xattr"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -81,14 +81,13 @@ _emake() {
 	local os=$(usex kernel_linux Linux IDK)
 
 	# HAVE_LZO is special as it's checked for emptiness in test_crypt.sh.
+	# We could try make RDRND and friends controlled via USE but it's too brittle,
+	# see bug #947105.
 	emake \
 		MACH="${arch}" \
 		OS="${os}" \
 		HAVE_SSE42=$(usex cpu_flags_x86_sse4_2 1 0) \
-		HAVE_AES=$(usex cpu_flags_x86_aes 1 0) \
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0) \
-		HAVE_SHA=$(usex cpu_flags_x86_sha 1 0) \
-		HAVE_RDRND=$(usex cpu_flags_x86_rdrand 1 0) \
 		HAVE_LZMA=$(usex lzma 1 0) \
 		HAVE_LZO=$(usev lzo 1) \
 		HAVE_OPENSSL=0 \
