@@ -9,7 +9,7 @@
     <email>nowa@gentoo.org</email>
     <name>Nowa Ammerlaan</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>sci-physics@gentoo.org</email>
     <name>Gentoo Physics Project</name>
   </maintainer>
