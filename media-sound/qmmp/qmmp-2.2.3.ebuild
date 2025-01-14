@@ -92,6 +92,10 @@ PATCHES=( "${FILESDIR}"/${P}_build-with-projectm4.patch )
 
 src_configure() {
 	local mycmakeargs=( # listed in readme
+		# potential USE flags
+		-DUSE_LIBRCD=OFF
+		-DUSE_OSS4=OFF
+
 		# explicit defaults
 		-DUSE_COPYPASTE=ON
 		-DUSE_DIR_ASSOC=ON
