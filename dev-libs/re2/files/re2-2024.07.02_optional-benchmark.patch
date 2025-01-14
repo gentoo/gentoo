@@ -1,0 +1,63 @@
+https://code-review.googlesource.com/c/re2/+/63530
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 14 Jan 2025 12:08:26 +0300
+Subject: [PATCH] Make benchmark building optional in cmake
+
+Some Linux distributions only requires testing but not benchmarking.
+Make benchmark optional to exclude excessive dependency on building tests.
+
+Change-Id: I1ce8bd1b4f6132efb295f71d43a77ba36ea58dc5
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,9 @@ option(RE2_BUILD_FRAMEWORK "build RE2 as a framework" OFF)
+ # so we provide an option similar to BUILD_TESTING, but just for RE2.
+ option(RE2_BUILD_TESTING "enable testing for RE2" OFF)
+ 
++# Enable benchmark building.
++option(RE2_BUILD_BENCHMARK "enable benchmark building for RE2" OFF)
++
+ # The pkg-config Requires: field.
+ set(REQUIRES)
+ 
+@@ -167,8 +170,10 @@ if(RE2_BUILD_TESTING)
+   if(NOT TARGET GTest::gtest)
+     find_package(GTest REQUIRED)
+   endif()
+-  if(NOT TARGET benchmark::benchmark)
+-    find_package(benchmark REQUIRED)
++  if(RE2_BUILD_BENCHMARK)
++    if(NOT TARGET benchmark::benchmark)
++      find_package(benchmark REQUIRED)
++    endif()
+   endif()
+ 
+   set(TESTING_SOURCES
+@@ -227,14 +232,16 @@ if(RE2_BUILD_TESTING)
+     add_test(NAME ${target} COMMAND ${target})
+   endforeach()
+ 
+-  foreach(target ${BENCHMARK_TARGETS})
+-    add_executable(${target} re2/testing/${target}.cc)
+-    if(BUILD_SHARED_LIBS AND WIN32)
+-      target_compile_definitions(${target} PRIVATE -DRE2_CONSUME_TESTING_DLL)
+-    endif()
+-    target_compile_features(${target} PUBLIC cxx_std_14)
+-    target_link_libraries(${target} PUBLIC testing benchmark::benchmark_main ${EXTRA_TARGET_LINK_LIBRARIES})
+-  endforeach()
++  if(RE2_BUILD_BENCHMARK)
++    foreach(target ${BENCHMARK_TARGETS})
++      add_executable(${target} re2/testing/${target}.cc)
++      if(BUILD_SHARED_LIBS AND WIN32)
++        target_compile_definitions(${target} PRIVATE -DRE2_CONSUME_TESTING_DLL)
++      endif()
++      target_compile_features(${target} PUBLIC cxx_std_14)
++      target_link_libraries(${target} PUBLIC testing benchmark::benchmark_main ${EXTRA_TARGET_LINK_LIBRARIES})
++    endforeach()
++  endif()
+ endif()
+ 
+ install(TARGETS re2
+-- 
+2.45.2
+
