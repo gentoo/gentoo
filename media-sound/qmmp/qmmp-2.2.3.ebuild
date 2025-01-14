@@ -17,7 +17,7 @@ else
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/qmmp-dev/code/branches/${PN}-${BRANCH_VER}"
 fi
 
-LICENSE="GPL-2"
+LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
 IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
