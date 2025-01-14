@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake xdg
 
-DESCRIPTION="Qt-based audio player with winamp/xmms skins support"
+DESCRIPTION="Qt6-based audio player with winamp/xmms skins support"
 HOMEPAGE="https://qmmp.ylsoftware.com"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://qmmp.ylsoftware.com/files/${PN}/$(ver_cut 1-2)/${P}.tar.bz2
@@ -41,7 +41,7 @@ RDEPEND="
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		dev-libs/libcdio:=
-		dev-libs/libcdio-paranoia
+		dev-libs/libcdio-paranoia:=
 	)
 	curl? ( net-misc/curl )
 	dbus? ( dev-qt/qtbase:6[dbus] )
@@ -64,7 +64,7 @@ RDEPEND="
 	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
-	pipewire? ( media-video/pipewire )
+	pipewire? ( media-video/pipewire:= )
 	projectm? (
 		dev-qt/qtbase:6[-gles2-only,opengl]
 		media-libs/libprojectm:=
@@ -73,7 +73,7 @@ RDEPEND="
 	qtmedia? ( dev-qt/qtmultimedia:6 )
 	scrobbler? ( net-misc/curl )
 	shout? ( media-libs/libshout )
-	sid? ( >=media-libs/libsidplayfp-1.1.0 )
+	sid? ( >=media-libs/libsidplayfp-1.1.0:= )
 	sndfile? ( media-libs/libsndfile )
 	soxr? ( media-libs/soxr )
 	udisks? ( sys-fs/udisks:2 )
