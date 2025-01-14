@@ -88,16 +88,6 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( AUTHORS ChangeLog README )
 
-src_prepare() {
-	if has_version dev-libs/libcdio-paranoia ; then
-		sed -i \
-			-e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' \
-			src/plugins/Input/cdaudio/decoder_cdaudio.cpp || die
-	fi
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_AAC="$(usex aac)"
