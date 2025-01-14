@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -61,7 +61,7 @@ DEPEND="${LUA_DEPS}
 		x86? ( >=sys-libs/glibc-2.34 )
 	)
 	dev-libs/openssl:=
-	dev-libs/boost:=[context]"
+	>=dev-libs/boost-1.42:=[context]"
 RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1
 	acct-user/pdns
