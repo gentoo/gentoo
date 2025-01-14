@@ -1,0 +1,346 @@
+https://bugs.gentoo.org/905941
+Deal with consequences of autoreconf, let errors propagate
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -92,28 +92,28 @@
+ all install: Makefile config.h
+ 	for subdir in $(SUBDIRS); do \
+ 		echo making $@ in $$subdir ; \
+-		(cd $$subdir; $(MAKE) $(MDEFINES) $@); \
++		$(MAKE) -C $$subdir $(MDEFINES) $@; \
+ 	done
+ 
+ clean:
+ 	for subdir in $(SUBDIRS); do \
+ 		echo making $@ in $$subdir ; \
+-		(cd $$subdir; $(MAKE) $@); \
++		$(MAKE) -C $$subdir $@; \
+ 	done
+ 
+ distclean:
+ 	$(RM) Makefile config.h config.cache config.log config.status stamp-h
+ 	for subdir in $(SUBDIRS); do \
+ 		echo making $@ in $$subdir ; \
+-		(cd $$subdir; $(MAKE) $@); \
++		$(MAKE) -C $$subdir $@; \
+ 	done
+ 
+-${srcdir}/configure: configure.in
++${srcdir}/configure: configure.ac
+ 	cd ${srcdir} && autoconf
+ 
+ # autoheader might not change config.h.in, so touch a stamp file.
+ ${srcdir}/config.h.in: stamp-h.in
+-${srcdir}/stamp-h.in: configure.in
++${srcdir}/stamp-h.in: configure.ac
+ 	cd ${srcdir} && autoheader
+ 	echo timestamp > ${srcdir}/stamp-h.in
+
+Fix all implicit declarations by filling them and reordering
+type definitions. Ought to be a header.
+https://bugs.gentoo.org/943896
+--- a/exit.c
++++ b/src/exit.c
+@@ -243,7 +243,7 @@
+  * catch the dump signal, write a message and dump the state
+  */
+ void
+-dump_data()
++dump_data(int)
+ {
+ 	(void) fprintf(stderr, "dumping state to %s\n", dumpfile_name);
+ 	real_dump_data();
+@@ -307,8 +307,7 @@
+  * exit the program...
+  */
+ void
+-logsurfer_exit(sig)
+-	int	sig;
++logsurfer_exit(int sig)
+ /* ARGSUSED */
+ {
+ 	struct context	*this_context, *next_context;
+@@ -322,7 +321,7 @@
+ 	if (exit_silent)
+ 		real_dump_data();
+ 	else
+-		dump_data();
++		dump_data(sig);
+ 
+ 	/* check for timeouts */
+ 	if (!exit_silent)
+--- a/exit.h
++++ b/src/exit.h
+@@ -6,7 +6,7 @@
+ 
+ #if __STDC__
+ 
+-void	dump_data();
++void	dump_data(int);
+ void	real_dump_data();
+ void	cleanup_memory();
+ void	logsurfer_exit(int);
+--- a/regex.c
++++ b/src/regex.c
+@@ -837,13 +837,46 @@
+     "Unmatched ) or \\)",			/* REG_ERPAREN */
+   };
+ 
++
++/* Since we have one byte reserved for the register number argument to
++   {start,stop}_memory, the maximum number of groups we can report
++   things about is what fits in that byte.  */
++#define MAX_REGNUM 255
++
++/* But patterns can have more than `MAX_REGNUM' registers.  We just
++   ignore the excess.  */
++typedef unsigned regnum_t;
++
++/* Since offsets can go either forwards or backwards, this type needs to
++   be able to hold values from -(MAX_BUF_SIZE - 1) to MAX_BUF_SIZE - 1.  */
++typedef int pattern_offset_t;
++
++typedef struct
++{
++  pattern_offset_t begalt_offset;
++  pattern_offset_t fixup_alt_jump;
++  pattern_offset_t inner_group_offset;
++  pattern_offset_t laststart_offset;  
++  regnum_t regnum;
++} compile_stack_elt_t;
++
++typedef struct
++{
++  compile_stack_elt_t *stack;
++  unsigned size;
++  unsigned avail;			/* Offset of next open position.  */
++} compile_stack_type;
++
+ /* Subroutine declarations and macros for regex_compile.  */
+ 
+-static void store_op1 (), store_op2 ();
+-static void insert_op1 (), insert_op2 ();
+-static boolean at_begline_loc_p (), at_endline_loc_p ();
+-static boolean group_in_compile_stack ();
+-static reg_errcode_t compile_range ();
++static void store_op1 (re_opcode_t op, unsigned char *loc, int arg);
++static void store_op2 (re_opcode_t op, unsigned char *loc, int arg1, int arg2);
++static void insert_op1 (re_opcode_t op, unsigned char *loc, int arg, unsigned char *end);
++static void insert_op2 (re_opcode_t op, unsigned char *loc, int arg1, int arg2, unsigned char *end);
++static boolean at_begline_loc_p (const char *pattern, const char *p, reg_syntax_t syntax);
++static boolean at_endline_loc_p (const char *p, const char *pend, int syntax);
++static boolean group_in_compile_stack (compile_stack_type compile_stack, regnum_t regnum);
++static reg_errcode_t compile_range (const char **p_ptr, const char *pend, char *translate, reg_syntax_t syntax, unsigned char *b);
+ 
+ /* Fetch the next character in the uncompiled pattern---translating it 
+    if necessary.  Also cast from a signed character in the constant
+@@ -964,40 +997,8 @@
+   } while (0)
+ 
+ 
+-/* Since we have one byte reserved for the register number argument to
+-   {start,stop}_memory, the maximum number of groups we can report
+-   things about is what fits in that byte.  */
+-#define MAX_REGNUM 255
+-
+-/* But patterns can have more than `MAX_REGNUM' registers.  We just
+-   ignore the excess.  */
+-typedef unsigned regnum_t;
+-
+-
+ /* Macros for the compile stack.  */
+ 
+-/* Since offsets can go either forwards or backwards, this type needs to
+-   be able to hold values from -(MAX_BUF_SIZE - 1) to MAX_BUF_SIZE - 1.  */
+-typedef int pattern_offset_t;
+-
+-typedef struct
+-{
+-  pattern_offset_t begalt_offset;
+-  pattern_offset_t fixup_alt_jump;
+-  pattern_offset_t inner_group_offset;
+-  pattern_offset_t laststart_offset;  
+-  regnum_t regnum;
+-} compile_stack_elt_t;
+-
+-
+-typedef struct
+-{
+-  compile_stack_elt_t *stack;
+-  unsigned size;
+-  unsigned avail;			/* Offset of next open position.  */
+-} compile_stack_type;
+-
+-
+ #define INIT_COMPILE_STACK_SIZE 32
+ 
+ #define COMPILE_STACK_EMPTY  (compile_stack.avail == 0)
+@@ -2060,10 +2061,7 @@
+ /* Store OP at LOC followed by two-byte integer parameter ARG.  */
+ 
+ static void
+-store_op1 (op, loc, arg)
+-    re_opcode_t op;
+-    unsigned char *loc;
+-    int arg;
++store_op1 (re_opcode_t op, unsigned char *loc, int arg)
+ {
+   *loc = (unsigned char) op;
+   STORE_NUMBER (loc + 1, arg);
+@@ -2073,10 +2071,7 @@
+ /* Like `store_op1', but for two two-byte parameters ARG1 and ARG2.  */
+ 
+ static void
+-store_op2 (op, loc, arg1, arg2)
+-    re_opcode_t op;
+-    unsigned char *loc;
+-    int arg1, arg2;
++store_op2 (re_opcode_t op, unsigned char *loc, int arg1, int arg2)
+ {
+   *loc = (unsigned char) op;
+   STORE_NUMBER (loc + 1, arg1);
+@@ -2088,11 +2083,7 @@
+    for OP followed by two-byte integer parameter ARG.  */
+ 
+ static void
+-insert_op1 (op, loc, arg, end)
+-    re_opcode_t op;
+-    unsigned char *loc;
+-    int arg;
+-    unsigned char *end;    
++insert_op1 (re_opcode_t op, unsigned char *loc, int arg, unsigned char *end)
+ {
+   register unsigned char *pfrom = end;
+   register unsigned char *pto = end + 3;
+@@ -2107,11 +2098,7 @@
+ /* Like `insert_op1', but for two two-byte parameters ARG1 and ARG2.  */
+ 
+ static void
+-insert_op2 (op, loc, arg1, arg2, end)
+-    re_opcode_t op;
+-    unsigned char *loc;
+-    int arg1, arg2;
+-    unsigned char *end;    
++insert_op2 (re_opcode_t op, unsigned char *loc, int arg1, int arg2, unsigned char *end)
+ {
+   register unsigned char *pfrom = end;
+   register unsigned char *pto = end + 5;
+@@ -2128,9 +2115,7 @@
+    least one character before the ^.  */
+ 
+ static boolean
+-at_begline_loc_p (pattern, p, syntax)
+-    const char *pattern, *p;
+-    reg_syntax_t syntax;
++at_begline_loc_p (const char *pattern, const char *p, reg_syntax_t syntax)
+ {
+   const char *prev = p - 2;
+   boolean prev_prev_backslash = prev > pattern && prev[-1] == '\\';
+@@ -2147,9 +2132,7 @@
+    at least one character after the $, i.e., `P < PEND'.  */
+ 
+ static boolean
+-at_endline_loc_p (p, pend, syntax)
+-    const char *p, *pend;
+-    int syntax;
++at_endline_loc_p (const char *p, const char *pend, int syntax)
+ {
+   const char *next = p;
+   boolean next_backslash = *next == '\\';
+@@ -2169,9 +2152,7 @@
+    false if it's not.  */
+ 
+ static boolean
+-group_in_compile_stack (compile_stack, regnum)
+-    compile_stack_type compile_stack;
+-    regnum_t regnum;
++group_in_compile_stack (compile_stack_type compile_stack, regnum_t regnum)
+ {
+   int this_element;
+ 
+@@ -2197,11 +2178,7 @@
+    `regex_compile' itself.  */
+ 
+ static reg_errcode_t
+-compile_range (p_ptr, pend, translate, syntax, b)
+-    const char **p_ptr, *pend;
+-    char *translate;
+-    reg_syntax_t syntax;
+-    unsigned char *b;
++compile_range (const char **p_ptr, const char *pend, char *translate, reg_syntax_t syntax, unsigned char *b)
+ {
+   unsigned this_char;
+ 
+@@ -2989,13 +2966,6 @@
+   return -1;
+ } /* re_search_2 */
+ 
+-/* Declarations and macros for re_match_2.  */
+-
+-static int bcmp_translate ();
+-static boolean alt_match_null_string_p (),
+-               common_op_match_null_string_p (),
+-               group_match_null_string_p ();
+-
+ /* Structure for per-register (a.k.a. per-group) information.
+    This must not be longer than one word, because we push this value
+    onto the failure stack.  Other register information, such as the
+@@ -3022,6 +2992,13 @@
+   } bits;
+ } register_info_type;
+ 
++/* Declarations and macros for re_match_2.  */
++
++static int bcmp_translate (unsigned char *s1, unsigned char *s2, int len, char *translate);
++static boolean alt_match_null_string_p (unsigned char *p, unsigned char *end, register_info_type *reg_info);
++static boolean common_op_match_null_string_p (unsigned char **p, unsigned char *end, register_info_type *reg_info);
++static boolean group_match_null_string_p (unsigned char **p, unsigned char *end, register_info_type *reg_info);
++
+ #define REG_MATCH_NULL_STRING_P(R)  ((R).bits.match_null_string_p)
+ #define IS_ACTIVE(R)  ((R).bits.is_active)
+ #define MATCHED_SOMETHING(R)  ((R).bits.matched_something)
+@@ -4354,9 +4331,7 @@
+    We don't handle duplicates properly (yet).  */
+ 
+ static boolean
+-group_match_null_string_p (p, end, reg_info)
+-    unsigned char **p, *end;
+-    register_info_type *reg_info;
++group_match_null_string_p (unsigned char **p, unsigned char *end, register_info_type *reg_info)
+ {
+   int mcnt;
+   /* Point to after the args to the start_memory.  */
+@@ -4463,9 +4438,7 @@
+    byte past the last. The alternative can contain groups.  */
+    
+ static boolean
+-alt_match_null_string_p (p, end, reg_info)
+-    unsigned char *p, *end;
+-    register_info_type *reg_info;
++alt_match_null_string_p (unsigned char *p, unsigned char *end, register_info_type *reg_info)
+ {
+   int mcnt;
+   unsigned char *p1 = p;
+@@ -4500,9 +4473,7 @@
+    Sets P to one after the op and its arguments, if any.  */
+ 
+ static boolean
+-common_op_match_null_string_p (p, end, reg_info)
+-    unsigned char **p, *end;
+-    register_info_type *reg_info;
++common_op_match_null_string_p (unsigned char **p, unsigned char *end, register_info_type *reg_info)
+ {
+   int mcnt;
+   boolean ret;
+@@ -4588,10 +4559,7 @@
+    bytes; nonzero otherwise.  */
+    
+ static int
+-bcmp_translate (s1, s2, len, translate)
+-     unsigned char *s1, *s2;
+-     register int len;
+-     char *translate;
++bcmp_translate (unsigned char *s1, unsigned char *s2, int len, char *translate)
+ {
+   register unsigned char *p1 = s1, *p2 = s2;
+   while (len)
