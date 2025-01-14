@@ -565,7 +565,7 @@ src_install() {
 	done
 
 	# Install EFI Firmware files (bug #320757)
-	for each in VBoxEFI{32,64}.fd ; do
+	for each in VBoxEFI{-x86,-amd64}.fd ; do
 		vbox_inst ${each} 0644
 	done
 
