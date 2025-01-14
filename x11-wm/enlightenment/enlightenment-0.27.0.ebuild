@@ -16,7 +16,7 @@ LICENSE="BSD-2"
 # reset it rather than just to keep it.
 SLOT="0.17/${PV%%_*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="acpi bluetooth connman doc exif geolocation nls pam policykit systemd udisks wayland xwayland"
+IUSE="bluetooth connman doc exif geolocation nls pam policykit systemd udisks wayland xwayland"
 
 REQUIRED_USE="xwayland? ( wayland )"
 
@@ -26,7 +26,6 @@ RDEPEND=">=dev-libs/efl-1.28.0[eet,fontconfig,sound,X]
 	x11-libs/libxcb
 	x11-libs/xcb-util-keysyms
 	x11-misc/xkeyboard-config
-	acpi? ( sys-power/acpid )
 	bluetooth? ( net-wireless/bluez )
 	connman? ( dev-libs/efl[connman] )
 	exif? ( media-libs/libexif )
