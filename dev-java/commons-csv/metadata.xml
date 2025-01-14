@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://issues.apache.org/jira/browse/CSV</bugs-to>
-		<changelog>https://commons.apache.org/proper/commons-csv/changes-report.html</changelog>
+		<changelog>https://commons.apache.org/proper/commons-csv/changes.html</changelog>
 	</upstream>
 </pkgmetadata>
