@@ -92,6 +92,11 @@ PATCHES=( "${FILESDIR}"/${P}_build-with-projectm4.patch )
 
 src_configure() {
 	local mycmakeargs=(
+		# our defaults
+		-DUSE_CONVERTER=ON # because taglib
+		-DUSE_RGSCAN=ON # because taglib
+		-DUSE_LIBRARY=ON # because qtbase[sqlite]
+
 		# turn off windows specific stuff
 		-DUSE_DSOUND=OFF
 		-DUSE_TASKBAR=OFF
