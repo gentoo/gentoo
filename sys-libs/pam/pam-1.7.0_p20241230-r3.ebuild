@@ -40,9 +40,11 @@ IUSE="audit berkdb elogind examples debug nis nls selinux systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 # meson.build specifically checks for bison and then byacc
+# also requires xsltproc
 BDEPEND+="
 	|| ( sys-devel/bison dev-util/byacc )
 	app-text/docbook-xsl-ns-stylesheets
+	dev-libs/libxslt
 	sys-devel/flex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
