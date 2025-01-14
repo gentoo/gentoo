@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	dev-java/asm:9
