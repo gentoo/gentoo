@@ -21,9 +21,9 @@ LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
 IUSE="X aac +alsa analyzer archive bs2b cdda cddb cover crossfade cue curl +dbus
-enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer
-musepack notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler
-shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
+enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mpg123
+mplayer musepack notifier opus oss pipewire projectm pulseaudio qsui qtmedia
+scrobbler shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
 
 REQUIRED_USE="
 	cddb? ( cdda )
@@ -54,12 +54,10 @@ RDEPEND="
 	jack? (	virtual/jack )
 	ladspa? ( media-plugins/cmt-plugins )
 	libxmp? ( media-libs/libxmp )
-	mad? (
-		media-libs/libmad
-		media-sound/mpg123
-	)
+	mad? ( media-libs/libmad )
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
+	mpg123? ( media-sound/mpg123 )
 	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
@@ -118,6 +116,7 @@ src_configure() {
 		-DUSE_MAD="$(usex mad)"
 		-DUSE_MIDI="$(usex midi)"
 		-DUSE_MMS="$(usex mms)"
+		-DUSE_MPG123="$(usex mpg123)"
 		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MPC="$(usex musepack)"
 		-DUSE_NOTIFIER="$(usex notifier)"
