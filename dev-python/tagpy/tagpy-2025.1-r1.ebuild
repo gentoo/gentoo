@@ -31,4 +31,9 @@ RDEPEND="
 	${DEPEND}
 "
 
+PATCHES=(
+	# https://github.com/palfrey/tagpy/pull/37
+	"${FILESDIR}"/${PN}-2025.1-fix-check-taglib.patch
+)
+
 distutils_enable_tests pytest

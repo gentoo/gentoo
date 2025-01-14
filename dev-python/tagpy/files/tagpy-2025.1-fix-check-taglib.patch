@@ -1,0 +1,23 @@
+https://github.com/palfrey/tagpy/commit/04d02c8b057a7dd8d760b1d184e8b48ec7301ff6.patch
+From f873d3587357166155d381c60aae0c450eb09b45 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Tue, 14 Jan 2025 00:52:34 +0100
+Subject: [PATCH] fix check version
+
+---
+ src/wrapper/common.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wrapper/common.hpp b/src/wrapper/common.hpp
+index 1a5be96..5c45a68 100644
+--- a/src/wrapper/common.hpp
++++ b/src/wrapper/common.hpp
+@@ -54,7 +54,7 @@ using namespace std;
+ 
+ #define TAGLIB_HEX_VERSION CHECK_VERSION(TAGLIB_MAJOR_VERSION, TAGLIB_MINOR_VERSION, TAGLIB_PATCH_VERSION)
+ 
+-#if CHECK_VERSION(1,9,0) < TAGLIB_HEX_VERSION
++#if TAGLIB_HEX_VERSION < CHECK_VERSION(1,9,0)
+ #warning !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ #warning TagPy is meant to wrap TagLib 1.9 and above.
+ #warning !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
