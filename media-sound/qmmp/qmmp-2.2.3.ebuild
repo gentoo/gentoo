@@ -56,8 +56,8 @@ RDEPEND="
 	ladspa? ( media-plugins/cmt-plugins )
 	libxmp? ( media-libs/libxmp )
 	mad? (
-		media-libs/libmad:=
-		media-sound/mpg123:=
+		media-libs/libmad
+		media-sound/mpg123
 	)
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
