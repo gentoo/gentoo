@@ -1,0 +1,2171 @@
+diff '--color=auto' -uNr a/include/id3/field.h b/include/id3/field.h
+--- a/include/id3/field.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/field.h	2025-01-30 14:01:53.586000891 -0000
+@@ -74,17 +74,17 @@
+   
+   // miscelaneous functions
+   virtual ID3_Field&    operator=( const ID3_Field & ) = 0;
+-  virtual bool          InScope(ID3_V2Spec spec) const = 0;
++  virtual my_bool          InScope(ID3_V2Spec spec) const = 0;
+ 
+   virtual ID3_FieldID   GetID() const = 0;
+   virtual ID3_FieldType GetType() const = 0;
+-  virtual bool          SetEncoding(ID3_TextEnc enc) = 0;
++  virtual my_bool          SetEncoding(ID3_TextEnc enc) = 0;
+   virtual ID3_TextEnc   GetEncoding() const = 0;
+-  virtual bool          IsEncodable() const = 0;
++  virtual my_bool          IsEncodable() const = 0;
+ 
+   virtual void          Render(ID3_Writer&) const = 0;
+-  virtual bool          Parse(ID3_Reader&) = 0;
+-  virtual bool          HasChanged() const = 0;
++  virtual my_bool          Parse(ID3_Reader&) = 0;
++  virtual my_bool          HasChanged() const = 0;
+ 
+ protected:
+   virtual ~ID3_Field() { };
+diff '--color=auto' -uNr a/include/id3/globals.h b/include/id3/globals.h
+--- a/include/id3/globals.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/globals.h	2025-01-30 14:01:53.586000891 -0000
+@@ -82,13 +82,13 @@
+ 
+ #define ID3_C_VAR extern
+ 
+-#ifndef __cplusplus
++// #ifndef __cplusplus. Use my_bool everywhere
+ 
+-typedef int bool;
++typedef int my_bool;
+ #  define false (0)
+ #  define true (!false)
+ 
+-#endif /* __cplusplus */
++//#endif /* __cplusplus */
+ 
+ ID3_C_VAR const char * const ID3LIB_NAME;
+ ID3_C_VAR const char * const ID3LIB_RELEASE;
+@@ -532,9 +532,9 @@
+   uint32 framesize;
+   uint32 frames;                // nr of frames
+   uint32 time;                  // nr of seconds in song
+-  bool privatebit;
+-  bool copyrighted;
+-  bool original;
++  my_bool privatebit;
++  my_bool copyrighted;
++  my_bool original;
+ };
+ 
+ #define ID3_NR_OF_V1_GENRES 148
+diff '--color=auto' -uNr a/include/id3/id3lib_bitset b/include/id3/id3lib_bitset
+--- a/include/id3/id3lib_bitset	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/id3lib_bitset	2025-01-30 14:01:53.586000891 -0000
+@@ -52,14 +52,14 @@
+ #endif
+ 
+ // structure to aid in counting bits
+-template<bool __dummy>
++template<my_bool __dummy>
+ struct _Bit_count {
+   static unsigned char _S_bit_count[256];
+ };
+ 
+ // Mapping from 8 bit unsigned integers to the index of the first one
+ // bit:
+-template<bool __dummy>
++template<my_bool __dummy>
+ struct _First_one {
+   static unsigned char _S_first_one[256];
+ };
+@@ -135,7 +135,7 @@
+     }
+   }
+ 
+-  bool _M_is_equal(const _Base_bitset<_Nw,_WordT>& __x) const {
++  my_bool _M_is_equal(const _Base_bitset<_Nw,_WordT>& __x) const {
+     for (size_t __i = 0; __i < _Nw; ++__i) {
+       if (_M_w[__i] != __x._M_w[__i])
+         return false;
+@@ -143,7 +143,7 @@
+     return true;
+   }
+ 
+-  bool _M_is_any() const {
++  my_bool _M_is_any() const {
+     for ( size_t __i = 0; __i < __BITSET_WORDS(_Nw,_WordT); __i++ ) {
+       if ( _M_w[__i] != static_cast<_WordT>(0) )
+         return true;
+@@ -390,10 +390,10 @@
+   void _M_do_set()                        { _M_w = ~static_cast<_WordT>(0); }
+   void _M_do_reset()                      { _M_w = 0; }
+ 
+-  bool _M_is_equal(const _Base_bitset<1,_WordT>& __x) const {
++  my_bool _M_is_equal(const _Base_bitset<1,_WordT>& __x) const {
+     return _M_w == __x._M_w;
+   }
+-  bool _M_is_any() const {
++  my_bool _M_is_any() const {
+     return _M_w != 0;
+   }
+ 
+@@ -589,7 +589,7 @@
+     ~reference() {}
+ 
+     // for b[i] = __x;
+-    reference& operator=(bool __x) {
++    reference& operator=(my_bool __x) {
+       if ( __x )
+         *_M_wp |= _S_maskbit(_M_bpos);
+       else
+@@ -609,10 +609,10 @@
+     }
+ 
+     // flips the bit
+-    bool operator~() const { return (*(_M_wp) & _S_maskbit(_M_bpos)) == 0; }
++    my_bool operator~() const { return (*(_M_wp) & _S_maskbit(_M_bpos)) == 0; }
+ 
+     // for __x = b[i];
+-    operator bool() const { return (*(_M_wp) & _S_maskbit(_M_bpos)) != 0; }
++    operator my_bool() const { return (*(_M_wp) & _S_maskbit(_M_bpos)) != 0; }
+ 
+     // for b[i].flip();
+     reference& flip() {
+@@ -694,7 +694,7 @@
+     return *this;
+   }
+ 
+-  bool _Unchecked_test(size_t __pos) const {
++  my_bool _Unchecked_test(size_t __pos) const {
+     return (_M_getword(__pos) & _S_maskbit(__pos)) != static_cast<_WordT>(0);
+   }
+ 
+@@ -752,7 +752,7 @@
+   // element access:
+   //for b[i];
+   reference operator[](size_t __pos) { return reference(*this,__pos); }
+-  bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
++  my_bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
+ 
+   unsigned long to_ulong() const { return _M_do_to_ulong(); }
+ 
+@@ -779,22 +779,22 @@
+ 
+   size_t size() const { return _Nb; }
+ 
+-  bool operator==(const bitset<_Nb,_WordT>& __rhs) const {
++  my_bool operator==(const bitset<_Nb,_WordT>& __rhs) const {
+     return _M_is_equal(__rhs);
+   }
+-  bool operator!=(const bitset<_Nb,_WordT>& __rhs) const {
++  my_bool operator!=(const bitset<_Nb,_WordT>& __rhs) const {
+     return !_M_is_equal(__rhs);
+   }
+ 
+-  bool test(size_t __pos) const {
++  my_bool test(size_t __pos) const {
+     if (__pos > _Nb)
+       __STL_THROW(out_of_range("bitset"));
+ 
+     return _Unchecked_test(__pos);
+   }
+ 
+-  bool any() const { return _M_is_any(); }
+-  bool none() const { return !_M_is_any(); }
++  my_bool any() const { return _M_is_any(); }
++  my_bool none() const { return !_M_is_any(); }
+ 
+   bitset<_Nb,_WordT> operator<<(size_t __pos) const
+     { return bitset<_Nb,_WordT>(*this) <<= __pos; }
+@@ -936,7 +936,7 @@
+ // ------------------------------------------------------------
+ // Lookup tables for find and count operations.
+ 
+-template<bool __dummy>
++template<my_bool __dummy>
+ unsigned char _Bit_count<__dummy>::_S_bit_count[] = {
+   0, /*   0 */ 1, /*   1 */ 1, /*   2 */ 2, /*   3 */ 1, /*   4 */
+   2, /*   5 */ 2, /*   6 */ 3, /*   7 */ 1, /*   8 */ 2, /*   9 */
+@@ -992,7 +992,7 @@
+   8  /* 255 */
+ }; // end _Bit_count
+ 
+-template<bool __dummy>
++template<my_bool __dummy>
+ unsigned char _First_one<__dummy>::_S_first_one[] = {
+   0, /*   0 */ 0, /*   1 */ 1, /*   2 */ 0, /*   3 */ 2, /*   4 */
+   0, /*   5 */ 1, /*   6 */ 0, /*   7 */ 3, /*   8 */ 0, /*   9 */
+diff '--color=auto' -uNr a/include/id3/id3lib_frame.h b/include/id3/id3lib_frame.h
+--- a/include/id3/id3lib_frame.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/id3lib_frame.h	2025-01-30 14:01:53.586000891 -0000
+@@ -60,7 +60,7 @@
+   
+   void        Clear();
+ 
+-  bool        SetID(ID3_FrameID id);
++  my_bool        SetID(ID3_FrameID id);
+   ID3_FrameID GetID() const;
+   
+   ID3_Field*  GetField(ID3_FieldID name) const;
+@@ -73,22 +73,22 @@
+   const char* GetTextID() const;
+ 
+   ID3_Frame&  operator=(const ID3_Frame &);
+-  bool        HasChanged() const;
+-  bool        Parse(ID3_Reader&);
++  my_bool        HasChanged() const;
++  my_bool        Parse(ID3_Reader&);
+   void        Render(ID3_Writer&) const;
+   size_t      Size();
+-  bool        Contains(ID3_FieldID fld) const;
+-  bool        SetSpec(ID3_V2Spec);
++  my_bool        Contains(ID3_FieldID fld) const;
++  my_bool        SetSpec(ID3_V2Spec);
+   ID3_V2Spec  GetSpec() const;
+ 
+-  bool        SetCompression(bool b);
+-  bool        GetCompression() const;
++  my_bool        SetCompression(my_bool b);
++  my_bool        GetCompression() const;
+   size_t      GetDataSize() const;
+ 
+-  bool        SetEncryptionID(uchar id);
++  my_bool        SetEncryptionID(uchar id);
+   uchar       GetEncryptionID() const;
+   
+-  bool        SetGroupingID(uchar id);
++  my_bool        SetGroupingID(uchar id);
+   uchar       GetGroupingID() const;
+ 
+   Iterator*  CreateIterator();
+diff '--color=auto' -uNr a/include/id3/id3lib_strings.h b/include/id3/id3lib_strings.h
+--- a/include/id3/id3lib_strings.h	2025-01-30 14:02:28.857444340 -0000
++++ b/include/id3/id3lib_strings.h	2025-01-30 14:01:53.586000891 -0000
+@@ -49,11 +49,11 @@
+       assign(char_type& __c1, const char_type& __c2)
+       { __c1 = __c2; }
+ 
+-      static bool
++      static my_bool
+       eq(const char_type& __c1, const char_type& __c2)
+       { return __c1 == __c2; }
+ 
+-      static bool
++      static my_bool
+       lt(const char_type& __c1, const char_type& __c2)
+       { return __c1 < __c2; }
+ 
+@@ -106,7 +106,7 @@
+       static int_type
+       to_int_type(const char_type& __c) { return int_type(); }
+ 
+-      static bool
++      static my_bool
+       eq_int_type(const int_type& __c1, const int_type& __c2)
+       { return __c1 == __c2; }
+ 
+@@ -133,11 +133,11 @@
+        assign(char_type& __c1, const char_type& __c2)
+        { __c1 = __c2; }
+  
+-       static bool 
++       static my_bool 
+        eq(const char_type& __c1, const char_type& __c2)
+        { return __c1 == __c2; }
+  
+-       static bool 
++       static my_bool 
+        lt(const char_type& __c1, const char_type& __c2)
+        { return __c1 < __c2; }
+  
+@@ -171,7 +171,7 @@
+        static int_type 
+        to_int_type(const char_type& __c) { return int_type(__c); }
+  
+-       static bool 
++       static my_bool 
+        eq_int_type(const int_type& __c1, const int_type& __c2)
+        { return __c1 == __c2; }
+  
+diff '--color=auto' -uNr a/include/id3/io_decorators.h b/include/id3/io_decorators.h
+--- a/include/id3/io_decorators.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/io_decorators.h	2025-01-30 14:01:53.586000891 -0000
+@@ -47,7 +47,7 @@
+       ID3_Reader& _reader;
+       pos_type _beg, _end;
+ 
+-      bool inWindow(pos_type cur) 
++      my_bool inWindow(pos_type cur) 
+       { return this->getBeg() <= cur && cur < this->getEnd(); }
+ 
+      public:
+@@ -75,7 +75,7 @@
+       pos_type getBeg() { return _beg; }
+       pos_type getEnd() { return _end; }
+ 
+-      bool inWindow() { return this->inWindow(this->getCur()); }
++      my_bool inWindow() { return this->inWindow(this->getCur()); }
+ 
+       int_type readChar();
+       int_type peekChar();
+diff '--color=auto' -uNr a/include/id3/io_helpers.h b/include/id3/io_helpers.h
+--- a/include/id3/io_helpers.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/io_helpers.h	2025-01-30 14:01:53.586000891 -0000
+@@ -42,7 +42,7 @@
+     {
+       ID3_Reader& _reader;
+       ID3_Reader::pos_type _pos;
+-      bool _locked;
++      my_bool _locked;
+      public:
+       ExitTrigger(ID3_Reader& rdr) 
+         : _reader(rdr), _pos(rdr.getCur()), _locked(true)
+@@ -70,8 +70,8 @@
+ 
+     ID3_C_EXPORT size_t      writeString(ID3_Writer&, String);
+     ID3_C_EXPORT size_t      writeText(ID3_Writer&, String);
+-    ID3_C_EXPORT size_t      writeUnicodeString(ID3_Writer&, String, bool = true);
+-    ID3_C_EXPORT size_t      writeUnicodeText(ID3_Writer&, String, bool = true);
++    ID3_C_EXPORT size_t      writeUnicodeString(ID3_Writer&, String, my_bool = true);
++    ID3_C_EXPORT size_t      writeUnicodeText(ID3_Writer&, String, my_bool = true);
+     ID3_C_EXPORT size_t      writeBENumber(ID3_Writer&, uint32 val, size_t);
+     ID3_C_EXPORT size_t      writeTrailingSpaces(ID3_Writer&, String, size_t);
+     ID3_C_EXPORT size_t      writeUInt28(ID3_Writer&, uint32);
+diff '--color=auto' -uNr a/include/id3/io_strings.h b/include/id3/io_strings.h
+--- a/include/id3/io_strings.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/io_strings.h	2025-01-30 14:01:53.586000891 -0000
+@@ -97,7 +97,7 @@
+         return _cur;
+       }
+ 
+-      virtual bool atEnd()
++      virtual my_bool atEnd()
+       {
+         return _cur >= _string.size();
+       }
+@@ -167,7 +167,7 @@
+         return _cur;
+       }
+ 
+-      virtual bool atEnd()
++      virtual my_bool atEnd()
+       {
+         return _cur >= _string.size();
+       }
+diff '--color=auto' -uNr a/include/id3/misc_support.h b/include/id3/misc_support.h
+--- a/include/id3/misc_support.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/misc_support.h	2025-01-30 14:01:53.586000891 -0000
+@@ -40,63 +40,63 @@
+ // these are 'convenience functions,' to make using the library easier for the
+ // most common of operations
+ ID3_C_EXPORT char*      ID3_GetArtist(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddArtist(ID3_Tag*, const char*, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddArtist(ID3_Tag*, const char*, my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveArtists(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetAlbum(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddAlbum(ID3_Tag*, const char*, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddAlbum(ID3_Tag*, const char*, my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveAlbums(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetTitle(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddTitle(ID3_Tag*, const char*, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddTitle(ID3_Tag*, const char*, my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveTitles(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetYear(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddYear(ID3_Tag*, const char*, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddYear(ID3_Tag*, const char*, my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveYears(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetComment(const ID3_Tag*, const char* desc = NULL);
+-ID3_C_EXPORT ID3_Frame* ID3_AddComment(ID3_Tag*, const char*, bool = false);
+-ID3_C_EXPORT ID3_Frame* ID3_AddComment(ID3_Tag*, const char*, const char*, bool = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddComment(ID3_Tag*, const char*, my_bool = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddComment(ID3_Tag*, const char*, const char*, my_bool = false);
+ ID3_C_EXPORT ID3_Frame* ID3_AddComment(ID3_Tag*, const char*, const char*, const char*,
+-                                       bool = false);
++                                       my_bool = false);
+ ID3_C_EXPORT size_t     ID3_RemoveComments(ID3_Tag*, const char * = NULL);
+ 
+ ID3_C_EXPORT char*      ID3_GetTrack(const ID3_Tag*);
+ ID3_C_EXPORT size_t     ID3_GetTrackNum(const ID3_Tag*);
+ //following routine courtesy of John George
+ ID3_C_EXPORT ID3_Frame* ID3_AddTrack(ID3_Tag*, uchar ucTrack, uchar ucTotal = 0,
+-                                     bool replace = false);
++                                     my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveTracks(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetGenre(const ID3_Tag*);
+ ID3_C_EXPORT size_t     ID3_GetGenreNum(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddGenre(ID3_Tag*, size_t ucGenre, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddGenre(ID3_Tag*, size_t ucGenre, my_bool replace = false);
+ //following routine courtesy of John George
+-ID3_C_EXPORT ID3_Frame* ID3_AddGenre(ID3_Tag*, const char *, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddGenre(ID3_Tag*, const char *, my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveGenres(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetLyrics(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddLyrics(ID3_Tag*, const char*, bool = false);
+-ID3_C_EXPORT ID3_Frame* ID3_AddLyrics(ID3_Tag*, const char*, const char*, bool = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddLyrics(ID3_Tag*, const char*, my_bool = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddLyrics(ID3_Tag*, const char*, const char*, my_bool = false);
+ ID3_C_EXPORT ID3_Frame* ID3_AddLyrics(ID3_Tag*, const char*, const char*, const char*,
+-                                      bool = false);
++                                      my_bool = false);
+ ID3_C_EXPORT size_t     ID3_RemoveLyrics(ID3_Tag*);
+ 
+ ID3_C_EXPORT char*      ID3_GetLyricist(const ID3_Tag*);
+-ID3_C_EXPORT ID3_Frame* ID3_AddLyricist(ID3_Tag *, const char *, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddLyricist(ID3_Tag *, const char *, my_bool replace = false);
+ ID3_C_EXPORT size_t     ID3_RemoveLyricist(ID3_Tag*);
+ 
+ ID3_C_EXPORT ID3_Frame* ID3_AddSyncLyrics(ID3_Tag*, const uchar*, size_t,
+-                                          ID3_TimeStampFormat, bool = false);
++                                          ID3_TimeStampFormat, my_bool = false);
+ ID3_C_EXPORT ID3_Frame* ID3_AddSyncLyrics(ID3_Tag*, const uchar*, size_t,
+-                                          ID3_TimeStampFormat, const char *, bool = false);
++                                          ID3_TimeStampFormat, const char *, my_bool = false);
+ ID3_C_EXPORT ID3_Frame* ID3_AddSyncLyrics(ID3_Tag*, const uchar*, size_t,
+                                           ID3_TimeStampFormat, const char *, const char *,
+-                                          bool = false);
++                                          my_bool = false);
+ ID3_C_EXPORT ID3_Frame* ID3_AddSyncLyrics(ID3_Tag*, const uchar*, size_t,
+                                           ID3_TimeStampFormat, const char *, const char *,
+-                                          ID3_ContentType, bool = false);
++                                          ID3_ContentType, my_bool = false);
+ ID3_C_EXPORT ID3_Frame* ID3_GetSyncLyricsInfo(const ID3_Tag *tag, const char *lang,
+                                               const char *desc, char &stampformat,
+                                               char &type, size_t &size);
+@@ -111,11 +111,11 @@
+ ID3_C_EXPORT char* ID3_GetPictureMimeType(const ID3_Tag*);
+ 
+ //following routine courtesy of John George
+-ID3_C_EXPORT bool ID3_HasPicture(const ID3_Tag*);
++ID3_C_EXPORT my_bool ID3_HasPicture(const ID3_Tag*);
+ 
+ //following two routines courtesy of John George
+-ID3_C_EXPORT ID3_Frame* ID3_AddPicture(ID3_Tag*, const char* TempPicPath, const char* MimeType, bool replace = false);
+-ID3_C_EXPORT ID3_Frame* ID3_AddPicture(ID3_Tag*, const char* TempPicPath, const char* MimeType, ID3_PictureType pictype, const char* Description, bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddPicture(ID3_Tag*, const char* TempPicPath, const char* MimeType, my_bool replace = false);
++ID3_C_EXPORT ID3_Frame* ID3_AddPicture(ID3_Tag*, const char* TempPicPath, const char* MimeType, ID3_PictureType pictype, const char* Description, my_bool replace = false);
+ 
+ //following routine courtesy of John George
+ ID3_C_EXPORT size_t ID3_RemovePictures(ID3_Tag*);
+diff '--color=auto' -uNr a/include/id3/reader.h b/include/id3/reader.h
+--- a/include/id3/reader.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/reader.h	2025-01-30 14:01:53.586000891 -0000
+@@ -122,7 +122,7 @@
+     return 0;
+   }
+   
+-  virtual bool atEnd() { return this->getCur() >= this->getEnd(); }
++  virtual my_bool atEnd() { return this->getCur() >= this->getEnd(); }
+ };
+ 
+ #endif /* _ID3LIB_READER_H_ */
+diff '--color=auto' -uNr a/include/id3/tag.h b/include/id3/tag.h
+--- a/include/id3/tag.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/tag.h	2025-01-30 14:01:53.586000891 -0000
+@@ -63,26 +63,26 @@
+   virtual ~ID3_Tag();
+ 
+   void       Clear();
+-  bool       HasChanged() const;
++  my_bool       HasChanged() const;
+   size_t     Size() const;
+ 
+-  bool       SetUnsync(bool);
+-  bool       SetExtendedHeader(bool);
+-  bool       SetExperimental(bool);
+-
+-  bool       GetUnsync() const;
+-  bool       GetExtendedHeader() const;
+-  bool       GetExperimental() const;
++  my_bool       SetUnsync(my_bool);
++  my_bool       SetExtendedHeader(my_bool);
++  my_bool       SetExperimental(my_bool);
++
++  my_bool       GetUnsync() const;
++  my_bool       GetExtendedHeader() const;
++  my_bool       GetExperimental() const;
+ 
+-  bool       SetPadding(bool);
++  my_bool       SetPadding(my_bool);
+ 
+   void       AddFrame(const ID3_Frame&);
+   void       AddFrame(const ID3_Frame*);
+-  bool       AttachFrame(ID3_Frame*);
++  my_bool       AttachFrame(ID3_Frame*);
+   ID3_Frame* RemoveFrame(const ID3_Frame *);
+ 
+   size_t     Parse(const uchar*, size_t);
+-  bool       Parse(ID3_Reader& reader);
++  my_bool       Parse(ID3_Reader& reader);
+   size_t     Render(uchar*, ID3_TagType = ID3TT_ID3V2) const;
+   size_t     Render(ID3_Writer&, ID3_TagType = ID3TT_ID3V2) const;
+ 
+@@ -110,21 +110,21 @@
+ 
+   ID3_Tag&   operator=( const ID3_Tag & );
+ 
+-  bool       HasTagType(ID3_TagType tt) const;
++  my_bool       HasTagType(ID3_TagType tt) const;
+   ID3_V2Spec GetSpec() const;
+-  bool       SetSpec(ID3_V2Spec);
++  my_bool       SetSpec(ID3_V2Spec);
+ 
+   static size_t IsV2Tag(const uchar*);
+   static size_t IsV2Tag(ID3_Reader&);
+ 
+   /* Deprecated! */
+   void       AddNewFrame(ID3_Frame* f);
+-  size_t     Link(const char *fileInfo, bool parseID3v1, bool parseLyrics3);
+-  void       SetCompression(bool);
++  size_t     Link(const char *fileInfo, my_bool parseID3v1, my_bool parseLyrics3);
++  void       SetCompression(my_bool);
+   void       AddFrames(const ID3_Frame *, size_t);
+-  bool       HasLyrics() const;
+-  bool       HasV2Tag()  const;
+-  bool       HasV1Tag()  const;
++  my_bool       HasLyrics() const;
++  my_bool       HasV2Tag()  const;
++  my_bool       HasV1Tag()  const;
+   size_t     Parse(const uchar header[ID3_TAGHEADERSIZE], const uchar *buffer);
+   //ID3_Frame* operator[](size_t) const;
+   //ID3_Frame* GetFrameNum(size_t) const;
+diff '--color=auto' -uNr a/include/id3/writer.h b/include/id3/writer.h
+--- a/include/id3/writer.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3/writer.h	2025-01-30 14:01:53.586000891 -0000
+@@ -89,7 +89,7 @@
+     return this->writeChars(reinterpret_cast<const char_type *>(buf), len);
+   }
+ 
+-  virtual bool atEnd()
++  virtual my_bool atEnd()
+   {
+     return this->getCur() >= this->getEnd();
+   }
+diff '--color=auto' -uNr a/include/id3.h b/include/id3.h
+--- a/include/id3.h	2003-03-02 00:23:00.000000000 -0000
++++ b/include/id3.h	2025-01-30 14:01:53.586000891 -0000
+@@ -47,12 +47,12 @@
+   ID3_C_EXPORT ID3Tag*              CCONV ID3Tag_New                  (void);
+   ID3_C_EXPORT void                 CCONV ID3Tag_Delete               (ID3Tag *tag);
+   ID3_C_EXPORT void                 CCONV ID3Tag_Clear                (ID3Tag *tag);
+-  ID3_C_EXPORT bool                 CCONV ID3Tag_HasChanged           (const ID3Tag *tag);
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetUnsync            (ID3Tag *tag, bool unsync);
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetExtendedHeader    (ID3Tag *tag, bool ext);
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetPadding           (ID3Tag *tag, bool pad);
++  ID3_C_EXPORT my_bool                 CCONV ID3Tag_HasChanged           (const ID3Tag *tag);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetUnsync            (ID3Tag *tag, my_bool unsync);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetExtendedHeader    (ID3Tag *tag, my_bool ext);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetPadding           (ID3Tag *tag, my_bool pad);
+   ID3_C_EXPORT void                 CCONV ID3Tag_AddFrame             (ID3Tag *tag, const ID3Frame *frame);
+-  ID3_C_EXPORT bool                 CCONV ID3Tag_AttachFrame          (ID3Tag *tag, ID3Frame *frame);
++  ID3_C_EXPORT my_bool                 CCONV ID3Tag_AttachFrame          (ID3Tag *tag, ID3Frame *frame);
+   ID3_C_EXPORT void                 CCONV ID3Tag_AddFrames            (ID3Tag *tag, const ID3Frame *frames, size_t num);
+   ID3_C_EXPORT ID3Frame*            CCONV ID3Tag_RemoveFrame          (ID3Tag *tag, const ID3Frame *frame);
+   ID3_C_EXPORT ID3_Err              CCONV ID3Tag_Parse                (ID3Tag *tag, const uchar header[ID3_TAGHEADERSIZE], const uchar *buffer);
+@@ -66,7 +66,7 @@
+   ID3_C_EXPORT ID3Frame*            CCONV ID3Tag_FindFrameWithASCII   (const ID3Tag *tag, ID3_FrameID id, ID3_FieldID fld, const char *data);
+   ID3_C_EXPORT ID3Frame*            CCONV ID3Tag_FindFrameWithUNICODE (const ID3Tag *tag, ID3_FrameID id, ID3_FieldID fld, const unicode_t *data);
+   ID3_C_EXPORT size_t               CCONV ID3Tag_NumFrames            (const ID3Tag *tag);
+-  ID3_C_EXPORT bool                 CCONV ID3Tag_HasTagType           (const ID3Tag *tag, ID3_TagType);
++  ID3_C_EXPORT my_bool                 CCONV ID3Tag_HasTagType           (const ID3Tag *tag, ID3_TagType);
+   ID3_C_EXPORT ID3TagIterator*      CCONV ID3Tag_CreateIterator       (ID3Tag *tag);
+   ID3_C_EXPORT ID3TagConstIterator* CCONV ID3Tag_CreateConstIterator  (const ID3Tag *tag);
+ 
+@@ -83,8 +83,8 @@
+   ID3_C_EXPORT void                 CCONV ID3Frame_SetID              (ID3Frame *frame, ID3_FrameID id);
+   ID3_C_EXPORT ID3_FrameID          CCONV ID3Frame_GetID              (const ID3Frame *frame);
+   ID3_C_EXPORT ID3Field*            CCONV ID3Frame_GetField           (const ID3Frame *frame, ID3_FieldID name);
+-  ID3_C_EXPORT void                 CCONV ID3Frame_SetCompression     (ID3Frame *frame, bool comp);
+-  ID3_C_EXPORT bool                 CCONV ID3Frame_GetCompression     (const ID3Frame *frame);
++  ID3_C_EXPORT void                 CCONV ID3Frame_SetCompression     (ID3Frame *frame, my_bool comp);
++  ID3_C_EXPORT my_bool                 CCONV ID3Frame_GetCompression     (const ID3Frame *frame);
+ 
+   /* field wrappers */
+   ID3_C_EXPORT void                 CCONV ID3Field_Clear              (ID3Field *field);
+@@ -116,7 +116,7 @@
+   ID3_C_EXPORT flags_t              CCONV ID3FrameInfo_FieldFlags     (ID3_FrameID frameid, int fieldnum);
+ 
+   /* Deprecated */
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetCompression       (ID3Tag *tag, bool comp);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetCompression       (ID3Tag *tag, my_bool comp);
+ 
+ #ifdef __cplusplus
+ }
+diff '--color=auto' -uNr a/src/c_wrapper.cpp b/src/c_wrapper.cpp
+--- a/src/c_wrapper.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/c_wrapper.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -72,10 +72,10 @@
+   }
+ 
+ 
+-  ID3_C_EXPORT bool CCONV
++  ID3_C_EXPORT my_bool CCONV
+   ID3Tag_HasChanged(const ID3Tag *tag)
+   {
+-    bool changed = false;
++    my_bool changed = false;
+ 
+     if (tag)
+     {
+@@ -87,7 +87,7 @@
+ 
+ 
+   ID3_C_EXPORT void CCONV
+-  ID3Tag_SetUnsync(ID3Tag *tag, bool unsync)
++  ID3Tag_SetUnsync(ID3Tag *tag, my_bool unsync)
+   {
+     if (tag)
+     {
+@@ -97,7 +97,7 @@
+ 
+ 
+   ID3_C_EXPORT void CCONV
+-  ID3Tag_SetExtendedHeader(ID3Tag *tag, bool ext)
++  ID3Tag_SetExtendedHeader(ID3Tag *tag, my_bool ext)
+   {
+     if (tag)
+     {
+@@ -106,7 +106,7 @@
+   }
+ 
+   ID3_C_EXPORT void CCONV
+-  ID3Tag_SetPadding(ID3Tag *tag, bool pad)
++  ID3Tag_SetPadding(ID3Tag *tag, my_bool pad)
+   {
+     if (tag)
+     {
+@@ -125,10 +125,10 @@
+   }
+ 
+ 
+-  ID3_C_EXPORT bool CCONV
++  ID3_C_EXPORT my_bool CCONV
+   ID3Tag_AttachFrame(ID3Tag *tag, ID3Frame *frame)
+   {
+-    bool b = false;
++    my_bool b = false;
+     if (tag)
+     {
+       ID3_CATCH(b = reinterpret_cast<ID3_Tag *>(tag)->AttachFrame(reinterpret_cast<ID3_Frame *>(frame)));
+@@ -303,10 +303,10 @@
+   }
+ 
+ 
+-  ID3_C_EXPORT bool CCONV
++  ID3_C_EXPORT my_bool CCONV
+   ID3Tag_HasTagType(const ID3Tag *tag, ID3_TagType tt)
+   {
+-    bool has_tt = false;
++    my_bool has_tt = false;
+ 
+     if (tag)
+     {
+@@ -459,7 +459,7 @@
+ 
+ 
+   ID3_C_EXPORT void CCONV
+-  ID3Frame_SetCompression(ID3Frame *frame, bool comp)
++  ID3Frame_SetCompression(ID3Frame *frame, my_bool comp)
+   {
+     if (frame)
+     {
+@@ -468,10 +468,10 @@
+   }
+ 
+ 
+-  ID3_C_EXPORT bool CCONV
++  ID3_C_EXPORT my_bool CCONV
+   ID3Frame_GetCompression(const ID3Frame *frame)
+   {
+-    bool compressed = false;
++    my_bool compressed = false;
+     if (frame)
+     {
+       ID3_CATCH(compressed = reinterpret_cast<const ID3_Frame *>(frame)->GetCompression());
+diff '--color=auto' -uNr a/src/field.cpp b/src/field.cpp
+--- a/src/field.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/field.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -964,7 +964,7 @@
+   return ;
+ }
+ 
+-bool
++my_bool
+ ID3_FieldImpl::HasChanged() const
+ {
+   return _changed;
+@@ -1040,9 +1040,9 @@
+   return size;
+ }
+ 
+-bool ID3_FieldImpl::Parse(ID3_Reader& reader)
++my_bool ID3_FieldImpl::Parse(ID3_Reader& reader)
+ {
+-  bool success = false;
++  my_bool success = false;
+   switch (this->GetType())
+   {
+     case ID3FTY_INTEGER:
+@@ -1172,9 +1172,9 @@
+   return *this;
+ }
+ 
+-bool ID3_FieldImpl::SetEncoding(ID3_TextEnc enc)
++my_bool ID3_FieldImpl::SetEncoding(ID3_TextEnc enc)
+ {
+-  bool changed = this->IsEncodable() && (enc != this->GetEncoding()) &&
++  my_bool changed = this->IsEncodable() && (enc != this->GetEncoding()) &&
+     (ID3TE_NONE < enc && enc < ID3TE_NUMENCODINGS);
+   if (changed)
+   {
+diff '--color=auto' -uNr a/src/field_binary.cpp b/src/field_binary.cpp
+--- a/src/field_binary.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/field_binary.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -192,7 +192,7 @@
+ }
+ 
+ 
+-bool ID3_FieldImpl::ParseBinary(ID3_Reader& reader)
++my_bool ID3_FieldImpl::ParseBinary(ID3_Reader& reader)
+ {
+   // copy the remaining bytes, unless we're fixed length, in which case copy
+   // the minimum of the remaining bytes vs. the fixed length
+diff '--color=auto' -uNr a/src/field_impl.h b/src/field_impl.h
+--- a/src/field_impl.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/field_impl.h	2025-01-30 14:01:53.586000891 -0000
+@@ -96,19 +96,19 @@
+ 
+   // miscelaneous functions
+   ID3_Field&    operator=( const ID3_Field & );
+-  bool          InScope(ID3_V2Spec spec) const
++  my_bool          InScope(ID3_V2Spec spec) const
+   { return _spec_begin <= spec && spec <= _spec_end; }
+ 
+   ID3_FieldID   GetID() const { return _id; }
+   ID3_FieldType GetType() const { return _type; }
+-  bool          SetEncoding(ID3_TextEnc enc);
++  my_bool          SetEncoding(ID3_TextEnc enc);
+   ID3_TextEnc   GetEncoding() const { return _enc; }
+-  bool          IsEncodable() const { return (_flags & ID3FF_ENCODABLE) > 0; }
++  my_bool          IsEncodable() const { return (_flags & ID3FF_ENCODABLE) > 0; }
+   
+ 
+   void          Render(ID3_Writer&) const;
+-  bool          Parse(ID3_Reader&);
+-  bool          HasChanged() const;
++  my_bool          Parse(ID3_Reader&);
++  my_bool          HasChanged() const;
+ 
+ private:
+   size_t        SetText_i(dami::String);
+@@ -124,7 +124,7 @@
+   const ID3_V2Spec    _spec_begin;  // spec end
+   const ID3_V2Spec    _spec_end;    // spec begin
+   const flags_t       _flags;       // special field flags
+-  mutable bool        _changed;     // field changed since last parse/render?
++  mutable my_bool        _changed;     // field changed since last parse/render?
+ 
+   dami::BString       _binary;      // for binary strings
+   dami::String        _text;        // for ascii strings
+@@ -138,9 +138,9 @@
+   void RenderText(ID3_Writer&) const;
+   void RenderBinary(ID3_Writer&) const;
+   
+-  bool ParseInteger(ID3_Reader&);
+-  bool ParseText(ID3_Reader&);
+-  bool ParseBinary(ID3_Reader&);
++  my_bool ParseInteger(ID3_Reader&);
++  my_bool ParseText(ID3_Reader&);
++  my_bool ParseBinary(ID3_Reader&);
+   
+ };
+ 
+diff '--color=auto' -uNr a/src/field_integer.cpp b/src/field_integer.cpp
+--- a/src/field_integer.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/field_integer.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -84,12 +84,12 @@
+   return val;
+ }
+ 
+-bool ID3_FieldImpl::ParseInteger(ID3_Reader& reader)
++my_bool ID3_FieldImpl::ParseInteger(ID3_Reader& reader)
+ {
+   ID3D_NOTICE( "ID3_FieldImpl::ParseInteger(): beg = " << reader.getBeg() );
+   ID3D_NOTICE( "ID3_FieldImpl::ParseInteger(): cur = " << reader.getCur() );
+   ID3D_NOTICE( "ID3_FieldImpl::ParseInteger(): end = " << reader.getEnd() );
+-  bool success = false;
++  my_bool success = false;
+   if (!reader.atEnd())
+   {
+     this->Clear();
+diff '--color=auto' -uNr a/src/field_string_ascii.cpp b/src/field_string_ascii.cpp
+--- a/src/field_string_ascii.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/field_string_ascii.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -324,7 +324,7 @@
+   }
+ }
+ 
+-bool ID3_FieldImpl::ParseText(ID3_Reader& reader)
++my_bool ID3_FieldImpl::ParseText(ID3_Reader& reader)
+ {
+   ID3D_NOTICE( "ID3_Field::ParseText(): reader.getBeg() = " << reader.getBeg() );
+   ID3D_NOTICE( "ID3_Field::ParseText(): reader.getCur() = " << reader.getCur() );
+diff '--color=auto' -uNr a/src/flags.h b/src/flags.h
+--- a/src/flags.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/flags.h	2025-01-30 14:01:53.586000891 -0000
+@@ -39,12 +39,12 @@
+   virtual ~ID3_Flags() { ; }
+ 
+   TYPE   get() const         { return _f; }
+-  bool   test(TYPE f) const { return (this->get() & f) == f; }
+-  bool   set(TYPE f)        { bool r = (_f != f); _f = f; return r; }
+-  bool   add(TYPE f)        { return this->set(this->get() | f); }
+-  bool   remove(TYPE f)     { return this->set(this->get() & ~f); }
+-  bool   clear()             { return this->set(0); }
+-  bool   set(TYPE f, bool b){ if (b) return this->add(f); return this->remove(f); }
++  my_bool   test(TYPE f) const { return (this->get() & f) == f; }
++  my_bool   set(TYPE f)        { my_bool r = (_f != f); _f = f; return r; }
++  my_bool   add(TYPE f)        { return this->set(this->get() | f); }
++  my_bool   remove(TYPE f)     { return this->set(this->get() & ~f); }
++  my_bool   clear()             { return this->set(0); }
++  my_bool   set(TYPE f, my_bool b){ if (b) return this->add(f); return this->remove(f); }
+ 
+   ID3_Flags& operator=(const ID3_Flags& f)
+   { if (this != &f) { this->set(f.get()); } return *this; }
+diff '--color=auto' -uNr a/src/frame.cpp b/src/frame.cpp
+--- a/src/frame.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/frame.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -113,12 +113,12 @@
+  ** @param id The type of frame this frame should be set to
+  ** @see ID3_FrameID
+  **/
+-bool ID3_Frame::SetID(ID3_FrameID id)
++my_bool ID3_Frame::SetID(ID3_FrameID id)
+ {
+   return _impl->SetID(id);
+ }
+ 
+-bool ID3_Frame::SetSpec(ID3_V2Spec spec)
++my_bool ID3_Frame::SetSpec(ID3_V2Spec spec)
+ {
+   return _impl->SetSpec(spec);
+ }
+@@ -167,7 +167,7 @@
+ }
+ 
+ 
+-bool ID3_Frame::HasChanged() const
++my_bool ID3_Frame::HasChanged() const
+ {
+   return _impl->HasChanged();
+ }
+@@ -196,7 +196,7 @@
+   return _impl->GetTextID();
+ }
+ 
+-bool ID3_Frame::Parse(ID3_Reader& reader) 
++my_bool ID3_Frame::Parse(ID3_Reader& reader) 
+ {
+   return _impl->Parse(reader);
+ }
+@@ -206,7 +206,7 @@
+   _impl->Render(writer);
+ }
+ 
+-bool ID3_Frame::Contains(ID3_FieldID id) const
++my_bool ID3_Frame::Contains(ID3_FieldID id) const
+ {
+   return _impl->Contains(id);
+ }
+@@ -216,7 +216,7 @@
+  ** actually be compressed after it is rendered if the "compressed" data is
+  ** no smaller than the "uncompressed" data.
+  **/
+-bool ID3_Frame::SetCompression(bool b)
++my_bool ID3_Frame::SetCompression(my_bool b)
+ {
+   return _impl->SetCompression(b);
+ }
+@@ -229,7 +229,7 @@
+  ** flag is set, if the "compressed" data is no smaller than the
+  ** "uncompressed" data.
+  **/
+-bool ID3_Frame::GetCompression() const
++my_bool ID3_Frame::GetCompression() const
+ {
+   return _impl->GetCompression();
+ }
+@@ -239,7 +239,7 @@
+   return _impl->GetDataSize();
+ }
+ 
+-bool ID3_Frame::SetEncryptionID(uchar id)
++my_bool ID3_Frame::SetEncryptionID(uchar id)
+ {
+   return _impl->SetEncryptionID(id);
+ }
+@@ -249,7 +249,7 @@
+   return _impl->GetEncryptionID();
+ }
+ 
+-bool ID3_Frame::SetGroupingID(uchar id)
++my_bool ID3_Frame::SetGroupingID(uchar id)
+ {
+   return _impl->SetGroupingID(id);
+ }
+diff '--color=auto' -uNr a/src/frame_def.h b/src/frame_def.h
+--- a/src/frame_def.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/frame_def.h	2025-01-30 14:01:53.586000891 -0000
+@@ -38,8 +38,8 @@
+   ID3_FrameID   eID;
+   char          sShortTextID[3 + 1];
+   char          sLongTextID[4 + 1];
+-  bool          bTagDiscard;
+-  bool          bFileDiscard;
++  my_bool          bTagDiscard;
++  my_bool          bFileDiscard;
+   const ID3_FieldDef* aeFieldDefs;
+   const char *  sDescription;
+ };
+diff '--color=auto' -uNr a/src/frame_impl.cpp b/src/frame_impl.cpp
+--- a/src/frame_impl.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/frame_impl.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -72,7 +72,7 @@
+   Clear();
+ }
+ 
+-bool ID3_FrameImpl::_ClearFields()
++my_bool ID3_FrameImpl::_ClearFields()
+ {
+   for (iterator fi = _fields.begin(); fi != _fields.end(); ++fi)
+   {
+@@ -118,9 +118,9 @@
+   }
+ }
+ 
+-bool ID3_FrameImpl::SetID(ID3_FrameID id)
++my_bool ID3_FrameImpl::SetID(ID3_FrameID id)
+ {
+-  bool changed = (this->GetID() != id);
++  my_bool changed = (this->GetID() != id);
+   if (changed)
+   {
+     this->_SetID(id);
+@@ -129,15 +129,15 @@
+   return changed;
+ }
+ 
+-bool ID3_FrameImpl::_SetID(ID3_FrameID id)
++my_bool ID3_FrameImpl::_SetID(ID3_FrameID id)
+ {
+-  bool changed = this->_ClearFields();
++  my_bool changed = this->_ClearFields();
+   changed = _hdr.SetFrameID(id) || changed;
+   this->_InitFields();
+   return changed;
+ }
+ 
+-bool ID3_FrameImpl::SetSpec(ID3_V2Spec spec)
++my_bool ID3_FrameImpl::SetSpec(ID3_V2Spec spec)
+ {
+   return _hdr.SetSpec(spec);
+ }
+@@ -204,9 +204,9 @@
+ }
+ 
+ 
+-bool ID3_FrameImpl::HasChanged() const
++my_bool ID3_FrameImpl::HasChanged() const
+ {
+-  bool changed = _changed;
++  my_bool changed = _changed;
+   
+   for (const_iterator fi = _fields.begin(); fi != _fields.end(); ++fi)
+   {
+diff '--color=auto' -uNr a/src/frame_impl.h b/src/frame_impl.h
+--- a/src/frame_impl.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/frame_impl.h	2025-01-30 14:01:53.586000891 -0000
+@@ -55,7 +55,7 @@
+   
+   void        Clear();
+ 
+-  bool        SetID(ID3_FrameID id);
++  my_bool        SetID(ID3_FrameID id);
+   ID3_FrameID GetID() const { return _hdr.GetFrameID(); }
+   
+   ID3_Field*  GetField(ID3_FieldID name) const;
+@@ -68,13 +68,13 @@
+   const char* GetTextID() const { return _hdr.GetTextID(); }
+ 
+   ID3_FrameImpl&  operator=(const ID3_Frame &);
+-  bool        HasChanged() const;
+-  bool        Parse(ID3_Reader&);
++  my_bool        HasChanged() const;
++  my_bool        Parse(ID3_Reader&);
+   void        Render(ID3_Writer&) const;
+   size_t      Size();
+-  bool        Contains(ID3_FieldID fld) const
++  my_bool        Contains(ID3_FieldID fld) const
+   { return _bitset.test(fld); }
+-  bool        SetSpec(ID3_V2Spec);
++  my_bool        SetSpec(ID3_V2Spec);
+   ID3_V2Spec  GetSpec() const;
+ 
+   /** Sets the compression flag within the frame.  When the compression flag is
+@@ -82,7 +82,7 @@
+    ** actually be compressed after it is rendered if the "compressed" data is
+    ** no smaller than the "uncompressed" data.
+    **/
+-  bool        SetCompression(bool b)  { return _hdr.SetCompression(b); }
++  my_bool        SetCompression(my_bool b)  { return _hdr.SetCompression(b); }
+   /** Returns whether or not the compression flag is set.  After parsing a tag,
+    ** this will indicate whether or not the frame was compressed.  After
+    ** rendering a tag, however, it does not actually indicate if the frame is
+@@ -91,21 +91,21 @@
+    ** flag is set, if the "compressed" data is no smaller than the
+    ** "uncompressed" data.
+    **/
+-  bool        GetCompression() const  { return _hdr.GetCompression(); }
++  my_bool        GetCompression() const  { return _hdr.GetCompression(); }
+   size_t      GetDataSize() const { return _hdr.GetDataSize(); }
+ 
+-  bool SetEncryptionID(uchar id)
++  my_bool SetEncryptionID(uchar id)
+   {
+-    bool changed = id != _encryption_id;
++    my_bool changed = id != _encryption_id;
+     _encryption_id = id;
+     _changed = _changed || changed;
+     _hdr.SetEncryption(true);
+     return changed;
+   }
+   uchar GetEncryptionID() const { return _encryption_id; }
+-  bool SetGroupingID(uchar id)
++  my_bool SetGroupingID(uchar id)
+   {
+-    bool changed = id != _grouping_id;
++    my_bool changed = id != _grouping_id;
+     _grouping_id = id;
+     _changed = _changed || changed;
+     _hdr.SetGrouping(true);
+@@ -119,14 +119,14 @@
+   const_iterator   end()   const { return _fields.end(); }
+   
+ protected:
+-  bool        _SetID(ID3_FrameID);
+-  bool        _ClearFields();
++  my_bool        _SetID(ID3_FrameID);
++  my_bool        _ClearFields();
+   void        _InitFields();
+   void        _InitFieldBits();
+   void        _UpdateFieldDeps();
+ 
+ private:
+-  mutable bool        _changed;    // frame changed since last parse/render?
++  mutable my_bool        _changed;    // frame changed since last parse/render?
+   Bitset      _bitset;             // which fields are present?
+   Fields      _fields;
+   ID3_FrameHeader _hdr;            // 
+diff '--color=auto' -uNr a/src/frame_parse.cpp b/src/frame_parse.cpp
+--- a/src/frame_parse.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/frame_parse.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -35,7 +35,7 @@
+ 
+ namespace
+ {
+-  bool parseFields(ID3_Reader& rdr, ID3_FrameImpl& frame)
++  my_bool parseFields(ID3_Reader& rdr, ID3_FrameImpl& frame)
+   {
+     int iLoop;
+     int iFields;
+@@ -106,7 +106,7 @@
+   }
+ };
+ 
+-bool ID3_FrameImpl::Parse(ID3_Reader& reader) 
++my_bool ID3_FrameImpl::Parse(ID3_Reader& reader) 
+ { 
+   io::ExitTrigger et(reader);
+   ID3D_NOTICE( "ID3_FrameImpl::Parse(): reader.getBeg() = " << reader.getBeg() );
+@@ -160,7 +160,7 @@
+   this->_ClearFields(); 
+   this->_InitFields(); 
+ 
+-  bool success = false;
++  my_bool success = false;
+   // expand out the data if it's compressed 
+   if (!_hdr.GetCompression())
+   {
+diff '--color=auto' -uNr a/src/header.cpp b/src/header.cpp
+--- a/src/header.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/header.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -31,7 +31,7 @@
+ #include <config.h>
+ #endif
+ 
+-bool ID3_Header::SetSpec(ID3_V2Spec spec)
++my_bool ID3_Header::SetSpec(ID3_V2Spec spec)
+ {
+   static ID3_Header::Info _spec_info[] =
+   {
+@@ -44,7 +44,7 @@
+     {  4,     4,     2,     false, 6,   false }  // ID3V2_4_0
+   };
+   
+-  bool changed = false;
++  my_bool changed = false;
+   if (spec < ID3V2_EARLIEST || spec > ID3V2_LATEST)
+   {
+     changed = _spec != ID3V2_UNKNOWN;
+diff '--color=auto' -uNr a/src/header.h b/src/header.h
+--- a/src/header.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/header.h	2025-01-30 14:01:53.586000891 -0000
+@@ -43,9 +43,9 @@
+     uchar      frame_bytes_id;
+     uchar      frame_bytes_size;
+     uchar      frame_bytes_flags;
+-    bool       is_extended;
++    my_bool       is_extended;
+     size_t     extended_bytes; //including the extended header, so everything!
+-    bool       is_experimental;
++    my_bool       is_experimental;
+   };
+ 
+   ID3_Header() 
+@@ -58,21 +58,21 @@
+   }
+   virtual ~ID3_Header() { ; }
+   
+-  virtual bool       SetSpec(ID3_V2Spec);
++  virtual my_bool       SetSpec(ID3_V2Spec);
+   /*   */ ID3_V2Spec GetSpec() const { return _spec; }
+ 
+-  /*   */ bool       SetDataSize(size_t size)
++  /*   */ my_bool       SetDataSize(size_t size)
+   { 
+-    bool changed = size != _data_size; 
++    my_bool changed = size != _data_size; 
+     _changed = _changed || changed;
+     _data_size = size;
+     return changed;
+   }
+   /*   */ size_t     GetDataSize() const { return _data_size; }
+   
+-  virtual bool       Clear()
++  virtual my_bool       Clear()
+   {
+-    bool changed = this->SetDataSize(0);
++    my_bool changed = this->SetDataSize(0);
+     if (this->GetSpec() == ID3V2_UNKNOWN)
+     {
+       this->SetSpec(ID3V2_LATEST);
+@@ -85,7 +85,7 @@
+   virtual size_t     Size() const = 0;
+   
+   virtual void       Render(ID3_Writer&) const = 0;
+-  virtual bool       Parse(ID3_Reader&) = 0;
++  virtual my_bool       Parse(ID3_Reader&) = 0;
+ 
+   ID3_Header &operator=( const ID3_Header &rhs)
+   { 
+@@ -103,7 +103,7 @@
+   size_t          _data_size;        // how big is the data?
+   ID3_Flags       _flags;            // header flags
+   Info*     _info;             // header info w.r.t. id3v2 spec
+-  bool            _changed;          // has the header changed since parsing
++  my_bool            _changed;          // has the header changed since parsing
+ }
+ ;
+ 
+diff '--color=auto' -uNr a/src/header_frame.cpp b/src/header_frame.cpp
+--- a/src/header_frame.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/header_frame.cpp	2025-01-30 14:01:53.586000891 -0000
+@@ -62,7 +62,7 @@
+   _dyn_frame_def = true;
+ }
+ 
+-bool ID3_FrameHeader::SetFrameID(ID3_FrameID id)
++my_bool ID3_FrameHeader::SetFrameID(ID3_FrameID id)
+ {
+   if (id == ID3FID_NOFRAME || id == this->GetFrameID())
+   {
+@@ -88,7 +88,7 @@
+     _info->frame_bytes_flags;
+ }
+ 
+-bool ID3_FrameHeader::Parse(ID3_Reader& reader)
++my_bool ID3_FrameHeader::Parse(ID3_Reader& reader)
+ {
+   ID3D_NOTICE( "ID3_FrameHeader::Parse(): getCur() = " << reader.getCur() );
+   io::ExitTrigger et(reader);
+@@ -222,9 +222,9 @@
+   return _frame_def;
+ }
+ 
+-bool ID3_FrameHeader::Clear()
++my_bool ID3_FrameHeader::Clear()
+ {
+-  bool changed = this->ID3_Header::Clear();
++  my_bool changed = this->ID3_Header::Clear();
+   if (_dyn_frame_def)
+   {
+     delete _frame_def;
+diff '--color=auto' -uNr a/src/header_frame.h b/src/header_frame.h
+--- a/src/header_frame.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/header_frame.h	2025-01-30 14:01:53.586000891 -0000
+@@ -51,29 +51,29 @@
+   virtual ~ID3_FrameHeader() { this->Clear(); }
+ 
+   /* */ size_t        Size() const;
+-  /* */ bool          Parse(ID3_Reader&);
++  /* */ my_bool          Parse(ID3_Reader&);
+   /* */ void          Render(ID3_Writer&) const;
+-  /* */ bool          SetFrameID(ID3_FrameID id);
++  /* */ my_bool          SetFrameID(ID3_FrameID id);
+   /* */ ID3_FrameID   GetFrameID() const;
+   const char*         GetTextID() const;
+   const ID3_FrameDef* GetFrameDef() const;
+-  /* */ bool          Clear();
++  /* */ my_bool          Clear();
+   ID3_FrameHeader&    operator=(const ID3_FrameHeader&);
+ 
+-  bool SetCompression(bool b) { return this->SetFlags(COMPRESSION, b); }
+-  bool SetEncryption(bool b)  { return this->SetFlags(ENCRYPTION, b); }
+-  bool SetGrouping(bool b)    { return this->SetFlags(GROUPING, b); }
+-
+-  bool GetCompression() const { return _flags.test(COMPRESSION); }
+-  bool GetEncryption() const  { return _flags.test(ENCRYPTION); }
+-  bool GetGrouping() const    { return _flags.test(GROUPING); }
+-  bool GetReadOnly() const    { return _flags.test(READONLY); }
++  my_bool SetCompression(my_bool b) { return this->SetFlags(COMPRESSION, b); }
++  my_bool SetEncryption(my_bool b)  { return this->SetFlags(ENCRYPTION, b); }
++  my_bool SetGrouping(my_bool b)    { return this->SetFlags(GROUPING, b); }
++
++  my_bool GetCompression() const { return _flags.test(COMPRESSION); }
++  my_bool GetEncryption() const  { return _flags.test(ENCRYPTION); }
++  my_bool GetGrouping() const    { return _flags.test(GROUPING); }
++  my_bool GetReadOnly() const    { return _flags.test(READONLY); }
+   void                SetUnknownFrame(const char*);
+ 
+ protected:
+-  bool                SetFlags(uint16 f, bool b)
++  my_bool                SetFlags(uint16 f, my_bool b)
+   {
+-    bool changed = _flags.set(f, b);
++    my_bool changed = _flags.set(f, b);
+     _changed = _changed || changed;
+     return changed;
+   }
+@@ -82,7 +82,7 @@
+ 
+ private:
+   ID3_FrameDef*       _frame_def;
+-  bool                _dyn_frame_def;
++  my_bool                _dyn_frame_def;
+ }
+ ;
+ 
+diff '--color=auto' -uNr a/src/header_tag.cpp b/src/header_tag.cpp
+--- a/src/header_tag.cpp	2025-01-30 14:02:28.873444087 -0000
++++ b/src/header_tag.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -36,9 +36,9 @@
+ 
+ const char* const ID3_TagHeader::ID = "ID3";
+ 
+-bool ID3_TagHeader::SetSpec(ID3_V2Spec spec)
++my_bool ID3_TagHeader::SetSpec(ID3_V2Spec spec)
+ {
+-  bool changed = this->ID3_Header::SetSpec(spec);
++  my_bool changed = this->ID3_Header::SetSpec(spec);
+   if (changed)
+   {
+     if (_info)
+@@ -98,7 +98,7 @@
+   }
+ }
+ 
+-bool ID3_TagHeader::Parse(ID3_Reader& reader)
++my_bool ID3_TagHeader::Parse(ID3_Reader& reader)
+ {
+   io::ExitTrigger et(reader);
+   if (!ID3_Tag::IsV2Tag(reader))
+diff '--color=auto' -uNr a/src/header_tag.h b/src/header_tag.h
+--- a/src/header_tag.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/header_tag.h	2025-01-30 14:01:53.590000827 -0000
+@@ -55,42 +55,42 @@
+   virtual ~ID3_TagHeader() { ; }
+   ID3_TagHeader(const ID3_TagHeader& rhs) : ID3_Header() { *this = rhs; }
+ 
+-  bool   SetSpec(ID3_V2Spec);
++  my_bool   SetSpec(ID3_V2Spec);
+   size_t Size() const;
+   void Render(ID3_Writer&) const;
+-  bool Parse(ID3_Reader&);
++  my_bool Parse(ID3_Reader&);
+   void ParseExtended(ID3_Reader&);
+   ID3_TagHeader& operator=(const ID3_TagHeader&hdr)
+   { this->ID3_Header::operator=(hdr); return *this; }
+ 
+-  bool SetUnsync(bool b)
++  my_bool SetUnsync(my_bool b)
+   {
+-    bool changed = _flags.set(HEADER_FLAG_UNSYNC, b);
++    my_bool changed = _flags.set(HEADER_FLAG_UNSYNC, b);
+     _changed = _changed || changed;
+     return changed;
+   }
+-  bool GetUnsync() const { return _flags.test(HEADER_FLAG_UNSYNC); }
+-  bool SetExtended(bool b)
++  my_bool GetUnsync() const { return _flags.test(HEADER_FLAG_UNSYNC); }
++  my_bool SetExtended(my_bool b)
+   {
+-    bool changed = _flags.set(HEADER_FLAG_EXTENDED, b);
++    my_bool changed = _flags.set(HEADER_FLAG_EXTENDED, b);
+     _changed = _changed || changed;
+     return changed;
+   }
+-  bool GetExtended() const { return _flags.test(HEADER_FLAG_EXTENDED); }
+-  bool SetExperimental(bool b)
++  my_bool GetExtended() const { return _flags.test(HEADER_FLAG_EXTENDED); }
++  my_bool SetExperimental(my_bool b)
+   {
+-    bool changed = _flags.set(HEADER_FLAG_EXPERIMENTAL, b);
++    my_bool changed = _flags.set(HEADER_FLAG_EXPERIMENTAL, b);
+     _changed = _changed || changed;
+     return changed;
+   }
+-  bool GetExperimental() const { return _flags.test(HEADER_FLAG_EXPERIMENTAL); }
+-  bool SetFooter(bool b)
++  my_bool GetExperimental() const { return _flags.test(HEADER_FLAG_EXPERIMENTAL); }
++  my_bool SetFooter(my_bool b)
+   {
+-    bool changed = _flags.set(HEADER_FLAG_FOOTER, b);
++    my_bool changed = _flags.set(HEADER_FLAG_FOOTER, b);
+     _changed = _changed || changed;
+     return changed;
+   }
+-  bool GetFooter() const { return _flags.test(HEADER_FLAG_FOOTER); }
++  my_bool GetFooter() const { return _flags.test(HEADER_FLAG_FOOTER); }
+ 
+   // id3v2 tag header signature:  $49 44 33 MM mm GG ss ss ss ss
+   // MM = major version (will never be 0xFF)
+diff '--color=auto' -uNr a/src/io_helpers.cpp b/src/io_helpers.cpp
+--- a/src/io_helpers.cpp	2025-01-30 14:02:28.845444530 -0000
++++ b/src/io_helpers.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -65,7 +65,7 @@
+ 
+ namespace
+ {
+-  bool isNull(unsigned char ch1, unsigned char ch2)
++  my_bool isNull(unsigned char ch1, unsigned char ch2)
+   {
+     return ch1 == '\0' && ch2 == '\0';
+   }
+@@ -102,7 +102,7 @@
+     return 0;
+   }
+ 
+-  bool readTwoChars(ID3_Reader& reader, 
++  my_bool readTwoChars(ID3_Reader& reader, 
+                     ID3_Reader::char_type& ch1, 
+                     ID3_Reader::char_type& ch2)
+   {
+@@ -342,7 +342,7 @@
+   return writer.getCur() - beg;
+ }
+ 
+-size_t io::writeUnicodeString(ID3_Writer& writer, String data, bool bom)
++size_t io::writeUnicodeString(ID3_Writer& writer, String data, my_bool bom)
+ {
+   size_t size = writeUnicodeText(writer, data, bom);
+   unicode_t null = NULL_UNICODE;
+@@ -350,7 +350,7 @@
+   return size + 2;
+ }
+ 
+-size_t io::writeUnicodeText(ID3_Writer& writer, String data, bool bom)
++size_t io::writeUnicodeText(ID3_Writer& writer, String data, my_bool bom)
+ {
+   ID3_Writer::pos_type beg = writer.getCur();
+   size_t size = (data.size() / 2) * 2;
+diff '--color=auto' -uNr a/src/misc_support.cpp b/src/misc_support.cpp
+--- a/src/misc_support.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/misc_support.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -89,7 +89,7 @@
+   return sArtist;
+ }
+ 
+-ID3_Frame* ID3_AddArtist(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddArtist(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && NULL != text && strlen(text) > 0)
+@@ -169,7 +169,7 @@
+   return sAlbum;
+ }
+ 
+-ID3_Frame* ID3_AddAlbum(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddAlbum(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && NULL != text && strlen(text) > 0)
+@@ -228,7 +228,7 @@
+   return sTitle;
+ }
+ 
+-ID3_Frame* ID3_AddTitle(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddTitle(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && NULL != text && strlen(text) > 0)
+@@ -287,7 +287,7 @@
+   return sYear;
+ }
+ 
+-ID3_Frame* ID3_AddYear(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddYear(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && NULL != text && strlen(text) > 0)
+@@ -355,19 +355,19 @@
+   return comment;
+ }
+ 
+-ID3_Frame* ID3_AddComment(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddComment(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   return ID3_AddComment(tag, text, "", replace);
+ }
+ 
+ ID3_Frame* ID3_AddComment(ID3_Tag *tag, const char *text,
+-                          const char *desc, bool replace)
++                          const char *desc, my_bool replace)
+ {
+   return ID3_AddComment(tag, text, desc, "XXX", replace);
+ }
+ 
+ ID3_Frame* ID3_AddComment(ID3_Tag *tag, const char *text,
+-                          const char *desc, const char* lang, bool replace)
++                          const char *desc, const char* lang, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag  &&
+@@ -375,7 +375,7 @@
+       NULL != desc &&
+       strlen(text) > 0)
+   {
+-    bool bAdd = true;
++    my_bool bAdd = true;
+     if (replace)
+     {
+       ID3_RemoveComments(tag, desc);
+@@ -435,7 +435,7 @@
+   {
+     if (frame->GetID() == ID3FID_COMMENT)
+     {
+-      bool remove = false;
++      my_bool remove = false;
+       // A null description means remove all comments
+       if (NULL == desc)
+       {
+@@ -490,7 +490,7 @@
+   return nTrack;
+ }
+ 
+-ID3_Frame* ID3_AddTrack(ID3_Tag *tag, uchar trk, uchar ttl, bool replace)
++ID3_Frame* ID3_AddTrack(ID3_Tag *tag, uchar trk, uchar ttl, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && trk > 0)
+@@ -567,7 +567,7 @@
+ }
+ 
+ //following routine courtesy of John George
+-bool ID3_HasPicture(const ID3_Tag* tag)
++my_bool ID3_HasPicture(const ID3_Tag* tag)
+ {
+   if (NULL == tag)
+     return false;
+@@ -587,7 +587,7 @@
+ }
+ 
+ //following routine courtesy of John George
+-ID3_Frame* ID3_AddPicture(ID3_Tag* tag, const char* TempPicPath, const char* MimeType, bool replace)
++ID3_Frame* ID3_AddPicture(ID3_Tag* tag, const char* TempPicPath, const char* MimeType, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag )
+@@ -657,7 +657,7 @@
+ }
+ 
+ //following routine courtesy of John George
+-ID3_Frame* ID3_AddPicture(ID3_Tag *tag, const char *TempPicPath, const char *MimeType, ID3_PictureType pictype, const char* Description, bool replace)
++ID3_Frame* ID3_AddPicture(ID3_Tag *tag, const char *TempPicPath, const char *MimeType, ID3_PictureType pictype, const char* Description, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag )
+@@ -836,7 +836,7 @@
+ }
+ 
+ //following routine courtesy of John George
+-ID3_Frame* ID3_AddGenre(ID3_Tag* tag, const char* genre, bool replace)
++ID3_Frame* ID3_AddGenre(ID3_Tag* tag, const char* genre, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && NULL != genre && strlen(genre) > 0)
+@@ -859,7 +859,7 @@
+   return frame;
+ }
+ 
+-ID3_Frame* ID3_AddGenre(ID3_Tag *tag, size_t genreNum, bool replace)
++ID3_Frame* ID3_AddGenre(ID3_Tag *tag, size_t genreNum, my_bool replace)
+ {
+   if(0xFF != genreNum)
+   {
+@@ -909,19 +909,19 @@
+   return sLyrics;
+ }
+ 
+-ID3_Frame* ID3_AddLyrics(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddLyrics(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   return ID3_AddLyrics(tag, text, "", replace);
+ }
+ 
+ ID3_Frame* ID3_AddLyrics(ID3_Tag *tag, const char *text, const char* desc,
+-                         bool replace)
++                         my_bool replace)
+ {
+   return ID3_AddLyrics(tag, text, desc, "XXX", replace);
+ }
+ 
+ ID3_Frame* ID3_AddLyrics(ID3_Tag *tag, const char *text, const char* desc,
+-                         const char* lang, bool replace)
++                         const char* lang, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && strlen(text) > 0)
+@@ -982,7 +982,7 @@
+   return sLyricist;
+ }
+ 
+-ID3_Frame* ID3_AddLyricist(ID3_Tag *tag, const char *text, bool replace)
++ID3_Frame* ID3_AddLyricist(ID3_Tag *tag, const char *text, my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   if (NULL != tag && NULL != text && strlen(text) > 0)
+@@ -1026,21 +1026,21 @@
+ }
+ 
+ ID3_Frame* ID3_AddSyncLyrics(ID3_Tag *tag, const uchar *data, size_t datasize,
+-                             ID3_TimeStampFormat format, bool replace)
++                             ID3_TimeStampFormat format, my_bool replace)
+ {
+   return ID3_AddSyncLyrics(tag, data, datasize, format, "", replace);
+ }
+ 
+ ID3_Frame* ID3_AddSyncLyrics(ID3_Tag *tag, const uchar *data, size_t datasize,
+                              ID3_TimeStampFormat format, const char *desc,
+-                             bool replace)
++                             my_bool replace)
+ {
+   return ID3_AddSyncLyrics(tag, data, datasize, format, desc, "XXX", replace);
+ }
+ 
+ ID3_Frame* ID3_AddSyncLyrics(ID3_Tag *tag, const uchar *data, size_t datasize,
+                              ID3_TimeStampFormat format, const char *desc,
+-                             const char *lang, bool replace)
++                             const char *lang, my_bool replace)
+ {
+   return ID3_AddSyncLyrics(tag, data, datasize, format, desc, lang,
+                            ID3CT_LYRICS, replace);
+@@ -1049,7 +1049,7 @@
+ ID3_Frame* ID3_AddSyncLyrics(ID3_Tag *tag, const uchar *data, size_t datasize,
+                              ID3_TimeStampFormat format, const char *desc,
+                              const char *lang, ID3_ContentType type,
+-                             bool replace)
++                             my_bool replace)
+ {
+   ID3_Frame* frame = NULL;
+   // language and descriptor should be mandatory
+diff '--color=auto' -uNr a/src/mp3_header.h b/src/mp3_header.h
+--- a/src/mp3_header.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/mp3_header.h	2025-01-30 14:01:53.590000827 -0000
+@@ -38,7 +38,7 @@
+   void Clean();
+ 
+   const Mp3_Headerinfo* GetMp3HeaderInfo() const { return _mp3_header_output; };
+-  bool Parse(ID3_Reader&, size_t mp3size);
++  my_bool Parse(ID3_Reader&, size_t mp3size);
+ 
+   Mpeg_Layers Layer() const { return _mp3_header_output->layer; };
+   Mpeg_Version Version() const { return _mp3_header_output->version; };
+@@ -51,9 +51,9 @@
+   uint32 Frequency() const { return _mp3_header_output->frequency; };
+   uint32 Framesize() const { return _mp3_header_output->framesize; };
+   uint32 Frames() const { return _mp3_header_output->frames; };
+-  bool Private() const { return _mp3_header_output->privatebit; };
+-  bool Copyrighted() const { return _mp3_header_output->copyrighted; };
+-  bool Original() const { return _mp3_header_output->original; };
++  my_bool Private() const { return _mp3_header_output->privatebit; };
++  my_bool Copyrighted() const { return _mp3_header_output->copyrighted; };
++  my_bool Original() const { return _mp3_header_output->original; };
+   uint32 Seconds() const { return _mp3_header_output->time; };
+ 
+ private:
+diff '--color=auto' -uNr a/src/mp3_parse.cpp b/src/mp3_parse.cpp
+--- a/src/mp3_parse.cpp	2025-01-30 14:02:28.893443772 -0000
++++ b/src/mp3_parse.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -99,7 +99,7 @@
+ 
+ using namespace dami;
+ 
+-bool Mp3Info::Parse(ID3_Reader& reader, size_t mp3size)
++my_bool Mp3Info::Parse(ID3_Reader& reader, size_t mp3size)
+ {
+   MP3_BitRates _mp3_bitrates[2][3][16] =
+   {
+@@ -319,10 +319,10 @@
+     return false;
+   }
+ 
+-  _mp3_header_output->privatebit = (bool)_tmpheader->private_bit;
+-  _mp3_header_output->copyrighted = (bool)_tmpheader->copyright;
+-  _mp3_header_output->original = (bool)_tmpheader->original;
+-  _mp3_header_output->crc = (Mp3_Crc)!(bool)_tmpheader->protection_bit;
++  _mp3_header_output->privatebit = (my_bool)_tmpheader->private_bit;
++  _mp3_header_output->copyrighted = (my_bool)_tmpheader->copyright;
++  _mp3_header_output->original = (my_bool)_tmpheader->original;
++  _mp3_header_output->crc = (Mp3_Crc)!(my_bool)_tmpheader->protection_bit;
+ 
+   switch (_tmpheader->mode)
+   {
+diff '--color=auto' -uNr a/src/tag.cpp b/src/tag.cpp
+--- a/src/tag.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -340,7 +340,7 @@
+  **
+  ** \return Whether or not the tag has been altered.
+  **/
+-bool ID3_Tag::HasChanged() const
++my_bool ID3_Tag::HasChanged() const
+ {
+   return _impl->HasChanged();
+ }
+@@ -397,14 +397,14 @@
+  **
+  ** \param bSync Whether the tag should be unsynchronized
+  **/
+-bool ID3_Tag::SetUnsync(bool b)
++my_bool ID3_Tag::SetUnsync(my_bool b)
+ {
+   return _impl->SetUnsync(b);
+ }
+ 
+ 
+ /** Turns extended header rendering on or off, dependant on the value of the
+- ** boolean parameter.
++ ** my_boolean parameter.
+  **
+  ** This option is currently ignored as id3lib doesn't yet create extended
+  ** headers.  This option only applies when rendering tags for ID3v2 versions
+@@ -416,7 +416,7 @@
+  **
+  ** \param bExt Whether to render an extended header
+  **/
+-bool ID3_Tag::SetExtendedHeader(bool ext)
++my_bool ID3_Tag::SetExtendedHeader(my_bool ext)
+ {
+   return _impl->SetExtended(ext);
+ }
+@@ -450,27 +450,27 @@
+  **
+  ** \param bPad Whether or not render the tag with padding.
+  **/
+-bool ID3_Tag::SetPadding(bool pad)
++my_bool ID3_Tag::SetPadding(my_bool pad)
+ {
+   return _impl->SetPadding(pad);
+ }
+ 
+-bool ID3_Tag::SetExperimental(bool exp)
++my_bool ID3_Tag::SetExperimental(my_bool exp)
+ {
+   return _impl->SetExperimental(exp);
+ }
+ 
+-bool ID3_Tag::GetUnsync() const
++my_bool ID3_Tag::GetUnsync() const
+ {
+   return _impl->GetUnsync();
+ }
+ 
+-bool ID3_Tag::GetExtendedHeader() const
++my_bool ID3_Tag::GetExtendedHeader() const
+ {
+   return _impl->GetExtended();
+ }
+ 
+-bool ID3_Tag::GetExperimental() const
++my_bool ID3_Tag::GetExperimental() const
+ {
+   return _impl->GetExperimental();
+ }
+@@ -518,7 +518,7 @@
+  **
+  ** \param frame A pointer to the frame that is being added to the tag.
+  **/
+-bool ID3_Tag::AttachFrame(ID3_Frame *frame)
++my_bool ID3_Tag::AttachFrame(ID3_Frame *frame)
+ {
+   return _impl->AttachFrame(frame);
+ }
+@@ -549,7 +549,7 @@
+   return _impl->RemoveFrame(frame);
+ }
+ 
+-bool ID3_Tag::Parse(ID3_Reader& reader)
++my_bool ID3_Tag::Parse(ID3_Reader& reader)
+ {
+   return id3::v2::parse(*_impl, reader);
+ }
+@@ -933,7 +933,7 @@
+   return *this;
+ }
+ 
+-bool ID3_Tag::HasTagType(ID3_TagType tt) const
++my_bool ID3_Tag::HasTagType(ID3_TagType tt) const
+ {
+   return _impl->HasTagType(tt);
+ }
+@@ -943,7 +943,7 @@
+   return _impl->GetSpec();
+ }
+ 
+-bool ID3_Tag::SetSpec(ID3_V2Spec spec)
++my_bool ID3_Tag::SetSpec(ID3_V2Spec spec)
+ {
+   return _impl->SetSpec(spec);
+ }
+@@ -993,25 +993,25 @@
+   }
+ }
+ 
+-size_t ID3_Tag::Link(const char *fileInfo, bool parseID3v1, bool parseLyrics3)
++size_t ID3_Tag::Link(const char *fileInfo, my_bool parseID3v1, my_bool parseLyrics3)
+ {
+   return _impl->Link(fileInfo, parseID3v1, parseLyrics3);
+ }
+ 
+-void ID3_Tag::SetCompression(bool b)
++void ID3_Tag::SetCompression(my_bool b)
+ {
+   ;
+ }
+ 
+-bool ID3_Tag::HasLyrics() const
++my_bool ID3_Tag::HasLyrics() const
+ {
+   return this->HasTagType(ID3TT_LYRICS);
+ }
+-bool ID3_Tag::HasV2Tag()  const
++my_bool ID3_Tag::HasV2Tag()  const
+ {
+   return this->HasTagType(ID3TT_ID3V2);
+ }
+-bool ID3_Tag::HasV1Tag()  const
++my_bool ID3_Tag::HasV1Tag()  const
+ {
+   return this->HasTagType(ID3TT_ID3V1);
+ }
+diff '--color=auto' -uNr a/src/tag_file.cpp b/src/tag_file.cpp
+--- a/src/tag_file.cpp	2025-01-30 14:02:28.881443961 -0000
++++ b/src/tag_file.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -114,7 +114,7 @@
+ 
+ #endif
+ 
+-size_t ID3_TagImpl::Link(const char *fileInfo, bool parseID3v1, bool parseLyrics3)
++size_t ID3_TagImpl::Link(const char *fileInfo, my_bool parseID3v1, my_bool parseLyrics3)
+ {
+   flags_t tt = ID3TT_NONE;
+   if (parseID3v1)
+diff '--color=auto' -uNr a/src/tag_impl.cpp b/src/tag_impl.cpp
+--- a/src/tag_impl.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag_impl.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -164,7 +164,7 @@
+   }
+ }
+ 
+-bool ID3_TagImpl::AttachFrame(ID3_Frame *frame)
++my_bool ID3_TagImpl::AttachFrame(ID3_Frame *frame)
+ {
+ 
+   if (NULL == frame)
+@@ -199,9 +199,9 @@
+ }
+ 
+ 
+-bool ID3_TagImpl::HasChanged() const
++my_bool ID3_TagImpl::HasChanged() const
+ {
+-  bool changed = _changed;
++  my_bool changed = _changed;
+ 
+   if (! changed)
+   {
+@@ -222,9 +222,9 @@
+   return changed;
+ }
+ 
+-bool ID3_TagImpl::SetSpec(ID3_V2Spec spec)
++my_bool ID3_TagImpl::SetSpec(ID3_V2Spec spec)
+ {
+-  bool changed = _hdr.SetSpec(spec);
++  my_bool changed = _hdr.SetSpec(spec);
+   _changed = _changed || changed;
+   return changed;
+ }
+@@ -234,43 +234,43 @@
+   return _hdr.GetSpec();
+ }
+ 
+-bool ID3_TagImpl::SetUnsync(bool b)
++my_bool ID3_TagImpl::SetUnsync(my_bool b)
+ {
+-  bool changed = _hdr.SetUnsync(b);
++  my_bool changed = _hdr.SetUnsync(b);
+   _changed = changed || _changed;
+   return changed;
+ }
+ 
+-bool ID3_TagImpl::SetExtended(bool ext)
++my_bool ID3_TagImpl::SetExtended(my_bool ext)
+ {
+-  bool changed = _hdr.SetExtended(ext);
++  my_bool changed = _hdr.SetExtended(ext);
+   _changed = changed || _changed;
+   return changed;
+ }
+ 
+-bool ID3_TagImpl::SetExperimental(bool exp)
++my_bool ID3_TagImpl::SetExperimental(my_bool exp)
+ {
+-  bool changed = _hdr.SetExperimental(exp);
++  my_bool changed = _hdr.SetExperimental(exp);
+   _changed = changed || _changed;
+   return changed;
+ }
+ 
+-bool ID3_TagImpl::GetUnsync() const
++my_bool ID3_TagImpl::GetUnsync() const
+ {
+   return _hdr.GetUnsync();
+ }
+ 
+-bool ID3_TagImpl::GetExtended() const
++my_bool ID3_TagImpl::GetExtended() const
+ {
+   return _hdr.GetExtended();
+ }
+ 
+-bool ID3_TagImpl::GetExperimental() const
++my_bool ID3_TagImpl::GetExperimental() const
+ {
+   return _hdr.GetExperimental();
+ }
+ 
+-bool ID3_TagImpl::GetFooter() const
++my_bool ID3_TagImpl::GetFooter() const
+ {
+   return _hdr.GetFooter();
+ }
+@@ -288,9 +288,9 @@
+     return 0;;
+ }
+ 
+-bool ID3_TagImpl::SetPadding(bool pad)
++my_bool ID3_TagImpl::SetPadding(my_bool pad)
+ {
+-  bool changed = (_is_padded != pad);
++  my_bool changed = (_is_padded != pad);
+   _changed = changed || _changed;
+   if (changed)
+   {
+diff '--color=auto' -uNr a/src/tag_impl.h b/src/tag_impl.h
+--- a/src/tag_impl.h	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag_impl.h	2025-01-30 14:01:53.590000827 -0000
+@@ -44,12 +44,12 @@
+   {
+     namespace v1
+     {
+-      bool parse(ID3_TagImpl&, ID3_Reader&);
++      my_bool parse(ID3_TagImpl&, ID3_Reader&);
+       void render(ID3_Writer&, const ID3_TagImpl&);
+     };
+     namespace v2
+     {
+-      bool parse(ID3_TagImpl& tag, ID3_Reader& rdr);
++      my_bool parse(ID3_TagImpl& tag, ID3_Reader& rdr);
+       void render(ID3_Writer& writer, const ID3_TagImpl& tag);
+     };
+   };
+@@ -57,16 +57,16 @@
+   {
+     namespace v1
+     {
+-      bool parse(ID3_TagImpl&, ID3_Reader&);
++      my_bool parse(ID3_TagImpl&, ID3_Reader&);
+     };
+     namespace v2
+     {
+-      bool parse(ID3_TagImpl&, ID3_Reader&);
++      my_bool parse(ID3_TagImpl&, ID3_Reader&);
+     };
+   };
+   namespace mm
+   {
+-    bool parse(ID3_TagImpl&, ID3_Reader&);
++    my_bool parse(ID3_TagImpl&, ID3_Reader&);
+   };
+ };
+ 
+@@ -82,25 +82,25 @@
+   virtual ~ID3_TagImpl();
+ 
+   void       Clear();
+-  bool       HasChanged() const;
+-  void       SetChanged(bool b) { _changed = b; }
++  my_bool       HasChanged() const;
++  void       SetChanged(my_bool b) { _changed = b; }
+   size_t     Size() const;
+ 
+-  bool       SetUnsync(bool);
+-  bool       SetExtended(bool);
+-  bool       SetExperimental(bool);
+-  bool       SetPadding(bool);
+-
+-  bool       GetUnsync() const;
+-  bool       GetExtended() const;
+-  bool       GetExperimental() const;
+-  bool       GetFooter() const;
++  my_bool       SetUnsync(my_bool);
++  my_bool       SetExtended(my_bool);
++  my_bool       SetExperimental(my_bool);
++  my_bool       SetPadding(my_bool);
++
++  my_bool       GetUnsync() const;
++  my_bool       GetExtended() const;
++  my_bool       GetExperimental() const;
++  my_bool       GetFooter() const;
+ 
+   size_t     GetExtendedBytes() const;
+ 
+   void       AddFrame(const ID3_Frame&);
+   void       AddFrame(const ID3_Frame*);
+-  bool       AttachFrame(ID3_Frame*);
++  my_bool       AttachFrame(ID3_Frame*);
+   ID3_Frame* RemoveFrame(const ID3_Frame *);
+ 
+   size_t     Link(const char *fileInfo, flags_t = (flags_t) ID3TT_ALL);
+@@ -121,9 +121,9 @@
+   size_t     NumFrames() const { return _frames.size(); }
+   ID3_TagImpl&   operator=( const ID3_Tag & );
+ 
+-  bool       HasTagType(ID3_TagType tt) const { return _file_tags.test(tt); }
++  my_bool       HasTagType(ID3_TagType tt) const { return _file_tags.test(tt); }
+   ID3_V2Spec GetSpec() const;
+-  bool       SetSpec(ID3_V2Spec);
++  my_bool       SetSpec(ID3_V2Spec);
+ 
+   static size_t IsV2Tag(ID3_Reader&);
+ 
+@@ -136,12 +136,12 @@
+ 
+   /* Deprecated! */
+   void       AddNewFrame(ID3_Frame* f) { this->AttachFrame(f); }
+-  size_t     Link(const char *fileInfo, bool parseID3v1, bool parseLyrics3);
+-  void       SetCompression(bool) { ; }
++  size_t     Link(const char *fileInfo, my_bool parseID3v1, my_bool parseLyrics3);
++  void       SetCompression(my_bool) { ; }
+   void       AddFrames(const ID3_Frame *, size_t);
+-  bool       HasLyrics() const { return this->HasTagType(ID3TT_LYRICS); }
+-  bool       HasV2Tag()  const { return this->HasTagType(ID3TT_ID3V2); }
+-  bool       HasV1Tag()  const { return this->HasTagType(ID3TT_ID3V1); }
++  my_bool       HasLyrics() const { return this->HasTagType(ID3TT_LYRICS); }
++  my_bool       HasV2Tag()  const { return this->HasTagType(ID3TT_ID3V2); }
++  my_bool       HasV1Tag()  const { return this->HasTagType(ID3TT_ID3V1); }
+   size_t     PaddingSize(size_t) const;
+ 
+ protected:
+@@ -155,19 +155,19 @@
+ 
+ private:
+   ID3_TagHeader _hdr;          // information relevant to the tag header
+-  bool       _is_padded;       // add padding to tags?
++  my_bool       _is_padded;       // add padding to tags?
+ 
+   Frames     _frames;
+ 
+   mutable const_iterator   _cursor;  // which frame in list are we at
+-  mutable bool       _changed; // has tag changed since last parse or render?
++  mutable my_bool       _changed; // has tag changed since last parse or render?
+ 
+   // file-related member variables
+   dami::String _file_name;       // name of the file we are linked to
+   size_t     _file_size;       // the size of the file (without any tag(s))
+   size_t     _prepended_bytes; // number of tag bytes at start of file
+   size_t     _appended_bytes;  // number of tag bytes at end of file
+-  bool       _is_file_writable;// is the associated file (via Link) writable?
++  my_bool       _is_file_writable;// is the associated file (via Link) writable?
+   ID3_Flags  _tags_to_parse;   // which tag types should attempt to be parsed
+   ID3_Flags  _file_tags;       // which tag types does the file contain
+   Mp3Info    *_mp3_info;   // class used to retrieve _mp3_header
+diff '--color=auto' -uNr a/src/tag_parse.cpp b/src/tag_parse.cpp
+--- a/src/tag_parse.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag_parse.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -41,7 +41,7 @@
+ 
+ namespace
+ {
+-  bool parseFrames(ID3_TagImpl& tag, ID3_Reader& rdr)
++  my_bool parseFrames(ID3_TagImpl& tag, ID3_Reader& rdr)
+   {
+     ID3_Reader::pos_type beg = rdr.getCur();
+     io::ExitTrigger et(rdr, beg);
+@@ -56,7 +56,7 @@
+       last_pos = rdr.getCur();
+       ID3_Frame* f = new ID3_Frame;
+       f->SetSpec(tag.GetSpec());
+-      bool goodParse = f->Parse(rdr);
++      my_bool goodParse = f->Parse(rdr);
+       frameSize = rdr.getCur() - last_pos;
+       ID3D_NOTICE( "id3::v2::parseFrames(): frameSize = " << frameSize );
+       totalSize += frameSize;
+@@ -134,7 +134,7 @@
+   }
+ };
+ 
+-bool id3::v2::parse(ID3_TagImpl& tag, ID3_Reader& reader)
++my_bool id3::v2::parse(ID3_TagImpl& tag, ID3_Reader& reader)
+ {
+   ID3_Reader::pos_type beg = reader.getCur();
+   io::ExitTrigger et(reader);
+diff '--color=auto' -uNr a/src/tag_parse_lyrics3.cpp b/src/tag_parse_lyrics3.cpp
+--- a/src/tag_parse_lyrics3.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag_parse_lyrics3.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -52,14 +52,14 @@
+     return readIntegerString(reader, reader.remainingBytes());
+   }
+ 
+-  bool isTimeStamp(ID3_Reader& reader)
++  my_bool isTimeStamp(ID3_Reader& reader)
+   {
+     ID3_Reader::pos_type cur = reader.getCur();
+     if (reader.getEnd() < cur + 7)
+     {
+       return false;
+     }
+-    bool its = ('[' == reader.readChar() &&
++    my_bool its = ('[' == reader.readChar() &&
+                 isdigit(reader.readChar()) && isdigit(reader.readChar()) &&
+                 ':' == reader.readChar() &&
+                 isdigit(reader.readChar()) && isdigit(reader.readChar()) &&
+@@ -83,7 +83,7 @@
+     return sec * 1000;
+   }
+ 
+-  bool findText(ID3_Reader& reader, String text)
++  my_bool findText(ID3_Reader& reader, String text)
+   {
+     if (text.empty())
+     {
+@@ -121,7 +121,7 @@
+   {
+     while (!reader.atEnd())
+     {
+-      bool lf = false;
++      my_bool lf = false;
+       size_t ms = 0;
+       size_t count = 0;
+       while (isTimeStamp(reader))
+@@ -168,7 +168,7 @@
+   }
+ };
+ 
+-bool lyr3::v1::parse(ID3_TagImpl& tag, ID3_Reader& reader)
++my_bool lyr3::v1::parse(ID3_TagImpl& tag, ID3_Reader& reader)
+ {
+   io::ExitTrigger et(reader);
+   ID3_Reader::pos_type end = reader.getCur();
+@@ -218,8 +218,8 @@
+   return true;
+ }
+ 
+-//bool parse(TagImpl& tag, ID3_Reader& reader)
+-bool lyr3::v2::parse(ID3_TagImpl& tag, ID3_Reader& reader)
++//my_bool parse(TagImpl& tag, ID3_Reader& reader)
++my_bool lyr3::v2::parse(ID3_TagImpl& tag, ID3_Reader& reader)
+ {
+   io::ExitTrigger et(reader);
+   ID3_Reader::pos_type end = reader.getCur();
+@@ -266,7 +266,7 @@
+     return false;
+   }
+ 
+-  bool has_time_stamps = false;
++  my_bool has_time_stamps = false;
+ 
+   ID3_Frame* lyr_frame = NULL;
+ 
+diff '--color=auto' -uNr a/src/tag_parse_musicmatch.cpp b/src/tag_parse_musicmatch.cpp
+--- a/src/tag_parse_musicmatch.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag_parse_musicmatch.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -112,7 +112,7 @@
+   }
+ };
+   
+-bool mm::parse(ID3_TagImpl& tag, ID3_Reader& rdr)
++my_bool mm::parse(ID3_TagImpl& tag, ID3_Reader& rdr)
+ {
+   io::ExitTrigger et(rdr);
+   ID3_Reader::pos_type end = rdr.getCur();
+diff '--color=auto' -uNr a/src/tag_parse_v1.cpp b/src/tag_parse_v1.cpp
+--- a/src/tag_parse_v1.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/tag_parse_v1.cpp	2025-01-30 14:01:53.598000700 -0000
+@@ -32,7 +32,7 @@
+ 
+ using namespace dami;
+ 
+-bool id3::v1::parse(ID3_TagImpl& tag, ID3_Reader& reader)
++my_bool id3::v1::parse(ID3_TagImpl& tag, ID3_Reader& reader)
+ {
+   io::ExitTrigger et(reader);
+   
+diff '--color=auto' -uNr a/src/utils.cpp b/src/utils.cpp
+--- a/src/utils.cpp	2003-03-02 00:23:00.000000000 -0000
++++ b/src/utils.cpp	2025-01-30 14:01:53.590000827 -0000
+@@ -230,7 +230,7 @@
+ 
+ namespace
+ {
+-  bool exists(String name)
++  my_bool exists(String name)
+   {
+     ifstream file(name.c_str(), NOCREATE);
+     return file.is_open() != 0;
+diff '--color=auto' -uNr a/include/id3/id3lib_strings.h b/include/id3/id3lib_strings.h
+--- a/include/id3/id3lib_strings.h	2025-01-30 14:28:46.548624168 -0000
++++ b/include/id3/id3lib_strings.h	2025-01-30 14:30:12.883263552 -0000
+@@ -31,6 +31,7 @@
+ 
+ #include <string>
+ #include <cstring>
++#include "id3/globals.h" //has my_bool
+ 
+ #if (defined(__GNUC__) && (__GNUC__ >= 3) || (defined(_MSC_VER) && _MSC_VER > 1000))
+ namespace std

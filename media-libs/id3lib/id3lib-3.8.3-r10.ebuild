@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-security.patch
 	"${FILESDIR}"/${P}-vbr-stack-smashing.patch # bug 398571
 	"${FILESDIR}"/${P}-configure-clang.patch
+	"${FILESDIR}"/${P}-fix-c23.patch
 )
 
 src_prepare() {
