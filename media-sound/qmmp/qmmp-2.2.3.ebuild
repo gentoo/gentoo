@@ -102,6 +102,11 @@ src_configure() {
 		-DUSE_TRACKCHANGE=ON
 		-DUSE_TWO_PANEL_DIALOG=ON
 
+		# our defaults
+		-DUSE_CONVERTER=ON # because taglib
+		-DUSE_RGSCAN=ON # because taglib
+		-DUSE_LIBRARY=ON # because qtbase[sqlite]
+
 		# turn off windows specific stuff
 		-DUSE_DSOUND=OFF
 		-DUSE_TASKBAR=OFF
