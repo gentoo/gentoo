@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>alexander@neuwirth-informatik.de</email>
 		<name>Alexander Puck Neuwirth</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="person" proxied="proxy">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
 		<email>sci-physics@gentoo.org</email>
 		<name>Gentoo Physics Project</name>
 	</maintainer>
