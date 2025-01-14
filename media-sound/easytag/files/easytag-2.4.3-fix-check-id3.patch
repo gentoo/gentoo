@@ -1,0 +1,42 @@
+https://gitlab.gnome.org/GNOME/easytag/-/merge_requests/3.patch
+From a41d48c8849aff8f6bc19ae1f449d8509c20d3ae Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Sat, 20 Jul 2019 15:42:05 +0800
+Subject: [PATCH] Use C++ linker to check for id3lib
+
+Instead of manually adding -lstdc++ to the linker command line, which
+isn't going to work if the C++ runtime library isn't provided by GCC,
+use the C++ compiler driver to link the program to avoid the need to
+figure out the name of the C++ runtime library ourselves.
+
+This fixes the check on FreeBSD, which uses Clang and LLVM libc++ by
+default.
+---
+ configure.ac | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8d93ef65..3603da27 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -254,7 +254,8 @@ AS_IF([test "x$have_mp3" != "xno"],
+ AS_IF([test "x$have_mp3" = "xyes" -a "x$enable_id3v23" != "xno"],
+       dnl Check which libs are required by id3lib, libid3.la is fucked up
+       [LIBS_SAVE="$LIBS"
+-       AC_SEARCH_LIBS([ID3Tag_Link], ["id3" "id3 -lstdc++" "id3 -lz" "id3 -lz -lstdc++"], [have_id3lib=yes], [have_id3lib=no])
++       AC_LANG_PUSH([C++])
++       AC_SEARCH_LIBS([ID3Tag_Link], ["id3" "id3 -lz"], [have_id3lib=yes], [have_id3lib=no])
+         
+        dnl expected version for cross compiling
+        ID3LIB_MAJOR=3
+@@ -272,6 +273,7 @@ AS_IF([test "x$have_mp3" = "xyes" -a "x$enable_id3v23" != "xno"],
+     fclose(output);
+     return 0;
+ ]])], [. ./conftest.id3; AC_MSG_RESULT([${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH}])], [AC_MSG_ERROR([could not determine id3lib version])], [echo $ac_n "cross compiling; assuming ${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH} $ac_c"])
++       AC_LANG_POP([C++])
+        LIBS="$LIBS_SAVE"
+        AC_DEFINE_UNQUOTED([ID3LIB_MAJOR], [$ID3LIB_MAJOR], [id3lib major version])
+        AC_DEFINE_UNQUOTED([ID3LIB_MINOR], [$ID3LIB_MINOR], [id3lib minor version])
+-- 
+GitLab
+

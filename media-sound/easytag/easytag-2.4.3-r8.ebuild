@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+GNOME2_EAUTORECONF="yes"
 inherit gnome2
 
 DESCRIPTION="GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags"
@@ -60,6 +61,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-ogg-corruption.patch
 	"${FILESDIR}"/${P}-fix-build-taglib2.patch
+	"${FILESDIR}"/${P}-fix-check-id3.patch
 )
 
 src_configure() {
@@ -76,10 +78,4 @@ src_configure() {
 		$(use_enable flac) \
 		$(use_enable mp4) \
 		$(use_enable wavpack)
-}
-
-src_install() {
-	gnome2_src_install
-	# https://gitlab.gnome.org/GNOME/easytag/-/issues/82
-	mv "${ED}"/usr/share/{appdata,metainfo} || die
 }
