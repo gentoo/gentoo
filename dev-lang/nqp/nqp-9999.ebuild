@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
 CDEPEND="java? (
-		dev-java/asm:9
+		>=dev-java/asm-9.7.1_p20241213:0
 		dev-java/jna:4
 	)
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
