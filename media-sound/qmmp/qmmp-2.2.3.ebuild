@@ -91,13 +91,24 @@ DOCS=( AUTHORS ChangeLog README )
 PATCHES=( "${FILESDIR}"/${P}_build-with-projectm4.patch )
 
 src_configure() {
-	local mycmakeargs=(
+	local mycmakeargs=( # listed in readme
+		# explicit defaults
+		-DUSE_COPYPASTE=ON
+		-DUSE_DIR_ASSOC=ON
+		-DUSE_FILEOPS=ON
+		-DUSE_MONOTOSTEREO=ON
+		-DUSE_NULL=ON
+		-DUSE_QMMP_DIALOG=ON
+		-DUSE_TRACKCHANGE=ON
+		-DUSE_TWO_PANEL_DIALOG=ON
+
 		# turn off windows specific stuff
 		-DUSE_DSOUND=OFF
 		-DUSE_TASKBAR=OFF
 		-DUSE_RDETECT=OFF
 		-DUSE_WASAPI=OFF
 		-DUSE_WAVEOUT=OFF
+
 		# set USE flags
 		-DUSE_AAC="$(usex aac)"
 		-DUSE_ALSA="$(usex alsa)"
