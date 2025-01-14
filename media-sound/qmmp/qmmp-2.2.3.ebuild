@@ -90,6 +90,13 @@ DOCS=( AUTHORS ChangeLog README )
 
 src_configure() {
 	local mycmakeargs=(
+		# turn off windows specific stuff
+		-DUSE_DSOUND=OFF
+		-DUSE_TASKBAR=OFF
+		-DUSE_RDETECT=OFF
+		-DUSE_WASAPI=OFF
+		-DUSE_WAVEOUT=OFF
+		# set USE flags
 		-DUSE_AAC="$(usex aac)"
 		-DUSE_ALSA="$(usex alsa)"
 		-DUSE_ANALYZER="$(usex analyzer)"
