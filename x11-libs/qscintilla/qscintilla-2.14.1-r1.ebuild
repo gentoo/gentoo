@@ -1,22 +1,21 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+MY_PN=QScintilla
+MY_P=${MY_PN}_src-${PV/_pre/.dev}
 inherit flag-o-matic multibuild qmake-utils
 
 DESCRIPTION="Qt port of Neil Hodgson's Scintilla C++ editor control"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
-
-MY_PN=QScintilla
-MY_P=${MY_PN}_src-${PV/_pre/.dev}
 SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0/15"
 KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86"
-IUSE="designer doc +qt5 qt6"
+IUSE="designer doc qt5 +qt6"
 
 REQUIRED_USE="|| ( qt5 qt6 )"
 
