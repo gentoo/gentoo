@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	dev-libs/libutf8proc
 	>=media-libs/libsdl2-2.0.5[X]
 	x11-libs/libX11
 	x11-libs/libXv
