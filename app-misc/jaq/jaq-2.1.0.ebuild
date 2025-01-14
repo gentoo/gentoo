@@ -77,7 +77,7 @@ CRATES="
 	yansi@1.0.1
 "
 
-RUST_MIN_VER="1.65.0"
+#RUST_MIN_VER="1.65.0"
 inherit cargo
 
 DESCRIPTION="Just another JSON query tool"
