@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~x86"
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
 
 RDEPEND="gnome-extra/zenity
