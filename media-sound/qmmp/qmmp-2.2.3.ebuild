@@ -3,7 +3,11 @@
 
 EAPI=8
 
-inherit cmake xdg
+# docs should be migrated to cmake
+DOCS_BUILDER=doxygen
+DOCS_DIR="${S}"/doc
+
+inherit cmake docs xdg
 
 DESCRIPTION="Qt6-based audio player with winamp/xmms skins support"
 HOMEPAGE="https://qmmp.ylsoftware.com"
@@ -171,6 +175,19 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	docs_compile
+}
+
+src_install() {
+	cmake_src_install
+	if use doc; then #
+		mv "${ED}"/usr/share/doc/${PF}/html/{doxygen/,./} || die
+		rmdir "${ED}"/usr/share/doc/${PF}/html/doxygen || die
+	fi
 }
 
 pkg_postinst() {
