@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -209,6 +209,9 @@ src_prepare() {
 	sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
 		-i source4/dsdb/samdb/ldb_modules/password_hash.c \
 		|| die
+
+	# bug #943942
+	append-cflags -std=gnu17
 
 	# WAF
 	multilib_copy_sources
