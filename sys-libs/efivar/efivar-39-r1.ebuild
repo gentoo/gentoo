@@ -1,4 +1,4 @@
-# Copyright 2014-2024 Gentoo Authors
+# Copyright 2014-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,11 +36,14 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-ld-force-bfd
+	tc-export_build_env
+
 	unset CROSS_COMPILE
 	export COMPILER=$(tc-getCC)
 	export HOSTCC=$(tc-getBUILD_CC)
-
-	tc-ld-disable-gold
+	export HOST_CFLAGS=${BUILD_CFLAGS}
+	export HOST_LDFLAGS=${BUILD_LDFLAGS}
 
 	export PREFIX="${EPREFIX}/usr"
 	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
