@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools desktop
 
@@ -39,6 +39,7 @@ src_configure() {
 		$(use_enable nls)
 		$(usex gtk '' --without-gtk)
 		$(usex gpm '' --without-gpm)
+		--without-sysmouse #921162 
 	)
 
 	econf "${myeconfargs[@]}"
