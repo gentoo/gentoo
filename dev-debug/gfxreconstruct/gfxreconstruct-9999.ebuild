@@ -42,12 +42,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-libs/libXrandr )
 "
-if [[ ${PV} == 9999* ]]; then
+if [[ ${PV} != 9999* ]]; then
 	DEPEND+="
 		~dev-util/spirv-headers-${PV}
 		~dev-util/vulkan-headers-${PV}
 	"
-else
 	PATCHES=(
 		"${FILESDIR}"/1.3.296.0-use-system-vulkan.patch
 	)
