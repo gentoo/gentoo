@@ -7,7 +7,7 @@ inherit multilib-build
 
 DESCRIPTION="Virtual for OpenCL API"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/opencl-icd-loader-2023.02.06[${MULTILIB_USEDEP}]
