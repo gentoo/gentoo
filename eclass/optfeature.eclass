@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: optfeature.eclass
@@ -79,7 +79,7 @@ optfeature_header() {
 # @CODE
 # pkg_postinst() {
 # 	optfeature "foo support" app-misc/foo
-# 	optfeature "bar support" app-misc/bar app-misc/baz[bar]
+# 	optfeature "bar support" app-misc/bar "app-misc/baz[bar]"
 # 	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
 # }
 # @CODE
