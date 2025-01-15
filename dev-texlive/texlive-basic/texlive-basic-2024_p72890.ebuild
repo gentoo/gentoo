@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -81,7 +81,7 @@ DESCRIPTION="TeXLive Essential programs and files"
 
 LICENSE="GPL-1+ GPL-2+ LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 COMMON_DEPEND="
 	>=app-text/texlive-core-2024[luajittex?]
 "
