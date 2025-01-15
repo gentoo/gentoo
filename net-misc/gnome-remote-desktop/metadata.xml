@@ -5,9 +5,6 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
-  <use>
-    <flag name="aac">Use <pkg>media-libs/fdk-aac</pkg> for audio output redirection of the RDP backend</flag>
-  </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/gnome-remote-desktop</remote-id>
   </upstream>
