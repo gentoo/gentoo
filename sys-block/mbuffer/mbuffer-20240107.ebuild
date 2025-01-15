@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-20180410-sysconfdir.patch"
 	"${FILESDIR}/${PN}-20200929-find-OBJDUMP.patch"
 	"${FILESDIR}/${PN}-20231216-autoconf-warning.patch"
+	"${FILESDIR}/${PN}-20240107-O0-for-libc-name-find.patch"
 )
 
 src_prepare() {

@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/938689
+
+mbuffer use macro LIBC_(OPEN|READ|WRITE|FSTAT) whic are determined by
+'objdump -T ... | awk ...', but in the case of clag (at least for now),
+depend on the optimization levels, open|read will be optimized to other
+methods which cause LIBC_(OPEN|READ) become "", then error bellow:
+
+expected identifier or '('
+   55 | int LIBC_OPEN(const char *path, int oflag, ...)
+
+I don't know the reason to find the name of open|read|write|fstat by this
+test, so use -O0 for the feature test code.
+
+Upstream Replied:
+> this concept is needed for the tapedrive emulator that replicates the
+> behavior of specific devices.
+
+diff --git a/configure.in b/configure.in
+index 95d6772..081625a 100644
+--- a/configure.in
++++ b/configure.in
+@@ -155,6 +155,8 @@ AC_LANG(C)
+ if test -z "$OBJDUMP"; then
+ 	AC_MSG_WARN([unable to find objdump, which is needed to run tests])
+ else
++	m4_pushdef([ORIGINAL_CFLAGS], [$CFLAGS])
++	CFLAGS="-O0"
+ 	AC_MSG_CHECKING([linking open() and write() to detect libc names])
+ 	AC_LINK_IFELSE([
+ 	AC_LANG_SOURCE([[
+@@ -191,6 +193,7 @@ else
+ 	],
+ 	[AC_MSG_FAILURE([failed to link open/write test])]
+ 	)
++	CFLAGS="${ORIGINAL_CFLAGS}"
+ fi
+ 
+ 
