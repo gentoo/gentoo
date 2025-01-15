@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/946658
+Fix declaration without arguments
+--- a/src/plugin_desc.h
++++ b/src/plugin_desc.h
+@@ -59,7 +59,7 @@
+ plugin_desc_t * plugin_desc_new_with_descriptor (const char * object_file,
+                                                  unsigned long index,
+                                                  const LADSPA_Descriptor * descriptor);
+-void            plugin_desc_destroy ();
++void            plugin_desc_destroy (plugin_desc_t * pd);
+ 
+ void plugin_desc_set_object_file (plugin_desc_t * pd, const char * object_file);
+ void plugin_desc_set_index       (plugin_desc_t * pd, unsigned long index);
+https://bugs.gentoo.org/919502
+compatibility with Lash >= 0.5.2
+--- a/src/ui_callbacks.c	2025-01-15 17:07:29.738203642 +0400
++++ b/src/ui_callbacks.c	2025-01-15 17:07:57.206845017 +0400
+@@ -307,6 +307,41 @@
+ 
+ 
+ #ifdef HAVE_LASH
++
++/* function from LASH, is internal function in 0.5.4, but GPLv2+
++ *   Copyright (C) 2008 Juuso Alasuutari <juuso.alasuutari@gmail.com>
++ *   Copyright (C) 2002 Robert Ham <rah@bash.sh>
++ */
++const char *
++lash_get_fqn(const char *param_dir,
++             const char *param_file)
++{
++        static char *fqn = NULL;
++        static size_t fqn_size = 48;
++        size_t str_size;
++        char *dir, *file;
++
++        dir = strdup(param_dir);
++        file = strdup(param_file);
++
++        if (!fqn)
++                fqn = malloc(sizeof(char) * fqn_size);
++
++        str_size = strlen(dir) + 1 + strlen(file) + 1;
++
++        if (str_size > fqn_size) {
++                fqn_size = str_size;
++                fqn = realloc(fqn, sizeof(char) * fqn_size);
++        }
++
++        sprintf(fqn, "%s/%s", dir, file);
++
++        free(dir);
++        free(file);
++
++        return fqn;
++}
++
+ static int
+ lash_idle (ui_t * ui, lash_client_t * client)
+ {
