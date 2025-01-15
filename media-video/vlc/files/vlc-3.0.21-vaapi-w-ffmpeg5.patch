@@ -1,0 +1,149 @@
+From ba5dc03aecc1d96f81b76838f845ebde7348cf62 Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Fri, 20 Dec 2024 20:24:36 +0100
+Subject: [PATCH] avcodec: vaapi: Support VAAPI with latest FFmpeg
+
+---
+ configure.ac                            | 20 +------------
+ modules/codec/Makefile.am               |  2 +-
+ modules/codec/avcodec/avcommon_compat.h |  3 ++
+ modules/codec/avcodec/vaapi.c           | 38 +++++++++++++++++++++++--
+ 4 files changed, 41 insertions(+), 22 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 00afb063c455..089339e10e0b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2550,25 +2550,7 @@ AM_CONDITIONAL([HAVE_VAAPI], [test "${have_vaapi}" = "yes"])
+ AM_CONDITIONAL([HAVE_VAAPI_DRM], [test "${have_vaapi_drm}" = "yes"])
+ AM_CONDITIONAL([HAVE_VAAPI_X11], [test "${have_vaapi_x11}" = "yes"])
+ AM_CONDITIONAL([HAVE_VAAPI_WL], [test "${have_vaapi_wl}" = "yes"])
+-
+-have_avcodec_vaapi="no"
+-AS_IF([test "${have_vaapi}" = "yes" -a "${have_avcodec}" = "yes"], [
+-  VLC_SAVE_FLAGS
+-  CPPFLAGS="${CPPFLAGS} ${AVCODEC_CFLAGS}"
+-  CFLAGS="${CFLAGS} ${AVCODEC_CFLAGS}"
+-  AC_CHECK_HEADERS([libavcodec/vaapi.h], [
+-    AC_MSG_NOTICE([VA API acceleration activated])
+-    have_avcodec_vaapi="yes"
+-  ],[
+-    AS_IF([test -n "${enable_libva}"], [
+-      AC_MSG_ERROR([libva is present but libavcodec/vaapi.h is missing])
+-    ], [
+-      AC_MSG_WARN([libva is present but libavcodec/vaapi.h is missing ])
+-    ])
+-  ])
+-  VLC_RESTORE_FLAGS
+-])
+-AM_CONDITIONAL([HAVE_AVCODEC_VAAPI], [test "${have_avcodec_vaapi}" = "yes"])
++AM_CONDITIONAL([HAVE_AVCODEC_VAAPI], [test "${have_vaapi}" = "yes" -a "${have_avcodec}" = "yes"])
+ 
+ dnl
+ dnl dxva2 needs avcodec
+diff --git a/modules/codec/Makefile.am b/modules/codec/Makefile.am
+index 6d9465fdaef9..dd04391c1bf7 100644
+--- a/modules/codec/Makefile.am
++++ b/modules/codec/Makefile.am
+@@ -416,7 +416,7 @@ libvaapi_plugin_la_SOURCES = \
+ 	codec/avcodec/vaapi.c hw/vaapi/vlc_vaapi.c hw/vaapi/vlc_vaapi.h
+ libvaapi_plugin_la_CPPFLAGS = $(AM_CPPFLAGS)
+ libvaapi_plugin_la_CFLAGS = $(AM_CFLAGS) $(AVCODEC_CFLAGS)
+-libvaapi_plugin_la_LIBADD = $(LIBVA_LIBS)
++libvaapi_plugin_la_LIBADD = $(LIBVA_LIBS) $(AVCODEC_LIBS)
+ if HAVE_AVCODEC_VAAPI
+ if HAVE_VAAPI_DRM
+ codec_LTLIBRARIES += libvaapi_drm_plugin.la
+diff --git a/modules/codec/avcodec/avcommon_compat.h b/modules/codec/avcodec/avcommon_compat.h
+index ac02c06d2339..8ab6910f3250 100644
+--- a/modules/codec/avcodec/avcommon_compat.h
++++ b/modules/codec/avcodec/avcommon_compat.h
+@@ -84,6 +84,9 @@
+ #ifndef FF_API_AVIO_WRITE_NONCONST // removed in ffmpeg 7
+ # define FF_API_AVIO_WRITE_NONCONST (LIBAVFORMAT_VERSION_MAJOR < 61)
+ #endif
++#ifndef FF_API_STRUCT_VAAPI_CONTEXT
++# define FF_API_STRUCT_VAAPI_CONTEXT (LIBAVCODEC_VERSION_MAJOR < 59)
++#endif
+ 
+ #endif /* HAVE_LIBAVCODEC_AVCODEC_H */
+ 
+diff --git a/modules/codec/avcodec/vaapi.c b/modules/codec/avcodec/vaapi.c
+index c83269e43f30..e203baaf9ee2 100644
+--- a/modules/codec/avcodec/vaapi.c
++++ b/modules/codec/avcodec/vaapi.c
+@@ -42,12 +42,25 @@
+ # include <va/va_drm.h>
+ #endif
+ #include <libavcodec/avcodec.h>
++#if FF_API_STRUCT_VAAPI_CONTEXT
+ #include <libavcodec/vaapi.h>
++#else
++#include <libavutil/hwcontext_vaapi.h>
++#endif
+ 
+ #include "avcodec.h"
+ #include "va.h"
+ #include "../../hw/vaapi/vlc_vaapi.h"
+ 
++#if !FF_API_STRUCT_VAAPI_CONTEXT
++struct vaapi_context
++{
++    VADisplay display;
++    VAConfigID config_id;
++    VAContextID context_id;
++};
++#endif
++
+ struct vlc_va_sys_t
+ {
+     struct vlc_vaapi_instance *va_inst;
+@@ -145,8 +158,10 @@ static void Delete(vlc_va_t *va, void **hwctx)
+ 
+     (void) hwctx;
+ 
+-    vlc_vaapi_DestroyContext(o, sys->hw_ctx.display, sys->hw_ctx.context_id);
+-    vlc_vaapi_DestroyConfig(o, sys->hw_ctx.display, sys->hw_ctx.config_id);
++    if (sys->hw_ctx.context_id != VA_INVALID_ID)
++        vlc_vaapi_DestroyContext(o, sys->hw_ctx.display, sys->hw_ctx.context_id);
++    if (sys->hw_ctx.config_id != VA_INVALID_ID)
++        vlc_vaapi_DestroyConfig(o, sys->hw_ctx.display, sys->hw_ctx.config_id);
+     vlc_vaapi_ReleaseInstance(sys->va_inst);
+     free(sys);
+ }
+@@ -196,6 +211,7 @@ static int Create(vlc_va_t *va, AVCodecContext *ctx, const AVPixFmtDescriptor *d
+     sys->hw_ctx.config_id = VA_INVALID_ID;
+     sys->hw_ctx.context_id = VA_INVALID_ID;
+ 
++#if FF_API_STRUCT_VAAPI_CONTEXT
+     sys->hw_ctx.config_id =
+         vlc_vaapi_CreateConfigChecked(o, sys->hw_ctx.display, i_profile,
+                                       VAEntrypointVLD, i_vlc_chroma);
+@@ -211,6 +227,24 @@ static int Create(vlc_va_t *va, AVCodecContext *ctx, const AVPixFmtDescriptor *d
+         goto error;
+ 
+     ctx->hwaccel_context = &sys->hw_ctx;
++#else
++    AVBufferRef *hwdev_ref = av_hwdevice_ctx_alloc(AV_HWDEVICE_TYPE_VAAPI);
++    if (hwdev_ref == NULL)
++        goto error;
++
++    AVHWDeviceContext *hwdev_ctx = (void *) hwdev_ref->data;
++    AVVAAPIDeviceContext *vadev_ctx = hwdev_ctx->hwctx;
++    vadev_ctx->display = va_dpy;
++
++    if (av_hwdevice_ctx_init(hwdev_ref) < 0)
++    {
++        av_buffer_unref(&hwdev_ref);
++        goto error;
++    }
++
++    ctx->hw_device_ctx = hwdev_ref;
++#endif
++
+     va->sys = sys;
+     va->description = vaQueryVendorString(sys->hw_ctx.display);
+     va->get = Get;
+-- 
+GitLab
+

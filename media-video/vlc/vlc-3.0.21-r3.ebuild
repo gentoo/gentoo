@@ -1,35 +1,19 @@
-# Copyright 2000-2024 Gentoo Authors
+# Copyright 2000-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} )
-
-MY_PV="${PV/_/-}"
-MY_PV="${MY_PV/-beta/-test}"
-MY_P="${PN}-${MY_PV}"
-if [[ ${PV} = *9999 ]] ; then
-	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_BRANCH="3.0.x"
-	fi
-	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
-	inherit git-r3
-else
-	if [[ ${MY_P} = ${P} ]] ; then
-		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
-	else
-		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
-	fi
-	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
-fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
+SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-taglib2.tar.xz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
 
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
@@ -233,6 +217,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
 	"${FILESDIR}"/${PN}-3.0.21-freerdp-2.patch # bug 919296, 590164
+	"${WORKDIR}"/${P}-taglib2 # bug 938946, in 3.0.x branch
+	"${FILESDIR}"/${PN}-3.0.2.1-vdpau.patch # bug 946178
+	"${FILESDIR}"/${P}-vaapi-w-ffmpeg5.patch # bug 864721, in 3.0.x branch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
