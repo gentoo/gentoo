@@ -9,8 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="HTTP client source plugin for GStreamer"
 KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
-RDEPEND="
-	>=net-libs/neon-0.30.0[${MULTILIB_USEDEP}]
-	<=net-libs/neon-0.33.99[${MULTILIB_USEDEP}]
-"
+RDEPEND=">=net-libs/neon-0.30.0[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
