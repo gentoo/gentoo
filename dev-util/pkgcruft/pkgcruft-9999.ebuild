@@ -61,6 +61,7 @@ src_compile() {
 	tc-export AR CC
 
 	cargo_src_compile
+	edo cargo run --features shell --bin pkgcruft-shell-comp -p pkgcruft
 }
 
 src_test() {
