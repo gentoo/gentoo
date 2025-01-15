@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,7 +58,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-99999999-compiler-rt-atomic-builtins.patch"
+	"${FILESDIR}/${PN}-22.12.0-compiler-rt-atomic-builtins.patch"
 )
 
 # These are measured on a loong machine with -ggdb on, and only checked
@@ -111,7 +111,7 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-20.6.0-paxmarking.patch )
+	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-22.12.0-paxmarking.patch )
 
 	# bug 931256
 	use riscv && PATCHES+=( "${FILESDIR}"/${PN}-22.2.0-riscv.patch )

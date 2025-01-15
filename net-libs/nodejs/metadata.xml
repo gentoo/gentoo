@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="corepack">Enable the experimental corepack package management tool</flag>
+		<flag name="llvm-atomic-builtins">Use atomic builtins from LLVM's compiler-rt instead of libatomic</flag>
 		<flag name="inspector">Enable V8 inspector</flag>
 		<flag name="npm">Enable NPM package manager</flag>
 		<flag name="pax-kernel">Enable building under a PaX enabled kernel</flag>
