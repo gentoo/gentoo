@@ -1,8 +1,8 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires eapi 5 or later. New entries go on top.
-# Please use the same syntax as in package.use.mask
+# New entries go on top.
+# Please use the same syntax as in package.use.mask.
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-04)
 # dev-libs/protobuf-28.3 is not yet marked stable.

@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires eapi 5 or later. New entries go on top.
-# Please use the same syntax as in package.use.force
+# New entries go on top.
+# Please use the same syntax as in package.use.force.
 
 ## Kent Fredric <kentnl@gentoo.org> (2019-07-11)
 # The absense of these features require dev-perl/GD, which currently
