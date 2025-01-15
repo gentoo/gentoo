@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome.org meson systemd xdg
+inherit gnome.org gnome2-utils meson systemd xdg
 
 DESCRIPTION="Backend implementation for xdg-desktop-portal using GNOME"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome"
@@ -17,8 +17,9 @@ IUSE="wayland X"
 # https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/74
 DEPEND="
 	dev-libs/glib:2
+	>=gnome-base/gsettings-desktop-schemas-47_alpha
 	gnome-base/gnome-desktop:4=
-	>=gui-libs/libadwaita-1.4.0:1
+	>=gui-libs/libadwaita-1.6_beta:1
 	media-libs/fontconfig
 	sys-apps/dbus
 	>=sys-apps/xdg-desktop-portal-1.18.2
@@ -42,4 +43,14 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }
