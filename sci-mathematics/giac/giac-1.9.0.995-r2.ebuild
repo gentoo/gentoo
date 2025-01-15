@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="GPL-3+"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LANGS="el en es pt"
 IUSE="ao doc +ecm examples gc +glpk gui test"
 for X in ${LANGS} ; do
