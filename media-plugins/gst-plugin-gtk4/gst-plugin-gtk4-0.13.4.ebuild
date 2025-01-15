@@ -166,6 +166,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	dev-util/cargo-c
+"
 
 QA_FLAGS_IGNORED="usr/lib.*/gstreamer-1.0/libgstgtk4.so"
 
