@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="https://strophe.im/libstrophe/"
@@ -29,13 +29,6 @@ BDEPEND="
 "
 
 DOCS=( ChangeLog )
-
-src_prepare() {
-	default
-
-	# tests patch touches Makefile.am, need to regenerate to avoid maintainer mode
-	eautoreconf
-}
 
 src_configure() {
 	# bug #944913
