@@ -16,6 +16,7 @@ RDEPEND="
 	dev-libs/libgee:0.8=
 	>=media-libs/gsound-1.0.2
 	>=gui-libs/gtk-4.6:4
+	>=gui-libs/libadwaita-1.5:1
 	x11-libs/pango
 	>=dev-libs/libgnome-games-support-2.0.0:2=
 "
