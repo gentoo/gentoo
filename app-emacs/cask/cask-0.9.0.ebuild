@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp
+inherit elisp optfeature
 
 DESCRIPTION="Project management for Emacs package development"
 HOMEPAGE="https://github.com/cask/cask/"
@@ -59,4 +59,10 @@ src_install() {
 
 	exeinto /usr/bin
 	doexe "./bin/${PN}"
+}
+
+pkg_postinst() {
+	elisp_pkg_postinst
+	optfeature "using ELPA archives via SSL" \
+		"net-libs/gnutls[tools] app-editors/emacs[ssl]"
 }
