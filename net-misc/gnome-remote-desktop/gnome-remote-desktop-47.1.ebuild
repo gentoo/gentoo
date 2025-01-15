@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson systemd xdg
+inherit gnome.org gnome2-utils meson systemd tmpfiles xdg
 
 DESCRIPTION="Remote desktop server which allows you to connect to your machine remotely"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-remote-desktop"
@@ -38,6 +38,8 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
+	acct-user/gnome-remote-desktop
+	acct-group/gnome-remote-desktop
 	x11-wm/mutter[screencast]
 "
 BDEPEND="
@@ -63,6 +65,7 @@ src_configure() {
 }
 
 pkg_postinst() {
+	tmpfiles_process "${PN}-tmpfiles.conf"
 	xdg_pkg_postinst
 	gnome2_schemas_update
 }
