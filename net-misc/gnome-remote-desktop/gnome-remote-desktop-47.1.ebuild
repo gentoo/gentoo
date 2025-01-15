@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit gnome.org gnome2-utils meson systemd xdg
 
-DESCRIPTION="Remote desktop daemon for GNOME using pipewire"
+DESCRIPTION="Remote desktop server which allows you to connect to your machine remotely"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-remote-desktop"
 
 LICENSE="GPL-2+"
