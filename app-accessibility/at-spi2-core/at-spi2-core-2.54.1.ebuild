@@ -61,7 +61,9 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
+	# Avoid locates using commas as decimal separators and breaking some
+	# tests
+	LC_ALL=C.UTF-8 virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
 
 multilib_src_install_all() {
