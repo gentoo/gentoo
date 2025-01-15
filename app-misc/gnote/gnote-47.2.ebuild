@@ -38,7 +38,9 @@ src_prepare() {
 
 	# Build system requires UnitTest++ >=1.5.1, but the .pc file doesn't
 	# specify a version
+	# https://gitlab.gnome.org/GNOME/gnote/-/issues/199
 	sed -i -e "/UnitTest++/ s/version: [^,]*,//" meson.build || die
+
 	if ! use test; then
 		sed -i -e "/unit_test_pp/ s/ = .*/ = disabler()/" meson.build || die
 	fi
