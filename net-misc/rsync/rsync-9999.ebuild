@@ -41,6 +41,8 @@ IUSE="acl examples iconv lz4 rrsync ssl stunnel system-zlib xattr xxhash zstd"
 REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
 REQUIRED_USE+=" rrsync? ( ${PYTHON_REQUIRED_USE} )"
 
+# attr is autodetected and then dropped by -Wl,--as-needed:
+# https://github.com/RsyncProject/rsync/pull/753
 RDEPEND="
 	>=dev-libs/popt-1.19
 	acl? ( virtual/acl )
@@ -57,7 +59,6 @@ RDEPEND="
 	)
 	ssl? ( dev-libs/openssl:= )
 	system-zlib? ( sys-libs/zlib )
-	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	xxhash? ( >=dev-libs/xxhash-0.8 )
 	zstd? ( >=app-arch/zstd-1.4:= )
 	iconv? ( virtual/libiconv )"
