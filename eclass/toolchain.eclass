@@ -3159,7 +3159,7 @@ toolchain_death_notice() {
 			pushd "${WORKDIR}" >/dev/null
 			(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > "${dir}"/gccinfo.log
 			[[ -e "${T}"/build.log ]] && cp "${T}"/build.log "${dir}"
-			tar -arf "${WORKDIR}"/gcc-build-logs.tar.xz \
+			tar -arf "${WORKDIR}"/gcc-build-logs.tar \
 				"${dir#${WORKDIR}/}"/gccinfo.log "${dir#${WORKDIR}/}"/build.log $(find -name "${dir#${WORKDIR}/}"/config.log)
 			rm "${dir#${WORKDIR}/}"/gccinfo.log "${dir#${WORKDIR}/}"/build.log
 			eerror
