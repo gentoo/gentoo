@@ -6,7 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-  	<flag name="editorconfig">Use EditorConfig for file settings</flag>
+    <flag name="editorconfig">Use EditorConfig for file settings</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/gnome-text-editor</remote-id>
