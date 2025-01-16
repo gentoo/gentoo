@@ -3,6 +3,12 @@ From: Paul Zander <negril.nx+gentoo@gmail.com>
 Date: Sun, 12 Jan 2025 19:22:48 +0100
 Subject: [PATCH] properly demangle typenames
 
+C++ class names are mangled. How these are mangled is implementation specific.
+Using string offsets is naive and caused at minimum testfailures.
+
+For gcc and clang you can use cxxabi.h to get demangled name.
+This initial patch uses this for linux only, so the gentoo build suceeeds.
+
 Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
 
 diff --git a/OndselSolver/ASMTItem.cpp b/OndselSolver/ASMTItem.cpp
@@ -168,6 +174,18 @@ index 75bcbb6..4961964 100644
  }
  
  std::shared_ptr<std::vector<Symsptr>> Symbolic::getTerms()
+diff --git a/OndselSolver/CMakeLists.txt b/OndselSolver/CMakeLists.txt
+index 6836e72..30d5bf4 100644
+--- a/OndselSolver/CMakeLists.txt
++++ b/OndselSolver/CMakeLists.txt
+@@ -426,6 +426,7 @@ set(ONDSELSOLVER_HEADERS
+         CREATE.h
+         CylindricalJoint.h
+         CylSphJoint.h
++        Demangle.h
+         DiagonalMatrix.h
+         DifferenceOperator.h
+         DifferentiatedGeneralSpline.h
 -- 
 2.48.0
 
