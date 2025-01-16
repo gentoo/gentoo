@@ -17,9 +17,9 @@ else
 fi
 
 LICENSE="GPL-2+ FDL-1.1+"
+SLOT="4"
 IUSE="gtk-doc test"
 RESTRICT="!test? ( test )"
-SLOT="4"
 
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
