@@ -141,8 +141,14 @@ DEPEND="
 		dev-libs/qr-code-generator
 	)
 "
-RDEPEND="${DEPEND}
-	qsv? ( media-libs/intel-mediasdk )
+RDEPEND="
+	${DEPEND}
+	qsv? (
+		|| (
+			media-libs/intel-mediasdk
+			media-libs/vpl-gpu-rt
+		)
+	)
 "
 
 QA_PREBUILT="
