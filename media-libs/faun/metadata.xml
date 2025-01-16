@@ -11,6 +11,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="codeberg">wickedsmoke/faun</remote-id>
-		<remote-id type="github">WickedSmoke/faun</remote-id>
 	</upstream>
 </pkgmetadata>
