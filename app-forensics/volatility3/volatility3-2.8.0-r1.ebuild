@@ -31,7 +31,11 @@ IUSE="crypt disasm jsonschema leechcore snappy test yara"
 RDEPEND="
 	>=dev-python/pefile-2023.2.7[${PYTHON_USEDEP}]
 	crypt? ( >=dev-python/pycryptodome-3[${PYTHON_USEDEP}] )
-	disasm? ( >=dev-libs/capstone-3.0.5[python,${PYTHON_USEDEP}] )
+	disasm?
+	(
+		>=dev-libs/capstone-3.0.5[python,${PYTHON_USEDEP}]
+		<dev-libs/capstone-6[python,${PYTHON_USEDEP}]
+	)
 	jsonschema? ( >=dev-python/jsonschema-2.3.0[${PYTHON_USEDEP}] )
 	leechcore? ( >=dev-python/leechcorepyc-2.4.0[${PYTHON_USEDEP}] )
 	snappy? ( app-arch/snappy:0/1.1 )
