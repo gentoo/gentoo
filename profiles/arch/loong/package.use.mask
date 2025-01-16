@@ -1,6 +1,11 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-16)
+# tests require qtwebengine which is unavailable
+dev-python/qtconsole test
+dev-python/qtpy test
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
 # Vulkan works on loong.
 gui-libs/gtk -vulkan
@@ -215,10 +220,6 @@ sys-cluster/openmpi openmpi_fabrics_knem openmpi_rm_pbs
 # fails to build with 6.3.x kernel
 sys-cluster/knem modules
 
-# Matt Turner <mattst88@gentoo.org> (2023-05-30)
-# sys-apps/dbus-broker is not keyworded
-app-accessibility/at-spi2-core dbus-broker
-
 # Mike Gilbert <floppym@gentoo.org> (2023-05-27)
 # Newer sd-boot does not use gnuefi.
 >=sys-apps/systemd-254 -boot -ukify
@@ -246,23 +247,9 @@ net-nds/openldap kerberos
 # further investigation.
 net-vpn/openconnect test
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
-# dev-python/pyside2 not keyworded yet
-dev-python/qtpy pyside2
-dev-python/qtconsole test
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # <dev-cpp/tbb-2021 fails to build on loong w/ gcc-13
 sci-libs/spqr tbb
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# sys-boot/gnu-efi upstream hasn't merged the loong port yet
-sys-apps/fwupd uefi
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# The loong port of sys-boot/grub:2 isn't upstreamed yet.
-dev-util/ostree grub
-sys-libs/efivar test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sci-libs/adolc fails to build on loong for now.
@@ -302,11 +289,6 @@ net-analyzer/rrdtool rados
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # Boost.Context has had support for loong since 1.79.0.
 dev-libs/boost -context
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
-# dev-qt/qtlocation:5 fails to compile with gcc-13 for now.
-dev-python/pyqt5 location
-dev-python/qtpy test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # Mask GRUB2 platforms not applicable to loong.
@@ -366,10 +348,6 @@ sys-block/fio -io-uring -zbc
 # We never had non-deprecated libcrypt support from glibc, so disable compat
 # from libxcrypt for a world without libcrypt.so.1
 sys-libs/libxcrypt compat
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
-# Catalyst has support for assembling bootloader on this arch
-dev-util/catalyst -system-bootloader
 
 # The below masks are liberally taken from riscv, which has similar
 # limitations.
