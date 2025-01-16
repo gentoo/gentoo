@@ -1,0 +1,209 @@
+From a1973df742bbdac335b28786f4d429e522bcf411 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 3 Jun 2024 15:05:01 +0300
+Subject: [PATCH] Add USE_SYSTEM_LIBS option to build without bundled libs
+
+* Based on a patch by Andreas Sturmlechner.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,7 @@ require_clang_version(7.0)
+ option(BUILD_TESTING "build test cases" OFF)
+ option(CRYFS_UPDATE_CHECKS "let cryfs check for updates and security vulnerabilities" ON)
+ option(DISABLE_OPENMP "allow building without OpenMP libraries. This will cause performance degradations." OFF)
++option(USE_SYSTEM_LIBS "build with system libs instead of bundled libs" OFF)
+ 
+ # The following options are helpful for development and/or CI
+ option(USE_WERROR "build with -Werror flag")
+@@ -41,7 +42,15 @@ endif()
+ 
+ include(cmake-utils/Dependencies.cmake)
+ 
+-add_subdirectory(vendor EXCLUDE_FROM_ALL)
++if(USE_SYSTEM_LIBS)
++    include(FindPkgConfig)
++    pkg_check_modules(CRYPTOPP REQUIRED IMPORTED_TARGET libcryptopp>=8.9)
++    add_library(cryfs_vendor_cryptopp ALIAS PkgConfig::CRYPTOPP)
++    add_definitions(-DUSE_SYSTEM_LIBS)
++else()
++    add_subdirectory(vendor EXCLUDE_FROM_ALL)
++endif()
++
+ add_subdirectory(src)
+ add_subdirectory(doc)
+ add_subdirectory(test)
+--- a/src/blockstore/implementations/compressing/compressors/Gzip.cpp
++++ b/src/blockstore/implementations/compressing/compressors/Gzip.cpp
+@@ -1,5 +1,9 @@
+ #include "Gzip.h"
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/gzip.h>
++#else
+ #include <vendor_cryptopp/gzip.h>
++#endif
+ 
+ using cpputils::Data;
+ 
+--- a/src/cpp-utils/crypto/hash/Hash.cpp
++++ b/src/cpp-utils/crypto/hash/Hash.cpp
+@@ -1,6 +1,10 @@
+ #include "Hash.h"
+ #include <cpp-utils/random/Random.h>
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/sha.h>
++#else
+ #include <vendor_cryptopp/sha.h>
++#endif
+ 
+ using CryptoPP::SHA512;
+ 
+--- a/src/cpp-utils/crypto/kdf/Scrypt.cpp
++++ b/src/cpp-utils/crypto/kdf/Scrypt.cpp
+@@ -1,5 +1,9 @@
+ #include "Scrypt.h"
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/scrypt.h>
++#else
+ #include <vendor_cryptopp/scrypt.h>
++#endif
+ 
+ using std::string;
+ 
+--- a/src/cpp-utils/crypto/symmetric/CFB_Cipher.h
++++ b/src/cpp-utils/crypto/symmetric/CFB_Cipher.h
+@@ -6,7 +6,11 @@
+ #include "../../data/Data.h"
+ #include "../../random/Random.h"
+ #include <boost/optional.hpp>
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/modes.h>
++#else
+ #include <vendor_cryptopp/modes.h>
++#endif
+ #include "Cipher.h"
+ #include "EncryptionKey.h"
+ 
+--- a/src/cpp-utils/crypto/symmetric/GCM_Cipher.h
++++ b/src/cpp-utils/crypto/symmetric/GCM_Cipher.h
+@@ -3,7 +3,12 @@
+ #define MESSMER_CPPUTILS_CRYPTO_SYMMETRIC_GCMCIPHER_H_
+ 
+ #include "AEAD_Cipher.h"
++
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/gcm.h>
++#else
+ #include <vendor_cryptopp/gcm.h>
++#endif
+ 
+ namespace cpputils {
+ 
+--- a/src/cpp-utils/crypto/symmetric/ciphers.h
++++ b/src/cpp-utils/crypto/symmetric/ciphers.h
+@@ -2,12 +2,21 @@
+ #ifndef MESSMER_CPPUTILS_CRYPTO_SYMMETRIC_CIPHERS_H_
+ #define MESSMER_CPPUTILS_CRYPTO_SYMMETRIC_CIPHERS_H_
+ 
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/aes.h>
++#include <cryptopp/twofish.h>
++#include <cryptopp/serpent.h>
++#include <cryptopp/cast.h>
++#include <cryptopp/mars.h>
++#include <cryptopp/chachapoly.h>
++#else
+ #include <vendor_cryptopp/aes.h>
+ #include <vendor_cryptopp/twofish.h>
+ #include <vendor_cryptopp/serpent.h>
+ #include <vendor_cryptopp/cast.h>
+ #include <vendor_cryptopp/mars.h>
+ #include <vendor_cryptopp/chachapoly.h>
++#endif
+ #include "GCM_Cipher.h"
+ #include "CFB_Cipher.h"
+ 
+--- a/src/cpp-utils/data/Data.cpp
++++ b/src/cpp-utils/data/Data.cpp
+@@ -1,6 +1,10 @@
+ #include "Data.h"
+ #include <stdexcept>
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/hex.h>
++#else
+ #include <vendor_cryptopp/hex.h>
++#endif
+ 
+ using std::istream;
+ using std::ofstream;
+--- a/src/cpp-utils/data/FixedSizeData.h
++++ b/src/cpp-utils/data/FixedSizeData.h
+@@ -2,7 +2,11 @@
+ #ifndef MESSMER_CPPUTILS_DATA_FIXEDSIZEDATA_H_
+ #define MESSMER_CPPUTILS_DATA_FIXEDSIZEDATA_H_
+ 
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/hex.h>
++#else
+ #include <vendor_cryptopp/hex.h>
++#endif
+ #include <string>
+ #include <array>
+ #include <cstring>
+--- a/src/cpp-utils/random/OSRandomGenerator.h
++++ b/src/cpp-utils/random/OSRandomGenerator.h
+@@ -3,7 +3,11 @@
+ #define MESSMER_CPPUTILS_RANDOM_OSRANDOMGENERATOR_H
+ 
+ #include "RandomGenerator.h"
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/osrng.h>
++#else
+ #include <vendor_cryptopp/osrng.h>
++#endif
+ 
+ namespace cpputils {
+     class OSRandomGenerator final : public RandomGenerator {
+--- a/src/cpp-utils/random/RandomGeneratorThread.h
++++ b/src/cpp-utils/random/RandomGeneratorThread.h
+@@ -4,7 +4,11 @@
+ 
+ #include "../thread/LoopThread.h"
+ #include "ThreadsafeRandomDataBuffer.h"
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/osrng.h>
++#else
+ #include <vendor_cryptopp/osrng.h>
++#endif
+ 
+ namespace cpputils {
+     //TODO Test
+--- a/src/cryfs/impl/localstate/BasedirMetadata.cpp
++++ b/src/cryfs/impl/localstate/BasedirMetadata.cpp
+@@ -1,7 +1,11 @@
+ #include "BasedirMetadata.h"
+ #include <boost/property_tree/ptree.hpp>
+ #include <boost/property_tree/json_parser.hpp>
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/sha.h>
++#else
+ #include <vendor_cryptopp/sha.h>
++#endif
+ #include <boost/filesystem/operations.hpp>
+ #include "LocalStateDir.h"
+ #include <cpp-utils/logging/logging.h>
+--- a/test/cryfs/impl/config/CompatibilityTest.cpp
++++ b/test/cryfs/impl/config/CompatibilityTest.cpp
+@@ -2,7 +2,11 @@
+ #include <vector>
+ #include <boost/filesystem.hpp>
+ #include <cpp-utils/data/Data.h>
++#if defined(USE_SYSTEM_LIBS)
++#include <cryptopp/hex.h>
++#else
+ #include <vendor_cryptopp/hex.h>
++#endif
+ #include <cpp-utils/crypto/symmetric/ciphers.h>
+ #include <cpp-utils/tempfile/TempFile.h>
+ #include <cryfs/impl/config/CryConfigFile.h>
+-- 
+2.48.0
+
