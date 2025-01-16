@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/898084
+https://bugs.gentoo.org/932312
+nothing defined HAVE_STDLIB_H to permit inclusion of stdlib.h,
+which caused failures to find correct version of db
+also fill the function definitions for C23
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,6 +5,9 @@
+ AC_INIT(src/main.c.in)
+ AC_CONFIG_HEADER(src/config.h)
+ 
++AC_INCLUDES_DEFAULT
++AC_USE_SYSTEM_EXTENSIONS
++
+ dnl
+ dnl Checks for programs.
+ dnl
+--- a/src/sg.h.in
++++ b/src/sg.h.in
+@@ -360,7 +360,7 @@
+ void   sgEmergency __P(());
+ void   sgReloadConfig __P(());
+ void   sgHandlerSigHUP __P((int));
+-void   sgAlarm __P(());
++void   sgAlarm __P((int signal));
+ int    sgStrRcmp __P((char *, char *));
+ int    sgStrRncmp __P((char *, char *, int));
+ int    sgDomStrRncmp __P((char *, char *, int));
+@@ -431,7 +431,7 @@
+ int    sgRegExpMatch __P((struct sgRegExp *, char *));
+ char   *sgRegExpSubst __P((struct sgRegExp *, char *));
+ 
+-void   sgDbInit __P(());
++void   sgDbInit __P((struct sgDb *Db, char *file));
+ void   sgDbLoadTextFile __P((struct sgDb *, char *, int));
+ void   sgDbUpdate __P((struct sgDb *, char *, char *, size_t));
+ 
