@@ -97,8 +97,9 @@ QA_FLAGS_IGNORED="usr/bin/fractal"
 src_prepare() {
 	default
 
-	# upstream dev settings are insane
-	sed -i -e 's:profile\.dev:ignored.insanity:' Cargo.toml || die
+	# ignore upstream settings, they force debug symbols for release
+	# and disable them for dev builds
+	sed -i -e 's:profile\.:ignored.&:' Cargo.toml || die
 }
 
 src_configure() {
