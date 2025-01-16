@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ LICENSE="Boost-1.0"
 # verify with abidiff!
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~x64-macos"
-IUSE="+asm static-libs"
+IUSE="+asm openmp static-libs"
 
 BDEPEND="
 	app-arch/unzip
@@ -39,6 +39,14 @@ BDEPEND="
 
 config_uncomment() {
 	sed -i -e "s://\s*\(#define\s*$1\):\1:" config.h || die
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -55,6 +63,9 @@ src_configure() {
 	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 	export PREFIX="${EPREFIX}/usr"
 	tc-export AR RANLIB
+
+	# https://github.com/cryfs/cryfs/issues/369#issuecomment-1030678487
+	use openmp && append-flags -fopenmp
 
 	# Long history of correctness bugs:
 	# https://github.com/weidai11/cryptopp/issues/1134
