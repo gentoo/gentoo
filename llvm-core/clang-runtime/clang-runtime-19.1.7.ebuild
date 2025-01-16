@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-build toolchain-funcs
+inherit multilib-build
 
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="https://clang.llvm.org/"
@@ -11,7 +11,7 @@ HOMEPAGE="https://clang.llvm.org/"
 LICENSE="metapackage"
 SLOT="${PV%%.*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
-IUSE="+compiler-rt libcxx openmp +sanitize"
+IUSE="+compiler-rt libcxx offload openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
 
 RDEPEND="
@@ -22,19 +22,10 @@ RDEPEND="
 		)
 	)
 	libcxx? ( >=llvm-runtimes/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? ( >=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}] )
+	openmp? (
+		>=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}]
+		offload? (
+			>=llvm-runtimes/offload-${PV}
+		)
+	)
 "
-
-pkg_pretend() {
-	if tc-is-clang; then
-		ewarn "You seem to be using clang as a system compiler.  As of clang-16,"
-		ewarn "upstream has turned a few warnings that commonly occur during"
-		ewarn "configure script runs into errors by default.  This causes some"
-		ewarn "configure tests to start failing, sometimes resulting in silent"
-		ewarn "breakage, missing functionality or runtime misbehavior.  It is"
-		ewarn "not yet clear whether the change will remain or be reverted."
-		ewarn
-		ewarn "For more information, please see:"
-		ewarn "https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213"
-	fi
-}
