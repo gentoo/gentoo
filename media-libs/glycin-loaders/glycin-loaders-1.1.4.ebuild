@@ -58,6 +58,9 @@ src_prepare() {
 
 	# https://gitlab.gnome.org/GNOME/glycin/-/issues/81
 	sed -i -e '\|/fonts|d' tests/tests.rs || die
+	# avoid depending on git
+	# https://gitlab.gnome.org/GNOME/glycin/-/issues/110
+	sed -i -e 's/git/false/' loaders/meson.build || die
 }
 
 src_configure() {
