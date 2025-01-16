@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -300,6 +300,11 @@ src_unpack() {
 	else
 		cargo_src_unpack
 	fi
+}
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+	rust_pkg_setup
 }
 
 src_configure() {
