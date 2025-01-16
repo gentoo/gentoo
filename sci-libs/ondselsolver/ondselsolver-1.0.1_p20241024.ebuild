@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,10 @@ CMAKE_SKIP_TESTS=(
 	OndselSolver.piston
 )
 
-PATCHES=( "${FILESDIR}/${P}-system-gtest.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-system-gtest.patch"
+	"${FILESDIR}/${PN}-1.0.1-include-cstdint-gcc15.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
