@@ -1,0 +1,40 @@
+From c8c08f50ba9900790ce4127eee4adcbda208ad7b Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 16 Jan 2025 18:19:25 +0300
+Subject: [PATCH] Fix buildsystem
+
+* Respect CFLAGS, library dependencies
+--- a/Makefile
++++ b/Makefile
+@@ -6,10 +6,11 @@ ifeq ($(STATIC),1)
+     STATIC_LIB=true
+ endif
+ 
+-CFLAGS+=-O3 -DNDEBUG
++CFLAGS?=-O3 -DNDEBUG
+ #CFLAGS+=-g -DDEBUG
++PKG_CONFIG?=pkg-config
+ 
+-OPT=-DUSE_LOAD_MEM -DUSE_SFX_GEN
++OPT=-DUSE_LOAD_MEM -DUSE_SFX_GEN `$(PKG_CONFIG) --cflags libpulse-simple libpulse vorbisfile`
+ 
+ DESTDIR ?= /usr/local
+ 
+@@ -22,11 +23,11 @@ else
+ LIB_DIR=$(DESTDIR)/lib
+ endif
+ 
+-DEP_LIB = -lpulse -lvorbisfile -lpthread -lm
++DEP_LIB = `$(PKG_CONFIG) --libs libpulse-simple libpulse vorbisfile` -lpthread -lm
+ 
+ ifeq ($(FLAC),1)
+-OPT+=-DUSE_FLAC=1
+-DEP_LIB+=-lFLAC
++OPT+=-DUSE_FLAC=1 `$(PKG_CONFIG) --cflags flac`
++DEP_LIB+=`$(PKG_CONFIG) --libs flac`
+ else ifeq ($(FLAC),2)
+ OPT+=-DUSE_FLAC=2
+ endif
+-- 
+2.45.2
+
