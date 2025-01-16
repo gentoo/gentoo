@@ -100,6 +100,14 @@ src_prepare() {
 	# ignore upstream settings, they force debug symbols for release
 	# and disable them for dev builds
 	sed -i -e 's:profile\.:ignored.&:' Cargo.toml || die
+
+	# force linking against libwebp dynamically
+	# https://github.com/NoXF/libwebp-sys/issues/17
+	cat > "${ECARGO_VENDOR}/libwebp-sys-0.9.6/build.rs" <<-EOF || die
+		fn main() {
+			println!("cargo:rustc-link-lib=dylib=webp");
+		}
+	EOF
 }
 
 src_configure() {
