@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,11 @@ HOMEPAGE="http://cr.yp.to/serialmail.html"
 SRC_URI="http://cr.yp.to/software/${P}.tar.gz
 	mirror://gentoo/${P}-patch.tar.bz2"
 
-LICENSE="all-rights-reserved"
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE="static"
-RESTRICT="mirror bindist test"
+RESTRICT="test"
 
 BDEPEND="sys-apps/groff"
 DEPEND=">=sys-apps/ucspi-tcp-0.88"
