@@ -1,6 +1,18 @@
---- a/configure.ac	2022-12-15 10:33:13.845801113 +0300
-+++ b/configure.ac	2022-12-15 10:33:39.828949903 +0300
-@@ -342,6 +342,9 @@
+https://bugs.gentoo.org/919449
+patch by joergd <joergd@bitquell.de>
+--- a/configure.ac	2019-02-02 18:00:40.000000000 +0100
++++ b/configure.ac	2025-01-13 12:13:48.087653985 +0100
+@@ -233,6 +233,9 @@
+     AC_DEFINE(HAVE_LIBLDAP, 1, [Define if LDAP support should be compiled])
+     AC_RUN_IFELSE([AC_LANG_SOURCE([[
+         #include <ldap.h>
++        #ifdef HAVE_STDLIB_H
++            #include <stdlib.h>
++        #endif
+         int main()
+         {
+            LDAP *p;
+@@ -342,6 +345,9 @@
  LIBS="$LIBS -ldb"
  AC_RUN_IFELSE([AC_LANG_SOURCE([[
      #include <db.h>
@@ -10,7 +22,27 @@
      int main() 
      {
          int major, minor, patch;
-@@ -377,6 +378,9 @@
+@@ -377,6 +383,9 @@
+ 
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+     #include <db.h>
++    #ifdef HAVE_STDLIB_H
++        #include <stdlib.h>
++    #endif
+     int main() 
+     {
+         int major, minor, patch;
+@@ -413,6 +422,9 @@
+ 
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+     #include <db.h>
++    #ifdef HAVE_STDLIB_H
++        #include <stdlib.h>
++    #endif
+     int main() 
+     {
+         int major, minor, patch;
+@@ -441,6 +453,9 @@
  
  AC_RUN_IFELSE([AC_LANG_SOURCE([[
      #include <db.h>
