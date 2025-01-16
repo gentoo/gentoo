@@ -10,10 +10,11 @@ DESCRIPTION="A better i7 (and now i3, i5) reporting tool for Linux"
 HOMEPAGE="https://github.com/ajaiantilal/i7z"
 SRC_URI="https://github.com/ajaiantilal/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
-
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
+
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+
 IUSE="policykit qt6"
 
 RDEPEND="
