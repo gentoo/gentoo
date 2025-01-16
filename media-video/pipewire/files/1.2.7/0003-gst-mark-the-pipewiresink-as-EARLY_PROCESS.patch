@@ -1,0 +1,29 @@
+From 938283aee4a1c120bf1c9285090ea196a5b5c89b Mon Sep 17 00:00:00 2001
+Message-ID: <938283aee4a1c120bf1c9285090ea196a5b5c89b.1737052666.git.sam@gentoo.org>
+In-Reply-To: <1993383ddf67e296334c7916d6afc699ee6300c7.1737052666.git.sam@gentoo.org>
+References: <1993383ddf67e296334c7916d6afc699ee6300c7.1737052666.git.sam@gentoo.org>
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 26 Nov 2024 16:57:14 +0100
+Subject: [PATCH 3/8] gst: mark the pipewiresink as EARLY_PROCESS
+
+We want to receive process callbacks as soon as a buffer is ready for
+reuse because we dequeue it for use in our buffer pool.
+---
+ src/gst/gstpipewiresink.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gst/gstpipewiresink.c b/src/gst/gstpipewiresink.c
+index b39a335d8..d79ceaa66 100644
+--- a/src/gst/gstpipewiresink.c
++++ b/src/gst/gstpipewiresink.c
+@@ -633,6 +633,7 @@ gst_pipewire_sink_setcaps (GstBaseSink * bsink, GstCaps * caps)
+     char buf[64];
+ 
+     flags = PW_STREAM_FLAG_ASYNC;
++    flags |= PW_STREAM_FLAG_EARLY_PROCESS;
+     if (pwsink->mode != GST_PIPEWIRE_SINK_MODE_PROVIDE)
+       flags |= PW_STREAM_FLAG_AUTOCONNECT;
+     else
+-- 
+2.48.0
+
