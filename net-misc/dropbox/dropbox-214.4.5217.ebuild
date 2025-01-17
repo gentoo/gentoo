@@ -101,6 +101,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	einfo "Warning: while running, dropbox may attempt to autoupdate itself in"
 	einfo " your user's home directory.  To prevent this, run the following as"
 	einfo " each user who will run dropbox:"
