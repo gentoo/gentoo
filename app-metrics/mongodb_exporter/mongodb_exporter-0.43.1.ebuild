@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module
+inherit go-module systemd
 
 # update these on every bump
 BRANCH='tags/v0.43.1^0'
@@ -41,6 +41,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	systemd_dounit .scripts/systemd/${PN}.service
 
 	keepdir /var/log/mongodb_exporter
 	fowners ${PN}:${PN} /var/log/mongodb_exporter
