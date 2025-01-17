@@ -102,7 +102,7 @@ src_configure() {
 
 src_install() {
 	meson_install
-	rm -rf "${ED}/$(python_get_sitedir)"/*.egg-info || die
+	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
 	python_optimize
 
 	# html docs should be placed in /usr/share/doc/${PN}/html
