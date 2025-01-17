@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Fast, feature-rich, and cross-platform terminal emulator"
-HOMEPAGE="https://ghostty.org/"
+HOMEPAGE="https://ghostty.org/ https://github.com/ghostty-org/ghostty"
 
 declare -g -r -A ZBS_DEPENDENCIES=(
 	[breakpad-12207fd37bb8251919c112dcdd8f616a491857b34a451f7e4486490077206dc2a1ea.tar.gz]='https://github.com/getsentry/breakpad/archive/b99f444ba5f6b98cac261cbb391d8766b34a5918.tar.gz'
@@ -57,15 +57,14 @@ KEYWORDS="~amd64"
 # TODO: simdutf integration (missing Gentoo version)
 # TODO: spirv-cross integration (missing Gentoo package)
 RDEPEND="
+	>=dev-libs/oniguruma-6.9.9:=
+	>=dev-util/glslang-1.3.296.0:=
 	gui-libs/gtk:4=[X?]
-
-	adwaita? ( gui-libs/libadwaita:1= )
-	X? ( x11-libs/libX11 )
 	>=media-libs/fontconfig-2.14.2:=
 	>=media-libs/freetype-2.13.2:=[bzip2,harfbuzz,png]
-	>=dev-util/glslang-1.3.296.0:=
 	>=media-libs/harfbuzz-8.4.0:=[truetype]
-	>=dev-libs/oniguruma-6.9.9:=
+	X? ( x11-libs/libX11 )
+	adwaita? ( gui-libs/libadwaita:1= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
