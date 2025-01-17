@@ -24,7 +24,7 @@ KEYWORDS="~amd64"
 
 BDEPEND="dev-util/patchelf"
 
-QA_FLAGS_IGNORED="usr/lib.*/libnss_docker_ng.so*"
+QA_FLAGS_IGNORED="usr/lib.*/libnss_docker_ng.so.*"
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS='
@@ -34,6 +34,12 @@ To do so, add 'docker_ng' to the hosts line in /etc/nsswitch.conf
 An example hosts line looks like this:
 	hosts:      docker_ng resolve [!UNAVAIL=return] files myhostname dns
 '
+
+pkg_setup() {
+	rust_pkg_setup
+	# Requires nightly feature proc-macro2, bug #947565
+	export RUSTC_BOOTSTRAP=1
+}
 
 src_install() {
 	cd "$(cargo_target_dir)" || die
