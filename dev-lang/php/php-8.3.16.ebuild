@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -232,6 +232,13 @@ src_prepare() {
 	#
 	rm ext/sockets/tests/bug63000.phpt || die
 
+	# fails in a network sandbox,
+	# fixed upstream but not yet included in the stable releases.
+	#
+	# 	https://github.com/php/php-src/pull/17314
+	#
+	rm ext/standard/tests/http/gh16810.phpt || die
+
 	# Tests ignoring the "-n" flag we pass to run-tests.php,
 	#
 	#   https://github.com/php/php-src/pull/11669
@@ -285,13 +292,6 @@ src_prepare() {
 	   ext/gd/tests/bug65148.phpt \
 	   ext/gd/tests/bug73272.phpt \
 	   || die
-
-	# Test for https://github.com/php/php-src/issues/16390 relies
-	# on the inifile handler to be present, so we have to skip
-	# this test in case the inifile USE flag is _not_ set.
-	if ! use inifile ; then
-		rm ext/dba/tests/gh16390.phpt || die
-	fi
 
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
