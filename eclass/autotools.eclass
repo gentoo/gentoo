@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools.eclass
@@ -71,7 +71,7 @@ inherit gnuconfig libtool
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOCONF>
-_LATEST_AUTOCONF=( 2.72-r1:2.72 2.71-r6:2.71 )
+_LATEST_AUTOCONF=( 2.72-r1:2.72 )
 
 # @ECLASS_VARIABLE: _LATEST_AUTOMAKE
 # @INTERNAL
@@ -109,14 +109,13 @@ if [[ -n ${WANT_AUTOMAKE} ]] ; then
 			unset _automake_atom_tmp
 			;;
 		*)
-			_automake_atom="=dev-build/automake-${WANT_AUTOMAKE}*"
+			_automake_atom="dev-build/automake:${WANT_AUTOMAKE}"
 			;;
 	esac
 	export WANT_AUTOMAKE
 fi
 
 if [[ -n ${WANT_AUTOCONF} ]] ; then
-	# TODO: Fix the slot mess here and just have proper PV-as-SLOT?
 	# TODO: Make _LATEST_AUTOCONF an assoc. array and instead iterate over
 	# its keys.
 	case ${WANT_AUTOCONF} in
@@ -124,25 +123,13 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 			# some packages don't require autoconf at all
 			_autoconf_atom=""
 			;;
-		2.1)
-			_autoconf_atom=">=dev-build/autoconf-2.13-r7:2.1"
-			;;
-		2.5)
-			_autoconf_atom=">=dev-build/autoconf-2.71-r6:2.71"
-			;;
-		2.69)
-			_autoconf_atom=">=dev-build/autoconf-2.69-r9:2.69"
-			;;
-		2.71)
-			_autoconf_atom=">=dev-build/autoconf-2.71-r6:2.71"
-			;;
 		latest)
 			printf -v _autoconf_atom_tmp '>=dev-build/autoconf-%s:%s ' ${_LATEST_AUTOCONF[@]/:/ }
 			_autoconf_atom="|| ( ${_autoconf_atom_tmp} )"
 			unset _autoconf_atom_tmp
 			;;
 		*)
-			die "Invalid WANT_AUTOCONF value '${WANT_AUTOCONF}'"
+			_autoconf_atom="dev-build/autoconf:${WANT_AUTOCONF}"
 			;;
 	esac
 	export WANT_AUTOCONF
