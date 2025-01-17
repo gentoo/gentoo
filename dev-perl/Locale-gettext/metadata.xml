@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">gettext</remote-id>
     <remote-id type="cpan-module">Locale::gettext</remote-id>
+    <remote-id type="github">vandry/Perl-Locale-gettext</remote-id>
   </upstream>
 </pkgmetadata>
