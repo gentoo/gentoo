@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="89ba433c90edd89fe498f9a8e8c78c2020c841fd"
+WDL_COMMIT="dda0d7519ee9d50d59a39fc1b1a82001416a3dff"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
