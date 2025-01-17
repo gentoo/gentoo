@@ -14,13 +14,5 @@
 	</upstream>
 	<use>
 		<flag name="adwaita">Use <pkg>gui-libs/libadwaita</pkg> for better GNOME integration</flag>
-		<flag name="system-fontconfig">Use system fontconfig instead of the bundled one</flag>
-		<flag name="system-freetype">Use system freetype instead of the bundled one</flag>
-		<flag name="system-glslang">Use system glslang instead of the bundled one</flag>
-		<flag name="system-harfbuzz">Use system harfbuzz instead of the bundled one</flag>
-		<flag name="system-libpng">Use system libpng instead of the bundled one</flag>
-		<flag name="system-libxml2">Use system libxml2 instead of the bundled one</flag>
-		<flag name="system-oniguruma">Use system oniguruma instead of the bundled one</flag>
-		<flag name="system-zlib">Use system zlib instead of the bundled one</flag>
 	</use>
 </pkgmetadata>
