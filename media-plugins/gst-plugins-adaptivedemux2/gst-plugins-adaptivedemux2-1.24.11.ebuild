@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer-meson
 
 DESCRIPTION="Adaptive demuxer plugins for Gstreamer"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	>=dev-libs/libxml2-2.8[${MULTILIB_USEDEP}]
