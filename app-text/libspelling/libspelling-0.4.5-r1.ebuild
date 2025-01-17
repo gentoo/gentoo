@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="LGPL-2.1+"
 SLOT="1"
 KEYWORDS="~amd64"
-IUSE="gtk-doc vala"
+IUSE="gtk-doc sysprof vala"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -22,6 +22,7 @@ RDEPEND="
 	dev-libs/icu:=
 "
 DEPEND="${RDEPEND}
+	sysprof? ( dev-util/sysprof-capture:4 )
 	vala? (
 		$(vala_depend)
 		>=gui-libs/gtksourceview-5.6:5[vala]
@@ -43,6 +44,7 @@ src_configure() {
 		-Denchant=enabled
 		-Dinstall-static=false
 		$(meson_use gtk-doc docs)
+		$(meson_use sysprof)
 		$(meson_use vala vapi)
 	)
 	meson_src_configure
