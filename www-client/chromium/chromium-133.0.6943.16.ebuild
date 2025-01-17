@@ -30,7 +30,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 rust systemd toolchain-funcs 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="${PV%%\.*}"
+PATCH_V="${PV%%\.*}-1"
 SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}-linux.tar.xz
 		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 	test? (
@@ -38,7 +38,7 @@ SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}-linux.tar.xz
 		https://chromium-fonts.storage.googleapis.com/${TEST_FONT} -> chromium-testfonts-${TEST_FONT:0:10}.tar.gz
 	)
 	ppc64? (
-		https://gitlab.solidsilicon.io/public-development/open-source/chromium/openpower-patches/-/archive/${PPC64_HASH}/openpower-patches-${PPC64_HASH}.tar.bz2 -> chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
+		https://gitlab.raptorengineering.com/raptor-engineering-public/chromium/openpower-patches/-/archive/${PPC64_HASH}/openpower-patches-${PPC64_HASH}.tar.bz2 -> chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
 	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
@@ -178,6 +178,9 @@ BDEPEND="
 		llvm-core/clang:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
 		llvm-core/lld:${LLVM_SLOT}
+		official? (
+			!ppc64? ( llvm-runtimes/compiler-rt-sanitizers:${LLVM_SLOT}[cfi] )
+		)
 	')
 	pgo? (
 		>=dev-python/selenium-3.141.0
@@ -364,11 +367,6 @@ src_prepare() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
-	# disable global media controls, crashes with libstdc++
-	sed -i -e \
-		"/\"GlobalMediaControlsCastStartStop\"/,+4{s/ENABLED/DISABLED/;}" \
-		"chrome/browser/media/router/media_router_feature.cc"
-
 	local PATCHES=(
 		"${FILESDIR}/chromium-cross-compile.patch"
 		"${FILESDIR}/chromium-109-system-zlib.patch"
@@ -378,22 +376,42 @@ src_prepare() {
 		"${FILESDIR}/chromium-132-bindgen-custom-toolchain.patch"
 	)
 
-	PATCHES+=( "${WORKDIR}/chromium-patches-${PATCH_V}" )
+	shopt -s globstar nullglob
+	# 130: moved the PPC64 patches into the chromium-patches repo
+	local patch
+	for patch in "${WORKDIR}/chromium-patches-${PATCH_V}"/**/*.patch; do
+		if [[ ${patch} == *"ppc64le"* ]]; then
+			use ppc64 && PATCHES+=( "${patch}" )
+		else
+			PATCHES+=( "${patch}" )
+		fi
+	done
+
+	shopt -u globstar nullglob
 	# We can't use the bundled compiler builtins with the system toolchain
 	# `grep` is a development convenience to ensure we fail early when google changes something.
 	local builtins_match="if (is_clang && !is_nacl && !is_cronet_build) {"
 	grep -q "${builtins_match}" build/config/compiler/BUILD.gn || die "Failed to disable bundled compiler builtins"
 	sed -i -e "/${builtins_match}/,+2d" build/config/compiler/BUILD.gn
 
-	if use ppc64 ; then
-		local p
-		for p in $(grep -v "^#" "${WORKDIR}"/debian/patches/series | grep "^ppc64le" || die); do
-			if [[ ! $p =~ "fix-breakpad-compile.patch" ]]; then
-				eapply "${WORKDIR}/debian/patches/${p}"
-			fi
+	if use ppc64; then
+		local patchset_dir="${WORKDIR}/openpower-patches-${PPC64_HASH}/patches"
+		# patch causes build errors on 4K page systems (https://bugs.gentoo.org/show_bug.cgi?id=940304)
+		local page_size_patch="ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch"
+		local isa_3_patch="ppc64le/core/baseline-isa-3-0.patch"
+		# Apply the OpenPOWER patches (check for page size and isa 3.0)
+		openpower_patches=( $(grep -E "^ppc64le|^upstream" "${patchset_dir}/series" | grep -v "${page_size_patch}" |
+			grep -v "${isa_3_patch}" || die) )
+		for patch in "${openpower_patches[@]}"; do
+			PATCHES+=( "${patchset_dir}/${patch}" )
 		done
-		PATCHES+=( "${WORKDIR}/ppc64le" )
-		PATCHES+=( "${WORKDIR}/debian/patches/fixes/rust-clanglib.patch" )
+		if [[ $(getconf PAGESIZE) == 65536 ]]; then
+			PATCHES+=( "${patchset_dir}/${page_size_patch}" )
+		fi
+		# We use vsx3 as a proxy for 'want isa3.0' (POWER9)
+		if use cpu_flags_ppc_vsx3 ; then
+			PATCHES+=( +"${patchset_dir}/${isa_3_patch}" )
+		fi
 	fi
 
 	# This is a nightly option that does not exist any current release
@@ -414,9 +432,6 @@ src_prepare() {
 	# remove_bundled_libraries.py walks the source tree and looks for paths containing the substring 'third_party'
 	# whitelist matches use the right-most matching path component, so we need to whitelist from that point down.
 	local keeplibs=(
-		# third_party/jstemplate
-		# third_party/libevent
-		# third_party/qcms
 		base/third_party/cityhash
 		base/third_party/double_conversion
 		base/third_party/icu
@@ -525,6 +540,8 @@ src_prepare() {
 		third_party/highway
 		third_party/hunspell
 		third_party/iccjpeg
+		third_party/ink_stroke_modeler/src/ink_stroke_modeler
+		third_party/ink_stroke_modeler/src/ink_stroke_modeler/internal
 		third_party/ink/src/ink/brush
 		third_party/ink/src/ink/color
 		third_party/ink/src/ink/geometry
@@ -534,8 +551,6 @@ src_prepare() {
 		third_party/ink/src/ink/rendering/skia/native/internal
 		third_party/ink/src/ink/strokes
 		third_party/ink/src/ink/types
-		third_party/ink_stroke_modeler/src/ink_stroke_modeler
-		third_party/ink_stroke_modeler/src/ink_stroke_modeler/internal
 		third_party/inspector_protocol
 		third_party/ipcz
 		third_party/jinja2
@@ -545,8 +560,8 @@ src_prepare() {
 		third_party/leveldatabase
 		third_party/libaddressinput
 		third_party/libaom
-		third_party/libaom/source/libaom/third_party/SVT-AV1
 		third_party/libaom/source/libaom/third_party/fastfeat
+		third_party/libaom/source/libaom/third_party/SVT-AV1
 		third_party/libaom/source/libaom/third_party/vector
 		third_party/libaom/source/libaom/third_party/x86inc
 		third_party/libavif
@@ -608,8 +623,8 @@ src_prepare() {
 		third_party/pffft
 		third_party/ply
 		third_party/polymer
-		third_party/private-join-and-compute
 		third_party/private_membership
+		third_party/private-join-and-compute
 		third_party/protobuf
 		third_party/pthreadpool
 		third_party/puffin
@@ -638,14 +653,14 @@ src_prepare() {
 		third_party/spirv-tools
 		third_party/sqlite
 		third_party/swiftshader
-		third_party/swiftshader/third_party/SPIRV-Headers/include/spirv
-		third_party/swiftshader/third_party/SPIRV-Tools
 		third_party/swiftshader/third_party/astc-encoder
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/marl
+		third_party/swiftshader/third_party/SPIRV-Headers/include/spirv
+		third_party/swiftshader/third_party/SPIRV-Tools
 		third_party/swiftshader/third_party/subzero
-		third_party/tensorflow-text
 		third_party/tensorflow_models
+		third_party/tensorflow-text
 		third_party/tflite
 		third_party/tflite/src/third_party/eigen3
 		third_party/tflite/src/third_party/fft2d
@@ -681,7 +696,7 @@ src_prepare() {
 		url/third_party/mozilla
 		v8/third_party/glibc
 		v8/third_party/inspector_protocol
-		v8/third_party/siphash/
+		v8/third_party/siphash
 		v8/third_party/utf8-decoder
 		v8/third_party/v8
 		v8/third_party/valgrind
@@ -693,7 +708,7 @@ src_prepare() {
 	)
 
 	if use test; then
-		# tar tvf /var/cache/distfiles/${P}-testdata.tar.xz | grep '^d' | grep 'third_party' | awk '{print $NF}'
+		# tar tvf /var/cache/distfiles/${P}-linux-testdata.tar.xz | grep '^d' | grep 'third_party' | awk '{print $NF}'
 		keeplibs+=(
 			third_party/breakpad/breakpad/src/processor
 			third_party/google_benchmark/src/include/benchmark
@@ -1098,7 +1113,11 @@ chromium_configure() {
 		# Allow building against system libraries in official builds
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 			tools/generate_shim_headers/generate_shim_headers.py || die
-		myconf_gn+=" is_cfi=${use_lto}"
+		if use ppc64; then
+			myconf_gn+=" is_cfi=no" # requires llvm-runtimes/compiler-rt-sanitizers[cfi]
+		else
+			myconf_gn+=" is_cfi=${use_lto}"
+		fi
 		# Don't add symbols to build
 		myconf_gn+=" symbol_level=0"
 	fi
@@ -1281,6 +1300,7 @@ src_test() {
 		TestLauncherTools.TruncateSnippetFocusedMatchesFatalMessagesTest
 		ToolsSanityTest.BadVirtualCallNull
 		ToolsSanityTest.BadVirtualCallWrongType
+		CancelableEventTest.BothCancelFailureAndSucceedOccurUnderContention #new m133: TODO investigate
 	)
 	local test_filter="-$(IFS=:; printf '%s' "${skip_tests[*]}")"
 	# test-launcher-bot-mode enables parallelism and plain output
