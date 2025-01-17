@@ -26,8 +26,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# --disable-hardening because it just sets what our toolchain
+	# already does. If the user wants to disable that in their *FLAGS,
+	# or via USE on toolchain packages, honour that.
 	econf \
-		--with-openssl
+		--with-openssl \
+		--disable-hardening
 }
 
 src_install() {
