@@ -6,6 +6,6 @@
     <name>Patrick McLean</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">zevenet/nftlb</remote-id>
+    <remote-id type="github">relianoid/nftlb</remote-id>
   </upstream>
 </pkgmetadata>
