@@ -15,8 +15,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-IUSE="camelcase chm +inotify qt6 session +spell systemd webengine"
+IUSE="camelcase chm +inotify kde qt6 session +spell systemd webengine"
 REQUIRED_USE="
+	kde? ( qt6 )
 	session? ( inotify )
 	webengine? ( qt6 )
 	${PYTHON_REQUIRED_USE}
@@ -31,6 +32,9 @@ DEPEND="
 	chm? (
 		dev-libs/chmlib
 		dev-python/pychm
+	)
+	kde? (
+		kde-plasma/plasma-workspace:6
 	)
 	qt6? (
 		dev-qt/qtbase:6[gui,network,widgets]
@@ -98,12 +102,34 @@ src_configure() {
 
 src_install() {
 	meson_install
-	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
+	rm -rf "${ED}/$(python_get_sitedir)"/*.egg-info || die
 	python_optimize
 
 	# html docs should be placed in /usr/share/doc/${PN}/html
 	rm -r "${ED}/usr/share/${PN}/doc" || die
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
+
+	# The recoll kio plugin and krunner plugins can be built
+	# and compiled only after recoll has been installed in $ED
+	if use kde; then
+		mkdir -p "${WORKDIR}/build_kio" "${WORKDIR}/build_krunner" || die
+		mv -f "${WORKDIR}/${P}/kde/kioslave/kio_recoll/"{CMakeLists-KF6.txt,CMakeLists.txt} || die
+		mv -f "${WORKDIR}/${P}/kde/krunner/"{CMakeLists-KF6.txt,CMakeLists.txt} || die
+
+		pushd "${WORKDIR}/build_kio" > /dev/null || die
+		cmake -S "${WORKDIR}/${P}/kde/kioslave/kio_recoll" \
+			-DCMAKE_INSTALL_PREFIX="${ED}/usr" \
+			-DDATA_INSTALL_DIR="${ED}/usr/share/recoll" || die
+		cmake --build . || die
+		cmake --install . || die
+		popd > /dev/null
+
+		pushd "${WORKDIR}/build_krunner" > /dev/null || die
+		cmake -S "${WORKDIR}/${P}/kde/krunner" -DCMAKE_INSTALL_PREFIX="${ED}/usr" || die
+		cmake --build . || die
+		cmake --install . || die
+		popd > /dev/null
+	fi
 }
 
 pkg_postinst() {
