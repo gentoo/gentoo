@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="OpenPGP keys used by logging.apache.org"
 HOMEPAGE="https://logging.apache.org/log4j/2.x/download.html"
-SRC_URI="https://www.apache.org/dist/logging/KEYS -> ${P}-KEYS.asc"
+SRC_URI="https://downloads.apache.org/logging/KEYS -> ${P}-KEYS.asc"
 S="${WORKDIR}"
 
 LICENSE="public-domain"
