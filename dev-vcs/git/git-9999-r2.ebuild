@@ -181,6 +181,18 @@ src_unpack() {
 
 }
 
+src_prepare() {
+	if ! use safe-directory ; then
+		# This patch neuters the "safe directory" detection.
+		# bugs #838271, #838223
+		PATCHES+=(
+			"${FILESDIR}"/git-2.46.2-unsafe-directory.patch
+		)
+	fi
+
+	default
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature curl)

@@ -181,6 +181,18 @@ src_unpack() {
 
 }
 
+src_prepare() {
+	if ! use safe-directory ; then
+		# This patch neuters the "safe directory" detection.
+		# bugs #838271, #838223
+		PATCHES+=(
+			"${FILESDIR}"/git-2.46.2-unsafe-directory.patch
+		)
+	fi
+
+	default
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature curl)
@@ -253,6 +265,7 @@ src_compile() {
 
 	if use tk ; then
 		git_emake -C gitk-git
+		git_emake -C git-gui
 	fi
 
 	if use doc ; then
@@ -432,6 +445,7 @@ src_install() {
 
 	if use tk ; then
 		git_emake -C gitk-git DESTDIR="${D}" install
+		git_emake -C git-gui DESTDIR="${D}" install
 	fi
 
 	perl_delete_localpod
