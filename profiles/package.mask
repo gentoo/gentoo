@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-01-18)
+# Superseded by dev-python/terminaltables3, the only revdep switched
+# over.
+# Removal on 2025-02-17.  Bug #948333.
+dev-python/terminaltables
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
 # Last release from 2012, dead upstream for 7 years, no Gentoo maintainer.
 # Depends on dev-qt/qtwebengine:5, removed from almost every other distro.
