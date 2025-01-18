@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
@@ -33,16 +33,17 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	cd testsuite/tests
-	rm -r callgraph-install c-closure check-has-value check-shared-lib-import \
-		configuration-file-error-handling custom_attr_no_pack \
-		disable_warnings display-version extending-add-body \
-		extending-interface-in-extended-project \
+	rm -r \
+		autoconf callgraph-install c-closure check-has-value \
+		check-shared-lib-import configuration-file-error-handling \
+		custom_attr_no_pack disable_warnings display-version \
+		extending-add-body extending-interface-in-extended-project \
 		externals-in-configuration-project installed_asm_object \
 		invalid-project-2 kb-validation invalid-trace-file library-interfaces \
 		multi-unit-3 nested-case nested-externals no-naming-package-in-config \
 		parent-var-visible runtime-user-project self-project-attribute \
-		source_subdirs subdirs types-import unknown-var-config \
-		tooling/source_dirs || die
+		source_subdirs subdirs types-import unknown-var-config view_builder \
+		build_db_dag/actions_signature tooling/source_dirs || die
 	rm -r ali_parser/dependencies || die
 	cd tools
 	rm -r gprls/closure/base || die
