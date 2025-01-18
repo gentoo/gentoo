@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -48,6 +48,8 @@ COMMON_DEPEND="non-root? (
 	systemd? ( sys-apps/systemd )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
+	strongswan_plugins_botan? ( dev-libs/botan:2= )
+	strongswan_plugins_soup? ( net-libs/libsoup:2.4= )
 	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns:= )"
 
 DEPEND="${COMMON_DEPEND}
