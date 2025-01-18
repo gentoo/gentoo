@@ -1,0 +1,11 @@
+--- a/tokyocabinet.c	2025-01-18 08:58:51.200947224 +0100
++++ b/tokyocabinet.c	2025-01-18 09:03:40.936107401 +0100
+@@ -3164,7 +3164,7 @@
+   rb_define_method(cls_tdbqry, "setmax", tdbqry_setlimit, -1);
+   rb_define_method(cls_tdbqry, "search", tdbqry_search, 0);
+   rb_define_method(cls_tdbqry, "searchout", tdbqry_searchout, 0);
+-  rb_define_method(cls_tdbqry, "proc", tdbqry_proc, 0);
++  rb_define_method(cls_tdbqry, "proc", tdbqry_proc, 1);
+   rb_define_method(cls_tdbqry, "hint", tdbqry_hint, 0);
+   rb_define_method(cls_tdbqry, "metasearch", tdbqry_metasearch, -1);
+   rb_define_method(cls_tdbqry, "kwic", tdbqry_kwic, -1);
