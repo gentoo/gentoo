@@ -15,8 +15,8 @@ SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${PN}/${MY_P}.tgz
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
-SLOT="0/6" # subslot = soname version
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+SLOT="0/6.3.4" # subslot = soname version, check VERSION
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples unicode"
 
 DEPEND="sys-libs/ncurses:=[unicode(+)?]"
@@ -25,10 +25,6 @@ BDEPEND="
 	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-5.0.20240619-xlib.patch"
-)
 
 src_configure() {
 	if [[ ${CHOST} == *-*-darwin* ]] ; then
@@ -45,8 +41,7 @@ src_configure() {
 		--enable-const \
 		--with-shared \
 		--with-pkg-config \
-		--enable-pc-files \
-		--with-pkg-config-libdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig" \
+		--with-shlib-version=abi \
 		--with-ncurses$(usex unicode "w" "")
 }
 
