@@ -39,7 +39,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango
 	gpg? ( app-crypt/gpgme:= )
-	http? ( net-libs/libsoup:3.0 )
+	http? ( net-libs/libsoup:2.4 )
 	notification-sound? ( media-libs/libcanberra:0[sound(+)] )
 	omemo? (
 		dev-libs/libgcrypt:=
@@ -76,7 +76,9 @@ src_configure() {
 		"-DENABLED_PLUGINS=$(local IFS=";"; echo "${enabled_plugins[*]}")"
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
 		"-DVALA_EXECUTABLE=${VALAC}"
-		"-DSOUP_VERSION=3"
+		# libsoup-2 for bug #948374
+		# dino -> libnice[upnp] -> gupnp-igd:0 -> gupnp:0 -> libsoup:2.4
+		"-DSOUP_VERSION=2"
 		"-DBUILD_TESTS=$(usex test)"
 	)
 
