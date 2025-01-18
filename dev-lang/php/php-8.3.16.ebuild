@@ -31,7 +31,7 @@ IUSE="${IUSE}
 
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	capstone cdb +ctype curl debug
-	enchant exif ffi +fileinfo +filter firebird
+	enchant exif ffi +fileinfo +filter
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
 	intl iodbc ipv6 +jit jpeg kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
@@ -56,7 +56,6 @@ REQUIRED_USE="
 	qdbm? ( !gdbm )
 	session-mm? ( session !threads )
 	mysql? ( || ( mysqli pdo ) )
-	firebird? ( pdo )
 	mssql? ( pdo )
 	test? ( cli )
 	postgres? ( ${POSTGRES_REQ_USE} )
@@ -81,7 +80,6 @@ COMMON_DEPEND="
 	curl? ( net-misc/curl )
 	enchant? ( app-text/enchant:2 )
 	ffi? ( dev-libs/libffi:= )
-	firebird? ( dev-db/firebird )
 	gd? (
 		>=media-libs/gd-2.3.3-r4[avif?,jpeg?,png?,truetype?,webp?,xpm?]
 	)
@@ -498,7 +496,6 @@ src_configure() {
 			$(use_with mysql pdo-mysql "mysqlnd")
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite)
-			$(use_with firebird pdo-firebird "${EPREFIX}/usr")
 		)
 	fi
 

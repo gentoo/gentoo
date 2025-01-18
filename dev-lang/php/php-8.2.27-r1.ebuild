@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ IUSE="${IUSE}
 
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	cdb cjk +ctype curl debug
-	enchant exif ffi +fileinfo +filter firebird
+	enchant exif ffi +fileinfo +filter
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
 	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
@@ -65,7 +65,6 @@ REQUIRED_USE="
 	qdbm? ( !gdbm )
 	session-mm? ( session !threads )
 	mysql? ( || ( mysqli pdo ) )
-	firebird? ( pdo )
 	mssql? ( pdo )
 	test? ( cli )
 "
@@ -89,7 +88,6 @@ COMMON_DEPEND="
 	curl? ( >=net-misc/curl-7.29.0 )
 	enchant? ( app-text/enchant:2 )
 	ffi? ( >=dev-libs/libffi-3.0.11:= )
-	firebird? ( dev-db/firebird )
 	gd? ( media-libs/libjpeg-turbo:0= media-libs/libpng:0= )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
@@ -542,7 +540,6 @@ src_configure() {
 			$(use_with mysql pdo-mysql "mysqlnd")
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite)
-			$(use_with firebird pdo-firebird "${EPREFIX}/usr")
 			$(use_with oci8-instant-client pdo-oci)
 		)
 	fi
