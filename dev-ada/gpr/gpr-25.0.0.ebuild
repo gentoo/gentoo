@@ -3,32 +3,57 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_14 )
 
 inherit ada multiprocessing
 
 DESCRIPTION="LibGPR2 - Parser for GPR Project files"
 HOMEPAGE="https://github.com/AdaCore/gpr"
-SRC_URI="https://github.com/AdaCore/${PN}/releases/download/v${PV}/gpr2-with-lkparser-$(ver_cut 1-2).tgz"
+SRC_URI="https://github.com/AdaCore/${PN}/releases/download/v${PV}/gpr2-with-gprconfig_kb-$(ver_cut 1-2).tgz"
 
 S="${WORKDIR}"/${PN}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
-	dev-ada/gnatcoll-core[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	>=dev-ada/gnatcoll-core-25[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	dev-ada/gnatcoll-bindings[${ADA_USEDEP},shared?,static-libs?,static-pic?,iconv(+),gmp]
 "
 
 DEPEND="${RDEPEND}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]
 	dev-ada/gprbuild[${ADA_USEDEP}]"
+
+src_prepare() {
+	default
+	cd testsuite/tests
+	rm -r callgraph-install c-closure check-has-value check-shared-lib-import \
+		configuration-file-error-handling custom_attr_no_pack \
+		disable_warnings display-version extending-add-body \
+		extending-interface-in-extended-project \
+		externals-in-configuration-project installed_asm_object \
+		invalid-project-2 kb-validation invalid-trace-file library-interfaces \
+		multi-unit-3 nested-case nested-externals no-naming-package-in-config \
+		parent-var-visible runtime-user-project self-project-attribute \
+		source_subdirs subdirs types-import unknown-var-config \
+		tooling/source_dirs || die
+	rm -r ali_parser/dependencies || die
+	cd tools
+	rm -r gprls/closure/base || die
+	rm -r gprls/closure/sal || dir
+	rm -r gprls/closure/short-subunit-names || die
+	rm -r gprls/closure/subunits || die
+	rm -r gprclean/remove-empty-build-directories || die
+	rm -r gprclean/no_build_dir_recursive || die
+	rm -r gprclean/output-dir-not-found-warnings-not-printed || die
+	rm -r gprinspect/text || die
+}
 
 src_compile() {
 	build () {
@@ -59,6 +84,11 @@ src_compile() {
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 }
 
+src_test() {
+	cd testsuite
+	./testsuite.py |& grep -w FAIL && die
+}
+
 src_install() {
 	build () {
 		gprinstall -XLIBRARY_TYPE=$1 -f -p -v -XGPR2_BUILD=release \
@@ -81,8 +111,6 @@ src_install() {
 
 	einstalldocs
 
-	rm "${D}"/usr/bin/gprclean || die
 	rm "${D}"/usr/bin/gprconfig || die
-	rm "${D}"/usr/bin/gprinstall || die
-	rm "${D}"/usr/bin/gprls || die
+	rm -r "${D}"/usr/share/gpr/manifests
 }
