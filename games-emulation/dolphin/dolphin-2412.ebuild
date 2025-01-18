@@ -157,7 +157,7 @@ declare -A KEEP_BUNDLED=(
 
 PATCHES=(
 	"${FILESDIR}"/dolphin-2407-minizip.patch
-	"${FILESDIR}"/dolphin-2412-fix-libfmt-11.1.ebuild
+	"${FILESDIR}"/dolphin-2412-fix-libfmt-11.1.patch
 	"${FILESDIR}"/dolphin-2412-fix-build-without-retro-achievements.patch
 )
 
