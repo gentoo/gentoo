@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ KEYWORDS="-* amd64 ~arm64"
 IUSE="demos doc gui"
 
 RDEPEND="
-	<dev-libs/libfmt-11
+	<dev-libs/libfmt-10
 	virtual/libusb:1
 	gui? ( virtual/jre )
 "
