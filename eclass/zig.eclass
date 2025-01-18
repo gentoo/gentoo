@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig.eclass
@@ -152,6 +152,7 @@ _zig_set_zbs_uris() {
 _zig_set_zbs_uris
 
 # @ECLASS_VARIABLE: my_zbs_args
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Bash array with ebuild-specified arguments to pass to the
 # "zig build" after "src_configure".
@@ -170,7 +171,6 @@ _zig_set_zbs_uris
 # 	zig_src_configure
 # }
 # @CODE
-: "${my_zbs_args:=}"
 
 # @ECLASS_VARIABLE: ZBS_ARGS_EXTRA
 # @USER_VARIABLE
@@ -203,7 +203,6 @@ _zig_set_zbs_uris
 : "${ZBS_VERBOSE:=ON}"
 
 # @ECLASS_VARIABLE: BUILD_DIR
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Directory where all "ezig build" calls will be proceeded.
 # Defaults to "${WORKDIR}/${P}-build" if not set.
