@@ -23,7 +23,7 @@ index 95d6772..081625a 100644
  if test -z "$OBJDUMP"; then
  	AC_MSG_WARN([unable to find objdump, which is needed to run tests])
  else
-+	m4_pushdef([ORIGINAL_CFLAGS], [$CFLAGS])
++	old_CFLAGS="${CFLAGS}"
 +	CFLAGS="-O0"
  	AC_MSG_CHECKING([linking open() and write() to detect libc names])
  	AC_LINK_IFELSE([
@@ -32,7 +32,7 @@ index 95d6772..081625a 100644
  	],
  	[AC_MSG_FAILURE([failed to link open/write test])]
  	)
-+	CFLAGS="${ORIGINAL_CFLAGS}"
++	CFLAGS="${old_CFLAGS}"
  fi
  
  
