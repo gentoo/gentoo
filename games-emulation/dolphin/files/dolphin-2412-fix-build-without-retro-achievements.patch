@@ -1,0 +1,68 @@
+https://github.com/dolphin-emu/dolphin/pull/13226
+
+https://github.com/dolphin-emu/dolphin/commit/84ab15e020a993286329e1fc0b0e47ffc3c0a536
+From 84ab15e020a993286329e1fc0b0e47ffc3c0a536 Mon Sep 17 00:00:00 2001
+From: JosJuice <josjuice@gmail.com>
+Date: Sun, 15 Dec 2024 18:00:14 +0100
+Subject: [PATCH 1/2] AchievementManager: Add required forward declarations
+
+This was causing compilation errors when building without
+USE_RETRO_ACHIEVEMENTS.
+--- a/Source/Core/Core/AchievementManager.h
++++ b/Source/Core/Core/AchievementManager.h
+@@ -275,11 +275,21 @@ class AchievementManager
+ 
+ #include <string>
+ 
++namespace ActionReplay
++{
++struct ARCode;
++}
++
+ namespace DiscIO
+ {
+ class Volume;
+ }
+ 
++namespace Gecko
++{
++class GeckoCode;
++}
++
+ class AchievementManager
+ {
+ public:
+
+https://github.com/dolphin-emu/dolphin/commit/ad24ddb6bb01ddaba19bf72e8eda5cae354701ae
+From ad24ddb6bb01ddaba19bf72e8eda5cae354701ae Mon Sep 17 00:00:00 2001
+From: JosJuice <josjuice@gmail.com>
+Date: Sun, 15 Dec 2024 18:15:57 +0100
+Subject: [PATCH 2/2] VerifyTool: Add missing USE_RETRO_ACHIEVEMENTS ifdefs
+
+--- a/Source/Core/DolphinTool/VerifyCommand.cpp
++++ b/Source/Core/DolphinTool/VerifyCommand.cpp
+@@ -133,8 +133,10 @@ int VerifyCommand(const std::vector<std::string>& args)
+       hashes_to_calculate.md5 = true;
+     else if (algorithm == "sha1")
+       hashes_to_calculate.sha1 = true;
++#ifdef USE_RETRO_ACHIEVEMENTS
+     else if (algorithm == "rchash")
+       rc_hash_calculate = true;
++#endif
+   }
+ 
+   if (!hashes_to_calculate.crc32 && !hashes_to_calculate.md5 && !hashes_to_calculate.sha1 &&
+@@ -163,11 +165,13 @@ int VerifyCommand(const std::vector<std::string>& args)
+   verifier.Finish();
+   const DiscIO::VolumeVerifier::Result& result = verifier.GetResult();
+ 
++#ifdef USE_RETRO_ACHIEVEMENTS
+   // Calculate rcheevos hash
+   if (rc_hash_calculate)
+   {
+     rc_hash_result = AchievementManager::CalculateHash(input_file_path);
+   }
++#endif
+ 
+   // Print the report
+   if (!algorithm_is_set)
