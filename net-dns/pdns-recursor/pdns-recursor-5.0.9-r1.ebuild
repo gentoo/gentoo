@@ -75,6 +75,7 @@ S="${WORKDIR}"/${P/_/-}
 pkg_setup() {
 	lua-single_pkg_setup
 	filter-flags -ftree-vectorize
+	filter-lto
 	append-lfs-flags
 	append-cppflags -D_TIME_BITS=64
 	rust_pkg_setup
