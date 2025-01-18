@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">dbeaver/dbeaver</remote-id>
+		<bugs-to>https://github.com/dbeaver/dbeaver/issues</bugs-to>
+		<changelog>https://dbeaver.io/news/</changelog>
+	</upstream>
+</pkgmetadata>
