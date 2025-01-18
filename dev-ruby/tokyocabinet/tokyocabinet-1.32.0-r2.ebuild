@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -16,9 +16,8 @@ DESCRIPTION="Ruby bindings for Tokyo Cabinet"
 HOMEPAGE="https://fallabs.com/tokyocabinet/"
 LICENSE="GPL-2"
 
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 RDEPEND="dev-db/tokyocabinet"
 
