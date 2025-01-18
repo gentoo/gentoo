@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/947928
+
+Adds support for the new name of the asm/unaligned.h header file for kernels >=6.12.0 (header file was renamed to "linux/unaligned.h")
+Bug found by Sam Petch 
+Patch by Sam Petch
+
+TESTING DETAILS:
+
+Bugfix tested by Sam Petch on kernels: gentoo-sources:6.6.67, gentoo-sources:6.12.4-r1, gentoo-sources:6.12.9
+
+Patch tested on kernels: gentoo-sources:6.6.67, gentoo-sources:6.12.9
+
+Bugfix and patch tested on device: 2012 Macbook Pro (A1278) running Gentoo Linux with Gnome Desktop / OpenRC profile
+
+Chipset: BCM4331 (Broadcom)
+
+Contact: sam.petch.recall824@passinbox.com
+
+--- a/src/wl/sys/wl_linux.c	2025-01-17 22:18:10.152359697 -0500
++++ b/src/wl/sys/wl_linux.c	2025-01-16 23:05:34.548987574 -0500
+@@ -56,7 +56,12 @@
+ #include <asm/irq.h>
+ #include <asm/pgtable.h>
+ #include <asm/uaccess.h>
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++#include <linux/unaligned.h>
++#else
+ #include <asm/unaligned.h>
++#endif
+ 
+ #include <proto/802.1d.h>
+ 
