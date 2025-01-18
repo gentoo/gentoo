@@ -8,6 +8,7 @@ inherit flag-o-matic linux-info meson systemd xdg
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
 SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/mpd-0.23.15.16-fix-libfmt-11.1.0.patch.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -128,7 +129,7 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/mpd-0.23.15.16-fix-libfmt-11.1.0.patch
+	"${WORKDIR}"/mpd-0.23.15.16-fix-libfmt-11.1.0.patch
 )
 
 pkg_setup() {
