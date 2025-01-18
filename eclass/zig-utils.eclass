@@ -313,6 +313,7 @@ zig-utils_c_env_to_zig_cpu() {
 	local c_flags_march="$(_get-c-option march)"
 	local c_flags_mcpu="$(_get-c-option mcpu)"
 	local c_flags_mfpu="$(_get-c-option mfpu)"
+	local c_flags_mtune="$(_get-c-option mtune)"
 
 	local base_cpu features=""
 
@@ -332,12 +333,27 @@ zig-utils_c_env_to_zig_cpu() {
 			esac
 
 			case "${c_flags_march}" in
-				"") ;;
+				"" | unset) ;;
 				armv*)
 					local c_arm_family="${c_flags_march##arm}"
 					c_arm_family="${c_arm_family//./_}"
 					c_arm_family="${c_arm_family//-/}"
 					features+="+${c_arm_family}"
+					;;
+				native)
+					# GCC docs: This option has no effect if
+					# the compiler is unable to recognize the
+					# architecture of the host system.
+					#
+					# When -march=native is given and no other
+					# -mcpu or -mtune is given then ... -march=native
+					# is treated as -mcpu=native.
+					if [[ -z "${c_flags_mcpu}${c_flags_mtune}" ]]; then
+						base_cpu=native
+					else
+						: # Zig can not detect CPU features (architecture
+						# in our case) separately from model, so we ignore it.
+					fi
 					;;
 				*) features+="+${c_flags_march}";;
 			esac
