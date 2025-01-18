@@ -19,8 +19,11 @@ nxports@1.0.0
 inherit check-reqs dotnet-pkg distutils-r1
 
 DESCRIPTION="Generic pure Python loader for .NET runtimes"
-HOMEPAGE="https://pythonnet.github.io/clr-loader/
-	https://github.com/pythonnet/clr-loader/"
+HOMEPAGE="
+	https://pythonnet.github.io/clr-loader/
+	https://github.com/pythonnet/clr-loader/
+	https://pypi.org/project/clr_loader/
+"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3

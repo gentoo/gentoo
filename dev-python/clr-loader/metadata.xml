@@ -14,6 +14,6 @@
   <upstream>
     <bugs-to>https://github.com/pythonnet/clr-loader/issues/</bugs-to>
     <remote-id type="github">pythonnet/clr-loader</remote-id>
-    <remote-id type="pypi">clr-loader</remote-id>
+    <remote-id type="pypi">clr_loader</remote-id>
   </upstream>
 </pkgmetadata>
