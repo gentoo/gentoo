@@ -3168,7 +3168,7 @@ toolchain_death_notice() {
 			popd >/dev/null
 		fi
 	done
-	xz -9e "${WORKDIR}"/gcc-build-logs.tar.xz
+	xz -9e "${WORKDIR}"/gcc-build-logs.tar
 }
 
 fi
