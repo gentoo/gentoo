@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2025-01-18)
+# Ebuild is difficult to maintain. No revdeps.
+$ Removal on 2025-02-17. Bug #896044
+sys-cluster/k3s
+
 # Michał Górny <mgorny@gentoo.org> (2025-01-18)
 # Superseded by dev-python/terminaltables3, the only revdep switched
 # over.
