@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="wg-quick">Install the wg-quick(8) helper tool. Most users want to use this.</flag>
+		<flag name="doas">Use app-admin/doas instead of app-admin/sudo for wg-quick.</flag>
 	</use>
 </pkgmetadata>

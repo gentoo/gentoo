@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info bash-completion-r1 systemd toolchain-funcs
 
@@ -13,20 +13,21 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/wireguard-tools"
 else
 	SRC_URI="https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-${PV}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+wg-quick selinux"
+IUSE="+wg-quick doas selinux"
+REQUIRED_USE="doas? ( wg-quick )"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND=""
 RDEPEND="${DEPEND}
 	wg-quick? (
 		|| ( net-firewall/nftables net-firewall/iptables )
 		virtual/resolvconf
 	)
+	doas? ( app-admin/doas )
 	selinux? ( sec-policy/selinux-wireguard )
 "
 
@@ -76,6 +77,13 @@ pkg_setup() {
 		ewarn
 	fi
 	linux-info_pkg_setup
+}
+
+src_prepare() {
+	if use doas; then
+		eapply -p3 "${FILESDIR}/${PV}-doas.patch"
+	fi
+	default
 }
 
 src_compile() {
