@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 GITHUB_COMMIT="3ace72d5642284665fce2c33c99dfeb1b931b2c6"
 inherit ruby-ng strip-linguas
@@ -57,6 +57,7 @@ ruby_add_rdepend "
 
 all_ruby_prepare() {
 	eapply -p0 "${FILESDIR}"/rbot-rakefile-gettext.patch
+	eapply "${FILESDIR}/rbot-gettext-rubygems.patch"
 
 	# Avoid tests that are only compatible with ruby22
 	rm -f test/test_journal.rb || die

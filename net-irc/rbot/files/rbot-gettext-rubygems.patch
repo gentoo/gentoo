@@ -1,0 +1,45 @@
+From 7a6221adf24e81ef1e47441bd848241adfa02ba6 Mon Sep 17 00:00:00 2001
+From: Giuseppe Bilotta <giuseppe.bilotta@gmail.com>
+Date: Sun, 4 Mar 2012 21:16:46 +0100
+Subject: [PATCH] RubyGems obsoleted *and* b0rked all_load_path, try to work
+ around it
+
+---
+ lib/rbot/load-gettext.rb | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/lib/rbot/load-gettext.rb b/lib/rbot/load-gettext.rb
+index d45263e1..ba9b09ba 100644
+--- b/lib/rbot/load-gettext.rb
++++ a/lib/rbot/load-gettext.rb
+@@ -43,29 +43,7 @@
+   else
+     warning 'This version of ruby-gettext does not support non-cached mode; mo files are not reloaded when setting language'
+   end
+-
+-  begin
+-    bindtextdomain 'rbot'
+-  rescue NoMethodError => e
+-    error e
+-    warning 'Trying to work around RubyGems/GetText incompatibility'
+-    module ::Gem
+-      def self.all_load_paths
+-        result = []
+-
+-        Gem.path.each do |gemdir|
+-          each_load_path all_partials(gemdir) do |load_path|
+-            result << load_path
+-          end
+-        end
+-
+-        result
+-      end
+-    end
+-    retry
+-  end
+-
+-
++  bindtextdomain 'rbot'
+ 
+   module GetText
+     # patch for ruby-gettext 1.x to cope with anonymous modules used by rbot.
