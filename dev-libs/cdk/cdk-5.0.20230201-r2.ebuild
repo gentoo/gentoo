@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${PN}/${MY_P}.tgz
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
-SLOT="0/6" # subslot = soname version
+SLOT="0/6.3.4" # subslot = soname version, check VERSION
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples unicode"
 
@@ -41,8 +41,7 @@ src_configure() {
 		--enable-const \
 		--with-shared \
 		--with-pkg-config \
-		--enable-pc-files \
-		--with-pkg-config-libdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig" \
+		--with-shlib-version=abi \
 		--with-ncurses$(usex unicode "w" "")
 }
 
