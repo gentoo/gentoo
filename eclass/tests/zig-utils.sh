@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -197,6 +197,8 @@ c_to_zig_map=(
 
 	# https://bugs.gentoo.org/924920
 	["-march=armv7-a -mfpu=vfpv3-d16 -mfloat-abi=hard"]=generic+v7a+vfp3d16-soft_float
+
+	["-march=armv7-a -march=unset"]="generic-soft_float"
 )
 test-convert_c_env_to_zig_cpu c_to_zig_map "${CHOST}"
 tend ${?}
@@ -210,6 +212,10 @@ c_to_zig_map=(
 
 	["-march=armv8.3-a"]="generic+v8_3a"
 	["-mcpu=cortex-a78 -march=armv8.3-a"]="cortex_a78+v8_3a"
+
+	["-march=native"]="native"
+	["-march=native -mtune=native"]="generic"
+	["-mcpu=cortex-a78 -march=native"]="cortex_a78"
 )
 test-convert_c_env_to_zig_cpu c_to_zig_map "${CHOST}"
 tend ${?}
