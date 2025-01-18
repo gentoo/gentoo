@@ -29,12 +29,13 @@ COMMON_DEPEND="
 	dev-db/sqlite:=
 	dev-libs/glib:2
 	dev-libs/icu:=
-	media-libs/alsa-lib
-	media-libs/taglib
 	dev-libs/kdsingleapplication[qt6(+)]
 	dev-qt/qtbase:6[concurrent,dbus?,gui,network,ssl,sql,sqlite,widgets,X?]
+	media-libs/alsa-lib
+	media-libs/taglib
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
+	media-libs/libebur128
 	cdda? ( dev-libs/libcdio:= )
 	chromaprint? ( media-libs/chromaprint:= )
 	ipod? (
