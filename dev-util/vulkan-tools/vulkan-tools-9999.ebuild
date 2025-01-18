@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,9 +50,6 @@ pkg_setup() {
 		/usr/bin/vkcube
 		/usr/bin/vkcubepp
 	)
-	use cube && use wayland && MULTILIB_CHOST_TOOLS+=(
-		/usr/bin/vkcube-wayland
-	)
 
 	python-any-r1_pkg_setup
 }
@@ -71,15 +68,15 @@ multilib_src_configure() {
 		-DVULKAN_HEADERS_INSTALL_DIR="${ESYSROOT}/usr"
 	)
 
-	if use cube; then
-		if use X; then
-			mycmakeargs+=(-DCUBE_WSI_SELECTION=XCB)
-		elif use wayland; then
-			mycmakeargs+=(-DCUBE_WSI_SELECTION=WAYLAND)
-		else
-			mycmakeargs+=(-DCUBE_WSI_SELECTION=DISPLAY)
-		fi
-	fi
-
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	if use cube; then
+		einfo "As of version 1.4.304.0, the window system for 'vkcube' and 'vkcubepp'"
+		einfo "can be selected at runtime using the '--wsi' runtime argument."
+		einfo "For example, Wayland can be selected using '--wsi wayland'."
+		einfo "As such, 'vkcube-wayland' has been removed and the runtime argument"
+		einfo "must be used instead. See 'vkcube --help' for more information."
+	fi
 }
