@@ -58,7 +58,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-99999999-compiler-rt-atomic-builtins.patch"
+	"${FILESDIR}/${PN}-22.12.0-compiler-rt-atomic-builtins.patch"
 )
 
 # These are measured on a loong machine with -ggdb on, and only checked
@@ -111,7 +111,7 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-20.6.0-paxmarking.patch )
+	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-22.12.0-paxmarking.patch )
 
 	# bug 931256
 	use riscv && PATCHES+=( "${FILESDIR}"/${PN}-22.2.0-riscv.patch )
@@ -124,8 +124,6 @@ src_configure() {
 
 	# LTO compiler flags are handled by configure.py itself
 	filter-lto
-	# The warnings are *so* noisy and make build.logs massive
-	append-cxxflags $(test-flags-CXX -Wno-template-id-cdtor)
 	# GCC with -ftree-vectorize miscompiles node's exception handling code
 	# causing it to fail to catch exceptions sometimes
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116057

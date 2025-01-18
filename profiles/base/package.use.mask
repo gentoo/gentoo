@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Michal Rostecki <vadorovsky@protonmail.com> (2025-01-15)
+# This USE flag enables usage of compiler-rt's atomic builtins. Its
+# usage should be permitted only on LLVM profiles.
+net-libs/nodejs llvm-atomic-builtins
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-09)
 # No suitable versions of dev-libs/protobuf available.
 =dev-java/protobuf-java-4.29.3 system-protoc

@@ -1,0 +1,150 @@
+From 8d11b22732b86dd20b49a2960e86ee40e5eeeb88 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@protonmail.com>
+Date: Sun, 12 Jan 2025 23:15:26 +0100
+Subject: [PATCH] build: Allow to use atomic builtins from compiler-rt instead
+ of libatomic
+
+compiler-rt, when it's built with the `COMPILER_RT_EXCLUDE_ATOMIC_BUILTIN`
+option disabled, provides all atomic builtins and serves as a full
+replacement for libatomic.
+
+By default, that option is enabled[0], meaning that default builds of
+compiler-rt, followed by the most of Linux distributions (Fedora,
+openSUSE, Ubuntu), do **not** provide all necessary atomics.
+
+However, FreeBSD[1] and Gentoo (with LLVM-based profiles)[2] disable it,
+therefore providing compiler-rt with atomic builtins.
+
+That difference can be detected by checking the symbol table of
+compiler-rt:
+
+```
+nm $(clang -print-libgcc-file-name) | grep __atomic
+```
+
+No matching symbols indicate lack of atomic builtins and necessity of
+linking libatomic. Matching symbols indicate a possibility to not link
+libatomic.
+
+Given that difference, provide the `--use-compiler-rt-atomics` option
+in `configure.py`. When enabled, the configure script checks whether
+compiler-rt provides atomics and, if yes, does not link libatomic. By
+default, without that option enabled, a build with clang links libatomic.
+
+For more context, see the discussion on Gentoo bugzilla[3].
+
+[0] https://github.com/llvm/llvm-project/blob/llvmorg-19.1.6/compiler-rt/lib/builtins/CMakeLists.txt#L227-L229
+[1] https://cgit.freebsd.org/src/commit/?id=7b67d47c70cca47f65fbbc9d8607b7516c2a82ee
+[2] https://github.com/gentoo/gentoo/commit/63b4ae7aaa6e520706e1237b649d8fe29f5aba83
+[3] https://bugs.gentoo.org/911340
+---
+ configure.py             | 51 ++++++++++++++++++++++++++++++++++++++++
+ node.gyp                 |  2 +-
+ tools/v8_gypfiles/v8.gyp |  2 +-
+ 3 files changed, 53 insertions(+), 2 deletions(-)
+
+diff --git a/configure.py b/configure.py
+index c361676637..8d45e36789 100755
+--- a/configure.py
++++ b/configure.py
+@@ -136,6 +136,11 @@ parser.add_argument('--use_clang',
+     dest='use_clang',
+     default=None,
+     help='use clang instead of gcc')
++parser.add_argument('--use-compiler-rt-atomics',
++    action='store_true',
++    dest='use_compiler_rt_atomics',
++    default=None,
++    help='use compiler-rt atomic builtins instead of libatomic')
+ 
+ parser.add_argument('--dest-os',
+     action='store',
+@@ -1086,6 +1091,31 @@ def try_check_compiler(cc, lang):
+   return (True, is_clang, clang_version, gcc_version)
+ 
+ 
++def try_check_compiler_rt_atomics(cc):
++  try:
++    proc = subprocess.Popen(shlex.split(cc) + ['-print-libgcc-file-name'],
++                            stdout=subprocess.PIPE)
++    with proc:
++      rt_file_name = to_utf8(proc.communicate()[0]).strip()
++  except OSError as e:
++    return (False, False, False, False)
++
++  nm = shutil.which('nm') or shutil.which('llvm-nm')
++  if not nm:
++    return (True, False, False, False)
++
++  try:
++    proc = subprocess.Popen(shlex.split(nm) + shlex.split(rt_file_name),
++                            stdout=subprocess.PIPE)
++    with proc:
++      symbols = to_utf8(proc.communicate()[0]).strip()
++  except OSError as e:
++    return (True, True, False, False)
++
++  has_atomics = '__atomic' in symbols
++  return (True, True, True, has_atomics)
++
++
+ #
+ # The version of asm compiler is needed for building openssl asm files.
+ # See deps/openssl/openssl.gypi for detail.
+@@ -1417,6 +1447,27 @@ def configure_node(o):
+   if options.use_clang:
+     o['variables']['clang'] = 1
+ 
++  # Allow using compiler-rt atomic builtins instead of libatomic.
++  if options.use_compiler_rt_atomics:
++    if not o['variables']['clang'] == 1:
++      error('--use-compiler-rt-atomics can be used only with clang')
++    cc_ok, found_nm, nm_ok, has_atomics = try_check_compiler_rt_atomics(CC)
++    if not cc_ok:
++      error('''Failed to execute `''' + CC + ''' -print-libgcc-file-name` to
++            find the runtime library.''')
++    if not found_nm:
++      error('''Could not find nm or llvm-nm.''')
++    if not nm_ok:
++      error('''Failed to execute nm.''')
++    if not has_atomics:
++      error('''compiler-rt does not have atomics.''')
++    if has_atomics:
++      o['variables']['compiler_rt_atomics'] = 1
++    else:
++      o['variables']['compiler_rt_atomics'] = 0
++  else:
++    o['variables']['compiler_rt_atomics'] = 0
++
+   cross_compiling = (options.cross_compiling
+                      if options.cross_compiling is not None
+                      else target_arch != host_arch)
+diff --git a/node.gyp b/node.gyp
+index 1633ed2d83..46276f76f0 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -510,7 +510,7 @@
+           '-Wl,-bnoerrmsg',
+         ],
+       }],
+-      ['OS=="linux" and clang==1', {
++      ['OS=="linux" and clang==1 and compiler_rt_atomics!=1', {
+         'libraries': ['-latomic'],
+       }],
+     ],
+diff --git a/tools/v8_gypfiles/v8.gyp b/tools/v8_gypfiles/v8.gyp
+index 9ccab9214a..557daa3254 100644
+--- a/tools/v8_gypfiles/v8.gyp
++++ b/tools/v8_gypfiles/v8.gyp
+@@ -1298,7 +1298,7 @@
+         }],
+         # Platforms that don't have Compare-And-Swap (CAS) support need to link atomic library
+         # to implement atomic memory access
+-        ['v8_current_cpu in ["mips64", "mips64el", "ppc", "arm", "riscv64", "loong64"]', {
++        ['compiler_rt_atomics!=1 and v8_current_cpu in ["mips64", "mips64el", "ppc", "arm", "riscv64", "loong64"]', {
+           'link_settings': {
+             'libraries': ['-latomic', ],
+           },
+-- 
+2.45.2
+
