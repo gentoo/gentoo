@@ -12,7 +12,7 @@ S="${WORKDIR}/gnome-text-editor-${PV/_/.}"
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 IUSE="+editorconfig spell"
 
