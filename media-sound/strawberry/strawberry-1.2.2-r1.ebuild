@@ -35,7 +35,6 @@ COMMON_DEPEND="
 	media-libs/taglib
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	media-libs/libebur128
 	cdda? ( dev-libs/libcdio:= )
 	chromaprint? ( media-libs/chromaprint:= )
 	ipod? (
