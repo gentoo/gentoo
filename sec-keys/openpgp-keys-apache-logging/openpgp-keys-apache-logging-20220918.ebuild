@@ -6,12 +6,11 @@ EAPI=8
 DESCRIPTION="OpenPGP keys used by logging.apache.org"
 HOMEPAGE="https://logging.apache.org/log4j/2.x/download.html"
 SRC_URI="https://www.apache.org/dist/logging/KEYS -> ${P}-KEYS.asc"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
-
-S="${WORKDIR}"
 
 src_install() {
 	local files=( ${A} )
