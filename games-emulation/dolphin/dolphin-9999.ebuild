@@ -72,8 +72,7 @@ RDEPEND="
 	app-arch/xz-utils
 	>=app-arch/zstd-1.4.0:=
 	dev-libs/hidapi
-	<dev-libs/libfmt-11.1:=
-	>=dev-libs/libfmt-10.1
+	>=dev-libs/libfmt-10.1:=
 	dev-libs/lzo:2
 	dev-libs/pugixml
 	dev-libs/xxhash
@@ -127,6 +126,8 @@ declare -A KEEP_BUNDLED=(
 	# please keep this list in CMakeLists.txt order
 
 	# TODO: use system libraries
+	# bug #873952
+	# https://github.com/dolphin-emu/dolphin/pull/13089
 	[zlib-ng]=ZLIB
 	[minizip-ng]=ZLIB
 
@@ -155,7 +156,6 @@ declare -A KEEP_BUNDLED=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/dolphin-2407-libfmt-11-fix.patch
 	"${FILESDIR}"/dolphin-2407-minizip.patch
 )
 
@@ -196,11 +196,6 @@ src_prepare() {
 	einfo "removing sources: ${remove[*]}"
 	rm -r "${remove[@]}" || die
 
-	# About 50% compile-time speedup
-	if ! use vulkan; then
-		sed -i -e '/Externals\/glslang/d' CMakeLists.txt || die
-	fi
-
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMake/ScmRevGen.cmake || die
 }
@@ -226,7 +221,6 @@ src_configure() {
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
-		-DSTEAM=OFF
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_MGBA=$(usex mgba)
 		-DUSE_RETRO_ACHIEVEMENTS=OFF
@@ -242,7 +236,6 @@ src_configure() {
 		-DUSE_SYSTEM_BZIP2=ON
 		-DUSE_SYSTEM_LIBLZMA=ON
 		-DUSE_SYSTEM_ZSTD=ON
-		-DUSE_SYSTEM_ZLIB=OFF
 		-DUSE_SYSTEM_MINIZIP=OFF
 		-DUSE_SYSTEM_LZO=ON
 		-DUSE_SYSTEM_LZ4=ON
