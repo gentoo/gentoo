@@ -21,6 +21,10 @@ KEYWORDS="-* ~amd64 ~arm64"
 
 RDEPEND=">=virtual/jre-17:*"
 
+QA_PREBUILT="
+	opt/${MY_PN}-ce.*
+"
+
 src_prepare() {
 	sed -e "s/^Icon=.*/Icon=${MY_PN}/" \
 		-e 's:/usr/share/dbeaver:/opt/dbeaver:g' \
