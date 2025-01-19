@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31 ruby32"
 RUBY_OPTIONAL="yes"
 
 inherit autotools java-pkg-opt-2 perl-functions ruby-ng
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-java-11.patch
 	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
+	"${FILESDIR}"/${PN}-ruby-varargs.patch
 )
 HTML_DOCS=( doc/. )
 

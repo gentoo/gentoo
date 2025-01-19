@@ -1,0 +1,20 @@
+--- a/rubynative/src/estraier.c	2025-01-19 09:16:41.340299738 +0100
++++ b/rubynative/src/estraier.c	2025-01-19 09:17:18.404701204 +0100
+@@ -125,7 +125,7 @@
+ static CBMAP *objtocbmap(VALUE obj);
+ static void db_informer(const char *message, void *opaque);
+ static VALUE db_informer_process(VALUE arg);
+-static VALUE db_informer_resque(VALUE arg);
++static VALUE db_informer_resque(VALUE arg1, VALUE arg2);
+ 
+ 
+ 
+@@ -1259,7 +1259,7 @@
+ }
+ 
+ 
+-static VALUE db_informer_resque(VALUE arg){
++static VALUE db_informer_resque(VALUE arg1, VALUE arg2){
+   return Qnil;
+ }
+ 
