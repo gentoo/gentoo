@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Distributions/AppStream/"
 LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/5"
-IUSE="apt doc +introspection qt6 systemd test"
+IUSE="apt compose doc +introspection qt6 systemd test"
 RESTRICT="test" # bug 691962
 
 RDEPEND="
@@ -68,6 +68,7 @@ src_configure() {
 		-Dstemming=true
 		-Dvapi=false
 		-Dapt-support=$(usex apt true false)
+		-Dcompose=$(usex compose true false)
 		-Dinstall-docs=$(usex doc true false)
 		-Dgir=$(usex introspection true false)
 		-Dqt=$(usex qt6 true false)
