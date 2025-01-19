@@ -13,11 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="systemd">
-			Enables systemd collector by default
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">prometheus/node_exporter</remote-id>
 		<bugs-to>https://github.com/prometheus/node_exporter/issues</bugs-to>
