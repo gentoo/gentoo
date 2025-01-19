@@ -1,0 +1,27 @@
+Fix function definition to be modern C
+https://bugs.gentoo.org/883275
+diff '--color=auto' -ru work.old/abstime.w work/abstime.w
+--- a/abstime.w	2025-01-19 17:06:19.952342044 +0400
++++ b/abstime.w	2025-01-19 17:10:33.521811824 +0400
+@@ -18,7 +18,7 @@
+ #include <stdio.h>
+ #include <time.h>
+ @#
+-main()
++int main(void)
+ {
+   printf("#define ABSTIME %ld\n",time(NULL));
+   return 0;
+Additional dependency in build graph
+https://bugs.gentoo.org/818889
+--- a/Makefile	2025-01-19 17:19:21.271627004 +0400
++++ b/Makefile	2025-01-19 17:21:03.933007472 +0400
+@@ -81,6 +81,8 @@
+ 
+ mmix-config.o: mmix-pipe.o
+ 
++mmix-mem.o: mmix-pipe.o
++
+ mmmix:  mmix-arith.o mmix-pipe.o mmix-config.o mmix-mem.o mmix-io.o mmmix.c
+ 	$(CC) $(CFLAGS) $(LDFLAGS) mmmix.c \
+ 	  mmix-arith.o mmix-pipe.o mmix-config.o mmix-mem.o mmix-io.o -o mmmix
