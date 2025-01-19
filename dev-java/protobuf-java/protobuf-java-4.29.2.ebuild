@@ -1,4 +1,4 @@
-# Copyright 2008-2024 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ S="${WORKDIR}/protobuf-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="system-protoc"
 
 BDEPEND="
