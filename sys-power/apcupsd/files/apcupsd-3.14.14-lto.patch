@@ -1,0 +1,29 @@
+Fix extern symbol declarations to be consistent with the definition.
+
+Bug: https://bugs.gentoo.org/941584
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+diff -rup a/src/apcupsd.c a/src/apcupsd.c
+--- a/src/apcupsd.c
++++ b/src/apcupsd.c
+@@ -31,7 +31,7 @@ static void daemon_start(void);
+ int pidcreated = 0;
+ extern int kill_on_powerfail;
+ extern FILE *trace_fd;
+-extern char *pidfile;
++extern const char *pidfile;
+ 
+ /*
+  * The terminate function and trapping signals allows apcupsd
+diff -rup a/src/options.c b/src/options.c
+--- a/src/options.c
++++ b/src/options.c
+@@ -62,7 +62,7 @@ int terminate_on_powerfail = FALSE;
+ int kill_on_powerfail = FALSE;
+ int dumb_mode_test = FALSE;        /* for testing dumb mode */
+ int go_background = TRUE;
+-extern char *pidfile;
++extern const char *pidfile;
+ extern bool trace;
+ 
+ static void print_usage(char *argv[])

@@ -5,6 +5,10 @@
 		<email>john.einar@gmail.com</email>
 		<name>John Einar Reitan</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>

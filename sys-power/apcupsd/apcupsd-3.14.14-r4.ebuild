@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit linux-info systemd udev tmpfiles
 
@@ -11,24 +11,27 @@ SRC_URI="https://downloads.sourceforge.net/apcupsd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86"
-IUSE="selinux snmp +usb +modbus cgi"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+IUSE="cgi +modbus selinux snmp +usb"
 
-DEPEND=">=sys-apps/util-linux-2.23[tty-helpers(-)]
-	cgi? ( >=media-libs/gd-1.8.4 )
-	modbus? ( usb? ( virtual/libusb:0 ) )
-	snmp? ( >=net-analyzer/net-snmp-5.7.2 )"
+DEPEND="
+	sys-apps/util-linux[tty-helpers]
+	cgi? ( media-libs/gd:2= )
+	modbus? (
+		usb? ( virtual/libusb:0= )
+	)
+	snmp? ( net-analyzer/net-snmp )
+"
 
-RDEPEND="${DEPEND}
+RDEPEND="
 	virtual/mailx
-	selinux? ( sec-policy/selinux-apcupsd )"
+	selinux? ( sec-policy/selinux-apcupsd )
+	${DEPEND}
+"
 
 CONFIG_CHECK="~USB_HIDDEV ~HIDRAW"
 ERROR_USB_HIDDEV="CONFIG_USB_HIDDEV:	needed to access USB-attached UPSes"
 ERROR_HIDRAW="CONFIG_HIDRAW:		needed to access USB-attached UPSes"
-
-DOCS=( ChangeLog ReleaseNotes )
-HTML_DOCS=( doc/manual )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.14.9-aliasing.patch
@@ -37,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.14.9-fix-nologin.patch
 	"${FILESDIR}"/${PN}-3.14.9-gapcmon.patch
 	"${FILESDIR}"/${PN}-3.14.9-wall-on-mounted-usr.patch
+	"${FILESDIR}"/${PN}-3.14.14-lto.patch
 )
 
 pkg_setup() {
@@ -53,65 +57,63 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-
-	use cgi && myconf="${myconf} --enable-cgi --with-cgi-bin=/usr/libexec/${PN}/cgi-bin"
-
-	if use usb ; then
-		myconf="${myconf} --with-upstype=usb --with-upscable=usb --enable-usb --with-dev="
-		use modbus && myconf="${myconf} --enable-modbus-usb"
-	else
-		myconf="${myconf} --with-upstype=apcsmart --with-upscable=smart --disable-usb"
-		use modbus || myconf="${myconf} --disable-modbus"
-	fi
-
 	# We force the DISTNAME to gentoo so it will use gentoo's layout also
 	# when installed on non-linux systems.
-	econf \
-		--sbindir=/sbin \
-		--sysconfdir=/etc/apcupsd \
-		--with-pwrfail-dir=/etc/apcupsd \
-		--with-lock-dir=/run/apcupsd \
-		--with-pid-dir=/run/apcupsd \
-		--with-log-dir=/var/log \
-		--with-nis-port=3551 \
-		--enable-net --enable-pcnet \
-		--with-distname=gentoo \
-		$(use_enable snmp) \
-		--disable-gapcmon \
-		${myconf} \
-		APCUPSD_MAIL=$(type -p mail)
+	local myeconfargs
+	myeconfargs=(
+		APCUPSD_MAIL="$(type -p mail)"
+		--disable-gapcmon
+		--enable-net
+		--enable-pcnet
+		--sbindir="/sbin"
+		--sysconfdir="${EPREFIX}/etc/apcupsd"
+		--with-distname="gentoo"
+		--with-pwrfail-dir="${EPREFIX}/etc/apcupsd"
+		--with-lock-dir="${EPREFIX}/run/apcupsd"
+		--with-log-dir="${EPREFIX}/var/log"
+		--with-nisip="127.0.0.1"
+		--with-nis-port="3551"
+		--with-pid-dir="${EPREFIX}/run/apcupsd"
+		--with-upscable="$(usex usb usb smart)"
+		--with-upstype="$(usex usb usb apcsmart)"
+		$(use_enable cgi)
+		$(use_enable modbus)
+		$(use_enable snmp)
+		$(use_enable usb)
+		$(use_with cgi cgi-bin "${EPREFIX}/usr/libexec/${PN}/cgi-bin")
+		$(usex modbus $(use_enable usb modbus-usb) "--disable-modbus-usb")
+		$(usex usb "--without-serial-dev" "--with-serial-dev=/dev/ttyS0")
+		$(usex usb "--with-dev=" "--with-dev=/dev/ttyS0")
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	# Workaround for bug #280674; upstream should really just provide
-	# the text files in the distribution, but I wouldn't count on them
-	# doing that anytime soon.
-	MANPAGER=$(type -p cat) \
-		emake VERBOSE=2
+	emake VERBOSE="2"
 }
 
 src_install() {
-	emake DESTDIR="${D}" VERBOSE=2 install
+	emake DESTDIR="${D}" VERBOSE="2" install
+
+	rm "${ED}"/etc/init.d/apcupsd || die
 	rm "${ED}"/etc/init.d/halt || die
+	rm -r "${ED}"/usr/share/hal || die
 
 	insinto /etc/apcupsd
 	newins examples/safe.apccontrol safe.apccontrol
-	doins "${FILESDIR}"/apcupsd.conf
 
 	doman doc/*.8 doc/*.5
 
+	docinto html
+	dodoc -r doc/manual/.
 	einstalldocs
 
-	rm "${ED}"/etc/init.d/apcupsd || die
-	newinitd "${FILESDIR}/${PN}.init" "${PN}"
-	newinitd "${FILESDIR}/${PN}.powerfail.init" "${PN}".powerfail
+	newinitd "${FILESDIR}"/apcupsd.init apcupsd
+	newinitd "${FILESDIR}"/apcupsd.powerfail.init-r1 apcupsd.powerfail
 
-	systemd_dounit "${FILESDIR}"/${PN}.service
-	dotmpfiles "${FILESDIR}"/${PN}-tmpfiles.conf
-
-	# remove hal settings, we don't really want to have it still around.
-	rm -r "${D}"/usr/share/hal || die
+	systemd_dounit "${FILESDIR}"/apcupsd.service
+	dotmpfiles "${FILESDIR}"/apcupsd-tmpfiles.conf
 
 	# replace it with our udev rules if we're in Linux
 	if use kernel_linux ; then
