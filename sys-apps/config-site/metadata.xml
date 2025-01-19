@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/config-site</remote-id>
+	</upstream>
 </pkgmetadata>
