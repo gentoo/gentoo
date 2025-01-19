@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop
+inherit desktop autotools
 
 MY_P=GStreamripperX-${PV}
 
@@ -22,9 +22,17 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES="
-	${FILESDIR}/${P}-C99-fixes.patch
-"
+PATCHES=(
+	"${FILESDIR}/${P}-C99-fixes.patch"
+	"${FILESDIR}/${P}-C23-fixes.patch"
+)
+
+src_prepare() {
+	default
+
+	# bug https://bugs.gentoo.org/879711
+	eautoreconf
+}
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}"
