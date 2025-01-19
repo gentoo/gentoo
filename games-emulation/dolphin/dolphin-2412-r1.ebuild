@@ -101,7 +101,7 @@ RDEPEND="
 	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}=') )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-libs/libpulse )
-	sdl? ( media-libs/libsdl2 )
+	sdl? ( >=media-libs/libsdl2-2.30.9 )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc:= )
 "
