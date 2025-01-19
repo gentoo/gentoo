@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}/014-linux414.patch"
 	"${FILESDIR}/015-linux600.patch"
 	"${FILESDIR}/016-linux601.patch"
+	"${FILESDIR}/017-handle_new_header_name.patch"
 )
 
 pkg_pretend() {
