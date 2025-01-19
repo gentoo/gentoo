@@ -193,6 +193,7 @@ XFAIL_NSPAWN_TEST_LIST=(
 	# upstream, as systemd-nspawn's default seccomp whitelist is too strict.
 	# https://sourceware.org/PR30603
 	test-errno-linux
+	tst-aarch64-pkey
 	tst-bz21269
 	tst-mlock2
 	tst-ntp_gettime
