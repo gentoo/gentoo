@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ else
 	https://github.com/prometheus/promu/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm arm64 ~loong ~riscv ~x86"
 fi
 LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 MIT"
