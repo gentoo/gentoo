@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 BDEPEND="dev-go/go-md2man
-	dev-libs/protobuf"
+	dev-libs/protobuf[protoc]"
 
 QA_FLAGS_IGNORED="
 	usr/libexec/podman/${PN}"

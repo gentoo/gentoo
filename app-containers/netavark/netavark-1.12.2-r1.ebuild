@@ -24,7 +24,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 BDEPEND="dev-go/go-md2man
-	dev-libs/protobuf"
+	dev-libs/protobuf[protoc]"
 
 QA_FLAGS_IGNORED="
 	usr/libexec/podman/${PN}"
