@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,16 +43,15 @@ IUSE="doc"
 BDEPEND="verify-sig? ( sec-keys/minisig-keys-zig-software-foundation )"
 IDEPEND="app-eselect/eselect-zig"
 
-# Zig provides its standard library in source form "/opt/zig-bin-{PV}/lib/",
-# and all other Zig libraries are meant to be consumed in source form,
-# because they can use compile-time mechanics (and it is easier for distributions to patch them)
-# Here we use this feature for fixing programs that use standard library
-# Note: Zig build system is also part of standard library, so we can fix it too
+# Zig provides its standard library and some compiler code in source form "/opt/zig-bin-{PV}/lib/".
+# Here we use this feature to fix programs that use standard library.
+# Note: Zig build system is also part of standard library, so we can fix it too.
+# Don't remove this comment so that other contributors won't be misleaded by "-bin" suffix.
 PATCHES=(
 	"${FILESDIR}/zig-0.10.1-musl-1.2.4-lfs64.patch"
 )
 
-QA_PREBUILT="opt/${P}/zig"
+QA_PREBUILT="opt/zig-bin-${PV}/zig"
 
 src_unpack() {
 	verify-sig_src_unpack
@@ -68,20 +67,20 @@ src_install() {
 	rm -r ./doc/ || die
 
 	doins -r "${S}"
-	fperms 0755 "/opt/${P}/zig"
-	dosym -r "/opt/${P}/zig" "/usr/bin/zig-bin-${PV}"
+	fperms 0755 /opt/zig-bin-${PV}/zig
+	dosym -r /opt/zig-bin-${PV}/zig /usr/bin/zig-bin-${PV}
 }
 
 pkg_postinst() {
-	eselect zig update ifunset
+	eselect zig update ifunset || die
 
-	elog "0.10.1 release uses self-hosted compiler by default and fixes some bugs from 0.10.0"
-	elog "But your code still can be un-compilable since some features still not implemented or bugs not fixed"
-	elog "Upstream recommends:"
-	elog " * Using old compiler if experiencing such breakage (flag '-fstage1')"
-	elog " * Waiting for release 0.11.0 with old compiler removed (these changes are already merged in 9999)"
-	elog "Also see: https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler"
-	elog "and https://ziglang.org/download/0.10.0/release-notes.html#How-to-Upgrade"
+	elog "0.10.1 release uses self-hosted compiler by default and fixes some bugs from 0.10.0."
+	elog "If you wanted to try async/await syntax (which is still absent in newer versions),"
+	elog "use '-fstage1' flag to enable old C++-based compiler, since only stage1 supports this syntax."
+	elog ""
+	elog "See also: https://ziglang.org/download/0.10.0/release-notes.html#Falling-short-of-stage1 ,"
+	elog "https://github.com/ziglang/zig/wiki/FAQ#what-is-the-status-of-async-in-zig"
+	elog "and https://github.com/ziglang/zig/issues/6025"
 }
 
 pkg_postrm() {
