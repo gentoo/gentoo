@@ -33,6 +33,9 @@ DEPEND="perl? ( dev-lang/perl:= )
 	)
 	ssl? ( dev-libs/openssl:0= )
 	virtual/libcrypt:0="
+BDEPEND="
+	sys-apps/which
+"
 RDEPEND="${DEPEND}
 	acct-user/nginx-unit
 	acct-group/nginx-unit"
