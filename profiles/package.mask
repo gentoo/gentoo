@@ -227,11 +227,6 @@ app-xemacs/mule-ucs
 =sys-kernel/vanilla-kernel-6.12.2
 =virtual/dist-kernel-6.12.2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-28)
-# Grave data loss bug. See also:
-# https://github.com/nicotine-plus/nicotine-plus/issues/3152
-=net-p2p/nicotine+-3.3.5
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
 #
