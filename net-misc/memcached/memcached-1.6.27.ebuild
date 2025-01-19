@@ -37,6 +37,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	htonll
+)
+
 src_prepare() {
 	default
 
