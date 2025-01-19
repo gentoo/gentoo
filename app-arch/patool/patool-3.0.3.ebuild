@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -108,6 +108,9 @@ python_test() {
 		"tests/archives/test_arc.py"
 		# Error: 1002 (invalid input file)
 		"tests/archives/test_mac.py"
+		# Broken due mime type change for rar in file-5.46
+		# https://github.com/wummel/patool/pull/173
+		"tests/test_mime.py::TestMime::test_nested_gzip"
 	)
 
 	if use elibc_musl; then
