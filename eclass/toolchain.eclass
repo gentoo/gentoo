@@ -3153,6 +3153,8 @@ XGCC() { get_make_var GCC_FOR_TARGET ; }
 
 has toolchain_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" toolchain_death_notice"
 toolchain_death_notice() {
+	# TODO: For bootstrap comparison failures, include the stage2 & stage3
+	# differing objects to avoid having to ask reporters to manually collect...
 	local dir
 	for dir in "${WORKDIR}"/build-jit "${WORKDIR}"/build ; do
 		if [[ -e "${dir}" ]] ; then
