@@ -29,4 +29,5 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.70.0-tests.patch"
+	"${FILESDIR}/${PN}-1.70.0_p20181130-config-log.patch"
 )
