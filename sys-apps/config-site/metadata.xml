@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/config-site</remote-id>
+		<remote-id type="github">gentoo/config-site</remote-id>
 	</upstream>
 </pkgmetadata>
