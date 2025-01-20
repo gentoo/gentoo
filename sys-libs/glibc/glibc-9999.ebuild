@@ -1303,6 +1303,7 @@ glibc_src_test() {
 		lgc=${lgc/.a/_s.so.1}
 		einfo "Copying ${lgc} into build directory"
 		cp "${lgc}" ./ || die
+		chmod ugo+x ./libgcc_s.so.1 || die
 	fi
 
 	# sandbox does not understand unshare() and prevents
