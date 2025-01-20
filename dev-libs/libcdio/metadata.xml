@@ -13,6 +13,9 @@
   </flag>
   </use>
   <upstream>
-    <remote-id type="savannah">libcdio</remote-id>
+    <remote-id type="github">libcdio/libcdio</remote-id>
+    <bugs-to>https://github.com/libcdio/libcdio/issues</bugs-to>
+    <changelog>https://github.com/libcdio/libcdio/releases</changelog>
+    <doc>https://github.com/libcdio/libcdio/wiki</doc>
   </upstream>
 </pkgmetadata>
