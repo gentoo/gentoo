@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/OpenNI/OpenNI"
 fi
 
-inherit ${SCM} flag-o-matic toolchain-funcs java-pkg-opt-2
+inherit ${SCM} eapi9-pipestatus flag-o-matic java-pkg-opt-2 toolchain-funcs
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
@@ -61,7 +61,8 @@ src_prepare() {
 	done
 
 	find . -type f -print0 |
-		xargs -0 sed -i "s:\".*/SamplesConfig.xml:\"${EPREFIX}/usr/share/${PN}/SamplesConfig.xml:" || die
+		xargs -0 sed -i "s:\".*/SamplesConfig.xml:\"${EPREFIX}/usr/share/${PN}/SamplesConfig.xml:"
+	status=$(pipestatus -v) || die "fails to sed SamplesConfig, (PIPESTATUS: ${status})"
 }
 
 src_compile() {
