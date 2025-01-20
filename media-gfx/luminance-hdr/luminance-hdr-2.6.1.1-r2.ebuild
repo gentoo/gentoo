@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/qtpfsgui/${P/_/.}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_sse2 fits openmp test"
+IUSE="fits openmp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -67,13 +67,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	if use cpu_flags_x86_sse2 ; then
-		append-flags -msse2
-	else
-		eerror "This package requires a CPU supporting the SSE2 instruction set."
-		die "SSE2 support missing"
-	fi
-
 	append-flags -std=c++17
 
 	local mycmakeargs=(
