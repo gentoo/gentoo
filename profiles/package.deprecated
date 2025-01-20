@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -16,11 +16,6 @@
 ## dev-foo/foo
 
 #--- END OF EXAMPLES ---
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-12-16)
-# Bug #946526. There is a newer version in dev-java/stringprep-2.2 pending for
-# stabilization. Then dev-java/saslprep should be last-rited.
-dev-java/saslprep
 
 # Michał Górny <mgorny@gentoo.org> (2024-06-15)
 # Stop-gap compatibility package.  Upstreams really need to move away
