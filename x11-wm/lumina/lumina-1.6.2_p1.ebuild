@@ -54,7 +54,8 @@ RDEPEND="${DEPEND}
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	dev-qt/qtpaths:5"
+	dev-qt/qtpaths:5
+	kde-frameworks/extra-cmake-modules"
 
 DOCS=( README.md )
 
