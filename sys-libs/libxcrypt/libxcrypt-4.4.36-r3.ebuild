@@ -26,10 +26,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	system? (
-		elibc_glibc? (
-			${CATEGORY}/glibc[-crypt(-)]
-			!${CATEGORY}/glibc[crypt(-)]
-		)
 		elibc_musl? (
 			${CATEGORY}/musl[-crypt(+)]
 			!${CATEGORY}/musl[crypt(+)]
