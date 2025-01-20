@@ -1295,6 +1295,16 @@ glibc_src_test() {
 		done
 	fi
 
+	# on some architectures, libsupport requires libgcc_s.so support for unwinding
+	# if it's not present then many tests fail
+
+	if tc-is-gcc ; then
+		local lgc=$(${CC} -print-libgcc-file-name)
+		lgc=${lgc/.a/_s.so.1}
+		einfo "Copying ${lgc} into build directory"
+		cp "${lgc}" ./ || die
+	fi
+
 	# sandbox does not understand unshare() and prevents
 	# writes to /proc/, which makes many tests fail
 
