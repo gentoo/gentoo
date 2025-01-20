@@ -212,6 +212,9 @@ src_configure() {
 	fi
 
 	if use ruby; then
+		# bug #932536 (workaround for swig w/ older ruby)
+		append-flags -std=gnu17
+
 		myconf+=( --with-swig-ruby="${EPREFIX}/usr/bin/ruby${RB_VER}" )
 	else
 		myconf+=( --without-swig-ruby )
