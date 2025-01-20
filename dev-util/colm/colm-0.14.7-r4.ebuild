@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,9 @@ src_prepare() {
 		sed -i -e 's/libcolm\.so/libcolm.dylib/' src/main.cc || die
 	fi
 
+	# Test fails w/ modern C (bug #944324)
+	rm test/colm.d/ext1.lm || die
+
 	eautoreconf
 }
 
@@ -69,7 +72,8 @@ src_test() {
 	# Build tests
 	default
 
-	# Run them
+	# Run them (and make sure we use just-built libraries, bug #941565)
+	local -x LD_LIBRARY_PATH="${S}/src/.libs:${S}/src:${LD_LIBRARY_PATH}"
 	cd test || die
 	./runtests || die
 }
