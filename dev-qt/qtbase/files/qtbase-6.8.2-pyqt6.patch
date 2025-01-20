@@ -1,0 +1,18 @@
+Revert of [1] which breaks PyQt6, and reverting "shouldn't"
+negatively affected anything. Can probably leave this until
+6.9.x instead (or at least until PyQt6-6.8.2 is released).
+Please file a bug to Gentoo if believe that this is wrong.
+
+Ideally need to fix PyQt6 itself, but proper fix hasn't been
+figured out yet, and PyQt6-6.8.2 may take a while to release.
+--- a/src/corelib/text/qstringconverter_base.h
++++ b/src/corelib/text/qstringconverter_base.h
+@@ -81,8 +81,5 @@ public:
+     };
+ protected:
+-    QStringConverterBase() = default;
+     ~QStringConverterBase() = default;
+-    QStringConverterBase(QStringConverterBase &&) = default;
+-    QStringConverterBase &operator=(QStringConverterBase &&) = default;
+ };
+ Q_DECLARE_OPERATORS_FOR_FLAGS(QStringConverterBase::Flags)
