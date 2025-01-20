@@ -1,0 +1,16 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index bfaba02..97c1b27 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -394,9 +394,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "proc-macro2"
+-version = "1.0.51"
++version = "1.0.93"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5d727cae5b39d21da60fa540906919ad737832fe0b1c165da3a34d6548c849d6"
++checksum = "60946a68e5f9d28b0dc1c21bb8a97ee7d018a8b322fa57838ba31cc878e22d99"
+ dependencies = [
+  "unicode-ident",
+ ]

@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ CRATES="
 	prettytable-rs@0.10.0
 	proc-macro-error@1.0.4
 	proc-macro-error-attr@1.0.4
-	proc-macro2@1.0.51
+	proc-macro2@1.0.93
 	quote@1.0.23
 	redox_syscall@0.2.16
 	redox_users@0.4.3
@@ -88,9 +88,6 @@ CRATES="
 	windows_x86_64_msvc@0.42.1
 "
 
-# https://github.com/rust-lang/rust/issues/113152#issuecomment-1612578376
-RUST_MAX_VER="1.71.1"
-
 inherit cargo
 
 DESCRIPTION="Binary file analysis tool"
@@ -103,7 +100,11 @@ LICENSE="Apache-2.0 BSD Boost-1.0 MIT Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-QA_FLAGS_IGNORED="usr/bin/bingrep"
+PATCHES=(
+	"${FILESDIR}"/${P}-update-crates.patch
+)
+
+QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 pkg_setup() {
 	rust_pkg_setup
