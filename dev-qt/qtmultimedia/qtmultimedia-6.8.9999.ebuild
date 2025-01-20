@@ -87,6 +87,8 @@ CMAKE_SKIP_TESTS=(
 	tst_qscreencapture_integration
 	tst_qscreencapturebackend
 	tst_qvideoframebackend
+	# seems flaky depending on what codecs system libraries support or not
+	tst_qmediaformatbackend
 	# fails with offscreen rendering
 	tst_qvideoframecolormanagement
 	tst_qwindowcapturebackend
