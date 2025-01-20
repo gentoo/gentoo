@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="amd64"
 
 CP_DEPEND="dev-java/saslprep:0"
 
