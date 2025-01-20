@@ -1,0 +1,23 @@
+From: OldManSeph7818 <sschaefering@gmail.com>
+Date: Sun, 19 Jan 2025 22:30
+Subject: [PATCH] fix gcc-15 build
+
+--- a/thirdparty/glslang/SPIRV/SpvBuilder.h
++++ b/thirdparty/glslang/SPIRV/SpvBuilder.h
+@@ -63,3 +63,4 @@
+-#include <stack>
+-#include <unordered_map>
+-#include <map>
++#include <stack>
++#include <cstdint>
++#include <unordered_map>
++#include <map>
+
+--- a/thirdparty/thorvg/inc/thorvg.h
++++ b/thirdparty/thorvg/inc/thorvg.h
+@@ -7,2 +7,3 @@
+-#include <list>
+-
++#include <list>
++#include <cstdint>
++

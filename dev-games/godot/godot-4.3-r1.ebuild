@@ -92,6 +92,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-scons.patch
+	"${FILESDIR}"/${PN}-4.3-r1-c23-fix.patch
 )
 
 src_prepare() {
