@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit meson python-single-r1 systemd udev
+inherit linux-info meson python-single-r1 systemd udev
 
 DESCRIPTION="Library to configure gaming mice"
 HOMEPAGE="https://github.com/libratbag/libratbag"
@@ -67,9 +67,16 @@ DEPEND="
 	dev-libs/gobject-introspection
 "
 
+CONFIG_CHECK="~HIDRAW"
+
 PATCHES=(
 	"${FILESDIR}"/libratbag-0.17-python3.12-imp.patch
 )
+
+pkg_setup() {
+	linux-info_pkg_setup
+	python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	default
