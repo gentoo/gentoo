@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ PROPERTIES="test_privileged"
 
 RDEPEND="
 	app-misc/pax-utils
-	>=dev-python/zenlib-2.3.2[${PYTHON_USEDEP}]
+	>=dev-python/zenlib-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/pycpio-1.4.0[${PYTHON_USEDEP}]
 	sys-apps/pciutils
 "
