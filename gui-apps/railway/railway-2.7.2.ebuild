@@ -1,0 +1,346 @@
+# Copyright 2024-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	addr2line@0.22.0
+	adler@1.0.2
+	aho-corasick@1.1.3
+	android-tzdata@0.1.1
+	android_system_properties@0.1.5
+	anstream@0.6.14
+	anstyle-parse@0.2.4
+	anstyle-query@1.1.0
+	anstyle-wincon@3.0.3
+	anstyle@1.0.7
+	async-trait@0.1.78
+	atomic-waker@1.1.2
+	autocfg@1.3.0
+	backtrace@0.3.72
+	base64@0.22.1
+	bitflags@1.3.2
+	bitflags@2.6.0
+	block-buffer@0.10.4
+	block@0.1.6
+	bumpalo@3.16.0
+	bytes@1.5.0
+	cairo-rs@0.20.0
+	cairo-sys-rs@0.20.0
+	cc@1.1.6
+	cfg-expr@0.15.8
+	cfg-if@1.0.0
+	chrono-tz-build@0.2.1
+	chrono-tz@0.8.6
+	chrono@0.4.38
+	colorchoice@1.0.1
+	convert_case@0.6.0
+	core-foundation-sys@0.8.6
+	core-foundation@0.9.4
+	crypto-common@0.1.6
+	digest@0.10.7
+	displaydoc@0.2.5
+	encoding_rs@0.8.35
+	env_filter@0.1.0
+	env_logger@0.11.4
+	equivalent@1.0.1
+	errno@0.3.10
+	fastrand@2.2.0
+	field-offset@0.3.6
+	fnv@1.0.7
+	foreign-types-shared@0.1.1
+	foreign-types@0.3.2
+	form_urlencoded@1.2.1
+	futures-channel@0.3.30
+	futures-core@0.3.31
+	futures-executor@0.3.30
+	futures-io@0.3.30
+	futures-macro@0.3.31
+	futures-sink@0.3.31
+	futures-task@0.3.31
+	futures-util@0.3.31
+	gdk-pixbuf-sys@0.20.0
+	gdk-pixbuf@0.20.0
+	gdk4-sys@0.9.0
+	gdk4@0.9.0
+	generic-array@0.14.7
+	getrandom@0.2.12
+	gettext-rs@0.7.0
+	gettext-sys@0.21.3
+	gimli@0.29.0
+	gio-sys@0.20.0
+	gio@0.20.0
+	glib-macros@0.20.0
+	glib-sys@0.20.0
+	glib@0.20.0
+	gobject-sys@0.20.0
+	graphene-rs@0.20.0
+	graphene-sys@0.20.0
+	gsk4-sys@0.9.0
+	gsk4@0.9.0
+	gtk4-macros@0.9.0
+	gtk4-sys@0.9.0
+	gtk4@0.9.0
+	h2@0.4.7
+	hashbrown@0.14.5
+	heck@0.5.0
+	hermit-abi@0.3.9
+	hex@0.4.3
+	http-body-util@0.1.2
+	http-body@1.0.1
+	http@1.1.0
+	httparse@1.8.0
+	humantime@2.1.0
+	hyper-rustls@0.27.3
+	hyper-tls@0.6.0
+	hyper-util@0.1.7
+	hyper@1.5.1
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.60
+	icu_collections@1.5.0
+	icu_locid@1.5.0
+	icu_locid_transform@1.5.0
+	icu_locid_transform_data@1.5.0
+	icu_normalizer@1.5.0
+	icu_normalizer_data@1.5.0
+	icu_properties@1.5.1
+	icu_properties_data@1.5.0
+	icu_provider@1.5.0
+	icu_provider_macros@1.5.0
+	idna@1.0.3
+	idna_adapter@1.2.0
+	indexmap@2.2.6
+	ipnet@2.10.1
+	is_terminal_polyfill@1.70.0
+	itoa@1.0.11
+	js-sys@0.3.69
+	lazy_static@1.4.0
+	libadwaita-sys@0.7.0
+	libadwaita@0.7.0
+	libc@0.2.155
+	linux-raw-sys@0.4.14
+	litemap@0.7.4
+	locale_config@0.3.0
+	log@0.4.22
+	malloc_buf@0.0.6
+	md-5@0.10.6
+	memchr@2.7.4
+	memoffset@0.9.1
+	mime@0.3.17
+	miniz_oxide@0.7.4
+	mio@1.0.1
+	native-tls@0.2.12
+	num-traits@0.2.19
+	objc-foundation@0.1.1
+	objc@0.2.7
+	objc_id@0.1.1
+	object@0.35.0
+	once_cell@1.19.0
+	openssl-macros@0.1.1
+	openssl-probe@0.1.5
+	openssl-sys@0.9.104
+	openssl@0.10.68
+	pango-sys@0.20.0
+	pango@0.20.0
+	parse-zoneinfo@0.3.0
+	percent-encoding@2.3.1
+	phf@0.11.2
+	phf_codegen@0.11.2
+	phf_generator@0.11.2
+	phf_shared@0.11.2
+	pin-project-internal@1.1.7
+	pin-project-lite@0.2.14
+	pin-project@1.1.7
+	pin-utils@0.1.0
+	pkg-config@0.3.30
+	proc-macro-crate@3.1.0
+	proc-macro2@1.0.86
+	quote@1.0.36
+	railway-api-derive@0.1.1
+	railway-api@0.1.1
+	railway-core@0.1.1
+	railway-provider-db-movas@0.1.0
+	railway-provider-hafas@0.1.2
+	railway-provider-motis@0.1.0
+	railway-provider-search-ch@0.1.0
+	rand@0.8.5
+	rand_core@0.6.4
+	regex-automata@0.4.7
+	regex-syntax@0.8.4
+	regex@1.10.5
+	reqwest@0.12.5
+	ring@0.17.8
+	rustc-demangle@0.1.24
+	rustc_version@0.4.0
+	rustix@0.38.34
+	rustls-pemfile@2.1.2
+	rustls-pki-types@1.5.0
+	rustls-webpki@0.102.3
+	rustls@0.23.7
+	ryu@1.0.18
+	schannel@0.1.23
+	security-framework-sys@2.9.1
+	security-framework@2.9.2
+	semver@1.0.23
+	serde@1.0.204
+	serde_derive@1.0.204
+	serde_json@1.0.120
+	serde_spanned@0.6.6
+	serde_urlencoded@0.7.1
+	siphasher@0.3.11
+	slab@0.4.9
+	smallvec@1.13.2
+	socket2@0.5.7
+	spin@0.9.8
+	stable_deref_trait@1.2.0
+	subtle@2.6.1
+	syn@2.0.72
+	sync_wrapper@1.0.2
+	synstructure@0.13.1
+	system-configuration-sys@0.5.0
+	system-configuration@0.5.1
+	system-deps@7.0.1
+	target-lexicon@0.12.15
+	temp-dir@0.1.12
+	tempfile@3.11.0
+	thiserror-impl@1.0.63
+	thiserror@1.0.63
+	tinystr@0.7.6
+	tokio-macros@2.4.0
+	tokio-native-tls@0.3.1
+	tokio-rustls@0.26.0
+	tokio-util@0.7.12
+	tokio@1.39.1
+	toml@0.8.15
+	toml_datetime@0.6.6
+	toml_edit@0.21.1
+	toml_edit@0.22.16
+	tower-layer@0.3.3
+	tower-service@0.3.2
+	tower@0.4.13
+	tracing-core@0.1.32
+	tracing@0.1.40
+	try-lock@0.2.5
+	typenum@1.17.0
+	unicode-ident@1.0.12
+	unicode-segmentation@1.11.0
+	untrusted@0.9.0
+	url@2.5.4
+	utf16_iter@1.0.5
+	utf8_iter@1.0.4
+	utf8parse@0.2.2
+	uuid@1.12.0
+	vcpkg@0.2.15
+	version-compare@0.2.0
+	version_check@0.9.4
+	want@0.3.1
+	wasi@0.11.0+wasi-snapshot-preview1
+	wasm-bindgen-backend@0.2.92
+	wasm-bindgen-futures@0.4.42
+	wasm-bindgen-macro-support@0.2.92
+	wasm-bindgen-macro@0.2.92
+	wasm-bindgen-shared@0.2.92
+	wasm-bindgen@0.2.92
+	web-sys@0.3.69
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
+	windows-core@0.52.0
+	windows-sys@0.48.0
+	windows-sys@0.52.0
+	windows-targets@0.48.5
+	windows-targets@0.52.5
+	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_gnullvm@0.52.5
+	windows_aarch64_msvc@0.48.5
+	windows_aarch64_msvc@0.52.5
+	windows_i686_gnu@0.48.5
+	windows_i686_gnu@0.52.5
+	windows_i686_gnullvm@0.52.5
+	windows_i686_msvc@0.48.5
+	windows_i686_msvc@0.52.5
+	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnu@0.52.5
+	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_gnullvm@0.52.5
+	windows_x86_64_msvc@0.48.5
+	windows_x86_64_msvc@0.52.5
+	winnow@0.5.40
+	winnow@0.6.14
+	winreg@0.52.0
+	write16@1.0.0
+	writeable@0.5.5
+	yoke-derive@0.7.5
+	yoke@0.7.5
+	zerofrom-derive@0.1.5
+	zerofrom@0.1.5
+	zeroize@1.8.1
+	zerovec-derive@0.10.3
+	zerovec@0.10.4
+"
+
+inherit cargo gnome2-utils meson xdg-utils
+
+DESCRIPTION="Travel with all your train information in one place"
+HOMEPAGE="
+	https://mobile.schmidhuberj.de/railway/
+	https://gitlab.com/schmiddi-on-mobile/railway/
+"
+SRC_URI="
+	https://gitlab.com/schmiddi-on-mobile/railway/-/archive/${PV}/${P}.tar.bz2
+	${CARGO_CRATE_URIS}
+"
+
+LICENSE="GPL-3+"
+# Dependent crate licenses
+LICENSE+="
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD ISC MIT Unicode-3.0
+	Unicode-DFS-2016
+	|| ( AGPL-3+ EUPL-1.2 )
+"
+# ring
+LICENSE+=" openssl"
+SLOT="0"
+KEYWORDS="~amd64"
+
+DEPEND="
+	>=dev-libs/glib-2.66
+	>=gui-libs/gtk-4.14:4
+	>=gui-libs/libadwaita-1.6.0
+	media-libs/graphene
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	dev-libs/glib
+	dev-util/blueprint-compiler
+	sys-devel/gettext
+"
+
+BUILD_DIR=${S}/build
+ECARGO_HOME=${BUILD_DIR}/cargo-home
+
+QA_PREBUILT=usr/bin/diebahn
+
+src_prepare() {
+	default
+
+	sed -e "s:get_option('profile.*:$(usex debug false true):" \
+		-i src/meson.build || die
+}
+
+src_install() {
+	meson_src_install
+	dosym diebahn /usr/bin/railway
+}
+
+pkg_postinst() {
+	gnome2_schemas_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
+	xdg_icon_cache_update
+}
