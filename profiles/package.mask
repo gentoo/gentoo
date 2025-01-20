@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-20)
+# Unused Java library. Removal on 2025-02-19.
+dev-java/saslprep
+
 # Zac Medico <zmedico@gentoo.org> (2025-01-18)
 # Ebuild is difficult to maintain. No revdeps.
 # Removal on 2025-02-17. Bug #896044
