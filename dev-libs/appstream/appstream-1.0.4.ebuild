@@ -32,6 +32,13 @@ RDEPEND="
 	dev-libs/libyaml
 	dev-libs/snowball-stemmer:=
 	>=net-misc/curl-7.62
+	compose? (	dev-libs/glib:2
+				dev-libs/libyaml
+				gnome-base/librsvg:2
+				media-libs/fontconfig:1.0
+				media-libs/freetype:2
+				x11-libs/cairo
+				x11-libs/gdk-pixbuf:2 )
 	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
 	qt6? ( dev-qt/qtbase:6 )
 	systemd? ( sys-apps/systemd:= )
