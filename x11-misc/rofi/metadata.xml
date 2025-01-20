@@ -11,5 +11,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">davatorium/rofi</remote-id>
+		<changelog>https://github.com/davatorium/rofi/releases</changelog>
+		<bugs-to>https://github.com/davatorium/rofi/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
