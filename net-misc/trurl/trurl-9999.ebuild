@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/curl/trurl"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/curl/trurl/archive/refs/tags/${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${P}
-
+	SRC_URI="https://github.com/curl/trurl/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
