@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -60,7 +60,7 @@ src_configure() {
 		$(use_enable static-libs static)
 	)
 
-	# This configure switch only appears for glibc-based userlands.
+	# This configure switch only appears on glibc-based userlands.
 	# It enables 64-bit time_t to support timestamps greater than
 	# the year 2038 (D_TIME_BITS=64).
 	if use elibc_glibc; then
