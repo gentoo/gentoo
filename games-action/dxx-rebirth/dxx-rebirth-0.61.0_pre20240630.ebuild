@@ -88,7 +88,6 @@ DXX_RDEPEND_USE_FREEDATA_FRAGMENT='
 # extras are enabled.
 DXX_RDEPEND_ENGINE_FRAGMENT='
 	d${ENGINE}x? (
-		!<games-action/d${ENGINE}x-rebirth-0.59.100
 		data? (
 			|| (
 				games-action/descent${ENGINE}-data
