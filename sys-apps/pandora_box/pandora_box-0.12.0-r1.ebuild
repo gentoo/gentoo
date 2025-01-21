@@ -7,6 +7,8 @@ EAPI=8
 
 SYDVER=3.30.0
 
+IUSE="static"
+
 CRATES="
 	ahash@0.8.11
 	argv@0.1.11
@@ -123,3 +125,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 S=${WORKDIR}/syd-v${SYDVER}/pandora
+
+src_configure() {
+	if use static; then
+		export RUSTFLAGS+="-Ctarget-feature=+crt-static"
+	fi
+	cargo_src_configure
+}
