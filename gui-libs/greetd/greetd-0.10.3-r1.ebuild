@@ -79,7 +79,7 @@ LICENSE="GPL-3+"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~riscv ~x86"
 IUSE="man selinux"
 
 DEPEND="
