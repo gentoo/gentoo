@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,7 +49,7 @@ RDEPEND="
 	media-libs/portaudio[alsa]
 	media-libs/portmidi
 	media-libs/rubberband
-	media-libs/taglib:=
+	<media-libs/taglib-2
 	media-libs/vamp-plugin-sdk
 	media-sound/lame
 	sci-libs/fftw:3.0=
@@ -90,7 +90,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-docs.patch
-	"${FILESDIR}"/${PN}-2.3.6-fix-build-taglib2.patch
 )
 
 PLOCALES="
