@@ -46,7 +46,6 @@ RDEPEND="
 	acct-group/readarr
 	acct-user/readarr
 	dev-libs/icu
-	dev-util/lttng-ust:0
 	dev-db/sqlite
 "
 
@@ -56,7 +55,7 @@ src_prepare() {
 	default
 
 	# https://github.com/dotnet/runtime/issues/57784
-	rm libcoreclrtraceptprovider.so Readarr.Update/libcoreclrtraceptprovider.so || die
+	find . -type f -iname libcoreclrtraceptprovider.so -delete || die
 }
 
 src_install() {
