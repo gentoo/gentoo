@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,16 +16,16 @@ else
 		https://github.com/martanne/vis/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/martanne/vis-test/archive/${VIS_TEST_COMMIT}.tar.gz
 			-> vis-test-${VIS_TEST_COMMIT}.tar.gz
-		 )
+		)
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
-DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
+DESCRIPTION="Modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
 LICENSE="ISC MIT"
 SLOT="0"
-IUSE="+acl +ncurses +lua selinux test tre"
+IUSE="+acl +lua +ncurses selinux test tre"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -33,8 +33,8 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-libs/libtermkey
 	acl? ( sys-apps/acl )
-	ncurses? ( sys-libs/ncurses:0= )
 	lua? ( ${LUA_DEPS} )
+	ncurses? ( sys-libs/ncurses:0= )
 	tre? ( dev-libs/tre )
 "
 RDEPEND="
