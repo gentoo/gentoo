@@ -12,7 +12,7 @@
 		Vis aims to be a modern, legacy free, simple yet efficient editor combining the strengths of both vi(m) and sam.
 	</longdescription>
 	<use>
-		<flag name="tre">more memory efficient regex search using <pkg>dev-libs/tre</pkg></flag>
+		<flag name="tre">More memory efficient regex search using <pkg>dev-libs/tre</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/martanne/vis/issues</bugs-to>
