@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs flag-o-matic xdg-utils
+inherit cmake toolchain-funcs xdg-utils
 
 DESCRIPTION="Graphical user interface that provides a workflow for HDR imaging"
 HOMEPAGE="http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR"
@@ -50,8 +50,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-cmake.patch
 	"${FILESDIR}"/${PN}-2.6.0-no-git.patch
 	"${FILESDIR}"/${PN}-2.6.0-docs.patch
-	"${FILESDIR}"/${PN}-2.5.1-openmp-automagic.patch
 	"${FILESDIR}"/${PN}-2.6.1.1-boost-1.85.patch
+	# downstream; fix build w/ boost-1.87, openmp automagic
+	"${FILESDIR}"/${P}-clamp-redefinition.patch
+	"${FILESDIR}"/${P}-compilersettings-and-openmp.patch
 	# patch by ArchLinux
 	"${FILESDIR}"/${P}-exiv2-0.28.patch
 	# inspired by FreeBSD
@@ -67,8 +69,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	append-flags -std=c++17
-
 	local mycmakeargs=(
 		-DWITH_HELPBROWSER=OFF
 		$(cmake_use_find_package fits CFITSIO)
