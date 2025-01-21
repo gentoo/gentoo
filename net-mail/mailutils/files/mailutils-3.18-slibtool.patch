@@ -1,0 +1,73 @@
+https://git.savannah.gnu.org/cgit/mailutils.git/commit/?id=ec3b17c65d6dfa22684963965efd333a2b63d503
+https://savannah.gnu.org/patch/index.php?10497
+
+From 14665c43af281ace7c46450074bfe51a182f05cf Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 20 Jan 2025 20:53:17 -0800
+Subject: [PATCH] libproto: link using the libtool archives
+
+When using slibtool the build fails when it doesn't find -lmu_tesh. This
+can be solved by linking internal dependencies with the generated
+libtool archive (.la) file.
+---
+ libproto/dotmail/tests/Makefile.am | 2 +-
+ libproto/maildir/tests/Makefile.am | 2 +-
+ libproto/mbox/tests/Makefile.am    | 2 +-
+ libproto/mh/tests/Makefile.am      | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libproto/dotmail/tests/Makefile.am b/libproto/dotmail/tests/Makefile.am
+index 36f6c04..51818c8 100644
+--- a/libproto/dotmail/tests/Makefile.am
++++ b/libproto/dotmail/tests/Makefile.am
+@@ -27,7 +27,7 @@ AM_CPPFLAGS = \
+ 
+ noinst_PROGRAMS = \
+  mbop
+-LDADD = -L$(top_builddir)/libmailutils/tests -lmu_tesh $(MU_LIB_DOTMAIL) $(MU_LIB_MAILUTILS)
++LDADD = $(top_builddir)/libmailutils/tests/libmu_tesh.la $(MU_LIB_DOTMAIL) $(MU_LIB_MAILUTILS)
+ 
+ ## ------------ ##
+ ## Test suite.  ##
+diff --git a/libproto/maildir/tests/Makefile.am b/libproto/maildir/tests/Makefile.am
+index 04bef0a..e0cf7a1 100644
+--- a/libproto/maildir/tests/Makefile.am
++++ b/libproto/maildir/tests/Makefile.am
+@@ -28,7 +28,7 @@ AM_CPPFLAGS = \
+ noinst_PROGRAMS = \
+  mbop
+ 
+-LDADD =  -L$(top_builddir)/libmailutils/tests -lmu_tesh $(MU_LIB_MAILDIR) $(MU_LIB_MAILUTILS)
++LDADD = $(top_builddir)/libmailutils/tests/libmu_tesh.la $(MU_LIB_MAILDIR) $(MU_LIB_MAILUTILS)
+ 
+ ## ------------ ##
+ ## Test suite.  ##
+diff --git a/libproto/mbox/tests/Makefile.am b/libproto/mbox/tests/Makefile.am
+index f8871ae..461d19c 100644
+--- a/libproto/mbox/tests/Makefile.am
++++ b/libproto/mbox/tests/Makefile.am
+@@ -27,7 +27,7 @@ AM_CPPFLAGS = \
+ 
+ noinst_PROGRAMS = \
+  mbop
+-LDADD = -L$(top_builddir)/libmailutils/tests -lmu_tesh $(MU_LIB_MBOX) $(MU_LIB_MAILUTILS)
++LDADD = $(top_builddir)/libmailutils/tests/libmu_tesh.la $(MU_LIB_MBOX) $(MU_LIB_MAILUTILS)
+ 
+ ## ------------ ##
+ ## Test suite.  ##
+diff --git a/libproto/mh/tests/Makefile.am b/libproto/mh/tests/Makefile.am
+index a949c34..df42255 100644
+--- a/libproto/mh/tests/Makefile.am
++++ b/libproto/mh/tests/Makefile.am
+@@ -28,7 +28,7 @@ AM_CPPFLAGS = \
+ noinst_PROGRAMS = \
+  mbop
+ 
+-LDADD =  -L$(top_builddir)/libmailutils/tests -lmu_tesh $(MU_LIB_MH) $(MU_LIB_MAILUTILS)
++LDADD =  $(top_builddir)/libmailutils/tests/libmu_tesh.la $(MU_LIB_MH) $(MU_LIB_MAILUTILS)
+ 
+ ## ------------ ##
+ ## Test suite.  ##
+-- 
+2.45.3
+
