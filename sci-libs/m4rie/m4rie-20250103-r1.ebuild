@@ -19,7 +19,7 @@ IUSE="debug"
 DEPEND=">=sci-libs/m4ri-20240729"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch" )
+PATCHES=( "${FILESDIR}/${P}-pkgconfig-r1.patch" )
 
 src_prepare() {
 	default
