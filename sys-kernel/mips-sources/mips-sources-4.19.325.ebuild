@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,7 +7,7 @@ EAPI="8"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="4"				# Tarball revision for patches
+GENPATCHREV="5"				# Tarball revision for patches
 
 # Directories
 MIPS_PATCHES="${WORKDIR}/mips-patches"
