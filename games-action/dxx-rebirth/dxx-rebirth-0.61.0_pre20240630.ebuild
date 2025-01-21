@@ -1,9 +1,9 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 MY_COMMIT="27cbf1ba87e6d60809c43246e2eef760fcd26d13"
 
 # Games under Gentoo are marked as 'testing' by convention
