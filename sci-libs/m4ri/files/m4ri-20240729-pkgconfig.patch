@@ -1,0 +1,33 @@
+From 132130a5e74dac9beeb42333a551d76714190f40 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 20 Jan 2025 23:11:30 -0500
+Subject: [PATCH] m4ri.pc.in: various compiler/linker flag improvements
+
+  1. libpng moved from Requires to Requires.private. Programs using m4ri
+     don't need to pass -lpng unless they are statically linking.
+
+  2. Move $OPENMP_CFLAGS to Libs.private. This belongs in Libs.private
+     (rather than Libs) for the same reason -lpng does, but it also does
+     NOT belong in Cflags, because we don't want to accidentally enable
+     OpenMP at compile time in every project that uses m4ri.
+---
+ m4ri.pc.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/m4ri.pc.in b/m4ri.pc.in
+index 0257aa6..ff1b3ce 100644
+--- a/m4ri.pc.in
++++ b/m4ri.pc.in
+@@ -6,6 +6,7 @@ includedir=@includedir@
+ Name: M4RI
+ Description: Dense linear algebra over GF(2).
+ Version: @PACKAGE_VERSION@
+-Requires: @M4RI_USE_PNG_PC@
++Requires.private: @M4RI_USE_PNG_PC@
+ Libs: -L${libdir} -lm4ri @RAW_LIBPNG@ @LIBM@ @LIBPNG_LIBADD@
+-Cflags: -I${includedir} @SIMD_CFLAGS@ @OPENMP_CFLAGS@ @LIBPNG_CFLAGS@
++Libs.private: @OPENMP_CFLAGS@
++Cflags: -I${includedir} @LIBPNG_CFLAGS@
+-- 
+2.45.2
+
