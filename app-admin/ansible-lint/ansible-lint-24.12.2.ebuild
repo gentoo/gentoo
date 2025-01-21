@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,8 @@ BDEPEND="
 	test? (
 		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/jmespath[${PYTHON_USEDEP}]
+		dev-python/license-expression[${PYTHON_USEDEP}]
+		dev-python/pylint[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.6[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
