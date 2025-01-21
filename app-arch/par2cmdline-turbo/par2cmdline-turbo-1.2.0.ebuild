@@ -18,7 +18,6 @@ HOMEPAGE="https://github.com/animetosho/par2cmdline-turbo"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="openmp"
 
 RDEPEND="
 	!app-arch/par2cmdline
