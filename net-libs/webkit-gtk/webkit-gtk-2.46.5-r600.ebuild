@@ -159,6 +159,9 @@ src_prepare() {
 
 	# https://bugs.gentoo.org/943213
 	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
+
+	# We don't want -Werror for gobject-introspection (bug #947761)
+	sed -i -e "s:--warn-error::" Source/cmake/FindGI.cmake || die
 }
 
 src_configure() {
