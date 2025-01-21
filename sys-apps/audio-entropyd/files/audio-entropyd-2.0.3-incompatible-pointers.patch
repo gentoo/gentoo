@@ -1,0 +1,14 @@
+Fix incompatible pointer types by passing right buffer to
+get_random_data()
+https://bugs.gentoo.org/920156
+--- a/audio-entropyd.c
++++ b/audio-entropyd.c
+@@ -211,7 +211,7 @@
+ 
+ void main_loop(const char *cdevice, int sample_rate)
+ {
+-	unsigned char *output_buffer = NULL;
++	char *output_buffer = NULL;
+ 	int n_output_bytes = -1;
+ 	int random_fd = -1, max_bits;
+ 	FILE *poolsize_fh;

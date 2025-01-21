@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,8 +20,8 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-entropyd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.1-uclibc.patch
-	"${FILESDIR}"/${PN}-2.0.1-ldflags.patch
+	"${FILESDIR}"/"${PN}"-2.0.1-ldflags.patch
+	"${FILESDIR}"/"${P}"-incompatible-pointers.patch
 )
 
 src_prepare() {
