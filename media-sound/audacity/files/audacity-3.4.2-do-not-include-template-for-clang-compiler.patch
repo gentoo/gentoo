@@ -1,0 +1,24 @@
+https://github.com/audacity/audacity/issues/4614
+
+When compile w/ clang, link failed with:
+
+  ld.lld: error: undefined symbol: typeinfo for wxNavigationEnabled<wxWindow>
+
+so disable "extern ..." if compiler is clang
+
+see also gentoo bug: https://bugs.gentoo.org/915041
+
+diff --git a/src/ListNavigationPanel.h b/src/ListNavigationPanel.h
+index 1618d78..e04cc23 100644
+--- a/src/ListNavigationPanel.h
++++ b/src/ListNavigationPanel.h
+@@ -13,7 +13,9 @@
+ #include <wx/window.h>
+ #include <wx/containr.h>
+ 
++#if !defined(__clang__)
+ extern template class WXDLLIMPEXP_CORE wxNavigationEnabled<wxWindow>;
++#endif
+ 
+ #include "ListNavigationEnabled.h"
+ 
