@@ -9,7 +9,7 @@ MY_P="Linux-${PN^^}-${PV}"
 # Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
 TMPFILES_OPTIONAL=1
 
-inherit db-use fcaps flag-o-matic meson-multilib
+inherit db-use fcaps flag-o-matic meson-multilib toolchain-funcs
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
@@ -78,11 +78,11 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
+	local machine_file="${T}/meson.${CHOST}.${ABI}.ini.local"
 	# Workaround for docbook5 not being packaged (bug #913087#c4)
 	# It's only used for validation of output, so stub it out.
 	# Also, stub out elinks+w3m which are only used for an index.
-	cat >> ${native_file} <<-EOF || die
+	cat >> "${machine_file}" <<-EOF || die
 	[binaries]
 	xmlcatalog='true'
 	xmllint='true'
@@ -90,9 +90,15 @@ multilib_src_configure() {
 	w3m='true'
 	EOF
 
-	local emesonargs=(
-		--native-file "${native_file}"
+	local emesonargs=()
 
+	if tc-is-cross-compiler; then
+		emesonargs+=( --cross-file "${machine_file}" )
+	else
+		emesonargs+=( --native-file "${machine_file}" )
+	fi
+
+	emesonargs+=(
 		$(meson_feature audit)
 		$(meson_native_use_bool examples)
 		$(meson_use debug pam-debug)
