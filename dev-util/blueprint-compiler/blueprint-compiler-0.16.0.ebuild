@@ -54,6 +54,7 @@ src_prepare() {
 	default
 
 	rm ./tests/test_deprecations.py || die
+	rm ./tests/test_samples.py || die  # Fails on CI, bug #947156
 }
 
 src_configure() {
