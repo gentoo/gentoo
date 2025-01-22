@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="mpg123-el"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="media-sound/mpg123
 	media-sound/alsa-utils"
