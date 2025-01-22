@@ -20,14 +20,15 @@ else
 	S="${WORKDIR}/TempestSDR-${COMMIT}"
 fi
 
+RDEPEND=">=virtual/jre-1.8:*
+	dev-libs/boost:=
+	net-wireless/airspy
+	net-wireless/uhd:=
+	net-wireless/rtl-sdr
+	net-wireless/bladerf:=
+	net-wireless/hackrf-tools"
 DEPEND=">=virtual/jdk-1.8:*
-		dev-libs/boost:=
-		net-wireless/airspy
-		net-wireless/uhd:=
-		net-wireless/rtl-sdr
-		net-wireless/bladerf:=
-		net-wireless/hackrf-tools"
-RDEPEND="${DEPEND}"
+	${RDEPEND}"
 
 src_install() {
 	java-pkg_dojar JavaGUI/JTempestSDR.jar
