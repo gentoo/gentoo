@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -135,6 +135,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.10.11.0-boost-1.87.patch
+	"${FILESDIR}"/7570.patch
 )
 
 src_prepare() {
@@ -231,9 +232,7 @@ src_install() {
 
 src_test() {
 	# skip test which needs internet (metainfo_test)
-	# skip test which is currently broken (qa_correlate_access_code_XX_ts)
-	# https://github.com/gnuradio/gnuradio/issues/7566
-	virtx cmake_src_test -E 'metainfo_test|qa_correlate_access_code_XX_ts' --output-on-failure
+	virtx cmake_src_test -E 'metainfo_test' --output-on-failure
 }
 
 pkg_postinst() {

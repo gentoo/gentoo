@@ -1,0 +1,34 @@
+From dc208e8c91a772ea3da462efd16d912cef44316c Mon Sep 17 00:00:00 2001
+From: Clayton Smith <argilo@gmail.com>
+Date: Fri, 30 Aug 2024 11:19:19 -0400
+Subject: [PATCH] digital: Fix NumPy 2 compatibility
+
+Signed-off-by: Clayton Smith <argilo@gmail.com>
+---
+ gr-digital/python/digital/qa_correlate_access_code_XX_ts.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gr-digital/python/digital/qa_correlate_access_code_XX_ts.py b/gr-digital/python/digital/qa_correlate_access_code_XX_ts.py
+index c0fdc9dc246..8c242f2f792 100644
+--- a/gr-digital/python/digital/qa_correlate_access_code_XX_ts.py
++++ b/gr-digital/python/digital/qa_correlate_access_code_XX_ts.py
+@@ -12,6 +12,7 @@
+ from gnuradio import gr, gr_unittest, digital, blocks
+ import pmt
+ import numpy
++import struct
+ 
+ default_access_code = '\xAC\xDD\xA4\xE2\xF2\x8C\x20\xFC'
+ 
+@@ -74,8 +75,9 @@ def _variable_payload_t(self, payload_len=2**15 + 3):
+         # header contains packet length, twice (bit-swapped)
+         header = numpy.array([(payload_len & 0xFF00) >> 8, payload_len & 0xFF] * 2, dtype=numpy.uint8)
+         # make sure we've built the length header correctly
+-        self.assertEqual(header[0] * 256 + header[1], header[2] * 256 + header[3])
+-        self.assertEqual(header[0] * 256 + header[1], len(payload))
++        length1, length2 = struct.unpack(">HH", header)
++        self.assertEqual(length1, length2)
++        self.assertEqual(length1, len(payload))
+ 
+         packet = numpy.concatenate((header, payload))
+         pad = (0,) * PADDING_LEN
