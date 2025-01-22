@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ else
 	SRC_URI="https://git.savannah.gnu.org/cgit/emacs/${PN}.git/snapshot/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ppc x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.3+ CC-BY-SA-3.0 odt-schema? ( OASIS-Open )"
