@@ -8,4 +8,7 @@
   <use>
     <flag name="zinnia">Enable support for <pkg>app-i18n/zinnia</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="github">microcai/ibus-handwrite</remote-id>
+  </upstream>
 </pkgmetadata>
