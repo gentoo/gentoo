@@ -1,13 +1,14 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Rezlooks GTK+ Engine"
 HOMEPAGE="https://www.gnome-look.org/content/show.php?content=39179"
 SRC_URI="https://www.gnome-look.org/content/files/39179-rezlooks-${PV}.tar.gz"
+S="${WORKDIR}"/rezlooks-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,11 +18,10 @@ RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}"/rezlooks-${PV}
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.6-glib-single-include.patch
-	"${FILESDIR}"/${PN}-0.6-slibtool-sqrt-math.patch
+	"${FILESDIR}"/${P}-glib-single-include.patch
+	"${FILESDIR}"/${P}-slibtool-sqrt-math.patch
+	"${FILESDIR}"/${P}-implicit-declaration.patch
 )
 
 src_prepare() {

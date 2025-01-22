@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/882241
+Add missing declaration to header
+--- a/src/rezlooks_draw.h
++++ b/src/rezlooks_draw.h
+@@ -149,5 +149,9 @@
+                                        const ResizeGripParameters      *grip,
+                                        int x, int y, int width, int height);
+ 
++void rezlooks_draw_menubar_button   (cairo_t *cr,
++                                       const RezlooksColors         *colors,
++                                       const WidgetParameters       *params,
++                                       int x, int y, int width, int height);
+ 
+ #endif /* REZLOOKS_DRAW_H */
