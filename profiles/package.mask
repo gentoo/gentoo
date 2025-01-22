@@ -34,6 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# CVE-2025-23050, bug #948573; Removal on 2025-02-22.
+dev-qt/qtbluetooth:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 packages without any revdeps.
 dev-qt/pixeltool
 dev-qt/qdbus
