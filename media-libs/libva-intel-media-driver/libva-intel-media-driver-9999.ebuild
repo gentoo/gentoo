@@ -29,8 +29,8 @@ IUSE="+redistributable test X"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=media-libs/gmmlib-22.5.4:=[${MULTILIB_USEDEP}]
-	>=media-libs/libva-2.21.0[X?,${MULTILIB_USEDEP}]
+DEPEND=">=media-libs/gmmlib-22.6.0:=[${MULTILIB_USEDEP}]
+	>=media-libs/libva-2.22.0[X?,${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
