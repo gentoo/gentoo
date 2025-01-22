@@ -11,13 +11,13 @@
 	</maintainer>
 	<longdescription>
 		QtPy is a small abstraction layer that lets you write applications using a single API call to either PyQt or PySide.
-		It provides support for PyQt5, PyQt4, PySide2 and PySide using the Qt5 layout (where the QtGui module has been split into QtGui and QtWidgets).
-		Basically, you can write your code as if you were using PySide2 but import Qt modules from qtpy instead of PySide2 (or PyQt5)
+		It provides support for PyQt6, PyQt5 and PySide6.
+		Basically, you can write your code as if you were using PyQt6 but import Qt modules from qtpy instead of PyQt6 (or PySide6)
 	</longdescription>
 	<use>
 		<flag name="pyqt5">Use <pkg>dev-python/pyqt5</pkg> as Qt for Python implementation</flag>
 		<flag name="pyqt6">Use <pkg>dev-python/pyqt6</pkg> as Qt for Python implementation</flag>
-		<flag name="pyside2">Use <pkg>dev-python/pyside2</pkg> as Qt for Python implementation</flag>
+		<flag name="pyside2">Use dev-python/pyside2 as Qt for Python implementation</flag>
 		<flag name="pyside6">Use <pkg>dev-python/pyside6</pkg> as Qt for Python implementation</flag>
 		<flag name="designer">Pull in bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Pull in bindings for the QtGui module</flag>
