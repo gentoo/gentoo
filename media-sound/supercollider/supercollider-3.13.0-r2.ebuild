@@ -58,7 +58,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-boost-1.84.patch" # bug 921595
 	"${FILESDIR}/${P}-gcc-13.patch" # bug 905127
 	"${FILESDIR}/${P}-no-ccache.patch" # bug 922095
-	"${WORKDIR}/${PN}-3.13.0-boost-1.85.patch" # bug 932793
+	"${WORKDIR}/${P}-boost-1.85.patch" # bug 932793
+	"${FILESDIR}"/${P}-boost-1.87-{1,2}.patch # bug 946624
 )
 
 src_configure() {
