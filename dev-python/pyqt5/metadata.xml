@@ -6,7 +6,6 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="bluetooth">Build bindings for the QtBluetooth module</flag>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
 		<flag name="declarative">Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="
-	bluetooth dbus debug declarative designer examples gles2-only gui help location
+	dbus debug declarative designer examples gles2-only gui help location
 	multimedia network opengl positioning printsupport sensors serialport speech
 	sql +ssl svg testlib webchannel websockets widgets x11extras xmlpatterns
 "
@@ -27,7 +27,6 @@ IUSE="
 # The requirements below were extracted from the qmake_QT declarations
 # in project.py and from the output of 'grep -r "%Import " ${S}/sip'
 REQUIRED_USE="
-	bluetooth? ( gui )
 	declarative? ( gui network )
 	designer? ( widgets )
 	help? ( gui widgets )
@@ -53,7 +52,6 @@ QT_PV="5.15:5"
 DEPEND="
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		>=dev-qt/qtdbus-${QT_PV}
@@ -125,7 +123,6 @@ python_configure_all() {
 		--enable=pyrcc
 		--enable=Qt
 		--enable=QtCore
-		$(pyqt_use_enable bluetooth QtBluetooth)
 		$(pyqt_use_enable dbus QtDBus)
 		$(pyqt_use_enable declarative QtQml QtQuick \
 			$(usev widgets QtQuickWidgets))
@@ -152,6 +149,9 @@ python_configure_all() {
 		$(pyqt_use_enable x11extras QtX11Extras)
 		--enable=QtXml
 		$(pyqt_use_enable xmlpatterns QtXmlPatterns)
+
+		# no longer supported in Gentoo for PyQt5, use PyQt6
+		--disable=QtBluetooth
 
 		$(usev debug '--debug --qml-debug --tracing')
 
