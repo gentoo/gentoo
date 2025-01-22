@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/900248
+https://bugs.gentoo.org/894322
+missing include for textdomain and bindtextdomain
+This is only one place we can put include, else weird
+macro dance messes with it or we use gettext before we
+mark it for assembly operations.
+--- a/src/shar-opts.h
++++ b/src/shar-opts.h
+@@ -373,6 +373,8 @@
+ #     include <libintl.h>
+ #   endif
+ 
++#include "gettext.h"
++
+ # ifndef ATTRIBUTE_FORMAT_ARG
+ #   define ATTRIBUTE_FORMAT_ARG(_a)
+ # endif
+--- a/src/unshar-opts.h
++++ b/src/unshar-opts.h
+@@ -210,6 +210,8 @@
+ #     include <libintl.h>
+ #   endif
+ 
++#include "gettext.h"
++
+ # ifndef ATTRIBUTE_FORMAT_ARG
+ #   define ATTRIBUTE_FORMAT_ARG(_a)
+ # endif
+--- a/src/uudecode-opts.h
++++ b/src/uudecode-opts.h
+@@ -188,6 +188,8 @@
+ #     include <libintl.h>
+ #   endif
+ 
++#include "gettext.h"
++
+ # ifndef ATTRIBUTE_FORMAT_ARG
+ #   define ATTRIBUTE_FORMAT_ARG(_a)
+ # endif
+--- a/src/uuencode-opts.h
++++ b/src/uuencode-opts.h
+@@ -184,6 +184,8 @@
+ #     include <libintl.h>
+ #   endif
+ 
++#include "gettext.h"
++
+ # ifndef ATTRIBUTE_FORMAT_ARG
+ #   define ATTRIBUTE_FORMAT_ARG(_a)
+ # endif
