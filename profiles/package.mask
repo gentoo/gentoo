@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Unmaintained in Gentoo, last release from 2022 needs Qt5WebEngine.
+# Bug #926655. Removal on 2025-02-22.
+app-text/bibletime
+
 # Zac Medico <zmedico@gentoo.org> (2025-01-18)
 # Ebuild is difficult to maintain. No revdeps.
 # Removal on 2025-02-17. Bug #896044
