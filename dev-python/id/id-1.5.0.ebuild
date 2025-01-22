@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc64"
 
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
