@@ -1,0 +1,191 @@
+Don't segfault when calling #'center-to-window-pos and friends, -batch
+Patch backported from master branch
+https://foss.heptapod.net/xemacs/xemacs/-/issues/6
+
+commit 578daa839db83c84fc7ebbc4bf809ff66fd492f5
+Author: Aidan Kehoe <kehoea@parhasard.net>
+Date:   Tue Jan 21 16:15:47 2025 +0000
+
+    Don't segfault when calling #'center-to-window-pos and friends, -batch
+
+--- xemacs-21.5.35/src/indent.c
++++ xemacs-21.5.35/src/indent.c
+@@ -642,6 +642,15 @@ Bytebpos
+ vmotion (struct window *w, Bytebpos orig, Charcount vtarget,
+          Charcount *ret_vpos)
+ {
++  if (!redisplayable_window_p (w))
++    {
++      if (ret_vpos)
++	{
++	  *ret_vpos = 0;
++	}
++      return orig;
++    }
++
+   return vmotion_1 (w, orig, vtarget, ret_vpos, NULL);
+ }
+ 
+@@ -671,6 +680,11 @@ vertical_motion_1 (Lisp_Object lines, Li
+ 
+   w = XWINDOW (window);
+ 
++  if (!redisplayable_window_p (w))
++    {
++      return Qzero;
++    }
++
+   orig = selected ? BYTE_BUF_PT (XBUFFER (w->buffer))
+                   : marker_byte_position (w->pointm[CURRENT_DISP]);
+ 
+--- xemacs-21.5.35/src/window.c
++++ xemacs-21.5.35/src/window.c
+@@ -402,6 +402,12 @@ allocate_window (void)
+   return obj;
+ }
+ #undef INIT_DISP_VARIABLE
++
++Boolint
++redisplayable_window_p (struct window *w)
++{
++  return !FRAME_STREAM_P (XFRAME (WINDOW_FRAME (w)));
++}
+ 
+ /************************************************************************/
+ /*                        Window mirror structure                       */
+@@ -1491,11 +1497,19 @@ POS defaults to point in WINDOW's buffer
+        (pos, window, partially))
+ {
+   struct window *w = decode_window (window);
+-  Bytebpos top = marker_byte_position (w->start[CURRENT_DISP]);
+-  struct buffer *buf = XBUFFER (w->buffer);
+-  Bytebpos posint = get_buffer_pos_byte (buf, pos,
+-                                         GB_ALLOW_PAST_ACCESSIBLE |
+-                                         GB_ALLOW_NIL | GB_NO_ERROR_IF_BAD);
++  Bytebpos top, posint;
++  struct buffer *buf;
++
++  if (!redisplayable_window_p (w))
++    {
++      return Qnil;
++    }
++
++  top = marker_byte_position (w->start[CURRENT_DISP]);
++  buf = XBUFFER (w->buffer);
++  posint = get_buffer_pos_byte (buf, pos,
++				GB_ALLOW_PAST_ACCESSIBLE | GB_ALLOW_NIL
++				| GB_NO_ERROR_IF_BAD);
+ 
+   if (posint < top || posint > BYTE_BUF_ZV (buf))
+     return Qnil;
+@@ -1659,6 +1673,12 @@ is non-nil, do not include space occupie
+   line_start_cache_dynarr *cache;
+ 
+   window = wrap_window (w);
++
++  if (!redisplayable_window_p (w))
++    {
++      return Qzero;
++    }
++
+   start  = marker_byte_position (w->start[CURRENT_DISP]);
+   hlimit = WINDOW_TEXT_HEIGHT (w);
+   eobuf  = BYTE_BUF_ZV (XBUFFER (w->buffer));
+@@ -1903,11 +1923,11 @@ e.g. if the window's current buffer has
+   struct window *w = decode_window (window);
+   Bytebpos eoll;
+ 
+-  if (NILP (guarantee) || in_display)
++  if (NILP (guarantee) || !redisplayable_window_p (w) || in_display)
+     {
+       struct buffer *b = window_display_buffer (w);
+ 
+-      if (in_display || 
++      if (in_display || !redisplayable_window_p (w) ||
+           (BUFFER_LIVE_P (b) && EQ (wrap_buffer (b), window_buffer (w))))
+         {
+           return Fmarker_position (w->end_pos[CURRENT_DISP]);
+@@ -3341,7 +3361,7 @@ value is reasonable when this function i
+      window start is outside the visible portion (as might happen when
+      the display is not current, due to typeahead). */
+   if (start_pos >= BYTE_BUF_BEGV (b) && start_pos <= BYTE_BUF_ZV (b)
+-      && !MINI_WINDOW_P (w))
++      && !MINI_WINDOW_P (w) && redisplayable_window_p (w))
+     {
+       Bytebpos new_start
+         = start_with_line_at_pixpos
+@@ -4628,6 +4648,11 @@ window_scroll (Lisp_Object window, Lisp_
+   struct display_line* dl;
+   Boolint unchain_point = 0;
+   struct gcpro gcpro1;
++
++  if (!redisplayable_window_p (w))
++    {
++      return;
++    }
+   
+   if (selected)
+     point = b->point_marker;
+@@ -5127,6 +5152,11 @@ If WINDOW is nil, the selected window is
+   Bytebpos opoint = BYTE_BUF_PT (b);
+   Bytebpos startp;
+ 
++  if (!redisplayable_window_p (w))
++    {
++      return Qnil; 
++    }
++
+   if (NILP (n))
+     startp = start_with_line_at_pixpos (w, opoint, window_half_pixpos (w));
+   else
+@@ -5491,14 +5521,20 @@ get_current_pixel_pos (Lisp_Object windo
+     {
+       int first_line, i;
+       Bytebpos point;
++      struct buffer *buf;
+ 
+       if (NILP (pos))
+         {
+           pos = Fwindow_point (wrap_window (*w));
+         }
+ 
+-      point = get_buffer_pos_byte (window_display_buffer (*w), pos,
+-                                   GB_NO_ERROR_IF_BAD);
++      buf = window_display_buffer (*w);
++      if (buf == NULL)
++	{
++	  return 0;
++	}
++
++      point = get_buffer_pos_byte (buf, pos, GB_NO_ERROR_IF_BAD);
+ 
+       /* If the window has a modeline, ignore it for our purposes, POS can't
+          be over it. Start examining the display lines from 1. */
+@@ -5552,7 +5588,7 @@ a new frame, use the following instead:
+ */
+        (window, pos))
+ {
+-  struct window* w;
++  struct window *w = decode_window (window);
+   struct display_line *dl;
+   struct rune* rb;
+ 
+@@ -5575,7 +5611,7 @@ use the following instead:
+ */
+        (window, pos))
+ {
+-  struct window* w;
++  struct window *w = decode_window (window);
+   struct display_line *dl;
+   struct rune* rb;
+ 
+--- xemacs-21.5.35/src/window.h
++++ xemacs-21.5.35/src/window.h
+@@ -152,6 +152,7 @@ int buffer_window_mru (struct window *w)
+ void check_frame_size (struct frame *frame, int *cols, int *rows);
+ int frame_pixsize_valid_p (struct frame *frame, int width, int height);
+ struct window *decode_window (Lisp_Object window);
++Boolint redisplayable_window_p (struct window *w);
+ struct window *find_window_by_pixel_pos (int pix_x, int pix_y, Lisp_Object win);
+ 
+ void free_window_mirror (struct window_mirror *mir);
