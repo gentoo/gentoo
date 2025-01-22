@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Package maintenance system for Debian"
