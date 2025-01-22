@@ -43,6 +43,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# https://github.com/martinrotter/rssguard/pull/1612
+	"${FILESDIR}/${P}-qt-feature-checks.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WITH_QT6=ON

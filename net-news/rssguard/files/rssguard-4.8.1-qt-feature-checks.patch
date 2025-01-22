@@ -1,0 +1,70 @@
+From 017ce7168f31a9dcd156fea9abd4cb5f16a47773 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 22 Jan 2025 20:02:45 +0100
+Subject: [PATCH] fix qt6 feature checks in libmpv
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix Qt6 feature checks to ensure the `QT_CONFIG` macro rather than
+incorrectly checking for the definitions.  `QT_FEATURE_*` are always
+defined, and they take values 1 or -1 to indicate whether the feature
+is present or not.  The `QT_CONFIG` macro wraps checking for that, see:
+https://code.qt.io/cgit/qt/qtbase.git/tree/src/corelib/global/qtconfigmacros.h?id=f9163ae7a8167daded0798654d99a2e3a5aaa2b5#n60
+
+This fixes build failure when qtbase is built without Wayland support:
+
+```
+/tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp: In member function ‘v
+irtual void LibMpvWidget::initializeGL()’:
+/tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp:123:60: error: ‘QWayla
+ndApplication’ is not a member of ‘QNativeInterface’; did you mean ‘QX11Application’?
+  123 |     display.data = qApp->nativeInterface<QNativeInterface::QWaylandApplication>()->display();
+      |                                                            ^~~~~~~~~~~~~~~~~~~
+      |                                                            QX11Application
+/tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp:123:80: error: no matc
+hing function for call to ‘Application::nativeInterface<<expression error> >()’
+  123 |     display.data = qApp->nativeInterface<QNativeInterface::QWaylandApplication>()->display();
+In file included from /usr/include/qt6/QtCore/qcoreapplication.h:17,
+                 from /usr/include/qt6/QtCore/QCoreApplication:1,
+                 from /tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/miscellaneous/iofactory.h:8,
+                 from /tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/miscellaneous/application.h:11,
+                 from /tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp:
+5:
+/usr/include/qt6/QtWidgets/qapplication.h:125:5: note: candidate: ‘template<class NativeInterface, class TypeInfo, class BaseType, typename std::enable_if<TypeInfo::isCompatibleWith<QApplication>, bool>::type <anonymous> > NativeInterface* QApplication::nativeInterface() const’
+  125 |     QT_DECLARE_NATIVE_INTERFACE_ACCESSOR(QApplication)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/qt6/QtWidgets/qapplication.h:125:5: note:   template argument deduction/substitution failed:
+/tmp/portage/net-news/rssguard-4.8.1/work/rssguard-4.8.1/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp:123:80: error: templat
+e argument 1 is invalid
+```
+
+Originally reported in https://bugs.gentoo.org/948473.
+---
+ src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp b/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp
+index b5f6174..2e0bc29 100644
+--- a/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp
++++ b/src/librssguard/gui/mediaplayer/libmpv/libmpvwidget.cpp
+@@ -110,14 +110,14 @@ void LibMpvWidget::initializeGL() {
+   mpv_render_param display{MPV_RENDER_PARAM_INVALID, nullptr};
+ 
+ #if QT_VERSION_MAJOR == 6 && defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN) && !defined(Q_OS_ANDROID)
+-#if defined(QT_FEATURE_xcb)
++#if QT_CONFIG(xcb)
+   if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
+     display.type = MPV_RENDER_PARAM_X11_DISPLAY;
+     display.data = qApp->nativeInterface<QNativeInterface::QX11Application>()->display();
+   }
+ #endif
+ 
+-#if defined(QT_FEATURE_wayland)
++#if QT_CONFIG(wayland)
+   if (qApp->isWayland()) {
+     display.type = MPV_RENDER_PARAM_WL_DISPLAY;
+     display.data = qApp->nativeInterface<QNativeInterface::QWaylandApplication>()->display();
+-- 
+2.48.1
+
