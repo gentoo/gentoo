@@ -1,0 +1,66 @@
+quick fix to make build success w/ modern compiler
+
+fix should be done in upstream
+diff --git a/Makefile b/Makefile
+index 359c47a..8868558 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,7 +29,7 @@ BUILD_LDFLAGS ?= $(LDFLAGS)
+ 
+ # Some makes take the last of a list as the default ...
+ all: make.fil
+-	PATH="`pwd`/bin:$$PATH" $(MAKE) -f make.fil VERSION=$(VERSION) TOPDIR=`pwd` $@
++	PATH="`pwd`/bin:`pwd`/bcc:`pwd`/copt:`pwd`/cpp:$$PATH" $(MAKE) -f make.fil VERSION=$(VERSION) TOPDIR=`pwd` $@
+ 
+ $(TARGETS): make.fil
+ 	PATH="`pwd`/bin:$$PATH" $(MAKE) -f make.fil VERSION=$(VERSION) TOPDIR=`pwd` $@
+diff --git a/bootblocks/Makefile b/bootblocks/Makefile
+index a4c3a2e..4b4aca1 100644
+--- a/bootblocks/Makefile
++++ b/bootblocks/Makefile
+@@ -1,5 +1,5 @@
+ HOSTCC=cc
+-HOSTCCFLAGS=-O2 -pipe
++HOSTCCFLAGS=-O2 -pipe -std=c89 -Wno-error=return-type
+ BCC=bcc
+ AS86=as86
+ 
+diff --git a/dis88/Makefile b/dis88/Makefile
+index 146d1cf..9c3ab4f 100644
+--- a/dis88/Makefile
++++ b/dis88/Makefile
+@@ -25,7 +25,7 @@
+ # be necessary to alter the formats of the tables.
+ 
+ #CC=bcc
+-CFLAGS=-O
++CFLAGS=-O -std=c89
+ LDFLAGS=
+ PREFIX=/usr
+ 
+diff --git a/dis88/dis.h b/dis88/dis.h
+index 21bbc2e..bfc64e7 100644
+--- a/dis88/dis.h
++++ b/dis88/dis.h
+@@ -163,7 +163,7 @@ _PROTOTYPE(void mahand, (int j ));
+ _PROTOTYPE(void mjhand, (int j ));
+ 
+ /* dismain.c */
+-_PROTOTYPE(void main, (int argc, char **argv ));
++_PROTOTYPE(int main, (int argc, char **argv ));
+ 
+ /* distabs.c */
+ _PROTOTYPE(char *getnam, (int k ));
+diff --git a/dis88/dismain.c b/dis88/dismain.c
+index 6f51e73..fb07d3e 100644
+--- a/dis88/dismain.c
++++ b/dis88/dismain.c
+@@ -538,7 +538,7 @@ static void disbss()
+   *                                                         *
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ 
+-void
++int
+ main(argc,argv)
+ 
+    int argc;                  /* Command-line args from OS  */

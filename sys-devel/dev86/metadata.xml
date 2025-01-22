@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="codeberg">jbruchon/dev86</remote-id>
 		<remote-id type="github">lkundrak/dev86</remote-id>
 	</upstream>
 </pkgmetadata>
