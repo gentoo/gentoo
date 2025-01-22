@@ -64,9 +64,9 @@ SLOT="0"
 KEYWORDS="-* ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
-	>=dev-libs/gmp-4.3.2:=
-	>=dev-libs/mpfr-2.4.2:=
-	>=dev-libs/mpc-0.8.1:=
+	>=dev-libs/gmp-4.3.2:0/10.4
+	>=dev-libs/mpfr-2.4.2:0/6
+	>=dev-libs/mpc-0.8.1:0/3
 	sys-libs/zlib
 	virtual/libiconv
 "
