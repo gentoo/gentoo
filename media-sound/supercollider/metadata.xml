@@ -25,6 +25,5 @@
 		<flag name="gedit">Enable the SCED user interface</flag>
 		<flag name="gpl3">Build GPL-3 licensed code (recommended)</flag>
 		<flag name="server">Build with internal server</flag>
-		<flag name="webengine">Enable the internal help system using QtWebengine</flag>
 	</use>
 </pkgmetadata>
