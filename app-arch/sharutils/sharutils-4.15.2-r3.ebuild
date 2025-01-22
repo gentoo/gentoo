@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
-inherit flag-o-matic strip-linguas
+inherit flag-o-matic strip-linguas autotools
 
 MY_P="${P/_/-}"
 DESCRIPTION="Tools to deal with shar archives"
@@ -21,9 +21,15 @@ DEPEND="app-arch/xz-utils
 	nls? ( >=sys-devel/gettext-0.10.35 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.15.2-glibc228.patch
-	"${FILESDIR}"/${PN}-4.15.2-CVE-2018-1000097.patch
-	"${FILESDIR}"/${PN}-4.15.2-gcc-10.patch
+	"${FILESDIR}"/${P}-glibc228.patch
+	"${FILESDIR}"/${P}-CVE-2018-1000097.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/${P}-dewhich.patch
+	"${FILESDIR}"/${P}-C23.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	pathfind
 )
 
 src_prepare() {
@@ -35,6 +41,10 @@ src_prepare() {
 
 	# bug #943901
 	append-cflags -std=gnu17
+
+	# bug https://bugs.gentoo.org/941724
+	# regenerate config after which removal
+	eautoreconf
 }
 
 src_configure() {
