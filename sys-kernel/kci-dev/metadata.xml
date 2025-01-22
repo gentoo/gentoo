@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alicef@gentoo.org</email>
+		<name>Arisu Tachibana</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">kernelci/kci-dev</remote-id>
+		<remote-id type="pypi">kci-dev</remote-id>
+	</upstream>
+</pkgmetadata>
