@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Call isa, can, does and DOES safely on things that may not be objects"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0
