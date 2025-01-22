@@ -16,6 +16,7 @@
 		<flag name="gopher">Enable support for the gopher protocol</flag>
 		<flag name="libcss">Enable support for cascading style sheets via <pkg>dev-libs/libcss</pkg></flag>
 		<flag name="mouse">Make elinks to grab all mouse events</flag>
+		<flag name="sftp">Add support for sftp (requires <pkg>net-misc/curl</pkg>).</flag>
 		<flag name="tre">Enable support for regex searches via <pkg>dev-libs/tre</pkg></flag>
 		<flag name="xml">Enable support for bookmarks via <pkg>dev-libs/expat</pkg></flag>
 	</use>
