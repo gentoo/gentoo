@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -114,7 +114,7 @@ BDEPEND="
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		pyqt5? (
 			dev-python/pyqt5[${PYTHON_USEDEP}]
-			dev-python/pyqt5[bluetooth,dbus,declarative,designer,gui,help,location]
+			dev-python/pyqt5[dbus,declarative,designer,gui,help,location]
 			dev-python/pyqt5[multimedia,network,opengl,positioning,printsupport]
 			dev-python/pyqt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
 			dev-python/pyqt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
