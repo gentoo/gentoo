@@ -29,10 +29,6 @@ DEPEND=">=virtual/jdk-1.8:*
 		net-wireless/hackrf-tools"
 RDEPEND="${DEPEND}"
 
-src_compile() {
-	emake all
-}
-
 src_install() {
 	java-pkg_dojar JavaGUI/JTempestSDR.jar
 	java-pkg_dolauncher tempestsdr --jar JTempestSDR.jar
