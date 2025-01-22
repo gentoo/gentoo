@@ -1,6 +1,7 @@
 LFS64 interfaces are now generally considered deprecated, and are no longer
 available in MUSL since version 1.2.4.
 
+https://github.com/ggreer/the_silver_searcher/pull/1525
 --- a/configure.ac
 +++ b/configure.ac
 @@ -12,6 +12,8 @@
