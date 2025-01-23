@@ -361,7 +361,6 @@ src_configure() {
 		-DENABLE_GOLD=OFF
 		-DENABLE_LLD=OFF
 		-DENABLE_MOLD=OFF
-		-DUSE_LTO=OFF
 
 		# Features
 		-DENABLE_AIRTUNES=$(usex airplay)
@@ -445,9 +444,11 @@ src_configure() {
 		append-cxxflags -DNDEBUG
 	fi
 
-	# Violates ODR (bug #860984) and USE_LTO does spooky stuff
-	# https://github.com/xbmc/xbmc/commit/cb72a22d54a91845b1092c295f84eeb48328921e
-	filter-lto
+	if tc-is-lto ; then
+		mycmakeargs+=( -DUSE_LTO=ON )
+	else
+		mycmakeargs+=( -DUSE_LTO=OFF )
+	fi
 
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
