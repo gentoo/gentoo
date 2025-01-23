@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 LUA_COMPAT=( lua5-{1..4} )
@@ -11,7 +11,7 @@ inherit autotools fcaps java-pkg-opt-2 linux-info lua-single perl-functions pyth
 
 DESCRIPTION="Collects system statistics and provides mechanisms to store the values"
 
-HOMEPAGE="https://collectd.org/"
+HOMEPAGE="https://www.collectd.org/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
@@ -155,10 +155,10 @@ BDEPEND="virtual/pkgconfig"
 # Enforcing !=sys-kernel/linux-headers-4.5 > due to #577846
 DEPEND="${COMMON_DEPEND}
 	collectd_plugins_iptables?		( || ( <=sys-kernel/linux-headers-4.4 >=sys-kernel/linux-headers-4.6 ) )
-	collectd_plugins_java?			( >=virtual/jdk-1.8 )"
+	collectd_plugins_java?			( >=virtual/jdk-1.8:* )"
 
 RDEPEND="${COMMON_DEPEND}
-	collectd_plugins_java?			( >=virtual/jre-1.8 )
+	collectd_plugins_java?			( >=virtual/jre-1.8:* )
 	collectd_plugins_syslog?		( virtual/logger )
 	selinux?				( sec-policy/selinux-collectd )"
 
