@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S=${WORKDIR}/${P/-go/}
 LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~loong"
+KEYWORDS="amd64 ~arm64 ~loong"
 IUSE="+yq-symlink"
 DOCS=(README.md)
 RDEPEND="yq-symlink? ( !app-misc/yq[yq-symlink(+)] )"
