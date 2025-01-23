@@ -1,0 +1,344 @@
+From 628d28efb12eb68747b9ee5a15cb14301dbf1c75 Mon Sep 17 00:00:00 2001
+From: Huang Rui <vowstar@gmail.com>
+Date: Thu, 23 Jan 2025 23:06:14 +0800
+Subject: [PATCH] Add PyQt6 support with backward compatibility
+
+- Implement Qt version checks in C++ for Q_UNREACHABLE compatibility
+- Add dynamic PyQt version detection (4/5/6) in build system
+- Bump pyproject.toml version to 0.8.10 and update documentation examples
+- Fix missing include `<optional>` in `example/main.cpp
+- Fix unix install path allows users to specify environment var in qmake
+
+Closes: https://github.com/Simsys/qhexedit2/issues/154
+Closes: https://github.com/Simsys/qhexedit2/issues/155
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+---
+ example/main.cpp                   | 18 ++++++--
+ project.py                         | 27 +++++++++--
+ pyproject.toml                     |  4 +-
+ python/python3_pyqt6/mainwindow.py | 23 ++++++++++
+ readme.md                          |  8 ++--
+ setup.py                           | 72 ++++++++++++++++++++++--------
+ src/qhexedit.pro                   |  8 +++-
+ src/qhexedit.sip                   |  2 +
+ 8 files changed, 129 insertions(+), 33 deletions(-)
+ create mode 100644 python/python3_pyqt6/mainwindow.py
+
+diff --git a/example/main.cpp b/example/main.cpp
+index e09f89192707..76a5ecf74ca8 100644
+--- a/example/main.cpp
++++ b/example/main.cpp
+@@ -1,9 +1,10 @@
++#include <optional>
+ #include <QApplication>
+-#include <QIcon>
+ #include <QCommandLineParser>
+-#include <QTranslator>
+-#include <QLocale>
+ #include <QFile>
++#include <QIcon>
++#include <QLocale>
++#include <QTranslator>
+ 
+ #include "mainwindow.h"
+ 
+@@ -87,11 +88,20 @@ int main(int argc, char *argv[])
+ 
+         case Status::VersionRequested:
+             parser.showVersion();
++#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+             Q_UNREACHABLE_RETURN(0);
+-
++#else
++            Q_UNREACHABLE();
++            return 0;
++#endif
+         case Status::HelpRequested:
+             parser.showHelp();
++#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+             Q_UNREACHABLE_RETURN(0);
++#else
++            Q_UNREACHABLE();
++            return 0;
++#endif
+     }
+ 
+     if (query.hasFile)
+diff --git a/project.py b/project.py
+index c9ee67f7788b..807e92ac7a9e 100644
+--- a/project.py
++++ b/project.py
+@@ -4,8 +4,23 @@ import os
+ from os.path import abspath, join
+ from sipbuild import Option
+ from pyqtbuild import PyQtBindings, PyQtProject
+-import PyQt5
+ 
++try:
++    import PyQt6
++    PyQt_Version = 'PyQt6'
++except ImportError:
++    try:
++        import PyQt5
++        PyQt_Version = 'PyQt5'
++    except ImportError:
++        try:
++            import PyQt4
++            PyQt_Version = 'PyQt4'
++        except ImportError:
++            PyQt_Version = None
++
++if PyQt_Version is None:
++    raise ImportError("No compatible PyQt version (PyQt4, PyQt5, or PyQt6) found.")
+ 
+ class QHexEditProject(PyQtProject):
+     """The QHexEdit Project class."""
+@@ -15,9 +30,15 @@ class QHexEditProject(PyQtProject):
+         self.bindings_factories = [QHexEditBindings]
+ 
+     def update(self, tool):
+-        """Allows SIP to find PyQt5 .sip files."""
++        """Allows SIP to find PyQt .sip files."""
+         super().update(tool)
+-        self.sip_include_dirs.append(join(PyQt5.__path__[0], 'bindings'))
++        if PyQt_Version == 'PyQt6':
++            self.sip_include_dirs.append(join(PyQt6.__path__[0], 'bindings'))
++        elif PyQt_Version == 'PyQt5':
++            self.sip_include_dirs.append(join(PyQt5.__path__[0], 'bindings'))
++        else:
++            # unexpected and not supported here
++            raise ValueError(f"Unsupported PyQt version: {PyQt_Version}.")
+ 
+ 
+ class QHexEditBindings(PyQtBindings):
+diff --git a/pyproject.toml b/pyproject.toml
+index b5edaa495c31..3724f89027e6 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,10 +1,10 @@
+ [build-system]
+-requires = ["sip >=5", "PyQt-builder", "PyQt5"]
++requires = ["sip >=5", "PyQt-builder", "PyQt6"]
+ build-backend = "sipbuild.api"
+ 
+ [tool.sip.metadata]
+ name = "QHexEdit"
+-version = "0.8.9"
++version = "0.8.10"
+ 
+ [tools.sip]
+ abi-version = "12.8"
+diff --git a/python/python3_pyqt6/mainwindow.py b/python/python3_pyqt6/mainwindow.py
+new file mode 100644
+index 000000000000..b816a3103f81
+--- /dev/null
++++ b/python/python3_pyqt6/mainwindow.py
+@@ -0,0 +1,23 @@
++import sys
++from PyQt6 import QtWidgets
++from qhexedit import QHexEdit
++
++
++class HexEdit(QHexEdit):
++
++    def __init__(self, fileName=None):
++        super(HexEdit, self).__init__()
++        file = open(fileName, 'rb')
++        data = file.read()
++        self.setData(data)
++        self.setReadOnly(False)
++
++
++if __name__ == '__main__':
++    app = QtWidgets.QApplication(sys.argv)
++    mainWin = HexEdit('mainwindow.py')
++    mainWin.resize(600, 400)
++    mainWin.move(300, 300)
++    mainWin.show()
++    sys.exit(app.exec_())
++
+diff --git a/readme.md b/readme.md
+index 0a75a9c8752b..ebd138a650b4 100644
+--- a/readme.md
++++ b/readme.md
+@@ -3,7 +3,7 @@ QHexEdit2
+ ![Application QHexEdit2 in Action](http://simsys.github.io/qhexedit.png)
+ 
+ 
+-QHexEdit is a hex editor widget written in C++ for the Qt (Qt4, Qt5) framework. It is a simple editor for binary data, just like QPlainTextEdit is for text data. There are sip configuration files included, so it is easy to create bindings for PyQt and you can use this widget also in python 2 and 3.
++QHexEdit is a hex editor widget written in C++ for the Qt (Qt4, Qt5, Qt6) framework. It is a simple editor for binary data, just like QPlainTextEdit is for text data. There are sip configuration files included, so it is easy to create bindings for PyQt and you can use this widget also in python 2 and 3.
+ 
+ QHexEdit takes the data of a QByteArray (setData()) and shows it. You can use the mouse or the keyboard to navigate inside the widget. If you hit the keys (0..9, a..f) you will change the data. Changed data is highlighted and can be accessed via data().
+ 
+@@ -16,7 +16,7 @@ QHexEdit comes with undo/redo functionality. All changes can be undone, by press
+ QHexEdit is based on QIODevice, that's why QHexEdit can handle big amounts of data. The size of edited data can be more then two gigabytes without any restrictions.
+ 
+ ## Using QHexEdit
+-You can read the documentation of the project [here](http://simsys.github.io/). You find in the sources a [C++ example](https://github.com/Simsys/qhexedit2/tree/master/example), that shows how tu use the QHexedit widget. There is also a [python example](https://github.com/Simsys/qhexedit2/tree/master/python/python3_pyqt5) available.
++You can read the documentation of the project [here](http://simsys.github.io/). You find in the sources a [C++ example](https://github.com/Simsys/qhexedit2/tree/master/example), that shows how tu use the QHexedit widget. There is also a [python example](https://github.com/Simsys/qhexedit2/tree/master/python/python3_pyqt6) available.
+ 
+ ## Contributing to QHexEdit
+ We love to receive contributions. You can submit bug reports [here](https://github.com/Simsys/qhexedit2/issues). If you are a developer, you can pick up a work item and start to realize super exciting features or fix bugs. We also like to receive enhancement proposals or translation support.
+@@ -25,8 +25,8 @@ We love to receive contributions. You can submit bug reports [here](https://gith
+ ```
+ Copyright (C) 2015-2016 Winfried Simon
+ 
+-This software may be used under the terms of the GNU Lesser General 
+-Public License version 2.1 as published by the Free Software Foundation 
++This software may be used under the terms of the GNU Lesser General
++Public License version 2.1 as published by the Free Software Foundation
+ and appearing in the file license.txt included in the packaging of this file.
+ 
+ This program is distributed in the hope that it will be useful,
+diff --git a/setup.py b/setup.py
+index 1906a07261f6..89622e8c3b8a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,23 +8,48 @@ import subprocess
+ import sipdistutils
+ import sipconfig
+ 
++try:
++    import PyQt6
++    PyQt_Version = 'PyQt6'
++except ImportError:
++    try:
++        import PyQt5
++        PyQt_Version = 'PyQt5'
++    except ImportError:
++        try:
++            import PyQt4
++            PyQt_Version = 'PyQt4'
++        except ImportError:
++            PyQt_Version = None
++
++if PyQt_Version is None:
++    raise ImportError("No compatible PyQt version (PyQt4, PyQt5, or PyQt6) found.")
++
+ cfg = sipconfig.Configuration()
+ pyqt_sip_dir = cfg.default_sip_dir
+-for p in (os.path.join(pyqt_sip_dir, "PyQt5"),
+-          os.path.join(pyqt_sip_dir, "PyQt5-3"),
+-          os.path.join(pyqt_sip_dir, "PyQt4"),
+-          pyqt_sip_dir,
+-          os.path.join(cfg.default_mod_dir, "PyQt5", "bindings")):
+-    if os.path.exists(os.path.join(p, "QtCore", "QtCoremod.sip")):
+-        pyqt_sip_dir = p
+-        break
+ 
+-try:
+-    import PyQt5
+-    PyQt_Version = 'PyQt5'
+-except:
+-    PyQt_Version = 'PyQt4'
++if PyQt_Version == 'PyQt6':
++    search_paths = [
++        os.path.join(pyqt_sip_dir, "PyQt6"),
++        os.path.join(cfg.default_mod_dir, "PyQt6", "bindings"),
++        pyqt_sip_dir,
++    ]
++elif PyQt_Version == 'PyQt5':
++    search_paths = [
++        os.path.join(pyqt_sip_dir, "PyQt5"),
++        os.path.join(pyqt_sip_dir, "PyQt5-3"),
++        os.path.join(cfg.default_mod_dir, "PyQt5", "bindings"),
++        pyqt_sip_dir,
++    ]
++else:
++    search_paths = [
++        os.path.join(pyqt_sip_dir, "PyQt4"),
++        pyqt_sip_dir,
++    ]
+ 
++for p in search_paths:
++    if os.path.exists(os.path.join(p, "QtCore", "QtCoremod.sip")):
++        pyqt_sip_dir = p
+ 
+ include_dirs = ['src']
+ 
+@@ -45,7 +70,9 @@ class build_pyqt_ext(sipdistutils.build_ext):
+         self.required = False
+ 
+     def finalize_options(self):
+-        if PyQt_Version == 'PyQt5':
++        if PyQt_Version == 'PyQt6':
++            from PyQt6.QtCore import PYQT_CONFIGURATION
++        elif PyQt_Version == 'PyQt5':
+             from PyQt5.QtCore import PYQT_CONFIGURATION
+         else:
+             from PyQt4.QtCore import PYQT_CONFIGURATION
+@@ -94,7 +121,9 @@ class build_pyqt_ext(sipdistutils.build_ext):
+ 
+ 
+ # Used Qt libs
+-if PyQt_Version == 'PyQt5':
++if PyQt_Version == 'PyQt6':
++    qt_libs = ["QtCore", "QtGui", "QtWidgets"]
++elif PyQt_Version == 'PyQt5':
+     qt_libs = ["QtCore", "QtGui", "QtWidgets"]
+ else:
+     qt_libs = ["QtCore", "QtGui"]
+@@ -105,8 +134,13 @@ if cfg.qt_framework:
+         include_dirs += [os.path.join(cfg.qt_lib_dir,
+                                       lib + ".framework", "Headers")]
+ else:
+-    if PyQt_Version == 'PyQt5':
+-        for qt_inc_dir in ('/usr/include/qt', '/usr/include/x86_64-linux-gnu/qt5'):
++    if PyQt_Version == 'PyQt6':
++        for qt_inc_dir in ('/usr/include/qt', '/usr/include/qt6', '/usr/include/x86_64-linux-gnu/qt6'):
++            include_dirs.append(qt_inc_dir)
++            include_dirs += [os.path.join(qt_inc_dir, lib) for lib in qt_libs]
++        libraries = ["Qt6" + lib[2:] for lib in qt_libs]
++    elif PyQt_Version == 'PyQt5':
++        for qt_inc_dir in ('/usr/include/qt', '/usr/include/qt5', '/usr/include/x86_64-linux-gnu/qt5'):
+             include_dirs.append(qt_inc_dir)
+             include_dirs += [os.path.join(qt_inc_dir, lib) for lib in qt_libs]
+         libraries = ["Qt5" + lib[2:] for lib in qt_libs]
+@@ -122,7 +156,7 @@ dirname = os.path.dirname(__file__)
+ 
+ setup(
+     name='QHexEdit',
+-    version='0.8.9',
++    version='0.8.10',
+     ext_modules=[
+         Extension(
+             "qhexedit",
+@@ -135,4 +169,4 @@ setup(
+     ],
+     cmdclass={"build_ext": build_pyqt_ext},
+ )
+-            
++
+diff --git a/src/qhexedit.pro b/src/qhexedit.pro
+index 2a940163d0e6..39e400a17c19 100644
+--- a/src/qhexedit.pro
++++ b/src/qhexedit.pro
+@@ -23,5 +23,11 @@ Release:TARGET = qhexedit
+ Debug:TARGET = qhexeditd
+ 
+ 
+-unix:DESTDIR = /usr/lib
++unix {
++    # Allows users to specify parameters when running qmake
++    QHEXEDIT_DESTDIR = $$(QHEXEDIT_DESTDIR)
++    isEmpty(QHEXEDIT_DESTDIR): QHEXEDIT_DESTDIR = $$[QT_INSTALL_LIBS]
++    target.path = $$QHEXEDIT_DESTDIR
++    INSTALLS += target
++}
+ win32:DESTDIR = ../lib
+diff --git a/src/qhexedit.sip b/src/qhexedit.sip
+index a7ef4e75db5d..c76fa088867e 100644
+--- a/src/qhexedit.sip
++++ b/src/qhexedit.sip
+@@ -3,6 +3,8 @@
+ %Import QtCore/QtCoremod.sip
+ %Import QtGui/QtGuimod.sip
+ 
++%Timeline {Qt_4_0_0 Qt_5_0_0 Qt_6_0_0}
++
+ %If (Qt_5_0_0 -)
+ %Import QtWidgets/QtWidgetsmod.sip
+ %End
+-- 
+2.48.1
+
