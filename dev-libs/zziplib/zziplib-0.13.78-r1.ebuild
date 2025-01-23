@@ -32,7 +32,7 @@ BDEPEND="
 "
 DEPEND="
 	sys-libs/zlib
-	sdl? ( >=media-libs/libsdl-1.2.6 )
+	sdl? ( media-libs/libsdl2 )
 "
 RDEPEND="${DEPEND}"
 
