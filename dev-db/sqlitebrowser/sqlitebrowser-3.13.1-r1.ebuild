@@ -5,10 +5,10 @@ EAPI=8
 
 inherit cmake flag-o-matic xdg
 
-DESCRIPTION="A light GUI editor for SQLite databases"
+DESCRIPTION="Light GUI editor for SQLite databases"
 HOMEPAGE="https://sqlitebrowser.org/"
 
-if [[ "${PV}" = 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/sqlitebrowser/sqlitebrowser.git"
 else
@@ -22,16 +22,16 @@ IUSE="sqlcipher test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-editors/qhexedit2
+	<app-editors/qhexedit2-0.8.10
 	dev-db/sqlite:3
-	dev-libs/qcustomplot
+	<dev-libs/qcustomplot-2.1.1-r10
 	>=dev-qt/qtcore-5.15.9:5
 	>=dev-qt/qtgui-5.15.9:5
 	>=dev-qt/qtnetwork-5.15.9:5[ssl]
 	>=dev-qt/qtprintsupport-5.15.9:5
 	>=dev-qt/qtwidgets-5.15.9:5
 	>=dev-qt/qtxml-5.15.9:5
-	>=x11-libs/qscintilla-2.8.10:=[qt5(+)]
+	>=x11-libs/qscintilla-2.14.1-r1:=[qt5(-)]
 	sqlcipher? ( dev-db/sqlcipher )
 "
 DEPEND="${RDEPEND}
