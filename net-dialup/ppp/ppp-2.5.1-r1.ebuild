@@ -11,7 +11,7 @@ SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="activefilter atm gtk pam selinux systemd"
 
 DEPEND="
