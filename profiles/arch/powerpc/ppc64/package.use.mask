@@ -7,7 +7,7 @@ llvm-core/clang-runtime -offload
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
->=sys-devel/gcc-12 -ada
+>=sys-devel/gcc-11 -ada
 
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak is not keyworded

@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
->=sys-devel/gcc-12 -ada
+>=sys-devel/gcc-11 -ada
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
 # net-wireless/neard is not keyworded here.
