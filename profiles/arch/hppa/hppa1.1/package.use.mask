@@ -3,4 +3,4 @@
 
 # Sam James <sam@gentoo.org> (2025-01-01)
 # dev-lang/ada-bootstrap exists here
->=sys-devel/gcc-14 -ada
+>=sys-devel/gcc-12 -ada

@@ -20,12 +20,6 @@ LIBDIR_arm64="lib64"
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Temporary USE until the global default catches up. dev-lang/ada-bootstrap
-# starts with sys-devel/gcc:14 so ADA_TARGET needs to be >= that. This
-# entry can be dropped once the global one is >= gcc_14.
-ADA_TARGET="gcc_14"
-
 # Mart Raudsepp <leio@gentoo.org> (2018-06-05)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148

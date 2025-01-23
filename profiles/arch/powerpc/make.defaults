@@ -4,12 +4,6 @@
 # All extra USE/etc should be specified in sub-profiles.
 # DO NOT POLLUTE USE ON THIS PROFILE.
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Temporary USE until the global default catches up. dev-lang/ada-bootstrap
-# starts with sys-devel/gcc:14 so ADA_TARGET needs to be >= that. This
-# entry can be dropped once the global one is >= gcc_14.
-ADA_TARGET="gcc_14"
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-30)
 # Unhide PPC specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_PPC"

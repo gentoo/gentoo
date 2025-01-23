@@ -25,9 +25,3 @@ VIDEO_CARDS="exynos fbdev omap"
 # Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
-
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Temporary USE until the global default catches up. dev-lang/ada-bootstrap
-# starts with sys-devel/gcc:14 so ADA_TARGET needs to be >= that. This
-# entry can be dropped once the global one is >= gcc_14.
-ADA_TARGET="gcc_14"

@@ -7,8 +7,6 @@
 # Sam James <sam@gentoo.org> (2025-01-05)
 # Older targets don't have an old enough dev-lang/ada-bootstrap available
 ada_target_gnat_2021
-ada_target_gcc_12
-ada_target_gcc_13
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here

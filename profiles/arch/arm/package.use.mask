@@ -7,7 +7,7 @@ x11-misc/xdg-utils plasma
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
->=sys-devel/gcc-14 -ada
+>=sys-devel/gcc-12 -ada
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-10)
 # Depends on kde-plasma/kdesu-gui which is not keyworded here.
