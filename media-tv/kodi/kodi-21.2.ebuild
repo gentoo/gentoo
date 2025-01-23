@@ -26,7 +26,7 @@ JAVA_PKG_WANT_SOURCE="21"
 JAVA_PKG_WANT_TARGET="21"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
