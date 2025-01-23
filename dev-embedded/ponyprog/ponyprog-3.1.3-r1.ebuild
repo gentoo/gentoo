@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="doc"
 
 DEPEND="
-	>app-editors/qhexedit2-0.8.8_p20200625
+	<app-editors/qhexedit2-0.8.10
 	dev-embedded/libftdi:1[cxx]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
