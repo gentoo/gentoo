@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,8 @@ DESCRIPTION="GTK+ Gnutella client"
 HOMEPAGE="https://gtk-gnutella.sourceforge.net/"
 SRC_URI="https://github.com/gtk-gnutella/gtk-gnutella/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="CC-BY-SA-4.0 GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
 IUSE="nls dbus ssl +gtk"
@@ -28,6 +28,10 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	filter-lto
+	# bug https://bugs.gentoo.org/944982
+	# we have custom bool we interoperate with gboolean
+	append-cflags -std=gnu17
+
 	strip-linguas -i po
 
 	echo "# Gentoo-selected LINGUAS" > po/LINGUAS
