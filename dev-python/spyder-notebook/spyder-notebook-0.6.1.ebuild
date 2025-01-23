@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/spyder-ide/spyder-notebook"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
