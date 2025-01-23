@@ -25,6 +25,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	sed -i '/-Werror$/d' cmake/ObsPluginHelpers.cmake || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_OUT_DIR=/lib64/obs-plugins
