@@ -1,0 +1,22 @@
+commit 7bce7c203244b0afbec3a916ef3abfbd4cea2658
+Author: أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>
+Date:   Sun Dec 29 18:14:47 2024 +0100
+
+    Fix default value for libdomdeps to empty list instead of false
+    
+    When it was false, meson complained that it shouldn't be a boolean
+    value, see: https://salsa.debian.org/aelmahmoudy/elinks/-/jobs/6836245/raw
+
+diff --git a/meson.build b/meson.build
+index 69b7975..c0f7d3a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -555,7 +555,7 @@ if conf_data.get('CONFIG_ECMASCRIPT_SMJS') or conf_data.get('CONFIG_QUICKJS') or
+ endif
+ 
+ conf_data.set('CONFIG_LIBDOM', false)
+-libdomdeps = false
++libdomdeps = []
+ 
+ if conf_data.get('CONFIG_ECMASCRIPT_SMJS') or conf_data.get('CONFIG_QUICKJS') or conf_data.get('CONFIG_MUJS')
+     libdomdeps = dependency('libdom', static: st, version: '>=0.4.2', required: false)

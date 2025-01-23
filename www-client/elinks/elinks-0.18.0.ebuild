@@ -83,6 +83,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-sftp.patch
+	"${FILESDIR}"/${P}-build.patch
 )
 
 pkg_setup() {
