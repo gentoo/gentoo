@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Z. Liu <zhixu.liu@gmail.com> (2025-01-23)
+# Requires dev-qt/qtwebengine
+net-misc/seafile-client
+
 # John Helmert III <ajak@gentoo.org> (2024-12-14)
 # Requires libpcre2[jit] which is now masked on x32
 dev-util/cutter
