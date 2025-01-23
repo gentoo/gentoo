@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Last release from 12 years ago, git master still defaults to Qt4.
+# Plenty of other options in ::gentoo. Bug #947741, removal on 2025-02-22.
+app-editors/juffed
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-23)
 # Sypder-5 requires Qt5, and there are several dead
 # plugins that have not been migrated to Spyder-6.
