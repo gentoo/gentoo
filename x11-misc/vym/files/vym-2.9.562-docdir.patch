@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -171,9 +171,9 @@
+     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/translations)
+ add_dependencies(vym make-translations-directory)
+ 
++ADD_COMPILE_DEFINITIONS(VYM_DOCDIR="${CMAKE_INSTALL_DOCDIR}")
+ install(DIRECTORY demos DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+-install(DIRECTORY doc DESTINATION ${CMAKE_INSTALL_DOCDIR} FILES_MATCHING PATTERN "*.pdf")
+-install(FILES doc/vym.1.gz DESTINATION ${CMAKE_INSTALL_MANDIR})
++install(DIRECTORY doc/ DESTINATION ${CMAKE_INSTALL_DOCDIR} FILES_MATCHING PATTERN "*.pdf")
+ install(FILES README.md LICENSE.txt DESTINATION ${CMAKE_INSTALL_DOCDIR})
+ install(DIRECTORY exports flags icons macros ${CMAKE_BINARY_DIR}/translations scripts styles DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+ 
