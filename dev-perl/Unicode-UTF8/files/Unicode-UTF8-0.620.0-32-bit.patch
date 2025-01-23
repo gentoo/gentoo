@@ -50,3 +50,24 @@ Subject: [PATCH 2/2] fixup! Fix 080_super.t for 32-bit
              push @SUPER, $i;
          }
 
+--- a/t/080_super.t
++++ b/t/080_super.t
+@@ -5,10 +5,17 @@ use strict;
+ use warnings;
+ use lib 't';
+ 
+-use Test::More tests => 1537;
++use Test::More;
+ use Util       qw[throws_ok];
+ 
+ BEGIN {
++    if ($Config{ivsize} > 4) {
++        plan tests => 1537;
++    }
++    else {
++        plan tests => 1025;
++    }
++
+     use_ok('Unicode::UTF8', qw[ encode_utf8 ]);
+ }
+ 
