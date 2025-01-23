@@ -38,6 +38,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	strtonum
 	TAILQ_FOREACH_SAFE
 	unveil
+	arc4random
+	b64_ntop
 )
 
 PATCHES=(
