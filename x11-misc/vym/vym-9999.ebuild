@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="dbus"
 
 RDEPEND="
-	dev-qt/qtbase:6[dbus?,gui,network,ssl,xml,widgets]
+	dev-qt/qtbase:6[dbus?,gui,network,ssl,widgets,xml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
 "
@@ -33,7 +33,7 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 PATCHES=(
 	# fix install dir for doc, remove gzipped man, set VYM_DOCDIR
-	"${FILESDIR}"/${PN}-2.9.562-docdir.patch
+	"${FILESDIR}"/${PN}-2.9-docdir.patch
 )
 
 src_prepare() {
