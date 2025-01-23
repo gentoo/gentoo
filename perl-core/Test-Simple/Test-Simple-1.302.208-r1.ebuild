@@ -7,7 +7,7 @@ DIST_AUTHOR=EXODIST
 DIST_VERSION=1.302208
 DIST_EXAMPLES=("examples/*")
 # Avoid circular dependency in eclass on virtual/perl-Test-Simple
-GENTOO_DEPEND_ON_PERL=noslotop
+GENTOO_DEPEND_ON_PERL=no
 inherit perl-module
 
 DESCRIPTION="Basic utilities for writing tests"
