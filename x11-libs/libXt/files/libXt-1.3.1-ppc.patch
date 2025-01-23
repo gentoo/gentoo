@@ -1,0 +1,27 @@
+https://gitlab.freedesktop.org/xorg/lib/libxt/-/commit/c058592b4de3522e13dbe6f4fa631802da7a6f0c
+
+From c058592b4de3522e13dbe6f4fa631802da7a6f0c Mon Sep 17 00:00:00 2001
+From: Niveditha Rau <niveditha.rau@oracle.com>
+Date: Mon, 30 Dec 2024 00:02:22 +0000
+Subject: [PATCH] Fix mismatched paren
+
+Part-of: <https://gitlab.freedesktop.org/xorg/lib/libxt/-/merge_requests/72>
+---
+ include/X11/Xtos.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/X11/Xtos.h b/include/X11/Xtos.h
+index 599dbe2..91b956f 100644
+--- a/include/X11/Xtos.h
++++ b/include/X11/Xtos.h
+@@ -64,7 +64,7 @@ SOFTWARE.
+     defined(__s390x__) || \
+     (defined(__hppa__) && defined(__LP64__)) || \
+     defined(__amd64__) || defined(amd64) || \
+-    defined(__powerpc64__))
++    defined(__powerpc64__)
+ #define LONG64
+ #endif
+ 
+-- 
+GitLab
