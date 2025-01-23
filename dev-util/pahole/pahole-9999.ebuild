@@ -71,8 +71,3 @@ src_prepare() {
 	cmake_src_prepare
 	python_fix_shebang ostra/ostra-cg ostra/python/ostra.py
 }
-
-src_configure() {
-	local mycmakeargs=( "-D__LIB=$(get_libdir)" )
-	cmake_src_configure
-}
