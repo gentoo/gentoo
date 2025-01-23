@@ -52,11 +52,11 @@ src_configure() {
 	tc-export CC AR
 
 	./configure \
-		PREFIX="/usr" \
-		MANDIR="/usr/share/man" \
+		PREFIX="${EPREFIX}/usr" \
+		MANDIR="${EPREFIX}/usr/share/man" \
 		LDFLAGS="${LDFLAGS}" \
 		CPPFLAGS="${CPPFLAGS}" \
-		LIBDIR="/usr/$(get_libdir)" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		|| die "./configure failed"
 }
 
