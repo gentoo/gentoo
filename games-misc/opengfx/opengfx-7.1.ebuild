@@ -29,31 +29,28 @@ PATCHES=(
 )
 
 src_compile() {
-	local myemakeargs=(
+	myemakeargs=(
 		GIMP=""
 		PYTHON="${EPYTHON}"
+
+		# Make logs verbose
+		_V=
+		_E=echo
 	)
 
 	emake "${myemakeargs[@]}" all
 }
 
 src_test() {
-	local myemakeargs=(
-		GIMP=""
-		PYTHON="${EPYTHON}"
-	)
-
 	emake "${myemakeargs[@]}" check
 }
 
 src_install() {
-	local myemakeargs=(
+	myemakeargs+=(
 		DO_NOT_INSTALL_README="true"
 		DO_NOT_INSTALL_LICENSE="true"
 		DO_NOT_INSTALL_CHANGELOG="true"
-		GIMP=""
 		INSTALL_DIR="${ED}/usr/share/openttd/baseset/"
-		PYTHON="${EPYTHON}"
 	)
 
 	emake "${myemakeargs[@]}" install
