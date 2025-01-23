@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-01-23)
+# Sypder-5 requires Qt5, and there are several dead
+# plugins that have not been migrated to Spyder-6.
+# Removal on 2025-02-23
+<dev-python/spyder-6
+dev-python/spyder-vim
+dev-python/spyder-terminal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # CVE-2025-23050, bug #948573; Removal on 2025-02-22.
 dev-qt/qtbluetooth:5
