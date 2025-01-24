@@ -21,11 +21,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	net-misc/curl
+	sys-apps/file
 	sys-apps/util-linux
-	x11-libs/libXt
+	x11-libs/libX11
 	x11-libs/libXtst
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	qr? ( media-gfx/qrencode )
+	qr? ( media-gfx/qrencode:= )
 	xml? ( dev-libs/xerces-c )
 	yubikey? ( sys-auth/ykpers )"
 DEPEND="${RDEPEND}
