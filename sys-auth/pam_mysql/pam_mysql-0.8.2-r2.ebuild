@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit autotools pam
 
@@ -24,6 +24,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	md5_calc # for Solaris, bug #908580
+)
 
 src_prepare() {
 	default
