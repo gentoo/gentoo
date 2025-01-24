@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -202,6 +202,9 @@ src_prepare() {
 src_configure() {
 	# From Fedora
 	append-flags -fno-strict-aliasing
+	# bug #944286
+	append-cflags -std=gnu17
+
 	multilib-minimal_src_configure
 }
 
