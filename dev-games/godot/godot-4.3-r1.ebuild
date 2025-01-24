@@ -92,6 +92,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-scons.patch
+	"${FILESDIR}"/${PN}-4.3-gcc15.patch
 )
 
 src_prepare() {
