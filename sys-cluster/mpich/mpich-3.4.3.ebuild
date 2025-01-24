@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,6 @@ REQUIRED_USE="mpi-threads? ( threads )"
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
-	sys-libs/libunwind:=[${MULTILIB_USEDEP}]
 	romio? ( net-fs/nfs-utils )
 "
 
