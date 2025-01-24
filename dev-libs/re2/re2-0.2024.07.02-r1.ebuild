@@ -1,4 +1,4 @@
-# Copyright 2012-2024 Gentoo Authors
+# Copyright 2012-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ LICENSE="BSD"
 # https://abi-laboratory.pro/tracker/timeline/re2/
 SONAME="11"
 SLOT="0/${SONAME}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~sparc ~x86"
 IUSE="benchmark icu test test-full"
 REQUIRED_USE="
 	test-full? ( test )
