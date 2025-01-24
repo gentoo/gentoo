@@ -565,6 +565,11 @@ multilib_src_configure() {
 	# bug #919101 and https://github.com/opencv/opencv/issues/19020
 	filter-lto
 
+	# bug #948071 (gcc PR118464)
+	if tc-is-gcc && [[ $(gcc-major-version) -eq 15 ]]; then
+		append-cxxflags "-fno-tree-loop-optimize"
+	fi
+
 	# please don't sort here, order is the same as in CMakeLists.txt
 	local mycmakeargs=(
 		-DMIN_VER_CMAKE=3.26
