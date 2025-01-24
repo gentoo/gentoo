@@ -1,0 +1,43 @@
+Fix compilation errors from C23
+Casting of pointers to ints made no sense originally and affected code
+may behave incorrectly.
+https://bugs.gentoo.org/875719
+https://bugs.gentoo.org/885533
+--- a/Linux/LnxMain.c
++++ b/Linux/LnxMain.c
+@@ -28,6 +28,8 @@
+ #include "driver.h"
+ #include "Linux.h"
+ 
++extern void SetupSound(void); /* from oss.c */
++
+ int main(int argc, char *argv[]) {
+ 	PSFINFO *pi;
+ 
+--- a/Linux/oss.c
++++ b/Linux/oss.c
+@@ -56,6 +56,7 @@
+ #include "oss.h"
+ static int oss_audio_fd = -1;
+ extern int errno;
++extern void sexy_stop(void);
+ 
+ ////////////////////////////////////////////////////////////////////////
+ // SETUP SOUND
+--- a/PsxMem.c
++++ b/PsxMem.c
+@@ -78,11 +78,11 @@
+ 	memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * sizeof *psxMemLUT);
+ 	memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * sizeof *psxMemLUT);
+ 
+-	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f00] = (u32)&psxP[i << 16];
++	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f00] = &psxP[i << 16];
+ 
+-	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f80] = (u32)&psxH[i << 16];
++	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f80] = &psxH[i << 16];
+ 
+-	for (i=0; i<0x08; i++) psxMemLUT[i + 0xbfc0] = (u32)&psxR[i << 16];
++	for (i=0; i<0x08; i++) psxMemLUT[i + 0xbfc0] = &psxR[i << 16];
+ 
+ 	return 0;
+ }
