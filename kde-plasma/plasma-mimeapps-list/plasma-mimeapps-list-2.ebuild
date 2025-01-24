@@ -21,6 +21,6 @@ src_install() {
 	# TODO: Should we just remove the upstream one in /usr/share?
 	# /etc/xdg should really be available for site-local overrides, but then
 	# again we have CONFIG_PROTECT...
-	insinto /etc/xdg/mimeapps.list
+	insinto /etc/xdg
 	doins "${FILESDIR}"/mimeapps.list
 }
