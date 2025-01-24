@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libpanel"
 
 LICENSE="LGPL-3+"
 SLOT="1"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 
 IUSE="examples gtk-doc +introspection +vala"
 REQUIRED_USE="
