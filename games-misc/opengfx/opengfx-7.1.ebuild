@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
 
-inherit python-any-r1
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="OpenGFX data files for OpenTTD"
 HOMEPAGE="https://wiki.openttd.org/en/Basesets/OpenGFX https://github.com/OpenTTD/OpenGFX"
@@ -32,6 +32,7 @@ src_compile() {
 	myemakeargs=(
 		GIMP=""
 		PYTHON="${EPYTHON}"
+		CC="$(tc-getCC)"
 
 		# Make logs verbose
 		_V=
