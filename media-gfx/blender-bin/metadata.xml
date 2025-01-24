@@ -17,4 +17,12 @@
 		Blender, the open source software for 3D modeling, animation,
 		rendering, post-production, interactive creation and playback.
 	</longdescription>
+	<use>
+		<flag name="hip">
+			Enable AMD HIP support (computation on GPU)
+		</flag>
+		<flag name="oneapi">
+			Enable Intel oneAPI SyCL support (computation on GPU)
+		</flag>
+	</use>
 </pkgmetadata>
