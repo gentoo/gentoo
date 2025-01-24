@@ -173,6 +173,11 @@ src_configure() {
 	# ODR violations (bug #915230, https://bugs.webkit.org/show_bug.cgi?id=233007)
 	filter-lto
 
+	# bug #948072 (gcc PR118464)
+	if tc-is-gcc && [[ $(gcc-major-version) -eq 15 ]]; then
+		append-cxxflags "-fno-tree-loop-optimize"
+	fi
+
 	# It does not compile on alpha without this in LDFLAGS
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648761
 	use alpha && append-ldflags "-Wl,--no-relax"
