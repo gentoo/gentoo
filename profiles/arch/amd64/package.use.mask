@@ -29,10 +29,6 @@ llvm-core/clang-runtime -offload
 # Only available on amd64.
 media-video/handbrake -qsv
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-11-30)
-# Dependency dev-python/asyncssh is keyworded here.
-net-misc/dropbear -test-async
-
 # Sv. Lockal <lockalsash@gmail.com> (2024-11-30)
 # Masked in base profile, supported on this arch
 dev-debug/gdb -rocm
