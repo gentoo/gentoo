@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-core-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ppc x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.0-remove-hardcoded-libpath.patch"
