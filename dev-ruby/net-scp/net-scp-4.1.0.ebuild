@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 ruby_add_bdepend "
 	doc? ( dev-ruby/net-ssh:7 )
 	test? (
-		<dev-ruby/mocha-2.2.0:2
+		dev-ruby/mocha:2
 		dev-ruby/test-unit
 	)"
 
