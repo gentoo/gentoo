@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">pam-mysql</remote-id>
+		<remote-id type="github">NigelCunningham/pam-MySQL</remote-id>
 	</upstream>
 </pkgmetadata>
