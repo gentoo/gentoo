@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>c.a.strahl@gmail.com</email>
-		<name>Christian Strahl</name>
+		<email>stefan.cristian+git@rogentos.ro</email>
+		<name>Stefan Cristian B.</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
