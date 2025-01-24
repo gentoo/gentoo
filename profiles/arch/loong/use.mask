@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-24)
+# dev-util/sysprof-capture is keyworded on loong
+-sysprof
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
 # net-misc/dropbox is closed-source and unavailable on loong
 dropbox
