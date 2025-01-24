@@ -12,6 +12,5 @@
 	<use>
 		<flag name="opencv">Enable contrast type focus measures via <pkg>media-libs/opencv</pkg></flag>
 		<flag name="password">Store passwords securely via <pkg>dev-libs/qtkeychain</pkg></flag>
-		<flag name="wcs">Enable support for World Coordinate System library using wcslib</flag>
 	</use>
 </pkgmetadata>
