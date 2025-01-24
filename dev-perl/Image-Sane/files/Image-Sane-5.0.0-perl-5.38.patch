@@ -1,0 +1,807 @@
+https://bugs.gentoo.org/928247
+https://rt.cpan.org/Public/Bug/Display.html?id=148487
+
+From bfa253f8e185509cd4b63509a58a415b6abc929d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Wed, 21 Jun 2023 15:54:40 +0200
+Subject: [PATCH] Replace deprecated given and when operators
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Perl 5.37.11 depracated "given" and "when" keywords and scheduled
+them, together with a smart match operator, for removal in Perl 5.42.
+
+This lead to t/81_scanimage-perl.t failures:
+
+    #   Failed test '--device=test --test 2>&1'
+    #   at t/81_scanimage-perl.t line 42.
+    #          got: 'scanimage: scanning image of size 157x196 pixels at 8 bits/pixel
+    # scanimage: acquiring gray frame, 8 bits/sample
+    # scanimage: reading one scanline, 157 bytes... PASS
+    # scanimage: reading one byte...                PASS
+    <...>
+    # '
+    #     expected: 'given is deprecated at examples/scanimage line 125.
+    # when is deprecated at examples/scanimage line 126.
+    # when is deprecated at examples/scanimage line 129.
+    <...>
+
+This patch rewrites the code not to use "given" and "when".
+
+CPAN RT#148487
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+--- a/examples/scanadf-perl
++++ b/examples/scanadf-perl
+@@ -2,8 +2,6 @@
+ 
+ use warnings;
+ use strict;
+-use feature 'switch';
+-no if $] >= 5.018, warnings => 'experimental::smartmatch';
+ use Sane;
+ use Data::Dumper;
+ use Getopt::Long qw(:config no_ignore_case pass_through);
+@@ -126,25 +124,23 @@ sub sighandler {
+ sub print_unit {
+     my ($unit) = @_;
+ 
+-    given ($unit) {
+-        when (SANE_UNIT_PIXEL) {
+-            printstdout('pel');
+-        }
+-        when (SANE_UNIT_BIT) {
+-            printstdout('bit');
+-        }
+-        when (SANE_UNIT_MM) {
+-            printstdout('mm');
+-        }
+-        when (SANE_UNIT_DPI) {
+-            printstdout('dpi');
+-        }
+-        when (SANE_UNIT_PERCENT) {
+-            printstdout(q{%});
+-        }
+-        when (SANE_UNIT_MICROSECOND) {
+-            printstdout('us');
+-        }
++    if ( $unit == SANE_UNIT_PIXEL) {
++        printstdout('pel');
++    }
++    elsif ( $unit == SANE_UNIT_BIT ) {
++        printstdout('bit');
++    }
++    elsif ( $unit == SANE_UNIT_MM ) {
++        printstdout('mm');
++    }
++    elsif ( $unit == SANE_UNIT_DPI ) {
++        printstdout('dpi');
++    }
++    elsif ( $unit == SANE_UNIT_PERCENT ) {
++        printstdout(q{%});
++    }
++    elsif ( $unit == SANE_UNIT_MICROSECOND) {
++        printstdout('us');
+     }
+     return;
+ }
+@@ -283,28 +279,26 @@ sub print_current_option_value {
+             {
+                 my $string_format = '%g';
+                 if ( $opt->{type} == SANE_TYPE_INT ) { $string_format = '%d' }
+-                given ( $opt->{name} ) {
+-                    when (SANE_NAME_SCAN_TL_X) {
+-                        $tl_x = $val;
+-                        printf $string_format, $tl_x;
+-                    }
+-                    when (SANE_NAME_SCAN_TL_Y) {
+-                        $tl_y = $val;
+-                        printf $string_format, $tl_y;
+-                    }
+-                    when (SANE_NAME_SCAN_BR_X) {
+-                        $br_x = $val;
+-                        $w_x  = $br_x - $tl_x;
+-                        printf $string_format, $w_x;
+-                    }
+-                    when (SANE_NAME_SCAN_BR_Y) {
+-                        $br_y = $val;
+-                        $h_y  = $br_y - $tl_y;
+-                        printf $string_format, $h_y;
+-                    }
+-                    default {
+-                        printf $string_format, $val;
+-                    }
++                if ( $opt->{name} eq SANE_NAME_SCAN_TL_X ) {
++                    $tl_x = $val;
++                    printf $string_format, $tl_x;
++                }
++                elsif ( $opt->{name} eq SANE_NAME_SCAN_TL_Y ) {
++                    $tl_y = $val;
++                    printf $string_format, $tl_y;
++                }
++                elsif ( $opt->{name} eq SANE_NAME_SCAN_BR_X ) {
++                    $br_x = $val;
++                    $w_x  = $br_x - $tl_x;
++                    printf $string_format, $w_x;
++                }
++                elsif ( $opt->{name} eq SANE_NAME_SCAN_BR_Y) {
++                    $br_y = $val;
++                    $h_y  = $br_y - $tl_y;
++                    printf $string_format, $h_y;
++                }
++                else {
++                    printf $string_format, $val;
+                 }
+             }
+             elsif ( $opt->{type} == SANE_TYPE_STRING ) {
+@@ -508,34 +502,32 @@ sub update_geometry {
+         and ( $opt->{unit} == SANE_UNIT_MM || $opt->{unit} == SANE_UNIT_PIXEL )
+       )
+     {
+-        given ( $opt->{name} ) {
+-            when (SANE_NAME_SCAN_TL_X) {
+-                $window[2] = $i;
+-                $opt->{name} = 'l';
+-            }
+-            when (SANE_NAME_SCAN_TL_Y) {
+-                $window[3] = $i;      ## no critic (ProhibitMagicNumbers)
+-                $opt->{name} = 't';
+-            }
+-            when (SANE_NAME_SCAN_BR_X) {
+-                $window[0]                 = $i;
+-                $opt->{name}               = 'x';
+-                $window_option[0]          = $opt;
+-                $window_option[0]->{title} = 'Scan width';
+-                $window_option[0]->{desc}  = 'Width of scanning area.';
+-                if ( !$window_val_user[0] ) {
+-                    $window_val[0] = $device->get_option($i);
+-                }
++        if ( $opt->{name} eq SANE_NAME_SCAN_TL_X ) {
++            $window[2] = $i;
++            $opt->{name} = 'l';
++        }
++        elsif ( $opt->{name} eq SANE_NAME_SCAN_TL_Y ) {
++            $window[3] = $i;      ## no critic (ProhibitMagicNumbers)
++            $opt->{name} = 't';
++        }
++        elsif ( $opt->{name} eq SANE_NAME_SCAN_BR_X ) {
++            $window[0]                 = $i;
++            $opt->{name}               = 'x';
++            $window_option[0]          = $opt;
++            $window_option[0]->{title} = 'Scan width';
++            $window_option[0]->{desc}  = 'Width of scanning area.';
++            if ( !$window_val_user[0] ) {
++                $window_val[0] = $device->get_option($i);
+             }
+-            when (SANE_NAME_SCAN_BR_Y) {
+-                $window[1]                 = $i;
+-                $opt->{name}               = 'y';
+-                $window_option[1]          = $opt;
+-                $window_option[1]->{title} = 'Scan height';
+-                $window_option[1]->{desc}  = 'Height of scanning area.';
+-                if ( !$window_val_user[1] ) {
+-                    $window_val[1] = $device->get_option($i);
+-                }
++        }
++        elsif ( $opt->{name} eq SANE_NAME_SCAN_BR_Y ) {
++            $window[1]                 = $i;
++            $opt->{name}               = 'y';
++            $window_option[1]          = $opt;
++            $window_option[1]->{title} = 'Scan height';
++            $window_option[1]->{desc}  = 'Height of scanning area.';
++            if ( !$window_val_user[1] ) {
++                $window_val[1] = $device->get_option($i);
+             }
+         }
+     }
+@@ -604,40 +596,38 @@ sub process_backend_option {
+     }
+ 
+     my $value;
+-    given ( $opt->{type} ) {
+-        when (SANE_TYPE_BOOL) {
+-            $value = 1;    # no argument means option is set
+-            if ($optarg) {
+-                if ( $optarg =~ /^yes$/ixsm ) {
+-                    $value = 1;
+-                }
+-                elsif ( $optarg =~ /^no$/ixsm ) {
+-                    $value = 0;
+-                }
+-                else {
+-                    die
++    if ( $opt->{type} == SANE_TYPE_BOOL ) {
++        $value = 1;    # no argument means option is set
++        if ($optarg) {
++            if ( $optarg =~ /^yes$/ixsm ) {
++                $value = 1;
++            }
++            elsif ( $optarg =~ /^no$/ixsm ) {
++                $value = 0;
++            }
++            else {
++                die
+ "$prog_name: option --$opt->{name}: bad option value `$optarg'\n";
+-                }
+             }
+         }
+-        when (
+-                 $opt->{type} == SANE_TYPE_INT
+-              or $opt->{type} == SANE_TYPE_FIXED
+-          )
+-        {
+-            my @vector = parse_vector( $opt, $optarg );
+-            $value = \@vector;
+-        }
+-        when (SANE_TYPE_STRING) {
+-            $value = $optarg;
+-        }
+-        when (SANE_TYPE_BUTTON) {
+-            $value = 0;    # value doesn't matter
+-        }
+-        default {
+-            warn "$prog_name: duh, got unknown option type $opt->{type}\n";
+-            return;
+-        }
++    }
++    elsif (
++             $opt->{type} == SANE_TYPE_INT
++          or $opt->{type} == SANE_TYPE_FIXED
++      )
++    {
++        my @vector = parse_vector( $opt, $optarg );
++        $value = \@vector;
++    }
++    elsif ( $opt->{type} == SANE_TYPE_STRING ) {
++        $value = $optarg;
++    }
++    elsif ( $opt->{type} == SANE_TYPE_BUTTON ) {
++        $value = 0;    # value doesn't matter
++    }
++    else {
++        warn "$prog_name: duh, got unknown option type $opt->{type}\n";
++        return;
+     }
+     set_option( $device, $optnum, $value );
+     return;
+@@ -1050,30 +1040,28 @@ sub process_arguments {
+             next;
+         }
+         if ( defined $options{$ch} ) {
+-            given ($ch) {
+-                when ('x') {
+-                    $window_val_user[0] = 1;
+-                    ( $window_val[0] ) =
+-                      parse_vector( $window_option[0], $options{x} );
+-                }
+-                when ('y') {
+-                    $window_val_user[1] = 1;
+-                    ( $window_val[1] ) =
+-                      parse_vector( $window_option[1], $options{y} );
+-                }
+-                when ('l') {    # tl-x
+-                    process_backend_option( $device, $window[2], $options{l} );
+-                }
+-                when ('t') {    # tl-y
+-                    process_backend_option(
+-                        $device, $window[3], ## no critic (ProhibitMagicNumbers)
+-                        $options{t}
+-                    );
+-                }
+-                default {
+-                    process_backend_option( $device, $option_number{$ch},
+-                        $options{$ch} );
+-                }
++            if ( $ch eq 'x' ) {
++                $window_val_user[0] = 1;
++                ( $window_val[0] ) =
++                  parse_vector( $window_option[0], $options{x} );
++            }
++            elsif ( $ch eq 'y' ) {
++                $window_val_user[1] = 1;
++                ( $window_val[1] ) =
++                  parse_vector( $window_option[1], $options{y} );
++            }
++            elsif ( $ch eq 'l' ) {    # tl-x
++                process_backend_option( $device, $window[2], $options{l} );
++            }
++            elsif ( $ch eq 't' ) {    # tl-y
++                process_backend_option(
++                    $device, $window[3], ## no critic (ProhibitMagicNumbers)
++                    $options{t}
++                );
++            }
++            else {
++                process_backend_option( $device, $option_number{$ch},
++                    $options{$ch} );
+             }
+         }
+     }
+--- a/examples/scanimage-perl
++++ b/examples/scanimage-perl
+@@ -2,14 +2,12 @@
+ 
+ use warnings;
+ use strict;
+-use feature 'switch';
+ use Image::Sane ':all';
+ use Try::Tiny;
+ use Getopt::Long qw(:config no_ignore_case pass_through);
+ use File::Basename;
+ use IO::Handle;
+ use English qw( -no_match_vars );    # for $PROGRAM_NAME
+-no if $] >= 5.018, warnings => 'experimental::smartmatch';
+ use sigtrap qw/handler sighandler normal-signals/;
+ use Readonly;
+ Readonly my $BUFFER_SIZE   => ( 32 * 1024 );     # default size
+@@ -122,25 +120,23 @@ sub sighandler {
+ sub print_unit {
+     my ($unit) = @_;
+ 
+-    given ($unit) {
+-        when (SANE_UNIT_PIXEL) {
+-            printstdout('pel');
+-        }
+-        when (SANE_UNIT_BIT) {
+-            printstdout('bit');
+-        }
+-        when (SANE_UNIT_MM) {
+-            printstdout('mm');
+-        }
+-        when (SANE_UNIT_DPI) {
+-            printstdout('dpi');
+-        }
+-        when (SANE_UNIT_PERCENT) {
+-            printstdout(q{%});
+-        }
+-        when (SANE_UNIT_MICROSECOND) {
+-            printstdout('us');
+-        }
++    if ($unit == SANE_UNIT_PIXEL) {
++        printstdout('pel');
++    }
++    elsif ($unit == SANE_UNIT_BIT) {
++        printstdout('bit');
++    }
++    elsif ($unit == SANE_UNIT_MM) {
++        printstdout('mm');
++    }
++    elsif ($unit == SANE_UNIT_DPI) {
++        printstdout('dpi');
++    }
++    elsif ($unit == SANE_UNIT_PERCENT) {
++        printstdout(q{%});
++    }
++    elsif ($unit == SANE_UNIT_MICROSECOND) {
++        printstdout('us');
+     }
+     return;
+ }
+@@ -243,69 +239,67 @@ sub print_option {
+ 
+ sub print_option_choices {
+     my ($opt) = @_;
+-    given ( $opt->{type} ) {
+-        when (SANE_TYPE_BOOL) {
+-            printstdout('[=(');
+-            if ( $opt->{cap} & SANE_CAP_AUTOMATIC ) { printstdout('auto|') }
+-            printstdout('yes|no)]');
+-        }
+-        when (SANE_TYPE_BUTTON) { }
+-        default {
+-            printstdout($SPACE);
+-            if ( $opt->{cap} & SANE_CAP_AUTOMATIC ) {
+-                printstdout('auto|');
++    if ( $opt->{type} == SANE_TYPE_BOOL ) {
++        printstdout('[=(');
++        if ( $opt->{cap} & SANE_CAP_AUTOMATIC ) { printstdout('auto|') }
++        printstdout('yes|no)]');
++    }
++    elsif ( $opt->{type} == SANE_TYPE_BUTTON ) {
++    }
++    else {
++        printstdout($SPACE);
++        if ( $opt->{cap} & SANE_CAP_AUTOMATIC ) {
++            printstdout('auto|');
++        }
++        if ( $opt->{constraint_type} == SANE_CONSTRAINT_NONE ) {
++            if ( $opt->{type} == SANE_TYPE_INT ) {
++                printstdout('<int>');
+             }
+-            given ( $opt->{constraint_type} ) {
+-                when (SANE_CONSTRAINT_NONE) {
+-                    if ( $opt->{type} == SANE_TYPE_INT ) {
+-                        printstdout('<int>');
+-                    }
+-                    elsif ( $opt->{type} == SANE_TYPE_FIXED ) {
+-                        printstdout('<float>');
+-                    }
+-                    elsif ( $opt->{type} == SANE_TYPE_STRING ) {
+-                        printstdout('<string>');
+-                    }
+-                    if ( $opt->{max_values} > 1 ) { printstdout(',...') }
+-                }
+-                when (SANE_CONSTRAINT_RANGE) {
+-                    my $string_format = '%g..%g';
+-                    if ( $opt->{type} == SANE_TYPE_INT ) {
+-                        $string_format = '%d..%d';
+-                    }
+-                    if ( $opt->{name} eq 'x' ) {
+-                        printf $string_format, $opt->{constraint}{min},
+-                          $opt->{constraint}{max} - $tl_x;
+-                    }
+-                    elsif ( $opt->{name} eq 'y' ) {
+-                        printf $string_format, $opt->{constraint}{min},
+-                          $opt->{constraint}{max} - $tl_y;
+-                    }
+-                    else {
+-                        printf $string_format, $opt->{constraint}{min},
+-                          $opt->{constraint}{max};
+-                    }
+-                    print_unit( $opt->{unit} );
+-                    if ( $opt->{max_values} > 1 ) { printstdout(',...') }
+-                    if ( $opt->{constraint}{quant} ) {
+-                        printstdout(" (in steps of $opt->{constraint}{quant})");
+-                    }
+-                }
+-                when ( SANE_CONSTRAINT_STRING_LIST | SANE_CONSTRAINT_WORD_LIST )
+-                {
+-                    for my $i ( 0 .. $#{ $opt->{constraint} } ) {
+-                        if ( $i > 0 ) { printstdout(q{|}) }
+-                        my $string_format =
+-                          $opt->{type} == SANE_TYPE_FIXED ? '%g' : '%s';
++            elsif ( $opt->{type} == SANE_TYPE_FIXED ) {
++                printstdout('<float>');
++            }
++            elsif ( $opt->{type} == SANE_TYPE_STRING ) {
++                printstdout('<string>');
++            }
++            if ( $opt->{max_values} > 1 ) { printstdout(',...') }
++        }
++        elsif ( $opt->{constraint_type} == SANE_CONSTRAINT_RANGE ) {
++            my $string_format = '%g..%g';
++            if ( $opt->{type} == SANE_TYPE_INT ) {
++                $string_format = '%d..%d';
++            }
++            if ( $opt->{name} eq 'x' ) {
++                printf $string_format, $opt->{constraint}{min},
++                  $opt->{constraint}{max} - $tl_x;
++            }
++            elsif ( $opt->{name} eq 'y' ) {
++                printf $string_format, $opt->{constraint}{min},
++                  $opt->{constraint}{max} - $tl_y;
++            }
++            else {
++                printf $string_format, $opt->{constraint}{min},
++                  $opt->{constraint}{max};
++            }
++            print_unit( $opt->{unit} );
++            if ( $opt->{max_values} > 1 ) { printstdout(',...') }
++            if ( $opt->{constraint}{quant} ) {
++                printstdout(" (in steps of $opt->{constraint}{quant})");
++            }
++        }
++        elsif ( $opt->{constraint_type} == SANE_CONSTRAINT_STRING_LIST ||
++                $opt->{constraint_type} == SANE_CONSTRAINT_WORD_LIST )
++        {
++            for my $i ( 0 .. $#{ $opt->{constraint} } ) {
++                if ( $i > 0 ) { printstdout(q{|}) }
++                my $string_format =
++                  $opt->{type} == SANE_TYPE_FIXED ? '%g' : '%s';
+ 
+-                        printf $string_format, $opt->{constraint}[$i];
+-                    }
+-                    if ( $opt->{constraint_type} == SANE_CONSTRAINT_WORD_LIST )
+-                    {
+-                        print_unit( $opt->{unit} );
+-                        if ( $opt->{max_values} > 1 ) { printstdout(',...') }
+-                    }
+-                }
++                printf $string_format, $opt->{constraint}[$i];
++            }
++            if ( $opt->{constraint_type} == SANE_CONSTRAINT_WORD_LIST )
++            {
++                print_unit( $opt->{unit} );
++                if ( $opt->{max_values} > 1 ) { printstdout(',...') }
+             }
+         }
+     }
+@@ -326,26 +320,24 @@ sub print_current_option_value {
+             {
+                 my $string_format = '%g';
+                 if ( $opt->{type} == SANE_TYPE_INT ) { $string_format = '%d' }
+-                given ( $opt->{name} ) {
+-                    when ('l') {
+-                        $tl_x = $val;
+-                        printf $string_format, $tl_x;
+-                    }
+-                    when ('t') {
+-                        $tl_y = $val;
+-                        printf $string_format, $tl_y;
+-                    }
+-                    when ('x') {
+-                        $br_x = $val;
+-                        printf $string_format, $br_x - $tl_x;
+-                    }
+-                    when ('y') {
+-                        $br_y = $val;
+-                        printf $string_format, $br_y - $tl_y;
+-                    }
+-                    default {
+-                        printf $string_format, $val;
+-                    }
++                if ( $opt->{name} eq 'l' ) {
++                    $tl_x = $val;
++                    printf $string_format, $tl_x;
++                }
++                elsif ( $opt->{name} eq 't' ) {
++                    $tl_y = $val;
++                    printf $string_format, $tl_y;
++                }
++                elsif ( $opt->{name} eq 'x' ) {
++                    $br_x = $val;
++                    printf $string_format, $br_x - $tl_x;
++                }
++                elsif ( $opt->{name} eq 'y' ) {
++                    $br_y = $val;
++                    printf $string_format, $br_y - $tl_y;
++                }
++                else {
++                    printf $string_format, $val;
+                 }
+             }
+             elsif ( $opt->{type} == SANE_TYPE_STRING ) {
+@@ -562,33 +554,31 @@ sub update_geometry {
+         and ( $opt->{unit} == SANE_UNIT_MM or $opt->{unit} == SANE_UNIT_PIXEL )
+       )
+     {
+-        given ( $opt->{name} ) {
+-            when (SANE_NAME_SCAN_BR_X) {
+-                $window[0]                 = $i;
+-                $opt->{name}               = 'x';
+-                $window_option[0]          = $opt;
+-                $window_option[0]->{title} = 'Scan width';
+-                $window_option[0]->{desc}  = 'Width of scan-area.';
+-                $window_option[0]->{name}  = 'x';
+-            }
+-            when (SANE_NAME_SCAN_BR_Y) {
+-                $window[1]                 = $i;
+-                $opt->{name}               = 'y';
+-                $window_option[1]          = $opt;
+-                $window_option[1]->{title} = 'Scan height';
+-                $window_option[1]->{desc}  = 'Height of scan-area.';
+-                $window_option[1]->{name}  = 'y';
+-            }
+-            when (SANE_NAME_SCAN_TL_X) {
+-                $window[2]                = $i;
+-                $window_option[2]         = $opt;
+-                $window_option[2]->{name} = 'l';
+-            }
+-            when (SANE_NAME_SCAN_TL_Y) {
+-                $window[$I_TL_Y]                = $i;
+-                $window_option[$I_TL_Y]         = $opt;
+-                $window_option[$I_TL_Y]->{name} = 't';
+-            }
++        if ( $opt->{name} eq SANE_NAME_SCAN_BR_X ) {
++            $window[0]                 = $i;
++            $opt->{name}               = 'x';
++            $window_option[0]          = $opt;
++            $window_option[0]->{title} = 'Scan width';
++            $window_option[0]->{desc}  = 'Width of scan-area.';
++            $window_option[0]->{name}  = 'x';
++        }
++        elsif ( $opt->{name} eq SANE_NAME_SCAN_BR_Y ) {
++            $window[1]                 = $i;
++            $opt->{name}               = 'y';
++            $window_option[1]          = $opt;
++            $window_option[1]->{title} = 'Scan height';
++            $window_option[1]->{desc}  = 'Height of scan-area.';
++            $window_option[1]->{name}  = 'y';
++        }
++        elsif ( $opt->{name} eq SANE_NAME_SCAN_TL_X ) {
++            $window[2]                = $i;
++            $window_option[2]         = $opt;
++            $window_option[2]->{name} = 'l';
++        }
++        elsif ( $opt->{name} eq SANE_NAME_SCAN_TL_Y ) {
++            $window[$I_TL_Y]                = $i;
++            $window_option[$I_TL_Y]         = $opt;
++            $window_option[$I_TL_Y]->{name} = 't';
+         }
+     }
+     return;
+@@ -663,40 +653,38 @@ sub process_backend_option {
+     }
+ 
+     my $value;
+-    given ( $opt->{type} ) {
+-        when (SANE_TYPE_BOOL) {
+-            $value = 1;    # no argument means option is set
+-            if ($optarg) {
+-                if ( $optarg =~ /^yes$/xsmi ) {
+-                    $value = 1;
+-                }
+-                elsif ( $optarg =~ /^no$/xsmi ) {
+-                    $value = 0;
+-                }
+-                else {
+-                    die
++    if ( $opt->{type} == SANE_TYPE_BOOL ) {
++        $value = 1;    # no argument means option is set
++        if ($optarg) {
++            if ( $optarg =~ /^yes$/xsmi ) {
++                $value = 1;
++            }
++            elsif ( $optarg =~ /^no$/xsmi ) {
++                $value = 0;
++            }
++            else {
++                die
+ "$prog_name: option --$opt->{name}: bad option value `$optarg'\n";
+-                }
+             }
+         }
+-        when (
+-                 $opt->{type} == SANE_TYPE_INT
+-              or $opt->{type} == SANE_TYPE_FIXED
+-          )
+-        {
+-            my @vector = parse_vector( $opt, $optarg );
+-            $value = \@vector;
+-        }
+-        when (SANE_TYPE_STRING) {
+-            $value = $optarg;
+-        }
+-        when (SANE_TYPE_BUTTON) {
+-            $value = 0;    # value doesn't matter
+-        }
+-        default {
+-            warn "$prog_name: duh, got unknown option type $opt->{type}\n";
+-            return;
+-        }
++    }
++    elsif (
++             $opt->{type} == SANE_TYPE_INT
++          or $opt->{type} == SANE_TYPE_FIXED
++      )
++    {
++        my @vector = parse_vector( $opt, $optarg );
++        $value = \@vector;
++    }
++    elsif ( $opt->{type} == SANE_TYPE_STRING ) {
++        $value = $optarg;
++    }
++    elsif ( $opt->{type} == SANE_TYPE_BUTTON) {
++        $value = 0;    # value doesn't matter
++    }
++    else {
++        warn "$prog_name: duh, got unknown option type $opt->{type}\n";
++        return;
+     }
+     set_option( $device, $optnum, $value );
+     return;
+@@ -1149,29 +1137,19 @@ sub scan_pages {
+             printstderr( sprintf " (scanner status = %d)\n", $status );
+         }
+ 
+-        given ($status) {
+-            when (SANE_STATUS_EOF) {
+-                if ($batch) {
+-
+-                   # close output file by redirecting, do not close stdout here!
+-                    if (
+-                        open $fh, '>',    ## no critic (RequireBriefOpen)
+-                        '/dev/null' and STDOUT->fdopen( $fh, '>' )
+-                      )
+-                    {
+-
+-                        # let the fully scanned file show up
+-                        if ( not rename $part_path, $path ) {
+-                            printstderr("cannot rename $part_path to $path\n");
+-                            try {
+-                                $device->cancel;
+-                            }
+-                            catch {};
+-                            return SANE_STATUS_ACCESS_DENIED;
+-                        }
+-                    }
+-                    else {
+-                        printstderr("cannot open /dev/null\n");
++        if ( $status == SANE_STATUS_EOF ) {
++            if ($batch) {
++
++               # close output file by redirecting, do not close stdout here!
++                if (
++                    open $fh, '>',    ## no critic (RequireBriefOpen)
++                    '/dev/null' and STDOUT->fdopen( $fh, '>' )
++                  )
++                {
++
++                    # let the fully scanned file show up
++                    if ( not rename $part_path, $path ) {
++                        printstderr("cannot rename $part_path to $path\n");
+                         try {
+                             $device->cancel;
+                         }
+@@ -1179,15 +1157,23 @@ sub scan_pages {
+                         return SANE_STATUS_ACCESS_DENIED;
+                     }
+                 }
+-            }
+-            when (SANE_STATUS_GOOD) {
+-                if ($batch) {
+-                    close $fh or warn "cannot close file\n";
+-                    unlink $part_path;
++                else {
++                    printstderr("cannot open /dev/null\n");
++                    try {
++                        $device->cancel;
++                    }
++                    catch {};
++                    return SANE_STATUS_ACCESS_DENIED;
+                 }
+-                last;
+             }
+         }
++        elsif ( $status == SANE_STATUS_GOOD ) {
++            if ($batch) {
++                close $fh or warn "cannot close file\n";
++                unlink $part_path;
++            }
++            last;
++        }
+         $n += $batch_increment;
+ 
+         if ( not ok_for_next_page() ) { last }
+@@ -1422,28 +1408,26 @@ sub process_arguments {
+             next;
+         }
+         if ( defined $options{$ch} ) {
+-            given ($ch) {
+-                when ('x') {
+-                    $window_val_user[0] = 1;
+-                    ( $window_val[0] ) =
+-                      parse_vector( $window_option[0], $options{x} );
+-                }
+-                when ('y') {
+-                    $window_val_user[1] = 1;
+-                    ( $window_val[1] ) =
+-                      parse_vector( $window_option[1], $options{y} );
+-                }
+-                when ('l') {    # tl-x
+-                    process_backend_option( $device, $window[2], $options{l} );
+-                }
+-                when ('t') {    # tl-y
+-                    process_backend_option( $device, $window[$I_TL_Y],
+-                        $options{t} );
+-                }
+-                default {
+-                    process_backend_option( $device, $option_number{$ch},
+-                        $options{$ch} );
+-                }
++            if ( $ch eq 'x' ) {
++                $window_val_user[0] = 1;
++                ( $window_val[0] ) =
++                  parse_vector( $window_option[0], $options{x} );
++            }
++            elsif ( $ch eq 'y' ) {
++                $window_val_user[1] = 1;
++                ( $window_val[1] ) =
++                  parse_vector( $window_option[1], $options{y} );
++            }
++            elsif ( $ch eq 'l') {    # tl-x
++                process_backend_option( $device, $window[2], $options{l} );
++            }
++            elsif ( $ch eq 't') {    # tl-y
++                process_backend_option( $device, $window[$I_TL_Y],
++                    $options{t} );
++            }
++            else {
++                process_backend_option( $device, $option_number{$ch},
++                    $options{$ch} );
+             }
+         }
+     }
+-- 
+2.41.0
