@@ -283,7 +283,6 @@ virtual/bitcoin-leveldb
 # Mats Lidell <matsl@gentoo.org> (2024-12-25)
 # Packages used by XEmacs 21.4, now removed from tree.  Not needed with
 # XEmacs 21.5.  Removal on 2025-01-24.
-app-xemacs/latin-unity
 app-xemacs/mule-ucs
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
