@@ -1,0 +1,22 @@
+From 6a7c72c078715380bf24f029624e6b1fb3035c97 Mon Sep 17 00:00:00 2001
+From: Antti Hukkanen <antti.hukkanen@mainiotech.fi>
+Date: Thu, 16 Jan 2025 11:17:29 +0200
+Subject: [PATCH] Ensure the logger gem is loaded in Rails 7.0
+
+Fix #54260, #54263
+---
+ activesupport/lib/active_support/logger_thread_safe_level.rb | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/activesupport/lib/active_support/logger_thread_safe_level.rb b/activesupport/lib/active_support/logger_thread_safe_level.rb
+index 042f484f8210d..aa84a7c5de5c6 100644
+--- a/lib/active_support/logger_thread_safe_level.rb
++++ b/lib/active_support/logger_thread_safe_level.rb
+@@ -4,6 +4,7 @@
+ require "active_support/core_ext/module/attribute_accessors"
+ require "concurrent"
+ require "fiber"
++require "logger"
+ 
+ module ActiveSupport
+   module LoggerThreadSafeLevel # :nodoc:
