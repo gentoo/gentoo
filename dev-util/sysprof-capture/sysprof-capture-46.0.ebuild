@@ -11,7 +11,7 @@ HOMEPAGE="http://sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="4"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
