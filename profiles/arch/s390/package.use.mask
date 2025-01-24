@@ -53,10 +53,6 @@ dev-lang/python jit
 # media-libs/libraw is not keyworded
 media-libs/imlib2 raw
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-04-06)
-# sys-libs/nss_wrapper unavailable for tests
-net-misc/dropbear test
-
 # Sam James <sam@gentoo.org> (2024-03-27)
 # No rust-bin available for profiler
 virtual/rust profiler
