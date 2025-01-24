@@ -165,11 +165,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ver_test "${REPLACING_VERSIONS}" -lt 1.0.0; then
-		elog "Filesystems created with CryFS 0.11.x and CryFS 1.0.0 are fully compatible with each other."
-		elog "This means filesystems created with 0.10.x or 0.11.x can be mounted without requiring a migration."
-		elog "Filesystems created with 1.0.0 or 0.11.x can be mounted by CryFS 0.10.x,"
-		elog "but only if you configure it to use a cipher supported by CryFS 0.10.x, e.g. AES-256-GCM."
-		elog "The new default, XChaCha20-Poly1305, is not supported by CryFS 0.10.x."
+	if [[ -n ${REPLACING_VERSIONS} ]] ; then
+		for ver in "${REPLACING_VERSIONS[@]}" ; do
+			if ver_test "${ver}" -lt 1.0.0; then
+				elog "Filesystems created with CryFS 0.11.x and CryFS 1.0.0 are fully compatible with each other."
+				elog "This means filesystems created with 0.10.x or 0.11.x can be mounted without requiring a migration."
+				elog "Filesystems created with 1.0.0 or 0.11.x can be mounted by CryFS 0.10.x,"
+				elog "but only if you configure it to use a cipher supported by CryFS 0.10.x, e.g. AES-256-GCM."
+				elog "The new default, XChaCha20-Poly1305, is not supported by CryFS 0.10.x."
+				break
+			fi
+		done
 	fi
 }
