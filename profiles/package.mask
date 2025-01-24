@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-24)
+# EAPI=7, uses deprecated Go eclasses, upstream repo is archived.
+# gom is a go dependency manager which doesn't work with modern
+# Go tools, and is redundent to standard `go install` commands.
+# go-colortext has only gom as reverse dependency.
+# Removal on 2025-02-23.  Bugs #948653, #844655, #844664, #922697.
+dev-go/go-colortext
+dev-go/gom
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Last release from 12 years ago, git master still defaults to Qt4.
 # Plenty of other options in ::gentoo. Bug #947741, removal on 2025-02-22.
