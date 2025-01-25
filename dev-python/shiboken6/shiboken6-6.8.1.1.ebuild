@@ -32,7 +32,7 @@ S="${WORKDIR}/${MY_P}/sources/shiboken6"
 # arbitrarily relicensed. (TODO)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 ) GPL-3"
 SLOT="6/${PV}"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+docstrings numpy test vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
