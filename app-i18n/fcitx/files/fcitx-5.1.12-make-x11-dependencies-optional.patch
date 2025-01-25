@@ -1,0 +1,24 @@
+https://github.com/fcitx/fcitx5/pull/1259
+
+The header may be not available when X11 is disabled. Fixes fcitx5
+build without X11 libraries.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+--- a/src/ui/classic/classicui.cpp
++++ b/src/ui/classic/classicui.cpp
+@@ -20,7 +20,6 @@
+ #include <utility>
+ #include <vector>
+ #include <cairo.h>
+-#include <xcb/xcb.h>
+ #include "fcitx-config/iniparser.h"
+ #include "fcitx-config/rawconfig.h"
+ #include "fcitx-utils/color.h"
+@@ -45,6 +44,7 @@
+ #include "plasmathemewatchdog.h"
+ #include "theme.h"
+ #ifdef ENABLE_X11
++#include <xcb/xcb.h>
+ #include "xcb_public.h"
+ #include "xcbui.h"
+ #endif
