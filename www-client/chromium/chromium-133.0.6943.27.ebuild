@@ -410,7 +410,7 @@ src_prepare() {
 		fi
 		# We use vsx3 as a proxy for 'want isa3.0' (POWER9)
 		if use cpu_flags_ppc_vsx3 ; then
-			PATCHES+=( +"${patchset_dir}/${isa_3_patch}" )
+			PATCHES+=( "${patchset_dir}/${isa_3_patch}" )
 		fi
 	fi
 
