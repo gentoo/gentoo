@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -75,13 +75,19 @@ ADDONS_SRC=(
 	)"
 	# no release for 8 years, should we package it?
 	"libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )"
-	# not packageable
-	"odk? ( http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll )"
 )
 SRC_URI+=" ${ADDONS_SRC[*]}"
 
 unset ADDONS_URI
 unset ADDONS_SRC
+
+S="${WORKDIR}/${PN}-${MY_PV}"
+
+LICENSE="|| ( LGPL-3 MPL-1.1 )"
+SLOT="0"
+
+[[ ${MY_PV} == *9999* ]] || \
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
@@ -101,12 +107,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 RESTRICT="!test? ( test )"
-
-LICENSE="|| ( LGPL-3 MPL-1.1 )"
-SLOT="0"
-
-[[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -262,22 +262,23 @@ BDEPEND="
 	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
-	clang? (
-		|| (
-			(	llvm-core/clang:18
-				llvm-core/llvm:18
-				=llvm-core/lld-18*	)
-			(	llvm-core/clang:17
-				llvm-core/llvm:17
-				=llvm-core/lld-17*	)
-			(	llvm-core/clang:16
-				llvm-core/llvm:16
-				=llvm-core/lld-16*	)
-			(	llvm-core/clang:15
-				llvm-core/llvm:15
-				=llvm-core/lld-15*	)
-		)
-	)
+	clang? ( || (
+		(	llvm-core/clang:19
+			llvm-core/llvm:19
+			=llvm-core/lld-19*	)
+		(	llvm-core/clang:18
+			llvm-core/llvm:18
+			=llvm-core/lld-18*	)
+		(	llvm-core/clang:17
+			llvm-core/llvm:17
+			=llvm-core/lld-17*	)
+		(	llvm-core/clang:16
+			llvm-core/llvm:16
+			=llvm-core/lld-16*	)
+		(	llvm-core/clang:15
+			llvm-core/llvm:15
+			=llvm-core/lld-15*	)
+	) )
 	odk? ( >=app-text/doxygen-1.8.4 )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
@@ -299,8 +300,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-24.8-unused-qt5network.patch"
 	"${FILESDIR}/${PN}-24.8-unused-qt6network.patch"
 )
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 _check_reqs() {
 	CHECKREQS_MEMORY="512M"
