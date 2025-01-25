@@ -1,0 +1,51 @@
+From b92aee86d55d87a1e2583f04115c95546bc03822 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Sat, 25 Jan 2025 23:44:46 +0400
+Subject: [PATCH] [PATCH 1/3] Better first launch config defaults
+
+Co-Authored-By: Andrew Udvare <audvare@gmail.com>
+Signed-off-by: Yuri Konotopov <ykonotopov@gnome.org>
+---
+ .../Utilities/Configuration/ConfigurationState.cs    | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/Ryujinx/Utilities/Configuration/ConfigurationState.cs b/src/Ryujinx/Utilities/Configuration/ConfigurationState.cs
+index 21210bb0e..1e24a4d55 100644
+--- a/src/Ryujinx/Utilities/Configuration/ConfigurationState.cs
++++ b/src/Ryujinx/Utilities/Configuration/ConfigurationState.cs
+@@ -149,7 +149,7 @@ namespace Ryujinx.Ava.Utilities.Configuration
+ 
+         public void LoadDefault()
+         {
+-            Logger.EnableFileLog.Value = true;
++            Logger.EnableFileLog.Value = false;
+             Graphics.BackendThreading.Value = BackendThreading.Auto;
+             Graphics.ResScale.Value = 1;
+             Graphics.ResScaleCustom.Value = 1.0f;
+@@ -159,9 +159,9 @@ namespace Ryujinx.Ava.Utilities.Configuration
+             Graphics.PreferredGpu.Value = string.Empty;
+             Graphics.ShadersDumpPath.Value = string.Empty;
+             Logger.EnableDebug.Value = false;
+-            Logger.EnableStub.Value = true;
+-            Logger.EnableInfo.Value = true;
+-            Logger.EnableWarn.Value = true;
++            Logger.EnableStub.Value = false;
++            Logger.EnableInfo.Value = false;
++            Logger.EnableWarn.Value = false;
+             Logger.EnableError.Value = true;
+             Logger.EnableTrace.Value = false;
+             Logger.EnableGuest.Value = true;
+@@ -173,8 +173,8 @@ namespace Ryujinx.Ava.Utilities.Configuration
+             System.TimeZone.Value = "UTC";
+             System.SystemTimeOffset.Value = 0;
+             System.EnableDockedMode.Value = true;
+-            EnableDiscordIntegration.Value = true;
+-            CheckUpdatesOnStart.Value = true;
++            EnableDiscordIntegration.Value = false;
++            CheckUpdatesOnStart.Value = false;
+             ShowConfirmExit.Value = true;
+             IgnoreApplet.Value = false;
+             RememberWindowState.Value = true;
+-- 
+2.45.3
+
