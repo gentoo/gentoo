@@ -9,13 +9,13 @@ MY_PV=${PV/_/-}
 MY_PN="phpMyAdmin"
 MY_P="${MY_PN}-${MY_PV}-all-languages"
 
-DESCRIPTION="Web-based administration for MySQL database in PHP"
+DESCRIPTION="Web-based administration for MySQL and MariaDB databases, written in PHP"
 HOMEPAGE="https://www.phpmyadmin.net/"
 SRC_URI="https://files.phpmyadmin.net/${MY_PN}/${MY_PV}/${MY_P}.tar.xz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~s390 sparc x86 ~ppc-macos ~x64-macos"
 IUSE="setup"
 
 RDEPEND="
