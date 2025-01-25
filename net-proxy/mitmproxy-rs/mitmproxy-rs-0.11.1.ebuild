@@ -38,7 +38,7 @@ LICENSE+="
 	LGPL-3+ MIT Unicode-DFS-2016 WTFPL-2
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 src_prepare() {
 	distutils-r1_src_prepare
