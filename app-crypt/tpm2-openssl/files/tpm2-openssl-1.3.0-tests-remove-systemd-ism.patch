@@ -1,0 +1,12 @@
+diff --git a/test/run-with-simulator b/test/run-with-simulator
+index e29b591..570e7a5 100755
+--- a/test/run-with-simulator
++++ b/test/run-with-simulator
+@@ -76,7 +76,6 @@ start_tpm2_abrmd() {
+     export TPM2TOOLS_TCTI
+     export TPM2OPENSSL_TCTI
+     sleep 1
+-    busctl --address="${DBUS_SESSION_BUS_ADDRESS}" list | grep "$tabrmd_name"
+ }
+ 
+ start_tpm2_sim_env() {
