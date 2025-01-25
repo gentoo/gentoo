@@ -99,6 +99,43 @@
     package Linker is
        for Export_File_Format use "GNU";
        for Export_File_Switch use "-Wl,--version-script=";
+@@ -166,32 +166,14 @@
+   <configuration>
+     <!-- aarch64-linux - native compiler. -->
+     <targets>
+-      <target name="^aarch64-linux-gnu$" />
++      <target name="^aarch64(-unknown)-linux-gnu$" />
+     </targets>
+     <hosts>
+-      <host name="^aarch64-linux-gnu$" />
++      <host name="^aarch64(-unknown)-linux-gnu$" />
+     </hosts>
+     <config>
+-   for Object_Lister use ("nm", "-g");
+-   for Object_Lister_Matcher use " [TDRBSG] (.*)";
+-
+-   package Linker is
+-      for Export_File_Format use "GNU";
+-      for Export_File_Switch use "-Wl,--version-script=";
+-   end Linker;
+-    </config>
+-  </configuration>
+-
+-  <configuration>
+-    <!-- aarch64-linux - cross compiler. -->
+-    <targets>
+-      <target name="^aarch64-.*linux-gnu$" />
+-    </targets>
+-    <hosts negate="true">
+-      <host name="^aarch64-linux-gnu$" />
+-    </hosts>
+-    <config>
+-   for Object_Lister use ("aarch64-linux-gnu-nm", "-g");
++   NM := External("NM", "nm");
++   for Object_Lister use (NM, "-g");
+    for Object_Lister_Matcher use " [TDRBSG] (.*)";
+ 
+    package Linker is
 @@ -696,34 +696,19 @@
    <configuration>
      <!-- aarch64-linux - native compiler. -->
@@ -166,5 +203,3 @@
        &amp; GCC_No_Pie
        &amp; ("-Wl,-r", "-o");
      </config>
---- db/linker.xml.old	2025-01-04 23:22:02.343268592 +0100
-+++ db/linker.xml	2025-01-04 23:24:11.562660779 +0100
