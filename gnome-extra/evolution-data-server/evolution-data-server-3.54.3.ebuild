@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-libs/nspr-4.4
 	>=dev-libs/nss-3.9
 	>=net-libs/libsoup-3.1.1:3.0
-	>=dev-libs/json-glib-1.0.4
+	>=dev-libs/json-glib-1.0.4[introspection]
 
 	dev-libs/icu:=
 	sys-libs/zlib:=
