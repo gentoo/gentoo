@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,17 +28,11 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-python/csscompressor-0.9.5[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.4.1[${PYTHON_USEDEP}]
-	>=app-text/htmlmin-0.1.12[${PYTHON_USEDEP}]
+	>=app-text/htmlmin-0.1.13[${PYTHON_USEDEP}]
 	>=dev-python/jsmin-3.0.1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	# this is a fork of htmlmin with the same patches that we have
-	sed -i -e '/htmlmin2/d' setup.py || die
-	distutils-r1_src_prepare
-}
 
 python_test() {
 	local -x PATH=${T}:${PATH}
