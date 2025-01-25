@@ -1113,7 +1113,7 @@ chromium_configure() {
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 			tools/generate_shim_headers/generate_shim_headers.py || die
 		if use ppc64; then
-			myconf_gn+=" is_cfi=no" # requires llvm-runtimes/compiler-rt-sanitizers[cfi]
+			myconf_gn+=" is_cfi=false" # requires llvm-runtimes/compiler-rt-sanitizers[cfi]
 		else
 			myconf_gn+=" is_cfi=${use_lto}"
 		fi
