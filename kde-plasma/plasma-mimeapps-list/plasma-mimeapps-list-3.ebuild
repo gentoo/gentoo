@@ -13,14 +13,15 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
-RDEPEND=""
+# 6.2.4 and 6.2.5 both modified with a new revision to stop installing kde-mimeapps.list.
+RDEPEND="
+	!<kde-plasma/plasma-desktop-6.2.4-r1
+	!=kde-plasma/plasma-desktop-6.2.5-r0
+"
 
 src_install() {
 	default
 
-	# TODO: Should we just remove the upstream one in /usr/share?
-	# /etc/xdg should really be available for site-local overrides, but then
-	# again we have CONFIG_PROTECT...
-	insinto /etc/xdg
-	doins "${FILESDIR}"/mimeapps.list
+	insinto /usr/share/applications/
+	newins "${FILESDIR}"/mimeapps.list kde-mimeapps.list
 }
