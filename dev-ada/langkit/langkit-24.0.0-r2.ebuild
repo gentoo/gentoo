@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-ADA_COMPAT=( gcc_12 gcc_13 )
+ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 ada multiprocessing
