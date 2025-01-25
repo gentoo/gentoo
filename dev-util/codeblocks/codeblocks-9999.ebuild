@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,15 +22,13 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="app-arch/zip
 	dev-libs/glib:2
 	>=dev-libs/tinyxml-2.6.2-r3
-	>=dev-util/astyle-3.1-r2:0/3.1
+	>=dev-util/astyle-3.1-r2:0=
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	contrib? (
-		app-admin/gamin
 		app-arch/bzip2
 		app-text/hunspell:=
 		dev-libs/boost:=
-		dev-libs/libgamin
 		media-libs/fontconfig
 		sys-libs/zlib
 	)"
@@ -55,6 +53,8 @@ src_prepare() {
 src_configure() {
 	# Bug 858338
 	append-flags -fno-strict-aliasing
+	# Upstream issue: https://sourceforge.net/p/codeblocks/tickets/1512
+	append-cxxflags -std=c++17
 
 	setup-wxwidgets
 
