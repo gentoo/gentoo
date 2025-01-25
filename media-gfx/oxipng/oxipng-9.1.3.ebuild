@@ -117,19 +117,9 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
 
 src_prepare() {
-	# Relax the version restriction of libdeflate.
-	# https://bugs.gentoo.org/944285
-	#
-	# Any API/ABI-compatible versions would be ok for app-arch/libdeflate, but
-	# in such case the build script of libdeflate_sys should be patched to pick
-	# even if the system library is newer.
-	# See <https://github.com/adamkewley/libdeflater/pull/32#issuecomment-1971198374>.
-	#
-	# Also, don't forget updating `DEPNED` and `RDEPEND` in sync, or libdeflater
-	# crate will fail to pick system library and silently use the bundled
-	# version of libdeflate.
-	( cd "${WORKDIR}"/cargo_home/gentoo/libdeflate-sys-1.22.0 && \
-		eapply "${FILESDIR}"/libdeflater-1.22.0-relax-libdeflate-sys-version.patch )
+	cd "${WORKDIR}"
+	eapply "${FILESDIR}"/oxipng-9.1.3-libdeflater-1.22.0-relax-libdeflate-sys-version.patch
+	cd -
 
 	# Remove the linker configs (in `.cargo/config.toml`) specific to GitHub CI.
 	# https://bugs.gentoo.org/924946
