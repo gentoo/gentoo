@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.1.0-0001-Gentoo-specific-Adjust-install-path-for-build-dir.patch"
 	"${FILESDIR}/${PN}-4.1.0-0002-Re-add-option-for-building-Fortran-library.patch"
 	"${FILESDIR}/${PN}-4.1.0-0003-build-against-hdf5-1.14.patch"
+	"${FILESDIR}/${PN}-4.1.0-0004-mpi.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README README.CMAKE TODO )
@@ -59,6 +60,13 @@ src_prepare() {
 	# bug #862900, already reported upstream. CHECK on updates!
 	filter-lto
 
+	if use mpi ; then
+		export CC=mpicc
+		export CXX=mpic++
+		export F77=mpif77
+		export FC=mpif90
+	fi
+
 	cmake_src_prepare
 }
 
@@ -79,6 +87,7 @@ src_configure() {
 		-DMEDFILE_USE_MPI=$(usex mpi)
 		-DMEDFILE_USE_UNICODE=ON
 	)
+
 	cmake_src_configure
 }
 
