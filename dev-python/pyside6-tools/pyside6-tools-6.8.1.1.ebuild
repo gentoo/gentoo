@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}/sources/pyside-tools"
 
 LICENSE="GPL-2"
 SLOT="6/${PV}"
-KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Minimal supported version of Qt.
