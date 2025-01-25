@@ -26,15 +26,8 @@ KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	app-text/cssmin[${PYTHON_USEDEP}]
-	app-text/htmlmin[${PYTHON_USEDEP}]
+	>=app-text/htmlmin-0.1.13[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# TODO: remove when htmlmin-0.1.12* is gone
-	sed -i -e '/htmlmin2/d' setup.py || die
-}
