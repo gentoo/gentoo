@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="+panel-plugin policykit wayland X"
 REQUIRED_USE="|| ( wayland X )"
 
