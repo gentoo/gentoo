@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -111,7 +111,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 	>=kde-plasma/oxygen-${PVCUT}:6
-	kde-plasma/plasma-mimeapps-list
+	>=kde-plasma/plasma-mimeapps-list-3
 	media-fonts/noto-emoji
 	sys-apps/util-linux
 	x11-apps/setxkbmap
@@ -173,6 +173,13 @@ src_test() {
 	)
 
 	ecm_src_test
+}
+
+src_install() {
+	cmake_src_install
+
+	# Provide kde-mimeapps.list with distribution kde-plasma/plasma-mimeapps-list
+	rm "${ED}"/usr/share/applications/kde-mimeapps.list || die
 }
 
 pkg_postinst() {
