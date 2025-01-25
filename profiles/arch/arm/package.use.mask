@@ -59,7 +59,8 @@ kde-frameworks/purpose:5 kaccounts
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needs as-yet-unkeyworded KF6 (bug #934215)
 app-crypt/pinentry qt6
-app-office/libreoffice qt6
+<=app-office/libreoffice-24.2.7.2 qt6
+>=app-office/libreoffice-24.2.7.2-r1 kde
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-06-01)
 # qtnetworkauth, qtremoteobjects and qthttpserver not yet keyworded here
