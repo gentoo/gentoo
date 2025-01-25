@@ -15,7 +15,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 # CC for /usr/share/backgrounds, see backgrounds/README.md
 LICENSE="GPL-2+ CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="libnotify +thunar wayland X"
 REQUIRED_USE="|| ( wayland X )"
 
