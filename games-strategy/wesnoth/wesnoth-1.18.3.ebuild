@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
-HOMEPAGE="http://www.wesnoth.org
+HOMEPAGE="https://www.wesnoth.org
 	https://github.com/wesnoth/wesnoth"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
@@ -42,6 +42,8 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-1.18.3-boost-1.87.patch )
 
 src_prepare() {
 	cmake_src_prepare
