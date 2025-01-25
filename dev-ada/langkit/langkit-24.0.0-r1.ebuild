@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RESTRICT="test"
 RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
 	dev-ada/gnatcoll-core:=
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv(+),shared?,static-libs?,static-pic?]
 	dev-ada/AdaSAT[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
