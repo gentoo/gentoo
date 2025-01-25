@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ RDEPEND=">=app-text/ghostscript-gpl-9.53.0:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/doxygen[doc] )
+	doc? ( app-text/doxygen[dot] )
 "
 
 # does not actually test anything, see bug 362557
