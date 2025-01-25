@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,12 +10,18 @@ inherit cmake linux-info python-single-r1
 
 DESCRIPTION="Record and Replay Framework"
 HOMEPAGE="https://rr-project.org/"
-SRC_URI="https://github.com/rr-debugger/${PN}/archive/${PV}.tar.gz -> mozilla-${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/rr-debugger/rr"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/rr-debugger/${PN}/archive/${PV}.tar.gz -> mozilla-${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 # rr itself is MIT and BSD-2, but there's various bits under third-party too.
 LICENSE="MIT BSD-2 GPL-2 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="multilib test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
