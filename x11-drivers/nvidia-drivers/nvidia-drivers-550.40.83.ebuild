@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,8 +7,8 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop eapi9-pipestatus flag-o-matic linux-mod-r1 readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.11
-NV_PIN=550.135
+MODULES_KERNEL_MAX=6.12
+NV_PIN=550.144.03
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://developer.nvidia.com/vulkan-driver"
