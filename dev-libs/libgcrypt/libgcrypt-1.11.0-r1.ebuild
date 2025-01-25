@@ -165,6 +165,9 @@ multilib_src_test() {
 	# t-secmem and t-sexp need mlock which requires extra privileges; nspawn
 	# at least disallows that by default.
 	local -x GCRYPT_IN_ASAN_TEST=1
+	# Avoid running (very) expensive bench-slope test. On hppa, it
+	# takes at least 7 hours.
+	local -x GCRYPT_NO_BENCHMARKS=1
 
 	default
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -167,6 +167,9 @@ multilib_src_test() {
 	# t-secmem and t-sexp need mlock which requires extra privileges; nspawn
 	# at least disallows that by default.
 	local -x GCRYPT_IN_ASAN_TEST=1
+	# Avoid running (very) expensive bench-slope test. On hppa, it
+	# takes at least 7 hours.
+	local -x GCRYPT_NO_BENCHMARKS=1
 
 	default
 }
