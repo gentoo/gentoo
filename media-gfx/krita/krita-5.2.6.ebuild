@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -105,6 +105,11 @@ PATCHES=(
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ecm_pkg_setup
+}
+
+src_prepare() {
+	ecm_src_prepare
+	cmake_comment_add_subdirectory benchmarks # bug 939842
 }
 
 src_configure() {
