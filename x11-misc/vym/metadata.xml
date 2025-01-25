@@ -6,6 +6,7 @@
 		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">vym</remote-id>
+		<remote-id type="sourceforge">vym</remote-id><!-- old repo -->
+		<remote-id type="github">insilmaril/vym</remote-id>
 	</upstream>
 </pkgmetadata>
