@@ -53,6 +53,7 @@ fi
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.45.1-ppc64-ptr.patch
 	"${FILESDIR}"/${PN}-3.47.1-buildtclext.patch
+	"${FILESDIR}"/${PN}-3.47.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
 )
 
 _fossil_fetch() {

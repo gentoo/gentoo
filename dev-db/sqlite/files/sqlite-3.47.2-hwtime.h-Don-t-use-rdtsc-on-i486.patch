@@ -1,0 +1,31 @@
+From 0f2389e42ec65fd925e1bce608f382f3b35ee0f6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 25 Jan 2025 12:10:24 +0000
+Subject: [PATCH] hwtime.h: Don't use rdtsc on i486
+
+If -DSQLITE_ENABLE_STMT_SCANSTATUS is passed, rdtsc is used for profiling
+purposes, but that's not available on i486 CPUs (e.g. Soekris 4501 / AMD Elan
+in the linked bug).
+
+Just look for i586 instead of i386. For the i386/i486 case, it's fine if we
+use the stub implementation. This feels cleaner than toggling functionality
+in the ebuild, even if it's unlikely anyone on i486 is going to use that.
+
+Thanks to amonakov who found the problem quickly and the relevant part of SQLite.
+
+Bug: https://bugs.gentoo.org/948671
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/hwtime.h
++++ b/src/hwtime.h
+@@ -24,7 +24,7 @@
+ */
+ #if !defined(__STRICT_ANSI__) && \
+     (defined(__GNUC__) || defined(_MSC_VER)) && \
+-    (defined(i386) || defined(__i386__) || defined(_M_IX86))
++    (defined(i586) || defined(__i586__) || defined(_M_IX86))
+ 
+   #if defined(__GNUC__)
+ 
+-- 
+2.48.1
+

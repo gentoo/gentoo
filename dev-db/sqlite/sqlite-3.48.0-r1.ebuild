@@ -49,6 +49,10 @@ else
 	BDEPEND+=" app-arch/unzip"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.47.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
+)
+
 _fossil_fetch() {
 	local distdir="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}"
 	local repo_id="${1}"
