@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -79,21 +79,17 @@ src_configure() {
 	local ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
 	local ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 	local plugins="host"
-	local gpus=
 	local build_devicertl=FALSE
 
 	if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 		if use llvm_targets_AMDGPU; then
 			plugins+=";amdgpu"
 			build_devicertl=TRUE
-			gpus+="amdgpu"
 		fi
 		if use llvm_targets_NVPTX; then
 			plugins+=";cuda"
 			build_devicertl=TRUE
-			gpus+="nvptx"
 		fi
-		[[ ${gpus} == amdgpunvptx ]] && gpus=all
 	fi
 
 	local mycmakeargs=(
@@ -116,9 +112,6 @@ src_configure() {
 		-DLIBOMPTARGET_AMDGPU_ARCH=LIBOMPTARGET_AMDGPU_ARCH-NOTFOUND
 		-DLIBOMPTARGET_NVPTX_ARCH=LIBOMPTARGET_NVPTX_ARCH-NOTFOUND
 	)
-	[[ -n ${gpus} ]] && mycmakeargs+=(
-		-DLIBOMPTARGET_DEVICE_ARCHITECTURES="${gpus}"
-	)
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
 		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
@@ -132,7 +125,7 @@ src_configure() {
 
 	cmake_src_configure
 
-	if [[ -z ${gpus} ]]; then
+	if [[ ${build_devicertl} == FALSE ]]; then
 		# clang requires libomptarget.devicertl.a, but it can be empty
 		> "${BUILD_DIR}"/libomptarget.devicertl.a || die
 	fi
