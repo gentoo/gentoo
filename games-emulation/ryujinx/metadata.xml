@@ -16,7 +16,7 @@
     performance and user-friendly interface.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/Ryujinx/Ryujinx/issues/</bugs-to>
-    <remote-id type="github">Ryujinx/Ryujinx</remote-id>
+    <bugs-to>https://github.com/Ryubing/Ryujinx/issues/</bugs-to>
+    <remote-id type="github">Ryubing/Ryujinx</remote-id>
   </upstream>
 </pkgmetadata>
