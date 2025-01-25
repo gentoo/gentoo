@@ -36,7 +36,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-ld-force-bfd
 	tc-export_build_env
 
 	unset CROSS_COMPILE
