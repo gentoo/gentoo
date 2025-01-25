@@ -35,7 +35,7 @@ RDEPEND="
 		sys-libs/snapd-glib:=
 	)
 	udev? ( dev-libs/libgudev )
-	>=gnome-base/gsettings-desktop-schemas-3.11.5
+	>=gnome-base/gsettings-desktop-schemas-3.18.0
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/libglib-testing )
