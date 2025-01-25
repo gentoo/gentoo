@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 DOCS=( DESIGN README.decpcap.txt README.md )
 
 FILECAPS=(
-	cap_net_admin,cap_net_raw usr/sbin/nethogs
+	cap_net_admin,cap_net_raw usr/bin/nethogs
 )
 
 PATCHES=(
