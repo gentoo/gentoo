@@ -38,11 +38,6 @@ BDEPEND="
 RESTRICT+=" test"
 
 src_compile() {
-	# Taken from app-containers/docker-1.7.0-r1
-	CGO_CFLAGS+=" -I${ESYSROOT}/usr/include"
-	CGO_LDFLAGS+=" $(usex hardened '-fno-PIC ' '')
-		-L${ESYSROOT}/usr/$(get_libdir)"
-
 	# build up optional flags
 	local options=(
 		$(usev apparmor)
