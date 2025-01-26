@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,6 +48,17 @@ src_prepare() {
 src_compile() {
 	tc-export OBJCOPY
 	export SIZE=$(tc-getPROG SIZE size)
+
+	if use loong; then
+		# a different build directory has to be selected for loong, and
+		# there's no "BIOS" support.
+		pushd build64/la64
+			use uefi64 && emake memtest.efi
+			use iso64 && emake iso
+		popd
+		return
+	fi
+
 	pushd build32
 		use bios32 && emake memtest.bin
 		use uefi32 && emake memtest.efi
@@ -62,6 +73,11 @@ src_compile() {
 }
 
 install_memtest_images() {
+	if use loong; then
+		use uefi64 && newins build64/la64/memtest.efi memtest.efi64
+		return
+	fi
+
 	use bios32 && newins build32/memtest.bin memtest32.bios
 	use bios64 && newins build64/memtest.bin memtest64.bios
 	use uefi32 && newins build32/memtest.efi memtest.efi32
@@ -79,8 +95,12 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	install_memtest_images
-	use iso32 && newins build32/memtest.iso memtest32.iso
-	use iso64 && newins build64/memtest.iso memtest64.iso
+	if use loong; then
+		use iso64 && newins build64/la64/memtest.iso memtest64.iso
+	else
+		use iso32 && newins build32/memtest.iso memtest32.iso
+		use iso64 && newins build64/memtest.iso memtest64.iso
+	fi
 
 	if use uefi32 || use uefi64; then
 		secureboot_auto_sign --in-place
