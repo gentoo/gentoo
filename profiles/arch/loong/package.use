@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-27)
+# Enable the UEFI target by default
+sys-apps/memtest86+ uefi64
 
 # Sam James <sam@gentoo.org> (2023-10-08)
 # dev-db/mysql not keyworded here

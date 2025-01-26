@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-02-28)
+# Upstream only supports the 64-bit UEFI configuration for loong.
+sys-apps/memtest86+ bios32 bios64 uefi32 iso32
+
 # Alfred Wingate <parona@protonmail.com> (2025-02-22)
 # media-libs/zint is not keyworded here
 media-libs/zxing-cpp experimental
