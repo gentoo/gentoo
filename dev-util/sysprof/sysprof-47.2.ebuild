@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson systemd xdg
+inherit gnome.org gnome2-utils greadme meson systemd xdg
 
 DESCRIPTION="System-wide Linux Profiler"
 HOMEPAGE="http://sysprof.com/"
@@ -79,21 +79,30 @@ src_install() {
 
 	# We want to ship org.gnome.Sysprof3.Profiler.xml in sysprof-common for the benefit of x11-wm/mutter
 	rm "${ED}"/usr/share/dbus-1/interfaces/org.gnome.Sysprof3.Profiler.xml || die
+
+	greadme_stdin <<-EOF
+	On many systems, especially amd64, it is typical that with a modern
+	toolchain -fomit-frame-pointer for gcc is the default, because
+	debugging is still possible thanks to gcc/gdb location list feature.
+	However sysprof is not able to construct call trees if frame pointers
+	are not present. Therefore -fno-omit-frame-pointer CFLAGS is suggested
+	for the libraries and applications involved in the profiling. That
+	means a CPU register is used for the frame pointer instead of other
+	purposes, which means a very minimal performance loss when there is
+	register pressure.
+EOF
+}
+
+pkg_preinst() {
+	xdg_pkg_preinst
+	gnome2_schemas_savelist
+	greadme_pkg_preinst
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-
-	elog "On many systems, especially amd64, it is typical that with a modern"
-	elog "toolchain -fomit-frame-pointer for gcc is the default, because"
-	elog "debugging is still possible thanks to gcc4/gdb location list feature."
-	elog "However sysprof is not able to construct call trees if frame pointers"
-	elog "are not present. Therefore -fno-omit-frame-pointer CFLAGS is suggested"
-	elog "for the libraries and applications involved in the profiling. That"
-	elog "means a CPU register is used for the frame pointer instead of other"
-	elog "purposes, which means a very minimal performance loss when there is"
-	elog "register pressure."
+	greadme_pkg_postinst
 }
 
 pkg_postrm() {
