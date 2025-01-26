@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} )
 
-inherit cmake lua-single xdg
+inherit cmake edo lua-single xdg
 
 MY_PN="CorsixTH"
 MY_PV="${PV/_/-}"
@@ -21,8 +21,8 @@ SLOT="0"
 if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-IUSE="doc +midi +sound tools +truetype +videos"
-
+IUSE="doc +midi +sound test tools +truetype +videos"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}
@@ -52,16 +52,22 @@ BDEPEND="
 			>=dev-lua/lpeg-0.9[${LUA_USEDEP}]
 		')
 	)
+	test? (
+		>=dev-cpp/catch-3:0
+	)
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.67-cmake_lua_detection.patch
 )
 
+lua_enable_tests busted
+
 src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION=$(lua_get_version)
 		-DBUILD_TOOLS=$(usex tools)
+		-DENABLE_UNIT_TESTS=$(usex test)
 		-DWITH_AUDIO=$(usex sound)
 		-DWITH_FREETYPE2=$(usex truetype)
 		-DWITH_MOVIES=$(usex videos)
@@ -74,6 +80,15 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	use doc && cmake_src_compile doc
+}
+
+src_test() {
+	# https://github.com/CorsixTH/CorsixTH/blob/master/.github/workflows/Linux.yml#L88
+	# C++ tests
+	BUILD_DIR="${BUILD_DIR}"/CorsixTH cmake_src_test
+
+	# Lua tests
+	edo busted --lua="${ELUA}" --output="TAP" --verbose --directory=CorsixTH/Luatest
 }
 
 src_install() {
