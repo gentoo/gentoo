@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
@@ -19,7 +19,7 @@ else
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
-IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland x11 video_cards_nvidia"
+IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland X video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 # in Xwayland after mutter is installed, Xwayland would fail to be started by mutter. mutter already hard-depends on libei, so there's
 # really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
 # v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
-DEPEND="
+RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.46[introspection?]
@@ -91,7 +91,7 @@ DEPEND="
 "
 # for now upstream has "have_x11 = true" in the meson.build, but sooner or later upstream is going to make X optional.
 #	X? (
-DEPEND+="
+RDEPEND+="
 		>=gui-libs/gtk-4.0.0:4[X,introspection?]
 		>=x11-libs/libX11-1.7.0
 		>=x11-libs/libXcomposite-0.4
@@ -112,7 +112,7 @@ DEPEND+="
 "
 #	)"
 
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
 "
@@ -191,7 +191,7 @@ src_configure() {
 		-Dtty_tests=false
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
-		$(meson_use x11)
+		$(meson_use X x11)
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path
