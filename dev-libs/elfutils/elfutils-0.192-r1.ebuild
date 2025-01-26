@@ -1,4 +1,4 @@
-# Copyright 2003-2024 Gentoo Authors
+# Copyright 2003-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libelf-static-link-libeu.patch
 	"${FILESDIR}"/${P}-configure-better-error-message.patch
 	"${FILESDIR}"/${P}-stacktrace-maybe-uninit.patch
+	"${FILESDIR}"/${PN}-0.191-musl-configure-better-error-h-check.patch
 )
 
 src_prepare() {
