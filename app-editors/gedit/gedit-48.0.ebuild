@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org gnome2-utils meson python-single-r1 vala xdg
 
 DESCRIPTION="A text editor for the GNOME desktop"
-HOMEPAGE="https://gedit-technology.github.io/apps/gedit/"
+HOMEPAGE="https://gedit-text-editor.org/"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
