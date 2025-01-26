@@ -33,7 +33,7 @@ IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmo
 IUSE+=" +dumpcap +editcap +gui http2 http3 ilbc kerberos libxml2 lua lz4 maxminddb"
 IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
-IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump wifi zlib +zstd"
+IUSE+=" sdjournal test +text2pcap +tshark +udpdump wifi zlib +zstd"
 
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -209,7 +209,7 @@ src_configure() {
 		-DBUILD_sharkd=$(usex sharkd)
 		-DBUILD_sshdump=$(usex sshdump)
 		-DBUILD_text2pcap=$(usex text2pcap)
-		-DBUILD_tfshark=$(usex tfshark)
+		-DBUILD_tfshark=OFF
 		-DBUILD_tshark=$(usex tshark)
 		-DBUILD_udpdump=$(usex udpdump)
 
