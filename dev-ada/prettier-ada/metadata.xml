@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
+	<longdescription lang="en">
+		This project is a port of the Prettier formatter to the Ada programming
+		language. The aim of this project is to provide a tool that allows Ada
+		programmers to create formatters for any language of their choosing.
+		Please note that only the core generic formatting algorithm and its
+		dependencies were ported. The formatters for all supported languages
+		are not included in this project.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/prettier-ada</remote-id>
+	</upstream>
+</pkgmetadata>
