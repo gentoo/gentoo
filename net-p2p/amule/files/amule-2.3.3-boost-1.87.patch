@@ -1,0 +1,146 @@
+From 212b1891da96750ca602df05b575b4d679ca6f1e Mon Sep 17 00:00:00 2001
+From: Luigi 'Comio' Mantellini <luigi.mantellini@gmail.com>
+Date: Mon, 16 Dec 2024 07:53:11 +0100
+Subject: [PATCH] Fix build with Boost 1.87 that removes deprecated asio
+ methods
+
+---
+ src/LibSocketAsio.cpp | 31 +++++++++++++++----------------
+ 1 file changed, 15 insertions(+), 16 deletions(-)
+
+diff --git a/src/LibSocketAsio.cpp b/src/LibSocketAsio.cpp
+index 5f8b02652..8e15c8635 100644
+--- a/src/LibSocketAsio.cpp
++++ b/src/LibSocketAsio.cpp
+@@ -70,7 +70,7 @@
+ 
+ using namespace boost::asio;
+ using namespace boost::system;	// for error_code
+-static io_service s_io_service;
++static io_context s_io_service;
+ 
+ // Number of threads in the Asio thread pool
+ const int CAsioService::m_numberOfThreads = 4;
+@@ -265,7 +265,7 @@ public:
+ 		AddDebugLogLineF(logAsio, CFormat(wxT("Write %d %s")) % nbytes % m_IP);
+ 		m_sendBuffer = new char[nbytes];
+ 		memcpy(m_sendBuffer, buf, nbytes);
+-		m_strand.dispatch(boost::bind(& CAsioSocketImpl::DispatchWrite, this, nbytes));
++		dispatch(m_strand, boost::bind(& CAsioSocketImpl::DispatchWrite, this, nbytes));
+ 		m_ErrorCode = 0;
+ 		return nbytes;
+ 	}
+@@ -279,7 +279,7 @@ public:
+ 			if (m_sync || s_io_service.stopped()) {
+ 				DispatchClose();
+ 			} else {
+-				m_strand.dispatch(boost::bind(& CAsioSocketImpl::DispatchClose, this));
++				dispatch(m_strand, boost::bind(& CAsioSocketImpl::DispatchClose, this));
+ 			}
+ 		}
+ 	}
+@@ -538,7 +538,7 @@ private:
+ 	{
+ 		m_readPending = true;
+ 		m_readBufferContent = 0;
+-		m_strand.dispatch(boost::bind(& CAsioSocketImpl::DispatchBackgroundRead, this));
++		dispatch(m_strand, boost::bind(& CAsioSocketImpl::DispatchBackgroundRead, this));
+ 	}
+ 
+ 	void PostReadEvent(int DEBUG_ONLY(from) )
+@@ -618,7 +618,7 @@ private:
+ 	uint32			m_readBufferContent;
+ 	bool			m_eventPending;
+ 	char *			m_sendBuffer;
+-	io_service::strand	m_strand;		// handle synchronisation in io_service thread pool
++	io_context::strand	m_strand;		// handle synchronisation in io_service thread pool
+ 	deadline_timer	m_timer;
+ 	bool			m_connected;
+ 	bool			m_closed;
+@@ -875,7 +875,7 @@ private:
+ 		}
+ 		// We were not successful. Try again.
+ 		// Post the request to the event queue to make sure it doesn't get called immediately.
+-		m_strand.post(boost::bind(& CAsioSocketServerImpl::StartAccept, this));
++		post(m_strand, boost::bind(& CAsioSocketServerImpl::StartAccept, this));
+ 	}
+ 
+ 	// The wrapper object
+@@ -886,7 +886,7 @@ private:
+ 	CScopedPtr<CAsioSocketImpl> m_currentSocket;
+ 	// Is there a socket available?
+ 	bool m_socketAvailable;
+-	io_service::strand	m_strand;		// handle synchronisation in io_service thread pool
++	io_context::strand	m_strand;		// handle synchronisation in io_service thread pool
+ };
+ 
+ 
+@@ -1021,7 +1021,7 @@ public:
+ 		// Collect data, make a copy of the buffer's content
+ 		CUDPData * recdata = new CUDPData(buf, nBytes, addr);
+ 		AddDebugLogLineF(logAsio, CFormat(wxT("UDP SendTo %d to %s")) % nBytes % addr.IPAddress());
+-		m_strand.dispatch(boost::bind(& CAsioUDPSocketImpl::DispatchSendTo, this, recdata));
++		dispatch(m_strand, boost::bind(& CAsioUDPSocketImpl::DispatchSendTo, this, recdata));
+ 		return nBytes;
+ 	}
+ 
+@@ -1035,7 +1035,7 @@ public:
+ 		if (s_io_service.stopped()) {
+ 			DispatchClose();
+ 		} else {
+-			m_strand.dispatch(boost::bind(& CAsioUDPSocketImpl::DispatchClose, this));
++			dispatch(m_strand, boost::bind(& CAsioUDPSocketImpl::DispatchClose, this));
+ 		}
+ 	}
+ 
+@@ -1162,7 +1162,7 @@ private:
+ 	ip::udp::socket *	m_socket;
+ 	CMuleUDPSocket *	m_muleSocket;
+ 	bool				m_OK;
+-	io_service::strand	m_strand;		// handle synchronisation in io_service thread pool
++	io_context::strand	m_strand;		// handle synchronisation in io_service thread pool
+ 	deadline_timer		m_timer;
+ 	amuleIPV4Address	m_address;
+ 
+@@ -1254,7 +1254,7 @@ public:
+ 	void * Entry()
+ 	{
+ 		AddLogLineNS(CFormat(_("Asio thread %d started")) % m_threadNumber);
+-		io_service::work worker(s_io_service);		// keep io_service running
++		auto worker = make_work_guard(s_io_service);		// keep io_service running
+ 		s_io_service.run();
+ 		AddDebugLogLineN(logAsio, CFormat(wxT("Asio thread %d stopped")) % m_threadNumber);
+ 
+@@ -1342,7 +1342,7 @@ bool amuleIPV4Address::Hostname(const wxString& name)
+ 	// This is usually just an IP.
+ 	std::string sname(unicode2char(name));
+ 	error_code ec;
+-	ip::address_v4 adr = ip::address_v4::from_string(sname, ec);
++	ip::address_v4 adr = ip::make_address_v4(sname, ec);
+ 	if (!ec) {
+ 		m_endpoint->address(adr);
+ 		return true;
+@@ -1353,17 +1353,16 @@ bool amuleIPV4Address::Hostname(const wxString& name)
+ 	error_code ec2;
+ 	ip::tcp::resolver res(s_io_service);
+ 	// We only want to get IPV4 addresses.
+-	ip::tcp::resolver::query query(ip::tcp::v4(), sname, "");
+-	ip::tcp::resolver::iterator endpoint_iterator = res.resolve(query, ec2);
++	ip::tcp::resolver::results_type endpoint_iterator = res.resolve(sname, "", ec2);
+ 	if (ec2) {
+ 		AddDebugLogLineN(logAsio, CFormat(wxT("Hostname(\"%s\") resolve failed: %s")) % name % ec2.message());
+ 		return false;
+ 	}
+-	if (endpoint_iterator == ip::tcp::resolver::iterator()) {
++	if (endpoint_iterator == ip::tcp::resolver::results_type()) {
+ 		AddDebugLogLineN(logAsio, CFormat(wxT("Hostname(\"%s\") resolve failed: no address found")) % name);
+ 		return false;
+ 	}
+-	m_endpoint->address(endpoint_iterator->endpoint().address());
++	m_endpoint->address(endpoint_iterator.begin()->endpoint().address());
+ 	AddDebugLogLineN(logAsio, CFormat(wxT("Hostname(\"%s\") resolved to %s")) % name % IPAddress());
+ 	return true;
+ }
+-- 
+2.45.2
+

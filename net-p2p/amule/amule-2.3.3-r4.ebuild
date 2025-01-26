@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
 	"${FILESDIR}/${PN}-2.3.3-wx3.2.patch"
 	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
+	"${FILESDIR}/${P}-boost-1.87.patch"
 )
 
 src_prepare() {
