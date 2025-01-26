@@ -573,44 +573,4 @@ pkg_postinst() {
 		elog "If you experience issues, either disable wayland or edit nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 	fi
-
-	# these can be removed after some time, only to help the transition
-	# given users are unlikely to do further custom solutions if it works
-	# (see also https://github.com/elogind/elogind/issues/272)
-	if grep -riq "^[^#]*HandleNvidiaSleep=yes" "${EROOT}"/etc/elogind/sleep.conf.d/ 2>/dev/null
-	then
-		ewarn
-		ewarn "!!! WARNING !!!"
-		ewarn "Detected HandleNvidiaSleep=yes in ${EROOT}/etc/elogind/sleep.conf.d/."
-		ewarn "This 'could' cause issues if used in combination with the new hook"
-		ewarn "installed by the ebuild to handle sleep using the official upstream"
-		ewarn "script. It is recommended to disable the option."
-	fi
-	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep 2>/dev/null | \
-		sort | uniq | xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
-	then
-		ewarn
-		ewarn "!!! WARNING !!!"
-		ewarn "Detected a custom script at ${EROOT}{/etc,{/usr,}/lib*}/elogind/system-sleep"
-		ewarn "referencing NVIDIA. This version of ${PN} has installed its own"
-		ewarn "hook at ${EROOT}/usr/lib/elogind/system-sleep/nvidia and it is recommended"
-		ewarn "to remove the custom one to avoid potential issues."
-		ewarn
-		ewarn "Feel free to ignore this warning if you know the other NVIDIA-related"
-		ewarn "scripts can be used together. The warning will be removed in the future."
-	fi
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 535.183.01-r1 # may get repeated
-	then
-		elog
-		elog "For suspend/sleep, 'NVreg_PreserveVideoMemoryAllocations=1' is now default"
-		elog "with this version of ${PN}. This is recommended (or required) by"
-		elog "major DEs especially with wayland but, *if* experience regressions with"
-		elog "suspend, try reverting to =0 in '${EROOT}/etc/modprobe.d/nvidia.conf'."
-		elog
-		elog "May notably be an issue when using neither systemd nor elogind to suspend."
-		elog
-		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
-		elog "default, and for openrc+elogind a similar hook has been installed."
-	fi
 }
