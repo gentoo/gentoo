@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2025-01-26)
+# Needs unkeyworded net-libs/msgraph
+gnome-base/gvfs onedrive
+
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
 >=sys-devel/gcc-11 -ada
