@@ -1,0 +1,41 @@
+From 51ac0e033cfb74e814d2ee282ef7ea94223e6915 Mon Sep 17 00:00:00 2001
+From: Sebastian Freundt <freundt@ga-group.nl>
+Date: Wed, 24 Jan 2024 07:55:15 +0000
+Subject: [PATCH] hygiene, satisfy gcc's idea of constant string arrays,
+ addresses issue 143
+
+---
+ src/strptime.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/strptime.c b/src/strptime.c
+index 2f0c1fe5..001c2156 100644
+--- a/src/strptime.c
++++ b/src/strptime.c
+@@ -54,7 +54,7 @@ const char *prog = "strptime";
+ 
+ 
+ static int
+-pars_line(struct tm *tm, const char *const *fmt, size_t nfmt, const char *line)
++pars_line(struct tm *tm, char *const *fmt, size_t nfmt, const char *line)
+ {
+ 	for (size_t i = 0; i < nfmt; i++) {
+ 		if (fmt[i] && strptime(line, fmt[i], tm) != NULL) {
+@@ -75,7 +75,7 @@ prnt_line(const char *ofmt, struct tm *tm)
+ 
+ static int
+ proc_line(
+-	const char *ln, const char *const *fmt, size_t nfmt,
++	const char *ln, char *const *fmt, size_t nfmt,
+ 	const char *ofmt,
+ 	int quietp)
+ {
+@@ -94,7 +94,7 @@ proc_line(
+ }
+ 
+ static int
+-proc_lines(const char *const *fmt, size_t nfmt, const char *ofmt, int quietp)
++proc_lines(char *const *fmt, size_t nfmt, const char *ofmt, int quietp)
+ {
+ 	size_t lno = 0;
+ 	int rc = 0;
