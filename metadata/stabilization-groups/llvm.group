@@ -19,6 +19,7 @@ llvm-runtimes/compiler-rt-sanitizers
 llvm-runtimes/libunwind
 llvm-runtimes/libcxxabi
 llvm-runtimes/libcxx
+llvm-runtimes/libgcc
 llvm-runtimes/openmp
 llvm-runtimes/offload
 llvm-core/clang-runtime
