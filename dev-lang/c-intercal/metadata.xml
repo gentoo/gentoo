@@ -11,4 +11,7 @@
   INTERCAL code. Now supports i18n and l14n (to Ancient Roman locale only).
   Now with fix patch by Donald Knuth.
 </longdescription>
+<upstream>
+  <remote-id type="gitlab">esr/intercal</remote-id>
+</upstream>
 </pkgmetadata>
