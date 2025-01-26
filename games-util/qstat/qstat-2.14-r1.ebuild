@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -14,12 +14,17 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc64 x86"
 IUSE="debug"
 
-DEPEND="!sys-cluster/torque"
+RDEPEND="!sys-cluster/torque"
 
 DOCS=( CHANGES.txt COMPILE.txt template/README.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/"${P}"-gcc-10.patch
+	"${FILESDIR}"/"${P}"-unneeded-cast.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	strnstr #bug #899024, there's fallback implementation
 )
 
 src_prepare() {

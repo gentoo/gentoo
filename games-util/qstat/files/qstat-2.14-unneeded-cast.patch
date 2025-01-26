@@ -1,0 +1,14 @@
+packet_funcs are already have correct type, no need to cast function pointer to wrong
+function pointer
+https://bugs.gentoo.org/944360
+--- a/packet_manip.c
++++ b/packet_manip.c
+@@ -131,7 +131,7 @@
+ 		}
+ 		// Call the server's packet processing method flagging as a combine call
+ 		server->combined = 1;
+-		ret = ((int (*)())server->type->packet_func)(server, combined, datalen);
++		ret = (server->type->packet_func)(server, combined, datalen);
+ 		free(combined);
+ 		server->combined = 0;
+ 
