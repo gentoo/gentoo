@@ -36,6 +36,7 @@ python_check_deps() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+	ada_pkg_setup
 }
 
 src_compile() {
