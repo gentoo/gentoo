@@ -36,6 +36,7 @@ DEPEND="
 	gui-libs/libgedit-gtksourceview:300
 "
 RDEPEND="${DEPEND}
+	!<app-editors/gedit-plugins-48
 	x11-themes/adwaita-icon-theme
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
