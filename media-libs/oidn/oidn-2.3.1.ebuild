@@ -4,10 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-LLVM_COMPAT=( {15..18} )
 ROCM_VERSION=5.7
 
-inherit cmake cuda llvm-r1 python-any-r1 rocm
+inherit cmake cuda python-any-r1 rocm
 
 DESCRIPTION="Intel® Open Image Denoise library"
 HOMEPAGE="https://www.openimagedenoise.org https://github.com/RenderKit/oidn"
@@ -36,16 +35,12 @@ RDEPEND="
 	hip? ( dev-util/hip )
 	openimageio? ( media-libs/openimageio:= )
 "
-DEPEND="${RDEPEND}
-	$(llvm_gen_dep '
-		llvm-core/clang:${LLVM_SLOT}=
-		llvm-core/llvm:${LLVM_SLOT}=
-	')
-"
+DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.2-amdgpu-targets.patch"
+	"${FILESDIR}/${PN}-2.3.1-hip-clang-19.patch"
 )
 
 src_prepare() {
@@ -54,8 +49,15 @@ src_prepare() {
 	fi
 
 	if use hip; then
+		# Fix Clang 19 error
+		# Bug: https://github.com/RenderKit/oidn/issues/250
+		sed -i "s/.template Run(/.template Run<>(/g" \
+			external/composable_kernel/include/ck/tensor_operation/gpu/block/blockwise_gemm_wmma.hpp \
+			external/composable_kernel/include/ck/tensor_operation/gpu/block/blockwise_gemm_xdlops_skip_b_lds.hpp \
+			external/composable_kernel/include/ck/tensor_operation/gpu/block/blockwise_gemm_xdlops.hpp || die
+
 		# https://bugs.gentoo.org/930391
-		sed "/-Wno-unused-result/s:): --rocm-path=${EPREFIX}/usr/lib):" \
+		sed "/-Wno-unused-result/s:): --rocm-path=${EPREFIX}/usr):" \
 			-i devices/hip/CMakeLists.txt || die
 	fi
 
@@ -87,7 +89,7 @@ src_configure() {
 	if use hip; then
 		mycmakeargs+=(
 			-DROCM_PATH="${EPREFIX}/usr"
-			-DOIDN_DEVICE_HIP_COMPILER="$(get_llvm_prefix)/bin/clang++" # use HIPHOSTCOMPILER
+			-DOIDN_DEVICE_HIP_COMPILER="${ESYSROOT}/usr/bin/hipcc"
 			-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		)
 	fi
