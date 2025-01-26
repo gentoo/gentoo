@@ -1,16 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openssl.org.asc
-inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
+inherit edo flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P=openssl-${PV/_/-}
 DESCRIPTION="Full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-	verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="openssl"
@@ -18,7 +16,7 @@ SLOT="$(ver_cut 1-3)"
 if [[ ${PV} != *_pre* ]] ; then
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
-IUSE="+asm rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-compression tls-heartbeat vanilla verify-sig weak-ssl-ciphers"
+IUSE="+asm rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-compression tls-heartbeat vanilla weak-ssl-ciphers"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -34,7 +32,7 @@ BDEPEND="
 		app-alternatives/bc
 		kernel_linux? ( sys-process/procps )
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230207 )"
+"
 
 # Do not install any docs
 DOCS=()
