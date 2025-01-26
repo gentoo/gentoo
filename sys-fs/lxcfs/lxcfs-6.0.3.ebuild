@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxcfs/${P}.tar.gz
 
 LICENSE="Apache-2.0 LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="doc test"
 
 DEPEND="sys-fs/fuse:3"
