@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,6 +69,8 @@ QA_CONFIG_IMPL_DECL_SKIP+=(
 	# errors and reports both "function definition is not allowed here" and
 	# -Wimplicit-function-declaration. bug #900396
 	foo
+	# FreeBSD function, bug #932822
+	aio_readv
 )
 
 src_unpack() {

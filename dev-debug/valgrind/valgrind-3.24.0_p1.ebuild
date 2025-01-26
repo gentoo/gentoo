@@ -71,6 +71,8 @@ QA_CONFIG_IMPL_DECL_SKIP+=(
 	# errors and reports both "function definition is not allowed here" and
 	# -Wimplicit-function-declaration. bug #900396
 	foo
+	# FreeBSD function, bug #932822
+	aio_readv
 )
 
 src_unpack() {
