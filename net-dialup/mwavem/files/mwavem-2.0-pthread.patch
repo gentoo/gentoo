@@ -1,0 +1,14 @@
+Use correct type for thread handle. It already uses pthread_t for other half of the
+assignment
+https://bugs.gentoo.org/897844
+--- a/src/manager/mwaveapi.c
++++ b/src/manager/mwaveapi.c
+@@ -79,7 +79,7 @@
+ BOOL g_bIPCSupportActive = FALSE;         // True if our IPC support layer is initialized and active
+ unsigned g_uIPCsInUse;                    // One bit per IPC in use for this subsystem
+ BOOL g_abCancellingIPCs[MWAPI_MaxIPCs];   // TRUE if we're attempting to cancel an IPC thread
+-HANDLE g_ahIPCThreads[MWAPI_MaxIPCs];     // Thread handle of IPC thread
++pthread_t g_ahIPCThreads[MWAPI_MaxIPCs];  // Thread handle of IPC thread
+ PFN g_pfnIPCNotice[MWAPI_MaxIPCs];
+ 
+ BOOL   bDspDisabled = FALSE;
