@@ -34,6 +34,7 @@ RESTRICT="!test? ( test )"
 # in Xwayland after mutter is installed, Xwayland would fail to be started by mutter. mutter already hard-depends on libei, so there's
 # really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
 # v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
+# dev-libs/wayland is always needed at build time due to https://bugs.gentoo.org/937632
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
@@ -60,9 +61,9 @@ RDEPEND="
 
 	media-libs/libglvnd[X]
 
+	>=dev-libs/wayland-1.23.0
 	wayland? (
 		>=dev-libs/wayland-protocols-1.36
-		>=dev-libs/wayland-1.23.0
 
 		>=x11-libs/libdrm-2.4.118
 		media-libs/mesa[gbm(+)]
