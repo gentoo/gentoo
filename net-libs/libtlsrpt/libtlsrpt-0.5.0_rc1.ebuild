@@ -17,7 +17,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="libraries and tools to implement TLSRPT"
+DESCRIPTION="library to implement TLSRPT"
 HOMEPAGE="https://github.com/sys4/tlsrpt"
 
 LICENSE="LGPL-3+"
