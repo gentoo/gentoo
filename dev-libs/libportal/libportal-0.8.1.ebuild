@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,9 +11,9 @@ HOMEPAGE="https://github.com/flatpak/libportal"
 SRC_URI="https://github.com/flatpak/libportal/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-3"
-SLOT="0/1-1-1-1" # soname of libportal{,-gtk3,-gtk4,-qt5,-qt6}.so
+SLOT="0/1-1-1-1" # soname of libportal{,-gtk3,-gtk4,-qt6}.so
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="gtk gtk-doc +introspection qt5 qt6 test +vala wayland X"
+IUSE="gtk gtk-doc +introspection qt6 test +vala wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -27,31 +27,15 @@ RDEPEND="
 		>=x11-libs/gtk+-3.24.41-r1:3[X?,wayland?]
 		>=gui-libs/gtk-4.12.5-r2:4[X?,wayland?]
 	)
-	qt5? (
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtx11extras:5=
-		dev-qt/qtwidgets:5=
-	)
 	qt6? (
 		dev-qt/qtbase:6=[X,gui,widgets]
 	)
 "
-DEPEND="${RDEPEND}
-	qt5? (
-		test? ( dev-qt/qttest:= )
-	)
-	qt6? (
-		test? ( dev-qt/qtbase:6 )
-	)
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gi-docgen )
-	qt5? (
-		test? ( dev-qt/linguist-tools )
-	)
 	qt6? (
 		test? ( dev-qt/qttools:6[linguist] )
 	)
@@ -96,7 +80,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_feature gtk backend-gtk3)
 		$(meson_feature gtk backend-gtk4)
-		$(meson_feature qt5 backend-qt5)
 		$(meson_feature qt6 backend-qt6)
 		-Dportal-tests=false
 		$(meson_use introspection)
@@ -108,8 +91,8 @@ src_configure() {
 }
 
 src_test() {
-	# Tests only exist for Qt5
-	if use qt5; then
+	# Tests only exist for Qt6
+	if use qt6; then
 		virtx meson_src_test
 	else
 		# run meson_src_test to notice if tests are added
