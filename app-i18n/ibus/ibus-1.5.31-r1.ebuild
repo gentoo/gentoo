@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools bash-completion-r1 flag-o-matic gnome2-utils python-r1 toolchain-funcs vala virtualx
 
