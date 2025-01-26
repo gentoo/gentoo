@@ -1,0 +1,32 @@
+From 43ddbe073025fe2ff454dabb84674ccdbd013487 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 29 Jan 2025 09:32:49 +0200
+Subject: [PATCH] Declare HAVE_ERROR_H only if error symbol is available
+
+Musl doesn't provide error.h. But there exists a standalone implementation
+that installs /usr/include/error.h but requires explicit linkage. This
+leads linkage errors later on due to the assumption that error
+symbols are provided by the libc.
+
+Bug: https://bugs.gentoo.org/948878
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1da2a12c..7a2f2540 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -477,7 +477,7 @@ AC_CHECK_FUNCS([process_vm_readv mremap])
+ AS_IF([test "x$ac_cv_func_mremap" = "xno"],
+       [AC_MSG_WARN([elf_update needs mremap to support ELF_C_RDWR_MMAP])])
+ 
+-AC_CHECK_HEADERS([error.h])
++AC_CHECK_HEADER([error.h], [AC_CHECK_FUNC([error], AC_DEFINE([HAVE_ERROR_H], [1], [Define if error.h is usable]))])
+ AC_CHECK_HEADERS([err.h])
+ 
+ dnl for debuginfod concurrency heuristics
+-- 
+2.48.1
+
