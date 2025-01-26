@@ -33,10 +33,12 @@ RDEPEND="
 	>=gnome-base/dconf-0.26:=
 	gnome-base/gsettings-desktop-schemas
 	net-misc/curl:=
+	net-misc/socat
 	>=sys-apps/bubblewrap-0.10.0
 	sys-apps/dbus
 	>=sys-fs/fuse-3.1.1:3=
 	sys-apps/xdg-dbus-proxy
+	sys-auth/polkit
 	X? (
 		x11-apps/xauth
 		x11-libs/libXau:=
