@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,16 +23,20 @@ SLOT="0/6"
 if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
-IUSE="+cxx jbig jpeg lerc lzma opengl static-libs test webp zlib zstd"
+IUSE="+cxx jbig jpeg lerc libdeflate lzma opengl static-libs test webp zlib zstd"
 RESTRICT="!test? ( test )"
 
 # bug #483132
-REQUIRED_USE="test? ( jpeg )"
+REQUIRED_USE="
+	libdeflate? ( zlib )
+	test? ( jpeg )
+"
 
 RDEPEND="
 	jbig? ( >=media-libs/jbigkit-2.1:=[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lerc? ( media-libs/lerc:=[${MULTILIB_USEDEP}] )
+	libdeflate? ( app-arch/libdeflate[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/freeglut )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
@@ -64,13 +68,13 @@ multilib_src_configure() {
 		$(use_enable jpeg)
 		$(multilib_native_use_enable opengl)
 		$(use_enable lerc)
+		$(use_enable libdeflate)
 		$(use_enable lzma)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
 		$(use_enable webp)
 		$(use_enable zlib)
 		$(use_enable zstd)
-		--disable-libdeflate # bug #930111
 
 		$(multilib_native_enable docs)
 		$(multilib_native_enable contrib)
