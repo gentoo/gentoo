@@ -1,5 +1,9 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-01-26)
+# Dependencies e.g. bindgen not keyworded
+dev-build/meson test-full
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-11-04)
 # media-libs/libavif is not keyworded

@@ -12,4 +12,7 @@
 		<remote-id type="github">mesonbuild/meson</remote-id>
 		<remote-id type="pypi">meson</remote-id>
 	</upstream>
+	<use>
+		<flag name="test-full">pull in dependencies to run all tests</flag>
+	</use>
 </pkgmetadata>

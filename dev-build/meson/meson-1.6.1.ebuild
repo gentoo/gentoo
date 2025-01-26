@@ -42,8 +42,9 @@ HOMEPAGE="https://mesonbuild.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
+IUSE="test test-full"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test-full? ( test )"
 
 DEPEND="
 	test? (
@@ -53,6 +54,40 @@ DEPEND="
 		dev-vcs/git
 		sys-libs/zlib[static-libs(+)]
 		virtual/pkgconfig
+		dev-build/cmake
+	)
+	test-full? (
+		|| ( dev-lang/rust dev-lang/rust-bin )
+		dev-lang/nasm
+		dev-lang/vala
+		dev-python/cython
+		virtual/fortran
+		virtual/jdk
+
+		app-text/doxygen
+		dev-cpp/gtest
+		dev-libs/protobuf
+		dev-util/bindgen
+		dev-util/gtk-doc
+		dev-util/itstool
+		media-libs/libsdl2
+		media-libs/libwmf
+		net-libs/libpcap
+		sci-libs/hdf5
+		sci-libs/netcdf
+		sys-cluster/openmpi
+		sys-devel/bison
+		sys-devel/flex
+
+		dev-qt/linguist-tools:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtbase:6[gui,widgets]
+		dev-qt/qttools:6
+		dev-util/gdbus-codegen
+		x11-libs/gtk+:3
+
+		dev-libs/wayland
+		dev-util/wayland-scanner
 	)
 "
 RDEPEND="

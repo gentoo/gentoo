@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-01-26)
+# Dependencies e.g. netcdf not keyworded
+dev-build/meson test-full
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-16)
 # tests require qtwebengine which is unavailable
 dev-python/qtconsole test

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-01-26)
+# Dependencies e.g. bindgen not stable here.
+dev-build/meson test-full
+
 # Sam James <sam@gentoo.org> (2025-01-04)
 # kde-plasma/kde-cli-tools not marked stable here
 x11-misc/xdg-utils plasma
