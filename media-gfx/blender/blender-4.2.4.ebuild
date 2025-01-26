@@ -85,14 +85,7 @@ RDEPEND="${PYTHON_DEPS}
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp[cxx] )
 	gnome? ( gui-libs/libdecor )
-	hip? (
-		llvm_slot_17? (
-			dev-util/hip:0/5.7
-		)
-		llvm_slot_18? (
-			>=dev-util/hip-6.1:=[llvm_slot_18(-)]
-		)
-	)
+	hip? ( >=dev-util/hip-5.7 )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -102,7 +95,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
-	oidn? ( >=media-libs/oidn-2.1.0[${LLVM_USEDEP}] )
+	oidn? ( >=media-libs/oidn-2.1.0 )
 	oneapi? ( dev-libs/intel-compute-runtime[l0] )
 	openexr? (
 		>=dev-libs/imath-3.1.7:=
