@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for integrating Qt applications with KDE Plasma workspaces"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # requires running Plasma environment
