@@ -13,7 +13,7 @@ SRC_URI="https://github.com/memtest86plus/memtest86plus/archive/refs/tags/v${MY_
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~loong ~x86"
 IUSE="bios32 bios64 +boot uefi32 uefi64 iso32 iso64"
 
 ISODEPS="
