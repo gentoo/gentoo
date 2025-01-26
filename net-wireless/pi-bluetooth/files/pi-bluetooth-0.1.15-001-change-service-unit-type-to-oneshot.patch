@@ -1,0 +1,31 @@
+From 34fb0155936d2797e086141d7d4a12fdd7738e71 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petar=20Obradovi=C4=87?= <spideyfusion@gmail.com>
+Date: Wed, 7 Oct 2020 11:12:24 +0200
+Subject: [PATCH] Change service unit type to "oneshot" (#17)
+
+Since "bthelper" is not a daemon, systemd thinks that the service is
+dead after it finishes executing. Changing the service type to
+"oneshot" will ensure systemd considers the service active after it
+finishes its course.
+
+From the systemd documentation:
+
+"Behavior of oneshot is similar to simple; however, the service manager
+will consider the unit up after the main process exits. It will then
+start follow-up units"
+---
+ debian/pi-bluetooth.bthelper@.service | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/debian/pi-bluetooth.bthelper@.service b/debian/pi-bluetooth.bthelper@.service
+index c8a16c1..f18d3bb 100644
+--- a/debian/pi-bluetooth.bthelper@.service
++++ b/debian/pi-bluetooth.bthelper@.service
+@@ -4,5 +4,6 @@ Requires=bluetooth.service
+ After=bluetooth.service
+ 
+ [Service]
+-Type=simple
++Type=oneshot
+ ExecStart=/usr/bin/bthelper %I
++RemainAfterExit=yes
