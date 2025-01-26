@@ -15,11 +15,11 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/14" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
-IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
+IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland X video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -34,6 +34,7 @@ RESTRICT="!test? ( test )"
 # in Xwayland after mutter is installed, Xwayland would fail to be started by mutter. mutter already hard-depends on libei, so there's
 # really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
 # v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
+# dev-libs/wayland is always needed at build time due to https://bugs.gentoo.org/937632
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
@@ -41,9 +42,10 @@ RDEPEND="
 	>=x11-libs/cairo-1.14[X]
 	>=x11-libs/pixman-0.42
 	>=dev-libs/fribidi-1.0.0
-	>=gnome-base/gsettings-desktop-schemas-47.0[introspection?]
+	>=gnome-base/gsettings-desktop-schemas-47_beta[introspection?]
 	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
+	>=dev-libs/json-glib-0.12.0[introspection?]
 	>=x11-libs/libxkbcommon-0.4.3
 	x11-libs/libICE
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
@@ -52,7 +54,6 @@ RDEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
-	>=media-libs/libdisplay-info-0.2:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -60,9 +61,9 @@ RDEPEND="
 
 	media-libs/libglvnd[X]
 
+	>=dev-libs/wayland-1.23.0
 	wayland? (
-		>=dev-libs/wayland-protocols-1.38
-		>=dev-libs/wayland-1.23.0
+		>=dev-libs/wayland-protocols-1.36
 
 		>=x11-libs/libdrm-2.4.118
 		media-libs/mesa[gbm(+)]
@@ -82,6 +83,7 @@ RDEPEND="
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	libdisplay? ( media-libs/libdisplay-info )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
 		gnome-extra/zenity
@@ -177,20 +179,20 @@ src_configure() {
 		-Dudev_dir=$(get_udevdir)
 		$(meson_use input_devices_wacom libwacom)
 		-Dsound_player=true
-		-Dpango_ft2=true
 		-Dstartup_notification=true
+		$(meson_feature libdisplay libdisplay_info)
 		-Dsm=true
 		$(meson_use introspection)
 		$(meson_use gtk-doc docs)
 		$(meson_use test cogl_tests)
-		$(meson_use wayland core_tests) # core tests require wayland; overall -Dtests option is honored on top, so no extra conditional needed
-		-Dnative_tests=false
 		$(meson_use test clutter_tests)
-		$(meson_use test tests)
+		$(meson_use test mutter_tests)
+		$(meson_feature test tests)
 		-Dkvm_tests=false
 		-Dtty_tests=false
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
+		$(meson_use X x11)
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path
@@ -218,7 +220,7 @@ src_test() {
 	gnome2_environment_reset
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share
 	glib-compile-schemas "${BUILD_DIR}"/data
-	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data meson_src_test --setup=CI
+	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data meson_src_test
 }
 
 pkg_postinst() {
