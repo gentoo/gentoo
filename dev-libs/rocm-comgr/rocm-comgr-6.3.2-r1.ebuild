@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,14 +26,14 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.3-rocm-path.patch"
 	"${FILESDIR}/0001-Find-CLANG_RESOURCE_DIR-using-clang-print-resource-d.patch"
 	"${FILESDIR}/${PN}-6.0.0-extend-isa-compatibility-check.patch"
-	"${FILESDIR}/${PN}-6.1.0-enforce-oop-compiler.patch"
 	"${FILESDIR}/${PN}-6.3.0-fix-comgr-default-flags.patch"
 	"${FILESDIR}/${PN}-6.1.0-dont-add-nogpulib.patch"
 	"${FILESDIR}/${PN}-6.3.0-llvm-19-compat.patch"
 	"${FILESDIR}/${PN}-6.3.0-bypass-device-libs-copy.patch"
 )
 
-RDEPEND=">=dev-libs/rocm-device-libs-${PV}
+RDEPEND="
+	dev-libs/rocm-device-libs:${SLOT}
 	llvm-core/clang-runtime:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
@@ -62,7 +62,7 @@ src_unpack() {
 src_prepare() {
 	sed '/sys::path::append(HIPPath/s,"hip","",' -i src/comgr-env.cpp || die
 	sed "/return LLVMPath;/s,LLVMPath,llvm::SmallString<128>(\"$(get_llvm_prefix)\")," -i src/comgr-env.cpp || die
-	eapply $(prefixify_ro "${FILESDIR}"/${PN}-5.0-rocm_path.patch)
+	eapply $(prefixify_ro "${FILESDIR}"/${PN}-6.3.2-rocm_path.patch)
 
 	cmake_src_prepare
 
@@ -77,6 +77,8 @@ src_configure() {
 		-DCMAKE_STRIP=""  # disable stripping defined at lib/comgr/CMakeLists.txt:58
 		-DBUILD_TESTING=$(usex test ON OFF)
 	)
+	# Prevent CMake from finding systemwide hip, which breaks tests
+	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_hip=ON )
 	cmake_src_configure
 }
 
