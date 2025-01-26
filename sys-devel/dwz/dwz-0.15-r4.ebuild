@@ -52,6 +52,8 @@ src_prepare() {
 }
 
 src_compile() {
+	export LANG=C LC_ALL=C  # grep find nothing for non-ascii locales
+
 	tc-export PKG_CONFIG
 
 	export LIBS="-lelf"
