@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.80:2
 	>=gui-libs/gtk-4.14:4
-	>=gui-libs/libadwaita-1.6_rc:1
+	>=gui-libs/libadwaita-1.6:1
 	>=gui-libs/vte-0.77.0:2.91-gtk4
 	gnome-base/libgtop:2=
 	>=dev-libs/libpcre2-10.32:0=
