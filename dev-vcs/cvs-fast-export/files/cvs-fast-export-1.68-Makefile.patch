@@ -1,0 +1,20 @@
+--- cvs-fast-export-1.68/Makefile
++++ cvs-fast-export-1.68/Makefile
+@@ -38,7 +38,7 @@
+ GCC_WARNINGS1=-Wall -Wextra -Werror -Wpointer-arith -Wstrict-prototypes
+ GCC_WARNINGS3=-Wno-format-zero-length
+ GCC_WARNINGS=$(GCC_WARNINGS1) $(GCC_WARNINGS2) $(GCC_WARNINGS3)
+-CFLAGS += $(GCC_WARNINGS)
++#CFLAGS += $(GCC_WARNINGS)
+ CPPFLAGS += -I.
+ #LIBS=-lrt
+ CPPFLAGS += -DVERSION=\"$(VERSION)\"
+@@ -70,7 +70,7 @@
+ # CFLAGS += -pg
+ # Warning: Using -O3 has been seen to cause core dumps on repositories with
+ # very long revision names - some bounds check gets optimized away. Don't do that.
+-CFLAGS += -O2
++#CFLAGS += -O2
+ # If your toolchain supports link time optimization this is a cheap speedup
+ # CFLAGS += -flto
+ # Bounds checks at runtime. Not enabled by default for performance reasons
