@@ -284,7 +284,6 @@ dev-python/pslab
 # the same as these packages but merged into one ebuild for maintainability.
 # Removal on 2025-01-27. Bug #945359
 dev-util/bitcoin-tx
-net-libs/libbitcoinconsensus
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
