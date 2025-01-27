@@ -59,6 +59,7 @@ DEPEND="
 	test-full? (
 		|| ( dev-lang/rust dev-lang/rust-bin )
 		dev-lang/nasm
+		>=dev-lang/pypy-3
 		dev-lang/vala
 		dev-python/cython
 		virtual/fortran
@@ -70,12 +71,13 @@ DEPEND="
 		dev-util/bindgen
 		dev-util/gtk-doc
 		dev-util/itstool
+		llvm-core/llvm
 		media-libs/libsdl2
 		media-libs/libwmf
 		net-libs/libpcap
-		sci-libs/hdf5
+		sci-libs/hdf5[fortran]
 		sci-libs/netcdf
-		sys-cluster/openmpi
+		sys-cluster/openmpi[fortran]
 		sys-devel/bison
 		sys-devel/flex
 
