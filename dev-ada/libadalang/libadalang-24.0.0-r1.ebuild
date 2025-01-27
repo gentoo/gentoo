@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
 RDEPEND="dev-python/pyyaml
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv(+)]
 	dev-ada/gnatcoll-bindings[shared,static-libs?,static-pic?]
 	${ADA_DEPS}
 	${PYTHON_DEPS}
