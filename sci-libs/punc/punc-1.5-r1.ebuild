@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools fortran-2 toolchain-funcs
 
@@ -37,6 +37,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PV}-linking.patch
 	"${FILESDIR}"/1.4-doc.patch
+	"${FILESDIR}"/${P}-explicit-main.patch
 )
 
 src_prepare() {

@@ -1,0 +1,16 @@
+Return type of functions must be explicit, C99
+https://bugs.gentoo.org/886461
+--- a/src/vf2c/main.c
++++ b/src/vf2c/main.c
+@@ -110,9 +110,9 @@
+ #endif
+ 
+ #ifdef KR_headers
+-main(argc, argv) int argc; char **argv;
++int main(argc, argv) int argc; char **argv;
+ #else
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ #endif
+ {
+ xargc = argc;
