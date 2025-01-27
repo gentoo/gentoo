@@ -116,8 +116,6 @@ src_configure() {
 	MYSYSROOT=${ESYSROOT}
 
 	if target_is_not_host; then
-		local CHOST=${CTARGET}
-
 		MYPREFIX=
 		MYSYSROOT=${ESYSROOT}/usr/${CTARGET}
 
@@ -160,6 +158,7 @@ src_configure() {
 
 multilib_src_configure() {
 	local myconf=(
+		--host="${CTARGET}"
 		--disable-werror
 		--prefix="${MYPREFIX}/usr"
 		--libdir="${MYPREFIX}/usr/$(get_libdir)$(usev !system /xcrypt)"
