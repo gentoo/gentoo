@@ -6,8 +6,8 @@ EAPI=8
 # please bump dev-python/ensurepip-pip along with this package!
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{10..13} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3 )
+PYTHON_TESTED=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1
@@ -106,11 +106,6 @@ python_compile_all() {
 }
 
 python_test() {
-	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
-		einfo "Skipping tests on ${EPYTHON}"
-		return 0
-	fi
-
 	local EPYTEST_DESELECT=(
 		tests/functional/test_inspect.py::test_inspect_basic
 		# Internet
@@ -119,10 +114,6 @@ python_test() {
 		tests/functional/test_install.py::test_install_sdist_links
 		tests/functional/test_install_config.py::test_prompt_for_keyring_if_needed
 		# broken by system site-packages use
-		tests/functional/test_check.py::test_basic_check_clean
-		tests/functional/test_check.py::test_check_skip_work_dir_pkg
-		tests/functional/test_check.py::test_check_complicated_name_clean
-		tests/functional/test_check.py::test_check_development_versions_are_also_considered
 		tests/functional/test_freeze.py::test_freeze_with_setuptools
 		tests/functional/test_pip_runner_script.py::test_runner_work_in_environments_with_no_pip
 		tests/functional/test_uninstall.py::test_basic_uninstall_distutils
@@ -140,6 +131,16 @@ python_test() {
 		tests/functional/test_proxy.py
 	)
 
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# unexpected tempfiles?
+				tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
+				tests/functional/test_install_config.py::test_prompt_for_authentication
+			)
+			;;
+	esac
+
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/functional/test_install.py::test_install_sends_client_cert
@@ -155,7 +156,7 @@ python_test() {
 	# rerunfailures because test suite breaks if packages are installed
 	# in parallel
 	epytest -m "not network" -o tmp_path_retention_policy=all \
-		-p rerunfailures --reruns=5
+		-p rerunfailures --reruns=5 --use-venv
 }
 
 python_install_all() {
