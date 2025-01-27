@@ -286,7 +286,6 @@ dev-python/pslab
 dev-util/bitcoin-tx
 net-libs/libbitcoinconsensus
 net-p2p/bitcoin-cli
-net-p2p/bitcoin-qt
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
