@@ -62,18 +62,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	statvfs64
 )
 
-src_prepare() {
-	default
-
-	# Bug #906194, #922483
-	if use elibc_musl; then
-		eapply "${FILESDIR}"/${PN}-4.8.30-musl-tests.patch
-		eapply "${FILESDIR}"/${PN}-4.8.31-musl-tests.patch
-	fi
-
-	eautoreconf
-}
-
 src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags "-lnsl -lsocket"
 
@@ -99,18 +87,13 @@ src_configure() {
 }
 
 src_test() {
-	# Bug #759466
+	# Bug #759466 - tracked upstream at https://midnight-commander.org/ticket/4643
 	if [[ ${EUID} == 0 ]] ; then
 		ewarn "You are emerging ${PN} as root with 'userpriv' disabled."
 		ewarn "Expect some test failures, or emerge with 'FEATURES=userpriv'!"
 	fi
 
-	# CK_FORK=no to avoid using fork() in check library
-	# as mc mocks fork() itself: bug #644462.
-	#
-	# VERBOSE=1 to make test failures contain detailed
-	# information.
-	CK_FORK=no emake check VERBOSE=1
+	emake check VERBOSE=1
 }
 
 src_install() {
