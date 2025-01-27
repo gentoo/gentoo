@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/gedit/gedit/-/blob/master/plugins/list-
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~loong ~riscv"
 
 IUSE="charmap +python terminal vala"
 REQUIRED_USE="
