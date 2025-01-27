@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="return SYN+ACK for every port connection attempt"
-HOMEPAGE="http://portspoof.org/"
+HOMEPAGE="https://drk1wi.github.io/portspoof/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
