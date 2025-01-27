@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit go-module systemd
+inherit go-module
 DESCRIPTION="Github statistics exporter for prometheus"
 HOMEPAGE="https://github.com/infinityworks/github-exporter"
 SRC_URI="https://github.com/infinityworks/github-exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz
