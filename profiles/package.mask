@@ -277,14 +277,6 @@ dev-libs/dmalloc
 # forward.  Removal on 2025-01-28.  Bug #947144.
 dev-python/pslab
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
-# Cleanup transitional Bitcoin meta packages, as well as
-# unmaintainable net-p2p/bitcoin-core[system-leveldb] and
-# virtual/bitcoin-leveldb. Use net-p2p/bitcoin-core instead which is
-# the same as these packages but merged into one ebuild for maintainability.
-# Removal on 2025-01-27. Bug #945359
-dev-util/bitcoin-tx
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
