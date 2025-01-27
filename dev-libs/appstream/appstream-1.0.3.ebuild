@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson xdg-utils
+inherit meson xdg-utils vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Distributions/AppStream/"
 LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/5"
-IUSE="apt doc +introspection qt6 systemd test"
+IUSE="apt doc +introspection qt6 systemd vala test"
 RESTRICT="test" # bug 691962
 
 RDEPEND="
@@ -44,6 +44,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	doc? ( app-text/docbook-xml-dtd:4.5 )
 	test? ( dev-qt/qttools:6[linguist] )
+	vala? ( $(vala_depend) )
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-1.0.0-disable-Werror-flags.patch ) # bug 733774
@@ -54,6 +55,8 @@ src_prepare() {
 	if ! use test; then
 		sed -e "/^subdir.*tests/s/^/#DONT /" -i {,qt/}meson.build || die # bug 675944
 	fi
+
+	use vala && vala_setup
 }
 
 src_configure() {
@@ -66,7 +69,7 @@ src_configure() {
 		-Dmaintainer=false
 		-Dstatic-analysis=false
 		-Dstemming=true
-		-Dvapi=false
+		-Dvapi=$(usex vala true false)
 		-Dapt-support=$(usex apt true false)
 		-Dinstall-docs=$(usex doc true false)
 		-Dgir=$(usex introspection true false)
