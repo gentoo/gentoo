@@ -188,8 +188,8 @@ net-analyzer/rrdtool rados
 >=media-video/ffmpeg-5 shaderc
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
-# Qt 5 is not keyworded here
-app-admin/setools X test
+# PyQt 6 is not keyworded here
+app-admin/setools gui test
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
