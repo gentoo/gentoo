@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
+# All dependencies available
+dev-build/meson -test-full
+
 # Matt Jolly <kangie@gentoo.org> (2025-01-11)
 # We can bootstrap with mrustc on amd64.
 dev-lang/rust -mrustc-bootstrap

@@ -1,10 +1,6 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Eli Schwartz <eschwartz@gentoo.org> (2025-01-26)
-# Dependencies e.g. bindgen not keyworded
-dev-build/meson test-full
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-12-20)
 # qtremoteobjects and qthttpserver not yet keyworded here
 dev-python/pyside6 httpserver remoteobjects

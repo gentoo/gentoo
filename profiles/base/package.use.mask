@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
+# Dependencies e.g. bindgen/netcdf/pypy not keyworded or stable in
+# most places.
+dev-build/meson test-full
+
 # Matt Jolly <kangie@gentoo.org> (2025-01-11)
 # mrustc currenly only works on amd64.
 dev-lang/rust mrustc-bootstrap
