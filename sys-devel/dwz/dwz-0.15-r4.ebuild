@@ -54,7 +54,10 @@ src_prepare() {
 src_compile() {
 	export LANG=C LC_ALL=C  # grep find nothing for non-ascii locales
 
-	tc-export PKG_CONFIG
+	local current_binutils_path=$(binutils-config -B)
+	export READELF="${current_binutils_path}/readelf"
+
+	tc-export PKG_CONFIG READELF
 
 	export LIBS="-lelf"
 	if use elibc_musl; then
