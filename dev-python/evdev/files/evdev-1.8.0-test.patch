@@ -1,0 +1,22 @@
+From 27eb2ff11bb6b41fa0cfcff4f80d6c26d4b65742 Mon Sep 17 00:00:00 2001
+From: Georgi Valkov <georgi.t.valkov@gmail.com>
+Date: Sat, 25 Jan 2025 18:04:39 +0100
+Subject: [PATCH 1/2] Fix tests
+
+---
+ tests/test_util.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_util.py b/tests/test_util.py
+index 5a979df..7112927 100644
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -6,7 +6,7 @@ def test_match_ecodes_a():
+     assert res == {1: [372, 418, 419, 420]}
+     assert dict(util.resolve_ecodes_dict(res)) == {
+         ("EV_KEY", 1): [
+-            (["KEY_FULL_SCREEN", "KEY_ZOOM"], 372),
++            (("KEY_FULL_SCREEN", "KEY_ZOOM"), 372),
+             ("KEY_ZOOMIN", 418),
+             ("KEY_ZOOMOUT", 419),
+             ("KEY_ZOOMRESET", 420),
