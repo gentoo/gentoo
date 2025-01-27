@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 inherit postgres-multi
 
-DEPEND="${POSTGRES_DEPS}
+DEPEND="${POSTGRES_DEP}
 	dev-libs/json-c"
 RDEPEND="${DEPEND}
 	net-misc/rsync"
