@@ -27,7 +27,7 @@ DOCS=( changelog faq readme )
 
 src_prepare() {
 	default
-
+	# bug 947318
 	local x
 	for x in changelog readme; do
 		rm ${x} || die
