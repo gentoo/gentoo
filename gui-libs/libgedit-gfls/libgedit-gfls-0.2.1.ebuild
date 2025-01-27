@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/gedit/libgedit-gfls"
 
 LICENSE="LGPL-3+"
 SLOT="6/4"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="gtk-doc"
 RESTRICT="!test? ( test )"
 
