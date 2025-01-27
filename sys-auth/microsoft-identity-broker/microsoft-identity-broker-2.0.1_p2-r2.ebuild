@@ -40,12 +40,12 @@ src_install() {
 
 	java-pkg_dolauncher microsoft-identity-broker \
 		--main com.microsoft.identity.broker.service.IdentityBrokerService \
-		--java_args '-Xmx256m ${MICROSOFT_IDENTITY_BROKER_OPTS}' \
+		--java_args '${MICROSOFT_IDENTITY_BROKER_OPTS}' \
 		-into /usr/share/${PN}
 
 	java-pkg_dolauncher microsoft-identity-device-broker \
 		--main com.microsoft.identity.broker.service.DeviceBrokerService \
-		--java_args '-Xmx256m ${MICROSOFT_IDENTITY_DEVICE_BROKER_OPTS}' \
+		--java_args '${MICROSOFT_IDENTITY_DEVICE_BROKER_OPTS}' \
 		-into /usr/share/${PN}
 
 	insinto /etc/microsoft-identity-broker
