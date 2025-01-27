@@ -11,7 +11,7 @@ HOMEPAGE="https://gedit-text-editor.org/"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 IUSE="+python gtk-doc"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
