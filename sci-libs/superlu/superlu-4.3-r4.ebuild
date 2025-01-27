@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools fortran-2 multilib toolchain-funcs
+inherit autotools fortran-2 multilib toolchain-funcs flag-o-matic
 
 MY_PN=SuperLU
 
@@ -33,6 +33,7 @@ PATCHES=(
 
 src_prepare() {
 	unset VERBOSE
+	append-cflags -std=gnu89
 	sed \
 		-e "s:= ar:= $(tc-getAR):g" \
 		-e "s:= ranlib:= $(tc-getRANLIB):g" \
