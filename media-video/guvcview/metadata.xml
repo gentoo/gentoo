@@ -8,8 +8,7 @@
 		<remote-id type="sourceforge">guvcview</remote-id>
 	</upstream>
 	<use>
-		<flag name="qt5">Build with Qt5 interface instead Gtk+</flag>
-		<flag name="qt6">Build with Qt6 interface instead Gtk+</flag>
+		<flag name="qt6">Build with Qt6 interface instead of Gtk+</flag>
 		<flag name="sfml">Build with SFML X11-engine instead of sdl</flag>
 	</use>
 </pkgmetadata>
