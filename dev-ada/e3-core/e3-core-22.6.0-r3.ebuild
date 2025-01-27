@@ -17,21 +17,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 RESTRICT="test" #require pytest-socket
 
-RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/stevedore[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
-	dev-python/tqdm[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
-	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+	dev-python/stevedore[${PYTHON_USEDEP}]
 	dev-python/tomlkit[${PYTHON_USEDEP}]
+	dev-python/tqdm[${PYTHON_USEDEP}]
 	!app-editors/e3"
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	dev-python/httpretty[${PYTHON_USEDEP}]
-	dev-vcs/subversion
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-vcs/subversion
 )"
 
 PATCHES=(
