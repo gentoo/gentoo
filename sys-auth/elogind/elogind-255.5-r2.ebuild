@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -116,6 +116,13 @@ src_configure() {
 		-Dtests=$(usex test true false)
 		-Dutmp=$(usex elibc_musl false true)
 		-Dmode=release
+
+		# Ensure consistenct between merged-usr and split-usr (bug 945965)
+		-Dhalt-path="${EPREFIX}/sbin/halt"
+		-Dkexec-path="${EPREFIX}/usr/sbin/kexec"
+		-Dnologin-path="${EPREFIX}/sbin/nologin"
+		-Dpoweroff-path="${EPREFIX}/sbin/poweroff"
+		-Dreboot-path="${EPREFIX}/sbin/reboot"
 	)
 
 	meson_src_configure
