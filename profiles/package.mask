@@ -38,7 +38,6 @@
 # Remove 2025-02-24.
 app-portage/grs
 
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-24)
 # EAPI=7, uses deprecated Go eclasses, fails to compile, installation
 # blocked by current versions of docker (which provides the features).
