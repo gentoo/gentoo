@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}/Python
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="debug +qt5 qt6"
+IUSE="debug qt5 +qt6"
 
 REQUIRED_USE="|| ( qt5 qt6 ) ${PYTHON_REQUIRED_USE}"
 
