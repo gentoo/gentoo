@@ -13,7 +13,7 @@ SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc ~ppc64 ~riscv -sparc ~x86"
 
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
