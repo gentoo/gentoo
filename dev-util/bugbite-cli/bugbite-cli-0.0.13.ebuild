@@ -1,11 +1,11 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 RUST_MIN_VER="1.80.1"
 
-inherit cargo edo shell-completion
+inherit cargo edo multiprocessing shell-completion
 
 DESCRIPTION="A command line tool for bug, issue, and ticket mangling"
 HOMEPAGE="https://github.com/radhermit/bugbite"
@@ -44,6 +44,7 @@ src_configure() {
 }
 
 src_test() {
+	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 	edo cargo nextest run $(usev !debug '--release') --color always --features test --tests ${static_stuff}
 }
 
