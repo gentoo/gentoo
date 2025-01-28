@@ -312,7 +312,7 @@ CRATES="
 	zopfli@0.8.1
 "
 
-inherit cargo flag-o-matic
+inherit cargo flag-o-matic multiprocessing
 
 DESCRIPTION="GNU coreutils rewritten in Rust"
 HOMEPAGE="https://uutils.github.io/coreutils/ https://github.com/uutils/coreutils"
@@ -400,6 +400,7 @@ src_compile() {
 
 src_test() {
 	local -x RUST_BACKTRACE=full
+	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 
 	# Nicer output for nextest vs test
 	emake "${makeargs[@]}" \
