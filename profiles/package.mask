@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-28)
+# Since we are done with EGO_SUM, this tool isn't needed any more.
+# Removal on 2025-02-27.  Bug #948966.
+dev-go/get-ego-vendor
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-28)
 # Last release from 14 years ago, dead upstream (repository gone as well).
 # Plenty of other options in ::gentoo. Bug #947724, removal on 2025-02-27.
