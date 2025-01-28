@@ -77,10 +77,13 @@ dev-python/spyder-terminal
 dev-qt/qtbluetooth:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Qt5 package without any revdeps.
+dev-qt/qdbusviewer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 packages without any revdeps.
 dev-qt/pixeltool
 dev-qt/qdbus
-dev-qt/qdbusviewer
 dev-qt/qdoc
 dev-qt/qtplugininfo
 dev-qt/qtquicktimeline:5
