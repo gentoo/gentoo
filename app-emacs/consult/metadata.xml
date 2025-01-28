@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<stabilize-allarches/>
-<upstream>
-  <remote-id type="github">minad/consult</remote-id>
-</upstream>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription>
+    Consult provides search and navigation commands based on the Emacs
+    completion function completing-read. Completion allows you to quickly
+    select an item from a list of candidates. Consult offers asynchronous
+    and interactive consult-grep and consult-ripgrep commands, and the
+    line-based search command consult-line. Furthermore Consult provides an
+    advanced buffer switching command consult-buffer to switch between
+    buffers, recently opened files, bookmarks and buffer-like candidates
+    from other sources. Some of the Consult commands are enhanced versions
+    of built-in Emacs commands. For example the command consult-imenu
+    presents a flat list of the Imenu with live preview, grouping and
+    narrowing. Consult is fully compatible with completion systems centered
+    around the standard Emacs completing-read API, notably the default
+    completion system, Vertico, Mct, and Icomplete.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/minad/consult/issues/</bugs-to>
+    <remote-id type="github">minad/consult</remote-id>
+  </upstream>
 </pkgmetadata>
