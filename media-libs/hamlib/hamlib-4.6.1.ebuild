@@ -40,6 +40,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer)
 
+PATCHES=( "$FILESDIR/hamlib-drop-lua.patch" )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
