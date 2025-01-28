@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1,2} luajit )
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit lua-single meson python-any-r1 xdg
+inherit flag-o-matic lua-single meson python-any-r1 xdg
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 HOMEPAGE="https://www.enlightenment.org"
@@ -283,6 +283,10 @@ src_configure() {
 	# Not all arm CPU's have neon instruction set, #722552
 	if use arm && ! use cpu_flags_arm_neon; then
 		emesonargs+=( -D native-arch-optimization=false )
+	fi
+
+	if use elibc_musl ; then
+		append-cflags -D_LARGEFILE64_SOURCE
 	fi
 
 	meson_src_configure
