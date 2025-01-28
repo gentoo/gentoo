@@ -36,6 +36,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	cmake_src_prepare
+
+	# https://bugs.gentoo.org/948941
+	sed -i -e 's:-Werror::' tests/headertest/CMakeLists.txt || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
