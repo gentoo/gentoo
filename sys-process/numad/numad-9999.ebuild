@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic linux-info systemd toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://pagure.io/numad.git"
@@ -25,13 +25,16 @@ SLOT="0"
 
 CONFIG_CHECK="~NUMA ~CPUSETS"
 
+PATCHES=(
+	# https://pagure.io/numad/pull-request/3
+	"${FILESDIR}/${PN}-0.5-fix-sparse-node-ids.patch"
+
+	# from debian/ubuntu: https://sources.debian.org/patches/numad
+	"${FILESDIR}/${PN}-0.5-fix-build-for-no-NR-migrate-pages.patch"
+)
+
 src_configure() {
 	tc-export AR CC RANLIB
-
-	# FIXME: https://bugs.gentoo.org/890985
-	# temp workaround
-	filter-flags -D_FORTIFY_SOURCE=3
-	append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 }
 
 src_compile() {

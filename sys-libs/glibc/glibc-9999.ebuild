@@ -492,10 +492,6 @@ setup_flags() {
 	# https://sourceware.org/glibc/wiki/FAQ#Why_do_I_get:.60.23error_.22glibc_cannot_be_compiled_without_optimization.22.27.2C_when_trying_to_compile_GNU_libc_with_GNU_CC.3F
 	replace-flags -O0 -O1
 
-	# glibc handles this internally already where it's appropriate;
-	# can't always have SSP when we're the ones setting it up, etc
-	filter-flags '-fstack-protector*'
-
 	# Similar issues as with SSP. Can't inject yourself that early.
 	filter-flags '-fsanitize=*'
 
