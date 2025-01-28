@@ -5,6 +5,10 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Hüttel</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>binhost@gentoo.org</email>
+		<name>Binhost</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/projg2/getuto/issues/</bugs-to>
