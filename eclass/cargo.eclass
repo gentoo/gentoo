@@ -396,6 +396,9 @@ cargo_gen_config() {
 	jobs = $(makeopts_jobs)
 	incremental = false
 
+	[env]
+	RUST_TEST_THREADS = "$(makeopts_jobs)"
+
 	[term]
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
