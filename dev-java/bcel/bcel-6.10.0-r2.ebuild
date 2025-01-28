@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-s
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
-CP_DEPEND="dev-java/commons-lang:3.6"
+CP_DEPEND=">=dev-java/commons-lang-3.17.0:3.6"
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-11:*"
 RDEPEND="${CP_DEPEND}
