@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-28)
+# Last release from 14 years ago, dead upstream (repository gone as well).
+# Plenty of other options in ::gentoo. Bug #947724, removal on 2025-02-27.
+media-sound/bempc
+
 # Anthony G. Basile <blueness@gentoo.org> (2025-01-25)
 # Bug 909889. Needs PEP517 build. Very low user base
 # Remove 2025-02-24.
