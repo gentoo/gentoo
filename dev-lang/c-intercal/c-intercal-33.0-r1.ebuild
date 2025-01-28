@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common flag-o-matic
+inherit autotools elisp-common
 
 # C-INTERCAL uses minor-major ordering of version components and
 # negative version numbers. We map version components -1, -2, ...
@@ -40,14 +40,9 @@ BDEPEND="${RDEPEND}
 
 SITEFILE="50${PN}-gentoo.el"
 
-src_configure() {
-	# -Werror=lto-type-mismatch
-	# https://bugs.gentoo.org/855590
-	# https://gitlab.com/esr/intercal/-/issues/7
-	filter-lto
-
-	append-cflags $(test-flags-CC -fno-toplevel-reorder)	#722862
-	econf
+src_prepare() {
+	default
+	eautoreconf					#948911
 }
 
 src_compile() {
