@@ -30,14 +30,6 @@ RDEPEND="
 	')
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.5-regex-py313.patch
-)
-
-src_prepare() {
-	default
-}
-
 python_test() {
 	# the tests involving sprites seem to fail when running in the ebuild,
 	#  unless --no-cache is passed.
