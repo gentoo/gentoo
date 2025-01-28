@@ -101,6 +101,7 @@ src_prepare() {
 	gnome2_src_prepare
 
 	eapply "${FILESDIR}"/3.36.5-gtk-doc-1.32-compat.patch
+	eapply "${FILESDIR}"/3.54.3-c23.patch
 
 	# Make CMakeLists versioned vala enabled
 	sed -e "s;\(find_program(VALAC\) valac);\1 ${VALAC});" \
