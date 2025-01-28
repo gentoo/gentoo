@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-28)
+# A package, which depends on Qt5. Upstream dead for many years.
+# Removal on 2025-02-28.
+net-wireless/linssid
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-01-28)
 # Binary package, which depends on Qt5.
 # Please update to v5 beta or v6 beta. Removal on 2025-02-28.
 media-sound/teamspeak-client:3
