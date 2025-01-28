@@ -117,7 +117,7 @@ src_configure() {
 		-Dutmp=$(usex elibc_musl false true)
 		-Dmode=release
 
-		# Ensure consistenct between merged-usr and split-usr (bug 945965)
+		# Ensure consistent between merged-usr and split-usr (bug 945965)
 		-Dhalt-path="${EPREFIX}/sbin/halt"
 		-Dkexec-path="${EPREFIX}/usr/sbin/kexec"
 		-Dnologin-path="${EPREFIX}/sbin/nologin"
