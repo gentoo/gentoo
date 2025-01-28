@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="5"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
