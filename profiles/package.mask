@@ -77,7 +77,7 @@ dev-python/spyder-terminal
 dev-qt/qtbluetooth:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Qt5 package without any revdeps.
+# Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
