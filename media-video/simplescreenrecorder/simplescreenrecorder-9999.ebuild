@@ -1,21 +1,21 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PKGNAME="ssr"
+MY_PN="ssr"
 inherit cmake-multilib flag-o-matic xdg
 
-DESCRIPTION="A Simple Screen Recorder"
+DESCRIPTION="Simple Screen Recorder"
 HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder/"
-if [[ ${PV} = 9999 ]] ; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/MaartenBaert/${PKGNAME}.git"
+	EGIT_REPO_URI="https://github.com/MaartenBaert/${MY_PN}.git"
 	EGIT_BOOTSTRAP=""
 else
-	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/MaartenBaert/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PKGNAME}-${PV}"
+	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
 LICENSE="GPL-3"
@@ -25,10 +25,7 @@ IUSE="+asm jack mp3 opengl pulseaudio theora v4l vorbis vpx x264"
 REQUIRED_USE="abi_x86_32? ( opengl )"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtbase:6[gui,widgets]
 	media-libs/alsa-lib:0=
 	media-video/ffmpeg:=[vorbis?,vpx?,x264?,mp3?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -43,10 +40,10 @@ RDEPEND="
 	v4l? ( media-libs/libv4l )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 pkg_pretend() {
-	if [[ "${ABI}" == amd64 ]] ; then
+	if [[ ${ABI} == amd64 ]] ; then
 		einfo "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
 		einfo "When added 32bit GLInject libraries are also included. This is"
 		einfo "required if you want to use OpenGL recording on 32bit applications."
@@ -84,7 +81,7 @@ multilib_src_configure() {
 	if multilib_is_native_abi ; then
 		mycmakeargs+=(
 			-DENABLE_32BIT_GLINJECT="false"
-			-DWITH_QT5="true"
+			-DWITH_QT6=ON
 		)
 	else
 		mycmakeargs+=(
