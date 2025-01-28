@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-28)
+# Last release+commit 7 years ago, dead upstream, unmaintained in Gentoo,
+# depends on Qt5, broken with >= ffmpeg-5, no one else packages this.
+# Removal on 2025-02-27. Bug #900947
+app-misc/qcma
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-28)
 # Last release+commit 8 years ago, dead upstream, unmaintained in Gentoo,
 # depends on Qt5, no one else packages this. Removal on 2025-02-27.
 x11-misc/urxvtconfig
