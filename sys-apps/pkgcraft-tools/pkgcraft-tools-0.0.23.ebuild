@@ -7,7 +7,7 @@ CRATES=" "
 LLVM_COMPAT=( {17..19} )
 RUST_MIN_VER="1.82.0"
 
-inherit cargo edo llvm-r1 shell-completion
+inherit cargo edo multiprocessing llvm-r1 shell-completion
 
 DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -56,6 +56,8 @@ src_unpack() {
 
 src_test() {
 	unset CLICOLOR CLICOLOR_FORCE
+
+	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 
 	# pkg::env::current_dir is likely sensitive to ebuild env
 	edo ${CARGO} nextest run $(usev !debug '--release') \
