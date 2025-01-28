@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -201,7 +201,7 @@ _filter-hardened() {
 					continue
 				fi
 
-				is-flagq -fno-stack-protector-all || append-flags $(test-flags -fno-stack-protector-all)
+				is-flagq -fno-stack-protector || append-flags $(test-flags -fno-stack-protector)
 				;;
 			-fno-strict-overflow)
 				gcc-specs-nostrict || continue
