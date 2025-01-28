@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<stabilize-allarches/>
-<upstream>
-  <remote-id type="github">minad/vertico</remote-id>
-</upstream>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription>
+    Vertico provides a performant and minimalistic vertical completion UI
+    based on the default completion system. The focus of Vertico is to
+    provide a UI which behaves correctly under all circumstances. By reusing
+    the built-in facilities system, Vertico achieves full compatibility with
+    built-in Emacs completion commands and completion tables. Vertico only
+    provides the completion UI but aims to be highly flexible, extendable
+    and modular. Additional enhancements are available as extensions or
+    complementary packages.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">minad/vertico</remote-id>
+  </upstream>
 </pkgmetadata>
