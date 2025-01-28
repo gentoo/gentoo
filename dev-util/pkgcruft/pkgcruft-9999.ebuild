@@ -61,7 +61,11 @@ src_compile() {
 	tc-export AR CC
 
 	cargo_src_compile
-	edo cargo run --features shell --bin pkgcruft-shell-comp -p pkgcruft
+
+	if [[ ${PV} == 9999 ]] ; then
+		# https://github.com/pkgcraft/pkgcraft/issues/258
+		edo cargo run --features shell --bin pkgcruft-shell-comp -p pkgcruft
+	fi
 }
 
 src_test() {
