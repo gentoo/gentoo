@@ -1,0 +1,86 @@
+# https://sourceforge.net/p/scintilla/code/ci/c7ffad21b23dfad4e8e9f36bb587acc2f6e84fee/
+--- a/scintilla/gtk/PlatGTK.cxx
++++ b/scintilla/gtk/PlatGTK.cxx
+@@ -7,2 +7,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cstring>
+--- a/scintilla/src/AutoComplete.cxx
++++ b/scintilla/src/AutoComplete.cxx
+@@ -9,2 +9,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/CallTip.cxx
++++ b/scintilla/src/CallTip.cxx
+@@ -9,2 +9,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/CellBuffer.cxx
++++ b/scintilla/src/CellBuffer.cxx
+@@ -9,2 +9,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/ChangeHistory.cxx
++++ b/scintilla/src/ChangeHistory.cxx
+@@ -9,2 +9,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/Decoration.cxx
++++ b/scintilla/src/Decoration.cxx
+@@ -8,2 +8,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cstring>
+--- a/scintilla/src/Document.cxx
++++ b/scintilla/src/Document.cxx
+@@ -9,2 +9,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/Indicator.cxx
++++ b/scintilla/src/Indicator.cxx
+@@ -7,2 +7,3 @@
+ 
++#include <cstdint>
+ #include <cmath>
+--- a/scintilla/src/KeyMap.cxx
++++ b/scintilla/src/KeyMap.cxx
+@@ -8,2 +8,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ 
+--- a/scintilla/src/LineMarker.cxx
++++ b/scintilla/src/LineMarker.cxx
+@@ -7,2 +7,3 @@
+ 
++#include <cstdint>
+ #include <cstring>
+--- a/scintilla/src/PerLine.cxx
++++ b/scintilla/src/PerLine.cxx
+@@ -8,2 +8,3 @@
+ #include <cstddef>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/Style.cxx
++++ b/scintilla/src/Style.cxx
+@@ -7,2 +7,4 @@
+ 
++#include <cstdint>
++
+ #include <stdexcept>
+--- a/scintilla/src/ViewStyle.cxx
++++ b/scintilla/src/ViewStyle.cxx
+@@ -8,2 +8,3 @@
+ #include <cstddef>
++#include <cstdint>
+ #include <cassert>
+--- a/scintilla/src/XPM.cxx
++++ b/scintilla/src/XPM.cxx
+@@ -8,2 +8,3 @@
+ #include <cstdlib>
++#include <cstdint>
+ #include <cstring>
