@@ -1,0 +1,11 @@
+--- a/meson.build	2025-01-19 14:59:34.000000000 +0100
++++ b/meson.build	2025-01-28 18:55:30.964917952 +0100
+@@ -215,7 +215,7 @@
+   'gtk+-2.0',
+   include_type: 'system',
+   version: '>=2.18.0',
+-  required: get_option('gtk2').enabled(),
++  required: get_option('gtk2'),
+ )
+ 
+ gtk2_x11_dep = dependency(
