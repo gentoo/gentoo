@@ -1,6 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
 
 EAPI=8
 
@@ -9,25 +8,28 @@ inherit depend.apache apache-module autotools
 DESCRIPTION="OpenID Connect Relying Party implementation for Apache HTTP Server 2.x"
 HOMEPAGE="https://github.com/OpenIDC/mod_auth_openidc"
 SRC_URI="https://github.com/OpenIDC/mod_auth_openidc/releases/download/v${PV}/${P}.tar.gz"
-KEYWORDS="~amd64"
-IUSE="redis brotli"
 
-SLOT="0"
 LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="brotli redis"
 
-RDEPEND="net-misc/curl
-	brotli? ( app-arch/brotli:= )
-	sys-libs/zlib:=
-	dev-libs/openssl:=
+RDEPEND="
+	app-misc/jq
 	dev-libs/apr
-	dev-libs/jansson:=
 	dev-libs/cjose
+	dev-libs/jansson:=
+	dev-libs/openssl:=
 	dev-libs/libpcre
+	net-misc/curl
+	sys-libs/zlib:=
+	brotli? ( app-arch/brotli:= )
 	redis? ( dev-libs/hiredis:= )
-	app-misc/jq"
+"
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig"
+"
+BDEPEND="virtual/pkgconfig"
 
 APACHE2_MOD_CONF="10_mod_auth_openidc"
 APACHE2_MOD_DEFINE="AUTH_OPENIDC"
