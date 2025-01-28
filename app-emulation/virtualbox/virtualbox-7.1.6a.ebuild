@@ -27,11 +27,11 @@ HELP_PV=${PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="
-	https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
+	https://download.virtualbox.org/virtualbox/${PV%*a}/${MY_P}.tar.bz2
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.4-r1.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${HELP_PV}.tar.xz ) )
 "
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_PN}-${PV%*a}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
@@ -44,7 +44,7 @@ unset WATCOM #856769
 COMMON_DEPEND="
 	acct-group/vboxusers
 	app-arch/xz-utils
-	~app-emulation/virtualbox-modules-${PV}
+	~app-emulation/virtualbox-modules-${PV%*a}
 	dev-libs/libtpms
 	dev-libs/libxml2
 	dev-libs/openssl:0=
@@ -344,9 +344,6 @@ src_prepare() {
 			VBOX_WITH_VBOXMANAGE_NLS :=
 		EOF
 	fi
-
-	# file missing from this release
-	sed '/security-of-remote-vms/d' -i doc/manual/en_US/dita/UserManual.ditamap
 }
 
 src_configure() {
