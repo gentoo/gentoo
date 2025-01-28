@@ -42,7 +42,7 @@ RUST_NEEDS_LLVM="yes please"
 RUST_OPTIONAL="yes" # Not actually optional, but we don't need system Rust (or LLVM) with USE=bundled-toolchain
 
 inherit check-reqs chromium-2 desktop flag-o-matic llvm-r1 multiprocessing ninja-utils pax-utils
-inherit python-any-r1 qmake-utils readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg-utils
+inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
@@ -77,7 +77,7 @@ fi
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
-IUSE+=" +proprietary-codecs pulseaudio qt5 qt6 +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
+IUSE+=" +proprietary-codecs pulseaudio qt6 +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
 RESTRICT="
 	!bindist? ( bindist )
 	!test? ( test )
@@ -86,7 +86,6 @@ RESTRICT="
 REQUIRED_USE="
 	!headless? ( || ( X wayland ) )
 	pgo? ( X !wayland )
-	qt6? ( qt5 )
 	screencast? ( wayland )
 	ffmpeg-chromium? ( bindist proprietary-codecs )
 "
@@ -150,19 +149,15 @@ COMMON_DEPEND="
 	media-libs/flac:=
 	sys-libs/zlib:=[minizip]
 	!headless? (
-		X? ( ${COMMON_X_DEPEND} )
 		>=app-accessibility/at-spi2-core-2.46.0:2
 		media-libs/mesa:=[X?,wayland?]
-		cups? ( >=net-print/cups-1.3.11:= )
 		virtual/udev
 		x11-libs/cairo:=
 		x11-libs/gdk-pixbuf:2
 		x11-libs/pango:=
-		qt5? (
-			dev-qt/qtcore:5
-			dev-qt/qtwidgets:5
-		)
+		cups? ( >=net-print/cups-1.3.11:= )
 		qt6? ( dev-qt/qtbase:6[gui,widgets] )
+		X? ( ${COMMON_X_DEPEND} )
 	)
 "
 RDEPEND="${COMMON_DEPEND}
@@ -171,7 +166,6 @@ RDEPEND="${COMMON_DEPEND}
 			x11-libs/gtk+:3[X?,wayland?]
 			gui-libs/gtk:4[X?,wayland?]
 		)
-		qt5? ( dev-qt/qtgui:5[X?,wayland?] )
 		qt6? ( dev-qt/qtbase:6[X?,wayland?] )
 	)
 	virtual/ttf-fonts
@@ -196,7 +190,6 @@ BDEPEND="
 	')
 	>=app-arch/gzip-1.7
 	!headless? (
-		qt5? ( dev-qt/qtcore:5 )
 		qt6? ( dev-qt/qtbase:6 )
 	)
 	!bundled-toolchain? ( $(llvm_gen_dep '
@@ -291,7 +284,7 @@ pkg_pretend() {
 	fi
 
 	if use headless; then
-		local headless_unused_flags=("cups" "kerberos" "pulseaudio" "qt5" "qt6" "vaapi" "wayland")
+		local headless_unused_flags=("cups" "kerberos" "pulseaudio" "qt6" "vaapi" "wayland")
 		for myiuse in ${headless_unused_flags[@]}; do
 			use ${myiuse} && ewarn "Ignoring USE=${myiuse}, USE=headless is set."
 		done
@@ -414,6 +407,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-111-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-131-unbundle-icu-target.patch"
 		"${FILESDIR}/chromium-134-oauth2-client-switches.patch"
+		"${FILESDIR}/chromium-134-qt5-optional.patch"
 	)
 
 	if use bundled-toolchain; then
@@ -1160,7 +1154,9 @@ chromium_configure() {
 	else
 		myconf_gn+=" use_system_minigbm=true"
 		myconf_gn+=" use_xkbcommon=true"
-		if use qt5 || use qt6; then
+		myconf_gn+=" use_qt5=false"
+		if use qt6; then
+			myconf_gn+=" use_qt6=true"
 			local cbuild_libdir=$(get_libdir)
 			if tc-is-cross-compiler; then
 				# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
@@ -1168,21 +1164,9 @@ chromium_configure() {
 				cbuild_libdir=${cbuild_libdir:2}
 				cbuild_libdir=${cbuild_libdir/% }
 			fi
-			if use qt5; then
-				if tc-is-cross-compiler; then
-					myconf_gn+=" moc_qt5_path=\"${EPREFIX}/${cbuild_libdir}/qt5/bin\""
-				else
-					myconf_gn+=" moc_qt5_path=\"$(qt5_get_bindir)\""
-				fi
-			fi
-			if use qt6; then
-				myconf_gn+=" moc_qt6_path=\"${EPREFIX}/usr/${cbuild_libdir}/qt6/libexec\""
-			fi
-
-			myconf_gn+=" use_qt=true"
-			myconf_gn+=" use_qt6=$(usex qt6 true false)"
+			myconf_gn+=" moc_qt6_path=\"${EPREFIX}/usr/${cbuild_libdir}/qt6/libexec\""
 		else
-			myconf_gn+=" use_qt=false"
+			myconf_gn+=" use_qt6=false"
 		fi
 		myconf_gn+=" ozone_platform_x11=$(usex X true false)"
 		myconf_gn+=" ozone_platform_wayland=$(usex wayland true false)"
@@ -1277,7 +1261,7 @@ chromium_compile() {
 			usr/lib64/chromium-browser/libGLESv2.so
 			usr/lib64/chromium-browser/libVkICD_mock_icd.so
 			usr/lib64/chromium-browser/libVkLayer_khronos_validation.so
-			usr/lib64/chromium-browser/libqt5_shim.so
+			usr/lib64/chromium-browser/libqt6_shim.so
 			usr/lib64/chromium-browser/libvk_swiftshader.so
 			usr/lib64/chromium-browser/libvulkan.so.1
 		"
@@ -1541,12 +1525,6 @@ pkg_postinst() {
 			elog "Chromium prefers GTK3 over GTK4 at runtime. To override this"
 			elog "behavior you need to pass --gtk-version=4, e.g. by adding it"
 			elog "to CHROMIUM_FLAGS in /etc/chromium/default."
-		fi
-		if use qt5 && use qt6; then
-			elog "Chromium automatically selects Qt5 or Qt6 based on your desktop"
-			elog "environment. To override you need to pass --qt-version=5 or"
-			elog "--qt-version=6, e.g. by adding it to CHROMIUM_FLAGS in"
-			elog "/etc/chromium/default."
 		fi
 	fi
 
