@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic autotools
+inherit autotools
 
 DESCRIPTION="An extensible POP3 server with vmail-sql/MySQL support"
 HOMEPAGE="https://savannah.nongnu.org/projects/tpop3d/"
@@ -76,10 +76,6 @@ src_configure() {
 	use tcpd		&& myconf="${myconf} --enable-tcp-wrappers"
 
 	econf ${myconf}
-
-	# Causes crash with "stack smashing attack" on connect, because of bug in
-	# SSP (bug #115285)
-	filter-flags -fstack-protector
 }
 
 src_install() {
