@@ -11,13 +11,17 @@ HOMEPAGE="https://nekovm.org/
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/HaxeFoundation/${PN}.git"
+
+	EGIT_REPO_URI="https://github.com/HaxeFoundation/${PN}"
 else
 	# 2.3.0 -> 2-3-0
 	MY_PV="${PV//./-}"
-	SRC_URI="https://github.com/HaxeFoundation/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+
+	SRC_URI="https://github.com/HaxeFoundation/${PN}/archive/refs/tags/v${MY_PV}.tar.gz
+		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
+
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -29,29 +33,32 @@ RDEPEND="
 	dev-libs/libpcre:=
 	sys-libs/zlib:=
 	apache? ( www-servers/apache:2= )
-	mysql? ( dev-db/mysql:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	sqlite? ( dev-db/sqlite:3= )
 	ssl? (
 		dev-libs/openssl:=
 		net-libs/mbedtls:0=
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 
 src_configure() {
 	# -Werror=strict-aliasing warnings, bug #855641
 	filter-lto
 	append-flags -fno-strict-aliasing
 
-	local mycmakeargs=(
-		-DRUN_LDCONFIG=OFF
-		-DWITH_NEKOML=ON
-		-DWITH_REGEXP=ON
-		-DWITH_UI=OFF
-		-DWITH_APACHE=$(usex apache)
-		-DWITH_MYSQL=$(usex mysql)
-		-DWITH_SQLITE=$(usex sqlite)
-		-DWITH_SSL=$(usex ssl)
+	local -a mycmakeargs=(
+		-DRUN_LDCONFIG="OFF"
+		-DWITH_NEKOML="ON"
+		-DWITH_REGEXP="ON"
+		-DWITH_UI="OFF"
+
+		-DWITH_APACHE="$(usex apache)"
+		-DWITH_MYSQL="$(usex mysql)"
+		-DWITH_SQLITE="$(usex sqlite)"
+		-DWITH_SSL="$(usex ssl)"
 	)
 	cmake_src_configure
 }
