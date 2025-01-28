@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files"
+DESCRIPTION="Suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files"
 HOMEPAGE="https://github.com/OpenTTD/grfcodec"
 
 if [[ ${PV} == 9999 ]] ; then
