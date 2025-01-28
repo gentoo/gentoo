@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit cmake desktop flag-o-matic optfeature python-single-r1 xdg
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
 
-if [[ "${PV}" == *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/scribusproject/scribus"
 	inherit git-r3
 else
@@ -38,7 +38,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[cups,gui,network,opengl,X,xml,widgets]
+	dev-qt/qtbase:6[gui,network,opengl,X,xml,widgets]
 	dev-qt/qtsvg:6
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -70,7 +70,7 @@ RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 
