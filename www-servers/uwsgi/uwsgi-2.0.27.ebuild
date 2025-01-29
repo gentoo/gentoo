@@ -17,7 +17,7 @@ PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
 USE_PHP="php8-1 php8-2" # deps must be registered separately below
 
-POSTGRES_COMPAT=( 13 14 15 16 )
+POSTGRES_COMPAT=( {13..16} )
 
 MY_P="${P/_/-}"
 
@@ -250,9 +250,15 @@ src_configure() {
 each_ruby_compile() {
 	cd "${WORKDIR}/${MY_P}" || die "sed failed"
 
-	UWSGICONFIG_RUBYPATH="${RUBY}" ${EPYTHON} uwsgiconfig.py --plugin plugins/rack gentoo rack_${RUBY##*/} || die "building plugin for ${RUBY} failed"
-	UWSGICONFIG_RUBYPATH="${RUBY}" ${EPYTHON} uwsgiconfig.py --plugin plugins/fiber gentoo fiber_${RUBY##*/}|| die "building fiber plugin for ${RUBY} failed"
-	UWSGICONFIG_RUBYPATH="${RUBY}" ${EPYTHON} uwsgiconfig.py --plugin plugins/rbthreads gentoo rbthreads_${RUBY##*/}|| die "building rbthreads plugin for ${RUBY} failed"
+	UWSGICONFIG_RUBYPATH="${RUBY}" ${EPYTHON} uwsgiconfig.py \
+						--plugin plugins/rack gentoo rack_${RUBY##*/} \
+		|| die "building plugin for ${RUBY} failed"
+	UWSGICONFIG_RUBYPATH="${RUBY}" ${EPYTHON} uwsgiconfig.py \
+						--plugin plugins/fiber gentoo fiber_${RUBY##*/} \
+		|| die "building fiber plugin for ${RUBY} failed"
+	UWSGICONFIG_RUBYPATH="${RUBY}" ${EPYTHON} uwsgiconfig.py \
+						--plugin plugins/rbthreads gentoo rbthreads_${RUBY##*/} \
+		|| die "building rbthreads plugin for ${RUBY} failed"
 }
 
 python_compile_plugins() {
@@ -262,7 +268,8 @@ python_compile_plugins() {
 	PYV=${EPYV/python}
 
 	${EPYTHON} uwsgiconfig.py --plugin plugins/python gentoo ${EPYV} || die "building plugin for ${EPYTHON} failed"
-	${EPYTHON} uwsgiconfig.py --plugin plugins/asyncio gentoo asyncio${PYV} || die "building plugin for asyncio-support in ${EPYTHON} failed"
+	${EPYTHON} uwsgiconfig.py --plugin plugins/asyncio gentoo asyncio${PYV} \
+		|| die "building plugin for asyncio-support in ${EPYTHON} failed"
 }
 
 python_install_symlinks() {
@@ -283,12 +290,14 @@ src_compile() {
 	if use lua ; then
 		# setting the name for the pkg-config file to lua, since that is the name
 		# provided by the wrapper from Lua eclasses
-		UWSGICONFIG_LUAPC="lua" ${EPYTHON} uwsgiconfig.py --plugin plugins/lua gentoo || die "building plugin for lua failed"
+		UWSGICONFIG_LUAPC="lua" ${EPYTHON} uwsgiconfig.py --plugin plugins/lua gentoo \
+			|| die "building plugin for lua failed"
 	fi
 
 	if use php ; then
 		for s in $(php_get_slots); do
-			UWSGICONFIG_PHPDIR="/usr/$(get_libdir)/${s}" ${EPYTHON} uwsgiconfig.py --plugin plugins/php gentoo ${s/.} || die "building plugin for ${s} failed"
+			UWSGICONFIG_PHPDIR="/usr/$(get_libdir)/${s}" ${EPYTHON} uwsgiconfig.py \
+							  --plugin plugins/php gentoo ${s/.} || die "building plugin for ${s} failed"
 		done
 	fi
 
