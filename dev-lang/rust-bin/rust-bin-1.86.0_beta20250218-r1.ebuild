@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 19 )
 LLVM_OPTIONAL="yes"
 
 inherit edo llvm-r1 multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal optfeature
