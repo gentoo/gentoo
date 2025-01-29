@@ -26,9 +26,6 @@ IUSE=""
 
 RDEPEND=">=dev-libs/urdfdom_headers-1.0.0
 	>=dev-libs/console_bridge-0.3:=
-	dev-libs/tinyxml[stl]"
+	dev-libs/tinyxml[stl]
+	dev-libs/tinyxml2"
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"${PN}-3.1.0-gcc15-fix.patch
-)

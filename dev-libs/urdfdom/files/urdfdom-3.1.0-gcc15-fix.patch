@@ -1,0 +1,14 @@
+From: OldManSeph7818 <sschaefering@gmail.com>
+Date: Wed, 29 Jan 2025 11:31
+Subject: [PATCH] fix gcc-15 build
+
+--- a/urdf_parser/include/urdf_parser/urdf_parser.h
++++ b/urdf_parser/include/urdf_parser/urdf_parser.h
+
+@@ -52,2 +52,3 @@
+-#include "exportdecl.h"
+-
++#include "exportdecl.h"
++#include <cstdint>
++
+
