@@ -24,7 +24,7 @@ if [[ ${GAWK_IS_BETA} == yes || ${PV} == *_beta* ]] ; then
 	SRC_URI="https://www.skeeve.com/gawk/${MY_P}.tar.gz"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gawk.asc
-	inherit verify-sig
+	inherit verify-sig flag-o-matic
 
 	SRC_URI="mirror://gnu/gawk/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/gawk/${P}.tar.xz.sig )"
@@ -59,6 +59,8 @@ fi
 
 src_prepare() {
 	default
+
+	use elibc_musl && append-cppflags -D__GNU_LIBRARY__
 
 	# Use symlinks rather than hardlinks, and disable version links
 	sed -i \
