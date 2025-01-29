@@ -26,7 +26,7 @@ REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
 
 RDEPEND="
 	app-accessibility/at-spi2-core
-	dev-java/swt:4.10[cairo,opengl]
+	dev-java/swt:4.34[cairo,opengl]
 	dev-libs/glib:2
 	dev-libs/libxml2:2
 	dev-libs/libxslt
@@ -34,7 +34,6 @@ RDEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/libjpeg-turbo
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2
 	x11-libs/gtk+:3
 	x11-libs/cairo[glib]
 	x11-libs/libX11
@@ -186,7 +185,7 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into "${d}" antlr-tool-4
 	java-pkg_jar-from --build-only --into "${d}" stringtemplate-4
 
-	sed -i "s#__gentoo_swt_jar__#$(java-pkg_getjars swt-4.10)#" "${S}"/build.gradle || die
+	sed -i "s#__gentoo_swt_jar__#$(java-pkg_getjars swt-4.34)#" "${S}"/build.gradle || die
 }
 
 src_configure() {
