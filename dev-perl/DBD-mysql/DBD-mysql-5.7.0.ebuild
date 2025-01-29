@@ -18,7 +18,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 IUSE="mariadb +mysql test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="^^ ( mysql mariadb )"
+# tests do not pass on MariaDB at this time; assumptions about version numbers and binary names
+REQUIRED_USE="^^ ( mysql mariadb ) test? ( mysql )"
 
 DB_DEPENDS="
 	mysql? ( >=dev-db/mysql-connector-c-8:= )
