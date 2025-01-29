@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="ISC"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 DEPEND="
 	virtual/libcrypt:=
