@@ -134,6 +134,7 @@ multilib_src_configure() {
 		-Ddefault-fonts-dirs="${EPREFIX}"/usr/share/fonts
 		-Dadditional-fonts-dirs=$(IFS=, ; echo "${addfonts[*]}" )
 		-Dtemplate-dir="${EPREFIX}"/etc/fonts/conf.avail
+		# TODO: Rust
 		-Dfontations=disabled
 		-Dxml-backend=expat
 
