@@ -87,6 +87,7 @@ DEPEND="
 		dev-qt/linguist-tools:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtbase:6[gui,widgets]
+		dev-qt/qtdeclarative:6
 		dev-qt/qttools:6
 		dev-util/gdbus-codegen
 		x11-libs/gtk+:3
