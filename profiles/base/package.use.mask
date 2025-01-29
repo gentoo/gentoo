@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-29)
+# Prepare cleanup of kde-frameworks/syndication:5
+kde-frameworks/knewstuff:5 opds
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
 # Dependencies e.g. bindgen/netcdf/pypy not keyworded or stable in
 # most places.
