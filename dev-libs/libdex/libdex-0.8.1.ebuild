@@ -24,6 +24,7 @@ RDEPEND="
 	liburing? ( >=sys-libs/liburing-0.7:= )
 	introspection? ( dev-libs/gobject-introspection:= )
 	sysprof? ( dev-util/sysprof-capture:4 )
+	elibc_musl? ( sys-libs/libucontext )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -32,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gi-docgen )
 "
+
+PATCHES=(
+	"${FILESDIR}"/libdex-0.8.1-libucontext-musl.patch
+)
 
 pkg_setup() {
 	if use eventfd && linux_config_exists; then
