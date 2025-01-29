@@ -98,7 +98,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	guile? ( ${GUILE_DEPS} )
 	xml? ( dev-libs/expat )
-	rocm? ( dev-libs/rocdbgapi )
+	rocm? ( <dev-libs/rocdbgapi-6.3 )
 	source-highlight? (
 		dev-util/source-highlight
 	)
