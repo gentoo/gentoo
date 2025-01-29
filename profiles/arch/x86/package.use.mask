@@ -58,13 +58,6 @@ dev-lang/php opcache-jit
 # app-office/lyx is unavailable on x86
 dev-tex/abntex lyx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
-# USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
-# which is package.use.mask'ed on these arches. We cannot mask the
-# combination specifically but in reality kaccounts is useless without
-# additional dev-qt/qtwebengine revdeps.
-kde-frameworks/purpose:5 kaccounts
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub

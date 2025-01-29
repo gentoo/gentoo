@@ -17,13 +17,6 @@ media-libs/libass libunibreak
 # QUIC dependencies are not keyworded
 net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
-# USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
-# which is package.use.mask'ed on these arches. We cannot mask the
-# combination specifically but in reality kaccounts is useless without
-# additional dev-qt/qtwebengine revdeps.
-kde-frameworks/purpose:5 kaccounts
-
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
