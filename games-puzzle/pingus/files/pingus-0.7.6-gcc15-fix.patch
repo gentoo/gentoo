@@ -1,0 +1,23 @@
+From: OldManSeph7818 <sschaefering@gmail.com>
+Date: Wed, 29 Jan, 2025 12:21
+Subject: [PATCH] fix gcc-15 build
+
+--- a/src/engine/display/font.hpp
++++ b/src/engine/display/font.hpp
+
+@@ -22,2 +22,3 @@
+-#include "math/rect.hpp"
+-
++#include "math/rect.hpp"
++#include <cstdint>
++
+
+--- a/src/pingus/collision_map.hpp
++++ b/src/pingus/collision_map.hpp
+
+@@ -23,2 +23,3 @@
+-#include "pingus/groundtype.hpp"
+-
++#include "pingus/groundtype.hpp"
++#include <cstdint>
++

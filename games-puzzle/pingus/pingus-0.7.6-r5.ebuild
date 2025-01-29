@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-python3.patch
 	"${FILESDIR}"/${P}-gcc13.patch
 	"${FILESDIR}"/${P}-ar-detection.patch
+	"${FILESDIR}"/${P}-gcc15-fix.patch
 )
 
 src_compile() {
