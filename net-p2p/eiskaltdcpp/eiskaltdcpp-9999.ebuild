@@ -1,13 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-1 lua5-2 )
-CMAKE_REMOVE_MODULES_LIST="FindASPELL FindLua"
+CMAKE_REMOVE_MODULES_LIST=( FindASPELL FindLua )
 PLOCALES="be bg cs da de el en es eu fr hu ie it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake lua-single plocale xdg-utils
+inherit cmake lua-single plocale strip-linguas xdg-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
@@ -86,6 +86,7 @@ BDEPEND="
 "
 
 DOCS=( AUTHORS ChangeLog.txt )
+PATCHES=( "${FILESDIR}"/${PN}-2.4.2_do-not-fortify-source.patch )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -97,7 +98,13 @@ src_prepare() {
 }
 
 src_configure() {
+	use gtk && strip-linguas -i eiskaltdcpp-gtk/po/
 	local mycmakeargs=(
+		-DBUILD_STATIC=OFF
+		-DCOMPRESS_MANPAGES=OFF
+		-DENABLE_STACKTRACE=OFF
+		-DLOCAL_ASPELL_DATA=OFF
+
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-Dlinguas="$(plocale_get_locales)"
 		-DCREATE_MO=ON
@@ -105,6 +112,8 @@ src_configure() {
 		-DUSE_LIBGNOME2=OFF
 		-DUSE_QT=OFF
 		-DUSE_QT_QML=OFF
+		-DUSE_QT_SQLITE=$(usex sqlite)
+		-DUSE_QT5=$(usex qt5)
 		-DNO_UI_DAEMON=$(usex daemon)
 		-DDBUS_NOTIFY=$(usex dbus)
 		-DWITH_DHT=$(usex dht)
@@ -116,18 +125,12 @@ src_configure() {
 		-DUSE_LIBNOTIFY=$(usex libnotify)
 		-DWITH_DEV_FILES=$(usex !minimal)
 		-DPERL_REGEX=$(usex pcre)
-		-DUSE_QT5=$(usex qt5)
 		-DUSE_ASPELL=$(usex spell)
-		-DLOCAL_ASPELL_DATA=OFF
-		-DUSE_QT_SQLITE=$(usex sqlite)
 		-DUSE_MINIUPNP=$(usex upnp)
 		-DFORCE_XDG=ON
-		-DENABLE_STACKTRACE=OFF
 		-DUSE_GOLD=OFF
 		-DLOCAL_JSONCPP=OFF
-		-DBUILD_STATIC=OFF
 		-DINSTALL_QT_TRANSLATIONS=OFF
-		-DCOMPRESS_MANPAGES=OFF
 		-DUSE_CLI_JSONRPC=$(usex cli)
 		-DJSONRPC_DAEMON=$(usex daemon)
 	)

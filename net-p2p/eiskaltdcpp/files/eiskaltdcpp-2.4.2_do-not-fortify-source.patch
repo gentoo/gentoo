@@ -1,0 +1,22 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+https://bugs.gentoo.org/895806
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ae08c726..dcac08e2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -293,7 +293,6 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ if (CMAKE_CXX_COMPILER_ID STREQUAL GNU OR CMAKE_CXX_COMPILER_ID STREQUAL Clang)
+     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -pipe -Wformat -Werror=format-security")
+-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -D_FORTIFY_SOURCE=2")
+     if (USE_GOLD)
+         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fuse-linker-plugin")
+         set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fuse-linker-plugin")
+-- 
+2.45.2
+
