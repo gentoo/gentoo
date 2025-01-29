@@ -281,8 +281,7 @@ multilib_src_configure() {
 	if use icu; then
 		# Support ICU extension.
 		# https://sqlite.org/compile.html#enable_icu
-		append-cppflags -DSQLITE_ENABLE_ICU
-		sed -e "s/^TLIBS = @LIBS@/& -licui18n -licuuc/" -i Makefile.in || die "sed failed"
+		options+=( --with-icu-config)
 	fi
 
 	options+=(
