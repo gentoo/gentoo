@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	virtual/pkgconfig
 "
+# tests also need autoship package but that's not packaged in gentoo
 RDEPEND="dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
 	media-libs/ganv
@@ -32,7 +33,12 @@ RDEPEND="dev-cpp/glibmm:2
 	jack-dbus? (
 		dev-libs/dbus-glib
 		sys-apps/dbus
-	)"
+	)
+	test? (
+		dev-util/cppcheck
+		dev-util/reuse
+	)
+"
 DEPEND="${RDEPEND}
 	dev-libs/boost
 	>=dev-libs/libfmt-9:="
@@ -44,7 +50,7 @@ src_configure() {
 		$(meson_feature alsa)
 		$(meson_feature jack)
 		$(meson_feature jack-dbus jack_dbus)
-		$(meson_feature test tests)
+		$(meson_use test lint)
 	)
 	meson_src_configure
 }
