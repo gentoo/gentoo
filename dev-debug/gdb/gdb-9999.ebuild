@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -102,7 +102,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	guile? ( ${GUILE_DEPS} )
 	xml? ( dev-libs/expat )
-	rocm? ( dev-libs/rocdbgapi )
+	rocm? ( >=dev-libs/rocdbgapi-6.3 )
 	source-highlight? (
 		dev-util/source-highlight
 	)
