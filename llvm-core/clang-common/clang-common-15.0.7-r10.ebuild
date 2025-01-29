@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
-	hardened stricter
+	hardened
 "
 
 PDEPEND="
@@ -143,22 +143,6 @@ src_install() {
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			-D_LIBCPP_ENABLE_ASSERTIONS=1
-		EOF
-	fi
-
-	if use stricter; then
-		newins - gentoo-stricter.cfg <<-EOF
-			# This file increases the strictness of older clang versions
-			# to match the newest upstream version.
-
-			# clang-16 defaults
-			-Werror=implicit-function-declaration
-			-Werror=implicit-int
-			-Werror=incompatible-function-pointer-types
-		EOF
-
-		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
-			@gentoo-stricter.cfg
 		EOF
 	fi
 
