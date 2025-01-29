@@ -120,6 +120,7 @@ app-alternatives/ninja samurai
 # https://buildd.debian.org/status/logs.php?pkg=weston&arch=alpha
 gui-libs/gtk wayland
 dev-libs/libportal wayland
+app-i18n/ibus wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # sci-physics/bullet not keyworded here (#908240)

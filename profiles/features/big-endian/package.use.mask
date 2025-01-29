@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2024-06-05)
@@ -43,6 +43,7 @@ mail-client/thunderbird system-av1
 # dev-libs/weston casualties (#833010)
 # https://gitlab.freedesktop.org/wayland/weston/-/issues/739
 gui-libs/gtk wayland
+app-i18n/ibus wayland
 gnome-base/gnome-control-center wayland
 sys-apps/xdg-desktop-portal-gnome wayland
 net-libs/webkit-gtk:6 wayland
