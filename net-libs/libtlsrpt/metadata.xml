@@ -5,6 +5,6 @@
 		<email>mschiff@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">sys4/tlsrpt</remote-id>
+		<remote-id type="github">sys4/libtlsrpt</remote-id>
 	</upstream>
 </pkgmetadata>
