@@ -39,6 +39,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/types-gdb[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
+distutils_enable_sphinx doc
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 	cd testsuite/tests
@@ -70,6 +72,7 @@ python_compile_all() {
 	gprbuild -j$(makeopts_jobs) -p -v \
 		-P sigsegv_handler/langkit_sigsegv_handler.gpr -XBUILD_MODE=dev \
 		-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
+	sphinx_compile_all
 }
 
 python_test_all() {
@@ -105,4 +108,5 @@ python_install_all() {
 	fi
 	gprinstall -v -P sigsegv_handler/langkit_sigsegv_handler.gpr -p -XBUILD_MODE=dev \
 		--prefix="${D}"/usr || die
+	einstalldocs
 }
