@@ -1,0 +1,40 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/commit/7c082953381038d5c35820cba939047d708bbb5a
+
+From 7c082953381038d5c35820cba939047d708bbb5a Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Mon, 27 Jan 2025 11:24:19 +0900
+Subject: [PATCH] meson: set WORDS_BIGENDIAN
+
+Fixes https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/446
+---
+ meson.build | 1 +
+ src/fcmd5.h | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 9e9993a2..5aacfc5e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -181,6 +181,7 @@ conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+ conf.set_quoted('PACKAGE_STRING', '@0@ @1@'.format(meson.project_name(), meson.project_version()))
+ conf.set_quoted('PACKAGE_BUGREPORT', 'https://gitlab.freedesktop.org/fontconfig/fontconfig/issues/new')
+ conf.set_quoted('PACKAGE_URL', '')
++conf.set('WORDS_BIGENDIAN', (host_machine.endian() == 'big').to_int())
+ 
+ if host_machine.system() == 'windows'
+   conf.set('EXEEXT', '.exe')
+diff --git a/src/fcmd5.h b/src/fcmd5.h
+index 7e8a6e1e..bf507285 100644
+--- a/src/fcmd5.h
++++ b/src/fcmd5.h
+@@ -27,7 +27,7 @@ static void MD5Update(struct MD5Context *ctx, const unsigned char *buf, unsigned
+ static void MD5Final(unsigned char digest[16], struct MD5Context *ctx);
+ static void MD5Transform(FcChar32 buf[4], FcChar32 in[16]);
+ 
+-#ifndef WORDS_BIGENDIAN
++#if !defined(WORDS_BIGENDIAN) || !WORDS_BIGENDIAN
+ #define byteReverse(buf, len)	/* Nothing */
+ #else
+ /*
+-- 
+GitLab

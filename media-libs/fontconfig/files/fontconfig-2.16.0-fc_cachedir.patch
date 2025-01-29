@@ -1,0 +1,30 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/commit/9b864e8ceb480c31cd76ce3fe1d6215f8655ec55
+
+From 9b864e8ceb480c31cd76ce3fe1d6215f8655ec55 Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Mon, 20 Jan 2025 12:08:36 +0900
+Subject: [PATCH] meson: create fc_cachedir at the installation time
+
+Fixes https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/445
+---
+ meson.build | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 4439758d..85968b29 100644
+--- a/meson.build
++++ b/meson.build
+@@ -550,6 +550,11 @@ if not meson.is_subproject()
+   meson.add_dist_script('build-aux/meson-dist-autotools.py')
+ endif
+ 
++if host_machine.system() != 'windows'
++  install_emptydir(fc_cachedir,
++                   install_tag: 'runtime')
++endif
++
+ # Summary
+ doc_targets = get_variable('doc_targets', [])
+ 
+-- 
+GitLab
