@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}"/${SLOT}/respect-cc.patch
 	"${FILESDIR}"/${SLOT}/strip-blank-elements-flags.patch
 	"${FILESDIR}"/${SLOT}/antlr-deps.patch
+	"${FILESDIR}"/${SLOT}/various-ftbfs.patch
 )
 
 egradle() {

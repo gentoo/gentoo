@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}"/${SLOT}/respect-cc.patch
 	"${FILESDIR}"/${SLOT}/strip-blank-elements-flags.patch
 	"${FILESDIR}"/${SLOT}/antlr-deps.patch
+	"${FILESDIR}"/${SLOT}/various-ftbfs.patch
 
 	# https://github.com/openjdk/jfx/pull/1256: fix build failure with gradle 8.5
 	"${FILESDIR}"/${SLOT}/PR1256-14877233e1f15f400b84cccd79c0171a911298d8.patch
