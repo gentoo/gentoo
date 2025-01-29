@@ -20,5 +20,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">eduvpn/python-eduvpn-client</remote-id>
+		<remote-id type="codeberg">eduVPN/linux-app</remote-id>
 	</upstream>
 </pkgmetadata>
