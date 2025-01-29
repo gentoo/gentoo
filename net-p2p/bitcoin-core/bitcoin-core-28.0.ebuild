@@ -19,14 +19,13 @@ SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +man nat-pmp +qrcode +sqlite system-leveldb +system-libsecp256k1 systemtap test test-full upnp zeromq"
+IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +man nat-pmp +qrcode +sqlite +system-libsecp256k1 systemtap test test-full upnp zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	dbus? ( gui )
 	kde? ( gui )
 	qrcode? ( gui )
-	system-leveldb? ( || ( daemon gui ) )
 	test-full? ( test )
 "
 # dev-libs/univalue is now bundled, as upstream dropped support for system copy
@@ -54,7 +53,6 @@ RDEPEND="
 	nat-pmp? ( >=net-libs/libnatpmp-20230423:= )
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
 	sqlite? ( >=dev-db/sqlite-3.38.5:= )
-	system-leveldb? ( virtual/bitcoin-leveldb )
 	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.4.0:=[ellswift,extrakeys,recovery,schnorr] )
 	upnp? ( >=net-libs/miniupnpc-2.2.7:= )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
@@ -140,7 +138,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	! use system-leveldb || rm -r src/leveldb || die
 	if use system-libsecp256k1 ; then
 		rm -r src/secp256k1 || die
 		sed -e '/^DIST_SUBDIRS *=/s/\bsecp256k1\b//' -i src/Makefile.am || die
@@ -186,7 +183,6 @@ src_configure() {
 		$(use_with daemon)
 		$(use_with gui gui qt5)
 		$(use_with dbus qtdbus)
-		$(use_with system-leveldb)
 		$(use_with system-libsecp256k1)
 	)
 	econf "${myeconfargs[@]}"
