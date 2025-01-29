@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Endpoint turns a Linux machine with a firewire card into an SBP-2 device"
 HOMEPAGE="http://oss.oracle.com/projects/endpoint/"
@@ -21,6 +21,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-errormessages.patch
+	"${FILESDIR}"/${P}-impl-exit.patch
+	"${FILESDIR}"/${P}-ar.patch
 )
 
 src_install() {
