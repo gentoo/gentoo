@@ -281,7 +281,7 @@ multilib_src_configure() {
 	if use icu; then
 		# Support ICU extension.
 		# https://sqlite.org/compile.html#enable_icu
-		options+=( --with-icu-config)
+		options+=( --with-icu-config )
 	fi
 
 	options+=(
