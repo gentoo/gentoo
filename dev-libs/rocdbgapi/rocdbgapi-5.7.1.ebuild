@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,7 @@ SLOT="0/$(ver_cut 1-2)"
 IUSE="doc"
 
 BDEPEND="
+	dev-build/cmake
 	doc? (
 		app-text/doxygen[dot]
 		virtual/latex-base
@@ -26,6 +27,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/rocm-comgr:${SLOT}
 	dev-libs/rocr-runtime:${SLOT}
+	sys-apps/hwdata
 "
 DEPEND="${RDEPEND}"
 
