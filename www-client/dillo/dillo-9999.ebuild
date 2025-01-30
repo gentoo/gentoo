@@ -69,6 +69,7 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable ssl tls)
 		$(use_enable xembed)
+		--enable-svg # Vendored nanosvg dep, no point in disabling
 		--enable-ipv6
 	)
 
