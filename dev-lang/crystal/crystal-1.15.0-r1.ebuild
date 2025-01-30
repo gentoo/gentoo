@@ -55,6 +55,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.27.0-gentoo-tests-long-unix-2.patch"
 )
 
+src_prepare() {
+	default
+
+	# Link against system boehm-gc instead of upstream prebuilt static library
+	# bug #929123, #929989 and #931100
+	# https://github.com/crystal-lang/crystal/issues/12035#issuecomment-2522606612
+	rm "${WORKDIR}/crystal-${BV}"/lib/crystal/libgc.a || die
+}
+
 src_configure() {
 	local bootstrap_path="${WORKDIR}/${PN}-${BV}/bin"
 	if [[ ! -d "${bootstrap_path}" ]] ; then
