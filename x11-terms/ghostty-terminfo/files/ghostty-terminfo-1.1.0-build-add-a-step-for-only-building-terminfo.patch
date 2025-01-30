@@ -1,0 +1,28 @@
+From a6509877220afdd0385f1f44a9892478c27eb3c8 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Thu, 30 Jan 2025 22:59:57 +0000
+Subject: [PATCH] build: Add a step for only building terminfo
+
+Avoids building the rest of Ghostty which takes quite a while.
+---
+ src/build/GhosttyResources.zig | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/build/GhosttyResources.zig b/src/build/GhosttyResources.zig
+index a7ff40cb..6f949545 100644
+--- a/src/build/GhosttyResources.zig
++++ b/src/build/GhosttyResources.zig
+@@ -75,6 +75,11 @@ pub fn init(b: *std.Build, cfg: *const Config) !GhosttyResources {
+             copy_step.addArg(b.fmt("{s}/share", .{b.install_path}));
+             copy_step.step.dependOn(&mkdir_step.step);
+             try steps.append(&copy_step.step);
++
++            // This step is to generate the terminfo data without building the rest of
++            // Ghostty which takes a long time.
++            const terminfo_step = b.step("terminfo", "Install the terminfo database");
++            terminfo_step.dependOn(&copy_step.step);
+         }
+     }
+
+--
+2.45.3
