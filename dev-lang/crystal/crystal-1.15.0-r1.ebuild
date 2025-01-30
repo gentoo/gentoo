@@ -53,6 +53,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.27.0-gentoo-tests-long-unix.patch"
 	"${FILESDIR}/${PN}-0.27.0-gentoo-tests-long-unix-2.patch"
+	"${FILESDIR}/${PN}-1.15.0-remove-enviroment-clearing-tests.patch"
 )
 
 src_prepare() {
