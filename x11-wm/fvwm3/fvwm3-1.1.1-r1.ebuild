@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ else
 	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]]; then
 		SRC_URI+=" https://deps.gentoo.zip/x11-wm/fvwm3/${P}-docs.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="GPL-2+ FVWM
