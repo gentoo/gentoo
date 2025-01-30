@@ -149,6 +149,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.0-doc-deps.patch
+	"${FILESDIR}"/${PN}-2.48.1-parallel-build.patch
 )
 
 pkg_setup() {
