@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-01-30)
+# Breaks the only consumer of pytest-bdd (qutebrowser),
+# not looked into yet but mask for now as it prevents
+# using it to test PyQt6 for the upcoming Qt bump.
+>=dev-python/gherkin-official-31.0.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-30)
 # Last release 15 years ago, dead upstream (never imported from kdesvn),
 # no revdeps probably since amarok last-rites. Removal on 2025-02-27.
