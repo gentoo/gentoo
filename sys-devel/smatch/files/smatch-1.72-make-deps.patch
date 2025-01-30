@@ -1,0 +1,14 @@
+Missing build dependency was found with MAKEOPTS=--shuffle=3383668468
+and solved by expanding targets' dependencies in makefile.
+https://bugs.gentoo.org/882047
+--- a/Makefile
++++ b/Makefile
+@@ -400,7 +400,7 @@ cflags   += $($(*)-cflags) $(CPPFLAGS) $(CFLAGS)
+ selfcheck: $(OBJS:.o=.sc)
+ 
+ SPARSE_VERSION:=$(shell git describe --dirty 2>/dev/null || echo '$(VERSION)')
+-lib.o: version.h
++lib.o options.o compile-i386.o: version.h
+ version.h: FORCE
+ 	@echo '#define SPARSE_VERSION "$(SPARSE_VERSION)"' > version.h.tmp
+ 	@if cmp -s version.h version.h.tmp; then \
