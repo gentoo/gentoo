@@ -591,16 +591,4 @@ pkg_postinst() {
 		elog "enables the use of the GSP firmware by default. *If* experience regressions,"
 		elog "please see '${EROOT}/etc/modprobe.d/nvidia.conf' to optionally disable."
 	fi
-
-	# not wayland-specific, but modeset=1 (needed by fbdev=1) is only
-	# a default with USE=wayland (likely to be noise for others)
-	if use wayland && [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 570
-	then
-		elog
-		elog "This version of ${PN} enables 'fbdev=1' by default, this should"
-		elog "not be a concern for most users but *if* experience regressions such as"
-		elog "issues switching between X/wayland and the tty console or resuming from"
-		elog "sleep, see '${EROOT}/etc/modprobe.d/nvidia.conf' to try disabling it."
-	fi
 }
