@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,9 @@ HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-CompilerSupport"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-RDEPEND=">=dev-libs/rocm-device-libs-${PV}
+RDEPEND="
+	>=dev-libs/rocm-device-libs-${PV}
+	<dev-libs/rocm-device-libs-6
 	llvm-core/clang:${LLVM_MAX_SLOT}=
 	llvm-core/clang-runtime:=
 	llvm-core/lld:${LLVM_MAX_SLOT}="
