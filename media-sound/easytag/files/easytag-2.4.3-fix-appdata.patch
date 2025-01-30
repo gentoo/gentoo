@@ -1,0 +1,11 @@
+--- a/data/easytag.appdata.xml.in
++++ b/data/easytag.appdata.xml.in
+@@ -30,4 +30,8 @@
+     </kudos>
+     <update_contact>amigadave@amigadave.com</update_contact>
+     <translation type="gettext">easytag</translation>
++    <content_rating type="oars-1.1" />
++    <releases>
++    	<release version="2.4.3" date="2016-12-05"/>
++    </releases>
+ </component>
