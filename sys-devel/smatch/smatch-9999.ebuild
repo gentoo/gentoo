@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 if [[ ${PV} == 9999 ]] ; then
@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]] ; then
 		https://repo.or.cz/r/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="http://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gentoo/${P}.tar.gz"
 	# Update on bumps
 	S="${WORKDIR}"/${P}-7f4b936
@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="Static analysis tool for C"
-HOMEPAGE="http://smatch.sourceforge.net/"
+HOMEPAGE="https://smatch.sourceforge.net/"
 
 # bug #853733
 LICENSE="GPL-2+ MIT OSL-1.1"
@@ -62,8 +62,8 @@ src_test() {
 
 src_install() {
 	# default install target installs a lot of sparse cruft
-	dobin smatch
+	dobin smatch cgcc
 	insinto /usr/share/smatch/smatch_data
 	doins smatch_data/*
-	dodoc FAQ README
+	dodoc FAQ Documentation/smatch.rst
 }
