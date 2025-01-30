@@ -1,0 +1,199 @@
+diff --git a/devices/hip/CMakeLists.txt b/devices/hip/CMakeLists.txt
+index e9a9bec..b738d5b 100644
+--- a/devices/hip/CMakeLists.txt
++++ b/devices/hip/CMakeLists.txt
+@@ -53,12 +53,6 @@ set_target_properties(OpenImageDenoise_device_hip PROPERTIES
+   CXX_STANDARD 17
+ )
+ 
+-target_include_directories(OpenImageDenoise_device_hip
+-  PRIVATE
+-    "${OIDN_ROOT_SOURCE_DIR}/external/composable_kernel/include"
+-    "${OIDN_ROOT_SOURCE_DIR}/external/composable_kernel/library/include"
+-)
+-
+ set_source_files_properties(
+   ck_conv_wmma.cpp
+   PROPERTIES COMPILE_FLAGS "-mcumode -mno-wavefrontsize64" # Navi3x optimizations
+diff --git a/devices/hip/ck_conv_dl.cpp b/devices/hip/ck_conv_dl.cpp
+index 1aacfe8..e99da53 100644
+--- a/devices/hip/ck_conv_dl.cpp
++++ b/devices/hip/ck_conv_dl.cpp
+@@ -3,7 +3,7 @@
+ 
+ #include "hip_conv.h"
+ #include "ck_conv.h"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ OIDN_NAMESPACE_BEGIN
+ 
+diff --git a/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp16.cpp b/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp16.cpp
+index db5a7f0..2f384cb 100644
+--- a/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp16.cpp
++++ b/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp16.cpp
+@@ -3,7 +3,7 @@
+ 
+ #include "convnd_fwd_dl_common.hpp"
+ 
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ #include "ck/library/utility/convolution_host_tensor_descriptor_helper.hpp"
+ 
+diff --git a/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp32.cpp b/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp32.cpp
+index 964d784..aa56666 100644
+--- a/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp32.cpp
++++ b/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_fp32.cpp
+@@ -3,7 +3,7 @@
+ 
+ #include "convnd_fwd_dl_common.hpp"
+ 
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ #include "ck/library/utility/convolution_host_tensor_descriptor_helper.hpp"
+ 
+diff --git a/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_int8.cpp b/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_int8.cpp
+index b0cd88f..15b554c 100644
+--- a/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_int8.cpp
++++ b/external/composable_kernel/example/09_convnd_fwd/convnd_fwd_dl_int8.cpp
+@@ -3,7 +3,7 @@
+ 
+ #include "convnd_fwd_dl_common.hpp"
+ 
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ #include "ck/library/utility/convolution_host_tensor_descriptor_helper.hpp"
+ 
+diff --git a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perchannel_quantization_int8.cpp b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perchannel_quantization_int8.cpp
+index 5c445d9..49d2ba3 100644
+--- a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perchannel_quantization_int8.cpp
++++ b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perchannel_quantization_int8.cpp
+@@ -2,7 +2,7 @@
+ // Copyright (c) 2018-2022, Advanced Micro Devices, Inc. All rights reserved.
+ 
+ #include "common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ using InDataType           = int8_t;
+ using WeiDataType          = int8_t;
+diff --git a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perlayer_quantization_int8.cpp b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perlayer_quantization_int8.cpp
+index 0ff85f0..661d744 100644
+--- a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perlayer_quantization_int8.cpp
++++ b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_relu_perlayer_quantization_int8.cpp
+@@ -2,7 +2,7 @@
+ // Copyright (c) 2018-2022, Advanced Micro Devices, Inc. All rights reserved.
+ 
+ #include "common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ using InDataType   = int8_t;
+ using WeiDataType  = int8_t;
+diff --git a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perchannel_quantization_int8.cpp b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perchannel_quantization_int8.cpp
+index f8f996d..65cded3 100644
+--- a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perchannel_quantization_int8.cpp
++++ b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perchannel_quantization_int8.cpp
+@@ -2,7 +2,7 @@
+ // Copyright (c) 2018-2022, Advanced Micro Devices, Inc. All rights reserved.
+ 
+ #include "common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ using InDataType           = int8_t;
+ using WeiDataType          = int8_t;
+diff --git a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perlayer_quantization_int8.cpp b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perlayer_quantization_int8.cpp
+index 3b25fec..ca5f217 100644
+--- a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perlayer_quantization_int8.cpp
++++ b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_bias_tanh_perlayer_quantization_int8.cpp
+@@ -2,7 +2,7 @@
+ // Copyright (c) 2018-2022, Advanced Micro Devices, Inc. All rights reserved.
+ 
+ #include "common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ using InDataType   = int8_t;
+ using WeiDataType  = int8_t;
+diff --git a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perchannel_quantization_int8.cpp b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perchannel_quantization_int8.cpp
+index a98a1e2..88b9ccc 100644
+--- a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perchannel_quantization_int8.cpp
++++ b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perchannel_quantization_int8.cpp
+@@ -2,7 +2,7 @@
+ // Copyright (c) 2018-2022, Advanced Micro Devices, Inc. All rights reserved.
+ 
+ #include "common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ using InDataType           = int8_t;
+ using WeiDataType          = int8_t;
+diff --git a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perlayer_quantization_int8.cpp b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perlayer_quantization_int8.cpp
+index 262594d..f5678e7 100644
+--- a/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perlayer_quantization_int8.cpp
++++ b/external/composable_kernel/example/40_conv2d_fwd_quantization/conv2d_fwd_dl_perlayer_quantization_int8.cpp
+@@ -2,7 +2,7 @@
+ // Copyright (c) 2018-2022, Advanced Micro Devices, Inc. All rights reserved.
+ 
+ #include "common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ using InDataType  = int8_t;
+ using WeiDataType = int8_t;
+diff --git a/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f16_instance.cpp b/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f16_instance.cpp
+index fc18b3c..020d93e 100644
+--- a/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f16_instance.cpp
++++ b/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f16_instance.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include "ck/ck.hpp"
+ #include "ck/tensor_operation/gpu/device/tensor_layout.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ #include "ck/library/tensor_operation_instance/add_device_operation_instance.hpp"
+ #include "ck/tensor_operation/gpu/device/convolution_forward_specialization.hpp"
+ #include "ck/tensor_operation/gpu/device/gemm_specialization.hpp"
+diff --git a/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f32_instance.cpp b/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f32_instance.cpp
+index 648b396..42825ce 100644
+--- a/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f32_instance.cpp
++++ b/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_f32_instance.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include "ck/ck.hpp"
+ #include "ck/tensor_operation/gpu/device/tensor_layout.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ #include "ck/library/tensor_operation_instance/add_device_operation_instance.hpp"
+ #include "ck/tensor_operation/gpu/device/convolution_forward_specialization.hpp"
+ #include "ck/tensor_operation/gpu/device/gemm_specialization.hpp"
+diff --git a/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_int8_instance.cpp b/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_int8_instance.cpp
+index 1cb5d06..ab74235 100644
+--- a/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_int8_instance.cpp
++++ b/external/composable_kernel/library/src/tensor_operation_instance/gpu/grouped_conv2d_fwd/device_grouped_conv2d_fwd_dl_gnhwc_gkyxc_gnhwk_int8_instance.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include "ck/ck.hpp"
+ #include "ck/tensor_operation/gpu/device/tensor_layout.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ #include "ck/library/tensor_operation_instance/add_device_operation_instance.hpp"
+ #include "ck/tensor_operation/gpu/device/convolution_forward_specialization.hpp"
+ #include "ck/tensor_operation/gpu/device/gemm_specialization.hpp"
+diff --git a/external/composable_kernel/library/src/tensor_operation_instance/gpu/quantization/conv2d_fwd/device_conv2d_dl_int8_instance.hpp b/external/composable_kernel/library/src/tensor_operation_instance/gpu/quantization/conv2d_fwd/device_conv2d_dl_int8_instance.hpp
+index 3c4987f..62ee1a4 100644
+--- a/external/composable_kernel/library/src/tensor_operation_instance/gpu/quantization/conv2d_fwd/device_conv2d_dl_int8_instance.hpp
++++ b/external/composable_kernel/library/src/tensor_operation_instance/gpu/quantization/conv2d_fwd/device_conv2d_dl_int8_instance.hpp
+@@ -4,7 +4,7 @@
+ #pragma once
+ 
+ #include "conv2d_quantization_common.hpp"
+-#include "ck/tensor_operation/gpu/device/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
++#include "ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp"
+ 
+ namespace ck {
+ namespace tensor_operation {

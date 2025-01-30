@@ -1,0 +1,28 @@
+diff --git a/devices/hip/ck_conv_wmma.cpp b/devices/hip/ck_conv_wmma.cpp
+index 144374d..1bb2f7f 100644
+--- a/devices/hip/ck_conv_wmma.cpp
++++ b/devices/hip/ck_conv_wmma.cpp
+@@ -48,19 +48,20 @@ OIDN_NAMESPACE_BEGIN
+         OutLayout,               // ELayout
+         InDataType,              // ADataType
+         WeiDataType,             // BDataType
+-        ck::Tuple<BiasDataType>, // DsDataType
+-        OutDataType,             // EDataType
+         AccDataType,             // AccDataType
+         CShuffleDataType,        // CShuffleDataType
++        ck::Tuple<BiasDataType>, // DsDataType
++        OutDataType,             // EDataType
+         InElementOp,             // AElementwiseOperation
+         WeiElementOp,            // BElementwiseOperation
+         OutElementOp,            // CDEElementwiseOperation
+         ConvSpec,                // ConvForwardSpecialization
+         GemmSpec,                // GemmSpecialization
++        1,                       // NumGemmKPrefetchStage
+         256,                     // BlockSize
+         128,                     // MPerBlock
+         64,                      // NPerBlock
+-        4,                       // K0PerBlock
++        32,                      // KPerBlock
+         8,                       // K1
+         16,                      // MPerWMMA
+         16,                      // NPerWMMA
