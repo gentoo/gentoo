@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dmarkham/enumer/archive/refs/tags/v${PV}.tar.gz -> $
 LICENSE="BSD-2"
 LICENSE+=" BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 DOCS=(README.md)
 
 src_prepare() {
