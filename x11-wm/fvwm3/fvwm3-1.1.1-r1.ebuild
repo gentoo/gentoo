@@ -25,7 +25,7 @@ else
 	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]]; then
 		SRC_URI+=" https://deps.gentoo.zip/x11-wm/fvwm3/${P}-docs.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 fi
 
 LICENSE="GPL-2+ FVWM
