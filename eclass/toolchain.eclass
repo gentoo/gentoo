@@ -2266,6 +2266,8 @@ gcc_do_make() {
 
 	local emakeargs=(
 		LDFLAGS="${LDFLAGS}"
+		# TODO: Can we replace this with --enable-version-specific-runtime-libs
+		# these days?
 		LIBPATH="${LIBPATH}"
 	)
 
