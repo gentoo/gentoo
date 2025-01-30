@@ -302,10 +302,6 @@ www-servers/xsp
 # No more revdeps, depends on Qt5, bug #942178. Removal on 2025-01-29.
 dev-libs/libqt5pas
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-01)
-# Transitional package without any revdeps left. Removal on 2025-01-31
-kde-apps/konsolepart
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-01)
 # Broken with Qt6 and in wayland sessions. Archived upstream. Has been on life
 # support for several years already.
