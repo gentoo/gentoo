@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,9 +16,10 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-libs/rocr-runtime
-	dev-util/roctracer
-	"
+RDEPEND="
+	=dev-libs/rocr-runtime-5*
+	=dev-util/roctracer-5*
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
