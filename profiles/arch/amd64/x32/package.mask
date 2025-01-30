@@ -102,7 +102,6 @@ kde-apps/akonadiconsole
 kde-apps/akregator
 kde-apps/calendarjanitor
 kde-apps/calendarsupport
-<kde-apps/cantor-24.11.80
 kde-apps/eventviews
 kde-apps/grantlee-editor
 kde-apps/incidenceeditor
