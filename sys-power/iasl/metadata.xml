@@ -4,4 +4,17 @@
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>saket.dumbre@intel.com</email>
+			<name>Saket Dumbre</name>
+		</maintainer>
+		<doc lang="en">https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/documentation.html</doc>
+		<bugs-to>https://github.com/acpica/acpica/issues</bugs-to>
+		<remote-id type="github">acpica/acpica</remote-id>
+	</upstream>
+	<use>
+		<flag name="examples">Install acpiexamples binary</flag>
+		<flag name="test">Perform tests (slow!) and install compressed test results</flag>
+	</use>
 </pkgmetadata>
