@@ -8,7 +8,7 @@ BV_AMD64="${BV}-linux-x86_64"
 
 LLVM_COMPAT=( {18..19} )
 
-inherit bash-completion-r1 llvm-r1 multiprocessing toolchain-funcs
+inherit llvm-r1 multiprocessing shell-completion toolchain-funcs
 
 DESCRIPTION="The Crystal Programming Language"
 HOMEPAGE="https://crystal-lang.org/
@@ -110,8 +110,8 @@ src_install() {
 	exeinto /usr/bin
 	doexe .build/crystal
 
-	insinto /usr/share/zsh/site-functions
-	newins etc/completion.zsh _crystal
+	newzshcomp etc/completion.zsh _crystal
+	newfishcomp etc/completion.fish crystal.fish
 
 	dodoc -r samples
 	doman "man/${PN}.1"
