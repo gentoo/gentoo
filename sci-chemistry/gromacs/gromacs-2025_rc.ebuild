@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -102,11 +102,6 @@ REQUIRED_USE="
 DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-gcc-15.patch"
-	"${FILESDIR}/${PN}-2025.0-beta-fix-man-build.patch"
-)
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
