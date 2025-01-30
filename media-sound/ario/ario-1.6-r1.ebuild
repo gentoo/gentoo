@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}-player/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="dbus debug +idle nls taglib zeroconf"
 
 RDEPEND="dev-libs/glib:2
