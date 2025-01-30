@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    vopono is a tool to run applications through VPN tunnels via temporary network namespaces. This
+    allows you to run only a handful of applications through different VPNs simultaneously, whilst
+    keeping your main connection as normal.
+
+    vopono includes built-in killswitches for both Wireguard and OpenVPN.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">jamesmcm/vopono</remote-id>
+  </upstream>
+</pkgmetadata>
