@@ -48,13 +48,13 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.4
 	app-text/yelp-tools
 	dev-util/glib-utils
+	dev-libs/appstream-glib
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50
 	>=sys-devel/gettext-0.18.3.2
 	virtual/pkgconfig
 	test? (
-		dev-libs/appstream-glib
 		>=dev-util/desktop-file-utils-0.22
 	)"
 
@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ogg-corruption.patch
 	"${FILESDIR}"/${P}-fix-build-taglib2.patch
 	"${FILESDIR}"/${P}-fix-check-id3.patch
+	"${FILESDIR}"/${P}-fix-appdata.patch
 )
 
 src_configure() {
