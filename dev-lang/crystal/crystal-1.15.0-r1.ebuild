@@ -86,6 +86,7 @@ src_configure() {
 		stats=1
 		threads="$(makeopts_jobs)"
 		verbose=1
+		check_lld= # disable opportunistic lld
 
 		AR="$(tc-getAR)"
 		CC="$(tc-getCC)"
