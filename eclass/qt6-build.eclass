@@ -81,12 +81,13 @@ readonly QT6_BUILD_TYPE
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=6/${PV%%_*}
+SLOT="6/${PV%%_*}"
+IUSE="custom-cflags"
 
 if [[ ${QT6_RESTRICT_TESTS} ]]; then
 	RESTRICT="test"
 else
-	IUSE="test"
+	IUSE+=" test"
 	RESTRICT="!test? ( test )"
 fi
 
@@ -128,18 +129,21 @@ qt6-build_src_prepare() {
 	fi
 
 	_qt6-build_prepare_env
-	_qt6-build_sanitize_cpu_flags
 
-	# LTO cause test failures in several components (e.g. qtcharts,
-	# multimedia, scxml, wayland, webchannel, ...).
-	#
-	# Exact extent/causes unknown, but for some related-sounding bugs:
-	# https://bugreports.qt.io/browse/QTBUG-112332
-	# https://bugreports.qt.io/browse/QTBUG-115731
-	#
-	# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
-	# still assumed to be generally unsafe either way in current state.
-	in_iuse custom-cflags && use custom-cflags || filter-lto
+	if use !custom-cflags; then
+		_qt6-build_sanitize_cpu_flags
+
+		# LTO cause test failures in several components (e.g. qtcharts,
+		# multimedia, scxml, wayland, webchannel, ...).
+		#
+		# Exact extent/causes unknown, but for some related-sounding bugs:
+		# https://bugreports.qt.io/browse/QTBUG-112332
+		# https://bugreports.qt.io/browse/QTBUG-115731
+		#
+		# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
+		# still assumed to be generally unsafe either way in current state.
+		filter-lto
+	fi
 }
 
 # @FUNCTION: qt6-build_src_configure
@@ -275,83 +279,39 @@ _qt6-build_prepare_env() {
 # @FUNCTION: _qt6-build_sanitize_cpu_flags
 # @INTERNAL
 # @DESCRIPTION:
-# Qt hardly support use of -mno-* or -march=native for unusual CPUs
-# (or VMs) that support incomplete x86-64 feature levels, and attempts
-# to allow this anyway has worked poorly.  This instead tries to detect
-# unusual configurations and fallbacks to generic -march=x86-64* if so
-# (bug #898644,#908420,#913400,#933374).
+# Qt hardly supports use of -mno-* or -march=native for unusual CPUs
+# (or VMs) that support incomplete x86-64 feature levels among other
+# issues such as CPUs with buggy rdrand, and attempts to allow this
+# anyway has worked poorly.  This strips CPU instructions related
+# -m* flags and replaces with the highest -march=x86-64-v* usable as
+# a non-ideal solution (bug #898644,#908420,#913400,#922498,#933374).
 _qt6-build_sanitize_cpu_flags() {
 	# less of an issue with non-amd64, will revisit only if needed
 	use amd64 || return 0
 
 	local cpuflags=(
-		# list of checked cpu features by qtbase in configure.cmake
-		aes avx avx2 avx512{bw,cd,dq,er,f,ifma,pf,vbmi,vbmi2,vl}
-		f16c rdrnd rdseed sha sse2 sse3 sse4_1 sse4_2 ssse3 vaes
-
-		# extras checked by qtbase's qsimd_p.h
-		bmi bmi2 f16c fma lzcnt popcnt
+		# ideally update whenever compilers gain new ones, or could
+		# be offloaded to flag-o-matic if needed by other ebuilds
+		# grep -B 1 'Var(ix86_isa_flags' gcc/config/i386/i386.opt | grep ^m | grep -Ev '^m(16|32|64|x32)'
+		3dnow 3dnowa abm adx aes amx-avx512 amx-bf16 amx-complex
+		amx-fp16 amx-fp8 amx-int8 amx-movrs amx-tf32 amx-tile
+		amx-transpose apxf avx avx10.1-256 avx10.1-512 avx10.2-256
+		avx10.2-512 avx2 avx512bf16 avx512bitalg avx512bw avx512cd
+		avx512dq avx512f avx512fp16 avx512ifma avx512vbmi avx512vbmi2
+		avx512vl avx512vnni avx512vp2intersect avx512vpopcntdq avxifma
+		avxneconvert avxvnni avxvnniint16 avxvnniint8 bmi bmi2 cldemote
+		clflushopt clwb clzero cmpccxadd crc32 cx16 enqcmd evex512 f16c
+		fma fma4 fsgsbase fxsr gfni hle hreset kl lwp lzcnt mmx movbe
+		movdir64b movdiri movrs mwait mwaitx pclmul pconfig pku popcnt
+		prefetchi prfchw ptwrite raoint rdpid rdrnd rdseed rtm sahf
+		serialize sgx sha sha512 shstk sm3 sm4 sse sse2 sse3 sse4
+		sse4.1 sse4.2 sse4a ssse3 tbm tsxldtrk uintr usermsr vaes
+		vpclmulqdq waitpkg wbnoinvd widekl xop xsave xsavec xsaveopt
+		xsaves
 	)
 
-	# extras only needed by chromium in qtwebengine
-	# (see also chromium's ebuild wrt bug #530248,#544702,#546984,#853646)
-	[[ ${PN} == qtwebengine ]] && cpuflags+=(
-		avx512vnni mmx xop
-
-		# unclear if these two are really needed given (current) chromium
-		# does not pass these flags, albeit it may side-disable something
-		# else so keeping as a safety (like chromium's ebuild does)
-		fma4 sse4a
-	)
-
-	# extras for which -mno-* does not matter, but can lead to enabling
-	# other flags when set and breaking the -march=haswell case below
-	# (add more as needed if users use these)
-	local cpuflags_filter_only=(
-		avx512vp2intersect
-	)
-
-	local sanitize
-
-	# check if any known problematic -mno-* C(XX)FLAGS
-	is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))" && sanitize=1
-
-	# check if qsimd_p.h (search for "enable all") will accept -march, and
-	# further check when -march=haswell is appended (which Qt uses for some
-	# parts) given combination with other -m* could lead to partial support
-	if [[ ! -v sanitize ]]; then
-		local flags
-		for flags in '' '-march=haswell'; do
-			: "$($(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} ${flags} - <<-EOF | tail -n 1
-					#if (defined(__AVX2__) && (__BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __POPCNT__) != 6) || \
-						(defined(__AVX512F__) && (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512VL__) != 4)
-					bad
-					#endif
-				EOF
-				pipestatus || die
-			)"
-			if [[ ${_} == bad ]]; then
-				sanitize=1
-				break
-			fi
-		done
-	fi
-
-	# some cpus have broken rdrand/rdseed and it's enabled regardless
-	# with -march=native, Qt detects this and fails (bug #922498)
-	if [[ ! -v sanitize ]] &&
-		! tc-is-cross-compiler &&
-		# the kernel also detects this and removes it from cpuinfo
-		[[ -r /proc/cpuinfo && $(</proc/cpuinfo) != *rdrand* ]] &&
-		tc-cpp-is-true __RDRND__ ${CXXFLAGS} ${CPPFLAGS}
-	then
-		einfo "Detected CPU with (likely) broken rdrand/rdseed (bug #922498)"
-		sanitize=1
-	fi
-
-	[[ -v sanitize ]] || return 0 # *should* be fine as-is
-
-	# determine highest(known) usable x86-64 feature level
+	# determine and the highest(known) usable x86-64 feature level
+	# so users will not lose *all* CPU-specific optimizations
 	local march=$(
 		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 1
 			default
@@ -368,10 +328,11 @@ _qt6-build_sanitize_cpu_flags() {
 		pipestatus || die
 	)
 
-	cpuflags+=("${cpuflags_filter_only[@]}")
 	filter-flags '-march=*' "${cpuflags[@]/#/-m}" "${cpuflags[@]/#/-mno-}"
-	[[ ${march} == x86-64* ]] && append-flags $(test-flags-CXX -march=${march})
-	einfo "C(XX)FLAGS were adjusted due to Qt limitations: ${CXXFLAGS}"
+	[[ ${march} == x86-64* ]] && append-flags $(test-flags-CXX -march="${march}")
+	einfo "C(XX)FLAGS adjusted due to frequent -march=*/-m* issues with Qt:"
+	einfo "    \"${CXXFLAGS}\""
+	einfo "(can override with USE=custom-cflags, but no support will be given)"
 }
 
 fi
