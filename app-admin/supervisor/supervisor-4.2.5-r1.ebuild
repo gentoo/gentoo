@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1 systemd pypi
 
 DESCRIPTION="A system for controlling process state under UNIX"
-HOMEPAGE="http://supervisord.org/ https://pypi.org/project/supervisor/"
+HOMEPAGE="https://supervisord.org/ https://pypi.org/project/supervisor/"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
