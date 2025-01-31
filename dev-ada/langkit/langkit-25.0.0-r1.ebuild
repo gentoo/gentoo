@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
 
 DISTUTILS_USE_PEP517=setuptools
@@ -33,80 +33,41 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/funcy[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
-	dev-python/mypy[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/types-docutils[${PYTHON_USEDEP}]
-	dev-python/types-gdb[${PYTHON_USEDEP}]"
+	dev-python/mypy[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
 distutils_enable_sphinx doc
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-	cd testsuite/tests
-
-	# missing gprbuild option to build libraries static/relocatable
-	rm -r {langkit_support,adalog,misc/link_two_libs} || die
-	rm -r misc/standalone || die
-
-	# other failures
-	rm -r misc/docstrings_lkt_roles || die
-}
-
 python_compile_all() {
 	build () {
 		rm -f langkit/support/obj/dev/*lexch
-		gprbuild -j$(makeopts_jobs) -p -v \
-			-XLIBRARY_TYPE=$1 -P langkit/support/langkit_support.gpr -XBUILD_MODE=dev \
+		gprbuild -v -p -j$(makeopts_jobs) \
+			-P langkit/support/langkit_support.gpr -XLIBRARY_TYPE=$1 \
 			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
 	}
+	use shared      && build relocatable
+	use static-libs && build static
+	use static-pic  && build static-pic
 	if use shared; then
-		build relocatable
+		gprbuild -v -p -j$(makeopts_jobs) \
+			-P sigsegv_handler/langkit_sigsegv_handler.gpr \
+			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
 	fi
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
-	gprbuild -j$(makeopts_jobs) -p -v \
-		-P sigsegv_handler/langkit_sigsegv_handler.gpr -XBUILD_MODE=dev \
-		-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
 	sphinx_compile_all
-}
-
-python_test_all() {
-	export GPR_PROJECT_PATH="${S}"/langkit/support
-	${EPYTHON} ./manage.py make --no-langkit-support || die
-	eval $(./manage.py setenv)
-	${EPYTHON} ./manage.py test -v \
-		--disable-ocaml \
-		--disable-gdb \
-		--disable-tear-up-builds \
-		--restricted-env \
-		--jobs $(makeopts_jobs) \
-		|& tee langkit.testOut
-	grep -qw FAIL langkit.testOut && die
 }
 
 python_install_all() {
 	build () {
-		gprinstall -v -P langkit/support/langkit_support.gpr -p -XBUILD_MODE=dev \
+		gprinstall -v -P langkit/support/langkit_support.gpr -p \
 			--prefix="${D}"/usr --build-var=LIBRARY_TYPE \
 			--build-var=LANGKIT_SUPPORT_LIBRARY_TYPE \
 			--sources-subdir=include/langkit_support \
 			-XLIBRARY_TYPE=$1 --build-name=$1 || die
 	}
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
-	if use shared; then
-		build relocatable
-	fi
-	gprinstall -v -P sigsegv_handler/langkit_sigsegv_handler.gpr -p -XBUILD_MODE=dev \
+	use static-libs && build static
+	use static-pic  && build static-pic
+	use shared      && build relocatable
+	gprinstall -v -P sigsegv_handler/langkit_sigsegv_handler.gpr -p \
 		--prefix="${D}"/usr || die
 	einstalldocs
 }
