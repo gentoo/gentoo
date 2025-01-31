@@ -1,0 +1,51 @@
+Bugs: https://bugs.gentoo.org/927780
+https://github.com/ArcticaProject/nx-libs/pull/1087
+
+From: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Date: Wed, 15 Jan 2025 22:03:00 +0000
+Subject: [PATCH] dix: Fix a warning about GetTimeInMillis return value in
+ XFont2.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Ported over from XOrg Server:
+
+    commit e1ccd0fa0e1081edf8a2c69ce6e8e3f67a4aecba
+    Author: Emma Anholt <emma@anholt.net>
+    Date:   Mon May 7 16:46:15 2018 -0700
+
+        dix: Fix a warning about GetTimeInMillis return value in XFont2.
+
+        Signed-off-by: Eric Anholt <eric@anholt.net>
+        Reviewed-by: Adam Jackson <ajax@redhat.com>
+
+This resolves the following issue when built with GCC-14 (and beyond):
+
+    ../../dix/dixfonts.c: At top level:
+    ../../dix/dixfonts.c:2485:27: error: initialization of âuint32_t (*)(void)â {aka âunsigned int (*)(void)â} from incompatible pointer type âCARD32 (*)(void)â {aka âlong unsigned int (*)(void)â} [-Wincompatible-pointer-types]
+     2485 |     .get_time_in_millis = GetTimeInMillis,
+          |
+--- a/nx-X11/programs/Xserver/dix/dixfonts.c
++++ b/nx-X11/programs/Xserver/dix/dixfonts.c
+@@ -2471,6 +2471,11 @@ remove_fs_handlers(FontPathElementPtr fpe, BlockHandlerProcPtr block_handler, Bo
+     RemoveFontWakeup(fpe);
+ }
+ 
++static uint32_t wrap_time_in_millis(void)
++{
++    return GetTimeInMillis();
++}
++
+ #ifdef HAS_XFONT2
+ static const xfont2_client_funcs_rec xfont2_client_funcs = {
+     .version = XFONT2_CLIENT_FUNCS_VERSION,
+@@ -2482,7 +2487,7 @@ static const xfont2_client_funcs_rec xfont2_client_funcs = {
+     .get_client_resolutions = get_client_resolutions,
+     .get_default_point_size = get_default_point_size,
+     .get_new_font_client_id = get_new_font_client_id,
+-    .get_time_in_millis = GetTimeInMillis,
++    .get_time_in_millis = wrap_time_in_millis,
+     .init_fs_handlers = _init_fs_handlers,
+     .register_fpe_funcs = register_fpe_funcs,
+     .remove_fs_handlers = _remove_fs_handlers,
