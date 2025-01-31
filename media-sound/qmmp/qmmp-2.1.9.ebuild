@@ -10,7 +10,7 @@ HOMEPAGE="https://qmmp.ylsoftware.com"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://qmmp.ylsoftware.com/files/${PN}/$(ver_cut 1-2)/${P}.tar.bz2
 		https://downloads.sourceforge.net/${PN}-dev/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 else
 	inherit subversion
 	QMMP_DEV_BRANCH="1.3"
