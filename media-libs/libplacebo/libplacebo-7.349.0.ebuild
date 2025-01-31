@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,11 +38,11 @@ LICENSE="
 "
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
 IUSE="
-	glslang +lcms libdovi llvm-libunwind +opengl +shaderc test
+	+lcms libdovi llvm-libunwind +opengl +shaderc test
 	unwind +vulkan +xxhash
 "
 RESTRICT="!test? ( test )"
-REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
+REQUIRED_USE="vulkan? ( shaderc )"
 
 # dlopen: libglvnd (glad)
 RDEPEND="
@@ -50,7 +50,6 @@ RDEPEND="
 	libdovi? ( media-libs/libdovi:=[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP}] )
 	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
-	!shaderc? ( glslang? ( dev-util/glslang:=[${MULTILIB_USEDEP}] ) )
 	unwind? (
 		llvm-libunwind? ( llvm-runtimes/libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
@@ -71,7 +70,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
 	"${FILESDIR}"/${PN}-5.229.1-python-executable.patch
-	"${FILESDIR}"/${PN}-7.349.0-glslang-1.3.296.patch
 )
 
 python_check_deps() {
@@ -112,10 +110,12 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		$(meson_feature lcms)
 		$(meson_feature libdovi)
+		# glslang has a history of breaking things and shaderc
+		# is the build system preferred alternative if available
+		-Dglslang=disabled
 		$(meson_feature opengl)
 		$(meson_feature opengl gl-proc-addr)
 		$(meson_feature shaderc)
-		$(usex shaderc -Dglslang=disabled $(meson_feature glslang))
 		$(meson_feature unwind)
 		$(meson_feature vulkan)
 		$(meson_feature vulkan vk-proc-addr)
