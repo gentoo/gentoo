@@ -312,12 +312,6 @@ net-misc/lyricwikia
 # Removal on 2025-01-30. bug #924174 and friends.
 dev-libs/dmalloc
 
-# Michał Górny <mgorny@gentoo.org> (2024-12-29)
-# As of 3.1.0, upstream has removed all mocking and made it impossible
-# to test the package locally.  As such, we cannot maintain it going
-# forward.  Removal on 2025-01-28.  Bug #947144.
-dev-python/pslab
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2

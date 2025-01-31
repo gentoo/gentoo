@@ -12,7 +12,6 @@ move dev-libs/Imath dev-libs/imath
 move dev-python/cli_helpers dev-python/cli-helpers
 move dev-python/python-cstruct dev-python/cstruct
 move dev-python/swagger_spec_validator dev-python/swagger-spec-validator
-move dev-python/pslab-python dev-python/pslab
 move dev-python/python-discid dev-python/discid
 move dev-python/py-amqp dev-python/amqp
 move dev-python/python-sshpubkeys dev-python/sshpubkeys
