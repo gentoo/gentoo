@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -147,6 +147,27 @@ python_test() {
 }
 
 src_test() {
+	export CTEST_OUTPUT_ON_FAILURE=1
+
+	local CMAKE_SKIP_TESTS=(
+		# bug 937090, these fail on tmpfs, as they require
+		# a filesystem with extended attributes
+		$(usev server '
+			XrdCl::LocalFileHandlerTest.XAttrTest
+			XrdCl::FileTest.XAttrTest
+			XrdCl::FileCopyTest.ThirdPartyCopyTest
+			XrdCl::FileCopyTest.NormalCopyTest
+			XrdCl::FileSystemTest.XAttrTest
+			XrdCl::WorkflowTest.XAttrWorkflowTest
+			XrdCl::WorkflowTest.CheckpointTest
+		')
+		# server fails to start due to long path to unix domain socket
+		$(usev scitokens '
+			XRootD::scitokens::setup
+			XRootD::scitokens::test
+			XRootD::scitokens::teardown
+		')
+	)
 	cmake_src_test
 	# Python tests currently require manual configuration and start-up of an xrootd server.
 	# TODO: get this to run properly.
@@ -197,8 +218,7 @@ src_install() {
 		fi
 	fi
 
-	if use test; then
+	if use server && use test; then
 		rm "${ED}"/usr/bin/xrdshmap || die "Failed to remove test binary ${f} from installed tree"
-		rm "${ED}"/usr/$(get_libdir)/libXrd*Test*.so || die "Failed to remove test libraries from installed tree"
 	fi
 }
