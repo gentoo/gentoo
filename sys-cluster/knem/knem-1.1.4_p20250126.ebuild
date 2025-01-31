@@ -3,6 +3,7 @@
 
 EAPI="8"
 
+MODULES_OPTIONAL_IUSE=+modules
 inherit autotools linux-mod-r1 toolchain-funcs udev
 
 DESCRIPTION="High-Performance Intra-Node MPI Communication"
