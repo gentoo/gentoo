@@ -1,18 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Programs for elliptic curves defined over the rational numbers"
 HOMEPAGE="https://github.com/JohnCremona/eclib"
-SRC_URI="https://github.com/JohnCremona/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI="https://github.com/JohnCremona/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 # COPYING is GPL-2 but the file headers say "or ... any later version"
 # LGPL-2.1+ is for bundled GetOpt.cc
 LICENSE="GPL-2+ LGPL-2.1+"
 
-# Subslot is from the soname, (LT_CURRENT - LT_AGE) in configure.ac.
-# (But for now, see src_prepare below.)
 SLOT="0/14"
 KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="boost flint minimal test"
