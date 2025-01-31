@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5.99.26-riscv64-support.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-musl.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-which.patch"
+	# https://github.com/ArticaProject/nx-libs/pull/1087
+	"${FILESDIR}/${PN}-3.5.99.26-gcc14-32bit.patch"
 )
 
 src_prepare() {
