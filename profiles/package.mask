@@ -306,12 +306,6 @@ media-video/vidify
 media-video/vidify-audiosync
 net-misc/lyricwikia
 
-# Sam James <sam@gentoo.org> (2024-12-31)
-# Many open bugs and requires a large amount of patching to build correctly
-# as a shared library. Breaks reverse dependencies in a few ways.
-# Removal on 2025-01-30. bug #924174 and friends.
-dev-libs/dmalloc
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
