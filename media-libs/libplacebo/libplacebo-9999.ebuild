@@ -69,7 +69,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
-	"${FILESDIR}"/${PN}-5.229.1-python-executable.patch
 )
 
 python_check_deps() {
