@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-avoid-prestripping-of-files.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-avoid-prestripping-of-files.patch"
+	"${FILESDIR}/${P}-fix-define.patch"
+	)
 
 src_configure() {
 	./configure --prefix="${EPREFIX}" || die

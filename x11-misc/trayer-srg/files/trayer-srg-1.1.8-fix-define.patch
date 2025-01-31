@@ -1,0 +1,13 @@
+Add missing argument in function declaration, C23
+https://bugs.gentoo.org/944020
+--- a/bg.h
++++ b/bg.h
+@@ -9,7 +9,7 @@
+ #include <glib.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ 
+-void bg_init();
++void bg_init(Display *dpyn);
+ void bg_rootbg_changed();
+ GdkPixmap *bg_new_for_win(Window win);
+ void modify_drawable(GdkDrawable *base, GdkGC *gc, guint32 tintcolor, gint alpha);
