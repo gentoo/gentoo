@@ -1,0 +1,50 @@
+From 095c8d95f9df7380de9bc0b8aef6f06bfe86ff63 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Wed, 15 Jan 2025 09:29:39 +0100
+Subject: [PATCH] Skip test_recovery test for Twisted >= 24.10.0
+
+The test fails starting with Twisted 24.10.0 due to internal changes of
+Failures handling introduced in PR [1]. The issue is triggered since
+commit [2], as it was bisected in [3].
+
+The changes simplify how Failure objects are managed but no longer clear
+Failure instances in the same way, causing this test to fail. It seems
+to be safe to just skip this test, which will allow us to lift twisted
+dependency restriction.
+
+[1] https://github.com/twisted/twisted/pull/12292
+[2] https://github.com/twisted/twisted/commit/ece4381ecd4f9ed06264af03d21d26ed933bf341
+[3] https://github.com/element-hq/synapse/pull/17878#issuecomment-2503116192
+---
+ tests/storage/databases/main/test_events_worker.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tests/storage/databases/main/test_events_worker.py b/tests/storage/databases/main/test_events_worker.py
+index 104d141a7..975bdefe4 100644
+--- a/tests/storage/databases/main/test_events_worker.py
++++ b/tests/storage/databases/main/test_events_worker.py
+@@ -20,9 +20,11 @@
+ #
+ import json
+ from contextlib import contextmanager
++from incremental import Version
+ from typing import Generator, List, Set, Tuple
+ from unittest import mock
+ 
++import twisted
+ from twisted.enterprise.adbapi import ConnectionPool
+ from twisted.internet.defer import CancelledError, Deferred, ensureDeferred
+ from twisted.test.proto_helpers import MemoryReactor
+@@ -447,6 +449,9 @@ class DatabaseOutageTestCase(unittest.HomeserverTestCase):
+             )
+             self.assertEqual(str(failure.value), "Could not connect to the database.")
+ 
++    @unittest.skip_unless(twisted.version < Version("Twisted", 24, 10, 0),
++        """fails since twisted-24.10 due to internal failure workflow changes,
++        see https://github.com/element-hq/synapse/pull/17878#issuecomment-2503116192""")
+     def test_recovery(self) -> None:
+         """Test that event fetchers recover after a database outage."""
+         with self._outage():
+-- 
+2.45.2
+
