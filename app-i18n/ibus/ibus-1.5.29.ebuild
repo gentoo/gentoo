@@ -87,19 +87,18 @@ S=${WORKDIR}/${PN}-${MY_PV_DERP}
 
 src_prepare() {
 	vala_setup --ignore-use
-	if ! has_version 'x11-libs/gtk+:3[wayland]'; then
-		touch ui/gtk3/panelbinding.vala \
-			ui/gtk3/panel.vala \
-			ui/gtk3/emojierapp.vala || die
-	fi
-	if ! use emoji; then
-		touch \
-			tools/main.vala \
-			ui/gtk3/panel.vala || die
-	fi
-	if ! use appindicator; then
-		touch ui/gtk3/panel.vala || die
-	fi
+	# Under various circumstances, vala transpiles will need to be redone due to
+	# encoding false assumptions about enabled features at the time the distfile
+	# was produced. Vala's conditional compilation encodes the configure options
+	# from the maintainer's machine when creating distfiles.
+	#
+	# See:
+	# - https://github.com/ibus/ibus/issues/2609
+	# - https://gitlab.gnome.org/GNOME/vala/-/issues/1580
+	#
+	# Force all vala files to be regenerated no matter what.
+	find . -name '*.vala' -exec touch {} + || die
+
 	if [[ -n ${GENTOO_VER} ]]; then
 		einfo "Try to apply Gentoo specific patch set"
 		eapply "${WORKDIR}"/patches-gentoo/*.patch
