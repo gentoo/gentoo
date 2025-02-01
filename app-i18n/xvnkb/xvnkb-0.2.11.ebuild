@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Vietnamese input keyboard for X"
 HOMEPAGE="https://xvnkb.sourceforge.net/"
-SRC_URI="https://${PN}.sourceforge.net/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
