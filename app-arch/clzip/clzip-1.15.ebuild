@@ -14,7 +14,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )"
 
