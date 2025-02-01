@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
 
 DISTUTILS_USE_PEP517=setuptools
@@ -12,47 +12,51 @@ inherit distutils-r1 ada multiprocessing
 DESCRIPTION="A Python framework to generate language parsers"
 HOMEPAGE="https://www.adacore.com/community"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+	-> ${P}.tar.gz
+	https://github.com/AdaCore/AdaSAT/archive/refs/tags/v${PV}.tar.gz
+	-> AdaSAT-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+shared static-libs static-pic"
+IUSE="static-libs static-pic"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	${ADA_REQUIRED_USE}
-	|| ( shared static-libs static-pic )"
+	${ADA_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
-	dev-ada/AdaSAT[${ADA_USEDEP},shared?,static-libs?,static-pic?]
-	dev-ada/e3-core[${PYTHON_USEDEP}]
-	dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},gmp,iconv(+),shared?,static-libs?,static-pic?]
-	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
-	dev-ada/prettier-ada:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},gmp,iconv(+)]
+	dev-ada/gnatcoll-bindings[shared,static-libs?,static-pic?]
+	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
+	dev-ada/prettier-ada:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/funcy[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 distutils_enable_sphinx doc
+
+python_prepare_all() {
+	mv "${WORKDIR}"/AdaSAT-${PV} langkit/adasat || die
+	distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	build () {
 		rm -f langkit/support/obj/dev/*lexch
 		gprbuild -v -p -j$(makeopts_jobs) \
 			-P langkit/support/langkit_support.gpr -XLIBRARY_TYPE=$1 \
-			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
+			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die
 	}
-	use shared      && build relocatable
+	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	if use shared; then
-		gprbuild -v -p -j$(makeopts_jobs) \
-			-P sigsegv_handler/langkit_sigsegv_handler.gpr \
-			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
-	fi
+	gprbuild -v -p -j$(makeopts_jobs) \
+		-P sigsegv_handler/langkit_sigsegv_handler.gpr \
+		-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die
 	sphinx_compile_all
 }
 
@@ -64,9 +68,9 @@ python_install_all() {
 			--sources-subdir=include/langkit_support \
 			-XLIBRARY_TYPE=$1 --build-name=$1 || die
 	}
+	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	use shared      && build relocatable
 	gprinstall -v -P sigsegv_handler/langkit_sigsegv_handler.gpr -p \
 		--prefix="${D}"/usr || die
 	einstalldocs
