@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,6 +66,7 @@ BDEPEND="qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2020.3.8-cmake.patch"
+	"${FILESDIR}/${PN}-2020.3.19-CVE-2025-0781.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)

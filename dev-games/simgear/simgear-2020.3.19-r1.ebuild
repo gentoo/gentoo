@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
 	"${FILESDIR}/${PN}-2020.1.2-do-not-assume-libc++-clang.patch"
 	"${FILESDIR}/${PN}-2020.3.17-boost-1.81.patch"
+	"${FILESDIR}/${PN}-2020.3.19-flightgear-CVE-2025-0781.patch"
 )
 
 pkg_pretend() {
