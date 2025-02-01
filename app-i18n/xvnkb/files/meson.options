@@ -1,0 +1,20 @@
+option(
+    'abcstroke',
+    type: 'boolean',
+    value: false,
+    description: 'Enable ABC liked Telex keystroke',
+)
+option(
+    'extstroke',
+    type: 'boolean',
+    value: true,
+    description: 'Enable extended keystroke',
+)
+option(
+    'prostroke',
+    type: 'boolean',
+    value: false,
+    description: 'Enable programmer keystroke',
+)
+option('spellcheck', type: 'boolean', value: true, description: 'Spelling check')
+option('xft', type: 'feature', value: 'enabled', description: 'X freetype')
