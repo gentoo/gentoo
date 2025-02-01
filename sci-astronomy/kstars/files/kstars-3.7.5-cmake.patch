@@ -1,0 +1,26 @@
+From 51e5aff74ecfa40975cfb851f7a64a684a0fee0d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 1 Feb 2025 22:32:10 +0100
+Subject: [PATCH] Cleanup bogus (un-ifdef'd and duplicated) headers
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ kstars/ekos/focus/focus.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/kstars/ekos/focus/focus.cpp b/kstars/ekos/focus/focus.cpp
+index 553a94e6f..1193115eb 100644
+--- a/kstars/ekos/focus/focus.cpp
++++ b/kstars/ekos/focus/focus.cpp
+@@ -12,8 +12,6 @@
+ #if defined(HAVE_OPENCV)
+ #include "focusblurriness.h"
+ #endif
+-#include "aberrationinspector.h"
+-#include "aberrationinspectorutils.h"
+ #include "kstars.h"
+ #include "kstarsdata.h"
+ #include "Options.h"
+-- 
+2.48.1
+
