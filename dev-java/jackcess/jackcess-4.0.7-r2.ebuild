@@ -21,7 +21,7 @@ KEYWORDS="amd64 arm64 ppc64"
 CP_DEPEND="
 	>=dev-java/commons-lang-3.17:3.6
 	>=dev-java/commons-logging-1.3.1:0[log4j]
-	>=dev-java/poi-5.2.5:0
+	>=dev-java/apache-poi-5.2.5:0
 "
 
 # max jdk-25 for bug #968556
