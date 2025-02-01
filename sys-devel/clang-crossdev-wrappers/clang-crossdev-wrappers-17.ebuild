@@ -19,7 +19,7 @@ RDEPEND="
 "
 
 src_install() {
-	local llvm_path="${EPREFIX}/usr/lib/llvm/${SLOT}"
+	local llvm_path="/usr/lib/llvm/${SLOT}"
 	into "${llvm_path}"
 
 	for exe in "clang" "clang++" "clang-cpp"; do
