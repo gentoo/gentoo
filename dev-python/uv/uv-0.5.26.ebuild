@@ -31,7 +31,7 @@ SRC_URI="
 "
 if [[ ${PKGBUMPING} != ${PVR} ]]; then
 	SRC_URI+="
-		https://github.com/gentoo-crate-dist/uv/releases/download/${PV}/uv-${CRATE_PV}-crates.tar.xz
+		https://github.com/gentoo-crate-dist/uv/releases/download/${CRATE_PV}/uv-${CRATE_PV}-crates.tar.xz
 	"
 fi
 
