@@ -3,17 +3,14 @@
 
 EAPI=8
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/occipital/openni2"
 fi
 
-inherit ${SCM} flag-o-matic toolchain-funcs java-pkg-opt-2
+inherit flag-o-matic toolchain-funcs java-pkg-opt-2
 
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
-else
+if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm"
 	SRC_URI="https://github.com/occipital/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_/-}"
@@ -54,7 +51,7 @@ src_prepare() {
 
 	rm -rf ThirdParty/LibJPEG
 	for i in ThirdParty/PSCommon/BuildSystem/Platform.* ; do
-		echo "" > ${i}
+		echo "" > ${i} || die
 	done
 }
 
@@ -75,26 +72,27 @@ src_compile() {
 		$(usex java "" JAVA_SAMPLES="")
 
 	if use doc ; then
-		cd "${S}/Source/Documentation"
+		cd Source/Documentation || die
 		doxygen || die
 	fi
 }
 
 src_install() {
-	dolib.so "${S}/Bin/"*Release/*.so
-	cp -a "${S}/Bin/"*Release/OpenNI2 "${ED}/usr/$(get_libdir)"
+	dolib.so Bin/*Release/*.so
+	cp -a Bin/*Release/OpenNI2 "${ED}/usr/$(get_libdir)" || die
 
-	use static-libs && dolib.a "${S}/Bin/"*Release/*.a
+	use static-libs && dolib.a Bin/*Release/*.a
 
 	insinto /usr/include/openni2
 	doins -r Include/*
 
-	dobin "${S}/Bin/"*Release/{PS1080Console,PSLinkConsole,SimpleRead,EventBasedRead,MultipleStreamRead,MWClosestPointApp}
-	use opengl && dobin "${S}/Bin/"*Release/{NiViewer,SimpleViewer,MultiDepthViewer,ClosestPointViewer}
+	dobin Bin/*Release/{PS1080Console,PSLinkConsole,SimpleRead,EventBasedRead,MultipleStreamRead,MWClosestPointApp}
+	use opengl && dobin Bin/*Release/{NiViewer,SimpleViewer,MultiDepthViewer,ClosestPointViewer}
 
 	if use java ; then
-		java-pkg_dojar "${S}/Bin/"*Release/*.jar
-		echo "java -jar ${JAVA_PKG_JARDEST}/org.openni.Samples.SimpleViewer.jar" > org.openni.Samples.SimpleViewer
+		java-pkg_dojar Bin/*Release/*.jar
+		echo "java -jar ${JAVA_PKG_JARDEST}/org.openni.Samples.SimpleViewer.jar" \
+			 > org.openni.Samples.SimpleViewer || die
 		dobin org.openni.Samples.SimpleViewer
 	fi
 
@@ -102,7 +100,7 @@ src_install() {
 
 	if use doc ; then
 		docinto html
-		dodoc -r "${S}/Source/Documentation/html/"*
+		dodoc -r Source/Documentation/html/*
 	fi
 
 	dodir /usr/$(get_libdir)/pkgconfig
