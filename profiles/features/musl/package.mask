@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NHOrus <jy6x2b32pie9@yahoo.com> (2025-02-01)
+# not ported to musl, bug #713434
+app-crypt/mit-krb5-appl
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-25)
 # depends on vscode/vscodium, which are glibc binary package
 kde-misc/krunner-vscodeprojects
