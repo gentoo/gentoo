@@ -1,0 +1,5 @@
+#define VERSION "@version@"
+#mesondefine VK_USE_ABCSTROKE
+#mesondefine VK_USE_PROSTROKE
+#mesondefine VK_USE_EXTSTROKE
+#mesondefine VK_CHECK_SPELLING
