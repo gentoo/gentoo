@@ -1,0 +1,71 @@
+Port to C99/ up to C17: declare all implicit ints explicitly
+https://bugs.gentoo.org/878615
+--- a/gssftp/ftp/cmds.c
++++ b/gssftp/ftp/cmds.c
+@@ -312,8 +312,7 @@
+ /*
+  * Set control channel protection level.
+  */
+-void setclevel(argc, argv)
+-	char *argv[];
++void setclevel(int argc, char *argv[])
+ {
+ 	register struct levels *p;
+ 	int comret;
+@@ -365,8 +364,7 @@
+  * Set data channel protection level.
+  */
+ void
+-setdlevel(argc, argv)
+-	char *argv[];
++setdlevel(int argc, char *argv[])
+ {
+ 	register struct levels *p;
+ 	int comret;
+@@ -845,10 +843,7 @@
+ /*
+  * Receive one file.
+  */
+-static int getit(argc, argv, restartit, rmode)
+-	int argc;
+-	char *argv[];
+-	char *rmode;
++static int getit(int argc, char *argv[], int restartit, char *rmode)
+ {
+ 	int loc = 0;
+ 	char *oldargv1, *oldargv2;
+@@ -1164,8 +1159,7 @@
+  * Show status.
+  */
+ /*ARGSUSED*/
+-void status(argc, argv)
+-	char *argv[];
++void status(int argc, char *argv[])
+ {
+ 	int i;
+ 
+--- a/telnet/telnet/commands.c
++++ b/telnet/telnet/commands.c
+@@ -1890,8 +1890,7 @@
+ }
+ 
+ 	unsigned char *
+-env_default(init, welldefined)
+-	int init;
++env_default(int init, int welldefined)
+ {
+ 	static struct env_lst *nep = NULL;
+ 
+--- a/telnet/telnet/sys_bsd.c
++++ b/telnet/telnet/sys_bsd.c
+@@ -976,8 +976,8 @@
+  */
+ 
+     int
+-process_rings(netin, netout, netex, ttyin, ttyout, poll)
+-    int poll;		/* If 0, then block until something to do */
++process_rings(int netin, int netout, int netex, int ttyin,
++	int ttyout, int poll)		/* If 0, then block until something to do */
+ {
+     register int c;
+ 		/* One wants to be a bit careful about setting returnValue
