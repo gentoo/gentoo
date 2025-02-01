@@ -266,6 +266,7 @@ app-office/onlyoffice-bin
 app-shells/pwsh-bin
 app-text/master-pdf-editor
 app-text/zotero-bin
+dev-db/mongodb-compass-bin
 dev-db/ocp
 dev-db/oracle-instantclient
 dev-db/sqlcl-bin
