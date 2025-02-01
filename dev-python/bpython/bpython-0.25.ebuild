@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT BSD-2 PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="clipboard +jedi watch"
 
 # see https://github.com/bpython/bpython/issues/641 wrt greenlet
