@@ -8,9 +8,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <use>
-    <flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
-  </use>
   <upstream>
     <remote-id type="github">janmojzis/tinyssh</remote-id>
     <bugs-to>https://github.com/janmojzis/tinyssh/issues</bugs-to>
