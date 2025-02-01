@@ -43,7 +43,6 @@ DEPEND="
 	dev-python/argcomplete[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
-# TODO: app-emulation/qemu
 RDEPEND="
 	${DEPEND}
 	app-emulation/qemu
