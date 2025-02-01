@@ -7,6 +7,8 @@ EAPI=8
 CRATES="
 "
 
+RUST_MIN_VERSION=1.80.0
+
 inherit cargo meson
 
 MY_P=glycin-${PV%_*}.beta.${PV#*beta}
@@ -42,7 +44,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		>=gui-libs/gtk-4.12.0:4
+		>=gui-libs/gtk-4.16.0:4
 		>=media-libs/lcms-2.14:2
 	)
 "
