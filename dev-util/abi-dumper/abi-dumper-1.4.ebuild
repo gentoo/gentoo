@@ -9,7 +9,7 @@ SRC_URI="https://github.com/lvc/abi-dumper/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	dev-libs/elfutils
