@@ -12,7 +12,7 @@ SRC_URI="https://lib.openmpt.org/files/libopenmpt/src/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 arm ~arm64 ppc ~ppc64 ~riscv x86"
 IUSE="examples mp3 ogg static-libs test vorbis zlib"
 RESTRICT="!test? ( test )"
 
