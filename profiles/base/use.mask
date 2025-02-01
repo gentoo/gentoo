@@ -1,11 +1,12 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
-# LLVM slot 20 has no releases yet.
+# LLVM slots with no keyworded releases yet.
+llvm_slot_21
 llvm_slot_20
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
