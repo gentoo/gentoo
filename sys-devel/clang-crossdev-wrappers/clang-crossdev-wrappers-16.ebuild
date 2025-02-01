@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,6 @@ inherit crossdev
 
 DESCRIPTION="Symlinks to a Clang crosscompiler"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:LLVM"
-SRC_URI=""
 S=${WORKDIR}
 
 LICENSE="public-domain"
