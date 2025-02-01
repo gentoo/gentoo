@@ -3,17 +3,14 @@
 
 EAPI=8
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenNI/OpenNI"
 fi
 
-inherit ${SCM} eapi9-pipestatus flag-o-matic java-pkg-opt-2 toolchain-funcs
+inherit eapi9-pipestatus flag-o-matic java-pkg-opt-2 toolchain-funcs
 
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
-else
+if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="amd64 ~arm"
 	SRC_URI="https://github.com/OpenNI/OpenNI/archive/Stable-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-Stable-${PV}"
@@ -58,7 +55,7 @@ src_prepare() {
 
 	rm -rf External/{LibJPEG,TinyXml}
 	for i in Platform/Linux/Build/Common/Platform.* Externals/PSCommon/Linux/Build/Platform.* ; do
-		echo "" > ${i}
+		echo "" > ${i} || die
 	done
 
 	local status
@@ -82,22 +79,23 @@ src_compile() {
 		MONO_FORMS_SAMPLES=""
 
 	if use doc ; then
-		cd "${S}/Source/DoxyGen"
+		cd Source/DoxyGen || die
 		doxygen || die
 	fi
 }
 
 src_install() {
-	dolib.so "${S}/Platform/Linux/Bin/"*Release/*.so
+	dolib.so Platform/Linux/Bin/*Release/*.so
 
 	insinto /usr/include/openni
 	doins -r Include/*
 
-	dobin "${S}/Platform/Linux/Bin/"*Release/{ni*,Ni*,Sample-*}
+	dobin Platform/Linux/Bin/*Release/{ni*,Ni*,Sample-*}
 
 	if use java ; then
-		java-pkg_dojar "${S}/Platform/Linux/Bin/"*Release/*.jar
-		echo "java -jar ${JAVA_PKG_JARDEST}/org.openni.Samples.SimpleViewer.jar" > org.openni.Samples.SimpleViewer
+		java-pkg_dojar Platform/Linux/Bin/*Release/*.jar
+		echo "java -jar ${JAVA_PKG_JARDEST}/org.openni.Samples.SimpleViewer.jar" \
+			 > org.openni.Samples.SimpleViewer || die
 		dobin org.openni.Samples.SimpleViewer
 	fi
 
@@ -108,7 +106,7 @@ src_install() {
 
 	if use doc ; then
 		docinto html
-		dodoc -r "${S}/Source/DoxyGen/html/"*
+		dodoc -r Source/DoxyGen/html/*
 		dodoc Source/DoxyGen/Text/*.txt
 	fi
 
@@ -116,7 +114,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ "${ROOT:-/}" = "/" ] ; then
+	if [[ "${ROOT:-/}" = "/" ]]; then
 		for i in "${EROOR}/usr/$(get_libdir)"/libnim*.so ; do
 			einfo "Registering module ${i}"
 			niReg -r "${i}"
