@@ -234,18 +234,33 @@ _qt6-build_create_user_facing_links() {
 	# even if no links (empty), if missing will assume that it is an error
 	[[ ${PN} == qttranslations ]] && return
 
-	# loop and match using paths (upstream suggests `xargs ln -s < ${links}`
-	# but, for what it is worth, that will fail if paths have spaces)
+	# TODO: drop when <6.8.3 is gone, unneeded version with relative paths
+	if ver_test -lt 6.8.3; then
+		local link
+		while IFS= read -r link; do
+			if [[ -z ${link} ]]; then
+				continue
+			elif [[ ${link} =~ ^("${QT6_PREFIX}"/.+)\ ("${QT6_PREFIX}"/bin/.+) ]]
+			then
+				dosym -r "${BASH_REMATCH[1]#"${EPREFIX}"}" \
+					"${BASH_REMATCH[2]#"${EPREFIX}"}"
+			else
+				die "unrecognized user_facing_tool_links.txt line: ${link}"
+			fi
+		done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
+
+		return
+	fi
+
 	local link
 	while IFS= read -r link; do
 		if [[ -z ${link} ]]; then
 			continue
-		elif [[ ${link} =~ ^("${QT6_PREFIX}"/.+)\ ("${QT6_PREFIX}"/bin/.+) ]]
-		then
-			dosym -r "${BASH_REMATCH[1]#"${EPREFIX}"}" \
-				"${BASH_REMATCH[2]#"${EPREFIX}"}"
+		elif [[ ${link} =~ (../[^ ]+)\ (bin/.+) ]]; then
+			dosym "${BASH_REMATCH[1]}" \
+				"${QT6_PREFIX#"${EPREFIX}"}/${BASH_REMATCH[2]}"
 		else
-			die "unrecognized line '${link}' in '${links}'"
+			die "unrecognized user_facing_tool_links.txt line: ${link}"
 		fi
 	done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
 }
