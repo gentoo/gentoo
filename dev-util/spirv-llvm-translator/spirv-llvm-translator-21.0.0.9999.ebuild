@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_COMPAT=( 21 )
 
-inherit cmake-multilib flag-o-matic git-r3 llvm-r1 multiprocessing
+inherit cmake-multilib flag-o-matic git-r3 llvm-r2 multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
