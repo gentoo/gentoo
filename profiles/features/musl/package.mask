@@ -97,6 +97,7 @@ dev-ada/libgpr
 dev-ada/gnatcoll-core
 dev-ada/gnatcoll-bindings
 dev-ada/langkit
+dev-ada/langkit-contrib
 dev-ada/templates-parser
 dev-ada/libadalang-tools
 dev-ada/libadalang
