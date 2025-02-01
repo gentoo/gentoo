@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 21 )
 
 inherit cmake-multilib flag-o-matic git-r3 llvm-r1 multiprocessing
 
