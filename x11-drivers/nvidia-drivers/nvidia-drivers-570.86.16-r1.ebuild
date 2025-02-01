@@ -106,6 +106,7 @@ pkg_setup() {
 	local CONFIG_CHECK="
 		PROC_FS
 		~DRM_KMS_HELPER
+		~DRM_FBDEV_EMULATION
 		~SYSVIPC
 		~!LOCKDEP
 		~!PREEMPT_RT
@@ -131,6 +132,9 @@ pkg_setup() {
 	local ERROR_DRM_TTM_HELPER="CONFIG_DRM_TTM_HELPER: is not set but is needed to compile when using
 	kernel version 6.11.x or newer while DRM_FBDEV_EMULATION is set.
 	${drm_helper_msg}"
+	local ERROR_DRM_FBDEV_EMULATION="CONFIG_DRM_FBDEV_EMULATION: is not set but is needed for
+	nvidia-drm.fbdev=1 support, currently off-by-default and it could
+	be ignored, but note that is due to change in the future."
 	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of another option that requires it such as CONFIG_KVM."
