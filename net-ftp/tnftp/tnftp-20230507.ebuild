@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -20,6 +20,10 @@ DEPEND=">=sys-libs/ncurses-5.1
 RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog README THANKS )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-socks-include.patch
+)
 
 src_configure() {
 	econf \
