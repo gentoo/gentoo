@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,6 +96,10 @@ BDEPEND="
 	>=dev-qt/qtbase-${QT_PV}
 	dbus? ( virtual/pkgconfig )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-qt682.patch
+)
 
 src_prepare() {
 	default
