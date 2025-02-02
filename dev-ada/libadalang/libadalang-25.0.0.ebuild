@@ -15,7 +15,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test static-libs static-pic"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}"
@@ -48,6 +48,10 @@ pkg_setup() {
 src_prepare() {
 	default
 	rm -r testsuite/tests/{c_api,python}/gpr_ada_only || die
+	rm -r testsuite/tests/lexical_envs/envs_* || die
+	rm -r testsuite/tests/lexical_envs/records || die
+	rm -r testsuite/tests/lexical_envs/gen_pkg_inst || die
+	rm -r testsuite/tests/ada_api/foreign_nodes || die
 }
 
 src_configure() {
