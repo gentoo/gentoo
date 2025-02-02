@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chutzpah@gentoo.org</email>
-		<name>Patrick McLean</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>amadio@gentoo.org</email>
 		<name>Guilherme Amadio</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">facebook/rocksdb</remote-id>
