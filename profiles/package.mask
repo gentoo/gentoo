@@ -287,7 +287,6 @@ net-im/whatsie
 # (https://github.com/leanprover-community/mathlib-tools). Migrate to LEAN 4.
 # Removal on 2025-02-02
 sci-mathematics/lean:0/3
-sci-mathematics/mathlib-tools
 
 # Maciej Barć <xgqt@gentoo.org> (2025-01-02)
 # Upstream dead, repo archived (https://github.com/mono/xsp). Uses deprecated

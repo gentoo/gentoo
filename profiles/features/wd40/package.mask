@@ -143,7 +143,6 @@ dev-python/pysnmpcrypto
 dev-java/icedtea-web
 dev-debug/pwndbg
 dev-db/mycli
-sci-mathematics/mathlib-tools
 dev-python/keep
 dev-db/pgcli
 dev-db/mysql-workbench
