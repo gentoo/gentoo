@@ -1,0 +1,162 @@
+From 8f3a5b4b201f091713cb4e2b1b5883a4b12d10b2 Mon Sep 17 00:00:00 2001
+From: Frost Ming <mianghong@gmail.com>
+Date: Thu, 18 Jul 2024 05:32:08 +0800
+Subject: [PATCH] fix: release sdist to PyPI (#797)
+
+* fix: release sdist to PyPI
+
+* fix: add newline at file end
+
+* fix: ignore more files
+
+Signed-off-by: Frost Ming <me@frostming.com>
+
+* fix: change the install root of cmake
+
+Signed-off-by: Frost Ming <me@frostming.com>
+
+* fix: make it work for editable build as well
+
+Signed-off-by: Frost Ming <me@frostming.com>
+
+* fix release script
+
+Signed-off-by: Frost Ming <me@frostming.com>
+
+* fix: include files in sdist
+
+Signed-off-by: Frost Ming <me@frostming.com>
+
+---------
+
+Signed-off-by: Frost Ming <me@frostming.com>
+Co-authored-by: Carbo Kuo <BYVoid@users.noreply.github.com>
+---
+ .github/workflows/python.yml   | 10 ++++----
+ .gitignore                     |  1 +
+ MANIFEST.in                    |  9 +++++++
+ Makefile                       |  6 ++---
+ pyproject.toml                 |  3 +++
+ python/opencc/.gitignore       |  1 +
+ python/opencc/clib/__init__.py |  1 -
+ release-pypi-linux.sh          |  8 +++----
+ release-pypi-macos.sh          |  6 ++---
+ release-pypi-windows.cmd       |  6 ++---
+ setup.py                       | 43 +++++++++-------------------------
+ 11 files changed, 43 insertions(+), 51 deletions(-)
+ create mode 100644 MANIFEST.in
+ create mode 100644 pyproject.toml
+
+diff --git a/setup.py b/setup.py
+index a7ce160d..a4bc500f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -9,21 +9,12 @@
+ import wheel.bdist_wheel
+ 
+ _this_dir = os.path.dirname(os.path.abspath(__file__))
+-_clib_dir = os.path.join(_this_dir, 'python', 'opencc', 'clib')
+ _build_dir = os.path.join(_this_dir, 'build', 'python')
+ 
+ _cmake_file = os.path.join(_this_dir, 'CMakeLists.txt')
+ _author_file = os.path.join(_this_dir, 'AUTHORS')
+ _readme_file = os.path.join(_this_dir, 'README.md')
+ 
+-try:
+-    sys.path.insert(0, os.path.join(_this_dir, 'python'))
+-
+-    import opencc  # noqa
+-    _libopencc_built = True
+-except ImportError:
+-    _libopencc_built = False
+-
+ 
+ def get_version_info():
+     version_info = ['1', '0', '0']
+@@ -70,20 +61,13 @@ def get_long_description():
+         return f.read().decode('utf-8')
+ 
+ 
+-def build_libopencc():
+-    if _libopencc_built:
+-        return  # Skip building binary file
++def build_libopencc(output_path):
+     print('building libopencc into %s' % _build_dir)
+ 
+     is_windows = sys.platform == 'win32'
+ 
+     # Make build directories
+-    if is_windows:
+-        subprocess.call('md {}'.format(_build_dir), shell=True)
+-        subprocess.call('md {}'.format(_clib_dir), shell=True)
+-    else:
+-        subprocess.call('mkdir -p {}'.format(_build_dir), shell=True)
+-        subprocess.call('mkdir -p {}'.format(_clib_dir), shell=True)
++    os.makedirs(_build_dir, exist_ok=True)
+ 
+     # Configure
+     cmake_args = [
+@@ -93,14 +77,14 @@ def build_libopencc():
+         '-DENABLE_BENCHMARK:BOOL=OFF',
+         '-DBUILD_PYTHON:BOOL=ON',
+         '-DCMAKE_BUILD_TYPE=Release',
+-        '-DCMAKE_INSTALL_PREFIX={}'.format(_clib_dir),
+-        '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}'.format(_clib_dir),
++        '-DCMAKE_INSTALL_PREFIX={}'.format(output_path),
++        '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}'.format(output_path),
+         '-DPYTHON_EXECUTABLE={}'.format(sys.executable),
+     ]
+ 
+     if is_windows:
+         cmake_args += \
+-            ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE={}'.format(_clib_dir)]
++            ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE={}'.format(output_path)]
+         if sys.maxsize > 2**32:
+             cmake_args += ['-A', 'x64']
+ 
+@@ -117,11 +101,6 @@ def build_libopencc():
+     errno = subprocess.call(cmd)
+     assert errno == 0, 'Build failed'
+ 
+-    # Empty __init__.py file has to be created
+-    # to make opencc.clib a module
+-    with open('{}/__init__.py'.format(_clib_dir), 'w'):
+-        pass
+-
+ 
+ class OpenCCExtension(setuptools.Extension, object):
+     def __init__(self, name, sourcedir=''):
+@@ -131,8 +110,12 @@ def __init__(self, name, sourcedir=''):
+ 
+ class BuildExtCommand(setuptools.command.build_ext.build_ext, object):
+     def build_extension(self, ext):
++        if self.inplace:
++            output_path = os.path.join(_this_dir, 'python', 'opencc', 'clib')
++        else:
++            output_path = os.path.abspath(os.path.join(self.build_lib, 'opencc', 'clib'))
+         if isinstance(ext, OpenCCExtension):
+-            build_libopencc()
++            build_libopencc(output_path)
+         else:
+             super(BuildExtCommand, self).build_extension(ext)
+ 
+@@ -157,7 +140,7 @@ def _determine_platform_tag():
+                 return 'macosx-11.0-{}'.format(machine)
+             else:
+                 raise NotImplementedError
+-                
++
+         if os.name == 'posix':
+             _, _, _, _, machine = os.uname()
+             return 'manylinux2014-{}'.format(machine)
+@@ -190,10 +173,6 @@ def initialize_options(self):
+ 
+     packages=packages,
+     package_dir={'opencc': 'python/opencc'},
+-    package_data={str('opencc'): [
+-        'clib/opencc_clib*',
+-        'clib/share/opencc/*',
+-    ]},
+     ext_modules=[OpenCCExtension('opencc.clib.opencc_clib', 'python')],
+     cmdclass={
+         'build_ext': BuildExtCommand,
