@@ -36,11 +36,6 @@ CMAKE_SKIP_TESTS=(
 	kcountrysubdivisiontest
 )
 
-pkg_setup() {
-	ecm_pkg_setup
-	python-single-r1_pkg_setup
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DPython3_EXECUTABLE="${PYTHON}"
