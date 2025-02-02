@@ -288,6 +288,12 @@ gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 net-libs/webkit-gtk seccomp
 
+# Lukas Schmelting <lschmelting@posteo.com> after consulting
+# Mart Raudsepp <leio@gentoo.org> (2025-19-02)
+# GNOME without Xwayland is not mainstream yet. Current priority is that
+# users have working apps, advanced users can still override this
+x11-wm/mutter xwayland
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-11-19)
 # iasl is not keyworded on many platforms yet
 sys-firmware/seabios binary
