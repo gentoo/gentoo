@@ -40,7 +40,6 @@ CMAKE_SKIP_TESTS=(
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-	ecm_pkg_setup
 }
 
 src_configure() {
@@ -61,5 +60,4 @@ pkg_postinst() {
 		optfeature "Microsoft Word/Powerpoint file indexing" app-text/catdoc
 		optfeature "Microsoft Excel file indexing" dev-libs/libxls
 	fi
-	ecm_pkg_postinst
 }
