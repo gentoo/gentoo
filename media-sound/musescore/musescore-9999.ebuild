@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.5.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
+	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
 )
 
 src_unpack() {

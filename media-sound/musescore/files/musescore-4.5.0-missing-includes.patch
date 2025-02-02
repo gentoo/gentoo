@@ -1,0 +1,23 @@
+--- a/src/framework/ui/inavigation.h
++++ b/src/framework/ui/inavigation.h
+@@ -28,6 +28,7 @@
+ #include <QString>
+ #include <QList>
+ #include <QVariantMap>
++#include <QQuickItem>
+ 
+ #include "async/channel.h"
+ #include "async/notification.h"
+--- a/src/notation/view/percussionpanel/percussionpanelmodel.cpp
++++ b/src/notation/view/percussionpanel/percussionpanelmodel.cpp
+@@ -33,6 +33,10 @@
+ 
+ #include "audio/audioutils.h"
+ 
++#include <QApplication>
++#include <QEvent>
++#include <QKeyEvent>
++
+ static const QString PAD_NAMES_CODE("percussion-pad-names");
+ static const QString NOTATION_PREVIEW_CODE("percussion-notation-preview");
+ static const QString EDIT_LAYOUT_CODE("percussion-edit-layout");
