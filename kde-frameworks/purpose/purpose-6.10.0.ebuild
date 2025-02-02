@@ -6,7 +6,7 @@ EAPI=8
 ECM_QTHELP="false"
 ECM_TEST="forceoptional"
 QTMIN=6.7.2
-inherit ecm frameworks.kde.org optfeature xdg-utils
+inherit ecm frameworks.kde.org optfeature xdg
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 
@@ -70,10 +70,5 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "Send through KDE Connect" kde-misc/kdeconnect
 	fi
-	ecm_pkg_postinst
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 }
