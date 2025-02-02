@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,4 +77,15 @@ src_install() {
 	if ! use static-libs; then
 		rm "${ED}"/usr/$(get_libdir)/*.a || die
 	fi
+}
+
+src_test() {
+	CMAKE_SKIP_TESTS=(
+		OptionsSettableTest.ColumnFamilyOptionsAllFieldsSettable
+		# skip tests that don't work on tmpfs, bug 948932
+		DBTestTailingIterator
+		PrefetchTest
+		PrefetchTest1
+	)
+	cmake_src_test
 }
