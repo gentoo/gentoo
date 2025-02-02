@@ -1,11 +1,11 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake python-any-r1 xdg
+inherit cmake python-any-r1 virtualx xdg
 
 DESCRIPTION="A hierarchical note taking application (C++ version)"
 HOMEPAGE="https://www.giuspen.com/cherrytree/"
@@ -23,9 +23,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="nls test"
-
-# Has deps that aren't available in ::gentoo repo
-RESTRICT="test"
 
 RDEPEND="app-i18n/uchardet
 	app-text/gspell:=
@@ -53,7 +50,7 @@ DEPEND="${PYTHON_DEPS}
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	test? ( dev-util/cpputest )"
+	test? ( dev-cpp/gtest )"
 
 src_prepare() {
 	# disable compress man pages
@@ -71,7 +68,16 @@ src_configure() {
 		-DUSE_NLS=$(usex nls)
 		-DBUILD_TESTING=$(usex test)
 		-DUSE_SHARED_FMT_SPDLOG=ON
+		-DAUTO_RUN_TESTING=OFF
+		-DUSE_SHARED_GTEST_GMOCK=$(usex test)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# the export test suite fails if more than one job is used for testing, so
+	# we force it to a single job here, for more detail see
+	# https://github.com/giuspen/cherrytree/pull/2663
+	MAKEOPTS="${MAKEOPTS} -j1" virtx cmake_src_test
 }
