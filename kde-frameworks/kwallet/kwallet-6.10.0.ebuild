@@ -49,5 +49,4 @@ pkg_postinst() {
 		optfeature "KWallet management" "kde-apps/kwalletmanager"
 		elog "For more information, read https://wiki.gentoo.org/wiki/KDE#KWallet"
 	fi
-	ecm_pkg_postinst
 }
