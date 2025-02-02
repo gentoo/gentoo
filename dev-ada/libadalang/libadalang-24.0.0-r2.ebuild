@@ -28,7 +28,7 @@ RDEPEND="dev-python/pyyaml
 	${ADA_DEPS}
 	${PYTHON_DEPS}
 	>=dev-ada/gpr-24.0.0[${ADA_USEDEP},shared,static-libs?,static-pic?]
-	>=dev-ada/langkit-24.0.0[${ADA_USEDEP},shared,static-libs?,static-pic?]
+	>=dev-ada/langkit-24.0.0[${ADA_USEDEP},shared(+),static-libs?,static-pic?]
 	$(python_gen_cond_dep '
 		dev-ada/langkit[${PYTHON_USEDEP}]
 	')"
