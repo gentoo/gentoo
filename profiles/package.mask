@@ -282,15 +282,6 @@ media-plugins/gst-plugins-kate
 # Removal on 2025-03-03 unless upstream fixes the issue
 net-im/whatsie
 
-# Maciej Barć <xgqt@gentoo.org> (2025-01-02)
-# Upstream dead, repo archived (https://github.com/mono/xsp). Uses deprecated
-# "dotnet" eclass. Depends on old mono. As a replacement one can use official
-# .NET 6.0-9.0 ASP.NET instead.
-# Removal on 2025-02-02
-acct-group/aspnet
-acct-user/aspnet
-www-servers/xsp
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-01)
 # Broken with Qt6 and in wayland sessions. Archived upstream. Has been on life
 # support for several years already.
