@@ -40,6 +40,10 @@ BDEPEND="
 src_prepare() {
 	append-flags -fPIC
 	cmake_src_prepare
+
+	# do not force a specific LLVM version to find_package(), this only
+	# causes issues and we force a specific path anyway
+	sed -i -e '/find_package/s:${BASE_LLVM_VERSION}::' CMakeLists.txt || die
 }
 
 multilib_src_configure() {
