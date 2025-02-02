@@ -8,7 +8,7 @@ ECM_HANDBOOK="optional"
 ECM_HANDBOOK_DIR="docs"
 ECM_TEST="forceoptional"
 QTMIN=6.7.2
-inherit ecm frameworks.kde.org xdg-utils
+inherit ecm frameworks.kde.org xdg
 
 DESCRIPTION="Framework providing transparent file and data management"
 
@@ -82,14 +82,4 @@ src_configure() {
 	)
 
 	ecm_src_configure
-}
-
-pkg_postinst() {
-	ecm_pkg_postinst
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	ecm_pkg_postrm
-	xdg_desktop_database_update
 }
