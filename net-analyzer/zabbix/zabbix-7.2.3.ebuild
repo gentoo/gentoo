@@ -295,12 +295,12 @@ src_install() {
 		doexe src/zabbix_java/bin/zabbix-java-gateway-"${MY_PV}".jar
 		exeinto /${ZABBIXJAVA_BASE}/lib
 		doexe \
-			src/zabbix_java/lib/logback-classic-1.2.9.jar \
+			src/zabbix_java/lib/logback-classic-1.5.16.jar \
 			src/zabbix_java/lib/logback-console.xml \
-			src/zabbix_java/lib/logback-core-1.2.9.jar \
+			src/zabbix_java/lib/logback-core-1.5.16.jar \
 			src/zabbix_java/lib/logback.xml \
 			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
-			src/zabbix_java/lib/slf4j-api-1.7.32.jar
+			src/zabbix_java/lib/slf4j-api-2.0.16.jar
 		newinitd "${FILESDIR}"/zabbix-jmx-proxy.init zabbix-jmx-proxy
 		newconfd "${FILESDIR}"/zabbix-jmx-proxy.conf zabbix-jmx-proxy
 	fi
