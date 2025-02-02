@@ -59,11 +59,6 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
-pkg_setup() {
-	ecm_pkg_setup
-	python-single-r1_pkg_setup
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_PYTHON_VENDORING=OFF
