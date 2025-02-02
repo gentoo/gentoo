@@ -8,8 +8,8 @@ inherit meson
 MY_P="${P}.20250127"
 
 DESCRIPTION="Command line tools and C library for accessing Mega cloud storage"
-HOMEPAGE="https://megatools.megous.com"
-SRC_URI="https://megatools.megous.com/builds/builds/${MY_P}.tar.gz"
+HOMEPAGE="https://xff.cz/megatools/"
+SRC_URI="https://xff.cz/megatools/builds/builds/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

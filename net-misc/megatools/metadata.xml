@@ -11,7 +11,4 @@ a command line of your desktop or server.
 
 Mega website can be found at http://mega.co.nz.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">megous/megatools</remote-id>
-	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ inherit meson
 MY_P="${P}.20220519"
 
 DESCRIPTION="Command line tools and C library for accessing Mega cloud storage"
-HOMEPAGE="https://megatools.megous.com"
-SRC_URI="https://megatools.megous.com/builds/${MY_P}.tar.gz"
+HOMEPAGE="https://xff.cz/megatools/"
+SRC_URI="https://xff.cz/megatools/builds/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
