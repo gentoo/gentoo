@@ -25,7 +25,9 @@
 		- PSPDFUtils (Python based, supports PostScript)
 	</longdescription>
 	<upstream>
-		<remote-id type="github">rrthomas/pdfjam</remote-id>
+		<remote-id type="github">pdfjam/pdfjam</remote-id>
+		<bugs-to>https://github.com/pdfjam/pdfjam/issues</bugs-to>
+		<changelog>https://github.com/pdfjam/pdfjam/releases</changelog>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
