@@ -44,5 +44,4 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "media player devices support" app-misc/media-player-info
 	fi
-	ecm_pkg_postinst
 }
