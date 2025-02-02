@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/mikmod/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86"
 
 DEPEND="
 	>=media-libs/libmikmod-3.3
