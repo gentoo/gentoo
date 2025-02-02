@@ -38,6 +38,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	x11-themes/adwaita-icon-theme
+	media-fonts/cantarell
 "
 # appstream-glib needed for appdata.xml gettext translation
 BDEPEND="
