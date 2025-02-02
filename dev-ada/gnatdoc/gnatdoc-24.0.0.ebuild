@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,11 +17,11 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared,static-libs,static-pic]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv(+),shared,static-libs,static-pic]
 	dev-ada/gnatcoll-core[${ADA_USEDEP},shared,static-libs,static-pic]
 	dev-ada/gpr[${ADA_USEDEP},shared,static-libs]
 	dev-ada/gpr-unit-provider[${ADA_USEDEP},shared,static-libs]
-	dev-ada/langkit[${ADA_USEDEP},shared,static-libs,static-pic]
+	dev-ada/langkit[${ADA_USEDEP},shared(+),static-libs,static-pic]
 	dev-ada/libadalang[${ADA_USEDEP},static-libs,static-pic]
 	dev-ada/libgpr[${ADA_USEDEP},shared,static-libs,static-pic]
 	dev-ada/markdown[${ADA_USEDEP}]
