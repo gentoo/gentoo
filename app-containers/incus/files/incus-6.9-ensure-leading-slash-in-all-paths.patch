@@ -1,0 +1,32 @@
+From b726905c66050ac4229d53ce079a0bd05dbe900d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>
+Date: Thu, 30 Jan 2025 15:21:36 +0100
+Subject: [PATCH] incus/file/pull: Ensure we have a leading / in all paths
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Closes #1614
+
+Signed-off-by: Stéphane Graber <stgraber@stgraber.org>
+---
+ cmd/incus/file.go | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/cmd/incus/file.go b/cmd/incus/file.go
+index a17486ad327..99467a0bfc5 100644
+--- a/cmd/incus/file.go
++++ b/cmd/incus/file.go
+@@ -575,6 +575,11 @@ func (c *cmdFilePull) Run(cmd *cobra.Command, args []string) error {
+ 			return fmt.Errorf(i18n.G("Invalid source %s"), resource.name)
+ 		}
+ 
++		// Make sure we have a leading / for the path.
++		if !strings.HasPrefix(pathSpec[1], "/") {
++			pathSpec[1] = "/" + pathSpec[1]
++		}
++
+ 		sftpConn, ok := sftpClients[pathSpec[0]]
+ 		if !ok {
+ 			sftpConn, err = resource.server.GetInstanceFileSFTP(pathSpec[0])
+
