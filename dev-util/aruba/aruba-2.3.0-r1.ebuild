@@ -44,7 +44,7 @@ all_ruby_prepare() {
 		spec/spec_helper.rb features/support/env.rb || die
 	rm -f features/support/simplecov_setup.rb || die
 
-	sed -e 's:_relative ": "./:' \
+	sed -e "s:_relative ': './:" \
 		-e 's/git ls-files -z/find * -print0/' \
 		-e '/\(kramdown\|pry-doc\|rake-manifest\|rubocop\|simplecov\|yard-junk\)/ s:^:#:' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
