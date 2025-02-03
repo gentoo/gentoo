@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,7 @@ BDEPEND="
 	 ')
 	virtual/pkgconfig
 	amd64? ( >=dev-lang/yasm-1.1 )
-	lto? ( sys-devel/binutils[gold] )
+	lto? ( sys-devel/binutils[gold(-)] )
 	x86? ( >=dev-lang/yasm-1.1 )
 "
 COMMON_DEPEND="
