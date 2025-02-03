@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PN=${PN/lib}
 MY_P=${MY_PN}-${PV}
@@ -31,6 +31,11 @@ pkg_setup() {
 src_prepare() {
 	default
 	sed -i "s:^\(dist_doc_DATA=\)COPYING.TXT :\1:" Makefile.am || die
+
+	if tc-is-clang && use openmp ; then
+		append-libs omp
+	fi
+
 	eautoreconf
 }
 
