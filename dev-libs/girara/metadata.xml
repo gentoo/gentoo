@@ -17,9 +17,10 @@
 		<maintainer status="active">
 			<email>sebastian+dev@ramacher.at</email>
 			<name>Sebastian Ramacher</name>
-			</maintainer>
-		<changelog>http://pwmt.org/projects/girara/download/</changelog>
-		<doc lang="en">http://pwmt.org/projects/girara/</doc>
-		<bugs-to>http://bugs.pwmt.org/</bugs-to>
+		</maintainer>
+		<bugs-to>https://github.com/pwmt/girara/issues</bugs-to>
+		<changelog>https://pwmt.org/projects/girara/download/</changelog>
+		<doc>https://pwmt.org/projects/girara/</doc>
+		<remote-id type="github">pwmt/girara</remote-id>
 	</upstream>
 </pkgmetadata>
