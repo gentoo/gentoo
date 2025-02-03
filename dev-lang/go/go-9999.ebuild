@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,8 +36,8 @@ SLOT="0/${PV}"
 IUSE="cpu_flags_x86_sse2"
 
 RDEPEND="
-arm? ( sys-devel/binutils[gold] )
-arm64? ( sys-devel/binutils[gold] )"
+arm? ( sys-devel/binutils[gold(-)] )
+arm64? ( sys-devel/binutils[gold(-)] )"
 BDEPEND="|| (
 		>=dev-lang/go-${GO_BOOTSTRAP_MIN}
 		>=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN} )"
