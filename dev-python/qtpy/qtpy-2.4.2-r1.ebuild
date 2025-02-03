@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,7 @@ RDEPEND="
 
 	)
 	pyside6? (
-		dev-python/pyside:6[${PYTHON_USEDEP}]
+		dev-python/pyside:6[${PYTHON_USEDEP},core(+)]
 		dev-python/pyside:6[bluetooth?,dbus?,designer?,gui?,help?,multimedia?]
 		dev-python/pyside:6[network?,nfc?,opengl?,pdfium?,positioning?]
 		dev-python/pyside:6[printsupport?,qml?,quick?,quick3d?,remoteobjects(-)?]
@@ -88,7 +88,7 @@ BDEPEND="
 			dev-qt/qtbase:6[sqlite]
 		)
 		pyside6? (
-			dev-python/pyside:6[${PYTHON_USEDEP}]
+			dev-python/pyside:6[${PYTHON_USEDEP},core(+)]
 			dev-python/pyside:6[3d,bluetooth,charts,concurrent,dbus,designer,gui]
 			dev-python/pyside:6[help,location,multimedia,network,network-auth]
 			dev-python/pyside:6[nfc,opengl,pdfium,positioning,printsupport,qml]

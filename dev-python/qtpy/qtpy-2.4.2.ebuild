@@ -85,7 +85,7 @@ RDEPEND="
 
 	)
 	pyside6? (
-		dev-python/pyside[${PYTHON_USEDEP}]
+		dev-python/pyside[${PYTHON_USEDEP},core(+)]
 		dev-python/pyside[designer?,gui?,help?,multimedia?,network?,opengl?]
 		dev-python/pyside[positioning?,printsupport?,qml?,quick?,sensors(-)?,serialport?]
 		dev-python/pyside[speech(-)?,sql?,svg?,testlib?,webchannel?,webengine?,websockets?]
@@ -118,7 +118,7 @@ BDEPEND="
 			dev-qt/qtbase:6[sqlite]
 		)
 		pyside6? (
-			dev-python/pyside[${PYTHON_USEDEP}]
+			dev-python/pyside[${PYTHON_USEDEP},core(+)]
 			dev-python/pyside[3d(-),bluetooth(-),concurrent,dbus,designer,gui,help]
 			dev-python/pyside[location(-),multimedia,network,nfc(-),opengl,positioning,pdfium(-)]
 			dev-python/pyside[printsupport,qml,quick,quick3d,scxml(-),sensors(-)]
