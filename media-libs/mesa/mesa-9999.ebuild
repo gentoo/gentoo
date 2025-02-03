@@ -189,7 +189,7 @@ BDEPEND="
 
 QA_WX_LOAD="
 x86? (
-	usr/lib/libglapi.so.0.0.0
+	usr/lib/libgallium-*.so
 	usr/lib/libOSMesa.so.8.0.0
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
