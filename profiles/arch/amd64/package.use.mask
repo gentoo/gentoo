@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
+# QtWebView is available here
+dev-python/pyside -webview
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
+# QtSerialBus is available here
+dev-python/pyside -serialbus
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
 # All dependencies available
 dev-build/meson -test-full
@@ -90,6 +98,7 @@ media-gfx/blender -gnome -oneapi -renderdoc -vulkan
 # dev-qt/qtlanguageserver:6 is keyworded here
 dev-qt/qtdeclarative:6 -qmlls
 dev-qt/qttools:6 -qmlls
+dev-python/pyside -tools
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
 # virt-firmware is keyworded here

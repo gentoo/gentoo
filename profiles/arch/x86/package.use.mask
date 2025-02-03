@@ -1,9 +1,13 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
+# QtSerialBus is available here
+dev-python/pyside -serialbus
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-12-20)
 # qtremoteobjects and qthttpserver not yet keyworded here
-dev-python/pyside6 httpserver remoteobjects
+dev-python/pyside httpserver remoteobjects
 dev-python/qtpy remoteobjects
 
 # Ben Kohler <bkohler@gentoo.org> (2024-10-23)

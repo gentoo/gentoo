@@ -62,12 +62,12 @@ RDEPEND="
 
 	)
 	pyside6? (
-		dev-python/pyside6[${PYTHON_USEDEP}]
-		dev-python/pyside6[bluetooth?,dbus?,designer?,gui?,help?,multimedia?]
-		dev-python/pyside6[network?,nfc?,opengl?,pdfium?,positioning?]
-		dev-python/pyside6[printsupport?,qml?,quick?,quick3d?,remoteobjects(-)?]
-		dev-python/pyside6[sensors?,serialport?,spatialaudio?,speech?,sql?,svg?]
-		dev-python/pyside6[testlib?,webchannel?,webengine?,websockets?,widgets?,xml?]
+		dev-python/pyside:6[${PYTHON_USEDEP}]
+		dev-python/pyside:6[bluetooth?,dbus?,designer?,gui?,help?,multimedia?]
+		dev-python/pyside:6[network?,nfc?,opengl?,pdfium?,positioning?]
+		dev-python/pyside:6[printsupport?,qml?,quick?,quick3d?,remoteobjects(-)?]
+		dev-python/pyside:6[sensors?,serialport?,spatialaudio?,speech?,sql?,svg?]
+		dev-python/pyside:6[testlib?,webchannel?,webengine?,websockets?,widgets?,xml?]
 	)
 "
 
@@ -88,14 +88,13 @@ BDEPEND="
 			dev-qt/qtbase:6[sqlite]
 		)
 		pyside6? (
-			dev-python/pyside6[${PYTHON_USEDEP}]
-			dev-python/pyside6[3d,bluetooth,charts,concurrent,dbus,designer,gui]
-			dev-python/pyside6[help,location,multimedia,network,network-auth]
-			dev-python/pyside6[nfc,opengl,pdfium,positioning,printsupport,qml]
-			dev-python/pyside6[quick,quick3d,scxml,sensors,serialport]
-			dev-python/pyside6[spatialaudio,speech,sql,svg,testlib,webchannel]
-			dev-python/pyside6[webengine,websockets,widgets,xml]
-			dev-python/pyside6-tools[${PYTHON_USEDEP}]
+			dev-python/pyside:6[${PYTHON_USEDEP}]
+			dev-python/pyside:6[3d,bluetooth,charts,concurrent,dbus,designer,gui]
+			dev-python/pyside:6[help,location,multimedia,network,network-auth]
+			dev-python/pyside:6[nfc,opengl,pdfium,positioning,printsupport,qml]
+			dev-python/pyside:6[quick,quick3d,scxml,sensors,serialport]
+			dev-python/pyside:6[spatialaudio,speech,sql,svg,testlib,webchannel]
+			dev-python/pyside:6[webengine,websockets,widgets,xml]
 			dev-qt/qtbase:6[sqlite]
 		)
 	)

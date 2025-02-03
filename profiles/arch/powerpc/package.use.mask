@@ -91,7 +91,7 @@ dev-db/spatialite rttopo
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-08-30)
 # Avoid keywordming more Qt stuff
 dev-python/pyside2 3d datavis scxml
-dev-python/pyside6 3d httpserver remoteobjects scxml
+dev-python/pyside 3d httpserver remoteobjects scxml
 dev-python/qtpy remoteobjects
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-03-07)

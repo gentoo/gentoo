@@ -144,5 +144,5 @@ pkg_postinst() {
 	optfeature "automatic port forwarding support" "net-libs/miniupnpc"
 	optfeature "memory compression in the client" "dev-python/lz4"
 	optfeature "SOCKS proxy support" "dev-python/requests[socks5]" "dev-python/pysocks"
-	optfeature "bandwidth charts support" "dev-python/pyside2[charts]" "dev-python/pyside6[charts]"
+	optfeature "bandwidth charts support" "dev-python/pyside[charts]"
 }

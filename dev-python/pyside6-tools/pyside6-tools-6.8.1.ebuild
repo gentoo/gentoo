@@ -29,7 +29,7 @@ QT_PV="$(ver_cut 1-3)*:6"
 
 RDEPEND="${PYTHON_DEPS}
 	=dev-python/shiboken6-${QT_PV}[${PYTHON_USEDEP},${LLVM_USEDEP}]
-	=dev-python/pyside6-${QT_PV}[quick,${PYTHON_USEDEP},${LLVM_USEDEP}]
+	=dev-python/pyside-${QT_PV}[quick,${PYTHON_USEDEP},${LLVM_USEDEP}]
 	!dev-python/pyside6-tools:0
 "
 DEPEND="${RDEPEND}

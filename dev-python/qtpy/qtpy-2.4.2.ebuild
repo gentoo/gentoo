@@ -24,14 +24,10 @@ _IUSE_QT_MODULES="
 	printsupport qml quick sensors serialport speech +sql svg testlib
 	webchannel webengine websockets +widgets +xml
 "
-IUSE="+pyqt5 +pyqt6 pyside2 pyside6 ${_IUSE_QT_MODULES}"
+IUSE="+pyqt5 +pyqt6 pyside6 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
 
-REQUIRED_USE="
-	|| ( pyqt5 pyqt6 pyside2 pyside6 )
-	python_targets_python3_12? ( !pyside2 )
-	python_targets_python3_13? ( !pyside2 )
-"
+REQUIRED_USE="|| ( pyqt5 pyqt6 pyside6 )"
 
 # These flags are currently *not* common to the PySide2/6 and PyQt5/6 ebuilds
 # Disable them for now, please check periodically if this is still up to date.
@@ -88,21 +84,12 @@ RDEPEND="
 		webengine? ( dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets?,quick?] )
 
 	)
-	pyside2? (
-		$(python_gen_cond_dep '
-			dev-python/pyside2[${PYTHON_USEDEP}]
-			dev-python/pyside2[designer?,gui?,help?,multimedia?,network?,opengl(+)?]
-			dev-python/pyside2[positioning?,printsupport?,qml?,quick?,sensors?,serialport(+)?]
-			dev-python/pyside2[speech?,sql?,svg?,testlib?,webchannel?,webengine?,websockets?]
-			dev-python/pyside2[widgets?,xml?]
-		' python3_{10..11})
-	)
 	pyside6? (
-		dev-python/pyside6[${PYTHON_USEDEP}]
-		dev-python/pyside6[designer?,gui?,help?,multimedia?,network?,opengl?]
-		dev-python/pyside6[positioning?,printsupport?,qml?,quick?,sensors(-)?,serialport?]
-		dev-python/pyside6[speech(-)?,sql?,svg?,testlib?,webchannel?,webengine?,websockets?]
-		dev-python/pyside6[widgets?,xml?]
+		dev-python/pyside[${PYTHON_USEDEP}]
+		dev-python/pyside[designer?,gui?,help?,multimedia?,network?,opengl?]
+		dev-python/pyside[positioning?,printsupport?,qml?,quick?,sensors(-)?,serialport?]
+		dev-python/pyside[speech(-)?,sql?,svg?,testlib?,webchannel?,webengine?,websockets?]
+		dev-python/pyside[widgets?,xml?]
 	)
 "
 
@@ -130,28 +117,13 @@ BDEPEND="
 			dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets,quick]
 			dev-qt/qtbase:6[sqlite]
 		)
-		pyside2? (
-			$(python_gen_cond_dep '
-				dev-python/pyside2[${PYTHON_USEDEP}]
-				dev-python/pyside2[3d,charts,concurrent,datavis,designer,gui,help]
-				dev-python/pyside2[location,multimedia,network,opengl(+)]
-				dev-python/pyside2[positioning,printsupport,qml,quick,scxml]
-				dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
-				dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
-				dev-python/pyside2[xml,xmlpatterns]
-				dev-qt/qtsql:5[sqlite]
-				dev-python/pyside2-tools[${PYTHON_USEDEP}]
-			' python3_{10..11})
-			dev-qt/qtsql:5[sqlite]
-		)
 		pyside6? (
-			dev-python/pyside6[${PYTHON_USEDEP}]
-			dev-python/pyside6[3d(-),bluetooth(-),concurrent,dbus,designer,gui,help]
-			dev-python/pyside6[location(-),multimedia,network,nfc(-),opengl,positioning,pdfium(-)]
-			dev-python/pyside6[printsupport,qml,quick,quick3d,scxml(-),sensors(-)]
-			dev-python/pyside6[serialport,spatialaudio(-),speech(-),sql,svg,testlib,webchannel]
-			dev-python/pyside6[webengine,websockets,widgets,xml]
-			dev-python/pyside6-tools[${PYTHON_USEDEP}]
+			dev-python/pyside[${PYTHON_USEDEP}]
+			dev-python/pyside[3d(-),bluetooth(-),concurrent,dbus,designer,gui,help]
+			dev-python/pyside[location(-),multimedia,network,nfc(-),opengl,positioning,pdfium(-)]
+			dev-python/pyside[printsupport,qml,quick,quick3d,scxml(-),sensors(-)]
+			dev-python/pyside[serialport,spatialaudio(-),speech(-),sql,svg,testlib,webchannel]
+			dev-python/pyside[webengine,websockets,widgets,xml]
 			dev-qt/qtbase:6[sqlite]
 		)
 	)

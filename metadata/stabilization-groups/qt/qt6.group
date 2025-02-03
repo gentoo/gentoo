@@ -1,6 +1,4 @@
-dev-python/pyside6
-dev-python/pyside6-tools
-dev-python/shiboken6
+dev-python/pyside:6
 dev-qt/qt-docs:6
 dev-qt/qt3d:6
 dev-qt/qt5compat:6

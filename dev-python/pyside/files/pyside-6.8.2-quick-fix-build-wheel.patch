@@ -1,0 +1,17 @@
+diff --git a/build_scripts/wheel_override.py b/build_scripts/wheel_override.py
+index b389bb8..71de230 100644
+--- a/build_scripts/wheel_override.py
++++ b/build_scripts/wheel_override.py
+@@ -20,9 +20,9 @@ try:
+ 
+     from packaging import tags
+     from wheel import __version__ as wheel_version
+-    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
+-    from wheel.bdist_wheel import get_abi_tag, get_platform
+-    from wheel.bdist_wheel import safer_name as _safer_name
++    from wheel._bdist_wheel import bdist_wheel as _bdist_wheel
++    from wheel._bdist_wheel import get_abi_tag, get_platform
++    from wheel._bdist_wheel import safer_name as _safer_name
+ 
+     wheel_module_exists = True
+ except Exception as e:

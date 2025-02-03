@@ -18,7 +18,7 @@ app-emulation/qemu capstone
 sys-kernel/installkernel efistub
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/pyside6 is not stable here yet
+# dev-python/pyside is not stable here yet
 dev-python/qtpy pyside6
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)

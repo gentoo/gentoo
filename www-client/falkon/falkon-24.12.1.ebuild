@@ -40,8 +40,7 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "
-			>=dev-python/pyside6-${QTMIN}[gui,positioning,uitools(-),webengine,widgets,\${PYTHON_USEDEP}]
-			>=dev-python/shiboken6-${QTMIN}[\${PYTHON_USEDEP}]
+			>=dev-python/pyside-${QTMIN}:6[gui,positioning,uitools(-),webengine,widgets,\${PYTHON_USEDEP}]
 		")
 	)
 	X? (

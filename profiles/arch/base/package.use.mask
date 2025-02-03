@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
+# QtWebView is not available everywhere
+dev-python/pyside webview
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
+# QtSerialBus is not available everywhere
+dev-python/pyside serialbus
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-core/clang-runtime offload
@@ -63,6 +71,7 @@ media-gfx/blender gnome oneapi renderdoc vulkan
 # dev-qt/qtlanguageserver:6 currently has very few keywords
 dev-qt/qtdeclarative:6 qmlls
 dev-qt/qttools:6 qmlls
+dev-python/pyside tools
 
 # Mike Gilbert <floppym@gentoo.org> (2024-04-13)
 # Missing keywords on dev-python/looseversion.

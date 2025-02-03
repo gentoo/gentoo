@@ -35,7 +35,7 @@ dev-python/selenium test-rust
 dev-util/selenium-manager test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-20)
-# dev-python/pyside6 is not stable here.
+# dev-python/pyside is not stable here.
 dev-python/qtpy pyside6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)

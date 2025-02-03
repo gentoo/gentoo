@@ -17,8 +17,7 @@
 	<use>
 		<flag name="pyqt5">Use <pkg>dev-python/pyqt5</pkg> as Qt for Python implementation</flag>
 		<flag name="pyqt6">Use <pkg>dev-python/pyqt6</pkg> as Qt for Python implementation</flag>
-		<flag name="pyside2">Use dev-python/pyside2 as Qt for Python implementation</flag>
-		<flag name="pyside6">Use <pkg>dev-python/pyside6</pkg> as Qt for Python implementation</flag>
+		<flag name="pyside6">Use <pkg>dev-python/pyside</pkg> as Qt for Python implementation</flag>
 		<flag name="designer">Pull in bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Pull in bindings for the QtGui module</flag>
 		<flag name="help">Pull in bindings for the QtHelp module</flag>

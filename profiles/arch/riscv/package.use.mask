@@ -60,7 +60,7 @@ sys-apps/openrc-navi s6
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-08-30)
 # Avoid keywording more Qt stuff
-dev-python/pyside6 httpserver remoteobjects
+dev-python/pyside httpserver remoteobjects
 dev-python/qtpy remoteobjects
 
 # Marek Szuba <marecki@gentoo.org> (2023-08-19)

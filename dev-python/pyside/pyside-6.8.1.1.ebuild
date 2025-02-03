@@ -124,7 +124,7 @@ RDEPEND="${PYTHON_DEPS}
 		)
 	)
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
-	!dev-python/pyside6:0
+	!dev-python/pyside:0
 "
 DEPEND="${RDEPEND}
 	$(llvm_gen_dep '
@@ -234,12 +234,12 @@ src_install() {
 		# file for the current Python target. See also:
 		#     https://github.com/leycec/raiagent/issues/73
 		sed -i -e 's~^Requires: shiboken6$~&-'${EPYTHON}'~' \
-			"${ED}/usr/$(get_libdir)"/pkgconfig/${PN}.pc || die
+			"${ED}/usr/$(get_libdir)"/pkgconfig/${PN}6.pc || die
 
 		# Uniquify the PySide6 pkgconfig file for the current Python target,
 		# preserving an unversioned "pyside6.pc" file arbitrarily associated
 		# with the last Python target. (See the previously linked issue.)
-		cp "${ED}/usr/$(get_libdir)"/pkgconfig/${PN}{,-${EPYTHON}}.pc || die
+		cp "${ED}/usr/$(get_libdir)"/pkgconfig/${PN}6{,-${EPYTHON}}.pc || die
 	}
 	python_foreach_impl pyside6_install
 

@@ -6,7 +6,6 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10..13} )
-PYSIDE2_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 virtualx pypi
 
@@ -29,10 +28,7 @@ BDEPEND="
 		|| (
 			dev-python/pyqt6[gui,testlib,widgets,${PYTHON_USEDEP}]
 			dev-python/pyqt5[gui,testlib,widgets,${PYTHON_USEDEP}]
-			dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
-			$(python_gen_cond_dep '
-				dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
-			' "${PYSIDE2_COMPAT[@]}")
+			dev-python/pyside:6[gui,testlib,widgets,${PYTHON_USEDEP}]
 		)
 	)
 "
@@ -64,7 +60,7 @@ python_test() {
 	)
 
 	local -x PYTEST_QT_API
-	for PYTEST_QT_API in PyQt{5,6} pyside{2,6}; do
+	for PYTEST_QT_API in PyQt{5,6} "pyside:6"; do
 		if has_version "dev-python/${PYTEST_QT_API}[gui,testlib,widgets,${PYTHON_USEDEP}]"
 		then
 			einfo "Testing with ${EPYTHON} and ${PYTEST_QT_API}"
