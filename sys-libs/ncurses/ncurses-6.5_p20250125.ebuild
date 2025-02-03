@@ -138,6 +138,7 @@ RDEPEND="
 	!<sys-libs/slang-2.3.2_pre23
 	!<x11-terms/rxvt-unicode-9.06-r3
 	!<x11-terms/st-0.6-r1
+	!minimal? ( !<x11-terms/ghostty-1.1.0 )
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
 
