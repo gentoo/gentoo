@@ -9,7 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet debuginfod doc gold gprofng hardened multitarget +nls pgo +plugins static-libs test vanilla zstd"
+IUSE="cet debuginfod doc gprofng hardened multitarget +nls pgo +plugins static-libs test vanilla zstd"
 
 # Variables that can be set here  (ignored for live ebuilds)
 # PATCH_VER          - the patchset version
@@ -204,10 +204,6 @@ src_configure() {
 
 	if use plugins ; then
 		myconf+=( --enable-plugins )
-	fi
-	# enable gold (installed as ld.gold) and ld's plugin architecture
-	if use gold ; then
-		myconf+=( --enable-gold )
 	fi
 
 	if use nls ; then
