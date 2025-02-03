@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-libs/userspace-rcu-0.11.0:=
 	dev-libs/popt
 	>=dev-libs/libxml2-2.7.6
-	ust? ( >=dev-util/lttng-ust-${MY_SLOT}.0:= )
+	ust? ( dev-util/lttng-ust:0/${MY_SLOT} )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
