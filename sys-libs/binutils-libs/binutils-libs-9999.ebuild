@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -156,7 +156,7 @@ multilib_src_configure() {
 		--without-zlib
 		--with-system-zlib
 		# We only care about the libs, so disable programs. #528088
-		--disable-{binutils,etc,ld,gas,gold,gprof,gprofng}
+		--disable-{binutils,etc,ld,gas,gprof,gprofng}
 		# Disable modules that are in a combined binutils/gdb tree. #490566
 		--disable-{gdb,gdbserver,libdecnumber,readline,sim}
 		# Strip out broken static link flags.
