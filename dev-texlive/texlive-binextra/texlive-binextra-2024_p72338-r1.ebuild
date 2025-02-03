@@ -201,7 +201,7 @@ TEXLIVE_MODULE_SRC_CONTENTS="
 	tlcockpit.source.r54857
 "
 
-inherit texlive-module
+inherit shell-completion texlive-module
 
 DESCRIPTION="TeXLive TeX auxiliary programs"
 
@@ -221,6 +221,10 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+"
+# app-text/texlive-core for texlua/luatex to generate the shellc completion
+BDEPEND="
+	app-text/texlive-core
 "
 
 TEXLIVE_MODULE_BINSCRIPTS="
@@ -313,7 +317,15 @@ TEXLIVE_MODULE_BINLINKS="
 	texdef:latexdef
 "
 
+src_compile() {
+	texlive-module_src_compile
+	./texmf-dist/scripts/texdoc/texdoc.tlu \
+		--print-completion zsh \
+		> "${T}"/_texdoc || die
+}
+
 src_install() {
 	texlive-module_src_install
 	keepdir /var/lib/texmf/web2c
+	dozshcomp "${T}"/_texdoc
 }
