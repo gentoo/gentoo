@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-02-03)
+# Requires dev-util/shelltestrunner
+app-arch/mt-st test
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-04)
 # dev-libs/protobuf-28.3 is not yet marked stable.
 >=dev-java/protobuf-java-4.28.3 system-protoc
