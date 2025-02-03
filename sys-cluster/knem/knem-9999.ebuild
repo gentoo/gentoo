@@ -3,6 +3,7 @@
 
 EAPI="8"
 
+MODULES_OPTIONAL_IUSE=+modules
 inherit autotools git-r3 linux-mod-r1 toolchain-funcs udev
 
 DESCRIPTION="High-Performance Intra-Node MPI Communication"
@@ -44,20 +45,14 @@ src_configure() {
 }
 
 src_compile() {
-	local modlist=( knem=misc )
+	local modlist=( knem=misc:"${S}/driver/linux" )
 	default
-	if use modules; then
-		cd "${S}/driver/linux"
-		linux-mod-r1_src_compile || die "failed to build driver"
-	fi
+	linux-mod-r1_src_compile || die "failed to build driver"
 }
 
 src_install() {
 	default
-	if use modules; then
-		cd "${S}/driver/linux"
-		linux-mod-r1_src_install
-	fi
+	linux-mod-r1_src_install
 
 	# Drop funny unneeded stuff
 	rm "${ED}/usr/sbin/knem_local_install" || die
