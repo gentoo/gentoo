@@ -16,7 +16,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-3+"
 SLOT="0/${KNOT_SUBSLOT}"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 KNOT_MODULES=(
 	"+cookies"
