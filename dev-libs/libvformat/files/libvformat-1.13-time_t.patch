@@ -1,0 +1,33 @@
+Program already uses time_t everywhere else, use it in last possible place
+https://bugs.gentoo.org/919257
+--- a/src/vf_access_calendar.c
++++ b/src/vf_access_calendar.c
+@@ -226,7 +226,7 @@
+  *---------------------------------------------------------------------------*/
+ 
+ bool_t vf_date_string_to_time(
+-    uint32_t *p_time,               /* Output time value */
++    time_t *p_time,                 /* Output time value */
+     const char *p_string            /* Input string */
+     )
+ {
+@@ -298,7 +298,7 @@
+             }
+             else
+             {
+-                *p_time = (uint32_t)t;
++                *p_time = t;
+             }
+         }
+     }
+--- a/vformat/vf_iface.h
++++ b/vformat/vf_iface.h
+@@ -1203,7 +1203,7 @@
+  *---------------------------------------------------------------------------*/
+ 
+ extern VFORMATDECLSPEC bool_t vf_date_string_to_time(
+-    uint32_t *p_time,               /* Output time value */
++    time_t *p_time,                 /* Output time value */
+     const char *p_string            /* Input string */
+     );
+ 
