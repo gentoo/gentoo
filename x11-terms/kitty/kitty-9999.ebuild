@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,13 +41,14 @@ RDEPEND="
 	dev-libs/openssl:=
 	dev-libs/xxhash
 	media-fonts/symbols-nerd-font
-	media-libs/fontconfig
+	media-libs/freetype
 	media-libs/harfbuzz:=[truetype]
 	media-libs/lcms:2
 	media-libs/libglvnd[X?]
 	media-libs/libpng:=
 	sys-apps/dbus
 	sys-libs/zlib:=
+	x11-libs/cairo
 	x11-libs/libxkbcommon[X?]
 	x11-misc/xkeyboard-config
 	~x11-terms/kitty-shell-integration-${PV}
@@ -118,6 +119,10 @@ src_prepare() {
 
 	sed -i setup.py "${sedargs[@]}" || die
 
+	# temporary, see --shell-integration below and try again on bump
+	sed -e "/shell_integration: /s/'enabled'/&, 'no-rc', 'no-sudo'/" \
+		-i kitty/options/types.py || die
+
 	local skiptests=(
 		# relies on 'who' command which doesn't detect users with pid-sandbox
 		kitty_tests/utmp.py
@@ -141,7 +146,8 @@ src_compile() {
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
 		--libdir-name=$(get_libdir)
-		--shell-integration="enabled no-rc no-sudo"
+		# option seems(?) currently broken, needs looking into (see sed above)
+#		--shell-integration="enabled no-rc no-sudo"
 		--update-check-interval=0
 		--verbose
 	)
