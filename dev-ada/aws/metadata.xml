@@ -9,12 +9,10 @@
 		<flag name="wsdl">Used to convert ada to wsdl</flag>
 	</use>
 	<longdescription lang="en">
-		AWS is a complete framework to develop Web based applications. The main part
-		of the framework is the embedded Web server. This small yet powerful Web
-		server can be embedded into your application so your application will be
-		able to talk with a standard Web browser like Microsoft Internet Explorer or
-		Firefox for example. Around this Web server a lot of services have been
-		developed.
+		AWS stand for Ada Web Server. It is a small yet powerful HTTP component to
+		embed in any applications. It means that you can communicate with your
+		application using a standard Web browser and this without the need for a Web
+		Server. AWS is fully developed in Ada with GNAT.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">AdaCore/aws</remote-id>
