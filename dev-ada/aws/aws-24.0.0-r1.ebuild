@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ ADA_COMPAT=( gcc_12 gcc_13 )
 inherit ada multiprocessing
 
 DESCRIPTION="A complete Web development framework"
-HOMEPAGE="http://libre.adacore.com/tools/aws/"
+HOMEPAGE="https://github.com/AdaCore/aws"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz
 	https://github.com/AdaCore/templates-parser/archive/refs/tags/v${PV}.tar.gz
@@ -29,7 +29,7 @@ RDEPEND="dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs]
 	wsdl? (
 		dev-ada/libadalang:=[${ADA_USEDEP},static-libs]
 		dev-ada/langkit:=[${ADA_USEDEP},static-libs]
-		dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},gmp,iconv,static-libs]
+		dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},gmp,iconv(+),static-libs]
 		dev-libs/gmp
 	)
 	ssl? ( dev-libs/openssl )
