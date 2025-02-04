@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0/5"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="bzip2 gnutls lzma mbedtls ssl static-libs test tools zstd"
-REQUIRED_USE="test? ( tools )"
+REQUIRED_USE="test? ( ssl tools )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
