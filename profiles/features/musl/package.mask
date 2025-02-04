@@ -372,6 +372,7 @@ sci-misc/netlogo-bin
 sys-apps/intune-portal
 sys-apps/ipmicfg
 sys-apps/smcipmitool
+sys-apps/pnpm-bin
 sys-apps/tas
 sys-block/arcconf
 sys-block/hpssacli
