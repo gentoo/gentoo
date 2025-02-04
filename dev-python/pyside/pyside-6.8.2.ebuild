@@ -259,6 +259,8 @@ python_prepare_all() {
 			linux
 		[sample::nontypetemplate]
 			linux
+		[QtGui::qpainter_test]
+			linux
 		EOF
 	fi
 }
