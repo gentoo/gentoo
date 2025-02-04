@@ -46,7 +46,7 @@ REQUIRED_USE="
 RDEPEND="
 	!<=sys-kernel/installkernel-systemd-3
 	dracut? (
-		>=sys-kernel/dracut-103
+		>=sys-kernel/dracut-106
 		uki? (
 			|| (
 				sys-apps/systemd[boot(-)]
