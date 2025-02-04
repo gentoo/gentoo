@@ -115,6 +115,12 @@ declare -A QT_REQUIREMENTS=(
 IUSE="${!QT_MODULES[@]} debug doc gles2-only numpy test tools"
 RESTRICT="!test? ( test )"
 
+# majority of QtQml tests require QtQuick support
+REQUIRED_USE="
+	test? (
+		qml? ( quick )
+	)
+"
 for requirement in ${!QT_REQUIREMENTS[@]}; do
 	REQUIRED_USE+=" ${requirement}? ( ${QT_REQUIREMENTS[${requirement}]} ) "
 done
@@ -233,6 +239,28 @@ python_prepare_all() {
 	sed -e \
 		's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${LLVM_SLOT}"'/include"))~' \
 		-i sources/shiboken6/ApiExtractor/clangparser/compilersupport.cpp || die
+
+	# blacklist.txt works like XFAIL
+	cat <<- EOF >> build_history/blacklist.txt || die
+	# segfaults with QOpenGLContext::create
+	[pysidetest::qapp_like_a_macro_test]
+		linux
+	# Tries to execute pip install
+	[pyside6-deploy::test_pyside6_deploy]
+		linux
+	[pyside6-android-deploy::test_pyside6_android_deploy]
+		linux
+	EOF
+
+	if ! use numpy; then
+		cat <<- EOF >> build_history/blacklist.txt || die
+		# Requires numpy support to pass
+		[sample::array_numpy]
+			linux
+		[sample::nontypetemplate]
+			linux
+		EOF
+	fi
 }
 
 python_configure_all() {
@@ -437,5 +465,19 @@ python_compile() {
 }
 
 python_test() {
-	virtx ${EPYTHON} testrunner.py test || die "Tests failed with ${EPYTHON}"
+	# figure out the build dir
+	local build_dir build_classifier
+	build_dir=$(ls -d "${BUILD_DIR}"/build/qfp-*/build/)
+	build_classifier="${build_dir##${BUILD_DIR}/build/qfp-}"
+	build_classifier="${build_dir%%/build}"
+
+	# Otherwise it picks the last built directory breaking assumption for multi target builds
+	mkdir -p build_history/9999-99-99_999999/ || die
+	cat <<- EOF > build_history/9999-99-99_999999/build_dir.txt || die
+	${build_dir}
+	${build_classifier}
+	EOF
+
+	virtx ${EPYTHON} testrunner.py test --projects=shiboken6 $(usev core '--projects=pyside6')  ||
+		die "Tests failed with ${EPYTHON}"
 }
