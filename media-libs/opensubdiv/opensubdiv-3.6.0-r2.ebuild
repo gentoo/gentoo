@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 # See for example CMakeLists.txt for details.
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="X cuda doc examples glfw opencl +opengl openmp ptex python tbb test tutorials"
 RESTRICT="!test? ( test )"
 
