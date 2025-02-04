@@ -4,7 +4,7 @@
 EAPI=8
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.0"
+RUNTIME_SLOT="${SDK_SLOT}.1"
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
