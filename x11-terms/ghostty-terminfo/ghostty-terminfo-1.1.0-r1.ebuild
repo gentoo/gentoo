@@ -59,15 +59,26 @@ S="${WORKDIR}/${P/-terminfo/}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+# Tests are run on the main Ghostty package.
+RESTRICT="test"
 
-RDEPEND="!>=sys-libs/ncurses-6.5_p20250118[-minimal]"
+IUSE="symlink"
+RDEPEND="
+	symlink? (
+		|| (
+			<sys-libs/ncurses-6.5_p20250118
+			>=sys-libs/ncurses-6.5_p20250118[minimal]
+		)
+	)
+	!symlink? (
+		>=sys-libs/ncurses-6.5_p20250118[-minimal]
+	)
+"
 BDEPEND="sys-libs/ncurses"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-build-add-a-step-for-only-building-terminfo.patch
 )
-
-RESTRICT="test"
 
 src_configure() {
 	local my_zbs_args=(
@@ -85,4 +96,11 @@ src_compile() {
 src_install() {
 	DESTDIR="${D}" nonfatal ezig build terminfo "${ZBS_ARGS[@]}" \
 		|| die "Failed to compile terminfo database"
+
+	# Newer ncurses versions have a "ghostty" terminfo entry which
+	# collides with the "ghostty" symlink that is installed by default,
+	# but only when USE=-minimal. Remove the symlink in that case.
+	if ! use symlink; then
+		rm -rf "${ED}/usr/share/terminfo/g" || die
+	fi
 }
