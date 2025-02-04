@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://sourceware.org/libffi/"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/libffi/libffi"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/libffi/libffi/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 
@@ -34,6 +34,8 @@ BDEPEND="test? ( dev-util/dejagnu )"
 
 src_prepare() {
 	default
+
+	[[ ${PV} == 9999 ]] && eautoreconf
 
 	if [[ ${CHOST} == arm64-*-darwin* ]] ; then
 		# ensure we use aarch64 asm, not x86 on arm64
