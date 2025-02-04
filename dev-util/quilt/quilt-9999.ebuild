@@ -19,8 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 IUSE="emacs graphviz"
 
-RDEPEND="!app-emacs/quilt-el
-	dev-util/diffstat
+RDEPEND="dev-util/diffstat
 	mail-mta/sendmail
 	sys-apps/ed
 	elibc_Darwin? ( app-misc/getopt )
