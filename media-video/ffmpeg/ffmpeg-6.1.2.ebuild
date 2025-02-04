@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -385,6 +385,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-amd-av1-vaapi.patch
 	"${FILESDIR}"/${PN}-6.1.1-wint-inconversion-vulkan.patch
 	"${FILESDIR}"/${PN}-6.1.1-incmptbl-pntr-types.patch
+	"${FILESDIR}"/${PN}-4.4.5-binutils-2.43-arm.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

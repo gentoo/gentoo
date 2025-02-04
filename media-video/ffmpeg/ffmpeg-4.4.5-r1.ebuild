@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -349,6 +349,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.4-amd-av1-vaapi.patch
 	"${FILESDIR}"/${PN}-4.4.5-incmptbl-pntr-types.patch
 	"${FILESDIR}"/${PN}-4.4.5-wint-inconversion-libgcrypt.patch
+	"${FILESDIR}"/${PN}-4.4.5-binutils-2.43-arm.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -382,6 +382,7 @@ RESTRICT="
 PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
 	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
+	"${FILESDIR}"/${PN}-4.4.5-binutils-2.43-arm.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
