@@ -75,10 +75,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="
 	${COMMON_DEPEND}
-	|| (
-		>=sys-libs/ncurses-6.5_p20250118[-minimal]
-		~x11-terms/ghostty-terminfo-${PV}
-	)
+	~x11-terms/ghostty-terminfo-${PV}
 "
 BDEPEND="
 	man? ( virtual/pandoc )
