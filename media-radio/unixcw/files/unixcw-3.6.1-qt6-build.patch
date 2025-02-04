@@ -1,0 +1,116 @@
+diff --git a/configure.ac b/configure.ac
+index aecd270..d66151e 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -512,28 +512,28 @@ if test "$enable_xcwcp" = "no" ; then
+     WITH_XCWCP='no'
+ else
+     # http://stackoverflow.com/questions/5178511/integrate-qt-project-with-autotool
+-    PKG_CHECK_MODULES(QT5, [Qt5Widgets Qt5Gui Qt5Core >= 5.0.0], [
+-			   AC_PATH_PROGS(MOC, [moc-qt5 moc], moc,`eval $PKG_CONFIG --variable=host_bins Qt5Core`)
++    PKG_CHECK_MODULES(QT6, [Qt6Widgets Qt6Gui Qt6Core >= 6.0.0], [
++			   AC_PATH_PROGS(MOC, [moc-qt6 moc], moc,`eval $PKG_CONFIG --variable=libexecdir Qt6Core`)
+ 
+ 			   # https://stackoverflow.com/questions/11663702/how-to-suppress-warnings-for-file-included-from-header
+-			   QT_INCLUDE_DIR=`$PKG_CONFIG --variable=includedir Qt5Core`
+-			   QT5_CFLAGS="-isystem $QT_INCLUDE_DIR"
+-			   QT5_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtWidgets"
+-			   QT5_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtGui"
+-			   QT5_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtCore"
++			   QT_INCLUDE_DIR=`$PKG_CONFIG --variable=includedir Qt6Core`
++			   QT6_CFLAGS="-isystem $QT_INCLUDE_DIR"
++			   QT6_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtWidgets"
++			   QT6_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtGui"
++			   QT6_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtCore"
+ 
+-			   AC_MSG_RESULT([QT5 CLFAGS is $QT5_CFLAGS])
+-			   AC_MSG_RESULT([QT5 LIBS is $QT5_LIBS])
++			   AC_MSG_RESULT([QT6 CFLAGS is $QT6_CFLAGS])
++			   AC_MSG_RESULT([QT6 LIBS is $QT6_LIBS])
+ 
+-			   AC_SUBST(QT5_CFLAGS)
+-			   AC_SUBST(QT5_LIBS)
++			   AC_SUBST(QT6_CFLAGS)
++			   AC_SUBST(QT6_LIBS)
+ 			   AC_SUBST(MOC)
+ 
+ 			   WITH_XCWCP='yes'
+ 
+ 			   ], [
+ 
+-			   AC_MSG_WARN([Cannot find Qt5 files - unable to build xcwcp])
++			   AC_MSG_WARN([Cannot find Qt6 files - unable to build xcwcp])
+ 
+ 			   WITH_XCWCP='no'
+ 
+@@ -797,9 +797,9 @@ AC_MSG_NOTICE([  build cwgen:  ..........................................  $WITH
+ AC_MSG_NOTICE([  build cwcp:  ...........................................  $WITH_CWCP])
+ AC_MSG_NOTICE([  build xcwcp:  ..........................................  $WITH_XCWCP])
+ if test "$WITH_XCWCP" = 'yes' ; then
+-    AC_MSG_NOTICE([      Qt5 LIBS:  .........................................  $QT5_LIBS])
+-    AC_MSG_NOTICE([      Qt5 MOC:  ..........................................  $MOC])
+-    AC_MSG_NOTICE([      Qt5 CFLAGS:  .......................................  $QT5_CFLAGS])
++    AC_MSG_NOTICE([      Qt6 LIBS:  .........................................  $QT6_LIBS])
++    AC_MSG_NOTICE([      Qt6 MOC:  ..........................................  $MOC])
++    AC_MSG_NOTICE([      Qt6 CFLAGS:  .......................................  $QT6_CFLAGS])
+ fi
+ AC_MSG_NOTICE([  CFLAGS:  ...............................................  $CFLAGS])
+ 
+diff --git a/Makefile.inc.in b/Makefile.inc.in
+index dd091db..6ad9361 100644
+--- a/Makefile.inc.in
++++ b/Makefile.inc.in
+@@ -27,9 +27,9 @@ AC_LDCONFIG	= @LDCONFIG@
+ AC_LIBS		= @LIBS@
+ AC_AWK		= @AWK@
+ 
+-AC_QT5_CFLAGS	= @QT5_CFLAGS@
+-AC_QT5_LIBS	= @QT5_LIBS@
+-AC_QT5_MOC	= @MOC@
++AC_QT6_CFLAGS	= @QT6_CFLAGS@
++AC_QT6_LIBS	= @QT6_LIBS@
++AC_QT6_MOC	= @MOC@
+ AC_SRC_SUBDIRS	= @SRC_SUBDIRS@
+ 
+ AC_CFLAG_PIC	= @CFLAG_PIC@
+diff --git a/src/xcwcp/Makefile.am b/src/xcwcp/Makefile.am
+index 6d4a02d..492b321 100644
+--- a/src/xcwcp/Makefile.am
++++ b/src/xcwcp/Makefile.am
+@@ -18,7 +18,7 @@
+ 
+ # use $(top_builddir) instead of $(top_srcdir) because Makefile.inc is
+ # (re)created at build time; if you use $(top_srcdir), you may (will?)
+-# get empty $(AC_QT5_CFLAGS), $(AC_QT5_LIBS) and $(AC_QT5_MOC);
++# get empty $(AC_QT6_CFLAGS), $(AC_QT6_LIBS) and $(AC_QT6_MOC);
+ -include $(top_builddir)/Makefile.inc
+ 
+ # program(s) to be built in current dir
+@@ -36,12 +36,12 @@ xcwcp_SOURCES = \
+ nodist_xcwcp_SOURCES = moc_application.cc
+ 
+ # target-specific preprocessor flags (#defs and include dirs)
+-xcwcp_CPPFLAGS = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/libcw/ $(AC_QT5_CFLAGS) $(AC_CFLAG_PIC)
++xcwcp_CPPFLAGS = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/libcw/ $(AC_QT6_CFLAGS) $(AC_CFLAG_PIC)
+ 
+ # Target-specific linker flags (objects to link). Order is important:
+ # first static library then dynamic. Otherwise linker may not find
+ # symbols from the dynamic library.
+-xcwcp_LDADD = $(top_builddir)/src/cwutils/lib_xcwcp.a -L$(top_builddir)/src/libcw/.libs -lcw $(AC_QT5_LIBS) -lpthread $(INTL_LIB)
++xcwcp_LDADD = $(top_builddir)/src/cwutils/lib_xcwcp.a -L$(top_builddir)/src/libcw/.libs -lcw $(AC_QT6_LIBS) -lpthread $(INTL_LIB)
+ 
+ 
+ 
+@@ -73,10 +73,10 @@ CLEANFILES = moc_application.cc
+ # Qt5 magic
+ if HOST_IS_FREEBSD
+ moc_application.cc: application.h
+-	$(AC_QT5_MOC) application.h -o application.cc
++	$(AC_QT6_MOC) application.h -o application.cc
+ else
+ moc_application.cc: application.h
+-	$(AC_QT5_MOC) $< -o $@
++	$(AC_QT6_MOC) $< -o $@
+ endif
+ 
+ 

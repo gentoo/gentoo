@@ -1,0 +1,44 @@
+diff --git a/src/xcwcp/application.cc b/src/xcwcp/application.cc
+index 12f9311..f1dd707 100644
+--- a/src/xcwcp/application.cc
++++ b/src/xcwcp/application.cc
+@@ -821,7 +821,7 @@ void Application::make_toolbar(void)
+ 	toolbar->addSeparator();
+ 
+ 
+-	QLabel *speed_label_ = new QLabel(_("Speed:"), 0, 0);
++	QLabel *speed_label_ = new QLabel(_("Speed:"), 0, Qt::Widget);
+ 	toolbar->addWidget(speed_label_);
+ 
+ 	speed_spin = new QSpinBox(toolbar);
+@@ -857,7 +857,7 @@ void Application::make_toolbar(void)
+ 	toolbar->addSeparator();
+ 
+ 
+-	QLabel *volume_label = new QLabel(_("Volume:"), 0, 0);
++	QLabel *volume_label = new QLabel(_("Volume:"), 0, Qt::Widget);
+ 	toolbar->addWidget(volume_label);
+ 
+ 	volume_spin = new QSpinBox(toolbar);
+@@ -875,7 +875,7 @@ void Application::make_toolbar(void)
+ 	toolbar->addSeparator();
+ 
+ 
+-	QLabel *gap_label = new QLabel(_("Gap:"), 0, 0);
++	QLabel *gap_label = new QLabel(_("Gap:"), 0, Qt::Widget);
+ 	toolbar->addWidget(gap_label);
+ 
+ 	gap_spin = new QSpinBox(toolbar);
+diff --git a/src/xcwcp/receiver.cc b/src/xcwcp/receiver.cc
+index 904ad22..7c785c0 100644
+--- a/src/xcwcp/receiver.cc
++++ b/src/xcwcp/receiver.cc
+@@ -165,7 +165,7 @@ void Receiver::handle_mouse_event(QMouseEvent *event, bool is_reverse_paddles)
+ 		const int is_down = event->type() == QEvent::MouseButtonPress
+ 			|| event->type() == QEvent::MouseButtonDblClick;
+ 
+-		if (event->button() == Qt::MidButton) {
++		if (event->button() == Qt::MiddleButton) {
+ 			//fprintf(stderr, "---------- handle mouse event: sk: %d\n", is_down);
+ 			sk_event(is_down);
+ 			event->accept();
