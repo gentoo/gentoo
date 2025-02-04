@@ -38,12 +38,13 @@ usage() {
 
 gen_header() {
 	cat <<EOT
+Auto-Submitted: auto-generated
 From: Fangfrisch News <$MAILFROM>
 To: $MAILTO
 Subject: $SUBJECT
 
 EOT
-# Mail header must end with an empty line!
+	# Mail header must end with an empty line!
 }
 
 declare -a NEWSITEMS=()
@@ -56,7 +57,7 @@ report_news() {
 			# Mutt does not need the header, others do.
 			gen_header
 		fi
-		NEWSITEMS+=( "$ni" )
+		NEWSITEMS+=("$ni")
 		echo -e "\n### $(basename "$ni"):\n"
 		cat "$ni"
 	done < <(find "$dir" -maxdepth 1 -type f -name "fangfrisch*.txt" -print0)
