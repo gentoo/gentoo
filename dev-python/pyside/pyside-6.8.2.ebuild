@@ -158,6 +158,7 @@ RDEPEND="
 		=dev-qt/qtbase-${QT_PV}
 		=dev-qt/qtdeclarative-${QT_PV}[qmlls]
 		=dev-qt/qttools-${QT_PV}[assistant,designer,linguist]
+		dev-python/pkginfo[${PYTHON_USEDEP}]
 	)
 	uitools? ( =dev-qt/qttools-${QT_PV}[gles2-only=,widgets] )
 	webchannel? ( =dev-qt/qtwebchannel-${QT_PV} )
