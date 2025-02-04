@@ -197,6 +197,8 @@ BDEPEND="
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
 		media-gfx/graphviz
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/myst-parser[${PYTHON_USEDEP}]
 	)
 	numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
 "
