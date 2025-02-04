@@ -177,7 +177,7 @@ RDEPEND="
 	webview? ( =dev-qt/qtwebview-${QT_PV} )
 	!dev-python/pyside:0
 	!dev-python/shiboken6
-	!dev-python/pyside6-tool
+	!dev-python/pyside6-tools
 "
 
 DEPEND="${RDEPEND}
