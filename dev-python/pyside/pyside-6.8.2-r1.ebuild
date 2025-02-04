@@ -485,3 +485,9 @@ python_test() {
 	virtx ${EPYTHON} testrunner.py test --projects=shiboken6 $(usev core '--projects=pyside6')  ||
 		die "Tests failed with ${EPYTHON}"
 }
+
+pkg_preinst() {
+	# Avoid symlinks being blocked by directories
+	rm -rf "${EROOT}/usr/include/"{PySide6,shiboken6} || die
+	rm -rf "${EROOT}/usr/share/PySide6" || die
+}
