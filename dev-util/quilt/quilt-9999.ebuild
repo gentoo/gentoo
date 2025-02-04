@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://git.savannah.gnu.org/git/quilt.git"
 
 [[ ${PV} == 9999 ]] && inherit git-r3
 
-inherit bash-completion-r1 elisp-common
+inherit autotools bash-completion-r1 elisp-common
 
 DESCRIPTION="quilt patch manager"
 HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
@@ -46,6 +46,8 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] \
 		&& myconf+=( "--with-getopt=${EPREFIX}/usr/bin/getopt-long" )
 	econf "${myconf[@]}"
+	eautoreconf
+	default
 }
 
 src_compile() {
