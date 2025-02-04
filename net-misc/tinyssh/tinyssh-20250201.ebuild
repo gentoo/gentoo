@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="CC0-1.0"
+LICENSE="|| ( CC0-1.0 0BSD MIT-0 MIT )"
 SLOT="0"
 
-IUSE="+sodium"
-
-DEPEND="
-	sodium? ( dev-libs/libsodium:= )
-"
 RDEPEND="
 	${DEPEND}
 	sys-apps/ucspi-tcp
@@ -35,14 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export PKG_CONFIG CC
-
-	if use sodium
-	then
-		# -I${includedir}/sodium needed as tinyssh uses `#include <randombytes.h>` rather than `#include <sodium.h>`
-		export CFLAGS="${CFLAGS} $("${PKG_CONFIG}" --cflags libsodium) -I$("${PKG_CONFIG}" --variable=includedir libsodium)/sodium/"
-		export LDFLAGS="${LDFLAGS} $("${PKG_CONFIG}" --libs libsodium)"
-	fi
+	tc-export CC
 
 	emake gentoo-autoheaders
 
