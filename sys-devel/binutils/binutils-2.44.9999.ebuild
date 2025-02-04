@@ -9,7 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet debuginfod doc gprofng hardened multitarget +nls pgo +plugins static-libs test vanilla zstd"
+IUSE="cet debuginfod doc gprofng hardened multitarget +nls pgo +plugins static-libs test vanilla xxhash zstd"
 
 # Variables that can be set here  (ignored for live ebuilds)
 # PATCH_VER          - the patchset version
@@ -60,7 +60,10 @@ RDEPEND="
 	)
 	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	xxhash? ( dev-libs/xxhash )
+"
 BDEPEND="
 	doc? ( sys-apps/texinfo )
 	pgo? (
@@ -269,6 +272,7 @@ src_configure() {
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
+		$(use_with xxhash)
 		$(use_with zstd)
 
 		# Disable modules that are in a combined binutils/gdb tree, bug #490566
