@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,46 +8,46 @@ NUGETS="
 avalonia.angle.windows.natives@2.1.22045.20230930
 avalonia.avaloniaedit@11.1.0
 avalonia.buildservices@0.0.29
-avalonia.controls.colorpicker@11.2.1
-avalonia.controls.datagrid@11.2.1
-avalonia.desktop@11.2.1
-avalonia.diagnostics@11.2.1
-avalonia.fonts.inter@11.2.1
-avalonia.freedesktop@11.2.1
-avalonia.native@11.2.1
-avalonia.remote.protocol@11.2.1
+avalonia.controls.colorpicker@11.2.3
+avalonia.controls.datagrid@11.2.3
+avalonia.desktop@11.2.3
+avalonia.diagnostics@11.2.3
+avalonia.fonts.inter@11.2.3
+avalonia.freedesktop@11.2.3
+avalonia.native@11.2.3
+avalonia.remote.protocol@11.2.3
 avalonia.skia@11.0.0
-avalonia.skia@11.2.1
-avalonia.themes.fluent@11.2.1
-avalonia.themes.simple@11.2.1
-avalonia.win32@11.2.1
-avalonia.x11@11.2.1
+avalonia.skia@11.2.3
+avalonia.themes.fluent@11.2.3
+avalonia.themes.simple@11.2.3
+avalonia.win32@11.2.3
+avalonia.x11@11.2.3
 avalonia@11.0.0
-avalonia@11.2.1
+avalonia@11.2.3
 avaloniaedit.textmate@11.1.0
 communitytoolkit.mvvm@8.3.2
-harfbuzzsharp.nativeassets.linux@7.3.0.2
-harfbuzzsharp.nativeassets.macos@7.3.0.2
-harfbuzzsharp.nativeassets.webassembly@7.3.0.3-preview.2.2
-harfbuzzsharp.nativeassets.win32@7.3.0.2
-harfbuzzsharp@7.3.0.2
-livechartscore.skiasharpview.avalonia@2.0.0-rc4.5
-livechartscore.skiasharpview@2.0.0-rc4.5
-livechartscore@2.0.0-rc4.5
+harfbuzzsharp.nativeassets.linux@7.3.0.3
+harfbuzzsharp.nativeassets.macos@7.3.0.3
+harfbuzzsharp.nativeassets.webassembly@7.3.0.3
+harfbuzzsharp.nativeassets.win32@7.3.0.3
+harfbuzzsharp@7.3.0.3
+livechartscore.skiasharpview.avalonia@2.0.0-rc5
+livechartscore.skiasharpview@2.0.0-rc5
+livechartscore@2.0.0-rc5
 microcom.runtime@0.11.0
 onigwrap@1.0.6
-skiasharp.harfbuzz@2.88.8
-skiasharp.nativeassets.linux@2.88.8
-skiasharp.nativeassets.macos@2.88.8
-skiasharp.nativeassets.webassembly@2.88.8
-skiasharp.nativeassets.win32@2.88.8
-skiasharp@2.88.8
+skiasharp.harfbuzz@2.88.9
+skiasharp.nativeassets.linux@2.88.9
+skiasharp.nativeassets.macos@2.88.9
+skiasharp.nativeassets.webassembly@2.88.9
+skiasharp.nativeassets.win32@2.88.9
+skiasharp@2.88.9
 system.io.pipelines@8.0.0
 system.text.json@8.0.5
 textmatesharp.grammars@1.0.59
-textmatesharp.grammars@1.0.64
+textmatesharp.grammars@1.0.65
 textmatesharp@1.0.59
-textmatesharp@1.0.64
+textmatesharp@1.0.65
 tmds.dbus.protocol@0.20.0
 "
 
@@ -62,7 +62,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/sourcegit-scm/${PN}.git"
 else
 	SRC_URI="https://github.com/sourcegit-scm/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.gh.tar.gz"
 
 	KEYWORDS="~amd64"
 fi
@@ -88,6 +88,7 @@ RDEPEND="
 
 CHECKREQS_DISK_BUILD="1G"
 DOTNET_PKG_PROJECTS=( src/SourceGit.csproj )
+DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:DisableUpdateDetection="true" )
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -103,9 +104,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed -i "./build/resources/_common/applications/${PN}.desktop"	\
-		-e "s|/opt/sourcegit/sourcegit|sourcegit|g"	\
-		-e "s|/usr/share/icons/sourcegit.png|sourcegit|g"	\
+	sed -i "./build/resources/_common/applications/${PN}.desktop" \
+		-e "s|/opt/sourcegit/sourcegit|sourcegit|g" \
+		-e "s|/usr/share/icons/sourcegit.png|sourcegit|g" \
 		|| die
 
 	dotnet-pkg_src_prepare
