@@ -5,10 +5,6 @@
 # supports 64 bit neon
 media-libs/opencv cpu_flags_arm_neon
 
-# Matt Jolly <kangie@gentoo.org> (2024-01-30)
-# Google does not provide an arm64 toolchain
-www-client/chromium system-toolchain
-
 # matoro <matoro_gentoo@matoro.tk> (2022-08-31)
 # GHC does not gain native codegen for arm64 until 9.2.
 # We don't want an unregisterised build, so force LLVM codegen.
