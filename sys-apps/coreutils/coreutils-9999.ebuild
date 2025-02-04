@@ -221,29 +221,33 @@ src_test() {
 	local -x PATH="${T}/mount-wrappers:${PATH}"
 	local -x gl_public_submodule_commit=
 
-	local xfail_tests=(
-		# bug #629660
-		# Commented out again in 9.6 as it XPASSes on linux-6.12.10
-		# with sandbox-2.43 on tmpfs. Let's see if it lasts..
-		#tests/dd/no-allocate.sh
+	local xfail_tests=()
 
-		# bug #675802
-		tests/env/env-S
-		tests/env/env-S.pl
+	if [[ -n ${SANDBOX_ACTIVE} ]]; then
+		xfail_tests+=(
+			# bug #629660
+			# Commented out again in 9.6 as it XPASSes on linux-6.12.10
+			# with sandbox-2.43 on tmpfs. Let's see if it lasts..
+			#tests/dd/no-allocate.sh
 
-		# bug #413621 and bug #548250
-		tests/du/long-from-unreadable.sh
-		tests/ls/removed-directory
-		tests/ls/removed-directory.sh
-		tests/ls/stat-free-symlinks
-		tests/ls/stat-free-symlinks.sh
-		tests/rm/deep-2
-		tests/rm/deep-2.sh
+			# bug #675802
+			tests/env/env-S
+			tests/env/env-S.pl
 
-		# We have a patch which fixes this (bug #259876)
-		#tests/touch/not-owner
-		#tests/touch/not-owner.sh
-	)
+			# bug #413621 and bug #548250
+			tests/du/long-from-unreadable.sh
+			tests/ls/removed-directory
+			tests/ls/removed-directory.sh
+			tests/ls/stat-free-symlinks
+			tests/ls/stat-free-symlinks.sh
+			tests/rm/deep-2
+			tests/rm/deep-2.sh
+
+			# We have a patch which fixes this (bug #259876)
+			#tests/touch/not-owner
+			#tests/touch/not-owner.sh
+		)
+	fi
 
 	# This test is flaky (bug #910640).
 	cat > tests/tty/tty-eof.pl <<-EOF || die
