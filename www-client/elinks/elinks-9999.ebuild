@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bittorrent brotli bzip2 curl debug finger ftp gemini gopher gpm gnutls guile idn"
+IUSE="bittorrent brotli bzip2 curl debug +doc finger ftp gemini gopher gpm gnutls guile idn"
 IUSE+=" javascript libcss lua lzma +mouse nls nntp perl python samba sftp ssl test tre unicode X xml zlib zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -75,6 +75,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	virtual/pkgconfig
+	doc? ( dev-lang/perl )
 	nls? ( sys-devel/gettext )
 	test? (
 		net-dns/libidn
@@ -118,6 +119,7 @@ src_configure() {
 		$(meson_use bzip2 bzlib)
 		$(meson_use curl libcurl)
 		$(usex debug '-Ddebug=true' '-Dfastmem=true')
+		$(meson_use doc)
 		$(meson_use finger)
 		$(meson_use ftp)
 		-Dfsp=false
