@@ -17,7 +17,6 @@
 		<flag name="hsts">Enable HTTP Strict Transport Security</flag>
 		<flag name="imap">Enable Internet Message Access Protocol support</flag>
 		<flag name="mbedtls">Enable mbedtls ssl backend</flag>
-		<flag name="nghttp3">Enable HTTP/3 support using <pkg>net-libs/nghttp3</pkg></flag>
 		<flag name="http3">Enable HTTP/3 support</flag>
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
