@@ -47,38 +47,23 @@ BDEPEND="
 distutils_enable_tests unittest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://review.opendev.org/c/openstack/pbr/+/940773
+		# https://review.opendev.org/c/openstack/pbr/+/940778
+		"${FILESDIR}/${P}-test.patch"
+	)
+
 	# TODO: investigate
 	sed -e 's:test_console_script_develop:_&:' \
 		-e 's:test_console_script_install:_&:' \
 		-e 's:test_setup_py_keywords:_&:' \
 		-i pbr/tests/test_core.py || die
-	# network
-	rm pbr/tests/test_wsgi.py || die
 	# installs random packages via pip from the Internet
 	sed -e 's:test_requirement_parsing:_&:' \
 		-e 's:test_pep_517_support:_&:' \
 		-i pbr/tests/test_packaging.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile() {
-	case ${EPYTHON} in
-		pypy3)
-			# TODO: wrong assumptions about filenames, i guess?
-			sed -e 's:test_generates_c_extensions:_&:' \
-				-i "pbr/tests/test_packaging.py" || die
-			;;
-	esac
-
-	distutils-r1_python_compile
-
-	case ${EPYTHON} in
-		pypy3)
-			sed -e 's:_test_generates_c_extensions:&:' \
-				-i "pbr/tests/test_packaging.py" || die
-			;;
-	esac
 }
 
 python_test() {

@@ -1,0 +1,84 @@
+From 55015f69726f8916b9c50d70c856345929dc8cd7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 5 Feb 2025 12:36:08 +0100
+Subject: [PATCH 1/2] Use sysconfig for sitedir path in test_wsgi
+
+Use `sysconfig.get_path()` to obtain the correct site-packages directory
+path in `test_wsgi`, instead of attempting to guess it based on Python
+version.  This fixes the test on PyPy3.10, and seems to be correct
+down to Python 2.7 (though tox does not seem to let me test on Python 2
+anymore).
+
+Partial-Bug: 2097427
+Change-Id: I5c152a98fd371dfb195643f0f5640cf1ffe0ba31
+---
+ pbr/tests/test_wsgi.py | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/pbr/tests/test_wsgi.py b/pbr/tests/test_wsgi.py
+index a42fe78..fd11ab4 100644
+--- a/pbr/tests/test_wsgi.py
++++ b/pbr/tests/test_wsgi.py
+@@ -16,6 +16,7 @@ import os
+ import re
+ import subprocess
+ import sys
++import sysconfig
+ try:
+     # python 2
+     from urllib2 import urlopen
+@@ -31,18 +32,7 @@ class TestWsgiScripts(base.BaseTestCase):
+     cmd_names = ('pbr_test_wsgi', 'pbr_test_wsgi_with_class')
+ 
+     def _get_path(self):
+-        if os.path.isdir("%s/lib64" % self.temp_dir):
+-            path = "%s/lib64" % self.temp_dir
+-        elif os.path.isdir("%s/lib" % self.temp_dir):
+-            path = "%s/lib" % self.temp_dir
+-        elif os.path.isdir("%s/site-packages" % self.temp_dir):
+-            return ".:%s/site-packages" % self.temp_dir
+-        else:
+-            raise Exception("Could not determine path for test")
+-        return ".:%s/python%s.%s/site-packages" % (
+-            path,
+-            sys.version_info[0],
+-            sys.version_info[1])
++        return sysconfig.get_path("purelib", vars={"base": self.temp_dir})
+ 
+     def test_wsgi_script_install(self):
+         """Test that we install a non-pkg-resources wsgi script."""
+From 4bcc6bcb46644492ec07094411d58817cfe08d7c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 5 Feb 2025 11:26:55 +0100
+Subject: [PATCH 2/2] Modernize tests to use EXT_SUFFIX, fix PyPy
+
+Modernize `test_generates_c_extensions` to use
+`sysconfig.get_config_var("EXT_SUFFIX")` whenever available,
+to obtain the correct extension file suffix, instead of attempting
+to recontruct it from `SOABI`.  This fixes test failures on modern
+PyPy3.10 versions, and should also be more future-proof for other Python
+implementations.
+
+Partial-Bug: 2097427
+Change-Id: I5fbeb0ae1193ed68be0beab2857860a525731688
+---
+ pbr/tests/test_packaging.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pbr/tests/test_packaging.py b/pbr/tests/test_packaging.py
+index 0ababba..f6e2b31 100644
+--- a/pbr/tests/test_packaging.py
++++ b/pbr/tests/test_packaging.py
+@@ -413,9 +413,9 @@ class TestPackagingWheels(base.BaseTestCase):
+         built_package_dir = os.path.join(
+             self.extracted_wheel_dir, 'pbr_testpackage')
+         static_object_filename = 'testext.so'
+-        soabi = get_soabi()
+-        if soabi:
+-            static_object_filename = 'testext.{0}.so'.format(soabi)
++        ext_suffix = sysconfig.get_config_var('EXT_SUFFIX')
++        if ext_suffix is not None:
++            static_object_filename = 'testext' + ext_suffix
+         static_object_path = os.path.join(
+             built_package_dir, static_object_filename)
+ 
