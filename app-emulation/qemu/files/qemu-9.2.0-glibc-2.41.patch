@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/949098
+https://gitlab.com/qemu-project/qemu/-/issues/2799
 https://lists.nongnu.org/archive/html/qemu-devel/2024-10/msg02221.html
 
 glibc 2.41+ has added [1] definitions for sched_setattr and sched_getattr functions
