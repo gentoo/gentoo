@@ -26,7 +26,10 @@ RDEPEND="
 	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
-	sys-apps/systemd-utils
+	|| (
+		sys-apps/systemd
+		sys-apps/systemd-utils
+	)
 	sys-apps/util-linux
 	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf:2
