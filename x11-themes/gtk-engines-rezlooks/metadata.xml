@@ -5,4 +5,7 @@
 		<email>themes@gentoo.org</email>
 		<name>Themes Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">t-wissmann/rezlooks-gtk-engine</remote-id>
+	</upstream>
 </pkgmetadata>
