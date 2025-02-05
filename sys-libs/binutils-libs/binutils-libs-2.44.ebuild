@@ -211,7 +211,9 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	# Provided by dev-debug/gdb instead
-	rm "${ED}"/usr/share/info/sframe-spec.info || die
+	if [[ ${PV} != 9999 ]] ; then
+		rm "${ED}"/usr/share/info/sframe-spec.info || die
+	fi
 
 	# Provide libiberty.h directly.
 	dosym libiberty/libiberty.h /usr/include/libiberty.h
