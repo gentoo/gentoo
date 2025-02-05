@@ -1,0 +1,49 @@
+
+# HG changeset patch
+# User John Schanck <jschanck@mozilla.com>
+# Date 1731689351 0
+# Node ID 74feb03fe4f9efc0d5e5018b9a34376fc1261404
+# Parent  98e011fd3a24428abb886525630caacffabe01eb
+Bug 1927096 - update expected error code in pk12util pbmac1 tests. r=rrelyea
+
+Differential Revision: https://phabricator.services.mozilla.com/D227894
+
+diff --git a/tests/tools/tools.sh b/tests/tools/tools.sh
+--- a/tests/tools/tools.sh
++++ b/tests/tools/tools.sh
+@@ -539,31 +539,31 @@ tools_p12_import_pbmac1_samples()
+   ${BINDIR}/pk12util -i ${TOOLSDIR}/data/pbmac1-valid-sha512.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
+   ret=$?
+   html_msg $ret 0 "Importing private key pbmac1 hmac-sha-512 from PKCS#12 file"
+   check_tmpfile
+ 
+   echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-iter.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234'"
+   ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-iter.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
+   ret=$?
+-  html_msg $ret 19 "Fail to list private key with bad iterator"
++  html_msg $ret 17 "Fail to list private key with bad iterator"
+   check_tmpfile
+ 
+   echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-salt.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234'"
+   ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-salt.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
+   ret=$?
+   echo "Fail to list private key with bad salt val=$ret"
+-  html_msg $ret 19 "Fail to import private key with bad salt"
++  html_msg $ret 17 "Fail to import private key with bad salt"
+   check_tmpfile
+ 
+   echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-no-length.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234'"
+   ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-no-length.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
+   ret=$?
+   echo "Fail to import private key with no length val=$ret"
+-  html_msg $ret 19 "Fail to import private key with no length"
++  html_msg $ret 17 "Fail to import private key with no length"
+   check_tmpfile
+ }
+ 
+ ############################## tools_p12 ###############################
+ # local shell function to test basic functionality of pk12util
+ ########################################################################
+ tools_p12()
+ {
+
