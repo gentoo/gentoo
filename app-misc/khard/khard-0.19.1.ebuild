@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,7 +56,18 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx-autodoc-typehints
 
 python_compile_all() {
-	use doc && emake -j1 -C doc/ html text man info
+	if use doc; then
+		# The safe_MAKE= assignment below strips any arguments you might
+		# have in your $MAKE variable (i.e. it keeps only the stuff
+		# before the first space character). Sphinx tries to execute
+		# $MAKE using subprocess.call, which is expecting an actual
+		# program and not a program plus flags. This can help in some
+		# corner cases, like MAKE="make LIBTOOL=..." in make.conf, and
+		# should still allow e.g. MAKE=/usr/local/bin/mymake
+		local safe_MAKE="${MAKE%% *}"
+		[[ -z "${safe_MAKE}" ]] && safe_MAKE=make
+		emake MAKE="${safe_MAKE}" -j1 -C doc/ html text man info
+	fi
 }
 
 python_install_all() {
