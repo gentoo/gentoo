@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="3.2"
-KEYWORDS="~amd64 arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 CDEPEND="
 	>=dev-java/cglib-3.3.0-r3:0
