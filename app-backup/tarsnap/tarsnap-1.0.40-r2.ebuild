@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,10 +10,13 @@ HOMEPAGE="https://www.tarsnap.com/"
 SRC_URI="https://www.tarsnap.com/download/${PN}-autoconf-${PV}.tgz"
 S="${WORKDIR}"/${PN}-autoconf-${PV}
 
-LICENSE="tarsnap"
+LICENSE="tarsnap BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="acl bzip2 lzma xattr"
+# The tarsnap license allows redistribution only without modification.
+# Commented out because patches apply only to files with a free license.
+#RESTRICT="bindist"
 
 RDEPEND="
 	app-arch/bzip2
