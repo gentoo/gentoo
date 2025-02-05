@@ -1,0 +1,39 @@
+From f2ef7aa808e204c8714de40b29895ea596e2bb0e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>
+Date: Sun, 2 Feb 2025 09:18:54 +0100
+Subject: [PATCH] incus/file/pull: Read files in chunks
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Stéphane Graber <stgraber@stgraber.org>
+---
+ cmd/incus/file.go | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/cmd/incus/file.go b/cmd/incus/file.go
+index 99467a0bfc5..4aad930acd8 100644
+--- a/cmd/incus/file.go
++++ b/cmd/incus/file.go
+@@ -686,10 +686,17 @@ func (c *cmdFilePull) Run(cmd *cobra.Command, args []string) error {
+ 				return err
+ 			}
+ 		} else {
+-			_, err = io.Copy(writer, src)
+-			if err != nil {
+-				progress.Done("")
+-				return err
++			for {
++				// Read 1MB at a time.
++				_, err = io.CopyN(writer, src, 1024*1024*1024)
++				if err != nil {
++					if err == io.EOF {
++						break
++					}
++
++					progress.Done("")
++					return err
++				}
+ 			}
+ 		}
+ 

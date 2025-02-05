@@ -91,7 +91,8 @@ RESTRICT="test"
 
 GOPATH="${S}/_dist"
 
-PATCHES=( "${FILESDIR}"/incus-6.9-ensure-leading-slash-in-all-paths.patch )
+PATCHES=( "${FILESDIR}"/incus-6.9-ensure-leading-slash-in-all-paths.patch 
+	"${FILESDIR}"/incus-6.9-read-files-in-chunks.patch )
 
 src_unpack() {
 	verify-sig_src_unpack
