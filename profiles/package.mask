@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2025-02-05)
+# Masked for testing
+=dev-util/mesa_clc-25.0*
+=media-libs/mesa-25.0*
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-01-30)
 # Breaks the only consumer of pytest-bdd (qutebrowser),
 # not looked into yet but mask for now as it prevents
