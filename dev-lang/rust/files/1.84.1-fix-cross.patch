@@ -1,4 +1,6 @@
+https://github.com/rust-lang/rust/issues/133629
 https://github.com/rust-lang/rust/commit/a24d859f19bbefe5371694f318568b0ab5a13299
+
 From: onur-ozkan <work@onurozkan.dev>
 Date: Thu, 30 Jan 2025 16:51:08 +0000
 Subject: [PATCH] set rustc dylib on manually constructed rustc command
