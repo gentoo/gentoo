@@ -1,4 +1,4 @@
-# Copyright 2002-2024 Gentoo Authors
+# Copyright 2002-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -900,7 +900,7 @@ tc-get-compiler-type() {
 	HAVE_GCC
 #endif
 '
-	local res=$($(tc-getCPP "$@") -E -P - <<<"${code}")
+	local res=$($(tc-getCC "$@") -E -P - <<<"${code}")
 
 	case ${res} in
 		*HAVE_PATHCC*)	echo pathcc;;
@@ -927,7 +927,7 @@ tc-is-clang() {
 # compilers rather than maintaining a --version flag matrix, bug #335943.
 _gcc_fullversion() {
 	local ver="$1"; shift
-	set -- $($(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
+	set -- $($(tc-getCC "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
 	eval echo "${ver}"
 }
 
@@ -960,7 +960,7 @@ gcc-micro-version() {
 # Internal func. Based on _gcc_fullversion() above.
 _clang_fullversion() {
 	local ver="$1"; shift
-	set -- $($(tc-getCPP "$@") -E -P - <<<"__clang_major__ __clang_minor__ __clang_patchlevel__")
+	set -- $($(tc-getCC "$@") -E -P - <<<"__clang_major__ __clang_minor__ __clang_patchlevel__")
 	eval echo "${ver}"
 }
 
@@ -1347,14 +1347,14 @@ tc-get-c-rtlib() {
 # @FUNCTION: tc-get-ptr-size
 # @RETURN: Size of a pointer in bytes for CHOST (e.g. 4 or 8).
 tc-get-ptr-size() {
-	$(tc-getCPP) -P - <<< __SIZEOF_POINTER__ ||
+	$(tc-getCC) -E -P - <<< __SIZEOF_POINTER__ ||
 		die "Could not determine CHOST pointer size"
 }
 
 # @FUNCTION: tc-get-build-ptr-size
 # @RETURN: Size of a pointer in bytes for CBUILD (e.g. 4 or 8).
 tc-get-build-ptr-size() {
-	$(tc-getBUILD_CPP) -P - <<< __SIZEOF_POINTER__ ||
+	$(tc-getBUILD_CC) -E -P - <<< __SIZEOF_POINTER__ ||
 		die "Could not determine CBUILD pointer size"
 }
 
