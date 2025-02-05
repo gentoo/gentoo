@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PN=LibRaw
 MY_PV="${PV/_b/-B}"
@@ -12,6 +12,7 @@ MY_P="${MY_PN}-${MY_PV}"
 DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
 HOMEPAGE="https://www.libraw.org/ https://github.com/LibRaw/LibRaw"
 SRC_URI="https://www.libraw.org/data/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1 CDDL"
 # SONAME isn't exactly the same as PV but it does correspond and
@@ -28,8 +29,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_P}"
-
 DOCS=( Changelog.txt README.md )
 
 pkg_pretend() {
@@ -38,6 +37,14 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	default
+
+	if tc-is-clang && use openmp ; then
+		append-libs omp
+	fi
 }
 
 multilib_src_configure() {
