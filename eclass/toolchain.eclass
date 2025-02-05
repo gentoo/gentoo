@@ -2972,7 +2972,7 @@ toolchain_pkg_postrm() {
 		return 0
 	else
 		# Removed the last GCC installed (bug #906040)
-		if ! has_version "sys-devel/gcc" && has_version "sys-devel/clang" ; then
+		if ! has_version "sys-devel/gcc" && has_version "llvm-core/clang" ; then
 			einfo "Last GCC version removed. Cleaning up ${EROOT}/etc/clang/gentoo-gcc-install.cfg."
 			echo > "${EROOT}"/etc/clang/gentoo-gcc-install.cfg
 		fi
