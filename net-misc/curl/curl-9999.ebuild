@@ -156,7 +156,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-prefix-3.patch"
+	"${FILESDIR}/${PN}-prefix-4.patch"
 	"${FILESDIR}/${PN}-respect-cflags-3.patch"
 )
 
@@ -270,15 +270,12 @@ multilib_src_configure() {
 		--enable-socketpair
 		--disable-sspi
 		$(use_enable static-libs static)
-		--enable-pthreads
-		--enable-threaded-resolver
 		--disable-versioned-symbols
 		--without-amissl
 		--without-bearssl
 		$(use_with brotli)
 		--with-fish-functions-dir="${EPREFIX}"/usr/share/fish/vendor_completions.d
 		$(use_with http2 nghttp2)
-		--without-hyper
 		$(use_with idn libidn2)
 		$(use_with kerberos gssapi "${EPREFIX}"/usr)
 		--without-libgsasl
@@ -314,9 +311,17 @@ multilib_src_configure() {
 		)
 	fi
 
-	if [[ ${CHOST} == *mingw* ]] ; then
+	# Since 8.12.0 adns/c-ares and the threaded resolver are mutually exclusive
+	# This is in support of some work to enable `httpsrr` to use adns and the rest
+	# of curl to use the threaded resolver; we'll just make `httpsrr` conditional on adns
+	# when the time comes.
+	if use adns; then
 		myconf+=(
-			--disable-pthreads
+			--disable-threaded-resolver
+		)
+	else
+		myconf+=(
+			--enable-threaded-resolver
 		)
 	fi
 
