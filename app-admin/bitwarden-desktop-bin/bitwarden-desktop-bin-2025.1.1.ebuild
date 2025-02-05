@@ -1,11 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit desktop unpacker xdg-utils
-
-MY_PN="Bitwarden"
 
 DESCRIPTION="Bitwarden password manager desktop client"
 HOMEPAGE="https://bitwarden.com/"
@@ -65,7 +63,7 @@ QA_PREBUILT="
 
 src_install() {
 	insinto /opt
-	doins -r opt/${MY_PN}
+	doins -r opt/Bitwarden
 	fperms 755 /opt/Bitwarden/bitwarden \
 		/opt/Bitwarden/bitwarden-app
 	fperms 4755 /opt/Bitwarden/chrome-sandbox
