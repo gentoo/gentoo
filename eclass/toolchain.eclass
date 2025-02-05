@@ -2099,6 +2099,11 @@ gcc_do_filter_flags() {
 	# https://gcc.gnu.org/PR100431
 	filter-flags -Werror=format-security
 
+	if ver_test -lt 10.1 ; then
+		filter-flags '-fdiagnostics-urls=*'
+		filter-flags '-Wstringop-overread'
+	fi
+
 	if ver_test -lt 13.6 ; then
 		# These aren't supported by the just-built compiler either.
 		filter-flags -fharden-compares -fharden-conditional-branches \
