@@ -158,7 +158,7 @@ multilib_src_configure() {
 		# We only care about the libs, so disable programs. #528088
 		--disable-{binutils,etc,ld,gas,gprof,gprofng}
 		# Disable modules that are in a combined binutils/gdb tree. #490566
-		--disable-{gdb,libdecnumber,readline,sim}
+		--disable-{gdb,gdbserver,libbacktrace,libdecnumber,readline,sim}
 		# Strip out broken static link flags.
 		# https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
