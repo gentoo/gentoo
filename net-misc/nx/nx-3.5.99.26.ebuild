@@ -50,8 +50,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5.99.26-riscv64-support.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-musl.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-which.patch"
-	# https://github.com/ArticaProject/nx-libs/pull/1087
+	# https://github.com/ArcticaProject/nx-libs/pull/1087
 	"${FILESDIR}/${PN}-3.5.99.26-gcc14-32bit.patch"
+	"${FILESDIR}/${PN}-3.5.99.26-gcc14-access.patch"
 )
 
 src_prepare() {

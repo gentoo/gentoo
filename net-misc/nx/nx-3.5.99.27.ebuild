@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5.99.27-which.patch"
 	# https://github.com/ArcticaProject/nx-libs/pull/1087
 	"${FILESDIR}/${PN}-3.5.99.26-gcc14-32bit.patch"
+	"${FILESDIR}/${PN}-3.5.99.26-gcc14-access.patch"
 )
 
 src_prepare() {
