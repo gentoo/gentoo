@@ -21,6 +21,7 @@ CRATES="
 "
 
 RUST_MIN_VER="1.74.1"
+RUST_MULTILIB=1
 RUST_OPTIONAL=1
 
 inherit cargo
