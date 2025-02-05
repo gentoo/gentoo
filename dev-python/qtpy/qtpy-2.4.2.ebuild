@@ -144,18 +144,16 @@ src_prepare() {
 		# We need to ensure the first option is an 'if' not 'elif'
 		sed -e 's/elif "PySide2" in sys.modules:/if "PySide2" in sys.modules:/g' -i qtpy/__init__.py || die
 	fi
-	if ! use pyside2; then
-		sed \
-			-e "s/from PySide2 import/raise ImportError #/" \
-			-e "s/from PySide2.QtCore import/raise ImportError #/" \
-			-e '/if "PySide2" in sys.modules:/,/"pyside2"/c\' \
-			-i qtpy/__init__.py || die
+	sed \
+		-e "s/from PySide2 import/raise ImportError #/" \
+		-e "s/from PySide2.QtCore import/raise ImportError #/" \
+		-e '/if "PySide2" in sys.modules:/,/"pyside2"/c\' \
+		-i qtpy/__init__.py || die
 
-		if ! use pyqt5; then
-			sed \
-				-e 's/elif "PyQt6" in sys.modules:/if "PyQt6" in sys.modules:/g' \
-				-i qtpy/__init__.py || die
-		fi
+	if ! use pyqt5; then
+		sed \
+			-e 's/elif "PyQt6" in sys.modules:/if "PyQt6" in sys.modules:/g' \
+			-i qtpy/__init__.py || die
 	fi
 	if ! use pyqt6; then
 		sed \
@@ -163,7 +161,7 @@ src_prepare() {
 			-e '/if "PyQt6" in sys.modules:/,/"pyqt6"/c\' \
 			-i qtpy/__init__.py || die
 
-		if ! use pyqt5 && ! use pyside2; then
+		if ! use pyqt5; then
 			sed \
 				-e 's/elif "PySide6" in sys.modules:/if "PySide6" in sys.modules:/g' \
 				-i qtpy/__init__.py || die
