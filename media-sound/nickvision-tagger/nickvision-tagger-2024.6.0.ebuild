@@ -68,7 +68,7 @@ S="${WORKDIR}"/${REAL_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-libs/glib
