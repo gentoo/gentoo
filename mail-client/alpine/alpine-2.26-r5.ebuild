@@ -40,6 +40,9 @@ src_prepare() {
 	local gettext_version=$(gettextize --version | awk '/GNU gettext-tools/{print $NF}' || die)
 	sed -i "s/^AM_GNU_GETTEXT_VERSION(.*)/AM_GNU_GETTEXT_VERSION([${gettext_version}])/g" configure.ac || die
 
+	# do not override $RM for libtool (bug #880323)
+	sed -i "/^AC_PATH_PROG(RM/d" configure.ac || die
+
 	eautoreconf
 	tc-export CC RANLIB AR
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
