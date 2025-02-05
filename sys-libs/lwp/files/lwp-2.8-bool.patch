@@ -1,0 +1,14 @@
+Used for declaration of private function only, so change
+causes no visible effects
+https://bugs.gentoo.org/943734
+--- a/src/timer.c
++++ b/src/timer.c
+@@ -48,7 +48,7 @@
+ #include <lwp/timer.h>
+ #include "lwp.private.h"
+ 
+-typedef unsigned char bool;
++#include <stdbool.h>
+ 
+ #define expiration TotalTime
+ 
