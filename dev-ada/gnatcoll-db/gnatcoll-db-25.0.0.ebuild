@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="db2ada doc gnatinspect postgres +shared +sql sqlite static-libs static-pic xref"
 
 RDEPEND="dev-ada/gnatcoll-core:${SLOT}[${ADA_USEDEP},shared?,static-libs?,static-pic?]
