@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,8 @@ BDEPEND="doc? ( >=app-text/doxygen-1.2.6 )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
 	"${FILESDIR}/${PN}-1.2.13-update-symbol-name.patch" # bug #943399
-	"${FILESDIR}/${PN}-1.2.13-seq-ump-headers.patch" # bug #943696
+	"${FILESDIR}/${P}-seq-ump-headers.patch" # bug #943696
+	"${FILESDIR}/${P}-headers-again.patch"
 )
 
 pkg_setup() {
@@ -53,6 +54,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Tests fail to build w/ C23 (bug #944447)
+	append-cflags -std=gnu17
+
 	# Broken upstream. Could in theory work with -flto-partitions=none
 	# but it's a hack to workaround the real problem and not strictly safe.
 	# bug #616108, bug #669086, and https://github.com/alsa-project/alsa-lib/issues/6.
