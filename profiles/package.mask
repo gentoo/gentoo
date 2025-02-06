@@ -42,6 +42,11 @@
 # Removal on 2025-05-12. Bug #917279.
 media-gfx/transfig
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-04-12)
+# Unmaintained upstream since 2008, doesn't build. x86-only.
+# Removal on 2025-05-12. Bugs #77471, #926465, #941191, #948965.
+games-fps/tenebrae
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
 # Bug #947297; removal on 2025-05-26
