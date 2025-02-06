@@ -1,0 +1,247 @@
+--- a/configure
++++ b/configure
+@@ -32805,6 +32805,49 @@
+ 	LIBS=$oLIBS
+     fi
+     if test x"${have_libminiupnp}" = xt; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for miniupnpc version >= 2.2.8" >&5
++$as_echo_n "checking for miniupnpc version >= 2.2.8... " >&6; }
++	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++            #include <stdio.h>
++            #include <miniupnpc/miniupnpc.h>
++            #include <miniupnpc/upnpcommands.h>
++            #include <miniupnpc/upnperrors.h>
++int
++main ()
++{
++
++
++            #ifndef MINIUPNPC_API_VERSION
++	    #error "no api version define"
++            #else
++            # if MINIUPNPC_API_VERSION < 18
++            #error "api version too low"
++            # endif
++            #endif
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"; then :
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++$as_echo "#define HAVE_LIBMINIUPNP 1" >>confdefs.h
++
++
++$as_echo "#define HAVE_LIBMINIUPNP228 1" >>confdefs.h
++
++          unset no_upnp
++	  SOCKDDEPS="${SOCKDDEPS}${SOCKDDEPS:+ }$UPNPLIB"
++	  DLIBDEPS="${DLIBDEPS}${DLIBDEPS:+ }$UPNPLIB"
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++
+         { $as_echo "$as_me:${as_lineno-$LINENO}: checking for miniupnpc version >= 1.7" >&5
+ $as_echo_n "checking for miniupnpc version >= 1.7... " >&6; }
+ 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -32822,8 +32865,8 @@
+             #ifndef MINIUPNPC_API_VERSION
+ 	    #error "no api version define"
+             #else
+-            # if MINIUPNPC_API_VERSION < 8
+-            #error "api version too low"
++            # if MINIUPNPC_API_VERSION < 8 || MINIUPNPC_API_VERSION > 17
++            #error "api version too low or high"
+             # endif
+             #endif
+   ;
+--- ./include/autoconf.h.in.orig	2021-04-30 21:29:27.000000000 +0200
++++ ./include/autoconf.h.in	2025-01-13 13:18:20.846544677 +0100
+@@ -797,6 +797,9 @@
+ /* UPNP support library 1.7 */
+ #undef HAVE_LIBMINIUPNP17
+ 
++/* UPNP support library 2.2.8 */
++#undef HAVE_LIBMINIUPNP228
++
+ /* Define to 1 if you have the `prldap60' library (-lprldap60). */
+ #undef HAVE_LIBPRLDAP60
+ 
+--- ./include/common.h.orig	2021-02-02 20:34:15.000000000 +0100
++++ ./include/common.h	2025-01-13 13:16:32.969992076 +0100
+@@ -1404,9 +1404,20 @@
+ /* return codes from UPNP_GetValidIGD(). */
+ #define UPNP_NO_IGD           (0)
+ #define UPNP_CONNECTED_IGD    (1)
++
++#if HAVE_LIBMINIUPNP228
++
++#define UPNP_RESERVED_IGD     (2)
++#define UPNP_DISCONNECTED_IGD (3)
++#define UPNP_UNKNOWN_DEVICE   (4)
++
++#else /* !HAVE_LIBMINIUPNP_228 */
++
+ #define UPNP_DISCONNECTED_IGD (2)
+ #define UPNP_UNKNOWN_DEVICE   (3)
+ 
++#endif /* !HAVE_LIBMINIUPNP_228 */
++
+ #define UPNP_SUCCESS          (1)
+ #define UPNP_FAILURE          (2)
+ 
+--- ./include/redefac.h.orig	2021-04-30 21:48:32.000000000 +0200
++++ ./include/redefac.h	2025-01-13 13:13:43.206075810 +0100
+@@ -1004,6 +1004,10 @@
+ #define HAVE_LIBMINIUPNP17 0
+ #endif
+ 
++#ifndef HAVE_LIBMINIUPNP228
++#define HAVE_LIBMINIUPNP228 0
++#endif
++
+ #ifndef HAVE_LIBPRLDAP60
+ #define HAVE_LIBPRLDAP60 0
+ #endif
+--- ./lib/upnp.c.orig	2020-11-11 17:11:55.000000000 +0100
++++ ./lib/upnp.c	2024-11-21 17:02:49.000000000 +0100
+@@ -42,7 +42,7 @@
+  */
+ 
+ static const char rcsid[] =
+-"$Id: upnp.c,v 1.153.4.4.2.2.4.2 2020/11/11 16:11:55 karls Exp $";
++"$Id: upnp.c,v 1.153.4.4.2.2.4.2.4.1 2024/11/21 16:02:49 karls Exp $";
+ 
+ #include "common.h"
+ 
+@@ -154,7 +154,7 @@
+                            addrstring,
+                            NULL,
+                            0
+-#if HAVE_LIBMINIUPNP17
++#if HAVE_LIBMINIUPNP17 || HAVE_LIBMINIUPNP228
+                           ,0,
+ 
+ #if MINIUPNPC_API_VERSION >= 14
+@@ -162,7 +162,7 @@
+ #endif /* MINIUPNPC_API_VERSION >= 14 */
+ 
+                           &rc
+-#endif /* HAVE_LIBMINIUPNP17 */
++#endif /* HAVE_LIBMINIUPNP17 || HAVE_LIBMINIUPNP228 */
+                          );
+ 
+ #if SOCKS_CLIENT && SOCKSLIBRARY_DYNAMIC
+@@ -208,7 +208,12 @@
+          socks_autoadd_directroute(&commands, &protocols, &saddr, &smask);
+       }
+ 
++#if HAVE_LIBMINIUPNP228
++      devtype = UPNP_GetValidIGD(dev, &url, &data, myaddr, sizeof(myaddr),
++                                 NULL, 0);
++#else /* !HAVE_LIBMINIUPNP228 */
+       devtype = UPNP_GetValidIGD(dev, &url, &data, myaddr, sizeof(myaddr));
++#endif /* !HAVE_LIBMINIUPNP228 */
+       switch (devtype) {
+          case UPNP_NO_IGD:
+             snprintf(emsg, emsglen, "no UPNP IGD discovered on local network");
+@@ -226,6 +231,20 @@
+             rc = 0;
+             break;
+ 
++#if HAVE_LIBMINIUPNP228
++         case UPNP_RESERVED_IGD:
++            snprintf(emsg, emsglen,
++                    "UPNP IGD discovered at url %s, but its IP is reserved",
++                    str2vis(url.controlURL,
++                           strlen(url.controlURL),
++                            vbuf,
++                            sizeof(vbuf)));
++
++            swarnx("%s: %s", function, emsg);
++            rc = -1;
++            break;
++#endif /* HAVE_LIBMINIUPNP228 */
++
+          case UPNP_DISCONNECTED_IGD:
+             snprintf(emsg, emsglen,
+                     "UPNP IGD discovered at url %s, but it is not connected",
+@@ -273,12 +292,12 @@
+ #if HAVE_LIBMINIUPNP13
+       STRCPY_ASSERTLEN(gw->state.data.upnp.servicetype, data.servicetype);
+ 
+-#elif HAVE_LIBMINIUPNP14 || HAVE_LIBMINIUPNP17
++#elif HAVE_LIBMINIUPNP14 || HAVE_LIBMINIUPNP17 || HAVE_LIBMINIUPNP228
+       STRCPY_ASSERTLEN(gw->state.data.upnp.servicetype, data.CIF.servicetype);
+ 
+ #else
+ #  error "unexpected miniupnp version"
+-#endif /* HAVE_LIBMINIUPNP17 */
++#endif /* HAVE_LIBMINIUPNP14 || HAVE_LIBMINIUPNP17 || HAVE_LIBMINIUPNP228 */
+ 
+       slog(LOG_NEGOTIATE, "%s: inited ok.  controlurl: %s, servicetype: %s",
+            function,
+@@ -756,9 +775,9 @@
+                                        buf,
+                                        protocol,
+                                        NULL
+-#if HAVE_LIBMINIUPNP17
++#if HAVE_LIBMINIUPNP17 || HAVE_LIBMINIUPNP228
+                                        ,0
+-#endif /* HAVE_LIBMINIUPNP17 */
++#endif /* HAVE_LIBMINIUPNP17 || HAVE_LIBMINIUPNP228 */
+                                        )) != UPNPCOMMAND_SUCCESS) {
+                snprintf(emsg, emsglen,
+                        "UPNP_AddPortMapping() failed: %s", strupnperror(rc));
+--- ./miniupnpc.m4.orig	2012-11-02 13:08:14.000000000 +0100
++++ ./miniupnpc.m4	2024-11-21 17:02:49.000000000 +0100
+@@ -20,7 +20,7 @@
+ 	LIBS=$oLIBS
+     fi
+     if test x"${have_libminiupnp}" = xt; then
+-        AC_MSG_CHECKING([for miniupnpc version >= 1.7])
++        AC_MSG_CHECKING([for miniupnpc version >= 2.2.8])
+ 	AC_TRY_COMPILE([
+             #include <stdio.h>
+             #include <miniupnpc/miniupnpc.h>
+@@ -30,11 +30,33 @@
+             #ifndef MINIUPNPC_API_VERSION
+ 	    #error "no api version define"
+             #else
+-            # if MINIUPNPC_API_VERSION < 8
++            # if MINIUPNPC_API_VERSION < 18
+             #error "api version too low"
+             # endif
+             #endif],
+          [AC_MSG_RESULT(yes)
++          AC_DEFINE(HAVE_LIBMINIUPNP, 1, [UPNP support library])
++          AC_DEFINE(HAVE_LIBMINIUPNP228, 1, [UPNP support library 2.2.8])
++          unset no_upnp
++	  SOCKDDEPS="${SOCKDDEPS}${SOCKDDEPS:+ }$UPNPLIB"
++	  DLIBDEPS="${DLIBDEPS}${DLIBDEPS:+ }$UPNPLIB"],
++         [AC_MSG_RESULT(no)])
++
++        AC_MSG_CHECKING([for miniupnpc version >= 1.7])
++	AC_TRY_COMPILE([
++            #include <stdio.h>
++            #include <miniupnpc/miniupnpc.h>
++            #include <miniupnpc/upnpcommands.h>
++            #include <miniupnpc/upnperrors.h>], [
++
++            #ifndef MINIUPNPC_API_VERSION
++	    #error "no api version define"
++            #else
++            # if MINIUPNPC_API_VERSION < 8 || MINIUPNPC_API_VERSION > 17
++            #error "api version too low or high"
++            # endif
++            #endif],
++         [AC_MSG_RESULT(yes)
+           AC_DEFINE(HAVE_LIBMINIUPNP, 1, [UPNP support library])
+           AC_DEFINE(HAVE_LIBMINIUPNP17, 1, [UPNP support library 1.7])
+           unset no_upnp
