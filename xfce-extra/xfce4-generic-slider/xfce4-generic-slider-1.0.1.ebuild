@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit xdg-utils
 
-DESCRIPTION="Cyclically spawned executable output on the panel"
+DESCRIPTION="A visual slider widget to control user-configurable variables"
 HOMEPAGE="
 	https://docs.xfce.org/panel-plugins/xfce4-generic-slider/start
 	https://gitlab.xfce.org/panel-plugins/xfce4-generic-slider/
