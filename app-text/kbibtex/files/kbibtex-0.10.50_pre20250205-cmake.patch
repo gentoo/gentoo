@@ -1,0 +1,29 @@
+From fa79e2682a51ec1920ea80af5dcc4fd9f9af320a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 6 Feb 2025 22:46:40 +0100
+Subject: CMake: Re-add lookup of KDocTools
+
+Commented out in commit 11f6daece7d1d3d9c84db5b8aea25017aaba1c9d and
+further cleaned up in commit c0988c00d04012c2767f59149dd954b34599742e
+without comment.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 47df2bae..a160ebfe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -180,6 +180,8 @@ find_package(
+     MODULE
+     REQUIRED
+     Config
++    OPTIONAL_COMPONENTS
++    DocTools
+ )
+ if(BUILD_KPART OR BUILD_TESTING)
+     find_package(
+-- 
+2.48.1
