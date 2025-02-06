@@ -88,6 +88,7 @@
 		<flag name="zeromq">Enables <pkg>net-libs/zeromq</pkg> support with the zmq/azmq filters.</flag>
 		<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
 		<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
+		<flag name="av-stream-get-first-dts">Add av_stream_get_first_dts for Chromium to be built with system ffmpeg</flag>
 	</use>
 	<slots>
 		<slot name="0">For building against. This is the only slot that provides
