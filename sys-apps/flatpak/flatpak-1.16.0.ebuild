@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="doc introspection seccomp selinux systemd X"
+IUSE="doc introspection seccomp systemd X"
 RESTRICT="test"
 
 RDEPEND="
@@ -90,7 +90,6 @@ src_configure() {
 		-Dsystem_dbus_proxy=xdg-dbus-proxy
 		-Dtmpfilesdir=/usr/lib/tmpfiles.d
 		$(meson_feature introspection gir)
-		$(meson_feature selinux selinux_module)
 		$(meson_feature X xauth)
 		$(meson_feature doc docbook_docs)
 		$(meson_feature seccomp seccomp)
