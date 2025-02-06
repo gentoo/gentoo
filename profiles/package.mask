@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-02-06)
+# Unmaintained upstream since 2008, doesn't build. x86-only.
+# Removal in 30 days. Bugs #77471, #926465, #941191, #948965.
+games-fps/tenebrae
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-01-30)
 # Breaks the only consumer of pytest-bdd (qutebrowser),
 # not looked into yet but mask for now as it prevents
