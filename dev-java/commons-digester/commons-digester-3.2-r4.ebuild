@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ HOMEPAGE="https://commons.apache.org/digester/"
 SRC_URI="mirror://apache/commons/digester/source/${PN}3-${PV}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="3.2"
+SLOT="0"
 KEYWORDS="amd64 ppc64"
 
 # 1) atomWithNamespaceParse(org.apache.commons.digester3.xmlrules.SetNamespaceURITestCase)
@@ -32,7 +32,7 @@ RESTRICT="test"
 # commons-logging:commons-logging:1.1.1 -> >=dev-java/commons-logging-1.2:0
 
 CP_DEPEND="
-	>=dev-java/cglib-3.3.0:3
+	>=dev-java/cglib-3.3.0-r3:0
 	>=dev-java/commons-beanutils-1.9.4:1.7
 	>=dev-java/commons-logging-1.2:0
 "
