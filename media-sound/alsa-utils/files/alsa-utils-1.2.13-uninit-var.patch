@@ -1,0 +1,29 @@
+https://github.com/alsa-project/alsa-utils/commit/242e00573ab0e8d40c95f9a8a19dc0085379d171
+
+From 242e00573ab0e8d40c95f9a8a19dc0085379d171 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 3 Feb 2025 20:28:58 +0100
+Subject: [PATCH] arecordmidi2: fix unitialization variable error in
+ read_ump_raw()
+
+Variable v should be initialized from the first word in the buffer.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ seq/aplaymidi2/arecordmidi2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/seq/aplaymidi2/arecordmidi2.c b/seq/aplaymidi2/arecordmidi2.c
+index 68a9d7d0a..467af6539 100644
+--- a/seq/aplaymidi2/arecordmidi2.c
++++ b/seq/aplaymidi2/arecordmidi2.c
+@@ -351,7 +351,7 @@ static int read_ump_raw(FILE *file, uint32_t *buf)
+ 
+ 	if (fread(buf, 4, 1, file) != 1)
+ 		return 0;
+-	v = be32toh(v);
++	v = be32toh(*buf);
+ 	num = snd_ump_packet_length(snd_ump_msg_hdr_type(v));
+ 	for (i = 1; i < num; i++) {
+ 		if (fread(buf + i, 4, 1, file) != 1)
+
