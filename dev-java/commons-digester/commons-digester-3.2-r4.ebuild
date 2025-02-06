@@ -64,11 +64,12 @@ src_test() {
 		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
 	popd
 
-	# Testing with java-17 throws too many test failures
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
-	if [[ "${vm_version}" != "17" ]] ; then
-		java-pkg-simple_src_test
+	if ver_test "${vm_version}" -ge "17" ; then
+		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.lang=ALL-UNNAMED )
 	fi
+
+	java-pkg-simple_src_test
 }
 
 src_install() {
