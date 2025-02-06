@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package implements a macro named ##, which provides a compact way
+    to write short lambda expressions.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <bugs-to>https://github.com/tarsius/llama/issues/</bugs-to>
+    <remote-id type="github">tarsius/llama</remote-id>
+  </upstream>
+</pkgmetadata>
