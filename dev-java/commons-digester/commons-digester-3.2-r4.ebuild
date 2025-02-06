@@ -15,6 +15,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Reads XML configuration files to provide initialization of various Java objects"
 HOMEPAGE="https://commons.apache.org/digester/"
 SRC_URI="mirror://apache/commons/digester/source/${PN}3-${PV}-src.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/commons-digester3-${PV}-src"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -44,17 +45,12 @@ RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
 DOCS=( {LICENSE,NOTICE,RELEASE-NOTES}.txt )
-
-S="${WORKDIR}/commons-digester3-${PV}-src"
-
 JAVA_ENCODING="iso-8859-1"
-
-JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
-
+JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
 	pushd src/test/java || die
@@ -70,9 +66,4 @@ src_test() {
 	fi
 
 	java-pkg-simple_src_test
-}
-
-src_install() {
-	default # https://bugs.gentoo.org/789582
-	java-pkg-simple_src_install
 }
