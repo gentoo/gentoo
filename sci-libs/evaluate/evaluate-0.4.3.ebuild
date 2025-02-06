@@ -40,13 +40,15 @@ PATCHES=( "${FILESDIR}"/${PN}-0.4.0-tests.patch )
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	# These require packages not available on gentoo
-	rm -r metrics/{bertscore,bleurt,character,charcut_mt,chrf,code_eval} || die
-	rm -r metrics/{competition_math,coval,google_bleu,mauve,meteor} || die
-	rm -r metrics/{nist_mt,rl_reliability,rouge,sacrebleu,sari} || die
-	rm -r metrics/{ter,trec_eval,wiki_split,xtreme_s} || die
-	rm -r measurements/word_length || die
-	rm tests/test_evaluation_suite.py || die
-	distutils-r1_src_prepare
+src_test() {
+	local EPYTEST_DESELECT=(
+		tests/test_evaluation_suite.py::TestEvaluationSuite::test_empty_suite
+		tests/test_evaluation_suite.py::TestEvaluationSuite::test_running_evaluation_suite
+		tests/test_evaluator.py::TestAudioClassificationEvaluator::test_class_init
+		tests/test_evaluator.py::TestAudioClassificationEvaluator::test_overwrite_default_metric
+		tests/test_evaluator.py::TestAudioClassificationEvaluator::test_pipe_init
+		tests/test_evaluator.py::TestAudioClassificationEvaluator::test_raw_pipe_init
+		tests/test_metric.py::TestEvaluationcombined_evaluation::test_modules_from_string_poslabel
+	)
+	distutils-r1_src_test
 }
