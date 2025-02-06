@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,9 +14,9 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} = *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-3).200-be8b"
-	SRC_URI="https://meyering.net/patch/patch-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
-	SRC_URI+=" verify-sig? ( https://meyering.net/patch/patch-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
+	MY_SNAPSHOT="$(ver_cut 1-3).211-86ac"
+	SRC_URI="https://alpha.gnu.org/gnu/patch/patch-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
+	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/patch/patch-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
 else
 	SRC_URI="mirror://gnu/patch/${P}.tar.xz"
