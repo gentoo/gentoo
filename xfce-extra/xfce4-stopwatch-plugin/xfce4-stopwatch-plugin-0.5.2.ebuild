@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit xdg-utils
 
-DESCRIPTION="A panel plug-in to display wireless interface statistics"
+DESCRIPTION="A simple stopwatch plugin for Xfce panel"
 HOMEPAGE="
 	https://docs.xfce.org/panel-plugins/xfce4-stopwatch-plugin
 	https://gitlab.xfce.org/panel-plugins/xfce4-stopwatch-plugin/
