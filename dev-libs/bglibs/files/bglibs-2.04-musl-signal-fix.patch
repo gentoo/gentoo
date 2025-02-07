@@ -1,0 +1,77 @@
+Don't use sig_unblock and other such functions, they are deprecated.
+https://bugs.gentoo.org/938087
+--- a/net/bindu.c
++++ b/net/bindu.c
+@@ -21,6 +21,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "socket.h"
+ 
+ /** Bind a UNIX domain address (path) to a socket. */
+--- a/net/connectu.c
++++ b/net/connectu.c
+@@ -21,6 +21,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "socket.h"
+ 
+ /** Make an UNIX domain connection. */
+--- a/unix/sig_all.c
++++ b/unix/sig_all.c
+@@ -32,25 +32,17 @@ void sig_all_default(void)
+ void sig_all_block(void)
+ {
+   int i;
+-#ifdef HASSIGPROCMASK
+   sigset_t set;
+   sigemptyset(&set);
+   for (i = 1; i < SIGMAX; i++)
+     if (i != SIGPROF || i != SIGSEGV)
+       sigaddset(&set, i);
+   sigprocmask(SIG_BLOCK, &set, 0);
+-#else
+-  sigblock(~(1 << (SIGPROF-1)) & ~(1 << (SIGSEGV-1)));
+-#endif
+ }
+ 
+ void sig_all_unblock(void)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t set;
+   sigemptyset(&set);
+   sigprocmask(SIG_UNBLOCK, &set, 0);
+-#else
+-  sigsetmask(0);
+-#endif
+ }
+--- a/unix/sig_block.c
++++ b/unix/sig_block.c
+@@ -21,24 +21,16 @@
+ 
+ void sig_block(int s)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t set;
+   sigemptyset(&set);
+   sigaddset(&set, s);
+   sigprocmask(SIG_BLOCK, &set, 0);
+-#else
+-  sigblock(1 << (s - 1));
+-#endif
+ }
+ 
+ void sig_unblock(int s)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t set;
+   sigemptyset(&set);
+   sigaddset(&set, s);
+   sigprocmask(SIG_UNBLOCK, &set, 0);
+-#else
+-  sigsetmask(sigsetmask(~0) & ~(1 << (s - 1)));
+-#endif
+ }
