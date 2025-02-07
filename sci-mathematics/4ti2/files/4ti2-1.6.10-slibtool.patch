@@ -1,0 +1,78 @@
+mjo: we had another patch in Gentoo that adds "-lgmp" to 4ti2gmp_LDADD.
+I merged it into this one because otherwise they conflict.
+
+From b87d4c02616d6e5218658a782854e3156ab885aa Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 7 Mar 2024 14:10:14 -0800
+Subject: [PATCH] build: link internal dependencies with .la files
+
+When linking with internal dependencies the correct way is to add the
+libtool archives (.la) files to the appropriate LIBADD or LDADD
+variables.
+
+This fixes a build issue when using slibtool instead of GNU libtool.
+
+Gentoo issue: https://bugs.gentoo.org/916679
+---
+ src/groebner/Makefile.am           | 10 +++++-----
+ src/zsolve/Makefile.am             |  3 ++-
+ swig/allegrocommonlisp/Makefile.am |  8 ++++----
+ 3 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/src/groebner/Makefile.am b/src/groebner/Makefile.am
+index 64c2780..183920f 100644
+--- a/src/groebner/Makefile.am
++++ b/src/groebner/Makefile.am
+@@ -268,17 +268,17 @@ WRAPPERSCRIPTS =				\
+ nodist_bin_SCRIPTS = $(WRAPPERSCRIPTS)
+ DISTCLEANFILES = $(WRAPPERSCRIPTS)
+ 
+-AM_LDFLAGS = -L../4ti2 -R$(libdir) -l4ti2common -no-undefined
++AM_LDFLAGS = -R$(libdir) -no-undefined
+ 
+ # 16 bit precision flags.
+-# 4ti2int16_LDADD = lib4ti2int16.la
++# 4ti2int16_LDADD = lib4ti2int16.la $(top_builddir)/src/4ti2/lib4ti2common.la
+ # 4ti2int16_CPPFLAGS = -D_4ti2_INT16_
+ # 4ti2int16_SOURCES = $(4ti2sources)
+ # lib4ti2int16_la_CPPFLAGS = -D_4ti2_INT16_
+ # lib4ti2int16_la_SOURCES = $(lib4ti2sources)
+ 
+ # 32 bit precision flags.
+-4ti2int32_LDADD = lib4ti2int32.la
++4ti2int32_LDADD = lib4ti2int32.la $(top_builddir)/src/4ti2/lib4ti2common.la
+ 4ti2int32_CPPFLAGS = -D_4ti2_INT32_
+ 4ti2int32_CXXFLAGS = $(TRAPV) $(AM_CXXFLAGS)
+ 4ti2int32_SOURCES = $(4ti2sources)
+@@ -287,7 +287,7 @@ lib4ti2int32_la_CXXFLAGS = $(TRAPV) $(AM_CXXFLAGS)
+ lib4ti2int32_la_SOURCES = $(lib4ti2sources)
+ 
+ # 64 bit precision flags.
+-4ti2int64_LDADD = lib4ti2int64.la
++4ti2int64_LDADD = lib4ti2int64.la $(top_builddir)/src/4ti2/lib4ti2common.la
+ 4ti2int64_CPPFLAGS = -D_4ti2_INT64_
+ 4ti2int64_CXXFLAGS = $(TRAPV) $(AM_CXXFLAGS)
+ 4ti2int64_SOURCES = $(4ti2sources)
+@@ -298,7 +298,7 @@ lib4ti2int64_la_SOURCES = $(lib4ti2sources)
+ # Arbitrary precision flags.
+ # 4ti2 uses GMP (GLPL), an arbitrary precision arithmetic library.
+ if HAVE_GMP_WITH_CXX
+-4ti2gmp_LDADD = lib4ti2gmp.la
++4ti2gmp_LDADD = lib4ti2gmp.la -lgmp $(top_builddir)/src/4ti2/lib4ti2common.la
+ 4ti2gmp_CPPFLAGS = -D_4ti2_GMP_ $(GMP_CFLAGS)
+ 4ti2gmp_SOURCES = $(4ti2sources)
+ lib4ti2gmp_la_CPPFLAGS = -D_4ti2_GMP_
+diff --git a/src/zsolve/Makefile.am b/src/zsolve/Makefile.am
+index 3a55c40..7826993 100644
+--- a/src/zsolve/Makefile.am
++++ b/src/zsolve/Makefile.am
+@@ -88,7 +88,8 @@ endif
+ # Link in the "common" 4ti2 functions.
+ # -no-undefined declares that no undefined symbols will remain after linking all these libraries.
+ # (This is necessary to build shared libraries on Cygwin.)
+-libzsolve_la_LDFLAGS = -L../4ti2 -R$(libdir) -l4ti2common ${GMP_LIBS} -no-undefined
++libzsolve_la_LDFLAGS = -R$(libdir) ${GMP_LIBS} -no-undefined
++libzsolve_la_LIBADD = $(top_builddir)/src/4ti2/lib4ti2common.la
+ 
+ bin_SCRIPTS = hilbert graver
+ DISTCLEANFILES = hilbert graver
