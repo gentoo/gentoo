@@ -468,7 +468,7 @@ pkg_pretend() {
 		elif tc-is-lto ; then
 			CHECKREQS_DISK_BUILD="10600M"
 		else
-			CHECKREQS_DISK_BUILD="6800M"
+			CHECKREQS_DISK_BUILD="7400M"
 		fi
 
 		check-reqs_pkg_pretend
@@ -506,7 +506,7 @@ pkg_setup() {
 		elif [[ ${use_lto} == "yes" ]] ; then
 			CHECKREQS_DISK_BUILD="10600M"
 		else
-			CHECKREQS_DISK_BUILD="6800M"
+			CHECKREQS_DISK_BUILD="7400M"
 		fi
 
 		check-reqs_pkg_setup
