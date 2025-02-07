@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-python-v${PV}"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 
 # fontsextra for fourier.sty
 # latexextra for upquote.sty
