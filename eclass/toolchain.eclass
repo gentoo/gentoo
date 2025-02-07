@@ -373,6 +373,7 @@ BDEPEND="
 	app-alternatives/yacc
 	sys-devel/binutils:*
 	>=sys-devel/flex-2.5.4
+	doc? ( app-text/doxygen )
 	nls? ( sys-devel/gettext )
 	test? (
 		${PYTHON_DEPS}
@@ -2348,21 +2349,17 @@ gcc_do_make() {
 	emake "${emakeargs[@]}" ${GCC_MAKE_TARGET}
 
 	if ! is_crosscompile && _tc_use_if_iuse cxx && _tc_use_if_iuse doc ; then
-		if type -p doxygen > /dev/null ; then
-			cd "${CTARGET}"/libstdc++-v3/doc || die
-			emake doc-man-doxygen
+		cd "${CTARGET}"/libstdc++-v3/doc || die
+		emake doc-man-doxygen
 
-			# Clean bogus manpages. bug #113902
-			find -name '*_build_*' -delete || die
+		# Clean bogus manpages. bug #113902
+		find -name '*_build_*' -delete || die
 
-			# Blow away generated directory references. Newer versions of gcc
-			# have gotten better at this, but not perfect. This is easier than
-			# backporting all of the various doxygen patches. bug #486754
-			find -name '*_.3' -exec grep -l ' Directory Reference ' {} + | \
-				xargs rm -f
-		else
-			ewarn "Skipping libstdc++ manpage generation since you don't have doxygen installed"
-		fi
+		# Blow away generated directory references. Newer versions of gcc
+		# have gotten better at this, but not perfect. This is easier than
+		# backporting all of the various doxygen patches. bug #486754
+		find -name '*_.3' -exec grep -l ' Directory Reference ' {} + | \
+			xargs rm -f
 	fi
 
 	popd >/dev/null || die
