@@ -18,6 +18,7 @@
 		for Go, Java, Python and Node.
 	</longdescription>
 	<use>
+		<flag name="deprecated">Enable deprecated functions for backwards compatibility</flag>
 		<flag name="dht">Enable support for Mainline DHT (distributed hash table)</flag>
 		<flag name="examples">Build and install example binaries</flag>
 	</use>
