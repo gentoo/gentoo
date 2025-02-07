@@ -1,7 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Bruce's C compiler - Simple C compiler to generate 8086 code"
@@ -50,7 +51,7 @@ src_compile() {
 
 	# First `make` is also a config, so set all the path vars here
 	emake -j1 \
-		CC="$(tc-getCC)" \
+		CC="$(tc-getCC) -std=gnu89" \
 		LIBDIR="/usr/$(get_libdir)/bcc" \
 		INCLDIR="/usr/$(get_libdir)/bcc" \
 		all
