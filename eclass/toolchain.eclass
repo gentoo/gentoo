@@ -299,7 +299,8 @@ tc_has_feature() {
 if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" debug +cxx"
 	IUSE+=" +fortran" TC_FEATURES+=( fortran )
-	IUSE+=" doc hardened multilib objc"
+	IUSE+=" doc" TC_FEATURES+=( doc )
+	IUSE+=" hardened multilib objc"
 	IUSE+=" pgo"
 	IUSE+=" objc-gc" TC_FEATURES+=( objc-gc )
 	IUSE+=" libssp objc++"
@@ -373,7 +374,6 @@ BDEPEND="
 	app-alternatives/yacc
 	sys-devel/binutils:*
 	>=sys-devel/flex-2.5.4
-	doc? ( app-text/doxygen )
 	nls? ( sys-devel/gettext )
 	test? (
 		${PYTHON_DEPS}
@@ -381,6 +381,11 @@ BDEPEND="
 		>=sys-devel/autogen-5.5.4
 	)
 "
+
+if tc_has_feature doc ; then
+	BDEPEND+=" doc? ( app-text/doxygen )"
+fi
+
 DEPEND="${RDEPEND}"
 
 if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
@@ -2348,7 +2353,7 @@ gcc_do_make() {
 	pushd "${WORKDIR}"/build >/dev/null || die
 	emake "${emakeargs[@]}" ${GCC_MAKE_TARGET}
 
-	if ! is_crosscompile && _tc_use_if_iuse cxx && _tc_use_if_iuse doc ; then
+	if ! is_crosscompile && _tc_use_if_iuse cxx && tc_has_feature doc && _tc_use_if_iuse doc ; then
 		cd "${CTARGET}"/libstdc++-v3/doc || die
 		emake doc-man-doxygen
 
