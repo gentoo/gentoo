@@ -1,0 +1,66 @@
+diff --git a/Makefile b/Makefile
+index 3b61566..3d0548f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -122,19 +122,6 @@ THUMBS		 = screen-mandoc.thumb.jpg \
+ 		   screen-groff.thumb.jpg \
+ 		   screen-term.thumb.jpg
+ CFLAGS		+= -DVERSION=\"$(VERSION)\"
+-# Hack around broken Mac OS X nested sandboxes.
+-# If SANDBOX_INIT_ERROR_IGNORE is set to "always", errors from
+-# sandbox_init() are ignored.  If set to anything else, the user must
+-# also set SANDBOX_INIT_ERROR_IGNORE in their environment to ignore
+-# failure.
+-# Has no effect unless HAVE_SANDBOX_INIT is defined.
+-.ifdef SANDBOX_INIT_ERROR_IGNORE
+-.if $(SANDBOX_INIT_ERROR_IGNORE) == "always"
+-CFLAGS		+= -DSANDBOX_INIT_ERROR_IGNORE=2
+-.else
+-CFLAGS		+= -DSANDBOX_INIT_ERROR_IGNORE=1
+-.endif
+-.endif
+ # Because the objects will be compiled into a shared library:
+ CFLAGS		+= -fPIC
+ # To avoid exporting internal functions (lowdown.h has default visibility).
+@@ -171,11 +158,11 @@ installwww: www
+ 	$(INSTALL) -m 0444 lowdown.tar.gz $(WWWDIR)/snapshots
+ 	$(INSTALL) -m 0444 lowdown.tar.gz.sha512 $(WWWDIR)/snapshots
+ 
+-lowdown: liblowdown.a main.o
+-	$(CC) -o $@ main.o liblowdown.a $(LDFLAGS) $(LDADD_MD5) -lm $(LDADD)
++lowdown: liblowdown.so main.o compats.o
++	$(CC) -o $@ main.o compats.o -L. -llowdown $(LDFLAGS) $(LDADD_MD5) -lm $(LDADD)
+ 
+ lowdown-diff: lowdown
+-	ln -f lowdown lowdown-diff
++	ln -s lowdown lowdown-diff
+ 
+ liblowdown.a: $(OBJS) $(COMPAT_OBJS)
+ 	$(AR) rs $@ $(OBJS) $(COMPAT_OBJS)
+@@ -193,7 +180,7 @@ uninstall:
+ 		rm -f $(MANDIR)/man$$section/$$name ; \
+ 	done
+ 
+-install: bins
++install: bins install_libs
+ 	mkdir -p $(DESTDIR)$(BINDIR)
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man1
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man5
+@@ -208,7 +195,7 @@ install: bins
+ 	$(INSTALL_DATA) share/ms/* $(DESTDIR)$(SHAREDIR)/lowdown/ms
+ 	$(INSTALL_DATA) share/odt/* $(DESTDIR)$(SHAREDIR)/lowdown/odt
+ 	$(INSTALL_PROGRAM) lowdown $(DESTDIR)$(BINDIR)
+-	$(INSTALL_PROGRAM) lowdown-diff $(DESTDIR)$(BINDIR)
++	ln -s lowdown $(DESTDIR)$(BINDIR)/lowdown-diff
+ 	for f in $(MAN1S) $(MAN5S) ; do \
+ 		name=`basename $$f .html` ; \
+ 		section=$${name##*.} ; \
+@@ -251,7 +238,7 @@ install_static: liblowdown.a install_lib_common
+ 
+ uninstall_libs: uninstall_shared uninstall_static
+ 
+-install_libs: install_shared install_static
++install_libs: install_shared
+ 
+ distcheck: lowdown.tar.gz.sha512
+ 	mandoc -Tlint -Werror man/*.[135]
