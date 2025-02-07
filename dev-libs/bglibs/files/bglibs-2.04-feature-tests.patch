@@ -1,0 +1,198 @@
+From 2ee0bd3ede22945756d727ee5efa52f593ab0a2f Mon Sep 17 00:00:00 2001
+From: NHOrus <jy6x2b32pie9@yahoo.com>
+Date: Sat, 6 Apr 2024 12:12:13 +0400
+Subject: [PATCH] Feature tests fail to build with GCC-14 or Clang-17
+
+Due to correctly detecting features removed from C99 as major source of errors
+Fixing includes and main signature.
+
+Closes: #6
+---
+ sys/tryflock.c        | 2 +-
+ sys/trygetpeereid.c   | 2 +-
+ sys/trynamedpipebug.c | 1 +
+ sys/trypoll.c         | 1 +
+ sys/trysendfile.c     | 2 +-
+ sys/trysigaction.c    | 2 +-
+ sys/trysigprocmask.c  | 2 +-
+ sys/tryspnam.c        | 3 ++-
+ sys/tryulong32.c      | 4 +++-
+ sys/tryulong64.c      | 4 +++-
+ sys/tryunsetenv.c     | 2 +-
+ sys/tryuserpw.c       | 2 +-
+ sys/tryvfork.c        | 4 +++-
+ sys/trywaitp.c        | 2 +-
+ 14 files changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/sys/tryflock.c b/sys/tryflock.c
+index 8c8aa76..b18743a 100644
+--- a/sys/tryflock.c
++++ b/sys/tryflock.c
+@@ -2,7 +2,7 @@
+ #include <sys/file.h>
+ #include <fcntl.h>
+ 
+-void main()
++int main()
+ {
+   flock(0,LOCK_EX | LOCK_UN | LOCK_NB);
+ }
+diff --git a/sys/trygetpeereid.c b/sys/trygetpeereid.c
+index cb8b858..e6529ce 100644
+--- a/sys/trygetpeereid.c
++++ b/sys/trygetpeereid.c
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
+-void main()
++int main()
+ {
+   getpeereid();
+ }
+diff --git a/sys/trynamedpipebug.c b/sys/trynamedpipebug.c
+index df688a5..0f53b40 100644
+--- a/sys/trynamedpipebug.c
++++ b/sys/trynamedpipebug.c
+@@ -2,6 +2,7 @@
+ #include <fcntl.h>
+ #include <sys/time.h>
+ #include <unistd.h>
++#include <sys/stat.h>
+ 
+ int main(void)
+ {
+diff --git a/sys/trypoll.c b/sys/trypoll.c
+index 7a2fd20..0aad538 100644
+--- a/sys/trypoll.c
++++ b/sys/trypoll.c
+@@ -1,6 +1,7 @@
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <poll.h>
++#include <unistd.h>
+ 
+ int main()
+ {
+diff --git a/sys/trysendfile.c b/sys/trysendfile.c
+index 05f67d3..3963cfa 100644
+--- a/sys/trysendfile.c
++++ b/sys/trysendfile.c
+@@ -2,7 +2,7 @@
+ #include <asm/unistd.h>
+ #include <unistd.h>
+ 
+-void main(void) {
++int main(void) {
+   int x;
+   x = __NR_sendfile;
+   sendfile(0, 1, 0, 0);
+diff --git a/sys/trysigaction.c b/sys/trysigaction.c
+index 263cb21..1471ecc 100644
+--- a/sys/trysigaction.c
++++ b/sys/trysigaction.c
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-void main()
++int main()
+ {
+   struct sigaction sa;
+   sa.sa_handler = 0;
+diff --git a/sys/trysigprocmask.c b/sys/trysigprocmask.c
+index 2797eea..3d73f86 100644
+--- a/sys/trysigprocmask.c
++++ b/sys/trysigprocmask.c
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-main()
++int main()
+ {
+   sigset_t ss;
+  
+diff --git a/sys/tryspnam.c b/sys/tryspnam.c
+index 622ba8b..c916217 100644
+--- a/sys/tryspnam.c
++++ b/sys/tryspnam.c
+@@ -1,6 +1,7 @@
+ #include <shadow.h>
++#include <stdio.h>
+ 
+-void main()
++int main()
+ {
+   struct spwd *spw;
+ 
+diff --git a/sys/tryulong32.c b/sys/tryulong32.c
+index a108076..1278283 100644
+--- a/sys/tryulong32.c
++++ b/sys/tryulong32.c
+@@ -1,4 +1,6 @@
+-void main()
++#include <unistd.h>
++
++int main()
+ {
+   unsigned long u;
+   u = 1;
+diff --git a/sys/tryulong64.c b/sys/tryulong64.c
+index 01965cb..74b8f0e 100644
+--- a/sys/tryulong64.c
++++ b/sys/tryulong64.c
+@@ -1,4 +1,6 @@
+-main()
++#include <unistd.h>
++
++int main()
+ {
+   unsigned long u;
+   u = 1;
+diff --git a/sys/tryunsetenv.c b/sys/tryunsetenv.c
+index 99f5dcd..cb977e4 100644
+--- a/sys/tryunsetenv.c
++++ b/sys/tryunsetenv.c
+@@ -1,5 +1,5 @@
+ #include <stdlib.h>
+ 
+-void main(void) {
++int main(void) {
+   unsetenv("PATH");
+ }
+diff --git a/sys/tryuserpw.c b/sys/tryuserpw.c
+index fb14623..a359d27 100644
+--- a/sys/tryuserpw.c
++++ b/sys/tryuserpw.c
+@@ -1,6 +1,6 @@
+ #include <userpw.h>
+ 
+-void main()
++int main()
+ {
+   struct userpw *upw;
+ 
+diff --git a/sys/tryvfork.c b/sys/tryvfork.c
+index 21387e4..83b57a0 100644
+--- a/sys/tryvfork.c
++++ b/sys/tryvfork.c
+@@ -1,4 +1,6 @@
+-void main()
++#include <unistd.h>
++
++int main()
+ {
+   vfork();
+ }
+diff --git a/sys/trywaitp.c b/sys/trywaitp.c
+index 7e73bfa..0380358 100644
+--- a/sys/trywaitp.c
++++ b/sys/trywaitp.c
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
+-void main()
++int main()
+ {
+   waitpid(0,0,0);
+ }
