@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2025-02-07)
+# Last release 3 years ago, no version compiles; ours or upstreams.
+# Ack from maintainer. Driver is available in the Linux Kernel
+# Removal on 2025-03-07. Bug: 949318
+net-misc/AQtion
+
 # Matt Turner <mattst88@gentoo.org> (2025-02-05)
 # Masked for testing
 =dev-util/mesa_clc-25.0*
