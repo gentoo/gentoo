@@ -1,0 +1,29 @@
+From 879f22eea1ffac0053d7c3cc56cdcb03dd859bc7 Mon Sep 17 00:00:00 2001
+Message-ID: <879f22eea1ffac0053d7c3cc56cdcb03dd859bc7.1738928238.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Fri, 31 Jan 2020 09:42:14 +0100
+Subject: [PATCH] Fix paths in libvirt-guests.sh.in
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ tools/libvirt-guests.sh.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/libvirt-guests.sh.in b/tools/libvirt-guests.sh.in
+index f2db1282ad..f2c9d9b465 100644
+--- a/tools/libvirt-guests.sh.in
++++ b/tools/libvirt-guests.sh.in
+@@ -40,8 +40,8 @@ BYPASS_CACHE=0
+ SYNC_TIME=0
+ PERSISTENT_ONLY="default"
+ 
+-test -f "$initconfdir"/libvirt-guests &&
+-    . "$initconfdir"/libvirt-guests
++test -f "$sysconfdir"/libvirt/libvirt-guests.conf &&
++    . "$sysconfdir"/libvirt/libvirt-guests.conf
+ 
+ LISTFILE="$localstatedir"/lib/libvirt/libvirt-guests
+ VAR_SUBSYS_LIBVIRT_GUESTS="$localstatedir"/lock/libvirt-guests
+-- 
+2.45.3
+
