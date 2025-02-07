@@ -6,6 +6,7 @@
 		<name>Thomas Beierlein</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">fillods/grig</remote-id>
 		<remote-id type="sourceforge">groundstation</remote-id>
 	</upstream>
 </pkgmetadata>
