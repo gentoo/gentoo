@@ -7,6 +7,7 @@ inherit pax-utils unpacker
 
 PYVER=3.10
 MY_P=pypy3_10-exe-${PV}-1
+PPC64_P=pypy3_10-exe-${PV}-2
 
 DESCRIPTION="PyPy3.10 executable (pre-built version)"
 HOMEPAGE="
@@ -25,7 +26,7 @@ SRC_URI="
 		)
 		ppc64? (
 			https://dev.gentoo.org/~mgorny/binpkg/ppc64le/pypy/dev-python/pypy3_10-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.ppc64le.gpkg.tar
+				-> ${PPC64_P}.ppc64le.gpkg.tar
 		)
 		x86? (
 			https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy3_10-exe/${MY_P}.gpkg.tar
@@ -43,7 +44,7 @@ SRC_URI="
 		)
 		ppc64? (
 			https://dev.gentoo.org/~mgorny/binpkg/ppc64le-musl/pypy/dev-python/pypy3_10-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.ppc64le-musl.gpkg.tar
+				-> ${PPC64_P}.ppc64le-musl.gpkg.tar
 		)
 		x86? (
 			https://dev.gentoo.org/~mgorny/binpkg/x86-musl/pypy/dev-python/pypy3_10-exe/${MY_P}.gpkg.tar
