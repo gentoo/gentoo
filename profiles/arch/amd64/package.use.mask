@@ -159,11 +159,6 @@ sys-apps/irqbalance -thermal
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
 
-# Michał Górny <mgorny@gentoo.org> (2023-09-19)
-# dev-cpp/cpp-httplib is keyworded here.
-llvm-core/lldb -debuginfod
-llvm-core/llvm -debuginfod
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-09-13)
 # media-gfx/renderdoc is keyworded here
 dev-qt/qtbase -renderdoc

@@ -3,6 +3,12 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2025-02-08)
+# Requires dev-cpp/cpp-httplib that has extremely unstable ABI.
+# Not worth the constant churn of having to rebuild LLVM again and again.
+llvm-core/lldb debuginfod
+llvm-core/llvm debuginfod
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-04)
 # Missing dependencies not packaged currently
 dev-python/pyside doc

@@ -157,11 +157,6 @@ gnome-extra/gnome-software flatpak
 # dev-ruby/asciidoctor is not keyworded yet.
 dev-util/librnp man
 
-# Michał Górny <mgorny@gentoo.org> (2023-09-19)
-# dev-cpp/cpp-httplib is keyworded here.
-llvm-core/lldb -debuginfod
-llvm-core/llvm -debuginfod
-
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-10)
 # Revdeps of dev-python/ujson which is masked.
 dev-python/cattrs test

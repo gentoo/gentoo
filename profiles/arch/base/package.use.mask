@@ -134,11 +134,6 @@ media-video/obs-studio mpegts
 # media-libs/shaderc has very few keywords.
 media-libs/libplacebo shaderc
 
-# Michał Górny <mgorny@gentoo.org> (2023-09-19)
-# dev-cpp/cpp-httplib is barely keyworded anywhere.
-llvm-core/lldb debuginfod
-llvm-core/llvm debuginfod
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-09-13)
 # media-gfx/renderdoc currently has few keywords
 dev-qt/qtbase renderdoc
