@@ -1,0 +1,13 @@
+Fix build with gcc 15
+
+--- a/src/queue.h
++++ b/src/queue.h
+@@ -24,7 +24,7 @@
+ 
+ void delete_queue_texbind( void );
+ void create_queue_texbind( void );
+-int create_queue();
++int create_queue(double (*rfunc)(double));
+ void draw_queue( VMvect pos, GLfloat Xrot, GLfloat Zrot, GLfloat zoffs,
+                  GLfloat xoffs, GLfloat yoffs, int spheretexbind, VMvect * lightpos, int lightnr );
+ 

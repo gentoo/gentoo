@@ -1,0 +1,14 @@
+Fix build with musl
+https://bugs.gentoo.org/831494
+
+--- a/src/sound_stuff.c
++++ b/src/sound_stuff.c
+@@ -33,7 +33,7 @@
+ #include <stdlib.h>
+ 
+ #ifndef USE_SDL
+-#include <sys/unistd.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
