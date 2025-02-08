@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-02-08)
+# Suspicious subslot bump, causing humongous rebuilds.
+# https://bugs.gentoo.org/949414
+=dev-cpp/cpp-httplib-0.18.6
+
 # Mike Pagano <mpagano@gentoo.org> (2025-02-07)
 # Last release 3 years ago, no version compiles; ours or upstreams.
 # Ack from maintainer. Driver is available in the Linux Kernel
