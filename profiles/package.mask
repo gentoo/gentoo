@@ -238,12 +238,6 @@ dev-libs/qcoro5
 ~virtual/perl-File-Spec-3.910.0
 ~virtual/perl-Module-CoreList-5.202.501.184_rc
 
-# Hans de Graaff <graaff@gentoo.org> (2025-01-06)
-# ruby32-only package. Depends on assumptions that are no longer true in
-# ruby33. No reverse dependencies left. Last release in 2007. Upstream
-# gone. Removal on 2025-02-06.
-dev-ruby/dust
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-03)
 # Contains a serious bug that can cause deletion of the users home dir.
 # See-also: https://github.com/keshavbhatt/whatsie/issues/230
