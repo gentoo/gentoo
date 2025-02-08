@@ -254,14 +254,6 @@ media-plugins/gst-plugins-kate
 # Removal on 2025-03-03 unless upstream fixes the issue
 net-im/whatsie
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2025-01-01)
-# Broken with Qt6 and in wayland sessions. Archived upstream. Has been on life
-# support for several years already.
-# Removal on 2025-02-01
-media-video/vidify
-media-video/vidify-audiosync
-net-misc/lyricwikia
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
