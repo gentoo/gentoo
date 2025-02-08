@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michal Rostecki <vadorovsky@protonmail.com> (2025-02-09)
+# A libgcc_s drop-in replacement, which conflicts with sys-devel/gcc,
+# therefore meant only for profiles which can work without GCC being
+# present even as a fallback.
+llvm-runtimes/libgcc
+
+# Michał Górny <mgorny@gentoo.org> (2025-02-08)
+# Suspicious subslot bump, causing humongous rebuilds.
+# https://bugs.gentoo.org/949414
+=dev-cpp/cpp-httplib-0.18.6
+
 # Mike Pagano <mpagano@gentoo.org> (2025-02-07)
 # Last release 3 years ago, no version compiles; ours or upstreams.
 # Ack from maintainer. Driver is available in the Linux Kernel
