@@ -25,7 +25,7 @@ RDEPEND="
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/num:=[ocamlopt?]
 	dev-ml/yojson:=
-	coq? ( sci-mathematics/coq )
+	coq? ( <=sci-mathematics/coq-8.18 )
 	emacs? ( app-editors/emacs:* )
 	gtk? ( dev-ml/lablgtk:=[sourceview] )
 	html? ( dev-tex/hevea:= )
@@ -71,6 +71,9 @@ REQUIRED_USE="html? ( doc ) ocamlopt"
 
 src_prepare() {
 	find examples -name \*gz | xargs gunzip
+	sed -i \
+		-e 's:configure.in:configure.ac:g' \
+		Makefile.in || die
 	eautoreconf
 	default
 }
