@@ -34,9 +34,22 @@ PATCHES=(
 
 src_prepare() {
 	default
-	# disable tests as we want them manually
+
+	# Remove the tests from the default target so that we can run
+	# them only when the user has enabled them.
 	sed -i '/^all:/s|selftests||' Makefile || die
 	sed -i '/selftests/d' TARGETS || die
+
+	# The selftests.sh script collects the list of tests to run by
+	# grepping for "#ifdef SELFTEST_MAIN", which is defined in each *.c
+	# file to be tested. We can therefore disable individual tests by
+	# clobbering that line. (This should be safe; the contents of that
+	# ifdef are the test program, which we are disabling anyway.)
+	#
+	# This test requires network access, and currently fails even
+	# if you have it (https://github.com/bruceg/bglibs/issues/5).
+	sed -e 's/#ifdef SELFTEST_MAIN/#ifdef UNDEFINED/' \
+		-i net/resolve_ipv4addr.c || die
 }
 
 src_configure() {
