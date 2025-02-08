@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ EAPI=8
 # changes its ABI then this package will be rebuilt needlessly. Hence, such a
 # package is free _not_ to := depend on FFmpeg but I would strongly encourage
 # doing so since such a case is unlikely.
-FFMPEG_SUBSLOT=58.60.60
+FFMPEG_SUBSLOT=59.61.61
 
-SOC_PATCH="ffmpeg-rpi-7.0.patch"
+SOC_PATCH="ffmpeg-rpi-7.1.patch"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -86,7 +86,7 @@ LICENSE="
 "
 SLOT="0/${FFMPEG_SUBSLOT}"
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -98,7 +98,7 @@ FFMPEG_FLAG_MAP=(
 		+gpl hardcoded-tables +iconv libxml2 libdvdnav libdvdread lzma +network
 		opencl openssl +postproc qrcode:libqrencode quirc:libquirc
 		samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
-		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
+		X:xlib X:libxcb X:libxcb-shape X:libxcb-shm X:libxcb-xfixes +zlib
 		# libavdevice options
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
 		opengl
@@ -106,8 +106,8 @@ FFMPEG_FLAG_MAP=(
 		libv4l:libv4l2 pulseaudio:libpulse libdrm jack:libjack
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
-		jpeg2k:libopenjpeg jpegxl:libjxl bluray:libbluray gme:libgme gsm:libgsm liblc3
-		libaribb24 modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
+		jpeg2k:libopenjpeg jpegxl:libjxl bluray:libbluray gme:libgme gsm:libgsm
+		libaribb24 liblc3 modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg nvenc:ffnvcodec
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
@@ -124,7 +124,7 @@ FFMPEG_FLAG_MAP=(
 
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
-	amf amrenc:libvo-amrwbenc kvazaar:libkvazaar libaom	mp3:libmp3lame
+	amf amrenc:libvo-amrwbenc kvazaar:libkvazaar libaom mp3:libmp3lame
 	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1
 	theora:libtheora twolame:libtwolame webp:libwebp x264:libx264
 	x265:libx265 xvid:libxvid
@@ -148,6 +148,8 @@ ARM_CPU_FEATURES=(
 	cpu_flags_arm_v8:armv8
 	cpu_flags_arm_asimddp:dotprod
 	cpu_flags_arm_i8mm:i8mm
+	cpu_flags_arm_sve:sve
+	cpu_flags_arm_sve2:sve2
 )
 ARM_CPU_REQUIRED_USE="
 	arm64? ( cpu_flags_arm_v8 )
@@ -161,6 +163,8 @@ ARM_CPU_REQUIRED_USE="
 	cpu_flags_arm_v6? (
 		arm? ( cpu_flags_arm_thumb )
 	)
+	cpu_flags_arm_sve2? ( cpu_flags_arm_sve )
+	cpu_flags_arm_sve? ( cpu_flags_arm_v8 )
 "
 MIPS_CPU_FEATURES=( mipsdspr1:mipsdsp mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( cpu_flags_ppc_altivec:altivec cpu_flags_ppc_vsx:vsx cpu_flags_ppc_vsx2:power8 )
@@ -268,7 +272,7 @@ RDEPEND="
 	libdvdnav? ( media-libs/libdvdnav[${MULTILIB_USEDEP}] )
 	libdvdread? ( media-libs/libdvdread:=[${MULTILIB_USEDEP}] )
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
-	liblc3? ( >=media-sound/liblc3-1.1[${MULTILIB_USEDEP}] )
+	liblc3? ( >=media-sound/liblc3-1.1.0[${MULTILIB_USEDEP}] )
 	libplacebo? ( >=media-libs/libplacebo-4.192.0:=[$MULTILIB_USEDEP] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
@@ -333,7 +337,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	amf? ( media-libs/amf-headers )
+	amf? ( >=media-libs/amf-headers-1.4.35 )
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
 	vulkan? ( >=dev-util/vulkan-headers-1.3.277 )
@@ -515,10 +519,11 @@ multilib_src_configure() {
 
 	# Mandatory configuration
 	myconf=(
-		--disable-libaribcaption # libaribcaption is not packaged (yet?)
+		--disable-libaribcaption # not yet packaged
 		--disable-libxeve
 		--disable-libxevd
 		--disable-d3d12va
+		--disable-liblcevc_dec # not yet packaged
 		--enable-avfilter
 		--disable-stripping
 		# This is only for hardcoded cflags; those are used in configure checks that may
@@ -549,6 +554,13 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 	)
 
+	# skip broken test https://trac.ffmpeg.org/ticket/11225
+	if use test; then
+		myconf+=(
+			--ignore-tests=ffmpeg-spec-disposition
+	)
+	fi
+
 	if use elibc_musl ; then
 		append-cflags -DHAVE_POSIX_IOCTL
 	fi
@@ -570,6 +582,7 @@ multilib_src_configure() {
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
+		$(use_enable static-libs vulkan-static) \
 		"${myconf[@]}" \
 		${EXTRA_FFMPEG_CONF}
 	echo "${@}"
