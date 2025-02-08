@@ -211,14 +211,6 @@ dev-qt/qtstyleplugins
 >=dev-libs/intel-compute-runtime-24.52.32224.5
 >=dev-util/intel-graphics-compiler-2.5.7
 
-# Andrey Grozin <grozin@gentoo.org> (2025-01-09)
-# Unsupported old version, newer versions are not open-source.
-# Depends on Qt5.
-# Bugs 499030, 437262, 597268, 603592, 734890, 745495, 947740.
-# Use app-text/crqt-ng instead.
-# Removal on 2025-02-08.
-app-text/fbreader
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-01-06)
 # Masked for testing
 =dev-lang/perl-5.40.1*
