@@ -16,7 +16,7 @@ S="${WORKDIR}"/why3-${ID}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt sexp zarith zip"
 RESTRICT="strip"
 
