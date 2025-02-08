@@ -132,10 +132,7 @@ _apache2_set_mpms() {
 _apache2_set_mpms
 unset -f _apache2_set_mpms
 
-NGHTTP2_VERSION=1.2.1
-if ver_test ${PV} -ge 2.4.55 ; then
-	NGHTTP2_VERSION=1.50.0
-fi
+NGHTTP2_VERSION=1.50.0
 
 # Dependencies
 RDEPEND="
