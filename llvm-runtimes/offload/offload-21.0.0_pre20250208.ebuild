@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake flag-o-matic llvm.org python-any-r1 toolchain-funcs
+inherit cmake llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="OpenMP offloading support"
 HOMEPAGE="https://openmp.llvm.org"
@@ -39,10 +39,6 @@ BDEPEND="
 		llvm-core/clang
 	)
 "
-# TODO: can it be fixed to compile with gcc?
-BDEPEND+="
-	llvm-core/clang
-"
 
 LLVM_COMPONENTS=( offload cmake runtimes/cmake libc/shared )
 LLVM_TEST_COMPONENTS=( openmp/cmake )
@@ -67,11 +63,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	# TODO
-	local -x CC=${CHOST}-clang
-	local -x CXX=${CHOST}-clang++
-	strip-unsupported-flags
-
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
