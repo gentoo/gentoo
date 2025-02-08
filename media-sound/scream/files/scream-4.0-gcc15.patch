@@ -1,0 +1,11 @@
+--- a/jack.c
++++ b/jack.c
+@@ -107,7 +107,7 @@ jo_data;
+ static int init_resampler();
+ static int init_channels();
+ static int connect_ports();
+-static int process_source_data();
++static int process_source_data(receiver_data_t *data);
+ 
+ // JACK realtime process callback
+ int jack_process(jack_nframes_t nframes, void *arg);
