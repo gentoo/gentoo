@@ -208,6 +208,10 @@ QA_PREBUILT="
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.19.1-gnu17.patch
+)
+
 pkg_setup() {
 	python_setup
 	export "CONFIG_LOMOUNT=y"
