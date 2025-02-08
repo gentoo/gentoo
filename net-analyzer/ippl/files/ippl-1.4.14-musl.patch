@@ -1,0 +1,301 @@
+Add missing includes. For some non-POSIX integer types and open()
+Rename global logging facility so it won't try to shadow musl-provided symbol
+and cause build failures
+udphdr union has two variants - RFC and BSD flavors, glibc uses union,
+musl uses BSD flavor in netinet/udp.h with linux/udp.h for RFC flavor.
+Switched header to linux.
+https://bugs.gentoo.org/716916
+https://bugs.gentoo.org/731184
+--- a/Source/defines.h
++++ b/Source/defines.h
+@@ -62,6 +62,7 @@
+ 
+ /* Useful types */
+ #ifndef _I386_TYPES_H
++#include <sys/types.h>
+ typedef u_int32_t __u32;
+ typedef u_int16_t __u16;
+ typedef u_int8_t __u8;
+--- a/Source/pidfile.c
++++ b/Source/pidfile.c
+@@ -31,6 +31,7 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <signal.h>
++#include <fcntl.h>
+ 
+ /* read_pid
+  *
+--- a/Source/configuration.c
++++ b/Source/configuration.c
+@@ -39,11 +39,11 @@
+ 
+ FILE *open_configuration(char *name) {
+   FILE *configfile;
+-  extern struct loginfo log;
++  extern struct loginfo local_log;
+ 
+   configfile = fopen(name, "r");
+   if (configfile == NULL) {
+-    log.log(log.level_or_fd, "Cannot open configuration file %s.\n", name);
++    local_log.log(local_log.level_or_fd, "Cannot open configuration file %s.\n", name);
+     exit(1);
+   }
+   return configfile;
+--- a/Source/icmp.c
++++ b/Source/icmp.c
+@@ -46,7 +46,7 @@
+ int icmp_socket;
+ 
+ struct loginfo icmp_log;
+-extern struct loginfo log;
++extern struct loginfo local_log;
+ extern unsigned short resolve_protocols;
+ 
+ /*
+@@ -299,7 +299,7 @@
+   icmp_socket = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
+   if (icmp_socket <= 0) {
+ 	int error = errno;
+-    	log.log(log.level_or_fd, "FATAL: Unable to open icmp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
++    	local_log.log(local_log.level_or_fd, "FATAL: Unable to open icmp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
+     exit(1);
+   }
+ 
+@@ -311,7 +311,7 @@
+ 
+   for(;;) {
+     if (read(icmp_socket, (__u8 *) &pkt, ICMP_CAPTURE_LENGTH) == -1) {
+-	  log.log(log.level_or_fd, "FATAL: Unable to read icmp raw socket");
++	  local_log.log(local_log.level_or_fd, "FATAL: Unable to read icmp raw socket");
+ 	  exit(1);
+ 	}
+ 
+--- a/Source/log.c
++++ b/Source/log.c
+@@ -32,7 +32,7 @@
+ 
+ #include "log.h"
+ 
+-extern struct loginfo log;
++extern struct loginfo local_log;
+ 
+ /* Mutex either for stdout or for a file */
+ pthread_mutex_t log_mutex = PTHREAD_MUTEX_INITIALIZER;
+@@ -193,7 +193,7 @@
+ 
+   *fd = open((const char *) filename, O_WRONLY | O_APPEND | O_CREAT, 0640);
+   if (*fd == 0) {
+-    log.log(log.level_or_fd, "Can't open log file %s.", filename);
++    local_log.log(local_log.level_or_fd, "Can't open log file %s.", filename);
+   }
+ }
+ 
+--- a/Source/main.c
++++ b/Source/main.c
+@@ -54,7 +54,7 @@
+ #endif
+ 
+ /* Logging mechanism */
+-struct loginfo log;
++struct loginfo local_log;
+ 
+ /* Do we have to run as a daemon? */
+ int run_as_daemon = TRUE;
+@@ -127,17 +127,17 @@
+   
+   account = getpwnam(used_user);
+   if (!account) {
+-    log.log(log.level_or_fd, "WARNING: I cannot find the \"%s\" account. Not spawning threads.", used_user);
++    local_log.log(local_log.level_or_fd, "WARNING: I cannot find the \"%s\" account. Not spawning threads.", used_user);
+     log_protocols = NONE;
+     return;
+   }
+ 
+   if (!strcmp(used_user, "root")) {
+-    log.log(log.level_or_fd, "WARNING: Using root account to run threads!");
++    local_log.log(local_log.level_or_fd, "WARNING: Using root account to run threads!");
+   }
+ 
+   if (log_protocols == NONE) {
+-    log.log(log.level_or_fd, "WARNING: Nothing to log.");
++    local_log.log(local_log.level_or_fd, "WARNING: Nothing to log.");
+     return;
+   }
+       
+@@ -309,7 +309,7 @@
+ 
+   /* Check PID */
+   if (check_pid(PID_FILE)) {
+-    log.log(log.level_or_fd, "Already running. Exiting...");
++    local_log.log(local_log.level_or_fd, "Already running. Exiting...");
+     exit(1);
+   }
+ 
+@@ -323,7 +323,7 @@
+ 
+   /* Write PID file */
+   if (!write_pid(PID_FILE)) {
+-    log.log(log.level_or_fd, "Can't write pid.\n");
++    local_log.log(local_log.level_or_fd, "Can't write pid.\n");
+     exit(1);
+   }
+ 
+@@ -360,7 +360,7 @@
+     (void) remove_pid(PID_FILE);
+   }
+ 
+-  log.log(log.level_or_fd, "IP Protocols Logger: stopped (signal %d).", sig);
++  local_log.log(local_log.level_or_fd, "IP Protocols Logger: stopped (signal %d).", sig);
+ 
+   exit(0);
+ }
+@@ -372,8 +372,8 @@
+  */
+ void sighup(int sig) {
+   // DEPRECATED - reload_configuration();
+-  // log.log(log.level_or_fd, "IP Protocols Logger: reloaded configuration.");
+-  log.log(log.level_or_fd, "IP Protocols Logger: reload configuration is unsupported.");
++  // local_log.log(local_log.level_or_fd, "IP Protocols Logger: reloaded configuration.");
++  local_log.log(local_log.level_or_fd, "IP Protocols Logger: reload configuration is unsupported.");
+   die(sig);
+   signal(SIGHUP, sighup);
+ }
+@@ -412,15 +412,15 @@
+   if (configuration_file == NULL)
+     configuration_file = strdup(CONFIGURATION_FILE);
+ 
+-  init_loginfo(&log);
+-  log.open(&log.level_or_fd, log.file);
++  init_loginfo(&local_log);
++  local_log.open(&local_log.level_or_fd, local_log.file);
+ 
+   if (run_as_daemon) {
+     go_background();
+   }
+ 
+   start_all_threads();
+-  log.log(log.level_or_fd, "IP Protocols Logger: started.");
++  local_log.log(local_log.level_or_fd, "IP Protocols Logger: started.");
+ 
+   for(;;) {
+     sleep(dns_expire);
+--- a/Source/netutils.c
++++ b/Source/netutils.c
+@@ -34,7 +34,7 @@
+ #include "netutils.h"
+ #include "log.h"
+ 
+-extern struct loginfo log;
++extern struct loginfo local_log;
+ 
+ /* Mutexes */
+ pthread_mutex_t service_mutex = PTHREAD_MUTEX_INITIALIZER;
+@@ -96,7 +96,7 @@
+   pthread_mutex_unlock(&dns_mutex);
+ 
+ #ifdef CACHE_DEBUG
+-  log.log(log.level_or_fd, "DEBUG cache: cleared %d entries", dbg_freed);
++  local_log.log(local_log.level_or_fd, "DEBUG cache: cleared %d entries", dbg_freed);
+ #endif
+ }
+ 
+@@ -121,7 +121,7 @@
+ 
+ #ifdef CACHE_DEBUG
+   if (dbg_calls % DUMP_EVERY == 0)
+-    log.log(log.level_or_fd, "DEBUG cache: %d calls - %d misses", dbg_calls, dbg_missed);
++    local_log.log(local_log.level_or_fd, "DEBUG cache: %d calls - %d misses", dbg_calls, dbg_missed);
+ 
+   dbg_calls++;
+ #endif
+@@ -165,8 +165,8 @@
+ #endif
+   res = perform_lookup(host, in);
+ #ifdef CACHE_DEBUG
+-  log.log(log.level_or_fd, "DEBUG cache: result of lookup - %s", host);
+-  log.log(log.level_or_fd, "DEBUG cache: replacing (%d; %d; %d; %s)", key, table[key].ip, table[key].dirty, table[key].name);
++  local_log.log(local_log.level_or_fd, "DEBUG cache: result of lookup - %s", host);
++  local_log.log(local_log.level_or_fd, "DEBUG cache: replacing (%d; %d; %d; %s)", key, table[key].ip, table[key].dirty, table[key].name);
+ #endif
+   /* Now host contains the correct value; store it in the table */
+   table[key].ip = in;
+--- a/Source/tcp.c
++++ b/Source/tcp.c
+@@ -51,7 +51,7 @@
+ int tcp_socket;
+ 
+ struct loginfo tcp_log;
+-extern struct loginfo log;
++extern struct loginfo local_log;
+ extern unsigned short resolve_protocols;
+ extern unsigned short portresolve_protocols;
+ 
+@@ -262,7 +262,7 @@
+   tcp_socket = socket(AF_INET, SOCK_RAW, IPPROTO_TCP);
+   if (tcp_socket <= 0) {
+   	int error = errno;
+-	log.log(log.level_or_fd, "FATAL: Unable to open tcp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
++	local_log.log(local_log.level_or_fd, "FATAL: Unable to open tcp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
+     exit(1);
+   }
+ 
+@@ -274,7 +274,7 @@
+ 
+   for(;;) {
+     if (read(tcp_socket, (__u8 *) &pkt, TCP_CAPTURE_LENGTH) == -1) {
+-	  log.log(log.level_or_fd, "FATAL: Unable to read tcp raw socket");
++	  local_log.log(local_log.level_or_fd, "FATAL: Unable to read tcp raw socket");
+       exit(1);
+ 	}
+ 
+--- a/Source/ippl.y
++++ b/Source/ippl.y
+@@ -535,7 +535,7 @@
+  */
+ 
+ void print_error(char *s, int l) {
+-  extern struct loginfo log;
++  extern struct loginfo local_log;
+ 
+-  log.log(log.level_or_fd, "CFG: Parse error line %d: %s",l,s);
++  local_log.log(local_log.level_or_fd, "CFG: Parse error line %d: %s",l,s);
+ }
+--- a/Source/udp.c
++++ b/Source/udp.c
+@@ -21,7 +21,7 @@
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <netinet/ip.h>
+-#include <netinet/udp.h>
++#include <linux/udp.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netdb.h>
+@@ -48,7 +48,7 @@
+ extern unsigned short resolve_protocols;
+ 
+ struct loginfo udp_log;
+-extern struct loginfo log;
++extern struct loginfo local_log;
+ 
+ /*
+  * Structure of a UDP packet
+@@ -141,7 +141,7 @@
+   udp_socket = socket(AF_INET, SOCK_RAW, IPPROTO_UDP);
+   if (udp_socket <= 0) {
+   	int error = errno;
+-	log.log(log.level_or_fd, "FATAL: Unable to open udp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
++	local_log.log(local_log.level_or_fd, "FATAL: Unable to open udp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
+     exit(1);
+   }
+ 
+@@ -153,7 +153,7 @@
+ 
+   for(;;) {
+     if (read(udp_socket, (__u8 *) &pkt, UDP_CAPTURE_LENGTH) == -1) {
+-	  log.log(log.level_or_fd, "FATAL: Unable to read udp raw socket");
++	  local_log.log(local_log.level_or_fd, "FATAL: Unable to read udp raw socket");
+       exit(1);
+ 	}
+ 
