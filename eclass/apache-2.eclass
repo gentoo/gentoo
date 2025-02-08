@@ -409,26 +409,6 @@ generate_load_module() {
 		"${GENTOO_PATCHDIR}"/conf/httpd.conf
 }
 
-# @FUNCTION: check_upgrade
-# @DESCRIPTION:
-# This internal function checks if the previous configuration file for built-in
-# modules exists in ROOT and prevents upgrade in this case. Users are supposed
-# to convert this file to the new APACHE2_MODULES USE_EXPAND variable and remove
-# it afterwards.
-check_upgrade() {
-	if [[ -e "${EROOT}"etc/apache2/apache2-builtin-mods ]]; then
-		eerror "The previous configuration file for built-in modules"
-		eerror "(${EROOT}etc/apache2/apache2-builtin-mods) exists on your"
-		eerror "system."
-		eerror
-		eerror "Please read https://wiki.gentoo.org/wiki/Project:Apache/Upgrading"
-		eerror "for detailed information how to convert this file to the new"
-		eerror "APACHE2_MODULES USE_EXPAND variable."
-		eerror
-		die "upgrade not possible with existing ${ROOT}etc/apache2/apache2-builtin-mods"
-	fi
-}
-
 # ==============================================================================
 # EXPORTED FUNCTIONS
 # ==============================================================================
@@ -439,8 +419,6 @@ check_upgrade() {
 # creates the apache user and group and informs about CONFIG_SYSVIPC being
 # needed (we don't depend on kernel sources and therefore cannot check).
 apache-2_pkg_setup() {
-	check_upgrade
-
 	setup_mpm
 	setup_modules
 
