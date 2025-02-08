@@ -244,10 +244,6 @@ dev-libs/qcoro5
 # gone. Removal on 2025-02-06.
 dev-ruby/dust
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Removed upstream in gstreamer-1.24. See bug #947522. Removal on 2025-02-05.
-media-plugins/gst-plugins-kate
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-03)
 # Contains a serious bug that can cause deletion of the users home dir.
 # See-also: https://github.com/keshavbhatt/whatsie/issues/230
