@@ -394,10 +394,26 @@ src_prepare() {
 		-e 's/, "-Werror"//' \
 		{} + || die
 
+	if use ovmf ; then
+		# textrels cause failures w/ hardened binutils
+		pushd tools/firmware/ovmf-dir-remote > /dev/null || die
+		eapply "${FILESDIR}"/edk2-202202-binutils-2.41-textrels.patch
+		popd > /dev/null || die
+	fi
+
+	# Use gnu17 because incompatible w/ C23
+	sed -i -e "s:-DZZLEXBUFSIZE=65536:-DZZLEXBUFSIZE=65536 -std=gnu17:" \
+		tools/firmware/ovmf-dir-remote/BaseTools/Source/C/VfrCompile/Pccts/*/makefile || die
+
 	default
 }
 
 src_configure() {
+	# Workaround from sys-firmware/edk2 (bug #913110)
+	export LDFLAGS="-z notext"
+	export EXTRA_LDFLAGS="-z notext"
+	export DLINK_FLAGS="-z notext"
+
 	local myconf=(
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		--libexecdir="${EPREFIX}/usr/libexec"
