@@ -8,6 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="Bruce's C compiler - Simple C compiler to generate 8086 code"
 HOMEPAGE="http://www.debath.co.uk/ https://github.com/lkundrak/dev86"
 SRC_URI="https://codeberg.org/jbruchon/dev86/archive/v${PV}.tar.gz -> Dev86src-${PV}.tar.gz"
+S="${WORKDIR}/dev86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,8 +20,6 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
 )
-
-S="${WORKDIR}/dev86"
 
 src_prepare() {
 	default
