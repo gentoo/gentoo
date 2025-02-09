@@ -1,8 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-09)
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Unmask AMF keyword on amd64 only
+-amf
 
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-11-04)
 # media-libs/tiff only keyworded on amd64
