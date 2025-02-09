@@ -22,7 +22,7 @@ IUSE="doc static-libs static-pic"
 
 RDEPEND="${ADA_DEPS}
 	${PYTHON_DEPS}
-	dev-ada/gpr:=[${ADA_USEDEP},shared,static-libs?]
+	dev-ada/gpr:=[${ADA_USEDEP},shared(+),static-libs?]
 	dev-ada/markdown:=[${ADA_USEDEP}]
 	>=dev-ada/VSS-24.0.0:=[${ADA_USEDEP},static-libs?]
 	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]
