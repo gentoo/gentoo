@@ -1,0 +1,501 @@
+https://patch-diff.githubusercontent.com/raw/rust-lang/rust/pull/137020.patch
+From: Pietro Albini <pietro.albini@ferrous-systems.com>
+Date: Fri, 14 Feb 2025 11:16:32 +0100
+Subject: [PATCH 1/4] generate-copyright: pass the source root from bootstrap
+
+--- a/src/bootstrap/src/core/build_steps/run.rs
++++ b/src/bootstrap/src/core/build_steps/run.rs
+@@ -217,6 +217,7 @@ impl Step for GenerateCopyright {
+         cmd.env("DEST", &dest);
+         cmd.env("DEST_LIBSTD", &dest_libstd);
+         cmd.env("OUT_DIR", &builder.out);
++        cmd.env("SRC_DIR", &builder.src);
+         cmd.env("CARGO", &builder.initial_cargo);
+         // it is important that generate-copyright runs from the root of the
+         // source tree, because it uses relative paths
+--- a/src/tools/generate-copyright/src/main.rs
++++ b/src/tools/generate-copyright/src/main.rs
+@@ -18,6 +18,7 @@ fn main() -> Result<(), Error> {
+     let dest_file = env_path("DEST")?;
+     let libstd_dest_file = env_path("DEST_LIBSTD")?;
+     let out_dir = env_path("OUT_DIR")?;
++    let src_dir = env_path("SRC_DIR")?;
+     let cargo = env_path("CARGO")?;
+     let license_metadata = env_path("LICENSE_METADATA")?;
+ 
+@@ -27,7 +28,7 @@ fn main() -> Result<(), Error> {
+     let mut collected_cargo_metadata = cargo_metadata::get_metadata_and_notices(
+         &cargo,
+         &out_dir.join("vendor"),
+-        &root_path,
++        &src_dir,
+         &[
+             Path::new("./Cargo.toml"),
+             Path::new("./src/tools/cargo/Cargo.toml"),
+@@ -38,7 +39,7 @@ fn main() -> Result<(), Error> {
+     let library_collected_cargo_metadata = cargo_metadata::get_metadata_and_notices(
+         &cargo,
+         &out_dir.join("library-vendor"),
+-        &root_path,
++        &src_dir,
+         &[Path::new("./library/Cargo.toml")],
+     )?;
+ 
+@@ -54,7 +55,7 @@ fn main() -> Result<(), Error> {
+     let library_collected_tree_metadata = Metadata {
+         files: collected_tree_metadata
+             .files
+-            .trim_clone(&Path::new("./library"), &Path::new("."))
++            .trim_clone(&src_dir.join("library"), &src_dir)
+             .unwrap(),
+     };
+ 
+
+From 08b4f6d2c650d3e6e9010e8a27631962bf31dec7 Mon Sep 17 00:00:00 2001
+From: Pietro Albini <pietro.albini@ferrous-systems.com>
+Date: Fri, 14 Feb 2025 11:16:47 +0100
+Subject: [PATCH 2/4] generate-copyright: pass the list of manifests from
+ bootstrap
+
+--- a/src/bootstrap/src/core/build_steps/run.rs
++++ b/src/bootstrap/src/core/build_steps/run.rs
+@@ -9,6 +9,7 @@ use crate::Mode;
+ use crate::core::build_steps::dist::distdir;
+ use crate::core::build_steps::test;
+ use crate::core::build_steps::tool::{self, SourceType, Tool};
++use crate::core::build_steps::vendor::default_paths_to_vendor;
+ use crate::core::builder::{Builder, Kind, RunConfig, ShouldRun, Step};
+ use crate::core::config::TargetSelection;
+ use crate::core::config::flags::get_completion;
+@@ -212,7 +213,21 @@ impl Step for GenerateCopyright {
+         let dest = builder.out.join("COPYRIGHT.html");
+         let dest_libstd = builder.out.join("COPYRIGHT-library.html");
+ 
++        let paths_to_vendor = default_paths_to_vendor(builder);
++        for (_, submodules) in &paths_to_vendor {
++            for submodule in submodules {
++                builder.build.require_submodule(submodule, None);
++            }
++        }
++        let cargo_manifests = paths_to_vendor
++            .into_iter()
++            .map(|(path, _submodules)| path.to_str().unwrap().to_string())
++            .inspect(|path| assert!(!path.contains(','), "{path} contains a comma in its name"))
++            .collect::<Vec<_>>()
++            .join(",");
++
+         let mut cmd = builder.tool_cmd(Tool::GenerateCopyright);
++        cmd.env("CARGO_MANIFESTS", &cargo_manifests);
+         cmd.env("LICENSE_METADATA", &license_metadata);
+         cmd.env("DEST", &dest);
+         cmd.env("DEST_LIBSTD", &dest_libstd);
+--- a/src/tools/generate-copyright/src/cargo_metadata.rs
++++ b/src/tools/generate-copyright/src/cargo_metadata.rs
+@@ -54,7 +54,7 @@ pub fn get_metadata_and_notices(
+     cargo: &Path,
+     vendor_path: &Path,
+     root_path: &Path,
+-    manifest_paths: &[&Path],
++    manifest_paths: &[PathBuf],
+ ) -> Result<BTreeMap<Package, PackageMetadata>, Error> {
+     let mut output = get_metadata(cargo, root_path, manifest_paths)?;
+ 
+@@ -77,7 +77,7 @@ pub fn get_metadata_and_notices(
+ pub fn get_metadata(
+     cargo: &Path,
+     root_path: &Path,
+-    manifest_paths: &[&Path],
++    manifest_paths: &[PathBuf],
+ ) -> Result<BTreeMap<Package, PackageMetadata>, Error> {
+     let mut output = BTreeMap::new();
+     // Look at the metadata for each manifest
+@@ -114,7 +114,7 @@ pub fn get_metadata(
+ }
+ 
+ /// Run cargo-vendor, fetching into the given dir
+-fn run_cargo_vendor(cargo: &Path, dest: &Path, manifest_paths: &[&Path]) -> Result<(), Error> {
++fn run_cargo_vendor(cargo: &Path, dest: &Path, manifest_paths: &[PathBuf]) -> Result<(), Error> {
+     let mut vendor_command = std::process::Command::new(cargo);
+     vendor_command.env("RUSTC_BOOTSTRAP", "1");
+     vendor_command.arg("vendor");
+--- a/src/tools/generate-copyright/src/main.rs
++++ b/src/tools/generate-copyright/src/main.rs
+@@ -22,25 +22,35 @@ fn main() -> Result<(), Error> {
+     let cargo = env_path("CARGO")?;
+     let license_metadata = env_path("LICENSE_METADATA")?;
+ 
+-    let root_path = std::path::absolute(".")?;
++    let cargo_manifests = env_string("CARGO_MANIFESTS")?
++        .split(",")
++        .map(|manifest| manifest.into())
++        .collect::<Vec<PathBuf>>();
++    let library_manifests = cargo_manifests
++        .iter()
++        .filter(|path| {
++            if let Ok(stripped) = path.strip_prefix(&src_dir) {
++                stripped.starts_with("library")
++            } else {
++                panic!("manifest {path:?} not relative to source dir {src_dir:?}");
++            }
++        })
++        .cloned()
++        .collect::<Vec<_>>();
+ 
+     // Scan Cargo dependencies
+     let mut collected_cargo_metadata = cargo_metadata::get_metadata_and_notices(
+         &cargo,
+         &out_dir.join("vendor"),
+         &src_dir,
+-        &[
+-            Path::new("./Cargo.toml"),
+-            Path::new("./src/tools/cargo/Cargo.toml"),
+-            Path::new("./library/Cargo.toml"),
+-        ],
++        &cargo_manifests,
+     )?;
+ 
+     let library_collected_cargo_metadata = cargo_metadata::get_metadata_and_notices(
+         &cargo,
+         &out_dir.join("library-vendor"),
+         &src_dir,
+-        &[Path::new("./library/Cargo.toml")],
++        &library_manifests,
+     )?;
+ 
+     for (key, value) in collected_cargo_metadata.iter_mut() {
+@@ -194,6 +204,17 @@ struct License {
+     copyright: Vec<String>,
+ }
+ 
++/// Grab an environment variable as string, or fail nicely.
++fn env_string(var: &str) -> Result<String, Error> {
++    match std::env::var(var) {
++        Ok(var) => Ok(var),
++        Err(std::env::VarError::NotUnicode(_)) => {
++            anyhow::bail!("environment variable {var} is not utf-8")
++        }
++        Err(std::env::VarError::NotPresent) => anyhow::bail!("missing environment variable {var}"),
++    }
++}
++
+ /// Grab an environment variable as a PathBuf, or fail nicely.
+ fn env_path(var: &str) -> Result<PathBuf, Error> {
+     if let Some(var) = std::env::var_os(var) {
+
+From 33e7f9bc6681e32cc3b3b26ea85e21da225b89ee Mon Sep 17 00:00:00 2001
+From: Pietro Albini <pietro.albini@ferrous-systems.com>
+Date: Mon, 17 Feb 2025 10:20:14 +0100
+Subject: [PATCH 3/4] generate-copyright: pass the vendored sources from
+ bootstrap
+
+--- a/src/bootstrap/src/core/build_steps/run.rs
++++ b/src/bootstrap/src/core/build_steps/run.rs
+@@ -9,7 +9,7 @@ use crate::Mode;
+ use crate::core::build_steps::dist::distdir;
+ use crate::core::build_steps::test;
+ use crate::core::build_steps::tool::{self, SourceType, Tool};
+-use crate::core::build_steps::vendor::default_paths_to_vendor;
++use crate::core::build_steps::vendor::{Vendor, default_paths_to_vendor};
+ use crate::core::builder::{Builder, Kind, RunConfig, ShouldRun, Step};
+ use crate::core::config::TargetSelection;
+ use crate::core::config::flags::get_completion;
+@@ -226,13 +226,26 @@ impl Step for GenerateCopyright {
+             .collect::<Vec<_>>()
+             .join(",");
+ 
++        let vendored_sources = if let Some(path) = builder.vendored_crates_path() {
++            path
++        } else {
++            let cache_dir = builder.out.join("tmp").join("generate-copyright-vendor");
++            builder.ensure(Vendor {
++                sync_args: Vec::new(),
++                versioned_dirs: true,
++                root_dir: builder.src.clone(),
++                output_dir: cache_dir.clone(),
++            });
++            cache_dir
++        };
++
+         let mut cmd = builder.tool_cmd(Tool::GenerateCopyright);
+         cmd.env("CARGO_MANIFESTS", &cargo_manifests);
+         cmd.env("LICENSE_METADATA", &license_metadata);
+         cmd.env("DEST", &dest);
+         cmd.env("DEST_LIBSTD", &dest_libstd);
+-        cmd.env("OUT_DIR", &builder.out);
+         cmd.env("SRC_DIR", &builder.src);
++        cmd.env("VENDOR_DIR", &vendored_sources);
+         cmd.env("CARGO", &builder.initial_cargo);
+         // it is important that generate-copyright runs from the root of the
+         // source tree, because it uses relative paths
+--- a/src/bootstrap/src/core/build_steps/vendor.rs
++++ b/src/bootstrap/src/core/build_steps/vendor.rs
+@@ -4,6 +4,8 @@ use crate::core::build_steps::tool::SUBMODULES_FOR_RUSTBOOK;
+ use crate::core::builder::{Builder, RunConfig, ShouldRun, Step};
+ use crate::utils::exec::command;
+ 
++pub const VENDOR_DIR: &str = "vendor";
++
+ /// Returns the cargo workspaces to vendor for `x vendor` and dist tarballs.
+ ///
+ /// Returns a `Vec` of `(path_to_manifest, submodules_required)` where
+@@ -29,9 +31,10 @@ pub fn default_paths_to_vendor(builder: &Builder<'_>) -> Vec<(PathBuf, Vec<&'sta
+ 
+ #[derive(Debug, Clone, Hash, PartialEq, Eq)]
+ pub(crate) struct Vendor {
+-    sync_args: Vec<PathBuf>,
+-    versioned_dirs: bool,
+-    root_dir: PathBuf,
++    pub(crate) sync_args: Vec<PathBuf>,
++    pub(crate) versioned_dirs: bool,
++    pub(crate) root_dir: PathBuf,
++    pub(crate) output_dir: PathBuf,
+ }
+ 
+ impl Step for Vendor {
+@@ -48,10 +51,13 @@ impl Step for Vendor {
+             sync_args: run.builder.config.cmd.vendor_sync_args(),
+             versioned_dirs: run.builder.config.cmd.vendor_versioned_dirs(),
+             root_dir: run.builder.src.clone(),
++            output_dir: run.builder.src.join(VENDOR_DIR),
+         });
+     }
+ 
+     fn run(self, builder: &Builder<'_>) -> Self::Output {
++        builder.info(&format!("Vendoring sources to {:?}", self.root_dir));
++
+         let mut cmd = command(&builder.initial_cargo);
+         cmd.arg("vendor");
+ 
+@@ -81,7 +87,7 @@ impl Step for Vendor {
+         // which uses the unstable `public-dependency` feature.
+         cmd.env("RUSTC_BOOTSTRAP", "1");
+ 
+-        cmd.current_dir(self.root_dir);
++        cmd.current_dir(self.root_dir).arg(&self.output_dir);
+ 
+         cmd.run(builder);
+     }
+--- a/src/bootstrap/src/core/builder/cargo.rs
++++ b/src/bootstrap/src/core/builder/cargo.rs
+@@ -924,8 +924,7 @@ impl Builder<'_> {
+ 
+         if self.config.rust_remap_debuginfo {
+             let mut env_var = OsString::new();
+-            if self.config.vendor {
+-                let vendor = self.build.src.join("vendor");
++            if let Some(vendor) = self.build.vendored_crates_path() {
+                 env_var.push(vendor);
+                 env_var.push("=/rust/deps");
+             } else {
+--- a/src/bootstrap/src/lib.rs
++++ b/src/bootstrap/src/lib.rs
+@@ -50,6 +50,8 @@ pub use utils::change_tracker::{
+     CONFIG_CHANGE_HISTORY, find_recent_config_change_ids, human_readable_changes,
+ };
+ 
++use crate::core::build_steps::vendor::VENDOR_DIR;
++
+ const LLVM_TOOLS: &[&str] = &[
+     "llvm-cov",      // used to generate coverage report
+     "llvm-nm",       // used to inspect binaries; it shows symbol names, their sizes and visibility
+@@ -782,6 +784,11 @@ impl Build {
+         self.out.join(target).join("md-doc")
+     }
+ 
++    /// Path to the vendored Rust crates.
++    fn vendored_crates_path(&self) -> Option<PathBuf> {
++        if self.config.vendor { Some(self.src.join(VENDOR_DIR)) } else { None }
++    }
++
+     /// Returns `true` if this is an external version of LLVM not managed by bootstrap.
+     /// In particular, we expect llvm sources to be available when this is false.
+     ///
+--- a/src/tools/generate-copyright/src/cargo_metadata.rs
++++ b/src/tools/generate-copyright/src/cargo_metadata.rs
+@@ -11,10 +11,6 @@ pub enum Error {
+     Io(#[from] std::io::Error),
+     #[error("Failed get output from cargo-metadata: {0:?}")]
+     GettingMetadata(#[from] cargo_metadata::Error),
+-    #[error("Failed to run cargo vendor: {0:?}")]
+-    LaunchingVendor(std::io::Error),
+-    #[error("Failed to complete cargo vendor")]
+-    RunningVendor,
+     #[error("Bad path {0:?} whilst scraping files")]
+     Scraping(PathBuf),
+ }
+@@ -43,13 +39,11 @@ pub struct PackageMetadata {
+     pub is_in_libstd: Option<bool>,
+ }
+ 
+-/// Use `cargo metadata` and `cargo vendor` to get a list of dependencies and their license data.
++/// Use `cargo metadata` to get a list of dependencies and their license data. License files will
++/// also be pulled from the vendor path (generated by bootstrap).
+ ///
+-/// This will involve running `cargo vendor` into `vendor_path` so we can
+-/// grab the license files.
+-///
+-/// Any dependency with a path beginning with `root_path` is ignored, as we
+-/// assume `reuse` has covered it already.
++/// Any dependency with a path beginning with `root_path` is ignored, as we assume `reuse` has
++/// covered it already.
+ pub fn get_metadata_and_notices(
+     cargo: &Path,
+     vendor_path: &Path,
+@@ -58,10 +52,6 @@ pub fn get_metadata_and_notices(
+ ) -> Result<BTreeMap<Package, PackageMetadata>, Error> {
+     let mut output = get_metadata(cargo, root_path, manifest_paths)?;
+ 
+-    // Now do a cargo-vendor and grab everything
+-    println!("Vendoring deps into {}...", vendor_path.display());
+-    run_cargo_vendor(cargo, &vendor_path, manifest_paths)?;
+-
+     // Now for each dependency we found, go and grab any important looking files
+     for (package, metadata) in output.iter_mut() {
+         load_important_files(package, metadata, &vendor_path)?;
+@@ -113,28 +103,6 @@ pub fn get_metadata(
+     Ok(output)
+ }
+ 
+-/// Run cargo-vendor, fetching into the given dir
+-fn run_cargo_vendor(cargo: &Path, dest: &Path, manifest_paths: &[PathBuf]) -> Result<(), Error> {
+-    let mut vendor_command = std::process::Command::new(cargo);
+-    vendor_command.env("RUSTC_BOOTSTRAP", "1");
+-    vendor_command.arg("vendor");
+-    vendor_command.arg("--quiet");
+-    vendor_command.arg("--versioned-dirs");
+-    for manifest_path in manifest_paths {
+-        vendor_command.arg("-s");
+-        vendor_command.arg(manifest_path);
+-    }
+-    vendor_command.arg(dest);
+-
+-    let vendor_status = vendor_command.status().map_err(Error::LaunchingVendor)?;
+-
+-    if !vendor_status.success() {
+-        return Err(Error::RunningVendor);
+-    }
+-
+-    Ok(())
+-}
+-
+ /// Add important files off disk into this dependency.
+ ///
+ /// Maybe one-day Cargo.toml will contain enough information that we don't need
+--- a/src/tools/generate-copyright/src/main.rs
++++ b/src/tools/generate-copyright/src/main.rs
+@@ -17,8 +17,8 @@ mod cargo_metadata;
+ fn main() -> Result<(), Error> {
+     let dest_file = env_path("DEST")?;
+     let libstd_dest_file = env_path("DEST_LIBSTD")?;
+-    let out_dir = env_path("OUT_DIR")?;
+     let src_dir = env_path("SRC_DIR")?;
++    let vendor_dir = env_path("VENDOR_DIR")?;
+     let cargo = env_path("CARGO")?;
+     let license_metadata = env_path("LICENSE_METADATA")?;
+ 
+@@ -39,16 +39,12 @@ fn main() -> Result<(), Error> {
+         .collect::<Vec<_>>();
+ 
+     // Scan Cargo dependencies
+-    let mut collected_cargo_metadata = cargo_metadata::get_metadata_and_notices(
+-        &cargo,
+-        &out_dir.join("vendor"),
+-        &src_dir,
+-        &cargo_manifests,
+-    )?;
++    let mut collected_cargo_metadata =
++        cargo_metadata::get_metadata_and_notices(&cargo, &vendor_dir, &src_dir, &cargo_manifests)?;
+ 
+     let library_collected_cargo_metadata = cargo_metadata::get_metadata_and_notices(
+         &cargo,
+-        &out_dir.join("library-vendor"),
++        &vendor_dir,
+         &src_dir,
+         &library_manifests,
+     )?;
+
+From 92f31b95c92cb0a34413a52793a50c7d4334dbb2 Mon Sep 17 00:00:00 2001
+From: Pietro Albini <pietro.albini@ferrous-systems.com>
+Date: Mon, 17 Feb 2025 10:29:51 +0100
+Subject: [PATCH 4/4] use the shared vendor impl for plan source tarballs
+
+--- a/src/bootstrap/src/core/build_steps/dist.rs
++++ b/src/bootstrap/src/core/build_steps/dist.rs
+@@ -19,7 +19,7 @@ use object::read::archive::ArchiveFile;
+ 
+ use crate::core::build_steps::doc::DocumentationFormat;
+ use crate::core::build_steps::tool::{self, Tool};
+-use crate::core::build_steps::vendor::default_paths_to_vendor;
++use crate::core::build_steps::vendor::{VENDOR_DIR, Vendor};
+ use crate::core::build_steps::{compile, llvm};
+ use crate::core::builder::{Builder, Kind, RunConfig, ShouldRun, Step};
+ use crate::core::config::TargetSelection;
+@@ -1050,19 +1050,6 @@ impl Step for PlainSourceTarball {
+         if builder.config.dist_vendor {
+             builder.require_and_update_all_submodules();
+ 
+-            // Vendor all Cargo dependencies
+-            let mut cmd = command(&builder.initial_cargo);
+-            cmd.arg("vendor").arg("--versioned-dirs");
+-
+-            for (p, _) in default_paths_to_vendor(builder) {
+-                cmd.arg("--sync").arg(p);
+-            }
+-
+-            cmd
+-                // Will read the libstd Cargo.toml which uses the unstable `public-dependency` feature.
+-                .env("RUSTC_BOOTSTRAP", "1")
+-                .current_dir(plain_dst_src);
+-
+             // Vendor packages that are required by opt-dist to collect PGO profiles.
+             let pkgs_for_pgo_training = build_helper::LLVM_PGO_CRATES
+                 .iter()
+@@ -1074,15 +1061,18 @@ impl Step for PlainSourceTarball {
+                     manifest_path.push("Cargo.toml");
+                     manifest_path
+                 });
+-            for manifest_path in pkgs_for_pgo_training {
+-                cmd.arg("--sync").arg(manifest_path);
+-            }
+ 
+-            let config = cmd.run_capture(builder).stdout();
++            // Vendor all Cargo dependencies
++            let vendor = builder.ensure(Vendor {
++                sync_args: pkgs_for_pgo_training.collect(),
++                versioned_dirs: true,
++                root_dir: plain_dst_src.into(),
++                output_dir: VENDOR_DIR.into(),
++            });
+ 
+             let cargo_config_dir = plain_dst_src.join(".cargo");
+             builder.create_dir(&cargo_config_dir);
+-            builder.create(&cargo_config_dir.join("config.toml"), &config);
++            builder.create(&cargo_config_dir.join("config.toml"), &vendor.config);
+         }
+ 
+         // Delete extraneous directories
+--- a/src/bootstrap/src/core/build_steps/vendor.rs
++++ b/src/bootstrap/src/core/build_steps/vendor.rs
+@@ -38,7 +38,7 @@ pub(crate) struct Vendor {
+ }
+ 
+ impl Step for Vendor {
+-    type Output = ();
++    type Output = VendorOutput;
+     const DEFAULT: bool = true;
+     const ONLY_HOSTS: bool = true;
+ 
+@@ -89,6 +89,12 @@ impl Step for Vendor {
+ 
+         cmd.current_dir(self.root_dir).arg(&self.output_dir);
+ 
+-        cmd.run(builder);
++        let config = cmd.run_capture_stdout(builder);
++        VendorOutput { config: config.stdout() }
+     }
+ }
++
++#[derive(Debug, Clone)]
++pub(crate) struct VendorOutput {
++    pub(crate) config: String,
++}
