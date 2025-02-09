@@ -1,0 +1,13 @@
+Fail build if compilation failed, use ranlib
+
+--- a/build
++++ b/build
+@@ -36,7 +36,7 @@ if test "$1" = "bin" ; then
+ #define RULES_FILE \"$LIBDIR/en/scrabble_rules\"
+ " > src/config.h
+   xmkmf -a
+-  make CC="${CC}" CCOPTIONS="${CFLAGS}" LOCAL_LDFLAGS="${LDFLAGS}"
++  make CC="${CC}" AR="${AR} cq" RANLIB="${RANLIB}" CCOPTIONS="${CFLAGS}" LOCAL_LDFLAGS="${LDFLAGS}" || exit 1
+   echo "
+ Now, type './build install' to install programs in $BINDIR
+ "
