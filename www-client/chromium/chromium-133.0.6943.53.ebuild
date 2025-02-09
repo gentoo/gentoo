@@ -181,7 +181,7 @@ BDEPEND="
 	)
 	>=dev-util/bindgen-0.68.0
 	>=dev-build/gn-${GN_MIN_VER}
-	dev-build/ninja
+	app-alternatives/ninja
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	dev-vcs/git
