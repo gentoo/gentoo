@@ -1,0 +1,103 @@
+https://gitlab.freedesktop.org/dbus/dbus/-/merge_requests/509
+
+From a10cfc2ed95b04063826911111819fff5e837d6f Mon Sep 17 00:00:00 2001
+From: Dudemanguy <random342@airmail.cc>
+Date: Fri, 20 Dec 2024 10:53:28 -0600
+Subject: [PATCH] build: add elogind support
+
+Checking the uid of the user seat also works if elogind is used. Add
+this as an option to the build and make it mutually exclusive with
+enabling systemd.
+---
+ dbus/dbus-userdb-util.c |  6 +++++-
+ dbus/meson.build        |  1 +
+ meson.build             | 12 ++++++++++++
+ meson_options.txt       |  7 +++++++
+ 4 files changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/dbus/dbus-userdb-util.c b/dbus/dbus-userdb-util.c
+index 736244955..a7b611309 100644
+--- a/dbus/dbus-userdb-util.c
++++ b/dbus/dbus-userdb-util.c
+@@ -42,6 +42,10 @@
+ #include <systemd/sd-login.h>
+ #endif
+ 
++#ifdef HAVE_ELOGIND
++#include <elogind/sd-login.h>
++#endif
++
+ /**
+  * @addtogroup DBusInternalsUtils
+  * @{
+@@ -67,7 +71,7 @@ dbus_bool_t
+ _dbus_is_console_user (dbus_uid_t uid,
+ 		       DBusError *error)
+ {
+-#ifdef HAVE_SYSTEMD
++#if defined(HAVE_SYSTEMD) || defined(HAVE_ELOGIND)
+   /* check if we have logind */
+   if (access ("/run/systemd/seats/", F_OK) >= 0)
+     {
+diff --git a/dbus/meson.build b/dbus/meson.build
+index d2acd0594..0e543069e 100644
+--- a/dbus/meson.build
++++ b/dbus/meson.build
+@@ -24,6 +24,7 @@ dbus_dependencies = [
+     adt_libs,
+     network_libs,
+     systemd,
++    elogind,
+     valgrind.partial_dependency(compile_args: true),
+ ]
+ 
+diff --git a/meson.build b/meson.build
+index 97d14593f..5f24ba3af 100644
+--- a/meson.build
++++ b/meson.build
+@@ -519,6 +519,17 @@ else
+ endif
+ data_config.set('SYSTEMCTL', systemctl)
+ 
++elogind_opt = get_option('elogind')
++if use_systemd
++    if elogind_opt.enabled()
++        error('-Dsystemd and -Delogind are mutually exclusive')
++    endif
++    elogind = dependency('', required: false)
++else
++    elogind = dependency('libelogind', version: '>=209', required: elogind_opt)
++endif
++use_elogind = elogind.found()
++config.set('HAVE_ELOGIND', use_elogind)
+ 
+ 
+ use_traditional_activation = message_bus and get_option('traditional_activation')
+@@ -1361,6 +1372,7 @@ summary_dict += {
+     'Building inotify support': use_inotify,
+     'Building kqueue support':  use_kqueue,
+     'Building systemd support': use_systemd,
++    'Building elogind support': use_elogind,
+     'Traditional activation':   use_traditional_activation,
+     'Building X11 code':        config.get('DBUS_BUILD_X11'),
+     'Building Doxygen docs':    doxygen.found(),
+diff --git a/meson_options.txt b/meson_options.txt
+index 1bd00579f..9a56fb825 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -95,6 +95,13 @@ option(
+   description: 'Enable tests that require insecure extra code in the library and binaries'
+ )
+ 
++option(
++  'elogind',
++  type: 'feature',
++  value: 'disabled',
++  description: 'Use elogind for detecting user sessions'
++)
++
+ option(
+   'epoll',
+   type: 'feature',
+-- 
+GitLab
