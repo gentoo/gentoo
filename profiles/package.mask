@@ -204,12 +204,6 @@ sys-cluster/k3s
 # Removal on 2025-02-17.  Bug #948333.
 dev-python/terminaltables
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
-# Last release from 2012, dead upstream for 7 years, no Gentoo maintainer.
-# Depends on dev-qt/qtwebengine:5, removed from almost every other distro.
-# Bugs #741849, #830220, #851507 and #926672. Removal on 2025-02-10.
-net-misc/fatrat
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-10)
 # EAPI=7, maintainer needed, no reverse dependencies, fails to compile,
 # uses deprecated Go eclass.
