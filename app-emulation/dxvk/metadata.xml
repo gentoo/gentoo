@@ -8,7 +8,8 @@
 	<use>
 		<flag name="crossdev-mingw">
 			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
-			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up
+			and is mostly unsupported, try disabling if have issues)
 		</flag>
 		<flag name="d3d8">Enable support for DirectX 8 (d3d8.dll)</flag>
 		<flag name="d3d9">Enable support for DirectX 9 (d3d9.dll)</flag>

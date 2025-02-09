@@ -8,7 +8,8 @@
 	<use>
 		<flag name="crossdev-mingw">
 			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
-			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up
+			and is mostly unsupported, try disabling if have issues)
 		</flag>
 		<flag name="extras">Install extra tools and demos in /usr/lib/vkd3d-proton</flag>
 	</use>
