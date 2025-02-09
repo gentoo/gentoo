@@ -6,6 +6,7 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
+		<flag name="amf">Enable AMD Frame Rate Conversion support using <pkg>media-libs/amf-headers</pkg></flag>
 		<flag name="aom">Enable AV1 encoding/decoding support using <pkg>media-libs/libaom</pkg></flag>
 		<flag name="archive">Enable support for libarchive stream extractor</flag>
 		<flag name="aribsub">Enable support for decoding ARIB STD-B24 subtitles</flag>

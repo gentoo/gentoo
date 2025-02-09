@@ -1,4 +1,4 @@
-# Copyright 2000-2024 Gentoo Authors
+# Copyright 2000-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,8 +32,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/12-9" # vlc - vlccore
 
-IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
-	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
+IUSE="a52 alsa amf aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d
+	dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate kms
 	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc live
 	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
@@ -72,6 +72,7 @@ RDEPEND="
 	virtual/opengl
 	a52? ( media-libs/a52dec )
 	alsa? ( media-libs/alsa-lib )
+	amf? ( media-video/amdgpu-pro-amf )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
 	aribsub? ( media-libs/aribb24 )
@@ -228,6 +229,7 @@ RDEPEND="
 	zvbi? ( media-libs/zvbi )
 "
 DEPEND="${RDEPEND}
+	amf? ( media-libs/amf-headers )
 	X? ( x11-base/xorg-proto )
 "
 
@@ -299,6 +301,7 @@ src_configure() {
 		--enable-vorbis
 		$(use_enable a52)
 		$(use_enable alsa)
+		$(use_enable amf amf-frc)
 		$(use_enable aom)
 		$(use_enable archive)
 		$(use_enable aribsub)
