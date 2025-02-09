@@ -396,7 +396,7 @@ src_configure() {
 		parallel-compiler = $(toml_usex parallel-compiler)
 		channel = "$(usex nightly nightly stable)"
 		description = "gentoo"
-		rpath = false
+		rpath = true
 		verbose-tests = true
 		optimize-tests = $(toml_usex !debug)
 		codegen-tests = true
@@ -899,7 +899,6 @@ src_install() {
 	dosym "../../lib/${PN}/${PV}/share/doc/rust" "/usr/share/doc/${P}"
 
 	newenvd - "50${P}" <<-_EOF_
-		LDPATH="${EPREFIX}/usr/lib/rust/lib-${PV}"
 		MANPATH="${EPREFIX}/usr/lib/rust/man-${PV}"
 	_EOF_
 
