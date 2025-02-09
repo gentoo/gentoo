@@ -3,14 +3,14 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 19 )
-PYTHON_COMPAT=( python3_{10..13} )
+LLVM_COMPAT=( 17 )
+PYTHON_COMPAT=( python3_{10..12} )
 
 RUST_MAX_VER=${PV}
 RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 
-inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature \
-	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
+inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing multilib multilib-build \
+	optfeature python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -20,7 +20,7 @@ if [[ ${PV} = *beta* ]]; then
 else
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
 DESCRIPTION="Systems programming language from Mozilla"
@@ -39,7 +39,6 @@ ALL_LLVM_TARGETS=( AArch64 AMDGPU ARC ARM AVR BPF CSKY DirectX Hexagon Lanai
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
-# https://github.com/rust-lang/llvm-project/blob/rustc-1.84.0/llvm/CMakeLists.txt
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY DirectX M68k SPIRV Xtensa )
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
@@ -134,10 +133,13 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
-	"${FILESDIR}"/1.78.0-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.83.0-cross-compile-libz.patch
+	"${FILESDIR}"/1.75.0-musl-dynamic-linking.patch
+	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
 	#"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch  # pending refresh
+	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
+	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch
+	"${FILESDIR}"/1.76.0-loong-code-model.patch  # remove for >=1.78.0
 )
 
 clear_vendor_checksums() {
@@ -218,18 +220,6 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	# Rust baselines to Pentium4 on x86, this patch lowers the baseline to i586 when sse2 is not set.
-	if use x86; then
-		if ! use cpu_flags_x86_sse2; then
-			eapply "${FILESDIR}/1.82.0-i586-baseline.patch"
-			#grep -rl cmd.args.push\(\"-march=i686\" . | xargs sed  -i 's/march=i686/-march=i586/g' || die
-		fi
-	fi
-
-	default
-}
-
 src_configure() {
 	if tc-is-cross-compiler; then
 		export PKG_CONFIG_ALLOW_CROSS=1
@@ -257,7 +247,7 @@ src_configure() {
 	rust_targets="${rust_targets#,}"
 
 	# cargo and rustdoc are mandatory and should always be included
-	local tools='"cargo","rustdoc"'
+	local tools='"cargo","rustdoc", "rust-demangler"'
 	use clippy && tools+=',"clippy"'
 	use miri && tools+=',"miri"'
 	use rustfmt && tools+=',"rustfmt"'
@@ -282,8 +272,7 @@ src_configure() {
 
 	local cm_btype="$(usex debug DEBUG RELEASE)"
 	cat <<- _EOF_ > "${S}"/config.toml
-		# https://github.com/rust-lang/rust/issues/135358 (bug #947897)
-		profile = "dist"
+		changelog-seen = 2
 		[llvm]
 		download-ci-llvm = false
 		optimize = $(toml_usex !debug)
@@ -372,7 +361,7 @@ src_configure() {
 		parallel-compiler = $(toml_usex parallel-compiler)
 		channel = "$(usex nightly nightly stable)"
 		description = "gentoo"
-		rpath = false
+		rpath = true
 		verbose-tests = true
 		optimize-tests = $(toml_usex !debug)
 		codegen-tests = true
@@ -418,13 +407,10 @@ src_configure() {
 		if use elibc_musl; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				crt-static = false
-				musl-root = "$($(tc-getCC) -print-sysroot)/usr"
 			_EOF_
 		fi
 	done
 	if use wasm; then
-		wasm_target="wasm32-unknown-unknown"
-		export CFLAGS_${wasm_target//-/_}="$(filter-flags '-mcpu*' '-march*' '-mtune*'; echo "$CFLAGS")"
 		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.wasm32-unknown-unknown]
 			linker = "$(usex system-llvm lld rust-lld)"
@@ -432,89 +418,6 @@ src_configure() {
 			profiler = false
 		_EOF_
 	fi
-
-	if [[ -n ${I_KNOW_WHAT_I_AM_DOING_CROSS} ]]; then # whitespace intentionally shifted below
-	# experimental cross support
-	# discussion: https://bugs.gentoo.org/679878
-	# TODO: c*flags, clang, system-llvm, cargo.eclass target support
-	# it would be much better if we could split out stdlib
-	# complilation to separate ebuild and abuse CATEGORY to
-	# just install to /usr/lib/rustlib/<target>
-
-	# extra targets defined as a bash array
-	# spec format:  <LLVM target>:<rust-target>:<CTARGET>
-	# best place would be /etc/portage/env/dev-lang/rust
-	# Example:
-	# RUST_CROSS_TARGETS=(
-	#	"AArch64:aarch64-unknown-linux-gnu:aarch64-unknown-linux-gnu"
-	# )
-	# no extra hand holding is done, no target transformations, all
-	# values are passed as-is with just basic checks, so it's up to user to supply correct values
-	# valid rust targets can be obtained with
-	# 	rustc --print target-list
-	# matching cross toolchain has to be installed
-	# matching LLVM_TARGET has to be enabled for both rust and llvm (if using system one)
-	# only gcc toolchains installed with crossdev are checked for now.
-
-	# BUG: we can't pass host flags to cross compiler, so just filter for now
-	# BUG: this should be more fine-grained.
-	filter-flags '-mcpu=*' '-march=*' '-mtune=*'
-
-	local cross_target_spec
-	for cross_target_spec in "${RUST_CROSS_TARGETS[@]}";do
-		# extracts first element form <LLVM target>:<rust-target>:<CTARGET>
-		local cross_llvm_target="${cross_target_spec%%:*}"
-		# extracts toolchain triples, <rust-target>:<CTARGET>
-		local cross_triples="${cross_target_spec#*:}"
-		# extracts first element after before : separator
-		local cross_rust_target="${cross_triples%%:*}"
-		# extracts last element after : separator
-		local cross_toolchain="${cross_triples##*:}"
-		use llvm_targets_${cross_llvm_target} || die "need llvm_targets_${cross_llvm_target} target enabled"
-		command -v ${cross_toolchain}-gcc > /dev/null 2>&1 || die "need ${cross_toolchain} cross toolchain"
-
-		cat <<- _EOF_ >> "${S}"/config.toml
-			[target.${cross_rust_target}]
-			ar = "${cross_toolchain}-ar"
-			cc = "${cross_toolchain}-gcc"
-			cxx = "${cross_toolchain}-g++"
-			linker = "${cross_toolchain}-gcc"
-			ranlib = "${cross_toolchain}-ranlib"
-		_EOF_
-		if use system-llvm; then
-			cat <<- _EOF_ >> "${S}"/config.toml
-				llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
-			_EOF_
-		fi
-		if [[ "${cross_toolchain}" == *-musl* ]]; then
-			cat <<- _EOF_ >> "${S}"/config.toml
-				musl-root = "$(${cross_toolchain}-gcc -print-sysroot)/usr"
-			_EOF_
-		fi
-
-		# append cross target to "normal" target list
-		# example 'target = ["powerpc64le-unknown-linux-gnu"]'
-		# becomes 'target = ["powerpc64le-unknown-linux-gnu","aarch64-unknown-linux-gnu"]'
-
-		rust_targets="${rust_targets},\"${cross_rust_target}\""
-		sed -i "/^target = \[/ s#\[.*\]#\[${rust_targets}\]#" config.toml || die
-
-		ewarn
-		ewarn "Enabled ${cross_rust_target} rust target"
-		ewarn "Using ${cross_toolchain} cross toolchain"
-		ewarn
-		if ! has_version -b 'sys-devel/binutils[multitarget]' ; then
-			ewarn "'sys-devel/binutils[multitarget]' is not installed"
-			ewarn "'strip' will be unable to strip cross libraries"
-			ewarn "cross targets will be installed with full debug information"
-			ewarn "enable 'multitarget' USE flag for binutils to be able to strip object files"
-			ewarn
-			ewarn "Alternatively llvm-strip can be used, it supports stripping any target"
-			ewarn "define STRIP=\"llvm-strip\" to use it (experimental)"
-			ewarn
-		fi
-	done
-	fi # I_KNOW_WHAT_I_AM_DOING_CROSS
 
 	einfo "Rust configured with the following flags:"
 	echo
@@ -589,8 +492,6 @@ src_test() {
 src_install() {
 	DESTDIR="${D}" "${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 
-	docompress /usr/lib/${PN}/${PV}/share/man/
-
 	# bug #689562, #689160
 	rm -v "${ED}/usr/lib/${PN}/${PV}/etc/bash_completion.d/cargo" || die
 	rmdir -v "${ED}/usr/lib/${PN}/${PV}"/etc{/bash_completion.d,} || die
@@ -602,6 +503,7 @@ src_install() {
 		rust-gdb
 		rust-gdbgui
 		rust-lldb
+		rust-demangler
 	)
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
@@ -634,7 +536,6 @@ src_install() {
 	dosym "../../lib/${PN}/${PV}/share/doc/rust" "/usr/share/doc/${P}"
 
 	newenvd - "50${P}" <<-_EOF_
-		LDPATH="${EPREFIX}/usr/lib/rust/lib-${PV}"
 		MANPATH="${EPREFIX}/usr/lib/rust/man-${PV}"
 	_EOF_
 
@@ -646,6 +547,7 @@ src_install() {
 	cat <<-_EOF_ > "${T}/provider-${P}"
 		/usr/bin/cargo
 		/usr/bin/rustdoc
+		/usr/bin/rust-demangler
 		/usr/bin/rust-gdb
 		/usr/bin/rust-gdbgui
 		/usr/bin/rust-lldb
@@ -671,12 +573,10 @@ src_install() {
 		echo /usr/lib/rust/libexec >> "${T}/provider-${P}"
 		echo /usr/bin/rust-analyzer >> "${T}/provider-${P}"
 	fi
-
 	insinto /etc/env.d/rust
 	doins "${T}/provider-${P}"
 
 	if use dist; then
-		"${EPYTHON}" ./x.py dist -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 		insinto "/usr/lib/${PN}/${PV}/dist"
 		doins -r "${S}/build/dist/."
 	fi
@@ -704,20 +604,43 @@ pkg_preinst() {
 
 pkg_postinst() {
 
-	if has_version -b "dev-lang/rust:stable/$(ver_cut 1-2)"; then
+	local old_rust="dev-lang/rust:stable/$(ver_cut 1-2)"
+	if has_version -b ${old_rust}; then
 		# Be _extra_ careful here as we're removing files from the live filesystem
 		local f
+		local only_one_file=()
+		einfo "Tidying up libraries files from non-slotted \`${old_rust}\`."
 		for f in "${old_rust_libs[@]}"; do
 			[[ -f ${f} ]] || die "old_rust_libs array contains non-existent file"
 			local base_name="${f%-*}"
 			local ext="${f##*.}"
 			local matching_files=("${base_name}"-*.${ext})
-			if [[ ${#matching_files[@]} -ne 2 ]]; then
-				die "Expected exactly two files matching ${base_name}-\*.rlib, but found ${#matching_files[@]}"
-			fi
-			einfo "Removing old .rlib file ${f}"
-			rm "${f}" || die
+			case ${#matching_files[@]} in
+				2)
+					einfo "Removing old .${ext}: ${f}"
+					rm "${f}" || die
+					;;
+				1)
+					# Turns out fingerprints are not as unique as we'd thought, _sometimes_ they collide,
+					# so we may have already installed over the old file.
+					# We'll warn about this just in case, but it's probably fine.
+					only_one_file+=( "${matching_files[0]}" )
+					;;
+				*)
+					die "Expected one or two files matching ${base_name}-\*.rlib, but found ${#matching_files[@]}"
+					;;
+			esac
 		done
+		if [[ ${#only_one_file} -gt 0 ]]; then
+			einfo "While tidying up non-slotted rust libraries for \`${old_rust}\`,"
+			einfo "the following file(s) did not have a duplicate where one was expected:"
+			for f in "${only_one_file[@]}"; do
+				einfo "	* ${f}"
+			done
+			einfo ""
+			einfo "This is unlikely to cause problems; the fingerprint for the library ended up being the same."
+			einfo "However, if you encounter any issues please report them to the Gentoo Rust Team."
+		fi
 	fi
 
 	eselect rust update
@@ -727,13 +650,8 @@ pkg_postinst() {
 		elog "for convenience they are installed under /usr/bin/rust-{gdb,lldb}-${PV}."
 	fi
 
-	if has_version app-editors/emacs; then
-		optfeature "emacs support for rust" app-emacs/rust-mode
-	fi
-
-	if has_version app-editors/gvim || has_version app-editors/vim; then
-		optfeature "vim support for rust" app-vim/rust-vim
-	fi
+	optfeature "Emacs support" "app-emacs/rust-mode"
+	optfeature "Vim support" "app-vim/rust-vim"
 }
 
 pkg_postrm() {
