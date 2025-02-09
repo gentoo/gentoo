@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit libtool multilib multilib-minimal toolchain-funcs verify-sig
 MY_P="pcre2-${PV/_rc/-RC}"
 
 DESCRIPTION="Perl-compatible regular expression library"
-HOMEPAGE="https://www.pcre.org/"
+HOMEPAGE="https://pcre2project.github.io/pcre2/ https://www.pcre.org/"
 SRC_URI="
 	https://github.com/PCRE2Project/pcre2/releases/download/${MY_P}/${MY_P}.tar.bz2
 	https://ftp.pcre.org/pub/pcre/${MY_P}.tar.bz2
