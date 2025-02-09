@@ -27,10 +27,14 @@ LICENSE="MIT"
 # Please use preserve-libs.eclass in pkg_{pre,post}inst to cover users
 # with FEATURES="-preserved-libs" or another package manager if SONAME changes.
 SLOT="0/8" # SONAME=libffi.so.8
-IUSE="debug exec-static-trampoline pax-kernel static-libs test"
+IUSE="debug +exec-static-trampoline pax-kernel static-libs test"
 
 RESTRICT="!test? ( test )"
 BDEPEND="test? ( dev-util/dejagnu )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.4.7-Revert-Fix-x86-ffi64-calls-with-6-gp-and-some-sse-re.patch
+)
 
 src_prepare() {
 	default
