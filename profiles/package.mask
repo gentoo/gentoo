@@ -218,11 +218,6 @@ net-misc/fatrat
 net-im/psi
 net-im/psimedia
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-11)
-# Qt5-based library without any revdeps. Depends on app-crypt/qca[qt5].
-# Removal on 2025-02-10.
-dev-libs/qoauth
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-10)
 # EAPI=7, maintainer needed, no reverse dependencies, fails to compile,
 # uses deprecated Go eclass.
