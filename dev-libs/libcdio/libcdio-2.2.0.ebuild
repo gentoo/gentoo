@@ -53,6 +53,9 @@ multilib_src_configure() {
 	# https://savannah.gnu.org/bugs/index.php?65458
 	filter-lto
 
+	# Needed for fseeko64 on 32-bit builds
+	append-lfs-flags
+
 	local util_switch="--with"
 	if ! multilib_is_native_abi || use minimal ; then
 		util_switch="--without"
