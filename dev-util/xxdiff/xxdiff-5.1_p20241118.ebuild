@@ -63,7 +63,7 @@ src_compile() {
 
 src_install() {
 	local DOCS=( CHANGES README* TODO doc/*.txt src/doc.txt tools )
-	local HTML_DOCS+=( doc/*.{png,html} src/doc.html )
+	local HTML_DOCS=( doc/*.{png,html} src/doc.html )
 
 	dobin bin/xxdiff
 	doman "${S}"/src/xxdiff.1

@@ -2,7 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use><flag name="scripts">Python scripts that is provided around xxdiff</flag></use>
+	<use>
+		<flag name="scripts">Install python helper scripts</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">blais/xxdiff</remote-id>
 	</upstream>
