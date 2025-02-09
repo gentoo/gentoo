@@ -34,7 +34,7 @@ RDEPEND="xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? ( sys-apps/ed )
-	verify-sig? ( sec-keys/openpgp-keys-patch )
+	verify-sig? ( >=sec-keys/openpgp-keys-patch-20250206 )
 "
 
 src_unpack() {

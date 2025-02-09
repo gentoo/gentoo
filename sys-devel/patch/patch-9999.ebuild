@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,6 +11,13 @@ HOMEPAGE="https://www.gnu.org/software/patch/patch.html"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/patch.git"
 	inherit git-r3
+elif [[ ${PV} = *_p* ]] ; then
+	# Note: could put this in devspace, but if it's gone, we don't want
+	# it in tree anyway. It's just for testing.
+	MY_SNAPSHOT="$(ver_cut 1-3).211-86ac"
+	SRC_URI="https://alpha.gnu.org/gnu/patch/patch-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
+	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/patch/patch-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
+	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
 else
 	SRC_URI="mirror://gnu/patch/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/patch/${P}.tar.xz.sig )"
@@ -27,7 +34,7 @@ RDEPEND="xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? ( sys-apps/ed )
-	verify-sig? ( sec-keys/openpgp-keys-patch )
+	verify-sig? ( >=sec-keys/openpgp-keys-patch-20250206 )
 "
 
 src_unpack() {
