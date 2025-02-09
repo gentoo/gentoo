@@ -65,6 +65,9 @@ check_distribution_components() {
 					# dylib
 					MLIR)
 						;;
+					# installed test libraries
+					MLIRTestAnalysis|MLIRTestDialect|MLIRTestIR)
+						;;
 					# static libraries
 					MLIR*)
 						continue
@@ -117,6 +120,11 @@ get_distribution_components() {
 		mlir_c_runner_utils
 		mlir_float16_utils
 		mlir_runner_utils
+
+		# test libraries required by flang
+		MLIRTestAnalysis
+		MLIRTestDialect
+		MLIRTestIR
 	)
 
 	if multilib_is_native_abi; then
@@ -151,7 +159,7 @@ multilib_src_configure() {
 		-DLLVM_BUILD_LLVM_DYLIB=ON
 		-DMLIR_BUILD_MLIR_C_DYLIB=OFF
 		-DMLIR_LINK_MLIR_DYLIB=ON
-		-DMLIR_INCLUDE_TESTS=$(usex test)
+		-DMLIR_INCLUDE_TESTS=ON
 		-DMLIR_INCLUDE_INTEGRATION_TESTS=OFF
 		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
 		# this enables installing mlir-tblgen and mlir-pdll
