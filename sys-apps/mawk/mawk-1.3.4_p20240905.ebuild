@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,16 +37,4 @@ src_install() {
 	exeinto /usr/share/doc/${PF}/examples
 	doexe examples/*
 	docompress -x /usr/share/doc/${PF}/examples
-}
-
-pkg_postinst() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk; then
-		eselect awk update ifunset
-	fi
-}
-
-pkg_postrm() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk; then
-		eselect awk update ifunset
-	fi
 }

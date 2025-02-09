@@ -38,15 +38,3 @@ src_install() {
 	doexe examples/*
 	docompress -x /usr/share/doc/${PF}/examples
 }
-
-pkg_postinst() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk; then
-		eselect awk update ifunset
-	fi
-}
-
-pkg_postrm() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk; then
-		eselect awk update ifunset
-	fi
-}
