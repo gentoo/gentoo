@@ -5,7 +5,8 @@ EAPI=8
 
 inherit desktop
 
-MY_P=${P^^//./_}
+MY_P1=${P^^}
+MY_P=${MY_P1//./_}
 
 DESCRIPTION="A tool for controlling amateur radios"
 HOMEPAGE="http://groundstation.sourceforge.net/grig/"
