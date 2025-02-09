@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -15,7 +15,7 @@ DESCRIPTION="stax2 API is an extension to basic Stax 1.0 API"
 HOMEPAGE="https://github.com/FasterXML/stax2-api"
 SRC_URI="https://github.com/FasterXML/${PN}/archive/refs/tags/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
