@@ -6,6 +6,6 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <upstream>
-	<remote-id type="github">ndim/e2tools</remote-id>
+	<remote-id type="github">e2tools/e2tools</remote-id>
 </upstream>
 </pkgmetadata>
