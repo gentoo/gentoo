@@ -107,30 +107,3 @@ src_install() {
 	doins *.h
 	rm "${ED}"/usr/include/awk/config.h || die
 }
-
-pkg_postinst() {
-	# Symlink creation here as the links do not belong to gawk, but to any awk
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk ; then
-		eselect awk update ifunset
-	else
-		local l
-		for l in "${EROOT}"/usr/share/man/man1/gawk.1* "${EROOT}"/usr/bin/gawk ; do
-			if [[ -e ${l} ]] && ! [[ -e ${l/gawk/awk} ]] ; then
-				ln -s "${l##*/}" "${l/gawk/awk}" || die
-			fi
-		done
-
-		if ! [[ -e ${EROOT}/bin/awk ]] ; then
-			# /bin might not exist yet (stage1)
-			[[ -d "${EROOT}/bin" ]] || mkdir "${EROOT}/bin" || die
-
-			ln -s "../usr/bin/gawk" "${EROOT}/bin/awk" || die
-		fi
-	fi
-}
-
-pkg_postrm() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk ; then
-		eselect awk update ifunset
-	fi
-}
