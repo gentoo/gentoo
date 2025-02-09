@@ -19,13 +19,15 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-IUSE="unicode video_cards_intel video_cards_amdgpu video_cards_nvidia video_cards_freedreno"
+IUSE="unicode video_cards_intel video_cards_amdgpu video_cards_nvidia video_cards_freedreno video_cards_panfrost video_cards_panthor"
 
 RDEPEND="
 	video_cards_intel?  ( virtual/udev )
 	video_cards_amdgpu? ( x11-libs/libdrm[video_cards_amdgpu] )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers )
 	video_cards_freedreno? ( x11-libs/libdrm[video_cards_freedreno] )
+	video_cards_panfrost? ( x11-libs/libdrm )
+	video_cards_panthor? ( x11-libs/libdrm )
 	sys-libs/ncurses[unicode(+)?]
 "
 
@@ -46,6 +48,8 @@ src_configure() {
 		-DNVIDIA_SUPPORT=$(usex video_cards_nvidia)
 		-DAMDGPU_SUPPORT=$(usex video_cards_amdgpu)
 		-DMSM_SUPPORT=$(usex video_cards_freedreno)
+		-DPANFROST_SUPPORT=$(usex video_cards_panfrost)
+		-DPANTHOR_SUPPORT=$(usex video_cards_panthor)
 	)
 
 	cmake_src_configure
