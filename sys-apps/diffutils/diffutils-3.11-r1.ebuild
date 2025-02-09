@@ -31,6 +31,9 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-diffutils )
 "
+RDEPEND="
+	nls? ( app-i18n/gnulib-l10n )
+"
 
 src_prepare() {
 	default
