@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors.
+# Copyright 1999-2025 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
@@ -25,6 +25,7 @@ nvk - VIDEO_CARDS setting to build nouveau vulkan driver for nvidia cards (Turin
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
 qxl - VIDEO_CARDS setting to build driver for qxl (QEMU virtual GPU)
 panfrost - VIDEO_CARDS setting to build driver for Mali 600/700/800 video cards
+panthor - VIDEO_CARDS setting to support for Mali 10th video cards
 r100 - VIDEO_CARDS setting to build only r100 based chips code for radeon
 r128 - VIDEO_CARDS setting to build driver for ATI r128 video cards
 r200 - VIDEO_CARDS setting to build only r200 based chips code for radeon
