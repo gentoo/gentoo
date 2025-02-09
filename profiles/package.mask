@@ -33,6 +33,36 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2025-02-10)
+# Rust ebuilds are migrating to use RPATH/RUNPATH to find their libraries.
+# New revisions for each Slot are already in-tree and should be used instead.
+# Bug 949374
+=dev-lang/rust-1.71.1-r100
+=dev-lang/rust-1.74.1-r100
+=dev-lang/rust-1.75.0-r100
+=dev-lang/rust-1.76.0-r100
+=dev-lang/rust-1.77.1-r100
+=dev-lang/rust-1.79.0-r100
+=dev-lang/rust-1.78.0-r100
+=dev-lang/rust-1.80.1-r100
+=dev-lang/rust-1.81.0-r100
+=dev-lang/rust-1.82.0-r100
+=dev-lang/rust-1.82.0-r101
+=dev-lang/rust-1.83.0-r1
+=dev-lang/rust-1.84.0
+=dev-lang/rust-1.84.1
+=dev-lang/rust-bin-1.71.1-r101
+=dev-lang/rust-bin-1.74.1-r101
+=dev-lang/rust-bin-1.75.0-r101
+=dev-lang/rust-bin-1.77.1-r101
+=dev-lang/rust-bin-1.79.0-r101
+=dev-lang/rust-bin-1.80.1-r101
+=dev-lang/rust-bin-1.81.0-r101
+=dev-lang/rust-bin-1.82.0-r101
+=dev-lang/rust-bin-1.83.0
+=dev-lang/rust-bin-1.84.0
+=dev-lang/rust-bin-1.84.1
+
 # Michal Rostecki <vadorovsky@protonmail.com> (2025-02-09)
 # A libgcc_s drop-in replacement, which conflicts with sys-devel/gcc,
 # therefore meant only for profiles which can work without GCC being
