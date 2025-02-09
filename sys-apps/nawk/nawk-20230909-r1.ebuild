@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,18 +44,4 @@ src_install() {
 		awk.1 > "${PN}".1 || die "manpage patch failed"
 	doman "${PN}.1"
 	einstalldocs
-}
-
-pkg_postinst() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk
-	then
-		eselect awk update ifunset
-	fi
-}
-
-pkg_postrm() {
-	if has_version app-admin/eselect && has_version app-eselect/eselect-awk
-	then
-		eselect awk update ifunset
-	fi
 }
