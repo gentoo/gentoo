@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-02-09)
+# dev-libs/rocdbgapi is not yet marked stable
+dev-debug/gdb rocm
+
 # Matt Jolly <kangie@gentoo.org> (2025-01-11)
 # Stable-mask until mrustc is stabilised
 dev-lang/rust mrustc-bootstrap
