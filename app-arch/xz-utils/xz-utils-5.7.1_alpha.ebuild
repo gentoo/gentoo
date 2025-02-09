@@ -66,10 +66,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# Workaround for bug #934370 (libtool-2.5.0), drop when dist tarball
-	# uses newer libtool with the fix.
-	export ac_cv_prog_ac_ct_FILECMD='file' FILECMD='file'
-
 	local myconf=(
 		--enable-threads
 		$(multilib_native_use_enable doc)
