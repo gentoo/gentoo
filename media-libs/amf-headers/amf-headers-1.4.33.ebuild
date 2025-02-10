@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,11 +14,10 @@ fi
 DESCRIPTION="The Advanced Media Framework (AMF) SDK"
 HOMEPAGE="https://github.com/GPUOpen-LibrariesAndSDKs/AMF"
 
+S="${WORKDIR}/AMF-${PV}"
+
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
-
-S="${WORKDIR}/AMF-${PV}"
 
 src_unpack() {
 	default
