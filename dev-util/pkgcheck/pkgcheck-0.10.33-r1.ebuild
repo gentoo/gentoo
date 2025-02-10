@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ RDEPEND+="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
 	>=dev-python/tree-sitter-0.23.0[${PYTHON_USEDEP}]
-	<dev-python/tree-sitter-0.24.0[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.25.0[${PYTHON_USEDEP}]
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode
