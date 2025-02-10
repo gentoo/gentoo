@@ -14,13 +14,14 @@ SRC_URI+=" test? ( https://download.osgeo.org/${PN}/${PV}/${PN}autotest-${PV}.ta
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/35" # subslot is libgdal.so.<SONAME>
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="armadillo +curl cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc fits geos gif gml hdf5 heif java jpeg jpeg2k lerc lzma mysql netcdf odbc ogdi opencl oracle parquet pdf png postgres python spatialite sqlite test webp xls zstd"
+IUSE="armadillo +curl cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc fits geos gif gml hdf5 heif java jpeg jpeg2k lerc lzma mpi mysql netcdf odbc ogdi opencl oracle parquet pdf png postgres python spatialite sqlite test webp xls zstd"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	spatialite? ( sqlite )
 	test? ( ${PYTHON_REQUIRED_USE} )
+	mpi? ( python )
 "
 
 BDEPEND="
@@ -58,7 +59,7 @@ DEPEND="
 	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	heif? ( media-libs/libheif:= )
-	hdf5? ( >=sci-libs/hdf5-1.6.4:=[cxx,szip] )
+	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
 	java? (
 		>=virtual/jdk-1.8:*[-headless-awt]
 	)
@@ -94,6 +95,13 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	java? ( >=virtual/jre-1.8:* )
+	python? (
+		mpi? (
+			$(python_gen_cond_dep '
+				dev-python/mpi4py[${PYTHON_USEDEP}]
+			')
+		)
+	)
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
