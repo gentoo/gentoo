@@ -9,4 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 		<remote-id type="kde-invent">plasma/plasma5support</remote-id>
 	</upstream>
+	<use>
+		<flag name="activities">Enable kactivities support</flag>
+	</use>
 </pkgmetadata>
