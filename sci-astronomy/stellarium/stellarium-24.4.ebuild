@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc64 ~riscv ~x86"
 IUSE="debug deep-sky doc gps +lens-distortion libcxx media nls +scripting +show-my-sky stars telescope test webengine +xlsx"
 
 # Python interpreter is used while building RemoteControl plugin
