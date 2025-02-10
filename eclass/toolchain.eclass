@@ -1479,7 +1479,7 @@ toolchain_src_configure() {
 
 		confgcc+=(
 			# https://gcc.gnu.org/PR100289
-			# TOOD: Find a way to disable this just for stage1 cross?
+			# TODO: Find a way to disable this just for stage1 cross?
 			--disable-gcov
 
 			--disable-bootstrap
