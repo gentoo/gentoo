@@ -527,7 +527,7 @@ CRATES="
 	zerovec@0.10.4
 "
 
-LLVM_COMPAT=( {16..18} )
+LLVM_COMPAT=( {16..19} )
 
 inherit cargo llvm-r1 shell-completion
 
