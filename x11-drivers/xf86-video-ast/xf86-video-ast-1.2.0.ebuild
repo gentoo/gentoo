@@ -6,4 +6,4 @@ EAPI=8
 inherit xorg-3
 
 DESCRIPTION="X.Org driver for ASpeedTech cards"
-KEYWORDS="amd64 ~loong ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~loong ~ppc ppc64 x86"
