@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ PATCHES=(
 )
 
 src_compile() {
-	# TOOD: Tests are always run by the Makefile right now
+	# TODO: Tests are always run by the Makefile right now
 	emake \
 		CCOPT="-c ${CFLAGS} ${CPPFLAGS} -DHAVE_SNPRINTF -DHAVE_VASPRINTF -DHAVE_ASPRINTF" \
 		CC="$(tc-getCC)" \
