@@ -1,6 +1,12 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michal Rostecki <vadorovsky@protonmail.com> (2025-02-10)
+# A libgcc_s drop-in replacement, which conflicts with sys-devel/gcc,
+# therefore meant only for profiles which can work without GCC being
+# present even as a fallback.
+llvm-runtimes/libgcc
+
 # Sam James <sam@gentoo.org> (2025-01-10)
 # These packages are only relevant on musl systems.
 sys-libs/argp-standalone

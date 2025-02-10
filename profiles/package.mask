@@ -63,12 +63,6 @@
 =dev-lang/rust-bin-1.84.0
 =dev-lang/rust-bin-1.84.1
 
-# Michal Rostecki <vadorovsky@protonmail.com> (2025-02-09)
-# A libgcc_s drop-in replacement, which conflicts with sys-devel/gcc,
-# therefore meant only for profiles which can work without GCC being
-# present even as a fallback.
-llvm-runtimes/libgcc
-
 # Michał Górny <mgorny@gentoo.org> (2025-02-08)
 # Suspicious subslot bump, causing humongous rebuilds.
 # https://bugs.gentoo.org/949414
