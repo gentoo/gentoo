@@ -104,7 +104,7 @@ DEPEND="
 	app-arch/zstd:=
 	app-misc/jq
 	dev-db/sqlite:3
-	>=dev-libs/libgit2-1.9.0
+	>=dev-libs/libgit2-1.9.0:=
 	dev-libs/mimalloc
 	dev-libs/openssl:0/3
 	dev-libs/protobuf
