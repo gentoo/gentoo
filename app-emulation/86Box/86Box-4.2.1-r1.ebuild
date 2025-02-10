@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="experimental +fluidsynth +munt new-dynarec +openal +qt6 +threads"
+IUSE="experimental +fluidsynth +munt new-dynarec +openal +qt6 +threads vde"
 
 DEPEND="
 	app-emulation/faudio
@@ -25,6 +25,7 @@ DEPEND="
 	net-libs/libslirp
 	sys-libs/zlib
 	qt6? ( x11-libs/libXi )
+	vde? ( net-misc/vde )
 "
 
 RDEPEND="
@@ -62,6 +63,7 @@ src_configure() {
 		-DQT="$(usex qt6)"
 		-DRELEASE="ON"
 		$(usex qt6 '-DUSE_QT6=ON' '')
+		-DHAS_VDE="$(usex vde "${EPREFIX}/usr/$(get_libdir)/libvdeplug.so" "HAS_VDE-NOTFOUND")"
 	)
 
 	cmake_src_configure
