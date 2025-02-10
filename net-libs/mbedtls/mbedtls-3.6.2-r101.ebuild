@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}/mbedtls-3.6.2-add-version-suffix-for-all-installable-targets.patch"
 	"${FILESDIR}/mbedtls-3.6.2-add-version-suffix-for-pkg-config-files.patch"
 	"${FILESDIR}/mbedtls-3.6.2-exclude-static-3dparty.patch"
+	"${FILESDIR}/mbedtls-3.6.2-slotted-version.patch"
 )
 
 enable_mbedtls_option() {
@@ -60,6 +61,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PROGRAMS=$(multilib_native_usex programs)
 		-DENABLE_TESTING=$(usex test)
+		-DENABLE_SLOTTED_VERSION=ON
 		-DINSTALL_MBEDTLS_HEADERS=ON
 		-DCMAKE_INSTALL_INCLUDEDIR="include/mbedtls3"
 		-DLINK_WITH_PTHREAD=$(usex threads)
