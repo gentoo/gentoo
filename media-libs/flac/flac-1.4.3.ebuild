@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# -fipa-pta exposes a test failure in replaygain_analysis (https://gcc.gnu.org/PR115533)
-	# TOOD: Replace with some -ffp-contract= option?
+	# TODO: Replace with some -ffp-contract= option?
 	append-flags $(test-flags-CC -fno-ipa-pta)
 
 	local myeconfargs=(
