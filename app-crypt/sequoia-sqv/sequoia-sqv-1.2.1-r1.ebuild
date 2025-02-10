@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -250,7 +250,7 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
-LLVM_COMPAT=( {17..18} )
+LLVM_COMPAT=( {17..19} )
 RUST_NEEDS_LLVM=1
 
 inherit bash-completion-r1 cargo llvm-r1
