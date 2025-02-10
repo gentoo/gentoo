@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ src_unpack() {
 }
 
 src_configure() {
-	# TOOD: -std=gnu99 can be dropped on next release > 1.20.2
+	# TODO: -std=gnu99 can be dropped on next release > 1.20.2
 	edo ./configure \
 		CC="$(tc-getCC) -std=gnu99" \
 		CFLAGS="${CFLAGS}" \
