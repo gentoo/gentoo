@@ -21,7 +21,7 @@ PDEPEND=">=app-dicts/ipadic-2.7.0"
 PATCHES=(
 	"${FILESDIR}"/${PN}-uar.patch
 	"${FILESDIR}"/${P}-c23.patch
-	)
+)
 
 src_configure() {
 	econf $(use_enable static-libs static)
