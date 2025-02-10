@@ -14,18 +14,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="nls readline"
 
-DEPEND="readline? (
-		sys-libs/ncurses:0
-		sys-libs/readline:0
-	)"
-RDEPEND="${DEPEND}
+DEPEND="
+	readline? (
+		sys-libs/ncurses:=
+		sys-libs/readline:=
+	)
+"
+RDEPEND="
+	${DEPEND}
 	net-dialup/lrzsz[nls?]
-	virtual/openssh"
+	virtual/openssh
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5a-gentoo-include.diff"
 	"${FILESDIR}/${P}-C23.patch"
-	)
+)
 
 src_prepare() {
 	default
