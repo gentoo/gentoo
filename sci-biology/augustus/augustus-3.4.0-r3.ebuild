@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,10 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/augustus-3.4.0-missing-cstdint.patch
+)
 
 src_compile() {
 	tc-export CC CXX
