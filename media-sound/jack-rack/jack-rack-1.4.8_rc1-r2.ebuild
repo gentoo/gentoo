@@ -13,7 +13,8 @@ HOMEPAGE="https://jack-rack.sourceforge.net/"
 SRC_URI="${DEB_URI}/${MY_P}.orig.tar.gz ${DEB_URI}/${MY_P}-1.debian.tar.gz"
 S="${WORKDIR}/${PN}-f9fb65d"
 
-LICENSE="GPL-2"
+# GPL-2+ for function in jack-rack-1.4.8_rc1-C23.patch
+LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa lash +xml"
