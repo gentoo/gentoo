@@ -1,0 +1,17 @@
+Fix:
+
+Loop.cpp:4224:34: error: invalid operands to binary expression ('__bind<int &, sockaddr *&, unsigned int &>' and 'int')
+
+https://github.com/ArcticaProject/nx-libs/issues/1044
+https://bugs.gentoo.org/930440
+--- a/nxcomp/src/Loop.cpp
++++ b/nxcomp/src/Loop.cpp
+@@ -4221,7 +4221,7 @@
+       goto SetupSocketError;
+     }
+ 
+-  if (bind(newFD, addr, addrlen) == -1)
++  if (::bind(newFD, addr, addrlen) == -1)
+   {
+     nxfatal << "Loop: PANIC! Call to bind failed for " << label
+             << ". Error is " << EGET()
