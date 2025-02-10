@@ -22,6 +22,6 @@ else
     else
         echo "Neither gnome-integration-spotify nor spotify-tray are installed."
         echo "Launching spotify without systray integration."
-        exec "$SPOTIFY_HOME/spotify" "$@"
+        exec "$SPOTIFY_HOME/spotify" --no-zygote "$@"
     fi
 fi
