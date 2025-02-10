@@ -1,0 +1,37 @@
+https://github.com/zapping-vbi/zvbi/pull/55.patch
+From ca37ce00f6f6d844598c3b01538f09658d7dd58a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20P=C3=B6schel?= <github@basicmaster.de>
+Date: Sat, 18 Jan 2025 09:55:29 +0100
+Subject: [PATCH] Fix accidental G3 character modification
+
+The internally used unicode representation of G1 characters uses bit 5
+(`0x20`) to indicate whether the separated or the contiguous form of the
+particular character is meant. For G3 smooth mosaic and line drawing
+characters, there is no such distinction.
+
+When parsed Enhanced Teletext features are flushed, the mentioned bit is
+(re)set for all graphical characters i.e. for both G1 and G3 characters.
+In the G3 case, this accidentally modifies the requested G3 character
+value.
+
+Therefore limit the bit 5 manipulation to G1 characters only.
+
+Fixes #20.
+---
+ src/teletext.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/teletext.c b/src/teletext.c
+index 1e8836d..e6145e8 100644
+--- a/src/teletext.c
++++ b/src/teletext.c
+@@ -1281,7 +1281,8 @@ enhance_flush(struct enhance_state *es, int column)
+ 			if (!es->mac.unicode)
+ 				es->ac.unicode = c.unicode;
+ 
+-			if (vbi_is_gfx(es->ac.unicode)) {
++			/* G1 block mosaic character */
++			if (vbi_is_gfx(es->ac.unicode) && es->ac.unicode < 0xEF00) {
+ 				if (u)
+ 					es->ac.unicode &= ~0x20; /* separated */
+ 				else
