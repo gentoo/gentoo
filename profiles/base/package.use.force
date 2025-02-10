@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2025-02-10)
+# Chromium is unable to successfully configure without
+# wayland support (bug #948384). Forcing the USE flag
+# until the issue is resolved.
+www-client/chromium wayland
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-12-24)
 # ebuild currently only support luajit, spare users from having
 # to set it by forcing it here (bug #946881)
