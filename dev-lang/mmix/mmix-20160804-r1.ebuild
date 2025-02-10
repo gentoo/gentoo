@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,18 +8,19 @@ inherit toolchain-funcs
 DESCRIPTION="Donald Knuth's MMIX Assembler and Simulator"
 HOMEPAGE="https://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu"
 SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
+S="${WORKDIR}"
 
-DEPEND="virtual/tex-base
-	doc? ( dev-texlive/texlive-plaingeneric )"
-# media-sound/mmix and dev-lang/mmix both install 'mmix' binary, bug #426874
-RDEPEND="!!media-sound/mmix"
-
-SLOT="0"
 LICENSE="mmix"
+SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc"
 
-S="${WORKDIR}"
+BDEPEND="
+	virtual/tex-base
+	doc? ( dev-texlive/texlive-plaingeneric )
+"
+# media-sound/mmix and dev-lang/mmix both install 'mmix' binary, bug #426874
+RDEPEND="!!media-sound/mmix"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20110420-makefile.patch

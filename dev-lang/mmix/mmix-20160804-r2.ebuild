@@ -10,15 +10,17 @@ HOMEPAGE="https://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm
 SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
 S="${WORKDIR}"
 
-DEPEND="virtual/tex-base
-	doc? ( dev-texlive/texlive-plaingeneric )"
-# media-sound/mmix and dev-lang/mmix both install 'mmix' binary, bug #426874
-RDEPEND="!!media-sound/mmix"
-
 LICENSE="mmix"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc"
+
+BDEPEND="
+	virtual/tex-base
+	doc? ( dev-texlive/texlive-plaingeneric )
+"
+# media-sound/mmix and dev-lang/mmix both install 'mmix' binary, bug #426874
+RDEPEND="!!media-sound/mmix"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20110420-makefile.patch
