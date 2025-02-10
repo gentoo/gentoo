@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=gui-libs/gtk-4.14.4:4[introspection]
 	>=gui-libs/libadwaita-1.5.2:1[introspection]
+	media-libs/tiff[webp]
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
