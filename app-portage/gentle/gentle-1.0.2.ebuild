@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ BDEPEND="
 		dev-python/pkginfo[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/rdflib[${PYTHON_USEDEP}]
+		dev-python/uv
 	)
 "
 
@@ -45,7 +46,7 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "python packaging support" dev-python/build
+	optfeature "python packaging support" "dev-python/build dev-python/uv"
 	optfeature "PKG-INFO support" dev-python/pkginfo
 	optfeature "yaml support" dev-python/pyyaml
 	optfeature "rdf support" dev-python/rdflib
