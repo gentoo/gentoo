@@ -32,6 +32,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( jpeg )"
 
 RDEPEND="
+	!=media-libs/tiff-4.4*
 	jbig? ( >=media-libs/jbigkit-2.1:=[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
