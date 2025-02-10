@@ -20,8 +20,8 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	$(llvm_gen_dep '
-	llvm-core/clang:${LLVM_SLOT}=
-	llvm-core/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 RDEPEND="${DEPEND}"
