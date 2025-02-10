@@ -25,7 +25,6 @@ PATCHES=( "${FILESDIR}/${P}-C23.patch" )
 src_prepare() {
 	default
 	eautoreconf
-
 }
 
 src_configure() {
