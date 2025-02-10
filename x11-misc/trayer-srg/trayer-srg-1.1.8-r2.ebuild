@@ -26,7 +26,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${P}-avoid-prestripping-of-files.patch"
 	"${FILESDIR}/${P}-fix-define.patch"
-	)
+)
 
 src_configure() {
 	./configure --prefix="${EPREFIX}" || die
