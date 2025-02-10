@@ -22,8 +22,8 @@ DOCS=( CREDITS ChangeLog FAQ.txt FAQ.pdf INSTALL NEWS README-daemontools \
 
 PATCHES=(
 	"${FILESDIR}/${P}-checkpeerlocal_ipv6_fix.patch"
-	 "${FILESDIR}/${PN}-1.11.11-configure.patch"
-	)
+	"${FILESDIR}/${PN}-1.11.11-configure.patch"
+)
 
 src_prepare() {
 	default
