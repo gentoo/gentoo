@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,9 +21,9 @@ DOCS=( AUTHORS ChangeLog README NEWS
 HTML_DOCS=( doc/{phoneset_s2,sphinx2}.html )
 
 PATCHES=(
-	 "${FILESDIR}"/${P}-as-needed.patch
-	 "${FILESDIR}"/${P}-c99.patch
-	 )
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-c99.patch
+)
 
 src_prepare() {
 	default
