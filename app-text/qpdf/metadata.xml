@@ -10,4 +10,10 @@
 		<remote-id type="github">qpdf/qpdf</remote-id>
 		<remote-id type="sourceforge">qpdf</remote-id>
 	</upstream>
+	<use>
+		<flag name="zopfli">
+			Support using <pkg>app-arch/zopfli</pkg> for stronger
+			zlib-compatible compression.
+		</flag>
+	</use>
 </pkgmetadata>

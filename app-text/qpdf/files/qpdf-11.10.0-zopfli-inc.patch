@@ -1,0 +1,38 @@
+From bbff557f8c63cd1b9405738f202b70e1067014ae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 10 Feb 2025 06:26:45 +0100
+Subject: [PATCH] Fix build against a standard zopfli install
+
+Fix the logic to accept a top-level `zopfli.h` header, as that is
+the location used by upstream's build system.
+---
+ libqpdf/CMakeLists.txt | 2 +-
+ libqpdf/Pl_Flate.cc    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libqpdf/CMakeLists.txt b/libqpdf/CMakeLists.txt
+index 285afb86..91344a59 100644
+--- a/libqpdf/CMakeLists.txt
++++ b/libqpdf/CMakeLists.txt
+@@ -192,7 +192,7 @@ if(NOT EXTERNAL_LIBS)
+ endif()
+ 
+ if(ZOPFLI)
+-  find_path(ZOPFLI_H_PATH zopfli/zopfli.h)
++  find_path(ZOPFLI_H_PATH NAMES zopfli.h PATH_SUFFIXES zopfli)
+   find_library(ZOPFLI_LIB_PATH NAMES zopfli)
+   if(ZOPFLI_H_PATH AND ZOPFLI_LIB_PATH)
+     list(APPEND dep_include_directories ${ZOPFLI_H_PATH})
+diff --git a/libqpdf/Pl_Flate.cc b/libqpdf/Pl_Flate.cc
+index 97a337b4..724b4435 100644
+--- a/libqpdf/Pl_Flate.cc
++++ b/libqpdf/Pl_Flate.cc
+@@ -9,7 +9,7 @@
+ #include <qpdf/qpdf-config.h>
+ 
+ #ifdef ZOPFLI
+-# include <zopfli/zopfli.h>
++# include <zopfli.h>
+ #endif
+ 
+ namespace
