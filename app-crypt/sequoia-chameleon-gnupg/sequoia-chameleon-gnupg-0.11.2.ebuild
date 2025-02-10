@@ -407,7 +407,7 @@ CRATES="
 	zerovec@0.10.4
 "
 
-LLVM_COMPAT=( 17 18 )
+LLVM_COMPAT=( {17..19} )
 RUST_NEEDS_LLVM=1
 
 inherit cargo llvm-r1 xdg-utils
