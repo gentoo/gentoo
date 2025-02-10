@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -309,7 +309,7 @@ src_configure() {
 
 			if use hardened ; then
 				myconf+=(
-					# TOOD: breaks glibc test suite
+					# TODO: breaks glibc test suite
 					#--enable-error-execstack=yes
 					#--enable-error-rwx-segments=yes
 					--enable-default-execstack=no

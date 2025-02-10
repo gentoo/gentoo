@@ -316,7 +316,7 @@ src_configure() {
 
 			if use hardened ; then
 				myconf+=(
-					# TOOD: breaks glibc test suite
+					# TODO: breaks glibc test suite
 					#--enable-error-execstack=yes
 					#--enable-error-rwx-segments=yes
 					--enable-default-execstack=no
