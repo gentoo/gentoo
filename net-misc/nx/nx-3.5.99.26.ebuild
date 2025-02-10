@@ -7,6 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="https://github.com/ArcticaProject/nx-libs"
 SRC_URI="https://github.com/ArcticaProject/nx-libs/archive/${PV}.tar.gz -> nx-libs-${PV}.tar.gz"
+S="${WORKDIR}/nx-libs-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -41,8 +42,6 @@ BDEPEND="virtual/pkgconfig
 
 RDEPEND+=" selinux? ( sec-policy/selinux-nx )"
 
-S="${WORKDIR}/nx-libs-${PV}"
-
 PATCHES=(
 	# https://github.com/ArcticaProject/nx-libs/pull/1012
 	"${FILESDIR}/${PN}-3.5.99.26-binutils-2.36.patch"
@@ -53,6 +52,8 @@ PATCHES=(
 	# https://github.com/ArcticaProject/nx-libs/pull/1087
 	"${FILESDIR}/${PN}-3.5.99.26-gcc14-32bit.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-gcc14-access.patch"
+	# https://github.com/ArcticaProject/nx-libs/issues/1044
+	"${FILESDIR}/${PN}-3.5.99.26-clang-bind.patch"
 )
 
 src_prepare() {
