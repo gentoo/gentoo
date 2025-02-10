@@ -1,43 +1,8 @@
-diff -uNr a/nx-X11/extras/Mesa_6.4.2/src/mesa/main/glheader.h b/nx-X11/extras/Mesa_6.4.2/src/mesa/main/glheader.h
---- a/nx-X11/extras/Mesa_6.4.2/src/mesa/main/glheader.h	2021-02-04 07:34:56.000000000 -0600
-+++ b/nx-X11/extras/Mesa_6.4.2/src/mesa/main/glheader.h	2023-03-16 13:55:33.983114692 -0600
-@@ -62,9 +62,6 @@
- #include <stdlib.h>
- #include <stdio.h>
- #include <string.h>
--#if defined(__linux__) && defined(__i386__)
--#include <fpu_control.h>
--#endif
- #endif
- #include <float.h>
- #include <stdarg.h>
-diff -uNr a/nx-X11/extras/Mesa_6.4.2/src/mesa/main/imports.c b/nx-X11/extras/Mesa_6.4.2/src/mesa/main/imports.c
---- a/nx-X11/extras/Mesa_6.4.2/src/mesa/main/imports.c	2021-02-04 07:34:56.000000000 -0600
-+++ b/nx-X11/extras/Mesa_6.4.2/src/mesa/main/imports.c	2023-03-16 13:56:25.569122176 -0600
-@@ -1169,20 +1169,6 @@
-    static GLboolean initialized = GL_FALSE;
-    if (!initialized) {
-       init_sqrt_table();
--
--#if defined(_FPU_GETCW) && defined(_FPU_SETCW)
--      {
--         const char *debug = _mesa_getenv("MESA_DEBUG");
--         if (debug && _mesa_strcmp(debug, "FP")==0) {
--            /* die on FP exceptions */
--            fpu_control_t mask;
--            _FPU_GETCW(mask);
--            mask &= ~(_FPU_MASK_IM | _FPU_MASK_DM | _FPU_MASK_ZM
--                      | _FPU_MASK_OM | _FPU_MASK_UM);
--            _FPU_SETCW(mask);
--         }
--      }
--#endif
-       initialized = GL_TRUE;
-    }
- 
-diff -uNr a/nx-X11/programs/Xserver/Xext/xf86bigfont.c b/nx-X11/programs/Xserver/Xext/xf86bigfont.c
---- a/nx-X11/programs/Xserver/Xext/xf86bigfont.c	2021-02-04 07:34:56.000000000 -0600
-+++ b/nx-X11/programs/Xserver/Xext/xf86bigfont.c	2023-03-16 13:57:30.694956647 -0600
+https://bugs.gentoo.org/713418
+Backport from Xorg: https://gitlab.freedesktop.org/xorg/xserver/-/commit/6634ffc4d26846dcf892f27682f9021f6d9956a9
+
+--- a/nx-X11/programs/Xserver/Xext/xf86bigfont.c
++++ b/nx-X11/programs/Xserver/Xext/xf86bigfont.c
 @@ -40,14 +40,7 @@
  
  #include <sys/types.h>
