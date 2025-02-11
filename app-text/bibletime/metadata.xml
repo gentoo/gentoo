@@ -3,12 +3,14 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-BibleTime is a Bible study application for Linux. It is based on the
-K Desktop Environment and uses the SWORD programming library to work
-with Bible texts, commentaries, dictionaries and books provided by
-the Crosswire Bible Society.
+		BibleTime is a completely free Bible study program, built for Linux,
+		Windows, FreeBSD and Mac OS X. BibleTime contains over 200 free Bible
+		texts, commentaries, dictionaries and books, provided by the Crosswire
+		Bible Society via the SWORD programming library. BibleTime is written
+		in C++ and uses the Qt GUI toolkit.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/bibletime/bibletime/issues/</bugs-to>
 		<remote-id type="github">bibletime/bibletime</remote-id>
 		<remote-id type="sourceforge">bibletime</remote-id>
 	</upstream>
