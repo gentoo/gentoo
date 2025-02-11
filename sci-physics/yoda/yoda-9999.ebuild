@@ -13,6 +13,7 @@ HOMEPAGE="https://yoda.hepforge.org/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/hepcedar/yoda"
+	EGIT_BRANCH="main"
 else
 	SRC_URI="https://yoda.hepforge.org/downloads?f=${P^^}.tar.bz2 -> ${P^^}.tar.bz2"
 	S="${WORKDIR}/${P^^}"
@@ -26,6 +27,8 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) root? ( python )"
 
 RDEPEND="
+	dev-cpp/yaml-cpp
+	dev-libs/tinyxml
 	root? ( sci-physics/root:=[${PYTHON_SINGLE_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	zlib? ( sys-libs/zlib )
@@ -58,6 +61,8 @@ src_prepare() {
 src_configure() {
 	# we need to use the prefix cython here
 	econf --disable-static \
+		--with-yaml-cpp="${EPREFIX}/usr" \
+		--with-tinyxml="${EPREFIX}/usr" \
 		$(use_enable root) \
 		$(use_enable python pyext) \
 		$(use_with zlib zlib "${ESYSROOT}/usr") \
