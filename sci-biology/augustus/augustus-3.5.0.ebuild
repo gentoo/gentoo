@@ -61,17 +61,6 @@ src_compile() {
 	docs_compile
 }
 
-src_install() {
-	einstalldocs
-	# from upstream Makefile install:
-	dodir "opt/${P}"
-	cp -a config bin scripts "${ED}/opt/${P}" || die
-	local file
-	for file in bin/*; do
-		dosym "../${P}/${file}" "/opt/${file}"
-	done
-}
-
 src_test() {
 	if use elibc_musl; then
 		# Upstream already does this for non-amd64 and non-linux environments
@@ -90,4 +79,15 @@ src_test() {
 		./unittests || die
 	fi
 	popd >/dev/null || die
+}
+
+src_install() {
+	einstalldocs
+	# from upstream Makefile install:
+	dodir "opt/${P}"
+	cp -a config bin scripts "${ED}/opt/${P}" || die
+	local file
+	for file in bin/*; do
+		dosym "../${P}/${file}" "/opt/${file}"
+	done
 }
