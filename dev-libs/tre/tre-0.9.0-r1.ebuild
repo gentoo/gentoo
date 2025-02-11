@@ -15,7 +15,12 @@ HOMEPAGE="
 	https://laurikari.net/tre/
 	https://github.com/laurikari/tre
 "
-SRC_URI="https://github.com/laurikari/tre/releases/download/v${PV}/${P}.tar.gz"
+# missing files in dist bug #949527
+# https://github.com/laurikari/tre/pull/118
+SRC_URI="
+	https://github.com/laurikari/tre/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD-2"
 SLOT="0"
