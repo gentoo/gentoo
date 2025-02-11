@@ -32,6 +32,7 @@
 		<flag name="quick">Build bindings for the QtQuick</flag>
 		<flag name="quick3d">Build bindings for the QtQuick3D</flag>
 		<flag name="remoteobjects">Pull in bindings for the QtRemoteObjects module</flag>
+		<flag name="scxml">Pull in bindings for the QtScXml module</flag>
 		<flag name="sensors">Pull in bindings for the QtSensors module</flag>
 		<flag name="serialport">Pull in bindings for the QtSerialPort module</flag>
 		<flag name="spatialaudio">Pull in bindings for the QtSpatialAudio module</flag>
