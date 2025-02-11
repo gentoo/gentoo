@@ -82,6 +82,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	media-libs/glycin-loaders
+	media-plugins/gst-plugin-gtk4
 	virtual/secret-service
 "
 # clang needed by bindgen
