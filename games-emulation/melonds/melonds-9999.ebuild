@@ -66,7 +66,7 @@ Those files can be extracted from devices or found somewhere on the Internet ;-)
 
 src_configure() {
 	local -a mycmakeargs=(
-		-DUSE_CACHE="OFF"
+		-DUSE_CCACHE="OFF"
 
 		-DBUILD_SHARED_LIBS="OFF"
 		-DUSE_SYSTEM_LIBSLIRP="ON"

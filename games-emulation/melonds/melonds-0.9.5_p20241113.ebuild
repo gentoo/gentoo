@@ -66,6 +66,8 @@ Those files can be extracted from devices or found somewhere on the Internet ;-)
 
 src_configure() {
 	local -a mycmakeargs=(
+		-DUSE_CCACHE="OFF"
+
 		-DBUILD_SHARED_LIBS="OFF"
 		-DENABLE_JIT="$(usex jit)"
 		-DENABLE_OGLRENDERER="$(usex opengl)"
