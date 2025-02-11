@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${PN}-2021-make.patch #Bug #883167
 	"${FILESDIR}"/${PN}-2020-bibtex.patch
+	"${FILESDIR}"/${P}-spark.patch
 )
 
 QA_FLAGS_IGNORED=(
@@ -106,15 +107,13 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" -j1 install
-	emake DESTDIR="${D}" -j1 install-lib
 	emake DESTDIR="${D}" install_spark2014_dev
 	local cmdPath=/usr/$(get_libdir)/why3/commands
 	dosym ../why3server ${cmdPath}/why3server
 	# Remove duplicated files
 	for filename in config.cmxs ide.cmxs realize.cmxs server session.cmxs; do
 		if [[ -e "${D}"${cmdPath}/why3${filename} ]]; then
-			rm "${D}"${cmdPath}/why3${filename}
+			rm "${D}"${cmdPath}/why3${filename} || die
 			dosym ../../../bin/why3${filename} ${cmdPath}/why3${filename}
 		fi
 	done
