@@ -4,7 +4,8 @@
 EAPI=8
 
 ADA_COMPAT=( gcc_14 )
-inherit ada multiprocessing
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
+inherit ada python-any-r1 multiprocessing
 
 commitId=ce5fad038790d5dc18f9b5345dc604f1ccf45b06
 why3Id=fb4ca6cd8c7d888d3e8d281e6de87c66ec20f084
@@ -25,15 +26,31 @@ IUSE="doc"
 
 RDEPEND="
 	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
-	>=dev-ada/gpr-25[${ADA_USEDEP},shared]
+	~dev-ada/gpr-24.2.0[${ADA_USEDEP}]
 	sci-mathematics/alt-ergo
 	sci-mathematics/why3-for-spark"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
+BDEPEND="doc? (
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+	')
+)"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
+python_check_deps() {
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+	ada_pkg_setup
+}
 
 src_prepare() {
 	ln -s "${WORKDIR}"/gcc-14.2.0/gcc/ada gnat2why/gnat_src || die
