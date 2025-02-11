@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,8 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	font_pkg_postinst
+
 	optfeature_header "Other variants of this font are:"
 	optfeature "the monospace variant" media-fonts/source-code-pro
 	optfeature "Chinese, Japanese and Korean support" media-fonts/source-han-sans
