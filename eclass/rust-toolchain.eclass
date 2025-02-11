@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rust-toolchain.eclass
@@ -113,29 +113,6 @@ rust_all_arch_uris()
 	)
 	riscv? ( elibc_glibc? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "$@") ) )
 	s390?  ( elibc_glibc? ( $(rust_arch_uri s390x-unknown-linux-gnu     "$@") ) )
+	loong? ( elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") ) )
 	"
-
-	# Upstream did not gain support for loong until v1.71.0.
-	# NOTE: Merge this into the block above after every <1.71.0 version is
-	# gone from tree.
-	local arg_version="${1##*-}"
-	arg_version="${arg_version:-$PV}"
-	if ver_test "${arg_version}" -ge 1.71.0; then
-		echo "loong? ( elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") ) )"
-	fi
-
-	# until https://github.com/rust-lang/rust/pull/113274 is resolved, there
-	# will not be upstream-built mips artifacts
-	if ver_test "${arg_version}" -lt 1.72.0; then
-		echo "mips? (
-			abi_mips_o32? (
-				big-endian?  ( $(rust_arch_uri mips-unknown-linux-gnu   "$@") )
-				!big-endian? ( $(rust_arch_uri mipsel-unknown-linux-gnu "$@") )
-			)
-			abi_mips_n64? (
-				big-endian?  ( $(rust_arch_uri mips64-unknown-linux-gnuabi64   "$@") )
-				!big-endian? ( $(rust_arch_uri mips64el-unknown-linux-gnuabi64 "$@") )
-			)
-		)"
-	fi
 }
