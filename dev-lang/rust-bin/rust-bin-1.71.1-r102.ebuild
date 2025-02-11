@@ -18,6 +18,20 @@ HOMEPAGE="https://www.rust-lang.org/"
 SRC_URI="$(rust_all_arch_uris ${MY_P})
 	rust-src? ( ${MY_SRC_URI} )
 "
+# No point keeping this in the eclass; this is the only revision that needs the logic
+SRC_URI+="
+mips? (
+	abi_mips_o32? (
+		big-endian?  ( $(rust_arch_uri mips-unknown-linux-gnu "${MY_P}") )
+		!big-endian? ( $(rust_arch_uri mipsel-unknown-linux-gnu "${MY_P}") )
+	)
+	abi_mips_n64? (
+		big-endian?  ( $(rust_arch_uri mips64-unknown-linux-gnuabi64 "${MY_P}") )
+		!big-endian? ( $(rust_arch_uri mips64el-unknown-linux-gnuabi64 "${MY_P}") )
+	)
+)
+"
+
 # Keep this separate to allow easy commenting out if not yet built
 SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz -> ${MY_P}-sparc64-unknown-linux-gnu.sam.tar.xz ) "
 
