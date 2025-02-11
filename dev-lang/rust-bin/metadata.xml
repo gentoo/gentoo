@@ -25,5 +25,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">rust-lang/rust</remote-id>
+		<remote-id type="github">projg2/rust-bootstrap</remote-id>
 	</upstream>
 </pkgmetadata>
