@@ -1,0 +1,72 @@
+From cae8ab12c9f981f110bb2e1318d9c5306e3a2d81 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Sat, 8 Feb 2025 16:34:42 +0100
+Subject: [PATCH] Updates headers for glibc-2.41
+
+Match the extern definitions in cuda-crt headers with the changes in glibc-2.41.
+
+/usr/include/bits/mathcalls.h(79): error: exception specification is
+incompatible with that of previous function "cospi" (declared at line 2601
+of
+/opt/cuda-12.8.0/bin/../targets/x86_64-linux/include/crt/math_functions.h)
+
+   extern double cospi (double __x) noexcept (true); extern double __cospi (double __x) noexcept (true);
+
+See-Also: https://sourceware.org/git/?p=glibc.git;a=commit;h=0ae0af68d8fa3bf6cbe1e4f1de5929ff71de67b3
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.h b/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.h
+index d8201f9..a9b19d4 100644
+--- a/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.h
++++ b/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.h
+@@ -2553,7 +2553,11 @@ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  rcbrt
+  *
+  * \note_accuracy_double
+  */
++#if __GLIBC_USE (IEC_60559_FUNCS_EXT_C23)
++extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 sinpi(double x) noexcept (true);
++#else
+ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 sinpi(double x);
++#endif
+ /**
+  * \ingroup CUDA_MATH_SINGLE
+  * \brief Calculate the sine of the input argument 
+@@ -2576,7 +2580,11 @@ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 sinpi
+  *
+  * \note_accuracy_single
+  */
++#if __GLIBC_USE (IEC_60559_FUNCS_EXT_C23)
++extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  sinpif(float x) noexcept (true);
++#else
+ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  sinpif(float x);
++#endif
+ /**
+  * \ingroup CUDA_MATH_DOUBLE
+  * \brief Calculate the cosine of the input argument 
+@@ -2598,7 +2606,11 @@ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  sinpi
+  *
+  * \note_accuracy_double
+  */
++#if __GLIBC_USE (IEC_60559_FUNCS_EXT_C23)
++extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 cospi(double x) noexcept (true);
++#else
+ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 cospi(double x);
++#endif
+ /**
+  * \ingroup CUDA_MATH_SINGLE
+  * \brief Calculate the cosine of the input argument 
+@@ -2620,7 +2632,11 @@ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 cospi
+  *
+  * \note_accuracy_single
+  */
++#if __GLIBC_USE (IEC_60559_FUNCS_EXT_C23)
++extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  cospif(float x) noexcept (true);
++#else
+ extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  cospif(float x);
++#endif
+ /**
+  * \ingroup CUDA_MATH_DOUBLE
+  * \brief  Calculate the sine and cosine of the first input argument 
+-- 
+2.48.1
+

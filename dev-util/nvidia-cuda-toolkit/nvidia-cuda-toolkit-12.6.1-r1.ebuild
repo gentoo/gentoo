@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,6 +59,11 @@ src_prepare() {
 		"${FILESDIR}"/cuda-config.in > "${T}"/cuda-config || die
 
 	default
+
+	# we assume you can't downgrade glibc
+	if has_version ">=sys-libs/glibc-2.41"; then
+		eapply "${FILESDIR}/nvidia-cuda-toolkit-glibc-2.41.patch"
+	fi
 }
 
 src_install() {
