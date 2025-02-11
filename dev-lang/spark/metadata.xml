@@ -12,4 +12,7 @@
 		application domains where high-reliability must be assured, for example
 		where safety and security are key requirements.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/spark2014</remote-id>
+	</upstream>
 </pkgmetadata>
