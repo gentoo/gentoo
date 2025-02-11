@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 GNOME2_EAUTORECONF=yes
 WANT_AUTOMAKE=
 
-inherit autotools gnome2 toolchain-funcs virtualx
+inherit autotools flag-o-matic gnome2 toolchain-funcs virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -133,6 +133,9 @@ _adjust_sandbox() {
 
 src_configure() {
 	_adjust_sandbox
+
+	# bug #944284 (https://gitlab.gnome.org/GNOME/gimp/-/issues/12843)
+	append-cflags -std=gnu17
 
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
