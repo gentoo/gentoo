@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-env.eclass
@@ -40,7 +40,13 @@ go-env_set_compile_environment() {
 	use x86 && export GO386=$(go-env_go386)
 
 	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
-	has_version -b "sys-devel/gcc[debug]" && filter-lto
+	if tc-is-gcc ; then
+		# For either USE=debug or an unreleased compiler, non-default
+		# checking will trigger.
+		if has_version -b "sys-devel/gcc[debug]" || [[ $(gcc-minor-version) -eq 0 ]] ; then
+			filter-lto
+		fi
+	fi
 
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
