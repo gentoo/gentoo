@@ -1,0 +1,69 @@
+Change non-returning gtk macros to returning gtk macros and add correct values
+to them.
+Deal with bad "convenience" redefine of lua API function, so it works with system
+lua.
+Add missing includes, both from system gtk-2 and this library.
+https://bugs.gentoo.org/919421
+--- a/engines/lua/src/lua_style.c
++++ b/engines/lua/src/lua_style.c
+@@ -21,6 +21,7 @@
+ 
+ 
+ #include <gtk/gtk.h>
++#include <glib/gprintf.h>
+ #include <cairo.h>
+ #include <math.h>
+ #include <string.h>
+@@ -34,6 +35,7 @@
+ 
+ #include "lua_utils.h"
+ #include "misc_utils.h"
++#include "draw_lib.h"
+ 
+ /* #define DEBUG 1 */
+ 
+@@ -142,8 +144,8 @@
+ lua_style_draw (LuaStyle *style, GtkWidget *widget, GtkStateType state_type,
+                 gchar *name, gint width, gint height)
+ {
+-	g_return_if_fail (style);
+-	g_return_if_fail (style->L);
++	g_return_val_if_fail (style, FALSE);
++	g_return_val_if_fail (style->L, FALSE);
+ 
+ 	lua_style_push_widget_params (style, widget, state_type);
+ 
+@@ -175,9 +177,9 @@
+ 	gchar *state;
+ 	int i;
+ 
+-	g_return_if_fail (style);
++	g_return_val_if_fail (style, NULL);
+ 	
+-	L = lua_open ();
++	L = luaL_newstate ();
+ 	luaopen_base (L);
+ 	luaopen_math (L);
+ 	luaopen_draw (L);
+@@ -233,8 +235,8 @@
+ lua_style_prepare_cairo (LuaStyle *style, GdkWindow *window, GdkRectangle *area, gint x, gint y)
+ {
+ 	cairo_t *cr;
+-	g_return_if_fail (style);
+-	g_return_if_fail (style->L);
++	g_return_val_if_fail (style, FALSE);
++	g_return_val_if_fail (style->L, FALSE);
+ 	
+ 	cr = gdk_cairo_create (window);
+ 	cairo_set_source_rgb (cr, 0, 0, 0);
+--- a/engines/lua/src/lua_utils.c
++++ b/engines/lua/src/lua_utils.c
+@@ -27,7 +27,7 @@
+ {
+ 	void *res;
+ 	
+-	g_return_if_fail (L);
++	g_return_val_if_fail (L, NULL);
+ 	
+ 	lua_getfield (L, LUA_REGISTRYINDEX, name);
+ 	if (!lua_isuserdata (L, -1))
