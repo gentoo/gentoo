@@ -141,9 +141,6 @@ src_unpack() {
 }
 
 src_prepare() {
-
-	# Avoid stripping during the install phase
-	sed -i -e 's/$(INSTALL) -s /$(INSTALL) /' main.mk || die
 	default
 
 	multilib_copy_sources
