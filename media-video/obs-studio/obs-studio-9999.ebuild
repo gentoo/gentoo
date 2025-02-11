@@ -141,15 +141,7 @@ DEPEND="
 		dev-libs/qr-code-generator
 	)
 "
-RDEPEND="
-	${DEPEND}
-	qsv? (
-		|| (
-			media-libs/intel-mediasdk
-			media-libs/vpl-gpu-rt
-		)
-	)
-"
+RDEPEND="${DEPEND}"
 
 QA_PREBUILT="
 	usr/lib*/obs-plugins/chrome-sandbox
