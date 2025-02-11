@@ -355,7 +355,7 @@ src_configure() {
 			# mold expects the -flto line from *FLAGS configuration, bgo#923119
 			append-ldflags "-flto=thin"
 			mozconfig_add_options_ac "using ld=mold due to system selection." --enable-linker=mold
-		elif tc-ld-is-ldd ; then
+		elif tc-ld-is-lld ; then
 			mozconfig_add_options_ac "using ld=lld due to system selection." --enable-linker=lld
 		else
 			mozconfig_annotate "linker is set to bfd." --enable-linker=bfd
