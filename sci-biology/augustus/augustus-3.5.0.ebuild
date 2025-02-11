@@ -44,6 +44,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/augustus-3.4.0-missing-cstdint.patch
+	"${FILESDIR}"/augustus-3.5.0-fix-gcc15.patch
 )
 
 pkg_setup() {

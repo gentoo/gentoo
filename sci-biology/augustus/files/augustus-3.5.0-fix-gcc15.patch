@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/949617
+https://github.com/Gaius-Augustus/Augustus/pull/431
+
+From b7cbe782e840c82da1eeb2aae7a1a757ecef9fb0 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 11 Feb 2025 14:57:23 +0200
+Subject: [PATCH] filterBam: include missing header for gcc15
+
+Bug: https://bugs.gentoo.org/949617
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/auxprogs/filterBam/src/headers/bamaccess.hh
++++ b/auxprogs/filterBam/src/headers/bamaccess.hh
+@@ -7,6 +7,7 @@
+ #include <iostream>
+ #include <vector>
+ #include <memory>
++#include <cstdint>
+ 
+ class BamAlignmentRecord;
+ typedef std::shared_ptr<BamAlignmentRecord> BamAlignmentRecord_;
