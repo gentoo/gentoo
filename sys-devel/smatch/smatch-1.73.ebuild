@@ -69,5 +69,5 @@ src_install() {
 	dobin smatch cgcc
 	insinto /usr/share/smatch/smatch_data
 	doins smatch_data/*
-	dodoc FAQ Documentation/smatch.rst
+	dodoc FAQ Documentation/smatch.txt
 }
