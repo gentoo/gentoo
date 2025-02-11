@@ -44,7 +44,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
-lto pulseaudio selinux startup-notification test webrtc wifi"
+pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
 
 RESTRICT="!test? ( test )"
@@ -62,7 +62,6 @@ BDEPEND="
 	 ')
 	virtual/pkgconfig
 	amd64? ( >=dev-lang/yasm-1.1 )
-	lto? ( sys-devel/binutils[gold] )
 	x86? ( >=dev-lang/yasm-1.1 )
 "
 COMMON_DEPEND="
@@ -160,7 +159,7 @@ pkg_setup() {
 
 pkg_pretend() {
 	# Ensure we have enough disk space to compile
-	if use lto || use test ; then
+	if tc-is-lto || use test ; then
 		CHECKREQS_DISK_BUILD="16G"
 	else
 		CHECKREQS_DISK_BUILD="12G"
@@ -170,7 +169,7 @@ pkg_pretend() {
 
 spkg_setup() {
 	# Ensure we have enough disk space to compile
-	if use lto || use test ; then
+	if tc-is-lto || use test ; then
 		CHECKREQS_DISK_BUILD="16G"
 	else
 		CHECKREQS_DISK_BUILD="12G"
@@ -351,20 +350,21 @@ src_configure() {
 		fi
 	fi
 
-	if use lto ; then
-		# Linking only works when using ld.gold when LTO is enabled
-		mozconfig_annotate "forcing ld=gold due to USE=lto" --enable-linker=gold
+	if tc-is-lto ; then
+		if tc-ld-is-mold ; then
+			# mold expects the -flto line from *FLAGS configuration, bgo#923119
+			append-ldflags "-flto=thin"
+			mozconfig_add_options_ac "using ld=mold due to system selection." --enable-linker=mold
+		elif tc-ld-is-ldd ; then
+			mozconfig_add_options_ac "using ld=lld due to system selection." --enable-linker=lld
+		else
+			mozconfig_annotate "linker is set to bfd." --enable-linker=bfd
+		fi
 		# ThinLTO is currently broken, see bmo#1644409
 		mozconfig_annotate '+lto' --enable-lto=full
 	else
-		if tc-ld-is-gold ; then
-			mozconfig_annotate "linker is set to gold" --enable-linker=gold
-		else
-			mozconfig_annotate "linker is set to bfd" --enable-linker=bfd
-		fi
+		mozconfig_annotate "linker is set to bfd." --enable-linker=bfd
 	fi
-	# LTO flag was handled via configure
-	filter-lto
 
 	##################################
 	# Former mozconfig_config() end  #
