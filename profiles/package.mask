@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-02-11)
+# Fails to build with >=gcc14 and >=clang16 (Modern C) and tests fail
+# among several other accumulating issues.  Hasn't received a release
+# since 2013 and snapshots been difficult due to upstream often doing
+# refactoring leading to various runtime regressions, and testing the
+# state downstream is not obvious (current snapshot has some runtime
+# issues too).  Re-adding could be considered if there is ever a proper
+# release.  Recommend using games-fps/darkplaces instead.
+# Removal on 2025-03-13. Bugs #931506, #926463, #919237, #908709, ...
+games-fps/quakeforge
+
 # Matt Jolly <kangie@gentoo.org> (2025-02-10)
 # Rust ebuilds are migrating to use RPATH/RUNPATH to find their libraries.
 # New revisions for each Slot are already in-tree and should be used instead.
