@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,7 @@ S="${WORKDIR}/Logseq-linux-x64"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="wayland"
 
 RESTRICT="mirror splitdebug"
 
@@ -84,7 +85,11 @@ src_install() {
 
 	dosym ../logseq-desktop/Logseq /opt/bin/logseq
 
-	make_desktop_entry "/opt/bin/logseq %U" Logseq logseq Office \
+	local exec_extra_flags=()
+	if use wayland; then
+		exec_extra_flags+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" )
+	fi
+	make_desktop_entry "/opt/bin/logseq ${exec_extra_flags[*]} %U" Logseq logseq Office \
 		"StartupWMClass=logseq\nTerminal=false\nMimeType=x-scheme-handler/logseq"
 	# some releases do not have an icon included, but we dont fail if that happens
 	doicon resources/app/icons/logseq.png || true

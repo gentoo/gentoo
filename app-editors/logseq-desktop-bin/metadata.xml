@@ -5,6 +5,9 @@
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
 	</maintainer>
+	<use>
+		<flag name="wayland">Run in wayland mode under wayland sessions, xwayland otherwise. This flag doesn't affect x11 sessions.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">logseq/logseq</remote-id>
 	</upstream>
