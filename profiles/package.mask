@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
+# Depends on deprecated Qt5Script, gone closed-source upstream, multiple
+# open bugs #912829, #913106, #922304, #922306, #926039, #935772, #935887,
+# no response from maintainer. Removal on 2025-03-14.
+net-analyzer/ostinato
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
 # Last release from 2021 even if not yet dead upstream; however completely
 # unmaintained in Gentoo, with the ensuing multiple longstanding bugs
 # #832614, #866935, #895806, #915790, #944379, #945060; ebuild still based
