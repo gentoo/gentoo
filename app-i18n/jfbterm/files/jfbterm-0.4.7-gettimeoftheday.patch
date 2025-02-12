@@ -1,0 +1,43 @@
+Man 5 utmp has instructions how to replace time with gettimeofday in utmp.
+Use them.
+https://bugs.gentoo.org/919295
+--- a/term.c
++++ b/term.c
+@@ -248,6 +248,7 @@
+ 	struct utmp	utmp;
+ 	struct passwd	*pw;
+ 	char	*tn;
++	struct timeval	tv;
+ 
+ 	pw = getpwuid(util_getuid());
+ 	tn = rindex(p->name, '/') + 1;
+@@ -262,7 +263,9 @@
+ 	    tn = p->name + 5;
+ 	strncpy(utmp.ut_line, tn, sizeof(utmp.ut_line));
+ 	strncpy(utmp.ut_user, pw->pw_name, sizeof(utmp.ut_user));
+-	time(&(utmp.ut_time));
++	gettimeofday(&tv, NULL);
++	utmp.ut_tv.tv_sec = tv.tv_sec;
++	utmp.ut_tv.tv_usec = tv.tv_usec;
+ 	pututline(&utmp);
+ 	endutent();
+ }
+@@ -271,6 +274,7 @@
+ {
+ 	struct utmp	utmp, *utp;
+ 	char	*tn;
++	struct timeval	tv;
+ 
+ 	tn = rindex(p->name, '/') + 4;
+ 	memset((char *)&utmp, 0, sizeof(utmp));
+@@ -281,7 +285,9 @@
+ 	utp->ut_type = DEAD_PROCESS;
+ 	memset(utp->ut_user, 0, sizeof(utmp.ut_user));
+ 	utp->ut_type = DEAD_PROCESS;
+-	time(&(utp->ut_time));
++	gettimeofday(&tv, NULL);
++	utp->ut_tv.tv_sec = tv.tv_sec;
++	utp->ut_tv.tv_usec = tv.tv_usec;
+ 	pututline(utp);
+ 	endutent();
+ }
