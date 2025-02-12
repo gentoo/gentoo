@@ -54,3 +54,16 @@ already
  rblcheck.ps: rblcheck.sgml
  	-srcdir=`cd $(srcdir) && pwd`; \
  	db2ps $$srcdir/rblcheck.sgml
+@@ -21,11 +21,7 @@
+ distclean-local:
+ 	-rmdir html
+ 
+-install-data-local: html/index.html rblcheck.ps rblcheck.rtf
+-	-for file in $(srcdir)/*.html; do \
+-		basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+-		$(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+-	done
++install-data-local: rblcheck.ps rblcheck.rtf
+ 	-$(INSTALL_DATA) $(srcdir)/rblcheck.ps $(DESTDIR)$(docdir)/rblcheck.ps
+ 	-$(INSTALL_DATA) $(srcdir)/rblcheck.rtf $(DESTDIR)$(docdir)/rblcheck.rtf
+ 
