@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,17 +15,22 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls debug"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND="dev-libs/popt
+DEPEND="
+	dev-libs/popt
 	net-fs/samba
-	sys-libs/ncurses
-	nls? ( sys-devel/gettext )"
+	sys-libs/ncurses:=
+	nls? ( sys-devel/gettext )
+"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-cflags.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${P}-size_t.patch
 	"${FILESDIR}"/${P}-samba4-includes.patch
 	"${FILESDIR}"/${P}-multiple-definitions-gcc10.patch
 	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/0001-Fix-signal-handlers.patch
+	"${FILESDIR}"/0002-Fix-Wformat-security.patch
 )
 
 src_prepare() {

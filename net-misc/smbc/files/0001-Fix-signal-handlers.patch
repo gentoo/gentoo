@@ -1,0 +1,104 @@
+From 1d9dc54aea5a36aa43ce3bb5d5a013121fbd25ab Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 12 Feb 2025 16:04:02 +0000
+Subject: [PATCH 1/2] Fix signal handlers
+
+They need to take an argument but we don't use it.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/smbc.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/src/smbc.c b/src/smbc.c
+index 41a3d28..86349d0 100644
+--- a/src/smbc.c
++++ b/src/smbc.c
+@@ -251,9 +251,9 @@ void RwinRedrawWithData();
+ void RcompareTwoIndexFile(int RfdNew, int RfdOld, int RfdMessage);
+ int RtryDownloadUpload();
+ void RtryLockFileAndCreateIndexFile();
+-void RsigAlarm();
+-void RsigTerm();
+-void RsigSEGV();
++void RsigAlarm(int unused);
++void RsigTerm(int unused);
++void RsigSEGV(int unused);
+ char *RgetSmallPath(char *Rhost);
+ 
+ //-------------------------------------------------------------
+@@ -1196,7 +1196,7 @@ RmanageList()
+     {
+       if (!RdownloadListTmp) {
+         RDBG("smbc: RmanageList RpaintList - error expected next record\n"); 
+-        RsigTerm();
++        RsigTerm(0);
+       }
+       mvwhline(RwinCol1, ++Rk, 0, 32, 1);
+       mvwhline(RwinCol2, Rk, 0, 32, 1);
+@@ -1354,7 +1354,7 @@ RmanageList()
+   }
+ 
+   void 
+-  RsigAlarmManageWindow() 
++  RsigAlarmManageWindow(int unused) 
+   {
+     RDBG("RmanageList : RsigAlarmManageWindow alarm\n");
+     RdoWindowResizeDownloadList();
+@@ -5543,7 +5543,7 @@ RcreateFindListIndex(int Isave, char *Igroup, char *Ihost, char *Ipath, char *Id
+ }
+ 
+ void 
+-RsigTerm()
++RsigTerm(int unused)
+ {
+   int Ri;
+ 
+@@ -5602,7 +5602,7 @@ RsigTerm()
+ }
+ 
+ void 
+-RsigCHLD()
++RsigCHLD(int unused)
+ {
+   waitpid(RchildId, NULL, WNOHANG);
+ }
+@@ -6393,7 +6393,7 @@ RsendWinpopupInput(char *RgroupInput)
+ }
+ 
+ void 
+-RsigSEGV()
++RsigSEGV(int unused)
+ {
+   int Rres = errno;
+ 
+@@ -6404,7 +6404,7 @@ RsigSEGV()
+   RDBG("\n");
+   RDBG("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+   Rerror = 1;
+-  RsigTerm();
++  RsigTerm(0);
+   exit(Rres);
+ }
+ 
+@@ -6819,7 +6819,7 @@ RtryDownloadUpload()
+ }
+ 
+ void 
+-RsigAlarm()
++RsigAlarm(int unused)
+ {
+   char RinsertChar = 1;
+ 
+@@ -8220,7 +8220,7 @@ RDBG("smbc: main 100\n");
+  Rfree(RfileNameMessagePrim);
+  Rfree(RsmbcLockFile);
+  RDBG("----stop 2----\n");
+- RsigTerm();
++ RsigTerm(0);
+  RfreeDebug();
+  return(0);
+ }
+-- 
+2.48.1
+

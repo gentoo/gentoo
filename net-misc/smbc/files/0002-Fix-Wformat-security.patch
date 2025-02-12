@@ -1,0 +1,150 @@
+From 0f514db1868a34839a673257543a00383a5183df Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 12 Feb 2025 16:07:23 +0000
+Subject: [PATCH 2/2] Fix -Wformat-security
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/dulist.c |  2 +-
+ src/fnet.c   | 14 +++++++-------
+ src/smbc.c   | 16 ++++++++--------
+ 3 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/src/dulist.c b/src/dulist.c
+index 23c0024..c353acc 100644
+--- a/src/dulist.c
++++ b/src/dulist.c
+@@ -200,7 +200,7 @@ RShowAllItemsFromDUlist(int RnrDulist)
+         Rstraddtoend(&RstrT, "/");
+         Rstraddtoend(&RstrT, Rdls->filename);
+         Rstraddtoend(&RstrT, "\n");
+-        printf(to_scr(RstrT));
++        printf("%s", to_scr(RstrT));
+         Rfree(RstrT);
+         RfreeOneTTdownloadAndGoToFirst(&Rdls);
+       }
+diff --git a/src/fnet.c b/src/fnet.c
+index cc401af..7c35d2e 100644
+--- a/src/fnet.c
++++ b/src/fnet.c
+@@ -184,7 +184,7 @@ void
+ refreshw(WINDOW *win, char *buf)
+ {
+   werase(win);
+-  mvwprintw(win, 1, 1, buf);
++  mvwprintw(win, 1, 1, "%s", buf);
+ }
+ 
+ int 
+@@ -407,7 +407,7 @@ RmvwprintwCenter(WINDOW *win, int i, char *str)
+   int y, x;
+ 
+   getmaxyx(win, y, x);
+-  mvwprintw(win, i, x/2-strlen(str)/2, str);
++  mvwprintw(win, i, x/2-strlen(str)/2, "%s", str);
+   wrefresh(win);
+ }
+ 
+@@ -427,7 +427,7 @@ refreshTxtInWin(WINDOW *win, int y, int x, char *buf, int winSize, int startidx,
+     wattron(win, COLOR_PAIR(colorPair));
+   mvwhline(win, y, x+xDelta, ' ', winSize-xDelta);
+   wattron(win, attr);
+-  mvwprintw(win, y, x+xDelta, str+startidx);
++  mvwprintw(win, y, x+xDelta, "%s", str+startidx);
+   wattroff(win, attr);
+   if (colorPair != -1) 
+     wattroff(win, COLOR_PAIR(colorPair));
+@@ -474,7 +474,7 @@ refreshTxtInWinCursor(WINDOW *win, int y, int x, char *buf, int winSize, int sta
+   Rstr = strdup(Rbuf+startidx);
+   Rstr[xCursor-startidx] = 0;
+   RDBG("fnet refreshTxtInWinCursor 1: Rstr = \""); RDBG(Rstr); RDBG("\"\n");
+-  mvwprintw(win, y, x, Rstr);
++  mvwprintw(win, y, x, "%s", Rstr);
+   Rprinted = strlen(Rstr);
+   Rfree(Rstr);
+    
+@@ -500,7 +500,7 @@ refreshTxtInWinCursor(WINDOW *win, int y, int x, char *buf, int winSize, int sta
+     RDBG("fnet refreshTxtInWinCursor 23\n");
+   }
+   RDBG("fnet refreshTxtInWinCursor 29: Rstr = \""); RDBG(Rstr); RDBG("\"\n");
+-  mvwprintw(win, y, x+Rprinted, Rstr);
++  mvwprintw(win, y, x+Rprinted, "%s", Rstr);
+   Rfree(Rstr);
+   wattroff(win, A_REVERSE);
+   Rprinted++;
+@@ -514,7 +514,7 @@ refreshTxtInWinCursor(WINDOW *win, int y, int x, char *buf, int winSize, int sta
+     if (winSize-Rprinted < strlen(Rstr))
+        Rstr[winSize-Rprinted] = 0;
+     RDBG("fnet refreshTxtInWinCursor 3: Rstr = \""); RDBG(Rstr); RDBG("\"\n");
+-    mvwprintw(win, y, x+Rprinted, Rstr);
++    mvwprintw(win, y, x+Rprinted, "%s", Rstr);
+     Rfree(Rstr);
+   }
+ 
+@@ -929,7 +929,7 @@ Rmvwprintw(WINDOW *win, int y, int x, const char *fmt)
+   }
+   RDBG("fnet: RmvwprintwAddPercent fmt = |"); RDBG((char *)fmt); RDBG("|\n");
+   RDBG("fnet: RmvwprintwAddPercent Rc1 = |"); RDBG(Rc1); RDBG("|\n");
+-  mvwprintw(win, y, x, Rc1);
++  mvwprintw(win, y, x, "%s", Rc1);
+   Ri = strlen(Rc1);
+   Rfree(Rc1);
+   RDBG("fnet: RmvwprintwAddPercent end\n");
+diff --git a/src/smbc.c b/src/smbc.c
+index 86349d0..d2fbb07 100644
+--- a/src/smbc.c
++++ b/src/smbc.c
+@@ -2174,7 +2174,7 @@ RwinRedraw()
+   mvwhline(RwinLeftTop, 0, 0, 0, RxHalf-2);
+   mvwhline(RwinRightTop, 0, 0, 0, RxHalf-2);
+   mvwprintw(RwinHead, 0, 0,"Samba Commander %s", VERSION);
+-  mvwprintw(RwinHead, 0, RmainWinX-Rstrlen(Rm108), Rm108);
++  mvwprintw(RwinHead, 0, RmainWinX-Rstrlen(Rm108), "%s", Rm108);
+   mvwhline(RwinLeft, 2, 1, 0, RxHalf-2);
+   mvwhline(RwinLeft, 2, 1, 0, RxHalf-2);
+   mvwvline(RwinLeftList, 0, 1, 0, RmainWinY-6);
+@@ -3615,9 +3615,9 @@ RreadRcfile()
+   Rstraddtoend(&Rfile, "/.smbc/smbcrc");
+   if (access(Rfile, F_OK) != 0) 
+   {
+-    printf(Rm242, Rfile);
+-    printf(Rm243);
+-    printf(Rm244);
++    printf("%s", Rm242, Rfile);
++    printf("%s", Rm243);
++    printf("%s", Rm244);
+     return;
+   }
+   Rfd = open(Rfile, O_RDONLY);
+@@ -5575,8 +5575,8 @@ RsigTerm(int unused)
+   endwin();
+   if (!Ri) 
+   {
+-    printf(Rm156);
+-    printf(Rm157);
++    printf("%s", Rm156);
++    printf("%s", Rm157);
+   }
+   if ((RmainWinX < 80) || (RmainWinY < 25)) 
+     printf(Rm158, RmainWinX, RmainWinY);
+@@ -5589,7 +5589,7 @@ RsigTerm(int unused)
+   if (Rerror) 
+   {
+     printf("**********************************************************\n");
+-    printf(Rm159);
++    printf("%s", Rm159);
+     printf("**********************************************************\n");
+   }
+ 
+@@ -6990,7 +6990,7 @@ main(int argc,char *argv[])
+  {
+    fprintf(stderr, Rm175, errno);
+    if (errno == 2) 
+-     fprintf(stderr, Rm176);
++     fprintf(stderr, "%s", Rm176);
+    exit(0);
+  }
+ 
+-- 
+2.48.1
+
