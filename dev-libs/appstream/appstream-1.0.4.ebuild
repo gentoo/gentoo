@@ -45,8 +45,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-text/docbook-xsl-stylesheets
 	dev-libs/appstream-glib
 	dev-libs/libxslt
+	dev-util/glib-utils
+	dev-util/gperf
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	doc? ( app-text/docbook-xml-dtd:4.5 )
