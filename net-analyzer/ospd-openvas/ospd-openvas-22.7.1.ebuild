@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,13 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	if use test; then
+		PATCHES+=( "${FILESDIR}/${PN}-add-delay-in-mqtt-test.patch" )
+	fi
+	default
+}
 
 python_compile() {
 	if use doc; then
