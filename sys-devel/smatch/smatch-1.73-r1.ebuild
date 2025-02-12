@@ -12,7 +12,7 @@ else
 	SRC_URI="https://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gentoo/${P}.tar.gz"
 	# Update on bumps
-	S="${WORKDIR}"/${P}-7f4b936
+	S="${WORKDIR}"/${P}-2b596bf
 
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
@@ -29,10 +29,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${P}-C23.patch"
-	"${FILESDIR}/${P}-function-prototype.patch"
-	"${FILESDIR}/${P}-make-deps.patch"
-	)
+	"${FILESDIR}/${PN}-1.72-C23.patch"
+	"${FILESDIR}/${PN}-1.72-function-prototype.patch"
+)
 
 src_prepare() {
 	default
@@ -67,8 +66,8 @@ src_test() {
 
 src_install() {
 	# default install target installs a lot of sparse cruft
-	dobin smatch cgcc
+	dobin smatch
 	insinto /usr/share/smatch/smatch_data
 	doins smatch_data/*
-	dodoc FAQ Documentation/smatch.rst
+	dodoc FAQ Documentation/smatch.txt
 }
