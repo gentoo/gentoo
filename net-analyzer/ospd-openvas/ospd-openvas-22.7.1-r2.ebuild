@@ -41,6 +41,10 @@ RDEPEND="
 	notus? ( >=net-analyzer/notus-scanner-22.4 )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-add-delay-in-mqtt-test.patch" #934153
+)
+
 distutils_enable_tests unittest
 
 python_compile() {
