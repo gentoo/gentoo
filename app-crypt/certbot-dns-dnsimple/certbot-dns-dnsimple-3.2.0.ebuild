@@ -22,13 +22,15 @@ else
 		https://github.com/certbot/certbot/archive/v${PV}.tar.gz
 			-> ${PARENT_P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	# Only for amd64 and x86 because of dev-python/dns-lexicon
+	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="An implementation of the ACME protocol"
+DESCRIPTION="DNSimple Authenticator plugin for Certbot (Let’s Encrypt Client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
-	https://pypi.org/project/acme/
+	https://pypi.org/project/certbot-dns-dnsimple/
+	https://certbot-dns-dnsimple.readthedocs.io/en/stable/
 	https://letsencrypt.org/
 "
 
@@ -36,30 +38,13 @@ S="${WORKDIR}/${PARENT_P}/${PN}"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-BDEPEND="
-	test? (
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	)
-"
-
 # See certbot/setup.py for acme >= dep
 RDEPEND="
-	dev-python/chardet[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-43.0.0[${PYTHON_USEDEP}]
-	>=dev-python/josepy-1.13.0[${PYTHON_USEDEP}]
-	<dev-python/josepy-2[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-25.0.0[${PYTHON_USEDEP}]
-	dev-python/pyrfc3339[${PYTHON_USEDEP}]
-	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}]
+	>=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-${PV}[${PYTHON_USEDEP}]
+	>=dev-python/dns-lexicon-3.14.1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
-}
