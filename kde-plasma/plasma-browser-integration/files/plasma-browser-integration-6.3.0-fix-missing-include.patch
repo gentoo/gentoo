@@ -1,0 +1,27 @@
+From 11f5d91860d3f3392dd454298068b6757f5fb98a Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Tue, 11 Feb 2025 22:50:10 +0200
+Subject: [PATCH] Add missing include for flatpak-integrator plugin
+
+flatpak-integrator/plugin.cpp:160:13: error: use of undeclared identifier 'close'
+  160 |             close(dirfd);
+      |             ^
+---
+ flatpak-integrator/plugin.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/flatpak-integrator/plugin.cpp b/flatpak-integrator/plugin.cpp
+index 27f064cc..e6d59033 100644
+--- a/flatpak-integrator/plugin.cpp
++++ b/flatpak-integrator/plugin.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include <fcntl.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ 
+ #include <QDBusConnection>
+ #include <QDBusConnectionInterface>
+-- 
+GitLab
+
