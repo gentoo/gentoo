@@ -39,9 +39,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR CC RANLIB
-	#actually, nls isn't supported in this software, but in bundled lrzsz
 	econf \
-		$(use_enable nls) \
 		$(use_enable readline)
 }
 
