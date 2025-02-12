@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -39,7 +39,7 @@ inherit multiprocessing toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
-	pypy3
+	pypy3 pypy3_11
 	python3_13t
 	python3_{10..13}
 )
@@ -137,7 +137,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|python3_9|python3_1[0-3]|python3_13t)
+				pypy3|pypy3_11|python3_9|python3_1[0-3]|python3_13t)
 					;;
 				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-9])
 					obsolete+=( "${i}" )
@@ -233,7 +233,8 @@ _python_impl_matches() {
 					return 0
 				;;
 			3.8|3.9|3.1[1-3])
-				[[ ${impl%t} == python${pattern/./_} ]] && return 0
+				[[ ${impl%t} == python${pattern/./_} || ${impl} == pypy${pattern/./_} ]] &&
+					return 0
 				;;
 			*)
 				# unify value style to allow lax matching
@@ -304,12 +305,8 @@ _python_export() {
 	local impl var
 
 	case "${1}" in
-		python*|jython*)
+		python*|jython*|pypy|pypy3*)
 			impl=${1/_/.}
-			shift
-			;;
-		pypy|pypy3)
-			impl=${1}
 			shift
 			;;
 		*)
@@ -453,7 +450,10 @@ _python_export() {
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}${PYTHON_REQ_USE:+[${PYTHON_REQ_USE}]}"
 						;;
 					pypy3)
-						PYTHON_PKG_DEP=">=dev-lang/pypy-3.10:=[symlink${PYTHON_REQ_USE:+,${PYTHON_REQ_USE}}]"
+						PYTHON_PKG_DEP="dev-lang/pypy:3.10=[symlink${PYTHON_REQ_USE:+,${PYTHON_REQ_USE}}]"
+						;;
+					pypy3.*)
+						PYTHON_PKG_DEP="dev-lang/pypy:${impl#pypy}=${PYTHON_REQ_USE:+[${PYTHON_REQ_USE}]}"
 						;;
 					*)
 						die "Invalid implementation: ${impl}"
@@ -641,7 +641,7 @@ python_optimize() {
 				"${PYTHON}" -O -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				;;
-			python*|pypy3)
+			python*|pypy3*)
 				# Python 3.9+
 				"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
 				;;
@@ -1080,7 +1080,7 @@ python_fix_shebang() {
 					python|python3)
 						match=1
 						;;
-					python2|python[23].[0-9]|python3.[1-9][0-9]|pypy|pypy3|jython[23].[0-9])
+					python2|python[23].[0-9]|python3.[1-9][0-9]|pypy|pypy3|pypy3.[1-9][0-9]|jython[23].[0-9])
 						# Explicit mismatch.
 						match=1
 						error=1

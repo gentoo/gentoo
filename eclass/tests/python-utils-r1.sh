@@ -127,10 +127,25 @@ if [[ -x /usr/bin/pypy3 ]]; then
 	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3.*/site-packages"
 	test_var PYTHON_INCLUDEDIR pypy3 "/usr/include/pypy3.*"
 fi
-test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:=\[symlink\]'
-PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:=\[symlink,sqlite\]'
+test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:3.10=\[symlink\]'
+PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:3.10=\[symlink,sqlite\]'
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
 eoutdent
+
+for minor in 11; do
+	ebegin "Testing pypy3.${minor}"
+	eindent
+	test_var EPYTHON "pypy3.${minor}" "pypy3.${minor}"
+	test_var PYTHON "pypy3.${minor}" "/usr/bin/pypy3.${minor}"
+	if [[ -x /usr/bin/pypy3.${minor} ]]; then
+		test_var PYTHON_SITEDIR "pypy3.${minor}" "/usr/lib*/pypy3.${minor}/site-packages"
+		test_var PYTHON_INCLUDEDIR "pypy3.${minor}" "/usr/include/pypy3.${minor}"
+	fi
+	test_var PYTHON_PKG_DEP "pypy3.${minor}" '*dev-lang/pypy*:3.11='
+	PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP "pypy3.${minor}" '*dev-lang/pypy*:3.11=\[sqlite\]'
+	test_var PYTHON_SCRIPTDIR "pypy3.${minor}" "/usr/lib/python-exec/pypy3.${minor}"
+	eoutdent
+done
 
 for EPREFIX in '' /foo; do
 	einfo "Testing python_fix_shebang with EPREFIX=${EPREFIX@Q}"
@@ -213,6 +228,9 @@ test_is "_python_impl_matches python3_12 3.12" 0
 test_is "_python_impl_matches pypy3 3.10" 0
 test_is "_python_impl_matches pypy3 3.11" 1
 test_is "_python_impl_matches pypy3 3.12" 1
+test_is "_python_impl_matches pypy3_11 3.10" 1
+test_is "_python_impl_matches pypy3_11 3.11" 0
+test_is "_python_impl_matches pypy3_11 3.12" 1
 eoutdent
 
 rm "${tmpfile}"
