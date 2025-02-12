@@ -9,8 +9,8 @@ This patch refactors the references of IEEE80211_BAND_* to NL80211_BAND_*
 Reference:
 https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit?id=57fbcce37be7c1d2622b56587c10ade00e96afa3
 
---- a/src/wl/sys/wl_cfg80211_hybrid.c	2016-06-13 11:57:36.159340297 -0500
-+++ b/src/wl/sys/wl_cfg80211_hybrid.c	2016-06-13 11:58:18.442323435 -0500
+--- a/src/wl/sys/wl_cfg80211_hybrid.c
++++ b/src/wl/sys/wl_cfg80211_hybrid.c
 @@ -236,7 +236,7 @@
  #endif				
  

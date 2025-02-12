@@ -1,4 +1,3 @@
-diff -u sys0/wl_cfg80211_hybrid.c sys/wl_cfg80211_hybrid.c
 --- a/src/wl/sys/wl_cfg80211_hybrid.c
 +++ b/src/wl/sys/wl_cfg80211_hybrid.c
 @@ -39,6 +39,10 @@
@@ -12,7 +11,6 @@ diff -u sys0/wl_cfg80211_hybrid.c sys/wl_cfg80211_hybrid.c
  #define EVENT_TYPE(e) dtoh32((e)->event_type)
  #define EVENT_FLAGS(e) dtoh16((e)->flags)
  #define EVENT_STATUS(e) dtoh32((e)->status)
-diff -u sys0/wl_linux.c sys/wl_linux.c
 --- a/src/wl/sys/wl_linux.c
 +++ b/src/wl/sys/wl_linux.c
 @@ -2915,7 +2915,9 @@

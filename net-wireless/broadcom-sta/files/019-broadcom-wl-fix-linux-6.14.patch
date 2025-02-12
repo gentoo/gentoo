@@ -1,0 +1,40 @@
+From https://gist.github.com/joanbm/b711bafdcb065d57364a701061b902a3
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sun, 8 Dec 2024 17:57:43 +0000
+Subject: [PATCH] Tentative fix for broadcom-wl 6.30.223.271 driver for Linux
+ 6.14-rc1
+
+Related to the new parameter for get_tx_power introduced in
+"wifi: cfg80211: send MLO links tx power info in GET_INTERFACE"
+(Rameshkumar Sundaram, 25 Nov 2024).
+
+As the driver doesn't support Multi-Link, we just ignore it afterwards.
+--- a/src/wl/sys/wl_cfg80211_hybrid.c
++++ b/src/wl/sys/wl_cfg80211_hybrid.c
+@@ -99,7 +99,10 @@ static s32 wl_cfg80211_set_tx_power(struct wiphy *wiphy,
+            enum tx_power_setting type, s32 dbm);
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
++static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++                                    unsigned int link_id, s32 *dbm);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)
+ static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev, s32 *dbm);
+ #else
+ static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, s32 *dbm);
+@@ -1152,7 +1155,10 @@ wl_cfg80211_set_tx_power(struct wiphy *wiphy, enum tx_power_setting type, s32 db
+ 	return err;
+ }
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
++static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++                                    unsigned int link_id, s32 *dbm)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)
+ static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev, s32 *dbm)
+ #else
+ static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, s32 *dbm)
+-- 
+2.48.1
+

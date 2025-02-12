@@ -1,0 +1,27 @@
+From  https://gist.github.com/joanbm/72189c81ff67b39d36a660cf00483ccb
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sat, 12 Oct 2024 11:54:40 +0000
+Subject: [PATCH] Tentative patch for broadcom-wl 6.30.223.271 driver for Linux
+ 6.13-rc1
+
+The net/lib80211.h header has been removed by commit
+"wifi: ipw2x00/lib80211: move remaining lib80211 into libipw"
+(Johannes Berg, 7 Oct 2024).
+The header does not appear to be actually used anywhere, so remove it.
+
+ #include <asm/irq.h>
+ #include <asm/pgtable.h>
+--- a/src/include/linuxver.h
++++ b/src/include/linuxver.h
+@@ -147,7 +147,7 @@ typedef irqreturn_t(*FN_ISR) (int irq, void *dev_id, struct pt_regs *ptregs);
+ #include <linux/sched.h>
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29) && LINUX_VERSION_CODE < KERNEL_VERSION(6, 13, 0)
+ #include <net/lib80211.h>
+ #endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
+-- 
+2.47.0
+

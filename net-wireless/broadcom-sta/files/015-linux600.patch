@@ -9,12 +9,6 @@ See also: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/com
 
 Original patch by Joan Bruguera:
 https://gist.github.com/joanbm/207210d74637870c01ef5a3c262a597d
----
- src/wl/sys/wl_cfg80211_hybrid.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/src/wl/sys/wl_cfg80211_hybrid.c b/src/wl/sys/wl_cfg80211_hybrid.c
-index 5e9e6d3..5ec35c5 100644
 --- a/src/wl/sys/wl_cfg80211_hybrid.c
 +++ b/src/wl/sys/wl_cfg80211_hybrid.c
 @@ -2412,7 +2412,11 @@ wl_bss_roaming_done(struct wl_cfg80211_priv *wl, struct net_device *ndev,

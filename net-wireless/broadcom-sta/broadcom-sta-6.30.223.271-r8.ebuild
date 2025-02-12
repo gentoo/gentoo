@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,6 +39,9 @@ PATCHES=(
 	"${FILESDIR}/014-linux414.patch"
 	"${FILESDIR}/015-linux600.patch"
 	"${FILESDIR}/016-linux601.patch"
+	"${FILESDIR}/017-handle-new-header-name-6.12.patch"
+	"${FILESDIR}/018-broadcom-wl-fix-linux-6.13.patch"
+	"${FILESDIR}/019-broadcom-wl-fix-linux-6.14.patch"
 )
 
 pkg_pretend() {
@@ -62,6 +65,7 @@ pkg_setup() {
 	# b43 via udev rules. Moreover, previous fix broke binpkgs support.
 	CONFIG_CHECK="~!B43 ~!BCMA ~!SSB ~!X86_INTEL_LPSS"
 	CONFIG_CHECK2="LIB80211 ~!MAC80211 ~LIB80211_CRYPT_TKIP"
+	CONFIG_CHECK3="~!MAC80211"
 	ERROR_B43="B43: If you insist on building this, you must blacklist it!"
 	ERROR_BCMA="BCMA: If you insist on building this, you must blacklist it!"
 	ERROR_SSB="SSB: If you insist on building this, you must blacklist it!"
@@ -70,7 +74,9 @@ pkg_setup() {
 	ERROR_PREEMPT_RCU="PREEMPT_RCU: Please do not set the Preemption Model to \"Preemptible Kernel\"; choose something else."
 	ERROR_LIB80211_CRYPT_TKIP="LIB80211_CRYPT_TKIP: You will need this for WPA."
 	ERROR_X86_INTEL_LPSS="X86_INTEL_LPSS: Please disable it. The module does not work with it enabled."
-	if kernel_is ge 3 8 8; then
+	if kernel_is ge 6 1 127; then
+		CONFIG_CHECK="${CONFIG_CHECK} ${CONFIG_CHECK3} CFG80211 ~!PREEMPT_RCU ~!PREEMPT"
+	elif kernel_is ge 3 8 8; then
 		CONFIG_CHECK="${CONFIG_CHECK} ${CONFIG_CHECK2} CFG80211 ~!PREEMPT_RCU ~!PREEMPT"
 	elif kernel_is ge 2 6 32; then
 		CONFIG_CHECK="${CONFIG_CHECK} ${CONFIG_CHECK2} CFG80211"

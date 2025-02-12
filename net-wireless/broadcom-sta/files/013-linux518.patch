@@ -1,6 +1,5 @@
-diff -u -r a/src/shared/linux_osl.c b/src/shared/linux_osl.c
---- a/src/shared/linux_osl.c	2022-05-24 20:51:15.662604980 +0000
-+++ b/src/shared/linux_osl.c	2022-05-24 21:13:38.264472425 +0000
+--- a/src/shared/linux_osl.c
++++ b/src/shared/linux_osl.c
 @@ -599,6 +599,8 @@
  	va = kmalloc(size, GFP_ATOMIC | __GFP_ZERO);
  	if (va)

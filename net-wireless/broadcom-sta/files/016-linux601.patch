@@ -1,6 +1,5 @@
-diff -Nurp -u -r a/src/wl/sys/wl_cfg80211_hybrid.c b/src/wl/sys/wl_cfg80211_hybrid.c
---- a/src/wl/sys/wl_cfg80211_hybrid.c	2022-12-12 00:23:30.821615599 +0000
-+++ b/src/wl/sys/wl_cfg80211_hybrid.c	2022-12-12 00:35:47.854975024 +0000
+--- a/src/wl/sys/wl_cfg80211_hybrid.c
++++ b/src/wl/sys/wl_cfg80211_hybrid.c
 @@ -105,14 +105,28 @@ static s32 wl_cfg80211_get_tx_power(stru
  static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, s32 *dbm);
  #endif

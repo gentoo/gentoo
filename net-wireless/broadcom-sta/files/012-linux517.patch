@@ -16,12 +16,6 @@ Applies on top of all the patches applied to broadcom-wl-dkms 6.30.223.271-28 on
 
 See also: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=adeef3e32146a8d2a73c399dc6f5d76a449131b1
           https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=359745d78351c6f5442435f81549f0207ece28aa
----
- src/wl/sys/wl_linux.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
-
-diff --git a/src/wl/sys/wl_linux.c b/src/wl/sys/wl_linux.c
-index e491df7..e4614fb 100644
 --- a/src/wl/sys/wl_linux.c
 +++ b/src/wl/sys/wl_linux.c
 @@ -93,6 +93,10 @@ struct iw_statistics *wl_get_wireless_stats(struct net_device *dev);

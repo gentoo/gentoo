@@ -4,12 +4,6 @@ Subject: linux414
 Origin: https://bugs.debian.org/885885
 
 linux 4.14 changed the kernel_read function prototype.
----
- src/shared/linux_osl.c | 12 +++++++++++-
- 1 files changed, 12 insertions(+), 1 deletion(-)
-
-diff --git a/src/shared/linux_osl.c b/src/shared/linux_osl.c
-index 9adc392..b24a973 100644
 --- a/src/shared/linux_osl.c
 +++ b/src/shared/linux_osl.c
 @@ -1076,11 +1076,21 @@ osl_os_get_image_block(char *buf, int len, void *image)
