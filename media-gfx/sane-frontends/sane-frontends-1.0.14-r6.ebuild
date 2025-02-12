@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Scanner Access Now Easy"
 HOMEPAGE="http://www.sane-project.org"
@@ -11,7 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 sparc x86"
 IUSE="gimp gtk"
-
 REQUIRED_USE="gimp? ( gtk )"
 
 DEPEND="
@@ -26,9 +27,20 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS Changelog NEWS PROBLEMS README )
 
-PATCHES=( "${FILESDIR}/MissingCapsFlag.patch" )
+PATCHES=(
+	"${FILESDIR}/MissingCapsFlag.patch"
+	"${FILESDIR}/${PN}-1.0.14-c99.patch"
+)
 
 S="${WORKDIR}"/"${PN}"-upstream-"${PV}"
+
+src_prepare() {
+	default
+
+	# Needed for C99 patch (acinclude hack to avoid BDEPEND on gimp)
+	cat "${FILESDIR}"/gimp-2.0.m4 >> acinclude.m4 || die
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(

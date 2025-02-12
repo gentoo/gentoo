@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/933615#c7
+Signed-off-by: Stephane Bakhos <nuitari@nuitari.net>
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -61,6 +61,7 @@
+       AC_TRY_RUN([
+ #include <gtk/gtk.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ int 
+ main ()
+@@ -484,6 +485,7 @@
+       AC_TRY_RUN([
+ #include <sane/sane.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ int 
+ main ()
+--- a/aclocal.m4 2024-09-17 00:41:08.100761458 -0400
++++ b/aclocal.m4 2024-09-17 00:56:44.718894896 -0400
+@@ -494,6 +494,7 @@
+       AC_TRY_RUN([
+ #include <sane/sane.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ int 
+ main ()
+--- a/configure      2024-09-17 01:07:22.612760156 -0400
++++ b/configure   2024-09-17 01:07:39.628889934 -0400
+@@ -6818,6 +6818,7 @@
+ 
+ #include <sane/sane.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ int
+ main ()
+--- a/configure.in      2024-09-17 01:18:19.480771874 -0400
++++ b/configure.in        2024-09-17 01:15:08.469314114 -0400
+@@ -75,7 +75,7 @@
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(os2.h fcntl.h unistd.h libc.h sys/time.h sys/types.h)
++AC_CHECK_HEADERS(os2.h fcntl.h unistd.h libc.h sys/time.h sys/types.h sys/socket.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
