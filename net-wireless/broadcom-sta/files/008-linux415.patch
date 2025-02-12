@@ -1,5 +1,5 @@
---- a/src/wl/sys/wl_linux.c	2017-07-17 00:11:24.000000000 +0100
-+++ b/src/wl/sys/wl_linux.c	2018-01-27 09:49:47.057799596 +0000
+--- a/src/wl/sys/wl_linux.c
++++ b/src/wl/sys/wl_linux.c
 @@ -93,7 +93,11 @@
  
  #include <wlc_wowl.h>

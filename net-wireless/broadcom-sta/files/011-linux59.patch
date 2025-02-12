@@ -15,16 +15,6 @@ See also: https://lwn.net/Articles/722267/
           https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5e6e9852d6f76e01b2e6803c74258afa5b432bc5
 
 Signed-off-by: Joan Bruguera <joanbrugueram@gmail.com>
----
- src/wl/sys/wl_cfg80211_hybrid.c | 25 ++-------------------
- src/wl/sys/wl_iw.c              | 25 ++-------------------
- src/wl/sys/wl_linux.c           | 40 ++++++++++++++++++++++++++++-----
- src/wl/sys/wl_linux.h           |  2 ++
- src/wl/sys/wlc_pub.h            |  1 +
- 5 files changed, 42 insertions(+), 51 deletions(-)
-
-diff --git a/src/wl/sys/wl_cfg80211_hybrid.c b/src/wl/sys/wl_cfg80211_hybrid.c
-index 7b606e0..1e0adb7 100644
 --- a/src/wl/sys/wl_cfg80211_hybrid.c
 +++ b/src/wl/sys/wl_cfg80211_hybrid.c
 @@ -38,6 +38,7 @@
@@ -67,8 +57,6 @@ index 7b606e0..1e0adb7 100644
  }
  
  static s32
-diff --git a/src/wl/sys/wl_iw.c b/src/wl/sys/wl_iw.c
-index c4c610b..e346b15 100644
 --- a/src/wl/sys/wl_iw.c
 +++ b/src/wl/sys/wl_iw.c
 @@ -37,6 +37,7 @@ typedef const struct si_pub	si_t;
@@ -110,8 +98,6 @@ index c4c610b..e346b15 100644
  }
  
  static int
-diff --git a/src/wl/sys/wl_linux.c b/src/wl/sys/wl_linux.c
-index 947cef3..f04c148 100644
 --- a/src/wl/sys/wl_linux.c
 +++ b/src/wl/sys/wl_linux.c
 @@ -1643,10 +1643,7 @@ wl_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
@@ -175,8 +161,6 @@ index 947cef3..f04c148 100644
  static struct net_device_stats*
  wl_get_stats(struct net_device *dev)
  {
-diff --git a/src/wl/sys/wl_linux.h b/src/wl/sys/wl_linux.h
-index 5b1048e..c8c1f41 100644
 --- a/src/wl/sys/wl_linux.h
 +++ b/src/wl/sys/wl_linux.h
 @@ -22,6 +22,7 @@
@@ -195,8 +179,6 @@ index 5b1048e..c8c1f41 100644
  extern struct net_device * wl_netdev_get(wl_info_t *wl);
  
  #endif 
-diff --git a/src/wl/sys/wlc_pub.h b/src/wl/sys/wlc_pub.h
-index 53a98b8..2b5a029 100644
 --- a/src/wl/sys/wlc_pub.h
 +++ b/src/wl/sys/wlc_pub.h
 @@ -24,6 +24,7 @@
