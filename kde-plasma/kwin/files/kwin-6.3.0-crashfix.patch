@@ -1,0 +1,29 @@
+From c97bc26ca9de8b1462f6ccb05fb2dafe01cd82cb Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sat, 8 Feb 2025 23:39:36 +0800
+Subject: [PATCH] core/outputlayer: guard against null m_output
+
+SENTRY: KWIN-8ZG
+FIXED-IN: 6.3.1
+---
+ src/core/outputlayer.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/outputlayer.cpp b/src/core/outputlayer.cpp
+index f041a8d1d93..9c4aaf2f501 100644
+--- a/src/core/outputlayer.cpp
++++ b/src/core/outputlayer.cpp
+@@ -50,7 +50,9 @@ QRegion OutputLayer::repaints() const
+ void OutputLayer::addRepaint(const QRegion &region)
+ {
+     m_repaints += region;
+-    m_output->renderLoop()->scheduleRepaint(nullptr, nullptr);
++    if (m_output) {
++        m_output->renderLoop()->scheduleRepaint(nullptr, nullptr);
++    }
+ }
+ 
+ void OutputLayer::resetRepaints()
+-- 
+GitLab
+
