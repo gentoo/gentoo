@@ -268,7 +268,6 @@ src_configure() {
 	# Disable for testing purposes only
 	mozconfig_annotate 'Upstream bug 1341234' --disable-stylo
 
-	# Must pass release in order to properly select linker via gold useflag
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
 	# Broken on PPC64, but outdated and should not be used according to upstream.
@@ -277,13 +276,6 @@ src_configure() {
 	# Sandbox build is broken on PPC64 https://bugs.gentoo.org/836319 comment 56
 	if use ppc64; then
 		mozconfig_annotate 'Disabled on ppc64' --disable-content-sandbox
-	fi
-
-	# Must pass --enable-gold if using ld.gold
-	if tc-ld-is-gold ; then
-		mozconfig_annotate 'tc-ld-is-gold=true' --enable-gold
-	else
-		mozconfig_annotate 'tc-ld-is-gold=false' --disable-gold
 	fi
 
 	# Debug is broken, disable debug symbols
@@ -350,20 +342,15 @@ src_configure() {
 		fi
 	fi
 
-	if tc-is-lto ; then
-		if tc-ld-is-mold ; then
-			# mold expects the -flto line from *FLAGS configuration, bgo#923119
-			append-ldflags "-flto=thin"
-			mozconfig_add_options_ac "using ld=mold due to system selection." --enable-linker=mold
-		elif tc-ld-is-lld ; then
-			mozconfig_add_options_ac "using ld=lld due to system selection." --enable-linker=lld
-		else
-			mozconfig_annotate "linker is set to bfd." --enable-linker=bfd
-		fi
-		# ThinLTO is currently broken, see bmo#1644409
-		mozconfig_annotate '+lto' --enable-lto=full
+	if tc-ld-is-ldd ; then
+		mozconfig_annotate "using ld=lld due to system selection." --enable-linker=lld
 	else
 		mozconfig_annotate "linker is set to bfd." --enable-linker=bfd
+	fi
+
+	if tc-is-lto ; then
+		# ThinLTO is currently broken, see bmo#1644409
+		mozconfig_annotate '+lto' --enable-lto=full
 	fi
 
 	##################################
