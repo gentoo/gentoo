@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,8 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/0001-Fix-signal-handler.patch
+	"${FILESDIR}"/0002-Fix-Wformat-security.patch
 )
 
 src_prepare() {
