@@ -16,12 +16,13 @@ IUSE="debug"
 
 # ncurses is runtime-onlu dependency, because program provides it's own terminfo
 # gzip needed for unpacking font at runtime
-RDEPEND="media-fonts/font-misc-misc
+RDEPEND="
+	media-fonts/font-misc-misc
 	media-fonts/intlfonts
 	media-fonts/unifont
 	sys-libs/ncurses
-	app-alternatives/gzip"
-
+	app-alternatives/gzip
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-sigchld-debian.patch
