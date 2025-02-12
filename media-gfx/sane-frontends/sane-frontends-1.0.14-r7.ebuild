@@ -37,7 +37,8 @@ S="${WORKDIR}"/"${PN}"-upstream-"${PV}"
 src_prepare() {
 	default
 
-	# Needed for C99 patch (acinclude hack to avoid BDEPEND on gimp)
+	# Needed for C99 patch (acinclude hack to avoid BDEPEND on gtk+, gimp)
+	cat "${FILESDIR}"/gtk-2.0.m4 >> acinclude.m4 || die
 	cat "${FILESDIR}"/gimp-2.0.m4 >> acinclude.m4 || die
 	eautoreconf
 }
