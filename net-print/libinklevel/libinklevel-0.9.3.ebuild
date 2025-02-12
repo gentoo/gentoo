@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 MY_P="${P/_/}"
 DESCRIPTION="A library to get the ink level of your printer"
-HOMEPAGE="http://libinklevel.sourceforge.net/"
+HOMEPAGE="https://libinklevel.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/libinklevel/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
