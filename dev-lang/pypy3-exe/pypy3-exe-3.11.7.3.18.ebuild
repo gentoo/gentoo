@@ -10,7 +10,7 @@ PATCHSET_PV=$(ver_cut 3-)
 PYPY_PV=${PATCHSET_PV%_p*}
 
 MY_P="pypy${PYVER}-v${PYPY_PV/_}"
-PATCHSET="pypy${PYVER}-gentoo-patches-${PATCHSET_PV/_rc/rc}"
+PATCHSET="pypy${PYVER}-gentoo-patches-${PATCHSET_PV/_rc/rc}_p1-r1"
 
 DESCRIPTION="PyPy3.11 executable (build from source)"
 HOMEPAGE="
