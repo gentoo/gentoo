@@ -410,6 +410,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-131-unbundle-icu-target.patch"
 		"${FILESDIR}/chromium-134-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-134-bindgen-custom-toolchain.patch"
+		"${FILESDIR}/chromium-135-fix-non-wayland-build.patch"
 	)
 
 	if use bundled-toolchain; then
