@@ -212,11 +212,16 @@ dev-qt/qdbusviewer
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 packages without any revdeps.
+dev-qt/assistant
 dev-qt/pixeltool
 dev-qt/qdbus
 dev-qt/qdoc
+dev-qt/qtdiag
+dev-qt/qtgamepad:5
+dev-qt/qtlocation:5
 dev-qt/qtplugininfo
 dev-qt/qtquicktimeline:5
+dev-qt/qtsensors:5
 dev-qt/qtserialbus:5
 dev-qt/qtvirtualkeyboard:5
 dev-qt/qtwebview:5
