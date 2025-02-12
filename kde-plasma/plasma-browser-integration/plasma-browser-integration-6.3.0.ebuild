@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 	>=kde-frameworks/krunner-${KFMIN}:6
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-6.3.0-fix-missing-include.patch" # https://invent.kde.org/plasma/plasma-browser-integration/-/merge_requests/142
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DMOZILLA_DIR="${EPREFIX}/usr/$(get_libdir)/mozilla"
