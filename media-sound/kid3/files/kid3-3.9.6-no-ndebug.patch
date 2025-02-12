@@ -1,0 +1,54 @@
+From ae25a9642d06997c8896e98fa8a41daa202d6703 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 12 Feb 2025 21:48:01 +0100
+Subject: [PATCH] Replace NDEBUG with QT_NO_DEBUG (as in src/core)
+
+See also:
+https://bugs.gentoo.org/949369
+https://bugs.archlinux.org/task/69904
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=909148
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/app/qml/mainqml.cpp                     | 4 ++--
+ src/plugins/qmlcommand/qmlcommandplugin.cpp | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/app/qml/mainqml.cpp b/src/app/qml/mainqml.cpp
+index 09ebea31..ec8adfe0 100644
+--- a/src/app/qml/mainqml.cpp
++++ b/src/app/qml/mainqml.cpp
+@@ -29,7 +29,7 @@
+ #include <QTranslator>
+ #include <QDir>
+ #include <QSettings>
+-#if !defined NDEBUG && !defined QT_QML_DEBUG
++#ifndef QT_NO_DEBUG && !defined QT_QML_DEBUG
+ #define QT_QML_DEBUG
+ #endif
+ #include <QQmlApplicationEngine>
+@@ -170,7 +170,7 @@ int main(int argc, char* argv[])
+ #endif
+ 
+   QStringList qmlDirs;
+-#if !defined NDEBUG && defined CFG_QMLSRCDIR
++#ifndef QT_NO_DEBUG && defined CFG_QMLSRCDIR
+   qmlDirs.append(QLatin1String(CFG_QMLSRCDIR));
+ #endif
+ #ifdef CFG_QMLDIR
+diff --git a/src/plugins/qmlcommand/qmlcommandplugin.cpp b/src/plugins/qmlcommand/qmlcommandplugin.cpp
+index 504b0a4a..3a690b4d 100644
+--- a/src/plugins/qmlcommand/qmlcommandplugin.cpp
++++ b/src/plugins/qmlcommand/qmlcommandplugin.cpp
+@@ -26,7 +26,7 @@
+ 
+ #include "qmlcommandplugin.h"
+ #include <QDir>
+-#if !defined NDEBUG && !defined QT_QML_DEBUG
++#ifndef QT_NO_DEBUG && !defined QT_QML_DEBUG
+ #define QT_QML_DEBUG
+ #endif
+ #include <QQuickView>
+-- 
+2.48.1
+
