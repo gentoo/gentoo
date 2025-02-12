@@ -31,6 +31,7 @@ pypy2_0	2.7-pypy-2.0	dead	p2.0
 
 pypy		dead	pypy
 pypy3		experimental	pypy3
+pypy3_11		experimental	pypy3_11
 
 jython2_5	2.5-jython	dead	j2.5
 jython2_7	2.7-jython	dead	j2.7
