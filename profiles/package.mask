@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
+# Last release from 2021 even if not yet dead upstream; however completely
+# unmaintained in Gentoo, with the ensuing multiple longstanding bugs
+# #832614, #866935, #895806, #915790, #944379, #945060; ebuild still based
+# on EAPI-7, USE=javascript depending on deprecated Qt5Script, USE=qt5
+# blocking qt5-removal, etc. This package was already problematic during
+# transition from Qt4 to Qt5, I will not deal with it this time.
+# Removal on 2025-03-14.
+net-p2p/eiskaltdcpp
+
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
