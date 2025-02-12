@@ -16,7 +16,7 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-1 BSD-2 BSD-4 CC-BY-4.0 ISC LGPL-2.1+ MIT MPL-2.0 openssl PYTHON TextMate-bundle Unlicense UoI-NCSA W3C"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="kerberos"
@@ -84,6 +84,11 @@ src_prepare() {
 	mv zsh/vendor-completions zsh/site-functions || die
 
 	cd "${PN}/resources/app" || die
+
+	rm -r ./ThirdPartyNotices.txt || die
+
+	# Disable update server.
+	sed -e "/updateUrl/d" -i ./product.json || die
 
 	# Kerberos libs, same issue as VSCode/VSCodium.
 	if ! use kerberos ; then
