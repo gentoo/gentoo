@@ -26,3 +26,5 @@ mkl
 # PyPy is unstable on this arch.
 python_targets_pypy3
 python_single_target_pypy3
+python_targets_pypy3_11
+python_single_target_pypy3_11

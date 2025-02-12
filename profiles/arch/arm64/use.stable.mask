@@ -22,6 +22,8 @@ nvenc
 # Not enough packages stable w/ PyPy3 support
 python_targets_pypy3
 python_single_target_pypy3
+python_targets_pypy3_11
+python_single_target_pypy3_11
 
 # Sam James <sam@gentoo.org> (2020-10-07)
 # app-misc/lirc not stable yet
