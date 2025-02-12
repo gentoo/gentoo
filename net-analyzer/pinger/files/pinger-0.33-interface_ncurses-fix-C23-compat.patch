@@ -1,0 +1,39 @@
+From a6392be483562043f9e06273a2b1e34b64b5eb13 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 12 Feb 2025 15:24:41 +0000
+Subject: [PATCH 1/2] interface_ncurses: fix C23 compat
+
+adjust_size is called as a signal handler so needs to take an int param;
+just define one and throw it away.
+
+Bug: https://bugs.gentoo.org/944034
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/interface_ncurses.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/interface_ncurses.c b/src/interface_ncurses.c
+index f3ffc53..28d2ce5 100644
+--- a/src/interface_ncurses.c
++++ b/src/interface_ncurses.c
+@@ -23,7 +23,7 @@ int new_cols, new_rows;
+ #endif
+ 
+ #if CAN_RESIZE
+-void adjust_size();
++void adjust_size(int);
+ int size_changed = 0;
+ #endif
+ 
+@@ -519,7 +519,7 @@ void ncurses_gui_loop(hosts_data * hosts, int *stop_loop)
+ 
+ /* Resize terminal if necessary */
+ #if CAN_RESIZE
+-void adjust_size()
++void adjust_size(int unused)
+ {
+     struct winsize size;
+ 
+-- 
+2.48.1
+

@@ -1,0 +1,60 @@
+From d464aa2a165adcf42c37d87e38ea3796ee56d485 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 12 Feb 2025 15:25:15 +0000
+Subject: [PATCH 2/2] interface_ncurses: fix -Wformat-security
+
+Newer ncurses has format attributes which trigger this.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/interface_ncurses.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/interface_ncurses.c b/src/interface_ncurses.c
+index 28d2ce5..a7496d2 100644
+--- a/src/interface_ncurses.c
++++ b/src/interface_ncurses.c
+@@ -188,7 +188,7 @@ void show_host_status(host_data * host, int colpair, int attr, char *statstr,
+         attroff(attr);
+         /* print time */
+         get_currtime_str(NULL, time_str);
+-        mvprintw(0, COLS - 8, time_str);
++        mvprintw(0, COLS - 8, "%s", time_str);
+         refresh();
+     }
+ }
+@@ -319,11 +319,11 @@ void print_header(char *title)
+     printw("%s", line);
+     move(0, HDR_LINE_X_START);
+     sprintf(line, "Pinger v%s", VERSION);
+-    printw(line);
++    printw("%s", line);
+     title_start = strlen(line) + HDR_LINE_X_START + 1;
+     sprintf(line, _("'q' key to quit"));
+     move(0, COLS - strlen(line) - 9);   /* 1 + clock width */
+-    printw(line);
++    printw("%s", line);
+     title_maxlen = COLS - strlen(line) - 9 - title_start;
+     if ((title_maxlen > 4) && (title != NULL)) {
+         title_len = strlen(title);
+@@ -342,7 +342,7 @@ void print_header(char *title)
+         for (idx = 0; idx < strlen(title_with_brackets); idx++)
+             if (title_with_brackets[idx] == '%')
+                 title_with_brackets[idx] = ':';
+-        printw(title_with_brackets);
++        printw("%s", title_with_brackets);
+     }
+ //if (title != NULL) free(title);
+     if (title_with_brackets != NULL)
+@@ -351,7 +351,7 @@ void print_header(char *title)
+     attron(A_BOLD);
+     move(0, COLS - 8);
+     get_currtime_str(NULL, line);
+-    printw(line);
++    printw("%s", line);
+     free(line);
+ 
+     move(1, 0);
+-- 
+2.48.1
+
