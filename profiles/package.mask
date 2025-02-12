@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2025-02-12)
+# Masked for testing. Fails to update from previous version. See bug #949626.
+>=x11-themes/fluent-icon-theme-2025.02.10
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-02-11)
 # Fails to build with >=gcc14 and >=clang16 (Modern C) and tests fail
 # among several other accumulating issues.  Hasn't received a release
