@@ -8,7 +8,7 @@ inherit check-reqs flag-o-matic pax-utils toolchain-funcs
 PYPY_PV=${PV%_p*}
 PYVER=3.10
 MY_P="pypy${PYVER}-v${PYPY_PV/_}"
-PATCHSET="pypy${PYVER}-gentoo-patches-${PV}-r1"
+PATCHSET="pypy${PYVER}-gentoo-patches-${PV}-r2"
 
 DESCRIPTION="PyPy3.10 executable (build from source)"
 HOMEPAGE="
