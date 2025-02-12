@@ -55,6 +55,8 @@ ada_target_gnat_2021
 # PyPy3 works on arm64
 -python_targets_pypy3
 -python_single_target_pypy3
+-python_targets_pypy3_11
+-python_single_target_pypy3_11
 
 # David Seifert <soap@gentoo.org> (2020-05-17)
 # Mono is hopelessly broken on arm64

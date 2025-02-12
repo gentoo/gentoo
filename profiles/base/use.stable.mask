@@ -15,6 +15,8 @@ python_targets_python3_13t
 python_single_target_python3_13t
 python_targets_pypy3
 python_single_target_pypy3
+python_targets_pypy3_11
+python_single_target_pypy3_11
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
 # New unstable PHP slot.

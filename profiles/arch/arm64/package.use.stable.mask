@@ -41,6 +41,7 @@ sys-cluster/openmpi openmpi_rm_pbs
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_targets_pypy3_11
 
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Has unstable dependencies we don't want to drag in yet

@@ -1,4 +1,4 @@
-# Copyright 2008-2024 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
@@ -14,6 +14,8 @@ osl
 # PyPy3 is keyworded here.
 -python_targets_pypy3
 -python_single_target_pypy3
+-python_targets_pypy3_11
+-python_single_target_pypy3_11
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # media-libs/openexr doesn't work on BE (bug #818424)

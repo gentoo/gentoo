@@ -70,6 +70,7 @@ lxqt-base/lxqt-meta desktop-portal
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_targets_pypy3_11
 
 # Sam James <sam@gentoo.org> (2021-10-17)
 # Go doesn't support pie on ppc64, bug #818529

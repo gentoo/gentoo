@@ -12,6 +12,8 @@ php_targets_php8-2
 # PyPy3 target is not ready for stable.
 python_targets_pypy3
 python_single_target_pypy3
+python_targets_pypy3_11
+python_single_target_pypy3_11
 
 # Sam James <sam@gentoo.org> (2021-11-14)
 # media-libs/openexr is not marked stable on ppc64
