@@ -1,0 +1,89 @@
+https://github.com/tinyproxy/tinyproxy/commit/942d0c6b03673ad816c42176422d7fe691143064
+From 942d0c6b03673ad816c42176422d7fe691143064 Mon Sep 17 00:00:00 2001
+From: Mohamed Akram <mohd.akram@outlook.com>
+Date: Sun, 2 Jun 2024 18:52:59 +0400
+Subject: [PATCH] Use appropriate installation path variables
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -173,6 +173,9 @@ fi
+ dnl
+ dnl Substitute the variables into the various Makefiles
+ dnl
++# runstatedir isn't available for Autoconf < 2.70
++AS_IF([test -z "${runstatedir}"], [runstatedir='${localstatedir}/run'])
++AC_SUBST([runstatedir])
+ AC_SUBST(CFLAGS)
+ AC_SUBST(LDFLAGS)
+ AC_SUBST(CPPFLAGS)
+@@ -220,7 +223,6 @@ docs/Makefile
+ docs/man5/Makefile
+ docs/man5/tinyproxy.conf.txt
+ docs/man8/Makefile
+-docs/man8/tinyproxy.txt
+ m4macros/Makefile
+ tests/Makefile
+ tests/scripts/Makefile
+--- a/docs/man8/Makefile.am
++++ b/docs/man8/Makefile.am
+@@ -9,6 +9,17 @@ M_NAME=TINYPROXY
+ man_MANS = \
+ 	$(MAN8_FILES:.txt=.8)
+ 
++edit = sed \
++	-e 's|@localstatedir[@]|$(localstatedir)|g' \
++	-e 's|@runstatedir[@]|$(runstatedir)|g' \
++	-e 's|@sysconfdir[@]|$(sysconfdir)|g' \
++	-e 's|@TINYPROXY_STATHOST[@]|$(TINYPROXY_STATHOST)|g'
++
++tinyproxy.txt: $(top_srcdir)/docs/man8/tinyproxy.txt.in Makefile
++	@rm -f $@ $@.tmp
++	$(AM_V_GEN) $(edit) $(top_srcdir)/docs/man8/$@.in > $@.tmp
++	@mv $@.tmp $@
++
+ .txt.8:
+ if HAVE_POD2MAN
+ 	$(AM_V_GEN) $(POD2MAN) --center="Tinyproxy manual" \
+--- a/docs/man8/tinyproxy.txt.in
++++ b/docs/man8/tinyproxy.txt.in
+@@ -156,7 +156,11 @@ configuration variable `StatFile`.
+ 
+ =head1 FILES
+ 
+-`/etc/tinyproxy/tinyproxy.conf`, `/var/run/tinyproxy/tinyproxy.pid`, `/var/log/tinyproxy/tinyproxy.log`
++F<@sysconfdir@/tinyproxy/tinyproxy.conf>
++
++F<@runstatedir@/tinyproxy/tinyproxy.pid>
++
++F<@localstatedir@/log/tinyproxy/tinyproxy.log>
+ 
+ =head1 BUGS
+ 
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -12,6 +12,7 @@ edit = sed \
+ 	-e 's|@datarootdir[@]|$(datarootdir)|g' \
+ 	-e 's|@pkgsysconfdir[@]|$(pkgsysconfdir)|g' \
+ 	-e 's|@localstatedir[@]|$(localstatedir)|g' \
++	-e 's|@runstatedir[@]|$(runstatedir)|g' \
+ 	-e 's|@pkgdatadir[@]|$(pkgdatadir)|g' \
+ 	-e 's|@prefix[@]|$(prefix)|g' \
+ 	-e 's|@TINYPROXY_STATHOST[@]|$(TINYPROXY_STATHOST)|g'
+--- a/etc/tinyproxy.conf.in
++++ b/etc/tinyproxy.conf.in
+@@ -124,7 +124,7 @@ LogLevel Info
+ # can be used for signalling purposes.
+ # If not specified, no pidfile will be written.
+ #
+-#PidFile "@localstatedir@/run/tinyproxy/tinyproxy.pid"
++#PidFile "@runstatedir@/tinyproxy/tinyproxy.pid"
+ 
+ #
+ # XTinyproxy: Tell Tinyproxy to include the X-Tinyproxy header, which
+@@ -320,6 +320,3 @@ ViaProxyName "tinyproxy"
+ # If not set then no rewriting occurs.
+ #
+ #ReverseBaseURL "http://localhost:8888/"
+-
+-
+-
