@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/949707
+https://github.com/radiator-software/p5-net-ssleay/issues/493
+https://github.com/radiator-software/p5-net-ssleay/issues/494
+https://github.com/radiator-software/p5-net-ssleay/issues/511
+https://github.com/radiator-software/p5-net-ssleay/pull/487
+
+From e73cf1139a6651a968828d1634be8fec5beb50ba Mon Sep 17 00:00:00 2001
+From: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+Date: Wed, 16 Oct 2024 21:48:51 +0200
+Subject: [PATCH] test: 32_x509_get_cert_info allow single colon.
+
+Starting with 3.4.0 the double colon in emailAddress has been removed.
+Adapt the test to allow a single colon in 3.4.0 and later.
+
+Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+--- a/t/local/32_x509_get_cert_info.t
++++ b/t/local/32_x509_get_cert_info.t
+@@ -188,6 +188,10 @@ for my $f (keys (%$dump)) {
+                   ) {
+                       $ext_data =~ s{(othername:) [^, ]+}{$1<unsupported>}g;
+                   }
++                  # Starting with 3.4.0 the double colon in emailAddress has been removed.
++                  if (Net::SSLeay::SSLeay >= 0x30400000) {
++                      $ext_data =~ s{emailAddress::}{emailAddress:};
++                  }
+               }
+               elsif ( $nid == 89 ) {
+                   # The output formatting for certificate policies has a
+

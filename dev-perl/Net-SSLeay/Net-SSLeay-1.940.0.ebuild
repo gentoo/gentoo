@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.88-fix-network-tests.patch"
 	"${FILESDIR}/${PN}-1.940.0-avoid-runtime-check.patch"
+	"${FILESDIR}/${PN}-1.940.0-openssl-3.4-tests.patch"
 )
 
 PERL_RM_FILES=(
