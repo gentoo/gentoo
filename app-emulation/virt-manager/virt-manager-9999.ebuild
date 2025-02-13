@@ -96,6 +96,8 @@ src_install() {
 	fi
 
 	python_fix_shebang "${ED}"
+
+	python_optimize "${ED}/usr/share/virt-manager/"{virtinst,virtManager}
 }
 
 pkg_postinst() {
