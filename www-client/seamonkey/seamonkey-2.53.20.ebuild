@@ -342,7 +342,7 @@ src_configure() {
 		fi
 	fi
 
-	if tc-ld-is-ldd ; then
+	if tc-ld-is-lld ; then
 		mozconfig_annotate "using ld=lld due to system selection." --enable-linker=lld
 	else
 		mozconfig_annotate "linker is set to bfd." --enable-linker=bfd
