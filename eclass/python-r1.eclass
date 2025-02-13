@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -518,7 +518,7 @@ python_gen_any_dep() {
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 			i_depstr=${i_depstr//\$\{PYTHON_SINGLE_USEDEP\}/${PYTHON_SINGLE_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
-			out="( ${PYTHON_PKG_DEP/:=} ${i_depstr} ) ${out}"
+			out="( ${PYTHON_PKG_DEP/=} ${i_depstr} ) ${out}"
 		fi
 	done
 	echo "|| ( ${out})"
