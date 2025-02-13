@@ -44,6 +44,7 @@ RDEPEND="
 	net-print/cups
 	sys-apps/dbus
 	sys-devel/gcc:*
+	sys-fs/e2fsprogs
 	sys-libs/glibc
 	sys-libs/zlib
 	virtual/libcrypt
