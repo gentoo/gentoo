@@ -60,7 +60,8 @@ multilib_src_configure() {
 		--with-ogg
 	)
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	# bash for https://github.com/xiph/flac/pull/803
+	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_test() {
