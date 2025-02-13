@@ -21,12 +21,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="X"
 
-RDEPEND="
+DEPEND="
+	dev-db/sqlite:3
 	dev-libs/libgit2:=
 	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
@@ -40,6 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
 	local myfeatures=( $(usev X clipboard) trash )
 
