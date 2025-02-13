@@ -1,3 +1,6 @@
+https://bugs.gentoo.org/931972
+https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git/commit/?id=027b2d37a8cd56973d117107acc25a64cfe0a92f
+
 From b7028334f2dfbb0b11cf1fa34ecb89d5287c367b Mon Sep 17 00:00:00 2001
 From: Gwendal Grignou <gwendal@chromium.org>
 Date: Wed, 15 May 2024 14:30:59 -0700
