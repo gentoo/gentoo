@@ -1,0 +1,13 @@
+Add missing includes for implicitly declared functions
+https://bugs.gentoo.org/875479
+--- a/ping-apollo.c	2025-02-14 00:18:28.905559670 +0400
++++ b/ping-apollo.c	2025-02-14 00:19:59.617012294 +0400
+@@ -9,6 +9,8 @@
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <linux/serial.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #define DEFAULT_DEVICE "/dev/ttyS0"
+ #define MAXCHARS 128
