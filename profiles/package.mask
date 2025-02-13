@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
+# Last release 10 years ago, dead upstream, depends on Qt5, no one else
+# packages this. Removal on 2025-03-14.
+x11-misc/kaqaz
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
 # Depends on deprecated Qt5Script, gone closed-source upstream, multiple
 # open bugs #912829, #913106, #922304, #922306, #926039, #935772, #935887,
