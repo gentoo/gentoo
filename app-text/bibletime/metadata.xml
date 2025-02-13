@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>nicolas.parlant@parhuet.fr</email>
+		<name>Nicolas PARLANT</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		BibleTime is a completely free Bible study program, built for Linux,
 		Windows, FreeBSD and Mac OS X. BibleTime contains over 200 free Bible
