@@ -10,4 +10,7 @@
 		<flag name="memsave">Compile with memory protection</flag>
 		<flag name="telnet">Compile with Telnet server support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">dinoex/iroffer-dinoex</remote-id>
+	</upstream>
 </pkgmetadata>
