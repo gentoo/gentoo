@@ -368,6 +368,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-131-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-132-bindgen-custom-toolchain.patch"
 		"${FILESDIR}/chromium-134-qt5-optional.patch"
+		"${FILESDIR}/chromium-135-fix-non-wayland-build.patch"
 	)
 
 	shopt -s globstar nullglob
