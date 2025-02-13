@@ -10,5 +10,6 @@
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:mdadm_project:mdadm</remote-id>
+	<remote-id type="github">md-raid-utilities/mdadm</remote-id>
 </upstream>
 </pkgmetadata>
