@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -99,6 +99,7 @@ src_prepare() {
 	rm automation/tests/modules/lfs.moon || die
 
 	remove_locale() {
+	        sed -i -e "s/^${1}\(@latin\)\?//g" po/LINGUAS || die
 		rm "po/${1}.po" || die
 	}
 

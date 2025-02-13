@@ -98,6 +98,7 @@ src_prepare() {
 	rm automation/tests/modules/lfs.moon || die
 
 	remove_locale() {
+	        sed -i -e "s/^${1}\(@latin\)\?//g" po/LINGUAS || die
 		rm "po/${1}.po" || die
 	}
 
