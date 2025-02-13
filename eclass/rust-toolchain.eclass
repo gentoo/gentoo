@@ -73,6 +73,7 @@ rust_abi() {
 rust_arch_uri() {
 	if [ -n "$3" ]; then
 		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz -> ${3}-${1}.tar.xz"
+		echo "verify-sig? ( ${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz.asc -> ${3}-${1}.tar.xz.asc )"
 	else
 		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz"
 		echo "verify-sig? ( ${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz.asc )"
@@ -80,7 +81,7 @@ rust_arch_uri() {
 }
 
 # @FUNCTION: rust_all_arch_uris
-# @USAGE: <base-uri> [alt-distfile-basename]
+# @USAGE: [alt-distfile-basename] [rust_arch_uri-rename-param]
 # @DESCRIPTION:
 # Outputs the URIs for SRC_URI to help fetch dependencies, using a base URI
 # provided as an argument. Optionally allows for distfile renaming via a specified
@@ -91,28 +92,31 @@ rust_arch_uri() {
 #
 rust_all_arch_uris()
 {
+	local alt_basename="$1"
+	local rename_param="$2"
+
 	echo "
-	abi_x86_32? ( elibc_glibc? ( $(rust_arch_uri i686-unknown-linux-gnu "$@") ) )
+	abi_x86_32? ( elibc_glibc? ( $(rust_arch_uri i686-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
 	abi_x86_64? (
-		elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu  "$@") )
-		elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "$@") )
+		elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu  "${alt_basename}" "${rename_param}") )
+		elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "${alt_basename}" "${rename_param}") )
 	)
 	arm? ( elibc_glibc? (
-		$(rust_arch_uri arm-unknown-linux-gnueabi     "$@")
-		$(rust_arch_uri arm-unknown-linux-gnueabihf   "$@")
-		$(rust_arch_uri armv7-unknown-linux-gnueabihf "$@")
+		$(rust_arch_uri arm-unknown-linux-gnueabi     "${alt_basename}" "${rename_param}")
+		$(rust_arch_uri arm-unknown-linux-gnueabihf   "${alt_basename}" "${rename_param}")
+		$(rust_arch_uri armv7-unknown-linux-gnueabihf "${alt_basename}" "${rename_param}")
 	) )
 	arm64? (
-		elibc_glibc? ( $(rust_arch_uri aarch64-unknown-linux-gnu  "$@") )
-		elibc_musl?  ( $(rust_arch_uri aarch64-unknown-linux-musl "$@") )
+		elibc_glibc? ( $(rust_arch_uri aarch64-unknown-linux-gnu  "${alt_basename}" "${rename_param}") )
+		elibc_musl?  ( $(rust_arch_uri aarch64-unknown-linux-musl "${alt_basename}" "${rename_param}") )
 	)
-	ppc? ( elibc_glibc? ( $(rust_arch_uri powerpc-unknown-linux-gnu "$@") ) )
+	ppc? ( elibc_glibc? ( $(rust_arch_uri powerpc-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
 	ppc64? (
-		big-endian?  ( elibc_glibc? ( $(rust_arch_uri powerpc64-unknown-linux-gnu   "$@") ) )
-		!big-endian? ( elibc_glibc? ( $(rust_arch_uri powerpc64le-unknown-linux-gnu "$@") ) )
+		big-endian?  ( elibc_glibc? ( $(rust_arch_uri powerpc64-unknown-linux-gnu   "${alt_basename}" "${rename_param}") ) )
+		!big-endian? ( elibc_glibc? ( $(rust_arch_uri powerpc64le-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
 	)
-	riscv? ( elibc_glibc? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "$@") ) )
-	s390?  ( elibc_glibc? ( $(rust_arch_uri s390x-unknown-linux-gnu     "$@") ) )
-	loong? ( elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") ) )
+	riscv? ( elibc_glibc? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
+	s390?  ( elibc_glibc? ( $(rust_arch_uri s390x-unknown-linux-gnu     "${alt_basename}" "${rename_param}") ) )
+	loong? ( elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
 	"
 }
