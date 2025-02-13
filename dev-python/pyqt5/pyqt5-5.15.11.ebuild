@@ -19,9 +19,9 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="
-	dbus debug declarative designer examples gles2-only gui help location
-	multimedia network opengl positioning printsupport sensors serialport speech
-	sql +ssl svg testlib webchannel websockets widgets x11extras xmlpatterns
+	dbus debug declarative designer examples gles2-only gui help multimedia
+	network opengl printsupport serialport speech sql +ssl svg testlib
+	webchannel websockets widgets x11extras xmlpatterns
 "
 
 # The requirements below were extracted from the qmake_QT declarations
@@ -30,12 +30,9 @@ REQUIRED_USE="
 	declarative? ( gui network )
 	designer? ( widgets )
 	help? ( gui widgets )
-	location? ( positioning )
 	multimedia? ( gui network )
 	opengl? ( gui widgets )
-	positioning? ( gui )
 	printsupport? ( gui widgets )
-	sensors? ( gui )
 	serialport? ( gui )
 	sql? ( widgets )
 	svg? ( gui widgets )
@@ -61,13 +58,10 @@ DEPEND="
 	designer? ( >=dev-qt/designer-${QT_PV} )
 	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2-only=] )
 	help? ( >=dev-qt/qthelp-${QT_PV} )
-	location? ( >=dev-qt/qtlocation-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
 	network? ( >=dev-qt/qtnetwork-${QT_PV}[ssl=] )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
 	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
-	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
 	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
 	speech? ( >=dev-qt/qtspeech-${QT_PV} )
 	sql? ( >=dev-qt/qtsql-${QT_PV} )
@@ -130,14 +124,11 @@ python_configure_all() {
 		$(pyqt_use_enable gui QtGui \
 			$(use gles2-only && echo _QOpenGLFunctions_ES2 || echo _QOpenGLFunctions_{2_0,2_1,4_1_Core}))
 		$(pyqt_use_enable help QtHelp)
-		$(pyqt_use_enable location QtLocation)
 		$(pyqt_use_enable multimedia QtMultimedia \
 			$(usev widgets QtMultimediaWidgets))
 		$(pyqt_use_enable network QtNetwork)
 		$(pyqt_use_enable opengl QtOpenGL)
-		$(pyqt_use_enable positioning QtPositioning)
 		$(pyqt_use_enable printsupport QtPrintSupport)
-		$(pyqt_use_enable sensors QtSensors)
 		$(pyqt_use_enable serialport QtSerialPort)
 		$(pyqt_use_enable speech QtTextToSpeech)
 		$(pyqt_use_enable sql QtSql)
@@ -152,6 +143,9 @@ python_configure_all() {
 
 		# no longer supported in Gentoo for PyQt5, use PyQt6
 		--disable=QtBluetooth
+		--disable=QtLocation
+		--disable=QtPositioning
+		--disable=QtSensors
 
 		$(usev debug '--debug --qml-debug --tracing')
 

@@ -11,13 +11,10 @@
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Build bindings for the QtGui module</flag>
 		<flag name="help">Build bindings for the QtHelp module</flag>
-		<flag name="location">Build bindings for the QtLocation module</flag>
 		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
 		<flag name="network">Build bindings for the QtNetwork module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
-		<flag name="positioning">Build bindings for the QtPositioning module</flag>
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
-		<flag name="sensors">Build bindings for the QtSensors module</flag>
 		<flag name="serialport">Build bindings for the QtSerialPort module</flag>
 		<flag name="speech">Build bindings for the QtTextToSpeech module</flag>
 		<flag name="sql">Build bindings for the QtSql module</flag>
