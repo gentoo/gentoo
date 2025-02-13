@@ -424,7 +424,6 @@ if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
 					sys-devel/gcc:${SLOT}[ada]
 					<sys-devel/gcc-${SLOT}[ada]
 					<dev-lang/ada-bootstrap-$((${SLOT} + 1))
-					dev-lang/gnat-gpl[ada]
 				)
 			)
 		"
@@ -435,7 +434,6 @@ if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
                                         sys-devel/gcc:${SLOT}[ada]
                                         <sys-devel/gcc-${SLOT}[ada]
                                         <dev-lang/ada-bootstrap-${SLOT}
-                                        dev-lang/gnat-gpl[ada]
                                 )
                         )
                 "
