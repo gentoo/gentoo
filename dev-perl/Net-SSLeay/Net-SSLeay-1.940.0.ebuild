@@ -42,6 +42,7 @@ PATCHES=(
 
 PERL_RM_FILES=(
 	# Author tests
+	# https://github.com/radiator-software/p5-net-ssleay/pull/393
 	't/local/01_pod.t'
 	't/local/02_pod_coverage.t'
 	't/local/kwalitee.t'
