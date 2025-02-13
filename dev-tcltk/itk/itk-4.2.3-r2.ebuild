@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-lang/tk-8.6:=
-	>=dev-tcltk/itcl-4.1"
+	>=dev-tcltk/itcl-4.2.4"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
