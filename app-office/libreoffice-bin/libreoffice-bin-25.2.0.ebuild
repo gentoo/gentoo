@@ -79,18 +79,18 @@ src_unpack() {
 	[[ -z ${BINPKG_BASE} ]] && die "Failed to detect binary package directory!"
 
 	# We don't package Firebird anymore
-	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%%.0*}-firebird*_amd64.deb || die
+	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-firebird*_amd64.deb || die
 
 	if ! use java ; then
-		rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%%.0*}-gnome-integration*_amd64.deb || die
+		rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-gnome-integration*_amd64.deb || die
 	fi
 
 	# Requires KF5 as of 25.2.0, so we choose not to use it.
-	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%%.0*}-kde-integration*_amd64.deb || die
+	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-kde-integration*_amd64.deb || die
 
 	# Bundled Python is used (3.10 as of 25.2.0), so no need for system dependency.
 	if ! use python ; then
-		rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%%.0*}-python-script-provider*_amd64.deb || die
+		rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-python-script-provider*_amd64.deb || die
 	fi
 
 	# The downloaded .deb has a DEBS/ directory with e.g. libreoffice25.2_25.2.0.3-3_amd64.deb
@@ -107,7 +107,7 @@ src_prepare() {
 	default
 
 	cat <<-EOF > "${T}"/50-${PN} || die
-	SEARCH_DIRS_MASK="@GENTOO_PORTAGE_EPREFIX@/opt/libreoffice${PV%%.0*}"
+	SEARCH_DIRS_MASK="@GENTOO_PORTAGE_EPREFIX@/opt/libreoffice${PV%*.*}"
 	EOF
 	eprefixify "${T}"/50-${PN}
 }
