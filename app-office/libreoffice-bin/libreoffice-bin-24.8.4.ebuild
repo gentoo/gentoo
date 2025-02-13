@@ -67,9 +67,6 @@ RDEPEND="
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( virtual/jre:11 )
 "
-
-# TODO: l10n
-PDEPEND=""
 RESTRICT="test strip"
 
 QA_PREBUILT="opt/* usr/*"
