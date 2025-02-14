@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop fcaps flag-o-matic optfeature toolchain-funcs
+inherit cmake desktop eapi9-ver fcaps flag-o-matic optfeature toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -164,9 +164,7 @@ pkg_postinst() {
 		media-sound/alsa-utils \
 		media-libs/gst-plugins-base:1.0
 
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 2.2.0
-	then
+	if ver_replacing -lt 2.2.0; then
 		elog
 		elog "Note that the 'pcsx2' executable was renamed to 'pcsx2-qt' with this version."
 	fi
