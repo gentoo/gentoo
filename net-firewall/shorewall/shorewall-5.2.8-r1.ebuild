@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit linux-info prefix systemd
+inherit eapi9-ver linux-info prefix systemd
 
 DESCRIPTION='A high-level tool for configuring Netfilter'
 HOMEPAGE="https://shorewall.org/"
@@ -426,39 +426,33 @@ pkg_postinst() {
 
 	fi
 
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ! ver_test ${v} -ge ${MY_MAJOR_RELEASE_NUMBER}; then
-			# This is an upgrade
+	if ver_replacing -lt ${MY_MAJOR_RELEASE_NUMBER}; then
+		# This is an upgrade
 
-			elog "You are upgrading from a previous major version. It is highly recommended that you read"
+		elog "You are upgrading from a previous major version. It is highly recommended that you read"
+		elog ""
+		elog "  - /usr/share/doc/shorewall*/releasenotes.tx*"
+		elog "  - https://shorewall.org/Shorewall-5.html#idm214"
+
+		if use ipv4; then
 			elog ""
-			elog "  - /usr/share/doc/shorewall*/releasenotes.tx*"
-			elog "  - https://shorewall.org/Shorewall-5.html#idm214"
+			elog "You can auto-migrate your configuration using"
+			elog ""
+			elog "  # shorewall update -A"
 
-			if use ipv4; then
-				elog ""
-				elog "You can auto-migrate your configuration using"
-				elog ""
-				elog "  # shorewall update -A"
-
-				if use ipv6; then
-					elog "  # shorewall6 update -A"
-				fi
-
-				elog ""
-				elog "*after* you have merged the changed files using one of the configuration"
-				elog "files update tools of your choice (dispatch-conf, etc-update...)."
-
-				elog ""
-				elog "But if you are not familiar with the \"shorewall[6] update\" command,"
-				elog "please read the shorewall[6] man page first."
+			if use ipv6; then
+				elog "  # shorewall6 update -A"
 			fi
 
-			# Show this elog only once
-			break
+			elog ""
+			elog "*after* you have merged the changed files using one of the configuration"
+			elog "files update tools of your choice (dispatch-conf, etc-update...)."
+
+			elog ""
+			elog "But if you are not familiar with the \"shorewall[6] update\" command,"
+			elog "please read the shorewall[6] man page first."
 		fi
-	done
+	fi
 
 	if ! use init; then
 		elog ""
