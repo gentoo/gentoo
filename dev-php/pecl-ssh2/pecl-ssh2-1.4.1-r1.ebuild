@@ -12,7 +12,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="PHP bindings for the libssh2 library"
 HOMEPAGE="https://pecl.php.net/package/ssh2"
 LICENSE="PHP-3.01"
-SLOT="0"
+SLOT="7"
 KEYWORDS="amd64 x86"
 # Upstream notes say there are errors with gcrypt backend
 DEPEND=">=net-libs/libssh2-1.2[-gcrypt]"
