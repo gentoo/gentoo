@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit perl-module
+inherit eapi9-ver perl-module
 
 DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
@@ -84,14 +84,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	local old_ver
-	for old_ver in ${REPLACING_VERSIONS}; do
-		if ver_test ${old_ver} -lt "3" ; then
-			ewarn
-			elog "***NOTE*** This is a major upgrade and will likely break your existing gitolite-2.x setup!"
-			elog "Please read http://gitolite.com/gitolite/migr/index.html first!"
-		fi
-	done
+	if ver_replacing -lt "3" ; then
+		ewarn
+		elog "***NOTE*** This is a major upgrade and will likely break your existing gitolite-2.x setup!"
+		elog "Please read http://gitolite.com/gitolite/migr/index.html first!"
+	fi
 
 	# bug 352291
 	ewarn
