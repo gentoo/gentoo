@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd
+inherit eapi9-ver systemd
 
 DESCRIPTION="Icinga Web 2 plugin for configuration"
 HOMEPAGE="https://github.com/Icinga/icingaweb2-module-director/"
@@ -59,20 +59,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	# According to PMS this can be a space-separated list of version
-	# numbers, even though in practice it is typically just one.
-	local oldver
-	for oldver in ${REPLACING_VERSIONS}; do
-		if ver_test "${oldver}" -lt "1.11.0"; then
-			ewarn "You are upgrading from ${oldver} to ${PVR}"
-			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.11.x"
-			ewarn "for breaking changes"
-			ewarn
-			ewarn "Also, don't forget to upgrade database schema."
-			ewarn "Otherwise icingaweb2-module-director will not work!"
-			ewarn "(Web GUI => Configuration => Modules => director => Configuration)"
-			ewarn
-			break
-		fi
-	done
+	if ver_replacing -lt "1.11.0"; then
+		ewarn "You are upgrading from ${oldver} to ${PVR}"
+		ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.11.x"
+		ewarn "for breaking changes"
+		ewarn
+		ewarn "Also, don't forget to upgrade database schema."
+		ewarn "Otherwise icingaweb2-module-director will not work!"
+		ewarn "(Web GUI => Configuration => Modules => director => Configuration)"
+		ewarn
+	fi
 }
