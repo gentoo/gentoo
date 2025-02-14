@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools pam rebar systemd
+inherit autotools eapi9-ver pam rebar systemd
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
@@ -174,24 +174,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	local migrate_to_ejabberd_user=false
-
-	if [[ ${REPLACING_VERSIONS} ]]; then
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${v}" -lt 21.04-r1; then
-				migrate_to_ejabberd_user=true
-				break
-			fi
-		done
-	fi
-
-	# Sarting with >=21.04-r1, the ejabberd configuration is now in
+	# Starting with >=21.04-r1, the ejabberd configuration is now in
 	# /etc/ejabberd and no longer in /etc/jabber. See if we need to
 	# migrate the configuration. Furthermore, ejabberd no longer runs
 	# under the, shared via net-im/jabber-base, 'jabber' use, but under
 	# its own user. This increase isolation and hence robustness and
 	# security.
-	if $migrate_to_ejabberd_user; then
+	if ver_replacing -lt 21.04-r1; then
 		ewarn "Newer versions of the ejabberd Gentoo package use /etc/ejabberd"
 		ewarn "(just as upstream) and *not* /etc/jabber."
 		ewarn "The files from /etc/jabber will now be copied to /etc/ejabberd."
