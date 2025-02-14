@@ -31,6 +31,7 @@ BDEPEND="
 		${RDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/pyfakefs[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/pytest-qt[${PYTHON_USEDEP}]
 		')
 	)
