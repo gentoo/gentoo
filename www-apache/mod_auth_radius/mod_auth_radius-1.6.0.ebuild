@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit apache-module depend.apache
+inherit apache-module depend.apache eapi9-ver
 
 DESCRIPTION="Radius authentication for Apache"
 HOMEPAGE="https://freeradius.org/sub_projects/ https://github.com/FreeRADIUS/mod_auth_radius/"
@@ -26,14 +26,10 @@ pkg_setup() {
 }
 
 pkg_postinst() {
-	if [[ -n "${REPLACING_VERSIONS}" ]]; then
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test ${v} -lt 1.6.0; then
-				ewarn "Please note that upstream has changed the name of this module from"
-				ewarn "    ${PN}-2.0.so"
-				ewarn "to simply"
-				ewarn "    ${PN}.so"
-			fi
-		done
+	if ver_replacing -lt 1.6.0; then
+		ewarn "Please note that upstream has changed the name of this module from"
+		ewarn "    ${PN}-2.0.so"
+		ewarn "to simply"
+		ewarn "    ${PN}.so"
 	fi
 }
