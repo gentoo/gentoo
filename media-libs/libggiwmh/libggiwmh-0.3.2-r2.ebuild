@@ -36,8 +36,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable X x) \
-		$(use_with X x) \
-		--disable-static
+		$(use_with X x)
 }
 
 src_install() {
