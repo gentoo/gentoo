@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake xdg-utils
+inherit cmake eapi9-ver xdg-utils
 
 DESCRIPTION="A Gtk+-based Bible-study frontend for SWORD"
 HOMEPAGE="https://xiphos.org/"
@@ -56,15 +56,9 @@ src_configure() {
 pkg_postinst() {
 	xdg_icon_cache_update
 
-	if [[ -n "${REPLACING_VERSIONS}" ]]; then
-		local rver
-		for rver in ${REPLACING_VERSIONS}; do
-			if ver_test "${rver}" -le "4.2.1"; then
-				ewarn "Please note that ${PN} no longer provides an editor due to its dependency on outdated libraries."
-				ewarn "Studypad and the personal commentary will no longer work."
-				break
-			fi
-		done
+	if ver_replacing -le "4.2.1"; then
+		ewarn "Please note that ${PN} no longer provides an editor due to its dependency on outdated libraries."
+		ewarn "Studypad and the personal commentary will no longer work."
 	fi
 }
 
