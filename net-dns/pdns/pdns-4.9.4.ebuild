@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit flag-o-matic lua-single python-any-r1
+inherit eapi9-ver flag-o-matic lua-single python-any-r1
 
 DESCRIPTION="The PowerDNS Daemon"
 HOMEPAGE="https://www.powerdns.com/"
@@ -132,10 +132,7 @@ pkg_postinst() {
 	elog "The name must be in the format pdns.<suffix> and PowerDNS will use the"
 	elog "/etc/powerdns/pdns-<suffix>.conf configuration file instead of the default."
 
-	local old
-	for old in ${REPLACING_VERSIONS}; do
-		ver_test ${old} -lt 3.2 || continue
-
+	if ver_replacing -lt 3.2; then
 		echo
 		ewarn "To fix a security bug (bug #458018) had the following"
 		ewarn "files/directories the world-readable bit removed (if set):"
@@ -144,22 +141,14 @@ pkg_postinst() {
 		ewarn "Check if this is correct for your setup"
 		ewarn "This is a one-time change and will not happen on subsequent updates."
 		chmod o-rwx "${EPREFIX}"/etc/powerdns/{,pdns.conf}
+	fi
 
-		break
-	done
-
-	if use postgres; then
-		for old in ${REPLACING_VERSIONS}; do
-			ver_test ${old} -lt 4.1.11-r1 || continue
-
-			echo
-			ewarn "PowerDNS 4.1.11 contains a security fix for the PostgreSQL backend."
-			ewarn "This security fix needs to be applied manually to the database schema."
-			ewarn "Please refer to the official security advisory for more information:"
-			ewarn
-			ewarn "  https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-06.html"
-
-			break
-		done
+	if use postgres && ver_replacing -lt 4.1.11-r1; then
+		echo
+		ewarn "PowerDNS 4.1.11 contains a security fix for the PostgreSQL backend."
+		ewarn "This security fix needs to be applied manually to the database schema."
+		ewarn "Please refer to the official security advisory for more information:"
+		ewarn
+		ewarn "  https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-06.html"
 	fi
 }
