@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_IN_SOURCE_BUILD=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit bash-completion-r1 distutils-r1 linux-info systemd
+inherit bash-completion-r1 distutils-r1 eapi9-ver linux-info systemd
 
 DESCRIPTION="A program used to manage a netfilter firewall"
 HOMEPAGE="https://launchpad.net/ufw"
@@ -166,9 +166,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	local print_check_req_warn
-	print_check_req_warn=false
-
 	local found=()
 	local apps=( "net-firewall/arno-iptables-firewall"
 		"net-firewall/ferm"
@@ -190,7 +187,7 @@ pkg_postinst() {
 		ewarn "If enabled, these applications may interfere with ufw!"
 	fi
 
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		echo ""
 		elog "To enable ufw, add it to boot sequence and activate it:"
 		elog "-- # rc-update add ufw boot"
@@ -198,18 +195,8 @@ pkg_postinst() {
 		echo
 		elog "If you want to keep ufw logs in a separate file, take a look at"
 		elog "/usr/share/doc/${PF}/logging."
-		print_check_req_warn=true
-	else
-		local rv
-		for rv in ${REPLACING_VERSIONS}; do
-			local major=${rv%%.*}
-			local minor=${rv#${major}.}
-			if [[ "${major}" -eq 0 && "${minor}" -lt 34 ]]; then
-				print_check_req_warn=true
-			fi
-		done
 	fi
-	if [[ "${print_check_req_warn}" == "true" ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] || ver_replacing -lt 0.34; then
 		echo
 		elog "/usr/share/ufw/check-requirements script is installed."
 		elog "It is useful for debugging problems with ufw. However one"
