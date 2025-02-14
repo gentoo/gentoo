@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools eapi9-ver
 
 DESCRIPTION="Library providing software emulation of a TPM"
 HOMEPAGE="https://github.com/stefanberger/libtpms"
@@ -40,7 +40,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 0.8.0; then
+	if ver_replacing -lt 0.8.0; then
 		elog "Versions of libtpms prior to 0.8.0 generate weaker than expected TPM 2.0 RSA"
 		elog "keys due to a flawed key creation algorithm. Because fixing this would render"
 		elog "existing sealed data inaccessible, to use the corrected algorithm, the old"
