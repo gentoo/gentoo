@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop toolchain-funcs
+inherit desktop eapi9-ver toolchain-funcs
 
 HIGAN_COMMIT="9bf1b3314b2bcc73cbc11d344b369c31562aff10"
 
@@ -111,8 +111,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} ]] &&
-		ver_test ${REPLACING_VERSIONS} -lt 116_pre20210818; then
+	if ver_replacing -lt 116_pre20210818; then
 		elog "On new installs, higan now uses ~/.local/share/higan/Systems/ rather than"
 		elog "~/higan/, and reads Templates from ${EROOT}/usr/share/higan/ on Gentoo."
 		elog "Will need to edit/delete ~/.config/higan/paths.bml for this to take effect."
