@@ -209,6 +209,13 @@ src_compile() {
 }
 
 src_test() {
+	if has_version -b app-emulation/qemu; then
+		ewarn "QEMU executable was found on your building system."
+		ewarn "If you have qemu-binfmt (binfmt_misc) hooks enabled for"
+		ewarn "foreign architectures, Zig tests might fail."
+		ewarn "In this case, please disable qemu-binfmt and try again."
+	fi
+
 	cd "${BUILD_DIR}" || die
 
 	# XXX: When we pass a libc installation to Zig, it will fail to find
