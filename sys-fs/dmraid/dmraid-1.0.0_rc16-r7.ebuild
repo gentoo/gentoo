@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic autotools linux-info
+inherit eapi9-ver flag-o-matic autotools linux-info
 
 MY_PV=${PV/_/.}-3
 
@@ -100,7 +100,7 @@ pkg_postinst() {
 		elog "\t genkernel --dmraid all"
 	fi
 	# skip this message if this revision has already been emerged
-	if [[ " ${REPLACING_VERSIONS} " != *\ ${PVR}\ * ]]; then
+	if ! ver_replacing -eq ${PVR}; then
 		elog
 		elog "A pre-patched distfile of this version of DMRAID has been installed at"
 		elog "/usr/share/${PN}/${PN}-${MY_PV}-prepatched.tar.bz2 , to support using it within a"
