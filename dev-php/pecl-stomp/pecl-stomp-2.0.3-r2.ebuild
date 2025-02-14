@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="PHP extension to communicate with Stomp message brokers"
 HOMEPAGE="https://pecl.php.net/package/stomp"
 LICENSE="PHP-3.01"
-SLOT="0"
+SLOT="7"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples ssl test"
 RESTRICT="!test? ( test )"
