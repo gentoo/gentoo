@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
+inherit check-reqs eapi9-ver flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
 
 MY_PV=r${PV/_rc/-rc}
 MY_P=mongo-${MY_PV}
@@ -99,7 +99,7 @@ pkg_pretend() {
 	fi
 
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ver_test "$REPLACING_VERSIONS" -lt 4.4; then
+		if ver_replacing -lt 4.4; then
 			ewarn "To upgrade from a version earlier than the 4.4-series, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
 			ewarn "to 4.4-series. Then upgrade to 5.0 series."
