@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit optfeature secureboot toolchain-funcs
+inherit eapi9-ver optfeature secureboot toolchain-funcs
 
 DESCRIPTION="The UEFI Boot Manager by Rod Smith"
 HOMEPAGE="https://www.rodsbooks.com/refind/"
@@ -158,7 +158,7 @@ pkg_postinst() {
 		elog "A sample configuration can be found at"
 		elog "${EROOT}/usr/$(get_libdir)/${PN}/refind/refind.conf-sample"
 	else
-		if ver_test "${REPLACING_VERSIONS}" -lt "0.12.0"; then
+		if ver_replacing -lt "0.12.0"; then
 			ewarn "This new version uses sys-apps/gptfdisk instead of sys-block/parted"
 			ewarn "to manage ESP"
 			ewarn ""
