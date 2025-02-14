@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit go-module
+inherit eapi9-ver go-module
 # uncomment the first setting of MY_PV for a normal release
 # MY_PV="v${PV/_rc/-rc.}"
 # set MY_PV to the full commit hash for a snapshot release
@@ -80,15 +80,8 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
 		elog "Create \"${EROOT}/var/lib/mysqld_exporter/.my.cnf\" to read MySQL credentials from file."
-	else
-		local _replacing_version=
-		for _replacing_version in ${REPLACING_VERSIONS}; do
-			if ! ver_test "${_replacing_version}" -ge "0.11.0"; then
-				elog "Starting with ${PN}-0.11.0, command-line flags will require double dashes (--)."
-				elog "You must update your configuration or ${PN} won't start."
-
-				break
-			fi
-		done
+	elif ver_replacing -lt "0.11.0"; then
+		elog "Starting with ${PN}-0.11.0, command-line flags will require double dashes (--)."
+		elog "You must update your configuration or ${PN} won't start."
 	fi
 }
