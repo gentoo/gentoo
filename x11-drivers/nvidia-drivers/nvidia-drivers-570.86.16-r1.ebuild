@@ -4,8 +4,8 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop eapi9-pipestatus flag-o-matic linux-mod-r1 readme.gentoo-r1
-inherit systemd toolchain-funcs unpacker user-info
+inherit desktop eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
+inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.13
 NV_URI="https://download.nvidia.com/XFree86/"
@@ -593,9 +593,7 @@ pkg_postinst() {
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 	fi
 
-	if use !kernel-open && [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 555
-	then
+	if use !kernel-open && ver_replacing -lt 555; then
 		elog
 		elog "If using a Turing/Ampere+ GPU (aka GTX 1650+), note that >=nvidia-drivers-555"
 		elog "enables the use of the GSP firmware by default. *If* experience regressions,"
