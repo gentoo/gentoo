@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools flag-o-matic pam systemd
+inherit autotools eapi9-ver flag-o-matic pam systemd
 
 DESCRIPTION="Open Source AFP server"
 HOMEPAGE="https://netatalk.sourceforge.net/"
@@ -130,43 +130,40 @@ src_install() {
 }
 
 pkg_postinst() {
-	local fle v
-	for v in ${REPLACING_VERSIONS}; do
-		if [[ $(ver_test ${v} -lt 3) ]]; then
-			for fle in afp_signature.conf afp_voluuid.conf; do
-				if [[ -f "${ROOT}"/etc/netatalk/${fle} ]]; then
-					if [[ ! -f "${ROOT}"/var/lib/netatalk/${fle} ]]; then
-						mv \
-							"${ROOT}"/etc/netatalk/${fle} \
-							"${ROOT}"/var/lib/netatalk/
-					fi
+	if ver_replacing -lt 3; then
+		local fle
+		for fle in afp_signature.conf afp_voluuid.conf; do
+			if [[ -f "${ROOT}"/etc/netatalk/${fle} ]]; then
+				if [[ ! -f "${ROOT}"/var/lib/netatalk/${fle} ]]; then
+					mv \
+						"${ROOT}"/etc/netatalk/${fle} \
+						"${ROOT}"/var/lib/netatalk/
 				fi
-			done
+			fi
+		done
 
-			elog
-			elog "Starting from version 3.0 only uses a single init script again"
-			elog "Please update your runlevels accordingly"
-			elog
-			elog "Dependencies should be resolved automatically depending on settings"
-			elog "but please report issues with this on https://bugs.gentoo.org/ if"
-			elog "you find any."
-			elog
-			elog "Following config files are obsolete now:"
-			elog "afpd.conf, netatalk.conf, AppleVolumes.default and afp_ldap.conf"
-			elog "in favour of"
-			elog "/etc/afp.conf"
-			elog
-			elog "Please convert your existing configs before you restart your daemon"
-			elog
-			elog "The new AppleDouble default backend is appledouble = ea"
-			elog "Existing entries will be updated on access, but can do an offline"
-			elog "conversion with"
-			elog "dbd -ruve /path/to/Volume"
-			elog
-			elog "For general notes on the upgrade, please visit"
-			elog "http://netatalk.sourceforge.net/3.0/htmldocs/upgrade.html"
-			elog
-			break
-		fi
-	done
+		elog
+		elog "Starting from version 3.0 only uses a single init script again"
+		elog "Please update your runlevels accordingly"
+		elog
+		elog "Dependencies should be resolved automatically depending on settings"
+		elog "but please report issues with this on https://bugs.gentoo.org/ if"
+		elog "you find any."
+		elog
+		elog "Following config files are obsolete now:"
+		elog "afpd.conf, netatalk.conf, AppleVolumes.default and afp_ldap.conf"
+		elog "in favour of"
+		elog "/etc/afp.conf"
+		elog
+		elog "Please convert your existing configs before you restart your daemon"
+		elog
+		elog "The new AppleDouble default backend is appledouble = ea"
+		elog "Existing entries will be updated on access, but can do an offline"
+		elog "conversion with"
+		elog "dbd -ruve /path/to/Volume"
+		elog
+		elog "For general notes on the upgrade, please visit"
+		elog "http://netatalk.sourceforge.net/3.0/htmldocs/upgrade.html"
+		elog
+	fi
 }
