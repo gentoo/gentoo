@@ -82,7 +82,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if [[ ! ${REPLACING_VERSIONS##* } ]]; then
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "A default ~/.config/cava/config will be created after initial"
 		elog "use of ${PN}, see it and ${EROOT}/usr/share/doc/${PF}/README*"
 		elog "for configuring audio input and more."
