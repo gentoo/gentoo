@@ -1,7 +1,9 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit eapi9-ver
 
 DESCRIPTION="Manage active Wine slots and variants"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Wine"
@@ -66,8 +68,7 @@ pkg_postinst() {
 
 	rm -f "${EROOT}"/etc/eselect/wine/eselect-wine-migration || die # see preinst
 
-	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
-		ver_test ${REPLACING_VERSIONS##* } -lt 2; then
+	if ver_replacing -lt 2; then
 		elog
 		elog "Warning:"
 		elog
@@ -83,8 +84,7 @@ pkg_postinst() {
 		# using that path or source profile outside the ROOT
 	fi
 
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 2.0.2-r1; then
+	if ver_replacing -lt 2.0.2-r1; then
 		elog "Note that >=${PN}-2.0.2-r1 no longer installs the"
 		elog "'${EPREFIX}/usr/bin/wine' symbolic link. 'wine' can still be found"
 		elog "in PATH but, if using the direct location for scripts and/or binfmt,"
