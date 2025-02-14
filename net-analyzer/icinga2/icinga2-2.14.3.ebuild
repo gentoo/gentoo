@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake systemd
+inherit cmake eapi9-ver systemd
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -134,13 +134,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "${PV}" != 9999 ]]; then
-		local v
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${PV}" -gt "${v}"; then
-				elog "DB IDO schema upgrade may be required."
-				elog "https://www.icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/"
-			fi
-		done
+	if [[ "${PV}" != 9999 ]] && ver_replacing -lt "${PV}"; then
+		elog "DB IDO schema upgrade may be required."
+		elog "https://www.icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/"
 	fi
 }
