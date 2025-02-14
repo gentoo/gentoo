@@ -1,11 +1,11 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit flag-o-matic meson-multilib toolchain-funcs
+inherit eapi9-ver flag-o-matic meson-multilib toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -188,20 +188,20 @@ pkg_postinst() {
 		elog "on it, not meant to function independently even if only using d3d12."
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
-	elif [[ ${REPLACING_VERSIONS##* } ]]; then
-		if ver_test ${REPLACING_VERSIONS##* } -lt 2.7; then
-			elog
-			elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
-			elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
-		fi
+	fi
 
-		if ver_test ${REPLACING_VERSIONS##* } -lt 2.9; then
-			elog
-			elog ">=${PN}-2.9 has a new file to install (d3d12core.dll), old Wine prefixes that"
-			elog "relied on '--symlink' may need updates by using the setup_vkd3d_proton.sh."
-			elog
-			elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1's"
-			elog "dxgi.dll is not available on that prefix (even if only using d3d12)."
-		fi
+	if ver_replacing -lt 2.7; then
+		elog
+		elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
+		elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+	fi
+
+	if ver_replacing -lt 2.9; then
+		elog
+		elog ">=${PN}-2.9 has a new file to install (d3d12core.dll), old Wine prefixes that"
+		elog "relied on '--symlink' may need updates by using the setup_vkd3d_proton.sh."
+		elog
+		elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1's"
+		elog "dxgi.dll is not available on that prefix (even if only using d3d12)."
 	fi
 }
