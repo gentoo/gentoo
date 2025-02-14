@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake eapi9-ver
 
 DESCRIPTION="Anope IRC Services"
 HOMEPAGE="https://www.anope.org/ https://github.com/anope/anope/"
@@ -137,18 +137,12 @@ pkg_postinst() {
 		# Only tell them about this on a fresh install.
 		ewarn "Anope won't run out of the box, you still have to configure it to match your IRCd's configuration."
 		ewarn "Edit /etc/anope/services.conf to configure Anope."
-	else
-		# We're replacing some versions. Find out which.
-		local ver
-		for ver in ${REPLACING_VERSIONS} ; do
-			if ver_test ${ver} -lt 2.0.7 ; then
-				# In this version, we introduced correct FHS structure
-				# We need the users to make some changes to their services.conf
-				ewarn "Please modify your services.conf to include the following directive:"
-				ewarn "in options{}, please include user=\"anope\" and group=\"anope\""
-				ewarn "This is needed because Anope now starts as root and drops down."
-				ewarn "Reference: https://wiki.anope.org/index.php/2.0/Configuration#Services_Process_Options"
-			fi
-		done
+	elif ver_replacing -lt 2.0.7 ; then
+		# In this version, we introduced correct FHS structure
+		# We need the users to make some changes to their services.conf
+		ewarn "Please modify your services.conf to include the following directive:"
+		ewarn "in options{}, please include user=\"anope\" and group=\"anope\""
+		ewarn "This is needed because Anope now starts as root and drops down."
+		ewarn "Reference: https://wiki.anope.org/index.php/2.0/Configuration#Services_Process_Options"
 	fi
 }
