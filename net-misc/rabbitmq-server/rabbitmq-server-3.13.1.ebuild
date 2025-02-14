@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..12} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit python-any-r1 systemd
+inherit eapi9-ver python-any-r1 systemd
 
 DESCRIPTION="RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang"
 HOMEPAGE="https://www.rabbitmq.com/"
@@ -89,7 +89,7 @@ src_install() {
 
 pkg_preinst() {
 	# https://www.rabbitmq.com/docs/upgrade#rabbitmq-version-upgradability
-	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 3.12; then
+	if ver_replacing -lt 3.12; then
 		elog "Upgrading to RabbitMQ 3.12 requires all feature flags"
 		elog "from 3.11 to be enabled. If any feature flags are not"
 		elog "enabled, the node will refuse to start."
