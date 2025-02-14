@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1
+inherit distutils-r1 optfeature shell-completion
 
 DESCRIPTION="Python CPIO library"
 HOMEPAGE="https://github.com/desultory/pycpio/"
@@ -21,11 +21,21 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=dev-python/zenlib-3.0.2[${PYTHON_USEDEP}]
-	>=dev-python/zstd-1.5.6.1[${PYTHON_USEDEP}]
 "
+
+BDEPEND="test? ( dev-python/zstd[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
 
 python_test() {
 	eunittest tests
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+	dozshcomp completion/_pycpio  # Install zsh autocomplete script
+}
+
+pkg_postinst() {
+	optfeature "zstd compression support" dev-python/zstd
 }
