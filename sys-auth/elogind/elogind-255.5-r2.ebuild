@@ -14,7 +14,7 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
-inherit linux-info meson pam python-any-r1 udev xdg-utils
+inherit eapi9-ver linux-info meson pam python-any-r1 udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
@@ -172,13 +172,11 @@ pkg_postinst() {
 		fi
 	fi
 
-	for version in ${REPLACING_VERSIONS}; do
-		if ver_test "${version}" -lt 252.9; then
-			elog "Starting with release 252.9 the sleep configuration is now done"
-			elog "in the /etc/elogind/sleep.conf. Should you use non-default sleep"
-			elog "configuration remember to migrate those to new configuration file."
-		fi
-	done
+	if ver_replacing -lt 252.9; then
+		elog "Starting with release 252.9 the sleep configuration is now done"
+		elog "in the /etc/elogind/sleep.conf. Should you use non-default sleep"
+		elog "configuration remember to migrate those to new configuration file."
+	fi
 
 	local file files
 	# find custom hooks excluding known (nvidia-drivers, sys-power/tlp)
