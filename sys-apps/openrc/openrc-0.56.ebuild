@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson pam
+inherit eapi9-ver meson pam
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -152,13 +152,10 @@ pkg_postinst() {
 	fi
 
 	# added for 0.45 to handle seedrng/urandom switching (2022-06-07)
-	for v in ${REPLACING_VERSIONS}; do
-		[[ -x $(type rc-update) ]] || continue
-		if ver_test $v -lt 0.45; then
-			if rc-update show boot | grep -q urandom; then
-				rc-update del urandom boot
-				rc-update add seedrng boot
+	if ver_replacing -lt 0.45 && ! [[ -x $(type rc-update) ]]; then
+		if rc-update show boot | grep -q urandom; then
+			rc-update del urandom boot
+			rc-update add seedrng boot
 		fi
-		fi
-	done
+	fi
 }
