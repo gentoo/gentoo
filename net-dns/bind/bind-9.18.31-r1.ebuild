@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd tmpfiles
+inherit eapi9-ver systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -202,7 +202,7 @@ pkg_postinst() {
 	fi
 
 	# show only when upgrading to 9.18
-	if [[ -n "${REPLACING_VERSIONS}" ]] && ver_test "${REPLACING_VERSIONS}" -lt 9.18; then
+	if ver_replacing -lt 9.18; then
 		elog "As this is a major bind version upgrade, please read:"
 		elog "   https://kb.isc.org/docs/changes-to-be-aware-of-when-moving-from-bind-916-to-918"
 		elog "for differences in functionality."
