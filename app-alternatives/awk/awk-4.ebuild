@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ ALTERNATIVES=(
 	nawk:sys-apps/nawk
 )
 
-inherit app-alternatives
+inherit app-alternatives eapi9-ver
 
 DESCRIPTION="/bin/awk and /usr/bin/awk symlinks"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
@@ -49,18 +49,11 @@ pkg_preinst() {
 
 	has_version "app-alternatives/awk[mawk]" && HAD_MAWK=1
 
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 4; then
-			SHOW_MAWK_WARNING=1
-		fi
+	ver_replacing -lt 4 && SHOW_MAWK_WARNING=1
 
-		# if we are upgrading from a new enough version, leftover manpage
-		# symlink cleanup was done already
-		if ver_test "${v}" -ge 3; then
-			return
-		fi
-	done
+	# if we are upgrading from a new enough version, leftover manpage
+	# symlink cleanup was done already
+	ver_replacing -ge 3 && return
 
 	# otherwise, remove leftover files/symlinks created by eselect-awk (sic!)
 	shopt -s nullglob
