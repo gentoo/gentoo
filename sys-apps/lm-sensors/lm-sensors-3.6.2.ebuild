@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info systemd toolchain-funcs multilib-minimal
+inherit eapi9-ver linux-info systemd toolchain-funcs multilib-minimal
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
 HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/lm-sensors/lm-sensors"
@@ -185,33 +185,28 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	local _new_loader='3.4.0_p20160725'
-	local _v
-	for _v in ${REPLACING_VERSIONS}; do
-		if ! ver_test "${_v}" -gt "${_new_loader}"; then
-			# This is an upgrade which require migration
+	if ver_replacing -lt "${_new_loader}"; then
+		# This is an upgrade which require migration
 
-			elog ""
-			elog "Since version 3.4.0_p20160725 ${PN} no longer loads modules on its own"
-			elog "instead it is using \"modules-load\" services provided by OpenRC or systemd."
-			elog ""
-			elog "To migrate your configuration you have 2 options:"
-			elog ""
-			elog "  a) Re-create a new configuration using \"/usr/sbin/sensors-detect\""
-			elog ""
-			elog "  b) Copy existing \"modules_<n>\", \"HWMON_MODULES\" or \"BUS_MODULES\""
-			elog "     variables from \"/etc/conf.d/lm_modules\" to"
-			elog "     \"/etc/modules-load.d/lm_sensors.conf\" and adjust format."
-			elog ""
-			elog "     For details see https://wiki.gentoo.org/wiki/Systemd#Automatic_module_loading"
-			elog ""
-			elog "     Important: Don't forget to migrate your module's argument"
-			elog "                (modules_<name>_args variable) if your are not already"
-			elog "                using \"/etc/modprobe.d\" (which is recommended)."
+		elog ""
+		elog "Since version 3.4.0_p20160725 ${PN} no longer loads modules on its own"
+		elog "instead it is using \"modules-load\" services provided by OpenRC or systemd."
+		elog ""
+		elog "To migrate your configuration you have 2 options:"
+		elog ""
+		elog "  a) Re-create a new configuration using \"/usr/sbin/sensors-detect\""
+		elog ""
+		elog "  b) Copy existing \"modules_<n>\", \"HWMON_MODULES\" or \"BUS_MODULES\""
+		elog "     variables from \"/etc/conf.d/lm_modules\" to"
+		elog "     \"/etc/modules-load.d/lm_sensors.conf\" and adjust format."
+		elog ""
+		elog "     For details see https://wiki.gentoo.org/wiki/Systemd#Automatic_module_loading"
+		elog ""
+		elog "     Important: Don't forget to migrate your module's argument"
+		elog "                (modules_<name>_args variable) if your are not already"
+		elog "                using \"/etc/modprobe.d\" (which is recommended)."
 
-			# Show this elog only once
-			break
-		fi
-	done
+	fi
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# New installation
