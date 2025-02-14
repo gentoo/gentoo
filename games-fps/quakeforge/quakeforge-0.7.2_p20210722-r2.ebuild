@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs
+inherit autotools eapi9-ver flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -151,7 +151,7 @@ Audio/Video notes:
 pkg_postinst() {
 	readme.gentoo_print_elog
 
-	if [[ ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -le 0.7.2-r1; then
+	if ver_replacing -le 0.7.2-r1; then
 		elog "Migration may be needed for ${PN}'s home paths, now using:"
 		elog "    ~/.${PN}rc -> ~/.config/${PN}/${PN}.conf"
 		elog "    ~/.${PN}/  -> ~/.local/share/${PN}/"
