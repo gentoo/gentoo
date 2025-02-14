@@ -57,3 +57,8 @@ src_compile() {
 
 	emake "${myemakeopts[@]}"
 }
+
+src_install() {
+	emake DESTDIR="${ED}" install
+	einstalldocs
+}
