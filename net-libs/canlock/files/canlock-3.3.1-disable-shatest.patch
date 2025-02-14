@@ -1,0 +1,24 @@
+shatest depends on static library, we don't build this package static
+Transformed from sed
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -41,10 +41,10 @@
+ # ==============================================================================
+ # Rules to build test programs
+ 
+-check_PROGRAMS = shatest canlocktest canlocktest_multi canlocktest_legacy
++check_PROGRAMS = canlocktest canlocktest_multi canlocktest_legacy
+ CLEANFILES = shatest_check.sh
+ 
+ # This is required because shatest always return 0 status (even if tests failed)
+ check_SCRIPTS = shatest_check.sh
+ 
+ # Attention: Linking against the static library is intended here!
+@@ -72,6 +72,6 @@
+ # ==============================================================================
+ # Executables to run for "make check"
+ 
+-TESTS = shatest shatest_check.sh canlocktest canlocktest_multi \
++TESTS = shatest_check.sh canlocktest canlocktest_multi \
+         canlocktest_legacy
+ 
