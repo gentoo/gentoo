@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="true"
 KFMIN=6.10.0
 QTMIN=6.8.1
-inherit ecm fcaps plasma.kde.org
+inherit ecm fcaps flag-o-matic plasma.kde.org toolchain-funcs
 
 DESCRIPTION="Task management and system monitoring library"
 
@@ -39,6 +39,12 @@ RDEPEND="${DEPEND}
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/libexec/ksysguard/ksgrd_network_helper )
 
 src_configure() {
+	# support std::jthread and std::stop_token is not enabled per default
+	# in libc++ prior to version 20, need to add "-fexperimental-library"
+	if tc-is-clang && [[ $(tc-get-cxx-stdlib) == libc++ ]] && [[ "$(clang-major-version)" -lt 20 ]]; then
+		append-cxxflags "-fexperimental-library"
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libcap=ON
 	)
