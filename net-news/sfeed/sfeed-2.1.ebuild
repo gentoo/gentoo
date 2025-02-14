@@ -11,7 +11,7 @@ SRC_URI="https://codemadness.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~riscv ~sparc ~x86"
 
 THEMES=( mono{,-highlight} newsboat templeos )
 IUSE="+ncurses +${THEMES[@]/#/theme-}"
