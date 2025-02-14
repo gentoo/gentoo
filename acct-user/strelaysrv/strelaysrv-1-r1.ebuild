@@ -1,9 +1,9 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit acct-user
+inherit acct-user eapi9-ver
 
 DESCRIPTION="User for the Syncthing relay server"
 ACCT_USER_ID=496
@@ -14,14 +14,8 @@ ACCT_USER_GROUPS=( syncthing )
 acct-user_add_deps
 
 pkg_postinst() {
-	if [[ -n "${REPLACING_VERSIONS}" ]]; then
-		local rver
-		for rver in ${REPLACING_VERSIONS} ; do
-			if ver_test "${rver}" -lt 1; then
-				ewarn "The home directory of this user has changed to /var/lib/syncthing-relaysrv"
-				ewarn "If you have any files in /var/lib/${PN}, move them to the new location by hand"
-				break
-			fi
-		done
+	if ver_replacing -lt 1; then
+		ewarn "The home directory of this user has changed to /var/lib/syncthing-relaysrv"
+		ewarn "If you have any files in /var/lib/${PN}, move them to the new location by hand"
 	fi
 }
