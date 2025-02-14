@@ -53,6 +53,15 @@ myhlopts=(
 	examples_dir="${EPREFIX}/usr/share/doc/${PF}/extras"
 )
 
+src_unpack() {
+	if use verify-sig ; then
+		# Needed because the testsuite tarball is unsigned
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.asc}
+	fi
+
+	default
+}
+
 src_prepare() {
 	default
 
