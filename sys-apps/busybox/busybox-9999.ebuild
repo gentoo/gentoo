@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
 EAPI=8
 
-inherit flag-o-matic readme.gentoo-r1 savedconfig toolchain-funcs
+inherit eapi9-ver flag-o-matic readme.gentoo-r1 savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
@@ -377,11 +377,9 @@ pkg_postinst() {
 	fi
 
 	if [[ ${MERGE_TYPE} != binary ]] && ! is-flagq -Oz; then
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test ${v} -le 1.36.1; then
-				FORCE_PRINT_ELOG=yes
-			fi
-		done
+		if ver_replacing -le 1.36.1; then
+			FORCE_PRINT_ELOG=yes
+		fi
 
 		readme.gentoo_print_elog
 	fi
