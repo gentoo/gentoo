@@ -33,6 +33,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-02-14)
+# No revdeps left, and serves no purpose on its own.  Formerly used
+# by <=app-emulation/wine-*-7 but <=7.x has been dropped and newer
+# versions of it cross-build their own .dll (PE) version of it
+# leaving the system's .so (ELF) copy unused.
+#
+# In other words, *can* use vkd3d with wine without this package.
+#
+# Not to be confused with app-emulation/vkd3d-proton which builds a
+# .dll usable as an alternative to wine's own.
+#
+# Removal on 2025-03-16.
+app-emulation/vkd3d
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
 # Last release 10 years ago, dead upstream, depends on Qt5, no one else
 # packages this. Removal on 2025-03-14.
