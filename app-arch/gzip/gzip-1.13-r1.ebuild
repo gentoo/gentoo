@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gzip.asc
-inherit flag-o-matic verify-sig
+inherit eapi9-ver flag-o-matic verify-sig
 
 DESCRIPTION="Standard GNU compressor"
 HOMEPAGE="https://www.gnu.org/software/gzip/"
@@ -80,14 +80,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		local ver
-		for ver in ${REPLACING_VERSIONS}; do
-			if ver_test "${ver}" -lt "1.12-r2"; then
-				ewarn "This package no longer installs 'uncompress'."
-				ewarn "Please use 'gzip -d' to decompress .Z files."
-			fi
-		done
+	if ver_replacing -lt "1.12-r2"; then
+		ewarn "This package no longer installs 'uncompress'."
+		ewarn "Please use 'gzip -d' to decompress .Z files."
 	fi
 
 	# ensure to preserve the symlinks before app-alternatives/gzip
