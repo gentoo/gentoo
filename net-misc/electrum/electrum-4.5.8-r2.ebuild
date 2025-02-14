@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="ncurses?"
 
-inherit distutils-r1 verify-sig xdg-utils
+inherit distutils-r1 eapi9-ver verify-sig xdg-utils
 
 MY_P=${P^}
 DESCRIPTION="User friendly Bitcoin client"
@@ -108,10 +108,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		ver_test "${v}" -ge 4.3.4 && return
-	done
+	ver_replacing -ge 4.3.4 && return
 
 	ewarn "If you are new to BitCoin, please be aware that:"
 	ewarn "1. Cryptocurrencies are volatile.  BTC has been subject to rapid"
