@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit go-module
+inherit eapi9-ver go-module
 MY_PV=${PV/_/-}
 
 DESCRIPTION="Multi-container orchestration for Docker"
@@ -42,9 +42,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	for v in ${REPLACING_VERSIONS}; do
-		ver_test ${v} -ge 2 && return
-	done
+	ver_replacing -ge 2 && return
 	ewarn
 	ewarn "docker-compose 2.x is a sub command of docker"
 	ewarn "Use 'docker compose' from the command line instead of"
