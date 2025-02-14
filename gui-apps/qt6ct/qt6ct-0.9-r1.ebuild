@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake eapi9-ver
 
 DESCRIPTION="Qt6 Configuration Tool (for DE/WM without Qt integration)"
 HOMEPAGE="https://github.com/trialuser02/qt6ct/"
@@ -52,9 +52,7 @@ pkg_postinst() {
 
 	# not a very important warning (at most could surprise users that had it
 	# installed but weren't really using it), can likely cleanup next version
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 0.9-r1
-	then
+	if ver_replacing -lt 0.9-r1; then
 		ewarn
 		ewarn "Note that ${PF} newly sets QT_QPA_PLATFORMTHEME globally"
 		ewarn "by default to use ${PN} (or qt5ct if it is installed)."
