@@ -18,8 +18,8 @@ PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
 
-inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
-		pax-utils xdg-utils
+inherit eapi9-ver linux-info toolchain-funcs python-r1 udev fcaps \
+		readme.gentoo-r1 pax-utils xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	QEMU_DOCS_PREBUILT=0
@@ -930,16 +930,6 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-firmware_abi_change() {
-	local pv
-	for pv in ${REPLACING_VERSIONS}; do
-		if ver_test ${pv} -lt ${FIRMWARE_ABI_VERSION}; then
-			return 0
-		fi
-	done
-	return 1
-}
-
 pkg_postinst() {
 	if [[ -n ${softmmu_targets} ]] && use kernel_linux; then
 		udev_reload
@@ -953,7 +943,7 @@ pkg_postinst() {
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
 
-	if use pin-upstream-blobs && firmware_abi_change; then
+	if use pin-upstream-blobs && ver_replacing -lt ${FIRMWARE_ABI_VERSION}; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
 
 		if has_version 'sys-firmware/edk2-bin'; then
