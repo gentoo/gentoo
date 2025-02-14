@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit flag-o-matic meson-multilib python-any-r1
+inherit eapi9-ver flag-o-matic meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -162,9 +162,7 @@ pkg_postinst() {
 		elog "removed upstream, handling may change in the future."
 	fi
 
-	if use d3d8 && [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 2.4
-	then
+	if use d3d8 && ver_replacing -lt 2.4; then
 		elog
 		elog ">=${PN}-2.4 now provides d3d8.dll, to make use of it will need to"
 		elog "update old wine prefixes which is typically done by re-running:"
