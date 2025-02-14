@@ -7,7 +7,7 @@ EAPI=8
 #PLOCALES="de es fi fr hu id pl"
 PLOCALES="de es fr pl"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/sysvinit.asc
-inherit toolchain-funcs flag-o-matic plocale verify-sig
+inherit toolchain-funcs flag-o-matic plocale verify-sig eapi9-ver
 
 DESCRIPTION="/sbin/init - parent of all processes"
 HOMEPAGE="https://savannah.nongnu.org/projects/sysvinit"
@@ -173,12 +173,9 @@ pkg_postinst() {
 		touch "${EROOT}/var/log/boot"
 	fi
 
-	local ver
-	for ver in ${REPLACING_VERSIONS}; do
-		ver_test ${ver} -ge 3.07-r2 && continue
+	if ver_replacing -lt 3.07-r2; then
 		ewarn "Previously, the 'halt' command caused the system to power off"
 		ewarn "even if option -p was not given. This long-standing bug has"
 		ewarn "been fixed, and the command now behaves as documented."
-		break
-	done
+	fi
 }
