@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic systemd toolchain-funcs
+inherit eapi9-ver flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Standard log daemons"
 HOMEPAGE="https://troglobit.com/sysklogd.html https://github.com/troglobit/sysklogd"
@@ -73,13 +73,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use logrotate && [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 2.0 ; then
+	if ! use logrotate && ver_replacing -lt 2.0 ; then
 		elog "Starting with version 2.0 syslogd has built in log rotation"
 		elog "functionality that does no longer require a running cron daemon."
 		elog "So we no longer install any log rotation cron files for sysklogd."
 	fi
 
-	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 2.1 ; then
+	if ver_replacing -lt 2.1 ; then
 		elog "Starting with version 2.1 sysklogd no longer provides klogd."
 		elog "syslogd now also logs kernel messages."
 	fi
