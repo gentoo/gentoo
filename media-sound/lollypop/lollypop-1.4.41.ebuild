@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
-inherit gnome2-utils meson python-single-r1 xdg
+inherit eapi9-ver gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
@@ -68,14 +68,9 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "Remember to install the necessary gst-plugins packages for your audio files."
 		elog "You can also use the gst-plugins-meta package and its USE flags."
-	fi
-
-	local log_yt_dlp ver
-	for ver in ${REPLACING_VERSIONS}; do
-		ver_test "${ver}" -lt "1.4.36" && log_yt_dlp=1
-	done
-	[[ ${log_yt_dlp} ]] &&
+	elif ver_replacing -lt "1.4.36"; then
 		elog "Since version 1.4.36, Lollypop relies on yt-dlp instead of youtube-dl."
+	fi
 }
 
 pkg_postrm() {
