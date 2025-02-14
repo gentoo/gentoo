@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -210,7 +210,27 @@ src_compile() {
 
 src_test() {
 	cd "${BUILD_DIR}" || die
+
+	# XXX: When we pass a libc installation to Zig, it will fail to find
+	#      the bundled libraries for targets like aarch64-macos and
+	#      *-linux-musl. Zig doesn't run binaries for these targets when
+	#      -Dskip-non-native is passed, but they are still compiled, so
+	#      the test will fail. There's no way to disable --libc once passed,
+	#      so we need to strip it from ZBS_ARGS.
+	#      See: https://github.com/ziglang/zig/issues/22383
+	local args_backup=("${ZBS_ARGS[@]}")
+
+	for ((i = 0; i < ${#ZBS_ARGS[@]}; i++)); do
+		if [[ "${ZBS_ARGS[i]}" == "--libc" ]]; then
+			unset ZBS_ARGS[i]
+			unset ZBS_ARGS[i+1]
+			break
+		fi
+	done
+
 	ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native
+
+	ZBS_ARGS=("${args_backup[@]}")
 }
 
 src_install() {
