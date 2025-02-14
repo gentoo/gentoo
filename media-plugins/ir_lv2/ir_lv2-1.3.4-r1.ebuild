@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit eapi9-ver toolchain-funcs
 
 DESCRIPTION="LV2 convolver plugin especially for creating reverb effects"
 HOMEPAGE="https://tomszilagyi.github.io/plugins/ir.lv2/"
@@ -43,21 +43,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	local latency_warn=0
-	local ver
-
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		latency_warn=1
-	else
-		for ver in ${REPLACING_VERSIONS}; do
-			if ver_test ${ver} -lt 1.3.0; then
-				latency_warn=1
-				break
-			fi
-		done
-	fi
-
-	if [[ ${latency_warn} -eq 1 ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] || ver_replacing -lt 1.3.0; then
 		elog "This version works with automation at the expense of introducing extra buffering."
 		elog "For zero latency use 1.2* version instead."
 	fi
