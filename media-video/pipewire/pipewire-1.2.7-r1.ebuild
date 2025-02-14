@@ -27,7 +27,7 @@ PIPEWIRE_DOCS_VERSION="$(ver_cut 1-2).0"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
 PYTHON_COMPAT=( python3_{10..13} )
-inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
+inherit eapi9-ver meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]]; then
 	PIPEWIRE_DOCS_PREBUILT=0
@@ -387,8 +387,7 @@ pkg_postinst() {
 
 	use system-service && tmpfiles_process pipewire.conf
 
-	local ver
-	for ver in ${REPLACING_VERSIONS} ; do
+	if [[ -n ${REPLACING_VERSIONS} ]] ; then
 		if has_version kde-plasma/kwin[screencast] || has_version x11-wm/mutter[screencast] ; then
 			# https://bugs.gentoo.org/908490
 			# https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3243
@@ -396,7 +395,7 @@ pkg_postinst() {
 			ewarn "Screencasting may not work until you do."
 		fi
 
-		if ver_test ${ver} -le 0.3.66-r1 ; then
+		if ver_replacing -le 0.3.66-r1 ; then
 			elog ">=pipewire-0.3.66 uses the 'pipewire' group to manage permissions"
 			elog "and limits needed to function smoothly:"
 			elog
@@ -462,7 +461,7 @@ pkg_postinst() {
 				fi
 			fi
 		fi
-	done
+	fi
 
 	if [[ ${HAD_SOUND_SERVER} -eq 0 || -z ${REPLACING_VERSIONS} ]] ; then
 		# TODO: We could drop most of this if we set up systemd presets?
