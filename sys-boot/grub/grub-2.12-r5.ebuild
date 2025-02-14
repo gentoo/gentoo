@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,8 +25,8 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature python-any-r1
-inherit secureboot toolchain-funcs
+inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
+inherit python-any-r1 secureboot toolchain-funcs
 
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"
@@ -387,23 +387,17 @@ pkg_postinst() {
 	elog "For information on how to configure GRUB2 please refer to the guide:"
 	elog "    https://wiki.gentoo.org/wiki/GRUB2_Quick_Start"
 
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		local v
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test -gt ${v}; then
-				ewarn
-				ewarn "Re-run grub-install to update installed boot code!"
-				ewarn "Re-run grub-mkconfig to update grub.cfg!"
-				ewarn
-				break
-			fi
-		done
-	else
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
 		optfeature "detecting other operating systems (grub-mkconfig)" sys-boot/os-prober
 		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn sys-fs/mtools
 		optfeature "enabling RAID device detection" sys-fs/mdadm
 		optfeature "automatically updating GRUB's configuration on each kernel installation" "sys-kernel/installkernel[grub]"
+	elif ver_replacing -lt ${PVR}; then
+		ewarn
+		ewarn "Re-run grub-install to update installed boot code!"
+		ewarn "Re-run grub-mkconfig to update grub.cfg!"
+		ewarn
 	fi
 
 	if has_version 'sys-boot/grub:0'; then
