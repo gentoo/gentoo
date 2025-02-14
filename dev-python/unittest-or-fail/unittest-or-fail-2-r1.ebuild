@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=flit
 # in py3.12+ unittest already fails when no tests are found
 # we're adding these impls to PYTHON_COMPAT to clean up upgrade graphs
 # but we're not installing anything
-PYTHON_USED=( pypy3 python3_{10..11} )
+PYTHON_USED=( pypy3{,_11} python3_{10..11} )
 PYTHON_COMPAT=( "${PYTHON_USED[@]}" python3_{12..13} )
 
 inherit distutils-r1
