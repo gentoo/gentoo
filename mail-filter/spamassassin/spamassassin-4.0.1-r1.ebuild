@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit perl-functions systemd toolchain-funcs verify-sig autotools
+inherit perl-functions systemd toolchain-funcs verify-sig autotools eapi9-ver
 
 MY_P="Mail-SpamAssassin-${PV//_/-}"
 DESCRIPTION="An extensible mail filter which can identify and tag spam"
@@ -239,15 +239,7 @@ src_test() {
 
 pkg_preinst() {
 	if use mysql || use postgres ; then
-		local _awlwarn=0
-		local _v
-		for _v in ${REPLACING_VERSIONS}; do
-			if ver_test "${_v}" -lt "3.4.3"; then
-				_awlwarn=1
-				break
-			fi
-		done
-		if [[ ${_awlwarn} == 1 ]] ; then
+		if ver_replacing -lt "3.4.3"; then
 			ewarn 'If you used AWL before 3.4.3, the SQL schema has changed.'
 			ewarn 'You will need to manually ALTER your tables for them to'
 			ewarn 'continue working.  See the UPGRADE documentation for'
