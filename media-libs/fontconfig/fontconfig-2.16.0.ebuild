@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit multilib meson-multilib python-any-r1 readme.gentoo-r1
+inherit eapi9-ver multilib meson-multilib python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="https://fontconfig.org/"
@@ -220,16 +220,13 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	local ver
-	for ver in ${REPLACING_VERSIONS} ; do
-		# 2.14.2 and 2.14.2-r1 included the bad 10-sub-pixel-none.conf
-		if ver_test ${ver} -lt 2.14.2-r2 && ver_test ${ver} -ge 2.14.2 ; then
-			if [[ -e "${EROOT}"/etc/fonts/conf.d/10-sub-pixel-none.conf ]] ; then
-				einfo "Deleting 10-sub-pixel-none.conf from bad fontconfig-2.14.2 (bug #900681)"
-				rm "${EROOT}"/etc/fonts/conf.d/10-sub-pixel-none.conf || die
-			fi
+	# 2.14.2 and 2.14.2-r1 included the bad 10-sub-pixel-none.conf
+	if ver_replacing -eq 2.14.2 || ver_replacing -eq 2.14.2-r1; then
+		if [[ -e "${EROOT}"/etc/fonts/conf.d/10-sub-pixel-none.conf ]] ; then
+			einfo "Deleting 10-sub-pixel-none.conf from bad fontconfig-2.14.2 (bug #900681)"
+			rm "${EROOT}"/etc/fonts/conf.d/10-sub-pixel-none.conf || die
 		fi
-	done
+	fi
 
 	if [[ -z ${ROOT} ]] ; then
 		multilib_pkg_postinst() {
