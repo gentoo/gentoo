@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit linux-info systemd toolchain-funcs
+inherit eapi9-ver linux-info systemd toolchain-funcs
 
 DESCRIPTION="Intel CPU undervolting and throttling configuration tool"
 HOMEPAGE="https://github.com/kitsunyan/intel-undervolt"
@@ -53,10 +53,8 @@ src_compile() {
 }
 
 pkg_postinst() {
-	for v in ${REPLACING_VERSIONS}; do
-		if [[ ${v} == 1.6 ]] ; then
-			elog "openrc service has been renamed to intel-undervolt-loop"
-			elog "please update your startup configuration"
-		fi
-	done
+	if ver_replacing -eq 1.6 ; then
+		elog "openrc service has been renamed to intel-undervolt-loop"
+		elog "please update your startup configuration"
+	fi
 }
