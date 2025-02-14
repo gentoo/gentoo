@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
+inherit eapi9-ver gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
@@ -423,12 +423,10 @@ pkg_postinst() {
 		ewarn "installing GIO modules get upgraded or added to the image."
 	fi
 
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "$v" "-lt" "2.63.6"; then
-			ewarn "glib no longer installs the gio-launch-desktop binary. You may need"
-			ewarn "to restart your session for \"Open With\" dialogs to work."
-		fi
-	done
+	if ver_replacing "-lt" "2.63.6"; then
+		ewarn "glib no longer installs the gio-launch-desktop binary. You may need"
+		ewarn "to restart your session for \"Open With\" dialogs to work."
+	fi
 }
 
 pkg_postrm() {
