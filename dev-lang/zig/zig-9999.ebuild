@@ -92,6 +92,11 @@ pkg_setup() {
 		llvm-r1_pkg_setup
 	fi
 
+	# Requires running stage3 which is built for cross-target.
+	if use doc && tc-is-cross-compiler; then
+		die "USE=doc is not yet supported when cross-compiling"
+	fi
+
 	check-reqs_pkg_setup
 }
 
@@ -197,10 +202,13 @@ src_compile() {
 	cd "${BUILD_DIR}" || die
 	ZIG_EXE="./zig2" zig_src_compile --prefix "${BUILD_DIR}/stage3/"
 
-	./stage3/bin/zig env || die "Zig compilation failed"
+	# Requires running stage3 which is built for cross-target.
+	if ! tc-is-cross-compiler; then
+		./stage3/bin/zig env || die "Zig compilation failed"
 
-	if use doc; then
-		ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix "${S}/docgen/"
+		if use doc; then
+			ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix "${S}/docgen/"
+		fi
 	fi
 }
 
