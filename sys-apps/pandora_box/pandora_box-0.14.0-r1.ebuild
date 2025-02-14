@@ -5,7 +5,7 @@
 
 EAPI=8
 
-SYDVER=3.32.0
+SYDVER=3.32.1
 
 IUSE="static"
 
