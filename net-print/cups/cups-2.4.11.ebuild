@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools linux-info xdg multilib-minimal optfeature pam toolchain-funcs
+inherit autotools eapi9-ver linux-info xdg multilib-minimal optfeature pam toolchain-funcs
 
 MY_PV="${PV/_beta/b}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -297,23 +297,18 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	local v
 
-	for v in ${REPLACING_VERSIONS}; do
-		if ! ver_test ${v} -ge 2.2.2-r2 ; then
-			ewarn "The cupsd init script switched to using pidfiles. Shutting down"
-			ewarn "cupsd will fail the next time. To fix this, please run once as root"
-			ewarn "   killall cupsd ; /etc/init.d/cupsd zap ; /etc/init.d/cupsd start"
-			break
-		fi
-	done
+	if ver_replacing -lt 2.2.2-r2 ; then
+		ewarn "The cupsd init script switched to using pidfiles. Shutting down"
+		ewarn "cupsd will fail the next time. To fix this, please run once as root"
+		ewarn "   killall cupsd ; /etc/init.d/cupsd zap ; /etc/init.d/cupsd start"
+	fi
 
-	for v in ${REPLACING_VERSIONS}; do
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "For information about installing a printer and general cups setup"
 		elog "take a look at: https://wiki.gentoo.org/wiki/Printing"
-		break
-	done
+	fi
 
 	optfeature_header "CUPS may need installing the following for certain features to work:"
 	use zeroconf && optfeature "local hostname resolution using a hostname.local naming scheme" sys-auth/nss-mdns
