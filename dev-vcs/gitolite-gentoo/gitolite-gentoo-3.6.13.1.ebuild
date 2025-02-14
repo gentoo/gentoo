@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ EAPI=7
 EGIT_REPO_URI="git://git.gentoo.org/proj/gitolite-gentoo"
 EGIT_MASTER=master
 
-inherit perl-module ${SCM}
+inherit eapi9-ver perl-module ${SCM}
 
 DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fork"
 HOMEPAGE="https://cgit.gentoo.org/fork/gitolite-gentoo.git/"
@@ -85,19 +85,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	local old_ver
-	for old_ver in ${REPLACING_VERSIONS}; do
-		if ver_test ${old_ver} -lt "3" ; then
-			ewarn
-			elog "***NOTE*** This is a major upgrade and will likely break your existing gitolite-2.x setup!"
-			elog "Please read http://gitolite.com/gitolite/migr.html first!"
-			ewarn
-			elog "***NOTE*** If you're using the \"umask\" feature of ${PN}-2.x:"
-			elog "You'll have to replace each \"umask = ...\" option by \"option umask = ...\""
-			elog "And you'll also have to enable the \"RepoUmask\" module in your .gitolite.rc"
-			ewarn
-		fi
-	done
+	if ver_replacing -lt "3" ; then
+		ewarn
+		elog "***NOTE*** This is a major upgrade and will likely break your existing gitolite-2.x setup!"
+		elog "Please read http://gitolite.com/gitolite/migr.html first!"
+		ewarn
+		elog "***NOTE*** If you're using the \"umask\" feature of ${PN}-2.x:"
+		elog "You'll have to replace each \"umask = ...\" option by \"option umask = ...\""
+		elog "And you'll also have to enable the \"RepoUmask\" module in your .gitolite.rc"
+		ewarn
+	fi
 
 	# bug 352291
 	gitolite_home=$(awk -F: '$1 == "git" { print $6 }' /etc/passwd)
