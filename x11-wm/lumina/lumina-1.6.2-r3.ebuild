@@ -13,7 +13,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="desktop-utils"
 
 DEPEND="
