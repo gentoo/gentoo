@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 
-inherit autotools cron flag-o-matic pam systemd user-info
+inherit autotools cron eapi9-ver flag-o-matic pam systemd user-info
 
 MY_PV="${PV/_beta/}"
 MY_P="${PN}-${MY_PV}"
@@ -192,24 +192,15 @@ pkg_postinst() {
 		elog "  # emerge --config ${CATEGORY}/${PN}"
 		elog ""
 		elog "to install the default systab on this system."
-	else
-		local v
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "3.2.1" -gt ${v}; then
-				# This is an upgrade
-
-				elog "fcron's default systab was updated since your last installation."
-				elog "You can use"
-				elog ""
-				elog "  # emerge --config ${CATEGORY}/${PN}"
-				elog ""
-				elog "to re-install systab (do not call this command before you"
-				elog "have merged your configuration files)."
-
-				# Show this elog only once
-				break
-			fi
-		done
+	elif ver_replacing -lt "3.2.1"; then
+		# This is an upgrade
+		elog "fcron's default systab was updated since your last installation."
+		elog "You can use"
+		elog ""
+		elog "  # emerge --config ${CATEGORY}/${PN}"
+		elog ""
+		elog "to re-install systab (do not call this command before you"
+		elog "have merged your configuration files)."
 	fi
 
 	if ! use system-crontab; then
