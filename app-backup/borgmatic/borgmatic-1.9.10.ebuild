@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 systemd pypi
+inherit distutils-r1 eapi9-ver systemd pypi
 
 DESCRIPTION="Automatically create, prune and verify backups with borgbackup"
 HOMEPAGE="
@@ -68,17 +68,11 @@ pkg_postinst() {
 		elog "    ${PN} config generate"
 		elog
 		elog "Systemd users wishing to periodically run ${PN} can use the provided timer and service units."
-	else
-		local oldver
-		for oldver in ${REPLACING_VERSIONS}; do
-			if ver_test "${oldver}" -lt 1.9.0; then
-				ewarn "Please be warned that ${PN}-1.9.0 has introduced several breaking changes."
-				ewarn "For details, please see"
-				ewarn
-				ewarn "	https://github.com/borgmatic-collective/borgmatic/releases/tag/1.9.0"
-				ewarn
-				break
-			fi
-		done
+	elif ver_replacing -lt 1.9.0; then
+		ewarn "Please be warned that ${PN}-1.9.0 has introduced several breaking changes."
+		ewarn "For details, please see"
+		ewarn
+		ewarn "	https://github.com/borgmatic-collective/borgmatic/releases/tag/1.9.0"
+		ewarn
 	fi
 }
