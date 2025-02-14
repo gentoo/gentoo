@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -7,7 +7,7 @@ LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL=1
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic linux-info llvm-r1
+inherit autotools check-reqs eapi9-ver flag-o-matic linux-info llvm-r1
 inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
 inherit verify-sig
 
@@ -659,17 +659,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 3.13.0_beta2; then
-			ewarn "Python 3.13.0b2 has changed its module ABI.  The .pyc files"
-			ewarn "installed previously are no longer valid and will be regenerated"
-			ewarn "(or ignored) on the next import.  This may cause sandbox failures"
-			ewarn "when installing some packages and checksum mismatches when removing"
-			ewarn "old versions.  To actively prevent this, rebuild all packages"
-			ewarn "installing Python 3.13 modules, e.g. using:"
-			ewarn
-			ewarn "  emerge -1v /usr/lib/python3.13/site-packages"
-		fi
-	done
+	if ver_replacing -lt 3.13.0_beta2; then
+		ewarn "Python 3.13.0b2 has changed its module ABI.  The .pyc files"
+		ewarn "installed previously are no longer valid and will be regenerated"
+		ewarn "(or ignored) on the next import.  This may cause sandbox failures"
+		ewarn "when installing some packages and checksum mismatches when removing"
+		ewarn "old versions.  To actively prevent this, rebuild all packages"
+		ewarn "installing Python 3.13 modules, e.g. using:"
+		ewarn
+		ewarn "  emerge -1v /usr/lib/python3.13/site-packages"
+	fi
 }
