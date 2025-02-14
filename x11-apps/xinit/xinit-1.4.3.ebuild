@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xorg-3
+inherit eapi9-ver xorg-3
 
 DESCRIPTION="X Window System initializer"
 
@@ -61,15 +61,11 @@ pkg_postinst() {
 		ewarn "Here's an example of setting it for the whole system:"
 		ewarn "    echo XSESSION=\"Gnome\" > /etc/env.d/90xsession"
 		ewarn "    env-update && source /etc/profile"
+	elif ver_replacing "-lt" "1.4.1"; then
+		ewarn "Starting with ${CATEGORY}/${PN}-1.4.1 serverauth files are no longer kept in the"
+		ewarn "home directory but rather are created in \$TMPDIR (typically /tmp).  The change"
+		ewarn "is transparent for most of users, however those that use runtime temporary"
+		ewarn "directories cleaning tools, like app-admin/tmpreaper, may need to adjust them"
+		ewarn "not to remove the 'serverauth.*' files."
 	fi
-
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "$v" "-lt" "1.4.1"; then
-			ewarn "Starting with ${CATEGORY}/${PN}-1.4.1 serverauth files are no longer kept in the"
-			ewarn "home directory but rather are created in \$TMPDIR (typically /tmp).  The change"
-			ewarn "is transparent for most of users, however those that use runtime temporary"
-			ewarn "directories cleaning tools, like app-admin/tmpreaper, may need to adjust them"
-			ewarn "not to remove the 'serverauth.*' files."
-		fi
-	done
 }
