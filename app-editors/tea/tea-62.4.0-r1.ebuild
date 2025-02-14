@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake eapi9-ver xdg
 
 MY_P="tea-qt-${PV}"
 
@@ -66,7 +66,7 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if [[ "${REPLACING_VERSIONS}" == "47.0.0" ]]; then
+	if ver_replacing -eq 47.0.0; then
 		elog "Executable 'tea' has been renamed to 'tea-qt'"
 	fi
 }
