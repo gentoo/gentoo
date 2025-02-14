@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit fcaps go-module tmpfiles systemd flag-o-matic user-info
+inherit eapi9-ver fcaps go-module tmpfiles systemd flag-o-matic user-info
 
 DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.com https://github.com/go-gitea/gitea"
@@ -124,27 +124,25 @@ pkg_postinst() {
 		eerror "to install it."
 	fi
 
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ver_test "${REPLACING_VERSIONS}" -lt 1.22; then
-			ewarn "Since version 1.22.0:"
-			ewarn "  1. Minimum database requirements updated to MySQL 8.0, PostgreSQL 12, and MSSQL 2012."
-			ewarn "  2. There are a lot of refactoring changes related to customizing templates."
-			ewarn "  3. The default duration of the 'Remember login' feature has been"
-			ewarn "     changed from one week to one month."
-			ewarn "  4. Enhanced auth token/remember me, the obsolete setting"
-			ewarn "     '[security].COOKIE_USERNAME' has been removed."
-			ewarn "  5. For MinIO storage, adds a prefix path for all MinIO storage"
-			ewarn "     and override base path will override the path."
-			ewarn "  6. Now use a more restricted sanitizer for the repository description."
-			ewarn "For more details, see <https://github.com/go-gitea/gitea/releases/tag/v1.22.0>."
-		fi
-		if ver_test "${REPLACING_VERSIONS}" -lt 1.23; then
-			ewarn "Since version 1.23.0:"
-			ewarn "  1. The config option '[camo].Allways' has been renamed to '[camo].Always'."
-			ewarn "  2. The SHA1 for support for SSH RSA signing has been removed."
-			ewarn "  3. Use UTC as the default timezone when scheduling Actions cron tasks."
-			ewarn "  4. Make OIDC introspection authentication strictly require Client ID and secret."
-			ewarn "For other breaking changes, see <https://github.com/go-gitea/gitea/releases/tag/v1.23.0>."
-		fi
+	if ver_replacing -lt 1.22; then
+		ewarn "Since version 1.22.0:"
+		ewarn "  1. Minimum database requirements updated to MySQL 8.0, PostgreSQL 12, and MSSQL 2012."
+		ewarn "  2. There are a lot of refactoring changes related to customizing templates."
+		ewarn "  3. The default duration of the 'Remember login' feature has been"
+		ewarn "     changed from one week to one month."
+		ewarn "  4. Enhanced auth token/remember me, the obsolete setting"
+		ewarn "     '[security].COOKIE_USERNAME' has been removed."
+		ewarn "  5. For MinIO storage, adds a prefix path for all MinIO storage"
+		ewarn "     and override base path will override the path."
+		ewarn "  6. Now use a more restricted sanitizer for the repository description."
+		ewarn "For more details, see <https://github.com/go-gitea/gitea/releases/tag/v1.22.0>."
+	fi
+	if ver_replacing -lt 1.23; then
+		ewarn "Since version 1.23.0:"
+		ewarn "  1. The config option '[camo].Allways' has been renamed to '[camo].Always'."
+		ewarn "  2. The SHA1 for support for SSH RSA signing has been removed."
+		ewarn "  3. Use UTC as the default timezone when scheduling Actions cron tasks."
+		ewarn "  4. Make OIDC introspection authentication strictly require Client ID and secret."
+		ewarn "For other breaking changes, see <https://github.com/go-gitea/gitea/releases/tag/v1.23.0>."
 	fi
 }
