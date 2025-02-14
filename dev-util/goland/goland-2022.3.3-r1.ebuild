@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop wrapper
+inherit desktop eapi9-ver wrapper
 
 DESCRIPTION="Golang IDE by JetBrains"
 HOMEPAGE="https://www.jetbrains.com/go"
@@ -71,20 +71,14 @@ pkg_postinst() {
 			elog "    https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit"
 	fi
 
-	local replacing_version
-	for replacing_version in ${REPLACING_VERSIONS} ; do
-		if ver_test "${replacing_version}" -lt "2019.3-r1"; then
-			# This revbump requires user interaction.
-			echo
-			ewarn "Previous versions configured fs.inotify.max_user_watches without user interaction."
-			ewarn "Since version 2019.3-r1 you need to do so manually, e.g. by calling"
-			ewarn "echo \"fs.inotify.max_user_watches = 524288\" > /etc/sysctl.d/30-idea-inotify-watches.conf"
-			ewarn "and reloading with \"sysctl --system\" (and restarting the IDE)."
-			ewarn "For details see:"
-			ewarn "    https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit"
-
-			# Show this ewarn only once
-			break
-		fi
-	done
+	if ver_replacing -lt "2019.3-r1"; then
+		# This revbump requires user interaction.
+		echo
+		ewarn "Previous versions configured fs.inotify.max_user_watches without user interaction."
+		ewarn "Since version 2019.3-r1 you need to do so manually, e.g. by calling"
+		ewarn "echo \"fs.inotify.max_user_watches = 524288\" > /etc/sysctl.d/30-idea-inotify-watches.conf"
+		ewarn "and reloading with \"sysctl --system\" (and restarting the IDE)."
+		ewarn "For details see:"
+		ewarn "    https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit"
+	fi
 }
