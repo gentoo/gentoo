@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic
+inherit eapi9-ver flag-o-matic
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="https://www.pureftpd.org/project/pure-ftpd/"
@@ -154,13 +154,9 @@ pkg_postinst() {
 		ewarn "Check out http://download.pureftpd.org/pub/pure-ftpd/doc/README for general info"
 		ewarn "and http://download.pureftpd.org/pub/pure-ftpd/doc/README.TLS for SSL/TLS info."
 		ewarn
-	else
-		for v in ${REPLACING_VERSIONS} ; do
-			if ver_test "${v}" -le "1.0.50" ; then
-				einfo "Configuration through /etc/conf.d/pure-ftpd is now deprecated!"
-				einfo "Please migrate your settings to the new configuration file."
-				einfo "Use /etc/pure-ftpd.conf to adjust your settings."
-			fi
-		done
+	elif ver_replacing -le "1.0.50" ; then
+		einfo "Configuration through /etc/conf.d/pure-ftpd is now deprecated!"
+		einfo "Please migrate your settings to the new configuration file."
+		einfo "Use /etc/pure-ftpd.conf to adjust your settings."
 	fi
 }
