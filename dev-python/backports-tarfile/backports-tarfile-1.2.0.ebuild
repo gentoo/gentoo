@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # please keep this ebuild at EAPI 8 -- sys-apps/portage dep
@@ -7,7 +7,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYPI_PN=${PN/-/.}
 # This is a backport from Python 3.12.
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..11} )
 
 inherit distutils-r1 pypi
 
@@ -43,4 +43,22 @@ src_configure() {
 		version = "${PV}"
 		description = "Backport of CPython tarfile module"
 	EOF
+}
+
+python_test() {
+	local EPYTEST_DESELECT=()
+	case ${EPYTHON} in
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				# https://github.com/jaraco/backports.tarfile/issues/10
+				tests/test_tarfile.py::ListTest::test_list_verbose
+				tests/test_tarfile.py::GzipListTest::test_list_verbose
+				tests/test_tarfile.py::Bz2ListTest::test_list_verbose
+				tests/test_tarfile.py::LzmaListTest::test_list_verbose
+				tests/test_tarfile.py::TestExtractionFilters::test_modes
+			)
+			;;
+	esac
+
+	epytest
 }
