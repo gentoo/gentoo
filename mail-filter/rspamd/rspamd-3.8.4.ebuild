@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit cmake lua-single pax-utils systemd tmpfiles
+inherit cmake eapi9-ver lua-single pax-utils systemd tmpfiles
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rspamd/rspamd.git"
@@ -150,15 +150,13 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process "${PN}.conf"
 
-	for ver in ${REPLACING_VERSIONS}; do
-		if ver_test "${ver}" -eq "3.4"; then
-			elog "rspamd-3.4 is known to segfault when it is updated from older version due"
-			elog "to a page-alignment of hyperscan .unser files. The issue was patched in"
-			elog "rspamd-3.4-r1 ebuild revision. All possibly broken .unser files will be"
-			elog "automaticaly removed. See https://github.com/rspamd/rspamd/issues/4329 for"
-			elog "more information."
+	if ver_replacing -eq "3.4"; then
+		elog "rspamd-3.4 is known to segfault when it is updated from older version due"
+		elog "to a page-alignment of hyperscan .unser files. The issue was patched in"
+		elog "rspamd-3.4-r1 ebuild revision. All possibly broken .unser files will be"
+		elog "automaticaly removed. See https://github.com/rspamd/rspamd/issues/4329 for"
+		elog "more information."
 
-			find "${EROOT}/var/lib/rspamd" -type f -name '*.unser' -delete
-		fi
-	done
+		find "${EROOT}/var/lib/rspamd" -type f -name '*.unser' -delete
+	fi
 }
