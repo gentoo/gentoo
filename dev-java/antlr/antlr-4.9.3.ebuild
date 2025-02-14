@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit java-pkg-2
+inherit eapi9-ver java-pkg-2
 
 DESCRIPTION="A parser generator for many languages"
 HOMEPAGE="https://www.antlr.org/"
@@ -49,14 +49,7 @@ pkg_postinst() {
 	# If upgrading from a version of this slot that installs JARs,
 	# display a message about submodule split
 	local changed_ver="4.9.3"
-	local should_show_msg
-	for replaced_ver in ${REPLACING_VERSIONS}; do
-		if ver_test "${replaced_ver}" -lt "${changed_ver}"; then
-			should_show_msg=1
-			break
-		fi
-	done
-	[[ "${should_show_msg}" ]] || return
+	ver_replacing -lt "${changed_ver}" || return
 	elog "Since version ${changed_ver}, ${PN}-${SLOT} no longer installs JARs."
 	elog "Please find the JARs from files installed by submodule packages"
 	elog "antlr-runtime-${SLOT} and antlr-tool-${SLOT}."
