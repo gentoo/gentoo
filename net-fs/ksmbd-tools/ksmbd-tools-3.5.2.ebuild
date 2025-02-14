@@ -1,9 +1,9 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info meson systemd
+inherit eapi9-ver linux-info meson systemd
 
 DESCRIPTION="cifsd/ksmbd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
@@ -58,13 +58,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	local ver
-	for ver in ${REPLACING_VERSIONS}; do
-		if ver_test ${ver} -lt 3.4.6; then
-			ewarn "Upgrade from version <${CATEGORY}/${PN}-3.4.6 detected"
-			ewarn "${PN} config file moved to ${EPREFIX}/etc/ksmbd/ksmbd.conf"
-			ewarn "Please migrate from old ${EPREFIX}/etc/ksmbd/smb.conf"
-		fi
-	done
-	unset ver
+	if ver_replacing -lt 3.4.6; then
+		ewarn "Upgrade from version <${CATEGORY}/${PN}-3.4.6 detected"
+		ewarn "${PN} config file moved to ${EPREFIX}/etc/ksmbd/ksmbd.conf"
+		ewarn "Please migrate from old ${EPREFIX}/etc/ksmbd/smb.conf"
+	fi
 }
