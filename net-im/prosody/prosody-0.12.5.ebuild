@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} luajit )
 LUA_REQ_USE="deprecated(+)"
 
-inherit lua-single systemd tmpfiles toolchain-funcs
+inherit eapi9-ver lua-single systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="Prosody is a modern XMPP communication server"
 HOMEPAGE="https://prosody.im/"
@@ -103,25 +103,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	local migrate_to_prosody_user="false"
 	tmpfiles_process prosody.conf
 
-	if [[ ${REPLACING_VERSIONS} ]]; then
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${v}" -lt 0.12.0; then
-				migrate_to_prosody_user="true"
-				break
-			fi
-		done
-	fi
-
-	# Sarting with >=0.12.0, the prosody configuration is now in
+	# Starting with >=0.12.0, the prosody configuration is now in
 	# /etc/prosody and no longer in /etc/jabber.
 	# See if we need to migrate the configuration. Furthermore,
 	# prosody no longer runs under the, shared via net-im/jabber-base,
 	# 'jabber' use, but under its own user.
 	# This increase isolation and hence robustness and security.
-	if ${migrate_to_prosody_user}; then
+	if ver_replacing -lt 0.12.0; then
 		local -A dirs_to_migrate=(
 			[/etc/jabber]=/etc/prosody
 			[/var/log/jabber]=/var/log/prosody
