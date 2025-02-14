@@ -29,7 +29,6 @@ This variant of the Wine packaging does not include external patchsets
 		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>
 		<flag name="samba">Pull in <pkg>net-fs/samba</pkg> with winbind for NTLM auth support</flag>
 		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
-		<flag name="vkd3d">Enable DirectX 12 support using <pkg>app-emulation/vkd3d</pkg></flag>
 		<flag name="wow64">
 			Enable running 32bit applications without 32bit ELF
 			multilib by mapping to 64bit calls (experimental,
