@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools systemd
+inherit autotools eapi9-ver systemd
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
 HOMEPAGE="https://burp.grke.org/"
@@ -98,19 +98,13 @@ pkg_postinst() {
 		elog ""
 	fi
 
-	# According to PMS this can be a space-separated list of version
-	# numbers, even though in practice it is typically just one.
-	local oldver
-	for oldver in ${REPLACING_VERSIONS}; do
-		if [[ $(ver_cut 1 "${oldver}") -lt 2 ]]; then
-			ewarn "Starting with version 2.0.54 we no longer patch bedup to use"
-			ewarn "the server config file by default. If you use bedup, please"
-			ewarn "update your scripts to invoke it as"
-			ewarn ""
-			ewarn "  bedup -c ${EROOT}/etc/burp/burp-server.conf"
-			ewarn ""
-			ewarn "Otherwise deduplication will not work!"
-			break
-		fi
-	done
+	if ver_replacing -lt 2; then
+		ewarn "Starting with version 2.0.54 we no longer patch bedup to use"
+		ewarn "the server config file by default. If you use bedup, please"
+		ewarn "update your scripts to invoke it as"
+		ewarn ""
+		ewarn "  bedup -c ${EROOT}/etc/burp/burp-server.conf"
+		ewarn ""
+		ewarn "Otherwise deduplication will not work!"
+	fi
 }
