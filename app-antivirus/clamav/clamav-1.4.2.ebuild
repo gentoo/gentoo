@@ -157,7 +157,7 @@ declare -A GIT_CRATES=(
 	[onenote_parser]="https://github.com/Cisco-Talos/onenote.rs;29c08532252b917543ff268284f926f30876bb79;onenote.rs-%commit%"
 )
 
-inherit cargo cmake flag-o-matic llvm python-any-r1 systemd tmpfiles
+inherit cargo cmake eapi9-ver flag-o-matic llvm python-any-r1 systemd tmpfiles
 
 MY_P=${P//_/-}
 
@@ -390,14 +390,14 @@ pkg_postinst() {
 		ewarn "before starting clamav for the first time."
 	fi
 
-	 if ! systemd_is_booted ; then
+	if ! systemd_is_booted ; then
 		ewarn "This version of ClamAV provides separate OpenRC services"
 		ewarn "for clamd, freshclam, clamav-milter, and clamonacc. The"
 		ewarn "clamd service now starts only the clamd daemon itself. You"
 		ewarn "should add freshclam (and perhaps clamav-milter) to any"
 		ewarn "runlevels that previously contained clamd."
 	else
-		if [[ -n "${REPLACING_VERSIONS}" ]] && ver_test "${REPLACING_VERSIONS}" -le 1.3.1; then
+		if ver_replacing -le 1.3.1; then
 			ewarn "From 1.3.1-r1 the Gentoo-provided systemd services have been"
 			ewarn "Retired in favour of using the units shipped by upstream."
 			ewarn "Ensure that any required services are configured and started."
