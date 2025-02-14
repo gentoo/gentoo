@@ -294,9 +294,9 @@ src_configure() {
 
 		# We can enable this by default in future, but it's brand new
 		# in 2.39 with several bugs:
-		# - Doesn't build on musl (https://sourceware.org/bugzilla/show_bug.cgi?id=29477)
-		# - No man pages (https://sourceware.org/bugzilla/show_bug.cgi?id=29521)
-		# - Broken at runtime without Java (https://sourceware.org/bugzilla/show_bug.cgi?id=29479)
+		# - Doesn't build on musl (https://sourceware.org/PR29477)
+		# - No man pages (https://sourceware.org/PR29521)
+		# - Broken at runtime without Java (https://sourceware.org/PR29479)
 		# - binutils-config (and this ebuild?) needs adaptation first (https://bugs.gentoo.org/865113)
 		$(use_enable gprofng)
 
@@ -310,7 +310,7 @@ src_configure() {
 			# These hardening options are available from 2.39+ but
 			# they unconditionally enable the behaviour even on arches
 			# where e.g. execstacks can't be avoided.
-			# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
+			# See https://sourceware.org/PR29592.
 			#
 			# TODO: Get the logic for this fixed upstream so it doesn't
 			# create impossible broken combinations on some arches, like mips.
