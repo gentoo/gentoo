@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit eapi9-ver flag-o-matic toolchain-funcs
 
 MY_PN="john"
 MY_P="${MY_PN}-${PV}"
@@ -131,7 +131,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ -n "${REPLACING_VERSIONS}" ] && [ "${REPLACING_VERSIONS}" != "1.8.0" ]; then
+	if ver_replacing -lt 1.8.0; then
 		ewarn "This package no longer includes jumbo.  If you want jumbo please install app-crypt/johntheripper-jumbo instead."
 	fi
 }
