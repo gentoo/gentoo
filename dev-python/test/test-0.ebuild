@@ -1,9 +1,9 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit python-r1
 
@@ -17,7 +17,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_impl_dep 'test-install(+)' pypy3)
+	$(python_gen_impl_dep 'test-install(+)' 'pypy3*')
 	$(python_gen_cond_dep '
 		|| (
 			dev-python/python-tests:3.10
