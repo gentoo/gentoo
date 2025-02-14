@@ -6,7 +6,7 @@ EAPI=8
 BASHCOMP_P=bashcomp-2.0.3
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit python-any-r1
+inherit eapi9-ver python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -157,21 +157,18 @@ src_install() {
 }
 
 pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 2.1-r90; then
-			ewarn "For bash-completion autoloader to work, all completions need to"
-			ewarn "be installed in /usr/share/bash-completion/completions. You may"
-			ewarn "need to rebuild packages that installed completions in the old"
-			ewarn "location. You can do this using:"
-			ewarn
-			ewarn "$ find ${EPREFIX}/usr/share/bash-completion -maxdepth 1 -type f '!' -name 'bash_completion' -exec emerge -1v {} +"
-			ewarn
-			ewarn "After the rebuild, you should remove the old setup symlinks:"
-			ewarn
-			ewarn "$ find ${EPREFIX}/etc/bash_completion.d -type l -delete"
-		fi
-	done
+	if ver_replacing -lt 2.1-r90; then
+		ewarn "For bash-completion autoloader to work, all completions need to"
+		ewarn "be installed in /usr/share/bash-completion/completions. You may"
+		ewarn "need to rebuild packages that installed completions in the old"
+		ewarn "location. You can do this using:"
+		ewarn
+		ewarn "$ find ${EPREFIX}/usr/share/bash-completion -maxdepth 1 -type f '!' -name 'bash_completion' -exec emerge -1v {} +"
+		ewarn
+		ewarn "After the rebuild, you should remove the old setup symlinks:"
+		ewarn
+		ewarn "$ find ${EPREFIX}/etc/bash_completion.d -type l -delete"
+	fi
 
 	if has_version 'app-shells/zsh'; then
 		elog

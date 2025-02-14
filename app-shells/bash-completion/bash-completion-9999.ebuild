@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools git-r3 python-any-r1
+inherit autotools eapi9-ver git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -148,21 +148,18 @@ src_install() {
 }
 
 pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 2.1-r90; then
-			ewarn "For bash-completion autoloader to work, all completions need to"
-			ewarn "be installed in /usr/share/bash-completion/completions. You may"
-			ewarn "need to rebuild packages that installed completions in the old"
-			ewarn "location. You can do this using:"
-			ewarn
-			ewarn "$ find ${EPREFIX}/usr/share/bash-completion -maxdepth 1 -type f '!' -name 'bash_completion' -exec emerge -1v {} +"
-			ewarn
-			ewarn "After the rebuild, you should remove the old setup symlinks:"
-			ewarn
-			ewarn "$ find ${EPREFIX}/etc/bash_completion.d -type l -delete"
-		fi
-	done
+	if ver_replacing -lt 2.1-r90; then
+		ewarn "For bash-completion autoloader to work, all completions need to"
+		ewarn "be installed in /usr/share/bash-completion/completions. You may"
+		ewarn "need to rebuild packages that installed completions in the old"
+		ewarn "location. You can do this using:"
+		ewarn
+		ewarn "$ find ${EPREFIX}/usr/share/bash-completion -maxdepth 1 -type f '!' -name 'bash_completion' -exec emerge -1v {} +"
+		ewarn
+		ewarn "After the rebuild, you should remove the old setup symlinks:"
+		ewarn
+		ewarn "$ find ${EPREFIX}/etc/bash_completion.d -type l -delete"
+	fi
 
 	if has_version 'app-shells/zsh'; then
 		elog
