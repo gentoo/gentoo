@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools flag-o-matic python-single-r1 udev systemd
+inherit autotools eapi9-ver flag-o-matic python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -192,20 +192,12 @@ migrate_config() {
 }
 
 pkg_postinst() {
-	if [ -n "${REPLACING_VERSIONS}" ]; then
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test ${v} -lt 2019.07.2 ; then
-				migrate_config
-				break
-			fi
-			if ver_test ${v} -eq 9999 ; then
-				migrate_config
-				break
-			fi
-		done
+	if ver_replacing -lt 2019.07.2 || ver_replacing -eq 9999; then
+		migrate_config
 	fi
 	udev_reload
 }
+
 pkg_postrm() {
 	udev_reload
 }
