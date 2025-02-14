@@ -53,6 +53,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.47.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
 	# https://sqlite.org/forum/forumpost/3c2014fea4
 	"${FILESDIR}"/${PN}-3.49.0-cppflags.patch
+	# https://sqlite.org/forum/forumpost/f93323a743
+	"${FILESDIR}"/${PN}-3.49.0-icu-tests.patch
 )
 
 _fossil_fetch() {
