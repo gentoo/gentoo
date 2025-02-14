@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=poetry
 
-inherit distutils-r1
+inherit distutils-r1 eapi9-ver
 
 DESCRIPTION="A cue player designed for stage productions"
 HOMEPAGE="https://www.linux-show-player.org/ https://github.com/FrancescoCeruti/linux-show-player/"
@@ -56,16 +56,10 @@ RDEPEND="$(python_gen_cond_dep '
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "${PN} uses GStreamer as its audio back-end so make sure you have plug-ins installed for all the audio formats you want to use"
-	else
-		local oldver
-		for oldver in ${REPLACING_VERSIONS}; do
-			if ver_test "${oldver}" -lt 0.6.0; then
-				ewarn "Please be warned that current versions of ${PN} *cannot* open 0.5.x save files."
-				ewarn "Unfortunately upstream has provided no workaround for this."
-				ewarn
-				break
-			fi
-		done
+	elif ver_replacing -lt 0.6.0; then
+		ewarn "Please be warned that current versions of ${PN} *cannot* open 0.5.x save files."
+		ewarn "Unfortunately upstream has provided no workaround for this."
+		ewarn
 	fi
 
 	if use timecode; then
