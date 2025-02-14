@@ -14,6 +14,7 @@ HOMEPAGE="https://mariadb.org/"
 SRC_URI="
 	mirror://mariadb/${P}/source/${P}.tar.gz
 	https://dev.gentoo.org/~arkamar/distfiles/${P}-patches-01.tar.xz
+	https://dev.gentoo.org/~arkamar/distfiles/${PN}-10.6-columnstore-with-boost-1.85.patch.xz
 "
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -119,7 +120,10 @@ RDEPEND="${COMMON_DEPEND}
 	!<virtual/libmysqlclient-18-r1
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
-		columnstore? ( dev-db/mariadb-connector-c )
+		columnstore? (
+			dev-db/mariadb-connector-c
+			!dev-libs/thrift
+		)
 		extraengine? ( jdbc? ( >=virtual/jre-1.8 ) )
 		galera? (
 			sys-apps/iproute2
@@ -222,6 +226,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
 	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
+	eapply "${WORKDIR}"/${PN}-10.6-columnstore-with-boost-1.85.patch
 
 	eapply_user
 
