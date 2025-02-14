@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake eapi9-ver
 
 DESCRIPTION="Set of scripts to manage google-auth setup on Gentoo Infra"
 HOMEPAGE="https://github.com/projg2/google-authenticator-wrappers"
@@ -23,22 +23,16 @@ RDEPEND="
 "
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != buildonly ]]; then
-		local v
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${v}" -lt 3; then
-				ewarn "google-authenticator-wrappers v3 switches the secret store mechanism"
-				ewarn "from user-owned files to /var/lib/gauth.  To migrate secrets, move"
-				ewarn "and chown, e.g.:"
-				ewarn
-				ewarn "  mv /home/myuser/.google_authenticator /var/lib/gauth/myuser"
-				ewarn "  chown gauth /var/lib/gauth/myuser"
-				ewarn
-				ewarn "If you do not migrate or reset secrets, second step authentication"
-				ewarn "will be disabled after the upgrade."
-				break
-			fi
-		done
+	if [[ ${MERGE_TYPE} != buildonly ]] && ver_replacing -lt 3; then
+		ewarn "google-authenticator-wrappers v3 switches the secret store mechanism"
+		ewarn "from user-owned files to /var/lib/gauth.  To migrate secrets, move"
+		ewarn "and chown, e.g.:"
+		ewarn
+		ewarn "  mv /home/myuser/.google_authenticator /var/lib/gauth/myuser"
+		ewarn "  chown gauth /var/lib/gauth/myuser"
+		ewarn
+		ewarn "If you do not migrate or reset secrets, second step authentication"
+		ewarn "will be disabled after the upgrade."
 	fi
 }
 
