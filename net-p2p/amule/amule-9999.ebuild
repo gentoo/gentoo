@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 WX_GTK_VER="3.2-gtk3"
 
-inherit autotools flag-o-matic wxwidgets xdg-utils
+inherit autotools eapi9-ver flag-o-matic wxwidgets xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/amule-project/amule"
@@ -130,23 +130,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	local ver
-
-	if use daemon || use remote; then
-		for ver in ${REPLACING_VERSIONS}; do
-			if ver_test ${ver} -lt "2.3.2-r4"; then
-				elog "Default user under which amuled and amuleweb daemons are started"
-				elog "have been changed from p2p to amule. Default home directory have been"
-				elog "changed as well."
-				echo
-				elog "If you want to preserve old download/share location, you can create"
-				elog "symlink /var/lib/amule/.aMule pointing to the old location and adjust"
-				elog "files ownership *or* restore AMULEUSER and AMULEHOME variables in"
-				elog "/etc/conf.d/{amuled,amuleweb} to the old values."
-
-				break
-			fi
-		done
+	if use daemon || use remote && ver_replacing -lt "2.3.2-r4"; then
+		elog "Default user under which amuled and amuleweb daemons are started"
+		elog "have been changed from p2p to amule. Default home directory have been"
+		elog "changed as well."
+		echo
+		elog "If you want to preserve old download/share location, you can create"
+		elog "symlink /var/lib/amule/.aMule pointing to the old location and adjust"
+		elog "files ownership *or* restore AMULEUSER and AMULEHOME variables in"
+		elog "/etc/conf.d/{amuled,amuleweb} to the old values."
 	fi
 
 	use X && xdg_desktop_database_update
