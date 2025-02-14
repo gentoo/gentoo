@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -690,7 +690,7 @@ declare -A GIT_CRATES=(
 )
 RUST_MIN_VER="1.80.1"
 
-inherit cargo desktop edo multiprocessing ninja-utils optfeature \
+inherit cargo desktop eapi9-ver edo multiprocessing ninja-utils optfeature \
 	python-single-r1 readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
@@ -962,7 +962,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	ver_test ${REPLACING_VERSIONS} -lt 24.06.3-r1 && local FORCE_PRINT_ELOG=1
+	ver_replacing -lt 24.06.3-r1 && local FORCE_PRINT_ELOG=1
 	readme.gentoo_print_elog
 	if use gui; then
 		xdg_pkg_postinst
