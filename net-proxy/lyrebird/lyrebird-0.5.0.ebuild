@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit go-module
+inherit eapi9-ver go-module
 
 DESCRIPTION="An obfuscating proxy supporting Tor's pluggable transport protocol obfs4"
 HOMEPAGE="https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird"
@@ -31,15 +31,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -z "${REPLACING_VERSIONS}" ]]; then
-		local oldver
-		for oldver in ${REPLACING_VERSIONS}; do
-			if ver_test "${oldver}" -lt 0.1.0; then
-				ewarn "Since version 0.1.0 the proxy executable is called '${PN}' rather than 'obfs4proxy'."
-				ewarn "Please update your Tor configuration accordingly."
-				ewarn
-				break
-			fi
-		done
+	if ver_replacing -lt 0.1.0; then
+		ewarn "Since version 0.1.0 the proxy executable is called '${PN}' rather than 'obfs4proxy'."
+		ewarn "Please update your Tor configuration accordingly."
+		ewarn
 	fi
 }
