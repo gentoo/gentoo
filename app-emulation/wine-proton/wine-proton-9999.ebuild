@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -138,6 +138,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-8.0.5c-vulkan-libm.patch
 	"${FILESDIR}"/${PN}-9.0-rpath.patch
+	"${FILESDIR}"/${PN}-9.0.4-binutils2.44.patch
 )
 
 pkg_pretend() {
