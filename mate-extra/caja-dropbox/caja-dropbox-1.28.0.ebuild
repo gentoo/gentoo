@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10,11,12} )
 MATE_LA_PUNT="yes"
 
-inherit mate python-single-r1 linux-info
+inherit mate python-single-r1 linux-info eapi9-ver
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
@@ -79,11 +79,9 @@ src_install() {
 pkg_postinst() {
 	mate_pkg_postinst
 
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" "-lt" "1.24.0-r1" || ver_test "${v}" "-eq" "9999"; then
-			ewarn "Starting with ${CATEGORY}/${PN}-1.24.0-r1, ${PN} now no longer"
-			ewarn "configures caja-dropbox to use its own group. This brings caja-dropbox in line"
-			ewarn "with nautilus-dropbox and dolphin-plugins-dropbox. You may remove the 'dropbox' group."
-		fi
-	done
+	if ver_replacing "-lt" "1.24.0-r1" || ver_replacing "-eq" "9999"; then
+		ewarn "Starting with ${CATEGORY}/${PN}-1.24.0-r1, ${PN} now no longer"
+		ewarn "configures caja-dropbox to use its own group. This brings caja-dropbox in line"
+		ewarn "with nautilus-dropbox and dolphin-plugins-dropbox. You may remove the 'dropbox' group."
+	fi
 }
