@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
+inherit autotools cmake eapi9-ver flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
 XSERVER_VERSION="21.1.14"
 XSERVER_PATCH_VERSION="21"
@@ -215,7 +215,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	use server && [[ -n ${REPLACING_VERSIONS} ]] && ver_test "${REPLACING_VERSIONS}" -lt 1.13.1-r3 && {
+	use server && ver_replacing -lt 1.13.1-r3 && {
 		elog 'OpenRC users: please migrate to one service per display as documented here:'
 		elog 'https://wiki.gentoo.org/wiki/TigerVNC#Migrating_from_1.13.1-r2_or_lower:'
 		elog
