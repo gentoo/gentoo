@@ -241,9 +241,9 @@ dev-qt/qtvirtualkeyboard:5
 dev-qt/qtwebview:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Unmaintained in Gentoo, last release from 2022 needs Qt5WebEngine.
-# Bug #926655. Removal on 2025-02-22.
-app-text/bibletime
+# Qt5 package which needs Qt5WebEngine.
+# Bug #926655.
+<app-text/bibletime-3.1.0
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-20)
 # Unused Java library. Removal on 2025-02-19.
