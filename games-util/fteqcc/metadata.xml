@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">fteqw</remote-id>
+		<remote-id type="github">fte-team/fteqw</remote-id>
 	</upstream>
 </pkgmetadata>
