@@ -1,0 +1,66 @@
+Fixes build with C99/c23 compilers by including a patch from
+arcctgx@poczta.onet.pl at https://bugs.gentoo.org/881143#c8
+Folds all seds into a patch
+https://bugs.gentoo.org/881143
+--- a/build.sh
++++ b/build.sh
+@@ -16,11 +16,11 @@
+ BASIC_CFLAGS="-Wall -Wno-format -I/usr/local/include/ \
+               -I/opt/local/include/ -DVERSION=\"$VERSION\" $CFLAGS"
+ 
+ BASIC_LDFLAGS="-L/usr/local/lib/ -L/opt/local/lib $LDFLAGS"
+ 
+-USE_CFLAGS="-fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2 -g -ggdb \
++USE_CFLAGS="-fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2  \
+             $BASIC_CFLAGS"
+ 
+ USE_LDFLAGS="-Wl,-z,relro -pie $BASIC_LDFLAGS"
+ 
+ if [ "$OSTYPE" = "cygwin" ]; then
+@@ -79,12 +79,12 @@
+   exit 0
+ 
+ elif [ "$1" = "all" -o "$1" = "" ]; then
+ 
+   echo "[+] Configuring production build."
+-  BASIC_CFLAGS="$BASIC_CFLAGS -O3"
+-  USE_CFLAGS="$USE_CFLAGS -O3"
++  BASIC_CFLAGS="$BASIC_CFLAGS"
++  USE_CFLAGS="$USE_CFLAGS"
+ 
+ elif [ "$1" = "debug" ]; then
+ 
+   echo "[+] Configuring debug build."
+   BASIC_CFLAGS="$BASIC_CFLAGS -DDEBUG_BUILD=1"
+@@ -195,11 +195,11 @@
+ 
+ echo -n "[*] Checking if memory alignment is required... "
+ 
+ rm -f "$TMP" "$TMP.c" "$TMP.log" || exit 1
+ 
+-echo -e "#include \"types.h\"\nvolatile u8 tmp[6]; int main() { printf(\"%d\x5cn\", *(u32*)(tmp+1)); return 0; }" >"$TMP.c" || exit 1
++echo -e "#include <stdio.h>\n#include \"types.h\"\nvolatile u8 tmp[6]; int main() { printf(\"%d\x5cn\", *(u32*)(tmp+1)); return 0; }" >"$TMP.c" || exit 1
+ $CC $USE_CFLAGS $USE_LDFLAGS "$TMP.c" -o "$TMP" &>"$TMP.log"
+ 
+ if [ ! -x "$TMP" ]; then
+ 
+   echo "FAIL"
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -5,13 +5,13 @@
+ # Copyright (C) 2012 by Michal Zalewski <lcamtuf@coredump.cx>
+ #
+ # Distributed under the terms and conditions of GNU LGPL.
+ #
+ 
+-CC      = gcc
+-CFLAGS  = -g -ggdb -Wall -Wno-format -funsigned-char
+-LDFLAGS =
++CC      ?= gcc
++CFLAGS  +=  -Wall -Wno-format -funsigned-char
++LDFLAGS +=
+ TARGETS = p0f-client p0f-sendsyn p0f-sendsyn6
+ 
+ all: $(TARGETS)
+ 
+ clean:
