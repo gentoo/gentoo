@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3{,_11} )
 
 inherit distutils-r1 pypi
 
@@ -34,5 +34,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local -x CI=1
 	epytest -p hypothesis
 }
