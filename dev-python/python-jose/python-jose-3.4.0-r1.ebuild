@@ -38,5 +38,12 @@ distutils_enable_sphinx docs
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	sed -e '/addopts/d' -i setup.cfg || die
+
+	# unpin dependencies
+	sed -i -e 's:, <[0-9.]*::' setup.cfg || die
+}
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -o addopts=
 }
