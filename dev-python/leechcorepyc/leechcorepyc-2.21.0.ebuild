@@ -10,7 +10,10 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 toolchain-funcs pypi
 
 DESCRIPTION="Python binding for LeechCore Physical Memory Acquisition Library"
-HOMEPAGE="https://github.com/ufrisk/LeechCore"
+HOMEPAGE="
+	https://github.com/ufrisk/LeechCore/
+	https://pypi.org/project/leechcorepyc/
+"
 
 LICENSE="GPL-3"
 SLOT="0"
