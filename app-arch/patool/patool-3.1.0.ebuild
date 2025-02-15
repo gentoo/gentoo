@@ -113,6 +113,7 @@ python_test() {
 		# Error: 1002 (invalid input file)
 		"tests/archives/test_mac.py"
 	)
+	local EPYTEST_DESELECT=()
 
 	if use elibc_musl; then
 		EPYTEST_IGNORE+=(
@@ -123,6 +124,8 @@ python_test() {
 	if use x86; then
 		EPYTEST_IGNORE+=(
 			"tests/archives/test_clzip.py"
+		)
+		EPYTEST_DESELECT+=(
 			# bug #916317
 			"tests/archives/test_lrzip.py::TestLrzip::test_lrzip"
 		)

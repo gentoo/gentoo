@@ -108,6 +108,8 @@ python_test() {
 		"tests/archives/test_arc.py"
 		# Error: 1002 (invalid input file)
 		"tests/archives/test_mac.py"
+	)
+	local EPYTEST_DESELECT=(
 		# Broken due mime type change for rar in file-5.46
 		# https://github.com/wummel/patool/pull/173
 		"tests/test_mime.py::TestMime::test_nested_gzip"
@@ -122,6 +124,8 @@ python_test() {
 	if use x86; then
 		EPYTEST_IGNORE+=(
 			"tests/archives/test_clzip.py"
+		)
+		EPYTEST_DESELECT+=(
 			# bug #916317
 			"tests/archives/test_lrzip.py::TestLrzip::test_lrzip"
 		)
