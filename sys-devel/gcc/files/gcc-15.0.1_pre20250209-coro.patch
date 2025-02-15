@@ -1,0 +1,124 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=556248d7d2cf557423993eb68f6a55ae6bda0cee
+
+From 556248d7d2cf557423993eb68f6a55ae6bda0cee Mon Sep 17 00:00:00 2001
+From: Jason Merrill <jason@redhat.com>
+Date: Tue, 11 Feb 2025 13:51:32 +0100
+Subject: [PATCH] c++: don't default -frange-for-ext-temps in -std=gnu++20
+ [PR188574]
+
+Since -frange-for-ext-temps has been causing trouble, let's not enable it
+by default in pre-C++23 GNU modes for GCC 15, and also allow disabling it in
+C++23 and up.
+
+	PR c++/188574
+
+gcc/c-family/ChangeLog:
+
+	* c-opts.cc (c_common_post_options): Only enable
+	-frange-for-ext-temps by default in C++23.
+
+gcc/ChangeLog:
+
+	* doc/invoke.texi: Adjust -frange-for-ext-temps documentation.
+
+gcc/testsuite/ChangeLog:
+
+	* g++.dg/cpp23/range-for3.C: Use -frange-for-ext-temps.
+	* g++.dg/cpp23/range-for4.C: Adjust expected result.
+
+libgomp/ChangeLog:
+
+	* testsuite/libgomp.c++/range-for-4.C: Adjust expected result.
+---
+ gcc/c-family/c-opts.cc                      | 17 +++--------------
+ gcc/doc/invoke.texi                         |  5 ++---
+ gcc/testsuite/g++.dg/cpp23/range-for3.C     |  4 ++--
+ gcc/testsuite/g++.dg/cpp23/range-for4.C     |  4 ++--
+ libgomp/testsuite/libgomp.c++/range-for-4.C |  2 +-
+ 5 files changed, 10 insertions(+), 22 deletions(-)
+
+diff --git a/gcc/c-family/c-opts.cc b/gcc/c-family/c-opts.cc
+index 87b231861a64..d43b3aef1024 100644
+--- a/gcc/c-family/c-opts.cc
++++ b/gcc/c-family/c-opts.cc
+@@ -1213,20 +1213,9 @@ c_common_post_options (const char **pfilename)
+   if (cxx_dialect >= cxx20)
+     flag_concepts = 1;
+ 
+-  /* Enable lifetime extension of range based for temporaries for C++23.
+-     Diagnose -std=c++23 -fno-range-for-ext-temps.  */
+-  if (cxx_dialect >= cxx23)
+-    {
+-      if (OPTION_SET_P (flag_range_for_ext_temps)
+-	  && !flag_range_for_ext_temps)
+-	error ("%<-fno-range-for-ext-temps%> is incompatible with C++23");
+-      flag_range_for_ext_temps = 1;
+-    }
+-  /* Otherwise default to enabled in GNU modes but allow user to override.  */
+-  else if (cxx_dialect >= cxx11
+-	   && !flag_iso
+-	   && !OPTION_SET_P (flag_range_for_ext_temps))
+-    flag_range_for_ext_temps = 1;
++  /* Enable lifetime extension of range based for temporaries for C++23.  */
++  SET_OPTION_IF_UNSET (&global_options, &global_options_set,
++		       flag_range_for_ext_temps, cxx_dialect >= cxx23);
+ 
+   /* -fimmediate-escalation has no effect when immediate functions are not
+      supported.  */
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 0aef2abf05b9..56d43cb67796 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -3548,9 +3548,8 @@ easier, you can use @option{-fno-pretty-templates} to disable them.
+ Enable lifetime extension of C++ range based for temporaries.
+ With @option{-std=c++23} and above this is part of the language standard,
+ so lifetime of the temporaries is extended until the end of the loop
+-regardless of this option.  This option allows enabling that behavior also
+-in earlier versions of the standard and is enabled by default in the
+-GNU dialects, from @option{-std=gnu++11} until @option{-std=gnu++20}.
++by default.  This option allows enabling that behavior also
++in earlier versions of the standard.
+ 
+ @opindex fno-rtti
+ @opindex frtti
+diff --git a/gcc/testsuite/g++.dg/cpp23/range-for3.C b/gcc/testsuite/g++.dg/cpp23/range-for3.C
+index 301e25886ec6..f95b21b3ceee 100644
+--- a/gcc/testsuite/g++.dg/cpp23/range-for3.C
++++ b/gcc/testsuite/g++.dg/cpp23/range-for3.C
+@@ -1,7 +1,7 @@
+ // P2718R0 - Wording for P2644R1 Fix for Range-based for Loop
+ // { dg-do run { target c++11 } }
+-// Verify -frange-for-ext-temps is set by default in -std=gnu++* modes.
+-// { dg-options "" }
++// Verify -frange-for-ext-temps works in earlier standards.
++// { dg-additional-options "-frange-for-ext-temps" }
+ 
+ #define RANGE_FOR_EXT_TEMPS 1
+ #include "range-for1.C"
+diff --git a/gcc/testsuite/g++.dg/cpp23/range-for4.C b/gcc/testsuite/g++.dg/cpp23/range-for4.C
+index f8c380d32c72..16204974bac9 100644
+--- a/gcc/testsuite/g++.dg/cpp23/range-for4.C
++++ b/gcc/testsuite/g++.dg/cpp23/range-for4.C
+@@ -1,7 +1,7 @@
+ // P2718R0 - Wording for P2644R1 Fix for Range-based for Loop
+ // { dg-do run { target c++11 } }
+-// Verify -frange-for-ext-temps is set by default in -std=gnu++* modes.
++// Verify -frange-for-ext-temps is not set by default in -std=gnu++* modes.
+ // { dg-options "" }
+ 
+-#define RANGE_FOR_EXT_TEMPS 1
++#define RANGE_FOR_EXT_TEMPS 0
+ #include "range-for2.C"
+diff --git a/libgomp/testsuite/libgomp.c++/range-for-4.C b/libgomp/testsuite/libgomp.c++/range-for-4.C
+index 3c10e7349af7..aa6e4da523c1 100644
+--- a/libgomp/testsuite/libgomp.c++/range-for-4.C
++++ b/libgomp/testsuite/libgomp.c++/range-for-4.C
+@@ -3,5 +3,5 @@
+ // { dg-additional-options "-std=gnu++17" }
+ // { dg-require-effective-target tls_runtime }
+ 
+-#define RANGE_FOR_EXT_TEMPS 1
++#define RANGE_FOR_EXT_TEMPS 0
+ #include "range-for-1.C"
+-- 
+2.43.5

@@ -50,4 +50,6 @@ src_prepare() {
 	toolchain_src_prepare
 
 	eapply_user
+	eapply "${FILESDIR}"/${P}-coro.patch
+	eapply "${FILESDIR}"/${P}-range-for-mariadb.patch
 }

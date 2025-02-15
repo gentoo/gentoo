@@ -1,0 +1,530 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=26baa2c09b39abf037afad349a318dc5734eae25
+
+From 26baa2c09b39abf037afad349a318dc5734eae25 Mon Sep 17 00:00:00 2001
+From: Jakub Jelinek <jakub@redhat.com>
+Date: Thu, 13 Feb 2025 10:21:29 +0100
+Subject: [PATCH] c++: Fix up regressions caused by for/while loops with
+ declarations [PR118822]
+
+The recent PR86769 r15-7426 changes regressed the following two testcases,
+the first one is more important as it is derived from real-world code.
+
+The first problem is that the chosen
+prep = do_pushlevel (sk_block);
+// emit something
+body = push_stmt_list ();
+// emit further stuff
+body = pop_stmt_list (body);
+prep = do_poplevel (prep);
+way of constructing the {FOR,WHILE}_COND_PREP and {FOR,WHILE}_BODY
+isn't reliable.  If during parsing a label is seen in the body and then
+some decl with destructors, sk_cleanup transparent scope is added, but
+the correspondiong result from push_stmt_list is saved in
+*current_binding_level and pop_stmt_list then pops even that statement list
+but only do_poplevel actually attempts to pop the sk_cleanup scope and so we
+ICE.
+The reason for not doing do_pushlevel (sk_block); do_pushlevel (sk_block);
+is that variables should be in the same scope (otherwise various e.g.
+redeclaration*.C tests FAIL) and doing do_pushlevel (sk_block); do_pushlevel
+(sk_cleanup); wouldn't work either as do_poplevel would silently unwind even
+the cleanup one.
+
+The second problem is that my assumption that the declaration in the
+condition will have zero or one cleanup is just wrong, at least for
+structured bindings used as condition, there can be as many cleanups as
+there are names in the binding + 1.
+
+So, the following patch changes the earlier approach.  Nothing is removed
+from the {FOR,WHILE}_COND_PREP subtrees while doing adjust_loop_decl_cond,
+push_stmt_list isn't called either; all it does is remember as an integer
+the number of cleanups (CLEANUP_STMT at the end of the STATEMENT_LISTs)
+from querying stmt_list_stack and finding the initial *body_p in there
+(that integer is stored into {FOR,WHILE}_COND_CLEANUP), and temporarily
+{FOR,WHILE}_BODY is set to the last statement (if any) in the innermost
+STATEMENT_LIST at the adjust_loop_decl_cond time; then at
+finish_{for,while}_stmt a new finish_loop_cond_prep routine takes care of
+do_poplevel for the scope (which is in {FOR,WHILE}_COND_PREP) and finds
+given {FOR,WHILE}_COND_CLEANUP number and {FOR,WHILE}_BODY tree the right
+spot where body statements start and moves that into {FOR,WHILE}_BODY.
+Finally genericize_c_loop then inserts the cond, body, continue label, expr
+into the right subtree of {FOR,WHILE}_COND_PREP.
+The constexpr evaluation unfortunately had to be changed as well, because
+we don't want to evaluate everything in BIND_EXPR_BODY (*_COND_PREP ())
+right away, we want to evaluate it with the exception of the CLEANUP_STMT
+cleanups at the end (given {FOR,WHILE}_COND_CLEANUP levels), and defer
+the evaluation of the cleanups until after cond, body, expr are evaluated.
+
+2025-02-13  Jakub Jelinek  <jakub@redhat.com>
+
+	PR c++/118822
+	PR c++/118833
+gcc/
+	* tree-iterator.h (tsi_split_stmt_list): Declare.
+	* tree-iterator.cc (tsi_split_stmt_list): New function.
+gcc/c-family/
+	* c-common.h (WHILE_COND_CLEANUP): Change description in comment.
+	(FOR_COND_CLEANUP): Likewise.
+	* c-gimplify.cc (genericize_c_loop): Adjust for COND_CLEANUP
+	being CLEANUP_STMT/TRY_FINALLY_EXPR trailing nesting depth
+	instead of actual cleanup.
+gcc/cp/
+	* semantics.cc (adjust_loop_decl_cond): Allow multiple trailing
+	CLEANUP_STMT levels in *BODY_P.  Set *CLEANUP_P to the number
+	of levels rather than one particular cleanup, keep the cleanups
+	in *PREP_P.  Set *BODY_P to the last stmt in the cur_stmt_list
+	or NULL if *CLEANUP_P and the innermost cur_stmt_list is empty.
+	(finish_loop_cond_prep): New function.
+	(finish_while_stmt, finish_for_stmt): Use it.  Don't call
+	set_one_cleanup_loc.
+	* constexpr.cc (cxx_eval_loop_expr): Adjust handling of
+	{FOR,WHILE}_COND_{PREP,CLEANUP}.
+gcc/testsuite/
+	* g++.dg/expr/for9.C: New test.
+	* g++.dg/cpp26/decomp12.C: New test.
+---
+ gcc/c-family/c-common.h               |   6 +-
+ gcc/c-family/c-gimplify.cc            |  41 +++------
+ gcc/cp/constexpr.cc                   |  97 +++++++++++++++++--
+ gcc/cp/semantics.cc                   | 128 +++++++++++++++++++-------
+ gcc/testsuite/g++.dg/cpp26/decomp12.C |  46 +++++++++
+ gcc/testsuite/g++.dg/expr/for9.C      |  25 +++++
+ gcc/tree-iterator.cc                  |  22 +++++
+ gcc/tree-iterator.h                   |   1 +
+ 8 files changed, 297 insertions(+), 69 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/cpp26/decomp12.C
+ create mode 100644 gcc/testsuite/g++.dg/expr/for9.C
+
+diff --git a/gcc/c-family/c-common.h b/gcc/c-family/c-common.h
+index bc238430b7a7..ea6c29750567 100644
+--- a/gcc/c-family/c-common.h
++++ b/gcc/c-family/c-common.h
+@@ -1518,7 +1518,8 @@ extern tree build_userdef_literal (tree suffix_id, tree value,
+ 
+ /* WHILE_STMT accessors.  These give access to the condition of the
+    while statement, the body, and name of the while statement, and
+-   condition preparation statements and its cleanup, respectively.  */
++   condition preparation statements and number of its nested cleanups,
++   respectively.  */
+ #define WHILE_COND(NODE)	TREE_OPERAND (WHILE_STMT_CHECK (NODE), 0)
+ #define WHILE_BODY(NODE)	TREE_OPERAND (WHILE_STMT_CHECK (NODE), 1)
+ #define WHILE_NAME(NODE)	TREE_OPERAND (WHILE_STMT_CHECK (NODE), 2)
+@@ -1533,7 +1534,8 @@ extern tree build_userdef_literal (tree suffix_id, tree value,
+ 
+ /* FOR_STMT accessors.  These give access to the init statement,
+    condition, update expression, body and name of the for statement,
+-   and condition preparation statements and its cleanup, respectively.  */
++   and condition preparation statements and number of its nested cleanups,
++   respectively.  */
+ #define FOR_INIT_STMT(NODE)	TREE_OPERAND (FOR_STMT_CHECK (NODE), 0)
+ #define FOR_COND(NODE)		TREE_OPERAND (FOR_STMT_CHECK (NODE), 1)
+ #define FOR_EXPR(NODE)		TREE_OPERAND (FOR_STMT_CHECK (NODE), 2)
+diff --git a/gcc/c-family/c-gimplify.cc b/gcc/c-family/c-gimplify.cc
+index d53e0c2dc567..dc5e80dfa6be 100644
+--- a/gcc/c-family/c-gimplify.cc
++++ b/gcc/c-family/c-gimplify.cc
+@@ -258,8 +258,10 @@ expr_loc_or_loc (const_tree expr, location_t or_loc)
+    for C++ for/while loops with variable declaration as condition.  COND_PREP
+    is a BIND_EXPR with the declaration and initialization of the condition
+    variable, into which COND, BODY, continue label if needed and INCR if
+-   non-NULL should be appended, and COND_CLEANUP are statements which should
+-   be evaluated after that or if anything in COND, BODY or INCR throws.  */
++   non-NULL should be appended, and COND_CLEANUP is number of nested
++   CLEANUP_STMT -> TRY_FINALLY_EXPR statements at the end.  If non-NULL,
++   COND, BODY, continue label if needed and INCR if non-NULL should be
++   appended to the body of the COND_CLEANUP's nested TRY_FINALLY_EXPR.  */
+ 
+ static void
+ genericize_c_loop (tree *stmt_p, location_t start_locus, tree cond, tree body,
+@@ -278,7 +280,6 @@ genericize_c_loop (tree *stmt_p, location_t start_locus, tree cond, tree body,
+   walk_tree_1 (&cond_prep, func, data, NULL, lh);
+   walk_tree_1 (&cond, func, data, NULL, lh);
+   walk_tree_1 (&incr, func, data, NULL, lh);
+-  walk_tree_1 (&cond_cleanup, func, data, NULL, lh);
+ 
+   blab = begin_bc_block (bc_break, start_locus);
+   clab = begin_bc_block (bc_continue, start_locus);
+@@ -309,36 +310,24 @@ genericize_c_loop (tree *stmt_p, location_t start_locus, tree cond, tree body,
+ 	 EXPR;
+ 	 goto top;
+ 
+-	 or
+-
+-	 try {
+-	   if (COND); else break;
+-	   BODY;
+-	   cont:
+-	   EXPR;
+-	 } finally {
+-	   COND_CLEANUP
+-	 }
+-
+-	 appended into COND_PREP body.  */
++	 appended into COND_PREP body or body of some TRY_FINALLY_EXPRs
++	 at the end of COND_PREP.  */
+       gcc_assert (cond_is_first && TREE_CODE (cond_prep) == BIND_EXPR);
+       tree top = build1 (LABEL_EXPR, void_type_node,
+ 			 create_artificial_label (start_locus));
+       exit = build1 (GOTO_EXPR, void_type_node, LABEL_EXPR_LABEL (top));
+       append_to_statement_list (top, &outer_stmt_list);
+       append_to_statement_list (cond_prep, &outer_stmt_list);
+-      stmt_list = BIND_EXPR_BODY (cond_prep);
+-      BIND_EXPR_BODY (cond_prep) = NULL_TREE;
+       stmt_list_p = &BIND_EXPR_BODY (cond_prep);
+-      if (cond_cleanup && TREE_SIDE_EFFECTS (cond_cleanup))
+-	{
+-	  t = build2_loc (EXPR_LOCATION (cond_cleanup), TRY_FINALLY_EXPR,
+-			  void_type_node, NULL_TREE, cond_cleanup);
+-	  append_to_statement_list (t, &stmt_list);
+-	  *stmt_list_p = stmt_list;
+-	  stmt_list_p = &TREE_OPERAND (t, 0);
+-	  stmt_list = NULL_TREE;
+-	}
++      if (cond_cleanup)
++	for (unsigned depth = tree_to_uhwi (cond_cleanup); depth; --depth)
++	  {
++	    t = tsi_stmt (tsi_last (*stmt_list_p));
++	    gcc_assert (TREE_CODE (t) == TRY_FINALLY_EXPR);
++	    stmt_list_p = &TREE_OPERAND (t, 0);
++	  }
++      stmt_list = *stmt_list_p;
++      *stmt_list_p = NULL_TREE;
+       tree after_cond = create_artificial_label (cond_locus);
+       tree goto_after_cond = build1 (GOTO_EXPR, void_type_node, after_cond);
+       t = build1 (GOTO_EXPR, void_type_node, get_bc_label (bc_break));
+diff --git a/gcc/cp/constexpr.cc b/gcc/cp/constexpr.cc
+index f142dd32bc80..299b13456873 100644
+--- a/gcc/cp/constexpr.cc
++++ b/gcc/cp/constexpr.cc
+@@ -7153,6 +7153,7 @@ cxx_eval_loop_expr (const constexpr_ctx *ctx, tree t,
+ 
+   tree body, cond = NULL_TREE, expr = NULL_TREE;
+   tree cond_prep = NULL_TREE, cond_cleanup = NULL_TREE;
++  unsigned cond_cleanup_depth = 0;
+   int count = 0;
+   switch (TREE_CODE (t))
+     {
+@@ -7188,11 +7189,25 @@ cxx_eval_loop_expr (const constexpr_ctx *ctx, tree t,
+     }
+   if (cond_prep)
+     gcc_assert (TREE_CODE (cond_prep) == BIND_EXPR);
+-  auto cleanup_cond = [=] {
++  auto cleanup_cond = [&] {
+     /* Clean up the condition variable after each iteration.  */
+-    if (cond_cleanup && !*non_constant_p)
+-      cxx_eval_constant_expression (ctx, cond_cleanup, vc_discard,
+-				    non_constant_p, overflow_p);
++    if (cond_cleanup_depth && !*non_constant_p)
++      {
++	auto_vec<tree, 4> cleanups (cond_cleanup_depth);
++	tree s = BIND_EXPR_BODY (cond_prep);
++	unsigned i;
++	for (i = cond_cleanup_depth; i; --i)
++	  {
++	    tree_stmt_iterator iter = tsi_last (s);
++	    s = tsi_stmt (iter);
++	    cleanups.quick_push (CLEANUP_EXPR (s));
++	    s = CLEANUP_BODY (s);
++	  }
++	tree c;
++	FOR_EACH_VEC_ELT_REVERSE (cleanups, i, c)
++	  cxx_eval_constant_expression (ctx, c, vc_discard, non_constant_p,
++					overflow_p);
++      }
+     if (cond_prep)
+       for (tree decl = BIND_EXPR_VARS (cond_prep);
+ 	   decl; decl = DECL_CHAIN (decl))
+@@ -7227,9 +7242,77 @@ cxx_eval_loop_expr (const constexpr_ctx *ctx, tree t,
+ 	  for (tree decl = BIND_EXPR_VARS (cond_prep);
+ 	       decl; decl = DECL_CHAIN (decl))
+ 	    ctx->global->clear_value (decl);
+-	  cxx_eval_constant_expression (ctx, BIND_EXPR_BODY (cond_prep),
+-					vc_discard, non_constant_p,
+-					overflow_p, jump_target);
++	  if (cond_cleanup)
++	    {
++	      /* If COND_CLEANUP is non-NULL, we need to evaluate DEPTH
++		 nested STATEMENT_LISTs from inside of BIND_EXPR_BODY,
++		 but defer the evaluation of CLEANUP_EXPRs of CLEANUP_STMT
++		 at the end of those STATEMENT_LISTs.  */
++	      cond_cleanup_depth = 0;
++	      tree s = BIND_EXPR_BODY (cond_prep);
++	      for (unsigned depth = tree_to_uhwi (cond_cleanup);
++		   depth; --depth)
++		{
++		  for (tree_stmt_iterator i = tsi_start (s);
++		       !tsi_end_p (i); ++i)
++		    {
++		      tree stmt = *i;
++		      if (TREE_CODE (stmt) == DEBUG_BEGIN_STMT)
++			continue;
++		      if (tsi_one_before_end_p (i))
++			{
++			  /* The last statement in the STATEMENT_LIST
++			     has to be a CLEANUP_STMT (verified in
++			     finish_loop_cond_prep).  We want to
++			     evaluate just its CLEANUP_BODY part but not
++			     CLEANUP_EXPR part just yet.  */
++			  gcc_assert (TREE_CODE (stmt) == CLEANUP_STMT);
++			  /* If the CLEANUP_STMT is not actually to be
++			     evaluated, don't increment cond_cleanup_depth
++			     so that we don't evaluate the CLEANUP_EXPR
++			     for it later either.  */
++			  if (*jump_target)
++			    {
++			      depth = 1;
++			      break;
++			    }
++			  ++cond_cleanup_depth;
++			  /* If not in the innermost one, next iteration
++			     will handle CLEANUP_BODY similarly.  */
++			  if (depth > 1)
++			    {
++			      s = CLEANUP_BODY (stmt);
++			      break;
++			    }
++			  /* The innermost one can be evaluated normally.  */
++			  cxx_eval_constant_expression (ctx,
++							CLEANUP_BODY (stmt),
++							vc_discard,
++							non_constant_p,
++							overflow_p,
++							jump_target);
++			  break;
++			}
++		      /* And so should be evaluated statements which aren't
++			 last in the STATEMENT_LIST.  */
++		      cxx_eval_constant_expression (ctx, stmt, vc_discard,
++						    non_constant_p, overflow_p,
++						    jump_target);
++		      if (*non_constant_p
++			  || returns (jump_target)
++			  || breaks (jump_target)
++			  || continues (jump_target))
++			{
++			  depth = 1;
++			  break;
++			}
++		    }
++		}
++	    }
++	  else
++	    cxx_eval_constant_expression (ctx, BIND_EXPR_BODY (cond_prep),
++					  vc_discard, non_constant_p,
++					  overflow_p, jump_target);
+ 	}
+ 
+       if (cond)
+diff --git a/gcc/cp/semantics.cc b/gcc/cp/semantics.cc
+index 8a2d86576fb0..7c7d3e3c4326 100644
+--- a/gcc/cp/semantics.cc
++++ b/gcc/cp/semantics.cc
+@@ -790,8 +790,8 @@ finish_cond (tree *cond_p, tree expr)
+ 	    while (A x = 42) { }
+ 	    for (; A x = 42;) { }
+    move the *BODY_P statements as a BIND_EXPR into {FOR,WHILE}_COND_PREP
+-   and if there is any CLEANUP_STMT at the end, remove that and
+-   put the cleanup into {FOR,WHILE}_COND_CLEANUP.
++   and if there are any CLEANUP_STMT at the end, remember their count in
++   {FOR,WHILE}_COND_CLEANUP.
+    genericize_c_loop will then handle it appropriately.  In particular,
+    the {FOR,WHILE}_COND, {FOR,WHILE}_BODY, if used continue label and
+    FOR_EXPR will be appended into the {FOR,WHILE}_COND_PREP BIND_EXPR,
+@@ -807,26 +807,88 @@ adjust_loop_decl_cond (tree *body_p, tree *prep_p, tree *cleanup_p)
+     return;
+ 
+   gcc_assert (!processing_template_decl);
+-  if (*body_p != cur_stmt_list)
+-    {
+-      /* There can be either no cleanup at all, if the condition
+-	 declaration doesn't have non-trivial destructor, or a single
+-	 one if it does.  In that case extract it into *CLEANUP_P.  */
+-      gcc_assert (stmt_list_stack->length () > 1
+-		  && (*stmt_list_stack)[stmt_list_stack->length ()
+-					- 2] == *body_p);
+-      tree_stmt_iterator last = tsi_last (*body_p);
+-      gcc_assert (tsi_one_before_end_p (last)
+-		  && TREE_CODE (tsi_stmt (last)) == CLEANUP_STMT
+-		  && CLEANUP_BODY (tsi_stmt (last)) == cur_stmt_list
+-		  && tsi_end_p (tsi_last (cur_stmt_list))
+-		  && !CLEANUP_EH_ONLY (tsi_stmt (last)));
+-      *cleanup_p = CLEANUP_EXPR (tsi_stmt (last));
+-      tsi_delink (&last);
++  *prep_p = *body_p;
++  if (*prep_p != cur_stmt_list)
++    {
++      /* There can be just one CLEANUP_STMT, or there could be multiple
++	 nested CLEANUP_STMTs, e.g. for structured bindings used as
++	 condition.  */
++      gcc_assert (stmt_list_stack->length () > 1);
++      for (unsigned i = stmt_list_stack->length () - 2; ; --i)
++	{
++	  tree t = (*stmt_list_stack)[i];
++	  tree_stmt_iterator last = tsi_last (t);
++	  gcc_assert (tsi_one_before_end_p (last)
++		      && TREE_CODE (tsi_stmt (last)) == CLEANUP_STMT
++		      && (CLEANUP_BODY (tsi_stmt (last))
++			  == (*stmt_list_stack)[i + 1])
++		      && !CLEANUP_EH_ONLY (tsi_stmt (last)));
++	  if (t == *prep_p)
++	    {
++	      *cleanup_p = build_int_cst (long_unsigned_type_node,
++					  stmt_list_stack->length () - 1 - i);
++	      break;
++	    }
++	  gcc_assert (i >= 1);
++	}
+     }
+   current_binding_level->keep = true;
+-  *prep_p = *body_p;
+-  *body_p = push_stmt_list ();
++  tree_stmt_iterator iter = tsi_last (cur_stmt_list);
++  /* Temporarily store in {FOR,WHILE}_BODY the last statement of
++     the innnermost statement list or NULL if it has no statement.
++     This is used in finish_loop_cond_prep to find out the splitting
++     point and then {FOR,WHILE}_BODY will be changed to the actual
++     body.  */
++  if (tsi_end_p (iter))
++    *body_p = NULL_TREE;
++  else
++    *body_p = tsi_stmt (iter);
++}
++
++/* Finalize {FOR,WHILE}_{BODY,COND_PREP} after the loop body.
++   The above function initialized *BODY_P to the last statement
++   in *PREP_P at that point.
++   Call do_poplevel on *PREP_P and move everything after that
++   former last statement into *BODY_P.  genericize_c_loop
++   will later put those parts back together.
++   CLEANUP is {FOR,WHILE}_COND_CLEANUP.  */
++
++static void
++finish_loop_cond_prep (tree *body_p, tree *prep_p, tree cleanup)
++{
++  *prep_p = do_poplevel (*prep_p);
++  gcc_assert (TREE_CODE (*prep_p) == BIND_EXPR);
++  if (BIND_EXPR_BODY (*prep_p) == *body_p)
++    {
++      gcc_assert (cleanup == NULL_TREE);
++      *body_p = build_empty_stmt (input_location);
++      return;
++    }
++  tree stmt_list = BIND_EXPR_BODY (*prep_p);
++  gcc_assert (TREE_CODE (stmt_list) == STATEMENT_LIST);
++  if (cleanup)
++    {
++      tree_stmt_iterator iter = tsi_last (stmt_list);
++      gcc_assert (TREE_CODE (tsi_stmt (iter)) == CLEANUP_STMT);
++      for (unsigned depth = tree_to_uhwi (cleanup); depth > 1; --depth)
++	{
++	  gcc_assert (TREE_CODE (CLEANUP_BODY (tsi_stmt (iter)))
++		      == STATEMENT_LIST);
++	  iter = tsi_last (CLEANUP_BODY (tsi_stmt (iter)));
++	  gcc_assert (TREE_CODE (tsi_stmt (iter)) == CLEANUP_STMT);
++	}
++      if (*body_p == NULL_TREE)
++	{
++	  *body_p = CLEANUP_BODY (tsi_stmt (iter));
++	  CLEANUP_BODY (tsi_stmt (iter)) = build_empty_stmt (input_location);
++	  return;
++	}
++      stmt_list = CLEANUP_BODY (tsi_stmt (iter));
++    }
++  tree_stmt_iterator iter = tsi_start (stmt_list);
++  while (tsi_stmt (iter) != *body_p)
++    tsi_next (&iter);
++  *body_p = tsi_split_stmt_list (input_location, iter);
+ }
+ 
+ /* Finish a goto-statement.  */
+@@ -1437,14 +1499,13 @@ void
+ finish_while_stmt (tree while_stmt)
+ {
+   end_maybe_infinite_loop (boolean_true_node);
+-  WHILE_BODY (while_stmt)
+-    = (WHILE_COND_PREP (while_stmt)
+-       ? pop_stmt_list (WHILE_BODY (while_stmt))
+-       : do_poplevel (WHILE_BODY (while_stmt)));
+-  finish_loop_cond (&WHILE_COND (while_stmt), WHILE_BODY (while_stmt));
+   if (WHILE_COND_PREP (while_stmt))
+-    WHILE_COND_PREP (while_stmt) = do_poplevel (WHILE_COND_PREP (while_stmt));
+-  set_one_cleanup_loc (WHILE_COND_CLEANUP (while_stmt), input_location);
++    finish_loop_cond_prep (&WHILE_BODY (while_stmt),
++			   &WHILE_COND_PREP (while_stmt),
++			   WHILE_COND_CLEANUP (while_stmt));
++  else
++    WHILE_BODY (while_stmt) = do_poplevel (WHILE_BODY (while_stmt));
++  finish_loop_cond (&WHILE_COND (while_stmt), WHILE_BODY (while_stmt));
+ }
+ 
+ /* Begin a do-statement.  Returns a newly created DO_STMT if
+@@ -1709,17 +1770,16 @@ finish_for_stmt (tree for_stmt)
+     RANGE_FOR_BODY (for_stmt) = do_poplevel (RANGE_FOR_BODY (for_stmt));
+   else
+     {
+-      FOR_BODY (for_stmt)
+-	= (FOR_COND_PREP (for_stmt)
+-	   ? pop_stmt_list (FOR_BODY (for_stmt))
+-	   : do_poplevel (FOR_BODY (for_stmt)));
++      if (FOR_COND_PREP (for_stmt))
++	finish_loop_cond_prep (&FOR_BODY (for_stmt),
++			       &FOR_COND_PREP (for_stmt),
++			       FOR_COND_CLEANUP (for_stmt));
++      else
++	FOR_BODY (for_stmt) = do_poplevel (FOR_BODY (for_stmt));
+       if (FOR_COND (for_stmt))
+ 	finish_loop_cond (&FOR_COND (for_stmt),
+ 			  FOR_EXPR (for_stmt) ? integer_one_node
+ 					      : FOR_BODY (for_stmt));
+-      if (FOR_COND_PREP (for_stmt))
+-	FOR_COND_PREP (for_stmt) = do_poplevel (FOR_COND_PREP (for_stmt));
+-      set_one_cleanup_loc (FOR_COND_CLEANUP (for_stmt), input_location);
+     }
+ 
+   /* Pop the scope for the body of the loop.  */
+diff --git a/gcc/tree-iterator.cc b/gcc/tree-iterator.cc
+index db2219c62489..b7e2b421c5ee 100644
+--- a/gcc/tree-iterator.cc
++++ b/gcc/tree-iterator.cc
+@@ -284,6 +284,28 @@ tsi_delink (tree_stmt_iterator *i)
+   i->ptr = next;
+ }
+ 
++/* Split a STATEMENT_LIST in I.contrainer into two, all statements
++   from the start until I.ptr inclusive will remain in the original
++   one, all statements after I.ptr are removed from that STATEMENT_LIST
++   and returned as a new STATEMENT_LIST.  If I is the last statement,
++   an empty statement with LOC location is returned.  */
++
++tree
++tsi_split_stmt_list (location_t loc, tree_stmt_iterator i)
++{
++  if (tsi_one_before_end_p (i))
++    return build_empty_stmt (loc);
++  tsi_next (&i);
++  tree ret = NULL_TREE;
++  while (!tsi_end_p (i))
++    {
++      tree t = tsi_stmt (i);
++      tsi_delink (&i);
++      append_to_statement_list_force (t, &ret);
++    }
++  return ret;
++}
++
+ /* Return the first expression in a sequence of COMPOUND_EXPRs, or in
+    a STATEMENT_LIST, disregarding DEBUG_BEGIN_STMTs, recursing into a
+    STATEMENT_LIST if that's the first non-DEBUG_BEGIN_STMT.  */
+diff --git a/gcc/tree-iterator.h b/gcc/tree-iterator.h
+index 27795e9ee2b8..d1bc9014c65b 100644
+--- a/gcc/tree-iterator.h
++++ b/gcc/tree-iterator.h
+@@ -138,6 +138,7 @@ extern void tsi_link_after (tree_stmt_iterator *, tree,
+ 			    enum tsi_iterator_update);
+ 
+ extern void tsi_delink (tree_stmt_iterator *);
++extern tree tsi_split_stmt_list (location_t, tree_stmt_iterator);
+ 
+ extern tree alloc_stmt_list (void);
+ extern void free_stmt_list (tree);
+-- 
+2.43.5
