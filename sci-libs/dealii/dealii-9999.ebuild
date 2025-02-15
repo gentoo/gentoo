@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="
 	adolc arborx assimp arpack cgal cpu_flags_x86_avx cpu_flags_x86_avx512f
-	cpu_flags_x86_sse2 cuda +debug doc +examples ginkgo gmsh +gsl hdf5
+	cpu_flags_x86_sse2 +debug doc +examples ginkgo gmsh +gsl hdf5
 	+lapack metis mpi muparser opencascade p4est petsc scalapack slepc
 	+sparse sundials symengine trilinos
 "
@@ -50,7 +50,6 @@ RDEPEND="dev-libs/boost:=
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp:= )
 	cgal? ( sci-mathematics/cgal )
-	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
 	gsl? ( sci-libs/gsl:= )
@@ -107,7 +106,6 @@ src_configure() {
 		-DDEAL_II_WITH_ASSIMP="$(usex assimp)"
 		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
 		-DDEAL_II_WITH_CGAL="$(usex cgal)"
-		-DDEAL_II_WITH_CUDA="$(usex cuda)"
 		-DDEAL_II_WITH_GINKGO="$(usex ginkgo)"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
 		-DDEAL_II_COMPONENT_EXAMPLES="$(usex examples)"
