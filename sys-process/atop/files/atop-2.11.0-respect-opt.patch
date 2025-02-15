@@ -1,3 +1,4 @@
+Don't force -O2.
 --- a/Makefile
 +++ b/Makefile
 @@ -21,7 +21,7 @@ PMPATH2  = /usr/lib64/pm-utils/sleep.d

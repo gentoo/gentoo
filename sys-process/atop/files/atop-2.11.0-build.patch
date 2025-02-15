@@ -1,7 +1,11 @@
 From 26a85b778ecf45989347ddee256af65f9b26747d Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Sun, 11 Aug 2024 22:04:15 +0100
-Subject: [PATCH] foo
+Subject: [PATCH] Respect *FLAGS, use pkg-config
+
+* Respect CFLAGS
+* Use pkg-config instead of hardcoding -lncursesw (in particular, this
+  is needed if a distribution has 'split tinfo')
 
 Signed-off-by: Sam James <sam@gentoo.org>
 --- a/Makefile
