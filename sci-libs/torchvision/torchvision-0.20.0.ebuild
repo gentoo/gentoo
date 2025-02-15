@@ -46,6 +46,8 @@ src_prepare() {
 distutils_enable_tests pytest
 
 python_compile() {
+	addpredict /dev/kfd
+
 	FORCE_CUDA=$(usex cuda 1 0) \
 		NVCC_FLAGS="${NVCCFLAGS}" \
 		MAX_JOBS="$(makeopts_jobs)" \
