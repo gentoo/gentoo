@@ -1,5 +1,5 @@
-This may or may not be correct, but maturin itself does not use
-pyo3 it should be fine as long as the tests pass (aka, it builds
+This may or may not be correct, but maturin itself does not use pyo3
+and it should be fine as long as the tests pass (aka, it builds
 rust packages for tests, and these are the ones using pyo3).
 
 [patch] directive is used to override the (older) pyo3-ffi that
@@ -7,6 +7,8 @@ is also vendored but patch does not apply to, this also skip
 checking hashes at same time. Note that it prints a harmless
 warning when done here for packages that do not use pyo3-ffi
 but this is simpler than doing it per-test-package.
+
+https://github.com/PyO3/pyo3/pull/4760
 --- a/.cargo/config.toml
 +++ b/.cargo/config.toml
 @@ -4,2 +4,5 @@
