@@ -1,0 +1,13 @@
+# Original commit: https://github.com/Igalia/WPEBackend-fdo/commit/923ebd634949c11444fbdb6b1ee9ac62ac538ec7
+diff --git a/src/ipc.h b/src/ipc.h
+index c274529..f9945eb 100644
+--- a/src/ipc.h
++++ b/src/ipc.h
+@@ -26,6 +26,7 @@
+ #pragma once
+ 
+ #include <gio/gio.h>
++#include <stdint.h>
+ #include <memory>
+ 
+ namespace FdoIPC {
