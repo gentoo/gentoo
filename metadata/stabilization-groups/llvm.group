@@ -8,6 +8,7 @@ llvm-core/mlir
 llvm-core/clang-common
 llvm-core/clang
 llvm-core/clang-toolchain-symlinks
+llvm-core/flang
 dev-python/clang
 dev-python/lit
 llvm-core/lld
