@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop
 
@@ -22,18 +22,11 @@ BDEPEND="
 	>=sys-devel/bison-1.34
 	app-alternatives/lex"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.4.1-fno-common.patch )
-
-src_prepare() {
-	default
-
-	sed -i \
-		-e '/^bbk:/s/$/ gnushogi_compile pat2inc sizetest/' \
-		Makefile.in || die
-	sed -i \
-		-e "/^LIBDIR/s:=.*:=\"$(get_libdir)\":" \
-		gnushogi/Makefile.in || die
-}
+PATCHES=(
+	"${FILESDIR}"/"${P}-fno-common.patch"
+	"${FILESDIR}"/"${P}-makefile.patch"
+	"${FILESDIR}"/"${P}-xshogi-parser.patch"
+)
 
 src_configure() {
 	econf \

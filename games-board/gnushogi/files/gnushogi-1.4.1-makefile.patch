@@ -1,0 +1,72 @@
+Fix for the build system.
+Allows propagating errors upwards, replaces sometimes dubious
+if well-meaning seds from ebuild
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,19 +44,19 @@
+ #
+ 
+ gnushogi_compile:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) $(PROGNAME)
++	$(MAKE) -C $(GNUSHOGIDIR) $(PROGNAME)
+ 
+ pat2inc:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) pat2inc
++	$(MAKE) -C $(GNUSHOGIDIR) pat2inc
+ 
+ sizetest:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) sizetest
++	$(MAKE) -C $(GNUSHOGIDIR) sizetest
+ 
+ xshogi_compile:
+-	-cd $(XSHOGIDIR) && $(MAKE)
++	$(MAKE) -C $(XSHOGIDIR)
+ 
+-bbk:
++bbk: gnushogi_compile pat2inc sizetest
+-	-cd $(GNUSHOGIDIR) && $(MAKE) $(PROGNAME).bbk
++	$(MAKE) -C $(GNUSHOGIDIR) $(PROGNAME).bbk
+ 
+ 
+ #
+@@ -73,10 +73,10 @@
+ install: gnushogi_install @XSHOGIINSTALL@
+ 
+ gnushogi_install:
+-	-cd $(GNUSHOGIDIR) && $(MAKE) install
++	$(MAKE) -C $(GNUSHOGIDIR) install
+ 
+ xshogi_install: $(XSHOGIDIR)/xshogi
+-	-cd $(XSHOGIDIR) && $(MAKE) install
++	$(MAKE) -C $(XSHOGIDIR) install
+ 
+ 
+ 
+@@ -87,13 +87,13 @@
+ clean: gnushogi_clean @XSHOGICLEAN@ doc_clean
+ 
+ gnushogi_clean:
+-	cd $(GNUSHOGIDIR) && $(MAKE) clean
++	$(MAKE) -C $(GNUSHOGIDIR) clean
+ 
+ xshogi_clean:
+-	cd $(XSHOGIDIR) && $(MAKE) clean
++	$(MAKE) -C $(XSHOGIDIR) clean
+ 
+ doc_clean:
+-	cd $(BUILDROOT)/doc && $(MAKE) clean
++	$(MAKE) -C $(BUILDROOT)/doc clean
+ 
+ 
+ #
+--- a/gnushogi/Makefile.in
++++ b//gnushogi/Makefile.in
+@@ -51,7 +51,7 @@
+ 
+ # Where the language description, the book, and the 
+ # persistent hashtable live.
+-LIBDIR  =   $(prefix)/lib/$(PROGNAME)
++LIBDIR  =   @libdir@
+ 
+ # Where the man page goes.
+ MANDIR  = $(prefix)/man/man6 
