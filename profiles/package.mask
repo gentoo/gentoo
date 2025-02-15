@@ -47,6 +47,13 @@ sci-geosciences/gpxlab
 # Removal on 2025-03-16.
 app-text/simple-fb2-reader
 
+# Andrey Grozin <grozin@gentoo.org> (2025-02-15)
+# Last release 6 years ago, no one else packages this.
+# Does not seem useful.
+# Bug #729546.
+# Removal on 2025-03-16.
+app-text/fictionup
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-02-14)
 # No revdeps left, and serves no purpose on its own.  Formerly used
 # by <=app-emulation/wine-*-7 but <=7.x has been dropped and newer
