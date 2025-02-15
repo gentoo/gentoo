@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 RUST_MIN_VER=1.75.0
 inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
 
@@ -51,6 +51,10 @@ BDEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.2-pypy3_11-tests.patch
+)
 
 src_prepare() {
 	distutils-r1_src_prepare
