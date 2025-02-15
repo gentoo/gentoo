@@ -109,12 +109,14 @@ dual_scripts() {
 
 check_rebuild() {
 	# Fresh install
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		return 0;
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		return 0
+	fi
+
 	# Major Upgrade
-	# doesn't matter if there's multiple copies, it still needs a rebuild
-	# if the string is anything other than "5.CURRENTMAJOR"
-	elif [[ "${REPLACING_VERSIONS%.*}" != "${PV%.*}" ]]; then
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		[[ ${v%.*} == "${SHORT_PV}" ]] && continue
 		echo ""
 		ewarn "UPDATE THE PERL MODULES:"
 		ewarn "After updating dev-lang/perl the installed Perl modules"
@@ -130,10 +132,11 @@ check_rebuild() {
 		ewarn "You should then call perl-cleaner to clean up any old files and trigger any"
 		ewarn "remaining rebuilds portage may have missed."
 		ewarn "Use: perl-cleaner --all"
-		return 0;
+		return 0
+	done
 
 	# Reinstall w/ USE Change
-	elif
+	if
 		 (   use perl_features_ithreads && ( has_version '<dev-lang/perl-5.38.2-r3[-ithreads]' || has_version '>=dev-lang/perl-5.38.2-r3[-perl_features_ithreads]' ) ) || \
 		 ( ! use perl_features_ithreads && ( has_version '<dev-lang/perl-5.38.2-r3[ithreads]'  || has_version '>=dev-lang/perl-5.38.2-r3[perl_features_ithreads]'  ) ) || \
 		 (   use perl_features_quadmath && ( has_version '<dev-lang/perl-5.38.2-r3[-quadmath]' || has_version '>=dev-lang/perl-5.38.2-r3[-perl_features_quadmath]' ) ) || \
