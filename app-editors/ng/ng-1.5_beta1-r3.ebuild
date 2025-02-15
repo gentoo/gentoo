@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -34,10 +34,7 @@ src_prepare() {
 	cd - >/dev/null || die
 	cp sys/unix/configure . || die
 	# written in K&R C
-	append-flags \
-		-Wno-implicit-function-declaration \
-		-Wno-implicit-int \
-		-Wno-return-type
+	append-flags -std=gnu89
 }
 
 src_configure() {
