@@ -1,11 +1,11 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Library for creating OpenSMTPD filters"
-HOMEPAGE="https://imperialat.at/dev/libopensmtpd/"
-SRC_URI="https://imperialat.at/releases/${P}.tar.gz"
+HOMEPAGE="https://src.imperialat.at/?action=summary&path=libopensmtpd.git"
+SRC_URI="https://src.imperialat.at/releases/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
