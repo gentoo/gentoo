@@ -12,7 +12,7 @@ SRC_URI="https://wpewebkit.org/releases/${P}.tar.xz"
 LICENSE="BSD-2"
 SLOT="1.0"
 
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	media-libs/libepoxy[egl(+)]
@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-c23-fix.patch
+	"${FILESDIR}"/${PN}-1.14.2-c23-fix.patch
 )
 
 src_configure() {
