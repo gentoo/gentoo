@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit toolchain-funcs
+inherit meson
 
 DESCRIPTION="dockapp that monitors one or more mailboxes"
 HOMEPAGE="http://tnemeth.free.fr/projets/dockapps.html"
@@ -18,7 +18,6 @@ RDEPEND="x11-libs/gtk+:2
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-checkthread.patch
 	"${FILESDIR}"/${P}-fno-common.patch
@@ -26,23 +25,17 @@ PATCHES=(
 	"${FILESDIR}"/${P}-c23.patch
 )
 
-src_configure() {
-	# The ./configure script is not autoconf based, therefore don't use econf:
-	./configure -p /usr || die
-}
+src_prepare() {
+	default
 
-src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		CPP="$(tc-getCPP)" \
-		CFLAGS="${CFLAGS}" \
-		DEBUG_LDFLAGS="" \
-		LDFLAGS="${LDFLAGS}" \
-		DEBUG_CFLAGS=""
+	cp "${FILESDIR}"/meson.build . || die "No new build file"
+	rm -f wmmaiload/config.h && touch wmmaiload/config.h || die "Can't remove stale config"
+	rm -f wmmaiload-config/config.h && touch wmmaiload-config/config.h || die "Can't remove stale config"
 }
 
 src_install() {
-	dobin ${PN}/${PN} ${PN}-config/${PN}-config
+	meson_install
+
 	doman doc/*.1
 	dodoc AUTHORS ChangeLog FAQ NEWS README THANKS TODO doc/sample.${PN}rc
 }
