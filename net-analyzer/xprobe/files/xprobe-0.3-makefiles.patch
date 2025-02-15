@@ -1,0 +1,99 @@
+Add explicit dependency between program and library
+Fixes break with MAKEOPTS="-j1 --shuffle=3854825862" and other shuffle
+Also folds sed commands from ebuild and patches configure; running
+autoreconf breaks build
+https://bugs.gentoo.org/882675
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -47,7 +47,7 @@
+ 
+ all: lib xprobe2
+ 
+-xprobe2: $(OBJS) modules
++xprobe2: $(OBJS) modules lib
+ 	$(CXX) $(CFLAGS) $(OBJS) $(MODOBJS) -o $@ $(LDFLAGS) $(LIBS)
+ 	strip $@    
+ 
+--- a/libs-external/USI++/src/Makefile.in
++++ b/libs-external/USI++/src/Makefile.in
+@@ -15,7 +15,7 @@
+ 	clear
+ 
+ usi++:icmp.o datalink.o ip.o misc.o udp.o tcp.o TX_IP.o Layer2.o arp.o
+-	ar cr libusi++.a *.o
++	$(AR) cr libusi++.a *.o
+ #	ld *.o -Bshareable -o libusi++.so
+ 	$(RANLIB) libusi++.a
+ 	rm -f *.o
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -49,7 +49,7 @@
+ 
+ xprobe2: $(OBJS) modules lib
+ 	$(CXX) $(CFLAGS) $(OBJS) $(MODOBJS) -o $@ $(LDFLAGS) $(LIBS)
+-	strip $@    
++	true $@    
+ 
+ modules:
+ 	cd xpmodules; ${MAKE}    
+--- a/src/xplib/Makefile.in
++++ b/src/xplib/Makefile.in
+@@ -44,7 +44,7 @@
+ all: libxplib.a
+ 
+ libxplib.a: $(OBJS)
+-	ar cr libxplib.a *.o
++	$(AR) cr libxplib.a *.o
+ 	$(RANLIB) libxplib.a
+ 
+  .c.o: $(INCLUDES)
+--- a/src/xpmodules/alive_probe/Makefile.in
++++ b/src/xpmodules/alive_probe/Makefile.in
+@@ -42,7 +42,7 @@
+ all: alive_probe.a
+ 
+ alive_probe.a: icmp_ping.o tcp_ping.o udp_ping.o ttl_module portscan_module
+-	ar cr alive_probe.a *.o ttl_calc/*.o portscanner/*.o
++	$(AR) cr alive_probe.a *.o ttl_calc/*.o portscanner/*.o
+ 	$(RANLIB) alive_probe.a
+ 
+ icmp_ping.o: icmp_ping.cc
+--- a/src/xpmodules/os_probe/Makefile.in
++++ b/src/xpmodules/os_probe/Makefile.in
+@@ -43,7 +43,7 @@
+ 
+ os_probe.a: icmp_port_unreach_mod icmp_echo_id_mod icmp_timestamp_mod \
+ icmp_inforeq_mod icmp_addrmask_mod tcp_handshake_mod tcp_rst_mod smb_mod snmp_mod
+-	ar cr os_probe.a icmp_port_unreach/*.o icmp_echo_id/*.o icmp_timestamp/*.o \
++	$(AR) cr os_probe.a icmp_port_unreach/*.o icmp_echo_id/*.o icmp_timestamp/*.o \
+     icmp_inforeq/*.o icmp_addrmask/*.o tcp_handshake/*.o tcp_rst/*.o smb/*.o snmp/*.o
+ 	$(RANLIB) os_probe.a
+ 
+--- b/configure
++++ a/configure
+@@ -2252,6 +2252,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_declaration
++#include <cstdlib>
+ int
+ main ()
+ {
+@@ -2613,6 +2614,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_declaration
++#include <cstdlib>
+ int
+ main ()
+ {
+--- a/libs-external/USI++/src/configure	2025-02-15 16:41:20.320574540 +0400
++++ b/libs-external/USI++/src/configure	2025-02-15 16:42:29.463212487 +0400
+@@ -3499,6 +3499,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <ctype.h>
++#include <stdlibh>
+ #if ((' ' & 0x0FF) == 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
