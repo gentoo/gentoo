@@ -14,7 +14,7 @@ HOMEPAGE="https://pypi.org/project/codespell
 # Code licensed under GPL-2, dictionary licensed under CC-BY-SA-3.0
 LICENSE="GPL-2 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 BDEPEND="
 	test? (
