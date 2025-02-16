@@ -488,5 +488,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	eselect wine update --if-unset || die
+	if has_version -b app-eselect/eselect-wine; then
+		eselect wine update --if-unset || die
+	fi
 }
