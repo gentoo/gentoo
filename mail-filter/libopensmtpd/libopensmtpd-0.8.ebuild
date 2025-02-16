@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Library for creating OpenSMTPD filters"
 HOMEPAGE="https://src.imperialat.at/?action=summary&path=libopensmtpd.git"
 SRC_URI="https://src.imperialat.at/releases/${P}.tar.gz"
@@ -20,7 +22,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake MANFORMAT="man"
+	emake CC="$(tc-getCC)" MANFORMAT="man"
 }
 
 src_install() {
