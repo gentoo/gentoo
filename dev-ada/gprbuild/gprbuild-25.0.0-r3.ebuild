@@ -1,16 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
-
-inherit ada multiprocessing
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
+inherit ada python-any-r1 multiprocessing
 
 XMLADA=xmlada-${PV}
 
 DESCRIPTION="Multi-Language Management"
-HOMEPAGE="http://libre.adacore.com/"
+HOMEPAGE="https://github.com/AdaCore/gprbuild"
 SRC_URI="
 	https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
@@ -18,22 +18,44 @@ SRC_URI="
 		-> ${XMLADA}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc"
 
 DEPEND="${ADA_DEPS}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]"
 RDEPEND="${DEPEND}"
-BDEPEND="doc? ( dev-python/sphinx )"
+BDEPEND="doc? (
+	$(python_gen_any_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	')
+)"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=( "${FILESDIR}"/${PN}-22.0.0-gentoo.patch )
+
+python_check_deps() {
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+	ada_pkg_setup
+}
 
 src_prepare() {
 	default
 	sed -i \
 		-e "s:@GNATBIND@:${GNATBIND}:g" \
 		src/gprlib.adb \
+		|| die
+	sed -i \
+		-e "s|\"gnatbind\"|\"gnatbind-${GCC_PV}\"|" \
+		src/gprbind.adb \
+		|| die
+	sed -i \
+		-e "s:18.0w:$(ver_cut 1-2):" \
+		-e "/Build_Type :/s:Gnatpro:FSF:" \
+		gpr/src/gpr-version.ads \
 		|| die
 	cd gpr/src || die
 	ln -s gpr-util-put_resource_usage__unix.adb \
@@ -58,11 +80,7 @@ src_compile() {
 		gnatmake -j$(makeopts_jobs) ${inc_flags} ${lib} $ADAFLAGS \
 			-largs ${LDFLAGS} gpr_imports.o || die
 	done
-	if use doc; then
-		emake -C doc txt
-		emake -C doc info
-		emake -C doc html
-	fi
+	use doc && emake -C doc html
 }
 
 src_install() {
@@ -71,12 +89,7 @@ src_install() {
 	doexe ${lib_progs}
 	insinto /usr/share/gpr
 	doins share/_default.gpr
-	local HTML_DOCS=
 	local DOCS=README.md
-	if use doc; then
-		DOCS+=" examples doc/txt/gprbuild_ug.txt"
-		HTML_DOCS+="doc/html/*"
-		doinfo doc/info/gprbuild_ug.info
-	fi
+	use doc && HTML_DOCS="doc/html/*"
 	einstalldocs
 }
