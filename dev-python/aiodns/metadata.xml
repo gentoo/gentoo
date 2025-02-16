@@ -11,6 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">aiodns</remote-id>
-		<remote-id type="github">saghul/aiodns</remote-id>
+		<remote-id type="github">aio-libs/aiodns</remote-id>
 	</upstream>
 </pkgmetadata>

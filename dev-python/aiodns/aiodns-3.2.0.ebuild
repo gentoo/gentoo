@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Simple DNS resolver for asyncio"
 HOMEPAGE="
 	https://pypi.org/project/aiodns/
-	https://github.com/saghul/aiodns/
+	https://github.com/aio-libs/aiodns/
 "
 
 LICENSE="MIT"
@@ -29,7 +29,7 @@ distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# Internet changed, https://github.com/saghul/aiodns/issues/107
+		# Internet changed, https://github.com/aio-libs/aiodns/issues/107
 		tests.py::DNSTest::test_query_bad_chars
 	)
 
