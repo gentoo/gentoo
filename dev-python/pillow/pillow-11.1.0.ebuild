@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # setuptools wrapper
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 toolchain-funcs virtualx
@@ -23,6 +23,7 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/python-pillow/Pillow/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
+	https://github.com/python/pythoncapi-compat/raw/c84545f0e1e21757d4901f75c47333d25a3fcff0/pythoncapi_compat.h
 "
 S="${WORKDIR}/${MY_P}"
 
@@ -66,10 +67,22 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-PATCHES=(
-	# https://github.com/python-pillow/pillow/pull/7634
-	"${FILESDIR}/${PN}-10.2.0-cross.patch"
-)
+src_prepare() {
+	local PATCHES=(
+		# https://github.com/python-pillow/pillow/pull/7634
+		"${FILESDIR}/${PN}-10.2.0-cross.patch"
+	)
+
+	distutils-r1_src_prepare
+
+	# https://github.com/python-pillow/Pillow/pull/8757
+	if ! grep -q 0041177c4f348c8952b4c8980b2c90856e61c7c7 \
+		src/thirdparty/pythoncapi_compat.h
+	then
+		die "Remove pythoncapi_compat.h update"
+	fi
+	cp "${DISTDIR}/pythoncapi_compat.h" src/thirdparty/ || die
+}
 
 usepil() {
 	usex "${1}" enable disable
