@@ -51,6 +51,7 @@ src_prepare() {
 
 	if use modules ; then
 		cd "${WORKDIR}"/${NETATOP_P} || die
+		eapply "${FILESDIR}/netatop-3.2.2-strict-prototype.patch"
 
 		sed \
 			-e "s#\`uname -r\`#${KV_FULL}#g" \
