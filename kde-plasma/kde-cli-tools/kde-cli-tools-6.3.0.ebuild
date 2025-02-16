@@ -33,6 +33,9 @@ RDEPEND="${DEPEND}
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
 
+# downstream split
+PATCHES=( "${FILESDIR}/${PN}-6.2.4-unrequire-kf-qt-modules.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 	ecm_punt_po_install
