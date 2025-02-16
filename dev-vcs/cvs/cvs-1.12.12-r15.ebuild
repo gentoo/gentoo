@@ -7,16 +7,18 @@ inherit autotools flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="https://cvs.nongnu.org/"
-
-SRC_URI="mirror://gnu/non-gnu/cvs/source/feature/${PV}/${P}.tar.bz2
-	doc? ( mirror://gnu/non-gnu/cvs/source/feature/${PV}/cederqvist-${PV}.html.tar.bz2
+SRC_URI="
+	mirror://gnu/non-gnu/cvs/source/feature/${PV}/${P}.tar.bz2
+	doc? (
+		mirror://gnu/non-gnu/cvs/source/feature/${PV}/cederqvist-${PV}.html.tar.bz2
 		mirror://gnu/non-gnu/cvs/source/feature/${PV}/cederqvist-${PV}.pdf
-		mirror://gnu/non-gnu/cvs/source/feature/${PV}/cederqvist-${PV}.ps )"
+		mirror://gnu/non-gnu/cvs/source/feature/${PV}/cederqvist-${PV}.ps
+	)
+"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
-
 IUSE="crypt doc kerberos nls pam selinux server"
 RESTRICT="test"
 
@@ -30,11 +32,6 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-cvs )
 "
-
-src_unpack() {
-	unpack ${P}.tar.bz2
-	use doc && unpack cederqvist-${PV}.html.tar.bz2
-}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cvsbug-tmpfix.patch
@@ -55,9 +52,15 @@ PATCHES=(
 	"${FILESDIR}"/0001-gettext-autoreconf.patch
 	"${FILESDIR}"/0001-fix-quoting-around-potentially-empty-shell-var.patch
 	"${FILESDIR}"/c99-roundup.patch
-	)
+)
+
 DOCS=( BUGS ChangeLog{,.zoo} DEVEL-CVS FAQ HACKING MINOR-BUGS NEWS \
 	PROJECTS README TESTS TODO )
+
+src_unpack() {
+	unpack ${P}.tar.bz2
+	use doc && unpack cederqvist-${PV}.html.tar.bz2
+}
 
 src_prepare() {
 	export CONFIG_SHELL=${BASH}  # configure fails without
