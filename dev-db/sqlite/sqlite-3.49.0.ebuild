@@ -326,9 +326,9 @@ multilib_src_configure() {
 	options+=( --soname=legacy )
 
 	# https://sqlite.org/forum/forumpost/4f4d06a9f6683bb9
-	tc-export CC
+	tc-export_build_env BUILD_CC
 
-	CC_FOR_BUILD=${CC} econf "${options[@]}"
+	CC_FOR_BUILD=${BUILD_CC} econf "${options[@]}"
 }
 
 multilib_src_compile() {
