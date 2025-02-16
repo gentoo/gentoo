@@ -56,6 +56,13 @@ src_test() {
 python_test() {
 	unset NINJA
 
+	local EPYTEST_DESELECT=()
+	if ! has_version "dev-build/meson[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_wheel.py::test_vendored_meson
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p pytest_mock
 }
