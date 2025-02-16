@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools pam toolchain-funcs
+inherit autotools flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="https://cvs.nongnu.org/"
@@ -67,6 +67,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943853
+	append-cflags -std=gnu17
+
 	if tc-is-cross-compiler ; then
 		# Sane defaults when cross-compiling (as these tests want to
 		# try and execute code).
