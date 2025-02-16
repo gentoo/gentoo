@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -78,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.4-default-jar-location-fix.patch
 	"${FILESDIR}"/${PN}-4.10.1-exclude-usr-local.patch
 	"${FILESDIR}"/${PN}-4.12.0-configure-ac-test-fix.patch
+	"${FILESDIR}"/${PN}-4.12.1-c23.patch
 )
 
 src_unpack() {
