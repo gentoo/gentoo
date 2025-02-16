@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2.1 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="doc gstreamer omemo test"
 RESTRICT="!test? ( test )"
 
