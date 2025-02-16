@@ -39,7 +39,10 @@ REQUIRED_USE="
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
 "
+# snapshots need bison+flex
 BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	lua? ( ${LUA_DEPS} )
@@ -267,6 +270,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# snapshots need bison+flex
+	unset LEX YACC
+
 	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
