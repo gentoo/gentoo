@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1 optfeature
 
@@ -67,7 +67,7 @@ python_test() {
 		'tests/protocols/test_websocket.py::test_send_binary_data_to_server_bigger_than_default_on_websockets[h11-max=defaults sent=defaults+1]'
 	)
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			# TODO
 			EPYTEST_DESELECT+=(
 				tests/middleware/test_logging.py::test_running_log_using_fd
