@@ -1,0 +1,26 @@
+https://github.com/alsaplayer/alsaplayer/commit/65f5db98f58cd5042454c7f834e3698e8cb153e5
+
+From 65f5db98f58cd5042454c7f834e3698e8cb153e5 Mon Sep 17 00:00:00 2001
+From: Adam Sampson <ats@offog.org>
+Date: Tue, 21 Jan 2025 14:15:42 +0000
+Subject: [PATCH] Add missing #include in libmikmod configure test.
+
+GCC 14 treats missing prototypes as an error by default, so this test
+would always fail.
+---
+ m4/libmikmod.m4 | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/m4/libmikmod.m4 b/m4/libmikmod.m4
+index e34ab4e0..c33b6f91 100644
+--- a/m4/libmikmod.m4
++++ b/m4/libmikmod.m4
+@@ -64,6 +64,7 @@ dnl
+ #include <mikmod.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ char* my_strdup (char *str)
+ {
+

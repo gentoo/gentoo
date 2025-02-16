@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools desktop flag-o-matic xdg
+inherit autotools desktop xdg
 
 DESCRIPTION="A heavily multi-threaded pluggable audio player"
 HOMEPAGE="https://alsaplayer.sourceforge.net/"
@@ -38,7 +38,10 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )"
 
-PATCHES=( "${FILESDIR}"/${P}-autotools.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-c99.patch
+)
 
 src_prepare() {
 	default
@@ -47,11 +50,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=odr
-	# https://bugs.gentoo.org/860423
-	# https://github.com/alsaplayer/alsaplayer/issues/28
-	filter-lto
-
 	export ac_cv_prog_HAVE_DOXYGEN=$(usex doc true false)
 	export ac_cv_lib_xosd_xosd_create=$(usex xosd)
 
