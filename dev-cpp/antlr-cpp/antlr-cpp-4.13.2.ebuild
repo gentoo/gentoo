@@ -21,7 +21,7 @@ BDEPEND="app-arch/unzip"
 src_unpack() {
 	mkdir "${S}" || die
 	cd "${S}" || die
-	unpack "${P}.zip"
+	unpack "antlr4-cpp-runtime-${PV}-source.zip"
 }
 
 src_prepare() {
