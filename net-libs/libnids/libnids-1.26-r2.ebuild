@@ -40,8 +40,9 @@ src_prepare() {
 src_configure() {
 	tc-export AR
 
-	# bug #946622
+	# bug #943943
 	append-flags -std=gnu17
+	# bug #940596
 	append-flags -fno-strict-aliasing
 	filter-lto
 
