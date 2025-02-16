@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 inherit distutils-r1 optfeature
 
@@ -55,6 +55,11 @@ python_test() {
 			EPYTEST_DESELECT+=(
 				# pypy3.10, to be more precise
 				tests/test_inspect.py::test_inspect_integer_with_methods_python310only
+			)
+			;;
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				tests/test_inspect.py::test_inspect_integer_with_methods_python311
 			)
 			;;
 	esac
