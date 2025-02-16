@@ -16,7 +16,7 @@ HOMEPAGE="https://userbase.kde.org/KTimeTracker"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="
