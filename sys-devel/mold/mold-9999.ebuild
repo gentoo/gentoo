@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,8 @@ fi
 #  - siphash ( MIT CC0-1.0 )
 LICENSE="MIT BSD-2 CC0-1.0"
 SLOT="0"
-IUSE="debug"
+IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/zstd:=
@@ -70,12 +71,19 @@ src_configure() {
 	use debug || append-cppflags "-DNDEBUG"
 
 	local mycmakeargs=(
-		-DMOLD_ENABLE_QEMU_TESTS=OFF
+		-DBUILD_TESTING=$(usex test)
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
 		-DMOLD_USE_MIMALLOC=$(usex !kernel_Darwin)
 		-DMOLD_USE_SYSTEM_MIMALLOC=ON
 		-DMOLD_USE_SYSTEM_TBB=ON
 	)
+
+	if ! use test ; then
+		mycmakeargs+=(
+			-DMOLD_ENABLE_QEMU_TESTS=OFF
+		)
+	fi
+
 	cmake_src_configure
 }
 
