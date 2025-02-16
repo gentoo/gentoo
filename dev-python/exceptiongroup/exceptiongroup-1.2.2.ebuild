@@ -21,6 +21,19 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		pypy3.11)
+			# exception message mismatch
+			# https://github.com/agronholm/exceptiongroup/issues/141
+			EPYTEST_DESELECT+=(
+				tests/test_exceptions.py::BadConstructorArgs::test_bad_EG_construction__too_few_args
+				tests/test_exceptions.py::BadConstructorArgs::test_bad_EG_construction__too_many_args
+			)
+			;;
+	esac
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
