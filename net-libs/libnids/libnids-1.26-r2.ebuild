@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,10 @@ src_prepare() {
 src_configure() {
 	tc-export AR
 
+	# bug #946622
+	append-flags -std=gnu17
 	append-flags -fno-strict-aliasing
+	filter-lto
 
 	econf \
 		--enable-shared \
