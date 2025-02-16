@@ -106,7 +106,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	distutils-r1_src_prepare
 
 	sed -i -e 's:--benchmark-disable::' pyproject.toml || die
 
