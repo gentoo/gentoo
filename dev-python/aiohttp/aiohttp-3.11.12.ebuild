@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -123,7 +123,7 @@ python_test() {
 
 	# upstream unconditionally blocks building C extensions
 	# on PyPy3 but the test suite needs an explicit switch
-	if [[ ${EPYTHON} == pypy3 ]] || ! use native-extensions; then
+	if [[ ${EPYTHON} == pypy3* ]] || ! use native-extensions; then
 		local -x AIOHTTP_NO_EXTENSIONS=1
 	fi
 
