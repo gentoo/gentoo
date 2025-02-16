@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop
+inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="3d tron, just like the movie"
 HOMEPAGE="https://gltron.sourceforge.net/"
@@ -16,11 +16,12 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="
 	media-libs/libmikmod
-	media-libs/libpng:0
-	media-libs/libsdl[sound,video]
+	media-libs/libpng:=
+	media-libs/libsdl[opengl,sound,video]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-sound[vorbis,mikmod]
 	media-libs/smpeg
+	sys-libs/zlib
 	virtual/opengl
 	virtual/glu"
 RDEPEND="${DEPEND}"
@@ -30,6 +31,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-debian.patch
 	"${FILESDIR}"/${P}-gcc49.patch
 	"${FILESDIR}"/${P}-prototypes.patch
+	"${FILESDIR}"/${P}-gcc14.patch
+	"${FILESDIR}"/${P}-automake.patch
 )
 
 src_prepare() {
@@ -38,6 +41,8 @@ src_prepare() {
 	sed -i \
 		-e '/^gltron_LINK/s/$/ $(LDFLAGS)/' \
 		Makefile.in || die
+
+	eautoreconf
 }
 
 src_configure() {
@@ -47,6 +52,10 @@ src_configure() {
 		--disable-warn \
 		--disable-debug \
 		--disable-profile
+}
+
+src_compile() {
+	emake AR=$(tc-getAR)
 }
 
 src_install() {
