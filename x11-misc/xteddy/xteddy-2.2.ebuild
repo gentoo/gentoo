@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools
 
 DESCRIPTION="A cuddly teddy bear (or other image) for your X desktop"
-HOMEPAGE="http://webstaff.itn.liu.se/~stegu/xteddy/"
+HOMEPAGE="https://salsa.debian.org/games-team/xteddy"
 SRC_URI="http://webstaff.itn.liu.se/~stegu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
