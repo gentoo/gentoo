@@ -1,11 +1,11 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 CRATES="
 	archery@1.2.1
@@ -19,12 +19,12 @@ CRATES="
 	once_cell@1.19.0
 	portable-atomic@1.6.0
 	proc-macro2@1.0.86
-	pyo3-build-config@0.23.3
-	pyo3-ffi@0.23.3
-	pyo3-macros-backend@0.23.3
-	pyo3-macros@0.23.3
-	pyo3@0.23.3
-	python3-dll-a@0.2.11
+	pyo3-build-config@0.23.4
+	pyo3-ffi@0.23.4
+	pyo3-macros-backend@0.23.4
+	pyo3-macros@0.23.4
+	pyo3@0.23.4
+	python3-dll-a@0.2.12
 	quote@1.0.36
 	rpds@1.1.0
 	syn@2.0.69
@@ -45,6 +45,7 @@ HOMEPAGE="
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
+	https://dev.gentoo.org/~mgorny/dist/pyo3-ffi-0.23.4-pypy3_11.patch.xz
 "
 
 LICENSE="MIT"
@@ -57,4 +58,14 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/rpds/rpds.*.so"
 
 distutils_enable_tests pytest
 
-export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# bump pinned pyo3
+	sed -i -e 's:0[.]23[.]3:0.23.4:' Cargo.toml || die
+	rm Cargo.lock || die
+
+	pushd "${ECARGO_VENDOR}"/pyo3-ffi* >/dev/null || die
+	eapply -p2 "${WORKDIR}/pyo3-ffi-0.23.4-pypy3_11.patch"
+	popd >/dev/null || die
+}
