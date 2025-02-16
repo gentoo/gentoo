@@ -64,7 +64,9 @@ RESTRICT="test"
 
 IUSE="symlink"
 RDEPEND="
+	!<x11-terms/ghostty-1.1.0-r1
 	symlink? (
+		!>=sys-libs/ncurses-6.5_p20250118[-minimal]
 		|| (
 			<sys-libs/ncurses-6.5_p20250118
 			>=sys-libs/ncurses-6.5_p20250118[minimal]
