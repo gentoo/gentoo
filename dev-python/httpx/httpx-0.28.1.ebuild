@@ -52,7 +52,6 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/trio[${PYTHON_USEDEP}]
 		' 3.{10..13})
-		!!dev-python/httptools[${PYTHON_USEDEP}]
 	)
 "
 
@@ -61,6 +60,10 @@ distutils_enable_tests pytest
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-0.27.0-opt-trio.patch"
+		# fix test failures when httptools are installed
+		# https://github.com/encode/httpx/discussions/3429
+		# https://gitlab.archlinux.org/archlinux/packaging/packages/python-httpx/-/blob/main/uvicorn-test-server-use-h11.diff
+		"${FILESDIR}/${PN}-0.28.1-httptools-test.patch"
 	)
 
 	if ! use cli; then
