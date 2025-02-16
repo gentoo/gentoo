@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic toolchain-funcs
 
@@ -15,10 +15,12 @@ SLOT="1.2"
 KEYWORDS="amd64 ppc x86"
 IUSE="+glib +libnet static-libs"
 
-RDEPEND="!net-libs/libnids:1.1
+RDEPEND="
+	!net-libs/libnids:1.1
 	net-libs/libpcap
 	glib? ( dev-libs/glib:2 )
-	libnet? ( >=net-libs/libnet-1.1.0-r3 )"
+	libnet? ( >=net-libs/libnet-1.1.0-r3 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="glib? ( virtual/pkgconfig )"
 
