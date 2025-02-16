@@ -321,6 +321,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
+	"${FILESDIR}"/${PN}-9.2.0-glibc-2.41.patch
 
 )
 
