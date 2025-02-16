@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	>=media-libs/libsndfile-1.0.25
 	sys-libs/zlib:=
 	>=x11-libs/gtk+-3.18.9:3
+	>=x11-libs/gtksourceview-4.0
 "
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}"
