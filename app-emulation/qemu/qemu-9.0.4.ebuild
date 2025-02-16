@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -322,6 +322,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
+	"${FILESDIR}"/${PN}-9.2.0-glibc-2.41.patch
 
 )
 
