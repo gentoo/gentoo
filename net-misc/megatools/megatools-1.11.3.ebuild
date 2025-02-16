@@ -3,13 +3,14 @@
 
 EAPI=8
 
-inherit meson
+inherit meson verify-sig
 
 MY_P="${P}.20250203"
 
 DESCRIPTION="Command line tools and C library for accessing Mega cloud storage"
 HOMEPAGE="https://xff.cz/megatools/"
-SRC_URI="https://xff.cz/megatools/builds/builds/${MY_P}.tar.gz"
+SRC_URI="https://xff.cz/megatools/builds/builds/${MY_P}.tar.gz
+	verify-sig? ( https://xff.cz/megatools/builds/builds/${MY_P}.tar.gz.asc )"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
@@ -27,6 +28,8 @@ BDEPEND="
 	app-text/asciidoc
 	virtual/pkgconfig
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ondrejjirman.asc
 
 src_install() {
 	meson_src_install
