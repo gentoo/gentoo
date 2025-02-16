@@ -351,5 +351,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	eselect zig update ifunset || die
+	eselect zig update ifunset
 }
