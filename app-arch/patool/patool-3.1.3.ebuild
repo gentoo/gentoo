@@ -76,7 +76,7 @@ BDEPEND="
 # app-arch/clzip is unkeyworded on x86
 # app-arch/lrzip bug #916317 on x86
 # app-arch/unar is unkeyworded on x86
-# app-arch/7zip in unkeyworded on x86
+# app-arch/7zip is unkeyworded on x86
 
 # Unpackaged testable dependencies
 # archmage
