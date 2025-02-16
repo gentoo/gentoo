@@ -202,6 +202,35 @@ fi
 # 0.13.0
 # @CODE
 
+# @FUNCTION: _get-c-option
+# @INTERNAL
+# @USAGE: <option-name>
+# @DESCRIPTION:
+# Gets value of some compiler option from CFLAGS, starting from the end.
+# Must be a full name, without "-" and "=..." part.
+#
+# Example:
+# @CODE
+# CFLAGS="-march=i686 -march=i586"
+# _get-c-option march # returns i586
+# @CODE
+_get-c-option() {
+	if [[ ${#} -ne 1 ]]; then
+		die "${FUNCNAME[0]}: expected 1 argument, got ${#}"
+	fi
+
+	local prefix="-${1}="
+	local c_flags=( ${CFLAGS} )
+	for (( i=${#c_flags[@]} - 1; i >= 0; i -= 1 )); do
+		local c_flag="${c_flags[i]}"
+		if [[ "${c_flag}" == ${prefix}* ]]; then
+			echo "${c_flag#${prefix}}"
+			return
+	    fi
+	done
+	echo ""
+}
+
 # @FUNCTION: zig-utils_c_env_to_zig_target
 # @USAGE: <C-style target tuple> <CFLAGS>
 # @DESCRIPTION:
@@ -224,8 +253,8 @@ zig-utils_c_env_to_zig_target() {
 	local c_arch="${c_tuple%%-*}"
 	local c_abi="${c_tuple##*-}"
 
-	local c_flags="${2}"
-	local c_flags_march="$(CFLAGS="${c_flags}" get-flag march)"
+	local -x CFLAGS="${2}"
+	local c_flags_march="$(_get-c-option march)"
 
 	local arch os abi
 
@@ -279,11 +308,12 @@ zig-utils_c_env_to_zig_cpu() {
 	local c_tuple="${1}"
 	local c_arch="${c_tuple%%-*}"
 
-	local c_flags="${2}"
-	local c_flags_mabi="$(CFLAGS="${c_flags}" get-flag mabi)"
-	local c_flags_march="$(CFLAGS="${c_flags}" get-flag march)"
-	local c_flags_mcpu="$(CFLAGS="${c_flags}" get-flag mcpu)"
-	local c_flags_mfpu="$(CFLAGS="${c_flags}" get-flag mfpu)"
+	local -x CFLAGS="${2}"
+	local c_flags_mabi="$(_get-c-option mabi)"
+	local c_flags_march="$(_get-c-option march)"
+	local c_flags_mcpu="$(_get-c-option mcpu)"
+	local c_flags_mfpu="$(_get-c-option mfpu)"
+	local c_flags_mtune="$(_get-c-option mtune)"
 
 	local base_cpu features=""
 
@@ -303,12 +333,27 @@ zig-utils_c_env_to_zig_cpu() {
 			esac
 
 			case "${c_flags_march}" in
-				"") ;;
+				"" | unset) ;;
 				armv*)
 					local c_arm_family="${c_flags_march##arm}"
 					c_arm_family="${c_arm_family//./_}"
 					c_arm_family="${c_arm_family//-/}"
 					features+="+${c_arm_family}"
+					;;
+				native)
+					# GCC docs: This option has no effect if
+					# the compiler is unable to recognize the
+					# architecture of the host system.
+					#
+					# When -march=native is given and no other
+					# -mcpu or -mtune is given then ... -march=native
+					# is treated as -mcpu=native.
+					if [[ -z "${c_flags_mcpu}${c_flags_mtune}" ]]; then
+						base_cpu=native
+					else
+						: # Zig can not detect CPU features (architecture
+						# in our case) separately from model, so we ignore it.
+					fi
 					;;
 				*) features+="+${c_flags_march}";;
 			esac

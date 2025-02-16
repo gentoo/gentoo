@@ -85,7 +85,7 @@ pkg_setup() {
 	# Skip detecting zig executable.
 	ZIG_EXE="not-applicable" ZIG_VER="${PV}" zig_pkg_setup
 
-	export ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
+	declare -r -g ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
 
 	if use llvm; then
 		tc-is-cross-compiler && die "USE=llvm is not yet supported when cross-compiling"
@@ -135,7 +135,8 @@ src_configure() {
 	# are used only after compiling zig2.
 	local my_zbs_args=(
 		--zig-lib-dir "${S}/lib/"
-		# Will be a subdir under ZIG_SYS_INSTALL_DEST.
+
+		--prefix "${ZIG_SYS_INSTALL_DEST}/"
 		--prefix-lib-dir lib/
 
 		# These are built separately
@@ -192,12 +193,12 @@ src_compile() {
 	fi
 
 	cd "${BUILD_DIR}" || die
-	ZIG_EXE="./zig2" zig_src_compile --prefix "${BUILD_DIR}/stage3/"
+	ZIG_EXE="./zig2" zig_src_compile --prefix stage3/
 
 	./stage3/bin/zig env || die "Zig compilation failed"
 
 	if use doc; then
-		ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix "${S}/docgen/"
+		ZIG_EXE="./stage3/bin/zig" zig_src_compile langref --prefix docgen/
 	fi
 }
 
@@ -207,9 +208,9 @@ src_test() {
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "docgen/doc/langref.html" )
+	use doc && local HTML_DOCS=( "${BUILD_DIR}/docgen/doc/langref.html" )
 
-	ZIG_EXE="./zig2" zig_src_install --prefix "${ZIG_SYS_INSTALL_DEST}"
+	ZIG_EXE="./zig2" zig_src_install
 
 	cd "${D}/${ZIG_SYS_INSTALL_DEST}" || die
 	mv lib/zig/ lib2/ || die

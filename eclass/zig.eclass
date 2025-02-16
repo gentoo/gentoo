@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig.eclass
@@ -152,6 +152,7 @@ _zig_set_zbs_uris() {
 _zig_set_zbs_uris
 
 # @ECLASS_VARIABLE: my_zbs_args
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Bash array with ebuild-specified arguments to pass to the
 # "zig build" after "src_configure".
@@ -159,6 +160,8 @@ _zig_set_zbs_uris
 # need to override default optimize mode of this eclass (ReleaseSafe)
 # with your default, please use "--release=small" etc. syntax so that
 # user can still override it in ZBS_ARGS_EXTRA.
+# Note: `--prefix` and other relative arguments will
+# process here as relative to BUILD_DIR.
 #
 # Example:
 # @CODE
@@ -170,7 +173,6 @@ _zig_set_zbs_uris
 # 	zig_src_configure
 # }
 # @CODE
-: "${my_zbs_args:=}"
 
 # @ECLASS_VARIABLE: ZBS_ARGS_EXTRA
 # @USER_VARIABLE
@@ -203,7 +205,6 @@ _zig_set_zbs_uris
 : "${ZBS_VERBOSE:=ON}"
 
 # @ECLASS_VARIABLE: BUILD_DIR
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Directory where all "ezig build" calls will be proceeded.
 # Defaults to "${WORKDIR}/${P}-build" if not set.
@@ -293,13 +294,17 @@ zig_init_base_args() {
 		-Dcpu="${ZIG_CPU}"
 		--release=safe
 
+		# We want absolute path here so that it would appear correctly
+		# when embedded to binaries with build.zig, but without DESTDIR
+		# it would try to escape sandbox and install directly to root.
+		#
+		# Therefore, we set DESTDIR each time to be:
+		# 1) BUILD_DIR in phases before `src_install`,
+		# 2) D during `src_install`.
+		--prefix "${EPREFIX}/usr/"
 		--prefix-exe-dir bin/
 		--prefix-lib-dir "$(get_libdir)/"
 		--prefix-include-dir include/
-
-		# Should be relative path to make other calls easier,
-		# so remove leading slash here.
-		--prefix "${EPREFIX:+${EPREFIX#/}/}usr/"
 
 		--libc "${T}/zig_libc.txt"
 	)
@@ -487,12 +492,17 @@ zig_src_configure() {
 # @DESCRIPTION:
 # Calls "ezig build" with previously set ZBS_ARGS.
 # Args passed to this function will be passed after ZBS_ARGS.
+# They can be used to call custom steps or override some
+# options temporarily like `--prefix`.
+# Note that `--prefix` and other relative arguments will
+# process here as relative to BUILD_DIR.
 zig_src_compile() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	local args=( "${ZBS_ARGS[@]}" "${@}" )
 	einfo "ZBS: compiling with: ${args[@]}"
-	nonfatal ezig build "${args[@]}" || die "ZBS: compilation failed"
+	DESTDIR="${BUILD_DIR}" nonfatal ezig build "${args[@]}" ||
+		die "ZBS: compilation failed"
 
 	popd > /dev/null || die
 }
@@ -505,6 +515,8 @@ zig_src_compile() {
 # Args passed to this function will be passed after ZBS_ARGS.
 # Note: currently step detection might give false positives in
 # very rare cases, it will be improved in the future.
+# Note that `--prefix` and other relative arguments will
+# process here as relative to BUILD_DIR.
 zig_src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
@@ -526,7 +538,7 @@ zig_src_test() {
 		nonfatal ezig build --list-steps "${args[@]}"
 	); then
 		einfo "ZBS: testing with: ${args[@]}"
-		nonfatal ezig build test "${args[@]}" ||
+		DESTDIR="${BUILD_DIR}" nonfatal ezig build test "${args[@]}" ||
 			die "ZBS: tests failed"
 	else
 		einfo "Test step not found, skipping."
@@ -541,6 +553,8 @@ zig_src_test() {
 # Calls "ezig build" with DESTDIR and previously set ZBS_ARGS.
 # Args passed to this function will be passed after ZBS_ARGS.
 # Also installs documentation via "einstalldocs".
+# Note that `--prefix` and other relative arguments will
+# process here as relative to D.
 zig_src_install() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 	local args=( "${ZBS_ARGS[@]}" "${@}" )
