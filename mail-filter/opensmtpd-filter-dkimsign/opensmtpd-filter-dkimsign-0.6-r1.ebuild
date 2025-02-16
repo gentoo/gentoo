@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="OpenSMTPD filter for signing mail with DKIM"
 HOMEPAGE="https://imperialat.at/dev/filter-dkimsign/"
 SRC_URI="https://imperialat.at/releases/filter-dkimsign-${PV}.tar.gz -> ${P}.tar.gz"
@@ -27,7 +29,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake LIBCRYPTOPC="libcrypto" MANFORMAT="man"
+	emake CC="$(tc-getCC)" LIBCRYPTOPC="libcrypto" MANFORMAT="man"
 }
 
 src_install() {
