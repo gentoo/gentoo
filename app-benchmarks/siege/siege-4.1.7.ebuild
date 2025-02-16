@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1
+inherit autotools flag-o-matic bash-completion-r1
 
 DESCRIPTION="HTTP regression testing and benchmarking utility"
 HOMEPAGE="https://www.joedog.org/siege-home https://github.com/JoeDog/siege"
@@ -38,6 +38,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943908
+	append-cflags -std=gnu17
 	local myconf=( $(use_with ssl ssl "${EPREFIX}/usr") )
 	econf "${myconf[@]}"
 }
