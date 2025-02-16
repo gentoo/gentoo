@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CARGO_OPTIONAL=yes
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3_11 pypy3 )
 
 CRATES="
 	autocfg@1.3.0
@@ -52,11 +52,11 @@ CRATES="
 	precomputed-hash@0.1.1
 	proc-macro-hack@0.5.20+deprecated
 	proc-macro2@1.0.82
-	pyo3-build-config@0.22.3
-	pyo3-ffi@0.22.3
-	pyo3-macros-backend@0.22.3
-	pyo3-macros@0.22.3
-	pyo3@0.22.3
+	pyo3-build-config@0.23.4
+	pyo3-ffi@0.23.4
+	pyo3-macros-backend@0.23.4
+	pyo3-macros@0.23.4
+	pyo3@0.23.4
 	quote@1.0.36
 	rand@0.7.3
 	rand@0.8.5
@@ -110,7 +110,10 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/PyO3/setuptools-rust/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	test? ( ${CARGO_CRATE_URIS} )
+	test? (
+		${CARGO_CRATE_URIS}
+		https://dev.gentoo.org/~mgorny/dist/pyo3-ffi-0.23.4-pypy3_11.patch.xz
+	)
 "
 
 # crates are used at test time only, update via pycargoebuild -L -i ...
@@ -143,9 +146,21 @@ src_unpack() {
 	cargo_src_unpack
 }
 
-python_test() {
-	local -x UNSAFE_PYO3_SKIP_VERSION_CHECK=1
+src_prepare() {
+	distutils-r1_src_prepare
 
+	if use test; then
+		find -name Cargo.lock -delete || die
+		find -name Cargo.toml -exec \
+			sed -i -e '/pyo3/s:0[.]22[.]3:0.23.4:' {} + || die
+
+		pushd "${ECARGO_VENDOR}"/pyo3-ffi* >/dev/null || die
+		eapply -p2 "${WORKDIR}/pyo3-ffi-0.23.4-pypy3_11.patch"
+		popd >/dev/null || die
+	fi
+}
+
+python_test() {
 	local examples=(
 		html-py-ever
 		namespace_package
