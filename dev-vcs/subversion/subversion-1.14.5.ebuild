@@ -5,8 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
-# no py3.12 yet as many tests have invalid escape sequence warnings
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2
