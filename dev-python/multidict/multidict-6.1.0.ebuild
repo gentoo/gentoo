@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 inherit distutils-r1
 
@@ -39,7 +39,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if ! use native-extensions || [[ ${EPYTHON} == pypy3 ]]; then
+	if ! use native-extensions || [[ ${EPYTHON} == pypy3* ]]; then
 		local -x MULTIDICT_NO_EXTENSIONS=1
 	fi
 
@@ -50,7 +50,7 @@ python_test() {
 	rm -rf multidict || die
 
 	local cext=--c-extensions
-	if ! use native-extensions || [[ ${EPYTHON} == pypy3 ]]; then
+	if ! use native-extensions || [[ ${EPYTHON} == pypy3* ]]; then
 		cext=--no-c-extensions
 	fi
 	epytest "${cext}"
