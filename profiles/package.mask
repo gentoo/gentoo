@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-16)
+# Discontinued, please use xournal++ instead.
+# Removal on 2025-03-16. Bug 948200.
+app-text/xournal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-16)
 # Downstream-split fallback package for KF5-based revdeps without any
 # revdeps left. Removal on 2025-02-28.
