@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-16)
+# KF5/Qt5 based and no signs of porting or even life upstream.
+# kde-frameworks/kcalendarcore:5 has no more revdeps after this.
+# Removal on 2025-03-16.
+app-office/calligraplan
+kde-frameworks/kcalendarcore:5
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-16)
 # Discontinued, please use xournal++ instead.
 # Removal on 2025-03-16. Bug 948200.
