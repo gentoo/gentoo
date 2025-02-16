@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xournalpp/xournalpp.git"
 else
 	SRC_URI="https://github.com/xournalpp/xournalpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
-	KEYWORDS="amd64 ~ppc64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 DESCRIPTION="Handwriting notetaking software with PDF annotation support"
@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	>=media-libs/libsndfile-1.0.25
 	sys-libs/zlib:=
 	>=x11-libs/gtk+-3.18.9:3
+	>=x11-libs/gtksourceview-4.0
 "
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}"
