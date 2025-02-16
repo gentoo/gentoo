@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 CRATES="
 	ahash@0.8.11
@@ -116,6 +116,7 @@ HOMEPAGE="
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
+	https://dev.gentoo.org/~mgorny/dist/pyo3-ffi-0.23.4-pypy3_11.patch.xz
 "
 
 LICENSE="MIT"
@@ -146,9 +147,14 @@ distutils_enable_tests pytest
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/pydantic_core/_pydantic_core.*.so"
 
 src_prepare() {
+	distutils-r1_src_prepare
+
 	sed -i -e '/--benchmark/d' pyproject.toml || die
 	sed -i -e '/^strip/d' Cargo.toml || die
-	distutils-r1_src_prepare
+
+	pushd "${ECARGO_VENDOR}"/pyo3-ffi* >/dev/null || die
+	eapply -p2 "${WORKDIR}/pyo3-ffi-0.23.4-pypy3_11.patch"
+	popd >/dev/null || die
 }
 
 python_test() {
@@ -160,9 +166,23 @@ python_test() {
 		tests/serializers/test_functions.py::test_recursive_call
 	)
 
+	case ${EPYTHON} in
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				# different repr() in exception
+				# https://github.com/pypy/pypy/issues/5220
+				tests/validators/test_arguments.py::test_error_display
+				tests/validators/test_definitions_recursive.py::test_error_inside_definition_wrapper
+				tests/validators/test_string.py::test_invalid_regex
+				tests/validators/test_string.py::test_backtracking_regex_rust_unsupported
+				tests/validators/test_union.py::test_empty_choices
+			)
+			;;
+	esac
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	rm -rf pydantic_core || die
 	# tests link to libpython, so they fail to link on pypy3
-	[[ ${EPYTHON} != pypy3 ]] && cargo_src_test
+	[[ ${EPYTHON} != pypy3* ]] && cargo_src_test
 	epytest -p pytest_mock -p timeout -o xfail_strict=False -o addopts=
 }
