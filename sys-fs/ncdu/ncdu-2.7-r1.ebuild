@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,6 +6,7 @@ EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
 
 ZIG_SLOT="0.13"
+ZIG_NEEDS_LLVM=1
 inherit verify-sig zig
 
 DESCRIPTION="NCurses Disk Usage"
