@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="
 		>=dev-python/typing-extensions-4.6.1[${PYTHON_USEDEP}]
 		>=dev-util/pwntools-4.11.0[${PYTHON_USEDEP}]
 		>=dev-util/ROPgadget-7.2[${PYTHON_USEDEP}]
-		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
+		>=dev-util/unicorn-2.1.1[python,${PYTHON_USEDEP}]
 	')
 "
 

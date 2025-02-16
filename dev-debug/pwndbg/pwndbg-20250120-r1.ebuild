@@ -38,7 +38,7 @@ RDEPEND="
 		>=dev-python/typing-extensions-4.12.0[${PYTHON_USEDEP}]
 		>=dev-util/pwntools-4.13.1[${PYTHON_USEDEP}]
 		>=dev-util/ROPgadget-7.3[${PYTHON_USEDEP}]
-		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
+		>=dev-util/unicorn-2.1.1[python,${PYTHON_USEDEP}]
 	')
 "
 
