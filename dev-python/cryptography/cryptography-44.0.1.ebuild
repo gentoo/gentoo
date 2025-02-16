@@ -6,7 +6,7 @@ EAPI=8
 CARGO_OPTIONAL=yes
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 CRATES="
@@ -57,6 +57,7 @@ HOMEPAGE="
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
+	https://dev.gentoo.org/~mgorny/dist/pyo3-ffi-0.23.4-pypy3_11.patch.xz
 	test? (
 		$(pypi_sdist_url cryptography_vectors "$(ver_cut 1-3)")
 	)
@@ -109,6 +110,10 @@ src_prepare() {
 
 	sed -i -e 's:--benchmark-disable::' pyproject.toml || die
 
+	pushd "${ECARGO_VENDOR}"/pyo3-ffi* >/dev/null || die
+	eapply -p2 "${WORKDIR}/pyo3-ffi-0.23.4-pypy3_11.patch"
+	popd >/dev/null || die
+
 	# work around availability macros not supported in GCC (yet)
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		local darwinok=0
@@ -122,8 +127,6 @@ src_prepare() {
 
 python_configure_all() {
 	filter-lto # bug #903908
-
-	export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 }
 
 python_test() {
