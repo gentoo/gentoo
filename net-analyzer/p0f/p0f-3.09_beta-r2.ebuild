@@ -41,8 +41,7 @@ src_test() {
 }
 
 src_install() {
-	dosbin p0f tools/p0f-{client,sendsyn}
-	use ipv6 && dosbin tools/p0f-sendsyn6
+	dosbin p0f tools/p0f-{client,sendsyn,sendsyn6}
 
 	insinto /etc
 	doins p0f.fp
