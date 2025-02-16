@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -27,7 +27,9 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-22.5.0[${PYTHON_USEDEP}]
 	test? (
-		dev-python/cloudpickle[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cloudpickle[${PYTHON_USEDEP}]
+		' 'python3*' pypy3)
 		dev-python/dirty-equals[${PYTHON_USEDEP}]
 		>=dev-python/email-validator-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/faker-18.13.0[${PYTHON_USEDEP}]
