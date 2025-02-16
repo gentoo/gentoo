@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/935500
+--- a/configure
++++ b/configure
+@@ -344,6 +344,7 @@ rm -f __conftest*
+ 
+ echo -n 'Checking for crypt... '
+ cat <<EOF >__conftest.c
++#include <unistd.h>
+ int main() { crypt("aa", "bb"); }
+ 
+ EOF
+@@ -370,6 +371,7 @@ rm -f __conftest*
+ 
+ echo -n 'Checking for rexec... '
+ cat <<EOF >__conftest.c
++#include <netdb.h>
+ int main() { rexec(0, 0, 0, 0, 0, 0); }
+ 
+ EOF
+@@ -397,6 +399,7 @@ rm -f __conftest*
+ 
+ echo -n 'Checking for forkpty... '
+ cat <<EOF >__conftest.c
++#include <pty.h>
+ int main() { forkpty(0, 0, 0, 0); }
+ 
+ EOF
+--- a/rlogind/auth.c
++++ b/rlogind/auth.c
+@@ -136,7 +136,7 @@ int auth_checkauth(const char *remoteuser, const char *host,
+ 	return -1;
+     }
+ 
+-    pam_get_item(pamh, PAM_USER, &ln);
++    pam_get_item(pamh, PAM_USER, (const void**) &ln);
+     if (!ln || !*ln) {
+ 	/*
+ 	 * Authentication wasn't adequate for requirements.

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ BDEPEND="app-arch/xz-utils"
 
 PATCHES=(
 	"${FILESDIR}"/patches/
+	"${FILESDIR}"/${PN}-0.17-c99.patch
 )
 
 FILECAPS=( cap_net_bind_service usr/bin/r{cp,login,sh} )
