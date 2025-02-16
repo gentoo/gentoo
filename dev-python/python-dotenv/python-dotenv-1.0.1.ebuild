@@ -23,7 +23,6 @@ BDEPEND="
 	test? (
 		>=dev-python/click-5[${PYTHON_USEDEP}]
 		>=dev-python/sh-2[${PYTHON_USEDEP}]
-		!mips? ( dev-python/ipython[${PYTHON_USEDEP}] )
 	)
 "
 
