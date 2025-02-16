@@ -78,7 +78,7 @@ src_configure() {
 		-DMOLD_USE_SYSTEM_TBB=ON
 	)
 
-	if ! use test ; then
+	if use test ; then
 		mycmakeargs+=(
 			-DMOLD_ENABLE_QEMU_TESTS=OFF
 		)
