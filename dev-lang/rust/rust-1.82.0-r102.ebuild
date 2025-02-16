@@ -64,7 +64,7 @@ LLVM_DEPEND+=( "	$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')" )
 BDEPEND="${PYTHON_DEPS}
 	app-eselect/eselect-rust
 	|| (
-		>=sys-devel/gcc-4.7
+		>=sys-devel/gcc-4.7[cxx]
 		>=llvm-core/clang-3.5
 	)
 	!system-llvm? (
