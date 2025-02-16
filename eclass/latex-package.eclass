@@ -64,7 +64,7 @@ RDEPEND="virtual/latex-base"
 BDEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r5"
 
-HOMEPAGE="http://www.tug.org/"
+HOMEPAGE="https://www.tug.org/"
 
 # @ECLASS_VARIABLE: TEXMF
 # @DESCRIPTION:
@@ -99,7 +99,7 @@ latex-package_src_doinstall() {
 	export VARTEXFONTS="${T}/fonts"
 
 	# This actually follows the directions for a "single-user" system
-	# at http://www.ctan.org/installationadvice/ modified for gentoo.
+	# at https://www.ctan.org/installationadvice/ modified for gentoo.
 	[[ -z ${1} ]] && latex-package_src_install all
 
 	while [[ ${1} ]]; do
