@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 MY_P="${P/_/-}"
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
