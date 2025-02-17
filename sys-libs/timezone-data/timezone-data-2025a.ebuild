@@ -118,20 +118,6 @@ get_TIMEZONE() {
 	[[ -z ${tz} ]] && return 1 || echo "${tz}"
 }
 
-pkg_preinst() {
-	local tz=$(get_TIMEZONE)
-	if [[ ${tz} == right/* || ${tz} == posix/* ]] ; then
-		eerror "The right & posix subdirs are no longer installed as subdirs -- they have been"
-		eerror "relocated to match upstream paths as sibling paths.  Further, posix/xxx is the"
-		eerror "same as xxx, so you should simply drop the posix/ prefix.  You also should not"
-		eerror "be using right/xxx for the system timezone as it breaks programs."
-		die "Please fix your timezone setting"
-	fi
-
-	# Trim the symlink by hand to avoid portage's automatic protection checks.
-	rm -f "${EROOT}"/usr/share/zoneinfo/posix
-}
-
 configure_tz_data() {
 	# Make sure the /etc/localtime file does not get stale, bug #127899
 	local tz src="${EROOT}/etc/timezone" etc_lt="${EROOT}/etc/localtime"
