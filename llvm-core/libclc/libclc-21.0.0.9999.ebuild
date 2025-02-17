@@ -31,7 +31,10 @@ pkg_setup() {
 }
 
 src_configure() {
-	local libclc_targets=()
+	local libclc_targets=(
+		"clspv--"
+		"clspv64--"
+	)
 
 	use spirv && libclc_targets+=(
 		"spirv-mesa3d-"
