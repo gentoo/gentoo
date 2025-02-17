@@ -12,13 +12,9 @@
 		<flag name="headers">Install development headers</flag>
 		<flag name="libusb">Enable video capturing from USB devices using <pkg>dev-libs/libusb</pkg></flag>
 		<flag name="libuvc">Enable video capturing from USB devices using <pkg>media-libs/libuvc</pkg></flag>
-		<flag name="qtaudio">Enable audio capture/play via <pkg>dev-qt/qtmultimedia</pkg></flag>
-		<flag name="qtcamera">Enable video capture/play via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="qtmedia">Enable audio/video/screen capture/play via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="rav1e">Enable <pkg>media-video/rav1e</pkg> audio codec support</flag>
 		<flag name="svt-av1">Enable <pkg>media-libs/svt-av1</pkg> video codec support</flag>
-		<flag name="v4lutils">Build with V4L-utils support</flag>
-		<flag name="videoeffects">Build video effects</flag>
 		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> video backend support</flag>
 		<flag name="X">Enable <pkg>x11-libs/libX11</pkg> screen capture support</flag>
 	</use>
