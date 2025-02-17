@@ -34,6 +34,7 @@ llvm.org_set_globals
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCLANG_RESOURCE_DIR="../../../clang/${LLVM_MAJOR}"
 
@@ -60,4 +61,12 @@ src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-flang
+}
+
+src_install() {
+	cmake_src_install
+
+	# move the runtime into 'lib' (sigh), until upstream resolves
+	# libdir support: https://github.com/llvm/llvm-project/issues/127538
+	mv "${ED}/usr/lib/llvm/${LLVM_MAJOR}"/{$(get_libdir),lib} || die
 }
