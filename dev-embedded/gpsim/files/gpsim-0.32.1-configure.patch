@@ -1,0 +1,26 @@
+--- ./configure.ac	2025-02-17 13:54:52.780179636 +0100
++++ ./configure.ac.new	2025-02-17 13:55:02.913179831 +0100
+@@ -169,11 +169,6 @@
+ fi
+ X_LDFLAGS="$X_LDFLAGS -lm"
+ 
+-wi_LIB_READLINE
+-  if test "$wi_cv_lib_readline" != yes; then
+-	AC_MSG_ERROR(Cannot find readline library)
+-  fi
+-
+ # Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_CXXCPP
+@@ -186,6 +181,11 @@
+ AC_PROG_LEX(noyywrap)
+ LT_INIT
+ 
++wi_LIB_READLINE
++  if test "$wi_cv_lib_readline" != yes; then
++	AC_MSG_ERROR(Cannot find readline library)
++  fi
++
+ # Checks for libraries.
+ AC_LANG([C++])
+ #AC_CHECK_LIB([gpsim], [main])
