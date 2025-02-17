@@ -129,7 +129,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa chromium doc +encode oss +pic sndio static-libs test v4l soc
+	alsa chromium doc +encode oss +pic sndio static-libs test v4l soc av-stream-get-first-dts
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -415,6 +415,9 @@ src_prepare() {
 
 	use soc &&
 		eapply "${DISTDIR}"/${SOC_PATCH}
+
+	# https://crbug.com/1251779, bug #831487
+	use av-stream-get-first-dts && eapply "${FILESDIR}"/ffmpeg-5.1-add-av_stream_get_first_dts-for-chromium.patch
 
 	default
 
