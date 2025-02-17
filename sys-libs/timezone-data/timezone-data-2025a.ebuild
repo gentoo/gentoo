@@ -115,6 +115,10 @@ configure_tz_data() {
 	# they're managing it themselves, bug #511474
 	if [[ -L "${etc_lt}" ]] ; then
 		einfo "Skipping update: ${etc_lt} is a symlink."
+		if [[ -e ${src} ]]; then
+			einfo "Removing ${src}."
+			rm "${src}"
+		fi
 		return 0
 	fi
 
