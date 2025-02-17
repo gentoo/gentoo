@@ -114,19 +114,19 @@ configure_tz_data() {
 	# If it's a symlink, assume the user knows what they're doing and
 	# they're managing it themselves, bug #511474
 	if [[ -L "${etc_lt}" ]] ; then
-		einfo "Assuming your ${etc_lt} symlink is what you want; skipping update."
+		einfo "Skipping update: ${etc_lt} is a symlink."
 		return 0
 	fi
 
 	if [[ ! -e ${src} ]] ; then
-		einfo "You do not have a timezone set in ${src}; skipping update."
+		einfo "Skipping update: ${src} does not exist."
 		return 0
 	fi
 
 	tz=$(sed -e 's:#.*::' -e 's:[[:space:]]*::g' -e '/^$/d' "${src}")
 
 	if [[ -z ${tz} ]]; then
-		einfo "Assuming your empty ${src} file is what you want; skipping update."
+		einfo "Skipping update: ${src} is empty."
 		return 0
 	fi
 
@@ -141,7 +141,7 @@ configure_tz_data() {
 		# If a regular file already exists, copy over it.
 		ewarn "Found a regular file at ${etc_lt}."
 		ewarn "Some software may expect a symlink instead."
-		ewarn "You may convert it to a symlink by removing the file and running:"
+		ewarn "Convert it to a symlink by removing the file and running:"
 		ewarn "  emerge --config sys-libs/timezone-data"
 		einfo "Copying ${tzpath} to ${etc_lt}."
 		cp -f "${tzpath}" "${etc_lt}"
