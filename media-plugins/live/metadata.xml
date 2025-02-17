@@ -8,6 +8,7 @@
   <flag name="tools">Build test tools</flag>
 </use>
 <upstream>
+  <changelog>http://www.live555.com/liveMedia/public/changelog.txt</changelog>
   <remote-id type="cpe">cpe:/a:live555:streaming_media</remote-id>
 </upstream>
 </pkgmetadata>
