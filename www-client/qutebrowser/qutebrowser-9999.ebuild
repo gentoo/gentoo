@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,9 +44,12 @@ RDEPEND="
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
+# TODO: drop gherkin-official dep entirely when >=31 is fixed (not looked
+# into yet), should normally be pulled by pytest-bdd instead
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
+			<dev-python/gherkin-official-31
 			dev-python/pyqt6[testlib]
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/cheroot[${PYTHON_USEDEP}]
