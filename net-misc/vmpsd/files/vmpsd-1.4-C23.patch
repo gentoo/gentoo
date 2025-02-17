@@ -1,0 +1,159 @@
+Fix compilation with -std=gnu23: missing function decls,
+wrong prototypes, old-style prototypes, incorrect function
+pointer types.
+https://bugs.gentoo.org/887249
+https://bugs.gentoo.org/883125
+--- a/daemon.c
++++ b/daemon.c
+@@ -40,14 +40,11 @@
+ 
+ #endif
+ 
+ }
+ 
+-void daemon_start(ignsigcld)
+-
+-	int	ignsigcld;	
+-
++void daemon_start(int ignsigcld)
+ {
+ 	register int	childpid;
+ 
+ #ifdef  VMPS_CHECK_BSD
+ 	int	fd;
+--- a/data.c
++++ b/data.c
+@@ -5,10 +5,12 @@
+ #include <string.h>
+ 
+ #include "data.h"
+ #include "log.h"
+ 
++extern void parse_error(const char *token); // from parser.c
++
+ void 	*macs = NULL;
+ void 	*vlans = NULL;
+ void	*ports = NULL;
+ void 	*vlan_groups = NULL;
+ void 	*port_groups = NULL;
+@@ -35,13 +37,14 @@
+ 	exit(1);
+ }
+ 
+ void *xfree(void *p) {
+ 
+-	if (p == NULL) return;
++	if (p == NULL) return NULL;
+ 	vmps_log(DEBUG|SYSTEM, "FREE: %x",p);
+ 	free(p);
++	return NULL;
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ 
+ int compare_mac(const void *pa, const void *pb) {
+--- a/external.c
++++ b/external.c
+@@ -20,11 +20,11 @@
+ pid_t	external_pid = 0;
+ 
+ int	tocli[2];
+ int	fromcli[2];
+ 
+-RETSIGTYPE sig_term()
++RETSIGTYPE sig_term(int)
+ {
+ 
+ 	vmps_log(SYSTEM|INFO, "Terminating external program (%d).", external_pid);
+ 	if ( kill(external_pid, SIGTERM) < 0 ) {
+ 		vmps_log(SYSTEM|FATAL, "Cannot send TERM signal to external program (%s).", strerror(errno));
+@@ -33,21 +33,21 @@
+ 
+ 	vmps_log(SYSTEM|INFO, "VMPSD TERMINATING.");
+ 	exit(0);
+ }
+ 
+-RETSIGTYPE sig_child_e()
++RETSIGTYPE sig_child_e(int)
+ {
+         int     pid;
+         int     status;
+ 
+         pid = wait3(&status, WNOHANG, (struct rusage *) 0);
+ 	vmps_log(SYSTEM|INFO, "VMPSD EXITING (external program terminating prematurely)[%d].",pid);
+ 	exit(1);
+ }
+ 
+-int spawn_external()
++int spawn_external(void)
+ {
+ 
+ 	pid_t	chpid;
+ 
+ 	signal(SIGCHLD, sig_child_e);
+--- a/external.h
++++ b/external.h
+@@ -6,7 +6,8 @@
+ extern char 	external_prog[256];
+ extern pid_t	external_pid;
+ 
+ int get_vlan_external(VQP_REQUEST *r, char *vlan_name);
+ void do_request_external(int sock, VQP_REQUEST *r );
++int spawn_external(void);
+ 
+ #endif
+--- a/vmpsd.c
++++ b/vmpsd.c
+@@ -11,10 +11,13 @@
+ 
+ #include "vqp.h"
+ #include "log.h"
+ #include "external.h"
+ 
++extern void parse_db_file(const char *fname); //from parse.c
++extern void daemon_start(int ignsigcld); //from daemon.c
++
+ struct in_addr	bind_address; 
+ unsigned int	port_number = 1589;
+ char    	db_fname[256];
+ int		default_behaviour = 0;
+ 
+@@ -93,11 +96,11 @@
+ 	printf("\t                 0x0004 - vqp\n");
+ 	printf("\t-p port    port to listen on (1589)\n");
+ 	printf("\n");
+ }
+ 
+-RETSIGTYPE handle_sighup() {
++RETSIGTYPE handle_sighup(int,  siginfo_t *, void *) {
+ 
+ 	if ( external_logic ) return;
+ 	vmps_log(PARSER|INFO, "RECEIVED SIGHUP. Re-reading config file");
+ 	drop_data();
+ 	parse_db_file(db_fname);
+--- a/vqp.c
++++ b/vqp.c
+@@ -3,10 +3,11 @@
+ #include <string.h>
+ #include <netdb.h>
+ 
+ #include "log.h"
+ #include "data.h"
++#include "snmp.h"
+ #include "vqp.h"
+ #include "external.h"
+ 
+ int get_request(int sock, VQP_REQUEST *r)
+ {
+--- a/vqp.h
++++ b/vqp.h
+@@ -50,7 +50,9 @@
+ extern int      default_behaviour;
+ 
+ int get_request(int sock, VQP_REQUEST *r);
+ void print_request(VQP_REQUEST *r);
+ void do_request(int sock, VQP_REQUEST *r );
++int send_response(int sock, u_char action, VQP_REQUEST *r, char *vlan_name);
++void print_action(VQP_REQUEST *r, char *str, char *vlan_name);
+ 
+ #endif
