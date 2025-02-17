@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
-  </maintainer>
+	<maintainer type="project">
+		<email>desktop-misc@gentoo.org</email>
+		<name>Gentoo Desktop Miscellaneous Project</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>graeme@gottcode.org</email>
+			<name>Graeme Gott</name>
+		</maintainer>
+		<bugs-to>https://gottcode.org/kapow/bugs/</bugs-to>
+		<remote-id type="github">gottcode/kapow</remote-id>
+	</upstream>
 </pkgmetadata>
