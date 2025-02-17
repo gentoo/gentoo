@@ -3,6 +3,10 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<maintainer status="active">
+			<email>graeme@gottcode.org</email>
+			<name>Graeme Gott</name>
+		</maintainer>
 		<bugs-to>https://gottcode.org/focuswriter/bugs/</bugs-to>
 		<remote-id type="github">gottcode/focuswriter</remote-id>
 	</upstream>
