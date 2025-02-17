@@ -106,7 +106,6 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	wasm? ( llvm_targets_WebAssembly )
-	x86? ( cpu_flags_x86_sse2 )
 "
 
 # we don't use cmake.eclass, but can get a warning
