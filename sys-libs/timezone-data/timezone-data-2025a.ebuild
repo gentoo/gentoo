@@ -107,17 +107,6 @@ src_install() {
 	dodoc CONTRIBUTING README NEWS *.html
 }
 
-get_TIMEZONE() {
-	local tz src="${EROOT}/etc/timezone"
-	if [[ -e ${src} ]] ; then
-		tz=$(sed -e 's:#.*::' -e 's:[[:space:]]*::g' -e '/^$/d' "${src}")
-	else
-		tz="FOOKABLOIE"
-	fi
-
-	[[ -z ${tz} ]] && return 1 || echo "${tz}"
-}
-
 configure_tz_data() {
 	# Make sure the /etc/localtime file does not get stale, bug #127899
 	local tz src="${EROOT}/etc/timezone" etc_lt="${EROOT}/etc/localtime"
@@ -129,13 +118,15 @@ configure_tz_data() {
 		return 0
 	fi
 
-	if ! tz=$(get_TIMEZONE) ; then
-		einfo "Assuming your empty ${src} file is what you want; skipping update."
+	if [[ ! -e ${src} ]] ; then
+		einfo "You do not have a timezone set in ${src}; skipping update."
 		return 0
 	fi
 
-	if [[ "${tz}" == "FOOKABLOIE" ]] ; then
-		einfo "You do not have a timezone set in ${src}; skipping update."
+	tz=$(sed -e 's:#.*::' -e 's:[[:space:]]*::g' -e '/^$/d' "${src}")
+
+	if [[ -z ${tz} ]]; then
+		einfo "Assuming your empty ${src} file is what you want; skipping update."
 		return 0
 	fi
 
