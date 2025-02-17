@@ -1,0 +1,76 @@
+https://bugs.kde.org/show_bug.cgi?id=499789
+https://invent.kde.org/plasma/kwin/-/commit/196c95d8bbab6519d0cc742ae3b595081051c08e
+
+From 196c95d8bbab6519d0cc742ae3b595081051c08e Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Sun, 16 Feb 2025 23:53:40 +0200
+Subject: [PATCH] core: Fix initialization of IccProfile::s_connectionSpace
+
+Colorimetry constants can be initialized after IccProfile::s_connectionSpace
+when LTO is enabled. It's okay with the C++ standard.
+
+As a way around it, this change moves the CIEXYZD50 constant to the
+IccProfile where it's actually needed.
+
+We need to reconsider how the constants are defined, e.g. have static
+getters or use constexpr. But as a short term solution, this should be
+fine.
+
+BUG: 499789
+
+Co-authored-by: Xaver Hugl <xaver.hugl@gmail.com>
+(cherry picked from commit 6d6667fc2a3f0a5e51676be267a5a8e1ce3c1337)
+--- a/src/core/colorspace.cpp
++++ b/src/core/colorspace.cpp
+@@ -400,12 +400,6 @@ static const Colorimetry CIEXYZ = Colorimetry{
+     XYZ{0.0, 0.0, 1.0},
+     xy{1.0 / 3.0, 1.0 / 3.0}.toXYZ(),
+ };
+-static const Colorimetry CIEXYZD50 = Colorimetry{
+-    XYZ{1.0, 0.0, 0.0},
+-    XYZ{0.0, 1.0, 0.0},
+-    XYZ{0.0, 0.0, 1.0},
+-    XYZ(0.9642, 1.0, 0.8249),
+-};
+ static const Colorimetry DCIP3 = Colorimetry{
+     xy{0.680, 0.320},
+     xy{0.265, 0.690},
+@@ -442,8 +436,6 @@ const Colorimetry &Colorimetry::fromName(NamedColorimetry name)
+         return BT2020;
+     case NamedColorimetry::CIEXYZ:
+         return CIEXYZ;
+-    case NamedColorimetry::CIEXYZD50:
+-        return CIEXYZD50;
+     case NamedColorimetry::DCIP3:
+         return DCIP3;
+     case NamedColorimetry::DisplayP3:
+--- a/src/core/colorspace.h
++++ b/src/core/colorspace.h
+@@ -38,7 +38,6 @@ enum class NamedColorimetry {
+     GenericFilm,
+     BT2020,
+     CIEXYZ,
+-    CIEXYZD50,
+     DCIP3,
+     DisplayP3,
+     AdobeRGB
+--- a/src/core/iccprofile.cpp
++++ b/src/core/iccprofile.cpp
+@@ -18,7 +18,14 @@
+ namespace KWin
+ {
+ 
+-const ColorDescription IccProfile::s_connectionSpace = ColorDescription(Colorimetry::fromName(NamedColorimetry::CIEXYZD50), TransferFunction(TransferFunction::linear, 0, 1), 1, 0, 1, 1);
++static const Colorimetry CIEXYZD50 = Colorimetry{
++    XYZ{1.0, 0.0, 0.0},
++    XYZ{0.0, 1.0, 0.0},
++    XYZ{0.0, 0.0, 1.0},
++    XYZ(0.9642, 1.0, 0.8249),
++};
++
++const ColorDescription IccProfile::s_connectionSpace = ColorDescription(CIEXYZD50, TransferFunction(TransferFunction::linear, 0, 1), 1, 0, 1, 1);
+ 
+ IccProfile::IccProfile(cmsHPROFILE handle, const Colorimetry &colorimetry, std::optional<ColorPipeline> &&bToA0Tag, std::optional<ColorPipeline> &&bToA1Tag, const std::shared_ptr<ColorTransformation> &inverseEOTF, const std::shared_ptr<ColorTransformation> &vcgt, std::optional<double> minBrightness, std::optional<double> maxBrightness)
+     : m_handle(handle)
+-- 
+GitLab
