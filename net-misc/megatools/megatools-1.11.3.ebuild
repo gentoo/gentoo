@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/asciidoc
+	verify-sig? ( sec-keys/openpgp-keys-ondrejjirman )
 	virtual/pkgconfig
 "
 
