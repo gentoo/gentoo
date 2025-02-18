@@ -5,6 +5,12 @@ EAPI=8
 
 MY_PN="echo-nginx-module"
 NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
+
+NGINX_MOD_OPENRESTY_TESTS=1
+NGINX_MOD_TEST_LOAD_ORDER=(
+	www-nginx/ngx-lua-module
+	www-nginx/ngx-xss
+)
 inherit nginx-module
 
 DESCRIPTION='An NGINX module bringing the power of "echo", "sleep", "time" and more to NGINX'
@@ -16,4 +22,5 @@ SRC_URI="
 LICENSE="BSD-2"
 SLOT="0"
 
-RESTRICT="test"
+# Tests require NGINX to be built with debugging log enabled.
+BDEPEND="test? ( www-servers/nginx[debug(-)] )"
