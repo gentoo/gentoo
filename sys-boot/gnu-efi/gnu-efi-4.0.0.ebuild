@@ -39,26 +39,32 @@ DOCS="README* SECURITY* docs/*"
 
 check_and_set_objcopy() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
+
+		if use arm || use riscv; then
+			# bug #939338
+			# objcopy does not understand PE/COFF on these arches: arm32, riscv64 and mips64le
+			# gnu-efi containes a workaround
+			return 0
+		fi
+
 		# bug #931792
 		# llvm-objcopy does not support EFI target, try to use binutils objcopy or fail
 		tc-export OBJCOPY
-		OBJCOPY="${OBJCOPY/llvm-/}"
 		# Test OBJCOPY to see if it supports EFI targets, and return if it does
 		LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' && return 0
+
 		# If OBJCOPY does not support EFI targets, it is possible that the 'objcopy' on our path is
 		# still LLVM if the 'binutils-plugin' USE flag is set. In this case, we check to see if the
 		# '(prefix)/usr/bin/objcopy' binary is available (it should be, it's a dependency), and if
 		# so, we use the absolute path explicitly.
-		local binutils_objcopy="${EPREFIX}"/usr/bin/"${OBJCOPY}"
+		local binutils_objcopy="${EPREFIX}"/usr/bin/objcopy
 		if [[ -e "${binutils_objcopy}" ]]; then
 			OBJCOPY="${binutils_objcopy}"
+			einfo "Forcing OBJCOPY=${OBJCOPY}"
 		fi
-		if ! use arm && ! use riscv; then
-			# bug #939338
-			# objcopy does not understand PE/COFF on these arches: arm32, riscv64 and mips64le
-			# gnu-efi containes a workaround
-			LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
-		fi
+
+		# Test OBJCOPY again to see if it supports EFI targets, and fail if it doesn't
+		LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
 	fi
 }
 
