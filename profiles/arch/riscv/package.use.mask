@@ -167,11 +167,6 @@ app-emulation/qemu rbd
 # but with it installed, anyio passes all tests
 dev-python/anyio test
 
-# Alex Fan <alex.fan.q@gmail.com> (2022-05-16)
-# These depend on Haskell:
-#  - app-text/pandoc
-sys-cluster/ceph pmdk
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
 # All of these require net-libs/nodejs, which now builds on riscv
