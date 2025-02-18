@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="User preference utility for XKB extensions for X"
 HOMEPAGE="https://github.com/stephenmontgomerysmith/xkbset"
-SRC_URI="https://github.com/stephenmontgomerysmith/xkbset/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/stephenmontgomerysmith/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S=${WORKDIR}/${P/_p*/}
 
 LICENSE="BSD"
