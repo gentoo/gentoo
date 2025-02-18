@@ -228,6 +228,7 @@ RDEPEND="
 	>=dev-python/rustworkx-0.15.0[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.5[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-3.0.0[${PYTHON_USEDEP}]
+	<dev-python/symengine-0.14[${PYTHON_USEDEP}]
 	>=dev-python/symengine-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/sympy-1.3[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
