@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1..4} luajit )
 inherit autotools flag-o-matic lua-single
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
-HOMEPAGE="https://dnsdist.org"
+HOMEPAGE="https://www.dnsdist.org/index.html"
 
 SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.bz2"
 LICENSE="GPL-2"
