@@ -35,6 +35,17 @@ distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+python_test() {
+	local EPYTEST_DESELECT=(
+		# removed in numpy 2.0, https://github.com/hamcrest/PyHamcrest/pull/248
+		tests/hamcrest_unit_test/number/iscloseto_test.py::IsNumericTest::test_numpy_numeric_type_complex
+		tests/hamcrest_unit_test/number/iscloseto_test.py::IsNumericTest::test_numpy_numeric_type_float
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
+
 python_install_all() {
 	use examples && dodoc -r examples
 	distutils-r1_python_install_all
