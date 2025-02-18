@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-srcache NGINX module provides a transparent caching layer for arbitrary NGINX
+		locations (like those use an upstream or even serve static disk files). The caching behavior
+		is mostly compatible with RFC 2616.
+
+		Usually, ngx-memc is used together with this module to provide a concrete caching
+		storage backend. But technically, any modules that provide a REST interface can be used as
+		the fetching and storage subrequests used by this module.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/openresty/srcache-nginx-module/issues</bugs-to>
+		<remote-id type="github">openresty/srcache-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>
