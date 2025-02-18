@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit java-pkg-2
+
 MY_PN=${PN%*-bin}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Darwin Information Typing Architecture - Open Toolkit publishing engine"
@@ -19,14 +21,21 @@ RDEPEND=">=virtual/jre-17:*"
 BDEPEND="app-arch/unzip"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.3-set-java-home.patch
+	"${FILESDIR}"/${PN}-4.3-set-java-home.patch
 )
+
+src_prepare() {
+	default
+	java-pkg-2_src_prepare
+}
 
 src_install() {
 	local installpath=/opt/${MY_P}
 	local installbinpath="${installpath}"/bin
 	insinto "${installpath}"
 	doins -r config lib plugins resources
+
+	java-pkg_regjar "${installpath}"/lib/dost.jar
 
 	exeinto "${installbinpath}"
 	doexe bin/dita

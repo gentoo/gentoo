@@ -1,0 +1,15 @@
+dita-ot requires java 17 or higher.
+Set JAVA_HOME accordingly.
+
+--- a/bin/dita
++++ b/bin/dita
+@@ -20,6 +20,9 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
++eval "$(gjl -v -p dita-ot-bin)"
++JAVA_HOME=$(java-config-2 --select-vm "${gjl_vm}" -g JAVA_HOME)
++
+ # Extract launch and ant arguments, (see details below).
+ ant_exec_args=
+ for arg in "$@" ; do
