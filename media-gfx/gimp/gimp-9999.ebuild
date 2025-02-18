@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -106,7 +106,6 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.21
 	doc? (
-		app-text/yelp-tools
 		dev-libs/gobject-introspection[doctool]
 		dev-util/gi-docgen
 	)
@@ -196,7 +195,6 @@ src_configure() {
 		$(meson_feature wmf)
 		$(meson_feature X xcursor)
 		$(meson_feature xpm)
-		$(meson_use doc g-ir-doc)
 		$(meson_use lua)
 		$(meson_use unwind libunwind)
 		$(meson_use vector-icons)
