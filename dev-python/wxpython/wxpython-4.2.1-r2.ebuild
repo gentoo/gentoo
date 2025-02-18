@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.1-integer-division-for-randint.patch"
 	"${FILESDIR}/${PN}-4.2.1-x86-time.patch"
 	"${FILESDIR}/${PN}-4.2.1-doxygen-1.9.7.patch"
+	"${FILESDIR}/${PN}-4.2.1-sip-6.10.0.patch"
 )
 
 python_prepare_all() {
