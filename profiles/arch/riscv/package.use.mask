@@ -193,8 +193,6 @@ net-analyzer/rrdtool rados
 # Marek Szuba <marecki@gentoo.org> (2021-08-22)
 # net-fs/openafs does not support riscv
 app-crypt/heimdal afs
-# app-editors/xemacs reports arch as unknown, fails to build
-dev-lang/ruby xemacs
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
