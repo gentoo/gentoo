@@ -18,6 +18,6 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 src_configure() {
-	mycmakeargs=( "-DINSTALL_LIB_DIR=/usr/$(get_libdir)/" )
+	mycmakeargs=( "-DINSTALL_LIB_DIR=/usr/$(get_libdir)/" -DOVERRIDE_GIT_DESCRIBE=v${PV} )
 	cmake_src_configure
 }
