@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
 
 DISTUTILS_USE_PEP517=setuptools
@@ -12,7 +12,9 @@ inherit python-single-r1 ada multiprocessing
 DESCRIPTION="A Python framework to generate language parsers - Contrib"
 HOMEPAGE="https://www.adacore.com/community"
 SRC_URI="https://github.com/AdaCore/langkit/archive/refs/tags/v${PV}.tar.gz
-	-> langkit-${PV}.tar.gz"
+	-> langkit-${PV}.tar.gz
+	https://github.com/AdaCore/AdaSAT/archive/refs/tags/v${PV}.tar.gz
+	-> AdaSAT-${PV}.tar.gz"
 
 S="${WORKDIR}"/langkit-${PV}
 
@@ -32,6 +34,10 @@ RDEPEND="${PYTHON_DEPS}
 		dev-ada/langkit[${PYTHON_USEDEP}]
 	')"
 BDEPEND="${RDEPEND}
+	dev-ada/e3-core
+	$(python_gen_cond_dep '
+		dev-ada/e3-core[${PYTHON_USEDEP}]
+	')
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 pkg_setup() {
@@ -40,10 +46,11 @@ pkg_setup() {
 }
 
 src_configure() {
-	cd contrib/python
-	${EPYTHON} manage.py generate -P --disable-warning undocumented-nodes
-	cd ../lkt
-	${EPYTHON} manage.py generate -P
+	export GPR_PROJECT_PATH="${WORKDIR}"/AdaSAT-${PV}
+	cd contrib/python || die
+	${EPYTHON} manage.py generate -P --disable-warning undocumented-nodes || die
+	cd ../lkt || die
+	${EPYTHON} manage.py generate -P || die
 }
 
 src_compile() {
