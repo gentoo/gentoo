@@ -426,17 +426,6 @@ multilib_src_configure() {
 		--without-fetch
 	)
 
-	# The configure scripts make some assumptions that aren't valid in newer GCC.
-	# https://bugs.gentoo.org/920380
-	append-flags $(test-flags-CC -Wno-error=implicit-int)
-	# conftest.c:113:16: error: passing argument 1 of 'pthread_detach' makes
-	# integer from pointer without a cast [-Wint-conversion]
-	append-flags $(test-flags-CC -Wno-error=int-conversion)
-	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type
-	# [-Wincompatible-pointer-types]
-	# expected ‘char **’ but argument is of type ‘const char **’
-	#append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
-
 	if use experimental ; then
 		# connectionless ldap per bug #342439
 		# connectionless is a unsupported feature according to Howard Chu

@@ -423,10 +423,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with sasl cyrus-sasl)
 	)
 
-	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type [-Wincompatible-pointer-types]
-	# expected ‘char **’ but argument is of type ‘const char **’
-	#append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
-
 	if use experimental ; then
 		# connectionless ldap per bug #342439
 		# connectionless is a unsupported feature according to Howard Chu

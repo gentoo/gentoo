@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -431,10 +431,6 @@ multilib_src_configure() {
 		--without-fetch
 		$(multilib_native_use_with sasl cyrus-sasl)
 	)
-
-	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type [-Wincompatible-pointer-types]
-	# expected ‘char **’ but argument is of type ‘const char **’
-	#append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
 
 	if use experimental ; then
 		# connectionless ldap per bug #342439
