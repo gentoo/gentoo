@@ -52,6 +52,14 @@ src_unpack() {
 	rmdir "${S}/tree_sitter/core" || die
 }
 
+src_prepare() {
+	sed -e 's/ts_node_child_containing_descendant/ts_node_child_with_descendant/' \
+		-i tree_sitter/binding/node.c || die
+	sed -e 's/TSInputEncodingUTF16/TSInputEncodingUTF16LE/' \
+		-i tree_sitter/binding/parser.c || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	rm -r tree_sitter || die
 	distutils-r1_src_test
