@@ -1,0 +1,42 @@
+Fix incompatible pointers, GTK style
+Also, remove non-POSIX getopt declaration that conflitcts
+with musl
+https://bugs.gentoo.org/919367
+https://bugs.gentoo.org/945292
+--- a/gxvattr.c
++++ b/gxvattr.c
+@@ -256,7 +256,7 @@
+         label = gtk_label_new (xvattr[k].name);
+         if (!strcmp(xvattr[k].name, "XV_COLORKEY")) {
+           manipulator = gtk_color_selection_new();
+-          set_color_widget(manipulator, cur_val);
++          set_color_widget(GTK_OBJECT(manipulator), cur_val);
+           property->controller = (GtkObject *) manipulator;
+           property->set_widget = set_color_widget;
+           if (xvattr[k].flags & XvSettable) {
+@@ -269,7 +269,7 @@
+ 	           xvattr[k].max_value == 1) {
+ 	  // boolean value, use check button
+ 	  manipulator = gtk_check_button_new();
+-	  set_bool_widget(manipulator, cur_val);
++	  set_bool_widget(GTK_OBJECT(manipulator), cur_val);
+           property->controller = (GtkObject *) manipulator;
+           property->set_widget = set_bool_widget;
+           if (xvattr[k].flags & XvSettable) {
+--- a/getopt.h
++++ b/getopt.h
+@@ -138,14 +138,7 @@
+    `getopt'.  */
+ 
+ #if (defined __STDC__ && __STDC__) || defined __cplusplus
+-# ifdef __GNU_LIBRARY__
+-/* Many other libraries have conflicting prototypes for getopt, with
+-   differences in the consts, in stdlib.h.  To avoid compilation
+-   errors, only prototype getopt for the GNU C library.  */
+ extern int getopt (int __argc, char *const *__argv, const char *__shortopts);
+-# else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
+-# endif /* __GNU_LIBRARY__ */
+ 
+ # ifndef __need_getopt
+ extern int getopt_long (int __argc, char *const *__argv, const char *__shortopts,
