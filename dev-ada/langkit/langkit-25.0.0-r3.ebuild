@@ -12,9 +12,7 @@ inherit distutils-r1 ada multiprocessing
 DESCRIPTION="A Python framework to generate language parsers"
 HOMEPAGE="https://www.adacore.com/community"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${P}.tar.gz
-	https://github.com/AdaCore/AdaSAT/archive/refs/tags/v${PV}.tar.gz
-	-> AdaSAT-${PV}.tar.gz"
+	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
@@ -26,6 +24,7 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
+	dev-ada/AdaSAT[${ADA_USEDEP},shared(+),static-libs?,static-pic?]
 	dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},gmp,iconv(+)]
 	dev-ada/gnatcoll-bindings[shared,static-libs?,static-pic?]
 	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
@@ -38,11 +37,6 @@ BDEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 distutils_enable_sphinx doc
-
-python_prepare_all() {
-	mv "${WORKDIR}"/AdaSAT-${PV} langkit/adasat || die
-	distutils-r1_python_prepare_all
-}
 
 python_compile_all() {
 	build () {
