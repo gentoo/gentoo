@@ -156,16 +156,24 @@ src_prepare() {
 	eend $?
 
 	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
+	local ati_cards mesa_cards nvidia_cards render_cards
 	shopt -s nullglob
-	local mesa_cards=$(echo -n /dev/dri/card* /dev/dri/render* | sed 's/ /:/g')
-	if test -n "${mesa_cards}"; then
-		addpredict "${mesa_cards}"
-	fi
-	local ati_cards=$(echo -n /dev/ati/card* | sed 's/ /:/g')
-	if test -n "${ati_cards}"; then
-		addpredict "${ati_cards}"
-	fi
-	shopt -u nullglob
+	ati_cards=$(echo -n /dev/ati/card*)
+	for card in "${ati_cards[@]}"; do
+		addpredict "${card}"
+	done
+	mesa_cards=$(echo -n /dev/dri/card*)
+	for card in "${mesa_cards[@]}"; do
+		addpredict "${card}"
+	done
+	nvidia_cards=$(echo -n /dev/nvidia*)
+	for card in "${nvidia_cards[@]}"; do
+		addpredict "${card}"
+	done
+	render_cards=$(echo -n /dev/dri/renderD128*)
+	for card in "${render_cards[@]}"; do
+		addpredict "${card}"
+	done
 	addpredict /dev/nvidiactl
 }
 
