@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-18)
+# Depends on deprecated Qt5WebEngine, no response from maintainers.
+# Download source appears gone; bugs #926675, #880649, #870256.
+# Removal on 2025-03-18.
+sci-electronics/eagle
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-16)
 # KF5/Qt5 based and no signs of porting or even life upstream.
 # kde-frameworks/kcalendarcore:5 has no more revdeps after this.
