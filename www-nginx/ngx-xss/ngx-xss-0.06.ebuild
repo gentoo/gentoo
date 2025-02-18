@@ -6,6 +6,12 @@ EAPI=8
 MY_PN="xss-nginx-module"
 NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
+# Strangely, 10-year-old tests work perfectly.
+NGINX_MOD_OPENRESTY_TESTS=1
+NGINX_MOD_TEST_LOAD_ORDER=(
+	www-nginx/ngx-lua-module
+	www-nginx/ngx-echo
+)
 inherit nginx-module
 
 DESCRIPTION="Native support for cross-site scripting (XSS) in NGINX"
@@ -16,8 +22,6 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-
-RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.06-add-dynamic-build-support.patch"

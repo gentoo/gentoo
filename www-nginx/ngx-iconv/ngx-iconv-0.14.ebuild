@@ -8,6 +8,15 @@ NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 NGINX_MOD_LINK_MODULES=( www-nginx/ngx_devel_kit )
 
+NGINX_MOD_OPENRESTY_TESTS=1
+# ngx-iconv must be loaded after ngx-lua-module.
+NGINX_MOD_TEST_LOAD_ORDER=(
+	www-nginx/ngx-lua-module
+	www-nginx/ngx-iconv
+	www-nginx/ngx-echo
+	www-nginx/ngx-set-misc
+	www-nginx/ngx-headers-more
+)
 inherit nginx-module
 
 DESCRIPTION="A character conversion NGINX module using libiconv"
@@ -19,7 +28,9 @@ SRC_URI="
 LICENSE="BSD-2"
 SLOT="0"
 
-RESTRICT="test"
-
 DEPEND="virtual/libiconv"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.14-skip-rds-json-tests.patch"
+)

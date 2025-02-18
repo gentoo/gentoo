@@ -8,6 +8,11 @@ NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 NGINX_MOD_LINK_MODULES=( www-nginx/ngx_devel_kit )
 
+NGINX_MOD_OPENRESTY_TESTS=1
+NGINX_MOD_TEST_LOAD_ORDER=(
+	www-nginx/ngx-echo
+	www-nginx/ngx-iconv
+)
 inherit toolchain-funcs nginx-module
 
 DESCRIPTION="An NGINX module that adds various set_xxx directives to NGINX's rewrite module"
@@ -21,14 +26,13 @@ SLOT="0"
 
 IUSE="+hmac"
 
-RESTRICT="test"
-
 BDEPEND="virtual/pkgconfig"
 DEPEND="hmac? ( dev-libs/openssl:= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.33-hmac-configurable.patch"
+	"${FILESDIR}/${PN}-0.33-skip-hashed-upstream_t-test.patch"
 )
 
 src_configure() {
