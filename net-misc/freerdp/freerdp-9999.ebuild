@@ -1,4 +1,4 @@
-# Copyright 2011-2024 Gentoo Authors
+# Copyright 2011-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -130,6 +130,7 @@ run_for_testing() {
 src_configure() {
 	# bug #881695
 	filter-lto
+	use debug || append-cppflags -DNDEBUG
 	freerdp_configure -DBUILD_TESTING=OFF
 	run_for_testing freerdp_configure -DBUILD_TESTING=ON
 }
@@ -150,6 +151,7 @@ freerdp_configure() {
 		-DWITH_SAMPLE=OFF
 		-DWITH_CUPS=$(option cups)
 		-DWITH_DEBUG_ALL=$(option debug)
+		-DWITH_VERBOSE_WINPR_ASSERT=$(option debug)
 		-DWITH_MANPAGES=ON
 		-DWITH_FFMPEG=$(option ffmpeg)
 		-DWITH_FREERDP_DEPRECATED_COMMANDLINE=ON
