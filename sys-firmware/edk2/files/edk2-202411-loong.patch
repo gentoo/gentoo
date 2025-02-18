@@ -1,0 +1,33 @@
+https://github.com/tianocore/edk2/commit/b8f3199595d23c29433528a5207a6aa9fb368d44
+From: Chao Li <lichao@loongson.cn>
+Date: Tue, 17 Dec 2024 18:05:45 +0800
+Subject: [PATCH] OvmfPkg/LoongArch: Enabling some base libraries
+
+BaseCryptLib, RngLib, IntrinsicLib and OpensslLib are enabled by default
+on LoongArch VM, since some APPs or OS require them.
+
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Chao Li <lichao@loongson.cn>
+--- a/OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc
++++ b/OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc
+@@ -156,6 +156,18 @@
+   FileExplorerLib                  | MdeModulePkg/Library/FileExplorerLib/FileExplorerLib.inf
+   ImagePropertiesRecordLib         | MdeModulePkg/Library/ImagePropertiesRecordLib/ImagePropertiesRecordLib.inf
+ 
++  #
++  # CryptoPkg libraries needed by multiple firmware features
++  #
++  IntrinsicLib                     | CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
++!if $(NETWORK_TLS_ENABLE) == TRUE
++  OpensslLib                       | CryptoPkg/Library/OpensslLib/OpensslLib.inf
++!else
++  OpensslLib                       | CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf
++!endif
++  BaseCryptLib                     | CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
++  RngLib                           | MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib.inf
++
+ !if $(HTTP_BOOT_ENABLE) == TRUE
+   HttpLib                          | MdeModulePkg/Library/DxeHttpLib/DxeHttpLib.inf
+ !endif

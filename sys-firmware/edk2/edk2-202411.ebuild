@@ -64,6 +64,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-202411-werror.patch"
+	"${FILESDIR}/${PN}-202411-loong.patch"
 	"${FILESDIR}/${PN}-202408-binutils-2.41-textrels.patch"
 )
 
@@ -92,6 +93,14 @@ pkg_setup() {
 		UNIT0="QEMU_EFI.qcow2"
 		UNIT1="QEMU_VARS.qcow2"
 		FMT="qcow2"
+		;;
+	loong)
+		TARGET_ARCH="LOONGARCH64"
+		QEMU_ARCH="loongarch64"
+		ARCH_DIRS="${DIR}/LoongArchVirtQemu"
+		UNIT0="QEMU_EFI.fd"
+		UNIT1="QEMU_VARS.fd"
+		FMT="raw"
 		;;
 	riscv)
 		TARGET_ARCH="RISCV64"
@@ -260,6 +269,14 @@ src_compile() {
 		mk_fw_vars arm64 Build/ArmVirtQemu-AARCH64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
 		raw_to_qcow2 64m Build/ArmVirtQemu-AARCH64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		;;
+	loong)
+		BUILD_ARGS+=(
+			# fails to seed the OpenSSL RNG during early initialization due
+			# to improper FPU enabling (maybe too late)
+			-D NETWORK_TLS_ENABLE=FALSE
+		)
+		mybuild -a LOONGARCH64 -p OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc
+		;;
 	riscv)
 		mybuild -a RISCV64 -p OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc
 		raw_to_qcow2 32m Build/RiscVVirtQemu/"${BUILD_DIR}"/FV/RISCV_VIRT_{CODE,VARS}.fd
@@ -293,6 +310,10 @@ src_install() {
 			newins Build/ArmVirtQemu-AARCH64${TYPE}/"${BUILD_DIR}"/FV/QEMU_EFI.qcow2 QEMU_EFI${TYPE}.qcow2
 			newins Build/ArmVirtQemu-AARCH64${TYPE}/"${BUILD_DIR}"/FV/QEMU_VARS.qcow2 QEMU_VARS${TYPE}.qcow2
 		done
+		;;
+	loong)
+		insinto ${DIR}/LoongArchVirtQemu
+		doins Build/LoongArchVirtQemu/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		;;
 	riscv)
 		insinto ${DIR}/RiscVVirtQemu
