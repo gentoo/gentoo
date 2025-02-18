@@ -59,7 +59,7 @@ media-video/vlc samba
 # net-nds/openldap / dev-libs/cyrus-sasl not stable here
 dev-lang/php ldap-sasl
 mail-mta/postfix ldap-bind
-net-nds/openldap sasl
+net-nds/openldap cxx sasl
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # No kerberos provider is marked stable here
