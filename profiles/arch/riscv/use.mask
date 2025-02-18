@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -31,11 +31,6 @@
 # Requires qtwebengine, which is not ported to riscv
 pdfium
 webengine
-
-# Marek Szuba <marecki@gentoo.org> (2021-08-14)
-# sci-libs/netcdf fails tests in a way suggesting it might be completely
-# unreliable on this arch as far as I/O is concerned.
-netcdf
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # dev-lang/luajit does not support this arch
