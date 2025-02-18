@@ -12,5 +12,6 @@
 	<upstream>
 		<bugs-to>https://github.com/rclone/rclone/issues/</bugs-to>
 		<remote-id type="github">rclone/rclone</remote-id>
+		<changelog>https://rclone.org/changelog</changelog>
 	</upstream>
 </pkgmetadata>
