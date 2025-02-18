@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-cpp/xsimd
 	=dev-python/beniget-0.4*[${PYTHON_USEDEP}]
 	=dev-python/gast-0.6*[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/numpy:=[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.4[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-73.0.1[${PYTHON_USEDEP}]
 "
