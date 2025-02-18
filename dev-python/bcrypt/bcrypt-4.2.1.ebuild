@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 CRATES="
 	autocfg@1.4.0
@@ -31,11 +31,11 @@ CRATES="
 	pbkdf2@0.12.2
 	portable-atomic@1.9.0
 	proc-macro2@1.0.89
-	pyo3-build-config@0.23.1
-	pyo3-ffi@0.23.1
-	pyo3-macros-backend@0.23.1
-	pyo3-macros@0.23.1
-	pyo3@0.23.1
+	pyo3-build-config@0.23.4
+	pyo3-ffi@0.23.4
+	pyo3-macros-backend@0.23.4
+	pyo3-macros@0.23.4
+	pyo3@0.23.4
 	quote@1.0.37
 	sha2@0.10.8
 	subtle@2.6.1
@@ -58,6 +58,7 @@ HOMEPAGE="
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
+	https://dev.gentoo.org/~mgorny/dist/pyo3-ffi-0.23.4-pypy3_11.patch.xz
 "
 
 LICENSE="Apache-2.0"
@@ -75,13 +76,19 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/bcrypt/_bcrypt.*.so"
 
 distutils_enable_tests pytest
 
-export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
-
 src_prepare() {
 	distutils-r1_src_prepare
 
-	cd "${ECARGO_VENDOR}"/pyo3-0*/ || die
+	# unpin pyo3
+	rm src/_bcrypt/Cargo.lock || die
+
+	pushd "${ECARGO_VENDOR}"/pyo3-ffi* >/dev/null || die
+	eapply -p2 "${WORKDIR}/pyo3-ffi-0.23.4-pypy3_11.patch"
+	popd >/dev/null || die
+
+	pushd "${ECARGO_VENDOR}"/pyo3-0*/ >/dev/null || die
 	eapply "${FILESDIR}/bcrypt-4.2.0-patch-pyo3-subinterp.patch"
+	popd >/dev/null || die
 }
 
 python_configure_all() {
