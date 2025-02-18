@@ -75,7 +75,7 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
 		# prepare to unbundle dependencies
-		"${FILESDIR}/pip-24.1-unbundle.patch"
+		"${FILESDIR}/pip-25.0.1-unbundle.patch"
 	)
 
 	distutils-r1_python_prepare_all
