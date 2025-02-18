@@ -167,12 +167,6 @@ app-emulation/qemu rbd
 # but with it installed, anyio passes all tests
 dev-python/anyio test
 
-# Marek Szuba <marecki@gentoo.org> (2021-09-23)
-# mkdocs ecosystem only partly keyworded on riscv, has rather messy
-# Python-target requirements.
-dev-python/pyspelling doc
-dev-python/wcmatch doc
-
 # Alex Fan <alex.fan.q@gmail.com> (2022-05-16)
 # These depend on Haskell:
 #  - app-text/pandoc
