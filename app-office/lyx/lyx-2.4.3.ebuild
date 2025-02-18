@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="aspell cups dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
