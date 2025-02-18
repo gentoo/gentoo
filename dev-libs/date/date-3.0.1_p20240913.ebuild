@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit cmake
 # maintainer recommends to "live at head" so we ship snapshots
 COMMIT="155c6b9e76e462e1d47ea528ca87f366adccdea3"
 
-DESCRIPTION="A date and time library based on the C++11/14/17 <chrono> header"
+DESCRIPTION="Date and time library based on the C++11/14/17 <chrono> header"
 HOMEPAGE="https://github.com/HowardHinnant/date"
 SRC_URI="https://github.com/HowardHinnant/date/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="test? ( llvm-core/clang )" # tests call clang++
 
 PATCHES=(
-	"$FILESDIR"/${PN}-3.0.1_p20240913_remove-failing-tests.patch
+	"${FILESDIR}"/${PN}-3.0.1_p20240913_remove-failing-tests.patch
 )
 
 src_prepare() {
