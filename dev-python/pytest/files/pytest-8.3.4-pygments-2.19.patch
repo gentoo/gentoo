@@ -1,0 +1,106 @@
+From ad4081f63985ff42f54fc52baa7ce0e7b5cffba4 Mon Sep 17 00:00:00 2001
+From: Florian Bruhin <me@the-compiler.org>
+Date: Wed, 8 Jan 2025 18:04:15 +0100
+Subject: [PATCH] Merge pull request #13113 from
+ The-Compiler/fix-pygments-whitespace
+
+Fix selftests with Pygments >= 2.19.0
+
+(cherry picked from commit bdfc3a99bd733f385f150446caef6d5843bb6418)
+---
+ changelog/13112.contrib.rst |  1 +
+ testing/conftest.py         |  7 +++++++
+ testing/test_terminal.py    | 10 +++++-----
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+ create mode 100644 changelog/13112.contrib.rst
+
+diff --git a/changelog/13112.contrib.rst b/changelog/13112.contrib.rst
+new file mode 100644
+index 000000000..5e59a736e
+--- /dev/null
++++ b/changelog/13112.contrib.rst
+@@ -0,0 +1 @@
++Fixed selftest failures in ``test_terminal.py`` with Pygments >= 2.19.0
+diff --git a/testing/conftest.py b/testing/conftest.py
+index 69af03324..194da0f83 100644
+--- a/testing/conftest.py
++++ b/testing/conftest.py
+@@ -2,10 +2,13 @@
+ from __future__ import annotations
+ 
+ import dataclasses
++import importlib.metadata
+ import re
+ import sys
+ from typing import Generator
+ 
++from packaging.version import Version
++
+ from _pytest.monkeypatch import MonkeyPatch
+ from _pytest.pytester import Pytester
+ import pytest
+@@ -168,6 +171,9 @@ def color_mapping():
+ 
+     Used by tests which check the actual colors output by pytest.
+     """
++    # https://github.com/pygments/pygments/commit/d24e272894a56a98b1b718d9ac5fabc20124882a
++    pygments_version = Version(importlib.metadata.version("pygments"))
++    pygments_has_kwspace_hl = pygments_version >= Version("2.19")
+ 
+     class ColorMapping:
+         COLORS = {
+@@ -180,6 +186,7 @@ def color_mapping():
+             "bold": "\x1b[1m",
+             "reset": "\x1b[0m",
+             "kw": "\x1b[94m",
++            "kwspace": "\x1b[90m \x1b[39;49;00m" if pygments_has_kwspace_hl else " ",
+             "hl-reset": "\x1b[39;49;00m",
+             "function": "\x1b[92m",
+             "number": "\x1b[94m",
+diff --git a/testing/test_terminal.py b/testing/test_terminal.py
+index 14c152d61..cbbe9cbd7 100644
+--- a/testing/test_terminal.py
++++ b/testing/test_terminal.py
+@@ -1299,13 +1299,13 @@ def test_color_yes(pytester: Pytester, color_mapping) -> None:
+                 "=*= FAILURES =*=",
+                 "{red}{bold}_*_ test_this _*_{reset}",
+                 "",
+-                "    {reset}{kw}def{hl-reset} {function}test_this{hl-reset}():{endline}",
++                "    {reset}{kw}def{hl-reset}{kwspace}{function}test_this{hl-reset}():{endline}",
+                 ">       fail(){endline}",
+                 "",
+                 "{bold}{red}test_color_yes.py{reset}:5: ",
+                 "_ _ * _ _*",
+                 "",
+-                "    {reset}{kw}def{hl-reset} {function}fail{hl-reset}():{endline}",
++                "    {reset}{kw}def{hl-reset}{kwspace}{function}fail{hl-reset}():{endline}",
+                 ">       {kw}assert{hl-reset} {number}0{hl-reset}{endline}",
+                 "{bold}{red}E       assert 0{reset}",
+                 "",
+@@ -2585,7 +2585,7 @@ class TestCodeHighlight:
+         result.stdout.fnmatch_lines(
+             color_mapping.format_for_fnmatch(
+                 [
+-                    "    {reset}{kw}def{hl-reset} {function}test_foo{hl-reset}():{endline}",
++                    "    {reset}{kw}def{hl-reset}{kwspace}{function}test_foo{hl-reset}():{endline}",
+                     ">       {kw}assert{hl-reset} {number}1{hl-reset} == {number}10{hl-reset}{endline}",
+                     "{bold}{red}E       assert 1 == 10{reset}",
+                 ]
+@@ -2607,7 +2607,7 @@ class TestCodeHighlight:
+         result.stdout.fnmatch_lines(
+             color_mapping.format_for_fnmatch(
+                 [
+-                    "    {reset}{kw}def{hl-reset} {function}test_foo{hl-reset}():{endline}",
++                    "    {reset}{kw}def{hl-reset}{kwspace}{function}test_foo{hl-reset}():{endline}",
+                     "        {print}print{hl-reset}({str}'''{hl-reset}{str}{hl-reset}",
+                     ">   {str}    {hl-reset}{str}'''{hl-reset}); {kw}assert{hl-reset} {number}0{hl-reset}{endline}",
+                     "{bold}{red}E       assert 0{reset}",
+@@ -2630,7 +2630,7 @@ class TestCodeHighlight:
+         result.stdout.fnmatch_lines(
+             color_mapping.format_for_fnmatch(
+                 [
+-                    "    {reset}{kw}def{hl-reset} {function}test_foo{hl-reset}():{endline}",
++                    "    {reset}{kw}def{hl-reset}{kwspace}{function}test_foo{hl-reset}():{endline}",
+                     ">       {kw}assert{hl-reset} {number}1{hl-reset} == {number}10{hl-reset}{endline}",
+                     "{bold}{red}E       assert 1 == 10{reset}",
+                 ]
