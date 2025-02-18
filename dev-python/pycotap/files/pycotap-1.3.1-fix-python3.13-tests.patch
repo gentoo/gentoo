@@ -1,0 +1,213 @@
+https://github.com/remko/pycotap/pull/14
+
+From 514a991fb622c2db2ffcede93d99776cc322c019 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 18 Feb 2025 03:02:23 +0200
+Subject: [PATCH] Adjust tests for python3.13 error message changes
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/test/test.py
++++ b/test/test.py
+@@ -73,14 +73,17 @@ class TAPTestRunnerTest(unittest.TestCase):
+     )
+     self.assertEqual(
+       self.process_output(self.output_stream.getvalue()), (
+-        "TAP version 13\n"
+-        "not ok 1 __main__.TAPTestRunnerTest.test_all_test_outcomes.<locals>.Test.test_failing\n"
+-        "# Traceback (most recent call last):\n"
+-        "#   File \"test.py\", line X, in test_failing\n"
+-        "#     self.assertEqual(1, 2)\n"
+-        "# AssertionError: 1 != 2\n"
+-        "ok 2 __main__.TAPTestRunnerTest.test_all_test_outcomes.<locals>.Test.test_passing\n"
+-        "ok 3 __main__.TAPTestRunnerTest.test_all_test_outcomes.<locals>.Test.test_skipped # SKIP Not finished yet\n"
++        "TAP version 13\n" +
++        "not ok 1 __main__.TAPTestRunnerTest.test_all_test_outcomes.<locals>.Test.test_failing\n" +
++        "# Traceback (most recent call last):\n" +
++        "#   File \"test.py\", line X, in test_failing\n" +
++        "#     self.assertEqual(1, 2)\n" +
++        (
++        "#     ~~~~~~~~~~~~~~~~^^^^^^\n" if sys.version_info >= (3,13,) else ""
++        ) +
++        "# AssertionError: 1 != 2\n" +
++        "ok 2 __main__.TAPTestRunnerTest.test_all_test_outcomes.<locals>.Test.test_passing\n" +
++        "ok 3 __main__.TAPTestRunnerTest.test_all_test_outcomes.<locals>.Test.test_skipped # SKIP Not finished yet\n" +
+         "1..3\n"
+       )
+     )
+@@ -152,17 +155,20 @@ class TAPTestRunnerTest(unittest.TestCase):
+     )
+     self.assertEqual(
+       self.process_output(self.output_stream.getvalue()), (
+-        "TAP version 13\n"
+-        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n"
+-        "# Foo\n"
+-        "# Traceback (most recent call last):\n"
+-        "#   File \"test.py\", line X, in test_failing\n"
+-        "#     self.assertEqual(1, 2)\n"
+-        "# AssertionError: 1 != 2\n"
+-        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n"
+-        "# Foo\n"
+-        "# Baz\n"
+-        "# Bar\n"
++        "TAP version 13\n" +
++        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n" +
++        "# Foo\n" +
++        "# Traceback (most recent call last):\n" +
++        "#   File \"test.py\", line X, in test_failing\n" +
++        "#     self.assertEqual(1, 2)\n" +
++        (
++        "#     ~~~~~~~~~~~~~~~~^^^^^^\n" if sys.version_info >= (3,13,) else ""
++        ) +
++        "# AssertionError: 1 != 2\n" +
++        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n" +
++        "# Foo\n" +
++        "# Baz\n" +
++        "# Bar\n" +
+         "1..2\n"
+       )
+     )
+@@ -176,23 +182,26 @@ class TAPTestRunnerTest(unittest.TestCase):
+     )
+     self.assertEqual(
+       self.process_output(self.output_stream.getvalue()), (
+-        "TAP version 13\n"
+-        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n"
+-        "  ---\n"
+-        "    output: |\n"
+-        "      Foo\n"
+-        "      Traceback (most recent call last):\n"
+-        "        File \"test.py\", line X, in test_failing\n"
+-        "          self.assertEqual(1, 2)\n"
+-        "      AssertionError: 1 != 2\n"
+-        "  ...\n"
+-        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n"
+-        "  ---\n"
+-        "    output: |\n"
+-        "      Foo\n"
+-        "      Baz\n"
+-        "      Bar\n"
+-        "  ...\n"
++        "TAP version 13\n" +
++        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n" +
++        "  ---\n" +
++        "    output: |\n" +
++        "      Foo\n" +
++        "      Traceback (most recent call last):\n" +
++        "        File \"test.py\", line X, in test_failing\n" +
++        "          self.assertEqual(1, 2)\n" +
++        (
++        "          ~~~~~~~~~~~~~~~~^^^^^^\n" if sys.version_info >= (3,13,) else ""
++        ) +
++        "      AssertionError: 1 != 2\n" +
++        "  ...\n" +
++        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n" +
++        "  ---\n" +
++        "    output: |\n" +
++        "      Foo\n" +
++        "      Baz\n" +
++        "      Bar\n" +
++        "  ...\n" +
+         "1..2\n"
+       )
+     )
+@@ -243,14 +252,17 @@ class TAPTestRunnerTest(unittest.TestCase):
+     )
+     self.assertEqual(
+       self.process_output(self.error_stream.getvalue()), (
+-        "Foo\n"
+-        "Traceback (most recent call last):\n"
+-        "  File \"test.py\", line X, in test_failing\n"
+-        "    self.assertEqual(1, 2)\n"
+-        "AssertionError: 1 != 2\n"
+-        "\n"
+-        "Foo\n"
+-        "Baz\n"
++        "Foo\n" +
++        "Traceback (most recent call last):\n" +
++        "  File \"test.py\", line X, in test_failing\n" +
++        "    self.assertEqual(1, 2)\n" +
++        (
++        "    ~~~~~~~~~~~~~~~~^^^^^^\n" if sys.version_info >= (3,13,) else ""
++        ) +
++        "AssertionError: 1 != 2\n" +
++        "\n" +
++        "Foo\n" +
++        "Baz\n" +
+         "Bar\n"
+       )
+     )
+@@ -264,18 +276,21 @@ class TAPTestRunnerTest(unittest.TestCase):
+     )
+     self.assertEqual(
+       self.process_output(self.output_stream.getvalue()), (
+-        "TAP version 13\n"
+-        "Foo\n"
+-        "Traceback (most recent call last):\n"
+-        "  File \"test.py\", line X, in test_failing\n"
+-        "    self.assertEqual(1, 2)\n"
+-        "AssertionError: 1 != 2\n"
+-        "\n"
+-        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n"
+-        "Foo\n"
+-        "Baz\n"
+-        "Bar\n"
+-        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n"
++        "TAP version 13\n" +
++        "Foo\n" +
++        "Traceback (most recent call last):\n" +
++        "  File \"test.py\", line X, in test_failing\n" +
++        "    self.assertEqual(1, 2)\n" +
++        (
++        "    ~~~~~~~~~~~~~~~~^^^^^^\n" if sys.version_info >= (3,13,) else ""
++        ) +
++        "AssertionError: 1 != 2\n" +
++        "\n" +
++        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n" +
++        "Foo\n" +
++        "Baz\n" +
++        "Bar\n" +
++        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n" +
+         "1..2\n"
+       )
+     )
+@@ -288,20 +303,23 @@ class TAPTestRunnerTest(unittest.TestCase):
+     )
+     self.assertEqual(
+       self.process_output(self.output_stream.getvalue()), (
+-        "TAP version 13\n"
+-        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n"
+-        "# Foo\n"
+-        "  ---\n"
+-        "    message: |\n"
+-        "      Traceback (most recent call last):\n"
+-        "        File \"test.py\", line X, in test_failing\n"
+-        "          self.assertEqual(1, 2)\n"
+-        "      AssertionError: 1 != 2\n"
+-        "  ...\n"
+-        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n"
+-        "# Foo\n"
+-        "# Baz\n"
+-        "# Bar\n"
++        "TAP version 13\n" +
++        "not ok 1 __main__.TAPTestRunnerTest.OutputTest.test_failing\n" +
++        "# Foo\n" +
++        "  ---\n" +
++        "    message: |\n" +
++        "      Traceback (most recent call last):\n" +
++        "        File \"test.py\", line X, in test_failing\n" +
++        "          self.assertEqual(1, 2)\n" +
++        (
++        "          ~~~~~~~~~~~~~~~~^^^^^^\n" if sys.version_info >= (3,13,) else ""
++        ) +
++        "      AssertionError: 1 != 2\n" +
++        "  ...\n" +
++        "ok 2 __main__.TAPTestRunnerTest.OutputTest.test_passing\n" +
++        "# Foo\n" +
++        "# Baz\n" +
++        "# Bar\n" +
+         "1..2\n"
+       )
+     )
+-- 
+2.48.1
+
