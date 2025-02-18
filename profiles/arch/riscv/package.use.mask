@@ -175,7 +175,6 @@ dev-python/anyio test
 dev-ruby/capybara test
 #  - dev-qt/qtwebengine (bdepend)
 dev-python/ipython qt5
-net-irc/quassel urlpreview
 
 # Jonathan Davies <jpds@protonmail.com> (2021-09-03)
 # Requires CPU with SSSE3 support
