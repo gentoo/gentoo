@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 
 LICENSE="MPL-2.0"
 OPENVDB_ABI=$(ver_cut 1)
-SLOT="0/$PV"
+SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="abi$((OPENVDB_ABI + 1))-compat +abi${OPENVDB_ABI}-compat abi$((OPENVDB_ABI - 1))-compat abi$((OPENVDB_ABI - 2))-compat alembic ax +blosc cpu_flags_x86_avx cpu_flags_x86_sse4_2
 	cuda doc examples jpeg +nanovdb numpy openexr png python static-libs test utils zlib"
