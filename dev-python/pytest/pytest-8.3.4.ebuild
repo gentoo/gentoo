@@ -50,6 +50,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# ad4081f63985ff42f54fc52baa7ce0e7b5cffba4
+	"${FILESDIR}/${P}-pygments-2.19.patch"
+)
+
 src_test() {
 	# workaround new readline defaults
 	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
