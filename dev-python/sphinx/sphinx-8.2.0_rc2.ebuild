@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -100,15 +100,17 @@ python_test() {
 		tests/test_extensions/test_ext_math.py::test_imgmath_numfig_html
 	)
 	case ${EPYTHON} in
-		python3.13x)
+		pypy3.11)
 			EPYTEST_DESELECT+=(
-				tests/test_extensions/test_ext_autodoc.py::test_autodoc_special_members
-				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_type_aliases
-				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_typehints_format_fully_qualified
-				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_typehints_none
-				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_typehints_signature
+				# TODO
+				tests/test_util/test_util_inspect.py::test_is_classmethod_descriptor
+				tests/test_util/test_util_inspect.py::test_is_builtin_classmethod_like
+				# minor repr() differences
+				tests/test_util/test_util_typing.py::test_restify
+				tests/test_util/test_util_typing.py::test_stringify_annotation
+				tests/test_util/test_util_typing.py::test_stringify_type_union_operator
 			)
-			;;
+			;&
 		pypy3)
 			EPYTEST_DESELECT+=(
 				tests/test_extensions/test_ext_autodoc.py::test_autodoc_exception
