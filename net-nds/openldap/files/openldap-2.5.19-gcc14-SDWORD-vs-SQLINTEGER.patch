@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/938581#c5
+--- a/servers/slapd/back-sql/sql-wrap.c
++++ b/servers/slapd/back-sql/sql-wrap.c
+@@ -37,7 +37,7 @@ backsql_PrintErrors( SQLHENV henv, SQLHD
+ {
+ 	SQLCHAR	msg[SQL_MAX_MESSAGE_LENGTH];		/* msg. buffer    */
+ 	SQLCHAR	state[SQL_SQLSTATE_SIZE];		/* statement buf. */
+-	SDWORD	iSqlCode;				/* return code    */
++	SQLINTEGER	iSqlCode;			/* return code    */
+ 	SWORD	len = SQL_MAX_MESSAGE_LENGTH - 1;	/* return length  */ 
+ 
+ 	Debug( LDAP_DEBUG_TRACE, "Return code: %d\n", rc );

@@ -149,6 +149,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.v2.patch
 	"${FILESDIR}"/${PN}-2.6.x-gnutls-pointer-error.patch
+	"${FILESDIR}"/${PN}-2.5.19-gcc14-SDWORD-vs-SQLINTEGER.patch
 )
 
 openldap_filecount() {
