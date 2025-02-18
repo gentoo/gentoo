@@ -114,6 +114,10 @@ BDEPEND="
 # -m 0755 to avoid suid with USE="-filecaps"
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/bin/kwin_wayland )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc15-workaround.patch
+)
+
 src_prepare() {
 	ecm_src_prepare
 
