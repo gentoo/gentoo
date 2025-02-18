@@ -1,0 +1,73 @@
+From 73c6a2fbb376ee6550b15e2c6487c86c27ed3a71 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Fri, 14 Mar 2025 16:49:04 +0100
+Subject: [PATCH] lib/resty: Explicitly load libcrypto in all crypto-exporting
+ FFI modules
+
+Lua modules in lib/resty provide FFI wrappers for cryptographic OpenSSL
+functions without explicitly loading libcrypto itself. This commit makes
+the modules load the library.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ lib/resty/aes.lua    | 2 ++
+ lib/resty/md5.lua    | 2 ++
+ lib/resty/random.lua | 2 ++
+ lib/resty/sha.lua    | 2 ++
+ 4 files changed, 8 insertions(+)
+
+diff --git a/lib/resty/aes.lua b/lib/resty/aes.lua
+index 377476f..8a9f9a1 100644
+--- a/lib/resty/aes.lua
++++ b/lib/resty/aes.lua
+@@ -11,6 +11,8 @@ local C = ffi.C
+ local setmetatable = setmetatable
+ --local error = error
+ local type = type
++-- Load libcrypto into global namespace.
++_ = ffi.load("crypto", true)
+ 
+ 
+ local _M = { _VERSION = '0.16' }
+diff --git a/lib/resty/md5.lua b/lib/resty/md5.lua
+index 66b3b3e..09ce8c8 100644
+--- a/lib/resty/md5.lua
++++ b/lib/resty/md5.lua
+@@ -7,6 +7,8 @@ local ffi_str = ffi.string
+ local C = ffi.C
+ local setmetatable = setmetatable
+ --local error = error
++-- Load libcrypto into global namespace.
++_ = ffi.load("crypto", true)
+ 
+ 
+ local _M = { _VERSION = '0.16' }
+diff --git a/lib/resty/random.lua b/lib/resty/random.lua
+index 153b1f3..673bf40 100644
+--- a/lib/resty/random.lua
++++ b/lib/resty/random.lua
+@@ -7,6 +7,8 @@ local ffi_str = ffi.string
+ local C = ffi.C
+ --local setmetatable = setmetatable
+ --local error = error
++-- Load libcrypto into global namespace.
++_ = ffi.load("crypto", true)
+ 
+ 
+ local _M = { _VERSION = '0.16' }
+diff --git a/lib/resty/sha.lua b/lib/resty/sha.lua
+index ce4e50a..b631b1f 100644
+--- a/lib/resty/sha.lua
++++ b/lib/resty/sha.lua
+@@ -2,6 +2,8 @@
+ 
+ 
+ local ffi = require "ffi"
++-- Load libcrypto into global namespace.
++_ = ffi.load("crypto", true)
+ 
+ 
+ local _M = { _VERSION = '0.16' }
+-- 
+2.45.3
+
