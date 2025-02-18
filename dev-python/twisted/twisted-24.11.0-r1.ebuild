@@ -41,9 +41,7 @@ RDEPEND="
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 	)
 	http2? (
-		<dev-python/h2-5.0[${PYTHON_USEDEP}]
 		>=dev-python/h2-3.2[${PYTHON_USEDEP}]
-		<dev-python/priority-2.0[${PYTHON_USEDEP}]
 		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
 	)
 	serial? (
