@@ -42,7 +42,7 @@ DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer)
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.5.5-gcc14-fix.patch"
-	 "$FILESDIR/hamlib-drop-lua.patch"
+	"${FILESDIR}/hamlib-drop-lua.patch"
 )
 
 pkg_setup() {
