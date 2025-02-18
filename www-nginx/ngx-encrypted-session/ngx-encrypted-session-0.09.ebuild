@@ -8,6 +8,12 @@ NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 NGINX_MOD_LINK_MODULES=( www-nginx/ngx_devel_kit )
 
+NGINX_MOD_OPENRESTY_TESTS=1
+NGINX_MOD_TEST_LOAD_ORDER=(
+	www-nginx/ngx-set-misc
+	www-nginx/ngx-echo
+	www-nginx/ngx-lua-module
+)
 inherit toolchain-funcs nginx-module
 
 DESCRIPTION="An NGINX module that encrypts and decrypts NGINX variable values"
@@ -18,8 +24,6 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-
-RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/openssl:="
