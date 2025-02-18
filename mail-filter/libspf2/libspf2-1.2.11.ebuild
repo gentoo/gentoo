@@ -7,7 +7,7 @@ inherit autotools
 
 GHASH=4915c308d57ff3abac9fb241f09c4bed2ab54815  # 1.2.11
 DESCRIPTION="implementation of Sender Policy Framework (SPF)"
-HOMEPAGE="https://www.libspf2.org"
+HOMEPAGE="https://www.libspf2.net/"
 SRC_URI="https://github.com/shevek/${PN}/archive/${GHASH}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD-2 )"
