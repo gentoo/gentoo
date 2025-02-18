@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="tk"
+
 DEPEND="x11-libs/libX11"
 RDEPEND="
 	${DEPEND}
