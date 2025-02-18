@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit cmake
 
-DESCRIPTION="A date and time library based on the C++11/14/17 <chrono> header"
+DESCRIPTION="Date and time library based on the C++11/14/17 <chrono> header"
 HOMEPAGE="https://github.com/HowardHinnant/date"
 
 SRC_URI="https://github.com/HowardHinnant/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
