@@ -1,0 +1,56 @@
+diff -durN a/src/osmconvert.c b/src/osmconvert.c
+--- a/src/osmconvert.c
++++ b/src/osmconvert.c
+@@ -464,6 +464,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdbool.h>
+ #include <locale.h>
+ #include <time.h>
+ #include <ctype.h>
+@@ -471,7 +472,6 @@
+ #include <fcntl.h>
+ #include <signal.h>
+ 
+-typedef enum {false= 0,true= 1} bool;
+ typedef uint8_t byte;
+ typedef unsigned int uint;
+ #define isdig(x) isdigit((unsigned char)(x))
+diff -durN a/src/osmfilter.c b/src/osmfilter.c
+--- a/src/osmfilter.c
++++ b/src/osmfilter.c
+@@ -377,13 +377,13 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdbool.h>
+ #include <time.h>
+ #include <ctype.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <signal.h>
+ 
+-typedef enum {false= 0,true= 1} bool;
+ typedef uint8_t byte;
+ typedef unsigned int uint;
+ #define isdig(x) isdigit((unsigned char)(x))
+diff -durN a/src/osmupdate.c b/src/osmupdate.c
+--- a/src/osmupdate.c
++++ b/src/osmupdate.c
+@@ -172,6 +172,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdbool.h>
+ #include <errno.h>
+ #include <time.h>
+ #include <ctype.h>
+@@ -180,7 +181,6 @@
+ #include <signal.h>
+ #include <sys/stat.h>
+ 
+-typedef enum {false= 0,true= 1} bool;
+ typedef uint8_t byte;
+ typedef unsigned int uint;
+ #define isdig(x) isdigit((unsigned char)(x))
