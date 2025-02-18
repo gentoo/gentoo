@@ -11,6 +11,11 @@ NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 NGINX_MOD_LINK_MODULES=( www-nginx/ngx-lua-module )
 
+NGINX_MOD_OPENRESTY_TESTS=1
+NGINX_MOD_TEST_LOAD_ORDER=(
+	www-nginx/ngx-lua-module
+	www-nginx/ngx-echo
+)
 inherit flag-o-matic lua-single nginx-module
 
 DESCRIPTION="An NGINX C module exposing ngx-lua-module's Lua APIs for NGINX upstreams"
@@ -24,11 +29,13 @@ SLOT="0"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RESTRICT="test"
-
 BDEPEND="virtual/pkgconfig"
 DEPEND="${LUA_DEPS}"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.07-skip-invalid-tests.patch"
+)
 
 src_configure() {
 	ngx_mod_append_libs "$(lua_get_LIBS)"

@@ -1,0 +1,147 @@
+From e69195edbb7c38135743c4a0c19a6d78d0e7467a Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Thu, 13 Feb 2025 21:41:35 +0100
+Subject: [PATCH] t: Disable invalid tests
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ t/000_init.t        | 3 ++-
+ t/conditional-get.t | 3 ++-
+ t/drizzle-main.t    | 3 ++-
+ t/eval.t            | 3 ++-
+ t/methods.t         | 3 ++-
+ t/postgres-main.t   | 3 ++-
+ t/proxy.t           | 3 ++-
+ t/redis.t           | 3 ++-
+ t/timeout.t         | 3 ++-
+ 9 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/t/000_init.t b/t/000_init.t
+index b611e6c..06663e6 100644
+--- a/t/000_init.t
++++ b/t/000_init.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'Gentoo does not package neither ngx_postgres nor drizzle';
+ 
+ repeat_each(1);
+ 
+diff --git a/t/conditional-get.t b/t/conditional-get.t
+index b652ee6..82daf84 100644
+--- a/t/conditional-get.t
++++ b/t/conditional-get.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'uses arbitrary hostname as proxy_pass';
+ 
+ #repeat_each(100);
+ 
+diff --git a/t/drizzle-main.t b/t/drizzle-main.t
+index 5ff11eb..150ce52 100644
+--- a/t/drizzle-main.t
++++ b/t/drizzle-main.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'drizzle is not packaged by Gentoo';
+ 
+ #repeat_each(100);
+ 
+diff --git a/t/eval.t b/t/eval.t
+index c109463..bda4dc9 100644
+--- a/t/eval.t
++++ b/t/eval.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'Gentoo does not package drizzle';
+ 
+ repeat_each(3);
+ 
+diff --git a/t/methods.t b/t/methods.t
+index 9a57b38..f48e37d 100644
+--- a/t/methods.t
++++ b/t/methods.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'uses arbitrary hostname as proxy_pass';
+ 
+ #repeat_each(2);
+ 
+diff --git a/t/postgres-main.t b/t/postgres-main.t
+index ccc00c4..b1e53ea 100644
+--- a/t/postgres-main.t
++++ b/t/postgres-main.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'ngx_postgres is not packaged by Gentoo';
+ 
+ #repeat_each(100);
+ 
+diff --git a/t/proxy.t b/t/proxy.t
+index f3e6a31..9eb8678 100644
+--- a/t/proxy.t
++++ b/t/proxy.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'Gentoo does not package drizzle';
+ 
+ #repeat_each(100);
+ 
+diff --git a/t/redis.t b/t/redis.t
+index 8af2ff0..ff10a5c 100644
+--- a/t/redis.t
++++ b/t/redis.t
+@@ -1,7 +1,8 @@
+ # vi:ft=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'relies on horribly outdated Redis 2.x';
+ 
+ #repeat_each(2);
+ 
+diff --git a/t/timeout.t b/t/timeout.t
+index 9357658..b9a8827 100644
+--- a/t/timeout.t
++++ b/t/timeout.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'uses arbitrary hostname as proxy_pass';
+ 
+ repeat_each(2);
+ 
+-- 
+2.45.3
+
