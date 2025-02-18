@@ -399,11 +399,11 @@ src_prepare() {
 		pushd tools/firmware/ovmf-dir-remote > /dev/null || die
 		eapply "${FILESDIR}"/edk2-202202-binutils-2.41-textrels.patch
 		popd > /dev/null || die
-	fi
 
-	# Use gnu17 because incompatible w/ C23
-	sed -i -e "s:-DZZLEXBUFSIZE=65536:-DZZLEXBUFSIZE=65536 -std=gnu17:" \
-		tools/firmware/ovmf-dir-remote/BaseTools/Source/C/VfrCompile/Pccts/*/makefile || die
+		# Use gnu17 because incompatible w/ C23
+		sed -i -e "s:-DZZLEXBUFSIZE=65536:-DZZLEXBUFSIZE=65536 -std=gnu17:" \
+			tools/firmware/ovmf-dir-remote/BaseTools/Source/C/VfrCompile/Pccts/*/makefile || die
+	fi
 
 	default
 }
