@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_P="5533-Silver-XCursors-3D-${PV}"
 
-DESCRIPTION="A high quality set of animated mouse cursors"
+DESCRIPTION="High quality set of animated mouse cursors"
 HOMEPAGE="https://store.kde.org/p/999966/"
-SRC_URI="mirror://gentoo/$MY_P.tar.bz2"
+SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P:5}"
 
 LICENSE="LGPL-2.1"
