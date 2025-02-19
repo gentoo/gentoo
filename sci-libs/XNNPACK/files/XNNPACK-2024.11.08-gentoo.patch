@@ -1,0 +1,30 @@
+--- a/src/reference/unary-elementwise.cc	2025-02-19 21:58:14.973845984 +0100
++++ b/src/reference/unary-elementwise.cc	2025-02-19 22:06:55.224576694 +0100
+@@ -127,6 +127,16 @@
+   }
+ };
+ 
++#ifdef XNN_HAVE_FLOAT16
++template <>
++struct ConvertOp<xnn_bfloat16, _Float16> {
++  explicit ConvertOp(const xnn_unary_uparams*) {}
++  _Float16 operator()(xnn_bfloat16 x) const {
++    return static_cast<_Float16>(static_cast<float>(x));
++  }
++};
++#endif
++
+ template <typename TIn, typename TOut>
+ const xnn_unary_elementwise_config* get_convert_config(
+     std::true_type /*input_quantized*/, std::true_type /*output_quantized*/) {
+--- a/src/xnnpack/requantization.h	2025-02-19 22:36:23.417900964 +0100
++++ b/src/xnnpack/requantization.h	2025-02-19 22:37:06.910367395 +0100
+@@ -121,7 +121,7 @@
+                                                  uint8_t zero_point,
+                                                  uint8_t min, uint8_t max) {
+   assert(scale < 256.0f);
+-  assert(scale >= 0x1.0p-32f);
++  assert(scale >= 1.0f / 4294967296.0f /* 0x1.0p-32f */);
+ 
+   struct ExpMul f32 = parse_f32(scale);
+ 
