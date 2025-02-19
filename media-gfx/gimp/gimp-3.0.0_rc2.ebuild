@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{10..13} )
 VALA_USE_DEPEND=vapigen
 
-inherit lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit lua-single flag-o-matic meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -161,6 +161,9 @@ _adjust_sandbox() {
 
 src_configure() {
 	_adjust_sandbox
+
+	# bug #944284 (https://gitlab.gnome.org/GNOME/gimp/-/issues/12843)
+	append-cflags -std=gnu17
 
 	use vala && vala_setup
 
