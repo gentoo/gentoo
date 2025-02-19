@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/944149
+https://github.com/racket/racket/issues/5183
+https://github.com/racket/racket/commit/72b83f784ad1c6fb6ee3fb7b31df165bebfb21ed
+
+From 72b83f784ad1c6fb6ee3fb7b31df165bebfb21ed Mon Sep 17 00:00:00 2001
+From: Matthew Flatt <mflatt@racket-lang.org>
+Date: Sun, 19 Jan 2025 11:03:31 -0700
+Subject: [PATCH] rktio: add missing signal-handler argument
+
+Closes #5183
+--- a/rktio/rktio_process.c
++++ b/rktio/rktio_process.c
+@@ -390,7 +390,7 @@ void centralized_done_with_process_id(int pid, int in_group)
+   pthread_mutex_unlock(&child_wait_lock);
+ }
+ 
+-static void got_sigchld()
++static void got_sigchld(int ignored)
+ { 
+   /* handle doesn't need to to anything, since sigwait()
+      in a thread does the work. */
