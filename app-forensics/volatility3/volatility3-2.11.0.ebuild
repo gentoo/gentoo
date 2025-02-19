@@ -55,10 +55,12 @@ RESTRICT="!test? ( test )"
 src_prepare() {
 	default
 
-	# tests want the images in a common directory
-	mkdir "${T}/test_images" || die
-	mv "${WORKDIR}/${PN}-win-xp-laptop-2005-06-25.img" "${T}/test_images" || die
-	mv "${WORKDIR}/${PN}-linux-sample-1.bin" "${T}/test_images" || die
+	if use test; then
+		# tests want the images in a common directory
+		mkdir "${T}/test_images" || die
+		mv "${WORKDIR}/${PN}-win-xp-laptop-2005-06-25.img" "${T}/test_images" || die
+		mv "${WORKDIR}/${PN}-linux-sample-1.bin" "${T}/test_images" || die
+	fi
 }
 
 python_test() {
