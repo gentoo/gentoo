@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_TESTED=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_11 )
 
 inherit distutils-r1 optfeature
 
@@ -36,6 +37,11 @@ distutils_enable_tests pytest
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
+	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
+		einfo "Skipping tests on ${EPYTHON}"
+		return
+	fi
+
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
 		pypy3)
