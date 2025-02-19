@@ -278,11 +278,6 @@ dev-qt/qtserialbus:5
 dev-qt/qtvirtualkeyboard:5
 dev-qt/qtwebview:5
 
-# Zac Medico <zmedico@gentoo.org> (2025-01-18)
-# Ebuild is difficult to maintain. No revdeps.
-# Removal on 2025-02-17. Bug #896044
-sys-cluster/k3s
-
 # Conrad Kostecki <conikost@gentoo.org> (2025-01-09)
 # New version, which dropps support for legacy devices.
 # Will be unmasked, when split to legacy-branch is done.
