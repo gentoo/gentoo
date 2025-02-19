@@ -123,8 +123,6 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 PATCHES=(
-	# "${FILESDIR}/${PN}-3.36.3-qt6-Fix-broken-test.patch"
-	"${FILESDIR}/${PN}-3.36.3-qt6.patch"
 	"${FILESDIR}/${PN}-3.36.3-testReportDir.patch"
 )
 
