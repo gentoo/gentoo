@@ -1,0 +1,40 @@
+From 22b304a0f30fa6d95dff5363d8d9e10b4eddd826 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 19 Feb 2025 15:30:01 +0200
+Subject: [PATCH] Build vulkan and opengles tests only if its enabled in the
+ build
+
+Bug: https://bugs.gentoo.org/932644
+Bug: https://bugs.gentoo.org/949387
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -139,12 +139,14 @@ add_sdl_test_executable(testgamecontroller NEEDS_RESOURCES testgamecontroller.c
+ add_sdl_test_executable(testgeometry testgeometry.c testutils.c)
+ add_sdl_test_executable(testgesture testgesture.c)
+ add_sdl_test_executable(testgl2 testgl2.c)
++if(SDL_OPENGLES)
+ add_sdl_test_executable(testgles testgles.c)
+ add_sdl_test_executable(testgles2 testgles2.c)
+ add_sdl_test_executable(testgles2_sdf NEEDS_RESOURCES testgles2_sdf.c testutils.c)
+ if(APPLE)
+     set_property(TARGET testgles testgles2 testgles2_sdf APPEND PROPERTY COMPILE_DEFINITIONS "GLES_SILENCE_DEPRECATION")
+ endif()
++endif()
+ add_sdl_test_executable(testhaptic testhaptic.c)
+ add_sdl_test_executable(testhotplug testhotplug.c)
+ add_sdl_test_executable(testrumble testrumble.c)
+@@ -211,7 +213,9 @@ add_sdl_test_executable(testqsort NONINTERACTIVE testqsort.c)
+ add_sdl_test_executable(testbounds testbounds.c)
+ add_sdl_test_executable(testcustomcursor testcustomcursor.c)
+ add_sdl_test_executable(controllermap NEEDS_RESOURCES controllermap.c testutils.c)
+-add_sdl_test_executable(testvulkan testvulkan.c)
++if(SDL_VULKAN)
++    add_sdl_test_executable(testvulkan testvulkan.c)
++endif()
+ add_sdl_test_executable(testoffscreen testoffscreen.c)
+ 
+ if(N3DS)
+-- 
+2.48.1
+
