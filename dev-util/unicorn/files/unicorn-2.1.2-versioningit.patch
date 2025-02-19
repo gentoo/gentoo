@@ -1,0 +1,35 @@
+From 0f45f15e303b4a7b15eb4ca61860452f0a071a3e Mon Sep 17 00:00:00 2001
+From: "@Antelox" <anteloxrce@gmail.com>
+Date: Tue, 18 Feb 2025 09:28:06 +0100
+Subject: [PATCH] Python bindings: (#2112)
+Upstream: https://github.com/unicorn-engine/unicorn/pull/2112
+
+- Switch from versioningit to setuptools-scm
+- Disable building of tests via DUNICORN_BUILD_TESTS var
+--- a/bindings/python/pyproject.toml
++++ b/bindings/python/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools", "build", "wheel", "versioningit"]
++requires = ["setuptools>=64", "build", "wheel", "setuptools-scm>=8"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -40,4 +40,5 @@ test = [
+ [tool.setuptools.packages.find]
+ include = ["unicorn*"]
+ 
+-[tool.versioningit]
++[tool.setuptools_scm]
++root = '../../'
+--- a/bindings/python/setup.py
++++ b/bindings/python/setup.py
+@@ -102,7 +102,7 @@ def build_libraries():
+ 
+     has_msbuild = shutil.which('msbuild') is not None
+     conf = 'Debug' if int(os.getenv('DEBUG', 0)) else 'Release'
+-    cmake_args = ['cmake', '-B', BUILD_DIR, "-DCMAKE_BUILD_TYPE=" + conf]
++    cmake_args = ['cmake', '-B', BUILD_DIR, "-DCMAKE_BUILD_TYPE=" + conf, "-DUNICORN_BUILD_TESTS=off"]
+     if os.getenv("UNICORN_TRACER"):
+         cmake_args += ["-DUNICORN_TRACER=on"]
+     if conf == 'Debug':
