@@ -48,6 +48,7 @@ RDEPEND="
 	sci-libs/nlopt
 	sci-libs/opencascade:=
 	sci-mathematics/cgal:=
+	sci-mathematics/z3
 	sys-apps/dbus
 	sys-libs/zlib:=
 	virtual/opengl
@@ -62,13 +63,10 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
-	"${FILESDIR}/${PN}-2.8.0-wxwidgets-3.2.4.patch"
 	"${FILESDIR}/${PN}-2.8.1-cgal-6.0.patch"
 	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
 	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
 	"${FILESDIR}/${PN}-2.8.1-boost-1.87.patch"
-	"${FILESDIR}/${PN}-2.9.0-missing-includes.patch"
-	"${FILESDIR}/${PN}-2.9.0-arrange-static.patch"
 )
 
 src_prepare() {
