@@ -287,12 +287,6 @@ dev-java/saslprep
 # Removal on 2025-02-17. Bug #896044
 sys-cluster/k3s
 
-# Michał Górny <mgorny@gentoo.org> (2025-01-18)
-# Superseded by dev-python/terminaltables3, the only revdep switched
-# over.
-# Removal on 2025-02-17.  Bug #948333.
-dev-python/terminaltables
-
 # Conrad Kostecki <conikost@gentoo.org> (2025-01-09)
 # New version, which dropps support for legacy devices.
 # Will be unmasked, when split to legacy-branch is done.
