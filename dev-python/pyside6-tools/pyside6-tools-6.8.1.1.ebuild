@@ -6,8 +6,7 @@ EAPI=8
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..13} )
-
-LLVM_COMPAT=( {15..18} )
+LLVM_COMPAT=( {16..18} )
 
 inherit cmake llvm-r1 python-r1
 
