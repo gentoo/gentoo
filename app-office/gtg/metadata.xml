@@ -4,7 +4,7 @@
 	<maintainer type="person">
 		<email>leio@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
+	<longdescription>
 		Getting Things Gnome! (gtg) is a personal organizer for the GNOME desktop that
 		was inspired by the Getting Things Done methodology (GTD). It is not a GTD only
 		software as it aims for flexibility, adaptability and ease of use.
@@ -17,6 +17,9 @@
 		only by the use of a very simple syntax.
 	</longdescription>
 	<upstream>
-		<remote-id type="launchpad">gtg</remote-id>
+		<bugs-to>https://github.com/getting-things-gnome/gtg/issues</bugs-to>
+		<changelog>https://github.com/getting-things-gnome/gtg/blob/master/NEWS</changelog>
+		<remote-id type="github">getting-things-gnome/gtg</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
