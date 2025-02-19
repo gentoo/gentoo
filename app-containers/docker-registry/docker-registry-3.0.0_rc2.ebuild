@@ -27,6 +27,9 @@ src_prepare() {
 	default
 
 	sed -e "s/-s -w/-w/" -i Makefile || die
+
+	# bug 949973
+	sed -e "s/TestHTTPChecker/_&/" -i health/checks/checks_test.go || die
 }
 
 src_compile() {
