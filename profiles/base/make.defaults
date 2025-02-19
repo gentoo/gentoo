@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -166,10 +166,10 @@ POSTGRES_TARGETS="postgres16"
 #
 PHP_TARGETS="php8-2"
 
-# Sam James <sam@gentoo.org> (2024-12-29)
+# Sam James <sam@gentoo.org> (2025-02-19)
 #
 # Default ADA target
-ADA_TARGET="gcc_13"
+ADA_TARGET="gcc_14"
 
 # Marek Szuba <marecki@gentoo.org> (2020-10-15)
 # Default targets for lua{,-single}.eclass
