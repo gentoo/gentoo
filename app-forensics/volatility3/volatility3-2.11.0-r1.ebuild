@@ -21,7 +21,7 @@ SRC_URI="
 "
 S="${WORKDIR}"/${PN}-${MY_PV}
 
-LICENSE="GPL-2+"
+LICENSE="Volatility-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="crypt disasm jsonschema leechcore snappy test yara"
