@@ -1,3 +1,5 @@
+https://bugs.gentoo.org/949813
+https://sourceforge.net/p/gpsim/bugs/296/
 --- ./configure.ac.orig	2025-02-17 13:47:15.764170851 +0100
 +++ ./configure.ac	2025-02-17 13:47:52.610171559 +0100
 @@ -167,6 +167,7 @@
