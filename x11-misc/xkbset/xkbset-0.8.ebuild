@@ -20,6 +20,7 @@ RDEPEND="
 	${DEPEND}
 	tk? ( dev-perl/Tk )
 "
+BDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clarify-errors.patch
