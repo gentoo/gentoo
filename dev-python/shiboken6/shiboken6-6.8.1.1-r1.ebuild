@@ -98,7 +98,7 @@ src_prepare() {
 	#     https://bugs.gentoo.org/619490
 	sed -e \
 		's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${LLVM_SLOT}"'/include"))~' \
-		-i sources/shiboken6/ApiExtractor/clangparser/compilersupport.cpp || die
+		-i ApiExtractor/clangparser/compilersupport.cpp || die
 
 	cmake_src_prepare
 }
