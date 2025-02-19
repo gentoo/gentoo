@@ -1,0 +1,34 @@
+Removes stripping, prevents installation of compressed info files
+https://bugs.gentoo.org/557322
+--- a/Makefile
++++ b/Makefile
+@@ -376,7 +376,6 @@
+ udscm4:	$(cfiles) $(hfiles) build.scm build udscm4.opt
+ 	$(BUILD) -f udscm4.opt -o udscm4 -s $(IMPLPATH)
+ 	-rm $(ofiles) scmmain.o
+-	strip udscm4
+ dscm4:	udscm4 $(ifiles) require.scm
+ 	if [ -f /proc/sys/kernel/randomize_va_space -a\
+ 	     "`cat /proc/sys/kernel/randomize_va_space`" != "0" ]; then {\
+@@ -399,7 +398,6 @@
+ udscm5:	$(cfiles) $(ufiles) $(hfiles) build.scm build udscm5.opt
+ 	$(BUILD) -f udscm5.opt -o udscm5 -s $(IMPLPATH)
+ 	-rm $(ofiles) scmmain.o
+-	strip udscm5
+ dscm5:	udscm5 $(ifiles) require.scm
+ 	if [ -f /proc/sys/kernel/randomize_va_space -a\
+ 	     "`cat /proc/sys/kernel/randomize_va_space`" != "0" ]; then {\
+@@ -576,12 +574,10 @@
+ 
+ install-for-rpm: install-man install-lib install-infoz installdirs
+ 	$(INSTALL_PROGRAM) scm scmlit $(DESTDIR)$(bindir)
+-	-strip $(DESTDIR)$(bindir)scmlit
+ 	$(INSTALL_DATA) scm.h scmfig.h scmflags.h $(DESTDIR)$(includedir)
+ 
+-install: install-man install-lib install-infoz installdirs
++install: install-man install-lib install-info installdirs
+ 	$(INSTALL_PROGRAM) scm scmlit $(DESTDIR)$(bindir)
+-	-strip $(DESTDIR)$(bindir)scmlit
+ 	$(INSTALL_DATA) scm.h scmfig.h scmflags.h $(DESTDIR)$(includedir)
+ 	$(DESTDIR)$(bindir)scm -br new-catalog
+ 
