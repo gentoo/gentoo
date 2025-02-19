@@ -39,6 +39,10 @@ RESTRICT="!test? ( test )"
 
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.1.2-return.patch"
+)
+
 wrap_python() {
 	if use python; then
 		# src_prepare
