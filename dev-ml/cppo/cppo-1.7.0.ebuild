@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml-community/cppo/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/ocamlbuild:=
