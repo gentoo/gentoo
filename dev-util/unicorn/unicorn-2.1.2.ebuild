@@ -33,7 +33,10 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 BDEPEND="virtual/pkgconfig
-	python? ( ${DISTUTILS_DEPS} )"
+	python? (
+		${DISTUTILS_DEPS}
+		>=dev-python/setuptools-scm-8[${PYTHON_USEDEP}]
+	)"
 
 RESTRICT="!test? ( test )"
 
@@ -41,7 +44,10 @@ UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1.2-return.patch"
+	"${FILESDIR}/${PN}-2.1.2-versioningit.patch"
 )
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 wrap_python() {
 	if use python; then
