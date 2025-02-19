@@ -12,7 +12,7 @@ S=${WORKDIR}/${P/_p*/}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="tk"
 
 DEPEND="x11-libs/libX11"
