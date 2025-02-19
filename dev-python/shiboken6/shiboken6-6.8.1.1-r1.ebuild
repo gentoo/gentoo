@@ -32,7 +32,7 @@ S="${WORKDIR}/${MY_P}/sources/shiboken6"
 # arbitrarily relicensed. (TODO)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 ) GPL-3"
 SLOT="6/${PV}"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+docstrings numpy test vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -82,11 +82,11 @@ src_prepare() {
 			ApiExtractor/clangparser/compilersupport.cpp || die
 	fi
 
-	local clangver="$(CPP=clang clang-major-version)"
+	local clangver="$(CC=clang clang-major-version)"
 
 	# Clang 15 and older used the full version as a directory name.
 	if [[ ${clangver} -lt 16 ]]; then
-		clangver="$(CPP=clang clang-fullversion)"
+		clangver="$(CC=clang clang-fullversion)"
 	fi
 
 	# Shiboken6 assumes the "/usr/lib/clang/${CLANG_NEWEST_VERSION}/include/"
