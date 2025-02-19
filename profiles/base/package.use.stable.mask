@@ -14,7 +14,6 @@ app-arch/mt-st test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
 # Pin down kf6compat mask to currently stable versions.
-<kde-apps/kio-extras-24.02.2-r2 kf6compat
 <kde-frameworks/kglobalaccel-5.116.0-r1 kf6compat
 <kde-frameworks/kguiaddons-5.116.0-r1 kf6compat
 <kde-frameworks/kwallet-5.116.0-r1 kf6compat
