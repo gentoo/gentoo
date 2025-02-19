@@ -71,6 +71,10 @@ PKGDB=(
 	/usr/share/racket/pkgs/pkgs.rktd
 )
 
+PATCHES=(
+	"${FILESDIR}"/racket-8.15-gcc15.patch
+)
+
 src_prepare() {
 	# Prepare the environment.
 	unset PLTADDONDIR PLTCOLLECTS PLTCONFIGDIR PLTUSERHOME
