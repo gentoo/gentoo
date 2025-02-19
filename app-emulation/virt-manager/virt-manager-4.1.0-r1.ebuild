@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,6 @@ HOMEPAGE="https://virt-manager.org https://github.com/virt-manager/virt-manager"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 	EGIT_BRANCH="main"
-	SRC_URI=""
 	inherit git-r3
 else
 	SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
@@ -80,6 +79,8 @@ python_test() {
 
 python_install() {
 	esetup.py install
+
+	python_optimize "${ED}/usr/share/virt-manager/"{virtinst,virtManager}
 }
 
 pkg_preinst() {
