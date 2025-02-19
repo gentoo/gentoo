@@ -20,7 +20,7 @@ S="${WORKDIR}"/spark2014-${commitId}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 IUSE="doc"
 
@@ -58,7 +58,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -j1 -C gnat2why GPRARGS="-XLIBRARY_TYPE=relocatable -v" \
+	emake -j1 -C gnat2why \
+		GPRARGS="-XLIBRARY_TYPE=relocatable -XBuild=Production -v" \
 		PROCS=$(makeopts_jobs)
 	gprbuild -j$(makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
 		-P gnatprove.gpr \
