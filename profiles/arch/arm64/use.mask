@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Sam James <sam@gentoo.org> (2025-02-19)
+# x11-drivers/xf86-input-wacom is available here
+-input_devices_wacom
+
 # Sam James <sam@gentoo.org> (2025-01-05)
 # Older targets don't have an old enough dev-lang/ada-bootstrap available
 ada_target_gnat_2021
