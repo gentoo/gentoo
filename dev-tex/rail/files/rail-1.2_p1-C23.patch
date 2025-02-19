@@ -1,0 +1,359 @@
+Fix includes and function definitions and signatures
+until whole thing compiles with C23.
+https://bugs.gentoo.org/738854
+https://bugs.gentoo.org/883267
+https://bugs.gentoo.org/947155
+--- a/gram.y
++++ b/gram.y
+@@ -5,6 +5,7 @@
+ #include <stdio.h>
+ 
+ #include "rail.h"
++extern int yylex (void);
+ 
+ char optchar;
+ 
+--- a/rail.c
++++ b/rail.c
+@@ -21,6 +21,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include "patchlevel.h"
+ #include "rail.h"
+@@ -54,9 +55,7 @@
+ 
+ int anonymous;		/* anonymous rules */
+ 
+-main(argc,argv)
+-unsigned argc;
+-char *argv[];
++int main(int argc, char *argv[])
+ {
+ 	char *arg, **argp;
+ 	unsigned len;
+@@ -122,8 +121,7 @@
+ 	/*NOTREACHED*/
+ }
+ 
+-int setopt(c,s)
+-char c, *s;
++int setopt(char c, char *s)
+ {
+ 	int set;
+ 
+@@ -167,7 +165,7 @@
+ 	return 1;
+ }
+ 
+-usage()
++void usage(void)
+ {
+ 	fprintf(stderr,USAGE,myname);
+ 	exit(1);
+@@ -175,23 +173,21 @@
+ 
+ /* error routine for yyparse() */
+ 
+-yyerror(s)
+-char *s;
++void yyerror(char *s)
+ {
+ 	fatal("%s",s);
+ }
+ 
+ /* wrap-up routine for yylex() */
+ 
+-yywrap()
++int yywrap(void)
+ {
+ 	return(1);
+ }
+ 
+ /* check for non-NULL pointer */
+ 
+-char *mcheck(s)
+-char *s;
++char *mcheck(char *s)
+ {
+ 	if(s==NULL)
+ 		fatal("out of memory",(char *)NULL);
+@@ -201,9 +197,7 @@
+ 
+ /* make a new body */
+ 
+-BODYTYPE *newbody(kind,body1,body2)
+-int kind;
+-BODYTYPE *body1, *body2;
++BODYTYPE *newbody(int kind, BODYTYPE *body1, BODYTYPE *body2)
+ {
+ 	BODYTYPE *body;
+ 
+@@ -226,8 +220,7 @@
+ 
+ /* free a body recursively */
+ 
+-freebody(body)
+-BODYTYPE *body;
++void freebody(BODYTYPE *body)
+ {
+ 	int i;
+ 
+@@ -246,16 +239,14 @@
+ 
+ /* test if a body is empty */
+ 
+-int isemptybody(body)
+-BODYTYPE *body;
++int isemptybody(BODYTYPE *body)
+ {
+ 	return(body==NULL || body->kind==EMPTY);
+ }
+ 
+ /* add to a body list */
+ 
+-static addlist(body1,body2)
+-BODYTYPE *body1, *body2;
++void static addlist(BODYTYPE *body1, BODYTYPE *body2)
+ {
+ 	if(body1->nlist>=MAXLIST) {
+ 		yyerror("list too long");
+@@ -265,9 +256,7 @@
+ 
+ /* add two body lists (for CAT, BAR, PLUS) */
+ 
+-BODYTYPE *addbody(kind,body1,body2)
+-int kind;
+-BODYTYPE *body1, *body2;
++BODYTYPE *addbody(int kind, BODYTYPE *body1, BODYTYPE *body2)
+ {
+ 	BODYTYPE *body;
+ 	int i;
+@@ -292,8 +281,7 @@
+ 
+ /* reverse all concatenations (for PLUS) */
+ 
+-BODYTYPE *revbody(body)
+-BODYTYPE *body;
++BODYTYPE *revbody(BODYTYPE *body)
+ {
+ 	int i,j;
+ 	BODYTYPE *tmp;
+@@ -314,9 +302,7 @@
+ 
+ /* print a body for debugging */
+ 
+-prtbody(indent,body)
+-int indent;
+-BODYTYPE *body;
++void prtbody(int indent, BODYTYPE *body)
+ {
+ 	int i;
+ 
+@@ -376,9 +362,7 @@
+ 
+ /* output a body */
+ 
+-outbody(id,body)
+-IDTYPE *id;
+-BODYTYPE *body;
++void outbody(IDTYPE *id, BODYTYPE *body)
+ {
+ 	posbody(body,0);
+ 
+@@ -403,10 +387,7 @@
+ 
+ /* format a body */
+ 
+-fmtbody(body,cent,arrow)
+-BODYTYPE *body;
+-char *cent;
+-char arrow;
++void fmtbody(BODYTYPE *body, char *cent, char arrow)
+ {
+ 	BODYTYPE *body1;
+ 	int i;
+@@ -494,8 +475,7 @@
+ 
+ /* position body (fill in height and ystart) */
+ 
+-posbody(body,ystart)
+-BODYTYPE *body;
++void posbody(BODYTYPE *body, int ystart)
+ {
+ 	BODYTYPE *body1;
+ 	int i;
+@@ -551,8 +531,7 @@
+ 
+ /* output an index entry */
+ 
+-outindex(id)
+-IDTYPE *id;
++int outindex(IDTYPE *id)
+ {
+ 	if(id!=NULL)
+ 		fprintf(outf,"\\rail@index{%s}\n",id->name);
+@@ -560,9 +539,7 @@
+ 
+ /* make a new rule list */
+ 
+-RULETYPE *newrule(id,body)
+-IDTYPE *id;
+-BODYTYPE *body;
++RULETYPE *newrule(IDTYPE *id, BODYTYPE *body)
+ {
+ 	RULETYPE *rule;
+ 
+@@ -576,8 +553,7 @@
+ 
+ /* free a rule list */
+ 
+-freerule(rule)
+-RULETYPE *rule;
++void freerule(RULETYPE *rule)
+ {
+ 	RULETYPE *rulep;
+ 
+@@ -591,8 +567,7 @@
+ 
+ /* add two rule lists */
+ 
+-RULETYPE *addrule(rule1,rule2)
+-RULETYPE *rule1, *rule2;
++RULETYPE *addrule(RULETYPE *rule1, RULETYPE *rule2)
+ {
+ 	RULETYPE *rulep;
+ 
+@@ -609,8 +584,7 @@
+ 
+ /* output a rule list */
+ 
+-outrule(rule)
+-RULETYPE *rule;
++void outrule(RULETYPE *rule)
+ {
+ 	while(rule!=NULL) {
+ 
+@@ -625,8 +599,7 @@
+ 
+ /* look up an identifier */
+ 
+-IDTYPE *lookup(name)
+-char *name;
++IDTYPE *lookup(char *name)
+ {
+ 	IDTYPE *idp, **idq;
+ 
+@@ -648,8 +621,7 @@
+ 
+ /* delete an identifier */
+ 
+-delete(id)
+-IDTYPE *id;
++void delete(IDTYPE *id)
+ {
+ 	IDTYPE *idp, **idq;
+ 
+@@ -665,7 +637,7 @@
+ 
+ /* check that there are no undefined identifiers */
+ 
+-checkdefs()
++void checkdefs(void)
+ {
+ 	IDTYPE *id;
+ 
+@@ -676,8 +648,7 @@
+ 
+ /* complain about an undefined identifier */
+ 
+-undef(id)
+-IDTYPE *id;
++void undef(IDTYPE *id)
+ {
+ 	if(chkgram)
+ 		error("undefined identifier '%s'",id->name);
+@@ -685,8 +656,7 @@
+ 
+ /* complain about a redefined identifier */
+ 
+-redef(id)
+-IDTYPE *id;
++void redef(IDTYPE *id)
+ {
+ 	if(chkgram)
+ 		error("redefined identifier '%s'",id->name);
+@@ -694,8 +664,7 @@
+ 
+ /* display an error */
+ 
+-error(f,s)
+-char *f, *s;
++void error(char *f, char *s)
+ {
+ 	if(newline) {
+ 		printf("\n");
+@@ -713,8 +682,7 @@
+ 	fprintf(stderr,"\n");
+ }
+ 
+-fatal(f,s)
+-char *f,*s;
++void fatal(char *f, char *s)
+ {
+ 	error(f,s);
+ 
+--- a/rail.h
++++ b/rail.h
+@@ -68,22 +68,31 @@
+ 
+ extern IDTYPE *errorid;
+ 
+-extern char *mcheck();
++extern char *mcheck(char *s);
+ 
+-extern BODYTYPE *newbody();
+-extern freebody();
+-extern int isemptybody();
+-extern BODYTYPE *addbody();
+-extern BODYTYPE *revbody();
+-
+-extern RULETYPE *newrule();
+-extern freerule();
+-extern RULETYPE *addrule();
+-extern outrule();
+-
+-extern IDTYPE *lookup();
+-extern delete();
+-
+-extern undef();
+-extern redef();
+-extern error();
++extern BODYTYPE *newbody(int kind, BODYTYPE *body1, BODYTYPE *body2);
++extern void freebody(BODYTYPE *body);
++extern int isemptybody(BODYTYPE *body);
++extern BODYTYPE *addbody(int kind, BODYTYPE *body1, BODYTYPE *body2);
++extern BODYTYPE *revbody(BODYTYPE *body);
++extern void posbody(BODYTYPE *body, int ystart);
++extern void fmtbody(BODYTYPE *body, char *cent, char arrow);
++
++extern RULETYPE *newrule(IDTYPE *id, BODYTYPE *body);
++extern void freerule(RULETYPE *rule);
++extern RULETYPE *addrule(RULETYPE *rule1, RULETYPE *rule2);
++extern void outrule(RULETYPE *rule);
++
++extern IDTYPE *lookup(char *name);
++extern void delete(IDTYPE *id);
++
++extern void undef(IDTYPE *id);
++extern void redef(IDTYPE *id);
++extern void error(char *f, char *s);
++extern void yyerror(char *s);
++extern int yywrap(void);
++
++int setopt(char c, char *s);
++void usage(void);
++void checkdefs(void);
++void fatal(char *f, char *s);
