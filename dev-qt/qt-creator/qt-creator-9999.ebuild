@@ -71,6 +71,8 @@ COMMON_DEPEND="
 	qmldesigner? (
 		>=dev-qt/qtquick3d-${QT_PV}=
 		>=dev-qt/qtsvg-${QT_PV}
+		>=dev-qt/qtwebsockets-${QT_PV}
+		webengine? ( >=dev-qt/qtwebengine-${QT_PV} )
 	)
 	serialterminal? ( >=dev-qt/qtserialport-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
@@ -183,6 +185,10 @@ src_configure() {
 		# to lag behind and bundled may work out better for now
 		# https://bugreports.qt.io/browse/QTCREATORBUG-29169
 		$(use help && usev !webengine -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=yes)
+
+		# help shouldn't use with the above, but qmldesigner is automagic
+		$(use help || use qmldesigner &&
+			cmake_use_find_package webengine Qt6WebEngineWidgets)
 
 		-DBUILD_PLUGIN_SERIALTERMINAL=$(usex serialterminal)
 		-DENABLE_SVG_SUPPORT=$(usex svg)
