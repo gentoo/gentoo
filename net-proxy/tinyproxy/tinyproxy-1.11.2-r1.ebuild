@@ -1,26 +1,21 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools systemd tmpfiles
 
-COMMIT=31339cb1615765f2fbb4ec7779400535bad6da46
-
 DESCRIPTION="A lightweight HTTP/SSL proxy"
 HOMEPAGE="https://github.com/tinyproxy/tinyproxy/"
-SRC_URI="https://github.com/tinyproxy/tinyproxy/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
+SRC_URI="https://github.com/tinyproxy/tinyproxy/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~sparc ~x86"
 
-IUSE="test debug +filter-proxy reverse-proxy transparent-proxy
-+upstream-proxy +xtinyproxy-header"
+IUSE="test debug +filter-proxy reverse-proxy transparent-proxy +upstream-proxy +xtinyproxy-header"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( xtinyproxy-header )"
-
-S="${WORKDIR}"/${PN}-${COMMIT}
 
 DEPEND="
 	acct-group/tinyproxy
@@ -29,11 +24,17 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/tinyproxy-1.11.2_use-runstatedir.patch"
+)
+
 src_prepare() {
 	default
 
+	# Enable and change PidFile location, OpenRC relies on it
 	sed -i \
 		-e "s|nobody|${PN}|g" \
+		-e "s|^#PidFile |PidFile |g" \
 		etc/${PN}.conf.in || die "sed failed"
 
 	sed -i -e "s# -Wp,-D_FORTIFY_SOURCE=2##" configure.ac || die "sed failed"
@@ -42,14 +43,18 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
+	local myeconfargs=(
 		$(use_enable debug) \
-		$(use_enable filter-proxy filter) \
-		$(use_enable reverse-proxy reverse) \
-		$(use_enable transparent-proxy transparent) \
-		$(use_enable upstream-proxy upstream) \
-		$(use_enable xtinyproxy-header xtinyproxy) \
+		$(use_enable filter-proxy filter)
+		$(use_enable reverse-proxy reverse)
+		$(use_enable transparent-proxy transparent)
+		$(use_enable upstream-proxy upstream)
+		$(use_enable xtinyproxy-header xtinyproxy)
 		--localstatedir=/var
+		--runstatedir=/run
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
@@ -60,7 +65,7 @@ src_test() {
 src_install() {
 	default
 
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	dodoc AUTHORS README.md
 
 	diropts -m0775 -o ${PN} -g ${PN}
 	keepdir /var/log/${PN}
