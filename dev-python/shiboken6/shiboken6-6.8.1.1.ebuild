@@ -16,7 +16,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 LLVM_COMPAT=( {15..18} )
 
-inherit cmake llvm-r1 python-r1 toolchain-funcs
+inherit cmake llvm-r1 python-r1
 
 MY_PN=pyside-pyside-setup
 MY_P=${MY_PN}-${PV}
@@ -82,13 +82,6 @@ src_prepare() {
 			ApiExtractor/clangparser/compilersupport.cpp || die
 	fi
 
-	local clangver="$(CPP=clang clang-major-version)"
-
-	# Clang 15 and older used the full version as a directory name.
-	if [[ ${clangver} -lt 16 ]]; then
-		clangver="$(CPP=clang clang-fullversion)"
-	fi
-
 	# Shiboken6 assumes the "/usr/lib/clang/${CLANG_NEWEST_VERSION}/include/"
 	# subdirectory provides Clang builtin includes (e.g., "stddef.h") for the
 	# currently installed version of Clang, where ${CLANG_NEWEST_VERSION} is
@@ -104,8 +97,9 @@ src_prepare() {
 	# PySide6 does *NOT* care whether the end user has done so or not, as
 	# PySide6 unconditionally requires Clang in either case. See also:
 	#     https://bugs.gentoo.org/619490
-	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${clangver}"'/include"))~' \
-		ApiExtractor/clangparser/compilersupport.cpp || die
+	sed -e \
+		's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${LLVM_SLOT}"'/include"))~' \
+		-i sources/shiboken6/ApiExtractor/clangparser/compilersupport.cpp || die
 
 	cmake_src_prepare
 }
