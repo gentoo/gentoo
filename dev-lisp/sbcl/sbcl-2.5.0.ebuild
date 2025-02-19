@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ SRC_URI="https://downloads.sourceforge.net/sbcl/${P}-source.tar.bz2
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="-* ~amd64 ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="system-bootstrap debug doc source +threads +unicode +zstd"
 
 CDEPEND=">=dev-lisp/asdf-3.3:= \
