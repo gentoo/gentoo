@@ -1,0 +1,28 @@
+diff --git a/src/build/env.py b/src/build/env.py
+index b8c7b5f6..f10cf4bf 100644
+--- a/src/build/env.py
++++ b/src/build/env.py
+@@ -11,6 +11,7 @@
+ import sysconfig
+ import tempfile
+ import typing
++import warnings
+ 
+ from collections.abc import Collection, Mapping
+ 
+@@ -158,6 +159,15 @@ def _has_valid_outer_pip(self) -> bool | None:
+         This checks for a valid global pip. Returns None if pip is missing, False
+         if pip is too old, and True if it can be used.
+         """
++        # `pip install --python` is nonfunctional on Gentoo debundled pip.
++        # Detect that by checking if pip._vendor` module exists.  However,
++        # searching for pip could yield warnings from _distutils_hack,
++        # so silence them.
++        with warnings.catch_warnings():
++            warnings.simplefilter('ignore')
++            if importlib.util.find_spec('pip._vendor') is None:
++                return False  # pragma: no cover
++
+         # Version to have added the `--python` option.
+         return _has_dependency('pip', '22.3')
+ 

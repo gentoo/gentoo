@@ -52,6 +52,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/pypa/build/pull/861
+	"${FILESDIR}/${P}-gentoo-pip.patch"
+)
+
 python_test() {
 	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
 		einfo "Skipping tests on ${EPYTHON}"
