@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,13 +36,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	app-crypt/qca:2[qt6,ssl]
+	>=app-crypt/qca-2.3.7:2[qt6(+),ssl]
 	>=dev-db/spatialite-4.2.0
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
 	dev-libs/protobuf:=
-	dev-libs/qtkeychain[qt6]
+	>=dev-libs/qtkeychain-0.14.1-r1:=[qt6(+)]
 	dev-qt/qttools:6[designer]
 	dev-qt/qtbase:6[concurrent,gui,network,sql,ssl,widgets,xml]
 	dev-qt/qtmultimedia:6
@@ -56,8 +56,8 @@ COMMON_DEPEND="
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-4.9.3:=
 	sys-libs/zlib
-	>=x11-libs/qscintilla-2.10.1:=[qt6]
-	>=x11-libs/qwt-6.2.0-r3:=[polar(+),qt6,svg(+)]
+	>=dev-python/qscintilla-2.14.1-r1[qt6(+)]
+	>=x11-libs/qwt-6.2.0-r3:=[polar(+),qt6(+),svg(+)]
 	3d? ( dev-qt/qt3d:6 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( sci-geosciences/grass:= )
@@ -89,7 +89,7 @@ COMMON_DEPEND="
 			dev-python/sip:=[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 			dev-python/pyqt6[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
-			>=dev-python/qscintilla-2.10.1[qt6]
+			>=dev-python/qscintilla-2.14.1-r1[qt6(+)]
 		')
 	)
 	qml? ( dev-qt/qtdeclarative:6 )
