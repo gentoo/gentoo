@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -863,9 +863,8 @@ path/mktemp.lo path/mktemp.o: ltcompile path/mktemp.c systime.h include/bglibs/p
+ 	./ltcompile path/mktemp.c
+ 
+ perl-head.pl: 
+-	( set -e; PATH="/bin:/usr/bin:/usr/local/bin:$$PATH"; export PATH; \
+-	  perl=`which perl`; \
+-	  echo "#! $$perl"; \
++	( set -e; \
++	  echo "#!/usr/bin/env perl"; \
+ 	  echo "# WARNING: This file was auto-generated. Do not edit!"; \
+ 	  echo ) >perl-head.pl
+ 

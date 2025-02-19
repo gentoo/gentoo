@@ -1,0 +1,81 @@
+https://github.com/bruceg/bglibs/pull/10
+
+--- a/include/resolve.h
++++ b/include/resolve.h
+@@ -26,7 +26,7 @@ extern int __resolve_error;
+ #define resolve_error() (__resolve_error)
+ 
+ struct dns_result;
+-extern int resolve_calldns(int (*dnsfn)(), struct dns_result* out, const void* param);
++extern int resolve_calldns(int (*dnsfn)(struct dns_result*, const void*), struct dns_result* out, const void* param);
+ extern int resolve_qualdns(int (*dnsfn)(struct dns_transmit*, struct dns_result* out, const char*),
+                            struct dns_result* out, const char* name);
+ 
+--- a/net/resolve_calldns.c
++++ b/net/resolve_calldns.c
+@@ -5,7 +5,7 @@
+ int __resolve_error = 0;
+ 
+ /** Call a dns_* function and save an error code if necessary. */
+-int resolve_calldns(int (*dnsfn)(), struct dns_result* out, const void* param)
++int resolve_calldns(int (*dnsfn)(struct dns_result*, const void*), struct dns_result* out, const void* param)
+ {
+   if (dnsfn(out, param) < 0) {
+     __resolve_error = RESOLVE_TEMPFAIL;
+--- a/net/resolve_ipv4addr.c
++++ b/net/resolve_ipv4addr.c
+@@ -1,11 +1,15 @@
+ #include "dns.h"
+ #include "resolve.h"
+ 
++static int dns_name4_wrapper(struct dns_result *res, const void *ptr) {
++  return dns_name4(res, (const ipv4addr*)ptr);
++}
++
+ /** Look up the domain name corresponding to an IPv4 address. */
+ const char* resolve_ipv4addr(const ipv4addr* addr)
+ {
+   static struct dns_result out = {0};
+-  if (!resolve_calldns(dns_name4, &out, addr))
++  if (!resolve_calldns(dns_name4_wrapper, &out, addr))
+     return 0;
+   return out.rr.name[0];
+ }
+--- a/sys/hassysselect.h0
++++ b/sys/hassysselect.h0
+@@ -4,6 +4,5 @@
+ /* sysdep: -sysselect */
+ 
+ #include <sys/time.h>
+-extern int select();
+ 
+ #endif
+--- a/sys/hassysselect.h1
++++ b/sys/hassysselect.h1
+@@ -5,6 +5,5 @@
+ 
+ #include <sys/time.h>
+ #include <sys/select.h>
+-extern int select();
+ 
+ #endif
+--- a/sys/hasvfork.h0
++++ b/sys/hasvfork.h0
+@@ -2,7 +2,6 @@
+ #define FORK_H
+ 
+ /* sysdep: -vfork */
+-extern pid_t fork();
+ #define vfork fork
+ 
+ #endif
+--- a/sys/hasvfork.h1
++++ b/sys/hasvfork.h1
+@@ -2,7 +2,5 @@
+ #define FORK_H
+ 
+ /* sysdep: +vfork */
+-extern pid_t fork();
+-extern pid_t vfork();
+ 
+ #endif
