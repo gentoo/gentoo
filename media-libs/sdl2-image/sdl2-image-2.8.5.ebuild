@@ -103,6 +103,27 @@ src_compile() {
 }
 
 src_test() {
+	# https://github.com/libsdl-org/SDL_image/tree/main/test#asserting-format-support
+	# Match same order as src_configure. The intent is to catch build system
+	# bugs, so it may need updating sometimes for legitimate changes in
+	# sdl2-image support.
+	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_AVIF=$(usex avif 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_BMP=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_GIF=$(usex gif 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_JPG=$(usex jpeg 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_JXL=$(usex jpegxl 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_LBM=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_PCX=1
+	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_PNG=$(usex png 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_QOI=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_SVG=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_TGA=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_TIF=$(usex tiff 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_WEBP=$(usex webp 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_XCF=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_XPM=1
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_XV=1
+
 	multibuild_foreach_variant cmake-multilib_src_test
 }
 
