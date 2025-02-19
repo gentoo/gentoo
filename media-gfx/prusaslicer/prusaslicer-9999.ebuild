@@ -48,7 +48,7 @@ RDEPEND="
 	sci-libs/nlopt
 	sci-libs/opencascade:=
 	sci-mathematics/cgal:=
-	sci-mathematics/z3
+	sci-mathematics/z3:=
 	sys-apps/dbus
 	sys-libs/zlib:=
 	virtual/opengl
