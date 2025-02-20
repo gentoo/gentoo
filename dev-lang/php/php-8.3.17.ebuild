@@ -230,12 +230,11 @@ src_prepare() {
 	#
 	rm ext/sockets/tests/bug63000.phpt || die
 
-	# fails in a network sandbox,
-	# fixed upstream but not yet included in the stable releases.
-	#
-	# 	https://github.com/php/php-src/pull/17314
-	#
-	rm ext/standard/tests/http/gh16810.phpt || die
+	# depends on truetype support, thus we skip it
+	# if the "truetype" USE flag is missing
+	if ! use truetype ; then
+		rm ext/gd/tests/gh17373.phpt || die
+	fi
 
 	# Tests ignoring the "-n" flag we pass to run-tests.php,
 	#
