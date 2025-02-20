@@ -154,19 +154,6 @@ src_configure() {
 
 	python_setup
 
-	# Workaround bug #213705. If krb5-config --libs has -lcrypto then pass
-	# --with-ssl to ./configure. (Mimics code from acinclude.m4).
-	if use kerberos ; then
-		case $(krb5-config --libs) in
-			*-lcrypto*)
-				ewarn "Kerberos was built with ssl support: linkage with openssl is enabled."
-				ewarn "Note there are annoying license incompatibilities between the OpenSSL"
-				ewarn "license and the GPL, so do your check before distributing such package."
-				mycmakeargs+=( -DENABLE_GNUTLS=$(usex ssl) )
-				;;
-		esac
-	fi
-
 	if use gui ; then
 		append-cxxflags -fPIC -DPIC
 	fi
