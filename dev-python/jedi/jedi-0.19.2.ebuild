@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -74,6 +74,14 @@ python_test() {
 				test/test_api/test_interpreter.py::test_param_infer_default
 				test/test_inference/test_compiled.py::test_next_docstr
 				test/test_inference/test_compiled.py::test_time_docstring
+			)
+			;;
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				test/test_api/test_interpreter.py::test_param_infer_default
+				test/test_inference/test_compiled.py::test_next_docstr
+				test/test_inference/test_compiled.py::test_time_docstring
+				test/test_inference/test_gradual/test_typeshed.py::test_module_exists_only_as_stub
 			)
 			;;
 	esac
