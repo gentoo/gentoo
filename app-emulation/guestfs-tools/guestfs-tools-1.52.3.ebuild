@@ -25,14 +25,14 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND_DEFAULT="
 	app-arch/xz-utils
-	dev-libs/libpcre2
+	dev-libs/libpcre2:=
 	dev-libs/libxml2
-	sys-libs/libxcrypt
-	sys-libs/ncurses
+	sys-libs/libxcrypt:=
+	sys-libs/ncurses:=
 "
 COMMON_DEPEND_EXPLICIT="
 	>=app-emulation/libguestfs-1.49.8:=[ocaml,perl?,libvirt=]
-	dev-libs/jansson
+	dev-libs/jansson:=
 	sys-libs/libosinfo
 	|| (
 		dev-libs/libisoburn
@@ -76,9 +76,9 @@ BDEPEND="
 		dev-ml/ocaml-gettext-stub
 	)
 	perl? (
-		virtual/perl-Pod-Simple
-		virtual/perl-ExtUtils-CBuilder
 		dev-perl/Module-Build
+		virtual/perl-ExtUtils-CBuilder
+		virtual/perl-Pod-Simple
 	)
 	test? ( ocaml? ( dev-ml/ounit2[ocamlopt] ) )
 "
