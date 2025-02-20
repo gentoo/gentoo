@@ -25,6 +25,7 @@ REQUIRED_USE="
 	haptic? ( joystick )
 	ibus? ( dbus )
 	jack? ( sound )
+	kms? ( || ( gles1 gles2 opengl ) )
 	nas? ( sound )
 	opengl? ( video )
 	pulseaudio? ( sound )
