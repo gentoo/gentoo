@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
-inherit bash-completion-r1 verify-sig
+inherit shell-completion verify-sig
 
 DESCRIPTION="Common files shared between multiple slots of Rust"
 HOMEPAGE="https://www.rust-lang.org/"
@@ -54,7 +54,7 @@ src_unpack() {
 		fi
 
 		# Avoid unpacking the whole tarball which would need check-reqs
-		tar -xf "${DISTDIR}"/rustc-${PV}-src.tar.xz "rustc-${MY_PV}-src/src/tools/cargo/src/etc/cargo.bashcomp.sh" || die
+		tar -xf "${DISTDIR}"/rustc-${PV}-src.tar.xz "rustc-${MY_PV}-src/src/tools/cargo/src/etc/"{_cargo,cargo.bashcomp.sh} || die
 	fi
 }
 
@@ -68,4 +68,5 @@ src_compile() {
 
 src_install() {
 	newbashcomp src/tools/cargo/src/etc/cargo.bashcomp.sh cargo
+	dozshcomp src/tools/cargo/src/etc/_cargo
 }
