@@ -477,6 +477,10 @@ src_test() {
 		"main.slow_log;0;Known failure - no upstream bug yet"
 
 		"sys_vars.build_id_basic;0;Requires -DWITH_BUILD_ID=ON"
+
+		# Fixed in 8.0.41
+		# https://github.com/mysql/mysql-server/commit/8872c9a4530d35ab4299517708208d60b1db04ee
+		"main.time_zone;0;Relies on deprecated timezone name MET"
 	)
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
