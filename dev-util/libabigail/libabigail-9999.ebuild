@@ -36,7 +36,7 @@ else
 fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
-SLOT="0/4"
+SLOT="0/5"
 IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} test"
 RESTRICT="!test? ( test )"
 
