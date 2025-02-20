@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="NativeTrait-like behavior for Moo"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
 	dev-perl/Class-Method-Modifiers
