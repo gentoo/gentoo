@@ -79,6 +79,12 @@ TEXMF="/usr/share/texmf-site"
 # DESCRIPTION above)
 SUPPLIER="misc"
 
+# @ECLASS_VARIABLE: LATEX_ENGINE
+# @DESCRIPTION:
+# When compiling documentation (.tex/.dtx), use the specified engine,
+# e.g., lualatex, to build the documention. Defaults to pdflatex.
+: "${LATEX_ENGINE:=pdflatex}"
+
 # @ECLASS_VARIABLE: LATEX_DOC_ARGUMENTS
 # @DESCRIPTION:
 # When compiling documentation (.tex/.dtx), this variable will be passed
@@ -140,12 +146,18 @@ latex-package_src_doinstall() {
 
 						einfo "Making documentation: ${i}"
 						local mypdflatex=(
-							pdflatex
+							${LATEX_ENGINE}
 							${LATEX_DOC_ARGUMENTS}
 							--halt-on-error
 							--interaction=nonstopmode
 							"${i}"
 						)
+
+						if [[ ${LATEX_ENGINE} == "lualatex" ]]; then
+							# bug #950021
+							local -x TEXMFCACHE="${T}" TEXMFVAR="${T}"
+						fi
+
 						# some macros need compiler called twice, do it here.
 						if nonfatal edo "${mypdflatex[@]}"; then
 							edo "${mypdflatex[@]}"
