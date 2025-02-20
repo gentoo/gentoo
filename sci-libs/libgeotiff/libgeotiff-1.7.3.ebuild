@@ -51,16 +51,18 @@ src_compile() {
 	fi
 }
 
-# check if needed: https://github.com/OSGeo/libgeotiff/issues/126
 src_test() {
-	# Source: https://github.com/OSGeo/libgeotiff?tab=readme-ov-file#testing
+	# https://github.com/OSGeo/libgeotiff?tab=readme-ov-file#testing
+	# Check if still needed: https://github.com/OSGeo/libgeotiff/issues/126
 	pushd "${BUILD_DIR}"/bin || die
+
 	# prepare file
 	./makegeo || die "makegeo failed"
 	[[ -f "newgeo.tif" ]] || die "makegeo did not produce a file"
+
 	# test
 	./listgeo newgeo.tif > metadata.txt || die "listgeo metadata extraction failed"
 	./geotifcp -g metadata.txt newgeo.tif newer.tif > /dev/null || die
 	cmp new{geo,er}.tif || die "geotifcp produces different files"
-	popd
+	popd || die
 }
