@@ -1,0 +1,42 @@
+Correct for building with C23, rename `bool` struct member
+https://bugs.gentoo.org/949721
+--- a/src/lane/load.c
++++ b/src/lane/load.c
+@@ -498,8 +498,8 @@
+ 	break;
+       case BOOLEAN:
+ 	Debug_unit(&load_unit, "Variable is boolean: %s", 
+-		   g_return.bool==BL_TRUE?"True":"False");
+-	set_var_bool(curr_unit, varname, g_return.bool);
++		   g_return.boolval==BL_TRUE?"True":"False");
++	set_var_bool(curr_unit, varname, g_return.boolval);
+ 	break;
+       case INTEGER:
+ 	Debug_unit(&load_unit, "Variable is integer: %d", g_return.intti);
+--- a/src/lane/load_lex.h
++++ b/src/lane/load_lex.h
+@@ -24,7 +24,7 @@
+ #define END 0
+ 
+ typedef struct {
+-  Bool_t bool;
++  Bool_t boolval;
+   int intti;
+   AtmAddr_t *atmaddress;
+   LaneDestination_t *destaddr;
+--- a/src/lane/load_lex.l
++++ b/src/lane/load_lex.l
+@@ -44,11 +44,11 @@
+ 		 return ATMADDRESS;
+ 	        }
+ True	|
+-true		{g_return.bool = BL_TRUE;
++true		{g_return.boolval = BL_TRUE;
+ 		 return BOOLEAN;
+ 		}	
+ False	|
+-false		{g_return.bool = BL_FALSE;
++false		{g_return.boolval = BL_FALSE;
+ 		 return BOOLEAN;
+ 		}
+ \#.*		{}
