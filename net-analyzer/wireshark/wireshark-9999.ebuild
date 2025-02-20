@@ -86,8 +86,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-# TODO: 4.0.0_rc1 release notes say:
-# "Perl is no longer required to build Wireshark, but may be required to build some source code files and run code analysis checks."
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
