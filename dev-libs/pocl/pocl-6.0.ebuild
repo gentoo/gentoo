@@ -92,6 +92,7 @@ src_configure() {
 		-DHARDENING_ENABLE=$(usex hardening)
 		-DPOCL_DEBUG_MESSAGES=$(usex debug)
 		-DUSE_POCL_MEMMANAGER=$(usex memmanager)
+		-DENABLE_EXAMPLES=$(usex examples)
 		-DENABLE_TESTS=$(usex test)
 	)
 
