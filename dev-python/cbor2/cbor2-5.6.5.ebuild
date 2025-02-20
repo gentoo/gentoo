@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -39,7 +39,7 @@ python_prepare_all() {
 python_compile() {
 	local -x CBOR2_BUILD_C_EXTENSION=1
 	# pypy3 not supported upstream
-	if [[ ${EPYTHON} == pypy3 ]] || ! use native-extensions; then
+	if [[ ${EPYTHON} == pypy3* ]] || ! use native-extensions; then
 		CBOR2_BUILD_C_EXTENSION=0
 	fi
 	distutils-r1_python_compile
