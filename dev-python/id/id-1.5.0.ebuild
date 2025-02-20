@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -38,7 +38,7 @@ python_test() {
 	local EPYTEST_DESELECT=()
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
 				# https://github.com/di/id/issues/287
 				test/unit/internal/oidc/test_ambient.py::test_gcp_bad_env
