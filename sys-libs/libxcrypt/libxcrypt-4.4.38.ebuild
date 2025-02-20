@@ -116,6 +116,14 @@ src_configure() {
 	MYSYSROOT=${ESYSROOT}
 
 	if target_is_not_host; then
+		# Hack to work around missing TARGET_CC support.
+		# See bug 949976.
+		if tc-is-clang; then
+			export CC="${CTARGET}-clang"
+		else
+			export CC="${CTARGET}-gcc"
+		fi
+
 		local CHOST=${CTARGET}
 
 		MYPREFIX=
@@ -125,12 +133,6 @@ src_configure() {
 		unset DEFAULT_ABI MULTILIB_ABIS
 		multilib_env
 		ABI=${DEFAULT_ABI}
-
-		tc-getCC >/dev/null
-		if [[ ${CC} != ${CHOST}-* ]]; then
-			unset CC
-			tc-getCC >/dev/null
-		fi
 
 		strip-unsupported-flags
 	fi
