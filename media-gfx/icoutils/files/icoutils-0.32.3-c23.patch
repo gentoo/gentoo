@@ -1,0 +1,121 @@
+https://sources.debian.org/patches/icoutils/0.32.3-6/c23-iterators.patch/
+
+From 697da54703b28eb6476f5a8ea922620c5d9968ee Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 18 Feb 2025 10:01:05 +0000
+Subject: Specify arguments in function declarations for iterators
+
+GCC 15 rejected the previous code, since it is no longer valid in C23.
+
+Forwarded: https://savannah.nongnu.org/bugs/index.php?66812
+Bug: https://savannah.nongnu.org/bugs/index.php?66812
+Bug-Debian: https://bugs.debian.org/1096829
+Last-Update: 2025-02-18
+
+Patch-Name: c23-iterators.patch
+--- a/common/hmap.c
++++ b/common/hmap.c
+@@ -363,7 +363,7 @@ hmap_iterator(HMap *map, HMapIterator *it)
+  * function. But no other entry.
+  */
+ void
+-hmap_foreach_value(HMap *map, void (*iterator)())
++hmap_foreach_value(HMap *map, void (*iterator)(void *))
+ {
+     uint32_t c;
+ 
+@@ -378,7 +378,7 @@ hmap_foreach_value(HMap *map, void (*iterator)())
+ }
+ 
+ void
+-hmap_foreach_key(HMap *map, void (*iterator)())
++hmap_foreach_key(HMap *map, void (*iterator)(void *))
+ {
+     uint32_t c;
+ 
+--- a/common/hmap.h
++++ b/common/hmap.h
+@@ -50,8 +50,8 @@ void *hmap_put(HMap *map, void *key, void *value);
+ bool hmap_contains_key(HMap *map, const void *key);
+ void *hmap_remove(HMap *map, const void *key);
+ void hmap_iterator(HMap *map, HMapIterator *it);
+-void hmap_foreach_key(HMap *map, void (*iterator)());
+-void hmap_foreach_value(HMap *map, void (*iterator)());
++void hmap_foreach_key(HMap *map, void (*iterator)(void *));
++void hmap_foreach_value(HMap *map, void (*iterator)(void *));
+ void hmap_clear(HMap *map);
+ size_t hmap_size(HMap *map);
+ void hmap_set_hash_fn(HMap *map, hash_fn_t hash);
+--- a/common/llist.c
++++ b/common/llist.c
+@@ -445,7 +445,7 @@ llist_is_empty(LList *list)
+ }
+ 
+ void
+-llist_iterate(LList *list, void (*iterator_func)())
++llist_iterate(LList *list, void (*iterator_func)(void *))
+ {
+ 	LNode *entry;
+ 	for (entry = list->first; entry != NULL; entry = entry->next)
+--- a/common/llist.h
++++ b/common/llist.h
+@@ -68,7 +68,7 @@ LList *llist_clone(LList *list);
+ void **llist_to_array(LList *list);
+ void **llist_to_null_terminated_array(LList *list);
+ 
+-void llist_iterate(LList *list, void (*iterator_func)());
++void llist_iterate(LList *list, void (*iterator_func)(void *));
+ void llist_iterator(LList *list, LListIterator *it);
+ 
+ void llist_reverse(LList *list);
+--- a/common/tmap.c
++++ b/common/tmap.c
+@@ -512,7 +512,7 @@ predecessor(TMapNode *node)
+ #endif
+ 
+ static void
+-tmap_foreach_nodes_key(TMapNode *node, void (*iterator)())
++tmap_foreach_nodes_key(TMapNode *node, void (*iterator)(void *))
+ {
+     if (node->left != &nil)
+     	tmap_foreach_nodes_key(node->left, iterator);
+@@ -522,7 +522,7 @@ tmap_foreach_nodes_key(TMapNode *node, void (*iterator)())
+ }
+ 
+ static void
+-tmap_foreach_nodes_value(TMapNode *node, void (*iterator)())
++tmap_foreach_nodes_value(TMapNode *node, void (*iterator)(void *))
+ {
+     if (node->left != &nil)
+     	tmap_foreach_nodes_value(node->left, iterator);
+@@ -532,14 +532,14 @@ tmap_foreach_nodes_value(TMapNode *node, void (*iterator)())
+ }
+ 
+ void
+-tmap_foreach_key(TMap *map, void (*iterator)())
++tmap_foreach_key(TMap *map, void (*iterator)(void *))
+ {
+     if (map->root != &nil)
+ 	tmap_foreach_nodes_key(map->root, iterator);
+ }
+ 
+ void
+-tmap_foreach_value(TMap *map, void (*iterator)())
++tmap_foreach_value(TMap *map, void (*iterator)(void *))
+ {
+     if (map->root != &nil)
+ 	tmap_foreach_nodes_value(map->root, iterator);
+--- a/common/tmap.h
++++ b/common/tmap.h
+@@ -51,8 +51,8 @@ void *tmap_remove(TMap *map, const void *key);
+ void tmap_iterator(TMap *map, TMapIterator *it); /* value iterator */
+ bool tmap_iterator_partial(TMap *map, TMapIterator *it, const void *match, comparison_fn_t comparator);
+ void tmap_clear(TMap *map);
+-void tmap_foreach_key(TMap *map, void (*iterator)());
+-void tmap_foreach_value(TMap *map, void (*iterator)());
++void tmap_foreach_key(TMap *map, void (*iterator)(void *));
++void tmap_foreach_value(TMap *map, void (*iterator)(void *));
+ 
+ #ifdef ENABLE_TMAP_TESTING
+ #include <stdio.h>
+

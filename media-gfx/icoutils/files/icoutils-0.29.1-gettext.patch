@@ -7,7 +7,7 @@ Index: icoutils-0.29.1/configure.ac
  # Gettext
  AM_GNU_GETTEXT([external])
 -# AM_GNU_GETTEXT_VERSION(0.14.1)
-+AM_GNU_GETTEXT_VERSION(0.14.1)
++AM_GNU_GETTEXT_VERSION(0.21)
  
  # Checks for header files.
  AC_HEADER_STDC

@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
-PATCHES=( "${FILESDIR}"/${PN}-0.29.1-{locale,gettext}.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.29.1-{locale,gettext}.patch
+	"${FILESDIR}"/${PN}-0.32.3-c23.patch
+)
 
 src_prepare() {
 	default
