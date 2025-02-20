@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 inherit cmake distutils-r1
 
@@ -39,7 +39,15 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/pybind/pybind11/pull/5508
+		# https://github.com/pybind/pybind11/pull/5537
+		"${FILESDIR}/${P}-pypy311.patch"
+	)
+
 	cmake_src_prepare
+
+	PATCHES=()
 	distutils-r1_python_prepare_all
 }
 
