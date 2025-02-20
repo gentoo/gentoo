@@ -16,6 +16,6 @@ HOMEPAGE="
 
 LICENSE="|| ( 0BSD CC0-1.0 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 distutils_enable_tests pytest
