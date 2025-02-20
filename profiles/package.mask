@@ -406,10 +406,6 @@ app-emulation/virtualbox-kvm
 # Beware that if you upgrade to it, you may need to reset your keyrings.
 >=app-crypt/gnupg-2.5
 
-# Ulrich Müller <ulm@gentoo.org> (2024-09-12)
-# Pretest versions, masked for testing.
-<app-editors/emacs-30.0.9999:30-vcs
-
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
