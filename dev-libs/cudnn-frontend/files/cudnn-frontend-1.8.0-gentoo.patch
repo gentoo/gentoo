@@ -1,0 +1,10 @@
+--- a/samples/cpp/utils/helpers.h	2025-02-20 19:00:02.548540412 +0100
++++ b/samples/cpp/utils/helpers.h	2025-02-20 19:02:41.923987464 +0100
+@@ -5,6 +5,7 @@
+ 
+ #include <cuda_runtime.h>
+ #include <cuda_fp16.h>
++#include <cudnn_ops_infer.h>
+ 
+ #include <catch2/catch_test_macros.hpp>
+ 
