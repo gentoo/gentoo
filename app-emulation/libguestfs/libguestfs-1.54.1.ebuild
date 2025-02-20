@@ -62,8 +62,8 @@ COMMON_DEPEND_EXPLICIT="
 # "Automagic" dependencies
 COMMON_DEPEND_IMPLICIT="
 	dev-libs/libconfig:=
-	media-libs/netpbm[png]
 	media-gfx/icoutils
+	media-libs/netpbm[png]
 "
 # Sum of the above + conditional dependencies
 COMMON_DEPEND="
@@ -107,13 +107,13 @@ BDEPEND="
 	doc? ( app-text/po4a )
 	lua? ( ${LUA_DEPS} )
 	perl? (
-		virtual/perl-Pod-Simple
-		virtual/perl-ExtUtils-CBuilder
 		dev-perl/Module-Build
+		virtual/perl-ExtUtils-CBuilder
+		virtual/perl-Pod-Simple
 	)
 	test? (
-		ocaml? ( dev-ml/ounit2[ocamlopt] )
 		introspection? ( dev-libs/gjs )
+		ocaml? ( dev-ml/ounit2[ocamlopt] )
 	)
 "
 
