@@ -274,6 +274,12 @@ src_configure() {
 		$(qt_feature sqlite system_sqlite)
 	)
 
+	tc-is-cross-compiler && mycmakeargs+=(
+		-DQT_HOST_PATH="${BROOT}"/usr
+		-DQT_FORCE_BUILD_TOOLS=ON
+		-DQT_NO_GENERATE_QMAKE_WRAPPER_FOR_TARGET=ON
+	)
+
 	qt6-build_src_configure
 }
 

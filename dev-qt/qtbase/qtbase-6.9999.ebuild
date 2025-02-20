@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -270,6 +270,12 @@ src_configure() {
 		$(qt_feature postgres sql_psql)
 		$(qt_feature sqlite sql_sqlite)
 		$(qt_feature sqlite system_sqlite)
+	)
+
+	tc-is-cross-compiler && mycmakeargs+=(
+		-DQT_HOST_PATH="${BROOT}"/usr
+		-DQT_FORCE_BUILD_TOOLS=ON
+		-DQT_NO_GENERATE_QMAKE_WRAPPER_FOR_TARGET=ON
 	)
 
 	qt6-build_src_configure
