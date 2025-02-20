@@ -52,12 +52,12 @@ CRATES="
 	ppv-lite86@0.2.20
 	precomputed-hash@0.1.1
 	proc-macro2@1.0.92
-	pyo3-build-config@0.23.3
-	pyo3-ffi@0.23.3
-	pyo3-macros-backend@0.23.3
-	pyo3-macros@0.23.3
-	pyo3@0.23.3
-	python3-dll-a@0.2.11
+	pyo3-build-config@0.23.4
+	pyo3-ffi@0.23.4
+	pyo3-macros-backend@0.23.4
+	pyo3-macros@0.23.4
+	pyo3@0.23.4
+	python3-dll-a@0.2.12
 	quote@1.0.37
 	rand@0.8.5
 	rand_chacha@0.3.1
@@ -107,7 +107,7 @@ CRATES="
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit cargo distutils-r1 pypi
 
@@ -118,6 +118,7 @@ HOMEPAGE="
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
+	https://dev.gentoo.org/~mgorny/dist/pyo3-ffi-0.23.4-pypy3_11.patch.xz
 "
 
 LICENSE="MIT"
@@ -134,8 +135,10 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/nh3/nh3.*.so"
 src_prepare() {
 	distutils-r1_src_prepare
 
-	# force unstable ABI to workaround stable ABI crash in py3.13
-	# https://github.com/PyO3/pyo3/issues/4311
-	sed -i -e 's:"abi3-py37",::' Cargo.toml || die
-	export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
+	# unpin pyo3
+	rm Cargo.lock || die
+
+	pushd "${ECARGO_VENDOR}"/pyo3-ffi* >/dev/null || die
+	eapply -p2 "${WORKDIR}/pyo3-ffi-0.23.4-pypy3_11.patch"
+	popd >/dev/null || die
 }
