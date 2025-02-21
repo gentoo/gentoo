@@ -27,7 +27,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( flang cmake )
+LLVM_COMPONENTS=( flang flang-rt cmake )
 LLVM_TEST_COMPONENTS=( clang/test/Driver mlir/test/lib )
 llvm.org_set_globals
 
