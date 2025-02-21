@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">lastfm/liblastfm</remote-id>
+		<remote-id type="github">drfiemost/liblastfm</remote-id>
 	</upstream>
 </pkgmetadata>
