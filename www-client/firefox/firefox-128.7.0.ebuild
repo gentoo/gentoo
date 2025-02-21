@@ -614,6 +614,10 @@ src_prepare() {
 			export RUST_TARGET="i686-unknown-linux-musl"
 		elif use arm64 ; then
 			export RUST_TARGET="aarch64-unknown-linux-musl"
+		elif use loong; then
+			# Only the LP64D ABI of LoongArch64 is actively supported among
+			# the wider Linux ecosystem, so the assumption is safe.
+			export RUST_TARGET="loongarch64-unknown-linux-musl"
 		elif use ppc64 ; then
 			export RUST_TARGET="powerpc64le-unknown-linux-musl"
 		elif use riscv ; then
@@ -846,7 +850,7 @@ src_configure() {
 	# amd64, arm, arm64 & x86.
 	# Might want to flip the logic around if Firefox is to support more arches.
 	# bug 833001, bug 903411#c8
-	if use ppc64 || use riscv; then
+	if use loong || use ppc64 || use riscv; then
 		mozconfig_add_options_ac '' --disable-sandbox
 	else
 		mozconfig_add_options_ac '' --enable-sandbox
@@ -1043,8 +1047,8 @@ src_configure() {
 		else
 			mozconfig_add_options_ac 'relr elf-hack' --enable-elf-hack=relr
 		fi
-	elif use ppc64 || use riscv ; then
-		# '--disable-elf-hack' is not recognized on ppc64/riscv,
+	elif use loong || use ppc64 || use riscv ; then
+		# '--disable-elf-hack' is not recognized on loong/ppc64/riscv,
 		# see bgo #917049, #930046
 		:;
 	else
