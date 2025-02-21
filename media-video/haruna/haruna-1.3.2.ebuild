@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_HANDBOOK="forceoptional"
 KFMIN=6.9.0
 QTMIN=6.8.1
 inherit ecm kde.org xdg
@@ -13,8 +12,8 @@ if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-DESCRIPTION="Simple video player"
-HOMEPAGE="https://apps.kde.org/dragonplayer/"
+DESCRIPTION="Video player built with Qt/QML and libmpv"
+HOMEPAGE="https://apps.kde.org/haruna/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
