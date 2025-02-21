@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-21)
+# Shiboken and Pyside-tools have been merged into dev-python/pyside
+# as of version 6.8.2. Pyside-tools are useable when the "tools" USE
+# flag is enabled.
+dev-python/shiboken6
+dev-python/pyside6-tools
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-18)
 # Depends on deprecated Qt5WebEngine, no response from maintainers.
 # Download source appears gone; bugs #926675, #880649, #870256.
