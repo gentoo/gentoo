@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,10 @@ all_ruby_prepare() {
 	# Ensure the new code in lib is tested also when calling out to
 	# another ruby instance.
 	sed -e '/rubybin/ s:-rdrb/drb:-Ilib -rdrb/drb:' \
+		-i test/rinda/test_rinda.rb || die
+
+	# Avoid tests requiring network device access
+	sed -e '/test_\(make_socket\|ring_server\)_ipv6_multicast/aomit "Requires network access"' \
 		-i test/rinda/test_rinda.rb || die
 }
 
