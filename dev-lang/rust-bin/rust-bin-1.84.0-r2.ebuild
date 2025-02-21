@@ -8,14 +8,14 @@ LLVM_OPTIONAL="yes"
 
 inherit llvm-r1 multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal optfeature
 
-MY_P="rust-${PV}"
+MY_P="rust-${PV}-r1"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
-MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-11-28/rust-src-${PV}.tar.xz"
-GENTOO_BIN_BASEURI="https://dev.gentoo.org/~arthurzam/distfiles/${CATEGORY}/${PN}" # omit leading slash
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2025-01-09/rust-src-${PV}.tar.xz"
+GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PV}-r1" # omit leading slash
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
-SRC_URI="$(rust_all_arch_uris ${MY_P})
+SRC_URI="$(rust_all_arch_uris rust-${PV})
 	rust-src? ( ${MY_SRC_URI} )
 "
 # Keep this separate to allow easy commenting out if not yet built
@@ -40,7 +40,7 @@ SRC_URI+=" ppc64? ( elibc_musl? (
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 RDEPEND="
