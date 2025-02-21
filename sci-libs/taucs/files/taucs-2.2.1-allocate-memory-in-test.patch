@@ -1,0 +1,24 @@
+There may be more actions needed, before that memory was unallocated
+and nullptrs were dereferenced.
+--- a/progs/test_cilk_snmf.c
++++ b/progs/test_cilk_snmf.c
+@@ -54,6 +54,7 @@
+ 
+   Xd =(double*)malloc((A->n)*sizeof(double));
+   for(i=0; i<A->n; i++) (Xd)[i]=(float)((double)random()/RAND_MAX);
++  Bd =(double*)malloc((A->n)*sizeof(double));
+   taucs_ccs_times_vec(A,Xd,Bd);
+ 
+   taucs_ccs_order(A,&perm,&invperm,"metis");
+@@ -74,8 +75,11 @@
+     return 1;
+   }
+ 
++  PBd =(double*)malloc((A->n)*sizeof(double));
+   taucs_vec_permute(A->n,A->flags,Bd,PBd,perm);
++  NXd =(double*)malloc((A->n)*sizeof(double));
+   taucs_supernodal_solve_llt(L,PBd,NXd); /* direct solver */
++  PXd =(double*)malloc((A->n)*sizeof(double));
+   taucs_vec_ipermute(A->n,A->flags,PXd,NXd,perm);
+ 
+   {

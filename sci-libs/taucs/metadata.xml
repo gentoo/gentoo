@@ -25,4 +25,7 @@
 		* Multilevel-Support-Graph Preconditioners.
 		* Utility Routines
 	</longdescription>
+	<upstream>
+		<remote-id type="github">sivantoledo/taucs</remote-id>
+	</upstream>
 </pkgmetadata>

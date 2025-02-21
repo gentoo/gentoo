@@ -1,0 +1,120 @@
+Port to C23. Various problems without the bug
+found in bumping package version
+--- a/src/taucs_ccs_ooc_llt.c
++++ b/src/taucs_ccs_ooc_llt.c
+@@ -281,7 +281,7 @@
+ 			       int            do_order,
+ 			       int            ipostorder[],
+ 			       double         given_mem,
+-			       void           (*sn_struct_handler)(),
++			       void           (*sn_struct_handler)(void* argument, int sn, int sn_up_size, int* sn_struct_ptr[]),
+ 			       void*          sn_struct_handler_arg
+ 			       )
+ {
+@@ -455,7 +455,7 @@
+ 				   int do_order,
+ 				   int do_column_to_sn_map,
+ 				   double given_mem,
+-				   void           (*sn_struct_handler)(),
++				   void           (*sn_struct_handler)(void* argument, int sn, int sn_up_size, int* sn_struct_ptr[]),
+ 				   void*          sn_struct_handler_arg
+ 				   )
+ {
+--- a/src/taucs_vaidya.c
++++ b/src/taucs_vaidya.c
+@@ -3046,7 +3046,7 @@
+   int row, col;
+   int *pi1 = 0; /* warning */
+   double x, y, min, max, not;
+-  byte bool=1;
++  byte Bool=1;
+   edge *p,*dummy, *pe ,*max_pe;
+   int count = 0;
+  
+@@ -3116,18 +3116,18 @@
+ 	  
+ 	  for(minrho=1;minrho<maxdist;minrho++)
+ 	    {
+-	      bool = 1;
++	      Bool = 1;
+ 	      for(k=0;k<min(j,classes);k++)
+ 		{
+ 		  if ((double)(findrho[(minrho+1)*classes+k]-findrho[minrho*classes+k]) > (findrho[minrho*classes+k])/x)
+-		    bool = 0;
++		    Bool = 0;
+ 		}
+-	      if (bool)
++	      if (Bool)
+ 		goto afterr;
+ 	    }
+ 	
+ 	afterr:
+-	  if (bool)
++	  if (Bool)
+ 	    {
+ 	      for(i=0;i<n;i++)
+ 		if ((d[i] <= minrho) && (d[i] != -1) )
+--- a/progs/direct.c
++++ b/progs/direct.c
+@@ -691,7 +691,6 @@
+   /***********************************************************/
+ 
+   if (A->flags & TAUCS_SINGLE) {
+-    float snrm2_();
+     int one = 1;
+ 
+     NormErr = 0.0;
+@@ -704,7 +703,6 @@
+   } 
+ 
+   if (A->flags & TAUCS_DOUBLE) {
+-    double dnrm2_();
+     int one = 1;
+ 
+     NormErr = 0.0;
+@@ -718,7 +716,6 @@
+ 
+ #ifdef TAUCS_CONFIG_DCOMPLEX
+   if (A->flags & TAUCS_DCOMPLEX) {
+-    double dznrm2_();
+     int one = 1;
+     double* pX  = (double*) Xz;
+     double* pNX = (double*) NXz;
+--- a/progs/direct_coverage.c
++++ b/progs/direct_coverage.c
+@@ -729,7 +729,6 @@
+   /***********************************************************/
+ 
+   if (A->flags & TAUCS_SINGLE) {
+-    float snrm2_();
+     int one = 1;
+ 
+     NormErr = 0.0;
+@@ -742,7 +741,6 @@
+   } 
+ 
+   if (A->flags & TAUCS_DOUBLE) {
+-    double dnrm2_();
+     int one = 1;
+ 
+     NormErr = 0.0;
+@@ -755,7 +753,6 @@
+   }
+ 
+   if (A->flags & TAUCS_DCOMPLEX) {
+-    double dznrm2_();
+     int one = 1;
+     double* pX  = (double*) Xz;
+     double* pNX = (double*) NXz;
+diff '--color=auto' -ur taucs-2.2.1.old/progs/test_cilk_snmf.c taucs-2.2.1/progs/test_cilk_snmf.c
+--- taucs-2.2.1.old/progs/test_cilk_snmf.c	2025-02-21 22:18:08.370013676 +0400
++++ taucs-2.2.1/progs/test_cilk_snmf.c	2025-02-21 22:18:37.175471226 +0400
+@@ -27,8 +27,6 @@
+ #define my_dnrm2 dnrm2
+ #endif
+ 
+-double my_dnrm2();
+-
+ int main()
+ {
+   int xyz = 30;
