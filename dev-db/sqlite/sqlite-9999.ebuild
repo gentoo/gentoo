@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="SQL database engine"
 HOMEPAGE="https://sqlite.org/"
@@ -19,8 +19,8 @@ else
 	#printf -v DOC_PV "%u%02u%02u00" $(ver_rs 1-3 " ")
 
 	SRC_URI="
-		https://sqlite.org/2024/${PN}-src-${SRC_PV}.zip
-		doc? ( https://sqlite.org/2024/${PN}-doc-${DOC_PV}.zip )
+		https://sqlite.org/2025/${PN}-src-${SRC_PV}.zip
+		doc? ( https://sqlite.org/2025/${PN}-doc-${DOC_PV}.zip )
 	"
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 
@@ -43,7 +43,6 @@ DEPEND="
 	${RDEPEND}
 	test? ( >=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}] )
 "
-BDEPEND=">=dev-lang/tcl-8.6:0"
 if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" dev-vcs/fossil"
 else
@@ -142,7 +141,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	eautoreconf
 	multilib_copy_sources
 }
 
@@ -196,7 +194,8 @@ multilib_src_configure() {
 	# https://sqlite.org/compile.html#enable_fts5
 	# https://sqlite.org/fts3.html
 	# https://sqlite.org/fts5.html
-	append-cppflags -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4
+	append-cppflags -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS
+	options+=( --enable-fts4 )
 	options+=( --enable-fts5 )
 
 	# Support hidden columns.
@@ -205,7 +204,7 @@ multilib_src_configure() {
 	# Support memsys5 memory allocator.
 	# https://sqlite.org/compile.html#enable_memsys5
 	# https://sqlite.org/malloc.html#memsys5
-	append-cppflags -DSQLITE_ENABLE_MEMSYS5
+	options+=( --enable-memsys5 )
 
 	# Support sqlite3_normalized_sql() function.
 	# https://sqlite.org/c3ref/expanded_sql.html
@@ -231,12 +230,12 @@ multilib_src_configure() {
 	# https://sqlite.org/compile.html#enable_geopoly
 	# https://sqlite.org/rtree.html
 	# https://sqlite.org/geopoly.html
-	append-cppflags -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_GEOPOLY
+	options+=( --enable-rtree --enable-geopoly )
 
 	# Support Session extension.
 	# https://sqlite.org/compile.html#enable_session
 	# https://sqlite.org/sessionintro.html
-	append-cppflags -DSQLITE_ENABLE_SESSION
+	options+=( --enable-session )
 
 	# Support scan status functions.
 	# https://sqlite.org/compile.html#enable_stmt_scanstatus
@@ -280,8 +279,7 @@ multilib_src_configure() {
 	if use icu; then
 		# Support ICU extension.
 		# https://sqlite.org/compile.html#enable_icu
-		append-cppflags -DSQLITE_ENABLE_ICU
-		sed -e "s/^TLIBS = @LIBS@/& -licui18n -licuuc/" -i Makefile.in || die "sed failed"
+		options+=( --with-icu-config )
 	fi
 
 	options+=(
@@ -320,7 +318,13 @@ multilib_src_configure() {
 		fi
 	fi
 
-	econf "${options[@]}"
+	# set SONAME for the library
+	options+=( --soname=legacy )
+
+	# https://sqlite.org/forum/forumpost/4f4d06a9f6683bb9
+	tc-export_build_env BUILD_CC
+
+	CC_FOR_BUILD=${BUILD_CC} econf "${options[@]}"
 }
 
 multilib_src_compile() {
