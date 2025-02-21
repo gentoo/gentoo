@@ -3,19 +3,19 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 19 )
+LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL="yes"
 
-inherit llvm-r1 multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal optfeature
+inherit llvm-r1 multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
 
-MY_P="rust-${PV}"
+MY_P="rust-${PV}-r101"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
-MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2025-01-09/rust-src-${PV}.tar.xz"
-GENTOO_BIN_BASEURI="https://dev.gentoo.org/~arthurzam/distfiles/${CATEGORY}/${PN}" # omit leading slash
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-06-13/rust-src-${PV}.tar.xz"
+GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PV}-r101" # omit leading slash
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
-SRC_URI="$(rust_all_arch_uris ${MY_P})
+SRC_URI="$(rust_all_arch_uris rust-${PV})
 	rust-src? ( ${MY_SRC_URI} )
 "
 # Keep this separate to allow easy commenting out if not yet built
@@ -33,14 +33,10 @@ SRC_URI+=" mips? (
 SRC_URI+=" riscv? (
 	elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-riscv64gc-unknown-linux-musl.tar.xz )
 )"
-SRC_URI+=" ppc64? ( elibc_musl? (
-	big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64-unknown-linux-musl.tar.xz )
-	!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64le-unknown-linux-musl.tar.xz )
-) )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 RDEPEND="
@@ -117,7 +113,7 @@ multilib_src_install() {
 	local analysis std
 	analysis="$(grep 'analysis' ./components)"
 	std="$(grep 'std' ./components)"
-	local components="rustc,cargo,${std}"
+	local components="rustc,cargo,rust-demangler-preview,${std}"
 	use doc && components="${components},rust-docs"
 	use clippy && components="${components},clippy-preview"
 	use rustfmt && components="${components},rustfmt-preview"
@@ -137,8 +133,6 @@ multilib_src_install() {
 		--disable-ldconfig \
 		|| die
 
-	docompress /opt/${P}/man/
-
 	if use prefix; then
 		local interpreter=$(patchelf --print-interpreter "${EPREFIX}"/bin/bash)
 		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/${P}/bin"
@@ -146,13 +140,14 @@ multilib_src_install() {
 			while IFS=  read -r -d '' filename; do
 				patchelf_for_bin ${filename} ${interpreter} \; || die
 			done
-		eend $?
+		eend ${PIPESTATUS[0]}
 	fi
 
 	local symlinks=(
 		cargo
 		rustc
 		rustdoc
+		rust-demangler
 		rust-gdb
 		rust-gdbgui
 		rust-lldb
@@ -192,6 +187,7 @@ multilib_src_install() {
 	cat <<-_EOF_ > "${T}/provider-${P}"
 	/usr/bin/cargo
 	/usr/bin/rustdoc
+	/usr/bin/rust-demangler
 	/usr/bin/rust-gdb
 	/usr/bin/rust-gdbgui
 	/usr/bin/rust-lldb
@@ -239,11 +235,11 @@ pkg_postinst() {
 	fi
 
 	if has_version app-editors/emacs; then
-		optfeature "emacs support for rust" app-emacs/rust-mode
+		elog "install app-emacs/rust-mode to get emacs support for rust."
 	fi
 
 	if has_version app-editors/gvim || has_version app-editors/vim; then
-		optfeature "vim support for rust" app-vim/rust-vim
+		elog "install app-vim/rust-vim to get vim support for rust."
 	fi
 }
 
