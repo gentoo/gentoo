@@ -96,7 +96,7 @@ src_unpack() {
 
 	default_src_unpack
 
-	mv "${WORKDIR}/${MY_P}-$(rust_abi)" "${S}" || die
+	mv "${WORKDIR}/rust-${PV}-$(rust_abi)" "${S}" || die
 }
 
 patchelf_for_bin() {
