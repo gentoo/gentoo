@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
-	dev-libs/protobuf:=
+	dev-libs/protobuf:=[protoc(+)]
 	dev-cpp/abseil-cpp:=
 "
 DEPEND="${RDEPEND}"
