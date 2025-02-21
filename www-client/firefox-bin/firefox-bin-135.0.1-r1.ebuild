@@ -256,14 +256,9 @@ src_install() {
 	local app_name="Mozilla ${MOZ_PN^} (bin)"
 	local desktop_file="${FILESDIR}/${PN}-r3.desktop"
 	local desktop_filename="${PN}.desktop"
+	local exec_command="${PN} --name=firefox-bin"
 	local icon="${PN}"
 	local use_wayland="false"
-
-	if [[ -n ${MOZ_ESR} ]] ; then
-		local exec_command="${PN} --name=firefox"
-	else
-		local exec_command="${PN}"
-	fi
 
 	if use wayland ; then
 		use_wayland="true"
