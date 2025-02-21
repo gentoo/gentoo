@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=amarok</bugs-to>
+		<remote-id type="kde-invent">multimedia/amarok</remote-id>
+	</upstream>
+	<use>
+		<flag name="lastfm">Enable Last.fm streaming services support through <pkg>media-libs/liblastfm</pkg></flag>
+		<flag name="mariadb">Prefer <pkg>dev-db/mariadb-connector-c</pkg> over <pkg>dev-db/mysql-connector-c</pkg></flag>
+		<flag name="mtp">Enable support for libMTP (Plays4Sure) devices access through libmtp</flag>
+		<flag name="podcast">Enable gpodder.net podcast support via <pkg>media-libs/libmygpo-qt</pkg></flag>
+		<flag name="webengine">Enable wikipedia widget using <pkg>dev-qt/qtwebengine</pkg></flag>
+	</use>
+</pkgmetadata>
