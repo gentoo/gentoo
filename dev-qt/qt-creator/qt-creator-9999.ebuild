@@ -128,6 +128,9 @@ src_prepare() {
 	# avoid stripping for Go, use sed to avoid rebases as may be there forever
 	sed -i 's/-s -w //' src/libs/gocmdbridge/server/CMakeLists.txt || die
 
+	# avoid building manual tests (aka not ran) for nothing (bug #950010)
+	sed -i '/add_subdirectory(manual)/d' tests/CMakeLists.txt || die
+
 	if use plugin-dev; then #928423
 		# cmake --install --component integrates poorly with the cmake
 		# eclass and the install targets are otherwise missing, so strip
