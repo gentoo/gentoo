@@ -40,6 +40,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
+	"${FILESDIR}"/${PN}-2.15-gettext.patch
 )
 
 pkg_setup() {

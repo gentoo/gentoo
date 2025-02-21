@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/945828
+
+From bd1c81e3e5e5f0af348fed5881c550432a275075 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 3 Dec 2024 19:42:33 -0500
+Subject: [PATCH] build: Use AM_GNU_GETTEXT_REQUIRE_VERSION and require 0.19.6
+
+This bumps the version requirement from 0.19 (from 2014) to 0.19.6
+(2015).
+
+Using only the old AM_GNU_GETTEXT_VERSION results in old gettext
+infrastructure being placed in the package. By using both macros we get
+the latest gettext files while the other programs in the Autotools
+family can still see the old macro.
+
+Otherwise, with gettext-0.23 we get
+
+```
+*** error: gettext infrastructure mismatch: using a Makefile.in.in from gettext version 0.18 but the autoconf macros are from gettext version 0.22
+```
+
+Equivalent to the commit to xz.git here:
+https://git.tukaani.org/?p=xz.git;a=commit;h=3d576cf92158d62790017ad7f2dd6dc1dd6b42bb
+---
+ configure.ac | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git ./configure.ac ./configure.ac
+index c698818..2349c3c 100644
+--- ./configure.ac
++++ ./configure.ac
+@@ -24,8 +24,13 @@ AC_CONFIG_HEADERS([config.h])
+ GETTEXT_PACKAGE=powertop
+ AC_SUBST([GETTEXT_PACKAGE])
+ AM_SILENT_RULES([yes])
++
++dnl Support for _REQUIRE_VERSION was added in gettext 0.19.6. If both
++dnl _REQUIRE_VERSION and _VERSION are present, the _VERSION is ignored.
++dnl We use both for compatibility with other programs in the Autotools family.
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.18.2])
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
++AM_GNU_GETTEXT_VERSION([0.19.6])
+ 
+ m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+ AX_REQUIRE_DEFINED([AX_ADD_FORTIFY_SOURCE])
+-- 
+2.45.3
+
