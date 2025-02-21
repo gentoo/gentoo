@@ -7,7 +7,7 @@ export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 
 # See "Bootstrap" in release notes
-GO_BOOTSTRAP_MIN=1.20.14
+GO_BOOTSTRAP_MIN=1.22.12
 MY_PV=${PV/_/}
 
 inherit go-env toolchain-funcs
@@ -88,10 +88,6 @@ src_compile() {
 		die "Should not be here, please report a bug"
 	fi
 
-	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
-	export GOROOT="${PWD}"
-	export GOBIN="${GOROOT}/bin"
-
 	# Go's build script does not use BUILD/HOST/TARGET consistently. :(
 	export GOHOSTARCH=$(go-env_goarch ${CBUILD})
 	export GOHOSTOS=$(go-env_goos ${CBUILD})
@@ -110,30 +106,22 @@ src_compile() {
 
 src_test() {
 	go_cross_compile && return 0
-
 	cd src
-
-	# https://github.com/golang/go/issues/42005
-	rm cmd/link/internal/ld/fallocate_test.go || die
-
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild -k || die "tests failed"
-	cd ..
-	rm -fr pkg/*_race || die
-	rm -fr pkg/obj/go-build || die
 }
 
 src_install() {
 	dodir /usr/lib/go
 	# The use of cp is deliberate in order to retain permissions
-	cp -R api bin doc lib pkg misc src test "${ED}"/usr/lib/go
+	cp -R . "${ED}"/usr/lib/go
 	einstalldocs
 
-	insinto /usr/lib/go
-	doins go.env VERSION*
-
 	# testdata directories are not needed on the installed system
-	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
+	# The other files we remove are installed by einstalldocs
+	rm -r $(find "${ED}"/usr/lib/go -iname testdata -type d -print) || die
+	rm "${ED}"/usr/lib/go/{CONTRIBUTING.md,PATENTS,README.md} || die
+	rm "${ED}"/usr/lib/go/{SECURITY.md,codereview.cfg,LICENSE} || die
 
 	local bin_path
 	if go_cross_compile; then
@@ -146,21 +134,4 @@ src_install() {
 		f=${x##*/}
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
-
-	# install the @golang-rebuild set for Portage
-	insinto /usr/share/portage/config/sets
-	newins "${FILESDIR}"/go-sets.conf go.conf
-}
-
-pkg_postinst() {
-	[[ -z ${REPLACING_VERSIONS} ]] && return
-	elog "After ${CATEGORY}/${PN} is updated it is recommended to rebuild"
-	elog "all packages compiled with previous versions of ${CATEGORY}/${PN}"
-	elog "due to the static linking nature of go."
-	elog "If this is not done, the packages compiled with the older"
-	elog "version of the compiler will not be updated until they are"
-	elog "updated individually, which could mean they will have"
-	elog "vulnerabilities."
-	elog "Run 'emerge @golang-rebuild' to rebuild all 'go' packages"
-	elog "See https://bugs.gentoo.org/752153 for more info"
 }
