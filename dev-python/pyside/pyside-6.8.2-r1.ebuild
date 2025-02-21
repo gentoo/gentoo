@@ -20,7 +20,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="6/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 
 # If a flag enables multiple Qt modules, they should be ordered
 # according to their dependencies, e.g. for 3d, 3DCore must be first.
