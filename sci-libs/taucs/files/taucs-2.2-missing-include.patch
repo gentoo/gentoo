@@ -1,0 +1,36 @@
+I don't know why he uses number of arguments to distinguish if
+it's windows or not. Add correct header, section off wrong
+mkdirs on Windows
+https://bugs.gentoo.org/898294
+--- a/configurator/taucs_config.c
++++ b/configurator/taucs_config.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <sys/stat.h>
+ 
+ #include "taucs_structure.h"
+ 
+@@ -242,8 +242,10 @@
+     sprintf(name,"%s%c%s",  configdir,pathsep,ostype);
+ 
+   if (win32) {
++#if defined _WIN32 || defined __CYGWIN__
+     mkdir(configdir);
+     mkdir(name);
++#endif
+   }
+   else {
+     mkdir(configdir,0777);
+@@ -301,8 +303,10 @@
+     sprintf(name,"%s%c%s",  configdir,pathsep,ostype);
+ 
+   if (win32) {
++#if defined _WIN32 || defined __CYGWIN__
+     mkdir(configdir);
+     mkdir(name);
++#endif
+   }
+   else {
+     mkdir(configdir,0777);
