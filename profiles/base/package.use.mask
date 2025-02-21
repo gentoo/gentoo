@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2025-02-21)
+# Mask for older GTK to phase in enabling Vulkan for users (and avoid a surprise
+# for stable users, as Vulkan is enabled by default on desktop profiles).
+<gui-libs/gtk-4.16 vulkan
+
 # Michał Górny <mgorny@gentoo.org> (2025-02-20)
 # Requires dev-python/recommonmark with Python 3.10
 <llvm-core/clang-18 doc
@@ -591,10 +596,6 @@ dev-lang/rust parallel-compiler
 # It is caused by -Wl,--as-needed linker flag,
 # see also: https://github.com/rspamd/rspamd/issues/3871
 >=mail-filter/rspamd-3.0 jemalloc
-
-# Matt Turner <mattst88@gentoo.org> (2021-08-28)
-# Mask experimental options.
-gui-libs/gtk vulkan
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Makes two tests fail (when linked against openmpi, at least) due to
