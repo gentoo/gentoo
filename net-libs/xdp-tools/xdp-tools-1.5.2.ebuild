@@ -51,9 +51,6 @@ src_configure() {
 	# filter LDFLAGS some more: #916591
 	filter-ldflags -Wl,--{icf,lto}*
 
-	# force ld.bfd: #916591
-	tc-ld-force-bfd
-
 	export CC="$(tc-getCC)"
 	export PREFIX="${EPREFIX}/usr"
 	export LIBDIR="${PREFIX}/$(get_libdir)"
