@@ -9,6 +9,10 @@ dev-python/pyside webview
 # QtSerialBus is not available everywhere
 dev-python/pyside serialbus
 
+# Matt Jolly <kangie@gentoo.org> (2025-01-11)
+# mrustc currenly only works on amd64.
+dev-lang/rust mrustc-bootstrap
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-core/clang-runtime offload
