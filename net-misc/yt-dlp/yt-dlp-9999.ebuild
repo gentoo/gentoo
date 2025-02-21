@@ -41,6 +41,10 @@ python_test() {
 		test/test_networking.py::TestHTTPRequestHandler::test_connect_timeout
 		# fails with FEATURES=distcc, bug #915614
 		test/test_networking.py::TestYoutubeDLNetworking::test_proxy\[None-expected2\]
+		# websockets tests break easily depending on dev-python/websockets
+		# version and, as far as I know, most users do not use/need it --
+		# thus being neither in RDEPEND nor optfeature (bug #940630,#950030)
+		test/test_websockets.py
 	)
 
 	epytest -m 'not download'
