@@ -594,7 +594,7 @@ dev-lang/rust parallel-compiler
 
 # Matt Turner <mattst88@gentoo.org> (2021-08-28)
 # Mask experimental options.
-gui-libs/gtk ffmpeg vulkan
+gui-libs/gtk vulkan
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Makes two tests fail (when linked against openmpi, at least) due to
