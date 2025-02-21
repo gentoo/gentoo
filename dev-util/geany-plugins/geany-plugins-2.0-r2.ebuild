@@ -47,7 +47,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc14.patch"
-	"${FILESDIR}/${P}-gcc15.patch"
+	"${FILESDIR}/${P}-gcc15-r1.patch"
 	"${FILESDIR}/${P}-webkit2gtk-4.1.patch"
 )
 
