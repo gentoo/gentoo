@@ -5,4 +5,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="usbreset">additionally compile the potentially problematic usbreset util</flag>
+</use>
 </pkgmetadata>

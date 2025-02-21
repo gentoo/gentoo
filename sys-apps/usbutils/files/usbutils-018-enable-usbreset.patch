@@ -1,0 +1,28 @@
+usbreset is not installed by default, but installed by other distros.
+
+Upstream said (https://github.com/gregkh/usbutils/issues/214):
+> It could damage your hardware, it could also just flat out not work at all,
+
+So this patch is not applied by default.
+diff --git a/meson.build b/meson.build
+index c522283..f6bd530 100644
+--- a/meson.build
++++ b/meson.build
+@@ -76,7 +76,7 @@ add_project_arguments('-include', 'config.h', language : 'c')
+ #####################
+ # man page generation
+ #####################
+-install_man(['man/lsusb.8', 'man/lsusb.py.1', 'man/usb-devices.1', 'man/usbhid-dump.8'])
++install_man(['man/lsusb.8', 'man/lsusb.py.1', 'man/usb-devices.1', 'man/usbhid-dump.8', 'man/usbreset.1'])
+ 
+ 
+ ##########################
+@@ -137,7 +137,7 @@ usbreset_sources = [
+ 
+ # By default, usbreset does not get installed as it could cause problems, it's
+ # in the repo for those that wish to try it out.
+-executable('usbreset', usbreset_sources, install: false)
++executable('usbreset', usbreset_sources, install: true)
+ 
+ 
+ ################################
