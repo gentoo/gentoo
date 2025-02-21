@@ -1,6 +1,9 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# This file is only for generic masks. For arch-specific masks (i.e.
+# mask everywhere, unmask on arch/*) use arch/base.
+
 # New entries go on top.
 
 # Sam James <sam@gentoo.org> (2025-02-21)
@@ -124,9 +127,6 @@ app-i18n/mozc fcitx4
 # over two years. Fedora has disabled webservices support already, and
 # that makes it OK if we do it too, right? Bug 893700.
 media-gfx/gthumb webkit
-
-# This file is only for generic masks. For arch-specific masks (i.e.
-# mask everywhere, unmask on arch/*) use arch/base.
 
 # Sam James <sam@gentoo.org> (2024-09-30)
 # gnat-gpl is purely for bootstrapping Ada and it's based on an old
