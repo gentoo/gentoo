@@ -16,3 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="dev-build/parmasan-remake"
+
+src_install() {
+	cmake_src_install
+
+	# Let's make it less likely to collide and it's then common
+	# with parmasan-remake.
+	mv "${ED}"/usr/bin/{,parmasan-}tracer || die
+}
