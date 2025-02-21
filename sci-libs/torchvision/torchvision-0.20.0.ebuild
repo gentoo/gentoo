@@ -38,6 +38,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 src_prepare() {
 	use cuda && cuda_src_prepare
 	distutils-r1_src_prepare
