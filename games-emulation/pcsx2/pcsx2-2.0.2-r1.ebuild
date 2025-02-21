@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -120,9 +120,6 @@ src_configure() {
 		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no # not packaged
 		-DUSE_VULKAN=$(usex vulkan)
-
-		# note that upstream hardly support native wayland, may or may not work
-		# https://github.com/PCSX2/pcsx2/pull/10179
 		-DWAYLAND_API=$(usex wayland)
 		# not optional given libX11 is hard-required either way and upstream
 		# seemingly has no intention to drop the requirement at the moment
