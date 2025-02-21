@@ -5,7 +5,7 @@
     <email>candrews@gentoo.org</email>
     <name>Craig Andrews</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     XMRig High performance, open source, cross platform RandomX,
     CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner.
   </longdescription>
@@ -18,6 +18,9 @@
     </flag>
   </use>
   <upstream>
+    <bugs-to>https://github.com/xmrig/xmrig/issues</bugs-to>
+    <changelog>https://github.com/xmrig/xmrig/blob/master/CHANGELOG.md</changelog>
+    <doc>https://xmrig.com/docs/</doc>
     <remote-id type="github">xmrig/xmrig</remote-id>
   </upstream>
 </pkgmetadata>
