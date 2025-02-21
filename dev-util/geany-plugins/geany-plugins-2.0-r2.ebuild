@@ -15,10 +15,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="ctags debugger enchant git gpg gtkspell lua markdown nls pretty-printer scope webhelper workbench"
+IUSE="ctags debugger enchant git gpg gtkspell lua markdown nls pretty-printer scope test webhelper workbench"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-DEPEND="
+RESTRICT="!test? ( test )"
+
+COMMON_DEPEND="
 	dev-libs/glib:2
 	>=dev-util/geany-2.0
 	x11-libs/gtk+:3
@@ -38,7 +40,10 @@ DEPEND="
 	webhelper? ( net-libs/webkit-gtk:4.1 )
 	workbench? ( dev-libs/libgit2:= )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-libs/check )
+"
+RDEPEND="${COMMON_DEPEND}
 	scope? ( dev-debug/gdb )
 "
 BDEPEND="virtual/pkgconfig
@@ -57,6 +62,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	if ! use test; then
+		sed -i "s:gp_have_unittests=yes:gp_have_unittests=no:" build/unittests.m4 || die
+	fi
 	eautoreconf
 }
 
