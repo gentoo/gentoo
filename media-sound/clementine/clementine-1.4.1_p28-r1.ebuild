@@ -14,10 +14,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	inherit git-r3
 else
-	MY_PV="$(ver_cut 1-3)-$(ver_cut 5)-gxxxxxxxxx"
+	MY_PV="$(ver_cut 1-3)-$(ver_cut 5)-g41e2a07b3"
 	SRC_URI="https://github.com/clementine-player/Clementine/releases/download/${MY_PV}/clementine-${MY_PV}.tar.xz -> ${P}.tar.xz"
 	S="${WORKDIR}/clementine-${MY_PV}"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-3"
