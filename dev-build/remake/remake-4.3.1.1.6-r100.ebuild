@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ MY_P="${PN}-${MY_MAKE_BASE}+dbg-${MY_REMAKE_PATCH}"
 
 DESCRIPTION="Patched version of GNU Make with improved error reporting, tracing and debugging"
 HOMEPAGE="http://bashdb.sourceforge.net/remake/"
-SRC_URI="https://github.com/rocky/remake/releases/download/${MY_P}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/Trepan-Debuggers/remake/releases/download/${MY_P}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-3"

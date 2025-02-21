@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">rocky/remake</remote-id>
+		<remote-id type="github">Trepan-Debuggers/remake</remote-id>
 		<remote-id type="sourceforge">bashdb</remote-id>
 	</upstream>
 </pkgmetadata>
