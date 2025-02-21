@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit qmail toolchain-funcs
 
@@ -21,30 +21,37 @@ IUSE="ipv6 qmail-spp selinux"
 RESTRICT="test"
 
 RDEPEND="
-	!app-doc/ucspi-tcp-man
 	selinux? ( sec-policy/selinux-ucspitcp )"
 
-src_prepare() {
-	eapply "${FILESDIR}"/${PV}-protos.patch
-	if use ipv6; then
-		eapply "${WORKDIR}"/${P}-ipv6.diff20
-		eapply "${FILESDIR}"/${PV}-protos-ipv6.patch
-		eapply "${FILESDIR}"/${PV}-tcprules.patch #135571
-		eapply "${FILESDIR}"/${PV}-bigendian.patch #18892
-		eapply "${FILESDIR}"/${PV}-implicit-int-ipv6.patch
-	else
-		eapply "${FILESDIR}"/${PV}-protos-no-ipv6.patch
-	fi
-	eapply "${DISTDIR}"/ucspi-rss.diff
-	eapply "${FILESDIR}"/${PV}-rblsmtpd-ignore-on-RELAYCLIENT.patch
-	eapply "${DISTDIR}"/${P}-rblspp.patch
-	eapply "${FILESDIR}"/${PV}-protos-rblspp.patch
-	eapply "${FILESDIR}"/${PV}-large-responses.patch
-	eapply "${FILESDIR}"/${PV}-uint-headers.patch
-	eapply "${FILESDIR}"/${PV}-ar-ranlib.patch
-	eapply "${FILESDIR}"/${PV}-implicit-int.patch
+PATCHES=(
+	"${FILESDIR}"/${PV}-protos.patch
+)
 
-	eapply_user
+src_prepare() {
+	if use ipv6 ; then
+		PATCHES+=(
+			"${WORKDIR}"/${P}-ipv6.diff20
+			"${FILESDIR}"/${PV}-protos-ipv6.patch
+			"${FILESDIR}"/${PV}-tcprules.patch #135571
+			"${FILESDIR}"/${PV}-bigendian.patch #18892
+			"${FILESDIR}"/${PV}-implicit-int-ipv6.patch
+		)
+	else
+		PATCHES+=( "${FILESDIR}"/${PV}-protos-no-ipv6.patch )
+	fi
+	PATCHES+=(
+		"${DISTDIR}"/ucspi-rss.diff
+		"${FILESDIR}"/${PV}-rblsmtpd-ignore-on-RELAYCLIENT.patch
+		"${DISTDIR}"/${P}-rblspp.patch
+		"${FILESDIR}"/${PV}-protos-rblspp.patch
+		"${FILESDIR}"/${PV}-large-responses.patch
+		"${FILESDIR}"/${PV}-uint-headers.patch
+		"${FILESDIR}"/${PV}-ar-ranlib.patch
+		"${FILESDIR}"/${PV}-implicit-int.patch
+		"${FILESDIR}"/${PV}-protype-alloc.patch
+	)
+
+	default
 }
 
 src_configure() {
