@@ -356,15 +356,6 @@ src_prepare() {
 	# hack in the autogen.sh
 	touch autogen.lastrun
 
-	# sed in the tests
-	sed -i \
-		-e "s#all : build unitcheck#all : build#g" \
-		solenv/gbuild/Module.mk || die
-	sed -i \
-		-e "s#check: dev-install subsequentcheck#check: unitcheck slowcheck dev-install subsequentcheck#g" \
-		-e "s#Makefile.gbuild all slowcheck#Makefile.gbuild all#g" \
-		Makefile.in || die
-
 	sed -i \
 		-e "s,/usr/share/bash-completion/completions,$(get_bashcompdir)," \
 		-e "s,\$INSTALLDIRNAME.sh,${PN}," \
