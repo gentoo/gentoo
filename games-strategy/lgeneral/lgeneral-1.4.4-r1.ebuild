@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit readme.gentoo-r1 toolchain-funcs xdg
+inherit readme.gentoo-r1 toolchain-funcs xdg autotools
 
 DESCRIPTION="Turn-based strategy game heavily inspired by the classic Panzer General"
 HOMEPAGE="https://lgames.sourceforge.io/LGeneral/"
@@ -24,7 +24,17 @@ BDEPEND="sys-devel/gettext"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.3-fix-utf8.patch
+	"${FILESDIR}"/update_autotools.patch
+	"${FILESDIR}"/${PN}-1.4.4-configure.patch
+	"${FILESDIR}"/${PN}-1.4.4-remove-defs-from-header.patch
+	"${FILESDIR}"/${PN}-1.4.4-uninline.patch
 )
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_compile() {
 	emake AR="$(tc-getAR)"
