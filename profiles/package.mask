@@ -257,10 +257,6 @@ dev-python/spyder-terminal
 =dev-python/qtpy-2.4.2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# CVE-2025-23050, bug #948573; Removal on 2025-02-22.
-dev-qt/qtbluetooth:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
 
