@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/NetworkBlockDevice/nbd/releases/download/${P}/${P}.tar.xz"
 	SRC_URI+=" https://downloads.sourceforge.net/nbd/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~sparc x86"
 fi
 
 LICENSE="GPL-2"
