@@ -1,0 +1,3 @@
+d /var/lib/tlsrpt-reporter 0751 tlsrpt-reporter tlsrpt-reporter -
+d /var/log/tlsrpt-reporter 0751 tlsrpt-reporter tlsrpt-reporter -
+d /run/tlsrpt-reporter 0751 tlsrpt-reporter tlsrpt-reporter -
