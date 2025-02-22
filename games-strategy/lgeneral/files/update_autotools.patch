@@ -1,0 +1,278 @@
+Debian patch, from
+https://sources.debian.org/patches/lgeneral/1.4.4-4/update_autotools.patch/
+Index: lgeneral/configure.ac
+===================================================================
+--- lgeneral.orig/configure.ac
++++ lgeneral/configure.ac
+@@ -30,7 +30,7 @@ dnl AC_CHECK_LIB(dl, main,, AC_CHECK_LIB
+ dnl AC_CHECK_LIB(dl, main,, AC_MSG_ERROR(dl library is needed))
+ 
+ dnl Checks for functions.
+-AC_CHECK_FUNCS(strcasestr)
++AC_CHECK_FUNCS(setenv strcasestr)
+ 
+ dnl check for mkdir accepting permissions
+ AC_MSG_CHECKING(if mkdir rejects permissions)
+@@ -44,8 +44,8 @@ AC_MSG_RESULT($ac_mkdir_perm_broken)
+ dnl L10n support
+ ALL_LINGUAS="en de"
+ 
+-AC_GNU_SOURCE
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.21])
+ 
+ dnl win32 stuff
+ dnl USE_NLS=no
+@@ -90,16 +90,6 @@ if test x$USE_INCLUDED_LIBINTL = xyes ;
+   INTLINCLUDES="-I\$(top_srcdir)/intl -I\$(top_builddir)/intl"
+ fi
+ 
+-dnl newer versions of gettext don't support CATALOGS -> create it here
+-if test "x$CATALOGS" = x ; then
+-  AC_MSG_CHECKING(for catalogs to be installed);
+-  for l in $ALL_LINGUAS ; do
+-    CATALOGS="$CATALOGS$l$CATOBJEXT "
+-  done
+-  AC_MSG_RESULT($ALL_LINGUAS)
+-  AC_SUBST(CATALOGS)
+-fi
+-
+ dnl newer versions of gettext don't export POFILES and GMOFILES
+ dnl export them here to stay compatible with older versions
+ if test "x$POFILES" = x ; then
+@@ -176,18 +166,5 @@ inst_flag=)
+ AC_SUBST(inst_dir)
+ AC_SUBST(inst_flag)
+ 
+-# create Makefiles for Makefile.ins in po-subdirectories.
+-# FIXME! autoconf is simply too stupid to grok that for-loop
+-#for ac_domain in lgeneral ; do
+-  AC_CONFIG_COMMANDS([po-lgeneral],
+-     [case "$CONFIG_FILES" in *po/lgeneral/Makefile.in*)
+-        sed -e "/POTFILES =/r po/lgeneral/POTFILES" po/lgeneral/Makefile.in > po/lgeneral/Makefile
+-      esac])
+-  AC_CONFIG_COMMANDS([po-pg],
+-     [case "$CONFIG_FILES" in *po/pg/Makefile.in*)
+-        cat po/pg/Makefile.in > po/pg/Makefile
+-      esac])
+-#done
+-
+-AC_OUTPUT(Makefile lged/Makefile lgc-pg/Makefile lgc-pg/convdata/Makefile src/Makefile src/nations/Makefile src/scenarios/Makefile src/units/Makefile src/sounds/Makefile src/music/Makefile src/terrain/Makefile src/maps/Makefile src/gfx/Makefile  src/gfx/flags/Makefile src/gfx/terrain/Makefile src/gfx/units/Makefile src/ai_modules/Makefile src/campaigns/Makefile src/themes/Makefile src/themes/default/Makefile util/Makefile intl/Makefile po/Makefile po/lgeneral/Makefile.in po/pg/Makefile.in tools/Makefile tools/ltrextract/Makefile)
++AC_OUTPUT(Makefile lged/Makefile lgc-pg/Makefile lgc-pg/convdata/Makefile src/Makefile src/nations/Makefile src/scenarios/Makefile src/units/Makefile src/sounds/Makefile src/music/Makefile src/terrain/Makefile src/maps/Makefile src/gfx/Makefile  src/gfx/flags/Makefile src/gfx/terrain/Makefile src/gfx/units/Makefile src/ai_modules/Makefile src/campaigns/Makefile src/themes/Makefile src/themes/default/Makefile util/Makefile po/Makefile po/lgeneral/Makefile.in po/pg/Makefile.in tools/Makefile tools/ltrextract/Makefile)
+ 
+Index: lgeneral/Makefile.am
+===================================================================
+--- lgeneral.orig/Makefile.am
++++ lgeneral/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = intl util lged lgc-pg src tools po
++SUBDIRS = util lged lgc-pg src tools po
+ 
+ EXTRA_DIST = AUTHORS COPYING ChangeLog README.lgeneral \
+ README.lgc-pg README.redit TODO \
+Index: lgeneral/acconfig.h
+===================================================================
+--- lgeneral.orig/acconfig.h
++++ /dev/null
+@@ -1,20 +0,0 @@
+-#undef ENABLE_NLS
+-#undef HAVE_CATGETS
+-#undef HAVE_GETTEXT
+-#undef HAVE_LC_MESSAGES
+-#undef HAVE_STPCPY
+-#undef HAVE_LIBSM
+-#undef PACKAGE_LOCALE_DIR
+-#undef PACKAGE_DOC_DIR
+-#undef PACKAGE_DATA_DIR
+-#undef PACKAGE_PIXMAPS_DIR
+-#undef PACKAGE_HELP_DIR
+-#undef PACKAGE_MENU_DIR
+-#undef PACKAGE_SOURCE_DIR
+-
+-@BOTTOM@
+-
+-#ifdef HAVE_BROKEN_MKDIR
+-#  include <direct.h>
+-#  define mkdir(s,p) _mkdir(s)
+-#endif
+Index: lgeneral/po/lgeneral/Makevars
+===================================================================
+--- /dev/null
++++ lgeneral/po/lgeneral/Makevars
+@@ -0,0 +1,82 @@
++# Makefile variables for PO directory in any package using GNU gettext.
++#
++# Copyright (C) 2003-2019 Free Software Foundation, Inc.
++# This file is free software; the Free Software Foundation gives
++# unlimited permission to use, copy, distribute, and modify it.
++
++# Usually the message domain is the same as the package name.
++DOMAIN = lgeneral
++
++# These two variables depend on the location of this directory.
++subdir = $(DOMAIN)
++top_builddir = ../..
++
++# These options get passed to xgettext.
++XGETTEXT_OPTIONS = --keyword=_ --keyword=N_
++
++# This is the copyright holder that gets inserted into the header of the
++# $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
++# package.  (Note that the msgstr strings, extracted from the package's
++# sources, belong to the copyright holder of the package.)  Translators are
++# expected to transfer the copyright for their translations to this person
++# or entity, or to disclaim their copyright.  The empty string stands for
++# the public domain; in this case the translators are expected to disclaim
++# their copyright.
++COPYRIGHT_HOLDER = Free Software Foundation, Inc.
++
++# This tells whether or not to prepend "GNU " prefix to the package
++# name that gets inserted into the header of the $(DOMAIN).pot file.
++# Possible values are "yes", "no", or empty.  If it is empty, try to
++# detect it automatically by scanning the files in $(top_srcdir) for
++# "GNU packagename" string.
++PACKAGE_GNU =
++
++# This is the email address or URL to which the translators shall report
++# bugs in the untranslated strings:
++# - Strings which are not entire sentences, see the maintainer guidelines
++#   in the GNU gettext documentation, section 'Preparing Strings'.
++# - Strings which use unclear terms or require additional context to be
++#   understood.
++# - Strings which make invalid assumptions about notation of date, time or
++#   money.
++# - Pluralisation problems.
++# - Incorrect English spelling.
++# - Incorrect formatting.
++# It can be your email address, or a mailing list address where translators
++# can write to without being subscribed, or the URL of a web page through
++# which the translators can contact you.
++MSGID_BUGS_ADDRESS =
++
++# This is the list of locale categories, beyond LC_MESSAGES, for which the
++# message catalogs shall be used.  It is usually empty.
++EXTRA_LOCALE_CATEGORIES =
++
++# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'
++# context.  Possible values are "yes" and "no".  Set this to yes if the
++# package uses functions taking also a message context, like pgettext(), or
++# if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.
++USE_MSGCTXT = no
++
++# These options get passed to msgmerge.
++# Useful options are in particular:
++#   --previous            to keep previous msgids of translated messages,
++#   --quiet               to reduce the verbosity.
++MSGMERGE_OPTIONS =
++
++# These options get passed to msginit.
++# If you want to disable line wrapping when writing PO files, add
++# --no-wrap to MSGMERGE_OPTIONS, XGETTEXT_OPTIONS, and
++# MSGINIT_OPTIONS.
++MSGINIT_OPTIONS =
++
++# This tells whether or not to regenerate a PO file when $(DOMAIN).pot
++# has changed.  Possible values are "yes" and "no".  Set this to no if
++# the POT file is checked in the repository and the version control
++# program ignores timestamps.
++PO_DEPENDS_ON_POT = yes
++
++# This tells whether or not to forcibly update $(DOMAIN).pot and
++# regenerate PO files on "make dist".  Possible values are "yes" and
++# "no".  Set this to no if the POT file and PO files are maintained
++# externally.
++DIST_DEPENDS_ON_UPDATE_PO = yes
+Index: lgeneral/po/pg/Makevars
+===================================================================
+--- /dev/null
++++ lgeneral/po/pg/Makevars
+@@ -0,0 +1,82 @@
++# Makefile variables for PO directory in any package using GNU gettext.
++#
++# Copyright (C) 2003-2019 Free Software Foundation, Inc.
++# This file is free software; the Free Software Foundation gives
++# unlimited permission to use, copy, distribute, and modify it.
++
++# Usually the message domain is the same as the package name.
++DOMAIN = pg
++
++# These two variables depend on the location of this directory.
++subdir = $(DOMAIN)
++top_builddir = ../..
++
++# These options get passed to xgettext.
++XGETTEXT_OPTIONS = --keyword=_ --keyword=N_
++
++# This is the copyright holder that gets inserted into the header of the
++# $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
++# package.  (Note that the msgstr strings, extracted from the package's
++# sources, belong to the copyright holder of the package.)  Translators are
++# expected to transfer the copyright for their translations to this person
++# or entity, or to disclaim their copyright.  The empty string stands for
++# the public domain; in this case the translators are expected to disclaim
++# their copyright.
++COPYRIGHT_HOLDER = Free Software Foundation, Inc.
++
++# This tells whether or not to prepend "GNU " prefix to the package
++# name that gets inserted into the header of the $(DOMAIN).pot file.
++# Possible values are "yes", "no", or empty.  If it is empty, try to
++# detect it automatically by scanning the files in $(top_srcdir) for
++# "GNU packagename" string.
++PACKAGE_GNU =
++
++# This is the email address or URL to which the translators shall report
++# bugs in the untranslated strings:
++# - Strings which are not entire sentences, see the maintainer guidelines
++#   in the GNU gettext documentation, section 'Preparing Strings'.
++# - Strings which use unclear terms or require additional context to be
++#   understood.
++# - Strings which make invalid assumptions about notation of date, time or
++#   money.
++# - Pluralisation problems.
++# - Incorrect English spelling.
++# - Incorrect formatting.
++# It can be your email address, or a mailing list address where translators
++# can write to without being subscribed, or the URL of a web page through
++# which the translators can contact you.
++MSGID_BUGS_ADDRESS =
++
++# This is the list of locale categories, beyond LC_MESSAGES, for which the
++# message catalogs shall be used.  It is usually empty.
++EXTRA_LOCALE_CATEGORIES =
++
++# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'
++# context.  Possible values are "yes" and "no".  Set this to yes if the
++# package uses functions taking also a message context, like pgettext(), or
++# if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.
++USE_MSGCTXT = no
++
++# These options get passed to msgmerge.
++# Useful options are in particular:
++#   --previous            to keep previous msgids of translated messages,
++#   --quiet               to reduce the verbosity.
++MSGMERGE_OPTIONS =
++
++# These options get passed to msginit.
++# If you want to disable line wrapping when writing PO files, add
++# --no-wrap to MSGMERGE_OPTIONS, XGETTEXT_OPTIONS, and
++# MSGINIT_OPTIONS.
++MSGINIT_OPTIONS =
++
++# This tells whether or not to regenerate a PO file when $(DOMAIN).pot
++# has changed.  Possible values are "yes" and "no".  Set this to no if
++# the POT file is checked in the repository and the version control
++# program ignores timestamps.
++PO_DEPENDS_ON_POT = yes
++
++# This tells whether or not to forcibly update $(DOMAIN).pot and
++# regenerate PO files on "make dist".  Possible values are "yes" and
++# "no".  Set this to no if the POT file and PO files are maintained
++# externally.
++DIST_DEPENDS_ON_UPDATE_PO = yes
+Index: lgeneral/po/pg/POTFILES.in
+===================================================================
+--- /dev/null
++++ lgeneral/po/pg/POTFILES.in
+@@ -0,0 +1 @@
++po/pg/pg-translations.c

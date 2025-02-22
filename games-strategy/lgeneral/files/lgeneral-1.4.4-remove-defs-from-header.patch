@@ -1,0 +1,29 @@
+Those functions are defined in hashtable_itr.c
+I think this was made for "speed", but it break compilation with GCC-15
+and is plainly unnecessary
+--- a/util/hashtable_itr.h
++++ b/util/hashtable_itr.h
+@@ -29,19 +29,13 @@
+  * - return the value of the (key,value) pair at the current position */
+ 
+-extern inline void *
+-hashtable_iterator_key(struct hashtable_itr *i)
+-{
+-    return i->e->k;
+-}
++extern void *
++hashtable_iterator_key(struct hashtable_itr *i);
+ 
+ /*****************************************************************************/
+ /* value - return the value of the (key,value) pair at the current position */
+ 
+-extern inline void *
++extern void *
+-hashtable_iterator_value(struct hashtable_itr *i)
+-{
+-    return i->e->v;
+-}
++hashtable_iterator_value(struct hashtable_itr *i);
+ 
+ /*****************************************************************************/
+ /* advance - advance the iterator to the next element
