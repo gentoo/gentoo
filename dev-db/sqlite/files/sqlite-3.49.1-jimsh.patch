@@ -1,0 +1,36 @@
+# https://bugs.gentoo.org/949981
+# https://github.com/msteveb/jimtcl/commit/9b754b8033b9f2a1dc8ba1227df2e5d75185dda7
+--- a/autosetup/jimsh0.c
++++ b/autosetup/jimsh0.c
+@@ -2088,9 +2088,13 @@ enum wbuftype {
+ #define UNIX_SOCKETS 0
+ #endif
+ 
+-#ifndef MAXPATHLEN
+-#define MAXPATHLEN JIM_PATH_LEN
+-#endif
++# ifndef MAXPATHLEN
++# ifdef PATH_MAX
++# define MAXPATHLEN PATH_MAX
++# else
++# define MAXPATHLEN JIM_PATH_LEN
++# endif
++# endif
+ 
+ 
+ 
+@@ -4173,14 +4177,6 @@ int Jim_regexpInit(Jim_Interp *interp)
+ #define S_ISDIR(m) (((m) & S_IFMT) == S_IFDIR)
+ #endif
+ 
+-# ifndef MAXPATHLEN
+-# ifdef PATH_MAX
+-# define MAXPATHLEN PATH_MAX
+-# else
+-# define MAXPATHLEN JIM_PATH_LEN
+-# endif
+-# endif
+-
+ #if defined(__MINGW32__) || defined(__MSYS__) || defined(_MSC_VER)
+ #define ISWINDOWS 1
+ 
