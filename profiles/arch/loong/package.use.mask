@@ -8,7 +8,6 @@ dev-python/qtpy test
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
 # Vulkan works on loong.
-gui-libs/gtk -vulkan
 media-video/mpv -vulkan
 
 # Sam James <sam@gentoo.org> (2025-01-10)
