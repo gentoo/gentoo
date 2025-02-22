@@ -1,0 +1,24 @@
+Fix for hardcoding CFLAGS and broken test for mkdir
+https://bugs.gentoo.org/898992
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,10 +20,6 @@
+ AC_PROG_RANLIB
+ AM_PROG_CC_C_O
+ 
+-dnl various CFLAGS
+-CFLAGS="$CFLAGS -Wall -std=gnu89"
+-CFLAGS="$CFLAGS -O0 -g"
+-
+ dnl Checks for libraries.
+ AC_CHECK_LIB(m, main,, AC_MSG_ERROR(maths library is needed))
+ dnl AC_CHECK_LIB(dl, main,, AC_CHECK_LIB(c, dlopen,, AC_MSG_ERROR(dl library is needed)))
+@@ -35,7 +31,7 @@
+ dnl check for mkdir accepting permissions
+ AC_MSG_CHECKING(if mkdir rejects permissions)
+ ac_mkdir_perm_broken=yes
+-AC_TRY_COMPILE([#include <unistd.h>], [mkdir("test", 0777)], [ac_mkdir_perm_broken=no])
++AC_TRY_COMPILE([#include <sys/stat.h>], [mkdir("test", 0777)], [ac_mkdir_perm_broken=no])
+ if test x$ac_mkdir_perm_broken = xyes ; then
+   AC_DEFINE_UNQUOTED(HAVE_BROKEN_MKDIR, 1, [Defined if mkdir rejects a second permissions parameter.])
+ fi
