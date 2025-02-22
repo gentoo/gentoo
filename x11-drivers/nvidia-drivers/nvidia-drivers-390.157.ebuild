@@ -76,7 +76,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-QA_PREBUILT="opt/bin/* usr/lib*"
+# there is some non-prebuilt exceptions but rather not maintain a list
+QA_PREBUILT="usr/bin/* usr/lib*"
 
 PATCHES=(
 	# note: no plans to add patches for newer kernels here, when the last
@@ -359,7 +360,7 @@ documentation that is installed alongside this README."
 		if [[ -v 'paths[${m[2]}]' ]]; then
 			into=${paths[${m[2]}]}
 		elif [[ ${m[2]} == *_BINARY ]]; then
-			into=/opt/bin
+			into=/usr/bin
 		elif [[ ${m[3]} == COMPAT32 ]]; then
 			use abi_x86_32 || continue
 			into=/usr/${libdir32}
