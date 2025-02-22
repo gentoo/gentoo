@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,6 @@ DOCS=( authors.txt README TODO )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-	setup-wxwidgets
 }
 
 src_prepare() {
@@ -72,6 +71,7 @@ src_configure() {
 		-DBUILD_HSI=$(usex python)
 		-DENABLE_LAPACK=$(usex lapack)
 	)
+	setup-wxwidgets
 	cmake_src_configure
 }
 
