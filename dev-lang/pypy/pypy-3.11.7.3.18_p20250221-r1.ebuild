@@ -32,8 +32,8 @@ RESTRICT="test"
 
 RDEPEND="
 	|| (
-		dev-lang/pypy3-exe:${PV%_p*}[bzip2(+),ncurses?]
-		dev-lang/pypy3-exe-bin:${PV%_p*}
+		~dev-lang/pypy3-exe-${PV}[bzip2(+),ncurses?]
+		~dev-lang/pypy3-exe-bin-${PV}
 	)
 	dev-lang/python-exec[python_targets_pypy3(-)]
 	dev-libs/openssl:0=
