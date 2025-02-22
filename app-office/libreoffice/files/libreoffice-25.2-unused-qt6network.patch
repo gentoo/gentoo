@@ -1,0 +1,45 @@
+From d4287704f9e2ea07e0750b114ec0761c2732d03e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Mar 2024 21:40:25 +0100
+Subject: [PATCH] Drop unused QtNetwork dependency, fix KDE terminology
+
+'KDE version' -> 'KDE Frameworks version'
+
+Change-Id: I2e6a912be93d79b251dcf32c20796374c9ca9cf2
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ configure.ac | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 01cb56658cff..5c94e843175a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13756,7 +13756,7 @@ then
+ 
+     QT6_CFLAGS="-I$qt6_incdir -DQT_NO_VERSION_TAGGING"
+     QT6_CFLAGS=$(printf '%s' "$QT6_CFLAGS" | sed -e "s/-I/${ISYSTEM?}/g")
+-    QT6_LIBS="-L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets -lQt6Network"
++    QT6_LIBS="-L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets"
+     if test "$_os" = "Emscripten"; then
+         QT6_LIBS="$QT6_LIBS -lQt6BundledPcre2 -lQt6BundledZLIB -L${qt6_platformsdir} -lqwasm -sGL_ENABLE_GET_PROC_ADDRESS"
+     else
+@@ -13947,7 +13947,7 @@ then
+     fi
+ 
+     KF6_CFLAGS="-I$kf6_incdir -I$kf6_incdir/KCoreAddons -I$kf6_incdir/KI18n -I$kf6_incdir/KConfig -I$kf6_incdir/KConfigCore -I$kf6_incdir/KWindowSystem -I$kf6_incdir/KIO -I$kf6_incdir/KIOCore -I$kf6_incdir/KIOWidgets -I$kf6_incdir/KIOFileWidgets -I$qt6_incdir -I$qt6_incdir/QtCore -I$qt6_incdir/QtGui -I$qt6_incdir/QtWidgets -I$qt6_incdir/QtNetwork -DQT_NO_VERSION_TAGGING"
+-    KF6_LIBS="-L$kf6_libdir -lKF6CoreAddons -lKF6I18n -lKF6ConfigCore -lKF6WindowSystem -lKF6KIOCore -lKF6KIOWidgets -lKF6KIOFileWidgets -L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets -lQt6Network"
++    KF6_LIBS="-L$kf6_libdir -lKF6CoreAddons -lKF6I18n -lKF6ConfigCore -lKF6WindowSystem -lKF6KIOCore -lKF6KIOWidgets -lKF6KIOFileWidgets -L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets"
+     KF6_CFLAGS=$(printf '%s' "$KF6_CFLAGS" | sed -e "s/-I/${ISYSTEM?}/g")
+ 
+     AC_LANG_PUSH([C++])
+@@ -13962,7 +13962,7 @@ int main(int argc, char **argv) {
+        static_assert(KCOREADDONS_VERSION_MAJOR == 6);
+        return 0;
+ }
+-       ]])],[AC_MSG_RESULT([yes])],[AC_MSG_ERROR([KDE version too old])],[])
++       ]])],[AC_MSG_RESULT([yes])],[AC_MSG_ERROR([KDE Frameworks version too old])],[])
+     CXXFLAGS=$save_CXXFLAGS
+     AC_LANG_POP([C++])
+ fi
+
