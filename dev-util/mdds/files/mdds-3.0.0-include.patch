@@ -1,0 +1,19 @@
+https://gitlab.com/mdds/mdds/-/commit/7c414ddc0bd2fae590cc09944579e90d822d9e0b
+
+From 7c414ddc0bd2fae590cc09944579e90d822d9e0b Mon Sep 17 00:00:00 2001
+From: Gwyn Ciesla <gwync@protonmail.com>
+Date: Tue, 28 Jan 2025 13:33:22 -0600
+Subject: [PATCH] Fix build with most recent gcc/glibc
+
+--- a/include/mdds/trie_map.hpp
++++ b/include/mdds/trie_map.hpp
+@@ -37,6 +37,7 @@
+ #include <map>
+ #include <memory>
+ #include <limits>
++#include <cstdint>
+ 
+ namespace mdds {
+ 
+-- 
+GitLab
