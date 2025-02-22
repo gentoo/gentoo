@@ -8,4 +8,7 @@
   otpCalc is an RFC2289 and RFC1760 compliant one time password calculator,
   written to use the GTK+ library for screen I/O.
 </longdescription>
+<upstream>
+  <remote-id type="gitlab">otpcalc/otpcalc</remote-id>
+</upstream>
 </pkgmetadata>
