@@ -25,6 +25,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-libs/libbsd
+	dev-libs/xxhash
 "
 
 mymake() {
