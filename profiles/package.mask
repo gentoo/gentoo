@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-02-22)
+# (Only) needed for no-yet-released LibreOffice. Mask for now to avoid
+# unnecessary conflicts/backtracking for LO users.
+=dev-libs/liborcus-0.20.0
+=dev-libs/libixion-0.20.0
+=dev-util/mdds-3.0.0
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-21)
 # Shiboken and Pyside-tools have been merged into dev-python/pyside
 # as of version 6.8.2. Pyside-tools are useable when the "tools" USE
