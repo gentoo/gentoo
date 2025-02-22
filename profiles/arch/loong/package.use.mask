@@ -114,10 +114,6 @@ dev-perl/DBD-MariaDB mysql
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
-# WANG Xuerui <xen0n@gentoo.org> (2024-01-09)
-# PCRE2 upstream has gained JIT support on loong since 10.43.
-<dev-libs/libpcre2-10.43_rc1 jit
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-08)
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
