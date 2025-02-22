@@ -1,6 +1,10 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Zurab Kvachadze <zurabid2016@gmail.com> (2025-02-18)
+# www-servers/uwsgi, required for tests, is not keyworded on riscv.
+www-servers/nginx test
+
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
 # sci-libs/caffe2 is not keyworded on riscv
 sci-chemistry/gromacs nnpot

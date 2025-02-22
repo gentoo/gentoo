@@ -1,0 +1,48 @@
+From a105fc2a543d1136c6c747c1c2d1fd905ab9389f Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Thu, 13 Feb 2025 02:29:05 +0100
+Subject: [PATCH] Util.pm: specify error log on command line
+
+When no error log is specified on the command line, NGINX logs errors to
+the compiled-in error log (irrespective of whether the error log is
+specified in the configuration file), which is most often writable only
+by root. When tests are run as unprivileged user, NGINX can not write
+the log file and, therefore, fails to start.
+
+This commit makes Test::Nginx set the error log to standard error no
+configuration file is specified, or to $ServRoot/logs/error.log when the
+configuration file is specified, thus overriding the default path.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ lib/Test/Nginx/Util.pm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Test/Nginx/Util.pm b/lib/Test/Nginx/Util.pm
+index 1af9277..41c6061 100644
+--- a/lib/Test/Nginx/Util.pm
++++ b/lib/Test/Nginx/Util.pm
+@@ -1292,7 +1292,7 @@ sub get_canon_version_for_OpenSSL (@) {
+ }
+ 
+ sub get_nginx_version () {
+-    my $out = `$NginxBinary -V 2>&1`;
++    my $out = `$NginxBinary -e stderr -V 2>&1`;
+     if (!defined $out || $? != 0) {
+         $out //= "";
+         bail_out("Failed to get the version of the Nginx in PATH: $out");
+@@ -2049,9 +2049,9 @@ start_nginx:
+             my $cmd;
+ 
+             if ($NginxVersion >= 0.007053) {
+-                $cmd = "$NginxBinary -p $ServRoot/ -c $ConfFile > /dev/null";
++                $cmd = "$NginxBinary -e $ServRoot/logs/error.log -p $ServRoot/ -c $ConfFile > /dev/null";
+             } else {
+-                $cmd = "$NginxBinary -c $ConfFile > /dev/null";
++                $cmd = "$NginxBinary -e $ServRoot/logs/error.log -c $ConfFile > /dev/null";
+             }
+ 
+             if (defined $block->suppress_stderr) {
+-- 
+2.45.3
+
