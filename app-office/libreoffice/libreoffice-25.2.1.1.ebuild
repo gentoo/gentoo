@@ -596,16 +596,16 @@ src_compile() {
 	addpredict /dev/ati
 	addpredict /dev/nvidiactl
 
-	default
+	emake -Onone
 }
 
 src_test() {
-	emake unitcheck
-	emake slowcheck
+	emake -Onone unitcheck
+	emake -Onone slowcheck
 }
 
 src_install() {
-	emake DESTDIR="${D}" distro-pack-install -o build -o check
+	emake -Onone DESTDIR="${D}" distro-pack-install -o build -o check
 
 	# TODO: still relevant for gtk4?
 	# bug #593514
