@@ -49,10 +49,6 @@ app-emulation/libvirt nbd
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# media-libs/shaderc is keyworded here.
-media-libs/libplacebo -shaderc
-
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6

@@ -114,10 +114,6 @@ dev-perl/DBD-MariaDB mysql
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-08)
-# media-libs/shaderc is keyworded here.
-media-libs/libplacebo -shaderc
-
 # WANG Xuerui <xen0n@gentoo.org> (2024-01-03)
 # app-crypt/rpm-sequoia is keyworded here.
 app-arch/rpm -sequoia
