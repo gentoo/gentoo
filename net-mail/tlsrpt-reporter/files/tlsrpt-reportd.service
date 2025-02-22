@@ -1,0 +1,18 @@
+[Unit]
+Description=tlsrpt-reportd agent to create TLSRPT reports
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/tlsrpt-reportd --config_file /etc/tlsrpt-reporter/tlsrpt-reporter.cfg
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=true
+Restart=always
+User=tlsrpt-reporter
+LogsDirectory=tlsrpt-reporter
+StateDirectory=tlsrpt-reporter
+RuntimeDirectory=tlsrpt-reporter
+ConfigurationDirectory=tlsrpt-reporter
+
+[Install]
+WantedBy=multi-user.target
