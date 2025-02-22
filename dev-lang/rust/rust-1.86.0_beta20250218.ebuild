@@ -217,7 +217,12 @@ src_unpack() {
 			directory = "vendor"
 		_EOF_
 	else
-		verify-sig_src_unpack
+		# Until upstream merge this patch we can't use the default verify-sig_src_unpack
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}/rustc-${PV}-src.tar.xz" \
+				"${DISTDIR}/rustc-${PV}-src.tar.xz.asc"
+		fi
+		default_src_unpack
 	fi
 }
 
