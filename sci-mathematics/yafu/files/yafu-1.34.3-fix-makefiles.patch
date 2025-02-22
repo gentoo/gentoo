@@ -1,0 +1,75 @@
+Conglomerates previous makefile fix, seds and fixes to let toolchain
+compiler and settings be used to the build system.
+Removes non-existing include and library directories that arose as result
+of initial development on mingw with hand-build dependencies.
+Replaces wrong default path to system ggnfs from "same directory" to "system binaries"
+Was sed:
+sed -i -e 's~strcpy(fobj->nfs_obj.ggnfs_dir,"./");~strcpy(fobj->nfs_obj.ggnfs_dir,"/usr/bin/");~' factor/factor_common.c || die
+Must somehow include EPREFIX there...
+--- a/Makefile
++++ b/Makefile
+@@ -17,20 +17,13 @@
+ #        				   --bbuhrow@gmail.com 7/28/09
+ # ----------------------------------------------------------------------*/
+ 
+-CC = gcc
+ #CC = x86_64-w64-mingw32-gcc-4.5.1
+ #CFLAGS = -march=core2 -mtune=core2
+-CFLAGS = -g
+ WARN_FLAGS = -Wall # -Wconversion
+-OPT_FLAGS = -O3
+ INC = -I. -Iinclude
+ 
+ # modify these for your particular gmp/gmp-ecm installation
+-INC += -I../gmp/include
+-LIBS += -L../gmp/lib/linux/x86_64
+ 
+-INC += -I../gmp-ecm/include
+-LIBS += -L../gmp-ecm/lib/linux/x86_64
+ 
+ ifeq ($(STATIC),1)
+ 	CFLAGS += -static
+@@ -39,8 +32,6 @@
+ ifeq ($(PROFILE),1)
+ 	CFLAGS += -pg 
+ 	CFLAGS += -DPROFILING
+-else
+-	OPT_FLAGS += -fomit-frame-pointer
+ endif
+ 
+ # if this option is specified then compile *both* the sse2 and sse4.1 versions of the
+@@ -87,7 +78,7 @@
+ 	CFLAGS += -mtune=core2 -march=core2
+ endif
+ 
+-LIBS += -lecm -lgmp
++LIBS += -lecm -lgmp -lgomp
+ 
+ CFLAGS += $(OPT_FLAGS) $(WARN_FLAGS) $(INC)
+ 	
+@@ -232,10 +223,10 @@
+ 	@echo "add 'PROFILE=1' to make with profiling enabled (slower) "
+ 
+ x86: $(MSIEVE_OBJS) $(YAFU_OBJS) $(YAFU_NFS_OBJS)
+-	$(CC) -m32 $(CFLAGS) $(MSIEVE_OBJS) $(YAFU_OBJS) $(YAFU_NFS_OBJS) -o yafu $(LIBS)
++	$(CC) $(LDFLAGS) -m32 $(CFLAGS) $(MSIEVE_OBJS) $(YAFU_OBJS) $(YAFU_NFS_OBJS) -o yafu $(LIBS)
+ 
+ x86_64: $(MSIEVE_OBJS) $(YAFU_OBJS) $(YAFU_NFS_OBJS)
+-	$(CC) $(CFLAGS) $(MSIEVE_OBJS) $(YAFU_OBJS) $(YAFU_NFS_OBJS) -o yafu $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(MSIEVE_OBJS) $(YAFU_OBJS) $(YAFU_NFS_OBJS) -o yafu $(LIBS)
+ 
+ 
+ clean:
+
+--- a/factor/factor_common.c
++++ b/factor/factor_common.c
+@@ -296,7 +296,7 @@
+ #elif defined(WIN32)
+ 	strcpy(fobj->nfs_obj.ggnfs_dir,".\\");
+ #else
+-	strcpy(fobj->nfs_obj.ggnfs_dir,"./");
++	strcpy(fobj->nfs_obj.ggnfs_dir,"/usr/bin/");
+ #endif
+ 
+ 	//initialize autofactor object
+
