@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="experimental">Enable experimental features via <pkg>media-libs/zint</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">zxing-cpp/zxing-cpp</remote-id>
 	</upstream>
