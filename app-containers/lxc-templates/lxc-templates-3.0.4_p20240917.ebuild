@@ -10,7 +10,7 @@ DESCRIPTION="Old style template scripts for LXC"
 HOMEPAGE="https://linuxcontainers.org/ https://github.com/lxc/lxc-templates"
 SRC_URI="https://github.com/lxc/lxc-templates/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
