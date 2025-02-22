@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sv. Lockal <lockalsash@gmail.com> (2025-01-11)
+# dev-cpp/prometheus-cpp is not keyworded
+dev-cpp/opentelemetry-cpp prometheus
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-core/clang-runtime -offload
