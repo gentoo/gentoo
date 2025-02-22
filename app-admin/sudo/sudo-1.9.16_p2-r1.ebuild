@@ -240,6 +240,10 @@ src_install() {
 
 	# bug #697812
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	# Build system installs /etc/sudoers.d, let's make sure we
+	# keep having it.
+	keepdir /etc/sudoers.d
 }
 
 pkg_postinst() {
