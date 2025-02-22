@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 		)
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.76:= )
-	vulkan? ( >=media-libs/vulkan-loader-1.3:= )
+	vulkan? ( >=media-libs/vulkan-loader-1.3:=[wayland?,X?] )
 	wayland? (
 		>=dev-libs/wayland-1.21.0
 		>=dev-libs/wayland-protocols-1.31
