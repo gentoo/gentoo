@@ -19,7 +19,7 @@ fi
 
 IUSE="
 	accessibility +alsa bindist custom-cflags designer geolocation
-	+jumbo-build kerberos opengl pdfium pulseaudio qml screencast
+	+jumbo-build kerberos opengl +pdfium pulseaudio qml screencast
 	+system-icu vaapi vulkan webdriver +widgets
 "
 REQUIRED_USE="
