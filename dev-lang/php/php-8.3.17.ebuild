@@ -232,6 +232,9 @@ src_prepare() {
 
 	# depends on truetype support, thus we skip it
 	# if the "truetype" USE flag is missing
+	#
+	#   https://github.com/php/php-src/issues/17891
+	#
 	if ! use truetype ; then
 		rm ext/gd/tests/gh17373.phpt || die
 	fi
