@@ -7,11 +7,11 @@ inherit autotools
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	MY_P="${PN}${PV/_/}"
+	MY_P="${PN}${PV/_/-}"
 	EGIT_REPO_URI="https://github.com/sys4/${PN}.git"
 else
-	MY_P="${PN}-${PV/_/}"
-	SRC_URI="https://github.com/sys4/${PN}/releases/download/v${PV/_/}/${MY_P}.tar.gz"
+	MY_P="${PN}-${PV/_/-}"
+	SRC_URI="https://github.com/sys4/${PN}/releases/download/v${PV/_/-}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/${MY_P}"
 fi
