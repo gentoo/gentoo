@@ -21,6 +21,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? (
 		dev-cpp/gtest
+		dev-libs/libfmt
 		dev-libs/stb
 	)
 "
@@ -43,6 +44,7 @@ src_configure() {
 		-DBUILD_EXAMPLES=OFF # nothing is installed
 		-DBUILD_BLACKBOX_TESTS=$(usex test)
 		-DBUILD_UNIT_TESTS=$(usex test)
+		-DBUILD_DEPENDENCIES=LOCAL # force find_package as REQUIRED
 	)
 	cmake_src_configure
 }
