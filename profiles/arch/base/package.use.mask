@@ -295,11 +295,6 @@ dev-scheme/guile jit
 # dev-util/nvidia-cuda-toolkit is only available on amd64
 app-metrics/collectd collectd_plugins_gpu_nvidia
 
-# Sam James <sam@gentoo.org> (2020-07-03)
-# Rust is only available on some arches
-# Bug #728558
-media-video/ffmpeg rav1e
-
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio io-uring zbc
