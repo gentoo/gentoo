@@ -5,6 +5,10 @@
 		<email>asturm@gentoo.org</email>
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/sebaro/Yarock/issues</bugs-to>
+		<remote-id type="github">sebaro/Yarock</remote-id>
+	</upstream>
 	<use>
 		<flag name="mpv">Enable <pkg>media-video/mpv</pkg> backend</flag>
 		<flag name="phonon">Enable <pkg>media-libs/phonon</pkg> backend</flag>

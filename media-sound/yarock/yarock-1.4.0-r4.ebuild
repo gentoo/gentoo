@@ -39,7 +39,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.4.0-fix-build-taglib2.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-taglib2-include.patch
+	"${FILESDIR}"/${P}-fix-build-taglib2.patch
+)
 
 DOCS=( CHANGES.md README.md )
 
