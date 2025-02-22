@@ -1,0 +1,22 @@
+Fix headers for USE="lyrics -cover -taglib"
+Add missing dependency, include guard
+https://bugs.gentoo.org/919181
+--- a/src/gimmix-lyrics.h
++++ b/src/gimmix-lyrics.h
+@@ -4,6 +4,7 @@
+ #define GIMMIX_LYRICS_H
+ 
+ #include "gimmix-core.h"
++#include "gimmix-metadata.h"
+ #include "gimmix.h"
+ #include "wejpconfig.h"
+ #include <gtk/gtk.h>
+--- a/src/gimmix-metadata.h
++++ b/src/gimmix-metadata.h
+@@ -1,5 +1,5 @@
+ #ifndef GIMMIX_METADATA_H
+-#define GIMMIX_METADAT_H
++#define GIMMIX_METADATA_H
+ 
+ #include "gimmix-core.h"
+ #include "gimmix.h"
