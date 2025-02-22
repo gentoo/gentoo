@@ -1,0 +1,29 @@
+Uses bools for enabling/disabling debug.
+Switch from self-defined to system version.
+https://bugs.gentoo.org/944302
+--- a/bfr.h
++++ b/bfr.h
+@@ -9,6 +9,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <stdbool.h>
+ #ifdef BUFPLAY
+ #include <sys/mman.h>
+ #endif
+@@ -17,14 +18,13 @@
+ # include "config.h"
+ #endif
+ 
+-typedef enum {false, true} logical;
+ typedef enum { IN, RO, BF, WO, RW } state;
+ 
+ #ifndef DEBUG
+ # define debug(args...)
+ #else
+ # define debug(args...)  if(dodebug==true) { fprintf(stderr, ## args); }
+-logical dodebug;
++bool dodebug;
+ #endif
+ #define verbose(args...)  if(verbose >= 1) { fprintf(stderr, ## args); }
+ #define vverbose(args...)  if(verbose >= 2) { fprintf(stderr, ## args); }
