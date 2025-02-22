@@ -52,9 +52,11 @@ src_configure() {
 }
 
 src_test() {
-	# bugs 797898, 889942: flaky test
-	local myctestargs=(
-		-E "(sensortreemodeltest)"
+	local CMAKE_SKIP_TESTS=(
+		# bugs 797898, 889942: flaky test
+		sensortreemodeltest
+		# bugs 727844, 949883: flaky test
+		processtest
 	)
 	LC_NUMERIC="C" ecm_src_test # bug 695514
 }
