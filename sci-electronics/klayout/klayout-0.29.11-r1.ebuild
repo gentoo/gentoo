@@ -16,8 +16,8 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_CHECKOUT_DIR=${WORKDIR}/all/${P}
 else
-	SRC_URI="https://www.klayout.org/downloads/source/${P}.tar.gz"
-	#KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://www.klayout.org/downloads/source/${P}.tar.gz https://dev.gentoo.org/~dilfridge/distfiles/${P}-qt6.tar.xz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
@@ -37,6 +37,12 @@ RDEPEND="
 	$(ruby_implementations_depend)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${WORKDIR}"/all/qt6-patches/klayout-0.29.11-0001-Fixing-issue-1987-build-failure-against-Qt6.8.patch
+	"${WORKDIR}"/all/qt6-patches/klayout-0.29.11-0002-WIP-more-fixes-for-Qt-6.8-compatibility.patch
+	"${WORKDIR}"/all/qt6-patches/klayout-0.29.11-0003-More-patches.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
