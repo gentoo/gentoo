@@ -86,7 +86,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
+# there is some non-prebuilt exceptions but rather not maintain a list
+QA_PREBUILT="lib/firmware/* usr/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
@@ -155,7 +156,7 @@ src_prepare() {
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
 	use !powerd || # file is missing on arm64 (masked)
-		sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
+		sed -i "s|/usr|${EPREFIX}/usr|" systemd/system/nvidia-powerd.service || die
 
 	# use alternative vulkan icd option if USE=-X (bug #909181)
 	use X || sed -i 's/"libGLX/"libEGL/' nvidia_{layers,icd}.json || die
@@ -392,7 +393,7 @@ documentation that is installed alongside this README."
 		elif [[ ${m[2]} == EXPLICIT_PATH ]]; then
 			into=${m[3]}
 		elif [[ ${m[2]} == *_BINARY ]]; then
-			into=/opt/bin
+			into=/usr/bin
 		elif [[ ${m[3]} == COMPAT32 ]]; then
 			use abi_x86_32 || continue
 			into=/usr/${libdir32}
