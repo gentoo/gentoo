@@ -1,14 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit flag-o-matic lua-single
+inherit autotools flag-o-matic lua-single
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
-HOMEPAGE="https://dnsdist.org"
+HOMEPAGE="https://www.dnsdist.org/index.html"
 
 SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.bz2"
 LICENSE="GPL-2"
@@ -49,11 +49,16 @@ RDEPEND="acct-group/dnsdist
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/1.9.8-quiche-0.23.patch" )
+
 src_prepare() {
 	default
 
 	# clean up duplicate file
 	rm -f README.md
+
+	# reconfigure
+	eautoreconf
 }
 
 src_configure() {
