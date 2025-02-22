@@ -271,11 +271,6 @@ net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand -strongs
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Sam James <sam@gentoo.org> (2020-07-03)
-# Rust is available here
-# Bug #728558
-media-video/ffmpeg -rav1e
-
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring -zbc
