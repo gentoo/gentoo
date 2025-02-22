@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2024-09-04)
@@ -12,10 +12,6 @@
 media-tv/kodi soc
 media-video/ffmpeg libdrm soc
 media-video/mpv soc
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# media-libs/shaderc is not keyworded here, so enable glslang fallback.
-media-libs/libplacebo glslang -shaderc
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # Enable the native arch as the default qemu target

@@ -29,10 +29,6 @@ dev-python/qtpy webengine test
 # virtiofsd is available here
 app-emulation/libvirt -virtiofsd
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# media-libs/shaderc is keyworded here.
-media-libs/libplacebo -shaderc
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on

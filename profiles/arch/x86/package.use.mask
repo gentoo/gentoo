@@ -88,10 +88,6 @@ net-libs/xrootd xrdec
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# media-libs/shaderc is keyworded here.
-media-libs/libplacebo -shaderc
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo
