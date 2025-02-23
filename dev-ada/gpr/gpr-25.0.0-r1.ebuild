@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/releases/download/v${PV}/gpr2-with-gpr
 S="${WORKDIR}"/${PN}
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
