@@ -41,8 +41,12 @@ BDEPEND=">=dev-lang/swig-2.0.4-r1
 # full SELinux userland repo
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.7-fix-swig-bindings-for-4.3.0.patch"
+)
+
 src_prepare() {
-	eapply_user
+	default
 
 	echo >> "${S}/src/semanage.conf"
 	echo "# Set this to true to save the linked policy." >> "${S}/src/semanage.conf"

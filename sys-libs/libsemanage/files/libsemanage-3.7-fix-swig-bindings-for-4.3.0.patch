@@ -1,0 +1,418 @@
+https://github.com/SELinuxProject/selinux/commit/e38815d7b44cac435195c82a54d2bf2517bc4b1a
+From 8ff90eff4d5a49e64d5b86247665d54787c9dc1d Mon Sep 17 00:00:00 2001
+From: Petr Lautrbach <lautrbach@redhat.com>
+Date: Wed, 16 Oct 2024 20:48:12 +0200
+Subject: [PATCH] libsemanage: fix swig bindings for 4.3.0
+
+https://github.com/swig/swig/blob/master/CHANGES.current
+
+"[Python] #2907 Fix returning null from functions with output
+parameters.  Ensures OUTPUT and INOUT typemaps are handled
+consistently wrt return type.
+
+New declaration of SWIG_Python_AppendOutput is now:
+
+  SWIG_Python_AppendOutput(PyObject* result, PyObject* obj, int is_void);
+
+The 3rd parameter is new and the new $isvoid special variable
+should be passed to it, indicating whether or not the wrapped
+function returns void.
+
+Also consider replacing with:
+
+  SWIG_AppendOutput(PyObject* result, PyObject* obj);
+
+which calls SWIG_Python_AppendOutput with same parameters but adding $isvoid
+for final parameter."
+
+Fixes: https://github.com/SELinuxProject/selinux/issues/447
+
+Suggested-by: Jitka Plesnikova <jplesnik@redhat.com>
+Signed-off-by: Petr Lautrbach <lautrbach@redhat.com>
+Acked-by: James Carter <jwcart2@gmail.com>
+---
+ src/semanageswig_python.i | 64 +++++++++++++--------------
+ src/semanageswig_ruby.i   | 32 +++++++-------
+ 2 files changed, 48 insertions(+), 48 deletions(-)
+
+diff --git a/src/semanageswig_python.i b/src/semanageswig_python.i
+index 5f011396..0e27424f 100644
+--- a/src/semanageswig_python.i
++++ b/src/semanageswig_python.i
+@@ -111,7 +111,7 @@
+ }
+ 
+ %typemap(argout) char** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_FromCharPtr(*$1));
++	$result = SWIG_AppendOutput($result, SWIG_FromCharPtr(*$1));
+ 	free(*$1);
+ }
+ 
+@@ -134,7 +134,7 @@
+                         	NULL, NULL, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -148,7 +148,7 @@
+ }
+ 
+ %typemap(argout) semanage_module_info_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ /** module key typemaps **/
+@@ -160,7 +160,7 @@
+ }
+ 
+ %typemap(argout) semanage_module_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ /** context typemaps **/
+@@ -172,7 +172,7 @@
+ }
+ 
+ %typemap(argout) semanage_context_t** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ /** boolean typemaps **/
+@@ -197,7 +197,7 @@
+ 				(void (*) (void*)) &semanage_bool_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-		   	        $result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -207,11 +207,11 @@
+ }
+ 
+ %typemap(argout) semanage_bool_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_bool_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_bool_key_t **(semanage_bool_key_t *temp=NULL) {
+@@ -240,7 +240,7 @@
+ 				(void (*) (void*)) &semanage_fcontext_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -250,11 +250,11 @@
+ }
+ 
+ %typemap(argout) semanage_fcontext_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_fcontext_key_t ** {
+-        $result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_fcontext_key_t **(semanage_fcontext_key_t *temp=NULL) {
+@@ -284,7 +284,7 @@
+ 				(void (*) (void*)) &semanage_iface_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -294,11 +294,11 @@
+ }
+ 
+ %typemap(argout) semanage_iface_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_iface_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_iface_key_t **(semanage_iface_key_t *temp=NULL) {
+@@ -328,7 +328,7 @@
+ 				(void (*) (void*)) &semanage_seuser_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -338,11 +338,11 @@
+ }
+ 
+ %typemap(argout) semanage_seuser_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_seuser_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_seuser_key_t **(semanage_seuser_key_t *temp=NULL) {
+@@ -371,7 +371,7 @@
+ 				(void (*) (void*)) &semanage_user_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -381,11 +381,11 @@
+ }
+ 
+ %typemap(argout) semanage_user_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_user_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_user_key_t **(semanage_user_key_t *temp=NULL) {
+@@ -414,7 +414,7 @@
+ 				(void (*) (void*)) &semanage_port_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -424,11 +424,11 @@
+ }
+ 
+ %typemap(argout) semanage_port_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_port_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_port_key_t **(semanage_port_key_t *temp=NULL) {
+@@ -457,7 +457,7 @@
+ 				(void (*) (void*)) &semanage_ibpkey_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -467,11 +467,11 @@
+ }
+ 
+ %typemap(argout) semanage_ibpkey_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_ibpkey_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_ibpkey_key_t **(semanage_ibpkey_key_t *temp=NULL) {
+@@ -500,7 +500,7 @@
+ 				(void (*) (void*)) &semanage_ibendport_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -510,11 +510,11 @@
+ }
+ 
+ %typemap(argout) semanage_ibendport_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_ibendport_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_ibendport_key_t **(semanage_ibendport_key_t *temp=NULL) {
+@@ -543,7 +543,7 @@
+ 				(void (*) (void*)) &semanage_node_free, &plist) < 0)
+ 				$result = SWIG_From_int(STATUS_ERR);
+ 			else
+-				$result = SWIG_Python_AppendOutput($result, plist);
++				$result = SWIG_AppendOutput($result, plist);
+ 		}
+ 	}
+ }
+@@ -553,12 +553,12 @@
+ }
+ 
+ %typemap(argout) semanage_node_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ 
+ %typemap(argout) semanage_node_key_t ** {
+-	$result = SWIG_Python_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++	$result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_node_key_t **(semanage_node_key_t *temp=NULL) {
+diff --git a/src/semanageswig_ruby.i b/src/semanageswig_ruby.i
+index e030e4ae..9010b545 100644
+--- a/src/semanageswig_ruby.i
++++ b/src/semanageswig_ruby.i
+@@ -38,7 +38,7 @@
+ }
+ 
+ %typemap(argout) semanage_module_info_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ /** context typemaps **/
+@@ -50,7 +50,7 @@
+ }
+ 
+ %typemap(argout) semanage_context_t** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ /** boolean typemaps **/
+@@ -66,11 +66,11 @@
+ }
+ 
+ %typemap(argout) semanage_bool_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_bool_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_bool_key_t **(semanage_bool_key_t *temp=NULL) {
+@@ -90,11 +90,11 @@
+ }
+ 
+ %typemap(argout) semanage_fcontext_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_fcontext_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_fcontext_key_t **(semanage_fcontext_key_t *temp=NULL) {
+@@ -114,11 +114,11 @@
+ }
+ 
+ %typemap(argout) semanage_iface_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_iface_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_iface_key_t **(semanage_iface_key_t *temp=NULL) {
+@@ -138,11 +138,11 @@
+ }
+ 
+ %typemap(argout) semanage_seuser_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_seuser_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_seuser_key_t **(semanage_seuser_key_t *temp=NULL) {
+@@ -162,11 +162,11 @@
+ }
+ 
+ %typemap(argout) semanage_user_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_user_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_user_key_t **(semanage_user_key_t *temp=NULL) {
+@@ -186,11 +186,11 @@
+ }
+ 
+ %typemap(argout) semanage_port_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(argout) semanage_port_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_port_key_t **(semanage_port_key_t *temp=NULL) {
+@@ -210,12 +210,12 @@
+ }
+ 
+ %typemap(argout) semanage_node_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ 
+ %typemap(argout) semanage_node_key_t ** {
+-        $result = SWIG_Ruby_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
++        $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(*$1, $*1_descriptor, 0));
+ }
+ 
+ %typemap(in, numinputs=0) semanage_node_key_t **(semanage_node_key_t *temp=NULL) {
+-- 
+2.48.1
+
