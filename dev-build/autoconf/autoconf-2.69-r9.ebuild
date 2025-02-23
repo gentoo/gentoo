@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ else
 
 	SRC_URI="
 		mirror://gnu/${PN}/${P}.tar.xz
-		ftp://alpha.gnu.org/pub/gnu/${PN}/${P}.tar.xz
+		https://alpha.gnu.org/pub/gnu/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/dist/${P}-runstatedir_patches.tar.xz
 		verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
 	"
