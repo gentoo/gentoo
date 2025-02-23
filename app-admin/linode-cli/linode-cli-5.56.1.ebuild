@@ -36,10 +36,10 @@ python_install_all() {
 	PYTHONPATH=. ${EPYTHON} linodecli completion fish > "${T}/${PN}".fish || die
 
 	newbashcomp "${T}/${PN}".bash ${PN}
-	newfishcomp "${T}/${PN}".fish ${PN}
+	dofishcomp "${T}/${PN}".fish
 
 	dosym ${PN} "$(get_bashcompdir)"/linode
 	dosym ${PN} "$(get_bashcompdir)"/lin
-	dosym ${PN} "$(get_fishcompdir)"/linode
-	dosym ${PN} "$(get_fishcompdir)"/lin
+	dosym ${PN}.fish "$(get_fishcompdir)"/linode.fish
+	dosym ${PN}.fish "$(get_fishcompdir)"/lin.fish
 }
