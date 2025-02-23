@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_13 gcc_14 )
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
 inherit ada python-any-r1 multiprocessing
 
@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc +shared ssl wsdl"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs]
+	>=dev-ada/gnatcoll-core-25:=[${ADA_USEDEP},shared?,static-libs]
 	dev-ada/libgpr:=[${ADA_USEDEP},shared?,static-libs]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared?,static-libs]
 	shared? (
