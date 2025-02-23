@@ -6,3 +6,6 @@ EAPI=8
 inherit acct-user
 
 ACCT_USER_ID=546
+ACCT_USER_GROUPS=( ${PN} )
+
+acct-user_add_deps
