@@ -59,7 +59,8 @@ BDEPEND="
 	')
 "
 
-CUDA_PATH="/opt/cuda-${PV}"
+# CUDA_PATH="/opt/cuda-${PV}" #950207
+CUDA_PATH="/opt/cuda"
 QA_PREBUILT="${CUDA_PATH#/}/*"
 
 PATCHES=(
@@ -318,9 +319,10 @@ src_install() {
 	fperms +x "${CUDA_PATH}/bin/cuda-config"
 	# }}}
 
-	if [[ "${SLOT}" != "${PV}" ]]; then
-		dosym "${CUDA_PATH}" "${CUDA_PATH%"-${PV}"}"
-	fi
+	# skip til cudnn has been changed #950207
+	# if [[ "${SLOT}" != "${PV}" ]]; then
+	# 	dosym "${CUDA_PATH}" "${CUDA_PATH%"-${PV}"}"
+	# fi
 
 	fowners -R root:root "${CUDA_PATH}"
 }
