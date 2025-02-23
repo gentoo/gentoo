@@ -25,10 +25,8 @@ else
 
 	SRC_URI="
 		https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
-		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz
 		verify-sig? (
 			https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz.sig
-			ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz.sig
 		)
 	"
 
