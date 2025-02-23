@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic pam tmpfiles toolchain-funcs
+inherit pam tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
