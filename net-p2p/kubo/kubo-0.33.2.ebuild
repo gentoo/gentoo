@@ -68,7 +68,7 @@ src_install() {
 	dobin ipfs
 	dobin ipfswatch
 	newbashcomp ipfs-completion.bash ipfs
-	newfishcomp ipfs-completion.fish ipfs
+	newfishcomp ipfs-completion.fish ipfs.fish
 	newzshcomp ipfs-completion.zsh _ipfs
 	einstalldocs
 
