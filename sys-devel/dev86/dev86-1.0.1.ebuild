@@ -10,7 +10,7 @@ HOMEPAGE="http://www.debath.co.uk/ https://github.com/lkundrak/dev86"
 SRC_URI="https://codeberg.org/jbruchon/dev86/archive/v${PV}.tar.gz -> Dev86src-${PV}.tar.gz"
 S="${WORKDIR}/dev86"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 LGPL-2 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
