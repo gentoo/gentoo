@@ -14,8 +14,8 @@ elif [[ ${PV} == *beta* ]]; then
 	# While uncommon it is possible for feature changes within `beta` to result
 	# in an older snapshot being unable to build a newer one without modifying the sources.
 	# 'stable' releases should always be able to build a beta snapshot so just use those.
-	RUST_MAX_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).1"
-	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 3)).0"
+	RUST_MAX_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
+	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
