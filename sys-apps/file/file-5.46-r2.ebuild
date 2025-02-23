@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 toolchain-funcs multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/glensc/file.git"
+	EGIT_REPO_URI="https://github.com/file/file"
 	inherit autotools git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/file.asc
