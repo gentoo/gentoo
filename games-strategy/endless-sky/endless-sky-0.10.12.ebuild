@@ -16,7 +16,7 @@ LICENSE="
 	GPL-3+
 	CC-BY-2.0 CC-BY-3.0 CC-BY-4.0
 	CC-BY-SA-3.0 CC-BY-SA-4.0
-	CC0-1.0 public-domain
+	CC0-1.0 Unsplash public-domain
 "
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
