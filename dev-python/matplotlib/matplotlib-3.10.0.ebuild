@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 pypi virtualx
@@ -204,20 +204,19 @@ python_test() {
 				tests/test_widgets.py::test_check_radio_buttons_image
 				tests/test_widgets.py::test_radio_buttons
 			)
-			if has_version "<dev-python/pypy3_10-exe-7.3.13_p2" ||
-				has_version "<dev-python/pypy3_10-exe-bin-7.3.13_p2"
-			then
-				EPYTEST_DESELECT+=(
-					# TypeError is raised when exception is raised in a starred
-					# expression referencing a generator that uses "yield from"
-					# and raises -- non-critical, since some exception is raised
-					# after all
-					# https://foss.heptapod.net/pypy/pypy/-/issues/4032
-					tests/test_axes.py::test_bad_plot_args
-					tests/test_axes.py::test_plot_errors
-					tests/test_axes.py::test_plot_format_errors
-				)
-			fi
+			;;
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				# TODO: warning isn't passed through
+				tests/test_image.py::test_large_image
+				# TODO
+				tests/test_axes.py::test_axes_clear_reference_cycle
+				tests/test_pickle.py::test_complete
+				tests/test_pickle.py::test_no_pyplot
+				tests/test_pickle.py::test_pickle_load_from_subprocess
+				tests/test_pickle.py::test_simple
+				tests/test_texmanager.py::test_openin_any_paranoid
+			)
 			;;
 		python3.11)
 			EPYTEST_DESELECT+=(
