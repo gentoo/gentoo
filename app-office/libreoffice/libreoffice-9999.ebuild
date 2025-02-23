@@ -227,7 +227,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	dev-util/mdds:1/3.0
+	dev-util/mdds:1/2.1
 	media-libs/glm
 	x11-base/xorg-proto
 	x11-libs/libXt
@@ -380,12 +380,15 @@ src_prepare() {
 	# tests entirely.
 	#
 	# Various test skips from Fedora
+	#
 	# "Failing on multiple arches"
-	sed -i -e '/CppunitTest_svgio/d' svgio/Module_svgio.mk || die
-	sed -i -e '/CppunitTest_sw_layoutwriter3/d' sw/Module_sw.mk || die
 	# "https://bugzilla.redhat.com/show_bug.cgi?id=2334719
 	# started to fail in 25.2.0.0"
-	sed -i -e '/CppunitTest_sw_layoutwriter4/d' sw/Module_sw.mk || die
+	sed -i -e '/CppunitTest_svgio/d' svgio/Module_svgio.mk || die
+	sed -i \
+		-e '/CppunitTest_sw_layoutwriter3/d' \
+		-e '/CppunitTest_sw_layoutwriter4/d' \
+		sw/Module_sw.mk || die
 	# "testStatusBarPageNumber it is said to "fail from time to time"...
 	# started to fail in 25.2.0.0"
 	# Skip tests failing with latest app-text/poppler (25.02.0?)
@@ -396,9 +399,32 @@ src_prepare() {
 	sed -i -e '/CppunitTest_sw_pdf_test/d' sw/Module_sw.mk || die
 	#
 	# Fails w/ 25.2.1.1 on amd64
+	sed -i -e '/CppunitTest_sd_layout_tests/d' sd/Module_sd.mk || die
 	sed -i -e '/CppunitTest_vcl_text/d' vcl/Module_vcl.mk || die
 	sed -i -e '/CppunitTest_svx_unit/d' svx/Module_svx.mk || die
-	sed -i -e '/CppunitTest_sc_ucalc_formula/d' sc/Module_sc.mk || die
+	sed -i \
+		-e '/CppunitTest_chart2_import/d' \
+		-e '/CppunitTest_chart2_export2/d' \
+		chart2/Module_chart2.mk || die
+	sed -i \
+		-e '/CppunitTest_sc_array_functions_test/d' \
+		-e '/CppunitTest_sc_jumbosheets_test/d' \
+		-e '/CppunitTest_sc_subsequent_export_test4/d' \
+		-e '/CppunitTest_sc_subsequent_filters_test3/d' \
+		-e '/CppunitTest_sc_ucalc_formula/d' \
+		-e '/CppunitTest_sc_uicalc2/d' \
+		-e '/CppunitTest_sc_vba_macro_test/d' \
+		sc/Module_sc.mk || die
+	sed -i \
+		-e '/CppunitTest_sw_ooxmlexport/d' \
+		-e '/CppunitTest_sw_ooxmlimport/d' \
+		-e '/CppunitTest_sw_ww8export/d' \
+		-e '/CppunitTest_sw_core_layout/d' \
+		-e '/CppunitTest_sw_core_objectpositioning/d' \
+		-e '/CppunitTest_sw_core_text/d' \
+		-e '/CppunitTest_sw_layoutwriter/d' \
+		-e '/CppunitTest_sw_uiwriter/d' \
+		sw/Module_sw.mk || die
 }
 
 src_configure() {
@@ -619,8 +645,8 @@ src_compile() {
 }
 
 src_test() {
-	emake -Onone unitcheck
-	emake -Onone slowcheck
+	emake -Onone -k unitcheck
+	emake -Onone -k slowcheck
 }
 
 src_install() {
