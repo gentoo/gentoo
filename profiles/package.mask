@@ -182,11 +182,6 @@ games-fps/quakeforge
 # Removal on 2025-03-07. Bug: 949318
 net-misc/AQtion
 
-# Matt Turner <mattst88@gentoo.org> (2025-02-05)
-# Masked for testing
-=dev-util/mesa_clc-25.0*
-=media-libs/mesa-25.0*
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-30)
 # Last release 15 years ago, dead upstream (never imported from kdesvn),
 # no revdeps probably since amarok last-rites. Removal on 2025-02-27.
