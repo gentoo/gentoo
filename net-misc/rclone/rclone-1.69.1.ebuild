@@ -68,7 +68,7 @@ src_install() {
 
 	newbashcomp "${PN}.bash" "${PN}"
 	newzshcomp "${PN}.zsh" "_${PN}"
-	newfishcomp "${PN}.fish" "${PN}"
+	dofishcomp "${PN}.fish"
 
 	doman "${PN}.1"
 	einstalldocs
