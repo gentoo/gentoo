@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_14 )
 
 inherit ada python-single-r1 multiprocessing
 
@@ -30,12 +30,13 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-ada/gprbuild[${ADA_USEDEP}]
-	doc? (
-		$(python_gen_cond_dep '
+	$(python_gen_cond_dep '
+		dev-ada/e3-core[${PYTHON_USEDEP}]
+		doc? (
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
-		')
-	)
+		)
+	')
 	test? ( dev-ada/e3-testsuite )"
 
 PATCHES=( "${FILESDIR}"/${PN}-23.0.0-test.patch )
