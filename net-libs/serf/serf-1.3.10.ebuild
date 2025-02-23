@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,7 @@ src_compile() {
 	myesconsargs=(
 		BUILD_STATIC=no
 		PREFIX="${EPREFIX}/usr"
+		OPENSSL="${EPREFIX}/usr"
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 		# These config scripts are sent through a shell with an empty env
 		# which breaks the SYSROOT usage in them.  Set the vars inline to
