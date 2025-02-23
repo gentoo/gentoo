@@ -28,6 +28,10 @@ DEPEND="
 BDEPEND="nls? ( sys-devel/gettext )"
 RDEPEND+=" selinux? ( sec-policy/selinux-xfs )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.13.0-32-bit.patch
+)
+
 src_prepare() {
 	default
 
