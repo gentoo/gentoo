@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_14 )
 
 inherit ada python-single-r1 multiprocessing
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}"
@@ -22,7 +22,7 @@ IUSE="doc static-libs static-pic"
 
 RDEPEND="${ADA_DEPS}
 	${PYTHON_DEPS}
-	dev-ada/gpr:=[${ADA_USEDEP},shared(+),static-libs?]
+	dev-ada/gpr:${SLOT}[${ADA_USEDEP},shared(+),static-libs?]
 	dev-ada/markdown:=[${ADA_USEDEP}]
 	>=dev-ada/VSS-24.0.0:=[${ADA_USEDEP},static-libs?]
 	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]
