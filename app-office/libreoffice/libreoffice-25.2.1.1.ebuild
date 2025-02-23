@@ -624,7 +624,7 @@ src_test() {
 }
 
 src_install() {
-	emake -Onone DESTDIR="${D}" distro-pack-install -o build -o check
+	emake -Onone DESTDIR="${D}" distro-pack-install
 
 	# TODO: still relevant for gtk4?
 	# bug #593514
