@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}
+	"${FILESDIR}"/${P}-add-const.patch
 )
 
 src_prepare() {
@@ -62,4 +63,11 @@ src_configure() {
 src_test() {
 	# tests have parallel issues
 	emake -j1 check
+}
+
+src_install() {
+	default
+
+	# Remove unneeded .la files (Bug #941097)
+	find "${ED}" -name '*.la' -type f -delete || die
 }
