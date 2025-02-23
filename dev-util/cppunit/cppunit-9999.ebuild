@@ -34,10 +34,6 @@ BDEPEND="
 
 DOCS=( AUTHORS BUGS NEWS README THANKS TODO ChangeLog doc/FAQ )
 
-PATCHES=(
-	"${WORKDIR}"/${P%%_p*}-patches
-)
-
 src_prepare() {
 	default
 
