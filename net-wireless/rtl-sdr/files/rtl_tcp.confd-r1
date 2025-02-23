@@ -1,0 +1,7 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Options which will be passed to rtl_tcp.
+# Default is listen on localhost with default port 1234 on first device.
+# See `rtl_tcp -h` for all available options.
+RTL_TCP_OPTIONS="-a localhost -d0 -p 1234"
