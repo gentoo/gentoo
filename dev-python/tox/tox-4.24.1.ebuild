@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -76,7 +76,7 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
 				'tests/tox_env/python/pip/test_pip_install.py::test_constrain_package_deps[explicit-True-True]'
 				'tests/tox_env/python/pip/test_pip_install.py::test_constrain_package_deps[requirements-True-True]'
