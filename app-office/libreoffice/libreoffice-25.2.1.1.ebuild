@@ -489,13 +489,15 @@ src_configure() {
 		--disable-firebird-sdbc
 		--disable-gtk3
 		--disable-gtk3-kde5
-		# Coveered by our own toolchain defaults
+		# Covered by our own toolchain defaults
 		--disable-hardening-flags
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
 		--disable-qt5
 		--disable-qt6-multimedia
+		# Don't try to call coredumpctl in the testsuite
+		--without-coredumpctl
 		--without-dotnet
 		--with-extra-buildid="${gentoo_buildid}"
 		--enable-extension-integration
