@@ -17,10 +17,9 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/zenlib-9999[${PYTHON_USEDEP}]
-	>=dev-python/zstd-1.5.6.1[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? ( dev-python/zstd[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/zstandard[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
 
@@ -34,5 +33,5 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature "zstd compression support" dev-python/zstd
+	optfeature "zstd compression support" dev-python/zstandard
 }
