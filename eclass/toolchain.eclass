@@ -695,6 +695,7 @@ toolchain_src_prepare() {
 	# Workaround -march=native not working for stage1 with non-GCC (bug #933772).
 	if ! tc-is-gcc && [[ "${CFLAGS}${CXXFLAGS}" == *-march=native* ]] ; then
 		CLANG_DISABLE_CET_HACK=1
+		filter-flags '-march=native'
 	fi
 
 	if ! use vanilla ; then
