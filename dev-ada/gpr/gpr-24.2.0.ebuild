@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_14 )
+ADA_COMPAT=( gcc_13 gcc_14 )
 
 inherit ada multiprocessing
 
