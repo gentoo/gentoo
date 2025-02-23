@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_14 )
 inherit ada multiprocessing
 
 DESCRIPTION="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic test"
 
@@ -25,7 +25,7 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 RDEPEND="${ADA_DEPS}
 	dev-ada/templates-parser[${ADA_USEDEP},shared?,static-libs?]
 	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared?,static-libs?,static-pic?]
-	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]"
+	dev-ada/libadalang:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
