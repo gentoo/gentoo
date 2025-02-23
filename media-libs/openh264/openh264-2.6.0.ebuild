@@ -16,7 +16,7 @@ LICENSE="BSD"
 
 # openh264 soname version.
 SLOT="0/8"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc64 ~riscv ~sparc ~x86"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin test utils"
 
 RESTRICT="bindist !test? ( test )"
