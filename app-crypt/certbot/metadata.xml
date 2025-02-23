@@ -15,9 +15,7 @@
 		<!--
 		<flag name="certbot-dns-cloudflare">Enable Cloudflare DNS Authenticator plugin.</flag>
 		-->
-		<!--
 		<flag name="certbot-dns-digitalocean">Enable DigitalOcean DNS Authenticator plugin.</flag>
-		-->
 		<flag name="certbot-dns-dnsimple">Enable DNSimple Authenticator plugin.</flag>
 		<flag name="certbot-dns-dnsmadeeasy">Enable DNS Made Easy DNS Authenticator plugin.</flag>
 		<flag name="certbot-dns-gehirn">Enable Gehirn Infrastructure Service DNS Authenticator plugin.</flag>
