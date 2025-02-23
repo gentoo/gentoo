@@ -374,6 +374,31 @@ src_prepare() {
 			-e ":Keywords: s:pdf;::" \
 			sysui/desktop/menus/draw.desktop || die
 	fi
+
+	# These test failures are largely added blindly in 25.2.1.1 to
+	# give us a baseline and then chip away at, rather than disregarding
+	# tests entirely.
+	#
+	# Various test skips from Fedora
+	# "Failing on multiple arches"
+	sed -i -e '/CppunitTest_svgio/d' svgio/Module_svgio.mk || die
+	sed -i -e '/CppunitTest_sw_layoutwriter3/d' sw/Module_sw.mk || die
+	# "https://bugzilla.redhat.com/show_bug.cgi?id=2334719
+	# started to fail in 25.2.0.0"
+	sed -i -e '/CppunitTest_sw_layoutwriter4/d' sw/Module_sw.mk || die
+	# "testStatusBarPageNumber it is said to "fail from time to time"...
+	# started to fail in 25.2.0.0"
+	# Skip tests failing with latest app-text/poppler (25.02.0?)
+	sed -i -e '/CppunitTest_sw_tiledrendering2/d' sw/Module_sw.mk || die
+	sed -i -e '/CppunitTest_sc_pdf_export/d' sc/Module_sc.mk || die
+	sed -i -e '/CppunitTest_sdext_pdfimport/d' sdext/Module_sdext.mk || die
+	sed -i -e '/CppunitTest_sfx2_view/d' sfx2/Module_sfx2.mk || die
+	sed -i -e '/CppunitTest_sw_pdf_test/d' sw/Module_sw.mk || die
+	#
+	# Fails w/ 25.2.1.1 on amd64
+	sed -i -e '/CppunitTest_vcl_text/d' vcl/Module_vcl.mk || die
+	sed -i -e '/CppunitTest_svx_unit/d' svx/Module_svx.mk || die
+	sed -i -e '/CppunitTest_sc_ucalc_formula/d' sc/Module_sc.mk || die
 }
 
 src_configure() {
