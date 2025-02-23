@@ -53,7 +53,7 @@ src_install() {
 
 	newbashcomp doc/bash-completion.sh "${PN}"
 	newzshcomp doc/zsh-completion.zsh _restic
-	newfishcomp doc/fish-completion.fish "${PN}"
+	newfishcomp doc/fish-completion.fish "${PN}.fish"
 
 	doman doc/man/*
 	dodoc doc/*.rst
