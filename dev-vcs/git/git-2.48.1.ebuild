@@ -150,6 +150,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.0-doc-deps.patch
 	"${FILESDIR}"/${PN}-2.48.1-parallel-build.patch
+	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
 )
 
 pkg_setup() {
@@ -205,8 +206,11 @@ src_configure() {
 		$(meson_feature perl)
 		$(meson_feature perforce python)
 		$(meson_use test tests)
+		-Dmacos_use_homebrew_gettext=false
 		-Dperl_cpan_fallback=false
 	)
+
+	[[ ${CHOST} == *-darwin* ]] && emesonargs+=( -Dfsmonitor=false )
 
 	# For non-live, we use a downloaded docs tarball instead.
 	if [[ ${PV} == *9999 ]] || use doc ; then

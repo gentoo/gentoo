@@ -204,6 +204,7 @@ src_configure() {
 		$(meson_feature perl)
 		$(meson_feature perforce python)
 		$(meson_use test tests)
+		-Dmacos_use_homebrew_gettext=false
 		-Dperl_cpan_fallback=false
 	)
 
