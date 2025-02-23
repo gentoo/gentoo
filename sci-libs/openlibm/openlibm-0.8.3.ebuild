@@ -33,6 +33,7 @@ src_compile() {
 	case "${ARCH}" in
 		loong) export ARCH=loongarch64 ;;
 		riscv) export ARCH=riscv64 ;;
+		x86) export ARCH=i387 ;;
 	esac
 
 	emake \
