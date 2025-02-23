@@ -1,0 +1,91 @@
+Do not call clean in the middle of build. We start with clean tree, we build
+stuff with all the same flags, every time, we don't remove files from under
+make while it's in the process of building things with large jobs number
+or with shuffle.
+Pipe CFLAGS (and, transitively, LDFLAGS) to last place where they were missing
+https://bugs.gentoo.org/881475
+https://bugs.gentoo.org/911554
+https://bugs.gentoo.org/887409
+https://bugs.gentoo.org/728030
+--- a/ladr/Makefile
++++ b/ladr/Makefile
+@@ -36,7 +36,7 @@
+           $(INFE_OBJ) $(MODL_OBJ) $(MISC_OBJ)
+ 
+ libladr.la: $(OBJECTS)
+-	libtool --tag=CC --mode=link $(CC) -shared -rpath /usr/lib -version-info 4:0:0 -o libladr.la $(OBJECTS) -lm
++	libtool --tag=CC --mode=link $(CC) $(CFLAGS) -shared -rpath /usr/lib -version-info 4:0:0 -o libladr.la $(OBJECTS) -lm
+ 
+ %.lo: %.c
+ 	libtool --tag=CC --mode=compile $(CC) -c $(CFLAGS) $(XFLAGS) -o $@ $<
+--- a/apps.src/Makefile
++++ b/apps.src/Makefile
+@@ -13,7 +13,7 @@
+ 
+ PROGRAMS = latfilter olfilter clausefilter idfilter renamer unfast clausetester rewriter isofilter0 isofilter isofilter2 dprofiles interpfilter upper-covers miniscope interpformat prooftrans mirror-flip perm3 sigtest directproof test_clause_eval test_complex complex gen_trc_defs
+ 
+-all: ladr apps install realclean
++all: ladr apps install
+ 
+ ladr:
+ 	cd ../ladr && $(MAKE) libladr.la
+@@ -24,7 +24,7 @@
+ realclean:
+ 	libtool --tag=CC --mode=clean /bin/rm -f *.o $(PROGRAMS)
+ 
+-install:
++install: apps
+ 	libtool --tag=CC --mode=install /bin/cp $(PROGRAMS) `pwd`/../bin
+ 
+ tags:
+--- a/mace4.src/Makefile
++++ b/mace4.src/Makefile
+@@ -27,7 +27,6 @@
+ 
+ ladr:
+ 	cd ../ladr && $(MAKE) libladr.la
+-	$(MAKE) clean
+ 
+ mace4: libmace4.a mace4.o $(OBJECTS)
+ 	libtool --tag=CC --mode=link $(CC) $(CFLAGS) -o mace4 mace4.o libmace4.a ../ladr/libladr.la
+@@ -42,5 +42,5 @@
+ realclean:
+ 	libtool --tag=CC --mode=clean /bin/rm -f *.o *.a mace4
+ 
+-install:
++install: mace4
+ 	libtool --tag=CC --mode=install /bin/cp mace4 `pwd`/../bin
+--- a/provers.src/Makefile
++++ b/provers.src/Makefile
+@@ -28,19 +28,17 @@
+ 
+ ##############################################################################
+ 
+-all: libs $(PROGRAMS) install clean
++all: libs $(PROGRAMS) install
+ 
+ libs: ladr libmace4
+ 
+ ladr libladr:
+ 	cd ../ladr && $(MAKE) libladr
+-	$(MAKE) clean
+ 
+ libmace libmace4:
+ 	cd ../mace4.src && $(MAKE) libmace4
+-	$(MAKE) clean
+ 
+-install:
++install: libs $(PROGRAMS)
+ 	libtool --tag=CC --mode=install /bin/cp -p $(PROGRAMS) `pwd`/../bin
+ 
+ clean:
+--- a/test.src/Makefile
++++ b/test.src/Makefile
+@@ -16,7 +16,6 @@
+ all: ladr apps
+ 
+ ladr:
+-	make clean
+ 	cd ../ladr && $(MAKE) libladr.la
+ 
+ clean:

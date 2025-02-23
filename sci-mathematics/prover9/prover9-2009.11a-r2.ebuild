@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,8 @@ IUSE="examples"
 PATCHES=(
 	"${WORKDIR}/${MY_PN}-2009-11A-makefile.patch"
 	"${FILESDIR}/${MY_PN}-2009-11A-manpages.patch"
+	"${FILESDIR}/${MY_PN}-2009-11A-c99.patch"
+	"${FILESDIR}/${MY_PN}-2009-11A-stable-ordering.patch"
 )
 
 src_prepare() {
@@ -33,16 +35,15 @@ src_prepare() {
 
 	sed -e "/^CC =/s:gcc:$(tc-getCC):g" -i */Makefile || die
 
-	export MAKEOPTS+=" -j1 "
 	tc-export AR CC
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} ${LDFLAGS}" -j1 all
+	emake CFLAGS="${CFLAGS} ${LDFLAGS}" all
 }
 
 src_test() {
-	LD_LIBRARY_PATH="${S}/ladr/.libs/" emake -j1 test1 test2 test3
+	LD_LIBRARY_PATH="${S}/ladr/.libs/" emake test1 test2 test3
 }
 
 src_install() {
