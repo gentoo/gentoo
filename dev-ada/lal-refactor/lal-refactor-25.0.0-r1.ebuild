@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_14 )
 inherit ada multiprocessing
 
 commitId=a5997083efc0ae97ec089b18931c765d43301072
@@ -14,13 +14,14 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs static-pic"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADADEPS}
-	dev-ada/libadalang-tools:=[${ADA_USEDEP},shared,static-libs?,static-pic?]"
+	dev-ada/libadalang:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/libadalang-tools:${SLOT}[${ADA_USEDEP},shared,static-libs?,static-pic?]"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
 src_compile() {
