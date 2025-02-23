@@ -1,0 +1,55 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -34,25 +34,6 @@
+ generate_export_header(rtlsdr)
+ 
+ ########################################################################
+-# Setup static library variant
+-########################################################################
+-add_library(rtlsdr_static STATIC librtlsdr.c
+-  tuner_e4k.c tuner_fc0012.c tuner_fc0013.c tuner_fc2580.c tuner_r82xx.c)
+-target_link_libraries(rtlsdr ${LIBUSB_LIBRARIES} ${THREADS_PTHREADS_LIBRARY})
+-target_include_directories(rtlsdr_static PUBLIC
+-  $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+-  $<INSTALL_INTERFACE:include>  # <prefix>/include
+-  ${LIBUSB_INCLUDE_DIRS}
+-  ${THREADS_PTHREADS_INCLUDE_DIR}
+-  )
+-set_property(TARGET rtlsdr_static APPEND PROPERTY COMPILE_DEFINITIONS "rtlsdr_STATIC" )
+-if(NOT WIN32)
+-# Force same library filename for static and shared variants of the library
+-set_target_properties(rtlsdr_static PROPERTIES OUTPUT_NAME rtlsdr)
+-endif()
+-generate_export_header(rtlsdr_static)
+-
+-########################################################################
+ # Set up Windows DLL resource files
+ ########################################################################
+ IF(MSVC)
+@@ -63,7 +44,6 @@
+         ${CMAKE_CURRENT_BINARY_DIR}/rtlsdr.rc
+     @ONLY)
+   target_sources(rtlsdr PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/rtlsdr.rc)
+-  target_sources(rtlsdr_static PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/rtlsdr.rc)
+ ENDIF(MSVC)
+ 
+ ########################################################################
+@@ -94,7 +74,7 @@
+ add_executable(rtl_adsb rtl_adsb.c)
+ add_executable(rtl_power rtl_power.c)
+ add_executable(rtl_biast rtl_biast.c)
+-set(INSTALL_TARGETS rtlsdr rtlsdr_static rtl_sdr rtl_tcp rtl_test rtl_fm rtl_eeprom rtl_adsb rtl_power rtl_biast)
++set(INSTALL_TARGETS rtlsdr rtl_sdr rtl_tcp rtl_test rtl_fm rtl_eeprom rtl_adsb rtl_power rtl_biast)
+ 
+ target_link_libraries(rtl_sdr rtlsdr convenience_static
+     ${LIBUSB_LIBRARIES}
+@@ -163,9 +143,6 @@
+ install(TARGETS rtlsdr EXPORT RTLSDR-export
+   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # .so/.dylib file
+   )
+-install(TARGETS rtlsdr_static EXPORT RTLSDR-export
+-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} # .so/.dylib file
+-  )
+ install(TARGETS rtl_sdr rtl_tcp rtl_test rtl_fm rtl_eeprom rtl_adsb rtl_power rtl_biast
+   DESTINATION ${CMAKE_INSTALL_BINDIR}
+   )

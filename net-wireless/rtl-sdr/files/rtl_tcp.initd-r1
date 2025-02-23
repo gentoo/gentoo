@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+error_log="/var/log/rtl_tcp.log"
+pidfile="/run/rtl_tcp.pid"
+output_log="/var/log/rtl_tcp.log"
+
+command="/usr/bin/rtl_tcp"
+command_background="true"
+command_args="${RTL_TCP_OPTIONS}"

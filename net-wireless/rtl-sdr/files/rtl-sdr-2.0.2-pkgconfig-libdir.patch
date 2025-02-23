@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,7 +174,7 @@
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
+ set(exec_prefix \${prefix})
+ set(includedir \${prefix}/include)
+-set(libdir \${exec_prefix}/lib)
++set(libdir \${exec_prefix}/${CMAKE_INSTALL_LIBDIR})
+ 
+ CONFIGURE_FILE(
+     ${CMAKE_CURRENT_SOURCE_DIR}/librtlsdr.pc.in
