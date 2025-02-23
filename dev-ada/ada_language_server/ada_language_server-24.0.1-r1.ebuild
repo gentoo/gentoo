@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,15 +19,15 @@ RESTRICT="test" # Tests do not work
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/ada_libfswatch[${ADA_USEDEP}]
-	sys-fs/fswatch:=
 	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
 	dev-ada/gnatdoc[${ADA_USEDEP}]
 	dev-ada/gpr-unit-provider[${ADA_USEDEP},shared]
+	dev-ada/lal-refactor[${ADA_USEDEP},shared(+)]
 	dev-ada/libadalang[${ADA_USEDEP}]
-	dev-ada/lal-refactor[${ADA_USEDEP},shared]
 	>=dev-ada/libadalang-tools-23[${ADA_USEDEP},shared]
-	dev-ada/spawn[${ADA_USEDEP},shared,glib]
-	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared]"
+	dev-ada/spawn[${ADA_USEDEP},shared,glib(+)]
+	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared]
+	sys-fs/fswatch:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]
 	test? ( dev-ada/e3-testsuite )"
