@@ -1,0 +1,48 @@
+Transform seds from Makefile into patch. Were:
+	sed -i \
+		-e "/^CFLAGS=/s:=:=${CFLAGS} :" \
+		-e 's:-fno-for-scope::g' \
+		-e "/^CC=/s:gcc:$(tc-getCC):" \
+		-e "/^LD=/s:gcc:$(tc-getCC):" \
+		-e 's:log.o\\:log.o \\:' \
+		src/Makefile || die
+	sed -i \
+		-e "s/wordfile:/-wordlist=/" \
+		run/wepattack_word || die
+https://bugs.gentoo.org/711032
+--- a/run/wepattack_word
++++ b/run/wepattack_word
+@@ -28,7 +28,7 @@
+ 
+ if test -f $JOHNDIR/john; then
+ 
+-	$JOHNDIR/john -wordfile:$WORDLIST -rules -stdout:13\
++	$JOHNDIR/john --wordlist=$WORDLIST -rules -stdout:13\
+  	| wepattack -f $1
+ 	exit 0;
+ else
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -2,11 +2,10 @@
+ # 15-10-2002 Dominik Blunk and Alain Girardet
+ #
+ #
+-CC=gcc
+-LD=gcc
++LD=${CC}
+ #
+ # CFLAGS
+-CFLAGS=-fno-for-scope -c -D__LINUX_WLAN__ -D__I386__
++CFLAGS += -c -D__LINUX_WLAN__ -D__I386__
+ #
+ #
+ # LDFLAGS
+@@ -21,7 +21,7 @@
+ INSTDIR=/usr/bin
+ 
+ wepattack: 	wepattack.o rc4.o wepfilter.o log.o modes.o misc.o verify.o keygen.o
+-	$(LD) $(LDFLAGS) -o $@ wepattack.o rc4.o wepfilter.o log.o\
++	$(LD) $(LDFLAGS) -o $@ wepattack.o rc4.o wepfilter.o log.o \
+ 	modes.o misc.o verify.o keygen.o $(LIBS)
+ 
+ wepattack.o:	wepattack.c wepattack.h
