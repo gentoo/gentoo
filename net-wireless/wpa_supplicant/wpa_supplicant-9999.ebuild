@@ -18,13 +18,15 @@ else
 fi
 
 SLOT="0"
-IUSE="ap broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt6 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
+IUSE="+ap broadcom-sta dbus eap-sim eapol-test +fils macsec +mbo +mesh p2p privsep qt6 readline selinux smartcard tkip uncommon-eap-types wep wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
 # at least for now. bug #684442
 REQUIRED_USE="
 	macsec? ( !privsep )
+	mesh? ( ap )
+	p2p? ( ap wps )
 	privsep? ( !macsec )
 	broadcom-sta? ( !fils !mesh !mbo )
 "
@@ -108,15 +110,6 @@ src_prepare() {
 
 	cd "${WORKDIR}/${P}" || die
 
-	if use wimax; then
-		# generate-libeap-peer.patch comes before
-		# fix-undefined-reference-to-random_get_bytes.patch
-		eapply "${FILESDIR}/${P}-generate-libeap-peer.patch"
-
-		# multilib-strict fix (bug #373685)
-		sed -e "s/\/usr\/lib/\/usr\/$(get_libdir)/" -i src/eap_peer/Makefile || die
-	fi
-
 	# bug (320097)
 	eapply "${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
 
@@ -192,11 +185,6 @@ src_configure() {
 	Kconfig_style_config DEBUG_FILE
 	Kconfig_style_config DEBUG_SYSLOG
 
-	if use hs2-0 ; then
-		Kconfig_style_config INTERWORKING
-		Kconfig_style_config HS20
-	fi
-
 	if use mbo ; then
 		Kconfig_style_config MBO
 	else
@@ -217,10 +205,6 @@ src_configure() {
 		Kconfig_style_config EAP_AKA
 		Kconfig_style_config EAP_AKA_PRIME
 		Kconfig_style_config PCSC
-	fi
-
-	if use fasteap ; then
-		Kconfig_style_config EAP_FAST
 	fi
 
 	if use readline ; then
@@ -271,10 +255,6 @@ src_configure() {
 		Kconfig_style_config SMARTCARD n
 	fi
 
-	if use tdls ; then
-		Kconfig_style_config TDLS
-	fi
-
 	if use kernel_linux ; then
 		# Linux specific drivers
 		Kconfig_style_config DRIVER_ATMEL
@@ -294,10 +274,6 @@ src_configure() {
 			# bug #831369 and bug #684442
 			Kconfig_style_config DRIVER_MACSEC_LINUX n
 			Kconfig_style_config MACSEC n
-		fi
-
-		if use ps3 ; then
-			Kconfig_style_config DRIVER_PS3
 		fi
 	fi
 
@@ -369,11 +345,6 @@ src_compile() {
 	einfo "Building wpa_supplicant"
 	emake V=1 BINDIR=/usr/sbin
 
-	if use wimax; then
-		emake -C ../src/eap_peer clean
-		emake -C ../src/eap_peer
-	fi
-
 	if use qt6; then
 		einfo "Building wpa_gui"
 		emake -C "${S}"/wpa_gui-qt4
@@ -413,8 +384,6 @@ src_install() {
 	else
 		rm "${ED}"/usr/share/man/man8/wpa_gui.8
 	fi
-
-	use wimax && emake DESTDIR="${D}" -C ../src/eap_peer install
 
 	if use dbus ; then
 		pushd "${S}"/dbus > /dev/null || die
