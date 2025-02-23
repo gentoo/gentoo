@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar
 
 LICENSE="BSD-2 BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
