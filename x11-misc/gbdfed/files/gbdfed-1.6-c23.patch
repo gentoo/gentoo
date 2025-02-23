@@ -1,0 +1,36 @@
+Port to C23. Correct error handler type, use system bool
+https://bugs.gentoo.org/944095
+https://bugs.gentoo.org/944399
+--- a/bdfgrab.c
++++ b/bdfgrab.c
+@@ -244,7 +244,7 @@
+     XCharStruct *cp;
+     bdf_property_t *pp, prop;
+     bdf_callback_struct_t cb;
+-    int (*old_error_handler)();
++    XErrorHandler old_error_handler;
+ 
+     if (f == 0)
+       return 0;
+--- a/hbf.c
++++ b/hbf.c
+@@ -62,6 +62,7 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <string.h>
++#include <stdbool.h>
+ #include "hbf.h"
+ 
+ #ifdef __MSDOS__
+@@ -82,9 +83,8 @@
+ 
+ #define	reg	register
+ 
+-typedef	int	bool;
+-#define	TRUE	1
+-#define	FALSE	0
++#define	TRUE	true
++#define	FALSE	false
+ 
+ #define	Bit(n)	(1<<(7 - (n)))
+ 
