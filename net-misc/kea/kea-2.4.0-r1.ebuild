@@ -18,8 +18,8 @@ if [[ ${PV} = 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
-	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
-		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
+	SRC_URI="https://downloads.isc.org/isc/kea/${MY_P}.tar.gz
+		https://downloads.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
 	# odd minor version = development release
 	if [[ $(( $(ver_cut 2) % 2 )) -ne 1 ]] ; then
 		if ! [[ "${PV}" == *_beta* || "${PV}" == *_rc* ]] ; then
