@@ -1,0 +1,13 @@
+Fix signature for signal handler
+https://bugs.gentoo.org/944166
+--- a/src/wepattack.c
++++ b/src/wepattack.c
+@@ -216,7 +216,7 @@
+ //
+ // signal handler for ctrl+c
+ //
+-void sigint() {
++void sigint(int) {
+ 
+ 	printf("\nAborting... writing result to '%s'\n", logfile);
+ 
