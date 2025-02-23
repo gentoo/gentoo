@@ -1,0 +1,43 @@
+https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/519
+https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/2812471365c75ab51347a9101771128f8ab283ab
+
+From 2812471365c75ab51347a9101771128f8ab283ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@lindev.ch>
+Date: Sat, 8 Feb 2025 14:04:12 +0100
+Subject: [PATCH] Handle C99 _Complex declarations
+
+Fixes https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/519
+--- a/giscanner/scannerlexer.l
++++ b/giscanner/scannerlexer.l
+@@ -211,6 +211,7 @@ stringtext				([^\\\"])|(\\.)
+ "break"					{ return BREAK; }
+ "case"					{ return CASE; }
+ "char"					{ return BASIC_TYPE; }
++"_Complex"				{ return COMPLEX; }
+ "const"					{ return CONST; }
+ "continue"				{ return CONTINUE; }
+ "default"				{ return DEFAULT; }
+--- a/giscanner/scannerparser.y
++++ b/giscanner/scannerparser.y
+@@ -275,7 +275,7 @@ set_or_merge_base_type (GISourceType *type,
+ %token ELLIPSIS ADDEQ SUBEQ MULEQ DIVEQ MODEQ XOREQ ANDEQ OREQ SL SR
+ %token SLEQ SREQ EQ NOTEQ LTEQ GTEQ ANDAND OROR PLUSPLUS MINUSMINUS ARROW
+ 
+-%token AUTO BREAK CASE CONST CONTINUE DEFAULT DO ELSE ENUM
++%token AUTO BREAK CASE COMPLEX CONST CONTINUE DEFAULT DO ELSE ENUM
+ %token EXTENSION EXTERN FOR GOTO IF INLINE REGISTER RESTRICT
+ %token RETURN SHORT SIGNED SIZEOF STATIC STRUCT SWITCH THREAD_LOCAL TYPEDEF
+ %token UNION UNSIGNED VOID VOLATILE WHILE
+@@ -907,6 +907,10 @@ type_specifier
+ 	  {
+ 		$$ = gi_source_type_new (CTYPE_VOID);
+ 	  }
++	| COMPLEX
++	  {
++		$$ = gi_source_basic_type_new ("_Complex");
++	  }
+ 	| SIGNED
+ 	  {
+ 		$$ = gi_source_basic_type_new ("signed");
+-- 
+GitLab
