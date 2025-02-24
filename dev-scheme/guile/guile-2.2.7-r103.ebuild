@@ -102,7 +102,7 @@ src_install() {
 	# should be handled by --with-pkgconfigdir (patch waiting on
 	# upstream).
 	local datadir=/usr/share/guile-data/"${SLOT}"
-	local pcdir="${datadir}"/pkgconfig
+	local pcdir="${EPREFIX}${datadir}"/pkgconfig
 	mkdir -p "${ED}${datadir}" || die
 	mv "${ED}"/usr/share/aclocal/guile{,-"${SLOT}"}.m4 || die
 	mv "${ED}"/usr/$(get_libdir)/pkgconfig/ \
