@@ -9,5 +9,6 @@ societies to write new Bible software more quickly and easily.
 	</longdescription>
 	<use>
 		<flag name="clucene">Use <pkg>dev-cpp/clucene</pkg> for lucene search support</flag>
+		<flag name="utils">CLI (diatheke) and conversion utilities for bible documents in SWORD supported formats</flag>
 	</use>
 </pkgmetadata>
