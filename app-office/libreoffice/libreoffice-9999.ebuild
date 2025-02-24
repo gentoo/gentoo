@@ -227,7 +227,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	dev-util/mdds:1/2.1
+	dev-util/mdds:1/3.0
 	media-libs/glm
 	x11-base/xorg-proto
 	x11-libs/libXt
@@ -626,6 +626,9 @@ src_configure() {
 
 		use libreoffice_extensions_scripting-beanshell && \
 			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
+
+		use libreoffice_extensions_scripting-javascript && \
+			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 rhino.jar) )
 	fi
 
 	tc-is-lto && myeconfargs+=( --enable-lto )
