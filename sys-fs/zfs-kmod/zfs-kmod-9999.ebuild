@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_INITRAMFS_IUSE=+initramfs
-inherit autotools flag-o-matic linux-mod-r1 multiprocessing
+inherit autotools dkms flag-o-matic multiprocessing
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -133,12 +133,21 @@ src_configure() {
 }
 
 src_compile() {
-	emake "${MODULES_MAKEARGS[@]}"
+	if use dkms; then
+		scripts/dkms.mkconf -n ${PN%-kmod} -v ${PV} -f dkms.conf || die
+		dkms_gentoofy_conf dkms.conf
+	else
+		emake "${MODULES_MAKEARGS[@]}"
+	fi
 }
 
 src_install() {
-	emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
-	modules_post_process
+	if use dkms; then
+		dkms_dopackage
+	else
+		emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
+		modules_post_process
+	fi
 
 	dodoc AUTHORS COPYRIGHT META README.md
 }
@@ -184,7 +193,7 @@ pkg_postinst() {
 	# if glob expanded -f will do correct file precense check.
 	[[ -f ${newko[0]} ]] && _old_layout_cleanup
 
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	if use x86 || use arm ; then
 		ewarn "32-bit kernels will likely require increasing vmalloc to"
