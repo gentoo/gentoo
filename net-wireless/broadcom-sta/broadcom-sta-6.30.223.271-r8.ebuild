@@ -2,25 +2,27 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit linux-mod-r1
 
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
 HOMEPAGE="https://www.broadcom.com/support/802.11"
 SRC_BASE="https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35"
-SRC_URI="x86? ( ${SRC_BASE}-nodebug-pcoem-${PV//\./_}.tar.gz )
+SRC_URI="
+	x86? ( ${SRC_BASE}-nodebug-pcoem-${PV//\./_}.tar.gz )
 	amd64? ( ${SRC_BASE}_64-nodebug-pcoem-${PV//\./_}.tar.gz )
-	https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/README_${PV}.txt -> README-${P}.txt"
+	https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/README_${PV}.txt -> README-${P}.txt
+"
 
+S="${WORKDIR}"
 LICENSE="Broadcom"
 SLOT="0"
+
 KEYWORDS="-* ~amd64 ~x86"
 
 RESTRICT="mirror"
 
 DEPEND="virtual/linux-sources"
-RDEPEND=""
-
-S="${WORKDIR}"
 
 PATCHES=(
 	"${FILESDIR}/001-null-pointer-fix.patch"
