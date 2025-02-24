@@ -41,6 +41,10 @@ BDEPEND="
 
 DOCS=( README.md docs/. )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-avx512.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
