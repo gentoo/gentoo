@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 EPYTEST_XDIST=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Pure Python SSH tunnels"
