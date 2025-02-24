@@ -1,2 +1,3 @@
 move dev-python/pyside6 dev-python/pyside
 slotmove dev-php/pecl-ssh2 0 7
+slotmove dev-php/pecl-stomp 0 7
