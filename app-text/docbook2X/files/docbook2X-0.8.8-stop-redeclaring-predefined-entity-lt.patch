@@ -1,0 +1,42 @@
+From 040f468fcfae3fe67818023ebc54f3f48fc1bfd9 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 24 Feb 2025 23:25:40 +0100
+Subject: [PATCH] Fix invalid redeclaration of predefined XML entity "&lt;"
+
+Section "4.6 Predefined Entities" of XML 1.0r4 is clear that:
+
+> If the entities lt or amp are declared, they MUST be declared
+> as internal entities whose replacement text is a character reference
+> to the respective character (less-than sign or ampersand) being escaped[.]
+
+Source:
+https://www.w3.org/TR/2006/REC-xml-20060816/#sec-predefined-ent
+---
+ xslt/common/text/l10n-set.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/xslt/common/text/l10n-set.xml b/xslt/common/text/l10n-set.xml
+index 0ed7454..b2c334b 100644
+--- a/xslt/common/text/l10n-set.xml
++++ b/xslt/common/text/l10n-set.xml
+@@ -21,7 +21,7 @@
+ <!ENTITY it SYSTEM "it.xml">
+ <!ENTITY ja SYSTEM "ja.xml">
+ <!ENTITY ko SYSTEM "ko.xml">
+-<!ENTITY lt SYSTEM "lt.xml">
++<!ENTITY lt_ SYSTEM "lt.xml">
+ <!ENTITY nl SYSTEM "nl.xml">
+ <!ENTITY nn SYSTEM "nn.xml">
+ <!ENTITY no SYSTEM "no.xml">
+@@ -65,7 +65,7 @@
+ &it;
+ &ja;
+ &ko;
+-&lt;
++&lt_;
+ &nl;
+ &nn;
+ &no;
+-- 
+2.48.1
+
