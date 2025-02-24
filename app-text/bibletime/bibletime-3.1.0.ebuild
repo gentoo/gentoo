@@ -38,7 +38,6 @@ src_configure() {
 		-DBUILD_HANDBOOK_PDF=no
 		-DBUILD_HOWTO_HTML=$(usex doc)
 		-DBUILD_HOWTO_PDF=no
-		-DUSE_QT6=ON
 	)
 
 	cmake_src_configure
