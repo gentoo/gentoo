@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -110,7 +110,7 @@ src_prepare() {
 	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
 	#	trackedelement.h trackedelement_workers.h
 
-	eapply_user
+	default
 
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
