@@ -32,10 +32,7 @@ src_prepare() {
 	if has_version '>=media-libs/hamlib-4.2' ; then
 		eapply -p1 "${FILESDIR}"/${P}-hamlib42.patch
 	fi
-
-	eapply ${PATCHES[@]}
-
-	eapply_user
+	default
 }
 
 src_install() {
