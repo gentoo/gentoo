@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
 inherit ada python-any-r1 multiprocessing
 
