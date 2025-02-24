@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -183,8 +183,6 @@ src_prepare() {
 			server-src/am{addclient,serverconfig}.pl || die
 		cat "${MYFILESDIR}"/amanda-amandahosts-client-2.5.1_p3-r1 > "${T}"/amandahosts || die
 	fi
-
-	eapply_user
 }
 
 src_configure() {
