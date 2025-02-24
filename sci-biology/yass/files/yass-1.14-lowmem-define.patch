@@ -1,0 +1,13 @@
+Add missing function definition to hash.c
+Whole hash.c is used only if USE=lowmem is enabled.
+https://bugs.gentoo.org/919215
+--- a/src/hash.h
++++ b/src/hash.h
+@@ -57,6 +57,7 @@
+   
+ }Table_hash;
+ 
++long int hashVerifie (Table_hash *table, char *mess,long int diag);
+ 
+ /*
+  *
