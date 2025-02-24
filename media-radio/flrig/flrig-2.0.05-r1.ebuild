@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,11 +27,6 @@ PATCHES=(
 		"${FILESDIR}/${PN}-2.0.05-musl.patch"
 		"${FILESDIR}/${PN}-2.0.04-stdint.patch"
 	)
-
-src_prepare() {
-	eapply ${PATCHES[@]}
-	eapply_user
-}
 
 src_configure() {
 	#fails to compile with -flto (bug #860408)
