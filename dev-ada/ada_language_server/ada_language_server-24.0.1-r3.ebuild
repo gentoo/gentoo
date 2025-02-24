@@ -25,7 +25,7 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/lal-refactor[${ADA_USEDEP},shared(+)]
 	dev-ada/libadalang[${ADA_USEDEP}]
 	>=dev-ada/libadalang-tools-23[${ADA_USEDEP},shared]
-	dev-ada/spawn[${ADA_USEDEP},shared,glib(+)]
+	dev-ada/spawn[${ADA_USEDEP},shared]
 	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared]
 	sys-fs/fswatch:="
 DEPEND="${RDEPEND}"
