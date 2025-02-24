@@ -3,64 +3,39 @@
 
 EAPI=8
 
+inherit go-module
+
 DESCRIPTION="Tool for editing VCS repositories and translating among different systems"
 HOMEPAGE="http://www.catb.org/~esr/reposurgeon/"
-
-if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="https://gitlab.com/esr/reposurgeon.git"
-	inherit git-r3
-else
-	SRC_URI="http://www.catb.org/~esr/${PN}/${P}.tar.xz"
-# This server is not accessible from the Internet. Delete this comment
-# and line below it, and follow the directions in the next comment
-#	SRC_URI+=" http://ardvarc.coronya.com/~salahx/${P}-vendor.tar.xz"
-# Fill the URL in with the generated Go depenency tarball.
-	SRC_URI+=" http://dev.gentoo.org/~whoever/../${P}-vendor.tar.xz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-inherit go-module
+SRC_URI="http://www.catb.org/~esr/${PN}/${P}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/dev-vcs/${PN}/${P}-deps.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-text/xmlto
-	app-text/asciidoc
-	dev-ruby/asciidoctor"
-
-BDEPEND="test? ( dev-vcs/subversion
-		|| (	dev-util/shellcheck-bin
-			dev-util/shellcheck )
-	)"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-5.3-disable-obsolete-golint.patch"
-)
-
 RESTRICT="!test? ( test )"
 
-src_unpack() {
-	if [[ ${PV} == "9999" ]]; then
-		git-r3_src_unpack
-		go-module_live_vendor
-	else
-		default
-	fi
-}
+BDEPEND="
+	app-text/xmlto
+	dev-ruby/asciidoctor
+	virtual/pkgconfig
+	test? ( dev-vcs/subversion )
+"
 
 src_prepare() {
 	default
-	sed -e 's/GOFLAGS/MY_GOFLAGS/g' \
-	    -i "${S}/Makefile" || die
+	sed -e 's/GOFLAGS/MY_GOFLAGS/g' -i "${S}/Makefile" || die
 }
 
 src_compile() {
-	GOFLAGS="-mod=vendor" emake all
+	emake all
+}
+
+src_test() {
+	emake TESTOPTS="-v" test
 }
 
 src_install() {
-	emake DESTDIR="${ED}" prefix="/usr" docdir="share/doc/${P}" install
+	emake DESTDIR="${ED}" prefix="/usr" docdir="share/doc/${PF}" install
 }
