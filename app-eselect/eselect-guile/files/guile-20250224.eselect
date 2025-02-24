@@ -1,0 +1,147 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU GPL version 2 or later
+
+DESCRIPTION="Manage the selected GNU Guile installation"
+MAINTAINER="scheme@gentoo.org"
+VERSION="20250224"
+
+# List of all tools all GNU Guile versions install.  Some GNU Guile versions
+# don't have some of the tools (1.8 lacks 'guild'), but that's fine.
+ALL_GUILE_TOOLS=(
+	guile{,-{config,snarf,tools}}
+	guild
+)
+
+
+find_versions() {
+	local f
+	for f in "${EROOT}"/usr/share/guile-data/*; do
+		[[ -d "${f}" ]] && echo "${f##*/}"
+	done
+}
+
+
+# Checks whether guile, guile-config, guile-snarf, guild and guile-tools exist
+# and are not symlinks.  Execute before filesystem operations.
+safety_check() {
+	local f
+	# XXX: Tools listing.
+	for f in "${ALL_GUILE_TOOLS[@]}"; do
+		f="${EROOT}"/usr/bin/"${f}"
+		[[ -L "${f}" || ! -e "${f}" ]] \
+			|| die -q "!!! File \"${f}\" exists and is not a symbolic link!  \
+Giving up, so that I don't trample anything."
+	done
+}
+
+
+# Usage: set_version USER_SELECTION
+# If USER_SELECTION is a number, treat it as an index into the version list,
+# otherwise treat it as a version.
+set_version() {
+	local sel="$1"
+	if is_number "${sel}"; then
+		local versions=( $(find_versions) )
+		sel="${versions[sel - 1]}"
+	fi
+
+	[[ -z "${sel}" || ! -d "${EROOT}"/usr/share/guile-data/"${sel}" ]] \
+		&& die -q "Target \"$1\" does not appear to be valid"
+
+	safety_check
+
+	local tool
+	for tool in "${ALL_GUILE_TOOLS[@]}"; do
+		rm -f "${EROOT}"/usr/bin/"${tool}"
+		if [[ -x "${EROOT}"/usr/bin/"${tool}-${sel}" ]]; then
+			ln -s "${tool}-${sel}" "${EROOT}"/usr/bin/"${tool}"
+		fi
+	done
+}
+
+# Usage: get_current FALLBACK
+# Fallback defaults to UNDEFINED, which should be sufficiently invalid for
+# [[ = ]].
+get_current() {
+	local current_lnk
+	if current_lnk="$(readlink "${EROOT}"/usr/bin/guile)"; then
+		echo "${current_lnk#guile-}"
+	else
+		echo "${1:-UNDEFINED}"
+	fi
+}
+
+
+### Actions ###
+describe_list() { echo "List installed GNU Guile versions"; }
+do_list() {
+	local vers=( $(find_versions) )
+	local ver current i
+
+	current="$(get_current)"
+	for (( i = 0; i < ${#vers[@]}; i++ )); do
+		[[ "${current}" == "${vers[i]}" ]] \
+			&& vers[i]="$(highlight_marker "${vers[i]}")"
+	done
+
+	write_list_start "Available GNU Guile versions"
+	write_numbered_list \
+		-m "(none installed; emerge a dev-scheme/guile today!)" \
+		"${vers[@]}"
+}
+
+describe_show() { echo "Get currently selected GNU Guile version"; }
+do_show() {
+	write_list_start "Currently selected GNU Guile version"
+	write_kv_list_entry "$(get_current '(none selected)')" ""
+}
+
+describe_set() { echo "Select an active version of GNU Guile"; }
+describe_set_parameters() { echo "<target>"; }
+describe_set_options() {
+	echo "target : Guile version or number (from 'list' action)"
+}
+do_set() {
+	[[ -z $1 ]] && die -q "You didn't name your choice!"
+	[[ $# -gt 1 ]] && die -q "Too many parameters"
+	set_version "$1"
+}
+
+describe_unset() { echo "Remove GNU Guile selection"; }
+do_unset() {
+	safety_check
+	for tool in "${ALL_GUILE_TOOLS[@]}"; do
+		rm -f "${EROOT}"/usr/bin/"${tool}"
+	done
+}
+
+describe_update() { echo "Perform post-install/remove selection"; }
+do_update() {
+	local vers=( $(find_versions) )
+
+	if [[ ${#vers[@]} -eq 0 ]]; then
+		# No more versions left.  Clean up after ourselves and leave
+		write_warning_msg "No GNU Guile versions installed.  Unsetting."
+		do_unset
+		return
+	fi
+
+	if [[ -L "${EROOT}"/usr/bin/guile
+		  && -e "${EROOT}"/usr/bin/guile ]]; then
+		# The user made a choice, and the choice is still valid.  Respect it.
+		return
+	fi
+
+	# Set latest.
+	IFS=$'\n' LC_COLLATE=C vers=( $(sort -V <<< "${vers[*]}") )
+	set_version "${vers[-1]}"
+}
+
+# Local variables:
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# time-stamp-start: "VERSION=\""
+# time-stamp-format: "%Y%02m%02d"
+# time-stamp-end: "\""
+# time-stamp-time-zone: t
+# End:
