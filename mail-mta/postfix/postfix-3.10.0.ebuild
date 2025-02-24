@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_SRC}"
 
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~sparc"
 
 IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
 
