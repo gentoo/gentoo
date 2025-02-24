@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,7 +77,7 @@ src_configure() {
 			LAUNCHER_CFLAGS="$(${pkgconfig} --cflags ${launcher_modules})"
 			LAUNCHER_LIBS="$(${pkgconfig} --libs ${launcher_modules})"
 			MENU_CFLAGS="$(${pkgconfig} --cflags ${menu_modules})"
-			MENU_LIBS="$(${pkgconfig} --libs ${modules_modules})"
+			MENU_LIBS="$(${pkgconfig} --libs ${menu_modules})"
 		)
 	fi
 
