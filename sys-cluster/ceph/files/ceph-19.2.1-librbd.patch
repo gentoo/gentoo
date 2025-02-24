@@ -1,0 +1,195 @@
+From fb05a2ff0f8cc55997b532bae8271914768306b5 Mon Sep 17 00:00:00 2001
+From: Adam Emerson <aemerson@redhat.com>
+Date: Thu, 9 Jan 2025 18:54:11 -0500
+Subject: [PATCH] librbd/migration/HttpClient: Use asio::ssl::stream
+
+`beast::ssl_stream` is deprecated as of 1.86, and its loss of the move
+constructor keeps it from compiling on that version.
+
+Hopefully this passes tests on 1.85, too, or it will have to wait
+until the boost bump.
+
+Signed-off-by: Adam Emerson <aemerson@redhat.com>
+---
+ src/librbd/migration/HttpClient.cc            | 35 ++++++++++---------
+ src/librbd/migration/HttpClient.h             | 11 +++---
+ .../librbd/migration/test_mock_HttpClient.cc  |  4 +--
+ 3 files changed, 25 insertions(+), 25 deletions(-)
+
+diff --git a/src/librbd/migration/HttpClient.cc b/src/librbd/migration/HttpClient.cc
+index 09fe91da02ae2..d212981a917d5 100644
+--- a/src/librbd/migration/HttpClient.cc
++++ b/src/librbd/migration/HttpClient.cc
+@@ -193,7 +193,7 @@ class HttpClient<I>::HttpSession : public HttpSessionInterface {
+     ldout(cct, 15) << dendl;
+ 
+     boost::system::error_code ec;
+-    boost::beast::get_lowest_layer(derived().stream()).socket().close(ec);
++    derived().stream().lowest_layer().close(ec);
+   }
+ 
+ private:
+@@ -357,8 +357,7 @@ class HttpClient<I>::HttpSession : public HttpSessionInterface {
+   }
+ 
+   int shutdown_socket() {
+-    if (!boost::beast::get_lowest_layer(
+-          derived().stream()).socket().is_open()) {
++    if (!derived().stream().lowest_layer().is_open()) {
+       return 0;
+     }
+ 
+@@ -366,7 +365,7 @@ class HttpClient<I>::HttpSession : public HttpSessionInterface {
+     ldout(cct, 15) << dendl;
+ 
+     boost::system::error_code ec;
+-    boost::beast::get_lowest_layer(derived().stream()).socket().shutdown(
++    derived().stream().lowest_layer().shutdown(
+       boost::asio::ip::tcp::socket::shutdown_both, ec);
+ 
+     if (ec && ec != boost::beast::errc::not_connected) {
+@@ -595,7 +594,7 @@ class HttpClient<I>::PlainHttpSession : public HttpSession<PlainHttpSession> {
+     this->close_socket();
+   }
+ 
+-  inline boost::beast::tcp_stream&
++  inline boost::asio::ip::tcp::socket&
+   stream() {
+     return m_stream;
+   }
+@@ -607,12 +606,13 @@ class HttpClient<I>::PlainHttpSession : public HttpSession<PlainHttpSession> {
+     auto cct = http_client->m_cct;
+     ldout(cct, 15) << dendl;
+ 
+-    ceph_assert(!m_stream.socket().is_open());
+-    m_stream.async_connect(
+-      results,
+-      [on_finish](boost::system::error_code ec, const auto& endpoint) {
+-        on_finish->complete(-ec.value());
+-      });
++    ceph_assert(!m_stream.is_open());
++    boost::asio::async_connect(m_stream,
++			       results,
++			       [on_finish](boost::system::error_code ec,
++					   const auto& endpoint) {
++				 on_finish->complete(-ec.value());
++			       });
+   }
+ 
+   void disconnect(Context* on_finish) override {
+@@ -624,7 +624,7 @@ class HttpClient<I>::PlainHttpSession : public HttpSession<PlainHttpSession> {
+   }
+ 
+ private:
+-  boost::beast::tcp_stream m_stream;
++  boost::asio::ip::tcp::socket m_stream;
+ };
+ 
+ #undef dout_prefix
+@@ -643,7 +643,7 @@ class HttpClient<I>::SslHttpSession : public HttpSession<SslHttpSession> {
+     this->close_socket();
+   }
+ 
+-  inline boost::beast::ssl_stream<boost::beast::tcp_stream>&
++  inline boost::asio::ssl::stream<boost::asio::ip::tcp::socket>&
+   stream() {
+     return m_stream;
+   }
+@@ -655,8 +655,9 @@ class HttpClient<I>::SslHttpSession : public HttpSession<SslHttpSession> {
+     auto cct = http_client->m_cct;
+     ldout(cct, 15) << dendl;
+ 
+-    ceph_assert(!boost::beast::get_lowest_layer(m_stream).socket().is_open());
+-    boost::beast::get_lowest_layer(m_stream).async_connect(
++    ceph_assert(!m_stream.lowest_layer().is_open());
++    async_connect(
++      m_stream.lowest_layer(),
+       results,
+       [this, on_finish](boost::system::error_code ec, const auto& endpoint) {
+         handle_connect(-ec.value(), on_finish);
+@@ -681,12 +682,12 @@ class HttpClient<I>::SslHttpSession : public HttpSession<SslHttpSession> {
+ 
+     // ssl_stream object can't be reused after shut down -- move-in
+     // a freshly constructed instance
+-    m_stream = boost::beast::ssl_stream<boost::beast::tcp_stream>(
++    m_stream = boost::asio::ssl::stream<boost::asio::ip::tcp::socket>(
+       http_client->m_strand, http_client->m_ssl_context);
+   }
+ 
+ private:
+-  boost::beast::ssl_stream<boost::beast::tcp_stream> m_stream;
++  boost::asio::ssl::stream<boost::asio::ip::tcp::socket> m_stream;
+ 
+   void handle_connect(int r, Context* on_finish) {
+     auto http_client = this->m_http_client;
+diff --git a/src/librbd/migration/HttpClient.h b/src/librbd/migration/HttpClient.h
+index 3997e6159e7e5..5844f91869301 100644
+--- a/src/librbd/migration/HttpClient.h
++++ b/src/librbd/migration/HttpClient.h
+@@ -13,13 +13,12 @@
+ #include <boost/asio/strand.hpp>
+ #include <boost/asio/ip/tcp.hpp>
+ #include <boost/asio/ssl/context.hpp>
++#include <boost/asio/ssl/stream.hpp>
+ #include <boost/beast/version.hpp>
+-#include <boost/beast/core/tcp_stream.hpp>
+ #include <boost/beast/http/empty_body.hpp>
+ #include <boost/beast/http/message.hpp>
+ #include <boost/beast/http/string_body.hpp>
+ #include <boost/beast/http/write.hpp>
+-#include <boost/beast/ssl/ssl_stream.hpp>
+ #include <functional>
+ #include <memory>
+ #include <string>
+@@ -97,7 +96,7 @@ class HttpClient {
+         completion(r, std::move(response));
+       }
+ 
+-      void operator()(boost::beast::tcp_stream& stream) override {
++      void operator()(boost::asio::ip::tcp::socket& stream) override {
+         preprocess_request();
+ 
+         boost::beast::http::async_write(
+@@ -110,7 +109,7 @@ class HttpClient {
+       }
+ 
+       void operator()(
+-          boost::beast::ssl_stream<boost::beast::tcp_stream>& stream) override {
++	  boost::asio::ssl::stream<boost::asio::ip::tcp::socket>& stream) override {
+         preprocess_request();
+ 
+         boost::beast::http::async_write(
+@@ -152,9 +151,9 @@ class HttpClient {
+     virtual bool need_eof() const = 0;
+     virtual bool header_only() const = 0;
+     virtual void complete(int r, Response&&) = 0;
+-    virtual void operator()(boost::beast::tcp_stream& stream) = 0;
++    virtual void operator()(boost::asio::ip::tcp::socket& stream) = 0;
+     virtual void operator()(
+-        boost::beast::ssl_stream<boost::beast::tcp_stream>& stream) = 0;
++        boost::asio::ssl::stream<boost::asio::ip::tcp::socket>& stream) = 0;
+   };
+ 
+   template <typename D> struct HttpSession;
+diff --git a/src/test/librbd/migration/test_mock_HttpClient.cc b/src/test/librbd/migration/test_mock_HttpClient.cc
+index f3888755c79e5..901c4231dd067 100644
+--- a/src/test/librbd/migration/test_mock_HttpClient.cc
++++ b/src/test/librbd/migration/test_mock_HttpClient.cc
+@@ -307,7 +307,7 @@ TEST_F(TestMockMigrationHttpClient, OpenCloseHttps) {
+ 
+   boost::asio::ssl::context ssl_context{boost::asio::ssl::context::tlsv12};
+   load_server_certificate(ssl_context);
+-  boost::beast::ssl_stream<boost::beast::tcp_stream> ssl_stream{
++  boost::asio::ssl::stream<boost::asio::ip::tcp::socket> ssl_stream{
+     std::move(socket), ssl_context};
+ 
+   C_SaferCond on_ssl_handshake_ctx;
+@@ -341,7 +341,7 @@ TEST_F(TestMockMigrationHttpClient, OpenHttpsHandshakeFail) {
+ 
+   boost::asio::ssl::context ssl_context{boost::asio::ssl::context::tlsv12};
+   load_server_certificate(ssl_context);
+-  boost::beast::ssl_stream<boost::beast::tcp_stream> ssl_stream{
++  boost::asio::ssl::stream<boost::asio::ip::tcp::socket> ssl_stream{
+     std::move(socket), ssl_context};
+ 
+   C_SaferCond on_ssl_handshake_ctx;
