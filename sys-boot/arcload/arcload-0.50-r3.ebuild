@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,11 +38,6 @@ PATCHES=(
 	"${PATCHDIR}/${P}-disable-ssp.patch"		# Disable SSP for ELF->ECOFF, as wreckoff can't handle
 	"${PATCHDIR}/${P}-silence-warnings.patch"	# Silence various warnings due to the code being old
 )
-
-src_prepare() {
-	default
-	eapply_user
-}
 
 src_compile() {
 	local myCC myCC64 myLD myLD64
