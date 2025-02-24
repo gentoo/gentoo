@@ -17,6 +17,7 @@ llvm-core/lldb
 llvm-core/polly
 llvm-runtimes/compiler-rt
 llvm-runtimes/compiler-rt-sanitizers
+llvm-runtimes/flang-rt
 llvm-runtimes/libunwind
 llvm-runtimes/libcxxabi
 llvm-runtimes/libcxx
