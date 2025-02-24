@@ -210,8 +210,6 @@ src_prepare() {
 			server-src/am{addclient,serverconfig}.pl || die
 		cat "${MYFILESDIR}"/amanda-amandahosts-server-2.5.1_p3-r1 > "${T}"/amandahosts || die
 	fi
-
-	eapply_user
 }
 
 src_configure() {
