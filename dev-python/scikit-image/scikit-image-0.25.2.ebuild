@@ -35,10 +35,14 @@ RDEPEND="
 	>=dev-python/scipy-1.11.4[sparse(+),${PYTHON_USEDEP}]
 	>=dev-python/tifffile-2022.8.12[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-python/pythran[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	>=dev-python/cython-3.0.4[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/pythran[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
 	)
