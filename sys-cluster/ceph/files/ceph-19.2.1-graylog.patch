@@ -1,0 +1,24 @@
+From ed47559bca9517d1c2bf306508ac3d6abd2cad8d Mon Sep 17 00:00:00 2001
+From: Adam Emerson <aemerson@redhat.com>
+Date: Thu, 12 Dec 2024 16:11:04 -0500
+Subject: [PATCH] common/Graylog: Fix Asio resolve call
+
+Signed-off-by: Adam Emerson <aemerson@redhat.com>
+---
+ src/common/Graylog.cc | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/common/Graylog.cc b/src/common/Graylog.cc
+index 099acacd803b8..e9c2565df62eb 100644
+--- a/src/common/Graylog.cc
++++ b/src/common/Graylog.cc
+@@ -37,8 +37,7 @@ void Graylog::set_destination(const std::string& host, int port)
+ {
+   try {
+     boost::asio::ip::udp::resolver resolver(m_io_service);
+-    boost::asio::ip::udp::resolver::query query(host, std::to_string(port));
+-    m_endpoint = *resolver.resolve(query);
++    m_endpoint = *resolver.resolve(host, std::to_string(port)).cbegin();
+     m_log_dst_valid = true;
+   } catch (boost::system::system_error const& e) {
+     cerr << "Error resolving graylog destination: " << e.what() << std::endl;
