@@ -1,0 +1,23 @@
+gcc report following error:
+linein.c:889:51: error: passing argument 2 of ¡®mb_mem_to_wchar¡¯ from incompatible pointer type [-Wincompatible-pointer-types]
+  889 |         first = mb_mem_to_wchar(env->strBuf->ptr, &word, &e);
+      |                                                   ^~~~~
+      |                                                   |
+      |                                                   int *
+In file included from fm.h:51:
+/usr/include/moe/mb.h:634:58: note: expected ¡®size_t *¡¯ {aka ¡®long unsigned int *¡¯} but argument is of type ¡®int *¡¯
+  634 | extern mb_wchar_t mb_mem_to_wchar(const char *s, size_t *p_b, size_t *p_e);
+      |                                                  ~~~~~~~~^~~
+diff --git a/linein.c b/linein.c
+index 4179957..753c61a 100644
+--- a/linein.c
++++ b/linein.c
+@@ -881,7 +881,7 @@ find_Lw(InputLineEnv *env)
+ #else
+ 	int b, first, cur;
+ #endif
+-	int word;
++	size_t word;
+ 
+ 	word = env->CPos - 1;
+ #ifdef MANY_CHARSET
