@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1 udev
+inherit dkms linux-mod-r1 udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -27,11 +27,26 @@ src_compile() {
 	local modargs=( KERNEL_SOURCE_DIR="${KV_OUT_DIR}" )
 
 	linux-mod-r1_src_compile
+	if use dkms; then
+		sed -e "s/@DO_NOT_CHANGE@/${PV}/" \
+			-i hid-xpadneo/dkms.conf.in || die
+		mv hid-xpadneo/dkms.conf.in hid-xpadneo/dkms.conf || die
+		sed -e "s/\.\.\/VERSION/\.\/VERSION/" \
+			-i hid-xpadneo/Makefile || die
+		echo ${PV} > hid-xpadneo/VERSION
+	fi
+	dkms_autoconf
 }
 
 src_install() {
 	local DOCS=( docs/{[^i]*.md,descriptors,reports} NEWS.md )
 	linux-mod-r1_src_install
+	dkms_src_install
+	if use dkms; then
+		chmod o+x \
+			"${ED}/usr/src/hid-xpadneo-${PV}/dkms.post_"{install,remove} \
+			|| die
+	fi
 
 	insinto /etc/modprobe.d
 	doins hid-${PN}/etc-modprobe.d/${PN}.conf
@@ -41,6 +56,7 @@ src_install() {
 
 pkg_postinst() {
 	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
