@@ -442,9 +442,6 @@ src_configure() {
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
 
-		# Workaround for bug #907905
-		filter-lto
-
 		# Not implemented by Clang, bug #903889
 		filter-flags -Wlto-type-mismatch -Werror=lto-type-mismatch
 	else
@@ -460,6 +457,10 @@ src_configure() {
 		# bug #838115
 		sed -i -e "s/-flto=thin/-flto/" solenv/gbuild/platform/com_GCC_defs.mk || die
 	fi
+
+	# ODR violations (not just in skia/vulkan): bug #916435
+	# Runtime crashes with Clang: bug #907905
+	filter-lto
 
 	if use custom-cflags ; then
 		elog "USE=custom-cflags has been selected. You are on your own to make sure that"
