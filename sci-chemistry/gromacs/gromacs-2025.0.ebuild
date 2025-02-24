@@ -63,15 +63,13 @@ CDEPEND="
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	clang? ( >=llvm-core/clang-6:* )
-	doc? (
-		$(python_gen_cond_dep '
+	$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
 			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
 			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
 			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
 		')
-	)
 	build-manual? (
 		app-text/doxygen
 		$(python_gen_cond_dep '
