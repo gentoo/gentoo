@@ -38,6 +38,7 @@ RDEPEND="
 		media-gfx/imagemagick[X]
 		x11-apps/xwd
 		x11-apps/xwininfo
+		x11-base/xorg-server[xvfb]
 	)
 "
 
@@ -57,6 +58,7 @@ DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 PATCHES=(
 	"${FILESDIR}"/${P}-unused-constructor.patch
 	"${FILESDIR}"/${P}-remove-which.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 src_prepare() {
