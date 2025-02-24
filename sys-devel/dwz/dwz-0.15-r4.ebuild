@@ -47,6 +47,10 @@ PATCHES=(
 )
 
 src_prepare() {
+	if [[ ${READELF} =~ ^llvm\-readelf$ ]] ; then
+		PATCHES+=( "${FILESDIR}"/${P}-llvm-dwarfdump.patch )
+	fi
+
 	default
 	tc-export CC
 }
