@@ -23,16 +23,16 @@ PATCHES=( "${FILESDIR}"/grig-0.8.1-hamlib4.patch
 		  "${FILESDIR}"/grig-0.8.1-hamlib45.patch
 		  "${FILESDIR}"/grig-0.8.1-hamlib46.patch )
 
-src_configure() {
-	econf --enable-hardware
-}
-
 src_prepare() {
 	# prepare for media-radio/hamlib-4.2 change of API
 	if has_version '>=media-libs/hamlib-4.2' ; then
 		eapply -p1 "${FILESDIR}"/${P}-hamlib42.patch
 	fi
 	default
+}
+
+src_configure() {
+	econf --enable-hardware
 }
 
 src_install() {
