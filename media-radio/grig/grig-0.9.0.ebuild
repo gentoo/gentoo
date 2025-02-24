@@ -28,12 +28,6 @@ src_configure() {
 	econf --enable-hardware
 }
 
-src_prepare() {
-	eapply ${PATCHES[@]}
-
-	eapply_user
-}
-
 src_install() {
 	default
 	make_desktop_entry ${PN} "GRig" "/usr/share/pixmaps/grig/grig-logo.png" "HamRadio"
