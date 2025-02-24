@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,13 +39,13 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	# we need to re-generate file py-compile with a version
 	# that supports Python >=3.12 to not fail with error:
 	# ModuleNotFoundError: No module named 'imp'
 	rm py-compile || die
 	eautoreconf
-
-	eapply_user
 }
 
 src_configure() {
