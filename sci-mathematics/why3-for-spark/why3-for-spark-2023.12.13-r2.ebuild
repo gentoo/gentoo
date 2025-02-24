@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-lang/ocaml-4.11:=[ocamlopt?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/num:=[ocamlopt?]
+	dev-ml/re:=[ocamlopt?]
 	dev-ml/yojson:=
 	coq? ( <=sci-mathematics/coq-8.18 )
 	emacs? ( app-editors/emacs:* )
@@ -75,6 +76,7 @@ src_prepare() {
 	sed -i \
 		-e 's:configure.in:configure.ac:g' \
 		Makefile.in || die
+	mv configure.{in,ac} || die
 	eautoreconf
 	default
 }
