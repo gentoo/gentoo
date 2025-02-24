@@ -1,0 +1,33 @@
+Convert function declarations to C23 standard
+https://bugs.gentoo.org/944457
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -1359,7 +1359,7 @@
+ /**
+  * Callback function for Cache_delayed_process_queue.
+  */
+-static void Cache_delayed_process_queue_callback()
++static void Cache_delayed_process_queue_callback(void *data)
+ {
+    CacheEntry_t *entry;
+ 
+--- a/src/jpeg.c
++++ b/src/jpeg.c
+@@ -124,7 +124,7 @@
+  *    static void init_source(j_decompress_ptr cinfo)
+  * (declaring it with no parameter avoids a compiler warning)
+  */
+-static void init_source()
++static void init_source(struct jpeg_decompress_struct *cinfo)
+ {
+ }
+ 
+@@ -181,7 +181,7 @@
+  *    static void term_source(j_decompress_ptr cinfo)
+  * (declaring it with no parameter avoids a compiler warning)
+  */
+-static void term_source()
++static void term_source(struct jpeg_decompress_struct *cinfo)
+ {
+ }
+ 
