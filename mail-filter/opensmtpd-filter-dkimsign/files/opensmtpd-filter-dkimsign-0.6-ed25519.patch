@@ -8,8 +8,8 @@ commit - 60e9f82dc81c599272bc0061157850239f54ae10
 commit + 07480b90f4ee9246fdc55bbcdd0370c031923420
 blob - 19746f9f6e583080de34e95de1b6cf3d9929833d
 blob + 058d1919ba16827a0f2c32e04405586ccb316117
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -7,9 +7,6 @@ MANDIR=		${LOCALBASE}/man/man
  
  SRCS+=		main.c mheader.c
@@ -22,8 +22,8 @@ blob + 058d1919ba16827a0f2c32e04405586ccb316117
  CRYPT_LDFLAGS_L!=pkg-config --libs-only-L ${LIBCRYPTOPC}
 blob - 1f97bd28f4172df60f52b0b2bae40bc4fa0817a0
 blob + 011d047d5401c07146103693f7b58fc5289bdf94
---- Makefile.gnu
-+++ Makefile.gnu
+--- a/Makefile.gnu
++++ b/Makefile.gnu
 @@ -7,9 +7,6 @@ MANDIR=		${LOCALBASE}/share/man/man8
  
  SRCS+=		main.c mheader.c
@@ -36,8 +36,8 @@ blob + 011d047d5401c07146103693f7b58fc5289bdf94
  CRYPT_LDFLAGS_L!=pkg-config --libs-only-L ${LIBCRYPTOPC}
 blob - 2961793635330ed82f566e8870166a7f012e7e7a
 blob + 8b2d2131ea121f527e174e6b59a4bdde8f844193
---- main.c
-+++ main.c
+--- a/main.c
++++ b/main.c
 @@ -136,13 +136,11 @@ main(int argc, char *argv[])
  				hashalg = optarg + 4;
  				keyid = EVP_PKEY_RSA;

@@ -20,12 +20,12 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 PATCHES=(
-	"${FILESDIR}/${PN}-ed25519.patch"
+	"${FILESDIR}/${PN}-0.6-ed25519.patch"
 )
 
 src_prepare() {
-	mv -f Makefile.gnu Makefile
-	eapply_user
+	default
+	mv -f Makefile.gnu Makefile || die
 }
 
 src_compile() {
