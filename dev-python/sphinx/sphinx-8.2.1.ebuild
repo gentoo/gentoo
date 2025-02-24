@@ -52,6 +52,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
+	>=dev-python/flit-core-3.11
 	doc? (
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 		media-gfx/graphviz
