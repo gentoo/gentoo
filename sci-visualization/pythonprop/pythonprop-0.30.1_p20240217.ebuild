@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,9 +39,7 @@ PATCHES=( "${FILESDIR}/${PN}-0.30.1-p20240217.patch"
 		"${FILESDIR}/${PN}-matplotlib3.9.patch" )
 
 src_prepare() {
-	eapply_user
-
-	eapply ${PATCHES[@]}
+	default
 
 	# drop building *.pdf files
 	sed -i -e "s#docs/user/help##g" Makefile.am || die
