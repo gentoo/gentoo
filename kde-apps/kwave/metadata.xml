@@ -6,10 +6,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kwave</bugs-to>
+		<remote-id type="kde-invent">multimedia/kwave</remote-id>
 	</upstream>
 	<longdescription>With Kwave you can edit many sorts of wav-files including multi-channel files. You are able to alter and play back each channel on its own. Kwave also includes many plugins (most are still under development) to transform the wave-file in several ways and presents a graphical view with a complete zoom- and scroll capability.</longdescription>
 	<use>
-		<flag name="qtmedia">Enable playback via Qt5Multimedia</flag>
+		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 	</use>
 </pkgmetadata>
