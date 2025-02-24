@@ -18,7 +18,7 @@ S="${WORKDIR}/bc-java-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
