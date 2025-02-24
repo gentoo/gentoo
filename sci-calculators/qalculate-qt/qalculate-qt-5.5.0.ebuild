@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-qt/qtbase:6[gui,network,widgets]
