@@ -422,8 +422,9 @@ linux-mod-r1_src_compile() {
 	[[ ${modargs@a} == *a* ]] && emakeargs+=( "${modargs[@]}" )
 
 	local -A built=()
-	local build mod name target
-	for mod in "${modlist[@]}"; do
+	local build index mod name target
+	for index in "${!modlist[@]}"; do
+		mod=${modlist[index]}
 		# note modlist was not made an associative array ([name]=) to preserve
 		# ordering, but is still using = to improve readability
 		name=${mod%%=*}
@@ -472,6 +473,7 @@ linux-mod-r1_src_compile() {
 		fi
 
 		popd >/dev/null || die
+		modlist[index]="${name}=${mod[0]}:${mod[1]}:${mod[2]}:${mod[3]}"
 	done
 }
 
