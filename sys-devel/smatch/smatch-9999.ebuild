@@ -62,7 +62,7 @@ src_test() {
 
 src_install() {
 	# default install target installs a lot of sparse cruft
-	dobin smatch cgcc
+	dobin smatch
 	insinto /usr/share/smatch/smatch_data
 	doins smatch_data/*
 	dodoc FAQ Documentation/smatch.rst
