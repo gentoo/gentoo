@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,10 +174,10 @@
+ ELSE(MSVC)
+ 	SET(CMAKE_C_FLAGS_DEBUG            "-g3 -Wall -O0 ${CMAKE_C_FLAGS}")
+ 	SET(CMAKE_C_FLAGS_RELEASE          "-O3 ${CMAKE_C_FLAGS}")
+-	SET(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O3 -g ${CMAKE_C_FLAGS}")
++	SET(CMAKE_C_FLAGS_RELWITHDEBINFO   "${CMAKE_C_FLAGS}")
+ 	SET(CMAKE_CXX_FLAGS_DEBUG          "-g3 -Wall -O0 ${CMAKE_CXX_FLAGS}")
+ 	SET(CMAKE_CXX_FLAGS_RELEASE        "-O3 ${CMAKE_CXX_FLAGS}")
+-	SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g ${CMAKE_CXX_FLAGS}")
++	SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS}")
+ ENDIF(MSVC)
+ ##############################################################################################
+ # Setting libraries and includes
