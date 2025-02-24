@@ -6,6 +6,14 @@
 
 # New entries go on top.
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-02-24)
+# Only builds with ffmpeg-4.x, upstream has no timeline to fix it.
+# https://tracker.dev.opencascade.org/view.php?id=32871
+# Fringe usage only to play audio. Which most consumers (freecad, vtk)
+# don't do. Mask so the unsuspecting user with ffmpeg in global USE isn't
+# restricted to ancient ffmpeg.
+sci-libs/opencascade ffmpeg
+
 # Sam James <sam@gentoo.org> (2025-02-21)
 # Mask for older GTK to phase in enabling Vulkan for users (and avoid a surprise
 # for stable users, as Vulkan is enabled by default on desktop profiles).
