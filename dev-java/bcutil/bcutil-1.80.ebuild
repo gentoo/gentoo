@@ -17,7 +17,7 @@ S="${WORKDIR}/bc-java-${MY_PV}/util"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 CDEPEND="~dev-java/bcprov-${PV}:0"
 
