@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -17,19 +17,12 @@ DEPEND=">=x11-libs/libdockapp-0.7:="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-s4t4n.patch
+	"${FILESDIR}"/${P}-c99.patch
 )
 
-src_prepare() {
-	default
-
-	# Respect LDFLAGS, see bug #335031
-	sed -e 's/ -o wmcms/ ${LDFLAGS} -o wmcms/' -i Makefile || die
-
-	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i *.c || die
-}
-
 src_compile() {
-	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)"
+	tc-export CC
+	default
 }
 
 src_install() {
