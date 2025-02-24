@@ -1,0 +1,26 @@
+Fixes QA warning, pr is unused, so it's safe to remove
+
+ * QA Notice: Package triggers severe warnings which indicate that it
+ *            may exhibit random runtime failures.
+ * display.c:1253:2: warning: variable 'pr' is uninitialized when used here [-Wuninitialized]
+diff --git a/display.c b/display.c
+index c8640a9..5c48e17 100644
+--- a/display.c
++++ b/display.c
+@@ -1132,7 +1132,7 @@ redrawForm(Buffer *buf, Anchor *a, Line *l, int pos,
+     FormItemList *fi;
+     int i, j, n, ctype, delta, bcol, ncol, epos;
+     char *p;
+-    Lineprop *pr, prop;
++    Lineprop prop;
+ #ifdef USE_ANSI_COLOR
+     Linecolor *pc;
+ #endif
+@@ -1250,7 +1250,6 @@ redrawForm(Buffer *buf, Anchor *a, Line *l, int pos,
+ #endif
+ 	j = ncol;
+ 	p += delta;
+-	pr += delta;
+ #ifdef USE_ANSI_COLOR
+ 	pc += delta;
+ #endif
