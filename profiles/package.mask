@@ -256,7 +256,6 @@ dev-go/gom
 # Bugs #926687, #926686. Removal on 2025-02-23
 <dev-python/spyder-6
 dev-python/spyder-vim
-dev-python/spyder-terminal
 =dev-python/qtpy-2.4.2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
