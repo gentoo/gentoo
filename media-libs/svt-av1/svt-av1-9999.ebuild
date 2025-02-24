@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake-multilib flag-o-matic
 
-DESCRIPTION="Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder)"
+DESCRIPTION="Scalable Video Technology for AV1 (SVT-AV1 Encoder)"
 HOMEPAGE="https://gitlab.com/AOMediaCodec/SVT-AV1"
 
 if [[ ${PV} = 9999 ]]; then
