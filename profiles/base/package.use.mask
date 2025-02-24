@@ -833,6 +833,7 @@ dev-lang/gnat-gpl jit
 # be re-enabled with the 'server' USE flag, but this flag is hard
 # masked. bug #666619
 dev-python/paramiko server
+dev-python/sshtunnel test
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
