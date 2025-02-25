@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{{11..13},13t} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit edo flag-o-matic multiprocessing python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A general purpose tile map editor"
