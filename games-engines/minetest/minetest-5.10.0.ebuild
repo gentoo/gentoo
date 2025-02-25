@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,14 @@ LUA_COMPAT=( lua5-1 luajit )
 
 inherit cmake flag-o-matic lua-single systemd xdg
 
+MY_PN="luanti"
+MY_P="${MY_PN}-${PV}"
+MY_PF="${MY_PN}-${PVR}"
+
 DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
 HOMEPAGE="https://www.luanti.org/"
-SRC_URI="https://github.com/minetest/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/luanti-org/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
@@ -81,11 +86,11 @@ src_configure() {
 		-DBUILD_SERVER=$(usex server)
 		-DBUILD_UNITTESTS=$(usex test)
 		-DCUSTOM_BINDIR="${EPREFIX}/usr/bin"
-		-DCUSTOM_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
-		-DCUSTOM_EXAMPLE_CONF_DIR="${EPREFIX}/usr/share/doc/${PF}"
-		-DCUSTOM_LOCALEDIR="${EPREFIX}/usr/share/${PN}/locale"
+		-DCUSTOM_DOCDIR="${EPREFIX}/usr/share/doc/${MY_PF}"
+		-DCUSTOM_EXAMPLE_CONF_DIR="${EPREFIX}/usr/share/doc/${MY_PF}"
+		-DCUSTOM_LOCALEDIR="${EPREFIX}/usr/share/${MY_PN}/locale"
 		-DCUSTOM_MANDIR="${EPREFIX}/usr/share/man"
-		-DCUSTOM_SHAREDIR="${EPREFIX}/usr/share/${PN}"
+		-DCUSTOM_SHAREDIR="${EPREFIX}/usr/share/${MY_PN}"
 		-DENABLE_CURL=$(usex curl)
 		-DENABLE_CURSES=$(usex ncurses)
 		-DENABLE_GETTEXT=$(usex nls)
