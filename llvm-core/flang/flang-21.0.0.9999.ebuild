@@ -20,6 +20,8 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+"
+PDEPEND="
 	>=llvm-runtimes/flang-rt-${PV}:${LLVM_MAJOR}
 "
 BDEPEND="
