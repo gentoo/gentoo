@@ -19,7 +19,7 @@ index c12f15c..27d2124 100644
  dnl AC_MSG_NOTICE([DBG = |$DBG|])
 
 -AM_CONDITIONAL(WARNINGS_ARE_ERRORS_COND, [test "x$ddcutil_version_suffix" != "x"] )
-+AM_CONDITIONAL(WARNINGS_ARE_ERRORS_COND, [test 0])
++AM_CONDITIONAL(WARNINGS_ARE_ERRORS_COND, [test 1 -eq 0])
 
  AS_IF( [test 0$DBG -ne 0],
     AC_MSG_NOTICE([debug messages enabled]),

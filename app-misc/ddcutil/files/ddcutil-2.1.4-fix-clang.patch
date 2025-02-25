@@ -1,0 +1,57 @@
+https://github.com/rockowitz/ddcutil/pull/502
+
+From d6eeb92f0e537aba415b6abc28fe157626a7bef7 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 25 Feb 2025 22:24:23 +0800
+Subject: [PATCH] fix error reported by clang 19
+
+1. query_sysenv_i2c.c: error: variable 'busct' set but not used [-Werror,-Wunused-but-set-variable]
+2. i2c_strategy_dispatcher.c: error: expression which evaluates to zero treated as a null pointer
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ src/app_sysenv/query_sysenv_i2c.c | 3 ---
+ src/i2c/i2c_strategy_dispatcher.c | 4 ++--
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/app_sysenv/query_sysenv_i2c.c b/src/app_sysenv/query_sysenv_i2c.c
+index 55f3424a..290b704b 100644
+--- a/src/app_sysenv/query_sysenv_i2c.c
++++ b/src/app_sysenv/query_sysenv_i2c.c
+@@ -275,11 +275,8 @@ void test_edid_read_variants(Env_Accumulator * accum) {
+    rpt_title("Testing EDID read alternatives...",depth);
+    sysenv_rpt_current_time(NULL, d1);
+ 
+-   int  busct = 0;
+-
+    for (int busno=0; busno < I2C_BUS_MAX; busno++) {
+       if (i2c_device_exists(busno)) {
+-         busct++;
+          rpt_nl();
+          rpt_vstring(d1, "Examining device /dev/i2c-%d...", busno);
+ 
+diff --git a/src/i2c/i2c_strategy_dispatcher.c b/src/i2c/i2c_strategy_dispatcher.c
+index ee435e6d..d6026526 100644
+--- a/src/i2c/i2c_strategy_dispatcher.c
++++ b/src/i2c/i2c_strategy_dispatcher.c
+@@ -188,7 +188,7 @@ Status_Errno_DDC invoke_i2c_writer(
+                  hexstring_t(bytes_to_write, bytect));
+ 
+    // n. prior to gcc 11, declaration cannot immediately follow label
+-   I2C_IO_Strategy * strategy = I2C_IO_STRATEGY_NOT_SET;
++   I2C_IO_Strategy * strategy = NULL;
+ retry:
+    strategy = i2c_get_io_strategy();
+    DBGTRC_NOPREFIX(debug, TRACE_GROUP, "strategy = %s", strategy->strategy_name);
+@@ -235,7 +235,7 @@ Status_Errno_DDC invoke_i2c_reader(
+                    readbuf);
+ 
+      // n. prior to gcc 11, declaration cannot immediately follow label
+-     I2C_IO_Strategy * strategy = I2C_IO_STRATEGY_NOT_SET;
++     I2C_IO_Strategy * strategy = NULL;
+ retry:
+      strategy = i2c_get_io_strategy();
+      DBGTRC_NOPREFIX(debug, TRACE_GROUP, "strategy = %s", strategy->strategy_name);
+-- 
+2.45.2
+
