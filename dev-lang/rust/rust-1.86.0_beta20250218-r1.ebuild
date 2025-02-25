@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 19 )
 PYTHON_COMPAT=( python3_{10..13} )
 
 RUST_MAX_VER=${PV%%_*}
@@ -14,7 +14,7 @@ elif [[ ${PV} == *beta* ]]; then
 	# While uncommon it is possible for feature changes within `beta` to result
 	# in an older snapshot being unable to build a newer one without modifying the sources.
 	# 'stable' releases should always be able to build a beta snapshot so just use those.
-	RUST_MAX_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).1"
+	RUST_MAX_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -39,6 +39,7 @@ elif [[ ${PV} == *beta* ]]; then
 	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
 		verify-sig? ( https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
 			-> rustc-${PV}-src.tar.xz.asc )
+		https://github.com/rust-lang/rust/pull/137020.patch -> ${P}-vendor-in-install-phase.patch
 	"
 	S="${WORKDIR}/${MY_P}-src"
 else
@@ -165,6 +166,7 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
+	"${DISTDIR}"/${P}-vendor-in-install-phase.patch
 	"${FILESDIR}"/1.85.0-cross-compile-libz.patch
 	"${FILESDIR}"/1.85.0-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
@@ -216,7 +218,12 @@ src_unpack() {
 			directory = "vendor"
 		_EOF_
 	else
-		verify-sig_src_unpack
+		# Until upstream merge this patch we can't use the default verify-sig_src_unpack
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}/rustc-${PV}-src.tar.xz" \
+				"${DISTDIR}/rustc-${PV}-src.tar.xz.asc"
+		fi
+		default_src_unpack
 	fi
 }
 

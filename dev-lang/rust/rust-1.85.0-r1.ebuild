@@ -3,12 +3,12 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 19 )
 PYTHON_COMPAT=( python3_{10..13} )
 
 RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
-	RUST_MIN_VER="1.86.0" # Update this as new `beta` releases come out.
+	RUST_MIN_VER="1.85.0" # Update this as new `beta` releases come out.
 elif [[ ${PV} == *beta* ]]; then
 	# Enforce that `beta` is built from `stable`.
 	# While uncommon it is possible for feature changes within `beta` to result
