@@ -10,7 +10,7 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/insilmaril/${PN}.git"
 	inherit git-r3
 else
-	COMMIT=""
+	COMMIT="9c2c3785c47da3d143019dc9f743381461cb0d08"
 	SRC_URI="https://github.com/insilmaril/${PN}/archive/develop/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-develop"
 	KEYWORDS="~amd64 ~x86"
