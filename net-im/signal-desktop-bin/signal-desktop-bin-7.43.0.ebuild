@@ -64,8 +64,7 @@ QA_PREBUILT="
 
 src_prepare() {
 	default
-	sed -e 's| --no-sandbox||g' \
-		-e "s|^Exec=/opt/Signal/signal-desktop|Exec=${MY_PN}|" \
+	sed -e "s|^Exec=/opt/Signal/signal-desktop|Exec=${MY_PN}|" \
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
 }
