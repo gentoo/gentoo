@@ -25,6 +25,7 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 src_configure() {
 	local mycmakeargs=(
 		-DCUDNN_FRONTEND_BUILD_TESTS=$(usex test)
+		-DCUDNN_FRONTEND_BUILD_SAMPLES=OFF
 	)
 	cmake_src_configure
 }
