@@ -1,0 +1,307 @@
+https://invent.kde.org/plasma/kwin/-/commit/544f3d1ae355d72cab0f28df5533b67085f85e88
+
+From 544f3d1ae355d72cab0f28df5533b67085f85e88 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Tue, 25 Feb 2025 22:49:06 +0100
+Subject: [PATCH] Revert "workspace: better deal with having more outputs than
+ the GPU can drive"
+
+This reverts commit a23949582f05c1db7c9bb3bf7fd0292b7120045d. For some systems it caused
+an infinite loop on startup
+--- a/src/backends/drm/drm_backend.cpp
++++ b/src/backends/drm/drm_backend.cpp
+@@ -367,7 +367,7 @@ size_t DrmBackend::gpuCount() const
+     return m_gpus.size();
+ }
+ 
+-OutputConfigurationError DrmBackend::applyOutputChanges(const OutputConfiguration &config)
++bool DrmBackend::applyOutputChanges(const OutputConfiguration &config)
+ {
+     QList<DrmOutput *> toBeEnabled;
+     QList<DrmOutput *> toBeDisabled;
+@@ -386,20 +386,14 @@ OutputConfigurationError DrmBackend::applyOutputChanges(const OutputConfiguratio
+                 }
+             }
+         }
+-        const auto error = gpu->testPendingConfiguration();
+-        if (error != DrmPipeline::Error::None) {
++        if (gpu->testPendingConfiguration() != DrmPipeline::Error::None) {
+             for (const auto &output : std::as_const(toBeEnabled)) {
+                 output->revertQueuedChanges();
+             }
+             for (const auto &output : std::as_const(toBeDisabled)) {
+                 output->revertQueuedChanges();
+             }
+-            if (error == DrmPipeline::Error::NotEnoughCrtcs) {
+-                // TODO make this more specific, this is per GPU!
+-                return OutputConfigurationError::TooManyEnabledOutputs;
+-            } else {
+-                return OutputConfigurationError::Unknown;
+-            }
++            return false;
+         }
+     }
+     // first, apply changes to drm outputs.
+@@ -418,7 +412,7 @@ OutputConfigurationError DrmBackend::applyOutputChanges(const OutputConfiguratio
+     for (const auto &output : std::as_const(m_virtualOutputs)) {
+         output->applyChanges(config);
+     }
+-    return OutputConfigurationError::None;
++    return true;
+ }
+ 
+ void DrmBackend::setRenderBackend(DrmRenderBackend *backend)
+--- a/src/backends/drm/drm_backend.h
++++ b/src/backends/drm/drm_backend.h
+@@ -73,7 +73,7 @@ Q_SIGNALS:
+     void gpuRemoved(DrmGpu *gpu);
+ 
+ protected:
+-    OutputConfigurationError applyOutputChanges(const OutputConfiguration &config) override;
++    bool applyOutputChanges(const OutputConfiguration &config) override;
+ 
+ private:
+     friend class DrmGpu;
+--- a/src/backends/drm/drm_gpu.cpp
++++ b/src/backends/drm/drm_gpu.cpp
+@@ -352,7 +352,7 @@ DrmPipeline::Error DrmGpu::checkCrtcAssignment(QList<DrmConnector *> connectors,
+         }
+         if (!connectors.empty()) {
+             // we have no crtcs left to drive the remaining connectors
+-            return DrmPipeline::Error::NotEnoughCrtcs;
++            return DrmPipeline::Error::InvalidArguments;
+         }
+         return testPipelines();
+     }
+@@ -442,10 +442,6 @@ DrmPipeline::Error DrmGpu::testPendingConfiguration()
+             output->cursorLayer()->setEnabled(false);
+         }
+     }
+-    if (connectors.size() > crtcs.size()) {
+-        // this can't work, we can return early
+-        return DrmPipeline::Error::NotEnoughCrtcs;
+-    }
+     return checkCrtcAssignment(connectors, crtcs);
+ }
+ 
+--- a/src/backends/drm/drm_pipeline.h
++++ b/src/backends/drm/drm_pipeline.h
+@@ -48,7 +48,6 @@ public:
+         NoPermission,
+         FramePending,
+         TestBufferFailed,
+-        NotEnoughCrtcs,
+         Unknown,
+     };
+     Q_ENUM(Error)
+--- a/src/core/outputbackend.cpp
++++ b/src/core/outputbackend.cpp
+@@ -43,7 +43,7 @@ std::unique_ptr<QPainterBackend> OutputBackend::createQPainterBackend()
+     return nullptr;
+ }
+ 
+-OutputConfigurationError OutputBackend::applyOutputChanges(const OutputConfiguration &config)
++bool OutputBackend::applyOutputChanges(const OutputConfiguration &config)
+ {
+     const auto availableOutputs = outputs();
+     QList<Output *> toBeEnabledOutputs;
+@@ -63,7 +63,7 @@ OutputConfigurationError OutputBackend::applyOutputChanges(const OutputConfigura
+     for (const auto &output : toBeDisabledOutputs) {
+         output->applyChanges(config);
+     }
+-    return OutputConfigurationError::None;
++    return true;
+ }
+ 
+ Output *OutputBackend::findOutput(const QString &name) const
+--- a/src/core/outputbackend.h
++++ b/src/core/outputbackend.h
+@@ -92,7 +92,7 @@ public:
+     /**
+      * Applies the output changes. Default implementation only sets values common between platforms
+      */
+-    virtual OutputConfigurationError applyOutputChanges(const OutputConfiguration &config);
++    virtual bool applyOutputChanges(const OutputConfiguration &config);
+ 
+     virtual Session *session() const;
+ 
+--- a/src/effect/globals.h
++++ b/src/effect/globals.h
+@@ -451,12 +451,6 @@ enum WindowTypeMask {
+ };
+ Q_DECLARE_FLAGS(WindowTypes, WindowTypeMask)
+ 
+-enum class OutputConfigurationError {
+-    None,
+-    Unknown,
+-    TooManyEnabledOutputs,
+-};
+-
+ } // namespace
+ 
+ Q_DECLARE_METATYPE(std::chrono::nanoseconds)
+--- a/src/wayland/outputmanagement_v2.cpp
++++ b/src/wayland/outputmanagement_v2.cpp
+@@ -487,15 +487,11 @@ void OutputConfigurationV2Interface::kde_output_configuration_v2_apply(Resource
+             return pair.second->handle();
+         });
+     }
+-    switch (workspace()->applyOutputConfiguration(config, sortedOrder)) {
+-    case OutputConfigurationError::None:
++    if (workspace()->applyOutputConfiguration(config, sortedOrder)) {
+         send_applied();
+-        break;
+-    case OutputConfigurationError::Unknown:
+-    case OutputConfigurationError::TooManyEnabledOutputs:
++    } else {
+         // TODO provide a more accurate error reason once the driver actually gives us anything
+         sendFailure(resource, i18n("The driver rejected the output configuration"));
+-        break;
+     }
+ }
+ 
+--- a/src/workspace.cpp
++++ b/src/workspace.cpp
+@@ -496,11 +496,10 @@ Workspace::~Workspace()
+     _self = nullptr;
+ }
+ 
+-OutputConfigurationError Workspace::applyOutputConfiguration(const OutputConfiguration &config, const std::optional<QList<Output *>> &outputOrder)
++bool Workspace::applyOutputConfiguration(const OutputConfiguration &config, const std::optional<QList<Output *>> &outputOrder)
+ {
+-    auto error = kwinApp()->outputBackend()->applyOutputChanges(config);
+-    if (error != OutputConfigurationError::None) {
+-        return error;
++    if (!kwinApp()->outputBackend()->applyOutputChanges(config)) {
++        return false;
+     }
+     updateOutputs(outputOrder);
+     m_outputConfigStore->storeConfig(kwinApp()->outputBackend()->outputs(), m_lidSwitchTracker->isLidClosed(), config, m_outputOrder);
+@@ -523,7 +522,7 @@ OutputConfigurationError Workspace::applyOutputConfiguration(const OutputConfigu
+         output->renderLoop()->scheduleRepaint();
+     }
+ 
+-    return OutputConfigurationError::None;
++    return true;
+ }
+ 
+ void Workspace::updateOutputConfiguration()
+@@ -540,12 +539,6 @@ void Workspace::updateOutputConfiguration()
+         return;
+     }
+ 
+-    assignBrightnessDevices();
+-
+-    const bool alreadyHaveEnabledOutputs = std::ranges::any_of(outputs, [](Output *o) {
+-        return o->isEnabled();
+-    });
+-
+     // Update the output order to a fallback list, to avoid dangling pointers
+     const auto setFallbackOutputOrder = [this, &outputs]() {
+         auto newOrder = outputs;
+@@ -559,62 +552,40 @@ void Workspace::updateOutputConfiguration()
+         setOutputOrder(newOrder);
+     };
+ 
+-    QList<Output *> toEnable = outputs;
+-    OutputConfigurationError error = OutputConfigurationError::None;
+-    do {
+-        auto opt = m_outputConfigStore->queryConfig(toEnable, m_lidSwitchTracker->isLidClosed(), m_orientationSensor->reading(), kwinApp()->tabletModeManager()->effectiveTabletMode());
+-        if (!opt) {
+-            return;
+-        }
+-        auto &[cfg, order, type] = *opt;
++    auto opt = m_outputConfigStore->queryConfig(outputs, m_lidSwitchTracker->isLidClosed(), m_orientationSensor->reading(), kwinApp()->tabletModeManager()->effectiveTabletMode());
++    if (!opt) {
++        return;
++    }
++    auto &[cfg, order, type] = *opt;
+ 
+-        for (const auto &output : outputs) {
+-            if (!toEnable.contains(output)) {
+-                cfg.changeSet(output)->enabled = false;
+-            }
+-        }
+-        for (Output *output : std::as_const(toEnable)) {
+-            const auto changeset = cfg.changeSet(output);
+-            if (output->brightnessDevice() && changeset->allowSdrSoftwareBrightness.value_or(true)) {
+-                changeset->allowSdrSoftwareBrightness = false;
+-                changeset->brightness = output->brightnessDevice()->observedBrightness();
+-            }
++    assignBrightnessDevices();
++    for (Output *output : outputs) {
++        const auto changeset = cfg.changeSet(output);
++        if (output->brightnessDevice() && changeset->allowSdrSoftwareBrightness.value_or(true)) {
++            changeset->allowSdrSoftwareBrightness = false;
++            changeset->brightness = output->brightnessDevice()->observedBrightness();
+         }
++    }
+ 
+-        error = applyOutputConfiguration(cfg, order);
+-        switch (error) {
+-        case OutputConfigurationError::None:
+-            setOutputOrder(order);
+-            if (type == OutputConfigurationStore::ConfigType::Generated) {
+-                const bool hasInternal = std::any_of(outputs.begin(), outputs.end(), [](Output *o) {
+-                    return o->isInternal();
+-                });
+-                if (hasInternal && outputs.size() == 2) {
+-                    // show the OSD with output configuration presets
+-                    QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kscreen.osdService"),
+-                                                                          QStringLiteral("/org/kde/kscreen/osdService"),
+-                                                                          QStringLiteral("org.kde.kscreen.osdService"),
+-                                                                          QStringLiteral("showActionSelector"));
+-                    QDBusConnection::sessionBus().asyncCall(message);
+-                }
+-            }
+-            return;
+-        case OutputConfigurationError::Unknown:
+-            qCWarning(KWIN_CORE) << "Applying output config failed!";
+-            setFallbackOutputOrder();
+-            return;
+-        case OutputConfigurationError::TooManyEnabledOutputs:
+-            if (alreadyHaveEnabledOutputs) {
+-                // just keeping the old output configuration is preferable
+-                break;
+-            }
+-            toEnable.removeLast();
+-            break;
++    if (!applyOutputConfiguration(cfg, order)) {
++        qCWarning(KWIN_CORE) << "Applying output config failed!";
++        setFallbackOutputOrder();
++        return;
++    }
++    setOutputOrder(order);
++    if (type == OutputConfigurationStore::ConfigType::Generated) {
++        const bool hasInternal = std::any_of(outputs.begin(), outputs.end(), [](Output *o) {
++            return o->isInternal();
++        });
++        if (hasInternal && outputs.size() == 2) {
++            // show the OSD with output configuration presets
++            QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kscreen.osdService"),
++                                                                  QStringLiteral("/org/kde/kscreen/osdService"),
++                                                                  QStringLiteral("org.kde.kscreen.osdService"),
++                                                                  QStringLiteral("showActionSelector"));
++            QDBusConnection::sessionBus().asyncCall(message);
+         }
+-    } while (error == OutputConfigurationError::TooManyEnabledOutputs && !toEnable.isEmpty());
+-
+-    qCCritical(KWIN_CORE, "Applying output configuration failed!");
+-    setFallbackOutputOrder();
++    }
+ }
+ 
+ void Workspace::setupWindowConnections(Window *window)
+--- a/src/workspace.h
++++ b/src/workspace.h
+@@ -466,7 +466,7 @@ public:
+      * Apply the requested output configuration. Note that you must use this function
+      * instead of Platform::applyOutputChanges().
+      */
+-    OutputConfigurationError applyOutputConfiguration(const OutputConfiguration &config, const std::optional<QList<Output *>> &outputOrder = std::nullopt);
++    bool applyOutputConfiguration(const OutputConfiguration &config, const std::optional<QList<Output *>> &outputOrder = std::nullopt);
+ 
+ public Q_SLOTS:
+     void performWindowOperation(KWin::Window *window, Options::WindowOperation op);
+-- 
+GitLab
