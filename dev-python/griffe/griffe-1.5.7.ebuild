@@ -52,7 +52,7 @@ python_test() {
 	case ${EPYTHON} in
 		pypy3.11)
 			EPYTEST_DESELECT+=(
-				# TODO
+				# https://github.com/pypy/pypy/issues/5226
 				tests/test_inspector.py::test_inspecting_objects_from_private_builtin_stdlib_moduless
 			)
 			;&
