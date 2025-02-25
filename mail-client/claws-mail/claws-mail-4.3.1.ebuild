@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools desktop python-single-r1 xdg
+inherit desktop python-single-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -120,12 +120,9 @@ RDEPEND="${COMMONDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
-)
+	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
 
-src_prepare() {
-	default
-	eautoreconf
-}
+)
 
 src_configure() {
 	local myeconfargs=(
