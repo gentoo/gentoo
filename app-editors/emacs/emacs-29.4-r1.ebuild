@@ -460,6 +460,11 @@ src_test() {
 		# Bug #922525
 		%lisp/progmodes/typescript-ts-mode-tests.el
 	)
+	use elibc_musl && exclude_tests+=(
+			# Reason: newlocale(3) lenient locale validation #906012
+			# fns-tests-collate-strings
+			%src/fns-tests.el
+		)
 	use threads || exclude_tests+=(
 			%lisp/server-tests.el
 			%lisp/progmodes/eglot-tests.el
