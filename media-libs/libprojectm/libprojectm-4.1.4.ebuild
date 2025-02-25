@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	MY_PV="${PV/_/-}"
 	SRC_URI="https://github.com/projectM-visualizer/projectm/releases/download/v${MY_PV}/libprojectM-${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv ~sparc ~x86"
 	S="${WORKDIR}/libprojectM-${MY_PV}"
 fi
 
