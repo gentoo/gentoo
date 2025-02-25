@@ -55,6 +55,8 @@ src_prepare() {
 src_configure() {
 	# bug #946410
 	append-cflags -std=gnu17
+	# Usual always_inline problem
+	filter-flags -fno-semantic-interposition
 
 	postgres-multi_foreach econf \
 		--disable-rpath \
