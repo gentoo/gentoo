@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
@@ -228,12 +228,18 @@ PATCHES=(
 	# https://bugs.gentoo.org/907739
 	"${FILESDIR}/ceph-18.2.0-cython3.patch"
 	# https://bugs.gentoo.org/936889
-	"${FILESDIR}/ceph-18.2.1-gcc14.patch"
 	"${FILESDIR}/ceph-18.2.4-liburing.patch"
 	"${FILESDIR}/ceph-18.2.4-spdk.patch"
 	# https://bugs.gentoo.org/941069
 	"${FILESDIR}/ceph-19.2.0-importlib.patch"
-)
+	"${FILESDIR}/ceph-19.2.1-uuid.patch"
+	"${FILESDIR}/ceph-19.2.1-graylog.patch"
+	"${FILESDIR}/ceph-19.2.1-librbd.patch"
+	"${FILESDIR}/ceph-19.2.1-rgw.patch"
+	"${FILESDIR}/ceph-19.2.1-immutableobjectcache.patch"
+	"${FILESDIR}/ceph-19.2.1-mgr.patch"
+	"${FILESDIR}/ceph-19.2.1-exporter.patch"
+	)
 
 check-reqs_export_vars() {
 	CHECKREQS_DISK_BUILD="6G"
@@ -316,6 +322,8 @@ src_prepare() {
 
 ceph_src_configure() {
 	local mycmakeargs=(
+		# Don't break installed bundled libraries (bug #942680)
+		-DBUILD_SHARED_LIBS=OFF
 		-DWITH_BABELTRACE:BOOL=$(usex babeltrace)
 		-DWITH_BLUESTORE_PMEM:BOOL=$(usex pmdk)
 		-DWITH_CEPHFS:BOOL=$(usex cephfs)
@@ -356,6 +364,8 @@ ceph_src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 		-Wno-dev
 		-DCEPHADM_BUNDLED_DEPENDENCIES=none
+		# isa-l is very question mark exclamation mark
+		-DHAVE_NASM_X64=no
 	)
 
 	# this breaks when re-configuring for python impl
