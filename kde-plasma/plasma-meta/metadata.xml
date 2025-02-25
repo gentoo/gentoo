@@ -32,6 +32,5 @@
 		<flag name="wacom">Pull in <pkg>kde-plasma/wacomtablet</pkg> control center module</flag>
 		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
 		<flag name="webengine">Use <pkg>kde-apps/khelpcenter</pkg> to access the locally installed KDE Help System Handbook</flag>
-		<flag name="xwayland">Enable Wayland windows screensharing to XWayland applications via <pkg>gui-apps/xwaylandvideobridge</pkg></flag>
 	</use>
 </pkgmetadata>
