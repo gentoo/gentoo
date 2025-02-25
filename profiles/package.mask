@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-02-25)
+# Deprecated and no longer maintained upstream. Open security
+# issues. Use media-gfx/fig2dev instead. Removal in 30 days. Bug
+# #917279.
+media-gfx/transfig
+
 # Eray Aslan <eras@gentoo.org> (2025-02-24)
 # Mask experimental software
 =mail-mta/postfix-3.11*
