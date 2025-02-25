@@ -179,10 +179,6 @@ src_configure() {
 	# may misbehave at runtime.
 	unset -v YACC
 
-	# wcsnwidth(), substring() issues with -Wlto-type-mismatch, reported
-	# upstream to Chet by email.
-	filter-lto
-
 	myconf=(
 		--disable-profiling
 
