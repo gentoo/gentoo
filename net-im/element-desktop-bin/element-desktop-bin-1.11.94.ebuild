@@ -6,15 +6,20 @@ EAPI=8
 inherit optfeature unpacker xdg
 
 MY_PN="${PN/-bin}"
+MY_URI="https://packages.element.io/debian/pool/main/e/element-desktop"
 
 DESCRIPTION="A glossy Matrix collaboration client for desktop (binary package)"
 HOMEPAGE="https://element.io"
-SRC_URI="https://packages.element.io/debian/pool/main/e/element-desktop/${MY_PN}_${PV}_amd64.deb"
+SRC_URI="
+	amd64? ( ${MY_URI}/${MY_PN}_${PV}_amd64.deb )
+	arm64? ( ${MY_URI}/${MY_PN}_${PV}_arm64.deb )
+"
+
 S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="splitdebug"
 
 RDEPEND="
