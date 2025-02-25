@@ -150,6 +150,9 @@ src_configure() {
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
 	fi
 
+	# bug #945717
+	append-flags -std=gnu17
+
 	append-flags -fwrapv
 
 	filter-flags -malign-double
