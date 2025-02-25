@@ -1,0 +1,38 @@
+--- work.old/icc.c	2025-02-25 20:02:36.215180328 +0400
++++ work/icc.c	2025-02-25 20:04:09.711060955 +0400
+@@ -17326,7 +17326,7 @@
+ /* Returned static buffer is re-used every 5 calls. */
+ char *icmPiv(int di, int *p) {
+ 	static char buf[5][MAX_CHAN * 16];
+-	static ix = 0;
++	static size_t ix = 0;
+ 	int e;
+ 	char *bp;
+ 
+@@ -17349,7 +17349,7 @@
+ /* Returned static buffer is re-used every 5 calls. */
+ char *icmPdv(int di, double *p) {
+ 	static char buf[5][MAX_CHAN * 16];
+-	static ix = 0;
++	static size_t ix = 0;
+ 	int e;
+ 	char *bp;
+ 
+@@ -17372,7 +17372,7 @@
+ /* Returned static buffer is re-used every 5 calls. */
+ char *icmPfv(int di, float *p) {
+ 	static char buf[5][MAX_CHAN * 16];
+-	static ix = 0;
++	static size_t ix = 0;
+ 	int e;
+ 	char *bp;
+ 
+@@ -17395,7 +17395,7 @@
+ /* Returned static buffer is re-used every 5 calls. */
+ char *icmPLab(double *p) {
+ 	static char buf[5][MAX_CHAN * 16];
+-	static ix = 0;
++	static size_t ix = 0;
+ 	int e;
+ 	char *bp;
+ 	double lab[3];
