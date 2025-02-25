@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,8 +35,4 @@ src_install() {
 
 	newbashcomp influx-completion.bash influx
 	newzshcomp influx-completion.zsh _influx
-}
-
-src_test() {
-	emake test
 }
