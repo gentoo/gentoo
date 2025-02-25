@@ -96,6 +96,7 @@ DEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
+	sys-devel/gcc:*
 "
 
 PDEPEND="javafx? ( dev-java/openjfx:${SLOT} )"
@@ -156,6 +157,15 @@ src_prepare() {
 		hotspot/make/linux/makefiles/gcc.make || die
 
 	chmod +x configure || die
+
+	# Force gcc because build failed with modern clang, #918655
+	if ! tc-is-gcc; then
+			ewarn "openjdk/8 can be built with gcc only."
+			ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+			export CC=${CHOST}-gcc
+			export CXX=${CHOST}-g++
+			tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
 }
 
 src_configure() {
