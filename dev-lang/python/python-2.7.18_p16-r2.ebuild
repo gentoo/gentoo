@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -30,7 +30,7 @@ SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	berkdb bluetooth build examples gdbm +ncurses +readline
-	+sqlite +ssl tk valgrind wininst +xml
+	+sqlite +ssl valgrind wininst +xml
 "
 RESTRICT="test"
 
@@ -54,12 +54,6 @@ RDEPEND="
 	readline? ( >=sys-libs/readline-4.1:= )
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? ( dev-libs/openssl:= )
-	tk? (
-		>=dev-lang/tcl-8.0:=
-		>=dev-lang/tk-8.0:=
-		dev-tcltk/blt:=
-		dev-tcltk/tix
-	)
 	xml? ( >=dev-libs/expat-2.1:= )
 "
 # bluetooth requires headers from bluez
@@ -142,7 +136,7 @@ src_configure() {
 	use readline  || disable+=" readline"
 	use sqlite    || disable+=" _sqlite3"
 	use ssl       || export PYTHON_DISABLE_SSL="1"
-	use tk        || disable+=" _tkinter"
+	disable+=" _tkinter"
 	use xml       || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
 	export PYTHON_DISABLE_MODULES="${disable}"
 
@@ -295,10 +289,9 @@ src_install() {
 	if ! use sqlite; then
 		rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
 	fi
-	if ! use tk; then
-		rm -r "${ED}/usr/bin/idle${PYVER}" || die
-		rm -r "${libdir}/"{idlelib,lib-tk} || die
-	fi
+
+	rm -r "${ED}/usr/bin/idle${PYVER}" || die
+	rm -r "${libdir}/"{idlelib,lib-tk} || die
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
 
