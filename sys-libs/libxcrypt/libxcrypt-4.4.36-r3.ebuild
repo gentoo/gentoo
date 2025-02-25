@@ -138,9 +138,11 @@ src_configure() {
 	fi
 
 	if use headers-only; then
-		# Nothing is compiled here which would affect the headers for the target.
-		# So forcing CC is sane.
+		# Nothing is compiled which would affect the headers, so we set
+		# CC and PKG_CONFIG to ensure configure passes without defaulting
+		# to the unprefixed host variants e.g. "pkg-config"
 		local -x CC="$(tc-getBUILD_CC)"
+		local -x PKG_CONFIG="false"
 	fi
 
 	# Avoid possible "illegal instruction" errors with gold
