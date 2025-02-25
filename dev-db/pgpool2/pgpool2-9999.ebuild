@@ -56,12 +56,6 @@ src_configure() {
 	# bug #946410
 	append-cflags -std=gnu17
 
-	# -Werror=lto-type-mismatch
-	# https://bugs.gentoo.org/855248
-	# https://github.com/pgpool/pgpool2/issues/42
-	#
-	filter-lto
-
 	postgres-multi_foreach econf \
 		--disable-rpath \
 		--sysconfdir="${EPREFIX}/etc/${PN}" \
