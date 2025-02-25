@@ -449,6 +449,11 @@ src_test() {
 		# internet-is-working
 		%src/process-tests.el
 	)
+	use elibc_musl && exclude_tests+=(
+			# Reason: newlocale(3) lenient locale validation #906012
+			# fns-tests-collate-strings
+			%src/fns-tests.el
+		)
 	use threads || exclude_tests+=(
 			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
