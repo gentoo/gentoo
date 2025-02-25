@@ -1,23 +1,17 @@
 certificate version 0.1
-pusher Nick Sarnie <sarnex@gentoo.org> 1740439038 -0500
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1740439038-0263e9277f6d7c57fadac829a4efe98222175158
+pusher 0xAECFCBDC64276180 1740446618 -0500
+pushee gentoo:repo/gentoo.git
+nonce 1740446618-fc05f7463bb6b01f6e01c126af427329fcb8d2d5
 
-5bb6e1c7f4f630b6061307adfe2a5107d0eefb89 a3ecf3ed756ee4d0022043de2ff019a8bafde96b refs/heads/master
+a3ecf3ed756ee4d0022043de2ff019a8bafde96b 1c57492d45199197c9aa1a2e1ffeacbc3073989c refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQJGBAABCAAwFiEEKjqy6xHsR6dcCCUVuQgxXmzatuMFAme8/f4SHHNhcm5leEBn
-ZW50b28ub3JnAAoJELkIMV5s2rbjMSYP/iePK74RX0xV9ZBhSL/FQvm1HNh3AVYV
-95d5y0cSSprZeo5f2I6ly9bi/owE7PTDd81Uq88VMTaWoG+ej/fleQbLECXiQ9oV
-CJCbY43mtKoeg0N4GxG4a/aKC3Qv71M6ihzxtneTY1mmx8TuH9mK/FnbQqWZf0H+
-dXddMD2kC0aOLXSvgqn4UdIh0ok212L1mu0VDm0NOpn590gIsUKYZlKNWW8BTV/a
-OMHvgWhh042F4SELCRbBMq31qmC4ceFTJDTeBhmFVYdxs0dQQxO7srCjI0tnkd29
-t26VQW+ngPKr/4Oh+bzDOym0BTSQxbqodk9ARnBWA3b3v7eptYp0tG/e6bw3D00r
-I7/+IRw/DB0RfcVjzq5I58Jj1OdOEbpjp+l/Bkh5YHABcafpxniRX0wP5ViQH/vJ
-myHROWG8BM8p5BKV2LBwhrmcR91DzQE0dOWvr0os425jEgiv2o82Id89g7t58fjd
-XfG2Y7gb3lxFguoItO1xQj7KiK89aSKevoqzB09rNHZsmNWCZ5GaiCbXQ1q7v29/
-nCF+JvvmO21GFsBoqaGhMfTk7666sgakhc3nNY6gDjRLal6KeYNKe0ePm/iSywQD
-dszNLCl72uf6t+1pQk4pn7mLqrtjga+ibkdS3rHQ/06C9zJm2HGiTsoN7KROvcw2
-Ov0276aHiIhl
-=bs0l
+iQEzBAABCAAdFiEEx3SLh1HBoPy/yLVYskQGsLCsQzQFAme9G5oACgkQskQGsLCs
+QzTZnggAujjb9W9ypapnwhlgwnia3I/NKynXNj3VRXEsQuMrECctB7CnpTEhN8P5
+cnvR3GN/JatHZCMc9koFwr7R5cd2wO/co/9Hfwxqj2sTSFSvIq+lwBH2MQviWzGc
+05QnWscPL1Bw/DgwKavwy/dnvqFjCokPsd2FE9lhxx4UyYRzzN7rOg+zreJ8bcFe
+EuvzAzAdDQtDuicArojLEy/IODYRl1F/TgZxvD7R8iXK+o9OcC5KetdRf1UWxFLn
+WT+2AdN7tNma10udHj8njk3X5ddp1HH1+mMooXZeCGWq3Id2WtLgGUVjARjbviju
+f2gRtXDa6gsbkrL0NDyW8CkT1WLE7A==
+=zNSh
 -----END PGP SIGNATURE-----
