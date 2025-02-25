@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ppc64"
 
 CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
@@ -49,7 +49,6 @@ DEPEND="
 	app-shells/bash:0
 	app-misc/jq:=
 	dev-cpp/gflags:=
-	dev-db/lmdb:=
 	dev-lang/jsonnet:=
 	dev-libs/libaio:=
 	dev-libs/libnl:3=
@@ -205,6 +204,7 @@ CMAKE_WARN_UNUSED_CLI=no
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
+	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-17.2.1-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
@@ -220,6 +220,9 @@ PATCHES=(
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
 	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
+	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
+	# https://bugs.gentoo.org/901403
+	"${FILESDIR}/ceph-17.2.6-link-boost-context.patch"
 	# https://bugs.gentoo.org/905626
 	"${FILESDIR}/ceph-17.2.6-arrow-flatbuffers-c++14.patch"
 	# https://bugs.gentoo.org/868891
@@ -228,18 +231,11 @@ PATCHES=(
 	# https://bugs.gentoo.org/907739
 	"${FILESDIR}/ceph-18.2.0-cython3.patch"
 	# https://bugs.gentoo.org/936889
+	"${FILESDIR}/ceph-18.2.1-gcc14.patch"
+	"${FILESDIR}/ceph-18.2.1-gcc14-2.patch"
 	"${FILESDIR}/ceph-18.2.4-liburing.patch"
 	"${FILESDIR}/ceph-18.2.4-spdk.patch"
-	# https://bugs.gentoo.org/941069
-	"${FILESDIR}/ceph-19.2.0-importlib.patch"
-	"${FILESDIR}/ceph-19.2.1-uuid.patch"
-	"${FILESDIR}/ceph-19.2.1-graylog.patch"
-	"${FILESDIR}/ceph-19.2.1-librbd.patch"
-	"${FILESDIR}/ceph-19.2.1-rgw.patch"
-	"${FILESDIR}/ceph-19.2.1-immutableobjectcache.patch"
-	"${FILESDIR}/ceph-19.2.1-mgr.patch"
-	"${FILESDIR}/ceph-19.2.1-exporter.patch"
-	)
+)
 
 check-reqs_export_vars() {
 	CHECKREQS_DISK_BUILD="6G"
@@ -298,8 +294,6 @@ src_prepare() {
 	if use spdk; then
 		# https://bugs.gentoo.org/871942
 		sed -i 's/[#]ifndef HAVE_ARC4RANDOM/#if 0/' src/spdk/lib/iscsi/iscsi.c || die
-		# unittests fail to build (??!?)
-		sed -i -e 's/CONFIG_UNIT_TESTS=y/CONFIG_UNIT_TESTS=n/' src/spdk/CONFIG || die
 	fi
 
 	# remove tests that need root access
@@ -310,18 +304,12 @@ src_prepare() {
 		rm -rf src/arrow/
 		mv "${WORKDIR}/apache-arrow-17.0.0" src/arrow || die
 	fi
-
-	# newer boost don't support no header-only
-	sed -i -e 's~#include <boost/url/src.hpp>~#include <boost/url.hpp>~' src/mds/BoostUrlImpl.cc || die
-
-	# everyone forgot to link to boost_url
-	sed -i -e 's~target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common~target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common boost_url~' src/CMakeLists.txt || die
-	sed -i -e 's/target_link_libraries(journal cls_journal_client)/target_link_libraries(journal cls_journal_client boost_url)/' src/journal/CMakeLists.txt || die
-	sed -i -e 's/${BLKID_LIBRARIES} ${CMAKE_DL_LIBS})/${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} boost_url)/g' src/tools/cephfs/CMakeLists.txt || die
 }
 
 ceph_src_configure() {
 	local mycmakeargs=(
+		# Don't break installed bundled libraries (bug #942680)
+		-DBUILD_SHARED_LIBS=OFF
 		-DWITH_BABELTRACE:BOOL=$(usex babeltrace)
 		-DWITH_BLUESTORE_PMEM:BOOL=$(usex pmdk)
 		-DWITH_CEPHFS:BOOL=$(usex cephfs)
@@ -361,9 +349,6 @@ ceph_src_configure() {
 		# use the bundled libfmt for now since they seem to constantly break their API
 		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 		-Wno-dev
-		-DCEPHADM_BUNDLED_DEPENDENCIES=none
-		# isa-l is very question mark exclamation mark
-		-DHAVE_NASM_X64=no
 	)
 
 	# this breaks when re-configuring for python impl
