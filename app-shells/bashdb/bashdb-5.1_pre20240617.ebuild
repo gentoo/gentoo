@@ -32,7 +32,9 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-LICENSE="GPL-2"
+# LICENSE in the repo says GPL-2, but it's clearly based on bash-5.0, so
+# it must be GPL-3+ too.
+LICENSE="GPL-3+ GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
