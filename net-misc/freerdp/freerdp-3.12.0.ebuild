@@ -132,8 +132,6 @@ run_for_testing() {
 }
 
 src_configure() {
-	# bug #881695
-	filter-lto
 	use debug || append-cppflags -DNDEBUG
 	freerdp_configure -DBUILD_TESTING=OFF
 	run_for_testing freerdp_configure -DBUILD_TESTING=ON
