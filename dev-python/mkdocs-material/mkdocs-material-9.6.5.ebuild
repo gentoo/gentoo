@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
@@ -41,7 +41,9 @@ RDEPEND="
 	>=dev-python/pygments-2.16[${PYTHON_USEDEP}]
 	>=dev-python/pymdown-extensions-10.2[${PYTHON_USEDEP}]
 	>=dev-python/readtime-2.0[${PYTHON_USEDEP}]
-	>=dev-python/regex-2022.4.24[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/regex-2022.4.24[${PYTHON_USEDEP}]
+	' 'python*')
 	>=dev-python/requests-2.26[${PYTHON_USEDEP}]
 	social? (
 		>=dev-python/pillow-10.2[${PYTHON_USEDEP}]
