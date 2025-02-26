@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms linux-mod-r1
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
@@ -40,21 +40,36 @@ src_configure() {
 }
 
 src_compile() {
-	# The individual modules don't have separate targets so we can't use
-	# modlist here.
-	emake "${MODULES_MAKEARGS[@]}"
+	local modlist=(
+		agilent_82350b=gpib::drivers/gpib/agilent_82350b
+		agilent_82357a=gpib::drivers/gpib/agilent_82357a
+		cb7210=gpib::drivers/gpib/cb7210
+		cec_gpib=gpib::drivers/gpib/cec
+		fmh_gpib=gpib::drivers/gpib/fmh_gpib
+		gpib_bitbang=gpib::drivers/gpib/gpio
+		hp82335=gpib::drivers/gpib/hp_82335
+		hp_82341=gpib::drivers/gpib/hp_82341
+		ines_gpib=gpib::drivers/gpib/ines
+		lpvo_usb_gpib=gpib::drivers/gpib/lpvo_usb_gpib
+		nec7210=gpib::drivers/gpib/nec7210
+		ni_usb_gpib=gpib::drivers/gpib/ni_usb
+		gpib_common=gpib::drivers/gpib/sys
+		tms9914=gpib::drivers/gpib/tms9914
+		tnt4882=gpib::drivers/gpib/tnt4882
+	)
+
+	linux-mod-r1_src_compile
+	dkms_autoconf
 }
 
 src_install() {
-	emake \
-		"${MODULES_MAKEARGS[@]}" \
-		DESTDIR="${ED}" \
-		INSTALL_MOD_PATH="${ED}" \
-		docdir="${ED}/usr/share/doc/${PF}/html" \
-		install
-
-	modules_post_process
+	linux-mod-r1_src_install
+	dkms_src_install
 
 	dodoc ChangeLog AUTHORS README* NEWS
-	einstalldocs
+}
+
+pkg_postinst() {
+	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 }

@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_INITRAMFS_IUSE=+initramfs
-inherit autotools flag-o-matic linux-mod-r1 multiprocessing
+inherit autotools dkms flag-o-matic linux-mod-r1 multiprocessing
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -139,6 +139,23 @@ src_compile() {
 src_install() {
 	emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
 	modules_post_process
+	if use dkms; then
+		scripts/dkms.mkconf -n ${PN%-kmod} -v ${PV} -f dkms.conf || die
+		local arg dkms_build_args=()
+		for arg in "${MODULES_MAKEARGS[@]}"; do
+			if [[ ${arg} == *=* ]]; then
+				# Quote values for variables to avoid parsing problems
+				dkms_build_args+=( "${arg%%=*}='${arg#*=}'" )
+			else
+				dkms_build_args+=( "${arg}" )
+			fi
+		done
+		sed -i dkms.conf \
+			-e "/^MAKE/ s:make:make ${MAKEOPTS} ${dkms_build_args[*]}:" \
+				|| die "Failed to sed existing dkms.conf"
+		dkms_src_install
+		chmod o+x "${ED}/usr/src/${PN%-kmod}-${PV}/scripts/"* || die
+	fi
 
 	dodoc AUTHORS COPYRIGHT META README.md
 }
@@ -185,6 +202,7 @@ pkg_postinst() {
 	[[ -f ${newko[0]} ]] && _old_layout_cleanup
 
 	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	if use x86 || use arm ; then
 		ewarn "32-bit kernels will likely require increasing vmalloc to"

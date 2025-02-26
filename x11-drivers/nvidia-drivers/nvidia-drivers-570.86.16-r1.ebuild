@@ -4,8 +4,9 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
-inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
+inherit desktop dkms eapi9-pipestatus eapi9-ver flag-o-matic
+inherit linux-mod-r1 readme.gentoo-r1 systemd toolchain-funcs
+inherit unpacker user-info
 
 MODULES_KERNEL_MAX=6.13
 NV_URI="https://download.nvidia.com/XFree86/"
@@ -28,7 +29,10 @@ KEYWORDS="-* ~amd64 ~arm64"
 # note: kernel-open is an upstream default in >=560 if all GPUs on the system
 # support it but, since no automagic here, keeping it off for the wider support
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
-REQUIRED_USE="kernel-open? ( modules )"
+REQUIRED_USE="
+	kernel-open? ( modules )
+	dkms? ( modules )
+"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -234,6 +238,16 @@ src_compile() {
 		addpredict "${KV_OUT_DIR}"
 
 		linux-mod-r1_src_compile
+		# Upstream ships a stub dkms.conf, sed some things into place.
+		sed -i {kernel,kernel-open}/dkms.conf \
+			-i kernel-module-source/kernel-open/dkms.conf \
+			-e "s/__VERSION_STRING/${PV}/g" \
+			-e "s/-j__JOBS//g" \
+			-e "s/__EXCLUDE_MODULES//g" \
+			-e "s/__DKMS_MODULES//g" || die
+		cp kernel-module-source/kernel-open/dkms.conf \
+			kernel-module-source/dkms.conf || die
+		dkms_autoconf
 		CFLAGS=${o_cflags} CXXFLAGS=${o_cxxflags} LDFLAGS=${o_ldflags}
 	fi
 
@@ -341,6 +355,11 @@ documentation that is installed alongside this README."
 
 	if use modules; then
 		linux-mod-r1_src_install
+		if use kernel-open; then
+			use dkms && dkms_dopackage kernel-module-source
+		else
+			use dkms && dkms_dopackage kernel
+		fi
 
 		insinto /etc/modprobe.d
 		doins "${T}"/nvidia.conf
@@ -539,6 +558,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	readme.gentoo_print_elog
 

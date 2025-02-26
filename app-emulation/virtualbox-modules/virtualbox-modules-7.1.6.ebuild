@@ -7,7 +7,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms linux-mod-r1
 
 MY_P="vbox-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox"
@@ -25,10 +25,17 @@ src_compile() {
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
 	local modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
 	linux-mod-r1_src_compile
+	dkms_autoconf
+	if use dkms; then
+		# Make has no available targets if KERNELRELEASE is set, as
+		# is done by default in DKMS, disable this here.
+		sed -e "s/make/'make'/g" -i dkms.conf || die
+	fi
 }
 
 src_install() {
 	linux-mod-r1_src_install
+	dkms_src_install
 	insinto /usr/lib/modules-load.d/
 	newins "${FILESDIR}"/virtualbox.conf-r1 virtualbox.conf
 
@@ -45,4 +52,9 @@ src_install() {
 			# ------------------------------
 			options kvm enable_virt_at_load=0
 	EOF
+}
+
+pkg_postinst() {
+	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 }
