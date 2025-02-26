@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>ruven@users.sourceforge.net</email>
+		<name>Ruven</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+
+	<longdescription>IIPImage is an advanced high-performance feature-rich image server system for web-based streamed viewing 
+	and zooming of ultra high-resolution images. It is designed to be fast and bandwidth-efficient with low processor and memory 
+	requirements. The system can comfortably handle gigapixel size images as well as advanced image features such as 8, 16 and 32 bits per 
+	channel, CIELAB colorimetric images and scientific imagery such as multispectral images and digital elevation maps.</longdescription> 
+	<use>
+		<flag name="lighttpd">Add Lighttpd config file</flag>
+		<flag name="apache2">Add Apache mox_proxy_fcgi config file</flag>
+	</use>
+
+	<upstream>
+		<maintainer>
+			<email>ruven@users.sourceforge.net</email>
+			<name>Ruven</name>
+		</maintainer>
+		<changelog>https://github.com/ruven/iipsrv/commits/master</changelog>
+		<doc>https://iipimage.sourceforge.net/documentation/server</doc>
+		<remote-id type="github">ruven/iipsrv</remote-id>
+		<remote-id type="sourceforge">iipimage</remote-id>
+	</upstream>
+
+</pkgmetadata>
