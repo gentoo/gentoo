@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="${PN}-${PV/_/-}"
 	SRC_URI="https://github.com/sys4/${PN}/releases/download/v${PV/_/-}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~riscv ~sparc"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~riscv ~sparc ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
