@@ -3,6 +3,15 @@
 <pkgmetadata>
 <!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">evolvotron</remote-id>
+		<remote-id type="sourceforge">evolvotron</remote-id><!-- old -->
+		<remote-id type="github">WickedSmoke/evolvotron</remote-id>
 	</upstream>
+	<longdescription>
+		Evolvotron is an interactive "generative art" application for Linux to
+		evolve images/textures/patterns/animations through an iterative process
+		of random mutation and user-selection driven evolution. (This process
+		is also often referred to as "evolutionary art" or "genetic art".) If
+		you like lava lamps, and still think the Mandelbrot set is cool, this
+		could be the software for you.
+	</longdescription>
 </pkgmetadata>
