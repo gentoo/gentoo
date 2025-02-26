@@ -255,6 +255,7 @@ src_test() {
 		test/parallel/test-tls-getcipher.js
 		test/parallel/test-tls-set-ciphers.js
 		test/parallel/test-tls-junk-closes-server.js
+		test/parallel/test-util-styletext.js
 		test/sequential/test-util-debug.js
 	)
 	use inspector || drop_tests+=( test/sequential/test-watch-mode.mjs )
