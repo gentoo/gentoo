@@ -1,0 +1,231 @@
+From a41b3f54c13890b1327bb3d4fbae8f7feb37d00b Mon Sep 17 00:00:00 2001
+Message-ID: <a41b3f54c13890b1327bb3d4fbae8f7feb37d00b.1740542521.git.sam@gentoo.org>
+From: Jakub Jelinek <jakub@redhat.com>
+Date: Tue, 25 Feb 2025 09:26:46 +0100
+Subject: [PATCH] c++: Fix range for with PMFs [PR118923]
+
+The following testcases segfault because the new range for -frange-for-ext-temps
+temporary extension extends even the internal TARGET_EXPRs created by
+get_member_function_from_ptrfunc.
+
+The following patch fixes that by using get_internal_target_expr for those
+instead of force_target_expr (similarly in cp_finish_decl and
+build_comparison_op) and using force_target_expr inside of
+get_internal_target_expr.
+
+2025-02-25  Jakub Jelinek  <jakub@redhat.com>
+
+	PR c++/118923
+	* tree.cc (get_internal_target_expr): Use force_target_expr
+	instead of build_target_expr_with_type.
+	* typeck.cc (get_member_function_from_ptrfunc): Use
+	get_internal_target_expr instead of force_target_expr.
+	* decl.cc (cp_finish_decl): Likewise.
+	* method.cc (build_comparison_op): Likewise.
+
+	* g++.dg/cpp0x/pr118923.C: New test.
+	* g++.dg/cpp1y/pr118923.C: New test.
+---
+ gcc/cp/decl.cc                        |  6 +--
+ gcc/cp/method.cc                      |  2 +-
+ gcc/cp/tree.cc                        |  3 +-
+ gcc/cp/typeck.cc                      |  6 +--
+ gcc/testsuite/g++.dg/cpp0x/pr118923.C | 66 +++++++++++++++++++++++++++
+ gcc/testsuite/g++.dg/cpp1y/pr118923.C | 38 +++++++++++++++
+ 6 files changed, 110 insertions(+), 11 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/cpp0x/pr118923.C
+ create mode 100644 gcc/testsuite/g++.dg/cpp1y/pr118923.C
+
+diff --git a/gcc/cp/decl.cc b/gcc/cp/decl.cc
+index 05ad9bb24d59..936e48e907e2 100644
+--- a/gcc/cp/decl.cc
++++ b/gcc/cp/decl.cc
+@@ -9377,8 +9377,7 @@ cp_finish_decl (tree decl, tree init, bool init_const_expr_p,
+ 	      tree guard = NULL_TREE;
+ 	      if (cleanups || cleanup)
+ 		{
+-		  guard = force_target_expr (boolean_type_node,
+-					     boolean_false_node, tf_none);
++		  guard = get_internal_target_expr (boolean_false_node);
+ 		  add_stmt (guard);
+ 		  guard = TARGET_EXPR_SLOT (guard);
+ 		}
+@@ -9407,8 +9406,7 @@ cp_finish_decl (tree decl, tree init, bool init_const_expr_p,
+ 		     popped that all, so push those extra cleanups around
+ 		     the whole sequence with a guard variable.  */
+ 		  gcc_assert (TREE_CODE (sl) == STATEMENT_LIST);
+-		  guard = force_target_expr (integer_type_node,
+-					     integer_zero_node, tf_none);
++		  guard = get_internal_target_expr (integer_zero_node);
+ 		  add_stmt (guard);
+ 		  guard = TARGET_EXPR_SLOT (guard);
+ 		  for (unsigned i = 0; i < n_extra_cleanups; ++i)
+diff --git a/gcc/cp/method.cc b/gcc/cp/method.cc
+index 3914bbb1ef23..05c19cf0661e 100644
+--- a/gcc/cp/method.cc
++++ b/gcc/cp/method.cc
+@@ -1597,7 +1597,7 @@ build_comparison_op (tree fndecl, bool defining, tsubst_flags_t complain)
+ 	      /* Some other array, will need runtime loop.  */
+ 	      else
+ 		{
+-		  idx = force_target_expr (sizetype, maxval, complain);
++		  idx = get_internal_target_expr (maxval);
+ 		  loop_indexes = tree_cons (idx, NULL_TREE, loop_indexes);
+ 		}
+ 	      expr_type = TREE_TYPE (expr_type);
+diff --git a/gcc/cp/tree.cc b/gcc/cp/tree.cc
+index 5628a576f01b..5863b6878f02 100644
+--- a/gcc/cp/tree.cc
++++ b/gcc/cp/tree.cc
+@@ -982,8 +982,7 @@ tree
+ get_internal_target_expr (tree init)
+ {
+   init = convert_bitfield_to_declared_type (init);
+-  tree t = build_target_expr_with_type (init, TREE_TYPE (init),
+-					tf_warning_or_error);
++  tree t = force_target_expr (TREE_TYPE (init), init, tf_warning_or_error);
+   TARGET_EXPR_INTERNAL_P (t) = true;
+   return t;
+ }
+diff --git a/gcc/cp/typeck.cc b/gcc/cp/typeck.cc
+index a9c32ff930d5..bbaca960bd7c 100644
+--- a/gcc/cp/typeck.cc
++++ b/gcc/cp/typeck.cc
+@@ -4219,16 +4219,14 @@ get_member_function_from_ptrfunc (tree *instance_ptrptr, tree function,
+ 	      && !DECL_P (instance_ptr)
+ 	      && !TREE_CONSTANT (instance_ptr)))
+ 	instance_ptr = instance_save_expr
+-	  = force_target_expr (TREE_TYPE (instance_ptr), instance_ptr,
+-			       complain);
++	  = get_internal_target_expr (instance_ptr);
+ 
+       /* See above comment.  */
+       if (TREE_SIDE_EFFECTS (function)
+ 	  || (!nonvirtual
+ 	      && !DECL_P (function)
+ 	      && !TREE_CONSTANT (function)))
+-	function
+-	  = force_target_expr (TREE_TYPE (function), function, complain);
++	function = get_internal_target_expr (function);
+ 
+       /* Start by extracting all the information from the PMF itself.  */
+       e3 = pfn_from_ptrmemfunc (function);
+diff --git a/gcc/testsuite/g++.dg/cpp0x/pr118923.C b/gcc/testsuite/g++.dg/cpp0x/pr118923.C
+new file mode 100644
+index 000000000000..55d3052b61f3
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/cpp0x/pr118923.C
+@@ -0,0 +1,66 @@
++// PR c++/118923
++// { dg-do run { target c++11 } }
++// { dg-additional-options "-frange-for-ext-temps" { target c++23 } }
++// { dg-additional-options "-fno-range-for-ext-temps" { target c++20_down } }
++
++int g;
++
++struct A {
++  int a[3];
++  A (int x, int y, int z) : a{x, y, z} { if ((g++ & 7) != 4) __builtin_abort (); }
++  A (const A &x) = delete;
++  ~A () { if ((g++ & 7) != 7 - 2 * (__cpp_range_based_for >= 202211)) __builtin_abort (); }
++  int *begin () { return a; }
++  int *end () { return a + 3; }
++};
++
++struct B {
++  B () { if ((g++ & 7) != 3) __builtin_abort (); }
++  B (const B &) = delete;
++  ~B () { if ((g++ & 7) != 5 + (__cpp_range_based_for >= 202211)) __builtin_abort (); }
++};
++
++struct C {
++  A foo (const B &) { return { 1, 2, 3 }; }
++  A bar (const B &) { return { 4, 5, 6 }; }
++  bool baz () { return b; }
++  bool b = false;
++  static C c;
++};
++
++C C::c;
++
++struct D {
++  D () { if ((g++ & 5) != 0) __builtin_abort (); }
++  D (const D &) = delete;
++  ~D () { if ((g & 7) != 1 && (g & 7) != 6 + (__cpp_range_based_for >= 202211)) __builtin_abort (); g++; }
++};
++
++inline C *
++qux (const D &)
++{
++  return &C::c;
++}
++
++void 
++foo ()
++{
++  int z = 1;
++  auto d = qux (D {})->baz () ? &C::bar : &C::foo;
++  for (const int &r : (qux (D {})->*d) (B {}))
++    if (z++ != r)
++      __builtin_abort ();
++  C::c.b = true;
++  d = qux (D {})->baz () ? &C::bar : &C::foo;
++  for (const int &r : (qux (D {})->*d) (B {}))
++    if (z++ != r)
++      __builtin_abort ();
++}
++
++int
++main ()
++{
++  foo ();
++  if (g != 16)
++    __builtin_abort ();
++}
+diff --git a/gcc/testsuite/g++.dg/cpp1y/pr118923.C b/gcc/testsuite/g++.dg/cpp1y/pr118923.C
+new file mode 100644
+index 000000000000..b375f47a7d0f
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/cpp1y/pr118923.C
+@@ -0,0 +1,38 @@
++// PR c++/118923
++// { dg-do run { target c++14 } }
++
++struct A {
++  int a[3] = { 0, 0, 0 };
++  int *begin () { return a; }
++  int *end () { return a + 3; }
++};
++
++struct B {
++  A foo () { return { 1, 2, 3 }; }
++  A bar () { return { 1, 2, 3 }; }
++  bool baz () { return b; }
++  bool b = false;
++  static B c;
++};
++
++B B::c;
++
++inline B *
++qux ()
++{
++  return &B::c;
++}
++
++void 
++foo ()
++{
++  auto d = qux ()->baz () ? &B::foo : &B::bar;
++  for (const int &r : (qux ()->*d) ())
++    ;
++}
++
++int
++main ()
++{
++  foo ();
++}
+-- 
+2.48.1
+
