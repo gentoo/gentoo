@@ -312,6 +312,10 @@ src_prepare() {
 		fi
 	fi
 
+	if use lto && tc-is-clang && ! tc-ld-is-lld; then
+		export RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
+	fi
+
 	default
 }
 
