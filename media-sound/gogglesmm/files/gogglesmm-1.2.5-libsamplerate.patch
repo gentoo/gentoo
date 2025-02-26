@@ -1,0 +1,64 @@
+https://github.com/gogglesmm/gogglesmm/pull/120.patch
+
+From 27f15260220bc539bc825fb3e663333ac0e850c9 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Wed, 26 Feb 2025 13:08:43 +0000
+Subject: [PATCH] Add detection for libsamplerate
+
+
+diff --git a/gap/CMakeLists.txt b/gap/CMakeLists.txt
+index 0950838a..79ec8e7e 100644
+--- a/gap/CMakeLists.txt
++++ b/gap/CMakeLists.txt
+@@ -104,6 +104,10 @@ set_package_properties(zlib PROPERTIES
+                             PURPOSE "\tZLIB decompression for http(s)"
+                             TYPE OPTIONAL)
+ 
++set_package_properties(samplerate PROPERTIES
++                            URL "https://libsndfile.github.io/libsamplerate/"
++			    PURPOSE "\tSample Rate Converter for audio"
++                            TYPE OPTIONAL)
+ 
+ # Allow GAP to be build as a shared library.
+ if(MSVC)
+@@ -163,6 +167,7 @@ if(UNIX)
+ 
+   option(WITH_STATIC_FOX "Pull in static library dependencies for FOX" OFF)
+ 
++  option(WITH_LIBSAMPLERATE "Samplerate support" OFF)
+ endif()
+ 
+ # Endiannes
+@@ -254,6 +259,9 @@ else()
+       endif()
+     endif()
+   endif()
++  if(WITH_LIBSAMPLERATE)
++    pkg_check_modules(SAMPLERATE samplerate)
++  endif()
+ endif()
+ 
+ 
+@@ -505,6 +513,10 @@ else()
+   set(MD5_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/lib/md5)
+ endif()
+ 
++if(WITH_LIBSAMPLERATE AND SAMPLERATE_FOUND)
++  LIST(APPEND LIBRARIES ${SAMPLERATE_LIBRARIES})
++  set(HAVE_SAMPLERATE 1)
++endif()
+ 
+ 
+ #-------------------------------------------------------------------------------
+@@ -616,6 +628,8 @@ add_feature_info(openssl HAVE_OPENSSL "${OPENSSL_VERSION}")
+ add_feature_info(gnutls HAVE_GNUTLS "${GNUTLS_VERSION}")
+ add_feature_info(gcrypt HAVE_GCRYPT "")
+ 
++add_feature_info(samplerate HAVE_SAMPLERATE "${SAMPLERATE_VERSION}")
++
+ set(AP_PLUGIN_PATH ${CMAKE_INSTALL_FULL_LIBDIR}/gogglesmm)
+ 
+ configure_file(ap_config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/ap_config.h)
+-- 
+2.45.3
+

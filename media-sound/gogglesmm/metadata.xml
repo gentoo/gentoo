@@ -9,6 +9,12 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<use>
+		<flag name="dca">Enable support for DTS Coherent Acoustics via <pkg>media-libs/libdca</pkg></flag>
+		<flag name="sndio">Enable support for <pkg>media-sound/sndio</pkg></flag>
+		<flag name="stream">Enable http(s) streaming</flag>
+		<flag name="tremor">Enable support for <pkg>media-libs/tremor</pkg>, a fixed-point version of the Ogg Vorbis decoder</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">gogglesmm/gogglesmm</remote-id>
 	</upstream>
