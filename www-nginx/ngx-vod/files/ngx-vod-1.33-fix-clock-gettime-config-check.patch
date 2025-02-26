@@ -1,0 +1,36 @@
+From a6c50b75c1a17460119f02cc32c79dd9e9b22d5c Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Wed, 26 Feb 2025 20:08:17 +0100
+Subject: [PATCH] config: make clock_gettime() check work
+
+The clock_gettime() function is provided by time.h, but the check
+includes sched.h. Additionally, the function expects two arguments, but
+none are given.
+
+This commit fixes both issues, making the check actually work.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ config | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config b/config
+index 7a627a9..5150e79 100644
+--- a/config
++++ b/config
+@@ -127,10 +127,10 @@ ngx_feature_test="iconv_open(NULL, NULL);"
+ ngx_feature="clock_gettime()"
+ ngx_feature_name="NGX_HAVE_CLOCK_GETTIME"
+ ngx_feature_run=no
+-ngx_feature_incs="#include <sched.h>"
++ngx_feature_incs="#include <time.h>"
+ ngx_feature_path=
+ ngx_feature_libs=
+-ngx_feature_test="clock_gettime()"
++ngx_feature_test="clockid_t c; clock_gettime(c, NULL)"
+ . auto/feature
+ 
+ if [ $ngx_found != yes ]; then
+-- 
+2.45.3
+
