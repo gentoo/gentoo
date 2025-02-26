@@ -94,7 +94,7 @@ DEPEND="
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
 	dev-util/gperf
-	net-libs/nodejs[ssl]
+	net-libs/nodejs[icu,ssl]
 	sys-devel/bison
 	sys-devel/flex
 "
@@ -169,6 +169,10 @@ src_configure() {
 		$(qt_feature widgets qtpdf_widgets_build)
 		$(usev pdfium -DQT_FEATURE_pdf_v8=ON)
 
+		# TODO?: since 6.9.0, dependency checks have been adjusted to make it
+		# easier for webengine to be optional which could be useful if *only*
+		# need QtPdf (rare at the moment), would require all revdeps to depend
+		# on qtwebengine[webengine(+)]
 		-DQT_FEATURE_qtwebengine_build=ON
 		$(qt_feature qml qtwebengine_quick_build)
 		$(qt_feature widgets qtwebengine_widgets_build)
@@ -213,8 +217,8 @@ src_configure() {
 		# given qtbase's force_system_libs does not affect these right now
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype gbm glib harfbuzz lcms2 libevent libjpeg \
-			libopenjpeg2 libpci libpng libtiff libwebp libxml \
-			minizip opus snappy zlib)
+			libopenjpeg2 libpci libpng libtiff libudev libwebp \
+			libxml minizip opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
@@ -254,7 +258,8 @@ src_configure() {
 }
 
 src_compile() {
-	# tentatively work around a possible (rare) race condition (bug #921680)
+	# tentatively work around a possible (rare) race condition (bug #921680),
+	# has good chances to be obsolete but keep for now as a safety
 	cmake_build WebEngineCore_sync_all_public_headers
 
 	cmake_src_compile
