@@ -28,8 +28,6 @@ IUSE="ch-image doc"
 # Additionally, clashes with portage namespacing and sandbox.
 RESTRICT="test"
 
-DOCS=( NOTICE README.rst )
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
