@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-26)
+# Last release 11 years ago, dead upstream, depends on Qt5 (and even that
+# only by means of downstream patching, no one else packages this.
+# Bug #947631. Removal on 2025-03-26.
+app-mobilephone/qtadb
+
 # Eray Aslan <eras@gentoo.org> (2025-02-24)
 # Mask experimental software
 =mail-mta/postfix-3.11*
