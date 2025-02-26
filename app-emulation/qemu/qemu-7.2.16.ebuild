@@ -316,6 +316,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
 	"${FILESDIR}"/${PN}-7.2.0-disable-gmp.patch
 	"${FILESDIR}"/${PN}-9.0.0-glibc-2.41.patch
+	"${FILESDIR}"/${PN}-7.2.16-optionrom-pass-Wl-no-error-rwx-segments.patch
 )
 
 QA_PREBUILT="
