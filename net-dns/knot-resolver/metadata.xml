@@ -22,9 +22,6 @@
 		<flag name="nghttp2">
 			DNS-over-HTTPS support
 		</flag>
-		<flag name="prometheus">
-			Metrics exported in Prometheus
-		</flag>
 		<flag name="xdp">
 			Enable eXpress Data Path
 		</flag>
