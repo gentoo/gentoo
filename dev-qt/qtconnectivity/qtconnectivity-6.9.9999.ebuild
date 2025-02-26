@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,9 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	~dev-qt/qtbase-${PV}:6[network]
+	~dev-qt/qtbase-${PV}:6
 	bluetooth? (
-		~dev-qt/qtbase-${PV}:6[dbus]
+		~dev-qt/qtbase-${PV}:6[dbus,network]
 		net-wireless/bluez:=
 	)
 	nfc? (
