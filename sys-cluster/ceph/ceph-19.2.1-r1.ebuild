@@ -239,7 +239,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.1-immutableobjectcache.patch"
 	"${FILESDIR}/ceph-19.2.1-mgr.patch"
 	"${FILESDIR}/ceph-19.2.1-exporter.patch"
-	)
+	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
+)
 
 check-reqs_export_vars() {
 	CHECKREQS_DISK_BUILD="6G"
