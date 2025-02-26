@@ -53,7 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.47.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
 	# https://sqlite.org/forum/forumpost/f93323a743
 	"${FILESDIR}"/${PN}-3.49.0-icu-tests.patch
-	# https://bugs.gentoo.org/949981
+	# https://bugs.gentoo.org/949981, https://www2.sqlite.org/src/info/ffd05de8a3b7cab1
 	"${FILESDIR}"/${PN}-3.49.1-jimsh.patch
 )
 
