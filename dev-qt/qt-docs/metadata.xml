@@ -10,7 +10,7 @@
 		<flag name="3d">Install documentation for <pkg>dev-qt/qt3d</pkg></flag>
 		<flag name="activeqt">Install documentation for ActiveQt (unpackaged, Windows-only)</flag>
 		<flag name="assistant">Install documentation for <pkg>dev-qt/assistant</pkg></flag>
-		<flag name="bluetooth">Install documentation for <pkg>dev-qt/qtbluetooth</pkg></flag>
+		<flag name="bluetooth">Install documentation for <pkg>dev-qt/qtconnectivity</pkg>[bluetooth]</flag>
 		<flag name="charts">Install documentation for <pkg>dev-qt/qtcharts</pkg></flag>
 		<flag name="concurrent">Install documentation for <pkg>dev-qt/qtconcurrent</pkg></flag>
 		<flag name="connectivity">Install documentation for <pkg>dev-qt/qtconnectivity</pkg></flag>
