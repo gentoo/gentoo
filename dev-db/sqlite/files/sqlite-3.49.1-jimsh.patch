@@ -1,14 +1,27 @@
 # https://bugs.gentoo.org/949981
-# https://github.com/msteveb/jimtcl/commit/9b754b8033b9f2a1dc8ba1227df2e5d75185dda7
+# https://www2.sqlite.org/src/info/ffd05de8a3b7cab1
+From 09591b78ae28c6bb385ae96fef44edfb52454830 Mon Sep 17 00:00:00 2001
+From: stephan <stephan@noemail.net>
+Date: Mon, 24 Feb 2025 04:47:34 +0000
+Subject: [PATCH] Update jimsh0.c from upstream autosetup to address
+ [https://github.com/msteveb/autosetup/issues/75|autosetup ticket #75],
+ triggered by this build in the Gentoo project.
+
+FossilOrigin-Name: ffd05de8a3b7cab1b8e91b99da74b43ec5a7b91c78dcfd7cf338b66126e30a56
+---
+ autosetup/jimsh0.c | 20 ++++++++------------
+ manifest           | 12 ++++++------
+ manifest.uuid      |  2 +-
+ 3 files changed, 15 insertions(+), 19 deletions(-)
+
+diff --git a/autosetup/jimsh0.c b/autosetup/jimsh0.c
+index 0526b9a446..1a6453d0c8 100644
 --- a/autosetup/jimsh0.c
 +++ b/autosetup/jimsh0.c
-@@ -2088,9 +2088,13 @@ enum wbuftype {
- #define UNIX_SOCKETS 0
+@@ -1252,6 +1252,14 @@ int Jim_OpenForRead(const char *filename);
+ 
  #endif
  
--#ifndef MAXPATHLEN
--#define MAXPATHLEN JIM_PATH_LEN
--#endif
 +# ifndef MAXPATHLEN
 +# ifdef PATH_MAX
 +# define MAXPATHLEN PATH_MAX
@@ -16,6 +29,18 @@
 +# define MAXPATHLEN JIM_PATH_LEN
 +# endif
 +# endif
++
+ 
+ int Jim_FileStoreStatData(Jim_Interp *interp, Jim_Obj *varName, const jim_stat_t *sb);
+ 
+@@ -2088,10 +2096,6 @@ enum wbuftype {
+ #define UNIX_SOCKETS 0
+ #endif
+ 
+-#ifndef MAXPATHLEN
+-#define MAXPATHLEN JIM_PATH_LEN
+-#endif
+-
  
  
  
