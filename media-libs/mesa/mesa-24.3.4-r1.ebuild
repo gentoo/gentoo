@@ -20,7 +20,7 @@ CRATES="
 	paste@1.0.14
 "
 
-RUST_MIN_VER="1.74.1"
+RUST_MIN_VER="1.76.0"
 RUST_MULTILIB=1
 RUST_OPTIONAL=1
 
@@ -160,8 +160,9 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
+		>=dev-build/meson-1.7.0
+		>=dev-util/bindgen-0.71.0
 		${RUST_DEPEND}
-		>=dev-util/bindgen-0.58.0
 	)
 	>=dev-build/meson-1.4.1
 	app-alternatives/yacc
@@ -180,7 +181,8 @@ BDEPEND="
 	vulkan? (
 		dev-util/glslang
 		video_cards_nvk? (
-			>=dev-util/bindgen-0.68.1
+			>=dev-build/meson-1.7.0
+			>=dev-util/bindgen-0.71.0
 			>=dev-util/cbindgen-0.26.0
 			${RUST_DEPEND}
 		)
