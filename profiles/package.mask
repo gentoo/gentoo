@@ -198,11 +198,6 @@ games-fps/quakeforge
 # Removal on 2025-03-07. Bug: 949318
 net-misc/AQtion
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-30)
-# Last release 15 years ago, dead upstream (never imported from kdesvn),
-# no revdeps probably since amarok last-rites. Removal on 2025-02-27.
-media-libs/taglib-extras
-
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-28)
 # A package, which depends on Qt5. Upstream dead for many years.
 # Removal on 2025-02-28. Bug #948048
