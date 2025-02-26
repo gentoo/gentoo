@@ -1,0 +1,13 @@
+diff --git a/src/log/Entry.h b/src/log/Entry.h
+index db39eca0ef3..5e414b1d2f3 100644
+--- a/src/log/Entry.h
++++ b/src/log/Entry.h
+@@ -32,7 +32,7 @@ public:
+     m_prio(pr),
+     m_subsys(sub)
+   {
+-    strncpy(m_thread_name, Thread::get_thread_name().data(), 16);
++    strncpy(m_thread_name, Thread::get_thread_name().data(), 15);
+     m_thread_name[15] = '\0';
+   }
+   Entry(const Entry &) = default;
