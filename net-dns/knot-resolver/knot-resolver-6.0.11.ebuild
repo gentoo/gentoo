@@ -10,10 +10,11 @@ DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 lua-single meson tmpfiles verify-sig
+inherit distutils-r1 lua-single meson optfeature tmpfiles verify-sig
 
 DESCRIPTION="A scaleable caching DNS resolver"
 HOMEPAGE="https://www.knot-resolver.cz https://gitlab.nic.cz/knot/knot-resolver"
+
 SRC_URI="
 	https://knot-resolver.nic.cz/release/${P}.tar.xz
 	verify-sig? ( https://knot-resolver.nic.cz/release/${P}.tar.xz.asc )
@@ -23,7 +24,7 @@ LICENSE="Apache-2.0 BSD CC0-1.0 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="caps dnstap jemalloc +manager nghttp2 prometheus systemd test xdp"
+IUSE="caps dnstap jemalloc +manager nghttp2 systemd test xdp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}
@@ -52,7 +53,6 @@ RDEPEND="
 			dev-python/jinja2[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 			dev-python/typing-extensions[${PYTHON_USEDEP}]
-			prometheus? ( dev-python/prometheus-client[${PYTHON_USEDEP}] )
 		')
 	)
 	nghttp2? ( net-libs/nghttp2:= )
@@ -87,7 +87,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
 	"${FILESDIR}"/${PN}-6.0.9-libsystemd.patch
 	"${FILESDIR}"/${PN}-6.0.9-config-example.patch
-	"${FILESDIR}"/${PN}-6.0.9-sd_notify_alt.patch
 	"${FILESDIR}"/${PN}-6.0.9-pytest_tomli.patch
 )
 
@@ -106,7 +105,7 @@ src_configure() {
 		--localstatedir "${EPREFIX}"/var # double lib
 		# https://bugs.gentoo.org/870019
 		-Dauto_features=disabled
-		# requires non-gentoo lua modules (basexx, cqueues)
+		# post-install tests
 		-Dconfig_tests=disabled
 		-Ddoc=disabled
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
@@ -156,20 +155,29 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process knot-resolver.conf
 	if use manager; then
-		elog "You choose the new way, called the manager, to start Knot Resolver :"
+		elog "You choose the new way, called the manager, to start Knot Resolver:"
 		use systemd && elog "	systemctl start knot-resolver.service"
 		use !systemd && elog "	/etc/init.d/knot-resolver start"
-		elog "Configuration file : /etc/knot-resolver/config.yaml"
+		elog "Configuration file: /etc/knot-resolver/config.yaml"
 		elog ""
-		elog "The older way, without the manager, is still available :"
+		elog "The older way, without the manager, is still available:"
 	else
-		elog "You choose the older way, without the manager, to start Knot Resolver :"
+		elog "You choose the older way, without the manager, to start Knot Resolver:"
 	fi
 	use systemd && elog "	systemctl start kresd@N.service"
 	use !systemd && elog "	/etc/init.d/kresd start"
-	elog "Configuration file : /etc/knot-resolver/kresd.conf"
-	elog ""
-	elog "Optional garbage collector : /etc/init.d/kres-cache-gc"
+	elog "Configuration file: /etc/knot-resolver/kresd.conf"
+	elog "Optional garbage collector: /etc/init.d/kres-cache-gc"
 	elog ""
 	use !manager && elog "The new way is available with the useflag manager."
+	elog ""
+
+	optfeature_header "This package is recommended with Knot Resolver:"
+	optfeature "asynchronous execution, especially with policy module" dev-lua/cqueues
+	elog ""
+	optfeature_header "Other packages may also be useful:"
+	use manager && optfeature "Prometheus metrics (need manager)" dev-python/prometheus-client
+	use manager && optfeature "auto-reload TLS certificate files (need manager)" dev-python/watchdog
+	optfeature "legacy doh and webmgmt (metrics, tracking)" dev-lua/lua-http
+	optfeature "server map with geoIP database (webmgmt)" dev-lua/lua-mmdb
 }
