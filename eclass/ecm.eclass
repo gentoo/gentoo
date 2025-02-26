@@ -477,7 +477,7 @@ ecm_punt_bogus_dep() {
 # @DESCRIPTION:
 # Disables kdoctools_install(po) call.
 _ecm_punt_kdoctools_install() {
-	sed -e "s/^ *kdoctools_install.*(po.*)/#& # disabled by ecm.eclass/" \
+	sed -e "s/^ *kdoctools_install.*(\s*po.*)/#& # disabled by ecm.eclass/" \
 		-i CMakeLists.txt || die
 }
 
@@ -487,7 +487,7 @@ _ecm_punt_kdoctools_install() {
 # is outsourcing common files to a ${PN}-common split package.
 ecm_punt_po_install() {
 	_ecm_punt_kdoctools_install
-	sed -e "s/^ *ki18n_install.*(po.*)/#& # disabled by ecm.eclass/" \
+	sed -e "s/^ *ki18n_install.*(\s*po.*)/#& # disabled by ecm.eclass/" \
 		-i CMakeLists.txt || die
 }
 
