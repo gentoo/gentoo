@@ -1,0 +1,16 @@
+Use C23 __has_include to add correct include on musl. Was compiler extension
+before C23, works on clang/gcc versions we care about.
+https://bugs.gentoo.org/898564
+--- a/src/libply/ply-command-parser.c	2025-02-26 14:05:33.417781845 +0000
++++ b/src/libply/ply-command-parser.c	2025-02-26 14:09:10.068476721 +0000
+@@ -29,6 +29,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#if __has_include(<rpmatch.h>)
++#include <rpmatch.h>
++#endif
++
+ #include "ply-buffer.h"
+ #include "ply-list.h"
+ #include "ply-utils.h"
