@@ -152,6 +152,7 @@ src_prepare() {
 
 	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
 	local ati_cards mesa_cards nvidia_cards render_cards
+	local prev_shopt=$(shopt -p nullglob)
 	shopt -s nullglob
 	ati_cards=$(echo -n /dev/ati/card*)
 	for card in "${ati_cards[@]}"; do
@@ -170,6 +171,7 @@ src_prepare() {
 		addpredict "${card}"
 	done
 	addpredict /dev/nvidiactl
+	${prev_shopt}
 }
 
 src_configure() {
