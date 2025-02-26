@@ -266,12 +266,6 @@ dev-qt/qtwebview:5
 >=dev-libs/intel-compute-runtime-24.52.32224.5
 >=dev-util/intel-graphics-compiler-2.5.7
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-01-06)
-# Masked for testing
-=dev-lang/perl-5.40.1*
-~virtual/perl-File-Spec-3.910.0
-~virtual/perl-Module-CoreList-5.202.501.184_rc
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-01-03)
 # Contains a serious bug that can cause deletion of the users home dir.
 # See-also: https://github.com/keshavbhatt/whatsie/issues/230
