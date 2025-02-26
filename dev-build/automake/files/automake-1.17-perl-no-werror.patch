@@ -1,0 +1,460 @@
+https://git.savannah.gnu.org/cgit/automake.git/commit/?id=fc1c3f658517be4fe70bdf33bc6cd594d3faa0b2
+
+From fc1c3f658517be4fe70bdf33bc6cd594d3faa0b2 Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Fri, 31 Jan 2025 09:20:47 -0800
+Subject: automake: just use warnings, with no => FATAL.
+
+Per Perl recommendation:
+  https://perldoc.perl.org/warnings#Fatal-Warnings
+Suggested by Collin Funk:
+  https://lists.gnu.org/archive/html/automake/2025-01/msg00003.html
+And in the Perl discussion:
+  https://github.com/Perl/perl5/issues/22954#issuecomment-2622966302
+
+* bin/aclocal.in: just use warnings, not making them fatal.
+* bin/automake.in:
+* contrib/tap-driver.pl:
+* gen-testsuite-part:
+* lib/Automake/ChannelDefs.pm:
+* lib/Automake/Channels.pm:
+* lib/Automake/Condition.pm:
+* lib/Automake/Config.in:
+* lib/Automake/Configure_ac.pm:
+* lib/Automake/DisjConditions.pm:
+* lib/Automake/FileUtils.pm:
+* lib/Automake/General.pm:
+* lib/Automake/Getopt.pm:
+* lib/Automake/Item.pm:
+* lib/Automake/ItemDef.pm:
+* lib/Automake/Language.pm:
+* lib/Automake/Location.pm:
+* lib/Automake/Options.pm:
+* lib/Automake/Rule.pm:
+* lib/Automake/RuleDef.pm:
+* lib/Automake/VarDef.pm:
+* lib/Automake/Variable.pm:
+* lib/Automake/Version.pm:
+* lib/Automake/Wrap.pm:
+* lib/Automake/XFile.pm:
+* t/ax/deltree.pl:
+* t/ax/extract-testsuite-summary.pl:
+* t/check-fd-redirect.sh:
+* t/tap-signal.tap:
+* t/tests-environment-fd-redirect.sh:
+* t/testsuite-summary-count-many.sh:
+--- a/bin/aclocal.in
++++ b/bin/aclocal.in
+@@ -19,9 +19,7 @@
+ # Written by Tom Tromey <tromey@redhat.com>, and
+ # Alexandre Duret-Lutz <adl@gnu.org>.
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ BEGIN
+ {
+--- a/bin/automake.in
++++ b/bin/automake.in
+@@ -22,9 +22,7 @@
+ 
+ package Automake;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ BEGIN
+ {
+--- a/contrib/tap-driver.pl
++++ b/contrib/tap-driver.pl
+@@ -27,12 +27,12 @@
+ #  Imports, static data, and setup.  #
+ # ---------------------------------- #
+ 
+-use warnings FATAL => 'all';
+-use strict;
++use strict; use warnings;
+ use Getopt::Long ();
++
+ use TAP::Parser;
+ 
+-my $VERSION = '2013-12-24.15'; # UTC
++my $VERSION = '2024-12-03.03'; # UTC
+ 
+ my $ME = "tap-driver.pl";
+ 
+--- a/gen-testsuite-part
++++ b/gen-testsuite-part
+@@ -20,8 +20,8 @@
+ 
+ #--------------------------------------------------------------------------
+ 
+-use warnings FATAL => "all";
+ use strict;
++use warnings;
+ use File::Basename ();
+ use constant TRUE => 1;
+ use constant FALSE => 0;
+--- a/lib/Automake/ChannelDefs.pm
++++ b/lib/Automake/ChannelDefs.pm
+@@ -49,10 +49,7 @@ shorthand function to output on specific channels.
+ 
+ =cut
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Exporter;
+ 
+ use Automake::Channels;
+--- a/lib/Automake/Channels.pm
++++ b/lib/Automake/Channels.pm
+@@ -66,10 +66,7 @@ etc.) that can also be overridden on a per-message basis.
+ 
+ =cut
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ use Exporter;
+ use File::Basename;
+--- a/lib/Automake/Condition.pm
++++ b/lib/Automake/Condition.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::Condition;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ use Exporter;
+ 
+--- a/lib/Automake/Config.in
++++ b/lib/Automake/Config.in
+@@ -17,9 +17,7 @@
+ 
+ package Automake::Config;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Exporter;
+ 
+--- a/lib/Automake/Configure_ac.pm
++++ b/lib/Automake/Configure_ac.pm
+@@ -20,9 +20,7 @@
+ 
+ package Automake::Configure_ac;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Exporter;
+ 
+--- a/lib/Automake/DisjConditions.pm
++++ b/lib/Automake/DisjConditions.pm
+@@ -15,9 +15,7 @@
+ 
+ package Automake::DisjConditions;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Carp;
+ use Automake::Condition qw (TRUE FALSE);
+--- a/lib/Automake/FileUtils.pm
++++ b/lib/Automake/FileUtils.pm
+@@ -34,9 +34,7 @@ This perl module provides various general purpose file handling functions.
+ 
+ =cut
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ BEGIN
+ {
+--- a/lib/Automake/General.pm
++++ b/lib/Automake/General.pm
+@@ -15,9 +15,7 @@
+ 
+ package Automake::General;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Exporter;
+ use File::Basename;
+--- a/lib/Automake/Getopt.pm
++++ b/lib/Automake/Getopt.pm
+@@ -35,9 +35,7 @@ line options in conformance to the GNU Coding standards.
+ 
+ =cut
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Carp qw (confess croak);
+ use Exporter ();
+--- a/lib/Automake/Item.pm
++++ b/lib/Automake/Item.pm
+@@ -15,9 +15,7 @@
+ 
+ package Automake::Item;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Carp;
+ 
+--- a/lib/Automake/ItemDef.pm
++++ b/lib/Automake/ItemDef.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::ItemDef;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ 
+ =head1 NAME
+--- a/lib/Automake/Language.pm
++++ b/lib/Automake/Language.pm
+@@ -15,9 +15,7 @@
+ 
+ package Automake::Language;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Class::Struct ();
+ 
+--- a/lib/Automake/Location.pm
++++ b/lib/Automake/Location.pm
+@@ -15,9 +15,7 @@
+ 
+ package Automake::Location;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ =head1 NAME
+ 
+--- a/lib/Automake/Options.pm
++++ b/lib/Automake/Options.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::Options;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Exporter;
+ 
+ use Automake::Config;
+--- a/lib/Automake/Rule.pm
++++ b/lib/Automake/Rule.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::Rule;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ use Exporter;
+ 
+--- a/lib/Automake/RuleDef.pm
++++ b/lib/Automake/RuleDef.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::RuleDef;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ use Exporter;
+ 
+--- a/lib/Automake/VarDef.pm
++++ b/lib/Automake/VarDef.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::VarDef;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ use Exporter;
+ 
+--- a/lib/Automake/Variable.pm
++++ b/lib/Automake/Variable.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::Variable;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Carp;
+ use Exporter;
+ 
+--- a/lib/Automake/Version.pm
++++ b/lib/Automake/Version.pm
+@@ -15,9 +15,7 @@
+ 
+ package Automake::Version;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
++use 5.006; use strict; use warnings;
+ 
+ use Automake::ChannelDefs;
+ 
+--- a/lib/Automake/Wrap.pm
++++ b/lib/Automake/Wrap.pm
+@@ -15,10 +15,7 @@
+ 
+ package Automake::Wrap;
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Exporter;
+ 
+ our @ISA = qw (Exporter);
+--- a/lib/Automake/XFile.pm
++++ b/lib/Automake/XFile.pm
+@@ -69,10 +69,7 @@ and C<getlines> methods to translate C<\r\n> to C<\n>.
+ 
+ =cut
+ 
+-use 5.006;
+-use strict;
+-use warnings FATAL => 'all';
+-
++use 5.006; use strict; use warnings;
+ use Errno;
+ use Exporter;
+ use IO::File;
+--- a/t/ax/deltree.pl
++++ b/t/ax/deltree.pl
+@@ -17,8 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+-use strict;
+-use warnings FATAL => 'all';
++use strict; use warnings;
+ use File::Path qw/rmtree/;
+ 
+ my $exit_status = 0;
+--- a/t/ax/extract-testsuite-summary.pl
++++ b/t/ax/extract-testsuite-summary.pl
+@@ -17,8 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+-use warnings FATAL => 'all';
+-use strict;
++use strict; use warnings;
+ 
+ my $br = '=' x 76;
+ my @sections = ('');
+--- a/t/check-fd-redirect.sh
++++ b/t/check-fd-redirect.sh
+@@ -81,8 +81,7 @@ do_check
+ 
+ echo "#! $PERL -w" > foo.test
+ cat >> foo.test <<'END'
+-use warnings FATAL => 'all';
+-use strict;
++use strict; use warnings;
+ 
+ open (FD3, "<&=3") or die "opening FD3: $!";
+ open (FD4, ">&=4") or die "opening FD4: $!";
+--- a/t/tap-signal.tap
++++ b/t/tap-signal.tap
+@@ -52,7 +52,7 @@ for sig in $all_signals; do
+     # We need autoflush to avoid losing output, which could cause spurious
+     # "no test plan seen" in the TAP driver.
+     BEGIN { $| = 1 }
+-    use warnings FATAL => "all";
++    use warnings;
+     print "1..1\\n";
+     print "ok 1\\n";
+     kill $sig, \$\$;
+--- a/t/tests-environment-fd-redirect.sh
++++ b/t/tests-environment-fd-redirect.sh
+@@ -44,8 +44,8 @@ END
+ 
+ echo "#! $PERL -w" > bar.test
+ cat >>bar.test <<'END'
+-use warnings FATAL => 'all';
+ use strict;
++use warnings;
+ open(FD8, ">&=8") or die "$!";
+ open(FD9, ">&=9") or die "$!";
+ print FD8 "  $0: 8888\n";
+--- a/t/testsuite-summary-count-many.sh
++++ b/t/testsuite-summary-count-many.sh
+@@ -52,8 +52,8 @@ END
+ chmod a+x all.test
+ 
+ $PERL -w -e '
+-  use warnings FATAL => "all";
+   use strict;
++  use warnings;
+ 
+   my $base = 1000;
+   my %count = (
+-- 
+cgit v1.1
+
+
