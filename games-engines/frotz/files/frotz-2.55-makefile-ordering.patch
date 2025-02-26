@@ -1,0 +1,27 @@
+https://gitlab.com/DavidGriffith/frotz/-/commit/52be64afc92a6ea0a982ff83205a67cbfb94b619
+From 52be64afc92a6ea0a982ff83205a67cbfb94b619 Mon Sep 17 00:00:00 2001
+From: David Griffith <dave@661.org>
+Date: Thu, 6 Feb 2025 19:16:11 -0800
+Subject: [PATCH] Fixed potential SDL interface build failure when using "make
+ -j".
+
+---
+ src/sdl/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sdl/Makefile b/src/sdl/Makefile
+index e21477e6..fd07089c 100644
+--- a/src/sdl/Makefile
++++ b/src/sdl/Makefile
+@@ -31,7 +31,7 @@ $(TARGET): $(DEFINES) $(OBJECTS) | $(DEFINES)
+ 	$(RANLIB) $@
+ 	@echo "** Done with SDL interface."
+ 
+-%.o: %.c
++%.o: %.c $(DEFINES)
+ 	$(CC) $(CFLAGS) $(SDL_CFLAGS) -fPIC -fpic -o $@ -c $<
+ 
+ $(DEFINES):
+-- 
+GitLab
+
