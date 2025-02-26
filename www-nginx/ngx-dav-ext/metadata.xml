@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The nginx-dav-ext NGINX module provides WebDAV methods that are not implemented by the
+		standard NGINX ngx_http_dav_module, namely PROPFIND, OPTIONS, LOCK and UNLOCK.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/arut/nginx-dav-ext-module/issues</bugs-to>
+		<remote-id type="github">arut/nginx-dav-ext-module</remote-id>
+	</upstream>
+</pkgmetadata>
