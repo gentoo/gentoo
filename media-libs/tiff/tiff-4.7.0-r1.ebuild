@@ -50,6 +50,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/tiffconf.h
 )
 
+PATCHES=( "${FILESDIR}"/${P}-fix-test-race.patch ) # bug#943020
+
 src_prepare() {
 	default
 

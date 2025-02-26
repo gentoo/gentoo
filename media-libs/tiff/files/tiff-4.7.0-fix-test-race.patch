@@ -1,0 +1,30 @@
+https://gitlab.com/libtiff/libtiff/-/merge_requests/701
+https://bugs.gentoo.org/943020
+
+From efadbbd8746d2c6c8129438716e2c1e8aeecafdb Mon Sep 17 00:00:00 2001
+From: Gabi Falk <gabifalk@gmx.com>
+Date: Wed, 26 Feb 2025 14:00:00 +0000
+Subject: [PATCH] test: Fix race condition in
+ {tiffcrop,tiffcp}-32bpp-None-jpeg.sh tests
+
+These tests used the same output path, which could cause failures
+when run in parallel.  These were the only tests with a conflicting
+outfile= parameter.
+
+Link: https://bugs.gentoo.org/943020
+---
+ test/tiffcrop-32bpp-None-jpeg.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/tiffcrop-32bpp-None-jpeg.sh b/test/tiffcrop-32bpp-None-jpeg.sh
+index 9b0d1f5f..4a47f6ed 100755
+--- a/test/tiffcrop-32bpp-None-jpeg.sh
++++ b/test/tiffcrop-32bpp-None-jpeg.sh
+@@ -2,6 +2,6 @@
+ # Generated file, master is Makefile.am
+ . ${srcdir:-.}/common.sh
+ infile="$srcdir/images/32bpp-None-jpeg.tiff"
+-outfile="o-tiffcp-32bpp-None-jpeg-YCbCr.tiff"
++outfile="o-tiffcrop-32bpp-None-jpeg-YCbCr.tiff"
+ f_test_convert "${TIFFCROP} -c jpeg" $infile $outfile
+ f_tiffinfo_validate $outfile

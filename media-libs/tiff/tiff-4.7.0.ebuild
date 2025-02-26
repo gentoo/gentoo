@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,8 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-evenrouault )"
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/tiffconf.h
 )
+
+PATCHES=( "${FILESDIR}"/${P}-fix-test-race.patch ) # bug#943020
 
 src_prepare() {
 	default
