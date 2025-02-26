@@ -372,6 +372,7 @@ src_install() {
 		)
 		local delete=( # sigh
 			"${D}${QT6_BINDIR}"/test*
+			"${D}${QT6_LIBDIR}/objects-${CMAKE_BUILD_TYPE}"/*test*
 			"${delete_bins[@]/#/${D}${QT6_BINDIR}/}"
 		)
 		# using -f given not tracking which tests may be skipped or not
