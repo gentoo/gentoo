@@ -1,0 +1,12 @@
+Missing headers for strcmp, fixes build on musl
+https://bugs.gentoo.org/894712
+--- a/getopt.c
++++ b/getopt.c
+@@ -39,6 +39,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ /* Comment out all this code if we are using the GNU C Library, and are not
+    actually compiling the library itself.  This code is part of the GNU C
