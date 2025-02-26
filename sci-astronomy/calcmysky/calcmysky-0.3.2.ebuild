@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="GPL-3"
 # subslot is soversion
 SLOT="0/15"
-KEYWORDS="amd64 ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 IUSE="+qt5 qt6"
 REQUIRED_USE="|| ( qt5 qt6 )"

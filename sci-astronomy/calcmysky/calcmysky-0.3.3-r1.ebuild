@@ -15,7 +15,7 @@ S="${WORKDIR}/CalcMySky-${PV}"
 LICENSE="GPL-3"
 # subslot is soversion
 SLOT="0/15"
-KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 DEPEND="
 	dev-cpp/eigen:3
