@@ -1,0 +1,27 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,10 @@
+ # For non-gcc compilers, change the options to "no-dependencies"
+ AUTOMAKE_OPTIONS = foreign dist-zip
+ 
+-SUBDIRS    = utils include lib chart doc tests shutterbug adie pathfinder calculator controlpanel glviewer
++if COND_TOOLS
++  INC_TOOLS = adie calculator pathfinder shutterbug
++endif
++SUBDIRS    = utils include lib chart doc tests controlpanel glviewer $(INC_TOOLS)
+ EXTRA_DIST = ADDITIONS AUTHORS INSTALL LICENSE LICENSE_ADDENDUM TRACING README fox.spec fox-config index.html aclocal.m4
+ 
+ bin_SCRIPTS = fox-config
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,6 +51,10 @@
+ LT_AGE=`expr $FOX_INTERFACE_VERSION - $FOX_BINARY_VERSION`
+ LT_INIT([win32-dll])
+ 
++AC_ARG_WITH(tools,[  --with-tools           choices are yes, no])
++AC_MSG_RESULT([$with_tools])
++AM_CONDITIONAL(COND_TOOLS, test "x$with_tools" != "xno")
++
+ # Check win32 compile
+ case "$host_os" in
+ *mingw32*) OS_WINDOWS=1 ;;
