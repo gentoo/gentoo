@@ -26,7 +26,7 @@ REQUIRED_USE="
 	designer? ( qml widgets )
 "
 
-# dlopen: krb5, libva, pciutils, udev
+# dlopen: krb5, libva, pciutils
 # gcc: for -latomic
 RDEPEND="
 	app-arch/snappy:=
@@ -54,7 +54,7 @@ RDEPEND="
 	sys-apps/pciutils
 	sys-devel/gcc:*
 	sys-libs/zlib:=[minizip]
-	virtual/libudev
+	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -123,8 +123,8 @@ qtwebengine_check-reqs() {
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD=9G
-	local CHECKREQS_DISK_USR=360M
+	local CHECKREQS_DISK_BUILD=10G
+	local CHECKREQS_DISK_USR=400M
 
 	if ! has distcc ${FEATURES}; then #830661
 		# assume ~2GB per job or 1.5GB if clang, possible with less
