@@ -203,11 +203,9 @@ qt6-build_src_install() {
 
 	_qt6-build_create_user_facing_links
 
-	# hack: trim typical junk with currently no known "proper" way
-	# to avoid that primarily happens with tests (e.g. qt5compat and
-	# qtsvg tests, but qtbase[gui,-test] currently does some too)
-	rm -rf -- "${D}${QT6_PREFIX}"/tests \
-		"${D}${QT6_LIBDIR}/objects-${CMAKE_BUILD_TYPE}" || die
+	# Qt often install unwanted files when tests are enabled and, while
+	# this does not cover everything, delete the common case.
+	rm -rf -- "${D}${QT6_PREFIX}"/tests || die
 }
 
 ######  Public helpers  ######
