@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 
 PATCHES=(
 	"${WORKDIR}"/minidlna-gentoo-artwork.patch
+	"${FILESDIR}"/minidlna-1.3.3-ffmpeg7.patch
 )
 
 src_prepare() {
