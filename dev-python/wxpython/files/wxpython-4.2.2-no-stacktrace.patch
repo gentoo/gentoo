@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/924057
+
+--- a/sip/cpp/sip_corewxAppTraits.cpp
++++ b/sip/cpp/sip_corewxAppTraits.cpp
+@@ -471,7 +471,11 @@
+             PyErr_Clear();
+ 
+             Py_BEGIN_ALLOW_THREADS
++	#ifdef __GLIBC__
+             sipRes = new ::wxString((sipSelfWasArg ? sipCpp->::wxAppTraits::GetAssertStackTrace() : sipCpp->GetAssertStackTrace()));
++	#else
++	    sipRes = new ::wxString("");
++	#endif
+             Py_END_ALLOW_THREADS
+ 
+             if (PyErr_Occurred())
