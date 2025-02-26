@@ -1,0 +1,12 @@
+https://github.com/WickedSmoke/evolvotron/pull/8.patch
+diff --git a/dist/evolvotron.desktop b/dist/evolvotron.desktop
+index a2f79c7..8d5f550 100644
+--- a/dist/evolvotron.desktop
++++ b/dist/evolvotron.desktop
+@@ -4,5 +4,5 @@ Name=Evolvotron
+ Comment=Interactive generative art program
+ Exec=evolvotron
+ Icon=evolvotron
+-Terminal=0
++Terminal=false
+ Categories=Qt;Graphics;2DGraphics;
