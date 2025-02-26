@@ -24,12 +24,12 @@ IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	sci-physics/geant:=[opengl,geant3?]
+	>=sci-physics/geant-4.11.3:=[opengl,geant3?]
 	sci-physics/root:=
-	sci-physics/vmc:=
-	vgm? ( sci-physics/vgm:=[geant4,root] )"
+	>=sci-physics/vmc-2.0:=
+	vgm? ( >=sci-physics/vgm-5.1:=[geant4,root] )"
 DEPEND="${RDEPEND}
-	test? ( sci-physics/geant:=[gdml] )"
+	test? ( >=sci-physics/geant-4.11.3:=[gdml] )"
 BDEPEND="doc? ( app-text/doxygen[dot] )"
 REQUIRED_USE="
 	test? ( examples geant3 g4root vgm )
