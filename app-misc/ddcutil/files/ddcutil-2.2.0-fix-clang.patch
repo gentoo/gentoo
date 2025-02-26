@@ -1,0 +1,28 @@
+From 3ac5a76adbc93e194c1136967f783e69317cd48f Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 26 Feb 2025 15:52:09 +0800
+Subject: [PATCH] src/dw/dw_udev.c: fix warning on clang19
+
+dw_udev.c:253:61: warning: variable 'bs_new_buses_w_edid' is uninitialized when used within its own initialization [-Wuninitialized]
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ src/dw/dw_udev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/dw/dw_udev.c b/src/dw/dw_udev.c
+index cc112b55..34d6daa4 100644
+--- a/src/dw/dw_udev.c
++++ b/src/dw/dw_udev.c
+@@ -250,7 +250,7 @@ Bit_Set_256 dw_i2c_check_bus_changes(
+          bs_new_buses_w_edid = bs_stabilized_buses_w_edid;
+ #endif
+ 
+-         BS256 bs_new_buses_w_edid = dw_stabilized_buses_bs(bs_new_buses_w_edid, detected_displays_removed_flag);
++         bs_new_buses_w_edid = dw_stabilized_buses_bs(bs_new_buses_w_edid, detected_displays_removed_flag);
+       }
+    }
+ 
+-- 
+2.45.2
+
