@@ -340,6 +340,7 @@ RESTRICT="
 S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
+	"${FILESDIR}"/svt-av1-3.patch
 	"${FILESDIR}"/chromium-r1.patch
 	"${FILESDIR}"/${PN}-5.0-backport-ranlib-build-fix.patch
 	"${FILESDIR}"/${PN}-4.4.3-get_cabac_inline_x86-32-bit.patch
