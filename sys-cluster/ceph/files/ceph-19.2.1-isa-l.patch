@@ -1,0 +1,73 @@
+https://bugs.gentoo.org/950294
+
+Similar to dev-libs/isa-l/files/isa-l-2.31.0_makefile-no-D.patch
+and dev-libs/isa-l_crypto/files/isa-l_crypto-2.24.0_makefile-no-D.patch.
+--- a/src/crypto/isa-l/isa-l_crypto/Makefile.am
++++ b/src/crypto/isa-l/isa-l_crypto/Makefile.am
+@@ -125,8 +125,8 @@ CCAS = $(as_filter)
+ EXTRA_DIST += tools/yasm-filter.sh tools/nasm-filter.sh
+ EXTRA_DIST += tools/yasm-cet-filter.sh tools/nasm-cet-filter.sh
+ 
+-AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${D}
+-AM_CCASFLAGS = ${yasm_args} ${INCLUDE} $(src_include) ${DEFS} ${D}
++AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${DIST_D}
++AM_CCASFLAGS = ${yasm_args} ${INCLUDE} $(src_include) ${DEFS} ${DIST_D}
+ 
+ .asm.s:
+ 	@echo "  MKTMP   " $@;
+--- a/src/crypto/isa-l/isa-l_crypto/make.inc
++++ b/src/crypto/isa-l/isa-l_crypto/make.inc
+@@ -111,7 +111,7 @@ INCLUDE   = $(patsubst %,-I%/,$(subst :, ,$(VPATH)))
+ CFLAGS   = $(CFLAGS_$(arch)) $(CFLAGS_$(CC)) $(DEBUG) -O2 $(DEFINES) $(INCLUDE)
+ ASFLAGS  = $(ASFLAGS_$(arch)) $(ASFLAGS_$(CC)) $(DEBUG_$(AS)) $(DEFINES) $(INCLUDE)
+ ARFLAGS  = $(ARFLAGS_$(arch))
+-DEFINES += $(addprefix -D , $D)
++DEFINES += $(addprefix -D , ${DIST_D})
+ CLEANFILES += $(O) *.o *.a $(all_tests) $(lib_name) $(so_lib_name)
+ 
+ ifeq ($(filter aarch64 x86_%,$(host_cpu)),)
+@@ -193,7 +193,7 @@ $(addsuffix .run,$(all_tests)): %.run : %
+ 	@echo Completed run: $<
+ 
+ # Other build rules
+-msg = $(if $(DEBUG),DEBUG) $(patsubst 32,32-bit,$(host_cpu)) $D
++msg = $(if $(DEBUG),DEBUG) $(patsubst 32,32-bit,$(host_cpu)) ${DIST_D}
+ 
+ # gcc assembly files
+ $(O)/%.o: $(host_cpu)/%.S
+--- a/src/isa-l/Makefile.am
++++ b/src/isa-l/Makefile.am
+@@ -142,11 +142,11 @@ CCAS = $(as_filter)
+ EXTRA_DIST += tools/yasm-filter.sh tools/nasm-filter.sh
+ EXTRA_DIST += tools/yasm-cet-filter.sh tools/nasm-cet-filter.sh
+ 
+-AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${D}
++AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${DIST_D}
+ if CPU_AARCH64
+ AM_CCASFLAGS = ${AM_CFLAGS}
+ else
+-AM_CCASFLAGS = ${yasm_args} ${INCLUDE} ${src_include} ${DEFS} ${D}
++AM_CCASFLAGS = ${yasm_args} ${INCLUDE} ${src_include} ${DEFS} ${DIST_D}
+ endif
+ 
+ .asm.s:
+--- a/src/isa-l/make.inc
++++ b/src/isa-l/make.inc
+@@ -118,7 +118,7 @@ INCLUDE   = $(patsubst %,-I%/,$(subst :, ,$(VPATH)))
+ CFLAGS   = $(CFLAGS_$(arch)) $(CFLAGS_$(CC)) $(DEBUG) -O2 $(DEFINES) $(INCLUDE)
+ ASFLAGS  = $(ASFLAGS_$(arch)) $(ASFLAGS_$(CC)) $(DEBUG_$(AS)) $(DEFINES) $(INCLUDE)
+ ARFLAGS  = $(ARFLAGS_$(arch))
+-DEFINES += $(addprefix -D , $D)
++DEFINES += $(addprefix -D , ${DIST_D})
+ CLEANFILES += $(O) *.o *.a $(all_tests) $(bin_PROGRAMS) $(lib_name) $(so_lib_name) $(all_llvm_fuzz_tests)
+ 
+ # set host_cpu=base_aliases for unsupported CPUs
+@@ -224,7 +224,7 @@ $(addsuffix .run,$(all_tests)): %.run : %
+ 	@echo Completed run: $<
+ 
+ # Other build rules
+-msg = $(if $(DEBUG),DEBUG) $(patsubst 32,32-bit,$(host_cpu)) $D
++msg = $(if $(DEBUG),DEBUG) $(patsubst 32,32-bit,$(host_cpu)) ${DIST_D}
+ 
+ # yasm/nasm assembly files
+ $(O)/%.o: %.asm

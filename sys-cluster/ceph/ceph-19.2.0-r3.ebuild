@@ -233,6 +233,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-18.2.4-spdk.patch"
 	# https://bugs.gentoo.org/941069
 	"${FILESDIR}/ceph-19.2.0-importlib.patch"
+	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
 )
 
 check-reqs_export_vars() {
