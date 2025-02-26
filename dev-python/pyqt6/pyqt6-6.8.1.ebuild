@@ -97,6 +97,10 @@ BDEPEND="
 	dbus? ( virtual/pkgconfig )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.8.1-qt690.patch
+)
+
 src_prepare() {
 	default
 

@@ -1,0 +1,43 @@
+Quick fix to build against (still unreleased) Qt 6.9.
+--- a/qpy/QtCore/qpycore_enums_flags_metatype.cpp
++++ b/qpy/QtCore/qpycore_enums_flags_metatype.cpp
+@@ -46,5 +46,9 @@
+         mti->alignment = alignof(unsigned);
+         mti->size = sizeof(unsigned);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
++        mti->flags = QtPrivate::QMetaTypeForType<unsigned>::flags() | QMetaType::IsEnumeration | QMetaType::IsUnsignedEnumeration;
++#else
+         mti->flags = QtPrivate::QMetaTypeForType<unsigned>::Flags | QMetaType::IsEnumeration | QMetaType::IsUnsignedEnumeration;
++#endif
+         mti->defaultCtr = QtPrivate::QMetaTypeForType<unsigned>::getDefaultCtr();
+         mti->copyCtr = QtPrivate::QMetaTypeForType<unsigned>::getCopyCtr();
+@@ -62,5 +66,9 @@
+         mti->alignment = alignof(int);
+         mti->size = sizeof(int);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
++        mti->flags = QtPrivate::QMetaTypeForType<int>::flags() | QMetaType::IsEnumeration;
++#else
+         mti->flags = QtPrivate::QMetaTypeForType<int>::Flags | QMetaType::IsEnumeration;
++#endif
+         mti->defaultCtr = QtPrivate::QMetaTypeForType<int>::getDefaultCtr();
+         mti->copyCtr = QtPrivate::QMetaTypeForType<int>::getCopyCtr();
+--- a/sip/QtCore/QtCoremod.sip
++++ b/sip/QtCore/QtCoremod.sip
+@@ -23,5 +23,5 @@
+ %Module(name=PyQt6.QtCore, call_super_init=True, default_VirtualErrorHandler=PyQt6, keyword_arguments="Optional", use_limited_api=True, py_ssize_t_clean=True)
+ 
+-%Timeline {Qt_6_0_0 Qt_6_1_0 Qt_6_2_0 Qt_6_3_0 Qt_6_4_0 Qt_6_5_0 Qt_6_6_0 Qt_6_7_0 Qt_6_8_0}
++%Timeline {Qt_6_0_0 Qt_6_1_0 Qt_6_2_0 Qt_6_3_0 Qt_6_4_0 Qt_6_5_0 Qt_6_6_0 Qt_6_7_0 Qt_6_8_0 Qt_6_9_0}
+ 
+ %Platforms {Android iOS Linux macOS WebAssembly Windows}
+--- a/sip/QtXml/qdom.sip
++++ b/sip/QtXml/qdom.sip
+@@ -159,6 +159,8 @@
+     QDomNodeList(const QDomNodeList &);
+     ~QDomNodeList();
++%If (- Qt_6_9_0)
+     bool operator==(const QDomNodeList &) const;
+     bool operator!=(const QDomNodeList &) const;
++%End
+     QDomNode item(int index) const;
+     QDomNode at(int index) const;
