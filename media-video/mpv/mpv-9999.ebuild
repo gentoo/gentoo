@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -100,7 +100,6 @@ COMMON_DEPEND="
 	vulkan? ( media-libs/vulkan-loader[X?,wayland?] )
 	wayland? (
 		dev-libs/wayland
-		dev-libs/wayland-protocols
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
@@ -117,7 +116,7 @@ DEPEND="
 	dvb? ( sys-kernel/linux-headers )
 	nvenc? ( media-libs/nv-codec-headers )
 	vulkan? ( dev-util/vulkan-headers )
-	wayland? ( dev-libs/wayland-protocols )
+	wayland? ( >=dev-libs/wayland-protocols-1.41 )
 "
 BDEPEND="
 	${PYTHON_DEPS}
