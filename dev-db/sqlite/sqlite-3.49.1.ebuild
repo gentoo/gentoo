@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="SQL database engine"
 HOMEPAGE="https://sqlite.org/"
