@@ -470,6 +470,7 @@ src_configure() {
 		verbose-tests = true
 		optimize-tests = $(toml_usex !debug)
 		codegen-tests = true
+		omit-git-hash = false
 		dist-src = false
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex wasm))
