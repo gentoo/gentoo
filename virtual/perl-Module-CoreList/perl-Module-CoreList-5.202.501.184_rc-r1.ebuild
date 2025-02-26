@@ -10,7 +10,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 # Check https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/virtual/perl-Module-CoreList
 # When bumping this package.
 RDEPEND="
-	|| ( ~dev-lang/perl-5.40.1_rc1 ~perl-core/${PN#perl-}-${PV} )
+	|| ( ~dev-lang/perl-5.40.1 ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
