@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="SQL database engine"
 HOMEPAGE="https://sqlite.org/"
@@ -318,8 +318,10 @@ multilib_src_configure() {
 		fi
 	fi
 
-	# set SONAME for the library
-	options+=( --soname=legacy )
+	if [[ ${CHOST} != *-darwin* ]] ; then
+		# set SONAME for the library
+		options+=( --soname=legacy )
+	fi
 
 	# https://sqlite.org/forum/forumpost/4f4d06a9f6683bb9
 	tc-export_build_env BUILD_CC
@@ -369,6 +371,15 @@ multilib_src_test() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" HAVE_TCL="$(usex tcl 1 "")" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}" install
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# fix install_name, soname=legacy doesn't work for this (but
+		# breaks the build instead)
+		install_name_tool \
+			-id "${EPREFIX}/usr/$(get_libdir)/libsqlite3$(get_libname 0)" \
+			"${ED}/usr/$(get_libdir)/libsqlite3$(get_libname ${PV})" \
+			|| die "failed to fix install_name"
+	fi
 
 	if use tools && multilib_is_native_abi; then
 		install_tool() {
