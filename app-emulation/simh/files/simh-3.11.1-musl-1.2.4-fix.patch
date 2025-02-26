@@ -1,0 +1,34 @@
+Starting in Musl 1.2.4, the LFS64 workaround functions are beginning to
+error so we have to either use the workaround, or rename the functions
+to their original names.
+
+https://musl.libc.org/releases.html
+
+diff --git a/sim_fio.c b/sim_fio.c
+index c86d67b..b0f5cf5 100644
+--- a/sim_fio.c
++++ b/sim_fio.c
+@@ -182,8 +182,6 @@ FILE *sim_fopen (const char *file, const char *mode)
+ #if defined (VMS)
+ return fopen (file, mode, "ALQ=32", "DEQ=4096",
+         "MBF=6", "MBC=127", "FOP=cbt,tef", "ROP=rah,wbh", "CTX=stm");
+-#elif (defined (__linux) || defined (__linux__) || defined (__hpux) || defined (_AIX)) && !defined (DONT_DO_LARGEFILE)
+-return fopen64 (file, mode);
+ #else
+ return fopen (file, mode);
+ #endif
+@@ -268,12 +266,12 @@ return (t_offset) _ftelli64 (st);
+ 
+ int sim_fseeko (FILE *st, t_offset xpos, int origin)
+ {
+-return fseeko64 (st, (off64_t)xpos, origin);
++return fseeko (st, (off_t)xpos, origin);
+ }
+ 
+ t_offset sim_ftell (FILE *st)
+ {
+-return (t_offset)(ftello64 (st));
++return (t_offset)(ftello (st));
+ }
+ 
+ #endif                                                  /* end Linux with LFS */
