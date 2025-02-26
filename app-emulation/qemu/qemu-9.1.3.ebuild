@@ -322,7 +322,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
 	"${FILESDIR}"/${PN}-9.0.0-glibc-2.41.patch
-
+	"${FILESDIR}"/${PN}-7.2.16-optionrom-pass-Wl-no-error-rwx-segments.patch
 )
 
 QA_PREBUILT="
