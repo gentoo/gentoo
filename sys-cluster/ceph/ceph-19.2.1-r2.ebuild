@@ -240,6 +240,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.1-mgr.patch"
 	"${FILESDIR}/ceph-19.2.1-exporter.patch"
 	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
+	"${FILESDIR}/ceph-19.2.1-quiet-stringop-truncation.patch"
 )
 
 check-reqs_export_vars() {
@@ -365,8 +366,6 @@ ceph_src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 		-Wno-dev
 		-DCEPHADM_BUNDLED_DEPENDENCIES=none
-		# isa-l is very question mark exclamation mark
-		-DHAVE_NASM_X64=no
 	)
 
 	# this breaks when re-configuring for python impl
