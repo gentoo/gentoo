@@ -14,6 +14,7 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv x86"
+IUSE="+gpu"
 
 BDEPEND="
 	app-text/lowdown
@@ -35,7 +36,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBTOP_GPU=true
+		-DBTOP_GPU=$(usex gpu)
 		-DBTOP_RSMI_STATIC=false
 		-DBTOP_STATIC=false
 		# These settings can be controlled in make.conf CFLAGS/CXXFLAGS
@@ -50,6 +51,8 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "GPU monitoring support (Radeon GPUs)" dev-util/rocm-smi
-	optfeature "GPU monitoring support (NVIDIA GPUs)" x11-drivers/nvidia-drivers
+	if use gpu; then
+		optfeature "GPU monitoring support (Radeon GPUs)" dev-util/rocm-smi
+		optfeature "GPU monitoring support (NVIDIA GPUs)" x11-drivers/nvidia-drivers
+	fi
 }
