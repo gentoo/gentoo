@@ -15,7 +15,7 @@
 		<flag name="bflsc">Enable support for BFL ASICs</flag>
 		<flag name="bitforce">Enable support for mining with ButterFly Labs BitFORCE FPGAs</flag>
 		<flag name="bitfury">Enable support for mining with BitFury ASICs</flag>
-		<flag name="bitmine_A1">Enable support for mining with Bitmine.ch A1 ASICs</flag>
+		<flag name="bitmine-A1">Enable support for mining with Bitmine.ch A1 ASICs</flag>
 		<flag name="blockerupter">Enable support for mining with BlockRupter ASICs</flag>
 		<flag name="cointerra">Enable support for mining with Cointerra ASICs</flag>
 		<flag name="drillbit">Enable support for mining with Drillbit BitFury ASICs</flag>
