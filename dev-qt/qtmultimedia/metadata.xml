@@ -8,6 +8,7 @@
 	<use>
 		<flag name="eglfs">Enable screen capture support with Qt's EGL Full Screen/Single Surface platform plugin</flag>
 		<flag name="gstreamer">Enable audio support via <pkg>media-libs/gstreamer</pkg></flag>
+		<flag name="pipewire">Enable <pkg>media-video/pipewire</pkg> support</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="widgets">Build the QtMultimediaWidgets module</flag>
 	</use>
