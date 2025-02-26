@@ -15,7 +15,7 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
-IUSE="debugger examples nsight profiler rdma vis-profiler sanitizer"
+IUSE="debugger examples nsight profiler rdma sanitizer static-libs vis-profiler"
 RESTRICT="bindist mirror"
 
 # since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
@@ -255,6 +255,11 @@ src_install() {
 	# remove rdma libs (unless USE=rdma)
 	if ! use rdma; then
 		rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/libcufile_rdma* || die
+	fi
+
+	# remove static libs (unless USE=static-libs)
+	if ! use static-libs; then
+		find "${ED}" -name '*_static*.a' -delete || die
 	fi
 
 	# Add include and lib symlinks
