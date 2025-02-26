@@ -105,6 +105,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
 )
 
 python_check_deps() {
