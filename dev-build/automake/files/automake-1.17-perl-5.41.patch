@@ -1,0 +1,25 @@
+https://git.savannah.gnu.org/cgit/automake.git/commit/?id=b5403ee7a035872a21135c2ee4871a6c284c91dd
+
+From b5403ee7a035872a21135c2ee4871a6c284c91dd Mon Sep 17 00:00:00 2001
+From: Collin Funk <collin.funk1@gmail.com>
+Date: Thu, 30 Jan 2025 15:34:52 -0800
+Subject: automake: avoid precedence error when using Perl 5.41+.
+
+Reported by Igor Todorovski <itodorov@ca.ibm.com> in
+<https://lists.gnu.org/archive/html/automake/2025-01/msg00000.html>.
+
+* bin/automake.in (transform): Parentheses the '!' operators so
+Perl 5.41.8 doesn't warn about "possible precedence problem".
+--- a/bin/automake.in
++++ b/bin/automake.in
+@@ -6871,7 +6871,7 @@ sub transform ($\%)
+     {
+       my $neg = ($1 eq '!') ? 1 : 0;
+       my $val = transform_token ($token, %$transform, $2);
+-      return (!!$val == $neg) ? '##%' : '';
++      return ((!!$val) == $neg) ? '##%' : '';
+     }
+   else
+     {
+-- 
+cgit v1.1

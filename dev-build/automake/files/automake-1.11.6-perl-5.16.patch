@@ -17,14 +17,6 @@ instead of "&func(ARGS...)").
 * THANKS, NEWS: Update.
 
 Signed-off-by: Stefano Lattarini <stefano.lattarini@gmail.com>
----
- NEWS       |  4 ++++
- THANKS     |  1 +
- aclocal.in | 42 ++++++++++++++++++++++++++++++++++--------
- 3 files changed, 39 insertions(+), 8 deletions(-)
-
-diff --git a/aclocal.in b/aclocal.in
-index dfb851b..e8855d5 100644
 --- a/aclocal.in
 +++ b/aclocal.in
 @@ -152,8 +152,34 @@ my $erase_me;
