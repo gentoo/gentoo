@@ -5,7 +5,7 @@ EAPI=8
 
 # Check for bumps & cleanup with app-misc/ddcui
 
-inherit autotools flag-o-matic linux-info udev
+inherit autotools linux-info udev
 
 DESCRIPTION="Program for querying and changing monitor settings"
 HOMEPAGE="https://www.ddcutil.com/"
@@ -43,7 +43,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-no-werror.patch
-	"${FILESDIR}"/${PN}-2.1.4-fix-clang.patch
+	"${FILESDIR}"/${P}-fix-clang.patch
 )
 
 pkg_pretend() {
@@ -66,9 +66,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# too many error on -Wcompound-token-split-by-macro by clang
-	append-cflags $(test-flags-CC -Wno-compound-token-split-by-macro)
-
 	local myeconfargs=(
 		# FAILS: doxyfile: No such file or directory
 		# $(use_enable doc doxygen)
