@@ -13,7 +13,7 @@ else
 		https://github.com/PCSX2/pcsx2/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 	"
-	KEYWORDS="-* ~amd64"
+	KEYWORDS="-* amd64"
 fi
 
 DESCRIPTION="PlayStation 2 emulator"
