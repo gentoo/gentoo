@@ -97,7 +97,7 @@ DEPEND="
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
 	dev-util/gperf
-	net-libs/nodejs[ssl]
+	net-libs/nodejs[icu,ssl]
 	sys-devel/bison
 	sys-devel/flex
 "
@@ -261,7 +261,8 @@ src_configure() {
 }
 
 src_compile() {
-	# tentatively work around a possible (rare) race condition (bug #921680)
+	# tentatively work around a possible (rare) race condition (bug #921680),
+	# has good chances to be obsolete but keep for now as a safety
 	cmake_build WebEngineCore_sync_all_public_headers
 
 	cmake_src_compile
