@@ -1,0 +1,385 @@
+https://gitlab.nic.cz/knot/knot-resolver/-/merge_requests/1664.patch
+From a009365df3f0429edfd181d0109372aca1892298 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mr=C3=A1zek?= <ales.mrazek@nic.cz>
+Date: Fri, 28 Feb 2025 10:07:08 +0100
+Subject: [PATCH 1/5] Revert "python: constants: added API_SOCKET_NAME"
+
+This reverts commit cee2250c5a52a4d67ea2a37cc97761ba530f856b.
+---
+ python/knot_resolver/constants.py    | 9 +++------
+ python/knot_resolver/constants.py.in | 9 +++------
+ 2 files changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/python/knot_resolver/constants.py b/python/knot_resolver/constants.py
+index 525e8629c..d65c24acb 100644
+--- a/python/knot_resolver/constants.py
++++ b/python/knot_resolver/constants.py
+@@ -5,18 +5,15 @@ VERSION = "6.0.11"
+ USER = "knot-resolver"
+ GROUP = "knot-resolver"
+ 
+-# default files names
+-API_SOCK_NAME = "kres-api.sock"
+-
+-# default dirs paths
++# dirs paths
+ RUN_DIR = Path("/run/knot-resolver")
+ ETC_DIR = Path("/etc/knot-resolver")
+ SBIN_DIR = Path("/usr/sbin")
+ CACHE_DIR = Path("/var/cache/knot-resolver")
+ 
+-# default files paths
++# files paths
+ CONFIG_FILE = ETC_DIR / "config.yaml"
+-API_SOCK_FILE = RUN_DIR / API_SOCK_NAME
++API_SOCK_FILE = RUN_DIR / "kres-api.sock"
+ 
+ # executables paths
+ KRESD_EXECUTABLE = SBIN_DIR / "kresd"
+diff --git a/python/knot_resolver/constants.py.in b/python/knot_resolver/constants.py.in
+index 8c2974a58..35c25ac64 100644
+--- a/python/knot_resolver/constants.py.in
++++ b/python/knot_resolver/constants.py.in
+@@ -5,18 +5,15 @@ VERSION = "@version@"
+ USER = "@user@"
+ GROUP = "@group@"
+ 
+-# default files names
+-API_SOCK_NAME = "kres-api.sock"
+-
+-# default dirs paths
++# dirs paths
+ RUN_DIR = Path("@run_dir@")
+ ETC_DIR = Path("@etc_dir@")
+ SBIN_DIR = Path("@sbin_dir@")
+ CACHE_DIR = Path("@cache_dir@")
+ 
+-# default files paths
++# files paths
+ CONFIG_FILE = ETC_DIR / "config.yaml"
+-API_SOCK_FILE = RUN_DIR / API_SOCK_NAME
++API_SOCK_FILE = RUN_DIR / "kres-api.sock"
+ 
+ # executables paths
+ KRESD_EXECUTABLE = SBIN_DIR / "kresd"
+-- 
+GitLab
+
+
+From 2b312097f4ed0c0240b70fb365ac5d1f515812bc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mr=C3=A1zek?= <ales.mrazek@nic.cz>
+Date: Fri, 28 Feb 2025 10:07:35 +0100
+Subject: [PATCH 2/5] Revert "datamodel: management socket default based on
+ rundir"
+
+This reverts commit 10fb87547af05cd78e76dfb94951c34f4554d090.
+---
+ doc/_static/config.schema.json                |  4 +--
+ python/knot_resolver/client/command.py        | 35 +++++--------------
+ .../knot_resolver/datamodel/config_schema.py  | 17 +++------
+ tests/manager/datamodel/test_config_schema.py | 23 ------------
+ 4 files changed, 15 insertions(+), 64 deletions(-)
+
+diff --git a/doc/_static/config.schema.json b/doc/_static/config.schema.json
+index a429b15dd..0bedbbc4e 100644
+--- a/doc/_static/config.schema.json
++++ b/doc/_static/config.schema.json
+@@ -54,7 +54,7 @@
+             "default": 256
+         },
+         "management": {
+-            "description": "Configuration of management HTTP API. By default, unix-socket is located in 'rundir'.",
++            "description": "Configuration of management HTTP API.",
+             "type": "object",
+             "properties": {
+                 "unix-socket": {
+@@ -75,7 +75,7 @@
+                 }
+             },
+             "default": {
+-                "unix_socket": "kres-api.sock",
++                "unix_socket": "/run/knot-resolver/kres-api.sock",
+                 "interface": null
+             }
+         },
+diff --git a/python/knot_resolver/client/command.py b/python/knot_resolver/client/command.py
+index 464eb16e6..3966f8ca9 100644
+--- a/python/knot_resolver/client/command.py
++++ b/python/knot_resolver/client/command.py
+@@ -4,7 +4,7 @@ from pathlib import Path
+ from typing import Dict, List, Optional, Set, Tuple, Type, TypeVar
+ from urllib.parse import quote
+ 
+-from knot_resolver.constants import API_SOCK_FILE, API_SOCK_NAME, CONFIG_FILE, RUN_DIR
++from knot_resolver.constants import API_SOCK_FILE, CONFIG_FILE
+ from knot_resolver.datamodel.types import IPAddressPort
+ from knot_resolver.utils.modeling import parsing
+ from knot_resolver.utils.modeling.exceptions import DataValidationError
+@@ -154,38 +154,21 @@ def get_socket_from_config(config: Path, optional_file: bool) -> Optional[Socket
+     try:
+         with open(config, "r", encoding="utf8") as f:
+             data = parsing.try_to_parse(f.read())
+-
+-        rkey = "rundir"
+-        rundir = Path(data[rkey]) if rkey in data else RUN_DIR
+-
+         mkey = "management"
+         if mkey in data:
+             management = data[mkey]
+-
+-            ikey = "interface"
+-            if ikey in data[mkey]:
+-                ip = IPAddressPort(data[mkey][ikey], object_path=f"/{mkey}/{ikey}")
++            if "unix-socket" in management:
+                 return SocketDesc(
+-                    f"http://{ip.addr}:{ip.port}",
+-                    f'Key "/management/interface" in "{config}" file',
++                    f'http+unix://{quote(management["unix-socket"], safe="")}/',
++                    f'Key "/management/unix-socket" in "{config}" file',
+                 )
+-
+-            skey = "unix-socket"
+-            if skey in management:
+-                socket = Path(management[skey])
+-                if not socket.is_absolute():
+-                    socket = rundir / socket
++            if "interface" in management:
++                ip = IPAddressPort(management["interface"], object_path=f"/{mkey}/interface")
+                 return SocketDesc(
+-                    f'http+unix://{quote(str(socket), safe="")}/',
+-                    f'Key "/management/unix-socket" in "{config}" file',
++                    f"http://{ip.addr}:{ip.port}",
++                    f'Key "/management/interface" in "{config}" file',
+                 )
+-
+-        socket = rundir / API_SOCK_NAME
+-        return SocketDesc(
+-            f'http+unix://{quote(str(socket), safe="")}/',
+-            f'Key "/rundir" in "{config}" file',
+-        )
+-
++        return None
+     except ValueError as e:
+         raise DataValidationError(*e.args) from e  # pylint: disable=no-value-for-parameter
+     except OSError as e:
+diff --git a/python/knot_resolver/datamodel/config_schema.py b/python/knot_resolver/datamodel/config_schema.py
+index f8733cb11..410e94d7c 100644
+--- a/python/knot_resolver/datamodel/config_schema.py
++++ b/python/knot_resolver/datamodel/config_schema.py
+@@ -1,10 +1,9 @@
+ import logging
+ import os
+ import socket
+-from pathlib import Path
+ from typing import Any, Dict, List, Literal, Optional, Tuple, Union
+ 
+-from knot_resolver.constants import API_SOCK_NAME, RUN_DIR, VERSION
++from knot_resolver.constants import API_SOCK_FILE, RUN_DIR, VERSION
+ from knot_resolver.datamodel.cache_schema import CacheSchema
+ from knot_resolver.datamodel.defer_schema import DeferSchema
+ from knot_resolver.datamodel.dns64_schema import Dns64Schema
+@@ -96,7 +95,7 @@ class KresConfig(ConfigSchema):
+         rundir: Directory where the resolver can create files and which will be it's cwd.
+         workers: The number of running kresd (Knot Resolver daemon) workers. If set to 'auto', it is equal to number of CPUs available.
+         max_workers: The maximum number of workers allowed. Cannot be changed in runtime.
+-        management: Configuration of management HTTP API. By default, unix-socket is located in 'rundir'.
++        management: Configuration of management HTTP API.
+         webmgmt: Configuration of legacy web management endpoint.
+         options: Fine-tuning global parameters of DNS resolver operation.
+         network: Network connections and protocols configuration.
+@@ -119,7 +118,7 @@ class KresConfig(ConfigSchema):
+         rundir: WritableDir = lazy_default(WritableDir, str(RUN_DIR))
+         workers: Union[Literal["auto"], IntPositive] = IntPositive(1)
+         max_workers: IntPositive = IntPositive(WORKERS_MAX)
+-        management: ManagementSchema = lazy_default(ManagementSchema, {"unix-socket": str(API_SOCK_NAME)})
++        management: ManagementSchema = lazy_default(ManagementSchema, {"unix-socket": str(API_SOCK_FILE)})
+         webmgmt: Optional[WebmgmtSchema] = None
+         options: OptionsSchema = OptionsSchema()
+         network: NetworkSchema = NetworkSchema()
+@@ -174,14 +173,6 @@ class KresConfig(ConfigSchema):
+             )
+         return obj.workers
+ 
+-    def _management(self, obj: Raw) -> Any:
+-        if obj.management.unix_socket:
+-            soc = Path(obj.management.unix_socket.serialize())
+-            if soc.is_absolute():
+-                return obj.management
+-            return ManagementSchema({"unix-socket": str(obj.rundir.to_path() / soc)})
+-        return obj.management
+-
+     def _dnssec(self, obj: Raw) -> Any:
+         if obj.dnssec is True:
+             return DnssecSchema()
+@@ -268,7 +259,7 @@ def kres_config_json_schema() -> Dict[str, Any]:
+     """
+ 
+     context = get_global_validation_context()
+-    set_global_validation_context(Context(RUN_DIR, False))
++    set_global_validation_context(Context(None, False))
+ 
+     schema = KresConfig.json_schema(
+         schema_id=f"https://www.knot-resolver.cz/documentation/v{VERSION}/_static/config.schema.json",
+diff --git a/tests/manager/datamodel/test_config_schema.py b/tests/manager/datamodel/test_config_schema.py
+index 437cade8d..9ec2b31b2 100644
+--- a/tests/manager/datamodel/test_config_schema.py
++++ b/tests/manager/datamodel/test_config_schema.py
+@@ -1,9 +1,7 @@
+ import inspect
+ import json
+-import os
+ from typing import Any, Dict, Type, cast
+ 
+-from knot_resolver.constants import API_SOCK_FILE, API_SOCK_NAME, RUN_DIR
+ from knot_resolver.datamodel import KresConfig
+ from knot_resolver.datamodel.lua_schema import LuaSchema
+ from knot_resolver.utils.modeling import BaseSchema
+@@ -51,31 +49,10 @@ def test_config_check_str_type():
+ def test_config_defaults():
+     config = KresConfig()
+ 
+-    # Management API default
+-    assert config.management.unix_socket.to_path() == API_SOCK_FILE
+-
+     # DNS64 default
+     assert config.dns64 == False
+ 
+ 
+-def test_management_unix_socket():
+-    cwd = os.getcwd()
+-    config = KresConfig({"rundir": cwd})
+-    assert str(config.management.unix_socket) == f"{cwd}/{API_SOCK_NAME}"
+-
+-    my_soc = "my-new.soc"
+-    config = KresConfig({"management": {"unix-socket": my_soc}})
+-    assert str(config.management.unix_socket) == f"{RUN_DIR}/{my_soc}"
+-
+-
+-def test_management_interface():
+-    cwd = os.getcwd()
+-    config = KresConfig({"rundir": cwd, "management": {"interface": "127.0.0.1@5000"}})
+-
+-    assert config.management.unix_socket == None
+-    assert str(config.management.interface) == "127.0.0.1@5000"
+-
+-
+ def test_dnssec_false():
+     config = KresConfig({"dnssec": False})
+ 
+-- 
+GitLab
+
+
+From c1f8f7bc043ca31b9aac96c13411769fad17f6b2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mr=C3=A1zek?= <ales.mrazek@nic.cz>
+Date: Fri, 28 Feb 2025 10:14:22 +0100
+Subject: [PATCH 3/5] datamodel: management: warning that the unix-socket is
+ not located in rundir
+
+---
+ python/knot_resolver/datamodel/config_schema.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/python/knot_resolver/datamodel/config_schema.py b/python/knot_resolver/datamodel/config_schema.py
+index 410e94d7c..713c4a3e2 100644
+--- a/python/knot_resolver/datamodel/config_schema.py
++++ b/python/knot_resolver/datamodel/config_schema.py
+@@ -184,6 +184,14 @@ class KresConfig(ConfigSchema):
+         return obj.dns64
+ 
+     def _validate(self) -> None:
++        # warn about '/management/unix-socket' not located in '/rundir'
++        if self.management.unix_socket and self.management.unix_socket.to_path().parent != self.rundir.to_path():
++            logger.warning(
++                f"The management API unix-socket '{self.management.unix_socket}'"
++                f" is not located in the resolver's rundir '{self.rundir}'."
++                " This can lead to permissions issues."
++            )
++
+         # enforce max-workers config
+         workers_max = _workers_max_count()
+         if int(self.workers) > workers_max:
+-- 
+GitLab
+
+
+From 2c467aceded3cfa6eb077439d63b8637d17155c3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mr=C3=A1zek?= <ales.mrazek@nic.cz>
+Date: Fri, 28 Feb 2025 10:17:17 +0100
+Subject: [PATCH 4/5] client: command: get_socket_from_config improved
+
+---
+ python/knot_resolver/client/command.py | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/python/knot_resolver/client/command.py b/python/knot_resolver/client/command.py
+index 3966f8ca9..7a679885a 100644
+--- a/python/knot_resolver/client/command.py
++++ b/python/knot_resolver/client/command.py
+@@ -5,7 +5,7 @@ from typing import Dict, List, Optional, Set, Tuple, Type, TypeVar
+ from urllib.parse import quote
+ 
+ from knot_resolver.constants import API_SOCK_FILE, CONFIG_FILE
+-from knot_resolver.datamodel.types import IPAddressPort
++from knot_resolver.datamodel.types import IPAddressPort, WritableFilePath
+ from knot_resolver.utils.modeling import parsing
+ from knot_resolver.utils.modeling.exceptions import DataValidationError
+ from knot_resolver.utils.requests import SocketDesc
+@@ -154,16 +154,21 @@ def get_socket_from_config(config: Path, optional_file: bool) -> Optional[Socket
+     try:
+         with open(config, "r", encoding="utf8") as f:
+             data = parsing.try_to_parse(f.read())
++
+         mkey = "management"
+         if mkey in data:
+             management = data[mkey]
+-            if "unix-socket" in management:
++
++            skey = "unix-socket"
++            if skey in management:
++                sock = WritableFilePath(management[skey], object_path=f"/{mkey}/{skey}")
+                 return SocketDesc(
+-                    f'http+unix://{quote(management["unix-socket"], safe="")}/',
++                    f'http+unix://{quote(str(sock), safe="")}/',
+                     f'Key "/management/unix-socket" in "{config}" file',
+                 )
+-            if "interface" in management:
+-                ip = IPAddressPort(management["interface"], object_path=f"/{mkey}/interface")
++            ikey = "interface"
++            if ikey in data[mkey]:
++                ip = IPAddressPort(management[ikey], object_path=f"/{mkey}/{ikey}")
+                 return SocketDesc(
+                     f"http://{ip.addr}:{ip.port}",
+                     f'Key "/management/interface" in "{config}" file',
+-- 
+GitLab
+
+
+From f9a75b65cc3664294188de8a5cb93909ea58cadd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mr=C3=A1zek?= <ales.mrazek@nic.cz>
+Date: Fri, 28 Feb 2025 10:18:04 +0100
+Subject: [PATCH 5/5] NEWS: update about revert
+
+---
+ NEWS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/NEWS b/NEWS
+index 70f5db2f0..614177308 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,11 @@
++Knot Resolver 6.0.12 (2025-0m-dd)
++=================================
++
++Bugfixes
++--------
++- /management/unix-socket: revert to absolute path (#926, !1664)
++
++
+ Knot Resolver 6.0.11 (2025-02-26)
+ =================================
+ 
+-- 
+GitLab
+
