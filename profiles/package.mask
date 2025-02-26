@@ -213,11 +213,6 @@ net-wireless/linssid
 # Please update to v5 beta or v6 beta. Removal on 2025-02-28.
 media-sound/teamspeak-client:3
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-28)
-# Last release 8 years ago, dead upstream (repository gone as well),
-# depends on Qt5, no one else packages this. Removal on 2025-02-27.
-net-misc/qtm
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-28)
 # Since we are done with EGO_SUM, this tool isn't needed any more.
 # Removal on 2025-02-27.  Bug #948966.
