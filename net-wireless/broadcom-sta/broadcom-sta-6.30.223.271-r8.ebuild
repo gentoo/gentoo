@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
 HOMEPAGE="https://www.broadcom.com/support/802.11"
@@ -95,15 +95,13 @@ pkg_setup() {
 
 src_compile() {
 	local modlist=( wl )
-	local modargs=(
-			-C ${KV_DIR} M="${S}"
-	)
+	local modargs=( -C ${KV_DIR} M="${S}" )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}"/broadcom-sta-modules.conf wl.conf
