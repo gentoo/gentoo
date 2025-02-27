@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	virtual/perl-Carp
 	virtual/perl-Exporter
-	>=virtual/perl-Time-Piece-1.160.0
 "
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
