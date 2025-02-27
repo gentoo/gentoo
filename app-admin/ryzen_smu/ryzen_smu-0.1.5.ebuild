@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 DESCRIPTION="Kernel driver for AMD Ryzen's System Management Unit"
 HOMEPAGE="https://gitlab.com/leogx9r/ryzen_smu"
@@ -15,15 +15,21 @@ KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${PN}-v${PV}"
 
+src_prepare() {
+	default
+	sed -e "s/@VERSION@/${PV}/" -e 's/@CFLGS@/${HOSTCFLAGS}/' \
+		-i dkms.conf || die
+}
+
 src_compile() {
 	local modlist=( ryzen_smu )
 	local modargs=( KERNEL_BUILD="${KV_OUT_DIR}" )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	insinto /usr/lib/modules-load.d
 	doins "${FILESDIR}"/ryzen_smu.conf
