@@ -1,0 +1,131 @@
+From b5d2124e2e6019ee5d329b49ef6904a0daec74a1 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 24 Feb 2025 22:59:51 -0800
+Subject: [PATCH] patch: fix --no-backup-if-mismatch regression
+
+Problem reported by Sam James in:
+https://lists.gnu.org/archive/html/bug-patch/2025-02/msg00014.html
+https://bugs.gentoo.org/show_bug.cgi?id=949834
+* src/patch.c (backup_if_mismatch_specified): New static var.
+(get_some_switches): Set it.
+(main): Default backup_if_mismatch only if not set on command line.
+* tests/no-backup: New file.
+* tests/Makefile.am (TESTS): Add it.
+---
+ src/patch.c       |  6 ++++-
+ tests/Makefile.am |  1 +
+ tests/no-backup   | 56 +++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 62 insertions(+), 1 deletion(-)
+ create mode 100644 tests/no-backup
+
+diff --git a/src/patch.c b/src/patch.c
+index 6c460f7..e4d0524 100644
+--- a/src/patch.c
++++ b/src/patch.c
+@@ -118,6 +118,7 @@ static bool merge;
+ static enum diff reject_format = NO_DIFF;  /* automatic */
+ static bool make_backups;
+ static bool backup_if_mismatch;
++static bool backup_if_mismatch_specified;
+ static char const *version_control;
+ static char const *version_control_context;
+ static bool remove_empty_files;
+@@ -196,7 +197,8 @@ main (int argc, char **argv)
+     if (set_utc && setenv ("TZ", "UTC0", 1) < 0)
+       pfatal ("setenv");
+ 
+-    backup_if_mismatch = ! posixly_correct;
++    if (!backup_if_mismatch_specified)
++      backup_if_mismatch = !posixly_correct;
+     if (make_backups | backup_if_mismatch)
+       backup_type = get_version (version_control_context, version_control);
+ 
+@@ -1050,9 +1052,11 @@ get_some_switches (int argc, char **argv)
+ 		usage (stdout, EXIT_SUCCESS);
+ 	    case CHAR_MAX + 5:
+ 		backup_if_mismatch = true;
++		backup_if_mismatch_specified = true;
+ 		break;
+ 	    case CHAR_MAX + 6:
+ 		backup_if_mismatch = false;
++		backup_if_mismatch_specified = true;
+ 		break;
+ 	    case CHAR_MAX + 7:
+ 		posixly_correct = true;
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 43ddf66..acb449a 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -50,6 +50,7 @@ TESTS = \
+ 	mixed-patch-types \
+ 	munged-context-format \
+ 	need-filename \
++	no-backup \
+ 	no-mode-change-git-diff \
+ 	no-newline-triggers-assert \
+ 	preserve-c-function-names \
+diff --git a/tests/no-backup b/tests/no-backup
+new file mode 100644
+index 0000000..57b73fa
+--- /dev/null
++++ b/tests/no-backup
+@@ -0,0 +1,56 @@
++# Copyright 2025 Free Software Foundation, Inc.
++#
++# Copying and distribution of this file, with or without modification,
++# in any medium, are permitted without royalty provided the copyright
++# notice and this notice are preserved.
++
++# Test the --no-backup-if-mismatch option
++
++. $srcdir/test-lib.sh
++
++require cat
++use_local_patch
++use_tmpdir
++
++# ==============================================================
++
++cat >my_file <<'EOF'
++/* ... */
++void baz();
++
++
++void baz() {
++	/* ... */
++}
++
++int main() {
++	int foo;
++	int bar;
++
++	/* ... */
++	baz();
++}
++EOF
++
++cat >my_file.patch <<'EOF'
++--- my_file	2025-02-16 11:22:12.881765792 +0000
+++++ my_file_new	2025-02-16 11:22:12.881796732 +0000
++@@ -2,7 +2,7 @@
++ void baz();
++
++ void baz() {
++-	/* ... */
+++	// ...
++ }
++
++ int main() {
++EOF
++
++unset POSIXLY_CORRECT
++
++check 'patch -N --no-backup-if-mismatch <my_file.patch || echo "Status: $?"' <<'EOF'
++patching file my_file
++Hunk #1 succeeded at 3 with fuzz 1 (offset 1 line).
++EOF
++
++ncheck 'test ! -f my_file.orig'
+-- 
+2.45.3
+

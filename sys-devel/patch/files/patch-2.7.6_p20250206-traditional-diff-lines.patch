@@ -1,0 +1,114 @@
+From 29fced6251928e6334fa15fd28bf2c198acd4cd4 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Wed, 26 Feb 2025 16:44:48 -0800
+Subject: [PATCH 1/2] Count traditional diff pattern lines correctly
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes a bug I introduced on Thu Sep 5 16:37:50 2024 -0700.
+Problem reported by Petr Vaněk in:
+https://lists.gnu.org/archive/html/bug-patch/2025-02/msg00017.html
+* src/pch.c (another_hunk): Fix method for counting number
+of lines in a traditional diff hunk.
+---
+ src/pch.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/pch.c b/src/pch.c
+index 63c9a0c..d9f5c61 100644
+--- a/src/pch.c
++++ b/src/pch.c
+@@ -1765,9 +1765,10 @@ another_hunk (enum diff difftype, bool rev)
+ 	if (*s == ',') {
+ 	    idx_t last;
+ 	    s = scan_linenum (s + 1, &last);
+-	    if (p_first >= IDX_MAX - p_ptrn_lines)
++	    ptrdiff_t diff = last - p_first;
++	    if (! (-1 <= diff && diff < IDX_MAX))
+ 	      malformed ();
+-	    p_ptrn_lines += 1 - p_first;
++	    p_ptrn_lines = diff + 1;
+ 	}
+ 	else
+ 	    p_ptrn_lines = (*s != 'a');
+-- 
+2.45.3
+
+
+From b3d0c933389208ccac795a1b517c5a8b11cc012e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Wed, 26 Feb 2025 16:44:48 -0800
+Subject: [PATCH 2/2] Regression in commit abe92e8010ab affecting MariaDB tests
+
+I have disovered a regression in commit abe92e8010ab ("Prefer idx_t,
+ptrdiff_t to lin") while I was running MariaDB tests. The regression is
+related to a diff file [1], where the patch fails to apply it with
+following error:
+
+  patch: **** '---' expected at line 2 of patch
+
+To illustrate the issue, I have attached a git patch containing a
+testcase with simplified reproducer.
+
+[1] https://github.com/MariaDB/server/blob/mariadb-10.6.21/mysql-test/suite/innodb/r/innodb-wl5522%2Cstrict_crc32.rdiff file
+---
+ tests/Makefile.am             |  1 +
+ tests/regression-abe92e8010ab | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+)
+ create mode 100644 tests/regression-abe92e8010ab
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index acb449a..8f1a248 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -57,6 +57,7 @@ TESTS = \
+ 	preserve-mode-and-timestamp \
+ 	quoted-filenames \
+ 	read-only-files \
++	regression-abe92e8010ab \
+ 	reject-format \
+ 	remember-backup-files \
+ 	remember-reject-files \
+diff --git a/tests/regression-abe92e8010ab b/tests/regression-abe92e8010ab
+new file mode 100644
+index 0000000..0e11e34
+--- /dev/null
++++ b/tests/regression-abe92e8010ab
+@@ -0,0 +1,33 @@
++. $srcdir/test-lib.sh
++
++require cat
++use_local_patch
++use_tmpdir
++
++cat > f <<EOF
++1
++2
++test:
++a
++4
++EOF
++
++cat > f.diff <<EOF
++2,3c2
++< test:
++< a
++---
++> 3
++EOF
++
++check 'patch f < f.diff' <<EOF
++patching file f
++Hunk #1 succeeded at 3 (offset 1 line).
++EOF
++
++check 'cat f' <<EOF
++1
++2
++3
++4
++EOF
+-- 
+2.45.3
+
