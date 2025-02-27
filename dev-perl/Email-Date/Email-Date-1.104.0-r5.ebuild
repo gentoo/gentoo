@@ -15,7 +15,6 @@ KEYWORDS="amd64 ppc ppc64 x86"
 RDEPEND="
 	>=dev-perl/Email-Abstract-2.13.1
 	>=dev-perl/Email-Date-Format-1.0.0
-	>=virtual/perl-Time-Piece-1.80.0
 "
 BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
