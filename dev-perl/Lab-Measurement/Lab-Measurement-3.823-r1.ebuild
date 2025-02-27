@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,6 @@ RDEPEND="
 	virtual/perl-Thread-Semaphore
 	virtual/perl-Time-HiRes
 	dev-perl/Time-Monotonic
-	virtual/perl-Time-Piece
 	>=dev-perl/Try-Tiny-0.220.0
 	>=dev-perl/YAML-LibYAML-0.410.0
 	virtual/perl-autodie
