@@ -1,0 +1,18 @@
+Remove one forgoten K&R function definition
+https://bugs.gentoo.org/880525
+--- a/eb/binary.c	2025-02-27 15:00:13.585242692 +0400
++++ b/eb/binary.c	2025-02-27 15:02:39.112239956 +0400
+@@ -923,12 +923,7 @@
+  * Read binary data.
+  */
+ EB_Error_Code
+-eb_read_binary(book, binary_max_length, binary, binary_length)
+-    EB_Book *book;
+-    size_t binary_max_length;
+-    char *binary;
+-    ssize_t *binary_length;
+-
++eb_read_binary(EB_Book *book, size_t binary_max_length, char *binary, ssize_t *binary_length)
+ {
+     EB_Error_Code error_code;
+ 
