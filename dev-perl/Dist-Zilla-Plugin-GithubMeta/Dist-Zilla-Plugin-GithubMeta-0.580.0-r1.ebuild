@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-perl/Dist-Zilla-4.101.582
 	dev-perl/File-pushd
-	virtual/perl-IPC-Cmd
 	>=dev-perl/Moose-1.70.0
 	>=dev-perl/MooseX-Types-URI-0.30.0
 	dev-perl/Try-Tiny
