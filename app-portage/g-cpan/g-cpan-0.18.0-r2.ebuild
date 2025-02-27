@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,6 @@ COMMON_DEPEND="
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
 	dev-perl/Log-Agent
-	virtual/perl-Memoize
 	virtual/perl-IO
 	dev-perl/Path-Tiny
 	dev-perl/Shell-EnvImporter
