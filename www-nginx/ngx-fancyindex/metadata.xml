@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-fancyindex NGINX module makes possible the generation of file listings, like the
+		built-in autoindex module does, but adding a touch of style. This is possible because the
+		module allows a certain degree of customization of the generated content:
+
+		* Custom headers, either local or stored remotely.
+		* Custom footers, either local or stored remotely.
+		* Add your own CSS style rules.
+		* Allow choosing to sort elements by name (default), modification time, or size; both
+		ascending (default), or descending.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/aperezdc/ngx-fancyindex/issues</bugs-to>
+		<remote-id type="github">aperezdc/ngx-fancyindex</remote-id>
+	</upstream>
+</pkgmetadata>

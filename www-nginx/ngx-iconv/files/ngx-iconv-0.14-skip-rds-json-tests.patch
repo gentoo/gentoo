@@ -1,0 +1,30 @@
+From f9adf29df987a0c2d067e43fc4a6b43aabb42f26 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Thu, 13 Feb 2025 19:52:15 +0100
+Subject: [PATCH] bugs.t: skip test relying on rds_json
+
+libdrizzle, a dependency of rds-json-nginx-module, is not packaged by
+Gentoo.
+
+This commit skips the test relying on rds-json-nginx-module.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ t/bugs.t | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/t/bugs.t b/t/bugs.t
+index 8d05e43..82f846e 100644
+--- a/t/bugs.t
++++ b/t/bugs.t
+@@ -16,6 +16,7 @@ run_tests();
+ __DATA__
+ 
+ === TEST 1: used with rds_json
++--- SKIP
+ --- config
+     location /foo {
+         rds_json_ret 100 '你好';
+-- 
+2.45.3
+
