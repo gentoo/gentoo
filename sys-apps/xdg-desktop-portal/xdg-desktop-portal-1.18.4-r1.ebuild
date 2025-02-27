@@ -13,7 +13,7 @@ SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="geolocation flatpak seccomp systemd test"
 RESTRICT="!test? ( test )"
 # Upstream expect flatpak to be used w/ seccomp and flatpak needs bwrap anyway
@@ -99,6 +99,8 @@ src_install() {
 	# for minimalist WMs etc.
 	insinto /usr/share/xdg-desktop-portal
 	newins "${FILESDIR}"/default-portals.conf portals.conf
+	exeinto /etc/user/init.d
+	newexe "${FILESDIR}"/xdg-desktop-portal.initd xdg-desktop-portal
 }
 
 pkg_postinst() {
