@@ -29,7 +29,6 @@ BDEPEND="
 		virtual/perl-Data-Dumper
 		virtual/perl-Test
 		virtual/perl-Test-Simple
-		virtual/perl-Time-Piece
 	)
 "
 
