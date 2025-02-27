@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,6 @@ CRAZYDEPS="
 	virtual/perl-MIME-Base64
 	dev-perl/Module-Build
 	dev-perl/Module-Signature
-	virtual/perl-Net-Ping
 	virtual/perl-Parse-CPAN-Meta
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-Socket
