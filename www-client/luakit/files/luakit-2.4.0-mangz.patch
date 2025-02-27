@@ -1,0 +1,48 @@
+diff --git a/Makefile b/Makefile
+index b0cf8fed..0a7e7ced 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@ EXT_OBJS = $(foreach obj,$(EXT_SRCS:.c=.o),$(obj))
+ # Must be kept in sync with doc/docgen.ld
+ DOC_SRCS = $(filter-out lib/markdown.lua lib/lousy/init.lua,$(shell for d in doc/luadoc lib common/clib; do find $$d -type f; done)) tests/lib.lua
+ 
+-all: options newline luakit luakit.1 luakit.so apidoc
++all: options newline luakit luakit.1.gz luakit.so apidoc
+ 
+ options:
+ 	@echo luakit build options:
+@@ -77,6 +77,9 @@ luakit.so: $(EXT_OBJS)
+ luakit.1: luakit.1.in
+ 	@sed "s|LUAKITVERSION|$(VERSION)|" $< > $@
+ 
++luakit.1.gz: luakit.1
++	@gzip -c $< > $@
++
+ doc/apidocs/index.html: $(DOC_SRCS) $(wildcard build-utils/docgen/*)
+ 	rm -rf doc/apidocs
+ 	mkdir doc/apidocs
+@@ -88,7 +91,7 @@ doc: buildopts.h $(THEAD) $(TSRC)
+ 	doxygen -s doc/luakit.doxygen
+ 
+ clean:
+-	rm -rf doc/apidocs doc/html luakit $(OBJS) $(EXT_OBJS) $(TSRC) $(THEAD) buildopts.h luakit.1 luakit.so
++	rm -rf doc/apidocs doc/html luakit $(OBJS) $(EXT_OBJS) $(TSRC) $(THEAD) buildopts.h luakit.1.gz luakit.so
+ 
+ install: all
+ 	install -d $(DESTDIR)$(DOCDIR)/classes
+@@ -115,13 +118,13 @@ install: all
+ 	install -d $(DESTDIR)$(APPDIR)
+ 	install -m644 extras/luakit.desktop $(DESTDIR)$(APPDIR)
+ 	install -d $(DESTDIR)$(MANPREFIX)/man1/
+-	install -m644 luakit.1 $(DESTDIR)$(MANPREFIX)/man1/
++	install -m644 luakit.1.gz $(DESTDIR)$(MANPREFIX)/man1/
+ 	install -d $(DESTDIR)$(PREFIX)/share/luakit/resources/icons
+ 	for i in resources/icons/*; do install -m644 "$$i" "$(DESTDIR)$(PREFIX)/share/luakit/resources/icons"; done
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(PREFIX)/bin/luakit $(DESTDIR)$(PREFIX)/share/luakit $(DESTDIR)$(PREFIX)/lib/luakit
+-	rm -rf $(DESTDIR)$(MANPREFIX)/man1/luakit.1 $(DESTDIR)$(XDGPREFIX)/luakit
++	rm -rf $(DESTDIR)$(MANPREFIX)/man1/luakit.1.gz $(DESTDIR)$(XDGPREFIX)/luakit
+ 	rm -rf $(DESTDIR)$(APPDIR)/luakit.desktop $(DESTDIR)$(PIXMAPDIR)/luakit.png
+ 
+ tests/util.so: tests/util.c Makefile
