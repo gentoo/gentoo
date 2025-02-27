@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/950271
+https://gcc.gnu.org/PR119016
+https://marc.info/?l=subversion-dev&m=174056933428992&w=2
+
+Always take the safe path. It vectorises with GCC 15 at least anyway.
+--- a/subversion/include/svn_types.h
++++ b/subversion/include/svn_types.h
+@@ -125,15 +125,7 @@ extern "C" {
+  *
+  * @since New in 1.7.
+  */
+-#ifndef SVN_UNALIGNED_ACCESS_IS_OK
+-# if defined(_M_IX86) || defined(i386) \
+-     || defined(_M_X64) || defined(__x86_64) \
+-     || defined(__powerpc__) || defined(__ppc__)
+-#  define SVN_UNALIGNED_ACCESS_IS_OK 1
+-# else
+ #  define SVN_UNALIGNED_ACCESS_IS_OK 0
+-# endif
+-#endif
+ 
+ 
+ 
