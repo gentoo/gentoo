@@ -1,6 +1,13 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
+# Filip Kobierski <fkobi@pm.me> (2025-02-27)
+# Most desktop users will get doxygen because a USE=doc dep.
+# With USE=gui, which is the default for this profile, it pulls in
+# qtbase with many dependencies and I doubt it will be used.
+app-text/doxygen -gui
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-03-07)
 # Required by kde-frameworks/kio:6
 dev-qt/qtbase libproxy
