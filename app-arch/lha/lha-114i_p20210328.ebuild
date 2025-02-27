@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_COMMIT="26950220c9c7590fd603ecaa54a12a52371affed"
 
@@ -24,6 +24,11 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-cflags -std=gnu17 #bug #943900
+	econf
 }
 
 src_install() {
