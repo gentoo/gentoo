@@ -49,6 +49,7 @@ CMAKE_SKIP_TESTS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.8.0-wayland.xml-1.23.0.patch
+	"${FILESDIR}"/${PN}-6.8.2-QTBUG-127821.patch
 )
 
 src_configure() {
