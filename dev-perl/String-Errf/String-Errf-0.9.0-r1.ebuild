@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	>=dev-perl/String-Formatter-0.102.81
 	dev-perl/Sub-Exporter
-	virtual/perl-Time-Piece
 	virtual/perl-parent
 "
 
