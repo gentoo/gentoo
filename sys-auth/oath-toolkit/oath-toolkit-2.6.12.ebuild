@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit pam
+inherit libtool pam
 
 DESCRIPTION="Toolkit for using one-time password authentication with HOTP/TOTP algorithms"
 HOMEPAGE="https://www.nongnu.org/oath-toolkit/"
@@ -38,6 +38,11 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 src_prepare() {
 	default
+	elibtoolize
+	# upstream has a gdoc.mk, which declares that Makefile.am -> Makefile.in has a rebuild rule on:
+	#    $(top_builddir)/configure
+	# which is baffling and also totally breaks elibtoolize. Munge the timestamps into forgetting about this.
+	touch */man/Makefile.gdoc */man/Makefile.in || die
 
 	# After patching, we have to fix the mtime on libpskc/global.c so
 	# that it doesn't cause Makefile.gdoc to be rebuilt so that it
