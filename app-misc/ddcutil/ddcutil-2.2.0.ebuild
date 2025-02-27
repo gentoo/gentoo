@@ -31,7 +31,6 @@ RDEPEND="
 	)
 	user-permissions? (
 		acct-group/i2c
-		usb-monitor? ( acct-group/video )
 	)
 	X? (
 		x11-libs/libXrandr
@@ -86,9 +85,6 @@ src_install() {
 	default
 	if use user-permissions; then
 		udev_dorules data/usr/lib/udev/rules.d/60-ddcutil-i2c.rules
-		if use usb-monitor; then
-			udev_dorules data/usr/lib/udev/rules.d/60-ddcutil-usb.rules
-		fi
 	fi
 }
 
@@ -99,14 +95,6 @@ pkg_postinst() {
 		einfo "Restart the computer or reload the i2c-dev module to activate"
 		einfo "the new udev rule."
 		einfo "For more information read: http://www.ddcutil.com/i2c_permissions/"
-
-		if use usb-monitor; then
-			einfo "To allow non-root users access to USB monitors, add those users"
-			einfo "to the video group: usermod -aG video user"
-			einfo "Restart the computer, reload the hiddev and hidraw modules, or replug"
-			einfo "the monitor to activate the new udev rule."
-			einfo "For more information read: http://www.ddcutil.com/usb/"
-		fi
 
 		udev_reload
 	fi
