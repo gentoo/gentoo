@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1 udev
+inherit dkms udev
 
 DESCRIPTION="r8152 driver for Realtek USB FE / GBE / 2.5G Gaming Ethernet Family Controller"
 # Using github readme as homepage as the realtek page has changed location twice in six months.
@@ -37,16 +37,16 @@ src_compile() {
 		CONFIG_CTAP_SHORT="$(usex center-tap-short on off)"
 	)
 
-	linux-mod-r1_src_compile
+	dkms_src_compile --no-kernelrelease
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 	udev_dorules 50-usb-realtek-net.rules
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 }
 
