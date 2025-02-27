@@ -34,7 +34,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 	X? ( x11-libs/libXpm )
 	hyperspec? ( dev-lisp/hyperspec )
-	berkdb? ( sys-libs/db:4.8 )
+	berkdb? ( sys-libs/db:5.3 )
 "
 DEPEND="
 	${RDEPEND}
@@ -44,6 +44,7 @@ BDEPEND="X? ( x11-misc/imake )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-after_glibc_cfree_bdb.patch
+	"${FILESDIR}"/"${P}"-gdbm_and_bdb5.3.patch
 )
 
 BUILDDIR="builddir"
@@ -83,7 +84,9 @@ src_configure() {
 	# Temporary workaround for bug #932564 with GCC 15
 	# This can be dropped with a new release.
 	strip-flags
-	append-flags -fno-tree-dce -fno-tree-dse -fno-tree-pta
+	tc-is-gcc && {
+		append-flags -fno-tree-dce -fno-tree-dse -fno-tree-pta
+	}
 
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/856103
@@ -130,7 +133,7 @@ src_configure() {
 	fi
 	if use berkdb; then
 		enable_modules berkeley-db
-		append-cppflags -I"${EPREFIX}"/usr/include/db4.8
+		append-cppflags -I"${EPREFIX}"/usr/include/db5.3
 	fi
 	use dbus && enable_modules dbus
 	use fastcgi && enable_modules fastcgi
