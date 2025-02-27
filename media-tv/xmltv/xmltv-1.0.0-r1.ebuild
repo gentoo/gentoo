@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,6 @@ RDEPEND="
 	dev-perl/XML-Twig
 	dev-perl/XML-Writer
 	dev-perl/Unicode-String
-	virtual/perl-Memoize
 	virtual/perl-Storable
 	virtual/perl-IO-Compress
 	ar? (
