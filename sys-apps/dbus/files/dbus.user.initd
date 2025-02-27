@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+supervisor=supervise-daemon
+dbus_socket="${XDG_RUNTIME_DIR}/bus"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$dbus_socket"
+
+description="An IPC message bus daemon"
+command="/usr/bin/dbus-daemon"
+command_args="--session --syslog --nofork --address ${DBUS_SESSION_BUS_ADDRESS}"
+
+extra_started_commands="reload"
+
+stop_post() {
+	[ ! -S "${dbus_socket}" ] || rm -f "${dbus_socket}"
+}
+
+reload() {
+	ebegin "Reloading D-BUS messagebus config"
+	dbus-send --print-reply --system --type=method_call \
+			--dest=org.freedesktop.DBus \
+			/ org.freedesktop.DBus.ReloadConfig > /dev/null
+	eend $?
+}
