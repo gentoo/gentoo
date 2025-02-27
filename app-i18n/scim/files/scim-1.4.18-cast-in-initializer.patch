@@ -1,0 +1,38 @@
+https://github.com/scim-im/scim/pull/44
+
+From b7d38add13fea31a1153922269670d2a51ebd6f1 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 25 Feb 2025 18:07:50 +0800
+Subject: [PATCH] extras/panel/scim_panel_gtk.cpp: fix build with clang19
+
+clang 19 report:
+
+  error: type 'gdouble' (aka 'double') cannot be narrowed to 'guint16' (aka 'unsigned short') in initializer list
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ extras/panel/scim_panel_gtk.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/extras/panel/scim_panel_gtk.cpp b/extras/panel/scim_panel_gtk.cpp
+index 3fecc01..e1489dc 100644
+--- a/extras/panel/scim_panel_gtk.cpp
++++ b/extras/panel/scim_panel_gtk.cpp
+@@ -2560,10 +2560,10 @@ create_pango_attrlist (const String        &mbs,
+     guint wlen = g_utf8_strlen (mbs.c_str (), mbs.length ());
+ 
+ #if GTK_CHECK_VERSION(3, 0, 0)
+-    guint16 _normal_bg_rgb[] = { 65536*_normal_bg.red, 65536*_normal_bg.green, 65536*_normal_bg.blue };
+-    guint16 _active_bg_rgb[] = { 65536*_active_bg.red, 65536*_active_bg.green, 65536*_active_bg.blue };
+-    guint16 _normal_text_rgb[] = { 65536*_normal_text.red, 65536*_normal_text.green, 65536*_normal_text.blue };
+-    guint16 _active_text_rgb[] = { 65536*_active_text.red, 65536*_active_text.green, 65536*_active_text.blue };
++    guint16 _normal_bg_rgb[] = { (guint16)(65536*_normal_bg.red), (guint16)(65536*_normal_bg.green), (guint16)(65536*_normal_bg.blue) };
++    guint16 _active_bg_rgb[] = { (guint16)(65536*_active_bg.red), (guint16)(65536*_active_bg.green), (guint16)(65536*_active_bg.blue) };
++    guint16 _normal_text_rgb[] = { (guint16)(65536*_normal_text.red), (guint16)(65536*_normal_text.green), (guint16)(65536*_normal_text.blue) };
++    guint16 _active_text_rgb[] = { (guint16)(65536*_active_text.red), (guint16)(65536*_active_text.green), (guint16)(65536*_active_text.blue) };
+ #else
+     guint16 _normal_bg_rgb[] = { _normal_bg.red, _normal_bg.green, _normal_bg.blue };
+     guint16 _active_bg_rgb[] = { _active_bg.red, _active_bg.green, _active_bg.blue };
+-- 
+2.45.2
+
