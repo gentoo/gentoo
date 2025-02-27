@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-27)
+# We have collected a lot of barely used Perl virtuals over time
+# (they effectively only make sense with version dependencies).
+# Time to clean up. In ebuilds, just depend on dev-lang/perl.
+# The following are masked for eventual removal:
+virtual/perl-Net-Ping
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-26)
 # Last release in 2005, last commit in 2013, dead as can be - does not
 # start, does not build, bugs #914927, #927337, #946657.
