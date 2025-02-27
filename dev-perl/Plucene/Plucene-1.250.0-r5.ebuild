@@ -24,7 +24,6 @@ RDEPEND="
 	dev-perl/Lingua-Stem
 	>=virtual/perl-Scalar-List-Utils-1.130.0
 	>=dev-perl/Tie-Array-Sorted-1.100.0
-	virtual/perl-Time-Piece
 	dev-perl/Encode-compat
 	dev-perl/File-Slurp
 	dev-perl/IO-stringy
