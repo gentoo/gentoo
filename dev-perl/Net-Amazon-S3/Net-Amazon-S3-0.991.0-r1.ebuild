@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,6 @@ RDEPEND="
 	dev-perl/Sub-Override
 	dev-perl/Term-Encoding
 	dev-perl/Term-ProgressBar-Simple
-	virtual/perl-Time-Piece
 	dev-perl/URI
 	dev-perl/VM-EC2-Security-CredentialCache
 	dev-perl/XML-LibXML
