@@ -1,0 +1,65 @@
+Gentoo issue: https://bugs.gentoo.org/949910
+Upstream issue: https://gitlab.gnome.org/GNOME/gimp/-/issues/12904
+
+From c3bc4e53363bdad44f01826f665d88c48fcedd99 Mon Sep 17 00:00:00 2001
+From: Jehan <jehan@girinstud.io>
+Date: Mon, 24 Feb 2025 18:13:09 +0100
+Subject: [PATCH] Issue #12904: make debugging self with gdb optional with
+ -Ddebug-self-in-build.
+
+Some people reported cases where gdb doesn't even seem to understand
+Python scripts (the error in #12904 implies it is looking for standard
+gdb commands, because apparently -x option allows both styles).
+Others had issues in sandbox building (#12956).
+
+I don't really want to spend too much time understanding each case,
+especially as it's a self-debugging tool, not absolutely necessary for a
+successful compilation.
+
+So let's just make this optional, and default to "false".
+---
+ meson.build            | 3 +++
+ meson_options.txt      | 2 ++
+ tools/in-build-gimp.sh | 2 +-
+ 3 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 5fb07c6f13..2cfd7acb89 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1959,6 +1959,9 @@ subdir('app-tools')
+ gimp_run_env=environment()
+ gimp_run_env.set('GIMP_GLOBAL_BUILD_ROOT',  meson.global_build_root())
+ gimp_run_env.set('GIMP_GLOBAL_SOURCE_ROOT', meson.global_source_root())
++if get_option('debug-self-in-build')
++ gimp_run_env.set('GIMP_DEBUG_SELF', '1')
++endif
+ 
+ if meson.can_run_host_binaries() and have_gobject_introspection
+   if enable_console_bin
+diff --git a/meson_options.txt b/meson_options.txt
+index b9da5211dd..f6adb1313d 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -66,3 +66,5 @@ option('vector-icons',      type: 'boolean', value: true,   description: 'Use ve
+ option('vala',              type: 'feature', value: 'auto', description: 'Build VAPI and Vala plugins')
+ option('javascript',        type: 'feature', value: 'auto', description: 'Install Javascript plug-ins')
+ option('lua',               type: 'boolean', value: false,  description: 'Install Lua plug-ins (experimental)')
++
++option('debug-self-in-build', type: 'boolean', value: false, description: 'Run in-build GIMP within gdb for debugging purpose')
+diff --git a/tools/in-build-gimp.sh b/tools/in-build-gimp.sh
+index 913fd19c80..878e351ccc 100755
+--- a/tools/in-build-gimp.sh
++++ b/tools/in-build-gimp.sh
+@@ -24,7 +24,7 @@ if [ -n "$GIMP_TEMP_UPDATE_RPATH" ]; then
+   unset IFS
+ fi
+ 
+-if command -v gdb; then
++if [ -n "$GIMP_DEBUG_SELF" ] && command -v gdb; then
+   echo RUNNING: cat /dev/stdin "|" gdb --batch -x "$GIMP_GLOBAL_SOURCE_ROOT/tools/debug-in-build-gimp.py" --args $GIMP_SELF_IN_BUILD "$@"
+   cat /dev/stdin | gdb --return-child-result --batch -x "$GIMP_GLOBAL_SOURCE_ROOT/tools/debug-in-build-gimp.py" --args $GIMP_SELF_IN_BUILD "$@"
+ else
+-- 
+GitLab
+
