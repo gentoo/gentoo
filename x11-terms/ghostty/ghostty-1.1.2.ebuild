@@ -82,7 +82,7 @@ BDEPEND="
 	man? ( virtual/pandoc )
 "
 
-IUSE="+X +adwaita man"
+IUSE="+X +adwaita man pie"
 
 # XXX: Because we set --release=fast below, Zig will automatically strip
 #      the binary. Until Ghostty provides a way to disable the banner while
@@ -105,6 +105,7 @@ src_configure() {
 		-Dgtk-adwaita=$(usex adwaita true false)
 		-Dgtk-x11=$(usex X true false)
 		-Demit-docs=$(usex man true false)
+		-Dpie=$(usex pie true false)
 		-Dversion-string="${PV}"
 		-Demit-terminfo=false
 		-Demit-termcap=false
