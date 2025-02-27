@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,6 @@ RDEPEND="
 	virtual/perl-IO
 	dev-perl/Lingua-Stem
 	>=virtual/perl-Scalar-List-Utils-1.130.0
-	>=virtual/perl-Memoize-1.10.0
 	>=dev-perl/Tie-Array-Sorted-1.100.0
 	virtual/perl-Time-Piece
 	dev-perl/Encode-compat
