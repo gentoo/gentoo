@@ -43,6 +43,7 @@ virtual/perl-Filter-Simple
 virtual/perl-IPC-Cmd
 virtual/perl-Memoize
 virtual/perl-Net-Ping
+virtual/perl-Thread-Queue
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-02-26)
 # Last release in 2005, last commit in 2013, dead as can be - does not
