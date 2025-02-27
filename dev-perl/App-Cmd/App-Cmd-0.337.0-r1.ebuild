@@ -36,7 +36,6 @@ BDEPEND="
 		)
 		virtual/perl-Data-Dumper
 		virtual/perl-File-Spec
-		virtual/perl-IPC-Cmd
 		dev-perl/Test-Fatal
 		>=virtual/perl-Test-Simple-0.960.0
 	)

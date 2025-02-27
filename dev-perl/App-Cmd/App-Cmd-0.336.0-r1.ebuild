@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,6 @@ BDEPEND="
 		)
 		virtual/perl-Data-Dumper
 		virtual/perl-File-Spec
-		virtual/perl-IPC-Cmd
 		dev-perl/Test-Fatal
 		>=virtual/perl-Test-Simple-0.960.0
 	)
