@@ -1,0 +1,328 @@
+https://gitlab.com/libtiff/libtiff/-/issues/652
+https://gitlab.com/libtiff/libtiff/-/issues/656
+https://gitlab.com/libtiff/libtiff/-/merge_requests/673
+
+From 388be62f9e2167ea076579e2605ff8eb91117ad6 Mon Sep 17 00:00:00 2001
+From: Su_Laus <sulau@freenet.de>
+Date: Wed, 30 Oct 2024 21:03:17 +0100
+Subject: [PATCH 1/3] Update test/test_directory.c not to fail on big-endian
+ machines.
+
+Closes #652
+--- a/test/test_directory.c
++++ b/test/test_directory.c
+@@ -1986,9 +1986,12 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+ #define TIFFSeekFile_M(tif, off, whence)                                       \
+     ((*TIFFGetSeekProc(tif))(TIFFClientdata(tif), (off), (whence)));
+ 
+-    /* Code below does only handle Classic-TIFF without swapping". */
++    /* Code below does only handle Classic-TIFF without swapping. */
+     if (!(TIFFIsByteSwapped(tif) || TIFFIsBigTIFF(tif)))
+     {
++        /* Patch nextIFDOffset of IFD2, which is 0, with offset to itself.
++         * This generates an IFD3 without any elements at the end of file.
++         * Reading IFD3 should provoke reading error. */
+         uint64_t ss = TIFFSeekFile_M(tif, offsetBase[2], 0);
+         uint16_t cnt = 0;
+         uint64_t rr = TIFFReadFile_M(tif, &cnt, 2);
+@@ -1998,43 +2001,84 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+         (void)rr;
+ 
+         /* Now there are offsets to four IFDs in the file, where the last one is
+-         * not existing and has a non-valid dircount and entries behind EOF. */
++         * not existing and has a non-valid dircount and entries behind EOF.
++         * For LE-machines dircount is 458 (as offset) and for BE-machines
++         * dircount is zero. */
++#ifdef WORDS_BIGENDIAN
++        fprintf(stderr, "----- Expect error messages about 'Error fetching "
++                        "directory count.' -----\n");
++#else
+         fprintf(stderr, "----- Expect error messages about 'Error fetching "
+                         "directory link.' -----\n");
++#endif
+         /* TIFFNumberOfDirectories() returns 3 */
+         lastdir = TIFFNumberOfDirectories(tif);
+         TIFFSetDirectory(tif, 0);
+         CHECKCURDIRNUM_M(tif, 0, __LINE__);
++
++        /* TIFFSetDirectory(3) fails with error messages:
++         *   TIFFFetchDirectory: test_current_dirnum_incrementing_wl.tif:
++         *   Can not read TIFF directory.
++         *   TIFFReadDirectory: Failed to read directory at offset 458. */
+         fprintf(stderr, "----- Expect error messages about 'Cannot read TIFF "
+                         "directory.' -----\n");
+         if (TIFFSetDirectory(tif, 3))
+         {
+             fprintf(stderr,
+-                    "TIFFSetDirectory(3) for IFD4 was expected to fail but "
++                    "TIFFSetDirectory(3) for IFD3 was expected to fail but "
+                     "succeeded for %s "
+                     "at %d\n",
+                     filename, __LINE__);
+             goto failure;
+         }
++
+         /* Fails in 4.6.0 */
+         CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
+         offsetBase[3] = TIFFCurrentDirOffset(tif);
+ 
+-        /* Point IFD3 to a location within the file, where it has now a
+-         * non-valid dircount=0. */
++        /* Point IFD3 to a location within the file, where it has now:
++         * - for LE-machines a non-valid dircount=0.
++         * - for BE-machines a dircount!=0 and dir is read with errors. */
+         ss = TIFFSeekFile_M(tif, offsetBase[2] + cnt * 12 + 2, 0);
+         wt = (uint32_t)(offsetBase[1] + 8);
+         rr = TIFFWriteFile_M(tif, &wt, 4);
++
++#ifdef WORDS_BIGENDIAN
++        fprintf(stderr, "----- Expect error messages about 'Error fetching "
++                        "directory count.' -----\n");
++#else
+         fprintf(stderr, "----- Expect error messages about 'Error fetching "
+                         "directory link.' -----\n");
++#endif
+         /* TIFFNumberOfDirectories() returns now 4 */
+         lastdir = TIFFNumberOfDirectories(tif);
+         TIFFSetDirectory(tif, 0);
+         CHECKCURDIRNUM_M(tif, 0, __LINE__);
++
++        /* For LE-machines the next TIFFSetDirectory(3) fails with error
++         * messages:
++         *    test_current_dirnum_incrementing_wl.tif: Failed to allocate
++         *    memory for to read TIFF directory (0 elements of 12 bytes each).
++         *    TIFFReadDirectory: Failed to read directory at offset 178.
++         *
++         * For BE-machines, next TIFFSetDirectory(3) results in an error
++         * but that TIFFSetDirectory(3) sets the IFD active. Warning messages:
++         *   TIFFReadDirectory: Warning, Unknown field with tag 1 (0x1)
++         *   encountered.
++         *   MissingRequired: TIFF directory is missing required
++         *   "ImageLength" field.
++         */
++#ifdef WORDS_BIGENDIAN
++        fprintf(stderr,
++                "----- Expect error messages about ' Unknown field with tag 1 "
++                "(0x1) encountered.' AND 'MissingRequired: TIFF directory is "
++                "missing required ImageLength field.' -----\n");
++#else
+         fprintf(stderr,
+                 "----- Expect error messages about 'Failed to allocate "
+                 "memory for to read TIFF directory.' AND 'Failed to read "
+                 "directory ..' -----\n");
++#endif
+         if (TIFFSetDirectory(tif, 3))
+         {
+             fprintf(stderr,
+@@ -2044,8 +2088,13 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+                     filename, __LINE__);
+             goto failure;
+         }
++
+         /* Fails in 4.6.0 */
++#ifdef WORDS_BIGENDIAN
++        CHECKCURDIRNUM_M(tif, (tdir_t)(3), __LINE__);
++#else
+         CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
++#endif
+     }
+ 
+     unlink(filename);
+-- 
+GitLab
+
+
+From e201cd9d944fb18afdb385668008b0eb9d84cc80 Mon Sep 17 00:00:00 2001
+From: Su_Laus <sulau@freenet.de>
+Date: Sat, 16 Nov 2024 10:33:04 +0100
+Subject: [PATCH 2/3] Replace "#ifdef WORDS_BIGENDIAN" by restricting test on
+ little-endian TIFF files with swapping of patch data for BE-machines.
+
+--- a/test/test_directory.c
++++ b/test/test_directory.c
+@@ -1977,8 +1977,8 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+     TIFFSetSubDirectory(tif, 0);
+     CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
+ 
+-/*-- Patch offset of IFD2 to not existing IFD3 without entries.
+- *   Thus TIFFFetchDirectory() will fail. --*/
++    /*-- Patch offset of IFD2 to not existing IFD3 without entries.
++     *   Thus TIFFFetchDirectory() will fail. --*/
+ #define TIFFReadFile_M(tif, buf, size)                                         \
+     ((*TIFFGetReadProc(tif))(TIFFClientdata(tif), (buf), (size)));
+ #define TIFFWriteFile_M(tif, buf, size)                                        \
+@@ -1986,8 +1986,15 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+ #define TIFFSeekFile_M(tif, off, whence)                                       \
+     ((*TIFFGetSeekProc(tif))(TIFFClientdata(tif), (off), (whence)));
+ 
+-    /* Code below does only handle Classic-TIFF without swapping. */
+-    if (!(TIFFIsByteSwapped(tif) || TIFFIsBigTIFF(tif)))
++    /* ---------------------------------------------------------------------
++     * Test IFD index incrementing in case the functions return with certain
++     * errors. To provoke that errors, the file is patched by writing bytes
++     * directly into the file. Therefore, code below does only handle
++     * Classic-TIFF and little-endian files.
++     * The code works also on big endian machines, which have to swap some
++     * directly read/written values.
++     * --------------------------------------------------------------------- */
++    if (!(TIFFIsBigEndian(tif) || TIFFIsBigTIFF(tif)))
+     {
+         /* Patch nextIFDOffset of IFD2, which is 0, with offset to itself.
+          * This generates an IFD3 without any elements at the end of file.
+@@ -1995,23 +2002,22 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+         uint64_t ss = TIFFSeekFile_M(tif, offsetBase[2], 0);
+         uint16_t cnt = 0;
+         uint64_t rr = TIFFReadFile_M(tif, &cnt, 2);
++        if (TIFFIsByteSwapped(tif))
++            TIFFSwabShort(&cnt);
+         ss = TIFFSeekFile_M(tif, offsetBase[2] + cnt * 12 + 2, 0);
+         uint32_t wt = (uint32_t)ss;
++        if (TIFFIsByteSwapped(tif))
++            TIFFSwabLong(&wt);
+         rr = TIFFWriteFile_M(tif, &wt, 4);
+         (void)rr;
+ 
+         /* Now there are offsets to four IFDs in the file, where the last one is
+          * not existing and has a non-valid dircount and entries behind EOF.
+-         * For LE-machines dircount is 458 (as offset) and for BE-machines
+-         * dircount is zero. */
+-#ifdef WORDS_BIGENDIAN
+-        fprintf(stderr, "----- Expect error messages about 'Error fetching "
+-                        "directory count.' -----\n");
+-#else
++         * (dircount is 458 (as offset) */
+         fprintf(stderr, "----- Expect error messages about 'Error fetching "
+                         "directory link.' -----\n");
+-#endif
+-        /* TIFFNumberOfDirectories() returns 3 */
++        /* TIFFNumberOfDirectories() returns 3 and omits the invalid fourth IFD.
++         */
+         lastdir = TIFFNumberOfDirectories(tif);
+         TIFFSetDirectory(tif, 0);
+         CHECKCURDIRNUM_M(tif, 0, __LINE__);
+@@ -2033,52 +2039,41 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+         }
+ 
+         /* Fails in 4.6.0 */
++        /* Reading invalid IFD 3 leads to an error and was not read in.
++         * Therefore, curdir shall be 65535 (non-existing directory) */
+         CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
+         offsetBase[3] = TIFFCurrentDirOffset(tif);
+ 
+-        /* Point IFD3 to a location within the file, where it has now:
+-         * - for LE-machines a non-valid dircount=0.
+-         * - for BE-machines a dircount!=0 and dir is read with errors. */
++        /* Point IFD3 to a location within the file, where it has now for
++         * little-endian TIFF files a non-valid dircount=0, which leads also to
++         * an error and the IFD is not read in. */
+         ss = TIFFSeekFile_M(tif, offsetBase[2] + cnt * 12 + 2, 0);
+         wt = (uint32_t)(offsetBase[1] + 8);
++        // wt = (uint32_t)(ss + 400);
++        if (TIFFIsByteSwapped(tif))
++            TIFFSwabLong(&wt);
+         rr = TIFFWriteFile_M(tif, &wt, 4);
+ 
+-#ifdef WORDS_BIGENDIAN
+-        fprintf(stderr, "----- Expect error messages about 'Error fetching "
+-                        "directory count.' -----\n");
+-#else
+         fprintf(stderr, "----- Expect error messages about 'Error fetching "
+                         "directory link.' -----\n");
+-#endif
+-        /* TIFFNumberOfDirectories() returns now 4 */
++        /* TIFFNumberOfDirectories() returns now 4, because for an IFD linked
++         * list dircount=0 is not treated as an error and there is an offset
++         * (=1) to a next IFD. Then, at the fifth IFD a link error occurs. */
+         lastdir = TIFFNumberOfDirectories(tif);
+         TIFFSetDirectory(tif, 0);
+         CHECKCURDIRNUM_M(tif, 0, __LINE__);
+ 
+-        /* For LE-machines the next TIFFSetDirectory(3) fails with error
+-         * messages:
++        /* TIFFSetDirectory(3) fails with error messages:
+          *    test_current_dirnum_incrementing_wl.tif: Failed to allocate
+          *    memory for to read TIFF directory (0 elements of 12 bytes each).
+          *    TIFFReadDirectory: Failed to read directory at offset 178.
+-         *
+-         * For BE-machines, next TIFFSetDirectory(3) results in an error
+-         * but that TIFFSetDirectory(3) sets the IFD active. Warning messages:
+-         *   TIFFReadDirectory: Warning, Unknown field with tag 1 (0x1)
+-         *   encountered.
+-         *   MissingRequired: TIFF directory is missing required
+-         *   "ImageLength" field.
++         * The IFD 3 is not read in and curdir is set to 65535 (non-existing
++         * directory).
+          */
+-#ifdef WORDS_BIGENDIAN
+-        fprintf(stderr,
+-                "----- Expect error messages about ' Unknown field with tag 1 "
+-                "(0x1) encountered.' AND 'MissingRequired: TIFF directory is "
+-                "missing required ImageLength field.' -----\n");
+-#else
+         fprintf(stderr,
+                 "----- Expect error messages about 'Failed to allocate "
+                 "memory for to read TIFF directory.' AND 'Failed to read "
+                 "directory ..' -----\n");
+-#endif
+         if (TIFFSetDirectory(tif, 3))
+         {
+             fprintf(stderr,
+@@ -2090,11 +2085,7 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+         }
+ 
+         /* Fails in 4.6.0 */
+-#ifdef WORDS_BIGENDIAN
+-        CHECKCURDIRNUM_M(tif, (tdir_t)(3), __LINE__);
+-#else
+         CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
+-#endif
+     }
+ 
+     unlink(filename);
+-- 
+GitLab
+
+
+From b470af83d549e890e4ace55620405d06cff20ae5 Mon Sep 17 00:00:00 2001
+From: Su_Laus <sulau@freenet.de>
+Date: Mon, 18 Nov 2024 19:52:26 +0100
+Subject: [PATCH 3/3] Add two missing TIFFClose() in order to avoid memory
+ leaks. Closes #656
+
+--- a/test/test_directory.c
++++ b/test/test_directory.c
+@@ -1365,6 +1365,7 @@ int test_rewrite_lastdir_offset(unsigned int openMode)
+                 filename, N_DIRECTORIES, count);
+         goto failure;
+     }
++    /* hint: file was closed by count_directories() */
+     unlink(filename);
+     return 0;
+ 
+@@ -1511,6 +1512,8 @@ int test_lastdir_offset(unsigned int openMode)
+             }
+         }
+     }
++    /* hint: files are always closed by count_directories() and
++     * get_dir_offsets() */
+     unlink(filename_optimized);
+     unlink(filename_non_optimized);
+     return 0;
+@@ -2088,6 +2091,7 @@ int test_current_dirnum_incrementing(int testcase, unsigned int openMode)
+         CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
+     }
+ 
++    TIFFClose(tif);
+     unlink(filename);
+     return 0;
+ 
+@@ -2176,6 +2180,7 @@ int test_curdircount_setting(unsigned int openMode)
+         CHECKCURDIRNUM_M(tif, (tdir_t)(-1), __LINE__);
+     }
+ 
++    TIFFClose(tif);
+     unlink(filename);
+     return 0;
+ 
+-- 
+GitLab
