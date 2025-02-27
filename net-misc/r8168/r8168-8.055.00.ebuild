@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 DESCRIPTION="r8168 driver for Realtek 8111/8168 PCI-E NICs"
 HOMEPAGE="https://www.realtek.com/Download/List?cate_id=584"
@@ -37,5 +37,5 @@ src_compile() {
 		ENABLE_S5_KEEP_CURR_MAC=$(usex s5-keep-mac y n)
 	)
 
-	linux-mod-r1_src_compile
+	dkms_src_compile --no-kernelrelease
 }
