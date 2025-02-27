@@ -50,7 +50,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/tiffconf.h
 )
 
-PATCHES=( "${FILESDIR}"/${P}-fix-test-race.patch ) # bug#943020
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-test-race.patch # bug#943020
+	"${FILESDIR}"/${P}-test-directory-big-endian.patch
+)
 
 src_prepare() {
 	default
