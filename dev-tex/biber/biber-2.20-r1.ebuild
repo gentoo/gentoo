@@ -57,7 +57,6 @@ RDEPEND="
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-Writer
 	~dev-tex/biblatex-3.$(ver_cut 2)
-	virtual/perl-IPC-Cmd
 	>=virtual/perl-Unicode-Collate-1.290.0
 "
 DEPEND="
