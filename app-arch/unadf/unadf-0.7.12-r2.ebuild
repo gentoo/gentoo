@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_PN="adflib"
 
@@ -21,6 +21,11 @@ PATCHES=( "${FILESDIR}"/${PN}-0.7.12-CVE-2016-1243_CVE-2016-1244.patch )
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-cflags -std=gnu17 #bug #943902
+	econf
 }
 
 src_install() {
