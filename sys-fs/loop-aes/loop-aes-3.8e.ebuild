@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/jariruusu.asc"
-inherit linux-mod-r1 verify-sig
+inherit dkms verify-sig
 
 MY_P="${PN/aes/AES}-v${PV}"
 
@@ -59,11 +59,11 @@ src_compile() {
 	use keyscrub && modargs+=( KEYSCRUB=y )
 	use cpu_flags_x86_padlock && modargs+=( PADLOCK=y )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	dodoc README
 	dodoc ChangeLog
@@ -75,7 +75,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	einfo
 	einfo "For more instructions take a look at examples in README at:"
