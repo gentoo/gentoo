@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit git-r3 systemd toolchain-funcs
-
-EGIT_REPO_URI="https://github.com/dunst-project/dunst"
+inherit systemd toolchain-funcs
 
 DESCRIPTION="Lightweight replacement for common notification daemons"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
+SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+completions +dunstify wayland +X +xdg"
 
 DEPEND="
