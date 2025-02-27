@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
-	>=dev-perl/TimeDate-1.16
 	>=dev-perl/Email-Abstract-2.13.1
 	>=dev-perl/Email-Date-Format-1.0.0
 	>=virtual/perl-Time-Piece-1.80.0
