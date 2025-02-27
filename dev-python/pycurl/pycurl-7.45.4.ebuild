@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,8 +41,8 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
+		dev-python/flask[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
