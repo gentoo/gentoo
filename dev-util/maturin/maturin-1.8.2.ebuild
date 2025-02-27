@@ -77,6 +77,9 @@ src_prepare() {
 		# uv does not work easily w/ network-sandbox, force virtualenv
 		sed -i 's/"uv"/"uv-not-found"/' tests/common/mod.rs || die
 
+		# increase timeouts for tests (bug #950332)
+		sed -i '/^#\[timeout/s/secs(60)/secs(300)/' tests/run.rs || die
+
 		# used by *git_sdist_generator tests
 		git init -q || die
 		git config --global user.email "larry@gentoo.org" || die
