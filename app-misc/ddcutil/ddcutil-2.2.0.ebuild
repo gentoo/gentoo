@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-no-werror.patch
 	"${FILESDIR}"/${PN}-2.1.4-fix-clang.patch
 	"${FILESDIR}"/${P}-fix-clang.patch
+	"${FILESDIR}"/${P}-fix-build-without-X.patch
 )
 
 pkg_pretend() {
