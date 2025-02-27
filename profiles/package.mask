@@ -38,6 +38,7 @@
 # (they effectively only make sense with version dependencies).
 # Time to clean up. In ebuilds, just depend on dev-lang/perl.
 # The following are masked for eventual removal:
+virtual/perl-IPC-Cmd
 virtual/perl-Memoize
 virtual/perl-Net-Ping
 
