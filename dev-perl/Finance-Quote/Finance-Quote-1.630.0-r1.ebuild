@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,6 @@ RDEPEND="
 	dev-perl/Spreadsheet-XLSX
 	dev-perl/String-Util
 	dev-perl/Text-Template
-	virtual/perl-Time-Piece
 	dev-perl/Try-Tiny
 	>=dev-perl/URI-3.310.0
 	dev-perl/Web-Scraper
