@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1 systemd verify-sig
+inherit dkms systemd verify-sig
 
 DESCRIPTION="Linux Kernel Runtime Guard"
 HOMEPAGE="https://lkrg.org"
@@ -41,7 +41,7 @@ src_compile() {
 		P_KVER="${KV_FULL}"
 		P_KERNEL="${KERNEL_DIR}"
 	)
-	linux-mod-r1_src_compile
+	dkms_src_compile
 
 	emake LDFLAGS="${LDFLAGS}" CFLAGS="${CFLAGS}" -C logger
 }
@@ -50,7 +50,7 @@ src_install() {
 	# logger target not included by all
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${ED}" -C logger install
 
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	systemd_dounit scripts/bootup/systemd/lkrg.service
 	newinitd scripts/bootup/openrc/lkrg lkrg.initd
