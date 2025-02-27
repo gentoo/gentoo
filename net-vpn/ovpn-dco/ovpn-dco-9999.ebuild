@@ -1,9 +1,9 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic linux-mod-r1
+inherit dkms flag-o-matic
 
 DESCRIPTION="OpenVPN Data Channel Offload in the linux kernel"
 HOMEPAGE="https://github.com/OpenVPN/ovpn-dco"
@@ -47,11 +47,11 @@ src_compile() {
 	[[ ${PV} != 9999 ]] && modargs+=( REVISION="${PV}" )
 	use debug && modargs+=( DEBUG=1 )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	insinto /usr/share/${PN}
 	doins -r include
