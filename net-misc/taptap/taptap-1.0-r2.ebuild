@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit edo toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Program to link two /dev/net/tun to form virtual ethernet"
 HOMEPAGE="https://grumpf.hope-2000.org/"
@@ -13,15 +13,16 @@ S="${WORKDIR}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
+PATCHES=( "${FILESDIR}/${P}-missing-include.patch" )
 
 src_unpack() {
-	cp "${DISTDIR}"/${P}.c ${P}.c || die
+	cp "${DISTDIR}/${P}.c" "${PN}.c" || die
 }
 
 src_compile() {
-	edo $(tc-getCC) ${CFLAGS} ${LDFLAGS} -o ${PN} ${P}.c
+	emake CC="$(tc-getCC)" "${PN}"
 }
 
 src_install() {
-	dobin ${PN}
+	dobin "${PN}"
 }
