@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND=">=sci-physics/fastjet-3.4.1"
+DEPEND=">=sci-physics/fastjet-3.4.1[plugins]"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
