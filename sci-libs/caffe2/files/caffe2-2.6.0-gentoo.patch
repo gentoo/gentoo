@@ -1,0 +1,156 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -984,12 +984,11 @@ endif()
+ # third_party/FBGEMM
+ include(cmake/public/utils.cmake)
+ if(NOT MSVC)
+-  string(APPEND CMAKE_CXX_FLAGS " -O2 -fPIC")
++  string(APPEND CMAKE_CXX_FLAGS " -O2")
+   # Eigen fails to build with some versions, so convert this to a warning
+   # Details at http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1459
+   string(APPEND CMAKE_CXX_FLAGS " -Wall")
+   string(APPEND CMAKE_CXX_FLAGS " -Wextra")
+-  append_cxx_flag_if_supported("-Werror=return-type" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-Werror=non-virtual-dtor" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-Werror=braced-scalar-init" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-Werror=range-loop-construct" CMAKE_CXX_FLAGS)
+@@ -1091,7 +1091,6 @@
+   endif()
+   append_cxx_flag_if_supported("-fno-math-errno" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-fno-trapping-math" CMAKE_CXX_FLAGS)
+-  append_cxx_flag_if_supported("-Werror=format" CMAKE_CXX_FLAGS)
+   if(CMAKE_COMPILER_IS_GNUCXX AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13)
+     append_cxx_flag_if_supported("-Wno-error=dangling-reference" CMAKE_CXX_FLAGS)
+     append_cxx_flag_if_supported("-Wno-error=redundant-move" CMAKE_CXX_FLAGS)
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt
+@@ -323,16 +323,8 @@ set_target_properties(pytorch_qnnpack PROPERTIES PUBLIC_HEADER include/pytorch_q
+ set_target_properties(pytorch_qnnpack PROPERTIES PUBLIC_HEADER include/qnnpack_func.h)
+ 
+ # ---[ Configure clog
+-if(NOT TARGET clog)
+-  set(CLOG_BUILD_TESTS OFF CACHE BOOL "")
+-  set(CLOG_RUNTIME_TYPE "${CPUINFO_RUNTIME_TYPE}" CACHE STRING "")
+-  add_subdirectory(
+-    "${CLOG_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/clog")
+-  # We build static version of clog but a dynamic library may indirectly depend on it
+-  set_property(TARGET clog PROPERTY POSITION_INDEPENDENT_CODE ON)
+-endif()
+-target_link_libraries(pytorch_qnnpack PUBLIC clog)
++find_library(CLOG_LIBRARY NAMES clog REQUIRED)
++target_link_libraries(pytorch_qnnpack PUBLIC ${CLOG_LIBRARY})
+ 
+ # ---[ Configure cpuinfo
+ if(NOT TARGET cpuinfo AND USE_SYSTEM_CPUINFO)
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -87,7 +87,7 @@ endif()
+ # Note: the folders that are being commented out have not been properly
+ # addressed yet.
+ 
+-if(NOT MSVC AND USE_XNNPACK)
++if(FALSE)
+   if(NOT TARGET fxdiv)
+     set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+     set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+@@ -1130,7 +1130,6 @@ if(USE_XPU)
+ endif()
+ 
+ if(NOT MSVC AND USE_XNNPACK)
+-  TARGET_LINK_LIBRARIES(torch_cpu PRIVATE fxdiv)
+ endif()
+ 
+ # ==========================================================
+--- a/cmake/Codegen.cmake
++++ b/cmake/Codegen.cmake
+@@ -64,7 +64,7 @@ if(INTERN_BUILD_ATEN_OPS)
+   if(MSVC)
+     set(OPT_FLAG "/fp:strict ")
+   else(MSVC)
+-    set(OPT_FLAG "-O3 ")
++    set(OPT_FLAG " ")
+     if("${CMAKE_BUILD_TYPE}" MATCHES "Debug")
+       set(OPT_FLAG " ")
+     endif()
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -467,7 +467,9 @@
+       set_property(TARGET pytorch_qnnpack PROPERTY POSITION_INDEPENDENT_CODE ON)
+       set_property(TARGET cpuinfo PROPERTY POSITION_INDEPENDENT_CODE ON)
+       # QNNPACK depends on gemmlowp headers
+-      target_include_directories(pytorch_qnnpack PRIVATE "${CAFFE2_THIRD_PARTY_ROOT}/gemmlowp")
++      find_package(gemmlowp REQUIRED)
++      get_target_property(GEMMLOWP_INCLUDE_DIRS gemmlowp::gemmlowp INTERFACE_INCLUDE_DIRECTORIES)
++      target_include_directories(pytorch_qnnpack PRIVATE ${GEMMLOWP_INCLUDE_DIRS})
+     endif()
+ 
+     list(APPEND Caffe2_DEPENDENCY_LIBS pytorch_qnnpack)
+@@ -556,7 +556,7 @@
+   find_library(microkernels-prod_LIBRARY microkernels-prod)
+   set_property(TARGET XNNPACK PROPERTY IMPORTED_LOCATION "${XNNPACK_LIBRARY}")
+   set_property(TARGET microkernels-prod PROPERTY IMPORTED_LOCATION "${microkernels-prod_LIBRARY}")
+-  if(NOT XNNPACK_LIBRARY or NOT microkernels-prod_LIBRARY)
++  if(FALSE)
+     message(FATAL_ERROR "Cannot find XNNPACK")
+   endif()
+   message("-- Found XNNPACK: ${XNNPACK_LIBRARY}")
+@@ -693,7 +695,7 @@ if(BUILD_TEST OR BUILD_MOBILE_BENCHMARK OR BUILD_MOBILE_TEST)
+ endif()
+ 
+ # ---[ FBGEMM
+-if(USE_FBGEMM)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+   if(NOT DEFINED FBGEMM_SOURCE_DIR)
+     set(FBGEMM_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/fbgemm" CACHE STRING "FBGEMM source directory")
+@@ -745,6 +747,7 @@ if(USE_FBGEMM)
+ endif()
+ 
+ if(USE_FBGEMM)
++  list(APPEND Caffe2_DEPENDENCY_LIBS fbgemm)
+   caffe2_update_option(USE_FBGEMM ON)
+ else()
+   caffe2_update_option(USE_FBGEMM OFF)
+--- a/cmake/External/nnpack.cmake
++++ b/cmake/External/nnpack.cmake
+@@ -56,7 +56,7 @@
+   set(PTHREADPOOL_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/pthreadpool" CACHE STRING "pthreadpool source directory")
+   set(GOOGLETEST_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/googletest" CACHE STRING "Google Test source directory")
+ 
+-  if(NOT TARGET nnpack)
++  if(FALSE)
+     set(NNPACK_BUILD_TESTS OFF CACHE BOOL "")
+     set(NNPACK_BUILD_BENCHMARKS OFF CACHE BOOL "")
+     set(NNPACK_LIBRARY_TYPE "static" CACHE STRING "")
+--- a/cmake/public/utils.cmake
++++ b/cmake/public/utils.cmake
+@@ -422,8 +422,6 @@ function(torch_compile_options libname)
+   endif()
+ 
+   # Use -O2 for release builds (-O3 doesn't improve perf, and -Os results in perf regression)
+-  target_compile_options(${libname} PRIVATE
+-      $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<OR:$<CONFIG:Release>,$<CONFIG:RelWithDebInfo>>>:-O2>)
+ 
+ endfunction()
+ 
+--- a/aten/src/ATen/CMakeLists.txt	2025-02-27 14:23:02.402742165 +0100
++++ b/aten/src/ATen/CMakeLists.txt	2025-02-27 14:23:40.445850718 +0100
+@@ -269,8 +269,6 @@
+ if(USE_CUDA)
+   list(APPEND ATen_CUDA_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/cuda)
+   # Next two lines are needed because TunableOp uses third-party/fmt
+-  list(APPEND ATen_CUDA_INCLUDE $<TARGET_PROPERTY:fmt::fmt-header-only,INTERFACE_INCLUDE_DIRECTORIES>)
+-  list(APPEND ATen_CUDA_DEPENDENCY_LIBS fmt::fmt-header-only)
+   list(APPEND ATen_CUDA_CU_SRCS
+     ${cuda_cu}
+     ${native_cuda_cu}
+@@ -315,8 +313,6 @@
+   list(APPEND ATen_HIP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/composable_kernel/include)
+   list(APPEND ATen_HIP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/composable_kernel/library/include)
+   # Next two lines are needed because TunableOp uses third-party/fmt
+-  list(APPEND ATen_HIP_INCLUDE $<TARGET_PROPERTY:fmt::fmt-header-only,INTERFACE_INCLUDE_DIRECTORIES>)
+-  list(APPEND ATen_HIP_DEPENDENCY_LIBS fmt::fmt-header-only)
+   list(APPEND ATen_HIP_SRCS
+     ${ATen_HIP_SRCS}
+     ${hip_hip}
