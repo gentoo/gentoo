@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,6 @@ RDEPEND="
 	virtual/perl-File-Spec
 	virtual/perl-IO
 	>=virtual/perl-Module-Load-0.100.0
-	virtual/perl-Module-Loaded
 	dev-perl/Color-Library
 	dev-perl/Tie-Sub
 "
