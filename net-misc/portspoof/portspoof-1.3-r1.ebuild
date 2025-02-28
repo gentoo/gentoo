@@ -9,7 +9,6 @@ DESCRIPTION="return SYN+ACK for every port connection attempt"
 HOMEPAGE="https://drk1wi.github.io/portspoof/"
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
