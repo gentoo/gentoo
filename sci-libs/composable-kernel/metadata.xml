@@ -9,9 +9,9 @@
     <email>sci@gentoo.org</email>
     <name>Science Project</name>
   </maintainer>
-	<use>
-		<flag name="profiler">Build and install the Composable Kernal profiler (ckProfiler)</flag>
-	</use>
+  <use>
+    <flag name="profiler">Build and install the Composable Kernal profiler (ckProfiler)</flag>
+  </use>
   <upstream>
     <remote-id type="github">ROCm/composable_kernel</remote-id>
   </upstream>
