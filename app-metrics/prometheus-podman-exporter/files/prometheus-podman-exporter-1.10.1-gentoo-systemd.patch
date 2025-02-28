@@ -1,0 +1,22 @@
+--- a/contrib/systemd/system/prometheus-podman-exporter.service
++++ b/contrib/systemd/system/prometheus-podman-exporter.service
+@@ -2,7 +2,7 @@
+ Description=Prometheus exporter for podman (v4) machine
+ [Service]
+ Restart=on-failure
+-EnvironmentFile=-/etc/sysconfig/prometheus-podman-exporter
++EnvironmentFile=-/etc/default/prometheus-podman-exporter
+ ExecStart=/usr/bin/prometheus-podman-exporter $PODMAN_EXPORTER_OPTS
+ ExecReload=/bin/kill -HUP $MAINPID
+ TimeoutStopSec=20s
+--- a/contrib/systemd/user/prometheus-podman-exporter.service
++++ b/contrib/systemd/user/prometheus-podman-exporter.service
+@@ -2,7 +2,7 @@
+ Description=Prometheus exporter for podman (v4) machine
+ [Service]
+ Restart=on-failure
+-EnvironmentFile=-/etc/sysconfig/prometheus-podman-exporter
++EnvironmentFile=-/etc/default/prometheus-podman-exporter
+ EnvironmentFile=-%h/.config/prometheus-podman-exporter
+ ExecStart=/usr/bin/prometheus-podman-exporter $PODMAN_EXPORTER_OPTS
+ ExecReload=/bin/kill -HUP $MAINPID

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,36 +28,8 @@ IUSE="btrfs systemd"
 RESTRICT="test"
 
 PATCHES=(
-	"${T}/gentoo-specific-systemd-service.patch"
+	"${FILESDIR}/${PN}-1.10.1-gentoo-systemd.patch"
 )
-
-src_prepare() {
-	cat <<-'EOF' > "${T}/gentoo-specific-systemd-service.patch"
-		--- a/contrib/systemd/system/prometheus-podman-exporter.service
-		+++ b/contrib/systemd/system/prometheus-podman-exporter.service
-		@@ -2,7 +2,7 @@
-		 Description=Prometheus exporter for podman (v4) machine
-		 [Service]
-		 Restart=on-failure
-		-EnvironmentFile=-/etc/sysconfig/prometheus-podman-exporter
-		+EnvironmentFile=-/etc/default/prometheus-podman-exporter
-		 ExecStart=/usr/bin/prometheus-podman-exporter $PODMAN_EXPORTER_OPTS
-		 ExecReload=/bin/kill -HUP $MAINPID
-		 TimeoutStopSec=20s
-		--- a/contrib/systemd/user/prometheus-podman-exporter.service
-		+++ b/contrib/systemd/user/prometheus-podman-exporter.service
-		@@ -2,7 +2,7 @@
-		 Description=Prometheus exporter for podman (v4) machine
-		 [Service]
-		 Restart=on-failure
-		-EnvironmentFile=-/etc/sysconfig/prometheus-podman-exporter
-		+EnvironmentFile=-/etc/default/prometheus-podman-exporter
-		 EnvironmentFile=-%h/.config/prometheus-podman-exporter
-		 ExecStart=/usr/bin/prometheus-podman-exporter $PODMAN_EXPORTER_OPTS
-		 ExecReload=/bin/kill -HUP $MAINPID
-	EOF
-	default
-}
 
 src_compile() {
 	export BUILDTAGS="exclude_graphdriver_devicemapper"
