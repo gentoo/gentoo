@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		dev-python/idna[${PYTHON_USEDEP}]
+		<dev-python/nbxmpp-6.0.0[${PYTHON_USEDEP}]
 		>=dev-python/nbxmpp-5.0.4[${PYTHON_USEDEP}]
 		dev-python/precis-i18n[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
@@ -56,7 +57,8 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/emoji[${PYTHON_USEDEP}]
 		dev-python/qrcode[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		dev-python/omemo-dr[${PYTHON_USEDEP}]
+		<dev-python/omemo-dr-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/omemo-dr-1.0.0[${PYTHON_USEDEP}]
 		crypt? (
 			dev-python/pycryptodome[${PYTHON_USEDEP}]
 			>=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )
