@@ -26,11 +26,7 @@ RDEPEND="
 	${DEPEND}
 	acct-group/pkcs11
 "
-
-DOCS=(
-	README AUTHORS FAQ TODO
-	doc/openCryptoki-HOWTO.pdf
-)
+DOCS=( COPYRIGHTS ChangeLog FAQ	README.md )
 
 # tests right now basically don't exist; the only available thing would
 # test against an installed copy and would kill a running pcscd, all
