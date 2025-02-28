@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/perl-AutoLoader
 	>=virtual/perl-Data-Dumper-2.80.0
 	virtual/perl-Digest-SHA
 	virtual/perl-Exporter
