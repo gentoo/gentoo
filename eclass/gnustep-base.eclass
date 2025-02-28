@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
@@ -18,7 +18,7 @@ esac
 if [[ -z ${_GNUSTEP_BASE_ECLASS} ]] ; then
 _GNUSTEP_BASE_ECLASS=1
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 # IUSE variables across all GNUstep packages
 # "debug": enable code for debugging
@@ -155,7 +155,7 @@ egnustep_env() {
 			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
 			|| GS_ENV=( "${GS_ENV[@]}" "debug=no" )
 
-		if has_version "gnustep-base/gnustep-make[libobjc2]";
+		if has_version "gnustep-base/gnustep-make[libobjc2]" && tc-is-gcc;
 		then
 			# Set clang for packages that do not respect gnustep-make
 			# settings (gnustep-base's configure for example)
