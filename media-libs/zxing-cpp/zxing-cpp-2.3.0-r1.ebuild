@@ -35,6 +35,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/zxing-cpp-2.3.0-reverse-NDEBUG.patch
+)
+
 src_prepare() {
 	if use test ; then
 		ln -s "${WORKDIR}"/test/samples "${S}"/test/samples || die
