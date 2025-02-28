@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,6 @@ KEYWORDS="amd64 ppc ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/Archive-Zip-1.0.0
-	>=virtual/perl-AutoLoader-5.660.200
 	>=virtual/perl-Digest-SHA-5.450.0
 	>=virtual/perl-File-Temp-0.50.0
 	>=virtual/perl-IO-Compress-1.300.0
