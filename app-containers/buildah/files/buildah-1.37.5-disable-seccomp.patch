@@ -1,0 +1,5 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5 +5 @@
+-SECURITYTAGS ?= seccomp $(APPARMORTAG)
++SECURITYTAGS ?= $(APPARMORTAG)

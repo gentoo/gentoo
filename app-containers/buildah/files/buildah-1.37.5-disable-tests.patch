@@ -1,0 +1,8 @@
+--- a/Makefile
++++ b/Makefile
+@@ -54 +54 @@
+-all: bin/buildah bin/imgtype bin/copy bin/tutorial docs
++all: bin/buildah docs
+@@ -123 +123 @@
+-docs: install.tools ## build the docs on the host
++docs: ## build the docs on the host

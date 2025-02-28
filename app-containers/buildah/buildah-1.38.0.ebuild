@@ -70,16 +70,7 @@ src_prepare() {
 	$(usex apparmor 'echo apparmor' echo)
 	EOF
 
-	use seccomp || {
-		cat <<-'EOF' > "${T}/disable_seccomp.patch"
-		 --- a/Makefile
-		 +++ b/Makefile
-		 @@ -5 +5 @@
-		 -SECURITYTAGS ?= seccomp $(APPARMORTAG)
-		 +SECURITYTAGS ?= $(APPARMORTAG)
-		EOF
-		eapply "${T}/disable_seccomp.patch" || die
-	}
+	use seccomp || eapply "${FILESDIR}/${PN}-1.37.5-disable-seccomp.patch"
 
 	cat <<-EOF > hack/systemd_tag.sh || die
 	#!/usr/bin/env bash
@@ -92,20 +83,7 @@ src_prepare() {
 	$(usex btrfs echo 'echo exclude_graphdriver_btrfs btrfs_noversion')
 	EOF
 
-	use test || {
-		cat <<-'EOF' > "${T}/disable_tests.patch"
-		--- a/Makefile
-		+++ b/Makefile
-		@@ -56 +56 @@
-		-all: bin/buildah bin/imgtype bin/copy bin/inet bin/tutorial docs
-		+all: bin/buildah docs
-		@@ -122 +122 @@
-		-docs: install.tools ## build the docs on the host
-		+docs: ## build the docs on the host
-		EOF
-		eapply "${T}/disable_tests.patch" || die
-	}
-
+	use test || eapply "${FILESDIR}/${PN}-1.38.0-disable-tests.patch"
 }
 
 src_compile() {
