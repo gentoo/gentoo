@@ -23,7 +23,6 @@ BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-File-Temp
-		virtual/perl-Safe
 		dev-perl/Test-More-UTF8
 		virtual/perl-Test-Simple
 		dev-perl/Test-Warnings
