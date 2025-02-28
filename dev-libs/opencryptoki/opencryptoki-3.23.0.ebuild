@@ -56,6 +56,7 @@ src_configure() {
 	# requirements, but until somebody asks for those, I'd rather not
 	# enable them.
 
+	# REVIEW: seems like there's automagic present here
 	local myeconfargs=(
 		# package uses ${localstatedir}/lib as the default path, so if we
 		# leave it to econf, it'll create /var/lib/lib.
