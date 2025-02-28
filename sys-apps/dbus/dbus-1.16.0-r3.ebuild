@@ -161,9 +161,6 @@ multilib_src_install_all() {
 	exeinto /etc/user/init.d
 	newexe "${FILESDIR}/dbus.user.initd" dbus
 
-	insinto /etc/profile.d
-	doins "${FILESDIR}"/dbus.sh
-
 	if use X; then
 		# dbus X session script (bug #77504)
 		# turns out to only work for GDM (and startx). has been merged into
