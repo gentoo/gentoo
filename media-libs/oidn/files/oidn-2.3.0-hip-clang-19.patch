@@ -1,0 +1,18 @@
+Fix compilation with Clang 19 (rocm-6.3.0 and above).
+
+Backports commit https://github.com/ROCm/composable_kernel/commit/c44137838e2cb30bbe5a3b9903c357b476a34d52
+Upstream bug: https://github.com/RenderKit/oidn/issues/250
+--- a/external/composable_kernel/include/ck/tensor_operation/gpu/block/blockwise_gemm_xdlops.hpp
++++ b/external/composable_kernel/include/ck/tensor_operation/gpu/block/blockwise_gemm_xdlops.hpp
+@@ -781,11 +781,6 @@ struct BlockwiseGemmXdlops_v2
+                       "wrong!");
+     }
+ 
+-    __host__ __device__ BlockwiseGemmXdlops_v2(const BlockwiseGemmXdlops_v2& other)
+-        : a_thread_copy_(other.a_origin), b_thread_copy_(other.b_origin)
+-    {
+-    }
+-
+     // transposed XDL output supporting C_xdl' = B_xdl' * A_xdl'
+     __host__ __device__ static constexpr auto GetCThreadDescriptor_M0_N0_M1_N1_M2_N2_N3_N4()
+     {
