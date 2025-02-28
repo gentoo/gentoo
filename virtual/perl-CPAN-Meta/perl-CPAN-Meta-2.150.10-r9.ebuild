@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,6 @@ RDEPEND="
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
-	>=virtual/perl-CPAN-Meta-YAML-0.11.0
 	>=virtual/perl-JSON-PP-2.271.30
 	>=virtual/perl-Parse-CPAN-Meta-1.441.400
 "
