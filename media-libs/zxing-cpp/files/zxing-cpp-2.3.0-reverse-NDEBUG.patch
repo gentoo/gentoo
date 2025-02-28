@@ -1,0 +1,88 @@
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1095196
+https://bugs.kde.org/show_bug.cgi?id=498240
+https://github.com/zxing-cpp/zxing-cpp/issues/900
+
+From 82806f5f92173b8cb4e1e9bee13a2d07a33fb69f Mon Sep 17 00:00:00 2001
+From: axxel <awagger@gmail.com>
+Date: Sun, 5 Jan 2025 23:41:29 +0100
+Subject: [PATCH] c++: fix improper use of NDEBUG
+
+Thanks to Antonio Rojas for pointing it out to me.
+--- a/core/src/HybridBinarizer.cpp
++++ b/core/src/HybridBinarizer.cpp
+@@ -143,7 +143,7 @@ static std::shared_ptr<BitMatrix> CalculateMatrix(const uint8_t* __restrict lumi
+ {
+ 	auto matrix = std::make_shared<BitMatrix>(width, height);
+ 
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 	Matrix<uint8_t> out(width, height);
+ 	Matrix<uint8_t> out2(width, height);
+ #endif
+@@ -163,7 +163,7 @@ static std::shared_ptr<BitMatrix> CalculateMatrix(const uint8_t* __restrict lumi
+ 			int average = sum / 25;
+ 			ThresholdBlock(luminances, xoffset, yoffset, average, rowStride, *matrix);
+ 
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 			for (int yy = 0; yy < 8; ++yy)
+ 				for (int xx = 0; xx < 8; ++xx) {
+ 					out.set(xoffset + xx, yoffset + yy, blackPoints(x, y));
+@@ -173,7 +173,7 @@ static std::shared_ptr<BitMatrix> CalculateMatrix(const uint8_t* __restrict lumi
+ 		}
+ 	}
+ 
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 	std::ofstream file("thresholds.pnm");
+ 	file << "P5\n" << out.width() << ' ' << out.height() << "\n255\n";
+ 	file.write(reinterpret_cast<const char*>(out.data()), out.size());
+@@ -260,7 +260,7 @@ static std::shared_ptr<BitMatrix> ThresholdImage(const ImageView iv, const Matri
+ {
+ 	auto matrix = std::make_shared<BitMatrix>(iv.width(), iv.height());
+ 
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 	Matrix<uint8_t> out(iv.width(), iv.height());
+ #endif
+ 
+@@ -270,7 +270,7 @@ static std::shared_ptr<BitMatrix> ThresholdImage(const ImageView iv, const Matri
+ 			int xoffset = std::min(x * BLOCK_SIZE, iv.width() - BLOCK_SIZE);
+ 			ThresholdBlock(iv.data(), xoffset, yoffset, thresholds(x, y), iv.rowStride(), *matrix);
+ 
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 			for (int yy = 0; yy < 8; ++yy)
+ 				for (int xx = 0; xx < 8; ++xx)
+ 					out.set(xoffset + xx, yoffset + yy, thresholds(x, y));
+@@ -278,7 +278,7 @@ static std::shared_ptr<BitMatrix> ThresholdImage(const ImageView iv, const Matri
+ 		}
+ 	}
+ 
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 	std::ofstream file("thresholds_new.pnm");
+ 	file << "P5\n" << out.width() << ' ' << out.height() << "\n255\n";
+ 	file.write(reinterpret_cast<const char*>(out.data()), out.size());
+--- a/core/src/oned/ODDataBarCommon.h
++++ b/core/src/oned/ODDataBarCommon.h
+@@ -37,7 +37,7 @@ inline bool IsFinder(int a, int b, int c, int d, int e)
+ //			 (c < 5 + 10 * e) &&
+ 			 (a < 2 + 4 * e) &&
+ 			 (4 * a > n);
+-#if !defined(NDEBUG) && 0
++#if defined(PRINT_DEBUG) && 0
+ 	printf("[");
+ 	for (bool v :
+ 		 {w + 5 > 9 * n,
+--- a/test/unit/datamatrix/DMEncodeDecodeTest.cpp
++++ b/test/unit/datamatrix/DMEncodeDecodeTest.cpp
+@@ -21,7 +21,7 @@ namespace {
+ 		ASSERT_EQ(matrix.empty(), false);
+ 
+ 		DecoderResult res = DataMatrix::Decode(matrix);
+-#ifndef NDEBUG
++#ifdef PRINT_DEBUG
+ 		if (!res.isValid() || data != res.text())
+ 			SaveAsPBM(matrix, "failed-datamatrix.pbm", 4);
+ #endif
