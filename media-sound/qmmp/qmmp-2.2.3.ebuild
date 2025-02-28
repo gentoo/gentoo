@@ -23,7 +23,7 @@ LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
 IUSE="X aac +alsa analyzer archive bs2b cdda cddb cover crossfade cue curl +dbus
-enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mpg123
+doc enca ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mpg123
 mplayer musepack notifier opus oss pipewire projectm pulseaudio qsui qtmedia
 scrobbler shout sid sndfile soxr stereo tray udisks +vorbis wavpack"
 
@@ -85,6 +85,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	X? ( x11-base/xorg-proto )
+	doc? ( app-text/doxygen )
 "
 BDEPEND="dev-qt/qttools:6[linguist]"
 
@@ -157,4 +158,12 @@ src_configure() {
 		-DUSE_XMP="$(usex libxmp)"
 	)
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	use doc && {
+		cmake_build docs
+		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+	}
 }
