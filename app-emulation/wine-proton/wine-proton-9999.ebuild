@@ -28,10 +28,10 @@ HOMEPAGE="https://github.com/ValveSoftware/wine/"
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
-	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags
+	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags +dbus
 	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls osmesa
-	perl pulseaudio +sdl selinux +ssl +strip udev udisks +unwind
-	usb v4l video_cards_amdgpu wow64 +xcomposite xinerama
+	perl pulseaudio +sdl selinux +ssl +strip udev +unwind usb v4l
+	video_cards_amdgpu wow64 +xcomposite xinerama
 "
 REQUIRED_USE="wow64? ( abi_x86_64 !abi_x86_32 )"
 
@@ -51,6 +51,7 @@ WINE_DLOPEN_DEPEND="
 	x11-libs/libXrandr[${MULTILIB_USEDEP}]
 	x11-libs/libXrender[${MULTILIB_USEDEP}]
 	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
+	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
 	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
@@ -58,7 +59,6 @@ WINE_DLOPEN_DEPEND="
 		dev-libs/gmp:=[${MULTILIB_USEDEP}]
 		net-libs/gnutls:=[${MULTILIB_USEDEP}]
 	)
-	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
@@ -96,7 +96,6 @@ RDEPEND="
 		dev-perl/XML-LibXML
 	)
 	selinux? ( sec-policy/selinux-wine )
-	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
@@ -260,6 +259,7 @@ src_configure() {
 		$(use_enable video_cards_amdgpu amd_ags_x64)
 		--disable-tests
 		$(use_with alsa)
+		$(use_with dbus)
 		$(use_with fontconfig)
 		$(use_with gstreamer)
 		$(use_with nls gettext)
@@ -269,7 +269,6 @@ src_configure() {
 		$(use_with sdl)
 		$(use_with ssl gnutls)
 		$(use_with udev)
-		$(use_with udisks dbus) # dbus is only used for udisks
 		$(use_with unwind)
 		$(use_with usb)
 		$(use_with v4l v4l2)
