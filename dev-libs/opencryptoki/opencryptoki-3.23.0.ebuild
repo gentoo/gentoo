@@ -96,7 +96,7 @@ src_install() {
 
 	# We replace their ld.so and init files (mostly designed for RedHat
 	# as far as I can tell) with our own replacements.
-	rm -rf "${ED}"/etc/ld.so.conf.d "${ED}"/etc/rc.d || die
+	rm -r "${ED}"/etc/ld.so.conf.d "${ED}"/etc/rc.d || die
 
 	# make sure that we don't modify the init script if the USE flags
 	# are enabled for the needed services.
