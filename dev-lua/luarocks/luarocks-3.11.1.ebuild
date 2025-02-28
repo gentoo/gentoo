@@ -47,7 +47,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		"--prefix=${EPREFIX}/usr"
-		"--rocks-tree=$(lua_get_lmod_dir)"
 		"--with-lua-include=$(lua_get_include_dir)"
 		"--with-lua-interpreter=${ELUA}"
 		"--with-lua-lib=$(lua_get_cmod_dir)"
