@@ -32,6 +32,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2025-02-28)
+# User services is merged and released in openrc-0.60, this fork
+# is now unmaintained and superseeded.
+# Removal on 2025-03-28. Bug #950367
+sys-apps/openrc-navi
 
 # John Helmert III <ajak@gentoo.org> (2025-03-02)
 # Doesn't seem to cleanly load, see:
