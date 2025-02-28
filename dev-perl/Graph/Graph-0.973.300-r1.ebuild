@@ -15,7 +15,6 @@ KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 RDEPEND="
 	>=dev-perl/Heap-0.800.0
 	>=virtual/perl-Scalar-List-Utils-1.450.0
-	virtual/perl-Safe
 	>=dev-perl/Set-Object-1.400.0
 	>=virtual/perl-Storable-2.50.0
 "
