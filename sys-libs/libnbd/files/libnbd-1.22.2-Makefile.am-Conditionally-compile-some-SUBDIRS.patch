@@ -1,0 +1,79 @@
+From 2934e26841b88604ed1bf23e3728d7b69d018c72 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Sat, 14 Jun 2025 21:26:24 -0500
+Subject: [PATCH 2/2] Makefile.am: Conditionally compile some SUBDIRS
+
+Otherwise, the Makefile will try to compile them. The correct machinery
+is in configure.ac, so just add the conditions to Makefile.am
+---
+ Makefile.am | 41 ++++++++++++++++++++++++++++++-----------
+ 1 file changed, 30 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f31e067..1d00ebd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -42,30 +42,49 @@ SUBDIRS = \
+ 	common/utils \
+ 	lib \
+ 	docs \
+-	examples \
+ 	valgrind \
+ 	. \
+ 	tests \
+-	python \
+-	sh \
+ 	info \
+ 	copy \
+ 	dump \
+-	fuse \
+-	ublk \
+-	ocaml \
+-	ocaml/examples \
+-	ocaml/tests \
+-	golang \
+-	golang/examples \
+-	rust \
+ 	interop \
+ 	fuzzing \
+ 	bash-completion \
+ 	$(NULL)
+ 
++if HAVE_FUSE
++SUBDIRS += fuse
++endif
++
++if HAVE_UBLK
++SUBDIRS += ublk
++endif
++
++if HAVE_GOLANG
++SUBDIRS += golang
++endif
++
++if HAVE_OCAML
++SUBDIRS += ocaml ocaml/tests
++endif
++
++if HAVE_PYTHON
++SUBDIRS += python sh
++endif
++
++if HAVE_RUST
++SUBDIRS += rust
++endif
++
+ if BUILD_EXAMPLES 
+ SUBDIRS += examples
++if HAVE_OCAML
++SUBDIRS += ocaml/examples
++endif
++if HAVE_GOLANG
++SUBDIRS += golang/examples
++endif
+ endif
+ 
+ noinst_SCRIPTS = run
+-- 
+2.49.0
+
