@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="expat jpeg jpegxl lua openexr perl png swig tiff truetype X"
 REQUIRED_USE="lua? ( swig ) perl? ( swig )"
 # Tests are broken; 'make check' fails and referenced testsuite dir not found
