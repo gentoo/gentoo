@@ -20,6 +20,7 @@ IUSE="debug +tpm"
 DEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
+	net-nds/openldap
 	tpm? ( app-crypt/trousers )
 	>=dev-libs/openssl-1.1.1:0=
 "
