@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,6 @@ RDEPEND="
 	>=virtual/perl-Archive-Tar-1.760.0
 	>=dev-perl/Array-Diff-0.40.0
 	>=dev-perl/CPAN-DistnameInfo-0.60.0
-	>=virtual/perl-CPAN-Meta-YAML-0.8.0
 	>=dev-perl/Class-Accessor-0.190.0
 	dev-perl/Data-Binary
 	>=dev-perl/File-Find-Object-0.2.1
