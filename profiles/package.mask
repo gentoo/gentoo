@@ -50,6 +50,7 @@ virtual/perl-Module-Loaded
 virtual/perl-Net-Ping
 virtual/perl-Pod-Escapes
 virtual/perl-Thread-Queue
+virtual/perl-Thread-Semaphore
 virtual/perl-Tie-RefHash
 virtual/perl-Time-Piece
 
