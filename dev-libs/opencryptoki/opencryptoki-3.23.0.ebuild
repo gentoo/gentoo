@@ -97,7 +97,9 @@ src_install() {
 	# make sure that we don't modify the init script if the USE flags
 	# are enabled for the needed services.
 	cp "${FILESDIR}"/pkcsslotd.init.2 "${T}"/pkcsslotd.init || die
-	use tpm || sed -i -e '/use tcsd/d' "${T}"/pkcsslotd.init
+	if ! use tpm; then
+		sed -i -e '/use tcsd/d' "${T}"/pkcsslotd.init || die
+	fi
 	newinitd "${T}/pkcsslotd.init" pkcsslotd
 
 	# We create /var dirs at runtime as needed, so don't bother installing
