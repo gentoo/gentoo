@@ -21,7 +21,7 @@ DEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
 	tpm? ( app-crypt/trousers )
-	>=dev-libs/openssl-1.1.0:0=
+	>=dev-libs/openssl-1.1.1:0=
 "
 RDEPEND="
 	${DEPEND}
