@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 TEST_OIIO_IMAGE_COMMIT="7e6d875542b5bc1b2974b7cbecee115365a36527"
 TEST_OEXR_IMAGE_COMMIT="d45a2d5a890d6963b94479c7a644440068c37dd2"
-inherit cmake flag-o-matic python-single-r1 virtualx
+inherit cmake flag-o-matic python-single-r1 toolchain-funcs virtualx
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
