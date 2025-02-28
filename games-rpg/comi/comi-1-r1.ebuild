@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ dotar() {
 	# Remainder into data
 	# Avoid copying files twice
 
-	tar c \
+	tar -c -f - \
 		--mode=u+w \
 		--ignore-case \
 		--xform='s:^[^a-z]+$:\L\0:x' \
@@ -36,7 +36,7 @@ dotar() {
 		--exclude="$(use doc || echo '*.pdf')" \
 		--exclude-from=<(find "${WORKDIR}"/data -type f -printf "%P\n" 2>/dev/null) \
 		*.{txt,pdf} *.la[0-9] resource*/ \
-		| tar x -C "${WORKDIR}"
+		| tar -x -f - -C "${WORKDIR}"
 
 	assert "tar failed"
 	eshopts_pop
