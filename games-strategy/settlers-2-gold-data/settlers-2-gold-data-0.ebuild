@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,13 +43,13 @@ dotar() {
 	# Avoid copying files twice
 	# Don't include *.ENG or *.GER files as they are unused by RTTR
 
-	tar c \
+	tar -c -f - \
 		--mode=u+w \
 		--ignore-case \
 		--xform='s:.*:\U\0:x' \
 		--exclude-from=<(find "${S}"/ -type f -printf "%P\n" 2>/dev/null) \
 		{DATA,GFX}/**/*.{BBM,BOB,DAT,FNT,IDX,LBM,LST,RTX,WLD} \
-		| tar x -C "${S}"
+		| tar -x -f - -C "${S}"
 
 	assert "tar failed"
 	eshopts_pop
