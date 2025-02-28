@@ -38,7 +38,6 @@ RESTRICT=test
 
 src_prepare() {
 	default
-	mv configure.in configure.ac || die
 	eautoreconf
 }
 
