@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite,xml(+)"
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
@@ -80,6 +80,8 @@ RDEPEND="${COMMON_DEPEND}
 			app-text/hunspell
 		)
 	')"
+
+distutils_enable_tests pytest
 
 python_compile() {
 	./make.py build --dist unix || die
