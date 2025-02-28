@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
-	>=virtual/perl-Attribute-Handlers-0.770.0
 	virtual/perl-Carp
 	virtual/perl-File-Spec
 	>=dev-perl/MRO-Compat-0.110.0
