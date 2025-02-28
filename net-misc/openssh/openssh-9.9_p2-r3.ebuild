@@ -317,8 +317,6 @@ src_install() {
 	newconfd "${FILESDIR}"/sshd-r1.confd sshd
 	exeinto /etc/user/init.d
 	newexe "${FILESDIR}"/ssh-agent.initd ssh-agent
-	insinto /etc/profile.d
-	doins "${FILESDIR}"/ssh-agent.sh
 
 	if use pam; then
 		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
