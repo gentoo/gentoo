@@ -1,0 +1,5 @@
+--- a/setup.py
++++ b/setup.py
+@@ -37 +37 @@
+-        "console_scripts": ["yq=yq:cli", "xq=yq:xq_cli", "tomlq=yq:tq_cli"],
++        "console_scripts": ["yq-python=yq:cli", "xq=yq:xq_cli", "tomlq=yq:tq_cli"],
