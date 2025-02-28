@@ -21,7 +21,10 @@ IUSE="test"
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-setfill.patch
+)
 
 src_prepare() {
 	sed -i -e "s|CXX_STANDARD 11|CXX_STANDARD 14|" CMakeLists.txt || die
