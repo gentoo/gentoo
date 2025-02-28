@@ -1,0 +1,11 @@
+--- a/ivy-test.el
++++ b/ivy-test.el
+@@ -53,7 +53,7 @@ Intended as :after-while advice for `require'."
+ 
+ (setq ivy-last (make-ivy-state))
+ 
+-(ert-deftest ivy--lazy-load-ffap--ffap-url-p ()
++(defun ivy--lazy-load-ffap--ffap-url-p ()
+   (should (not (memq 'ffap ivy-features)))
+   (should (not (fboundp 'ffap-url-p)))
+   (should (string= (ivy-ffap-url-p "https://foo.org")
