@@ -65,6 +65,7 @@ src_configure() {
 		--enable-fast-install
 		--enable-library
 		--enable-swtok
+		--disable-testcases # see RESTRICT
 		--disable-ccatok
 		--disable-icatok
 		$(use_enable tpm tpmtok)
