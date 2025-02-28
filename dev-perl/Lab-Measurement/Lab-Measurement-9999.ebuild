@@ -57,7 +57,6 @@ RDEPEND="
 	virtual/perl-Storable
 	>=dev-perl/TermReadKey-2.300.0
 	dev-perl/Text-Diff
-	virtual/perl-Thread-Semaphore
 	virtual/perl-Time-HiRes
 	dev-perl/Time-Monotonic
 	>=dev-perl/Try-Tiny-0.220.0
