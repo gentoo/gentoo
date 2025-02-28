@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -72,7 +72,7 @@ src_unpack() {
 	# Remainder into data
 	# Exclude Vertigo files
 
-	tar c \
+	tar -c -f - \
 		--mode=u+w \
 		--ignore-case \
 		--xform='s:.*/::xg' \
@@ -87,7 +87,7 @@ src_unpack() {
 		--exclude="$(use doc || echo '*.pdf')" \
 		--exclude="$(use videos || echo '*.mvl')" \
 		*.{txt,pdf} *-h.mvl **/*.{ham,hog,mn2,pig,s11,s22} \
-		| tar x -C "${WORKDIR}"
+		| tar -x -f - -C "${WORKDIR}"
 
 	assert "tar failed"
 	eshopts_pop
