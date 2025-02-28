@@ -1,0 +1,38 @@
+Created by Quincy Fleming
+https://bugs.gentoo.org/909973
+
+--- a/setup.py
++++ b/setup.py
+@@ -113,6 +113,7 @@
+     """
+     user_options = [
+         ('skip-build', None, 'skip building the C/C++ code (assumes it has already been done)'),
++        ('buildpy-options=', None, 'string of commands and options passed to build.py'),
+         ]
+     boolean_options = ['skip-build']
+ 
+@@ -120,6 +121,7 @@
+     def initialize_options(self):
+         orig_build.initialize_options(self)
+         self.skip_build = '--skip-build' in sys.argv
++        self.buildpy_options = 'build'
+ 
+     def finalize_options(self):
+         orig_build.finalize_options(self)
+@@ -135,7 +137,7 @@
+                 'message and the wxWidgets and Phoenix build steps in the future.\n')
+ 
+             # Use the same Python that is running this script.
+-            cmd = ['"{}"'.format(sys.executable), '-u', 'build.py', 'build']
++            cmd = ['"{}"'.format(sys.executable), '-u', 'build.py',self.buildpy_options]
+             cmd = ' '.join(cmd)
+             runcmd(cmd)
+ 
+@@ -143,7 +145,6 @@
+         # build/lib folder like normal.
+         orig_build.run(self)
+ 
+-
+ def _cleanup_symlinks(cmd):
+     # Clean out any libwx* symlinks in the build_lib folder, as they will
+     # turn into copies in the egg since zip files can't handle symlinks.
