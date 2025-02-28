@@ -15,5 +15,8 @@
 		<flag name="go">
 			Build bindings for <pkg>dev-lang/go</pkg>
 		</flag>
+		<flag name="rust">
+			Build bindings for <pkg>dev-lang/rust</pkg>
+		</flag>
 	</use>
 </pkgmetadata>
