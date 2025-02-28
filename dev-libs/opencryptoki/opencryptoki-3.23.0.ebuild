@@ -67,6 +67,7 @@ src_configure() {
 		--enable-swtok
 		--disable-testcases # see RESTRICT
 		--disable-ccatok
+		--disable-ep11tok
 		--disable-icatok
 		$(use_enable tpm tpmtok)
 	)
