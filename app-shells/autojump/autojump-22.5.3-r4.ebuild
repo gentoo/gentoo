@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,16 +21,13 @@ REQUIRED_USE="ipython? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
 RDEPEND="ipython? ( ${PYTHON_DEPS} )"
-DEPEND="${PYTHON_DEPS}
-	test? (
-		>=dev-vcs/pre-commit-0.7.0[${PYTHON_SINGLE_USEDEP}]
-	)
-"
+DEPEND="${PYTHON_DEPS}"
 
 distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-Use-mock-from-unittest.patch
+	"${FILESDIR}"/${PV}-Drop-pre-commit.patch
 )
 
 src_prepare() {
