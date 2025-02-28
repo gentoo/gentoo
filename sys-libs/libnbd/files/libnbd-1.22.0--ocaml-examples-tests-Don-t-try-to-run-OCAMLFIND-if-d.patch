@@ -1,0 +1,55 @@
+Upstream MR: https://gitlab.com/nbdkit/libnbd/-/merge_requests/14
+
+From 8e9d811c9466896f0878244a1a84b607cb6c60a7 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Thu, 27 Feb 2025 21:21:59 -0600
+Subject: [PATCH] ocaml/{examples,tests}: Don't try to run OCAMLFIND if
+ --disable-ocaml
+
+Otherwise, it attempt to execute the "no" command which doesn't exist
+and cause the Makefile to spit out "/bin/sh: line 1: no: command not found"
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ ocaml/examples/Makefile.am | 4 ++--
+ ocaml/tests/Makefile.am    | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/ocaml/examples/Makefile.am b/ocaml/examples/Makefile.am
+index 5a28e1b..93cbfe9 100644
+--- a/ocaml/examples/Makefile.am
++++ b/ocaml/examples/Makefile.am
+@@ -53,10 +53,10 @@ if HAVE_OCAMLOPT
+ 	LD_LIBRARY_PATH=../../lib/.libs $(OCAMLFIND) ocamlopt $(OCAMLFLAGS) -cclib -L$(top_builddir)/lib/.libs -I . $(OCAMLPACKAGES) -linkpkg mlnbd.cmxa $< -o $@
+ endif
+ 
+-endif HAVE_OCAML
+-
+ # Dependencies.
+ #.depend: $(srcdir)/*.mli $(srcdir)/*.ml
+ .depend: $(srcdir)/*.ml
+ 	$(OCAMLFIND) ocamldep -I .. $(srcdir)/*.ml > $@
+ -include .depend
++
++endif HAVE_OCAML
+diff --git a/ocaml/tests/Makefile.am b/ocaml/tests/Makefile.am
+index 044e98e..c7ebc1e 100644
+--- a/ocaml/tests/Makefile.am
++++ b/ocaml/tests/Makefile.am
+@@ -109,7 +109,6 @@ TESTS += $(tests_opt)
+ endif
+ 
+ endif HAVE_NBDKIT
+-endif HAVE_OCAML
+ 
+ check-valgrind:
+ 	LIBNBD_VALGRIND=1 $(MAKE) check TESTS="$(tests_opt)"
+@@ -119,3 +118,5 @@ check-valgrind:
+ .depend: $(srcdir)/*.ml
+ 	$(OCAMLFIND) ocamldep -I .. $(srcdir)/*.ml > $@
+ -include .depend
++
++endif HAVE_OCAML
+-- 
+2.45.3
+
