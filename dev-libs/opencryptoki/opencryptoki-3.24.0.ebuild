@@ -18,6 +18,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86"
 IUSE="debug +tpm"
 
 DEPEND="
+	app-alternatives/lex
+	app-alternatives/yacc
 	tpm? ( app-crypt/trousers )
 	>=dev-libs/openssl-1.1.0:0=
 "
