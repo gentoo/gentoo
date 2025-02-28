@@ -10,9 +10,7 @@ HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
 SRC_URI="https://github.com/opencryptoki/opencryptoki/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}"
 
-# Upstream is looking into relicensing it into CPL-1.0 entirely; the CCA
-# token sources are under CPL-1.0 already.
-LICENSE="CPL-0.5"
+LICENSE="Apache-2.0 BSD CPL-1.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86"
 IUSE="debug +tpm"
