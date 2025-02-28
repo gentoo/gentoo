@@ -38,6 +38,7 @@ RESTRICT=test
 
 src_prepare() {
 	default
+	# use our autoreconf instread of bootstrap.sh
 	eautoreconf
 }
 
