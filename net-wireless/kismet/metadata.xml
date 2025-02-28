@@ -9,6 +9,7 @@
 		<flag name="libusb">Support libusb based capture sources such as mousejack, cc2540(ble), and nrf51822(ble)</flag>
 		<flag name="mqtt">Enable MQTT support</flag>
 		<flag name="pcre">Build with pcre support</flag>
+		<flag name="protobuf">Support old protobuf message passing in case of remote capture sources which are not up to date.</flag>
 		<flag name="rtlsdr">Enable rtlsdr based kismet capture sources</flag>
 		<flag name="suid">
 			Install a setuid root helper binary with limited functionality;

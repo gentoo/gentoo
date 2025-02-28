@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools eapi9-ver flag-o-matic python-single-r1 udev systemd
+inherit autotools eapi9-ver python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -33,7 +33,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="libusb lm-sensors mqtt networkmanager +pcre rtlsdr selinux +suid ubertooth udev +wext"
+IUSE="libusb lm-sensors mqtt networkmanager +pcre protobuf rtlsdr selinux +suid ubertooth udev +wext"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # upstream said protobuf-26.1 breaks everything
@@ -53,10 +53,10 @@ CDEPEND="
 			net-libs/libpcap
 			)
 	libusb? ( virtual/libusb:1 )
-	dev-libs/protobuf-c:=
-	<dev-libs/protobuf-26:=
+	protobuf? ( dev-libs/protobuf-c:=
+		<dev-libs/protobuf-26:= )
 	$(python_gen_cond_dep '
-		dev-python/protobuf[${PYTHON_USEDEP}]
+	protobuf? ( dev-python/protobuf[${PYTHON_USEDEP}] )
 		dev-python/websockets[${PYTHON_USEDEP}]
 	')
 	lm-sensors? ( sys-apps/lm-sensors:= )
@@ -80,7 +80,7 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	dev-libs/boost
-	=dev-libs/libfmt-9*
+	dev-libs/libfmt
 	sys-libs/libcap
 "
 BDEPEND="virtual/pkgconfig"
@@ -89,13 +89,13 @@ src_prepare() {
 	#sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 	#	conf/kismet_logging.conf || die
 
-	#this was added to quiet macosx builds but it makes gcc builds noisier
-	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
-
 	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
 
 	rm -r boost || die
 	rm -r fmt || die
+
+	# bundles mpack but I failed to successfully unbundle
+	# rm -r mpack || die
 
 	#dev-libs/jsoncpp
 	#rm -r json || die
@@ -109,19 +109,18 @@ src_prepare() {
 	default
 
 	if [ "${PV}" = "9999" ]; then
+		sed -i -e 's#-Wno-dangling-reference##g' configure.ac || die
 		eautoreconf
+	# Untested by should fix same in non-live
+	#else
+	#	sed -i -e 's#-Wno-unknown-warning-option ##g' configure || die
 	fi
+
+	#this was added to quiet macosx builds but it makes gcc builds noisier
+	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://bugs.gentoo.org/877761
-	# https://github.com/kismetwireless/kismet/issues/518
-	#
-	# Do not trust with LTO either.
-	append-flags -fno-strict-aliasing
-	filter-lto
-
 	econf \
 		$(use_enable libusb libusb) \
 		$(use_enable libusb wifi-coconut) \
