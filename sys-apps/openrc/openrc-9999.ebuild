@@ -104,6 +104,7 @@ src_install() {
 		# install gentoo pam.d files
 		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
 		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+		pamd_mimic system-local-login openrc-user session
 	fi
 
 	# install documentation
