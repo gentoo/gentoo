@@ -13,6 +13,6 @@
     <remote-id type="cpe">cpe:/a:mtd-utils_project:mtd-utils</remote-id>
   </upstream>
   <use>
-	  <flag name="ubifs">Build UBIFS tools</flag>
+    <flag name="ubifs">Build UBIFS tools</flag>
   </use>
 </pkgmetadata>
