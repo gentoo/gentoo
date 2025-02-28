@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Christopher Byrne <salah.coronya@gmail.com> (2025-06-13)
+# dev-ml/findlib is not keyworkded here
+sys-libs/libnbd test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-13)
 # dev-libs/libwacom is not keyworded here
 dev-libs/libinput input_devices_wacom
