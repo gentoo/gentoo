@@ -119,6 +119,9 @@ src_prepare() {
 	# bug (948052)
 	eapply "${FILESDIR}/${PN}-2.10-use-qt6.patch"
 
+	# bug (937452)
+	eapply "${FILESDIR}/${PN}-2.11-Revert-Mark-authorization-completed-on-driver-indica.patch"
+
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
 }
