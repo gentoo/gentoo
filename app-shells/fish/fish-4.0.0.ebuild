@@ -86,7 +86,7 @@ declare -A GIT_CRATES=(
 	[pcre2]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%'
 )
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cargo cmake python-any-r1 readme.gentoo-r1 xdg
 
@@ -104,7 +104,7 @@ else
 		https://github.com/fish-shell/fish-shell/releases/download/${MY_PV}/${MY_P}.tar.xz
 		${CARGO_CRATE_URIS}
 	"
-	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 S="${WORKDIR}/${MY_P}"
