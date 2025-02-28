@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,6 @@ RDEPEND="
 	>=virtual/perl-File-Spec-0.820.0
 	virtual/perl-Getopt-Long
 	>=virtual/perl-Module-Metadata-1.0.2
-	>=virtual/perl-Perl-OSType-1
 	>=virtual/perl-Test-Harness-3.290.0
 	virtual/perl-Text-ParseWords
 	>=virtual/perl-podlators-2.1.0
