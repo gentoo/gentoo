@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,6 @@ DESCRIPTION="Perl bindings to the LabOne API of Zurich Instruments"
 SLOT="0"
 
 RDEPEND="
-	virtual/perl-AutoLoader
 	virtual/perl-Carp
 	virtual/perl-Exporter
 	virtual/perl-XSLoader
