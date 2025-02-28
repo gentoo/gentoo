@@ -48,9 +48,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# package uses ${localstatedir}/lib as the default path, so if we
-	# leave it to econf, it'll create /var/lib/lib.
-
 	# Since upstream by default seem to enable any possible token, even
 	# when they don't seem to be used, we limit ourselves to the
 	# software emulation token (swtok) and if the user enabled the tpm
@@ -59,21 +56,27 @@ src_configure() {
 	# requirements, but until somebody asks for those, I'd rather not
 	# enable them.
 
+	local myeconfargs=(
+		# package uses ${localstatedir}/lib as the default path, so if we
+		# leave it to econf, it'll create /var/lib/lib.
+		--localstatedir=/var
+
+		--enable-daemon
+		--enable-fast-install
+		--enable-library
+		--enable-swtok
+		--disable-ccatok
+		--disable-icatok
+		$(use_enable tpm tpmtok)
+	)
+
 	# We don't use --enable-debug because that tinkers with the CFLAGS
 	# and we don't want that. Instead we append -DDEBUG which enables
 	# debug information.
+	myeconfargs+=( --disable-debug )
 	use debug && append-flags -DDEBUG
 
-	econf \
-		--localstatedir=/var \
-		--enable-fast-install \
-		--disable-debug \
-		--enable-daemon \
-		--enable-library \
-		--disable-icatok \
-		--enable-swtok \
-		$(use_enable tpm tpmtok) \
-		--disable-ccatok
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
