@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=${PN^}
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -37,7 +37,7 @@ src_prepare() {
 python_test() {
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
 				# GC assumptions?
 				tests/memory_test.py::test_memory_leak
