@@ -1,0 +1,85 @@
+diff --git a/test/alt-from-fp32-value.cc b/test/alt-from-fp32-value.cc
+index 33bf0fd..d30be0c 100644
+--- a/test/alt-from-fp32-value.cc
++++ b/test/alt-from-fp32-value.cc
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+diff --git a/test/alt-to-fp32-bits.cc b/test/alt-to-fp32-bits.cc
+index f5b61a5..2a232ba 100644
+--- a/test/alt-to-fp32-bits.cc
++++ b/test/alt-to-fp32-bits.cc
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+diff --git a/test/alt-to-fp32-value.cc b/test/alt-to-fp32-value.cc
+index b9d880e..40c49c4 100644
+--- a/test/alt-to-fp32-value.cc
++++ b/test/alt-to-fp32-value.cc
+@@ -2,6 +2,7 @@
+ 
+ #include <cstdint>
+ #include <cmath>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+diff --git a/test/bitcasts.cc b/test/bitcasts.cc
+index b106935..cb1b564 100644
+--- a/test/bitcasts.cc
++++ b/test/bitcasts.cc
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ 
+diff --git a/test/ieee-from-fp32-value.cc b/test/ieee-from-fp32-value.cc
+index ec9afe7..dceaf9a 100644
+--- a/test/ieee-from-fp32-value.cc
++++ b/test/ieee-from-fp32-value.cc
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+diff --git a/test/ieee-to-fp32-bits.cc b/test/ieee-to-fp32-bits.cc
+index 284e1b1..13b41aa 100644
+--- a/test/ieee-to-fp32-bits.cc
++++ b/test/ieee-to-fp32-bits.cc
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+diff --git a/test/ieee-to-fp32-value.cc b/test/ieee-to-fp32-value.cc
+index 5258e92..cbcbbf8 100644
+--- a/test/ieee-to-fp32-value.cc
++++ b/test/ieee-to-fp32-value.cc
+@@ -2,6 +2,7 @@
+ 
+ #include <cstdint>
+ #include <cmath>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+
