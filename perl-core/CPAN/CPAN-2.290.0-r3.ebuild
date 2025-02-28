@@ -20,7 +20,6 @@ CRAZYDEPS="
 	dev-perl/CPAN-Checksums
 	virtual/perl-CPAN-Meta
 	>=virtual/perl-CPAN-Meta-Requirements-2.121.0
-	virtual/perl-CPAN-Meta-YAML
 	dev-perl/CPAN-Perl-Releases
 	dev-perl/Compress-Bzip2
 	virtual/perl-Data-Dumper
