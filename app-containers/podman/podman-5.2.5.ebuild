@@ -51,7 +51,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${T}"/togglable-seccomp.patch
+	"${FILESDIR}"/${PN}-5.2.5-togglable-seccomp.patch
 )
 
 CONFIG_CHECK="
@@ -65,19 +65,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cat <<'EOF' > "${T}"/togglable-seccomp.patch || die
---- a/Makefile
-+++ b/Makefile
-@@ -56,7 +56,6 @@ BUILDTAGS ?= \
-	$(shell hack/systemd_tag.sh) \
-	$(shell hack/libsubid_tag.sh) \
-	exclude_graphdriver_devicemapper \
--	seccomp
- # allow downstreams to easily add build tags while keeping our defaults
- BUILDTAGS += ${EXTRA_BUILDTAGS}
- # N/B: This value is managed by Renovate, manual changes are
-EOF
-
 	default
 
 	# assure necessary files are present
