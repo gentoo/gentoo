@@ -38,6 +38,8 @@ RESTRICT=test
 
 src_prepare() {
 	default
+	# provide missing AX_PROG_CC_FOR_BUILD macro
+	ln -s "${FILESDIR}/m4_ax_prog_cc_for_build.m4" "${S}/m4/" || die
 	# use our autoreconf instread of bootstrap.sh
 	eautoreconf
 }
