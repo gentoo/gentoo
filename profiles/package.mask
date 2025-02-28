@@ -40,6 +40,7 @@
 # The following are masked for eventual removal:
 virtual/perl-Attribute-Handlers
 virtual/perl-AutoLoader
+virtual/perl-CPAN-Meta-YAML
 virtual/perl-Dumpvalue
 virtual/perl-ExtUtils-Constant
 virtual/perl-Filter-Simple
