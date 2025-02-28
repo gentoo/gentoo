@@ -87,7 +87,7 @@ src_configure() {
 		$(usex securetty '--securetty' '') \
 		$(usex selinux '--selinux' '') \
 		$(usex sha512 '--sha512' '') \
-		$(usex systemd '--systemd' '') \
+		$(usex systemd '--systemd' '--openrc') \
 		$(usex yescrypt '--yescrypt' '') \
 		$(usex sssd '--sssd' '') \
 	|| die
