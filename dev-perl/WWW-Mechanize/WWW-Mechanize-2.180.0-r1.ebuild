@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,6 @@ RDEPEND="
 	>=dev-perl/HTTP-Message-1.300.0
 	>=dev-perl/libwww-perl-6.450.0
 	>=virtual/perl-Scalar-List-Utils-1.140.0
-	virtual/perl-Tie-RefHash
 	dev-perl/URI
 "
 # dev-perl/Test-Taint is missing from reqs but still needed, see bug #908748
