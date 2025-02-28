@@ -1,14 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite,xml(+)"
-DISTUTILS_USE_PEP517=standalone
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r1 xdg
 
 DESCRIPTION="XMPP client written in PyGTK"
 HOMEPAGE="https://gajim.org/"
@@ -24,8 +24,8 @@ IUSE="+crypt geolocation jingle remote rst +spell +webp"
 
 COMMON_DEPEND="
 	dev-libs/gobject-introspection[cairo(+)]
-	>=x11-libs/gtk+-3.24.30:3[introspection]
-	x11-libs/gtksourceview:4[introspection]"
+	>=gui-libs/gtk-4.14.0:4[introspection]
+	gui-libs/gtksourceview:5[introspection]"
 DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
 	virtual/pkgconfig
@@ -34,13 +34,15 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		dev-python/idna[${PYTHON_USEDEP}]
-		>=dev-python/nbxmpp-5.0.4[${PYTHON_USEDEP}]
+		<dev-python/nbxmpp-7.0.0[${PYTHON_USEDEP}]
+		>=dev-python/nbxmpp-6.0.0[${PYTHON_USEDEP}]
 		dev-python/precis-i18n[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		x11-libs/libXScrnSaver
+		sys-apps/xdg-desktop-portal
 		app-crypt/libsecret[crypt,introspection]
 		dev-python/keyring[${PYTHON_USEDEP}]
 		>=dev-python/secretstorage-3.1.1[${PYTHON_USEDEP}]
@@ -55,7 +57,8 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/emoji[${PYTHON_USEDEP}]
 		dev-python/qrcode[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		dev-python/omemo-dr[${PYTHON_USEDEP}]
+		<dev-python/omemo-dr-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/omemo-dr-1.0.0[${PYTHON_USEDEP}]
 		crypt? (
 			dev-python/pycryptodome[${PYTHON_USEDEP}]
 			>=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )
@@ -78,6 +81,8 @@ RDEPEND="${COMMON_DEPEND}
 		)
 	')"
 
+distutils_enable_tests pytest
+
 python_compile() {
 	./make.py build --dist unix || die
 	distutils-r1_python_compile
@@ -93,14 +98,5 @@ python_install() {
 pkg_postinst() {
 	ewarn "The chat database format changes when upgrading from 1.8.x to 1.9.x."
 	ewarn "The first time the user starts Gajim, an automatic migration is performed."
-	xdg_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-# Tests are unfortunately regularly broken
-RESTRICT="test"
