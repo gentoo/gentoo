@@ -1,0 +1,105 @@
+cherry picked from:
+i
+https://gitlab.com/gnu-clisp/clisp/-/commit/fe98f04798677f3b85f24e1a3d267e926ca031cc
+https://gitlab.com/gnu-clisp/clisp/-/commit/14017a35e2c1dc02b18f09b6d079eeb441bb9b92
+https://gitlab.com/gnu-clisp/clisp/-/commit/50120fab20ac508852938ebe7cd73dc09d5a50a1
+
+diff --git a/modules/berkeley-db/bdb.c b/modules/berkeley-db/bdb.c
+index 1efa285..86d9645 100644
+--- a/modules/berkeley-db/bdb.c
++++ b/modules/berkeley-db/bdb.c
+@@ -2758,8 +2758,8 @@ DEFUN(BDB:TXN-RECOVER, dbe &key FIRST :NEXT)
+   DB_ENV *dbe = (DB_ENV*)bdb_handle(popSTACK(),`BDB::DBE`,BH_VALID);
+   u_int32_t tx_max;
+   DB_PREPLIST *preplist;
+-  int status, ii;
+-  u_int32_t retnum;
++  int status;
++  long ii, retnum;
+   SYSCALL(dbe->get_tx_max,(dbe,&tx_max));
+   preplist = (DB_PREPLIST*)clisp_malloc(tx_max * sizeof(DB_PREPLIST));
+   begin_blocking_system_call();
+diff --git a/modules/berkeley-db/configure b/modules/berkeley-db/configure
+index 8a4cf06..c0f1346 100755
+--- a/modules/berkeley-db/configure
++++ b/modules/berkeley-db/configure
+@@ -5712,7 +5712,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ int
+ main ()
+ {
+-DB db; db.stat(&db,NULL,0,NULL);
++DB *db; db_create(&db,NULL,0); db->stat(db,NULL,NULL,0);
+   ;
+   return 0;
+ }
+@@ -5747,7 +5747,7 @@ void my_callback (const DB_ENV* dbe, const char *errpfx, const char *msg) {}
+ int
+ main ()
+ {
+-DB_ENV dbe; dbe.set_errcall(&dbe,&my_callback);
++DB_ENV *dbe; db_env_create(&dbe,0); dbe->set_errcall(dbe,&my_callback);
+   ;
+   return 0;
+ }
+@@ -5780,7 +5780,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ int
+ main ()
+ {
+-DB db; db.get_transactional(&db);
++DB *db; db_create(&db,NULL,0); db->get_transactional(db);
+   ;
+   return 0;
+ }
+diff --git a/modules/berkeley-db/configure.in b/modules/berkeley-db/configure.in
+index 623d633..475251a 100644
+--- a/modules/berkeley-db/configure.in
++++ b/modules/berkeley-db/configure.in
+@@ -38,7 +38,7 @@ AC_CHECK_SIZEOF(db_recno_t,,[#include <stdio.h>
+ dnl <http://www.sleepycat.com/docs/ref/upgrade.4.3/stat.html>
+ AC_CACHE_CHECK([whether DB->stat() accepts TXNid],ac_cv_db_stat_accept_txn,[
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <db.h>],
+-[[DB db; db.stat(&db,NULL,0,NULL);]])],
++[[DB *db; db_create(&db,NULL,0); db->stat(db,NULL,NULL,0);]])],
+ ac_cv_db_stat_accept_txn=yes,ac_cv_db_stat_accept_txn=no)])
+ if test "$ac_cv_db_stat_accept_txn" = "yes"; then
+ AC_DEFINE(HAVE_DB_STAT_ACCEPT_TXN,1,[Define to 1 if DB->stat() accepts TXNid])
+@@ -51,7 +51,7 @@ CFLAGS_save="$CFLAGS"
+ CFLAGS="$CFLAGS -Werror"
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <db.h>
+ void my_callback (const DB_ENV* dbe, const char *errpfx, const char *msg) {}],
+-[[DB_ENV dbe; dbe.set_errcall(&dbe,&my_callback);]])],
++[[DB_ENV *dbe; db_create(&db,NULL,0); dbe->set_errcall(&dbe,&my_callback);]])],
+ ac_cv_dbe_set_errcall_accept_dbe=yes,ac_cv_dbe_set_errcall_accept_dbe=no)
+ CFLAGS=$CFLAGS_save])
+ if test "$ac_cv_dbe_set_errcall_accept_dbe" = "yes"; then
+@@ -63,7 +63,7 @@ dnl unannounced!
+ AC_CACHE_CHECK([whether DB->get_transactional() accepts just 1 argument],
+ ac_cv_db_get_transactional_1arg,[
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <db.h>],
+-[[DB db; db.get_transactional(&db);]])],
++[[DB *db; db_create(&db,NULL,0); db->get_transactional(db);]])],
+ ac_cv_db_get_transactional_1arg=yes,ac_cv_db_get_transactional_1arg=no)])
+ if test "$ac_cv_db_get_transactional_1arg" = "yes"; then
+ AC_DEFINE(HAVE_DB_GET_TRANSACTIONAL_1ARG,1,
+diff --git a/modules/gdbm/gdbm.c b/modules/gdbm/gdbm.c
+index a42706e..d81d7e3 100644
+--- a/modules/gdbm/gdbm.c
++++ b/modules/gdbm/gdbm.c
+@@ -66,7 +66,7 @@ DEFCHECKER(check_gdbm_errno, prefix=GDBM, NO-ERROR MALLOC-ERROR              \
+            READER-CANT-REORGANIZE UNKNOWN-UPDATE ITEM-NOT-FOUND              \
+            REORGANIZE-FAILED CANNOT-REPLACE ILLEGAL-DATA OPT-ALREADY-SET     \
+            OPT-ILLEGAL)
+-static _Noreturn void error_gdbm (char *fatal_message) {
++static _Noreturn void error_gdbm (const char *fatal_message) {
+   end_blocking_system_call(); /* in case we are called from _gdbm_fatal() */
+   pushSTACK(`GDBM::GDBM-ERROR`);
+   pushSTACK(`:MESSAGE`);
+@@ -126,7 +126,7 @@ static object open_gdbm (object path, int bsize, int rw, int mode) {
+   GDBM_FILE gdbm;
+   with_string_0(path, GLO(pathname_encoding), name, {
+       SYSCALL(gdbm = gdbm_open(name, bsize, rw, mode,
+-                               (void (*)(void))error_gdbm));
++                               error_gdbm));
+     });
+   if (gdbm == NULL) error_gdbm(NULL);
+   return allocate_fpointer(gdbm);
