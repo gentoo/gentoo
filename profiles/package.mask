@@ -46,6 +46,7 @@ virtual/perl-Filter-Simple
 virtual/perl-I18N-LangTags
 virtual/perl-IPC-Cmd
 virtual/perl-Memoize
+virtual/perl-Module-Loaded
 virtual/perl-Net-Ping
 virtual/perl-Thread-Queue
 virtual/perl-Tie-RefHash
