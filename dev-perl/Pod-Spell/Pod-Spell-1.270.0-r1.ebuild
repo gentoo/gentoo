@@ -19,7 +19,6 @@ RDEPEND="
 	dev-perl/Class-Tiny
 	dev-perl/File-ShareDir
 	dev-perl/Lingua-EN-Inflect
-	virtual/perl-Pod-Escapes
 	>=virtual/perl-Pod-Simple-3.270.0
 	virtual/perl-Text-Tabs+Wrap
 "
