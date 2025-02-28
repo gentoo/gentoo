@@ -32,6 +32,8 @@ dev-lang/rust:1.85.0 llvm_slot_19
 dev-lang/rust-bin:1.85.0 llvm_slot_19
 dev-lang/rust:1.84.1 llvm_slot_19
 dev-lang/rust-bin:1.84.1 llvm_slot_19
+dev-lang/rust:1.84.0 llvm_slot_19
+dev-lang/rust-bin:1.84.0 llvm_slot_19
 dev-lang/rust:1.83.0 llvm_slot_19
 dev-lang/rust-bin:1.83.0 llvm_slot_19
 dev-lang/rust:1.82.0 llvm_slot_19
