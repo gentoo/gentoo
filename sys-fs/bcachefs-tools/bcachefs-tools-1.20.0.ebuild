@@ -103,7 +103,7 @@ else
 		${CARGO_CRATE_URIS}"
 	SRC_URI+=" verify-sig? ( https://evilpiepirate.org/bcachefs-tools/bcachefs-tools-${PV}.tar.sign )"
 	S="${WORKDIR}/${P}"
-	KEYWORDS="~amd64 arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 LICENSE="Apache-2.0 BSD GPL-2 MIT"
