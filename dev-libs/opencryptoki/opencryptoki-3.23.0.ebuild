@@ -1,5 +1,5 @@
 # Copyright 1999-2025 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
@@ -8,7 +8,6 @@ inherit autotools flag-o-matic
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
 SRC_URI="https://github.com/opencryptoki/opencryptoki/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0 BSD CPL-1.0 GPL-2"
 SLOT="0"
