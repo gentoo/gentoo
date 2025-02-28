@@ -12,4 +12,4 @@ SELINUX=permissive
 #	mls      - Full SELinux protection with Multi-Level Security
 #	mcs      - Full SELinux protection with Multi-Category Security 
 #	           (mls, but only one sensitivity level)
-SELINUXTYPE=strict
+SELINUXTYPE=mcs
