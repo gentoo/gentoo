@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,8 @@ MY_PV=${PV/_/-}
 DESCRIPTION="Memory tester based on PCMemTest"
 HOMEPAGE="https://www.memtest.org/"
 SRC_URI="https://github.com/memtest86plus/memtest86plus/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+
+S=${WORKDIR}/memtest86plus-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,9 +26,8 @@ ISODEPS="
 BDEPEND="
 	iso32? ( ${ISODEPS} )
 	iso64? ( ${ISODEPS} )
+	sys-devel/gcc:*
 "
-
-S=${WORKDIR}/memtest86plus-${MY_PV}
 
 pkg_setup() {
 	if use uefi32 || use uefi64; then
@@ -42,6 +43,14 @@ src_prepare() {
 		-e 's/= objcopy/?= $(OBJCOPY)/' \
 		-e 's/shell size/shell $(SIZE)/' \
 		build{32,64}/Makefile || die
+
+	if ! tc-is-gcc; then
+		ewarn "clang doesn't support indirect goto in function with no address-of-label expressions"
+		ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+		export CC=${CHOST}-gcc AR=${CHOST}-gcc-ar
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
+
 	default
 }
 
