@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
+  <upstream>
+    <doc>https://dev.gajim.org/gajim/gajim/-/wikis/home</doc>
+  </upstream>
   <use>
     <flag name="crypt">End to end encryption and GPG encryption</flag>
     <flag name="geolocation">Sharing your location</flag>
