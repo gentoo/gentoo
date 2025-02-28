@@ -6,6 +6,9 @@
 		<flag name="tpm">Enable support for Trusted Platform Module (TPM) using <pkg>app-crypt/trousers</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">opencryptoki</remote-id>
+		<bugs-to>https://github.com/opencryptoki/opencryptoki/issues</bugs-to>
+		<changelog>https://github.com/opencryptoki/opencryptoki/releases</changelog>
+		<doc>https://www.ibm.com/docs/en/linux-on-systems?topic=support-opencryptoki-open-source-pkcs-11</doc>
+		<remote-id type="github">opencryptoki/opencryptoki</remote-id>
 	</upstream>
 </pkgmetadata>
