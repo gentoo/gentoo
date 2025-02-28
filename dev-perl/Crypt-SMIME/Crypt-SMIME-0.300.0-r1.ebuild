@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,6 @@ BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 	dev-perl/ExtUtils-PkgConfig
 	dev-perl/ExtUtils-CChecker
-	>=virtual/perl-ExtUtils-Constant-0.230.0
 	test? (
 		dev-perl/Test-Exception
 		virtual/perl-Test-Simple
