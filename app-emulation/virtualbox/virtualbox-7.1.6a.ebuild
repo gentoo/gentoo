@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	gui? (
-		dev-qt/qtbase:6[widgets]
+		dev-qt/qtbase:6[X,widgets]
 		dev-qt/qtscxml:6
 		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
