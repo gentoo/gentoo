@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>cat@catcream.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+</pkgmetadata>
