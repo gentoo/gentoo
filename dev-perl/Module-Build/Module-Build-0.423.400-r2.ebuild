@@ -31,7 +31,6 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		>=virtual/perl-CPAN-Meta-YAML-0.3.0
 		>=virtual/perl-File-Temp-0.150.0
 		>=virtual/perl-Parse-CPAN-Meta-1.440.100
 		>=virtual/perl-Test-Simple-0.490.0
