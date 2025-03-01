@@ -54,6 +54,7 @@ virtual/perl-Pod-Escapes
 virtual/perl-Safe
 virtual/perl-Thread-Queue
 virtual/perl-Thread-Semaphore
+virtual/perl-threads-shared
 virtual/perl-Tie-RefHash
 virtual/perl-Time-Piece
 
