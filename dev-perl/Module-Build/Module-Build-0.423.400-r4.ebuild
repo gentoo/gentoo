@@ -16,7 +16,6 @@ RDEPEND="
 	>=virtual/perl-CPAN-Meta-2.142.60
 	virtual/perl-Data-Dumper
 	>=virtual/perl-ExtUtils-CBuilder-0.270.0
-	virtual/perl-ExtUtils-Install
 	virtual/perl-ExtUtils-MakeMaker
 	>=virtual/perl-ExtUtils-ParseXS-2.210.0
 	>=virtual/perl-File-Spec-0.820.0
