@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,7 +89,6 @@ RDEPEND="
 	>=dev-perl/DateTime-0.440.0
 	virtual/perl-Digest-MD5
 	virtual/perl-Encode
-	>=virtual/perl-ExtUtils-Manifest-1.660.0
 	>=dev-perl/File-Copy-Recursive-0.410.0
 	dev-perl/File-Find-Rule
 	virtual/perl-File-Path
