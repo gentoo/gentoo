@@ -37,7 +37,7 @@
 # We have collected a lot of barely used Perl virtuals over time
 # (they effectively only make sense with version dependencies).
 # Time to clean up. In ebuilds, just depend on dev-lang/perl.
-# The following are masked for eventual removal:
+# The following are masked for removal on 2025-03-31:
 virtual/perl-Attribute-Handlers
 virtual/perl-AutoLoader
 virtual/perl-CPAN-Meta-YAML
