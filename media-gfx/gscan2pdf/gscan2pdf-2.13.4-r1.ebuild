@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -44,10 +44,9 @@ RDEPEND="
 	virtual/perl-File-Temp
 	virtual/perl-Getopt-Long
 	virtual/perl-threads
-	virtual/perl-threads-shared
 	media-gfx/imagemagick[png,tiff,perl]
 	media-gfx/sane-backends
-	media-libs/tiff"
+	>=media-libs/tiff-4.7.0"
 
 BDEPEND="
 	test? (
@@ -58,7 +57,7 @@ BDEPEND="
 
 		app-text/djvu[jpeg,tiff]
 		app-text/poppler[utils]
-		app-text/tesseract[-opencl(-),osd(+),png,tiff]
+		app-text/tesseract[-opencl(-),png,tiff]
 		app-text/unpaper
 		media-gfx/imagemagick[djvu,jpeg,png,tiff,perl,postscript,truetype]
 		media-gfx/sane-backends[sane_backends_test]
@@ -66,13 +65,11 @@ BDEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}/${P}-min_max.patch"
-	"${FILESDIR}/${P}-tiff2ps.patch"
-	"${FILESDIR}/${P}-t131.patch"
-	"${FILESDIR}/${P}-t1161.patch"
+	"${FILESDIR}/${PN}-2.13.2-t1161.patch"
+	"${FILESDIR}/${PN}-2.13.4-t3722.patch"
 )
 
-PERL_RM_FILES=( t/{90_MANIFEST,91_critic,99_pod,135_save_tiff_as_ps_with_space,169_import_scan,0601_Dialog_Scan,1171_prepend_pdf,1172_append_pdf,1173_prepend_pdf_with_space,1174_prepend_pdf_with_inverted_comma,1175_append_with_timestamp,1621_import_pdf,1622_import_multipage_PDF,1623_import_multipage_PDF2,1624_import_multipage_PDF3,1625_import_pdf_bw,1626_import_PDF_with_error,1627_import_encrypted_pdf,1628_import_pdf_metadata}.t )
+PERL_RM_FILES=( t/{90_MANIFEST,91_critic,99_pod,169_import_scan}.t )
 
 mydoc="History"
 
