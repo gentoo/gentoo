@@ -117,9 +117,9 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
 
 src_prepare() {
-	cd "${WORKDIR}"
+	pushd "${WORKDIR}" || die
 	eapply "${FILESDIR}"/oxipng-9.1.3-libdeflater-1.22.0-relax-libdeflate-sys-version.patch
-	cd -
+	popd > /dev/null || die
 
 	# Remove the linker configs (in `.cargo/config.toml`) specific to GitHub CI.
 	# https://bugs.gentoo.org/924946
