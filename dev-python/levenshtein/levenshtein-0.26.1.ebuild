@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,8 +33,10 @@ RDEPEND="
 	<dev-python/rapidfuzz-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/rapidfuzz-3.9.0[${PYTHON_USEDEP}]
 "
+# <scikit-build-core-0.11: https://bugs.gentoo.org/950453
 BDEPEND="
 	>=dev-python/cython-3.0.11[${PYTHON_USEDEP}]
+	<dev-python/scikit-build-core-0.11[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
