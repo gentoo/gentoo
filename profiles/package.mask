@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
+# Last release 10 years ago, dead upstream, does not build with Qt6,
+# no one else packages this. Removal on 2025-03-31.
+media-gfx/qvv
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
 # Last release 8 years ago, dead upstream, depends on Qt5, no one
 # else packages this. Removal on 2025-03-31.
 x11-misc/flow-pomodoro
