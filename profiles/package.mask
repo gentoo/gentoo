@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
+# Currently packaged version released 12 years ago; dead upstream,
+# possibly GPL violating piece of very expensive software not available
+# to "new" customers in most countries even for a 5-figure USD sum.
+# Bug #947239. Removal on 2025-03-31.
+app-text/diffpdf
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
 # Last release 10 years ago, dead upstream, does not build with Qt6,
 # no one else packages this. Removal on 2025-03-31.
 media-gfx/qvv
