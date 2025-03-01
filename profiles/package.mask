@@ -47,6 +47,7 @@ virtual/perl-ExtUtils-Manifest
 virtual/perl-Filter-Simple
 virtual/perl-I18N-LangTags
 virtual/perl-IPC-Cmd
+virtual/perl-Locale-Maketext-Simple
 virtual/perl-Memoize
 virtual/perl-Module-Loaded
 virtual/perl-Net-Ping
