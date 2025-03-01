@@ -625,7 +625,7 @@ modules_post_process() {
 	# dracut omit files that *hopefully* prevent this
 #	_modules_process_depmod.d "${mods[@]##*/}"
 
-	_modules_process_dracut.conf.d "${mods[@]##*/}"
+	modules_process_dracut.conf.d "${mods[@]##*/}"
 	_modules_process_strip "${mods[@]}"
 	_modules_process_sign "${mods[@]}"
 	_modules_sanity_modversion "${mods[@]}" # after strip/sign in case broke it
@@ -967,13 +967,12 @@ _modules_process_depmod.d() {
 	)
 }
 
-# @FUNCTION: _modules_process_dracut.conf.d
+# @FUNCTION: modules_process_dracut.conf.d
 # @USAGE: <module>...
-# @INTERNAL
 # @DESCRIPTION:
 # Create dracut.conf.d snippet defining if module should be included in the
 # initramfs.
-_modules_process_dracut.conf.d() {
+modules_process_dracut.conf.d() {
 	(
 		insinto /usr/lib/dracut/dracut.conf.d
 		[[ ${MODULES_INITRAMFS_IUSE} ]] && use ${MODULES_INITRAMFS_IUSE#+} &&
