@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 
 DEPEND="
 	sys-apps/acl
