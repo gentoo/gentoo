@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linuxhw/hw-probe/archive/refs/tags/${PV}.tar.gz -> $
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~x86"
+KEYWORDS="amd64 ~arm64 ~loong x86"
 
 RDEPEND="
 	dev-lang/perl
