@@ -311,7 +311,7 @@ LICENSE+="
 	ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 arm64"
 IUSE="+grammar"
 
 RDEPEND="dev-vcs/git"
