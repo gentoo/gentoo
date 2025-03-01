@@ -34,10 +34,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.0-pytest-xdist-2.5.0.patch
-)
-
 distutils_enable_sphinx docs \
 	dev-python/furo
 EPYTEST_XDIST=1
