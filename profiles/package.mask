@@ -111,11 +111,6 @@ kde-frameworks/kcalendarcore:5
 # Removal on 2025-03-16. Bug 948200.
 app-text/xournal
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-16)
-# Downstream-split fallback package for KF5-based revdeps without any
-# revdeps left. Removal on 2025-02-28.
-media-gfx/okularpart
-
 # Andrey Grozin <grozin@gentoo.org> (2025-02-15)
 # Last release 6 years ago, depends on Qt5,
 # no one else packages this.
