@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
+# Last release 8 years ago, dead upstream, depends on Qt5, no one
+# else packages this. Removal on 2025-03-31.
+x11-misc/flow-pomodoro
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-27)
 # We have collected a lot of barely used Perl virtuals over time
 # (they effectively only make sense with version dependencies).
