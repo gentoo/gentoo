@@ -21,14 +21,14 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	app-crypt/argon2
+	app-crypt/argon2:=
 	dev-libs/openssl:=
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/jansson:=
 	dev-libs/libevent:=
 	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
-	net-libs/libwebsockets[client]
+	net-libs/libwebsockets:=[client]
 	net-misc/curl
 	sys-apps/util-linux
 	sys-libs/zlib
