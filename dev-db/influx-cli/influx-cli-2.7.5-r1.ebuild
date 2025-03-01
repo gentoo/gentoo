@@ -24,7 +24,6 @@ src_compile() {
 	emake
 
 	cd bin/$(go env GOOS)/$(go env GOARCH)/ || die
-	./influx completion bash > influx-completion.bash || die
 	./influx completion zsh > influx-completion.zsh || die
 }
 
@@ -32,7 +31,6 @@ src_install() {
 	cd bin/$(go env GOOS)/$(go env GOARCH) || die
 
 	dobin influx
-
-	newbashcomp influx-completion.bash influx
+	# bash ones are provided by bash-completion package
 	newzshcomp influx-completion.zsh _influx
 }
