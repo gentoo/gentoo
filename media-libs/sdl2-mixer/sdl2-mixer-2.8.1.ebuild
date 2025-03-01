@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc64 ~riscv ~sparc x86"
 IUSE="flac fluidsynth gme midi mod modplug mp3 opus playtools stb timidity tremor vorbis +wav wavpack xmp"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
