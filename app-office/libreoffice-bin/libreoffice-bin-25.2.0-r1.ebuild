@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# TODO: USE=java isn't really doing anything here right now. It also
+# uses jre:11 which may be unnecessary.
 inherit java-pkg-opt-2 prefix unpacker xdg
 
 DESCRIPTION="A full office productivity suite. Binary package"
@@ -17,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 IUSE="java gnome python"
 
 RDEPEND="
@@ -82,7 +84,7 @@ src_unpack() {
 	# We don't package Firebird anymore
 	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-firebird*_amd64.deb || die
 
-	if ! use java ; then
+	if ! use gnome ; then
 		rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-gnome-integration*_amd64.deb || die
 	fi
 
