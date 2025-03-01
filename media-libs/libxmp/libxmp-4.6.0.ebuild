@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/libxmp/libxmp.git"
 else
 	SRC_URI="https://github.com/libxmp/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc64 ~riscv ~sparc x86"
 fi
 
 # bzip2 depacker code is 0BSD
