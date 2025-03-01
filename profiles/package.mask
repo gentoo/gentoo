@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
+# Last release 14 years ago, dead upstream, depends on Qt5 (and even that
+# only by means of downstream patching). Bug #947634.
+# Removal on 2025-03-31.
+sci-biology/clustalx
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
 # Last release 12 years ago, dead upstream, depends on Qt5 (and even that
 # only by means of downstream patching), likely broken by now if going by
 # various upstream reports. Bug #947621. Removal on 2025-03-31.
