@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,6 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	virtual/perl-Exporter
-	virtual/perl-ExtUtils-Manifest
 	>=virtual/perl-Test-Simple-0.600.0
 "
 BDEPEND="${RDEPEND}
