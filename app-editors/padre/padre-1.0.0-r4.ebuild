@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -80,7 +80,6 @@ RDEPEND="
 	>=dev-perl/Text-FindIndent-0.100.0
 	>=dev-perl/Text-Patch-1.800.0
 	>=virtual/perl-threads-1.710.0
-	>=virtual/perl-threads-shared-1.330.0
 	>=virtual/perl-Time-HiRes-1.97.18
 	dev-perl/URI
 	>=dev-perl/Wx-0.990.100
