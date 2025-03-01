@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,6 @@ RDEPEND="
 	virtual/perl-ExtUtils-CBuilder
 	>=dev-perl/ExtUtils-Config-0.3.0
 	>=dev-perl/ExtUtils-Helpers-0.20.0
-	virtual/perl-ExtUtils-Install
 	>=dev-perl/ExtUtils-InstallPaths-0.2.0
 	virtual/perl-ExtUtils-ParseXS
 	virtual/perl-File-Path
