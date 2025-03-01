@@ -12,8 +12,4 @@
 		The client software connects to a TeamSpeak server of the user's choice,
 		from which the user may join chat channels.
 	</longdescription>
-	<use>
-		<flag name="system-libcxx">Use <pkg>llvm-runtimes/libcxx</pkg> instead of shipped libs.</flag>
-		<flag name="system-quazip">Use <pkg>dev-libs/quazip</pkg> instead of shipped libs.</flag>
-	</use>
 </pkgmetadata>
