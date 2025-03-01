@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Only SBCL (dev-lisp/sbcl) is tested for now, but probably
@@ -32,9 +32,8 @@ SLOT="0"
 IUSE="doc emacs"
 REQUIRED_USE="emacs? ( doc )"
 
-# SBCL <= 2.4.1 is required, see: https://github.com/acl2/acl2/issues/1580
 RDEPEND="
-	<=dev-lisp/sbcl-2.4.1:=
+	dev-lisp/sbcl:=
 	emacs? ( >=app-editors/emacs-25:* )
 "
 BDEPEND="
