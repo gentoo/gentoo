@@ -17,7 +17,8 @@ LICENSE="GPL-2 GPL-2+ LGPL-2.1+ BSD MIT"
 # no sub slot wanted (yet), see #578958
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+24bpp +filetransfer gnutls ipv6 +jpeg lzo +png sasl ssl systemd +threads +zlib"
+IUSE="+24bpp +filetransfer gnutls ipv6 +jpeg lzo +png sasl ssl systemd test +threads +zlib"
+RESTRICT="!test? ( test )"
 # https://bugs.gentoo.org/690202
 # https://bugs.gentoo.org/435326
 # https://bugs.gentoo.org/550916
@@ -64,6 +65,7 @@ src_configure() {
 		-DWITH_PNG=$(usex png ON OFF)
 		-DWITH_SASL=$(usex sasl ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
+		-DWITH_TESTS=$(usex test ON OFF)
 		-DWITH_THREADS=$(usex threads ON OFF)
 		-DWITH_ZLIB=$(usex zlib ON OFF)
 	)
