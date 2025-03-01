@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/wpebackend-fdo-1.14.3-c23-fix.patch
+	"${FILESDIR}"/${PN}-1.14.2-c23-fix.patch
 )
 
 src_configure() {
