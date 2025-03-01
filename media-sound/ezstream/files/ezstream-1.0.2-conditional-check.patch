@@ -1,0 +1,21 @@
+libcheck is used for testing only
+Condition out dependency for USE=test
+https://bugs.gentoo.org/948427
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,8 +39,14 @@
+ 
+ AC_SYS_LARGEFILE
+ 
+-PKG_CHECK_MODULES([CHECK], [check >= 0.9.4])
++AC_ARG_ENABLE([check],
++	AS_HELP_STRING([--enable-check],
++		[Enable support for running tests with libtest (default is YES)]),
++	[check_enabled=$enableval], [check_enabled=yes])
+ 
++AS_IF([test "x$check_enabled" = "xyes"], [
++	PKG_CHECK_MODULES([CHECK], [check >= 0.9.4])
++], [])
+ 
+ dnl ##############
+ dnl ## COMPILER ########################################################
