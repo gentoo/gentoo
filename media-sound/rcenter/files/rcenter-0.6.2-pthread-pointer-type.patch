@@ -1,0 +1,15 @@
+Give a type and a name to a function parameter that will continue to be ignored
+As NULL is passed as an argument to pthread_create's callback in only place where timerloop
+is used, this invention of a name due to C23 does nothing and argument is never used.
+https://bugs.gentoo.org/944365
+--- a/lowlevel.c
++++ b/lowlevel.c
+@@ -44,7 +44,7 @@
+ static int timerpipe[2];
+ static int quitpipe[2];
+ 
+-static void *timerloop()
++static void *timerloop(void * nothing)
+ {
+     int n;
+     int status;
