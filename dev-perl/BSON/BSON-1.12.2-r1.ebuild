@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,6 @@ RDEPEND="
 	>=dev-perl/boolean-0.450.0
 	virtual/perl-if
 	dev-perl/namespace-clean
-	virtual/perl-threads-shared
 	virtual/perl-version
 "
 BDEPEND="${RDEPEND}
