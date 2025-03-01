@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,6 @@ RDEPEND="
 	virtual/perl-Carp
 	dev-perl/Class-Load
 	>=virtual/perl-Getopt-Long-2.350.0
-	virtual/perl-Locale-Maketext-Simple
 	virtual/perl-Pod-Simple
 	virtual/perl-Scalar-List-Utils
 "
