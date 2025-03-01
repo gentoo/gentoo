@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,6 @@ BDEPEND="
 	test? (
 		virtual/perl-File-Path
 		>=virtual/perl-ExtUtils-CBuilder-0.280.231
-		virtual/perl-ExtUtils-Manifest
 		dev-perl/Module-Build
 		>=virtual/perl-Test-Simple-0.880.0
 	)
