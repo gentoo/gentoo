@@ -4,18 +4,17 @@
 EAPI=8
 
 DIST_AUTHOR=ETHER
-DIST_VERSION=1.21
+DIST_VERSION=1.19
 inherit perl-module
 
 DESCRIPTION="Standalone, extensible Perl module installer"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux"
 
 RDEPEND="
 	>=virtual/perl-CPAN-Meta-1.441.300
 	>=virtual/perl-Devel-PPPort-3.160.0
-	>=virtual/perl-ExtUtils-Install-1.520.0
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	>=virtual/perl-ExtUtils-ParseXS-2.190.0
 	>=dev-perl/File-Remove-1.420.0
@@ -31,8 +30,7 @@ RDEPEND="
 	>=dev-perl/libwww-perl-6
 	>=dev-perl/PAR-Dist-0.290.0
 "
-BDEPEND="
-	${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	virtual/perl-autodie
 	>=dev-perl/YAML-Tiny-1.330.0
