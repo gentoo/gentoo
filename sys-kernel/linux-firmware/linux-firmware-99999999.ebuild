@@ -377,7 +377,7 @@ pkg_postinst() {
 
 	if use initramfs; then
 		if use dist-kernel; then
-			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}" --all
 		else
 			# Don't forget to umount /boot if it was previously mounted by us.
 			mount-boot_pkg_postinst
