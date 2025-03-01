@@ -1,15 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-COMMIT="f96e6b33d8b13f80258af49b4bb567428870291c"
 DESCRIPTION="Interpreter for Z-code based text games"
 HOMEPAGE="https://661.org/proj/if/frotz/"
-SRC_URI="https://gitlab.com/DavidGriffith/frotz/-/archive/${COMMIT}/frotz-master.tar.bz2 -> ${P}.tar.bz2"
-S="${WORKDIR}/${PN}-${COMMIT}"
+SRC_URI="https://gitlab.com/DavidGriffith/frotz/-/archive/${PV}/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
@@ -40,7 +39,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-stray-dollar.patch
+	"${FILESDIR}/${P}-makefile-ordering.patch"
+	"${FILESDIR}/${P}-which.patch"
 )
 
 src_compile() {
