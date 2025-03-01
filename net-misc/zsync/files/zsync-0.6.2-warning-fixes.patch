@@ -1,0 +1,157 @@
+(Note that despite the Debian description, it really seems largely about
+warning fixes instead with one zlib modernisation fix as well.)
+
+https://sources.debian.org/data/main/z/zsync/0.6.2-7/debian/patches/update-zlib-functions.patch
+
+Description: Update functions for zlib de-vendoring
+Author: Simon Quigley <tsimonq2@debian.org>
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-02-26
+--- a/libzsync/zsync.c
++++ b/libzsync/zsync.c
+@@ -151,7 +151,7 @@ struct zsync_state *zsync_begin(FILE * f
+     char *safelines = NULL;
+ 
+     /* Allocate memory for the object */
+-    struct zsync_state *zs = calloc(sizeof *zs, 1);
++    struct zsync_state *zs = calloc(1, sizeof *zs);
+ 
+     if (!zs)
+         return NULL;
+@@ -210,7 +210,7 @@ struct zsync_state *zsync_begin(FILE * f
+             }
+             else if (!strcmp(buf, "Blocksize")) {
+                 zs->blocksize = atol(p);
+-                if (zs->blocksize < 0 || (zs->blocksize & (zs->blocksize - 1))) {
++                if (zs->blocksize & (zs->blocksize - 1)) {
+                     fprintf(stderr, "nonsensical blocksize %ld\n", zs->blocksize);
+                     free(zs);
+                     return NULL;
+@@ -240,7 +240,8 @@ struct zsync_state *zsync_begin(FILE * f
+ 
+                 zblock = malloc(nzblocks * sizeof *zblock);
+                 if (zblock) {
+-                    if (fread(zblock, sizeof *zblock, nzblocks, f) < nzblocks) {
++                    size_t nread = fread(zblock, sizeof *zblock, nzblocks, f);
++                    if (nread < (size_t)nzblocks) {
+                         fprintf(stderr, "premature EOF after Z-Map\n");
+                         free(zs);
+                         return NULL;
+@@ -701,7 +702,8 @@ static int zsync_recompress(struct zsync
+                     p = skip_zhead(buf);
+                     skip = 0;
+                 }
+-                if (fwrite(p, 1, r - (p - buf), zout) != r - (p - buf)) {
++                size_t out_len = r - (p - buf);
++                if (fwrite(p, 1, out_len, zout) != out_len) {
+                     perror("fwrite");
+                     rc = -1;
+                     goto leave_it;
+@@ -714,8 +716,8 @@ static int zsync_recompress(struct zsync
+                 rc = -1;
+             }
+         }
+-        if (fclose(g) != 0) {
+-            perror("close");
++        if (pclose(g) == -1) {
++            perror("pclose failed");
+             rc = -1;
+         }
+ 
+@@ -782,7 +784,7 @@ void zsync_configure_zstream_for_zdata(c
+         /* Fake an output buffer of 32k filled with data to zlib */
+         zstrm->next_out = wbuf + lookback;
+         zstrm->avail_out = 0;
+-        updatewindow(zstrm, lookback);
++        inflateSetDictionary(zstrm, wbuf, lookback);
+     }
+ }
+ 
+@@ -922,10 +924,10 @@ static int zsync_receive_data_compressed
+         return 0;
+ 
+     /* Now set up for the downloaded block */
+-    zr->strm.next_in = buf;
++    zr->strm.next_in = (Bytef *)buf;
+     zr->strm.avail_in = len;
+ 
+-    if (zr->strm.total_in == 0 || offset != zr->strm.total_in) {
++    if (zr->strm.total_in == 0 || (uLong)offset != zr->strm.total_in) {
+         zsync_configure_zstream_for_zdata(zr->zs, &(zr->strm), offset,
+                                           &(zr->outoffset));
+ 
+@@ -939,7 +941,7 @@ static int zsync_receive_data_compressed
+                     "data didn't align with block boundary in compressed stream\n");
+             return 1;
+         }
+-        zr->strm.next_in = buf;
++        zr->strm.next_in = (Bytef *)buf;
+         zr->strm.avail_in = len;
+     }
+ 
+@@ -952,6 +954,7 @@ static int zsync_receive_data_compressed
+         switch (rc) {
+         case Z_STREAM_END:
+             eoz = 1;
++            [[fallthrough]];
+         case Z_BUF_ERROR:
+         case Z_OK:
+             if (zr->strm.avail_out == 0 || eoz) {
+--- a/libzsync/zmap.c
++++ b/libzsync/zmap.c
+@@ -359,5 +359,8 @@ void configure_zstream_for_zdata(const s
+     *poutoffset = zm->e[i].outbytes;
+ 
+     /* Align with the bitstream */
+-    inflate_advance(zs, zoffset, zm->e[i].inbits % 8, !zm->e[i].blockcount);
++    int ret;
++    do {
++        ret = inflate(zs, Z_SYNC_FLUSH);
++    } while (ret == Z_OK);
+ }
+--- a/make.c
++++ b/make.c
+@@ -316,7 +316,7 @@ void do_zstream(FILE * fin, FILE * fout,
+             /* If we passed a block boundary in the uncompressed data, record the
+              * next available point at which we could stop or start decompression.
+              * Write a zmap delta with the 1st when we see the 2nd, etc */
+-            if (want_zdelta && inflateSafePoint(&zs)) {
++            if (want_zdelta && inflateSyncPoint(&zs)) {
+                 long long cur_in = header_bits + in_position(&zs);
+                 if (midblock_in) {
+                     write_zmap_delta(&prev_in, &prev_out, midblock_in,
+@@ -718,7 +718,7 @@ int main(int argc, char **argv) {
+     read_stream_write_blocksums(instream, tf);
+ 
+     {   /* Decide how long a rsum hash and checksum hash per block we need for this file */
+-        seq_matches = len > blocksize ? 2 : 1;
++        seq_matches = ((off_t)len > (off_t)blocksize) ? 2 : 1;
+         rsum_len = ceil(((log(len) + log(blocksize)) / log(2) - 8.6) / seq_matches / 8);
+ 
+         /* min and max lengths of rsums to store */
+@@ -836,7 +836,7 @@ int main(int argc, char **argv) {
+                     fprintf(fout, "MTime: %s\n", buf);
+             }
+             else {
+-                fprintf(stderr, "error converting %d to struct tm\n", mtime);
++                fprintf(stderr, "error converting %ld to struct tm\n", (long)mtime);
+             }
+         }
+     }
+--- a/http.c
++++ b/http.c
+@@ -554,9 +554,10 @@ static int range_fetch_set_url(struct ra
+     if (rf->authh) free(rf->authh);
+ 
+     /* Get host:port for Host: header */
+-    if (strcmp(cport, "http") != 0)
+-        snprintf(rf->hosth, sizeof(rf->hosth), "%s:%s", hostn, cport);
+-    else
++    if (strcmp(cport, "http") != 0) {
++        strncpy(rf->hosth, hostn, sizeof(rf->hosth) - 1);
++        rf->hosth[sizeof(rf->hosth) - 1] = '\0';
++    } else
+         snprintf(rf->hosth, sizeof(rf->hosth), "%s", hostn);
+ 
+     if (proxy) {
