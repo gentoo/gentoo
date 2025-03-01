@@ -1,0 +1,47 @@
+Allow usage of "broken" POSIX basename on non-gnu linux
+systems. ALl callsites deal with path modifications already.
+Configure sets HAVE_LIBGEN_H on glibc systems, but doesn't
+link it.
+https://bugs.gentoo.org/936814
+--- a/src/mdata.c
++++ b/src/mdata.c
+@@ -24,9 +24,9 @@
+ #include <sys/wait.h>
+ 
+ #include <errno.h>
+-#if defined(HAVE_LIBGEN_H) && !defined(__linux__)
++#if defined(HAVE_LIBGEN_H)
+ # include <libgen.h>
+-#endif /* HAVE_LIBGEN_H && !__linux__ */
++#endif /* HAVE_LIBGEN_H */
+ #include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+--- a/src/ezstream.h
++++ b/src/ezstream.h
+@@ -32,9 +32,9 @@
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>
+-#if defined(HAVE_LIBGEN_H) && !defined(__linux__)
++#if defined(HAVE_LIBGEN_H)
+ # include <libgen.h>
+-#endif /* HAVE_LIBGEN_H && !__linux__ */
++#endif /* HAVE_LIBGEN_H */
+ #include <limits.h>
+ #ifdef HAVE_PATHS_H
+ # include <paths.h>
+--- a/src/ezstream-cfgmigrate.c
++++ b/src/ezstream-cfgmigrate.c
+@@ -20,9 +20,9 @@
+ 
+ #include "compat.h"
+ 
+-#if defined(HAVE_LIBGEN_H) && !defined(__linux__)
++#if defined(HAVE_LIBGEN_H)
+ # include <libgen.h>
+-#endif /* HAVE_LIBGEN_H && !__linux__ */
++#endif /* HAVE_LIBGEN_H */
+ #include <limits.h>
+ #include <stdio.h>
+ #include <string.h>
