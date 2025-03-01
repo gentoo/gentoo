@@ -1,0 +1,51 @@
+Nullptr is reserved keyword in C23. Rename to something that describes usage better
+https://bugs.gentoo.org/944747
+--- a/putcol.c
++++ b/putcol.c
+@@ -1226,7 +1226,7 @@
+     long rept, rowrept, width, tnull, naxes[9] = {1,1,1,1,1,1,1,1,1}, groups;
+     double zeros = 0.;
+     char message[FLEN_ERRMSG], keyname[FLEN_KEYWORD], nullstr[FLEN_VALUE];
+-    char **stringptr, *nullptr, *cptr;
++    char **stringptr, *ptr_to_null, *cptr;
+ 
+     if (*status > 0)
+         return(*status);
+@@ -2081,24 +2081,24 @@
+           {
+             stringptr = cols[jj].array;
+             dataptr = stringptr + 1;
+-            nullptr = *stringptr;
++            ptr_to_null = *stringptr;
+             nbytes = 2;
+           }
+           else
+           {
+             dataptr = (char *) cols[jj].array + col[jj].nullsize;
+-            nullptr = (char *) cols[jj].array;
++            ptr_to_null = (char *) cols[jj].array;
+             nbytes = col[jj].nullsize;
+           }
+ 
+-          if (memcmp(nullptr, &zeros, nbytes) ) 
++          if (memcmp(ptr_to_null, &zeros, nbytes) ) 
+           {
+             /* null value flag not zero; must check for and write nulls */
+             if (hdutype == IMAGE_HDU)   
+             {
+                 if (ffppn(cols[jj].fptr, cols[jj].datatype, 
+                       felement, cols[jj].repeat * ntodo, dataptr,
+-                      nullptr, &tstatus) > 0)
++                      ptr_to_null, &tstatus) > 0)
+                 break;
+             }
+             else
+@@ -2113,7 +2113,7 @@
+ 
+                 if (ffpcn(cols[jj].fptr, cols[jj].datatype, cols[jj].colnum, frow,
+                       felement, cols[jj].repeat * ntodo, dataptr,
+-                      nullptr, &tstatus) > 0)
++                      ptr_to_null, &tstatus) > 0)
+                 break;
+             }
+           }
