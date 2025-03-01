@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,7 +22,11 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tftp )
 	!net-ftp/atftp
+	client? (
+		!net-misc/inetutils[tftp(+)]
+	)
 	server? (
+		!net-misc/inetutils[tftpd(+)]
 		!net-misc/iputils[tftpd(-)]
 		!net-ftp/uftpd
 	)
