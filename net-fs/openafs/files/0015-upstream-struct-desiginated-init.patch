@@ -1,0 +1,215 @@
+From ed1e72e2a3aecd894ca1a029996ef70846e30781 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 25 Feb 2025 20:09:12 -0700
+Subject: [PATCH 2/2] afs: Init structures via designated initializers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the Linux kernel is configured with CONFIG_RANDSTRUCT=y, the
+following error occurs when building the openafs kernel module:
+
+ src/libafs/MODLOAD-6.12.0-SP/rand-timer-kernel.c:46:5: error: positional initialization of field in ‘struct’ declared with ‘designated_init’ attribute [-Werror=designated-init]
+   46 |     timer_seed,
+      |     ^~~~~~~~~~
+
+When the Linux kernel is configured with CONFIG_RANDSTRUCT=y, the Linux
+build uses a Linux kernel-specific GCC plugin
+(scripts/gcc-plugins/randomize_layout_plugin.c) that analyzes structures
+and will add the designated_init attribute to any structure that is
+determined to be a "pure operations struct" (i.e. contains only function
+pointers or nested pure ops structs/unions).  This is done so the plugin
+can then randomize the layout. This causes some of our structures to be
+flagged with the designated_init attribute, which triggers
+-Werror=designated-init when we don't use designated initializers.
+
+Within the Linux specific directory, src/afs/LINUX, the code already
+uses designated initializers, however some of the shared code within
+src/afs or that is included in the build for the kernel module still use
+positional initialization when initializing pure operations structures.
+
+Update the shared code that is used when building the Linux kernel
+module to use designated initializers via the AFS_STRUCT_INIT macro.
+
+Use a consistent alignment, and add trailing comma on the last
+element, change 0 to NULL where applicable.
+
+There are no functional changes within this commit.
+
+Note: For consistency, all the initializers for rx_securityOps are being
+updated even though not all of the files are part of the Linux kernel
+module (e.g. rxkad_server.c).
+
+Note: This error was discovered by an automated process that is used
+by the Gentoo organization to test building packages with a hardened
+Linux kernel.
+
+Reviewed-on: https://gerrit.openafs.org/16290
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit e94c183faef42e5ffe85c157ede008f2817bdefd)
+
+[cwills@sinenomine.net changes to rxgk not applicable to 1.8.x]
+
+Change-Id: I56ebb7d34718eef6c5bfbba98e3fb4e350a5129f
+---
+ src/afs/afs_fetchstore.c               | 20 ++++++++---------
+ src/crypto/hcrypto/kernel/rand-timer.c | 14 ++++++------
+ src/rxkad/rxkad_client.c               | 30 +++++++++++++-------------
+ src/rxkad/rxkad_server.c               | 30 +++++++++++++-------------
+ 4 files changed, 47 insertions(+), 47 deletions(-)
+
+diff --git a/src/afs/afs_fetchstore.c b/src/afs/afs_fetchstore.c
+index 5baf371a2c6a..5b9e08c3fdec 100644
+--- a/src/afs/afs_fetchstore.c
++++ b/src/afs/afs_fetchstore.c
+@@ -844,20 +844,20 @@ rxfs_fetchMore(void *r, afs_int32 *length, afs_uint32 *moredata)
+ 
+ static
+ struct fetchOps rxfs_fetchUfsOps = {
+-    rxfs_fetchMore,
+-    rxfs_fetchUfsRead,
+-    rxfs_fetchUfsWrite,
+-    rxfs_fetchClose,
+-    rxfs_fetchDestroy
++    AFS_STRUCT_INIT(.more,	rxfs_fetchMore),
++    AFS_STRUCT_INIT(.read,	rxfs_fetchUfsRead),
++    AFS_STRUCT_INIT(.write,	rxfs_fetchUfsWrite),
++    AFS_STRUCT_INIT(.close,	rxfs_fetchClose),
++    AFS_STRUCT_INIT(.destroy,	rxfs_fetchDestroy),
+ };
+ 
+ static
+ struct fetchOps rxfs_fetchMemOps = {
+-    rxfs_fetchMore,
+-    rxfs_fetchMemRead,
+-    rxfs_fetchMemWrite,
+-    rxfs_fetchClose,
+-    rxfs_fetchDestroy
++    AFS_STRUCT_INIT(.more,	rxfs_fetchMore),
++    AFS_STRUCT_INIT(.read,	rxfs_fetchMemRead),
++    AFS_STRUCT_INIT(.write,	rxfs_fetchMemWrite),
++    AFS_STRUCT_INIT(.close,	rxfs_fetchClose),
++    AFS_STRUCT_INIT(.destroy,	rxfs_fetchDestroy),
+ };
+ 
+ static afs_int32
+diff --git a/src/crypto/hcrypto/kernel/rand-timer.c b/src/crypto/hcrypto/kernel/rand-timer.c
+index 3a7023555b67..6ef71737cdeb 100644
+--- a/src/crypto/hcrypto/kernel/rand-timer.c
++++ b/src/crypto/hcrypto/kernel/rand-timer.c
+@@ -5,7 +5,7 @@
+  * Contains no copyrightable content.
+  */
+ #include <config.h>
+-
++#include <stds.h>
+ #include <rand.h>
+ #include "randi.h"
+ 
+@@ -43,12 +43,12 @@ timer_status(void)
+ }
+ 
+ const RAND_METHOD hc_rand_timer_method = {
+-    timer_seed,
+-    timer_bytes,
+-    timer_cleanup,
+-    timer_add,
+-    timer_pseudorand,
+-    timer_status
++    AFS_STRUCT_INIT(.seed,	timer_seed),
++    AFS_STRUCT_INIT(.bytes,	timer_bytes),
++    AFS_STRUCT_INIT(.cleanup,	timer_cleanup),
++    AFS_STRUCT_INIT(.add,	timer_add),
++    AFS_STRUCT_INIT(.pseudorand, timer_pseudorand),
++    AFS_STRUCT_INIT(.status,	timer_status),
+ };
+ 
+ const RAND_METHOD *
+diff --git a/src/rxkad/rxkad_client.c b/src/rxkad/rxkad_client.c
+index 1f760b8c0e66..79ea0cf586b3 100644
+--- a/src/rxkad/rxkad_client.c
++++ b/src/rxkad/rxkad_client.c
+@@ -50,21 +50,21 @@
+ #endif /* max */
+ 
+ static struct rx_securityOps rxkad_client_ops = {
+-    rxkad_Close,
+-    rxkad_NewConnection,	/* every new connection */
+-    rxkad_PreparePacket,	/* once per packet creation */
+-    0,				/* send packet (once per retrans.) */
+-    0,
+-    0,
+-    0,
+-    rxkad_GetResponse,		/* respond to challenge packet */
+-    0,
+-    rxkad_CheckPacket,		/* check data packet */
+-    rxkad_DestroyConnection,
+-    rxkad_GetStats,
+-    0,
+-    0,
+-    0,
++    AFS_STRUCT_INIT(.op_Close,		   rxkad_Close),
++    AFS_STRUCT_INIT(.op_NewConnection,	   rxkad_NewConnection), /* every new connection */
++    AFS_STRUCT_INIT(.op_PreparePacket,	   rxkad_PreparePacket), /* once per packet creation */
++    AFS_STRUCT_INIT(.op_SendPacket,	   NULL),		 /* send packet (once per retrans.) */
++    AFS_STRUCT_INIT(.op_CheckAuthentication, NULL),
++    AFS_STRUCT_INIT(.op_CreateChallenge,   NULL),
++    AFS_STRUCT_INIT(.op_GetChallenge,	   NULL),
++    AFS_STRUCT_INIT(.op_GetResponse,	   rxkad_GetResponse),	 /* respond to challenge packet */
++    AFS_STRUCT_INIT(.op_CheckResponse,	   NULL),
++    AFS_STRUCT_INIT(.op_CheckPacket,	   rxkad_CheckPacket),	 /* check data packet */
++    AFS_STRUCT_INIT(.op_DestroyConnection, rxkad_DestroyConnection),
++    AFS_STRUCT_INIT(.op_GetStats,	   rxkad_GetStats),
++    AFS_STRUCT_INIT(.op_SetConfiguration,  NULL),
++    AFS_STRUCT_INIT(.op_Spare2,		   NULL),
++    AFS_STRUCT_INIT(.op_Spare3,		   NULL),
+ };
+ 
+ /* Allocate a new client security object.  Called with the encryption level,
+diff --git a/src/rxkad/rxkad_server.c b/src/rxkad/rxkad_server.c
+index 07e806bcdf36..766904cea562 100644
+--- a/src/rxkad/rxkad_server.c
++++ b/src/rxkad/rxkad_server.c
+@@ -43,21 +43,21 @@ afs_int32(*rxkad_AlternateTicketDecoder) (afs_int32, char *, afs_int32,
+ 					  afs_uint32 *);
+ 
+ static struct rx_securityOps rxkad_server_ops = {
+-    rxkad_Close,
+-    rxkad_NewConnection,
+-    rxkad_PreparePacket,	/* once per packet creation */
+-    0,				/* send packet (once per retrans) */
+-    rxkad_CheckAuthentication,
+-    rxkad_CreateChallenge,
+-    rxkad_GetChallenge,
+-    0,
+-    rxkad_CheckResponse,
+-    rxkad_CheckPacket,		/* check data packet */
+-    rxkad_DestroyConnection,
+-    rxkad_GetStats,
+-    rxkad_SetConfiguration,
+-    0,				/* spare 2 */
+-    0,				/* spare 3 */
++    AFS_STRUCT_INIT(.op_Close,		rxkad_Close),
++    AFS_STRUCT_INIT(.op_NewConnection,	rxkad_NewConnection),
++    AFS_STRUCT_INIT(.op_PreparePacket,	rxkad_PreparePacket),	/* once per packet creation */
++    AFS_STRUCT_INIT(.op_SendPacket,	NULL),			/* send packet (once per retrans) */
++    AFS_STRUCT_INIT(.op_CheckAuthentication, rxkad_CheckAuthentication),
++    AFS_STRUCT_INIT(.op_CreateChallenge, rxkad_CreateChallenge),
++    AFS_STRUCT_INIT(.op_GetChallenge,	rxkad_GetChallenge),
++    AFS_STRUCT_INIT(.op_GetResponse,	NULL),
++    AFS_STRUCT_INIT(.op_CheckResponse,	rxkad_CheckResponse),
++    AFS_STRUCT_INIT(.op_CheckPacket,	rxkad_CheckPacket),	/* check data packet */
++    AFS_STRUCT_INIT(.op_DestroyConnection, rxkad_DestroyConnection),
++    AFS_STRUCT_INIT(.op_GetStats,	rxkad_GetStats),
++    AFS_STRUCT_INIT(.op_SetConfiguration, rxkad_SetConfiguration),
++    AFS_STRUCT_INIT(.op_Spare2,		NULL),			/* spare 2 */
++    AFS_STRUCT_INIT(.op_Spare3,		NULL),			/* spare 3 */
+ };
+ extern afs_uint32 rx_MyMaxSendSize;
+ 
+-- 
+2.45.3
+
