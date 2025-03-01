@@ -1,0 +1,124 @@
+https://sources.debian.org/data/main/z/zsync/0.6.2-7/debian/patches/devendor-zlib.patch
+
+Description: De-vendor zlib
+ Use the zlib as it is in the archive, not an embedded copy
+Author: Simon Quigley <tsimonq2@debian.org>
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2025-02-26
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,6 +38,9 @@ X_DECL_H_ERRNO
+ dnl Solaris needs -lsocket - and we need this for the getaddrinfo test
+ AC_CHECK_LIB(socket,socket)
+ 
++AC_CHECK_LIB([z], [inflate], [], [AC_MSG_ERROR([zlib library not found])])
++AC_CHECK_HEADER([zlib.h], [], [AC_MSG_ERROR([zlib headers not found])])
++
+ AC_REPLACE_FUNCS(getaddrinfo)
+ 
+ dnl - Large file support if available
+@@ -65,6 +68,6 @@ X_C_COMPILE_FLAGS($ZS_CFLAGS -g -Wall -W
+ dnl --- output
+ AC_SUBST(ac_aux_dir)
+ AC_CONFIG_HEADERS([config.h])
+-AC_CONFIG_FILES([Makefile librcksum/Makefile zlib/Makefile libzsync/Makefile doc/Makefile])
++AC_CONFIG_FILES([Makefile librcksum/Makefile libzsync/Makefile doc/Makefile])
+ AC_OUTPUT
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,15 +2,15 @@
+ AUTOMAKE_OPTIONS = check-news
+ ACLOCAL_AMFLAGS = -I autotools
+ 
+-SUBDIRS = librcksum zlib libzsync doc
++SUBDIRS = librcksum libzsync doc
+ 
+ bin_PROGRAMS = zsyncmake zsync
+ 
+ zsyncmake_SOURCES = make.c makegz.c makegz.h format_string.h
+-zsyncmake_LDADD = libzsync/libzsync.a librcksum/librcksum.a zlib/libinflate.a zlib/libdeflate.a -lm
++zsyncmake_LDADD = libzsync/libzsync.a librcksum/librcksum.a -lz -lm
+ 
+ zsync_SOURCES = client.c http.c http.h url.c url.h progress.c progress.h base64.c format_string.h zsglobal.h
+-zsync_LDADD = libzsync/libzsync.a librcksum/librcksum.a zlib/libinflate.a $(LIBOBJS)
++zsync_LDADD = libzsync/libzsync.a librcksum/librcksum.a -lz $(LIBOBJS)
+ 
+ EXTRA_zsync_SOURCES = getaddrinfo.h
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -61,11 +61,10 @@ am_zsync_OBJECTS = client.$(OBJEXT) http
+ 	progress.$(OBJEXT) base64.$(OBJEXT)
+ zsync_OBJECTS = $(am_zsync_OBJECTS)
+ zsync_DEPENDENCIES = libzsync/libzsync.a librcksum/librcksum.a \
+-	zlib/libinflate.a $(LIBOBJS)
++	$(LIBOBJS)
+ am_zsyncmake_OBJECTS = make.$(OBJEXT) makegz.$(OBJEXT)
+ zsyncmake_OBJECTS = $(am_zsyncmake_OBJECTS)
+-zsyncmake_DEPENDENCIES = libzsync/libzsync.a librcksum/librcksum.a \
+-	zlib/libinflate.a zlib/libdeflate.a
++zsyncmake_DEPENDENCIES = libzsync/libzsync.a librcksum/librcksum.a
+ DEFAULT_INCLUDES = -I.@am__isrc@
+ depcomp = $(SHELL) $(top_srcdir)/autotools/depcomp
+ am__depfiles_maybe = depfiles
+@@ -252,11 +251,11 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = check-news
+ ACLOCAL_AMFLAGS = -I autotools
+-SUBDIRS = librcksum zlib libzsync doc
++SUBDIRS = librcksum libzsync doc
+ zsyncmake_SOURCES = make.c makegz.c makegz.h format_string.h
+-zsyncmake_LDADD = libzsync/libzsync.a librcksum/librcksum.a zlib/libinflate.a zlib/libdeflate.a -lm
++zsyncmake_LDADD = libzsync/libzsync.a librcksum/librcksum.a -lz -lm
+ zsync_SOURCES = client.c http.c http.h url.c url.h progress.c progress.h base64.c format_string.h zsglobal.h
+-zsync_LDADD = libzsync/libzsync.a librcksum/librcksum.a zlib/libinflate.a $(LIBOBJS)
++zsync_LDADD = libzsync/libzsync.a librcksum/librcksum.a -lz $(LIBOBJS)
+ EXTRA_zsync_SOURCES = getaddrinfo.h
+ 
+ # From "GNU autoconf, automake and libtool" Vaughan, Elliston, 
+--- a/libzsync/zmap.c
++++ b/libzsync/zmap.c
+@@ -287,7 +287,7 @@ off_t *zmap_to_compressed_ranges(const s
+     return consolidate_byteranges(zbyterange, num);
+ }
+ 
+-#include "zlib/zlib.h"
++#include <zlib.h>
+ /* zmap_search(self, offset)
+  * Find this offset in the Z-Map */
+ int zmap_search(const struct zmap* zm, long zoffset) {
+--- a/libzsync/zsync.c
++++ b/libzsync/zsync.c
+@@ -48,7 +48,7 @@
+ # include <dmalloc.h>
+ #endif
+ 
+-#include "zlib/zlib.h"
++#include <zlib.h>
+ 
+ #include "librcksum/rcksum.h"
+ #include "zsync.h"
+--- a/make.c
++++ b/make.c
+@@ -43,7 +43,7 @@
+ #include "librcksum/rcksum.h"
+ #include "libzsync/zmap.h"
+ #include "libzsync/sha1.h"
+-#include "zlib/zlib.h"
++#include <zlib.h>
+ #include "format_string.h"
+ 
+ /* We're only doing one file per run, so these are global state for the current
+--- a/makegz.c
++++ b/makegz.c
+@@ -20,7 +20,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ 
+-#include "zlib/zlib.h"
++#include <zlib.h>
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
