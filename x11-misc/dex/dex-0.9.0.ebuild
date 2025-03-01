@@ -3,21 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-r1
 
 DESCRIPTION="DesktopEntry eXecution - tool to manage and launch autostart entries"
 HOMEPAGE="http://e-jc.de/"
-SRC_URI="https://github.com/jceb/dex/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jceb/dex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-amd64 -x86 -amd64-linux -x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # https://github.com/jceb/dex/issues/37
-
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}"
