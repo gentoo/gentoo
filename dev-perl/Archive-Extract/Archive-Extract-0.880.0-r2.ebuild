@@ -15,7 +15,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc 
 RDEPEND="
 	virtual/perl-File-Path
 	>=virtual/perl-File-Spec-0.820.0
-	virtual/perl-Locale-Maketext-Simple
 	>=virtual/perl-Module-Load-Conditional-0.660.0
 	>=virtual/perl-Params-Check-0.70.0
 	virtual/perl-if
