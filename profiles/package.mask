@@ -228,11 +228,6 @@ games-fps/quakeforge
 # Removal on 2025-03-07. Bug: 949318
 net-misc/AQtion
 
-# Conrad Kostecki <conikost@gentoo.org> (2024-01-28)
-# Binary package, which depends on Qt5. Bug #926665
-# Please update to v5 beta or v6 beta. Removal on 2025-02-28.
-media-sound/teamspeak-client:3
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-01-28)
 # Since we are done with EGO_SUM, this tool isn't needed any more.
 # Removal on 2025-02-27.  Bug #948966.
