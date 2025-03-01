@@ -20,6 +20,9 @@
 		<flag name="pkcs11">Add support for PKCS#11 using <pkg>dev-libs/pakchois</pkg></flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/notroj/neon/issues</bugs-to>
+		<changelog>https://github.com/notroj/neon/blob/master/NEWS</changelog>
+		<doc>https://notroj.github.io/neon-docs/</doc>
 		<remote-id type="github">notroj/neon</remote-id>
 	</upstream>
 </pkgmetadata>
