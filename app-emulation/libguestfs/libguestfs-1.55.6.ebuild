@@ -220,13 +220,14 @@ src_test() {
 	local -x SKIP_TEST_FILE_ARCHITECTURE_28=1
 	# guestfs_part_get_gpt_attributes should return 0x3000000000005, but only returns 0x5 for some reaosn.
 	local -x SKIP_TEST_PART_GET_GPT_ATTRIBUTES_0=1
+	# Not yet supported by binary appliance 1.54.0
+	local -x SKIP_TEST_LARGE_COMMAND_SH=1
 	# Socket pathname too long for libvirt backend
 	local -x LIBGUESTFS_BACKEND=direct
+
 	# Increase vebosity
 	local -x LIBGUESTFS_DEBUG=1
 	local -x LIBGUESTFS_TRACE=1
-
-	addwrite /dev/kvm
 
 	default
 }
