@@ -1,0 +1,441 @@
+Replace internal glib definition with correct C++ guard
+https://bugs.gentoo.org/716080
+--- a/lib/data.c
++++ b/lib/data.c
+@@ -54,14 +54,18 @@
+ #include "net.h"
+ #include "xmalloc.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int bytelenvar(char);
+ int checklen(int, int, int);
+ struct stream *create_stream(int, char *);
+ char *formatstrvar(char);
+ char *rrdstrvar(char);
+ int strlenvar(char);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ /* Stream formats
+  *
+--- a/lib/data.h
++++ b/lib/data.h
+@@ -38,6 +38,8 @@
+ #ifndef _SYMON_LIB_DATA_H
+ #define _SYMON_LIB_DATA_H
+ 
++#include <sys/types.h>
++
+ #include "platform.h"
+ 
+ #include <stdarg.h>
+
+--- a/lib/error.c
++++ b/lib/error.c
+@@ -27,8 +27,6 @@
+  * POSSIBILITY OF SUCH DAMAGE.
+  *
+  */
+-#include <sys/cdefs.h>
+-
+ #include <limits.h>
+ #include <stdarg.h>
+ #include <stdio.h>
+@@ -38,9 +36,13 @@
+ 
+ #include "error.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void output_message(int, char *, va_list);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ int flag_daemon = 0;
+ int flag_debug = 0;
+--- a/lib/error.h
++++ b/lib/error.h
+@@ -31,17 +31,19 @@
+ #ifndef _SYMON_LIB_ERROR_H
+ #define _SYMON_LIB_ERROR_H
+ 
+-#include <sys/cdefs.h>
+-
+ extern char *__progname;
+ extern int flag_debug;
+ extern int flag_daemon;
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void fatal(char *,...);
+ void warning(char *,...);
+ void info(char *,...);
+ void debug(char *,...);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif                          /* _SYMON_LIB_ERROR_H */
+--- a/lib/lex.h
++++ b/lib/lex.h
+@@ -36,8 +36,6 @@
+ #ifndef _SYMON_LIB_LEX_H
+ #define _SYMON_LIB_LEX_H
+ 
+-#include <sys/cdefs.h>
+-
+ #include <stdio.h>
+ 
+ /* Tokens known to lex */
+@@ -100,7 +98,9 @@
+          type;                  /* type of token in buffer */
+ };
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ char *parse_opcode(int);
+ int lex_nexttoken(struct lex *);
+ int parse_token(const char *);
+@@ -110,7 +110,9 @@
+ void parse_error(struct lex *, const char *);
+ void reset_lex(struct lex *);
+ void rewind_lex(struct lex *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ /* EXPECT(l,x) = next token in l must be opcode x or error.  */
+ #define EXPECT(l, x)    do {                      \
+--- a/lib/net.h
++++ b/lib/net.h
+@@ -40,7 +40,9 @@
+ extern char res_service[];
+ extern struct sockaddr_storage res_addr;
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int cmpsock_addr(struct sockaddr *, struct sockaddr *);
+ int get_numeric_name(struct sockaddr_storage *);
+ int getaddr(char *, char *, int, int);
+@@ -50,6 +52,8 @@
+ void get_sockaddr(struct sockaddr_storage *, int, int, int, char*, char *);
+ void get_mux_sockaddr(struct mux *, int);
+ int get_source_sockaddr(struct source *, int);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif                          /* _SYMON_LIB_NET_H */
+--- a/lib/xmalloc.h
++++ b/lib/xmalloc.h
+@@ -18,10 +18,14 @@
+ #include <sys/types.h>
+ 
+ /* Like malloc and friends, but these call fatal if something breaks */
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void *xmalloc(size_t);
+ void *xrealloc(void *, size_t);
+ void xfree(void *);
+ char *xstrdup(const char *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ #endif                          /* _SYMON_LIB_XMALLOC_H */
+--- a/symon/readconf.c
++++ b/symon/readconf.c
+@@ -40,11 +40,15 @@
+ #include "symon.h"
+ #include "xmalloc.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int read_host_port(struct muxlist *, struct mux *, struct lex *);
+ int read_symon_args(struct mux *, struct lex *);
+ int read_monitor(struct muxlist *, struct lex *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ const char *default_symux_port = SYMUX_PORT;
+ 
+--- a/symon/readconf.h
++++ b/symon/readconf.h
+@@ -33,7 +33,11 @@
+ 
+ #include "data.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int read_config_file(struct muxlist *, char *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ #endif                          /* _SYMON_READCONF_H */
+--- a/symon/symon.c
++++ b/symon/symon.c
+@@ -53,13 +53,17 @@
+ #include "symonnet.h"
+ #include "xmalloc.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void alarmhandler(int);
+ void exithandler(int);
+ void huphandler(int);
+ void init_streams(struct muxlist *mul);
+ void drop_privileges(int unsecure);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ int flag_unsecure = 0;
+ int flag_hup = 0;
+--- a/symon/symon.h
++++ b/symon/symon.h
+@@ -59,7 +59,9 @@
+ extern time_t now;
+ 
+ /* prototypes */
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ /* sm_cpu.c */
+ extern void init_cpu(struct stream *);
+ extern void gets_cpu(void);
+@@ -136,6 +138,8 @@
+ void gets_flukso(void);
+ int get_flukso(char *, int, struct stream *);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif                          /* _SYMON_SYMON_H */
+--- a/symon/symonnet.h
++++ b/symon/symonnet.h
+@@ -34,11 +34,15 @@
+ #include "data.h"
+ 
+ /* prototypes */
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void connect2mux(struct mux *);
+ void send_packet(struct mux *);
+ void prepare_packet(struct mux *, time_t t);
+ void stream_in_packet(struct stream *, struct mux *);
+ void finish_packet(struct mux *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ #endif                          /* _SYMON_SYMONNET_H */
+--- a/symux/readconf.c
++++ b/symux/readconf.c
+@@ -28,8 +28,8 @@
+  *
+  */
+ 
+-#include <sys/stat.h>
++#include <sys/stat.h>
+
+ #include <string.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+@@ -42,12 +42,15 @@
+ #include "readconf.h"
+ #include "xmalloc.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int read_mux(struct muxlist * mul, struct lex *);
+ int read_source(struct sourcelist * sol, struct lex *, int);
+ int insert_filename(char *, int, int, char *);
+-__END_DECLS
+-
++#ifdef __cplusplus
++}
++#endif
+ const char *default_symux_port = SYMUX_PORT;
+ 
+ int
+--- a/symux/readconf.h
++++ b/symux/readconf.h
+@@ -34,8 +34,12 @@
+ 
+ #include "data.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int read_config_file(struct muxlist *, const char *, int);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif                          /* _SYMUX_READCONF_H */
+--- a/symux/share.c
++++ b/symux/share.c
+@@ -76,7 +76,9 @@
+  *
+  */
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void check_master(void);
+ void check_sem(void);
+ void client_doneread(void);
+@@ -86,7 +88,9 @@
+ void exitmaster(void);
+ void master_resetsem(int);
+ void reap_clients(void);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ int realclients;                /* number of clients active */
+ int newclients;
+--- a/symux/share.h
++++ b/symux/share.h
+@@ -47,7 +47,9 @@
+ };
+ 
+ /* prototypes */
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int master_forbidread(void);
+ void master_permitread(void);
+ long shared_getlen(int);
+@@ -56,6 +58,8 @@
+ void initshare(int);
+ void shared_setlen(int, long);
+ pid_t spawn_client(int);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif                          /* _SYMUX_SHARE_H */
+--- a/symux/symux.c
++++ b/symux/symux.c
+@@ -56,11 +56,15 @@
+ 
+ #include "platform.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void exithandler(int);
+ void huphandler(int);
+ void signalhandler(int);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ int flag_hup = 0;
+ int flag_testconf = 0;
+--- a/symux/symuxnet.c
++++ b/symux/symuxnet.c
+@@ -46,9 +46,13 @@
+ #include "xmalloc.h"
+ #include "share.h"
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int check_crc_packet(struct symonpacket *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ /* Obtain sockets for incoming symon traffic */
+ int
+--- a/symux/symuxnet.h
++++ b/symux/symuxnet.h
+@@ -34,11 +34,15 @@
+ #include "data.h"
+ 
+ /* prototypes */
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int get_client_socket(struct mux *);
+ int get_symon_sockets(struct mux *);
+ int accept_connection(int);
+ int recv_symon_packet(struct mux *, int, struct source **);
+ void wait_for_traffic(struct mux *, struct source **);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ #endif                          /* _SYMUX_SYMUXNET_H */
+--- a/lib/data.h
++++ b/lib/data.h
+@@ -358,7 +360,9 @@
+ };
+ 
+ /* prototypes */
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ char *type2str(const int);
+ int bytelen_sourcelist(struct sourcelist *);
+ int bytelen_streamlist(struct streamlist *);
+@@ -393,5 +397,7 @@
+ void init_crc32(void);
+ void init_symon_packet(struct mux *);
+ void init_symux_packet(struct mux *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ #endif                          /* _SYMON_LIB_DATA_H */
