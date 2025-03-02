@@ -1,12 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-# Upstream are working on updating clamav's LLVM bytecode interpreter to work
-# with later versions of LLVM, but it's not ready yet. See:
-# https://github.com/Cisco-Talos/clamav/issues/581
-# This does not impact the ability of the package to build with llvm/clang otherwise.
-LLVM_MAX_SLOT=13
 PYTHON_COMPAT=( python3_{11..13} )
 
 CRATES="
@@ -174,7 +169,7 @@ if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
-IUSE="doc clamonacc +clamapp experimental jit libclamav-only milter rar selinux +system-mspack systemd test"
+IUSE="doc clamonacc +clamapp experimental libclamav-only milter rar selinux +system-mspack systemd test"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamapp !milter )
 	clamonacc? ( clamapp )
@@ -200,7 +195,6 @@ COMMON_DEPEND="
 	!libclamav-only? ( net-misc/curl )
 	clamapp? ( sys-libs/ncurses:= net-misc/curl )
 	elibc_musl? ( sys-libs/fts-standalone )
-	jit? ( <llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	milter? ( mail-filter/libmilter:= )
 	rar? ( app-arch/unrar )
 	system-mspack? ( dev-libs/libmspack )
@@ -232,7 +226,6 @@ python_check_deps() {
 
 pkg_setup() {
 	rust_pkg_setup
-	use jit && llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -246,7 +239,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DAPP_CONFIG_DIRECTORY="${EPREFIX}"/etc/clamav
-		-DBYTECODE_RUNTIME=$(usex jit llvm interpreter)
+		-DBYTECODE_RUNTIME="interpreter" # https://github.com/Cisco-Talos/clamav/issues/581
 		-DCLAMAV_GROUP="clamav"
 		-DCLAMAV_USER="clamav"
 		-DDATABASE_DIRECTORY="${EPREFIX}"/var/lib/clamav
@@ -274,16 +267,6 @@ src_configure() {
 		mycmakeargs+=(
 			-DCMAKE_DISABLE_FIND_PACKAGE_Valgrind=ON
 			-DPYTHON_FIND_VERSION="${EPYTHON#python}"
-		)
-	fi
-
-	if use jit ; then
-		# Suppress CMake warnings that variables aren't consumed if we aren't using LLVM
-		# https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md#llvm-optional-see-bytecode-runtime-section
-		# https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md#bytecode-runtime
-		mycmakeargs+=(
-			-DLLVM_ROOT_DIR="$(get_llvm_prefix -d ${LLVM_MAX_SLOT})"
-			-DLLVM_FIND_VERSION="$(best_version llvm-core/llvm:${LLVM_MAX_SLOT} | cut -c 16-)"
 		)
 	fi
 
