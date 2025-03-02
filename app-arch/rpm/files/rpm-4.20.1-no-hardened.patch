@@ -1,0 +1,12 @@
+Don't override Gentoo's default _FORTIFY_SOURCE.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -426,7 +426,7 @@ if (ENABLE_ASAN OR ENABLE_UBSAN)
+ endif()
+ 
+ # try to ensure some compiler sanity and hardening options where supported
+-foreach (flag -fno-strict-overflow -fno-delete-null-pointer-checks -fhardened)
++foreach (flag -fno-strict-overflow -fno-delete-null-pointer-checks)
+ 	check_c_compiler_flag(${flag} found)
+ 	if (found)
+ 		add_compile_options(${flag})
