@@ -1,0 +1,73 @@
+Were seds:
+sed -i \
+	-e "/appicondir/s:\$(prefix):/usr:" \
+	-e "/desktopdir/s:\$(prefix):/usr:" \
+	$(find icons -name Makefile.am) \
+	Makefile.am || die
+
+sed -i \
+	-e "s:\$*[({]prefix[})]/share:/var/lib/:" \
+	configure.in \
+	graphics/Makefile.am \
+	levels/Makefile.am \
+	sounds/Makefile.am || die
+diff '--color=auto' -ru a/configure.in b/configure.in
+--- a/configure.in	2025-03-02 16:31:36.838786226 +0400
++++ b/configure.in	2025-03-02 16:33:05.229759963 +0400
+@@ -66,7 +66,7 @@
+ then
+   prefix="/usr/local"
+ fi
+-AC_DEFINE_UNQUOTED(DATA_PATH, "${prefix}/share/bomns")
++AC_DEFINE_UNQUOTED(DATA_PATH, "/var/lib/bomns")
+ 
+ 
+ # Do substitutions
+diff '--color=auto' -ru a/graphics/Makefile.am b/graphics/Makefile.am
+--- a/graphics/Makefile.am	2025-03-02 16:31:36.837344972 +0400
++++ b/graphics/Makefile.am	2025-03-02 16:33:05.230008390 +0400
+@@ -10,7 +10,7 @@
+   players.bmp \
+   winscreen.bmp
+ 
+-graphicsdir = $(prefix)/share/bomns/graphics
++graphicsdir = /var/lib/bomns/graphics
+ graphics_DATA = \
+   bomn32.bmp \
+ 	editor_cursor.bmp \
+diff '--color=auto' -ru a/levels/Makefile.am b/levels/Makefile.am
+--- a/levels/Makefile.am	2025-03-02 16:31:36.837084463 +0400
++++ b/levels/Makefile.am	2025-03-02 16:33:05.230101489 +0400
+@@ -4,7 +4,7 @@
+ 	narrow.lvl \
+ 	test.lvl
+ 
+-levelsdir = $(prefix)/share/bomns/levels
++levelsdir = /var/lib/bomns/levels
+ levels_DATA = \
+ 	faceoff.lvl \
+ 	killyou.lvl \
+diff '--color=auto' -ru a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2025-03-02 16:31:36.839799769 +0400
++++ b/Makefile.am	2025-03-02 16:32:27.293524896 +0400
+@@ -9,7 +9,7 @@
+ 					src/launcher2
+ 
+ # installs desktop entry (for menus, &c.)
+-desktopdir = $(prefix)/share/applications
++desktopdir = /usr/share/applications
+ desktop_DATA = bomns.desktop
+ 
+ EXTRA_DIST = TODO \
+diff '--color=auto' -ru a/sounds/Makefile.am b/sounds/Makefile.am
+--- a/sounds/Makefile.am	2025-03-02 16:31:36.836753343 +0400
++++ b/sounds/Makefile.am	2025-03-02 16:33:05.230199687 +0400
+@@ -12,7 +12,7 @@
+   warp.wav \
+   winner.wav
+ 
+-soundsdir = $(prefix)/share/bomns/sounds
++soundsdir = /var/lib/bomns/sounds
+ sounds_DATA = \
+ 	beep.wav \
+   begin1.wav \
