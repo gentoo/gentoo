@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -46,15 +46,17 @@ python_test() {
 		# fails if additional flake8 plugins are installed
 		tests/integration/test_plugins.py::test_local_plugin_can_add_option
 	)
-	if [[ ${EPYTHON} == pypy3 ]]; then
-		EPYTEST_DESELECT+=(
-			# problem with pypy3.10 in dev-python/pyflakes
-			# https://github.com/PyCQA/pyflakes/issues/779
-			tests/integration/test_main.py::test_malformed_per_file_ignores_error
-			tests/integration/test_main.py::test_tokenization_error_but_not_syntax_error
-			tests/integration/test_main.py::test_tokenization_error_is_a_syntax_error
-		)
-	fi
+	case ${EPYTHON} in
+		pypy3*)
+			EPYTEST_DESELECT+=(
+				# problem with pypy3.10 in dev-python/pyflakes
+				# https://github.com/PyCQA/pyflakes/issues/779
+				tests/integration/test_main.py::test_malformed_per_file_ignores_error
+				tests/integration/test_main.py::test_tokenization_error_but_not_syntax_error
+				tests/integration/test_main.py::test_tokenization_error_is_a_syntax_error
+			)
+			;;
+	esac
 
 	epytest
 }
