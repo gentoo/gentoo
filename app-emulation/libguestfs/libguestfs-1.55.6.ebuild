@@ -213,7 +213,7 @@ src_test() {
 	local -x SKIP_TEST_GUESTUNMOUNT_FD=1
 	# Doesn't work correctly when --without-daemon is specified
 	local -x SKIP_TEST_NOEXEC_STACK_PL=1
-	# Loongarch failures. guestfs_get_architechture returns something other than what's expected
+	# Loongarch failures. guestfs_get_architecture returns something other than what's expected
 	local -x SKIP_TEST_FILE_ARCHITECTURE_6=1
 	local -x SKIP_TEST_FILE_ARCHITECTURE_18=1
 	# Upstream appliance not built with sys-apps/file[zstd,-seccomp].
