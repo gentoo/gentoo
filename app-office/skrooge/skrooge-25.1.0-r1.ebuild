@@ -15,7 +15,7 @@ HOMEPAGE="https://skrooge.org/"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${P}-patchset.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2"
