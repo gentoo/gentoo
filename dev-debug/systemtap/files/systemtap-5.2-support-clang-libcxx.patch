@@ -1,0 +1,477 @@
+This patch is fetched from upstream 
+https://sourceware.org/git/?p=systemtap.git;a=commit;h=371b8390d37be73106a5332ad4abe403bc74a29a
+
+This patch is prepared by Denis Pronin <dannftk@yandex.ru>
+
+From 371b8390d37be73106a5332ad4abe403bc74a29a Mon Sep 17 00:00:00 2001
+From: Denis Pronin <dannftk@yandex.ru>
+Date: Mon, 30 Dec 2024 13:43:23 +0300
+Subject: [PATCH] add support of compilation against clang and llvm's libc++
+
+Signed-off-by: Denis Pronin <dannftk@yandex.ru>
+---
+ Makefile.am                              | 10 +++++-----
+ configure.ac                             | 24 ++++++++++++++++++++++++
+ dwflpp.cxx                               |  1 -
+ interactive.cxx                          | 11 +++++++----
+ language-server/stap-language-server.cxx |  1 -
+ stapbpf/Makefile.am                      |  2 +-
+ stapdyn/Makefile.am                      |  2 +-
+ staprun/Makefile.am                      |  2 +-
+ tapset-been.cxx                          |  2 --
+ tapset-debuginfod.cxx                    |  1 -
+ tapset-dynprobe.cxx                      |  1 -
+ tapset-mark.cxx                          |  2 --
+ tapset-method.cxx                        |  1 -
+ tapset-netfilter.cxx                     |  1 -
+ tapset-perfmon.cxx                       |  2 --
+ tapset-procfs.cxx                        |  2 --
+ tapset-python.cxx                        | 18 +++++++++++-------
+ tapset-timers.cxx                        |  2 --
+ tapset-utrace.cxx                        |  2 --
+ tapsets.cxx                              |  1 -
+ task_finder.cxx                          |  2 --
+ util.cxx                                 | 18 ++++++++++--------
+ 22 files changed, 60 insertions(+), 48 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index e8aa511a0..c569296ad 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -143,7 +143,7 @@ if BUILD_TRANSLATOR
+ stap_CFLAGS = $(AM_CFLAGS) @PIECFLAGS@
+ stap_CXXFLAGS = $(AM_CXXFLAGS) @PIECXXFLAGS@ @ALIGNEDNEW@ @debuginfod_CFLAGS@
+ stap_CPPFLAGS = $(AM_CPPFLAGS) -DSTAP_SDT_V2
+-stap_LDFLAGS = $(AM_LDFLAGS) @PIELDFLAGS@ @BOOST_SYSTEM_LIB@
++stap_LDFLAGS = $(AM_LDFLAGS) @PIELDFLAGS@ @BOOST_SYSTEM_LIB@ @BOOST_IOSTREAMS_LIB@
+ 
+ if HAVE_DYNINST
+ stap_CXXFLAGS += $(DYNINST_CXXFLAGS)
+@@ -195,7 +195,7 @@ stap_sign_module_CPPFLAGS = $(AM_CPPFLAGS)
+ stap_sign_module_CXXFLAGS = $(AM_CXXFLAGS) @PIECXXFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_sign_module_CFLAGS = $(AM_CFLAGS) @PIECFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_sign_module_LDFLAGS = $(AM_LDFLAGS) @PIELDFLAGS@ $(debuginfod_LDFLAGS)
+-stap_sign_module_LDADD = $(nss_LIBS) $(debuginfod_LIBS)
++stap_sign_module_LDADD = $(nss_LIBS) $(debuginfod_LIBS) @BOOST_IOSTREAMS_LIB@
+ if HAVE_HTTP_SUPPORT
+ stap_sign_module_LDADD += $(openssl_LIBS)
+ endif
+@@ -205,7 +205,7 @@ stap_authorize_cert_CPPFLAGS = $(AM_CPPFLAGS)
+ stap_authorize_cert_CXXFLAGS = $(AM_CXXFLAGS) @PIECXXFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_authorize_cert_CFLAGS = $(AM_CFLAGS) @PIECFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_authorize_cert_LDFLAGS = $(AM_LDFLAGS) @PIELDFLAGS@ $(debuginfod_LDFLAGS)
+-stap_authorize_cert_LDADD = $(nss_LIBS) $(debuginfod_LIBS)
++stap_authorize_cert_LDADD = $(nss_LIBS) $(debuginfod_LIBS) @BOOST_IOSTREAMS_LIB@
+ if HAVE_HTTP_SUPPORT
+ stap_authorize_cert_LDADD += $(openssl_LIBS)
+ endif
+@@ -215,7 +215,7 @@ stap_serverd_SOURCES = stap-serverd.cxx cscommon.cxx util.cxx privilege.cxx nssc
+ stap_serverd_CXXFLAGS = $(AM_CXXFLAGS) @PIECXXFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_serverd_CFLAGS = $(AM_CFLAGS) @PIECFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_serverd_LDFLAGS = $(AM_LDFLAGS) @PIELDFLAGS@ $(debuginfod_LDFLAGS)
+-stap_serverd_LDADD = $(nss_LIBS) -lpthread $(debuginfod_LIBS)
++stap_serverd_LDADD = $(nss_LIBS) -lpthread $(debuginfod_LIBS) @BOOST_IOSTREAMS_LIB@
+ if HAVE_AVAHI
+ stap_serverd_CFLAGS += $(avahi_CFLAGS)
+ stap_serverd_CXXFLAGS += $(avahi_CFLAGS)
+@@ -230,7 +230,7 @@ stap_gen_cert_SOURCES = stap-gen-cert.cxx util.cxx nsscommon.cxx
+ stap_gen_cert_CXXFLAGS = $(AM_CXXFLAGS) @PIECXXFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_gen_cert_CFLAGS = $(AM_CFLAGS) @PIECFLAGS@ $(nss_CFLAGS) $(debuginfod_CFLAGS)
+ stap_gen_cert_LDFLAGS = $(AM_LDFLAGS) @PIELDFLAGS@ $(debuginfod_LDFLAGS)
+-stap_gen_cert_LDADD = $(nss_LIBS) $(debuginfod_LIBS)
++stap_gen_cert_LDADD = $(nss_LIBS) $(debuginfod_LIBS) @BOOST_IOSTREAMS_LIB@
+ if HAVE_HTTP_SUPPORT
+ stap_gen_cert_LDADD += $(openssl_LIBS)
+ endif
+diff --git a/configure.ac b/configure.ac
+index 319af67b1..0e0a021f5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -639,6 +639,30 @@ int main() {
+ ])
+ LIBS="$saved_LIBS"
+ AC_SUBST(BOOST_SYSTEM_LIB)
++# add boost_iostreams
++saved_LIBS="$LIBS"
++LIBS="-lboost_iostreams $LIBS"
++AC_MSG_CHECKING([need for -lboost_iostreams library])
++AC_LINK_IFELSE([AC_LANG_SOURCE([
++#include <cstdio>
++#include <boost/iostreams/device/file_descriptor.hpp>
++#include <boost/iostreams/stream.hpp>
++int main() {
++  boost::iostreams::stream<boost::iostreams::file_descriptor_source> in(
++    STDIN_FILENO, boost::iostreams::file_descriptor_flags::close_handle
++  );
++  boost::iostreams::stream<boost::iostreams::file_descriptor_sink> out(
++    STDOUT_FILENO, boost::iostreams::file_descriptor_flags::close_handle
++  );
++  return 0;
++}
++])],[AC_MSG_RESULT([yup])
++    BOOST_IOSTREAMS_LIB="-lboost_iostreams"
++],[AC_MSG_RESULT([nope])
++    BOOST_IOSTREAMS_LIB=""
++])
++LIBS="$saved_LIBS"
++AC_SUBST(BOOST_IOSTREAMS_LIB)
+ 
+ AC_LANG_POP(C++)
+ 
+diff --git a/dwflpp.cxx b/dwflpp.cxx
+index 5b3855354..ee52d3697 100644
+--- a/dwflpp.cxx
++++ b/dwflpp.cxx
+@@ -66,7 +66,6 @@ extern "C" {
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ 
+ static string TOK_KERNEL("kernel");
+diff --git a/interactive.cxx b/interactive.cxx
+index bd6ddd71e..5a15dc249 100644
+--- a/interactive.cxx
++++ b/interactive.cxx
+@@ -21,10 +21,9 @@
+ #include <stack>
+ #include <sstream>
+ #include <iterator>
+-#include <ext/stdio_filebuf.h>
++#include <fstream>
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ extern "C" {
+ #include <unistd.h>
+@@ -40,6 +39,9 @@ extern "C" {
+ #endif
+ }
+ 
++#include <boost/iostreams/device/file_descriptor.hpp>
++#include <boost/iostreams/stream.hpp>
++
+ // FIXME: these declarations don't really belong here.
+ extern int
+ passes_0_4 (systemtap_session &s);
+@@ -1749,8 +1751,9 @@ forked_passes_0_4 (systemtap_session &s)
+       try
+         {
+           rc = passes_0_4 (s);
+-          stdio_filebuf<char> buf(ret.second, ios_base::out);
+-          ostream o(&buf);
++          boost::iostreams::stream<boost::iostreams::file_descriptor_sink> o(
++            ret.second, boost::iostreams::file_descriptor_flags::close_handle
++          );
+           if (rc == 0 && s.last_pass > 4)
+             {
+               o << s.module_name << endl;
+diff --git a/language-server/stap-language-server.cxx b/language-server/stap-language-server.cxx
+index f610b570f..89f979fff 100644
+--- a/language-server/stap-language-server.cxx
++++ b/language-server/stap-language-server.cxx
+@@ -12,7 +12,6 @@
+ #include "session.h"
+ #include "tapsets.h"
+ #include "util.h"
+-#include <ext/stdio_filebuf.h>
+ 
+ using namespace std;
+ 
+diff --git a/stapbpf/Makefile.am b/stapbpf/Makefile.am
+index bb0c1eef8..f63c5ab26 100644
+--- a/stapbpf/Makefile.am
++++ b/stapbpf/Makefile.am
+@@ -28,7 +28,7 @@ stapbpf_CPPFLAGS = $(AM_CPPFLAGS)
+ stapbpf_CFLAGS = $(AM_CFLAGS) $(debuginfod_CFLAGS)
+ stapbpf_CXXFLAGS = $(AM_CXXFLAGS) $(debuginfod_CFLAGS)
+ stapbpf_LDFLAGS = $(AM_LDFLAGS) $(debuginfod_LDFLAGS)
+-stapbpf_LDADD = $(stapbpf_LIBS) -lpthread $(debuginfod_LIBS)
++stapbpf_LDADD = $(stapbpf_LIBS) -lpthread $(debuginfod_LIBS) @BOOST_IOSTREAMS_LIB@
+ 
+ BUILT_SOURCES =
+ CLEANFILES =
+diff --git a/stapdyn/Makefile.am b/stapdyn/Makefile.am
+index efd6ee1ca..8adb933f7 100644
+--- a/stapdyn/Makefile.am
++++ b/stapdyn/Makefile.am
+@@ -15,7 +15,7 @@ AM_CPPFLAGS += -DBINDIR='"$(bindir)"' -DSYSCONFDIR='"$(sysconfdir)"' -DPKGDATADI
+ 
+ AM_CFLAGS += @PIECFLAGS@
+ AM_CXXFLAGS += @PIECXXFLAGS@
+-AM_LDFLAGS = @PIELDFLAGS@ @BOOST_SYSTEM_LIB@
++AM_LDFLAGS = @PIELDFLAGS@ @BOOST_SYSTEM_LIB@ @BOOST_IOSTREAMS_LIB@
+ 
+ if HAVE_SELINUX
+ AM_CPPFLAGS += $(selinux_CFLAGS)
+diff --git a/staprun/Makefile.am b/staprun/Makefile.am
+index 507c15d0e..5eddbd683 100644
+--- a/staprun/Makefile.am
++++ b/staprun/Makefile.am
+@@ -15,7 +15,7 @@ AM_CPPFLAGS += -DBINDIR='"$(bindir)"' -DSYSCONFDIR='"$(sysconfdir)"' -DPKGDATADI
+ 
+ AM_CFLAGS += @PIECFLAGS@
+ AM_CXXFLAGS += @PIECXXFLAGS@
+-AM_LDFLAGS = @PIELDFLAGS@
++AM_LDFLAGS = @PIELDFLAGS@ @BOOST_IOSTREAMS_LIB@
+ 
+ bin_PROGRAMS = staprun stap-merge stapsh
+ pkglibexec_PROGRAMS = stapio
+diff --git a/tapset-been.cxx b/tapset-been.cxx
+index e4b303961..56ac240ad 100644
+--- a/tapset-been.cxx
++++ b/tapset-been.cxx
+@@ -18,8 +18,6 @@
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ static const string TOK_BEGIN("begin");
+ static const string TOK_END("end");
+diff --git a/tapset-debuginfod.cxx b/tapset-debuginfod.cxx
+index d16f2d49f..a7f65b97f 100644
+--- a/tapset-debuginfod.cxx
++++ b/tapset-debuginfod.cxx
+@@ -19,7 +19,6 @@
+ #include <unistd.h>
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ static const string TOK_DEBUGINFOD("debuginfod");
+ static const string TOK_ARCHIVE("archive");
+diff --git a/tapset-dynprobe.cxx b/tapset-dynprobe.cxx
+index fc4c1b4b4..6f60546ae 100644
+--- a/tapset-dynprobe.cxx
++++ b/tapset-dynprobe.cxx
+@@ -18,7 +18,6 @@
+ #include <string>
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ // ------------------------------------------------------------------------
+ // dynprobe derived 'probes': These don't really exist. The purpose of
+diff --git a/tapset-mark.cxx b/tapset-mark.cxx
+index 582d536c0..517488bd6 100644
+--- a/tapset-mark.cxx
++++ b/tapset-mark.cxx
+@@ -23,8 +23,6 @@ extern "C" {
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ static const string TOK_KERNEL("kernel");
+ static const string TOK_MARK("mark");
+diff --git a/tapset-method.cxx b/tapset-method.cxx
+index 85a1658b6..d8a1f7fd5 100644
+--- a/tapset-method.cxx
++++ b/tapset-method.cxx
+@@ -28,7 +28,6 @@ extern "C" {
+ }
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ static const string TOK_CLASS ("class");
+ static const string TOK_METHOD ("method");
+diff --git a/tapset-netfilter.cxx b/tapset-netfilter.cxx
+index 857659764..7bdb5dc82 100644
+--- a/tapset-netfilter.cxx
++++ b/tapset-netfilter.cxx
+@@ -16,7 +16,6 @@
+ #include <limits.h>
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ static const string TOK_NETFILTER("netfilter");
+ static const string TOK_HOOK("hook");
+diff --git a/tapset-perfmon.cxx b/tapset-perfmon.cxx
+index 90817a8b7..e3b09bdef 100644
+--- a/tapset-perfmon.cxx
++++ b/tapset-perfmon.cxx
+@@ -21,8 +21,6 @@ extern "C" {
+ }
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ static const string TOK_PERF("perf");
+ static const string TOK_TYPE("type");
+diff --git a/tapset-procfs.cxx b/tapset-procfs.cxx
+index f01bcbe3d..e5e264a6d 100644
+--- a/tapset-procfs.cxx
++++ b/tapset-procfs.cxx
+@@ -18,8 +18,6 @@
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ static const string TOK_PROCFS("procfs");
+ static const string TOK_READ("read");
+diff --git a/tapset-python.cxx b/tapset-python.cxx
+index cf18320fc..ba0b8f711 100644
+--- a/tapset-python.cxx
++++ b/tapset-python.cxx
+@@ -13,10 +13,11 @@
+ 
+ #include <cstring>
+ #include <string>
+-#include <ext/stdio_filebuf.h>
++
++#include <boost/iostreams/device/file_descriptor.hpp>
++#include <boost/iostreams/stream.hpp>
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ static const string TOK_PYTHON2("python2");
+ static const string TOK_PYTHON3("python3");
+@@ -433,15 +434,18 @@ python_builder::resolve(systemtap_session& s,
+   // Read stderr from the child.
+   if (s.verbose > 2)
+     {
+-      stdio_filebuf<char> in(child_err, ios_base::in);
+-      clog << &in;
++      boost::iostreams::stream<boost::iostreams::file_descriptor_source> in(
++        child_err, boost::iostreams::file_descriptor_flags::close_handle
++      );
++      std::copy(std::istream_iterator<char>(in), std::istream_iterator<char>(), std::ostream_iterator<char>(clog));
+       in.close();
+     }
+ 
+   // Read stdout from the child. Each line should contain 'MODULE
+   // FUNCTION [FLAG]'
+-  stdio_filebuf<char> buf(child_out, ios_base::in);
+-  istream in(&buf);
++  boost::iostreams::stream<boost::iostreams::file_descriptor_source> in(
++    child_err, boost::iostreams::file_descriptor_flags::close_handle
++  );
+   string line;
+   while (getline(in, line))
+     {
+@@ -458,7 +462,7 @@ python_builder::resolve(systemtap_session& s,
+       else
+ 	throw SEMANTIC_ERROR(_F("Unknown output from stap-resolve-module-function.py: %s", line.c_str()));
+     }
+-  buf.close();
++  in.close();
+ 
+   return stap_waitpid(s.verbose, child);
+ }
+diff --git a/tapset-timers.cxx b/tapset-timers.cxx
+index 10da17cda..6ce92949c 100644
+--- a/tapset-timers.cxx
++++ b/tapset-timers.cxx
+@@ -18,8 +18,6 @@
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ static const string TOK_TIMER("timer");
+ 
+diff --git a/tapset-utrace.cxx b/tapset-utrace.cxx
+index 335bafcce..a52dec70d 100644
+--- a/tapset-utrace.cxx
++++ b/tapset-utrace.cxx
+@@ -20,8 +20,6 @@
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ static const string TOK_PROCESS("process");
+ static const string TOK_BEGIN("begin");
+diff --git a/tapsets.cxx b/tapsets.cxx
+index a68c45b99..ad391e336 100644
+--- a/tapsets.cxx
++++ b/tapsets.cxx
+@@ -66,7 +66,6 @@ extern "C" {
+ }
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+ 
+ // for elf.h where PPC64_LOCAL_ENTRY_OFFSET isn't defined
+ #ifndef PPC64_LOCAL_ENTRY_OFFSET
+diff --git a/task_finder.cxx b/task_finder.cxx
+index b8ad1b71c..7d3d82700 100644
+--- a/task_finder.cxx
++++ b/task_finder.cxx
+@@ -19,8 +19,6 @@
+ 
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ // ------------------------------------------------------------------------
+ // task_finder and vma tracker derived 'probes': These don't really exist.
+diff --git a/util.cxx b/util.cxx
+index f90c74fce..5739f1c5e 100644
+--- a/util.cxx
++++ b/util.cxx
+@@ -23,7 +23,6 @@
+ #include <string>
+ #include <fstream>
+ #include <cassert>
+-#include <ext/stdio_filebuf.h>
+ #include <algorithm>
+ #include <mutex>
+ #include <functional> 
+@@ -53,11 +52,10 @@ extern "C" {
+ #endif
+ }
+ 
+-
++#include <boost/iostreams/device/file_descriptor.hpp>
++#include <boost/iostreams/stream.hpp>
+ 
+ using namespace std;
+-using namespace __gnu_cxx;
+-
+ 
+ // Return current users home directory or die.
+ const char *
+@@ -1072,8 +1070,10 @@ stap_system_read(int verbose, const vector<string>& args, ostream& out)
+   if (child > 0)
+     {
+       // read everything from the child
+-      stdio_filebuf<char> in(child_fd, ios_base::in);
+-      out << &in;
++      boost::iostreams::stream<boost::iostreams::file_descriptor_source> in(
++        child_fd, boost::iostreams::file_descriptor_flags::close_handle
++      );
++      std::copy(std::istream_iterator<char>(in), std::istream_iterator<char>(), std::ostream_iterator<char>(out));
+       return stap_waitpid(verbose, child);
+     }
+   return -1;
+@@ -1116,8 +1116,10 @@ stap_fork_read(int verbose, ostream& out)
+ 
+   // read everything from the child
+   close(pipefd[1]);
+-  stdio_filebuf<char> in(pipefd[0], ios_base::in);
+-  out << &in;
++  boost::iostreams::stream<boost::iostreams::file_descriptor_source> in(
++    pipefd[0], boost::iostreams::file_descriptor_flags::close_handle
++  );
++  std::copy(std::istream_iterator<char>(in), std::istream_iterator<char>(), std::ostream_iterator<char>(out));
+   return make_pair(false, stap_waitpid(verbose, child));
+ }
+ 
+-- 
+2.45.2
+
