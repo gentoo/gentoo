@@ -1,10 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit autotools linux-mod-r1 toolchain-funcs udev
+inherit autotools dkms toolchain-funcs udev
 
 DESCRIPTION="High-Performance Intra-Node MPI Communication"
 HOMEPAGE="https://knem.gitlabpages.inria.fr/"
@@ -13,14 +13,16 @@ LICENSE="GPL-2 LGPL-2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="debug modules"
+IUSE="debug"
 
 DEPEND="
-		sys-apps/hwloc:=
-		virtual/linux-sources"
+	sys-apps/hwloc:=
+	virtual/linux-sources
+"
 RDEPEND="
-		sys-apps/hwloc:=
-		sys-apps/kmod[tools]"
+	sys-apps/hwloc:=
+	sys-apps/kmod[tools]
+"
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -32,7 +34,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed 's:driver/linux::g' -i Makefile.am
+	if ! use dkms; then
+		sed 's:driver/linux::g' -i Makefile.am || die
+	fi
 	eautoreconf
 	default
 }
@@ -46,14 +50,18 @@ src_configure() {
 }
 
 src_compile() {
-	local modlist=( knem=misc:"${S}/driver/linux" )
+	local modlist=( knem=misc:driver/linux )
 	default
-	linux-mod-r1_src_compile || die "failed to build driver"
+	if use dkms; then
+		dkms_gentoofy_conf
+	else
+		linux-mod-r1_src_compile
+	fi
 }
 
 src_install() {
 	default
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	# Drop funny unneeded stuff
 	rm "${ED}/usr/sbin/knem_local_install" || die
@@ -64,7 +72,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 }
 

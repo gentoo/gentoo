@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=modules
-inherit autotools bash-completion-r1 linux-mod-r1 systemd
+inherit autotools bash-completion-r1 dkms systemd
 
 DESCRIPTION="IPset tool for iptables, successor to ippool"
 HOMEPAGE="https://ipset.netfilter.org/ https://git.netfilter.org/ipset/"
@@ -46,7 +46,7 @@ pkg_setup() {
 	ERROR_PAX_CONSTIFY_PLUGIN="ipset contains constified variables (#614896)"
 
 	build_modules=0
-	if use modules; then
+	if use modules && ! use dkms; then
 		if linux_config_src_exists && linux_chkconfig_builtin "MODULES" ; then
 			if linux_chkconfig_present "IP_NF_SET" || \
 				linux_chkconfig_present "IP_SET"; then #274577
@@ -66,7 +66,9 @@ pkg_setup() {
 		fi
 	fi
 
-	[[ ${build_modules} -eq 1 ]] && linux-mod-r1_pkg_setup
+	if use dkms || [[ ${build_modules} -eq 1 ]]; then
+		linux-mod-r1_pkg_setup
+	fi
 }
 
 src_configure() {
@@ -95,6 +97,9 @@ src_compile() {
 	if [[ ${build_modules} -eq 1 ]]; then
 		einfo "Building kernel modules"
 		linux-mod-r1_src_compile
+	elif use dkms; then
+		# No autoinstall since this is not suitable for every kernel
+		dkms_autoconf --no-autoinstall
 	fi
 }
 
@@ -112,5 +117,7 @@ src_install() {
 	if [[ ${build_modules} -eq 1 ]]; then
 		einfo "Installing kernel modules"
 		linux-mod-r1_src_install
+	elif use dkms; then
+		dkms_dopackage
 	fi
 }

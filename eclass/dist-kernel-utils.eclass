@@ -66,18 +66,56 @@ dist-kernel_get_image_path() {
 }
 
 # @FUNCTION: dist-kernel_install_kernel
-# @USAGE: <version> <image> <system.map>
+# @USAGE: <version> <image> <system.map> <dir> [--optargs]
 # @DESCRIPTION:
-# Install kernel using installkernel tool.  <version> specifies
-# the kernel version, <image> full path to the image, <system.map>
-# full path to System.map.
+# Install kernel using installkernel tool. <version> specifies the
+# kernel version, <image> full path to the image, <system.map> full
+# path to System.map, and <dir> the install target directory. If
+# unspecified then <version> defaults to ${KV_FULL}, <image> defaults
+# to the standard kernel image at ${KV_DIR}, <system.map> defaults to
+# the System.map file in the ${KV_DIR}, and <dir> defaults to
+# ${EROOT}/boot. Any additional optional arguments are directly passed
+# on to installkernel if the installed version of installkernel is
+# at least 56. See the installkernel and kernel-install manuals for
+# an overview of which optional arguments are supported. Of particular
+# interest is the --all argument which may be used to iteratively
+# (re-)install all distribution kernels installed on the system.
 dist-kernel_install_kernel() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${#} -eq 3 ]] || die "${FUNCNAME}: invalid arguments"
-	local version=${1}
-	local image=${2}
-	local map=${3}
+	local version=${KV_FULL}
+	local image=${KV_DIR}/$(dist-kernel_get_image_path)
+	local map=${KV_DIR}/System.map
+	local dir=${EROOT}/boot
+
+	local arg counter=0 extrargs=( --verbose )
+	for arg in "${@}"; do
+		case "${arg}" in
+			-*) extrargs+=( "${arg}" );;
+			*)
+				let counter=counter+1
+				if [[ ${counter} -eq 1 ]]; then
+					version=${arg}
+				elif [[ ${counter} -eq 2 ]]; then
+					image=${arg}
+				elif [[ ${counter} -eq 3 ]]; then
+					map=${arg}
+				elif [[ ${counter} -eq 4 ]]; then
+					dir=${arg}
+				else
+					die "${FUNCNAME}: Too many arguments"
+				fi
+			;;
+		esac
+	done
+
+	local installkernel_args=(
+		"${version}" "${image}" "${map}" "${dir}"
+	)
+	# Versions prior to 56 have no support for parsing optional args.
+	if has_version ">=sys-kernel/installkernel-56"; then
+		installkernel_args+=( "${extrargs[@]}" )
+	fi
 
 	local success=
 	# not an actual loop but allows error handling with 'break'
@@ -107,8 +145,7 @@ dist-kernel_install_kernel() {
 		ebegin "Installing the kernel via installkernel"
 		# note: .config is taken relatively to System.map;
 		# initrd relatively to bzImage
-		ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}" \
-			"${EROOT}/boot" || break
+		ARCH=$(tc-arch-kernel) installkernel "${installkernel_args[@]}" || break
 		eend ${?} || die -n "Installing the kernel failed"
 
 		success=1
@@ -129,39 +166,61 @@ dist-kernel_install_kernel() {
 		eerror "in the logs above and once you resolve the problems please"
 		eerror "run the equivalent of the following command to try again:"
 		eerror
-		eerror "    emerge --config ${kernel}"
+		if has --all "${installkernel_args[@]}"; then
+			eerror "    installkernel ${extrargs[*]}"
+		else
+			eerror "    emerge --config ${kernel}"
+		fi
 		die "Kernel install failed, please fix the problems and run emerge --config"
 	fi
 }
 
 # @FUNCTION: dist-kernel_reinstall_initramfs
-# @USAGE: <kv-dir> <kv-full>
+# @USAGE: <kv-dir> <kv-full> [--optargs]
 # @DESCRIPTION:
 # Rebuild and install initramfs for the specified dist-kernel.
-# <kv-dir> is the kernel source directory (${KV_DIR} from linux-info),
-# while <kv-full> is the full kernel version (${KV_FULL}).
-# The function will determine whether <kernel-dir> is actually
-# a dist-kernel, and whether initramfs was used.
+# <kv-dir> is the kernel source directory (defaults to ${KV_DIR} from
+# linux-info), and <kv-full> is the full kernel version (defaults to
+# ${KV_FULL}). Any additional optional arguments are passed on to
+# dist-kernel_install_kernel() which passes them on to installkernel.
 #
 # This function is to be used in pkg_postinst() of ebuilds installing
-# kernel modules that are included in the initramfs.
+# kernel modules that are included in the initramfs. In order to
+# reinstall *all* distribution kernels currently installed on the
+# system add the --all argument (requires installkernel-56 or newer).
 dist-kernel_reinstall_initramfs() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
-	local kernel_dir=${1}
-	local ver=${2}
+	local kernel_dir=${KV_DIR}
+	local ver=${KV_FULL}
+
+	local arg counter=0 extrargs=()
+	for arg in "${@}"; do
+		case "${arg}" in
+			-*) extrargs+=( "${arg}" );;
+			*)
+				let counter=counter+1
+				if [[ ${counter} -eq 1 ]]; then
+					kernel_dir=${arg}
+				elif [[ ${counter} -eq 2 ]]; then
+					ver=${arg}
+				else
+					die "${FUNCNAME}: Too many arguments"
+				fi
+			;;
+		esac
+	done
 
 	local image_path=${kernel_dir}/$(dist-kernel_get_image_path)
 	if [[ ! -f ${image_path} ]]; then
 		eerror "Kernel install missing, image not found:"
 		eerror "  ${image_path}"
-		eerror "Initramfs will not be updated.  Please reinstall your kernel."
+		eerror "Initramfs will not be updated.  Please reinstall kernel ${ver}."
 		return
 	fi
 
 	dist-kernel_install_kernel "${ver}" "${image_path}" \
-		"${kernel_dir}/System.map"
+		"${kernel_dir}/System.map" "${extrargs[@]}"
 }
 
 # @FUNCTION: dist-kernel_PV_to_KV
