@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing-text.patch
 	"${FILESDIR}"/${P}-svg-libxml2.patch
 	"${FILESDIR}"/${P}-gcc14-build-fix.patch
+	"${FILESDIR}"/${P}-bool.patch
 )
 
 src_prepare() {
@@ -54,7 +55,6 @@ src_configure() {
 	# note: sdlpango<->sdlttf breaks ABI, prefer default pango
 	local econfargs=(
 		$(usex svg '' --without-rsvg)
-		--disable-static
 	)
 	econf "${econfargs[@]}"
 }

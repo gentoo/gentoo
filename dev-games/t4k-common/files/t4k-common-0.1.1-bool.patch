@@ -1,0 +1,33 @@
+Double-wrap bool in case it's a keyword, not macro, for C23.
+As typedef enum bool was guarded before and downstream user
+tuxmath package takes care to use bool type only internally,
+without exposing it over the network or to filesystem,
+I act under presumption that this is ok to do in this
+installable header.
+https://bugs.gentoo.org/943953
+--- a/src/t4k_common.h
++++ b/src/t4k_common.h
+@@ -55,6 +55,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdbool.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <dirent.h>
+@@ -124,6 +125,7 @@
+ // #define _(String) gettext (String)
+ 
+ #ifndef bool
++#if __STDC_VERSION__ <= 201710L
+ typedef enum
+ {
+    false, 
+@@ -131,6 +133,7 @@
+ }
+ bool;
++#endif
+ #endif
+ 
+ // Debug macros
+ #define DEBUGCODE(mask) if((mask) & debug_status)
