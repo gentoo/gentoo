@@ -1,0 +1,41 @@
+From 87a7e04982a2d2963b10965304d822554d1ec848 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Tue, 11 Feb 2025 10:57:14 +0100
+Subject: [PATCH] Do not log error if non-OpenResty Lua is used
+
+Users are perfectly capable of reading the recommendation on README and
+deciding themselves which distribution of Lua to use. There is no need
+to scream at the users each time NGINX is started.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ src/ngx_http_lua_module.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/src/ngx_http_lua_module.c b/src/ngx_http_lua_module.c
+index 63367f46..4ddf7b21 100644
+--- a/src/ngx_http_lua_module.c
++++ b/src/ngx_http_lua_module.c
+@@ -895,18 +895,7 @@ ngx_http_lua_init(ngx_conf_t *cf)
+     if (lmcf->lua == NULL) {
+         dd("initializing lua vm");
+ 
+-#ifndef OPENRESTY_LUAJIT
+-        if (ngx_process != NGX_PROCESS_SIGNALLER && !ngx_test_config) {
+-            ngx_log_error(NGX_LOG_ALERT, cf->log, 0,
+-                          "detected a LuaJIT version which is not OpenResty's"
+-                          "; many optimizations will be disabled and "
+-                          "performance will be compromised (see "
+-                          "https://github.com/openresty/luajit2 for "
+-                          "OpenResty's LuaJIT or, even better, consider using "
+-                          "the OpenResty releases from https://openresty.org/"
+-                          "en/download.html)");
+-        }
+-#else
++#ifdef OPENRESTY_LUAJIT
+ #   if !defined(HAVE_LUA_RESETTHREAD)
+         ngx_log_error(NGX_LOG_ALERT, cf->log, 0,
+                       "detected an old version of OpenResty's LuaJIT missing "
+-- 
+2.45.3
+
