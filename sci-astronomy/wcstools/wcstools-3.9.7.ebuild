@@ -1,13 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="World Coordinate System library for astronomical FITS images"
 HOMEPAGE="http://tdc-www.harvard.edu/software/wcstools/"
-SRC_URI="http://tdc-www.harvard.edu/software/wcstools/Old/${P}.tar.gz"
+SRC_URI="http://tdc-www.harvard.edu/software/wcstools/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -27,9 +27,9 @@ src_prepare() {
 	einfo "Copying gentoo autotools files"
 	local f
 	for f in "${FILESDIR}"/{configure.ac,wcstools.pc.in,Makefile.am}; do
-		cp ${f} "${S}"/ || die
+		cp -v ${f} "${S}"/ || die
 	done
-	cp "${FILESDIR}"/Makefile.libwcs.am "${S}"/libwcs/Makefile.am || die
+	cp -v "${FILESDIR}"/Makefile.libwcs.am "${S}"/libwcs/Makefile.am || die
 	# avoid colliding with fixdos, getdate and remap from other packages
 	sed -i \
 		-e 's/getdate/wcsgetdate/' \
@@ -38,6 +38,12 @@ src_prepare() {
 		-e "s/3.... Programs/${PV} Programs/" \
 		wcstools || die
 	eautoreconf
+}
+
+src_configure() {
+	append-cflags -std=gnu17
+
+	default
 }
 
 src_test() {
