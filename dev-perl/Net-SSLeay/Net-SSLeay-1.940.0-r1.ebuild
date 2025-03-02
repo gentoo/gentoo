@@ -17,20 +17,16 @@ IUSE="minimal examples"
 
 RDEPEND="
 	dev-libs/openssl:=
-	virtual/perl-MIME-Base64
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	virtual/perl-File-Spec
 	test? (
 		!minimal? (
 			dev-perl/Test-Exception
 			dev-perl/Test-Warn
 			dev-perl/Test-NoWarnings
 		)
-		virtual/perl-Test-Simple
 	)
 "
 
