@@ -153,7 +153,7 @@ src_configure() {
 		-DBUILD_CAM=$(usex cam)
 		-DBUILD_CLOUD=$(usex cloud)
 		-DBUILD_DRAFT=ON
-		# see below for DRAWING
+		-DBUILD_DRAWING=OFF						# Unmaintained and not ported to Qt 6
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=$(usex fem $(usex netgen))
 		-DBUILD_FLAT_MESH=$(usex mesh)			# a submodule of MeshPart
@@ -231,8 +231,6 @@ src_configure() {
 			-DQt6Core_MOC_EXECUTABLE="$(qt6_get_bindir)/moc"
 			-DQt6Core_RCC_EXECUTABLE="$(qt6_get_bindir)/rcc"
 			-DBUILD_QT5=OFF
-			# Drawing module unmaintained and not ported to qt6
-			-DBUILD_DRAWING=OFF
 		)
 	fi
 
