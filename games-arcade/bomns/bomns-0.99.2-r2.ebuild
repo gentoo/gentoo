@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -23,25 +23,12 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fpe.patch
+	"${FILESDIR}"/${P}-c23.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
 	default
-
-	sed -i \
-		-e "/appicondir/s:\$(prefix):/usr:" \
-		-e "/desktopdir/s:\$(prefix):/usr:" \
-		$(find icons -name Makefile.am) \
-		Makefile.am || die
-
-	sed -i \
-		-e "s:\$*[({]prefix[})]/share:/var/lib/:" \
-		configure.in \
-		graphics/Makefile.am \
-		levels/Makefile.am \
-		sounds/Makefile.am || die
-
-	mv configure.{in,ac} || die
 
 	eautoreconf
 }
