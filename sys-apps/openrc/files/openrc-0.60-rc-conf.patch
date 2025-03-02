@@ -1,0 +1,14 @@
+# commit https://github.com/OpenRC/openrc/commit/01ba72b0b7f9b4c5ef7271ef05094f88ad0c96a8
+diff --git a/src/librc/librc-misc.c b/src/librc/librc-misc.c
+index b1b9da46..b309396c 100644
+--- a/src/librc/librc-misc.c
++++ b/src/librc/librc-misc.c
+@@ -418,7 +418,7 @@ rc_conf_value(const char *setting)
+ 	}
+ 
+ 	xasprintf(&conf, "%s/%s", sysconfdir, "rc.conf");
+-	rc_conf_append(sysconfdir);
++	rc_conf_append(conf);
+ 	free(conf);
+ 
+ 	/* Support old configs. */
