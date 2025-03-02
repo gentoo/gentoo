@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# idealseal <realidealseal@protonmail.com> (2025-03-02)
+# Fish was ported to Rust.
+>=app-shells/fish-4.0.0
 
 # James Le Cuirot <chewi@gentoo.org> (2024-12-17)
 # steam-overlay packages requiring Rust.
