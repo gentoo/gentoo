@@ -808,6 +808,9 @@ kernel-install_pkg_postrm() {
 			find "${kernel_dir}" -depth -type d -empty -delete
 		eend ${?}
 	fi
+
+	# Clean up dead symlinks
+	find -L "${EROOT}/lib/modules/${KV_FULL}" -type l -delete
 }
 
 # @FUNCTION: kernel-install_pkg_config
