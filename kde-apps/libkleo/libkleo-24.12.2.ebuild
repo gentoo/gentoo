@@ -34,3 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/boost
 "
+
+src_test() {
+	# parallel tests fail, bug 946863
+	ecm_src_test -j1
+}
