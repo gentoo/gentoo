@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 EPYTEST_XDIST=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -33,7 +33,7 @@ BDEPEND="
 		app-arch/lzip
 		app-arch/lzop
 		app-arch/ncompress
-		app-arch/p7zip[rar]
+		app-arch/p7zip
 		app-arch/pbzip2
 		app-arch/pdlzip
 		app-arch/pigz
@@ -60,6 +60,7 @@ BDEPEND="
 		sys-apps/grep
 		!elibc_musl? ( app-arch/rar )
 		!x86? (
+			app-arch/7zip
 			app-arch/clzip
 			app-arch/lrzip
 			app-arch/unar
@@ -75,6 +76,7 @@ BDEPEND="
 # app-arch/clzip is unkeyworded on x86
 # app-arch/lrzip bug #916317 on x86
 # app-arch/unar is unkeyworded on x86
+# app-arch/7zip is unkeyworded on x86
 
 # Unpackaged testable dependencies
 # archmage
@@ -88,19 +90,13 @@ BDEPEND="
 # star
 # unalz
 # uncompress.real
-# 7zz ( app-arch/7zip:guru )
 
 distutils_enable_tests pytest
 
-PATCHES=(
-	"${FILESDIR}"/patool-3.1.0-fix-file-5.46-compat.patch
-)
-
-src_install() {
-	distutils-r1_src_install
-
+python_install_all() {
 	einstalldocs
 	doman doc/patool.1
+	distutils-r1_python_install_all
 }
 
 python_test() {
@@ -113,10 +109,6 @@ python_test() {
 		"tests/archives/test_arc.py"
 		# Error: 1002 (invalid input file)
 		"tests/archives/test_mac.py"
-		# Needs upstream changes to handle app-arch/7zip[-rar]
-		# https://github.com/wummel/patool/commit/0cd8855a27ee78d3cf283bd62750ed3e846a5e0b
-		# https://github.com/wummel/patool/commit/b2573ed8eaaadf0965ef83fee48b8ecdba0ca124
-		"tests/archives/test_7zz.py"
 	)
 	local EPYTEST_DESELECT=()
 
