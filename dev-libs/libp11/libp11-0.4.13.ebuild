@@ -17,11 +17,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/openssl-3.0.0:=[bindist(+)]
-	!~dev-libs/openssl-3.2.0
-	!=dev-libs/openssl-3.2.1-r0
-	!=dev-libs/openssl-3.0.13-r1
-	!=dev-libs/openssl-3.0.13-r0
-	!~dev-libs/openssl-3.0.12
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/softhsm )
