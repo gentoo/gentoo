@@ -262,6 +262,9 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	clang? ( || (
+		(	llvm-core/clang:20
+			llvm-core/llvm:20
+			=llvm-core/lld-20*	)
 		(	llvm-core/clang:19
 			llvm-core/llvm:19
 			=llvm-core/lld-19*	)
