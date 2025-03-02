@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MY_P=${PN}-${PV/./-}
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
-SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${MY_P}.tar.gz
+SRC_URI="https://ftp.gnu.org/old-gnu/emacs/${MY_P}.tar.gz
 	https://dev.gentoo.org/~ulm/emacs/${P}-patches.tar.gz"
 S="${WORKDIR}/elisp"
 
