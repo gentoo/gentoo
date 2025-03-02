@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2025-03-02)
+# Doesn't seem to cleanly load, see:
+# https://github.com/lkrg-org/lkrg/issues/364
+=app-antivirus/lkrg-0.9.9
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
 # Last release 14 years ago, dead upstream, depends on Qt5 (and even that
 # only by means of downstream patching). Bug #947634.
