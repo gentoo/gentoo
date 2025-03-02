@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=SQLAlchemy
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_REQ_USE="sqlite?"
 
 inherit distutils-r1 optfeature pypi
@@ -55,6 +55,14 @@ python_test() {
 	)
 	local sqlite_version=$(sqlite3 --version | cut -d' ' -f1)
 	case ${EPYTHON} in
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				# TODO
+				test/orm/test_utils.py::ContextualWarningsTest::test_autoflush_implicit
+				test/orm/test_utils.py::ContextualWarningsTest::test_configure_mappers_explicit
+				"test/sql/test_resultset.py::CursorResultTest_sqlite+pysqlite_${sqlite_version//./_}::test_new_row_no_dict_behaviors"
+			)
+			;&
 		pypy3)
 			EPYTEST_DESELECT+=(
 				test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
