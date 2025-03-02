@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RDEPEND="
 	net-misc/curl
 	sys-apps/util-linux
 	virtual/imagemagick-tools[tiff]
-	javascript? ( dev-java/rhino )
+	javascript? ( >=dev-java/rhino-1.8.0:0 )
 	view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )"
 
 # NOTES:
