@@ -7,7 +7,7 @@ inherit toolchain-funcs flag-o-matic multilib
 
 DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
-SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
+SRC_URI="https://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
 	https://dev.gentoo.org/~ulm/emacs/${P}-patches-15.tar.xz"
 
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
