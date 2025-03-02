@@ -6,6 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 inherit bash-completion-r1 distutils-r1 git-r3 optfeature wrapper
+IUSE="chromium"
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
 HOMEPAGE="https://github.com/yt-dlp/yt-dlp/"
@@ -17,6 +18,7 @@ IUSE="man"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	chromium? ( dev-python/secretstorage )
 	!net-misc/youtube-dl[-yt-dlp(-)]
 "
 BDEPEND="
