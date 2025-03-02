@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-c23-fix.patch
+	"${FILESDIR}"/${PN}-1.14.2-c23-fix.patch
 )
 
 src_configure() {
