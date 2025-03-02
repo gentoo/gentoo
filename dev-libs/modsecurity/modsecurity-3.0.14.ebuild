@@ -1,25 +1,24 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} )
 
-inherit autotools lua-single
+inherit lua-single
 
 MY_P=${PN}-v${PV}
 
 DESCRIPTION="Application firewall and intrusion detection"
-HOMEPAGE="https://github.com/SpiderLabs/ModSecurity"
+HOMEPAGE="https://github.com/owasp-modsecurity/ModSecurity"
 SRC_URI="
-	https://github.com/SpiderLabs/ModSecurity/releases/download/v${PV}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-slibtool.patch
+	https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${PV}/${MY_P}.tar.gz
 "
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
+SLOT="0/3"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc fuzzyhash geoip geoip2 json lmdb lua pcre2"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -39,18 +38,8 @@ BDEPEND="virtual/pkgconfig
 
 DOCS=( AUTHORS CHANGES README.md modsecurity.conf-recommended unicode.mapping )
 
-PATCHES=(
-	# https://github.com/SpiderLabs/ModSecurity/pull/2980
-	"${DISTDIR}"/${PN}-slibtool.patch # 913484
-)
-
 pkg_setup() {
 	use lua && lua-single_pkg_setup
-}
-
-src_prepare() {
-	default
-	eautoreconf # for the slibtool patch
 }
 
 src_configure() {
