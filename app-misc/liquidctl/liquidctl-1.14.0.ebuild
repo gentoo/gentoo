@@ -1,11 +1,11 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 udev
+inherit distutils-r1 udev xdg-utils
 
 DESCRIPTION="Cross-platform tool and drivers for liquid coolers and other devices"
 HOMEPAGE="https://github.com/liquidctl/liquidctl"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/colorlog[${PYTHON_USEDEP}]
-	dev-python/crcmod[${PYTHON_USEDEP}]
+	~dev-python/crcmod-1.7[${PYTHON_USEDEP}]
 	dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/hidapi[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
@@ -31,8 +31,9 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_test() {
-	# Without this variable, it attempts to write to /var/run and fails
-	XDG_RUNTIME_DIR="${T}/xdg" distutils-r1_src_test || die
+	# Clear xdg env, otherwise it attempts to write to /var/run and fails
+	xdg_environment_reset
+	distutils-r1_src_test
 }
 
 python_install_all() {
