@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/942788
+https://lore.kernel.org/ell/20250227150058.160709-1-prestwoj@gmail.com/T/#u
+From: James Prestwood <prestwoj@gmail.com>
+To: ell@lists.linux.dev
+Cc: James Prestwood <prestwoj@gmail.com>
+Subject: [PATCH] unit: use l_basename in test-path
+Date: Thu, 27 Feb 2025 07:00:58 -0800
+Message-Id: <20250227150058.160709-1-prestwoj@gmail.com>
+X-Mailer: git-send-email 2.34.1
+Precedence: bulk
+X-Mailing-List: ell@lists.linux.dev
+List-Id: <ell.lists.linux.dev>
+List-Subscribe: <mailto:ell+subscribe@lists.linux.dev>
+List-Unsubscribe: <mailto:ell+unsubscribe@lists.linux.dev>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+This fixes a compiler error on musl
+---
+ unit/test-path.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/unit/test-path.c b/unit/test-path.c
+index 1f74423..f01fa52 100644
+--- a/unit/test-path.c
++++ b/unit/test-path.c
+@@ -55,14 +55,14 @@ static void test_path_find(const void *data)
+ 	static const char *cant_find = "/foo:/bar:/dir:fr";
+ 	static const char *can_find = "/tmp";
+ 	char *tmp_path = l_strdup("/tmp/foobarXXXXXX.tmp");
+-	char *base;
++	const char *base;
+ 	char *path;
+ 	int fd;
+ 
+ 	fd = L_TFR(mkostemps(tmp_path, 4, O_CLOEXEC));
+ 	assert(fd > 0);
+ 	L_TFR(close(fd));
+-	base = basename(tmp_path);
++	base = l_basename(tmp_path);
+ 
+ 	assert(l_path_find(base, cant_find, F_OK) == NULL);
+ 
+-- 
+2.34.1
