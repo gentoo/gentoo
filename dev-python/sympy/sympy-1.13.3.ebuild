@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1 virtualx
 
@@ -31,7 +31,9 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	ipython? (
-		dev-python/ipython[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/ipython[${PYTHON_USEDEP}]
+		' pypy3 'python*')
 	)
 	latex? (
 		virtual/latex-base
@@ -40,7 +42,11 @@ RDEPEND="
 		pdf? ( app-text/ghostscript-gpl )
 	)
 	mathml? ( dev-python/lxml[${PYTHON_USEDEP}] )
-	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
+	opengl? (
+		$(python_gen_cond_dep '
+			dev-python/pyopengl[${PYTHON_USEDEP}]
+		' pypy3 'python*')
+	)
 	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )
