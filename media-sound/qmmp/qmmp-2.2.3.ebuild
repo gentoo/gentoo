@@ -34,9 +34,9 @@ REQUIRED_USE="
 	shout? ( soxr vorbis )
 	udisks? ( dbus )
 "
-
+# qtbase[sql] to help autounmask of sqlite
 RDEPEND="
-	dev-qt/qtbase:6[X?,dbus?,gui,network,sqlite,widgets]
+	dev-qt/qtbase:6[X?,dbus?,gui,network,sql,sqlite,widgets]
 	media-libs/taglib:=
 	X? ( x11-libs/libX11 )
 	aac? ( media-libs/faad2 )
