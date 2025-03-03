@@ -1,0 +1,56 @@
+From fa8bf4476f74679c1a5e1a4ca55bf5327b4bd558 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Mon, 3 Mar 2025 12:16:23 +0100
+Subject: [PATCH] add missing includes
+
+Several includes are missing based on linux man pages:
+
+- strings.h for strcasecmp
+- alloca.h  for alloca
+- stdio.h   for fileno
+
+The compilation with GCC 15 fails without those with implicit function
+declaration error.
+---
+
+Upstream-PR: https://github.com/Baron-von-Riedesel/JWasm/pull/34
+
+diff --git a/src/H/globals.h b/src/H/globals.h
+index 2992cc7..607e5f5 100644
+--- a/src/H/globals.h
++++ b/src/H/globals.h
+@@ -39,6 +39,7 @@
+ 
+ #if defined(__UNIX__) || defined(__CYGWIN__) || defined(__DJGPP__) /* avoid for MinGW! */
+ 
++#include <strings.h>
+ #define _stricmp strcasecmp
+ #ifndef __WATCOMC__
+ #define _memicmp strncasecmp
+diff --git a/src/H/memalloc.h b/src/H/memalloc.h
+index d2a8460..7a4e364 100644
+--- a/src/H/memalloc.h
++++ b/src/H/memalloc.h
+@@ -44,6 +44,7 @@ extern void MemFree( void *ptr );
+ 
+ #elif defined(__GNUC__) || defined(__TINYC__)
+ 
++#include <alloca.h>
+ #define myalloca  alloca
+ #ifndef __FreeBSD__  /* added v2.08 */
+ #include <malloc.h>  /* added v2.07 */
+diff --git a/src/omf.c b/src/omf.c
+index 8d98b1f..d90afae 100644
+--- a/src/omf.c
++++ b/src/omf.c
+@@ -62,6 +62,7 @@
+ 
+ #if TRUNCATE
+ #if defined(__UNIX__) || defined(__CYGWIN__) || defined(__DJGPP__)
++#include <stdio.h>
+ #include <unistd.h>
+ #else
+ #include <io.h>
+-- 
+2.45.3
+
