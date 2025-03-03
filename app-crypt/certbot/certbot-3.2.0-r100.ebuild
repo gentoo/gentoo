@@ -71,15 +71,15 @@ BDEPEND="
 
 # See each setup.py for dependencies
 # Also discard the previous related packages
+# except their transition step
 RDEPEND="
-	!app-crypt/acme
-	!app-crypt/certbot-apache
-	!app-crypt/certbot-nginx
-	!app-crypt/certbot-dns-dnsimple
-	!app-crypt/certbot-dns-nsone
-	!app-crypt/certbot-dns-cloudflare
-	!app-crypt/certbot-dns-desec
-	!app-crypt/certbot-dns-rfc2136
+	!<app-crypt/acme-3.2.0-r100
+	!<app-crypt/certbot-apache-3.2.0-r100
+	!<app-crypt/certbot-dns-desec-3.2.0-r100
+	!<app-crypt/certbot-dns-dnsimple-3.2.0-r100
+	!<app-crypt/certbot-dns-nsone-3.2.0-r100
+	!<app-crypt/certbot-dns-rfc2136-3.2.0-r100
+	!<app-crypt/certbot-nginx-3.2.0-r100
 
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-1.5.3[${PYTHON_USEDEP}]
@@ -137,6 +137,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-certbot )
 "
 # RDEPEND+="
+#	!<app-crypt/certbot-dns-cloudflare-3.2.0-r100
+#
 # 	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}] # @TODO is still necessary?
 # 	certbot-dns-cloudflare? (
 # 		# Available in GURU
