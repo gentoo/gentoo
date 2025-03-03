@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-lua module embeds LuaJIT 2.0/2.1 into NGINX. By leveraging NGINX's subrequests, this
+		module allows the integration of the powerful Lua threads (known as Lua "coroutines") into
+		the NGINX event model.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/openresty/lua-nginx-module/issues</bugs-to>
+		<remote-id type="github">openresty/lua-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>
