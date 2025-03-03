@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Uniform Resource Identifiers (absolute and relative)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	virtual/perl-Carp
