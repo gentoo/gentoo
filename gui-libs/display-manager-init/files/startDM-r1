@@ -12,9 +12,18 @@
 # Bail out early if on a non-OpenRC system:
 if [ ! -d /run/openrc ]; then
 	eerror "$0 should only be used on OpenRC systems"
+	exit 1
 fi
 
-. /lib/rc/sh/functions.sh
+# rc_libexec moved in >=openrc-0.56
+if [ -e /lib/rc/sh/functions.sh ]; then
+	. /lib/rc/sh/functions.sh
+elif [ -e /usr/libexec/rc/sh/functions.sh ]; then
+	. /usr/libexec/rc/sh/functions.sh
+else
+	eerror "Unable to find rc/sh/functions.sh"
+	exit 1
+fi
 
 export RC_SVCNAME=display-manager
 EXEC="$(get_options service)"
