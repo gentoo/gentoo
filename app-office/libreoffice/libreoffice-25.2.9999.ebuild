@@ -306,6 +306,10 @@ PATCHES=(
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
+
+	# add qt6 backend as possible fallback for gtk-based desktop environments:
+	# https://bugs.gentoo.org/950170
+	"${FILESDIR}/${PN}-25.2-vcl-backend-fallback.patch"
 )
 
 _check_reqs() {
