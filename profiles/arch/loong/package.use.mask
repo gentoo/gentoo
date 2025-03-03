@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-03-04)
+# this target has support for sanitizers
+sys-devel/gcc -sanitize
+
 # Alfred Wingate <parona@protonmail.com> (2025-02-22)
 # media-libs/zint is not keyworded here
 media-libs/zxing-cpp experimental
