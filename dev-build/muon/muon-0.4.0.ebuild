@@ -21,7 +21,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc"
 IUSE="+archive +curl +libpkgconf test"
 
 DEPEND="
