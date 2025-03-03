@@ -73,7 +73,8 @@ ERROR_DEBUG_FS="${PN} works best with support for Debug Filesystem (DEBUG_FS) - 
 
 DOCS="AUTHORS HACKING NEWS README"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
+# bug #935333, bug #923597, and so on; needs work to get passing on Gentoo.
+RESTRICT="!test? ( test ) test"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.1-ia64.patch"
 )
