@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Read/write encrypted ASN.1 PEM files"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	dev-perl/Class-ErrorHandler
