@@ -412,45 +412,19 @@ linux-mod-r1_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 	_modules_check_function ${#} 0 0 || return 0
 
-	[[ ${modlist@a} == *a* && ${#modlist[@]} -gt 0 ]] ||
-		die "${FUNCNAME[0]} was called without a 'modlist' array"
-
 	# run this again to verify built files access with src_compile's user
 	_modules_sanity_kernelbuilt
 
-	local -a emakeargs=( "${MODULES_MAKEARGS[@]}" )
-	[[ ${modargs@a} == *a* ]] && emakeargs+=( "${modargs[@]}" )
+	modules_process_modlist
 
 	local -A built=()
 	local build mod name target
 	for mod in "${modlist[@]}"; do
-		# note modlist was not made an associative array ([name]=) to preserve
-		# ordering, but is still using = to improve readability
 		name=${mod%%=*}
-		[[ -n ${name} && ${name} != *:* ]] || die "invalid mod entry '${mod}'"
-
-		# 0:install-dir 1:source-dir 2:build-dir 3:make-target(s)
 		mod=${mod#"${name}"}
 		IFS=: read -ra mod <<<"${mod#=}"
-		[[ ${#mod[@]} -le 4 ]] || die "too many ':' in ${name}'s modlist"
-
-		[[ ${mod[1]:=${PWD}} != /* ]] && mod[1]=${PWD}/${mod[1]}
-		[[ ${mod[2]:=${mod[1]}} != /* ]] && mod[2]=${PWD}/${mod[2]}
-		_MODULES_INSTALL[${mod[2]}/${name}.ko]=${mod[0]:-extra}
 
 		pushd "${mod[1]}" >/dev/null || die
-
-		if [[ -z ${mod[3]} ]]; then
-			# guess between commonly used targets if none given, fallback to
-			# an empty target without trying to see the error output
-			for target in module{s,} "${name}".ko default all; do
-				nonfatal emake "${emakeargs[@]}" -q "${target}" &>/dev/null
-				if [[ ${?} -eq 1 ]]; then
-					mod[3]=${target}
-					break
-				fi
-			done
-		fi
 
 		# sometime modules are all from same source dir and built all at once,
 		# make will not rebuild either way but can skip the unnecessary noise
@@ -527,6 +501,56 @@ linux-mod-r1_pkg_postinst() {
 		eqawarn "QA Notice: neither linux-mod-r1_src_install nor modules_post_process were used"
 }
 
+# @FUNCTION: modules_process_modlist
+# @USAGE:
+# @DESCRIPTION:
+# Process the ebuilds modlist. Sets the default values for each
+# module in the modlist array in preparation for the module build.
+modules_process_modlist() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${modlist@a} == *a* && ${#modlist[@]} -gt 0 ]] ||
+		die "${FUNCNAME[0]} was called without a 'modlist' array"
+
+	emakeargs=( "${MODULES_MAKEARGS[@]}" )
+	[[ ${modargs@a} == *a* ]] && emakeargs+=( "${modargs[@]}" )
+
+	local index mod name target
+	for index in "${!modlist[@]}"; do
+		mod=${modlist[index]}
+		# note modlist was not made an associative array ([name]=) to preserve
+		# ordering, but is still using = to improve readability
+		name=${mod%%=*}
+		[[ -n ${name} && ${name} != *:* ]] || die "invalid mod entry '${mod}'"
+
+		# 0:install-dir 1:source-dir 2:build-dir 3:make-target(s)
+		mod=${mod#"${name}"}
+		IFS=: read -ra mod <<<"${mod#=}"
+		[[ ${#mod[@]} -le 4 ]] || die "too many ':' in ${name}'s modlist"
+
+		[[ ${mod[1]:=${PWD}} != /* ]] && mod[1]=${PWD}/${mod[1]}
+		[[ ${mod[2]:=${mod[1]}} != /* ]] && mod[2]=${PWD}/${mod[2]}
+		_MODULES_INSTALL[${mod[2]}/${name}.ko]=${mod[0]:-extra}
+
+		pushd "${mod[1]}" >/dev/null || die
+
+		if [[ -z ${mod[3]} ]]; then
+			# guess between commonly used targets if none given, fallback to
+			# an empty target without trying to see the error output
+			for target in module{s,} "${name}".ko default all; do
+				nonfatal emake "${emakeargs[@]}" -q "${target}" &>/dev/null
+				if [[ ${?} -eq 1 ]]; then
+					mod[3]=${target}
+					break
+				fi
+			done
+		fi
+
+		modlist[index]="${name}=${mod[0]}:${mod[1]}:${mod[2]}:${mod[3]}"
+		popd >/dev/null || die
+	done
+}
+
 # @FUNCTION: linux_domodule
 # @USAGE: <module>...
 # @DESCRIPTION:
@@ -601,7 +625,7 @@ modules_post_process() {
 	# dracut omit files that *hopefully* prevent this
 #	_modules_process_depmod.d "${mods[@]##*/}"
 
-	_modules_process_dracut.conf.d "${mods[@]##*/}"
+	modules_process_dracut.conf.d "${mods[@]##*/}"
 	_modules_process_strip "${mods[@]}"
 	_modules_process_sign "${mods[@]}"
 	_modules_sanity_modversion "${mods[@]}" # after strip/sign in case broke it
@@ -943,13 +967,12 @@ _modules_process_depmod.d() {
 	)
 }
 
-# @FUNCTION: _modules_process_dracut.conf.d
+# @FUNCTION: modules_process_dracut.conf.d
 # @USAGE: <module>...
-# @INTERNAL
 # @DESCRIPTION:
 # Create dracut.conf.d snippet defining if module should be included in the
 # initramfs.
-_modules_process_dracut.conf.d() {
+modules_process_dracut.conf.d() {
 	(
 		insinto /usr/lib/dracut/dracut.conf.d
 		[[ ${MODULES_INITRAMFS_IUSE} ]] && use ${MODULES_INITRAMFS_IUSE#+} &&

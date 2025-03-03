@@ -7,7 +7,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 MY_P="vbox-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox"
@@ -22,13 +22,17 @@ KEYWORDS="~amd64"
 CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
 
 src_compile() {
-	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
-	local modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
-	linux-mod-r1_src_compile
+	local modargs modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
+	if use dkms; then
+		modargs=( KERN_DIR=\$kernel_source_dir KERN_VER=\$kernelver )
+	else
+		modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
+	fi
+	dkms_src_compile --no-kernelrelease
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 	insinto /usr/lib/modules-load.d/
 	newins "${FILESDIR}"/virtualbox.conf-r1 virtualbox.conf
 
