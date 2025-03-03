@@ -1,0 +1,17 @@
+Add qt6 as VCL backend fallback in gtk-based environments.
+For details see: https://bugs.gentoo.org/950170
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- libreoffice-25.2.1.1.orig/vcl/source/app/salplug.cxx	2025-02-07 15:14:35.000000000 +0100
++++ libreoffice-25.2.1.1/vcl/source/app/salplug.cxx	2025-02-25 19:15:19.850379392 +0100
+@@ -214,6 +214,9 @@ const char* const* autodetect_plugin_lis
+ #if ENABLE_GTK3
+         "gtk3",
+ #endif
++#if ENABLE_QT6
++        "qt6",
++#endif
+ #if ENABLE_GEN
+         "gen",
+ #endif
