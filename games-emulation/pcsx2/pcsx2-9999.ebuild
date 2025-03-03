@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	media-libs/libglvnd[X]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	media-libs/libsdl2[haptic,joystick]
+	media-libs/libsdl3
 	media-libs/libwebp:=
 	media-video/ffmpeg:=
 	net-libs/libpcap
@@ -46,6 +46,8 @@ COMMON_DEPEND="
 	sys-apps/dbus
 	sys-libs/zlib:=
 	virtual/libudev:=
+	x11-libs/libX11
+	x11-libs/libXi
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
@@ -95,7 +97,7 @@ src_prepare() {
 	# relax Qt6 and SDL2 version requirements which often get restricted
 	# without a specific need, please report a bug to Gentoo (not upstream)
 	# if a still-available older version is really causing issues
-	sed -e '/find_package(\(Qt6\|SDL2\)/s/ [0-9.]*//' \
+	sed -e '/find_package(\(Qt6\|SDL3\)/s/ [0-9.]*//' \
 		-i cmake/SearchForStuff.cmake || die
 }
 
