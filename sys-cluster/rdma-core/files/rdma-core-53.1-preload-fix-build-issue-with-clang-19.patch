@@ -1,0 +1,39 @@
+From 6265d8cfe2e22740efa63d006c48386ac9fdbff4 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Mon, 3 Mar 2025 22:40:15 +0800
+Subject: [PATCH] preload: fix build issue with clang 19
+
+librdmacm/preload.c:796:9: error: at most one overload for a given name may lack the 'overloadable' attribute
+librdmacm/preload.c:800:1: error: no previous prototype for function 'recvfrom' [-Werror,-Wmissing-prototypes]
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ librdmacm/preload.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/librdmacm/preload.c b/librdmacm/preload.c
+index d46beb1bb..32ef6adab 100644
+--- a/librdmacm/preload.c
++++ b/librdmacm/preload.c
+@@ -793,7 +793,17 @@ ssize_t recv(int socket, void *buf, size_t len, int flags)
+ 		rrecv(fd, buf, len, flags) : real.recv(fd, buf, len, flags);
+ }
+ 
+-ssize_t recvfrom(int socket, void *buf, size_t len, int flags,
++ssize_t
++#ifdef __clang__
++__attribute__((overloadable))
++#endif
++recvfrom(int socket, void *buf, size_t len, int flags,
++		 struct sockaddr *src_addr, socklen_t *addrlen);
++ssize_t
++#ifdef __clang__
++__attribute__((overloadable))
++#endif
++recvfrom(int socket, void *buf, size_t len, int flags,
+ 		 struct sockaddr *src_addr, socklen_t *addrlen)
+ {
+ 	int fd;
+-- 
+2.45.2
+
