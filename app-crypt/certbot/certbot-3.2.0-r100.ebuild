@@ -71,15 +71,16 @@ BDEPEND="
 
 # See each setup.py for dependencies
 # Also discard the previous related packages
+# except their transition step
 RDEPEND="
-	!app-crypt/acme
-	!app-crypt/certbot-apache
-	!app-crypt/certbot-nginx
-	!app-crypt/certbot-dns-dnsimple
-	!app-crypt/certbot-dns-nsone
-	!app-crypt/certbot-dns-cloudflare
-	!app-crypt/certbot-dns-desec
-	!app-crypt/certbot-dns-rfc2136
+	!<app-crypt/acme-${PV}-r100
+	!<app-crypt/certbot-apache-${PV}-r100
+	!<app-crypt/certbot-nginx-${PV}-r100
+	!<app-crypt/certbot-dns-dnsimple-${PV}-r100
+	!<app-crypt/certbot-dns-nsone-${PV}-r100
+	!<app-crypt/certbot-dns-cloudflare-${PV}-r100
+	!<app-crypt/certbot-dns-desec-${PV}-r100
+	!<app-crypt/certbot-dns-rfc2136-${PV}-r100
 
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-1.5.3[${PYTHON_USEDEP}]
