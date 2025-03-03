@@ -28,20 +28,12 @@ DEPEND="
 	dev-libs/xxhash
 "
 
-mymake() {
-	# note: CFLAGS has some upstream flags, sigh
-	emake VERSION="${PV}" IS_RELEASE=1 CFLAGS="${CFLAGS} -Wall -std=c23 -MMD" "${@}"
-}
-
-src_compile() {
+src_configure() {
 	tc-export CC PKG_CONFIG
-	mymake
-}
-
-src_test() {
-	mymake test
+	export VERSION="${PV}"
+	export IS_RELEASE=1
 }
 
 src_install() {
-	mymake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 }
