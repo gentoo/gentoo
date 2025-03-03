@@ -1,0 +1,34 @@
+Add missing library header, remove unused function
+https://bugs.gentoo.org/920316
+https://bugs.gentoo.org/741080
+--- a/grid/Pegasus/mPresentation.c	2025-03-02 22:04:54.247085465 +0400
++++ b/grid/Pegasus/mPresentation.c	2025-03-02 22:06:57.356329407 +0400
+@@ -14,6 +14,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <strings.h>
++#include <string.h>
+ 
+ #define MAXLEN 20000
+ 
+--- a/lib/src/two_plane_v1.1/initdistdata.c	2025-03-02 22:04:54.227996254 +0400
++++ b/lib/src/two_plane_v1.1/initdistdata.c	2025-03-02 22:06:11.307762628 +0400
+@@ -26,18 +26,6 @@
+   return 0;
+ }
+ 
+-void closefitsfile()
+-{ 
+-  int I_fits_return_status=0;
+-  fits_close_file(ffp_FITS_In, &I_fits_return_status); 
+-  if (I_fits_return_status != 0)
+-  {
+-     fprintf(stderr, "Error closing file\n");
+-     return -1;
+-  }
+-  return 0;
+-}
+-
+ int initdata_byheader(char *fitsheader, DistCoeff *coeff) 
+ {
+   int i, j, m=0, n=0;
