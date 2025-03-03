@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,6 +65,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-39.0-RDMA_BuildType.patch
+	"${FILESDIR}"/${PN}-53.1-preload-fix-build-issue-with-clang-19.patch
 )
 
 src_prepare() {

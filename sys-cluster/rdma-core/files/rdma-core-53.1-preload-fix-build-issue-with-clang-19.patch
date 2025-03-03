@@ -1,0 +1,162 @@
+From 660479ab1ac25a016e07634c1313427489bb6747 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Mon, 3 Mar 2025 22:40:15 +0800
+Subject: [PATCH 1/4] preload: fix build issue with clang 19
+
+librdmacm/preload.c:796:9: error: at most one overload for a given name may lack the 'overloadable' attribute
+librdmacm/preload.c:796:9: warning: no previous prototype for function 'recvfrom' [-Wmissing-prototypes]
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ CMakeLists.txt       | 7 +++++++
+ buildlib/config.h.in | 2 ++
+ librdmacm/preload.c  | 9 +++++++++
+ 3 files changed, 18 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f5b4139b..26d658830 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -394,6 +394,13 @@ if (NOT HAVE_LONG_LONG_U64)
+   add_definitions("-D__SANE_USERSPACE_TYPES__")
+ endif()
+ 
++# Check __SOCKADDR_ARG exist and is union
++RDMA_Check_C_Compiles(HAVE_SOCKADDR_ARG_AS_UNION "
++#define _GNU_SOURCE
++#include <sys/socket.h>
++ int main(int argc,const char *argv[]) {struct sockaddr addr;__SOCKADDR_ARG sa; sa.__sockaddr__ = (struct sockaddr *)&addr; (void)addr; (void)sa; return 0;}"
++)
++
+ # glibc and kernel uapi headers can co-exist
+ CHECK_C_SOURCE_COMPILES("
+  #include <sys/socket.h>
+diff --git a/buildlib/config.h.in b/buildlib/config.h.in
+index c5b0bf557..663248041 100644
+--- a/buildlib/config.h.in
++++ b/buildlib/config.h.in
+@@ -50,6 +50,8 @@
+ 
+ #cmakedefine HAVE_WORKING_IF_H 1
+ 
++#cmakedefine HAVE_SOCKADDR_ARG_AS_UNION 1
++
+ // Operating mode for symbol versions
+ #cmakedefine HAVE_FULL_SYMBOL_VERSIONS 1
+ #cmakedefine HAVE_LIMITED_SYMBOL_VERSIONS 1
+diff --git a/librdmacm/preload.c b/librdmacm/preload.c
+index d46beb1bb..b3175dd5d 100644
+--- a/librdmacm/preload.c
++++ b/librdmacm/preload.c
+@@ -794,12 +794,21 @@ ssize_t recv(int socket, void *buf, size_t len, int flags)
+ }
+ 
+ ssize_t recvfrom(int socket, void *buf, size_t len, int flags,
++#if HAVE_SOCKADDR_ARG_AS_UNION
++		 __SOCKADDR_ARG src_addr, socklen_t *addrlen)
++#else
+ 		 struct sockaddr *src_addr, socklen_t *addrlen)
++#endif
+ {
+ 	int fd;
+ 	return (fd_fork_get(socket, &fd) == fd_rsocket) ?
++#if HAVE_SOCKADDR_ARG_AS_UNION
++		rrecvfrom(fd, buf, len, flags, src_addr.__sockaddr__, addrlen) :
++		real.recvfrom(fd, buf, len, flags, src_addr.__sockaddr__, addrlen);
++#else
+ 		rrecvfrom(fd, buf, len, flags, src_addr, addrlen) :
+ 		real.recvfrom(fd, buf, len, flags, src_addr, addrlen);
++#endif
+ }
+ 
+ ssize_t recvmsg(int socket, struct msghdr *msg, int flags)
+-- 
+2.45.2
+
+
+From c13a26a463750f3bb3db5697069ee9e9bf5a5556 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 5 Mar 2025 01:19:37 +0800
+Subject: [PATCH 2/4] libibverbs.map: ibv_cmd_query_device had been removed
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ libibverbs/libibverbs.map.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libibverbs/libibverbs.map.in b/libibverbs/libibverbs.map.in
+index 11268cefd..a473549ca 100644
+--- a/libibverbs/libibverbs.map.in
++++ b/libibverbs/libibverbs.map.in
+@@ -222,7 +222,6 @@ IBVERBS_PRIVATE_@IBVERBS_PABI_VERSION@ {
+ 		ibv_cmd_post_send;
+ 		ibv_cmd_post_srq_recv;
+ 		ibv_cmd_query_context;
+-		ibv_cmd_query_device;
+ 		ibv_cmd_query_device_any;
+ 		ibv_cmd_query_mr;
+ 		ibv_cmd_query_port;
+-- 
+2.45.2
+
+
+From f564d1938bc03eb3b5f1fe5d6fadf7be81d922a6 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 5 Mar 2025 09:08:48 +0800
+Subject: [PATCH 3/4] libefa.map: efadv_wc_read_sgid is static inline
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ providers/efa/libefa.map | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/providers/efa/libefa.map b/providers/efa/libefa.map
+index eff647d18..d27b58c16 100644
+--- a/providers/efa/libefa.map
++++ b/providers/efa/libefa.map
+@@ -17,7 +17,6 @@ EFA_1.2 {
+ 	global:
+ 		efadv_cq_from_ibv_cq_ex;
+ 		efadv_create_cq;
+-		efadv_wc_read_sgid;
+ } EFA_1.1;
+ 
+ EFA_1.3 {
+-- 
+2.45.2
+
+
+From 25cf8775b956ef81034aa314c1470634ea9ab5d3 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Fri, 7 Mar 2025 10:31:13 +0800
+Subject: [PATCH 4/4] cmake: add ${BUILD_INCLUDE} for __SOCKADDR_ARG test
+
+because the sparse check has sys/socket.h patched
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 26d658830..dce05c78b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -395,11 +395,14 @@ if (NOT HAVE_LONG_LONG_U64)
+ endif()
+ 
+ # Check __SOCKADDR_ARG exist and is union
++set(SAFE_CMAKE_REQUIRED_INCLUDES "${CMAKE_REQUIRED_INCLUDES}")
++set(CMAKE_REQUIRED_INCLUDES "${BUILD_INCLUDE}")
+ RDMA_Check_C_Compiles(HAVE_SOCKADDR_ARG_AS_UNION "
+ #define _GNU_SOURCE
+ #include <sys/socket.h>
+  int main(int argc,const char *argv[]) {struct sockaddr addr;__SOCKADDR_ARG sa; sa.__sockaddr__ = (struct sockaddr *)&addr; (void)addr; (void)sa; return 0;}"
+ )
++set(CMAKE_REQUIRED_INCLUDES "${SAFE_CMAKE_REQUIRED_INCLUDES}")
+ 
+ # glibc and kernel uapi headers can co-exist
+ CHECK_C_SOURCE_COMPILES("
+-- 
+2.45.2
+
