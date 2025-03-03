@@ -61,6 +61,7 @@ PATCHES=(
 	"${MY_PATCHES[@]}"
 
 	# Additional patches
+	${FILESDIR}/${PN}-4.2.1-include-math.h-to-use-predefined-_Float128-definitio.patch
 )
 
 HTML_DOCS=( doc/FAQ.html )
