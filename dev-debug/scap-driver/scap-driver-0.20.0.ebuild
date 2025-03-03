@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,21 +12,28 @@ S="${WORKDIR}/libs-${PV}"
 
 LICENSE="Apache-2.0 GPL-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
-RDEPEND="!<dev-debug/sysdig-${PV}[modules]"
+BDEPEND="
+	dev-libs/uthash
+	sys-libs/zlib:=
+	virtual/libelf:=
+"
 
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
 # We need to specify the driver version manually since we do not use a git tree.
-# This version can be found in the corresponding *sysdig* tree in cmake/modules/driver.cmake
-DRIVER_VERSION="7.2.0+driver"
+# This version can be found as git tag on the same commit as the libs version.
+DRIVER_VERSION="8.0.0+driver"
 
 src_configure() {
 	local mycmakeargs=(
-		# we will use linux-mod, so just pretend to use bundled deps
-		# in order to make it through the cmake setup.
+		# we will use linux-mod, so in order to make it through the cmake setup
+		# just pretend to use bundled deps and then override only what we need.
 		-DUSE_BUNDLED_DEPS=ON
+		-DUSE_BUNDLED_LIBELF=OFF
+		-DUSE_BUNDLED_UTHASH=OFF
+		-DUSE_BUNDLED_ZLIB=OFF
 		-DCREATE_TEST_TARGETS=OFF
 		-DDRIVER_VERSION="${DRIVER_VERSION}"
 	)
