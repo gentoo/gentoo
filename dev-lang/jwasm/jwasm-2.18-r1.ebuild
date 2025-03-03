@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="MASM-compatible TASM-similar assembler (fork of Wasm)"
 HOMEPAGE="https://github.com/Baron-von-Riedesel/JWasm"
@@ -17,6 +17,7 @@ KEYWORDS="amd64 ~x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.18-types-test.patch
 	"${FILESDIR}"/${PN}-2.18-makefile-dep-fix.patch
+	"${FILESDIR}"/${PN}-2.18-missing-includes.patch #944893
 )
 
 src_prepare() {
@@ -27,7 +28,9 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -f GccUnix.mak CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
+	# -std=c17 and -D_POSIX_C_SOURCE=200809L are both related to bug #944893
+	append-cflags -std=c17
+	emake -f GccUnix.mak CC="$(tc-getCC) ${CFLAGS} -D_POSIX_C_SOURCE=200809L ${LDFLAGS}"
 }
 
 src_install() {
