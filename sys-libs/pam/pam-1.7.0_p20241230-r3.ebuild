@@ -114,9 +114,6 @@ multilib_src_configure() {
 		-Dhtmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		-Dpdfdir="${EPREFIX}"/usr/share/doc/${PF}/pdf
 
-		-Ddb=$(usex berkdb 'db' 'gdbm')
-		-Ddb-uniquename=$(db_findver sys-libs/db)
-
 		$(meson_native_enabled docs)
 
 		-Dpam_unix=enabled
@@ -131,6 +128,20 @@ multilib_src_configure() {
 		$(meson_native_use_feature elogind)
 		$(meson_feature !elibc_musl pam_lastlog)
 	)
+
+	if use berkdb; then
+		local dbver
+		dbver="$(db_findver sys-libs/db)" || die "could not find db version"
+		local -x CPPFLAGS="${CPPFLAGS} -I$(db_includedir "${dbver}")"
+		emesonargs+=(
+			-Ddb=db
+			-Ddb-uniquename="-${dbver}"
+		)
+	else
+		emesonargs+=(
+			-Ddb=gdbm
+		)
+	fi
 
 	# This whole weird has_version libxcrypt block can go once
 	# musl systems have libxcrypt[system] if we ever make
