@@ -15,10 +15,18 @@ SRC_URI="https://github.com/mozilla/rhino/archive/Rhino${PV//./_}_Release.tar.gz
 S="${WORKDIR}/rhino-Rhino${PV//./_}_Release"
 
 LICENSE="MPL-1.1 GPL-2"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
-DEPEND=">=virtual/jdk-11:*"
+# error: package jdk.dynalink does not exist
+# error: package jdk.dynalink.linker does not exist
+# error: package jdk.dynalink.linker.support does not exist
+DEPEND=">=virtual/jdk-11"
+
+# rhino/src/main/java/org/mozilla/javascript/Slot.java:29: error: cannot find symbol
+#         var newSlot = new Slot(this);
+#         ^
+#   symbol:   class var
 RDEPEND=">=virtual/jre-11:*"
 
 DOCS=( {CODE_OF_CONDUCT,README,RELEASE-NOTES,RELEASE-STEPS}.md {NOTICE-tools,NOTICE}.txt )
