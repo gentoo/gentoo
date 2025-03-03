@@ -1,0 +1,29 @@
+From 5521f0dd6da40cc2a0325f0b2136fa066345328f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Mon, 3 Mar 2025 12:53:38 +0100
+Subject: [PATCH] respect LDFLAGS
+
+---
+ GccUnix.mak | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/GccUnix.mak b/GccUnix.mak
+index 5afdce2..588b155 100644
+--- a/GccUnix.mak
++++ b/GccUnix.mak
+@@ -39,11 +39,7 @@ $(OUTD):
+ 	mkdir -p $(OUTD)
+ 
+ $(OUTD)/$(TARGET1) : $(OUTD)/main.o $(proj_obj)
+-ifeq ($(DEBUG),0)
+-	$(CC) $(OUTD)/main.o $(proj_obj) -s -o $@ -Wl,-Map,$(OUTD)/$(TARGET1).map
+-else
+-	$(CC) $(OUTD)/main.o $(proj_obj) -o $@ -Wl,-Map,$(OUTD)/$(TARGET1).map
+-endif
++	$(CC) $(LDFLAGS) $(OUTD)/main.o $(proj_obj) -o $@ -Wl,-Map,$(OUTD)/$(TARGET1).map
+ 
+ $(OUTD)/msgtext.o: src/msgtext.c src/H/msgdef.h
+ 	$(CC) -c $(inc_dirs) $(c_flags) -o $*.o src/msgtext.c
+-- 
+2.45.3
+
