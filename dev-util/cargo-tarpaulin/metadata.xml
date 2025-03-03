@@ -5,6 +5,10 @@
 		<name>Patrick McLean</name>
 		<email>chutzpah@gentoo.org</email>
 	</maintainer>
+	<maintainer type="project">
+		<email>rust@gentoo.org</email>
+		<name>Rust project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">xd009642/tarpaulin</remote-id>
 	</upstream>
