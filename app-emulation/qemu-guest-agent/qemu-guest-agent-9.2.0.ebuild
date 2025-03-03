@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="dev-libs/glib"
 DEPEND="${RDEPEND}"
