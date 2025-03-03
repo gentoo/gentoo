@@ -1,11 +1,32 @@
 --- a/test/test_reader.h	2023-11-14 22:21:10.528641740 +0100
 +++ b/test/test_reader.h	2023-11-14 22:21:23.195431970 +0100
-@@ -57,7 +57,7 @@
+@@ -57,6 +57,7 @@
      if (length_bytes > (data_.size() - index_))
        return ErrorStatus::ReadLimitReached;
  
 -    std::copy(&data_[index_], &data_[index_ + length_bytes], begin_byte);
-+    std::copy(&data_[index_], &data_[index_] + length_bytes, begin_byte);
++    if (length_bytes)
++      std::copy(&data_[index_], &data_[index_] + length_bytes, begin_byte);
      index_ += length_bytes;
+     return {};
+--- a/include/nop/base/array.h	2025-03-03 22:30:57.390540115 +0100
++++ b/include/nop/base/array.h	2025-03-03 22:31:15.904318700 +0100
+@@ -202,7 +202,7 @@
+     else if (size != Length * sizeof(T))
+       return ErrorStatus::InvalidContainerLength;
+ 
+-    return reader->Read(&(*value)[0], &(*value)[Length]);
++    return reader->Read(&(*value)[0], &(*value)[0] + Length);
+   }
+ };
+ 
+--- a/test/test_writer.h	2025-03-03 22:44:12.754027768 +0100
++++ b/test/test_writer.h	2025-03-03 22:44:48.958594770 +0100
+@@ -52,6 +52,7 @@
+     const std::size_t start_offset = data_.size();
+     data_.resize(start_offset + length_bytes);
+ 
++    if (length_bytes)
+     std::copy(begin_byte, end_byte, &data_[start_offset]);
      return {};
    }
