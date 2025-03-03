@@ -1,0 +1,58 @@
+https://inbox.sourceware.org/gcc-patches/ri6bjui45il.fsf@virgil.suse.cz/
+
+From 833d679c3c071b78dfb22015fe03d2cecfd650ec Mon Sep 17 00:00:00 2001
+Message-ID: <833d679c3c071b78dfb22015fe03d2cecfd650ec.1741019831.git.sam@gentoo.org>
+From: Martin Jambor <mjambor@suse.cz>
+Date: Mon, 3 Mar 2025 14:18:10 +0100
+Subject: [PATCH] ipa-cp: Avoid ICE when redistributing nodes among edges to
+ recursive clones (PR 118318)
+
+Hi,
+
+PR 118318 reported an ICE during PGO build of Firefox when IPA-CP, in
+the final stages of update_counts_for_self_gen_clones where it
+attempts to guess how to distribute profile count among clones created
+for recursive edges and the various edges that are created in the
+process.  If one such edge has profile count of kind GUESSED_GLOBAL0,
+the compatibility check in the operator+ will lead to an ICE.  After
+discussing the situation with Honza, we concluded that there is little
+more we can do other than check for this situation before touching the
+edge count, so this is what this patch does.
+
+Bootstrapped and LTO-profile-bootstrapped and tested on x86_64.  OK for
+master?  (Should I then backport this to active release branches?  I
+guess it would make sense.)
+
+Thanks,
+
+Martin
+
+gcc/ChangeLog:
+
+2025-02-28  Martin Jambor  <mjambor@suse.cz>
+
+PR ipa/118318
+	* ipa-cp.cc (adjust_clone_incoming_counts): Add a compatible_p check.
+---
+ gcc/ipa-cp.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gcc/ipa-cp.cc b/gcc/ipa-cp.cc
+index 3c994f24f540..264568989a96 100644
+--- a/gcc/ipa-cp.cc
++++ b/gcc/ipa-cp.cc
+@@ -4638,7 +4638,8 @@ adjust_clone_incoming_counts (cgraph_node *node,
+ 	cs->count = cs->count.combine_with_ipa_count (sum);
+       }
+     else if (!desc->processed_edges->contains (cs)
+-	     && cs->caller->clone_of == desc->orig)
++	     && cs->caller->clone_of == desc->orig
++	     && cs->count.compatible_p (desc->count))
+       {
+ 	cs->count += desc->count;
+ 	if (dump_file)
+
+base-commit: f1c30c6213fb228f1e8b5973d10c868b834a4acd
+-- 
+2.48.1
+
