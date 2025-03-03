@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Manipulate structured data definitions (SQL and more)"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 
 RDEPEND="
 	dev-perl/Carp-Clan
