@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ else
 	SRC_URI="https://github.com/pkgcraft/pkgcraft-python/releases/download/v${PV}/${P/-python}.tar.gz"
 	S="${WORKDIR}"/${P/-python}
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 
 	PKGCRAFT_VERSION_MAX="9999"
 	PKGCRAFT_VERSION_MIN="0.0.16"
