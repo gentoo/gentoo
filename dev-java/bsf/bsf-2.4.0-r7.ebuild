@@ -29,7 +29,7 @@ CDEPEND="
 	tcl? ( dev-java/jacl:0 )
 "
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-11:*"
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.8:*"
 
