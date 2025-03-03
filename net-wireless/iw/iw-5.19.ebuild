@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="nl80211 configuration utility for wireless devices using the mac80211 stack"
-HOMEPAGE="https://wireless.wiki.kernel.org/en/users/Documentation/iw"
+HOMEPAGE="https://wireless.docs.kernel.org/en/latest/en/users/documentation/iw.html"
 SRC_URI="https://mirrors.edge.kernel.org/pub/software/network/${PN}/${P}.tar.xz"
 
 LICENSE="ISC"
