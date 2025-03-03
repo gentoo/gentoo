@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parse, Analyze, and Manipulate Perl (without perl)"
 
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	virtual/perl-Carp
