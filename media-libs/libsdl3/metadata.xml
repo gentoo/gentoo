@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
+		<flag name="kms">Enable support for direct Kernel Mode Setting video output</flag>
+		<flag name="sndio">Enable support for <pkg>media-sound/sndio</pkg></flag>
+		<flag name="pipewire">Enable support for <pkg>media-video/pipewire</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libsdl-org/SDL</remote-id>
+	</upstream>
+</pkgmetadata>
