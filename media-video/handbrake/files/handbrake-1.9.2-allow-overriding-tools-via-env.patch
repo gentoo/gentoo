@@ -1,0 +1,24 @@
+From 32f63e103413661268452b482f61f0d22b2f359d Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 25 Dec 2024 20:21:51 +0200
+Subject: [PATCH] Allow prepending tool option via env
+
+* GCC untouched due to incompatible assumptions.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/make/configure.py
++++ b/make/configure.py
+@@ -1025,6 +1025,10 @@ class ToolProbe( Action ):
+         self.option = option
+         self.names  = []
+         self.kwargs = kwargs
++        if var.endswith('.exe'):
++            env = os.environ.get( var.removesuffix('.exe') )
++            if env is not None:
++                self.names.append( env )
+         for name in names:
+             try:
+                 name = str(name)
+-- 
+2.47.1
+
