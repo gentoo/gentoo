@@ -1,0 +1,48 @@
+From dd0bbbeae865561be679baa680e8c5135fe9dc5e Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Thu, 26 Dec 2024 19:44:12 -0800
+Subject: [PATCH] include math.h to use predefined _Float128 definition
+
+glibc has added this patch [1] which defines __HAVE_FLOAT128 for clang
+therefore include math.h to avoid defining _Float128 during configure if
+not needed.
+
+This is a workaround until mpfr upstream does a proper fix. For more
+context see the relevant glibc bug report [2].
+
+[1] https://sourceware.org/git/?p=glibc.git;a=blobdiff;f=sysdeps/x86/bits/floatn.h;h=ba030d270a73c71f166083b30dbaf89371ff49fa;hp=e661abaea469b8b916fd312cc42382ad4c5e220f;hb=d773aff467840f5ed305e40c180466e90bd88183;hpb=b2556550a0f952b2a841a0b4bddc999c2df1b233
+[2] https://sourceware.org/bugzilla/show_bug.cgi?id=32750
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ acinclude.m4 | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index d5b5b4bdb..c9e882cdd 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -793,8 +793,9 @@ dnl the "undefined reference" error disappear.
+ if test "$enable_float128" != no; then
+    AC_MSG_CHECKING(if _Float128 with hex constants is supported)
+    AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[
+-volatile _Float128 x = 0x1.fp+16383f128;
+-return x == 0;
++     #include <math.h>
++     volatile _Float128 x = 0x1.fp+16383f128;
++     return x == 0;
+ ]])],
+       [AC_MSG_RESULT(yes)
+        AC_DEFINE([MPFR_WANT_FLOAT128],1,[Build float128 functions])],
+@@ -804,6 +805,7 @@ dnl Use the q suffix in this case.
+        AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ #define _Float128 __float128
+ ]], [[
++#include <math.h>
+ volatile _Float128 x = 0x1.fp+16383q;
+ return x == 0;
+ ]])],
+-- 
+2.30.2
+
