@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,11 @@ src_configure() {
 	# Do not trust for LTO either
 	append-flags -fno-strict-aliasing
 	filter-lto
+
+	# https://bugs.gentoo.org/896246
+	# already fixed by upstream but the patch is too large, waiting for new releases
+	# https://github.com/ImageMagick/libfpx/commit/5f340b0a490450b40302cc9948c7dfac60d40041
+	append-cxxflags -std=gnu++14
 
 	append-ldflags -Wl,--no-undefined
 	econf \
