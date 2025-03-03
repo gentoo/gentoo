@@ -12,7 +12,7 @@ SRC_URI="https://alpineapp.email/alpine/release/src/${P}.tar.xz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+chappa ipv6 kerberos ldap nls onlyalpine passfile smime ssl"
 
 DEPEND="sys-libs/ncurses:=
