@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop wrapper
+inherit desktop wrapper optfeature
 
 DESCRIPTION="A complete toolset for C and C++ development"
 HOMEPAGE="https://www.jetbrains.com/clion/"
@@ -16,13 +16,12 @@ LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
 	UoI-NCSA ZLIB"
 SLOT="0/2024"
 KEYWORDS="~amd64"
-RESTRICT="bindist mirror splitdebug"
+RESTRICT="bindist mirror"
 
 BDEPEND="dev-util/patchelf"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
-	dev-debug/gdb
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-util/lttng-ust:0/2.12
@@ -76,6 +75,16 @@ src_prepare() {
 
 	rm -rv "${remove_me[@]}" || die
 
+	# removing debug symbols and relocating debug files as per #876295
+	# we're escaping all the files that contain $() in their name
+	# as they should not be executed
+	find . -type f ! -name '*$(*)*' -exec sh -c '
+		if file "{}" | grep -qE "ELF (32|64)-bit"; then
+			objcopy --remove-section .note.gnu.build-id "{}"
+			debugedit -b "${EPREFIX}/opt/${PN}" -d "/usr/lib/debug" -i "{}"
+		fi
+	' \;
+
 	patchelf --set-rpath '$ORIGIN' "jbr/lib/libjcef.so" || die
 	patchelf --set-rpath '$ORIGIN' "jbr/lib/jcef_helper" || die
 	patchelf --set-rpath '$ORIGIN/../lib' "bin/clang/linux/x64/lib/libclazyPlugin.so" || die
@@ -105,4 +114,8 @@ src_install() {
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	insinto /usr/lib/sysctl.d
 	newins - 30-"${PN}"-inotify-watches.conf <<<"fs.inotify.max_user_watches = 524288"
+}
+
+pkg_postinst() {
+	optfeature "Debugging support" dev-debug/gdb
 }
