@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit perl-module toolchain-funcs
+inherit edo perl-module toolchain-funcs
 
 DESCRIPTION="Performance and information monitoring tool"
 HOMEPAGE="https://wpd.home.xs4all.nl/symon/"
@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="perl +symon symux"
 REQUIRED_USE="|| ( perl symon symux )"
+# there are no tests, trying to run them fails because pmakefile
+RESTRICT="test"
 
 BDEPEND="dev-build/pmake"
 RDEPEND="
@@ -29,29 +31,25 @@ zap_subdir() {
 	sed -i "/^SUBDIR/s|$1||" Makefile || die
 }
 
-src_prepare() {
-	default
-
-	sed -i \
-		-e '/^[ \t]*${CC}.*\${LIBS}/s:\${CC}:$(CC) $(LDFLAGS):' \
-		sym*/Makefile || die
-}
+PATCHES=(
+	"${FILESDIR}/${P}-condition-makefiles.patch"
+	"${FILESDIR}/${P}-extern_c.patch"
+)
 
 src_configure() {
-	use symon && USE_SYMON=1
 	# Do some sed magic in accordance with the USE flags.
-	use perl && [[ -z ${USE_SYMON} ]] && ! use symux && zap_subdir lib
+	use perl && ! use symon && ! use symux && zap_subdir lib
 	! use perl && zap_subdir client
 	! use symux && zap_subdir symux
-	[[ -z ${USE_SYMON} ]] && zap_subdir symon
+	! use symon && zap_subdir symon
 }
 
 src_compile() {
-	pmake CC="$(tc-getCC)" CFLAGS+="${CFLAGS}" STRIP=true || die
+	edo pmake CC="$(tc-getCC)" CFLAGS+="${CFLAGS}" LDFLAGS+="${LDFLAGS}"
 }
 
 src_install() {
-	if [[ -n ${USE_SYMON} ]]; then
+	if use symon; then
 		insinto /etc
 		doins "${FILESDIR}"/symon.conf
 
@@ -85,6 +83,7 @@ src_install() {
 		fperms a+x /usr/share/symon/c_smrrds.sh
 
 		dodir /var/lib/symon/rrds/localhost
+		keepdir /var/lib/symon/rrds/localhost
 	fi
 }
 
