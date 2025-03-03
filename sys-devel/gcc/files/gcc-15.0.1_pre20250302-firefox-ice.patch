@@ -1,0 +1,99 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=f22e89167b3abfbf6d67f42fc4d689d8ffdc1810
+https://gcc.gnu.org/PR119067
+
+From f22e89167b3abfbf6d67f42fc4d689d8ffdc1810 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Mon, 3 Mar 2025 09:54:15 +0100
+Subject: [PATCH] ipa/119067 - bogus TYPE_PRECISION check on VECTOR_TYPE
+
+odr_types_equivalent_p can end up using TYPE_PRECISION on vector
+types which is a no-go.  The following instead uses TYPE_VECTOR_SUBPARTS
+for vector types so we also end up comparing the number of vector elements.
+
+	PR ipa/119067
+	* ipa-devirt.cc (odr_types_equivalent_p): Check
+	TYPE_VECTOR_SUBPARTS for vectors.
+
+	* g++.dg/lto/pr119067_0.C: New testcase.
+	* g++.dg/lto/pr119067_1.C: Likewise.
+---
+ gcc/ipa-devirt.cc                     | 10 +++++++++-
+ gcc/testsuite/g++.dg/lto/pr119067_0.C | 22 ++++++++++++++++++++++
+ gcc/testsuite/g++.dg/lto/pr119067_1.C | 10 ++++++++++
+ 3 files changed, 41 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/g++.dg/lto/pr119067_0.C
+ create mode 100644 gcc/testsuite/g++.dg/lto/pr119067_1.C
+
+diff --git a/gcc/ipa-devirt.cc b/gcc/ipa-devirt.cc
+index c31658f57ef2..532e25e87c60 100644
+--- a/gcc/ipa-devirt.cc
++++ b/gcc/ipa-devirt.cc
+@@ -1259,13 +1259,21 @@ odr_types_equivalent_p (tree t1, tree t2, bool warn, bool *warned,
+       || TREE_CODE (t1) == OFFSET_TYPE
+       || POINTER_TYPE_P (t1))
+     {
+-      if (TYPE_PRECISION (t1) != TYPE_PRECISION (t2))
++      if (!VECTOR_TYPE_P (t1) && TYPE_PRECISION (t1) != TYPE_PRECISION (t2))
+ 	{
+ 	  warn_odr (t1, t2, NULL, NULL, warn, warned,
+ 		    G_("a type with different precision is defined "
+ 		       "in another translation unit"));
+ 	  return false;
+ 	}
++      if (VECTOR_TYPE_P (t1)
++	  && maybe_ne (TYPE_VECTOR_SUBPARTS (t1), TYPE_VECTOR_SUBPARTS (t2)))
++	{
++	  warn_odr (t1, t2, NULL, NULL, warn, warned,
++		    G_("a vector type with different number of elements "
++		       "is defined in another translation unit"));
++	  return false;
++	}
+       if (TYPE_UNSIGNED (t1) != TYPE_UNSIGNED (t2))
+ 	{
+ 	  warn_odr (t1, t2, NULL, NULL, warn, warned,
+diff --git a/gcc/testsuite/g++.dg/lto/pr119067_0.C b/gcc/testsuite/g++.dg/lto/pr119067_0.C
+new file mode 100644
+index 000000000000..e0f813ceffed
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/lto/pr119067_0.C
+@@ -0,0 +1,22 @@
++/* { dg-lto-do link } */
++/* { dg-skip-if "" { ! { x86_64-*-* i?86-*-* } } } */
++/* { dg-require-effective-target avx2 } */
++/* { dg-require-effective-target shared } */
++/* { dg-lto-options { { -O2 -fPIC -flto } } } */
++/* { dg-extra-ld-options { -shared } } */
++
++#pragma GCC push_options
++#pragma GCC target("avx2")
++typedef char __v32qi __attribute__ ((__vector_size__ (32)));
++struct ff
++{
++  __v32qi t;
++};
++__v32qi g(struct ff a);
++
++__v32qi h(__v32qi a)
++{
++  struct ff t = {a};
++  return g(t);
++}
++#pragma GCC pop_options
+diff --git a/gcc/testsuite/g++.dg/lto/pr119067_1.C b/gcc/testsuite/g++.dg/lto/pr119067_1.C
+new file mode 100644
+index 000000000000..d8e2935fa24d
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/lto/pr119067_1.C
+@@ -0,0 +1,10 @@
++/* { dg-options "-mavx2" } */
++
++typedef char __v32qi __attribute__ ((__vector_size__ (32)));
++struct ff
++{
++  __v32qi t;
++};
++__v32qi g(struct ff a) {
++ return a.t;
++}
+-- 
+2.43.5
