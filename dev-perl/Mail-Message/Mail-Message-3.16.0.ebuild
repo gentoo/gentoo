@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="General Message Object for MIME Messsage Handling"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-perl/TimeDate
