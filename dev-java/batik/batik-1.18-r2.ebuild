@@ -34,7 +34,7 @@ CP_DEPEND="
 
 DEPEND="
 	${CP_DEPEND}
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 "
 
 RDEPEND="
