@@ -90,7 +90,7 @@ RDEPEND="
 		sci-libs/tensorpipe[cuda?]
 		dev-cpp/cpp-httplib
 	)
-	xnnpack? ( >=sci-libs/XNNPACK-2024.02.29 )
+	xnnpack? ( ~sci-libs/XNNPACK-2024.02.29 )
 	mkl? ( sci-libs/mkl )
 	openblas? ( sci-libs/openblas )
 "
