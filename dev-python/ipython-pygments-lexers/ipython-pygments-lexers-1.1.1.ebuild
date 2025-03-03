@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~loong ~riscv"
 
 RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
