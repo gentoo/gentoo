@@ -8,7 +8,7 @@ HOMEPAGE="https://odbc.postgresql.org/"
 SRC_URI="https://ftp.postgresql.org/pub/odbc/versions/src/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="iodbc ssl threads"
 
 DEPEND="dev-db/postgresql:*[ssl?]
