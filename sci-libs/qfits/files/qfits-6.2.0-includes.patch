@@ -1,0 +1,32 @@
+Missing includes in main library and in tests
+https://bugs.gentoo.org/886463
+--- a/main/dtfits.c
++++ b/main/dtfits.c
+@@ -33,6 +33,7 @@
+ #include <string.h>
+ 
+ #include "qfits_table.h"
++#include "qfits_tools.h"
+ 
+ /*-----------------------------------------------------------------------------
+                                    Define
+--- a/main/qextract.c
++++ b/main/qextract.c
+@@ -32,6 +32,7 @@
+ #include "qfits_table.h" 
+ #include "qfits_image.h" 
+ #include "qfits_rw.h" 
++#include "qfits_tools.h"
+ 
+ /*-----------------------------------------------------------------------------
+                                Function prototypes
+--- a/test/test_pixio.c
++++ b/test/test_pixio.c
+@@ -41,6 +41,7 @@
+ 
+ #include "qfits_header.h"
+ #include "qfits_image.h"
++#include "qfits_rw.h"
+ #include "qfits_md5.h"
+ #include "qfits_memory.h"
+ 
