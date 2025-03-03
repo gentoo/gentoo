@@ -1,0 +1,27 @@
+https://github.com/gonetz/GLideN64/pull/2908
+https://github.com/gonetz/GLideN64/commit/42129aadb16e0fb0e9c265ee134dbc7f9c4022e6
+https://github.com/Rosalie241/RMG/commit/23120150f9ddbef13a0690f004c364bb334addfc
+
+From 42129aadb16e0fb0e9c265ee134dbc7f9c4022e6 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 16 Feb 2025 12:03:06 -0800
+Subject: [PATCH] GLideNHQ: fix build with gcc 15
+
+Gentoo Issue: https://bugs.gentoo.org/949732
+---
+ src/GLideNHQ/TxHiResLoader.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Source/3rdParty/mupen64plus-video-GLideN64/src/GLideNHQ/TxHiResLoader.h b/Source/3rdParty/mupen64plus-video-GLideN64/src/GLideNHQ/TxHiResLoader.h
+index 4c1365123..f887c7813 100644
+--- a/Source/3rdParty/mupen64plus-video-GLideN64/src/GLideNHQ/TxHiResLoader.h
++++ b/Source/3rdParty/mupen64plus-video-GLideN64/src/GLideNHQ/TxHiResLoader.h
+@@ -13,6 +13,8 @@
+ #define CORRECTFILENAME(str)
+ #endif /* OS_WINDOWS */
+ 
++#include <cstdint>
++
+ #include "TxCache.h"
+ #include "TxQuantize.h"
+ #include "TxImage.h"
