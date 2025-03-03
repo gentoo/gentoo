@@ -8,4 +8,7 @@
 	<use>
 		<flag name="iodbc">Use <pkg>dev-db/libiodbc</pkg>. Disable to use <pkg>dev-db/unixODBC</pkg>.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">postgresql-interfaces/psqlodbc</remote-id>
+	</upstream>
 </pkgmetadata>
