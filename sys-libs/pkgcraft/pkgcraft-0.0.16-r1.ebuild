@@ -24,7 +24,7 @@ else
 	SRC_URI="https://github.com/pkgcraft/pkgcraft/releases/download/${MY_P}/${MY_P}.tar.xz"
 	S="${WORKDIR}"/${MY_P}
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="MIT"
