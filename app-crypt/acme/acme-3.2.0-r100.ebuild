@@ -13,10 +13,12 @@ HOMEPAGE="
 LICENSE="metapackage"
 SLOT="0"
 
+KEYWORDS="~amd64 ~x86"
+
 # Meta package for transition
 # No need to upgrade thanks to ">="
 RDEPEND="
-	>=app-crypt/certbot-9999
+	>=app-crypt/certbot-${PV}-r100
 "
 
 pkg_postinst() {
