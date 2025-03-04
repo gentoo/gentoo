@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Access SANE-compatible scanners from Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
