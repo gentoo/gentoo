@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-03-04)
+# qt is not keyworded here
+net-wireless/wpa_supplicant gui
+
 # Matt Jolly <kangie@gentoo.org> (2025-01-29)
 # Needs dev-lang/go which is not keyworded here
 x11-wm/fvwm3 go
