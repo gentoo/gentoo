@@ -32,6 +32,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	app-text/scdoc
+	test? ( dev-util/gdbus-codegen )
 "
 RESTRICT="!test? ( test )"
 
