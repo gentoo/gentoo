@@ -62,7 +62,7 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 d3d9 debug +llvm
-	lm-sensors opencl +opengl osmesa +proprietary-codecs
+	lm-sensors opencl +opengl +proprietary-codecs
 	test unwind vaapi valgrind vdpau vulkan
 	wayland +X xa +zstd"
 RESTRICT="!test? ( test )"
@@ -193,7 +193,6 @@ BDEPEND="
 QA_WX_LOAD="
 x86? (
 	usr/lib/libgallium-*.so
-	usr/lib/libOSMesa.so.8.0.0
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
 
@@ -262,10 +261,6 @@ pkg_pretend() {
 
 	if ! use llvm; then
 		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain llvm"
-	fi
-
-	if use osmesa && ! use llvm; then
-		ewarn "OSMesa will be slow without enabling USE=llvm"
 	fi
 }
 
@@ -457,7 +452,6 @@ multilib_src_configure() {
 		$(meson_feature opengl egl)
 		$(meson_feature llvm)
 		$(meson_feature lm-sensors lmsensors)
-		$(meson_use osmesa)
 		$(meson_feature unwind libunwind)
 		$(meson_feature zstd)
 		$(meson_use cpu_flags_x86_sse2 sse2)
