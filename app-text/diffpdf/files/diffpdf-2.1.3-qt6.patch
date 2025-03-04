@@ -1,0 +1,407 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..fbaf333
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,25 @@
++cmake_minimum_required(VERSION 3.16)
++project(diffpdf CXX)
++
++find_package(Qt6 REQUIRED COMPONENTS Gui LinguistTools PrintSupport Widgets)
++find_package(PkgConfig REQUIRED)
++pkg_search_module(PopplerQt6 REQUIRED IMPORTED_TARGET poppler-qt6>=22.12.0)
++
++qt_standard_project_setup(REQUIRES 6.4.2 I18N_TRANSLATED_LANGUAGES cz de es fr)
++
++file(GLOB DiffPDF_SOURCES CONFIGURE_DEPENDS
++    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp"
++)
++qt_add_executable(diffpdf ${DiffPDF_SOURCES})
++target_link_libraries(diffpdf
++  PRIVATE
++    PkgConfig::PopplerQt6
++    Qt6::Core
++    Qt6::PrintSupport
++    Qt6::Widgets
++)
++qt_add_translations(diffpdf RESOURCE_PREFIX "/")
++qt_add_binary_resources(diffpdf_resources resources.qrc)
++add_dependencies(diffpdf diffpdf_resources)
++install(TARGETS diffpdf)
+diff --git a/diffpdf_cz.ts b/diffpdf_cz.ts
+index 66f718c..36b313f 100644
+--- a/diffpdf_cz.ts
++++ b/diffpdf_cz.ts
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE TS>
+ <TS version="2.0" language="cs_CZ">
+-<defaultcodec>UTF-8</defaultcodec>
+ <context>
+     <name>AboutForm</name>
+     <message>
+diff --git a/diffpdf_de.ts b/diffpdf_de.ts
+index 6b8ee47..3daf0cc 100644
+--- a/diffpdf_de.ts
++++ b/diffpdf_de.ts
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE TS>
+ <TS version="2.0" language="de_DE">
+-<defaultcodec>UTF-8</defaultcodec>
+ <context>
+     <name>AboutForm</name>
+     <message>
+diff --git a/diffpdf_es.ts b/diffpdf_es.ts
+index a35941f..e8c9d8f 100644
+--- a/diffpdf_es.ts
++++ b/diffpdf_es.ts
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE TS>
+ <TS version="2.0" language="es_ES">
+-<defaultcodec>UTF-8</defaultcodec>
+ <context>
+     <name>AboutForm</name>
+     <message>
+diff --git a/diffpdf_fr.ts b/diffpdf_fr.ts
+index 815e9c4..3e3d5e7 100644
+--- a/diffpdf_fr.ts
++++ b/diffpdf_fr.ts
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE TS>
+ <TS version="2.0">
+-<defaultcodec>UTF-8</defaultcodec>
+ <context>
+     <name>AboutForm</name>
+     <message>
+diff --git a/generic.cpp b/generic.cpp
+index 13603e3..ba4ea7a 100644
+--- a/generic.cpp
++++ b/generic.cpp
+@@ -17,6 +17,7 @@
+ #include <QPen>
+ #include <QPixmapCache>
+ #include <QUrl>
++#include <utility>
+ 
+ const QSize SwatchSize(24, 24);
+ 
+@@ -149,8 +150,8 @@ QPixmap penStyleSwatch(const Qt::PenStyle style, const QColor &color)
+ const TextBoxList getTextBoxes(PdfPage page, const QRectF &rect)
+ {
+     TextBoxList boxes;
+-    foreach (Poppler::TextBox *box, page->textList()) {
+-        PdfTextBox box_ptr(box);
++    for (auto & box : page->textList()) {
++        PdfTextBox box_ptr(std::move(box));
+         if (rect.isEmpty() || rect.contains(box_ptr->boundingBox()))
+             boxes.append(box_ptr);
+     }
+diff --git a/generic.hpp b/generic.hpp
+index 1e9afce..fd48163 100644
+--- a/generic.hpp
++++ b/generic.hpp
+@@ -12,7 +12,8 @@
+     for more details.
+ */
+ 
+-#include <poppler-qt5.h>
++#include <poppler-qt6.h>
++#include <memory>
+ #include <QMetaType>
+ #include <QPair>
+ #include <QPixmap>
+@@ -22,15 +23,9 @@ class QColor;
+ class QMimeData;
+ class QRectF;
+ 
+-#if QT_VERSION >= 0x040600
+-typedef QSharedPointer<Poppler::Document> PdfDocument;
+-typedef QSharedPointer<Poppler::Page> PdfPage;
+-typedef QSharedPointer<Poppler::TextBox> PdfTextBox;
+-#else
+-typedef std::tr1::shared_ptr<Poppler::Document> PdfDocument;
+-typedef std::tr1::shared_ptr<Poppler::Page> PdfPage;
+-typedef std::tr1::shared_ptr<Poppler::TextBox> PdfTextBox;
+-#endif
++using PdfDocument = std::shared_ptr<Poppler::Document>;
++using PdfPage = std::shared_ptr<Poppler::Page>;
++using PdfTextBox = std::shared_ptr<Poppler::TextBox>;
+ typedef QList<PdfTextBox> TextBoxList;
+ 
+ enum InitialComparisonMode{CompareAppearance=0, CompareCharacters=1,
+@@ -50,9 +45,9 @@ struct PagePair
+ 
+     bool isNull() { return left == -1 || right == -1; }
+ 
+-    const int left;
+-    const int right;
+-    const bool hasVisualDifference;
++    int left;
++    int right;
++    bool hasVisualDifference;
+ };
+ Q_DECLARE_METATYPE(PagePair)
+ 
+diff --git a/helpform.cpp b/helpform.cpp
+index 7a8269f..6354ee4 100644
+--- a/helpform.cpp
++++ b/helpform.cpp
+@@ -16,6 +16,7 @@
+ #include <QKeySequence>
+ #include <QSettings>
+ #include <QShortcut>
++#include <QStringConverter>
+ #include <QTextBrowser>
+ #include <QTextStream>
+ 
+@@ -31,7 +32,7 @@ HelpForm::HelpForm(const QString &language, QWidget *parent)
+     QFile file(filename);
+     file.open(QIODevice::ReadOnly|QIODevice::Text);
+     QTextStream in(&file);
+-    in.setCodec("UTF-8");
++    in.setEncoding(QStringConverter::Utf8);
+     viewer->setHtml(in.readAll());
+     viewer->setReadOnly(true);
+     setCentralWidget(viewer);
+diff --git a/main.cpp b/main.cpp
+index 321ecc4..a6063d3 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -16,7 +16,6 @@
+ #include <QLibraryInfo>
+ #include <QLocale>
+ #include <QSettings>
+-#include <QTextCodec>
+ #include <QTextStream>
+ #include <QTranslator>
+ 
+@@ -101,12 +100,12 @@ int main(int argc, char *argv[])
+     }
+ 
+     QTranslator qtTranslator;
+-    qtTranslator.load("qt_" + language,
+-        QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+-    app.installTranslator(&qtTranslator);
++    if (qtTranslator.load("qt_" + language,
++            QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
++        app.installTranslator(&qtTranslator);
+     QTranslator appTranslator;
+-    appTranslator.load("diffpdf_" + language, ":/");
+-    app.installTranslator(&appTranslator);
++    if (appTranslator.load("diffpdf_" + language, ":/"))
++        app.installTranslator(&appTranslator);
+ 
+     MainWindow window(debug, comparisonMode, filename1, filename2,
+             language.left(2)); // We want de not de_DE etc.
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index c9dac53..bcdc390 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -27,18 +27,21 @@
+ #include <QComboBox>
+ #include <QDir>
+ #include <QDockWidget>
++#include <QElapsedTimer>
+ #include <QEvent>
+ #include <QFileDialog>
+ #include <QGroupBox>
+ #include <QLabel>
+ #include <QLineEdit>
+ #include <QMessageBox>
++#include <QPageLayout>
+ #include <QPainter>
+ #include <QPixmapCache>
+ #include <QPlainTextEdit>
+ #include <QPrinter>
+ #include <QPushButton>
+ #include <QRadioButton>
++#include <QRegularExpression>
+ #include <QScrollArea>
+ #include <QScrollBar>
+ #include <QSettings>
+@@ -1249,11 +1252,7 @@ PdfDocument MainWindow::getPdf(const QString &filename)
+     else if (pdf->isLocked()) {
+         QMessageBox::warning(this, tr("DiffPDF — Error"),
+                 tr("Cannot read a locked PDF ('%1').").arg(filename));
+-#if QT_VERSION >= 0x040600
+-        pdf.clear();
+-#else
+-        pdf.reset();
+-#endif
++        return {};
+     }
+     return pdf;
+ }
+@@ -1319,7 +1318,8 @@ QList<int> MainWindow::getPageList(int which, PdfDocument pdf)
+     bool error = false;
+     QList<int> pages;
+     QString page_string = pagesEdit->text();
+-    page_string = page_string.replace(QRegExp("\\s+"), "");
++    static QRegularExpression const spaces("\\s+");
++    page_string = page_string.replace(spaces, "");
+     QStringList page_list = page_string.split(",");
+     bool ok;
+     foreach (const QString &page, page_list) {
+@@ -1387,7 +1387,7 @@ void MainWindow::compare()
+     }
+ 
+     comparePrepareUi();
+-    QTime time;
++    QElapsedTimer time;
+     time.start();
+     const QPair<int, int> pair = comparePages(filename1, pdf1, filename2,
+                                               pdf2);
+@@ -1685,8 +1685,8 @@ void MainWindow::saveAsPdf(const int start, const int end,
+     printer.setOutputFormat(QPrinter::PdfFormat);
+     printer.setColorMode(QPrinter::Color);
+     printer.setCreator(tr("DiffPDF"));
+-    printer.setOrientation(savePages == SaveBothPages
+-            ? QPrinter::Landscape : QPrinter::Portrait);
++    printer.setPageOrientation(savePages == SaveBothPages
++            ? QPageLayout::Landscape : QPageLayout::Portrait);
+     QPainter painter(&printer);
+     painter.setRenderHints(QPainter::Antialiasing|
+             QPainter::TextAntialiasing|QPainter::SmoothPixmapTransform);
+@@ -1802,7 +1802,7 @@ void MainWindow::showZones()
+ void MainWindow::showZones(const int Width, const TextBoxList &list,
+                            QLabel *label)
+ {
+-    if (!label || !label->pixmap() || label->pixmap()->isNull())
++    if (!label || label->pixmap().isNull())
+         return;
+     const bool ComparingWords = compareComboBox->currentIndex() ==
+                                 CompareWords;
+@@ -1815,7 +1815,7 @@ void MainWindow::showZones(const int Width, const TextBoxList &list,
+             columnsSpinBox->value());
+     const int DPI = static_cast<int>(POINTS_PER_INCH *
+             (zoomSpinBox->value() / 100.0));
+-    QPixmap pixmap = label->pixmap()->copy();
++    QPixmap pixmap = label->pixmap().copy();
+     QPainter painter(&pixmap);
+     painter.setPen(Qt::green);
+     for (int i = 0; i < paths.count(); ++i) {
+@@ -1844,11 +1844,11 @@ void MainWindow::showMargins()
+ 
+ void MainWindow::showMargins(QLabel *label)
+ {
+-    if (!label || !label->pixmap() || label->pixmap()->isNull())
++    if (!label || label->pixmap().isNull())
+         return;
+     const int DPI = static_cast<int>(POINTS_PER_INCH *
+                 (zoomSpinBox->value() / 100.0));
+-    QPixmap pixmap = label->pixmap()->copy();
++    QPixmap pixmap = label->pixmap().copy();
+     QPainter painter(&pixmap);
+     painter.setPen(Qt::cyan);
+     int left = leftMarginSpinBox->value();
+@@ -1880,12 +1880,11 @@ void MainWindow::showMargins(QLabel *label)
+ 
+ void MainWindow::setAMargin(const QPoint &pos)
+ {
+-    if (!marginsGroupBox->isChecked() || !page1Label->pixmap() ||
+-        page1Label->pixmap()->isNull())
++    if (!marginsGroupBox->isChecked() || page1Label->pixmap().isNull())
+         return;
+     const int DPI = static_cast<int>(POINTS_PER_INCH *
+                 (zoomSpinBox->value() / 100.0));
+-    const QSize &size = page1Label->pixmap()->size();
++    const QSize &size = page1Label->pixmap().size();
+     int x = pos.x();
+     int y = pos.y();
+     const int HorizontalMiddle = size.width() / 2;
+diff --git a/mainwindow.hpp b/mainwindow.hpp
+index 448d21c..6a04179 100644
+--- a/mainwindow.hpp
++++ b/mainwindow.hpp
+@@ -14,12 +14,7 @@
+ 
+ #include "generic.hpp"
+ #include "saveform.hpp"
+-#if QT_VERSION >= 0x040600
+-#include <QSharedPointer>
+-#else
+-#include <tr1/memory>
+-#endif
+-#include <poppler-qt5.h>
++#include <poppler-qt6.h>
+ #include <QBrush>
+ #include <QList>
+ #include <QMainWindow>
+diff --git a/resources.qrc b/resources.qrc
+index 5464869..aa0f6be 100644
+--- a/resources.qrc
++++ b/resources.qrc
+@@ -3,9 +3,6 @@
+ <file alias="icon.png">images/icon.png</file>
+ <file alias="left.png">images/left.png</file>
+ <file alias="right.png">images/right.png</file>
+-<file>diffpdf_cz.qm</file>
+-<file>diffpdf_de.qm</file>
+-<file>diffpdf_fr.qm</file>
+ <file>help.html</file>
+ <file>help_cz.html</file>
+ <file>help_de.html</file>
+diff --git a/sequence_matcher.cpp b/sequence_matcher.cpp
+index cc65425..9dc5d98 100644
+--- a/sequence_matcher.cpp
++++ b/sequence_matcher.cpp
+@@ -11,6 +11,7 @@
+ */
+ 
+ #include "sequence_matcher.hpp"
++#include <algorithm>
+ #include <QSet>
+ 
+ 
+@@ -136,7 +137,7 @@ QList<Match> SequenceMatcher::get_matching_blocks()
+                 offsets.append(Offsets(i + k, a_high, j + k, b_high));
+         }
+     }
+-    qSort(matching_blocks.begin(), matching_blocks.end(), matchLessThan);
++    std::sort(matching_blocks.begin(), matching_blocks.end(), matchLessThan);
+ 
+     int i1 = 0;
+     int j1 = 0;
+diff --git a/textitem.cpp b/textitem.cpp
+index f7ce133..728cbb3 100644
+--- a/textitem.cpp
++++ b/textitem.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include <QDir>
+ #include <QFile>
++#include <QStringConverter>
+ #include <QTextStream>
+ 
+ 
+@@ -130,7 +131,7 @@ const QList<QPainterPath> TextItems::generateZones(const int Width,
+         const int Column = ((Columns == 1) ? 0
+             : (rect.width() > Span) ? Columns : rect.right() / Span);
+         const int y = normalizedY(static_cast<int>(rect.y()), ToleranceY);
+-        zonesForColumn.insertMulti(Key(Column, y, rect.x()), zone);
++        zonesForColumn.insert(Key(Column, y, rect.x()), zone);
+     }
+     return zonesForColumn.values();
+ }
+@@ -152,7 +153,7 @@ void TextItems::debug(const int page, const int ToleranceY,
+                                 .arg(file.errorString())));
+     }
+     QTextStream out(&file);
+-    out.setCodec("UTF-8");
++    out.setEncoding(QStringConverter::Utf8);
+     out << "Page #" << page << ": "
+         << (ComparingWords ? "Words" : "Characters") << " mode\n";
+     for (int i = 0; i < items.count(); ++i) {
+@@ -202,7 +203,7 @@ const TextItems getCharacters(const TextBoxList &list)
+     TextItems items;
+     foreach (const PdfTextBox &box, list) {
+         const QString word = box->text();
+-        int limit = word.count() - 1;
++        int limit = word.size() - 1;
+         for (int i = limit; i >= 0; --i)
+             if (!word[i].isSpace())
+                 break;
