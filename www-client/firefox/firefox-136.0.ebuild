@@ -1239,11 +1239,7 @@ src_install() {
 	# Add telemetry config prefs, just in case something happens in future and telemetry build
 	# options stop working.
 	if ! use telemetry ; then
-		cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to set telemetry prefs"
-		sticky_pref("toolkit.telemetry.dap_enabled", false);
-		pref("toolkit.telemetry.dap_helper", "");
-		pref("toolkit.telemetry.dap_leader", "");
-		EOF
+		cat "${FILESDIR}"/gentoo-telemetry-prefs.js >>"${GENTOO_PREFS}" || die "failed to set telemetry prefs"
 	fi
 
 	# Install language packs
