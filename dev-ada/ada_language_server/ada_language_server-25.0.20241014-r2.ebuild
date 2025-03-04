@@ -46,16 +46,20 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 src_compile() {
 	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_server.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
-		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} || die
+		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
+		|| die
 	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_3_17.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
-		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} || die
+		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
+		|| die
 	gprbuild -v -m -j$(makeopts_jobs) -P gnat/tester.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
-		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} || die
+		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
+		|| die
 	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_client.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
-		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} || die
+		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
+		|| die
 	mkdir -p integration/vscode/ada/x64/linux
 	cp -f .obj/server/ada_language_server integration/vscode/ada/x64/linux || die
 }
@@ -70,5 +74,6 @@ src_install() {
 	gprinstall -v -f -P gnat/lsp_client.gpr -p -r --mode=dev \
 		--prefix="${D}"/usr -XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable -XGPR_BUILD=relocatable || die
+	rm "${D}"/usr/share/gpr/gnatcoll.gpr || die
 	einstalldocs
 }
