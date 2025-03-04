@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/950573
+https://github.com/google/benchmark/pull/1942
+
+From d124c771fe507a8eb5bb37697f8b36a7fde19e27 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 5 Mar 2025 00:16:54 +0200
+Subject: [PATCH] Install FindPFM.cmake for bencmarkConfig.cmake
+
+There is no upstream PFM cmake package config file to use, so this has
+to be installed for the benchmark cmake package config file to work.
+
+Bug: https://bugs.gentoo.org/950573
+See-Also: c2146397ac69e6589a50f6b4fc6a7355669caed5
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/cmake/Config.cmake.in
++++ b/cmake/Config.cmake.in
+@@ -5,6 +5,7 @@ include (CMakeFindDependencyMacro)
+ find_dependency (Threads)
+ 
+ if (@BENCHMARK_ENABLE_LIBPFM@)
++    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
+     find_dependency (PFM)
+ endif()
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -39,6 +39,9 @@ set_property(
+ if (PFM_FOUND)
+   target_link_libraries(benchmark PRIVATE PFM::libpfm)
+   target_compile_definitions(benchmark PRIVATE -DHAVE_LIBPFM)
++  install(
++      FILES "${PROJECT_SOURCE_DIR}/cmake/Modules/FindPFM.cmake"
++      DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+ endif()
+ 
+ # pthread affinity, if available
