@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -75,11 +75,11 @@ inherit cargo linux-info
 COMMIT="36302336f7e07080e289baccda8d07c7c1a9d00d"
 MY_P="asahi-nvram-${COMMIT}"
 DESCRIPTION="CLI boot disk selector for Apple Silicon Macs"
-HOMEPAGE="https://github.com/WhatAmISupposedToPutHere/asahi-nvram"
+HOMEPAGE="https://github.com/AsahiLinux/asahi-nvram"
 
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/WhatAmISupposedToPutHere/asahi-nvram/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
+	https://github.com/AsahiLinux/asahi-nvram/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 "
 S="${WORKDIR}/${MY_P}/asahi-bless"
 
