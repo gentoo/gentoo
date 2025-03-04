@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="github">indexdata/yaz</remote-id>
-  </upstream>
-  <use>
-    <flag name="ziffy">Install ziffy, a promiscuous Z39.50 APDU sniffer</flag>
-  </use>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/indexdata/yaz/issues</bugs-to>
+		<remote-id type="github">indexdata/yaz</remote-id>
+	</upstream>
+	<use>
+		<flag name="ziffy">Install ziffy, a promiscuous Z39.50 APDU sniffer</flag>
+	</use>
 </pkgmetadata>
