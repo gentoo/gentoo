@@ -82,6 +82,8 @@ src_configure() {
 src_install() {
 	meson_src_install
 
+	exeinto /etc/user/init.d
+	newexe "${FILESDIR}/foot.initd" foot
 	systemd_douserunit foot-server.service "${S}"/foot-server.socket
 }
 
