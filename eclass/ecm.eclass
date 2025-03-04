@@ -695,7 +695,7 @@ ecm_src_test() {
 		fi
 
 		# KDE_DEBUG stops crash handlers from launching and hanging the test phase
-		KDE_DEBUG=1 cmake_src_test
+		KDE_DEBUG=1 cmake_src_test "$@"
 	}
 
 	local -x QT_QPA_PLATFORM=offscreen
@@ -707,9 +707,9 @@ ecm_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
 
 	if [[ ${EAPI} == 8 ]] && [[ ${VIRTUALX_REQUIRED} = always || ${VIRTUALX_REQUIRED} = test ]]; then
-		virtx _test_runner
+		virtx _test_runner "$@"
 	else
-		_test_runner
+		_test_runner "$@"
 	fi
 
 	if [[ -n "${DBUS_SESSION_BUS_PID}" ]] ; then
