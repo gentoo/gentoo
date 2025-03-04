@@ -1,0 +1,79 @@
+https://github.com/LibreOffice/core/commit/6a442575b7e802d1a3c4c4c18cd59a66d87a9217
+https://github.com/LibreOffice/core/commit/2e33e9aebf10adfb2663389a5051b32aa1c941e6
+
+From 6a442575b7e802d1a3c4c4c18cd59a66d87a9217 Mon Sep 17 00:00:00 2001
+From: Robin Candau <robincandau@protonmail.com>
+Date: Thu, 27 Feb 2025 10:26:53 +0100
+Subject: [PATCH] tdf#165433 Fix PDF imports with (system) poppler >= 25.02.0
+
+Since poppler 25.02.0, GlobalParams doesn't have a constructor
+that accepts a nullptr anymore,
+see upstream poppler b50390f748b59cb0a64b912636ecf6527bd0d12a commit.
+
+As such, the data directory location defined for SYSTEM_POPPLER
+needs to be updated accordingly (when SYSTEM_POPPLER >= 25.02.0),
+otherwise PDF imports fail with
+"General Error / General input/output error".
+
+Change-Id: I2a60b03a9ae20aab8d36db2a6827f1f3b9618115
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/182282
+Tested-by: Jenkins
+Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
+(cherry picked from commit 406afe11711df9fcabbc829fcff00aef2f44c1d9)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/182307
+---
+ sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+index ebed120708cc2..9b63559be44d9 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+@@ -110,7 +110,11 @@ int main(int argc, char **argv)
+ 
+     /* Get data directory location */
+ #ifdef SYSTEM_POPPLER
++#if POPPLER_CHECK_VERSION(25, 0, 2)
++    const std::string datadir = "";
++#else
+     const char* datadir = nullptr;
++#endif
+ #else
+     /* Creates an absolute path to the poppler_data directory, by taking the path
+      * to the xpdfimport executable (provided in argv[0], and concatenating a
+
+From 2e33e9aebf10adfb2663389a5051b32aa1c941e6 Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@rene-engelhard.de>
+Date: Fri, 28 Feb 2025 06:52:32 +0100
+Subject: [PATCH] fix poppler < 25.02 builds again
+
+after 406afe11711df9fcabbc829fcff00aef2f44c1d9
+should be #if POPPLER_CHECK_VERSION(25, 2, 0), cf. e.g.
+https://cgit.freedesktop.org/libreoffice/core/tree/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx?id=406afe11711df9fcabbc829fcff00aef2f44c1d9#n1325
+
+Change-Id: I2b891eaab55a303d74e92335bb15b520af4805bd
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/182344
+Reviewed-by: Julien Nabet <serval2412@yahoo.fr>
+Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
+Reviewed-by: Robin Candau <antiz@archlinux.org>
+Tested-by: Jenkins
+(cherry picked from commit 344b71a1d1598465d7ebf6768aa68ad1db38d506)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/182359
+---
+ sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+index 9b63559be44d..1cb85e244fbe 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+@@ -110,7 +110,7 @@ int main(int argc, char **argv)
+ 
+     /* Get data directory location */
+ #ifdef SYSTEM_POPPLER
+-#if POPPLER_CHECK_VERSION(25, 0, 2)
++#if POPPLER_CHECK_VERSION(25, 2, 0)
+     const std::string datadir = "";
+ #else
+     const char* datadir = nullptr;
+
