@@ -10,7 +10,7 @@ inherit perl-module virtualx
 DESCRIPTION="Copy and paste with any OS"
 
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
 
 RDEPEND="
 	dev-perl/CGI
