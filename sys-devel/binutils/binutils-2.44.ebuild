@@ -398,6 +398,16 @@ src_test() {
 		# Tests don't expect LTO
 		filter-lto
 
+		# If we have e.g. -mfpmath=sse -march=pentium4 in CFLAGS,
+		# we'll get lto1 warnings for some tests which cause
+		# spurious failures because -mfpmath isn't passed at
+		# link-time. Filter accordingly.
+		#
+		# Alternatively, we could pass C{C,XX}_FOR_TARGET with
+		# some (ideally not all, surely would break some tests)
+		# stuffed in.
+		filter-flags '-mfpmath=*'
+
 		# lto-wrapper warnings which confuse tests
 		filter-flags '-Wa,*'
 
