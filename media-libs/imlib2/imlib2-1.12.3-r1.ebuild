@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ raw +shm static-libs svg +text +tiff +webp zlib"
 
 REQUIRED_USE="shm? ( X )"
 
+# NOTE: zlib is required even if zlib loader is disabled
 RDEPEND="
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -41,7 +42,7 @@ RDEPEND="
 	svg? ( >=gnome-base/librsvg-2.46.0:=[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-4.0.4:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	sys-libs/zlib[${MULTILIB_USEDEP}]
 	!<media-plugins/imlib2_loaders-1.10.0
 "
 DEPEND="${RDEPEND}
