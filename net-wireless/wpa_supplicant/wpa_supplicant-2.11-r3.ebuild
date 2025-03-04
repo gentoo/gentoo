@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="+ap broadcom-sta dbus eap-sim eapol-test +fils macsec +mbo +mesh p2p privsep qt6 readline selinux smartcard tkip uncommon-eap-types wep wps"
+IUSE="+ap broadcom-sta dbus eap-sim eapol-test +fils gui macsec +mbo +mesh p2p privsep readline selinux smartcard tkip uncommon-eap-types wep wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -39,7 +39,7 @@ DEPEND="
 		eap-sim? ( sys-apps/pcsc-lite )
 	)
 	!kernel_linux? ( net-libs/libpcap )
-	qt6? (
+	gui? (
 		dev-qt/qtbase:6[gui,widgets]
 		dev-qt/qtsvg:6
 	)
@@ -337,7 +337,7 @@ src_configure() {
 		Kconfig_style_config LIBNL32
 	fi
 
-	if use qt6 ; then
+	if use gui ; then
 		pushd "${S}"/wpa_gui-qt4 > /dev/null || die
 		eqmake6 wpa_gui.pro
 		popd > /dev/null || die
@@ -348,7 +348,7 @@ src_compile() {
 	einfo "Building wpa_supplicant"
 	emake V=1 BINDIR=/usr/sbin
 
-	if use qt6; then
+	if use gui ; then
 		einfo "Building wpa_gui"
 		emake -C "${S}"/wpa_gui-qt4
 	fi
@@ -379,7 +379,7 @@ src_install() {
 		doman doc/docbook/*.{5,8}
 	fi
 
-	if use qt6 ; then
+	if use gui ; then
 		into /usr
 		dobin wpa_gui-qt4/wpa_gui
 		doicon wpa_gui-qt4/icons/wpa_gui.svg

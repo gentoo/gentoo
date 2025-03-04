@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-03-04)
+# qt is not keyworded here
+net-wireless/wpa_supplicant gui
+
 # Sam James <sam@gentoo.org> (2025-02-21)
 # media-video/rav1e is not yet keyworded here
 media-video/ffmpeg rav1e
