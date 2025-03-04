@@ -36,8 +36,8 @@ IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups +dbus dos
 	llvm-libunwind custom-cflags ffmpeg +fontconfig +gecko gphoto2
 	+gstreamer kerberos +mingw +mono netapi nls odbc opencl +opengl
-	osmesa pcap perl pulseaudio samba scanner +sdl selinux smartcard
-	+ssl +strip +truetype udev +unwind usb v4l +vulkan wayland wow64
+	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
+	+strip +truetype udev +unwind usb v4l +vulkan wayland wow64
 	+xcomposite xinerama
 "
 # bug #551124 for truetype
@@ -61,10 +61,7 @@ WINE_DLOPEN_DEPEND="
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXrender[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
-		opengl? (
-			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
-			osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
-		)
+		opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
 		xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 		xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	)
@@ -263,7 +260,7 @@ src_configure() {
 		$(use_with nls gettext)
 		$(use_with opencl)
 		$(use_with opengl)
-		$(use_with osmesa)
+		--without-osmesa # media-libs/mesa no longer supports this
 		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pcap)
 		$(use_with pulseaudio pulse)
