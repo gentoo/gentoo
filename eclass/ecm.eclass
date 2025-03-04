@@ -728,7 +728,7 @@ ecm_src_test() {
 ecm_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cmake_src_install
+	cmake_src_install "$@"
 
 	local f
 	# bug 621970
