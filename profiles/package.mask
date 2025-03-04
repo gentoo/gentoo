@@ -313,12 +313,6 @@ dev-qt/qtwebview:5
 >=dev-libs/intel-compute-runtime-24.52.32224.5
 >=dev-util/intel-graphics-compiler-2.5.7
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2025-01-03)
-# Contains a serious bug that can cause deletion of the users home dir.
-# See-also: https://github.com/keshavbhatt/whatsie/issues/230
-# Removal on 2025-03-03 unless upstream fixes the issue
-net-im/whatsie
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
