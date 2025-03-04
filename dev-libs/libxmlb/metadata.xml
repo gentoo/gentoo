@@ -6,6 +6,12 @@
 		<flag name="stemmer">Enable language stemming support</flag>
 	</use>
 	<upstream>
+		<maintainer status="active"> <!-- see MAINTAINERS -->
+			<name>Richard Hughes</name>
+			<email>richard@hughsie.com</email>
+		</maintainer>
+		<bugs-to>https://github.com/hughsie/libxmlb/issues</bugs-to>
+		<changelog>https://github.com/hughsie/libxmlb/releases</changelog>
 		<remote-id type="github">hughsie/libxmlb</remote-id>
 	</upstream>
 </pkgmetadata>
