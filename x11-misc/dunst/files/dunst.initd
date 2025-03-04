@@ -6,6 +6,6 @@ depend() {
 	need dbus
 }
 
-export DBUS_SESSION_BUS_ADDRESS="${XDG_RUNTIME_DIR}/bus"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 supervisor=supervise-daemon
 command="/usr/bin/dunst"
