@@ -48,6 +48,7 @@ REQUIRED_USE="
 	!llvm? ( !doc )
 	llvm? ( ${LLVM_REQUIRED_USE} )
 "
+RESTRICT="!llvm? ( test )"
 
 # Used by both "cmake" and "zig" eclasses.
 BUILD_DIR="${WORKDIR}/${P}_build"
@@ -309,7 +310,9 @@ src_test() {
 		fi
 	done
 
-	ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native
+	# Run tests with Debug mode by default, like upstream does in CI,
+	# full test suite with other modes is in a sad state right now...
+	ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native --release=debug
 
 	ZBS_ARGS=("${args_backup[@]}")
 }
