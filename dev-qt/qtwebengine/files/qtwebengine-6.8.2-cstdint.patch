@@ -1,0 +1,32 @@
+Patch status: fixed in >=chromium-133.0.6892.0
+
+IWYU issue, only manifests with gcc+musl[1] (clang+musl or gcc+glibc are fine).
+Backport of [2] (>=chromium-133.0.6892.0) + [3][4] (>=chromium-128.0.6571.0).
+
+TODO: [2] likely needs to be kept Qt6.9.0, but the rest is already present
+
+[1] https://bugs.gentoo.org/950579
+[2] https://chromium.googlesource.com/external/webrtc/+/000f04375b67e6139a1dc88d832d2da65c7acb29
+[3] https://crrev.com/0d3d5062f7d5ff83f38685bf864c71dd5bd9d460
+[4] https://crrev.com/26f3c318377ab31c2b317b656613e2d3c11ce513
+--- a/src/3rdparty/chromium/content/public/browser/mhtml_generation_result.h
++++ b/src/3rdparty/chromium/content/public/browser/mhtml_generation_result.h
+@@ -7,2 +7,3 @@
+ 
++#include <cstdint>
+ #include <optional>
+--- a/src/3rdparty/chromium/extensions/browser/path_util.h
++++ b/src/3rdparty/chromium/extensions/browser/path_util.h
+@@ -7,2 +7,5 @@
+ 
++#include <cstdint>
++#include <string>
++
+ #include "base/files/file_path.h"
+--- a/src/3rdparty/chromium/third_party/webrtc/modules/audio_coding/neteq/reorder_optimizer.cc
++++ b/src/3rdparty/chromium/third_party/webrtc/modules/audio_coding/neteq/reorder_optimizer.cc
+@@ -12,2 +12,4 @@
+ 
++#include <stdint.h>
++
+ #include <algorithm>
