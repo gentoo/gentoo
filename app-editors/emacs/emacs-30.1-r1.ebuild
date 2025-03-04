@@ -513,6 +513,11 @@ src_install() {
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
 
+	exeinto /etc/user/init.d
+	sed -e "/command=/s,@EMACS_BIN@,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
+		"${FILESDIR}/emacs.initd" | newexe - ${EMACS_SUFFIX}
+	pipestatus || die
+
 	if use systemd; then
 		insinto /usr/lib/systemd/user
 		sed -e "/^##/d" \
