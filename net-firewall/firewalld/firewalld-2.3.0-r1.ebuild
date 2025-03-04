@@ -32,6 +32,7 @@ RDEPEND="
 		)
 	')
 	net-firewall/nftables[xtables(+)]
+	x11-libs/libnotify[introspection]
 	selinux? ( sec-policy/selinux-firewalld )
 "
 DEPEND="
