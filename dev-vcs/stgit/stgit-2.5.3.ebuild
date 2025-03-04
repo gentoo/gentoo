@@ -14,28 +14,28 @@ CRATES="
 	anstyle-query@1.1.2
 	anstyle-wincon@3.0.7
 	anstyle@1.0.10
-	anyhow@1.0.95
+	anyhow@1.0.96
 	arc-swap@1.7.1
 	autocfg@1.4.0
 	bitflags@2.8.0
 	bstr@1.11.3
 	bzip2-rs@0.1.2
-	cc@1.2.10
+	cc@1.2.15
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
-	clap@4.5.26
-	clap_builder@4.5.26
+	clap@4.5.30
+	clap_builder@4.5.30
 	clap_lex@0.7.4
 	clru@0.6.2
 	colorchoice@1.0.3
 	crc32fast@1.4.2
 	ctrlc@3.4.5
-	curl-sys@0.4.78+curl-8.11.0
+	curl-sys@0.4.80+curl-8.12.1
 	curl@0.4.47
 	displaydoc@0.2.5
 	dunce@1.0.5
 	encoding_rs@0.8.35
-	equivalent@1.0.1
+	equivalent@1.0.2
 	errno@0.3.10
 	faster-hex@0.9.0
 	fastrand@2.3.0
@@ -43,7 +43,7 @@ CRATES="
 	flate2@1.0.35
 	fnv@1.0.7
 	form_urlencoded@1.2.1
-	getrandom@0.2.15
+	getrandom@0.3.1
 	gix-actor@0.33.2
 	gix-bitmap@0.2.14
 	gix-chunk@0.4.11
@@ -98,28 +98,29 @@ CRATES="
 	icu_provider_macros@1.5.0
 	idna@1.0.3
 	idna_adapter@1.2.0
-	indexmap@2.7.0
-	is-terminal@0.4.13
+	indexmap@2.7.1
+	is-terminal@0.4.15
 	is_terminal_polyfill@1.70.1
 	itoa@1.0.14
 	jiff-tzdb-platform@0.1.2
 	jiff-tzdb@0.1.2
-	jiff@0.1.24
+	jiff@0.1.29
+	jiff@0.2.1
 	libc@0.2.169
 	libredox@0.1.3
 	libz-sys@1.1.21
 	linux-raw-sys@0.4.15
 	litemap@0.7.4
 	lock_api@0.4.12
-	log@0.4.25
+	log@0.4.26
 	maybe-async@0.2.10
 	memchr@2.7.4
 	memmap2@0.9.5
-	miniz_oxide@0.8.3
+	miniz_oxide@0.8.5
 	nix@0.29.0
-	once_cell@1.20.2
-	openssl-probe@0.1.5
-	openssl-sys@0.9.104
+	once_cell@1.20.3
+	openssl-probe@0.1.6
+	openssl-sys@0.9.106
 	parking_lot@0.12.3
 	parking_lot_core@0.9.10
 	percent-encoding@2.3.1
@@ -129,27 +130,27 @@ CRATES="
 	proc-macro2@1.0.93
 	prodash@29.0.0
 	quote@1.0.38
-	redox_syscall@0.5.8
+	redox_syscall@0.5.9
 	regex-automata@0.4.9
-	rustix@0.38.43
-	ryu@1.0.18
+	rustix@0.38.44
+	ryu@1.0.19
 	same-file@1.0.6
 	schannel@0.1.27
 	scopeguard@1.2.0
-	serde@1.0.217
-	serde_derive@1.0.217
-	serde_json@1.0.135
+	serde@1.0.218
+	serde_derive@1.0.218
+	serde_json@1.0.139
 	sha1_smol@1.0.1
 	shell-words@1.1.0
 	shlex@1.3.0
-	smallvec@1.13.2
+	smallvec@1.14.0
 	socket2@0.5.8
 	stable_deref_trait@1.2.0
 	strsim@0.11.1
-	syn@2.0.96
+	syn@2.0.98
 	synstructure@0.13.1
-	tar@0.4.43
-	tempfile@3.15.0
+	tar@0.4.44
+	tempfile@3.17.1
 	termcolor@1.4.1
 	terminal_size@0.4.1
 	thiserror-impl@2.0.11
@@ -158,7 +159,7 @@ CRATES="
 	tinyvec@1.8.1
 	tinyvec_macros@0.1.1
 	unicode-bom@2.0.3
-	unicode-ident@1.0.14
+	unicode-ident@1.0.17
 	unicode-normalization@0.1.24
 	url@2.5.4
 	utf16_iter@1.0.5
@@ -167,7 +168,7 @@ CRATES="
 	vcpkg@0.2.15
 	version_check@0.9.5
 	walkdir@2.5.0
-	wasi@0.11.0+wasi-snapshot-preview1
+	wasi@0.13.3+wasi-0.2.2
 	winapi-util@0.1.9
 	windows-sys@0.52.0
 	windows-sys@0.59.0
@@ -180,7 +181,9 @@ CRATES="
 	windows_x86_64_gnu@0.52.6
 	windows_x86_64_gnullvm@0.52.6
 	windows_x86_64_msvc@0.52.6
-	winnow@0.6.24
+	winnow@0.6.26
+	winnow@0.7.3
+	wit-bindgen-rt@0.33.0
 	write16@1.0.0
 	writeable@0.5.5
 	xattr@1.4.0
