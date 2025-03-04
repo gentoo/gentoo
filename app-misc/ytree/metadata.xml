@@ -2,4 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<name>Werner Bregulla</name>
+			<email>werner@frolix.han.de</email>
+		</maintainer>
+		<bugs-to>mailto:werner@frolix.han.de</bugs-to>
+	</upstream>
 </pkgmetadata>
