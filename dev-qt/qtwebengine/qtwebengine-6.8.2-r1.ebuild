@@ -109,7 +109,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.8.1-aarch64-xnnpack.patch
-	"${FILESDIR}"/${PN}-6.8.1-cstdint.patch
+	"${FILESDIR}"/${PN}-6.8.2-cstdint.patch
 	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
 )
 
