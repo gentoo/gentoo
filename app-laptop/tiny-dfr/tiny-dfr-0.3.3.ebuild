@@ -237,11 +237,11 @@ CRATES="
 inherit cargo udev systemd linux-info
 
 DESCRIPTION="The most basic dynamic function row daemon possible"
-HOMEPAGE="https://github.com/WhatAmISupposedToPutHere/tiny-dfr"
+HOMEPAGE="https://github.com/AsahiLinux/tiny-dfr"
 
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/WhatAmISupposedToPutHere/tiny-dfr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/AsahiLinux/tiny-dfr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="MIT"

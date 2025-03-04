@@ -13,6 +13,6 @@
   <name>Proxy Maintainers</name>
 </maintainer>
 <upstream>
-  <remote-id type="github">WhatAmISupposedToPutHere/tiny-dfr</remote-id>
+  <remote-id type="github">AsahiLinux/tiny-dfr</remote-id>
 </upstream>
 </pkgmetadata>
