@@ -17,8 +17,6 @@ RUST_MIN_VER=1.77.1
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="ncurses,sqlite,ssl"
 
-WANT_AUTOCONF="2.71"
-
 VIRTUALX_REQUIRED="manual"
 
 # Information about the bundled wasi toolchain from
@@ -54,7 +52,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
-inherit autotools check-reqs desktop flag-o-matic gnome2-utils linux-info llvm-r1 multiprocessing \
+inherit check-reqs desktop flag-o-matic gnome2-utils linux-info llvm-r1 multiprocessing \
 	optfeature pax-utils python-any-r1 readme.gentoo-r1 rust toolchain-funcs virtualx xdg
 
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
