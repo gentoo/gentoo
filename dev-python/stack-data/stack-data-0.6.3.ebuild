@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,4 +37,8 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# Cython looks for the module in the wrong directory, for some reason
 	tests/test_formatter.py::test_example
+	# broken by new pygments
+	tests/test_core.py::test_executing_style_defs
+	tests/test_core.py::test_pygments_example
+	tests/test_serializer.py::test_example
 )
