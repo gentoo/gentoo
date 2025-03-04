@@ -493,6 +493,8 @@ zig-utils_find_installation() {
 
 	local zig_supported_versions=(
 		"9999"
+		"0.14.1"
+		"0.14.0"
 		"0.13.1"
 		"0.13.0"
 	)
