@@ -29,8 +29,8 @@ LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
 	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags +dbus
-	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls osmesa
-	perl pulseaudio +sdl selinux +ssl +strip udev +unwind usb v4l
+	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls perl
+	pulseaudio +sdl selinux +ssl +strip udev +unwind usb v4l
 	video_cards_amdgpu +xcomposite xinerama
 "
 
@@ -52,7 +52,6 @@ WINE_DLOPEN_DEPEND="
 	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
-	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? (
 		dev-libs/gmp:=[${MULTILIB_USEDEP}]
@@ -241,7 +240,7 @@ src_configure() {
 		$(use_with fontconfig)
 		$(use_with gstreamer)
 		$(use_with nls gettext)
-		$(use_with osmesa)
+		--without-osmesa # media-libs/mesa no longer supports this
 		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pulseaudio pulse)
 		$(use_with sdl)
