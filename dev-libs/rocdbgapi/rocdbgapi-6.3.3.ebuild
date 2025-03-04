@@ -17,7 +17,6 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 BDEPEND="
-	dev-build/cmake
 	doc? (
 		app-text/doxygen[dot]
 		virtual/latex-base
@@ -28,7 +27,6 @@ BDEPEND="
 RDEPEND="
 	dev-libs/rocm-comgr:${SLOT}
 	dev-libs/rocr-runtime:${SLOT}
-	sys-apps/hwdata
 "
 DEPEND="${RDEPEND}"
 
