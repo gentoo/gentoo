@@ -39,6 +39,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0-fix-documentation-installation.patch"
 	"${FILESDIR}/${P}-clock-detection-portability.patch"
+	"${FILESDIR}/${P}-fix-pfm-cmake.patch"
 )
 
 pkg_setup() {
