@@ -1,0 +1,43 @@
+From 1f3299cc4c8f8281ce48222e711393a0cadcb9fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 3 Mar 2025 21:27:08 +0100
+Subject: [PATCH 1/2] Use new serialization code for PyPy3.10+ 7.3.19+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Enable the new `inspect.signature(types.CodeType)` code path for
+PyPy3.10 7.3.19 and newer, notably including PyPy3.11 that does not work
+with the fallback code anymore.  Add a workaround to skip the `magic`
+parameter that does not seem to be exposed (or needed).
+
+With these changes, the serialization tests pass on PyPy3.11 7.3.19,
+as well as most of the test suite.
+
+Fixes #933
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ ipyparallel/serialize/codeutil.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/ipyparallel/serialize/codeutil.py b/ipyparallel/serialize/codeutil.py
+index ca0828a4..66dccc1f 100644
+--- a/ipyparallel/serialize/codeutil.py
++++ b/ipyparallel/serialize/codeutil.py
+@@ -29,11 +29,12 @@ def code_ctor(*args):
+ # pass every supported arg to the code constructor
+ # this should be more forward-compatible
+ # (broken on pypy: https://github.com/ipython/ipyparallel/issues/845)
+-if sys.version_info >= (3, 10) and not hasattr(sys, "pypy_version_info"):
++if sys.version_info >= (3, 10) and getattr(sys, "pypy_version_info", (7, 3, 19)) >= (7, 3, 19):
+     _code_attr_names = tuple(
+         _code_attr_map.get(name, name)
+         for name, param in inspect.signature(types.CodeType).parameters.items()
+-        if param.POSITIONAL_ONLY or param.POSITIONAL_OR_KEYWORD
++        if (param.POSITIONAL_ONLY or param.POSITIONAL_OR_KEYWORD)
++        and not (hasattr(sys, "pypy_version_info") and name == "magic")
+     )
+ else:
+     # can't inspect types.CodeType on Python < 3.10
+
