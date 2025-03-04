@@ -65,6 +65,9 @@ RDEPEND="
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( virtual/jre:11 )
 "
+PDEPEND="
+	=app-office/libreoffice-l10n-$(ver_cut 1-2)*
+"
 RESTRICT="test strip"
 
 QA_PREBUILT="opt/* usr/*"
