@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -75,11 +75,11 @@ inherit cargo linux-info
 COMMIT="6764bf5fbe6371a70604cc58aaa6d6b4473b3adf"
 MY_P="asahi-nvram-${COMMIT}"
 DESCRIPTION="Tool to read and write nvram variables on ARM Macs"
-HOMEPAGE="https://github.com/WhatAmISupposedToPutHere/asahi-nvram"
+HOMEPAGE="https://github.com/AsahiLinux/asahi-nvram"
 
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/WhatAmISupposedToPutHere/asahi-nvram/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
+	https://github.com/AsahiLinux/asahi-nvram/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 "
 S="${WORKDIR}/${MY_P}/asahi-nvram"
 
