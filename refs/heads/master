@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 0xAECFCBDC64276180 1741056390 -0500
-pushee gentoo:repo/gentoo.git
-nonce 1741056390-c6fd16b819e66a6d2863502afa659186f72e92fe
+pusher C01F7214BC931414 1741070813 +0800
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1741070812-cd1d022737f22df6b28a169fe03ea09d5f412b6f
 
-6fc666fc44b335e5a4f639fa9615dd93f9f8484d 66ddfc523335615aa56f9235d92ac1fa2bd1b46e refs/heads/master
+66ddfc523335615aa56f9235d92ac1fa2bd1b46e d81a8a5fc49897e07cef7de31a864899cfadeae9 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEx3SLh1HBoPy/yLVYskQGsLCsQzQFAmfGaYYACgkQskQGsLCs
-QzQEbgf8DsFKdea+TmC1o6s4fd/1c8NEgkvr3XcIqdNOLTYqYeyQTf88fGEhKgVq
-dbwxq6fmWIyoipSVtZjGrZArDM5xVfUUeGH9IrwWXU6/FaOoApjuPT2Ds3v3zSyi
-58p+p2DO/fXAf9eS5mS4oL8laDZP3OAeoqn1Ng9QSlSgHQhxKvBvOLRAz41ulVHA
-g0+BcSDxmmVYSm2keD/RWWBCHJQFepI+Oo5Gv8D3D3vzmeUuK4MGRXLSsKT/IVEK
-zTiKeJForjy33CDeBHxNIyTFAS3sCi+GJJUsEfHVDpUNx3ifU5vLYmhoiEMRBxwK
-E269zLgM9j0EbVrplIS6+ialOKWp0Q==
-=8dfG
+iQEzBAABCAAdFiEENaqCieFo4aigqRG2mXl7DrE6YzcFAmfGod0ACgkQmXl7DrE6
+Yzd+PwgAqWuCTz/ScvsEWbuJBO+dpPcDzrhEABLDy2Az8/TMbjYHo+GAlXv+zWBN
+BK82tZ3r6mJ86/t5trCcnxcoooUkakR5r8KtI6doRTQwfUEmDHe2xnHvhPuE7scp
+fUB09YXGW6O2SNp1qjpT0/jKC+pPpy74wuPwotyvqxFR0Yc4j8UAh/aWpP72S97e
+SFAJIazksN/KFTfv6dHsXcYv9bY0bu2eUl3pXLp0Jqjqh5zRj3z3Jr1BbOzpe5I9
+C9DflAJ/gxef5Go+G5jPIOG8fg2zQZQyT9Ay/t018oLMeZ3ZzXeYlz1DIffxbopf
+yynWIxILEQAYyMnsh+YhX3QHaEQSnw==
+=6oel
 -----END PGP SIGNATURE-----
