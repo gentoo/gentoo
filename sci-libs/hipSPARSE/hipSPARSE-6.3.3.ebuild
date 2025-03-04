@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit cmake edo rocm toolchain-funcs
 DESCRIPTION="ROCm SPARSE marshalling library"
 HOMEPAGE="https://github.com/ROCm/hipSPARSE"
 # share some test datasets with rocSPARSE
-SRC_URI="https://github.com/ROCm/hipSPARSE/archive/rocm-${PV}.tar.gz -> hipSPARSE-$(ver_cut 1-2).tar.gz
+SRC_URI="https://github.com/ROCm/hipSPARSE/archive/rocm-${PV}.tar.gz -> hipSPARSE-${PV}.tar.gz
 test? (
 http://sparse-files.engr.tamu.edu/MM/SNAP/amazon0312.tar.gz -> rocSPARSE_amazon0312.tar.gz
 http://sparse-files.engr.tamu.edu/MM/Muite/Chebyshev4.tar.gz -> rocSPARSE_Chebyshev4.tar.gz
