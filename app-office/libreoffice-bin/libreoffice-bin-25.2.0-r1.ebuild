@@ -20,7 +20,7 @@ S="${WORKDIR}"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="java gnome python"
+IUSE="java python"
 
 RDEPEND="
 	acct-group/libreoffice
@@ -62,11 +62,6 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	x11-libs/pango
-	gnome? (
-		dev-libs/glib:2
-		>=gnome-base/dconf-0.40.0
-		gnome-extra/evolution-data-server
-	)
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( virtual/jre:11 )
 "
@@ -84,11 +79,15 @@ src_unpack() {
 	# We don't package Firebird anymore
 	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-firebird*_amd64.deb || die
 
-	if ! use gnome ; then
-		rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-gnome-integration*_amd64.deb || die
-	fi
-
-	# Requires KF5 as of 25.2.0, so we choose not to use it.
+	# The GNOME and KDE integration .debs are a mix of both:
+	# 1) VCLs (GUI backends), and
+	# 2) Actual DE integration (which needs KF5 and so on)
+	#
+	# For now, we always install the GTK one, and don't install the Qt
+	# one (as it's Qt5-based).
+	#
+	# KDE integration itself also requires KF5 as of 25.2.0, so we choose not to use it.
+	# Can revisit when it's KF6-based.
 	rm "${WORKDIR}"/${BINPKG_BASE}/DEBS/libobasis${PV%*.*}-kde-integration*_amd64.deb || die
 
 	# Bundled Python is used (3.10 as of 25.2.0), so no need for system dependency.
