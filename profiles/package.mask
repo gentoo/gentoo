@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2025-03-05)
+# New release channel deemed as stable. Package.masked for the early
+# adopters - make sure to have ~/.thunderbird backed up, since
+# downgrading back to esr channel (128) might be impossible due to
+# changed database schemas.
+>=mail-client/thunderbird-136.0
+>=mail-client/thunderbird-bin-136.0
+
 # John Helmert III <ajak@gentoo.org> (2025-03-02)
 # Doesn't seem to cleanly load, see:
 # https://github.com/lkrg-org/lkrg/issues/364
