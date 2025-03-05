@@ -278,7 +278,6 @@ app-metrics/burrow_exporter
 # go-colortext has only gom as reverse dependency.
 # Removal on 2025-02-23.  Bugs #948653, #844655, #844664, #922697.
 dev-go/go-colortext
-dev-go/gom
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
