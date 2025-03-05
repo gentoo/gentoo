@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>Machine Emulator.  Supports emulation across several architectures.  Primarily for MIPS support, but other platform support coming soon.</longdescription>
-  <upstream>
-    <remote-id type="sourceforge">gxemul</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<longdescription>
+		Machine Emulator.
+		Supports emulation across several architectures.
+		Primarily for MIPS support, but other platform support coming soon.
+	</longdescription>
+	<upstream>
+		<bugs-to>mailto:gavare@gmail.com</bugs-to>
+		<changelog>https://gavare.se/gxemul/news.html</changelog>
+		<doc>https://gavare.se/gxemul/gxemul-stable/doc/index.html</doc>
+		<remote-id type="sourceforge">gxemul</remote-id>
+	</upstream>
 </pkgmetadata>
