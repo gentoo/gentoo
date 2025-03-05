@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/merkuro.calendar/"
 
 LICENSE="|| ( GPL-2 GPL-3 ) CC0-1.0"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
 
 # All of the tests involve interacting with akonadi right now (as of 22.04)
