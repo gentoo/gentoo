@@ -39,13 +39,14 @@ src_compile() {
 	build() {
 		gprbuild -v -j$(makeopts_jobs) -p -P gnat/libgnatdoc.gpr \
 			-XLIBRARY_TYPE=$1 -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} \
-			|| die
+			-largs ${LDFLAGS} || die
 	}
 	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
 	gprbuild -v -j$(makeopts_jobs) -p -P gnat/gnatdoc.gpr \
-		-XLIBRARY_TYPE=relocatable || die
+		-XLIBRARY_TYPE=relocatable -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} \
+		-largs ${LDFLAGS} || die
 	if use doc; then
 		emake -C documentation/users_guide html
 	fi
