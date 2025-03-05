@@ -111,7 +111,6 @@ dev-python/qtpy pyside2
 
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Wasm support is (currently) only available on amd64 and arm64.
-www-client/firefox wasm
 www-client/firefox wasm-sandbox
 
 # Matt Jolly <kangie@gentoo.org> (2024-11-11)
