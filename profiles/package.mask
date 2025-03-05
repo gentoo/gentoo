@@ -259,12 +259,6 @@ net-misc/AQtion
 # Removal on 2025-02-27.  Bug #948966.
 dev-go/get-ego-vendor
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-24)
-# EAPI=7, uses deprecated Go eclasses, fails to compile, installation
-# blocked by current versions of docker (which provides the features).
-# Removal on 2025-02-23.  Bugs #948656, #844577, #694898, #678982.
-app-containers/docker-proxy
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
