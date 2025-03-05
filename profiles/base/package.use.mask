@@ -343,7 +343,9 @@ dev-lang/ruby jemalloc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
 # Calendar is broken with some languages on 115.0 release. Bug #910229
->=mail-client/thunderbird-115.0 system-icu
+# Update with 136.0 release: Not personally seeing any issues so far,
+# but the upstream (icu) issue is still open to this day (2025-03-05).
+<mail-client/thunderbird-136.0 system-icu
 
 # Marek Szuba <marecki@gentoo.org> (2023-07-10)
 # dev-python/mkdocs-material is by design directly integrated with
