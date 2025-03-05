@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kubrick/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE=""
 
 DEPEND="
