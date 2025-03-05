@@ -271,14 +271,6 @@ app-containers/docker-proxy
 # Removal on 2025-02-23.  Bugs #948655, #844613, #679086.
 app-metrics/burrow_exporter
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-24)
-# EAPI=7, uses deprecated Go eclasses, upstream repo is archived.
-# gom is a go dependency manager which doesn't work with modern
-# Go tools, and is redundent to standard `go install` commands.
-# go-colortext has only gom as reverse dependency.
-# Removal on 2025-02-23.  Bugs #948653, #844655, #844664, #922697.
-dev-go/go-colortext
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
