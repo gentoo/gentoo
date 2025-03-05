@@ -17,7 +17,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}--${PV}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="BSD-2"
