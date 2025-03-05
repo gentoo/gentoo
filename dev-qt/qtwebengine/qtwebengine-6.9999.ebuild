@@ -234,7 +234,9 @@ src_configure() {
 	)
 
 	if use !custom-cflags; then
-		strip-flags # fragile
+		# qtwebengine can be rather fragile with *FLAGS
+		filter-lto
+		strip-flags
 
 		if is-flagq '-g?(gdb)?([2-9])'; then #914475
 			replace-flags '-g?(gdb)?([2-9])' -g1

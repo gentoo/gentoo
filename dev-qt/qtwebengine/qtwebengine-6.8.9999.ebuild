@@ -235,7 +235,9 @@ src_configure() {
 	)
 
 	if use !custom-cflags; then
-		strip-flags # fragile
+		# qtwebengine can be rather fragile with *FLAGS
+		filter-lto
+		strip-flags
 
 		# temporary workaround for bug #947356, should be fixed in Qt 6.9.x
 		append-cppflags -U_GLIBCXX_ASSERTIONS
