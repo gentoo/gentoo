@@ -254,11 +254,6 @@ games-fps/quakeforge
 # Removal on 2025-03-07. Bug: 949318
 net-misc/AQtion
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-28)
-# Since we are done with EGO_SUM, this tool isn't needed any more.
-# Removal on 2025-02-27.  Bug #948966.
-dev-go/get-ego-vendor
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
