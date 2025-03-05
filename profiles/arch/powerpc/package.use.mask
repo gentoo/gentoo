@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Yongxiang Liang <tanekliang@gentoo.org> (2024-10-10)
@@ -286,7 +286,7 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 llvm-core/clang-common default-libcxx
-llvm-core/clang-runtime libcxx
+llvm-core/clang-runtime default-libcxx libcxx
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.

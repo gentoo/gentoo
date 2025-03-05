@@ -330,7 +330,7 @@ dev-cpp/eigen test
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
 llvm-core/clang-common default-compiler-rt default-lld
-llvm-core/clang-runtime compiler-rt
+llvm-core/clang-runtime compiler-rt default-compiler-rt default-lld
 llvm-core/llvm z3
 
 # Sam James <sam@gentoo.org> (2021-03-19)

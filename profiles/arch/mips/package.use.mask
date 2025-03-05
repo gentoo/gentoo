@@ -54,7 +54,7 @@ gnome-base/gvfs google test
 # Michał Górny <mgorny@gentoo.org> (2024-09-08)
 # libcxx is broken on mips, https://bugs.gentoo.org/939297#c2
 llvm-core/clang-common default-libcxx
-llvm-core/clang-runtime libcxx
+llvm-core/clang-runtime default-libcxx libcxx
 
 # Hans de Graaff <graaff@gentoo.org> (2024-09-08)
 # Requires large parts of dev-ruby/rails to be keyworded

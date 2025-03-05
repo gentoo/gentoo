@@ -187,7 +187,7 @@ dev-lang/php avif
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
-llvm-core/clang-runtime compiler-rt sanitize
+llvm-core/clang-runtime compiler-rt default-compiler-rt sanitize
 llvm-core/clang-common default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
