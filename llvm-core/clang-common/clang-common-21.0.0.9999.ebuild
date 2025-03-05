@@ -29,7 +29,7 @@ PDEPEND="
 "
 # enforce flags on clang-runtime as well to aid transition
 PDEPEND+="
-	llvm-core/clang-runtime[default-compiler-rt?,default-libcxx?,default-lld?,llvm-libunwind?]
+	llvm-core/clang-runtime[default-compiler-rt(-)?,default-libcxx(-)?,default-lld(-)?,llvm-libunwind(-)?]
 "
 IDEPEND="
 	!default-compiler-rt? ( sys-devel/gcc-config )
