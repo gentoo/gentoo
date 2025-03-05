@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kamoso/ https://userbase.kde.org/Kamoso"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RESTRICT="test" # bug 653674
