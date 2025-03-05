@@ -30,7 +30,7 @@ PATCHES=(
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	opendir64 rewinddir64 closedir64 stat64 # used to test for Large File Support
+	opendir64 readdir64 rewinddir64 closedir64 stat64 # used to test for Large File Support
 	arc4random_buf arc4random # used for BSD
 )
 
