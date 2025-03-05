@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Virtual for PowerShell"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm arm64"
+KEYWORDS="amd64 ~arm arm64"
 
 RDEPEND="
 	|| (
