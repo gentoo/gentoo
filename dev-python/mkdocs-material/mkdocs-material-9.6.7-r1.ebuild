@@ -61,6 +61,8 @@ PDEPEND="
 PATCHES=(
 	# simplify pyproject to remove extra deps for metadata
 	"${FILESDIR}/${PN}-8.5.7-simplify-build.patch"
+	# import backrefs only when used (i.e. never)
+	"${FILESDIR}/${PN}-9.6.7-backrefs.patch"
 )
 
 src_prepare() {
