@@ -265,12 +265,6 @@ dev-go/get-ego-vendor
 # Removal on 2025-02-23.  Bugs #948656, #844577, #694898, #678982.
 app-containers/docker-proxy
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-24)
-# EAPI=7, uses depcreated Go eclasses, fails to compile. burrow itself
-# has exporter built in since version 1.3.4, which can be used instead.
-# Removal on 2025-02-23.  Bugs #948655, #844613, #679086.
-app-metrics/burrow_exporter
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
