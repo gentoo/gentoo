@@ -27,12 +27,12 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		>=net-firewall/nftables-0.9.4[python,json,${PYTHON_USEDEP}]
 		gui? (
-			x11-libs/gtk+:3
 			dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
+			x11-libs/gtk+:3
+			x11-libs/libnotify[introspection]
 		)
 	')
 	net-firewall/nftables[xtables(+)]
-	x11-libs/libnotify[introspection]
 	selinux? ( sec-policy/selinux-firewalld )
 "
 DEPEND="
