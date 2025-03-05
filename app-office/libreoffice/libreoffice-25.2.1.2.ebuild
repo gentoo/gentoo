@@ -255,7 +255,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	acct-group/libreoffice
 	acct-user/libreoffice
-	!app-office/libreoffice-bin
+	!<app-office/libreoffice-bin-24.8.4-r2
 	!app-office/libreoffice-bin-debug
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools:* )
