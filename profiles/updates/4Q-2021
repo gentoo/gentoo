@@ -30,7 +30,6 @@ move app-crypt/openpgp-keys-teemutoivola sec-keys/openpgp-keys-teemutoivola
 move app-crypt/openpgp-keys-terminator sec-keys/openpgp-keys-terminator
 move app-crypt/openpgp-keys-tor sec-keys/openpgp-keys-tor
 move app-crypt/openpgp-keys-voikko sec-keys/openpgp-keys-voikko
-move app-emulation/docker-proxy app-containers/docker-proxy
 move app-emulation/containerd app-containers/containerd
 move app-emulation/crun app-containers/crun
 move app-emulation/buildah app-containers/buildah
