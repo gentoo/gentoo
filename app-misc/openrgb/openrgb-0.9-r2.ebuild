@@ -12,7 +12,7 @@ else
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${PV}/OpenRGB-release_${PV}.tar.bz2
 		https://files.asokolov.org/gentoo/OpenRGB-0.9-odr.patch"
 	S="${WORKDIR}/OpenRGB-release_${PV}"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong ~x86"
 	PATCHES=( "${FILESDIR}"/OpenRGB-0.9-build-system.patch )
 fi
 
