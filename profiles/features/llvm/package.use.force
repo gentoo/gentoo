@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-08-11)
@@ -13,3 +13,4 @@ app-emulation/wine-vanilla mingw
 # profile settings expect it.
 # TODO: Make a profile without default-libcxx too?
 llvm-core/clang-common default-compiler-rt default-lld default-libcxx
+llvm-core/clang-runtime default-compiler-rt default-lld default-libcxx

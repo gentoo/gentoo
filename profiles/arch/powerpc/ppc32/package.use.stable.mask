@@ -39,6 +39,7 @@ dev-ruby/kramdown unicode
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Deps not stable on ppc
 llvm-core/clang-common default-lld
+llvm-core/clang-runtime default-lld
 llvm-core/llvm binutils-plugin z3 xar
 
 # Sam James <sam@gentoo.org> (2022-07-27)
