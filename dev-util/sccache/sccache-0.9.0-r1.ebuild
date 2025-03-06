@@ -46,7 +46,7 @@ CRATES="
 	byteorder@1.5.0
 	bytes@1.6.0
 	cbc@0.1.2
-	cc@1.1.10
+	cc@1.0.83
 	cfg-if@0.1.10
 	cfg-if@1.0.0
 	cfg_aliases@0.1.1
@@ -446,6 +446,7 @@ src_configure() {
 		$(usev memcached)
 		$(usev redis)
 		$(usev s3)
+		$(usev webdav)
 	)
 
 	cargo_src_configure --no-default-features
