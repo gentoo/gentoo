@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit sgml-catalog-r1
 
 DESCRIPTION="DTDs for the eXtensible HyperText Markup Language 1.0"
 HOMEPAGE="https://www.w3.org/TR/xhtml1/"
-SRC_URI="mirror://gentoo/${P}.tgz"
+SRC_URI="mirror://gentoo/fe/${P}.tgz"
 
 LICENSE="W3C"
 SLOT="0"
