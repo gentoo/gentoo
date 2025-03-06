@@ -26,7 +26,7 @@ S="${WORKDIR}/mysql-connector-j-${PV}"
 
 LICENSE="GPL-2-with-MySQL-FLOSS-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 CP_DEPEND="
 	dev-java/c3p0:0
