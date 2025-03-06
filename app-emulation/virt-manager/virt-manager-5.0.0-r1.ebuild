@@ -19,7 +19,7 @@ else
 		https://releases.pagure.org/${PN}/${P}.tar.xz
 		verify-sig? ( https://releases.pagure.org/${PN}/${P}.tar.xz.asc	)
 	"
-	KEYWORDS="~amd64 arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 arm64 ppc64 x86"
 fi
 
 LICENSE="GPL-2+"
