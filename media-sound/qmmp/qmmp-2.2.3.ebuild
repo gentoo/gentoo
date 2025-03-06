@@ -22,6 +22,8 @@ fi
 LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
+# NOTE: drop mms in >2.2.3
+# https://sourceforge.net/p/qmmp-dev/code/12062/
 IUSE="X aac +alsa archive bs2b cdda cddb curl +dbus doc enca
 ffmpeg flac game gnome jack ladspa libxmp +mad midi mms mpg123
 mplayer musepack opus pipewire projectm pulseaudio qtmedia
