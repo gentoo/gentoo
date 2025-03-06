@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ DOCS_AUTODOC=0
 PYTHON_COMPAT=( python3_{10..13} )
 
 # python-any-r1 is inherited first because docs.eclass sources it, and cmake.eclass exports phases.
-inherit python-any-r1 cmake docs linux-info
+inherit python-any-r1 cmake docs flag-o-matic linux-info
 
 DESCRIPTION="UPnP Media Server"
 HOMEPAGE="https://gerbera.io"
@@ -65,8 +65,12 @@ BDEPEND="doc? (
 CONFIG_CHECK="~INOTIFY_USER"
 
 src_configure() {
+	# bug #941944
+	filter-lto
+
 	local mycmakeargs=(
-		-DBUILD_DOC=off
+		-DBUILD_DOC=OFF
+		-DINSTALL_DOC=OFF
 		-DWITH_AVCODEC=$(usex ffmpeg)
 		-DWITH_CURL=$(usex curl)
 		-DWITH_DEBUG=$(usex debug)
