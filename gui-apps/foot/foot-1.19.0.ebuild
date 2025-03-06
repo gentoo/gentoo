@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ppc64 ~riscv"
 IUSE="+grapheme-clustering test"
 RESTRICT="!test? ( test )"
 
