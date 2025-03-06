@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,10 @@ PYTHON_REQ_USE="xml(+),threads(+)"
 inherit meson python-r1 tmpfiles
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
+	EGIT_REPO_URI="
+		https://anongit.gentoo.org/git/proj/gentoolkit.git
+		https://github.com/gentoo/gentoolkit
+	"
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/gentoolkit.git/snapshot/${P}.tar.bz2"
