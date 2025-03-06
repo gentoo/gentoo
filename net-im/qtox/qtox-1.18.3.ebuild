@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="qTox-${PV}"
 	SRC_URI="https://github.com/TokTok/qTox/archive/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/qTox-${PV}"
 fi
 
