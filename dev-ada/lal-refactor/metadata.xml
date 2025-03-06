@@ -5,7 +5,6 @@
 		<email>ada@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="shared">Build shared library</flag>
 		<flag name="static-pic">Build static library with pic code</flag>
 	</use>
 	<upstream>
