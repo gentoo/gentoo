@@ -1,0 +1,10 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Eric Joldasov <bratishkaerik@landless-city.net> (2025-03-11)
+# Force building Zig with LLVM extensions enabled. Non-LLVM backends
+# are in active development, and while some backends progressed enough
+# to build some simple or complex program, only small amount of them
+# can succesfully bootstrap Zig.
+# Unforce on targets where it's possible to bootstrap without LLVM.
+dev-lang/zig llvm
