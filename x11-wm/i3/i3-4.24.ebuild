@@ -14,7 +14,7 @@ if [[ "${PV}" = *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://i3wm.org/downloads/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 fi
 
 LICENSE="BSD"
