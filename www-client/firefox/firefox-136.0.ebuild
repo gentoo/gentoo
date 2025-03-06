@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-136-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-136-patches-02.tar.xz"
 FIREFOX_LOONG_PATCHSET="firefox-136-loong-patches-01.tar.xz"
 
 LLVM_COMPAT=( 17 18 19 )
@@ -888,7 +888,6 @@ src_configure() {
 	fi
 
 	mozconfig_use_with system-av1
-	use system-av1 && append-ldflags "-laom"
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-icu
 	mozconfig_use_with system-jpeg
