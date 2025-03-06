@@ -22,7 +22,7 @@ LICENSE="microsoft-edge"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-IUSE="+mip qt5 qt6"
+IUSE="+mip qt6"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -56,11 +56,6 @@ RDEPEND="
 	x11-libs/pango
 	x11-misc/xdg-utils
 	mip? ( app-crypt/libsecret )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5[X]
-		dev-qt/qtwidgets:5
-	)
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 
@@ -115,9 +110,7 @@ src_install() {
 		rm "${EDGE_HOME}"/libmip_{core,protection_sdk}.so || die
 	fi
 
-	if ! use qt5; then
-		rm "${EDGE_HOME}/libqt5_shim.so" || die
-	fi
+	rm "${EDGE_HOME}/libqt5_shim.so" || die
 	if ! use qt6; then
 		rm "${EDGE_HOME}/libqt6_shim.so" || die
 	fi
