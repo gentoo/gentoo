@@ -18,6 +18,8 @@
 		<flag name="song-screen">Enable song viewer screen</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/MusicPlayerDaemon/ncmpc/issues</bugs-to>
+		<changelog>https://github.com/MusicPlayerDaemon/ncmpc/blob/master/NEWS</changelog>
 		<remote-id type="github">MusicPlayerDaemon/ncmpc</remote-id>
 	</upstream>
 </pkgmetadata>
