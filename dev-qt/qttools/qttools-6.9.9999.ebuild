@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {17..19} ) # see .cmake.conf for minimum
+LLVM_COMPAT=( {17..20} ) # see .cmake.conf for minimum
 LLVM_OPTIONAL=1
 
 # behaves very badly when qttools is not already installed, also
