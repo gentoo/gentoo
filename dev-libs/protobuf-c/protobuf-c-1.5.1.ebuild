@@ -12,7 +12,11 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Protocol Buffers implementation in C"
 HOMEPAGE="https://github.com/protobuf-c/protobuf-c"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+SRC_URI="
+	https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz
+	https://github.com/protobuf-c/protobuf-c/commit/25174818178d4761f971dab1c47083b892297dc2.patch
+		-> ${PN}-1.5.1-protobuf-30.patch
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
@@ -35,6 +39,10 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare() {
+	if has_version ">=dev-libs/protobuf-30"; then
+		eapply "${DISTDIR}/${PN}-1.5.1-protobuf-30.patch"
+	fi
+
 	default
 	eautoreconf
 }
