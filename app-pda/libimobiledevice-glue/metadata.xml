@@ -3,6 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<bugs-to>https://github.com/libimobiledevice/libimobiledevice-glue/issues</bugs-to>
+		<changelog>https://github.com/libimobiledevice/libimobiledevice-glue/releases</changelog>
 		<remote-id type="github">libimobiledevice/libimobiledevice-glue</remote-id>
 	</upstream>
 </pkgmetadata>
