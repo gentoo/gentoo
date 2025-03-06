@@ -23,6 +23,9 @@ SLOT="0"
 
 IUSE="appindicator archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
+	appindicator? ( notification )
+	libcanberra? ( notification )
+	libnotify? ( notification )
 	notification? ( || ( appindicator libcanberra libnotify ) )
 	networkmanager? ( dbus )
 	oauth? ( gnutls )
@@ -64,14 +67,12 @@ COMMONDEPEND="
 	)
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
-	notification? (
-		appindicator? ( dev-libs/libayatana-appindicator )
-		libcanberra? ( || (
-			media-libs/libcanberra-gtk3
-			media-libs/libcanberra[gtk3(-)]
-		) )
-		libnotify? ( x11-libs/libnotify )
-	)
+	appindicator? ( dev-libs/libayatana-appindicator )
+	libcanberra? ( || (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	) )
+	libnotify? ( x11-libs/libnotify )
 	perl? (
 		dev-lang/perl:=
 		virtual/libcrypt:=
