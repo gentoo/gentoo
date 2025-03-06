@@ -64,7 +64,7 @@ BDEPEND="
 RDEPEND="
 	acct-user/qemu
 	app-misc/scrub
-	>=dev-libs/glib-2.56.0
+	>=dev-libs/glib-2.66.0
 	dev-libs/libgcrypt
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.9.1
