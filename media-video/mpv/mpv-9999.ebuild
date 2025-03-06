@@ -68,10 +68,7 @@ COMMON_DEPEND="
 		x11-libs/libdrm
 		egl? ( media-libs/mesa[gbm(+)] )
 	)
-	dvd? (
-		media-libs/libdvdnav
-		media-libs/libdvdread:=
-	)
+	dvd? ( media-libs/libdvdnav )
 	egl? (
 		media-libs/libglvnd
 		media-libs/libplacebo[opengl]
