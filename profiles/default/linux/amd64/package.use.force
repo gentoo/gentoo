@@ -1,0 +1,6 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Eric Joldasov <bratishkaerik@landless-city.net> (2025-03-08)
+# "x86_64" backend can succesfully bootstrap itself for Linux.
+>=dev-lang/zig-0.13 -llvm
