@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-06)
+# Last release in 2018 and no upstream activity ever since.
+# Please migrate to an alternative backup solution. Bug #947894
+# Removal on 2025-04-15.
+app-backup/luckybackup
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-06)
 # This package is clearly unmaintained.  It has lost all CPython
 # versions, and retained PyPy3 likely only because it wasn't versioned.
