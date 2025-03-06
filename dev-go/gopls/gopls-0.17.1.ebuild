@@ -5,7 +5,7 @@ EAPI=7
 inherit go-module
 
 ARCHIVE_URI="https://github.com/golang/tools/archive/refs/tags/gopls/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 DESCRIPTION="\"Go please\" is the official Go language server"
 HOMEPAGE="https://github.com/golang/tools/blob/master/gopls/README.md"
 SLOT="0"
