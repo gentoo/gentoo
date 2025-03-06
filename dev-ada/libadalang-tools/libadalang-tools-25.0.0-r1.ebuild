@@ -13,7 +13,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+shared static-libs static-pic test"
 
 # Some test are not working
@@ -31,7 +31,8 @@ BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
 src_compile() {
 	gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
-		-XXMLADA_BUILD=relocatable -XLALTOOLS_SET=all -P src/build.gpr \
+		-XXMLADA_BUILD=relocatable -XLALTOOLS_BUILD_MODE=prod \
+		-XLALTOOLS_SET=all -P src/build.gpr \
 		-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die
 	build () {
 		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=$1 \
