@@ -37,6 +37,7 @@ RDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/scikit-learn[${PYTHON_USEDEP}]
+		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
@@ -46,13 +47,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	$(python_gen_cond_dep '
-		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
-		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		sci-libs/jiwer[${PYTHON_USEDEP}]
 		sci-libs/seqeval[${PYTHON_USEDEP}]
 	')
+	sci-libs/torchvision[${PYTHON_SINGLE_USEDEP}]
 )"
 
 PATCHES=(
