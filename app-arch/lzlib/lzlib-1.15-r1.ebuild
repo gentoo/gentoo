@@ -35,7 +35,11 @@ src_configure() {
 	./configure "${myconf[@]}" || die
 }
 
+src_compile() {
+	emake lib bin
+}
+
 src_install() {
-	emake DESTDIR="${D}" install install-man
+	emake DESTDIR="${D}" install install-bin
 	einstalldocs
 }
