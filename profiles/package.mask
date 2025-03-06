@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-06)
+# This package is clearly unmaintained.  It has lost all CPython
+# versions, and retained PyPy3 likely only because it wasn't versioned.
+# Also, since it's eclass usage used to be broken, it went under the
+# radar.  Removal on 2025-04-05.  Bug #950702.
+dev-vcs/notify-webhook
+
 # Joonas Niilola <juippis@gentoo.org> (2025-03-05)
 # New release channel deemed as stable. Package.masked for the early
 # adopters - make sure to have ~/.thunderbird backed up, since
