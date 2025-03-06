@@ -18,7 +18,7 @@ SLOT="0"
 
 # Rekeyword for ~long, ~x86 and ~riscv, when https://bugs.gentoo.org/937582 is fixed.
 # KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~loong"
 IUSE="voice"
 
 # Same order as in upstream pyproject.toml please for the python dependencies
