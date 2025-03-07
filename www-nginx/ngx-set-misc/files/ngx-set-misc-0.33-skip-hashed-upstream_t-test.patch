@@ -1,0 +1,31 @@
+From 25337a9db440d2afb406a78b113e9a8ea0f3fcde Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Thu, 13 Feb 2025 19:43:54 +0100
+Subject: [PATCH] hashed-upstream.t: skip the test
+
+The "hashed-upstream.t" test utilises the upstream_list command. I do
+not know which module provides this command and so far I have been
+unsuccessful to find anything online.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ t/hashed-upstream.t | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/t/hashed-upstream.t b/t/hashed-upstream.t
+index fdebd15..6e3a912 100644
+--- a/t/hashed-upstream.t
++++ b/t/hashed-upstream.t
+@@ -1,7 +1,8 @@
+ # vi:filetype=
+ 
+ use lib 'lib';
+-use Test::Nginx::Socket;
++use Test::Nginx::Socket skip_all =>
++    'not working at all';
+ 
+ #repeat_each(3);
+ 
+-- 
+2.45.3
+

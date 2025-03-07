@@ -1,0 +1,31 @@
+From 8ff96cb366e1ed0a78533501b33ca29c378ca808 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Tue, 11 Feb 2025 15:35:40 +0100
+Subject: [PATCH] t/stats.t: skip broken test
+
+The CI utilises iptables to drop connections on hardcoded port 12345.
+The drop behaviour is required by the "timeout" test. Since tests are
+run unprivileged in Gentoo, iptables can not be used and the test fails.
+
+This commit skips the "timeout" test.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ t/stats.t | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/t/stats.t b/t/stats.t
+index f412b42..39bc3dd 100644
+--- a/t/stats.t
++++ b/t/stats.t
+@@ -30,6 +30,7 @@ __DATA__
+ 
+ 
+ === TEST 2: timeout
++--- SKIP
+ --- config
+     memc_connect_timeout 10ms;
+     memc_send_timeout 10ms;
+-- 
+2.45.3
+
