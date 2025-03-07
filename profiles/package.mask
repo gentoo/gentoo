@@ -45,6 +45,11 @@ app-portage/pgo
 sys-apps/openrc-navi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
+# No more revdeps after kde-apps/knotes last-rites and Gear 24.08.3 cleanup.
+# Removal on 2025-03-31.
+kde-apps/akonadi-notes
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
 # Downstream-split fallback package for KF5-based revdeps without any
 # revdeps left. Removal on 2025-03-31.
 kde-apps/kdesdk-thumbnailers-common
