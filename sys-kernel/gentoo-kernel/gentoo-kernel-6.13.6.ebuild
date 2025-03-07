@@ -41,6 +41,10 @@ SRC_URI+="
 		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-ppc64le-fedora.config
 			-> kernel-ppc64le-fedora.config.${CONFIG_VER}
 	)
+	riscv? (
+		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-riscv64-fedora.config
+			-> kernel-riscv64-fedora.config.${CONFIG_VER}
+	)
 	x86? (
 		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-i686-fedora.config
 			-> kernel-i686-fedora.config.${CONFIG_VER}
@@ -53,7 +57,6 @@ IUSE="debug experimental hardened"
 REQUIRED_USE="
 	arm? ( savedconfig )
 	hppa? ( savedconfig )
-	riscv? ( savedconfig )
 	sparc? ( savedconfig )
 "
 
@@ -84,7 +87,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa | loong | riscv | sparc)
+		arm | hppa | loong | sparc)
 			> .config || die
 		;;
 		amd64)
@@ -102,6 +105,9 @@ src_prepare() {
 		ppc64)
 			cp "${DISTDIR}/kernel-ppc64le-fedora.config.${CONFIG_VER}" .config || die
 			biendian=true
+			;;
+		riscv)
+			cp "${DISTDIR}/kernel-riscv64-fedora.config.${CONFIG_VER}" .config || die
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
