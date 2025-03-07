@@ -269,7 +269,7 @@ _cargo_set_crate_uris() {
 			name="${BASH_REMATCH[1]}"
 			version="${BASH_REMATCH[2]}"
 		fi
-		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${name}-${version}.crate"
+		url="https://static.crates.io/api/v1/crates/${name}/${version}/download -> ${name}-${version}.crate"
 		CARGO_CRATE_URIS+="${url} "
 
 		# when invoked by pkgbump, avoid fetching all the crates
