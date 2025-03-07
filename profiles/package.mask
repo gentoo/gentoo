@@ -275,12 +275,6 @@ games-fps/quakeforge
 # https://bugs.gentoo.org/949414
 =dev-cpp/cpp-httplib-0.18.6
 
-# Mike Pagano <mpagano@gentoo.org> (2025-02-07)
-# Last release 3 years ago, no version compiles; ours or upstreams.
-# Ack from maintainer. Driver is available in the Linux Kernel
-# Removal on 2025-03-07. Bug: 949318
-net-misc/AQtion
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
 dev-qt/qdbusviewer
