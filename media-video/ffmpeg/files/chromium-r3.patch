@@ -1,0 +1,53 @@
+Allow libffmpeg to be built for Chromium-based browsers
+https://patchwork.ffmpeg.org/patch/4500/
+
+NOTE: This patch has -U1 unified context to be less likely
+to need rebasing across ffmpeg versions.
+
+--- a/Makefile
++++ b/Makefile
+@@ -43,2 +43,3 @@
+ include $(SRC_PATH)/ffbuild/common.mak
++include $(SRC_PATH)/ffbuild/libffmpeg.mak
+ 
+--- a/chromium.c
++++ b/chromium.c
+@@ -0,0 +1,8 @@
++#include "libavformat/avformat.h"
++#include "libavformat/internal.h"
++
++int64_t av_stream_get_first_dts(const AVStream *st);
++int64_t av_stream_get_first_dts(const AVStream *st)
++{
++    return cffstream(st)->first_dts;
++}
+--- a/ffbuild/libffmpeg.mak
++++ b/ffbuild/libffmpeg.mak
+@@ -0,0 +1,27 @@
++LIBFFMPEG = $(SLIBPREF)ffmpeg$(SLIBSUF)
++LIBFFMPEG_LINK = $(LD) -shared -Wl,-soname,$(LIBFFMPEG) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,relro -Wl,-z,defs -Wl,--gc-sections $(LDFLAGS) $(LDLIBFLAGS) -o $(LIBFFMPEG)
++
++ifeq ($(CONFIG_SHARED),yes)
++LIBFFMPEG_DEPS = libavcodec/$(SLIBPREF)avcodec$(SLIBSUF) libavformat/$(SLIBPREF)avformat$(SLIBSUF) libavutil/$(SLIBPREF)avutil$(SLIBSUF)
++else
++LIBFFMPEG_DEPS = libavcodec/$(LIBPREF)avcodec$(LIBSUF) libavformat/$(LIBPREF)avformat$(LIBSUF) libavutil/$(LIBPREF)avutil$(LIBSUF) libswresample/$(LIBPREF)swresample$(LIBSUF)
++endif
++
++$(LIBFFMPEG): $(LIBFFMPEG_DEPS) chromium.o
++ifeq ($(CONFIG_SHARED),yes)
++	$(LIBFFMPEG_LINK) -Wl,--no-as-needed chromium.o -lavcodec -lavformat -lavutil
++else
++	$(LIBFFMPEG_LINK) -Wl,--whole-archive $^ -Wl,--no-whole-archive $(EXTRALIBS-avcodec) $(EXTRALIBS-avformat) $(EXTRALIBS-avutil) $(EXTRALIBS-swresample)
++endif
++
++libffmpeg: $(LIBFFMPEG)
++
++install-libffmpeg: $(LIBFFMPEG)
++	$(Q)mkdir -p "$(SHLIBDIR)/chromium"
++	$(INSTALL) -m 755 $< "$(SHLIBDIR)/chromium/$<"
++	$(STRIP) "$(SHLIBDIR)/chromium/$<"
++
++uninstall-libffmpeg:
++	$(RM) "$(SHLIBDIR)/chromium/$(LIBFFMPEG)"
++
++.PHONY: libffmpeg install-libffmpeg uninstall-libffmpeg
