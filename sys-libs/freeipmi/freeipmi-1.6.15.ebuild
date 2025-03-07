@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 x86"
 IUSE="debug doc nagios without-root"
 
 RDEPEND="dev-libs/libgcrypt:="
