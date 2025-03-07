@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	RESTRICT="!test? ( test )"
 else
 	SRC_URI="https://github.com/google/${PN}/releases/download/v${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~loong"
 fi
 
 LICENSE="Apache-2.0"
