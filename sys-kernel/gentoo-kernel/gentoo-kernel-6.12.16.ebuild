@@ -64,7 +64,7 @@ BDEPEND="
 	debug? ( dev-util/pahole )
 "
 PDEPEND="
-	>=virtual/dist-kernel-${PV}
+	>=virtual/dist-kernel-${PV}:$(ver_cut 1-2)
 "
 
 QA_FLAGS_IGNORED="
