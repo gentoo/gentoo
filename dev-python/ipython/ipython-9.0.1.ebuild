@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 optfeature pypi virtualx
@@ -93,24 +93,13 @@ src_test() {
 
 python_test() {
 	local -x IPYTHON_TESTING_TIMEOUT_SCALE=20
-	local EPYTEST_DESELECT=(
-		# TODO: looks to be a regression due to a newer dep
-		IPython/core/tests/test_oinspect.py::test_class_signature
-		IPython/core/tests/test_oinspect.py::test_render_signature_long
-		IPython/terminal/tests/test_shortcuts.py::test_modify_shortcut_with_filters
-	)
+	local EPYTEST_DESELECT=()
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
 				# https://github.com/ipython/ipython/issues/14244
-				IPython/lib/tests/test_display.py::TestAudioDataWithoutNumpy
-			)
-			;;
-		python3.13)
-			EPYTEST_DESELECT+=(
-				# docstring mismatch?
-				IPython/core/tests/test_debugger.py::IPython.core.tests.test_debugger.test_ipdb_magics
+				tests/test_display.py::TestAudioDataWithoutNumpy
 			)
 			;;
 	esac
