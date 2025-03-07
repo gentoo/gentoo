@@ -16,7 +16,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="static-libs static-pic test"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
