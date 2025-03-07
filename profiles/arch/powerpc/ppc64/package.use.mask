@@ -4,6 +4,7 @@
 # NRK <nrk@disroot.org> (2025-03-07)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
+media-libs/imlib2 y4m
 
 # Alfred Wingate <parona@protonmail.com> (2025-02-22)
 # media-libs/zint is not keyworded here

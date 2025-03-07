@@ -4,6 +4,7 @@
 # NRK <nrk@disroot.org> (2025-03-07)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
+media-libs/imlib2 y4m
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-03-04)
 # this target has support for sanitizers

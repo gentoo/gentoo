@@ -7,6 +7,7 @@
 # NRK <nrk@disroot.org> (2025-03-07)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
+media-libs/imlib2 y4m
 
 # Sam James <sam@gentoo.org> (2025-01-14)
 # dev-cpp/benchmark isn't (yet) keyworded here, although >=1.9.1 should
