@@ -12,12 +12,12 @@
 # An eclass to reliably depend on a Rust or Rust/LLVM combination for
 # a given Rust slot. To use the eclass:
 #
-# 1. If required, set RUST_{MAX,MIN}_SLOT to the range of supported slots.
+# 1. If required, set RUST_{MAX,MIN}_VER to the range of supported slots.
 #
 # 2. If rust is optional, set RUST_OPTIONAL to a non-empty value then
-#    appropriately gate ${RUST_DEPEND}
+#    appropriately gate ${RUST_DEPEND}.
 #
-# 3. Use rust_pkg_setup, get_rust_prefix or RUST_SLOT.
+# 3. Use rust_pkg_setup, get_rust_prefix, or RUST_SLOT.
 
 # Example use for a package supporting Rust 1.72.0 to 1.82.0:
 # @CODE
@@ -116,7 +116,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Specify the version (slot) of Rust to be used by the package. This is
-# useful for troubleshooting and debugging purposes; If unset, the newest
+# useful for troubleshooting and debugging purposes. If unset, the newest
 # acceptable Rust version will be used. May be combined with ERUST_TYPE_OVERRIDE.
 # This variable must not be set in ebuilds.
 
@@ -175,7 +175,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-empty value, the Rust dependency will not be added
-# to BDEPEND. This is useful for where packages need to gate rust behind
+# to BDEPEND. This is useful for packages that need to gate rust behind
 # certain USE themselves.
 
 # @ECLASS_VARIABLE: RUST_REQ_USE
@@ -303,12 +303,12 @@ unset -f _rust_set_globals
 # If -d is specified, the checks are performed relative to ESYSROOT,
 # and ESYSROOT-path is returned.
 #
-# If RUST_M{AX,IN}_SLOT is non-zero, then only Rust versions that
+# If RUST_M{AX,IN}_VER is non-zero, then only Rust versions that
 # are not newer or older than the specified slot(s) will be considered.
-# Otherwise, all Rust versions are be considered acceptable.
+# Otherwise, all Rust versions are considered acceptable.
 #
 # If the `rust_check_deps()` function is defined within the ebuild, it
-# will be called to verify whether a particular slot is accepable.
+# will be called to verify whether a particular slot is acceptable.
 # Within the function scope, RUST_SLOT and LLVM_SLOT will be defined.
 #
 # The function should return a true status if the slot is acceptable,
@@ -443,7 +443,7 @@ _get_rust_slot() {
 # @FUNCTION: get_rust_path
 # @USAGE: prefix slot rust_type
 # @DESCRIPTION:
-# Given argument of slot and rust_type, return an appropriate path
+# Given arguments of prefix, slot, and rust_type, return an appropriate path
 # for the Rust install. The rust_type should be either "source"
 # or "binary". If the rust_type is not one of these, the function
 # will die.
@@ -472,7 +472,7 @@ get_rust_path() {
 # and print an absolute path to it. If both -bin and regular Rust
 # are installed, the regular Rust is preferred.
 #
-# The options and behavior are the same as get_rust_slot.
+# The options and behavior are the same as _get_rust_slot.
 get_rust_prefix() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -501,10 +501,10 @@ rust_prepend_path() {
 # `llvm-r1_pkg_setup` call should be made in addition to this function.
 # For path determination logic, please see the get_rust_prefix documentation.
 #
-# The highest acceptable Rust slot can be set in RUST_MAX_VER variable.
+# The highest acceptable Rust slot can be set in the RUST_MAX_VER variable.
 # If it is unset or empty, any slot is acceptable.
 #
-# The lowest acceptable Rust slot can be set in RUST_MIN_VER variable.
+# The lowest acceptable Rust slot can be set in the RUST_MIN_VER variable.
 # If it is unset or empty, any slot is acceptable.
 #
 # `CARGO` and `RUSTC` variables are set for the selected slot and exported.
