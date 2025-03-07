@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-03-07)
+# May cause emerge to hang (bug #950707). Tests hang on one machine
+# and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
+# Mask out of caution for now.
+=dev-util/pkgconf-2.4.1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-06)
 # Last release in 2018 and no upstream activity ever since.
 # Please migrate to an alternative backup solution. Bug #947894
