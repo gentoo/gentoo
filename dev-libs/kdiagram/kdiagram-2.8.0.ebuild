@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ https://www.kdab.com/development-resources/qt-tools/kd-chart/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2" # TODO CHECK
