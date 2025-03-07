@@ -9,6 +9,9 @@
 		<flag name="grapheme-clustering">Enable grapheme clustering support</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://codeberg.org/dnkl/foot/issues</bugs-to>
+		<changelog>https://codeberg.org/dnkl/foot/src/branch/master/CHANGELOG.md</changelog>
+		<doc>https://codeberg.org/dnkl/foot/wiki</doc>
 		<remote-id type="codeberg">dnkl/foot</remote-id>
 	</upstream>
 </pkgmetadata>
