@@ -52,7 +52,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-kernel )
 "
 PDEPEND="
-	>=virtual/dist-kernel-${PV}
+	>=virtual/dist-kernel-${PV}:$(ver_cut 1-2)
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
