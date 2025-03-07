@@ -28,7 +28,7 @@ inherit toolchain-funcs
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Contains dependency on app-portage/elt-patches in *DEPEND format.
-LIBTOOL_DEPEND="app-portage/elt-patches"
+LIBTOOL_DEPEND=">=app-portage/elt-patches-20250306"
 
 # @ECLASS_VARIABLE: LIBTOOL_AUTO_DEPEND
 # @PRE_INHERIT
