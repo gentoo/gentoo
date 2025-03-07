@@ -63,7 +63,7 @@ S="${WORKDIR}/${PN}-${PV%_*}"
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 IUSE="+clang +dbus debug eme-free hardened hwaccel jack libproxy pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx"
