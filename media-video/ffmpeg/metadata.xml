@@ -48,6 +48,7 @@
 		<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
 		<flag name="libaribb24">Enables ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg>.</flag>
 		<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
+		<flag name="drm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
 		<flag name="libdvdnav">Uses <pkg>media-libs/libdvdnav</pkg> to enable DVD demuxing</flag>
 		<flag name="libdvdread">Uses <pkg>media-libs/libdvdread</pkg> to enable DVD demuxing</flag>
 		<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
@@ -65,12 +66,19 @@
 		<flag name="qsv">Enable Intel Quick Sync Video via <pkg>media-libs/intel-mediasdk</pkg> (ffmpeg versions older than, and including, 5.1) or <pkg>media-libs/libvpl</pkg> (ffmpeg version newer than 5.1).</flag>
 		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 		<flag name="network">Enables network streaming support</flag>
+		<flag name="npp">
+			Enable Nvidia Performance Primitives-based filters via
+			<pkg>dev-util/nvidia-cuda-toolkit</pkg> (warning: if USE=gpl
+			is enabled, this produces non-redistributable build)
+		</flag>
 		<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>
+		<flag name="openmpt">Enable MPTM tracked music files decoding support via <pkg>media-libs/libopenmpt</pkg></flag>
 		<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
 		<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
 		<flag name="postproc">Build and install libpostproc.</flag>
 		<flag name="qrcode">Enables QR encode generation via <pkg>media-gfx/qrencode</pkg></flag>
 		<flag name="quirc">Enables QR decoding via <pkg>media-libs/quirc</pkg></flag>
+		<flag name="rabbitmq">Enable AMQP stream support via <pkg>net-libs/rabbitmq-c</pkg></flag>
 		<flag name="rav1e">Enables AV1 encoding support via <pkg>media-video/rav1e</pkg>.</flag>
 		<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
 		<flag name="shaderc">Use <pkg>media-libs/shaderc</pkg> to compile GLSL</flag>

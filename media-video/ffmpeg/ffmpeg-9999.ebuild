@@ -1,630 +1,570 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# Subslot: libavutil major.libavcodec major.libavformat major
-# Since FFmpeg ships several libraries, subslot is kind of limited here.
-# Most consumers will use those three libraries, if a "less used" library
-# changes its soname, consumers will have to be rebuilt the old way
-# (preserve-libs).
-# If, for example, a package does not link to libavformat and only libavformat
-# changes its ABI then this package will be rebuilt needlessly. Hence, such a
-# package is free _not_ to := depend on FFmpeg but I would strongly encourage
-# doing so since such a case is unlikely.
-FFMPEG_SUBSLOT=59.61.61
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
-SOC_PATCH="ffmpeg-rpi-7.1.patch"
+FFMPEG_SOC_PATCH=
+FFMPEG_SUBSLOT=59.61.61 # avutil.avcodec.avformat SONAME
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
-	EGIT_MIN_CLONE_TYPE="single"
-	EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
-fi
-
-inherit flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
-
-DESCRIPTION="Complete solution to record/convert/stream audio and video. Includes libavcodec"
-HOMEPAGE="https://ffmpeg.org/"
-SRC_URI="soc? ( https://dev.gentoo.org/~chewi/distfiles/${SOC_PATCH} )"
-if [ "${PV#9999}" != "${PV}" ] ; then
-	:
-elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
-	SRC_URI+=" mirror://gentoo/${P}.tar.xz"
-else # Release
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI=(
+		https://git.ffmpeg.org/ffmpeg.git
+		https://github.com/FFmpeg/FFmpeg.git
+	)
+else
 	inherit verify-sig
-
-	SRC_URI+="
-		https://ffmpeg.org/releases/${P/_/-}.tar.xz
-		verify-sig? (
-			https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc
-			soc? ( https://dev.gentoo.org/~chewi/distfiles/${SOC_PATCH}.asc )
-		)
+	SRC_URI="
+		https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz
+		verify-sig? ( https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz.asc )
+		${FFMPEG_SOC_PATCH:+"
+			soc? (
+				https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH}
+				verify-sig? ( https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH}.asc )
+			)
+		"}
 	"
-
-	BDEPEND="
-		verify-sig? (
-			sec-keys/openpgp-keys-ffmpeg
-			soc? ( >=sec-keys/openpgp-keys-gentoo-developers-20240708 )
-		)
-	"
-
-	src_unpack() {
-		if use verify-sig; then
-			verify-sig_verify_detached "${DISTDIR}"/${P/_/-}.tar.xz{,.asc} /usr/share/openpgp-keys/ffmpeg.asc
-			use soc && verify-sig_verify_detached "${DISTDIR}"/${SOC_PATCH}{,.asc} /usr/share/openpgp-keys/gentoo-developers.asc
-		fi
-		default
-	}
-fi
-FFMPEG_REVISION="${PV#*_p}"
-
-S=${WORKDIR}/${P/_/-}
-LICENSE="
-	!gpl? ( LGPL-2.1 )
-	gpl? ( GPL-2 )
-	amr? (
-		gpl? ( GPL-3 )
-		!gpl? ( LGPL-3 )
-	)
-	gmp? (
-		gpl? ( GPL-3 )
-		!gpl? ( LGPL-3 )
-	)
-	libaribb24? (
-		gpl? ( GPL-3 )
-		!gpl? ( LGPL-3 )
-	)
-	encode? (
-		amrenc? (
-			gpl? ( GPL-3 )
-			!gpl? ( LGPL-3 )
-		)
-	)
-	samba? ( GPL-3 )
-"
-SLOT="0/${FFMPEG_SUBSLOT}"
-if [ "${PV#9999}" = "${PV}" ] ; then
+	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P}
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 fi
 
-# Options to use as use_enable in the foo[:bar] form.
-# This will feed configure with $(use_enable foo bar)
-# or $(use_enable foo foo) if no :bar is set.
-# foo is added to IUSE.
-FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
-		+gpl hardcoded-tables +iconv libxml2 libdvdnav libdvdread lzma +network
-		opencl openssl +postproc qrcode:libqrencode quirc:libquirc
-		samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
-		X:xlib X:libxcb X:libxcb-shape X:libxcb-shm X:libxcb-xfixes +zlib
-		# libavdevice options
-		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
-		opengl
-		# indevs
-		libv4l:libv4l2 pulseaudio:libpulse libdrm jack:libjack
-		# decoders
-		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
-		jpeg2k:libopenjpeg jpegxl:libjxl bluray:libbluray gme:libgme gsm:libgsm
-		libaribb24 liblc3 modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
-		speex:libspeex srt:libsrt svg:librsvg nvenc:ffnvcodec
-		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
-		# libavfilter options
-		appkit
-		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite fontconfig frei0r
-		fribidi:libfribidi glslang:libglslang ladspa lcms:lcms2 libass libplacebo
-		libtesseract lv2 rubberband:librubberband shaderc:libshaderc truetype:libfreetype
-		truetype:libharfbuzz vidstab:libvidstab vmaf:libvmaf zeromq:libzmq zimg:libzimg
-		# libswresample options
-		libsoxr
-		# Threads; we only support pthread for now but ffmpeg supports more
-		+threads:pthreads
+DESCRIPTION="Complete solution to record/convert/stream audio and video"
+HOMEPAGE="https://ffmpeg.org/"
+
+[[ ${PN} == *-compat ]] && FFMPEG_UNSLOTTED= || FFMPEG_UNSLOTTED=1
+
+FFMPEG_IUSE_MAP=(
+	# [+]flag[:[^][!]opt1,...][@<v3|nonfree>]], ^ = native-only, ! = override
+	# remember to keep LICENSE, REQUIRED_USE, and RESTRICT in sync
+	X:libxcb,libxcb-shape,libxcb-shm,libxcb-xfixes,xlib
+	alsa
+	amf
+	amrenc:libvo-amrwbenc@v3
+	amr:libopencore-amrnb,libopencore-amrwb@v3
+	appkit
+	bluray:libbluray
+	bs2b:libbs2b
+	bzip2:bzlib
+	cdio:libcdio
+	chromaprint
+	codec2:libcodec2
+	cuda:cuda-llvm
+	+dav1d:libdav1d
+	doc:^htmlpages
+	+drm:libdrm
+	dvd:libdvdnav,libdvdread
+	fdk:libfdk-aac@nonfree
+	flite:libflite
+	+fontconfig:libfontconfig
+	frei0r
+	fribidi:libfribidi
+	gcrypt
+	gme:libgme
+	gmp:@v3
+	+gnutls # unused if USE=openssl, default for bug #905113,#917627
+	+gpl
+	gsm:libgsm
+	iec61883:libiec61883
+	ieee1394:libdc1394
+	jack:libjack
+	jpeg2k:libopenjpeg
+	jpegxl:libjxl
+	kvazaar:libkvazaar
+	ladspa
+	lame:libmp3lame
+	lcms:lcms2
+	libaom
+	libaribb24:@v3 # reminder: req use on gpl unneeded if >=1.0.4 (not in tree)
+	+libass
+	libcaca
+	libilbc
+	liblc3
+	libplacebo
+	librtmp:librtmp
+	libsoxr
+	libtesseract
+	lv2
+	lzma
+	modplug:libmodplug
+	npp:^libnpp@nonfree # no multilib
+	nvenc:cuvid,ffnvcodec,nvdec,nvenc
+	openal
+	opencl
+	opengl
+	openh264:libopenh264
+	openmpt:libopenmpt
+	openssl:openssl,!gnutls@v3ifgpl # still LGPL2.1+ if USE=-gpl
+	opus:libopus
+	+postproc # exposed as a USE for clarity with the GPL requirement
+	pulseaudio:libpulse
+	qrcode:libqrencode
+	qsv:libvpl
+	quirc:libquirc
+	rabbitmq:^librabbitmq # no multilib
+	rav1e:^librav1e # no multilib
+	rubberband:librubberband
+	samba:libsmbclient@v3 # GPL-3+ only
+	sdl:sdl2
+	shaderc:libshaderc
+	snappy:libsnappy
+	sndio
+	speex:libspeex
+	srt:libsrt
+	ssh:libssh
+	svg:librsvg
+	svt-av1:libsvtav1
+	theora:libtheora
+	+truetype:libfreetype,libharfbuzz
+	twolame:libtwolame
+	v4l:libv4l2
+	vaapi
+	vdpau
+	vidstab:libvidstab
+	vmaf:libvmaf
+	vorbis:libvorbis
+	vpx:libvpx
+	vulkan:vulkan,vulkan-static # still uses shared, only means no dlopen()
+	webp:libwebp
+	x264:libx264
+	x265:libx265
+	+xml:libxml2
+	xvid:libxvid
+	zeromq:^libzmq # no multilib
+	zimg:libzimg
+	+zlib
+	zvbi:libzvbi
 )
 
-# Same as above but for encoders, i.e. they do something only with USE=encode.
-FFMPEG_ENCODER_FLAG_MAP=(
-	amf amrenc:libvo-amrwbenc kvazaar:libkvazaar libaom mp3:libmp3lame
-	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1
-	theora:libtheora twolame:libtwolame webp:libwebp x264:libx264
-	x265:libx265 xvid:libxvid
-)
-
+# all-rights is used to express the GPL incompatibility (RESTRICT=bindist)
+LICENSE="
+	gpl? (
+		GPL-2+
+		amr? ( GPL-3+ ) amrenc? ( GPL-3+ ) libaribb24? ( GPL-3+ )
+		gmp? ( GPL-3+ ) openssl? ( GPL-3+ )
+		fdk? ( all-rights-reserved ) npp? ( all-rights-reserved )
+	)
+	!gpl? (
+		LGPL-2.1+
+		amr? ( LGPL-3+ ) amrenc? ( LGPL-3+ ) libaribb24? ( LGPL-3+ )
+		gmp? ( LGPL-3+ )
+	)
+	samba? ( GPL-3+ )
+"
+[[ ${FFMPEG_UNSLOTTED} ]] && : 0 || : "$(ver_cut 1)"
+SLOT="${_}/${FFMPEG_SUBSLOT}"
 IUSE="
-	alsa chromium doc +encode oss +pic sndio static-libs test v4l soc
-	${FFMPEG_FLAG_MAP[@]%:*}
-	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
-"
-
-# Strings for CPU features in the useflag[:configure_option] form
-# if :configure_option isn't set, it will use 'useflag' as configure option
-ARM_CPU_FEATURES=(
-	cpu_flags_arm_thumb:armv5te
-	cpu_flags_arm_v6:armv6
-	cpu_flags_arm_thumb2:armv6t2
-	cpu_flags_arm_neon:neon
-	cpu_flags_arm_vfp:vfp
-	cpu_flags_arm_vfpv3:vfpv3
-	cpu_flags_arm_v8:armv8
-	cpu_flags_arm_asimddp:dotprod
-	cpu_flags_arm_i8mm:i8mm
-	cpu_flags_arm_sve:sve
-	cpu_flags_arm_sve2:sve2
-)
-ARM_CPU_REQUIRED_USE="
-	arm64? ( cpu_flags_arm_v8 )
-	cpu_flags_arm_v8? ( cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
-	cpu_flags_arm_neon? (
-		cpu_flags_arm_vfp
-		arm? ( cpu_flags_arm_thumb2 )
-	)
-	cpu_flags_arm_vfpv3? ( cpu_flags_arm_vfp )
-	cpu_flags_arm_thumb2? ( cpu_flags_arm_v6 )
-	cpu_flags_arm_v6? (
-		arm? ( cpu_flags_arm_thumb )
-	)
-	cpu_flags_arm_sve2? ( cpu_flags_arm_sve )
-	cpu_flags_arm_sve? ( cpu_flags_arm_v8 )
-"
-MIPS_CPU_FEATURES=( mipsdspr1:mipsdsp mipsdspr2 mipsfpu )
-PPC_CPU_FEATURES=( cpu_flags_ppc_altivec:altivec cpu_flags_ppc_vsx:vsx cpu_flags_ppc_vsx2:power8 )
-PPC_CPU_REQUIRED_USE="
-	cpu_flags_ppc_vsx? ( cpu_flags_ppc_altivec )
-	cpu_flags_ppc_vsx2? ( cpu_flags_ppc_vsx )
-"
-X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx
-					   mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
-X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
-X86_CPU_REQUIRED_USE="
-	cpu_flags_x86_avx2? ( cpu_flags_x86_avx )
-	cpu_flags_x86_fma4? ( cpu_flags_x86_avx )
-	cpu_flags_x86_fma3? ( cpu_flags_x86_avx )
-	cpu_flags_x86_xop?  ( cpu_flags_x86_avx )
-	cpu_flags_x86_avx?  ( cpu_flags_x86_sse4_2 )
-	cpu_flags_x86_aes? ( cpu_flags_x86_sse4_2 )
-	cpu_flags_x86_sse4_2?  ( cpu_flags_x86_sse4_1 )
-	cpu_flags_x86_sse4_1?  ( cpu_flags_x86_ssse3 )
-	cpu_flags_x86_ssse3?  ( cpu_flags_x86_sse3 )
-	cpu_flags_x86_sse3?  ( cpu_flags_x86_sse2 )
-	cpu_flags_x86_sse2?  ( cpu_flags_x86_sse )
-	cpu_flags_x86_sse?  ( cpu_flags_x86_mmxext )
-	cpu_flags_x86_mmxext?  ( cpu_flags_x86_mmx )
-	cpu_flags_x86_3dnowext?  ( cpu_flags_x86_3dnow )
-	cpu_flags_x86_3dnow?  ( cpu_flags_x86_mmx )
-"
-
-CPU_FEATURES_MAP=(
-	${ARM_CPU_FEATURES[@]}
-	${MIPS_CPU_FEATURES[@]}
-	${PPC_CPU_FEATURES[@]}
-	${X86_CPU_FEATURES[@]}
-)
-IUSE="${IUSE}
-	${CPU_FEATURES_MAP[@]%:*}"
-
-CPU_REQUIRED_USE="
-	${ARM_CPU_REQUIRED_USE}
-	${PPC_CPU_REQUIRED_USE}
-	${X86_CPU_REQUIRED_USE}
-"
-
-FFTOOLS=( aviocat cws2fws ffescape ffeval ffhash fourcc2pixfmt
-		  graph2dot ismindex pktdumper qt-faststart sidxindex trasher )
-IUSE="${IUSE} ${FFTOOLS[@]/#/+fftools_}"
-
-RDEPEND="
-	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
-	amf? ( media-video/amdgpu-pro-amf )
-	amr? ( >=media-libs/opencore-amr-0.1.3-r1[${MULTILIB_USEDEP}] )
-	bluray? ( >=media-libs/libbluray-0.3.0-r1:=[${MULTILIB_USEDEP}] )
-	bs2b? ( >=media-libs/libbs2b-3.1.0-r1[${MULTILIB_USEDEP}] )
-	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
-	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
-	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
-	codec2? ( media-libs/codec2[${MULTILIB_USEDEP}] )
-	dav1d? ( >=media-libs/dav1d-0.5.0:0=[${MULTILIB_USEDEP}] )
-	encode? (
-		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
-		kvazaar? ( >=media-libs/kvazaar-2.0.0[${MULTILIB_USEDEP}] )
-		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
-		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
-		rav1e? ( >=media-video/rav1e-0.5:=[capi] )
-		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
-		theora? (
-			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
-			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]
-		)
-		twolame? ( >=media-sound/twolame-0.3.13-r1[${MULTILIB_USEDEP}] )
-		webp? ( >=media-libs/libwebp-0.3.0:=[${MULTILIB_USEDEP}] )
-		x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )
-		x265? ( >=media-libs/x265-1.6:=[${MULTILIB_USEDEP}] )
-		xvid? ( >=media-libs/xvid-1.3.2-r1[${MULTILIB_USEDEP}] )
-	)
-	fdk? ( >=media-libs/fdk-aac-0.1.3:=[${MULTILIB_USEDEP}] )
-	flite? ( >=app-accessibility/flite-1.4-r4[${MULTILIB_USEDEP}] )
-	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
-	frei0r? ( media-plugins/frei0r-plugins[${MULTILIB_USEDEP}] )
-	fribidi? ( >=dev-libs/fribidi-0.19.6[${MULTILIB_USEDEP}] )
-	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
-	glslang? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
-	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
-	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
-	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
-	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
-	iec61883? (
-		>=media-libs/libiec61883-1.2.0-r1[${MULTILIB_USEDEP}]
-		>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
-		>=sys-libs/libavc1394-0.5.4-r1[${MULTILIB_USEDEP}]
-	)
-	ieee1394? (
-		>=media-libs/libdc1394-2.2.1:2=[${MULTILIB_USEDEP}]
-		>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
-	)
-	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
-	jpeg2k? ( >=media-libs/openjpeg-2.1:2=[${MULTILIB_USEDEP}] )
-	jpegxl? ( >=media-libs/libjxl-0.7.0:=[$MULTILIB_USEDEP] )
-	lcms? ( >=media-libs/lcms-2.13:2[$MULTILIB_USEDEP] )
-	libaom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
-	libaribb24? ( >=media-libs/aribb24-1.0.3-r2[${MULTILIB_USEDEP}] )
-	libass? ( >=media-libs/libass-0.11.0:=[${MULTILIB_USEDEP}] )
-	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
-	libdrm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
-	libdvdnav? ( media-libs/libdvdnav[${MULTILIB_USEDEP}] )
-	libdvdread? ( media-libs/libdvdread:=[${MULTILIB_USEDEP}] )
-	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
-	liblc3? ( >=media-sound/liblc3-1.1.0[${MULTILIB_USEDEP}] )
-	libplacebo? ( >=media-libs/libplacebo-4.192.0:=[$MULTILIB_USEDEP] )
-	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
-	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
-	libtesseract? ( >=app-text/tesseract-4.1.0-r1[${MULTILIB_USEDEP}] )
-	libv4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
-	libxml2? ( dev-libs/libxml2:=[${MULTILIB_USEDEP}] )
-	lv2? ( media-libs/lv2[${MULTILIB_USEDEP}] media-libs/lilv[${MULTILIB_USEDEP}] )
-	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
-	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
-	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
-	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
-	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
-	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
-	qsv? ( media-libs/libvpl[${MULTILIB_USEDEP}] )
-	qrcode? ( media-gfx/qrencode:=[${MULTILIB_USEDEP}] )
-	quirc? ( media-libs/quirc:=[${MULTILIB_USEDEP}] )
-	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
-	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
-	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
-	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
-	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
-	soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
-	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
-	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
-	ssh? ( >=net-libs/libssh-0.6.0:=[sftp,${MULTILIB_USEDEP}] )
-	svg? (
-		gnome-base/librsvg:2=[${MULTILIB_USEDEP}]
-		x11-libs/cairo[${MULTILIB_USEDEP}]
-	)
-	nvenc? ( >=media-libs/nv-codec-headers-11.1.5.3 )
-	svt-av1? ( >=media-libs/svt-av1-0.9.0:=[${MULTILIB_USEDEP}] )
-	truetype? (
-		>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
-		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
-	)
-	vaapi? ( >=media-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
-	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
-	vidstab? ( >=media-libs/vidstab-1.1.0[${MULTILIB_USEDEP}] )
-	vmaf? ( >=media-libs/libvmaf-2.0.0:=[${MULTILIB_USEDEP}] )
-	vorbis? (
-		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
-		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
-	)
-	vpx? ( >=media-libs/libvpx-1.4.0:=[${MULTILIB_USEDEP}] )
-	vulkan? ( >=media-libs/vulkan-loader-1.3.277:=[${MULTILIB_USEDEP}] )
-	X? (
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
-		>=x11-libs/libxcb-1.4:=[${MULTILIB_USEDEP}]
-	)
-	zeromq? ( >=net-libs/zeromq-4.2.1:= )
-	zimg? ( >=media-libs/zimg-2.7.4:=[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
-"
-
-RDEPEND="${RDEPEND}
-	openssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-	!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
-"
-
-DEPEND="${RDEPEND}
-	amf? ( >=media-libs/amf-headers-1.4.35 )
-	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	v4l? ( sys-kernel/linux-headers )
-	vulkan? ( >=dev-util/vulkan-headers-1.3.277 )
-"
-
-# += for verify-sig above
-BDEPEND+="
-	>=dev-build/make-3.81
-	virtual/pkgconfig
-	cpu_flags_x86_mmx? ( >=dev-lang/nasm-2.13 )
-	cuda? ( >=llvm-core/clang-7[llvm_targets_NVPTX] )
-	doc? ( sys-apps/texinfo )
-	test? ( net-misc/wget app-alternatives/bc )
-"
-
-# Code requiring FFmpeg to be built under gpl license
-GPL_REQUIRED_USE="
-	postproc? ( gpl )
-	frei0r? ( gpl )
-	cdio? ( gpl )
-	rubberband? ( gpl )
-	vidstab? ( gpl )
-	samba? ( gpl )
-	encode? (
-		x264? ( gpl )
-		x265? ( gpl )
-		xvid? ( gpl )
-	)
+	${FFMPEG_IUSE_MAP[*]%:*}
+	${FFMPEG_UNSLOTTED:+chromium}
+	${FFMPEG_SOC_PATCH:+soc}
 "
 REQUIRED_USE="
-	chromium? ( opus )
 	cuda? ( nvenc )
-	fftools_cws2fws? ( zlib )
-	glslang? ( vulkan !shaderc )
-	libv4l? ( v4l )
-	shaderc? ( vulkan !glslang )
-	soc? ( libdrm )
-	test? ( encode )
-	vulkan? ( threads )
-	${GPL_REQUIRED_USE}
-	${CPU_REQUIRED_USE}"
-RESTRICT="
-	!test? ( test )
-	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
+	fribidi? ( truetype )
+	gmp? ( !librtmp )
+	libplacebo? ( || ( sdl vulkan ) )
+	npp? ( nvenc )
+	shaderc? ( vulkan )
+	libaribb24? ( gpl ) cdio? ( gpl ) dvd? ( gpl ) frei0r? ( gpl )
+	postproc? ( gpl ) rubberband? ( gpl ) samba? ( gpl )
+	vidstab? ( gpl ) x264? ( gpl ) x265? ( gpl ) xvid? ( gpl )
+	${FFMPEG_UNSLOTTED:+chromium? ( opus )}
+	${FFMPEG_SOC_PATCH:+soc? ( drm )}
 "
+RESTRICT="gpl? ( fdk? ( bindist ) npp? ( bindist ) )"
 
-PATCHES=(
-	"${FILESDIR}"/chromium-r2.patch
-	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
-)
+# dlopen: amdgpu-pro-amf
+COMMON_DEPEND="
+	virtual/libiconv[${MULTILIB_USEDEP}]
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXv[${MULTILIB_USEDEP}]
+		x11-libs/libxcb:=[${MULTILIB_USEDEP}]
+	)
+	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+	amr? ( media-libs/opencore-amr[${MULTILIB_USEDEP}] )
+	amrenc? ( media-libs/vo-amrwbenc[${MULTILIB_USEDEP}] )
+	bluray? ( media-libs/libbluray:=[${MULTILIB_USEDEP}] )
+	bs2b? ( media-libs/libbs2b[${MULTILIB_USEDEP}] )
+	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
+	cdio? ( dev-libs/libcdio-paranoia:=[${MULTILIB_USEDEP}] )
+	chromaprint? ( media-libs/chromaprint:=[${MULTILIB_USEDEP}] )
+	codec2? ( media-libs/codec2:=[${MULTILIB_USEDEP}] )
+	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
+	dvd? (
+		media-libs/libdvdnav[${MULTILIB_USEDEP}]
+		media-libs/libdvdread:=[${MULTILIB_USEDEP}]
+	)
+	drm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
+	fdk? ( media-libs/fdk-aac:=[${MULTILIB_USEDEP}] )
+	flite? ( app-accessibility/flite[${MULTILIB_USEDEP}] )
+	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
+	frei0r? ( media-plugins/frei0r-plugins[${MULTILIB_USEDEP}] )
+	fribidi? ( dev-libs/fribidi[${MULTILIB_USEDEP}] )
+	gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
+	gme? ( media-libs/game-music-emu[${MULTILIB_USEDEP}] )
+	gmp? ( dev-libs/gmp:=[${MULTILIB_USEDEP}] )
+	gnutls? ( !openssl? (
+		net-libs/gnutls:=[${MULTILIB_USEDEP}]
+	) )
+	gsm? ( media-sound/gsm[${MULTILIB_USEDEP}] )
+	iec61883? (
+		media-libs/libiec61883[${MULTILIB_USEDEP}]
+		sys-libs/libavc1394[${MULTILIB_USEDEP}]
+		sys-libs/libraw1394[${MULTILIB_USEDEP}]
+	)
+	ieee1394? (
+		media-libs/libdc1394:2=[${MULTILIB_USEDEP}]
+		sys-libs/libraw1394[${MULTILIB_USEDEP}]
+	)
+	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
+	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
+	jpegxl? ( media-libs/libjxl:=[$MULTILIB_USEDEP] )
+	kvazaar? ( media-libs/kvazaar:=[${MULTILIB_USEDEP}] )
+	lame? ( media-sound/lame[${MULTILIB_USEDEP}] )
+	lcms? ( media-libs/lcms:2[$MULTILIB_USEDEP] )
+	libaom? ( media-libs/libaom:=[${MULTILIB_USEDEP}] )
+	libaribb24? ( media-libs/aribb24[${MULTILIB_USEDEP}] )
+	libass? ( media-libs/libass:=[${MULTILIB_USEDEP}] )
+	libcaca? ( media-libs/libcaca[${MULTILIB_USEDEP}] )
+	libilbc? ( media-libs/libilbc:=[${MULTILIB_USEDEP}] )
+	liblc3? ( >=media-sound/liblc3-1.1[${MULTILIB_USEDEP}] )
+	libplacebo? ( media-libs/libplacebo:=[$MULTILIB_USEDEP] )
+	librtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
+	libsoxr? ( media-libs/soxr[${MULTILIB_USEDEP}] )
+	libtesseract? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
+	lv2? (
+		media-libs/lilv[${MULTILIB_USEDEP}]
+		media-libs/lv2[${MULTILIB_USEDEP}]
+	)
+	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
+	modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
+	npp? ( dev-util/nvidia-cuda-toolkit:= )
+	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
+	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
+	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
+	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
+	openmpt? ( media-libs/libopenmpt[${MULTILIB_USEDEP}] )
+	openssl? ( >=dev-libs/openssl-3:=[${MULTILIB_USEDEP}] )
+	opus? ( media-libs/opus[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
+	qrcode? ( media-gfx/qrencode:=[${MULTILIB_USEDEP}] )
+	qsv? ( media-libs/libvpl:=[${MULTILIB_USEDEP}] )
+	quirc? ( media-libs/quirc:=[${MULTILIB_USEDEP}] )
+	rabbitmq? ( net-libs/rabbitmq-c:= )
+	rav1e? ( >=media-video/rav1e-0.5:=[capi] )
+	rubberband? ( media-libs/rubberband:=[${MULTILIB_USEDEP}] )
+	samba? ( net-fs/samba:=[client,${MULTILIB_USEDEP}] )
+	sdl? ( media-libs/libsdl2[sound(+),video(+),${MULTILIB_USEDEP}] )
+	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
+	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
+	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
+	srt? ( net-libs/srt:=[${MULTILIB_USEDEP}] )
+	ssh? ( net-libs/libssh:=[sftp,${MULTILIB_USEDEP}] )
+	svg? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		>=gnome-base/librsvg-2.52:2[${MULTILIB_USEDEP}]
+		x11-libs/cairo[${MULTILIB_USEDEP}]
+	)
+	svt-av1? ( >=media-libs/svt-av1-0.9:=[${MULTILIB_USEDEP}] )
+	theora? ( media-libs/libtheora[encode,${MULTILIB_USEDEP}] )
+	truetype? (
+		media-libs/freetype:2[${MULTILIB_USEDEP}]
+		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
+	)
+	twolame? ( media-sound/twolame[${MULTILIB_USEDEP}] )
+	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vaapi? ( media-libs/libva:=[X?,${MULTILIB_USEDEP}] )
+	vdpau? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libvdpau[${MULTILIB_USEDEP}]
+	)
+	vidstab? ( media-libs/vidstab[${MULTILIB_USEDEP}] )
+	vmaf? ( media-libs/libvmaf:=[${MULTILIB_USEDEP}] )
+	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
+	vpx? ( media-libs/libvpx:=[${MULTILIB_USEDEP}] )
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
+	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
+	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
+	xml? ( dev-libs/libxml2[${MULTILIB_USEDEP}] )
+	xvid? ( media-libs/xvid[${MULTILIB_USEDEP}] )
+	zeromq? ( net-libs/zeromq:= )
+	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zvbi? ( media-libs/zvbi[${MULTILIB_USEDEP}] )
+	${FFMPEG_SOC_PATCH:+"
+		soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
+	"}
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	amf? ( media-video/amdgpu-pro-amf )
+"
+DEPEND="
+	${COMMON_DEPEND}
+	X? ( x11-base/xorg-proto )
+	amf? ( >=media-libs/amf-headers-1.4.35 )
+	kernel_linux? ( >=sys-kernel/linux-headers-6 )
+	ladspa? ( media-libs/ladspa-sdk )
+	nvenc? ( >=media-libs/nv-codec-headers-12.1.14.0 )
+	opencl? ( dev-util/opencl-headers )
+	vulkan? ( dev-util/vulkan-headers )
+"
+BDEPEND="
+	app-alternatives/awk
+	dev-lang/perl
+	virtual/pkgconfig
+	amd64? ( dev-lang/nasm )
+	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
+	doc? ( sys-apps/texinfo )
+"
+[[ ${PV} != 9999 ]] &&
+	BDEPEND+="
+		verify-sig? (
+			sec-keys/openpgp-keys-ffmpeg
+			${FFMPEG_SOC_PATCH:+"
+				soc? ( >=sec-keys/openpgp-keys-gentoo-developers-20240708 )
+			"}
+		)
+	"
+
+DOCS=( CREDITS Changelog README.md doc/APIchanges )
+[[ ${PV} != 9999 ]] && DOCS+=( RELEASE_NOTES )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
+)
+
 pkg_setup() {
-	# ffmpeg[chromaprint] depends on chromaprint, and chromaprint[tools] depends on ffmpeg.
-	# May cause breakage while updating, #862996, #625210, #833821.
-	if has_version media-libs/chromaprint[tools] && use chromaprint; then
-		ewarn "You have media-libs/chromaprint installed with 'tools' USE flag, which "
-		ewarn "links to ffmpeg, and you have enabled 'chromaprint' USE flag for ffmpeg, "
-		ewarn "which links to chromaprint. This may cause issues while rebuilding ffmpeg."
-		ewarn ""
-		ewarn "If your build fails to 'ERROR: chromaprint not found', rebuild chromaprint "
-		ewarn "without the 'tools' use flag first, then rebuild ffmpeg, and then finally enable "
-		ewarn "'tools' USE flag for chromaprint. See #862996."
+	[[ ${MERGE_TYPE} != binary ]] || return
+
+	if use chromaprint && has_version 'media-libs/chromaprint[tools]'; then
+		ewarn "media-libs/chromaprint is installed with USE=tools which links to"
+		ewarn "ffmpeg, and USE=chromaprint is enabled on ffmpeg which links to"
+		ewarn "chromaprint (circular). This may cause issues when updating ffmpeg."
+		ewarn
+		ewarn "If get a build failure with 'ERROR: chromaprint not found' or so,"
+		ewarn "first rebuild chromaprint with USE=-tools, then rebuild ffmpeg, and"
+		ewarn "then finally rebuild chromaprint with USE=tools again (bug #862996)."
+	fi
+
+	[[ ${EXTRA_FFMPEG_CONF} ]] && # drop this eventually
+		die "EXTRA_FFMPEG_CONF is set in the environment, please use EXTRA_ECONF instead"
+}
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+	else
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}"/ffmpeg-${PV}.tar.xz{,.asc} \
+				"${BROOT}"/usr/share/openpgp-keys/ffmpeg.asc
+			in_iuse soc && use soc &&
+				verify-sig_verify_detached "${DISTDIR}"/${FFMPEG_SOC_PATCH}{,.asc} \
+					"${BROOT}"/usr/share/openpgp-keys/gentoo-developers.asc
+		fi
+		default
 	fi
 }
 
 src_prepare() {
-	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
-		export revision=git-N-${FFMPEG_REVISION}
-	fi
-
-	use soc &&
-		eapply "${DISTDIR}"/${SOC_PATCH}
+	in_iuse chromium && PATCHES+=( "${FILESDIR}"/chromium-r3.patch )
+	in_iuse soc && use soc && PATCHES+=( "${DISTDIR}"/${FFMPEG_SOC_PATCH} )
 
 	default
 
-	# -fdiagnostics-color=auto gets appended after user flags which
-	# will ignore user's preference.
-	sed -i -e '/check_cflags -fdiagnostics-color=auto/d' configure || die
+	# respect user preferences
+	sed -i '/cflags -fdiagnostics-color/d' configure || die
 
-	ln -snf "${FILESDIR}"/chromium.c chromium.c || die
-	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
-
-	# We need to detect LTO usage before multilib stuff and filter-lto is called (bug #923491)
-	if tc-is-lto ; then
-		# Respect -flto value, e.g -flto=thin
-		local v="$(get-flag flto)"
-		[[ ${v} != -flto ]] && LTO_FLAG="--enable-lto=${v}" || LTO_FLAG="--enable-lto"
+	# handle *FLAGS here to avoid repeating for each ABI below (bug #923491)
+	FFMPEG_ENABLE_LTO=
+	if tc-is-lto; then
+		: "$(get-flag flto)" # get -flto=<val> (e.g. =thin)
+		FFMPEG_ENABLE_LTO=--enable-lto${_#-flto}
 	fi
 	filter-lto
+
+	if use npp; then
+		local cuda=${ESYSROOT}/opt/cuda/targets/$(usex amd64 x86_64 sbsa)-linux
+		append-cppflags -I"${cuda}"/include
+		append-ldflags -L"${cuda}"/lib
+	fi
 }
 
 multilib_src_configure() {
-	local myconf=( )
+	local conf=( "${S}"/configure ) # not autotools-based
 
-	# Conditional patch options
-	use soc && myconf+=( --enable-v4l2-request --enable-libudev --enable-sand )
-
-	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
-	use openssl && myconf+=( --enable-nonfree )
-	use samba && myconf+=( --enable-version3 )
-
-	# Encoders
-	if use encode ; then
-		ffuse+=( "${FFMPEG_ENCODER_FLAG_MAP[@]}" )
-
-		# Licensing.
-		if use amrenc ; then
-			myconf+=( --enable-version3 )
-		fi
-	else
-		myconf+=( --disable-encoders )
+	local prefix=${EPREFIX}/usr
+	if [[ ! ${FFMPEG_UNSLOTTED} ]]; then
+		prefix+=/lib/ffmpeg${SLOT%/*}
+		# could get SONAME clashes, so prefer rpath over LDPATH
+		conf+=(
+			--enable-rpath
+			--disable-doc
+		)
 	fi
 
-	# Indevs
-	use v4l || myconf+=( --disable-indev=v4l2 --disable-outdev=v4l2 )
-	for i in alsa oss jack sndio ; do
-		use ${i} || myconf+=( --disable-indev=${i} )
-	done
+	conf+=(
+		--prefix="${prefix}"
+		--libdir="${prefix}"/$(get_libdir)
+		--shlibdir="${prefix}"/$(get_libdir)
+		--mandir="${prefix}"/share/man # ignoring slotted MANPATH
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html
 
-	# Outdevs
-	for i in alsa oss sndio ; do
-		use ${i} || myconf+=( --disable-outdev=${i} )
-	done
-
-	# Decoders
-	use amr && myconf+=( --enable-version3 )
-	use gmp && myconf+=( --enable-version3 )
-	use libaribb24 && myconf+=( --enable-version3 )
-	use fdk && use gpl && myconf+=( --enable-nonfree )
-
-	for i in "${ffuse[@]#+}" ; do
-		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
-	done
-
-	if use openssl ; then
-		myconf+=( --disable-gnutls )
-		has_version dev-libs/openssl:0/3 && myconf+=( --enable-version3 )
-	fi
-
-	# (temporarily) disable non-multilib deps
-	if ! multilib_is_native_abi; then
-		for i in librav1e libzmq ; do
-			myconf+=( --disable-${i} )
-		done
-	fi
-
-	# CPU features
-	for i in "${CPU_FEATURES_MAP[@]}" ; do
-		use ${i%:*} || myconf+=( --disable-${i#*:} )
-	done
-
-	if use pic ; then
-		myconf+=( --enable-pic )
-		# disable asm code if PIC is required
-		# as the provided asm decidedly is not PIC for x86.
-		[[ ${ABI} == x86 ]] && myconf+=( --disable-asm )
-	fi
-	[[ ${ABI} == x32 ]] && myconf+=( --disable-asm ) #427004
-
-	# Try to get cpu type based on CFLAGS.
-	# Bug #172723
-	# We need to do this so that features of that CPU will be better used
-	# If they contain an unknown CPU it will not hurt since ffmpeg's configure
-	# will just ignore it.
-	for i in $(get-flag mcpu) $(get-flag march) ; do
-		[[ ${i} = native ]] && i="host" # bug #273421
-		myconf+=( --cpu=${i} )
-		break
-	done
-
-	# LTO support, bug #566282, bug #754654, bug #772854
-	if [[ ${ABI} != x86 && ! -z ${LTO_FLAG} ]]; then
-		myconf+=( ${LTO_FLAG} )
-	fi
-
-	# Mandatory configuration
-	myconf=(
-		--disable-libaribcaption # not yet packaged
-		--disable-libxeve
-		--disable-libxevd
-		--disable-d3d12va
-		--disable-liblcevc_dec # not yet packaged
-		--enable-avfilter
+		--ar="$(tc-getAR)"
+		--cc="$(tc-getCC)"
+		--cxx="$(tc-getCXX)"
+		--nm="$(tc-getNM)"
+		--pkg-config="$(tc-getPKG_CONFIG)"
+		--ranlib="$(tc-getRANLIB)"
 		--disable-stripping
-		# This is only for hardcoded cflags; those are used in configure checks that may
-		# interfere with proper detections, bug #671746 and bug #645778
-		# We use optflags, so that overrides them anyway.
+
+		# overrides users' -g/-O, let *FLAGS handle these
+		--disable-debug
 		--disable-optimizations
-		--disable-libcelt # bug #664158
-		"${myconf[@]}"
+		--optflags=' '
+
+		# pass option over *FLAGS due to special logic (bug #566282,#754654)
+		${FFMPEG_ENABLE_LTO}
+
+		# basic defaults that should not really need a USE
+		--enable-iconv
+		--enable-pic
+		--enable-shared
+		--disable-static
+		$(multilib_native_enable manpages) # needs pod2man
+		--disable-podpages
+		--disable-txtpages
+
+		# disabled primarily due to being unpackaged
+		--disable-decklink
+		--disable-libaribcaption
+		--disable-libdavs2
+		--disable-libklvanc
+		--disable-liblcevc-dec
+		--disable-libmysofa
+		--disable-libopenvino
+		--disable-libshine
+		--disable-libtls
+		--disable-libuavs3d
+		--disable-libvvenc
+		--disable-libxavs
+		--disable-libxavs2
+		--disable-libxevd
+		--disable-libxeve
+		--disable-pocketsphinx
+		--disable-rkmpp
+		--disable-vapoursynth
+
+		# disabled for other or additional reasons
+		--disable-cuda-nvcc # prefer cuda-llvm for less issues
+		--disable-libcelt # obsolete (bug #664158)
+		--disable-libglslang # prefer USE=shaderc (bug #918989,#920283,#922333)
+		--disable-liblensfun # https://trac.ffmpeg.org/ticket/9112 (abandoned?)
+		--disable-libmfx # prefer libvpl for USE=qsv
+		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
+		--disable-librist # librist itself needs attention first (bug #822012)
+		--disable-libtensorflow # causes headaches, and is gone
+		--disable-libtorch # has not been looked at yet (bug #936127)
+		--disable-mbedtls # messy with slots, tests underlinking issues
+		--disable-mmal # prefer USE=soc
+		--disable-omx # unsupported (bug #653386)
+		--disable-omx-rpi # ^
+
+		# to avoid obscure issues like bug #915384 and simplify the ebuild,
+		# not passing the following (use EXTRA_ECONF if really must):
+		# --cpu: adds -march=<exact> after the user's more adapted
+		# =native, its logic also does not account for -mno-*
+		# --disable/enable-<cpufeature>: safer to detect at runtime
 	)
 
-	# cross compile support
-	if tc-is-cross-compiler ; then
-		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
+	in_iuse soc && use soc &&
+		conf+=(
+			--disable-epoxy
+			--enable-libudev
+			--enable-sand
+			--enable-v4l2-request
+		)
+
+	# broken on x32 (bug #427004), and not PIC safe on x86 (bug #916067)
+	[[ ${ABI} == @(x32|x86) ]] && conf+=( --disable-asm )
+
+	if tc-is-cross-compiler; then
+		conf+=(
+			--enable-cross-compile
+			--arch="$(tc-arch-kernel)"
+			--cross-prefix="${CHOST}-"
+			--host-cc="$(tc-getBUILD_CC)"
+		)
 		case ${CHOST} in
-			*mingw32*)
-				myconf+=( --target-os=mingw32 )
-				;;
-			*linux*)
-				myconf+=( --target-os=linux )
-				;;
+			*mingw32*) conf+=( --target-os=mingw32 );;
+			*linux*) conf+=( --target-os=linux );;
 		esac
 	fi
 
-	# doc
-	myconf+=(
-		$(multilib_native_use_enable doc)
-		$(multilib_native_use_enable doc htmlpages)
-		$(multilib_native_enable manpages)
+	# import options from FFMPEG_IUSE_MAP
+	local flag license mod v
+	local -A optmap=() licensemap=()
+	for v in "${FFMPEG_IUSE_MAP[@]}"; do
+		[[ ${v} =~ \+?([^:]+):?([^@]*)@?(.*) ]] || die "${v}"
+		flag=${BASH_REMATCH[1]}
+		license=${BASH_REMATCH[3]}
+		v=${BASH_REMATCH[2]:-${flag}}
+		for v in ${v//,/ }; do
+			mod=${v::1}
+			v=${v#[\!\^]}
+			if [[ ${mod} == '!' ]]; then
+				if use ${flag}; then
+					optmap[${v}]=--disable-${v}
+					unset licensemap[${v}]
+				fi
+			elif [[ ! -v optmap[${v}] ]]; then
+				if [[ ${mod} == '^' ]]; then
+					optmap[${v}]=$(multilib_native_use_enable ${flag} ${v})
+				else
+					optmap[${v}]=$(use_enable ${flag} ${v})
+				fi
+				use ${flag} && licensemap[${v}]=${license}
+			fi
+		done
+	done
+	for license in "${licensemap[@]}"; do
+		case ${license} in
+			v3ifgpl) use gpl || continue ;&
+			v3) optmap[v3]=--enable-version3 ;;
+			nonfree) use gpl && optmap[nonfree]=--enable-nonfree ;;
+		esac
+	done
+	conf+=(
+		"${optmap[@]}"
+		${EXTRA_ECONF}
 	)
 
-	# skip broken test https://trac.ffmpeg.org/ticket/11225
-	if use test; then
-		myconf+=(
-			--ignore-tests=ffmpeg-spec-disposition
-	)
-	fi
-
-	if use elibc_musl ; then
-		append-cflags -DHAVE_POSIX_IOCTL
-	fi
-
-	# Use --extra-libs if needed for LIBS
-	set -- "${S}/configure" \
-		--prefix="${EPREFIX}/usr" \
-		--libdir="${EPREFIX}/usr/$(get_libdir)" \
-		--shlibdir="${EPREFIX}/usr/$(get_libdir)" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--mandir="${EPREFIX}/usr/share/man" \
-		--enable-shared \
-		--cc="$(tc-getCC)" \
-		--cxx="$(tc-getCXX)" \
-		--ar="$(tc-getAR)" \
-		--nm="$(tc-getNM)" \
-		--strip="$(tc-getSTRIP)" \
-		--ranlib="$(tc-getRANLIB)" \
-		--pkg-config="$(tc-getPKG_CONFIG)" \
-		--optflags="${CFLAGS}" \
-		$(use_enable static-libs static) \
-		$(use_enable static-libs vulkan-static) \
-		"${myconf[@]}" \
-		${EXTRA_FFMPEG_CONF}
-	echo "${@}"
-	"${@}" || die
+	einfo "${conf[*]}" # no edo.eclass due to noisy long command in errors
+	"${conf[@]}" || die "configure failed, see ${BUILD_DIR}/ffbuild/config.log"
 }
 
 multilib_src_compile() {
 	emake V=1
-
-	if multilib_is_native_abi; then
-		for i in "${FFTOOLS[@]}" ; do
-			if use fftools_${i} ; then
-				emake V=1 tools/${i}$(get_exeext)
-			fi
-		done
-
-		use chromium &&
-			emake V=1 libffmpeg
-	fi
+	in_iuse chromium && use chromium && multilib_is_native_abi &&
+		emake V=1 libffmpeg
 }
 
 multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil" \
-		emake V=1 fate -k
+	local -x LD_LIBRARY_PATH=$(printf %s: "${BUILD_DIR}"/lib*)${LD_LIBRARY_PATH}
+	emake V=1 -k fate
 }
 
 multilib_src_install() {
-	emake V=1 DESTDIR="${D}" install install-doc
-
-	if multilib_is_native_abi; then
-		for i in "${FFTOOLS[@]}" ; do
-			if use fftools_${i} ; then
-				dobin tools/${i}$(get_exeext)
-			fi
-		done
-
-		use chromium &&
-			emake V=1 DESTDIR="${D}" install-libffmpeg
-	fi
-}
-
-multilib_src_install_all() {
-	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
-	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
+	emake V=1 DESTDIR="${D}" install
+	in_iuse chromium && use chromium && multilib_is_native_abi &&
+		emake V=1 DESTDIR="${D}" install-libffmpeg
 }
