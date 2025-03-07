@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~sparc"
 
 RDEPEND="
 	>=dev-python/typing-extensions-4.12.0[${PYTHON_USEDEP}]
