@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kdesvn/"
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
