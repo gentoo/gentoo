@@ -35,7 +35,6 @@ DEPEND="
 	>=dev-libs/libgpg-error-1.38
 	>=dev-libs/libksba-1.4.0
 	>=dev-libs/npth-1.2
-	>=net-misc/curl-7.10
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	ldap? ( net-nds/openldap:= )
