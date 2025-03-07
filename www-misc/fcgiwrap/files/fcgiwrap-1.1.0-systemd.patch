@@ -1,0 +1,25 @@
+https://github.com/gnosek/fcgiwrap/pull/39
+
+From 5e9be0eacceaad4eb11b0f49a0cffb70b18b4af3 Mon Sep 17 00:00:00 2001
+From: Juan Orti Alcaine <j.orti.alcaine@gmail.com>
+Date: Fri, 11 Nov 2016 22:40:23 +0100
+Subject: [PATCH] libsystemd-daemon has been renamed to libsystemd
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bb3674e..2b02ef4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,7 +28,7 @@ AC_ARG_WITH([systemd],
+   [], [with_systemd=check])
+ have_systemd=no
+ if test "x$with_systemd" != "xno"; then
+-  PKG_CHECK_MODULES(systemd, [libsystemd-daemon],
++  PKG_CHECK_MODULES(systemd, [libsystemd],
+     [AC_DEFINE(HAVE_SYSTEMD, 1, [Define if systemd is available])
+     have_systemd=yes],
+   have_systemd=no)
+
