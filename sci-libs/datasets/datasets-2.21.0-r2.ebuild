@@ -24,7 +24,6 @@ RDEPEND="
 	sci-libs/pytorch[${PYTHON_SINGLE_USEDEP}]
 	sci-libs/caffe2[${PYTHON_SINGLE_USEDEP},numpy]
 	$(python_gen_cond_dep '
-		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/dill[${PYTHON_USEDEP}]
 		dev-python/filelock[${PYTHON_USEDEP}]
@@ -36,19 +35,20 @@ RDEPEND="
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/scikit-learn[${PYTHON_USEDEP}]
-		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
-		dev-python/zstandard[${PYTHON_USEDEP}]
 		sci-libs/huggingface_hub[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	$(python_gen_cond_dep '
-		dev-python/pytest-datadir[${PYTHON_USEDEP}]
+		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
+		dev-python/pytest-datadir[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
+		dev-python/sqlalchemy[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 		sci-libs/jiwer[${PYTHON_USEDEP}]
 		sci-libs/seqeval[${PYTHON_USEDEP}]
 	')
