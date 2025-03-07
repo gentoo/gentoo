@@ -1,0 +1,43 @@
+From c84dbf12267cf873b4d1ab2f49ad627d05cc45ff Mon Sep 17 00:00:00 2001
+From: NRK <nrk@disroot.org>
+Date: Fri, 7 Mar 2025 21:07:20 +0000
+Subject: [PATCH 3/3] disable test tools
+
+---
+ CMakeLists.txt | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d21c6cb..b2fa08a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -181,18 +181,6 @@ if(WIN32)
+   set_target_properties( ${ly_lib_shared} PROPERTIES IMPORT_PREFIX "lib" )
+ endif()
+ 
+-# this creates the cpuid tool
+-add_executable      ( cpuid ${ly_base_dir}/util/cpuid.c )
+-target_link_libraries  ( cpuid ${ly_lib_shared} )
+-
+-# this creates the conversion tool
+-add_executable			( yuvconvert ${ly_base_dir}/util/yuvconvert.cc )
+-target_link_libraries	( yuvconvert ${ly_lib_shared} )
+-
+-# this creates the yuvconstants tool
+-add_executable      ( yuvconstants ${ly_base_dir}/util/yuvconstants.c )
+-target_link_libraries  ( yuvconstants ${ly_lib_shared} )
+-
+ find_package ( JPEG )
+ if (JPEG_FOUND)
+   include_directories( ${JPEG_INCLUDE_DIR} )
+@@ -243,7 +231,6 @@ endif()
+ 
+ 
+ # install the conversion tool, .so, .a, and all the header files
+-install ( TARGETS yuvconvert DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ install ( TARGETS ${ly_lib_shared} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} RUNTIME DESTINATION bin ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ install ( DIRECTORY ${PROJECT_SOURCE_DIR}/include/		DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
+ 
+-- 
+2.48.1
+
