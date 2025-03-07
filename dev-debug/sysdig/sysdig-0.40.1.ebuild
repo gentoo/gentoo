@@ -75,6 +75,11 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	# manually apply patches to falcosecurity-libs
+	pushd "${WORKDIR}/libs-${LIBS_VERSION}"
+		eapply "${FILESDIR}/libs-0.20-fix-buffer-overrun-reading-sockets-from-procfs.patch" || die
+	popd
+
 	# do not build with debugging info
 	sed -i -e 's/-ggdb//g' CMakeLists.txt "${WORKDIR}"/libs-${LIBS_VERSION}/cmake/modules/CompilerFlags.cmake || die
 
