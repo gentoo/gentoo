@@ -32,6 +32,7 @@ case ${EAPI} in
 esac
 
 GNUCONFIG_AUTO_DEPEND=no
+LIBTOOL_AUTO_DEPEND=no
 inherit gnuconfig libtool
 
 # @ECLASS_VARIABLE: WANT_AUTOCONF
@@ -152,6 +153,7 @@ fi
 # versions in *DEPEND format.
 AUTOTOOLS_DEPEND="
 	${GNUCONFIG_DEPEND}
+	${LIBTOOL_DEPEND}
 	${_automake_atom}
 	${_autoconf_atom}
 	${_libtool_atom}
