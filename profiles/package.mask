@@ -44,6 +44,13 @@ app-portage/pgo
 # Removal on 2025-04-08. Bug #950367
 sys-apps/openrc-navi
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
+# Downstream-split fallback package for KF5-based revdeps without any
+# revdeps left. Removal on 2025-03-31.
+kde-apps/kdesdk-thumbnailers-common
+media-libs/ksanecore-common
+net-misc/kio-zeroconf-common
+
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
