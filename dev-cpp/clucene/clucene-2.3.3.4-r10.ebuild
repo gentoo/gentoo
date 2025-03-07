@@ -40,6 +40,7 @@ src_prepare() {
 	sed -i \
 		-e '/ADD_SUBDIRECTORY (src\/ext)/d' \
 		CMakeLists.txt || die
+	# don't reference non-existent paths in .pc file (bug #950316)
 	sed -i \
 		-e 's%\(:\| -I\)${prefix}/include/CLucene/ext%%g' \
 		./src/core/libclucene-core.pc.cmake || die
