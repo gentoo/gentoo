@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake
 
-COMMIT="0180c8ee5cc9f54d4edf8d39415f3733e4296e0f"
+COMMIT="b6e7a28c6200d50080c38a598cf92d96d45cf976"
 MY_P="azure-sdk-for-cpp-${COMMIT}"
 DESCRIPTION="Azure SDK for C++"
 HOMEPAGE="https://azure.github.io/azure-sdk-for-cpp/"
