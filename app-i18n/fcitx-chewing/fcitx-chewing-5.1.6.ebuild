@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.zst ->
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	!app-i18n/fcitx-chewing:4
