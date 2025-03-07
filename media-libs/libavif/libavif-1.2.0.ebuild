@@ -3,15 +3,19 @@
 
 EAPI=8
 
-inherit cmake-multilib git-r3 gnome2-utils
+inherit cmake-multilib gnome2-utils
 
 DESCRIPTION="Library for encoding and decoding .avif files"
 HOMEPAGE="https://github.com/AOMediaCodec/libavif"
-EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
+SRC_URI="
+	https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="BSD-2"
 # See bug #822336 re subslot
-SLOT="0/${PV}"
+SLOT="0/16.1.1"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 libyuv test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( aom dav1d )"

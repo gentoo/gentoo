@@ -10,6 +10,10 @@ media-video/pipewire loudness
 # Spidermonkey still declares llvm-17 compat on other arches.
 dev-lang/spidermonkey llvm_slot_17
 
+# NRK <nrk@disroot.org> (2025-03-17)
+# media-libs/libyuv is not keyworded
+media-libs/libavif libyuv
+
 # Sam James <sam@gentoo.org> (2025-03-17)
 # dev-util/babeltrace is not keyworded here
 dev-debug/gdb babeltrace
