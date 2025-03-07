@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# NRK <nrk@disroot.org> (2025-03-07)
+# media-libs/libyuv is not keyworded
+media-libs/libavif libyuv
+
 # Sam James <sam@gentoo.org> (2025-01-14)
 # dev-cpp/benchmark isn't (yet) keyworded here, although >=1.9.1 should
 # work fine with patching as the ebuild does.
