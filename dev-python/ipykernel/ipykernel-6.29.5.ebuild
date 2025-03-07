@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi virtualx
@@ -64,7 +64,7 @@ python_compile() {
 		"${BUILD_DIR}/install${EPREFIX}/usr/share/jupyter/kernels/python3/kernel.json" || die
 }
 
-src_test() {
+python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
 		tests/test_debugger.py::test_attach_debug
@@ -80,5 +80,10 @@ src_test() {
 		tests/test_eventloop.py::test_qt_enable_gui
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p asyncio -p flaky -p timeout
+}
+
+src_test() {
 	virtx distutils-r1_src_test
 }
