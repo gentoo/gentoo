@@ -2104,7 +2104,7 @@ gcc_do_filter_flags() {
 	# https://gcc.gnu.org/PR100431
 	filter-flags -Werror=format-security
 
-	if ver_test -lt 10.1 ; then
+	if ver_test -lt 11.1 ; then
 		filter-flags '-fdiagnostics-urls=*'
 		filter-flags '-Wstringop-overread'
 	fi
