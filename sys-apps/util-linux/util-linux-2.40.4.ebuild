@@ -145,6 +145,10 @@ src_prepare() {
 			lsfd/option-inet
 			utmp/last-ipv6
 
+			# Fails with permission errors in nspawn
+			fadvise/drop
+			fincore/count
+
 			# Flaky
 			rename/subdir
 
