@@ -144,6 +144,18 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # Lowest Rust slot supported by the package. Needs to be set before
 # rust_pkg_setup is called. If unset, no lower bound is assumed.
 
+# @ECLASS_VARIABLE: RUST_SLOT
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The selected Rust slot for building, from the range defined by
+# RUST_MAX_VER and RUST_MIN_VER. This is set by rust_pkg_setup.
+
+# @ECLASS_VARIABLE: RUST_TYPE
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The selected Rust type for building, either 'source' or 'binary'.
+# This is set by rust_pkg_setup.
+
 # @ECLASS_VARIABLE: RUST_NEEDS_LLVM
 # @DEFAULT_UNSET
 # @DESCRIPTION:
