@@ -22,9 +22,22 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-BDEPEND=">=app-portage/elt-patches-20250306"
-
 inherit toolchain-funcs
+
+# @ECLASS_VARIABLE: LIBTOOL_DEPEND
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Contains dependency on app-portage/elt-patches in *DEPEND format.
+LIBTOOL_DEPEND="app-portage/elt-patches"
+
+# @ECLASS_VARIABLE: LIBTOOL_AUTO_DEPEND
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Set to 'no' to disable automatically adding to DEPEND.  This lets
+# ebuilds form conditional depends by using ${LIBTOOL_DEPEND} in
+# their own DEPEND string.
+: "${LIBTOOL_AUTO_DEPEND:=yes}"
+[[ ${LIBTOOL_AUTO_DEPEND} != "no" ]] && BDEPEND=${LIBTOOL_DEPEND}
 
 # @FUNCTION: elibtoolize
 # @USAGE: [dirs] [--portage] [--reverse-deps] [--patch-only] [--remove-internal-dep=xxx] [--shallow] [--no-uclibc]
