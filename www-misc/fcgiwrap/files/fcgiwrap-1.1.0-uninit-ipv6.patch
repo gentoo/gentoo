@@ -1,0 +1,34 @@
+https://github.com/gnosek/fcgiwrap/pull/51
+
+From 0b04283bc0f33c8b9e7ec23e2e7fd779da5bda09 Mon Sep 17 00:00:00 2001
+From: Rodrigo Osorio <rodrigo@osorio.me>
+Date: Sat, 28 Mar 2020 18:17:11 +0100
+Subject: [PATCH] Zero-out the sockaddr struct before using it
+
+The sockaddr union struct must be zero-out
+before usage at least for IPv6.
+
+IEEE Std 1003.1, 2004 Edition says:
+---
+The sockaddr_in6 structure shall be set to zero by an
+application prior to using it, since implementations
+are free to have additional, implementation-defined
+fields in sockaddr_in6.
+---
+ fcgiwrap.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index b44d8aa..2e0f44f 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -726,6 +726,8 @@ static int setup_socket(char *url) {
+ 		struct sockaddr_in6 sa_in6;
+ 	} sa;
+ 
++    memset(&sa, 0, sizeof(sa));
++
+ 	if (!strncmp(p, "unix:", sizeof("unix:") - 1)) {
+ 		p += sizeof("unix:") - 1;
+ 
+
