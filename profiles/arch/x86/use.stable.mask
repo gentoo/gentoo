@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
+# KDE Frameworks is not stable
+kde
+kwallet
+
 # Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
 # sci-libs/atlas is not stable
 atlas
