@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libtool.eclass
@@ -22,7 +22,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-BDEPEND=">=app-portage/elt-patches-20240116"
+BDEPEND=">=app-portage/elt-patches-20250306"
 
 inherit toolchain-funcs
 
