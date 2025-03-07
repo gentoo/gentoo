@@ -17,7 +17,6 @@ SRC_URI="https://github.com/huggingface/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-#RESTRICT="test" #Several modules not yet packaged
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
