@@ -9,7 +9,7 @@ SRC_URI="https://github.com/microcai/${PN}/releases/download/${PV%.0}/${P}.tar.b
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="nls +zinnia"
 
 RDEPEND="app-i18n/ibus
