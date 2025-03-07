@@ -27,6 +27,7 @@ RDEPEND="
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
 	)
+	shm? ( x11-libs/libxcb[${MULTILIB_USEDEP}] )
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	eps? ( app-text/libspectre )
 	gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
