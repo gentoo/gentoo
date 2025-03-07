@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	PATCHSET="${PN}-0.7.1-patchset-1"
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
