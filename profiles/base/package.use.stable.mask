@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Sam James <sam@gentoo.org> (2025-03-07)
+# Gradually unmask for newer Rust to avoid making users recompile for
+# the change. See bug #735154.
+<dev-lang/rust-1.86 system-llvm
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-02-03)
 # Requires dev-util/shelltestrunner
 app-arch/mt-st test
@@ -153,12 +158,6 @@ dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
 media-video/vdrsync dvdr
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-05-10)
-# needs llvm slots which are not stable #678908
-# also prone to weird compilation failures
-# masking this for now, will readjust as situation changes
->=dev-lang/rust-1.34 system-llvm
 
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
