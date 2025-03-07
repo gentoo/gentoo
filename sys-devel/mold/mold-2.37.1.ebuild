@@ -61,6 +61,9 @@ src_prepare() {
 	sed -i 's|`pwd`/mold-wrapper.so|"& ${LD_PRELOAD}"|' \
 		test/mold-wrapper{,2}.sh || die
 
+	# Fails if binutils errors out on textrels by default
+	rm test/textrel.sh test/textrel2.sh || die
+
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
 		rm test/{,ifunc-}static-pie.sh || die
