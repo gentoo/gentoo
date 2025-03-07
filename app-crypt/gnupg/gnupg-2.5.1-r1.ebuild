@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test +tofu tpm tools usb user-socket wks-server"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tofu )"
@@ -36,7 +36,6 @@ DEPEND="
 	>=dev-libs/libgpg-error-1.46
 	>=dev-libs/libksba-1.6.3
 	>=dev-libs/npth-1.2
-	>=net-misc/curl-7.10
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	ldap? ( net-nds/openldap:= )
@@ -144,7 +143,7 @@ my_src_configure() {
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# https://dev.gnupg.org/T7368
-		append-cppflags -D_XOPEN_SOURCE=500
+		export ac_cv_should_define__xopen_source=yes
 	fi
 
 	# bug #663142
