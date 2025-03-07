@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@LIBDIR@
+includedir=${exec_prefix}/include
+
+Name: libyuv
+Description: YUV scaling and conversion library
+Version: @VERSION@
+Libs: -L${libdir} -lyuv
+Cflags: -I${includedir}
