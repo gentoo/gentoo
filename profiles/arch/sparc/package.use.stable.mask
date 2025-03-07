@@ -17,12 +17,6 @@ www-client/links avif
 # dev-ruby/stringex is not marked stable here yet
 dev-ruby/kramdown unicode
 
-# Sam James <sam@gentoo.org> (2022-09-12)
-# dev-lang/rust lacks wiring up to use our custom rust-bin bootstrap
-# tarball, so force system-bootstrap instead (i.e. force using rust-bin
-# or existing installed rust). bug #842246, bug #869680.
-dev-lang/rust -system-bootstrap
-
 # Sam James <sam@gentoo.org> (2022-06-10)
 # gstreamer not marked stable on sparc
 media-sound/pulseaudio-daemon aptx ldac
