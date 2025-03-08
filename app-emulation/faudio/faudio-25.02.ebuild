@@ -12,7 +12,7 @@ S="${WORKDIR}/FAudio-${PV}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="debug dumpvoices test"
 RESTRICT="!test? ( test )"
 
