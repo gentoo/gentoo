@@ -29,11 +29,6 @@ BDEPEND="test? ( dev-util/cmocka )"
 
 DOCS=( jffsX-utils/device_table.txt ubifs-utils/mkfs.ubifs/README )
 
-src_prepare() {
-	default
-	sed -i '/if test.*then/s: == : = :' configure || die
-}
-
 src_configure() {
 	# --with-tests is for test programs that are installed; was --enable-tests in earlier versions
 	local myeconfargs=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -25,11 +25,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-util/cmocka )"
 
 DOCS=( jffsX-utils/device_table.txt ubifs-utils/mkfs.ubifs/README )
-
-src_prepare() {
-	default
-	sed -i '/if test.*then/s: == : = :' configure || die
-}
 
 src_configure() {
 	# --enable-tests is for test programs that are installed
