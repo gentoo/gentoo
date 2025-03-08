@@ -17,6 +17,7 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test-rust"
 
 RDEPEND="
 	<dev-python/anyio-5[${PYTHON_USEDEP}]
@@ -28,7 +29,9 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/trio-0.27.0[${PYTHON_USEDEP}]
+		test-rust? (
+			>=dev-python/trio-0.27.0[${PYTHON_USEDEP}]
+		)
 	)
 "
 
@@ -40,6 +43,11 @@ PATCHES=(
 )
 
 python_test() {
+	local args=()
+	if ! has_version "dev-python/trio[${PYTHON_USEDEP}]"; then
+		args+=( -k "not trio" )
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p anyio
+	epytest -p anyio "${args[@]}"
 }
