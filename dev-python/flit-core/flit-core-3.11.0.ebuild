@@ -38,3 +38,8 @@ src_prepare() {
 	sed -i -e 's:from \.vendor ::' flit_core/*.py || die
 	sed -i -e '/license-files/d' pyproject.toml || die
 }
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
