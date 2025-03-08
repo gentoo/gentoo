@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm64 ~x86 ~amd64-linux"
 
 DEPEND="
 	>=sci-libs/proj-9.0.0:=
