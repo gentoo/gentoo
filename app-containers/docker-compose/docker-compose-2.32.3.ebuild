@@ -14,7 +14,7 @@ S="${WORKDIR}/compose-${MY_PV}"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 arm64"
+KEYWORDS="amd64 arm64"
 
 BDEPEND=">=dev-lang/go-1.21"
 RDEPEND=">=app-containers/docker-cli-23.0.0"
