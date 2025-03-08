@@ -88,9 +88,6 @@ src_prepare() {
 src_configure() {
 	export OPENSSL_NO_VENDOR=1
 
-	# bug #938847 (TODO?: should probably be an eclass default for musl)
-	use elibc_musl && RUSTFLAGS+=" -C target-feature=-crt-static"
-
 	# https://github.com/rust-lang/stacker/issues/79
 	use s390 && ! is-flagq '-march=*' &&
 		append-cflags $(test-flags-CC -march=z10)
