@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="grapheme-clustering">Enable grapheme clustering support</flag>
+		<flag name="utempter">Enable utmp support via <pkg>sys-libs/libutempter</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://codeberg.org/dnkl/foot/issues</bugs-to>
