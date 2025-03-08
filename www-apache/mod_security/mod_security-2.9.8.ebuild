@@ -16,7 +16,7 @@ SRC_URI="https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${P
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc fuzzyhash geoip jit json lua mlogc pcre2"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
