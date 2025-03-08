@@ -32,6 +32,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-08)
+# EAPI=7. Broken CLI for packages.g.o.
+# Removal on 2025-04-07.
+app-portage/pgo
+
 # Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2025-03-08)
 # User services is merged and released in openrc-0.60, this fork
 # is now unmaintained and superseded.
