@@ -1,6 +1,5 @@
-diff -Nru md6sum-1.0.orig/Makefile.in md6sum-1.0/Makefile.in
---- md6sum-1.0.orig/Makefile.in	2011-01-09 02:12:09.000000000 +0000
-+++ md6sum-1.0/Makefile.in	2011-02-01 04:41:35.000000000 +0000
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -18,7 +18,7 @@
  all: md6sum
  
