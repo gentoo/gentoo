@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~sparc ~amd64-linux ~x86-linux ~ppc-macos ~x64-ma
 distutils_enable_tests unittest
 
 python_prepare_all() {
-	hprefixify src/py/buildparser src/py/findclass setup.py
+	hprefixify src/${PN}/scripts/findclass.py
 	distutils-r1_python_prepare_all
 }
 
@@ -36,6 +36,6 @@ src_install() {
 	local script
 	for script in *; do
 		rm "${script}" || die
-		dosym -r /usr/lib/python-exec/python-exec2 "${EPREFIX}/usr/libexec/${PN}/${script}"
+		dosym -r /usr/lib/python-exec/python-exec2 "/usr/libexec/${PN}/${script}"
 	done
 }
