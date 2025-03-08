@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}-src"
 # see LICENSE
 LICENSE="BSD GPL-3+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="gui png test"
 RESTRICT="!test? ( test )"
 
