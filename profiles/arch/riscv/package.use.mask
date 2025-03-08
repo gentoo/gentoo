@@ -1,10 +1,6 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Alfred Wingate <parona@protonmail.com> (2025-02-22)
-# media-libs/zint is not keyworded here
-media-libs/zxing-cpp experimental
-
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
 # sci-libs/caffe2 is not keyworded on riscv
 sci-chemistry/gromacs nnpot
