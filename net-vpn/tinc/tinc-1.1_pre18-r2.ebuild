@@ -6,6 +6,7 @@ EAPI=8
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
+# Please keep a version around that matches Debian/Ubuntu for compatibility.
 inherit autotools bash-completion-r1 flag-o-matic systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
