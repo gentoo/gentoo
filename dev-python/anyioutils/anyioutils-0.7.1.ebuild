@@ -17,6 +17,7 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test-rust"
 
 RDEPEND="
 	<dev-python/anyio-5[${PYTHON_USEDEP}]
@@ -29,7 +30,9 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/trio[${PYTHON_USEDEP}]
+		test-rust? (
+			dev-python/trio[${PYTHON_USEDEP}]
+		)
 	)
 "
 
@@ -40,7 +43,14 @@ python_test() {
 		# requires aioguest
 		tests/test_guest.py::test_host_trivial_guest_asyncio
 	)
+	local EPYTEST_IGNORE=()
+
+	local args=()
+	if ! has_version "dev-python/trio[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=( tests/test_guest.py )
+		args+=( -k "not trio" )
+	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p anyio
+	epytest -p anyio "${args[@]}"
 }
