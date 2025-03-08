@@ -15,7 +15,7 @@ else
 	COMMIT="098e3768240c7f5a169930a2660a23c9f42b37d6"
 	SRC_URI="https://github.com/csete/gpredict/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 fi
 
 LICENSE="GPL-2"
