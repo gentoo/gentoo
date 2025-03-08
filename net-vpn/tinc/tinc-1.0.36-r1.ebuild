@@ -1,14 +1,13 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # Please keep a version around that matches Debian/Ubuntu for compatibility.
 inherit systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="https://www.tinc-vpn.org/"
-
 SRC_URI="https://www.tinc-vpn.org/packages/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -17,11 +16,14 @@ KEYWORDS="amd64 ~arm ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x
 IUSE="+lzo uml vde +zlib"
 
 DEPEND="
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	lzo? ( dev-libs/lzo:2 )
-	zlib? ( sys-libs/zlib )"
-RDEPEND="${DEPEND}
-	vde? ( net-misc/vde )"
+	zlib? ( sys-libs/zlib )
+"
+RDEPEND="
+	${DEPEND}
+	vde? ( net-misc/vde )
+"
 
 src_configure() {
 	econf \
