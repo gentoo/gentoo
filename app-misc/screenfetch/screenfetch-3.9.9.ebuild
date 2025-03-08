@@ -12,7 +12,7 @@ S=${WORKDIR}/${PN/f/F}-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~loong ~riscv x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~loong ~riscv x86 ~x64-macos"
 
 src_install() {
 	newbin ${PN}-dev ${PN}
