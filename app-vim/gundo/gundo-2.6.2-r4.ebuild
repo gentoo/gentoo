@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/sjl/gundo.vim"
 SRC_URI="https://github.com/sjl/gundo.vim/archive/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
