@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 # leechcorepyc ships with a bundled version of the LeechCore library. So we
 # don't depend on the library here. But we must be aware this module doesn't
