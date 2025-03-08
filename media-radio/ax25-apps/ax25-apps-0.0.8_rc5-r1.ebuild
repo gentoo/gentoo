@@ -20,7 +20,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	>=dev-libs/libax25-0.0.12_rc2
