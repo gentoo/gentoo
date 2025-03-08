@@ -4,12 +4,6 @@ Date: Sat, 30 Aug 2014 21:25:23 +0300
 Subject: [PATCH] build: fix warning of format-security
 
 Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
----
- md6sum.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/md6sum.c b/md6sum.c
-index 2401a5a..0338d30 100644
 --- a/md6sum.c
 +++ b/md6sum.c
 @@ -428,7 +428,7 @@ void optd(char *optstr)
