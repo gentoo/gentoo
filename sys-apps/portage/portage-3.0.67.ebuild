@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
@@ -124,7 +124,7 @@ my_src_configure() {
 		$(meson_use xattr)
 	)
 
-	if use native-extensions && [[ "${EPYTHON}" != "pypy3" ]] ; then
+	if use native-extensions && [[ "${EPYTHON}" != pypy3* ]] ; then
 		emesonargs+=( -Dnative-extensions=true )
 	else
 		emesonargs+=( -Dnative-extensions=false )
