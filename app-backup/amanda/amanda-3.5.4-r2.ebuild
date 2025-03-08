@@ -13,7 +13,7 @@ S="${WORKDIR}/amanda-tag-community-${PV}"
 
 LICENSE="HPND BSD BSD-2 GPL-2+ GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 IUSE="curl gnuplot ipv6 kerberos minimal ndmp nls readline s3 samba selinux systemd xfs"
 
 DEPEND="
