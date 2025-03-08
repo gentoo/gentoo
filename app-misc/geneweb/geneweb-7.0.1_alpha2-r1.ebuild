@@ -49,7 +49,10 @@ BDEPEND="
 	dev-ml/findlib
 	test? ( dev-ml/ounit2 )"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-shuffle.patch
+)
 
 src_prepare() {
 	default
@@ -64,7 +67,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake distrib
+	emake -j1 distrib
 }
 
 src_install() {
