@@ -11,7 +11,7 @@ HOMEPAGE="https://www.jetmore.org/john/code/swaks/
 SRC_URI="https://www.jetmore.org/john/code/swaks/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 
 RDEPEND="
 	virtual/perl-Getopt-Long
