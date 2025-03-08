@@ -12,7 +12,7 @@ SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 
 PATCHES=( "${FILESDIR}"/${P}-init.patch )
 
