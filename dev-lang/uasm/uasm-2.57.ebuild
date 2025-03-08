@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/build-fix.patch"
 	"${FILESDIR}/makefile-dep-fix-2.57.patch"
+	"${FILESDIR}/bool-fix.diff"
 )
 
 src_prepare() {
