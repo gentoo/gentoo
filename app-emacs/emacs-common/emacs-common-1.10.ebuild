@@ -39,7 +39,7 @@ src_install() {
 		local i
 		domenu emacs.desktop emacsclient.desktop
 
-		pushd icons || die
+		pushd icons >/dev/null || die
 		newicon sink.png emacs-sink.png
 		newicon emacs25_48.png emacs.png
 		for i in 16 24 32 48 128; do
@@ -49,7 +49,7 @@ src_install() {
 		done
 		doicon -s scalable emacs23.svg
 		newicon -s scalable emacs25.svg emacs.svg
-		popd
+		popd >/dev/null || die
 
 		if use gsettings; then
 			insinto /usr/share/glib-2.0/schemas
