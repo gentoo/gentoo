@@ -24,8 +24,10 @@ RDEPEND="
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/exceptiongroup-1.2.0[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.5[${PYTHON_USEDEP}]
 	' 3.10)
+	$(python_gen_cond_dep '
+		>=dev-python/typing-extensions-4.5[${PYTHON_USEDEP}]
+	' 3.{10..12})
 "
 # On amd64, let's get more test coverage by dragging in uvloop, but let's
 # not bother on other arches where uvloop may not be supported.
