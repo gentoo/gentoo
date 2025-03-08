@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-# PyPy: https://github.com/davidbrochart/zmq-anyio/issues/22
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -34,6 +33,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/davidbrochart/zmq-anyio/pull/23
+	"${FILESDIR}/${P}-pyzmq-cffi.patch"
+)
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
