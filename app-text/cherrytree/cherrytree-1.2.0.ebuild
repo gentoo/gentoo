@@ -68,9 +68,14 @@ src_configure() {
 		-DUSE_NLS=$(usex nls)
 		-DBUILD_TESTING=$(usex test)
 		-DUSE_SHARED_FMT_SPDLOG=ON
-		-DAUTO_RUN_TESTING=OFF
 		-DUSE_SHARED_GTEST_GMOCK=$(usex test)
 	)
+
+	if use test; then
+		mycmakeargs+=(
+			-DAUTO_RUN_TESTING=OFF
+		)
+	fi
 
 	cmake_src_configure
 }
