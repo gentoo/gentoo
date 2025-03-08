@@ -12,7 +12,7 @@ S="${WORKDIR}/nx-libs-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~x86"
 
 RDEPEND="dev-libs/libxml2
 	media-libs/libjpeg-turbo:*
