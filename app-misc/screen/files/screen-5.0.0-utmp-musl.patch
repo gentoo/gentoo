@@ -1,0 +1,13 @@
+
+Patch from: https://github.com/void-linux/void-packages/commit/0f6da07
+
+--- a/utmp.c
++++ b/utmp.c
+@@ -30,6 +30,7 @@
+ 
+ #include "utmp.h"
+ 
++#include <signal.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>

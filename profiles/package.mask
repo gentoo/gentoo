@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
+# Screen v5.0.0 has a lot of regressions
+# https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
+# Unmask it after it is properly tested & fixed
+=app-misc/screen-5*
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-03-31)
 # Depends on broken dev-java/rxtx, bugs #761103, #867409, #874444, #898170
 # #927898.
