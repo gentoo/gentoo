@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${PN}-VERSION_${PV}"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Signon daemon for libaccounts-glib"
