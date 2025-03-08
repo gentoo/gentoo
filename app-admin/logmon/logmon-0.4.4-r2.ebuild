@@ -13,7 +13,7 @@ S="${WORKDIR}/${PV}/${MY_P}"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
