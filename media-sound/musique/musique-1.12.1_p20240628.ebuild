@@ -40,7 +40,7 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 # MIT for 3rdparty : http singleapplication
 LICENSE="GPL-3 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-qt/qtbase:6[dbus,gui,network,sqlite,widgets]
