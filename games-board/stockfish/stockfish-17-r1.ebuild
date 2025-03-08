@@ -16,7 +16,7 @@ S="${WORKDIR}/Stockfish-sf_${PV}/src"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 IUSE="cpu_flags_arm_v7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse cpu_flags_x86_avx512f"
 IUSE+=" cpu_flags_x86_avx512dq debug general-32 general-64 +optimize"
 
