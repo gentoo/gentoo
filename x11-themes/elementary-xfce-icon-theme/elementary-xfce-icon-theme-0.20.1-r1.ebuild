@@ -28,8 +28,6 @@ BDEPEND="
 src_prepare() {
 	sed -i -e 's:-Werror -O0 -pipe:${CFLAGS} ${CPPFLAGS} ${LDFLAGS}:' \
 		svgtopng/Makefile || die
-	# https://dart.dev/brand ; unclear if we should redistribute that
-	find -name application-vnd.dart.svg -delete || die
 	default
 }
 
