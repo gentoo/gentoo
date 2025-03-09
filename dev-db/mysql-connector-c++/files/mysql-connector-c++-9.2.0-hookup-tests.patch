@@ -1,0 +1,64 @@
+From 8d344b6c4ebb1f0029aecaee9cb0b5522e7db27e Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 8 Mar 2025 00:05:15 +0200
+Subject: [PATCH] Build correctly against shared library gtest
+
+Not upstreamable as is.
+--- a/cdk/cmake/gtest.cmake
++++ b/cdk/cmake/gtest.cmake
+@@ -132,19 +132,8 @@ MESSAGE("gtest location: ${gtest_location}")
+ MESSAGE("gtest_main location: ${gtest_main_location}")
+ 
+ 
+-add_library(gtest STATIC IMPORTED)
+-add_library(gtest_main STATIC IMPORTED)
+-
+-set_target_properties(gtest PROPERTIES
+-  IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
+-  IMPORTED_LOCATION "${gtest_location}"
+-)
+-
+-set_target_properties(gtest_main PROPERTIES
+-  IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
+-  IMPORTED_LINK_INTERFACE_LIBRARIES "gtest"
+-  IMPORTED_LOCATION "${gtest_main_location}"
+-)
++add_library(gtest ALIAS GTest::gtest)
++add_library(gtest_main ALIAS GTest::gtest_main)
+ 
+ #
+ #  Setup configuration-specific locations for Win
+@@ -193,11 +182,5 @@ IF(WIN32)
+ 
+   ENDFOREACH(Config)
+ 
+-ELSE(WIN32)
+-
+-  # On unix gtest depends on pthread library
+-  set_property(TARGET gtest APPEND PROPERTY INTERFACE_LINK_LIBRARIES pthread)
+-  set_property(TARGET gtest APPEND PROPERTY IMPORTED_LINK_INTERFACE_LIBRARIES pthread)
+-
+ ENDIF(WIN32)
+ 
+-- 
+2.48.1
+
+From 1d0f1fbb800517583029b6bc88d285bcb1245111 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 8 Mar 2025 00:06:41 +0200
+Subject: [PATCH] Hook cdk unittests to ctest
+
+--- a/cdk/cmake/testing.cmake
++++ b/cdk/cmake/testing.cmake
+@@ -370,6 +370,8 @@ IF(WITH_TESTS)
+     COMMENT "# Generating test group definitons."
+   )
+ 
++  gtest_discover_tests(${target_run_unit_tests})
++
+ ENDIF()
+ ENDMACRO(ADD_TEST_TARGET)
+ 
+-- 
+2.48.1
+

@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/863188
+
+diff --git a/include/mysqlx/common/value.h b/include/mysqlx/common/value.h
+index 4f1b7a38..c30bbd0a 100644
+--- a/include/mysqlx/common/value.h
++++ b/include/mysqlx/common/value.h
+@@ -39,7 +39,7 @@
+ PUSH_SYS_WARNINGS
+ #include <string>
+ POP_SYS_WARNINGS
+-
++#include <cstdint>
+ 
+ namespace mysqlx {
+ MYSQLX_ABI_BEGIN(2,0)
+
