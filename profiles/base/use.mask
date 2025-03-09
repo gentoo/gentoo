@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2025-03-09)
+# Obsolete in favour of gcc_*. gnat-gpl will be removed soon.
+ada_target_gnat_2021
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # LLVM slots with no keyworded releases yet.
 llvm_slot_21
