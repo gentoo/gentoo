@@ -1,0 +1,196 @@
+From 71f121fe54b16f1e4b3022825dcda3cddc12e6cb Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 9 Mar 2025 12:34:44 +0000
+Subject: [PATCH] Fix building with GCC 15
+
+---
+ libraries/ZWidget/include/zwidget/window/window.h | 1 +
+ src/common/utility/r_memory.h                     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/libraries/ZWidget/include/zwidget/window/window.h b/libraries/ZWidget/include/zwidget/window/window.h
+index 0539f773f..4cdb748d8 100644
+--- a/libraries/ZWidget/include/zwidget/window/window.h
++++ b/libraries/ZWidget/include/zwidget/window/window.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <functional>
+diff --git a/src/common/utility/r_memory.h b/src/common/utility/r_memory.h
+index d9db538ca..41abe0be5 100644
+--- a/src/common/utility/r_memory.h
++++ b/src/common/utility/r_memory.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+-- 
+2.48.1
+
+From 4e0e0db076d661695ae4051c06f4a784757e1db3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ricardo=20Lu=C3=ADs=20Vaz=20Silva?= <ricolvs123@gmail.com>
+Date: Sun, 9 Mar 2025 16:54:41 -0300
+Subject: [PATCH 1/2] remove K&R C function declaration bullshit from lemon.c
+
+should be enough to fix GCC15 compilation without fucking up size_t/etc
+---
+ tools/lemon/lemon.c | 38 +++++++++++++++++++-------------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/tools/lemon/lemon.c b/tools/lemon/lemon.c
+index bdc004a17db..e5fd16905a6 100644
+--- a/tools/lemon/lemon.c
++++ b/tools/lemon/lemon.c
+@@ -53,7 +53,7 @@ extern int access(char *path, int mode);
+ #endif
+ 
+ static int showPrecedenceConflict = 0;
+-static void *msort(void *list, void *next, int (*cmp)());
++static void *msort(void *list, void *next, int (*cmp)(void*, void*));
+ 
+ /*
+ ** Compilers are getting increasingly pedantic about type conversions
+@@ -359,7 +359,7 @@ struct symbol **Symbol_arrayof(void);
+ 
+ /* Routines to manage the state table */
+ 
+-int Configcmp(const char *, const char *);
++int Configcmp(void *, void *);
+ struct state *State_new(void);
+ void State_init(void);
+ int State_insert(struct state *, struct config *);
+@@ -403,10 +403,10 @@ static struct action *Action_new(void){
+ ** positive if the first action is less than, equal to, or greater than
+ ** the first
+ */
+-static int actioncmp(ap1,ap2)
+-struct action *ap1;
+-struct action *ap2;
++static int actioncmp(void *_ap1,void *_ap2)
+ {
++  struct action * ap1 = (struct action *)_ap1;
++  struct action * ap2 = (struct action *)_ap2;
+   int rc;
+   rc = ap1->sp->index - ap2->sp->index;
+   if( rc==0 ){
+@@ -1757,9 +1757,9 @@ int main(int argc, char **argv)
+ **   The "next" pointers for elements in the lists a and b are
+ **   changed.
+ */
+-static void *merge(void *a,void *b,int (*cmp)(),size_t offset)
++static void *merge(void *a,void *b,int (*cmp)(void *a, void *b),size_t offset)
+ {
+-  char *ptr, *head;
++  void *ptr, *head;
+ 
+   if( a==0 ){
+     head = b;
+@@ -1805,11 +1805,11 @@ static void *merge(void *a,void *b,int (*cmp)(),size_t offset)
+ **   The "next" pointers for elements in list are changed.
+ */
+ #define LISTSIZE 30
+-static void *msort(void *list,void *next,int (*cmp)())
++static void *msort(void *list,void *next,int (*cmp)(void*, void*))
+ {
+   size_t offset;
+-  char *ep;
+-  char *set[LISTSIZE];
++  void *ep;
++  void *set[LISTSIZE];
+   int i;
+   offset = (size_t)next - (size_t)list;
+   for(i=0; i<LISTSIZE; i++) set[i] = 0;
+@@ -2714,9 +2714,7 @@ static void preprocess_input(char *z){
+   }
+ }
+ 
+-int strip_crlf(filebuf, filesize)
+-char *filebuf;
+-int filesize;
++int strip_crlf(char *filebuf, int filesize)
+ {
+ 	int i, j;
+ 
+@@ -5136,10 +5134,10 @@ struct symbol **Symbol_arrayof()
+ }
+ 
+ /* Compare two configurations */
+-int Configcmp(const char *_a,const char *_b)
++int Configcmp(void *_a,void *_b)
+ {
+-  const struct config *a = (struct config *) _a;
+-  const struct config *b = (struct config *) _b;
++  const struct config *a = (const struct config *) _a;
++  const struct config *b = (const struct config *) _b;
+   int x;
+   x = a->rp->index - b->rp->index;
+   if( x==0 ) x = a->dot - b->dot;
+@@ -5147,8 +5145,10 @@ int Configcmp(const char *_a,const char *_b)
+ }
+ 
+ /* Compare two states */
+-PRIVATE int statecmp(struct config *a, struct config *b)
++PRIVATE int statecmp(void *_a, void *_b)
+ {
++  const struct config *a = (const struct config *) _a;
++  const struct config *b = (const struct config *) _b;
+   int rc;
+   for(rc=0; rc==0 && a && b;  a=a->bp, b=b->bp){
+     rc = a->rp->index - b->rp->index;
+@@ -5377,7 +5377,7 @@ int Configtable_insert(struct config *data)
+   h = ph & (x4a->size-1);
+   np = x4a->ht[h];
+   while( np ){
+-    if( Configcmp((const char *) np->data,(const char *) data)==0 ){
++    if( Configcmp(np->data, data)==0 ){
+       /* An existing entry with the same key is found. */
+       /* Fail because overwrite is not allows. */
+       return 0;
+@@ -5430,7 +5430,7 @@ struct config *Configtable_find(struct config *key)
+   h = confighash(key) & (x4a->size-1);
+   np = x4a->ht[h];
+   while( np ){
+-    if( Configcmp((const char *) np->data,(const char *) key)==0 ) break;
++    if( Configcmp(np->data,key)==0 ) break;
+     np = np->next;
+   }
+   return np ? np->data : 0;
+
+From c9d21a11be721e69b9180b97b203b1fa25324c59 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ricardo=20Lu=C3=ADs=20Vaz=20Silva?= <ricolvs123@gmail.com>
+Date: Sun, 9 Mar 2025 16:57:28 -0300
+Subject: [PATCH 2/2] fix non-void forward declarations as well
+
+---
+ tools/lemon/lemon.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tools/lemon/lemon.c b/tools/lemon/lemon.c
+index e5fd16905a6..45f458d726f 100644
+--- a/tools/lemon/lemon.c
++++ b/tools/lemon/lemon.c
+@@ -72,12 +72,12 @@ static struct action *Action_new(void);
+ static struct action *Action_sort(struct action *);
+ 
+ /********** From the file "build.h" ************************************/
+-void FindRulePrecedences();
+-void FindFirstSets();
+-void FindStates();
+-void FindLinks();
+-void FindFollowSets();
+-void FindActions();
++void FindRulePrecedences(struct lemon *xp);
++void FindFirstSets(struct lemon *lemp);
++void FindStates(struct lemon *lemp);
++void FindLinks(struct lemon *lemp);
++void FindFollowSets(struct lemon *lemp);
++void FindActions(struct lemon *lemp);
+ 
+ /********* From the file "configlist.h" *********************************/
+ void Configlist_init(void);
