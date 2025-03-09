@@ -102,6 +102,10 @@ src_configure() {
 	# performance, GPU does the actual work)
 	filter-lto
 
+	# -mavx and mingw-gcc do not mix safely here
+	# https://github.com/doitsujin/dxvk/issues/4746#issuecomment-2708869202
+	append-flags -mno-avx
+
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP

@@ -102,10 +102,8 @@ src_configure() {
 	# performance, GPU does the actual work)
 	filter-lto
 
-	# -mavx with mingw-gcc has a history of obscure issues and
-	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
-	# crashes with -march=skylake >=wine-8.10, similar issues with
-	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+	# -mavx and mingw-gcc do not mix safely here
+	# https://github.com/doitsujin/dxvk/issues/4746#issuecomment-2708869202
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then
