@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thibaud CANALE <thican@thican.net> (2025-03-09)
+# Google DNS dependencies available (bug 949851)
+app-crypt/certbot -certbot-dns-google
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
 # QtWebView is available here
 dev-python/pyside -webview
