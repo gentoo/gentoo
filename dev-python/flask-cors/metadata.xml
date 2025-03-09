@@ -15,7 +15,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">Flask-Cors</remote-id>
+    <remote-id type="pypi">flask-cors</remote-id>
     <remote-id type="github">corydolphin/flask-cors</remote-id>
   </upstream>
 </pkgmetadata>
