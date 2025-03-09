@@ -1,0 +1,29 @@
+https://gitlab.xiph.org/xiph/vorbis/-/commit/4e1155cc77a2c672f3dd18f9a32dbf1404693289
+
+From 4e1155cc77a2c672f3dd18f9a32dbf1404693289 Mon Sep 17 00:00:00 2001
+From: Robert Kausch <robert.kausch@freac.org>
+Date: Sat, 20 Feb 2021 16:22:02 +0100
+Subject: [PATCH] Fix tests run with make check when using alternative
+ allocators.
+
+The call to free in line 584 of sharedbook.c mismatches
+the _ogg_calloc call used to allocated that data in line 216.
+
+This causes make check to fail when alternative allocators
+are used, e.g. the xmm_malloc family of allocators used with
+the Lancer optimizations.
+
+Signed-off-by: Ralph Giles <giles@thaumas.net>
+--- a/lib/sharedbook.c
++++ b/lib/sharedbook.c
+@@ -581,7 +581,7 @@ void run_test(static_codebook *b,float *comp){
+       exit(1);
+     }
+   }
+-  free(out);
++  _ogg_free(out);
+ }
+ 
+ int main(){
+-- 
+GitLab
