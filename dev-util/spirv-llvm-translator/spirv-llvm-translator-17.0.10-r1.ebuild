@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 15 )
+LLVM_COMPAT=( 17 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic llvm-r2
+inherit cmake flag-o-matic llvm-r2 multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	llvm-core/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
-	dev-util/spirv-headers
+	>=dev-util/spirv-headers-1.4.304.0-r1
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -56,5 +56,5 @@ src_configure() {
 }
 
 src_test() {
-	lit "${BUILD_DIR}/test" || die
+	lit -vv "-j${LIT_JOBS:-$(makeopts_jobs)}" "${BUILD_DIR}/test" || die
 }
