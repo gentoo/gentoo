@@ -11,6 +11,7 @@
 		afterwards in high quality in a number of vector and bitmap formats.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">molsketch</remote-id>
+		<remote-id type="sourceforge">molsketch</remote-id><!-- old -->
+		<remote-id type="github">hvennekate/Molsketch</remote-id>
 	</upstream>
 </pkgmetadata>
