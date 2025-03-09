@@ -51,7 +51,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-shuffle.patch
+	"${FILESDIR}"/${P}-nogwrepl.patch
 )
 
 src_prepare() {
