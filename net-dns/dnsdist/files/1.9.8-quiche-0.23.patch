@@ -1,0 +1,52 @@
+
+Manual backport of upstream commit:
+https://github.com/PowerDNS/pdns/commit/661b071b347193a66deaa0d5b8350a2c816f6534
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+diff -up dnsdist-1.9.8/doh3.cc.orig dnsdist-1.9.8/doh3.cc 
+--- dnsdist-1.9.8/doh3.cc.orig	2024-12-17 10:14:37.000000000 +0100
++++ dnsdist-1.9.8/doh3.cc	2025-02-18 10:04:11.843950262 +0100
+@@ -751,7 +751,11 @@ static void processH3HeaderEvent(ClientS
+   }
+ 
+   if (headers.at(":method") == "POST") {
++#if defined(HAVE_QUICHE_H3_EVENT_HEADERS_HAS_MORE_FRAMES)
++    if (!quiche_h3_event_headers_has_more_frames(event)) {
++#else
+     if (!quiche_h3_event_headers_has_body(event)) {
++#endif
+       handleImmediateError("Empty POST query");
+     }
+     return;
+diff -up dnsdist-1.9.8/m4/pdns_with_quiche.m4.orig dnsdist-1.9.8/m4/pdns_with_quiche.m4 
+--- dnsdist-1.9.8/m4/pdns_with_quiche.m4.orig	2024-12-17 10:14:37.000000000 +0100
++++ dnsdist-1.9.8/m4/pdns_with_quiche.m4	2025-02-18 10:04:11.844114375 +0100
+@@ -10,16 +10,23 @@ AC_DEFUN([PDNS_WITH_QUICHE], [
+ 
+   AS_IF([test "x$with_quiche" != "xno"], [
+     AS_IF([test "x$with_quiche" = "xyes" -o "x$with_quiche" = "xauto"], [
+-      PKG_CHECK_MODULES([QUICHE], [quiche >= 0.22.0], [
++      PKG_CHECK_MODULES([QUICHE], [quiche >= 0.23.0], [
+         [HAVE_QUICHE=1]
+         AC_DEFINE([HAVE_QUICHE], [1], [Define to 1 if you have quiche])
++        AC_DEFINE([HAVE_QUICHE_H3_EVENT_HEADERS_HAS_MORE_FRAMES], [1], [Define to 1 if the Quiche API has quiche_h3_event_headers_has_more_frames instead of quiche_h3_event_headers_has_body])
+         AC_DEFINE([HAVE_QUICHE_STREAM_ERROR_CODES], [1], [Define to 1 if the Quiche API includes error code in quiche_conn_stream_recv and quiche_conn_stream_send])
+       ], [
+-        # Quiche is older than 0.22.0, or no Quiche at all
+-        PKG_CHECK_MODULES([QUICHE], [quiche >= 0.15.0], [
++        PKG_CHECK_MODULES([QUICHE], [quiche >= 0.22.0], [
+           [HAVE_QUICHE=1]
+           AC_DEFINE([HAVE_QUICHE], [1], [Define to 1 if you have quiche])
+-        ], [ : ])
++          AC_DEFINE([HAVE_QUICHE_STREAM_ERROR_CODES], [1], [Define to 1 if the Quiche API includes error code in quiche_conn_stream_recv and quiche_conn_stream_send])
++        ], [
++          # Quiche is older than 0.22.0, or no Quiche at all
++          PKG_CHECK_MODULES([QUICHE], [quiche >= 0.15.0], [
++            [HAVE_QUICHE=1]
++            AC_DEFINE([HAVE_QUICHE], [1], [Define to 1 if you have quiche])
++          ], [ : ])
++        ])
+       ])
+     ])
+   ])
