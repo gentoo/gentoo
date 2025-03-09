@@ -96,7 +96,7 @@ src_compile() {
 	[[ ${soabi} == ${SLOT#*/} ]] || die "update subslot to ${soabi}"
 
 	# Add epython.py to the distribution
-	echo 'EPYTHON="pypy3"' > lib-python/3/epython.py || die
+	echo "EPYTHON=\"pypy${PYVER}\"" > lib-python/3/epython.py || die
 
 	einfo "Generating caches and CFFI modules ..."
 
@@ -230,7 +230,7 @@ src_install() {
 		dosym pypy${PYVER} /usr/bin/pypy3
 
 		# install symlinks for python-exec
-		local EPYTHON=pypy3
+		local EPYTHON=pypy${PYVER}
 		local scriptdir=${D}$(python_get_scriptdir)
 		mkdir -p "${scriptdir}" || die
 		ln -s "../../../bin/pypy3" "${scriptdir}/python3" || die
