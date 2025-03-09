@@ -1,0 +1,24 @@
+https://github.com/supertuxkart/stk-code/issues/5301
+https://bugs.gentoo.org/937731
+
+From 83e029cc123176a77a239edf90ee461e46f9f8a2 Mon Sep 17 00:00:00 2001
+From: Gwyn Ciesla <gwync@protonmail.com>
+Date: Wed, 19 Feb 2025 09:34:58 -0600
+Subject: [PATCH] Add include to work with gcc15. (#5310)
+
+---
+ src/network/remote_kart_info.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/network/remote_kart_info.hpp b/src/network/remote_kart_info.hpp
+index 80a6339187c..9865dcda8c3 100644
+--- a/src/network/remote_kart_info.hpp
++++ b/src/network/remote_kart_info.hpp
+@@ -29,6 +29,7 @@
+ #include <string>
+ #include <vector>
+ #include <irrString.h>
++#include <cstdint>
+ 
+ enum KartTeam : int8_t
+ {
