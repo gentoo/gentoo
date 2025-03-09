@@ -24,6 +24,7 @@ src_configure() {
 	use debug || append-cppflags -DFAUDIO_DISABLE_DEBUGCONFIGURATION
 
 	local mycmakeargs=(
+		-DBUILD_SDL3="OFF"
 		-DBUILD_TESTS=$(usex test)
 		-DDUMP_VOICES=$(usex dumpvoices)
 	)
