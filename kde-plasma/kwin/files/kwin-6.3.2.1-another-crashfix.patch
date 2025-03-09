@@ -1,0 +1,34 @@
+https://bugs.kde.org/show_bug.cgi?id=501181
+
+(This is a minimal backport of https://invent.kde.org/plasma/kwin/-/commit/e652bdd3118fa55563caf0125deb0999f5ebd503,
+but given the next release is on Tuesday, let's just go with the thing that
+is confirmed to work.)
+
+From d63e308604d6b45f5c572acd4f299e2c5cfbab44 Mon Sep 17 00:00:00 2001
+From: Mike Lothian <mike@fireburn.co.uk>
+Date: Fri, 7 Mar 2025 15:24:00 +0000
+Subject: [PATCH] Quick fix
+
+---
+ src/backends/drm/drm_gpu.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/backends/drm/drm_gpu.cpp b/src/backends/drm/drm_gpu.cpp
+index 4599b3d..a47f5ce 100644
+--- a/src/backends/drm/drm_gpu.cpp
++++ b/src/backends/drm/drm_gpu.cpp
+@@ -443,6 +443,10 @@ DrmPipeline::Error DrmGpu::testPendingConfiguration()
+ 
+ DrmPipeline::Error DrmGpu::testPipelines()
+ {
++    if (m_pipelines.isEmpty()) {
++        // nothing to do
++        return DrmPipeline::Error::None;
++    }
+     QList<DrmPipeline *> inactivePipelines;
+     std::copy_if(m_pipelines.constBegin(), m_pipelines.constEnd(), std::back_inserter(inactivePipelines), [](const auto pipeline) {
+         return pipeline->enabled() && !pipeline->active();
+-- 
+2.48.1
+
+
