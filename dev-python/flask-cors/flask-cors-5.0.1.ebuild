@@ -22,7 +22,7 @@ fi
 DESCRIPTION="A Flask extension for Cross Origin Resource Sharing (CORS)"
 HOMEPAGE="
 	https://github.com/corydolphin/flask-cors/
-	https://pypi.org/project/Flask-Cors/
+	https://pypi.org/project/flask-cors/
 "
 
 LICENSE="MIT"
