@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="lirc"
 
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -33,9 +33,7 @@ RDEPEND="
 	x11-libs/libSM:=
 	lirc? ( app-misc/lirc:= )
 "
-DEPEND="${RDEPEND}
-	dev-qt/qttest:5
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-24.06-includes.patch"
