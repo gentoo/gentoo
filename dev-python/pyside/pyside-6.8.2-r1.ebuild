@@ -8,7 +8,7 @@ LLVM_COMPAT=( {16..19} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
-inherit distutils-r1 llvm-r1 qmake-utils virtualx
+inherit distutils-r1 llvm-r1 multiprocessing qmake-utils virtualx
 
 MY_PN=pyside-pyside-setup
 MY_P=${MY_PN}-${PV}
@@ -330,6 +330,7 @@ python_configure_all() {
 		--qt=$(ver_cut 1-3)
 		--qtpaths=$(qt6_get_bindir)/qtpaths
 		--verbose-build
+		--parallel=$(makeopts_jobs)
 		$(usex debug "--debug" "--relwithdebinfo")
 		$(usex doc "--build-docs" "--skip-docs")
 		$(usex numpy "--enable-numpy-support" "--disable-numpy-support")
