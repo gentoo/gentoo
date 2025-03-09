@@ -21,6 +21,11 @@ HOMEPAGE="https://registry.khronos.org/SPIR-V/ https://github.com/KhronosGroup/S
 LICENSE="MIT"
 SLOT="0"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.4.304.0-add-spv_intel_2d_block_io-header.patch"
+	"${FILESDIR}/${PN}-1.4.304.0-add-subgroupmatrixmultiplyaccumulateintel-header.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DSPIRV_HEADERS_ENABLE_TESTS=OFF
