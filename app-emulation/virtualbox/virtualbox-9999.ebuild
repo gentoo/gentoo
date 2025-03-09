@@ -25,7 +25,7 @@ EAPI=8
 #  See bug #785835, bug #856121.
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature pax-utils \
+inherit desktop dkms edo flag-o-matic java-pkg-opt-2 multilib optfeature pax-utils \
 	python-single-r1 subversion tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
@@ -504,12 +504,16 @@ src_compile() {
 	MAKE="kmk" emake "${myemakeargs[@]}" all
 
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc:"out/linux.${ARCH}/release/bin/src" )
-	local modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
-	linux-mod-r1_src_compile
+	if use dkms; then
+		modargs=( KERN_DIR=\$kernel_source_dir KERN_VER=\$kernelver )
+	else
+		modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
+	fi
+	dkms_src_compile --no-kernelrelease
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 	insinto /usr/lib/modules-load.d/
 	newins - virtualbox.conf <<-EOF
 		vboxdrv
@@ -738,7 +742,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	xdg_pkg_postinst
 

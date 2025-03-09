@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo linux-mod-r1 readme.gentoo-r1 systemd toolchain-funcs udev
+inherit dkms edo readme.gentoo-r1 systemd toolchain-funcs udev
 
 MY_PN="VirtualBox"
 MY_PV=${PV^^}
@@ -199,14 +199,18 @@ src_compile() {
 	# we compiled the user-space tools as we need two of the
 	# automatically generated header files. (>=3.2.0)
 	# Move this here for bug 836037
-	local modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
-	local modlist=( vboxguest vboxsf )
+	local modargs modlist=( vboxguest vboxsf )
 	modlist=( "${modlist[@]/%/=misc:${VBOX_MOD_SRC_DIR}}" )
-	linux-mod-r1_src_compile
+	if use dkms; then
+		modargs=( KERN_DIR=\$kernel_source_dir KERN_VER=\$kernelver )
+	else
+		modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
+	fi
+	dkms_src_compile --no-kernelrelease
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	insinto /etc/modprobe.d # 485996
 	newins - vboxsf.conf <<-EOF
@@ -270,7 +274,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 
 	if ! use gui ; then

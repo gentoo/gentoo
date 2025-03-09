@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -36,6 +36,8 @@ pkg_setup() {
 src_prepare() {
 	# Fix build failure, bug #513542 and bug #761370
 	sed "s%^KDIR :=.*%KDIR := ${KV_OUT_DIR:-$KERNEL_DIR}%g" -i Makefile || die
+	sed "s/#MODULE_VERSION#/${PV}/" -i dkms/dkms.conf || die
+	mv dkms/dkms.conf dkms.conf || die
 
 	default
 }
@@ -45,13 +47,11 @@ src_compile() {
 	local modargs=(
 		KVERSION=${KV_FULL}
 	)
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	einstalldocs
-
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf
-	linux-mod-r1_src_install
+	dkms_src_install
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1 toolchain-funcs
+inherit dkms toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
 HOMEPAGE="
@@ -93,12 +93,12 @@ src_configure() {
 
 src_compile() {
 	local modlist=( ipt_NETFLOW=ipt_netflow )
-	linux-mod-r1_src_compile
+	dkms_src_compile
 	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" LD="$(tc-getLD)" OBJDUMP="$(tc-getOBJDUMP)" all
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	use snmp && emake DESTDIR="${D}" SNMPTGSO="/usr/$(get_libdir)/snmp/dlmod/snmp_NETFLOW.so" sinstall
 

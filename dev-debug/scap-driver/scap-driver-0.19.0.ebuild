@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake linux-mod-r1
+inherit cmake dkms
 
 DESCRIPTION="Kernel module for dev-debug/sysdig"
 HOMEPAGE="https://sysdig.com/"
@@ -36,5 +36,13 @@ src_compile() {
 	local modlist=( scap=:"${BUILD_DIR}"/driver/src )
 	local modargs=( KERNELDIR="${KV_OUT_DIR}" )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
+}
+
+src_install() {
+	if use dkms; then
+		dkms_dopackage "${BUILD_DIR}"/driver/src
+	else
+		linux-mod-r1_src_install
+	fi
 }
