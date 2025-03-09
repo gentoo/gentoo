@@ -34,13 +34,12 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="openrc systemd"
+IUSE="systemd"
 
 DEPEND="
 	virtual/libelf:=
 	sys-libs/zlib:=
 	>=dev-libs/libbpf-1.5:=
-	openrc? ( sys-apps/openrc )
 "
 RDEPEND="
 	${DEPEND}
@@ -95,7 +94,7 @@ src_configure() {
 		-Doffline=true
 		-Denable_rust=true
 		-Dlibalpm=disabled
-		$(meson_feature openrc)
+		-Dopenrc=disabled
 		$(meson_feature systemd)
 	)
 
@@ -123,4 +122,9 @@ src_install() {
 		readme_name="${readme_name%/README.md}"
 		newdoc "${readme}" "${readme_name}.md"
 	done
+
+	newinitd services/openrc/scx.initrd scx
+	insinto /etc/default
+	doins services/scx
+	dosym ../default/scx /etc/conf.d/scx
 }
