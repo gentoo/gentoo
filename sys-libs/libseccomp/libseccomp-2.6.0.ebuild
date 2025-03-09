@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
+	"${FILESDIR}"/${P}-drop-bogus-test.patch
 )
 
 src_prepare() {
