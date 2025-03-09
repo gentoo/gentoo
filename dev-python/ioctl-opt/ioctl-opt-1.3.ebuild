@@ -17,3 +17,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
+
+python_test() {
+	"${EPYTHON}" ioctl_opt/__init__.py || die
+}
