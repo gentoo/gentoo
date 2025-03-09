@@ -391,11 +391,6 @@ src_test() {
 	einfo "Official test instructions:"
 	einfo "ulimit -n 16500 && USE='perl server' FEATURES='test userpriv' ebuild ..."
 
-	if ! use server ; then
-		ewarn "Skipping server tests due to minimal build!"
-		return 0
-	fi
-
 	# Ensure that parallel runs don't die
 	local -x MTR_BUILD_THREAD="$((${RANDOM} % 100))"
 
@@ -429,7 +424,7 @@ src_test() {
 		"${FILESDIR}"/my.cnf-8.0.distro-client \
 		"${FILESDIR}"/my.cnf-8.0.distro-server \
 			> "${T}"/my.cnf || die
-	local -X PATH_CONFIG_FILE="${T}/my.cnf"
+	local -x PATH_CONFIG_FILE="${T}/my.cnf"
 
 	# Create directories because mysqladmin might run out of order
 	mkdir -p "${T}"/var-tests{,/log} || die
@@ -512,7 +507,7 @@ src_test() {
 
 	if use debug; then
 		disabled_tests+=(
-			"innodb.dblwr_unencrypt;0;Known test failure -- no upstream bug yet"
+			"innodb.dblwr_unencrypt;0;Unstable test"
 		)
 	fi
 
@@ -588,7 +583,10 @@ src_test() {
 		--force --force-restart \
 		--vardir="${VARDIR}" --tmpdir="${T}/tmp-tests" \
 		--skip-test=tokudb --skip-test-list="${T}/disabled.def" \
-		--retry-failure=2 --max-test-fail=0
+		--max-test-fail=0 \
+		--retry=3 --retry-failure=2 \
+		--report-unstable-tests \
+		--report-features
 	retstatus_tests=$?
 
 	if [[ "${VARDIR}" != "${T}/var-tests" ]]; then
@@ -598,19 +596,22 @@ src_test() {
 		rm -rf "${VARDIR}" 2>/dev/null
 	fi
 
+	if [[ "${retstatus_tests}" -ne 0 ]]; then
+		eerror "Tests failed. When you file a bug, please attach the following items:"
+		eerror "The file that is created with this command:"
+		eerror "\t'find ${T}/var-tests -name '*.log' | tar -caf mysql-test-logs.tar.xz --files-from -'"
+	fi
+
 	popd &>/dev/null || die
 
 	# Cleanup is important for these testcases.
 	pkill -9 -f "${S}/ndb" 2>/dev/null
 	pkill -9 -f "${S}/sql" 2>/dev/null
 
-	local failures=""
-	[[ ${retstatus_tests} -eq 0 ]] || failures="${failures} tests"
-
 	# bug #823656
 	cmake_src_test --test-command "--gtest_death_test_style=threadsafe"
 
-	[[ -z "${failures}" ]] || die "Test failures: ${failures}"
+	[[ "${retstatus_tests}" -ne 0 ]] && die "Test failures: mysql-test-run.pl"
 	einfo "Tests successfully completed"
 }
 
