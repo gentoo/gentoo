@@ -5,9 +5,6 @@ EAPI=8
 
 LLVM_COMPAT=( {16..19} )
 
-# List of crates for pycargoebuild:
-# rust/scx_{loader,rustland_core,stats,utils}
-# scheds/rust/scx_{bpfland,lavd,layered,rlfifo,rustland,rusty}
 CRATES="
 "
 
