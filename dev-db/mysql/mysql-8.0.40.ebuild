@@ -399,7 +399,17 @@ src_test() {
 	# Ensure that parallel runs don't die
 	local -x MTR_BUILD_THREAD="$((${RANDOM} % 100))"
 
-	local -x MTR_PARALLEL=${MTR_PARALLEL:-$(makeopts_jobs)}
+	# Use a tmpfs opportunistically, otherwise set MTR_PARALLEL to 1.
+	# MySQL tests are I/O heavy. They benefit greatly from a tmpfs, parallel tests without a tmpfs are flaky due to timeouts.
+	if mountpoint -q /dev/shm ; then
+		local VARDIR="/dev/shm/mysql-var-${MTR_BUILD_THREAD}"
+		local -x MTR_PARALLEL=${MTR_PARALLEL:-$(makeopts_jobs)}
+	else
+		ewarn "/dev/shm not mounted, setting default MTR_PARALLEL to 1. Tests will take a long time"
+		local VARDIR="${T}/vardir"
+		# Set it to one while allowing users to override it.
+		local -x MTR_PARALLEL=${MTR_PARALLEL:-1}
+	fi
 	einfo "MTR_PARALLEL is set to '${MTR_PARALLEL}'"
 
 	# Disable unit tests, run them separately with eclass defaults
@@ -576,10 +586,17 @@ src_test() {
 	# Anything touching gtid_executed is negatively affected if you have unlucky ordering
 	nonfatal edo perl mysql-test-run.pl \
 		--force --force-restart \
-		--vardir="${T}/var-tests" --tmpdir="${T}/tmp-tests" \
+		--vardir="${VARDIR}" --tmpdir="${T}/tmp-tests" \
 		--skip-test=tokudb --skip-test-list="${T}/disabled.def" \
 		--retry-failure=2 --max-test-fail=0
 	retstatus_tests=$?
+
+	if [[ "${VARDIR}" != "${T}/var-tests" ]]; then
+		# Move vardir to tempdir.
+		mv "${VARDIR}" "${T}/var-tests"
+		# Clean up mysql temporary directory
+		rm -rf "${VARDIR}" 2>/dev/null
+	fi
 
 	popd &>/dev/null || die
 
