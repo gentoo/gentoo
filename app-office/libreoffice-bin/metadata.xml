@@ -13,4 +13,7 @@
 		Libreoffice. Use this if you don't want to wait for the source version
 		to build.
 	</longdescription>
+	<use>
+		<flag name="offlinehelp">Install help files locally instead of using the LibreOffice Wiki</flag>
+	</use>
 </pkgmetadata>
