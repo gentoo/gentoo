@@ -1,0 +1,14 @@
+We install zen_workaround.py as rr-zen_workaround.py.
+--- a/scripts/zen_workaround.service
++++ b/scripts/zen_workaround.service
+@@ -15,8 +15,8 @@
+ Description           = Startup script for rr zen workaround
+ 
+ [Service]
+-# Step to actually run `zen_workaround.py`.
+-ExecStart             =+/usr/share/zen_workaround/zen_workaround.py
++# Step to actually run `rr-zen_workaround.py`.
++ExecStart             =+rr-zen_workaround.py
+ 
+ # Only run this once, report it as "(active)" even after we've exited.
+ Type                  = oneshot
