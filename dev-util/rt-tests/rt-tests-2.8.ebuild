@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit python-single-r1 toolchain-funcs
+inherit python-single-r1 toolchain-funcs flag-o-matic
 
 DESCRIPTION="A collection of latency testing tools for the linux(-rt) kernel"
 HOMEPAGE="https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/"
@@ -32,6 +32,7 @@ src_prepare() {
 }
 
 src_compile() {
+	append-lfs-flags
 	emake CC="$(tc-getCC)" AR="$(tc-getAR)"
 }
 
