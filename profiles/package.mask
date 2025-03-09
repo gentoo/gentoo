@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-03-09)
+# Breaks distutils.ccompiler with a lot of fallout. bug #950978 and
+# many others.
+=dev-python/setuptools-75.9.0
+=dev-python/setuptools-75.9.1
+=dev-python/setuptools-76.0.0
+=dev-python/ensurepip-setuptools-75.9.0
+=dev-python/ensurepip-setuptools-75.9.1
+=dev-python/ensurepip-setuptools-76.0.0
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-08)
 # EAPI=7. Broken CLI for packages.g.o.
 # Removal on 2025-04-07.
