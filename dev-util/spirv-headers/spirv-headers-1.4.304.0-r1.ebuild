@@ -10,7 +10,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~conikost/distfiles/${P}-new-intel-headers.tar.xz
+	"
 	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}
 fi
@@ -21,10 +24,11 @@ HOMEPAGE="https://registry.khronos.org/SPIR-V/ https://github.com/KhronosGroup/S
 LICENSE="MIT"
 SLOT="0"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.4.304.0-add-spv_intel_2d_block_io-header.patch"
-	"${FILESDIR}/${PN}-1.4.304.0-add-subgroupmatrixmultiplyaccumulateintel-header.patch"
-)
+src_prepare() {
+	cmake_src_prepare
+	eapply "${WORKDIR}/${PN}-1.4.304.0-add-spv_intel_2d_block_io-header.patch"
+	eapply "${WORKDIR}/${PN}-1.4.304.0-add-subgroupmatrixmultiplyaccumulateintel-header.patch"
+}
 
 src_configure() {
 	local mycmakeargs=(
