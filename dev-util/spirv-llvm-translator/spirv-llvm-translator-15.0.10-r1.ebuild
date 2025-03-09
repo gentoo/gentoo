@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 16 )
+LLVM_COMPAT=( 15 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic llvm-r2 multiprocessing
+inherit cmake flag-o-matic llvm-r2
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -25,7 +25,7 @@ RDEPEND="
 	llvm-core/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
-	dev-util/spirv-headers
+	>=dev-util/spirv-headers-1.4.304.0-r1
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -34,10 +34,6 @@ BDEPEND="
 		llvm-core/clang:${SLOT}
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-16.0.0-ld_library_path.patch"
-)
 
 src_prepare() {
 	append-flags -fPIC
@@ -60,5 +56,5 @@ src_configure() {
 }
 
 src_test() {
-	lit -vv "-j${LIT_JOBS:-$(makeopts_jobs)}" "${BUILD_DIR}/test" || die
+	lit "${BUILD_DIR}/test" || die
 }

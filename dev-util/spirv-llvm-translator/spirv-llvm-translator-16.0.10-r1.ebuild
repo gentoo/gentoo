@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 17 )
+LLVM_COMPAT=( 16 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	llvm-core/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
-	>=dev-util/spirv-headers-1.3.275
+	>=dev-util/spirv-headers-1.4.304.0-r1
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -34,6 +34,10 @@ BDEPEND="
 		llvm-core/clang:${SLOT}
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-16.0.0-ld_library_path.patch"
+)
 
 src_prepare() {
 	append-flags -fPIC
