@@ -1,0 +1,35 @@
+https://gitlab.xiph.org/xiph/vorbis/-/commit/315da9cc9d30484c802b2e2ea150df39e060e2b9
+
+From 315da9cc9d30484c802b2e2ea150df39e060e2b9 Mon Sep 17 00:00:00 2001
+From: "Timothy B. Terriberry" <tterribe@xiph.org>
+Date: Wed, 5 Feb 2025 08:11:19 -0800
+Subject: [PATCH] Fix the half-octave bounds check in _vp_psy_init
+
+The existing code ensured that halfoc would not exceed P_BANDS-1,
+ but the interpolation used index P_BANDS (albeit with a weight
+ of 0) when this bound was actually hit.
+Add an extra clamp on the integer index to avoid this.
+Thanks to Paul Adenot for the report.
+
+Fixes #2353
+---
+ lib/psy.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/psy.c b/lib/psy.c
+index 036b094a..96213c42 100644
+--- a/lib/psy.c
++++ b/lib/psy.c
+@@ -339,6 +339,10 @@ void _vp_psy_init(vorbis_look_psy *p,vorbis_info_psy *vi,
+     if(halfoc<0)halfoc=0;
+     if(halfoc>=P_BANDS-1)halfoc=P_BANDS-1;
+     inthalfoc=(int)halfoc;
++    /*If we hit the P_BANDS-1 clamp above, inthalfoc+1 will be out of bounds,
++       even though it will have an interpolation weight of 0.
++      Shift the interval so we don't read past the end of the array.*/
++    if(inthalfoc>=P_BANDS-2)inthalfoc=P_BANDS-2;
+     del=halfoc-inthalfoc;
+ 
+     for(j=0;j<P_NOISECURVES;j++)
+-- 
+GitLab
