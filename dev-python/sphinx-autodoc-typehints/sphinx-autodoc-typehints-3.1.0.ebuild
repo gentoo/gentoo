@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/sphinx-8.2.0[${PYTHON_USEDEP}]
