@@ -1,0 +1,33 @@
+--- a/src/termprops.hh	2025-01-27 03:23:54.694386459 +0100
++++ b/src/termprops.hh	2025-01-27 03:26:24.903666735 +0100
+@@ -34,6 +34,8 @@
+ #include <variant>
+ #include <version>
+ 
++#include <fast_float/fast_float.h>
++
+ namespace vte::terminal {
+ 
+ using namespace std::literals::string_literals;
+@@ -355,7 +357,7 @@
+ parse_termprop_integral(std::string_view const& str) noexcept
+ {
+         auto v = T{};
+-        if (auto [ptr, err] = std::from_chars(std::begin(str),
++        if (auto [ptr, err] = fast_float::from_chars(std::begin(str),
+                                               std::end(str),
+                                               v);
+             err == std::errc() && ptr == std::end(str)) {
+@@ -389,10 +391,9 @@
+ parse_termprop_floating(std::string_view const& str) noexcept
+ {
+         auto v = T{};
+-        if (auto [ptr, err] = std::from_chars(std::begin(str),
++        if (auto [ptr, err] = fast_float::from_chars(std::begin(str),
+                                               std::end(str),
+-                                              v,
+-                                              std::chars_format::general);
++                                              v);
+             err == std::errc() &&
+             ptr == std::end(str) &&
+             std::isfinite(v)) {
