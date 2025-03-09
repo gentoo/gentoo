@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2025-03-09)
+# Too many dependencies are not keyworded (bug 949851)
+# - dev-python/google-api-python-client
+# - dev-python/google-auth
+app-crypt/certbot certbot-dns-google
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
 # QtWebView is not available everywhere
 dev-python/pyside webview
