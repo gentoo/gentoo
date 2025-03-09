@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+		<description>soc USE flag</description>
+	</maintainer>
+	<use>
+		<flag name="amf">Enable AMD's Advanced Media Framework support via <pkg>media-video/amdgpu-pro-amf</pkg></flag>
+		<flag name="amr">Enable Adaptive Multi-Rate Audio support via <pkg>media-libs/opencore-amr</pkg></flag>
+		<flag name="amrenc">Enable Adaptive Multi-Rate Audio encoding support via <pkg>media-libs/vo-amrwbenc</pkg></flag>
+		<flag name="appkit">Enable Apple AppKit framework</flag>
+		<flag name="bluray">Enable Blu-ray filesystems reading support via <pkg>media-libs/libbluray</pkg></flag>
+		<flag name="bs2b">Enable Bauer Stereo-to-Binaural filter support via <pkg>media-libs/libbs2b</pkg></flag>
+		<flag name="cdio">Enable audio CDs reading via <pkg>dev-libs/libcdio-paranoia</pkg></flag>
+		<flag name="chromaprint">Enable audio fingerprinting support via <pkg>media-libs/chromaprint</pkg></flag>
+		<flag name="codec2">Enable codec2 low bit rate speech codec support via <pkg>media-libs/codec2</pkg></flag>
+		<flag name="cuda">Enable support for various GPU-accelerated filters using NVIDIA PTX compiled with <pkg>llvm-core/clang</pkg></flag>
+		<flag name="dav1d">Enable AV1 decoding support via <pkg>media-libs/dav1d</pkg></flag>
+		<flag name="drm">
+			Enable use of <pkg>x11-libs/libdrm</pkg> for various hardware
+			accelerated functions and Kernel Mode Setting screen capture
+		</flag>
+		<flag name="fdk">
+			Enable AAC (Advanced Audio Coding) encoding support via
+			<pkg>media-libs/fdk-aac</pkg> in addition to FFmpeg's own
+			implementation (warning: if USE=gpl is enabled, this produces
+			a non-redistributable build)
+		</flag>
+		<flag name="flite">Enable text-to-speech filter support via <pkg>app-accessibility/flite</pkg></flag>
+		<flag name="frei0r">Enable use of filters through <pkg>media-plugins/frei0r-plugins</pkg></flag>
+		<flag name="fribidi">Enable Bidi support for the drawtext filter via <pkg>dev-libs/fribidi</pkg></flag>
+		<flag name="gcrypt">
+			Enable using <pkg>dev-libs/libgcrypt</pkg> for rtmp(t)e support (not
+			needed if using any of USE=gmp,librtmp,openssl), and for obtaining
+			random bytes (not needed if USE=openssl)</flag>
+		<flag name="gme">Enables various game music formats support via <pkg>media-libs/game-music-emu</pkg></flag>
+		<flag name="gnutls">
+			Enable using <pkg>net-libs/gnutls</pkg> for TLS/HTTPS support
+			and other minor functions (has no effect if USE=openssl is set)
+		</flag>
+		<flag name="gpl">Enable use of GPL licensed code, should be kept enabled unless LGPL binaries are needed</flag>
+		<flag name="iec61883">Enable FireWire DV/HDV input device support via <pkg>media-libs/libiec61883</pkg></flag>
+		<flag name="kvazaar">Enable H.265/HEVC encoding support via <pkg>media-libs/kvazaar</pkg></flag>
+		<flag name="lcms">Enable ICC profile support via <pkg>media-libs/lcms</pkg></flag>
+		<flag name="libaom">
+			Enable AV1 de/encoding via <pkg>media-libs/libaom</pkg> (warning: this
+			is the reference implementation and is slower than the alternatives)
+		</flag>
+		<flag name="libaribb24">Enable ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg></flag>
+		<flag name="libilbc">Enable internet Low Bitrate Codec de/encoding support via <pkg>media-libs/libilbc</pkg></flag>
+		<flag name="libplacebo">Enable use of GPU-accelerated filters from <pkg>media-libs/libplacebo</pkg></flag>
+		<flag name="librtmp">
+			Enable Real Time Messaging Protocol support via <pkg>media-video/rtmpdump</pkg>
+			in addition to FFmpeg's own implementation
+		</flag>
+		<flag name="libsoxr">Enable use of the audio resampler from <pkg>media-libs/soxr</pkg></flag>
+		<flag name="libtesseract">Enable Optical Character Recognition (OCR) filter support via <pkg>app-text/tesseract</pkg></flag>
+		<flag name="lv2">Enable use of filters through <pkg>media-libs/lv2</pkg></flag>
+		<flag name="npp">
+			Enable Nvidia Performance Primitives-based filters via
+			<pkg>dev-util/nvidia-cuda-toolkit</pkg> (warning: if USE=gpl
+			is enabled, this produces non-redistributable build)
+		</flag>
+		<flag name="openh264">Enable H.264 encoding support via <pkg>media-libs/openh264</pkg></flag>
+		<flag name="openmpt">Enable MPTM tracked music files decoding support via <pkg>media-libs/libopenmpt</pkg></flag>
+		<flag name="openssl">
+			Enable using <pkg>dev-libs/openssl</pkg> for TLS/HTTPS support
+			and other minor functions (USE=gnutls has no effect if set)
+		</flag>
+		<flag name="postproc">
+			Enable libpostproc video post processing library support
+			(should not disable this unless need to disable USE=gpl)
+		</flag>
+		<flag name="qsv">Enable Intel Quick Sync Video support via <pkg>media-libs/libvpl</pkg></flag>
+		<flag name="rabbitmq">Enable AMQP stream support via <pkg>net-libs/rabbitmq-c</pkg></flag>
+		<flag name="rav1e">Enable AV1 encoding support via <pkg>media-video/rav1e</pkg></flag>
+		<flag name="rubberband">Enable time-stretching and pitch-shifting audio filter support via <pkg>media-libs/rubberband</pkg></flag>
+		<flag name="sdl">Enable use of the Simple Direct Layer library (required for the ffplay command)</flag>
+		<flag name="shaderc">Enable support for various GPU-accelerated filters using Vulkan compiled with <pkg>media-libs/shaderc</pkg></flag>
+		<flag name="snappy">
+			Enable Snappy compression support via <pkg>app-arch/snappy</pkg>
+			(required for Vidvox Hap encoder support)
+		</flag>
+		<flag name="sndio">Enable audio output support via <pkg>media-sound/sndio</pkg></flag>
+		<flag name="soc">Apply additional patches for efficient playback on some SoCs (e.g. ARM, RISC-V)</flag>
+		<flag name="srt">Enable Secure Reliable Transport (SRT) support via <pkg>net-libs/srt</pkg></flag>
+		<flag name="ssh">Enable SSH/SFTP support via <pkg>net-libs/libssh</pkg></flag>
+		<flag name="svt-av1">Enable AV1 encoding support via <pkg>media-libs/svt-av1</pkg></flag>
+		<flag name="truetype">
+			Enable drawtext filter support via <pkg>media-libs/freetype</pkg>
+			and <pkg>media-libs/harfbuzz</pkg>
+		</flag>
+		<flag name="twolame">
+			Enable MP2 encoding support via <pkg>media-sound/twolame</pkg>
+			in addition to FFmpeg's own implementation
+		</flag>
+		<flag name="vidstab">Enable video stabilization filter support via <pkg>media-libs/vidstab</pkg></flag>
+		<flag name="vmaf">Enable Netflix's perceptual video quality assessment filter support via <pkg>media-libs/libvmaf</pkg></flag>
+		<flag name="vpx">
+			Enable VP8 and VP9 de/encoding support via <pkg>media-libs/libvpx</pkg>
+			in addition to FFmpeg's own implementation (for decoding only)
+		</flag>
+		<flag name="x265">Enable H.265/HEVC encoding support via <pkg>media-libs/x265</pkg></flag>
+		<flag name="xml">Enable Dynamic Adaptive Streaming over HTTP (DASH) stream support using <pkg>dev-libs/libxml2</pkg></flag>
+		<flag name="zeromq">Enable ZMQ command receiver filter and streaming support via <pkg>net-libs/zeromq</pkg></flag>
+		<flag name="zimg">Enable zscale filter support using <pkg>media-libs/zimg</pkg></flag>
+		<flag name="zvbi">Enable teletext decoding support via <pkg>media-libs/zvbi</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://trac.ffmpeg.org/</bugs-to>
+		<doc>https://ffmpeg.org/documentation.html</doc>
+		<remote-id type="cpe">cpe:/a:ffmpeg:ffmpeg</remote-id>
+		<remote-id type="github">FFmpeg/FFmpeg</remote-id>
+	</upstream>
+</pkgmetadata>
