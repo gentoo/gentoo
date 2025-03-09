@@ -59,6 +59,12 @@ PATCHES=(
 pkg_setup() {
 	if use kernel_linux; then
 		CONFIG_CHECK="SECCOMP"
+
+		if use amd64 ; then
+			CONFIG_CHECK+=" ~X86_MSR"
+			WARNING_X86_MSR="X86_MSR is needed for rr-zen_workaround.py (AMD Zen CPUs)"
+		fi
+
 		linux-info_pkg_setup
 	fi
 	python-single-r1_pkg_setup
