@@ -3,6 +3,9 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<bugs-to>https://github.com/FreeTDS/freetds/issues</bugs-to>
+		<changelog>https://github.com/FreeTDS/freetds/blob/master/NEWS.md</changelog>
+		<doc>https://www.freetds.org/docs.html</doc>
 		<remote-id type="cpe">cpe:/a:freetds:freetds</remote-id>
 		<remote-id type="github">FreeTDS/freetds</remote-id>
 	</upstream>
