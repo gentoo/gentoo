@@ -21,7 +21,9 @@
 		<flag name="certbot-dns-dnsimple">Enable DNSimple Authenticator plugin.</flag>
 		<flag name="certbot-dns-dnsmadeeasy">Enable DNS Made Easy DNS Authenticator plugin.</flag>
 		<flag name="certbot-dns-gehirn">Enable Gehirn Infrastructure Service DNS Authenticator plugin.</flag>
+		<!--
 		<flag name="certbot-dns-google">Enable Google Cloud DNS Authenticator plugin.</flag>
+		-->
 		<flag name="certbot-dns-linode">Enable Linode DNS Authenticator plugin plugin.</flag>
 		<flag name="certbot-dns-luadns">Enable LuaDNS Authenticator plugin.</flag>
 		<flag name="certbot-dns-nsone">Enable NS1 DNS Authenticator plugin.</flag>

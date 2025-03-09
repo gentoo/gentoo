@@ -46,7 +46,7 @@ CERTBOT_MODULES_EXTRA=(
 	dns-dnsimple
 	dns-dnsmadeeasy
 	dns-gehirn
-	dns-google
+	#dns-google # Not supported currently, too restricted set of supported architectures in dependencies.
 	dns-linode
 	dns-luadns
 	dns-nsone
@@ -105,10 +105,6 @@ RDEPEND="
 	certbot-dns-gehirn? (
 		>=dev-python/dns-lexicon-3.14.1[${PYTHON_USEDEP}]
 	)
-	certbot-dns-google? (
-		>=dev-python/google-api-python-client-1.6.5[${PYTHON_USEDEP}]
-		>=dev-python/google-auth-2.16.0[${PYTHON_USEDEP}]
-	)
 	certbot-dns-linode? (
 		>=dev-python/dns-lexicon-3.14.1[${PYTHON_USEDEP}]
 	)
@@ -148,6 +144,10 @@ RDEPEND="
 # 	certbot-dns-digitalocean? (
 # 		# Available in GURU
 # 		>=dev-python/digitalocean-1.11[${PYTHON_USEDEP}]
+# 	)
+# 	certbot-dns-google? (
+# 		>=dev-python/google-api-python-client-1.6.5[${PYTHON_USEDEP}]
+# 		>=dev-python/google-auth-2.16.0[${PYTHON_USEDEP}]
 # 	)
 # "
 
