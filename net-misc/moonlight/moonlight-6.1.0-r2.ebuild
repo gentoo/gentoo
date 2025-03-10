@@ -31,8 +31,11 @@ RDEPEND="
 	media-libs/libsdl2[gles2,haptic,joystick,kms,sound,video]
 	media-libs/opus
 	media-libs/sdl2-ttf
-	>=media-video/ffmpeg-6:=[cuda?,libdrm?]
-	libdrm? ( x11-libs/libdrm )
+	>=media-video/ffmpeg-6:=[cuda?]
+	libdrm? (
+		|| ( media-video/ffmpeg[drm(-)] media-video/ffmpeg[libdrm(-)] )
+		x11-libs/libdrm
+	)
 	soundio? ( media-libs/libsoundio:= )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
 	vdpau? (
