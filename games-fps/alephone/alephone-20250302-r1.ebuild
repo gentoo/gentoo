@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-net
 	media-libs/sdl2-ttf
-	media-video/ffmpeg:=[mp3,vorbis]
+	media-video/ffmpeg:=
 	sys-libs/zlib
 	virtual/opengl
 	virtual/glu
