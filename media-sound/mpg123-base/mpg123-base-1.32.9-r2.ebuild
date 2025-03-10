@@ -49,6 +49,8 @@ multilib_src_configure() {
 	# error: ‘struct hostent’ has no member named ‘h_addr’
 	append-cflags -D_GNU_SOURCE
 
+	filter-lto # bug #951124
+
 	if $(multilib_is_native_abi) ; then
 		local flag
 		for flag in coreaudio pulseaudio jack alsa oss sdl portaudio nas ; do
