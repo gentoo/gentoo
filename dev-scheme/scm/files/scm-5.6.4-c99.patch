@@ -1,0 +1,107 @@
+Actually, fixes up to -std=gnu17
+Fixes to signal handler, wrong function types, access to opaque
+structs, passing char** to function expecting const char* const*
+redeclaration of library functions with wrong signatures
+https://bugs.gentoo.org/946129
+https://bugs.gentoo.org/946361
+--- a/scm.c
++++ b/scm.c
+@@ -533,7 +533,7 @@
+ static void init_sig1(scm_err, signo, handler)
+      int scm_err;
+      int signo;
+-     SIGRETTYPE (*handler)();
++     SIGRETTYPE (*handler)(int);
+ {
+   int i = scm_err - SIGNAL_BASE;
+   ASRTER(i < NUM_SIGNALS, MAKINUM(i), OUTOFRANGE, "init_sig1");
+@@ -932,7 +932,6 @@
+ extern char **environ;		/* The Linux man page says this
+ 				   declaration is necessary. */
+ char s_getenv[] = "getenv";
+-char *getenv();
+ SCM scm_getenv(nam)
+      SCM nam;
+ {
+lendwin returns int, it's ignored in the callee of add_final
+--- a/crs.c
++++ b/crs.c
+@@ -387,5 +387,5 @@
+   make_subr(s_mvwin, tc7_subr_3, lmvwin);
+   make_subr(s_box, tc7_subr_3, lbox);
+   add_feature("curses");
+-  add_final(lendwin);
++  add_final((void (*)(void))lendwin);
+ }
+--- a/scmmain.c
++++ b/scmmain.c
+@@ -86,7 +86,8 @@
+      const char **argv;
+ {
+   char *script_arg = 0;		/* location of SCSH style script file or 0. */
+-  char *implpath = 0, **nargv;
++  char *implpath = 0;
++  const char  **nargv;
+   int nargc, iverbose = 0, buf0stdin;
+   SCM retval;
+ /* added by Dai Inukai 2001-03-21 */
+@@ -115,7 +116,7 @@
+    fpspec = fpsetprec(FP_PE); /* IEEE 64 bit FP mantissa*/
+ #endif
+   execpath = 0;			/* even when dumped */
+-  if ((nargv = script_process_argv(argc, argv))) { /* SCSH style scripts */
++  if ((nargv = (const char **)script_process_argv(argc, argv))) { /* SCSH style scripts */
+     script_arg = argv[2];	/* Save for scm_find_execpath() call */
+     nargc = script_count_argv(nargv);
+   }
+--- a/crs.c
++++ b/crs.c
+@@ -250,7 +250,7 @@
+   if (UNBNDP(arg)) arg = cur_outp;
+   ASRTER(NIMP(arg) && OPOUTPORTP(arg), arg, ARG1, s_owidth);
+   if (NIMP(*loc_stdscr)) {
+-    if (WINP(arg)) return MAKINUM(WIN(arg)->_maxx+1);
++    if (WINP(arg)) return MAKINUM(getmaxx(WIN(arg))+1);
+     else return MAKINUM(COLS);
+   }
+   return MAKINUM(80);
+@@ -261,7 +261,7 @@
+   if (UNBNDP(arg)) arg = cur_outp;
+   ASRTER(NIMP(arg) && OPOUTPORTP(arg), arg, ARG1, s_owidth);
+   if (NIMP(*loc_stdscr))
+-    if (WINP(arg)) return MAKINUM(WIN(arg)->_maxy+1);
++    if (WINP(arg)) return MAKINUM(getmaxy(WIN(arg))+1);
+     else return MAKINUM(LINES);
+   return MAKINUM(24);
+ }
+--- a/scm.c
++++ b/scm.c
+@@ -154,7 +154,7 @@
+ /* PROF_SIGNAL appears below because it is the last signal
+    defined in scm.h and in errmsgs in repl.c  */
+ static struct {
+-  int signo; SIGRETTYPE (*osig)(); SIGRETTYPE (*nsig)();
++  int signo; SIGRETTYPE (*osig)(int); SIGRETTYPE (*nsig)(int);
+ } sigdesc[PROF_SIGNAL - SIGNAL_BASE + 1];
+ 
+ #define NUM_SIGNALS (sizeof(sigdesc)/sizeof(sigdesc[0]))
+@@ -478,7 +478,7 @@
+ #endif
+ 
+ #ifdef SIGPIPE
+-static SIGRETTYPE (*oldpipe) ();
++static SIGRETTYPE (*oldpipe) (int);
+ #endif
+ 
+ int case_sensitize_symbols = 0;	/* set to 8 to read case-sensitive symbols */
+--- a/posix.c
++++ b/posix.c
+@@ -191,7 +191,7 @@
+   ve[ 0] = makfrom0str(entry->gr_name);
+   ve[ 1] = makfrom0str(entry->gr_passwd);
+   ve[ 2] = ulong2num((unsigned long)entry->gr_gid);
+-  ve[ 3] = makfromstrs(-1, entry->gr_mem);
++  ve[ 3] = makfromstrs(-1, (const char * const *)entry->gr_mem);
+   return ans;
+ }
+ SCM l_setgr(arg)
