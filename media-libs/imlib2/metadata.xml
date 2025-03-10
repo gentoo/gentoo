@@ -24,6 +24,7 @@
 		<flag name="packing">Enable structure packing. This will reduce memory footprint at the cost of unaligned memory access</flag>
 		<flag name="shm">Use MIT shared memory support for X image transfer</flag>
 		<flag name="text">Build text (TrueType font) functions</flag>
+		<flag name="y4m">Y4M loader support</flag>
 		<flag name="zlib">Zlib loader support</flag>
 	</use>
 	<longdescription>
