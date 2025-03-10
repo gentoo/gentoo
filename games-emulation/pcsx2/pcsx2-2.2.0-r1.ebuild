@@ -113,6 +113,10 @@ src_configure() {
 	# to remove if bundled lzma code is updated like 7zip did (bug #935298)
 	use elibc_musl && append-cppflags -DZ7_AFFINITY_DISABLE
 
+	# workaround for clang:20, backporting to old fmt would be complicated
+	# https://github.com/fmtlib/fmt/issues/4177 (probably?)
+	append-cppflags -DFMT_CONSTEVAL=
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_ADVANCE_SIMD=yes
