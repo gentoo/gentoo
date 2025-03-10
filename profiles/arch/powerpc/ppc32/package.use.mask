@@ -4,6 +4,7 @@
 # Sam James <sam@gentoo.org> (2025-02-21)
 # media-video/rav1e is not yet keyworded here
 media-video/ffmpeg rav1e
+media-video/ffmpeg-compat rav1e
 
 # Pacho Ramos <pacho@gentoo.org> (2025-01-26)
 # Needs unkeyworded net-libs/msgraph
