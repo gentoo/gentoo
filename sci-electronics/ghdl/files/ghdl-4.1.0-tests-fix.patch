@@ -1,0 +1,266 @@
+From a9fe853e63229603a8958fd80ff8b996dd49c950 Mon Sep 17 00:00:00 2001
+From: Tristan Gingold <tgingold@free.fr>
+Date: Sun, 26 May 2024 09:57:54 +0200
+Subject: [PATCH] testsuite/gna: fix vpi prototypes
+
+Fix #2663
+---
+ testsuite/gna/issue450/vpi2.c | 6 ++++--
+ testsuite/gna/issue98/vpi1.c  | 7 ++++---
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/testsuite/gna/issue450/vpi2.c b/testsuite/gna/issue450/vpi2.c
+index 0debb546b5..f1d652bb71 100644
+--- a/testsuite/gna/issue450/vpi2.c
++++ b/testsuite/gna/issue450/vpi2.c
+@@ -40,7 +40,7 @@ void printContent (vpiHandle parent)
+     }
+ }
+ 
+-void printModules()
++PLI_INT32 printModules(s_cb_data *cb)
+ {
+   vpiHandle topModIterator;
+   vpiHandle topModHandle;
+@@ -53,7 +53,7 @@ void printModules()
+   vpi_printf ("got to here1 \n");
+   if (!topModIterator)
+     {
+-      return;
++      return -1;
+     }
+ 
+   /* use vpi_scan to iterate throught modules */
+@@ -64,6 +64,8 @@ void printModules()
+ 
+       printContent (topModHandle);
+     }
++
++  return 0;
+ }
+ 
+ 
+diff --git a/testsuite/gna/issue98/vpi1.c b/testsuite/gna/issue98/vpi1.c
+index 0adae07fe4..a14b89df23 100644
+--- a/testsuite/gna/issue98/vpi1.c
++++ b/testsuite/gna/issue98/vpi1.c
+@@ -1,8 +1,8 @@
+ #include <stdio.h>
+ #include <vpi_user.h>
+ 
+-void
+-vpi_proc (void)
++PLI_INT32
++vpi_proc (s_cb_data *cb)
+ {
+   vpiHandle net;
+   s_vpi_value val;
+@@ -11,11 +11,12 @@ vpi_proc (void)
+   if (net == NULL)
+     {
+       printf ("cannot get net\n");
+-      return;
++      return -1;
+     }
+   val.format = vpiBinStrVal;
+   vpi_get_value (net, &val);
+   printf ("value: %s\n", val.value.str);
++  return 0;
+ }
+ 
+ void my_handle_register()
+From 5c4d2509b47d416470cdac59bb81955f5aacfee3 Mon Sep 17 00:00:00 2001
+From: Tristan Gingold <tgingold@free.fr>
+Date: Sun, 26 May 2024 16:58:25 +0200
+Subject: [PATCH] testsuite/vpi: fix callback types (continue)
+
+---
+ testsuite/vpi/vpi002/vpi1.c |  7 ++++---
+ testsuite/vpi/vpi004/vpi1.c | 13 +++++++------
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/testsuite/vpi/vpi002/vpi1.c b/testsuite/vpi/vpi002/vpi1.c
+index d6f1b42fb7..53d51250ee 100644
+--- a/testsuite/vpi/vpi002/vpi1.c
++++ b/testsuite/vpi/vpi002/vpi1.c
+@@ -2,8 +2,8 @@
+ #include <vpi_user.h>
+ #define N_NAMES 12
+ 
+-void
+-vpi_proc (void)
++PLI_INT32
++vpi_proc (s_cb_data *cb)
+ {
+   vpiHandle net;
+   s_vpi_value val;
+@@ -54,12 +54,13 @@ vpi_proc (void)
+     if (net == NULL)
+         {
+         printf ("Error: Failed to find the net %s\n", names[name_index]);
+-        return;
++        return -1;
+         }
+     val.format = vpiBinStrVal;
+     vpi_get_value (net, &val);
+     printf ("value: %s\n", val.value.str);
+   }
++  return 0;
+ }
+ 
+ void my_handle_register()
+diff --git a/testsuite/vpi/vpi004/vpi1.c b/testsuite/vpi/vpi004/vpi1.c
+index 25d426fe7b..26ecf7c272 100644
+--- a/testsuite/vpi/vpi004/vpi1.c
++++ b/testsuite/vpi/vpi004/vpi1.c
+@@ -2,8 +2,8 @@
+ #include <vpi_user.h>
+ #define N_NAMES 12
+ 
+-void
+-vpi_proc (void)
++PLI_INT32
++vpi_proc (s_cb_data *cb)
+ {
+   s_vpi_vlog_info info;
+   int i;
+@@ -11,12 +11,12 @@ vpi_proc (void)
+   int ret = vpi_get_vlog_info(&info);
+   if (ret != 1) {
+     printf ("Error: Failed to get vlog_info\n");
+-    return;
++    return -1;
+   }
+ 
+   if (info.argc < 1) {
+      printf ("Error: Argc was 0\n");
+-     return;
++     return -1;
+   }
+   printf ("Argc: %d\n", info.argc);
+ 
+@@ -26,15 +26,16 @@ vpi_proc (void)
+ 
+   if (info.product == NULL) {
+     printf ("Error: product is NULL\n");
+-    return;
++    return -1;
+   }
+   printf ("Product: %s\n", info.product);
+ 
+   if (info.version == NULL) {
+     printf ("Error: version is NULL\n");
+-    return;
++    return -1;
+   }
+   printf ("Version: %s\n", info.version);
++  return 0;
+ }
+ 
+ void my_handle_register()
+From 659a5d7a018d011aad23235bfd3e306072436a8b Mon Sep 17 00:00:00 2001
+From: Tristan Gingold <tgingold@free.fr>
+Date: Sun, 26 May 2024 16:21:04 +0200
+Subject: [PATCH] testsuite/vpi: fix callback types
+
+---
+ testsuite/vpi/vpi001/vpi1.c | 7 ++++---
+ testsuite/vpi/vpi003/vpi1.c | 7 ++++---
+ 2 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/testsuite/vpi/vpi001/vpi1.c b/testsuite/vpi/vpi001/vpi1.c
+index c266b5cd75..a1ff9fb5d4 100644
+--- a/testsuite/vpi/vpi001/vpi1.c
++++ b/testsuite/vpi/vpi001/vpi1.c
+@@ -2,8 +2,8 @@
+ #include <vpi_user.h>
+ #define N_NAMES 12
+ 
+-void
+-vpi_proc (void)
++PLI_INT32
++vpi_proc (s_cb_data *cb)
+ {
+   vpiHandle net;
+   s_vpi_value val;
+@@ -39,12 +39,13 @@ vpi_proc (void)
+     if (net == NULL)
+         {
+         printf ("Error: Failed to find the net %s\n", names[name_index]);
+-        return;
++        return -1;
+         }
+     val.format = vpiBinStrVal;
+     vpi_get_value (net, &val);
+     printf ("value: %s\n", val.value.str);
+   }
++  return 0;
+ }
+ 
+ void my_handle_register()
+diff --git a/testsuite/vpi/vpi003/vpi1.c b/testsuite/vpi/vpi003/vpi1.c
+index d7a6f8241c..8bd18873d0 100644
+--- a/testsuite/vpi/vpi003/vpi1.c
++++ b/testsuite/vpi/vpi003/vpi1.c
+@@ -2,8 +2,8 @@
+ #include <vpi_user.h>
+ #define N_NAMES 0
+ 
+-void
+-vpi_proc (void)
++PLI_INT32
++vpi_proc (s_cb_data *cb)
+ {
+   vpiHandle net;
+   s_vpi_value val;
+@@ -29,12 +29,13 @@ vpi_proc (void)
+     if (net == NULL)
+         {
+         printf ("Error: Failed to find the net %s\n", names[name_index]);
+-        return;
++        return -1;
+         }
+     val.format = vpiBinStrVal;
+     vpi_get_value (net, &val);
+     printf ("value: %s\n", val.value.str);
+   }
++  return 0;
+ }
+ 
+ void my_handle_register()
+From 9e7a317cea2473a31e18f63b9392912b7da8e63d Mon Sep 17 00:00:00 2001
+From: Tristan Gingold <tgingold@free.fr>
+Date: Sun, 26 May 2024 17:22:54 +0200
+Subject: [PATCH] testsuite/vhpi: fix prototypes
+
+---
+ testsuite/vhpi/004trace_stdout/vhpi_lib.c | 2 +-
+ testsuite/vhpi/005trace_file/vhpi_lib.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/testsuite/vhpi/004trace_stdout/vhpi_lib.c b/testsuite/vhpi/004trace_stdout/vhpi_lib.c
+index 1bc1fca00b..df44f1e39c 100644
+--- a/testsuite/vhpi/004trace_stdout/vhpi_lib.c
++++ b/testsuite/vhpi/004trace_stdout/vhpi_lib.c
+@@ -23,7 +23,7 @@ void my_startup()
+   time.high = 0;
+   time.low = 0;
+ 
+-  vhpi_register_cb(&cb_data, NULL);
++  vhpi_register_cb(&cb_data, 0);
+ }
+ 
+ void (*vhpi_startup_routines[]) () =
+diff --git a/testsuite/vhpi/005trace_file/vhpi_lib.c b/testsuite/vhpi/005trace_file/vhpi_lib.c
+index 66ce5e1152..a0444c3f05 100644
+--- a/testsuite/vhpi/005trace_file/vhpi_lib.c
++++ b/testsuite/vhpi/005trace_file/vhpi_lib.c
+@@ -21,7 +21,7 @@ void my_startup()
+   time.high = 0;
+   time.low = 0;
+ 
+-  vhpi_register_cb(&cb_data, NULL);
++  vhpi_register_cb(&cb_data, 0);
+ }
+ 
+ void (*vhpi_startup_routines[]) () =

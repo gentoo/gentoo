@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_13 )
+ADA_COMPAT=( gcc_{13,14} )
 LLVM_COMPAT=( {16..17} )        # Check configure script for supported LLVM versions.
 
 inherit ada edo llvm-r1 toolchain-funcs
@@ -45,7 +45,10 @@ BDEPEND="
 	dev-util/patchelf
 "
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.0_pre20231218-no-pyunit.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.0_pre20231218-no-pyunit.patch"
+	"${FILESDIR}"/${P}-tests-fix.patch
+)
 
 pkg_setup() {
 	ada_pkg_setup
