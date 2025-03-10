@@ -1,6 +1,21 @@
 --- a/codecs/dcraw.h	2020-09-10 08:42:19.905105346 +0200
 +++ b/codecs/dcraw.h	2020-09-10 08:47:50.826316874 +0200
-@@ -9956,7 +9956,7 @@
+@@ -96,6 +96,14 @@
+ #define ushort unsigned short
+ #endif
+ 
++#undef SEEK_SET
++#undef SEEK_CUR
++#undef SEEK_END
++
++#define SEEK_SET std::ios::beg
++#define SEEK_CUR std::ios::cur
++#define SEEK_END std::ios::end
++
+ namespace dcraw {
+ 
+ /*
+@@ -9964,7 +9956,7 @@
    strncpy (th->desc, desc, 512);
    strncpy (th->make, make, 64);
    strncpy (th->model, model, 64);
