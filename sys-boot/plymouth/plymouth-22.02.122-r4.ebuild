@@ -100,7 +100,7 @@ src_install() {
 
 	# directories needed to keep runtime state
 	# https://bugs.gentoo.org/925430
-	keepdir "${D}"/var/spool/plymouth "{D}"/var/lib/plymouth
+	keepdir /var/spool/plymouth /var/lib/plymouth
 	# looks like make install create /var/run/plymouth
 	# this is not needed for systemd, same should hold for openrc
 	# so remove
