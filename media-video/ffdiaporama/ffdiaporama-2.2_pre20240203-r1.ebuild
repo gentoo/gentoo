@@ -27,7 +27,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
-	>=media-video/ffmpeg-6:=[encode]
+	>=media-video/ffmpeg-6:=[encode(+)]
 	openclipart? ( media-gfx/openclipart[svg,-gzip] )"
 DEPEND="${RDEPEND}"
 
