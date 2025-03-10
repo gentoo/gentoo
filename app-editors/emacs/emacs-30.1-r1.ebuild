@@ -8,7 +8,7 @@ inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1 to
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="emacs-30"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 	SLOT="${PV%%.*}-vcs"
@@ -449,6 +449,11 @@ src_test() {
 		# internet-is-working
 		%src/process-tests.el
 	)
+	use elibc_musl && exclude_tests+=(
+			# Reason: newlocale(3) lenient locale validation #906012
+			# fns-tests-collate-strings
+			%src/fns-tests.el
+		)
 	use threads || exclude_tests+=(
 			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
