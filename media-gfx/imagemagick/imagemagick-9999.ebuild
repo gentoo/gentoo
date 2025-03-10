@@ -110,19 +110,19 @@ src_prepare() {
 	local ati_cards mesa_cards nvidia_cards render_cards
 	shopt -s nullglob
 	ati_cards=$(echo -n /dev/ati/card*)
-	for card in "${ati_cards[@]}" ; do
+	for card in ${ati_cards[@]} ; do
 		addpredict "${card}"
 	done
 	mesa_cards=$(echo -n /dev/dri/card*)
-	for card in "${mesa_cards[@]}" ; do
+	for card in ${mesa_cards[@]} ; do
 		addpredict "${card}"
 	done
 	nvidia_cards=$(echo -n /dev/nvidia*)
-	for card in "${nvidia_cards[@]}" ; do
+	for card in ${nvidia_cards[@]} ; do
 		addpredict "${card}"
 	done
 	render_cards=$(echo -n /dev/dri/renderD128*)
-	for card in "${render_cards[@]}" ; do
+	for card in ${render_cards[@]} ; do
 		addpredict "${card}"
 	done
 	shopt -u nullglob
