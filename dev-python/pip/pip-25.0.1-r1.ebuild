@@ -76,6 +76,8 @@ python_prepare_all() {
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
 		# prepare to unbundle dependencies
 		"${FILESDIR}/pip-25.0.1-unbundle.patch"
+		# https://github.com/pypa/pip/pull/13272
+		"${FILESDIR}/${P}-scripttest-2.patch"
 	)
 
 	distutils-r1_python_prepare_all
