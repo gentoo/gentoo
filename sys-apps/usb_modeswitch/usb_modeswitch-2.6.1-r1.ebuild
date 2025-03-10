@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,10 @@ BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~USB_SERIAL"
 
-PATCHES=( "${FILESDIR}/usb_modeswitch.sh-tmpdir.patch" )
+PATCHES=(
+	"${FILESDIR}/usb_modeswitch.sh-tmpdir.patch"
+	"${FILESDIR}/c23.patch"
+)
 
 src_prepare() {
 	default
