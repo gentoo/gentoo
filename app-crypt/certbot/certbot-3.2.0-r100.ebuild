@@ -23,7 +23,7 @@ else
 	# Only for amd64, arm64 and x86 because of dev-python/python-augeas
 	#KEYWORDS="~amd64 ~arm64 ~x86"
 	# Only for amd64 and x86 because of dev-python/dns-lexicon
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Let’s Encrypt client to automate deployment of X.509 certificates"
