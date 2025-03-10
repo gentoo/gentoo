@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic readme.gentoo-r1 systemd
 
 DESCRIPTION="Graphical boot animation (splash) and logger"
-HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
+HOMEPAGE="https://gitlab.freedesktop.org/plymouth/plymouth"
 SRC_URI="https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
 
 if [[ ${PV} == 9999 ]]; then
