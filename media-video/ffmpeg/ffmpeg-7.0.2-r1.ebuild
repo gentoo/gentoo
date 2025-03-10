@@ -380,6 +380,7 @@ RESTRICT="
 "
 
 PATCHES=(
+	"${FILESDIR}"/svt-av1-3.patch
 	"${FILESDIR}"/chromium-r2.patch
 	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
 	"${FILESDIR}"/${PN}-4.4.5-binutils-2.43-arm.patch

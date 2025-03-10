@@ -375,6 +375,7 @@ RESTRICT="
 S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
+	"${FILESDIR}"/svt-av1-3.patch
 	"${FILESDIR}"/chromium-r2.patch
 	"${FILESDIR}"/${PN}-6.1-wint-conversion.patch
 	"${FILESDIR}"/${PN}-6.0-fix-lto-type-mismatch.patch
