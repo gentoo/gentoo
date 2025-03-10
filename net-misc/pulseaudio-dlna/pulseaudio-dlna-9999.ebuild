@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,12 +41,12 @@ RDEPEND=">=dev-python/protobuf-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/zeroconf-0.17.4[${PYTHON_USEDEP}]
 	gnome-base/librsvg[introspection]
-	x11-libs/gtk+:3[introspection]
 	media-sound/pulseaudio-daemon
+	x11-libs/gtk+:3[introspection]
 	|| (
 		|| (
-			media-video/ffmpeg[encode,mp3,opus,vorbis]
-			media-video/ffmpeg[encode,fdk,mp3,opus,vorbis]
+			media-video/ffmpeg[encode(+),opus,vorbis]
+			|| ( media-video/ffmpeg[lame(-)] media-video/ffmpeg[mp3(-)] )
 		)
 		(
 			media-libs/flac
