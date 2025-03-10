@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="top-like program for network activity"
 HOMEPAGE="https://web.archive.org/web/20060615083852/http://srparish.net/software/"
@@ -30,6 +30,13 @@ src_prepare() {
 	sed -i 's/configure.in/configure.ac/' Makefile.in || die
 
 	tc-export CC
+}
+
+src_configure() {
+	# bug #944911
+	append-cflags -std=gnu17
+
+	econf
 }
 
 src_install() {
