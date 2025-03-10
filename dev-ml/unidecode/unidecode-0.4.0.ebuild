@@ -12,7 +12,7 @@ SRC_URI="https://github.com/geneweb/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
