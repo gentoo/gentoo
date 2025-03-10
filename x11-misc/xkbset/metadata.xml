@@ -5,4 +5,7 @@
 <use>
   <flag name="tk">Install the <pkg>dev-perl/Tk</pkg> based xkbset-gui utility</flag>
 </use>
+<upstream>
+  <remote-id type="github">stephenmontgomerysmith/xkbset</remote-id>
+</upstream>
 </pkgmetadata>
