@@ -1,6 +1,11 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-03-04)
 # this target has support for sanitizers
 sys-devel/gcc -sanitize
