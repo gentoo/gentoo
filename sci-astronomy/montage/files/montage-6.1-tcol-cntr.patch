@@ -1,0 +1,22 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Fri, 20 Dec 2024 08:10:53 +0100
+Subject: Fix argument of tcol in mExec.c
+
+Closes: #1089268
+---
+ util/Exec/mExec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/Exec/mExec.c b/util/Exec/mExec.c
+index 67cb9b1..1f4ca0d 100644
+--- a/util/Exec/mExec.c
++++ b/util/Exec/mExec.c
+@@ -2409,7 +2409,7 @@ int main(int argc, char **argv, char **envp)
+ 
+          ncols = topen("pimages.tbl");
+ 
+-         icntr = tcol('cntr');
++         icntr = tcol("cntr");
+ 
+          if(icntr < 0)
+          {
