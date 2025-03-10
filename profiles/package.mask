@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2025-03-09)
+# Obsolete in favour of dev-lang/ada-bootstrap. Using sys-devel/gcc[ada]
+# should now Just Work. Removal on 2025-04-10.
+dev-lang/gnat-gpl
+
+# Sam James <sam@gentoo.org> (2025-03-09)
 # Breaks distutils.ccompiler with a lot of fallout. bug #950978 and
 # many others.
 =dev-python/setuptools-75.9.0
