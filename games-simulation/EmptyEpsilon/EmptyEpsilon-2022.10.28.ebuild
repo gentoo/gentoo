@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake
 
 # basis_universal version
 MY_BU_VER="1_15_update2"
@@ -45,18 +45,6 @@ S="${WORKDIR}/EmptyEpsilon-EE-${PV}"
 PATCHES=(
 	"${FILESDIR}/${PN}-cmake-meshoptimizer.patch"
 )
-
-pkg_pretend() {
-	[[ ${MERGE_TYPE} == "binary" ]] && return
-
-	if tc-is-gcc; then
-		if [[ $(gcc-major-version) -lt 11 ]]; then
-			# ld: /usr/lib64/libsfml-audio.so: undefined reference to `std::__throw_bad_array_new_length()@GLIBCXX_3.a4.29'
-			eerror "${PN} requires GCC >= 11. Run gcc-config to switch your default compiler."
-			die "Need at least GCC >= 11"
-		fi
-	fi
-}
 
 src_prepare() {
 	cmake_src_prepare
