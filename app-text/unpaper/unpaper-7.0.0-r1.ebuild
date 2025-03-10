@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=media-video/ffmpeg-2:0=[encode]"
+RDEPEND="media-video/ffmpeg:=[encode(+)]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/docbook-xsl-ns-stylesheets

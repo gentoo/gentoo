@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=media-video/ffmpeg-2:0=[encode]"
+RDEPEND="media-video/ffmpeg:=[encode(+)]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/docbook-xsl-ns-stylesheets
