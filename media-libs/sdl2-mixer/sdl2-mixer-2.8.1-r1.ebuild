@@ -40,7 +40,7 @@ RDEPEND="
 		modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
 		xmp? ( media-libs/libxmp )
 	)
-	mp3? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
+	mp3? ( media-sound/mpg123-base[${MULTILIB_USEDEP}] )
 	opus? ( media-libs/opusfile )
 	vorbis? (
 		stb? ( dev-libs/stb )
@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DSDL2MIXER_DEPS_SHARED=no # aka, no dlopen() (bug #950965)
 		-DSDL2MIXER_CMD=yes
 		-DSDL2MIXER_WAVE=$(usex wav)
 		-DSDL2MIXER_MOD=$(usex mod)
