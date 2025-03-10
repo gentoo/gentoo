@@ -41,7 +41,7 @@ RDEPEND="
 		xmp? ( media-libs/libxmp )
 	)
 	mp3? ( media-sound/mpg123-base[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opusfile )
+	opus? ( media-libs/opusfile[${MULTILIB_USEDEP}] )
 	vorbis? (
 		stb? ( dev-libs/stb )
 		tremor? ( media-libs/tremor[${MULTILIB_USEDEP}] )
