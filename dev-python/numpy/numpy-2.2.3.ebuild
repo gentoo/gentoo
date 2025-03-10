@@ -122,6 +122,10 @@ python_test() {
 				# https://bugs.gentoo.org/942689
 				"numpy/_core/tests/test_dtype.py::TestBuiltin::test_dtype[int]"
 				"numpy/_core/tests/test_dtype.py::TestBuiltin::test_dtype[float]"
+				"numpy/_core/tests/test_dtype.py::TestBuiltin::test_dtype_bytes_str_equivalence[datetime64]"
+				"numpy/_core/tests/test_dtype.py::TestBuiltin::test_dtype_bytes_str_equivalence[timedelta64]"
+				"numpy/_core/tests/test_dtype.py::TestBuiltin::test_dtype_bytes_str_equivalence[<f]"
+				"numpy/_core/tests/test_dtype.py::TestPickling::test_pickle_dtype[dt28]"
 				numpy/f2py/tests/test_kind.py::TestKind::test_real
 				numpy/f2py/tests/test_kind.py::TestKind::test_quad_precision
 				numpy/tests/test_ctypeslib.py::TestAsArray::test_reference_cycles
