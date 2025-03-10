@@ -1,0 +1,33 @@
+From 8c1c8a7e9d2a149461b60b8c6d16c04d6f4aadd9 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 3 Dec 2022 18:21:50 -0500
+Subject: [PATCH app/xinit 2/2] files/xinit-1.4.0-startx-current-vt.patch
+
+---
+ startx.in | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git ./startx.in ./startx.in
+index 9b224af..8247156 100644
+--- ./startx.in
++++ ./startx.in
+@@ -213,17 +213,6 @@ fi
+ if [ "$server" = "" ]; then
+     server="$defaultserver"
+ 
+-if [ "$(uname -s)" = "Linux" ] ; then
+-    # When starting the defaultserver start X on the current tty to avoid
+-    # the startx session being seen as inactive:
+-    # "https://bugzilla.redhat.com/show_bug.cgi?id=806491"
+-    tty=$(tty)
+-    if expr "$tty" : '/dev/tty[0-9][0-9]*$' > /dev/null; then
+-        tty_num="${tty#/dev/tty}"
+-        vtarg="vt$tty_num -keeptty"
+-    fi
+-fi
+-
+     # For compatibility reasons, only use xserverrc if there were no server command line arguments
+     if [ "$serverargs" = "" ] && [ "$display" = "" ]; then
+ 	if [ -f "$userserverrc" ]; then
+-- 
+2.48.1
