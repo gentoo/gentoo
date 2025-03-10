@@ -151,7 +151,7 @@ CRATES="
 	zerocopy@0.8.14
 "
 
-inherit cargo shell-completion
+inherit cargo optfeature shell-completion
 
 DESCRIPTION="Command-line fuzzy finder"
 HOMEPAGE="https://github.com/skim-rs/skim"
