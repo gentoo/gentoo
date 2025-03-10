@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P}-source
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="archive +javascript opengl ssl X"
+IUSE="archive +javascript +jpeg2k opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
@@ -29,10 +29,10 @@ RDEPEND="
 	media-libs/harfbuzz:=[truetype]
 	media-libs/jbig2dec:=
 	media-libs/libpng:0=
-	>=media-libs/openjpeg-2.1:2=
 	>=media-libs/libjpeg-turbo-1.5.3-r2:0=
 	net-misc/curl
 	javascript? ( >=dev-lang/mujs-1.2.0:= )
+	jpeg2k? ( >=media-libs/openjpeg-2.1:2= )
 	opengl? ( >=media-libs/freeglut-3.0.0 )
 	ssl? ( >=dev-libs/openssl-1.1:0= )
 	sys-libs/zlib
@@ -66,6 +66,12 @@ src_prepare() {
 	use hppa && append-cflags -ffunction-sections
 
 	append-cflags "-DFZ_ENABLE_JS=$(usex javascript 1 0)"
+
+	if ! use jpeg2k; then
+		append-cflags "-DFZ_ENABLE_JPX=0"
+		sed -i '/_OPENJPEG_/d' Makerules || die
+		sed -i '/openjpeg.h/d' 'source/fitz/encode-jpx.c' || die
+	fi
 
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
