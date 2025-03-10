@@ -13,8 +13,10 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/whoozle/android-file-transfer-linux.git"
 else
-	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	COMMIT="b8ab1eccebfb5805d4bfbf39f7c2ca231e7dcc70"
+	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="LGPL-2.1"
