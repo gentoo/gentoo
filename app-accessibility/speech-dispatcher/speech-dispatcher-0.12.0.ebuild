@@ -60,6 +60,7 @@ src_configure() {
 		$(use_with pulseaudio pulse)
 		$(use_with pipewire)
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--with-systemduserunitdir="$(systemd_get_userunitdir)"
 	)
 	econf "${myeconfargs[@]}"
 }
