@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit has very few keywords
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Thibaud CANALE <thican@thican.net> (2025-03-09)
 # Too many dependencies are not keyworded (bug 949851)
 # - dev-python/google-api-python-client

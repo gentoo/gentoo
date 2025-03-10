@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# net-libs/rabbitmq-c is not keyworded here
+media-video/ffmpeg rabbitmq
+media-video/ffmpeg-compat rabbitmq
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # Sam James <sam@gentoo.org> (2025-03-04)
 # qt is not keyworded here
 net-wireless/wpa_supplicant gui
