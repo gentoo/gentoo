@@ -112,7 +112,6 @@ src_configure() {
 	else
 		mycmakeargs+=( -DBUILD_DOCS=OFF )
 	fi
-
 	cargo_src_configure --no-default-features --bin fish --bin fish_indent --bin fish_key_reader
 	cmake_src_configure
 }
