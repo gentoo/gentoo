@@ -10,7 +10,7 @@ PYTHON_TESTED=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit bash-completion-r1 distutils-r1
+inherit distutils-r1 shell-completion
 
 DESCRIPTION="The PyPA recommended tool for installing Python packages"
 HOMEPAGE="
@@ -171,7 +171,5 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	newbashcomp completion.bash pip
-
-	insinto /usr/share/zsh/site-functions
-	newins completion.zsh _pip
+	newzshcomp completion.zsh _pip
 }
