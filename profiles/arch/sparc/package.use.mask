@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # Sam James <sam@gentoo.org> (2025-03-04)
 # qt is not keyworded here
 net-wireless/wpa_supplicant gui
@@ -8,6 +13,7 @@ net-wireless/wpa_supplicant gui
 # Sam James <sam@gentoo.org> (2025-02-21)
 # media-video/rav1e is not yet keyworded here
 media-video/ffmpeg rav1e
+media-video/ffmpeg-compat rav1e
 
 # Matt Jolly <kangie@gentoo.org> (2025-01-29)
 # Needs dev-lang/go which is not keyworded here
@@ -73,6 +79,7 @@ x11-misc/xdg-utils plasma
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
 # media-libs/libplacebo is not keyworded here
 media-video/ffmpeg libplacebo
+media-video/ffmpeg-compat libplacebo
 
 # Sam James <sam@gentoo.org> (2024-06-23)
 # app-crypt/gcr:4[gtk] is not available here
@@ -142,6 +149,7 @@ media-libs/libavif rav1e
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # Vulkan is not available here
 media-video/ffmpeg glslang shaderc vulkan
+media-video/ffmpeg-compat shaderc vulkan
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-22)
 # This is not ISDN CAPI, so unmask it.
@@ -281,6 +289,7 @@ media-libs/freetype svg
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-06)
 # Unkeyworded dependencies
@@ -447,6 +456,7 @@ net-analyzer/snort open-appid
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # net-libs/srt is -sparc
 media-video/ffmpeg srt
+media-video/ffmpeg-compat srt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-11)
 # git useflag requires dev-libs/libgit2
@@ -629,6 +639,7 @@ dev-libs/libpeas lua
 # Alexis Ballier <aballier@gentoo.org> (2015-02-11)
 # Missing ffmpeg deps, bug #510340
 media-video/ffmpeg x265
+media-video/ffmpeg-compat x265
 
 # Pacho Ramos <pacho@gentoo.org> (2014-01-10)
 # Missing keywords

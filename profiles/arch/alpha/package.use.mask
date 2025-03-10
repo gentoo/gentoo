@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # Sam James <sam@gentoo.org> (2025-03-04)
 # qt is not keyworded here
 net-wireless/wpa_supplicant gui
@@ -72,6 +77,7 @@ mail-filter/pyzor redis test
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
 # media-libs/libplacebo is not keyworded
 media-video/ffmpeg libplacebo
+media-video/ffmpeg-compat libplacebo
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
@@ -99,7 +105,8 @@ media-video/ffmpeg glslang
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-24)
 # media-libs/shaderc not keyworded here.
->=media-video/ffmpeg-5 shaderc
+media-video/ffmpeg shaderc
+media-video/ffmpeg-compat shaderc
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-14)
 # dev-db/mysql not keyworded here.
@@ -211,6 +218,7 @@ media-libs/freetype svg
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
@@ -219,6 +227,7 @@ app-accessibility/espeak-ng man
 # James Beddek <telans@posteo.de> (2022-01-15)
 # media-libs/svt-av1 is not keyworded here
 media-video/ffmpeg svt-av1
+media-video/ffmpeg-compat svt-av1
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
@@ -282,6 +291,7 @@ sci-libs/umfpack cholmod
 # bug #769098, bug #769122
 media-libs/openal sndio
 media-video/ffmpeg sndio
+media-video/ffmpeg-compat sndio
 media-sound/moc sndio
 media-libs/libsdl2 sndio
 media-libs/libao sndio
@@ -370,6 +380,7 @@ sys-block/thin-provisioning-tools test
 # Mask USE=dav1d, media-libs/dav1d is not keyworded
 # Mask USE=libaribb24, media-libs/aribb24 is not keyworded
 media-video/ffmpeg dav1d libaribb24 libtesseract
+media-video/ffmpeg-compat dav1d libaribb24 libtesseract
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on llvm-core/clang which is not keyworded on alpha.
@@ -456,6 +467,7 @@ net-libs/gnutls test-full
 # Tobias Klausmann <klausman@gentoo.org> (2017-03-02)
 # libilbc has not been ported to alpha and likely never will be.
 media-video/ffmpeg libilbc
+media-video/ffmpeg-compat libilbc
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-01-25)
 # The tests use hypothesis which complains about too-slow tests on
@@ -497,6 +509,7 @@ app-admin/conky cmus irc
 # Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
 # nasm is x86/x86-64 only
 media-video/ffmpeg openh264
+media-video/ffmpeg-compat openh264
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-02-04)
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
@@ -557,6 +570,7 @@ app-accessibility/orca braille
 # Tobias Klausmann <klausman@gentoo.org>
 # media-libs/x265 doesn't work on alpha (bug 519046)
 media-video/ffmpeg x265
+media-video/ffmpeg-compat x265
 
 # Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250

@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit has very few keywords
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Thibaud CANALE <thican@thican.net> (2025-03-09)
 # Too many dependencies are not keyworded (bug 949851)
 # - dev-python/google-api-python-client
@@ -182,6 +187,7 @@ net-misc/curl rustls curl_ssl_rustls
 # Quick Sync Video (through intel-mediasdk or oneVPL) is
 # only keyworded on amd64
 media-video/ffmpeg qsv
+media-video/ffmpeg-compat qsv
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-01)
 # Only supported on ppc64le.
@@ -228,6 +234,7 @@ sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
+media-video/ffmpeg-compat amf
 media-video/handbrake amf
 
 # Sam James <sam@gentoo.org> (2021-11-15)

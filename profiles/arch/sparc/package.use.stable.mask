@@ -33,6 +33,7 @@ net-fs/nfs-utils nfsv4
 net-fs/samba client
 gnome-base/gvfs samba
 media-video/ffmpeg samba
+media-video/ffmpeg-compat samba
 media-video/vlc samba
 
 # Sam James <sam@gentoo.org> (2022-05-10)
@@ -96,6 +97,7 @@ media-sound/vorbis-tools kate
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not stable on sparc
 media-video/ffmpeg codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
+media-video/ffmpeg-compat codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
 # gnome-online-accounts not stable on sparc

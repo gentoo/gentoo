@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit may never be stabilized
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Sam James <sam@gentoo.org> (2025-03-07)
 # Gradually unmask for newer Rust to avoid making users recompile for
 # the change. See bug #735154.
@@ -50,6 +55,7 @@ sci-physics/lammps hip
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/libvpl
 media-video/ffmpeg qsv
+media-video/ffmpeg-compat qsv
 media-video/handbrake qsv
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)

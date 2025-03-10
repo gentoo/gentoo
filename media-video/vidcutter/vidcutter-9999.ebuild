@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=dev-python/pyqt5-5.7[dbus,multimedia,widgets,${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
-	media-video/ffmpeg[X,encode]
+	media-video/ffmpeg[X,encode(+)]
 	media-video/mediainfo"
 BDEPEND="
 	${PYTHON_DEPS}

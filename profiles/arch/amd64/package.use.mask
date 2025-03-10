@@ -17,6 +17,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit is keyworded here
+media-video/ffmpeg -npp
+media-video/ffmpeg-compat -npp
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# Old versions of ffmpeg needing old nv-codec-codecs complicate slots
+# (done here due to the unmasking in arch/amd64).
+<media-video/ffmpeg-5 nvenc
+<media-video/ffmpeg-compat-5 nvenc
+
 # Thibaud CANALE <thican@thican.net> (2025-03-09)
 # Google DNS dependencies available (bug 949851)
 app-crypt/certbot -certbot-dns-google
@@ -215,6 +226,7 @@ net-misc/curl -rustls -curl_ssl_rustls
 # Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv
+media-video/ffmpeg-compat -qsv
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
@@ -243,6 +255,7 @@ media-libs/libva-intel-driver -hybrid
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Unmask AMF keyword on amd64 only
 media-video/ffmpeg -amf
+media-video/ffmpeg-compat -amf
 media-video/handbrake -amf
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
