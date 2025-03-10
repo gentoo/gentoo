@@ -14,4 +14,3 @@ wcsdir = $(includedir)/wcs
 wcs_HEADERS = \
 	wcscat.h wcslib.h wcs.h lwcs.h fitshead.h fitsfile.h imio.h
 
-noinst_HEADERS = fitsfile1.h wcscat1.h

@@ -14,7 +14,7 @@ bin_PROGRAMS = \
 	keyhead skycoor subpix xy2sky wcshead conpix gettab newfits getfits \
 	imstack imextract sumpix wcsremap getcol wcsgetdate imfill imsmooth imresize \
 	fileroot filename filext char2sp sp2char wcscrlf isnum isrange isfits \
-	isfile simpos bincat
+	isfile simpos bincat fixhead
 
 # these ones don't need libwcs
 wcscrlf_SOURCES = crlf.c
@@ -71,3 +71,4 @@ sky2xy_SOURCES = sky2xy.c
 sp2char_SOURCES = sp2char.c
 subpix_SOURCES = subpix.c
 wcshead_SOURCES = wcshead.c
+fixhead_SOURCES = fixhead.c
