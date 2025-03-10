@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${PN}-1.0.2-g++.patch
 	"${FILESDIR}"/${P}-libjxl-9.patch
+	"${FILESDIR}"/${P}-dcraw.patch
 )
 
 src_prepare() {
