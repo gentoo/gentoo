@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )
 	lzma? ( app-arch/xz-utils )
-	openmp? ( dev-lang/gnat-gpl:=[openmp] )
+	openmp? ( sys-devel/gcc:=[openmp] )
 	"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
