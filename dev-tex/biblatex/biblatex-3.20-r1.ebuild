@@ -25,6 +25,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 # biblatex and biber must always have compatible versions
 PDEPEND="biber? ( ~dev-tex/biber-2.$(ver_cut 2) )"
+BDEPEND="
+	doc? (
+		virtual/latex-base
+	)
+"
 
 TEXMF=/usr/share/texmf-site
 
