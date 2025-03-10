@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S="${WORKDIR}/${P^^}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-werror.patch
