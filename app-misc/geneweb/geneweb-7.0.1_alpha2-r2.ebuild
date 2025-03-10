@@ -31,7 +31,6 @@ DEPEND="
 	dev-ml/jingoo:=
 	dev-ml/markup:=
 	dev-ml/num:=
-	dev-ml/ppx_blob:=
 	dev-ml/ppx_deriving:=
 	dev-ml/ppx_import:=
 	dev-ml/re:=
