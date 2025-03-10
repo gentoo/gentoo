@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,11 +22,11 @@ DEPEND="
 	app-cdr/cdrtools
 	>=app-cdr/dvd+rw-tools-7.1
 	media-libs/libexif:=
+	media-libs/libjpeg-turbo:=
 	>=media-libs/wxsvg-1.5.23:=
 	>=media-video/dvdauthor-0.7.1
-	>=media-video/ffmpeg-2.6:0=[encode]
+	media-video/ffmpeg:=[encode(+)]
 	>=media-video/xine-ui-0.99.7
-	virtual/jpeg:0
 	x11-libs/wxGTK:${WX_GTK_VER}=[gstreamer,X]
 	sys-apps/dbus
 	udev? ( >=virtual/libudev-215:= )
