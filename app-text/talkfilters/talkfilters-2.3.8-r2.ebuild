@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="Convert ordinary English text into text that mimics a stereotyped dialect"
 HOMEPAGE="https://www.hyperrealm.com/talkfilters/talkfilters.html"
 SRC_URI="https://www.hyperrealm.com/talkfilters/packages/${P}.tar.gz"
