@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_13 )
+ADA_COMPAT=( gcc_13 )
 LLVM_COMPAT=( {16..17} )        # Check configure script for supported LLVM versions.
 
 inherit ada edo llvm-r1 toolchain-funcs
