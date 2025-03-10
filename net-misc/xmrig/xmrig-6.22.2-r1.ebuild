@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ RDEPEND="
 	${DEPEND}
 	!arm64? ( sys-apps/msr-tools )
 "
+DOCS=( {CHANGELOG,README}.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.2-nonotls.patch
@@ -49,6 +50,7 @@ src_configure() {
 		-DWITH_HWLOC=$(usex hwloc)
 		-DWITH_TLS=$(usex ssl)
 		-DWITH_OPENCL=$(usex opencl)
+		# https://github.com/xmrig/xmrig-cuda?tab=readme-ov-file#xmrig-cuda
 		-DWITH_CUDA=OFF
 	)
 
