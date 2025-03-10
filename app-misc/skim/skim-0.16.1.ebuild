@@ -190,7 +190,6 @@ src_install() {
 	doins shell/key-bindings.*
 
 	newbashcomp shell/completion.bash sk
-	newfishcomp shell/completion.fish sk.fish
 	newzshcomp shell/completion.zsh _sk
 }
 
