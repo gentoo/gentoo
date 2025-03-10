@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# Old versions of ffmpeg needing old nv-codec-codecs complicate slots
+# (done here due to the unmasking in arch/arm64).
+<media-video/ffmpeg-5 nvenc
+<media-video/ffmpeg-compat-5 nvenc
+
 # Thibaud CANALE <thican@thican.net> (2025-03-09)
 # Google DNS dependencies available (bug 949851)
 app-crypt/certbot -certbot-dns-google
