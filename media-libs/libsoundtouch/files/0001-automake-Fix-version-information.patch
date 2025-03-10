@@ -1,0 +1,30 @@
+From aef96e29e8aaf747730200a6b08a4f670d022341 Mon Sep 17 00:00:00 2001
+From: Tobias Jakobi <tjakobi@math.uni-bielefeld.de>
+Date: Mon, 3 Mar 2025 11:49:42 +0100
+Subject: [PATCH] automake: Fix version information
+
+During the last version bump the increment of the patch number
+in configure.ac was missed. This results in the pkg-config
+claiming still having 2.3.2 available.
+
+Signed-off-by: Tobias Jakobi <tjakobi@math.uni-bielefeld.de>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 81163b8..51ff2e0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,7 @@ dnl this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ dnl Place - Suite 330, Boston, MA  02111-1307, USA
+ # Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT([SoundTouch],[2.3.2],[http://www.surina.net/soundtouch])
++AC_INIT([SoundTouch],[2.3.3],[http://www.surina.net/soundtouch])
+ dnl Default to libSoundTouch.so.$LIB_SONAME.0.0
+ LIB_SONAME=1
+ AC_SUBST(LIB_SONAME)
+-- 
+2.45.3
+
