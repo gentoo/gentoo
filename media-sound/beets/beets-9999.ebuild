@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -90,7 +90,7 @@ BDEPEND="
 			media-sound/mp3val
 			media-sound/mp3gain
 			media-plugins/gst-plugins-libav:1.0
-			media-video/ffmpeg:0[encode]
+			media-video/ffmpeg[encode(+)]
 			app-shells/bash-completion
 		)
 	')"
@@ -158,7 +158,7 @@ python_install_all() {
 	optfeature "badfiles support" "media-libs/flac media-sound/mp3val"
 	optfeature "chromaprint support" "dev-python/pyacoustid media-libs/chromaprint[tools]"
 	optfeature "discogs support" dev-python/python3-discogs-client
-	optfeature "ffmpeg support" media-video/ffmpeg[encode]
+	optfeature "ffmpeg support" media-video/ffmpeg
 	optfeature "gstreamer support" "media-libs/gst-plugins-bad media-libs/gst-plugins-good"
 	optfeature "icu support" dev-db/sqlite[icu]
 	optfeature "lastfm support" dev-python/pylast
