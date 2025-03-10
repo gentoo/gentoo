@@ -26,7 +26,7 @@ JAVA_PKG_WANT_SOURCE="21"
 JAVA_PKG_WANT_TARGET="21"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
@@ -67,7 +67,7 @@ else
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
@@ -128,7 +128,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
-	media-libs/mesa[opengl,wayland?,X?]
+	media-libs/mesa[egl(+),gbm(+)?,wayland?,X?]
 	media-libs/taglib:=
 	sci-libs/kissfft
 	virtual/libiconv
@@ -165,6 +165,12 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		media-libs/libdisplay-info
 		x11-libs/libxkbcommon
 	)
+	gles? (
+		|| (
+			>=media-libs/mesa-24.1.0_rc1[opengl]
+			<media-libs/mesa-24.1.0_rc1[gles2]
+		)
+	)
 	!gles? (
 		media-libs/glu
 	)
@@ -196,7 +202,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
 	system-ffmpeg? (
-		=media-video/ffmpeg-6*:=[encode,soc(-)?,postproc,vaapi?,vdpau?,X?]
+		=media-video/ffmpeg-6*:=[encode(+),soc(-)?,postproc,vaapi?,vdpau?,X?]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -223,7 +229,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=x11-libs/libxkbcommon-0.4.1[wayland]
 	)
 	webserver? (
-		>=net-libs/libmicrohttpd-0.9.77:=
+		>=net-libs/libmicrohttpd-0.9.77:=[messages(+)]
 	)
 	X? (
 		x11-libs/libX11
@@ -272,6 +278,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
 	"${FILESDIR}"/kodi-21.1-silence-libdvdread-git.patch
+	"${FILESDIR}"/kodi-21.1-fix-gcc15.patch
 )
 
 # bug #544020
