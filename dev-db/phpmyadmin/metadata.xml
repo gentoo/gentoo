@@ -15,6 +15,11 @@
 		</flag>
 	</use>
 	<upstream>
+		<changelog>https://raw.githubusercontent.com/phpmyadmin/phpmyadmin/STABLE/ChangeLog</changelog>
+		<doc lang="en">https://docs.phpmyadmin.net/en/latest/</doc>
+		<doc lang="fr">https://docs.phpmyadmin.net/fr/latest/</doc>
+		<bugs-to>https://github.com/phpmyadmin/phpmyadmin/issues</bugs-to>
 		<remote-id type="sourceforge">phpmyadmin</remote-id>
+		<remote-id type="github">phpmyadmin/phpmyadmin</remote-id>
 	</upstream>
 </pkgmetadata>
