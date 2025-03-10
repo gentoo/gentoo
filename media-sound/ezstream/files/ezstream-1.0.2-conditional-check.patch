@@ -1,6 +1,7 @@
 libcheck is used for testing only
 Condition out dependency for USE=test
 https://bugs.gentoo.org/948427
+https://gitlab.xiph.org/xiph/ezstream/-/issues/2290
 --- a/configure.ac
 +++ b/configure.ac
 @@ -39,8 +39,14 @@
