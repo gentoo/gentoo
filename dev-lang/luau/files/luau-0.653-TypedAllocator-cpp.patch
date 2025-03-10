@@ -1,0 +1,28 @@
+From 0d7ce033b5b4bc33cc02e85a8c56e23e68694211 Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Mon, 10 Mar 2025 01:35:36 +0200
+Subject: [PATCH] Add #include <cstdint> to fix building with gcc 15
+
+With gcc 15, the C++ Standard Library no longer includes other headers
+that were internally used by the library. In luau's case the missing
+header is <cstdint>
+
+Downstream Gentoo bug: https://bugs.gentoo.org/938122
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ Analysis/src/TypedAllocator.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Analysis/src/TypedAllocator.cpp b/Analysis/src/TypedAllocator.cpp
+index a2f49afbd..16c844e8d 100644
+--- a/Analysis/src/TypedAllocator.cpp
++++ b/Analysis/src/TypedAllocator.cpp
+@@ -26,6 +26,8 @@ const size_t kPageSize = sysconf(_SC_PAGESIZE);
+ 
+ #include <stdlib.h>
+ 
++#include <cstdint>
++
+ LUAU_FASTFLAG(DebugLuauFreezeArena)
+ 
+ namespace Luau
