@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 inherit depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
@@ -18,36 +18,38 @@ IUSE="fastcgi imagemagick ldap +minimagick mysql passenger pdf postgres +standal
 ruby_add_bdepend "
 	fastcgi? ( dev-ruby/fcgi )
 	ldap? ( >=dev-ruby/ruby-net-ldap-0.17.0 )
-	minimagick? ( >=dev-ruby/mini_magick-4.12.0 )
+	minimagick? ( >=dev-ruby/mini_magick-5.0.1 )
 	mysql? (
 		>=dev-ruby/mysql2-0.5.0:0.5
 		dev-ruby/with_advisory_lock
 	)
 	passenger? ( www-apache/passenger )
 	postgres? ( >=dev-ruby/pg-1.5.3:1 )
-	sqlite? ( >=dev-ruby/sqlite3-1.6.0 )
+	sqlite? ( >=dev-ruby/sqlite3-1.7.0 )
 	dev-ruby/actionpack-xml_parser:2
 	dev-ruby/addressable
 	>=dev-ruby/commonmarker-0.23.8
-	>=dev-ruby/csv-3.2.6:3
+	>=dev-ruby/csv-3.2.8:3
 	>=dev-ruby/deckar01-task_list-2.3.2
 	>=dev-ruby/html-pipeline-2.13.2
 	>=dev-ruby/i18n-1.14.1:1
 	>=dev-ruby/mail-2.8.1
 	dev-ruby/marcel
 	>=dev-ruby/mini_mime-1.1.0
-	>=dev-ruby/net-imap-0.3.4
+	>=dev-ruby/net-imap-0.4.8
 	>=dev-ruby/net-pop-0.1.2
-	>=dev-ruby/net-smtp-0.3.3
-	>=dev-ruby/nokogiri-1.15.2
-	>=dev-ruby/rails-6.1.7.6:6.1
+	>=dev-ruby/net-smtp-0.4.0
+	>=dev-ruby/nokogiri-1.16.0
+	>=dev-ruby/propshaft-1.1.0:1
+	>=dev-ruby/rack-3.1.3:3.1
+	>=dev-ruby/rails-7.2.2.1:7.2
 	>=dev-ruby/rbpdf-1.21.3
 	>=dev-ruby/redcarpet-3.6.0
 	>=dev-ruby/request_store-1.5.0:0
 	dev-ruby/rexml
-	>=dev-ruby/roadie-rails-3.1.0:3
+	>=dev-ruby/roadie-rails-3.2.0:3
 	>=dev-ruby/rotp-5.0.0
-	>=dev-ruby/rouge-4.2.0
+	>=dev-ruby/rouge-4.5.0
 	dev-ruby/rqrcode
 	>=dev-ruby/rubyzip-2.3.0:2
 	>=dev-ruby/sanitize-6.0:6
@@ -68,6 +70,8 @@ REDMINE_DIR="/var/lib/${PN}"
 
 all_ruby_prepare() {
 	rm -fr log files/delete.me .github || die
+	# remove empty unused directories
+	rm -fr public/help || die
 
 	# bug #406605
 	rm .{git,hg}ignore || die
@@ -82,10 +86,9 @@ all_ruby_prepare() {
 	sed -i -e "s/~>/>=/g" Gemfile || die
 
 	# bug #724464
-	sed -i -e "s/gem 'rails',.*/gem 'rails', '~>6.1.7'/" Gemfile || die
+	sed -i -e "s/gem 'rails',.*/gem 'rails', '~>7.2.2'/" Gemfile || die
 
-	# Commonmark
-	sed -i -e "s/'2.3.2'/'>=2.3.2'/" Gemfile || die
+	sed -i -e "s/'deckar01-task_list',.*/'deckar01-task_list', '~>2.3.2'/" Gemfile || die
 
 	sed -i -e "/group :development do/,/^end$/d" Gemfile || die
 	sed -i -e "/group :test do/,/^end$/d" Gemfile || die
@@ -109,7 +112,7 @@ all_ruby_prepare() {
 
 all_ruby_install() {
 	dodoc doc/* README.rdoc
-	rm -r doc test appveyor.yml CONTRIBUTING.md README.rdoc || die
+	rm -r doc test CONTRIBUTING.md README.rdoc || die
 
 	keepdir /var/log/${PN}
 
@@ -174,12 +177,6 @@ pkg_postinst() {
 		elog "Installation notes are at official site"
 		elog "http://www.redmine.org/wiki/redmine/RedmineInstall"
 	fi
-
-	elog
-	elog "OpenID support was removed in Redmine 5.0. If you are using OpenID"
-	elog "authentication, you should switch back to Redmine 4.2 or install and"
-	elog "enable an OpenID plugin. See https://redmine.org/issues/35755."
-	elog
 }
 
 pkg_config() {
