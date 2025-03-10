@@ -4,7 +4,7 @@
 # @ECLASS: toolchain.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Common code for sys-devel/gcc ebuilds
 # @DESCRIPTION:
 # Common code for sys-devel/gcc ebuilds (and occasionally GCC forks, like
@@ -17,7 +17,7 @@ _TOOLCHAIN_ECLASS=1
 RUST_OPTIONAL="1"
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -462,13 +462,8 @@ PDEPEND=">=sys-devel/gcc-config-2.11"
 # @ECLASS_VARIABLE: TOOLCHAIN_PATCH_SUFFIX
 # @DESCRIPTION:
 # Used to override compression used for for patchsets.
-# Default is xz for EAPI 8+ and bz2 for older EAPIs.
-if [[ ${EAPI} == 8 ]] ; then
+# Default is xz for EAPI 8+.
 	: "${TOOLCHAIN_PATCH_SUFFIX:=xz}"
-else
-	# Older EAPIs
-	: "${TOOLCHAIN_PATCH_SUFFIX:=bz2}"
-fi
 
 # @ECLASS_VARIABLE: TOOLCHAIN_SET_S
 # @DESCRIPTION:
@@ -765,11 +760,10 @@ do_gcc_gentoo_patches() {
 				fi
 			fi
 
-			local shopt_save=$(shopt -p nullglob)
+			local -
 			shopt -s nullglob
 			einfo "Applying musl patches ..."
 			eapply "${WORKDIR}"/musl/{,nocross/}*.patch
-			${shopt_save}
 		fi
 	fi
 }
