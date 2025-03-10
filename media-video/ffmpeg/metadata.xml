@@ -104,6 +104,7 @@
 		<flag name="rabbitmq">Enable AMQP stream support via <pkg>net-libs/rabbitmq-c</pkg></flag>
 		<flag name="rav1e">Enable AV1 encoding support via <pkg>media-video/rav1e</pkg></flag>
 		<flag name="rubberband">Enable time-stretching and pitch-shifting audio filter support via <pkg>media-libs/rubberband</pkg></flag>
+		<flag name="sdl">Enable use of the Simple Direct Layer library (required for the ffplay command)</flag>
 		<flag name="shaderc">Enable support for various GPU-accelerated filters using Vulkan compiled with <pkg>media-libs/shaderc</pkg></flag>
 		<flag name="snappy">
 			Enable Snappy compression support via <pkg>app-arch/snappy</pkg>
