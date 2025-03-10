@@ -107,6 +107,7 @@ sys-kernel/installkernel -grub
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # media-libs/shaderc in not keyworded
 media-video/ffmpeg shaderc
+media-video/ffmpeg-compat shaderc
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
@@ -171,6 +172,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # Boost has support for ARM32

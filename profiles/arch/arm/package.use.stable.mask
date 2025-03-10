@@ -16,6 +16,7 @@ x11-misc/xdg-utils plasma
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
 # media-libs/libplacebo is not stable here
 media-video/ffmpeg libplacebo
+media-video/ffmpeg-compat libplacebo
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # Experimental, virt-firmware is keyworded only unstable
@@ -139,6 +140,7 @@ media-sound/mpd fluidsynth
 # Alexis Ballier <aballier@gentoo.org> (2017-05-29)
 # frei0r-plugins is not stable yet, mask it on stable versions
 media-video/ffmpeg frei0r
+media-video/ffmpeg-compat frei0r
 
 # Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
