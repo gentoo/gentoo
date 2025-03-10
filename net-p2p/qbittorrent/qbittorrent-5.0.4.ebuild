@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,13 +16,13 @@ else
 		https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz
 		verify-sig? ( https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz.asc )
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-qbittorrent )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qBittorrent.asc
 fi
 
-LICENSE="GPL-2+ GPL-3+"
+LICENSE="GPL-2+-with-openssl-exception GPL-3+-with-openssl-exception"
 SLOT="0"
 IUSE="+dbus +gui systemd test webui"
 RESTRICT="!test? ( test )"
@@ -54,7 +54,7 @@ BDEPEND+="
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
+DOCS=( AUTHORS Changelog {CONTRIBUTING,README}.md )
 
 src_prepare() {
 	MULTIBUILD_VARIANTS=()
@@ -120,7 +120,6 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake_src_install
-	einstalldocs
 
 	if use webui; then
 		newconfd "${FILESDIR}/${PN}.confd" "${PN}"
