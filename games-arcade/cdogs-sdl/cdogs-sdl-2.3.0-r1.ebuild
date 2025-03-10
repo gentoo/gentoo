@@ -19,11 +19,10 @@ LICENSE="
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# bug #950965 wrt sdl2-mixer
 RDEPEND="
 	media-libs/libsdl2[haptic,opengl]
 	media-libs/sdl2-image[png]
-	<media-libs/sdl2-mixer-2.8[mp3,vorbis,wav]
+	media-libs/sdl2-mixer[mp3,vorbis,wav]
 	net-libs/enet:1.3=
 "
 DEPEND="${RDEPEND}"
