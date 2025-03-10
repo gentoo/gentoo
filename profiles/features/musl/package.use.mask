@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit is unavailable on musl
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Sam James <sam@gentoo.org> (2025-01-08)
 # Depends on currently-masked elogind version on musl profiles (bug #947739)
 sys-libs/pam elogind

@@ -3,7 +3,8 @@
 
 # Sam James <sam@gentoo.org> (2025-02-21)
 # Needs Rust
-media-video/ffmpeg rav1e
+media-video/ffmpeg rav1e svg
+media-video/ffmpeg-compat rav1e svg
 
 # Viorel Munteanu <ceamac@gentoo.org> (2025-01-24)
 # Requires dev-python/asyncssh.
