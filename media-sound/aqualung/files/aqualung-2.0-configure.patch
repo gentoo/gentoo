@@ -1,0 +1,23 @@
+From ecb4cd11d6eefaf8b4a97d837a986623bcff653a Mon Sep 17 00:00:00 2001
+From: Daniel Pielmeier <billie80@users.noreply.github.com>
+Date: Sun, 9 Mar 2025 14:01:28 +0100
+Subject: [PATCH] Fix typo in configure.ac
+
+The platform defines added  in commit 8e62717 introduced an unnecessary comma which results in a configure warning.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8113679..dac7b39 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -270,7 +270,7 @@ AQUALUNG_DETECT([lavc], [Libav / FFmpeg],
+ AQUALUNG_DETECT([MAC], [Monkey's Audio Codec],
+     [AC_CHECK_LIB([MAC], [CreateIAPEDecompress],
+         [
+-          AQUALUNG_FOUND([MAC], [-lMAC -lstdc++]),
++          AQUALUNG_FOUND([MAC], [-lMAC -lstdc++])
+           AS_CASE([$host_os],
+             [cygwin*|mingw*], [AC_DEFINE([PLATFORM_WINDOWS], [1], [Defined if Windows])],
+             [darwin*], [AC_DEFINE([PLATFORM_DARWIN], [1], [Defined if Darwin])],
