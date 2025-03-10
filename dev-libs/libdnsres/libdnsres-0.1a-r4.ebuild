@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools
+EAPI=8
+
+inherit autotools flag-o-matic
 
 DESCRIPTION="A non-blocking DNS resolver library"
 HOMEPAGE="https://www.monkey.org/~provos/libdnsres/"
@@ -17,6 +18,7 @@ DEPEND="dev-libs/libevent"
 RDEPEND="${DEPEND}"
 
 DOCS=( README )
+
 PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 )
@@ -28,6 +30,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #912307
+	append-flags -std=gnu17
+
 	econf $(use_enable static-libs static)
 }
 
