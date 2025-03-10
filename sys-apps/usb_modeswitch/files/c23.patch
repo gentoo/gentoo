@@ -1,0 +1,23 @@
+get_current_config_value doesn't take any arguments, dev is a global variable.
+
+Bug: https://bugs.gentoo.org/944427
+--- a/usb_modeswitch.c
++++ b/usb_modeswitch.c
+@@ -570,7 +570,7 @@ int main(int argc, char **argv)
+ 	/* Get current configuration of default device, note value if Configuration
+ 	 * parameter is set. Also sets active_config
+ 	 */
+-	currentConfigVal = get_current_config_value(dev);
++	currentConfigVal = get_current_config_value();
+ 	if (Configuration > -1) {
+ 		SHOW_PROGRESS(output,"Current configuration number is %d\n", currentConfigVal);
+ 	} else
+@@ -772,7 +772,7 @@ int main(int argc, char **argv)
+ 	if (Configuration > 0) {
+ 		if (currentConfigVal != Configuration) {
+ 			if (switchConfiguration()) {
+-				currentConfigVal = get_current_config_value(dev);
++				currentConfigVal = get_current_config_value();
+ 				if (currentConfigVal == Configuration) {
+ 					SHOW_PROGRESS(output,"The configuration was set successfully\n");
+ 				} else {
