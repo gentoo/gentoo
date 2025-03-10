@@ -17,6 +17,7 @@ media-libs/gexiv2 test
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libvpx casualties (#700902)
 media-video/ffmpeg vpx
+media-video/ffmpeg-compat vpx
 www-client/firefox system-libvpx
 www-client/seamonkey system-libvpx
 media-video/vlc vpx
@@ -36,6 +37,7 @@ games-engines/scummvm vpx
 # media-libs/libaom casualties
 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
 media-video/ffmpeg libaom
+media-video/ffmpeg-compat libaom
 www-client/firefox system-av1
 www-client/seamonkey system-av1
 media-video/vlc aom

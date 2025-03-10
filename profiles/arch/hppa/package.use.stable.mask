@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -258,6 +258,7 @@ media-gfx/imagemagick raw
 # media-libs/{libdc1394,x264} is not stable.
 # media-libs/game-music-emu is not stable.
 media-video/ffmpeg gme ieee1394 x264
+media-video/ffmpeg-compat gme ieee1394 x264
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-06)
 # sci-visualization/gnuplot is not stable.

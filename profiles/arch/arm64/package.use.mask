@@ -132,6 +132,7 @@ app-arch/rpm -sequoia
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # media-libs/shaderc in not keyworded
 media-video/ffmpeg shaderc
+media-video/ffmpeg-compat shaderc
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
 # Unmask on specific arches where it's available.
@@ -195,6 +196,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-02-26)
 # Supports 64-bit NEON
@@ -412,6 +414,7 @@ media-libs/mlt -sdl
 media-libs/openal -sdl
 media-sound/mpg123 -sdl
 media-video/ffmpeg -sdl
+media-video/ffmpeg-compat -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
 >=x11-libs/wxGTK-3 -sdl
