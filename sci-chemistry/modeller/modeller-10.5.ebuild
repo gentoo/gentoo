@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,8 @@ IUSE="doc examples"
 
 RESTRICT="mirror"
 
-DEPEND=">=dev-lang/swig-1.3"
+# <swig-4.3.0 for https://bugs.gentoo.org/950475
+BDEPEND="<dev-lang/swig-4.3.0"
 
 PATCHES=( "${FILESDIR}/${P}-fix-except.patch" )
 

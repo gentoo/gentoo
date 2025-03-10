@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -279,6 +279,7 @@ PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
 	"${FILESDIR}"/kodi-21.1-silence-libdvdread-git.patch
 	"${FILESDIR}"/kodi-21.1-fix-gcc15.patch
+	"${FILESDIR}"/kodi-21.1-fix-swig-4.3.0-build-pr25863.patch
 )
 
 # bug #544020
