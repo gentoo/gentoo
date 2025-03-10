@@ -1,15 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Ridiculously functional reminder program"
 HOMEPAGE="https://dianne.skoll.ca/projects/remind/"
-SRC_URI="https://salsa.debian.org/dskoll/remind/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="https://dianne.skoll.ca/projects/remind/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="tk"
 
 RDEPEND="
@@ -21,9 +21,7 @@ DEPEND="${RDEPEND}
 	dev-perl/Pango
 	virtual/perl-Getopt-Long
 "
-DOCS="docs/* examples/defs.rem "
-
-PATCHES=( "${FILESDIR}"/${PN}-include-fix.patch )
+DOCS="docs/* examples/defs.rem"
 
 src_test() {
 	if [[ ${EUID} -eq 0 ]] ; then
