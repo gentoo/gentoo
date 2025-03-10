@@ -7,10 +7,12 @@ EAPI=8
 # uses jre:11 which may be unnecessary.
 inherit java-pkg-opt-2 prefix unpacker xdg
 
+BASE_SRC_URI="https://download.documentfoundation.org/libreoffice/stable/24.8.5/deb"
+
 DESCRIPTION="A full office productivity suite. Binary package"
 HOMEPAGE="https://www.libreoffice.org"
 SRC_URI_AMD64="
-	https://download.documentfoundation.org/libreoffice/stable/${PV}/deb/x86_64/LibreOffice_${PV}_Linux_x86-64_deb.tar.gz
+	${BASE_SRC_URI}/x86_64/LibreOffice_${PV}_Linux_x86-64_deb.tar.gz
 "
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
@@ -20,7 +22,40 @@ S="${WORKDIR}"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="-* amd64"
-IUSE="java python"
+IUSE="java offlinehelp python"
+
+# "en:en-US" for mapping from Gentoo "en" to upstream "en-US" etc.
+LANGUAGES_HELP=(
+	am ar ast bg bn-IN bn bo bs ca-valencia ca cs da de dz el en-GB en:en-US en-ZA
+	eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl
+	nn om pl pt-BR pt ro ru si sid sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW
+)
+LANGUAGES=(
+	${LANGUAGES_HELP[@]} af as be br brx ckb cy dgo dsb fa fur fy ga gd gug hsb kab
+	kk kmr-Latn kn kok ks lb mai ml mn mni mr my nr nso oc or pa:pa-IN rw sa:sa-IN
+	sat sd sr-Latn sr ss st sw-TZ szl te th tn ts tt uz ve vec xh zu
+)
+
+handle_lang() {
+	local lang helppack langpack
+
+	for lang in ${LANGUAGES_HELP[@]}; do
+		SRC_URI+=" l10n_${lang%:*}? (
+			offlinehelp? (
+				${BASE_SRC_URI}/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb_helppack_${lang#*:}.tar.gz
+			)
+		)"
+	done
+	for lang in ${LANGUAGES[@]}; do
+		if [[ ${lang%:*} != en ]]; then
+			SRC_URI+=" l10n_${lang%:*}? (
+				${BASE_SRC_URI}/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb_langpack_${lang#*:}.tar.gz
+			)"
+		fi
+		IUSE+=" l10n_${lang%:*}"
+	done
+}
+handle_lang
 
 RDEPEND="
 	acct-group/libreoffice
@@ -65,9 +100,6 @@ RDEPEND="
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( virtual/jre:11 )
 "
-PDEPEND="
-	=app-office/libreoffice-l10n-$(ver_cut 1-2)*
-"
 RESTRICT="test strip"
 
 QA_PREBUILT="opt/* usr/*"
@@ -75,7 +107,7 @@ QA_PREBUILT="opt/* usr/*"
 src_unpack() {
 	default
 
-	BINPKG_BASE=$(find "${WORKDIR}" -mindepth 1 -maxdepth 1 -name 'LibreOffice_*' -type d -print || die)
+	BINPKG_BASE=$(find "${WORKDIR}" -mindepth 1 -maxdepth 1 -name 'LibreOffice_*_deb' -type d -print || die)
 	BINPKG_BASE="${BINPKG_BASE##${WORKDIR}}"
 	[[ -z ${BINPKG_BASE} ]] && die "Failed to detect binary package directory!"
 
