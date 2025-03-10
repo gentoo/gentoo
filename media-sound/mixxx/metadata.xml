@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="benchmark">Build and install benchmark binary: mixxx-test --benchmark</flag>
-		<flag name="hid">Enable HID controller support</flag>
 		<flag name="keyfinder">Enable musical key detection support via <pkg>media-libs/libkeyfinder</pkg></flag>
 		<flag name="lv2">Add support for Ladspa V2 via <pkg>media-libs/lilv</pkg></flag>
 		<flag name="midi">Enable MIDI support via <pkg>media-libs/portmidi</pkg></flag>
