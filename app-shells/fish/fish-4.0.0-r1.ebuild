@@ -119,6 +119,8 @@ src_configure() {
 src_compile() {
 	local -x PREFIX="${EPREFIX}/usr"
 	local -x DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
+	# Bug: https://bugs.gentoo.org/950699
+	local -x SYSCONFDIR="${EPREFIX}/etc"
 	local -x CMAKE_WITH_GETTEXT
 	CMAKE_WITH_GETTEXT="$(usex nls 1 0)"
 	cargo_src_compile
