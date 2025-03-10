@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ada.eclass
@@ -49,7 +49,7 @@ _ADA_ECLASS=1
 # Example value:
 # @CODE
 # ada_target_gcc_12? ( sys-devel/gcc:12[ada] )
-# ada_target_gnat_2021? ( dev-lang/gnat-gps:2021[ada] )
+# ada_target_gcc_13? ( sys-devel/gcc:13[ada] )
 # @CODE
 
 # @ECLASS_VARIABLE: _ADA_ALL_IMPLS
@@ -57,7 +57,7 @@ _ADA_ECLASS=1
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2021 gcc_12 gcc_13 gcc_14 gcc_15
+	gcc_12 gcc_13 gcc_14 gcc_15
 )
 readonly _ADA_ALL_IMPLS
 
@@ -77,7 +77,7 @@ readonly _ADA_ALL_IMPLS
 #
 # Example value:
 # @CODE
-# ^^ ( ada_target_gnat_2021 ada_target_gcc_12 )
+# ^^ ( ada_target_gcc_12 ada_target_gcc_13 )
 # @CODE
 
 # @ECLASS_VARIABLE: ADA_USEDEP
@@ -119,7 +119,7 @@ _ada_impl_supported() {
 	# keep in sync with _ADA_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		gnat_2021|gcc_12|gcc_13|gcc_14|gcc_15)
+		gcc_12|gcc_13|gcc_14|gcc_15)
 			return 0
 			;;
 		*)
@@ -213,7 +213,7 @@ ada_export() {
 	local impl var
 
 	case "${1}" in
-		gnat_2021|gcc_12|gcc_13|gcc_14|gcc_15)
+		gcc_12|gcc_13|gcc_14|gcc_15)
 			impl=${1}
 			shift
 			;;
@@ -229,10 +229,6 @@ ada_export() {
 	local gcc_pv
 	local slot
 	case "${impl}" in
-		gnat_2021)
-			gcc_pv=10
-			slot=10
-			;;
 		gcc_12)
 			gcc_pv=12
 			slot=12
@@ -299,9 +295,6 @@ ada_export() {
 				;;
 			ADA_PKG_DEP)
 				case "${impl}" in
-					gnat_2021)
-						ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
-						;;
 					gcc_12|gcc_13|gcc_14|gcc_15)
 						ADA_PKG_DEP="sys-devel/gcc:${slot}[ada]"
 						;;
