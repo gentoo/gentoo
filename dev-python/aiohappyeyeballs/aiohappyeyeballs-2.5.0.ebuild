@@ -23,6 +23,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 BDEPEND="
+	>=dev-python/poetry-core-2.0.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/pytest-asyncio-0.23.2[${PYTHON_USEDEP}]
 	)
