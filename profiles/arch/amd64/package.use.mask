@@ -226,6 +226,7 @@ net-misc/curl -rustls -curl_ssl_rustls
 # Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv
+media-video/ffmpeg-compat -qsv
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
@@ -254,6 +255,7 @@ media-libs/libva-intel-driver -hybrid
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Unmask AMF keyword on amd64 only
 media-video/ffmpeg -amf
+media-video/ffmpeg-compat -amf
 media-video/handbrake -amf
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)

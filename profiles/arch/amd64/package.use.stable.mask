@@ -80,11 +80,13 @@ net-misc/curl rustls curl_ssl_rustls
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/libvpl
 media-video/ffmpeg qsv
+media-video/ffmpeg-compat qsv
 media-video/handbrake qsv
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # needs stabilizing
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
