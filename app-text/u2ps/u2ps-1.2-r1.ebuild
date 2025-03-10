@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A text to PostScript converter like a2ps, but supports UTF-8"
 HOMEPAGE="https://github.com/arsv/u2ps"
@@ -23,6 +23,8 @@ PATCHES=(
 )
 
 src_configure() {
+	# bug #945504
+	append-flags -std=gnu17
 	# this isnt autoconf, so econf fails...
 	tc-export CC
 	./configure \
