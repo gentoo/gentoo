@@ -38,10 +38,6 @@ src_install() {
 	fperms 444 /usr/share/tlp/defaults.conf # manpage says this file should not be edited
 	newinitd "${FILESDIR}/tlp.init" tlp
 	keepdir /var/lib/tlp # created by Makefile, probably important
-
-	# <elogind-255.5 used a different path (bug #939216), keep a compat symlink
-	# TODO: cleanup after 255.5 been stable for a few months
-	dosym {/usr/lib,/"$(get_libdir)"}/elogind/system-sleep/49-tlp-sleep
 }
 
 pkg_postinst() {
