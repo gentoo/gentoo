@@ -193,6 +193,7 @@ lxqt-base/lxqt-meta desktop-portal
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # dev-util/hip and its rocm dependencies not keyworded here
