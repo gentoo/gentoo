@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/898570
+
+Fix warning of implicit function declarations for _exit
+
+gettext-0.22.3 had similar fix applied already
+diff --git a/gettext-runtime/intl/gnulib-m4/printf.m4 b/gettext-runtime/intl/gnulib-m4/printf.m4
+index 6f91777..3e245dc 100644
+--- a/gettext-runtime/intl/gnulib-m4/printf.m4
++++ b/gettext-runtime/intl/gnulib-m4/printf.m4
+@@ -894,6 +894,7 @@ AC_DEFUN([gl_PRINTF_DIRECTIVE_N],
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #ifdef _MSC_VER
+ #include <inttypes.h>
+ /* See page about "Parameter Validation" on msdn.microsoft.com.
+diff --git a/libtextstyle/gnulib-m4/printf.m4 b/libtextstyle/gnulib-m4/printf.m4
+index 6f91777..2285711 100644
+--- a/libtextstyle/gnulib-m4/printf.m4
++++ b/libtextstyle/gnulib-m4/printf.m4
+@@ -1708,6 +1708,7 @@ AC_DEFUN([gl_SNPRINTF_DIRECTIVE_N],
+ #include <signal.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <unistd.h>
+ #if HAVE_SNPRINTF
+ # define my_snprintf snprintf
+ #else
