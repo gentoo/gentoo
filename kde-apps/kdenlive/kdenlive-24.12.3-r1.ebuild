@@ -16,7 +16,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 
 LICENSE="GPL-3"
 SLOT="6"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="gles2-only semantic-desktop v4l"
 
 RESTRICT="test" # segfaults, bug 684132
@@ -57,7 +57,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
-	media-video/ffmpeg[encode,libass,sdl,X]
+	media-video/ffmpeg[encode(+),libass,sdl,X]
 	media-video/mediainfo
 "
 BDEPEND="sys-devel/gettext"
