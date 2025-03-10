@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -162,7 +162,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	media-libs/amf-headers
+	<media-libs/amf-headers-1.4.35
 	=media-libs/nv-codec-headers-12*
 	wayland? ( dev-libs/wayland-protocols )
 "
