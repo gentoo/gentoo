@@ -29,7 +29,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 
 RDEPEND="
 	>=dev-python/babel-2.7.0[${PYTHON_USEDEP}]
