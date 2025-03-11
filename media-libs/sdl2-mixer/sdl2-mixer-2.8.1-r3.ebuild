@@ -38,7 +38,7 @@ RDEPEND="
 	)
 	mod? (
 		modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
-		xmp? ( media-libs/libxmp )
+		xmp? ( media-libs/libxmp[${MULTILIB_USEDEP}] )
 	)
 	mp3? ( media-sound/mpg123-base[${MULTILIB_USEDEP}] )
 	opus? ( media-libs/opusfile[${MULTILIB_USEDEP}] )
