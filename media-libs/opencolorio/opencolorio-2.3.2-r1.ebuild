@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit cmake python-single-r1 virtualx
 
@@ -32,7 +32,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-cpp/pystring
+	dev-cpp/pystring:=
 	>=dev-cpp/yaml-cpp-0.7.0:=
 	dev-libs/expat
 	>=dev-libs/imath-3.1.5:=
