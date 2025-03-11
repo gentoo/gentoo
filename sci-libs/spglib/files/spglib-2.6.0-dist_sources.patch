@@ -1,0 +1,48 @@
+Always use sources instead of a hypothetical installed package.
+diff '--color=auto' -uNr a/fortran/CMakeLists.txt b/fortran/CMakeLists.txt
+--- a/fortran/CMakeLists.txt	2025-03-12 19:45:47.109635926 -0000
++++ b/fortran/CMakeLists.txt	2025-03-12 19:46:51.964594152 -0000
+@@ -77,11 +77,8 @@
+ 
+ # Get Spglib if it's run as stand-alone project
+ if (NOT TARGET Spglib::symspg)
+-    find_package(Spglib CONFIG)
+-    if (NOT Spglib_FOUND)
+         message(STATUS "Using bundled spglib sources")
+         add_subdirectory(${PROJECT_SOURCE_DIR}/.. _deps/spglib-build)
+-    endif ()
+ endif ()
+ 
+ #[=============================================================================[
+diff '--color=auto' -uNr a/python/CMakeLists.txt b/python/CMakeLists.txt
+--- a/python/CMakeLists.txt	2025-03-12 19:45:47.113635861 -0000
++++ b/python/CMakeLists.txt	2025-03-12 19:47:13.720244693 -0000
+@@ -47,11 +47,8 @@
+ 
+ # Get Spglib if it's run as stand-alone project
+ if (NOT TARGET Spglib::symspg)
+-    find_package(Spglib CONFIG)
+-    if (NOT Spglib_FOUND)
+         message(STATUS "Using bundled spglib sources")
+         add_subdirectory(${PROJECT_SOURCE_DIR}/.. _deps/spglib-build)
+-    endif ()
+ endif ()
+ 
+ #[=============================================================================[
+diff '--color=auto' -uNr a/test/CMakeLists.txt b/test/CMakeLists.txt
+--- a/test/CMakeLists.txt	2025-03-12 19:45:47.113635861 -0000
++++ b/test/CMakeLists.txt	2025-03-12 19:47:43.499766319 -0000
+@@ -75,13 +75,11 @@
+ 
+ # Get Spglib if it's run as stand-alone project
+ if (NOT TARGET Spglib::symspg)
+-    set(spglib_find_package_args)
+     if (SPGLIB_WITH_Fortran)
+         list(APPEND
+                 COMPONENTS Fortran
+         )
+     endif ()
+-    find_package(Spglib REQUIRED CONFIG ${spglib_find_package_args})
+ endif ()
+ 
+ set(BUILD_GMOCK OFF)
