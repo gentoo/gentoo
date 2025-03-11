@@ -3,25 +3,21 @@
 
 EAPI=8
 
+MY_PV="${PV/_p/pl}"
+MY_P="${PN}-${MY_PV}"
+
 inherit check-reqs desktop dune edo
 
 DESCRIPTION="Proof assistant written in O'Caml"
-HOMEPAGE="https://coq.inria.fr/
+HOMEPAGE="http://coq.inria.fr/
 	https://github.com/coq/coq/"
-
-if [[ "${PV}" == *9999* ]] ; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/coq/coq.git"
-else
-	SRC_URI="https://github.com/coq/coq/archive/V${PV}.tar.gz
-		-> ${P}.tar.gz"
-
-	KEYWORDS="amd64 ~arm64 ~x86"
-fi
+SRC_URI="https://github.com/coq/coq/archive/V${MY_PV}.tar.gz
+	-> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug doc gui +ocamlopt test"
 
 # TODO: Lots of failing tests. Maybe investigate later.
@@ -57,6 +53,7 @@ BDEPEND="
 	test? (
 		dev-ml/ounit2
 	)
+	<dev-lang/ocaml-5
 "
 
 CHECKREQS_DISK_BUILD="2G"
@@ -65,22 +62,8 @@ DOCS=( CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS INSTALL.md README.md )
 DUNE_PACKAGES=()
 
 src_prepare() {
-	# Remove bad tests (recursive).
-	local -a bad_tests=(
-		coq-makefile/timing-aggregate
-		coq-makefile/timing-error
-		coq-makefile/timing-per-file
-		coq-makefile/timing-per-line
-		coq-makefile/timing-template
-	)
-	local bad_test=""
-	for bad_test in "${bad_tests[@]}" ; do
-		if [[ -e "test-suite/${bad_test}" ]] ; then
-			rm -r "test-suite/${bad_test}" || die "failed to remove test ${bad_test}"
-		else
-			ewarn "Test file ${bad_test} does not exist"
-		fi
-	done
+	# Remove failing tests. bug #904186
+	rm -r test-suite/coq-makefile/timing || die
 
 	default
 }
@@ -112,7 +95,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake DUNEOPT="--display=short --profile release" VERBOSE="1" dunestrap
+	emake DUNEOPT="--display=short --profile release" VERBOSE=1 dunestrap
 
 	dune-compile "${DUNE_PACKAGES[@]}"
 
@@ -126,11 +109,12 @@ src_install() {
 		make_desktop_entry coqide "Coq IDE" "${EPREFIX}/usr/share/coq/coq.png"
 	fi
 
-	local ocamlc_where="$(ocamlc -where)"
+	local ocamlc_where
+	ocamlc_where="$(ocamlc -where)"
 
 	# Dune installs into /usr/<libdir>/ocaml/<coq> but
 	# Coq wants /usr/<libdir>/<coq> ; symlink those directories
-	local sym=""
+	local sym
 	for sym in "${DUNE_PACKAGES[@]}" ; do
 		dosym "${ocamlc_where}/${sym}" "/usr/$(get_libdir)/${sym}"
 	done

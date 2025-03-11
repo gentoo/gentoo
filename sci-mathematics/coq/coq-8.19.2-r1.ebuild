@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="debug doc gui +ocamlopt test"
 
 # TODO: Lots of failing tests. Maybe investigate later.
@@ -53,6 +53,7 @@ BDEPEND="
 	test? (
 		dev-ml/ounit2
 	)
+	<dev-lang/ocaml-5
 "
 
 CHECKREQS_DISK_BUILD="2G"
