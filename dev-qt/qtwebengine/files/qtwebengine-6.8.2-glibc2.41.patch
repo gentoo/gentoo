@@ -1,7 +1,5 @@
 https://bugs.gentoo.org/949654
-
-Quick downstream fix for now. Hasn't been sent to upstream(s) yet
-as of the writing of this, but believe it should happen soon.
+https://bugreports.qt.io/browse/QTBUG-134631
 --- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 +++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 @@ -36,4 +36,8 @@
