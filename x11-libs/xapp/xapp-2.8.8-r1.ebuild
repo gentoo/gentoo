@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3 xfce? ( GPL-3 )"
 SLOT="0"
 
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gtk-doc introspection mate vala xfce"
 REQUIRED_USE="${PYTHON_REQUIRED_USE} vala? ( introspection )"
 
@@ -25,7 +25,7 @@ DEPEND="
 	gnome-base/libgnomekbd:=
 	x11-libs/cairo
 	>=x11-libs/gdk-pixbuf-2.22.0:2[introspection?]
-	>=x11-libs/gtk+-3.22.0:3[introspection?]
+	>=x11-libs/gtk+-3.22.0:3[introspection?,X]
 	x11-libs/libxkbfile
 	x11-libs/libX11
 	x11-libs/pango
@@ -59,14 +59,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	# Make introspection/vala optional
-	# https://github.com/linuxmint/xapp/pull/184
-	"${FILESDIR}"/${PN}-2.8.4-optional-introspection.patch
-
-	# Allow multiple gobject installation targets
-	# https://github.com/linuxmint/xapp/pull/183
-	"${FILESDIR}"/${PN}-2.8.4-multiple-python-targets.patch
-
 	# Don't install pastebin upload wrapper
 	"${FILESDIR}"/0001-don-t-install-pastebin-upload-wrapper.patch
 )
