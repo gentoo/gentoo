@@ -1833,6 +1833,11 @@ toolchain_src_configure() {
 		fi
 	fi
 
+	if [[ ${CTARGET} != *-darwin* ]] && tc_version_is_at_least 14.1 ; then
+		# This allows passing -stdlib-=libc++ at runtime.
+		confgcc+=( --with-gxx-libcxx-include-dir="${ESYSROOT}"/usr/include/c++/v1 )
+	fi
+
 	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/PR106899 being fixed
