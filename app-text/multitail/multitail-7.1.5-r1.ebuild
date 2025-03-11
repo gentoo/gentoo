@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,16 +20,24 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-gentoo.patch
+	"${FILESDIR}"/${PN}-7.1.5-ncurses.patch
+	"${FILESDIR}"/${PN}-7.1.5-cmake-gnuinstalldirs.patch
 )
 
 src_prepare() {
+	# Don't clobber toolchain defaults
+	sed -i -e '/-D_FORTIFY_SOURCE=2/d' CMakeLists.txt || die
+
 	cmake_src_prepare
+
 	# cmake looks for licence.txt to install it, which does not exist in the package
 	cp LICENSE license.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
+		-DUSE_CPPCHECK=OFF
 		-DUTF8_SUPPORT=$(usex unicode)
 	)
 	CMAKE_BUILD_TYPE=$(usex debug Debug)
@@ -39,12 +47,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-
-	insinto /etc
-	doins multitail.conf
-
-	rm -rf "${ED}"/usr/{ect,etc} || die
-	rm -rf "${ED}"/usr/share/doc/multitail-VERSION=${PV} || die
 
 	local DOCS=( README.md thanks.txt )
 	local HTML_DOCS=( manual.html )

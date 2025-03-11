@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/945647
+https://github.com/folkertvanheusden/multitail/pull/44
+
+From 4ebc884f2276a63c81532deb2e4a068b330d71aa Mon Sep 17 00:00:00 2001
+From: madjic <madjic@madjic.de>
+Date: Thu, 12 Dec 2024 23:31:09 +0100
+Subject: [PATCH] fix implicit function declaration for waddnwstr in linux
+
+---
+ mt.c | 2 --
+ mt.h | 4 ++--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/mt.c b/mt.c
+index 39a5c17..a97acad 100644
+--- a/mt.c
++++ b/mt.c
+@@ -707,8 +707,6 @@ void do_color_print(proginfo *cur, char *use_string, int prt_start, int prt_end,
+ 		if (!is_control_or_extended_ascii)
+ 		{
+ #if defined(UTF8_SUPPORT) && defined(NCURSES_WIDECHAR)
+-// FIXME warning: implicit declaration of function ‘waddnwstr’ is invalid in C99  [-Wimplicit-function-declaration]
+-// see /usr/include/ncurses.h
+ 			waddnwstr(win -> win, &wcur, 1);
+ #else
+ 			wprintw(win -> win, "%c", wcur);
+diff --git a/mt.h b/mt.h
+index f6c37a0..2f401eb 100644
+--- a/mt.h
++++ b/mt.h
+@@ -60,10 +60,10 @@ typedef enum { SCHEME_TYPE_EDIT = 0, SCHEME_TYPE_FILTER } filter_edit_scheme_t;
+ #endif
+ 
+ #if defined(UTF8_SUPPORT) && !defined(__APPLE__)
+-        #if defined(__FreeBSD__) || defined (__linux__)
++        #if defined(__FreeBSD__)
+                 #include <panel.h>
+                 #include <curses.h>
+-        #else
++        #else /* if defined (__linux__) */
+                 #include <ncursesw/panel.h>
+                 #include <ncursesw/ncurses.h>
+         #endif
+
