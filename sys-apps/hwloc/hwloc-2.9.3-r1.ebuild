@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,6 +53,11 @@ DOCS=( AUTHORS NEWS README VERSION )
 
 src_prepare() {
 	default
+
+	# bug #934428 #949986
+	if tc-is-gcc; then
+		eapply "${FILESDIR}/${PN}-2.11.2-fix-enable-gl.patch"
+	fi
 
 	eautoreconf
 }
