@@ -34,6 +34,7 @@
 			On arm64, GCC will set -mbranch-protection=standard by default
 			when building software.
 		</flag>
+		<flag name="cobol">Enable support for the COBOL programming language</flag>
 		<flag name="d">Enable support for the D programming language</flag>
 		<flag name="debug">
 			Enables GCC's 'checking' facility via --enable-checking=yes,extra,rtl.
