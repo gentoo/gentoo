@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,6 +64,10 @@ if [[ -n "${EGIT_REPO_URI}" ]]; then
 	# if we build from git asciidoc is needed.
 	BDEPEND+=" doc? ( app-text/asciidoc )"
 fi
+
+PATCHES=(
+	 "${FILESDIR}"/${PN}-0.9.5-gcc15.patch
+)
 
 src_prepare() {
 	# Do not install LICENSE and respect CMAKE_INSTALL_DOCDIR.
