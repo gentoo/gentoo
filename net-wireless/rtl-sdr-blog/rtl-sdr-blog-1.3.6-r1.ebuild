@@ -14,8 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+zerocopy"
 
-RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}"
+DEPEND="virtual/libusb:1"
+RDEPEND="
+	${DEPEND}
+	!net-wireless/rtl-sdr
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.6-disable-static.patch"
