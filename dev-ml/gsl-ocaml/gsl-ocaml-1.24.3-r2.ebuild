@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ IUSE="+ocamlopt"
 DEPEND="
 	dev-ml/dune-configurator
 	>=sci-libs/gsl-1.19:="
-RDEPEND="${DEPEND}
-	!dev-ml/ocamlgsl"
+RDEPEND="${DEPEND}"
+BDEPEND="<dev-lang/ocaml-5"
 
 # DOCS=( CHANGES.txt README.md NOTES.md TODO.md )
