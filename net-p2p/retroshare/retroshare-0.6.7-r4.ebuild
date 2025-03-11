@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic desktop qmake-utils xdg
+inherit desktop ffmpeg-compat flag-o-matic qmake-utils xdg
 
 DESCRIPTION="Friend to Friend secure communication and sharing application"
 HOMEPAGE="https://retroshare.cc"
@@ -45,7 +45,7 @@ RDEPEND="
 	plugins? (
 		media-libs/speex
 		media-libs/speexdsp
-		<media-video/ffmpeg-5
+		media-video/ffmpeg-compat:4
 	)
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
@@ -68,6 +68,13 @@ PATCHES=(
 )
 
 src_configure() {
+	# TODO: fix with >=ffmpeg-7 then drop ffmpeg-compat, or drop/mask plugins
+	if use plugins; then
+		ffmpeg_compat_setup 4
+		# hack: passes -L/usr/lib64 which messes with finding ffmpeg-compat
+		append-ldflags "-L$(ffmpeg_compat_get_prefix 4)/$(get_libdir)"
+	fi
+
 	local qconfigs=(
 		$(usex cli     '' 'no_')rs_service_terminal_login
 		$(usex keyring '' 'no_')rs_autologin
