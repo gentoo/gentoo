@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc +ocamlopt opengl truetype" #noimage nomixer
 
 RDEPEND="
-	>=dev-lang/ocaml-3.12:=[ocamlopt=]
+	<dev-lang/ocaml-5:=[ocamlopt=]
 	>=media-libs/libsdl-1.2
 	opengl? ( >=dev-ml/lablgl-0.98:= )
 	>=media-libs/sdl-mixer-1.2
