@@ -1,0 +1,21 @@
+Spacegroup test requires spglib feature, see tests/core/spacegrouptest.cpp:17
+--- a/tests/core/CMakeLists.txt
++++ b/tests/core/CMakeLists.txt
+@@ -16,13 +16,16 @@
+   Mutex
+   NeighborPerceiver
+   RingPerceiver
+-  Spacegroup
+   Utilities
+   UnitCell
+   Variant
+   VariantMap
+   )
+ 
++if(USE_SPGLIB)
++  list(APPEND tests Spacegroup)
++endif()
++
+ # Build up the source file names.
+ set(testSrcs "")
+ foreach(TestName ${tests})
