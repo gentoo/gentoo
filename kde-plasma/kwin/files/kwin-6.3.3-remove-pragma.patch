@@ -1,0 +1,29 @@
+From a3249e495907f0090119fc92e5d33530e0c4c285 Mon Sep 17 00:00:00 2001
+From: Ismael Asensio <isma.af@gmail.com>
+Date: Tue, 11 Mar 2025 20:48:15 +0100
+Subject: [PATCH] kcms/rules: Remove pragma on OptionsComboBox
+
+It is suggested by qmlls, but this seems to cause graphical artifacts
+on some systems, rendering the comboboxes unusable
+
+BUG: 501357
+---
+ src/kcms/rules/ui/OptionsComboBox.qml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/kcms/rules/ui/OptionsComboBox.qml b/src/kcms/rules/ui/OptionsComboBox.qml
+index 5a5d02eee9..d8a2eb8bf0 100644
+--- a/src/kcms/rules/ui/OptionsComboBox.qml
++++ b/src/kcms/rules/ui/OptionsComboBox.qml
+@@ -11,8 +11,6 @@ import QtQuick.Controls as QQC2
+ import org.kde.kirigami 2.10 as Kirigami
+ import org.kde.kcms.kwinrules
+ 
+-pragma ComponentBehavior: Bound
+-
+ 
+ QQC2.ComboBox {
+     id: optionsCombo
+-- 
+GitLab
+
