@@ -463,7 +463,6 @@ app-emulation/virtualbox-kvm
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
->=dev-lang/ocaml-5
 dev-ml/sexplib0:0/0.17
 dev-ml/ocaml_intrinsics:0/0.17
 dev-ml/ocaml_intrinsics_kernel:0/0.17
