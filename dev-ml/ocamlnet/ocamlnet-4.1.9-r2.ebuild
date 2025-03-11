@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ BDEPEND="
 "
 RDEPEND="
 	>=dev-ml/findlib-1.0
-	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+	<dev-lang/ocaml-5:=[ocamlopt?]
 	pcre? ( >=dev-ml/pcre-ocaml-5:= )
 	tk? ( dev-ml/labltk:= )
 	ssl? ( net-libs/gnutls:= )
@@ -34,6 +34,12 @@ RDEPEND="
 	zip? ( dev-ml/camlzip:= )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-unboundLexer.patch
+	"${FILESDIR}"/${P}-shuffle.patch
+	"${FILESDIR}"/${P}-noWhich.patch
+)
 
 ocamlnet_use_with() {
 	if use $1; then
@@ -49,6 +55,14 @@ ocamlnet_use_enable() {
 	else
 		echo "-disable-$2"
 	fi
+}
+
+src_prepare() {
+	sed -i \
+		-e "s:^version.*$:version=${PV}:" \
+		configure \
+		|| die
+	default
 }
 
 src_configure() {
