@@ -97,9 +97,9 @@ pkg_setup() {
 		TARGET_ARCH="LOONGARCH64"
 		QEMU_ARCH="loongarch64"
 		ARCH_DIRS="${DIR}/LoongArchVirtQemu"
-		UNIT0="QEMU_EFI.fd"
-		UNIT1="QEMU_VARS.fd"
-		FMT="raw"
+		UNIT0="QEMU_EFI.qcow2"
+		UNIT1="QEMU_VARS.qcow2"
+		FMT="qcow2"
 		;;
 	riscv)
 		TARGET_ARCH="RISCV64"
@@ -275,6 +275,7 @@ src_compile() {
 			-D NETWORK_TLS_ENABLE=FALSE
 		)
 		mybuild -a LOONGARCH64 -p OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc
+		raw_to_qcow2 0 Build/LoongArchVirtQemu/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		;;
 	riscv)
 		mybuild -a RISCV64 -p OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc
@@ -312,7 +313,7 @@ src_install() {
 		;;
 	loong)
 		insinto ${DIR}/LoongArchVirtQemu
-		doins Build/LoongArchVirtQemu/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
+		doins Build/LoongArchVirtQemu/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.qcow2
 		;;
 	riscv)
 		insinto ${DIR}/RiscVVirtQemu
