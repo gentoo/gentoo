@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,19 +13,18 @@ SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-1 GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 
 RDEPEND="
-	app-text/iso-codes
 	>=dev-libs/glib-2.37.3:2[dbus]
 	>=dev-libs/gobject-introspection-0.10.2:=
 	>=gnome-base/gsettings-desktop-schemas-3.5.91
 	>=media-libs/libpulse-12.99.3[glib]
 	sys-apps/accountsservice
-	virtual/libudev:=
+	sys-apps/hwdata
 	x11-libs/cairo[X]
 	>=x11-libs/gdk-pixbuf-2.22:2[introspection]
-	>=x11-libs/gtk+-3.3.16:3[introspection]
+	>=x11-libs/gtk+-3.3.16:3[introspection,X]
 	x11-libs/libX11
 	>=x11-libs/libXext-1.1
 	x11-libs/libxkbfile
@@ -44,12 +43,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	# Remove dead config option to prevent junk files from being installed
-	# https://github.com/linuxmint/cinnamon-desktop/pull/249
-	"${FILESDIR}/${PN}-6.4.0-remove-pnp_ids-option.patch"
-)
-
 src_prepare() {
 	default
 	python_fix_shebang install-scripts
@@ -57,6 +50,8 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		-Dpnp_ids="${EPREFIX}/usr/share/hwdata/pnp.ids"
+
 		# https://github.com/linuxmint/cinnamon-desktop/commit/7eadfb1da9a42384396978b8ab46e0725d18e04f
 		# > Unless/until this fixes an actual identified issue for us or provides significant advantages
 		# > we're not using it in Cinnamon.
