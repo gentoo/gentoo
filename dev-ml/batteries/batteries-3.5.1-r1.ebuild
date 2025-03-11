@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,10 @@ RDEPEND="
 	${DEPEND}
 	dev-ml/num:=
 "
-BDEPEND="dev-ml/ocamlbuild"
+BDEPEND="
+	dev-ml/ocamlbuild
+	<dev-lang/ocaml-5
+"
 
 src_compile() {
 	emake BATTERIES_NATIVE=$(usex ocamlopt yes no)

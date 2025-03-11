@@ -1,9 +1,9 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit findlib
+inherit dune
 
 DESCRIPTION="A community-maintained standard library extension"
 HOMEPAGE="https://github.com/ocaml-batteries-team/batteries-included/"
@@ -14,19 +14,12 @@ S="${WORKDIR}"/batteries-included-${PV}
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
+IUSE="+ocamlopt"
 RESTRICT="test"
 
 RDEPEND="
-	dev-ml/camlp-streams:=
-	dev-ml/num:=
+	dev-ml/camlp-streams:=[ocamlopt?]
+	dev-ml/num:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-ml/ocamlbuild"
-
-src_compile() {
-	emake BATTERIES_NATIVE=$(usex ocamlopt yes no)
-}
-
-src_install() {
-	findlib_src_install BATTERIES_NATIVE=$(usex ocamlopt yes no)
-}
+BDEPEND="<dev-lang/ocaml-5.3"
