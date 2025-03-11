@@ -20,8 +20,11 @@ LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 IUSE="+zerocopy"
 
-RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}"
+DEPEND="virtual/libusb:1"
+RDEPEND="
+	${DEPEND}
+	!net-wireless/rtl-sdr-blog
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.2-disable-static.patch"
