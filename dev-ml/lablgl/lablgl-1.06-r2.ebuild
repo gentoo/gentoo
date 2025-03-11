@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc glut +ocamlopt tk"
 
 RDEPEND="
-	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+	<dev-lang/ocaml-5:=[ocamlopt?]
 	x11-libs/libXext
 	x11-libs/libXmu
 	x11-libs/libX11
