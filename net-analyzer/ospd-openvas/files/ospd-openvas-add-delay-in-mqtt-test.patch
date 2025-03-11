@@ -1,0 +1,22 @@
+# Adds a delay to wait for daemon to be started before connect. Gentoo bug 934153
+# https://github.com/greenbone/ospd-openvas/pull/1026
+
+--- a/tests/messaging/test_mqtt.py
++++ b/tests/messaging/test_mqtt.py
+@@ -3,6 +3,7 @@
+ #
+ # SPDX-License-Identifier: AGPL-3.0-or-later
+ 
++import time
+ from datetime import datetime
+ from uuid import UUID
+ 
+@@ -93,6 +94,8 @@ class MQTTDaemonTestCase(TestCase):
+ 
+         daemon.run()
+ 
++        time.sleep(3)
++
+         client.connect.assert_called_with()
+ 
+         client.loop_start.assert_called_with()
