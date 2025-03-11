@@ -42,6 +42,10 @@
 			needed if using any of USE=gmp,librtmp,openssl), and for obtaining
 			random bytes (not needed if USE=openssl)</flag>
 		<flag name="gme">Enables various game music formats support via <pkg>media-libs/game-music-emu</pkg></flag>
+		<flag name="gnutls">
+			Enable using <pkg>net-libs/gnutls</pkg> for TLS/HTTPS support
+			and other minor functions (has no effect if USE=openssl is set)
+		</flag>
 		<flag name="glslang">Use <pkg>dev-util/glslang</pkg> to compile GLSL</flag>
 		<flag name="gpl">Enable use of GPL licensed code, should be kept enabled unless LGPL binaries are needed</flag>
 		<flag name="hardcoded-tables">
