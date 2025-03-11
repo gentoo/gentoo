@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,19 +20,23 @@ LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND="dev-db/sqlite:=
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtbase:6
+	dev-qt/qtsvg:6
 	x11-libs/libX11"
 
 DEPEND="${RDEPEND}"
 
 # https://github.com/gyunaev/birdtray/commit/74a97df3a17efd5ef679b8eed6999b97abc23f10
 # translations have been made optional, let's see how we would manage them
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="dev-qt/qttools:6"
+
+src_prepare() {
+	# https://github.com/gyunaev/birdtray/issues/606
+	sed -i 's/Qt5LinguistTools/Qt6LinguistTools/g' CMakeLists.txt || die
+	sed -i 's/qt5_/qt6_/g' CMakeLists.txt || die
+
+	cmake_src_prepare
+}
 
 pkg_postinst() {
 	xdg_icon_cache_update
