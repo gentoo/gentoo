@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm ~ppc x86"
 
 DEPEND=">=sys-libs/gdbm-1.9.1-r2[berkdb]
-	>=dev-lang/ocaml-3.12:=[ocamlopt]"
+	<dev-lang/ocaml-5:=[ocamlopt]"
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED=(
