@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/0.fudge"
 
 PATCHES=(
 	# This release doesn't install the header file.
