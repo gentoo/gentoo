@@ -1,0 +1,11 @@
+--- a/src/filter.c	2025-03-11 13:42:50.136160524 -0400
++++ b/src/filter.c	2025-03-11 13:43:06.210514768 -0400
+@@ -450,7 +450,7 @@ main (int argc, char *argv[])
+ 
+ 	debug_msg("call SendStartJob function\n");
+ 
+-	err = SendStartJob(FALSE);
++	err = SendStartJob();
+ 
+ 	if (err){
+ 		debug_msg("Error occurred in \"SendStartJob\": %d\n", err);
