@@ -36,11 +36,22 @@ BDEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 python_check_deps() {
-	if use test; then
+	if use doc && use test ; then
+		python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]" &&
 		python_has_version "dev-ada/e3-testsuite[${PYTHON_USEDEP}]" || return 1
-	fi;
-	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
+
+		return 0
+	elif use test; then
+		python_has_version "dev-ada/e3-testsuite[${PYTHON_USEDEP}]" || return 1
+
+		return 0
+	elif use doc; then
+		python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]" || return 1
+	fi
+
+	return 0
 }
 
 pkg_setup() {
