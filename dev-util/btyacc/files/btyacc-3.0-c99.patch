@@ -1,0 +1,45 @@
+Fold sed that fixed https://bugs.gentoo.org/361013 into patch
+Correct type for signal handler that ignores argument.
+https://bugs.gentoo.org/880971
+--- a/defs.h
++++ b/defs.h
+@@ -391,7 +391,7 @@
+ 
+ /* main.c */
+ void done(int);
+-void onintr(void);
++void onintr(int);
+ void set_signals(void);
+ void usage(void);
+ void getargs(int, char **);
+--- a/main.c
++++ b/main.c
+@@ -76,7 +76,7 @@
+ }
+ 
+ 
+-void onintr()
++void onintr(int ignored) //signal handler
+ {
+     done(1);
+ }
+@@ -264,7 +264,7 @@
+     if (tmpdir == 0) tmpdir = DEFAULT_TMPDIR;
+ 
+     len = strlen(tmpdir);
+-    i = len + 13;
++    i = len + 14;
+     if (len && tmpdir[len-1] != DIR_CHAR)
+ 	++i;
+ 
+--- a/reader.c
++++ b/reader.c
+@@ -291,7 +291,7 @@
+     cachec(NUL);
+     
+     if ((key = bsearch(cache, keywords, sizeof(keywords)/sizeof(*key),
+-		       sizeof(*key), strcmp)))
++		       sizeof(*key), (int (*)(const void*, const void*))strcmp)))
+       return key->token; 
+   } else {
+     ++cptr;
