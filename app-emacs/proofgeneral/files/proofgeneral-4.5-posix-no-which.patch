@@ -1,0 +1,40 @@
+From 2dac06d9e3f8e66f1619585c86f05a538a75de08 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Mon, 24 Feb 2025 19:29:48 +0100
+Subject: [PATCH] Makefile: Replace "which" by POSIX "command -v"
+
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7a5df5602..b9b28aab5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -21,7 +21,7 @@
+ 
+ # Set this according to your version of Emacs.
+ # NB: this is also used to set default install path names below.
+-EMACS=$(shell if [ -z "`which emacs`" ]; then echo "Emacs executable not found"; exit 1; else echo emacs; fi)
++EMACS=$(shell if [ -z "`command -v emacs`" ]; then echo "Emacs executable not found"; exit 1; else echo emacs; fi)
+ 
+ # We default to /usr rather than /usr/local because installs of
+ # desktop and doc files under /usr/local are unlikely to work with
+@@ -273,7 +273,7 @@ scripts: bashscripts perlscripts
+ 
+ .PHONY: bashscripts
+ bashscripts:
+-	(bash="`which bash`";					    \
++	(bash="`command -v bash`";					    \
+ 	 if [ -z "$$bash" ]; then				    \
+ 	   echo "Could not find bash - bash paths not checked" >&2; \
+ 	   exit 0;						    \
+@@ -281,7 +281,7 @@ bashscripts:
+ 
+ .PHONY: perlscripts
+ perlscripts:
+-	(perl="`which perl`";					    \
++	(perl="`command -v perl`";					    \
+ 	 if [ -z "$$perl" ]; then				    \
+ 	   echo "Could not find perl - perl paths not checked" >&2; \
+ 	   exit 0;						    \
