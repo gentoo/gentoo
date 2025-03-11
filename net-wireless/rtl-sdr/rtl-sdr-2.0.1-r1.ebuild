@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
 else
-	#COMMIT="142325a93c6ad70f851f43434acfdf75e12dfe03"
-	#SRC_URI="https://github.com/osmocom/rtl-sdr/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	#S="${WORKDIR}/${PN}-${COMMIT}"
+	# COMMIT="142325a93c6ad70f851f43434acfdf75e12dfe03"
+	# SRC_URI="https://github.com/osmocom/rtl-sdr/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	# S="${WORKDIR}/${PN}-${COMMIT}"
 	SRC_URI="https://github.com/osmocom/rtl-sdr/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 fi
@@ -24,7 +24,10 @@ SLOT="0"
 IUSE="+zerocopy"
 
 DEPEND="virtual/libusb:1"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!net-wireless/rtl-sdr-blog
+"
 
 PATCHES=(
 	"${FILESDIR}"/rtl-sdl-0.6.0_p2020802-fix-pkgconfig-libdir.patch
