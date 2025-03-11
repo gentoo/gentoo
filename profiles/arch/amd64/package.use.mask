@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# # Sam James <sam@gentoo.org> (2025-03-11)
+# The COBOL frontend only allows building on a small number of platforms
+# for now until more testing and integration is done.
+sys-devel/gcc -cobol
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # dev-util/nvidia-cuda-toolkit is keyworded here
 media-video/ffmpeg -npp
