@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-lang/ocaml-4.08.0:=
+DEPEND="<dev-lang/ocaml-5:=
 	virtual/latex-base
 	dev-texlive/texlive-latexextra"
 RDEPEND="${DEPEND}"
