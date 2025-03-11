@@ -14,7 +14,7 @@ else
 		https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~conikost/distfiles/${P}-new-intel-headers.tar.xz
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}
 fi
 
