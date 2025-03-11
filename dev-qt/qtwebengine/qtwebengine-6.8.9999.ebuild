@@ -24,6 +24,7 @@ IUSE="
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
+	test? ( widgets )
 "
 
 # dlopen: krb5, libva, pciutils, udev
