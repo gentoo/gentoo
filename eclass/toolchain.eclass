@@ -340,7 +340,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 	tc_version_is_at_least 14.2.1_p20241026 ${PV} && IUSE+=" time64"
 	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libgdiagnostics"
-	tc_version_is_at_least 15.0.0_pre20250316 ${PV} && IUSE+=" cobol"
+	tc_version_is_at_least 15.0.1_pre20250316 ${PV} && IUSE+=" cobol"
 fi
 
 if tc_version_is_at_least 10; then
