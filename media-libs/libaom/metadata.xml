@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://aomedia.issues.chromium.org/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
