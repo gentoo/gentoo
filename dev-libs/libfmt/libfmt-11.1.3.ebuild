@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="Small, safe and fast formatting library"
-HOMEPAGE="https://github.com/fmtlib/fmt"
+HOMEPAGE="https://fmt.dev/dev/ https://github.com/fmtlib/fmt"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/fmtlib/fmt.git"

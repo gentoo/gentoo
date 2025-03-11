@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Small, safe and fast formatting library"
-HOMEPAGE="https://github.com/fmtlib/fmt"
+HOMEPAGE="https://fmt.dev/dev/ https://github.com/fmtlib/fmt"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/fmtlib/fmt.git"
