@@ -16,6 +16,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 IUSE="+ocamlopt"
 
+RDEPEND="<dev-lang/ocaml-5"
 BDEPEND="
 	dev-ml/cppo
 "
