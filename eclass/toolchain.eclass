@@ -340,6 +340,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 	tc_version_is_at_least 14.2.1_p20241026 ${PV} && IUSE+=" time64"
 	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libgdiagnostics"
+	tc_version_is_at_least 15.0.0_pre20250316 ${PV} && IUSE+=" cobol"
 fi
 
 if tc_version_is_at_least 10; then
@@ -1255,6 +1256,7 @@ toolchain_src_configure() {
 	is_f77 && GCC_LANG+=",f77"
 	is_f95 && GCC_LANG+=",f95"
 	is_ada && GCC_LANG+=",ada"
+	is_cobol && GCC_LANG+=",cobol"
 	is_modula2 && GCC_LANG+=",m2"
 	is_rust && GCC_LANG+=",rust"
 
@@ -2600,7 +2602,7 @@ toolchain_src_install() {
 	cd "${D}"${BINPATH} || die
 	# Ugh: we really need to auto-detect this list.
 	#      It's constantly out of date.
-	for x in cpp gcc gccrs g++ c++ gcov gdc g77 gfortran gccgo gnat* ; do
+	for x in cpp gcc gccrs g++ c++ gcobol gcov gdc g77 gfortran gccgo gnat* ; do
 		# For some reason, g77 gets made instead of ${CTARGET}-g77...
 		# this should take care of that
 		if [[ -f ${x} ]] ; then
@@ -3140,6 +3142,11 @@ is_objc() {
 is_objcxx() {
 	gcc-lang-supported 'obj-c++' || return 1
 	_tc_use_if_iuse cxx && _tc_use_if_iuse objc++
+}
+
+is_cobol() {
+	gcc-lang-supported cobol || return 1
+	_tc_use_if_iuse cobol
 }
 
 is_modula2() {
