@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit may never be stabilized
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Sam James <sam@gentoo.org> (2025-02-13)
 # sys-cluster/corosync is marked stable here
 sys-fs/mdadm -corosync

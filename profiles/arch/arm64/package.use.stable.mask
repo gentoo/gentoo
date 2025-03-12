@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
+# dev-util/nvidia-cuda-toolkit may never be stabilized
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
 # Dependencies e.g. pypy not stable here.
 dev-build/meson test-full
