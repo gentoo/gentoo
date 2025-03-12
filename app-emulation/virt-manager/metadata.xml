@@ -15,10 +15,7 @@
 		required when using <pkg>app-emulation/libvirt</pkg> with
 		PolicyKit authentication
 		</flag>
-		<flag name="sasl">
-		Depend on the proper libraries needed to connect to SASL-enabled
-		libvirtd instances (e.g. Kerberos-protected instances).
-		</flag>
+		<flag name="sasl">Enable connecting to SASL-enabled (e.g. Kerberos-protected) instances</flag>
 	</use>
 	<longdescription>
 		Virtual Machine Manager provides a graphical tool for administering virtual
