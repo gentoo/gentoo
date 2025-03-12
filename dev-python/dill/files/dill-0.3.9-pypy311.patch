@@ -1,0 +1,123 @@
+From 599265e0a0cec406e245808105b63987077f53f2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 12 Mar 2025 03:41:39 +0100
+Subject: [PATCH] fix CodeType support for PyPy3.11 7.3.19+ (#707)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add support for the variation of `types.CodeType` used in PyPy3.11
+7.3.19 and newer.  It introduces `co_qualname` in addition
+to the previous members — but it does not feature `co_exceptiontable`
+like CPython 3.11.  I've named the version `(3,11,'p')` for PyPy.
+
+Fixes #706
+---
+ dill/_dill.py | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/dill/_dill.py b/dill/_dill.py
+index 152899f1..aec297c4 100644
+--- a/dill/_dill.py
++++ b/dill/_dill.py
+@@ -665,6 +665,7 @@ def __getattr__(self, item):
+     # Version     New attribute         CodeType parameters
+     ((3,11,'a'), 'co_endlinetable',    'argcount posonlyargcount kwonlyargcount nlocals stacksize flags code consts names varnames filename name qualname firstlineno linetable endlinetable columntable exceptiontable freevars cellvars'),
+     ((3,11),     'co_exceptiontable',  'argcount posonlyargcount kwonlyargcount nlocals stacksize flags code consts names varnames filename name qualname firstlineno linetable                          exceptiontable freevars cellvars'),
++    ((3,11,'p'), 'co_qualname',        'argcount posonlyargcount kwonlyargcount nlocals stacksize flags code consts names varnames filename name qualname firstlineno linetable                                         freevars cellvars'),
+     ((3,10),     'co_linetable',       'argcount posonlyargcount kwonlyargcount nlocals stacksize flags code consts names varnames filename name          firstlineno linetable                                         freevars cellvars'),
+     ((3,8),      'co_posonlyargcount', 'argcount posonlyargcount kwonlyargcount nlocals stacksize flags code consts names varnames filename name          firstlineno lnotab                                            freevars cellvars'),
+     ((3,7),      'co_kwonlyargcount',  'argcount                 kwonlyargcount nlocals stacksize flags code consts names varnames filename name          firstlineno lnotab                                            freevars cellvars'),
+@@ -701,6 +702,22 @@ def _create_code(*args):
+                     args[17],
+                 )
+             fields = m.fields
++        # PyPy 3.11 7.3.19+ (17 members)
++        elif m.case((
++            'argcount', 'posonlyargcount', 'kwonlyargcount', 'nlocals', 'stacksize', 'flags', # args[0:6]
++            'code', 'consts', 'names', 'varnames', 'filename', 'name', 'qualname',            # args[6:13]
++            'firstlineno', 'linetable', 'freevars', 'cellvars'                                # args[13:]
++        )):
++            if CODE_VERSION == (3,11,'p'):
++                return CodeType(
++                    *args[:6],
++                    args[6].encode() if hasattr(args[6], 'encode') else args[6], # code
++                    *args[7:14],
++                    args[14].encode() if hasattr(args[14], 'encode') else args[14], # linetable
++                    args[15],
++                    args[16],
++                )
++            fields = m.fields
+         # Python 3.10 or 3.8/3.9 (16 members)
+         elif m.case((
+             'argcount', 'posonlyargcount', 'kwonlyargcount', 'nlocals', 'stacksize', 'flags', # args[0:6]
+@@ -1175,6 +1192,15 @@ def save_code(pickler, obj):
+                 obj.co_firstlineno, obj.co_linetable, obj.co_exceptiontable,
+                 obj.co_freevars, obj.co_cellvars
+             )
++    elif hasattr(obj, "co_qualname"): # pypy 3.11 7.3.19+ (17 args)
++        args = (
++            obj.co_lnotab, obj.co_argcount, obj.co_posonlyargcount,
++            obj.co_kwonlyargcount, obj.co_nlocals, obj.co_stacksize,
++            obj.co_flags, obj.co_code, obj.co_consts, obj.co_names,
++            obj.co_varnames, obj.co_filename, obj.co_name, obj.co_qualname,
++            obj.co_firstlineno, obj.co_linetable, obj.co_freevars,
++            obj.co_cellvars
++        )
+     elif hasattr(obj, "co_linetable"): # python 3.10 (16 args)
+         args = (
+             obj.co_lnotab, # for < python 3.10 [not counted in args]
+
+From a3d129f9c8aceb856a7e50277af4b7fef6ab9202 Mon Sep 17 00:00:00 2001
+From: Mike McKerns <mmckerns@caltech.edu>
+Date: Mon, 17 Feb 2025 00:06:31 -0500
+Subject: [PATCH] support pypy-3.11 (#701)
+
+---
+ dill/_dill.py    | 2 +-
+ dill/_objects.py | 2 +-
+ dill/detect.py   | 5 ++++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/dill/_dill.py b/dill/_dill.py
+index 987b96b..152899f 100644
+--- a/dill/_dill.py
++++ b/dill/_dill.py
+@@ -571,7 +571,7 @@ if sys.hexversion >= 0x30a00a0:
+     _incedental_reverse_typemap['LineIteratorType'] = type(compile('3', '', 'eval').co_lines())
+ '''
+ 
+-if sys.hexversion >= 0x30b00b0:
++if sys.hexversion >= 0x30b00b0 and not IS_PYPY:
+     from types import GenericAlias
+     _incedental_reverse_typemap["GenericAliasIteratorType"] = type(iter(GenericAlias(list, (int,))))
+     '''
+diff --git a/dill/_objects.py b/dill/_objects.py
+index 500322f..a37cd79 100644
+--- a/dill/_objects.py
++++ b/dill/_objects.py
+@@ -402,7 +402,7 @@ except ImportError:
+ if sys.hexversion >= 0x30a00a0 and not IS_PYPY:
+     x['LineIteratorType'] = compile('3', '', 'eval').co_lines()
+ 
+-if sys.hexversion >= 0x30b00b0:
++if sys.hexversion >= 0x30b00b0 and not IS_PYPY:
+     from types import GenericAlias
+     d["GenericAliasIteratorType"] = iter(GenericAlias(list, (int,)))
+     x['PositionsIteratorType'] = compile('3', '', 'eval').co_positions()
+diff --git a/dill/detect.py b/dill/detect.py
+index 1f8ae3d..2f0bea1 100644
+--- a/dill/detect.py
++++ b/dill/detect.py
+@@ -145,7 +145,10 @@ def nestedglobals(func, recurse=True):
+     CAN_NULL = sys.hexversion >= 0x30b00a7 # NULL may be prepended >= 3.11a7
+     names = set()
+     with capture('stdout') as out:
+-        dis.dis(func) #XXX: dis.dis(None) disassembles last traceback
++        try:
++            dis.dis(func) #XXX: dis.dis(None) disassembles last traceback
++        except IndexError:
++            pass #FIXME: HACK for IS_PYPY (3.11)
+     for line in out.getvalue().splitlines():
+         if '_GLOBAL' in line:
+             name = line.split('(')[-1].split(')')[0]
