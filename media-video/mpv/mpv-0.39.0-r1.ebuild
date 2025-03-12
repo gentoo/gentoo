@@ -90,7 +90,7 @@ COMMON_DEPEND="
 	opengl? ( media-libs/libglvnd[X?] )
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
-	rubberband? ( media-libs/rubberband )
+	rubberband? ( media-libs/rubberband:= )
 	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
