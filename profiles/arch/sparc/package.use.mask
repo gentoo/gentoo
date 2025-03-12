@@ -593,10 +593,6 @@ net-dns/bind dnstap
 # networkmanager USE masked due to missing keywords
 gnome-extra/nm-applet teamd
 
-# Pacho Ramos <pacho@gentoo.org> (2016-01-31)
-# Missing keywords, bug #560382
-media-video/ffmpeg snappy
-
 # Justin Lecher <jlec@gentoo.org> (2015-11-18)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
