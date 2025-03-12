@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -22,7 +22,7 @@ else
 		)
 	"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
@@ -38,11 +38,11 @@ LICENSE="
 "
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
 IUSE="
-	+lcms libdovi llvm-libunwind +opengl +shaderc test
+	glslang +lcms libdovi llvm-libunwind +opengl +shaderc test
 	unwind +vulkan +xxhash
 "
 RESTRICT="!test? ( test )"
-REQUIRED_USE="vulkan? ( shaderc )"
+REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
 # dlopen: libglvnd (glad)
 RDEPEND="
@@ -50,30 +50,31 @@ RDEPEND="
 	libdovi? ( media-libs/libdovi:=[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP}] )
 	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
+	!shaderc? ( glslang? ( dev-util/glslang:=[${MULTILIB_USEDEP}] ) )
 	unwind? (
-		llvm-libunwind? ( llvm-runtimes/libunwind[${MULTILIB_USEDEP}] )
+		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 "
-# vulkan-headers is required even with USE=-vulkan for the stub (bug #882065)
 DEPEND="
 	${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers)
 	xxhash? ( dev-libs/xxhash[${MULTILIB_USEDEP}] )
 "
 BDEPEND="
-	$(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
+	"${FILESDIR}"/${PN}-5.229.1-python-executable.patch
 	"${FILESDIR}"/Don-t-require-vulkan-header-when-vulkan-is-disabled.patch
 )
 
 python_check_deps() {
-	python_has_version "dev-python/jinja2[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {
@@ -110,12 +111,10 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		$(meson_feature lcms)
 		$(meson_feature libdovi)
-		# glslang has a history of breaking things and shaderc
-		# is the build system preferred alternative if available
-		-Dglslang=disabled
 		$(meson_feature opengl)
 		$(meson_feature opengl gl-proc-addr)
 		$(meson_feature shaderc)
+		$(usex shaderc -Dglslang=disabled $(meson_feature glslang))
 		$(meson_feature unwind)
 		$(meson_feature vulkan)
 		$(meson_feature vulkan vk-proc-addr)
@@ -124,14 +123,4 @@ multilib_src_configure() {
 	)
 
 	meson_src_configure
-}
-
-multilib_src_install() {
-	meson_src_install
-
-	# prevent vulkan from leaking into the .pc here for now (bug #951125)
-	if use !vulkan && has_version media-libs/vulkan-loader; then
-		sed -Ee '/^Requires/s/vulkan[^,]*,? ?//;s/, $//;/^Requires[^:]*: $/d' \
-			-i "${ED}"/usr/$(get_libdir)/pkgconfig/libplacebo.pc || die
-	fi
 }

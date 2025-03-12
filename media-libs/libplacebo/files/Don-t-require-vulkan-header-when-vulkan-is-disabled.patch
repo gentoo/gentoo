@@ -1,0 +1,65 @@
+From 6f81a69f3abd441dd398990ab54e4c7282869379 Mon Sep 17 00:00:00 2001
+From: Zhang Ning <zhangn1985@outlook.com>
+Date: Wed, 12 Mar 2025 10:14:19 +0800
+Subject: [PATCH] Don't require vulkan header when vulkan is disabled.
+
+use typedef to for missing vulkan struct is working to build without vulkan
+when vulkan is disabled.
+
+close gentoo bug #882065
+
+Signed-off-by: Zhang Ning <zhangn1985@outlook.com>
+---
+ src/include/libplacebo/vulkan.h | 19 ++++++++++++++++++-
+ src/vulkan/meson.build          |  3 +--
+ 2 files changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/src/include/libplacebo/vulkan.h b/src/include/libplacebo/vulkan.h
+index b8d43e2c..1a49d702 100644
+--- a/src/include/libplacebo/vulkan.h
++++ b/src/include/libplacebo/vulkan.h
+@@ -17,8 +17,25 @@
+ 
+ #ifndef LIBPLACEBO_VULKAN_H_
+ #define LIBPLACEBO_VULKAN_H_
+-
++#ifdef PL_HAVE_VULKAN
+ #include <vulkan/vulkan.h>
++#else
++typedef     int     VkInstance;
++typedef     int     PFN_vkGetInstanceProcAddr;
++typedef     void   *VkPhysicalDevice;
++typedef     int     VkDevice;
++typedef     int     VkPhysicalDeviceFeatures2;
++typedef     int     VkSurfaceKHR;
++typedef     int     VkQueueFlags;
++typedef     int     VkPresentModeKHR;
++typedef     int     VkImage;
++typedef     int     VkImageAspectFlags;
++typedef     int     VkFormat;
++typedef     int     VkImageUsageFlags;
++typedef     int     VkSemaphore;
++typedef     int     VkImageLayout;
++typedef     int     VkSemaphoreType;
++#endif
+ #include <libplacebo/gpu.h>
+ #include <libplacebo/swapchain.h>
+ 
+diff --git a/src/vulkan/meson.build b/src/vulkan/meson.build
+index 64c55728..1756d19e 100644
+--- a/src/vulkan/meson.build
++++ b/src/vulkan/meson.build
+@@ -26,9 +26,8 @@ components.set('vulkan', vulkan_build.allowed())
+ vulkan_link = vulkan_link.require(vulkan_loader.found() and vulkan_build.allowed())
+ components.set('vk-proc-addr', vulkan_link.allowed())
+ 
+-build_deps += vulkan_headers
+-
+ if vulkan_build.allowed()
++  build_deps += vulkan_headers
+   sources += [
+     'vulkan/command.c',
+     'vulkan/context.c',
+-- 
+2.47.2
+
