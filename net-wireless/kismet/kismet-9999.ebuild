@@ -129,6 +129,7 @@ src_configure() {
 		$(use_enable pcre require-pcre2) \
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
+		$(use_enable protobuf) \
 		$(use_enable ubertooth) \
 		$(use_enable wext linuxwext) \
 		--sysconfdir=/etc/kismet \
