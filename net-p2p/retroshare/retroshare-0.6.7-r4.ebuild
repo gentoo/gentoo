@@ -72,7 +72,7 @@ src_configure() {
 	if use plugins; then
 		ffmpeg_compat_setup 4
 		# hack: passes -L/usr/lib64 which messes with finding ffmpeg-compat
-		append-ldflags "-L$(ffmpeg_compat_get_prefix 4)/$(get_libdir)"
+		append-ldflags "-L${SYSROOT}$(ffmpeg_compat_get_prefix 4)/$(get_libdir)"
 	fi
 
 	local qconfigs=(
