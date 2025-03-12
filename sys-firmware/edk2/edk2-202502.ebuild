@@ -269,11 +269,6 @@ src_compile() {
 		raw_to_qcow2 64m Build/ArmVirtQemu-AARCH64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		;;
 	loong)
-		BUILD_ARGS+=(
-			# fails to seed the OpenSSL RNG during early initialization due
-			# to improper FPU enabling (maybe too late)
-			-D NETWORK_TLS_ENABLE=FALSE
-		)
 		mybuild -a LOONGARCH64 -p OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc
 		raw_to_qcow2 0 Build/LoongArchVirtQemu/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		;;
