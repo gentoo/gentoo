@@ -12,6 +12,7 @@ pref("toolkit.telemetry.updatePing.enabled",               false);
 pref("toolkit.telemetry.bhrPing.enabled",                  false);
 pref("toolkit.telemetry.firstShutdownPing.enabled",        false);
 pref("toolkit.telemetry.coverage.opt-out",                 true);
+pref("telemetry.fog.init_on_shutdown",                     false);
 pref("toolkit.coverage.opt-out",                           true);
 pref("toolkit.coverage.endpoint.base",                     "");
 pref("toolkit.telemetry.dap_helper",                       "");
