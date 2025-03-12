@@ -1,6 +1,11 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
+# app-arch/snappy is not stable here yet
+media-video/ffmpeg snappy
+media-video/ffmpeg-compat snappy
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
 # app-text/mupdf is not stable. bug #923811
 net-print/cups-filters pdf
