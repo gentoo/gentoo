@@ -18,11 +18,10 @@
 		<flag name="sasl">Enable connecting to SASL-enabled (e.g. Kerberos-protected) instances</flag>
 	</use>
 	<longdescription>
-		Virtual Machine Manager provides a graphical tool for administering virtual
-		machines for KVM, Xen, and LXC. Start, stop, add or remove virtual devices,
-		connect to a graphical or serial console, and see resource usage statistics
-		for existing VMs on local or remote machines. Uses libvirt as the backend
-		management API.
+		Virtual Machine Manager provides a graphical tool for managing libvirt virtual machines.
+		On Gentoo it supports KVM, Xen, and LXC backends.
+		It provides a GUI for not only running VMs but also managing their settings and monitoring usage statistics.
+		The software does not limit you to using the graphical tools though: it allows for editing the XML config files directly.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/virt-manager/virt-manager/issues</bugs-to>
