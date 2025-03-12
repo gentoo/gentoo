@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -91,7 +91,7 @@ src_install() {
 	make_desktop_entry \
 		"${MY_PN} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto %U" \
 		Mattermost "${MY_PN}" "Network;InstantMessaging;" \
-		"MimeType=x-scheme-handler/mattermost;"
+		"MimeType=x-scheme-handler/mattermost;\nStartupWMClass=Mattermost"
 
 	einstalldocs
 }
