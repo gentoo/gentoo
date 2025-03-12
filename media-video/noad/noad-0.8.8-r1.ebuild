@@ -17,7 +17,7 @@ REQUIRED_USE="|| ( ffmpeg libmpeg2 )"
 
 DEPEND="
 	libmpeg2? ( media-libs/libmpeg2 )
-	ffmpeg? ( media-video/ffmpeg-compat:4 )
+	ffmpeg? ( media-video/ffmpeg-compat:4= )
 	imagemagick? ( media-gfx/imagemagick:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
