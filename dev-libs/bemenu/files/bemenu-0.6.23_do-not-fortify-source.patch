@@ -1,0 +1,25 @@
+From ea7055f6d47cf328cb7f465beb1a63398be2aaa4 Mon Sep 17 00:00:00 2001
+From: Filip Kobierski <fkobi@pm.me>
+Date: Fri, 20 Dec 2024 17:14:26 +0100
+Subject: [PATCH] do not fortify source
+
+Signed-off-by: Filip Kobierski <fkobi@pm.me>
+---
+ GNUmakefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index a1fc704..6eab5f3 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -16,7 +16,6 @@ VISIBILITY ?= -fvisibility=hidden
+ 
+ override CFLAGS ?= -g -O2 $(WARNINGS) $(EXTRA_WARNINGS)
+ override CFLAGS += -std=c99 $(VISIBILITY)
+-override CPPFLAGS ?= -D_FORTIFY_SOURCE=2
+ override CPPFLAGS += -DBM_VERSION=\"$(VERSION)\" -DBM_PLUGIN_VERSION=\"$(VERSION)-$(GIT_SHA1)\" -DINSTALL_LIBDIR=\"$(PREFIX)$(libdir)\"
+ override CPPFLAGS += -D_DEFAULT_SOURCE -Ilib
+ 
+-- 
+2.45.2
+
