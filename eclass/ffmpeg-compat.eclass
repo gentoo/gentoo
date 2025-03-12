@@ -12,7 +12,8 @@
 # To use this, run ``ffmpeg_compat_setup <slot>`` before packages use
 # pkg-config, depend on media-video/ffmpeg-compat:<slot>=, and ensure
 # usage of both pkg-config --cflags and --libs (which adds -Wl,-rpath
-# to find libraries at runtime).
+# to find libraries at runtime).  Always verify that it is linked with
+# the right libraries after.
 #
 # This eclass is intended as a quick-to-setup alternative to setting
 # an upper bound on ffmpeg for packages broken with the latest version,
@@ -40,6 +41,27 @@ esac
 
 if [[ -z ${_FFMPEG_COMPAT_ECLASS} ]]; then
 _FFMPEG_COMPAT_ECLASS=1
+
+inherit flag-o-matic toolchain-funcs
+
+# @FUNCTION: ffmpeg_compat_add_flags
+# @DESCRIPTION:
+# Append ``pkg-config --cflags libavcodec`` to CPPFLAGS and
+# --libs-only-{L,other} to LDFLAGS for the current ABI.
+#
+# Must run ``ffmpeg_compat_setup <slot>`` first.
+#
+# Ideally this function should not be used, but can be useful when
+# packages do not use pkg-config properly or drop some flags (common
+# with cmake).
+#
+# For multilib, ebuild should preserve previous flags by doing e.g.
+# ``local -x CPPFLAGS=${CPPFLAGS} LDFLAGS=${LDFLAGS}`` first.
+ffmpeg_compat_add_flags() {
+	# should be no real need to check anything but libavcodec's flags
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags libavcodec || die)
+	append-ldflags $($(tc-getPKG_CONFIG) --libs-only-{L,other} libavcodec || die)
+}
 
 # @FUNCTION: ffmpeg_compat_get_prefix
 # @USAGE: <slot>
