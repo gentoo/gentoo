@@ -119,6 +119,10 @@ pkg_pretend() {
 pkg_setup() {
 	cuda-toolkit_check_reqs
 
+	if [[ "${MERGE_TYPE}" == binary ]]; then
+		return
+	fi
+
 	# we need python for manifest parsing and to determine the supported python versions for cuda-gdb
 	python_setup
 
