@@ -429,15 +429,15 @@ if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
 			)
 		"
 	else
-                BDEPEND+="
-                        ada? (
-                                || (
-                                        sys-devel/gcc:${SLOT}[ada]
-                                        <sys-devel/gcc-${SLOT}[ada]
-                                        <dev-lang/ada-bootstrap-${SLOT}
-                                )
-                        )
-                "
+		BDEPEND+="
+			ada? (
+				|| (
+					sys-devel/gcc:${SLOT}[ada]
+					<sys-devel/gcc-${SLOT}[ada]
+					<dev-lang/ada-bootstrap-${SLOT}
+				)
+			)
+		"
 	fi
 fi
 
