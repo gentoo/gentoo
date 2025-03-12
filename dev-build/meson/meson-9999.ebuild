@@ -42,7 +42,7 @@ HOMEPAGE="https://mesonbuild.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test test-full"
+IUSE="emacs test test-full"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test-full? ( test )"
 
@@ -95,6 +95,7 @@ DEPEND="
 RDEPEND="
 	!<dev-build/muon-0.2.0-r2[man(-)]
 	virtual/pkgconfig
+	emacs? ( app-emacs/meson-mode )
 "
 
 PATCHES=(
