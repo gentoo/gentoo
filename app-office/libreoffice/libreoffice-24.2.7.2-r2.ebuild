@@ -239,7 +239,10 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	java? (
 		dev-java/ant:0
-		>=virtual/jdk-17
+		|| (
+		   virtual/jdk:17
+		   virtual/jdk:21
+		)
 	)
 	test? (
 		app-crypt/gnupg
