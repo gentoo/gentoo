@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/wentasah/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="amd64 ~arm ~arm64 ~riscv"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~sparc"
 fi
 
 LICENSE="GPL-3+"
