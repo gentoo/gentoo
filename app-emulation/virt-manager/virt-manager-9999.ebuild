@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome2 python-single-r1 optfeature meson verify-sig
 
-DESCRIPTION="A graphical tool for administering virtual machines"
+DESCRIPTION="Desktop tool for managing libvirt virtual machines"
 HOMEPAGE="https://virt-manager.org https://github.com/virt-manager/virt-manager"
 
 if [[ ${PV} == *9999* ]]; then
@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="CC0-1.0 GPL-2+" # appdata & source code
 SLOT="0"
 IUSE="gui policykit sasl verify-sig"
 
@@ -96,14 +96,27 @@ src_install() {
 	fi
 
 	python_fix_shebang "${ED}"
+	python_optimize "${ED}"/usr/share/virt-manager/virt{inst,Manager}
 }
 
 pkg_postinst() {
 	use gui && gnome2_pkg_postinst
 
-	optfeature "Full QEMU host support" app-emulation/qemu[usbredir,spice]
-	optfeature "SSH_ASKPASS program implementation" lxqt-base/lxqt-openssh-askpass \
-		net-misc/ssh-askpass-fullscreen net-misc/x11-ssh-askpass
+	# OPTFEATURE SECTION
+	# keep app-emulation/* optfeatures on top and multiline on the bottom
+	if has_version app-emulation/qemu; then
+		optfeature "Full QEMU host support" app-emulation/qemu[usbredir,spice]
+	fi
+	if use policykit && has_version app-emulation/libvirt[-policykit]; then
+		optfeature "PolicyKit integration with local libvirt instance" \
+			app-emulation/libvirt[policykit]
+	fi
 	# it's possible this also requires libguestfs-appliance but it's a RDEPEND of libguestfs
 	optfeature "Inspection of guest filesystems" app-emulation/libguestfs[libvirt,python]
+
+	optfeature "SSH_ASKPASS program implementation" \
+		kde-plasma/ksshaskpass \
+		lxqt-base/lxqt-openssh-askpass \
+		net-misc/ssh-askpass-fullscreen \
+		net-misc/x11-ssh-askpass
 }
