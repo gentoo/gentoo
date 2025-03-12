@@ -49,7 +49,7 @@ BDEPEND="dev-qt/linguist-tools:5"
 PATCHES=( "${FILESDIR}"/${P}-ffmpeg5.patch )
 
 pkg_pretend() {
-	if [[ "${ABI}" == amd64 ]] ; then
+	if use amd64 && ! use abi_x86_32 ; then
 		einfo "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
 		einfo "When added 32bit GLInject libraries are also included. This is"
 		einfo "required if you want to use OpenGL recording on 32bit applications."
