@@ -14,7 +14,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="emacs flambda latex +ocamlopt test xemacs"
 
-RDEPEND="sys-libs/binutils-libs:="
+RDEPEND="sys-libs/binutils-libs:=
+	!dev-ml/findlib:0/0"
 BDEPEND="${RDEPEND}
 	virtual/pkgconfig"
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
