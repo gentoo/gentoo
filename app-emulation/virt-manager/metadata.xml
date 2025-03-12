@@ -10,11 +10,6 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="policykit">
-		Enables <pkg>sys-auth/polkit</pkg> authentication support,
-		required when using <pkg>app-emulation/libvirt</pkg> with
-		PolicyKit authentication
-		</flag>
 		<flag name="sasl">Enable connecting to SASL-enabled (e.g. Kerberos-protected) instances</flag>
 	</use>
 	<longdescription>
