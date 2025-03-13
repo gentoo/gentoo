@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 
-inherit gnome2 flag-o-matic python-single-r1 java-pkg-2 cmake
+inherit gnome2 flag-o-matic python-single-r1 java-pkg-2 xdg cmake
 
 MY_P="${PN}-community-${PV}-src"
 
@@ -122,4 +122,12 @@ src_configure() {
 		-DMySQL_CONFIG_PATH="/usr/bin/mysql_config"
 	)
 	cmake_src_configure
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
 }
