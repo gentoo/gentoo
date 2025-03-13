@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 EGIT_COMMIT="bd1283b91282d522617ac6d29eb0f271ded83ffc"
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake desktop wxwidgets
+inherit cmake desktop flag-o-matic wxwidgets
 
 DESCRIPTION="A PC emulator that specializes in running old operating systems and software"
 HOMEPAGE="https://github.com/sarah-walker-pcem/pcem/"
@@ -39,6 +39,9 @@ src_prepare() {
 
 src_configure() {
 	setup-wxwidgets
+
+	# Using RelWithDebInfo bypasses upstream's default (bug #948388)
+	append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DFORCE_X11=$(usex !wayland)
