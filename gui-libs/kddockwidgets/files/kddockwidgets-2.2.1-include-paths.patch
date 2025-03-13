@@ -1,0 +1,20 @@
+Fixes a build failure for PCSX2
+https://github.com/KDAB/KDDockWidgets/commit/3d6954f07dbe647295f7d295aa372b9b2daa27b3
+--- a/src/core/indicators/ClassicDropIndicatorOverlay.h
++++ b/src/core/indicators/ClassicDropIndicatorOverlay.h
+@@ -12,5 +12,5 @@
+ #pragma once
+ 
+-#include "core/DropIndicatorOverlay.h"
++#include "kddockwidgets/core/DropIndicatorOverlay.h"
+ 
+ namespace KDDockWidgets {
+--- a/src/core/indicators/NullDropIndicatorOverlay.h
++++ b/src/core/indicators/NullDropIndicatorOverlay.h
+@@ -12,5 +12,5 @@
+ #pragma once
+ 
+-#include "core/DropIndicatorOverlay.h"
++#include "kddockwidgets/core/DropIndicatorOverlay.h"
+ 
+ namespace KDDockWidgets {
