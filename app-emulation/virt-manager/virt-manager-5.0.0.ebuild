@@ -12,7 +12,6 @@ HOMEPAGE="https://virt-manager.org https://github.com/virt-manager/virt-manager"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 	EGIT_BRANCH="main"
-	SRC_URI=""
 	inherit git-r3
 else
 	SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
@@ -79,6 +78,8 @@ src_install() {
 	fi
 
 	python_fix_shebang "${ED}"
+
+	python_optimize "${ED}/usr/share/virt-manager/"{virtinst,virtManager}
 }
 
 pkg_postinst() {
