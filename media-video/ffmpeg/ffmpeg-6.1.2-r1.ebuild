@@ -53,7 +53,7 @@ FFMPEG_IUSE_MAP=(
 	codec2:libcodec2
 	cuda:cuda-llvm
 	+dav1d:libdav1d
-	doc:^htmlpages
+	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
 	fdk:libfdk-aac@nonfree
 	flite:libflite
@@ -306,7 +306,6 @@ DEPEND="
 "
 BDEPEND="
 	app-alternatives/awk
-	dev-lang/perl
 	virtual/pkgconfig
 	amd64? (
 		|| (
@@ -315,7 +314,10 @@ BDEPEND="
 		)
 	)
 	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
-	doc? ( sys-apps/texinfo )
+	${FFMPEG_UNSLOTTED:+"
+		dev-lang/perl
+		doc? ( sys-apps/texinfo )
+	"}
 "
 [[ ${PV} != 9999 ]] &&
 	BDEPEND+="
@@ -413,7 +415,7 @@ multilib_src_configure() {
 		--prefix="${prefix}"
 		--libdir="${prefix}"/$(get_libdir)
 		--shlibdir="${prefix}"/$(get_libdir)
-		--mandir="${prefix}"/share/man # ignoring slotted MANPATH
+		--mandir="${prefix}"/share/man
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html
 
 		--ar="$(tc-getAR)"
