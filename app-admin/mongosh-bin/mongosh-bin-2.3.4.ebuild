@@ -15,7 +15,7 @@ SRC_URI="amd64? ( ${SRC_URI_BASE}-x64.tgz -> ${MY_P}_x64.tgz )
 
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-4.0 ISC MIT WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="dev-libs/cyrus-sasl[kerberos]"
 
