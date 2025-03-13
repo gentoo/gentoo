@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+"stown" manages file system object mapping via symlinks. It was inspired by GNU
+Stow, which I found very useful but too unwieldly for personal use. GNU Stow
+relies on a number of Perl modules and can be a hassle to install on
+minimalistic systems. In contrast, stown requires only Python 3.9 or newer,
+without any additional dependencies.
+
+If you are looking for a lightweight tool instead of a full-fledged symlink
+farm manager, stown might be for you.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">rseichter/stown</remote-id>
+		<remote-id type="pypi">stown</remote-id>
+	</upstream>
+</pkgmetadata>
