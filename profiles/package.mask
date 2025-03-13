@@ -36,6 +36,11 @@
 # Sam James <sam@gentoo.org> (2025-03-13)
 # Causes build failures in reverse dependencies (bug #951062, bug #951120)
 =dev-util/spirv-headers-1.4.304.0-r1
+=dev-util/spirv-llvm-translator-15.0.10-r1
+=dev-util/spirv-llvm-translator-16.0.10-r1
+=dev-util/spirv-llvm-translator-17.0.10-r1
+=dev-util/spirv-llvm-translator-18.1.10-r1
+=dev-util/spirv-llvm-translator-19.1.5-r1
 
 # Sam James <sam@gentoo.org> (2025-03-09)
 # Obsolete in favour of dev-lang/ada-bootstrap. Using sys-devel/gcc[ada]
