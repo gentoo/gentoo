@@ -16,6 +16,8 @@ KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
 # Tests require a speaker
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/${P}-avoid-cref-linker-option.patch )
+
 src_prepare() {
 	default
 
