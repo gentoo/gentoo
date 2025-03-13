@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/whitequark/ocaml-expat/archive/v${PV}.tar.gz -> ${P}
 HOMEPAGE="https://github.com/whitequark/ocaml-expat"
 
 RDEPEND="dev-libs/expat
-	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]"
+	dev-lang/ocaml:=[ocamlopt?]"
 
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 )"
