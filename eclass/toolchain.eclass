@@ -2649,7 +2649,7 @@ toolchain_src_install() {
 	# Hack for C++ modules
 	if ! is_crosscompile; then
 		# PR19266 (bug #948394)
-		sed -i -e "s,\.\./lib/gcc/${CHOST}/${GCCMAJOR}/include/,../../../../include/," \
+		sed -i -e "s,\.\./lib/gcc/${CHOST}/${GCCMAJOR}/include/,include/," \
 			"${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/libstdc++.modules.json || die
 	fi
 
