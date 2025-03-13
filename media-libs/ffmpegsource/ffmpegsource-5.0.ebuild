@@ -36,6 +36,13 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	default
+
+	sed -i -e "s|@FFMS_VERSION@|${PV}|g" \
+		"${S}"/ffms2.pc.in || die
+}
+
 src_install() {
 	default
 
