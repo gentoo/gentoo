@@ -134,7 +134,6 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/php-8.3.10-optional-png-testfixen.patch"
 	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
 )
 
@@ -230,15 +229,6 @@ src_prepare() {
 	#
 	rm ext/sockets/tests/bug63000.phpt || die
 
-	# depends on truetype support, thus we skip it
-	# if the "truetype" USE flag is missing
-	#
-	#   https://github.com/php/php-src/issues/17891
-	#
-	if ! use truetype ; then
-		rm ext/gd/tests/gh17373.phpt || die
-	fi
-
 	# Tests ignoring the "-n" flag we pass to run-tests.php,
 	#
 	#   https://github.com/php/php-src/pull/11669
@@ -263,14 +253,6 @@ src_prepare() {
 	# be running pre-install, in my opinion. Bug 927461.
 	rm ext/fileinfo/tests/bug78987.phpt || die
 
-	# Bug 935382, fixed eventually by
-	#
-	# - https://github.com/php/php-src/pull/14788
-	# - https://github.com/php/php-src/pull/14814
-	#
-	rm ext/standard/tests/strings/chunk_split_variation1_32bit.phpt || die
-	rm ext/standard/tests/strings/wordwrap_memory_limit.phpt || die
-
 	# Bug 935379, not yet fixed upstream but looks harmless (ordering
 	# of keys isn't guaranteed AFAICS):
 	#
@@ -292,6 +274,13 @@ src_prepare() {
 	   ext/gd/tests/bug65148.phpt \
 	   ext/gd/tests/bug73272.phpt \
 	   || die
+
+	# Test currently fails in the sandbox and the test for this variant might be broken
+	# Upstream discusses removing the test again.
+	# 
+	# - https://github.com/php/php-src/commit/930624899bb996efc2f6a24b992ede90c93c8902
+	#
+	rm ext/standard/tests/file/bug72666_variation3.phpt || die
 
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
