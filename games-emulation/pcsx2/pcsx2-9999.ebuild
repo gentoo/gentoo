@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	app-arch/zstd:=
 	dev-qt/qtbase:6[concurrent,gui,widgets]
 	dev-qt/qtsvg:6
+	gui-libs/kddockwidgets:=
 	media-libs/freetype
 	media-libs/libglvnd[X]
 	media-libs/libjpeg-turbo:=
