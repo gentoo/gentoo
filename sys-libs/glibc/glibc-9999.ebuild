@@ -1710,7 +1710,7 @@ pkg_postinst() {
 		# must refresh it. See bug #933282 and GCC's documentation:
 		# https://gcc.gnu.org/onlinedocs/gcc/Fixed-Headers.html
 		#
-		# TODO: Could this be done for non-cross? Some care would be needed
+		# TODO: Could this be done for cross? Some care would be needed
 		# to pass the right arguments.
 		while IFS= read -r -d $'\0' slot ; do
 			local mkheaders_path="${BROOT}"/usr/libexec/gcc/${CBUILD}/${slot##*/}/install-tools/mkheaders
