@@ -13,7 +13,7 @@ S=${WORKDIR}/${PN}-src-${PV}
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) Boost-1.0 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
