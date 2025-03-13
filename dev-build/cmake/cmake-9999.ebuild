@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,9 @@ EAPI=8
 : ${CMAKE_DOCS_PREBUILT:=1}
 
 CMAKE_DOCS_PREBUILT_DEV=sam
-CMAKE_DOCS_VERSION=$(ver_cut 1-2).0
+CMAKE_DOCS_VERSION=4.0.0_rc1
+#CMAKE_DOCS_VERSION=${PV}
+#CMAKE_DOCS_VERSION=$(ver_cut 1-2).0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # See bug #784815
 CMAKE_DOCS_USEFLAG="+doc"
@@ -38,19 +40,21 @@ else
 		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${CMAKE_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${CMAKE_DOCS_VERSION}-docs.tar.xz )"
 	fi
 
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bradking.asc
+	inherit verify-sig
+
+	SRC_URI+=" verify-sig? (
+		https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}-SHA-256.txt
+		https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}-SHA-256.txt.asc
+		https://github.com/Kitware/CMake/releases/download/v${PV/_/-}/${MY_P}-SHA-256.txt
+		https://github.com/Kitware/CMake/releases/download/v${PV/_/-}/${MY_P}-SHA-256.txt.asc
+	)"
+
 	if [[ ${PV} != *_rc* ]] ; then
-		VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bradking.asc
-		inherit verify-sig
-
-		SRC_URI+=" verify-sig? (
-			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt
-			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
-		)"
-
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-
-		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20240902 )"
 	fi
+
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20240902 )"
 fi
 
 [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] && CMAKE_DOCS_USEFLAG="doc"
@@ -217,6 +221,10 @@ src_prepare() {
 	# https://gitlab.kitware.com/cmake/cmake/-/issues/20740
 	filter-lto
 
+	# 4.0.0_rc1 is missing this, fails to configure
+	# https://gitlab.kitware.com/cmake/cmake/-/issues/26712
+	touch .clang-tidy Utilities/.clang-tidy || die
+
 	if ! has_version -b \>=${CATEGORY}/${PN}-3.13 || ! cmake --version &>/dev/null ; then
 		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
 		cmake_src_bootstrap
@@ -249,8 +257,7 @@ src_test() {
 		"${S}"/Tests/{OutDir,CMakeOnly/SelectLibraryConfigurations}/CMakeLists.txt \
 		|| die
 
-	# TODO: Still relevant after https://gitlab.kitware.com/cmake/cmake/-/merge_requests/10070?
-	unset CMAKE_COMPILER_COLOR_DIAGNOSTICS CMAKE_COLOR_DIAGNOSTICS
+	unset CLICOLOR CLICOLOR_FORCE CMAKE_COMPILER_COLOR_DIAGNOSTICS CMAKE_COLOR_DIAGNOSTICS
 
 	pushd "${BUILD_DIR}" > /dev/null || die
 
