@@ -2646,6 +2646,13 @@ toolchain_src_install() {
 		fi
 	fi
 
+	# Hack for C++ modules
+	if ! is_crosscompile; then
+		# PR19266 (bug #948394)
+		sed -e 's,\.\./lib/gcc/${CHOST}/${GCCMAJOR}/include/,../../../../include/,' \
+			"${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/libstdc++.modules.json || die
+	fi
+
 	# As gcc installs object files built against both ${CHOST} and ${CTARGET}
 	# ideally we will need to strip them using different tools:
 	# Using ${CHOST} tools:
