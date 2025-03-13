@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Interpreter for Z-code based text games"
 HOMEPAGE="https://661.org/proj/if/frotz/"
@@ -44,6 +44,8 @@ PATCHES=(
 )
 
 src_compile() {
+	filter-lto
+
 	emake \
 		dumb \
 		$(use ncurses && echo ncurses) \
@@ -64,7 +66,15 @@ src_install() {
 		install_dumb \
 		$(use ncurses && echo install) \
 		$(use sdl && echo install_sdl) \
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		RANLIB="$(tc-getRANLIB)" \
+		CURSES=$(usex unicode ncursesw ncurses) \
+		USE_UTF8=$(usex unicode yes "") \
+		SOUND_TYPE=$(usex sound ao none) \
 		PREFIX="${EPREFIX}/usr" \
+		SYSCONFDIR="${EPREFIX}/etc" \
 		DESTDIR="${D}"
 
 	dodoc \
