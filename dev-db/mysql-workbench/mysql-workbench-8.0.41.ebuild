@@ -7,16 +7,13 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 
-ANTLR_VERSION=4.13.2
-
-inherit gnome2 flag-o-matic python-single-r1 cmake
+inherit gnome2 flag-o-matic python-single-r1 java-utils-2 cmake
 
 MY_P="${PN}-community-${PV}-src"
 
 DESCRIPTION="MySQL Workbench"
 HOMEPAGE="https://www.mysql.com/products/workbench/"
-SRC_URI="https://cdn.mysql.com/Downloads/MySQLGUITools/${MY_P}.tar.gz
-	https://www.antlr.org/download/antlr-${ANTLR_VERSION}-complete.jar"
+SRC_URI="https://cdn.mysql.com/Downloads/MySQLGUITools/${MY_P}.tar.gz"
 S="${WORKDIR}"/"${MY_P}"
 
 LICENSE="GPL-2"
@@ -29,7 +26,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 CDEPEND="${PYTHON_DEPS}
 		app-crypt/libsecret
 		dev-libs/glib:2
-		>=dev-cpp/antlr-cpp-4.11.1:4=
 		dev-cpp/atkmm:*
 		dev-cpp/pangomm:1.4
 		>=dev-cpp/glibmm-2.14:2
@@ -62,15 +58,25 @@ RDEPEND="${CDEPEND}
 		>=sys-apps/net-tools-1.60_p20120127084908"
 
 DEPEND="${CDEPEND}
+		>=dev-java/antlr-tool-4.11.1:4
+		>=dev-cpp/antlr-cpp-4.11.1:4
 		dev-lang/swig
-		>=virtual/jre-11
+		virtual/jre
 		virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
 	"${FILESDIR}/${PN}-8.0.19-mysql-connector-8.patch"
 	"${FILESDIR}/${PN}-8.0.33-gcc13.patch"
+	"${FILESDIR}/${PN}-8.0.38-system-antlr-tool.patch"
 )
+
+pkg_setup() {
+	java-pkg_init
+
+	local antlr_target=$(java-config --query TARGET --package antlr-tool-4)
+	java-pkg_ensure-vm-version-ge ${antlr_target}
+}
 
 src_unpack() {
 	unpack ${PN}-community-${PV}-src.tar.gz
@@ -103,9 +109,8 @@ src_configure() {
 	fi
 
 	append-cxxflags -std=c++11
-	ANTLR_JAR_PATH="${DISTDIR}/antlr-${ANTLR_VERSION}-complete.jar"
 	local mycmakeargs=(
-		-DWITH_ANTLR_JAR=${ANTLR_JAR_PATH}
+		-DANTLR-TOOL-CP=$(java-pkg_getjars --with-dependencies antlr-tool-4)
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
 		-DIODBC_INCLUDE_PATH="/usr/include/iodbc"
 		${IODBC}

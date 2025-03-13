@@ -1,0 +1,11 @@
+--- ./library/parsers/CMakeLists.txt	2025-03-12 12:11:36.785944914 +0100
++++ ./library/parsers/CMakeLists.txt.new	2025-03-12 12:32:32.463235206 +0100
+@@ -22,7 +22,7 @@
+ 
+ add_custom_command(OUTPUT ${GENERATED_FILES} 
+           DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLParser.g4
+-          COMMAND ${Java_JAVA_EXECUTABLE} -Xmx1024m -jar ${ANTLR_JAR_PATH} -Dlanguage=Cpp -listener -visitor -o ../mysql -package parsers ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLParser.g4
++          COMMAND ${Java_JAVA_EXECUTABLE} -cp ${ANTLR-TOOL-CP} -Xmx1024m org/antlr/v4/Tool -Dlanguage=Cpp -listener -visitor -o ../mysql -package parsers ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLParser.g4
+           WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/grammars
+           COMMENT "[mysql] Generating parser files..."
+           )
