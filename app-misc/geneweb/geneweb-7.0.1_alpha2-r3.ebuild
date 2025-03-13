@@ -25,8 +25,7 @@ DEPEND="
 	acct-group/geneweb
 	acct-user/geneweb
 	dev-ml/calendars:=
-	>=dev-ml/camlp5-8:=[ocamlopt?]
-	<dev-ml/camlp5-8.03
+	>=dev-ml/camlp5-8.03.00:=[ocamlopt?]
 	dev-ml/camlp-streams:=
 	dev-ml/jingoo:=
 	dev-ml/markup:=
@@ -51,6 +50,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-nogwrepl.patch
+	"${FILESDIR}"/${P}-camlp5.patch
 )
 
 src_prepare() {

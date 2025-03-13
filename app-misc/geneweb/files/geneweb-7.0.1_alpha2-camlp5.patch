@@ -1,0 +1,20 @@
+--- a/bin/ged2gwb/dune.in	2025-03-12 08:45:52.250610591 +0100
++++ b/bin/ged2gwb/dune.in	2025-03-12 08:46:33.553114512 +0100
+@@ -2,6 +2,6 @@
+   (name ged2gwb)
+   (public_name geneweb.ged2gwb)
+   (modules ged2gwb)
+-  (preprocess (action (run camlp5o pr_o.cmo pa_extend.cmo q_MLast.cmo %{input-file})))
++  (preprocess (action (run camlp5o o_keywords.cmo pr_o.cmo pa_extend.cmo q_MLast.cmo %{input-file})))
+   (libraries camlp5 unix str %%%GWDB_PKG%%% %%%SOSA_PKG%%% geneweb)
+ )
+--- a/bin/ged2gwb/ged2gwb.ml	2025-03-13 13:44:01.734882122 +0100
++++ b/bin/ged2gwb/ged2gwb.ml	2025-03-13 13:46:15.738227429 +0100
+@@ -466,6 +466,7 @@
+   ; Token.tok_match = tparse
+   ; Token.tok_text = (fun _ -> "<tok>")
+   ; Token.tok_comm = None
++  ; Token.kwds = Hashtbl.create 301
+   }
+ 
+ type 'a range =
