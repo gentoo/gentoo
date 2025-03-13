@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="compat">Enable compatibility with the legacy nanomsg API</flag>
+		<flag name="deprecated">Build deprecated features</flag>
+		<flag name="tools">Build and install command line tools</flag>
+	</use>
+	<longdescription>
+		NNG is a lightweight, broker-less library, offering a simple API to
+		solve common recurring messaging problems, such as publish/subscribe,
+		RPC-style request/reply, or service discovery.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">nanomsg/nng</remote-id>
+	</upstream>
+</pkgmetadata>
