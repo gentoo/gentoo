@@ -78,7 +78,6 @@ src_compile() {
 	JAVA_INTERMEDIATE_JAR_NAME="net.bytebuddy"
 	JAVA_JAR_FILENAME="byte-buddy.jar"
 	JAVA_MODULE_INFO_OUT="byte-buddy/src/main"
-	JAVA_MODULE_INFO_RELEASE="9"	# <- this should not be needed as is eclass default.
 	JAVA_MAIN_CLASS="net.bytebuddy.build.Plugin\$Engine\$Default"
 	JAVA_RESOURCE_DIRS=()
 	JAVA_SRC_DIR="byte-buddy/src/main/java"
