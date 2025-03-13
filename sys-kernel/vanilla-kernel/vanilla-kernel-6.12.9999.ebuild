@@ -51,7 +51,7 @@ BDEPEND="
 	debug? ( dev-util/pahole )
 "
 PDEPEND="
-	>=virtual/dist-kernel-$(ver_cut 1-2)
+	>=virtual/dist-kernel-$(ver_cut 1-2):$(ver_cut 1-2)
 "
 
 src_unpack() {
