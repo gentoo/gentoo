@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,11 +20,11 @@ DEPEND="test? ( dev-cpp/gtest )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.12-gnuinstalldirs-docdir.patch
+	"${FILESDIR}"/${PN}-3.12-gcc15.patch
 )
 
 src_configure() {
 	local mycmakeargs=(
-		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DELFIO_BUILD_TESTS=$(usex test)
 	)
 
