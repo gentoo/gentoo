@@ -22,12 +22,12 @@ if [[ ${PV} == *9999 ]]; then
 	)
 else
 	MGBA_COMMIT=8739b22fbc90fdf0b4f6612ef9c0520f0ba44a51
-	IMPLOT_COMMIT=cc5e1daa5c7f2335a9460ae79c829011dc5cef2d
+	IMPLOT_COMMIT=18c72431f8265e2b0b5378a3a73d8a883b2175ff
 	TINYGLTF_COMMIT=c5641f2c22d117da7971504591a8f6a41ece488b
-	VULKAN_HEADERS_COMMIT=05fe2cc910a68c9ba5dac07db46ef78573acee72
-	VULKANMEMORYALLOCATOR_COMMIT=009ecd192c1289c7529bff248a16cfe896254816
+	VULKAN_HEADERS_COMMIT=39f924b810e561fd86b2558b6711ca68d4363f68
+	VULKANMEMORYALLOCATOR_COMMIT=3bab6924988e5f19bf36586a496156cf72f70d9f
 	ZLIB_NG_COMMIT=ce01b1e41da298334f8214389cc9369540a7560f
-	MINIZIP_NG_COMMIT=3eed562ef0ea3516db30d1c8ecb0e1b486d8cb70
+	MINIZIP_NG_COMMIT=55db144e03027b43263e5ebcb599bf0878ba58de
 	SRC_URI="
 		https://github.com/dolphin-emu/dolphin/archive/${PV}.tar.gz
 			-> ${P}.tar.gz
@@ -101,7 +101,7 @@ RDEPEND="
 	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}=') )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-libs/libpulse )
-	sdl? ( media-libs/libsdl2 )
+	sdl? ( >=media-libs/libsdl2-2.30.9 )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc:= )
 "
