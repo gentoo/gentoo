@@ -43,7 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.18.3-boost-1.87.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.18.3-boost-1.87.patch
+	"${FILESDIR}"/${PN}-1.18.3-gcc15.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
