@@ -1,0 +1,81 @@
+From 8a399018269bebd3ee99d2f4f51656b1b74ed02d Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 9 Jan 2025 14:19:48 +0800
+Subject: [PATCH] autoconf: fix -Wimplicit-function-declaration
+
+With modern C compilers this is a bug and will cause false positives in
+feature tests.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ autoconf/hercules.m4 | 17 ++++++++++++-----
+ configure.ac         |  3 +++
+ 2 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/autoconf/hercules.m4 b/autoconf/hercules.m4
+index edd71d63..08647581 100644
+--- a/autoconf/hercules.m4
++++ b/autoconf/hercules.m4
+@@ -291,6 +291,7 @@ AC_DEFUN([_HC_CHECK_NEED_GETOPT_WRAPPER],
+                    Will the linker complain about duplicate
+                    symbols for getopt? We'll soon find out!
+                 */
++                extern int getopt(int, char *const[], const char *);
+                 extern char *optarg;
+                 extern int optind;
+ 
+@@ -315,6 +316,8 @@ DUPGETOPT1
+                    needs getopt. Will linker complain about
+                    duplicate symbols for getopt? Let's see.
+                 */
++                extern int getopt(int, char *const[], const char *);
++                extern int test1();
+                 extern char *optarg;
+                 extern int optind;
+                 extern int test2();
+@@ -334,11 +337,11 @@ DUPGETOPT1
+                 }
+ DUPGETOPT2
+ 
+-            libtool --mode=compile ${CC-cc} conftest1.c -c -o conftest1.lo > /dev/null 2>&1
+-            libtool --mode=compile ${CC-cc} conftest2.c -c -o conftest2.lo > /dev/null 2>&1
++            libtool --tag=CC --mode=compile ${CC-cc} conftest1.c -c -o conftest1.lo > /dev/null 2>&1
++            libtool --tag=CC --mode=compile ${CC-cc} conftest2.c -c -o conftest2.lo > /dev/null 2>&1
+ 
+-            libtool --mode=link ${CC-cc} -shared -rpath /lib -no-undefined conftest1.lo                 -o libconftest1.la > /dev/null 2>&1
+-            libtool --mode=link ${CC-cc} -shared -rpath /lib -no-undefined conftest2.lo libconftest1.la -o libconftest2.la > /dev/null 2>&1
++            libtool --tag=CC --mode=link ${CC-cc} -shared -rpath /lib -no-undefined conftest1.lo                 -o libconftest1.la > /dev/null 2>&1
++            libtool --tag=CC --mode=link ${CC-cc} -shared -rpath /lib -no-undefined conftest2.lo libconftest1.la -o libconftest2.la > /dev/null 2>&1
+ 
+             if test $? = 0; then
+ 
+@@ -385,7 +388,11 @@ AC_DEFUN([HC_CHECK_NEED_GETOPT_OPTRESET],
+         [hc_cv_need_getopt_optreset],
+         [
+             AC_TRY_LINK(
+-                [],
++                [
++                    #ifdef HAVE_UNISTD_H
++                    #include <unistd.h>
++                    #endif
++                ],
+                 [
+                     extern int optreset;
+                     optreset=1;
+diff --git a/configure.ac b/configure.ac
+index f12d4705..68dae467 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1168,6 +1168,9 @@ if test "$GCC" = "yes"; then
+ 
+                             -g -O2 -fomit-frame-pointer
+                     */
++                    #if HAVE_STRING_H
++                    #include <string.h>
++                    #endif
+ 
+                     int foo ()
+                     {
+-- 
+2.45.2
+
