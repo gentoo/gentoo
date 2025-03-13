@@ -550,7 +550,7 @@ multilib_src_configure() {
 		${EXTRA_ECONF}
 	)
 
-	einfo "${conf[*]}" # no edo.eclass due to noisy long command in errors
+	einfo "${conf[*]}"
 	"${conf[@]}" || die "configure failed, see ${BUILD_DIR}/ffbuild/config.log"
 }
 
