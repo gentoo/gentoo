@@ -254,7 +254,6 @@ fi
 # Correlates to JAVA_RELEASE_SRC_DIRS.
 # When this variable is set, module-info.java will be placed in
 # ${JAVA_MODULE_INFO_OUT}/${JAVA_INTERMEDIATE_JAR_NAME}/versions/${JAVA_MODULE_INFO_RELEASE}
-: "${JAVA_MODULE_INFO_RELEASE:=9}"
 
 # @ECLASS_VARIABLE: JAVA_RELEASE_SRC_DIRS
 # @DEFAULT_UNSET
@@ -382,6 +381,9 @@ java-pkg-simple_generate-module-info() {
 
 	local modulepath="" jdeps_args=""
 	java-pkg-simple_getmodulepath
+
+	# Default to release 9 in order to avoid having to set it in the ebuild.
+	: "${JAVA_MODULE_INFO_RELEASE:=9}"
 
 	if [[ ${JAVA_MODULE_INFO_RELEASE} ]]; then
 		jdeps_args="${jdeps_args} --multi-release ${JAVA_MODULE_INFO_RELEASE}"
