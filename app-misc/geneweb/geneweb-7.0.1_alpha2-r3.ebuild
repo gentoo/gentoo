@@ -59,6 +59,11 @@ src_prepare() {
 		-e "/opam_swich_prefix_lib/s|\"lib|\"$(get_libdir)|" \
 		bin/gwrepl/mk_data.ml \
 		|| die
+	sed -i \
+		-e "s:Printexc.catch ::" \
+		bin/gwb2ged/gwb2ged.ml \
+		bin/gwu/gwu.ml \
+		|| die
 }
 
 src_configure() {
