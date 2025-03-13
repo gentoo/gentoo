@@ -378,7 +378,14 @@ eaclocal() {
 	# See bug #677002
 	if [[ ! -f "${T}"/aclocal/dirlist ]] ; then
 		mkdir "${T}"/aclocal || die
-		cat <<- EOF > "${T}"/aclocal/dirlist || die
+		if [[ "${LIBTOOLIZE:-}" == 'slibtoolize' ]]; then
+			cat <<- EOF > "${T}"/aclocal/dirlist || die
+				${BROOT}/usr/share/slibtool
+				${ESYSROOT}/usr/share/slibtool
+			EOF
+		fi
+
+		cat <<- EOF >> "${T}"/aclocal/dirlist || die
 			${BROOT}/usr/share/aclocal
 			${ESYSROOT}/usr/share/aclocal
 		EOF
