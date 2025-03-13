@@ -132,6 +132,8 @@ python_test() {
 		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
 		# may fail if chromium version is unrecognized (aka newer qtwebengine)
 		tests/unit/utils/test_version.py
+		# no longer XFAIL due to being fixed in python
+		tests/unit/utils/test_urlmatch.py::test_invalid_patterns\[host-ipv6-two-closing\]
 	)
 
 	local epytestargs=(
