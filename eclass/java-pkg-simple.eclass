@@ -393,7 +393,7 @@ java-pkg-simple_generate-module-info() {
 		jdeps_args="${jdeps_args} --module-path ${modulepath}"
 		jdeps_args="${jdeps_args} --add-modules=ALL-MODULE-PATH"
 	fi
-	einfo "jdeps_args is ${jdeps_args}"
+	debug-print "jdeps_args is ${jdeps_args}"
 
 	jdeps \
 		--generate-module-info "${JAVA_MODULE_INFO_OUT}" \
@@ -531,7 +531,7 @@ java-pkg-simple_src_compile() {
 
 		# If JAVA_RELEASE_SRC_DIRS was not set in the ebuild, set it now:
 		if [[ ${JAVA_MODULE_INFO_RELEASE} && -z ${JAVA_RELEASE_SRC_DIRS[@]} ]]; then
-			# TODO: use JAVA_MODULE_INFO_REELEASE instead of fixed value.
+			# TODO: use JAVA_MODULE_INFO_RELEASE instead of fixed value.
 			JAVA_RELEASE_SRC_DIRS=( ["9"]=${JAVA_MODULE_INFO_OUT}/${JAVA_INTERMEDIATE_JAR_NAME}"/versions/9" )
 		fi
 	fi
