@@ -127,6 +127,8 @@ DOCS=( README.md )
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
+# bug #951208
+# https://github.com/tummychow/git-absorb/pull/169
 PATCHES=( "${FILESDIR}"/${P}-doc.patch )
 
 src_compile() {
