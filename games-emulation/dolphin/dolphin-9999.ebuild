@@ -208,6 +208,7 @@ src_configure() {
 		-DENABLE_AUTOUPDATE=OFF
 		-DENABLE_BLUEZ=$(usex bluetooth)
 		-DENABLE_CLI_TOOL=ON
+		-DENABLE_CUBEB=ON
 		-DENABLE_EGL=$(usex egl)
 		-DENABLE_EVDEV=$(usex evdev)
 		-DENABLE_LLVM=$(usex llvm)
