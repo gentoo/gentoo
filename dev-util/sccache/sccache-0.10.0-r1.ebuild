@@ -448,6 +448,7 @@ src_configure() {
 		$(usev memcached)
 		$(usev redis)
 		$(usev s3)
+		$(usev webdav)
 	)
 
 	cargo_src_configure --no-default-features
