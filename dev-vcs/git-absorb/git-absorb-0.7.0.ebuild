@@ -127,6 +127,8 @@ DOCS=( README.md )
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
+PATCHES=( "${FILESDIR}"/${P}-doc.patch )
+
 src_compile() {
 	export LIBGIT2_NO_VENDOR=1
 
