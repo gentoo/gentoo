@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/919874
+fix -Wincompatible-pointer-types
+ error: passing argument 1 of 'alloc_free' from incompatible pointer type [-Wincompatible-pointer-types]
+   66 |   alloc_free(e);
+      |              ^
+      |              |
+      |              char **
+
+diff --git a/alloc.c b/alloc.c
+index b7a3e67..4e258f4 100644
+--- a/alloc.c
++++ b/alloc.c
+@@ -21,7 +21,7 @@ unsigned int n;
+ }
+ 
+ void alloc_free(x)
+-char *x;
++void *x;
+ {
+   if (x >= space)
+     if (x < space + SPACE)
+diff --git a/alloc.h b/alloc.h
+index 24ef27e..680848e 100644
+--- a/alloc.h
++++ b/alloc.h
+@@ -4,7 +4,7 @@
+ #include <stdlib.h>
+ 
+ extern /*@null@*//*@out@*/char *alloc(unsigned int);
+-extern void alloc_free(char *);
++extern void alloc_free(void *);
+ extern int alloc_re();
+ 
+ #endif
