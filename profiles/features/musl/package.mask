@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NHOrus <jy6x2b32pie9@yahoo.com> (2025-03-13)
+# uses functions musl will not implement, bug #942215
+app-admin/sud
+
 # NHOrus <jy6x2b32pie9@yahoo.com> (2025-02-01)
 # not ported to musl, bug #713434
 app-crypt/mit-krb5-appl
