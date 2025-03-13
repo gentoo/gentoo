@@ -1,0 +1,25 @@
+--- a/scripts/CMakeLists.txt
++++ b/scripts/CMakeLists.txt
+@@ -69,13 +69,9 @@
+ 
+ if (DO_PYTHON_BINDINGS)
+ 
+-    include_directories(
+-        ${PYTHON_INCLUDE_PATH}
+-    )
+-
+     if(RUN_SWIG)
+       add_custom_command(OUTPUT ${openbabel_SOURCE_DIR}/scripts/python/openbabel/openbabel-python.cpp ${openbabel_SOURCE_DIR}/scripts/python/openbabel/openbabel.py
+-      COMMAND ${SWIG_EXECUTABLE} -python -c++ ${doxygen_switch} -small -O -templatereduce -naturalvar -I${openbabel_SOURCE_DIR}/include -I${openbabel_BINARY_DIR}/include -o ${openbabel_SOURCE_DIR}/scripts/python/openbabel/openbabel-python.cpp ${eigen_define} -outdir ${openbabel_SOURCE_DIR}/scripts/python/openbabel ${openbabel_SOURCE_DIR}/scripts/openbabel-python.i
++	      COMMAND ${SWIG_EXECUTABLE} -python -c++ ${doxygen_switch} -small -O -templatereduce -naturalvar -I${PYTHON_INCLUDE_PATH} -I${openbabel_SOURCE_DIR}/include -I${openbabel_BINARY_DIR}/include -o ${openbabel_SOURCE_DIR}/scripts/python/openbabel/openbabel-python.cpp ${eigen_define} -outdir ${openbabel_SOURCE_DIR}/scripts/python/openbabel ${openbabel_SOURCE_DIR}/scripts/openbabel-python.i
+               MAIN_DEPENDENCY openbabel-python.i
+               VERBATIM
+               )
+@@ -84,6 +80,7 @@
+     configure_file(${openbabel_SOURCE_DIR}/scripts/python/openbabel/__init__.py.in
+                    ${openbabel_SOURCE_DIR}/scripts/python/openbabel/__init__.py)
+     add_library(bindings_python MODULE ${openbabel_SOURCE_DIR}/scripts/python/openbabel/openbabel-python.cpp)
++    target_include_directories(bindings_python PRIVATE ${PYTHON_INCLUDE_PATH})
+ 
+     if(APPLE)
+       # Don't link against Python library on Mac
