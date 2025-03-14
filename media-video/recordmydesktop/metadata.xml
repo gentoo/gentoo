@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">recordmydesktop</remote-id>
+    <remote-id type="github">Enselic/recordmydesktop</remote-id>
   </upstream>
 </pkgmetadata>
