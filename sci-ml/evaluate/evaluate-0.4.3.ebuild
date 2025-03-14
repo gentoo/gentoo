@@ -26,7 +26,7 @@ RDEPEND="
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet]
 		dev-python/unidecode[${PYTHON_USEDEP}]
 	')
-	sci-libs/datasets[${PYTHON_SINGLE_USEDEP}]
+	sci-ml/datasets[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="test? (

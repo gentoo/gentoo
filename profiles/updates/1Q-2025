@@ -5,3 +5,4 @@ move dev-util/rr dev-debug/rr
 move sci-libs/evaluate sci-ml/evaluate
 move sci-libs/transformers sci-ml/transformers
 move sci-libs/tokenizers sci-ml/tokenizers
+move sci-libs/datasets sci-ml/datasets

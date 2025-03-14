@@ -319,7 +319,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="
-	test? ( sci-libs/datasets[${PYTHON_SINGLE_USEDEP}] )
+	test? ( sci-ml/datasets[${PYTHON_SINGLE_USEDEP}] )
 	$(python_gen_cond_dep '
 		dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	')
