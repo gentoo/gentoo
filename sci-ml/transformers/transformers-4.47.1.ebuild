@@ -31,7 +31,7 @@ RDEPEND="
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
-		sci-libs/huggingface_hub[${PYTHON_USEDEP}]
+		sci-ml/huggingface_hub[${PYTHON_USEDEP}]
 		>=sci-libs/safetensors-0.4.1[${PYTHON_USEDEP}]
 	')
 "
