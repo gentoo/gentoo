@@ -20,7 +20,7 @@ case ${PV}  in
 *)
 	SRC_URI="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz "
 	S="${WORKDIR}"/go
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 	;;
 esac
 
