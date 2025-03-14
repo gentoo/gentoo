@@ -22,7 +22,7 @@ RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
-	~sci-libs/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
+	~sci-ml/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]

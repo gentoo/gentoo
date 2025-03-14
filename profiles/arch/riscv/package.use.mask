@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
-# sci-libs/caffe2 is not keyworded on riscv
+# sci-ml/caffe2 is not keyworded on riscv
 sci-chemistry/gromacs nnpot
 
 # Benda Xu <heroxbd@gentoo.org> (2024-10-10)

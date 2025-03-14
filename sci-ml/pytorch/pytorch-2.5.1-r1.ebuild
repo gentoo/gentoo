@@ -22,8 +22,8 @@ RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
-	~sci-libs/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
-	>=sci-libs/caffe2-2.5.1-r5
+	~sci-ml/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
+	>=sci-ml/caffe2-2.5.1-r5
 	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]

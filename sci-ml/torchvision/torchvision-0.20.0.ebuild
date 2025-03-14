@@ -23,7 +23,7 @@ IUSE="cuda"
 
 RDEPEND="
 	=sci-ml/pytorch-2.5*[${PYTHON_SINGLE_USEDEP}]
-	=sci-libs/caffe2-2.5*[cuda?]
+	=sci-ml/caffe2-2.5*[cuda?]
 	dev-python/numpy
 	dev-python/pillow
 	media-libs/libjpeg-turbo:=

@@ -51,7 +51,7 @@ dev-python/qtpy remoteobjects
 >=sys-devel/gcc-11 -ada
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
-# sci-libs/caffe2 is not keyworded on arm64
+# sci-ml/caffe2 is not keyworded on arm64
 sci-chemistry/gromacs nnpot
 
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
