@@ -2646,7 +2646,7 @@ java-pkg_setup-vm() {
 # @FUNCTION: java-pkg_needs-vm
 # @INTERNAL
 # @DESCRIPTION:
-# Does the current package depend on virtual/jdk or does it set
+# Does the current package depend on virtual/jdk, virtual/jre or does it set
 # JAVA_PKG_WANT_BUILD_VM?
 #
 # @RETURN: 0 - Package depends on virtual/jdk; 1 - Package does not depend on virtual/jdk
@@ -2654,6 +2654,10 @@ java-pkg_needs-vm() {
 	debug-print-function ${FUNCNAME} $*
 
 	if [[ -n "$(echo ${JAVA_PKG_NV_DEPEND:-${DEPEND}} | sed -e '\:virtual/jdk:!d')" ]]; then
+		return 0
+	fi
+
+	if [[ -n "$(echo ${JAVA_PKG_NV_DEPEND:-${DEPEND}} | sed -e '\:virtual/jre:!d')" ]]; then
 		return 0
 	fi
 
