@@ -256,12 +256,6 @@ app-emulation/vkd3d
 # packages this. Removal on 2025-03-14.
 x11-misc/kaqaz
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
-# Depends on deprecated Qt5Script, gone closed-source upstream, multiple
-# open bugs #912829, #913106, #922304, #922306, #926039, #935772, #935887,
-# no response from maintainer. Removal on 2025-03-14.
-net-analyzer/ostinato
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
