@@ -13,7 +13,8 @@ S="${WORKDIR}/SFML-${PV}"
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="debug doc examples"
+IUSE="debug doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/flac:=
@@ -39,9 +40,12 @@ DEPEND="
 "
 BDEPEND="
 	doc? ( app-text/doxygen )
+	test? ( >=dev-cpp/catch-3.7.0 )
 "
 
 DOCS=( changelog.md readme.md )
+
+PATCHES=( "$FILESDIR"/"${PN}"-3.0.0-catch-depend.patch )
 
 src_prepare() {
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
@@ -55,9 +59,36 @@ src_configure() {
 	local mycmakeargs=(
 		-DSFML_BUILD_DOC=$(usex doc)
 		-DSFML_INSTALL_PKGCONFIG_FILES=TRUE
+		-DSFML_BUILD_TEST_SUITE=$(usex test)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# broken in sandbox
+	local CMAKE_SKIP_TESTS=(
+		sf::Clipboard
+		sf::Context
+		sf::Cursor
+		sf::Keyboard
+		sf::VideoMode
+		sf::Window
+		sf::Drawable
+		sf::Font
+		sf::RenderTexture
+		sf::RenderWindow
+		sf::Shader
+		sf::Shape
+		sf::Sprite
+		sf::Text
+		sf::Texture
+		sf::IpAddress
+		sf::Sound
+		sf::SoundStream
+		Render Tests
+	)
+	cmake_src_test
 }
 
 src_install() {
