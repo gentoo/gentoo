@@ -329,6 +329,13 @@ src_install() {
 	find Documentation/*.[157] >/dev/null 2>&1 && doman Documentation/*.[157]
 	dodoc README* Documentation/{SubmittingPatches,CodingGuidelines}
 
+	local d
+	for d in / /howto/ /technical/ ; do
+		docinto ${d}
+		dodoc Documentation${d}*.adoc
+	done
+	docinto /
+
 	newbashcomp contrib/completion/git-completion.bash ${PN}
 	bashcomp_alias git gitk
 	# Not really a bash-completion file (bug #477920)
