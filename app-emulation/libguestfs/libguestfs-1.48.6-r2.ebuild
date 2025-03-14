@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 	)
 	libvirt? ( app-emulation/libvirt )
 	lua? ( ${LUA_DEPS} )
-	ocaml? ( >=dev-lang/ocaml-4.03:=[ocamlopt] )
+	ocaml? ( <dev-lang/ocaml-5:=[ocamlopt] )
 	selinux? (
 		sys-libs/libselinux:=
 		sys-libs/libsemanage
