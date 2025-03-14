@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit check-reqs wrapper
+inherit check-reqs wrapper unpacker
 
 BONUSPACK_P="dedicatedserver3339-bonuspack.zip"
 PATCH_P="ut2004-lnxpatch${PV%.*}-2.tar.bz2"
@@ -22,7 +22,7 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror strip"
 
 BDEPEND="
-	app-arch/p7zip
+	$(unpacker_src_uri_depends .7z)
 	app-arch/unzip
 "
 RDEPEND="
