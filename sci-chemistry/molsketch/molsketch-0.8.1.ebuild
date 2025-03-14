@@ -1,0 +1,34 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake xdg
+
+DESCRIPTION="Drawing tool for 2D molecular structures"
+HOMEPAGE="https://molsketch.sourceforge.io/ https://github.com/hvennekate/Molsketch/"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/Molsketch/${P^}-src.tar.gz"
+S="${WORKDIR}/${P^}"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+
+DEPEND="
+	>=sci-chemistry/openbabel-3:=[inchi]
+	dev-qt/qtbase:6[gui,network,widgets]
+	dev-qt/qtsvg:6
+"
+RDEPEND="${DEPEND}"
+BDEPEND="dev-qt/qttools:6[linguist]"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.0-_DEFAULT_SOURCE.patch
+)
+
+src_configure() {
+	local mycmakeargs=(
+		-DMSK_QT6=ON
+	)
+	cmake_src_configure
+}
