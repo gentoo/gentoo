@@ -52,7 +52,7 @@ BDEPEND="test? (
 		sci-libs/jiwer[${PYTHON_USEDEP}]
 		sci-libs/seqeval[${PYTHON_USEDEP}]
 	')
-	sci-libs/torchvision[${PYTHON_SINGLE_USEDEP}]
+	sci-ml/torchvision[${PYTHON_SINGLE_USEDEP}]
 )"
 
 PATCHES=(
