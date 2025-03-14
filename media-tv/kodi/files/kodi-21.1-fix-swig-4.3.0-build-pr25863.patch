@@ -1,0 +1,27 @@
+From: https://github.com/xbmc/xbmc/pull/25863
+From 4ff0ba903bed472cddb0d6e5c53c8176cded6b09 Mon Sep 17 00:00:00 2001
+From: Rudi Heitbaum <rudi@heitbaum.com>
+Date: Mon, 21 Oct 2024 22:10:29 +1100
+Subject: [PATCH] [swig] Fix building with swig 4.3.0
+
+swig 4.3.0 has dropped the -xmllang option used with -xml, which had no effect on the output.
+
+Ref:
+- https://github.com/swig/swig/commit/86498e46c6a6218a3d091c12513c40076ac2ce63
+---
+ xbmc/interfaces/swig/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xbmc/interfaces/swig/CMakeLists.txt b/xbmc/interfaces/swig/CMakeLists.txt
+index 1951b2a336789..46c84c7f7efc5 100644
+--- a/xbmc/interfaces/swig/CMakeLists.txt
++++ b/xbmc/interfaces/swig/CMakeLists.txt
+@@ -22,7 +22,7 @@ function(generate_file file)
+ 
+   add_custom_command(OUTPUT ${CPP_FILE}
+                      COMMAND ${SWIG_EXECUTABLE}
+-                     ARGS -w401 -c++ -o ${file}.xml -xml -I${CMAKE_SOURCE_DIR}/xbmc -xmllang python ${CMAKE_CURRENT_SOURCE_DIR}/../swig/${file}
++                     ARGS -w401 -c++ -o ${file}.xml -xml -I${CMAKE_SOURCE_DIR}/xbmc ${CMAKE_CURRENT_SOURCE_DIR}/../swig/${file}
+                      COMMAND ${Java_JAVA_EXECUTABLE}
+                      ARGS ${JAVA_OPEN_OPTS} -cp "${classpath}" groovy.ui.GroovyMain ${CMAKE_SOURCE_DIR}/tools/codegenerator/Generator.groovy ${file}.xml ${CMAKE_CURRENT_SOURCE_DIR}/../python/PythonSwig.cpp.template ${file}.cpp > ${devnull}
+                      ${CLANG_FORMAT_COMMAND}
