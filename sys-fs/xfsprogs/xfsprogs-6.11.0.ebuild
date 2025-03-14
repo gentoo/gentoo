@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,9 +57,6 @@ src_configure() {
 
 	# bug 903611
 	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
-
-	# Build fails with -O3 (bug #712698)
-	replace-flags -O3 -O2
 
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html

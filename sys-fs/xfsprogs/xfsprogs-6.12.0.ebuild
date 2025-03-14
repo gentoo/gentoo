@@ -62,9 +62,6 @@ src_configure() {
 	use elibc_musl && \
 		append-flags -D_LARGEFILE64_SOURCE -DOVERRIDE_SYSTEM_STATX
 
-	# Build fails with -O3 (bug #712698)
-	replace-flags -O3 -O2
-
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html
 	# https://www.spinics.net/lists/linux-xfs/msg30272.html
