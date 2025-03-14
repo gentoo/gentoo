@@ -2647,7 +2647,7 @@ toolchain_src_install() {
 	fi
 
 	# Hack for C++ modules
-	if ! is_crosscompile; then
+	if ! is_crosscompile && tc_version_is_at_least 15.0.1_pre20250316 ${PV}; then
 		# PR19266 (bug #948394)
 		sed -i -e "s,\.\./lib/gcc/${CHOST}/${GCCMAJOR}/include/,include/," \
 			"${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/libstdc++.modules.json || die
