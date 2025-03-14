@@ -1,0 +1,15 @@
+[Unit]
+Description=Kubernetes Controller Manager service
+Documentation=https://kubernetes.io/docs/concepts/architecture/#kube-controller-manager https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/kube-controller-manager
+Restart=on-failure
+KillMode=process
+User=kube-controller-manager
+Group=kube-controller-manager
+
+[Install]
+WantedBy=multi-user.target
