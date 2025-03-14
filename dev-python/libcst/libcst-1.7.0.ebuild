@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 CRATES="
 	aho-corasick@1.0.4
@@ -171,7 +171,7 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
 				# https://github.com/Instagram/LibCST/issues/1278
 				libcst/codemod/commands/tests/test_rename_typing_generic_aliases.py::TestRenameCommand::test_rename_typing_generic_alias
