@@ -1,0 +1,64 @@
+https://git.savannah.gnu.org/cgit/diffutils.git/commit/?id=58e734dedd2ed84b559c313b4fbe8e2a1b987a1d
+
+From 58e734dedd2ed84b559c313b4fbe8e2a1b987a1d Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 28 Feb 2025 14:32:44 -0800
+Subject: tests: make seq replacement more available
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This refactoring should let other future tests use ‘seq’.
+* tests/diff3 (seq): Move from here ...
+* tests/init.cfg: ... to here.
+---
+ tests/diff3    | 12 ------------
+ tests/init.cfg | 12 ++++++++++++
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/tests/diff3 b/tests/diff3
+index e468243..c2079ec 100644
+--- a/tests/diff3
++++ b/tests/diff3
+@@ -3,18 +3,6 @@
+ 
+ . "${srcdir=.}/init.sh"; path_prepend_ ../src
+ 
+-# Some systems lack seq.
+-# A limited replacement for seq: handle 1 or 2 args; increment must be 1
+-seq()
+-{
+-  case $# in
+-    1) start=1  final=$1;;
+-    2) start=$1 final=$2;;
+-    *) echo you lose 1>&2; exit 1;;
+-  esac
+-  awk 'BEGIN{for(i='$start';i<='$final';i++) print i}' < /dev/null
+-}
+-
+ echo a > a || framework_failure_
+ echo b > b || framework_failure_
+ echo c > c || framework_failure_
+diff --git a/tests/init.cfg b/tests/init.cfg
+index 8b3b107..66c26d6 100644
+--- a/tests/init.cfg
++++ b/tests/init.cfg
+@@ -120,4 +120,16 @@ require_utf8_locale_()
+   test $found_working_tr = 1 || skip_ "failed to find a working tr program"
+ }
+ 
++# Some systems lack seq.
++# A limited replacement for seq: handle 1 or 2 args; increment must be 1
++seq()
++{
++  case $# in
++    1) start=1  final=$1;;
++    2) start=$1 final=$2;;
++    *) echo you lose 1>&2; exit 1;;
++  esac
++  awk 'BEGIN{for(i='$start';i<='$final';i++) print i}' < /dev/null
++}
++
+ sanitize_path_
+-- 
+cgit v1.1

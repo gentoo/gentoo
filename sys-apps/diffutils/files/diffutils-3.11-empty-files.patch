@@ -1,0 +1,83 @@
+https://git.savannah.gnu.org/cgit/diffutils.git/commit/?id=6ce0ebd033c395265c262ae3aab6477a49d4c2f1
+
+From 6ce0ebd033c395265c262ae3aab6477a49d4c2f1 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Thu, 20 Feb 2025 21:59:55 -0800
+Subject: diff: don't treat empty files as a different file type
+
+Reported by Kate Deplaix <kit-ty-kate@outlook.com> in
+<https://lists.gnu.org/r/bug-diffutils/2025-02/msg00005.html>.
+
+* src/diff.c (compare_prepped_files): Don't rely on string
+file type, as that might not agree with our idea of a file type.
+---
+ src/diff.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/diff.c b/src/diff.c
+index fa6100e..6e1bbc5 100644
+--- a/src/diff.c
++++ b/src/diff.c
+@@ -1223,14 +1223,14 @@ compare_prepped_files (struct comparison const *parent,
+      the type is unusual, then simply report their type.
+      However, at the top level do this only if one file is a symlink
+      and the other is not.  */
+-  if (toplevel
+-      ? (!S_ISLNK (cmp->file[0].stat.st_mode)
+-	 != !S_ISLNK (cmp->file[1].stat.st_mode))
+-      : (cmp->file[0].filetype != cmp->file[1].filetype
+-	 || ! (S_ISREG (cmp->file[0].stat.st_mode)
+-	       || S_ISLNK (cmp->file[0].stat.st_mode)
+-	       || S_ISCHR (cmp->file[0].stat.st_mode)
+-	       || S_ISBLK (cmp->file[0].stat.st_mode))))
++  mode_t mode0 = cmp->file[0].stat.st_mode;
++  mode_t mode1 = cmp->file[1].stat.st_mode;
++  if (toplevel ? !S_ISLNK (mode0) != !S_ISLNK (mode1)
++      : S_ISREG (mode0) ? !S_ISREG (mode1)
++      : S_ISLNK (mode0) ? !S_ISLNK (mode1)
++      : S_ISCHR (mode0) ? !S_ISCHR (mode1)
++      : S_ISBLK (mode0) ? !S_ISBLK (mode1)
++      : true)
+     {
+       /* POSIX 1003.1-2017 says any message will do, so long as it
+ 	 contains the file names.  */
+@@ -1244,7 +1244,7 @@ compare_prepped_files (struct comparison const *parent,
+     }
+ 
+   /* If both files are symlinks, compare symlink contents.  */
+-  if (S_ISLNK (cmp->file[0].stat.st_mode))
++  if (S_ISLNK (mode0))
+     {
+       /* We get here only if we are not dereferencing symlinks.  */
+       dassert (no_dereference_symlinks);
+@@ -1295,7 +1295,7 @@ compare_prepped_files (struct comparison const *parent,
+      and report file types of all other non-regular files.
+      POSIX 1003.1-2017 says any message will do,
+      so long as it contains the file names.  */
+-  if (!toplevel && !S_ISREG (cmp->file[0].stat.st_mode))
++  if (!toplevel && !S_ISREG (mode0))
+     {
+       if (cmp->file[0].stat.st_rdev == cmp->file[1].stat.st_rdev)
+ 	return EXIT_SUCCESS;
+@@ -1311,7 +1311,7 @@ compare_prepped_files (struct comparison const *parent,
+       for (int i = 0; i < n_num; i++)
+ 	sprintf (numbuf[i], "%"PRIdMAX, num[i]);
+ 
+-      message ((S_ISCHR (cmp->file[0].stat.st_mode)
++      message ((S_ISCHR (mode0)
+ 		? ("Character special files %s (%s, %s)"
+ 		   " and %s (%s, %s) differ\n")
+ 		: ("Block special files %s (%s, %s)"
+@@ -1323,8 +1323,8 @@ compare_prepped_files (struct comparison const *parent,
+     }
+ 
+   if (files_can_be_treated_as_binary
+-      && S_ISREG (cmp->file[0].stat.st_mode)
+-      && S_ISREG (cmp->file[1].stat.st_mode)
++      && S_ISREG (mode0)
++      && S_ISREG (mode1)
+       && cmp->file[0].stat.st_size != cmp->file[1].stat.st_size
+       && 0 <= cmp->file[0].stat.st_size
+       && 0 <= cmp->file[1].stat.st_size)
+-- 
+cgit v1.1
