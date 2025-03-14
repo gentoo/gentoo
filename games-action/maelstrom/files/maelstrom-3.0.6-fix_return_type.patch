@@ -1,8 +1,3 @@
-Adds void to main()
-
-Quick fix to the compile issue on main. There is no return statement, so return type is set to void. 
-
-Signed-off-by: Stephane Bakhos <nuitari@nuitari.net>
 https://bugs.gentoo.org/875431
 --- a/Maelstrom-netd.c
 +++ b/Maelstrom-netd.c
@@ -11,7 +6,7 @@ https://bugs.gentoo.org/875431
  }
  
 -main(int argc, char *argv[])
-+void main(int argc, char *argv[])
++int main(int argc, char *argv[])
  {
         int netfd, i, slot;
         struct sockaddr_in serv_addr;
