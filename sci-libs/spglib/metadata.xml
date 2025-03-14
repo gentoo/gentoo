@@ -5,4 +5,8 @@
 		<email>sci-chemistry@gentoo.org</email>
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">atztogo/spglib</remote-id><!-- old -->
+		<remote-id type="github">spglib/spglib</remote-id>
+	</upstream>
 </pkgmetadata>
