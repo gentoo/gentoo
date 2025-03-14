@@ -34,7 +34,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/asio
+	<dev-cpp/asio-1.33.0
 	dev-cpp/simpleini
 	test? ( dev-cpp/gtest )
 "
