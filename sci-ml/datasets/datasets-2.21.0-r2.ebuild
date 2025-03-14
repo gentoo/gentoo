@@ -21,7 +21,7 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	sci-libs/pytorch[${PYTHON_SINGLE_USEDEP}]
+	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	sci-libs/caffe2[${PYTHON_SINGLE_USEDEP},numpy]
 	$(python_gen_cond_dep '
 		dev-python/aiohttp[${PYTHON_USEDEP}]

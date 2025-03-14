@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
 	~sci-libs/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
+	>=sci-libs/caffe2-2.5.1-r5
 	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
@@ -36,12 +37,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	eapply \
-		"${FILESDIR}"/${PN}-2.4.0-dontbuildagain.patch \
-		"${FILESDIR}"/pytorch-1.9.0-Change-library-directory-according-to-CMake-build.patch \
-		"${FILESDIR}"/${PN}-2.4.0-global-dlopen.patch \
-		"${FILESDIR}"/pytorch-2.4.0-torch_shm_manager.patch \
-		"${FILESDIR}"/${PN}-1.13.0-setup.patch \
-		"${FILESDIR}"/${PN}-2.2.1-emptyso.patch \
+		"${FILESDIR}"/${P}-dontbuildagain.patch \
+		"${FILESDIR}"/${P}-setup.patch
 
 	# Set build dir for pytorch's setup
 	sed -i \
@@ -49,6 +46,9 @@ src_prepare() {
 		tools/setup_helpers/env.py \
 		|| die
 	distutils-r1_src_prepare
+
+	# Get object file from caffe2
+	cp /var/lib/caffe2/functorch.so functorch/functorch.so || die
 
 	hprefixify tools/setup_helpers/env.py
 }

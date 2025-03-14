@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 IUSE="cuda"
 
 RDEPEND="
-	=sci-libs/pytorch-2.5*[${PYTHON_SINGLE_USEDEP}]
+	=sci-ml/pytorch-2.5*[${PYTHON_SINGLE_USEDEP}]
 	=sci-libs/caffe2-2.5*[cuda?]
 	dev-python/numpy
 	dev-python/pillow
