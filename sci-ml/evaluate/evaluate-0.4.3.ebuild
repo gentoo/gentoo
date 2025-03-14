@@ -27,7 +27,7 @@ RDEPEND="
 		dev-python/unidecode[${PYTHON_USEDEP}]
 	')
 	sci-libs/datasets[${PYTHON_SINGLE_USEDEP}]
-	sci-libs/transformers[${PYTHON_SINGLE_USEDEP}]
+	sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="test? (
 	$(python_gen_cond_dep '
