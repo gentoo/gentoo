@@ -16,19 +16,16 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="test"  # Tests fail
 
-BDEPEND="
-	>=dev-ml/dune-3.17
-	dev-ml/cppo
-	dev-ml/dune-configurator
-"
-
 RDEPEND="
 	dev-ml/ocaml-fileutils:=[ocamlopt?]
 	dev-ml/dune-site:=[ocamlopt?]
 	sys-devel/gettext
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	>=dev-ml/dune-3.17
+	dev-ml/cppo
+	dev-ml/dune-configurator
 	test? (
 		dev-ml/ounit2[ocamlopt=]
 		dev-ml/seq[ocamlopt=]
