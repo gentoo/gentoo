@@ -251,11 +251,6 @@ app-text/fictionup
 # Removal on 2025-03-16.
 app-emulation/vkd3d
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
-# Last release 10 years ago, dead upstream, depends on Qt5, no one else
-# packages this. Removal on 2025-03-14.
-x11-misc/kaqaz
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
