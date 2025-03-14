@@ -1,9 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd
+
+DESCRIPTION="portmap replacement which supports RPC over various protocols"
+HOMEPAGE="https://sourceforge.net/projects/rpcbind/"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://linux-nfs.org/~steved/rpcbind.git"
@@ -13,21 +16,21 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-DESCRIPTION="portmap replacement which supports RPC over various protocols"
-HOMEPAGE="https://sourceforge.net/projects/rpcbind/"
-
 LICENSE="BSD"
 SLOT="0"
 IUSE="debug remotecalls selinux systemd tcpd warmstarts"
 REQUIRED_USE="systemd? ( warmstarts )"
 
-DEPEND=">=net-libs/libtirpc-0.2.3:=
+DEPEND="
+	>=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
-	tcpd? ( sys-apps/tcp-wrappers )"
-RDEPEND="${DEPEND}
-	selinux? ( sec-policy/selinux-rpcbind )"
-BDEPEND="
-	virtual/pkgconfig"
+	tcpd? ( sys-apps/tcp-wrappers )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-rpcbind )
+"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
