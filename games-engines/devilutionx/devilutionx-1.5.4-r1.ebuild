@@ -15,7 +15,7 @@ S=${WORKDIR}/${PN}-src-${PV}
 
 LICENSE="
 	Sustainable-Use-1.0
-	BSD CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1
+	Boost-1.0 BSD CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1
 	zerotier? ( BUSL-1.1 )
 "
 SLOT="0"
@@ -34,7 +34,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	<dev-cpp/asio-1.33.0
 	dev-cpp/simpleini
 	test? ( dev-cpp/gtest )
 "
@@ -50,11 +49,8 @@ CMAKE_SKIP_TESTS=(
 src_prepare() {
 	cmake_src_prepare
 
-	# use system asio
-	echo 'add_library(asio INTERFACE)' > 3rdParty/asio/CMakeLists.txt || die
-
 	# ensure system copies are used
-	rm -r dist/{asio,simpleini,sdl_audiolib}-src || die
+	rm -r dist/{simpleini,sdl_audiolib}-src || die
 }
 
 src_configure() {
