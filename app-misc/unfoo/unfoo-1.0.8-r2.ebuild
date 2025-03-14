@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,10 @@ RESTRICT="!test? ( test )"
 COMMON_DEPS="
 	app-alternatives/bzip2
 	app-alternatives/gzip
-	app-arch/p7zip
+	|| (
+		>=app-arch/7zip-24.09[symlink(+)]
+		app-arch/p7zip
+	)
 	|| (
 		app-arch/rar
 		app-arch/unrar
