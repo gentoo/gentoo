@@ -26,8 +26,9 @@ src_compile() {
 }
 
 src_test() {
-	for file in "${S}"/test/*.y;
-		do "${S}"/btyacc "${file}" || die
+	local file
+	for file in "${S}"/test/*.y; do
+		"${S}"/btyacc "${file}" || die
 		rm y_tab.c || die
 	done
 }
