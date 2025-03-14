@@ -1,4 +1,4 @@
-# Copyright 2011-2024 Gentoo Authors
+# Copyright 2011-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
@@ -50,7 +50,7 @@ _systemd_get_dir() {
 	# https://github.com/pkgconf/pkgconf/issues/205
 	local -x PKG_CONFIG_FDO_SYSROOT_RULES=1
 
-	if $(tc-getPKG_CONFIG) --exists systemd; then
+	if $(tc-getPKG_CONFIG) --exists systemd >/dev/null 2>&1; then
 		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
 	else
 		d="${EPREFIX}${fallback}"
