@@ -267,7 +267,6 @@ app-misc/kryoflux-dtc
 app-office/drawio-desktop-bin
 app-office/joplin-desktop
 app-office/libreoffice-bin
-app-office/libreoffice-bin-debug
 app-office/onlyoffice-bin
 app-shells/pwsh-bin
 app-text/master-pdf-editor
