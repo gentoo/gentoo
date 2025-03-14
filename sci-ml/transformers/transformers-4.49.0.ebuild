@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 RESTRICT="test" # Need network, too long to execute
 
 RDEPEND="
-	=sci-libs/tokenizers-0.21*[${PYTHON_SINGLE_USEDEP}]
+	=sci-ml/tokenizers-0.21*[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
