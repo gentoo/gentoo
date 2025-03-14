@@ -29,6 +29,9 @@ CDEPEND="
 	dev-libs/openssl:=
 	>=dev-libs/protobuf-21.12
 	dev-libs/xxhash
+	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,wayland?,widgets,X?]
+	>=dev-qt/qtimageformats-6.5:6
+	>=dev-qt/qtsvg-6.5:6
 	media-libs/libjpeg-turbo:=
 	~media-libs/libtgvoip-2.4.4_p20240706
 	media-libs/openal
@@ -37,13 +40,11 @@ CDEPEND="
 	~media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
 	>=media-video/ffmpeg-6:=[opus,vpx]
 	sys-libs/zlib:=[minizip]
+	kde-frameworks/kcoreaddons:6
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	libdispatch? ( dev-libs/libdispatch )
-	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,wayland?,widgets,X?]
-	>=dev-qt/qtimageformats-6.5:6
-	>=dev-qt/qtsvg-6.5:6
 	webkit? ( wayland? (
 		>=dev-qt/qtdeclarative-6.5:6
 		>=dev-qt/qtwayland-6.5:6[compositor,qml]
@@ -153,7 +154,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6QuickWidgets=${use_webkit_wayland}
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6WaylandClient=$(usex !wayland)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6WaylandCompositor=${use_webkit_wayland}
-		## KF6CoreAddons is currently unavailable in ::gentoo
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF6CoreAddons=yes
 
 		-DDESKTOP_APP_USE_LIBDISPATCH=$(usex libdispatch)
