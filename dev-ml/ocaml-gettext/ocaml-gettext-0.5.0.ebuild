@@ -36,9 +36,9 @@ DEPEND="
 "
 
 src_compile() {
-	dune-compile gettext-stub ${DUNE_PKG_NAME}
+	dune-compile ${DUNE_PKG_NAME}
 }
 
 src_test() {
-	dune-test gettext-stub ${DUNE_PKG_NAME}
+	dune-test ${DUNE_PKG_NAME}
 }
