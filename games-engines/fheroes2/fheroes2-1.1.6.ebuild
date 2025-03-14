@@ -62,6 +62,7 @@ src_install() {
 	cmake_src_install
 
 	if use tools; then
+		local file
 		for file in 82m2wav bin2txt extractor h2dmgr icn2img pal2img til2img xmi2midi; do
 			newbin "${BUILD_DIR}/${file}" "fheroes2-${file}"
 		done
