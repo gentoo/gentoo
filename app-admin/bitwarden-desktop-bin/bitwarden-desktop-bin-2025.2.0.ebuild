@@ -59,6 +59,7 @@ QA_PREBUILT="
 	opt/Bitwarden/bitwarden-app
 	opt/Bitwarden/chrome-sandbox
 	opt/Bitwarden/chrome_crashpad_handler
+	opt/Bitwarden/desktop_proxy
 "
 
 src_install() {
