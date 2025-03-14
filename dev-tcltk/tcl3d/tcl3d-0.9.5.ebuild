@@ -24,7 +24,7 @@ RDEPEND="dev-lang/tcl:0=
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/swig
-	app-arch/p7zip
+	$(unpacker_src_uri_depends)
 "
 
 src_prepare() {
