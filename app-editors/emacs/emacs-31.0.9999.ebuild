@@ -238,6 +238,7 @@ src_configure() {
 		--without-compress-install
 		--without-hesiod
 		--without-pop
+		--without-systemduserunitdir
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		--with-pdumper
 		$(use_enable acl)
@@ -499,7 +500,6 @@ src_install() {
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
 	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
-	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
