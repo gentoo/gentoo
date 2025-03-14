@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop wrapper
+inherit desktop wrapper unpacker
 
 PATCH_P="${PN}-lnxpatch${PV%.*}-2.tar.tar"
 DESCRIPTION="Editor's Choice Edition plus Mega Pack for the well-known first-person shooter"
@@ -34,7 +34,7 @@ RDEPEND="
 	x11-libs/libXext
 "
 
-BDEPEND="app-arch/p7zip"
+BDEPEND="$(unpacker_src_uri_depends)"
 
 DIR="/opt/${PN}"
 
