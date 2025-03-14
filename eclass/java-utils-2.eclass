@@ -2313,7 +2313,17 @@ java-pkg_init() {
 		I_WANT_GLOBAL_JAVA_OPTIONS="true"
 	fi
 
+	if ! java-pkg_needs-vm; then
+		die "!!! This package inherits java-pkg but doesn't depend on a JRE/JDK. -bin or broken dependency!!!"
+	fi
+
 	java-pkg_switch-vm
+
+	# verify that the current VM matches the build dependencies
+	java-pkg_ensure-vm-version-sufficient
+
+	# Setup the environment for the VM being used.
+	java-pkg_setup-vm
 	PATH=${JAVA_HOME}/bin:${PATH}
 
 	# TODO we will probably want to set JAVAC and JAVACFLAGS
@@ -2636,6 +2646,26 @@ java-pkg_func-exists() {
 java-pkg_setup-vm() {
 	debug-print-function ${FUNCNAME} $*
 
+	export JAVA=$(java-config --java)
+	export JAVAC=$(java-config --javac)
+	JAVACFLAGS="$(java-pkg_javac-args)"
+	[[ -n ${JAVACFLAGS_EXTRA} ]] && JAVACFLAGS="${JAVACFLAGS_EXTRA} ${JAVACFLAGS}"
+	export JAVACFLAGS
+
+	export JAVA_HOME="$(java-config -g JAVA_HOME)"
+	export JDK_HOME=${JAVA_HOME}
+
+	#TODO If you know a better solution let us know.
+	java-pkg_append_ LD_LIBRARY_PATH "$(java-config -g LDPATH)"
+
+	local tann="${T}/announced-vm"
+	# With the hooks we should only get here once from pkg_setup but better safe than sorry
+	# if people have for example modified eclasses some where
+	if [[ -n "${JAVA_PKG_DEBUG}" ]] || [[ ! -f "${tann}" ]] ; then
+		einfo "Using: $(java-config -f)"
+		[[ ! -f "${tann}" ]] && touch "${tann}"
+	fi
+
 	local vendor="$(java-pkg_get-vm-vendor)"
 	if [[ "${vendor}" == icedtea* ]] && java-pkg_is-vm-version-ge "1.8" ; then
 		addpredict "/dev/random"
@@ -2733,79 +2763,46 @@ java-pkg_build-vm-from-handle() {
 # @FUNCTION: java-pkg_switch-vm
 # @INTERNAL
 # @DESCRIPTION:
-# Switch VM if we're allowed to (controlled by JAVA_PKG_ALLOW_VM_CHANGE), and
-# verify that the current VM is sufficient.
-# Setup the environment for the VM being used.
+# Switch VM if we're allowed to (controlled by JAVA_PKG_ALLOW_VM_CHANGE)
 java-pkg_switch-vm() {
 	debug-print-function ${FUNCNAME} $*
 
-	if java-pkg_needs-vm; then
-		# Use the VM specified by JAVA_PKG_FORCE_VM
-		if [[ -n "${JAVA_PKG_FORCE_VM}" ]]; then
-			# If you're forcing the VM, I hope you know what your doing...
-			debug-print "JAVA_PKG_FORCE_VM used: ${JAVA_PKG_FORCE_VM}"
-			export GENTOO_VM="${JAVA_PKG_FORCE_VM}"
-		# if we're allowed to switch the vm...
-		elif [[ "${JAVA_PKG_ALLOW_VM_CHANGE}" == "yes" ]]; then
-			# if there is an explicit list of handles to choose from
-			if [[ -n "${JAVA_PKG_WANT_BUILD_VM}" ]]; then
-				debug-print "JAVA_PKG_WANT_BUILD_VM used: ${JAVA_PKG_WANT_BUILD_VM}"
-				GENTOO_VM=$(java-pkg_build-vm-from-handle)
-				if [[ $? != 0 ]]; then
-					eerror "${FUNCNAME}: No VM found for handles: ${JAVA_PKG_WANT_BUILD_VM}"
-					die "${FUNCNAME}: Failed to determine VM for building"
-				fi
-				# JAVA_PKG_WANT_SOURCE and JAVA_PKG_WANT_TARGET are required as
-				# they can't be deduced from handles.
-				if [[ -z "${JAVA_PKG_WANT_SOURCE}" ]]; then
-					eerror "JAVA_PKG_WANT_BUILD_VM specified but not JAVA_PKG_WANT_SOURCE"
-					die "Specify JAVA_PKG_WANT_SOURCE"
-				fi
-				if [[ -z "${JAVA_PKG_WANT_TARGET}" ]]; then
-					eerror "JAVA_PKG_WANT_BUILD_VM specified but not JAVA_PKG_WANT_TARGET"
-					die "Specify JAVA_PKG_WANT_TARGET"
-				fi
-			# otherwise determine a vm from dep string
-			else
-				debug-print "depend-java-query:  NV_DEPEND:	${JAVA_PKG_NV_DEPEND:-${DEPEND}}"
-				GENTOO_VM="$(depend-java-query --get-vm "${JAVA_PKG_NV_DEPEND:-${DEPEND}}")"
-				if [[ -z "${GENTOO_VM}" || "${GENTOO_VM}" == "None" ]]; then
-					eerror "Unable to determine VM for building from dependencies:"
-					echo "NV_DEPEND: ${JAVA_PKG_NV_DEPEND:-${DEPEND}}"
-					die "Failed to determine VM for building."
-				fi
+	# Use the VM specified by JAVA_PKG_FORCE_VM
+	if [[ -n "${JAVA_PKG_FORCE_VM}" ]]; then
+		# If you're forcing the VM, I hope you know what your doing...
+		debug-print "JAVA_PKG_FORCE_VM used: ${JAVA_PKG_FORCE_VM}"
+		export GENTOO_VM="${JAVA_PKG_FORCE_VM}"
+	# if we're allowed to switch the vm...
+	elif [[ "${JAVA_PKG_ALLOW_VM_CHANGE}" == "yes" ]]; then
+		# if there is an explicit list of handles to choose from
+		if [[ -n "${JAVA_PKG_WANT_BUILD_VM}" ]]; then
+			debug-print "JAVA_PKG_WANT_BUILD_VM used: ${JAVA_PKG_WANT_BUILD_VM}"
+			GENTOO_VM=$(java-pkg_build-vm-from-handle)
+			if [[ $? != 0 ]]; then
+				eerror "${FUNCNAME}: No VM found for handles: ${JAVA_PKG_WANT_BUILD_VM}"
+				die "${FUNCNAME}: Failed to determine VM for building"
 			fi
-			export GENTOO_VM
-		# otherwise just make sure the current VM is sufficient
+			# JAVA_PKG_WANT_SOURCE and JAVA_PKG_WANT_TARGET are required as
+			# they can't be deduced from handles.
+			if [[ -z "${JAVA_PKG_WANT_SOURCE}" ]]; then
+				eerror "JAVA_PKG_WANT_BUILD_VM specified but not JAVA_PKG_WANT_SOURCE"
+				die "Specify JAVA_PKG_WANT_SOURCE"
+			fi
+			if [[ -z "${JAVA_PKG_WANT_TARGET}" ]]; then
+				eerror "JAVA_PKG_WANT_BUILD_VM specified but not JAVA_PKG_WANT_TARGET"
+				die "Specify JAVA_PKG_WANT_TARGET"
+			fi
+		# otherwise determine a vm from dep string
 		else
-			java-pkg_ensure-vm-version-sufficient
+			debug-print "depend-java-query:  NV_DEPEND:	${JAVA_PKG_NV_DEPEND:-${DEPEND}}"
+			GENTOO_VM="$(depend-java-query --get-vm "${JAVA_PKG_NV_DEPEND:-${DEPEND}}")"
+			if [[ -z "${GENTOO_VM}" || "${GENTOO_VM}" == "None" ]]; then
+				eerror "Unable to determine VM for building from dependencies:"
+				echo "NV_DEPEND: ${JAVA_PKG_NV_DEPEND:-${DEPEND}}"
+				die "Failed to determine VM for building."
+			fi
 		fi
-		debug-print "Using: $(java-config -f)"
-
-		java-pkg_setup-vm
-
-		export JAVA=$(java-config --java)
-		export JAVAC=$(java-config --javac)
-		JAVACFLAGS="$(java-pkg_javac-args)"
-		[[ -n ${JAVACFLAGS_EXTRA} ]] && JAVACFLAGS="${JAVACFLAGS_EXTRA} ${JAVACFLAGS}"
-		export JAVACFLAGS
-
-		export JAVA_HOME="$(java-config -g JAVA_HOME)"
-		export JDK_HOME=${JAVA_HOME}
-
-		#TODO If you know a better solution let us know.
-		java-pkg_append_ LD_LIBRARY_PATH "$(java-config -g LDPATH)"
-
-		local tann="${T}/announced-vm"
-		# With the hooks we should only get here once from pkg_setup but better safe than sorry
-		# if people have for example modified eclasses some where
-		if [[ -n "${JAVA_PKG_DEBUG}" ]] || [[ ! -f "${tann}" ]] ; then
-			einfo "Using: $(java-config -f)"
-			[[ ! -f "${tann}" ]] && touch "${tann}"
-		fi
-
-	else
-		[[ -n "${JAVA_PKG_DEBUG}" ]] && ewarn "!!! This package inherits java-pkg but doesn't depend on a JDK. -bin or broken dependency!!!"
+		export GENTOO_VM
 	fi
 }
 
