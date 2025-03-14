@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools edo
+inherit autotools
 
 DESCRIPTION="A non-blocking DNS resolver library"
 HOMEPAGE="https://www.monkey.org/~provos/libdnsres/"
