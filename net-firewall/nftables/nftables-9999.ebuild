@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -147,7 +147,8 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-mk.init-r1 ${PN}
 	keepdir /var/lib/nftables
 
-	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}-load.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}-store.service
 
 	if use python ; then
 		pushd py >/dev/null || die
@@ -193,7 +194,7 @@ pkg_postinst() {
 	local save_file
 	save_file="${EROOT}"/var/lib/nftables/rules-save
 
-	# In order for the nftables-restore systemd service to start
+	# In order for the nftables-load systemd service to start
 	# the save_file must exist.
 	if [[ ! -f "${save_file}" ]]; then
 		( umask 177; touch "${save_file}" )
@@ -207,11 +208,11 @@ pkg_postinst() {
 
 	if has_version 'sys-apps/systemd'; then
 		elog "If you wish to enable the firewall rules on boot (on systemd) you"
-		elog "will need to enable the nftables-restore service."
-		elog "    'systemctl enable ${PN}-restore.service'"
+		elog "will need to enable the nftables-load service."
+		elog "    'systemctl enable ${PN}-load.service'"
 		elog
 		elog "If you are creating firewall rules before the next system restart"
-		elog "the nftables-restore service must be manually started in order to"
+		elog "the nftables-store service must be manually started in order to"
 		elog "save those rules on shutdown."
 	fi
 
