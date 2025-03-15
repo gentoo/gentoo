@@ -50,7 +50,7 @@ BDEPEND="test? (
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
 		sci-ml/jiwer[${PYTHON_USEDEP}]
-		sci-libs/seqeval[${PYTHON_USEDEP}]
+		sci-ml/seqeval[${PYTHON_USEDEP}]
 	')
 	sci-ml/torchvision[${PYTHON_SINGLE_USEDEP}]
 )"
