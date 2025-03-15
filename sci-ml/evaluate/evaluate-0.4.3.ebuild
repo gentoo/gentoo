@@ -31,7 +31,7 @@ RDEPEND="
 "
 BDEPEND="test? (
 	$(python_gen_cond_dep '
-		sci-libs/jiwer[${PYTHON_USEDEP}]
+		sci-ml/jiwer[${PYTHON_USEDEP}]
 		sci-libs/seqeval[${PYTHON_USEDEP}]
 	')
 )"
