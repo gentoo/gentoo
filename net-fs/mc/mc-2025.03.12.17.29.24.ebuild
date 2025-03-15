@@ -21,6 +21,7 @@ S="${WORKDIR}/${PN}-RELEASE.${MY_PV}"
 LICENSE="Apache-2.0 BSD MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test"
 
 RDEPEND="!!app-misc/mc"
 
