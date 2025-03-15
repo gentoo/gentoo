@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/pthreadpool
 "
 DEPEND="${RDEPEND}
-	dev-libs/FP16
+	sci-ml/FP16
 	dev-libs/FXdiv
 "
 
