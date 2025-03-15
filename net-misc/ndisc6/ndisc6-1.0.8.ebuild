@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://www.remlab.net/files/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~riscv x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~riscv ~sparc x86 ~x64-macos"
 IUSE="debug"
 
 BDEPEND="
