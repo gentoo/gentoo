@@ -49,7 +49,7 @@ RDEPEND="
 	dev-libs/sleef[cpu_flags_x86_sse3(+),cpu_flags_x86_ssse3(+)]
 	dev-libs/sleef[cpu_flags_x86_sse4_1(+),cpu_flags_x86_sse4_2(+)]
 	virtual/lapack
-	sci-libs/onnx
+	sci-ml/onnx
 	sci-ml/foxi
 	cuda? (
 		dev-libs/cudnn
