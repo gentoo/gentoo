@@ -211,7 +211,6 @@ src_configure() {
 		credential_helpers+=( osxkeychain )
 	fi
 
-
 	local native_file="${T}"/meson.ini.local
 	cat >> ${native_file} <<-EOF || die
 	[binaries]
