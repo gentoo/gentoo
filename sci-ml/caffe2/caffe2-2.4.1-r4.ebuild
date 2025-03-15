@@ -50,7 +50,7 @@ RDEPEND="
 	dev-libs/sleef[cpu_flags_x86_sse4_1(+),cpu_flags_x86_sse4_2(+)]
 	virtual/lapack
 	sci-libs/onnx
-	sci-libs/foxi
+	sci-ml/foxi
 	cuda? (
 		dev-libs/cudnn
 		>=dev-libs/cudnn-frontend-1.0.3:0/8

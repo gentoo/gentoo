@@ -47,7 +47,7 @@ RDEPEND="
 	dev-libs/sleef
 	virtual/lapack
 	sci-libs/onnx
-	sci-libs/foxi
+	sci-ml/foxi
 	cuda? (
 		dev-libs/cudnn
 		>=dev-libs/cudnn-frontend-1.0.3:0/8
