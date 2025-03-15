@@ -1,0 +1,28 @@
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/f3bc7168edeac015154feda01698a9c10f68e1b1
+
+From f3bc7168edeac015154feda01698a9c10f68e1b1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Wed, 19 Feb 2025 18:34:58 +0100
+Subject: [PATCH] wpctl: fix default device name leak
+
+The `get-default-configured-node-name` handler returns a copy
+of the name of the node, hence it must be freed.
+---
+ src/tools/wpctl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tools/wpctl.c b/src/tools/wpctl.c
+index 9f507eca..38d730c8 100644
+--- a/src/tools/wpctl.c
++++ b/src/tools/wpctl.c
+@@ -529,7 +529,7 @@ status_run (WpCtl * self)
+   printf (TREE_INDENT_END "Default Configured Devices:\n");
+   if (def_nodes_api) {
+     for (guint i = 0; i < G_N_ELEMENTS (DEFAULT_NODE_MEDIA_CLASSES); i++) {
+-      const gchar *name = NULL;
++      g_autofree gchar *name = NULL;
+       g_signal_emit_by_name (def_nodes_api, "get-default-configured-node-name",
+           DEFAULT_NODE_MEDIA_CLASSES[i], &name);
+       if (name)
+-- 
+GitLab
