@@ -14,7 +14,7 @@ SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 LICENSE="BUSL-1.1 MPL-2.0"
 LICENSE+=" Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 RESTRICT="test"
 
 BDEPEND="dev-go/gox"
