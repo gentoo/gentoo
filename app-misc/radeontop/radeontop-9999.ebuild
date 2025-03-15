@@ -1,7 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs git-r3
 
 DESCRIPTION="Utility to view Radeon GPU utilization"
@@ -10,11 +11,8 @@ EGIT_REPO_URI="https://github.com/clbr/radeontop.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="nls video_cards_amdgpu video_cards_radeon"
-REQUIRED_USE="
-	|| ( video_cards_amdgpu video_cards_radeon )
-"
+REQUIRED_USE="|| ( video_cards_amdgpu video_cards_radeon )"
 
 RDEPEND="
 	sys-libs/ncurses:=
@@ -26,10 +24,11 @@ RDEPEND="
 		virtual/libintl
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	tc-export CC
