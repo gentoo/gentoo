@@ -31,7 +31,6 @@ src_configure() {
 		-DNNG_ENABLE_COMPAT=$(usex compat ON OFF)
 		-DNNG_ENABLE_TLS=$(usex ssl ON OFF)
 		-DNNG_TESTS=$(usex test ON OFF)
-	    -DBUILD_SHARED_LIBS=ON
 		-DNNG_ENABLE_DOC=$(usex doc ON OFF)
 		-DNNG_ENABLE_NNGCAT=$(usex tools ON OFF)
 		-DNNG_TOOLS=$(usex tools ON OFF)
