@@ -1,0 +1,248 @@
+Patch to fix build on clang, edited to work with 2.6.2.
+https://bugs.gentoo.org/951353
+https://github.com/SFML/SFML/commit/9022d9564de071e944d20f3419bb6203c46b7a2b
+From 9022d9564de071e944d20f3419bb6203c46b7a2b Mon Sep 17 00:00:00 2001
+From: Chris Thrasher <chrisjthrasher@gmail.com>
+Date: Wed, 17 Jan 2024 17:03:04 -0700
+Subject: [PATCH] Define character traits for `std::uint8_t`
+
+Character traits are only standardized for character types of which
+std::uint8_t is not. All major C++ implementations happen to define
+this specialization but because it is not standard C++ they are
+allowed to remove it as LLVM has done by deprecating this specialization
+in LLVM 18. It is slated for removal in LLVM 19. To avoid compilation
+errors and to get ahead of any deprecation warnings when LLVM 18 ships
+we need to define our own std::uint8_t character traits.
+
+SFML 4 will have access to C++20's std::u8string which should let us
+remove this code.
+---
+ include/SFML/System/String.hpp         |  42 ++++++-
+ src/SFML/System/String.cpp             | 106 +++++++++++++++-
+ src/SFML/Window/Unix/ClipboardImpl.cpp |   2 +-
+ src/SFML/Window/Unix/WindowImplX11.cpp |   2 +-
+ src/SFML/Window/iOS/ClipboardImpl.mm   |   4 +-
+ src/SFML/Window/macOS/ClipboardImpl.mm |   6 +-
+ test/System/String.test.cpp            | 165 ++++++++++++++++++++++---
+ 7 files changed, 303 insertions(+), 24 deletions(-)
+
+diff --git a/include/SFML/System/String.hpp b/include/SFML/System/String.hpp
+index ea14cbad58..345b663d3e 100644
+--- a/include/SFML/System/String.hpp
++++ b/include/SFML/System/String.hpp
+@@ -30,6 +30,7 @@
+ ////////////////////////////////////////////////////////////
+ #include <SFML/System/Export.hpp>
+ #include <SFML/System/Utf.hpp>
++#include <cstdint>
+ #include <iterator>
+ #include <locale>
+ #include <string>
+@@ -39,6 +39,46 @@
+ 
+ namespace sf
+ {
++////////////////////////////////////////////////////////////
++/// \brief Character traits for std::uint8_t
++///
++////////////////////////////////////////////////////////////
++struct SFML_SYSTEM_API U8StringCharTraits
++{
++    // NOLINTBEGIN(readability-identifier-naming)
++    using char_type  = std::uint8_t;
++    using int_type   = std::char_traits<char>::int_type;
++    using off_type   = std::char_traits<char>::off_type;
++    using pos_type   = std::char_traits<char>::pos_type;
++    using state_type = std::char_traits<char>::state_type;
++
++    static void             assign(char_type& c1, char_type c2) noexcept;
++    static char_type*       assign(char_type* s, std::size_t n, char_type c);
++    static bool             eq(char_type c1, char_type c2) noexcept;
++    static bool             lt(char_type c1, char_type c2) noexcept;
++    static char_type*       move(char_type* s1, const char_type* s2, std::size_t n);
++    static char_type*       copy(char_type* s1, const char_type* s2, std::size_t n);
++    static int              compare(const char_type* s1, const char_type* s2, std::size_t n);
++    static std::size_t      length(const char_type* s);
++    static const char_type* find(const char_type* s, std::size_t n, const char_type& c);
++    static char_type        to_char_type(int_type i) noexcept;
++    static int_type         to_int_type(char_type c) noexcept;
++    static bool             eq_int_type(int_type i1, int_type i2) noexcept;
++    static int_type         eof() noexcept;
++    static int_type         not_eof(int_type i) noexcept;
++    // NOLINTEND(readability-identifier-naming)
++};
++
++////////////////////////////////////////////////////////////
++/// \brief Portable replacement for std::basic_string<std::uint8_t>
++///
++/// While all major C++ implementations happen to define this
++/// as of early 2024, this specialization is not strictly speaking
++/// standard C++. Thus we can't depend on its continued existence.
++///
++////////////////////////////////////////////////////////////
++using U8String = std::basic_string<std::uint8_t, U8StringCharTraits>;
++
+ ////////////////////////////////////////////////////////////
+ /// \brief Utility string class that automatically handles
+ ///        conversions between types and encodings
+@@ -313,7 +313,7 @@ class SFML_SYSTEM_API String
+     /// \see toUtf16, toUtf32
+     ///
+     ////////////////////////////////////////////////////////////
+-    std::basic_string<Uint8> toUtf8() const;
++    sf::U8String toUtf8() const;
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Convert the Unicode string to a UTF-16 string
+diff --git a/src/SFML/System/String.cpp b/src/SFML/System/String.cpp
+index 44a1391a65..959f354cd7 100644
+--- a/src/SFML/System/String.cpp
++++ b/src/SFML/System/String.cpp
+@@ -37,6 +37,108 @@
+ 
+ namespace sf
+ {
++////////////////////////////////////////////////////////////
++void U8StringCharTraits::assign(char_type& c1, char_type c2) noexcept
++{
++    c1 = c2;
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::char_type* U8StringCharTraits::assign(char_type* s, std::size_t n, char_type c)
++{
++    return reinterpret_cast<U8StringCharTraits::char_type*>(
++        std::char_traits<char>::assign(reinterpret_cast<char*>(s), n, static_cast<char>(c)));
++}
++
++
++////////////////////////////////////////////////////////////
++bool U8StringCharTraits::eq(char_type c1, char_type c2) noexcept
++{
++    return c1 == c2;
++}
++
++
++////////////////////////////////////////////////////////////
++bool U8StringCharTraits::lt(char_type c1, char_type c2) noexcept
++{
++    return c1 < c2;
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::char_type* U8StringCharTraits::move(char_type* s1, const char_type* s2, std::size_t n)
++{
++    std::memmove(s1, s2, n);
++    return s1;
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::char_type* U8StringCharTraits::copy(char_type* s1, const char_type* s2, std::size_t n)
++{
++    std::memcpy(s1, s2, n);
++    return s1;
++}
++
++
++////////////////////////////////////////////////////////////
++int U8StringCharTraits::compare(const char_type* s1, const char_type* s2, std::size_t n)
++{
++    return std::memcmp(s1, s2, n);
++}
++
++
++////////////////////////////////////////////////////////////
++std::size_t U8StringCharTraits::length(const char_type* s)
++{
++    return std::strlen(reinterpret_cast<const char*>(s));
++}
++
++
++////////////////////////////////////////////////////////////
++const U8StringCharTraits::char_type* U8StringCharTraits::find(const char_type* s, std::size_t n, const char_type& c)
++{
++    return reinterpret_cast<const U8StringCharTraits::char_type*>(
++        std::char_traits<char>::find(reinterpret_cast<const char*>(s), n, static_cast<char>(c)));
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::char_type U8StringCharTraits::to_char_type(int_type i) noexcept
++{
++    return static_cast<U8StringCharTraits::char_type>(std::char_traits<char>::to_char_type(i));
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::int_type U8StringCharTraits::to_int_type(char_type c) noexcept
++{
++    return std::char_traits<char>::to_int_type(static_cast<char>(c));
++}
++
++
++////////////////////////////////////////////////////////////
++bool U8StringCharTraits::eq_int_type(int_type i1, int_type i2) noexcept
++{
++    return i1 == i2;
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::int_type U8StringCharTraits::eof() noexcept
++{
++    return std::char_traits<char>::eof();
++}
++
++
++////////////////////////////////////////////////////////////
++U8StringCharTraits::int_type U8StringCharTraits::not_eof(int_type i) noexcept
++{
++    return std::char_traits<char>::not_eof(i);
++}
++
++
+ ////////////////////////////////////////////////////////////
+ String::String(char ansiChar, const std::locale& locale)
+ {
+@@ -161,10 +277,10 @@ std::wstring String::toWideString() const
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-std::basic_string<Uint8> String::toUtf8() const
++sf::U8String String::toUtf8() const
+ {
+     // Prepare the output string
+-    std::basic_string<Uint8> output;
++    sf::U8String output;
+     output.reserve(m_string.length());
+ 
+     // Convert
+diff --git a/src/SFML/Window/Unix/ClipboardImpl.cpp b/src/SFML/Window/Unix/ClipboardImpl.cpp
+index 6f7df635c7..132d7a5289 100644
+--- a/src/SFML/Window/Unix/ClipboardImpl.cpp
++++ b/src/SFML/Window/Unix/ClipboardImpl.cpp
+@@ -344,7 +344,7 @@ void ClipboardImpl::processEvent(XEvent& windowEvent)
+                 {
+                     // Respond to a request for conversion to a UTF-8 string
+                     // or an encoding of our choosing (we always choose UTF-8)
+-                    std::basic_string<Uint8> data = m_clipboardContents.toUtf8();
++                    const auto data = m_clipboardContents.toUtf8();
+ 
+                     XChangeProperty(
+                         m_display,diff --git a/src/SFML/Window/Unix/WindowImplX11.cpp b/src/SFML/Window/Unix/WindowImplX11.cpp
+index e8df7ff68d..b4205dacba 100644
+--- a/src/SFML/Window/Unix/WindowImplX11.cpp
++++ b/src/SFML/Window/Unix/WindowImplX11.cpp
+@@ -895,8 +895,7 @@ void WindowImplX11::setTitle(const String& title)
+     // There is however an option to tell the window manager your Unicode title via hints.
+ 
+     // Convert to UTF-8 encoding.
+-    std::basic_string<Uint8> utf8Title;
+-    Utf32::toUtf8(title.begin(), title.end(), std::back_inserter(utf8Title));
++    const auto utf8Title = title.toUtf8();
+ 
+     Atom useUtf8 = getAtom("UTF8_STRING", false);
+ 

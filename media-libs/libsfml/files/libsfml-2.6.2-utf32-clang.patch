@@ -1,0 +1,292 @@
+Fixes build on Clang-19.
+Eduted until works on 2.6.2 and not intermediate tree
+https://bugs.gentoo.org/951353
+https://github.com/SFML/SFML/commit/f371a99b398f8cd2eedb79c6d68ee00ddea0a9cb
+From f371a99b398f8cd2eedb79c6d68ee00ddea0a9cb Mon Sep 17 00:00:00 2001
+From: Chris Thrasher <chrisjthrasher@gmail.com>
+Date: Sat, 25 Mar 2023 22:02:29 -0600
+Subject: [PATCH] Implement `sf::String` in terms of `std::u32string`
+
+---
+ include/SFML/System/String.hpp                | 28 +++---
+ src/SFML/Network/Packet.cpp                   |  2 +-
+ src/SFML/System/String.cpp                    | 18 ++--
+ src/SFML/Window/OSX/HIDInputManager.mm        |  2 +-
+ .../Window/Unix/KeySymToUnicodeMapping.cpp    |  2 +-
+ .../Window/Unix/KeySymToUnicodeMapping.hpp    |  2 +-
+ src/SFML/Window/Unix/KeyboardImpl.cpp         |  4 +-
+ test/System/String.test.cpp                   | 94 ++++++++++---------
+ 8 files changed, 81 insertions(+), 71 deletions(-)
+
+diff --git a/include/SFML/System/String.hpp b/include/SFML/System/String.hpp
+index a217539d53..5d79e30a82 100644
+@@ -49,13 +49,13 @@
+     ////////////////////////////////////////////////////////////
+     // Types
+     ////////////////////////////////////////////////////////////
+-    typedef std::basic_string<Uint32>::iterator       Iterator;      //!< Iterator type
+-    typedef std::basic_string<Uint32>::const_iterator ConstIterator; //!< Read-only iterator type
++    using Iterator      = std::u32string::iterator;       //!< Iterator type
++    using ConstIterator = std::u32string::const_iterator; //!< Read-only iterator type
+ 
+     ////////////////////////////////////////////////////////////
+     // Static member data
+     ////////////////////////////////////////////////////////////
+-    static const std::size_t InvalidPos; //!< Represents an invalid position in the string
++    static const std::size_t InvalidPos{std::u32string::npos}; //!< Represents an invalid position in the string
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Default constructor
+@@ -91,7 +91,7 @@
+     /// \param utf32Char UTF-32 character to convert
+     ///
+     ////////////////////////////////////////////////////////////
+-    String(Uint32 utf32Char);
++    String(char32_t utf32Char);
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Construct from a null-terminated C-style ANSI string and a locale
+@@ -139,7 +139,7 @@
+     /// \param utf32String UTF-32 string to assign
+     ///
+     ////////////////////////////////////////////////////////////
+-    String(const Uint32* utf32String);
++    String(const char32_t* utf32String);
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Construct from an UTF-32 string
+@@ -147,7 +147,7 @@
+     /// \param utf32String UTF-32 string to assign
+     ///
+     ////////////////////////////////////////////////////////////
+-    String(const std::basic_string<Uint32>& utf32String);
++    String(const std::u32string& utf32String);
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Copy constructor
+@@ -189,8 +189,8 @@
+     /// \brief Create a new sf::String from a UTF-32 encoded string
+     ///
+     /// This function is provided for consistency, it is equivalent to
+-    /// using the constructors that takes a const sf::Uint32* or
+-    /// a std::basic_string<sf::Uint32>.
++    /// using the constructors that takes a const char32_t* or
++    /// a std::u32string
+     ///
+     /// \param begin Forward iterator to the beginning of the UTF-32 sequence
+     /// \param end   Forward iterator to the end of the UTF-32 sequence
+@@ -283,7 +283,7 @@
+     /// \see toUtf8, toUtf32
+     ///
+     ////////////////////////////////////////////////////////////
+-    std::basic_string<Uint16> toUtf16() const;
++    std::u16string toUtf16() const;
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Convert the Unicode string to a UTF-32 string
+@@ -296,7 +296,7 @@
+     /// \see toUtf8, toUtf16
+     ///
+     ////////////////////////////////////////////////////////////
+-    std::basic_string<Uint32> toUtf32() const;
++    std::u32string toUtf32() const;
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Overload of assignment operator
+@@ -329,7 +329,7 @@
+     /// \return Character at position \a index
+     ///
+     ////////////////////////////////////////////////////////////
+-    Uint32 operator [](std::size_t index) const;
++    char32_t operator [](std::size_t index) const;
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Overload of [] operator to access a character by its position
+@@ -342,7 +342,7 @@
+     /// \return Reference to the character at position \a index
+     ///
+     ////////////////////////////////////////////////////////////
+-    Uint32& operator [](std::size_t index);
++    char32_t& operator [](std::size_t index);
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Clear the string
+@@ -466,7 +466,7 @@
+     /// \return Read-only pointer to the array of characters
+     ///
+     ////////////////////////////////////////////////////////////
+-    const Uint32* getData() const;
++    const char32_t* getData() const;
+ 
+     ////////////////////////////////////////////////////////////
+     /// \brief Return an iterator to the beginning of the string
+diff --git a/src/SFML/Network/Packet.cpp b/src/SFML/Network/Packet.cpp
+index 1fc05ca13f..3f41038db3 100644
+--- a/src/SFML/Network/Packet.cpp
++++ b/src/SFML/Network/Packet.cpp
+@@ -381,7 +381,7 @@ Packet& Packet::operator>>(String& data)
+         {
+             std::uint32_t character = 0;
+             *this >> character;
+-            data += character;
++            data += static_cast<char32_t>(character);
+         }
+     }
+ 
+diff --git a/src/SFML/System/String.cpp b/src/SFML/System/String.cpp
+index 2524fbf2b4..f0ef7ab63d 100644
+--- a/src/SFML/System/String.cpp
++++ b/src/SFML/System/String.cpp
+@@ -57,7 +57,7 @@ String::String(wchar_t wideChar)
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-String::String(Uint32 utf32Char)
++String::String(char32_t utf32Char)
+ {
+     m_string += utf32Char;
+ }
+@@ -110,7 +110,7 @@ String::String(const std::wstring& wideString)
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-String::String(const Uint32* utf32String)
++String::String(const char32_t* utf32String)
+ {
+     if (utf32String)
+         m_string = utf32String;
+@@ -118,8 +118,7 @@ String::String(const Uint32* utf32String)
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-String::String(const std::basic_string<Uint32>& utf32String) :
+-m_string(utf32String)
++String::String(const std::u32string& utf32String) : m_string(utf32String)
+ {
+ }
+ 
+@@ -180,10 +180,10 @@ std::basic_string<std::uint8_t> String::toUtf8() const
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-std::basic_string<Uint16> String::toUtf16() const
++std::u16string String::toUtf16() const
+ {
+     // Prepare the output string
+-    std::basic_string<Uint16> output;
++    std::u16string output;
+     output.reserve(m_string.length());
+ 
+     // Convert
+@@ -194,7 +194,7 @@ std::basic_string<std::uint16_t> String::toUtf16() const
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-std::basic_string<Uint32> String::toUtf32() const
++std::u32string String::toUtf32() const
+ {
+     return m_string;
+ }
+@@ -209,14 +209,14 @@ String& String::operator+=(const String& right)
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-Uint32 String::operator [](std::size_t index) const
++char32_t String::operator[](std::size_t index) const
+ {
+     return m_string[index];
+ }
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-Uint32& String::operator [](std::size_t index)
++char32_t& String::operator[](std::size_t index)
+ {
+     return m_string[index];
+ }
+@@ -295,7 +295,7 @@ String String::substring(std::size_t position, std::size_t length) const
+ 
+ 
+ ////////////////////////////////////////////////////////////
+-const Uint32* String::getData() const
++const char32_t* String::getData() const
+ {
+     return m_string.c_str();
+ }
+diff --git a/src/SFML/Window/OSX/HIDInputManager.mm b/src/SFML/Window/OSX/HIDInputManager.mm
+index d9c41af634..95c75f7abb 100644
+--- a/src/SFML/Window/OSX/HIDInputManager.mm
++++ b/src/SFML/Window/OSX/HIDInputManager.mm
+@@ -690,7 +690,7 @@
+             // Phase 2: Try to convert the key to unicode
+             UniChar unicode = toUnicode(localize(code));
+             if (unicode != 0x00)
+-                return String(static_cast<Uint32>(unicode));
++                return String(static_cast<char32_t>(unicode));
+         }
+ 
+         // Phase 3: Return final fallback
+diff --git a/src/SFML/Window/Unix/KeySymToUnicodeMapping.cpp b/src/SFML/Window/Unix/KeySymToUnicodeMapping.cpp
+index 01f333b422..40d3d25965 100644
+--- a/src/SFML/Window/Unix/KeySymToUnicodeMapping.cpp
++++ b/src/SFML/Window/Unix/KeySymToUnicodeMapping.cpp
+@@ -30,7 +30,7 @@
+ namespace sf::priv
+ {
+ 
+-Uint32 keysymToUnicode(KeySym keysym)
++char32_t keysymToUnicode(KeySym keysym)
+ {
+     // clang-format off
+     switch (keysym)
+diff --git a/src/SFML/Window/Unix/KeySymToUnicodeMapping.hpp b/src/SFML/Window/Unix/KeySymToUnicodeMapping.hpp
+index ba05c75cc3..42c2883359 100644
+--- a/src/SFML/Window/Unix/KeySymToUnicodeMapping.hpp
++++ b/src/SFML/Window/Unix/KeySymToUnicodeMapping.hpp
+@@ -49,6 +49,6 @@ namespace sf::priv
+ /// \return corresponding UTF-32
+ ///
+ ////////////////////////////////////////////////////////////
+-Uint32 keysymToUnicode(KeySym keysym);
++char32_t keysymToUnicode(KeySym keysym);
+ 
+ } // namespace sf::priv
+diff --git a/src/SFML/Window/Unix/KeyboardImpl.cpp b/src/SFML/Window/Unix/KeyboardImpl.cpp
+index c4dc9dd0c9..f4628a3d52 100644
+--- a/src/SFML/Window/Unix/KeyboardImpl.cpp
++++ b/src/SFML/Window/Unix/KeyboardImpl.cpp
+@@ -671,8 +671,8 @@ String KeyboardImpl::getDescription(Keyboard::Scancode code)
+ 
+     if (checkInput)
+     {
+-        KeySym keysym = scancodeToKeySym(code);
+-        Uint32 unicode = keysymToUnicode(keysym);
++        KeySym   keysym  = scancodeToKeySym(code);
++        char32_t unicode = keysymToUnicode(keysym);
+ 
+         if (unicode != 0)
+             return String(unicode);
+--- SFML-2.6.2.old/src/SFML/System/String.cpp   2025-03-15 11:16:29.517316746 +0300
++++ SFML-2.6.2/src/SFML/System/String.cpp       2025-03-15 11:16:39.622424519 +0300
+@@ -34,10 +34,6 @@
+ namespace sf
+ {
+ ////////////////////////////////////////////////////////////
+-const std::size_t String::InvalidPos = std::basic_string<Uint32>::npos;
+-
+-
+-////////////////////////////////////////////////////////////
+ String::String()
+ {
+ }
+--- SFML-2.6.2.old/include/SFML/System/String.hpp       2025-03-15 11:22:27.154597927 +0300
++++ SFML-2.6.2/include/SFML/System/String.hpp   2025-03-15 11:24:06.809419147 +0300
+@@ -524,7 +524,7 @@
+     ////////////////////////////////////////////////////////////
+     // Member data
+     ////////////////////////////////////////////////////////////
+-    std::basic_string<Uint32> m_string; //!< Internal string of UTF-32 characters
++    std::u32string m_string; //!< Internal string of UTF-32 characters
+ };
+ 
+ ////////////////////////////////////////////////////////////

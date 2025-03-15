@@ -12,6 +12,5 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">SFML/SFML</remote-id>
-		<remote-id type="sourceforge">sfml</remote-id>
 	</upstream>
 </pkgmetadata>
