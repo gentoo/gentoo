@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 
-IUSE="scala2-13 scala3-3 +scala3-5"
+IUSE="+scala2-13 +scala3-3 +scala3-5"
 
 src_unpack() {
 	:
