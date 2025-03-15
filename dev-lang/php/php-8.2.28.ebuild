@@ -150,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
 	"${FILESDIR}/php-8.2.20-implicit-printf.patch"
 	"${FILESDIR}/php-8.2.23-fix-ub.patch"
+	"${FILESDIR}/php-bug75457-pcre2-backport.patch"
 )
 
 # ARM/Windows functions (bug 923335)
