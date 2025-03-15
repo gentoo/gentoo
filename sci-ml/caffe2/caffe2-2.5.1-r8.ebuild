@@ -41,7 +41,7 @@ RDEPEND="
 	dev-cpp/nlohmann_json
 	dev-cpp/opentelemetry-cpp
 	dev-libs/cpuinfo
-	dev-libs/libfmt
+	dev-libs/libfmt:=
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef
