@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-15)
+# EAPI=7, uses deprecated Go eclasses. Isn't maintained in Gentoo
+# since 2019, with awaiting version bump (upstream is still active).
+# Has open security vulnerabilities.
+# Removal on 2025-04-14.  Bugs #951417, #631076, #679948, #695310,
+# #771051, #844727, #880151, #908590, #948207, #813702, #866356.
+sys-cluster/teleport
+
 # Sam James <sam@gentoo.org> (2025-03-13)
 # Causes build failures in reverse dependencies (bug #951062, bug #951120)
 =dev-util/spirv-headers-1.4.304.0-r1
