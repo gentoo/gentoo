@@ -13,7 +13,7 @@
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
 		<flag name="nnpack">Use <pkg>sci-ml/NNPACK</pkg></flag>
 		<flag name="numpy">Add support for math operations through numpy</flag>
-		<flag name="onednn">Use oneDNN</flag>
+		<flag name="onednn">Use <pkg>sci-ml/oneDNN</pkg></flag>
 		<flag name="openblas">Use <pkg>sci-libs/openblas</pkg> for blas routines</flag>
 		<flag name="openmp">Use OpenMP for parallel code</flag>
 		<flag name="qnnpack">Use QNNPACK</flag>

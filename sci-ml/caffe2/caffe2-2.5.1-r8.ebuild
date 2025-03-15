@@ -60,7 +60,7 @@ RDEPEND="
 	numpy? ( $(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		') )
-	onednn? ( =dev-libs/oneDNN-3.5* )
+	onednn? ( =sci-ml/oneDNN-3.5* )
 	opencl? ( virtual/opencl )
 	qnnpack? (
 		!sci-libs/QNNPACK
