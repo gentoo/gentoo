@@ -132,6 +132,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/php-bug75457-pcre2-backport.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -265,13 +266,6 @@ src_prepare() {
 	# - https://github.com/php/php-src/commit/930624899bb996efc2f6a24b992ede90c93c8902
 	#
 	rm ext/standard/tests/file/bug72666_variation3.phpt || die
-
-	# Test currently fails with the bundled libpcre version.
-	# Already fixed upstream, but not yet in this release.
-	#
-	# - https://github.com/php/php-src/commit/69480be12afb4040c6dd9275b7836231cdd6f6bb
-	#
-	rm ext/pcre/tests/bug75457.phpt || die
 
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
