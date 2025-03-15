@@ -18,7 +18,7 @@
 		<flag name="openmp">Use OpenMP for parallel code</flag>
 		<flag name="qnnpack">Use QNNPACK</flag>
 		<flag name="rocm">Enable ROCm gpu computing support</flag>
-		<flag name="xnnpack">Use XNNPACK</flag>
+		<flag name="xnnpack">Use <pkg>sci-ml/XNNPACK</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pytorch/pytorch</remote-id>
