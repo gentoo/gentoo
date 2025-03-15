@@ -7,12 +7,12 @@
         "device": "flash",
         "mode" : "split",
         "executable": {
-            "filename": "/usr/share/edk2/LoongArchVirtQemu/QEMU_EFI.fd",
-            "format": "raw"
+            "filename": "/usr/share/edk2/LoongArchVirtQemu/QEMU_EFI.qcow2",
+            "format": "qcow2"
         },
         "nvram-template": {
-            "filename": "/usr/share/edk2/LoongArchVirtQemu/QEMU_VARS.fd",
-            "format": "raw"
+            "filename": "/usr/share/edk2/LoongArchVirtQemu/QEMU_VARS.qcow2",
+            "format": "qcow2"
         }
     },
     "targets": [
