@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="+mysql postgres +vacation"
 REQUIRED_USE="|| ( mysql postgres )"
 
 DEPEND="
-	dev-lang/php:*[unicode,imap,postgres?]
+	dev-lang/php:*[unicode,imap(-),postgres?]
 	vacation? (
 		acct-group/vacation
 		acct-user/vacation
