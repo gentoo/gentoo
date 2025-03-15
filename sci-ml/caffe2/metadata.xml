@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="distributed">Support distributed applications</flag>
-		<flag name="fbgemm">Use FBGEMM</flag>
+		<flag name="fbgemm">Use <pkg>sci-ml/FBGEMM</pkg></flag>
 		<flag name="flash">Enable flash attention</flag>
 		<flag name="gloo">Use <pkg>sci-ml/gloo</pkg></flag>
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>

@@ -21,3 +21,4 @@ move sci-libs/onnx sci-ml/onnx
 move sci-libs/seqeval sci-ml/seqeval
 move sci-libs/tensorpipe sci-ml/tensorpipe
 move sci-libs/XNNPACK sci-ml/XNNPACK
+move dev-libs/FBGEMM sci-ml/FBGEMM
