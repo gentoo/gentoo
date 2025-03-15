@@ -8,29 +8,23 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/pysam-developers/pysam.git"
-else
-	SRC_URI="https://github.com/pysam-developers/pysam/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
 DESCRIPTION="Python interface for the SAM/BAM sequence alignment and mapping format"
 HOMEPAGE="
 	https://github.com/pysam-developers/pysam
 	https://pypi.org/project/pysam/"
+SRC_URI="https://github.com/pysam-developers/pysam/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=sci-libs/htslib-1.21"
+RDEPEND="=sci-libs/htslib-1.21*:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
-		>=sci-biology/bcftools-1.21
-		>=sci-biology/samtools-1.21
+		=sci-biology/bcftools-1.21*
+		=sci-biology/samtools-1.21*
 	)"
 
 distutils_enable_tests pytest
