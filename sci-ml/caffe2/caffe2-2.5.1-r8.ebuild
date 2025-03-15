@@ -87,7 +87,7 @@ RDEPEND="
 		amdgpu_targets_gfx942? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx942] )
 	)
 	distributed? (
-		sci-libs/tensorpipe[cuda?]
+		sci-ml/tensorpipe[cuda?]
 		dev-cpp/cpp-httplib
 	)
 	xnnpack? ( ~sci-libs/XNNPACK-2024.02.29 )

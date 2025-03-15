@@ -19,3 +19,4 @@ move sci-libs/kineto sci-ml/kineto
 move sci-libs/NNPACK sci-ml/NNPACK
 move sci-libs/onnx sci-ml/onnx
 move sci-libs/seqeval sci-ml/seqeval
+move sci-libs/tensorpipe sci-ml/tensorpipe
