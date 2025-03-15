@@ -135,6 +135,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
+	"${FILESDIR}/php-bug75457-pcre2-backport.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
