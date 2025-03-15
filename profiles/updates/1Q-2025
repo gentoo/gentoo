@@ -12,3 +12,4 @@ move sci-libs/torchvision sci-ml/torchvision
 move sci-libs/pytorch sci-ml/pytorch
 move sci-libs/caffe2 sci-ml/caffe2
 move sci-libs/foxi sci-ml/foxi
+move sci-libs/gloo sci-ml/gloo

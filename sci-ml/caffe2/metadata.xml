@@ -9,7 +9,7 @@
 		<flag name="distributed">Support distributed applications</flag>
 		<flag name="fbgemm">Use FBGEMM</flag>
 		<flag name="flash">Enable flash attention</flag>
-		<flag name="gloo">Use sci-libs/gloo</flag>
+		<flag name="gloo">Use <pkg>sci-ml/gloo</pkg></flag>
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
 		<flag name="nnpack">Use NNPACK</flag>
 		<flag name="numpy">Add support for math operations through numpy</flag>
