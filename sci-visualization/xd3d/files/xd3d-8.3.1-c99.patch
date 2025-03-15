@@ -1,0 +1,464 @@
+Fix implicit function declarations: remove all underscore redefines, ask gfortran not
+to append underscores to function names it tries to call, add some type definitions,
+missing include for library function.
+Clean up K&R style decls when we have perfectly fine modern declarations
+https://bugs.gentoo.org/944746
+https://bugs.gentoo.org/886609
+https://bugs.gentoo.org/875236
+Folded sed -i -e 's:"zutil.h":<zlib.h>:g' src/qlib/timestuff.c into patch
+diff '--color=auto' -ru xd3d-8.3.1.old/src/qlib/perfide.c xd3d-8.3.1/src/qlib/perfide.c
+--- xd3d-8.3.1.old/src/qlib/perfide.c	2025-03-15 21:14:08.508332791 +0300
++++ xd3d-8.3.1/src/qlib/perfide.c	2025-03-15 21:15:03.043870607 +0300
+@@ -4,10 +4,6 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ 
+-#ifndef F77_NO_UNDER_SCORE
+-#define perfide perfide_
+-#endif
+-
+ int LANG,DEBUG;
+ 
+ #ifdef ENGLISH
+@@ -23,7 +19,7 @@
+ #endif
+ 
+ 
+-perfide(ilang,idebug)
++int perfide(ilang,idebug)
+ int *ilang,*idebug;
+ {
+     *ilang=LANG;
+diff '--color=auto' -ru xd3d-8.3.1.old/src/qlib/timestuff.c xd3d-8.3.1/src/qlib/timestuff.c
+--- xd3d-8.3.1.old/src/qlib/timestuff.c	2025-03-15 21:14:08.508332791 +0300
++++ xd3d-8.3.1/src/qlib/timestuff.c	2025-03-15 21:15:03.046444412 +0300
+@@ -7,50 +7,10 @@
+ #include <math.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include "zutil.h"
++#include <zlib.h>
+ 
+ FILE *fichin[99];
+ 
+-#ifndef F77_NO_UNDER_SCORE
+-#define datefichier datefichier_
+-#define timec timec_
+-#define timeprecisc timeprecisc_
+-#define etimec etimec_
+-#define idatec idatec_
+-#define ctimec ctimec_
+-#define fflushc fflushc_
+-#define testtypebin testtypebin_
+-#define ouvrebin ouvrebin_
+-#define fermebin fermebin_
+-#define litduncoup litduncoup_
+-#define ecritduncoup ecritduncoup_
+-#define litrecbin litrecbin_
+-#define litrecbinspeed litrecbinspeed_
+-#define ecritrecbin ecritrecbin_
+-#define ecritrecbinspeed ecritrecbinspeed_
+-#define fnaninf4 fnaninf4_
+-#define fnaninf8 fnaninf8_
+-#define fmemcpy fmemcpy_
+-#define fmalloc fmalloc_
+-#define fcalloc fcalloc_
+-#define ffree ffree_
+-#define frealloc frealloc_
+-#define zouvrel zouvrel_
+-#define zouvree zouvree_
+-#define zferme zferme_
+-#define zlit zlit_
+-#define zliti zliti_
+-#define zecrit zecrit_
+-#define zlitrec zlitrec_
+-#define zecritrec zecritrec_
+-#define zlitrecbin zlitrecbin_
+-#define zlitrecshortbin zlitrecshortbin_
+-#define ztesttypebin ztesttypebin_
+-#define zlitrecvbin zlitrecvbin_
+-#define zcompress zcompress_
+-#define zdecompress zdecompress_
+-#endif
+-
+ /* 
+ sur HP compiler avec : cc +O3 -DF77_NO_UNDER_SCORE -c timestuff.c
+ */
+diff '--color=auto' -ru xd3d-8.3.1.old/src/X/getenvc.c xd3d-8.3.1/src/X/getenvc.c
+--- xd3d-8.3.1.old/src/X/getenvc.c	2025-03-15 21:14:08.505568877 +0300
++++ xd3d-8.3.1/src/X/getenvc.c	2025-03-15 21:15:03.044048075 +0300
+@@ -8,16 +8,11 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+-#ifndef F77_NO_UNDER_SCORE
+-#define getenvc getenvc_
+-#endif
+-
+-void getenvc(nom, val, lval_admis, lval_trouve)
+-char *nom, *val ;
+-int  *lval_admis, *lval_trouve ;
++void getenvc(char *nom, char *val, int *lval_admis, int *lval_trouve)
+ {
+-   char *ptenv, *getenv() ;
++   char *ptenv ;
+    int i ;
+ 
+    ptenv = getenv(nom) ;
+diff '--color=auto' -ru xd3d-8.3.1.old/src/X/rotated.c xd3d-8.3.1/src/X/rotated.c
+--- xd3d-8.3.1.old/src/X/rotated.c	2025-03-15 21:14:08.507568863 +0300
++++ xd3d-8.3.1/src/X/rotated.c	2025-03-15 21:15:03.044289517 +0300
+@@ -133,26 +133,16 @@
+ /* ---------------------------------------------------------------------- */
+ 
+ 
+-static char            *my_strdup();
+-static char            *my_strtok();
+-
+-float                   XRotVersion();
+-void                    XRotSetMagnification();
+-void                    XRotSetBoundingBoxPad();
+-int                     XRotDrawString();
+-int                     XRotDrawImageString();
+-int                     XRotDrawAlignedString();
+-int                     XRotDrawAlignedImageString();
+-XPoint                 *XRotTextExtents();
+-
+-static XImage          *MakeXImage();
+-static int              XRotPaintAlignedString();
+-static int              XRotDrawHorizontalString();
+-static RotatedTextItem *XRotRetrieveFromCache();
+-static RotatedTextItem *XRotCreateTextItem();
+-static void             XRotAddToLinkedList();
+-static void             XRotFreeTextItem();
+-static XImage          *XRotMagnifyImage();
++static XImage          *MakeXImage(Display *dpy, int w, int h);
++static int              XRotPaintAlignedString(Display *dpy, XFontStruct *font, float angle, Drawable drawable, GC gc, int x, int y, char *text,
++                                  int align, int bg);
++static int              XRotDrawHorizontalString(Display *dpy, XFontStruct *font, Drawable drawable, GC gc, int x, int y, char *text, 
++                             int align, int bg);
++static RotatedTextItem *XRotRetrieveFromCache(Display *dpy, XFontStruct *font, float angle, char *text, int align);
++static RotatedTextItem *XRotCreateTextItem(Display *dpy, XFontStruct *font, float angle, char *text, int align);
++static void             XRotAddToLinkedList(Display *dpy, RotatedTextItem *item);
++static void             XRotFreeTextItem(Display *dpy, RotatedTextItem *item);
++static XImage          *XRotMagnifyImage(Display *dpy, XImage *ximage);
+ 
+ 
+ /* ---------------------------------------------------------------------- */
+@@ -284,9 +274,7 @@
+ /*  Create an XImage structure and allocate memory for it                 */
+ /**************************************************************************/
+ 
+-static XImage *MakeXImage(dpy, w, h)
+-    Display *dpy;
+-    int w, h;
++static XImage *MakeXImage(Display *dpy, int w, int h)
+ {
+     XImage *I;
+     char *data;
+@@ -405,17 +393,8 @@
+ /*  Aligns and paints a rotated string                                    */
+ /**************************************************************************/
+ 
+-static int XRotPaintAlignedString(dpy, font, angle, drawable, gc, x, y, text,
+-				  align, bg)
+-    Display *dpy;
+-    XFontStruct *font;
+-    float angle;
+-    Drawable drawable;
+-    GC gc;
+-    int x, y;
+-    char *text;
+-    int align;
+-    int bg;
++static int XRotPaintAlignedString(Display *dpy, XFontStruct *font, float angle, Drawable drawable, GC gc, int x, int y, char *text,
++				  int align, int bg)
+ {
+     int i;
+     GC my_gc;
+@@ -647,16 +626,8 @@
+ /*  Draw a horizontal string in a quick fashion                           */
+ /**************************************************************************/
+ 
+-static int XRotDrawHorizontalString(dpy, font, drawable, gc, x, y, text, 
+-			     align, bg)
+-    Display *dpy;
+-    XFontStruct *font;
+-    Drawable drawable;
+-    GC gc;
+-    int x, y;
+-    char *text;
+-    int align;
+-    int bg;
++static int XRotDrawHorizontalString(Display *dpy, XFontStruct *font, Drawable drawable, GC gc, int x, int y, char *text,
++			     int align, int bg)
+ {
+     GC my_gc;
+     int nl=1, i;
+@@ -748,12 +719,7 @@
+ /*       request, otherwise arrange for its creation                      */
+ /**************************************************************************/
+ 
+-static RotatedTextItem *XRotRetrieveFromCache(dpy, font, angle, text, align)
+-    Display *dpy;
+-    XFontStruct *font;
+-    float angle;
+-    char *text;
+-    int align;
++static RotatedTextItem *XRotRetrieveFromCache(Display *dpy, XFontStruct *font, float angle, char *text, int align)
+ {
+     Font fid;
+     char *font_name=NULL;
+@@ -897,12 +863,7 @@
+ /*  Create a rotated text item                                            */
+ /**************************************************************************/
+ 
+-static RotatedTextItem *XRotCreateTextItem(dpy, font, angle, text, align)
+-    Display *dpy;
+-    XFontStruct *font;
+-    float angle;
+-    char *text;
+-    int align;
++static RotatedTextItem *XRotCreateTextItem(Display *dpy, XFontStruct *font, float angle, char *text, int align)
+ {
+     RotatedTextItem *item=NULL;
+     Pixmap canvas;
+@@ -1195,9 +1156,7 @@
+ /*      from the front as required to keep cache size below limit         */
+ /**************************************************************************/
+ 
+-static void XRotAddToLinkedList(dpy, item)
+-    Display *dpy;
+-    RotatedTextItem *item;
++static void XRotAddToLinkedList(Display *dpy, RotatedTextItem *item)
+ {
+     
+     static long int current_size=0;
+@@ -1305,9 +1264,7 @@
+ /*  Free the resources used by a text item                                */
+ /**************************************************************************/
+ 
+-static void XRotFreeTextItem(dpy, item)
+-    Display *dpy;
+-    RotatedTextItem *item;
++static void XRotFreeTextItem(Display *dpy, RotatedTextItem *item)
+ {
+     free(item->text);
+ 
+@@ -1334,9 +1291,7 @@
+ /* Magnify an XImage using bilinear interpolation                         */
+ /**************************************************************************/
+ 
+-static XImage *XRotMagnifyImage(dpy, ximage)
+-    Display *dpy;
+-    XImage *ximage;
++static XImage *XRotMagnifyImage(Display *dpy, XImage *ximage)
+ {
+     int i, j;
+     float x, y;
+diff '--color=auto' -ru xd3d-8.3.1.old/src/X/rotated.h xd3d-8.3.1/src/X/rotated.h
+--- xd3d-8.3.1.old/src/X/rotated.h	2025-03-15 21:14:08.506568870 +0300
++++ xd3d-8.3.1/src/X/rotated.h	2025-03-15 21:15:03.044845038 +0300
+@@ -40,8 +40,8 @@
+      vlp@latina.inesc.pt (Vasco Lopes Paulo) */
+ 
+ #if defined(__cplusplus) || defined(c_plusplus)
+-
+ extern "C" {
++#endif
+ float   XRotVersion(char*, int);
+ void    XRotSetMagnification(float);
+ void    XRotSetBoundingBoxPad(int);
+@@ -55,20 +55,9 @@
+                                    Drawable, GC, int, int, char*, int);
+ XPoint *XRotTextExtents(Display*, XFontStruct*, float,
+ 			int, int, char*, int);
++#if defined(__cplusplus) || defined(c_plusplus)
+ }
+-
+-#else
+-
+-extern float   XRotVersion();
+-extern void    XRotSetMagnification();
+-extern void    XRotSetBoundingBoxPad();
+-extern int     XRotDrawString();
+-extern int     XRotDrawImageString();
+-extern int     XRotDrawAlignedString();
+-extern int     XRotDrawAlignedImageString();
+-extern XPoint *XRotTextExtents();
+-
+-#endif /* __cplusplus */
++#endif
+ 
+ /* ---------------------------------------------------------------------- */
+ 
+diff '--color=auto' -ru xd3d-8.3.1.old/src/X/x11device.c xd3d-8.3.1/src/X/x11device.c
+--- xd3d-8.3.1.old/src/X/x11device.c	2025-03-15 21:14:08.505568877 +0300
++++ xd3d-8.3.1/src/X/x11device.c	2025-03-15 21:15:03.045827221 +0300
+@@ -33,97 +33,6 @@
+ #define X_POS 100
+ #define Y_POS 50
+ 
+-#ifndef F77_NO_UNDER_SCORE
+-#define drawarc drawarc_
+-#define drawfilledarc drawfilledarc_
+-#define getbuttonrelease getbuttonrelease_
+-#define getxycx11 getxycx11_
+-#define getxycx11b getxycx11b_
+-#define getxycx11c getxycx11c_
+-#define getxycx11d getxycx11d_
+-#define getxycx11e getxycx11e_
+-#define mybackingput mybackingput_
+-#define mybackingput2 mybackingput2_
+-#define mybackingsave mybackingsave_
+-#define mybackingsave2 mybackingsave2_
+-#define mybackingsaveloc mybackingsaveloc_
+-#define myusleep myusleep_
+-#define myusleep2 myusleep2_
+-#define seldialog seldialog_
+-#define selgraphix11 selgraphix11_
+-#define viderbuff viderbuff_
+-#define viderbuff2 viderbuff2_
+-#define viderbuff3 viderbuff3_
+-#define x11ColormapRVB x11ColormapRVB_
+-#define x11allevents x11allevents_
+-#define x11alleventsvraiment x11alleventsvraiment_
+-#define x11askbacking x11askbacking_
+-#define x11blackwhite x11blackwhite_
+-#define x11bord x11bord_
+-#define x11changecolormap x11changecolormap_
+-#define x11changecurseur x11changecurseur_
+-#define x11clean x11clean_
+-#define x11clearrect x11clearrect_
+-#define x11clip x11clip_
+-#define x11cloche x11cloche_
+-#define x11detruitpop x11detruitpop_
+-#define x11device x11device_
+-#define x11draw3 x11draw3_
+-#define x11ecran x11ecran_
+-#define x11effacepix x11effacepix_
+-#define x11enddev x11enddev_
+-#define x11etoudessin x11etoudessin_
+-#define x11facette x11facette_
+-#define x11facette2 x11facette2_
+-#define x11garderect x11garderect_
+-#define x11garderect2 x11garderect2_
+-#define x11key x11key_
+-#define x11linsrn x11linsrn_
+-#define x11loadcolor x11loadcolor_
+-#define x11loadcolorback x11loadcolorback_
+-#define x11loadcolorbackold x11loadcolorbackold_
+-#define x11loadcolorold x11loadcolorold_
+-#define x11loadfont x11loadfont_
+-#define x11loadfont2 x11loadfont2_
+-#define x11magfont x11magfont_
+-#define x11makecolormap x11makecolormap_
+-#define x11makecolors x11makecolors_
+-#define x11mark x11mark_
+-#define x11meticone x11meticone_
+-#define x11metrect x11metrect_
+-#define x11metrect2 x11metrect2_
+-#define x11nomfenetre x11nomfenetre_
+-#define x11nomicone x11nomicone_
+-#define x11opendisplay x11opendisplay_
+-#define x11polyconvex x11polyconvex_
+-#define x11polyligne x11polyligne_
+-#define x11pop x11pop_
+-#define x11popup x11popup_
+-#define x11press x11press_
+-#define x11progressif x11progressif_
+-#define x11release x11release_
+-#define x11sauvecolormap x11sauvecolormap_
+-#define x11sauvepix x11sauvepix_
+-#define x11sauvexpm x11sauvexpm_
+-#define x11setcurs x11setcurs_
+-#define x11szscrn x11szscrn_
+-#define x11szwin x11szwin_
+-#define x11taillefen x11taillefen_
+-#define x11textextend x11textextend_
+-#define x11textextendall x11textextendall_
+-#define x11thermoini x11thermoini_
+-#define x11thick x11thick_
+-#define x11trouvecouleur x11trouvecouleur_
+-#define x11txtsrn x11txtsrn_
+-#define x11txtsrn2 x11txtsrn2_
+-#define x11txtsrnrot x11txtsrnrot_
+-#define x11txtsrnrot2 x11txtsrnrot2_
+-#define x11txtsrnrot3 x11txtsrnrot3_
+-#define x11unclip x11unclip_
+-#define x11videqueue x11videqueue_
+-#define zcolor zcolor_
+-#endif
+-
+ Drawable drawable;
+ Pixmap pixsauve, pixbacking, pixbacking2;
+ Pixmap pixpoursauvegarde;
+@@ -168,6 +77,23 @@
+ 
+ Time timeclick0=0, timeclick1=0;
+ 
++static int x11ColormapRVB(Colormap color_maploc, float redloc[], float greenloc[], float blueloc[], int nbcolor);
++static int x11makecolors(float redloc[], float greenloc[], float blueloc[]);
++static int x11makecolormap(float redloc[], float greenloc[], float blueloc[], Colormap color_maploc, int nbcells);
++static int MyXSelectInput(Display *dpyloc, Window w, int mask);
++static int x11meticone();
++static int mybackingput();
++static int mybackingput2();
++
++int myusleep(int *microsecond);
++int mybackingsave();
++void mybackingsave2();
++int viderbuff2();
++int viderbuff3();
++int x11allevents();
++
++extern int zcolor(float redloc[], float greenloc[], float blueloc[], int *nbcolor);
++
+ /*------------------------------------------------------------------*/
+ void x11opendisplay(char *string)
+ {
+@@ -657,7 +583,7 @@
+   XMapWindow(dpy, window2);
+   XRaiseWindow(dpy, window2);
+ 
+-  MyXSelectInput(dpy, window, NULL);
++  MyXSelectInput(dpy, window, 0);
+   MyXSelectInput(dpy, window2, ExposureMask |
+                                KeyPressMask |
+                                ButtonPressMask |
+@@ -801,10 +727,7 @@
+     }
+ }
+ /*------------------------------------------------------------------*/
+-int x11ColormapRVB(color_maploc, redloc, greenloc, blueloc, nbcolor)
+-Colormap color_maploc;
+-float redloc[], greenloc[], blueloc[];
+-int nbcolor;
++int x11ColormapRVB(Colormap color_maploc, float redloc[], float greenloc[], float blueloc[], int nbcolor)
+ {
+   XColor rgb_def, hardware_def, colorcell_defs;
+   unsigned short maxvalue;
+@@ -824,8 +747,7 @@
+   }
+ }
+ /*------------------------------------------------------------------*/
+-int x11makecolors(redloc, greenloc, blueloc)
+-float redloc[], greenloc[], blueloc[];
++int x11makecolors(float redloc[], float greenloc[], float blueloc[])
+ {
+   int index, size=16;
+   int i,jtable;
+@@ -871,10 +793,7 @@
+   tabledirect[jtable] = coulproche.pixel;
+ }
+ /*------------------------------------------------------------------*/
+-int x11makecolormap(redloc, greenloc, blueloc, color_maploc, nbcells)
+-Colormap color_maploc;
+-float redloc[], greenloc[], blueloc[];
+-int nbcells;
++int x11makecolormap(float redloc[], float greenloc[], float blueloc[], Colormap color_maploc, int nbcells)
+ {
+   int index;
+   XColor colorcell_defs[256];
