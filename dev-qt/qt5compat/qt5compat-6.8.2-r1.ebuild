@@ -8,13 +8,13 @@ inherit qt6-build
 DESCRIPTION="Qt module containing the unsupported Qt 5 APIs"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 fi
 
-IUSE="icu qml"
+IUSE="+gui icu qml"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[gui,icu=,network,xml]
+	~dev-qt/qtbase-${PV}:6[gui=,icu=,network,xml]
 	icu? ( dev-libs/icu:= )
 	qml? (
 		~dev-qt/qtdeclarative-${PV}:6
