@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="Display-oriented editor for binary files, based on the vi texteditor"
-HOMEPAGE="http://bvi.sourceforge.net/"
+HOMEPAGE="https://bvi.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.src.tar.gz"
 
 LICENSE="GPL-3+"
