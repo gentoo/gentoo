@@ -1,13 +1,13 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-MYP=pytorch-rls-v${PV/_p/-}
+MYP=pytorch-rls-v${PV}
 DESCRIPTION="Intel® Optimization for Chainer"
 HOMEPAGE="https://github.com/intel/ideep"
 SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MYP}.tar.gz
-	-> ${P}.tar.gz"
+	-> ${PF}.tar.gz"
 
 S="${WORKDIR}"/ideep-${MYP}
 
