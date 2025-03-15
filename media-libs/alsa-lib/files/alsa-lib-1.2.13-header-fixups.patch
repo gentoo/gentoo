@@ -1,0 +1,92 @@
+This shouldn't be needed after 1.2.13 as a big rework landed, see
+https://github.com/alsa-project/alsa-lib/commit/ea8972c83b020d92e1a9f0a5c12eaee159bf6c63.
+
+Bug: https://bugs.gentoo.org/946562
+Bug: https://bugs.gentoo.org/946626
+--- a/include/pcm.h
++++ b/include/pcm.h
+@@ -33,6 +33,7 @@
+ extern "C" {
+ #endif
+ 
++#include <stddef.h>
+ #include <stdint.h>
+ 
+ /**
+--- a/include/rawmidi.h
++++ b/include/rawmidi.h
+@@ -28,6 +28,8 @@
+ #ifndef __ALSA_RAWMIDI_H
+ #define __ALSA_RAWMIDI_H
+ 
++#include <stddef.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+--- a/include/seq.h
++++ b/include/seq.h
+@@ -29,6 +29,7 @@
+ #ifndef __ALSA_SEQ_H
+ #define __ALSA_SEQ_H
+ 
++#include <stddef.h>
+ #include "ump.h"
+ 
+ #ifdef __cplusplus
+--- a/include/seq_midi_event.h
++++ b/include/seq_midi_event.h
+@@ -28,6 +28,8 @@
+ #ifndef __ALSA_SEQ_MIDI_EVENT_H
+ #define __ALSA_SEQ_MIDI_EVENT_H
+ 
++#include <stddef.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+--- a/include/seqmid.h
++++ b/include/seqmid.h
+@@ -28,6 +28,8 @@
+ #ifndef __ALSA_SEQMID_H
+ #define __ALSA_SEQMID_H
+ 
++#include <stddef.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+--- a/include/timer.h
++++ b/include/timer.h
+@@ -28,6 +28,9 @@
+ #ifndef __ALSA_TIMER_H
+ #define __ALSA_TIMER_H
+ 
++#include <stddef.h>
++#include <sys/types.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+--- a/include/ump.h
++++ b/include/ump.h
+@@ -9,6 +9,9 @@
+ #ifndef __ALSA_UMP_H
+ #define __ALSA_UMP_H
+ 
++#include <stddef.h>
++#include <sys/types.h>
++
+ #include "rawmidi.h"
+ 
+ #ifdef __cplusplus
+--- a/include/ump_msg.h
++++ b/include/ump_msg.h
+@@ -9,6 +9,7 @@
+ #ifndef __ALSA_UMP_MSG_H
+ #define __ALSA_UMP_MSG_H
+ 
++#include <stddef.h>
+ #include <stdint.h>
+ 
+ #ifdef __cplusplus
