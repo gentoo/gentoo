@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="project">
     <email>freedesktop-bugs@gentoo.org</email>
@@ -10,4 +9,7 @@
     <name>Gentoo GNU Emacs project</name>
   </maintainer>
   <stabilize-allarches/>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">xdg/desktop-file-utils</remote-id>
+  </upstream>
 </pkgmetadata>
