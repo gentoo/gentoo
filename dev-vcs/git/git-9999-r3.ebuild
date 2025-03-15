@@ -218,8 +218,6 @@ src_configure() {
 	# We don't want to bake /usr/bin/sh from usrmerged systems into
 	# binaries. /bin/sh is required by POSIX.
 	sh='/bin/sh'
-	# Avoid automagic installation of gitk-gui.
-	$(usev !tk "wish='wish-falseified'")
 	EOF
 
 	local emesonargs=(
@@ -254,6 +252,15 @@ src_configure() {
 	fi
 
 	meson_src_configure
+
+	if use tk ; then
+		(
+			EMESON_SOURCE="${S}"/gitk-git
+			BUILD_DIR="${WORKDIR}"/gitk-git_build
+			emesonargs=()
+			meson_src_configure
+		)
+	fi
 }
 
 git_emake() {
@@ -292,6 +299,13 @@ src_compile() {
 
 	if use tk ; then
 		git_emake -C git-gui
+
+		(
+			EMESON_SOURCE="${S}"/gitk-git
+			BUILD_DIR="${WORKDIR}"/gitk-git_build
+			meson_src_compile
+		)
+
 	fi
 
 	if use doc ; then
@@ -308,11 +322,6 @@ src_test() {
 	local -x A=
 
 	meson_src_test
-
-	# TODO: Needs help finding built git with meson
-	#if use perl ; then
-	#	git_emake -C contrib/credential/netrc testverbose
-	#fi
 }
 
 src_install() {
@@ -436,6 +445,12 @@ src_install() {
 	fi
 
 	if use tk ; then
+		(
+			EMESON_SOURCE="${S}"/gitk-git
+			BUILD_DIR="${WORKDIR}"/gitk-git_build
+			meson_src_install
+		)
+
 		git_emake -C git-gui DESTDIR="${D}" install
 	fi
 
