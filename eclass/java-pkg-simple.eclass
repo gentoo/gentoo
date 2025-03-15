@@ -113,6 +113,7 @@ fi
 
 # @DESCRIPTION:
 # @ECLASS_VARIABLE: JAVA_RESOURCE_DIRS
+# @DEPRECATED: JAVA_RESOURCES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of directories relative to ${S} which contain the
@@ -122,6 +123,35 @@ fi
 # @CODE
 #	JAVA_RESOURCE_DIRS=("src/java/resources/")
 # @CODE
+
+# @DESCRIPTION:
+# @ECLASS_VARIABLE: JAVA_RESOURCES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of files or directories relative to ${S} which contain the
+# resources of the application. Files are copied without parent directories,
+# directories are recursively copied. If you do not set the variable,
+# then no resources will be added to the compiled jar file.
+#
+# @CODE
+#	JAVA_RESOURCES=("src/java/resources/")
+# @CODE
+#
+# It's possible to use bash wildcards or define a different destination path
+# with the following syntax:
+#
+# @CODE
+#	JAVA_RESOURCES=(
+#		"src/java/resources/             -> path/to/other/dir"
+#		"src/java/resources2/single_file -> path/to/other/dir2"
+#		"src/java/resources3/*"
+#	)
+# @CODE
+#
+# where the source folder "resources" will be copied recursively
+# below "path/to/other/dir/" (the new destination folder is
+# automatically created when needed). When pointing to files, the name
+# cannot be changed.
 
 # @ECLASS_VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
@@ -221,9 +251,15 @@ fi
 # ${JAVA_SRC_DIR} in src_test.
 
 # @ECLASS_VARIABLE: JAVA_TEST_RESOURCE_DIRS
+# @DEPRECATED: JAVA_TEST_RESOURCES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It is almost equivalent to ${JAVA_RESOURCE_DIRS} in src_test.
+#
+# @ECLASS_VARIABLE: JAVA_TEST_RESOURCES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# It is almost equivalent to ${JAVA_RESOURCES} in src_test.
 
 # @FUNCTION: java-pkg-simple_getclasspath
 # @USAGE: java-pkg-simple_getclasspath
@@ -322,7 +358,7 @@ java-pkg-simple_test_with_pkgdiff_() {
 # @USAGE: java-pkg-simple_prepend-resources <${classes}> <"${RESOURCE_DIRS[@]}">
 # @INTERNAL
 # @DESCRIPTION:
-# Copy things under "${JAVA_RESOURCE_DIRS[@]}" or "${JAVA_TEST_RESOURCE_DIRS[@]}"
+# Copy files or directories listed in "${JAVA_RESOURCES[@]}" or "${JAVA_TEST_RESOURCES[@]}"
 # to ${classes}, so that `jar` will package resources together with classes.
 #
 # Note that you need to define a "classes" variable before calling
@@ -333,14 +369,38 @@ java-pkg-simple_prepend_resources() {
 	local destination="${1}"
 	shift 1
 
-	# return if there is no resource dirs defined
+	# return if there is no resource defined
 	[[ "$@" ]] || return
 	local resources=("${@}")
+	local full_destination
+	local resource_regexp="[ ]*([^\ ]*)[ ]*->[ ]*([^\ ]*)[ ]*"
 
-	# add resources directory to classpath
+	# add resources to classpath
 	for resource in "${resources[@]}"; do
-		cp -rT "${resource:-.}" "${destination}"\
-			|| die "Could not copy resources from ${resource:-.} to ${destination}"
+		# support of syntax ->
+		if [[ $resource =~ $resource_regexp ]] ; then
+			full_destination="${destination}/${BASH_REMATCH[2]}"
+			resource=${BASH_REMATCH[1]}
+
+			mkdir -p "${full_destination}"
+		else
+			full_destination="${destination}"
+		fi
+
+		resource=${resource:-.}
+
+		# support resources specified as wildcards
+		for res in $resource
+		do
+			[[ ! -e $res ]] && die "resource '$res' does not exist"
+
+			if [[ -f "${res}" ]]; then
+				cp "${res}" "${full_destination}"
+			else
+				cp -r "${res}" "${full_destination}"
+			fi
+			[[ $? -ne 0 ]] && die "Could not copy resources from ${res} to ${full_destination}"
+		done
 	done
 }
 
@@ -391,7 +451,17 @@ java-pkg-simple_src_compile() {
 	# compile
 	local classpath=""
 	java-pkg-simple_getclasspath
-	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
+
+	if [[ -n $JAVA_RESOURCE_DIRS ]] ; then
+		ewarn "JAVA_RESOURCE_DIRS is deprecated, please update the ebuild by using JAVA_RESOURCES"
+
+		for p in ${JAVA_RESOURCE_DIRS[@]}
+		do
+			JAVA_RESOURCES+=( $p/* )
+		done
+		unset JAVA_RESOURCE_DIRS
+	fi
+	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCES[@]}"
 
 	if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
 		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
@@ -543,7 +613,17 @@ java-pkg-simple_src_test() {
 	# get classpath
 	classpath="${classes}:${JAVA_JAR_FILENAME}"
 	java-pkg-simple_getclasspath
-	java-pkg-simple_prepend_resources ${classes} "${JAVA_TEST_RESOURCE_DIRS[@]}"
+
+	if [[ -n $JAVA_TEST_RESOURCE_DIRS ]] ; then
+		ewarn "JAVA_TEST_RESOURCE_DIRS is deprecated, please update the ebuild by using JAVA_TEST_RESOURCES"
+
+		for p in ${JAVA_TEST_RESOURCE_DIRS[@]}
+		do
+			JAVA_TEST_RESOURCES+=( $p/* )
+		done
+		unset JAVA_TEST_RESOURCE_DIRS
+	fi
+	java-pkg-simple_prepend_resources ${classes} "${JAVA_TEST_RESOURCES[@]}"
 
 	# gathering sources for testing
 	# if target < 9, we need to compile module-info.java separately
