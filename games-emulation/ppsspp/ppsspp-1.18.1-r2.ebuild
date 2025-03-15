@@ -27,6 +27,7 @@ IUSE="discord qt5 test wayland"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=media-libs/sdl2-ttf-2.24.0
 	app-arch/snappy:=
 	app-arch/zstd:=
 	dev-libs/libzip:=
@@ -57,6 +58,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.17.1-SpvBuilder-cstdint.patch"
 	"${FILESDIR}/${PN}-1.17.1-cmake-cxx.patch"
+	"${FILESDIR}/${PN}-1.18.1-sdl2-ttf.patch"
 	"${FILESDIR}/${PN}-CMakeLists-flags.patch"
 )
 
