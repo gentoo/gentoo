@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -16,10 +16,11 @@ HOMEPAGE="https://github.com/ram-on/imgurbash2"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X"
+IUSE="X wayland"
 
 RDEPEND="
 	net-misc/curl
+	wayland? ( gui-apps/wl-clipboard )
 	X? ( || ( x11-misc/xclip x11-misc/xsel ) )
 "
 
