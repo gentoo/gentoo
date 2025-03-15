@@ -1,6 +1,6 @@
 Fix mouse-key input with ncurses6 in terminals without basic X10 mouse
 support, at the cost of breaking it with ncurses5. See discussion in
-https://midnight-commander.org/ticket/4144 .
+https://github.com/MidnightCommander/mc/issues/4144 .
 
 --- a/lib/tty/key.c
 +++ b/lib/tty/key.c
