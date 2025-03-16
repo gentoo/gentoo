@@ -1,9 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-COQ_MIN_V=8.16.0
+COQ_MIN_V="8.16.0"
+COQ_MAX_V="8.21.0"
 
 DESCRIPTION="Mathematical Components for the Coq proof assistant"
 HOMEPAGE="https://github.com/math-comp/math-comp/"
@@ -16,10 +17,12 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=sci-mathematics/coq-${COQ_MIN_V}:=
+	>=sci-mathematics/coq-${COQ_MIN_V}:= <sci-mathematics/coq-${COQ_MAX_V}:=
 	dev-lang/ocaml:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 
 # Do not complain about CFLAGS etc since ML projects do not use them.
 QA_FLAGS_IGNORED='.*'
