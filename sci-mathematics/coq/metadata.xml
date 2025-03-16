@@ -25,4 +25,9 @@
 		<bugs-to>https://github.com/coq/coq/issues/</bugs-to>
 		<remote-id type="github">coq/coq</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-compiler">
+			Enable "native_compute" and compile the Coq Standard Library
+		</flag>
+	</use>
 </pkgmetadata>
