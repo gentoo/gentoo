@@ -1,0 +1,65 @@
+https://github.com/zerotier/ZeroTierOne/issues/2332
+https://gitlab.archlinux.org/archlinux/packaging/packages/zerotier-one/-/commit/1d040aee9a4cfecdcc747cb42f92a1420a42a3f4
+
+From ab00e10bfac636c97fc608608745f18889f28410 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 5 Nov 2024 16:06:06 +0100
+Subject: [PATCH 1/2] shrink variable size
+
+This is what upstream miniupnpc uses...
+--- a/osdep/PortMapper.cpp
++++ b/osdep/PortMapper.cpp
+@@ -202,7 +202,7 @@ public:
+ 			// UPnP mode
+ 			// ---------------------------------------------------------------------
+ 			if (mode == 1) {
+-				char lanaddr[4096];
++				char lanaddr[64];
+ 				char externalip[4096]; // no range checking? so make these buffers larger than any UDP packet a uPnP server could send us as a precaution :P
+ 				char inport[16];
+ 				char outport[16];
+-- 
+2.47.0
+
+
+From fa0b81d9f9e84e282eea7955a037580be44002f9 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 5 Nov 2024 16:09:35 +0100
+Subject: [PATCH 2/2] add missing function parameter
+
+This changed with miniupnpc 2.2.8:
+
+https://github.com/miniupnp/miniupnp/commit/c0a50ce33e3b99ce8a96fd43049bb5b53ffac62f
+
+Warning: This is not a proper patch suitable for upstream! It assumes the
+parameter is always there, which is not true for older versions.
+So handle with care!
+--- a/osdep/PortMapper.cpp
++++ b/osdep/PortMapper.cpp
+@@ -203,6 +203,7 @@ public:
+ 			// ---------------------------------------------------------------------
+ 			if (mode == 1) {
+ 				char lanaddr[64];
++				char wanaddr[64];
+ 				char externalip[4096]; // no range checking? so make these buffers larger than any UDP packet a uPnP server could send us as a precaution :P
+ 				char inport[16];
+ 				char outport[16];
+@@ -224,13 +225,14 @@ public:
+ #endif
+ 
+ 					memset(lanaddr,0,sizeof(lanaddr));
++					memset(wanaddr,0,sizeof(wanaddr));
+ 					memset(externalip,0,sizeof(externalip));
+ 					memset(&urls,0,sizeof(urls));
+ 					memset(&data,0,sizeof(data));
+ 					OSUtils::ztsnprintf(inport,sizeof(inport),"%d",localPort);
+ 
+ 					int foundValidIGD = 0;
+-					if ((foundValidIGD = UPNP_GetValidIGD(devlist,&urls,&data,lanaddr,sizeof(lanaddr)))&&(lanaddr[0])) {
++					if ((foundValidIGD = UPNP_GetValidIGD(devlist,&urls,&data,lanaddr,sizeof(lanaddr),wanaddr,sizeof(wanaddr)))&&(lanaddr[0])) {
+ #ifdef ZT_PORTMAPPER_TRACE
+                         PM_TRACE("PortMapper: UPnP: my LAN IP address: %s" ZT_EOL_S,lanaddr);
+ #endif
+-- 
+2.47.0
+
