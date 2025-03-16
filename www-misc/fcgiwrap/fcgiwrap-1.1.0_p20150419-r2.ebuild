@@ -35,7 +35,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-systemd.patch
 	"${FILESDIR}"/${PN}-1.1.0-uninit-ipv6.patch
 	"${FILESDIR}"/${PN}-1.1.0-cleanup.patch
-	"${FILESDIR}"/${PN}-1.1.0-cleanup-startup.patch
 )
 
 src_prepare() {
