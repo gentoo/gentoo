@@ -67,8 +67,6 @@
 		</flag>
 		<flag name="libaribb24">Enable ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg></flag>
 		<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
-		<flag name="libdvdnav">Uses <pkg>media-libs/libdvdnav</pkg> to enable DVD demuxing</flag>
-		<flag name="libdvdread">Uses <pkg>media-libs/libdvdread</pkg> to enable DVD demuxing</flag>
 		<flag name="libilbc">Enable internet Low Bitrate Codec de/encoding support via <pkg>media-libs/libilbc</pkg></flag>
 		<flag name="liblc3">Enable Low Complexity Communication Codec de/encoding support via <pkg>media-sound/liblc3</pkg></flag>
 		<flag name="libplacebo">Enable use of GPU-accelerated filters from <pkg>media-libs/libplacebo</pkg></flag>
