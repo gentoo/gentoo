@@ -4,7 +4,7 @@
 EAPI=8
 MY_PV=${PV/_/-}
 inherit go-module linux-info optfeature systemd toolchain-funcs udev
-GIT_COMMIT=4c9b3b011ae4c30145a7b344c870bdda01b454e2
+GIT_COMMIT=c710b88579fcb5e0d53f96dcae976d79323b9166
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://www.docker.com/"
