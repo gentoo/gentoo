@@ -7,6 +7,7 @@ ECM_HANDBOOK="forceoff"
 ECM_TEST="true"
 KDE_ORG_CATEGORY="network"
 KFMIN=6.7.0
+PVCUT=$(ver_cut 1-3)
 QTMIN=6.7.2
 inherit ecm gear.kde.org
 
@@ -20,8 +21,8 @@ IUSE="+share"
 
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui,widgets]
-	kde-apps/kaccounts-integration:6
-	kde-apps/libkgapi:6
+	>=kde-apps/kaccounts-integration-${PVCUT}:6
+	>=kde-apps/libkgapi-${PVCUT}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kio-${KFMIN}:6
