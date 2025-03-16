@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -70,28 +70,14 @@ src_configure() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=(
-		# TODO
-		pythran/tests/test_numpy_ufunc_unary.py::TestNumpyUFuncUnary::test_signbit0
-	)
+	local EPYTEST_DESELECT=()
 
 	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
 		case ${EPYTHON} in
-			pypy3)
+			pypy3*)
 				EPYTEST_DESELECT+=(
-					pythran/tests/test_distutils.py::TestDistutils::test_setup_bdist_install3
-					pythran/tests/test_distutils.py::TestDistutils::test_setup_build3
-					pythran/tests/test_distutils.py::TestDistutils::test_setup_sdist_install
-					pythran/tests/test_distutils.py::TestDistutils::test_setup_sdist_install2
-					pythran/tests/test_distutils.py::TestDistutils::test_setup_sdist_install3
+					# tries to link to libpypy*.so
 					pythran/tests/test_distutils.py::TestMeson::test_meson_build
-					pythran/tests/test_exception.py::TestException::test_multiple_tuple_exception_register
-					pythran/tests/test_ndarray.py::TestNdarray::test_ndarray_fancy_indexing1
-					pythran/tests/test_numpy_fft.py::TestNumpyFFTN::test_fftn_1
-					pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_ravel0
-					pythran/tests/test_numpy_func3.py::TestNumpyFunc3::test_list_imag0
-					pythran/tests/test_numpy_random.py::TestNumpyRandom::test_numpy_uniform_size_int
-					pythran/tests/test_set.py::TestSet::test_fct_symmetric_difference_update
 				)
 				;;
 			python3.13)
@@ -99,6 +85,7 @@ python_test() {
 					# repr() differences?
 					pythran/tests/test_xdoc.py::TestDoctest::test_tutorial
 				)
+				;;
 		esac
 	fi
 
