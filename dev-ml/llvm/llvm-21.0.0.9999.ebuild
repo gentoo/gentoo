@@ -96,6 +96,8 @@ src_compile() {
 src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
+	# https://github.com/llvm/llvm-project/issues/131115
+	local -x LIT_XFAIL="Bindings/OCaml/debuginfo.ml"
 	cmake_build check-llvm-bindings-ocaml
 }
 
