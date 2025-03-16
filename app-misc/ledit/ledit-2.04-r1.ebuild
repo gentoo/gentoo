@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ IUSE="+ocamlopt"
 
 RESTRICT="installsources !ocamlopt? ( strip )"
 
-DEPEND=">=dev-lang/ocaml-3.09:=[ocamlopt?]
+DEPEND="<dev-lang/ocaml-5:=[ocamlopt?]
 	dev-ml/camlp5:="
 RDEPEND="${DEPEND}"
 
