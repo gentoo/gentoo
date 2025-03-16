@@ -63,6 +63,10 @@ src_configure() {
 		-e 's|blas=blas|blas=cblas|' \
 		-e 's|libs=|libs=cblas|' \
 		pythran/pythran-*.cfg || die
+	# boost.math 1.82.0+ requires -std=c++14
+	sed -i \
+		-e 's|-std=c++11|-std=c++14|' \
+		pythran/pythran-*.cfg || die
 }
 
 python_test() {
