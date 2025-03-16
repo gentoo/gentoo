@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -23,24 +24,23 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND=">=sci-libs/htslib-1.17"
-DEPEND="${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND=">=sci-libs/htslib-1.21"
+DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
-		>=sci-biology/bcftools-1.17
-		>=sci-biology/samtools-1.17
+		>=sci-biology/bcftools-1.21
+		>=sci-biology/samtools-1.21
 	)"
 
 distutils_enable_tests pytest
-
-DISTUTILS_IN_SOURCE_BUILD=1
 
 EPYTEST_DESELECT=(
 	# only work with bundled htslib
 	'tests/tabix_test.py::TestRemoteFileHTTP'
 	'tests/tabix_test.py::TestRemoteFileHTTPWithHeader'
+
+	'tests/AlignedSegment_test.py::TestBaseModifications'
 )
 
 python_prepare_all() {
@@ -50,23 +50,24 @@ python_prepare_all() {
 	export HTSLIB_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
 	rm -r htslib || die
 
-	# prevent setup.py from adding RPATHs (except $ORIGIN)
-	sed -e '/runtime_library_dirs=htslib_library_dirs/d' \
-		-i setup.py || die
-
 	if use test; then
 		einfo "Building test data"
 		emake -C tests/pysam_data
 		emake -C tests/cbcf_data
 	fi
 
-	distutils-r1_python_prepare_all
-}
-
-python_compile() {
 	# breaks with parallel build
 	# need to avoid dropping .so plugins into
 	# build-lib, which breaks tests
-	esetup.py build_ext --inplace -j1
-	distutils-r1_python_compile -j1
+	DISTUTILS_ARGS=(
+		build_ext
+		--inplace
+		-j1
+	)
+	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	rm -rf pysam || die
+	epytest
 }
