@@ -499,6 +499,12 @@ multilib_src_configure() {
 	# broken on x32 (bug #427004), and not PIC safe on x86 (bug #916067)
 	[[ ${ABI} == @(x32|x86) ]] && conf+=( --disable-asm )
 
+	# disable due to asm-related failures on ppc (bug #951464, ppc64be)
+	# https://trac.ffmpeg.org/ticket/9604 (ppc64el)
+	# https://trac.ffmpeg.org/ticket/10955 (ppc64el)
+	# (review re-enabling if resolved, or if debian allows it again)
+	use ppc || use ppc64 && conf+=( --disable-asm )
+
 	if tc-is-cross-compiler; then
 		conf+=(
 			--enable-cross-compile
