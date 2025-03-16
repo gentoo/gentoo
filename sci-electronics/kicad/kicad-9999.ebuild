@@ -25,6 +25,24 @@ else
 	fi
 fi
 
+# KiCAD is licensed under GPLv3 or later
+# As per LICENSES.README some components are under different, but GPL compatible license:
+# Licensed under Apache License, Version 2.0: portions of code in libs/kimath/include/math/util.h
+# Licensed under BOOSTv1: clipper, clipper2, libcontext, pegtl, picosha2, turtle
+# Licensed under ISC: portions of code in include/geometry/polygon_triangulation.h
+# Licensed under MIT: argparse, compoundfilereader, delaunator, fmt, json_schema_validator, magic_enum nanodbc,
+#                     nlohmann/json, nlohmann/fifo_map, pboettch/json-schema-validator, picoSHA2, rectpack2d,
+#                     sentry-native, thread-pool, tinyspline_lib
+# Licensed under MIT and BSD: glew
+# Licensed under BSD: pybind11
+# Licensed under BSD2: gzip-hpp
+# Licensed under GPLv2 (or later): dxflib, math_for_graphics, potrace,
+#							       SutherlandHodgmanClipPoly in thirdparty/other_math
+# Licensed under ZLib: nanosvg
+# Licensed in the public domain: lemon
+# Licensed under CC BY-SA 4.0: all the demo files provided in demos/*
+# Licensed under clause-3 BSD: ibis/kibis files in eeschema/sim/kibis
+# Licensed under CC0: uopamp.lib.spice in some directories in qa/data/eeschema/spice_netlists/
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD BSD-2 Apache-2.0 ISC MIT ZLIB CC-BY-SA-4.0 CC0-1.0"
 SLOT="0"
 IUSE="doc examples nls openmp test"
@@ -42,6 +60,7 @@ COMMON_DEPEND="
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
+	>=dev-libs/protobuf-27.2:=[protobuf,protoc]
 	>=dev-libs/nng-1.10.0:=
 	media-libs/freeglut
 	media-libs/glew:0=
@@ -66,10 +85,6 @@ COMMON_DEPEND="
 		media-gfx/cairosvg
 	)
 "
-
-if [[ ${PV} == 9999 ]] ; then
-	COMMON_DEPEND+="dev-libs/protobuf"
-fi
 
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
