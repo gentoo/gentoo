@@ -10,7 +10,7 @@ diff -Naur ydotool-1.0.4-orig/Daemon/CMakeLists.txt ydotool-1.0.4/Daemon/CMakeLi
 +    "${PROJECT_BINARY_DIR}/ydotool.openrc"
 +    @ONLY)
  install(FILES "${PROJECT_BINARY_DIR}/ydotool.service" DESTINATION ${SD_UNITDIR})
-+install(FILES "${PROJECT_BINARY_DIR}/ydotool.openrc" DESTINATION "/etc/init.d" RENAME ydotool)
++install(PROGRAMS "${PROJECT_BINARY_DIR}/ydotool.openrc" DESTINATION "/etc/init.d" RENAME ydotool)
 diff -Naur ydotool-1.0.4-orig/Daemon/ydotool.service-openrc.in ydotool-1.0.4/Daemon/ydotool.service-openrc.in
 --- ydotool-1.0.4-orig/Daemon/ydotool.service-openrc.in	2023-01-30 03:53:24.000000000 -0800
 +++ ydotool-1.0.4/Daemon/ydotool.service-openrc.in	2023-05-22 22:38:49.822064144 -0700
