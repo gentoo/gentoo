@@ -117,21 +117,9 @@ python_test() {
 		scipy/datasets/tests/test_data.py::TestDatasets::test_face
 		scipy/datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
 
-		# Precision issue with diff. blas?
-		scipy/optimize/tests/test__basinhopping.py::Test_Metropolis::test_gh7799
-
 		# Crashes with assertion, not a regression
 		# https://github.com/scipy/scipy/issues/19321
 		scipy/signal/tests/test_signaltools.py::test_lfilter_bad_object
-
-		# timeouts
-		scipy/sparse/linalg/tests/test_propack.py::test_examples
-		# hang or incredibly slow
-		scipy/optimize/tests/test_lsq_linear.py::TestBVLS::test_large_rank_deficient
-		scipy/optimize/tests/test_lsq_linear.py::TestTRF::test_large_rank_deficient
-
-		# TODO
-		scipy/optimize/tests/test_minimize_constrained.py::TestTrustRegionConstr::test_list_of_problems
 	)
 	local EPYTEST_IGNORE=()
 
