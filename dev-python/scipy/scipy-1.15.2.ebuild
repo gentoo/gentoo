@@ -6,7 +6,7 @@ EAPI=8
 FORTRAN_NEEDED=fortran
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic fortran-2 distutils-r1
@@ -142,18 +142,10 @@ python_test() {
 	fi
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
-				# fd leaks in tests
-				# https://github.com/scipy/scipy/issues/19553
-				scipy/fft/_pocketfft/tests/test_real_transforms.py
 				# TODO
 				'scipy/special/tests/test_data.py::test_boost[<Data for expi: expinti_data_long_ipp-expinti_data_long>]'
-				# missing dict.__ror__
-				# https://github.com/pypy/pypy/issues/4934
-				'scipy/sparse/tests/test_dok.py::test_dunder_ror[dok_matrix]'
-				# mismatched exception message
-				scipy/optimize/tests/test_hessian_update_strategy.py::TestHessianUpdateStrategy::test_initialize_catch_illegal
 			)
 			;;
 	esac
