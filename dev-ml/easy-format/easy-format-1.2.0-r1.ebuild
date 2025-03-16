@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,12 +9,12 @@ DESCRIPTION="Pretty-printing library for OCaml"
 HOMEPAGE="https://github.com/ocaml-community/easy-format"
 SRC_URI="https://github.com/ocaml-community/easy-format/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0/${PV}"
 LICENSE="BSD"
+SLOT="0/${PV}"
 KEYWORDS="amd64"
 IUSE="examples +ocamlopt"
 
-RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
+RDEPEND="<dev-lang/ocaml-5:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 
 src_compile() {
