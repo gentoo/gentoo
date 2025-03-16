@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="doc +ocamlopt"
 
 # See bug #704146
 BDEPEND=">=dev-ml/cppo-1.6.6"
-RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
+RDEPEND="<dev-lang/ocaml-5.3:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
