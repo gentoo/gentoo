@@ -34,7 +34,7 @@ RDEPEND="dev-vcs/git"
 pkg_setup() {
 	QA_FLAGS_IGNORED="
 		usr/bin/hx
-		/usr/$(get_libdir)/helix/.*\.so
+		usr/$(get_libdir)/${PN}/.*\.so
 	"
 	export HELIX_DEFAULT_RUNTIME="${EPREFIX}/usr/share/${PN}/runtime"
 	use grammar || export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
