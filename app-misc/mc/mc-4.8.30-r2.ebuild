@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 MY_P="${P/_/-}"
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="https://midnight-commander.org"
+HOMEPAGE="https://midnight-commander.org https://github.com/MidnightCommander/mc"
 SRC_URI="https://ftp.osuosl.org/pub/midnightcommander/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 

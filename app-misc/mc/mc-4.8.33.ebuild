@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 MY_P="${P/_/-}"
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="https://midnight-commander.org"
+HOMEPAGE="https://midnight-commander.org https://github.com/MidnightCommander/mc"
 SRC_URI="https://ftp.osuosl.org/pub/midnightcommander/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
