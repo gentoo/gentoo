@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/coq/coq/archive/V${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="LGPL-2.1"
