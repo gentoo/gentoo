@@ -1,17 +1,15 @@
 certificate version 0.1
-pusher 0xAECFCBDC64276180 1742148242 -0400
-pushee gentoo:repo/gentoo.git
-nonce 1742148242-2ba7accb000705dc14d57fcc17ba4bf3fabdce25
+pusher 0x738409F520DF9190 1742148970 +0000
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1742148970-7ac9d03fad972557011e77232d2c2315e629601d
 
-5309fa560729f0d1dd8fb1d4a50eaf8064271bd8 e3eef6ab3ef9b97faa82e9501e0a45c5c23eed66 refs/heads/master
+e3eef6ab3ef9b97faa82e9501e0a45c5c23eed66 6bcd7b2f7d9c1075df6ff103c4328ccddfb71c29 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEx3SLh1HBoPy/yLVYskQGsLCsQzQFAmfXEpIACgkQskQGsLCs
-QzR+8AgAiQDyPJ9P10y7mH0gKGNwVkdSR/tgFVB3zyJzvSzwmuebglxqveP1SQ9S
-Tsi+qUM4OqfJjKGOM5HsfoI+qJbukQZaIQbO0YpVsjHdcsf3IDhXyjumObavMn0v
-5txkZU0llVwaJuWj/v/l04IF5nOPOI2FCkGWVMfgOljO0MiGvyPSD01eXvhUgmuL
-RZ/wE1ZX2oJ9JRdSfdaO4OXjDrmtr4KChX9748gPXGlQI4mgLJqwLjyHDFyRmeSI
-HPzZubKW4Z3Fzjadrp72gJNdrfitPRL+djbp+/IBo8DEHdXGiUA1csrTfyJTdJ5v
-XVDRkO//Ivp3lA2dzkL6grRCcghcFg==
-=uPJc
+iNUEABYKAH0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCZ9cVal8UgAAAAAAuAChp
+c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MjVB
+NkJCODhERDlCNzY0QzZCNTU0MUMyNzM4NDA5RjUyMERGOTE5MAAKCRBzhAn1IN+R
+kDZcAP9kZrJhnloDzGCVvyW5Fg/vrA6oGA8fEq1S+gmSXb5qKgEAhSpwVgsze7CK
+ieNNXZhxz+MzbYdhUwQpNT/A9lQzOwQ=
+=XNe1
 -----END PGP SIGNATURE-----
