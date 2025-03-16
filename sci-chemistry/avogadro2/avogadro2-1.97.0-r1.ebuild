@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	>=sci-libs/avogadrolibs-${PV}[qt5,vtk?]
+	>=sci-libs/avogadrolibs-${PV}[qt5(-),vtk?]
 	sci-libs/hdf5:=
 	rpc? ( sci-chemistry/molequeue )
 "
