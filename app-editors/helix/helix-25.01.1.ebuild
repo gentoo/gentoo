@@ -47,7 +47,7 @@ src_install() {
 	insinto "/usr/$(get_libdir)/${PN}"
 	use grammar && doins runtime/grammars/*.so
 	rm -r runtime/grammars || die
-	use grammar && dosym "../../../$(get_libdir)/${PN}" "${EPREFIX}/usr/share/${PN}/runtime/grammars"
+	use grammar && dosym -r "/usr/$(get_libdir)/${PN}" "/usr/share/${PN}/runtime/grammars"
 
 	insinto /usr/share/helix
 	doins -r runtime
