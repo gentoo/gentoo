@@ -65,10 +65,11 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# ${TMPDIR} is not respected. It used to be but it lead to issues and there
+	# have been long debates with upstream about it. :( Delete /tmp/lept before
+	# and after to avoid issues.
+	rm -rf /tmp/lept/ || die
 	default
-
-	# ${TMPDIR} is not respected. It used to be but it lead to issues
-	# and there have been long debates with upstream about it. :(
 	rm -rf /tmp/lept/ || die
 }
 

@@ -1,0 +1,167 @@
+From 0e0e453248f07a1ecec77f06a84521141919a048 Mon Sep 17 00:00:00 2001
+From: danblooomberg <dan.bloomberg@gmail.com>
+Date: Sun, 16 Mar 2025 12:30:21 -0700
+Subject: [PATCH] Fix Issue #768: Replace calls to ioFormatTest() in pngio_reg
+
+* James Le Cuirot found a problem when ioformats_reg and pngio_reg
+  run in parallel because they both call ioFormatTest() and can
+  overwrite each other's output.
+* Add a file-writing function in pngio_reg to do this properly, so
+  only ioformats_reg calls ioFormatTest().
+---
+ prog/pngio_reg.c | 114 +++++++++++++++++++++++++++++++----------------
+ 1 file changed, 75 insertions(+), 39 deletions(-)
+
+diff --git a/prog/pngio_reg.c b/prog/pngio_reg.c
+index ccc359666..583274b89 100644
+--- a/prog/pngio_reg.c
++++ b/prog/pngio_reg.c
+@@ -68,6 +68,7 @@
+ #define   FILE_TRANS_CMAP_4BPP  "trans-4bpp-cmap.png"
+ #define   FILE_TRANS_CMAP_8BPP  "trans-8bpp-cmap.png"
+ 
++static l_int32 test_file_png(const char *fname, const char *dirout);
+ static l_int32 test_mem_png(const char *fname);
+ static l_int32 get_header_data(const char *filename);
+ static l_int32 test_1bpp_trans(L_REGPARAMS *rp);
+@@ -85,6 +86,7 @@ LEPT_DLL extern const char *ImageFileFormatExtensions[];
+ int main(int    argc,
+          char **argv)
+ {
++const char    dirout[] = "/tmp/lept/pngio/";
+ l_int32       success, failure;
+ L_REGPARAMS  *rp;
+ 
+@@ -95,51 +97,52 @@ L_REGPARAMS  *rp;
+ 
+     if (regTestSetup(argc, argv, &rp))
+         return 1;
+-
+-    /* --------- Part 1: Test lossless r/w to file ---------*/
+-
+     failure = FALSE;
++
++    /* ------------ Part 1: Test lossless r/w to file ------------ */
+     success = TRUE;
++    lept_rmdir("lept/pngio");  /* remove previous output files */
++    lept_mkdir("lept/pngio");
+     lept_stderr("Test bmp 1 bpp file:\n");
+-    if (ioFormatTest(FILE_1BPP)) success = FALSE;
+-    lept_stderr("\nTest 2 bpp file:\n");
+-    if (ioFormatTest(FILE_2BPP)) success = FALSE;
+-    lept_stderr("\nTest 2 bpp file with cmap:\n");
+-    if (ioFormatTest(FILE_2BPP_C)) success = FALSE;
+-    lept_stderr("\nTest 4 bpp file:\n");
+-    if (ioFormatTest(FILE_4BPP)) success = FALSE;
+-    lept_stderr("\nTest 4 bpp file with cmap:\n");
+-    if (ioFormatTest(FILE_4BPP_C)) success = FALSE;
+-    lept_stderr("\nTest 8 bpp grayscale file with cmap:\n");
+-    if (ioFormatTest(FILE_8BPP)) success = FALSE;
+-    lept_stderr("\nTest 8 bpp color file with cmap:\n");
+-    if (ioFormatTest(FILE_8BPP_C)) success = FALSE;
+-    lept_stderr("\nTest 16 bpp file:\n");
+-    if (ioFormatTest(FILE_16BPP)) success = FALSE;
+-    lept_stderr("\nTest 32 bpp RGB file:\n");
+-    if (ioFormatTest(FILE_32BPP)) success = FALSE;
+-    lept_stderr("\nTest 32 bpp RGBA file:\n");
+-    if (ioFormatTest(FILE_32BPP_ALPHA)) success = FALSE;
+-    lept_stderr("\nTest spp = 1, cmap with alpha file:\n");
+-    if (ioFormatTest(FILE_CMAP_ALPHA)) success = FALSE;
+-    lept_stderr("\nTest spp = 1, cmap with alpha (small alpha array):\n");
+-    if (ioFormatTest(FILE_CMAP_ALPHA2)) success = FALSE;
+-    lept_stderr("\nTest spp = 1, fully transparent with alpha file:\n");
+-    if (ioFormatTest(FILE_TRANS_ALPHA)) success = FALSE;
+-    lept_stderr("\nTest spp = 2, gray with alpha file:\n");
+-    if (ioFormatTest(FILE_GRAY_ALPHA)) success = FALSE;
+-    lept_stderr("\nTest spp = 2, cmap with alpha file:\n");
+-    if (ioFormatTest(FILE_TRANS_CMAP_2BPP)) success = FALSE;
+-    lept_stderr("\nTest spp = 4, cmap with alpha file:\n");
+-    if (ioFormatTest(FILE_TRANS_CMAP_4BPP)) success = FALSE;
+-    lept_stderr("\nTest spp = 8, cmap with alpha file:\n");
+-    if (ioFormatTest(FILE_TRANS_CMAP_8BPP)) success = FALSE;
++    if (test_file_png(FILE_1BPP, dirout)) success = FALSE;
++    lept_stderr("Test 2 bpp file:\n");
++    if (test_file_png(FILE_2BPP, dirout)) success = FALSE;
++    lept_stderr("Test 2 bpp file with cmap:\n");
++    if (test_file_png(FILE_2BPP_C, dirout)) success = FALSE;
++    lept_stderr("Test 4 bpp file:\n");
++    if (test_file_png(FILE_4BPP, dirout)) success = FALSE;
++    lept_stderr("Test 4 bpp file with cmap:\n");
++    if (test_file_png(FILE_4BPP_C, dirout)) success = FALSE;
++    lept_stderr("Test 8 bpp grayscale file with cmap:\n");
++    if (test_file_png(FILE_8BPP, dirout)) success = FALSE;
++    lept_stderr("Test 8 bpp color file with cmap:\n");
++    if (test_file_png(FILE_8BPP_C, dirout)) success = FALSE;
++    lept_stderr("Test 16 bpp file:\n");
++    if (test_file_png(FILE_16BPP, dirout)) success = FALSE;
++    lept_stderr("Test 32 bpp RGB file:\n");
++    if (test_file_png(FILE_32BPP, dirout)) success = FALSE;
++    lept_stderr("Test 32 bpp RGBA file:\n");
++    if (test_file_png(FILE_32BPP_ALPHA, dirout)) success = FALSE;
++    lept_stderr("Test spp = 1, cmap with alpha file:\n");
++    if (test_file_png(FILE_CMAP_ALPHA, dirout)) success = FALSE;
++    lept_stderr("Test spp = 1, cmap with alpha (small alpha array):\n");
++    if (test_file_png(FILE_CMAP_ALPHA2, dirout)) success = FALSE;
++    lept_stderr("Test spp = 1, fully transparent with alpha file:\n");
++    if (test_file_png(FILE_TRANS_ALPHA, dirout)) success = FALSE;
++    lept_stderr("Test spp = 2, gray with alpha file:\n");
++    if (test_file_png(FILE_GRAY_ALPHA, dirout)) success = FALSE;
++    lept_stderr("Test spp = 2, cmap with alpha file:\n");
++    if (test_file_png(FILE_TRANS_CMAP_2BPP, dirout)) success = FALSE;
++    lept_stderr("Test spp = 4, cmap with alpha file:\n");
++    if (test_file_png(FILE_TRANS_CMAP_4BPP, dirout)) success = FALSE;
++    lept_stderr("Test spp = 8, cmap with alpha file:\n");
++    if (test_file_png(FILE_TRANS_CMAP_8BPP, dirout)) success = FALSE;
+     if (success) {
+         lept_stderr(
+-            "\n  ********** Success on lossless r/w to file *********\n\n");
++            "\n  ****** Success on lossless r/w to file *****\n");
+     } else {
+         lept_stderr(
+-            "\n  ******* Failure on at least one r/w to file ******\n\n");
++            "\n  ******* Failure on at least one r/w to file ******\n");
+     }
+     if (!success) failure = TRUE;
+ 
+@@ -230,7 +233,40 @@ L_REGPARAMS  *rp;
+ }
+ 
+ 
+-    /* Returns 1 on error */
++    /* File r/w test.  Returns 1 on error */
++static l_int32
++test_file_png(const char  *fname,
++              const char  *dirout)
++{
++char     fileout[128];
++l_int32  same;
++PIX     *pixs;
++PIX     *pixd = NULL;
++
++    if ((pixs = pixRead(fname)) == NULL) {
++        lept_stderr("Failure to read %s\n", fname);
++        return 1;
++    }
++    stringCopy(fileout, dirout, 20);
++    stringCat(fileout, 128, fname);
++    if (pixWrite(fileout, pixs, IFF_PNG)) {
++        lept_stderr("Write fail for png\n");
++        return 1;
++    }
++    if ((pixd = pixRead(fileout)) == NULL) {
++        lept_stderr("Read fail for png\n");
++        return 1;
++    }
++
++    pixEqual(pixs, pixd, &same);
++    if (!same)
++        lept_stderr("Write/read fail for file %s\n", fname);
++    pixDestroy(&pixs);
++    pixDestroy(&pixd);
++    return (!same);
++}
++
++    /* Memory r/w test.  Returns 1 on error */
+ static l_int32
+ test_mem_png(const char  *fname)
+ {
