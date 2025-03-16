@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	>=dev-lang/ocaml-5
+	<dev-lang/ocaml-5.3
 	dev-ml/stdlib-shims:=[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
 "
