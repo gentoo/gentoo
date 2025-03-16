@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools optfeature python-single-r1
 
@@ -32,13 +32,8 @@ DOCS=( NOTICE README.rst )
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-RDEPEND="${PYTHON_DEPS}
-	elibc_musl? ( sys-libs/argp-standalone )
-"
-DEPEND="
+DEPEND="elibc_musl? ( sys-libs/argp-standalone )"
+COMMON_DEPEND="
 	ch-image? (
 		$(python_gen_cond_dep '
 			dev-python/lark[${PYTHON_USEDEP}]
@@ -47,13 +42,24 @@ DEPEND="
 		dev-vcs/git
 		net-misc/rsync
 	)
+"
+RDEPEND="
+	${DEPEND}
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
+"
+BDEPEND="
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
+	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		')
 		net-misc/rsync
-	)"
+	)
+"
 
 src_prepare() {
 	default
