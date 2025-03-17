@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2025-03-17)
+# Tries to access the network: https://gcc.gnu.org/PR119333
+=sys-devel/gcc-15.0.9999 rust
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
