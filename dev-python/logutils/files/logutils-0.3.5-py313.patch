@@ -1,0 +1,90 @@
+From f33a518fc04bcb4f875b2c741c7bbee8db9e01d8 Mon Sep 17 00:00:00 2001
+From: Arne Keller <arne.keller@posteo.de>
+Date: Sat, 11 Jan 2025 11:27:21 +0100
+Subject: [PATCH] Fix Python 3.13 compatibility
+
+---
+ logutils/dictconfig.py   |  9 +++++++--
+ tests/test_dictconfig.py | 14 ++++++++++----
+ 2 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/logutils/dictconfig.py b/logutils/dictconfig.py
+index c774552..2e33031 100644
+--- a/logutils/dictconfig.py
++++ b/logutils/dictconfig.py
+@@ -290,7 +290,12 @@ class DictConfigurator(BaseConfigurator):
+             raise ValueError("Unsupported version: %s" % config['version'])
+         incremental = config.pop('incremental', False)
+         EMPTY_DICT = {}
+-        logging._acquireLock()
++        # Python 3.13+ renamed these functions
++        try:
++            acquire, release = logging._prepareFork, logging._afterFork
++        except AttributeError:
++            acquire, release = logging._acquireLock, logging._releaseLock
++        acquire()
+         try:
+             if incremental:
+                 handlers = config.get('handlers', EMPTY_DICT)
+@@ -431,7 +436,7 @@ class DictConfigurator(BaseConfigurator):
+                         raise ValueError('Unable to configure root '
+                                          'logger: %s' % e)
+         finally:
+-            logging._releaseLock()
++            release()
+ 
+     def configure_formatter(self, config):
+         """Configure a formatter from a dictionary."""
+diff --git a/tests/test_dictconfig.py b/tests/test_dictconfig.py
+index 3aee984..e56d267 100644
+--- a/tests/test_dictconfig.py
++++ b/tests/test_dictconfig.py
+@@ -30,6 +30,12 @@ def handlerFunc():
+ class CustomHandler(logging.StreamHandler):
+     pass
+ 
++# Python 3.13+ renamed these functions
++try:
++    acquire, release = logging._prepareFork, logging._afterFork
++except AttributeError:
++    acquire, release = logging._acquireLock, logging._releaseLock
++
+ class ConfigDictTest(unittest.TestCase):
+ 
+     """Reading logging config from a dictionary."""
+@@ -39,7 +45,7 @@ class ConfigDictTest(unittest.TestCase):
+         self.adapter = LoggerAdapter(l, {})
+ 
+         logger_dict = logging.getLogger().manager.loggerDict
+-        logging._acquireLock()
++        acquire()
+         try:
+             self.saved_handlers = logging._handlers.copy()
+             self.saved_handler_list = logging._handlerList[:]
+@@ -50,7 +56,7 @@ class ConfigDictTest(unittest.TestCase):
+                 self.saved_level_to_name = logging._levelToName.copy()
+                 self.saved_name_to_level = logging._nameToLevel.copy()
+         finally:
+-            logging._releaseLock()
++            release()
+ 
+         self.root_logger = logging.getLogger("")
+         self.original_logging_level = self.root_logger.getEffectiveLevel()
+@@ -58,7 +64,7 @@ class ConfigDictTest(unittest.TestCase):
+ 
+     def tearDown(self):
+         self.root_logger.setLevel(self.original_logging_level)
+-        logging._acquireLock()
++        acquire()
+         try:
+             if hasattr(logging, '_levelNames'):
+                 logging._levelNames.clear()
+@@ -75,7 +81,7 @@ class ConfigDictTest(unittest.TestCase):
+             loggerDict.clear()
+             loggerDict.update(self.saved_loggers)
+         finally:
+-            logging._releaseLock()
++            release()
+ 
+     message_num = 0
+ 
