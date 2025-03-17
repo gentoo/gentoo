@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils
-inherit python-any-r1 toolchain-funcs
+inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
+inherit toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
@@ -49,8 +49,8 @@ multilib_src_configure() {
 	llvm_prepend_path "${LLVM_MAJOR}"
 
 	if use clang; then
-		local -x CC=${CTARGET}-clang
-		local -x CXX=${CTARGET}-clang++
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
 		strip-unsupported-flags
 	fi
 
@@ -58,13 +58,9 @@ multilib_src_configure() {
 	local use_compiler_rt=OFF
 	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
-	local install_prefix=${EPREFIX}
-	target_is_not_host && install_prefix+=/usr/${CTARGET}
-
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
-		-DCMAKE_INSTALL_PREFIX="${install_prefix}/usr"
+		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx"
 		-DLLVM_INCLUDE_TESTS=OFF
@@ -89,14 +85,6 @@ multilib_src_configure() {
 		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
-	if is_crosspkg; then
-		mycmakeargs+=(
-			# Without this, the compiler will compile a test program
-			# and fail due to no builtins.
-			-DCMAKE_C_COMPILER_WORKS=1
-			-DCMAKE_CXX_COMPILER_WORKS=1
-		)
-	fi
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
