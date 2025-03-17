@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ src_compile() {
 src_install() {
 	emake \
 		prefix="${D}"/usr \
-		mandir="${D}"/usr/share/man
+		mandir="${D}"/usr/share/man \
 		infodir="${D}"/usr/share/info \
 		libdir="${D}"/usr/$(get_libdir) \
 		install
