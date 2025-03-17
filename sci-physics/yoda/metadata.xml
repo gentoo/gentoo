@@ -22,6 +22,7 @@
   </longdescription>
   <use>
     <flag name="root">Adds support for <pkg>sci-physics/root</pkg></flag>
+    <flag name="highfive">Build with <pkg>sci-libs/HighFive</pkg> and <pkg>sci-libs/hdf5</pkg></flag>
   </use>
   <upstream>
     <remote-id type="gitlab">hepcedar/yoda</remote-id>
