@@ -34,6 +34,15 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# sys-cluster/pacemaker is not really maintained in Gentoo.  It is
+# multiple versions behind, does not support Python 3.11 and has a bunch
+# of other problems reported.  sys-cluster/crmsh is its only
+# unconditional dependency.
+# Removal on 2025-04-16.  Bug #897290.
+sys-cluster/crmsh
+sys-cluster/pacemaker
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # The package has not been touched by the author since it's re-import
 # in 2022.  It uses legacy distutils-r1 build and still requires Python
 # 3.10.  It has no reverse dependencies.

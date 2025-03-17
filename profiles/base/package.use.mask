@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# sys-cluster/pacemaker is being removed.
+sys-cluster/drbd-utils pacemaker
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-05)
 # Mask until we have keyworded dev-util/spirv-llvm-translator:20 release.
 llvm-core/libclc llvm_slot_20
