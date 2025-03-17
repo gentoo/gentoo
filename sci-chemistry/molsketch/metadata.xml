@@ -11,7 +11,7 @@
 		afterwards in high quality in a number of vector and bitmap formats.
 	</longdescription>
 	<use>
-		<flag name="openbabel">Interface for <pkg>sci-chemistry/openbabel</pkg> to support many file formats. With inchi support at runtime, the wikiquery plugin is enabled.</flag>
+		<flag name="openbabel">Interface for <pkg>sci-chemistry/openbabel</pkg> to support many file formats</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">molsketch</remote-id><!-- old -->

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake optfeature xdg
 
 DESCRIPTION="Drawing tool for 2D molecular structures"
 HOMEPAGE="https://molsketch.sourceforge.io/ https://github.com/hvennekate/Molsketch/"
@@ -33,4 +33,10 @@ src_configure() {
 		-DMSK_QT6=ON
 	)
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	use openbabel && optfeature "wikiquery support through openbabel inchi interface" "sci-chemistry/openbabel[inchi]"
 }
