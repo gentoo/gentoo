@@ -34,6 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
+>=xfce-base/libxfce4ui-4.21
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # A "forever beta" wrapper over dev-python/requests, with no tests,
 # and dead for 9 years already.  Finally, no reverse dependencies left.
 # Removal on 2025-04-16.  Bug #951492.
