@@ -17,7 +17,7 @@ else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
 	S="${WORKDIR}/wine-${PV}"
-	KEYWORDS="-* amd64 x86"
+	KEYWORDS="-* ~amd64 ~x86"
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
@@ -26,7 +26,11 @@ HOMEPAGE="
 	https://gitlab.winehq.org/wine/wine/
 "
 
-LICENSE="LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
+LICENSE="
+	LGPL-2.1+
+	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
+	|| ( WTFPL-2 public-domain )
+"
 SLOT="${PV}"
 IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups +dbus dos
@@ -159,7 +163,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
 	"${FILESDIR}"/${PN}-8.13-rpath.patch
-	"${FILESDIR}"/${PN}-10.0-binutils2.44.patch
 )
 
 pkg_pretend() {
@@ -316,6 +319,10 @@ src_configure() {
 				# (primarily done for 23.0 profiles' -z, not full coverage)
 				filter-flags '-Wl,-z,*'
 
+				# -mavx with mingw-gcc has a history of issues and still see
+				# users have problems despite -mpreferred-stack-boundary=2
+				append-cflags -mno-avx
+
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
 
@@ -361,27 +368,10 @@ src_install() {
 	use abi_x86_32 && emake DESTDIR="${D}" -C ../build32 install
 	use abi_x86_64 && emake DESTDIR="${D}" -C ../build64 install # do last
 
-	# Ensure both wine64 and wine are available if USE=abi_x86_64 (wow64,
-	# -abi_x86_32, and/or EXTRA_ECONF could cause varying scenarios where
-	# one or the other could be missing and that is unexpected for users
-	# and some tools like winetricks)
-	if use abi_x86_64; then
-		if [[ -e ${ED}${WINE_PREFIX}/bin/wine64 && ! -e ${ED}${WINE_PREFIX}/bin/wine ]]; then
-			dosym wine64 ${WINE_PREFIX}/bin/wine
-			dosym wine64-preloader ${WINE_PREFIX}/bin/wine-preloader
-
-			# also install wine(1) man pages (incl. translations)
-			local man
-			for man in ../build64/loader/wine.*man; do
-				: "${man##*/wine}"
-				: "${_%.*}"
-				insinto ${WINE_DATADIR}/man/${_:+${_#.}/}man1
-				newins ${man} wine.1
-			done
-		elif [[ ! -e ${ED}${WINE_PREFIX}/bin/wine64 && -e ${ED}${WINE_PREFIX}/bin/wine ]]; then
-			dosym wine ${WINE_PREFIX}/bin/wine64
-			dosym wine-preloader ${WINE_PREFIX}/bin/wine64-preloader
-		fi
+	# "wine64" is no longer provided, but a keep symlink for old scripts
+	# TODO: remove the guard later, only useful for bisecting -9999
+	if [[ ! -e ${ED}${WINE_PREFIX}/bin/wine64 ]]; then
+		use abi_x86_64 && dosym wine ${WINE_PREFIX}/bin/wine64
 	fi
 
 	use perl || rm "${ED}"${WINE_DATADIR}/man/man1/wine{dump,maker}.1 \

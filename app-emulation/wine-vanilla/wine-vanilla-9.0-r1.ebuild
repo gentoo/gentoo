@@ -4,11 +4,11 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit autotools flag-o-matic multilib multilib-build optfeature
+inherit autotools flag-o-matic multilib multilib-build
 inherit prefix toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
-WINE_MONO=9.4.0
+WINE_MONO=8.1.0
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -17,7 +17,7 @@ else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
 	S="${WORKDIR}/wine-${PV}"
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 x86"
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
@@ -26,19 +26,15 @@ HOMEPAGE="
 	https://gitlab.winehq.org/wine/wine/
 "
 
-LICENSE="
-	LGPL-2.1+
-	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
-	|| ( WTFPL-2 public-domain )
-"
+LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups +dbus dos
-	llvm-libunwind custom-cflags ffmpeg +fontconfig +gecko gphoto2
-	+gstreamer kerberos +mingw +mono netapi nls odbc opencl +opengl
-	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
-	+strip +truetype udev +unwind usb v4l +vulkan wayland wow64
-	+xcomposite xinerama
+	llvm-libunwind custom-cflags +fontconfig +gecko gphoto2 +gstreamer
+	kerberos +mingw +mono netapi nls odbc opencl +opengl pcap perl
+	pulseaudio samba scanner +sdl selinux smartcard +ssl +strip
+	+truetype udev +unwind usb v4l +vulkan wayland wow64 +xcomposite
+	xinerama
 "
 # bug #551124 for truetype
 # TODO?: wow64 can be done without mingw if using clang (needs bug #912237)
@@ -75,7 +71,7 @@ WINE_DLOPEN_DEPEND="
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[X?,wayland?,${MULTILIB_USEDEP}] )
+	vulkan? ( media-libs/vulkan-loader[X?,${MULTILIB_USEDEP}] )
 "
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
@@ -85,7 +81,6 @@ WINE_COMMON_DEPEND="
 	)
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-libs/libcapi:=[${MULTILIB_USEDEP}] )
-	ffmpeg? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gstreamer? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
@@ -163,6 +158,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
 	"${FILESDIR}"/${PN}-8.13-rpath.patch
+	"${FILESDIR}"/${PN}-10.0-binutils2.44.patch
 )
 
 pkg_pretend() {
@@ -249,7 +245,6 @@ src_configure() {
 		$(use_with capi)
 		$(use_with cups)
 		$(use_with dbus)
-		$(use_with ffmpeg)
 		$(use_with fontconfig)
 		$(use_with gphoto2 gphoto)
 		$(use_with gstreamer)
@@ -319,6 +314,10 @@ src_configure() {
 				# (primarily done for 23.0 profiles' -z, not full coverage)
 				filter-flags '-Wl,-z,*'
 
+				# -mavx with mingw-gcc has a history of issues and still see
+				# users have problems despite -mpreferred-stack-boundary=2
+				append-cflags -mno-avx
+
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
 
@@ -364,10 +363,27 @@ src_install() {
 	use abi_x86_32 && emake DESTDIR="${D}" -C ../build32 install
 	use abi_x86_64 && emake DESTDIR="${D}" -C ../build64 install # do last
 
-	# "wine64" is no longer provided, but a keep symlink for old scripts
-	# TODO: remove the guard later, only useful for bisecting -9999
-	if [[ ! -e ${ED}${WINE_PREFIX}/bin/wine64 ]]; then
-		use abi_x86_64 && dosym wine ${WINE_PREFIX}/bin/wine64
+	# Ensure both wine64 and wine are available if USE=abi_x86_64 (wow64,
+	# -abi_x86_32, and/or EXTRA_ECONF could cause varying scenarios where
+	# one or the other could be missing and that is unexpected for users
+	# and some tools like winetricks)
+	if use abi_x86_64; then
+		if [[ -e ${ED}${WINE_PREFIX}/bin/wine64 && ! -e ${ED}${WINE_PREFIX}/bin/wine ]]; then
+			dosym wine64 ${WINE_PREFIX}/bin/wine
+			dosym wine64-preloader ${WINE_PREFIX}/bin/wine-preloader
+
+			# also install wine(1) man pages (incl. translations)
+			local man
+			for man in ../build64/loader/wine.*man; do
+				: "${man##*/wine}"
+				: "${_%.*}"
+				insinto ${WINE_DATADIR}/man/${_:+${_#.}/}man1
+				newins ${man} wine.1
+			done
+		elif [[ ! -e ${ED}${WINE_PREFIX}/bin/wine64 && -e ${ED}${WINE_PREFIX}/bin/wine ]]; then
+			dosym wine ${WINE_PREFIX}/bin/wine64
+			dosym wine-preloader ${WINE_PREFIX}/bin/wine64-preloader
+		fi
 	fi
 
 	use perl || rm "${ED}"${WINE_DATADIR}/man/man1/wine{dump,maker}.1 \
@@ -416,9 +432,6 @@ pkg_postinst() {
 			ewarn "applications under ${PN} will likely not be usable."
 		fi
 	fi
-
-	optfeature "/dev/hidraw* access used for *some* controllers (e.g. DualShock4)" \
-		games-util/game-device-udev-rules
 
 	eselect wine update --if-unset || die
 }
