@@ -15,7 +15,5 @@
 	</use>
 	<upstream>
 		<remote-id type="github">lightspark/lightspark</remote-id>
-		<remote-id type="launchpad">lightspark</remote-id>
-		<remote-id type="sourceforge">lightspark</remote-id>
 	</upstream>
 </pkgmetadata>
