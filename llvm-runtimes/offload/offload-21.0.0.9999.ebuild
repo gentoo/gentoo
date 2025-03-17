@@ -40,7 +40,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( offload cmake runtimes/cmake libc/shared )
+LLVM_COMPONENTS=( offload cmake runtimes/cmake libc )
 LLVM_TEST_COMPONENTS=( openmp/cmake )
 llvm.org_set_globals
 
