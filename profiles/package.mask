@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Last release in 2021, aimed at Python 3.9.  Test suite is broken with
+# Python 3.13.  No reverse dependencies.
+# Removal on 2025-04-16.  Bug #951490.
+dev-python/bitvector
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is not really maintained in Gentoo.  It is
 # multiple versions behind, does not support Python 3.11 and has a bunch
 # of other problems reported.  sys-cluster/crmsh is its only
