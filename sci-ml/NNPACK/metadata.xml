@@ -5,6 +5,9 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<use>
+		<flag name="test-full">Run additional, quite slow tests</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Maratyszcza/NNPACK</remote-id>
 	</upstream>

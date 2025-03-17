@@ -18,8 +18,8 @@ S="${WORKDIR}"/${PN}-${CommitId}
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=test
-RESTRICT="test" # consuming too much CPU
+IUSE="test test-full"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -55,4 +55,15 @@ src_configure() {
 		-DNNPACK_BUILD_TESTS=$(usex test ON OFF)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	use test-full || local CMAKE_SKIP_TESTS=(
+		convolution-output-overfeat
+		convolution-kernel-gradient-vgg
+		convolution-input-gradient-overfeat
+		convolution-input-gradient-vgg
+		convolution-output-vgg
+	)
+	cmake_src_test
 }
