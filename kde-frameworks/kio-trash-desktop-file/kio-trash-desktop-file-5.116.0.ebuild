@@ -11,7 +11,7 @@ S="${S}/src/ioslaves/trash"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv ~x86"
 
 RDEPEND="
 	!<kde-frameworks/kio-5.116.0-r2:5

@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # Sam James <sam@gentoo.org> (2025-01-14)
 # dev-cpp/benchmark isn't (yet) keyworded here, although >=1.9.1 should
 # work fine with patching as the ebuild does.
@@ -103,6 +108,7 @@ media-libs/libv4l bpf
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # Vulkan is not available here
 media-video/ffmpeg glslang shaderc vulkan
+media-video/ffmpeg-compat shaderc vulkan
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
 # dev-build/samurai is not keyworded here.
@@ -218,6 +224,7 @@ media-libs/xine-lib dav1d
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-06)
 # Unkeyworded dependencies
@@ -345,6 +352,7 @@ media-sound/vorbis-tools kate
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not keyworded
 media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
+media-video/ffmpeg-compat dav1d libaribb24 libtesseract vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
@@ -422,6 +430,7 @@ app-forensics/sleuthkit java
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
 media-video/ffmpeg libilbc zimg
+media-video/ffmpeg-compat libilbc zimg
 
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps

@@ -1,16 +1,21 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1
 
 DESCRIPTION="A set of python bindings for keyutils"
 HOMEPAGE="https://github.com/sassoftware/python-keyutils/"
-SRC_URI="https://github.com/sassoftware/python-keyutils/archive/refs/tags/${PV}.tar.gz -> python-keyutils-${PV}.gh.tar.gz"
+SRC_URI="
+	https://github.com/sassoftware/python-keyutils/archive/${PV}.tar.gz
+		-> python-keyutils-${PV}.gh.tar.gz
+"
+S="${WORKDIR}/python-keyutils-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -21,8 +26,6 @@ DEPEND="sys-apps/keyutils"
 RDEPEND="${DEPEND}"
 
 distutils_enable_tests pytest
-
-S="${WORKDIR}/python-keyutils-${PV}"
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -135,7 +135,11 @@ if [[ ${PN} != util-macros ]] ; then
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-[[ ${XORG_EAUTORECONF} != no ]] && BDEPEND+=" ${EAUTORECONF_DEPEND}"
+if [[ ${XORG_EAUTORECONF} == no ]] ; then
+	BDEPEND+=" ${LIBTOOL_DEPEND}"
+else
+	BDEPEND+=" ${EAUTORECONF_DEPEND}"
+fi
 unset EAUTORECONF_DEPEND
 
 # @ECLASS_VARIABLE: FONT_DIR

@@ -1,6 +1,24 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# Been failing to build for a long time for musl with modern compilers,
+# so mask until there is a proper fix. Note that this does not disable
+# v4l support entirely (always enabled), only libv4l use (bug #911499).
+#
+# Old ebuilds had a different meaning for USE=v4l (has *both* a libv4l
+# and v4l) and it should not be masked, can be removed after cleanup.
+media-video/ffmpeg v4l
+=media-video/ffmpeg-4.4.5-r1 libv4l -v4l
+=media-video/ffmpeg-6.1.2-r0 libv4l -v4l
+=media-video/ffmpeg-7.1-r0 libv4l -v4l
+media-video/ffmpeg-compat v4l
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# dev-util/nvidia-cuda-toolkit is unavailable on musl
+media-video/ffmpeg npp
+media-video/ffmpeg-compat npp
+
 # Sam James <sam@gentoo.org> (2025-01-08)
 # Depends on currently-masked elogind version on musl profiles (bug #947739)
 sys-libs/pam elogind
@@ -158,17 +176,18 @@ net-irc/ngircd test
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Rolling mask for all USE flags which pull in a masked binary package
 # (linked against glibc). Use for all such packages.
-dev-libs/oneDNN mkl
+sci-ml/oneDNN mkl
 kde-apps/kdenetwork-meta dropbox
 media-libs/opencv atlas mkl
 media-video/ffmpeg amf
+media-video/ffmpeg-compat amf
 media-video/handbrake amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
 sys-apps/hwloc gl
 sci-chemistry/gromacs mkl
 sci-libs/armadillo mkl
-sci-libs/caffe2 mkl
+sci-ml/caffe2 mkl
 sci-libs/dlib mkl
 sci-libs/trilinos mkl
 www-client/qutebrowser widevine

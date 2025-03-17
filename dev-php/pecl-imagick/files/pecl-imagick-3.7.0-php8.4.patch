@@ -1,0 +1,42 @@
+Patch taken from https://github.com/Imagick/imagick/pull/690
+
+From 65e27f2bc02e7e8f1bf64e26e359e42a1331fca1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20Vo=C5=99=C3=AD=C5=A1ek?= <mvorisek@mvorisek.cz>
+Date: Wed, 25 Sep 2024 10:56:28 +0200
+Subject: [PATCH] Fix removed "php_strtolower" for PHP 8.4
+
+---
+ imagick.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/imagick.c b/imagick.c
+index 1b765389..ebab7ae7 100644
+--- a/imagick.c
++++ b/imagick.c
+@@ -610,7 +610,7 @@ static zval *php_imagick_read_property(zend_object *object, zend_string *member,
+ 					if (format) {
+ 						retval = rv;
+ 						ZVAL_STRING(retval, format);
+-						php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						zend_str_tolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
+ 						IMAGICK_FREE_MAGICK_MEMORY(format);
+ 					} else {
+ 						retval = rv;
+@@ -683,7 +683,7 @@ static zval *php_imagick_read_property(zval *object, zval *member, int type, voi
+ 					if (format) {
+ 						retval = rv;
+ 						ZVAL_STRING(retval, format);
+-						php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						zend_str_tolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
+ 						IMAGICK_FREE_MAGICK_MEMORY(format);
+ 					} else {
+ 						retval = rv;
+@@ -766,7 +766,7 @@ static zval *php_imagick_read_property(zval *object, zval *member, int type, con
+ 
+ 					if (format) {
+ 						ZVAL_STRING(retval, format, 1);
+-						php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						zend_str_tolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
+ 						IMAGICK_FREE_MAGICK_MEMORY(format);
+ 					} else {
+ 						ZVAL_STRING(retval, "", 1);

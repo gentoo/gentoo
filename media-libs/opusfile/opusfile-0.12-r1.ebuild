@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools multilib-minimal
 
 DESCRIPTION="A high-level decoding and seeking API for .opus files"
 HOMEPAGE="https://www.opus-codec.org/"
@@ -15,10 +15,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc
 IUSE="doc fixed-point +float +http static-libs"
 
 RDEPEND="
-	media-libs/libogg
-	media-libs/opus
+	media-libs/libogg[${MULTILIB_USEDEP}]
+	media-libs/opus[${MULTILIB_USEDEP}]
 	http? (
-		dev-libs/openssl:=
+		dev-libs/openssl:=[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}"
@@ -37,18 +37,18 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable doc)
-		$(use_enable fixed-point)\
+		$(multilib_native_use_enable doc)
+		$(use_enable fixed-point)
 		$(use_enable float)
 		$(use_enable http)
 		$(use_enable static-libs static)
 	)
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	default
+multilib_src_install_all() {
+	einstalldocs
 	find "${ED}" -type f -name "*.la" -delete || die
 }

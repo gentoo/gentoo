@@ -22,7 +22,7 @@ fi
 DESCRIPTION="A Flask extension for Cross Origin Resource Sharing (CORS)"
 HOMEPAGE="
 	https://github.com/corydolphin/flask-cors/
-	https://pypi.org/project/Flask-Cors/
+	https://pypi.org/project/flask-cors/
 "
 
 LICENSE="MIT"
@@ -39,6 +39,3 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs \
-	dev-python/sphinx-rtd-theme \
-	dev-python/sphinxcontrib-httpdomain

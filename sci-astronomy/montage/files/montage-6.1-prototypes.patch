@@ -1,0 +1,283 @@
+https://github.com/Caltech-IPAC/Montage/pull/85
+--- /dev/null
++++ b/Montage/filePath.h
+@@ -0,0 +1,3 @@
++#pragma once
++
++char *filePath(char *path, char *fname);
+--- a/MontageLib/ArchiveExec/montageArchiveExec.c
++++ b/MontageLib/ArchiveExec/montageArchiveExec.c
+@@ -17,7 +17,6 @@ extern int optind, opterr;
+ 
+ extern int getopt(int argc, char *const *argv, const char *options);
+ 
+-char *svc_value();
+ 
+ 
+ /*-*****************************************************************/
+--- a/grid/Globus/ExecTG/mExecTG.c
++++ b/grid/Globus/ExecTG/mExecTG.c
+@@ -42,7 +42,6 @@ int   debugCheck (char *debugStr);
+ char *mktemp     (char *template);
+ int   strncasecmp(const char *s1, const char *s2, size_t n);
+ char *url_encode ();
+-char *svc_value  ();
+ 
+ static time_t currtime, start;
+ 
+--- a/grid/Pegasus/mConcatFit.c
++++ b/grid/Pegasus/mConcatFit.c
+@@ -29,8 +29,6 @@ extern int optind, opterr;
+ 
+ extern int getopt(int argc, char *const *argv, const char *options);
+ 
+-char *svc_val();
+-
+ int checkFile(char *filename);
+ 
+ int   debug;
+--- a/grid/Pegasus/mDAG.c
++++ b/grid/Pegasus/mDAG.c
+@@ -31,8 +31,6 @@ Version  Developer        Date     Change
+ 
+ #define MAXSTR   1024
+ 
+-char *svc_value();
+-
+ int   readTemplate(char *template);
+ int   printError  (char *msg);
+ int   stradd      (char *header, char *card);
+--- a/grid/Pegasus/mDAGGalacticPlane.c
++++ b/grid/Pegasus/mDAGGalacticPlane.c
+@@ -30,8 +30,6 @@ Version  Developer        Date     Change
+ 
+ #define MAXSTR   1024
+ 
+-char *svc_value();
+-
+ int   readTemplate(char *template);
+ int   printError  (char *msg);
+ int   stradd      (char *header, char *card);
+--- a/grid/Pegasus/mDiffFit.c
++++ b/grid/Pegasus/mDiffFit.c
+@@ -20,6 +20,7 @@ Version  Developer        Date     Change
+ #include <sys/stat.h>
+ 
+ #include <svc.h>
++#include "filePath.h"
+ 
+ #include "montage.h"
+ 
+@@ -34,9 +35,6 @@ char cmd          [MAXSTR];
+ char msg          [MAXSTR];
+ char status       [MAXSTR];
+ 
+-char *svc_value();
+-char *filePath ();
+-
+ extern char *optarg;
+ extern int optind, opterr;
+ 
+--- a/lib/src/coord/ccalc.c
++++ b/lib/src/coord/ccalc.c
+@@ -15,7 +15,10 @@
+ #define DD2AS(d) (d * 3600.)
+ #define AS2DD(a) (a / 3600.)
+ 
+-extern void convertCoordinates();
++void
++convertCoordinates(int  insys, double  inepoch, double   inlon, double   inlat,
++                   int outsys, double outepoch, double *outlon, double *outlat,
++		   double obstime);
+ 
+ static int ExtractEpochInfo(char *from_sys, char *from_epoch, char *to_sys, 
+ 			    char *to_epoch, int *jsysin, double *eqx1, 
+--- a/lib/src/coord/computeFKCorrections.c
++++ b/lib/src/coord/computeFKCorrections.c
+@@ -14,6 +14,13 @@ static double  dad[181],     dpmad[181],     dd[181],      dpmdd[181],
+ 
+ void initializeFK5CorrectionData();
+ void loadFK5Constants();
++static double interpolateLinear(double y1, double y2, 
++                         double x1, double x2, double x0);
++static double interpolateBilinear(double za1d1, double za2d1, 
++                           double za1d2, double za2d2, 
++                           double a1,    double a2, 
++                           double d1,    double d2, 
++                           double a,     double d);
+ 
+ 
+ /****************************************************************************/
+@@ -50,8 +57,6 @@ besselianToJulianFKCorrection(double ain, double d, double dmag, double epoch,
+       int loc, loc1, loc2, locx1, locx2;
+       int n1, n3;
+ 
+-      double interpolateLinear(), interpolateBilinear();
+-
+       double dec1, dec2, dtest, fkpdec= 89.999;
+       double xmag1, xmag2, a;
+       double delepk, delras, deldas, delpma, delpmd, dcosd;
+--- a/lib/src/coord/convertBesselianJulian.c
++++ b/lib/src/coord/convertBesselianJulian.c
+@@ -4,13 +4,15 @@
+ 
+ extern int japply;
+ 
+-void correctCoordinateRange();
+-void getEquETermCorrection();
+-void getEclETermCorrection();
+-void refinedEquETermCorrection();
+-void refinedEclETermCorrection();
+-void correctForEquatorialETerms();
+-void correctForEclipticETerms();
++void correctCoordinateRange(double *ra, double *dec);
++void getEquETermCorrection(double ra, double dec, double *dra, double *ddec);
++void getEclETermCorrection(double epoch, double elon, double elat, 
++                           double *dra, double *ddec);
++void refinedEquETermCorrection(double ra, double dec, double *dra, double *ddec);
++void refinedEclETermCorrection(double obsdatej, double elon, double elat, 
++                               double *delon, double *delat);
++void correctForEquatorialETerms(double date, double *ra, double *dec);
++void correctForEclipticETerms(double date, double *ra, double *dec);
+ 
+ 
+ 
+--- a/lib/src/coord/convertEclEqu.c
++++ b/lib/src/coord/convertEclEqu.c
+@@ -2,7 +2,7 @@
+ #include <math.h>
+ #include <coord.h>
+ 
+-double computeEquPole();
++double computeEquPole(double date, int besselian);
+ 
+ 
+ 
+--- a/lib/src/coord/coord.h
++++ b/lib/src/coord/coord.h
+@@ -94,31 +94,57 @@ typedef enum {A = 0 ,      /* 0 */
+ 
+ /* Prototypes of callable functions */
+ 
+-void convertCoordinates();
+-void convertEclToEqu();
+-void convertEquToEcl();
+-void convertEquToGal();
+-void convertGalToEqu();
+-void convertGalToSgal();
+-void convertSgalToGal();
+-
+-void convertBesselianToJulian();
+-void convertJulianToBesselian();
+-void precessBesselian();
+-void precessBesselianWithProperMotion();
+-void precessJulian();
+-void precessJulianWithProperMotion();
+-void julianToBesselianFKCorrection();
+-void besselianToJulianFKCorrection();
+-
+-int  ccalc();
+-int  degreeToDMS();
+-int  degreeToHMS();
+-int  degreeToSex();
+-int  sexToDegree();
+-int  parseCoordinateString();
+-
+-double roundValue();
++void
++convertCoordinates(int  insys, double  inepoch, double   inlon, double   inlat,
++                   int outsys, double outepoch, double *outlon, double *outlat,
++		   double obstime);
++void convertEclToEqu(double elon, double elat, double *ra, double *dec, 
++		     double date, int besselian);
++void convertEquToEcl(double ra, double dec, double *elon, double *elat, 
++		     double date, int besselian);
++void convertEquToGal(double ra, double dec, double *glon, double *glat);
++void convertGalToEqu(double glon, double glat, double *ra, double *dec);
++void convertGalToSgal(double glon, double glat, double *sglon, double *sglat);
++void convertSgalToGal(double sglon, double sglat, double *glon, double *glat);
++
++void convertBesselianToJulian(double equinoxin, double ra, double dec, 
++                              double obsdatein, int ieflg, 
++                              double *raout, double *decout);
++void convertJulianToBesselian(double ra, double dec, 
++                              double obsdatein, int ieflg, double equinoxout, 
++                              double *raout, double *decout);
++void precessBesselian(double epochin,  double  rain,  double  decin, 
++                      double epochout, double *raout, double *decout);
++void precessBesselianWithProperMotion
++   (double epochin,  double  rain,  double  decin, 
++    double epochout, double *raout, double *decout, 
++    double pmain, double pmdin, double pin, double vin, 
++    double *rapm, double *decpm);
++void precessJulian(double epochin,  double  rain,  double  decin, 
++                   double epochout, double *raout, double *decout);
++void precessJulianWithProperMotion
++   (double epochin,  double  rain,  double  decin, 
++    double epochout, double *raout, double *decout, 
++    double pmain, double pmdin, double pin, double vin, 
++    double *rapm, double *decpm);
++void
++julianToBesselianFKCorrection(double ra, double dec, double xmag, double tobs, 
++                              double *corra, double *corrd, double *corrpa, 
++                              double *corrpd);
++void
++besselianToJulianFKCorrection(double ain, double d, double dmag, double epoch, 
++                              double *corra, double *corrd, double *corrpa, 
++                              double *corrpd);
++
++int ccalc(struct COORD *from, struct COORD *to, char *longprec, char *latprec);
++int degreeToDMS(double deg, int prec, int *neg, int *d, int *m, double *s);
++int degreeToHMS(double deg, int prec, int *neg, int *h, int *m, double *s);
++int degreeToSex(double lon, double lat, char *lonstr, char *latstr);
++int sexToDegree(char *cra, char *cdec, double *ra, double *dec);
++int parseCoordinateString(char *cmd, char *lonstr, char *latstr, 
++	                  char *csys, char *cfmt, char *epoch);
++
++double roundValue(double value, int precision);
+ 
+ 
+ #define ISIS_COORD_LIB
+--- a/lib/src/coord/sexToDecimalDegree.c
++++ b/lib/src/coord/sexToDecimalDegree.c
+@@ -7,7 +7,7 @@
+ #define  FALSE   0
+ #define  TRUE  !FALSE
+ 
+-void getSubstrings();
++void getSubstrings(char *string, char **subst, int *nsub);
+ int checkFormat(char *);
+ 
+ 
+--- a/lib/src/svc/svc.h
++++ b/lib/src/svc/svc.h
+@@ -47,7 +47,7 @@ int svc_command(int svc, char *cmdstr);
+ char *svc_value(char *ref);
+ int svc_getargs (char *cmd, char **cmdv);
+ void svc_sigset();
+-void svc_sighandler();
++void svc_sighandler(int sig);
+ SVC *svc_struct(char *instr);
+ char *svc_stripblanks(char *ptr, int len, int quotes);
+ int svc_free(SVC *svc);
+--- a/util/Exec/mExec.c
++++ b/util/Exec/mExec.c
+@@ -33,6 +33,8 @@ Version  Developer        Date     Change
+ #include <math.h>
+ #include <time.h>
+ 
++#include "filePath.h"
++
+ #define MAXLEN   4096
+ #define BUFSIZE 32769
+ #define MAXHDR  80000
+@@ -51,9 +53,7 @@ char *mktemp       (char *template);
+ int   debugCheck   (char *debugStr);
+ 
+ char *url_encode   ();
+-char *svc_value    ();
+ char *keyword_value();
+-char *filePath     ();
+ int   printerr     (char *str);
+ int   stradd       (char *header, char *card);
+ int   FITSerror    (char *fname, int status);

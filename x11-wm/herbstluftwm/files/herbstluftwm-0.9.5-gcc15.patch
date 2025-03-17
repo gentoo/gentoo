@@ -1,0 +1,32 @@
+https://github.com/herbstluftwm/herbstluftwm/issues/1612
+https://bugs.gentoo.org/937529
+
+From 5e4941c2aa12102cf86c8a69b65c7fa9086f50d6 Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Tue, 11 Mar 2025 01:13:33 +0200
+Subject: [PATCH] Add #include <stdint.h> to fix building with gcc 15
+
+With gcc 15, the C++ Standard Library no longer includes other headers
+that were internally used by the library. In herbstluftwm's case the
+missing header is <stdint.h>
+
+Downstream Gentoo bug: https://bugs.gentoo.org/937529
+
+Closes: #1612
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ src/xconnection.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/xconnection.cpp b/src/xconnection.cpp
+index e2129db35..df77571e6 100644
+--- a/src/xconnection.cpp
++++ b/src/xconnection.cpp
+@@ -7,6 +7,7 @@
+ #include <X11/extensions/Xrender.h>
+ #include <fcntl.h>
+ #include <unistd.h>
++#include <stdint.h>
+ #include <climits>
+ #include <cstring>
+ #include <iostream>

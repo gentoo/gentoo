@@ -27,7 +27,7 @@ REQUIRED_USE="abi_x86_32? ( opengl )"
 RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
 	media-libs/alsa-lib:0=
-	media-video/ffmpeg:=[vorbis?,vpx?,x264?,mp3?,theora?]
+	media-video/ffmpeg:=[vorbis?,vpx?,x264?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
@@ -36,6 +36,7 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	jack? ( virtual/jack )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
+	mp3? ( || ( media-video/ffmpeg[lame(-)] media-video/ffmpeg[mp3(-)] ) )
 	pulseaudio? ( media-libs/libpulse )
 	v4l? ( media-libs/libv4l )
 "
@@ -43,7 +44,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
 pkg_pretend() {
-	if [[ ${ABI} == amd64 ]] ; then
+	if use amd64 && ! use abi_x86_32 ; then
 		einfo "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
 		einfo "When added 32bit GLInject libraries are also included. This is"
 		einfo "required if you want to use OpenGL recording on 32bit applications."

@@ -29,6 +29,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	>=dev-cpp/asio-1.22
+	<dev-cpp/asio-1.33
 	dev-libs/check
 "
 

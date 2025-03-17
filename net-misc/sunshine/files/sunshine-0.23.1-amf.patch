@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/950686
+https://github.com/LizardByte/Sunshine/commit/7dd836dab63e15db54f18ed2b64cb394aa30c308#diff-6b2f0a449fdefd8930e23ef0dcd752beec69242e1303d77653f047c5e0766385
+
+diff --git a/src/config.cpp b/src/config.cpp
+index 6a9e1cec..366e2b2a 100644
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -100,6 +100,9 @@ namespace config {
+   #define AMF_VIDEO_ENCODER_CABAC 1
+   #define AMF_VIDEO_ENCODER_CALV 2
+ #else
++  #ifdef _GLIBCXX_USE_C99_INTTYPES
++    #undef _GLIBCXX_USE_C99_INTTYPES
++  #endif
+   #include <AMF/components/VideoEncoderAV1.h>
+   #include <AMF/components/VideoEncoderHEVC.h>
+   #include <AMF/components/VideoEncoderVCE.h>

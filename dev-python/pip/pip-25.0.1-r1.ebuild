@@ -6,11 +6,11 @@ EAPI=8
 # please bump dev-python/ensurepip-pip along with this package!
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( pypy3 python3_{10..13} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_11 )
+PYTHON_TESTED=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit bash-completion-r1 distutils-r1
+inherit distutils-r1 shell-completion
 
 DESCRIPTION="The PyPA recommended tool for installing Python packages"
 HOMEPAGE="
@@ -76,6 +76,8 @@ python_prepare_all() {
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
 		# prepare to unbundle dependencies
 		"${FILESDIR}/pip-25.0.1-unbundle.patch"
+		# https://github.com/pypa/pip/pull/13272
+		"${FILESDIR}/${P}-scripttest-2.patch"
 	)
 
 	distutils-r1_python_prepare_all
@@ -137,7 +139,7 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
 				# unexpected tempfiles?
 				tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
@@ -169,7 +171,5 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	newbashcomp completion.bash pip
-
-	insinto /usr/share/zsh/site-functions
-	newins completion.zsh _pip
+	newzshcomp completion.zsh _pip
 }

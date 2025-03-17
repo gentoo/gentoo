@@ -16,7 +16,7 @@ HOMEPAGE="https://kdevelop.org/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

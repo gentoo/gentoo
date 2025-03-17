@@ -1,6 +1,11 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-03-04)
 # this target has support for sanitizers
 sys-devel/gcc -sanitize
@@ -54,6 +59,7 @@ media-libs/libass libunibreak
 # WANG Xuerui <xen0n@gentoo.org> (2024-09-27)
 # media-libs/libilbc needs porting
 media-video/ffmpeg libilbc
+media-video/ffmpeg-compat libilbc
 net-analyzer/wireshark ilbc
 net-libs/pjproject ilbc
 net-misc/asterisk ilbc
@@ -252,6 +258,7 @@ app-cdr/brasero tracker
 dev-cpp/libcmis man
 media-libs/opencv tesseract
 media-video/ffmpeg libtesseract
+media-video/ffmpeg-compat libtesseract
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-auth/sssd isn't keyworded here yet

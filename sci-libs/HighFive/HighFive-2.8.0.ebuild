@@ -13,9 +13,9 @@ DESCRIPTION="Header-only C++ interface for libhdf5"
 HOMEPAGE="https://github.com/BlueBrain/HighFive"
 SRC_URI="https://github.com/BlueBrain/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
 LICENSE="Boost-1.0"
 SLOT="0"
+KEYWORDS="amd64 ~x86"
 IUSE="mpi test"
 RESTRICT="!test? ( test )"
 

@@ -24,7 +24,7 @@ LICENSE+="
 	MPL-2.0 Unicode-3.0 Unicode-DFS-2016
 " # crates
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
@@ -91,9 +91,6 @@ src_prepare() {
 
 src_configure() {
 	export OPENSSL_NO_VENDOR=1
-
-	# bug #938847 (TODO?: should probably be an eclass default for musl)
-	use elibc_musl && RUSTFLAGS+=" -C target-feature=-crt-static"
 
 	# https://github.com/rust-lang/stacker/issues/79
 	use s390 && ! is-flagq '-march=*' &&

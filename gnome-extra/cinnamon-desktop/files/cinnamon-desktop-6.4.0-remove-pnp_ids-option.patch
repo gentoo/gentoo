@@ -1,0 +1,193 @@
+From 4d3e44fb3b6add51a46cfce34f3194f3a20b3b1a Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Sat, 7 Dec 2024 16:38:18 -0500
+Subject: [PATCH] Remove the pnp_ids configuration option (unused as of
+ 913198430f27852544f9443a250421168d3d4466)
+
+---
+ debian/rules                    |  3 +-
+ libcinnamon-desktop/meson.build |  7 ---
+ libcinnamon-desktop/pnp.ids     | 75 ---------------------------------
+ meson.build                     | 21 ---------
+ meson_options.txt               |  2 -
+ 5 files changed, 1 insertion(+), 107 deletions(-)
+ delete mode 100644 libcinnamon-desktop/pnp.ids
+
+diff --git a/debian/rules b/debian/rules
+index 22dfd1d3..46173c2f 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -9,8 +9,7 @@ export DPKG_GENSYMBOLS_CHECK_LEVEL = 2
+ 
+ override_dh_auto_configure:
+ 	dh_auto_configure -- \
+-		--buildtype=debug \
+-		-Dpnp_ids=/usr/share/hwdata/pnp.ids
++		--buildtype=debug
+ 
+ override_dh_strip:
+ 	dh_strip -Xdesktop -Xcinnamon --dbg-package=libcvc-dbg
+diff --git a/libcinnamon-desktop/meson.build b/libcinnamon-desktop/meson.build
+index 23e6dedd..0f548fa4 100644
+--- a/libcinnamon-desktop/meson.build
++++ b/libcinnamon-desktop/meson.build
+@@ -72,7 +72,6 @@ libcinnamon_desktop = shared_library('cinnamon-desktop',
+   include_directories: [ rootInclude ],
+   c_args: [
+     '-DG_LOG_DOMAIN="CinnamonDesktop"',
+-    '-DPNP_IDS="@0@"'.format(pnp_ids_path),
+     '-DXKB_BASE="@0@"'.format(xkb_base),
+   ],
+   dependencies: cinnamon_deps,
+@@ -96,12 +95,6 @@ pkgconfig.generate(
+   variables: [ 'exec_prefix=${prefix}'],
+ )
+ 
+-if pnp_ids_install_internal
+-  install_data('pnp.ids',
+-    install_dir: pnp_ids_path,
+-  )
+-endif
+-
+ cdesktop_gir = gnome.generate_gir(libcinnamon_desktop,
+   sources: 'cdesktop-enums.h',
+   namespace: 'CDesktopEnums',
+diff --git a/libcinnamon-desktop/pnp.ids b/libcinnamon-desktop/pnp.ids
+deleted file mode 100644
+index 70c10bb4..00000000
+--- a/libcinnamon-desktop/pnp.ids
++++ /dev/null
+@@ -1,75 +0,0 @@
+-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+-<head>
+-<title>hwdata.git - Hardware Database, including Monitors, pci.ids, usb.ids, and video cards</title>
+-<meta name='generator' content='cgit v0.9.1'/>
+-<meta name='robots' content='index, nofollow'/>
+-<link rel='stylesheet' type='text/css' href='/cgit-data/cgit.css'/>
+-<link rel='alternate' title='Atom feed' href='http://git.fedorahosted.org/cgit/hwdata.git/atom/?h=master' type='application/atom+xml'/>
+-</head>
+-<body>
+-<div id='cgit'><table id='header'>
+-<tr>
+-<td class='logo' rowspan='2'><a href='/cgit/'><img src='/cgit-data/cgit.png' alt='cgit logo'/></a></td>
+-<td class='main'><a href='/cgit/'>index</a> : <a title='hwdata.git' href='/cgit/hwdata.git/'>hwdata.git</a></td><td class='form'><form method='get' action=''>
+-<select name='h' onchange='this.form.submit();'>
+-<option value='RHEL4'>RHEL4</option>
+-<option value='RHEL5'>RHEL5</option>
+-<option value='RHEL6'>RHEL6</option>
+-<option value='RHEL7'>RHEL7</option>
+-<option value='master' selected='selected'>master</option>
+-<option value='rhel5'>rhel5</option>
+-</select> <input type='submit' name='' value='switch'/></form></td></tr>
+-<tr><td class='sub'>Hardware Database, including Monitors, pci.ids, usb.ids, and video cards</td><td class='sub right'>Karsten Hopp</td></tr></table>
+-<table class='tabs'><tr><td>
+-<a class='active' href='/cgit/hwdata.git/'>summary</a><a href='/cgit/hwdata.git/refs/'>refs</a><a href='/cgit/hwdata.git/log/'>log</a><a href='/cgit/hwdata.git/tree/'>tree</a><a href='/cgit/hwdata.git/commit/'>commit</a><a href='/cgit/hwdata.git/diff/'>diff</a><a href='/cgit/hwdata.git/stats/'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/hwdata.git/log/'>
+-<select name='qt'>
+-<option value='grep'>log msg</option>
+-<option value='author'>author</option>
+-<option value='committer'>committer</option>
+-<option value='range'>range</option>
+-</select>
+-<input class='txt' type='text' size='10' name='q' value=''/>
+-<input type='submit' value='search'/>
+-</form>
+-</td></tr></table>
+-<div class='content'><table summary='repository info' class='list nowrap'><tr class='nohover'><th class='left'>Branch</th><th class='left'>Commit message</th><th class='left'>Author</th><th class='left' colspan='2'>Age</th></tr>
+-<tr><td><a href='/cgit/hwdata.git/log/?h=RHEL4'>RHEL4</a></td><td><a href='/cgit/hwdata.git/commit/?h=RHEL4'>bump release and add changelog</a></td><td>Karsten Hopp</td><td colspan='2'><span class='age-years'>2 years</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/log/?h=RHEL5'>RHEL5</a></td><td><a href='/cgit/hwdata.git/commit/?h=RHEL5'>- update pci.ids, usb.ids</a></td><td>Karsten Hopp</td><td colspan='2'><span class='age-years'>2 years</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/log/?h=RHEL6'>RHEL6</a></td><td><a href='/cgit/hwdata.git/commit/?h=RHEL6'>updated pci.ids, usb.ids (#760014)</a></td><td>Karsten Hopp</td><td colspan='2'><span class='age-months'>13 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/log/?h=RHEL7'>RHEL7</a></td><td><a href='/cgit/hwdata.git/commit/?h=RHEL7'>update</a></td><td>Karsten Hopp</td><td colspan='2'><span class='age-months'>10 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/log/'>master</a></td><td><a href='/cgit/hwdata.git/commit/'>data files update</a></td><td>Michal Minar</td><td colspan='2'><span class='age-weeks'>4 weeks</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/log/?h=rhel5'>rhel5</a></td><td><a href='/cgit/hwdata.git/commit/?h=rhel5'>Merge commit 'origin/master'</a></td><td>Karsten Hopp</td><td colspan='2'><span class='age-years'>5 years</span></td></tr>
+-<tr class='nohover'><td colspan='4'>&nbsp;</td></tr><tr class='nohover'><th class='left'>Tag</th><th class='left'>Download</th><th class='left'>Author</th><th class='left' colspan='2'>Age</th></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.243-1'>hwdata-0.243-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.243-1.zip'>hwdata-0.243-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.243-1.tar.gz'>hwdata-0.243-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.243-1.tar.bz2'>hwdata-0.243-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Michal Minar</td><td colspan='2'><span class='age-weeks'>8 weeks</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.242-1'>hwdata-0.242-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.242-1.zip'>hwdata-0.242-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.242-1.tar.gz'>hwdata-0.242-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.242-1.tar.bz2'>hwdata-0.242-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Michal Minar</td><td colspan='2'><span class='age-months'>3 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.241-1'>hwdata-0.241-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.241-1.zip'>hwdata-0.241-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.241-1.tar.gz'>hwdata-0.241-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.241-1.tar.bz2'>hwdata-0.241-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Michal Minar</td><td colspan='2'><span class='age-months'>4 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.240-1'>hwdata-0.240-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.240-1.zip'>hwdata-0.240-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.240-1.tar.gz'>hwdata-0.240-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.240-1.tar.bz2'>hwdata-0.240-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Michal Minar</td><td colspan='2'><span class='age-months'>4 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.238-1'>hwdata-0.238-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.238-1.zip'>hwdata-0.238-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.238-1.tar.gz'>hwdata-0.238-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.238-1.tar.bz2'>hwdata-0.238-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Adam Jackson</td><td colspan='2'><span class='age-months'>7 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.237-1'>hwdata-0.237-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.237-1.zip'>hwdata-0.237-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.237-1.tar.gz'>hwdata-0.237-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.237-1.tar.bz2'>hwdata-0.237-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Adam Jackson</td><td colspan='2'><span class='age-months'>7 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.236-1'>hwdata-0.236-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.236-1.zip'>hwdata-0.236-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.236-1.tar.gz'>hwdata-0.236-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.236-1.tar.bz2'>hwdata-0.236-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Adam Jackson</td><td colspan='2'><span class='age-months'>7 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.235-1'>hwdata-0.235-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.235-1.zip'>hwdata-0.235-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.235-1.tar.gz'>hwdata-0.235-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.235-1.tar.bz2'>hwdata-0.235-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Adam Jackson</td><td colspan='2'><span class='age-months'>7 months</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.213.16-1'>hwdata-0.213.16-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.213.16-1.zip'>hwdata-0.213.16-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.213.16-1.tar.gz'>hwdata-0.213.16-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.213.16-1.tar.bz2'>hwdata-0.213.16-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Philip Knirsch</td><td colspan='2'><span class='age-years'>4 years</span></td></tr>
+-<tr><td><a href='/cgit/hwdata.git/tag/?id=hwdata-0.225-1'>hwdata-0.225-1</a></td><td><a href='/cgit/hwdata.git/snapshot/hwdata-0.225-1.zip'>hwdata-0.225-1.zip</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.225-1.tar.gz'>hwdata-0.225-1.tar.gz</a>&nbsp;&nbsp;<a href='/cgit/hwdata.git/snapshot/hwdata-0.225-1.tar.bz2'>hwdata-0.225-1.tar.bz2</a>&nbsp;&nbsp;</td><td>Adam Jackson</td><td colspan='2'><span class='age-years'>4 years</span></td></tr>
+-<tr class='nohover'><td colspan='4'><a href='/cgit/hwdata.git/refs/tags'>[...]</a></td></tr><tr class='nohover'><td colspan='4'>&nbsp;</td></tr><tr class='nohover'><th class='left'>Age</th><th class='left'>Commit message</th><th class='left'>Author</th><th class='left'>Files</th><th class='left'>Lines</th></tr>
+-<tr><td>2013-02-18</td><td><a href='/cgit/hwdata.git/commit/?id=5e931dd336e03c1029b2ae856298e450471f38dc'>data files update</a><a class='deco' href='/cgit/hwdata.git/commit/?id=5e931dd336e03c1029b2ae856298e450471f38dc'>HEAD</a><a class='branch-deco' href='/cgit/hwdata.git/log/'>master</a></td><td>Michal Minar</td><td>3</td><td>-3662/+5993</td></tr>
+-<tr><td>2013-01-18</td><td><a href='/cgit/hwdata.git/commit/?id=ab16cd38b8c676c69b4e2329d9d36d0f3899dae4'>updated text of GPLv2 file</a></td><td>Michal Minar</td><td>1</td><td>-21/+20</td></tr>
+-<tr><td>2013-01-18</td><td><a href='/cgit/hwdata.git/commit/?id=1eef266fb376a5208246c0b54da82b8fbe8475ad'>updated data files</a><a class='tag-deco' href='/cgit/hwdata.git/tag/?id=hwdata-0.243-1'>hwdata-0.243-1</a></td><td>Michal Minar</td><td>4</td><td>-511/+372</td></tr>
+-<tr><td>2012-12-07</td><td><a href='/cgit/hwdata.git/commit/?id=3ec4e33c01d479ed3cf4321a7b7f4dc91a79e970'>Updated data files</a><a class='tag-deco' href='/cgit/hwdata.git/tag/?id=hwdata-0.242-1'>hwdata-0.242-1</a></td><td>Michal Minar</td><td>4</td><td>-2235/+3545</td></tr>
+-<tr><td>2012-11-07</td><td><a href='/cgit/hwdata.git/commit/?id=1ce7e5ea843892755c43ee751f032c8c6e47137b'>updated spec</a><a class='tag-deco' href='/cgit/hwdata.git/tag/?id=hwdata-0.241-1'>hwdata-0.241-1</a></td><td>Michal Minar</td><td>1</td><td>-1/+4</td></tr>
+-<tr><td>2012-11-07</td><td><a href='/cgit/hwdata.git/commit/?id=4df2658e8024a019f5621d9c509a6ab2255ee85e'>updated pci.ids and out.txt</a><a class='tag-deco' href='/cgit/hwdata.git/tag/?id=hwdata-0.240-1'>hwdata-0.240-1</a></td><td>Michal Minar</td><td>2</td><td>-191/+1167</td></tr>
+-<tr><td>2012-10-31</td><td><a href='/cgit/hwdata.git/commit/?id=a7b95c1323b88cacc9ef51ab345a86449dbb965d'>added script for comparison of old and new pci.ids</a></td><td>Michal Minar</td><td>1</td><td>-0/+150</td></tr>
+-<tr><td>2012-09-26</td><td><a href='/cgit/hwdata.git/commit/?id=2f39fb805e3a861bd49f4524764104f2db0dab37'>update data files, fixed spec file</a></td><td>Michal Minar</td><td>4</td><td>-28/+58</td></tr>
+-<tr><td>2012-09-25</td><td><a href='/cgit/hwdata.git/commit/?id=9665c98dd34ab927772ce359e9ee9fbc0a549d97'>updated data files (pci.ids, oui.txt, usb.ids)</a></td><td>Michal Minar</td><td>4</td><td>-1839/+3261</td></tr>
+-<tr><td>2012-08-27</td><td><a href='/cgit/hwdata.git/commit/?id=3ab47e5247be12cb03df83682a6d1c1f5a716cff'>build: Don't depend on hwdata.spec for 'make install'</a></td><td>Colin Walters</td><td>1</td><td>-1/+1</td></tr>
+-<tr class='nohover'><td colspan='3'><a href='/cgit/hwdata.git/log/'>[...]</a></td></tr>
+-<tr class='nohover'><td colspan='4'>&nbsp;</td></tr><tr><th class='left' colspan='4'>Clone</th></tr>
+-<tr><td colspan='4'><a href='git://git.fedorahosted.org/hwdata.git'>git://git.fedorahosted.org/hwdata.git</a></td></tr>
+-<tr><td colspan='4'><a href='ssh://git.fedorahosted.org/git/hwdata.git'>ssh://git.fedorahosted.org/git/hwdata.git</a></td></tr>
+-<tr><td colspan='4'><a href='http://git.fedorahosted.org/git/hwdata.git'>http://git.fedorahosted.org/git/hwdata.git</a></td></tr>
+-</table></div> <!-- class=content -->
+-<div class='footer'>generated  by cgit v0.9.1 at 2013-03-16 18:07:15 (GMT)</div>
+-</div> <!-- id=cgit -->
+-</body>
+-</html>
+diff --git a/meson.build b/meson.build
+index 8243a5d5..4b16875c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -63,20 +63,6 @@ use_alsa = get_option('alsa')
+ xkb_base = xkbconf.get_variable(pkgconfig: 'xkb_base')
+ iso_codes_prefix = iso_codes.get_pkgconfig_variable('prefix')
+ 
+-# Path to the pnp.ids file -- to know if we use one shipped with another
+-# package, or an internal file
+-
+-pnp_ids_path = get_option('pnp_ids')
+-pnp_ids_install_internal = (pnp_ids_path == '')
+-
+-if pnp_ids_install_internal
+-  # Default value
+-  pnp_ids_path = join_paths(get_option('datadir'), 'libcinnamon-desktop')
+-  pnp_ids_abspath = join_paths(get_option('prefix'), pnp_ids_path)
+-else
+-  pnp_ids_abspath = pnp_ids_path
+-endif
+-
+ ################################################################################
+ # Config
+ 
+@@ -113,12 +99,6 @@ subdir('libcinnamon-desktop')
+ subdir('libcvc')
+ subdir('schemas')
+ 
+-
+-pnp_message = '@0@: @1@'.format(
+-  ''+(pnp_ids_install_internal ? 'internal' : 'system'),
+-  pnp_ids_abspath
+-)
+-
+ message('\n'.join([
+   '',
+   '        prefix:                       ' + get_option('prefix'),
+@@ -133,7 +113,6 @@ message('\n'.join([
+   '        compiler:                     ' + cc.get_id(),
+   '        debugging support:            ' + get_option('buildtype'),
+   '        Use *_DISABLE_DEPRECATED:     @0@'.format(get_option('deprecation_warnings')),
+-  '        Use PNP files:                ' + pnp_message,
+   '        Use ALSA:                     ' + '@0@'.format(use_alsa),
+   '        systemd:                      @0@'.format(systemd.found()),
+   '',
+diff --git a/meson_options.txt b/meson_options.txt
+index e0ad4d3a..612c3e39 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,7 +1,5 @@
+ option('deprecation_warnings', type: 'boolean', value: false,
+        description: 'Show compiler warnings about deprecated features')
+-option('pnp_ids', type: 'string',  value: '',
+-       description: 'Specify the path to pnp.ids (default is an internal copy)')
+ option('alsa', type: 'boolean', value: false,
+        description: 'ALSA support')
+ option('systemd',

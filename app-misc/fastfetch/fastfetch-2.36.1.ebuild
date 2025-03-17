@@ -15,12 +15,12 @@ if [[ ${PV} == *9999 ]]; then
 	[[ "${EGIT_BRANCH}" == "" ]] && die "Please set a git branch"
 else
 	SRC_URI="https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm elf gnome imagemagick opencl opengl osmesa pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
+IUSE="X chafa dbus ddcutil drm elf gnome imagemagick opencl opengl pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
@@ -44,7 +44,6 @@ RDEPEND="
 		media-libs/libglvnd[X?]
 		X? ( x11-libs/libX11 )
 	)
-	osmesa? ( media-libs/mesa[osmesa] )
 	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
 	vulkan? (
@@ -90,6 +89,7 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DENABLE_OSMESA=no
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
@@ -109,7 +109,6 @@ src_configure() {
 		-DENABLE_IMAGEMAGICK6=${fastfetch_enable_imagemagick6}
 		-DENABLE_IMAGEMAGICK7=${fastfetch_enable_imagemagick7}
 		-DENABLE_OPENCL=$(usex opencl)
-		-DENABLE_OSMESA=$(usex osmesa)
 		-DENABLE_PULSE=$(usex pulseaudio)
 		-DENABLE_SQLITE3=$(usex sqlite)
 		-DENABLE_VULKAN=$(usex vulkan)

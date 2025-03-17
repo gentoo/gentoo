@@ -33,6 +33,116 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Unmaintained.  Last release in 2015, missing tests in sdist and not
+# tagged on GitHub.  Not marked for py3.13.  No reverse dependencies.
+# Removal on 2025-04-16.  Bug #951493.
+dev-python/simplebayes
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
+>=xfce-base/libxfce4ui-4.21
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# A "forever beta" wrapper over dev-python/requests, with no tests,
+# and dead for 9 years already.  Finally, no reverse dependencies left.
+# Removal on 2025-04-16.  Bug #951492.
+dev-python/ssl-fetch
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# The package was broken from day one, assigned to python@ team
+# and the actual maintainer has ignored the bug report from day one.
+# No reverse dependencies.
+# Removal on 2025-04-16.  Bug #942776.
+dev-python/django-bootstrap5
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Fragile package with no reverse dependencies.  Currently broken with
+# all dev-python/beartype versions in Gentoo.
+# Removal on 2025-04-16.  Bug #951491.
+dev-python/spdx-tools
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Last release in 2021, aimed at Python 3.9.  Test suite is broken with
+# Python 3.13.  No reverse dependencies.
+# Removal on 2025-04-16.  Bug #951490.
+dev-python/bitvector
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# sys-cluster/pacemaker is not really maintained in Gentoo.  It is
+# multiple versions behind, does not support Python 3.11 and has a bunch
+# of other problems reported.  sys-cluster/crmsh is its only
+# unconditional dependency.
+# Removal on 2025-04-16.  Bug #897290.
+sys-cluster/crmsh
+sys-cluster/pacemaker
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# The package has not been touched by the author since it's re-import
+# in 2022.  It uses legacy distutils-r1 build and still requires Python
+# 3.10.  It has no reverse dependencies.
+# Removal on 2025-04-16.  Bug #897196.
+sci-chemistry/ParmEd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-17)
+# Database migration issues on upgrade, bug #951486
+>=app-office/kmymoney-5.1.92
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-15)
+# EAPI=7, uses deprecated Go eclasses. Isn't maintained in Gentoo
+# since 2019, with awaiting version bump (upstream is still active).
+# Has open security vulnerabilities.
+# Removal on 2025-04-14.  Bugs #951417, #631076, #679948, #695310,
+# #771051, #844727, #880151, #908590, #948207, #813702, #866356.
+sys-cluster/teleport
+
+# Sam James <sam@gentoo.org> (2025-03-13)
+# Causes build failures in reverse dependencies (bug #951062, bug #951120)
+=dev-util/spirv-headers-1.4.304.0-r1
+=dev-util/spirv-llvm-translator-15.0.10-r1
+=dev-util/spirv-llvm-translator-16.0.10-r1
+=dev-util/spirv-llvm-translator-17.0.10-r1
+=dev-util/spirv-llvm-translator-18.1.10-r1
+=dev-util/spirv-llvm-translator-19.1.5-r1
+
+# Sam James <sam@gentoo.org> (2025-03-09)
+# Obsolete in favour of dev-lang/ada-bootstrap. Using sys-devel/gcc[ada]
+# should now Just Work. Removal on 2025-04-10.
+dev-lang/gnat-gpl
+
+# Sam James <sam@gentoo.org> (2025-03-09)
+# Breaks distutils.ccompiler with a lot of fallout. bug #950978 and
+# many others.
+=dev-python/setuptools-75.9.0
+=dev-python/setuptools-75.9.1
+=dev-python/setuptools-76.0.0
+=dev-python/ensurepip-setuptools-75.9.0
+=dev-python/ensurepip-setuptools-75.9.1
+=dev-python/ensurepip-setuptools-76.0.0
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-08)
+# EAPI=7. Broken CLI for packages.g.o.
+# Removal on 2025-04-07.
+app-portage/pgo
+
+# Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2025-03-08)
+# User services is merged and released in openrc-0.60, this fork
+# is now unmaintained and superseded.
+# Removal on 2025-04-08. Bug #950367
+sys-apps/openrc-navi
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
+# No more revdeps after kde-apps/knotes last-rites and Gear 24.08.3 cleanup.
+# Removal on 2025-03-31.
+kde-apps/akonadi-notes
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
+# Downstream-split fallback package for KF5-based revdeps without any
+# revdeps left. Removal on 2025-03-31.
+kde-apps/kdesdk-thumbnailers-common
+media-libs/ksanecore-common
+net-misc/kio-zeroconf-common
+
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
@@ -157,13 +267,6 @@ dev-python/pyside6-tools
 # Removal on 2025-03-18.
 sci-electronics/eagle
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-16)
-# KF5/Qt5 based and no signs of porting or even life upstream.
-# kde-frameworks/kcalendarcore:5 has no more revdeps after this.
-# Removal on 2025-03-16.
-app-office/calligraplan
-kde-frameworks/kcalendarcore:5
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-16)
 # Discontinued, please use xournal++ instead.
 # Removal on 2025-03-16. Bug 948200.
@@ -204,41 +307,9 @@ app-text/fictionup
 # Removal on 2025-03-16.
 app-emulation/vkd3d
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
-# Last release 10 years ago, dead upstream, depends on Qt5, no one else
-# packages this. Removal on 2025-03-14.
-x11-misc/kaqaz
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
-# Depends on deprecated Qt5Script, gone closed-source upstream, multiple
-# open bugs #912829, #913106, #922304, #922306, #926039, #935772, #935887,
-# no response from maintainer. Removal on 2025-03-14.
-net-analyzer/ostinato
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-12)
-# Last release from 2021 even if not yet dead upstream; however completely
-# unmaintained in Gentoo, with the ensuing multiple longstanding bugs
-# #832614, #866935, #895806, #915790, #944379, #945060; ebuild still based
-# on EAPI-7, USE=javascript depending on deprecated Qt5Script, USE=qt5
-# blocking qt5-removal, etc. This package was already problematic during
-# transition from Qt4 to Qt5, I will not deal with it this time.
-# Removal on 2025-03-14.
-net-p2p/eiskaltdcpp
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
-
-# Ionen Wolkens <ionen@gentoo.org> (2025-02-11)
-# Fails to build with >=gcc14 and >=clang16 (Modern C) and tests fail
-# among several other accumulating issues.  Hasn't received a release
-# since 2013 and snapshots been difficult due to upstream often doing
-# refactoring leading to various runtime regressions, and testing the
-# state downstream is not obvious (current snapshot has some runtime
-# issues too).  Re-adding could be considered if there is ever a proper
-# release.  Recommend using games-fps/darkplaces instead.
-# Removal on 2025-03-13. Bugs #931506, #926463, #919237, #908709, ...
-games-fps/quakeforge
 
 # Matt Jolly <kangie@gentoo.org> (2025-02-10)
 # Rust ebuilds are migrating to use RPATH/RUNPATH to find their libraries.
@@ -274,12 +345,6 @@ games-fps/quakeforge
 # Suspicious subslot bump, causing humongous rebuilds.
 # https://bugs.gentoo.org/949414
 =dev-cpp/cpp-httplib-0.18.6
-
-# Mike Pagano <mpagano@gentoo.org> (2025-02-07)
-# Last release 3 years ago, no version compiles; ours or upstreams.
-# Ack from maintainer. Driver is available in the Linux Kernel
-# Removal on 2025-03-07. Bug: 949318
-net-misc/AQtion
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
@@ -421,82 +486,13 @@ app-emulation/virtualbox-kvm
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
 
-# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
-# New major ffmpeg version. Tracker bug #928905.
->=media-video/ffmpeg-7.0
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
->=dev-lang/ocaml-5
-dev-ml/sexplib0:0/0.17
 dev-ml/ocaml_intrinsics:0/0.17
-dev-ml/ocaml_intrinsics_kernel:0/0.17
-dev-ml/base:0/0.17
-dev-ml/fieldslib:0/0.17
-dev-ml/stdio:0/0.17
->=dev-ml/ocaml-compiler-libs-0.17
->=dev-ml/ppxlib-0.32.1
-dev-ml/ppx_cold:0/0.17
-dev-ml/ppxlib_jane
-dev-ml/ppx_compare:0/0.17
-dev-ml/ppx_enumerate:0/0.17
-dev-ml/ppx_globalize:0/0.17
-dev-ml/ppx_sexp_conv:0/0.17
-dev-ml/ppx_hash:0/0.17
-dev-ml/ppx_base:0/0.17
-dev-ml/ppx_fields_conv:0/0.17
-dev-ml/ppx_fixed_literal:0/0.17
-dev-ml/ppx_here:0/0.17
-dev-ml/ppx_let:0/0.17
-dev-ml/ppx_sexp_message:0/0.17
-dev-ml/ppx_sexp_value:0/0.17
-dev-ml/ppx_assert:0/0.17
-dev-ml/jane-street-headers:0/0.17
-dev-ml/ppx_optcomp:0/0.17
-dev-ml/jst-config:0/0.17
-dev-ml/time_now:0/0.17
-dev-ml/ppx_inline_test:0/0.17
-dev-ml/ppx_bench:0/0.17
-dev-ml/splittable_random:0/0.17
-dev-ml/base_quickcheck:0/0.17
-dev-ml/ppx_stable:0/0.17
-dev-ml/ppx_string:0/0.17
-dev-ml/ppx_expect:0/0.17
-dev-ml/parsexp:0/0.17
-dev-ml/sexplib:0/0.17
-dev-ml/variantslib:0/0.17
-dev-ml/ppx_variants_conv:0/0.17
-dev-ml/ppx_log:0/0.17
-dev-ml/ppx_ignore_instrumentation:0/0.17
-dev-ml/typerep:0/0.17
-dev-ml/ppx_typerep_conv:0/0.17
-dev-ml/ppx_tydi:0/0.17
-dev-ml/capitalization:0/0.17
-dev-ml/ppx_string_conv:0/0.17
-dev-ml/ppx_stable_witness:0/0.17
-dev-ml/ppx_pipebang:0/0.17
-dev-ml/ppx_optional:0/0.17
-dev-ml/ppx_module_timer:0/0.17
-dev-ml/ppx_disable_unused_warnings:0/0.17
-dev-ml/ppx_custom_printf:0/0.17
-dev-ml/bin_prot:0/0.17
-dev-ml/ppx_bin_prot:0/0.17
-dev-ml/ppx_jane:0/0.17
-dev-ml/gel:0/0.17
-dev-ml/ppx_diff:0/0.17
-dev-ml/int_repr:0/0.17
-dev-ml/base_bigstring:0/0.17
-dev-ml/core:0/0.17
-dev-ml/uopt:0/0.17
-dev-ml/core_kernel:0/0.17
-dev-ml/timezone:0/0.17
-dev-ml/sexp_pretty:0/0.17
-dev-ml/expect_test_helpers_core:0/0.17
-dev-ml/core_unix:0/0.17
 dev-ml/async_kernel:0/0.17
 dev-ml/async_unix:0/0.17
 dev-ml/protocol_version_header:0/0.17
@@ -505,8 +501,6 @@ dev-ml/async_log:0/0.17
 dev-ml/textutils:0/0.17
 dev-ml/async:0/0.17
 >=dev-ml/labltk-8.06.14
-dev-ml/patience_diff:0/0.17
->=dev-ml/ppx_deriving-6.0.2
 dev-ml/ppx_js_style:0/0.17
 >=dev-ml/camlp4-5
 dev-ml/textutils_kernel:0/0.17

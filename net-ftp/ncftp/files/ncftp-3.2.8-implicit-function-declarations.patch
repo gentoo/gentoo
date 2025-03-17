@@ -1,0 +1,42 @@
+aclocal.m4 contains missing headers
+
+https://bugs.gentoo.org/875458
+https://bugs.gentoo.org/921487
+https://bugs.gentoo.org/926491
+
+--- a/autoconf_local/aclocal.m4
++++ b/autoconf_local/aclocal.m4
+@@ -3341,7 +3341,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 		 
+-			main(int argc, char **argv)
++			int main(int argc, char **argv)
+ 			{
+ 				/* Note:  don't actually call readline,
+ 				 * since it may block;
+@@ -5107,6 +5107,7 @@
+ 		/* includes */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef HAVE_NCURSES_H
+ #	define NCURSES_OPAQUE 0
+@@ -5139,7 +5139,7 @@
+ #endif
+ 
+  
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+ 	/* Note:  don't actually call curses, since it may block;
+ 	 * We just want to see if it (dynamic) linked in okay.
+@@ -6531,6 +6531,7 @@
+ 	AC_CACHE_CHECK(whether setvbuf arguments are reversed,
+ 	  ac_cv_func_setvbuf_reversed,
+ 	[AC_TRY_RUN([#include <stdio.h>
++	#include <stdlib.h>
+ 	/* If setvbuf has the reversed format, exit 0. */
+ 	main () {
+ 	  /* This call has the arguments reversed.

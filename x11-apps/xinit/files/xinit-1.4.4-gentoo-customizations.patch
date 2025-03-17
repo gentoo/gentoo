@@ -1,0 +1,59 @@
+From b9f484825ccb8902e0fe121ae8abafb51c81677d Mon Sep 17 00:00:00 2001
+From: Tomas Chvatal <scarabeus@gentoo.org>
+Date: Mon, 1 Nov 2010 16:46:36 +0100
+Subject: [PATCH app/xinit 1/2] Gentoo customizations.
+
+Signed-off-by: Tomas Chvatal <scarabeus@gentoo.org>
+---
+ xinitrc.in | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git ./xinitrc.in ./xinitrc.in
+index 9d9a78c..7391180
+--- ./xinitrc.in
++++ ./xinitrc.in
+@@ -11,8 +11,8 @@ xmodmap="@XMODMAP@"
+ 
+ userresources="$HOME/.Xresources"
+ usermodmap="$HOME/.Xmodmap"
+-sysresources="$xinitdir/.Xresources"
+-sysmodmap="$xinitdir/.Xmodmap"
++sysresources="$xinitdir/Xresources"
++sysmodmap="$xinitdir/Xmodmap"
+ 
+ # merge in defaults and keymaps
+ 
+@@ -42,15 +42,25 @@ fi
+ 
+ # start some nice programs
+ 
++if [ -n "`/etc/X11/chooser.sh`" ]; then
++	command="`/etc/X11/chooser.sh`"
++else
++	failsafe="yes"
++fi
++
+ if [ -d "$xinitdir"/xinitrc.d ] ; then
+-	for f in "$xinitdir/xinitrc.d"/?*.sh ; do
++	for f in "$xinitdir/xinitrc.d"/?* ; do
+ 		[ -x "$f" ] && . "$f"
+ 	done
+ 	unset f
+ fi
+ 
+-"$twm" &
+-"$xclock" -geometry 50x50-1+1 &
+-"$xterm" -geometry 80x50+494+51 &
+-"$xterm" -geometry 80x20+494-0 &
+-exec "$xterm" -geometry 80x66+0+0 -name login
++if [ -n "$failsafe" ]; then
++	"$twm" &
++	"$xclock" -geometry 50x50-1+1 &
++	"$xterm" -geometry 80x50+494+51 &
++	"$xterm" -geometry 80x20+494-0 &
++	exec "$xterm" -geometry 80x66+0+0 -name login
++else
++	exec $command
++fi
+-- 
+2.48.1

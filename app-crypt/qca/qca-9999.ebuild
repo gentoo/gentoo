@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 		>=dev-libs/openssl-1.1
 		dev-libs/pkcs11-helper
 	)
-	qt5? ( >=dev-qt/qtcore-5.14:5 )
+	qt5? ( dev-qt/qtcore:5 )
 	qt6? (
 		dev-qt/qtbase:6
 		dev-qt/qt5compat:6
@@ -77,9 +77,9 @@ src_configure() {
 			-DBUILD_TESTS=$(usex test)
 		)
 		if [[ ${MULTIBUILD_VARIANT} == qt6 ]]; then
-				mycmakeargs+=( -DBUILD_WITH_QT6=ON )
+			mycmakeargs+=( -DBUILD_WITH_QT6=ON )
 		else
-				mycmakeargs+=( -DBUILD_WITH_QT6=OFF )
+			mycmakeargs+=( -DBUILD_WITH_QT6=OFF )
 		fi
 		cmake_src_configure
 	}

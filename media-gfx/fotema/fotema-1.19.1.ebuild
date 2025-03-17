@@ -53,7 +53,7 @@ DEPEND+="
 	media-libs/libshumate:=
 	media-libs/opencv:=[contribdnn]
 	media-video/ffmpeg:=
-	sci-libs/onnx
+	sci-ml/onnx
 	sys-libs/libseccomp
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2

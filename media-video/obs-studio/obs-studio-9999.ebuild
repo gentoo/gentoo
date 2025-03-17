@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
-CEF_VERSION="cef_binary_6533_linux_x86_64"
-OBS_BROWSER_COMMIT="a76b4d8810a0a33e91ac5b76a0b1af2f22bf8efd"
-OBS_WEBSOCKET_COMMIT="eed8a49933786383d11f4868a4e5604a9ee303c6"
+CEF_VERSION="cef_binary_6533_linux"
+OBS_BROWSER_COMMIT="16ff0faef223959f6ab9dbfd4e8c6c1622a7991b"
+OBS_WEBSOCKET_COMMIT="63e04d20daf84391955580579e6576dfb373fa7f"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
@@ -37,7 +37,12 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
-SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}.tar.xz )"
+SRC_URI+="
+	browser? (
+		amd64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_x86_64.tar.xz )
+		arm64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_aarch64.tar.xz )
+	)
+"
 
 LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
@@ -191,7 +196,6 @@ src_prepare() {
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		$(usev browser -DCEF_ROOT_DIR=../${CEF_VERSION})
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AJA=OFF
 		-DENABLE_BROWSER=$(usex browser)
@@ -235,6 +239,8 @@ src_configure() {
 	fi
 
 	if use browser; then
+		use amd64 && mycmakeargs+=( -DCEF_ROOT_DIR=../${CEF_VERSION}_x86_64 )
+		use arm64 && mycmakeargs+=( -DCEF_ROOT_DIR=../${CEF_VERSION}_aarch64 )
 		mycmakeargs+=( -DENABLE_WHATSNEW=ON )
 	else
 		mycmakeargs+=( -DENABLE_WHATSNEW=OFF )

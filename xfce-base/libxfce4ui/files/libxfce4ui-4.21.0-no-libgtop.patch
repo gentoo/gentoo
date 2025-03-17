@@ -1,0 +1,27 @@
+From fc389428effe3d021bbbb4a2583714e93fe1bb8b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ga=C3=ABl=20Bonithon?= <gael@xfce.org>
+Date: Mon, 17 Mar 2025 11:58:24 +0100
+Subject: [PATCH] meson-build: Define missing dependencies when libgtop is
+ disbaled
+
+---
+ meson.build | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 9dc09459..ba0a90bb 100644
+--- a/meson.build
++++ b/meson.build
+@@ -111,6 +111,9 @@ if libgtop.found()
+   if gudev.found()
+     feature_cflags += '-DHAVE_GUDEV=1'
+   endif
++else
++  epoxy = dependency('', required: false)
++  gudev = dependency('', required: false)
+ endif
+ 
+ glade = dependency('gladeui-2.0', version: dependency_versions['glade'], required: get_option('glade'))
+-- 
+GitLab
+

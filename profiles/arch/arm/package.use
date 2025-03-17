@@ -5,4 +5,5 @@
 # Apply additional FFmpeg patches for efficient playback on some SoCs.
 media-tv/kodi soc
 media-video/ffmpeg libdrm soc
+media-video/ffmpeg-compat soc
 media-video/mpv soc

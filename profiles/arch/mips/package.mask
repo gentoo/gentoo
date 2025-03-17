@@ -1,10 +1,9 @@
-# Copyright 2006-2024 Gentoo Authors
+# Copyright 2006-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-08)
 # requires <llvm-18
 dev-lang/spidermonkey:102
-=sys-auth/polkit-123
 =dev-lang/rust-1.71.1
 =virtual/rust-1.71.1-r2
 

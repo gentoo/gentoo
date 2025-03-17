@@ -13,7 +13,7 @@ DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
 
 MY_P="systemd-${PV}"
-MUSL_PATCHSET="systemd-musl-patches-256.8"
+MUSL_PATCHSET="systemd-musl-patches-256.12"
 SRC_URI="https://github.com/systemd/systemd/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz
 	elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.tar.gz )"
 S="${WORKDIR}/${MY_P}"

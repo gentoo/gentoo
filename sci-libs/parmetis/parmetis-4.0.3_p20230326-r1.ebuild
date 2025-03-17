@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,13 @@ S="${WORKDIR}/ParMETIS-${COMMIT}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm64 ~loong ~riscv ~x86 ~amd64-linux"
 IUSE="examples openmp pcre"
 RESTRICT="mirror bindist"
 
 DEPEND="
 	sci-libs/gklib
-	>=sci-libs/metis-5.1.0-r5
+	>=sci-libs/metis-5.2.1-r2
 	virtual/mpi[fortran]
 	pcre? ( dev-libs/libpcre:= )
 "
@@ -62,7 +62,7 @@ src_install() {
 	dodoc manual/manual.pdf
 	if use examples; then
 		docinto examples
-		dodoc -r Graphs programs
+		dodoc -r graphs programs
 	fi
 
 	cat > ${PN}.pc <<-EOF

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -38,6 +38,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/cunla/fakeredis-py/pull/363
+		"${FILESDIR}/${P}-pypy.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# https://github.com/cunla/fakeredis-py/issues/320

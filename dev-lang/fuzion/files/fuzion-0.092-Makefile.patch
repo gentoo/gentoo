@@ -1,0 +1,28 @@
+--- a/Makefile
++++ b/Makefile
+@@ -35,6 +35,9 @@ FZJAVA = $(BUILD_DIR)/bin/fzjava
+ CLASSES_DIR = $(BUILD_DIR)/classes
+ CLASSES_DIR_LOGO = $(BUILD_DIR)/classes_logo
+ FUZION_BIN_SH = /bin/sh
++CC :=
++CFLAGS :=
++LDFLAGS :=
+ 
+ ifeq ($(FUZION_DEBUG_SYMBOLS),true)
+ 	JAVAC += -g
+@@ -1438,11 +1441,12 @@ ifeq ($(OS),Windows_NT)
+ 	-lMswsock -lAdvApi32 -lWs2_32
+ 	touch $(FUZION_RT)
+ else
+-	clang -Wall -Werror -O3 -shared -fPIC \
++	$(CC) -Wall -Werror -shared -fPIC \
+ 	-DFUZION_ENABLE_THREADS \
+-	-fno-trigraphs -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -std=c11 \
++	-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -std=c11 \
++	$(CFLAGS) $(LDFLAGS) \
+ 	$(BUILD_DIR)/include/posix.c $(BUILD_DIR)/include/shared.c -o $(BUILD_DIR)/lib/libfuzion.so
+-	cp $(BUILD_DIR)/lib/libfuzion.so $(BUILD_DIR)/lib/libfuzion.dylib
++#	cp $(BUILD_DIR)/lib/libfuzion.so $(BUILD_DIR)/lib/libfuzion.dylib
+ 	touch $(FUZION_RT)
+ endif
+ # NYI: eventuall link libgc

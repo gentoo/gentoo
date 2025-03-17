@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-ml/dune-3.11"
 
-PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-atomic.patch
+)
 
 src_prepare() {
 	sed -i \

@@ -18,7 +18,7 @@ else
 			-> vis-test-${VIS_TEST_COMMIT}.tar.gz
 		)
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 fi
 
 DESCRIPTION="Modern, legacy free, simple yet efficient vim-like editor"

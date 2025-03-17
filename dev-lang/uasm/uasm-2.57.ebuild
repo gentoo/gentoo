@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/build-fix.patch"
 	"${FILESDIR}/makefile-dep-fix-2.57.patch"
+	"${FILESDIR}/bool-fix.diff"
 )
 
 src_prepare() {
@@ -30,6 +31,8 @@ src_compile() {
 	append-cflags -fcommon
 	# BUG: https://github.com/Terraspace/UASM/issues/197
 	append-cflags -Wno-error=incompatible-pointer-types
+	# BUG: 951108
+	append-cflags -std=gnu17
 
 	emake -f Makefile-Linux-GCC-64.mak \
 		CC="$(tc-getCC)" \

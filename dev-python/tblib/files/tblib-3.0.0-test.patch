@@ -1,0 +1,35 @@
+diff --git a/tests/test_pickle_exception.py b/tests/test_pickle_exception.py
+index 5ff4679..53a9dce 100644
+--- a/tests/test_pickle_exception.py
++++ b/tests/test_pickle_exception.py
+@@ -29,6 +29,10 @@ class CustomError(Exception):
+     pass
+ 
+ 
++def strip_locations(tb_text):
++    return tb_text.replace('    ~~^~~\n', '').replace('    ^^^^^^^^^^^^^^^^^\n', '')
++
++
+ @pytest.mark.parametrize('protocol', [None, *list(range(1, pickle.HIGHEST_PROTOCOL + 1))])
+ @pytest.mark.parametrize('how', ['global', 'instance', 'class'])
+ def test_install(clear_dispatch_table, how, protocol):
+@@ -58,8 +62,8 @@ def test_install(clear_dispatch_table, how, protocol):
+     else:
+         raise AssertionError
+ 
+-    expected_format_exception = ''.join(format_exception(type(exc), exc, exc.__traceback__))
+-    print(expected_format_exception)
++    expected_format_exception = strip_locations(''.join(format_exception(type(exc), exc, exc.__traceback__)))
++
+     # Populate Exception.__dict__, which is used in some cases
+     exc.x = 1
+     exc.__cause__.x = 2
+@@ -88,7 +92,7 @@ def test_install(clear_dispatch_table, how, protocol):
+     if has_python311:
+         assert exc.__notes__ == ['note 1', 'note 2']
+ 
+-    assert expected_format_exception == ''.join(format_exception(type(exc), exc, exc.__traceback__))
++    assert expected_format_exception == strip_locations(''.join(format_exception(type(exc), exc, exc.__traceback__)))
+ 
+ 
+ @tblib.pickling_support.install

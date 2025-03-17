@@ -21,7 +21,7 @@ IUSE="+webui"
 
 BDEPEND="
 	app-arch/zip
-	dev-go/enumer
+	>=dev-go/enumer-1.5.11
 	dev-go/gox
 	>=dev-lang/go-1.21"
 COMMON_DEPEND="acct-group/vault

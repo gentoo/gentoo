@@ -194,8 +194,51 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	local known_xfail=(
+		# TODO: Gentoo-specific
+		# https://github.com/llvm/llvm-project/issues/124410
+		Dialect/SPIRV/IR/availability.mlir
+		Dialect/SPIRV/IR/target-env.mlir
+	)
+
+	case ${ABI} in
+		arm|ppc|x86)
+			known_xfail+=(
+				# MLIR is full of 64-bit assumptions, sigh
+				# https://github.com/llvm/llvm-project/issues/124541
+				Conversion/ConvertToSPIRV/func-signature-vector-unroll.mlir
+				Conversion/ConvertToSPIRV/vector-unroll.mlir
+				Conversion/MathToLibm/convert-to-libm.mlir
+				Conversion/MemRefToLLVM/memref-to-llvm.mlir
+				Conversion/VectorToLLVM/vector-to-llvm.mlir
+				Dialect/ArmSVE/legalize-for-llvm.mlir
+				Dialect/Bufferization/Transforms/one-shot-bufferize-pass-statistics.mlir
+				Dialect/GPU/transform-gpu.mlir
+				Dialect/LLVMIR/sroa-statistics.mlir
+				Dialect/Linalg/mesh-spmdization.mlir
+				Dialect/Linalg/vectorize-tensor-extract.mlir
+				Dialect/Math/polynomial-approximation.mlir
+				Dialect/MemRef/expand-strided-metadata.mlir
+				Dialect/MemRef/fold-memref-alias-ops.mlir
+				Dialect/MemRef/mem2reg-statistics.mlir
+				Dialect/Mesh/all-scatter-op-lowering.mlir
+				Dialect/Tensor/fold-tensor-subset-ops.mlir
+				Dialect/Tensor/tracking-listener.mlir
+				Dialect/Vector/canonicalize.mlir
+				Dialect/Vector/vector-bitcast-lowering-transforms.mlir
+				Dialect/Vector/vector-deinterleave-lowering-transforms.mlir
+				Dialect/Vector/vector-interleave-lowering-transforms.mlir
+				Dialect/Vector/vector-unroll-options.mlir
+				Pass/pipeline-stats-nested.mlir
+				Pass/pipeline-stats.mlir
+			)
+			;;
+	esac
+
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
+	local -x LIT_XFAIL="${known_xfail[*]}"
+	LIT_XFAIL=${LIT_XFAIL// /;}
 	cmake_build check-mlir
 }
 

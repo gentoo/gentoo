@@ -13,7 +13,7 @@ HOMEPAGE="https://bitheap.org/cram/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv x86"
 
 python_test() {
 	"${EPYTHON}" scripts/cram tests || die "Tests fail with ${EPYTHON}"

@@ -1,0 +1,24 @@
+Fix eautoreconf
+
+--- a/nebu/scripting/Makefile.am
++++ b/nebu/scripting/Makefile.am
+@@ -6,8 +6,6 @@ libscripting_a_SOURCES= \
+ libscripting_a_LIBADD= \
+ 	$(top_builddir)/lua/src/liblua.a \
+ 	$(top_builddir)/lua/src/lib/liblualib.a
+-	# @top_srcdir@/lua/src/liblua.a \
+-	# @top_srcdir@/lua/src/lib/liblualib.a
+ 
+ AM_CFLAGS = \
+ 	-I$(top_srcdir)/nebu/include/base \
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,7 +4,7 @@ bin_PROGRAMS = gltron
+ 
+ gltron_SOURCES = @top_srcdir@/src/gltron.c
+ 
+-gltron_LINK = $(CXX) -o $@
++gltron_LINK = $(CXX) $(LDFLAGS) -o $@
+ gltron_LDADD = \
+ 	src/game/libgame.a \
+ 	src/input/libinput.a \

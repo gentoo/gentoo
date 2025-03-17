@@ -11,7 +11,12 @@
 		<flag name="slang">Use <pkg>sys-libs/slang</pkg> instead of <pkg>sys-libs/ncurses</pkg>.</flag>
 	</use>
 	<upstream>
+		<maintainer status="active">
+			<email>yury@shurup.com</email>
+			<name>Yury V. Zaytsev</name>
+		</maintainer>
 		<remote-id type="github">MidnightCommander/mc</remote-id>
-		<bugs-to>https://midnight-commander.org/wiki/NewTicket</bugs-to>
+		<bugs-to>https://github.com/MidnightCommander/mc/issues</bugs-to>
+		<changelog>https://github.com/MidnightCommander/mc/blob/master/doc/NEWS</changelog>
 	</upstream>
 </pkgmetadata>

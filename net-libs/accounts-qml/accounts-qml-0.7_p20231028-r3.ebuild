@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ else
 		"
 		S="${WORKDIR}/${PN}-module-VERSION_${PV}"
 	fi
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QML bindings for accounts-qt and signond"

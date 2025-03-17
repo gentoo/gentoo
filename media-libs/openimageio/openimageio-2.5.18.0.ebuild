@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 TEST_OIIO_IMAGE_COMMIT="7e6d875542b5bc1b2974b7cbecee115365a36527"
 TEST_OEXR_IMAGE_COMMIT="d45a2d5a890d6963b94479c7a644440068c37dd2"
-inherit cmake flag-o-matic python-single-r1 toolchain-funcs virtualx
+inherit cmake flag-o-matic python-single-r1 virtualx
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
@@ -183,11 +183,6 @@ src_configure() {
 	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
 	# Even if there are no SIMD features selected, it seems like the code will turn on NEON support if it is available.
 	use arm64 && append-flags -flax-vector-conversions
-
-	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=118077
-	if tc-is-gcc && [[ $(gcc-major-version) -eq 15 ]]; then
-		append-flags -fno-early-inlining
-	fi
 
 	local mycmakeargs=(
 		-DVERBOSE="yes"

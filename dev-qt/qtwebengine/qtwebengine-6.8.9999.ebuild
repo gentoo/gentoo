@@ -24,6 +24,7 @@ IUSE="
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
+	test? ( widgets )
 "
 
 # dlopen: krb5, libva, pciutils, udev
@@ -170,13 +171,13 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(qt_feature pdfium qtpdf_build)
-		$(qt_feature qml qtpdf_quick_build)
-		$(qt_feature webdriver webenginedriver)
-		$(qt_feature widgets qtpdf_widgets_build)
+		$(use pdfium && qt_feature qml qtpdf_quick_build)
+		$(use pdfium && qt_feature widgets qtpdf_widgets_build)
 		$(usev pdfium -DQT_FEATURE_pdf_v8=ON)
 
 		-DQT_FEATURE_qtwebengine_build=ON
 		$(qt_feature qml qtwebengine_quick_build)
+		$(qt_feature webdriver webenginedriver)
 		$(qt_feature widgets qtwebengine_widgets_build)
 
 		$(cmake_use_find_package designer Qt6Designer)

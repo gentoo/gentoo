@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,7 @@ KEYWORDS="amd64"
 PATCHES=(
 	"${FILESDIR}/build-fix.patch"
 	"${FILESDIR}/makefile-dep-fix.patch"
+	"${FILESDIR}/bool-fix.diff"
 )
 
 src_prepare() {
@@ -29,6 +30,8 @@ src_compile() {
 	append-cflags -fcommon
 	# https://github.com/Terraspace/UASM/issues/197
 	append-cflags -Wno-error=incompatible-pointer-types
+	# BUG: 951108
+	append-cflags -std=gnu17
 
 	emake -f gccLinux64.mak \
 		CC="$(tc-getCC)" \

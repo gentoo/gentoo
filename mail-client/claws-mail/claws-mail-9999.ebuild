@@ -120,6 +120,7 @@ RDEPEND="${COMMONDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
+	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
 )
 
 src_prepare() {

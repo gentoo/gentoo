@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
-inherit toolchain-funcs
+inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
@@ -69,12 +69,15 @@ test_compiler() {
 src_configure() {
 	llvm_prepend_path "${LLVM_MAJOR}"
 
+	local install_prefix=${EPREFIX}
+	target_is_not_host && install_prefix+=/usr/${CTARGET}
+
 	# note: we need to do this before multilib kicks in since it will
 	# alter the CHOST
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
 		cxxabi=system-libcxxabi
-		cxxabi_incs="${EPREFIX}/usr/include/c++/v1"
+		cxxabi_incs="${install_prefix}/usr/include/c++/v1"
 	else
 		local gcc_inc="${EPREFIX}/usr/lib/gcc/${CHOST}/$(gcc-fullversion)/include/g++-v$(gcc-major-version)"
 		cxxabi=libsupc++
@@ -86,8 +89,8 @@ src_configure() {
 
 multilib_src_configure() {
 	if use clang; then
-		local -x CC=${CHOST}-clang
-		local -x CXX=${CHOST}-clang++
+		local -x CC=${CTARGET}-clang
+		local -x CXX=${CTARGET}-clang++
 		strip-unsupported-flags
 	fi
 
@@ -95,18 +98,29 @@ multilib_src_configure() {
 	local use_compiler_rt=OFF
 	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
-	# bootstrap: cmake is unhappy if compiler can't link to stdlib
-	local nolib_flags=( -nodefaultlibs -lc )
-	if ! test_compiler; then
-		if test_compiler "${nolib_flags[@]}"; then
-			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-			ewarn "${CXX} seems to lack runtime, trying with ${nolib_flags[*]}"
+	# Scenarios to consider:
+	#
+	# 1. Compiler test works with the default flags.
+	# 2. There is a runtime library, but no stdlib. In that case, leave the
+	#    LDFLAGS untouched, since there is no self-dependency in libc++.
+	# 3. There is no runtime library nor stdlib. In that case, overwrite the
+	#    LDFLAGS.
+	local nostdlib_flags=( -nostdlib --rtlib=compiler-rt -lc )
+	local nort_flags=( -nodefaultlibs -lc )
+	if ! test_compiler && ! test_compiler "${nostdlib_flags[@]}"; then
+		if test_compiler "${nort_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nort_flags[*]}"
+			ewarn "${CXX} seems to lack runtime, trying with ${nort_flags[*]}"
 		fi
 	fi
 
+	local install_prefix=${EPREFIX}
+	target_is_not_host && install_prefix+=/usr/${CTARGET}
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
+		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
+		-DCMAKE_INSTALL_PREFIX="${install_prefix}/usr"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES=libcxx
 		-DLLVM_INCLUDE_TESTS=OFF
@@ -118,7 +132,7 @@ multilib_src_configure() {
 		-DLIBCXX_CXX_ABI_INCLUDE_PATHS=${cxxabi_incs}
 		# we're using our own mechanism for generating linker scripts
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
-		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+		-DLIBCXX_HAS_MUSL_LIBC=$(llvm_cmake_use_musl)
 		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
 		-DLIBCXX_INSTALL_MODULES=ON
@@ -126,7 +140,16 @@ multilib_src_configure() {
 		# this is broken with standalone builds, and also meaningless
 		-DLIBCXXABI_USE_LLVM_UNWINDER=OFF
 	)
-
+	if is_crosspkg; then
+		# Needed to target built libc headers
+		local -x CFLAGS="${CFLAGS} -isystem ${ESYSROOT}/usr/${CTARGET}/usr/include"
+		mycmakeargs+=(
+			# Without this, the compiler will compile a test program
+			# and fail due to no builtins.
+			-DCMAKE_C_COMPILER_WORKS=1
+			-DCMAKE_CXX_COMPILER_WORKS=1
+		)
+	fi
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
@@ -160,6 +183,7 @@ multilib_src_install() {
 	# since we've replaced libc++.{a,so} with ldscripts, now we have to
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
+		target_is_not_host && into /usr/${CTARGET}
 		dolib.so lib/libc++_shared.so
 		use static-libs && dolib.a lib/libc++_static.a
 	fi

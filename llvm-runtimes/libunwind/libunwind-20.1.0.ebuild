@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
-inherit toolchain-funcs
+inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
@@ -54,8 +54,8 @@ multilib_src_configure() {
 	filter-lto
 
 	if use clang; then
-		local -x CC=${CHOST}-clang
-		local -x CXX=${CHOST}-clang++
+		local -x CC=${CTARGET}-clang
+		local -x CXX=${CTARGET}-clang++
 		strip-unsupported-flags
 	fi
 
@@ -73,8 +73,13 @@ multilib_src_configure() {
 	# See also https://github.com/llvm/llvm-project/issues/86#issuecomment-1649668826.
 	use debug || append-cppflags -DNDEBUG
 
+	local install_prefix="${EPREFIX}"
+	target_is_not_host && install_prefix+=/usr/${CTARGET}
+
 	local mycmakeargs=(
-		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
+		-DCMAKE_C_COMPILER_TARGET="${CTARGET}"
+		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
+		-DCMAKE_INSTALL_PREFIX="${install_prefix}/usr"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libunwind"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
@@ -91,6 +96,14 @@ multilib_src_configure() {
 		# avoid dependency on libgcc_s if compiler-rt is used
 		-DLIBUNWIND_USE_COMPILER_RT=${use_compiler_rt}
 	)
+	if is_crosspkg; then
+		mycmakeargs+=(
+			# Without this, the compiler will compile a test program
+			# and fail due to no builtins.
+			-DCMAKE_C_COMPILER_WORKS=1
+			-DCMAKE_CXX_COMPILER_WORKS=1
+		)
+	fi
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx"
@@ -109,7 +122,7 @@ multilib_src_configure() {
 			-DLIBCXX_ENABLE_STATIC=ON
 			-DLIBCXX_CXX_ABI=libcxxabi
 			-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
-			-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+			-DLIBCXX_HAS_MUSL_LIBC=$(llvm_cmake_use_musl)
 			-DLIBCXX_HAS_GCC_S_LIB=OFF
 			-DLIBCXX_INCLUDE_TESTS=OFF
 			-DLIBCXX_INCLUDE_BENCHMARKS=OFF

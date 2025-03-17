@@ -47,7 +47,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
 	>=media-libs/libplacebo-7.349.0:=[opengl?,vulkan?]
-	>=media-video/ffmpeg-6.1:=[encode,soc(-)?,threads,vaapi?,vdpau?]
+	>=media-video/ffmpeg-6.1:=[encode(+),soc(-)?,threads(+),vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -88,7 +88,7 @@ COMMON_DEPEND="
 	opengl? ( media-libs/libglvnd[X?] )
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
-	rubberband? ( media-libs/rubberband )
+	rubberband? ( media-libs/rubberband:= )
 	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/rsibreak/ https://userbase.kde.org/RSIBreak"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"

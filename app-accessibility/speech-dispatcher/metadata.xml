@@ -15,6 +15,9 @@
   <use>
     <flag name="espeak">Adds support for espeak-ng speech engine</flag>
     <flag name="flite">Adds support for flite speech engine</flag>
+    <flag name="pipewire">
+      Enables support for PipeWire. Recommended for latency related advantages if it works in your setup.
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">brailcom/speechd</remote-id>

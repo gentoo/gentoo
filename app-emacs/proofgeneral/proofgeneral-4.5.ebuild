@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,9 @@ KEYWORDS="amd64 ppc x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.4-desktop.patch
 	"${FILESDIR}"/${PN}-4.5-paths.patch
+	"${FILESDIR}"/${PN}-4.5-posix-no-which.patch
 )
+
 DOCS=( AUTHORS BUGS CHANGES COMPATIBILITY FAQ.md INSTALL README.md )
 SITEFILE="50${PN}-gentoo.el"
 

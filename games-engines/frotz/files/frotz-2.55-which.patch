@@ -1,0 +1,57 @@
+Remove which from Makefile
+https://bugs.gentoo.org/949843
+--- a/Makefile	2025-02-26 12:50:58.083970908 +0400
++++ b/Makefile	2025-02-26 12:51:26.363195573 +0400
+@@ -146,8 +146,8 @@
+ endif
+ 
+ # Determine what system we are on.
+-RANLIB ?= $(shell which ranlib)
+-AR ?= $(shell which ar)
++RANLIB ?= $(shell command -v ranlib)
++AR ?= $(shell command -v ar)
+ # For now, assume !windows == unix.
+ OS_TYPE ?= unix
+ UNAME_S := $(shell uname -s)
+@@ -175,12 +175,12 @@
+ PKGCONF_BIN ?= pkgconf
+ PKG_CONFIG_BIN ?= pkg-config
+ # If we don't have pkgconf", check if pkg-config is available.
+-ifneq ($(shell which $(PKGCONF_BIN)),)
++ifneq ($(shell command -v $(PKGCONF_BIN)),)
+ PKGCONF = $(PKGCONF_BIN)
+ else
+ $(warning *** Could not find $(PKGCONF_BIN).  Is $(PKG_CONFIG_BIN) available?)
+ # Check if pkg-config is available.
+-ifneq ($(shell which $(PKG_CONFIG_BIN)),)
++ifneq ($(shell command -v $(PKG_CONFIG_BIN)),)
+ $(warning *** Found $(PKG_CONFIG_BIN)!  Now proceeding normally.)
+ PKGCONF = $(PKG_CONFIG_BIN)
+ else
+@@ -332,7 +332,7 @@
+ # If not, make it clear that we're working from a release.
+ #
+ GIT_DIR ?= .git
+-ifneq ($(and $(wildcard $(GIT_DIR)),$(shell which git)),)
++ifneq ($(and $(wildcard $(GIT_DIR)),$(shell command -v git)),)
+ GIT_HASH = $(shell git rev-parse HEAD)
+ GIT_HASH_SHORT = $(shell git rev-parse --short=8 HEAD)
+ GIT_DATE = $(shell git show -s --format=%ci)
+@@ -476,7 +476,7 @@
+ 
+ owdos: $(DOS_BIN)
+ $(DOS_BIN): $(COMMON_DEFINES) $(HASH)
+-ifneq ($(shell which wmake),)
++ifneq ($(shell command -v wmake),)
+ 	wmake -f Makefile.ow
+ else
+ 	$(error wmake command not found.  Cannot make the DOS version)
+@@ -786,7 +786,7 @@
+ 
+ dist: $(NAME)-$(VERSION).tar.gz
+ frotz-$(VERSION).tar.gz:
+-ifneq ($(and $(wildcard $(GIT_DIR)),$(shell which git)),)
++ifneq ($(and $(wildcard $(GIT_DIR)),$(shell command -v git)),)
+ 	git archive --format=tgz --prefix $(NAME)-$(VERSION)/ HEAD -o $(NAME)-$(VERSION).tar.gz
+ 	@echo $(NAME)-$(VERSION).tar.gz created.
+ else

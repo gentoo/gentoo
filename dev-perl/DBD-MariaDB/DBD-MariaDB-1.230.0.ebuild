@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="MariaDB and MySQL driver for the Perl5 Database Interface (DBI)"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 IUSE="+mariadb mysql minimal"
 REQUIRED_USE="^^ ( mysql mariadb )"
 

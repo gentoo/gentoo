@@ -1,0 +1,39 @@
+Fold sed that injects LDFLAGS. Inject CFLAGS too.
+Remove hardcoded CFLAGS. Remove strip that previously was sidestepped
+by setting STRIP=true in ebuild
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -2,7 +2,6 @@
+ 
+ AR?=	ar
+ CC?=	cc
+-CFLAGS+=-g -Wall -Wpedantic -Wextra -Wno-unused-parameter -Werror
+ INSTALL?=install
+ LORDER?=lorder
+ TSORT?=tsort
+--- a/symon/Makefile
++++ b/symon/Makefile
+@@ -21,9 +21,8 @@
+ ${OBJS}: conf.h
+ 
+ symon: ${OBJS}
+-	${CC} -o $@ ${OBJS} ${LIBS}
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ ${OBJS} ${LIBS}
+ .ifndef DEBUG
+-	${STRIP} $@
+ .endif
+ 
+ clean:
+--- a/symux/Makefile
++++ b/symux/Makefile
+@@ -10,9 +10,8 @@
+ all: symux symux.cat8
+ 
+ symux: ${OBJS}
+-	${CC} -o $@ ${OBJS} ${LIBS}
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ ${OBJS} ${LIBS}
+ .ifndef DEBUG
+-	${STRIP} $@
+ .endif
+ 
+ clean:

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/communi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples qml test +uchardet"
 REQUIRED_USE="examples? ( qml )"
 RESTRICT="!test? ( test )"

@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,10 +11,10 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-IUSE="icu qml"
+IUSE="+gui icu qml"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[gui,icu=,network,xml]
+	~dev-qt/qtbase-${PV}:6[gui=,icu=,network,xml]
 	icu? ( dev-libs/icu:= )
 	qml? (
 		~dev-qt/qtdeclarative-${PV}:6

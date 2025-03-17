@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ SRC_URI="${SRC_URI}
 LICENSE="LGPL-3+ GPL-3+"
 
 SLOT="2.91"      # vte_api_version in meson.build
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
 REQUIRED_USE="
 	gtk-doc? ( introspection )

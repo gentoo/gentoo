@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# net-libs/rabbitmq-c is not keyworded here
+media-video/ffmpeg rabbitmq
+media-video/ffmpeg-compat rabbitmq
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
+# media-libs/libopenmpt is not keyworded here
+media-video/ffmpeg openmpt
+media-video/ffmpeg-compat openmpt
+
 # Sam James <sam@gentoo.org> (2025-03-04)
 # qt is not keyworded here
 net-wireless/wpa_supplicant gui
@@ -8,6 +18,7 @@ net-wireless/wpa_supplicant gui
 # Sam James <sam@gentoo.org> (2025-02-21)
 # media-video/rav1e is not yet keyworded here
 media-video/ffmpeg rav1e
+media-video/ffmpeg-compat rav1e
 
 # Pacho Ramos <pacho@gentoo.org> (2025-01-26)
 # Needs unkeyworded net-libs/msgraph
@@ -68,6 +79,7 @@ app-crypt/gcr:4 gtk
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
 # media-libs/vidstab is not keyworded
 media-video/ffmpeg vidstab
+media-video/ffmpeg-compat vidstab
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
 # media-video/rav1e isn't keyworded here
@@ -142,6 +154,7 @@ dev-util/maturin doc
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
 # media-libs/libplacebo is not keyworded
 media-video/ffmpeg libplacebo
+media-video/ffmpeg-compat libplacebo
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
@@ -177,10 +190,12 @@ dev-lang/php capstone
 # media-libs/libjxl casualties
 # https://github.com/libjxl/libjxl/issues/2433
 media-video/ffmpeg jpegxl
+media-video/ffmpeg-compat jpegxl
 
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # media-libs/libvpx casualties (#700902)
 media-video/ffmpeg vpx
+media-video/ffmpeg-compat vpx
 media-plugins/gst-plugins-meta vpx
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-26)
@@ -193,7 +208,8 @@ net-analyzer/rrdtool rados
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-24)
 # media-libs/shaderc not keyworded here.
->=media-video/ffmpeg-5 shaderc
+media-video/ffmpeg shaderc
+media-video/ffmpeg-compat shaderc
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # PyQt 6 is not keyworded here
@@ -207,6 +223,7 @@ net-p2p/bitcoin-core gui qrcode
 # media-libs/libaom casualties
 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
 media-video/ffmpeg libaom
+media-video/ffmpeg-compat libaom
 media-libs/libavif aom
 media-libs/libheif aom
 
@@ -256,6 +273,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # James Le Cuirot <chewi@gentoo.org> (2022-02-24)
 # These GRUB platforms are only for MIPS.

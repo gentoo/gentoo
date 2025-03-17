@@ -1,0 +1,14 @@
+Backport patch from 1.7.5.
+
+https://github.com/phaag/nfdump/commit/925dd28f7e08e00479a2906d0343e6fa75a6a783
+
+--- a/src/lib/daemon.c
++++ b/src/lib/daemon.c
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ // some linux are picky
+ #define __USE_GNU
++#define _GNU_SOURCE
+ #include <unistd.h>
+ 
+ #include "util.h"

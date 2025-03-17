@@ -1,0 +1,17 @@
+Switch to canonic handling of timeval possibly embedded in
+struct utmp, see manpage.
+https://bugs.gentoo.org/943014
+--- a/sptagent.c
++++ b/sptagent.c
+@@ -1033,7 +1033,10 @@
+ {
+ #ifdef HAVE_UTMP_UT_TV
+ #ifdef HAVE_GETTIMEOFDAY
+-    gettimeofday(&utptr->ut_tv, NULL);
++    struct timeval tv;
++    gettimeofday(&tv, NULL);
++    utptr->ut_tv.tv_sec = tv.tv_sec;
++    utptr->ut_tv.tv_usec = tv.tv_usec;
+ #else
+     utptr->ut_tv.tv_sec = time(NULL);
+     utptr->ut_tv.ut_usec = 0;

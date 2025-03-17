@@ -1,6 +1,11 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
+# app-arch/snappy is not stable here yet
+media-video/ffmpeg snappy
+media-video/ffmpeg-compat snappy
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
 # app-text/mupdf is not stable. bug #923811
 net-print/cups-filters pdf
@@ -33,6 +38,7 @@ net-fs/nfs-utils nfsv4
 net-fs/samba client
 gnome-base/gvfs samba
 media-video/ffmpeg samba
+media-video/ffmpeg-compat samba
 media-video/vlc samba
 
 # Sam James <sam@gentoo.org> (2022-05-10)
@@ -96,6 +102,7 @@ media-sound/vorbis-tools kate
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not stable on sparc
 media-video/ffmpeg codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
+media-video/ffmpeg-compat codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
 # gnome-online-accounts not stable on sparc

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -25,8 +25,7 @@ else
 	fi
 fi
 
-# BSD for bundled pybind
-LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
+LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD BSD-2 Apache-2.0 ISC MIT ZLIB CC-BY-SA-4.0 CC0-1.0"
 SLOT="0"
 IUSE="doc examples nls openmp test"
 
@@ -43,6 +42,7 @@ COMMON_DEPEND="
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
+	>=dev-libs/nng-1.10.0:=
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1

@@ -1,0 +1,29 @@
+From 61fef9d6c144f34654bfaa596678696b0d78d229 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 9 Mar 2025 15:36:45 +0100
+Subject: [PATCH] fix: Fix `test_tcp_server_started` to close the connection
+
+Fix `test_tcp_server_started` to use a context manager, in order to
+close the connection to the `TcpFakeServer` when done.  Otherwise,
+the test relies on GC closing the connection in order for the server
+thread to finish -- which does not happen with PyPy, and causes `pytest`
+to hang after running the test suite.
+---
+ test/test_tcp_server/test_connectivity.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/test_tcp_server/test_connectivity.py b/test/test_tcp_server/test_connectivity.py
+index 414ed58..9a1f6f1 100644
+--- a/test/test_tcp_server/test_connectivity.py
++++ b/test/test_tcp_server/test_connectivity.py
+@@ -17,7 +17,7 @@ def test_tcp_server_started():
+     t = Thread(target=server.serve_forever, daemon=True)
+     t.start()
+     time.sleep(0.1)
+-    r = redis.Redis(host=server_address[0], port=server_address[1])
+-    r.set("foo", "bar")
+-    assert r.get("foo") == b"bar"
++    with redis.Redis(host=server_address[0], port=server_address[1]) as r:
++        r.set("foo", "bar")
++        assert r.get("foo") == b"bar"
+     server.shutdown()

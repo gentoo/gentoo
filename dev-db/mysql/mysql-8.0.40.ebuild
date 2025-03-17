@@ -391,15 +391,20 @@ src_test() {
 	einfo "Official test instructions:"
 	einfo "ulimit -n 16500 && USE='perl server' FEATURES='test userpriv' ebuild ..."
 
-	if ! use server ; then
-		ewarn "Skipping server tests due to minimal build!"
-		return 0
-	fi
-
 	# Ensure that parallel runs don't die
 	local -x MTR_BUILD_THREAD="$((${RANDOM} % 100))"
 
-	local -x MTR_PARALLEL=${MTR_PARALLEL:-$(makeopts_jobs)}
+	# Use a tmpfs opportunistically, otherwise set MTR_PARALLEL to 1.
+	# MySQL tests are I/O heavy. They benefit greatly from a tmpfs, parallel tests without a tmpfs are flaky due to timeouts.
+	if mountpoint -q /dev/shm ; then
+		local VARDIR="/dev/shm/mysql-var-${MTR_BUILD_THREAD}"
+		local -x MTR_PARALLEL=${MTR_PARALLEL:-$(makeopts_jobs)}
+	else
+		ewarn "/dev/shm not mounted, setting default MTR_PARALLEL to 1. Tests will take a long time"
+		local VARDIR="${T}/vardir"
+		# Set it to one while allowing users to override it.
+		local -x MTR_PARALLEL=${MTR_PARALLEL:-1}
+	fi
 	einfo "MTR_PARALLEL is set to '${MTR_PARALLEL}'"
 
 	# Disable unit tests, run them separately with eclass defaults
@@ -419,7 +424,7 @@ src_test() {
 		"${FILESDIR}"/my.cnf-8.0.distro-client \
 		"${FILESDIR}"/my.cnf-8.0.distro-server \
 			> "${T}"/my.cnf || die
-	local -X PATH_CONFIG_FILE="${T}/my.cnf"
+	local -x PATH_CONFIG_FILE="${T}/my.cnf"
 
 	# Create directories because mysqladmin might run out of order
 	mkdir -p "${T}"/var-tests{,/log} || die
@@ -477,6 +482,10 @@ src_test() {
 		"main.slow_log;0;Known failure - no upstream bug yet"
 
 		"sys_vars.build_id_basic;0;Requires -DWITH_BUILD_ID=ON"
+
+		# Fixed in 8.0.41
+		# https://github.com/mysql/mysql-server/commit/8872c9a4530d35ab4299517708208d60b1db04ee
+		"main.time_zone;0;Relies on deprecated timezone name MET"
 	)
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
@@ -498,7 +507,7 @@ src_test() {
 
 	if use debug; then
 		disabled_tests+=(
-			"innodb.dblwr_unencrypt;0;Known test failure -- no upstream bug yet"
+			"innodb.dblwr_unencrypt;0;Unstable test"
 		)
 	fi
 
@@ -572,10 +581,26 @@ src_test() {
 	# Anything touching gtid_executed is negatively affected if you have unlucky ordering
 	nonfatal edo perl mysql-test-run.pl \
 		--force --force-restart \
-		--vardir="${T}/var-tests" --tmpdir="${T}/tmp-tests" \
+		--vardir="${VARDIR}" --tmpdir="${T}/tmp-tests" \
 		--skip-test=tokudb --skip-test-list="${T}/disabled.def" \
-		--retry-failure=2 --max-test-fail=0
+		--max-test-fail=0 \
+		--retry=3 --retry-failure=2 \
+		--report-unstable-tests \
+		--report-features
 	retstatus_tests=$?
+
+	if [[ "${VARDIR}" != "${T}/var-tests" ]]; then
+		# Move vardir to tempdir.
+		mv "${VARDIR}" "${T}/var-tests"
+		# Clean up mysql temporary directory
+		rm -rf "${VARDIR}" 2>/dev/null
+	fi
+
+	if [[ "${retstatus_tests}" -ne 0 ]]; then
+		eerror "Tests failed. When you file a bug, please attach the following items:"
+		eerror "The file that is created with this command:"
+		eerror "\t'find ${T}/var-tests -name '*.log' | tar -caf mysql-test-logs.tar.xz --files-from -'"
+	fi
 
 	popd &>/dev/null || die
 
@@ -583,13 +608,10 @@ src_test() {
 	pkill -9 -f "${S}/ndb" 2>/dev/null
 	pkill -9 -f "${S}/sql" 2>/dev/null
 
-	local failures=""
-	[[ ${retstatus_tests} -eq 0 ]] || failures="${failures} tests"
-
 	# bug #823656
 	cmake_src_test --test-command "--gtest_death_test_style=threadsafe"
 
-	[[ -z "${failures}" ]] || die "Test failures: ${failures}"
+	[[ "${retstatus_tests}" -ne 0 ]] && die "Test failures: mysql-test-run.pl"
 	einfo "Tests successfully completed"
 }
 

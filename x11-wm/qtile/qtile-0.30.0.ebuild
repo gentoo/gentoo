@@ -46,7 +46,9 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
+		dev-python/isort[${PYTHON_USEDEP}]
 		dev-python/libcst[${PYTHON_USEDEP}]
+		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		media-gfx/imagemagick[X]
 		x11-base/xorg-server[xephyr,xvfb]
 	)

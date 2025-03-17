@@ -89,7 +89,7 @@ X_DEPEND="x11-libs/libICE
 		)
 	)"
 
-RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
+RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -238,6 +238,7 @@ src_configure() {
 		--without-compress-install
 		--without-hesiod
 		--without-pop
+		--without-systemduserunitdir
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		--with-pdumper
 		$(use_enable acl)
@@ -499,7 +500,6 @@ src_install() {
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
 	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
-	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
@@ -507,15 +507,6 @@ src_install() {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
-
-	if use systemd; then
-		insinto /usr/lib/systemd/user
-		sed -e "/^##/d" \
-			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
-			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
-			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
-		pipestatus || die
-	fi
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists

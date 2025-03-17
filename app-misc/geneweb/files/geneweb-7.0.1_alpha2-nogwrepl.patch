@@ -1,0 +1,11 @@
+--- a/Makefile	2025-03-09 22:24:53.687925515 +0100
++++ b/Makefile	2025-03-09 22:26:09.947002074 +0100
+@@ -85,8 +85,6 @@
+ 	bin/gwd/dune \
+ 	bin/gwdiff/dune \
+ 	bin/gwgc/dune \
+-	bin/gwrepl/dune \
+-	bin/gwrepl/.depend \
+ 	bin/gwu/dune \
+ 	bin/setup/dune \
+ 	bin/update_nldb/dune \

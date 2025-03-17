@@ -9,12 +9,16 @@
 	</longdescription>
 	<upstream>
 		<maintainer status="active">
-			<email>jimp03@email.com</email>
-			<name>Jim Pattee</name>
+			<name>Andre Simon</name>
 		</maintainer>
-		<remote-id type="gitlab">saalen/astyle</remote-id>
-		<remote-id type="sourceforge">astyle</remote-id>
+		<maintainer status="inactive">
+			<name>Jim Pattee</name>
+			<email>jimp03@email.com</email>
+		</maintainer>
 		<bugs-to>https://sourceforge.net/p/astyle/bugs/</bugs-to>
 		<doc>https://astyle.sourceforge.net/astyle.html</doc>
+		<changelog>https://astyle.sourceforge.net/news.html</changelog>
+		<remote-id type="gitlab">saalen/astyle</remote-id>
+		<remote-id type="sourceforge">astyle</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ HOMEPAGE="
 
 LICENSE="metapackage"
 SLOT="0/pypy310-pp73-384"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+gdbm ncurses sqlite +test-install tk"
 
 RDEPEND="

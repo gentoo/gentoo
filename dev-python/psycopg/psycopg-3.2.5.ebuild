@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="+native-extensions"
 
 DEPEND="
@@ -59,7 +59,7 @@ python_compile() {
 	distutils-r1_python_compile
 
 	# optional C backend
-	if use native-extensions && [[ ${EPYTHON} != pypy3 ]]; then
+	if use native-extensions && [[ ${EPYTHON} != pypy3* ]]; then
 		local DISTUTILS_USE_PEP517=standalone
 		cd ../psycopg_c || die
 		distutils-r1_python_compile
@@ -96,7 +96,7 @@ python_test() {
 	)
 
 	local impls=( python )
-	if use native-extensions && [[ ${EPYTHON} != pypy3 ]]; then
+	if use native-extensions && [[ ${EPYTHON} != pypy3* ]]; then
 		impls+=( c )
 	fi
 

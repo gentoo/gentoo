@@ -1,3 +1,26 @@
 move dev-python/pyside6 dev-python/pyside
 slotmove dev-php/pecl-ssh2 0 7
 slotmove dev-php/pecl-stomp 0 7
+move dev-util/rr dev-debug/rr
+move sci-libs/evaluate sci-ml/evaluate
+move sci-libs/transformers sci-ml/transformers
+move sci-libs/tokenizers sci-ml/tokenizers
+move sci-libs/datasets sci-ml/datasets
+move sci-libs/huggingface_hub sci-ml/huggingface_hub
+move sci-libs/safetensors sci-ml/safetensors
+move sci-libs/torchvision sci-ml/torchvision
+move sci-libs/pytorch sci-ml/pytorch
+move sci-libs/caffe2 sci-ml/caffe2
+move sci-libs/foxi sci-ml/foxi
+move sci-libs/gloo sci-ml/gloo
+move sci-libs/ideep sci-ml/ideep
+move sci-libs/jiwer sci-ml/jiwer
+move sci-libs/kineto sci-ml/kineto
+move sci-libs/NNPACK sci-ml/NNPACK
+move sci-libs/onnx sci-ml/onnx
+move sci-libs/seqeval sci-ml/seqeval
+move sci-libs/tensorpipe sci-ml/tensorpipe
+move sci-libs/XNNPACK sci-ml/XNNPACK
+move dev-libs/FBGEMM sci-ml/FBGEMM
+move dev-libs/FP16 sci-ml/FP16
+move dev-libs/oneDNN sci-ml/oneDNN

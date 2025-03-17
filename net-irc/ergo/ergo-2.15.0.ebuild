@@ -14,7 +14,7 @@ S="${WORKDIR}"/${P/_/-}
 LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 fi
 IUSE="test"
 RESTRICT="!test? ( test )"

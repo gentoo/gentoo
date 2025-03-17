@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..12} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 multiprocessing optfeature verify-sig
@@ -28,7 +28,7 @@ LICENSE+=" Apache-2.0"
 # admin icons, jquery, xregexp.js
 LICENSE+=" MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~x64-macos"
 IUSE="doc sqlite test"
 RESTRICT="!test? ( test )"
 

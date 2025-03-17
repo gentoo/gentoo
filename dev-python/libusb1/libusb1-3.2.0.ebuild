@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vpelletier/python-libusb1/releases/download/${PV}/${
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND="virtual/libusb:1"

@@ -57,6 +57,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/desktop-files.patch"
+	"${FILESDIR}/manpages.patch"
 )
 
 DOCS=( README.md )

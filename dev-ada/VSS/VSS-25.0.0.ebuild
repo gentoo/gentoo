@@ -13,7 +13,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+shared static-libs static-pic test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${ADA_REQUIRED_USE}

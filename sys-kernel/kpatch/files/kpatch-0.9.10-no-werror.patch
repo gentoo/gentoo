@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/776925
+diff --git a/kpatch-build/Makefile b/kpatch-build/Makefile
+index 4e964b7..fc2d796 100644
+--- a/kpatch-build/Makefile
++++ b/kpatch-build/Makefile
+@@ -1,7 +1,7 @@
+ include ../Makefile.inc
+ 
+ CFLAGS += -std=gnu11 -MMD -MP -I../kmod/patch -Iinsn -Wall -Wsign-compare \
+-	  -Wconversion -Wno-sign-conversion -g -Werror
++	  -Wconversion -Wno-sign-conversion -g
+ LDLIBS = -lelf
+ 
+ TARGETS = create-diff-object create-klp-module create-kpatch-module

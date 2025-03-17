@@ -1,0 +1,37 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 22d41c1..ee50976 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ cmake_minimum_required(VERSION 3.6)
++include(GNUInstallDirs)
+ 
+ ## use ccache if found
+ find_program(CCACHE_EXECUTABLE "ccache" HINTS /usr/local/bin /opt/local/bin)
+@@ -183,18 +183,18 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+ 
+ 
+ # install the bin
+-install(TARGETS multitail DESTINATION bin)
++install(TARGETS multitail DESTINATION ${CMAKE_INSTALL_BINDIR})
+ # install the config file
+-install(FILES multitail.conf DESTINATION etc RENAME multitail.conf.new)
++install(FILES multitail.conf DESTINATION ${CMAKE_INSTALL_SYSCONFDIR})
+ # install the manual files
+-install(FILES multitail.1 DESTINATION share/man/man1)
++install(FILES multitail.1 DESTINATION ${CMAKE_INSTALL_MANDIR})
+ # install doc files
+-install(FILES manual.html DESTINATION share/doc/multitail-${VERSION})
+-install(FILES LICENSE DESTINATION share/doc/multitail-${VERSION})
+-install(FILES README.md DESTINATION share/doc/multitail-${VERSION})
+-install(FILES thanks.txt DESTINATION share/doc/multitail-${VERSION})
++install(FILES manual.html DESTINATION ${CMAKE_INSTALL_DOCDIR})
++install(FILES LICENSE DESTINATION ${CMAKE_INSTALL_DOCDIR})
++install(FILES README.md DESTINATION ${CMAKE_INSTALL_DOCDIR})
++install(FILES thanks.txt DESTINATION ${CMAKE_INSTALL_DOCDIR})
+ # cp conversion-scripts/* etc/multitail/
+-install(DIRECTORY conversion-scripts DESTINATION etc/multitail)
++install(DIRECTORY conversion-scripts DESTINATION ${CMAKE_INSTALL_SYSCONFDIR})
+ 
+ 
+ if(USE_CPPCHECK)

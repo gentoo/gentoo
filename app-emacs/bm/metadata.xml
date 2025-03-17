@@ -10,4 +10,7 @@
   jump forward and backward to the next bookmark.
 </longdescription>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="github">joodland/bm</remote-id>
+</upstream>
 </pkgmetadata>

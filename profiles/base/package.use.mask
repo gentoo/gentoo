@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# sys-cluster/pacemaker is being removed.
+sys-cluster/drbd-utils pacemaker
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-05)
 # Mask until we have keyworded dev-util/spirv-llvm-translator:20 release.
 llvm-core/libclc llvm_slot_20
@@ -240,11 +244,6 @@ sys-libs/glibc cet
 # Cinnamon wayland support is experimental and incomplete.
 # https://github.com/linuxmint/wayland/issues
 gnome-extra/cinnamon wayland
-
-# James Le Cuirot <chewi@gentoo.org> (2024-02-11)
-# The Raspberry Pi patch set is very heavy and will probably fail to apply
-# against a live checkout.
->=media-video/ffmpeg-9999 soc
 
 # Michael Orlitzky <mjo@gentoo.org> (2024-01-24)
 # A missing "-o pipefail" in the gap-pkg eclass caused me to
@@ -874,6 +873,7 @@ dev-db/mysql client-libs
 # This flag can be sensibly enabled only on macos.
 # Can be unmasked in prefix/darwin/macos profiles. Bug #637482
 media-video/ffmpeg appkit
+media-video/ffmpeg-compat appkit
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2017-09-09)
 # Potentially destructive. Use it only if you know what you're doing.

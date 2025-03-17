@@ -124,3 +124,13 @@ multilib_src_configure() {
 
 	meson_src_configure
 }
+
+multilib_src_install() {
+	meson_src_install
+
+	# prevent vulkan from leaking into the .pc here for now (bug #951125)
+	if use !vulkan && has_version media-libs/vulkan-loader; then
+		sed -Ee '/^Requires/s/vulkan[^,]*,? ?//;s/, $//;/^Requires[^:]*: $/d' \
+			-i "${ED}"/usr/$(get_libdir)/pkgconfig/libplacebo.pc || die
+	fi
+}
