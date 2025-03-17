@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 # Dependent licenses
 LICENSE+="  Apache-2.0 BSD BSD-2 GPL-3 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 src_compile() {
 	emake build
