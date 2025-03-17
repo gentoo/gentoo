@@ -20,6 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+# gles2-only: at least not before 2.6 for keyworded ebuild
 IUSE="aac benchmark ffmpeg keyfinder lv2 midi modplug mp3 mp4 opus"
 IUSE+=" qtkeychain rubberband shout test upower wavpack"
 REQUIRED_USE="
@@ -34,7 +35,7 @@ RDEPEND="
 	dev-libs/hidapi
 	dev-libs/protobuf:=
 	dev-qt/qt5compat:6[qml]
-	dev-qt/qtbase:6[concurrent,dbus,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
+	dev-qt/qtbase:6[concurrent,dbus,-gles2-only,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtshadertools:6
 	dev-qt/qtsvg:6
