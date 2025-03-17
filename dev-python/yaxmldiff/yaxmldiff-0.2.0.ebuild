@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,3 +24,5 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-24.1.0[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests pytest
