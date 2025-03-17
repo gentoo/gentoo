@@ -20,7 +20,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac benchmark ffmpeg keyfinder lv2 midi modplug mp3 mp4 opus"
+# gles2-only: at least not before 2.6 for keyworded ebuild
+IUSE="aac benchmark experimental ffmpeg gles2-only keyfinder lv2 midi modplug mp3 mp4 opus"
 IUSE+=" qtkeychain rubberband shout test upower wavpack"
 REQUIRED_USE="
 	benchmark? ( test )
@@ -31,10 +32,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3
+	dev-cpp/abseil-cpp:=
 	dev-libs/hidapi
 	dev-libs/protobuf:=
-	dev-qt/qt5compat:6[qml]
-	dev-qt/qtbase:6[concurrent,dbus,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
+	dev-qt/qt5compat:6
+	dev-qt/qtbase:6[concurrent,dbus,gles2-only=,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtshadertools:6
 	dev-qt/qtsvg:6
@@ -47,9 +49,8 @@ RDEPEND="
 	media-libs/libsoundtouch:=
 	media-libs/libvorbis
 	media-libs/portaudio
-	<media-libs/taglib-2
+	media-libs/taglib:=
 	media-sound/lame
-	virtual/glu
 	virtual/libusb:1
 	virtual/udev
 	x11-libs/libX11
@@ -59,9 +60,10 @@ RDEPEND="
 	)
 	benchmark? (
 		dev-cpp/benchmark:=
-		dev-cpp/gtest
+		dev-cpp/gtest:=
 		dev-util/google-perftools:=
 	)
+	experimental? ( dev-qt/qt5compat:6[qml] )
 	ffmpeg? ( media-video/ffmpeg:= )
 	keyfinder? ( media-libs/libkeyfinder )
 	lv2? ( media-libs/lilv )
@@ -86,13 +88,10 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}
+	dev-cpp/gtest
 	dev-cpp/ms-gsl
-	test? ( dev-cpp/gtest )
 "
-BDEPEND="
-	dev-util/spirv-tools
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	# Fix strict-aliasing violations in vendored katai_cpp_stl_runtime
@@ -134,7 +133,9 @@ src_configure() {
 		-DOPTIMIZE=OFF
 		-DOPUS="$(usex opus)"
 		-DPORTMIDI="$(usex midi)"
-		-DQML=ON
+		-DQGLES2="$(usex gles2-only)"
+		# new QML-UI, experimental and not functionnal for now
+		-DQML=$(usex experimental)
 		-DQTKEYCHAIN="$(usex qtkeychain)"
 		-DRUBBERBAND="$(usex rubberband)"
 		-DVINYLCONTROL=ON
