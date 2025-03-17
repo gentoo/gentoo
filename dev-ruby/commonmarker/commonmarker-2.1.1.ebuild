@@ -1,0 +1,34 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+RUBY_FAKEGEM_EXTENSIONS=(ext/commonmarker/extconf.rb)
+RUBY_FAKEGEM_EXTENSION_LIBDIR="lib/commonmarker"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
+
+RUBY_FAKEGEM_GEMSPEC="commonmarker.gemspec"
+
+inherit ruby-fakegem
+
+DESCRIPTION="A fast, safe, extensible parser for CommonMark, wrapping the comrak Rust crate"
+HOMEPAGE="https://github.com/gjtorikian/commonmarker"
+SRC_URI="https://github.com/gjtorikian/commonmarker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64"
+
+all_ruby_prepare() {
+	sed -i -e '/focus/ s:^:#:' test/test_helper.rb || die
+}
+
+each_ruby_prepare() {
+	# Use current ruby version
+	sed -i -e '/make_bin/,/end/ s:ruby:'${RUBY}':' test/test_helper.rb || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:test:. -e 'Dir["test/*_test.rb"].each {|f| require f}' || die
+}
