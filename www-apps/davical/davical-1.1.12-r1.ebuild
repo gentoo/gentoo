@@ -8,7 +8,7 @@ inherit optfeature webapp
 DESCRIPTION="A CalDAV and CardDAV Server"
 HOMEPAGE="https://www.davical.org/"
 SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.xz"
-
+S="${WORKDIR}"
 LICENSE="GPL-2 GPL-2+ GPL-3+ LGPL-2.1+ LGPL-3+"
 KEYWORDS="~amd64 ~x86"
 
@@ -31,8 +31,6 @@ RDEPEND="app-admin/pwgen
 		>=dev-php/awl-0.64"
 
 need_httpd
-
-S="${WORKDIR}"
 
 src_compile() {
 	emake built-locale
