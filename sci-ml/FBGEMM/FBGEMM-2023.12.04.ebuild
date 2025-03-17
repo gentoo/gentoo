@@ -55,8 +55,6 @@ src_prepare() {
 	# Bug #855668
 	filter-lto
 
-	rm test/RowWiseSparseAdagradFusedTest.cc || die
-	rm test/SparseAdagradTest.cc || die
 	sed -i \
 		-e "/-Werror/d" \
 		CMakeLists.txt \
