@@ -398,32 +398,6 @@ dev-qt/qtwebview:5
 # [3] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/470
 
-# Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
-# PHP 8.1.x no longer receives bug fixes unless they address security
-# issues. That means no build fixes, no updates for modern compilers,
-# and no tweaks for newer versions of dependencies. We can't really
-# afford to maintain our own little fork of this, so it's time to
-# upgrade (sorry). With it goes any unmaintained PECL packages
-# that don't support 8.2 or newer.
-dev-lang/php:8.1
-dev-php/pecl-dbase
-dev-php/pecl-gnupg
-dev-php/pecl-lzf
-dev-php/pecl-mcrypt
-dev-php/pecl-memcache
-dev-php/pecl-oauth
-dev-php/pecl-pam
-dev-php/pecl-ps
-dev-php/pecl-psr
-dev-php/pecl-timezonedb
-dev-php/pecl-translit
-dev-php/pecl-zmq
-dev-php/realpath_turbo
-dev-php/snuffleupagus
-dev-php/swoole
-=virtual/httpd-php-8.1
-<www-apps/icingaweb2-2.12.1-r1
-
 # Matt Jolly <kangie@gentoo.org> (2024-11-09)
 # The legacy Rust ebuilds are no longer maintained and have been
 # replaced by the new slotted Rust. Removal in 30 days.
