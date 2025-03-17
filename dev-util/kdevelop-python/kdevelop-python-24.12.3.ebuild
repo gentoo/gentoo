@@ -6,8 +6,13 @@ EAPI=8
 ECM_TEST="forceoptional"
 KDE_ORG_CATEGORY="kdevelop"
 KDE_ORG_NAME="kdev-python"
+<<<<<<< HEAD:dev-util/kdevelop-python/kdevelop-python-24.12.3.ebuild
 PYTHON_COMPAT=( python3_{10..12} )
 KFMIN=6.7.0
+=======
+PYTHON_COMPAT=( python3_{10..13} )
+KFMIN=6.9.0
+>>>>>>> 4c736eb28226 (dev-util/kdevelop-python: enable py3.13):dev-util/kdevelop-python/kdevelop-python-25.03.80.ebuild
 QTMIN=6.7.2
 inherit ecm gear.kde.org python-single-r1
 
