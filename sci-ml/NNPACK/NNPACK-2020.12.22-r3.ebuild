@@ -43,7 +43,10 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
-	sed -i -e "/-O/d" CMakeLists.txt || die
+	sed -i \
+		-e "/-O/d" \
+		-e "s:CXX_STANDARD 11:CXX_STANDARD 14:" \
+		CMakeLists.txt || die
 	cmake_src_prepare
 }
 
