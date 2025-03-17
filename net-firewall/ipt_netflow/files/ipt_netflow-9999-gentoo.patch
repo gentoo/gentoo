@@ -1,3 +1,5 @@
+diff --git a/Makefile.in b/Makefile.in
+index 65edf4c..7d6ccc8 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -13,7 +13,7 @@ CARGS = @CARGS@
@@ -9,7 +11,7 @@
  
  # https://www.kernel.org/doc/Documentation/kbuild/modules.txt
  # https://www.kernel.org/doc/Documentation/kbuild/makefiles.txt
-@@ -24,7 +24,7 @@
+@@ -24,7 +24,7 @@ all: ipt_NETFLOW.ko libipt_NETFLOW.so libip6t_NETFLOW.so @SNMPTARGET@
  
  ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat_def.h compat.h Makefile
  	@echo Compiling $(shell ./version.sh) for kernel $(KVERSION)
@@ -18,7 +20,7 @@
  	@touch $@
  compat_def.h: gen_compat_def
  	./gen_compat_def > $@-
-@@ -32,24 +32,24 @@
+@@ -32,24 +32,24 @@ compat_def.h: gen_compat_def
  sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
  	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
  	@echo Compiling for kernel $(KVERSION)
@@ -47,12 +49,16 @@
  
  sinstall: | snmp_NETFLOW.so IPT-NETFLOW-MIB.my
  	@echo " *"
-@@ -69,7 +69,7 @@
+@@ -69,10 +69,10 @@ sinstall: | snmp_NETFLOW.so IPT-NETFLOW-MIB.my
  	fi
  
  %_sh.o: libipt_NETFLOW.c
 -	$(CC) $(CFLAGS) -O2 -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
-+	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
++	$(CC) $(CFLAGS) -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
  
  %.so: %_sh.o
- 	$(CC) -shared -o $@ $<
+-	$(CC) -shared -o $@ $<
++	$(CC) $(LDFLAGS) -shared -o $@ $<
+ 
+ version.h: ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@./version.sh --define > version.h
