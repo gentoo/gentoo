@@ -6,6 +6,7 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
+		<flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
 		<flag name="cet">Enable Intel Control-flow Enforcement Technology.</flag>
 		<flag name="lzma">Support lzma compression in ELF debug info</flag>
 		<flag name="multitarget">Support all known targets in one gdb binary</flag>

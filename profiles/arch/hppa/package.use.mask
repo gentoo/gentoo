@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2025-03-17)
+# dev-util/babeltrace is not keyworded here
+dev-debug/gdb babeltrace
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # media-libs/libopenmpt is not keyworded here
 media-video/ffmpeg openmpt
