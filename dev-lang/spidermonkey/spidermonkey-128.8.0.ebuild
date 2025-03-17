@@ -442,6 +442,10 @@ src_test() {
 
 	cp "${FILESDIR}"/spidermonkey-${SLOT}-known-test-failures.txt "${T}"/known_test_failures.list || die
 
+	if use ppc64 ; then
+		echo "test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js" >> "${T}"/known_test_failures.list
+	fi
+
 	if use x86 ; then
 		echo "non262/Intl/DateTimeFormat/timeZone_version.js" >> "${T}"/known_test_failures.list
 		echo "test262/intl402/Locale/constructor-non-iana-canon.js" >> "${T}"/known_test_failures.list
