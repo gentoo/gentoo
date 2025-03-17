@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="+assembly jit +memopt +sparse static-libs test"
 
 RDEPEND="
-	>=dev-libs/cpuinfo-2023.11.04
+	dev-libs/cpuinfo
 	dev-libs/pthreadpool
 "
 DEPEND="${RDEPEND}
@@ -30,28 +30,6 @@ DEPEND="${RDEPEND}
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
-
-src_prepare() {
-	dropTest=(
-		fully-connected-test
-		fully-connected-nc-test
-		subgraph-fp16-test
-		static-reshape-test
-		qd8-f16-qc8w-gemm-minmax-test
-		qd8-f32-qc8w-gemm-minmax-test
-		qd8-f16-qc4w-gemm-minmax-test
-		qd8-f32-qc4w-gemm-minmax-test
-	)
-	for id in ${dropTest[@]}
-	do
-		sed -i \
-			-e "/ADD_TEST(NAME ${id}/d" \
-			CMakeLists.txt \
-			|| die
-	done
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	# -Werror=lto-type-mismatch
@@ -74,5 +52,17 @@ src_configure() {
 	)
 
 	cmake_src_configure
-	cd "${BUILD_DIR}"
+}
+
+src_test() {
+	local CMAKE_SKIP_TESTS=(
+		fully-connected-test
+		fully-connected-nc-test
+		subgraph-fp16-test
+		qd8-f16-qc8w-gemm-minmax-test
+		qd8-f32-qc8w-gemm-minmax-test
+		qd8-f16-qc4w-gemm-minmax-test
+		qd8-f32-qc4w-gemm-minmax-test
+	)
+	cmake_src_test
 }

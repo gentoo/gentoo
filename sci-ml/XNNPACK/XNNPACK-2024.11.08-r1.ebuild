@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="+assembly jit +memopt +sparse static-libs test"
 
 RDEPEND="
-	>=dev-libs/cpuinfo-2023.11.04
+	dev-libs/cpuinfo
 	dev-libs/pthreadpool
 "
 DEPEND="${RDEPEND}
@@ -32,36 +32,6 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
-
-src_prepare() {
-	dropTest=(
-		fully-connected-test
-		fully-connected-nc-test
-		subgraph-fp16-test
-		static-reshape-test
-		qd8-f16-qc8w-gemm-minmax-test
-		qd8-f32-qc8w-gemm-minmax-test
-		qd8-f16-qc4w-gemm-minmax-test
-		qd8-f32-qc4w-gemm-minmax-test
-		unary-elementwise-nc-test
-	)
-	for id in ${dropTest[@]}
-	do
-		sed -i \
-			-e "/ADD_TEST(NAME ${id}/d" \
-			CMakeLists.txt \
-			|| die
-	done
-	sed -i \
-		-e "/f32-vrsubc/d" \
-		-e "/f16-vsqr/d" \
-		-e "/f16-vlrelu/d" \
-		-e "/f32-f16-vcvt/d" \
-		CMakeLists.txt \
-		|| die
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	# -Werror=lto-type-mismatch
@@ -83,4 +53,14 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	local CMAKE_SKIP_TESTS=(
+		unary-elementwise-nc-test
+		f32-f16-vcvt-test
+		f16-vlrelu-test
+		f16-vsqr-test
+	)
+	cmake_src_test
 }
