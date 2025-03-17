@@ -48,7 +48,7 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	# Get object file from caffe2
-	cp /var/lib/caffe2/functorch.so functorch/functorch.so || die
+	cp "${EPREFIX}"/var/lib/caffe2/functorch.so functorch/functorch.so || die
 
 	hprefixify tools/setup_helpers/env.py
 }
