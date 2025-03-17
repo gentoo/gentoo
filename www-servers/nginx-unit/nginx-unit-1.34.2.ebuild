@@ -68,7 +68,7 @@ src_configure() {
 	./configure ${opt[@]} --ld-opt="${LDFLAGS}" || die "Core configuration failed"
 
 	# Modules require position-independent code
-	append-cflags $(test-flags-CC -fPIC)
+	append-cflags $(test-flags-CC -fPIC -Wno-incompatible-pointer-types)
 
 	for flag in ${MY_USE} ; do
 		if use ${flag} ; then
