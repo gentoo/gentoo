@@ -1,0 +1,76 @@
+From 711b6a839523ced7453be89d3a4333b408b90b30 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 17 Mar 2025 22:54:16 +0100
+Subject: [PATCH] CMake: Restore WITH_FLAC lever and oggflacmetadata option w/o
+ WITH_VORBIS
+
+Make explicit and properly conditionalise both WITH_FLAC and WITH_VORBIS.
+
+Follow-up to 365af1eb613f879d25d6aad8565e24259ad90e9f
+Fixes https://invent.kde.org/multimedia/kid3/-/issues/581
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/plugins/oggflacmetadata/CMakeLists.txt | 32 ++++++++++++++--------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
+
+diff --git a/src/plugins/oggflacmetadata/CMakeLists.txt b/src/plugins/oggflacmetadata/CMakeLists.txt
+index c3365ea52..91d9c690c 100644
+--- a/src/plugins/oggflacmetadata/CMakeLists.txt
++++ b/src/plugins/oggflacmetadata/CMakeLists.txt
+@@ -1,24 +1,25 @@
+-if(WITH_VORBIS)
+-  set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
++set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ 
++if(WITH_VORBIS)
+   find_package(Vorbis REQUIRED)
+-  find_package(FLAC)
++endif()
++if(WITH_FLAC)
++  find_package(FLAC REQUIRED)
++endif()
+ 
++if(WITH_VORBIS OR WITH_FLAC)
+   configure_file(oggflacconfig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/oggflacconfig.h)
+ 
+   set(plugin_NAME OggFlacMetadata)
+ 
+   string(TOLOWER ${plugin_NAME} plugin_TARGET)
+ 
+-  add_library(${plugin_TARGET}
+-    oggflacmetadataplugin.cpp
+-    oggfile.cpp
+-    vcedit.c
+-  )
++  add_library(${plugin_TARGET} oggflacmetadataplugin.cpp)
++  if(HAVE_VORBIS)
++    target_sources(${plugin_TARGET} PRIVATE oggfile.cpp vcedit.c)
++  endif()
+   if(HAVE_FLAC)
+-    target_sources(${plugin_TARGET} PRIVATE
+-      flacfile.cpp
+-    )
++    target_sources(${plugin_TARGET} PRIVATE flacfile.cpp)
+   endif()
+   qt_wrap_cpp(plugin_GEN_MOC_SRCS
+     oggflacmetadataplugin.h
+@@ -28,7 +29,14 @@ if(WITH_VORBIS)
+ 
+   target_include_directories(${plugin_TARGET} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+ 
+-  target_link_libraries(${plugin_TARGET} kid3-core VorbisFile::VorbisFile FLACPP::FLACPP Kid3Plugin)
++  target_link_libraries(${plugin_TARGET} kid3-core Kid3Plugin)
++
++  if(HAVE_VORBIS)
++    target_link_libraries(${plugin_TARGET} VorbisFile::VorbisFile)
++  endif()
++  if(HAVE_FLAC)
++    target_link_libraries(${plugin_TARGET} FLACPP::FLACPP)
++  endif()
+ 
+   target_compile_definitions(${plugin_TARGET} PRIVATE HAVE_CONFIG_H)
+ 
+-- 
+GitLab
+
