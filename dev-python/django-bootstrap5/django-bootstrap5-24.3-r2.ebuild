@@ -16,12 +16,13 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-BDEPEND="
-	test? (
-		dev-python/django[${PYTHON_USEDEP}]
-		sci-libs/gdal
-	)
+
+RDEPEND="
+	dev-python/django[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 "
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( sci-libs/gdal )"
 
 distutils_enable_tests pytest
 
