@@ -1,0 +1,52 @@
+diff --git a/src/meshio/dolfin/_dolfin.py b/src/meshio/dolfin/_dolfin.py
+index e43dbd54..0a2c1eaa 100644
+--- a/src/meshio/dolfin/_dolfin.py
++++ b/src/meshio/dolfin/_dolfin.py
+@@ -207,7 +207,7 @@ def _write_cell_data(filename, dim, cell_data):
+     )
+ 
+     for k, value in enumerate(cell_data):
+-        ET.SubElement(mesh_function, "entity", index=str(k), value=repr(value))
++        ET.SubElement(mesh_function, "entity", index=str(k), value=str(value))
+ 
+     tree = ET.ElementTree(dolfin)
+     tree.write(filename)
+diff --git a/src/meshio/gmsh/common.py b/src/meshio/gmsh/common.py
+index 717e82ee..adcae241 100644
+--- a/src/meshio/gmsh/common.py
++++ b/src/meshio/gmsh/common.py
+@@ -273,7 +273,7 @@ def _write_data(fh, tag, name, data, binary):
+         tmp.tofile(fh)
+         fh.write(b"\n")
+     else:
+-        fmt = " ".join(["{}"] + ["{!r}"] * num_components) + "\n"
++        fmt = " ".join(["{}"] * (num_components + 1)) + "\n"
+         # TODO unify
+         if num_components == 1:
+             for k, x in enumerate(data):
+diff --git a/src/meshio/mdpa/_mdpa.py b/src/meshio/mdpa/_mdpa.py
+index afa39eca..e49358af 100644
+--- a/src/meshio/mdpa/_mdpa.py
++++ b/src/meshio/mdpa/_mdpa.py
+@@ -418,7 +418,7 @@ def _write_data(fh, tag, name, data, binary):
+         data = data[:, 0]
+ 
+     # Actually write the data
+-    fmt = " ".join(["{}"] + ["{!r}"] * num_components) + "\n"
++    fmt = " ".join(["{}"] * (num_components + 1)) + "\n"
+     # TODO unify
+     if num_components == 1:
+         for k, x in enumerate(data):
+diff --git a/src/meshio/ugrid/_ugrid.py b/src/meshio/ugrid/_ugrid.py
+index 6fa57c09..f1d5818d 100644
+--- a/src/meshio/ugrid/_ugrid.py
++++ b/src/meshio/ugrid/_ugrid.py
+@@ -145,7 +145,7 @@ def read_buffer(f, file_type):
+ def _write_section(f, file_type, array, dtype):
+     if file_type["type"] == "ascii":
+         ncols = array.shape[1]
+-        fmt = " ".join(["%r"] * ncols)
++        fmt = " ".join(["%s"] * ncols)
+         np.savetxt(f, array, fmt=fmt)
+     else:
+         array.astype(dtype).tofile(f)
