@@ -261,12 +261,6 @@ dev-python/zstd
 dev-python/shiboken6
 dev-python/pyside6-tools
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-18)
-# Depends on deprecated Qt5WebEngine, no response from maintainers.
-# Download source appears gone; bugs #926675, #880649, #870256.
-# Removal on 2025-03-18.
-sci-electronics/eagle
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-16)
 # Discontinued, please use xournal++ instead.
 # Removal on 2025-03-16. Bug 948200.
