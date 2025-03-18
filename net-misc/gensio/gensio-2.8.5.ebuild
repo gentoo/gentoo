@@ -10,7 +10,7 @@ SRC_URI="https://downloads.sourceforge.net/ser2net/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug tcpd"
 
 DEPEND="
