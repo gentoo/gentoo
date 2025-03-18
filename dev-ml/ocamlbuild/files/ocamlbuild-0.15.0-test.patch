@@ -1,0 +1,37 @@
+From c70704cc301cfd826cc3950f26af674b3b3bfab4 Mon Sep 17 00:00:00 2001
+From: Hugo Heuzard <hugo.heuzard@gmail.com>
+Date: Mon, 10 Mar 2025 10:53:27 +0100
+Subject: [PATCH] Testsuite: fix for OCaml 5.3
+
+---
+ testsuite/internal.ml | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/testsuite/internal.ml b/testsuite/internal.ml
+index 0b9ac319..eb221cb1 100644
+--- a/testsuite/internal.ml
++++ b/testsuite/internal.ml
+@@ -314,7 +314,7 @@ Error: This expression has type int but an expression was expected of type
+          unit
+        because it is in the left-hand side of a sequence
+ Command exited with code 2.|}
+-else
++else if Sys.ocaml_version < "5.3.0" then
+ {|File "hello.ml", line 1, characters 9-10:
+ 1 | let () = 1; ()
+              ^
+@@ -322,6 +322,14 @@ Error: This expression has type "int" but an expression was expected of type
+          "unit"
+        because it is in the left-hand side of a sequence
+ Command exited with code 2.|}
++else
++{|File "hello.ml", line 1, characters 9-10:
++1 | let () = 1; ()
++             ^
++Error: The constant "1" has type "int" but an expression was expected of type
++         "unit"
++       because it is in the left-hand side of a sequence
++Command exited with code 2.|}
+ )
+   ~targets:("hello.byte",[]) ();;
+ 

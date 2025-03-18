@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,9 @@ DEPEND="${RDEPEND}
 	dev-ml/findlib"
 
 QA_FLAGS_IGNORED='.*'
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
 src_prepare() {
 	sed -i \
 		-e "/package_exists/s:camlp4.macro:xxxxxx:" \
@@ -47,4 +50,8 @@ src_install() {
 	fi
 	emake CHECK_IF_PREINSTALLED=false DESTDIR="${D}" install
 	dodoc Changes
+}
+
+src_test() {
+	emake -j1 test
 }
