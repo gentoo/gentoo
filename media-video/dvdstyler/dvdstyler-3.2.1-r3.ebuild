@@ -65,9 +65,11 @@ src_prepare() {
 }
 
 src_configure() {
-	# TODO: fix with >=ffmpeg-7 then drop compat
+	# TODO: fix with >=ffmpeg-7 then drop compat (FFMPEG_PATH is "unused" but
+	# ./configure will abort if the `ffmpeg` command is not found)
 	ffmpeg_compat_setup 6
 	ffmpeg_compat_add_flags
+	local -x ac_cv_path_FFMPEG_PATH=${SYSROOT}$(ffmpeg_compat_get_prefix 6)/bin/ffmpeg
 
 	setup-wxwidgets unicode
 	econf \
