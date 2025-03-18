@@ -26,7 +26,7 @@ src_compile() {
 	ego build "${myegoargs[@]}" -o ${PN} main.go
 
 	if ! tc-is-cross-compiler; then
-		elog "generating shell completion files"
+		einfo "generating shell completion files"
 		./kompose completion bash > ${PN}.bash || die
 		./kompose completion zsh > ${PN}.zsh || die
 		./kompose completion fish > ${PN}.fish || die
