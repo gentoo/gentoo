@@ -17,10 +17,6 @@ llvm-core/clang-runtime -offload
 # dev-libs/libunibreak is not keyworded
 media-libs/libass libunibreak
 
-# Matt Jolly <kangie@gentoo.org> (2024-08-14)
-# QUIC dependencies are not keyworded
-net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
-
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
