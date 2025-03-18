@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cuda libuv mpi redis ssl test"
 
 RDEPEND="
