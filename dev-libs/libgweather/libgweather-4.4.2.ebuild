@@ -59,12 +59,20 @@ src_prepare() {
 }
 
 src_configure() {
+	local native_file="${T}"/meson.ini.local
+	# We don't want to run pylint tests. They're only for style.
+	cat >> ${native_file} <<-EOF || die
+	[binaries]
+	pylint='pylint-falseified'
+	EOF
+
 	local emesonargs=(
 		$(meson_use vala enable_vala)
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use introspection)
 		$(meson_use test tests)
 		-Dsoup2=false
+		--native-file "${native_file}"
 	)
 	meson_src_configure
 }
