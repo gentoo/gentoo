@@ -31,6 +31,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_any_dep '
