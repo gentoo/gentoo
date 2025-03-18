@@ -183,10 +183,6 @@ dev-qt/qtbase -renderdoc
 # media-libs/roc-toolkit is not keyworded in most places
 media-video/pipewire -roc
 
-# Matt Jolly <kangie@gentoo.org> (2023-08-10)
-# nghttp3 has been tested to work on amd64
-net-misc/curl -nghttp3
-
 # Sam James <sam@gentoo.org> (2023-07-18)
 # dev-cpp/cppdap is not keyworded in most places
 dev-build/cmake -dap

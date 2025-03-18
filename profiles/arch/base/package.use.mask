@@ -336,10 +336,6 @@ sys-block/fio python gnuplot
 # The JIT feature only works on amd64 and x86.
 app-emulation/aranym jit
 
-# Craig Andrews <candrews@gentoo.org> (2019-10-08)
-# net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
-net-misc/curl nghttp3
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # Moved from arch/powerpc/ppc64 as it applies to most architectures.
 sys-firmware/seabios debug
