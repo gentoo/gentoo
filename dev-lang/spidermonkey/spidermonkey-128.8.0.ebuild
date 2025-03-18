@@ -442,6 +442,11 @@ src_test() {
 
 	cp "${FILESDIR}"/spidermonkey-${SLOT}-known-test-failures.txt "${T}"/known_test_failures.list || die
 
+	if use ppc ; then
+		echo "non262/extensions/reviver-mutates-holder-object-nonnative.js" >> "${T}"/known_test_failures.list
+		echo "non262/extensions/typedarray-set-detach.js" >> "${T}"/known_test_failures.list
+	fi
+
 	if use ppc64 ; then
 		echo "test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js" >> "${T}"/known_test_failures.list
 	fi
