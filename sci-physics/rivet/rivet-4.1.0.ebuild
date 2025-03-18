@@ -67,7 +67,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
+	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch # https://gitlab.com/hepcedar/rivet/-/issues/308
+	"${FILESDIR}"/${PN}-4.1.0-testsyoda.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/1056
 )
 
 pkg_setup() {
@@ -88,7 +89,6 @@ src_configure() {
 		$(use_with zlib zlib "${ESYSROOT}/usr") \
 		--with-hepmc3="${ESYSROOT}/usr" \
 		$(use_enable highfive h5) \
-		$(usex highfive "--with-highfive=${ESYSROOT}/usr" "") \
 		--with-yoda="${ESYSROOT}/usr" \
 		--with-fastjet="${ESYSROOT}/usr" \
 		--with-yaml-cpp="${EPREFIX}/usr" \
