@@ -77,6 +77,10 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	meson_src_test --no-suite style
+}
+
 src_install() {
 	meson_src_install
 	if use gtk-doc; then
