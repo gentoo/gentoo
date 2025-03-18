@@ -234,6 +234,7 @@ src_compile() {
 }
 
 src_test() {
+	local -x USER=$(whoami)
 	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 check
 }
