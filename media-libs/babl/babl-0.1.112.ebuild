@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/babl.git"
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A dynamic, any to any, pixel format conversion library"
@@ -58,4 +58,11 @@ src_configure() {
 		$(meson_use cpu_flags_x86_sse4_1 enable-sse4_1)
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	# Create symlink for backward compatibility. See also bug 871690
+	dosym -r /usr/"$(get_libdir)"/pkgconfig/babl-0.1.pc /usr/"$(get_libdir)"/pkgconfig/babl.pc
 }
