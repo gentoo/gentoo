@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -29,6 +29,13 @@ RDEPEND="
 "
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/abseil/abseil-py/commit/78fb38cea7ffd1329f6455c997302529ce6fc6ce
+		"${FILESDIR}/${P}-py313.patch"
+	)
+
+	distutils-r1_src_prepare
+
 	# what a nightmare... well, we could have called bazel but that would
 	# even worse
 	local helpers=(
@@ -55,12 +62,15 @@ src_prepare() {
 	done
 
 	# i don't wanna know how these pass for upstream with wrong helper names
-	sed -i -e 's:\(app_test_helper\)\.py:\1_pure_python:' \
-		absl/tests/app_test.py || die
-	sed -i -e 's:\(logging_functional_test_helper\)\.py:\1:' \
-		absl/logging/tests/logging_functional_test.py || die
+	sed -e 's:\(app_test_helper\)\.py:\1_pure_python:' \
+		-i absl/tests/app_test.py || die
+	sed -e 's:\(logging_functional_test_helper\)\.py:\1:' \
+		-i absl/logging/tests/logging_functional_test.py || die
 
-	distutils-r1_src_prepare
+	# parts of 617ce2c8b9976aa9e32c079c625fa6d864b2bbee
+	# (don't sed the one case containing ", suiteClass=...")
+	sed -e 's:unittest\.makeSuite\(([^,]*)\):unittest.defaultTestLoader.loadTestsFromTestCase\1:' \
+		-i absl/testing/tests/{absltest,parameterized}_test.py || die
 }
 
 python_test() {
