@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Built with autotools rather than cmake to avoid circular dep (bug #951525)
+
 inherit multilib-minimal
 
 DESCRIPTION="HTTP/2 C Library"
