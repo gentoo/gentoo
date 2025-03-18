@@ -89,7 +89,7 @@ X_DEPEND="x11-libs/libICE
 		)
 	)"
 
-RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui(-)?]
+RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -125,7 +125,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui(-)?]
 		imagemagick? ( media-gfx/imagemagick:0=[jpeg?,png?,svg?,tiff?] )
 		!aqua? (
 			gsettings? (
-				app-emacs/emacs-common[gsettings(-)]
+				>=app-emacs/emacs-common-1.11[gsettings]
 				>=dev-libs/glib-2.28.6
 			)
 			gtk? ( !X? (

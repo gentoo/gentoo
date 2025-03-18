@@ -20,7 +20,7 @@ SLOT="26"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
 
-RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui(-)?]
+RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
