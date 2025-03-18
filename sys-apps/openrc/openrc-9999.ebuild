@@ -59,6 +59,7 @@ src_configure() {
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
+		-Dpam_libdir="$(getpam_mod_dir)"
 		$(meson_feature selinux)
 		-Dshell=$(usex bash /bin/bash /bin/sh)
 		$(meson_use sysv-utils sysvinit)
