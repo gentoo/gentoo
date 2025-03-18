@@ -534,10 +534,6 @@ sys-libs/ncurses stack-realign
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
 
-# Craig Andrews <candrews@gentoo.org> (2022-03-25)
-# Requires as of yet unreleased QUIC support in OpenSSL
-net-libs/ngtcp2 openssl
-
 # Sam James <sam@gentoo.org> (2022-03-02)
 # Needs masked version of ogre (>=1.12), bug #825330
 >=dev-games/mygui-3.4.1 ogre
