@@ -1,0 +1,21 @@
+--- a/setup.py	2025-03-18 12:35:14.931331106 -0400
++++ b/setup.py	2025-03-18 12:35:48.122815701 -0400
+@@ -113,18 +113,6 @@
+                 "man/duplicity.1",
+             ],
+         ),
+-        (
+-            f"share/doc/duplicity-{Version}",
+-            [
+-                "CHANGELOG.md",
+-                "AUTHORS.md",
+-                "COPYING",
+-                "README.md",
+-                "README-LOG.md",
+-                "README-REPO.md",
+-                "README-TESTING.md",
+-            ],
+-        ),
+     ]
+ 
+     # short circuit fot READTHEDOCS
