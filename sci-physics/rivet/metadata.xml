@@ -19,10 +19,10 @@
 	It covers all aspects of collider physics, from unfolded precision measurements to reconstruction-level searches, and physics from the Standard Model to BSM theories, and from perturbative jet, boson and top-quarks to hadron decays, inclusive QCD, and Heavy Ion physics.
 	</longdescription>
 	<use>
-		<flag name="zlib">Build with zlib</flag>
-		<flag name="hepmc3">Build with HepMC3</flag>
-		<flag name="hepmc2">Build with HepMC2</flag>
-		<flag name="highfive">Build with hdf5 and highfive</flag>
+		<flag name="zlib">Build with <pkg>sys-libs/zlib</pkg></flag>
+		<flag name="hepmc3">Build with <pkg>sci-physics/hepmc</pkg> version 3</flag>
+		<flag name="hepmc2">Build with <pkg>sci-physics/hepmc</pkg> version 2</flag>
+		<flag name="highfive">Build with <pkg>sci-libs/HighFive</pkg> and <pkg>sci-libs/hdf5</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">hepcedar/rivet</remote-id>
