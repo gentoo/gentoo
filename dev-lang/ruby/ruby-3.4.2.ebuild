@@ -117,6 +117,7 @@ src_prepare() {
 
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
+	rm -f test/rubygems/test_bundled_ca.rb || die
 	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb \
 	   spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb \
 		spec/ruby/library/socket/socket/connect_spec.rb || die
