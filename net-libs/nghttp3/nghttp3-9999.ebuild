@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Built with autotools rather than cmake to avoid circular dep (bug #951524)
+
 inherit multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
