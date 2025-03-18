@@ -64,6 +64,7 @@ src_configure() {
 	# we need to use the prefix cython here
 	econf --disable-static \
 		--with-yaml-cpp="${EPREFIX}/usr" \
+		$(use_enable highfive h5) \
 		$(use_with highfive highfive "${ESYSROOT}/usr") \
 		$(use_enable python pyext) \
 		$(use_with zlib zlib "${ESYSROOT}/usr") \
