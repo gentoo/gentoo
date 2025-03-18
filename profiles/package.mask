@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-18)
+# Last release in 2019, no tests, no reverse dependencies.
+# Removal on 2025-04-17.  Bug #951540.
+dev-python/pysvg-py3
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Unmaintained.  Last release in 2015, missing tests in sdist and not
 # tagged on GitHub.  Not marked for py3.13.  No reverse dependencies.
