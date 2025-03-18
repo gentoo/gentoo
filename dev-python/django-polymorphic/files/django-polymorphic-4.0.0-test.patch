@@ -1,0 +1,23 @@
+From ecb85b3539c71e376eb0a111e98b5b374d5c9532 Mon Sep 17 00:00:00 2001
+From: Jonathan he <jonathan.he@oracle.com>
+Date: Wed, 5 Feb 2025 16:02:04 -0500
+Subject: [PATCH] PolymorphicQuerySet: Prevent NoneType error in test___lookup
+
+---
+ polymorphic/query.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/polymorphic/query.py b/polymorphic/query.py
+index 8e93281..ba67529 100644
+--- a/polymorphic/query.py
++++ b/polymorphic/query.py
+@@ -277,7 +277,8 @@ class PolymorphicQuerySet(QuerySet):
+                 tree_node_test___lookup(self.model, a)
+             elif hasattr(a, "get_source_expressions"):
+                 for source_expression in a.get_source_expressions():
+-                    test___lookup(source_expression)
++                    if source_expression is not None:
++                        test___lookup(source_expression)
+             else:
+                 assert "___" not in a.name, ___lookup_assert_msg
+ 
