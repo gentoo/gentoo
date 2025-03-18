@@ -1,0 +1,26 @@
+From f004e6c0a9a25e16fd2a1ae671a9cacfa79625b4 Mon Sep 17 00:00:00 2001
+From: Evan Brown <ezb@google.com>
+Date: Thu, 13 Feb 2025 16:11:49 -0800
+Subject: [PATCH] Disable the DestroyedCallsFail test on GCC due to flakiness.
+
+Fixes #1834.
+
+PiperOrigin-RevId: 726674816
+Change-Id: Icfbc73c8fac687819e9d94472a3071aa687f5c37
+---
+ absl/container/internal/raw_hash_set_test.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/absl/container/internal/raw_hash_set_test.cc b/absl/container/internal/raw_hash_set_test.cc
+index b03934dd4d6..e04add6efff 100644
+--- a/absl/container/internal/raw_hash_set_test.cc
++++ b/absl/container/internal/raw_hash_set_test.cc
+@@ -3782,6 +3782,8 @@ TEST(Table, ReentrantCallsFail) {
+ TEST(Table, DestroyedCallsFail) {
+ #ifdef NDEBUG
+   GTEST_SKIP() << "Destroyed checks only enabled in debug mode.";
++#elif !defined(__clang__) && defined(__GNUC__)
++  GTEST_SKIP() << "Flaky on GCC.";
+ #else
+   absl::optional<IntTable> t;
+   t.emplace({1});
