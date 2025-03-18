@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Evaluate an automatic speech recognition system"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/jitsi/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 RDEPEND="
 	dev-python/rapidfuzz[${PYTHON_USEDEP}]
 "
