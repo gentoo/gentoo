@@ -1,0 +1,31 @@
+https://github.com/mean00/avidemux2/commit/65878cb39f3d9a2e51cb248cdab9724824f80558.patch
+From: listout <listout@protonmail.com>
+Date: Tue, 7 Mar 2023 13:27:46 +0530
+Subject: [PATCH] Fix Fixes non-constant-expression cannot be narrowed from
+ type 'uint32_t' error with clang-16
+
+Clang 16 (to be released appx. March 2023) will make the following default errors:
+-Werror=implicit-function-declaration
+-Werror=implicit-int
+-Werror=int-conversion (this is in Clang 15, actually)
+-Werror=incompatible-function-pointer-types (GCC does not have a specific equivalent error, use -Werror=incompatible-pointer-types instead when testing)
+
+Building with Clang-16 results in build failure with
+non-constant-expression cannot be narrowed from type 'uint32_t' error
+with clang-16. Following what the compiler suggests, adding a
+static_cast<int> helps suppress the error.
+
+Signed-off-by: listout <brahmajit.xyz@gmail.com>
+--- a/avidemux_core/ADM_coreImage/src/ADM_colorspace.cpp
++++ b/avidemux_core/ADM_coreImage/src/ADM_colorspace.cpp
+@@ -637,8 +637,8 @@ void * ADMRGB32Scaler::planeWorker(void *argptr)
+     }
+     
+     // resize plane
+-    int xs[4]={ADM_IMAGE_ALIGN(arg->srcWidth),0,0,0};
+-    int xd[4]={ADM_IMAGE_ALIGN(arg->dstWidth),0,0,0};
++    int xs[4]={static_cast<int>(ADM_IMAGE_ALIGN(arg->srcWidth)),0,0,0};
++    int xd[4]={static_cast<int>(ADM_IMAGE_ALIGN(arg->dstWidth)),0,0,0};
+     uint8_t *src[4]={NULL,NULL,NULL,NULL};
+     uint8_t *dst[4]={NULL,NULL,NULL,NULL};
+     src[0]=arg->iPlane;
