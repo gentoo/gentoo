@@ -21,7 +21,7 @@ LICENSE="
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gles2-only test"
-RESTRICT="bindist !test? ( test )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/libglvnd
