@@ -1,12 +1,10 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CRATES="
-"
-
-inherit bash-completion-r1 cargo prefix
+CRATES=""
+inherit cargo prefix shell-completion toolchain-funcs
 
 DESCRIPTION="Rust toolchain installer"
 HOMEPAGE="https://rust-lang.github.io/rustup/"
@@ -17,12 +15,13 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}"
+	SRC_URI+=" https://github.com/gentoo-crate-dist/${PN}/releases/download/${PV}/${P}-crates.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
+LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 openssl Unicode-3.0"
 SLOT="0"
 # uses network
 RESTRICT="test"
@@ -52,8 +51,7 @@ src_configure() {
 	local myfeatures=(
 		no-self-update
 		curl-backend
-		reqwest-backend
-		reqwest-default-tls
+		reqwest-native-tls
 	)
 	case ${ARCH} in
 		ppc* | mips* | riscv* | s390*)
@@ -74,14 +72,17 @@ src_install() {
 	einstalldocs
 	newbin "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" rustup-init-gentoo
 
-	ln -s "${ED}/usr/bin/rustup-init" rustup || die
-	./rustup completions bash rustup > "${T}/rustup" || die
-	./rustup completions zsh rustup > "${T}/_rustup" || die
+	if ! tc-is-cross-compiler; then
+		einfo "generating shell completion files"
+		ln -sf "${ED}/usr/bin/rustup-init" rustup || die
 
-	dobashcomp "${T}/rustup"
-
-	insinto /usr/share/zsh/site-functions
-	doins "${T}/_rustup"
+		./rustup completions bash > "${T}/${PN}" || die
+		dobashcomp "${T}/${PN}"
+		./rustup completions zsh > "${T}/_${PN}" || die
+		dozshcomp "${T}/_${PN}"
+	else
+		ewarn "Shell completion files not installed! Install them manually with '${PN} completions --help'"
+	fi
 }
 
 pkg_postinst() {
