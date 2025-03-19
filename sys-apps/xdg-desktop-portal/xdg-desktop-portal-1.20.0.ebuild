@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit meson python-any-r1 systemd
 
 DESCRIPTION="Desktop integration portal"
-HOMEPAGE="https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal"
+HOMEPAGE="https://flatpak.github.io/xdg-desktop-portal/ https://github.com/flatpak/xdg-desktop-portal"
 SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
