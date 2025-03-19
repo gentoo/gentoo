@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,11 +17,6 @@ S="${WORKDIR}/ThirdParty-ASL-releases-${PV}"
 LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-
-PATCHES=(
-       # See 943309. Patch merged upstream https://github.com/coin-or-tools/ThirdParty-ASL/pull/7
-       "${FILESDIR}/${P}-getrusage.patch"
-)
 
 src_unpack() {
 	default
