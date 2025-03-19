@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_IN_SOURCE_BUILD=yes # needed for tests
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1
 
 MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
@@ -13,7 +13,6 @@ MY_P="${MY_PN}-${MY_PV}"
 
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ProgVal/${MY_PN}.git"
-	EGIT_BRANCH="testing"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/ProgVal/${MY_PN}/archive/master-${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -46,30 +45,24 @@ python_prepare_all() {
 }
 
 python_test() {
-	pushd "${T}" > /dev/null || die
-	PLUGINS_DIR="${BUILD_DIR}"/lib/supybot/plugins
-	EXCLUDE_PLUGINS=()
+	PLUGINS_DIR="${BUILD_DIR}/build/lib/supybot/plugins"
 	# intermittent failure due to issues loading libsandbox.so from LD_PRELOAD
 	# runs successfully when running the tests on the installed system
-	EXCLUDE_PLUGINS+=(
+	EXCLUDE_PLUGINS=(
 		--exclude="${PLUGINS_DIR}/Unix"
 		--exclude="${PLUGINS_DIR}/Aka"
 		--exclude="${PLUGINS_DIR}/Misc"
 	)
-	"${EPYTHON}" "${BUILD_DIR}"/scripts/supybot-test "${BUILD_DIR}/../test" \
+
+	"${EPYTHON}" "${BUILD_DIR}/install/usr/bin/supybot-test" \
 		--plugins-dir="${PLUGINS_DIR}" --no-network \
 		--disable-multiprocessing "${EXCLUDE_PLUGINS[@]}" \
+		"${S}/test" \
 		|| die "Tests failed under ${EPYTHON}"
-	popd > /dev/null || die
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-	doman man/*
 }
 
 pkg_postinst() {
-	elog "Complete user documentation is available at https://limnoria-doc.readthedocs.org/"
+	elog "Complete user documentation is available at https://limnoria-doc.readthedocs.io/"
 	elog ""
 	elog "Use supybot-wizard to create a configuration file."
 	elog "Run supybot </path/to/config> to use the bot."
