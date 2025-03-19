@@ -1,9 +1,9 @@
-https://github.com/seccomp/libseccomp/pull/459
+https://github.com/seccomp/libseccomp/commit/84005ecc603fd0186188c4113452fd8e8a0c9bb3
 
-From e6904da422e68031b0237c1e005fc5e98c12e2cf Mon Sep 17 00:00:00 2001
+From 84005ecc603fd0186188c4113452fd8e8a0c9bb3 Mon Sep 17 00:00:00 2001
 From: Romain Geissler <romain.geissler@amadeus.com>
 Date: Tue, 18 Feb 2025 22:29:05 +0000
-Subject: [PATCH] Fix strict aliasing UB in MurMur hash implementation.
+Subject: [PATCH] hash: fix strict aliasing UB in MurMur hash implementation
 
 This was spotted when trying to upgrade the libseccomp fedora package to
 version 2.6.0 in fedora rawhide. It comes with gcc 15 and LTO enabled by
@@ -24,20 +24,26 @@ errors in valgrind:
 ==265507==    at 0x409590: _hsh_add (gen_bpf.c:573)
 
 Investigating this a bit, it seems that because of LTO the MurMur hash
-implementation is being inlined in _hsh_add. The way we call getblock32
-with the explicit cast to const uint32_t* is a strict aliasing
-violation.
+implementation is being inlined in _hsh_add. The two buffers data and
+blocks to point at the same underlying data, but via incompatible type,
+which is a strict aliasing violation. Instead, remove the getblock32
+function and inline the copy with memcpy.
 
 This is reproducible on a "fedora:rawhide" container (gcc 15) and using:
 export CFLAGS='-O2 -flto=auto -ffat-lto-objects -g'
 
 Signed-off-by: Romain Geissler <romain.geissler@amadeus.com>
+Reviewed-by: Sam James <sam@gentoo.org>
+Acked-by: Tom Hromatka <tom.hromatka@oracle.com>
+[PM: subject line tweak]
+Signed-off-by: Paul Moore <paul@paul-moore.com>
+(imported from commit 614530bc8b3c9f49aa59d7eaef4863b746504c23)
 ---
- src/hash.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ src/hash.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
 diff --git a/src/hash.c b/src/hash.c
-index 4435900f..301abfc9 100644
+index 4435900f..01ff9399 100644
 --- a/src/hash.c
 +++ b/src/hash.c
 @@ -12,15 +12,11 @@
@@ -57,13 +63,31 @@ index 4435900f..301abfc9 100644
  static inline uint32_t rotl32(uint32_t x, int8_t r)
  {
  	return (x << r) | (x >> (32 - r));
-@@ -56,7 +52,7 @@ uint32_t hash(const void *key, size_t length)
+@@ -41,7 +37,6 @@ static inline uint32_t fmix32(uint32_t h)
+ uint32_t hash(const void *key, size_t length)
+ {
+ 	const uint8_t *data = (const uint8_t *)key;
+-	const uint32_t *blocks;
+ 	const uint8_t *tail;
+ 	const int nblocks = length / 4;
+ 	const uint32_t c1 = 0xcc9e2d51;
+@@ -54,9 +49,8 @@ uint32_t hash(const void *key, size_t length)
+ 	uint32_t h1 = 0;
+ 
  	/* body */
- 	blocks = (const uint32_t *)(data + nblocks * 4);
+-	blocks = (const uint32_t *)(data + nblocks * 4);
  	for(i = -nblocks; i; i++) {
 -		k1 = getblock32(blocks, i);
-+		memcpy(&k1, &blocks[i], sizeof(uint32_t));
++		memcpy(&k1, data + (nblocks + i) * sizeof(uint32_t), sizeof(uint32_t));
  
  		k1 *= c1;
  		k1 = rotl32(k1, 15);
-
+@@ -68,7 +62,7 @@ uint32_t hash(const void *key, size_t length)
+ 	}
+ 
+ 	/* tail */
+-	tail = (const uint8_t *)(data + nblocks * 4);
++	tail = data + nblocks * sizeof(uint32_t);
+ 	switch(length & 3) {
+ 	case 3:
+ 		k2 ^= tail[2] << 16;
