@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,6 @@ LIB_DEPEND="
 DEPEND="
 	static? ( ${LIB_DEPEND} )
 	aio? ( >=dev-libs/libaio-0.3.106 )
-	sys-kernel/linux-headers
 "
 RDEPEND="
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
@@ -87,11 +86,15 @@ src_configure() {
 		# Don't require mpers support on non-multilib systems. #649560
 		--enable-mpers=check
 
+		# We don't want to pin to exact linux-headers versions (bug #950309)
+		--enable-bundled=yes
+
 		$(use_enable static)
 		$(use_with unwind libunwind)
 		$(use_with elfutils libdw)
 		$(use_with selinux libselinux)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
