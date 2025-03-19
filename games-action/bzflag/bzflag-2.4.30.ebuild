@@ -33,6 +33,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.12-configure.patch
 	"${FILESDIR}"/${PN}-2.4.12-tinfo.patch
+	"${FILESDIR}"/${P}-miniupnpc.patch
 )
 
 DOCS=( AUTHORS ChangeLog DEVINFO PORTING README README.Linux )
@@ -52,9 +53,7 @@ src_configure() {
 		ewarn
 		ewarn "You are building a server-only copy of BZFlag"
 		ewarn
-		myconf+=( --disable-client --without-SDL )
-	else
-		myconf=( --with-SDL=2 )
+		myconf+=( --disable-client )
 	fi
 
 	econf "${myconf[@]}"
