@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} python3_13t )
 
 inherit python-r1
 
@@ -42,4 +42,7 @@ RDEPEND="
 			<dev-lang/python-3.13.0_rc1_p3-r1:3.13
 		)
 	' python3_13)
+	$(python_gen_cond_dep '
+		dev-python/python-tests:3.13t
+	' python3_13t)
 "
