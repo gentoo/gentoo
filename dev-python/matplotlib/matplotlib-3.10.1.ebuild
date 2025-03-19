@@ -261,7 +261,20 @@ python_test() {
 				'tests/test_text.py::test_parse_math'
 				'tests/test_text.py::test_parse_math_rcparams'
 			)
-			;&
+			;;
+		arm)
+			EPYTEST_DESELECT+=(
+				tests/test_backend_ps.py::test_savefig_to_stringio
+				# too large for 32-bit platforms
+				'tests/test_axes.py::test_psd_csd[png]'
+			)
+			;;
+		sparc64)
+			EPYTEST_DESELECT+=(
+				tests/test_backend_pgf.py::test_pdf_pages_metadata_check
+				tests/test_backend_pgf.py::test_minus_signs_with_tex
+			)
+			;;
 		alpha|arm|m68k|o32|ppc|s390|sh|sparc|x86)
 			EPYTEST_DESELECT+=(
 				# too large for 32-bit platforms
