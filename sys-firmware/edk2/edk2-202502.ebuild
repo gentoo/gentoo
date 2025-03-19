@@ -48,7 +48,7 @@ SRC_URI="
 S="${WORKDIR}/${PN}-${PN}-stable${PV}"
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="-* ~amd64 ~loong ~riscv"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -205,6 +205,14 @@ raw_to_qcow2() {
 	done
 }
 
+nx_strict_args() {
+	"${@}" \
+		--pcd PcdDxeNxMemoryProtectionPolicy=0xC000000000007FD5 \
+		--pcd PcdImageProtectionPolicy=0x03 \
+		--pcd PcdNullPointerDetectionPropertyMask=0x03 \
+		--pcd PcdSetNxForStack=TRUE
+}
+
 src_compile() {
 	TOOLCHAIN="GCC5"
 	BUILD_TARGET="RELEASE"
@@ -228,9 +236,14 @@ src_compile() {
 
 	case "${ARCH}" in
 	amd64)
+		BUILD_ARGS+=(
+			# shim.efi has broken MemAttr code
+			--pcd PcdUninstallMemAttrProtocol=TRUE
+		)
+
 		local SIZE
 		for SIZE in _2M _4M; do
-			mybuild -a X64 -p OvmfPkg/OvmfPkgX64.dsc \
+			nx_strict_args mybuild -a X64 -p OvmfPkg/OvmfPkgX64.dsc \
 				-D FD_SIZE${SIZE}B \
 				-D BUILD_SHELL=FALSE \
 				-D SECURE_BOOT_ENABLE \
@@ -239,7 +252,8 @@ src_compile() {
 			mv -T Build/OvmfX64 Build/OvmfX64${SIZE}.secboot || die
 
 			mybuild -a X64 -p OvmfPkg/OvmfPkgX64.dsc \
-				-D FD_SIZE${SIZE}B
+				-D FD_SIZE${SIZE}B \
+				--pcd PcdDxeNxMemoryProtectionPolicy=0
 
 			mv -T Build/OvmfX64 Build/OvmfX64${SIZE} || die
 
@@ -251,19 +265,18 @@ src_compile() {
 		;;
 	arm64)
 		BUILD_ARGS+=(
-			# grub.efi uses EfiLoaderData for code
-			--pcd PcdDxeNxMemoryProtectionPolicy=0xC000000000007FD1
 			# shim.efi has broken MemAttr code
 			--pcd PcdUninstallMemAttrProtocol=TRUE
 		)
 
-		mybuild -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc \
+		nx_strict_args mybuild -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc \
 			-D BUILD_SHELL=FALSE \
 			-D SECURE_BOOT_ENABLE
 
 		mv -T Build/ArmVirtQemu-AARCH64 Build/ArmVirtQemu-AARCH64.secboot_INSECURE || die
 
-		mybuild -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc
+		mybuild -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc \
+			--pcd PcdDxeNxMemoryProtectionPolicy=0xC000000000007FD1
 
 		mk_fw_vars arm64 Build/ArmVirtQemu-AARCH64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
 		raw_to_qcow2 64m Build/ArmVirtQemu-AARCH64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
