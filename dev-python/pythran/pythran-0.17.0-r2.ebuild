@@ -70,16 +70,14 @@ src_configure() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# multiple extra deps (meson, openblas)
+		# also broken on pypy3*
+		pythran/tests/test_distutils.py::TestMeson::test_meson_build
+	)
 
 	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
 		case ${EPYTHON} in
-			pypy3*)
-				EPYTEST_DESELECT+=(
-					# tries to link to libpypy*.so
-					pythran/tests/test_distutils.py::TestMeson::test_meson_build
-				)
-				;;
 			python3.13)
 				EPYTEST_DESELECT+=(
 					# repr() differences?
