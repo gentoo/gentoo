@@ -47,3 +47,8 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://bugs.gentoo.org/951568
+	"${FILESDIR}/${P}-test.patch"
+)

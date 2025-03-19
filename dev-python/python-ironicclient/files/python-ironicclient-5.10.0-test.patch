@@ -1,0 +1,163 @@
+From 0684eafa407973aec608fbcfac13e146511c10e2 Mon Sep 17 00:00:00 2001
+From: Riccardo Pittau <elfosardo@gmail.com>
+Date: Thu, 6 Mar 2025 12:08:08 +0100
+Subject: [PATCH 3/3] Fix bare metal info order in unit tests
+
+Info on bare metal components have changed order
+
+Change-Id: Ibbd76a115175caea9db038d0b6601b83f9c0c3e8
+(cherry picked from commit b969cc865ab7b59214fe3fa86115d88decfe2823)
+---
+ .../unit/osc/v1/test_baremetal_chassis.py     |  4 +-
+ .../unit/osc/v1/test_baremetal_conductor.py   | 15 ++---
+ .../tests/unit/osc/v1/test_baremetal_node.py  | 58 ++++++++++---------
+ 3 files changed, 40 insertions(+), 37 deletions(-)
+
+diff --git a/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py b/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py
+index 9af4853..6422ea0 100644
+--- a/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py
++++ b/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py
+@@ -50,14 +50,14 @@ class TestChassisCreate(TestChassis):
+         self.arglist = []
+         self.verifylist = []
+         self.collist = (
++            'uuid',
+             'description',
+             'extra',
+-            'uuid',
+         )
+         self.datalist = (
++            baremetal_fakes.baremetal_chassis_uuid,
+             baremetal_fakes.baremetal_chassis_description,
+             baremetal_fakes.baremetal_chassis_extra,
+-            baremetal_fakes.baremetal_chassis_uuid,
+         )
+         self.actual_kwargs = {}
+ 
+diff --git a/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py b/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py
+index e9708a9..4c00834 100644
+--- a/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py
++++ b/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py
+@@ -212,17 +212,18 @@ class TestBaremetalConductorShow(TestBaremetalConductor):
+             *args, fields=None
+         )
+ 
+-        collist = ('alive',
+-                   'conductor_group',
+-                   'drivers',
+-                   'hostname',
+-                   )
++        collist = (
++            'hostname',
++            'conductor_group',
++            'alive',
++            'drivers',
++        )
+         self.assertEqual(collist, columns)
+         datalist = (
+-            baremetal_fakes.baremetal_alive,
++            baremetal_fakes.baremetal_hostname,
+             baremetal_fakes.baremetal_conductor_group,
++            baremetal_fakes.baremetal_alive,
+             baremetal_fakes.baremetal_drivers,
+-            baremetal_fakes.baremetal_hostname,
+         )
+         self.assertEqual(datalist, tuple(data))
+ 
+diff --git a/ironicclient/tests/unit/osc/v1/test_baremetal_node.py b/ironicclient/tests/unit/osc/v1/test_baremetal_node.py
+index 3194910..a1fab2b 100644
+--- a/ironicclient/tests/unit/osc/v1/test_baremetal_node.py
++++ b/ironicclient/tests/unit/osc/v1/test_baremetal_node.py
+@@ -759,22 +759,23 @@ class TestBaremetalCreate(TestBaremetal):
+         self.cmd = baremetal_node.CreateBaremetalNode(self.app, None)
+         self.arglist = ['--driver', 'fake_driver']
+         self.verifylist = [('driver', 'fake_driver')]
+-        self.collist = ('chassis_uuid',
+-                        'instance_uuid',
+-                        'maintenance',
+-                        'name',
+-                        'power_state',
+-                        'provision_state',
+-                        'uuid'
+-                        )
++        self.collist = (
++            'uuid',
++            'name',
++            'instance_uuid',
++            'power_state',
++            'provision_state',
++            'maintenance',
++            'chassis_uuid'
++        )
+         self.datalist = (
+-            baremetal_fakes.baremetal_chassis_uuid_empty,
+-            baremetal_fakes.baremetal_instance_uuid,
+-            baremetal_fakes.baremetal_maintenance,
++            baremetal_fakes.baremetal_uuid,
+             baremetal_fakes.baremetal_name,
++            baremetal_fakes.baremetal_instance_uuid,
+             baremetal_fakes.baremetal_power_state,
+             baremetal_fakes.baremetal_provision_state,
+-            baremetal_fakes.baremetal_uuid,
++            baremetal_fakes.baremetal_maintenance,
++            baremetal_fakes.baremetal_chassis_uuid_empty,
+         )
+         self.actual_kwargs = {
+             'driver': 'fake_driver'
+@@ -3704,25 +3705,26 @@ class TestBaremetalShow(TestBaremetal):
+             *args, fields=None
+         )
+ 
+-        collist = ('chassis_uuid',
+-                   'instance_uuid',
+-                   'maintenance',
+-                   'name',
+-                   'power_state',
+-                   'provision_state',
+-                   'uuid'
+-                   )
++        collist = (
++            'uuid',
++            'name',
++            'instance_uuid',
++            'power_state',
++            'provision_state',
++            'maintenance',
++            'chassis_uuid',
++        )
+         self.assertEqual(collist, columns)
+         self.assertNotIn('ports', columns)
+         self.assertNotIn('states', columns)
+         datalist = (
+-            baremetal_fakes.baremetal_chassis_uuid_empty,
+-            baremetal_fakes.baremetal_instance_uuid,
+-            baremetal_fakes.baremetal_maintenance,
++            baremetal_fakes.baremetal_uuid,
+             baremetal_fakes.baremetal_name,
++            baremetal_fakes.baremetal_instance_uuid,
+             baremetal_fakes.baremetal_power_state,
+             baremetal_fakes.baremetal_provision_state,
+-            baremetal_fakes.baremetal_uuid
++            baremetal_fakes.baremetal_maintenance,
++            baremetal_fakes.baremetal_chassis_uuid_empty,
+         )
+         self.assertEqual(datalist, tuple(data))
+ 
+@@ -4828,10 +4830,10 @@ class TestNodeHistoryEventGet(TestBaremetal):
+         columns, data = self.cmd.take_action(parsed_args)
+         self.baremetal_mock.node.get_history_event.assert_called_once_with(
+             'node_uuid', 'event_uuid')
+-        expected_columns = ('conductor', 'created_at', 'event', 'event_type',
+-                            'severity', 'user', 'uuid')
+-        expected_data = ('lap-conductor', 'time', 'meow', 'purring', 'info',
+-                         '0191', 'abcdef1')
++        expected_columns = ('uuid', 'created_at', 'severity', 'event',
++                            'event_type', 'conductor', 'user')
++        expected_data = ('abcdef1', 'time', 'info', 'meow', 'purring',
++                         'lap-conductor', '0191')
+ 
+         self.assertEqual(expected_columns, columns)
+         self.assertEqual(expected_data, tuple(data))
+-- 
+2.49.0
+
