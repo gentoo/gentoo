@@ -18,13 +18,12 @@ fi
 # main
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
-IUSE="btrfs device-mapper rootless"
+IUSE="btrfs rootless"
 RESTRICT="test"
 
 DEPEND="
 	>=app-crypt/gpgme-1.5.5:=
 	btrfs? ( >=sys-fs/btrfs-progs-4.0.1 )
-	device-mapper? ( >=sys-fs/lvm2-2.02.145:= )
 	rootless? ( sys-apps/shadow:= )
 "
 RDEPEND="${DEPEND}
@@ -34,7 +33,6 @@ BDEPEND="dev-go/go-md2man"
 
 pkg_setup() {
 	use btrfs && CONFIG_CHECK+=" ~BTRFS_FS"
-	use device-mapper && CONFIG_CHECK+=" ~MD"
 	linux-info_pkg_setup
 }
 
@@ -42,7 +40,6 @@ run_make() {
 	local emakeflags=(
 		BTRFS_BUILD_TAG="$(usex btrfs '' 'btrfs_noversion exclude_graphdriver_btrfs')"
 		CONTAINERSCONFDIR="${EPREFIX}/etc/containers"
-		LIBDM_BUILD_TAG="$(usex device-mapper '' 'libdm_no_deferred_remove exclude_graphdriver_devicemapper')"
 		LIBSUBID_BUILD_TAG="$(usex rootless 'libsubid' '')"
 		PREFIX="${EPREFIX}/usr"
 	)
