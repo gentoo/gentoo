@@ -79,7 +79,7 @@ BDEPEND="
 	>=dev-lang/go-1.23:=
 	sys-libs/ncurses
 	virtual/pkgconfig
-	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_cond_dep 'dev-python/pillow[zlib,${PYTHON_USEDEP}]') )
 	wayland? ( dev-util/wayland-scanner )
 "
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
