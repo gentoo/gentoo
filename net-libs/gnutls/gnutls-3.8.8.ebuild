@@ -10,10 +10,6 @@ DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS 
 HOMEPAGE="https://www.gnutls.org/"
 SRC_URI="mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz"
 SRC_URI+=" verify-sig? ( mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz.sig )"
-if [[ ${PV} == 3.8.7.1 ]] ; then
-	# Workaround for botched dist tarball
-	S="${WORKDIR}"/gnutls-3.8.7
-fi
 
 LICENSE="GPL-3 LGPL-2.1+"
 # As of 3.8.0, the C++ library is header-only, but we won't drop the subslot
