@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 
 ANTLR_VERSION=4.13.2
 
-inherit gnome2 flag-o-matic python-single-r1 cmake
+inherit gnome2 flag-o-matic java-pkg-2 python-single-r1 cmake
 
 MY_P="${PN}-community-${PV}-src"
 
@@ -59,11 +59,14 @@ CDEPEND="${PYTHON_DEPS}
 
 RDEPEND="${CDEPEND}
 		app-admin/sudo
+		>=virtual/jre-1.8:*
 		>=sys-apps/net-tools-1.60_p20120127084908"
 
+# To allow building with java system-vm set to openjdk{,-bin}-8 it needs DEPEND with jdk
+# https://bugs.gentoo.org/933844
 DEPEND="${CDEPEND}
 		dev-lang/swig
-		>=virtual/jre-11
+		>=virtual/jdk-11:*
 		virtual/pkgconfig"
 
 PATCHES=(
@@ -71,6 +74,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.19-mysql-connector-8.patch"
 	"${FILESDIR}/${PN}-8.0.33-gcc13.patch"
 )
+
+pkg_setup() {
+	java-pkg-2_pkg_setup
+	python-single-r1_pkg_setup
+}
 
 src_unpack() {
 	unpack ${PN}-community-${PV}-src.tar.gz
@@ -84,6 +92,12 @@ src_prepare() {
 
 	## package is very fragile...
 	strip-flags
+
+	java-pkg-2_src_prepare
+
+	# bundled jar and class should be built from source and exclusions be removed.
+	java-pkg_clean ! -path "./library/sql.parser/yy_purify-tool/dist/yy_purify.jar" \
+		! -path "./library/sql.parser/update-tool/classes/BisonHelper.class"
 
 	cmake_src_prepare
 }
