@@ -40,6 +40,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-ioctl.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
