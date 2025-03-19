@@ -1,0 +1,79 @@
+Pass -U_GLIBCXX_ASSERTIONS when building mrustc as a workaround (not yet
+reported, sorry).
+--- a/Makefile
++++ b/Makefile
+@@ -47,7 +47,7 @@ CXXFLAGS := -g -Wall
+ CXXFLAGS += -std=c++14
+ #CXXFLAGS += -Wextra
+ CXXFLAGS += -O2
+-CXXFLAGS += $(CXXFLAGS_EXTRA)
++CXXFLAGS += $(CXXFLAGS_EXTRA) -U_GLIBCXX_ASSERTIONS
+ 
+ CPPFLAGS := -I src/include/ -I src/
+ CPPFLAGS += -I tools/common/
+--- a/tools/common/Makefile
++++ b/tools/common/Makefile
+@@ -12,7 +12,7 @@ OBJS += jobserver.o
+ 
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+ 
+-CXXFLAGS += $(CXXFLAGS_EXTRA)
++CXXFLAGS += $(CXXFLAGS_EXTRA) -U_GLIBCXX_ASSERTIONS
+ 
+ OBJS := $(OBJS:%=$(OBJDIR)%)
+ 
+--- a/tools/dump_hirfile/Makefile
++++ b/tools/dump_hirfile/Makefile
+@@ -16,7 +16,7 @@ OBJS := main.o
+ 
+ LINKFLAGS := -g -lpthread -lz
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common -I ../../src -I ../../src/include
++CXXFLAGS += -I ../common -I ../../src -I ../../src/include -U_GLIBCXX_ASSERTIONS
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+ LINKFLAGS += $(LINKFLAGS_EXTRA)
+--- a/tools/minicargo/Makefile
++++ b/tools/minicargo/Makefile
+@@ -23,7 +23,7 @@ OBJS += file_timestamp.o os.o
+ 
+ LINKFLAGS := -g -lpthread
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common
++CXXFLAGS += -I ../common -U_GLIBCXX_ASSERTIONS
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+ LINKFLAGS += $(LINKFLAGS_EXTRA)
+--- a/tools/mir_opt_test/Makefile
++++ b/tools/mir_opt_test/Makefile
+@@ -16,7 +16,7 @@ LIBS := ../../bin/mrustc.a ../../bin/common_lib.a
+ 
+ LINKFLAGS := -g -lpthread -lz
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common -I ../../src/include -I ../../src -I .
++CXXFLAGS += -I ../common -I ../../src/include -I ../../src -I . -U_GLIBCXX_ASSERTIONS
+ CXXFLAGS += -Wno-misleading-indentation	# Gets REALLY confused by the TU_ARM macro
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+--- a/tools/standalone_miri/Makefile
++++ b/tools/standalone_miri/Makefile
+@@ -16,7 +16,7 @@ OBJS += miri.o miri_extern.o miri_intrinsic.o
+ 
+ LINKFLAGS := -g -lpthread
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common -I ../../src/include -I .
++CXXFLAGS += -I ../common -I ../../src/include -I . -U_GLIBCXX_ASSERTIONS
+ CXXFLAGS += -Wno-misleading-indentation	# Gets REALLY confused by the TU_ARM macro
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+--- a/tools/testrunner/Makefile
++++ b/tools/testrunner/Makefile
+@@ -8,7 +8,7 @@ OBJS := main.o path.o
+ LINKFLAGS := -g
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+ 
+-CXXFLAGS += $(CXXFLAGS_EXTRA)
++CXXFLAGS += $(CXXFLAGS_EXTRA) -U_GLIBCXX_ASSERTIONS
+ LINKFLAGS += $(LINKFLAGS_EXTRA)
+ 
+ OBJS := $(OBJS:%=$(OBJDIR)%)

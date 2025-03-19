@@ -1,0 +1,12 @@
+We need this otherwise the built code will assert when building dev-lang/rust
+later. Not yet reported upstream.
+--- a/src/trans/codegen_c.cpp
++++ b/src/trans/codegen_c.cpp
+@@ -1274,6 +1274,7 @@ namespace {
+                 {
+                     args.push_back( a.c_str() );
+                 }
++                args.push_back("-U_GLIBCXX_ASSERTIONS"); // TODO
+                 args.push_back("-Wno-psabi");   // Suppress "note: the ABI for passing parameters with 128-byte alignment has changed in GCC 4.6"
+                 switch(opt.opt_level)
+                 {
