@@ -1,11 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-NEED_EMACS=26.1
-DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517="no"
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 elisp
 
@@ -15,9 +14,10 @@ HOMEPAGE="https://github.com/Alexander-Miller/treemacs/"
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/Alexander-Miller/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Alexander-Miller/${PN}"
 else
 	COMMIT_SHA=8c6df39f01a4d47fda2cc943645fa067f771b748
+
 	SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/${COMMIT_SHA}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT_SHA}"
