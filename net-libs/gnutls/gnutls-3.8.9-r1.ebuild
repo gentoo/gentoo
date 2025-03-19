@@ -129,11 +129,11 @@ multilib_src_configure() {
 		$(use_enable sslv3 ssl3-support)
 		$(use_enable static-libs static)
 		$(use_enable tls-heartbeat heartbeat-support)
-		$(use_with brotli)
+		$(use_with brotli '' link)
 		$(use_with idn)
 		$(use_with pkcs11 p11-kit)
-		$(use_with zlib)
-		$(use_with zstd)
+		$(use_with zlib '' link)
+		$(use_with zstd '' link)
 		--disable-rpath
 		--with-default-trust-store-file="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
 		--with-unbound-root-key-file="${EPREFIX}"/etc/dnssec/root-anchors.txt
