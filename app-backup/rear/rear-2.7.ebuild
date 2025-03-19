@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,10 @@ EAPI=8
 inherit optfeature udev
 
 DESCRIPTION="Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution"
-HOMEPAGE="http://relax-and-recover.org/ https://github.com/rear/rear/"
+HOMEPAGE="
+	https://relax-and-recover.org/
+	https://github.com/rear/rear/
+"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
