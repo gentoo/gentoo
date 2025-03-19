@@ -1,3 +1,5 @@
+Fix dependency on app-misc/openrgb
+
 --- a/OpenRGBVisualMapPlugin.pro
 +++ b/OpenRGBVisualMapPlugin.pro
 @@ -99,6 +99,5 @@ HEADERS +=
