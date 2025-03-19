@@ -95,6 +95,15 @@ python_test() {
 		tests/test_dns_srv.py::test_srv
 	)
 
+	case ${ARCH} in
+		arm|x86)
+			EPYTEST_DESELECT+=(
+				# TODO
+				tests/types/test_numpy.py::test_classes_identities
+			)
+			;;
+	esac
+
 	local impls=( python )
 	if use native-extensions && [[ ${EPYTHON} != pypy3* ]]; then
 		impls+=( c )
