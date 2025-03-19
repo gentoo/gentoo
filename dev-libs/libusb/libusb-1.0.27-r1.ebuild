@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,10 @@ BDEPEND="doc? ( app-text/doxygen )"
 
 src_prepare() {
 	default
+
+	# bug #923738
+	sed -i -e "s:umockdev-1.0:umockdev-1.0-DISABLED:" configure || die
+
 	elibtoolize
 }
 
