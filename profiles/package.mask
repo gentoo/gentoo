@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-20)
+# Upstream have made clear that they are not going to port to Qt6 and
+# recommend sys-apps/qdirstat (from original k4dirstat author) instead.
+# Alternatively, there is kde-apps/filelight available.
+# Bug #951138. Removal on 2025-04-19.
+kde-misc/kdirstat
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-18)
 # Last release in 2019, no tests, no reverse dependencies.
 # Removal on 2025-04-17.  Bug #951540.
