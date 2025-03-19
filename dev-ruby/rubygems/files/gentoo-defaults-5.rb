@@ -13,7 +13,7 @@ module Gem
     end
 
     def gentoo_bindir
-      Process.euid.zero? ? '@GENTOO_PORTAGE_EPREFIX@/usr/local/bin' : File.join(user_home, 'bin')
+      Process.euid.zero? ? '@GENTOO_PORTAGE_EPREFIX@/usr/local/bin' : File.join(user_dir, 'bin')
     end
 
     def gentoo_local_dir
