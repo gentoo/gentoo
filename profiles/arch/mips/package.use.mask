@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-03-19)
+# media-libs/libebur128 not keyworded here
+media-video/pipewire loudness
+
 # Joonas Niilola <juippis@gentoo.org> (2025-03-18)
 # llvm-17 stack not keyworded on mips, later versions are.
 # Spidermonkey still declares llvm-17 compat on other arches.
