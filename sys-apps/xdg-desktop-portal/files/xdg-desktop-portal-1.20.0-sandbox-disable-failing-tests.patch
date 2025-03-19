@@ -1,6 +1,8 @@
+diff --git a/tests/meson.build b/tests/meson.build
+index 377d48a..8a6ebe0 100644
 --- a/tests/meson.build
 +++ b/tests/meson.build
-@@ -87,14 +87,11 @@ pytest_files = [
+@@ -87,13 +87,11 @@ pytest_files = [
    'test_clipboard.py',
    'test_documents.py',
    'test_document_fuse.py',
@@ -11,11 +13,10 @@
    'test_inhibit.py',
    'test_inputcapture.py',
 -  'test_location.py',
--  'test_notification.py',
    'test_openuri.py',
    'test_permission_store.py',
    'test_print.py',
-@@ -188,4 +185,4 @@ if enable_installed_tests
+@@ -191,4 +189,4 @@ if enable_installed_tests
        install_dir: installed_tests_data_dir,
      )
    endforeach

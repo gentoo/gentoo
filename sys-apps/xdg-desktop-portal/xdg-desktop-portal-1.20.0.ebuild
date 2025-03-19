@@ -54,6 +54,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	# Needed until gstreamer-rs (for gstreamer-pbutils) is packaged
+	"${FILESDIR}/${PN}-1.20.0-optional-gstreamer.patch"
 	# These tests require connections to pipewire, internet, /dev/fuse
 	"${FILESDIR}/${PN}-1.20.0-sandbox-disable-failing-tests.patch"
 )
@@ -79,6 +81,7 @@ src_configure() {
 		# Needs gstreamer-pbutils (part of gstreamer-rs)?
 		# Not yet packaged
 		#$(meson_feature seccomp sandboxed-sound-validation)
+		-Dsandboxed-sound-validation=disabled
 		$(meson_feature systemd)
 		# Requires flatpak
 		-Ddocumentation=disabled
