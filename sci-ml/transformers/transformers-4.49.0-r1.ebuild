@@ -39,6 +39,7 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
+		sci-ml/pysentencepiece[${PYTHON_USEDEP}]
 	')
 "
 
