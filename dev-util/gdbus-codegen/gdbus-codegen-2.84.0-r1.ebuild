@@ -21,6 +21,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 
 RDEPEND="
 	${PYTHON_DEPS}
+	!<dev-libs/glib-${PV}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
