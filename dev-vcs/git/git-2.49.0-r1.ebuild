@@ -150,6 +150,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
 	"${FILESDIR}"/${PN}-2.49.0-meson-use-test_environment-conditionally.patch
+	"${FILESDIR}"/${PN}-2.49.0-docs.patch
 )
 
 pkg_setup() {

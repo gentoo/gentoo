@@ -151,6 +151,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.0-doc-deps.patch
 	"${FILESDIR}"/${PN}-2.48.1-parallel-build.patch
 	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
+	"${FILESDIR}"/${PN}-2.48.1-docs.patch
 )
 
 pkg_setup() {
