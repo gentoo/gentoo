@@ -44,6 +44,13 @@ RDEPEND="
 
 distutils_enable_tests unittest
 
+src_prepare() {
+	if use test; then
+		PATCHES+=( "${FILESDIR}/${PN}-add-delay-in-mqtt-test.patch" )
+	fi
+	default
+}
+
 python_compile() {
 	if use doc; then
 		bash "${S}"/docs/generate || die
