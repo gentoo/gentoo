@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+. /etc/default/derper
+
+name="derper"
+description="Tailscale DERP server"
+command="/usr/bin/derper"
+command_args=" \
+	-certdir ${CERTDIR} \
+	-certmode ${CERTMODE} \
+	-hostname ${HOSTNAME} \
+	-a ${ADDR} \
+	-http-port ${HTTP_PORT} \
+	-c '${HOMEDIR}'/derper.key \
+	${FLAGS}
+"
+command_user="${DERPER_USER}:${DERPER_GROUP}"
+command_background=true
+pidfile="/run/derper.pid"
+directory="${HOMEDIR}"
+output_log="/var/log/derper/derper.log"
+error_log="/var/log/derper/derper.error"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -d -m 700 -o ${command_user} /var/log/derper
+	checkpath -d -m 750 -o ${command_user} ${HOMEDIR}
+	/usr/libexec/derper-pre.sh
+}
