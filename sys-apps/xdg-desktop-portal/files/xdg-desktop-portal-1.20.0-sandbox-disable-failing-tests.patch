@@ -1,0 +1,24 @@
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -87,14 +87,11 @@ pytest_files = [
+   'test_clipboard.py',
+   'test_documents.py',
+   'test_document_fuse.py',
+-  'test_dynamiclauncher.py',
+   'test_email.py',
+   'test_filechooser.py',
+   'test_globalshortcuts.py',
+   'test_inhibit.py',
+   'test_inputcapture.py',
+-  'test_location.py',
+-  'test_notification.py',
+   'test_openuri.py',
+   'test_permission_store.py',
+   'test_print.py',
+@@ -188,4 +185,4 @@ if enable_installed_tests
+       install_dir: installed_tests_data_dir,
+     )
+   endforeach
+-endif
+\ No newline at end of file
++endif
