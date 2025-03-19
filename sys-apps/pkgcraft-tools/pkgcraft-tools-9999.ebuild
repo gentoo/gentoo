@@ -70,7 +70,9 @@ src_test() {
 src_install() {
 	cargo_src_install
 
-	newbashcomp shell/pk.bash pk
-	dozshcomp shell/_pk
-	dofishcomp shell/pk.fish
+	if [[ ${PV} != 9999 ]] ; then
+		newbashcomp shell/pk.bash pk
+		dozshcomp shell/_pk
+		dofishcomp shell/pk.fish
+	fi
 }
