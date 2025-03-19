@@ -47,6 +47,7 @@ BDEPEND="
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
 		media-libs/fontconfig
+		x11-base/xorg-server[-minimal]
 	)
 "
 
