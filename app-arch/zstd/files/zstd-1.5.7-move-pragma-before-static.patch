@@ -1,0 +1,45 @@
+https://github.com/facebook/zstd/pull/4341
+
+From cd8ca9d92e6fb3a4c962f8f6f50c3ee467177e06 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 20 Mar 2025 03:28:37 +0000
+Subject: [PATCH] lib/zstd.h: move pragma before static
+
+otherwise will cause dev-python/zstandard build failed when compiling with
+clang as reported at https://bugs.gentoo.org/950259
+
+the root cause is pycparser, which is unfixed since reported 2.5 years
+ago, :(
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ lib/zstd.h | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/lib/zstd.h b/lib/zstd.h
+index 9fe542ed..85046949 100644
+--- a/lib/zstd.h
++++ b/lib/zstd.h
+@@ -1868,15 +1868,14 @@ ZSTDLIB_STATIC_API const ZSTD_DDict* ZSTD_initStaticDDict(
+ typedef void* (*ZSTD_allocFunction) (void* opaque, size_t size);
+ typedef void  (*ZSTD_freeFunction) (void* opaque, void* address);
+ typedef struct { ZSTD_allocFunction customAlloc; ZSTD_freeFunction customFree; void* opaque; } ZSTD_customMem;
+-static
+-#ifdef __GNUC__
+-__attribute__((__unused__))
+-#endif
+-
+ #if defined(__clang__) && __clang_major__ >= 5
+ #pragma clang diagnostic push
+ #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+ #endif
++static
++#ifdef __GNUC__
++__attribute__((__unused__))
++#endif
+ ZSTD_customMem const ZSTD_defaultCMem = { NULL, NULL, NULL };  /**< this constant defers to stdlib's functions */
+ #if defined(__clang__) && __clang_major__ >= 5
+ #pragma clang diagnostic pop
+-- 
+2.45.2
+

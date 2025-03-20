@@ -29,6 +29,7 @@ MESON_PATCHES=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.7-move-pragma-before-static.patch
 )
 
 src_prepare() {
