@@ -1,0 +1,32 @@
+# Gentoo bug: https://bugs.gentoo.org/885531
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -302,7 +302,7 @@ GIOChannel *set_up_io_channel(gint fd, GIOCondition cond, GIOFunc func,
+
+ 	/* set up handler for data */
+ 	ioc = g_io_channel_unix_new(fd);
+-	pids[streams][1] = ioc;
++	pids[streams][1] = (gint) ioc;
+ 	streams++;
+
+ 	/* Set IOChannel encoding to none to make
+@@ -391,7 +391,7 @@ void kill_proc(gboolean all, gint curtab)
+ 	{
+ 		if((kill(pids[curtab][0], SIGKILL)) != -1)
+ 		{
+-			g_io_channel_shutdown((pids[curtab][1]), FALSE, NULL);
++			g_io_channel_shutdown(((GIOChannel *)pids[curtab][1]), FALSE, NULL);
+ 		}
+
+
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -11,6 +11,7 @@
+
+ #include "interface.h"
+ #include "support.h"
++#include "callbacks.h"
+
+ int
+ main (int argc, char *argv[])
