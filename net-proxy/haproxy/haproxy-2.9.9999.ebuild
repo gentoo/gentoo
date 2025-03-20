@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -160,7 +160,7 @@ src_install() {
 	dosbin haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
-	newinitd "${FILESDIR}/${PN}.initd-r8" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r9" ${PN}
 
 	doman doc/haproxy.1
 
