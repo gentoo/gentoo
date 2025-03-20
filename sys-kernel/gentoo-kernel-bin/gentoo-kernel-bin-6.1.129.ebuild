@@ -41,7 +41,7 @@ RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}
 "
 PDEPEND="
-	>=virtual/dist-kernel-${PV}
+	>=virtual/dist-kernel-${PV}:$(ver_cut 1-2)
 "
 BDEPEND="
 	app-alternatives/bc
