@@ -98,7 +98,7 @@ sci-chemistry/ParmEd
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-17)
 # Database migration issues on upgrade, bug #951486
->=app-office/kmymoney-5.1.92
+~app-office/kmymoney-5.1.92_p20250306
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-15)
 # EAPI=7, uses deprecated Go eclasses. Isn't maintained in Gentoo
