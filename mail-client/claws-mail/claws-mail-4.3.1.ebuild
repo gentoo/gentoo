@@ -23,6 +23,9 @@ SLOT="0"
 
 IUSE="appindicator archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
+	appindicator? ( notification )
+	libcanberra? ( notification )
+	libnotify? ( notification )
 	notification? ( || ( appindicator libcanberra libnotify ) )
 	networkmanager? ( dbus )
 	oauth? ( gnutls )
