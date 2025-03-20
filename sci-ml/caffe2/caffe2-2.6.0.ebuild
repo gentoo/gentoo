@@ -20,7 +20,8 @@ S="${WORKDIR}"/${MYP}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm flash gloo mkl mpi nnpack +numpy onednn openblas opencl openmp qnnpack rocm xnnpack"
+IUSE="cuda distributed fbgemm flash gloo memefficient mkl mpi nnpack +numpy
+	onednn openblas opencl openmp qnnpack rocm xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -149,6 +150,14 @@ src_prepare() {
 		c10/CMakeLists.txt \
 		c10/hip/CMakeLists.txt \
 		|| die
+	sed -i \
+		-e 's:pocketfft_hdronly.h:pocketfft/pocketfft_hdronly.h:' \
+		aten/src/ATen/native/mkl/SpectralOps.cpp \
+		die
+	sed -i \
+		-e '/Using pocketfft in directory:/d' \
+		cmake/Dependencies.cmake \
+		|| die
 
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
@@ -213,7 +222,7 @@ src_configure() {
 		-DUSE_ITT=OFF
 		-DUSE_KINETO=OFF # TODO
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
-		-DUSE_MEM_EFF_ATTENTION=OFF
+		-DUSE_MEM_EFF_ATTENTION=$(usex memefficient)
 		-DUSE_MKLDNN=$(usex onednn)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_NCCL=OFF
