@@ -32,6 +32,8 @@ DOCS=(
 	doc/special_symbols.md
 )
 
+PATCHES=( "${FILESDIR}"/${P}-gcc15.patch )
+
 src_prepare() {
 	sed -i \
 		-e "s:third_party/darts_clone/darts.h:darts.h:" \
