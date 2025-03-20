@@ -1,11 +1,10 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_SINGLE_IMPL=1
-
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -18,10 +17,12 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="$(python_gen_cond_dep '
+RDEPEND="
+	$(python_gen_cond_dep '
 		dev-python/dnspython[${PYTHON_USEDEP}]
 		dev-python/reportlab[${PYTHON_USEDEP}]
-	')"
+	')
+"
 
 src_prepare() {
 	default
