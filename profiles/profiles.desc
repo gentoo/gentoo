@@ -1,4 +1,4 @@
-# Copyright 2003-2024 Gentoo Authors
+# Copyright 2003-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 #############################################
@@ -67,8 +67,8 @@ amd64		default/linux/amd64/23.0/no-multilib/prefix			exp
 amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.32+	exp
 amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.16+	exp
 amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-3.2+		exp
-amd64		default/linux/amd64/23.0/llvm					stable
-amd64		default/linux/amd64/23.0/llvm/systemd				stable
+amd64		default/linux/amd64/23.0/llvm					dev
+amd64		default/linux/amd64/23.0/llvm/systemd				dev
 amd64		default/linux/amd64/23.0/hardened				stable
 amd64		default/linux/amd64/23.0/hardened/systemd			stable
 amd64		default/linux/amd64/23.0/hardened/selinux			stable
@@ -85,7 +85,7 @@ amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix		exp
 amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.32+	exp
 amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.16+	exp
 amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-3.2+	exp
-amd64		default/linux/amd64/23.0/split-usr/llvm				stable
+amd64		default/linux/amd64/23.0/split-usr/llvm				dev
 amd64		default/linux/amd64/23.0/split-usr/hardened			stable
 amd64		default/linux/amd64/23.0/split-usr/hardened/selinux		stable
 
