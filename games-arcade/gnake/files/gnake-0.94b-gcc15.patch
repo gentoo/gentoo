@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/944252
+
+--- a/gnake.c
++++ b/gnake.c
+@@ -64,14 +64,14 @@ typedef struct {
+ void getOptions(int argc, char *argv[]);
+ void DrawWindow();
+ void Init();
+-void Step();
++void Step(int a);
+ void Draw();
+ void End();
+ 
+ coord getRandEmptyCell(int mandatory);
+ void createApple(int i);
+ 
+-void Resize();
++void Resize(int a);
+ 
+ char *TheGameName = "Gnake 0.94b";
+ 
+@@ -349,7 +349,7 @@ void CPUMove(int n) {
+   Snk[n].Dir = d;
+ }
+ 
+-void Step() {
++void Step(int a) {
+   node *Last;
+   int n, c;
+ 
+@@ -716,7 +716,7 @@ void Init() {
+   setitimer(ITIMER_REAL, &Timer, NULL);
+ }
+ 
+-void Resize() {
++void Resize(int a) {
+   FILE *p;
+   int l, c;
+   
