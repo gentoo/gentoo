@@ -1,0 +1,13 @@
+From: OldManSeph7818 <sschaefering@gmail.com>
+Date: Mon, 27 Jan 2025 15:47
+Subject: [PATCH] fix gcc-15 build
+
+--- a/renderdoc/3rdparty/glslang/SPIRV/SpvBuilder.h
++++ b/renderdoc/3rdparty/glslang/SPIRV/SpvBuilder.h
+
+@@ -64,2 +64,3 @@
+-#include <unordered_map>
+-#include <map>
++#include <unordered_map>
++#include <cstdint>
++#include <map>
