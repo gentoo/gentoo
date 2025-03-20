@@ -70,5 +70,5 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" install
+	emake DESTDIR="${ED}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" install
 }
