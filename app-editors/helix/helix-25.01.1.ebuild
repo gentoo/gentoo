@@ -34,7 +34,7 @@ RDEPEND="dev-vcs/git"
 pkg_setup() {
 	QA_FLAGS_IGNORED="
 		usr/bin/hx
-		/usr/$(get_libdir)/helix/.*\.so
+		usr/$(get_libdir)/${PN}/.*\.so
 	"
 	export HELIX_DEFAULT_RUNTIME="${EPREFIX}/usr/share/${PN}/runtime"
 	use grammar || export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
@@ -47,7 +47,7 @@ src_install() {
 	insinto "/usr/$(get_libdir)/${PN}"
 	use grammar && doins runtime/grammars/*.so
 	rm -r runtime/grammars || die
-	use grammar && dosym "../../../$(get_libdir)/${PN}" "${EPREFIX}/usr/share/${PN}/runtime/grammars"
+	use grammar && dosym -r "/usr/$(get_libdir)/${PN}" "/usr/share/${PN}/runtime/grammars"
 
 	insinto /usr/share/helix
 	doins -r runtime
