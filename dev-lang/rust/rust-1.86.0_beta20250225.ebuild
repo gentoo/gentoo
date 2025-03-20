@@ -469,7 +469,7 @@ src_configure() {
 		backtrace = true
 		incremental = false
 		$(if ! tc-is-cross-compiler; then
-			echo "default-linker = \"$(tc-getCC)\""
+			echo "default-linker = \"${CHOST}-cc\""
 		fi)
 		channel = "${build_channel}"
 		description = "gentoo"

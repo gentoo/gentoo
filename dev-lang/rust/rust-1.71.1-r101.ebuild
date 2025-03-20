@@ -333,7 +333,7 @@ src_configure() {
 		debuginfo-level-tests = 0
 		backtrace = true
 		incremental = false
-		default-linker = "$(tc-getCC)"
+		default-linker = "${CHOST}-cc"
 		parallel-compiler = $(toml_usex parallel-compiler)
 		channel = "$(usex nightly nightly stable)"
 		description = "gentoo"
