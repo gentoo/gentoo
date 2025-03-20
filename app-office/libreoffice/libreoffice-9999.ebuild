@@ -51,7 +51,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz"
+	"${ADDONS_URI}/skia-m135-6c2dc3e74ea0bd464ba1c6679ded0b643101e682.tar.xz"
 	# not packaged in Gentoo, https://github.com/tsyrogit/zxcvbn-c
 	"${ADDONS_URI}/zxcvbn-c-2.5.tar.gz"
 
@@ -140,7 +140,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.18.0:0/0.18
+	>=dev-libs/liborcus-0.20.0:0/0.20
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
