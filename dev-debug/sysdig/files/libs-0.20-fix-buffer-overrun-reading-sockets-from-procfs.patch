@@ -1,0 +1,36 @@
+
+Patch from:
+https://github.com/falcosecurity/libs/commit/de3f4cac9233682eae63c63377c82efb649679f5
+
+From de3f4cac9233682eae63c63377c82efb649679f5 Mon Sep 17 00:00:00 2001
+From: Shane Lawrence <shane@lawrence.dev>
+Date: Thu, 20 Feb 2025 14:55:41 +0000
+Subject: [PATCH] Fix buffer overrun reading sockets from procfs.
+
+Signed-off-by: Shane Lawrence <shane@lawrence.dev>
+---
+ userspace/libscap/linux/scap_fds.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/userspace/libscap/linux/scap_fds.c b/userspace/libscap/linux/scap_fds.c
+index f98ac3f32f..73e99ca428 100644
+--- a/userspace/libscap/linux/scap_fds.c
++++ b/userspace/libscap/linux/scap_fds.c
+@@ -766,7 +766,7 @@ int32_t scap_fd_read_ipv4_sockets_from_proc_fs(const char *dir,
+ 					break;
+ 				}
+ 
+-				while(*scan_pos == ' ' && scan_pos < scan_end) {
++				while(scan_pos < scan_end && *scan_pos == ' ') {
+ 					scan_pos++;
+ 				}
+ 
+@@ -974,7 +974,7 @@ int32_t scap_fd_read_ipv6_sockets_from_proc_fs(char *dir,
+ 					break;
+ 				}
+ 
+-				while(*scan_pos == ' ' && scan_pos < scan_end) {
++				while(scan_pos < scan_end && *scan_pos == ' ') {
+ 					scan_pos++;
+ 				}
+ 

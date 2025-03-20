@@ -1,27 +1,30 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( luajit )
 
-inherit bash-completion-r1 cmake flag-o-matic lua-single
+inherit bash-completion-r1 cmake flag-o-matic linux-info lua-single
 
 DESCRIPTION="A system exploration and troubleshooting tool"
 HOMEPAGE="https://sysdig.com/"
 
 # The version of falcosecurity-libs required by sysdig as source tree
-LIBS_VERSION="0.17.3"
-SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/falcosecurity/libs/archive/${LIBS_VERSION}.tar.gz -> falcosecurity-libs-${LIBS_VERSION}.tar.gz"
+LIBS_VERSION="0.20.0"
+LIBS="falcosecurity-libs-${LIBS_VERSION}"
 
-# The driver version as found in cmake/modules/driver.cmake
-DRIVER_VERSION="7.2.0+driver"
+SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/falcosecurity/libs/archive/${LIBS_VERSION}.tar.gz -> ${LIBS}.tar.gz"
+
+# The driver version as found in cmake/modules/driver.cmake or alternatively
+# as git tag on the $LIBS_VERSION of falcosecurity-libs.
+DRIVER_VERSION="8.0.0+driver"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
-IUSE="+modules"
+KEYWORDS="~amd64 ~x86"
+IUSE="bpf +modules"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}
@@ -30,6 +33,7 @@ RDEPEND="${LUA_DEPS}
 	dev-cpp/yaml-cpp:=
 	dev-libs/jsoncpp:=
 	dev-libs/libb64:=
+	bpf? ( >=dev-libs/libbpf-1.1:= )
 	dev-libs/protobuf:=
 	dev-libs/re2:=
 	dev-libs/uthash
@@ -44,18 +48,36 @@ DEPEND="${RDEPEND}
 	dev-cpp/valijson
 	virtual/os-headers"
 
+BDEPEND="bpf? (
+			dev-util/bpftool
+			llvm-core/clang:*[llvm_targets_BPF]
+		)"
+
 # pin the driver to the falcosecurity-libs version
 PDEPEND="modules? ( =dev-debug/scap-driver-${LIBS_VERSION}* )"
 
-PATCHES=( "${FILESDIR}/${PV}-scap-loader.patch" )
+PATCHES=(
+	"${FILESDIR}/0.38.1-scap-loader.patch"
+)
+
+pkg_pretend() {
+	if use bpf; then
+		local CONFIG_CHECK="
+			~BPF
+			~BPF_EVENTS
+			~BPF_JIT
+			~BPF_SYSCALL
+			~FTRACE_SYSCALLS
+			~HAVE_EBPF_JIT
+		"
+		check_extra_config
+	fi
+}
 
 src_prepare() {
-	# manually apply patches to falcosecurity-libs dependency
+	# manually apply patches to falcosecurity-libs
 	pushd "${WORKDIR}/libs-${LIBS_VERSION}"
-		# musl has no libanl (#929227)
-		if [ ${ELIBC} == "musl" ] ; then
-			eapply "${FILESDIR}/${PV}-libs-no-libanl.patch" || die
-		fi
+		eapply "${FILESDIR}/libs-0.20-fix-buffer-overrun-reading-sockets-from-procfs.patch" || die
 	popd
 
 	# do not build with debugging info
@@ -82,14 +104,15 @@ src_configure() {
 		# do not build internal libs as shared
 		-DBUILD_SHARED_LIBS=OFF
 
-		# do not build eBPF driver for now
-		-DBUILD_SYSDIG_MODERN_BPF=OFF
+		# build BPF probe depending on USE
+		-DBUILD_SYSDIG_MODERN_BPF:BOOL=$(usex bpf)
 
 		# set driver version to prevent downloading (don't ask..)
 		-DDRIVER_SOURCE_DIR="${WORKDIR}"/libs-${LIBS_VERSION}/driver
 		-DDRIVER_VERSION=${DRIVER_VERSION}
 
 		# point sysdig to the libs tree
+		-DUSE_BUNDLED_FALCOSECURITY_LIBS=ON
 		-DFALCOSECURITY_LIBS_SOURCE_DIR="${WORKDIR}"/libs-${LIBS_VERSION}
 
 		# explicitly set sysdig version - required for some reason
@@ -128,4 +151,16 @@ src_install() {
 	# move bashcomp to the proper location
 	dobashcomp "${ED}"/usr/etc/bash_completion.d/sysdig || die
 	rm -r "${ED}"/usr/etc || die
+}
+
+pkg_postinst() {
+	if use bpf; then
+		elog
+		elog "You have enabled the 'modern BPF' probe."
+		elog "This eBPF-based event source is an alternative to the traditional"
+		elog "scap kernel module."
+		elog
+		elog "To use it, start sysdig/csysdig with '--modern-bpf'."
+		elog
+	fi
 }
