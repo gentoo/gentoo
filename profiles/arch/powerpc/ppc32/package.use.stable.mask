@@ -58,10 +58,9 @@ media-video/ffmpeg-compat samba
 media-video/vlc samba
 
 # Sam James <sam@gentoo.org> (2022-03-03)
-# net-nds/openldap / dev-libs/cyrus-sasl not stable here
+# net-nds/openldap not stable here
 dev-lang/php ldap-sasl
 mail-mta/postfix ldap-bind
-net-nds/openldap cxx sasl
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # No kerberos provider is marked stable here
