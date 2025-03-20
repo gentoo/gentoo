@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
