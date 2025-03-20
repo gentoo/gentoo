@@ -25,9 +25,17 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc
 IUSE="extra test"
 RESTRICT="!test? ( test )"
 
-DEPEND="virtual/latex-base"
+COMMON_DEPEND="
+	virtual/latex-base
+"
+DEPEND="
+	${COMMON_DEPEND}
+	test? (
+		app-text/texlive[xetex]
+	)
+"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	!<dev-texlive/texlive-binextra-2023_p69527-r4
 "
 
