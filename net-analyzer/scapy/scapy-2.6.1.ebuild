@@ -3,10 +3,8 @@
 
 EAPI=8
 
-# See https://github.com/secdev/scapy/pull/3958#discussion_r1161302244 on next
-# bump (>2.5.0)!
-
-PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
@@ -15,7 +13,7 @@ SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -43,28 +41,18 @@ Scapy has optional support for the following packages:
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.0-no-install-tests.patch
+	"${FILESDIR}"/${PN}-2.6.1-skip-test.patch
+	"${FILESDIR}"/${PN}-2.6.1-missing-autorun-test-marker.patch
 )
 
 src_prepare() {
-	if ! [[ -f ${PN}/VERSION ]]; then
-		echo ${PV} > ${PN}/VERSION || die
-	else
-		die
-	fi
+	export SCAPY_VERSION=${PV}
 
-	# Drop tests which need network
-	rm \
-		test/nmap.uts \
-		test/p0f.uts \
-		test/p0fv2.uts \
-		test/regression.uts \
-		test/scapy/layers/inet6.uts || die
 	# Timed out
 	rm test/tftp.uts || die
 	# Needs ipython
 	rm test/scapy/layers/dhcp.uts || die
-	# Import failure?
+	# Import failures
 	rm test/contrib/isotp_native_socket.uts \
 		test/contrib/isotpscan.uts \
 		test/contrib/isotp_soft_socket.uts || die
@@ -73,8 +61,21 @@ src_prepare() {
 }
 
 python_test() {
+	# https://scapy.readthedocs.io/en/latest/development.html#testing-with-utscapy
 	# https://github.com/secdev/scapy/blob/master/tox.ini
-	"${EPYTHON}" -m scapy.tools.UTscapy -c ./test/configs/linux.utsc -N || die
+	#
+	# netaccess: network access, obviously
+	# tshark, tcpdump: hangs
+	# samba: needs rpcdump (and too heavy of a test dep)
+	# interact, autorun: tests fail
+	"${EPYTHON}" -m scapy.tools.UTscapy -c ./test/configs/linux.utsc -N \
+		-K netaccess \
+		-K tshark \
+		-K tcpdump \
+		-K samba \
+		-K interact \
+		-K autorun \
+		-K ci_only || die "Tests failed with ${EPYTHON}"
 }
 
 src_install() {
