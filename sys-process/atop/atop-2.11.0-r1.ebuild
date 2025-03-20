@@ -12,7 +12,7 @@ MODULES_OPTIONAL_IUSE="modules"
 NETATOP_P=netatop-${NETATOP_VER}
 NETATOP_S="${WORKDIR}"/${NETATOP_P}
 
-inherit linux-mod-r1 systemd toolchain-funcs flag-o-matic
+inherit dkms flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Resource-specific view of processes"
 HOMEPAGE="https://www.atoptool.nl/ https://github.com/Atoptool/atop"
@@ -76,7 +76,7 @@ src_compile() {
 	default
 
 	local modlist=( "netatop=:../${NETATOP_P}::netatop.ko" )
-	linux-mod-r1_src_compile
+	dkms_src_compile
 
 	if use modules ; then
 		# Don't let the Makefile try to build the module for us
@@ -85,7 +85,11 @@ src_compile() {
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	if use dkms; then
+		dkms_dopackage "../${NETATOP_P}"
+	else
+		linux-mod-r1_src_install
+	fi
 
 	if use modules ; then
 		dosbin "${NETATOP_S}"/netatopd
