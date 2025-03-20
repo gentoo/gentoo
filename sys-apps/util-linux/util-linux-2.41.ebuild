@@ -155,6 +155,9 @@ src_prepare() {
 			# Permission issues on /dev/random
 			lsfd/mkfds-eventpoll
 			lsfd/column-xmode
+
+			# Hangs on some machines
+			script/replay
 		)
 
 		# debug prints confuse the tests which look for a diff
