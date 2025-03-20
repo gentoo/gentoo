@@ -47,7 +47,7 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
+PPC64_HASH="7d1ac28278b5679d0b950ebd380bdd889b319592"
 PATCH_V="${PV%%\.*}-1"
 SRC_URI="https://chromium-tarballs.distfiles.gentoo.org/${P}-linux.tar.xz
 	!bundled-toolchain? (
@@ -73,7 +73,7 @@ SLOT="0/stable"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
 # it shouldn't be keyworded but adventurous users can select it.
 if [[ ${SLOT} != "0/dev" ]]; then
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
