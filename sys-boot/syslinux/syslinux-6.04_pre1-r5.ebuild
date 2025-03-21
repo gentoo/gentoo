@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,8 @@ HOMEPAGE="https://www.syslinux.org/"
 MY_P=${P/_/-}
 SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/${MY_P}.tar.xz"
 
+S=${WORKDIR}/${MY_P}
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
@@ -20,6 +22,7 @@ REQUIRED_USE="|| ( bios uefi )
 BDEPEND="
 	dev-lang/perl
 	bios? ( dev-lang/nasm )
+	sys-devel/gcc:*
 "
 RDEPEND="
 	sys-apps/util-linux
@@ -30,8 +33,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/os-headers
 "
-
-S=${WORKDIR}/${MY_P}
 
 QA_EXECSTACK="usr/share/syslinux/*"
 QA_WX_LOAD="usr/share/syslinux/*"
@@ -49,7 +50,17 @@ src_prepare() {
 		"${FILESDIR}/syslinux-6.04-binutils-2.41.patch"
 	)
 	default
+
+	# Force gcc because build failed with clang, #729426
+	if ! tc-is-gcc ; then
+		ewarn "syslinux can be built with gcc only."
+		ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+		export CC=${CHOST}-gcc
+		export CXX=${CHOST}-g++
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
 }
+
 src_compile() {
 	filter-lto #863722
 
