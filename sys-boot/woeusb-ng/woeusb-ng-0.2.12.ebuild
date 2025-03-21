@@ -36,6 +36,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-pkg-discovery.patch
+	"${FILESDIR}"/${P}-python3.12.patch
 	"${FILESDIR}"/${P}-skip-postinstall.patch
 )
 
