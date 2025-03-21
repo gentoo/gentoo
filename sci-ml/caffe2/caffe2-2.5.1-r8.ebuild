@@ -323,9 +323,9 @@ src_install() {
 	ln -s ../../../../../include/torch \
 		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
 
-	mv "${D}"/usr/bin/torch_shm_manager \
+	mv "${ED}"/usr/bin/torch_shm_manager \
 		"${D}"/$(python_get_sitedir)/torch/bin/ || die
 
-	mv "${D}"/usr/$(get_libdir)/libtorch_global_deps.so \
+	mv "${ED}"/usr/$(get_libdir)/libtorch_global_deps.so \
 		"${D}"/$(python_get_sitedir)/torch/lib/ || die
 }
