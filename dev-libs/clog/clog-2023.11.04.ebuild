@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,14 @@ src_unpack() {
 	unpack "${A}"
 	mv cpuinfo-${CommitId}/deps/clog clog || die
 	rm -r cpuinfo-${CommitId} || die
+}
+
+src_prepare() {
+	sed -i \
+		-e "/CMAKE_MINIMUM_REQUIRED/s:3.1:3.10:" \
+		CMakeLists.txt \
+		|| die
+	cmake_src_prepare
 }
 
 src_configure() {
