@@ -48,6 +48,7 @@ RDEPEND="
 "
 BDEPEND="
 	vala? ( $(vala_depend) )
+	dev-build/xfce4-dev-tools
 	dev-lang/perl
 	dev-util/gdbus-codegen
 	dev-util/intltool
