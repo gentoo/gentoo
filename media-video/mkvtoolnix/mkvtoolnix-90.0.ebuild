@@ -28,6 +28,8 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="dbus debug dvd gui nls pch test"
+# bug #951192
+REQUIRED_USE="dbus? ( gui )"
 RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
