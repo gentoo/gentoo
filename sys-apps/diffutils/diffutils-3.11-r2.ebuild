@@ -44,8 +44,8 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Needed because of ${P}-diff-D-option-regression.patch
-	#touch man/diff.1 || die
+	# Needed because of patches to avoid perl BDEPEND (affects Prefix too)
+	touch man/diff.1 || die
 }
 
 src_configure() {
