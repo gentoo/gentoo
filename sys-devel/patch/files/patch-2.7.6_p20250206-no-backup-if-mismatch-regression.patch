@@ -13,10 +13,7 @@ https://bugs.gentoo.org/show_bug.cgi?id=949834
 * tests/Makefile.am (TESTS): Add it.
 ---
  src/patch.c       |  6 ++++-
- tests/Makefile.am |  1 +
- tests/no-backup   | 56 +++++++++++++++++++++++++++++++++++++++++++++++
  3 files changed, 62 insertions(+), 1 deletion(-)
- create mode 100644 tests/no-backup
 
 diff --git a/src/patch.c b/src/patch.c
 index 6c460f7..e4d0524 100644
@@ -52,80 +49,3 @@ index 6c460f7..e4d0524 100644
  		break;
  	    case CHAR_MAX + 7:
  		posixly_correct = true;
-diff --git a/tests/Makefile.am b/tests/Makefile.am
-index 43ddf66..acb449a 100644
---- a/tests/Makefile.am
-+++ b/tests/Makefile.am
-@@ -50,6 +50,7 @@ TESTS = \
- 	mixed-patch-types \
- 	munged-context-format \
- 	need-filename \
-+	no-backup \
- 	no-mode-change-git-diff \
- 	no-newline-triggers-assert \
- 	preserve-c-function-names \
-diff --git a/tests/no-backup b/tests/no-backup
-new file mode 100644
-index 0000000..57b73fa
---- /dev/null
-+++ b/tests/no-backup
-@@ -0,0 +1,56 @@
-+# Copyright 2025 Free Software Foundation, Inc.
-+#
-+# Copying and distribution of this file, with or without modification,
-+# in any medium, are permitted without royalty provided the copyright
-+# notice and this notice are preserved.
-+
-+# Test the --no-backup-if-mismatch option
-+
-+. $srcdir/test-lib.sh
-+
-+require cat
-+use_local_patch
-+use_tmpdir
-+
-+# ==============================================================
-+
-+cat >my_file <<'EOF'
-+/* ... */
-+void baz();
-+
-+
-+void baz() {
-+	/* ... */
-+}
-+
-+int main() {
-+	int foo;
-+	int bar;
-+
-+	/* ... */
-+	baz();
-+}
-+EOF
-+
-+cat >my_file.patch <<'EOF'
-+--- my_file	2025-02-16 11:22:12.881765792 +0000
-++++ my_file_new	2025-02-16 11:22:12.881796732 +0000
-+@@ -2,7 +2,7 @@
-+ void baz();
-+
-+ void baz() {
-+-	/* ... */
-++	// ...
-+ }
-+
-+ int main() {
-+EOF
-+
-+unset POSIXLY_CORRECT
-+
-+check 'patch -N --no-backup-if-mismatch <my_file.patch || echo "Status: $?"' <<'EOF'
-+patching file my_file
-+Hunk #1 succeeded at 3 with fuzz 1 (offset 1 line).
-+EOF
-+
-+ncheck 'test ! -f my_file.orig'
--- 
-2.45.3
-
