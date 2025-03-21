@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/async/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
 
 ruby_add_rdepend "
 	>=dev-ruby/console-1.29:1
