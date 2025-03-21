@@ -151,10 +151,6 @@ src_prepare() {
 		c10/hip/CMakeLists.txt \
 		|| die
 	sed -i \
-		-e 's:pocketfft_hdronly.h:pocketfft/pocketfft_hdronly.h:' \
-		aten/src/ATen/native/mkl/SpectralOps.cpp \
-		die
-	sed -i \
 		-e '/Using pocketfft in directory:/d' \
 		cmake/Dependencies.cmake \
 		|| die
