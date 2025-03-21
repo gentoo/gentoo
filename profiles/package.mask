@@ -53,6 +53,7 @@ dev-python/simplebayes
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
+>=xfce-base/exo-4.21
 >=xfce-base/libxfce4ui-4.21
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
