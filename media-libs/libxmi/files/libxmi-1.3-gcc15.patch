@@ -2,11 +2,22 @@ https://bugs.gentoo.org/944450
 
 --- a/sys-defines.h
 +++ b/sys-defines.h
-@@ -169,7 +169,6 @@ extern __C_LINKAGE void free (void * ptr);
- #ifndef __cplusplus
- #ifndef HAVE_BOOL_IN_CC
- #ifdef __STDC__
+@@ -166,17 +166,7 @@ extern __C_LINKAGE void free (void * ptr);
+ /* Support the `bool' datatype, which our code uses extensively.          */
+ /**************************************************************************/
+ 
+-#ifndef __cplusplus
+-#ifndef HAVE_BOOL_IN_CC
+-#ifdef __STDC__
 -typedef enum { false = 0, true = 1 } bool;
- #else  /* not __STDC__, do things the old-fashioned way */
- typedef int bool;
- #define false 0
+-#else  /* not __STDC__, do things the old-fashioned way */
+-typedef int bool;
+-#define false 0
+-#define true 1
+-#endif
+-#endif /* not HAVE_BOOL_IN_CC */
+-#endif /* not __cplusplus */
++#include <stdbool.h>
+   
+ /**************************************************************************/
+ /* Define numerical constants (unofficial, so may not be in math.h).      */
