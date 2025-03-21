@@ -1,0 +1,117 @@
+From 1f56570ab7f6fc4feaa10ca351a8dea90f97bab7 Mon Sep 17 00:00:00 2001
+From: Janne Grunau <j@jannau.net>
+Date: Thu, 20 Mar 2025 21:50:07 +0100
+Subject: [PATCH 2981/2981] kbuild: gcc15 gnu23 to gnu11 fix
+
+iGCC 15 defaults to -std=gnu23. While most of the kernel builds with -std=gnu11,
+some of it forgets to pass that flag. Hack in CSTD_FLAG to pass -std=gnu11
+everywhere.
+
+https://lore.kernel.org/linux-kbuild/20241119044724.GA2246422@thelio-3990X/
+---
+ Makefile                              | 8 +++++---
+ arch/arm64/kernel/vdso32/Makefile     | 2 +-
+ arch/x86/Makefile                     | 2 +-
+ drivers/firmware/efi/libstub/Makefile | 6 +++---
+ 4 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index cde448edb403..2c68761d976e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -441,6 +441,8 @@ export KCONFIG_CONFIG
+ # SHELL used by kbuild
+ CONFIG_SHELL := sh
+ 
++CSTD_FLAG := -std=gnu11
++
+ HOST_LFS_CFLAGS := $(shell getconf LFS_CFLAGS 2>/dev/null)
+ HOST_LFS_LDFLAGS := $(shell getconf LFS_LDFLAGS 2>/dev/null)
+ HOST_LFS_LIBS := $(shell getconf LFS_LIBS 2>/dev/null)
+@@ -462,7 +464,7 @@ HOSTRUSTC = rustc
+ HOSTPKG_CONFIG	= pkg-config
+ 
+ KBUILD_USERHOSTCFLAGS := -Wall -Wmissing-prototypes -Wstrict-prototypes \
+-			 -O2 -fomit-frame-pointer -std=gnu11
++			 -O2 -fomit-frame-pointer $(CSTD_FLAG)
+ KBUILD_USERCFLAGS  := $(KBUILD_USERHOSTCFLAGS) $(USERCFLAGS)
+ KBUILD_USERLDFLAGS := $(USERLDFLAGS)
+ 
+@@ -576,7 +578,7 @@ LINUXINCLUDE    := \
+ KBUILD_AFLAGS   := -D__ASSEMBLY__ -fno-PIE
+ 
+ KBUILD_CFLAGS :=
+-KBUILD_CFLAGS += -std=gnu11
++KBUILD_CFLAGS += $(CSTD_FLAG)
+ KBUILD_CFLAGS += -fshort-wchar
+ KBUILD_CFLAGS += -funsigned-char
+ KBUILD_CFLAGS += -fno-common
+@@ -623,7 +625,7 @@ export CPP AR NM STRIP OBJCOPY OBJDUMP READELF PAHOLE RESOLVE_BTFIDS LEX YACC AW
+ export PERL PYTHON3 CHECK CHECKFLAGS MAKE UTS_MACHINE HOSTCXX
+ export KGZIP KBZIP2 KLZOP LZMA LZ4 XZ ZSTD
+ export KBUILD_HOSTCXXFLAGS KBUILD_HOSTLDFLAGS KBUILD_HOSTLDLIBS KBUILD_PROCMACROLDFLAGS LDFLAGS_MODULE
+-export KBUILD_USERCFLAGS KBUILD_USERLDFLAGS
++export KBUILD_USERCFLAGS KBUILD_USERLDFLAGS CSTD_FLAG
+ 
+ export KBUILD_CPPFLAGS NOSTDINC_FLAGS LINUXINCLUDE OBJCOPYFLAGS KBUILD_LDFLAGS
+ export KBUILD_CFLAGS CFLAGS_KERNEL CFLAGS_MODULE
+diff --git a/arch/arm64/kernel/vdso32/Makefile b/arch/arm64/kernel/vdso32/Makefile
+index 25a2cb6317f3..5f9d5c38ed9e 100644
+--- a/arch/arm64/kernel/vdso32/Makefile
++++ b/arch/arm64/kernel/vdso32/Makefile
+@@ -65,7 +65,7 @@ VDSO_CFLAGS += -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+                -fno-strict-aliasing -fno-common \
+                -Werror-implicit-function-declaration \
+                -Wno-format-security \
+-               -std=gnu11
++               $(CSTD_FLAG)
+ VDSO_CFLAGS  += -O2
+ # Some useful compiler-dependent flags from top-level Makefile
+ VDSO_CFLAGS += $(call cc32-option,-Wno-pointer-sign)
+diff --git a/arch/x86/Makefile b/arch/x86/Makefile
+index 5b773b34768d..d5c851dd0653 100644
+--- a/arch/x86/Makefile
++++ b/arch/x86/Makefile
+@@ -47,7 +47,7 @@ endif
+ 
+ # How to compile the 16-bit code.  Note we always compile for -march=i386;
+ # that way we can complain to the user if the CPU is insufficient.
+-REALMODE_CFLAGS	:= -std=gnu11 -m16 -g -Os -DDISABLE_BRANCH_PROFILING -D__DISABLE_EXPORTS \
++REALMODE_CFLAGS	:= $(CSTD_FLAG) -m16 -g -Os -DDISABLE_BRANCH_PROFILING -D__DISABLE_EXPORTS \
+ 		   -Wall -Wstrict-prototypes -march=i386 -mregparm=3 \
+ 		   -fno-strict-aliasing -fomit-frame-pointer -fno-pic \
+ 		   -mno-mmx -mno-sse $(call cc-option,-fcf-protection=none)
+diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
+index 1141cd06011f..b5c831a8602e 100644
+--- a/drivers/firmware/efi/libstub/Makefile
++++ b/drivers/firmware/efi/libstub/Makefile
+@@ -7,7 +7,7 @@
+ #
+ 
+ # non-x86 reuses KBUILD_CFLAGS, x86 does not
+-cflags-y			:= $(KBUILD_CFLAGS)
++cflags-y			:= $(KBUILD_CFLAGS) $(CSTD_FLAG)
+ 
+ cflags-$(CONFIG_X86_32)		:= -march=i386
+ cflags-$(CONFIG_X86_64)		:= -mcmodel=small
+@@ -18,7 +18,7 @@ cflags-$(CONFIG_X86)		+= -m$(BITS) -D__KERNEL__ -std=gnu11 \
+ 				   $(call cc-disable-warning, address-of-packed-member) \
+ 				   $(call cc-disable-warning, gnu) \
+ 				   -fno-asynchronous-unwind-tables \
+-				   $(CLANG_FLAGS)
++				   $(CLANG_FLAGS) $(CSTD_FLAG)
+ 
+ # arm64 uses the full KBUILD_CFLAGS so it's necessary to explicitly
+ # disable the stackleak plugin
+@@ -42,7 +42,7 @@ KBUILD_CFLAGS			:= $(subst $(CC_FLAGS_FTRACE),,$(cflags-y)) \
+ 				   -ffreestanding \
+ 				   -fno-stack-protector \
+ 				   $(call cc-option,-fno-addrsig) \
+-				   -D__DISABLE_EXPORTS
++				   -D__DISABLE_EXPORTS $(CSTD_FLAG)
+ 
+ #
+ # struct randomization only makes sense for Linux internal types, which the EFI
+-- 
+2.48.1
+
