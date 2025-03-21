@@ -18,6 +18,7 @@ IUSE="doc"
 BDEPEND="
 	dev-texlive/texlive-latex
 	doc? (
+		dev-texlive/texlive-langgerman
 		dev-texlive/texlive-latexextra
 	)
 "
