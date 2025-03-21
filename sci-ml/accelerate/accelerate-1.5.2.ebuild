@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
-	sci-ml/caffe2[distributed]
+	sci-ml/caffe2[gloo]
 )"
 
 distutils_enable_tests pytest
