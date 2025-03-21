@@ -38,6 +38,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/python-lsp/python-lsp-black/pull/56
+	# https://github.com/python-lsp/python-lsp-black/pull/59
+	"${FILESDIR}/${P}-test.patch"
+)
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
