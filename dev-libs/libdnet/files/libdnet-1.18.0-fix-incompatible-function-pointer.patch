@@ -1,0 +1,110 @@
+https://github.com/ofalk/libdnet/pull/104
+
+From de57a2349172148496386e284db91abe6406b02a Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 19 Feb 2025 11:37:37 +0800
+Subject: [PATCH] python/dnet.pyx: fix incompatible-function-pointer-types for
+ modern compiler
+
+which is error now, see https://bugs.gentoo.org/933360,
+clang 19 (maybe earlier) has the same problem too
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/python/dnet.pyx b/python/dnet.pyx
+index 4e3604f..04db2c6 100644
+--- a/python/dnet.pyx
++++ b/python/dnet.pyx
+@@ -661,7 +661,7 @@ cdef extern from *:
+         addr_t arp_ha
+     ctypedef struct arp_t:
+         int __xxx
+-    ctypedef int (*arp_handler)(arp_entry *entry, void *arg) except -1
++    ctypedef int (*arp_handler)(const arp_entry *entry, void *arg) except -1
+     
+     arp_t *arp_open()
+     int    arp_add(arp_t *arp, arp_entry *entry)
+@@ -687,7 +687,7 @@ ARP_OP_REPLY =		2	# /* response giving hardware address */
+ ARP_OP_REVREQUEST =	3	# /* request to resolve pa given ha */
+ ARP_OP_REVREPLY =	4	# /* response giving protocol address */
+ 
+-cdef int __arp_callback(arp_entry *entry, void *arg) except -1:
++cdef int __arp_callback(const arp_entry *entry, void *arg) except -1:
+     f, a = <object>arg
+     pa, ha = addr(), addr()
+     (<addr>pa)._addr = entry.arp_pa
+@@ -911,7 +911,7 @@ cdef extern from *:
+         addr_t		intf_alias_addrs[8]	# XXX
+     ctypedef struct intf_t:
+         int __xxx
+-    ctypedef int (*intf_handler)(intf_entry *entry, void *arg) except -1
++    ctypedef int (*intf_handler)(const intf_entry *entry, void *arg) except -1
+     
+     intf_t *intf_open()
+     int     intf_get(intf_t *intf, intf_entry *entry)
+@@ -933,7 +933,7 @@ INTF_FLAG_NOARP =	0x08	# /* disable ARP */
+ INTF_FLAG_BROADCAST =	0x10	# /* supports broadcast (r/o) */
+ INTF_FLAG_MULTICAST =	0x20	# /* supports multicast (r/o) */
+ 
+-cdef object ifent_to_dict(intf_entry *entry):
++cdef object ifent_to_dict(const intf_entry *entry):
+     d = {}
+     d['name'] = entry.intf_name
+     d['type'] = entry.intf_type
+@@ -970,7 +970,7 @@ cdef dict_to_ifent(object d, intf_entry *entry):
+         for i from 0 <= i < entry.intf_alias_num:
+             entry.intf_alias_addrs[i] = (<addr>d['alias_addrs'][i])._addr
+ 
+-cdef int __intf_callback(intf_entry *entry, void *arg) except -1:
++cdef int __intf_callback(const intf_entry *entry, void *arg) except -1:
+     f, a = <object>arg
+     ret = f(ifent_to_dict(entry), a)
+     if not ret:
+@@ -1077,7 +1077,7 @@ cdef extern from *:
+         addr_t route_gw
+     ctypedef struct route_t:
+         int __xxx
+-    ctypedef int (*route_handler)(route_entry *entry, void *arg) except -1
++    ctypedef int (*route_handler)(const route_entry *entry, void *arg) except -1
+     
+     route_t *route_open()
+     int      route_add(route_t *route, route_entry *entry)
+@@ -1086,7 +1086,7 @@ cdef extern from *:
+     int      route_loop(route_t *route, route_handler callback, void *arg)
+     route_t *route_close(route_t *route)
+ 
+-cdef int __route_callback(route_entry *entry, void *arg) except -1:
++cdef int __route_callback(const route_entry *entry, void *arg) except -1:
+     f, a = <object>arg
+     dst, gw = addr(), addr()
+     (<addr>dst)._addr = entry.route_dst
+@@ -1183,7 +1183,7 @@ cdef extern from *:
+     
+     ctypedef struct fw_t:
+         int __xxx
+-    ctypedef int (*fw_handler)(fw_rule *rule, void *arg) except -1
++    ctypedef int (*fw_handler)(const fw_rule *rule, void *arg) except -1
+ 
+     fw_t *fw_open()
+     int	  fw_add(fw_t *f, fw_rule *rule)
+@@ -1197,7 +1197,7 @@ FW_OP_BLOCK =	2
+ FW_DIR_IN =	1
+ FW_DIR_OUT =	2
+ 
+-cdef object rule_to_dict(fw_rule *rule):
++cdef object rule_to_dict(const fw_rule *rule):
+     d = {}
+     d['device'] = rule.fw_device
+     d['op'] = rule.fw_op
+@@ -1235,7 +1235,7 @@ cdef dict_to_rule(object d, fw_rule *rule):
+         rule.fw_dport[0] = d['dport'][0]
+         rule.fw_dport[1] = d['dport'][1]
+ 
+-cdef int __fw_callback(fw_rule *rule, void *arg) except -1:
++cdef int __fw_callback(const fw_rule *rule, void *arg) except -1:
+     f, a = <object>arg
+     ret = f(rule_to_dict(rule), a)
+     if not ret:
+-- 
+2.45.2
+
