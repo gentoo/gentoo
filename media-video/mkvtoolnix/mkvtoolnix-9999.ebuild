@@ -8,7 +8,7 @@ inherit autotools flag-o-matic multiprocessing prefix qmake-utils toolchain-func
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
+	EGIT_REPO_URI="https://codeberg.org/mbunkus/mkvtoolnix.git"
 	EGIT_SUBMODULES=()
 else
 	inherit verify-sig
@@ -23,11 +23,13 @@ else
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
-HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
+HOMEPAGE="https://mkvtoolnix.download/ https://codeberg.org/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="dbus debug dvd gui nls pch test"
+# bug #951192
+REQUIRED_USE="dbus? ( gui )"
 RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
@@ -53,7 +55,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-cpp/nlohmann_json-3.9.1
+	>=dev-cpp/nlohmann_json-3.11.3
 	>=dev-libs/utfcpp-3.1.2
 	test? ( dev-cpp/gtest )
 "
