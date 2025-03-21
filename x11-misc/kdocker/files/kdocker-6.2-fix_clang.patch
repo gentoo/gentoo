@@ -1,0 +1,24 @@
+https://github.com/user-none/KDocker/pull/142.patch
+From 114d1f3ac0f78569c1c0a6e8deac141c0efddff0 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Sat, 7 Dec 2024 00:49:16 -0600
+Subject: [PATCH] Fix clang compilation
+
+Signed-off-by: Reilly Brogan <reilly@reillybrogan.com>
+---
+ src/xlibutil.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/xlibutil.cpp b/src/xlibutil.cpp
+index b18f20a..d899bb5 100644
+--- a/src/xlibutil.cpp
++++ b/src/xlibutil.cpp
+@@ -654,7 +654,7 @@ void XLibUtil::raiseWindow(windowid_t window)
+ // found icon.
+ static bool imageMeetsMinimumOpaque(size_t num_opaque, size_t width, size_t height)
+ {
+-    if (static_cast<double>(num_opaque) / static_cast<double>(width * height) > 0.1d)
++    if (static_cast<double>(num_opaque) / static_cast<double>(width * height) > 0.1)
+         return true;
+     return false;
+ }
