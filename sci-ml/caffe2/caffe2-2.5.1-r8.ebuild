@@ -65,7 +65,7 @@ RDEPEND="
 	opencl? ( virtual/opencl )
 	qnnpack? (
 		!sci-libs/QNNPACK
-		dev-cpp/gemmlowp
+		sci-ml/gemmlowp
 	)
 	rocm? (
 		=dev-util/hip-6.1*
