@@ -1,0 +1,45 @@
+From 4bc26513402454d158281c7804db33ad81757891 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 21 Oct 2017 14:44:59 +0200
+Subject: [PATCH] Pass Xsession arguments to xinitrc.d/80-dbus
+
+Thanks-to: Joakim Tjernlund <joakim.tjernlund@infinera.com>
+Bug: https://bugs.gentoo.org/611210
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ data/scripts/Xsession | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/data/scripts/Xsession b/data/scripts/Xsession
+index 235a671..0846265 100755
+--- a/data/scripts/Xsession
++++ b/data/scripts/Xsession
+@@ -34,6 +34,10 @@ if [ -z "$SDDM_XSESSION_PROFILE_READ" ]; then
+ fi
+ unset SDDM_XSESSION_PROFILE_READ
+ 
++# Make D-Bus start properly, see:
++# /etc/X11/xinit/xinitrc.d/80-dbus
++command="$@"
++
+ [ -f /etc/xprofile ] && . /etc/xprofile
+ [ -f /usr/local/etc/xprofile ] && . /usr/local/etc/xprofile
+ [ -f $HOME/.xprofile ] && . $HOME/.xprofile
+@@ -82,12 +86,12 @@ if [ -f "$USERXSESSION" ]; then
+   . "$USERXSESSION"
+ fi
+ 
+-if [ -z "$*" ]; then
++if [ -z "$command" ]; then
+     exec xmessage -center -buttons OK:0 -default OK "Sorry, $DESKTOP_SESSION is no valid session."
+     exit 1
+ fi
+ 
+ # Note: This script is called with the whole session commandline as a single first argument.
+ # To run it properly, word splitting has to be performed by the shell, i.e. $@ or $0 without quotes.
+-exec $@
++exec $command
+ exit 1
+-- 
+2.49.0
+

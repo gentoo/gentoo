@@ -1,0 +1,39 @@
+From 39d30f19ac7948eb5e9ab2ef0f219ae770644f55 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 24 Oct 2020 13:57:05 +0200
+Subject: [PATCH] Set XAUTHLOCALHOSTNAME in sessions
+
+While FamilyWild avoids that hostname changes break xauth, this doesn't help
+with Xtrans (used for ICE). Xtrans always uses the current host name for
+setting $SESSION_MANAGER and for a successful connection this has to match
+the current hostname (or $XAUTHLOCALHOSTNAME, see p_xauth.diff in xtrans)
+on client connection attempts as well. By setting XAUTHLOCALHOSTNAME here,
+it's likely that it equals the hostname set by the session manager later
+(e.g. ksmserver).
+---
+ src/helper/Backend.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/helper/Backend.cpp b/src/helper/Backend.cpp
+index 91ca211..1b0bb6f 100644
+--- a/src/helper/Backend.cpp
++++ b/src/helper/Backend.cpp
+@@ -27,6 +27,7 @@
+ #include "UserSession.h"
+ 
+ #include <QtCore/QProcessEnvironment>
++#include <QtNetwork/QHostInfo>
+ 
+ #include <pwd.h>
+ 
+@@ -73,6 +74,7 @@ namespace SDDM {
+             env.insert(QStringLiteral("SHELL"), QString::fromLocal8Bit(pw->pw_shell));
+             env.insert(QStringLiteral("USER"), QString::fromLocal8Bit(pw->pw_name));
+             env.insert(QStringLiteral("LOGNAME"), QString::fromLocal8Bit(pw->pw_name));
++            env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), QHostInfo::localHostName());
+ #if defined(Q_OS_FREEBSD)
+         /* get additional environment variables via setclassenvironment();
+             this needs to be done here instead of in UserSession::setupChildProcess
+-- 
+2.39.1
+
