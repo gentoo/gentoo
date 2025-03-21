@@ -258,13 +258,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
-}
-
-src_test() {
-	local S_BACKUP="${S}"
-
 	local certbot_dirs=()
 	local base module dir
 	for base in "${CERTBOT_BASE[@]}"; do
@@ -275,15 +268,13 @@ src_test() {
 			&& certbot_dirs+=("certbot-${module}")
 	done
 
+	local epytest_dirs=()
 	for dir in "${certbot_dirs[@]}"; do
-		S="${WORKDIR}/${P}/${dir}"
-		pushd "${S}" > /dev/null || die
-		distutils-r1_src_test
-		popd > /dev/null || die
+		epytest_dirs+=( "${dir}-${EPYTHON/./_}" )
 	done
 
-	# Restore S
-	S="${S_BACKUP}"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest "${epytest_dirs[@]}"
 }
 
 src_install() {
