@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,10 @@ BDEPEND+="
 	virtual/pkgconfig
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-valgrind-tests.patch
+)
 
 pkg_setup() {
 	if kernel_is ge 3 13; then

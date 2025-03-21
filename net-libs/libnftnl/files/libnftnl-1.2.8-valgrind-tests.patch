@@ -1,0 +1,47 @@
+https://git.netfilter.org/libnftnl/commit/?id=ff37c01480cd0b938658d180ff5c7b1958ad250f
+
+From ff37c01480cd0b938658d180ff5c7b1958ad250f Mon Sep 17 00:00:00 2001
+From: Phil Sutter <phil@nwl.cc>
+Date: Wed, 27 Nov 2024 18:54:53 +0100
+Subject: tests: Fix for ASAN
+
+The 'data' arrays in match and target expression tests were undersized
+as they did not cover for the terminating NUL-char of the string used to
+initialize them. When passing such array to strdup(), the latter reads
+until after the defined array boundary.
+
+Fixes: 93483364369d8 ("src: get rid of cached copies of x_tables.h and xt_LOG.h")
+Signed-off-by: Phil Sutter <phil@nwl.cc>
+---
+ tests/nft-expr_match-test.c  | 2 +-
+ tests/nft-expr_target-test.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/nft-expr_match-test.c b/tests/nft-expr_match-test.c
+index 53a8b84..bc9f6ac 100644
+--- a/tests/nft-expr_match-test.c
++++ b/tests/nft-expr_match-test.c
+@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
+ 	char buf[4096];
+ 	struct nftnl_expr_iter *iter_a, *iter_b;
+ 	struct nftnl_expr *rule_a, *rule_b;
+-	char data[16] = "0123456789abcdef";
++	char data[] = "0123456789abcdef";
+ 
+ 	a = nftnl_rule_alloc();
+ 	b = nftnl_rule_alloc();
+diff --git a/tests/nft-expr_target-test.c b/tests/nft-expr_target-test.c
+index 89de945..a483e7a 100644
+--- a/tests/nft-expr_target-test.c
++++ b/tests/nft-expr_target-test.c
+@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
+ 	char buf[4096];
+ 	struct nftnl_expr_iter *iter_a, *iter_b;
+ 	struct nftnl_expr *rule_a, *rule_b;
+-	char data[16] = "0123456789abcdef";
++	char data[] = "0123456789abcdef";
+ 
+ 	a = nftnl_rule_alloc();
+ 	b = nftnl_rule_alloc();
+-- 
+cgit v1.2.3
