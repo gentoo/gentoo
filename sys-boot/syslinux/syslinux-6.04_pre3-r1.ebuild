@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,8 @@ DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
 MY_P=${P/_/-}
 SRC_URI="https://git.zytor.com/syslinux/syslinux.git/snapshot/${MY_P}.tar.gz"
+
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,6 +24,7 @@ RESTRICT="test"
 BDEPEND="
 	dev-lang/perl
 	bios? ( dev-lang/nasm )
+	sys-devel/gcc:*
 "
 RDEPEND="
 	sys-apps/util-linux
@@ -33,8 +36,6 @@ DEPEND="${RDEPEND}
 	uefi? ( sys-boot/gnu-efi[abi_x86_32(-)?,abi_x86_64(-)?] )
 	virtual/os-headers
 "
-
-S=${WORKDIR}/${MY_P}
 
 QA_EXECSTACK="usr/share/syslinux/*"
 QA_WX_LOAD="usr/share/syslinux/*"
@@ -51,6 +52,15 @@ src_prepare() {
 		"${FILESDIR}/6.04_pre3"
 	)
 	default
+
+	# Force gcc because build failed with clang, #729426
+	if ! tc-is-gcc ; then
+		ewarn "syslinux can be built with gcc only."
+		ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+		export CC=${CHOST}-gcc
+		export CXX=${CHOST}-g++
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
 }
 
 efimake() {
