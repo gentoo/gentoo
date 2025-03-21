@@ -114,8 +114,6 @@ webkit
 mono
 
 # Gustavo Zacarias <gustavoz@gentoo.org>
-# It doesn't even build
-d
 # LCDproc masks see bug #148072
 lcd_devices_g15
 lcd_devices_ula200
