@@ -678,7 +678,6 @@ dev-php/symfony-process test
 dev-php/theseer-Autoload test
 dev-php/twig test
 
-
 # Sam James <sam@gentoo.org> (2021-01-04)
 # Doc generation is broken, needs gtkdoc-mktmpl (gone from gtk-doc)
 # bug #723438
