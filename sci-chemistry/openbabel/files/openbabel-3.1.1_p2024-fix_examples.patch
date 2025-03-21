@@ -1,0 +1,11 @@
+--- a/doc/examples/CMakeLists.txt  2025-03-13 12:03:35.627584662 -0000
++++ b/doc/examples/CMakeLists.txt  2025-03-13 12:03:46.203418878 -0000
+@@ -7,7 +7,7 @@
+   add_executable(${example} ${example}.cpp)
+   target_link_libraries(${example} ${BABEL_LIBRARY})
+   install(TARGETS ${example}
+-    RUNTIME DESTINATION bin
++    RUNTIME DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples
+     LIBRARY DESTINATION lib
+     ARCHIVE DESTINATION lib
+   )
