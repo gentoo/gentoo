@@ -5,14 +5,22 @@ EAPI=8
 
 inherit cmake-multilib gnome2-utils
 
+ARGPARSE_COMMIT="ee74d1b53bd680748af14e737378de57e2a0a954"
 DESCRIPTION="Library for encoding and decoding .avif files"
 HOMEPAGE="https://github.com/AOMediaCodec/libavif"
 SRC_URI="
 	https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz
+	extras? (
+		https://github.com/kmurray/libargparse/archive/${ARGPARSE_COMMIT}.tar.gz
+			-> libargparse-${ARGPARSE_COMMIT}.tar.gz
+	)
 "
 
-LICENSE="BSD-2"
+LICENSE="
+	BSD-2
+	extras? ( MIT )
+"
 # See bug #822336 re subslot
 SLOT="0/16.1.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc64 ~riscv ~sparc ~x86"
@@ -45,6 +53,16 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	cmake_src_prepare
+
+	# Bug: https://bugs.gentoo.org/951614
+	if use extras; then
+		mv "${WORKDIR}/libargparse-${ARGPARSE_COMMIT}" "${S}/ext/libargparse" ||
+			die "mv failed"
+	fi
+}
 
 multilib_src_configure() {
 	local mycmakeargs=(
