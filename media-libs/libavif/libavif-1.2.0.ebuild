@@ -71,7 +71,6 @@ multilib_src_configure() {
 			-DAVIF_BUILD_EXAMPLES=$(usex examples ON OFF)
 			-DAVIF_BUILD_APPS=$(usex extras ON OFF)
 			-DAVIF_BUILD_TESTS=$(usex test ON OFF)
-			-DAVIF_ENABLE_GTEST=$(usex extras $(usex test ON OFF) OFF)
 			-DAVIF_GTEST=$(usex extras $(usex test SYSTEM OFF) OFF)
 		)
 	else
@@ -82,7 +81,6 @@ multilib_src_configure() {
 			-DAVIF_BUILD_EXAMPLES=OFF
 			-DAVIF_BUILD_APPS=OFF
 			-DAVIF_BUILD_TESTS=OFF
-			-DAVIF_ENABLE_GTEST=OFF
 			-DAVIF_GTEST=OFF
 		)
 
