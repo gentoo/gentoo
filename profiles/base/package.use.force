@@ -253,7 +253,7 @@ net-misc/wget ssl
 llvm-runtimes/libcxx libcxxabi
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-08-17)
-# USE=-cxx us a sure way to break native install as modern gcc
+# USE=-cxx is a sure way to break native install as modern gcc
 # requires C++ to bootstrap. But in rare cases it's useful
 # to have a compiler not capable of C++, bug #692126.
 sys-devel/gcc cxx
