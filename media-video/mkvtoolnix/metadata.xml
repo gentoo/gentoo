@@ -6,6 +6,6 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">mbunkus/mkvtoolnix</remote-id>
+		<remote-id type="codeberg">mbunkus/mkvtoolnix</remote-id>
 	</upstream>
 </pkgmetadata>
