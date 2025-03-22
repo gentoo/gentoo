@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
 
 RDEPEND="
-	net-im/pidgin[gtk]
+	net-im/pidgin[gui]
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
