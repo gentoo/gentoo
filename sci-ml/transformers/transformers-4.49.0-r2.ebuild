@@ -19,6 +19,7 @@ SRC_URI="https://github.com/huggingface/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="torch"
 RESTRICT="test" # Need network, too long to execute
 
 RDEPEND="
@@ -34,6 +35,11 @@ RDEPEND="
 		>=sci-ml/huggingface_hub-0.26[${PYTHON_USEDEP}]
 		>=sci-ml/safetensors-0.4.1[${PYTHON_USEDEP}]
 	')
+	torch? (
+		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/caffe2[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/accelerate[${PYTHON_SINGLE_USEDEP}]
+	)
 "
 BDEPEND="
 	$(python_gen_cond_dep '
