@@ -1259,6 +1259,7 @@ distutils_pep517_install() {
 	fi
 
 	# set it globally in case we were using "standalone" wrapper
+	local -x FLIT_ALLOW_INVALID=1
 	local -x HATCH_METADATA_CLASSIFIERS_NO_VERIFY=1
 	local -x VALIDATE_PYPROJECT_NO_NETWORK=1
 	local -x VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS=1
