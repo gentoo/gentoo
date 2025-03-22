@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 edo
 
 DESCRIPTION="Collection of command line audio tools"
 HOMEPAGE="https://audiotools.sourceforge.net/"
@@ -71,12 +72,13 @@ src_prepare() {
 	)
 
 	# enable/disable deps based on USE flags
-	local flag_lib flag lib
+	local flag_lib flag lib sedflags=()
 	for flag_lib in "${USEFLAG_LIBS[@]}"; do
 		flag=${flag_lib/:*}
 		lib=${flag_lib/*:}
-		use ${flag} || { sed -i "/^${lib}:/s/probe/no/" setup.cfg || die; }
+		use ${flag} || sedflags+=( "-e" "/^${lib}:/s/probe/no/" )
 	done
+	edo sed -i setup.cfg "${sedflags[@]}"
 }
 
 python_compile_all() {
