@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ MY_P="${MY_PN}-${MY_PV}"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	S=${WORKDIR}/${PF}/webui
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 else
 	S=${WORKDIR}/${MY_PN}-Release-${PV}/webui
@@ -28,7 +27,6 @@ HOMEPAGE="https://www.bareos.org/"
 LICENSE="AGPL-3"
 RESTRICT="mirror"
 
-DEPEND=""
 RDEPEND="${DEPEND}
 	dev-lang/php[bzip2,ctype,curl,fileinfo,filter,fpm,gd,iconv,intl,mhash,nls,pdo,postgres,session,simplexml,ssl,xml,xmlreader,xmlwriter,zip]
 	virtual/httpd-php
