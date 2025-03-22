@@ -246,22 +246,23 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-15[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-16[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit-core-3.9.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
 				bdep+='
+					>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 					>=dev-python/flit-scm-1.7.0[${PYTHON_USEDEP}]
 				'
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.21.1[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.27.0[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -271,7 +272,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-1.7.4[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -280,37 +281,37 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.15.0[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.17.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-6.0.0[${PYTHON_USEDEP}]
+					>=dev-python/pbr-6.1.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm-backend)
 				bdep+='
-					>=dev-python/pdm-backend-2.1.8[${PYTHON_USEDEP}]
+					>=dev-python/pdm-backend-2.4.3[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.9.0[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-2.1.1[${PYTHON_USEDEP}]
 				'
 				;;
 			scikit-build-core)
 				bdep+='
-					>=dev-python/scikit-build-core-0.9.4[${PYTHON_USEDEP}]
+					>=dev-python/scikit-build-core-0.10.7[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.8.3[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.10.0[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -325,7 +326,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -501,7 +502,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps=">=dev-python/sphinx-7.2.6[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-8.1.3[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -525,7 +526,7 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in ">=dev-python/sphinx-7.2.6" \
+			for p in ">=dev-python/sphinx-8.1.3" \
 				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
 			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
@@ -533,7 +534,7 @@ distutils_enable_sphinx() {
 			done
 		}
 	else
-		deps=">=dev-python/sphinx-7.2.6"
+		deps=">=dev-python/sphinx-8.1.3"
 	fi
 
 	sphinx_compile_all() {
