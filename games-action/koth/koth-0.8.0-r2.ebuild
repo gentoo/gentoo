@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Multiplayer, networked game of little tanks with really big weapons"
-HOMEPAGE="http://www.nongnu.org/koth/"
+HOMEPAGE="https://www.nongnu.org/koth/"
 SRC_URI="https://savannah.nongnu.org/download/${PN}/default.pkg/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
