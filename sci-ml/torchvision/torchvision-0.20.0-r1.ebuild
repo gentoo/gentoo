@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 inherit cuda distutils-r1 multiprocessing
@@ -22,21 +21,17 @@ KEYWORDS="~amd64"
 IUSE="cuda"
 
 RDEPEND="
-	=sci-ml/caffe2-2.5*[cuda?]
 	dev-python/numpy
 	dev-python/pillow
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	$(python_gen_cond_dep '
-		=sci-ml/pytorch-2.5*[${PYTHON_USEDEP}]
-	')
+	=sci-ml/caffe2-2.5*[cuda?]
+	=sci-ml/pytorch-2.5*[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/pytest-mock[${PYTHON_USEDEP}]
-			dev-python/lmdb[${PYTHON_USEDEP}]
-		')
+		dev-python/lmdb[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
