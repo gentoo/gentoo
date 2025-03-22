@@ -29,9 +29,8 @@ DOCS=( AUTHORS ChangeLog NEWS README README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.2-gentoo.patch
 	"${FILESDIR}"/${P}-libxml.patch
-	"${FILESDIR}"/${P}-c24.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
-#	"${FILESDIR}"/${P}-c23.patch
 
 src_prepare() {
 	default
