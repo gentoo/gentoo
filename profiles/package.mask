@@ -33,6 +33,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2026-03-20)
+# Rails 6.1 is no longer supported upstream. Use a newer Rails version
+# instead. Packages depending exclusively on Rails 6.1 will also be
+# removed. Removal on 2025-04-20.
+dev-ruby/rails:6.1
+dev-ruby/actiontext:6.1
+dev-ruby/actionmailbox:6.1
+dev-ruby/activestorage:6.1
+dev-ruby/actionmailer:6.1
+dev-ruby/actioncable:6.1
+dev-ruby/railties:6.1
+dev-ruby/activejob:6.1
+dev-ruby/actionpack:6.1
+dev-ruby/actionview:6.1
+dev-ruby/activerecord:6.1
+dev-ruby/activemodel:6.1
+dev-ruby/activesupport:6.1
+dev-ruby/actionpack-action_caching
+dev-ruby/coffee-rails
+dev-ruby/will_paginate:3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-20)
 # Upstream have made clear that they are not going to port to Qt6 and
 # recommend sys-apps/qdirstat (from original k4dirstat author) instead.
