@@ -1,0 +1,219 @@
+--- a/libcob/call.c	2025-03-22 16:23:49.936261921 +0100
++++ b/libcob/call.c	2025-03-22 16:35:37.333507344 +0100
+@@ -181,7 +181,7 @@
+ 
+ #undef	COB_SYSTEM_GEN
+ #define	COB_SYSTEM_GEN(cob_name, pmin, pmax, c_name)	\
+-	{ cob_name, 0, {(void *(*)(void *))c_name} },
++	{ cob_name, 0, {(void *(*)(void))c_name} },
+ 
+ static struct system_table	system_tab[] = {
+ #include "system.def"
+@@ -454,7 +454,7 @@
+ #pragma warning(suppress: 4113) /* funcint is a generic function prototype */
+ 	cancel_func = p->module->module_cancel.funcint;
+ #else
+-	cancel_func = p->module->module_cancel.funcint;
++	cancel_func = (int (*)(const int,  void *, void *, void *, void *))p->module->module_cancel.funcint;
+ #endif
+ 	(void)cancel_func (-1, NULL, NULL, NULL, NULL);
+ 	p->module = NULL;
+@@ -1302,7 +1302,7 @@
+ #pragma warning(suppress: 4113) /* funcint is a generic function prototype */
+ 				cancel_func = s->cob_cstr_cancel.funcint;
+ #else
+-				cancel_func = s->cob_cstr_cancel.funcint;
++				cancel_func = (int (*)(const int,  void *, void *, void *, void *))s->cob_cstr_cancel.funcint;
+ #endif
+ 				(void)cancel_func (-1, NULL, NULL, NULL,
+ 						   NULL);
+@@ -1349,7 +1349,160 @@
+ #else
+ #error	"Invalid MAX_CALL_FIELD_PARAMS value"
+ #endif
+-	i =  unifunc.funcint (pargv[0], pargv[1], pargv[2], pargv[3]
++        int (*funcint) (
++                        void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 16
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 36
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 56
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 76
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 96
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 192
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#endif
++#endif
++#endif
++#endif
++#endif
++#endif
++                       ) = (int (*)(
++                        void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 16
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 36
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 56
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 76
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 96
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#if	MAX_CALL_FIELD_PARAMS > 192
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++                       ,void *, void *, void *, void *
++#endif
++#endif
++#endif
++#endif
++#endif
++#endif
++                                   ))unifunc.funcint;
++	i =  funcint (pargv[0], pargv[1], pargv[2], pargv[3]
+ 				,pargv[4], pargv[5], pargv[6], pargv[7]
+ 				,pargv[8], pargv[9], pargv[10], pargv[11]
+ 				,pargv[12], pargv[13], pargv[14], pargv[15]
+@@ -1393,6 +1546,7 @@
+ 				,pargv[144], pargv[145], pargv[146], pargv[147]
+ 				,pargv[148], pargv[149], pargv[130], pargv[131]
+ 				,pargv[152], pargv[153], pargv[154], pargv[155]
++				,pargv[156], pargv[157], pargv[158], pargv[159]
+ 				,pargv[160], pargv[161], pargv[162], pargv[163]
+ 				,pargv[164], pargv[165], pargv[166], pargv[167]
+ 				,pargv[168], pargv[169], pargv[170], pargv[171]
+--- a/libcob/common.c	2025-03-22 16:50:20.833569987 +0100
++++ b/libcob/common.c	2025-03-22 16:51:36.499633316 +0100
+@@ -764,7 +764,7 @@
+ 		nxt = ptr->next;
+ 		if (mod && mod->module_cancel.funcint) {
+ 			mod->module_active = 0;
+-			cancel_func = mod->module_cancel.funcint;
++			cancel_func = (int (*)(const int))mod->module_cancel.funcint;
+ 			(void)cancel_func (-20);	/* Clear just decimals */
+ 		}
+ 		cob_free (ptr);
+@@ -10758,7 +10758,7 @@
+ 		for (mod = COB_MODULE_PTR; mod; mod = mod->next) {
+ 			if (mod->module_cancel.funcint) {
+ 				int (*cancel_func)(const int);
+-				cancel_func = mod->module_cancel.funcint;
++				cancel_func = (int (*)(const int))mod->module_cancel.funcint;
+ 
+ 				fprintf (fp, _("Dump Program-Id %s from %s compiled %s"),
+ 					mod->module_name, mod->module_source, mod->module_formatted_date);

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,9 @@ DOCS=( AUTHORS ChangeLog NEWS README README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.2-gentoo.patch
 	"${FILESDIR}"/${P}-libxml.patch
+	"${FILESDIR}"/${P}-c24.patch
 )
+#	"${FILESDIR}"/${P}-c23.patch
 
 src_prepare() {
 	default
