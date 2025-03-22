@@ -1,0 +1,67 @@
+--- a/doc/Makefile.local
++++ b/doc/Makefile.local
+@@ -25,8 +25,6 @@ MAN5_ROFF := $(patsubst $(srcdir)/doc/%,$(DOCBUILDDIR)/man/%,$(MAN5_RST:.rst=.5)
+ MAN7_ROFF := $(patsubst $(srcdir)/doc/%,$(DOCBUILDDIR)/man/%,$(MAN7_RST:.rst=.7))
+ MAN_ROFF_FILES := $(MAN1_ROFF) $(MAN5_ROFF) $(MAN7_ROFF)
+ 
+-MAN_GZIP_FILES := $(addsuffix .gz,${MAN_ROFF_FILES})
+-
+ MAN1_TEXI := $(patsubst $(srcdir)/doc/man1/%.rst,$(DOCBUILDDIR)/texinfo/%.texi,$(MAN1_RST))
+ MAN5_TEXI := $(patsubst $(srcdir)/doc/man5/%.rst,$(DOCBUILDDIR)/texinfo/%.texi,$(MAN5_RST))
+ MAN7_TEXI := $(patsubst $(srcdir)/doc/man7/%.rst,$(DOCBUILDDIR)/texinfo/%.texi,$(MAN7_RST))
+@@ -42,9 +40,6 @@ INFO_INFO_FILES := $(INFO_TEXI_FILES:.texi=.info) $(COPY_INFO1)
+ 
+ .PHONY: install-man build-man apidocs install-apidocs
+ 
+-%.gz: %
+-	rm -f $@ && gzip --no-name --stdout $^ > $@
+-
+ ifeq ($(WITH_EMACS),1)
+ $(DOCBUILDDIR)/.roff.stamp $(DOCBUILDDIR)/.html.stamp $(DOCBUILDDIR)/.texi.stamp : docstring.stamp
+ endif
+@@ -97,11 +92,11 @@ endif
+ install-man: install-apidocs
+ 
+ ifeq ($(HAVE_DOXYGEN),1)
+-MAN_GZIP_FILES += ${APIMAN}.gz
++MAN_ROFF_FILES += ${APIMAN}
+ apidocs: $(APIMAN)
+-install-apidocs: ${APIMAN}.gz
++install-apidocs: ${APIMAN}
+ 	mkdir -p "$(DESTDIR)$(mandir)/man3"
+-	install -m0644 $(filter %.3.gz,$(MAN_GZIP_FILES)) $(DESTDIR)/$(mandir)/man3
++	install -m0644 $(filter %.3,$(MAN_ROFF_FILES)) $(DESTDIR)/$(mandir)/man3
+ 
+ $(APIMAN): $(dir)/config.dox $(srcdir)/$(dir)/doxygen.cfg $(srcdir)/lib/notmuch.h
+ 	mkdir -p $(DOCBUILDDIR)/man/man3
+@@ -123,16 +118,16 @@ else
+ 
+ # it should be safe to depend on the stamp file, because it is created
+ # after all roff files are moved into place.
+-${MAN_GZIP_FILES}: ${DOCBUILDDIR}/.roff.stamp
++${MAN_ROFF_FILES}: ${DOCBUILDDIR}/.roff.stamp
+ 
+-build-man: ${MAN_GZIP_FILES}
+-install-man: ${MAN_GZIP_FILES}
++build-man: ${MAN_ROFF_FILES}
++install-man: ${MAN_ROFF_FILES}
+ 	mkdir -m0755 -p "$(DESTDIR)$(mandir)/man1"
+ 	mkdir -m0755 -p "$(DESTDIR)$(mandir)/man5"
+ 	mkdir -m0755 -p "$(DESTDIR)$(mandir)/man7"
+-	install -m0644 $(filter %.1.gz,$(MAN_GZIP_FILES)) $(DESTDIR)/$(mandir)/man1
+-	install -m0644 $(filter %.5.gz,$(MAN_GZIP_FILES)) $(DESTDIR)/$(mandir)/man5
+-	install -m0644 $(filter %.7.gz,$(MAN_GZIP_FILES)) $(DESTDIR)/$(mandir)/man7
++	install -m0644 $(filter %.1,$(MAN_ROFF_FILES)) $(DESTDIR)/$(mandir)/man1
++	install -m0644 $(filter %.5,$(MAN_ROFF_FILES)) $(DESTDIR)/$(mandir)/man5
++	install -m0644 $(filter %.7,$(MAN_ROFF_FILES)) $(DESTDIR)/$(mandir)/man7
+ endif
+ 
+ ifneq ($(HAVE_SPHINX)$(HAVE_MAKEINFO),11)
+@@ -158,6 +153,6 @@ $(dir)/config.dox: version.stamp
+ 
+ CLEAN := $(CLEAN) $(DOCBUILDDIR) $(DOCBUILDDIR)/.roff.stamp $(DOCBUILDDIR)/.texi.stamp
+ CLEAN := $(CLEAN) $(DOCBUILDDIR)/.html.stamp $(DOCBUILDDIR)/.info.stamp
+-CLEAN := $(CLEAN) $(MAN_GZIP_FILES) $(MAN_ROFF_FILES) $(dir)/conf.pyc $(dir)/config.dox
++CLEAN := $(CLEAN) $(MAN_ROFF_FILES) $(MAN_ROFF_FILES) $(dir)/conf.pyc $(dir)/config.dox
+ 
+ CLEAN := $(CLEAN) $(dir)/__pycache__
