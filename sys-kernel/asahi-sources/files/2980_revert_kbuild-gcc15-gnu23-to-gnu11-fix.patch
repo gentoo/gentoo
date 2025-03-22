@@ -1,0 +1,89 @@
+--- b/Makefile
++++ a/Makefile
+@@ -416,8 +416,6 @@
+ # SHELL used by kbuild
+ CONFIG_SHELL := sh
+ 
+-CSTD_FLAG := -std=gnu11
+-
+ HOST_LFS_CFLAGS := $(shell getconf LFS_CFLAGS 2>/dev/null)
+ HOST_LFS_LDFLAGS := $(shell getconf LFS_LDFLAGS 2>/dev/null)
+ HOST_LFS_LIBS := $(shell getconf LFS_LIBS 2>/dev/null)
+@@ -439,7 +437,7 @@
+ HOSTPKG_CONFIG	= pkg-config
+ 
+ KBUILD_USERHOSTCFLAGS := -Wall -Wmissing-prototypes -Wstrict-prototypes \
++			 -O2 -fomit-frame-pointer -std=gnu11
+-			 -O2 -fomit-frame-pointer $(CSTD_FLAG)
+ KBUILD_USERCFLAGS  := $(KBUILD_USERHOSTCFLAGS) $(USERCFLAGS)
+ KBUILD_USERLDFLAGS := $(USERLDFLAGS)
+ 
+@@ -547,7 +545,7 @@
+ KBUILD_AFLAGS   := -D__ASSEMBLY__ -fno-PIE
+ 
+ KBUILD_CFLAGS :=
++KBUILD_CFLAGS += -std=gnu11
+-KBUILD_CFLAGS += $(CSTD_FLAG)
+ KBUILD_CFLAGS += -fshort-wchar
+ KBUILD_CFLAGS += -funsigned-char
+ KBUILD_CFLAGS += -fno-common
+@@ -591,7 +589,7 @@
+ export PERL PYTHON3 CHECK CHECKFLAGS MAKE UTS_MACHINE HOSTCXX
+ export KGZIP KBZIP2 KLZOP LZMA LZ4 XZ ZSTD
+ export KBUILD_HOSTCXXFLAGS KBUILD_HOSTLDFLAGS KBUILD_HOSTLDLIBS LDFLAGS_MODULE
++export KBUILD_USERCFLAGS KBUILD_USERLDFLAGS
+-export KBUILD_USERCFLAGS KBUILD_USERLDFLAGS CSTD_FLAG
+ 
+ export KBUILD_CPPFLAGS NOSTDINC_FLAGS LINUXINCLUDE OBJCOPYFLAGS KBUILD_LDFLAGS
+ export KBUILD_CFLAGS CFLAGS_KERNEL CFLAGS_MODULE
+--- b/arch/arm64/kernel/vdso32/Makefile
++++ a/arch/arm64/kernel/vdso32/Makefile
+@@ -65,7 +65,7 @@
+                -fno-strict-aliasing -fno-common \
+                -Werror-implicit-function-declaration \
+                -Wno-format-security \
++               -std=gnu11
+-               $(CSTD_FLAG)
+ VDSO_CFLAGS  += -O2
+ # Some useful compiler-dependent flags from top-level Makefile
+ VDSO_CFLAGS += $(call cc32-option,-Wno-pointer-sign)
+--- b/arch/x86/Makefile
++++ a/arch/x86/Makefile
+@@ -47,7 +47,7 @@
+ 
+ # How to compile the 16-bit code.  Note we always compile for -march=i386;
+ # that way we can complain to the user if the CPU is insufficient.
++REALMODE_CFLAGS	:= -std=gnu11 -m16 -g -Os -DDISABLE_BRANCH_PROFILING -D__DISABLE_EXPORTS \
+-REALMODE_CFLAGS	:= $(CSTD_FLAG) -m16 -g -Os -DDISABLE_BRANCH_PROFILING -D__DISABLE_EXPORTS \
+ 		   -Wall -Wstrict-prototypes -march=i386 -mregparm=3 \
+ 		   -fno-strict-aliasing -fomit-frame-pointer -fno-pic \
+ 		   -mno-mmx -mno-sse $(call cc-option,-fcf-protection=none)
+--- b/drivers/firmware/efi/libstub/Makefile
++++ a/drivers/firmware/efi/libstub/Makefile
+@@ -7,7 +7,7 @@
+ #
+ 
+ # non-x86 reuses KBUILD_CFLAGS, x86 does not
++cflags-y			:= $(KBUILD_CFLAGS)
+-cflags-y			:= $(KBUILD_CFLAGS) $(CSTD_FLAG)
+ 
+ cflags-$(CONFIG_X86_32)		:= -march=i386
+ cflags-$(CONFIG_X86_64)		:= -mcmodel=small
+@@ -18,7 +18,7 @@
+ 				   $(call cc-disable-warning, address-of-packed-member) \
+ 				   $(call cc-disable-warning, gnu) \
+ 				   -fno-asynchronous-unwind-tables \
++				   $(CLANG_FLAGS)
+-				   $(CLANG_FLAGS) $(CSTD_FLAG)
+ 
+ # arm64 uses the full KBUILD_CFLAGS so it's necessary to explicitly
+ # disable the stackleak plugin
+@@ -42,7 +42,7 @@
+ 				   -ffreestanding \
+ 				   -fno-stack-protector \
+ 				   $(call cc-option,-fno-addrsig) \
++				   -D__DISABLE_EXPORTS
+-				   -D__DISABLE_EXPORTS $(CSTD_FLAG)
+ 
+ #
+ # struct randomization only makes sense for Linux internal types, which the EFI
