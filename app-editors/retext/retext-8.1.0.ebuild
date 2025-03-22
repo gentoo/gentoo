@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_SINGLE_IMPL=1
 PYPI_NO_NORMALIZE=1
-PYPI_PN="ReText"
+PYPI_PN="retext"
 
 inherit desktop distutils-r1 optfeature virtualx xdg
 
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/retext-project/retext.git"
 else
 	inherit pypi
-	KEYWORDS="amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2+"
@@ -30,9 +30,10 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]
-		>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
+		>=dev-python/markups-4.0.0[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pyqt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
+		dev-python/python-markdown-math[${PYTHON_USEDEP}]
 	')
 "
 # qmake6 from qtbase is used to find lrelease

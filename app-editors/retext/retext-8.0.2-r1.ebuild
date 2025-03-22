@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/retext-project/retext.git"
 else
 	inherit pypi
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2+"
@@ -30,7 +30,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]
-		>=dev-python/markups-4.0.0[${PYTHON_USEDEP}]
+		>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pyqt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 		dev-python/python-markdown-math[${PYTHON_USEDEP}]
