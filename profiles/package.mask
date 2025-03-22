@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-22)
+# Stuck on Python 3.10, no reply from maintainer.  No revdeps.
+# Removal on 2025-04-21.  Bug #896608.
+app-office/gtg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-20)
 # Upstream have made clear that they are not going to port to Qt6 and
 # recommend sys-apps/qdirstat (from original k4dirstat author) instead.
