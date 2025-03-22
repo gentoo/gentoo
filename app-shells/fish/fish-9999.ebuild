@@ -50,6 +50,10 @@ BDEPEND="
 # Release tarballs contain prebuilt documentation.
 [[ ${PV} == 9999 ]] && BDEPEND+=" doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cargo-eclass-compatible.patch"
+)
+
 QA_FLAGS_IGNORED="usr/bin/.*"
 
 python_check_deps() {
@@ -81,7 +85,7 @@ src_configure() {
 		--bin fish \
 		--bin fish_indent \
 		--bin fish_key_reader
-	cmake_src_configure
+	cargo_env cmake_src_configure
 }
 
 src_compile() {
@@ -101,13 +105,6 @@ src_compile() {
 	fi
 
 	cargo_src_compile
-
-	# Copy built binaries into the cmake build directory to mark the targets
-	# up-to-date in cmake.
-	for target in fish fish_indent fish_key_reader; do
-		cp "$(cargo_target_dir)/${target}" "${BUILD_DIR}" || die
-	done
-
 	cmake_src_compile
 }
 
@@ -129,7 +126,6 @@ src_test() {
 
 	# Enable colored output for building tests.
 	local -x CARGO_TERM_COLOR=always
-	# TODO: Figure out why we link again.
 	cargo_env cmake_build fish_run_tests
 }
 
