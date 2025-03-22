@@ -17,7 +17,6 @@ IUSE="man"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	!net-misc/youtube-dl[-yt-dlp(-)]
 "
 BDEPEND="
 	man? ( virtual/pandoc )
