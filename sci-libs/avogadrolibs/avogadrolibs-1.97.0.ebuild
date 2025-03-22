@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ RDEPEND="
 		media-libs/glew:0=
 		virtual/opengl
 	)
-	vtk? ( sci-libs/vtk[qt5,views] )"
+	vtk? ( sci-libs/vtk[qt5(-),views] )"
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	test? ( dev-cpp/gtest )"
