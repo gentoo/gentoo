@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="debug"
 DEPEND="
 	dev-libs/dbus-glib
 	dev-libs/libpcre
-	net-im/pidgin[gtk]"
+	net-im/pidgin[gui]"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/gettext"
 
