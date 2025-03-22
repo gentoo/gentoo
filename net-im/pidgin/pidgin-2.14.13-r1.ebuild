@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,10 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
 KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-# The new gui useflag depends on the gtk useflag, as most pidgin plugins depend
-# on the gtk flag. As soon as all plugins have been updated to use the new
-# gui flag, the gtk flag can get removed.
-IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gtk +gui idn
+IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gui idn
 meanwhile ncurses networkmanager nls perl pie prediction python sasl spell tcl
 test tk v4l +xscreensaver zephyr zeroconf"
 RESTRICT="!test? ( test )"
@@ -50,7 +47,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 		>=net-libs/farstream-0.2.7:0.2
 	)
-	gtk? (
+	gui? (
 		>=x11-libs/gtk+-2.10:2[aqua=]
 		x11-libs/libSM
 		>=x11-libs/pango-1.4.0
@@ -83,7 +80,7 @@ NLS_DEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	gtk? (
+	gui? (
 		x11-base/xorg-proto
 		${NLS_DEPEND}
 	)
@@ -94,7 +91,7 @@ BDEPEND="
 	dev-perl/XML-Parser
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
-	!gtk? ( nls? ( ${NLS_DEPEND} ) )
+	!gui? ( nls? ( ${NLS_DEPEND} ) )
 	test? ( >=dev-libs/check-0.9.4 )
 "
 
@@ -102,8 +99,6 @@ DOCS=( AUTHORS HACKING NEWS README ChangeLog )
 
 REQUIRED_USE="
 	dbus? ( ${PYTHON_REQUIRED_USE} )
-	gtk? ( gui )
-	gui? ( gtk )
 	networkmanager? ( dbus )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	v4l? ( gstreamer )
@@ -142,15 +137,15 @@ DEFAULT_PRPLS="irc,jabber,simple"
 #	x11-plugins/pidgimpd
 
 pkg_pretend() {
-	if ! use gtk && ! use ncurses ; then
-		elog "You did not pick the ncurses or gtk use flags, only libpurple"
+	if ! use gui && ! use ncurses ; then
+		elog "You did not pick the ncurses or gui use flags, only libpurple"
 		elog "will be built."
 	fi
 
 	# dbus is enabled, no way to disable linkage with python => python is enabled
-	#REQUIRED_USE="gtk? ( nls ) dbus? ( python )"
-	if use gtk && ! use nls ; then
-		ewarn "gtk build => nls is enabled!"
+	#REQUIRED_USE="gui? ( nls ) dbus? ( python )"
+	if use gui && ! use nls ; then
+		ewarn "gui build => nls is enabled!"
 	fi
 	if use dbus && ! use python ; then
 		elog "dbus is enabled, no way to disable linkage with python => python is enabled"
@@ -196,8 +191,8 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable doc doxygen)
 		$(use_enable gstreamer)
-		$(use_enable gtk gtkui)
-		$(use_enable gtk sm)
+		$(use_enable gui gtkui)
+		$(use_enable gui sm)
 		$(use_enable idn)
 		$(use_enable meanwhile)
 		$(use_enable networkmanager nm)
@@ -211,11 +206,11 @@ src_configure() {
 		$(use_enable v4l vv)
 		$(use_enable zeroconf avahi)
 		$(use_with gstreamer gstreamer 1.0)
-		$(usex gtk '--enable-nls' "$(use_enable nls)")
-		$(use gtk && use_enable eds gevolution)
-		$(use gtk && use_enable prediction cap)
-		$(use gtk && use_enable spell gtkspell)
-		$(use gtk && use_enable xscreensaver screensaver)
+		$(usex gui '--enable-nls' "$(use_enable nls)")
+		$(use gui && use_enable eds gevolution)
+		$(use gui && use_enable prediction cap)
+		$(use gui && use_enable spell gtkspell)
+		$(use gui && use_enable xscreensaver screensaver)
 	)
 
 	if use gnutls ; then
@@ -248,7 +243,7 @@ src_install() {
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
 	default
 
-	if use gtk ; then
+	if use gui ; then
 		# Fix tray paths for e16 (x11-wm/enlightenment) and other
 		# implementations that are not compliant with new hicolor theme yet, #323355
 		local d f pixmapdir

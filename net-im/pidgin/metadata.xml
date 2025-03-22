@@ -15,7 +15,6 @@
 		<flag name="gadu">Enable Gadu Gadu protocol support</flag>
 		<flag name="groupwise">Enable Novell Groupwise protocol support</flag>
 		<flag name="gstreamer">Enables voice and video sessions</flag>
-		<flag name="gtk">Builds Pidgin, the GTK+ interface</flag>
 		<flag name="meanwhile">Enable meanwhile support for Sametime protocol</flag>
 		<flag name="ncurses">Build finch, console interface</flag>
 		<flag name="prediction">Enable Contact Availability Prediction plugin</flag>
