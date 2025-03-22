@@ -55,6 +55,7 @@ dev-python/simplebayes
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
 >=xfce-base/libxfce4ui-4.21
+>=xfce-base/xfce4-panel-4.21
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # A "forever beta" wrapper over dev-python/requests, with no tests,
