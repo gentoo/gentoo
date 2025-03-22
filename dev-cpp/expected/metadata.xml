@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mschiff@gentoo.org</email>
+    <name>Marc Schiffbauer</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">TartanLlama/expected</remote-id>
+    <bugs-to>https://github.com/TartanLlama//expected/issues</bugs-to>
+    <changelog>https://github.com/TartanLlama//expected/releases</changelog>
+  </upstream>
+</pkgmetadata>
