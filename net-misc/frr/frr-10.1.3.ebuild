@@ -24,8 +24,7 @@ COMMON_DEPEND="
 	acct-user/frr
 	dev-libs/json-c:0=
 	dev-libs/protobuf-c:0=
-	>=net-libs/libyang-2.0.0
-	<net-libs/libyang-2.1.111
+	>=net-libs/libyang-2.1.128
 	sys-libs/libcap
 	sys-libs/readline:0=
 	virtual/libcrypt:=
@@ -142,5 +141,9 @@ src_install() {
 	newinitd "${FILESDIR}"/frr-openrc-v2 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
+	# Files from frr seems to be newer.
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf-with-defaults.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf-acm.yang || die
 }

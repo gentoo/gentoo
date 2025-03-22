@@ -1,9 +1,9 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
@@ -14,7 +14,7 @@ S="${WORKDIR}/frr-${P}"
 
 LICENSE="GPL-2+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -24,8 +24,7 @@ COMMON_DEPEND="
 	acct-user/frr
 	dev-libs/json-c:0=
 	dev-libs/protobuf-c:0=
-	>=net-libs/libyang-2.0.0
-	<net-libs/libyang-2.1.111
+	>=net-libs/libyang-2.1.128
 	sys-libs/libcap
 	sys-libs/readline:0=
 	virtual/libcrypt:=
@@ -50,7 +49,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
 "
 
 PATCHES=(
@@ -143,5 +141,9 @@ src_install() {
 	newinitd "${FILESDIR}"/frr-openrc-v2 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
+	# Files from frr seems to be newer.
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf-with-defaults.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf-acm.yang || die
 }
