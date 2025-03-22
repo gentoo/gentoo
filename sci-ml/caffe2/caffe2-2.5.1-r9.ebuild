@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 ROCM_VERSION=6.1
-inherit python-single-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
+inherit python-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -46,9 +46,9 @@ RDEPEND="
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef
-	virtual/lapack
 	sci-ml/onnx
 	sci-ml/foxi
+	virtual/lapack
 	cuda? (
 		dev-libs/cudnn
 		>=dev-libs/cudnn-frontend-1.0.3:0/8
@@ -91,37 +91,35 @@ RDEPEND="
 		sci-ml/tensorpipe[cuda?]
 		dev-cpp/cpp-httplib
 	)
-	xnnpack? ( sci-ml/XNNPACK )
+	xnnpack? ( ~sci-ml/XNNPACK-2024.02.29 )
 	mkl? ( sci-libs/mkl )
 	openblas? ( sci-libs/openblas )
 "
 
 DEPEND="
 	${RDEPEND}
-	qnnpack? ( dev-libs/clog )
-	cuda? ( <=dev-libs/cutlass-3.4.1 )
-	onednn? ( sci-ml/ideep )
-	dev-libs/psimd
-	sci-ml/FP16
+	dev-libs/flatbuffers
 	dev-libs/FXdiv
 	dev-libs/pocketfft
-	dev-libs/flatbuffers
+	dev-libs/psimd
+	dev-python/pybind11[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
+	sci-ml/FP16
 	sci-ml/kineto
-	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/pybind11[${PYTHON_USEDEP}]
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	')
+	cuda? ( <=dev-libs/cutlass-3.4.1 )
+	onednn? ( sci-ml/ideep )
+	qnnpack? ( dev-libs/clog )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.1-unbundle_fmt.patch
-	"${FILESDIR}"/${PN}-2.5.1-unbundle_kineto.patch
-	"${FILESDIR}"/${PN}-2.5.1-cudnn_include_fix.patch
+	"${FILESDIR}"/${P}-unbundle_fmt.patch
+	"${FILESDIR}"/${P}-unbundle_kineto.patch
+	"${FILESDIR}"/${P}-cudnn_include_fix.patch
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
-	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
-	"${FILESDIR}"/${PN}-2.5.1-newfix-functorch-install.patch
+	"${FILESDIR}"/${P}-glog-0.6.0.patch
+	"${FILESDIR}"/${P}-newfix-functorch-install.patch
 )
 
 src_prepare() {
@@ -294,6 +292,7 @@ src_configure() {
 		)
 	fi
 
+	python_setup
 	cmake_src_configure
 }
 
@@ -301,6 +300,19 @@ src_compile() {
 	PYTORCH_BUILD_VERSION=${PV} \
 	PYTORCH_BUILD_NUMBER=0 \
 	cmake_src_compile
+}
+
+python_install() {
+	python_domodule python/torch
+	mkdir "${D}"$(python_get_sitedir)/torch/bin || die
+	mkdir "${D}"$(python_get_sitedir)/torch/lib || die
+	mkdir "${D}"$(python_get_sitedir)/torch/include || die
+	ln -s ../../../../../include/torch \
+		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
+	ln -s ../../../../../bin/torch_shm_manager \
+		"${D}"/$(python_get_sitedir)/torch/bin/torch_shm_manager || die
+	ln -s ../../../../../$(get_libdir)/libtorch_global_deps.so \
+		"${D}"/$(python_get_sitedir)/torch/lib/libtorch_global_deps.so || die
 }
 
 src_install() {
@@ -314,18 +326,5 @@ src_install() {
 	rm -rf python
 	mkdir -p python/torch || die
 	cp torch/version.py python/torch/ || die
-	python_domodule python/torch
-
-	mkdir "${D}"$(python_get_sitedir)/torch/bin || die
-	mkdir "${D}"$(python_get_sitedir)/torch/lib || die
-	mkdir "${D}"$(python_get_sitedir)/torch/include || die
-
-	ln -s ../../../../../include/torch \
-		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
-
-	mv "${ED}"/usr/bin/torch_shm_manager \
-		"${D}"/$(python_get_sitedir)/torch/bin/ || die
-
-	mv "${ED}"/usr/$(get_libdir)/libtorch_global_deps.so \
-		"${D}"/$(python_get_sitedir)/torch/lib/ || die
+	python_foreach_impl python_install
 }

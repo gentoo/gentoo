@@ -34,10 +34,12 @@ RDEPEND="
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		>=sci-ml/huggingface_hub-0.26[${PYTHON_USEDEP}]
 		>=sci-ml/safetensors-0.4.1[${PYTHON_USEDEP}]
+		torch? (
+			sci-ml/caffe2[${PYTHON_USEDEP}]
+		)
 	')
 	torch? (
 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
-		sci-ml/caffe2[${PYTHON_SINGLE_USEDEP}]
 		sci-ml/accelerate[${PYTHON_SINGLE_USEDEP}]
 	)
 "
