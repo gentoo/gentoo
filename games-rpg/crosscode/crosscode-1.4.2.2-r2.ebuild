@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ inherit check-reqs desktop wrapper xdg
 DESCRIPTION="Retro-inspired 2D Action RPG with a sci-fi story"
 HOMEPAGE="https://radicalfishgames.itch.io/crosscode"
 SRC_URI="crosscode-new-linux64.zip"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -16,14 +17,13 @@ KEYWORDS="~amd64"
 RESTRICT="bindist fetch splitdebug"
 
 RDEPEND="
-	>=dev-libs/nwjs-0.63.0
+	>=dev-libs/nwjs-0.97.0
 "
 
 BDEPEND="
 	app-arch/unzip
 "
 
-S="${WORKDIR}"
 DIR="/usr/share/${PN}"
 
 pkg_nofetch() {
@@ -44,7 +44,6 @@ src_install() {
 	doins -r assets/ favicon.png natives_blob.bin package.json
 
 	newicon assets/media/face/lore/lea.png ${PN}.png
-	# --use-gl=egl is needed with recent NW.js versions.
-	make_wrapper ${PN} "nwjs '${EPREFIX}${DIR}' --use-gl=egl"
+	make_wrapper ${PN} "nwjs '${EPREFIX}${DIR}' \${WAYLAND_DISPLAY:+--ozone-platform=wayland}"
 	make_desktop_entry ${PN} CrossCode
 }
