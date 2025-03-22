@@ -1,42 +1,46 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake fcaps git-r3
+inherit cmake fcaps
 
 DESCRIPTION="Fast network scanner designed for Internet-wide network surveys"
 HOMEPAGE="https://zmap.io/"
-EGIT_REPO_URI="https://github.com/zmap/zmap.git"
+SRC_URI="https://github.com/zmap/zmap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="redis"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="cpu_flags_x86_aes"
 
 RDEPEND="
 	dev-libs/gmp:=
-	net-libs/libpcap
 	dev-libs/json-c:=
-	redis? ( dev-libs/hiredis:= )
+	dev-libs/judy
+	dev-libs/libunistring:=
+	net-libs/libpcap
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/gengetopt
 	app-alternatives/lex
 	dev-util/byacc
+	dev-util/gengetopt
+	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.1-always-install-config.patch
-)
-
 FILECAPS=( cap_net_raw=ep usr/sbin/zmap )
+
+DOCS=( AUTHORS CHANGELOG.md README.md examples )
 
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEVELOPMENT=OFF
+		-DFORCE_CONF_INSTALL=ON
+		-DWITH_AES_HW=$(usex cpu_flags_x86_aes)
+		# no module in ::gentoo for now
+		-DWITH_NETMAP=OFF
 		-DWITH_WERROR=OFF
-		-DWITH_REDIS="$(usex redis)"
 	)
 
 	cmake_src_configure
