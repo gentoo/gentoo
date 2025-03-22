@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-22)
+# EAPI=7, uses legacy distutils non-PEP517 build, no reverse
+# dependencies, missing python compat bumps. Unmaintained in
+# Gentoo for more than 3 years.
+# Removal on 2025-04-21.  Bugs #951854, #909910, #929427.
+dev-libs/pigpio
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-22)
 # Depends on deprecated notmuch bindings.  The migration to new bindings
 # have not been finished in 5 years already.  Still uses legacy
