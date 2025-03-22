@@ -19,11 +19,7 @@ else
 		https://github.com/certbot/certbot/archive/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	#KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-	# Only for amd64, arm64 and x86 because of dev-python/python-augeas
-	#KEYWORDS="~amd64 ~arm64 ~x86"
-	# Only for amd64 and x86 because of dev-python/dns-lexicon
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Let’s Encrypt client to automate deployment of X.509 certificates"
@@ -158,154 +154,77 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
+certbot_dirs=()
+# Stores temporary modules docs in each subdirectories,
+# will be used for HTML_DOCS
+certbot_docs="${T}/docs"
+
+my_certbot_dirs_listing() {
+	local base module
+	for base in "${CERTBOT_BASE[@]}"; do
+		certbot_dirs+=("${base}")
+	done
+	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
+		use "certbot-${module}" \
+			&& certbot_dirs+=("certbot-${module}")
+	done
+}
+
 src_prepare() {
-	local S_BACKUP="${S}"
+	default
 
-	local certbot_dirs=()
-	local base module dir
-	for base in "${CERTBOT_BASE[@]}"; do
-		certbot_dirs+=("${base}")
-	done
-	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
-		use "certbot-${module}" \
-			&& certbot_dirs+=("certbot-${module}")
-	done
-
-	for dir in "${certbot_dirs[@]}"; do
-		S="${WORKDIR}/${P}/${dir}"
-		pushd "${S}" > /dev/null || die
-		distutils-r1_src_prepare
-		popd > /dev/null || die
-	done
-
-	# Restore S
-	S="${S_BACKUP}"
-}
-
-src_configure() {
-	local S_BACKUP="${S}"
-
-	local certbot_dirs=()
-	local base module dir
-	for base in "${CERTBOT_BASE[@]}"; do
-		certbot_dirs+=("${base}")
-	done
-	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
-		use "certbot-${module}" \
-			&& certbot_dirs+=("certbot-${module}")
-	done
-
-	for dir in "${certbot_dirs[@]}"; do
-		S="${WORKDIR}/${P}/${dir}"
-		pushd "${S}" > /dev/null || die
-		distutils-r1_src_configure
-		popd > /dev/null || die
-	done
-
-	# Restore S
-	S="${S_BACKUP}"
-}
-
-src_compile() {
-	# Used for building documentation
-	# Stores temporary modules docs in each subdirectories, will be used for HTML_DOCS
-	local temp_docs="${T}/docs"
-	use doc && {
-		mkdir "${temp_docs}" || die
-	}
-
-	local S_BACKUP="${S}"
-
-	local certbot_dirs=()
-	local base module dir
-	for base in "${CERTBOT_BASE[@]}"; do
-		certbot_dirs+=("${base}")
-	done
-	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
-		use "certbot-${module}" \
-			&& certbot_dirs+=("certbot-${module}")
-	done
-
-	for dir in "${certbot_dirs[@]}"; do
-		S="${WORKDIR}/${P}/${dir}"
-		pushd "${S}" > /dev/null || die
-		distutils-r1_src_compile
-		popd > /dev/null || die
-	done
-
-	# Restore S
-	S="${S_BACKUP}"
-
-	use doc && {
-		# Replace HTML_DOCS with one single entry to avoid merging
-		HTML_DOCS=( "${temp_docs}" )
-	}
-}
-
-python_compile_all() {
-	# There is no documentation in certbot-apache or certbot-nginx.
-	if [[ "${dir}" = "certbot-apache" ]] || [[ "${dir}" = "certbot-nginx" ]]; then
-		return
-	fi
+	my_certbot_dirs_listing
 
 	# Used to build documentation
-	use doc && {
+	if use doc; then
+		mkdir "${certbot_docs}" || die
+	fi
+}
+
+python_compile() {
+	local dir
+	for dir in "${certbot_dirs[@]}"; do
+		pushd "${dir}" > /dev/null || die
+
+		distutils-r1_python_compile
+		# Delete previous build directory to avoid collision.
+		rm -rf "${BUILD_DIR}/build"
+
+		popd > /dev/null || die
+	done
+}
+
+# Used to build documentation
+python_compile_all() {
+	use doc || return
+
+	local dir
+	for dir in "${certbot_dirs[@]}"; do
+		# There is no documentation in certbot-apache or certbot-nginx.
+		if [[ "${dir}" = "certbot-apache" ]] || [[ "${dir}" = "certbot-nginx" ]]; then
+			continue
+		fi
+
+		pushd "${dir}" > /dev/null || die
+
+		# Reset HTML_DOCS between sphinx calls as we discard its content.
+		local HTML_DOCS=()
+
 		sphinx_compile_all
 
-		# Subdirectory "_build/html" from build_sphinx in eclass/python-utils-r1.eclass
-		mv "${_DISTUTILS_SPHINX_SUBDIR}/_build/html" "${temp_docs}/${dir}" || die
-	}
+		# Note: directory "${dir}" does not exist, so it will fail if
+		# HTML_DOCS has multiple entries.
+		mv "${HTML_DOCS[@]}" "${certbot_docs}/${dir}" || die
+
+		popd > /dev/null || die
+	done
+
+	# And finally give the result.
+	HTML_DOCS=( "${certbot_docs}" )
 }
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
-}
-
-src_test() {
-	local S_BACKUP="${S}"
-
-	local certbot_dirs=()
-	local base module dir
-	for base in "${CERTBOT_BASE[@]}"; do
-		certbot_dirs+=("${base}")
-	done
-	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
-		use "certbot-${module}" \
-			&& certbot_dirs+=("certbot-${module}")
-	done
-
-	for dir in "${certbot_dirs[@]}"; do
-		S="${WORKDIR}/${P}/${dir}"
-		pushd "${S}" > /dev/null || die
-		distutils-r1_src_test
-		popd > /dev/null || die
-	done
-
-	# Restore S
-	S="${S_BACKUP}"
-}
-
-src_install() {
-	local S_BACKUP="${S}"
-
-	local certbot_dirs=()
-	local base module dir
-	for base in "${CERTBOT_BASE[@]}"; do
-		certbot_dirs+=("${base}")
-	done
-	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
-		use "certbot-${module}" \
-			&& certbot_dirs+=("certbot-${module}")
-	done
-
-	for dir in "${certbot_dirs[@]}"; do
-		S="${WORKDIR}/${P}/${dir}"
-		pushd "${S}" > /dev/null || die
-		distutils-r1_src_install
-		popd > /dev/null || die
-	done
-
-	# Restore S
-	S="${S_BACKUP}"
+	# Argument required to change pytest rootdir.
+	epytest "${BUILD_DIR}"
 }
