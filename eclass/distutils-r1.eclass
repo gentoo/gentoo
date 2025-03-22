@@ -137,6 +137,8 @@
 # - standalone - standalone build systems without external deps
 #   (used for bootstrapping).
 #
+# - uv-build - uv-build backend (using dev-python/uv)
+#
 # The variable needs to be set before the inherit line.  The eclass
 # adds appropriate build-time dependencies and verifies the value.
 #
@@ -246,22 +248,23 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-15[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-16[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit-core-3.9.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
 				bdep+='
+					>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 					>=dev-python/flit-scm-1.7.0[${PYTHON_USEDEP}]
 				'
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.21.1[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.27.0[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -271,7 +274,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-1.7.4[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -280,40 +283,45 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.15.0[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.17.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-6.0.0[${PYTHON_USEDEP}]
+					>=dev-python/pbr-6.1.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm-backend)
 				bdep+='
-					>=dev-python/pdm-backend-2.1.8[${PYTHON_USEDEP}]
+					>=dev-python/pdm-backend-2.4.3[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.9.0[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-2.1.1[${PYTHON_USEDEP}]
 				'
 				;;
 			scikit-build-core)
 				bdep+='
-					>=dev-python/scikit-build-core-0.9.4[${PYTHON_USEDEP}]
+					>=dev-python/scikit-build-core-0.10.7[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.8.3[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.10.0[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
+				;;
+			uv-build)
+				bdep+='
+					dev-python/uv-build[${PYTHON_USEDEP}]
+				'
 				;;
 			*)
 				die "Unknown DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
@@ -325,7 +333,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -501,7 +509,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps=">=dev-python/sphinx-7.2.6[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-8.1.3[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -525,7 +533,7 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in ">=dev-python/sphinx-7.2.6" \
+			for p in ">=dev-python/sphinx-8.1.3" \
 				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
 			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
@@ -533,7 +541,7 @@ distutils_enable_sphinx() {
 			done
 		}
 	else
-		deps=">=dev-python/sphinx-7.2.6"
+		deps=">=dev-python/sphinx-8.1.3"
 	fi
 
 	sphinx_compile_all() {
@@ -904,6 +912,12 @@ _distutils-r1_print_package_versions() {
 					dev-python/sip
 				)
 				;;
+			uv-build)
+				packages+=(
+					dev-python/uv
+					dev-python/uv-build
+				)
+				;;
 		esac
 	else
 		case ${DISTUTILS_USE_SETUPTOOLS} in
@@ -1097,6 +1111,9 @@ _distutils-r1_backend_to_key() {
 		sipbuild.api)
 			echo sip
 			;;
+		uv_build)
+			echo uv-build
+			;;
 		*)
 			die "Unknown backend: ${backend}"
 			;;
@@ -1258,6 +1275,7 @@ distutils_pep517_install() {
 	fi
 
 	# set it globally in case we were using "standalone" wrapper
+	local -x FLIT_ALLOW_INVALID=1
 	local -x HATCH_METADATA_CLASSIFIERS_NO_VERIFY=1
 	local -x VALIDATE_PYPROJECT_NO_NETWORK=1
 	local -x VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS=1
