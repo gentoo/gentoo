@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~riscv x86"
 IUSE="+twitgin"
 
 RDEPEND="net-im/pidgin
-	twitgin? ( net-im/pidgin[gtk] )"
+	twitgin? ( net-im/pidgin[gui] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
