@@ -146,38 +146,71 @@ RDEPEND="
 # 	)
 # "
 
+# Note: "docs" is not an actual directory under "S", they are actually
+# under each modules, see python_compile_all redefinition, but keep
+# this instruction enabled for dependency configuration.
+distutils_enable_sphinx docs \
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
-certbot_dirs=()
-
-my_certbot_dirs_listing() {
-	local base module
-	for base in "${CERTBOT_BASE[@]}"; do
-		certbot_dirs+=("${base}")
-	done
-	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
-		use "certbot-${module}" \
-			&& certbot_dirs+=("certbot-${module}")
-	done
-}
+CERTBOT_DIRS=()
+# Stores temporary modules docs in each subdirectories,
+# will be used for HTML_DOCS
+CERTBOT_DOCS="${T}/docs"
 
 src_prepare() {
 	default
 
-	my_certbot_dirs_listing
+	# set CERTBOT_DIRS
+	local base module
+	for base in "${CERTBOT_BASE[@]}"; do
+		CERTBOT_DIRS+=("${base}")
+	done
+	for module in "${CERTBOT_MODULES_EXTRA[@]}"; do
+		use "certbot-${module}" &&
+			CERTBOT_DIRS+=("certbot-${module}")
+	done
+
+	# Used to build documentation
+	mkdir "${CERTBOT_DOCS}" || die
 }
 
 python_compile() {
 	local dir
-	for dir in "${certbot_dirs[@]}"; do
+	for dir in "${CERTBOT_DIRS[@]}"; do
 		pushd "${dir}" > /dev/null || die
 
 		distutils-r1_python_compile
-		# Delete previous build directory to avoid collision.
-		rm -rf "${BUILD_DIR}/build"
 
 		popd > /dev/null || die
 	done
+}
+
+# Used to build documentation
+python_compile_all() {
+	use doc || return
+
+	local dir
+	for dir in "${CERTBOT_DIRS[@]}"; do
+		# There is no documentation in certbot-apache or certbot-nginx.
+		if has "${dir}" "certbot-apache" "certbot-nginx"; then
+			continue
+		fi
+
+		pushd "${dir}" > /dev/null || die
+
+		sphinx_compile_all
+
+		# Note: discard the `/.` in last entry suffix to avoid error
+		# with `mv` command.
+		mv "${HTML_DOCS[-1]%/.}" "${CERTBOT_DOCS}/${dir}" || die
+
+		popd > /dev/null || die
+	done
+
+	# And finally give the result.
+	# Note: the suffix `/.` here is to discard the holding directory.
+	HTML_DOCS=( "${CERTBOT_DOCS}/." )
 }
 
 python_test() {
