@@ -191,7 +191,18 @@ python_compile_all() {
 
 	# Note: directory "${dir}" does not exist, so it will fail if
 	# HTML_DOCS has multiple entries.
-	mv "${HTML_DOCS[@]}" "${certbot_docs}/${dir}" || die
+	# Note: can’t use following instruction, because of entries
+	# ending with `/.`, see build_sphinx in python-utils-r1 eclass.
+	# ```
+	# mv "${HTML_DOCS[@]}" "${certbot_docs}/${dir}" || die
+	# ```
+	# mv: cannot move 'docs/_build/html/.' to '[…]/temp/docs/acme': Device or resource busy
+	# Works without ending dot. Workaround applied.
+	local doc_dir
+	for doc_dir in "${HTML_DOCS[@]}"; do
+		# Let’s ignore  suffixe `/.` in `docs/_build/html/.`.
+		mv "${doc_dir%/.}" "${certbot_docs}/${dir}" || die
+	done
 }
 
 distutils-r1_src_compile() {
