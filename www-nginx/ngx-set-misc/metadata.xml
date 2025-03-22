@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-set-mist module extends the standard NGINX HttpRewriteModule's directive set to
+		provide more functionalities like URI escaping and unescaping, JSON quoting,
+		Hexadecimal/MD5/SHA1/Base32/Base64 digest encoding and decoding, random number generator,
+		and more.
+	</longdescription>
+	<use>
+		<flag name="hmac">Enable support for generating HMAC digests using <pkg>dev-libs/openssl</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/openresty/set-misc-nginx-module/issues</bugs-to>
+		<remote-id type="github">openresty/set-misc-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>
