@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC BSD BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="debug"
 
 RDEPEND="
