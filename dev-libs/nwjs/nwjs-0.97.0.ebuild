@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CHROMIUM_VERSION="125"
+CHROMIUM_VERSION="134"
 CHROMIUM_LANGS="
 	af
 	am
@@ -82,8 +82,6 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/libglvnd
-	media-libs/vulkan-loader
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -116,8 +114,9 @@ QA_PREBUILT="${DIR#/}/*"
 src_prepare() {
 	default
 
-	# Unbundle some libraries.
-	rm -r lib/lib{EGL.so,ffmpeg.so,GLESv2.so,vulkan.so.1} swiftshader/ || die
+	# Unbundle some libraries. We used to unbundle libEGL, libGLESv2, and
+	# libvulkan, but that now causes CrossCode to crash.
+	rm -r lib/libffmpeg.so swiftshader/ || die
 
 	cd locales || die
 	rm {ar-XB,en-XA}.pak* || die # No flags for pseudo locales.
