@@ -1241,7 +1241,7 @@ toolchain_src_configure() {
 
 	local GCC_LANG="c"
 	is_cxx && GCC_LANG+=",c++"
-	is_d   && GCC_LANG+=",d"
+	is_d   && GCC_LANG+=",d" confgcc+=( --enable-libphobos )
 	is_go  && GCC_LANG+=",go"
 	if is_objc || is_objcxx ; then
 		GCC_LANG+=",objc"
