@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-23)
+# No revdeps after net-im/psi treecleaning. Depends on Qt5.
+# Removal on 2025-04-22. Bug #951936
+dev-build/qconf
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-23)
 # dev-python/pip-run is a NIH package with significant number of NIH
 # deps.  New versions require "coherent" build system that's designed
