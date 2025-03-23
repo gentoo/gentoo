@@ -25,7 +25,11 @@ SLOT="0"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}/luau-0.653-TypedAllocator-cpp.patch" )
+PATCHES=(
+	"${FILESDIR}/luau-0.653-TypedAllocator-cpp.patch"
+	"${FILESDIR}/luau-0.653-cmake_minimum.patch"
+)
+
 DOCS=( CONTRIBUTING.md README.md SECURITY.md )
 
 src_configure() {
