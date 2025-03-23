@@ -202,9 +202,6 @@ src_prepare() {
 		fi
 	fi
 
-	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
-
 	# libseccomp is detected by configure but doesn't appear to have any
 	# effect on the installed image. Suppress it by supplying pkg-config
 	# with a wrong library name.
