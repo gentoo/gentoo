@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="wayland +X"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -32,7 +33,7 @@ COMMON_DEPEND="
 	>=media-libs/portaudio-12[cxx]
 	>=media-libs/libsndfile-1.0.25
 	sys-libs/zlib:=
-	>=x11-libs/gtk+-3.18.9:3
+	>=x11-libs/gtk+-3.18.9:3[X?,wayland?]
 "
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}"
@@ -50,6 +51,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
+		-DCMAKE_DISABLE_FIND_PACKAGE_X11="$(usex X OFF ON)"
 	)
 
 	cmake_src_configure
