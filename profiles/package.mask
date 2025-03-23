@@ -292,13 +292,6 @@ dev-python/pyside6-tools
 app-text/xournal
 
 # Andrey Grozin <grozin@gentoo.org> (2025-02-15)
-# Last release 6 years ago, depends on Qt5,
-# no one else packages this.
-# Use sci-geosciences/gpxsee instead.
-# Removal on 2025-03-16.
-sci-geosciences/gpxlab
-
-# Andrey Grozin <grozin@gentoo.org> (2025-02-15)
 # Last release 6 years ago, no one else packages this.
 # Bugs #932575, #927671
 # Use app-text/foliate or app-text/crqt-ng.
