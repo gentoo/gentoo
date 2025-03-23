@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="Pidgin IM Encryption PlugIn"
-HOMEPAGE="http://pidgin-encrypt.sourceforge.net/"
+HOMEPAGE="https://pidgin-encrypt.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/pidgin-encrypt/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-glib2.32.patch"
+	"${FILESDIR}/${P}-time.patch"
 )
 
 src_configure() {
@@ -35,4 +36,6 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${ED}"
 	dodoc CHANGELOG INSTALL NOTES README TODO VERSION WISHLIST
+
+	find "${ED}" -type f -name "*.la" -delete || die
 }
