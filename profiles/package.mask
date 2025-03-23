@@ -43,6 +43,7 @@
 #
 # Removal on 2025-04-22.  Bug #951933.
 dev-python/autocommand
+dev-python/jaraco-env
 dev-python/pip-run
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-22)
