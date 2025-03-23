@@ -293,13 +293,6 @@ app-text/xournal
 
 # Andrey Grozin <grozin@gentoo.org> (2025-02-15)
 # Last release 6 years ago, no one else packages this.
-# Bugs #932575, #927671
-# Use app-text/foliate or app-text/crqt-ng.
-# Removal on 2025-03-16.
-app-text/simple-fb2-reader
-
-# Andrey Grozin <grozin@gentoo.org> (2025-02-15)
-# Last release 6 years ago, no one else packages this.
 # Does not seem useful.
 # Bug #729546.
 # Removal on 2025-03-16.
