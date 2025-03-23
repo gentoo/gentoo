@@ -36,10 +36,10 @@ RDEPEND="
 		>=sci-ml/safetensors-0.4.1[${PYTHON_USEDEP}]
 		torch? (
 			sci-ml/caffe2[${PYTHON_USEDEP}]
+			sci-ml/pytorch[${PYTHON_USEDEP}]
 		)
 	')
 	torch? (
-		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		sci-ml/accelerate[${PYTHON_SINGLE_USEDEP}]
 	)
 "

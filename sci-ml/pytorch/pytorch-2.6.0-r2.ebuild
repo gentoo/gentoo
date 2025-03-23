@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_EXT=1
 inherit distutils-r1 prefix
 
@@ -22,26 +21,16 @@ RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep '
-		dev-python/sympy[${PYTHON_USEDEP}]
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-		~sci-ml/caffe2-2.4.1[${PYTHON_USEDEP}]
-	')
+	dev-python/sympy[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
+	~sci-ml/caffe2-${PV}[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-	')
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-2.4.0-dontbuildagain.patch \
-		"${FILESDIR}"/pytorch-1.9.0-Change-library-directory-according-to-CMake-build.patch \
-		"${FILESDIR}"/${PN}-2.4.0-global-dlopen.patch \
-		"${FILESDIR}"/pytorch-2.4.0-torch_shm_manager.patch \
-		"${FILESDIR}"/${PN}-1.13.0-setup.patch \
-		"${FILESDIR}"/${PN}-2.2.1-emptyso.patch \
+	eapply "${FILESDIR}"/${P}-dontbuildagain.patch
 
 	# Set build dir for pytorch's setup
 	sed -i \
@@ -49,6 +38,9 @@ src_prepare() {
 		tools/setup_helpers/env.py \
 		|| die
 	distutils-r1_src_prepare
+
+	# Get object file from caffe2
+	cp "${ESYSROOT}"/var/lib/caffe2/functorch.so functorch/functorch.so || die
 
 	hprefixify tools/setup_helpers/env.py
 }

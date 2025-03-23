@@ -21,7 +21,6 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/dill[${PYTHON_USEDEP}]
@@ -38,6 +37,7 @@ RDEPEND="
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		sci-ml/caffe2[${PYTHON_USEDEP},numpy]
 		sci-ml/huggingface_hub[${PYTHON_USEDEP}]
+		sci-ml/pytorch[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

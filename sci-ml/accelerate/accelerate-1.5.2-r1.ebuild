@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		sci-ml/pytorch[${PYTHON_USEDEP}]
+	')
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
