@@ -1,0 +1,10 @@
+Version bump for compatibility with CMake 4
+https://bugs.gentoo.org/951903
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8.0)
++cmake_minimum_required (VERSION 3.5.0)
+ project (tini C)
+ 
+ # Config
