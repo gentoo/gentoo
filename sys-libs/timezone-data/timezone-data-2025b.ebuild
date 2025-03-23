@@ -15,7 +15,7 @@ S="${WORKDIR}"/tzdb-${PV}
 LICENSE="BSD public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="nls leaps-timezone +zic-slim"
+IUSE="nls leaps-timezone zic-slim"
 
 DEPEND="nls? ( virtual/libintl )"
 RDEPEND="
@@ -46,8 +46,7 @@ src_configure() {
 	append-cppflags -DHAVE_GETTEXT=$(usex nls 1 0) -DTZ_DOMAIN='\"libc\"'
 
 	# Upstream default is 'slim', but it breaks quite a few programs,
-	# that parse /etc/localtime directly: bug #747538. Allow opting out
-	# accordingly.
+	# that parse /etc/localtime directly: bug #747538.
 	append-cppflags -DZIC_BLOAT_DEFAULT='\"'$(usex zic-slim slim fat)'\"'
 
 	LDLIBS=""
