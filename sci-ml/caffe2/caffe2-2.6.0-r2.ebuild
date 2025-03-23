@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 ROCM_VERSION=6.1
-inherit python-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
+inherit python-single-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -102,11 +102,13 @@ DEPEND="
 	dev-libs/FXdiv
 	dev-libs/pocketfft
 	dev-libs/psimd
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/pybind11[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	sci-ml/FP16
 	sci-ml/kineto
+	$(python_gen_cond_dep '
+		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+	')
 	cuda? ( <=dev-libs/cutlass-3.4.1 )
 	onednn? ( sci-ml/ideep )
 	qnnpack? ( dev-libs/clog )
@@ -292,7 +294,6 @@ src_configure() {
 		)
 	fi
 
-	python_setup
 	cmake_src_configure
 }
 
@@ -326,5 +327,5 @@ src_install() {
 	rm -rf python
 	mkdir -p python/torch || die
 	cp torch/version.py python/torch/ || die
-	python_foreach_impl python_install
+	python_install
 }

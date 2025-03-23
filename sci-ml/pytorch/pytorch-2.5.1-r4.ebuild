@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_EXT=1
 inherit distutils-r1 prefix
 
@@ -21,12 +22,16 @@ RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/sympy[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	~sci-ml/caffe2-${PV}[${PYTHON_USEDEP}]
+	~sci-ml/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/sympy[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+	')
 "
 DEPEND="${RDEPEND}
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	')
 "
 
 src_prepare() {

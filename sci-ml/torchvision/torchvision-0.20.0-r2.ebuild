@@ -23,13 +23,11 @@ IUSE="cuda"
 
 RDEPEND="
 	=sci-ml/caffe2-2.5*[cuda?]
+	=sci-ml/pytorch-2.5*[${PYTHON_SINGLE_USEDEP}]
 	dev-python/numpy
 	dev-python/pillow
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	$(python_gen_cond_dep '
-		=sci-ml/pytorch-2.5*[${PYTHON_USEDEP}]
-	')
 "
 BDEPEND="
 	test? (

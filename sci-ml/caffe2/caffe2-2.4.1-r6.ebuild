@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 ROCM_VERSION=6.1
-inherit python-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
+inherit python-single-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -104,11 +104,13 @@ DEPEND="
 	dev-libs/FXdiv
 	dev-libs/pocketfft
 	dev-libs/flatbuffers
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/pybind11[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	sci-ml/FP16
 	sci-ml/kineto
+	$(python_gen_cond_dep '
+		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+	')
 	cuda? ( <=dev-libs/cutlass-3.4.1 )
 	onednn? ( sci-ml/ideep )
 "
@@ -275,7 +277,6 @@ src_configure() {
 		)
 	fi
 
-	python_setup
 	cmake_src_configure
 
 	# do not rerun cmake and the build process in src_install
@@ -300,5 +301,5 @@ src_install() {
 	mkdir -p python/torch/include || die
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
 	cp torch/version.py python/torch/ || die
-	python_foreach_impl python_install
+	python_install
 }
