@@ -79,6 +79,7 @@ dev-python/simplebayes
 >=xfce-base/xfce4-power-manager-4.21
 >=xfce-base/xfce4-session-4.21
 >=xfce-base/xfce4-settings-4.21
+>=xfce-base/xfconf-4.21
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # A "forever beta" wrapper over dev-python/requests, with no tests,
