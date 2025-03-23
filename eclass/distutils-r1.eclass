@@ -1111,7 +1111,7 @@ _distutils-r1_backend_to_key() {
 		sipbuild.api)
 			echo sip
 			;;
-		uv_build)
+		uv_build|uv)
 			echo uv-build
 			;;
 		*)
@@ -1172,6 +1172,9 @@ _distutils-r1_get_backend() {
 				# this backend should only be used as implicit fallback
 				[[ ! ${legacy_fallback} ]] &&
 					new_backend=setuptools.build_meta
+				;;
+			uv)
+				new_backend=uv_build
 				;;
 		esac
 
