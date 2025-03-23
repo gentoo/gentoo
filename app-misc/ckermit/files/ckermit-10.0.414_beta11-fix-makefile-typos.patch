@@ -1,0 +1,95 @@
+Without this, specifying LNKFLAGS breaks the build. It looks like a copy/pasto.
+--- a/makefile
++++ b/makefile
+@@ -1310,7 +1310,6 @@ wermit:	ckcmai.$(EXT) ckclib.$(EXT) ckucmd.$(EXT) ckuusr.$(EXT) ckuus2.$(EXT) \
+ 		ckucon.$(EXT) ckutio.$(EXT) ckufio.$(EXT) ckudia.$(EXT) \
+ 		ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) \
+ 		ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) \
+-	$(CC2) $(LNKFLAGS) -o wermit \
+ 		ckcmai.$(EXT) ckclib.$(EXT) ckutio.$(EXT) ckufio.$(EXT) \
+ 		ckcfns.$(EXT) ckcfn2.$(EXT) ckcfn3.$(EXT) ckuxla.$(EXT) \
+ 		ckcpro.$(EXT) ckucmd.$(EXT) ckuus2.$(EXT) ckuus3.$(EXT) \
+@@ -1319,6 +1318,7 @@ wermit:	ckcmai.$(EXT) ckclib.$(EXT) ckucmd.$(EXT) ckuusr.$(EXT) ckuus2.$(EXT) \
+ 		ckudia.$(EXT) ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) \
+ 		ckusig.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) \
+ 		$(LIBS)
++	$(CC2) $(LNKFLAGS) -o wermit
+ 
+ # Preferred configuration with select()-based CONNECT
+ 
+@@ -1348,8 +1348,8 @@ mermit:	ckcmdb.$(EXT) ckcmai.$(EXT) ckclib.$(EXT) ckucmd.$(EXT) ckuusr.$(EXT) \
+ 		ckcpro.$(EXT) ckcfns.$(EXT) ckcfn2.$(EXT) ckcfn3.$(EXT) \
+ 		ckuxla.$(EXT) ckucon.$(EXT) ckutio.$(EXT) ckufio.$(EXT) \
+ 		ckudia.$(EXT) ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) \
+-		ckusig.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT)
+-	$(CC2) $(LNKFLAGS) -o mermit ckcmdb.$(EXT) ckclib.$(EXT) ckcmai.$(EXT)\
++		ckusig.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) \
++		ckcmdb.$(EXT) ckclib.$(EXT) ckcmai.$(EXT)\
+ 		ckutio.$(EXT) ckufio.$(EXT) ckcfns.$(EXT) ckcfn2.$(EXT) \
+ 		ckcfn3.$(EXT) ckuxla.$(EXT) ckcpro.$(EXT) ckucmd.$(EXT) \
+ 		ckuus2.$(EXT) ckuus3.$(EXT) ckuus4.$(EXT) ckuus5.$(EXT) \
+@@ -1357,6 +1357,7 @@ mermit:	ckcmdb.$(EXT) ckcmai.$(EXT) ckclib.$(EXT) ckucmd.$(EXT) ckuusr.$(EXT) \
+ 		ckuusr.$(EXT) ckucon.$(EXT) ckudia.$(EXT) ckuscr.$(EXT) \
+ 		ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) ckcuni.$(EXT) \
+ 		ckupty.$(EXT) ckcftp.$(EXT) $(LIBS)
++	$(CC2) $(LNKFLAGS) -o mermit
+ 
+ # Kerberized Version - Subject to USA export restrictions.
+ 
+@@ -1388,8 +1389,8 @@ krbmit-debug:	ckcmai.$(EXT) ckclib.$(EXT) ckucmd.$(EXT) ckuusr.$(EXT) \
+ 		ckuxla.$(EXT) ckucns.$(EXT) ckutio.$(EXT) ckufio.$(EXT) \
+ 		ckudia.$(EXT) ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) \
+ 		ckusig.$(EXT) ckuath.$(EXT) ck_crp.$(EXT) ckcuni.$(EXT) \
+-		ckupty.$(EXT) ck_ssl.$(EXT) ckcmdb.$(EXT) ckcftp.$(EXT) 
+-	$(CC2) $(LNKFLAGS) -o krbmit ckcmdb.$(EXT) ckcmai.$(EXT) \
++		ckupty.$(EXT) ck_ssl.$(EXT) ckcmdb.$(EXT) ckcftp.$(EXT) \
++		ckcmdb.$(EXT) ckcmai.$(EXT) \
+ 		ckclib.$(EXT) ckutio.$(EXT) ckufio.$(EXT) ckcfns.$(EXT) \
+ 		ckcfn2.$(EXT) ckcfn3.$(EXT) ckuxla.$(EXT) ckcpro.$(EXT) \
+ 		ckucmd.$(EXT) ckuus2.$(EXT) ckuus3.$(EXT) ckuus4.$(EXT) \
+@@ -1398,6 +1399,7 @@ krbmit-debug:	ckcmai.$(EXT) ckclib.$(EXT) ckucmd.$(EXT) ckuusr.$(EXT) \
+ 		ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) \
+ 		ckuath.$(EXT) ck_crp.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) \
+ 		ckcftp.$(EXT) ck_ssl.$(EXT) $(LIBS)
++	$(CC2) $(LNKFLAGS) -o krbmit
+ 
+ # SRP(TM) Version - Subject to USA export restrictions.
+ 
+@@ -1428,8 +1430,8 @@ krbmit-export:	ckcmai.$(EXT) \
+ 		ckcfns.$(EXT) ckcfn2.$(EXT) ckcfn3.$(EXT) ckuxla.$(EXT) \
+ 		ckucns.$(EXT) ckutio.$(EXT) ckufio.$(EXT) ckudia.$(EXT) \
+ 		ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) \
+-		ckuath.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT)
+-	$(CC2) $(LNKFLAGS) -o krbmit-export ckcmai.$(EXT) ckclib.$(EXT) \
++		ckuath.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) \
++		ckcmai.$(EXT) ckclib.$(EXT) \
+ 		ckutio.$(EXT) ckufio.$(EXT) ckcfns.$(EXT) ckcfn2.$(EXT) \
+ 		ckcfn3.$(EXT) ckuxla.$(EXT) ckcpro.$(EXT) ckucmd.$(EXT) \
+ 		ckuus2.$(EXT) ckuus3.$(EXT) ckuus4.$(EXT) ckuus5.$(EXT) \
+@@ -1437,6 +1439,7 @@ krbmit-export:	ckcmai.$(EXT) \
+ 		ckuusr.$(EXT) ckucns.$(EXT) ckudia.$(EXT) ckuscr.$(EXT) \
+ 		ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) ckuath.$(EXT) \
+ 		ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) $(LIBS)
++	$(CC2) $(LNKFLAGS) -o krbmit-export
+ 
+ # SRP(TM) Version - Not subject to USA export restrictions.
+ 
+@@ -1447,8 +1450,8 @@ srpmit-export:	ckcmai.$(EXT) \
+ 		ckcfns.$(EXT) ckcfn2.$(EXT) ckcfn3.$(EXT) ckuxla.$(EXT) \
+ 		ckucns.$(EXT) ckutio.$(EXT) ckufio.$(EXT) ckudia.$(EXT) \
+ 		ckuscr.$(EXT) ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) \
+-		ckuath.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT)
+-	$(CC2) $(LNKFLAGS) -o srpmit-export ckcmai.$(EXT) ckclib.$(EXT) \
++		ckuath.$(EXT) ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) \
++		ckcmai.$(EXT) ckclib.$(EXT) \
+ 		ckutio.$(EXT) ckufio.$(EXT) ckcfns.$(EXT) ckcfn2.$(EXT) \
+ 		ckcfn3.$(EXT) ckuxla.$(EXT) ckcpro.$(EXT) ckucmd.$(EXT) \
+ 		ckuus2.$(EXT) ckuus3.$(EXT) ckuus4.$(EXT) ckuus5.$(EXT) \
+@@ -1456,6 +1459,7 @@ srpmit-export:	ckcmai.$(EXT) \
+ 		ckuusr.$(EXT) ckucns.$(EXT) ckudia.$(EXT) ckuscr.$(EXT) \
+ 		ckcnet.$(EXT) ckctel.$(EXT) ckusig.$(EXT) ckuath.$(EXT) \
+ 		ckcuni.$(EXT) ckupty.$(EXT) ckcftp.$(EXT) $(LIBS)
++	$(CC2) $(LNKFLAGS) -o srpmit-export
+ 
+ ###########################################################################
+ # man page...
