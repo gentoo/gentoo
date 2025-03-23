@@ -38,7 +38,11 @@
 # deps.  New versions require "coherent" build system that's designed
 # to be completely incompatible with downstream packaging.
 # No revdeps left.
+#
+# Includes a number of NIH dependencies, some of them abandoned.
+#
 # Removal on 2025-04-22.  Bug #951933.
+dev-python/autocommand
 dev-python/pip-run
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-22)
