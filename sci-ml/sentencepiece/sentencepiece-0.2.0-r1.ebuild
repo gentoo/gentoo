@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-cpp/abseil-cpp
-	dev-libs/protobuf
+	dev-libs/protobuf:=
 	dev-util/google-perftools
 "
 DEPEND="${RDEPEND}
