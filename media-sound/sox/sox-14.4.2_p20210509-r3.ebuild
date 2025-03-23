@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 # We take a snapshot because of the huge number of security
 # and other fixes since the release of 14.4.2.
@@ -83,6 +83,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for LLD (bug #914867)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 	local myeconfargs=(
 		$(use_enable alsa)
 		$(use_enable amr amrnb)
