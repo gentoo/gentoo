@@ -44,6 +44,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3
 		app-text/docbook-xml-dtd:4.5
 	)
+	>=dev-build/meson-1.4.0
 	sys-devel/bison
 	app-alternatives/lex
 	test? (
@@ -62,6 +63,7 @@ pkg_setup() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature test cairo)
+		$(meson_use test tests)
 		$(meson_feature doctool)
 		#-Dglib_src_dir
 		$(meson_use gtk-doc gtk_doc)
