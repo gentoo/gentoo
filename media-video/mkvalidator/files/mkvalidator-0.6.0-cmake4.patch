@@ -1,0 +1,10 @@
+Fix build with CMake4
+https://bugs.gentoo.org/951925
+--- a/CMakeLists.txt	2025-03-23 21:09:27.899813094 +0300
++++ b/CMakeLists.txt	2025-03-23 21:12:50.990263429 +0300
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.2)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project("mkvalidator")
+ 
