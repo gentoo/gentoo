@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-23)
+# dev-python/pip-run is a NIH package with significant number of NIH
+# deps.  New versions require "coherent" build system that's designed
+# to be completely incompatible with downstream packaging.
+# No revdeps left.
+# Removal on 2025-04-22.  Bug #951933.
+dev-python/pip-run
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-22)
 # EAPI=7, uses legacy distutils non-PEP517 build, no reverse
 # dependencies, missing python compat bumps. Unmaintained in
