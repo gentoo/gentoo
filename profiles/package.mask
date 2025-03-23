@@ -76,6 +76,7 @@ dev-python/simplebayes
 >=xfce-base/garcon-4.21
 >=xfce-base/libxfce4ui-4.21
 >=xfce-base/tumbler-4.21
+>=xfce-base/xfce4-appfinder-4.21
 >=xfce-base/xfce4-panel-4.21
 >=xfce-base/xfce4-power-manager-4.21
 >=xfce-base/xfce4-session-4.21
