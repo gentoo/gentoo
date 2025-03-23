@@ -22,7 +22,9 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 
 all_ruby_prepare() {
-	cp "${DISTDIR}/${P}-emoji-test.txt" spec/data/emoji-test.txt || die
+	if use test; then
+		cp "${DISTDIR}/${P}-emoji-test.txt" spec/data/emoji-test.txt || die
+	fi
 }
 
 each_ruby_test() {
