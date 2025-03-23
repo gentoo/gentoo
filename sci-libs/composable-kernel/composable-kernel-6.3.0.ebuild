@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2317
@@ -7,7 +7,7 @@ EAPI=8
 ROCM_VERSION=${PV}
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
 
-inherit cmake flag-o-matic python-r1 rocm
+inherit check-reqs cmake flag-o-matic multiprocessing python-r1 rocm
 
 GTEST_COMMIT="b85864c64758dec007208e56af933fc3f52044ee"
 GTEST_FILE="gtest-1.14.0_p20220421.tar.gz"
@@ -43,15 +43,40 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.3.0-no-inline-all.patch
 	"${FILESDIR}"/${PN}-6.3.0-conditional-kernels.patch
 	"${FILESDIR}"/${PN}-6.3.0-conditional-ckprofiler.patch
+	"${FILESDIR}"/${PN}-6.3.0-expand-isa.patch
 )
 
-pkg_pretend() {
+ck_check-reqs() {
+	[[ ${MERGE_TYPE} == binary ]] && return
+
 	targets=($AMDGPU_TARGETS)
 	if [[ ${#targets[@]} -gt 1 ]]; then
 		ewarn "composable-kernel will be compiled for multiple GPU architectures,"
 		ewarn "which will take a significant amount of time."
 		ewarn "Please consider setting AMDGPU_TARGETS USE_EXPAND variable to a single architecture."
 	fi
+
+	# It takes ~2Gb of RAM per build thread
+	local user_jobs=$(makeopts_jobs)
+	local free_memory_mb=$(free -m | awk '/Mem:/ {print $4}')
+	local max_jobs=$(( free_memory_mb / 2048 ))
+	max_jobs=$(( max_jobs < 1 ? 1 : max_jobs ))
+	local limited_jobs=$(( user_jobs < max_jobs ? user_jobs : max_jobs ))
+	if [[ "${max_jobs}" -lt "${user_jobs}" ]]; then
+		ewarn "${free_memory_mb} MB of free RAM is not enough for ${user_jobs} parallel build jobs (~2Gb per job)."
+		ewarn "Please consider setting MAKEOPTS=\"-j${limited_jobs}\" for this package."
+	fi
+
+	local CHECKREQS_MEMORY=$((user_jobs*2048))M
+	check-reqs_${EBUILD_PHASE_FUNC}
+}
+
+pkg_pretend() {
+	ck_check-reqs
+}
+
+pkg_setup() {
+	ck_check-reqs
 }
 
 src_prepare() {
