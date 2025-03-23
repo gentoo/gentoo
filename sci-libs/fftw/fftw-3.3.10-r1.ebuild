@@ -39,6 +39,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	_rtc
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3.10-fixup-cmake-optional.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
