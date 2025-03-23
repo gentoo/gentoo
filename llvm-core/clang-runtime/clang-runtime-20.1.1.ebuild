@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-build
+inherit multilib multilib-build
 
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="https://clang.llvm.org/"
