@@ -243,6 +243,11 @@ src_compile() {
 }
 
 python_compile_all() {
+	# There is no documentation in certbot-apache or certbot-nginx.
+	if [[ "${dir}" = "certbot-apache" ]] || [[ "${dir}" = "certbot-nginx" ]]; then
+		return
+	fi
+
 	# Used to build documentation
 	use doc && {
 		sphinx_compile_all
