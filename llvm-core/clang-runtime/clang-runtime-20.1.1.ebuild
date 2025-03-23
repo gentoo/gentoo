@@ -14,7 +14,7 @@ SLOT="${PV%%.*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
-	default-compiler-rt default-libcxx default-lld llvm-libunwind
+	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
 "
 REQUIRED_USE="
 	sanitize? ( compiler-rt )
@@ -46,6 +46,7 @@ RDEPEND="
 	!default-libcxx? ( sys-devel/gcc )
 	default-lld? ( ~llvm-core/lld-${PV} )
 	!default-lld? ( sys-devel/binutils )
+	polly? ( ~llvm-core/polly-${PV} )
 "
 
 _doclang_cfg() {
@@ -119,6 +120,12 @@ src_install() {
 	newins - gentoo-plugins.cfg <<-EOF
 		# This file is used to load optional LLVM plugins.
 	EOF
+	if use polly; then
+		cat >> "${ED}/etc/clang/${SLOT}/gentoo-plugins.cfg" <<-EOF || die
+			-fpass-plugin=LLVMPolly.so
+			-fplugin=LLVMPolly.so
+		EOF
+	fi
 
 	multilib_foreach_abi doclang_cfg
 }
