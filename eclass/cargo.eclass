@@ -448,7 +448,9 @@ _cargo_gen_git_config() {
 # Return the directory within target that contains the build, e.g.
 # target/aarch64-unknown-linux-gnu/release.
 cargo_target_dir() {
-	echo "${CARGO_TARGET_DIR:-target}/$(rust_abi)/$(usex debug debug release)"
+	local abi
+	tc-is-cross-compiler && abi=/$(rust_abi)
+	echo "${CARGO_TARGET_DIR:-target}${abi}/$(usex debug debug release)"
 }
 
 # @FUNCTION: cargo_update_crates
@@ -761,6 +763,10 @@ cargo_env() {
 		# These variables will override the above, even if empty, so unset them
 		# locally. Do this in a subshell so that they remain set afterwards.
 		unset CARGO_BUILD_RUSTFLAGS CARGO_ENCODED_RUSTFLAGS RUSTFLAGS
+
+		# Only tell Cargo to cross-compile when actually needed to avoid the
+		# aforementioned build host vs target flag separation issue.
+		tc-is-cross-compiler || unset CARGO_BUILD_TARGET
 
 		"${@}"
 	)
