@@ -24,7 +24,7 @@ RDEPEND="
 		media-libs/glew:=
 		virtual/glu
 		virtual/opengl )
-	upnp? ( net-libs/miniupnpc )
+	upnp? ( net-libs/miniupnpc:= )
 "
 DEPEND="
 	${RDEPEND}
