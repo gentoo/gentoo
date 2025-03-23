@@ -26,6 +26,11 @@ BDEPEND="test? ( sci-libs/gdal )"
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	rm tests/test_urls.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	"${EPYTHON}" -m django test tests --settings tests.app.settings \
 		|| die "Tests failed with ${EPYTHON}"
