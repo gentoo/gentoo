@@ -66,6 +66,9 @@ EPYTEST_IGNORE=(
 )
 
 src_prepare() {
-	sed -i -e '/--cov/d' pyproject.toml || die
 	distutils-r1_src_prepare
+
+	sed -i -e '/--cov/d' pyproject.toml || die
+	# upstream pinned it over typing changes
+	sed -i -e '/werkzeug.*</d' pyproject.toml || die
 }
