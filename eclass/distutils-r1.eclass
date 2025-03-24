@@ -1064,58 +1064,57 @@ _distutils-r1_copy_egg_info() {
 	find -name '*.egg-info' -type d -exec cp -R -p {} "${BUILD_DIR}"/ ';' || die
 }
 
-# @FUNCTION: _distutils-r1_backend_to_key
-# @USAGE: <backend>
+# @FUNCTION: _distutils-r1_key_to_backend
+# @USAGE: <key>
 # @INTERNAL
 # @DESCRIPTION:
-# Print the DISTUTILS_USE_PEP517 value corresponding to the backend
-# passed as the only argument.
-_distutils-r1_backend_to_key() {
+# Print the backend corresponding to the DISTUTILS_USE_PEP517 value.
+_distutils-r1_key_to_backend() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local backend=${1}
-	case ${backend} in
-		flit_core.buildapi|flit.buildapi)
-			echo flit
+	local key=${1}
+	case ${key} in
+		flit)
+			echo flit_core.buildapi
 			;;
-		flit_scm:buildapi)
-			echo flit_scm
+		flit_scm)
+			echo flit_scm:buildapi
 			;;
-		hatchling.build)
-			echo hatchling
+		hatchling)
+			echo hatchling.build
 			;;
-		jupyter_packaging.build_api)
-			echo jupyter
+		jupyter)
+			echo jupyter_packaging.build_api
 			;;
 		maturin)
 			echo maturin
 			;;
-		mesonpy)
-			echo meson-python
+		meson-python)
+			echo mesonpy
 			;;
-		pbr.build)
-			echo pbr
+		pbr)
+			echo pbr.build
 			;;
-		pdm.backend|pdm.pep517.api)
-			echo pdm-backend
+		pdm-backend)
+			echo pdm.backend
 			;;
-		poetry.core.masonry.api|poetry.masonry.api)
-			echo poetry
+		poetry)
+			echo poetry.core.masonry.api
 			;;
-		scikit_build_core.build)
-			echo scikit-build-core
+		scikit-build-core)
+			echo scikit_build_core.build
 			;;
-		setuptools.build_meta|setuptools.build_meta:__legacy__)
-			echo setuptools
+		setuptools)
+			echo setuptools.build_meta
 			;;
-		sipbuild.api)
-			echo sip
+		sip)
+			echo sipbuild.api
 			;;
-		uv_build|uv)
-			echo uv-build
+		uv-build)
+			echo uv_build
 			;;
 		*)
-			die "Unknown backend: ${backend}"
+			die "Unknown DISTUTILS_USE_PEP517 key: ${key}"
 			;;
 	esac
 }
@@ -1150,48 +1149,39 @@ _distutils-r1_get_backend() {
 		return
 	fi
 
-	# verify whether DISTUTILS_USE_PEP517 was set correctly
-	local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
-	if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
-		eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
-		eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
-		eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
-		eerror "(backend: ${build_backend})"
-		die "DISTUTILS_USE_PEP517 value incorrect"
-	fi
+	# get the preferred backend from the eclass
+	local backend_to_use=$(_distutils-r1_key_to_backend "${DISTUTILS_USE_PEP517}")
+	if [[ ${backend_to_use} != ${build_backend} ]]; then
+		# special-case deprecated backends
+		case ${build_backend} in
+			flit.buildapi)
+				;;
+			pdm.pep517.api)
+				;;
+			poetry.masonry.api)
+				;;
+			setuptools.build_meta:__legacy__)
+				;;
+			uv)
+				;;
+			*)
+				eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
+				eerror "  DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
+				eerror "  implies backend: ${backend_to_use}"
+				eerror "   pyproject.toml: ${build_backend}"
+				die "DISTUTILS_USE_PEP517 value incorrect"
+		esac
 
-	# fix deprecated backends up
-	local new_backend=
-	case ${build_backend} in
-		flit.buildapi)
-			new_backend=flit_core.buildapi
-			;;
-		pdm.pep517.api)
-			new_backend=pdm.backend
-			;;
-		poetry.masonry.api)
-			new_backend=poetry.core.masonry.api
-			;;
-		setuptools.build_meta:__legacy__)
-			# this backend should only be used as implicit fallback
-			new_backend=setuptools.build_meta
-			;;
-		uv)
-			new_backend=uv_build
-			;;
-	esac
-
-	if [[ -n ${new_backend} ]]; then
+		# if we didn't die, we're dealing with a deprecated backend
 		if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
 			eqawarn "${build_backend} backend is deprecated.  Please see:"
 			eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
-			eqawarn "The eclass will be using ${new_backend} instead."
+			eqawarn "The eclass will be using ${backend_to_use} instead."
 			> "${T}"/.distutils_deprecated_backend_warned || die
 		fi
-		build_backend=${new_backend}
 	fi
 
-	echo "${build_backend}"
+	echo "${backend_to_use}"
 }
 
 # @FUNCTION: distutils_wheel_install
