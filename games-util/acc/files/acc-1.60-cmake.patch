@@ -1,0 +1,23 @@
+https://github.com/ZDoom/acc/commit/a0e7d2437c7f66a2b973537c2e854e2b91cd9c4c
+From a0e7d2437c7f66a2b973537c2e854e2b91cd9c4c Mon Sep 17 00:00:00 2001
+From: NHOrus <jy6x2b32pie9@yahoo.com>
+Date: Tue, 25 Mar 2025 23:06:28 +0300
+Subject: [PATCH] Update CMakeLists.txt to work with CMake 4
+
+CMake 4 dropped compatibility with CMake < 3.5
+
+See https://bugs.gentoo.org/951932
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d4cb817..9dc54c3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.4)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(acc)
+ 
