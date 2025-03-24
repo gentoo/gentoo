@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,7 +13,7 @@ DESCRIPTION="combined serial and network communication software package"
 SRC_URI="ftp://kermit.columbia.edu/kermit/archives/${MY_P}.tar.gz"
 HOMEPAGE="http://www.kermitproject.org/"
 
-LICENSE="Kermit"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc ppc64 x86"
 IUSE="ncurses"

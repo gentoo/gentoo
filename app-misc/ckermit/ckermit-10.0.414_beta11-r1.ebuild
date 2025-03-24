@@ -20,7 +20,7 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-LICENSE="Kermit"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="ncurses"
