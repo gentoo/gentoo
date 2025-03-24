@@ -40,7 +40,7 @@ RDEPEND="
 		dev-python/zipp[${PYTHON_USEDEP}]
 		dev-qt/qtbase:6[icu,sqlite]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
-		pdf? ( www-plugins/pdfjs )
+		pdf? ( <www-plugins/pdfjs-5 )
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
