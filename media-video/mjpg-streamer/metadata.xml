@@ -42,6 +42,6 @@
 		<flag name="wxp-compat">Enable camera WXP compatible format</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">mjpg-streamer</remote-id>
+		<remote-id type="github">jacksonliam/mjpg-streamer</remote-id>
 	</upstream>
 </pkgmetadata>
