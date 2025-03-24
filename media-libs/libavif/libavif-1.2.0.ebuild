@@ -74,7 +74,6 @@ multilib_src_configure() {
 		-DAVIF_CODEC_DAV1D=$(usex dav1d SYSTEM OFF)
 		-DAVIF_ZLIBPNG=SYSTEM
 		-DAVIF_JPEG=SYSTEM
-		-DAVIF_LIBYUV=$(usex libyuv SYSTEM OFF)
 
 		-DAVIF_BUILD_GDK_PIXBUF=$(usex gdk-pixbuf ON OFF)
 
@@ -85,6 +84,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DAVIF_CODEC_RAV1E=$(usex rav1e SYSTEM OFF)
 			-DAVIF_CODEC_SVT=$(usex svt-av1 SYSTEM OFF)
+			-DAVIF_LIBYUV=$(usex libyuv SYSTEM OFF)
 
 			-DAVIF_BUILD_EXAMPLES=$(usex examples ON OFF)
 			-DAVIF_BUILD_APPS=$(usex extras ON OFF)
@@ -95,6 +95,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DAVIF_CODEC_RAV1E=OFF
 			-DAVIF_CODEC_SVT=OFF
+			-DAVIF_LIBYUV=OFF
 
 			-DAVIF_BUILD_EXAMPLES=OFF
 			-DAVIF_BUILD_APPS=OFF
