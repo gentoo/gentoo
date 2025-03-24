@@ -1128,65 +1128,67 @@ _distutils-r1_backend_to_key() {
 _distutils-r1_get_backend() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local build_backend legacy_fallback
+	local build_backend
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
 		build_backend=$("${EPYTHON}" -m gpep517 get-backend)
 	fi
-	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
-		-f setup.py ]]
-	then
-		# use the legacy setuptools backend as a fallback
-		build_backend=setuptools.build_meta:__legacy__
-		legacy_fallback=1
-	fi
 	if [[ -z ${build_backend} ]]; then
-		die "Unable to obtain build-backend from pyproject.toml"
+		if [[ ${DISTUTILS_USE_PEP517} == setuptools && -f setup.py ]]
+		then
+			# use the legacy setuptools backend as a fallback
+			echo setuptools.build_meta:__legacy__
+			return
+		else
+			die "Unable to obtain build-backend from pyproject.toml"
+		fi
 	fi
 
-	if [[ ${DISTUTILS_USE_PEP517} != standalone ]]; then
-		# verify whether DISTUTILS_USE_PEP517 was set correctly
-		local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
-		if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
-			eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
-			eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
-			eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
-			eerror "(backend: ${build_backend})"
-			die "DISTUTILS_USE_PEP517 value incorrect"
-		fi
+	if [[ ${DISTUTILS_USE_PEP517} == standalone ]]; then
+		echo "${build_backend}"
+		return
+	fi
 
-		# fix deprecated backends up
-		local new_backend=
-		case ${build_backend} in
-			flit.buildapi)
-				new_backend=flit_core.buildapi
-				;;
-			pdm.pep517.api)
-				new_backend=pdm.backend
-				;;
-			poetry.masonry.api)
-				new_backend=poetry.core.masonry.api
-				;;
-			setuptools.build_meta:__legacy__)
-				# this backend should only be used as implicit fallback
-				[[ ! ${legacy_fallback} ]] &&
-					new_backend=setuptools.build_meta
-				;;
-			uv)
-				new_backend=uv_build
-				;;
-		esac
+	# verify whether DISTUTILS_USE_PEP517 was set correctly
+	local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
+	if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
+		eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
+		eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
+		eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
+		eerror "(backend: ${build_backend})"
+		die "DISTUTILS_USE_PEP517 value incorrect"
+	fi
 
-		if [[ -n ${new_backend} ]]; then
-			if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
-				eqawarn "${build_backend} backend is deprecated.  Please see:"
-				eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
-				eqawarn "The eclass will be using ${new_backend} instead."
-				> "${T}"/.distutils_deprecated_backend_warned || die
-			fi
-			build_backend=${new_backend}
+	# fix deprecated backends up
+	local new_backend=
+	case ${build_backend} in
+		flit.buildapi)
+			new_backend=flit_core.buildapi
+			;;
+		pdm.pep517.api)
+			new_backend=pdm.backend
+			;;
+		poetry.masonry.api)
+			new_backend=poetry.core.masonry.api
+			;;
+		setuptools.build_meta:__legacy__)
+			# this backend should only be used as implicit fallback
+			new_backend=setuptools.build_meta
+			;;
+		uv)
+			new_backend=uv_build
+			;;
+	esac
+
+	if [[ -n ${new_backend} ]]; then
+		if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
+			eqawarn "${build_backend} backend is deprecated.  Please see:"
+			eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
+			eqawarn "The eclass will be using ${new_backend} instead."
+			> "${T}"/.distutils_deprecated_backend_warned || die
 		fi
+		build_backend=${new_backend}
 	fi
 
 	echo "${build_backend}"
