@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/pthreadpool
 	dev-libs/cpuinfo
 	$(python_gen_cond_dep '
-		<=sci-ml/FP16-2024.05.27[${PYTHON_USEDEP}]
+		~sci-ml/FP16-2024.05.27[${PYTHON_USEDEP}]
 		dev-python/peachpy[${PYTHON_USEDEP}]
 	')
 "
