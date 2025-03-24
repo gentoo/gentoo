@@ -1,0 +1,70 @@
+--- a/test/ieee-from-fp32-value.cc	2025-03-24 09:45:52.653257251 +0100
++++ b/test/ieee-from-fp32-value.cc	2025-03-24 09:46:09.945044617 +0100
+@@ -3,6 +3,7 @@
+ #include <cstdint>
+ 
+ #include <fp16.h>
++#include <iomanip>
+ #include <tables.h>
+ 
+ #if (defined(__i386__) || defined(__x86_64__)) && defined(__F16C__)
+--- a/test/bitcasts.cc	2025-03-24 09:50:29.522852488 +0100
++++ b/test/bitcasts.cc	2025-03-24 09:50:44.722665548 +0100
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ 
+--- a/test/ieee-to-fp32-value.cc	2025-03-24 09:51:25.784160595 +0100
++++ b/test/ieee-to-fp32-value.cc	2025-03-24 09:51:40.397980890 +0100
+@@ -2,6 +2,7 @@
+ 
+ #include <cstdint>
+ #include <cmath>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+--- a/test/ieee-to-fp32-bits.cc	2025-03-24 09:47:04.427374626 +0100
++++ b/test/ieee-to-fp32-bits.cc	2025-03-24 09:47:36.596979037 +0100
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+--- a/test/alt-to-fp32-value.cc	2025-03-24 09:52:11.425599313 +0100
++++ b/test/alt-to-fp32-value.cc	2025-03-24 09:52:28.007395391 +0100
+@@ -2,6 +2,7 @@
+ 
+ #include <cstdint>
+ #include <cmath>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+--- a/test/alt-to-fp32-bits.cc	2025-03-24 09:48:02.413661553 +0100
++++ b/test/alt-to-fp32-bits.cc	2025-03-24 09:48:20.896434255 +0100
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>
+--- a/test/alt-from-fp32-value.cc	2025-03-24 09:49:31.964560292 +0100
++++ b/test/alt-from-fp32-value.cc	2025-03-24 09:49:48.541356436 +0100
+@@ -1,6 +1,7 @@
+ #include <gtest/gtest.h>
+ 
+ #include <cstdint>
++#include <iomanip>
+ 
+ #include <fp16.h>
+ #include <tables.h>

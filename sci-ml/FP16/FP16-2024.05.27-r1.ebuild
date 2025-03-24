@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit python-r1 cmake
 
 CommitId=95163a75c51bc8dc29f72d0d7419ec50132984ff
@@ -31,6 +31,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2021.03.20-gentoo.patch
+	"${FILESDIR}"/${P}-gcc14.patch
 )
 
 src_prepare() {
