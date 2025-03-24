@@ -251,6 +251,15 @@ src_configure() {
 		)
 	fi
 
+	if [[ ${PV} != *9999 ]] ; then
+		# Non-live ebuilds download the sources from a tarball which does not
+		# include a .git directory.  Coccinelle assumes it exists and fails
+		# otherwise.
+		#
+		# Fixes https://bugs.gentoo.org/952004
+		sed -i "s/subdir('coccinelle')/# subdir('coccinelle')/" "${WORKDIR}/git-${PV}/contrib/meson.build" || die
+	fi
+
 	meson_src_configure
 
 	if use tk ; then
