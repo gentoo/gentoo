@@ -1,0 +1,19 @@
+from upstream commit d3c3fb6e18a6b359c263156f556a5520121ca7fd
+
+Not all linkers support that option, and it seems the option was included
+solely for informational purposes (possibly to debug issues in the past).
+Therefore, it appears safe to remove the option from the makefile.
+
+diff --git a/GNUmakefile b/GNUmakefile
+index a27b453..11bc3a1 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -261,7 +261,7 @@ beep-usage.c: beep-usage.txt
+ define LINK_RULE
+ $(1): $$($(2)_OBJS)
+ 	@: echo "LINK_RULE $$@: $$^"
+-	$(CC) -Wl,-Map=$$(@:%=%.map),--cref $(CFLAGS) $(common_CFLAGS) $(LDFLAGS) $(common_LDFLAGS) -o $$@ $$^ $$($(2)_LIBS) $(common_LIBS) $(LIBS)
++	$(CC) -Wl,-Map=$$(@:%=%.map) $(CFLAGS) $(common_CFLAGS) $(LDFLAGS) $(common_LDFLAGS) -o $$@ $$^ $$($(2)_LIBS) $(common_LIBS) $(LIBS)
+ 
+ $$(patsubst %.o,.deps/%.o.dep,$$($(2)_OBJS))):
+ 
