@@ -1,0 +1,36 @@
+diff --git a/include/uhd/features/ref_clk_calibration_iface.hpp b/include/uhd/features/ref_clk_calibration_iface.hpp
+index 86a2005..0408489 100644
+--- a/include/uhd/features/ref_clk_calibration_iface.hpp
++++ b/include/uhd/features/ref_clk_calibration_iface.hpp
+@@ -9,6 +9,7 @@
+ #include <uhd/config.hpp>
+ #include <uhd/features/discoverable_feature.hpp>
+ #include <memory>
++#include <cstdint>
+ 
+ namespace uhd { namespace features {
+ 
+diff --git a/lib/include/uhdlib/usrp/common/mpmd_mb_controller.hpp b/lib/include/uhdlib/usrp/common/mpmd_mb_controller.hpp
+index 11e2064..9794ba3 100644
+--- a/lib/include/uhdlib/usrp/common/mpmd_mb_controller.hpp
++++ b/lib/include/uhdlib/usrp/common/mpmd_mb_controller.hpp
+@@ -16,6 +16,7 @@
+ #include <uhdlib/utils/rpc.hpp>
+ #include <map>
+ #include <memory>
++#include <cstdint>
+ 
+ namespace uhd { namespace rfnoc {
+ 
+diff --git a/lib/include/uhdlib/usrp/dboard/fbx/fbx_constants.hpp b/lib/include/uhdlib/usrp/dboard/fbx/fbx_constants.hpp
+index fd23fb8..32026ff 100644
+--- a/lib/include/uhdlib/usrp/dboard/fbx/fbx_constants.hpp
++++ b/lib/include/uhdlib/usrp/dboard/fbx/fbx_constants.hpp
+@@ -15,6 +15,7 @@
+ #include <map>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace uhd { namespace usrp { namespace fbx {
+ 
