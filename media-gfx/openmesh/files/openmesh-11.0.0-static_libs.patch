@@ -1,0 +1,63 @@
+allow shared libs only
+diff --git a/src/OpenMesh/Core/CMakeLists.txt b/src/OpenMesh/Core/CMakeLists.txt
+index 48f5547..b28bd31 100644
+--- a/src/OpenMesh/Core/CMakeLists.txt
++++ b/src/OpenMesh/Core/CMakeLists.txt
+@@ -151,13 +151,16 @@ if (WIN32)
+ 
+ 
+ else ()
+-  vci_add_library (OpenMeshCore SHAREDANDSTATIC ${sources} ${headers})
++  if (OPENMESH_BUILD_SHARED)
++    vci_add_library (OpenMeshCore SHARED ${sources} ${headers})
++  else ()
++    vci_add_library (OpenMeshCore SHAREDANDSTATIC ${sources} ${headers})
+ 
+-  target_include_directories(OpenMeshCore PUBLIC
++    target_include_directories(OpenMeshCoreStatic PUBLIC
+                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+                                           $<INSTALL_INTERFACE:include>)
+-
+-  target_include_directories(OpenMeshCoreStatic PUBLIC
++  endif ()
++  target_include_directories(OpenMeshCore PUBLIC
+                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+                                           $<INSTALL_INTERFACE:include>)
+ 
+diff --git a/src/OpenMesh/Tools/CMakeLists.txt b/src/OpenMesh/Tools/CMakeLists.txt
+index 08baecb..4c61ea9 100644
+--- a/src/OpenMesh/Tools/CMakeLists.txt
++++ b/src/OpenMesh/Tools/CMakeLists.txt
+@@ -116,13 +116,16 @@ if (WIN32)
+                                         $<INSTALL_INTERFACE:include>)
+ 
+ else ()
+-  vci_add_library (OpenMeshTools SHAREDANDSTATIC ${sources} ${headers})
++  if (OPENMESH_BUILD_SHARED)
++    vci_add_library (OpenMeshTools SHARED ${sources} ${headers})
++  else ()
++    vci_add_library (OpenMeshTools SHAREDANDSTATIC ${sources} ${headers})
+ 
+-  target_include_directories(OpenMeshTools PUBLIC
++    target_include_directories(OpenMeshToolsStatic PUBLIC
+                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+                                           $<INSTALL_INTERFACE:include>)
+-
+-  target_include_directories(OpenMeshToolsStatic PUBLIC
++  endif ()
++  target_include_directories(OpenMeshTools PUBLIC
+                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+                                           $<INSTALL_INTERFACE:include>)
+ 
+@@ -132,9 +132,9 @@ endif ()
+ 
+ target_link_libraries (OpenMeshTools OpenMeshCore)
+ 
+-IF( NOT WIN32 )
++IF( NOT WIN32 AND NOT OPENMESH_BUILD_SHARED )
+   target_link_libraries (OpenMeshToolsStatic OpenMeshCoreStatic)
+-ENDIF(NOT WIN32)
++ENDIF( NOT WIN32 AND NOT OPENMESH_BUILD_SHARED )
+ 
+ if ( (${CMAKE_PROJECT_NAME} MATCHES "OpenMesh") AND BUILD_APPS )
+ 

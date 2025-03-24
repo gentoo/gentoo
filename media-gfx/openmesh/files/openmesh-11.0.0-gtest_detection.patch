@@ -1,0 +1,27 @@
+use find_package for GTest
+diff --git a/src/Unittests/CMakeLists.txt b/src/Unittests/CMakeLists.txt
+index 0d7fb92..73127db 100644
+--- a/src/Unittests/CMakeLists.txt
++++ b/src/Unittests/CMakeLists.txt
+@@ -73,20 +73,9 @@ if (NOT DEFINED OPENMESH_BUILD_UNIT_TESTS)
+ endif()
+ 
+ if (OPENMESH_BUILD_UNIT_TESTS)
+-  # Fetch Gtest from github
+-  include(FetchContent)
+-  FetchContent_Declare(
+-    googletest
+-    GIT_REPOSITORY https://github.com/google/googletest.git
+-    GIT_TAG f8d7d77c06936315286eb55f8de22cd23c188571 # v1.14.0
+-    #FIND_PACKAGE_ARGS NAMES GTest
+-  )
+-  # For Windows: Prevent overriding the parent project's compiler/linker settings
+-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-  FetchContent_MakeAvailable(googletest)
+-
+   enable_testing()
+ 
++  find_package(GTest CONFIG)
+   find_package(Eigen3)
+ 
+   # Set correct include paths so that the compiler can find the headers

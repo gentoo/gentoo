@@ -1,0 +1,14 @@
+use commondir (share) for pkgconfig installation
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3aa8122..6d1bf51 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -193,7 +196,7 @@ set(PRIVATE_LIBS "-lOpenMeshCore -lOpenMeshTools")
+ 
+ configure_file("openmesh.pc.in" "${CMAKE_CURRENT_BINARY_DIR}/openmesh.pc" @ONLY)
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/openmesh.pc DESTINATION libdata/pkgconfig)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/openmesh.pc DESTINATION share/pkgconfig)
+ 
+ # generate target file
+ 
