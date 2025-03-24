@@ -103,6 +103,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-106-acct-user-group-gentoo.patch
 	# https://github.com/dracut-ng/dracut-ng/pull/1207
 	"${FILESDIR}"/${PN}-106-fix-rngd-module.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/1250
+	"${FILESDIR}"/${PN}-106-fix-mdraid-module.patch
 )
 
 pkg_setup() {
