@@ -153,6 +153,20 @@
 # files are found in ${BUILD_DIR}/install after python_install(), they
 # will be merged into ${D}.
 
+# @ECLASS_VARIABLE: DISTUTILS_UPSTREAM_PEP517
+# @DESCRIPTION:
+# Specifies the PEP517 build backend used upstream.  It is used
+# by the eclass to verify the correctness of DISTUTILS_USE_PEP517,
+# and matches DISTUTILS_USE_PEP517 by default.  However, it can be
+# overriden to workaround the eclass check, when it is desirable
+# to build the wheel using other backend than the one used upstream.
+#
+# Please note that even in packages using PEP621 metadata, there can
+# be subtle differences between the behavior of different PEP517 build
+# backends, for example regarding finding package files.  When using
+# this option, please make sure that the package is installed correctly.
+: "${DISTUTILS_UPSTREAM_PEP517:=${DISTUTILS_USE_PEP517}}"
+
 # @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
 # @PRE_INHERIT
@@ -1149,9 +1163,9 @@ _distutils-r1_get_backend() {
 		return
 	fi
 
-	# get the preferred backend from the eclass
-	local backend_to_use=$(_distutils-r1_key_to_backend "${DISTUTILS_USE_PEP517}")
-	if [[ ${backend_to_use} != ${build_backend} ]]; then
+	# verify that the ebuild correctly specifies the build backend
+	local expected_backend=$(_distutils-r1_key_to_backend "${DISTUTILS_UPSTREAM_PEP517}")
+	if [[ ${expected_backend} != ${build_backend} ]]; then
 		# special-case deprecated backends
 		case ${build_backend} in
 			flit.buildapi)
@@ -1165,9 +1179,9 @@ _distutils-r1_get_backend() {
 			uv)
 				;;
 			*)
-				eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
-				eerror "  DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
-				eerror "  implies backend: ${backend_to_use}"
+				eerror "DISTUTILS_UPSTREAM_PEP517 does not match pyproject.toml!"
+				eerror "  DISTUTILS_UPSTREAM_PEP517=${DISTUTILS_USE_PEP517}"
+				eerror "  implies backend: ${expected_backend}"
 				eerror "   pyproject.toml: ${build_backend}"
 				die "DISTUTILS_USE_PEP517 value incorrect"
 		esac
@@ -1176,12 +1190,12 @@ _distutils-r1_get_backend() {
 		if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
 			eqawarn "${build_backend} backend is deprecated.  Please see:"
 			eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
-			eqawarn "The eclass will be using ${backend_to_use} instead."
+			eqawarn "The project should use ${expected_backend} instead."
 			> "${T}"/.distutils_deprecated_backend_warned || die
 		fi
 	fi
 
-	echo "${backend_to_use}"
+	echo "$(_distutils-r1_key_to_backend "${DISTUTILS_USE_PEP517}")"
 }
 
 # @FUNCTION: distutils_wheel_install
