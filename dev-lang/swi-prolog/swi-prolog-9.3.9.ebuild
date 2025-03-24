@@ -19,7 +19,7 @@ else
 	SRC_URI="https://www.swi-prolog.org/download/devel/src/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="BSD-2"
