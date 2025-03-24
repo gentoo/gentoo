@@ -41,6 +41,10 @@ src_prepare() {
 }
 
 src_compile() {
+	filter-lto
+
+	BUILD_CFLAGS+=" -std=gnu89"
+
 	# we don't enable any of the telnet/ftp authentication stuff
 	# since there are other packages which do these things better
 	# USE="kerberos pam shadow ssl zlib"
@@ -57,7 +61,8 @@ src_compile() {
 	append-cppflags -DNOARROWKEYS # bug #669332
 	emake \
 		CC="$(tc-getCC)" \
-		KFLAGS="${CPPFLAGS}" \
+		CC2="$(tc-getCC)" \
+		KFLAGS="${CPPFLAGS} -std=gnu89 -Wno-format-security" \
 		LIBS="-lcrypt -lresolv -lutil ${LIBS}" \
 		LNKFLAGS="${LDFLAGS}" \
 		linuxa
