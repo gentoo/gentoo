@@ -6,7 +6,6 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<use>
-		<flag name="rpc">Enable RPC server</flag>
 		<flag name="vtk">include vtk support</flag>
 	</use>
 	<upstream>
