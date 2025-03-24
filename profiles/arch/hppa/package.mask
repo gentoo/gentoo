@@ -1,5 +1,13 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-03-24)
+# Affected by a data corruption bug on HPPA
+# https://lore.kernel.org/linux-parisc/84d7b3e1053b2a8397bcc7fc8eee8106@matoro.tk/
+>=sys-kernel/gentoo-sources-6.12
+>=sys-kernel/vanilla-sources-6.12
+>=sys-kernel/gentoo-kernel-6.12
+>=sys-kernel/vanilla-kernel-6.12
 
 # Sam James <sam@gentoo.org> (2023-03-28)
 # Needs explicit porting to each platform (bug 894078#c6)
