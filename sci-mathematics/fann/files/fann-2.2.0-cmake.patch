@@ -1,0 +1,22 @@
+Correct cmake_minimum_required for CMake4
+Fix paths for pkgconfig file installation
+https://bugs.gentoo.org/951922
+https://bugs.gentoo.org/863050
+--- a/CMakeLists.txt	2025-03-24 15:32:02.295787034 +0300
++++ b/CMakeLists.txt	2025-03-24 15:33:46.099775849 +0300
+@@ -1,6 +1,6 @@
++cmake_minimum_required(VERSION 3.5)
+ PROJECT (FANN)
+ #SET(CMAKE_VERBOSE_MAKEFILE ON)
+-cmake_minimum_required(VERSION 2.8)
+ 
+ SET(CMAKE_MODULE_PATH
+ 	${CMAKE_SOURCE_DIR}/cmake/Modules 
+@@ -16,7 +16,6 @@
+ 
+ configure_file( ${CMAKE_SOURCE_DIR}/cmake/fann.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/fann.pc @ONLY )
+ 
+-SET(PKGCONFIG_INSTALL_DIR /lib/pkgconfig)
+ 
+ ########### install files ###############
+ 
