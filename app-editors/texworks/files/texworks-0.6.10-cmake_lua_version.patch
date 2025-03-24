@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9682c39..43ddca5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -321,7 +321,7 @@ SET(TeXworks_LIBS
+ # -------------------------------
+ 
+ IF ( WITH_LUA )
+-  find_package(TwxLua)
++  find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+ ENDIF()
+ 
+ IF ( WITH_PYTHON )
