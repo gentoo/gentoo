@@ -97,7 +97,7 @@ src_test() {
 	# Required for PQCTest::getFoldersIn()
 	unset LC_COLLATE
 	source "${EPREFIX}"/etc/env.d/02locale
-	[ -n "${LC_COLLATE}" ] && export LC_COLLATE
+	[[ -n "${LC_COLLATE}" ]] && export LC_COLLATE
 	"${BUILD_DIR}"/photoqt_test || die
 }
 
