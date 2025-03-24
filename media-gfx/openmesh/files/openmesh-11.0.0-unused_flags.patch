@@ -1,0 +1,34 @@
+prevent configure from failing as variables called are unset and needless here
+diff --git a/cmake-library/VCI/VCICompiler.cmake b/cmake-library/VCI/VCICompiler.cmake
+index eca35d8..983099a 100755
+--- a/cmake-library/VCI/VCICompiler.cmake
++++ b/cmake-library/VCI/VCICompiler.cmake
+@@ -172,14 +172,6 @@ if (UNIX)
+         set( CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${flag} ")
+       endif()
+     endforeach()
+-
+-    # Add the release with debug info flags
+-    foreach( flag ${ADDITIONAL_CXX_FLAGS} ${ADDITIONAL_CXX_RELWITHDEBINFO_FLAGS} )
+-      list (FIND ${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${flag} _index)
+-      if (${_index} EQUAL -1)
+-        set( CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${flag} ")
+-      endif()
+-    endforeach()
+   ENDIF()
+ 
+ 
+@@ -200,13 +192,5 @@ if (UNIX)
+       endif()
+     endforeach()
+ 
+-    # Add the release with debug info flags
+-    foreach( flag ${ADDITIONAL_C_FLAGS} ${ADDITIONAL_C_RELWITHDEBINFO_FLAGS} )
+-      list (FIND ${CMAKE_C_FLAGS_RELWITHDEBINFO} ${flag} _index)
+-      if (${_index} EQUAL -1)
+-        set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} ${flag} ")
+-      endif()
+-    endforeach()
+-
+   endif()
+ endif ()
