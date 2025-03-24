@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/prometheus/node_exporter.git"
 else
 	SRC_URI="https://github.com/prometheus/node_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 	KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 fi
@@ -41,11 +41,6 @@ src_unpack() {
 	else
 		default
 	fi
-}
-
-src_prepare() {
-	[[ ${PV} != 9999* ]] && { ln -sv ../vendor ./ || die ; }
-	default
 }
 
 src_compile() {
