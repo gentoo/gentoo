@@ -1484,71 +1484,66 @@ distutils-r1_python_compile() {
 
 	_python_check_EPYTHON
 
-	case ${DISTUTILS_USE_PEP517:-unset} in
-		no)
-			return
-			;;
-		unset)
-			# legacy mode
-			_distutils-r1_copy_egg_info
-			esetup.py build -j "$(makeopts_jobs "${MAKEOPTS} ${*}")" "${@}"
-			;;
-		*)
-			# we do this for all build systems, since other backends
-			# and custom hooks may wrap setuptools
-			#
-			# we are appending a dynamic component so that
-			# distutils-r1_python_compile can be called multiple
-			# times and don't end up combining resulting packages
-			mkdir -p "${BUILD_DIR}" || die
-			local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
-			cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
-				[build]
-				build_base = ${BUILD_DIR}/build${#DISTUTILS_WHEELS[@]}
+	[[ ${DISTUTILS_USE_PEP517} == no ]] && return
 
-				[build_ext]
-				parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
-			EOF
-			;;
-	esac
-
-	if [[ ${DISTUTILS_USE_PEP517} ]]; then
-		if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
-			local whl
-			for whl in "${!DISTUTILS_WHEELS[@]}"; do
-				# use only wheels corresponding to the current directory
-				if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
-					continue
-				fi
-
-				# 1. Use pure Python wheels only if we're not expected
-				# to build extensions.  Otherwise, we may end up
-				# not building the extension at all when e.g. PyPy3
-				# is built without one.
-				#
-				# 2. For CPython, we can reuse stable ABI wheels.  Note
-				# that this relies on the assumption that we're building
-				# from the oldest to the newest implementation,
-				# and the wheels are forward-compatible.
-				if [[
-					( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
-					(
-						${EPYTHON} == python* &&
-						# freethreading does not support stable ABI
-						# at the moment
-						${EPYTHON} != *t &&
-						${whl} == *-abi3-*
-					)
-				]]; then
-					distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
-					return
-				fi
-			done
-		fi
-
-		distutils_pep517_install "${BUILD_DIR}/install"
-		DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
+	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+		# legacy mode
+		_distutils-r1_copy_egg_info
+		esetup.py build -j "$(makeopts_jobs "${MAKEOPTS} ${*}")" "${@}"
+		return
 	fi
+
+	# we do this for all build systems, since other backends
+	# and custom hooks may wrap setuptools
+	#
+	# we are appending a dynamic component so that
+	# distutils-r1_python_compile can be called multiple
+	# times and don't end up combining resulting packages
+	mkdir -p "${BUILD_DIR}" || die
+	local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
+	cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
+		[build]
+		build_base = ${BUILD_DIR}/build${#DISTUTILS_WHEELS[@]}
+
+		[build_ext]
+		parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
+	EOF
+
+	if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
+		local whl
+		for whl in "${!DISTUTILS_WHEELS[@]}"; do
+			# use only wheels corresponding to the current directory
+			if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
+				continue
+			fi
+
+			# 1. Use pure Python wheels only if we're not expected
+			# to build extensions.  Otherwise, we may end up
+			# not building the extension at all when e.g. PyPy3
+			# is built without one.
+			#
+			# 2. For CPython, we can reuse stable ABI wheels.  Note
+			# that this relies on the assumption that we're building
+			# from the oldest to the newest implementation,
+			# and the wheels are forward-compatible.
+			if [[
+				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+				(
+					${EPYTHON} == python* &&
+					# freethreading does not support stable ABI
+					# at the moment
+					${EPYTHON} != *t &&
+					${whl} == *-abi3-*
+				)
+			]]; then
+				distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
+				return
+			fi
+		done
+	fi
+
+	distutils_pep517_install "${BUILD_DIR}/install"
+	DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
