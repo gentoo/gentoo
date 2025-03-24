@@ -1490,11 +1490,15 @@ distutils-r1_python_compile() {
 		*)
 			# we do this for all build systems, since other backends
 			# and custom hooks may wrap setuptools
+			#
+			# we are appending a dynamic component so that
+			# distutils-r1_python_compile can be called multiple
+			# times and don't end up combining resulting packages
 			mkdir -p "${BUILD_DIR}" || die
 			local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
 			cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
 				[build]
-				build_base = ${BUILD_DIR}/build
+				build_base = ${BUILD_DIR}/build${#DISTUTILS_WHEELS[@]}
 
 				[build_ext]
 				parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
