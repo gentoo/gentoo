@@ -3,32 +3,33 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit meson python-any-r1 systemd
 
 DESCRIPTION="Desktop integration portal"
-HOMEPAGE="https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal"
+HOMEPAGE="https://flatpak.github.io/xdg-desktop-portal/ https://github.com/flatpak/xdg-desktop-portal"
 SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="geolocation flatpak seccomp systemd test"
+IUSE="geolocation flatpak seccomp systemd test udev"
 RESTRICT="!test? ( test )"
 # Upstream expect flatpak to be used w/ seccomp and flatpak needs bwrap anyway
 REQUIRED_USE="flatpak? ( seccomp )"
 
 DEPEND="
-	>=dev-libs/glib-2.66:2
+	>=dev-libs/glib-2.72:2
 	dev-libs/json-glib
 	>=media-video/pipewire-0.3:=
-	>=sys-fs/fuse-3.10.0:3[suid]
+	>=sys-fs/fuse-3.10.0:3=[suid]
 	x11-libs/gdk-pixbuf
 	geolocation? ( >=app-misc/geoclue-2.5.3:2.0 )
 	flatpak? ( sys-apps/flatpak )
 	seccomp? ( sys-apps/bubblewrap )
 	systemd? ( sys-apps/systemd )
+	udev? ( dev-libs/libgudev )
 "
 RDEPEND="
 	${DEPEND}
@@ -41,9 +42,11 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		${PYTHON_DEPS}
-		dev-libs/libportal
+		dev-util/umockdev
+		media-libs/gstreamer
+		media-libs/gst-plugins-good
 		$(python_gen_any_dep '
-			dev-python/pytest[${PYTHON_USEDEP}]
+			>=dev-python/pytest-3[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
@@ -51,8 +54,10 @@ BDEPEND="
 "
 
 PATCHES=(
+	# Needed until gstreamer-rs (for gstreamer-pbutils) is packaged
+	"${FILESDIR}/${PN}-1.20.0-optional-gstreamer.patch"
 	# These tests require connections to pipewire, internet, /dev/fuse
-	"${FILESDIR}/${PN}-1.18.0-sandbox-disable-failing-tests.patch"
+	"${FILESDIR}/${PN}-1.20.0-sandbox-disable-failing-tests.patch"
 )
 
 pkg_setup() {
@@ -60,7 +65,7 @@ pkg_setup() {
 }
 
 python_check_deps() {
-	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
+	python_has_version ">=dev-python/pytest-3[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 }
@@ -70,18 +75,21 @@ src_configure() {
 		-Ddbus-service-dir="${EPREFIX}/usr/share/dbus-1/services"
 		-Dsystemd-user-unit-dir="$(systemd_get_userunitdir)"
 		$(meson_feature flatpak flatpak-interfaces)
-		# Only used for tests
-		$(meson_feature test libportal)
 		$(meson_feature geolocation geoclue)
-		$(meson_use seccomp sandboxed-image-validation)
+		$(meson_feature udev gudev)
+		$(meson_feature seccomp sandboxed-image-validation)
+		# Needs gstreamer-pbutils (part of gstreamer-rs)?
+		# Not yet packaged
+		#$(meson_feature seccomp sandboxed-sound-validation)
+		-Dsandboxed-sound-validation=disabled
 		$(meson_feature systemd)
 		# Requires flatpak
-		-Ddocbook-docs=disabled
+		-Ddocumentation=disabled
 		# -Dxmlto-flags=
 		-Ddatarootdir="${EPREFIX}/usr/share"
 		-Dman-pages=enabled
 		-Dinstalled-tests=false
-		$(meson_feature test pytest)
+		$(meson_feature test tests)
 	)
 
 	meson_src_configure
