@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-04-19)
+# Ruby 3.1 is no longer supported upstream and will no longer
+# receive security updates. This mask also includes any
+# remaining ruby31-only packages.
+dev-lang/ruby:3.1
+dev-ruby/async:1
+dev-ruby/pathutil
+=app-admin/puppet-7*
+
 # Conrad Kostecki <conikost@gentoo.org> (2025-04-18)
 # Package not needed anymore by the only consumer net-dns/hash-slinger.
 # Masked for removal on 2025-05-18. Bug #952341
