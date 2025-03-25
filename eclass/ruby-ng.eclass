@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -110,7 +110,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby2[0-7]|ruby30|jruby)
+			ruby19|ruby2[0-7]|ruby3[0-1]|jruby)
 				;;
 			*)
 				found_valid_impl=1
