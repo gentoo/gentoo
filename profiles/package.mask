@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2025-03-25)
+# It is possible Gentoo could be hit by "legal" action when having this package.
+# Very unstable development, switches upstream to avoid "legal" trouble.
+# See also: bug #948196 bug #927392
+# Removal on 2025-04-25.
+games-emulation/ryujinx
+
 # Hans de Graaff <graaff@gentoo.org> (2026-03-20)
 # Rails 6.1 is no longer supported upstream. Use a newer Rails version
 # instead. Packages depending exclusively on Rails 6.1 will also be
