@@ -32,8 +32,8 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	>=dev-python/cython-0.29.34[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/cython-0.29.34
 		>=dev-python/packaging-23.1[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-vcs/git
