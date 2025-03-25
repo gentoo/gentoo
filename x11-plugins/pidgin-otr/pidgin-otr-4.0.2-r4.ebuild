@@ -31,6 +31,7 @@ DOCS=( AUTHORS ChangeLog NEWS README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.2-dont-clobber-fortify-source.patch
+	"${FILESDIR}"/${PN}-4.0.2-includes.patch
 )
 
 src_prepare() {
