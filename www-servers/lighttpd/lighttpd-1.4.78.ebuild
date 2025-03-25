@@ -22,8 +22,7 @@ fi
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
-RESTRICT="!test? ( test )"
+IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl unwind webdav xattr +zlib zstd"
 
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -71,7 +70,6 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	test? ( virtual/perl-Test-Harness )
 	verify-sig? ( >=sec-keys/openpgp-keys-lighttpd-20250325 )
 "
 
