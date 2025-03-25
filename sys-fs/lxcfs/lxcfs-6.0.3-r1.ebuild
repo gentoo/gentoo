@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="doc test"
 
-DEPEND="sys-fs/fuse:3"
+DEPEND="sys-fs/fuse:3="
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
