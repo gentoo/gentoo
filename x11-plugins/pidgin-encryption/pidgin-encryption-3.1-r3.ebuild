@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic
 
@@ -25,12 +25,13 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-glib2.32.patch"
 	"${FILESDIR}/${P}-time.patch"
+	"${FILESDIR}/${P}-includes.patch"
 )
 
 src_configure() {
 	strip-flags
 	replace-flags -O? -O2
-	econf $(use_enable nls) --disable-static
+	econf $(use_enable nls)
 }
 
 src_install() {
