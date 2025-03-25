@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="doc test"
 
-DEPEND="sys-fs/fuse:3"
+DEPEND="sys-fs/fuse:3="
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
