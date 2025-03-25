@@ -1,16 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson systemd xdg
+inherit gnome.org gnome2-utils meson systemd tmpfiles xdg
 
-DESCRIPTION="Remote desktop daemon for GNOME using pipewire"
+DESCRIPTION="Remote desktop server which allows you to connect to your machine remotely"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-remote-desktop"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="doc +rdp systemd +vnc"
 REQUIRED_USE="|| ( rdp vnc )"
 RESTRICT="test" # Tests run xvfb-run directly
@@ -28,7 +28,7 @@ DEPEND="
 	rdp? (
 		>=media-libs/nv-codec-headers-11.1.5.0
 		>=net-misc/freerdp-3.1.0:=[server]
-		>=sys-fs/fuse-3.9.1:3
+		>=sys-fs/fuse-3.9.1:3=
 		>=sys-auth/polkit-122
 		>=x11-libs/libxkbcommon-1.0.0
 		media-libs/fdk-aac:=
@@ -38,6 +38,8 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
+	acct-user/gnome-remote-desktop
+	acct-group/gnome-remote-desktop
 	x11-wm/mutter[screencast]
 "
 BDEPEND="
@@ -63,6 +65,7 @@ src_configure() {
 }
 
 pkg_postinst() {
+	tmpfiles_process "${PN}-tmpfiles.conf"
 	xdg_pkg_postinst
 	gnome2_schemas_update
 }
