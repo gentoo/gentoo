@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/951911
+https://puszcza.gnu.org.ua/bugs/index.php?649
+https://git.gnu.org.ua/gdbm.git/commit/?id=39ef0347f78ef691c9ad815360198f577043ce4c
+
+From 39ef0347f78ef691c9ad815360198f577043ce4c Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Mon, 24 Mar 2025 07:56:00 +0200
+Subject: Add missing include
+
+* tools/gdbmapp.h: Include sys/types.h
+--- a/tools/gdbmapp.h
++++ b/tools/gdbmapp.h
+@@ -16,6 +16,7 @@
+ 
+ #include <stdlib.h>
+ #include <stdarg.h>
++#include <sys/types.h>
+ #include "gettext.h"
+ #ifdef HAVE_LOCALE_H
+ # include <locale.h>
+-- 
+cgit v1.2.3

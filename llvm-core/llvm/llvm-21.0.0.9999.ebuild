@@ -251,7 +251,6 @@ get_distribution_components() {
 			UnicodeNameMappingGenerator
 
 			# tools
-			amdhsa-loader
 			bugpoint
 			dsymutil
 			llc
@@ -425,6 +424,12 @@ multilib_src_configure() {
 
 		# disable OCaml bindings (now in dev-ml/llvm)
 		-DOCAMLFIND=NO
+
+		# disable automagic dependencies on hsa/CUDA runtimes
+		# these are only used to run tests on GPU and we don't care
+		# about that
+		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDAToolkit=ON
 	)
 
 	local suffix=

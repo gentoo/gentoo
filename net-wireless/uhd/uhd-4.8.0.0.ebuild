@@ -21,7 +21,6 @@ LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-3)"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
 IUSE="+b100 +b200 doc cpu_flags_arm_neon cpu_flags_x86_ssse3 e300 examples +mpmd octoclock test +usb +usrp1 +usrp2 +utils +x300"
-
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			b100? ( usb )
@@ -52,6 +51,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/"${P}"-includes.patch
 )
 
 src_unpack() {

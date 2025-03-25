@@ -154,33 +154,33 @@ multilib_src_configure() {
 		# default is developer, bug 918671
 		-Dmode=release
 		-Dsysvinit-path=
-		$(meson_native_use_bool boot bootloader)
+		$(meson_native_use_feature boot bootloader)
 		$(meson_native_use_bool kernel-install)
-		$(meson_native_use_bool selinux)
+		$(meson_native_use_feature selinux)
 		$(meson_native_use_bool sysusers)
 		$(meson_use test tests)
 		$(meson_native_use_bool tmpfiles)
 		$(meson_use udev hwdb)
-		$(meson_native_use_bool ukify)
+		$(meson_native_use_feature ukify)
 
 		# Disable all optional features
 		-Dadm-group=false
 		-Danalyze=false
-		-Dapparmor=false
-		-Daudit=false
+		-Dapparmor=disabled
+		-Daudit=disabled
 		-Dbacklight=false
 		-Dbinfmt=false
-		-Dbpf-framework=false
-		-Dbzip2=false
+		-Dbpf-framework=disabled
+		-Dbzip2=disabled
 		-Dcoredump=false
-		-Ddbus=false
-		-Delfutils=false
+		-Ddbus=disabled
+		-Delfutils=disabled
 		-Denvironment-d=false
-		-Dfdisk=false
-		-Dgcrypt=false
-		-Dglib=false
+		-Dfdisk=disabled
+		-Dgcrypt=disabled
+		-Dglib=disabled
 		-Dgshadow=false
-		-Dgnutls=false
+		-Dgnutls=disabled
 		-Dhibernate=false
 		-Dhostnamed=false
 		-Didn=false
@@ -188,63 +188,63 @@ multilib_src_configure() {
 		-Dinitrd=false
 		-Dfirstboot=false
 		-Dldconfig=false
-		-Dlibcryptsetup=false
-		-Dlibcurl=false
-		-Dlibfido2=false
-		-Dlibidn=false
-		-Dlibidn2=false
-		-Dlibiptc=false
+		-Dlibcryptsetup=disabled
+		-Dlibcurl=disabled
+		-Dlibfido2=disabled
+		-Dlibidn=disabled
+		-Dlibidn2=disabled
+		-Dlibiptc=disabled
 		-Dlocaled=false
 		-Dlogind=false
-		-Dlz4=false
+		-Dlz4=disabled
 		-Dmachined=false
-		-Dmicrohttpd=false
+		-Dmicrohttpd=disabled
 		-Dnetworkd=false
 		-Dnscd=false
 		-Dnss-myhostname=false
-		-Dnss-resolve=false
+		-Dnss-resolve=disabled
 		-Dnss-systemd=false
 		-Doomd=false
-		-Dopenssl=false
-		-Dp11kit=false
-		-Dpam=false
-		-Dpcre2=false
-		-Dpolkit=false
+		-Dopenssl=disabled
+		-Dp11kit=disabled
+		-Dpam=disabled
+		-Dpcre2=disabled
+		-Dpolkit=disabled
 		-Dportabled=false
 		-Dpstore=false
-		-Dpwquality=false
+		-Dpwquality=disabled
 		-Drandomseed=false
 		-Dresolve=false
 		-Drfkill=false
-		-Dseccomp=false
+		-Dseccomp=disabled
 		-Dsmack=false
 		-Dsysext=false
 		-Dtimedated=false
 		-Dtimesyncd=false
 		-Dtpm=false
-		-Dqrencode=false
+		-Dqrencode=disabled
 		-Dquotacheck=false
 		-Duserdb=false
 		-Dutmp=false
 		-Dvconsole=false
 		-Dwheel-group=false
 		-Dxdg-autostart=false
-		-Dxkbcommon=false
-		-Dxz=false
-		-Dzlib=false
-		-Dzstd=false
+		-Dxkbcommon=disabled
+		-Dxz=disabled
+		-Dzlib=disabled
+		-Dzstd=disabled
 	)
 
 	if use tmpfiles || use udev; then
-		emesonargs+=( $(meson_native_use_bool acl) )
+		emesonargs+=( $(meson_native_use_feature acl) )
 	else
-		emesonargs+=( -Dacl=false )
+		emesonargs+=( -Dacl=disabled )
 	fi
 
 	if use udev; then
-		emesonargs+=( $(meson_native_use_bool kmod) )
+		emesonargs+=( $(meson_native_use_feature kmod) )
 	else
-		emesonargs+=( -Dkmod=false )
+		emesonargs+=( -Dkmod=disabled )
 	fi
 
 	if use elibc_musl; then

@@ -1,0 +1,13 @@
+prevent installation of examples in /usr/bin
+all files from examples are 'RUNTIME', no lib
+--- a/doc/examples/CMakeLists.txt
++++ b/doc/examples/CMakeLists.txt
+@@ -7,7 +7,7 @@
+   add_executable(${example} ${example}.cpp)
+   target_link_libraries(${example} ${BABEL_LIBRARY})
+   install(TARGETS ${example}
+-    RUNTIME DESTINATION bin
++    RUNTIME DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples
+     LIBRARY DESTINATION lib
+     ARCHIVE DESTINATION lib
+   )

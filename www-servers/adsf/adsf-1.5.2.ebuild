@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ ruby_add_rdepend "
 	>=dev-ruby/rackup-2.1:2
 "
 
-ruby_add_bdepend "test? ( dev-ruby/rack-test )"
+ruby_add_bdepend "test? ( dev-ruby/rack-test dev-ruby/webrick )"
 
 all_ruby_prepare() {
 	sed -i -e '/simplecov/,/SimpleCov.command_name/ s:^:#:' \

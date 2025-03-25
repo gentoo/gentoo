@@ -27,6 +27,10 @@ all_ruby_prepare() {
 	# Avoid a dependency on rake-compiler
 	sed -e '/PRISM_FFI_BACKEND/ s/$/ and false/' \
 		-i Rakefile || die
+
+	# Avoid a test that won't work reliably in our varied build environments.
+	sed -e '/test_prism_so_exports_only_the_C_extension_init_function/aomit "Not reliable on Gentoo."' \
+		-i test/prism/library_symbols_test.rb || die
 }
 
 each_ruby_prepare() {

@@ -7,6 +7,8 @@
 	</maintainer>
 	<use>
 		<flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
+		<flag name="mmtf">Enable support of MMTF format using <pkg>dev-libs/mmtf-cpp</pkg></flag>
+		<flag name="spglib">Find and set the Hall number for a crystal using <pkg>sci-libs/spglib</pkg></flag>
 		<flag name="vtk">Enable <pkg>sci-libs/vtk</pkg> support</flag>
 	</use>
 	<upstream>

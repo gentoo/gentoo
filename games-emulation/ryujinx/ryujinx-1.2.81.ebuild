@@ -258,8 +258,8 @@ unicornengine.unicorn@2.0.2-rc1-fb78016
 inherit check-reqs desktop dotnet-pkg xdg
 
 DESCRIPTION="Experimental Nintendo Switch Emulator written in C#"
-HOMEPAGE="https://ryujinx-emulator.com/
-	https://github.com/Ryubing/Ryujinx"
+HOMEPAGE="https://ryujinx.app/
+	https://git.ryujinx.app/ryubing/ryujinx/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3

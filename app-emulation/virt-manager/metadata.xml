@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Filip Kobierski</name>
+		<email>fkobi@pm.me</email>
+	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="policykit">
-		Enables <pkg>sys-auth/polkit</pkg> authentication support,
-		required when using <pkg>app-emulation/libvirt</pkg> with
-		PolicyKit authentication
-		</flag>
-		<flag name="sasl">
-		Depend on the proper libraries needed to connect to SASL-enabled
-		libvirtd instances (e.g. Kerberos-protected instances).
-		</flag>
+		<flag name="sasl">Enable connecting to SASL-enabled (e.g. Kerberos-protected) instances</flag>
 	</use>
 	<longdescription>
-		Virtual Machine Manager provides a graphical tool for administering virtual
-		machines for KVM, Xen, and LXC. Start, stop, add or remove virtual devices,
-		connect to a graphical or serial console, and see resource usage statistics
-		for existing VMs on local or remote machines. Uses libvirt as the backend
-		management API.
+		Virtual Machine Manager provides a graphical tool for managing libvirt virtual machines.
+		On Gentoo it supports KVM, Xen, and LXC backends.
+		It provides a GUI for not only running VMs but also managing their settings and monitoring usage statistics.
+		The software does not limit you to using the graphical tools though: it allows for editing the XML config files directly.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/virt-manager/virt-manager/issues</bugs-to>

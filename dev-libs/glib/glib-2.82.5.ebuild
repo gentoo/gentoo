@@ -234,8 +234,8 @@ multilib_src_configure() {
 			-Dglib:xattr=false
 			-Dglib:libmount=disabled
 			-Dglib:man-pages=disabled
-			-Dglib:dtrace=false
-			-Dglib:systemtap=false
+			-Dglib:dtrace=disabled
+			-Dglib:systemtap=disabled
 			-Dglib:sysprof=disabled
 			-Dglib:documentation=false
 			-Dglib:tests=false
@@ -306,8 +306,8 @@ multilib_src_configure() {
 		$(meson_use xattr)
 		-Dlibmount=enabled # only used if host_system == 'linux'
 		-Dman-pages=enabled
-		$(meson_use systemtap dtrace)
-		$(meson_use systemtap)
+		$(meson_feature systemtap dtrace)
+		$(meson_feature systemtap)
 		$(meson_feature sysprof)
 		$(meson_use doc documentation)
 		$(meson_use test tests)

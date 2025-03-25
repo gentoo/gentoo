@@ -33,6 +33,58 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-25)
+# Package destabilisation mask after prolongued time w/o maintainer.
+# Bug #936636
+~app-editors/texworks-0.6.8
+
+# Maciej Barć <xgqt@gentoo.org> (2025-03-25)
+# It is possible Gentoo could be hit by "legal" action when having this package.
+# Very unstable development, switches upstream to avoid "legal" trouble.
+# See also: bug #948196 bug #927392
+# Removal on 2025-04-25.
+games-emulation/ryujinx
+
+# Hans de Graaff <graaff@gentoo.org> (2026-03-20)
+# Rails 6.1 is no longer supported upstream. Use a newer Rails version
+# instead. Packages depending exclusively on Rails 6.1 will also be
+# removed. Removal on 2025-04-20.
+dev-ruby/rails:6.1
+dev-ruby/actiontext:6.1
+dev-ruby/actionmailbox:6.1
+dev-ruby/activestorage:6.1
+dev-ruby/actionmailer:6.1
+dev-ruby/actioncable:6.1
+dev-ruby/railties:6.1
+dev-ruby/activejob:6.1
+dev-ruby/actionpack:6.1
+dev-ruby/actionview:6.1
+dev-ruby/activerecord:6.1
+dev-ruby/activemodel:6.1
+dev-ruby/activesupport:6.1
+dev-ruby/actionpack-action_caching
+dev-ruby/coffee-rails
+dev-ruby/will_paginate:3
+=www-apps/redmine-5*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-23)
+# No revdeps after net-im/psi treecleaning. Depends on Qt5.
+# Removal on 2025-04-22. Bug #951936
+dev-build/qconf
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-23)
+# dev-python/pip-run is a NIH package with significant number of NIH
+# deps.  New versions require "coherent" build system that's designed
+# to be completely incompatible with downstream packaging.
+# No revdeps left.
+#
+# Includes a number of NIH dependencies, some of them abandoned.
+#
+# Removal on 2025-04-22.  Bug #951933.
+dev-python/autocommand
+dev-python/jaraco-env
+dev-python/pip-run
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-22)
 # EAPI=7, uses legacy distutils non-PEP517 build, no reverse
 # dependencies, missing python compat bumps. Unmaintained in
@@ -73,8 +125,16 @@ dev-python/simplebayes
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
+>=xfce-base/garcon-4.21
 >=xfce-base/libxfce4ui-4.21
+>=xfce-base/thunar-4.21
+>=xfce-base/tumbler-4.21
+>=xfce-base/xfce4-appfinder-4.21
 >=xfce-base/xfce4-panel-4.21
+>=xfce-base/xfce4-power-manager-4.21
+>=xfce-base/xfce4-session-4.21
+>=xfce-base/xfce4-settings-4.21
+>=xfce-base/xfconf-4.21
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # A "forever beta" wrapper over dev-python/requests, with no tests,
@@ -128,15 +188,6 @@ sci-chemistry/ParmEd
 # Removal on 2025-04-14.  Bugs #951417, #631076, #679948, #695310,
 # #771051, #844727, #880151, #908590, #948207, #813702, #866356.
 sys-cluster/teleport
-
-# Sam James <sam@gentoo.org> (2025-03-13)
-# Causes build failures in reverse dependencies (bug #951062, bug #951120)
-=dev-util/spirv-headers-1.4.304.0-r1
-=dev-util/spirv-llvm-translator-15.0.10-r1
-=dev-util/spirv-llvm-translator-16.0.10-r1
-=dev-util/spirv-llvm-translator-17.0.10-r1
-=dev-util/spirv-llvm-translator-18.1.10-r1
-=dev-util/spirv-llvm-translator-19.1.5-r1
 
 # Sam James <sam@gentoo.org> (2025-03-09)
 # Obsolete in favour of dev-lang/ada-bootstrap. Using sys-devel/gcc[ada]

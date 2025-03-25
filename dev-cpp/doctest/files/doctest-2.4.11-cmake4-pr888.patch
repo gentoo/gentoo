@@ -1,0 +1,31 @@
+From 82689538db96e478b5cb9f7753acf4121383df63 Mon Sep 17 00:00:00 2001
+From: "Trzcinski, Karol" <karol.trzcinski@intel.com>
+Date: Mon, 27 Jan 2025 08:53:06 +0100
+Subject: [PATCH] Bump minimal cmake version to 3.5
+
+Since cmake 3.27 appears warning like:
+
+```text
+ Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+```
+
+Such information may found in cmake release notes:
+https://cmake.org/cmake/help/latest/release/3.27.html
+
+Gentoo-bug: https://bugs.gentoo.org/951674
+Upstream-PR: https://github.com/doctest/doctest/pull/888
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6d384fa96..0f6166b84 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if(POLICY CMP0077)
+     cmake_policy(SET CMP0077 NEW)

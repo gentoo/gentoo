@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,8 @@ src_configure() {
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/862255
 	# https://github.com/lh3/bwa/issues/411
+	#
+	# Fix merged upstream. Remove on next revbump.
 	filter-lto
 
 	tc-export CC AR

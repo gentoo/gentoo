@@ -1,0 +1,11 @@
+--- a/src/orpie/dune	2025-03-25 18:41:09.216073326 +0100
++++ b/src/orpie/dune	2025-03-25 18:41:31.391799451 +0100
+@@ -5,7 +5,7 @@
+     (action
+       (system "camlp5o %{input-file}")))
+   (flags (:standard -w -27-35-52 -thread))
+-  (libraries curses gsl num str threads))
++  (libraries curses gsl num str threads camlp-streams))
+ 
+ 
+ ; Use orpie.opam as the authoritative source of version number

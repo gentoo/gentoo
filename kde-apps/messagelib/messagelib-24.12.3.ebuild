@@ -20,7 +20,7 @@ IUSE="speech"
 # bug 579630
 RESTRICT="test"
 
-DEPEND="
+RDEPEND="
 	>=app-crypt/gpgme-1.23.1-r1:=[cxx,qt6]
 	>=dev-libs/openssl-3.0.0:=
 	>=dev-libs/ktextaddons-1.5.4:6[speech?]
@@ -66,7 +66,10 @@ DEPEND="
 	>=kde-frameworks/sonnet-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-qt/qtbase-6.8.0:6[gui,network,widgets]
+	>=dev-qt/qtwebengine-6.8.0:6[widgets]
+"
 
 src_configure() {
 	local mycmakeargs=(
