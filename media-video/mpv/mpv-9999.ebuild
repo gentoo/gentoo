@@ -117,6 +117,7 @@ DEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	>=dev-build/meson-1.3.0
 	virtual/pkgconfig
 	cli? ( dev-python/docutils )
 	wayland? ( dev-util/wayland-scanner )
