@@ -28,6 +28,7 @@ BDEPEND="
 		dev-python/graphviz[${PYTHON_USEDEP}]
 		>=dev-python/pytest-console-scripts-1.4.1[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		<dev-python/virtualenv-21[${PYTHON_USEDEP}]
 	)
 "
@@ -46,7 +47,8 @@ src_prepare() {
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_mock -p console-scripts
+	# tests can fail if other packages are being merged simultaneously
+	epytest -p pytest_mock -p console-scripts -p rerunfailures --reruns=5
 }
 
 pkg_postinst() {
