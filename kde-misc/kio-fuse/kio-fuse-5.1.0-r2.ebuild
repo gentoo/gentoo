@@ -27,7 +27,7 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kio-${KFMIN}:6
-	sys-fs/fuse:3
+	sys-fs/fuse:3=
 "
 RDEPEND="${DEPEND}
 	!${CATEGORY}/${PN}:5
