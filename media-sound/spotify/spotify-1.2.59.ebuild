@@ -7,9 +7,10 @@ inherit desktop pax-utils unpacker xdg
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/download/linux/"
-SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
-BUILD_ID_AMD64="502.ga68d2d4f"
+SRC_BASE="https://repository.spotify.com/pool/non-free/s/${PN}-client/"
+BUILD_ID_AMD64="514.g834e17d4"
 SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
+S="${WORKDIR}/"
 
 LICENSE="Spotify"
 SLOT="0"
@@ -61,8 +62,6 @@ RDEPEND="
 "
 	#gnome-integration-spotify causes spotify to fail to launch
 	#sys-libs/glibc
-
-S="${WORKDIR}/"
 
 QA_PREBUILT="
 	opt/spotify/spotify-client/spotify
