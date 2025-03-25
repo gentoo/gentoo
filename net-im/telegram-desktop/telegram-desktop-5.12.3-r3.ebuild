@@ -29,7 +29,7 @@ CDEPEND="
 	dev-libs/openssl:=
 	>=dev-libs/protobuf-21.12
 	dev-libs/xxhash
-	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,wayland?,widgets,X?]
+	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,ssl,wayland?,widgets,X?]
 	>=dev-qt/qtimageformats-6.5:6
 	>=dev-qt/qtsvg-6.5:6
 	media-libs/libjpeg-turbo:=
