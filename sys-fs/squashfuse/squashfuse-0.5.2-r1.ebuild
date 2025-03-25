@@ -1,4 +1,4 @@
-# Copyright 2016-2024 Gentoo Authors
+# Copyright 2016-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,11 @@ REQUIRED_USE="|| ( lz4 lzma lzo zlib zstd )"
 RESTRICT="test" # Tests require access to /dev/fuse.
 
 DEPEND="
-	>=sys-fs/fuse-2.8.6:0=
+	sys-fs/fuse:=
+	|| (
+		>=sys-fs/fuse-3.2:3
+		>=sys-fs/fuse-2.8.6:0
+	)
 	lzma? ( >=app-arch/xz-utils-5.0.4:= )
 	zlib? ( >=sys-libs/zlib-1.2.5-r2:= )
 	lzo? ( >=dev-libs/lzo-2.06:= )
