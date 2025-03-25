@@ -3,32 +3,31 @@
 
 EAPI=8
 
-CRATES=""
 RUST_MIN_VER="1.79.0"
 inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"
 HOMEPAGE="https://dystroy.org/broot/ https://github.com/Canop/broot"
-SRC_URI="https://github.com/Canop/broot/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${CARGO_CRATE_URIS}"
-SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/app-misc/${PN}/${P}-crates.tar.xz"
+SRC_URI="https://github.com/Canop/broot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-crate-dist/broot/releases/download/v${PV}/${P}-crates.tar.xz"
 
 LICENSE="Apache-2.0"
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
-	LGPL-3+ MIT MPL-2.0 Unicode-3.0 ZLIB
+	LGPL-3+ MIT MPL-2.0 UoI-NCSA Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="X"
 
-RDEPEND="
+DEPEND="
+	dev-db/sqlite:3
 	dev-libs/libgit2:=
 	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
@@ -42,6 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
 	local myfeatures=( $(usev X clipboard) trash )
 
