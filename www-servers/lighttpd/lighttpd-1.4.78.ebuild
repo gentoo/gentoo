@@ -72,7 +72,7 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? ( virtual/perl-Test-Harness )
-	verify-sig? ( sec-keys/openpgp-keys-lighttpd )
+	verify-sig? ( >=sec-keys/openpgp-keys-lighttpd-20250325 )
 "
 
 # update certain parts of lighttpd.conf based on conditionals
