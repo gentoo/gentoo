@@ -29,6 +29,10 @@ RDEPEND="
 
 CONFIG_CHECK="~MODULES"
 
+src_compile() {
+	emake KCONF="/usr/lib/kernel"
+}
+
 src_test() {
 	chmod +x dkms run_test.sh || die
 	PATH="${PATH}:$(pwd)" ./run_test.sh || die "Tests failed"
