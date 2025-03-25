@@ -18,10 +18,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	sys-devel/gettext"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.1-include-path.patch
-)
-
 src_prepare() {
 	default
 	sed -e 's: -Wall -g3::' -i configure.ac || die
