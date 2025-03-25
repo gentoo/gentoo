@@ -154,10 +154,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process polkit-tmpfiles.conf
+	if use daemon ; then
+		tmpfiles_process polkit-tmpfiles.conf
 
-	if use daemon && [[ ${EUID} == 0 ]]; then
-		chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
-		chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+		if [[ ${EUID} == 0 ]]; then
+			chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+			chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+		fi
 	fi
 }

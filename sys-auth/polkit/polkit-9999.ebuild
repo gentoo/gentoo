@@ -83,6 +83,12 @@ QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkitd
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-elogind.patch
+	"${FILESDIR}"/${P}-realpath.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
@@ -148,10 +154,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process polkit-tmpfiles.conf
+	if use daemon ; then
+		tmpfiles_process polkit-tmpfiles.conf
 
-	if use daemon && [[ ${EUID} == 0 ]]; then
-		chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
-		chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+		if [[ ${EUID} == 0 ]]; then
+			chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+			chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+		fi
 	fi
 }
