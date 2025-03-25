@@ -42,7 +42,7 @@ RDEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 	udev? ( >=dev-libs/libgudev-147:= )
 	fuse? (
-		>=sys-fs/fuse-3.0.0:3
+		>=sys-fs/fuse-3.0.0:3=
 		virtual/tmpfiles
 	)
 	udisks? ( >=sys-fs/udisks-1.97:2 )
