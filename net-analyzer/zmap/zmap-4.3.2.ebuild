@@ -31,6 +31,12 @@ BDEPEND="
 
 FILECAPS=( cap_net_raw=ep usr/sbin/zmap )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.2-pkgconfig.patch
+	# Merged. To be removed at next version.
+	"${FILESDIR}"/${PN}-4.3.2-cmake.patch
+)
+
 DOCS=( AUTHORS CHANGELOG.md README.md examples )
 
 src_configure() {

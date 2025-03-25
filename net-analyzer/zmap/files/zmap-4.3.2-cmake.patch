@@ -1,0 +1,12 @@
+Compat with cmake-4
+https://github.com/zmap/zmap/pull/933.patch
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index baa524a..60e3839 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
+ project(ZMAP C)
+ set(ZMAP_VERSION DEVELOPMENT) # Change DEVELOPMENT to version number for release
+ 
