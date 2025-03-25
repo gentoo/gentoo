@@ -257,7 +257,9 @@ src_configure() {
 		# otherwise.
 		#
 		# Fixes https://bugs.gentoo.org/952004
-		sed -i "s/subdir('coccinelle')/# subdir('coccinelle')/" "${WORKDIR}/git-${PV}/contrib/meson.build" || die
+		emesonargs+=(
+			-Dcoccinelle=disabled
+		)
 	fi
 
 	meson_src_configure
