@@ -1,0 +1,37 @@
+https://github.com/polkit-org/polkit/commit/55ee1b70456eca8281dda9612c485c619122f202
+
+From 55ee1b70456eca8281dda9612c485c619122f202 Mon Sep 17 00:00:00 2001
+From: Jan Rybar <jrybar@redhat.com>
+Date: Tue, 14 Jan 2025 13:47:54 +0100
+Subject: [PATCH] meson: fix unused dependency, fixes elogind FTBFS
+
+polkit-126 could not be built from source with elogind session service due
+to wrong dependencies in meson.build.
+
+Author: @markhindley
+---
+ src/polkitbackend/meson.build | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/polkitbackend/meson.build b/src/polkitbackend/meson.build
+index fc35e195..a807b41b 100644
+--- a/src/polkitbackend/meson.build
++++ b/src/polkitbackend/meson.build
+@@ -37,7 +37,6 @@ deps += thread_dep
+ 
+ if enable_logind
+   sources += files('polkitbackendsessionmonitor-systemd.c')
+-
+   deps += logind_dep
+ else
+   sources += files('polkitbackendsessionmonitor.c')
+@@ -73,7 +72,7 @@ executable(
+   program,
+   program + '.c',
+   include_directories: top_inc,
+-  dependencies: libpolkit_gobject_dep,
++  dependencies: deps,
+   c_args: c_flags,
+   link_with: libpolkit_backend,
+   install: true,
+
