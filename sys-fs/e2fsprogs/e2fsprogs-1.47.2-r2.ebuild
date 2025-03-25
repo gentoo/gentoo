@@ -19,7 +19,7 @@ RDEPEND="
 	!sys-libs/${PN}-libs
 	archive? ( app-arch/libarchive:= )
 	cron? ( sys-fs/lvm2[lvm] )
-	fuse? ( sys-fs/fuse:3 )
+	fuse? ( sys-fs/fuse:3= )
 	nls? ( virtual/libintl )
 	tools? ( sys-apps/util-linux )
 "
