@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ fi
 
 LICENSE="UPL-1.0"
 SLOT="0"
-IUSE="systemd test-install"
+IUSE="test-install valgrind"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
@@ -33,10 +33,9 @@ DEPEND="
 	dev-libs/libpfm:=
 	net-analyzer/wireshark[dumpcap]
 	net-libs/libpcap
-	>=sys-fs/fuse-3.2.0:3
+	>=sys-fs/fuse-3.2.0:3=
 	>=sys-libs/binutils-libs-2.42:=
 	sys-libs/zlib
-	systemd? ( sys-apps/systemd )
 "
 RDEPEND="
 	${DEPEND}
@@ -63,9 +62,7 @@ BDEPEND="
 	>=sys-devel/bpf-toolchain-14.1.0
 	sys-devel/flex
 "
-# This isn't yet optional, valgrind.h is included unconditionally
-# https://github.com/oracle/dtrace-utils/issues/80
-DEPEND+=" dev-debug/valgrind"
+DEPEND+=" valgrind? ( dev-debug/valgrind )"
 
 QA_PRESTRIPPED="
 	usr/.*/dtrace/testsuite/test/triggers/.*
@@ -119,9 +116,6 @@ src_configure() {
 
 	tc-export CC
 
-	# https://github.com/oracle/dtrace-utils/issues/78
-	tc-enables-fortify-source && append-cppflags -U_FORTIFY_SOURCE
-
 	# lld does this by default, so fix that, although lld fails anyway...
 	# 'LIBDTRACE_1.0' to symbol 'dtrace_provider_modules' failed: symbol not defined
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
@@ -139,12 +133,12 @@ src_configure() {
 	local confargs=(
 		# TODO: Maybe we should set the UNPRIV_UID to something? -3 is a bit... kludgy
 		--prefix="${EPREFIX}"/usr
-		# See https://github.com/oracle/dtrace-utils/issues/106 for man8 suffix
-		--mandir="${EPREFIX}"/usr/share/man/man8
+		--mandir="${EPREFIX}"/usr/share/man
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-systemd
 		HAVE_LIBCTF=yes
-		HAVE_LIBSYSTEMD=$(usex systemd)
 		HAVE_BPFV3=yes
+		HAVE_VALGRIND=$(usex valgrind)
 	)
 
 	edo ./configure "${confargs[@]}"
