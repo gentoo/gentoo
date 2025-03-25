@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ CP_DEPEND="
 	dev-java/brotli-dec:0
 	dev-java/commons-codec:0
 	>=dev-java/commons-io-2.17.0:1
-	dev-java/commons-lang:3.6
+	>=dev-java/commons-lang-3.17.0:3.6
 	dev-java/xz-java:0
 	dev-java/zstd-jni:0
 "
