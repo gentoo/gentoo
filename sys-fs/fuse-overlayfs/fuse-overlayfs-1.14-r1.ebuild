@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv"
 
-DEPEND="sys-fs/fuse:3"
+DEPEND="sys-fs/fuse:3="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
