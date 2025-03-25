@@ -147,11 +147,13 @@ RDEPEND="
 # 	)
 # "
 
-# Note: "docs" is not an actual directory under "S", they are actually
-# under each modules, see python_compile_all redefinition, but keep
-# this instruction enabled for dependency configuration.
-distutils_enable_sphinx docs \
-	dev-python/sphinx-rtd-theme
+# Commented as currently not working, install phase ignores silently
+# the directory with the result, HTML_DOCS.
+# # Note: "docs" is not an actual directory under "S", they are actually
+# # under each modules, see python_compile_all redefinition, but keep
+# # this instruction enabled for dependency configuration.
+# distutils_enable_sphinx docs \
+# 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 certbot_dirs=()
@@ -175,10 +177,10 @@ src_prepare() {
 
 	my_certbot_dirs_listing
 
-	# Used to build documentation
-	if use doc; then
-		mkdir "${certbot_docs}" || die
-	fi
+	# # Used to build documentation
+	# if use doc; then
+	# 	mkdir "${certbot_docs}" || die
+	# fi
 }
 
 python_compile() {
@@ -194,45 +196,45 @@ python_compile() {
 	done
 }
 
-# Used to build documentation
-python_compile_all() {
-	use doc || return
+# # Used to build documentation
+# python_compile_all() {
+# 	use doc || return
 
-	local dir
-	for dir in "${certbot_dirs[@]}"; do
-		# There is no documentation in certbot-apache or certbot-nginx.
-		if [[ "${dir}" = "certbot-apache" ]] || [[ "${dir}" = "certbot-nginx" ]]; then
-			continue
-		fi
+# 	local dir
+# 	for dir in "${certbot_dirs[@]}"; do
+# 		# There is no documentation in certbot-apache or certbot-nginx.
+# 		if [[ "${dir}" = "certbot-apache" ]] || [[ "${dir}" = "certbot-nginx" ]]; then
+# 			continue
+# 		fi
 
-		pushd "${dir}" > /dev/null || die
+# 		pushd "${dir}" > /dev/null || die
 
-		# Reset HTML_DOCS between sphinx calls as we discard its content.
-		local HTML_DOCS=()
+# 		# Reset HTML_DOCS between sphinx calls as we discard its content.
+# 		local HTML_DOCS=()
 
-		sphinx_compile_all
+# 		sphinx_compile_all
 
-		# Note: directory "${dir}" does not exist, so it will fail if
-		# HTML_DOCS has multiple entries.
-		# Note: can’t use following instruction, because of entries
-		# ending with `/.`, see build_sphinx in python-utils-r1 eclass.
-		# ```
-		# mv "${HTML_DOCS[@]}" "${certbot_docs}/${dir}" || die
-		# ```
-		# mv: cannot move 'docs/_build/html/.' to '[…]/temp/docs/acme': Device or resource busy
-		# Works without ending dot. Workaround applied.
-		local doc_dir
-		for doc_dir in "${HTML_DOCS[@]}"; do
-			# Let’s ignore  suffixe `/.` in `docs/_build/html/.`.
-			mv "${doc_dir%/.}" "${certbot_docs}/${dir}" || die
-		done
+# 		# Note: directory "${dir}" does not exist, so it will fail if
+# 		# HTML_DOCS has multiple entries.
+# 		# Note: can’t use following instruction, because of entries
+# 		# ending with `/.`, see build_sphinx in python-utils-r1 eclass.
+# 		# ```
+# 		# mv "${HTML_DOCS[@]}" "${certbot_docs}/${dir}" || die
+# 		# ```
+# 		# mv: cannot move 'docs/_build/html/.' to '[…]/temp/docs/acme': Device or resource busy
+# 		# Works without ending dot. Workaround applied.
+# 		local doc_dir
+# 		for doc_dir in "${HTML_DOCS[@]}"; do
+# 			# Let’s ignore  suffixe `/.` in `docs/_build/html/.`.
+# 			mv "${doc_dir%/.}" "${certbot_docs}/${dir}" || die
+# 		done
 
-		popd > /dev/null || die
-	done
+# 		popd > /dev/null || die
+# 	done
 
-	# And finally give the result.
-	HTML_DOCS=( "${certbot_docs}" )
-}
+# 	# And finally give the result.
+# 	HTML_DOCS=( "${certbot_docs}" )
+# }
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
