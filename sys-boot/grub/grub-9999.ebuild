@@ -4,9 +4,9 @@
 EAPI=7
 
 # This ebuild uses 3 special global variables:
-# GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
-# GRUB_AUTOGEN: Depend on python and invoke autogen.sh.
-# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
+# GRUB_BOOTSTRAP: Invoke bootstrap (gnulib)
+# GRUB_AUTOGEN: Invoke autogen.sh
+# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf
 #
 # When applying patches:
 # If gnulib is updated, set GRUB_BOOTSTRAP=1
