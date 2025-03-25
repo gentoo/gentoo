@@ -17,7 +17,7 @@ EAPI=7
 # corresponding variable in make.conf or the environment.
 
 GRUB_AUTORECONF=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 WANT_LIBTOOL=none
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
 
