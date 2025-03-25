@@ -15,3 +15,5 @@ S="${WORKDIR}"/${PN}-${CommitId}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
+
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
