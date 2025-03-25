@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 RDEPEND="
-	sys-fs/fuse:3
+	sys-fs/fuse:3=
 "
 
 CHECKREQS_DISK_BUILD="2500M"
