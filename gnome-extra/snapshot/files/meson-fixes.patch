@@ -1,0 +1,67 @@
+diff --git a/meson.build b/meson.build
+index 2f20ee8..95bd28e 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -19,62 +19,3 @@
+   check: true
+ )
+ 
+-cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
+-cargo_options += [ '--target-dir', meson.project_build_root() / 'src' ]
+-
+-if get_option('profile') == 'default'
+-  cargo_options += [ '--release' ]
+-  rust_target = 'release'
+-  message('Building in release mode')
+-else
+-  rust_target = 'debug'
+-  message('Building in debug mode')
+-endif
+-
+-cargo_env = [ 'CARGO_HOME=' + meson.project_build_root() / 'cargo-home' ]
+-
+-cargo_build = custom_target(
+-  'cargo-build',
+-  build_by_default: true,
+-  build_always_stale: true,
+-  output: meson.project_name(),
+-  console: true,
+-  install: true,
+-  install_dir: bindir,
+-  depends: resources,
+-  command: [
+-    'env',
+-    cargo_env,
+-    cargo, 'build',
+-    cargo_options,
+-    '&&',
+-    'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
+-  ]
+-)
+-
+-test (
+-  'Cargo clippy',
+-  cargo,
+-  args: [
+-    'clippy',
+-    '--no-deps',
+-    cargo_options,
+-  ],
+-  env: [
+-    cargo_env,
+-  ],
+-  timeout: 400, # cargo might take a bit of time sometimes
+-)
+-
+-test (
+-  'Cargo tests',
+-  cargo,
+-  args: [
+-    'test',
+-    cargo_options,
+-  ],
+-  timeout: 400, # cargo might take a bit of time sometimes
+-  env: [
+-    cargo_env,
+-  ],
+-)
