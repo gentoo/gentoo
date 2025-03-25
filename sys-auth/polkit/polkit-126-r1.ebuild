@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit meson pam pax-utils python-any-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
