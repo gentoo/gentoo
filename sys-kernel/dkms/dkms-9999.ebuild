@@ -29,13 +29,8 @@ RDEPEND="
 
 CONFIG_CHECK="~MODULES"
 
-src_compile() {
-	# Nothing to do here
-	return
-}
-
 src_test() {
-	chmod +x dkms || die
+	chmod +x dkms run_test.sh  || die
 	PATH="${PATH}:$(pwd)" ./run_test.sh || die "Tests failed"
 }
 
