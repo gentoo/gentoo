@@ -617,7 +617,7 @@ unpacker_src_uri_depends() {
 		*.7z)
 			deps[7z]="
 				|| (
-					>=app-arch/7zip-24.09[symlink]
+					app-arch/7zip
 					app-arch/p7zip
 				)
 			"
