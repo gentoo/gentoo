@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-25)
+# Package destabilisation mask after prolongued time w/o maintainer.
+# Bug #936636
+~app-editors/texworks-0.6.8
+
 # Maciej Barć <xgqt@gentoo.org> (2025-03-25)
 # It is possible Gentoo could be hit by "legal" action when having this package.
 # Very unstable development, switches upstream to avoid "legal" trouble.
