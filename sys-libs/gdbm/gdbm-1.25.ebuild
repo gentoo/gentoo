@@ -26,6 +26,10 @@ BDEPEND="
 	verify-sig? ( >=sec-keys/openpgp-keys-gdbm-20250323 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 src_prepare() {
 	default
 
