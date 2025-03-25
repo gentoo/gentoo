@@ -18,6 +18,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.13-includes.patch
+)
+
 src_configure() {
 	econf \
 		$(use_enable static-libs static)
