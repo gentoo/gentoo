@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	COMMIT="b8ab1eccebfb5805d4bfbf39f7c2ca231e7dcc70"
 	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
