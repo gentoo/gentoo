@@ -49,11 +49,9 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/matplotlib[${PYTHON_USEDEP}]
 		')
-		>=sci-physics/yoda-2.1[highfive(-)?,${PYTHON_SINGLE_USEDEP}]
+		>=sci-physics/yoda-2.1[${PYTHON_SINGLE_USEDEP}]
 	)
-	!python? (
-		>=sci-physics/yoda-2.1[highfive(-)?]
-	)
+	>=sci-physics/yoda-2.1[highfive(-)?]
 	!sci-physics/rivet:3
 "
 DEPEND="${RDEPEND}"
@@ -88,7 +86,6 @@ src_configure() {
 		$(use_with zlib zlib "${ESYSROOT}/usr") \
 		--with-hepmc3="${ESYSROOT}/usr" \
 		$(use_enable highfive h5) \
-		$(usex highfive "--with-highfive=${ESYSROOT}/usr" "") \
 		--with-yoda="${ESYSROOT}/usr" \
 		--with-fastjet="${ESYSROOT}/usr" \
 		--with-yaml-cpp="${EPREFIX}/usr" \

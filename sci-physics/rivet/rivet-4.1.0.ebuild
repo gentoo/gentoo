@@ -65,8 +65,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch # https://gitlab.com/hepcedar/rivet/-/issues/308
+	#"${FILESDIR}"/${PN}-3.1.6-binreloc.patch # https://gitlab.com/hepcedar/rivet/-/issues/308
 	"${FILESDIR}"/${PN}-4.1.0-testsyoda.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/1056
+	"${FILESDIR}"/${PN}-4.1.0-testanalysis.patch # https://gitlab.com/hepcedar/rivet/-/issues/532
 )
 
 pkg_setup() {
