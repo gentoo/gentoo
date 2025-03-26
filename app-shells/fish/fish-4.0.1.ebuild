@@ -46,6 +46,10 @@ BDEPEND="
 # Release tarballs contain prebuilt documentation.
 [[ ${PV} == 9999 ]] && BDEPEND+=" doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.1-use-cargo-eclass-for-build.patch"
+)
+
 QA_FLAGS_IGNORED="usr/bin/.*"
 
 src_unpack() {
@@ -86,14 +90,6 @@ src_compile() {
 	fi
 
 	cargo_src_compile
-
-	# Copy built binaries into the cmake build directory to mark the targets
-	# up-to-date in cmake.
-	for target in fish fish_indent fish_key_reader; do
-		cp "$(cargo_target_dir)/${target}" "${BUILD_DIR}" || die
-	done
-
-	cmake_src_compile
 }
 
 src_test() {
