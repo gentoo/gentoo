@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake edo
 
 DESCRIPTION="Open source project that includes YUV scaling and conversion functionality."
 HOMEPAGE="https://chromium.googlesource.com/libyuv/libyuv"
@@ -22,11 +22,12 @@ fi
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-# TODO(NRK): enable tests
-RESTRICT="test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=media-libs/libjpeg-turbo-3.0.0"
-BDEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-cpp/gtest )"
 
 PATCHES=(
 	"${FILESDIR}/0001-fix-install-dirs.patch"
@@ -36,7 +37,11 @@ PATCHES=(
 
 src_configure() {
 	mycmakeargs=(
-		-DUNIT_TEST=OFF
+		-DUNIT_TEST=$(usex test)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	edo "${BUILD_DIR}"/libyuv_unittest
 }
