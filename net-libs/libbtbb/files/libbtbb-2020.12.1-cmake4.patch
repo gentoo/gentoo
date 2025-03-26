@@ -1,0 +1,13 @@
+Bump minimum version to fix build with CMake4
+https://bugs.gentoo.org/951931
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ #
+ #top level cmake project for libbtbb lib + tools
+ 
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ project(libbtbb_all)
+ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
+ 
