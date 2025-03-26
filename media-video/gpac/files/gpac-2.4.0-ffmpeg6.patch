@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/951622
+https://github.com/gpac/gpac/commit/8d7cac0bf9f9775cae1d43de7138206758f28b0c
+--- a/src/filters/ff_mx.c
++++ b/src/filters/ff_mx.c
+@@ -248,5 +248,5 @@
+ 
+ 
+-#if (LIBAVFORMAT_VERSION_MAJOR <= 59)
++#if (LIBAVFORMAT_VERSION_MAJOR < 61)
+ static int ffavio_write_packet(void *opaque, uint8_t *buf, int buf_size)
+ #else
