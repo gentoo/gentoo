@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,16 +21,14 @@ SLOT="0"
 
 # imlib2[X] needed for imlib_create_image_from_drawable, bug #835582
 # imlib2[png] not technically requried, but it's the default format used by
-# scrot, so unconditionally depend on it to avoid breaking basic commands which
-# don't specify an output format.
+# scrot, so unconditionally depend on it to avoid breaking basic commands.
 RDEPEND="
-	media-libs/imlib2[X,filters(+),text(+)]
+	media-libs/imlib2[X,png,filters(+),text(+)]
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
 	x11-libs/libXinerama
-	media-libs/imlib2[png]
 "
 DEPEND="
 	${RDEPEND}
