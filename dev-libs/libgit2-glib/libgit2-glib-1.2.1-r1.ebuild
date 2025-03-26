@@ -19,7 +19,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	>=dev-libs/gobject-introspection-1.54:=
 	>=dev-libs/glib-2.44.0:2
-	>=dev-libs/libgit2-0.26.0[ssh?]
+	>=dev-libs/libgit2-0.26.0:=[ssh?]
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
