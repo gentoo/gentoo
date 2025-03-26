@@ -62,6 +62,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.xfce.org/xfce/xfce4-settings/-/issues/598
+	"${FILESDIR}/${P}-helper-dir.patch"
+)
+
 src_prepare() {
 	default
 	python_fix_shebang dialogs/mime-settings/helpers/xfce4-compose-mail

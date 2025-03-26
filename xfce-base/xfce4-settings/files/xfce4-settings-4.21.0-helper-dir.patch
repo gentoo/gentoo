@@ -1,0 +1,41 @@
+From 47c212082abd71345a46a2308faa6a8b770765a9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ga=C3=ABl=20Bonithon?= <gael@xfce.org>
+Date: Wed, 26 Mar 2025 10:00:41 +0100
+Subject: [PATCH] meson-build: Fix wrong HELPERDIR substitution
+
+Fixes: ec25fe9df81f9b95600bae846204e4a6f1ba94c2
+Closes: #598
+---
+ dialogs/meson.build               | 2 +-
+ dialogs/mime-settings/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dialogs/meson.build b/dialogs/meson.build
+index 5e24904a..99adab6a 100644
+--- a/dialogs/meson.build
++++ b/dialogs/meson.build
+@@ -34,7 +34,7 @@ foreach dir : dirs
+     ],
+     c_args: [
+       '-DG_LOG_DOMAIN="@0@"'.format('bin'),
+-      '-DHELPERDIR="@0@"'.format(helper_path_prefix),
++      '-DHELPERDIR="@0@"'.format(helper_path_prefix / 'xfce4' / 'settings'),
+     ],
+     include_directories: [
+       include_directories('..'),
+diff --git a/dialogs/mime-settings/meson.build b/dialogs/mime-settings/meson.build
+index 1a4a7bba..3249db40 100644
+--- a/dialogs/mime-settings/meson.build
++++ b/dialogs/mime-settings/meson.build
+@@ -108,7 +108,7 @@ helpers = run_command('sh', '-c', 'echo helpers' / '*.desktop.in.in', check: tru
+ foreach helper_in_in : helpers
+   helper_in = configure_file(
+     configuration: configuration_data({
+-      'HELPERDIR': helper_path_prefix,
++      'HELPERDIR': helper_path_prefix / 'xfce4',
+     }),
+     input: helper_in_in,
+     output: fs.stem(helper_in_in),
+-- 
+GitLab
+
