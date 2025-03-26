@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Viorel Munteanu <ceamac@gentoo.org> (2025-03-26)
+# Segfaults with no clear error message when trying to start a VM with 3D
+# acceleration enabled.
+# Bug #951833.
+=app-emulation/virtualbox-7.1.6a
+=app-emulation/virtualbox-extpack-oracle-7.1.6
+=app-emulation/virtualbox-additions-7.1.6
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-25)
 # Package destabilisation mask after prolongued time w/o maintainer.
 # Bug #936636
