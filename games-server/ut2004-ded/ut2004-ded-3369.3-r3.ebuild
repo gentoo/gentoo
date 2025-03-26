@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit check-reqs wrapper unpacker
 
@@ -11,7 +11,7 @@ DESCRIPTION="Unreal Tournament 2004 Linux Dedicated Server"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 SRC_URI="
 	http://ut2004.ut-files.com/Entire_Server_Download/${BONUSPACK_P}
-	http://ut2004.ut-files.com/Patches/Linux/${PATCH_P}
+	http://ut2004.ut-files.com/UT2004/${PATCH_P%.bz2}.tar -> ${PATCH_P}
 	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
 "
 S="${WORKDIR}"
