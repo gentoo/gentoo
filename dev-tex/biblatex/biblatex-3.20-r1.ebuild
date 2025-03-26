@@ -25,13 +25,19 @@ DEPEND="
 RDEPEND="${DEPEND}"
 # biblatex and biber must always have compatible versions
 PDEPEND="biber? ( ~dev-tex/biber-2.$(ver_cut 2) )"
+# corefonts for "Courier New"
 BDEPEND="
 	doc? (
+		media-fonts/corefonts
 		virtual/latex-base
 	)
 "
 
 TEXMF=/usr/share/texmf-site
+
+src_prepare() {
+	default
+}
 
 src_install() {
 	insinto "${TEXMF}"
