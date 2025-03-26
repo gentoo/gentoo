@@ -1,0 +1,25 @@
+Don't double-pointer and then assign from single-pointer
+Fixes compilation with GCC-15
+https://bugs.gentoo.org/920312
+--- a/common/savefile.c
++++ b/common/savefile.c
+@@ -152,7 +152,7 @@
+ 			fclose(fp);
+ 		}
+ 		if (s->is_a_FILE) {
+-			s->fp = (gzFile *)fopen(s->name, "a");
++			s->fp = (gzFile)fopen(s->name, "a");
+ 		} else {
+ 			s->fp = gzopen(s->name, "a");
+ 			s->isCompressed = 1;
+--- a/include/msieve.h
++++ b/include/msieve.h
+@@ -101,7 +101,7 @@
+ 	uint32 read_size;
+ 	uint32 eof;
+ #else
+-	gzFile *fp;
++	gzFile fp;
+ 	char isCompressed;
+ 	char is_a_FILE;
+ #endif
