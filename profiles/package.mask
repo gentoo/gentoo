@@ -309,12 +309,6 @@ virtual/perl-threads-shared
 virtual/perl-Tie-RefHash
 virtual/perl-Time-Piece
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-26)
-# Last release in 2005, last commit in 2013, dead as can be - does not
-# start, does not build, bugs #914927, #927337, #946657.
-# Removal on 2025-03-26.
-media-sound/jamin
-
 # Eray Aslan <eras@gentoo.org> (2025-02-24)
 # Mask experimental software
 =mail-mta/postfix-3.11*
