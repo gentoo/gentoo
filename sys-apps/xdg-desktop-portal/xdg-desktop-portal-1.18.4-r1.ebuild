@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-libs/glib-2.66:2
 	dev-libs/json-glib
 	>=media-video/pipewire-0.3:=
-	>=sys-fs/fuse-3.10.0:3[suid]
+	>=sys-fs/fuse-3.10.0:3=[suid]
 	x11-libs/gdk-pixbuf
 	geolocation? ( >=app-misc/geoclue-2.5.3:2.0 )
 	flatpak? ( sys-apps/flatpak )
