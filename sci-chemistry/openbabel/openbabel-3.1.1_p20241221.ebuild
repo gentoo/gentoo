@@ -68,6 +68,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1_p2024-fix_pybind.patch
 	# prevent installation of examples in /usr/bin
 	"${FILESDIR}"/${PN}-3.1.1_p2024-fix_examples.patch
+	# cmake4-compat
+	"${FILESDIR}"/${PN}-3.1.1_p2024-cmake4.patch
 )
 
 pkg_pretend() {

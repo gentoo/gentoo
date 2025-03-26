@@ -1,0 +1,48 @@
+https://github.com/openbabel/openbabel/pull/2784.patch
+Compat cmake-4
+Delete CMP0042 as OLD behavior is removed and policy is only used with OSX
+Set ENABLE_EXPORTS for test_runner (OLD behavior for CMP0065 is removed in cmake4)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d2a9f1..0b72e76 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Please ensure that any changes remain compliant with 3.1.
+ if(NOT EMBED_OPENBABEL)
+-  cmake_minimum_required(VERSION 3.1)
++  cmake_minimum_required(VERSION 3.10)
+ endif()
+ 
+ project(openbabel)
+@@ -10,9 +10,6 @@ set (CMAKE_CXX_STANDARD 11)
+
+ if(COMMAND cmake_policy)
+   cmake_policy(SET CMP0003 NEW)
+-  if(POLICY CMP0042)
+-    cmake_policy(SET CMP0042 OLD)
+-  endif()
+ endif()
+
+ include (CheckCXXCompilerFlag)
+diff --git a/scripts/CMakeLists.txt b/scripts/CMakeLists.txt
+index 792e459..eafda66 100644
+--- a/scripts/CMakeLists.txt
++++ b/scripts/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6.0)
++cmake_minimum_required(VERSION 3.10.0)
+ # Library versioning (used in Mac Python bindings)x
+ set(SOVERSION 4)
+ 
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 2ecf0db..280eac4 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -152,6 +152,7 @@ endif()
+ 
+ add_executable(test_runner ${srclist} obtest.cpp)
+ target_link_libraries(test_runner ${libs})
++set_target_properties(test_runner PROPERTIES ENABLE_EXPORTS TRUE)
+ 
+ if(NOT BUILD_SHARED AND NOT BUILD_MIXED)
+   set_target_properties(test_runner PROPERTIES LINK_SEARCH_END_STATIC TRUE)
