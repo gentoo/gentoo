@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,10 +29,3 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-werror.patch
 )
-
-src_install() {
-	meson-multilib_src_install
-
-	insinto /usr/share/egl/egl_external_platform.d
-	doins "${FILESDIR}"/15_nvidia_gbm.json
-}
