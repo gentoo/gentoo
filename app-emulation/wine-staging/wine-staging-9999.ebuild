@@ -39,17 +39,18 @@ LICENSE="
 "
 SLOT="${PV}"
 IUSE="
-	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups +dbus dos
-	llvm-libunwind custom-cflags ffmpeg +fontconfig +gecko gphoto2
-	+gstreamer kerberos +mingw +mono netapi nls odbc opencl +opengl
-	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
-	+strip +truetype udev +unwind usb v4l +vulkan wayland wow64
+	+X +abi_x86_32 +abi_x86_64 +alsa bluetooth capi crossdev-mingw cups
+	+dbus dos llvm-libunwind custom-cflags ffmpeg +fontconfig +gecko
+	gphoto2 +gstreamer kerberos +mingw +mono netapi nls odbc opencl
+	+opengl pcap perl pulseaudio samba scanner +sdl selinux smartcard
+	+ssl +strip +truetype udev +unwind usb v4l +vulkan wayland wow64
 	+xcomposite xinerama
 "
 # bug #551124 for truetype
-# TODO: wow64 can be done without mingw if using clang (needs bug #912237)
+# TODO?: wow64 can be done without mingw if using clang (needs bug #912237)
 REQUIRED_USE="
 	X? ( truetype )
+	bluetooth? ( dbus )
 	crossdev-mingw? ( mingw )
 	wow64? ( abi_x86_64 !abi_x86_32 mingw )
 "
@@ -140,6 +141,7 @@ DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )
+	bluetooth? ( net-wireless/bluez )
 "
 # gitapply.sh "can" work without git but that is hardly tested
 # and known failing with some versions, so force real git
@@ -314,6 +316,11 @@ src_configure() {
 		$(use_with wayland)
 		$(use_with xcomposite)
 		$(use_with xinerama)
+
+		$(usev !bluetooth '
+			ac_cv_header_bluetooth_bluetooth_h=no
+			ac_cv_header_bluetooth_rfcomm_h=no
+		')
 		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
