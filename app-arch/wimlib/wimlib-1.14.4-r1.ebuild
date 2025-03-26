@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="fuse iso ntfs test yasm"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	fuse? ( sys-fs/fuse:3 )
+	fuse? ( sys-fs/fuse:3= )
 	iso? (
 		app-arch/cabextract
 		app-cdr/cdrtools
