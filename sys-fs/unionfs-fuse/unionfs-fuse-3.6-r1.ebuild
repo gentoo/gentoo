@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-fs/fuse:3"
+RDEPEND="sys-fs/fuse:3="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
