@@ -49,11 +49,9 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/matplotlib[${PYTHON_USEDEP}]
 		')
-		>=sci-physics/yoda-2.1[highfive(-)?,${PYTHON_SINGLE_USEDEP}]
+		>=sci-physics/yoda-2.1[${PYTHON_SINGLE_USEDEP}]
 	)
-	!python? (
-		>=sci-physics/yoda-2.1[highfive(-)?]
-	)
+	>=sci-physics/yoda-2.1[highfive(-)?]
 	!sci-physics/rivet:3
 "
 DEPEND="${RDEPEND}"
