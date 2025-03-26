@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-26)
+# PyCXX and PySVN have no Gentoo maintainer since 2019, and they have
+# been effectively abandoned years earlier.  PyCXX no longer installs
+# correctly, and the hacks to workaround upstream bugs are piling up.
+# PySVN ebuild has faked PEP517 support.  The packages don't have
+# working tests nor Python 3.13 support.
+# Removal on 2025-04-25.  Bug #751541.
+dev-python/pycxx
+dev-python/pysvn
+dev-vcs/svneverever
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-25)
 # Package destabilisation mask after prolongued time w/o maintainer.
 # Bug #936636
