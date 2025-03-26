@@ -1246,6 +1246,8 @@ distutils_wheel_install() {
 		-o -path '*.dist-info/licenses' \
 		-o -path '*.dist-info/zip-safe' \
 		\) -delete || die
+
+	_DISTUTILS_WHL_INSTALLED=1
 }
 
 # @VARIABLE: DISTUTILS_WHEEL_PATH
@@ -2010,6 +2012,11 @@ _distutils-r1_compare_installed_files() {
 # it adjusts the install tree for venv-style usage.
 _distutils-r1_post_python_compile() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ! ${_DISTUTILS_WHL_INSTALLED} && ${DISTUTILS_USE_PEP517:-no} != no ]]
+	then
+		die "No wheel installed in python_compile(), did you call distutils-r1_python_compile?"
+	fi
 
 	local root=${BUILD_DIR}/install
 	if [[ ${DISTUTILS_USE_PEP517} && -d ${root} ]]; then
