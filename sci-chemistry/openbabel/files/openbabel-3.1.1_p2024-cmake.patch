@@ -1,0 +1,35 @@
+https://github.com/openbabel/openbabel/pull/2784.patch
+Compat cmake-4
+Delete CMP0042 as OLD behavior is removed and policy is only used with OSX
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d2a9f1..0b72e76 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Please ensure that any changes remain compliant with 3.1.
+ if(NOT EMBED_OPENBABEL)
+-  cmake_minimum_required(VERSION 3.1)
++  cmake_minimum_required(VERSION 3.10)
+ endif()
+ 
+ project(openbabel)
+@@ -10,9 +10,6 @@ set (CMAKE_CXX_STANDARD 11)
+
+ if(COMMAND cmake_policy)
+   cmake_policy(SET CMP0003 NEW)
+-  if(POLICY CMP0042)
+-    cmake_policy(SET CMP0042 OLD)
+-  endif()
+ endif()
+
+ include (CheckCXXCompilerFlag)
+diff --git a/scripts/CMakeLists.txt b/scripts/CMakeLists.txt
+index 792e459..eafda66 100644
+--- a/scripts/CMakeLists.txt
++++ b/scripts/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6.0)
++cmake_minimum_required(VERSION 3.10.0)
+ # Library versioning (used in Mac Python bindings)x
+ set(SOVERSION 4)
+ 
