@@ -27,7 +27,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python +readline
+IUSE="debug doc +icu kerberos ldap llvm +lz4 nls oauth pam perl python +readline
 	selinux systemd ssl static-libs tcl test uuid xml zlib zstd"
 
 REQUIRED_USE="
@@ -50,6 +50,7 @@ llvm? ( $(llvm_gen_dep '
 	llvm-core/llvm:${LLVM_SLOT}
 	') )
 lz4? ( app-arch/lz4 )
+oauth? ( net-misc/curl[adns] )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.14:= )
 python? ( ${PYTHON_DEPS} )
@@ -168,6 +169,7 @@ src_configure() {
 		$(meson_feature llvm)
 		$(meson_feature lz4)
 		$(meson_feature nls)
+		$(meson_feature oauth libcurl)
 		$(meson_feature pam)
 		$(meson_feature perl plperl)
 		$(meson_feature python plpython)

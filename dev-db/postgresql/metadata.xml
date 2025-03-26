@@ -9,6 +9,9 @@
 		<flag name="llvm">
 			Add support for llvm JIT engine
 		</flag>
+		<flag name="oauth">
+			Enable OAuth2 authentication support
+		</flag>
 		<flag name="server">
 			Disable to build and install the clients and libraries
 			only.
