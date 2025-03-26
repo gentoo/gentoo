@@ -15,10 +15,3 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-
-src_install() {
-	meson_src_install
-
-	# header-only and we need it found for both 32bit and 64bit
-	mv -- "${ED}"/usr/{$(get_libdir),share}/pkgconfig || die
-}
