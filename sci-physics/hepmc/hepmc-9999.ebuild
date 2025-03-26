@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit fortran-2 cmake flag-o-matic python-single-r1
 
 MYP=HepMC3-${PV}
