@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/944445
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@ CFLAGS=-Wall
+ 
+ AUTOMAKE_OPTIONS = foreign 1.9
+ 
+-SUBDIRS = intl po data shared simulation graphics stuntsserver stuntsai stunts3dedit trackedit ultimatestunts
++SUBDIRS = po data shared simulation graphics stuntsserver stuntsai stunts3dedit trackedit ultimatestunts
+ 
+ ultimatestunts.conf: ultimatestunts.conf.in Makefile
+ 	sed 's,@usdatadir\@,$(usdatadir),;s,@PACKAGE_VERSION\@,$(PACKAGE_VERSION),' < $< > $@
+--- a/configure.ac
++++ b/configure.ac
+@@ -243,8 +243,8 @@ dnl -------------------
+ dnl i18n
+ dnl -------------------
+ AC_LANG_PUSH(C)
+-AM_GNU_GETTEXT
+-AM_GNU_GETTEXT_VERSION
++AM_GNU_GETTEXT(external)
++AM_GNU_GETTEXT_REQUIRE_VERSION(0.22.1)
+ AC_LANG_POP(C)
+ 
+ dnl ------------------
+@@ -277,7 +277,7 @@ AC_SUBST(sdllibs)
+ dnl usdatadir is used as the data file install location
+ AC_SUBST(usdatadir)
+ 
+-AC_CONFIG_FILES([Makefile intl/Makefile po/Makefile.in data/Makefile shared/Makefile simulation/Makefile graphics/Makefile stuntsserver/Makefile stuntsai/Makefile stunts3dedit/Makefile trackedit/Makefile ultimatestunts/Makefile])
++AC_CONFIG_FILES([Makefile po/Makefile.in data/Makefile shared/Makefile simulation/Makefile graphics/Makefile stuntsserver/Makefile stuntsai/Makefile stunts3dedit/Makefile trackedit/Makefile ultimatestunts/Makefile])
+ AC_OUTPUT
+ 
+ 
