@@ -1,0 +1,13 @@
+Use correct gzip function to check for the end of file
+https://bugs.gentoo.org/919254
+--- a/bfast/RGMatch.c
++++ b/bfast/RGMatch.c
+@@ -20,7 +20,7 @@
+ 	/* Read in the read length */
+ 	if(gzread64(fp, &m->readLength, sizeof(int32_t))!=sizeof(int32_t)||
+ 			gzread64(fp, &m->qualLength, sizeof(int32_t))!=sizeof(int32_t)) {
+-		if(feof(fp) != 0) {
++		if(gzeof(fp) != 0) {
+ 			return EOF;
+ 		}
+ 		else {
