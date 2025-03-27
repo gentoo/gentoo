@@ -1,0 +1,17 @@
+--- a/rp2gen/Makefile.am
++++ b/rp2gen/Makefile.am
+@@ -3,13 +3,9 @@
+ CCLD=$(NATIVECC)
+ #EXEEXT=
+ AM_YFLAGS= -d
+-AM_CPPFLAGS= -I$(top_builddir)/include -I$(top_srcdir)/include -I$(srcdir) -I.
++AM_CPPFLAGS= -I$(top_builddir)/include -I$(top_srcdir)/include -I$(srcdir) -I. $(CFLAGS)
+ 
+ # override any cross compilation target flags
+-CFLAGS=-Wall
+-LDFLAGS=
+-LIBS=
+-
+ .c.o:
+ 	$(NATIVECC) $(AM_CPPFLAGS) -c $<
+ 

@@ -1,0 +1,34 @@
+https://wiki.gentoo.org/wiki/Lua/Porting_notes
+
+--- a/rpc2-src/lua.c
++++ b/rpc2-src/lua.c
+@@ -303,10 +303,28 @@ static void l2c_totimeval(lua_State *L, int index, struct timeval *tv)
+     }
+ }
+ 
++#if !defined LUA_VERSION_NUM || LUA_VERSION_NUM==501
++/*
++** Adapted from Lua 5.2.0
++*/
++static void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup) {
++  luaL_checkstack(L, nup+1, "too many upvalues");
++  for (; l->name != NULL; l++) {  /* fill the table with given functions */
++    int i;
++    lua_pushstring(L, l->name);
++    for (i = 0; i < nup; i++)  /* copy upvalues to the top */
++      lua_pushvalue(L, -(nup+1));
++    lua_pushcclosure(L, l->func, nup);  /* closure with those upvalues */
++    lua_settable(L, -(nup + 3));
++  }
++  lua_pop(L, nup);  /* remove upvalues */
++}
++#endif
++
+ static int l2c_timeval_init(lua_State *L)
+ {
+     luaL_newmetatable(L, RPC2_TIMEVAL);
+-    luaL_openlib(L, NULL, timeval_m, 0);
++    luaL_setfuncs(L, timeval_m, 0);
+     lua_register(L, "time", timeval_new);
+     return 1;
+ }
