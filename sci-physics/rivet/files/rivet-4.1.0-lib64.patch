@@ -1,0 +1,106 @@
+From 17fbc7a6ba263a9b132e41270962a5b466ead60f Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Thu, 27 Mar 2025 12:09:45 +0100
+Subject: [PATCH 1/2] First attempt
+
+---
+ src/Tools/binreloc.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/Tools/binreloc.c b/src/Tools/binreloc.c
+index 0e11d570e9..d8861b639c 100644
+--- a/src/Tools/binreloc.c
++++ b/src/Tools/binreloc.c
+@@ -24,6 +24,16 @@
+ #include <string.h>
+ #include "binreloc.h"
+ 
++#ifndef DEFAULTLIBDIR
++#define DEFAULTLIBDIR "/usr/lib"  // Fallback if not defined
++#endif
++
++#if defined(DEFAULTLIBDIR) && (strstr(DEFAULTLIBDIR, "lib64") != NULL)
++    #define LIB_SUFFIX "lib64"
++#else
++    #define LIB_SUFFIX "lib"
++#endif
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+@@ -603,7 +613,7 @@ br_find_lib_dir (const char *default_lib_dir)
+ 			return (char *) NULL;
+ 	}
+ 
+-	dir = br_build_path (prefix, "lib");
++	dir = br_build_path (prefix, LIB_SUFFIX);
+ 	free (prefix);
+ 	return dir;
+ }
+-- 
+GitLab
+
+
+From 9d4b83734943fc57942e11afeff023edd89109db Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Thu, 27 Mar 2025 12:23:44 +0100
+Subject: [PATCH 2/2] Use C instead of macro
+
+---
+ src/Tools/binreloc.c | 28 +++++++++++++++++++++-------
+ 1 file changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/src/Tools/binreloc.c b/src/Tools/binreloc.c
+index d8861b639c..09dd626a99 100644
+--- a/src/Tools/binreloc.c
++++ b/src/Tools/binreloc.c
+@@ -28,17 +28,31 @@
+ #define DEFAULTLIBDIR "/usr/lib"  // Fallback if not defined
+ #endif
+ 
+-#if defined(DEFAULTLIBDIR) && (strstr(DEFAULTLIBDIR, "lib64") != NULL)
+-    #define LIB_SUFFIX "lib64"
+-#else
+-    #define LIB_SUFFIX "lib"
+-#endif
+-
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
++int ends_with_lib64(const char *libdir) {
++    const char *suffix = "lib64";
++    size_t libdir_len = strlen(libdir);
++    size_t suffix_len = strlen(suffix);
++
++    // Ignore trailing slashes
++    while (libdir_len > 0 && libdir[libdir_len - 1] == '/') {
++        libdir_len--;  // Move back before the slash
++    }
++
++    // Check if the string ends with "lib64" (after removing slashes)
++    if (libdir_len >= suffix_len &&
++        strncmp(libdir + libdir_len - suffix_len, suffix, suffix_len) == 0) {
++        return 1; // Ends with "lib64"
++    }
++    return 0; // Does not end with "lib64"
++}
+ 
++const char *get_lib_suffix() {
++    return ends_with_lib64(DEFAULTLIBDIR) ? "lib64" : "lib";
++}
+ 
+ /** @internal
+  * Find the canonical filename of the executable. Returns the filename
+@@ -613,7 +627,7 @@ br_find_lib_dir (const char *default_lib_dir)
+ 			return (char *) NULL;
+ 	}
+ 
+-	dir = br_build_path (prefix, LIB_SUFFIX);
++	dir = br_build_path (prefix, get_lib_suffix());
+ 	free (prefix);
+ 	return dir;
+ }
+-- 
+GitLab
+

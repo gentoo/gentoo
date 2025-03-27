@@ -64,10 +64,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
