@@ -1,0 +1,27 @@
+Cmake4 minimum version bump, edited to work with release cmakelists.txt
+https://bugs.gentoo.org/952094
+https://codeberg.org/tenacityteam/portsmf/commit/99310ab5662ce76bbf47936fa414cd4fccaa7177.patch
+From 99310ab5662ce76bbf47936fa414cd4fccaa7177 Mon Sep 17 00:00:00 2001
+From: Avery King <gperson@disroot.org>
+Date: Wed, 26 Mar 2025 22:00:06 -0700
+Subject: [PATCH] CMake: Bump minimum required version to 3.10
+
+CMake 4.0 drops compatibility with CMake versions < 3.5, and currently,
+CMake compatibility with versions less than 3.10 is deprecated, so bump
+our minimum required version to 3.10. Fixes #14.
+
+Reference-to: https://codeberg.org/tenacityteam/portsmf/issues/14
+Signed-off-by: Avery King <gperson@disroot.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 278adb8..54731e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,3 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(PortSMF VERSION 239 LANGUAGES CXX)
