@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv"
 IUSE="dbus enchant +fonts +jemalloc +libdispatch screencast wayland webkit +X"
 
 CDEPEND="
