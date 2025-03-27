@@ -27,3 +27,10 @@ BDEPEND="dev-python/cython
 	dev-python/setuptools-scm"
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_install() {
+	distutils-r1_python_install
+	local sitedir=$(python_get_sitedir)
+	insinto "${sitedir#${EPREFIX}}"/${PN/_}
+	doins ${PN/_}/stopwords
+}
