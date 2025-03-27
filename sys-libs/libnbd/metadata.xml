@@ -9,9 +9,6 @@
 		<remote-id type="gitlab">nbdkit/libnbd</remote-id>
 	</upstream>
 	<use>
-		<flag name="uri-support">
-			Enable nbd:// URI support via <pkg>dev-libs/libxml2</pkg>.
-		</flag>
 		<flag name="fuse">
 			Install the <pkg>sys-fs/fuse</pkg> powered nbdfuse.
 		</flag>
