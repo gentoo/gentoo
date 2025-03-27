@@ -1,14 +1,14 @@
-From f69772741e89fca8d3b98629bc79469e2d55864c Mon Sep 17 00:00:00 2001
+From 4d3ef674ac8efe24c4f300a4986265b155d749a0 Mon Sep 17 00:00:00 2001
 From: NRK <nrk@disroot.org>
 Date: Fri, 7 Mar 2025 21:06:56 +0000
-Subject: [PATCH 2/3] disable static library
+Subject: [PATCH] disable static library
 
 ---
- CMakeLists.txt | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ CMakeLists.txt | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8c064a7..d21c6cb 100644
+index 8c064a7..3d723f6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -14,7 +14,6 @@ set ( ly_src_dir	${ly_base_dir}/source )
@@ -48,6 +48,15 @@ index 8c064a7..d21c6cb 100644
  
  find_package ( JPEG )
  if (JPEG_FOUND)
+@@ -225,7 +221,7 @@ if(UNIT_TEST)
+   endif()
+ 
+   add_executable(libyuv_unittest ${ly_unittest_sources})
+-  target_link_libraries(libyuv_unittest ${ly_lib_name} ${GTEST_LIBRARY})
++  target_link_libraries(libyuv_unittest ${ly_lib_shared} ${GTEST_LIBRARY})
+   find_library(PTHREAD_LIBRARY pthread)
+   if(NOT PTHREAD_LIBRARY STREQUAL "PTHREAD_LIBRARY-NOTFOUND")
+     target_link_libraries(libyuv_unittest pthread)
 @@ -248,7 +244,6 @@ endif()
  
  # install the conversion tool, .so, .a, and all the header files
