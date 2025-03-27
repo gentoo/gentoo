@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-03-26)
+# Ruby 3.1 is no longer supported upstream and will no longer
+# receive security updates. This mask also includes any
+# remaining ruby31-only packages.
+dev-lang/ruby:3.1
+dev-ruby/async:1
+dev-ruby/pathutil
+
 # Viorel Munteanu <ceamac@gentoo.org> (2025-03-26)
 # Segfaults with no clear error message when trying to start a VM with 3D
 # acceleration enabled.
