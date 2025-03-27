@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-03-27)
+# Large-scale breakage (bug #951350).
+=dev-build/cmake-4*
+
 # Viorel Munteanu <ceamac@gentoo.org> (2025-03-26)
 # Segfaults with no clear error message when trying to start a VM with 3D
 # acceleration enabled.
