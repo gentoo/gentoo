@@ -1,0 +1,109 @@
+diff --git a/Mond.RemoteDebugger/Mond.RemoteDebugger.csproj b/Mond.RemoteDebugger/Mond.RemoteDebugger.csproj
+index 28452b5..f2a77f9 100644
+--- a/Mond.RemoteDebugger/Mond.RemoteDebugger.csproj
++++ b/Mond.RemoteDebugger/Mond.RemoteDebugger.csproj
+@@ -1,13 +1,13 @@
+ ﻿<Project Sdk="Microsoft.NET.Sdk">
+ 
+   <PropertyGroup>
+-    <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
++    <TargetFrameworks>net9.0</TargetFrameworks>
+     <AssemblyVersion>0.11.2</AssemblyVersion>
+     <DebugType>portable</DebugType>
+     <LangVersion>latest</LangVersion>
+-    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
++    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0'))">true</IsAotCompatible>
+     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+-	
++
+     <!-- NuGet Package -->
+     <PackageId>Mond.RemoteDebugger</PackageId>
+     <PackageVersion>$(AssemblyVersion)</PackageVersion>
+@@ -20,8 +20,8 @@
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+ 
+     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+-    <RepositoryUrl>https://github.com/Rohansi/Mond.git</RepositoryUrl> 
+-    <RepositoryType>git</RepositoryType> 
++    <RepositoryUrl>https://github.com/Rohansi/Mond.git</RepositoryUrl>
++    <RepositoryType>git</RepositoryType>
+   </PropertyGroup>
+ 
+   <ItemGroup>
+diff --git a/Mond.Repl/Mond.Repl.csproj b/Mond.Repl/Mond.Repl.csproj
+index d70c940..bbf3cc0 100644
+--- a/Mond.Repl/Mond.Repl.csproj
++++ b/Mond.Repl/Mond.Repl.csproj
+@@ -1,8 +1,8 @@
+ ﻿<Project Sdk="Microsoft.NET.Sdk">
+-  
++
+   <PropertyGroup>
+     <OutputType>Exe</OutputType>
+-    <TargetFrameworks>net8.0</TargetFrameworks>
++    <TargetFrameworks>net9.0</TargetFrameworks>
+     <RuntimeIdentifiers>any</RuntimeIdentifiers>
+     <AssemblyVersion>0.11.2</AssemblyVersion>
+     <DebugType>portable</DebugType>
+@@ -27,10 +27,10 @@
+     <PackageProjectUrl>https://github.com/Rohansi/Mond</PackageProjectUrl>
+     <PackageTags>Mond Scripting REPL</PackageTags>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+-    
++
+     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+-    <RepositoryUrl>https://github.com/Rohansi/Mond.git</RepositoryUrl> 
+-    <RepositoryType>git</RepositoryType> 
++    <RepositoryUrl>https://github.com/Rohansi/Mond.git</RepositoryUrl>
++    <RepositoryType>git</RepositoryType>
+ 
+     <PackAsTool>true</PackAsTool>
+     <ToolCommandName>mond</ToolCommandName>
+diff --git a/Mond.Tests/Mond.Tests.csproj b/Mond.Tests/Mond.Tests.csproj
+index 22e4edf..e7c939d 100644
+--- a/Mond.Tests/Mond.Tests.csproj
++++ b/Mond.Tests/Mond.Tests.csproj
+@@ -2,8 +2,8 @@
+ 
+   <PropertyGroup>
+     <OutputType>Exe</OutputType>
+-    <TargetFramework>net8.0</TargetFramework>
+-	  <RuntimeIdentifiers>any</RuntimeIdentifiers>
++    <TargetFramework>net9.0</TargetFramework>
++      <RuntimeIdentifiers>any</RuntimeIdentifiers>
+     <DebugType>portable</DebugType>
+     <LangVersion>latest</LangVersion>
+     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+diff --git a/Mond/Mond.csproj b/Mond/Mond.csproj
+index 6bf3a75..01b52c5 100644
+--- a/Mond/Mond.csproj
++++ b/Mond/Mond.csproj
+@@ -1,12 +1,12 @@
+ ﻿<Project Sdk="Microsoft.NET.Sdk">
+ 
+   <PropertyGroup>
+-    <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
++    <TargetFrameworks>net9.0</TargetFrameworks>
+     <AssemblyVersion>0.11.2</AssemblyVersion>
+     <DebugType>portable</DebugType>
+     <LangVersion>latest</LangVersion>
+     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+-    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
++    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0'))">true</IsAotCompatible>
+     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+ 
+     <PackageId>Mond</PackageId>
+@@ -18,10 +18,10 @@
+     <PackageProjectUrl>https://github.com/Rohansi/Mond</PackageProjectUrl>
+     <PackageTags>Mond Embedded Scripting Language AOT</PackageTags>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+-    
++
+     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+-    <RepositoryUrl>https://github.com/Rohansi/Mond.git</RepositoryUrl> 
+-    <RepositoryType>git</RepositoryType> 
++    <RepositoryUrl>https://github.com/Rohansi/Mond.git</RepositoryUrl>
++    <RepositoryType>git</RepositoryType>
+   </PropertyGroup>
+ 
+   <ItemGroup>
