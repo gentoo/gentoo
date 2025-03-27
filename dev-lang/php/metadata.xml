@@ -27,10 +27,6 @@
     <flag name="cli">
       Enable the Command-Line Interface (CLI) SAPI
     </flag>
-    <flag name="coverage">
-      Include gcov symbols for test coverage and lcov reports. Only
-      useful for extension developers, and requires GCC.
-    </flag>
     <flag name="ctype">
       Enable the Character type checking (ctype) extension
     </flag>
