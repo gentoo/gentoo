@@ -67,10 +67,13 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.06-test-words.patch
 )
 
-DEJAVU=dejavu-sans-ttf-2.37
+DEJAVU_VER=2.37
+DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
 UNIFONT=unifont-16.0.02
-SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
-	themes? ( https://downloads.sourceforge.net/dejavu/${DEJAVU}.zip )"
+SRC_URI+="
+	fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
+	themes? ( https://downloads.sourceforge.net/project/dejavu/dejavu/${DEJAVU_VER}/${DEJAVU}.tar.bz2 )
+"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
@@ -109,7 +112,6 @@ BDEPEND+="
 		sys-fs/squashfs-tools
 	)
 	themes? (
-		app-arch/unzip
 		media-libs/freetype:2
 		virtual/pkgconfig
 	)
@@ -231,11 +233,11 @@ grub_configure() {
 	)
 
 	if use fonts; then
-		ln -rs "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+		cp "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	fi
 
 	if use themes; then
-		ln -rs "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+		cp "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
 	fi
 
 	local ECONF_SOURCE="${S}"
