@@ -28,7 +28,7 @@ else
 fi
 
 IUSE="debug doc +icu kerberos ldap llvm +lz4 nls oauth pam perl python +readline
-	selinux systemd ssl static-libs tcl test uuid xml zlib zstd"
+	selinux systemd ssl static-libs tcl test uring uuid xml zlib zstd"
 
 REQUIRED_USE="
 llvm? ( ${LLVM_REQUIRED_USE} )
@@ -58,6 +58,7 @@ readline? ( sys-libs/readline:0= )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 systemd? ( sys-apps/systemd )
 tcl? ( >=dev-lang/tcl-8:0= )
+uring? ( sys-libs/liburing )
 xml? (
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -176,6 +177,7 @@ src_configure() {
 		$(meson_feature readline)
 		$(meson_feature systemd)
 		$(meson_feature tcl pltcl)
+		$(meson_feature uring liburing)
 		$(meson_feature xml libxml)
 		$(meson_feature xml libxslt)
 		$(meson_feature zlib)
