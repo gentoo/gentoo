@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd tmpfiles
+inherit eapi9-ver systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
