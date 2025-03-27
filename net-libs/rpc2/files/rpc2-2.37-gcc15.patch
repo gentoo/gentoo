@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/947850
+
+--- a/rp2gen/crout.c
++++ b/rp2gen/crout.c
+@@ -96,7 +96,7 @@ extern rp2_bool testing;
+ extern rp2_bool cplusplus;
+ extern rp2_bool neterrors; /* exchange OS independent errors */
+ extern struct subsystem subsystem;
+-extern unsigned versionnumber; /* used to check version */
++extern time_t versionnumber; /* used to check version */
+ extern ENTRY *find();
+ 
+ enum
