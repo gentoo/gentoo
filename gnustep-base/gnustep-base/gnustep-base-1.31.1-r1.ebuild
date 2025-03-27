@@ -3,11 +3,14 @@
 
 EAPI=8
 
-inherit gnustep-base toolchain-funcs
+inherit gnustep-base toolchain-funcs verify-sig
 
 DESCRIPTION="A library of general-purpose, non-graphical Objective C objects"
 HOMEPAGE="https://gnustep.github.io"
-SRC_URI="https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/${P}.tar.gz
+	verify-sig? ( https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/${P}.tar.gz.sig )
+"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
@@ -32,7 +35,12 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	>=virtual/zlib-1.2:=
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-gnustep )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnustep.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.0-no_compress_man.patch
