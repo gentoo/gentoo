@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ else
 		https://netfilter.org/projects/nftables/files/${P}.tar.xz
 		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.xz.sig )
 	"
-	KEYWORDS="amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
@@ -33,7 +33,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:=
-	>=net-libs/libnftnl-1.2.7:=
+	>=net-libs/libnftnl-1.2.8:=
 	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
@@ -55,10 +55,6 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	libedit? ( !readline )
 "
-
-PATCHES=(
-	"${FILESDIR}"/nftables-1.1.0-revert-firewalld-breaking-change.patch
-)
 
 src_prepare() {
 	default
@@ -151,7 +147,8 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-mk.init-r1 ${PN}
 	keepdir /var/lib/nftables
 
-	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}-load.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}-store.service
 
 	if use python ; then
 		pushd py >/dev/null || die
@@ -197,7 +194,7 @@ pkg_postinst() {
 	local save_file
 	save_file="${EROOT}"/var/lib/nftables/rules-save
 
-	# In order for the nftables-restore systemd service to start
+	# In order for the nftables-load systemd service to start
 	# the save_file must exist.
 	if [[ ! -f "${save_file}" ]]; then
 		( umask 177; touch "${save_file}" )
@@ -210,12 +207,22 @@ pkg_postinst() {
 	fi
 
 	if has_version 'sys-apps/systemd'; then
+		local _replacing_version=
+		for _replacing_version in ${REPLACING_VERSIONS}; do
+			if ver_test "${_replacing_version}" -lt "1.1.1-r1"; then
+				elog "Starting with ${PN}-1.1.1-r1, the ${PN}-restore.service has"
+				elog "been split into ${PN}-load.service and ${PN}-store.service."
+				elog
+
+				break
+			fi
+		done
 		elog "If you wish to enable the firewall rules on boot (on systemd) you"
-		elog "will need to enable the nftables-restore service."
-		elog "    'systemctl enable ${PN}-restore.service'"
+		elog "will need to enable the nftables-load service."
+		elog "    'systemctl enable ${PN}-load.service'"
 		elog
 		elog "If you are creating firewall rules before the next system restart"
-		elog "the nftables-restore service must be manually started in order to"
+		elog "the nftables-store service must be manually started in order to"
 		elog "save those rules on shutdown."
 	fi
 
