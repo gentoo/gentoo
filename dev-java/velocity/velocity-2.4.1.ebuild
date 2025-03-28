@@ -99,7 +99,7 @@ src_prepare() {
 }
 
 src_test() {
-	export TZ="Europe/Berlin"	# https://bugs.gentoo.org/952126
+	local -x TZ="Europe/Berlin"	# https://bugs.gentoo.org/952126
 	pushd src/test/java > /dev/null || die
 		# DataSourceResourceLoaderTestCase.java requires configured jdbc
 		local JAVA_TEST_RUN_ONLY=$(find * \
