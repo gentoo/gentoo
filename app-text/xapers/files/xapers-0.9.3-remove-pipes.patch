@@ -1,0 +1,14 @@
+diff --git a/xapers/__main__.py b/xapers/__main__.py
+index ed451c7..e59fbd2 100755
+--- a/xapers/__main__.py
++++ b/xapers/__main__.py
+@@ -698,9 +698,6 @@ directory.
+     except:
+         pass
+ 
+-    # FIXME: why?
+-    import pipes
+-
+     for doc in initdb().search(args.query):
+         title = doc.get_title()
+         origpaths = doc.get_fullpaths()
