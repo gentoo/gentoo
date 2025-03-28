@@ -137,6 +137,8 @@
 # - standalone - standalone build systems without external deps
 #   (used for bootstrapping).
 #
+# - uv-build - uv-build backend (using dev-python/uv)
+#
 # The variable needs to be set before the inherit line.  The eclass
 # adds appropriate build-time dependencies and verifies the value.
 #
@@ -150,6 +152,20 @@
 # in ${BUILD_DIR}/install after python_compile(), and if any (other)
 # files are found in ${BUILD_DIR}/install after python_install(), they
 # will be merged into ${D}.
+
+# @ECLASS_VARIABLE: DISTUTILS_UPSTREAM_PEP517
+# @DESCRIPTION:
+# Specifies the PEP517 build backend used upstream.  It is used
+# by the eclass to verify the correctness of DISTUTILS_USE_PEP517,
+# and matches DISTUTILS_USE_PEP517 by default.  However, it can be
+# overriden to workaround the eclass check, when it is desirable
+# to build the wheel using other backend than the one used upstream.
+#
+# Please note that even in packages using PEP621 metadata, there can
+# be subtle differences between the behavior of different PEP517 build
+# backends, for example regarding finding package files.  When using
+# this option, please make sure that the package is installed correctly.
+: "${DISTUTILS_UPSTREAM_PEP517:=${DISTUTILS_USE_PEP517}}"
 
 # @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
@@ -246,22 +262,23 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-15[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-16[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit-core-3.9.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
 				bdep+='
+					>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 					>=dev-python/flit-scm-1.7.0[${PYTHON_USEDEP}]
 				'
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.21.1[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.27.0[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -271,7 +288,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-1.7.4[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -280,40 +297,45 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.15.0[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.17.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-6.0.0[${PYTHON_USEDEP}]
+					>=dev-python/pbr-6.1.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm-backend)
 				bdep+='
-					>=dev-python/pdm-backend-2.1.8[${PYTHON_USEDEP}]
+					>=dev-python/pdm-backend-2.4.3[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.9.0[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-2.1.1[${PYTHON_USEDEP}]
 				'
 				;;
 			scikit-build-core)
 				bdep+='
-					>=dev-python/scikit-build-core-0.9.4[${PYTHON_USEDEP}]
+					>=dev-python/scikit-build-core-0.10.7[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.8.3[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.10.0[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
+				;;
+			uv-build)
+				bdep+='
+					dev-python/uv-build[${PYTHON_USEDEP}]
+				'
 				;;
 			*)
 				die "Unknown DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
@@ -325,7 +347,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -501,7 +523,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps=">=dev-python/sphinx-7.2.6[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-8.1.3[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -525,7 +547,7 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in ">=dev-python/sphinx-7.2.6" \
+			for p in ">=dev-python/sphinx-8.1.3" \
 				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
 			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
@@ -533,7 +555,7 @@ distutils_enable_sphinx() {
 			done
 		}
 	else
-		deps=">=dev-python/sphinx-7.2.6"
+		deps=">=dev-python/sphinx-8.1.3"
 	fi
 
 	sphinx_compile_all() {
@@ -904,6 +926,12 @@ _distutils-r1_print_package_versions() {
 					dev-python/sip
 				)
 				;;
+			uv-build)
+				packages+=(
+					dev-python/uv
+					dev-python/uv-build
+				)
+				;;
 		esac
 	else
 		case ${DISTUTILS_USE_SETUPTOOLS} in
@@ -1050,55 +1078,57 @@ _distutils-r1_copy_egg_info() {
 	find -name '*.egg-info' -type d -exec cp -R -p {} "${BUILD_DIR}"/ ';' || die
 }
 
-# @FUNCTION: _distutils-r1_backend_to_key
-# @USAGE: <backend>
+# @FUNCTION: _distutils-r1_key_to_backend
+# @USAGE: <key>
 # @INTERNAL
 # @DESCRIPTION:
-# Print the DISTUTILS_USE_PEP517 value corresponding to the backend
-# passed as the only argument.
-_distutils-r1_backend_to_key() {
+# Print the backend corresponding to the DISTUTILS_USE_PEP517 value.
+_distutils-r1_key_to_backend() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local backend=${1}
-	case ${backend} in
-		flit_core.buildapi|flit.buildapi)
-			echo flit
+	local key=${1}
+	case ${key} in
+		flit)
+			echo flit_core.buildapi
 			;;
-		flit_scm:buildapi)
-			echo flit_scm
+		flit_scm)
+			echo flit_scm:buildapi
 			;;
-		hatchling.build)
-			echo hatchling
+		hatchling)
+			echo hatchling.build
 			;;
-		jupyter_packaging.build_api)
-			echo jupyter
+		jupyter)
+			echo jupyter_packaging.build_api
 			;;
 		maturin)
 			echo maturin
 			;;
-		mesonpy)
-			echo meson-python
+		meson-python)
+			echo mesonpy
 			;;
-		pbr.build)
-			echo pbr
+		pbr)
+			echo pbr.build
 			;;
-		pdm.backend|pdm.pep517.api)
-			echo pdm-backend
+		pdm-backend)
+			echo pdm.backend
 			;;
-		poetry.core.masonry.api|poetry.masonry.api)
-			echo poetry
+		poetry)
+			echo poetry.core.masonry.api
 			;;
-		scikit_build_core.build)
-			echo scikit-build-core
+		scikit-build-core)
+			echo scikit_build_core.build
 			;;
-		setuptools.build_meta|setuptools.build_meta:__legacy__)
-			echo setuptools
+		setuptools)
+			echo setuptools.build_meta
 			;;
-		sipbuild.api)
-			echo sip
+		sip)
+			echo sipbuild.api
+			;;
+		uv-build)
+			echo uv_build
 			;;
 		*)
-			die "Unknown backend: ${backend}"
+			die "Unknown DISTUTILS_USE_PEP517 key: ${key}"
 			;;
 	esac
 }
@@ -1111,65 +1141,61 @@ _distutils-r1_backend_to_key() {
 _distutils-r1_get_backend() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local build_backend legacy_fallback
+	local build_backend
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
 		build_backend=$("${EPYTHON}" -m gpep517 get-backend)
 	fi
-	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
-		-f setup.py ]]
-	then
-		# use the legacy setuptools backend as a fallback
-		build_backend=setuptools.build_meta:__legacy__
-		legacy_fallback=1
-	fi
 	if [[ -z ${build_backend} ]]; then
-		die "Unable to obtain build-backend from pyproject.toml"
+		if [[ ${DISTUTILS_USE_PEP517} == setuptools && -f setup.py ]]
+		then
+			# use the legacy setuptools backend as a fallback
+			echo setuptools.build_meta:__legacy__
+			return
+		else
+			die "Unable to obtain build-backend from pyproject.toml"
+		fi
 	fi
 
-	if [[ ${DISTUTILS_USE_PEP517} != standalone ]]; then
-		# verify whether DISTUTILS_USE_PEP517 was set correctly
-		local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
-		if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
-			eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
-			eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
-			eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
-			eerror "(backend: ${build_backend})"
-			die "DISTUTILS_USE_PEP517 value incorrect"
-		fi
+	if [[ ${DISTUTILS_USE_PEP517} == standalone ]]; then
+		echo "${build_backend}"
+		return
+	fi
 
-		# fix deprecated backends up
-		local new_backend=
+	# verify that the ebuild correctly specifies the build backend
+	local expected_backend=$(_distutils-r1_key_to_backend "${DISTUTILS_UPSTREAM_PEP517}")
+	if [[ ${expected_backend} != ${build_backend} ]]; then
+		# special-case deprecated backends
 		case ${build_backend} in
 			flit.buildapi)
-				new_backend=flit_core.buildapi
 				;;
 			pdm.pep517.api)
-				new_backend=pdm.backend
 				;;
 			poetry.masonry.api)
-				new_backend=poetry.core.masonry.api
 				;;
 			setuptools.build_meta:__legacy__)
-				# this backend should only be used as implicit fallback
-				[[ ! ${legacy_fallback} ]] &&
-					new_backend=setuptools.build_meta
 				;;
+			uv)
+				;;
+			*)
+				eerror "DISTUTILS_UPSTREAM_PEP517 does not match pyproject.toml!"
+				eerror "  DISTUTILS_UPSTREAM_PEP517=${DISTUTILS_USE_PEP517}"
+				eerror "  implies backend: ${expected_backend}"
+				eerror "   pyproject.toml: ${build_backend}"
+				die "DISTUTILS_USE_PEP517 value incorrect"
 		esac
 
-		if [[ -n ${new_backend} ]]; then
-			if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
-				eqawarn "${build_backend} backend is deprecated.  Please see:"
-				eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
-				eqawarn "The eclass will be using ${new_backend} instead."
-				> "${T}"/.distutils_deprecated_backend_warned || die
-			fi
-			build_backend=${new_backend}
+		# if we didn't die, we're dealing with a deprecated backend
+		if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
+			eqawarn "${build_backend} backend is deprecated.  Please see:"
+			eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
+			eqawarn "The project should use ${expected_backend} instead."
+			> "${T}"/.distutils_deprecated_backend_warned || die
 		fi
 	fi
 
-	echo "${build_backend}"
+	echo "$(_distutils-r1_key_to_backend "${DISTUTILS_USE_PEP517}")"
 }
 
 # @FUNCTION: distutils_wheel_install
@@ -1220,6 +1246,8 @@ distutils_wheel_install() {
 		-o -path '*.dist-info/licenses' \
 		-o -path '*.dist-info/zip-safe' \
 		\) -delete || die
+
+	_DISTUTILS_WHL_INSTALLED=1
 }
 
 # @VARIABLE: DISTUTILS_WHEEL_PATH
@@ -1258,6 +1286,7 @@ distutils_pep517_install() {
 	fi
 
 	# set it globally in case we were using "standalone" wrapper
+	local -x FLIT_ALLOW_INVALID=1
 	local -x HATCH_METADATA_CLASSIFIERS_NO_VERIFY=1
 	local -x VALIDATE_PYPROJECT_NO_NETWORK=1
 	local -x VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS=1
@@ -1457,67 +1486,66 @@ distutils-r1_python_compile() {
 
 	_python_check_EPYTHON
 
-	case ${DISTUTILS_USE_PEP517:-unset} in
-		no)
-			return
-			;;
-		unset)
-			# legacy mode
-			_distutils-r1_copy_egg_info
-			esetup.py build -j "$(makeopts_jobs "${MAKEOPTS} ${*}")" "${@}"
-			;;
-		*)
-			# we do this for all build systems, since other backends
-			# and custom hooks may wrap setuptools
-			mkdir -p "${BUILD_DIR}" || die
-			local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
-			cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
-				[build]
-				build_base = ${BUILD_DIR}/build
+	[[ ${DISTUTILS_USE_PEP517} == no ]] && return
 
-				[build_ext]
-				parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
-			EOF
-			;;
-	esac
-
-	if [[ ${DISTUTILS_USE_PEP517} ]]; then
-		if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
-			local whl
-			for whl in "${!DISTUTILS_WHEELS[@]}"; do
-				# use only wheels corresponding to the current directory
-				if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
-					continue
-				fi
-
-				# 1. Use pure Python wheels only if we're not expected
-				# to build extensions.  Otherwise, we may end up
-				# not building the extension at all when e.g. PyPy3
-				# is built without one.
-				#
-				# 2. For CPython, we can reuse stable ABI wheels.  Note
-				# that this relies on the assumption that we're building
-				# from the oldest to the newest implementation,
-				# and the wheels are forward-compatible.
-				if [[
-					( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
-					(
-						${EPYTHON} == python* &&
-						# freethreading does not support stable ABI
-						# at the moment
-						${EPYTHON} != *t &&
-						${whl} == *-abi3-*
-					)
-				]]; then
-					distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
-					return
-				fi
-			done
-		fi
-
-		distutils_pep517_install "${BUILD_DIR}/install"
-		DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
+	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+		# legacy mode
+		_distutils-r1_copy_egg_info
+		esetup.py build -j "$(makeopts_jobs "${MAKEOPTS} ${*}")" "${@}"
+		return
 	fi
+
+	# we do this for all build systems, since other backends
+	# and custom hooks may wrap setuptools
+	#
+	# we are appending a dynamic component so that
+	# distutils-r1_python_compile can be called multiple
+	# times and don't end up combining resulting packages
+	mkdir -p "${BUILD_DIR}" || die
+	local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
+	cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
+		[build]
+		build_base = ${BUILD_DIR}/build${#DISTUTILS_WHEELS[@]}
+
+		[build_ext]
+		parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
+	EOF
+
+	if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
+		local whl
+		for whl in "${!DISTUTILS_WHEELS[@]}"; do
+			# use only wheels corresponding to the current directory
+			if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
+				continue
+			fi
+
+			# 1. Use pure Python wheels only if we're not expected
+			# to build extensions.  Otherwise, we may end up
+			# not building the extension at all when e.g. PyPy3
+			# is built without one.
+			#
+			# 2. For CPython, we can reuse stable ABI wheels.  Note
+			# that this relies on the assumption that we're building
+			# from the oldest to the newest implementation,
+			# and the wheels are forward-compatible.
+			if [[
+				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+				(
+					${EPYTHON} == python* &&
+					# freethreading does not support stable ABI
+					# at the moment
+					${EPYTHON} != *t &&
+					${whl} == *-abi3-*
+				)
+			]]; then
+				distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
+				return
+			fi
+		done
+	fi
+
+	distutils_pep517_install "${BUILD_DIR}/install"
+	DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -1984,6 +2012,11 @@ _distutils-r1_compare_installed_files() {
 # it adjusts the install tree for venv-style usage.
 _distutils-r1_post_python_compile() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ! ${_DISTUTILS_WHL_INSTALLED} && ${DISTUTILS_USE_PEP517:-no} != no ]]
+	then
+		die "No wheel installed in python_compile(), did you call distutils-r1_python_compile?"
+	fi
 
 	local root=${BUILD_DIR}/install
 	if [[ ${DISTUTILS_USE_PEP517} && -d ${root} ]]; then
