@@ -5,13 +5,7 @@
 # Been failing to build for a long time for musl with modern compilers,
 # so mask until there is a proper fix. Note that this does not disable
 # v4l support entirely (always enabled), only libv4l use (bug #911499).
-#
-# Old ebuilds had a different meaning for USE=v4l (has *both* a libv4l
-# and v4l) and it should not be masked, can be removed after cleanup.
 media-video/ffmpeg v4l
-=media-video/ffmpeg-4.4.5-r1 libv4l -v4l
-=media-video/ffmpeg-6.1.2-r0 libv4l -v4l
-=media-video/ffmpeg-7.1-r0 libv4l -v4l
 media-video/ffmpeg-compat v4l
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)

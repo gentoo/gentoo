@@ -156,7 +156,7 @@ media-libs/libavif rav1e
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # Vulkan is not available here
-media-video/ffmpeg glslang shaderc vulkan
+media-video/ffmpeg shaderc vulkan
 media-video/ffmpeg-compat shaderc vulkan
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-22)

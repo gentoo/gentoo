@@ -108,11 +108,6 @@ sys-kernel/installkernel -grub
 # Needs USE=video_cards_amdgpu, currently masked on this arch
 >=sys-apps/fwupd-1.9.10 amdgpu
 
-# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
-# media-libs/shaderc in not keyworded
-media-video/ffmpeg shaderc
-media-video/ffmpeg-compat shaderc
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo
@@ -399,10 +394,6 @@ net-print/hplip -scanner kde
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.16 upnp-av
-
-# Alexis Ballier <aballier@gentoo.org> (2015-11-14)
-# MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
-media-video/ffmpeg -mmal
 
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.

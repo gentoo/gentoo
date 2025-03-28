@@ -190,10 +190,6 @@ dev-cpp/eigen test
 # net-libs/libotr fails tests, #918448
 net-irc/irssi otr
 
-# matoro <matoro_gentoo@matoro.tk> (2024-02-28)
-# dev-util/glslang not keyworded here
-media-video/ffmpeg glslang
-
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here
 dev-lang/php capstone

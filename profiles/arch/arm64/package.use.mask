@@ -138,11 +138,6 @@ dev-python/qtpy -pdfium
 # app-crypt/rpm-sequoia is keyworded here.
 app-arch/rpm -sequoia
 
-# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
-# media-libs/shaderc in not keyworded
-media-video/ffmpeg shaderc
-media-video/ffmpeg-compat shaderc
-
 # Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
 # Unmask on specific arches where it's available.
 media-video/obs-studio -mpegts
@@ -372,7 +367,6 @@ net-wireless/kismet ubertooth
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-27)
 # ffmpeg does support 64 bit neon
-media-video/ffmpeg -cpu_flags_arm_neon
 media-video/ffmpeg-chromium -cpu_flags_arm_neon
 net-misc/sunshine -cpu_flags_arm_neon
 

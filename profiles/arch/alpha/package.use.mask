@@ -104,10 +104,6 @@ dev-util/perf bpf
 dev-lang/php capstone
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-24)
-# dev-util/glslang not keyworded here.
-media-video/ffmpeg glslang
-
-# matoro <matoro_gentoo@matoro.tk> (2023-11-24)
 # media-libs/shaderc not keyworded here.
 media-video/ffmpeg shaderc
 media-video/ffmpeg-compat shaderc

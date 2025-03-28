@@ -36,8 +36,3 @@ dev-libs/mongo-c-driver test
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-12-26)
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
-
-# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
-# media-libs/shaderc in not keyworded
-media-video/ffmpeg shaderc
-media-video/ffmpeg-compat shaderc

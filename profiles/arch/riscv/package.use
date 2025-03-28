@@ -4,7 +4,7 @@
 # James Le Cuirot <chewi@gentoo.org> (2023-12-16)
 # Apply additional FFmpeg patches for efficient playback on some SoCs.
 media-tv/kodi soc
-media-video/ffmpeg libdrm soc
+media-video/ffmpeg soc
 media-video/ffmpeg-compat soc
 media-video/mpv soc
 
