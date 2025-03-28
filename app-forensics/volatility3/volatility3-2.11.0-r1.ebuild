@@ -23,7 +23,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="Volatility-1.0"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="crypt disasm jsonschema leechcore snappy test yara"
 
 # We need to select *all* subslots of app-arch/snappy which select
