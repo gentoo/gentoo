@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Z. Liu <zhixu.liu@gmail.com> (2025-03-24)
+# Upstream considers that the usbreset could potentially damage hardware.
+# bug #948216
+sys-apps/usbutils usbreset
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
