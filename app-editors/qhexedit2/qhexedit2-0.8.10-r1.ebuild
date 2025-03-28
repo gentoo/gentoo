@@ -59,7 +59,13 @@ src_compile() {
 		export PATH="$(qt6_get_bindir):${PATH}"
 		python_build() {
 			pushd "${S}" || die
-			sip-build || die
+			# sip-build is not able to handle CFLAGS and CXXFLAGS
+			# so we need to pass them as QMAKE_CFLAGS and QMAKE_CXXFLAGS
+			# https://bugs.gentoo.org/952787
+			sip-build \
+				--qmake-setting "QMAKE_CFLAGS += ${CFLAGS}" \
+				--qmake-setting "QMAKE_CXXFLAGS += ${CXXFLAGS}" \
+				|| die
 			popd || die
 		}
 		python_foreach_impl run_in_build_dir python_build
