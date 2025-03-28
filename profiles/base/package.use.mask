@@ -6,6 +6,12 @@
 
 # New entries go on top.
 
+# Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
+# Upstream is dead and broken. All 'whatsapp' deps
+# will be last-rited on 2025-04-28.
+# Bug #952588 #952589
+net-im/spectrum2 whatsapp
+
 # Z. Liu <zhixu.liu@gmail.com> (2025-03-24)
 # Upstream considers that the usbreset could potentially damage hardware.
 # bug #948216

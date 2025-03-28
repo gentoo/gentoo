@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
+# Upstream is dead and broken. All 'whatsapp' deps
+# will be last-rited on 2025-04-28.
+# Bug #952588 #952589
+net-im/transwhat
+net-im/yowsup
+
 # Sam James <sam@gentoo.org> (2025-03-27)
 # Large-scale breakage (bug #951350).
 =dev-build/cmake-4*
