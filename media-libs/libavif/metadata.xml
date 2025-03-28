@@ -16,6 +16,7 @@
     <flag name="gdk-pixbuf">Build a gdk-pixbuf loader</flag>
     <flag name="rav1e">Enable support for the rav1e codec encoding</flag>
     <flag name="svt-av1">Enable support for the SVT-AV1 encoder</flag>
+    <flag name="libyuv">Enable fast YUV conversion via libyuv</flag>
   </use>
   <upstream>
     <bugs-to>https://github.com/AOMediaCodec/libavif/issues</bugs-to>

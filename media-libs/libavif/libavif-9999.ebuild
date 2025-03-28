@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
 LICENSE="BSD-2"
 # See bug #822336 re subslot
 SLOT="0/${PV}"
-IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 test"
+IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 libyuv test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( aom dav1d )"
 
@@ -33,6 +33,7 @@ DEPEND="
 	)
 	rav1e? ( >=media-video/rav1e-0.5.1:=[capi] )
 	svt-av1? ( >=media-libs/svt-av1-0.9.1:= )
+	libyuv? ( media-libs/libyuv:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -46,14 +47,12 @@ multilib_src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DAVIF_CODEC_LIBGAV1=OFF
 
-		# bug 916948
-		-DAVIF_LIBYUV=OFF
-
 		# Use system libraries.
 		-DAVIF_CODEC_AOM=$(usex aom SYSTEM OFF)
 		-DAVIF_CODEC_DAV1D=$(usex dav1d SYSTEM OFF)
 		-DAVIF_ZLIBPNG=SYSTEM
 		-DAVIF_JPEG=SYSTEM
+		-DAVIF_LIBYUV=$(usex libyuv SYSTEM OFF)
 
 		-DAVIF_BUILD_GDK_PIXBUF=$(usex gdk-pixbuf ON OFF)
 

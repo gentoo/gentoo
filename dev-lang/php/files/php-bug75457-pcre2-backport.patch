@@ -1,0 +1,22 @@
+From 69480be12afb4040c6dd9275b7836231cdd6f6bb Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Wed, 12 Mar 2025 07:48:05 +0100
+Subject: [PATCH] Relax test expectation for pcre2lib 10.45 Using
+ e92848789acd8aa5cf32fedb519ba9378ac64e02
+
+Co-authored-by: Niels Dossche <7771979+nielsdos@users.noreply.github.com>
+---
+ ext/pcre/tests/bug75457.phpt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ext/pcre/tests/bug75457.phpt b/ext/pcre/tests/bug75457.phpt
+index ee5ab162f8a6c..1401b25ff6fb7 100644
+--- a/ext/pcre/tests/bug75457.phpt
++++ b/ext/pcre/tests/bug75457.phpt
+@@ -6,5 +6,5 @@ $pattern = "/(((?(?C)0?=))(?!()0|.(?0)0)())/";
+ var_dump(preg_match($pattern, "hello"));
+ ?>
+ --EXPECTF--
+-Warning: preg_match(): Compilation failed: assertion expected after (?( or (?(?C) at offset 8 in %sbug75457.php on line %d
++Warning: preg_match(): Compilation failed:%r( atomic|)%r assertion expected after (?( or (?(?C) at offset 8 in %sbug75457.php on line %d
+ bool(false)

@@ -1,0 +1,48 @@
+# executing user
+DERPER_USER=derper
+
+# executing group
+DERPER_GROUP=derper
+
+# Home dir for derper
+HOMEDIR=/var/lib/derper
+
+# server HTTPS listen address, in form ":port", "ip:port", or for IPv6 "[ip]:port".
+# If the IP is omitted, it defaults to all interfaces.
+#  If you want to listen to 443 or other well-known port
+#  you should set the executing user to the 'root'
+ADDR=":9781"
+
+# The port on which to serve HTTP.
+# -1 means disabled
+HTTP_PORT="-1"
+
+# servername for TLS cert
+HOSTNAME="derp.example.com"
+
+# mode for getting a cert.
+#  If you want to change to the 'letsencrypt' mode,
+#  the DERP server should be listened on 443 port, and
+#  the http port 80 should be listened also at the first time
+CERTMODE="manual"
+# cert dir
+#   when in the 'manual' mode, the default cert file and private key
+#   will be read via path:
+#     CERTDIR/HOSTNAME.crt
+#     CERTDIR/HOSTNAME.key
+#   and all non [a-zA-Z0-9\.-] characters will be removed
+#   from the HOSTNAME
+CERTDIR="/var/lib/derper/certs"
+# The custom cert and key file path,
+# simplify the certificate deployment process in manual mode,
+# the two files will overwrite the default cert and key files
+# everytime when derper service starts.
+#CERTFILE=
+#KEYFILE=
+
+# extra arguments passed to the derper
+# run derper --help to get help
+#   -verify-clients
+#           verify clients to this DERP server through a local tailscaled instance.
+FLAGS="-verify-clients"
+

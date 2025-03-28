@@ -1,0 +1,15 @@
+[Unit]
+Description=Kubernetes Scheduler service
+Documentation=https://kubernetes.io/docs/concepts/architecture/#kube-scheduler https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/kube-scheduler
+Restart=on-failure
+KillMode=process
+User=kube-scheduler
+Group=kube-scheduler
+
+[Install]
+WantedBy=multi-user.target

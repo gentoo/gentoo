@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="torch">Support pytorch</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">huggingface/transformers</remote-id>
+		<remote-id type="pypi">transformers</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -112,11 +112,15 @@ DEPEND="
 	X? ( x11-base/xorg-proto )
 	dvb? ( sys-kernel/linux-headers )
 	nvenc? ( media-libs/nv-codec-headers )
+	vaapi? (
+		egl? ( x11-libs/libdrm )
+	)
 	vulkan? ( dev-util/vulkan-headers )
 	wayland? ( >=dev-libs/wayland-protocols-1.41 )
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	>=dev-build/meson-1.3.0
 	virtual/pkgconfig
 	cli? ( dev-python/docutils )
 	wayland? ( dev-util/wayland-scanner )
@@ -135,14 +139,6 @@ src_configure() {
 			append-cppflags -DNDEBUG # treated specially
 		fi
 	fi
-
-	mpv_feature_multi() {
-		local use set
-		for use in ${1} ${2}; do
-			use ${use} || set=disabled
-		done
-		echo -D${3-${2}}=${set-enabled}
-	}
 
 	local emesonargs=(
 		$(meson_use cli cplayer)
@@ -199,34 +195,14 @@ src_configure() {
 		-Dgl=$(use egl || use libmpv || use opengl &&
 			echo enabled || echo disabled)
 		$(meson_feature egl)
-		$(mpv_feature_multi egl X egl-x11)
-		$(mpv_feature_multi egl drm gbm) # gbm is only used by egl-drm
-		$(mpv_feature_multi egl drm egl-drm)
-		$(mpv_feature_multi egl wayland egl-wayland)
 		$(meson_feature libmpv plain-gl)
-		$(mpv_feature_multi opengl X gl-x11)
-		$(mpv_feature_multi opengl aqua gl-cocoa)
 
 		$(meson_feature vulkan)
 
 		# hardware decoding
 		$(meson_feature nvenc cuda-hwaccel)
-		$(meson_feature nvenc cuda-interop)
-
 		$(meson_feature vaapi)
-		$(mpv_feature_multi vaapi X vaapi-x11)
-		$(mpv_feature_multi vaapi drm vaapi-drm)
-		$(mpv_feature_multi vaapi wayland vaapi-wayland)
-
 		$(meson_feature vdpau)
-		$(mpv_feature_multi vdpau opengl vdpau-gl-x11)
-
-		$(mpv_feature_multi aqua opengl videotoolbox-gl)
-
-		# notable options left to automagic
-		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
-		#vulkan-interop: USE="vulkan" + >=ffmpeg-6.1
-		# TODO?: perhaps few more similar compound options should be left auto
 	)
 
 	meson_src_configure

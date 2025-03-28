@@ -151,6 +151,9 @@ RDEPEND="
 # 	)
 # "
 
+# Note: "docs" is not an actual directory under "S", they are actually
+# under each modules, see python_compile_all redefinition, but keep
+# this instruction enabled for dependency configuration.
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
@@ -204,6 +207,13 @@ src_configure() {
 }
 
 src_compile() {
+	# Used for building documentation
+	# Stores temporary modules docs in each subdirectories, will be used for HTML_DOCS
+	local temp_docs="${T}/docs"
+	use doc && {
+		mkdir "${temp_docs}" || die
+	}
+
 	local S_BACKUP="${S}"
 
 	local certbot_dirs=()
@@ -225,6 +235,26 @@ src_compile() {
 
 	# Restore S
 	S="${S_BACKUP}"
+
+	use doc && {
+		# Replace HTML_DOCS with one single entry to avoid merging
+		HTML_DOCS=( "${temp_docs}" )
+	}
+}
+
+python_compile_all() {
+	# There is no documentation in certbot-apache or certbot-nginx.
+	if [[ "${dir}" = "certbot-apache" ]] || [[ "${dir}" = "certbot-nginx" ]]; then
+		return
+	fi
+
+	# Used to build documentation
+	use doc && {
+		sphinx_compile_all
+
+		# Subdirectory "_build/html" from build_sphinx in eclass/python-utils-r1.eclass
+		mv "${_DISTUTILS_SPHINX_SUBDIR}/_build/html" "${temp_docs}/${dir}" || die
+	}
 }
 
 python_test() {

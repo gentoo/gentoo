@@ -107,7 +107,6 @@ dmi
 # Stuff we don't want
 mpi
 lasi
-hardened
 pdfannotextractor
 mssql
 

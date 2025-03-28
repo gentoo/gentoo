@@ -1,0 +1,97 @@
+Fix signal handler function types, switch to canonical way to put time
+into utmp struct.
+https://bugs.gentoo.org/919361
+--- a/login/login.c
++++ b/login/login.c
+@@ -90,7 +90,7 @@
+ #endif
+ 
+ RETSIGTYPE
+-sig_int()
++sig_int(int ignored) //signal handler, parameter ignored
+ {
+ 	return;
+ }
+--- a/su/su.c
++++ b/su/su.c
+@@ -76,7 +76,7 @@
+ }
+ 
+ RETSIGTYPE
+-sig_winch()
++sig_winch(int ignored) //sighandler, argument is ignored
+ {
+ 	int saved_errno = errno;
+ 
+--- a/sud/main.c
++++ b/sud/main.c
+@@ -63,17 +63,17 @@
+ static void sud_opts(int, char **);
+ static void usage(char *);
+ static int sud_dispatch(int);
+-static RETSIGTYPE sud_sigchld();
+-static RETSIGTYPE sud_sighup();
++static RETSIGTYPE sud_sigchld(int);
++static RETSIGTYPE sud_sighup(int);
+ 
+ static RETSIGTYPE
+-sud_sigchld()
++sud_sigchld(int ignored) //signal handler, parameter ignored
+ {
+ 	have_sigchld = 1;
+ }
+ 
+ static RETSIGTYPE
+-sud_sighup()
++sud_sighup(int ignored) //signal handler, parameter ignored
+ {
+ 	have_sighup++;
+ }
+--- a/sud/service.c
++++ b/sud/service.c
+@@ -54,7 +54,7 @@
+ static int 	sun_desc;
+ static int 	pipechld[2] 	= { -1, -1 };
+ 
+-static RETSIGTYPE	service_sigchld();
++static RETSIGTYPE	service_sigchld(int);
+ 
+ int
+ service_init(struct conf *cfp)
+@@ -107,7 +107,7 @@
+ }
+ 
+ static RETSIGTYPE
+-service_sigchld()
++service_sigchld(int ignored) //signal handler, value ignored
+ {
+ 	int saved_errno = errno;
+ 
+--- a/sud/interactive.c
++++ b/sud/interactive.c
+@@ -68,10 +68,10 @@
+ static int pipechld[2] = { -1, -1 };
+ 
+ static int select_fd(struct conf *, int, int, int, int);
+-static RETSIGTYPE sig_chld(); 
++static RETSIGTYPE sig_chld(int); 
+ 
+ static RETSIGTYPE
+-sig_chld()
++sig_chld(int ignored) //sighandler, parameter ignored
+ {
+ 	int saved_errno = errno;
+ 
+@@ -317,8 +317,10 @@
+ 		if (cfp->uthost)
+ 			(void)strncpy(ut.ut_host, cfp->uthost, 
+ 				sizeof(ut.ut_host));
+-	
+-		(void)time(&ut.ut_time);	
++		struct timeval tv;
++		gettimeofday(&tv, NULL);
++		ut.ut_tv.tv_sec = tv.tv_sec;
++		ut.ut_tv.tv_usec = tv.tv_usec;
+ 	}
+ 
+         /*

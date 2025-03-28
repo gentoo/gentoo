@@ -162,7 +162,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	<media-libs/amf-headers-1.4.35
+	media-libs/amf-headers
 	=media-libs/nv-codec-headers-12*
 	wayland? ( dev-libs/wayland-protocols )
 "
@@ -178,6 +178,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-custom-ffmpeg.patch
 	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
+	"${FILESDIR}"/${PN}-0.23.1-amf.patch
 	"${FILESDIR}"/${PN}-find-npm.patch
 	"${FILESDIR}"/${PN}-miniupnpc.patch
 	"${FILESDIR}"/${PN}-boost-1.86.patch

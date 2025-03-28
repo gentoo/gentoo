@@ -59,7 +59,7 @@ DESCRIPTION="Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html"
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
 	${PATCH_URIS[@]}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)"
@@ -441,6 +441,15 @@ src_test() {
 	fi
 
 	cp "${FILESDIR}"/spidermonkey-${SLOT}-known-test-failures.txt "${T}"/known_test_failures.list || die
+
+	if use ppc ; then
+		echo "non262/extensions/reviver-mutates-holder-object-nonnative.js" >> "${T}"/known_test_failures.list
+		echo "non262/extensions/typedarray-set-detach.js" >> "${T}"/known_test_failures.list
+	fi
+
+	if use ppc64 ; then
+		echo "test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js" >> "${T}"/known_test_failures.list
+	fi
 
 	if use x86 ; then
 		echo "non262/Intl/DateTimeFormat/timeZone_version.js" >> "${T}"/known_test_failures.list

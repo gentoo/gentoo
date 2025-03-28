@@ -1,0 +1,50 @@
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/5846d12ea156c961772a44163a42987ef35c1ab6
+
+From 5846d12ea156c961772a44163a42987ef35c1ab6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Tue, 18 Feb 2025 19:57:22 +0100
+Subject: [PATCH] wpctl: fix types in variadic arguments
+
+`wp_object_manager_add_interest()` passes the format string
+and the arguments after that to `g_variant_new()`, which
+requires a 32-bit integer for "u". Passing a 64-bit integer
+will cause problems on certain ABIs.
+
+Furthermore, remove the metadata related interest declaration
+from `set_default_prepare()` since the "set-default" command
+does not access metadata directly, it uses the "default-nodes-api"
+plugin.
+
+Fixes: 7784cfad92cfa4 ("wpctl: support @DEFAULT_{AUDIO,VIDEO}_{SINK,SOURCE}@ as ID ")
+Fixes #773
+---
+ src/tools/wpctl.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/tools/wpctl.c b/src/tools/wpctl.c
+index 38d730c8..0e671109 100644
+--- a/src/tools/wpctl.c
++++ b/src/tools/wpctl.c
+@@ -753,7 +753,7 @@ inspect_print_object (WpCtl * self, WpProxy * proxy, guint nest_level)
+     if (cmdline.inspect.show_referenced && nest_level == 0 &&
+         key_is_object_reference (prop_item->key))
+     {
+-      guint id = (guint) strtol (prop_item->value, NULL, 10);
++      guint32 id = (guint32) strtol (prop_item->value, NULL, 10);
+       g_autoptr (WpProxy) refer_proxy =
+           wp_object_manager_lookup (self->om, WP_TYPE_GLOBAL_PROXY,
+               WP_CONSTRAINT_TYPE_G_PROPERTY, "bound-id", "=u", id, NULL);
+@@ -833,10 +833,8 @@ set_default_prepare (WpCtl * self, GError ** error)
+ {
+   wp_object_manager_add_interest (self->om, WP_TYPE_NODE,
+       WP_CONSTRAINT_TYPE_PW_GLOBAL_PROPERTY,
+-      "object.id", "=u", cmdline.set_default.id,
++      "object.id", "=u", (guint32) cmdline.set_default.id,
+       NULL);
+-  wp_object_manager_request_object_features (self->om, WP_TYPE_METADATA,
+-      WP_OBJECT_FEATURES_ALL);
+   wp_object_manager_request_object_features (self->om, WP_TYPE_NODE,
+       WP_PIPEWIRE_OBJECT_FEATURES_MINIMAL);
+   return TRUE;
+-- 
+GitLab

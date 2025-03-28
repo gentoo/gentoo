@@ -30,10 +30,6 @@ sys-fs/mdadm -corosync
 # dev-libs/rocdbgapi is not yet marked stable
 dev-debug/gdb rocm
 
-# Matt Jolly <kangie@gentoo.org> (2025-01-11)
-# Stable-mask until mrustc is stabilised
-dev-lang/rust mrustc-bootstrap
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-09-27)
 # dev-qt/qtremoteobjects:6 has not been stabilized yet.
 dev-python/pyqt6 remoteobjects
@@ -58,10 +54,6 @@ www-apps/hugo test
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been stabalized on this arch yet
 dev-db/spatialite rttopo
-
-# Matt Jolly <kangie@gentoo.org> (2023-08-10)
-# net-libs/ngtcp2 is not marked stable
-net-misc/curl nghttp3
 
 # Sam James <sam@gentoo.org> (2023-05-15)
 # net-libs/rustls-ffi is not marked stable

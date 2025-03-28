@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -375,10 +375,15 @@ unpack_7z() {
 	local p7z=$(find_unpackable_file "$1")
 	unpack_banner "${p7z}"
 
+	local cmd7z="7z"
+	if command -v 7zz 1>/dev/null 2>&1; then
+		cmd7z="7zz"
+	fi
+
 	# warning: putting local and command substitution in a single call
 	# discards the exit status!
 	local output
-	output="$(7z x -y "${p7z}")"
+	output="$($cmd7z x -y "${p7z}")"
 	if [ $? -ne 0 ]; then
 		echo "${output}" >&2
 		die "unpacking ${p7z} failed (arch=unpack_7z)"
@@ -610,7 +615,13 @@ unpacker_src_uri_depends() {
 		*.rar)
 			deps[rar]="app-arch/unrar" ;;
 		*.7z)
-			deps[7z]="app-arch/p7zip" ;;
+			deps[7z]="
+				|| (
+					app-arch/7zip
+					app-arch/p7zip
+				)
+			"
+			;;
 		*.xz)
 			deps[xz]="app-arch/xz-utils" ;;
 		*.zip)

@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="+clang debug static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
@@ -109,7 +109,7 @@ multilib_src_configure() {
 			-DLIBCXX_ENABLE_STATIC=ON
 			-DLIBCXX_CXX_ABI=libcxxabi
 			-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
-			-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+			-DLIBCXX_HAS_MUSL_LIBC=$(llvm_cmake_use_musl)
 			-DLIBCXX_HAS_GCC_S_LIB=OFF
 			-DLIBCXX_INCLUDE_TESTS=OFF
 			-DLIBCXX_INCLUDE_BENCHMARKS=OFF

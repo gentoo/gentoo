@@ -1,0 +1,75 @@
+Port to C23, minimal fix to enable rudimentary test
+Correct function declaration, use correct type for Window:
+X expects that it's value everywhere, with pointer already inside
+Return 0 when asked for help, not default 1
+https://bugs.gentoo.org/943913
+https://bugs.gentoo.org/880965
+--- a/wmgeneral/wmgeneral.c
++++ b/wmgeneral/wmgeneral.c
+@@ -46,7 +46,7 @@
+ char		*Geometry = "";
+ Pixmap		pixmask;
+ Display		*display;
+-Window		*Root;
++Window		Root;
+ int			d_depth;
+ GC			NormalGC;
+ XpmIcon		wmgen;
+--- a/wmgeneral/wmgeneral.h
++++ b/wmgeneral/wmgeneral.h
+@@ -29,7 +29,7 @@
+ /*******************/
+ 
+ extern Display	*display;
+-extern Window	*Root;
++extern Window	Root;
+ extern int		d_depth;
+ extern GC		NormalGC;
+ extern XpmIcon	wmgen;
+--- a/wmMand/wmMand.c
++++ b/wmMand/wmMand.c
+@@ -124,8 +124,10 @@
+ int maxIterations;
+ LargeViewer largeViewProg = LARGEVIEWER_IM;
+ 
+-int WriteGIF();
+-
++typedef unsigned char byte;
++int WriteGIF(FILE *fp, byte *pic, int ptype, int w, int h, byte *rmap,
++                byte *gmap, byte *bmap, int numcols, int colorstyle,
++                char *comment);
+ 
+ /*
+  *	 main
+--- a/wmMand/xvgifwr.c
++++ b/wmMand/xvgifwr.c
+@@ -78,14 +78,9 @@
+ 
+ 
+ /*************************************************************/
+-int WriteGIF(fp, pic, ptype, w, h, rmap, gmap, bmap, numcols, colorstyle,
+-	     comment)
+-     FILE *fp;
+-     byte *pic;
+-     int   ptype, w,h;
+-     byte *rmap, *gmap, *bmap;
+-     int   numcols, colorstyle;
+-     char *comment;
++int WriteGIF(FILE *fp, byte *pic, int ptype, int w, int h, byte *rmap,
++		byte *gmap, byte *bmap, int numcols, int colorstyle,
++		char *comment)
+ {
+   int   RWidth, RHeight;
+   int   LeftOfs, TopOfs;
+--- a/wmMand/wmMand.c
++++ b/wmMand/wmMand.c
+@@ -392,6 +392,9 @@
+ 			printf("\t\E[1m-d, --delayzoom <number>\E[m\n\t\tset delay for autozooming with mouse (default %d, larger values give longer delay). Dependent on CPU cycle availability\n", autoZoomDelay);
+ 			printf("\t\E[1m-x, --xv\E[m\n\t\tuse xv to display large image instead of ImageMagic's display program\n");
+ 			printf("\t\E[1m-h, --help\E[m\n\t\tdisplay help screen\n");
++			if (!strcmp(argv[i], "--help") || !strcmp(argv[i] , "-h")) {
++				exit(0);
++			}
+ 			exit(1);
+ 		}
+ 	}

@@ -1,3 +1,5 @@
+https://github.com/lh3/bwa/pull/267
+
 --- a/rle.h
 +++ b/rle.h
 @@ -30,7 +30,7 @@

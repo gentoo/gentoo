@@ -240,10 +240,6 @@ src_install() {
 
 	python_optimize
 
-	# Workaround for bug #321111 to give GIMP the least
-	# precedence on PDF documents by default
-	mv "${ED}"/usr/share/applications/{,zzz-}gimp.desktop || die
-
 	find "${D}" -name '*.la' -type f -delete || die
 
 	# Create symlinks for Gimp exec in /usr/bin

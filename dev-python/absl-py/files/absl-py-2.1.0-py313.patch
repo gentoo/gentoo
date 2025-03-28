@@ -1,0 +1,60 @@
+From 78fb38cea7ffd1329f6455c997302529ce6fc6ce Mon Sep 17 00:00:00 2001
+From: Oleh Prypin <oprypin@google.com>
+Date: Wed, 11 Dec 2024 04:19:00 -0800
+Subject: [PATCH] Declare support for Python 3.13
+
+PiperOrigin-RevId: 705056014
+
+diff --git a/absl/flags/tests/argparse_flags_test.py b/absl/flags/tests/argparse_flags_test.py
+index 679a1cce..cfc364f0 100644
+--- a/absl/flags/tests/argparse_flags_test.py
++++ b/absl/flags/tests/argparse_flags_test.py
+@@ -227,7 +227,10 @@ def test_help_main_module_flags(self):
+     # Only the short name is shown in the usage string.
+     self.assertIn('[-s ABSL_STRING]', help_message)
+     # Both names are included in the options section.
+-    self.assertIn('-s ABSL_STRING, --absl_string ABSL_STRING', help_message)
++    if sys.version_info >= (3, 13):
++      self.assertIn(' -s, --absl_string ABSL_STRING', help_message)
++    else:
++      self.assertIn(' -s ABSL_STRING, --absl_string ABSL_STRING', help_message)
+     # Verify help messages.
+     self.assertIn('help for --absl_string=%.', help_message)
+     self.assertIn('<apple|orange>: help for --absl_enum.', help_message)
+diff --git a/absl/testing/tests/parameterized_test.py b/absl/testing/tests/parameterized_test.py
+index 609c5571..4c024927 100644
+--- a/absl/testing/tests/parameterized_test.py
++++ b/absl/testing/tests/parameterized_test.py
+@@ -1128,6 +1128,9 @@ def test_successful_execution(self):
+     self.assertEqual(2, res.testsRun)
+     self.assertTrue(res.wasSuccessful())
+ 
++  @unittest.skipIf(
++      sys.version_info >= (3, 13), 'makeSuite was removed in Python 3.13'
++  )
+   def test_metaclass_side_effects(self):
+     ts = unittest.makeSuite(self.MyParams, suiteClass=self.MySuite)
+ 
+diff --git a/absl/testing/tests/xml_reporter_test.py b/absl/testing/tests/xml_reporter_test.py
+index ba8a88f7..e0b61a98 100644
+--- a/absl/testing/tests/xml_reporter_test.py
++++ b/absl/testing/tests/xml_reporter_test.py
+@@ -85,14 +85,16 @@ def xml_escaped_exception_type(exception_type):
+ FAILURE_MESSAGE = r"""
+   <failure message="e" type="{}"><!\[CDATA\[Traceback \(most recent call last\):
+   File ".*xml_reporter_test\.py", line \d+, in get_sample_failure
+-    self.fail\(\'e\'\)
++    self.fail\(\'e\'\)(
++    ~~~~~~~~~\^\^\^\^\^)?
+ AssertionError: e
+ \]\]></failure>""".format(xml_escaped_exception_type(AssertionError))
+ 
+ ERROR_MESSAGE = r"""
+   <error message="invalid&#x20;literal&#x20;for&#x20;int\(\)&#x20;with&#x20;base&#x20;10:&#x20;(&apos;)?a(&apos;)?" type="{}"><!\[CDATA\[Traceback \(most recent call last\):
+   File ".*xml_reporter_test\.py", line \d+, in get_sample_error
+-    int\('a'\)
++    int\('a'\)(
++    ~~~\^\^\^\^\^)?
+ ValueError: invalid literal for int\(\) with base 10: '?a'?
+ \]\]></error>""".format(xml_escaped_exception_type(ValueError))
+ 

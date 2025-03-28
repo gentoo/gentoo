@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="examples image +sound"
 
 RDEPEND="
@@ -47,6 +47,7 @@ BDEPEND="
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
 		media-libs/fontconfig
+		x11-base/xorg-server[-minimal]
 	)
 "
 

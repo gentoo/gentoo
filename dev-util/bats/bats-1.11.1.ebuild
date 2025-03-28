@@ -19,6 +19,10 @@ KEYWORDS="amd64 arm arm64 hppa ~ppc ppc64 ~riscv ~sparc x86"
 DEPEND="app-shells/bash:*"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-bash-5.3.patch
+)
+
 src_test() {
 	local my_jobs=$(get_nproc)
 	if ! command -v parallel >/dev/null; then

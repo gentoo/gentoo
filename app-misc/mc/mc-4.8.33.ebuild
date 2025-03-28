@@ -7,8 +7,8 @@ inherit flag-o-matic
 
 MY_P="${P/_/-}"
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="https://midnight-commander.org"
-SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
+HOMEPAGE="https://midnight-commander.org https://github.com/MidnightCommander/mc"
+SRC_URI="https://ftp.osuosl.org/pub/midnightcommander/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
@@ -87,7 +87,7 @@ src_configure() {
 }
 
 src_test() {
-	# Bug #759466 - tracked upstream at https://midnight-commander.org/ticket/4643
+	# Bug #759466 - tracked upstream at https://github.com/MidnightCommander/mc/issues/4643
 	if [[ ${EUID} == 0 ]] ; then
 		ewarn "You are emerging ${PN} as root with 'userpriv' disabled."
 		ewarn "Expect some test failures, or emerge with 'FEATURES=userpriv'!"

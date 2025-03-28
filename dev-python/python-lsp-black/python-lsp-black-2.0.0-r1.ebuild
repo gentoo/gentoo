@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	>=dev-python/python-lsp-server-1.4.0[${PYTHON_USEDEP}]
@@ -37,6 +37,12 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/python-lsp/python-lsp-black/pull/56
+	# https://github.com/python-lsp/python-lsp-black/pull/59
+	"${FILESDIR}/${P}-test.patch"
+)
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1

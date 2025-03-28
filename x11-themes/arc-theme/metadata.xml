@@ -15,8 +15,7 @@
 		<flag name="gtk4">Install GTK+4 theme</flag>
 		<flag name="mate">Install Metacity theme for <pkg>mate-base/mate</pkg></flag>
 		<flag name="gnome-shell">Install theme for <pkg>gnome-base/gnome-shell</pkg></flag>
-		<flag name="pre-rendered" restrict="&lt;x11-themes/arc-theme-20220105">Avoid <pkg>media-gfx/inkscape</pkg> and <pkg>media-gfx/optipng</pkg> dependencies by using pre-rendered PNGs</flag>
-		<flag name="transparency" restrict="&gt;=x11-themes/arc-theme-20220105">Enable transparency</flag>
+		<flag name="transparency">Enable transparency</flag>
 		<flag name="xfce">Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
 	</use>
 </pkgmetadata>

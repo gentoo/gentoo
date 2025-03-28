@@ -56,7 +56,7 @@ CDEPEND="
 	lapack? ( virtual/lapack )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi[cxx] )
-	nnpot? ( sci-libs/caffe2[cuda=,opencl=] )
+	nnpot? ( sci-ml/caffe2[cuda=,opencl=] )
 	sci-libs/lmfit:=
 	>=dev-cpp/muParser-2.3:=
 	${PYTHON_DEPS}

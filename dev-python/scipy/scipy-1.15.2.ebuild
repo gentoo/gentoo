@@ -6,7 +6,7 @@ EAPI=8
 FORTRAN_NEEDED=fortran
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic fortran-2 distutils-r1
@@ -29,7 +29,7 @@ else
 	inherit pypi
 
 	# Upstream is often behind with doc updates
-	DOC_PV=1.15.1
+	DOC_PV=1.15.2
 
 	SRC_URI+="
 		doc? (
@@ -117,21 +117,9 @@ python_test() {
 		scipy/datasets/tests/test_data.py::TestDatasets::test_face
 		scipy/datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
 
-		# Precision issue with diff. blas?
-		scipy/optimize/tests/test__basinhopping.py::Test_Metropolis::test_gh7799
-
 		# Crashes with assertion, not a regression
 		# https://github.com/scipy/scipy/issues/19321
 		scipy/signal/tests/test_signaltools.py::test_lfilter_bad_object
-
-		# timeouts
-		scipy/sparse/linalg/tests/test_propack.py::test_examples
-		# hang or incredibly slow
-		scipy/optimize/tests/test_lsq_linear.py::TestBVLS::test_large_rank_deficient
-		scipy/optimize/tests/test_lsq_linear.py::TestTRF::test_large_rank_deficient
-
-		# TODO
-		scipy/optimize/tests/test_minimize_constrained.py::TestTrustRegionConstr::test_list_of_problems
 	)
 	local EPYTEST_IGNORE=()
 
@@ -142,18 +130,10 @@ python_test() {
 	fi
 
 	case ${EPYTHON} in
-		pypy3)
+		pypy3*)
 			EPYTEST_DESELECT+=(
-				# fd leaks in tests
-				# https://github.com/scipy/scipy/issues/19553
-				scipy/fft/_pocketfft/tests/test_real_transforms.py
 				# TODO
 				'scipy/special/tests/test_data.py::test_boost[<Data for expi: expinti_data_long_ipp-expinti_data_long>]'
-				# missing dict.__ror__
-				# https://github.com/pypy/pypy/issues/4934
-				'scipy/sparse/tests/test_dok.py::test_dunder_ror[dok_matrix]'
-				# mismatched exception message
-				scipy/optimize/tests/test_hessian_update_strategy.py::TestHessianUpdateStrategy::test_initialize_catch_illegal
 			)
 			;;
 	esac

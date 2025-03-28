@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/netfilter.org.asc
-inherit linux-info verify-sig
+inherit flag-o-matic linux-info toolchain-funcs verify-sig
 
 DESCRIPTION="Programming interface (API) to the in-kernel connection tracking state table"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_conntrack/"
@@ -42,6 +42,13 @@ pkg_setup() {
 	fi
 
 	check_extra_config
+}
+
+src_configure() {
+	# https://gcc.gnu.org/PR103374
+	tc-is-gcc && filter-flags '-ftrivial-auto-var-init=pattern'
+
+	default
 }
 
 src_install() {

@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+dbusmenu introspection vala wayland X"
 REQUIRED_USE="
 	|| ( wayland X )
@@ -48,6 +48,7 @@ RDEPEND="
 "
 BDEPEND="
 	vala? ( $(vala_depend) )
+	dev-build/xfce4-dev-tools
 	dev-lang/perl
 	dev-util/gdbus-codegen
 	dev-util/intltool

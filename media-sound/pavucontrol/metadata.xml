@@ -5,4 +5,10 @@
 	<email>sound@gentoo.org</email>
 	<name>Gentoo Sound project</name>
 </maintainer>
+<upstream>
+	<remote-id type="freedesktop-gitlab">pulseaudio/pavucontrol</remote-id>
+</upstream>
+<use>
+	<flag name="sound">Enable sound notifications using <pkg>media-libs/libcanberra</pkg></flag>
+</use>
 </pkgmetadata>

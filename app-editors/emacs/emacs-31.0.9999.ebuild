@@ -89,7 +89,7 @@ X_DEPEND="x11-libs/libICE
 		)
 	)"
 
-RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui(-)?]
+RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -125,7 +125,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui(-)?]
 		imagemagick? ( media-gfx/imagemagick:0=[jpeg?,png?,svg?,tiff?] )
 		!aqua? (
 			gsettings? (
-				app-emacs/emacs-common[gsettings(-)]
+				>=app-emacs/emacs-common-1.11[gsettings]
 				>=dev-libs/glib-2.28.6
 			)
 			gtk? ( !X? (
@@ -202,9 +202,6 @@ src_prepare() {
 		fi
 	fi
 
-	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
-
 	# libseccomp is detected by configure but doesn't appear to have any
 	# effect on the installed image. Suppress it by supplying pkg-config
 	# with a wrong library name.
@@ -238,6 +235,7 @@ src_configure() {
 		--without-compress-install
 		--without-hesiod
 		--without-pop
+		--without-systemduserunitdir
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		--with-pdumper
 		$(use_enable acl)
@@ -499,7 +497,6 @@ src_install() {
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
 	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
-	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir

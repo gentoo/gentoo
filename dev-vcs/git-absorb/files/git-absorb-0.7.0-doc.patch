@@ -1,3 +1,50 @@
+From 8e78376cd4b725a029dbc98e1ed6eb100cedf14a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Wed, 12 Mar 2025 09:30:38 -0400
+Subject: [PATCH] build: fix building manpages on systems where asciidoc is
+ already installed
+
+It doesn't really make sense to run one command that isn't installed, to
+see if another command is installed. Even though I have a2x installed,
+the build fails with:
+
+```
+make: Entering directory '/var/tmp/portage/dev-vcs/git-absorb-0.7.0/work/git-absorb-0.7.0/Documentation'
+make: which: No such file or directory
+Makefile:4: *** "No a2x in PATH; install asciidoc.".  Stop.
+```
+
+The "which" utility is not guaranteed to be installed either, and if it
+is, its behavior is not portable either. This means that when various
+programs are installed, the `which` check will report a fatal error
+because the which tool did not exist and the shell returned a nonzero
+status when attempting to fork+exec. If it did exist, it might not be an
+implementation of `which` that returns nonzero when commands do not
+exist.
+
+The general scripting suggestion is to use the "command -v" shell
+builtin; this is required to exist in all POSIX 2008 compliant shells,
+and is thus guaranteed to work everywhere.
+
+For some in-depth discussions on the topic, see:
+- https://mywiki.wooledge.org/BashFAQ/081
+- https://unix.stackexchange.com/questions/85249/why-not-use-which-what-to-use-then/85250#85250
+
+Examples of open-source shells likely to be installed as /bin/sh on
+Linux, which implement the 15-year-old standard: ash, bash, busybox,
+dash, ksh, mksh and zsh.
+
+Several Linux distros which *do* currently ship a (decent quality)
+`which` utility in their default install are looking to get rid of it:
+
+- Gentoo: https://bugs.gentoo.org/646588
+- Debian: https://lwn.net/Articles/874049/
+---
+ Documentation/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/Makefile b/Documentation/Makefile
+index 3056326..b642af1 100644
 --- a/Documentation/Makefile
 +++ b/Documentation/Makefile
 @@ -1,7 +1,7 @@
@@ -5,7 +52,7 @@
  
  git-absorb.1: git-absorb.adoc
 -	$(if $(shell which a2x),,$(error "No a2x in PATH; install asciidoc."))
-+	$(if $(shell command a2x),,$(error "No a2x in PATH; install asciidoc."))
++	$(if $(shell command -v a2x),,$(error "No a2x in PATH; install asciidoc."))
  	$(info Building manpage. This may take a few moments...)
  	a2x -L -d manpage -f manpage git-absorb.adoc --attribute man-version=${GA_VERSION}
  

@@ -1,0 +1,49 @@
+https://public-inbox.org/git/20250316060605.166364-1-eschwartz@gentoo.org/T/
+
+From: Eli Schwartz <eschwartz@gentoo.org>
+To: git@vger.kernel.org
+Cc: Patrick Steinhardt <ps@pks.im>,
+	Sam James <sam@gentoo.org>
+Subject: [PATCH] meson: fix perl detection when docs are enabled, but perl bindings aren't
+Date: Sun, 16 Mar 2025 02:06:05 -0400
+Message-ID: <20250316060605.166364-1-eschwartz@gentoo.org>
+X-Mailer: git-send-email 2.48.1
+Precedence: bulk
+X-Mailing-List: git@vger.kernel.org
+List-Id: <git.vger.kernel.org>
+List-Subscribe: <mailto:git+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:git+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+The `perl` variable in meson.build is assigned to a program lookup,
+which may have the value "not-found object" if configuring with
+`-Dperl=disabled`.
+
+There is already a list of other cases where we do need a perl command,
+even when not building perl bindings. Building documentation should be
+one of those cases, but was missing from the list. Add it.
+
+Fixes:
+
+```
+$ meson setup builddir/ -Ddocs=man -Dperl=disabled -Dtests=false
+[...]
+Documentation/meson.build:308:22: ERROR: Tried to use not-found external program in "command"
+```
+
+Bug: https://bugs.gentoo.org/949247
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+--- a/meson.build
++++ b/meson.build
+@@ -772,7 +772,7 @@ endif
+ # features. It is optional if you want to neither execute tests nor use any of
+ # these optional features.
+ perl_required = get_option('perl')
+-if get_option('tests') or get_option('gitweb').enabled() or 'netrc' in get_option('credential_helpers')
++if get_option('tests') or get_option('gitweb').enabled() or 'netrc' in get_option('credential_helpers') or get_option('docs') != []
+   perl_required = true
+ endif
+ 
+-- 
+2.48.1

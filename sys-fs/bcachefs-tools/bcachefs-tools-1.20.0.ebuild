@@ -100,7 +100,10 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://evilpiepirate.org/git/bcachefs-tools.git"
 else
 	SRC_URI="https://evilpiepirate.org/bcachefs-tools/bcachefs-tools-${PV}.tar.zst
-		${CARGO_CRATE_URIS}"
+		${CARGO_CRATE_URIS}
+		https://github.com/koverstreet/bcachefs-tools/commit/67c9b378c7e7820b91033004b032e236a8069b4a.patch
+			-> bcachefs-tools-1.20.0-fix-fuse-build.patch
+	"
 	SRC_URI+=" verify-sig? ( https://evilpiepirate.org/bcachefs-tools/bcachefs-tools-${PV}.tar.sign )"
 	S="${WORKDIR}/${P}"
 	KEYWORDS="amd64 arm64"
@@ -142,6 +145,10 @@ BDEPEND="
 "
 
 QA_FLAGS_IGNORED="/sbin/bcachefs"
+
+PATCHES=(
+	"${DISTDIR}/bcachefs-tools-1.20.0-fix-fuse-build.patch"
+)
 
 python_check_deps() {
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"

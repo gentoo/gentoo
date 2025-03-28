@@ -1,0 +1,15 @@
+Prepare build for CMake 4.
+Fold and rationalize seds
+https://bugs.gentoo.org/951901
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,7 @@
+-cmake_minimum_required(VERSION 2.8)
++project(i2bits)
++cmake_minimum_required(VERSION 3.5)
+ #set(CMAKE_VERBOSE_MAKEFILE ON)
+-set(CMAKE_C_FLAGS "-std=c99 -Wall -Wextra -pedantic")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+ 
+ add_executable(i2bits i2bits.c)
+ 

@@ -1,0 +1,354 @@
+From 9e612ba7bf1ccea8158ae38b5d687d8d78e1630e Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 26 Feb 2025 08:03:18 -0700
+Subject: [PATCH 1/2] Convert HAVE_STRUCT_LABEL_SUPPORT to AFS_STRUCT_INIT
+
+The OpenAFS coding style allows the use of designated initializers for
+structs, however not all supported platforms have compilers that support
+it.
+
+The preprocessor define HAVE_STRUCT_LABEL_SUPPORT has been available for
+use so structure initialization can be set up to support compilers that
+do have designated initializers support.
+
+The typical use is:
+
+    struct foo x = {
+    #ifndef HAVE_STRUCT_LABEL_SUPPORT
+        val1,
+        val2,
+        ...
+    #else
+        .mem1 = val1,
+        .mem2 = val2,
+        ...
+    #endif
+    };
+
+This results in extra lines of code where errors can easily be
+introduced.
+
+Create a macro, AFS_STRUCT_INIT, that uses designated initializers when
+available, so the above example would be:
+
+    struct foo x = {
+        AFS_STRUCT_INIT(.mem1, val1),
+        AFS_STRUCT_INIT(.mem2, val2),
+        ...
+    };
+
+Convert the initialization of structures that are using the
+HAVE_STRUCT_LABEL_SUPPORT define to use AFS_STRUCT_INIT.
+
+Note, there is still a requirement that the order of initializers match
+the order of the elements within the structure, but it should be easier
+to verify that the initializers are in the proper order.
+
+Use a consistent alignment, and add trailing comma on the last
+element.
+
+There are no functional changes made by this commit.
+
+Reviewed-on: https://gerrit.openafs.org/16289
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 7c28b99490b75475ed9130526c536ae0e354e064)
+
+Change-Id: I8faa4b497f2962bdd0a4ecb559e8b9288fd5c796
+---
+ src/afs/afs_dcache.c     | 66 ++++++++++++----------------------------
+ src/afs/afs_fetchstore.c | 54 ++++++++++----------------------
+ src/config/stds.h        |  6 ++++
+ src/rx/xdr_len.c         | 28 +++++------------
+ src/rx/xdr_mem.c         | 28 +++++------------
+ src/rx/xdr_rx.c          | 28 +++++------------
+ 6 files changed, 66 insertions(+), 144 deletions(-)
+
+diff --git a/src/afs/afs_dcache.c b/src/afs/afs_dcache.c
+index 35fd5947325d..e41ba8ff3a8e 100644
+--- a/src/afs/afs_dcache.c
++++ b/src/afs/afs_dcache.c
+@@ -104,55 +104,29 @@ afs_int32 afs_dcentries;	/*!< In-memory dcache entries */
+ int dcacheDisabled = 0;
+ 
+ struct afs_cacheOps afs_UfsCacheOps = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    osi_UFSOpen,
+-    osi_UFSTruncate,
+-    afs_osi_Read,
+-    afs_osi_Write,
+-    osi_UFSClose,
+-    afs_UFSReadUIO,
+-    afs_UFSWriteUIO,
+-    afs_UFSGetDSlot,
+-    afs_UFSGetVolSlot,
+-    afs_UFSHandleLink,
+-#else
+-    .open 	= osi_UFSOpen,
+-    .truncate	= osi_UFSTruncate,
+-    .fread	= afs_osi_Read,
+-    .fwrite	= afs_osi_Write,
+-    .close	= osi_UFSClose,
+-    .vreadUIO	= afs_UFSReadUIO,
+-    .vwriteUIO	= afs_UFSWriteUIO,
+-    .GetDSlot	= afs_UFSGetDSlot,
+-    .GetVolSlot = afs_UFSGetVolSlot,
+-    .HandleLink	= afs_UFSHandleLink,
+-#endif
++    AFS_STRUCT_INIT(.open,	osi_UFSOpen),
++    AFS_STRUCT_INIT(.truncate,	osi_UFSTruncate),
++    AFS_STRUCT_INIT(.fread,	afs_osi_Read),
++    AFS_STRUCT_INIT(.fwrite,	afs_osi_Write),
++    AFS_STRUCT_INIT(.close,	osi_UFSClose),
++    AFS_STRUCT_INIT(.vreadUIO,	afs_UFSReadUIO),
++    AFS_STRUCT_INIT(.vwriteUIO,	afs_UFSWriteUIO),
++    AFS_STRUCT_INIT(.GetDSlot,	afs_UFSGetDSlot),
++    AFS_STRUCT_INIT(.GetVolSlot, afs_UFSGetVolSlot),
++    AFS_STRUCT_INIT(.HandleLink, afs_UFSHandleLink),
+ };
+ 
+ struct afs_cacheOps afs_MemCacheOps = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    afs_MemCacheOpen,
+-    afs_MemCacheTruncate,
+-    afs_MemReadBlk,
+-    afs_MemWriteBlk,
+-    afs_MemCacheClose,
+-    afs_MemReadUIO,
+-    afs_MemWriteUIO,
+-    afs_MemGetDSlot,
+-    afs_MemGetVolSlot,
+-    afs_MemHandleLink,
+-#else
+-    .open	= afs_MemCacheOpen,
+-    .truncate	= afs_MemCacheTruncate,
+-    .fread	= afs_MemReadBlk,
+-    .fwrite	= afs_MemWriteBlk,
+-    .close	= afs_MemCacheClose,
+-    .vreadUIO	= afs_MemReadUIO,
+-    .vwriteUIO	= afs_MemWriteUIO,
+-    .GetDSlot	= afs_MemGetDSlot,
+-    .GetVolSlot	= afs_MemGetVolSlot,
+-    .HandleLink	= afs_MemHandleLink,
+-#endif
++    AFS_STRUCT_INIT(.open,	afs_MemCacheOpen),
++    AFS_STRUCT_INIT(.truncate,	afs_MemCacheTruncate),
++    AFS_STRUCT_INIT(.fread,	afs_MemReadBlk),
++    AFS_STRUCT_INIT(.fwrite,	afs_MemWriteBlk),
++    AFS_STRUCT_INIT(.close,	afs_MemCacheClose),
++    AFS_STRUCT_INIT(.vreadUIO,	afs_MemReadUIO),
++    AFS_STRUCT_INIT(.vwriteUIO,	afs_MemWriteUIO),
++    AFS_STRUCT_INIT(.GetDSlot,	afs_MemGetDSlot),
++    AFS_STRUCT_INIT(.GetVolSlot, afs_MemGetVolSlot),
++    AFS_STRUCT_INIT(.HandleLink, afs_MemHandleLink),
+ };
+ 
+ int cacheDiskType;		/*Type of backing disk for cache */
+diff --git a/src/afs/afs_fetchstore.c b/src/afs/afs_fetchstore.c
+index 97d0671811dc..5baf371a2c6a 100644
+--- a/src/afs/afs_fetchstore.c
++++ b/src/afs/afs_fetchstore.c
+@@ -309,48 +309,26 @@ afs_GenericStoreProc(struct storeOps *ops, void *rock,
+ 
+ static
+ struct storeOps rxfs_storeUfsOps = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    rxfs_storeUfsPrepare,
+-    rxfs_storeUfsRead,
+-    rxfs_storeUfsWrite,
+-    rxfs_storeStatus,
+-    rxfs_storePadd,
+-    rxfs_storeClose,
+-    rxfs_storeDestroy,
+-    afs_GenericStoreProc
+-#else
+-    .prepare = 	rxfs_storeUfsPrepare,
+-    .read =	rxfs_storeUfsRead,
+-    .write =	rxfs_storeUfsWrite,
+-    .status =	rxfs_storeStatus,
+-    .padd =	rxfs_storePadd,
+-    .close =	rxfs_storeClose,
+-    .destroy =	rxfs_storeDestroy,
+-    .storeproc = afs_GenericStoreProc
+-#endif
++    AFS_STRUCT_INIT(.prepare,	rxfs_storeUfsPrepare),
++    AFS_STRUCT_INIT(.read,	rxfs_storeUfsRead),
++    AFS_STRUCT_INIT(.write,	rxfs_storeUfsWrite),
++    AFS_STRUCT_INIT(.status,	rxfs_storeStatus),
++    AFS_STRUCT_INIT(.padd,	rxfs_storePadd),
++    AFS_STRUCT_INIT(.close,	rxfs_storeClose),
++    AFS_STRUCT_INIT(.destroy,	rxfs_storeDestroy),
++    AFS_STRUCT_INIT(.storeproc,	afs_GenericStoreProc),
+ };
+ 
+ static
+ struct storeOps rxfs_storeMemOps = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    rxfs_storeMemPrepare,
+-    rxfs_storeMemRead,
+-    rxfs_storeMemWrite,
+-    rxfs_storeStatus,
+-    rxfs_storePadd,
+-    rxfs_storeClose,
+-    rxfs_storeDestroy,
+-    afs_GenericStoreProc
+-#else
+-    .prepare =	rxfs_storeMemPrepare,
+-    .read = 	rxfs_storeMemRead,
+-    .write = 	rxfs_storeMemWrite,
+-    .status =	rxfs_storeStatus,
+-    .padd =	rxfs_storePadd,
+-    .close = 	rxfs_storeClose,
+-    .destroy =	rxfs_storeDestroy,
+-    .storeproc = afs_GenericStoreProc
+-#endif
++    AFS_STRUCT_INIT(.prepare,	rxfs_storeMemPrepare),
++    AFS_STRUCT_INIT(.read,	rxfs_storeMemRead),
++    AFS_STRUCT_INIT(.write,	rxfs_storeMemWrite),
++    AFS_STRUCT_INIT(.status,	rxfs_storeStatus),
++    AFS_STRUCT_INIT(.padd,	rxfs_storePadd),
++    AFS_STRUCT_INIT(.close,	rxfs_storeClose),
++    AFS_STRUCT_INIT(.destroy,	rxfs_storeDestroy),
++    AFS_STRUCT_INIT(.storeproc,	afs_GenericStoreProc),
+ };
+ 
+ static afs_int32
+diff --git a/src/config/stds.h b/src/config/stds.h
+index 8ae68343458b..ae030149f6d2 100644
+--- a/src/config/stds.h
++++ b/src/config/stds.h
+@@ -305,6 +305,12 @@ hdr_static_inline(unsigned long long) afs_printable_uint64_lu(afs_uint64 d) { re
+ # define AFS_FALLTHROUGH do {} while(0)
+ #endif
+ 
++#if defined(HAVE_STRUCT_LABEL_SUPPORT)
++# define AFS_STRUCT_INIT(member, value) member = (value)
++#else
++# define AFS_STRUCT_INIT(member, value) (value)
++#endif
++
+ /*
+  * Conditionally remove unreached statements under Solaris Studio.
+  */
+diff --git a/src/rx/xdr_len.c b/src/rx/xdr_len.c
+index 5de15d010d62..9f9fe1ca92ac 100644
+--- a/src/rx/xdr_len.c
++++ b/src/rx/xdr_len.c
+@@ -84,26 +84,14 @@ xdrlen_inline(XDR *xdrs, u_int len)
+ }
+ 
+ static struct xdr_ops xdrlen_ops = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    /* Windows does not support labeled assigments */
+-    xdrlen_getint32,    /* not supported */
+-    xdrlen_putint32,    /* serialize an afs_int32 */
+-    xdrlen_getbytes,    /* not supported */
+-    xdrlen_putbytes,    /* serialize counted bytes */
+-    xdrlen_getpos,      /* get offset in the stream */
+-    xdrlen_setpos,      /* set offset in the stream */
+-    xdrlen_inline,      /* not supported */
+-    xdrlen_destroy,     /* destroy stream */
+-#else
+-    .x_getint32 = xdrlen_getint32,
+-    .x_putint32 = xdrlen_putint32,
+-    .x_getbytes = xdrlen_getbytes,
+-    .x_putbytes = xdrlen_putbytes,
+-    .x_getpostn = xdrlen_getpos,
+-    .x_setpostn = xdrlen_setpos,
+-    .x_inline = xdrlen_inline,
+-    .x_destroy = xdrlen_destroy
+-#endif
++    AFS_STRUCT_INIT(.x_getint32, xdrlen_getint32), /* not supported */
++    AFS_STRUCT_INIT(.x_putint32, xdrlen_putint32), /* serialize an afs_int32 */
++    AFS_STRUCT_INIT(.x_getbytes, xdrlen_getbytes), /* not supported */
++    AFS_STRUCT_INIT(.x_putbytes, xdrlen_putbytes), /* serialize counted bytes */
++    AFS_STRUCT_INIT(.x_getpostn, xdrlen_getpos),   /* get offset in the stream */
++    AFS_STRUCT_INIT(.x_setpostn, xdrlen_setpos),   /* set offset in the stream */
++    AFS_STRUCT_INIT(.x_inline,	 xdrlen_inline),   /* not supported */
++    AFS_STRUCT_INIT(.x_destroy,	 xdrlen_destroy),  /* destroy stream */
+ };
+ 
+ /**
+diff --git a/src/rx/xdr_mem.c b/src/rx/xdr_mem.c
+index ae849f521bf6..bd6720505edb 100644
+--- a/src/rx/xdr_mem.c
++++ b/src/rx/xdr_mem.c
+@@ -59,26 +59,14 @@ static afs_int32 *xdrmem_inline(XDR *, u_int);
+ static void xdrmem_destroy(XDR *);
+ 
+ static struct xdr_ops xdrmem_ops = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    /* Windows does not support labeled assigments */
+-    xdrmem_getint32,    /* deserialize an afs_int32 */
+-    xdrmem_putint32,    /* serialize an afs_int32 */
+-    xdrmem_getbytes,    /* deserialize counted bytes */
+-    xdrmem_putbytes,    /* serialize counted bytes */
+-    xdrmem_getpos,      /* get offset in the stream: not supported. */
+-    xdrmem_setpos,      /* set offset in the stream: not supported. */
+-    xdrmem_inline,      /* prime stream for inline macros */
+-    xdrmem_destroy,     /* destroy stream */
+-#else
+-    .x_getint32 = xdrmem_getint32,
+-    .x_putint32 = xdrmem_putint32,
+-    .x_getbytes = xdrmem_getbytes,
+-    .x_putbytes = xdrmem_putbytes,
+-    .x_getpostn = xdrmem_getpos,
+-    .x_setpostn = xdrmem_setpos,
+-    .x_inline = xdrmem_inline,
+-    .x_destroy = xdrmem_destroy
+-#endif
++    AFS_STRUCT_INIT(.x_getint32, xdrmem_getint32), /* deserialize an afs_int32 */
++    AFS_STRUCT_INIT(.x_putint32, xdrmem_putint32), /* serialize an afs_int32 */
++    AFS_STRUCT_INIT(.x_getbytes, xdrmem_getbytes), /* deserialize counted bytes */
++    AFS_STRUCT_INIT(.x_putbytes, xdrmem_putbytes), /* serialize counted bytes */
++    AFS_STRUCT_INIT(.x_getpostn, xdrmem_getpos),   /* get offset in the stream: not supported. */
++    AFS_STRUCT_INIT(.x_setpostn, xdrmem_setpos),   /* set offset in the stream: not supported. */
++    AFS_STRUCT_INIT(.x_inline,	 xdrmem_inline),   /* prime stream for inline macros */
++    AFS_STRUCT_INIT(.x_destroy,	 xdrmem_destroy),  /* destroy stream */
+ };
+ 
+ /*
+diff --git a/src/rx/xdr_rx.c b/src/rx/xdr_rx.c
+index 62fbed331b02..34e2b4d75efe 100644
+--- a/src/rx/xdr_rx.c
++++ b/src/rx/xdr_rx.c
+@@ -49,26 +49,14 @@ static afs_int32 *xdrrx_inline(XDR *axdrs, u_int len);
+  * Ops vector for stdio type XDR
+  */
+ static struct xdr_ops xdrrx_ops = {
+-#ifndef HAVE_STRUCT_LABEL_SUPPORT
+-    /* Windows does not support labeled assigments */
+-    xdrrx_getint32,	/* deserialize an afs_int32 */
+-    xdrrx_putint32,	/* serialize an afs_int32 */
+-    xdrrx_getbytes,	/* deserialize counted bytes */
+-    xdrrx_putbytes,	/* serialize counted bytes */
+-    NULL,		/* get offset in the stream: not supported. */
+-    NULL,		/* set offset in the stream: not supported. */
+-    xdrrx_inline,	/* prime stream for inline macros */
+-    NULL,		/* destroy stream */
+-#else
+-    .x_getint32 = xdrrx_getint32,	/* deserialize an afs_int32 */
+-    .x_putint32 = xdrrx_putint32,	/* serialize an afs_int32 */
+-    .x_getbytes = xdrrx_getbytes,	/* deserialize counted bytes */
+-    .x_putbytes = xdrrx_putbytes,	/* serialize counted bytes */
+-    .x_getpostn = NULL,		/* get offset in the stream: not supported. */
+-    .x_setpostn = NULL,		/* set offset in the stream: not supported. */
+-    .x_inline = xdrrx_inline,		/* prime stream for inline macros */
+-    .x_destroy = NULL,			/* destroy stream */
+-#endif
++    AFS_STRUCT_INIT(.x_getint32, xdrrx_getint32),	/* deserialize an afs_int32 */
++    AFS_STRUCT_INIT(.x_putint32, xdrrx_putint32),	/* serialize an afs_int32 */
++    AFS_STRUCT_INIT(.x_getbytes, xdrrx_getbytes),	/* deserialize counted bytes */
++    AFS_STRUCT_INIT(.x_putbytes, xdrrx_putbytes),	/* serialize counted bytes */
++    AFS_STRUCT_INIT(.x_getpostn, NULL),			/* get offset in the stream: not supported. */
++    AFS_STRUCT_INIT(.x_setpostn, NULL),			/* set offset in the stream: not supported. */
++    AFS_STRUCT_INIT(.x_inline,	 xdrrx_inline),		/* prime stream for inline macros */
++    AFS_STRUCT_INIT(.x_destroy,	 NULL),			/* destroy stream */
+ };
+ 
+ /*
+-- 
+2.45.3
+

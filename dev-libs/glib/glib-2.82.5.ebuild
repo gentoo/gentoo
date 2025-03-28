@@ -22,7 +22,7 @@ INTROSPECTION_BUILD_DIR="${WORKDIR}/${INTROSPECTION_P}-build"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="dbus debug +elf doc +introspection +mime selinux static-libs sysprof systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 
@@ -234,8 +234,8 @@ multilib_src_configure() {
 			-Dglib:xattr=false
 			-Dglib:libmount=disabled
 			-Dglib:man-pages=disabled
-			-Dglib:dtrace=false
-			-Dglib:systemtap=false
+			-Dglib:dtrace=disabled
+			-Dglib:systemtap=disabled
 			-Dglib:sysprof=disabled
 			-Dglib:documentation=false
 			-Dglib:tests=false
@@ -306,8 +306,8 @@ multilib_src_configure() {
 		$(meson_use xattr)
 		-Dlibmount=enabled # only used if host_system == 'linux'
 		-Dman-pages=enabled
-		$(meson_use systemtap dtrace)
-		$(meson_use systemtap)
+		$(meson_feature systemtap dtrace)
+		$(meson_feature systemtap)
 		$(meson_feature sysprof)
 		$(meson_use doc documentation)
 		$(meson_use test tests)

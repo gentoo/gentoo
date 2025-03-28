@@ -1,0 +1,16 @@
+https://github.com/WoeUSB/WoeUSB-ng/pull/134
+Fix invalid escape sequence
+\. is not a valid escape sequence since Python 3.12 and generates a warning.
+It will become an error in a future version.
+https://docs.python.org/3.12/whatsnew/3.12.html#other-language-changes
+--- a/WoeUSB/workaround.py
++++ b/WoeUSB/workaround.py
+@@ -52,7 +52,7 @@ def support_windows_7_uefi_boot(source_fs_mountpoint, target_fs_mountpoint):
+     :param target_fs_mountpoint:
+     :return:
+     """
+-    grep = subprocess.run(["grep", "--extended-regexp", "--quiet", "^MinServer=7[0-9]{3}\.[0-9]",
++    grep = subprocess.run(["grep", "--extended-regexp", "--quiet", r"^MinServer=7[0-9]{3}\.[0-9]",
+                            source_fs_mountpoint + "/sources/cversion.ini"],
+                           stdout=subprocess.PIPE).stdout.decode("utf-8").strip()
+     if grep == "" and not os.path.isfile(source_fs_mountpoint + "/bootmgr.efi"):

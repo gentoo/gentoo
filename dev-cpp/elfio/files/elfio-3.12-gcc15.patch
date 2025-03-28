@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/937460
+
+From 34d2c64237bb40f09879e7421db120e50e7e2923 Mon Sep 17 00:00:00 2001
+From: Orion Poplawski <orion@nwra.com>
+Date: Fri, 31 Jan 2025 20:22:26 -0700
+Subject: [PATCH] Add missing #include <stdint.h> for gcc 15
+
+---
+ elfio/elf_types.hpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/elfio/elf_types.hpp b/elfio/elf_types.hpp
+index 3a6850a..cd9aa7f 100644
+--- a/elfio/elf_types.hpp
++++ b/elfio/elf_types.hpp
+@@ -23,6 +23,8 @@ THE SOFTWARE.
+ #ifndef ELFTYPES_H
+ #define ELFTYPES_H
+ 
++#include <stdint.h>
++
+ #ifdef __cplusplus
+ namespace ELFIO {
+ #endif

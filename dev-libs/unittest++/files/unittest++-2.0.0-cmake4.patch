@@ -1,0 +1,11 @@
+Bump minimum cmake version, this builds with no warnings
+beyond request to bump to 3.10
+https://bugs.gentoo.org/951811
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.1)
++cmake_minimum_required(VERSION 3.5)
+ project(UnitTest++)
+ 
+ option(UTPP_USE_PLUS_SIGN

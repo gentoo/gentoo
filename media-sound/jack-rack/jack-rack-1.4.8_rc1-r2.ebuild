@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-f9fb65d"
 # GPL-2+ for function in jack-rack-1.4.8_rc1-C23.patch
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa lash +xml"
 
 RDEPEND="

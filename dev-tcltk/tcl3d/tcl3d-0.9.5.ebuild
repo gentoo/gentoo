@@ -11,7 +11,7 @@ SRC_URI="https://www.tcl3d.org/download/distributions/${P}.7z"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="sdl truetype"
 
 RDEPEND="dev-lang/tcl:0=
@@ -24,7 +24,7 @@ RDEPEND="dev-lang/tcl:0=
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/swig
-	app-arch/p7zip
+	$(unpacker_src_uri_depends)
 "
 
 src_prepare() {

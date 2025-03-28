@@ -10,4 +10,7 @@
   <name>Cjk</name>
 </maintainer>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="github">lookup2/lookup2</remote-id>
+</upstream>
 </pkgmetadata>

@@ -49,6 +49,7 @@ QT_PV=6.5.4:6
 
 # := is used where Qt's private APIs are used for safety
 COMMON_DEPEND="
+	app-arch/libarchive:=
 	dev-cpp/yaml-cpp:=
 	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]

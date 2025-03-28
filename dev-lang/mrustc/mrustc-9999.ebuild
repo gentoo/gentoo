@@ -37,6 +37,8 @@ BDEPEND="sys-devel/gcc:*"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.11.0-default-to-rust-1_74.patch"
 	"${FILESDIR}/${PN}-0.11.0-RUSTC_SRC_PROVIDED.patch"
+	"${FILESDIR}/${PN}-0.11.2-no-glibcxx-assertions-workaround.patch"
+	"${FILESDIR}/${PN}-0.11.2-no-glibcxx-assertions-workaround-more.patch"
 )
 
 QA_FLAGS_IGNORED="

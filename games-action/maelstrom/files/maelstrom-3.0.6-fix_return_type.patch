@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/875431
+--- a/Maelstrom-netd.c
++++ b/Maelstrom-netd.c
+@@ -184,7 +184,7 @@
+        exit(sig);
+ }
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+        int netfd, i, slot;
+        struct sockaddr_in serv_addr;

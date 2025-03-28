@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 FORTRAN_NEEDED=fortran
 
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="https://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -132,12 +132,9 @@ multilib_src_test() {
 }
 
 src_test() {
-	# We want this to be a reasonably quick test, but that is still hard...
-	ewarn "This test series will take 30 minutes on a modern 2.5Ghz machine"
 	# Do not increase the number of threads, it will not help your performance
 	# local testbase="perl check.pl --nthreads=1 --estimate"
-	#     ${testbase} -${p}d || die "Failure: $n"
-
+	#     ${testbase} -${p}d || die "Failure: ${n}"
 	multibuild_foreach_variant multilib-minimal_src_test
 }
 

@@ -8,7 +8,7 @@ DOCS_AUTODOC=1
 DOCS_DEPEND="dev-python/sphinx-rtd-theme"
 DOCS_DIR="${S}/docs/source"
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{9..13} )
 inherit python-any-r1 docs meson
 
 DESCRIPTION="OpenGL Mathematics (glm) for C"

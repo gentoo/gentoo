@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="distributed">Support distributed applications</flag>
+		<flag name="fbgemm">Use <pkg>sci-ml/FBGEMM</pkg></flag>
+		<flag name="flash">Enable flash attention</flag>
+		<flag name="gloo">Use <pkg>sci-ml/gloo</pkg></flag>
+		<flag name="memefficient">Enable mem efficient attention</flag>
+		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
+		<flag name="nnpack">Use <pkg>sci-ml/NNPACK</pkg></flag>
+		<flag name="numpy">Add support for math operations through numpy</flag>
+		<flag name="onednn">Use <pkg>sci-ml/oneDNN</pkg></flag>
+		<flag name="openblas">Use <pkg>sci-libs/openblas</pkg> for blas routines</flag>
+		<flag name="openmp">Use OpenMP for parallel code</flag>
+		<flag name="qnnpack">Use QNNPACK</flag>
+		<flag name="rocm">Enable ROCm gpu computing support</flag>
+		<flag name="xnnpack">Use <pkg>sci-ml/XNNPACK</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pytorch/pytorch</remote-id>
+	</upstream>
+</pkgmetadata>

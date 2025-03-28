@@ -1,6 +1,23 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-03-19)
+# media-libs/libebur128 not keyworded here
+media-video/pipewire loudness
+
+# Joonas Niilola <juippis@gentoo.org> (2025-03-18)
+# llvm-17 stack not keyworded on mips, later versions are.
+# Spidermonkey still declares llvm-17 compat on other arches.
+dev-lang/spidermonkey llvm_slot_17
+
+# NRK <nrk@disroot.org> (2025-03-17)
+# media-libs/libyuv is not keyworded
+media-libs/libavif libyuv
+
+# Sam James <sam@gentoo.org> (2025-03-17)
+# dev-util/babeltrace is not keyworded here
+dev-debug/gdb babeltrace
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # net-libs/rabbitmq-c is not keyworded here
 media-video/ffmpeg rabbitmq
@@ -172,10 +189,6 @@ dev-cpp/eigen test
 # matoro <matoro_gentoo@matoro.tk> (2024-02-29)
 # net-libs/libotr fails tests, #918448
 net-irc/irssi otr
-
-# matoro <matoro_gentoo@matoro.tk> (2024-02-28)
-# dev-util/glslang not keyworded here
-media-video/ffmpeg glslang
 
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here

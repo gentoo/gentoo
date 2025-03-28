@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10,11,12,13} )
-LLVM_COMPAT=( {15..18} )
+LLVM_COMPAT=( {15..20} )
 LLVM_OPTIONAL=1
 
 inherit flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
@@ -27,8 +27,8 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python +readline
-	selinux systemd ssl static-libs tcl test uuid xml zlib zstd"
+IUSE="debug doc +icu kerberos ldap llvm +lz4 nls oauth pam perl python +readline
+	selinux systemd ssl static-libs tcl test uring uuid xml zlib zstd"
 
 REQUIRED_USE="
 llvm? ( ${LLVM_REQUIRED_USE} )
@@ -50,6 +50,7 @@ llvm? ( $(llvm_gen_dep '
 	llvm-core/llvm:${LLVM_SLOT}
 	') )
 lz4? ( app-arch/lz4 )
+oauth? ( net-misc/curl[adns] )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.14:= )
 python? ( ${PYTHON_DEPS} )
@@ -57,6 +58,7 @@ readline? ( sys-libs/readline:0= )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 systemd? ( sys-apps/systemd )
 tcl? ( >=dev-lang/tcl-8:0= )
+uring? ( sys-libs/liburing )
 xml? (
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -168,17 +170,18 @@ src_configure() {
 		$(meson_feature llvm)
 		$(meson_feature lz4)
 		$(meson_feature nls)
+		$(meson_feature oauth libcurl)
 		$(meson_feature pam)
 		$(meson_feature perl plperl)
 		$(meson_feature python plpython)
 		$(meson_feature readline)
 		$(meson_feature systemd)
 		$(meson_feature tcl pltcl)
+		$(meson_feature uring liburing)
 		$(meson_feature xml libxml)
 		$(meson_feature xml libxslt)
 		$(meson_feature zlib)
 		$(meson_feature zstd)
-		$(meson_use !alpha spinlocks)
 	)
 
 	use debug && emesonargs+=( "--debug" )

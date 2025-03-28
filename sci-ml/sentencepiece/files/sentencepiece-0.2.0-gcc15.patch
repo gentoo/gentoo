@@ -1,0 +1,10 @@
+--- a/src/sentencepiece_processor.h	2025-03-20 21:45:30.138329183 +0100
++++ b/src/sentencepiece_processor.h	2025-03-20 21:46:09.315859746 +0100
+@@ -15,6 +15,7 @@
+ #ifndef SENTENCEPIECE_PROCESSOR_H_
+ #define SENTENCEPIECE_PROCESSOR_H_
+ 
++#include <cstdint>
+ #include <cstring>
+ #include <memory>
+ #include <string>

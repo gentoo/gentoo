@@ -3,6 +3,7 @@
 
 # This file contains descriptions of the PHP_TARGETS USE_EXPAND flags
 
+php8-4 - Build against PHP 8.4
 php8-3 - Build against PHP 8.3
 php8-2 - Build against PHP 8.2
 php8-1 - Build against PHP 8.1

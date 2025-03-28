@@ -24,7 +24,7 @@ src_compile() {
 	ego build ./cmd/rdap
 
 	if ! tc-is-cross-compiler; then
-		elog "generating shell completion files"
+		einfo "generating shell completion files"
 		# those commands exit OK with 1, so we can't use die
 
 		./rdap --completion-script-bash > rdap.bash

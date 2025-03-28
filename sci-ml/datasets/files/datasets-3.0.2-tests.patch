@@ -1,0 +1,10 @@
+--- a/tests/test_arrow_dataset.py	2024-02-20 21:53:24.248470991 +0100
++++ b/tests/test_arrow_dataset.py	2024-02-20 21:53:29.441804737 +0100
+@@ -4131,7 +4131,6 @@
+     [
+         "relative/path",
+         "/absolute/path",
+-        "s3://bucket/relative/path",
+         "hdfs://relative/path",
+         "hdfs:///absolute/path",
+     ],

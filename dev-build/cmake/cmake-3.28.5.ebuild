@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,13 +20,13 @@ CMAKE_DOCS_USEFLAG="+doc"
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES_LIST=( none )
 inherit bash-completion-r1 cmake flag-o-matic multiprocessing \
-	toolchain-funcs virtualx xdg-utils
+	toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="https://cmake.org/"
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	CMAKE_DOCS_PREBUILT=0
 
 	EGIT_REPO_URI="https://gitlab.kitware.com/cmake/cmake.git"
@@ -47,7 +47,7 @@ else
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
 		)"
 
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="ppc"
 
 		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20230817 )"
 	fi
@@ -59,7 +59,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="${CMAKE_DOCS_USEFLAG} dap gui ncurses qt6 test"
+IUSE="${CMAKE_DOCS_USEFLAG} dap gui ncurses test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -72,14 +72,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/pkgconfig
 	dap? ( dev-cpp/cppdap )
-	gui? (
-		!qt6? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtwidgets:5
-		)
-		qt6? ( dev-qt/qtbase:6[gui,widgets] )
-	)
+	gui? ( dev-qt/qtbase:6[gui,widgets] )
 	ncurses? ( sys-libs/ncurses:= )
 "
 DEPEND="${RDEPEND}"
@@ -208,7 +201,7 @@ src_configure() {
 		-DBUILD_QtDialog=$(usex gui)
 	)
 
-	use gui && mycmakeargs+=( -DCMake_QT_MAJOR_VERSION=$(usex qt6 6 5) )
+	use gui && mycmakeargs+=( -DCMake_QT_MAJOR_VERSION=6 )
 
 	cmake_src_configure
 }
@@ -223,7 +216,7 @@ src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	# Excluded tests:
-	#    BootstrapTest: we actualy bootstrap it every time so why test it.
+	#    BootstrapTest: we actually bootstrap it every time so why test it.
 	#    BundleUtilities: bundle creation broken
 	#    CMakeOnly.AllFindModules: pthread issues
 	#    CTest.updatecvs: which fails to commit as root
@@ -240,7 +233,9 @@ src_test() {
 		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM)|TestUpload|RunCMake.CMP0125)" \
 	)
 
-	virtx cmake_src_test
+	local -x QT_QPA_PLATFORM=offscreen
+
+	cmake_src_test
 }
 
 src_install() {

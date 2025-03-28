@@ -362,7 +362,7 @@ src_configure() {
 		backtrace = true
 		incremental = false
 		$(if ! tc-is-cross-compiler; then
-			echo "default-linker = \"$(tc-getCC)\""
+			echo "default-linker = \"${CHOST}-cc\""
 		fi)
 		parallel-compiler = $(toml_usex parallel-compiler)
 		channel = "$(usex nightly nightly stable)"

@@ -1,0 +1,57 @@
+--- a/copy-firmware.sh	2025-03-19 12:33:44.006356623 -0400
++++ b/copy-firmware.sh	2025-03-19 12:37:14.789934375 -0400
+@@ -84,6 +84,16 @@ while test $# -gt 0; do
+             exit 1
+             ;;
+ 
++        --firmware-list)
++            if [ -n "$2" ]; then
++                FIRMWARE_LIST=$2
++                shift 2
++            else
++                echo "ERROR: '--firmware-list' requires a non-empty option argument of firmware files to install"
++                exit 1
++            fi
++            ;;
++
+         -*)
+             # Ignore anything else that begins with - because that confuses
+             # the "test" command below
+@@ -115,8 +125,18 @@ if test -e .git/config; then
+     ./check_whence.py || err "check_whence.py has detected errors."
+ fi
+ 
++if test -n "${FIRMWARE_LIST}"; then
++    grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read l t; do
++        if ! cat "${FIRMWARE_LIST}" | grep -q "${l}"; then continue; fi
++        target="$(realpath --relative-to="$(pwd)" -m -s "$(dirname "$l")/$t")"
++        echo "${target}" >> "${FIRMWARE_LIST}"
++    done
++    FIRMWARE_LIST=$(cat "${FIRMWARE_LIST}")
++fi
++
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g' | while read k f; do
++    [ -n "${FIRMWARE_LIST}" ]  && if ! echo "${FIRMWARE_LIST}" | grep -q "${f}"; then continue; fi
+     install -d "$destdir/$(dirname "$f")"
+     $verbose "copying/compressing file $f$compext"
+     if test "$compress" != "cat" && test "$k" = "RawFile"; then
+@@ -141,6 +161,7 @@ fi
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read l t; do
++    [ -n "${FIRMWARE_LIST}" ]  && if ! echo "${FIRMWARE_LIST}" | grep -q "${l}"; then continue; fi
+     directory="$destdir/$(dirname "$l")"
+     install -d "$directory"
+     target="$(cd "$directory" && realpath -m -s "$t")"
+@@ -166,7 +187,9 @@ fi
+ 
+ # Verify no broken symlinks
+ if test "$(find "$destdir" -xtype l | wc -l)" -ne 0 ; then
+-    err "Broken symlinks found:\n$(find "$destdir" -xtype l)"
++    if  [ -z "${FIRMWARE_LIST}" ]; then
++        err "Broken symlinks found:\n$(find "$destdir" -xtype l)"
++    fi
+ fi
+ 
+ exit 0

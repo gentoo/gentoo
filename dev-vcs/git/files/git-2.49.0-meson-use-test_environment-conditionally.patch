@@ -1,0 +1,63 @@
+From 310a34bace801d288e369c6a01a8d04ffc4c3c06 Mon Sep 17 00:00:00 2001
+Message-ID: <310a34bace801d288e369c6a01a8d04ffc4c3c06.1741975400.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Fri, 14 Mar 2025 18:00:15 +0000
+Subject: [PATCH] meson: use test_environment conditionally.
+
+test_environment is only defined with -Dtests, so use it conditionally
+and define a stub environment() instead, to avoid erroring out:
+
+```
+$ meson setup -Dtests=false -Dcontrib=subtree build
+[...]
+
+contrib/subtree/meson.build:15:27: ERROR: Unknown variable "test_environment".
+```
+
+Do the same for 'netrc' in contrib/ as it uses the same pattern.
+---
+ contrib/credential/netrc/meson.build | 8 ++++++--
+ contrib/subtree/meson.build          | 8 ++++++--
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/contrib/credential/netrc/meson.build b/contrib/credential/netrc/meson.build
+index a990dbb86d..6d815d01c4 100644
+--- a/contrib/credential/netrc/meson.build
++++ b/contrib/credential/netrc/meson.build
+@@ -7,8 +7,12 @@ credential_netrc = custom_target(
+   install_dir: get_option('libexecdir') / 'git-core',
+ )
+ 
+-credential_netrc_testenv = test_environment
+-credential_netrc_testenv.set('CREDENTIAL_NETRC_PATH', credential_netrc.full_path())
++if get_option('tests')
++  credential_netrc_testenv = test_environment
++  credential_netrc_testenv.set('CREDENTIAL_NETRC_PATH', credential_netrc.full_path())
++else
++  credential_netrc_testenv = environment()
++endif
+ 
+ test('t-git-credential-netrc',
+   shell,
+diff --git a/contrib/subtree/meson.build b/contrib/subtree/meson.build
+index 9c72b23625..d18f188216 100644
+--- a/contrib/subtree/meson.build
++++ b/contrib/subtree/meson.build
+@@ -12,8 +12,12 @@ git_subtree = custom_target(
+   install_dir: get_option('libexecdir') / 'git-core',
+ )
+ 
+-subtree_test_environment = test_environment
+-subtree_test_environment.prepend('PATH', meson.current_build_dir())
++if get_option('tests')
++  subtree_test_environment = test_environment
++  subtree_test_environment.prepend('PATH', meson.current_build_dir())
++else
++  subtree_test_environment = environment()
++endif
+ 
+ test('t7900-subtree', shell,
+   args: [ 't7900-subtree.sh' ],
+-- 
+2.48.1
+

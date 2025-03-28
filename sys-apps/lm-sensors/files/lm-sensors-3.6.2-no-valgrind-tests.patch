@@ -1,0 +1,13 @@
+Don't automagically run Valgrind tests. Valgrind doesn't work well in sandbox
+or on all CPUs (e.g. doesn't support AVX512 still).
+--- a/lib/test/test-scanner.pl
++++ b/lib/test/test-scanner.pl
+@@ -48,7 +48,7 @@ my @scenarios = (
+ 
+ plan tests => ($#scenarios + 1) * 3;
+ 
+-chomp(my $valgrind = `which valgrind 2>/dev/null`);
++chomp(my $valgrind = `false`);
+ 
+ if ($valgrind) {
+ 	$test = Test::Cmd->new(prog => "$valgrind --tool=memcheck --show-reachable=yes --leak-check=full --quiet ./test-scanner", workdir => '');

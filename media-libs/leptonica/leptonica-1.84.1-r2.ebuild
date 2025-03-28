@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/DanBloomberg/${PN}/releases/download/${PV}/${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0/6"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
 # N.B. Tests need some features enabled:
 REQUIRED_USE="
@@ -65,10 +65,11 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# ${TMPDIR} is not respected. It used to be but it lead to issues and there
+	# have been long debates with upstream about it. :( Delete /tmp/lept before
+	# and after to avoid issues.
+	rm -rf /tmp/lept/ || die
 	default
-
-	# ${TMPDIR} is not respected. It used to be but it lead to issues
-	# and there have been long debates with upstream about it. :(
 	rm -rf /tmp/lept/ || die
 }
 

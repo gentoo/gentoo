@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -91,6 +91,13 @@ src_prepare() {
 }
 
 src_configure() {
+	local native_file="${T}"/meson.ini.local
+	# We don't want to run pylint tests. They're only for style.
+	cat >> ${native_file} <<-EOF || die
+	[binaries]
+	pylint='pylint-falseified'
+	EOF
+
 	local emesonargs=(
 		-Dhelp=true
 		-Denable-easy-codec-installation=yes
@@ -101,6 +108,7 @@ src_configure() {
 		-Dprofile=default
 		-Dinspector-page=false
 		-Dgst-inspect=false
+		--native-file "${native_file}"
 	)
 	meson_src_configure
 }

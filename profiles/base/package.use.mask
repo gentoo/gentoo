@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# sys-cluster/pacemaker is being removed.
+sys-cluster/drbd-utils pacemaker
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-05)
 # Mask until we have keyworded dev-util/spirv-llvm-translator:20 release.
 llvm-core/libclc llvm_slot_20
@@ -526,10 +530,6 @@ sys-libs/ncurses stack-realign
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
 
-# Craig Andrews <candrews@gentoo.org> (2022-03-25)
-# Requires as of yet unreleased QUIC support in OpenSSL
-net-libs/ngtcp2 openssl
-
 # Sam James <sam@gentoo.org> (2022-03-02)
 # Needs masked version of ogre (>=1.12), bug #825330
 >=dev-games/mygui-3.4.1 ogre
@@ -678,7 +678,6 @@ dev-php/symfony-process test
 dev-php/theseer-Autoload test
 dev-php/twig test
 
-
 # Sam James <sam@gentoo.org> (2021-01-04)
 # Doc generation is broken, needs gtkdoc-mktmpl (gone from gtk-doc)
 # bug #723438
@@ -779,7 +778,6 @@ dev-python/statsmodels doc
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
 net-libs/ngtcp2 openssl
-net-misc/curl nghttp3
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)
 # PGO not yet supported for comm-central, bug #693160

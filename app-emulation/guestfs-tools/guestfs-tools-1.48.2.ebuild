@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,6 @@ RESTRICT="!test? ( test )"
 
 # Failures - doc
 COMMON_DEPEND="
-	!<app-emulation/libguestfs-1.46.0-r1
 	app-alternatives/cpio
 	app-arch/lzma
 	app-arch/unzip[natspec]
@@ -43,7 +42,7 @@ COMMON_DEPEND="
 	sys-libs/ncurses:=
 	sys-libs/libxcrypt:=
 	virtual/libcrypt:=
-	ocaml? ( >=dev-lang/ocaml-4.03:=[ocamlopt] )
+	ocaml? ( <dev-lang/ocaml-5:=[ocamlopt] )
 	perl? (
 		virtual/perl-Data-Dumper
 		virtual/perl-Getopt-Long
@@ -59,7 +58,7 @@ COMMON_DEPEND="
 # bug #729674
 DEPEND="
 	${COMMON_DEPEND}
-	>=dev-lang/ocaml-4.03:=[ocamlopt]
+	<dev-lang/ocaml-5:=[ocamlopt]
 	dev-ml/findlib[ocamlopt]
 	doc? ( app-text/po4a )
 	ocaml? (

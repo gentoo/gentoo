@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit libtool python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"

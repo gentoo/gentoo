@@ -1,0 +1,13 @@
+Fix build with GCC 14
+
+--- a/src/gltron.c
++++ b/src/gltron.c
+@@ -10,7 +10,7 @@
+ #include "SDL.h"
+ 
+ int main(int argc, char *argv[] ) {
+-	initSubsystems(argc, argv);
++	initSubsystems(argc, (const char**)argv);
+ 	runScript(PATH_SCRIPTS, "main.lua");
+   return 0;
+ }

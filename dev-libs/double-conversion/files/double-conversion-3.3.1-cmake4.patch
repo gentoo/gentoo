@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/951349
+https://github.com/google/double-conversion/pull/240
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1 +1 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)

@@ -52,7 +52,7 @@ FFMPEG_IUSE_MAP=(
 	codec2:libcodec2
 	cuda:cuda-llvm
 	+dav1d:libdav1d
-	doc:^htmlpages
+	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
 	dvd:libdvdnav,libdvdread
 	fdk:libfdk-aac@nonfree
@@ -316,11 +316,13 @@ DEPEND="
 "
 BDEPEND="
 	app-alternatives/awk
-	dev-lang/perl
 	virtual/pkgconfig
 	amd64? ( dev-lang/nasm )
 	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
-	doc? ( sys-apps/texinfo )
+	${FFMPEG_UNSLOTTED:+"
+		dev-lang/perl
+		doc? ( sys-apps/texinfo )
+	"}
 "
 [[ ${PV} != 9999 ]] &&
 	BDEPEND+="
@@ -416,7 +418,7 @@ multilib_src_configure() {
 		--prefix="${prefix}"
 		--libdir="${prefix}"/$(get_libdir)
 		--shlibdir="${prefix}"/$(get_libdir)
-		--mandir="${prefix}"/share/man # ignoring slotted MANPATH
+		--mandir="${prefix}"/share/man
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html
 
 		--ar="$(tc-getAR)"
@@ -473,7 +475,7 @@ multilib_src_configure() {
 		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
 		--disable-librist # librist itself needs attention first (bug #822012)
 		--disable-libtensorflow # causes headaches, and is gone
-		--disable-libtorch # has not been looked at yet (bug #936127)
+		--disable-libtorch # support may need special attention (bug #936127)
 		--disable-mbedtls # messy with slots, tests underlinking issues
 		--disable-mmal # prefer USE=soc
 		--disable-omx # unsupported (bug #653386)
@@ -496,6 +498,12 @@ multilib_src_configure() {
 
 	# broken on x32 (bug #427004), and not PIC safe on x86 (bug #916067)
 	[[ ${ABI} == @(x32|x86) ]] && conf+=( --disable-asm )
+
+	# disable due to asm-related failures on ppc (bug #951464, ppc64be)
+	# https://trac.ffmpeg.org/ticket/9604 (ppc64el)
+	# https://trac.ffmpeg.org/ticket/10955 (ppc64el)
+	# (review re-enabling if resolved, or if debian allows it again)
+	use ppc || use ppc64 && conf+=( --disable-asm )
 
 	if tc-is-cross-compiler; then
 		conf+=(
@@ -548,7 +556,7 @@ multilib_src_configure() {
 		${EXTRA_ECONF}
 	)
 
-	einfo "${conf[*]}" # no edo.eclass due to noisy long command in errors
+	einfo "${conf[*]}"
 	"${conf[@]}" || die "configure failed, see ${BUILD_DIR}/ffbuild/config.log"
 }
 

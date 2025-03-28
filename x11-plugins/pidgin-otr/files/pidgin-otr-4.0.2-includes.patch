@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/944783
+--- a/otr-plugin.c
++++ b/otr-plugin.c
+@@ -33,12 +33,12 @@
+ #include <gcrypt.h>
+ 
+ /* purple headers */
+-#include "pidgin.h"
+-#include "notify.h"
+-#include "version.h"
+-#include "util.h"
+-#include "debug.h"
+-#include "core.h"
++#include "pidgin/pidgin.h"
++#include "libpurple/notify.h"
++#include "libpurple/version.h"
++#include "libpurple/util.h"
++#include "libpurple/debug.h"
++#include "libpurple/core.h"
+ 
+ #ifdef USING_GTK
+ /* purple GTK headers */

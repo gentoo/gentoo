@@ -51,7 +51,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz"
+	"${ADDONS_URI}/skia-m135-6c2dc3e74ea0bd464ba1c6679ded0b643101e682.tar.xz"
 	# not packaged in Gentoo, https://github.com/tsyrogit/zxcvbn-c
 	"${ADDONS_URI}/zxcvbn-c-2.5.tar.gz"
 
@@ -140,7 +140,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.18.0:0/0.18
+	>=dev-libs/liborcus-0.20.0:0/0.20
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -216,7 +216,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	!mariadb? ( dev-db/mysql-connector-c:= )
 	pdfimport? ( >=app-text/poppler-22.06:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	qt6? ( dev-qt/qtbase:6[gui,opengl,widgets] )
+	qt6? (
+		dev-qt/qtbase:6[gui,opengl,widgets]
+		dev-qt/qtmultimedia:6
+	)
 "
 # FIXME: cppunit should be moved to test conditional
 #        after everything upstream is under gbuild
@@ -255,10 +258,10 @@ RDEPEND="${COMMON_DEPEND}
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 BDEPEND="
+	app-alternatives/lex
+	app-alternatives/yacc
 	dev-util/intltool
 	sys-apps/which
-	app-alternatives/yacc
-	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
 	clang? ( || (
@@ -518,7 +521,6 @@ src_configure() {
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
 	# --disable-pdfium: not yet packaged
-	# --disable-qt6-multimedia: TODO
 	# --disable-cpdb: not yet packaged
 	local myeconfargs=(
 		--with-system-dicts
@@ -549,7 +551,6 @@ src_configure() {
 		--disable-openssl
 		--disable-pdfium
 		--disable-qt5
-		--disable-qt6-multimedia
 		# Don't try to call coredumpctl in the testsuite
 		--without-coredumpctl
 		--without-dotnet
@@ -593,6 +594,7 @@ src_configure() {
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
 		$(use_enable qt6)
+		$(use_enable qt6 qt6-multimedia)
 		$(use_enable vulkan skia)
 		$(use_with accessibility lxml)
 		$(use_with coinmp system-coinmp)

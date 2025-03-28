@@ -1,0 +1,7 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-03-18)
+# Enable dav1d by default for libavif since
+# aom is masked while one of them is required
+media-libs/libavif dav1d

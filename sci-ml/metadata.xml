@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-ml category contains software and models that can be used
+		for machine learning, natural language processing and similar
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-ml contiene programmi e modelli che possono essere
+		usati per l'apprendimento automatico, elaborazione del linguaggio
+		naturale e similari
+	</longdescription>
+</catmetadata>

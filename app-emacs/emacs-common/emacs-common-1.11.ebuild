@@ -24,9 +24,8 @@ SLOT="0"
 IUSE="games gsettings gui"
 
 DEPEND="games? ( acct-group/gamestat )"
-RDEPEND="
-	!<app-emacs/emacs-daemon-0.24
-	${DEPEND}"
+RDEPEND="${DEPEND}
+	!<app-emacs/emacs-daemon-0.25"
 PDEPEND=">=app-editors/emacs-26.1:*"
 IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
 

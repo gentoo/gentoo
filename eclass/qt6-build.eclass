@@ -60,22 +60,17 @@ if [[ ${PV} == *.9999 ]]; then
 else
 	QT6_BUILD_TYPE=release
 	_QT6_SRC=official
-	_QT6_SUBDIR=
 
 	if [[ ${PV} == *_@(alpha|beta|rc)* ]]; then
 		QT6_BUILD_TYPE=pre-release
 		_QT6_SRC=development
-
-		# TODO?: drop _QT6_SUBDIR if no longer used for 6.9, unknown
-		# if this was a one-time mistake or a permanent change
-		ver_test ${PV} -ge 6.8 && _QT6_SUBDIR=src/
 	fi
 
 	_QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
-	SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/${_QT6_SUBDIR}submodules/${_QT6_P}.tar.xz"
+	SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
 	S=${WORKDIR}/${_QT6_P}
 
-	unset _QT6_P _QT6_SRC _QT6_SUBDIR
+	unset _QT6_P _QT6_SRC
 fi
 readonly QT6_BUILD_TYPE
 

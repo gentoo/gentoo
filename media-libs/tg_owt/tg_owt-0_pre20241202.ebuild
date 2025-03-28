@@ -69,6 +69,8 @@ BDEPEND="
 	X? ( x11-base/xorg-proto )
 "
 
+PATCHES=( "${FILESDIR}/pipewire-1.4.patch" )
+
 src_unpack() {
 	default
 

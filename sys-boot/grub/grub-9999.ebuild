@@ -1,12 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # This ebuild uses 3 special global variables:
-# GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
-# GRUB_AUTOGEN: Depend on python and invoke autogen.sh.
-# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
+# GRUB_BOOTSTRAP: Invoke bootstrap (gnulib)
+# GRUB_AUTOGEN: Invoke autogen.sh
+# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf
 #
 # When applying patches:
 # If gnulib is updated, set GRUB_BOOTSTRAP=1
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999  ]]; then
 	GRUB_BOOTSTRAP=1
 fi
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 WANT_LIBTOOL=none
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
 
@@ -67,10 +67,13 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.06-test-words.patch
 )
 
-DEJAVU=dejavu-sans-ttf-2.37
-UNIFONT=unifont-15.0.06
-SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
-	themes? ( https://downloads.sourceforge.net/dejavu/${DEJAVU}.zip )"
+DEJAVU_VER=2.37
+DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
+UNIFONT=unifont-16.0.02
+SRC_URI+="
+	fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
+	themes? ( https://downloads.sourceforge.net/project/dejavu/dejavu/${DEJAVU_VER}/${DEJAVU}.tar.bz2 )
+"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
@@ -109,7 +112,6 @@ BDEPEND+="
 		sys-fs/squashfs-tools
 	)
 	themes? (
-		app-arch/unzip
 		media-libs/freetype:2
 		virtual/pkgconfig
 	)
@@ -123,7 +125,7 @@ DEPEND="
 	)
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 	libzfs? ( sys-fs/zfs:= )
-	mount? ( sys-fs/fuse:3 )
+	mount? ( sys-fs/fuse:3= )
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
 	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
@@ -231,11 +233,11 @@ grub_configure() {
 	)
 
 	if use fonts; then
-		ln -rs "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+		cp "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	fi
 
 	if use themes; then
-		ln -rs "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+		cp "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
 	fi
 
 	local ECONF_SOURCE="${S}"

@@ -62,6 +62,13 @@ DEPEND="
 	)
 "
 
+src_prepare() {
+	qt6-build_src_prepare
+
+	# qttools is picky about clang versions and ignores LLVM_SLOT
+	sed -i '/find_package/s/${VERSION}//' cmake/FindWrapLibClang.cmake || die
+}
+
 src_configure() {
 	use clang && llvm_chost_setup
 
@@ -99,6 +106,9 @@ src_configure() {
 src_install() {
 	qt6-build_src_install
 
+	# *could* consider a USE=gui to guard GUI applications and their .desktop
+	# files when only want the libraries (Help/UiTools), but cmake logic makes
+	# it difficult to get only these and we'd be just rm'ing small'ish files
 	if use widgets; then #914766
 		use designer || use distancefieldgenerator || use pixeltool &&
 			newicon src/designer/src/designer/images/designer.png designer6.png

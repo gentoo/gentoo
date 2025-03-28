@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,12 +40,6 @@ MULTILIB_CHOST_TOOLS=(
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libxslt/xsltconfig.h
-)
-
-PATCHES=(
-	"${FILESDIR}"/${P}-extensions-xmlCheckFilename-older-libxml2.patch
-	"${FILESDIR}"/${P}-libxml2-2.13.patch
-	"${FILESDIR}"/${P}-deprecated-xmlCharEncodingHandler.patch
 )
 
 src_prepare() {

@@ -40,8 +40,11 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
 # https://github.com/rust-lang/llvm-project/blob/rustc-1.84.0/llvm/CMakeLists.txt
-_ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY DirectX M68k SPIRV Xtensa )
-ALL_LLVM_EXPERIMENTAL_TARGETS=( )
+_ALL_RUST_EXPERIMENTAL_TARGETS=( ARC CSKY DirectX M68k SPIRV Xtensa )
+declare -A ALL_RUST_EXPERIMENTAL_TARGETS
+for _x in "${_ALL_RUST_EXPERIMENTAL_TARGETS[@]}"; do
+	ALL_RUST_EXPERIMENTAL_TARGETS["llvm_targets_${_x}"]=0
+done
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
@@ -52,12 +55,9 @@ LLVM_DEPEND=()
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
 for _x in "${ALL_LLVM_TARGETS[@]}"; do
 	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "llvm-core/llvm:\${LLVM_SLOT}[${_x}]") )" )
-	for _xx in "${_ALL_LLVM_EXPERIMENTAL_TARGETS[@]}"; do
-		if [[ "${_xx}" == "${_x}" ]] ; then
-			ALL_LLVM_EXPERIMENTAL_TARGETS+=( ${_x} )
-			break
-		fi
-	done
+	if [[ -v ALL_RUST_EXPERIMENTAL_TARGETS["${_x}"] ]] ; then
+		ALL_RUST_EXPERIMENTAL_TARGETS["${_x}"]=1
+	fi
 done
 LLVM_DEPEND+=( "	wasm? ( $(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}') )" )
 LLVM_DEPEND+=( "	$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')" )
@@ -68,6 +68,7 @@ BDEPEND="${PYTHON_DEPS}
 		>=sys-devel/gcc-4.7[cxx]
 		>=llvm-core/clang-3.5
 	)
+	lto? ( $(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}') )
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4
 		app-alternatives/ninja
@@ -234,6 +235,10 @@ src_prepare() {
 		fi
 	fi
 
+	if use lto && tc-is-clang && ! tc-ld-is-lld; then
+		export RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
+	fi
+
 	default
 }
 
@@ -279,13 +284,13 @@ src_configure() {
 	rust_build="$(rust_abi "${CBUILD}")"
 	rust_host="$(rust_abi "${CHOST}")"
 
-	LLVM_EXPERIMENTAL_TARGETS=()
-	for _x in "${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}"; do
-		if use llvm_targets_${_x} ; then
-			LLVM_EXPERIMENTAL_TARGETS+=( ${_x} )
+	RUST_EXPERIMENTAL_TARGETS=()
+	for _x in "${!ALL_RUST_EXPERIMENTAL_TARGETS[@]}"; do
+		if [[ ${ALL_RUST_EXPERIMENTAL_TARGETS[${_x}]} == 1 ]] && use ${_x} ; then
+			RUST_EXPERIMENTAL_TARGETS+=( ${_x#llvm_targets_} )
 		fi
 	done
-	LLVM_EXPERIMENTAL_TARGETS=${LLVM_EXPERIMENTAL_TARGETS[@]}
+	RUST_EXPERIMENTAL_TARGETS=${RUST_EXPERIMENTAL_TARGETS[@]}
 
 	local cm_btype="$(usex debug DEBUG RELEASE)"
 	cat <<- _EOF_ > "${S}"/config.toml
@@ -298,7 +303,7 @@ src_configure() {
 		assertions = $(toml_usex debug)
 		ninja = true
 		targets = "${LLVM_TARGETS// /;}"
-		experimental-targets = "${LLVM_EXPERIMENTAL_TARGETS// /;}"
+		experimental-targets = "${RUST_EXPERIMENTAL_TARGETS// /;}"
 		link-shared = $(toml_usex system-llvm)
 		$(if is_libcxx_linked; then
 			# https://bugs.gentoo.org/732632
@@ -374,7 +379,7 @@ src_configure() {
 		backtrace = true
 		incremental = false
 		$(if ! tc-is-cross-compiler; then
-			echo "default-linker = \"$(tc-getCC)\""
+			echo "default-linker = \"${CHOST}-cc\""
 		fi)
 		parallel-compiler = $(toml_usex parallel-compiler)
 		channel = "$(usex nightly nightly stable)"
@@ -386,6 +391,9 @@ src_configure() {
 		dist-src = false
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex wasm))
+		$(if use lto && tc-is-clang ; then
+			echo "use-lld = true"
+		fi)
 		# only deny warnings if doc+wasm are NOT requested, documenting stage0 wasm std fails without it
 		# https://github.com/rust-lang/rust/issues/74976
 		# https://github.com/rust-lang/rust/issues/76526

@@ -114,13 +114,9 @@ webkit
 mono
 
 # Gustavo Zacarias <gustavoz@gentoo.org>
-# It doesn't even build
-d
 # LCDproc masks see bug #148072
 lcd_devices_g15
 lcd_devices_ula200
-# Masking hardened, it isn't really supported, see bugs #144126 #78951
-hardened
 # AIO is b0rked for now....
 aio
 romio

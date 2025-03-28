@@ -24,16 +24,13 @@ S=${WORKDIR}/${P/_/}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="imaging ipython latex mathml opengl pdf png pyglet symengine texmacs"
+IUSE="imaging ipython latex mathml pdf png pyglet symengine texmacs"
 
 RDEPEND="
 	>=dev-python/mpmath-1.1.0[${PYTHON_USEDEP}]
-	dev-python/pexpect[${PYTHON_USEDEP}]
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	ipython? (
-		$(python_gen_cond_dep '
-			dev-python/ipython[${PYTHON_USEDEP}]
-		' pypy3 'python*')
+		dev-python/ipython[${PYTHON_USEDEP}]
 	)
 	latex? (
 		virtual/latex-base
@@ -42,11 +39,6 @@ RDEPEND="
 		pdf? ( app-text/ghostscript-gpl )
 	)
 	mathml? ( dev-python/lxml[${PYTHON_USEDEP}] )
-	opengl? (
-		$(python_gen_cond_dep '
-			dev-python/pyopengl[${PYTHON_USEDEP}]
-		' pypy3 'python*')
-	)
 	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )

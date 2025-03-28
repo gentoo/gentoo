@@ -21,3 +21,5 @@ SLOT="0"
 
 RDEPEND="media-libs/gd:2=[png]"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/libansilove-1.4.1-cmake_minimum_required.patch" )

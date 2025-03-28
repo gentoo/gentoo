@@ -1,6 +1,14 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-03-19)
+# media-libs/libebur128 not keyworded here
+media-video/pipewire loudness
+
+# NRK <nrk@disroot.org> (2025-03-17)
+# media-libs/libyuv is not keyworded
+media-libs/libavif libyuv
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # media-libs/libopenmpt is not keyworded here
 media-video/ffmpeg openmpt

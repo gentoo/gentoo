@@ -1,3 +1,7 @@
+https://github.com/lh3/bwa/pull/267
+
+Rejected, but small parts of it included in https://github.com/lh3/bwa/pull/263
+
 --- a/Makefile
 +++ b/Makefile
 @@ -1,9 +1,7 @@

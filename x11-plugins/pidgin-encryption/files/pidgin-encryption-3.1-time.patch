@@ -1,0 +1,135 @@
+Patch by ironmikkl, posted in bugs.gentoo.org
+
+Bug: https://bugs.gentoo.org/887623
+Bug: https://bugs.gentoo.org/940497
+
+--- a/encrypt.c
++++ b/encrypt.c
+@@ -212,7 +212,7 @@
+       purple_conversation_write(conv, 0,
+                               _("This account key is too large for this protocol. "
+                                 "Unable to send."),
+-                              PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                              PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+       return;
+    }
+ 
+@@ -326,7 +326,7 @@
+    newnode->who[sizeof(newnode->who)-1] = 0;
+ 
+    newnode->gc = gc;
+-   newnode->time = time((time_t)NULL);
++   newnode->time = time((time_t)0);
+    strcpy(newnode->msg, msg);
+    newnode->next = 0;
+ 
+@@ -443,7 +443,7 @@
+             }
+ 
+             purple_conv_im_write(PURPLE_CONV_IM(conv), NULL, tmp_msg,
+-                               PURPLE_MESSAGE_RECV, time((time_t)NULL));
++                               PURPLE_MESSAGE_RECV, time((time_t)0));
+             
+             g_free(tmp_msg);
+ 
+@@ -670,7 +670,7 @@
+             purple_debug(PURPLE_DEBUG_MISC, "pidgin-encryption", "Got key in response to error\n");
+             purple_conversation_write(conv, 0,
+                                       _("Last outgoing message not received properly- resetting"),
+-                                      PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                                      PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+             
+             PE_received_key(headerpos + header_size + sizeof(": ErrKey") - 1, name, acct,
+                             conv, message);
+@@ -755,7 +755,7 @@
+       if (conv != 0) {
+          purple_conversation_write(conv, 0,
+                                  _("Received message encrypted with wrong key"),
+-                                 PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                                 PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+ 
+       } else {
+          purple_debug(PURPLE_DEBUG_WARNING, "pidgin-encryption",
+@@ -792,7 +792,7 @@
+       if (conv != 0) {
+          purple_conversation_write(conv, 0,
+                                  _("Error in decryption- asking for resend..."),
+-                                 PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                                 PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+ 
+       } else {
+          purple_debug(PURPLE_DEBUG_WARNING, "pidgin-encryption",
+@@ -939,7 +939,7 @@
+ 
+       purple_debug(PURPLE_DEBUG_INFO, "pidgin-encryption", "requesting key\n");
+       purple_conversation_write(conv, 0, _("Requesting key..."),
+-                              PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                              PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+ 
+       PE_store_msg(who, acct->gc, *message, &first_out_msg, &last_out_msg);
+ 
+@@ -976,7 +976,7 @@
+          purple_debug(PURPLE_DEBUG_INFO, "pidgin-encryption", "im_write: %s\n", dupname);
+          
+          purple_conv_im_write(PURPLE_CONV_IM(conv), NULL, disp_msg,
+-                            PURPLE_MESSAGE_SEND, time((time_t)NULL));
++                            PURPLE_MESSAGE_SEND, time((time_t)0));
+          g_free(disp_msg);
+          
+          /* Add message to stash of sent messages: in case a key or nonce is wrong, we */
+@@ -1073,7 +1073,7 @@
+    if (his_key == 0) { /* Don't have key for this guy */
+       purple_conversation_write(conv, 0,
+                               _("No key to resend message.  Message lost."),
+-                              PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                              PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+ 
+    } else {  /* We have a key.  Encrypt and send. */
+ 
+@@ -1114,7 +1114,7 @@
+                  footer);
+          purple_conversation_write(conv, 0,
+                                  "Resending...",
+-                                 PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                                 PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+          serv_send_im(conv->account->gc, name, out_msg, 0);
+          
+          purple_debug(PURPLE_DEBUG_INFO, "pidgin-encryption",
+@@ -1126,7 +1126,7 @@
+          g_free(crypt_msg);
+       } else {
+          purple_conversation_write(conv, 0, _("Outgoing message lost."),
+-                                 PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                                 PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+       }
+    } 
+ }
+--- a/keys.c
++++ b/keys.c
+@@ -96,7 +96,7 @@
+    if (conv != 0) {
+       purple_conversation_write(conv, "Encryption Manager",
+                               _("Making new key pair..."),
+-                              PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                              PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+    }
+    
+    PE_make_private_pair((crypt_proto *)crypt_proto_list->data, name, conv->account, 1024);
+@@ -113,7 +113,7 @@
+    if (conv != 0) {
+       purple_conversation_write(conv, "Encryption Manager",
+                               _("Error trying to make key."),
+-                              PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                              PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+    }
+    
+    return 0;
+@@ -278,7 +278,7 @@
+    case KEY_CONFLICT:
+       if (conv) {
+          purple_conversation_write(conv, "Encryption Manager", _("Conflicting Key Received!"),
+-                                 PURPLE_MESSAGE_SYSTEM, time((time_t)NULL));
++                                 PURPLE_MESSAGE_SYSTEM, time((time_t)0));
+       }
+       PE_choose_accept_conflict_key(new_key, resend_msg_id, conv);
+       break;

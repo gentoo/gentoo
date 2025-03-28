@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# do not stabilize without a matching stable nvidia-drivers version
+# ideally only stabilize versions that work for all non-masked nvidia-drivers
 NV_MIN_VERSION=530.41.03 # see README
 
 DESCRIPTION="FFmpeg version of headers required to interface with Nvidias codec APIs"
@@ -20,6 +20,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	# prefer not to depend on nvidia-drivers given this package is depended
+	# on as header-only and drivers are optfeature'ish which can be better
+	# for e.g. binhosts to provide support (binding operators also not really
+	# suitable in DEPEND-only wrt rebuilds, rebuilds are not currently needed
+	# to work with *newer* drivers, and would be annoying for users switching
+	# driver versions only to troubleshoot non-nvenc issues)
 	if ! has_version ">=x11-drivers/nvidia-drivers-${NV_MIN_VERSION}"; then
 		ewarn
 		ewarn "Be warned that packages built using this version of ${PN}"

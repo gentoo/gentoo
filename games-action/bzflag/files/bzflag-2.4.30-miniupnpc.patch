@@ -1,0 +1,14 @@
+--- a/src/bzfs/bzfs.cxx	2025-03-19 20:12:39.291545789 +0100
++++ b/src/bzfs/bzfs.cxx	2025-03-19 20:19:01.024737235 +0100
+@@ -6291,7 +6291,11 @@
+         return;
+     }
+     // Select a good IGD (Internet Gateway Device)
++#if MINIUPNPC_API_VERSION >= 18
++    int i = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr), nullptr, 0);
++#else
+     int i = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr));
++#endif
+     freeUPNPDevlist(devlist);
+     if (!i)
+         std::cerr << "No recognized device" << std::endl;

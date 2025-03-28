@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NRK <nrk@disroot.org> (2025-03-17)
+# media-libs/libyuv is not keyworded
+media-libs/libavif libyuv
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-08)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
 dev-vcs/subversion kwallet
@@ -103,11 +107,6 @@ sys-kernel/installkernel -grub
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, currently masked on this arch
 >=sys-apps/fwupd-1.9.10 amdgpu
-
-# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
-# media-libs/shaderc in not keyworded
-media-video/ffmpeg shaderc
-media-video/ffmpeg-compat shaderc
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
@@ -395,10 +394,6 @@ net-print/hplip -scanner kde
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.16 upnp-av
-
-# Alexis Ballier <aballier@gentoo.org> (2015-11-14)
-# MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
-media-video/ffmpeg -mmal
 
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.

@@ -18,7 +18,7 @@ S="${WORKDIR}/OpenCC-ver.${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/1.1"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"

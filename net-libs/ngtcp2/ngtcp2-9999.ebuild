@@ -3,53 +3,58 @@
 
 EAPI=8
 
-inherit cmake-multilib
+# Built with autotools rather than cmake to avoid circular dep (bug #951524
+
+inherit multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ngtcp2/ngtcp2.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz"
+
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Implementation of the IETF QUIC Protocol"
-HOMEPAGE="https://github.com/ngtcp2/ngtcp2/"
+HOMEPAGE="https://github.com/ngtcp2/ngtcp2"
 
 LICENSE="MIT"
 SLOT="0/0"
-IUSE="+gnutls openssl +ssl static-libs test"
-# Without static-libs, src_test just won't run any tests and "pass".
-REQUIRED_USE="ssl? ( || ( gnutls openssl ) ) test? ( static-libs )"
+IUSE="+gnutls openssl +ssl"
+REQUIRED_USE="ssl? ( || ( gnutls openssl ) )"
 
-BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-3.7.2:=[${MULTILIB_USEDEP}] )
 		openssl? ( >=dev-libs/openssl-1.1.1:=[${MULTILIB_USEDEP}] )
 	)
 "
-DEPEND="
-	${RDEPEND}
-	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )
-"
-RESTRICT="!test? ( test )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-multilib_src_configure() {
-	local mycmakeargs=(
-		-DENABLE_STATIC_LIB=$(usex static-libs)
-		-DENABLE_GNUTLS=$(usex gnutls)
-		-DENABLE_OPENSSL=$(usex openssl)
-		-DENABLE_BORINGSSL=OFF
-		-DENABLE_PICOTLS=OFF
-		-DENABLE_WOLFSSL=OFF
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libev=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libnghttp3=ON
-		-DBUILD_TESTING=$(usex test)
-	)
-	cmake_src_configure
+src_prepare() {
+	default
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
-multilib_src_test() {
-	cmake_build check
+multilib_src_configure() {
+	local myeconfargs=(
+		--disable-werror
+		--enable-lib-only
+		$(use_with openssl)
+		$(use_with gnutls)
+		--without-boringssl
+		--without-picotls
+		--without-wolfssl
+		--without-libev
+		--without-libnghttp3
+		--without-jemalloc
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	find "${ED}"/usr -type f -name '*.la' -delete || die
 }

@@ -1241,7 +1241,7 @@ toolchain_src_configure() {
 
 	local GCC_LANG="c"
 	is_cxx && GCC_LANG+=",c++"
-	is_d   && GCC_LANG+=",d"
+	is_d   && GCC_LANG+=",d" confgcc+=( --enable-libphobos )
 	is_go  && GCC_LANG+=",go"
 	if is_objc || is_objcxx ; then
 		GCC_LANG+=",objc"
@@ -2644,6 +2644,13 @@ toolchain_src_install() {
 				mv ${x} ${x}-${GCCMAJOR} || die
 			done
 		fi
+	fi
+
+	# Hack for C++ modules
+	if ! is_crosscompile && tc_version_is_at_least 15.0.1_pre20250316 ${PV}; then
+		# PR19266 (bug #948394)
+		sed -i -e "s,\.\./lib/gcc/${CHOST}/${GCCMAJOR}/include/,include/," \
+			"${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/libstdc++.modules.json || die
 	fi
 
 	# As gcc installs object files built against both ${CHOST} and ${CTARGET}

@@ -28,7 +28,7 @@ else
 		https://dev.gentoo.org/~ionen/distfiles/ffmpeg-$(ver_cut 1-2)-patchset-1.tar.xz
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P}
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 fi
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video"
@@ -53,7 +53,7 @@ FFMPEG_IUSE_MAP=(
 	codec2:libcodec2
 	cuda:cuda-llvm
 	+dav1d:libdav1d
-	doc:^htmlpages
+	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
 	fdk:libfdk-aac@nonfree
 	flite:libflite
@@ -306,7 +306,6 @@ DEPEND="
 "
 BDEPEND="
 	app-alternatives/awk
-	dev-lang/perl
 	virtual/pkgconfig
 	amd64? (
 		|| (
@@ -315,7 +314,10 @@ BDEPEND="
 		)
 	)
 	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
-	doc? ( sys-apps/texinfo )
+	${FFMPEG_UNSLOTTED:+"
+		dev-lang/perl
+		doc? ( sys-apps/texinfo )
+	"}
 "
 [[ ${PV} != 9999 ]] &&
 	BDEPEND+="
@@ -413,7 +415,7 @@ multilib_src_configure() {
 		--prefix="${prefix}"
 		--libdir="${prefix}"/$(get_libdir)
 		--shlibdir="${prefix}"/$(get_libdir)
-		--mandir="${prefix}"/share/man # ignoring slotted MANPATH
+		--mandir="${prefix}"/share/man
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html
 
 		--ar="$(tc-getAR)"
@@ -489,6 +491,12 @@ multilib_src_configure() {
 	# broken on x32 (bug #427004), and not PIC safe on x86 (bug #916067)
 	[[ ${ABI} == @(x32|x86) ]] && conf+=( --disable-asm )
 
+	# disable due to asm-related failures on ppc (bug #951464, ppc64be)
+	# https://trac.ffmpeg.org/ticket/9604 (ppc64el)
+	# https://trac.ffmpeg.org/ticket/10955 (ppc64el)
+	# (review re-enabling if resolved, or if debian allows it again)
+	use ppc || use ppc64 && conf+=( --disable-asm )
+
 	if tc-is-cross-compiler; then
 		conf+=(
 			--enable-cross-compile
@@ -540,7 +548,7 @@ multilib_src_configure() {
 		${EXTRA_ECONF}
 	)
 
-	einfo "${conf[*]}" # no edo.eclass due to noisy long command in errors
+	einfo "${conf[*]}"
 	"${conf[@]}" || die "configure failed, see ${BUILD_DIR}/ffbuild/config.log"
 }
 

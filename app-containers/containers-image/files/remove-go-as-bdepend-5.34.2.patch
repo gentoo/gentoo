@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,11 +3,6 @@
+ export GOPROXY=https://proxy.golang.org
+ 
+ 
+-GOBIN := $(shell go env GOBIN)
+-ifeq ($(GOBIN),)
+-GOBIN := $(shell go env GOPATH)/bin
+-endif
+-
+ # when cross compiling _for_ a Darwin or windows host, then we must use openpgp
+ BUILD_TAGS_WINDOWS_CROSS = containers_image_openpgp
+ BUILD_TAGS_DARWIN_CROSS = containers_image_openpgp
+@@ -15,7 +10,6 @@ BUILD_TAGS_DARWIN_CROSS = containers_image_openpgp
+ BUILDTAGS = btrfs_noversion libdm_no_deferred_remove
+ BUILDFLAGS := -tags "$(BUILDTAGS)"
+ 
+-PACKAGES := $(shell go list $(BUILDFLAGS) ./...)
+ SOURCE_DIRS = $(shell echo $(PACKAGES) | awk 'BEGIN{FS="/"; RS=" "}{print $$4}' | uniq)
+ 
+ PREFIX ?= ${DESTDIR}/usr

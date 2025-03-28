@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,9 @@ RDEPEND="
 	>=sys-apps/dbus-1
 	>=app-accessibility/at-spi2-core-2.34[introspection]
 "
+# sys-apps/which BDEPEND can be dropped on next release (>2.46.1)
 BDEPEND="
+	sys-apps/which
 	virtual/pkgconfig
 	test? ( x11-libs/gtk+:3 )
 "

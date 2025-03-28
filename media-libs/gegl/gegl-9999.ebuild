@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,6 @@ inherit flag-o-matic meson optfeature python-any-r1 toolchain-funcs vala
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
-	SRC_URI=""
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
@@ -39,7 +38,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.68.2:2
 	>=dev-libs/json-glib-1.2.6
-	>=media-libs/babl-0.1.110[introspection?,lcms?,vala?]
+	>=media-libs/babl-0.1.112[introspection?,lcms?,vala?]
 	media-libs/libjpeg-turbo
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
@@ -67,9 +66,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	>=dev-build/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
-	>=dev-build/libtool-2.2
 	virtual/pkgconfig
 	test? ( $(python_gen_any_dep '>=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )

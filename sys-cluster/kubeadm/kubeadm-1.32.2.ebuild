@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="hardened selinux"
 RESTRICT="test"
 
@@ -27,7 +27,7 @@ src_compile() {
 		emake -j1 GOFLAGS=-v GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
 
 	if ! tc-is-cross-compiler; then
-		elog "generating shell completion files"
+		einfo "generating shell completion files"
 		_output/bin/${PN} completion bash > ${PN}.bash || die
 		_output/bin/${PN} completion zsh > ${PN}.zsh || die
 	fi

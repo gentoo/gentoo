@@ -165,7 +165,6 @@ gnome-extra/gnome-shell-extension-pop-shell
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support
 app-office/libreoffice-bin
-app-office/libreoffice-bin-debug
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # requires net-libs/nodejs | sys-apps/yarn

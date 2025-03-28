@@ -13,11 +13,12 @@ media-video/mpv -lua_single_target_luajit lua_single_target_lua5-1
 # luajit is currently not supported on riscv, so use lua instead
 app-editors/neovim lua_single_target_lua5-1
 
+# Michael Orlitzky <mjo@gentoo.org> (2025-03-17)
 # matoro <matoro_gentoo@matoro.tk> (2022-09-10)
-# GHC does not support native codegen for riscv at all.
+# GHC does not support native codegen for riscv until v9.12.
 # It gains LLVM codegen in 9.2, but we maintain a backport of this,
 # so force LLVM codegen in all versions.
-dev-lang/ghc llvm
+<dev-lang/ghc-9.12.1 llvm
 
 # we, kinda, need this on riscv ...
 llvm-core/llvm llvm_targets_RISCV

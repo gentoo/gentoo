@@ -3,11 +3,6 @@
 
 EAPI=8
 
-WANT_AUTOCONF=none
-WANT_LIBTOOL=none
-WANT_AUTOMAKE=1.16
-inherit autotools
-
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/patch.asc
 inherit flag-o-matic verify-sig
 
@@ -59,11 +54,6 @@ src_unpack() {
 	fi
 
 	default
-}
-
-src_prepare() {
-	default
-	eautomake
 }
 
 src_configure() {

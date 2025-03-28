@@ -1,0 +1,219 @@
+Remove stripping from makefiles.
+Fold makefile patching into one file and competely fix makefiles
+so they are sane-ish. Because it looked like original author lacked
+tabs and made do with what he had.
+diff '--color=auto' -ru a/Makefile b/Makefile
+--- a/Makefile	2025-03-15 19:12:02.768683219 +0300
++++ b/Makefile	2025-03-15 19:24:18.419580611 +0300
+@@ -13,22 +13,31 @@
+ $(BINDIR)/xd3d$(SUFF) \
+ $(BINDIR)/xgraphic$(SUFF)
+ 
+-all :; make libs ; make utils ; make xgraphic ; make xd3d
++all : libs utils xgraphic xd3d
+ 
+-install :; /bin/cp -pidvu $(EXE) ./infps $(INSTALL_DIR)
++install :
++	cp -pidvu $(EXE) ./infps $(INSTALL_DIR)
+ 
+-libs :; \
+-cd $(SRCDIR)/qlib   ; echo "---- Building utility lib ----" ; make ;\
+-cd $(SRCDIR)/interp ; echo "---- Building parsing lib ----" ; make ;\
+-cd $(SRCDIR)/X      ; echo "---- Building X interface lib ----" ; make
++libs :
++	@echo "---- Building utility lib ----"
++	$(MAKE) -C $(SRCDIR)/qlib
++	@echo "---- Building parsing lib ----" ;
++	$(MAKE) -C $(SRCDIR)/interp
++	@echo "---- Building X interface lib ----"
++	$(MAKE) -C $(SRCDIR)/X
++
++xd3d : libs
++	@echo "---- Building xd3d ----"
++	$(MAKE) -C $(SRCDIR)/d3d
++
++xgraphic : libs
++	@echo "---- Building xgraphic ----"
++	$(MAKE) -C $(SRCDIR)/graphic
++
++utils : libs
++	@echo " ---- Building various utils ----" ;\
++	$(MAKE) -C $(SRCDIR)/trad_nopo
++	$(MAKE) -C $(SRCDIR)/various
+ 
+-xd3d :; cd $(SRCDIR)/d3d ; echo "---- Building xd3d ----" ; make
+-
+-xgraphic :; cd $(SRCDIR)/graphic ; echo "---- Building xgraphic ----" ; make
+-
+-utils :; \
+-echo " ---- Building various utils ----" ;\
+-cd $(SRCDIR)/trad_nopo ; make ;\
+-cd $(SRCDIR)/various  ; make
+-
+-clean :; /bin/rm -f $(SRCDIR)/*/*.o $(LIBRAIRIE) $(MYXLIB) $(INTERP) $(EXE)
++clean :
++	rm -f $(SRCDIR)/*/*.o $(LIBRAIRIE) $(MYXLIB) $(INTERP) $(EXE)
+Only in xd3d-8.3.1: RULES.gentoo
+diff '--color=auto' -ru a/src/d3d/Makefile b/src/d3d/Makefile
+--- a/src/d3d/Makefile	2025-03-15 19:12:02.763459402 +0300
++++ b/src/d3d/Makefile	2025-03-15 19:31:48.183325701 +0300
+@@ -82,10 +82,11 @@
+ VIEUCU  = com_vieucu.f
+ VERSION = Version.f
+ 
+-$(BINDIR)/$(EXEC) : $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE);\
+-         $(LINK) $@ $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE) $(LINKOPTX) ; $(STRIP)
++$(BINDIR)/$(EXEC) : $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE)
++	$(LINK) $@ $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE) $(LINKOPTX)
+ 
+-clean : ; /bin/rm -f $(OBJETS) $(BINDIR)/$(EXEC)
++clean :
++	/bin/rm -f $(OBJETS) $(BINDIR)/$(EXEC)
+ 
+ include Makefile.dep
+ 
+diff '--color=auto' -ru a/src/graphic/Makefile b/src/graphic/Makefile
+--- a/src/graphic/Makefile	2025-03-15 19:12:02.768269406 +0300
++++ b/src/graphic/Makefile	2025-03-15 19:30:51.942572716 +0300
+@@ -15,10 +15,11 @@
+         trace.o    \
+         trad.o
+ 
+-$(BINDIR)/$(EXEC) : $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE);\
+-         $(LINK) $@ $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE) $(LINKOPTX) ; $(STRIP)
++$(BINDIR)/$(EXEC) : $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE)
++	$(LINK) $@ $(OBJETS) $(MYXLIB) $(INTERP) $(LIBRAIRIE) $(LINKOPTX)
+ 
+-clean : ; /bin/rm -f $(OBJETS) $(BINDIR)/$(EXEC)
++clean :
++	rm -f $(OBJETS) $(BINDIR)/$(EXEC)
+ 
+ include Makefile.dep
+ 
+diff '--color=auto' -ru a/src/interp/Makefile b/src/interp/Makefile
+--- a/src/interp/Makefile	2025-03-15 19:12:02.761608455 +0300
++++ b/src/interp/Makefile	2025-03-15 19:26:50.149040700 +0300
+@@ -43,6 +43,9 @@
+          zaldy6.o 
+ 
+ 
+-$(LIB) : $(OBJETS) ; $(AR) $@ $(OBJETS) ; $(RANLIB) $@
++$(LIB) : $(OBJETS)
++	$(AR) $@ $(OBJETS)
++	$(RANLIB) $@
+ 
+-clean : ; /bin/rm -f $(OBJETS) $(LIB)
++clean :
++	rm -f $(OBJETS) $(LIB)
+diff '--color=auto' -ru a/src/qlib/Makefile b/src/qlib/Makefile
+--- a/src/qlib/Makefile	2025-03-15 19:12:02.768683219 +0300
++++ b/src/qlib/Makefile	2025-03-15 19:31:11.734959768 +0300
+@@ -27,7 +27,10 @@
+ temps.o	\
+ timestuff.o
+ 
+-$(LIB) : $(OBJETS) ; $(AR) $@ $(OBJETS) ; $(RANLIB) $@
++$(LIB) : $(OBJETS)
++	$(AR) $@ $(OBJETS)
++	$(RANLIB) $@
+ 
+-clean : ; /bin/rm -f $(OBJETS) $(LIB)
++clean :
++	rm -f $(OBJETS) $(LIB)
+ 
+diff '--color=auto' -ru a/src/trad_nopo/Makefile b/src/trad_nopo/Makefile
+--- a/src/trad_nopo/Makefile	2025-03-15 19:12:02.764459397 +0300
++++ b/src/trad_nopo/Makefile	2025-03-15 19:32:01.911008245 +0300
+@@ -16,7 +16,8 @@
+         indice.o          \
+         lrang_poin.o
+ 
+-$(BINDIR)/$(EXEC) : $(OBJETS) $(LIBRAIRIE) ; \
+-         $(LINK) $@ $(OBJETS) $(LIBRAIRIE) ; $(STRIP)
++$(BINDIR)/$(EXEC) : $(OBJETS) $(LIBRAIRIE)
++	$(LINK) $@ $(OBJETS) $(LIBRAIRIE)
+ 
+-clean : ; /bin/rm $(OBJETS) $(BINDIR)/$(EXEC)
++clean :
++	rm $(OBJETS) $(BINDIR)/$(EXEC)
+diff '--color=auto' -ru a/src/various/Makefile b/src/various/Makefile
+--- a/src/various/Makefile	2025-03-15 19:12:02.765192945 +0300
++++ b/src/various/Makefile	2025-03-15 19:28:43.598136485 +0300
+@@ -1,27 +1,27 @@
+ include ../../RULES
+ 
+-all :; make clair clairc3d create_c3d obscur obscurc3d tradavoir translation txt2avoir
++all : clair clairc3d create_c3d obscur obscurc3d tradavoir translation txt2avoir
+ 
+-clair : clair.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/clair $(INCF) clair.f $(LIBRAIRIE) $(LINKOPTX)
++clair : clair.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/clair $(FCFLAGS) $(INCF) clair.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-clairc3d : clairc3d.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/clairc3d $(INCF) clairc3d.f $(LIBRAIRIE) $(LINKOPTX)
++clairc3d : clairc3d.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/clairc3d $(FCFLAGS) $(INCF) clairc3d.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-create_c3d : create_c3d.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/create_c3d $(INCF) create_c3d.f $(LIBRAIRIE) $(LINKOPTX)
++create_c3d : create_c3d.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/create_c3d $(FCFLAGS) $(INCF) create_c3d.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-obscur : obscur.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/obscur $(INCF) obscur.f $(LIBRAIRIE) $(LINKOPTX)
++obscur : obscur.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/obscur $(FCFLAGS) $(INCF) obscur.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-obscurc3d : obscurc3d.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/obscurc3d $(INCF) obscurc3d.f $(LIBRAIRIE) $(LINKOPTX)
++obscurc3d : obscurc3d.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/obscurc3d $(FCFLAGS) $(INCF) obscurc3d.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-tradavoir : tradavoir.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/tradavoir $(INCF) tradavoir.f $(LIBRAIRIE) $(LINKOPTX)
++tradavoir : tradavoir.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/tradavoir $(FCFLAGS) $(INCF) tradavoir.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-translation : translation.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/translation $(INCF) translation.f $(LIBRAIRIE) $(LINKOPTX)
++translation : translation.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/translation $(FCFLAGS) $(INCF) translation.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+-txt2avoir : txt2avoir.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/txt2avoir $(INCF) txt2avoir.f $(LIBRAIRIE) $(LINKOPTX)
++txt2avoir : txt2avoir.f $(LIBRAIRIE)
++	$(LINK) $(BINDIR)/txt2avoir $(FCFLAGS) $(INCF) txt2avoir.f $(LIBRAIRIE) $(LINKOPTX)
+diff '--color=auto' -ru a/src/X/Makefile b/src/X/Makefile
+--- a/src/X/Makefile	2025-03-15 19:12:02.767459381 +0300
++++ b/src/X/Makefile	2025-03-15 19:29:26.910237495 +0300
+@@ -113,16 +113,22 @@
+ tabcol.o \
+ table.o
+ 
+-$(LIB) : $(OBJETS) ; $(AR) $@ $(OBJETS) ; $(RANLIB) $@
++$(LIB) : $(OBJETS)
++	$(AR) $@ $(OBJETS)
++	$(RANLIB) $@
+ 
+ lib : $(LIBMARC)
+-$(LIBMARC) : $(OBJETS) $(OBJETSMARC) ; $(AR) $@ $(OBJETS) $(OBJETSMARC) ; $(RANLIB) $@
++$(LIBMARC) : $(OBJETS) $(OBJETSMARC)
++	$(AR) $@ $(OBJETS) $(OBJETSMARC)
++	$(RANLIB) $@
+ 
+-all :; make ; make lib
++all : lib
+ 
+-clean : ; /bin/rm -f $(OBJETS) $(LIB) $(LIBMARC)
++clean :
++	rm -f $(OBJETS) $(LIB) $(LIBMARC)
+ 
+ x11device.o : mapixmap.h mabitmap.h
+-rotated.o   : rotated.c ; $(COMPILC) $(INCC) $(CACHEROT) $(OPTC) -c rotated.c
++rotated.o   : rotated.c
++	$(COMPILC) $(INCC) $(CACHEROT) $(OPTC) -c rotated.c
+ 
+-include Makefile.dep
+\ No newline at end of file
++include Makefile.dep

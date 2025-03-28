@@ -316,6 +316,10 @@ src_configure() {
 				# (primarily done for 23.0 profiles' -z, not full coverage)
 				filter-flags '-Wl,-z,*'
 
+				# -mavx with mingw-gcc has a history of issues and still see
+				# users have problems despite -mpreferred-stack-boundary=2
+				append-cflags -mno-avx
+
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
 

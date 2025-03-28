@@ -29,7 +29,7 @@ SRC_URI+="
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 IUSE="cairo excel gtk3 latex qt6 tk webagg wxwidgets"
 
 DEPEND="
@@ -261,7 +261,20 @@ python_test() {
 				'tests/test_text.py::test_parse_math'
 				'tests/test_text.py::test_parse_math_rcparams'
 			)
-			;&
+			;;
+		arm)
+			EPYTEST_DESELECT+=(
+				tests/test_backend_ps.py::test_savefig_to_stringio
+				# too large for 32-bit platforms
+				'tests/test_axes.py::test_psd_csd[png]'
+			)
+			;;
+		sparc64)
+			EPYTEST_DESELECT+=(
+				tests/test_backend_pgf.py::test_pdf_pages_metadata_check
+				tests/test_backend_pgf.py::test_minus_signs_with_tex
+			)
+			;;
 		alpha|arm|m68k|o32|ppc|s390|sh|sparc|x86)
 			EPYTEST_DESELECT+=(
 				# too large for 32-bit platforms

@@ -1,0 +1,13 @@
+FindOpenBabel3.cmake is not fully functional
+(confusion between OpenBabel3_INCLUDE_DIR / OPENBABEL3_INCLUDE_DIR)
+The easiest way is to amend here.
+--- a/cmake/FindOpenBabel3.cmake
++++ b/cmake/FindOpenBabel3.cmake
+@@ -26,6 +26,6 @@
+     set_target_properties(OpenBabel3 PROPERTIES
+       IMPORTED_LOCATION "${OpenBabel3_LIBRARY}"
+       IMPORTED_IMPLIB "${OpenBabel3_LIBRARY}"
+-      INTERFACE_INCLUDE_DIRECTORIES "${OpenBabel3_INCLUDE_DIR}")
++      INTERFACE_INCLUDE_DIRECTORIES "${OpenBabel3_INCLUDE_DIR}/openbabel3")
+   endif()
+ endif()

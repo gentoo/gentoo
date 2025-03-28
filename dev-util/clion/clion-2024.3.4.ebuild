@@ -18,7 +18,10 @@ SLOT="0/2024"
 KEYWORDS="~amd64"
 RESTRICT="bindist mirror"
 
-BDEPEND="dev-util/patchelf"
+BDEPEND="
+	dev-util/debugedit
+	dev-util/patchelf
+"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2

@@ -71,7 +71,7 @@ unset MY_BASE my_filename variant up_variant
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 BDEPEND="app-arch/unzip"
 

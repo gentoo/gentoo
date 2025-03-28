@@ -7,6 +7,7 @@ https://bugs.gentoo.org/943820
 https://bugs.gentoo.org/944059
 https://bugs.gentoo.org/944300
 https://bugs.gentoo.org/944344
+[later: https://lists.gnu.org/archive/html/bug-readline/2025-03/msg00000.html]
 --- a/rlstdc.h
 +++ b/rlstdc.h
 @@ -44,7 +44,7 @@

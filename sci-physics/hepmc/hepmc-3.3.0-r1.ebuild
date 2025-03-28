@@ -59,6 +59,9 @@ BDEPEND="
 		app-arch/zstd
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake.patch # gitlab.cern.ch/hepmc/HepMC3/-/merge_requests/377
+)
 
 src_configure() {
 	filter-lto # 941937 941936

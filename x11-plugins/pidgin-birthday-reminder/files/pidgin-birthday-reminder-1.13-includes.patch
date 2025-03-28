@@ -1,0 +1,94 @@
+--- a/src/emblems.c
++++ b/src/emblems.c
+@@ -26,9 +26,9 @@
+ #include "birthday_access.h"
+ #include "pidgin_internals.h"
+ 
+-#include <glib.h>
+-#include <gtkblist.h>
+-#include <debug.h>
++#include <glib-2.0/glib.h>
++#include <pidgin/gtkblist.h>
++#include <libpurple/debug.h>
+ 
+ extern PurplePlugin *plugin;
+ PidginBuddyList *gtkblist = NULL;
+--- a/src/icsexport.c
++++ b/src/icsexport.c
+@@ -22,8 +22,8 @@
+ #include "internal.h"
+ #include "birthday_reminder.h"
+ 
+-#include <prefs.h>
+-#include <debug.h>
++#include <libpurple/prefs.h>
++#include <libpurple/debug.h>
+ 
+ #include <stdio.h>
+ 
+--- a/src/notification.c
++++ b/src/notification.c
+@@ -22,12 +22,12 @@
+ #include "internal.h"
+ 
+ #include <gtk/gtk.h>
+-#include <sound.h>
+-#include <debug.h>
+-#include <request.h>
+-#include <gtkutils.h>
+-#include <gtkblist.h>
+-#include <pidginstock.h>
++#include <libpurple/sound.h>
++#include <libpurple/debug.h>
++#include <libpurple/request.h>
++#include <pidgin/gtkutils.h>
++#include <pidgin/gtkblist.h>
++#include <pidgin/pidginstock.h>
+ 
+ #include "birthday_reminder.h"
+ #include "functions.h"
+--- a/src/pidgin_internals.c
++++ b/src/pidgin_internals.c
+@@ -22,7 +22,7 @@
+ #include "birthday_reminder.h"
+ #include "internal.h"
+ 
+-#include <debug.h>
++#include <libpurple/debug.h>
+ 
+ extern PidginBuddyList *gtkblist;
+ 
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -22,11 +22,11 @@
+ 
+ #include "prefs.h"
+ 
+-#include <debug.h>
++#include <libpurple/debug.h>
+ 
+ #include <gtk/gtk.h>
+-#include <gtkblist.h>
+-#include <gtkutils.h>
++#include <pidgin/gtkblist.h>
++#include <pidgin/gtkutils.h>
+ 
+ #include "birthday_reminder.h"
+ #include "icsexport.h"
+--- a/src/scan.c
++++ b/src/scan.c
+@@ -21,10 +21,10 @@
+ 
+ #include "internal.h"
+ 
+-#include <glib.h>
+-#include <connection.h>
+-#include <debug.h>
+-#include <accountopt.h>
++#include <glib-2.0/glib.h>
++#include <libpurple/connection.h>
++#include <libpurple/debug.h>
++#include <libpurple/accountopt.h>
+ 
+ #include "birthday_reminder.h"
+ #include "check.h"

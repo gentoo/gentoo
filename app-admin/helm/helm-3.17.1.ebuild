@@ -30,7 +30,7 @@ src_compile() {
 		build
 
 	if ! tc-is-cross-compiler; then
-		elog "generating shell completion files"
+		einfo "generating shell completion files"
 		bin/${PN} completion bash > ${PN}.bash || die
 		bin/${PN} completion zsh > ${PN}.zsh || die
 		bin/${PN} completion fish > ${PN}.fish || die

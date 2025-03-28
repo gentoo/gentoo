@@ -104,6 +104,7 @@ src_prepare() {
 
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
+	rm -f test/rubygems/test_bundled_ca.rb || die
 	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb \
 	   spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
 
@@ -234,6 +235,7 @@ src_configure() {
 }
 
 src_compile() {
+	local -x USER=$(whoami)
 	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }

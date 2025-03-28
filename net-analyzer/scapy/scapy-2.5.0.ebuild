@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,7 +65,9 @@ src_prepare() {
 	# Needs ipython
 	rm test/scapy/layers/dhcp.uts || die
 	# Import failure?
-	rm test/contrib/isotp_native_socket.uts test/contrib/isotpscan.uts || die
+	rm test/contrib/isotp_native_socket.uts \
+		test/contrib/isotpscan.uts \
+		test/contrib/isotp_soft_socket.uts || die
 
 	distutils-r1_src_prepare
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,10 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/4"
+SLOT="0/5"
 
 RDEPEND="
-	>=media-video/ffmpeg-2.4:=
+	>=media-video/ffmpeg-6.1:=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
