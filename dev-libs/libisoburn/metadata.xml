@@ -5,6 +5,11 @@
 <email>billie@gentoo.org</email>
 <name>Daniel Pielmeier</name>
 </maintainer>
+<maintainer type="person" proxied="yes">
+<email>scdbackup@gmx.net</email>
+<name>Thomas Schmitt</name>
+<description>Upstream - please CC on bugs that concern upstream</description>
+</maintainer>
 <use>
 <flag name="external-filters">Allow the use of external processes as file content 
 filters (Note: this is a potential security risk)</flag>
