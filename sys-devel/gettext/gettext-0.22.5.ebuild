@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
@@ -7,7 +7,7 @@ EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gettext.asc
 inherit java-pkg-opt-2 libtool multilib-minimal verify-sig toolchain-funcs
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -75,17 +75,10 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21-CVE-2020-12825.patch
+	"${FILESDIR}"/${PN}-0.22.5-autoconf.patch
 )
 
 QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
-
-QA_CONFIG_IMPL_DECL_SKIP=(
-	# bug #898570
-	unreachable
-	MIN
-	alignof
-	static_assert
-)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -101,6 +94,14 @@ src_prepare() {
 
 	default
 
+	for mod in libtextstyle gettext-runtime/intl ; do
+		pushd "${S}"/${mod} &>/dev/null || die
+		eautoconf
+		touch -c {aclocal.m4,Makefile.in,config.h.in,configure} || die
+		touch -c configure || die
+		popd &>/dev/null || die
+	done
+
 	# gettext-0.21.1-java-autoconf.patch changes
 	# gettext-{runtime,tools}/configure.ac and the corresponding
 	# configure scripts. Avoid regenerating other autotools output.
@@ -112,6 +113,12 @@ src_prepare() {
 
 	if use elibc_musl || use elibc_Darwin; then
 		eapply "${FILESDIR}"/${PN}-0.21-musl-omit_setlocale_lock.patch
+	fi
+
+	if use elibc_musl ; then
+		QA_CONFIG_IMPL_DECL_SKIP=( # bug #898570
+			fpurge
+		)
 	fi
 }
 
