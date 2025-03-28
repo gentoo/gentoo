@@ -5,7 +5,7 @@ EAPI=8
 
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools fcaps java-pkg-opt-2 linux-info lua-single perl-functions python-single-r1 systemd tmpfiles udev
 
