@@ -38,6 +38,10 @@ PATCHES=(
 	"${FILESDIR}"/rpc2-2.37-lua.patch
 )
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	default
 	eautoreconf
