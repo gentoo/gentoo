@@ -41,6 +41,7 @@ IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	app-arch/xz-utils
 	dev-libs/elfutils
 	dev-libs/libxml2:2
 	dev-libs/xxhash
