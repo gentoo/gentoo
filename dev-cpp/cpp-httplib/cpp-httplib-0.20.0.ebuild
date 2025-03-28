@@ -46,7 +46,12 @@ DEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-zstd.patch"
+)
 
 src_configure() {
 	local -a mycmakeargs=(
