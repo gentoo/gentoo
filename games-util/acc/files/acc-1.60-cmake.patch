@@ -1,0 +1,11 @@
+Bump version to fix build with CMake 4
+Following upstream release
+https://bugs.gentoo.org/951932
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.4)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ project(acc)
+ 
