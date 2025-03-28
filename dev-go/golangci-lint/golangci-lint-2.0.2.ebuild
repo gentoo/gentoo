@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module
+inherit go-module shell-completion toolchain-funcs
 
 DESCRIPTION="Fast linters runner for Go"
 HOMEPAGE="https://golangci-lint.run/ https://github.com/golangci/golangci-lint"
@@ -18,6 +18,13 @@ KEYWORDS="~amd64"
 
 src_compile() {
 	emake build
+
+	if ! tc-is-cross-compiler; then
+		einfo "generating shell completion files"
+		./golangci-lint completion bash > ${PN}.bash || die
+		./golangci-lint completion zsh > ${PN}.zsh || die
+		./golangci-lint completion fish > ${PN}.fish || die
+	fi
 }
 
 src_test() {
@@ -28,4 +35,12 @@ src_install() {
 	dobin golangci-lint
 	local DOCS=( README.md CHANGELOG.md )
 	einstalldocs
+
+	if ! tc-is-cross-compiler; then
+		newbashcomp ${PN}.bash ${PN}
+		newzshcomp ${PN}.zsh _${PN}
+		dofishcomp ${PN}.fish
+	else
+		ewarn "Shell completion files not installed! Install them manually with '${PN} completion --help'"
+	fi
 }
