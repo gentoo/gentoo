@@ -14,7 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<changelog>https://github.com/zerotier/ZeroTierOne/raw/master/RELEASE-NOTES.md</changelog>
+		<changelog>https://github.com/zerotier/ZeroTierOne/raw/dev/RELEASE-NOTES.md</changelog>
 		<remote-id type="github">zerotier/ZeroTierOne</remote-id>
 	</upstream>
 	<use>
