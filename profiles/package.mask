@@ -57,7 +57,7 @@
 # Removal on 2025-04-25.
 games-emulation/ryujinx
 
-# Hans de Graaff <graaff@gentoo.org> (2026-03-20)
+# Hans de Graaff <graaff@gentoo.org> (2025-03-20)
 # Rails 6.1 is no longer supported upstream. Use a newer Rails version
 # instead. Packages depending exclusively on Rails 6.1 will also be
 # removed. Removal on 2025-04-20.
@@ -75,7 +75,6 @@ dev-ruby/activerecord:6.1
 dev-ruby/activemodel:6.1
 dev-ruby/activesupport:6.1
 dev-ruby/actionpack-action_caching
-dev-ruby/coffee-rails
 dev-ruby/will_paginate:3
 =www-apps/redmine-5*
 
