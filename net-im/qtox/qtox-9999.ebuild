@@ -34,7 +34,7 @@ RDEPEND="
 	media-gfx/qrencode:=
 	media-libs/libexif
 	media-libs/openal
-	media-video/ffmpeg:=[webp,v4l]
+	media-video/ffmpeg:=[webp]
 	>=net-libs/tox-0.2.19:=[av]
 	spellcheck? (
 		|| (
