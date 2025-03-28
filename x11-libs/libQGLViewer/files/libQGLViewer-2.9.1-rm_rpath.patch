@@ -1,0 +1,18 @@
+rm rpath
+diff --git a/examples/examples.pri b/examples/examples.pri
+index 5b0a6d0..6dfefb7 100644
+--- a/examples/examples.pri
++++ b/examples/examples.pri
+@@ -66,12 +66,6 @@ unix {
+                     LIB_NAME = QGLViewer-qt6
+                 }
+             }
+-
+-			isEmpty(QMAKE_LFLAGS_RPATH) {
+-				!plugin:QMAKE_LFLAGS += -Wl,-rpath,$${LIB_DIR_ABSOLUTE_PATH}
+-			} else {
+-				!plugin:QMAKE_RPATHDIR *= $${LIB_DIR_ABSOLUTE_PATH}
+-			}
+ 			LIBS *= -L$${LIB_DIR} -l$${LIB_NAME}
+ 		}
+ 	} else {
