@@ -21,7 +21,6 @@
 		<flag name="chromaprint">Enable audio fingerprinting support via <pkg>media-libs/chromaprint</pkg></flag>
 		<flag name="chromium">Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.</flag>
 		<flag name="codec2">Enable codec2 low bit rate speech codec support via <pkg>media-libs/codec2</pkg></flag>
-		<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
 		<flag name="cuda">Enable support for various GPU-accelerated filters using NVIDIA PTX compiled with <pkg>llvm-core/clang</pkg></flag>
 		<flag name="dav1d">Enable AV1 decoding support via <pkg>media-libs/dav1d</pkg></flag>
 		<flag name="drm">
@@ -46,18 +45,7 @@
 			Enable using <pkg>net-libs/gnutls</pkg> for TLS/HTTPS support
 			and other minor functions (has no effect if USE=openssl is set)
 		</flag>
-		<flag name="glslang">Use <pkg>dev-util/glslang</pkg> to compile GLSL</flag>
 		<flag name="gpl">Enable use of GPL licensed code, should be kept enabled unless LGPL binaries are needed</flag>
-		<flag name="hardcoded-tables">
-			Use pre-calculated tables rather than calculating them on the fly.
-
-			It results in an increase of approximately 15% in the size of libavcodec, the main library impacted by this change.
-			It enables savings in table generation time, done once at codec initialization, since by hardcoding the tables,
-			they do not need to be computed at runtime. However, the savings are often negligible (~100k cycles is a typical number) especially when amortized
-			over the entire encoding/decoding operation.
-
-			Improvements are being made to the runtime initialization, and so over time, this option will have an impact on fewer and fewer codecs.
-		</flag>
 		<flag name="iec61883">Enable FireWire DV/HDV input device support via <pkg>media-libs/libiec61883</pkg></flag>
 		<flag name="kvazaar">Enable H.265/HEVC encoding support via <pkg>media-libs/kvazaar</pkg></flag>
 		<flag name="lcms">Enable ICC profile support via <pkg>media-libs/lcms</pkg></flag>
@@ -66,7 +54,6 @@
 			is the reference implementation and is slower than the alternatives)
 		</flag>
 		<flag name="libaribb24">Enable ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg></flag>
-		<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
 		<flag name="libilbc">Enable internet Low Bitrate Codec de/encoding support via <pkg>media-libs/libilbc</pkg></flag>
 		<flag name="liblc3">Enable Low Complexity Communication Codec de/encoding support via <pkg>media-sound/liblc3</pkg></flag>
 		<flag name="libplacebo">Enable use of GPU-accelerated filters from <pkg>media-libs/libplacebo</pkg></flag>
@@ -76,14 +63,7 @@
 		</flag>
 		<flag name="libsoxr">Enable use of the audio resampler from <pkg>media-libs/soxr</pkg></flag>
 		<flag name="libtesseract">Enable Optical Character Recognition (OCR) filter support via <pkg>app-text/tesseract</pkg></flag>
-		<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
-		<flag name="libxml2">Uses <pkg>dev-libs/libxml2</pkg> to enable dash demuxing support.</flag>
 		<flag name="lv2">Enable use of filters through <pkg>media-libs/lv2</pkg></flag>
-		<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
-		<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
-		<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
-		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
-		<flag name="network">Enables network streaming support</flag>
 		<flag name="npp">
 			Enable Nvidia Performance Primitives-based filters via
 			<pkg>dev-util/nvidia-cuda-toolkit</pkg> (warning: if USE=gpl
@@ -95,7 +75,6 @@
 			Enable using <pkg>dev-libs/openssl</pkg> for TLS/HTTPS support
 			and other minor functions (USE=gnutls has no effect if set)
 		</flag>
-		<flag name="pic">Force shared libraries to be built as PIC (this is safer)</flag>
 		<flag name="postproc">
 			Enable libpostproc video post processing library support
 			(should not disable this unless need to disable USE=gpl)
