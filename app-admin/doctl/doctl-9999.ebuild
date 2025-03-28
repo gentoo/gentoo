@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
-
-inherit bash-completion-r1 edo git-r3 go-module
+inherit edo git-r3 go-module shell-completion
 
 DESCRIPTION="A command line tool for DigitalOcean services"
 HOMEPAGE="https://github.com/digitalocean/doctl"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
 
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
-KEYWORDS=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -32,7 +29,8 @@ src_compile() {
 }
 
 src_test() {
-	GOFLAGS="-v -x -mod=vendor" ego test -work ./do/... ./pkg/... .
+	GOFLAGS="-v -x -mod=vendor" ego test -work ./commands/... ./do/... \
+		./pkg/... ./internal/... .
 }
 
 src_install() {
@@ -40,8 +38,6 @@ src_install() {
 	dobin doctl
 
 	newbashcomp doctl.bash doctl
-	insinto /usr/share/zsh/site-functions
-	newins doctl.zsh _doctl
-	insinto /usr/share/fish/completion
-	newins doctl.fish doctl
+	newfishcomp doctl.fish doctl
+	newzshcomp doctl.zsh _doctl
 }
