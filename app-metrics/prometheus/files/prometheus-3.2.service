@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus Server
+Documentation=https://prometheus.io/docs/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+Group=prometheus
+Restart=always
+ExecStart=/usr/bin/prometheus \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus/data
+
+[Install]
+WantedBy=multi-user.target
