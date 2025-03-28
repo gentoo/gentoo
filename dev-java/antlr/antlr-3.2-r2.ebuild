@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -91,7 +91,7 @@ src_install() {
 
 src_test() {
 	cd tool/src/test/java || die
-	local CP=".:${S}/${PN}-runtime.jar:${S}/${PN}-tool.jar:$(java-pkg_getjars junit-4,${JAVA_GENTOO_CLASSPATH})"
+	local CP=".:${S}/${PN}-runtime.jar:${S}/${PN}-tool.jar:$(java-pkg_getjars --build-only junit-4,${JAVA_GENTOO_CLASSPATH})"
 
 	local TESTS=$(find * -name "Test*.java")
 	TESTS="${TESTS//.java}"
