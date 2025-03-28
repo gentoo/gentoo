@@ -77,7 +77,7 @@ _setup-allowed-flags() {
 		-ggdb '-ggdb[0-9]'
 		-gdwarf '-gdwarf-*'
 		-gstabs -gstabs+
-		-gz
+		-gz '-gz=*'
 		-glldb
 		'-fdebug-default-version=*'
 
