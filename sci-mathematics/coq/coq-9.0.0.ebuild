@@ -80,7 +80,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export -x CAML_LD_LIBRARY_PATH="${S}/kernel/byterun/"
+	local -x CAML_LD_LIBRARY_PATH="${S}/kernel/byterun/"
 
 	DUNE_PACKAGES=(
 		coq
