@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,3 +18,5 @@ HOMEPAGE="https://github.com/Grumbel/tinycmmc"
 
 LICENSE="GPL-3+"
 SLOT="0"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.1.0-cmake4.patch )
