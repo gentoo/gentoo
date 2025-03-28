@@ -12,11 +12,8 @@ inherit cargo llvm-r1 shell-completion
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"
-SRC_URI="
-	https://gitlab.com/sequoia-pgp/sequoia-sq/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
-	${CARGO_CRATE_URIS}
-"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-crates.tar.xz"
+SRC_URI="https://gitlab.com/sequoia-pgp/sequoia-sq/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+SRC_URI+=" https://github.com/gentoo-crate-dist/${PN}/releases/download/v${PV}/${P}-crates.tar.xz"
 S="${WORKDIR}"/${PN}-v${PV}
 
 LICENSE="LGPL-2.1+"
