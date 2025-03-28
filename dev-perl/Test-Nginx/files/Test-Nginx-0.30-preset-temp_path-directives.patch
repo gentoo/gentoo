@@ -1,0 +1,38 @@
+From 2ab64d371acfed9189656b3fd099c2747209c98f Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Wed, 12 Feb 2025 13:38:44 +0100
+Subject: [PATCH] Util.pm: preset *temp_path directives to subdirectoroes of
+ servroot
+
+This avoids errors when NGINX, launched as non-root, tries writing
+various temporary files into default compiled-in directoroes that is
+only writable by root.
+
+This commit sets the directives that control where the temp files are
+saved, to point to a subdirectory of the temporary testing server root,
+which is writable by the user executing NGINX.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ lib/Test/Nginx/Util.pm | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/lib/Test/Nginx/Util.pm b/lib/Test/Nginx/Util.pm
+index 1d4aa38..1af9277 100644
+--- a/lib/Test/Nginx/Util.pm
++++ b/lib/Test/Nginx/Util.pm
+@@ -1168,6 +1168,11 @@ _EOC_
+ $main_config
+ 
+ http {
++    client_body_temp_path $ServRoot/client_body_temp;
++    proxy_temp_path $ServRoot/proxy_temp;
++    fastcgi_temp_path $ServRoot/fastcgi_temp;
++    scgi_temp_path $ServRoot/scgi_temp;
++    uwsgi_temp_path $ServRoot/uwsgi_temp;
+     access_log $AccLogFile;
+     #access_log off;
+ 
+-- 
+2.45.3
+
