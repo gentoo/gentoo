@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} luajit )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit lua-single python-any-r1 scons-utils toolchain-funcs
 
