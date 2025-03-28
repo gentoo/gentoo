@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit flag-o-matic qmake-utils
 
 DESCRIPTION="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
-HOMEPAGE="http://www.libqglviewer.com"
-SRC_URI="http://www.libqglviewer.com/src/${P}.tar.gz"
+HOMEPAGE="https://github.com/GillesDebunne/libQGLViewer"
+SRC_URI="https://github.com/GillesDebunne/libQGLViewer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/qt5"
