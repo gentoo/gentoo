@@ -3,32 +3,25 @@
 
 EAPI=8
 
-inherit cmake git-r3 toolchain-funcs
+MY_P=FANN-${PV}-Source
+inherit cmake
 
 DESCRIPTION="Fast Artificial Neural Network Library"
 HOMEPAGE="https://leenissen.dk"
-EGIT_REPO_URI="https://github.com/libfann/fann"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.zip"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="examples test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="examples"
 
-BDEPEND="
-	test? ( dev-cpp/gtest )
-"
+BDEPEND="app-arch/unzip"
 
 PATCHES=(
+	"${FILESDIR}/${P}-examples.patch"
 	"${FILESDIR}/${P}-cmake.patch"
 )
-
-src_prepare() {
-	cmake_src_prepare
-
-	if use !test; then
-		sed -i '/ADD_SUBDIRECTORY( tests )/d' CMakeLists.txt || die
-	fi
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -39,8 +32,9 @@ src_configure() {
 }
 
 src_test() {
-	cd examples || die 'fails to enter examples directory'
-	LD_LIBRARY_PATH="${BUILD_DIR}/src" GCC="$(tc-getCC) ${CFLAGS} -I../src/include -L${BUILD_DIR}/src" emake -e runtest
+	cd examples || die
+	emake CFLAGS="${CFLAGS} -I../src/include -L${BUILD_DIR}/src"
+	LD_LIBRARY_PATH="${BUILD_DIR}/src" emake runtest
 	emake clean
 }
 
