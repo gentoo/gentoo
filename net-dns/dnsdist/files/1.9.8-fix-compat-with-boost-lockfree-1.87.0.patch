@@ -1,0 +1,90 @@
+Patch from: https://github.com/PowerDNS/pdns/pull/15181
+Fixed file paths for dnsdist tarball.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+From: Remi Gacogne <remi.gacogne@powerdns.com>
+Date: Mon, 10 Feb 2025 11:24:28 +0100
+Subject: [PATCH] dnsdist-1.9.x: Fix compatibility with boost::lockfree >= 1.87.0
+
+In https://github.com/boostorg/lockfree/pull/90 `boost::lockfree::spsc_queue`
+introduced moved semantics, which is great, but added restrictions
+to the callback functor that did not exist before, breaking the API.
+This PR fixes that by updating our callbacks to expect an object
+instead of a reference.
+
+(cherry picked from commit 05543aed8ccff2270a65d3f9b75e6e9d894b8b45)
+---
+ dnsdist-xsk.cc | 6 +++---
+ xsk.cc         | 4 ++--
+ xsk.hh         | 4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/dnsdist-xsk.cc b/dnsdist-xsk.cc
+index 7e83c510093e..dcbd79459796 100644
+--- a/dnsdist-xsk.cc
++++ b/dnsdist-xsk.cc
+@@ -48,7 +48,7 @@ void XskResponderThread(std::shared_ptr<DownstreamState> dss, std::shared_ptr<Xs
+       if ((pollfds[0].revents & POLLIN) != 0) {
+         needNotify = true;
+         xskInfo->cleanSocketNotification();
+-        xskInfo->processIncomingFrames([&](XskPacket& packet) {
++        xskInfo->processIncomingFrames([&](XskPacket packet) {
+           if (packet.getDataLen() < sizeof(dnsheader)) {
+             xskInfo->markAsFree(packet);
+             return;
+@@ -167,7 +167,7 @@ void XskRouter(std::shared_ptr<XskSocket> xsk)
+         if ((fds.at(fdIndex).revents & POLLIN) != 0) {
+           ready--;
+           const auto& info = xsk->getWorkerByDescriptor(fds.at(fdIndex).fd);
+-          info->processOutgoingFrames([&](XskPacket& packet) {
++          info->processOutgoingFrames([&](XskPacket packet) {
+             if ((packet.getFlags() & XskPacket::UPDATE) == 0) {
+               xsk->markAsFree(packet);
+               return;
+@@ -202,7 +202,7 @@ void XskClientThread(ClientState* clientState)
+     while (!xskInfo->hasIncomingFrames()) {
+       xskInfo->waitForXskSocket();
+     }
+-    xskInfo->processIncomingFrames([&](XskPacket& packet) {
++    xskInfo->processIncomingFrames([&](XskPacket packet) {
+       if (XskProcessQuery(*clientState, holders, packet)) {
+         packet.updatePacket();
+         xskInfo->pushToSendQueue(packet);
+diff --git a/xsk.cc b/xsk.cc
+index 5851f1b9b79e..d246a1d72e83 100644
+--- a/xsk.cc
++++ b/xsk.cc
+@@ -1185,7 +1185,7 @@ bool XskWorker::hasIncomingFrames()
+   return d_incomingPacketsQueue.read_available() != 0U;
+ }
+ 
+-void XskWorker::processIncomingFrames(const std::function<void(XskPacket& packet)>& callback)
++void XskWorker::processIncomingFrames(const std::function<void(XskPacket packet)>& callback)
+ {
+   if (d_type == Type::OutgoingOnly) {
+     throw std::runtime_error("Looking for incoming packets in an outgoing-only XSK Worker");
+@@ -1194,7 +1194,7 @@ void XskWorker::processIncomingFrames(const std::function<void(XskPacket& packet
+   d_incomingPacketsQueue.consume_all(callback);
+ }
+ 
+-void XskWorker::processOutgoingFrames(const std::function<void(XskPacket& packet)>& callback)
++void XskWorker::processOutgoingFrames(const std::function<void(XskPacket packet)>& callback)
+ {
+   d_outgoingPacketsQueue.consume_all(callback);
+ }
+diff --git a/xsk.hh b/xsk.hh
+index 2f3e7c372e35..ff36be5ecd96 100644
+--- a/xsk.hh
++++ b/xsk.hh
+@@ -312,8 +312,8 @@ public:
+   void pushToProcessingQueue(XskPacket& packet);
+   void pushToSendQueue(XskPacket& packet);
+   bool hasIncomingFrames();
+-  void processIncomingFrames(const std::function<void(XskPacket& packet)>& callback);
+-  void processOutgoingFrames(const std::function<void(XskPacket& packet)>& callback);
++  void processIncomingFrames(const std::function<void(XskPacket packet)>& callback);
++  void processOutgoingFrames(const std::function<void(XskPacket packet)>& callback);
+   void markAsFree(const XskPacket& packet);
+   // notify worker that at least one packet is available for processing
+   void notifyWorker() const;
