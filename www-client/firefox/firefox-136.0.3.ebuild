@@ -82,7 +82,7 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="+clang dbus debug eme-free hardened hwaccel jack libproxy pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-jpeg +system-libevent"
-IUSE+=" +system-libvpx system-png +system-webp valgrind wayland wifi +X"
+IUSE+=" +system-libvpx system-png +system-webp test valgrind wayland wifi +X"
 
 # Firefox-only IUSE
 IUSE+=" +gmp-autoupdate gnome-shell +jumbo-build openh264 +telemetry wasm-sandbox"
@@ -98,6 +98,8 @@ REQUIRED_USE="|| ( X wayland )
 	wayland? ( dbus )
 	wifi? ( dbus )
 "
+
+RESTRICT="!test? ( test )"
 
 FF_ONLY_DEPEND="!www-client/firefox:0
 	selinux? ( sec-policy/selinux-mozilla )"
@@ -794,7 +796,6 @@ src_configure() {
 		--disable-legacy-profile-creation \
 		--disable-parental-controls \
 		--disable-strip \
-		--disable-tests \
 		--disable-updater \
 		--disable-wmf \
 		--enable-negotiateauth \
@@ -1071,6 +1072,8 @@ src_configure() {
 		mozconfig_add_options_mk '-telemetry setting' "MOZ_TELEMETRY_REPORTING=0"
 	fi
 
+	mozconfig_use_enable test tests
+
 	# Disable notification when build system has finished
 	export MOZ_NOSPAM=1
 
@@ -1150,6 +1153,105 @@ src_compile() {
 	fi
 
 	${virtx_cmd} ./mach build --verbose || die
+}
+
+src_test() {
+	# https://firefox-source-docs.mozilla.org/testing/automated-testing/index.html
+	local -a failures=()
+
+	# Some tests respects this
+	local -x MOZ_HEADLESS=1
+
+	# Check testing/mach_commands.py
+	einfo "Testing with cppunittest ..."
+	./mach cppunittest
+	local ret=$?
+	if [[ ${ret} -ne 0 ]]; then
+		eerror "Test suite cppunittest failed with error code ${ret}"
+		failures+=( cppunittest )
+	fi
+
+	#FIXME: tries to setup virtualenv and install dependencies via pip
+	# https://firefox-source-docs.mozilla.org/testing/mochitest-plain/index.html
+	#einfo "Runnings mochitest plain tests ..."
+	#./mach --verbose mochitest -f plain --verbose || failures+=( mochitest-plain )
+
+	#FIXME: GLEAN_METRICS_FILE???
+	# https://firefox-source-docs.mozilla.org/testing-rust-code/index.html#rust-tests
+	# einfo "Runnings rusttests tests ..."
+	#./mach --verbose rusttests || failured+=( rusttests )
+
+	#FIXME: tries to setup virtualenv and install dependencies via pip
+	# https://firefox-source-docs.mozilla.org/web-platform/index.html
+	#einfo "Testing with web-platform-tests ..."
+	#./mach --verbose wpt || failured+=( web-platform-tests )
+
+	#FIXME: Doesn't play well with GCC lto, PGO and requires apparent patching for USE="-pulseaudio"
+	# https://firefox-source-docs.mozilla.org/gtest/index.html
+	local skip_gtest=(
+		#FIXME:
+		cubeb.run_volume_test_short
+		cubeb.run_volume_test_float
+		cubeb.run_channel_rate_test
+		cubeb.test_input_callback
+		cubeb.test_output_callback
+		cubeb.test_duplex_callback
+		cubeb.destroy_default_collection
+		cubeb.enumerate_devices
+		cubeb.stream_get_current_device
+		cubeb.duplex
+		cubeb.duplex_collection_change
+		cubeb.duplex_collection_change_no_unregister
+		cubeb.one_duplex_one_input
+		cubeb.latency
+		cubeb.logging
+		cubeb.overload_callback
+		cubeb.record
+		cubeb.init_destroy_context
+		cubeb.init_destroy_multiple_contexts
+		cubeb.context_variables
+		cubeb.init_destroy_stream
+		cubeb.init_destroy_multiple_streams
+		cubeb.configure_stream
+		cubeb.configure_stream_undefined_layout
+		cubeb.init_start_stop_destroy_multiple_streams
+		cubeb.init_destroy_multiple_contexts_and_streams
+		cubeb.basic_stream_operations
+		cubeb.stream_position
+		cubeb.drain
+		cubeb.stable_devid
+		cubeb.tone
+		#FIXME: segfault
+		WebRtcIce*
+		#FIXME: wrong date back?
+		# gcc-15 related??
+		FOGFixture.TestCppDatetimeWorks
+		#FIXME: got "Español (España)" expected "español (España)
+		# Environment?
+		IntlDisplayNames.Language
+		# network-sandbox
+		TestUDPSocket.TestUDPSocketMain
+	)
+	#einfo "Testing with gtest ..."
+	# Note: gtest builds an alternate libxul with tests built-in and the tests are run against that
+	# multiple jobs cant be used in tests as segfaults lead to a hang
+	#./mach --verbose gtest --jobs 1 -- "*-$(IFS=':'; echo "${skip_gtest[*]}")"
+	#local ret=$?
+	#if [[ ${ret} -ne 0 ]]; then
+	#	eerror "Test suite gtest failed with error code ${ret}"
+	#	failures+=( gtest )
+	#fi
+
+	#FIXME: hangs
+	# https://firefox-source-docs.mozilla.org/testing/xpcshell/index.html
+	#einfo "Running xpcshell-test tests ..."
+	#./mach --verbose xpcshell-test --verbose || failures+=( xpcshell-test )
+
+	if [[ ${#failures} -eq 0 ]]; then
+		einfo "Test suites succeeded"
+	else
+		die "Test suites failed: ${failures[@]}"
+	fi
 }
 
 src_install() {
