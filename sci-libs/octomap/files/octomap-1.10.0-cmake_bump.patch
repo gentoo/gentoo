@@ -1,0 +1,42 @@
+https://github.com/OctoMap/octomap/pull/432.patch
+bump cmake_minimum to prepare cmake-4
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f1eb31f3..63498f5b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.0.2)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ PROJECT( octomap-distribution )
+ 
+ ENABLE_TESTING()  # enable CTest environment of subprojects
+diff --git a/dynamicEDT3D/CMakeLists.txt b/dynamicEDT3D/CMakeLists.txt
+index 7edfdde9..3dfd2399 100644
+--- a/dynamicEDT3D/CMakeLists.txt
++++ b/dynamicEDT3D/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ PROJECT(dynamicEDT3D)
+ 
+ include(CTest)
+diff --git a/octomap/CMakeLists.txt b/octomap/CMakeLists.txt
+index 87a78e9c..148a1332 100644
+--- a/octomap/CMakeLists.txt
++++ b/octomap/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ PROJECT( octomap )
+ 
+ include(CTest)
+diff --git a/octovis/CMakeLists.txt b/octovis/CMakeLists.txt
+index 84fa3675..79e6978f 100644
+--- a/octovis/CMakeLists.txt
++++ b/octovis/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ PROJECT( octovis )
+ 
+ include(CTest)

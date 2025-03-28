@@ -1,0 +1,32 @@
+Prefer pkgconfig for QGLViewer, easier than findcmake file and it avoids call of 3rd library
+diff --git a/octovis/CMakeLists.txt b/octovis/CMakeLists.txt
+index 84fa367..bc54f36 100644
+--- a/octovis/CMakeLists.txt
++++ b/octovis/CMakeLists.txt
+@@ -77,7 +77,8 @@ endif(NOT OCTOVIS_QT5)
+ IF (OpenGL-NOTFOUND OR Qt4-NOTFOUND)
+ 	MESSAGE ( "OpenGL and QT4 are required for octovis but could not be found.")
+ ELSE()
+-	FIND_PACKAGE(QGLViewer)
++	FIND_PACKAGE(PkgConfig REQUIRED)
++	pkg_check_modules(QGLViewer libQGLViewer)
+ 	IF(QGLViewer_FOUND)
+ 	  SET( BUILD_VIEWER 1)
+ 	ELSE()
+diff --git a/octovis/CMakeLists_src.txt b/octovis/CMakeLists_src.txt
+index 35bc1f2..85fd61a 100644
+--- a/octovis/CMakeLists_src.txt
++++ b/octovis/CMakeLists_src.txt
+@@ -57,11 +57,8 @@ else(OCTOVIS_QT5)
+   QT4_ADD_RESOURCES(viewer_RES src/icons.qrc)
+ endif(OCTOVIS_QT5)
+ 
+-#found QGLViewer lib dir
+-link_directories(${QGLViewer_LIBRARY_DIR})
+-
+ INCLUDE_DIRECTORIES(
+-  ${QGLViewer_INCLUDE_DIR}
++  ${QGLViewer_INCLUDE_DIRS}
+ )
+ 
+ SET(viewer_MOC_HDRS

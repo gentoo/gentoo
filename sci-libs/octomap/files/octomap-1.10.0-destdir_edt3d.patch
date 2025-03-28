@@ -1,0 +1,18 @@
+use cmake variables
+diff --git a/dynamicEDT3D/CMakeLists.txt b/dynamicEDT3D/CMakeLists.txt
+index 7edfdde..14bdf49 100644
+--- a/dynamicEDT3D/CMakeLists.txt
++++ b/dynamicEDT3D/CMakeLists.txt
+@@ -46,9 +46,9 @@ LINK_DIRECTORIES(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+ # Installation
+ 
+ set(INSTALL_TARGETS_DEFAULT_ARGS
+-	RUNTIME DESTINATION bin
+-	LIBRARY DESTINATION lib
+-	ARCHIVE DESTINATION lib
++	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
+ 
+ find_package(octomap REQUIRED
