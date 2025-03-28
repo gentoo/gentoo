@@ -17,5 +17,5 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm64"
 
 ruby_add_rdepend "
-	>=dev-ruby/google-protobuf-3.18:3
+	|| ( =dev-ruby/google-protobuf-4* >=dev-ruby/google-protobuf-3.18:3 )
 "
