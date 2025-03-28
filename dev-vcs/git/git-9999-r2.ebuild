@@ -150,6 +150,11 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
 	"${FILESDIR}"/${PN}-2.49.0-meson-use-test_environment-conditionally.patch
+
+	# This patch isn't merged upstream but is kept in the ebuild by
+	# demand from developers. It's opt-in (needs a config option)
+	# and the documentation mentions that it is a Gentoo addition.
+	"${FILESDIR}"/${PN}-2.49.0-diff-implement-config.diff.renames-copies-harder.patch
 )
 
 pkg_setup() {
