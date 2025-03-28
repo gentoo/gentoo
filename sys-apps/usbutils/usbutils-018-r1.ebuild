@@ -50,7 +50,7 @@ src_install() {
 
 	if use usbreset ; then
 		# https://github.com/gregkh/usbutils/issues/214
-		dobin ${BUILD_DIR}/usbreset
+		dobin "${BUILD_DIR}"/usbreset
 		doman man/usbreset.1
 	fi
 
