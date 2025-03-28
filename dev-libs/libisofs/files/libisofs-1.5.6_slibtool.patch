@@ -1,0 +1,26 @@
+From 30fcd2d84ba3dd569f5c55dfeeca3bccf2b58e65 Mon Sep 17 00:00:00 2001
+From: Thomas Schmitt <scdbackup@gmx.net>
+Date: Mon, 24 Mar 2025 08:51:23 +0100
+Subject: [PATCH] Added to configure.ac explicit checks for stdint.h,
+ inttypes.h, stdlib.h because slibtool does not put them into ./configure by
+ default
+
+---
+ configure.ac | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1de58d6..7e86463 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,7 +96,9 @@ AC_SUBST(LIBTOOL_DEPS)
+ 
+ AC_PROG_INSTALL
+ 
+-AC_CHECK_HEADERS()
++dnl GNU libtool checks them by default/unconditionally, but slibtool does not.
++dnl So accept the ugly double check and -DHAVE_*_H arguments with GNU libtool.
++AC_CHECK_HEADERS(stdint.h inttypes.h stdlib.h)
+ 
+ dnl Use GNU extensions if available
+ AC_DEFINE(_GNU_SOURCE, 1)
