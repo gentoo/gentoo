@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,6 +59,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5.2-gnome-session.patch"
 	# see https://github.com/danakj/openbox/pull/35
 	"${FILESDIR}/${PN}-3.6.1-py3-xdg.patch"
+	# https://bugs.gentoo.org/827227
+	"${FILESDIR}/${PN}-3.6.1-getgrent-to-getgroups.patch"
+	# https://bugs.gentoo.org/901777
+	"${FILESDIR}/${PN}-3.6.1-glib-2.76.patch"
 )
 
 pkg_setup() {
