@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+			Yet another library for C++ for parsing JSON. Uses SIMD as well. In some benchmarks is better than simdjson.
+	</longdescription>
+	<use>
+		<flag name="fuzzing">Build fuzzers (not install)</flag>
+		<flag name="doc">Install README files</flag>
+		<flag name="examples">Build examples (not install)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">stephenberry/glaze</remote-id>
+	</upstream>
+</pkgmetadata>
