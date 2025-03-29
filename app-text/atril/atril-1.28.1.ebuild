@@ -10,9 +10,9 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit mate python-any-r1 virtualx
 
 DESCRIPTION="Atril document viewer for MATE"
+LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
-LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
 
 IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synctex t1lib test tiff xps"
