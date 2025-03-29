@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="sqlite"
 
 DOCS_BUILDER=mkdocs
@@ -21,8 +21,7 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	SRC_URI="
 		https://github.com/hydrusnetwork/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/vaartis/hydrus/commit/5d2505a1eb4721f7750861f7622c46adec31db8b.diff -> hydrus-3500-mpeg-error.patch
-		https://github.com/vaartis/hydrus/commit/dc20196f47ac29568a40cd04a45cf4fc5f237603.diff -> hydrus-test-fixes.patch
+		https://github.com/vaartis/hydrus/commit/d836d555cb5a3621c38b1c607d29be0fe407e062.patch -> hydrus-test-fixes-3.12.patch
 "
 
 	KEYWORDS="~amd64"
@@ -60,6 +59,7 @@ RDEPEND="
 		dev-python/send2trash[${PYTHON_USEDEP}]
 		dev-python/service-identity[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 
 		dev-python/qtpy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
 
@@ -79,8 +79,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/userpath-in-local-share.patch"
-	"${DISTDIR}/hydrus-3500-mpeg-error.patch"
-	"${DISTDIR}/hydrus-test-fixes.patch"
+	"${DISTDIR}/hydrus-test-fixes-3.12.patch"
 )
 
 src_prepare() {
