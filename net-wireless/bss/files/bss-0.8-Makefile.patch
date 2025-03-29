@@ -1,3 +1,4 @@
+Make build system respect CFLAGS and PREFIX
 https://bugs.gentoo.org/725228
 --- a/Makefile
 +++ b/Makefile
@@ -12,8 +13,8 @@ https://bugs.gentoo.org/725228
  
 -BINDIR=/usr/local/bin
 -ETCDIR=/usr/local/etc
-+BINDIR=/usr/bin
-+ETCDIR=/usr/etc
++BINDIR=$(EPREFIX)/usr/bin
++ETCDIR=$(EPREFIX)/usr/etc
  
  BSS_OBJ=bss
  BSS_SRC=bss.c
