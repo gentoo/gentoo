@@ -511,7 +511,6 @@ app-emulation/virtualbox-kvm
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
-dev-ml/async_kernel:0/0.17
 dev-ml/async_unix:0/0.17
 dev-ml/protocol_version_header:0/0.17
 dev-ml/async_rpc_kernel:0/0.17
