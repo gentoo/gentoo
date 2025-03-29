@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic multilib-minimal toolchain-funcs
 
 FFMPEG_SOC_PATCH=
-FFMPEG_SUBSLOT=59.61.61 # avutil.avcodec.avformat SONAME
+FFMPEG_SUBSLOT=60.62.62 # avutil.avcodec.avformat SONAME
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
