@@ -174,7 +174,7 @@ dev-libs/intel-compute-runtime
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
 # https://github.com/rr-debugger/rr/issues/2236
-dev-util/rr
+dev-debug/rr
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Packages with dubious sys-libs/glibc dependencies (non-binary) but
