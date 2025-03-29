@@ -20,7 +20,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac benchmark ffmpeg keyfinder lv2 midi modplug mp3 mp4 opus"
+# gles2-only: at least not before release 2.6
+IUSE="aac benchmark ffmpeg gles2-only keyfinder lv2 midi modplug mp3 mp4 opus"
 IUSE+=" qtkeychain rubberband shout test upower wavpack"
 REQUIRED_USE="
 	benchmark? ( test )
@@ -34,7 +35,7 @@ RDEPEND="
 	dev-libs/hidapi
 	dev-libs/protobuf:=
 	dev-qt/qt5compat:6[qml]
-	dev-qt/qtbase:6[concurrent,dbus,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
+	dev-qt/qtbase:6[concurrent,dbus,gles2-only=,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtshadertools:6
 	dev-qt/qtsvg:6
@@ -47,7 +48,7 @@ RDEPEND="
 	media-libs/libsoundtouch:=
 	media-libs/libvorbis
 	media-libs/portaudio
-	<media-libs/taglib-2
+	media-libs/taglib:=
 	media-sound/lame
 	virtual/glu
 	virtual/libusb:1
@@ -134,6 +135,7 @@ src_configure() {
 		-DOPTIMIZE=OFF
 		-DOPUS="$(usex opus)"
 		-DPORTMIDI="$(usex midi)"
+		-DQGLES2="$(usex gles2-only)"
 		-DQML=ON
 		-DQTKEYCHAIN="$(usex qtkeychain)"
 		-DRUBBERBAND="$(usex rubberband)"

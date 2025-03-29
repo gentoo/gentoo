@@ -1,0 +1,158 @@
+https://github.com/mixxxdj/mixxx/pull/12854.patch
+From ed547fd2b0f9dee98740fcf32c1307a092470322 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Sch=C3=BCrmann?= <daschuer@mixxx.org>
+Date: Tue, 20 Feb 2024 22:59:18 +0100
+Subject: [PATCH 1/3] Add multi value protection for all muti-value tags: (Add
+ title album and comment as well)
+
+---
+ src/track/taglib/trackmetadata_common.cpp | 24 +++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/src/track/taglib/trackmetadata_common.cpp b/src/track/taglib/trackmetadata_common.cpp
+index 77c84f41bbd..e4609bc0558 100644
+--- a/src/track/taglib/trackmetadata_common.cpp
++++ b/src/track/taglib/trackmetadata_common.cpp
+@@ -274,20 +274,25 @@ void exportTrackMetadataIntoTag(
+         WriteTagMask writeMask) {
+     DEBUG_ASSERT(pTag); // already validated before
+ 
+-    pTag->setTitle(toTString(trackMetadata.getTrackInfo().getTitle()));
+-    pTag->setAlbum(toTString(trackMetadata.getAlbumInfo().getTitle()));
+-
+     // The mapping of multi-valued fields in TagLib is not bijective.
+     // We don't want to overwrite existing values if the corresponding
+-    // field has not been modified in Mixxx. This workaround only covers
+-    // the most common multi-valued fields.
++    // field has not been modified in Mixxx.
+     //
+     // See also: <https://github.com/mixxxdj/mixxx/issues/12587>
+-    const auto artist = toTString(trackMetadata.getTrackInfo().getArtist());
++
++    const TagLib::String title = toTString(trackMetadata.getTrackInfo().getTitle());
++    if (title != pTag->title()) {
++        pTag->setTitle(title);
++    }
++    const TagLib::String album = toTString(trackMetadata.getAlbumInfo().getTitle());
++    if (album != pTag->album()) {
++        pTag->setAlbum(album);
++    }
++    const TagLib::String artist = toTString(trackMetadata.getTrackInfo().getArtist());
+     if (artist != pTag->artist()) {
+         pTag->setArtist(artist);
+     }
+-    const auto genre = toTString(trackMetadata.getTrackInfo().getGenre());
++    const TagLib::String genre = toTString(trackMetadata.getTrackInfo().getGenre());
+     if (genre != pTag->genre()) {
+         pTag->setGenre(genre);
+     }
+@@ -297,7 +302,10 @@ void exportTrackMetadataIntoTag(
+     // different purposes, e.g. ID3v2. In this case setting the
+     // comment here should be omitted.
+     if (0 == (writeMask & WriteTagFlag::OmitComment)) {
+-        pTag->setComment(toTString(trackMetadata.getTrackInfo().getComment()));
++        const TagLib::String comment = toTString(trackMetadata.getTrackInfo().getComment());
++        if (comment != pTag->comment()) {
++            pTag->setComment(comment);
++        }
+     }
+ 
+     // Specialized write functions for tags derived from Taglib::Tag might
+
+From c052808ca4b27050e99ce9fab9f0b53e90377eed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Sch=C3=BCrmann?= <daschuer@mixxx.org>
+Date: Tue, 20 Feb 2024 23:01:18 +0100
+Subject: [PATCH 2/3] Introduce isMultiValueTagEqual() that compares in the
+ QString domain to sort out encoding issues.
+
+---
+ src/track/taglib/trackmetadata_common.cpp | 30 +++++++++++------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/src/track/taglib/trackmetadata_common.cpp b/src/track/taglib/trackmetadata_common.cpp
+index e4609bc0558..fffa9f8170a 100644
+--- a/src/track/taglib/trackmetadata_common.cpp
++++ b/src/track/taglib/trackmetadata_common.cpp
+@@ -268,6 +268,10 @@ void importTrackMetadataFromTag(
+     }
+ }
+ 
++bool isMultiValueTagEqual(const TagLib::String& taglibVal, const QString& mixxxVal) {
++    return toQString(taglibVal) == mixxxVal;
++}
++
+ void exportTrackMetadataIntoTag(
+         TagLib::Tag* pTag,
+         const TrackMetadata& trackMetadata,
+@@ -279,22 +283,17 @@ void exportTrackMetadataIntoTag(
+     // field has not been modified in Mixxx.
+     //
+     // See also: <https://github.com/mixxxdj/mixxx/issues/12587>
+-
+-    const TagLib::String title = toTString(trackMetadata.getTrackInfo().getTitle());
+-    if (title != pTag->title()) {
+-        pTag->setTitle(title);
++    if (!isMultiValueTagEqual(pTag->title(), trackMetadata.getTrackInfo().getTitle())) {
++        pTag->setTitle(toTString(trackMetadata.getTrackInfo().getTitle()));
+     }
+-    const TagLib::String album = toTString(trackMetadata.getAlbumInfo().getTitle());
+-    if (album != pTag->album()) {
+-        pTag->setAlbum(album);
++    if (!isMultiValueTagEqual(pTag->album(), trackMetadata.getAlbumInfo().getTitle())) {
++        pTag->setAlbum(toTString(trackMetadata.getAlbumInfo().getTitle()));
+     }
+-    const TagLib::String artist = toTString(trackMetadata.getTrackInfo().getArtist());
+-    if (artist != pTag->artist()) {
+-        pTag->setArtist(artist);
++    if (!isMultiValueTagEqual(pTag->artist(), trackMetadata.getTrackInfo().getArtist())) {
++        pTag->setArtist(toTString(trackMetadata.getTrackInfo().getArtist()));
+     }
+-    const TagLib::String genre = toTString(trackMetadata.getTrackInfo().getGenre());
+-    if (genre != pTag->genre()) {
+-        pTag->setGenre(genre);
++    if (!isMultiValueTagEqual(pTag->genre(), trackMetadata.getTrackInfo().getGenre())) {
++        pTag->setGenre(toTString(trackMetadata.getTrackInfo().getGenre()));
+     }
+ 
+     // Using setComment() from TagLib::Tag might have undesirable
+@@ -302,9 +301,8 @@ void exportTrackMetadataIntoTag(
+     // different purposes, e.g. ID3v2. In this case setting the
+     // comment here should be omitted.
+     if (0 == (writeMask & WriteTagFlag::OmitComment)) {
+-        const TagLib::String comment = toTString(trackMetadata.getTrackInfo().getComment());
+-        if (comment != pTag->comment()) {
+-            pTag->setComment(comment);
++        if (!isMultiValueTagEqual(pTag->comment(), trackMetadata.getTrackInfo().getComment())) {
++            pTag->setComment(toTString(trackMetadata.getTrackInfo().getComment()));
+         }
+     }
+ 
+
+From c4b3a7e91c56cea7f9bd1c18c1fe01d9da705144 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Sch=C3=BCrmann?= <daschuer@mixxx.org>
+Date: Wed, 21 Feb 2024 00:00:06 +0100
+Subject: [PATCH 3/3] Ignore separator " / " when comparing multi value tags
+
+---
+ src/track/taglib/trackmetadata_common.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/track/taglib/trackmetadata_common.cpp b/src/track/taglib/trackmetadata_common.cpp
+index fffa9f8170a..62bb583f5a2 100644
+--- a/src/track/taglib/trackmetadata_common.cpp
++++ b/src/track/taglib/trackmetadata_common.cpp
+@@ -268,8 +268,12 @@ void importTrackMetadataFromTag(
+     }
+ }
+ 
+-bool isMultiValueTagEqual(const TagLib::String& taglibVal, const QString& mixxxVal) {
+-    return toQString(taglibVal) == mixxxVal;
++bool isMultiValueTagEqual(const TagLib::String& taglibVal, QString mixxxVal) {
++    // Taglib 2 uses " / " instead of " " as a multi value separator.
++    // We may have read or write with either TagLib 1 or 2.
++    QString taglibValStripped = toQString(taglibVal).remove(" /");
++    QString mixxxValStripped = mixxxVal.remove(" /");
++    return taglibValStripped == mixxxValStripped;
+ }
+ 
+ void exportTrackMetadataIntoTag(
