@@ -12,4 +12,4 @@ read only = yes
 #[gentoo-portage]
 #	path = @GENTOO_PORTAGE_EPREFIX@/var/db/repos/gentoo
 #	comment = Gentoo ebuild repository
-#	exclude = /distfiles /packages
+#	exclude = /distfiles /packages /lost+found
