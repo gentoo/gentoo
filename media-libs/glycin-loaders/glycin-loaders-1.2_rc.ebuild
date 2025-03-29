@@ -27,7 +27,7 @@ LICENSE+="
 	|| ( LGPL-2.1+ MPL-2.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="heif jpegxl svg test"
 RESTRICT="!test? ( test )"
 
