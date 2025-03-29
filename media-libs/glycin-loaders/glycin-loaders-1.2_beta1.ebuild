@@ -29,6 +29,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="heif jpegxl svg test"
+REQUIRED_USE="test? ( heif jpegxl )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
