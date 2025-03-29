@@ -206,6 +206,7 @@ multilib_src_test() {
 			known_xfail+=(
 				# MLIR is full of 64-bit assumptions, sigh
 				# https://github.com/llvm/llvm-project/issues/124541
+				CAPI/quant.c
 				Conversion/ConvertToSPIRV/func-signature-vector-unroll.mlir
 				Conversion/ConvertToSPIRV/vector-unroll.mlir
 				Conversion/MathToLibm/convert-to-libm.mlir
