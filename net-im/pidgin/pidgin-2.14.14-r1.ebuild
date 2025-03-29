@@ -4,7 +4,7 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools gnome2-utils flag-o-matic perl-module python-single-r1 xdg
 
@@ -184,9 +184,6 @@ src_configure() {
 	# bug #944076 (check if we can remove it w/ 3.x)
 	append-cflags -std=gnu17
 
-	# Stabilize things, for your own good
-	strip-flags
-	replace-flags -O? -O2
 	use pie && append-cflags -fPIE -pie
 
 	use gadu 	&& DEFAULT_PRPLS+=",gg"
