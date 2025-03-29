@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Yet another stripped down fork of boost-ext ut2 (! not ut !).
+		ut2 is a library for testing using `constexpr` extensively in comparison to boost-ext/ut.
+	</longdescription>
+	<use>
+		<flag name="doc">Install README files</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">openalgz/ut</remote-id>
+	</upstream>
+</pkgmetadata>
