@@ -14,8 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
-RESTRICT="test" #require pytest-socket
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
@@ -33,6 +32,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	dev-python/httpretty[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/pytest-socket[${PYTHON_USEDEP}]
+	dev-python/requests-mock[${PYTHON_USEDEP}]
+	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-vcs/subversion
 )"
 
@@ -64,4 +66,14 @@ src_compile() {
 	$(tc-getCC) ${CFLAGS} -o src/e3/os/data/rlimit-${PLATFORM} \
 		tools/rlimit/rlimit.c ${LDFLAGS}
 	distutils-r1_src_compile
+}
+
+src_test() {
+	local EPYTEST_IGNORE=(
+		tests/tests_e3/python/main_test.py
+	)
+	local EPYTEST_DESELECT=(
+		tests/tests_e3/cve/cve_test.py::test_nvd_cve_search
+	)
+	distutils-r1_src_test
 }
