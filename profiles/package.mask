@@ -521,7 +521,6 @@ dev-ml/async:0/0.17
 >=dev-ml/labltk-8.06.14
 dev-ml/ppx_js_style:0/0.17
 >=dev-ml/camlp4-5
-dev-ml/textutils_kernel:0/0.17
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
