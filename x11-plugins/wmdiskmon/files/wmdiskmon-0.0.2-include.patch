@@ -1,0 +1,12 @@
+Add missing include
+https://bugs.gentoo.org/878641
+--- a/src/main.c
++++ b/src/main.c
+@@ -25,6 +25,7 @@
+ #include "config.h"
+ #endif
+ 
++#include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
