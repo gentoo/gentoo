@@ -1,0 +1,27 @@
+make tests conditional
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3aa8122..6d1bf51 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,8 +5,9 @@ cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
+ #set( CMAKE_CXX_STANDARD_REQUIRED TRUE )
+ #set( CMAKE_CXX_STANDARD 11 )
+ 
+-enable_testing()
+-
++if(OPENMESH_BUILD_UNIT_TESTS)
++  enable_testing()
++endif()
+ 
+ project (OpenMesh 
+          VERSION 11.0.0
+@@ -118,7 +119,9 @@ endif()
+ 
+ # Do not build unit tests when build as external library
+ if(${CMAKE_PROJECT_NAME} MATCHES "OpenMesh")
++  if(OPENMESH_BUILD_UNIT_TESTS)
+     add_subdirectory (src/Unittests)
++  endif()
+ else()
+ 	# If built as a dependent project simulate effects of
+ 	# successful finder run:
