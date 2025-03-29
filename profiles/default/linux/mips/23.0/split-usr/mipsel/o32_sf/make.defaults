@@ -5,4 +5,4 @@ CHOST_o32="mipsel-softfloat-linux-gnu"
 CHOST_n32="mips64el-unknown-linux-gnuabin32"
 CHOST_n64="mips64el-unknown-linux-gnuabi64"
 
-CHOST=${CHOST_o32}
+CHOST="${CHOST_o32}"
