@@ -509,10 +509,6 @@ app-emulation/virtualbox-kvm
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
-# Not ready for testing
->=dev-ml/camlp4-5
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
