@@ -1,14 +1,8 @@
-From 516fdcca6606502e2d562d20c01b225c8d066739 Mon Sep 17 00:00:00 2001
-From: holmes1412 <liyingxin1412@gmail.com>
-Date: Fri, 28 May 2021 21:46:53 +0800
-Subject: [PATCH] remove Disable-RTTI flags for the convenient of derivation
+From 012ff3ef652027abd1a422268cf9f164b386f340 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 11 Apr 2024 10:07:45 +0300
+Subject: [PATCH 3/3] Don't disable RTTI
 
----
- CMakeLists.txt | 8 --------
- 1 file changed, 8 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 672561e..31afaa0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -51,10 +51,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
@@ -19,10 +13,10 @@ index 672561e..31afaa0 100644
 -  # Disable RTTI.
 -  string(REGEX REPLACE "/GR" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 -  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR-")
- else(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+ else(MSVC)
    # Use -Wall for clang and gcc.
    if(NOT CMAKE_CXX_FLAGS MATCHES "-Wall")
-@@ -76,10 +72,6 @@ else(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+@@ -88,10 +84,6 @@ else(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
    # Disable C++ exceptions.
    string(REGEX REPLACE "-fexceptions" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
@@ -30,6 +24,9 @@ index 672561e..31afaa0 100644
 -  # Disable RTTI.
 -  string(REGEX REPLACE "-frtti" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 -  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
- endif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+ endif(MSVC)
  
  # BUILD_SHARED_LIBS is a standard CMake variable, but we declare it here to make
+-- 
+2.43.2
+
