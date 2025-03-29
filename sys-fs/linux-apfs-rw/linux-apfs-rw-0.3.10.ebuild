@@ -1,9 +1,9 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 DESCRIPTION="APFS module for linux, with experimental write support"
 HOMEPAGE="https://github.com/linux-apfs/linux-apfs-rw"
@@ -28,13 +28,5 @@ src_compile() {
 	local modlist=( apfs=extra )
 	local modargs=( KERNEL_DIR=${KV_OUT_DIR} KERNELRELEASE=${KV_FULL} )
 
-	linux-mod-r1_src_compile
-}
-
-src_install() {
-	linux-mod-r1_src_install
-}
-
-pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_src_compile
 }

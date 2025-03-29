@@ -5,6 +5,10 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-26)
+# Stable mask until things have settled and the documentation is done.
+dkms
+
 # Matt Turner <mattst88@gentoo.org> (2024-05-10)
 # x11-drivers/xf86-video-vmware is not stable yet
 video_cards_vmware
