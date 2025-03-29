@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake python-any-r1 systemd readme.gentoo-r1
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
