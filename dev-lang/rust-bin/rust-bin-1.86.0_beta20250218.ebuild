@@ -93,12 +93,6 @@ QA_EXECSTACK="opt/${P}/lib/rustlib/*/lib*.rlib:lib.rmeta"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
 
-pkg_pretend() {
-	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
-		die "${CHOST} is not supported by upstream Rust. You must use a hard float version."
-	fi
-}
-
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
 		# We need to fetch the latest nightly listing and get the apprapriate src_uri for our arch
