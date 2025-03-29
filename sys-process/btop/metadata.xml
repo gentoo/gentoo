@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>nex+b-g-o@nexadn.de</email>
-		<name>Adrian Schollmeyer</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">aristocratos/btop</remote-id>
-		<bugs-to>https://github.com/aristocratos/btop/issues</bugs-to>
-	</upstream>
+  <maintainer type="person" proxied="yes">
+    <email>nex+b-g-o@nexadn.de</email>
+    <name>Adrian Schollmeyer</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="gpu">Enable support for GPU monitoring</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">aristocratos/btop</remote-id>
+    <bugs-to>https://github.com/aristocratos/btop/issues</bugs-to>
+  </upstream>
 </pkgmetadata>

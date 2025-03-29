@@ -14,20 +14,21 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv x86"
+IUSE="gpu"
 
 BDEPEND="
 	app-text/lowdown
 "
 
-DOCS=( "README.md" "CHANGELOG.md" )
+DOCS=("README.md" "CHANGELOG.md")
 
 pkg_setup() {
 	if [[ "${MERGE_TYPE}" != "binary" ]]; then
-		if tc-is-clang ; then
+		if tc-is-clang; then
 			if [[ "$(clang-major-version)" -lt 16 ]]; then
 				die "sys-process/btop requires >=llvm-core/clang-16.0.0 to build."
 			fi
-		elif ! tc-is-gcc ; then
+		elif ! tc-is-gcc; then
 			die "$(tc-getCXX) is not a supported compiler. Please use sys-devel/gcc or >=llvm-core/clang-16.0.0 instead."
 		fi
 	fi
@@ -35,7 +36,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBTOP_GPU=true
+		-DBTOP_GPU="$(usex gpu)"
 		-DBTOP_RSMI_STATIC=false
 		-DBTOP_STATIC=false
 		# These settings can be controlled in make.conf CFLAGS/CXXFLAGS
