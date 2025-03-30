@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/944485
+
+--- a/src/window.c
++++ b/src/window.c
+@@ -571,7 +571,7 @@ static void print_window_xid(GtkWidget *widget)
+         g_print("%d\n", (unsigned int)GDK_WINDOW_XID(widget->window));
+ }
+ 
+-static gint status_icon_embedded_check() {
++static gint status_icon_embedded_check(void* a) {
+         if (!status_icon_embedded()) {
+                 g_debug("Status icon failed to embed, showing window.");
+                 window_shown = TRUE;
