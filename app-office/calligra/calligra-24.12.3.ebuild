@@ -129,6 +129,7 @@ src_configure() {
 		-DWITH_LCMS2=$(usex lcms)
 		-DWITH_Okular6=$(usex okular)
 		-DWITH_Poppler=$(usex pdf)
+		-DWITH_PopplerXPDFHeaders=$(usex pdf)
 		-DWITH_Eigen3=$(usex calligra_features_sheets)
 		-DBUILD_UNMAINTAINED=$(usex calligra_features_stage)
 		-DWITH_Freetype=$(usex truetype)
