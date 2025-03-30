@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/frescobaldi/qpageview/archive/refs/tags/v${PV}.tar.g
 # Should be GPL-3+ once cleared up
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-python/pyqt5[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
