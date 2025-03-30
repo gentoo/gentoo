@@ -1,0 +1,10 @@
+--- a/IGC/CMakeLists.txt
++++ b/IGC/CMakeLists.txt
+@@ -2769,7 +2769,6 @@
+           -march=corei7
+           -mstackrealign
+           -fms-extensions
+-          -Werror
+           -Wno-unused-parameter
+           -Wno-missing-field-initializers
+           -Wwrite-strings
