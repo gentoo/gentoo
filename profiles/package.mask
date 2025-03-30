@@ -488,12 +488,6 @@ dev-qt/qtserialbus:5
 dev-qt/qtvirtualkeyboard:5
 dev-qt/qtwebview:5
 
-# Conrad Kostecki <conikost@gentoo.org> (2025-01-09)
-# New version, which dropps support for legacy devices.
-# Will be unmasked, when split to legacy-branch is done.
->=dev-libs/intel-compute-runtime-24.52.32224.5
->=dev-util/intel-graphics-compiler-2.5.7
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
 # 6.12.2 does not boot for me.
 =sys-kernel/gentoo-kernel-6.12.2
