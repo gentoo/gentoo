@@ -11,6 +11,6 @@
 	</use>
 -->
 	<upstream>
-		<remote-id type="github">wbsoft/frescobaldi</remote-id>
+		<remote-id type="github">frescobaldi/frescobaldi</remote-id>
 	</upstream>
 </pkgmetadata>
