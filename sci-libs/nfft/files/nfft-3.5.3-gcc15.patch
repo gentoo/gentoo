@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/944858
+https://github.com/NFFT/nfft/pull/146
+
+--- a/applications/radon/radon.c.in
++++ b/applications/radon/radon.c.in
+@@ -111,7 +111,7 @@ static int linogram_grid(int T, int S, NFFT_R *x, NFFT_R *w)
+ /** computes the NFFT-based discrete Radon transform of f
+  *  on the grid given by gridfcn() with T angles and R offsets
+  */
+-static int Radon_trafo(int (*gridfcn)(), int T, int S, NFFT_R *f, int NN, NFFT_R *Rf)
++static int Radon_trafo(int (*gridfcn)(int T, int S, NFFT_R *x, NFFT_R *w), int T, int S, NFFT_R *f, int NN, NFFT_R *Rf)
+ {
+   int j, k; /**< index for nodes and freqencies   */
+   NFFT(plan) my_nfft_plan; /**< plan for the nfft-2D             */
+@@ -205,7 +205,7 @@ static int Radon_trafo(int (*gridfcn)(), int T, int S, NFFT_R *f, int NN, NFFT_R
+  */
+ int main(int argc, char **argv)
+ {
+-  int (*gridfcn)(); /**< grid generating function        */
++  int (*gridfcn)(int T, int S, NFFT_R *x, NFFT_R *w); /**< grid generating function        */
+   int T, S; /**< number of directions/offsets    */
+   FILE *fp;
+   int N; /**< image size                      */
+--- a/applications/radon/inverse_radon.c.in
++++ b/applications/radon/inverse_radon.c.in
+@@ -111,7 +111,7 @@ static int linogram_grid(int T, int S, NFFT_R *x, NFFT_R *w)
+  *  on the grid given by gridfcn() with T angles and R offsets
+  *  by a NFFT-based CG-type algorithm
+  */
+-static int inverse_radon_trafo(int (*gridfcn)(), int T, int S, NFFT_R *Rf, int NN, NFFT_R *f,
++static int inverse_radon_trafo(int (*gridfcn)(int T, int S, NFFT_R *x, NFFT_R *w), int T, int S, NFFT_R *Rf, int NN, NFFT_R *f,
+     int max_i)
+ {
+   int j, k; /**< index for nodes and freqencies   */
+@@ -237,7 +237,7 @@ static int inverse_radon_trafo(int (*gridfcn)(), int T, int S, NFFT_R *Rf, int N
+  */
+ int main(int argc, char **argv)
+ {
+-  int (*gridfcn)(); /**< grid generating function        */
++  int (*gridfcn)(int T, int S, NFFT_R *x, NFFT_R *w); /**< grid generating function        */
+   int T, S; /**< number of directions/offsets    */
+   FILE *fp;
+   int N; /**< image size                      */
