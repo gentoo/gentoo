@@ -9,10 +9,10 @@ MY_P="${MY_PN}-${PV}"
 
 inherit cmake flag-o-matic
 
-DESCRIPTION="Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver"
+DESCRIPTION="Intel Graphics Compute Runtime (legacy) for oneAPI Level Zero and OpenCL Driver"
 HOMEPAGE="https://github.com/intel/compute-runtime"
-SRC_URI="https://github.com/intel/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/intel/${MY_PN/-legacy/}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P/-legacy/}"
 
 LICENSE="MIT"
 SLOT="0/1.5.30872"
@@ -20,7 +20,8 @@ KEYWORDS="amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND="
-	>=dev-util/intel-graphics-compiler-1.0.17791.18
+	!dev-util/intel-graphics-compiler
+	>=dev-util/intel-graphics-compiler-legacy-1.0.17791.18
 	>=media-libs/gmmlib-22.5.2:=
 "
 
