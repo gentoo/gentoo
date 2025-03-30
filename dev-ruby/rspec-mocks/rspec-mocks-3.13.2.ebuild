@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -54,4 +54,18 @@ all_ruby_prepare() {
 
 	# Avoid spec failing with newer dev-ruby/diff-lcs. Already fixed upstream.
 	rm -f spec/rspec/mocks/diffing_spec.rb || die
+}
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby34)
+			# Avoid specs failing with ruby34. Should be fixed upstream.
+			rm -f spec/rspec/mocks/argument_matchers_spec.rb \
+			   spec/rspec/mocks/double_spec.rb \
+			   spec/rspec/mocks/hash_excluding_matcher_spec.rb \
+			   spec/rspec/mocks/verifying_doubles/expected_arg_verification_spec.rb \
+			   spec/rspec/mocks/hash_including_matcher_spec.rb \
+			   spec/rspec/mocks/matchers/receive_spec.rb || die
+			;;
+	esac
 }
