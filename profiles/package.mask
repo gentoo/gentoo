@@ -271,11 +271,6 @@ sci-biology/clustalx
 # various upstream reports. Bug #947621. Removal on 2025-03-31.
 media-sound/qtscrobbler
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
-# Last release 10 years ago, dead upstream, does not build with Qt6,
-# no one else packages this. Removal on 2025-03-31.
-media-gfx/qvv
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-27)
 # We have collected a lot of barely used Perl virtuals over time
 # (they effectively only make sense with version dependencies).
