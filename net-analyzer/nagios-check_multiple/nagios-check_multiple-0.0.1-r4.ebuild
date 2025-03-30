@@ -12,13 +12,13 @@ DESCRIPTION="A Nagios plugin to execute multiple checks in parallel"
 HOMEPAGE="https://github.com/clarkbox/check_multiple"
 SRC_URI="https://github.com/clarkbox/check_multiple/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	distutils-r1_src_install
