@@ -33,7 +33,7 @@ RDEPEND="
 	media-libs/sdl2-ttf
 	>=media-video/ffmpeg-6:=[cuda?]
 	libdrm? (
-		|| ( media-video/ffmpeg[drm(-)] media-video/ffmpeg[libdrm(-)] )
+		media-video/ffmpeg[drm(-)]
 		x11-libs/libdrm
 	)
 	soundio? ( media-libs/libsoundio:= )
