@@ -33,8 +33,7 @@ BDEPEND="
 	"
 
 COMMON_DEPEND="
-	media-video/ffmpeg:=[encode(+),zlib]
-	|| ( media-video/ffmpeg[xml(-)] media-video/ffmpeg[libxml2(-)] )
+	media-video/ffmpeg:=[encode(+),xml(-),zlib]
 	virtual/libiconv
 	app-arch/bzip2
 	=media-tv/kodi-19*
