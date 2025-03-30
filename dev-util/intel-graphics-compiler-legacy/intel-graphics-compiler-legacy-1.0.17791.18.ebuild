@@ -11,10 +11,10 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake flag-o-matic llvm-r1 python-any-r1
 
-DESCRIPTION="LLVM-based OpenCL compiler for OpenCL targetting Intel Gen graphics hardware"
+DESCRIPTION="LLVM-based OpenCL compiler for OpenCL targetting Intel legacy graphics hardware"
 HOMEPAGE="https://github.com/intel/intel-graphics-compiler"
-SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MY_P}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${MY_P}"
+SRC_URI="https://github.com/intel/${PN/-legacy/}/archive/refs/tags/${MY_P}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN/-legacy/}-${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/1.0.1"
@@ -34,7 +34,10 @@ DEPEND="
 	)
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="
+	!dev-util/intel-graphics-compiler
+	${DEPEND}
+"
 
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')

@@ -14,10 +14,10 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
-		This is the current version of intel-graphics-compiler,
-		which works for all Intel GPUs from Gen12 and newer.
-		For older Intel GPUs from Gen5 up to Gen11, please use
-		<pkg>dev-util/intel-graphics-compiler-legacy</pkg> instead.
+		This is the legacy version of intel-graphics-compiler,
+		which works for all Intel GPUs from Gen5 up to Gen11.
+		For newer Intel GPUs starting with Gen12, please use
+		<pkg>dev-util/intel-graphics-compiler</pkg> instead.
 	</longdescription>
 	<use>
 		<flag name="vc">Enable VectorCompiler for a better performance.</flag>
