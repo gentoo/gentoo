@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop flag-o-matic python-single-r1 toolchain-funcs xdg
