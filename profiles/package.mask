@@ -228,7 +228,6 @@ sys-apps/openrc-navi
 # revdeps left. Removal on 2025-03-31.
 kde-apps/kdesdk-thumbnailers-common
 media-libs/ksanecore-common
-net-misc/kio-zeroconf-common
 
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
