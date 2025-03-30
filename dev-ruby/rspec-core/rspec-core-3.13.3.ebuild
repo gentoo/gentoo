@@ -81,6 +81,10 @@ all_ruby_prepare() {
 
 	# Avoid old regression check (already fixed upstream)
 	sed -i -e '/uses only one thread local variable/askip "old safety check"' spec/rspec/core_spec.rb || die
+
+	# Avoid specs that fail when dev-ruby/uri is installed
+	sed -e '/running_in_drb/ s/describe/xdescribe/' \
+		-i spec/rspec/core/runner_spec.rb || die
 }
 
 each_ruby_prepare() {
