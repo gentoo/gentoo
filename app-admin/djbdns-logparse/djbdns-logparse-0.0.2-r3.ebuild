@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://michael.orlitzky.com/code/djbdns-logparse.xhtml"
 SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.gz"
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
