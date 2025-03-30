@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="${PV}" # Single live slot.
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.3 8.2 8.1" # Check with: grep PHP_VERSION classes/Config.php
+PHP_SLOTS="8.4 8.3 8.2" # Check with: grep PHP_VERSION classes/Config.php
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
