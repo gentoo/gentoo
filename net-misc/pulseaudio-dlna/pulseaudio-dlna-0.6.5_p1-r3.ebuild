@@ -44,10 +44,7 @@ RDEPEND=">=dev-python/protobuf-2.5.0[${PYTHON_USEDEP}]
 	media-sound/pulseaudio-daemon
 	x11-libs/gtk+:3[introspection]
 	|| (
-		|| (
-			media-video/ffmpeg[encode(+),opus,vorbis]
-			|| ( media-video/ffmpeg[lame(-)] media-video/ffmpeg[mp3(-)] )
-		)
+		media-video/ffmpeg[encode(+),lame(-),opus,vorbis]
 		(
 			media-libs/flac
 			media-sound/lame
