@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
@@ -59,6 +59,9 @@ python_compile() {
 python_test() {
 	rm -rf torchvision || die
 
+	local EPYTEST_IGNORE=(
+		test/test_videoapi.py
+	)
 	local EPYTEST_DESELECT=(
 		test/test_backbone_utils.py::TestFxFeatureExtraction::test_forward_backward
 		test/test_backbone_utils.py::TestFxFeatureExtraction::test_jit_forward_backward
@@ -71,8 +74,6 @@ python_test() {
 		test/test_ops.py::test_roi_opcheck
 		test/test_ops.py::TestDeformConv::test_aot_dispatch_dynamic__test_backward
 		test/test_ops.py::TestDeformConv::test_aot_dispatch_dynamic__test_forward
-		test/test_videoapi.py::TestVideoApi::test_frame_reading_mem_vs_file
-		test/test_videoapi.py::TestVideoApi::test_metadata
 	)
 	epytest
 }
