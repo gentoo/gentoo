@@ -5,11 +5,6 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
-<!--
-	<use>
-		<flag name="portmidi">Enable <pkg>media-libs/portmidi</pkg> support</flag>
-	</use>
--->
 	<upstream>
 		<remote-id type="github">frescobaldi/frescobaldi</remote-id>
 	</upstream>
