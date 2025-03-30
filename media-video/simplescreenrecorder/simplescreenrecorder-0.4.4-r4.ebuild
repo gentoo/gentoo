@@ -38,7 +38,7 @@ RDEPEND="
 	x11-libs/libXinerama
 	virtual/glu[${MULTILIB_USEDEP}]
 	jack? ( virtual/jack )
-	mp3? ( || ( media-video/ffmpeg[lame(-)] media-video/ffmpeg[mp3(-)] ) )
+	mp3? ( media-video/ffmpeg[lame(-)] )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	pulseaudio? ( media-libs/libpulse )
 	v4l? ( media-libs/libv4l )
