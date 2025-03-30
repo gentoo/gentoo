@@ -50,6 +50,9 @@ each_ruby_prepare() {
 				-i spec/rspec/support/differ_spec.rb || die
 			;;
 	esac
+
+	# Avoid specs failing with newer dev-ruby/diff-lcs. Already fixed upstream.
+	rm -f spec/rspec/support/differ_spec.rb || die
 }
 
 each_ruby_test() {
