@@ -16,5 +16,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">nextcloud/desktop</remote-id>
+		<changelog>https://github.com/nextcloud/desktop/releases</changelog>
+		<bugs-to>https://github.com/nextcloud/desktop/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
