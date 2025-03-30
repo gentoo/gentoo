@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ DEPEND="
 	dev-python/pyqtwebengine[${PYTHON_USEDEP}]
 	dev-python/python-ly[${PYTHON_USEDEP}]
 	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
-	dev-python/qpageview[${PYTHON_USEDEP}]
+	<dev-python/qpageview-1.0.0[${PYTHON_USEDEP}]
 	media-sound/lilypond"
 RDEPEND="${DEPEND}
 	x11-themes/tango-icon-theme
