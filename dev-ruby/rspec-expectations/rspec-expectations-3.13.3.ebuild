@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,4 +47,11 @@ all_ruby_prepare() {
 		-e '/git ls/d' \
 		-e '/add_development_dependency/d' \
 		"${RUBY_FAKEGEM_GEMSPEC}" || die
+
+	# Avoid specs failing with newer diff-lcs. Already fixed upstream.
+	rm -f spec/rspec/matchers/dsl_spec.rb \
+	   spec/rspec/matchers/built_in/{compound,have_attributes,include}_spec.rb || die
+
+	sed -e '/simplecov/,/^end/ s:^:#:' \
+		-i spec/spec_helper.rb || die
 }
