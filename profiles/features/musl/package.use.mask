@@ -206,6 +206,7 @@ app-emacs/yatex l10n_ja
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
 # Support for L0 needs RTLD_DEEPBIND, which does not exist on musl.
 dev-libs/intel-compute-runtime l0
+dev-libs/intel-compute-runtime-legacy l0
 
 # Stijn Tintel <stijn@linux-ipv6.be> (2021-12-02)
 # rarpd relies on ether_ntohost which is a stub in musl
