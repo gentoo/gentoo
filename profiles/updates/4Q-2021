@@ -1,4 +1,4 @@
-move dev-libs/intel-neo dev-libs/intel-compute-runtime
+move <=dev-libs/intel-neo-24.35.30872.32 dev-libs/intel-compute-runtime-legacy
 move dev-python/hyper-h2 dev-python/h2
 move media-radio/KochMorse media-radio/kochmorse
 move sci-misc/jupyterlab-desktop sci-misc/jupyterlab-desktop-bin
