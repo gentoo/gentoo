@@ -112,6 +112,7 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.8.1-aarch64-xnnpack.patch
 	"${FILESDIR}"/${PN}-6.8.2-cstdint.patch
 	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
+	"${FILESDIR}"/${PN}-6.8.3-clang20.patch
 )
 
 python_check_deps() {

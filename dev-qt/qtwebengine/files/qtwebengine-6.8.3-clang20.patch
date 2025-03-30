@@ -1,0 +1,22 @@
+api/candidate.h:96:40: error: 'lifetimebound' attribute cannot be
+applied to a parameter of a function that returns void
+
+Hardly know C++, but my "impression" is that this is not needed in
+a void function and webrtc was just trying to keep the attributes
+matching with other uses of it -- and that it is safe to remove.
+Guard behind __clang__ to limit damage in case misunderstanding.
+
+Only a temporary patch given Qt 6.9+ should not be affected as
+these types were changed entirely (difficult to backport).
+
+https://forums.gentoo.org/viewtopic-p-8858206.html
+--- a/src/3rdparty/chromium/third_party/webrtc/api/candidate.h
++++ b/src/3rdparty/chromium/third_party/webrtc/api/candidate.h
+@@ -95,3 +95,7 @@
+   // things down. See also the `Port` class.
++#ifdef __clang__
++  void set_type(absl::string_view type) {
++#else
+   void set_type(absl::string_view type ABSL_ATTRIBUTE_LIFETIME_BOUND) {
++#endif
+     Assign(type_, type);
