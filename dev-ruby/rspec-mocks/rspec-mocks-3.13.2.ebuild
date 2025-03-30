@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,4 +51,7 @@ all_ruby_prepare() {
 	sed -i -e '1irequire "spec_helper"' spec/rspec/mocks/any_instance_spec.rb || die
 
 	sed -i -e 's/git ls-files --/find */' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Avoid spec failing with newer dev-ruby/diff-lcs. Already fixed upstream.
+	rm -f spec/rspec/mocks/diffing_spec.rb || die
 }
