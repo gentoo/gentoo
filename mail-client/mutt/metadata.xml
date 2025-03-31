@@ -10,7 +10,7 @@
 			for header caching</flag>
 		<flag name="gdbm">Enable <pkg>sys-libs/gdbm</pkg> database backend
 			for header caching</flag>
-		<flag name="gsasl">Use GNU SASL via <pkg>virtual/gsasl</pkg> instead
+		<flag name="gsasl">Use GNU SASL via <pkg>net-misc/gsasl</pkg> instead
 			of Cyrus SASL (requires USE=sasl)</flag>
 		<flag name="hcache">Enable header cache, one database backend needs
 			to be enabled</flag>
