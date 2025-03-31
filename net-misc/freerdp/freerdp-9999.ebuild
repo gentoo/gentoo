@@ -192,8 +192,10 @@ src_compile() {
 }
 
 src_test() {
-	local myctestargs=( -E TestBacktrace )
-	has network-sandbox ${FEATURES} && myctestargs+=( -E TestConnect )
+	local CMAKE_SKIP_TESTS=( TestBacktrace )
+	if has network-sandbox ${FEATURES}; then
+		CMAKE_SKIP_TESTS+=( TestConnect )
+	fi
 	run_for_testing cmake_src_test
 }
 
