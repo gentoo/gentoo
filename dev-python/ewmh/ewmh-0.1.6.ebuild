@@ -12,7 +12,8 @@ DESCRIPTION="An implementation of Extended Window Manager Hints, based on Xlib"
 HOMEPAGE="https://github.com/parkouss/pyewmh https://pypi.python.org/pypi/ewmh"
 
 LICENSE="LGPL-3"
-KEYWORDS="amd64 x86"
 SLOT="0"
+
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/python-xlib[${PYTHON_USEDEP}]"
