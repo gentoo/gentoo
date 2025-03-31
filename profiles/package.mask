@@ -311,11 +311,6 @@ dev-python/zstd
 dev-python/shiboken6
 dev-python/pyside6-tools
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-16)
-# Discontinued, please use xournal++ instead.
-# Removal on 2025-03-16. Bug 948200.
-app-text/xournal
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
