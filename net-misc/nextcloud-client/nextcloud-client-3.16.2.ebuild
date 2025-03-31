@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake qmake-utils virtualx xdg
+inherit cmake flag-o-matic qmake-utils virtualx xdg
 
 DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
@@ -79,6 +79,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# Temporary workaround for musl-1.2.4
+	# upstream bug: https://github.com/nextcloud/desktop/issues/6536
+	# gentoo bug #924503
+	# XXX: This will stop working with future musl releases!
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+
 	local mycmakeargs=(
 		-DPLUGINDIR=$(qt6_get_plugindir)
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
