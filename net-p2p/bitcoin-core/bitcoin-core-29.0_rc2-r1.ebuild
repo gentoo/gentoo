@@ -11,6 +11,7 @@ DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz
+	https://github.com/bitcoin/bitcoin/pull/30997/commits/f9472962d1cdf58bfc1ad64c4bb44ddf5d0b4db2.patch?full_index=1 -> ${PN}-29.0-qt6.patch
 "
 S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
@@ -44,11 +45,7 @@ RDEPEND="
 	)
 	gui? (
 		!net-p2p/bitcoin-qt
-		>=dev-qt/qtcore-5.15.16:5
-		>=dev-qt/qtgui-5.15.16:5
-		>=dev-qt/qtnetwork-5.15.16:5
-		>=dev-qt/qtwidgets-5.15.16:5
-		dbus? ( >=dev-qt/qtdbus-5.15.16:5 )
+		>=dev-qt/qtbase-6.2:6[dbus?,gui,network,widgets]
 	)
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
 	sqlite? ( >=dev-db/sqlite-3.38.5:= )
@@ -66,10 +63,9 @@ BDEPEND="
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
-	gui? ( >=dev-qt/linguist-tools-5.15.16:5 )
+	gui? ( >=dev-qt/qttools-6.2:6[linguist] )
 	test? (
 		${PYTHON_DEPS}
-		gui? ( >=dev-qt/qttest-5.15.16:5 )
 	)
 "
 IDEPEND="
@@ -94,6 +90,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${DISTDIR}/${PN}-29.0-qt6.patch"
 	"${FILESDIR}/29.0-cmake-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )
