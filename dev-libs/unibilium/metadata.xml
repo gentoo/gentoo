@@ -6,6 +6,6 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">mauke/unibilium</remote-id>
+    <remote-id type="github">neovim/unibilium</remote-id>
   </upstream>
 </pkgmetadata>
