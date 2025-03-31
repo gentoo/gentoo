@@ -33,6 +33,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-03-31)
+# Depends on broken dev-java/rxtx, bugs #761103, #867409, #874444, #898170
+# #927898.
+# Depends on dev-java/jgoodies-{common,looks} which are no longer available
+# "at no charge". https://www.jgoodies.com/downloads/libraries/#post-63
+# Removal on 2025-04-30.
+sci-geosciences/bt747
+dev-java/rxtx
+dev-java/swingx
+dev-java/swingx-beaninfo
+dev-java/swingx-ws
+dev-java/jchart2d
+dev-java/jcalendar
+dev-java/jgoodies-looks
+dev-java/jgoodies-common
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-30)
 # Depends on dev-python/python-poppler-qt5, stuck on py3.12, painful to
 # package. Use media-gfx/inkscape or app-text/pdfarranger alternatively.
