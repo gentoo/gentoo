@@ -53,6 +53,9 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
 	"${FILESDIR}"/${PN}-1.0.2-umask-tests.patch
+	"${FILESDIR}"/${PN}-1.1.0-openssh-9.8.patch
+	"${FILESDIR}"/${PN}-1.1.0-openssh-9.8-fixups.patch
+	"${FILESDIR}"/${PN}-1.1.0-openrc-nftables.patch
 )
 
 src_prepare() {
