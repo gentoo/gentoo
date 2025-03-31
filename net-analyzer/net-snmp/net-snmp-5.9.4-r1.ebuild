@@ -1,15 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_OPTIONAL=yes
-DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{10..12} )
 WANT_AUTOMAKE=none
 
-inherit autotools distutils-r1 libtool perl-module systemd
+inherit autotools python-single-r1 libtool perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="https://www.net-snmp.org/"
