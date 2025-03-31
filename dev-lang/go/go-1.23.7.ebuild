@@ -75,6 +75,7 @@ go_cross_compile() {
 }
 
 PATCHES=(
+	"${FILESDIR}"/go-1.24-skip-gdb-tests.patch
 	"${FILESDIR}"/go-never-download-newer-toolchains.patch
 )
 
