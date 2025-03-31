@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md TODO"
@@ -33,15 +33,15 @@ ruby_add_bdepend "test? (
 	dev-ruby/webmock
 	dev-ruby/rack
 	dev-ruby/rest-client
-	dev-ruby/actionpack:7.0
-	dev-ruby/railties:7.0
+	dev-ruby/actionpack:7.1
+	dev-ruby/railties:7.1
 )"
 
 all_ruby_prepare() {
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Require compatible versions of dependencies
-	sed -i -e '1igem "railties", "~>7.0.0" ; gem "actionpack", "~>7.0.0"; require "action_dispatch"' \
+	sed -i -e '1igem "railties", "~>7.1.0" ; gem "actionpack", "~>7.1.0"; require "action_dispatch"' \
 		-e '/mocha/ s/mini_test/minitest/' \
 		-e 's/if RUN_COVERAGE/if false/' test/test_helper.rb || die
 
