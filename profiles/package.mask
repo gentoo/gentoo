@@ -316,20 +316,6 @@ dev-python/pyside6-tools
 # Removal on 2025-03-16. Bug 948200.
 app-text/xournal
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-02-14)
-# No revdeps left, and serves no purpose on its own.  Formerly used
-# by <=app-emulation/wine-*-7 but <=7.x has been dropped and newer
-# versions of it cross-build their own .dll (PE) version of it
-# leaving the system's .so (ELF) copy unused.
-#
-# In other words, *can* use vkd3d with wine without this package.
-#
-# Not to be confused with app-emulation/vkd3d-proton which builds a
-# .dll usable as an alternative to wine's own.
-#
-# Removal on 2025-03-16.
-app-emulation/vkd3d
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
