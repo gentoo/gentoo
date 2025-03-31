@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
 	SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Cloud instance initialisation magic"
