@@ -62,6 +62,11 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-cloudinit )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-24.2-systemd.patch"
+	"${FILESDIR}/${PN}-24.4-netcat.patch"
+)
+
 EPYTEST_IGNORE=(
 	# Can't find file
 	tests/unittests/config/test_apt_configure_sources_list_v1.py
