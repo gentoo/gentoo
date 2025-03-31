@@ -3,7 +3,6 @@
 
 EAPI=8
 
-DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit bash-completion-r1 edo python-single-r1 systemd tmpfiles
@@ -41,6 +40,9 @@ RDEPEND="
 	)
 "
 BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	')
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/aiosmtpd[${PYTHON_USEDEP}]
