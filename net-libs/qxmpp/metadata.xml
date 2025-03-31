@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>0xd34df00d@gmail.com</email>
-		<name>Georg Rudoy</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://github.com/qxmpp-project/qxmpp/issues</bugs-to>
-		<changelog>https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/CHANGELOG.md</changelog>
-		<remote-id type="github">qxmpp-project/qxmpp</remote-id>
+		<bugs-to>https://invent.kde.org/libraries/qxmpp/-/issues</bugs-to>
+		<changelog>https://invent.kde.org/libraries/qxmpp/-/blob/master/CHANGELOG.md?ref_type=heads</changelog>
+		<remote-id type="kde-invent">libraries/qxmpp</remote-id>
 	</upstream>
 	<use>
 		<flag name="omemo">Enable OMEMO encryption</flag>
