@@ -238,6 +238,7 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND="
+	app-text/tesseract
 	media-fonts/liberation-fonts
 	media-fonts/noto
 	media-fonts/noto-cjk
@@ -288,7 +289,22 @@ src_prepare() {
 
 src_install() {
 	dotnet-pkg_src_install
-	find "${ED}/usr/share/${P}/_linux" -type f -exec chmod a+x {} + || die
+
+	local linux_dir=""
+	case "${ARCH}" in
+		arm* )
+			linux_dir="/usr/share/${P}/_linuxarm"
+			;;
+		* )
+			linux_dir="/usr/share/${P}/_linux"
+			;;
+	esac
+
+	# Use system tesseract.
+	rm -f "${ED}/${linux_dir}/tesseract" || die
+	dosym -r /usr/bin/tesseract "${linux_dir}/tesseract"
+
+	find "${ED}/${linux_dir}" -type f -exec chmod a+rx {} + || die
 
 	newicon --size 128 ./NAPS2.Lib/Icons/scanner-128.png com.naps2.Naps2.png
 	domenu ./NAPS2.Setup/config/linux/com.naps2.Naps2.desktop
