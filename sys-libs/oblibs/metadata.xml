@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>pramodvu1502@proton.me</email>
+    <name>Pramod V U</name>
+    <description>The email is of the ebuild maintainer; upstream is a project</description>
+  </maintainer>
+  <upstreams>
+    <remote-id type="gitlab">https://git.obarun.org/Obarun/66</remote-id>
+    <bugs-to>mailto:pramodvu1502@proton.me</bugs-to>
+  </upstreams>
+</pkgmetadata>

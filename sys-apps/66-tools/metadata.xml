@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pramodvu1502@proton.me</email>
+	</maintainer>
+	<longdescription>
+	This package 66-tools is a set of helper tools used mainly in <pkg>sys-apps/66</pkg> spervision suite.
+	It is optional for 66 itself, but most of 66's frontends *require* it for the convenience it provides.
+
+	Some tools, prefixed with `execl-`, are exclusively for execline scripts [you won't get to use them otherwise, not that you can't.].
+	The rest, mostly prefixed with `66-` will also help you in other places like standard shell scripts.
+
+	Some noteworthy:
+	`execl-toc` is a tool which either executes further into the specified command, exits or just does something else based on whether a specified file, directory, socket, env-variable, and/or anything else exists, is in a  desirable state [empty, nonempty, etc...] and does as specified. [Like creating a directory or changing it's permissions if the directory doesn't exist or it's permissions are not what you want]
+	You'll get to use it more often than you think...
+	`66-ns` is a tool which can isolate a process, pass specific files and directories, mask others, isolate by network, etc... using linux namespaces.
+	It is more convenient than a cobbled-up script using `unshare` and few mounts to pass-through resources... It can also use a pre-written "rulesfile" rather than specifying everything on the command-line itself...
+	`66-yeller` is a powerful replacement to 'echo'. You just specify the level ["warning", "info" etc...] and pass the message to it. It, based on `VERBOSITY` env-variable, decides to emit or not the specified message. It emits messages with the time of emitting, program emitting the message, "info: " "warning: ", etc.. along with the colors as you specify on it's cmdline. [Colors are disabled if output isn't a color-capable tty, so don't worry.]
+	This is another command you will need more often than you think.
+	`66-dbus-launch` is built only if USE=dbus. It depends to <pkg>sys-auth/elogind</pkg> if USE=elogind and <pkg>sys-libs/basu</pkg> otherwise.
+	It replaces dbus-broker's launcher, which depends on systemd and is responsible for systemd-specific behaviour like activation. `66-dbus-launch` supports all systemd-features like dbus-activation under 66, YES, now you have full support for the efficient dbus-broker, without systemd, with 66 instead.
+	</longdescription>
+	<use>
+		<flag name="elogind">systemd's sd-bus library via <pkg>sys-auth/elogind</pkg>; disabling this will pull in <pkg>sys-libs/basu</pkg> instead.
+		But if useflag dbus is disabled this flag won't have *any* effect'</flag>
+		<flag name="dbus">Depending on useflag "elogind" pulls either <pkg>sys-auth/elogind</pkg> or <pkg>sys-libs/basu</pkg> </flag>
+	</use>
+	<upstream>
+		<bugs-to>mailto:pramodvu1502@proton.me</bugs-to>
+		<!-- remote-id type="github">systemd-cron/systemd-cron</remote-id -->
+	</upstream>
+</pkgmetadata>

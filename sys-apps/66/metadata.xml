@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pramodvu1502@proton.me</email>
+	</maintainer>
+	<longdescription>
+	66 is an innovative service manager written around <pkg>sys-apps/s6</pkg>.
+	It exclusively works on mechanisms, not policies.
+	However, the developer has separately provided the default policies, which you can either use or build upon, or ditch entirely for your own. <pkg>sys-process/66-boot</pkg> provides the booting.
+	66 works on glibc or musl, agnostic of either.
+
+	It supports booting as PID-1, under sysv-style inits' supervision via inittab, or as a manually called command. You aren't restricted from using it the way *you* want.
+
+	It can supervise services using s6, apply globally and individually defined env-variables, and handle dependencies and ordering, as well as reliable textual logging using `s6-log`.
+	[You can use syslog or some other random thing, a tty, or just a file, as you wish. But s6-log powerfully supports filtering-splitting, logrotating etc.. within it.]
+	It even shows the last ten lines of the log in `66 status ${SERVICE}` like systemd, but without binary logs. It does "fd-holding" [a copy of the fd is kept retrievably with an "fdholder"] to make sure that no line of logs is lost in the event of any crash in the service or logger
+	.
+	It supports dynamically instantiated services like `tty@tty1` [Instance of `tty@`].
+	It groups services into "trees" similar to openrc's runlevels. Trees can have dependencies, allowed users, denied users, etc... just like services.
+	66 can also configure the users who can control a service independently of the user under whom the service is running. Eg. On a desktop system you may allow NetworkManager and similar services to be restarted by normal users, even if the service itself is running as root or some other user.
+	It can handle dependencies more reliably if the services support s6's readiness notification.
+
+	You write the initscripts in the frontends, mainly in execline. You can use other scripting languages freely as you wish.
+
+	No matter what, 66 WILL NOT support the bad design of starting services before their dependencies are ready. OR introducing features before their ready. OR going beyond it's original scope. OR ignoring issues on the basis of fancy "features".
+
+	It has an extremely useful innovative but simple feature in "modules".
+	A module is an instantiated service which houses sub-services.
+	At the time of instantiation [and whenever you want], a configure script of the module with appropriate env-variables is launched, which decides whether to enable or not certain services in the module, whether the module should or not depend on certain services, and misc other internal module configration, based on system state and user configuration.
+	<pkg>sys-process/66-boot</pkg> provides a `boot@` module.
+
+	66 supports running as a user service manager just fine, with *all* features.
+
+	66 doesn't use a mess of symlinks or some cryptic code format.
+	It also doesn't do all the dependency parsing/resolving etc... "dynamically". It pre-parses and pre-resolves the dependencies, final scripts, etc... at the time of configuration rather than run-time, showing possible errors *before* rather than *during* usage. [Of course, not the errors of the service itself]
+	</longdescription>
+	<use>
+		<flag name="init">Provides /usr/bin/init binary for directly booting 66; Disable if you want to boot 66 under sysv-style init, or some other init system.</flag>
+	</use>
+	<upstream>
+		<bugs-to>mailto:pramodvu1502@proton.me</bugs-to>
+		<!-- remote-id type="github">systemd-cron/systemd-cron</remote-id -->
+	</upstream >
+</pkgmetadata>
