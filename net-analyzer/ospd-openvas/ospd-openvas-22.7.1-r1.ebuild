@@ -19,7 +19,6 @@ IUSE="doc +notus"
 DEPEND="
 	acct-user/gvm
 	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
-	<dev-python/defusedxml-0.8[${PYTHON_USEDEP}]
 	>=dev-python/deprecated-1.2.10[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.5.2[${PYTHON_USEDEP}]
 	<dev-python/lxml-6.0.0[${PYTHON_USEDEP}]
