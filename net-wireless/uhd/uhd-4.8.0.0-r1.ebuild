@@ -52,6 +52,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/"${P}"-includes.patch
+	"${FILESDIR}"/"${P}"-cmake4.patch
 )
 
 src_unpack() {
