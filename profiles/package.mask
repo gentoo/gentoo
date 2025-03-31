@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Thibaud CANALE <thican@thican.net> (2023-03-31)
+# Certbot modules are handled in main package since version 3.2.0-r100
+# See related news item 2025-03-14-certbot-rework
+# Masking for removal in 90 days: 2025-06-30
+# Last rite bug 952977
+# See also bug 950247, bug 915050, bug 949120
+app-crypt/acme
+app-crypt/certbot-apache
+app-crypt/certbot-dns-dnsimple
+app-crypt/certbot-dns-nsone
+app-crypt/certbot-dns-rfc2136
+app-crypt/certbot-nginx
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-03-31)
 # Depends on broken dev-java/rxtx, bugs #761103, #867409, #874444, #898170
 # #927898.
