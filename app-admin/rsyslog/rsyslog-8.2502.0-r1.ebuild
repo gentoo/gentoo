@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
 
-IUSE="clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imhttp"
+IUSE="clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imdocker imhttp"
 IUSE+=" impcap jemalloc kafka kerberos kubernetes mdblookup"
 IUSE+=" mongodb mysql normalize omhttp omhttpfs omudpspoof +openssl"
 IUSE+=" postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp +ssl"
@@ -61,6 +61,7 @@ RDEPEND="
 	dbi? ( >=dev-db/libdbi-0.8.3 )
 	elasticsearch? ( >=net-misc/curl-7.35.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:= )
+	imdocker? ( >=net-misc/curl-7.40.0 )
 	imhttp? (
 		dev-libs/apr-util
 		www-servers/civetweb
@@ -218,7 +219,6 @@ src_configure() {
 		# Input Plugins without dependencies
 		--enable-imbatchreport
 		--enable-imdiag
-		--enable-imdocker
 		--enable-imfile
 		--enable-improg
 		--enable-impstats
@@ -274,6 +274,7 @@ src_configure() {
 		$(use_enable elasticsearch)
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable gnutls)
+		$(use_enable imdocker)
 		$(use_enable imhttp)
 		$(use_enable impcap)
 		$(use_enable jemalloc)
