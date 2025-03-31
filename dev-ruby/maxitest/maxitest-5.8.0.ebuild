@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -44,6 +44,15 @@ each_ruby_prepare() {
 	sed -e '/\(run_cmd\|sh\)/ s:ruby:'${RUBY}':' \
 		-e '/\(run_cmd\|sh\)/ s:mtest:'${RUBY}' -rmaxitest/version -S bin/mtest:' \
 		-i spec/maxitest_spec.rb || die
+
+	case ${RUBY} in
+		*ruby34)
+			# Avoid test failing due to changed messages in Ruby.
+			sed -e '/stops on ctrl+c and prints errors/ s/it/xit/' \
+				-e '/shows backtraces when in verbose mode/ s/it/xit/' \
+				-i spec/maxitest_spec.rb || die
+			;;
+	esac
 }
 
 each_ruby_test() {
