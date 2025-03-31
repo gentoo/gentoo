@@ -291,12 +291,6 @@ virtual/perl-Time-Piece
 # Mask experimental software
 =mail-mta/postfix-3.11*
 
-# Michał Górny <mgorny@gentoo.org> (2025-02-24)
-# Bad package with frequent release issues.  No reverse dependencies
-# left.  Use dev-python/zstandard instead (admittedly, also far
-# from perfect).  Removal on 2025-03-26.  Bug #950214.
-dev-python/zstd
-
 # Sam James <sam@gentoo.org> (2025-02-22)
 # (Only) needed for no-yet-released LibreOffice. Mask for now to avoid
 # unnecessary conflicts/backtracking for LO users.
