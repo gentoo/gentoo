@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	>=net-libs/libircclient-1.6-r2
 	>=net-misc/curl-7.16
-	virtual/gsasl
+	net-misc/gsasl[client,server]
 	!dedicated? (
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
