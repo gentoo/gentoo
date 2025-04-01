@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -16,7 +16,6 @@ LICENSE="BSD"
 #rapid7 gems are slotted so we can have multiple versions installed at once to support multiple versions of metasploit
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
 
 ruby_add_rdepend "!dev-ruby/jsobfu:0
 		>=dev-ruby/rkelly-remix-0.0.6:0"
