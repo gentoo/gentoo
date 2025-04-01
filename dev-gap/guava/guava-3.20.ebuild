@@ -15,7 +15,6 @@ DEPEND="sci-mathematics/gap"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.15-makefile.patch"
-	"${FILESDIR}/${PN}-3.19-C23.patch"
 )
 
 GAP_PKG_EXTRA_INSTALL=( tbl )
