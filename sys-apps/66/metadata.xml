@@ -7,7 +7,7 @@
 	<longdescription>
 	66 is an innovative service manager written around <pkg>sys-apps/s6</pkg>.
 	It exclusively works on mechanisms, not policies.
-	However, the developer has separately provided the default policies, which you can either use or build upon, or ditch entirely for your own. <pkg>sys-process/66-boot</pkg> provides the booting.
+	However, the developer has separately provided the default policies, which you can either use or build upon, or ditch entirely for your own. "sys-process/66-boot" [yet to be added to repo] provides the booting frontends in a "module".
 	66 works on glibc or musl, agnostic of either.
 
 	It supports booting as PID-1, under sysv-style inits' supervision via inittab, or as a manually called command. You aren't restricted from using it the way *you* want.
@@ -28,7 +28,6 @@
 	It has an extremely useful innovative but simple feature in "modules".
 	A module is an instantiated service which houses sub-services.
 	At the time of instantiation [and whenever you want], a configure script of the module with appropriate env-variables is launched, which decides whether to enable or not certain services in the module, whether the module should or not depend on certain services, and misc other internal module configration, based on system state and user configuration.
-	<pkg>sys-process/66-boot</pkg> provides a `boot@` module.
 
 	66 supports running as a user service manager just fine, with *all* features.
 

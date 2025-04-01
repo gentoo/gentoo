@@ -1,3 +1,6 @@
+# Copyright 2022-2024 Gentoo Authors
+# Distributed under the terms of the BSD Zero Clause License
+
 EAPI=8
 
 # Package name: sys-apps/66
@@ -7,15 +10,18 @@ SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="0BSD"
 SLOT="0"
-KEYWORDS="amd64"
-IUSE="+man doc strip -static -static-libs -init"
+KEYWORDS="~amd64 ~x86"
+IUSE="+man doc strip static static-libs -init"
 
-# sys-libs/oblibs not yet upstream
-RDEPEND=">=dev-libs/skalibs-2.14.3.0 >=dev-lang/execline-2.9.6.1 >=sys-apps/s6-2.13.1.0 >=sys-libs/oblibs-0.3.2.1
+RDEPEND=">=dev-lang/execline-2.9.6.1 >=sys-apps/s6-2.13.1.0
+ !static? (
+ >=sys-libs/oblibs-0.3.2.1
+ >=dev-libs/skalibs-2.14.3.0
+ )
 "
 
 # Documentation
-BDEPEND=">=dev-libs/skalibs-2.14.3.0 >=sys-libs/oblibs-0.3.1.0
+BDEPEND=">=dev-libs/skalibs-2.14.3.0 >=sys-libs/oblibs-0.3.2.1
 man? ( app-text/lowdown )
 doc? ( app-text/lowdown )
 "
