@@ -72,7 +72,7 @@ llvm-runtimes/openmp llvm_targets_AMDGPU
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable
-net-misc/curl rustls curl_ssl_rustls
+net-misc/curl rustls curl_ssl_rustls ech
 
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/libvpl
