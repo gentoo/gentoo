@@ -6,8 +6,8 @@
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="bundled-icons">
-			Use icon themes bundled with Quassel, rather than depending on system packages.
+		<flag name="system-icons">
+			Use <pkg>kde-frameworks/breeze-icons</pkg> rather than icons bundled with Quassel.
 		</flag>
 		<flag name="crypt">
 			Support core-&gt;network per-channel and per-query blowfish
