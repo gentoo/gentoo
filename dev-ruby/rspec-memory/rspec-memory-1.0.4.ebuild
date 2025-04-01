@@ -1,9 +1,9 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="readme.md"
@@ -18,7 +18,6 @@ SRC_URI="https://github.com/socketry/rspec-memory/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE=""
 
 ruby_add_rdepend "dev-ruby/rspec:3"
 
