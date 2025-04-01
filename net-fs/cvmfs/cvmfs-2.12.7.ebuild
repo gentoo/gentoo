@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="server"
+IUSE="go server"
 
 CDEPEND="
 	acct-group/cvmfs
@@ -41,6 +41,7 @@ RDEPEND="${CDEPEND}
 "
 
 DEPEND="${CDEPEND}
+	go? ( dev-lang/go )
 	virtual/pkgconfig
 "
 
@@ -79,6 +80,7 @@ src_configure() {
 		-DBUILD_PRELOADER=OFF # special purpose utility for HPCs
 		-DBUILD_RECEIVER=OFF # for distributed publishers only
 		-DBUILD_SERVER=$(usex server)
+		-DBUILD_GATEWAY=$(usex go)
 		-DINSTALL_BASH_COMPLETION=OFF
 		-DINSTALL_MOUNT_SCRIPTS=ON
 		-DINSTALL_PUBLIC_KEYS=ON
