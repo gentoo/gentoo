@@ -5,7 +5,7 @@ EAPI=8
 
 # Package name: sys-apps/66
 DESCRIPTION="Init system and dependency management over s6"
-HOMEPAGE="https://web.obarun.org/software/${PN}/${PV}/index/"
+HOMEPAGE="https://web.obarun.org/software/66/0.8.0.2/index/"
 SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="0BSD"
