@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-01)
+# Package destabilisation mask: No KF6-based- or ffmpeg-7 compatible
+# release in sight, needs xcb platform workaround, providing a snapshot
+# is the best we can do.
+~media-video/subtitlecomposer-0.8.1
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-01)
 # Package destabilisation mask: No KF6-based release in sight, runtime-
 # defunct in Wayland sessions, providing a snapshot is the best we can do.
 ~kde-misc/rsibreak-0.12.15
