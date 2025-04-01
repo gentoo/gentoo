@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1"
 # Reflects the ABI of libgpiod.so
 SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-IUSE="+tools cxx python test"
+IUSE="+tools cxx python static-libs test"
 RESTRICT="!test? ( test )"
 
 #  --enable-dbus #glib-2.80 masked
@@ -48,6 +48,7 @@ src_configure() {
 		$(use_enable cxx bindings-cxx)
 		$(use_enable test tests)
 		$(use_enable python bindings-python)
+		$(use_enable static-libs static)
 		--enable-examples
 		--disable-dbus
 		--disable-profiling
@@ -62,5 +63,4 @@ src_install() {
 	default
 
 	find "${D}" -name '*.la' -type f -delete || die
-	find "${D}" -name "*.a" -delete || die
 }
