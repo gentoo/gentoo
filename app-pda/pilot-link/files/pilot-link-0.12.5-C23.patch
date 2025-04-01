@@ -1,0 +1,85 @@
+Correct build for C23
+Wrong type for size variable, missing parameters in decls
+Missing include and wrong types in bundled libusb library
+https://bugs.gentoo.org/944433
+https://bugs.gentoo.org/883101
+--- a/src/parsedate.c
++++ b/src/parsedate.c
+@@ -175,8 +175,8 @@
+ static time_t	yyRelSeconds;
+ 
+ 
+-extern struct tm	*localtime();
+-static void		date_error();
++extern struct tm	*localtime(const time_t *timep);
++static void		date_error(char *s);
+ 
+ 
+ /* Enabling traces.  */
+--- a/src/parsedate.y
++++ b/src/parsedate.y
+@@ -94,8 +94,8 @@
+ static time_t	yyRelSeconds;
+ 
+ 
+-extern struct tm	*localtime();
+-static void		date_error();
++extern struct tm	*localtime(const time_t *timep);
++static void		date_error(char *s);
+ %}
+ 
+ %union {
+--- a/src/pilot-read-todos.c
++++ b/src/pilot-read-todos.c
+@@ -202,8 +202,8 @@
+ 
+ 	for (i = 0;; i++) {
+ 		int 	attr,
+-			category,
+-			len;
++			category;
++		ssize_t	len;
+ 
+ 		struct 	ToDo todo;
+ 
+--- a/libpisock/linuxusb.c
++++ b/libpisock/linuxusb.c
+@@ -27,6 +27,7 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/socket.h>
+ 
+ #include "pi-debug.h"
+ #include "pi-source.h"
+@@ -48,8 +49,8 @@
+ 
+ static int u_open(pi_socket_t *ps, struct pi_sockaddr *addr, size_t addrlen);
+ static int u_close(pi_socket_t *ps);
+-static int u_write(pi_socket_t *ps, unsigned char *buf, size_t len, int flags);
+-static int u_read(pi_socket_t *ps, pi_buffer_t *buf, size_t len, int flags);
++static ssize_t u_write(pi_socket_t *ps, const unsigned char *buf, size_t len, int flags);
++static ssize_t u_read(pi_socket_t *ps, pi_buffer_t *buf, size_t len, int flags);
+ static int u_poll(pi_socket_t *ps, int timeout);
+ static int u_flush(pi_socket_t *ps, int flags);
+ 
+@@ -188,8 +189,8 @@
+  * Returns:     Nothing
+  *
+  ***********************************************************************/
+-static int
+-u_write(pi_socket_t *ps, unsigned char *buf, size_t len, int flags)
++static ssize_t
++u_write(pi_socket_t *ps, const unsigned char *buf, size_t len, int flags)
+ {
+ 	int 	total,
+ 		nwrote;
+@@ -281,7 +282,7 @@
+  * Returns:     number of bytes read or negative otherwise
+  *
+  ***********************************************************************/
+-static int
++static ssize_t
+ u_read(pi_socket_t *ps, pi_buffer_t *buf, size_t len, int flags)
+ {
+ 	ssize_t rbuf = 0,
