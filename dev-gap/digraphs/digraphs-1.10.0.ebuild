@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
 DEPEND="sci-mathematics/gap:=
-	sci-mathematics/planarity
+	>=sci-mathematics/planarity-4
 	sci-libs/bliss:="
 RDEPEND="${DEPEND}
 	dev-gap/io
@@ -29,6 +29,8 @@ BDEPEND="test? ( || (
 	app-text/evince
 	kde-apps/okular
 ) )"
+
+PATCHES=( "${FILESDIR}/digraphs-planarity-4.x.patch" )
 
 DOCS=( CHANGELOG.md README.md )
 
