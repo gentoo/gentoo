@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="alt-svc">Enable alt-svc support</flag>
+		<flag name="ech">Enable Encrypted Client Hello support</flag>
 		<flag name="ftp">Enable FTP support</flag>
 		<flag name="gnutls">Enable gnutls ssl backend</flag>
 		<flag name="gopher">Enable Gopher protocol support</flag>
@@ -18,6 +19,7 @@
 		<flag name="imap">Enable Internet Message Access Protocol support</flag>
 		<flag name="mbedtls">Enable mbedtls ssl backend</flag>
 		<flag name="http3">Enable HTTP/3 support</flag>
+		<flag name="httpsrr">Enable HTTPS Resource Record support</flag>
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
 		<flag name="progress-meter">Enable the progress meter</flag>
@@ -25,6 +27,7 @@
 		<flag name="quic">Enable support for QUIC (RFC 9000); a UDP-based protocol intended to replace TCP</flag>
 		<flag name="rtmp">Enable RTMP Streaming Media support</flag>
 		<flag name="rustls">Enable Rustls ssl backend</flag>
+		<flag name="sasl-scram">Enable snupport for additional SASL SCRAM-SHA authentication methods via <pkg>net-misc/gsasl</pkg></flag>
 		<flag name="smtp">Enable Simple Mail Transfer Protocol support</flag>
 		<flag name="ssh">Enable SSH urls in curl using libssh2</flag>
 		<flag name="ssl">Enable crypto engine support (via openssl if USE='-gnutls -nss')</flag>
