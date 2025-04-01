@@ -4,5 +4,7 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">sharkdp/hyperfine</remote-id>
+		<changelog>https://github.com/sharkdp/hyperfine/releases</changelog>
+		<bugs-to>https://github.com/sharkdp/hyperfine/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
