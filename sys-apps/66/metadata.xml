@@ -39,6 +39,6 @@
 	</use>
 	<upstream>
 		<bugs-to>mailto:pramodvu1502@proton.me</bugs-to>
-		<!-- remote-id type="github">systemd-cron/systemd-cron</remote-id -->
+		<!-- remote-id type="gitlab></remote-id -->
 	</upstream >
 </pkgmetadata>

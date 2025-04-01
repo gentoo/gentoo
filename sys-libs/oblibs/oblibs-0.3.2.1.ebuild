@@ -1,5 +1,5 @@
 # Copyright 2025-2027 Gentoo Authors
-# Distributed under the terms of the BSD Zero Clause License
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
@@ -9,7 +9,7 @@ SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="0BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~aarch64"
+KEYWORDS="~amd64 ~x86"
 IUSE="static static-libs"
 
 RDEPEND=">=dev-lang/execline-2.9.6.1

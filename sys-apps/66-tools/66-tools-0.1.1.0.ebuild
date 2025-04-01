@@ -10,7 +10,7 @@ SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="0BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+man doc strip static static-libs +elogind dbus"
 
 RDEPEND=">=dev-lang/execline-2.9.6.1

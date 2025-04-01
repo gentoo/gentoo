@@ -1,5 +1,5 @@
 # Copyright 2022-2024 Gentoo Authors
-# Distributed under the terms of the BSD Zero Clause License
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
@@ -10,8 +10,8 @@ SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="0BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="+man doc strip static static-libs -init"
+KEYWORDS="~amd64"
+IUSE="+man doc strip static static-libs init"
 
 RDEPEND=">=dev-lang/execline-2.9.6.1 >=sys-apps/s6-2.13.1.0
  !static? (
@@ -49,7 +49,9 @@ src_install() {
 
  emake DESTDIR="${D}" install
 
- if ! use doc; then rm -fr "${D}/usr/share/doc/*"; fi
+ # Moving the doc paths to conform to gentoo's FHS
+ if ! use doc; then rm -fr "${D}/usr/share/doc/*"
+ else mv "${D}/usr/share/doc/${PN}/${PV}" "${D}/usr/share/doc/${P}"; fi
  if ! use man; then rm -fr "${D}/usr/share/man/*"; fi
  if ! use init; then rm -f "${D}/usr/bin/init"; fi
 }
