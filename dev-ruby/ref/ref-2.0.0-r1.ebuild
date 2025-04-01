@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -19,7 +19,6 @@ SRC_URI="https://github.com/ruby-concurrency/ref/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="MIT"
 SLOT="2"
 KEYWORDS="~amd64 ~riscv"
-IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
