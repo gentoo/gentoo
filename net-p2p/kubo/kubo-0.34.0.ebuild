@@ -5,6 +5,12 @@ EAPI=8
 
 inherit go-module shell-completion systemd
 
+# Upstreams has a directory for each migration, for example fs-repo-15-to-16,
+# each directory is a program by itself. When an upstream tag is created,
+# they use they the name of the last migration program + version, for example
+# fs-repo-15-to-16/v1.0.1. Accordingly, we have a variable for the name and
+# another for the version. Even though the tag uses the name of the last migration,
+# the repository contains source code for all migrations, not only the tagged one.
 FS_MIG_V="1.0.1"
 FS_MIG_N="fs-repo-15-to-16"
 MY_FS_MIG="${FS_MIG_N}-v${FS_MIG_V}"
@@ -20,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	acct-group/ipfs
