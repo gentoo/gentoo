@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
+# Package destabilisation mask: Depends on Qt5WebEngine with no Qt6-based
+# release in sight. Snapshot is from a Qt6 work branch, so nowhere near
+# stabilisation material. Bug #926676
+~sci-geosciences/qmapshack-1.17.1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-01)
 # Package destabilisation mask: No KF6-based- or ffmpeg-7 compatible
 # release in sight, needs xcb platform workaround, providing a snapshot
