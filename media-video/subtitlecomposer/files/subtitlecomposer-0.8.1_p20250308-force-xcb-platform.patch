@@ -1,0 +1,26 @@
+From 9bad579b525e1bb2e704217a9f6aa7ccc4d6b950 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 1 Apr 2025 22:28:27 +0200
+Subject: [PATCH] Force xcb platform against video glitches in Wayland sessions
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/main.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 63bff921..9599329a 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -146,6 +146,8 @@ main(int argc, char **argv)
+ 	avcodec_register_all();
+ #endif
+ 
++	qputenv("QT_QPA_PLATFORM", "xcb");
++
+ 	SubtitleComposer::Application app(argc, argv);
+ 
+ 	KAboutData aboutData(
+-- 
+2.49.0
+
