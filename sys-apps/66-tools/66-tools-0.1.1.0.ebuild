@@ -1,3 +1,6 @@
+# Copyright 2022-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 EAPI=8
 
 # Package name: sys-apps/66-tools
@@ -7,10 +10,14 @@ SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="0BSD"
 SLOT="0"
-KEYWORDS="*"
-IUSE="+man doc strip -static -static-libs +elogind dbus"
+KEYWORDS="~amd64 ~x86"
+IUSE="+man doc strip static static-libs +elogind dbus"
 
-RDEPEND=">=dev-libs/skalibs-2.14.3.0 >=dev-lang/execline-2.9.6.1 >=sys-libs/oblibs-0.3.1.0
+RDEPEND=">=dev-lang/execline-2.9.6.1
+!static? (
+ >=sys-libs/oblibs-0.3.2.1
+ >=dev-libs/skalibs-2.14.3.0
+)
 dbus? (
  >=sys-apps/66-0.8.0.1
  sys-apps/dbus-broker[-launcher]
