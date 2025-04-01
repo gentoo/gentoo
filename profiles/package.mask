@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-01)
+# Package destabilisation mask: No KF6-based release in sight, runtime-
+# defunct in Wayland sessions, providing a snapshot is the best we can do.
+~kde-misc/rsibreak-0.12.15
+
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
 # https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
