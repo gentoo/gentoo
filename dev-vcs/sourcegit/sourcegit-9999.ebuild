@@ -6,48 +6,65 @@ EAPI=8
 DOTNET_PKG_COMPAT="9.0"
 NUGETS="
 avalonia.angle.windows.natives@2.1.22045.20230930
-avalonia.avaloniaedit@11.1.0
-avalonia.buildservices@0.0.29
-avalonia.controls.colorpicker@11.2.3
-avalonia.controls.datagrid@11.2.3
-avalonia.desktop@11.2.3
-avalonia.diagnostics@11.2.3
-avalonia.fonts.inter@11.2.3
-avalonia.freedesktop@11.2.3
-avalonia.native@11.2.3
-avalonia.remote.protocol@11.2.3
+avalonia.avaloniaedit@11.2.0
+avalonia.buildservices@0.0.31
+avalonia.controls.colorpicker@11.2.6
+avalonia.controls.datagrid@11.2.6
+avalonia.desktop@11.2.6
+avalonia.diagnostics@11.2.6
+avalonia.fonts.inter@11.2.6
+avalonia.freedesktop@11.2.6
+avalonia.native@11.2.6
+avalonia.remote.protocol@11.2.6
 avalonia.skia@11.0.0
-avalonia.skia@11.2.3
-avalonia.themes.fluent@11.2.3
-avalonia.themes.simple@11.2.3
-avalonia.win32@11.2.3
-avalonia.x11@11.2.3
+avalonia.skia@11.2.6
+avalonia.themes.fluent@11.2.6
+avalonia.themes.simple@11.2.6
+avalonia.win32@11.2.6
+avalonia.x11@11.2.6
 avalonia@11.0.0
-avalonia@11.2.3
-avaloniaedit.textmate@11.1.0
-communitytoolkit.mvvm@8.3.2
+avalonia@11.2.6
+avaloniaedit.textmate@11.2.0
+azure.ai.openai@2.2.0-beta.4
+azure.core@1.44.1
+communitytoolkit.mvvm@8.4.0
 harfbuzzsharp.nativeassets.linux@7.3.0.3
 harfbuzzsharp.nativeassets.macos@7.3.0.3
 harfbuzzsharp.nativeassets.webassembly@7.3.0.3
 harfbuzzsharp.nativeassets.win32@7.3.0.3
 harfbuzzsharp@7.3.0.3
-livechartscore.skiasharpview.avalonia@2.0.0-rc5
-livechartscore.skiasharpview@2.0.0-rc5
-livechartscore@2.0.0-rc5
+livechartscore.skiasharpview.avalonia@2.0.0-rc5.4
+livechartscore.skiasharpview@2.0.0-rc5.4
+livechartscore@2.0.0-rc5.4
 microcom.runtime@0.11.0
+microsoft.bcl.asyncinterfaces@6.0.0
+microsoft.extensions.logging.abstractions@6.0.0
 onigwrap@1.0.6
+openai@2.2.0-beta.4
 skiasharp.harfbuzz@2.88.9
 skiasharp.nativeassets.linux@2.88.9
 skiasharp.nativeassets.macos@2.88.9
 skiasharp.nativeassets.webassembly@2.88.9
 skiasharp.nativeassets.win32@2.88.9
 skiasharp@2.88.9
+system.clientmodel@1.1.0
+system.clientmodel@1.2.1
+system.clientmodel@1.4.0-beta.1
+system.diagnostics.diagnosticsource@6.0.1
 system.io.pipelines@8.0.0
+system.memory.data@6.0.0
+system.memory.data@6.0.1
+system.numerics.vectors@4.5.0
+system.runtime.compilerservices.unsafe@6.0.0
+system.text.encodings.web@6.0.0
+system.text.json@6.0.0
+system.text.json@6.0.10
 system.text.json@8.0.5
-textmatesharp.grammars@1.0.59
+system.threading.tasks.extensions@4.5.4
 textmatesharp.grammars@1.0.65
-textmatesharp@1.0.59
+textmatesharp.grammars@1.0.66
 textmatesharp@1.0.65
+textmatesharp@1.0.66
 tmds.dbus.protocol@0.20.0
 "
 
@@ -59,7 +76,7 @@ HOMEPAGE="https://github.com/sourcegit-scm/sourcegit/"
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/sourcegit-scm/${PN}.git"
+	EGIT_REPO_URI="https://github.com/sourcegit-scm/${PN}"
 else
 	SRC_URI="https://github.com/sourcegit-scm/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
