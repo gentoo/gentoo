@@ -340,6 +340,15 @@ PATCHES=(
 	"${WORKDIR}"/patches
 )
 
+pkg_pretend() {
+	# TODO: drop this after a few months
+	if has_version "${CATEGORY}/${PN}[mp3]" && use !lame; then #952971
+		ewarn "${PN}'s 'mp3' USE was renamed to 'lame', please enable it"
+		ewarn "if wish to keep the ability to encode using media-sound/lame."
+		ewarn "This is *not* needed if only want mp3 playback."
+	fi
+}
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] || return
 
