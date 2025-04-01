@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Maintenance notes and explanations of GCC handling are on the wiki:
+# https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
+
 TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="13.3.0"
