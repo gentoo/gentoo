@@ -163,7 +163,7 @@ kde - Add support for software made by KDE, a free software community
 kerberos - Add kerberos support
 keyring - Enable support for freedesktop.org Secret Service API password store
 ladspa - Enable the ability to support ladspa plugins
-lame - Prefer using LAME libraries for MP3 encoding support
+lame - Add support for MP3 encoding using LAME
 lapack - Add support for the virtual/lapack numerical library
 lash - Add LASH Audio Session Handler support
 latex - Add support for LaTeX (typesetting package)
