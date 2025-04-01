@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 MY_PV="$(ver_rs 2 '-')" # 'a.b.c' -> 'a.b-c'
 DESCRIPTION="a simulator for historical computers such as Vax, PDP-11 etc.)"
@@ -24,6 +24,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.11.0-respect-FLAGS.patch
 	"${FILESDIR}"/${PN}-3.11.0-fix-mkdir-race.patch
 	"${FILESDIR}"/${PN}-3.11.0-fcommon.patch
+
+	# bug 906169
+	"${FILESDIR}"/${PN}-3.11.1-musl-1.2.4-fix.patch
 )
 
 src_prepare() {
@@ -37,6 +40,9 @@ src_prepare() {
 }
 
 src_compile() {
+	# bug 906169
+	append-cflags "-D_FILE_OFFSET_BITS=64"
+
 	export GCC="$(tc-getCC)"
 	export LDFLAGS_O="${LDFLAGS}"
 	export CFLAGS_O="${CFLAGS}"
