@@ -20,7 +20,7 @@ else
 		verify-sig? ( https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz.asc )
 		https://dev.gentoo.org/~ionen/distfiles/ffmpeg-$(ver_cut 1-2)-patchset-1.tar.xz
 	"
-	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P}
+	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 fi
 
@@ -289,6 +289,15 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	"${WORKDIR}"/patches
 )
+
+pkg_pretend() {
+	# TODO: drop this after a few months
+	if has_version "${CATEGORY}/${PN}[mp3]" && use !lame; then #952971
+		ewarn "${PN}'s 'mp3' USE was renamed to 'lame', please enable it"
+		ewarn "if wish to keep the ability to encode using media-sound/lame."
+		ewarn "This is *not* needed if only want mp3 playback."
+	fi
+}
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] || return
