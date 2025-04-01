@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,12 @@ inherit cmake-multilib
 
 DESCRIPTION="Library implementing a custom algorithm for extracting audio fingerprints"
 HOMEPAGE="https://acoustid.org/chromaprint"
-SRC_URI="https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
-	test? ( https://github.com/google/googletest/archive/v$(ver_cut 1-2 ${GTEST_VERSION}).x.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
+SRC_URI="
+	https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
+	test? (
+		https://github.com/google/googletest/archive/v$(ver_cut 1-2 ${GTEST_VERSION}).x.tar.gz
+			-> gtest-${GTEST_VERSION}.tar.gz
+	)
 "
 
 LICENSE="LGPL-2.1"
@@ -27,7 +31,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
 DOCS=( NEWS.txt README.md )
-PATCHES=( "${FILESDIR}"/ffmpeg-5.patch )
+PATCHES=(
+	"${FILESDIR}"/ffmpeg-5.patch
+	"${FILESDIR}"/ffmpeg-7.patch
+)
 
 multilib_src_configure() {
 	export GTEST_ROOT="${WORKDIR}/googletest-${GTEST_DIR_VERSION}/googletest/"
