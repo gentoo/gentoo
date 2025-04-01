@@ -1,19 +1,15 @@
 certificate version 0.1
-pusher xgqt@gentoo.org 1743546434 +0200
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1743546434-ecc7713413071fefbc2626189130e024debfafb5
+pusher 0x738409F520DF9190 1743547401 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1743547401-289d0bee09f4f3fe8d21a85967cc3de28f1c4ad1
 
-d22cfac5ef1d67edea5b3b450a9ee8dc89e1f88b 19a68f2888ab9e4ef4d33c05a1d8143253ac2e4e refs/heads/master
+19a68f2888ab9e4ef4d33c05a1d8143253ac2e4e f29cc45282812f48bdabb4c0e59020515ed13e17 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQGkBAABCgCOFiEE4PFI8SeUY7+5RtMeAxyf5lvtcUoFAmfsaEJfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEUw
-RjE0OEYxMjc5NDYzQkZCOTQ2RDMxRTAzMUM5RkU2NUJFRDcxNEEQHHhncXRAZ2Vu
-dG9vLm9yZwAKCRADHJ/mW+1xSt2FB/92J5uUCEsokcglVtSAiG5LSG9iopMhqQGh
-15juqjgixSta8/2c/ShgRMSmditMXoTUl3gqroP2aHavZjeq3blRencX9K/XMiZ2
-6Vq05aZ/BtV1ZF+SUujjsvyt3e6PCnSiN9lC6sQHRJEchyGPJntxZ5/gLzQW8jPU
-lARVDWnvaK+K9P0R0E+cCoiQbtX38PXYlzHsKWJlvijWhuw8vppF9Lmu8eBJnywJ
-U3lallnxIv6lwgwMVk3W/9isXz1xu5opF49zCXFhrW/c38fwdH9zelGRI3i22BtJ
-Aq5xybRfWCctu++MKzkBCfxQSxx/ZYAYY1gqGkEpoLR9dBDMMh8/
-=1J/e
+iNUEABYKAH0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCZ+xsCV8UgAAAAAAuAChp
+c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MjVB
+NkJCODhERDlCNzY0QzZCNTU0MUMyNzM4NDA5RjUyMERGOTE5MAAKCRBzhAn1IN+R
+kEXgAPwLaCqmLBL7zzhG/vTSrFImDEOgANv6QWhpCzMuqYS5QgEAjHUxeZrmUPmf
+ic9QmmJoIW489PeT/iE8ZFgjyLvNwgI=
+=3YEl
 -----END PGP SIGNATURE-----
