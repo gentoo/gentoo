@@ -44,5 +44,5 @@ src_install() {
 	dosym ../winbox/WinBox /opt/bin/winbox
 
 	doicon assets/img/winbox.png
-	make_desktop_entry winbox WinBox WinBox Network
+	make_desktop_entry winbox WinBox winbox Network
 }
