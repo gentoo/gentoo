@@ -1,13 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="http://bird.network.cz"
-SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
-LICENSE="GPL-2"
+SRC_URI="https://bird.network.cz/download/${P}.tar.gz"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug"

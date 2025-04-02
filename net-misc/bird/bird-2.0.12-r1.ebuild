@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,9 +7,9 @@ inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
-SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
-LICENSE="GPL-2"
+SRC_URI="https://bird.network.cz/download/${P}.tar.gz"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~loong ~x86 ~x64-macos"
 IUSE="+client custom-cflags debug libssh"
