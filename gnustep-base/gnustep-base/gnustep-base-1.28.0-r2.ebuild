@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ inherit gnustep-base toolchain-funcs
 
 DESCRIPTION="A library of general-purpose, non-graphical Objective C objects"
 HOMEPAGE="https://gnustep.github.io"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
