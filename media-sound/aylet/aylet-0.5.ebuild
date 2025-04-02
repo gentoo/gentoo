@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Aylet plays music files in the .ay format"
 HOMEPAGE="http://rus.members.beeb.net/aylet.html"
-SRC_URI="http://ftp.ibiblio.org/pub/Linux/apps/sound/players/${P}.tar.gz"
+SRC_URI="https://www.ibiblio.org/pub/Linux/apps/sound/players/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
