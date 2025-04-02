@@ -19,7 +19,7 @@ SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +man nat-pmp +qrcode +sqlite +system-libsecp256k1 systemtap test test-full upnp zeromq"
+IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde nat-pmp +qrcode +sqlite +system-libsecp256k1 systemtap test test-full upnp zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -174,7 +174,6 @@ src_configure() {
 		--disable-ccache
 		$(use_enable asm)
 		$(use_enable zeromq zmq)
-		$(use_enable man)
 		$(use_enable external-signer)
 		--with-utils
 		$(use_enable {,util-}cli)
