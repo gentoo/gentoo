@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ MY_P="${MY_PN}-${PV}"
 inherit toolchain-funcs
 
 DESCRIPTION="Network Date/Time Query and Set Local Date/Time Utility"
-HOMEPAGE="http://www.ibiblio.org/pub/Linux/system/network/misc/"
-SRC_URI="http://www.ibiblio.org/pub/Linux/system/network/misc/${MY_P}.tar.gz"
+HOMEPAGE="https://www.ibiblio.org/pub/Linux/system/network/misc/"
+SRC_URI="https://www.ibiblio.org/pub/Linux/system/network/misc/${MY_P}.tar.gz"
 
 LICENSE="GPL-1+"
 SLOT="0"
