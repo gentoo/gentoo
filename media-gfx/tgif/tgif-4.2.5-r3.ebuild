@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 MY_P="${PN}-QPL-${PV}"
 
 DESCRIPTION="Xlib base 2-D drawing facility under X11"
-HOMEPAGE="http://bourbon.usc.edu/tgif/index.html"
+HOMEPAGE="https://bourbon.usc.edu/tgif/index.html"
 SRC_URI="ftp://bourbon.usc.edu/pub/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
