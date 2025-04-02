@@ -59,6 +59,8 @@ BDEPEND="
 "
 PDEPEND=">=kde-frameworks/breeze-icons-${KFMIN}:*"
 
+PATCHES=( "${FILESDIR}/${P}-qdebug-include.patch" ) # in 6.3 branch
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_QT6=ON
