@@ -1,15 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="An automatic X screen-locker/screen-saver"
-HOMEPAGE="http://www.ibiblio.org/pub/Linux/X11/screensavers/"
+HOMEPAGE="https://www.ibiblio.org/pub/Linux/X11/screensavers/"
 
 DEB_REVISION="$(ver_cut 4)"
 SRC_URI="
-	http://www.ibiblio.org/pub/Linux/X11/screensavers/${P/_p*/}.tgz
+	https://www.ibiblio.org/pub/Linux/X11/screensavers/${P/_p*/}.tgz
 	mirror://debian/pool/main/x/${PN}/${PN}_${PV/_p*/}-${DEB_REVISION}.debian.tar.xz
 "
 LICENSE="GPL-2"
