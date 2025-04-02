@@ -6,7 +6,7 @@ inherit gnustep-base multilib virtualx
 
 DESCRIPTION="Library of GUI classes written in Obj-C"
 HOMEPAGE="https://gnustep.github.io/"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
