@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# Note: please bump this together with mail-mta/sendmail
+# Note: please bump this together with mail-mta/sendmail and app-shells/smrsh
 
 inherit toolchain-funcs
 
