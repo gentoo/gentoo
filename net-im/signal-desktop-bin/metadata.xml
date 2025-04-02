@@ -10,6 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/signalapp/Signal-Desktop/issues</bugs-to>
+		<changelog>https://github.com/signalapp/Signal-Desktop/releases</changelog>
+		<doc>https://signal.org/docs/</doc>
 		<remote-id type="github">signalapp/Signal-Desktop</remote-id>
 	</upstream>
 </pkgmetadata>
