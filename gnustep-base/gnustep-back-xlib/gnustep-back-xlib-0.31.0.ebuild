@@ -6,7 +6,7 @@ inherit gnustep-base
 
 DESCRIPTION="Default X11 back-end component for the GNUstep GUI Library"
 HOMEPAGE="https://gnustep.github.io"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
 S="${WORKDIR}/gnustep-back-${PV}"
 
 LICENSE="LGPL-2.1+"
