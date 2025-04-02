@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="CPU load flames for GKrellM 2"
 HOMEPAGE="http://people.freenet.de/thomas-steinke"
-SRC_URI="ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/${P}.tgz"
+SRC_URI="http://distcache.freebsd.org/ports-distfiles/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
