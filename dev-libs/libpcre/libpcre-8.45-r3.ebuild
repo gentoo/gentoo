@@ -7,7 +7,7 @@ inherit autotools multilib-minimal preserve-libs
 
 MY_P="pcre-${PV/_rc/-RC}"
 DESCRIPTION="Perl-compatible regular expression library"
-HOMEPAGE="http://www.pcre.org/"
+HOMEPAGE="https://www.pcre.org/"
 SRC_URI="
 	https://downloads.sourceforge.net/pcre/${MY_P}.tar.bz2
 	https://ftp.pcre.org/pub/pcre/${MY_P}.tar.bz2
