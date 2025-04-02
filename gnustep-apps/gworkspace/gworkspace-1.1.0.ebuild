@@ -6,7 +6,7 @@ inherit gnustep-2
 
 DESCRIPTION="A workspace manager for GNUstep"
 HOMEPAGE="https://www.gnustep.org/experience/GWorkspace.html"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/usr-apps/${P}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/usr-apps/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
