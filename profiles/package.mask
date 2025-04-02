@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
+# No release since 2021, no commit in 3 years, depends on Qt5WebEngine.
+# Use app-text/uchmviewer instead. Bug #823008
+app-text/kchmviewer
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-02)
 # Masked for testing the new .0 version and leave time for packages
 # to catch up on support if needed. May or may keep masked until 6.9.1
