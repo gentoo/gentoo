@@ -10,7 +10,7 @@ MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
-HOMEPAGE="http://www.postfix.org/"
+HOMEPAGE="https://www.postfix.org/"
 SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 S="${WORKDIR}/${MY_SRC}"
 
