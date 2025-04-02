@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit libtool multilib-minimal
 
 DESCRIPTION="a portable, high level programming interface to various calling conventions"
 HOMEPAGE="https://sourceware.org/libffi/"
-SRC_URI="ftp://sourceware.org/pub/libffi/libffi-${PV}.tar.gz"
+SRC_URI="https://sourceware.org/ftp/libffi/libffi-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="6" # libffi.so.6
