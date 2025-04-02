@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="FreeRADIUS Client framework"
 HOMEPAGE="https://wiki.freeradius.org/project/Radiusclient"
-SRC_URI="ftp://ftp.freeradius.org/pub/freeradius/${P}.tar.gz"
+SRC_URI="https://www.freeradius.org/ftp/pub/freeradius/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
