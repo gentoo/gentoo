@@ -11,13 +11,10 @@ SRC_URI="https://git.obarun.org/Obarun/${PN}/-/archive/${PV}/${P}.tar.gz"
 LICENSE="0BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+man doc static static-libs init"
+IUSE="static static-libs init"
 
 DEPEND=" >=dev-libs/skalibs-2.14.3.0 >=sys-libs/oblibs-0.3.2.1 "
-BDEPEND="
-man? ( app-text/lowdown )
-doc? ( app-text/lowdown )
-"
+BDEPEND="app-text/lowdown"
 RDEPEND=" >=dev-lang/execline-2.9.6.1 >=sys-apps/s6-2.13.1.0
 !static? ( ${DEPEND} )
 "
