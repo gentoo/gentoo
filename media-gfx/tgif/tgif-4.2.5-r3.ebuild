@@ -9,7 +9,7 @@ MY_P="${PN}-QPL-${PV}"
 
 DESCRIPTION="Xlib base 2-D drawing facility under X11"
 HOMEPAGE="https://bourbon.usc.edu/tgif/index.html"
-SRC_URI="ftp://bourbon.usc.edu/pub/${PN}/${MY_P}.tar.gz"
+SRC_URI="http://bourbon.usc.edu/tgif/ftp/tgif/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="QPL-1.0"
