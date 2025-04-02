@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="A programm for sending and receiving fax and voice"
 HOMEPAGE="http://mgetty.greenie.net/"
-SRC_URI="ftp://mgetty.greenie.net/pub/mgetty/source/$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="http://mgetty.greenie.net/source/$(ver_cut 1-2)/${P}.tar.gz"
 
 DEPEND="
 	dev-lang/perl
