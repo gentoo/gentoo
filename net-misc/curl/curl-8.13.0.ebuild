@@ -32,7 +32,7 @@ fi
 
 LICENSE="BSD curl ISC test? ( BSD-4 )"
 SLOT="0"
-IUSE="+adns +alt-svc brotli debug +ftp gnutls gopher +hsts +http2 +http3 +httpsrr idn +imap kerberos ldap"
+IUSE="+adns +alt-svc brotli debug ech +ftp gnutls gopher +hsts +http2 +http3 +httpsrr idn +imap kerberos ldap"
 IUSE+=" mbedtls +openssl +pop3 +psl +quic rtmp rustls samba sasl-scram +smtp ssh ssl static-libs test"
 IUSE+=" telnet +tftp +websockets zstd"
 # These select the default tls implementation / which quic impl to use
@@ -53,6 +53,7 @@ RESTRICT="!test? ( test )"
 # HTTP/3 and MultiSSL are mutually exclusive; it's not clear if MultiSSL offers any benefit at all in the modern day.
 # https://github.com/curl/curl/commit/65ece771f4602107d9cdd339dff4b420280a2c2e
 REQUIRED_USE="
+	ech? ( rustls )
 	httpsrr? ( adns )
 	quic? (
 		^^ (
@@ -300,7 +301,7 @@ multilib_src_configure() {
 		--enable-digest-auth
 		--enable-dnsshuffle
 		--enable-doh
-		--disable-ech
+		$(use_enable ech)
 		--enable-http-auth
 		--enable-ipv6
 		--enable-kerberos-auth
@@ -408,8 +409,7 @@ multilib_src_test() {
 	# this ends up breaking when nproc is huge (like -j80).
 	# The network sandbox causes tests 241 and 1083 to fail; these are typically skipped
 	# as most gentoo users don't have an 'ip6-localhost'
-	# 1308: https://github.com/curl/curl/issues/16890
-	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p -j$((2*$(makeopts_jobs))) !241 !1083 $(usex rustls "!1308")"
+	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p -j$((2*$(makeopts_jobs))) !241 !1083"
 }
 
 multilib_src_install() {
