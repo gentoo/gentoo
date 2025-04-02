@@ -20,7 +20,7 @@ SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +man +qrcode +sqlite +system-libsecp256k1 systemtap test test-full zeromq"
+IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +qrcode +sqlite +system-libsecp256k1 systemtap test test-full zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -166,7 +166,6 @@ src_configure() {
 		-DWITH_QRENCODE=$(usex qrcode)
 		-DWITH_CCACHE=OFF
 		-DWITH_ZMQ=$(usex zeromq)
-		-DINSTALL_MAN=$(usex man)
 		-DENABLE_EXTERNAL_SIGNER=$(usex external-signer)
 		-DBUILD_CLI=$(usex cli)
 		-DBUILD_TX=ON
