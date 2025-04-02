@@ -15,8 +15,8 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/file.asc
 	inherit libtool verify-sig
-	SRC_URI="http://ftp.astron.com/pub/file/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( http://ftp.astron.com/pub/file/${P}.tar.gz.asc )"
+	SRC_URI="https://astron.com/pub/file/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://astron.com/pub/file/${P}.tar.gz.asc )"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
