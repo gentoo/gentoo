@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="The Linux Documentation Project HOWTOs"
-HOMEPAGE="http://www.tldp.org"
+HOMEPAGE="https://tldp.org"
 
-MY_SRC="http://www.ibiblio.org/pub/Linux/docs/HOWTO"
+MY_SRC="https://www.ibiblio.org/pub/Linux/docs/HOWTO"
 SRC_URI="
 	html? ( ${MY_SRC}/other-formats/html/Linux-html-HOWTOs-${PV}.tar.bz2 )
 	htmlsingle? ( ${MY_SRC}/other-formats/html_single/Linux-html-single-HOWTOs-${PV}.tar.bz2 )
