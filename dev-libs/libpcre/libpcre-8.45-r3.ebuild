@@ -1,24 +1,17 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools multilib-minimal preserve-libs
 
+MY_P="pcre-${PV/_rc/-RC}"
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
-MY_P="pcre-${PV/_rc/-RC}"
-if [[ ${PV} != *_rc* ]] ; then
-	# Only the final releases are available here.
-	SRC_URI="
-		https://downloads.sourceforge.net/pcre/${MY_P}.tar.bz2
-		https://ftp.pcre.org/pub/pcre/${MY_P}.tar.bz2
-		ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${MY_P}.tar.bz2
-	"
-else
-	SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/Testing/${MY_P}.tar.bz2"
-fi
-
+SRC_URI="
+	https://downloads.sourceforge.net/pcre/${MY_P}.tar.bz2
+	https://ftp.pcre.org/pub/pcre/${MY_P}.tar.bz2
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
