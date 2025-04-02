@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop toolchain-funcs
 DESCRIPTION="Clone of the arcade game Defender, but with a Linux theme"
 HOMEPAGE="http://www.newbreedsoftware.com/defendguin/"
 SRC_URI="
-	ftp://ftp.tuxpaint.org/unix/x/defendguin/src/${P}.tar.gz
+	https://tuxpaint.org/ftp/unix/x/defendguin/src/${P}.tar.gz
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2"
