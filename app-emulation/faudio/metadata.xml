@@ -12,6 +12,7 @@
 	</longdescription>
 	<use>
 		<flag name="dumpvoices">FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.</flag>
+		<flag name="sdl3">Build against SDL3 using <pkg>media-libs/libsdl3</pkg>.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">FNA-XNA/FAudio</remote-id>
