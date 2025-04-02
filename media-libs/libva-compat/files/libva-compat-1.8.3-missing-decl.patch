@@ -1,0 +1,13 @@
+Add missing parameters in declaration for C23
+https://bugs.gentoo.org/944163
+--- a/va/x11/va_nvctrl.c
++++ b/va/x11/va_nvctrl.c
+@@ -130,7 +130,7 @@
+ #define XNVCTRLSimpleCheckExtension(dpy,i) \
+   XextSimpleCheckExtension (dpy, i, nvctrl_extension_name)
+
+-static int close_display();
++static int close_display(Display *, XExtCodes *);
+ static /* const */ XExtensionHooks nvctrl_extension_hooks = {
+     NULL,                               /* create_gc */
+     NULL,                               /* copy_gc */
