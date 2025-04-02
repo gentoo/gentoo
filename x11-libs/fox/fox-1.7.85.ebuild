@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="C++ Toolkit for developing Graphical User Interfaces easily and effectively"
 HOMEPAGE="http://www.fox-toolkit.org/"
-SRC_URI="ftp://www.fox-toolkit.org/pub/${P}.tar.gz"
+SRC_URI="http://fox-toolkit.org/ftp/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.7"
