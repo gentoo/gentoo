@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -16,6 +16,8 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/sphinx-contrib/plantuml/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
+	https://github.com/sphinx-contrib/plantuml/commit/27ece3637c0ec5fa91cacf511349e290a1440ba9.patch
+		-> ${PN}-0.30-fix-tests-python-3.13.patch
 "
 S="${WORKDIR}/${P#sphinxcontrib-}"
 
@@ -32,6 +34,10 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 "
+
+PATCHES=(
+	"${DISTDIR}"/${PN}-0.30-fix-tests-python-3.13.patch
+)
 
 distutils_enable_tests pytest
 
