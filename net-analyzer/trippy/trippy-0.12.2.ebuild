@@ -312,7 +312,7 @@ LICENSE="Apache-2.0"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-3.0 WTFPL-2 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="suid"
 
 FILECAPS=( cap_net_raw+p usr/bin/trip )
