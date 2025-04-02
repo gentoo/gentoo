@@ -1,4 +1,4 @@
-From 46213b2474e3a564a5f6d8b65ecaa428bd87fc7b Mon Sep 17 00:00:00 2001
+From 355e125cb5d8b899b18f6b2bfa94291cfc68f09b Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Thu, 18 Apr 2024 13:24:18 -0400
 Subject: [PATCH] Disable things we don't want
@@ -12,21 +12,22 @@ v7: Link against libOpenGL rather than libGL
 v8: Rebase
 v9: Rebase
 v10: Rebase
+v11: Rebase
 ---
  meson.build                   | 13 ++-----------
  src/egl/opengl/meson.build    | 35 ----------------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
- src/util/meson.build          |  9 +--------
+ src/util/meson.build          |  8 +-------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 3 insertions(+), 99 deletions(-)
+ 7 files changed, 3 insertions(+), 98 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 4949c726..7f5ab5e7 100644
+index c09153cf..126009c0 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -60,7 +60,7 @@ dep_drm = dependency('libdrm',
+@@ -68,7 +68,7 @@ dep_drm = dependency('libdrm',
    required : get_option('libdrm'),
    disabler : true
  )
@@ -35,7 +36,7 @@ index 4949c726..7f5ab5e7 100644
    required : get_option('x11'),
    disabler : true
  )
-@@ -95,16 +95,7 @@ endif
+@@ -103,16 +103,7 @@ endif
  
  dep_threads = dependency('threads')
  
@@ -125,10 +126,10 @@ index abf9eeee..729c0df6 100644
    'texture_from_pixmap_glesv2', files('texture_from_pixmap_glesv2.c'),
    dependencies: [_deps_x11, idep_util],
 diff --git a/src/meson.build b/src/meson.build
-index fd4a1673..cea622a6 100644
+index ae225884..896549e9 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -57,5 +57,3 @@ endif
+@@ -55,5 +55,3 @@ endif
  if host_machine.system() == 'windows'
    subdir('wgl')
  endif
@@ -150,14 +151,13 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git a/src/util/meson.build b/src/util/meson.build
-index b4fe614f..d2c42dc2 100644
+index 9304ae67..f59606b6 100644
 --- a/src/util/meson.build
 +++ b/src/util/meson.build
-@@ -22,17 +22,10 @@ inc_util = include_directories('.')
+@@ -22,16 +22,10 @@ inc_util = include_directories('.')
  
  files_libutil = files(
    'glinfo_common.c',
--  'readtex.c',
 -  'showbuffer.c',
 -  'trackball.c',
    'matrix.c',
