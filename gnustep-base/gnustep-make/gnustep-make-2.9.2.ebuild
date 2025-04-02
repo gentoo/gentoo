@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ inherit gnustep-base prefix toolchain-funcs
 
 DESCRIPTION="GNUstep Makefile Package"
 HOMEPAGE="https://gnustep.github.io"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
