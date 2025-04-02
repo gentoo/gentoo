@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit java-pkg-opt-2 gnustep-2
 MY_P=${P/sqlc/SQLC}
 DESCRIPTION="GNUstep lightweight database abstraction layer"
 HOMEPAGE="http://wiki.gnustep.org/index.php/SQLClient"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/libs/${MY_P}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/libs/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="LGPL-3"
