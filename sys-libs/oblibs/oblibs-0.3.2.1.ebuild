@@ -12,20 +12,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static static-libs"
 
+DEPEND=">=dev-libs/skalibs-2.14.3.0"
 RDEPEND=">=dev-lang/execline-2.9.6.1
-!static? ( >=dev-libs/skalibs-2.14.3.0 )"
-BDEPEND=">=dev-libs/skalibs-2.14.3.0"
+!static? ( ${DEPEND} )"
 
 src_configure() {
- local LOCAL_EXTRA_ECONF=(
- "--with-sysdeps=/usr/$(get_libdir)/skalibs"
- "--dynlibdir=/usr/$(get_libdir)"
- "--libdir=/usr/$(get_libdir)/${PN}"
+ local econfargs=(
+ "--with-sysdeps=${EPREFIX}/usr/$(get_libdir)/skalibs"
+ "--dynlibdir=${EPREFIX}/usr/$(get_libdir)"
+ "--libdir=${EPREFIX}/usr/$(get_libdir)/${PN}"
  )
- # Need to replace "/usr" with "${EPREFIX}" if required for ebuild portability.
 
- if use static; then LOCAL_EXTRA_ECONF+=("--enable-allstatic --disable-shared"); fi
- if use static-libs; then LOCAL_EXTRA_ECONF+=("--enable-static"); fi
+ if use static; then econfargs+=("--enable-allstatic" "--disable-shared"); fi
+ if use static-libs; then econfargs+=("--enable-static"); fi
 
- econf ${LOCAL_EXTRA_ECONF[@]}
+ econf ${econfargs[@]}
 }
