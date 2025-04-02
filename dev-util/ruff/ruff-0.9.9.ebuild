@@ -5,6 +5,9 @@
 
 EAPI=8
 
+CRATES="
+"
+
 declare -A GIT_CRATES=(
 	[lsp-types]='https://github.com/astral-sh/lsp-types;3512a9f33eadc5402cfab1b8f7340824c8ca1439;lsp-types-%commit%'
 	[salsa-macro-rules]='https://github.com/salsa-rs/salsa;99be5d9917c3dd88e19735a82ef6bf39ba84bd7e;salsa-%commit%/components/salsa-macro-rules'
