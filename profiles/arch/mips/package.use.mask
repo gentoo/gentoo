@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2025-04-02)
+# Requires net-misc/gsasl which is not keyworded here
+net-misc/curl sasl-scram
+
 # Sam James <sam@gentoo.org> (2025-03-19)
 # media-libs/libebur128 not keyworded here
 media-video/pipewire loudness
