@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# Note: please bump this together with mail-filter/libmilter
+# Note: please bump this together with mail-filter/libmilter and app-shells/smrsh
 
 inherit systemd toolchain-funcs
 
