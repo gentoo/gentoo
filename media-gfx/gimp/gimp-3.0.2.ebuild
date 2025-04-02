@@ -144,23 +144,7 @@ src_prepare() {
 	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
 }
 
-_adjust_sandbox() {
-	# Bugs #569738 and #591214
-	local nv
-	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia{0..9} ; do
-		# We do not check for existence as they may show up later
-		# https://bugs.gentoo.org/show_bug.cgi?id=569738#c21
-		addwrite "${nv}"
-	done
-
-	addwrite /dev/dri/  # bugs #574038 and #684886
-	addwrite /dev/ati/  # bug #589198
-	addwrite /proc/mtrr  # bug #589198
-}
-
 src_configure() {
-	_adjust_sandbox
-
 	# bug #944284 (https://gitlab.gnome.org/GNOME/gimp/-/issues/12843)
 	append-cflags -std=gnu17
 
