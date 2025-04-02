@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 # This gem includes a bundled version of app-arch/zstd. It requires
 # features that are only available with a statically linked zstd library
@@ -38,4 +38,7 @@ all_ruby_prepare() {
 
 	sed -e '/bundler/ s:^:#:' \
 		-i spec/spec_helper.rb || die
+
+	sed -e '/pry/ s:^:#:' \
+		-i spec/zstd-ruby-stream_reader_spec.rb || die
 }
