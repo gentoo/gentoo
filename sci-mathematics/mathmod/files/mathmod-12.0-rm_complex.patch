@@ -1,0 +1,21 @@
+From 61b94a59728fd691fb363ccc4e5f5bbb35e2b3c2 Mon Sep 17 00:00:00 2001
+From: Abderrahman Taha <taha_ab@yahoo.fr>
+Date: Wed, 2 Apr 2025 01:04:49 -0400
+Subject: [PATCH] #269 Collision between <complex.h> and QT
+
+---
+ pariso/commun.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pariso/commun.h b/pariso/commun.h
+index 2d647f3..0827cb8 100644
+--- a/pariso/commun.h
++++ b/pariso/commun.h
+@@ -22,7 +22,6 @@
+ 
+ #include "../fparser/fparser.hh"
+ #include <qthread.h>
+-#include <complex.h>
+ #include <tgmath.h>
+ 
+ #define PI (double(314159265) / double(100000000))
