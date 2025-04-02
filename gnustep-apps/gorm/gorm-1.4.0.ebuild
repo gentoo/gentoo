@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ inherit gnustep-2
 
 DESCRIPTION="A clone of the NeXTstep Interface Builder application for GNUstep"
 HOMEPAGE="https://gnustep.github.io/experience/Gorm.html"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/dev-apps/${P}.tar.gz"
+SRC_URI="https://ftp.gnustep.org/pub/gnustep/dev-apps/${P}.tar.gz"
 
 S=${WORKDIR}/apps-${PN}-${PN}-${PV//./_}
 LICENSE="GPL-3+ LGPL-2.1+"
