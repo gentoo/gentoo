@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2025-04-01)
+# Very dead. Last release in 2007. Many open bugs (#712894, #882169, #894620,
+# #907400, #920478, #932284, #943891).
+# Removal on 2025-05-01.  Bug #949960.
+x11-terms/aterm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
 # Package destabilisation mask: Depends on Qt5WebEngine with no Qt6-based
 # release in sight. Snapshot is from a Qt6 work branch, so nowhere near
