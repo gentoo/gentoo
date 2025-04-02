@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,13 +19,10 @@ DESCRIPTION="The Sendmail Filter API (Milter)"
 HOMEPAGE="https://www.proofpoint.com/us/products/email-protection/open-source-email-solution"
 if [[ -n $(ver_cut 4 ${SENDMAIL_VER}) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
-	SRC_URI+="https://ftp.sendmail.org/snapshots/sendmail.${SENDMAIL_VER}.tar.gz
-		ftp://ftp.sendmail.org/pub/sendmail/snapshots/sendmail.${SENDMAIL_VER}.tar.gz"
-else
-	SRC_URI="https://ftp.sendmail.org/sendmail.${SENDMAIL_VER}.tar.gz
-		ftp://ftp.sendmail.org/pub/sendmail/sendmail.${SENDMAIL_VER}.tar.gz"
+	SRC_URI="https://ftp.sendmail.org/snapshots/sendmail.${SENDMAIL_VER}.tar.gz"
 fi
-
+SRC_URI+=" https://ftp.sendmail.org/sendmail.${SENDMAIL_VER}.tar.gz"
+SRC_URI+=" https://ftp.sendmail.org/past-releases/sendmail.${SENDMAIL_VER}.tar.gz"
 S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 LICENSE="Sendmail"
