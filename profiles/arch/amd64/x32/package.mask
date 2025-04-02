@@ -91,6 +91,7 @@ app-text/calibre
 app-text/cb2bib
 app-text/kchmviewer
 app-text/sigil
+app-text/uchmviewer
 dev-python/spyder
 dev-python/spyder-terminal
 dev-python/spyder-unittest
