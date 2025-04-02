@@ -1,0 +1,46 @@
+From e7cf80b06732622c68d3628d384b5354d412aa91 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Wed, 23 Oct 2024 10:30:38 +0200
+Subject: [PATCH 1/2] Inject system packages
+
+---
+ pipenv/patched/pip/__main__.py | 6 ++++++
+ pipenv/resolver.py             | 5 +++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/pipenv/patched/pip/__main__.py b/pipenv/patched/pip/__main__.py
+index e76aed6e..5e62c70b 100644
+--- a/pipenv/patched/pip/__main__.py
++++ b/pipenv/patched/pip/__main__.py
+@@ -21,6 +21,12 @@ if __package__ == "":
+ if __name__ == "__main__":
+     import importlib.util
+     import sys
++
++    SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
++
++    # Inject site directory into system path.
++    sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+     spec = importlib.util.spec_from_file_location(
+         "pipenv",
+         location=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "__init__.py"))
+diff --git a/pipenv/resolver.py b/pipenv/resolver.py
+index 0236bd19..a0442366 100644
+--- a/pipenv/resolver.py
++++ b/pipenv/resolver.py
+@@ -7,6 +7,11 @@ from dataclasses import dataclass, field
+ from pathlib import Path
+ from typing import Any, Dict, List, Optional, Set
+ 
++SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(__file__))
++
++# Inject site directory into system path.
++sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+ 
+ def _ensure_modules():
+     spec = importlib.util.spec_from_file_location(
+-- 
+2.45.2
+
