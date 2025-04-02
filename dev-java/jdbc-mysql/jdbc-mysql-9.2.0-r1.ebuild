@@ -61,6 +61,14 @@ JAVA_SRC_DIR=(
 	"src/main/user-impl/java"
 )
 
+src_prepare() {
+	java-pkg-2_src_prepare
+	mkdir -p src/main/resources/META-INF/services || die "META-INF"
+	# populate META-INF/services according to line 801 build.xml
+	echo com.mysql.cj.jdbc.Driver \
+		> src/main/resources/META-INF/services/java.sql.Driver || die "META-INF"
+}
+
 src_install() {
 	java-pkg-simple_src_install
 	java-pkg_newjar "${DISTDIR}/oci-java-sdk-common-${OSC}.jar" oci-java-sdk-common.jar
