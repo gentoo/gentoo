@@ -30,5 +30,5 @@ RDEPEND="
 		>=kde-misc/skanlite-${PV}:*
 		webengine? ( >=media-gfx/skanpage-${PV}:* )
 	)
-	screencast? ( >=kde-apps/spectacle-${PV}:* )
+	screencast? ( kde-plasma/spectacle:* )
 "
