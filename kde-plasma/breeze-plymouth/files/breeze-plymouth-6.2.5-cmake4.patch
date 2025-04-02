@@ -1,0 +1,26 @@
+From c49e5349df34a74b023c3970bfc84828c57ead52 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 11 Mar 2025 16:29:21 +0100
+Subject: [PATCH] Require newer CMake
+
+CMake 4.0 drops support for older than 3.5
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9ea7e6..a35956b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@ project(breeze-plymouth)
+ set(PROJECT_VERSION "6.3.80")
+ set(PROJECT_VERSION_MAJOR 6)
+ 
+-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+ 
+ find_package(ECM 6.2.0 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH} )
+-- 
+GitLab
+
