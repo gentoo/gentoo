@@ -32,19 +32,15 @@ REQUIRED_USE="
 # dev-libs/univalue is now bundled, as upstream dropped support for system copy
 # and their version in the Bitcoin repo has deviated a fair bit from upstream.
 # Upstream also seems very inactive.
-RDEPEND="
-	!dev-util/bitcoin-tx
+COMMON_DEPEND="
 	>=dev-libs/boost-1.81.0:=
 	>=dev-libs/libevent-2.1.12:=
 	berkdb? ( >=sys-libs/db-4.8.30:$(db_ver_to_slot 4.8)=[cxx] )
-	cli? ( !net-p2p/bitcoin-cli )
 	daemon? (
-		!net-p2p/bitcoind
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
 	gui? (
-		!net-p2p/bitcoin-qt
 		>=dev-qt/qtbase-6.2:6[dbus?,gui,network,widgets]
 	)
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
@@ -52,8 +48,15 @@ RDEPEND="
 	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[asm=,ellswift,extrakeys,recovery,schnorr] )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
 "
+RDEPEND="
+	${COMMON_DEPEND}
+	!dev-util/bitcoin-tx
+	cli? ( !net-p2p/bitcoin-cli )
+	daemon? ( !net-p2p/bitcoind )
+	gui? ( !net-p2p/bitcoin-qt )
+"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	systemtap? ( >=dev-debug/systemtap-4.8 )
 "
 BDEPEND="
