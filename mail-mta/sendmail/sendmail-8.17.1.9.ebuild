@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,10 @@ DESCRIPTION="Widely-used Mail Transport Agent (MTA)"
 HOMEPAGE="https://www.sendmail.org/"
 if [[ -n $(ver_cut 4) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
-	SRC_URI+="https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz
-		ftp://ftp.sendmail.org/pub/${PN}/snapshots/${PN}.${PV}.tar.gz"
-else
-	SRC_URI="https://ftp.sendmail.org/${PN}.${PV}.tar.gz
-		ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
+	SRC_URI="https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz"
 fi
+SRC_URI+=" https://ftp.sendmail.org/${PN}.${PV}.tar.gz"
+SRC_URI+=" https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz"
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
