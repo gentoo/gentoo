@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit desktop toolchain-funcs
 
 DESCRIPTION="Puzzle game where it's your job to clear the screen of gems"
 HOMEPAGE="http://www.newbreedsoftware.com/gemdropx/"
-SRC_URI="ftp://ftp.tuxpaint.org/unix/x/gemdropx/src/${P}.tar.gz"
+SRC_URI="https://tuxpaint.org/ftp/unix/x/gemdropx/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
