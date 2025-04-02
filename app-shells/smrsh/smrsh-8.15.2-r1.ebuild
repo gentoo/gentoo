@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Note: please bump this together with mail-mta/sendmail and mail-filter/libmilter
+
 inherit toolchain-funcs
 
 DESCRIPTION="Sendmail restricted shell, for use with MTAs other than Sendmail"
