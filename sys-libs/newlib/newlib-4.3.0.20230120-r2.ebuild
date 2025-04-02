@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://sourceware.org/git/newlib-cygwin.git"
 	inherit git-r3
 else
-	SRC_URI="ftp://sourceware.org/pub/newlib/${P}.tar.gz"
+	SRC_URI="https://sourceware.org/pub/newlib/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
