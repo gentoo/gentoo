@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pramodvu1502@proton.me</email>
-	</maintainer>
 	<use>
 		<flag name="init">Provides /usr/bin/init binary for directly booting 66; Disable if you want to boot 66 under a sysv-style init, or some other init system.</flag>
 	</use>
 	<upstream>
+                <!--remote-id type="">https://git.obarun.org/Obarun/66</remote-id-->
 		<bugs-to>mailto:pramodvu1502@proton.me</bugs-to>
-		<!-- remote-id type="gitlab></remote-id -->
+		<maintainer>
+                    <email>pramodvu1502@proton.me</email>
+                </maintainer>   
 	</upstream >
 </pkgmetadata>

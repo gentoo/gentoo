@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pramodvu1502@proton.me</email>
-	</maintainer>
 	<longdescription>
 	This package 66-tools is a set of helper tools used mainly in <pkg>sys-apps/66</pkg> spervision suite.
 	It is optional for 66 itself, but most of 66's frontends *require* it for the convenience it provides.
@@ -27,7 +24,8 @@
 		<flag name="dbus">Depending on useflag "elogind" pulls either <pkg>sys-auth/elogind</pkg> or <pkg>sys-libs/basu</pkg> </flag>
 	</use>
 	<upstream>
+                <maintainer><email>pramodvu1502@proton.me</email></maintainer>
 		<bugs-to>mailto:pramodvu1502@proton.me</bugs-to>
-		<!-- remote-id type="github">systemd-cron/systemd-cron</remote-id -->
+		<!--remote-id type="">https://git.obarun.org/Obarun/</remote-id-->
 	</upstream>
 </pkgmetadata>
