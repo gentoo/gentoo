@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ SASLAUTHD_CONF_VER="2.1.26"
 MY_PATCH_VER="${PN}-2.1.28-r4-patches"
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="https://www.cyrusimap.org/sasl/"
-#SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
 SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~grobian/distfiles/${MY_PATCH_VER}.tar.xz"
 
