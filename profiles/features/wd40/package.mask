@@ -347,6 +347,7 @@ gnome-extra/sushi
 >=media-gfx/libimagequant-4
 media-gfx/gimp
 >=media-libs/libopenraw-0.3.2
+media-plugins/gimp-lqr
 media-video/rav1e
 net-analyzer/wtfis
 net-dns/pdns-recursor
