@@ -1,0 +1,12 @@
+diff '--color=auto' -urN stlink-1.8.0.orig/cmake/modules/c_flags.cmake stlink-1.8.0/cmake/modules/c_flags.cmake
+--- a/cmake/modules/c_flags.cmake	2025-04-03 19:45:45.311368396 +0300
++++ b:wq/cmake/modules/c_flags.cmake	2025-04-03 19:45:58.947322298 +0300
+@@ -44,8 +44,3 @@
+     add_cflag_if_supported("-fPIC")
+ endif()
+ 
+-if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+-    add_cflag_if_supported("-ggdb")
+-else ()
+-    add_cflag_if_supported("-Werror")
+-endif()
