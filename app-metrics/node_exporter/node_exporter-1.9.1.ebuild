@@ -12,11 +12,10 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/prometheus/node_exporter.git"
 else
-	SRC_URI="
-	https://github.com/prometheus/node_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/rahilarious/gentoo-distfiles/releases/download/${PN}-1.8.0/deps.tar.xz -> ${PN}-1.8.0-deps.tar.xz
-	"
-	KEYWORDS="amd64 arm64 ~loong ~riscv ~x86"
+	SRC_URI="https://github.com/prometheus/node_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI+=" https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz"
+
+	KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 fi
 
 # main pkg
@@ -33,7 +32,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND=">=dev-util/promu-0.15.0"
+BDEPEND=">=dev-util/promu-0.17.0"
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
@@ -66,11 +65,13 @@ src_install() {
 	dosbin "${PN}"
 	dodoc example-rules.yml *.md
 	doman "${PN}".1
-	systemd_newunit "${FILESDIR}"/node_exporter-1.7.0.service node_exporter.service
+	systemd_dounit examples/systemd/node_exporter.{service,socket}
+	insinto /etc/sysconfig
+	newins examples/systemd/sysconfig.node_exporter node_exporter
 	newinitd "${FILESDIR}"/${PN}.initd-1 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/node_exporter-1.7.0.logrotate "${PN}"
-	keepdir /var/lib/node_exporter /var/log/node_exporter
-	fowners ${PN}:${PN} /var/lib/node_exporter /var/log/node_exporter
+	keepdir /var/lib/node_exporter/textfile_collector /var/log/node_exporter
+	fowners -R ${PN}:${PN} /var/lib/node_exporter /var/log/node_exporter
 }

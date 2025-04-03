@@ -72,6 +72,6 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/node_exporter-1.7.0.logrotate "${PN}"
-	keepdir /var/lib/node_exporter /var/log/node_exporter
-	fowners ${PN}:${PN} /var/lib/node_exporter /var/log/node_exporter
+	keepdir /var/lib/node_exporter/textfile_collector /var/log/node_exporter
+	fowners -R ${PN}:${PN} /var/lib/node_exporter /var/log/node_exporter
 }
