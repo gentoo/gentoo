@@ -20,12 +20,11 @@ SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde qrcode +sqlite +system-libsecp256k1 systemtap test test-full zeromq"
+IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui qrcode +sqlite +system-libsecp256k1 systemtap test test-full zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	dbus? ( gui )
-	kde? ( gui )
 	qrcode? ( gui )
 	test-full? ( test )
 "
@@ -251,11 +250,6 @@ src_install() {
 		newins src/qt/res/src/bitcoin.svg bitcoin128.svg
 
 		domenu "${FILESDIR}/org.bitcoin.bitcoin-qt.desktop"
-
-		if use kde ; then
-			insinto /usr/share/kservices5
-			doins "${FILESDIR}/bitcoin-qt.protocol"
-		fi
 	fi
 
 	if use examples ; then
@@ -283,10 +277,6 @@ pkg_preinst() {
 			dosym -r {/etc/,/var/lib/bitcoin/.}bitcoin/bitcoin.conf
 			dosym -r /var/lib/bitcoin{/.bitcoin,d}
 		fi
-	fi
-
-	if use kde && [[ -d "${EROOT}/usr/share/kde4" ]] ; then
-		dosym -r /usr/share/{kservices5,kde4/services}/bitcoin-qt.protocol
 	fi
 }
 
