@@ -283,13 +283,6 @@ dev-python/bitvector
 sys-cluster/crmsh
 sys-cluster/pacemaker
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# The package has not been touched by the author since it's re-import
-# in 2022.  It uses legacy distutils-r1 build and still requires Python
-# 3.10.  It has no reverse dependencies.
-# Removal on 2025-04-16.  Bug #897196.
-sci-chemistry/ParmEd
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-17)
 # Database migration issues on upgrade, bug #951486
 ~app-office/kmymoney-5.1.92_p20250306
