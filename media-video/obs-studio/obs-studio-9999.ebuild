@@ -189,10 +189,6 @@ src_prepare() {
 	use wayland && filter-lto
 
 	cmake_src_prepare
-
-	pushd deps/json11 &> /dev/null || die
-		eapply "${FILESDIR}/json11-1.0.0-include-cstdint.patch"
-	popd &> /dev/null || die
 }
 
 src_configure() {
