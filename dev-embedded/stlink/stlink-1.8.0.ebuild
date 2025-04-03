@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,22 +18,20 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-RDEPEND="virtual/libusb:1
+RDEPEND="
+	virtual/libusb:1
 	>=dev-libs/glib-2.32.0:2
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.0-no-werror.patch
-)
+PATCHES=( "${FILESDIR}/${P}-werror.patch" )
 
 src_configure() {
 	local mycmakeargs=(
 		-DSTLINK_UDEV_RULES_DIR="$(get_udevdir)"/rules.d
 		-DSTLINK_MODPROBED_DIR="${EPREFIX}/etc/modprobe.d"
-		-DSTLINK_STATIC_LIB=OFF
-		-DLIB_INSTALL_DIR:PATH="$(get_libdir)"
+		-DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
 	)
 
 	cmake_src_configure
