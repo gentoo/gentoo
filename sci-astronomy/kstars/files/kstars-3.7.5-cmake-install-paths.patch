@@ -1,0 +1,37 @@
+From 5eb98b999a8427ea3c827edd12b3e11e5207ca47 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 3 Apr 2025 22:49:27 +0200
+Subject: [PATCH] CMake: s/DATA_INSTALL_DIR/KDE_INSTALL_DATADIR/
+
+Gentoo-bug: https://bugs.gentoo.org/953100
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ kstars/data/fr/CMakeLists.txt  | 3 +--
+ kstars/data/nds/CMakeLists.txt | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/kstars/data/fr/CMakeLists.txt b/kstars/data/fr/CMakeLists.txt
+index 070297450..d0f33cc5b 100644
+--- a/kstars/data/fr/CMakeLists.txt
++++ b/kstars/data/fr/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ ########### install files ###############
+ 
+-install( FILES info_url.dat DESTINATION  ${DATA_INSTALL_DIR}/kstars/fr
+-)
++install(FILES info_url.dat DESTINATION ${KDE_INSTALL_DATADIR}/kstars/fr)
+ 
+diff --git a/kstars/data/nds/CMakeLists.txt b/kstars/data/nds/CMakeLists.txt
+index ba15f6cf8..09629dab8 100644
+--- a/kstars/data/nds/CMakeLists.txt
++++ b/kstars/data/nds/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ ########### install files ###############
+ 
+-install( FILES info_url.dat DESTINATION  ${DATA_INSTALL_DIR}/kstars/nds
+-)
++install(FILES info_url.dat DESTINATION ${KDE_INSTALL_DATADIR}/kstars/nds)
+ 
+-- 
+2.49.0
+
