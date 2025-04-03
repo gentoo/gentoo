@@ -1,0 +1,11 @@
+--- a/include/sm/os/sm_os_linux.h	2020-06-09 11:57:46.789786561 +0200
++++ b/include/sm/os/sm_os_linux.h	2020-06-09 11:57:49.174781812 +0200
+@@ -33,7 +33,7 @@
+ # endif /* LINUX_VERSION_CODE */
+ #endif /* SM_CONF_SHM */
+
+-#define SM_CONF_SYS_CDEFS_H	1
++#define SM_CONF_SYS_CDEFS_H	0
+ #ifndef SM_CONF_SEM
+ # define SM_CONF_SEM	2
+ #endif /* SM_CONF_SEM */
