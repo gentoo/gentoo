@@ -1,0 +1,57 @@
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4575
+
+From d6798089d447977ef4416d124a83344241aab14b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 3 Apr 2025 19:03:27 +0100
+Subject: [PATCH] gclosure: fix ATOMIC_CHANGE_FIELD to read vint atomically
+
+Depending on luck, g_closure_ref may access closure->vint and observe
+different values between reads. This manifests as a test failure in
+signals-refcount{2,4}, properties-refcount1, and closure-refcount depending
+on timing and re-runs.
+
+Jakub Jelinek analysed this on GCC bug PR119607 after I'd reported it
+over there as a possible GCC regression.
+
+The critical part being g_closure_ref -> ATOMIC_INC_ASSIGN -> ATOMIC_CHANGE_FIELD
+where closure->vint gets re-read repeatedly, both outside and inside the retry
+loop. To fix that:
+
+1. Atomically fetch it the first time;
+2. Use the cached read, not a fresh read, of vint in the loop;
+3. Use g_atomic_int_compare_and_exchange_full in the loop so we get a freshly
+cached vint if it changed in another thread.
+
+Bug: https://gcc.gnu.org/PR119607
+Fixes: 834ddd19 ('turned all modifications to the first 32 integer bits in a closure into')
+Co-authored-by: Jakub Jelinek <jakub@redhat.com>
+---
+ gobject/gclosure.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gobject/gclosure.c b/gobject/gclosure.c
+index 2552946e3b..e6e9769e46 100644
+--- a/gobject/gclosure.c
++++ b/gobject/gclosure.c
+@@ -110,15 +110,17 @@ typedef union {
+ G_STMT_START {                                                                          \
+   ClosureInt *cunion = (ClosureInt*) _closure;                 		                \
+   gint new_int, old_int, success;                              		                \
++  old_int = g_atomic_int_get (&cunion->vint);                   	                \
+   do                                                    		                \
+     {                                                   		                \
+       ClosureInt tmp;                                   		                \
+-      tmp.vint = old_int = cunion->vint;                		                \
++      tmp.vint = old_int;                               		                \
+       _SET_OLD tmp.closure._field;                                                      \
+       tmp.closure._field _OP _value;                      		                \
+       _SET_NEW tmp.closure._field;                                                      \
+       new_int = tmp.vint;                               		                \
+-      success = g_atomic_int_compare_and_exchange (&cunion->vint, old_int, new_int);    \
++      success = g_atomic_int_compare_and_exchange_full (&cunion->vint, old_int, new_int,\
++							&old_int);			\
+     }                                                   		                \
+   while (!success && _must_set);                                                        \
+ } G_STMT_END
+-- 
+GitLab
