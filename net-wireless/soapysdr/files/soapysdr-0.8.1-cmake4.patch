@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ff15ad0..8fff872 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Project setup
+ ########################################################################
+-cmake_minimum_required(VERSION 3.1.0)
++cmake_minimum_required(VERSION 3.10.0)
+ project(SoapySDR)
+ enable_language(CXX)
+ enable_testing()
+diff --git a/ExampleDriver/CMakeLists.txt b/ExampleDriver/CMakeLists.txt
+index 32cb6ca..ada07e9 100644
+--- a/ExampleDriver/CMakeLists.txt
++++ b/ExampleDriver/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Project setup -- only needed if device support is a stand-alone build
+ # We recommend that the support module be built in-tree with the driver.
+ ########################################################################
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.10.0)
+ project(SoapySDRMyDevice CXX)
+ enable_testing()
+ 
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
+index 8cb1592..a5c09ce 100644
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Project setup
+ ########################################################################
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10.0)
+ project(SoapySDRPython CXX)
+ enable_testing()
+ 
