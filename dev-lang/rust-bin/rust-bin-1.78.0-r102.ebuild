@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL="yes"
 
-inherit llvm-r1 multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
+inherit llvm-r1 multilib prefix rust-toolchain verify-sig multilib-minimal
 
 MY_P="rust-${PV}-r101"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
@@ -76,12 +76,6 @@ QA_PREBUILT="
 QA_EXECSTACK="opt/${P}/lib/rustlib/*/lib*.rlib:lib.rmeta"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
-
-pkg_pretend() {
-	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
-		die "${CHOST} is not supported by upstream Rust. You must use a hard float version."
-	fi
-}
 
 src_unpack() {
 	# sadly rust-src tarball does not have corresponding .asc file
