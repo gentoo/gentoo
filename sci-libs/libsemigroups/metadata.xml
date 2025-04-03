@@ -42,6 +42,12 @@
         is for determining words equivalent to w or that are left
         divisors of w).
   </longdescription>
+    <use>
+      <flag name="eigen">
+        Use <pkg>dev-cpp/eigen</pkg> (at build time
+        only) to speed up some matrix operations.
+      </flag>
+    </use>
   <upstream>
     <remote-id type="github">libsemigroups/libsemigroups</remote-id>
   </upstream>
