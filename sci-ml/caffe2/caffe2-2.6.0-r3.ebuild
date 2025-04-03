@@ -10,10 +10,17 @@ inherit python-single-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
 MYPN=pytorch
 MYP=${MYPN}-${PV}
 
+# caffe2-2.6.0 depends on future version of composable kernel
+# TODO: replace it with RDEPEND in the future
+CK_COMMIT=50ee4267e27b875d149e642f4cebd47be1dc3b57
+CK_P=composable_kernel-${CK_COMMIT:0:8}
+
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
-SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${MYP}.tar.gz"
+SRC_URI="
+	https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${MYP}.tar.gz
+	rocm? ( https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz -> ${CK_P}.tar.gz )
+"
 
 S="${WORKDIR}"/${MYP}
 
@@ -68,24 +75,19 @@ RDEPEND="
 		sci-ml/gemmlowp
 	)
 	rocm? (
-		=dev-util/hip-6.1*
-		=dev-libs/rccl-6.1*[${ROCM_USEDEP}]
-		=sci-libs/rocThrust-6.1*[${ROCM_USEDEP}]
-		=sci-libs/rocPRIM-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipBLAS-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipFFT-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipSPARSE-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipRAND-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipCUB-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipSOLVER-6.1*[${ROCM_USEDEP}]
-		=sci-libs/miopen-6.1*[${ROCM_USEDEP}]
-		=dev-util/roctracer-6.1*[${ROCM_USEDEP}]
-
-		=sci-libs/hipBLASLt-6.1*
-		amdgpu_targets_gfx90a? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx90a] )
-		amdgpu_targets_gfx940? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx940] )
-		amdgpu_targets_gfx941? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx941] )
-		amdgpu_targets_gfx942? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx942] )
+		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.4
+		>=dev-util/hip-6.1       <dev-util/hip-6.4
+		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.4
+		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.4
+		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.4
+		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.4
+		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.4
+		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.4
+		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.4
+		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.4
+		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.4
+		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.4
+		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.4
 	)
 	distributed? (
 		sci-ml/tensorpipe[cuda?]
@@ -122,6 +124,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
 	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-2.5.1-newfix-functorch-install.patch
+	"${FILESDIR}"/${PN}-2.6.0-rocm-fix-std-cpp17.patch
 )
 
 src_prepare() {
@@ -178,8 +181,21 @@ src_prepare() {
 	if use rocm; then
 		sed -e "s:/opt/rocm:/usr:" \
 			-e "s:lib/cmake:$(get_libdir)/cmake:g" \
-			-e "s/HIP 1.0/HIP 1.0 REQUIRED/" \
 			-i cmake/public/LoadHIP.cmake || die
+
+		# TODO: delete, when caffe2 depends on systemwide composable_kernel
+		sed -e "s:third_party/composable_kernel:../composable_kernel-${CK_COMMIT}:g" \
+			-i aten/src/ATen/CMakeLists.txt || die
+
+		if tc-is-clang; then
+			# Systemwide gcc (for absl and at::TensorBase) + hipcc (llvm>=18) need abi-compat=17.
+			# But systemwide clang>=18 + hipcc (>=llvm-18) need opposite!
+			# See also: https://github.com/llvm/llvm-project/issues/102443#issuecomment-2329726287
+			sed '/-fclang-abi-compat=17/d' -i cmake/Dependencies.cmake || die
+		fi
+
+		# Workaround for libc++ issue https://github.com/llvm/llvm-project/issues/100802
+		sed 's/std::memcpy/memcpy/g' -i c10/util/Half.h || die
 
 		ebegin "HIPifying cuda sources"
 		${EPYTHON} tools/amd_build/build_amd.py || die
@@ -275,15 +291,11 @@ src_configure() {
 		mycmakeargs+=(
 			-DUSE_NCCL=ON
 			-DUSE_SYSTEM_NCCL=ON
+			-DCMAKE_REQUIRE_FIND_PACKAGE_HIP=ON
 		)
 
 		# ROCm libraries produce too much warnings
 		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result
-
-		if tc-is-clang; then
-			# fix mangling in LLVM: https://github.com/llvm/llvm-project/issues/85656
-			append-cxxflags -fclang-abi-compat=17
-		fi
 	fi
 
 	if use onednn; then
