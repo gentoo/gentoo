@@ -1360,7 +1360,8 @@ glibc_do_src_install() {
 
 	# Avoid stripping binaries not targeted by ${CHOST}. Or else
 	# ${CHOST}-strip would break binaries build for ${CTARGET}.
-	is_crosscompile && dostrip -x /
+	# Do this only if stripping with GNU tools.
+	[[ $STRIP != llvm-strip ]] && is_crosscompile && dostrip -x /
 
 	# gdb thread introspection relies on local libpthreads symbols. stripping breaks it
 	# See Note [Disable automatic stripping]
