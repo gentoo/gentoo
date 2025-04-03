@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/925671
+https://github.com/intel/libva/commit/45acdece2c8b7d8f6d4e5edd9b9da89e78f18ba2
+From 45acdece2c8b7d8f6d4e5edd9b9da89e78f18ba2 Mon Sep 17 00:00:00 2001
+From: Tamir Duberstein <tamird@google.com>
+Date: Wed, 21 Dec 2022 11:11:08 -0500
+Subject: [PATCH] Remove reference to non-existent symbol
+
+This fixes compilation in recent clang versions (tested against
+https://github.com/llvm/llvm-project/commit/6443c0e) which is apparently
+stricter with respect to undefined symbols. It appears that this version
+script reference was never correct.
+---
+ va/libva.syms | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/va/libva.syms b/va/libva.syms
+index b15d5460d..b3f91f935 100644
+--- a/va/libva.syms
++++ b/va/libva.syms
+@@ -6,6 +6,4 @@ VA_API_0.32.0 {
+ VA_API_0.33.0 {
+     global:
+         vaCreateSurfaces;
+-    local:
+-        vaCreateSurfaces_0_33_0;
+ } VA_API_0.32.0;
