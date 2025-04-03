@@ -8,12 +8,28 @@ MY_PN="${PN/-bin/}"
 inherit pax-utils unpacker xdg
 
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
-HOMEPAGE="https://signal.org/
-	https://github.com/signalapp/Signal-Desktop"
+HOMEPAGE="https://signal.org/"
 SRC_URI="https://updates.signal.org/desktop/apt/pool/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
 
-LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
+# The main project
+LICENSE="AGPL-3"
+# libraries, one per license
+# https://github.com/signalapp/Signal-Desktop/blob/main/ACKNOWLEDGMENTS.md
+LICENSE+=" Apache-2.0" # @react-aria/focus
+LICENSE+=" BSD-2" # arrayref
+LICENSE+=" BSD-3" # @signalapp/quill-cjs
+LICENSE+=" GPL-3" # poksho
+LICENSE+=" ISC" # lru-cache
+LICENSE+=" MIT" # electron/asar
+LICENSE+=" Unicode-3.0" # icu_collections
+LICENSE+=" ZLIB" # zlib
+LICENSE+=" public-domain" # humanize-duration
+LICENSE+=" openssl" # boring-sys
+
+# These ones were here before but I did not find them
+# LICENSE="MIT-with-advertising BSD-1 APSL-2 icu Artistic-2 LGPL-2.1"
+
 SLOT="0"
 KEYWORDS="-* amd64"
 RESTRICT="splitdebug"
