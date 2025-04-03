@@ -19,6 +19,7 @@
   and meta-data on demand and verifies data integrity by cryptographic hashes.
   </longdescription>
   <use>
+    <flag name="go">Enable building <pkg>dev-lang/go</pkg> code: cvmfs_gateway</flag>
     <flag name="server">Install the cvmfsd program and init script</flag>
   </use>
   <upstream>
