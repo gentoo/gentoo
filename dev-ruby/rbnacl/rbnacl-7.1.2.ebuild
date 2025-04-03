@@ -17,7 +17,7 @@ SRC_URI="https://github.com/RubyCrypto/rbnacl/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="6"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND=" dev-libs/libsodium"
