@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/${PN}/${P}.tar.zst"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc ~riscv x86"
 
 RDEPEND="
 	x11-libs/libxcb
