@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
 DEPEND="sci-mathematics/gap:=
-	>=sci-libs/libsemigroups-2.7.3:="
+	<sci-libs/libsemigroups-3:="
 RDEPEND="${DEPEND}
 	dev-gap/orb
 	dev-gap/io
