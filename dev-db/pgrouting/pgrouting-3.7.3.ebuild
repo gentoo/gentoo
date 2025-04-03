@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
 
-POSTGRES_COMPAT=( {13..16} )
+POSTGRES_COMPAT=( {13..17} )
 POSTGRES_USEDEP="server"
 
 inherit cmake postgres-multi
