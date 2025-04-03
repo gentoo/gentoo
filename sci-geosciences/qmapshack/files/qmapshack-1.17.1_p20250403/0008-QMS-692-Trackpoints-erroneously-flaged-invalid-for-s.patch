@@ -1,0 +1,58 @@
+From 48170e13bab9a028a5a02ec819dca8b8f8fed30b Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Mon, 4 Nov 2024 08:42:48 +0100
+Subject: [PATCH 08/26] [QMS-692] Trackpoints erroneously flaged invalid for
+ short tracks (<50m)
+
+---
+ changelog.txt                         |  1 +
+ src/qmapshack/gis/trk/CGisItemTrk.cpp | 12 ++++++------
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/changelog.txt b/changelog.txt
+index 37ee5a9982a3..26ab4665c6a1 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -4,6 +4,7 @@ V1.XX.X
+ [QMS-675] The label colors defined in the TYP are not used
+ [QMS-680] Fix: Sending multiple selected projects to device
+ [QMS-683] Fix alglib error on interpolation
++[QMS-692] Trackpoints erroneously flaged invalid for short tracks (<50m)
+ 
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+diff --git a/src/qmapshack/gis/trk/CGisItemTrk.cpp b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+index 81e8b60778d8..ce0e79b30131 100644
+--- a/src/qmapshack/gis/trk/CGisItemTrk.cpp
++++ b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+@@ -991,10 +991,10 @@ void CGisItemTrk::deriveSecondaryData() {
+         continue;
+       }
+ 
++      d1 = trkpt2.distance;
++      e1 = trkpt2.ele;
++      t1 = trkpt2.time.toMSecsSinceEpoch() / 1000.0;
+       if (trkpt.distance - trkpt2.distance >= 25) {
+-        d1 = trkpt2.distance;
+-        e1 = trkpt2.ele;
+-        t1 = trkpt2.time.toMSecsSinceEpoch() / 1000.0;
+         break;
+       }
+     }
+@@ -1008,10 +1008,10 @@ void CGisItemTrk::deriveSecondaryData() {
+         continue;
+       }
+ 
++      d2 = trkpt2.distance;
++      e2 = trkpt2.ele;
++      t2 = trkpt2.time.toMSecsSinceEpoch() / 1000.0;
+       if (trkpt2.distance - trkpt.distance >= 25) {
+-        d2 = trkpt2.distance;
+-        e2 = trkpt2.ele;
+-        t2 = trkpt2.time.toMSecsSinceEpoch() / 1000.0;
+         break;
+       }
+     }
+-- 
+2.49.0
+

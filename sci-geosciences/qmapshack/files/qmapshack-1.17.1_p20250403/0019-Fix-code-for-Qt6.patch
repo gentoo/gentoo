@@ -1,0 +1,1610 @@
+From 3c7d65433945e712f8363a8e781f301892e5f03b Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Wed, 4 Sep 2024 13:48:55 +0200
+Subject: [PATCH 19/26] Fix code for Qt6
+
+---
+ .gitignore                                    |  1 +
+ CMakeLists.txt                                | 50 ++++++--------
+ cmake/Modules/TranslateTs.cmake               |  5 +-
+ src/common/help/CHelpBrowser.h                |  2 +-
+ src/qmapshack/CMakeLists.txt                  | 53 ++++++++-------
+ src/qmapshack/CSingleInstanceProxy.cpp        |  2 +-
+ src/qmapshack/QMapShack_de.ts                 |  3 +
+ src/qmapshack/QMapShack_en.ts                 |  3 +
+ src/qmapshack/QMapShack_es.ts                 |  3 +
+ src/qmapshack/canvas/CCanvas.cpp              |  2 +-
+ src/qmapshack/canvas/CCanvas.h                |  2 +-
+ src/qmapshack/dem/CDemList.cpp                |  2 +-
+ src/qmapshack/gis/CGisListWks.cpp             | 20 +++---
+ src/qmapshack/gis/CGisWorkspace.h             |  3 +-
+ src/qmapshack/gis/IGisItem.cpp                | 68 +++++++++----------
+ src/qmapshack/gis/IGisItem.h                  | 10 +--
+ .../gis/fit/decoder/CFitFieldDefinition.cpp   |  4 +-
+ src/qmapshack/gis/fit/serialization.cpp       |  2 +-
+ src/qmapshack/gis/gpx/CGpxProject.cpp         |  2 +-
+ src/qmapshack/gis/gpx/serialization.cpp       |  2 +-
+ src/qmapshack/gis/ovl/CGisItemOvlArea.cpp     |  8 +--
+ src/qmapshack/gis/prj/IGisProject.cpp         |  2 +-
+ src/qmapshack/gis/rte/CGisItemRte.cpp         |  8 +--
+ src/qmapshack/gis/search/CSearchLineEdit.cpp  |  1 +
+ src/qmapshack/gis/tcx/CTcxProject.cpp         |  2 +-
+ src/qmapshack/gis/tnv/CTwoNavProject.cpp      |  2 +-
+ src/qmapshack/gis/tnv/serialization.cpp       | 18 ++---
+ src/qmapshack/gis/trk/CGisItemTrk.cpp         |  4 +-
+ src/qmapshack/gis/trk/CTrackData.h            |  7 +-
+ .../gis/trk/filter/CFilterNewDate.cpp         |  2 +-
+ src/qmapshack/gis/wpt/CDetailsGeoCache.h      |  1 +
+ src/qmapshack/gis/wpt/CGisItemWpt.cpp         | 10 +--
+ src/qmapshack/map/CMapJNX.cpp                 |  1 +
+ src/qmapshack/map/CMapList.cpp                |  2 +-
+ src/qmapshack/map/garmin/CGarminTyp.cpp       | 11 ++-
+ src/qmapshack/map/garmin/CGarminTyp.h         |  2 +
+ src/qmapshack/map/garmin/IGarminStrTbl.cpp    |  1 +
+ src/qmapshack/map/garmin/IGarminStrTbl.h      |  2 +-
+ src/qmapshack/mouse/IScrOpt.cpp               |  2 +-
+ src/qmapshack/mouse/IScrOpt.h                 |  2 +-
+ src/qmapshack/plot/CPlotAxisTime.cpp          |  2 +-
+ src/qmapshack/plot/IPlot.cpp                  |  2 +-
+ src/qmapshack/plot/IPlot.h                    |  2 +-
+ src/qmapshack/qlgt/converter.cpp              |  4 +-
+ src/qmapshack/realtime/IRtRecord.cpp          |  4 +-
+ src/qmapshack/realtime/ais/CRtAis.cpp         |  4 +-
+ src/qmapshack/realtime/ais/CRtAisInfo.cpp     |  6 +-
+ src/qmapshack/realtime/ais/CRtAisRecord.cpp   |  2 +-
+ .../realtime/gpstether/CRtGpsTetherInfo.cpp   |  2 +-
+ src/qmapshack/realtime/opensky/CRtOpenSky.cpp |  6 +-
+ .../realtime/opensky/CRtOpenSkyRecord.cpp     |  2 +-
+ src/qmapshack/setup/CAppSetupLinux.cpp        |  2 +-
+ src/qmapshack/setup/CLogHandler.cpp           |  2 +-
+ src/qmapshack/setup/IAppSetup.cpp             |  4 +-
+ src/qmapshack/units/IUnit.cpp                 |  6 +-
+ src/qmaptool/CMakeLists.txt                   | 36 +++++-----
+ src/qmaptool/CSingleInstanceProxy.cpp         |  2 +-
+ src/qmaptool/canvas/CCanvas.cpp               |  2 +-
+ src/qmaptool/canvas/CCanvas.h                 |  2 +-
+ src/qmaptool/setup/CAppSetupLinux.cpp         |  2 +-
+ src/qmaptool/setup/CLogHandler.cpp            |  2 +-
+ src/qmaptool/setup/IAppSetup.cpp              |  4 +-
+ src/qmaptool/units/IUnit.cpp                  |  6 +-
+ src/qmt_map2jnx/CMakeLists.txt                |  4 +-
+ src/qmt_rgb2pct/CMakeLists.txt                | 20 +++---
+ src/qmt_rgb2pct/main.cpp                      |  2 +-
+ test/unittest/CMakeLists.txt                  | 16 ++---
+ 67 files changed, 240 insertions(+), 235 deletions(-)
+ create mode 100644 src/qmapshack/QMapShack_de.ts
+ create mode 100644 src/qmapshack/QMapShack_en.ts
+ create mode 100644 src/qmapshack/QMapShack_es.ts
+
+diff --git a/.gitignore b/.gitignore
+index 33086efe3bc0..8c67c6079e1e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,2 +1,3 @@
+ CMakeLists.txt.user
+ .mypy_cache
++*build*
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ca5b92295fe7..830f87290ea8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ###############################################################################################
+ # CMake compatibility requirements
+ ###############################################################################################
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.20.0)
+ 
+ # Needed to properly handle extract translations strings when using the Ninja
+ # generator.
+@@ -42,8 +42,6 @@ endif(WIN32)
+ # all binaries are collected in the ./bin directory
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+ 
+-include(TranslateTs)
+-include(TranslateDesktop)
+ include(DefineCMakeDefaults)
+ include(DefineCompilerFlags)
+ include(DefineInstallationPaths)
+@@ -63,9 +61,9 @@ option(BUILD_QMAPSHACK      "Build QMapShack Binary"
+ option(BUILD_QMAPTOOL       "Build QMapTool Binary including command line tools"    ON)
+ 
+ if(WIN32)
+-option(USE_QT5DBus          "Enable device detection via DBus"                      OFF)
++option(USE_QT6DBus          "Enable device detection via DBus"                      OFF)
+ else(WIN32)
+-option(USE_QT5DBus          "Enable device detection via DBus"                      ON)
++option(USE_QT6DBus          "Enable device detection via DBus"                      ON)
+ endif(WIN32)
+ 
+ # Compiler related
+@@ -90,7 +88,7 @@ if (APPLE)
+     if(NOT DEFINED QT_DEV_PATH)
+         message(FATAL_ERROR "QT_DEV_PATH not set!!!")
+     endif()
+-    # set(QT_DEV_PATH   ${QT_DEV_PATH} CACHE PATH "Path to directory containing Qt5 include and lib")
++    # set(QT_DEV_PATH   ${QT_DEV_PATH} CACHE PATH "Path to directory containing Qt6 include and lib")
+     message("QT_DEV_PATH = ${QT_DEV_PATH}")
+ 
+     if(NOT DEFINED ROUTINO_DEV_PATH)
+@@ -123,11 +121,11 @@ if (APPLE)
+ endif(APPLE)
+ 
+ if(WIN32)
+-    set(QT_DEV_PATH   "C:\\Qt\\5.12.11\\msvc2017_64" CACHE PATH "Path to directory containing Qt5 include and lib, e.g. C:\\Qt\\5.12.10\\msvc2017_64")
++    set(QT_DEV_PATH   "C:\\Qt\\5.12.11\\msvc2017_64" CACHE PATH "Path to directory containing Qt6 include and lib, e.g. C:\\Qt\\5.12.10\\msvc2017_64")
+     set(GDAL_DEV_PATH "C:\\GDAL" CACHE PATH "Path to directory containing GDAL include and lib, e.g. M:\\lib\\gdal")
+     set(PROJ_DEV_PATH "C:\\PROJ8" CACHE PATH "Path to directory containing PROJ include and lib, e.g. M:\\lib\\PROJ8")
+     set(ROUTINO_DEV_PATH "C:\\routino" CACHE PATH "Path to directory containing routino include and lib, e.g. M:\\lib\\routino")
+-    set(QuaZip-Qt5_DIR "C:\\quazip" CACHE PATH "Path to directory containing quazip cmake config files, e.g. M:\\lib2017\\QUAZIP_1\\lib\\cmake\\QuaZip-Qt5-1.1")
++    set(QuaZip-Qt6_DIR "C:\\quazip" CACHE PATH "Path to directory containing quazip cmake config files, e.g. M:\\lib2017\\QUAZIP_1\\lib\\cmake\\QuaZip-Qt5-1.1")
+     set(JPEG_DEV_PATH "C:\\JPEG" CACHE PATH "Path to directory containing JPEG include and lib, e.g. M:\\lib\\JPEG")
+     set(CMAKE_PREFIX_PATH ${QT_DEV_PATH})
+     if(POLICY CMP0074)
+@@ -177,39 +175,35 @@ cxx_add_flag_if_supported(-Woverloaded-virtual)
+ ###############################################################################################
+ # Find all required packages and setup internal variables
+ ###############################################################################################
+-find_package(Qt5Widgets             REQUIRED)
+-find_package(Qt5Core                REQUIRED)
+-find_package(Qt5Xml                 REQUIRED)
+-find_package(Qt5Sql                 REQUIRED)
+-find_package(Qt5LinguistTools       REQUIRED)
+-find_package(Qt5PrintSupport        REQUIRED)
+-find_package(Qt5UiTools             REQUIRED)
+-find_package(Qt5Network             REQUIRED)
+-find_package(Qt5WebEngineWidgets    REQUIRED)
+-find_package(Qt5Qml                 REQUIRED)
+-find_package(Qt5Help                REQUIRED)
++find_package(Qt6Widgets             REQUIRED)
++find_package(Qt6Core                REQUIRED)
++find_package(Qt6Xml                 REQUIRED)
++find_package(Qt6Sql                 REQUIRED)
++find_package(Qt6LinguistTools       REQUIRED)
++find_package(Qt6PrintSupport        REQUIRED)
++find_package(Qt6UiTools             REQUIRED)
++find_package(Qt6Network             REQUIRED)
++find_package(Qt6WebEngineWidgets    REQUIRED)
++find_package(Qt6Qml                 REQUIRED)
++find_package(Qt6Help                REQUIRED)
++find_package(Qt6Core5Compat         REQUIRED)
+ find_package(GDAL                   REQUIRED)
+ find_package(PROJ                   REQUIRED)
+ find_package(JPEG                   REQUIRED)
+ find_package(ROUTINO                REQUIRED)
+-find_package(QuaZip-Qt5             REQUIRED)
++find_package(QuaZip-Qt6             REQUIRED)
+ find_package(ALGLIB                         ) # optional as we can use our local version
+ 
+-
+-if(${Qt5Widgets_VERSION} VERSION_LESS 5.15.2)
+-    message( SEND_ERROR "You need at least Qt5.15.2 or newer.")
+-endif()
+-
+ if(${PROJ_VERSION} VERSION_LESS 8.0.0)
+     message( SEND_ERROR "You need at least PROJ 8.0.0 or newer.")
+ endif()
+ 
+-if(USE_QT5DBus)
+-    find_package(Qt5DBus REQUIRED)
++if(USE_QT6DBus)
++    find_package(Qt6DBus REQUIRED)
+     if(Qt5DBus_FOUND)
+         add_definitions(-DHAVE_DBUS)
+     endif(Qt5DBus_FOUND)
+-endif(USE_QT5DBus)
++endif(USE_QT6DBus)
+ 
+ # Everything included. Let's finetune the mess a bit more
+ 
+diff --git a/cmake/Modules/TranslateTs.cmake b/cmake/Modules/TranslateTs.cmake
+index 5be49c2b3852..b30ff3b9e1a1 100644
+--- a/cmake/Modules/TranslateTs.cmake
++++ b/cmake/Modules/TranslateTs.cmake
+@@ -61,11 +61,8 @@
+ #       COMPONENT Optional install component. Only effective if INSTALL_DIR
+ #                   present. Defaults to "Runtime".
+ 
+-# CMake v2.8.3 needed to use the CMakeParseArguments module
+-cmake_minimum_required(VERSION 2.8.3 FATAL_ERROR)
+-
+ # We use our patched version to round a annoying bug.
+-include(Qt5PatchedLinguistToolsMacros)
++include(Qt6PatchedLinguistToolsMacros)
+ 
+ function(translate_ts qmFiles)
+     set(oneValueArgs USE_QT5 UPDATE_TRANSLATIONS TEMPLATE TRANSLATION_DIR INSTALL_DIR COMPONENT)
+diff --git a/src/common/help/CHelpBrowser.h b/src/common/help/CHelpBrowser.h
+index 6dca895ac095..388c67a0b18a 100644
+--- a/src/common/help/CHelpBrowser.h
++++ b/src/common/help/CHelpBrowser.h
+@@ -32,7 +32,7 @@ class CHelpBrowser : public QTextBrowser {
+   QVariant loadResource(int type, const QUrl& name) override;
+ 
+  public slots:
+-  void setSource(const QUrl& url) override;
++  void setSource(const QUrl& url);
+ 
+  private:
+   QHelpEngine* engine;
+diff --git a/src/qmapshack/CMakeLists.txt b/src/qmapshack/CMakeLists.txt
+index 84e59677e420..da39c21976cd 100644
+--- a/src/qmapshack/CMakeLists.txt
++++ b/src/qmapshack/CMakeLists.txt
+@@ -906,26 +906,26 @@ set( RCS
+ # Some Qt magic
+ ###############################################################################################
+ 
+-qt5_wrap_ui(UI_HDRS ${UIS})
+-qt5_add_resources(RC_SRCS ${RCS})
++qt6_wrap_ui(UI_HDRS ${UIS})
++qt6_add_resources(RC_SRCS ${RCS})
+ 
+ ###############################################################################################
+ # Translation related stuff
+ ###############################################################################################
+-translate_ts(${APPLICATION_NAME}_QM_FILES
+-    UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
+-    UPDATE_OPTIONS "-I${CMAKE_CURRENT_SOURCE_DIR}" ${KEEP_OLD_TRANSLATIONS}
+-    SOURCES ${SRCS} ${HDRS} ${UIS}
+-    TEMPLATE ${APPLICATION_NAME}
+-    TRANSLATION_DIR "locale"
+-)
+-
+-if (UNIX AND NOT WIN32 AND NOT APPLE)
+-    translate_desktop(${APPLICATION_NAME}_DESKTOP_FILES
+-        TRANSLATION_DIR "locale"
+-        SOURCES "${PROJECT_SOURCE_DIR}/qmapshack.desktop.in"
+-    )
+-endif()
++# translate_ts(${APPLICATION_NAME}_QM_FILES
++#     UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
++#     UPDATE_OPTIONS "-I${CMAKE_CURRENT_SOURCE_DIR}" ${KEEP_OLD_TRANSLATIONS}
++#     SOURCES ${SRCS} ${HDRS} ${UIS}
++#     TEMPLATE ${APPLICATION_NAME}
++#     TRANSLATION_DIR "locale"
++# )
++
++# if (UNIX AND NOT WIN32 AND NOT APPLE)
++#     translate_desktop(${APPLICATION_NAME}_DESKTOP_FILES
++#         TRANSLATION_DIR "locale"
++#         SOURCES "${PROJECT_SOURCE_DIR}/qmapshack.desktop.in"
++#     )
++# endif()
+ 
+ ###############################################################################################
+ # Build source file and include paths lists
+@@ -978,21 +978,22 @@ if(${DEVELOPMENT_VERSION})
+ endif(${DEVELOPMENT_VERSION})
+ 
+ if(Qt5DBus_FOUND)
+-    set(DBUS_LIB Qt5::DBus)
++    set(DBUS_LIB Qt6::DBus)
+ else(Qt5DBus_FOUND)
+     set(DBUS_LIB)
+ endif(Qt5DBus_FOUND)
+ 
+ target_link_libraries(${APPLICATION_NAME}
+-    Qt5::Widgets
+-    Qt5::Xml
+-    Qt5::Sql
+-    Qt5::PrintSupport
+-    Qt5::UiTools
+-    Qt5::Network
+-    Qt5::WebEngineWidgets
+-    Qt5::Qml
+-    Qt5::Help
++    Qt6::Widgets
++    Qt6::Xml
++    Qt6::Sql
++    Qt6::PrintSupport
++    Qt6::UiTools
++    Qt6::Network
++    Qt6::WebEngineWidgets
++    Qt6::Qml
++    Qt6::Help
++    Qt6::Core5Compat
+     ${DBUS_LIB}
+     ${GDAL_LIBRARIES}
+     ${PROJ_LIBRARIES}
+diff --git a/src/qmapshack/CSingleInstanceProxy.cpp b/src/qmapshack/CSingleInstanceProxy.cpp
+index 4ae84723fc2c..32422410b65c 100644
+--- a/src/qmapshack/CSingleInstanceProxy.cpp
++++ b/src/qmapshack/CSingleInstanceProxy.cpp
+@@ -84,7 +84,7 @@ void CSingleInstanceProxy::slotNewConnection() {
+ 
+     // raise the application window to top of desktop
+     w.raise();
+-    QApplication::setActiveWindow(&w);
++    w.activateWindow();
+   }
+ 
+   socket->close();
+diff --git a/src/qmapshack/QMapShack_de.ts b/src/qmapshack/QMapShack_de.ts
+new file mode 100644
+index 000000000000..1f068c5de170
+--- /dev/null
++++ b/src/qmapshack/QMapShack_de.ts
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS/>
+diff --git a/src/qmapshack/QMapShack_en.ts b/src/qmapshack/QMapShack_en.ts
+new file mode 100644
+index 000000000000..1f068c5de170
+--- /dev/null
++++ b/src/qmapshack/QMapShack_en.ts
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS/>
+diff --git a/src/qmapshack/QMapShack_es.ts b/src/qmapshack/QMapShack_es.ts
+new file mode 100644
+index 000000000000..1f068c5de170
+--- /dev/null
++++ b/src/qmapshack/QMapShack_es.ts
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS/>
+diff --git a/src/qmapshack/canvas/CCanvas.cpp b/src/qmapshack/canvas/CCanvas.cpp
+index 7f097ab6b8a4..7bea922a2bd7 100644
+--- a/src/qmapshack/canvas/CCanvas.cpp
++++ b/src/qmapshack/canvas/CCanvas.cpp
+@@ -649,7 +649,7 @@ void CCanvas::wheelEvent(QWheelEvent* e) {
+   update();
+ }
+ 
+-void CCanvas::enterEvent(QEvent* e) {
++void CCanvas::enterEvent(QEnterEvent* e) {
+   if (labelHelp->isVisible()) {
+     return;
+   }
+diff --git a/src/qmapshack/canvas/CCanvas.h b/src/qmapshack/canvas/CCanvas.h
+index 7f7787d705f2..a287cf8bdbb3 100644
+--- a/src/qmapshack/canvas/CCanvas.h
++++ b/src/qmapshack/canvas/CCanvas.h
+@@ -206,7 +206,7 @@ class CCanvas : public QWidget {
+   void mouseReleaseEvent(QMouseEvent* e) override;
+   void mouseDoubleClickEvent(QMouseEvent* e) override;
+   void wheelEvent(QWheelEvent* e) override;
+-  void enterEvent(QEvent* e) override;
++  void enterEvent(QEnterEvent* e) override;
+   void leaveEvent(QEvent* e) override;
+   void keyPressEvent(QKeyEvent* e) override;
+ 
+diff --git a/src/qmapshack/dem/CDemList.cpp b/src/qmapshack/dem/CDemList.cpp
+index 377d102456fd..9ae4057b0c55 100644
+--- a/src/qmapshack/dem/CDemList.cpp
++++ b/src/qmapshack/dem/CDemList.cpp
+@@ -27,7 +27,7 @@
+ #include "units/IUnit.h"
+ 
+ void CDemTreeWidget::dragMoveEvent(QDragMoveEvent* event) {
+-  CDemItem* item = dynamic_cast<CDemItem*>(itemAt(event->pos()));
++  CDemItem* item = dynamic_cast<CDemItem*>(itemAt(event->position().toPoint()));
+ 
+   if (item && item->isActivated()) {
+     event->setDropAction(Qt::MoveAction);
+diff --git a/src/qmapshack/gis/CGisListWks.cpp b/src/qmapshack/gis/CGisListWks.cpp
+index 453a4a76f1de..2e619a7bd7ba 100644
+--- a/src/qmapshack/gis/CGisListWks.cpp
++++ b/src/qmapshack/gis/CGisListWks.cpp
+@@ -389,7 +389,7 @@ void CGisListWks::dragMoveEvent(QDragMoveEvent* e) {
+   setDragDropMode(QAbstractItemView::DragDrop);
+ 
+   QTreeWidgetItem* item1 = currentItem();
+-  QTreeWidgetItem* item2 = itemAt(e->pos());
++  QTreeWidgetItem* item2 = itemAt(e->position().toPoint());
+ 
+   // changing the item order is only valid for single selected items
+   if (selectedItems().count() == 1) {
+@@ -523,13 +523,13 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+    */
+   if (items.size() == 1) {
+     // calc. index offset (below/above item)
+-    QRect r = visualItemRect(itemAt(e->pos()));
++    QRect r = visualItemRect(itemAt(e->position().toPoint()));
+     int y1 = r.top() + r.height() / 2;
+-    int y2 = e->pos().y();
++    int y2 = e->position().toPoint().y();
+     int off = y2 > y1 ? 1 : 0;
+ 
+     IGisProject* prj1 = dynamic_cast<IGisProject*>(currentItem());
+-    IGisProject* prj2 = dynamic_cast<IGisProject*>(itemAt(e->pos()));
++    IGisProject* prj2 = dynamic_cast<IGisProject*>(itemAt(e->position().toPoint()));
+     if (prj1 && prj2) {
+       prj2->setFlags(prj2->flags() & ~Qt::ItemIsDropEnabled);
+       QTreeWidget::dropEvent(e);
+@@ -539,7 +539,7 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+     }
+ 
+     CGisItemWpt* wpt1 = dynamic_cast<CGisItemWpt*>(currentItem());
+-    CGisItemWpt* wpt2 = dynamic_cast<CGisItemWpt*>(itemAt(e->pos()));
++    CGisItemWpt* wpt2 = dynamic_cast<CGisItemWpt*>(itemAt(e->position().toPoint()));
+ 
+     if (wpt1 && wpt2) {
+       if (wpt1->parent() == wpt2->parent()) {
+@@ -555,7 +555,7 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+     }
+ 
+     CGisItemTrk* trk1 = dynamic_cast<CGisItemTrk*>(currentItem());
+-    CGisItemTrk* trk2 = dynamic_cast<CGisItemTrk*>(itemAt(e->pos()));
++    CGisItemTrk* trk2 = dynamic_cast<CGisItemTrk*>(itemAt(e->position().toPoint()));
+ 
+     if (trk1 && trk2) {
+       if (trk1->parent() == trk2->parent()) {
+@@ -571,7 +571,7 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+     }
+ 
+     CGisItemRte* rte1 = dynamic_cast<CGisItemRte*>(currentItem());
+-    CGisItemRte* rte2 = dynamic_cast<CGisItemRte*>(itemAt(e->pos()));
++    CGisItemRte* rte2 = dynamic_cast<CGisItemRte*>(itemAt(e->position().toPoint()));
+ 
+     if (rte1 && rte2) {
+       if (rte1->parent() == rte2->parent()) {
+@@ -587,7 +587,7 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+     }
+ 
+     CGisItemOvlArea* area1 = dynamic_cast<CGisItemOvlArea*>(currentItem());
+-    CGisItemOvlArea* area2 = dynamic_cast<CGisItemOvlArea*>(itemAt(e->pos()));
++    CGisItemOvlArea* area2 = dynamic_cast<CGisItemOvlArea*>(itemAt(e->position().toPoint()));
+ 
+     if (area1 && area2) {
+       if (area1->parent() == area2->parent()) {
+@@ -604,7 +604,7 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+   }
+ 
+   // check if item at position is a project and insert a copy of all selected items
+-  IGisProject* project = dynamic_cast<IGisProject*>(itemAt(e->pos()));
++  IGisProject* project = dynamic_cast<IGisProject*>(itemAt(e->position().toPoint()));
+   if (project) {
+     project->blockUpdateItems(true);
+ 
+@@ -624,7 +624,7 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+     project->blockUpdateItems(false);
+   }
+ 
+-  IDevice* device = dynamic_cast<IDevice*>(itemAt(e->pos()));
++  IDevice* device = dynamic_cast<IDevice*>(itemAt(e->position().toPoint()));
+   if (device) {
+     const QList<QTreeWidgetItem*>& items = selectedItems();
+     for (QTreeWidgetItem* item : items) {
+diff --git a/src/qmapshack/gis/CGisWorkspace.h b/src/qmapshack/gis/CGisWorkspace.h
+index 1c2873ea2fd9..6427505320e9 100644
+--- a/src/qmapshack/gis/CGisWorkspace.h
++++ b/src/qmapshack/gis/CGisWorkspace.h
+@@ -289,8 +289,7 @@ class CGisWorkspace : public QWidget, private Ui::IGisWorkspace {
+      @brief Add a new waypoint by Position
+      @param pt    the position in degrees
+    */
+-  void addWptByPos(const QPointF& pt, const QString& name = QString::Null(),
+-                   const QString& desc = QString::Null()) const;
++  void addWptByPos(const QPointF& pt, const QString& name = QString(), const QString& desc = QString()) const;
+ 
+   void addPoisAsWpt(const QSet<IPoiItem>& pois, IGisProject* project = nullptr) const;
+   void addPoiAsWpt(const IPoiItem& poi, IGisProject* project = nullptr) const;
+diff --git a/src/qmapshack/gis/IGisItem.cpp b/src/qmapshack/gis/IGisItem.cpp
+index bcdea974e7fc..57c27a66c0c1 100644
+--- a/src/qmapshack/gis/IGisItem.cpp
++++ b/src/qmapshack/gis/IGisItem.cpp
+@@ -123,40 +123,40 @@ IGisItem::IGisItem(IGisProject* parent, type_e typ, int idx) : QTreeWidgetItem(p
+ IGisItem::~IGisItem() {}
+ 
+ void IGisItem::init() {
+-  colorMap = {{"Black", tr("Black"), QColor(Qt::black), QString("://icons/8x8/bullet_black.png"),
+-               QString("://icons/lines/line_black.png")},
+-              {"DarkRed", tr("Dark Red"), QColor(Qt::darkRed), QString("://icons/8x8/bullet_dark_red.png"),
+-               QString("://icons/lines/line_dark_red.png")},
+-              {"DarkGreen", tr("Dark Green"), QColor(Qt::darkGreen), QString("://icons/8x8/bullet_dark_green.png"),
+-               QString("://icons/lines/line_dark_green.png")},
+-              {"DarkYellow", tr("Dark Yellow"), QColor(Qt::darkYellow), QString("://icons/8x8/bullet_dark_yellow.png"),
+-               QString("://icons/lines/line_dark_yellow.png")},
+-              {"DarkBlue", tr("Dark Blue"), QColor(Qt::darkBlue), QString("://icons/8x8/bullet_dark_blue.png"),
+-               QString("://icons/lines/line_dark_blue.png")},
+-              {"DarkMagenta", tr("Dark Magenta"), QColor(Qt::darkMagenta),
+-               QString("://icons/8x8/bullet_dark_magenta.png"), QString("://icons/lines/line_dark_magenta.png")},
+-              {"DarkCyan", tr("Dark Cyan"), QColor(Qt::darkCyan), QString("://icons/8x8/bullet_dark_cyan.png"),
+-               QString("://icons/lines/line_dark_cyan.png")},
+-              {"LightGray", tr("Light Gray"), QColor(Qt::lightGray), QString("://icons/8x8/bullet_gray.png"),
+-               QString("://icons/lines/line_gray.png")},
+-              {"DarkGray", tr("Dark Gray"), QColor(Qt::darkGray), QString("://icons/8x8/bullet_dark_gray.png"),
+-               QString("://icons/lines/line_dark_gray.png")},
+-              {"Red", tr("Red"), QColor(Qt::red), QString("://icons/8x8/bullet_red.png"),
+-               QString("://icons/lines/line_red.png")},
+-              {"Green", tr("Green"), QColor(Qt::green), QString("://icons/8x8/bullet_green.png"),
+-               QString("://icons/lines/line_green.png")},
+-              {"Yellow", tr("Yellow"), QColor(Qt::yellow), QString("://icons/8x8/bullet_yellow.png"),
+-               QString("://icons/lines/line_yellow.png")},
+-              {"Blue", tr("Blue"), QColor(Qt::blue), QString("://icons/8x8/bullet_blue.png"),
+-               QString("://icons/lines/line_blue.png")},
+-              {"Magenta", tr("Magenta"), QColor(Qt::magenta), QString("://icons/8x8/bullet_magenta.png"),
+-               QString("://icons/lines/line_magenta.png")},
+-              {"Cyan", tr("Cyan"), QColor(Qt::cyan), QString("://icons/8x8/bullet_cyan.png"),
+-               QString("://icons/lines/line_cyan.png")},
+-              {"White", tr("White"), QColor(Qt::white), QString("://icons/8x8/bullet_white.png"),
+-               QString("://icons/lines/line_white.png")},
+-              {"Transparent", tr("Transparent"), QColor(Qt::transparent), QString(),
+-               QString("://icons/lines/line_transparent.png")}};
++  colorMap = {
++      {"Black", tr("Black"), QColor(Qt::black), "://icons/8x8/bullet_black.png", "://icons/lines/line_black.png"},
++      {"DarkRed", tr("Dark Red"), QColor(Qt::darkRed), QString("://icons/8x8/bullet_dark_red.png"),
++       QString("://icons/lines/line_dark_red.png")},
++      {"DarkGreen", tr("Dark Green"), QColor(Qt::darkGreen), QString("://icons/8x8/bullet_dark_green.png"),
++       QString("://icons/lines/line_dark_green.png")},
++      {"DarkYellow", tr("Dark Yellow"), QColor(Qt::darkYellow), QString("://icons/8x8/bullet_dark_yellow.png"),
++       QString("://icons/lines/line_dark_yellow.png")},
++      {"DarkBlue", tr("Dark Blue"), QColor(Qt::darkBlue), QString("://icons/8x8/bullet_dark_blue.png"),
++       QString("://icons/lines/line_dark_blue.png")},
++      {"DarkMagenta", tr("Dark Magenta"), QColor(Qt::darkMagenta), QString("://icons/8x8/bullet_dark_magenta.png"),
++       QString("://icons/lines/line_dark_magenta.png")},
++      {"DarkCyan", tr("Dark Cyan"), QColor(Qt::darkCyan), QString("://icons/8x8/bullet_dark_cyan.png"),
++       QString("://icons/lines/line_dark_cyan.png")},
++      {"LightGray", tr("Light Gray"), QColor(Qt::lightGray), QString("://icons/8x8/bullet_gray.png"),
++       QString("://icons/lines/line_gray.png")},
++      {"DarkGray", tr("Dark Gray"), QColor(Qt::darkGray), QString("://icons/8x8/bullet_dark_gray.png"),
++       QString("://icons/lines/line_dark_gray.png")},
++      {"Red", tr("Red"), QColor(Qt::red), QString("://icons/8x8/bullet_red.png"),
++       QString("://icons/lines/line_red.png")},
++      {"Green", tr("Green"), QColor(Qt::green), QString("://icons/8x8/bullet_green.png"),
++       QString("://icons/lines/line_green.png")},
++      {"Yellow", tr("Yellow"), QColor(Qt::yellow), QString("://icons/8x8/bullet_yellow.png"),
++       QString("://icons/lines/line_yellow.png")},
++      {"Blue", tr("Blue"), QColor(Qt::blue), QString("://icons/8x8/bullet_blue.png"),
++       QString("://icons/lines/line_blue.png")},
++      {"Magenta", tr("Magenta"), QColor(Qt::magenta), QString("://icons/8x8/bullet_magenta.png"),
++       QString("://icons/lines/line_magenta.png")},
++      {"Cyan", tr("Cyan"), QColor(Qt::cyan), QString("://icons/8x8/bullet_cyan.png"),
++       QString("://icons/lines/line_cyan.png")},
++      {"White", tr("White"), QColor(Qt::white), QString("://icons/8x8/bullet_white.png"),
++       QString("://icons/lines/line_white.png")},
++      {"Transparent", tr("Transparent"), QColor(Qt::transparent), QString(),
++       QString("://icons/lines/line_transparent.png")}};
+ }
+ 
+ qint32 IGisItem::selectColor(QWidget* parent) {
+diff --git a/src/qmapshack/gis/IGisItem.h b/src/qmapshack/gis/IGisItem.h
+index 2a4d18d0c490..7baf684ad9a0 100644
+--- a/src/qmapshack/gis/IGisItem.h
++++ b/src/qmapshack/gis/IGisItem.h
+@@ -506,11 +506,11 @@ class IGisItem : public QTreeWidgetItem {
+   const static QString noName;
+ 
+   struct color_t {
+-    const char* name;
+-    const QString label;
+-    const QColor color;
+-    const QString bullet;
+-    const QString line;
++    QString name;
++    QString label;
++    QColor color;
++    QString bullet;
++    QString line;
+   };
+ 
+   static const QVector<color_t>& getColorMap() { return colorMap; }
+diff --git a/src/qmapshack/gis/fit/decoder/CFitFieldDefinition.cpp b/src/qmapshack/gis/fit/decoder/CFitFieldDefinition.cpp
+index b30611079e8f..c86b411adf41 100644
+--- a/src/qmapshack/gis/fit/decoder/CFitFieldDefinition.cpp
++++ b/src/qmapshack/gis/fit/decoder/CFitFieldDefinition.cpp
+@@ -62,9 +62,7 @@ quint8 CFitFieldDefinition::getDefNr() const { return defNr; }
+ 
+ quint8 CFitFieldDefinition::getDevDataIdx() const { return devDataIdx; }
+ 
+-QPair<quint8, quint8> CFitFieldDefinition::getDevProfileId() const {
+-  return qMakePair<quint8, quint8>(devDataIdx, defNr);
+-}
++QPair<quint8, quint8> CFitFieldDefinition::getDevProfileId() const { return QPair<quint8, quint8>(devDataIdx, defNr); }
+ 
+ quint8 CFitFieldDefinition::getSize() const { return size; }
+ 
+diff --git a/src/qmapshack/gis/fit/serialization.cpp b/src/qmapshack/gis/fit/serialization.cpp
+index 701afc62659e..63af09f23a91 100644
+--- a/src/qmapshack/gis/fit/serialization.cpp
++++ b/src/qmapshack/gis/fit/serialization.cpp
+@@ -40,7 +40,7 @@ static qreal toDegree(qint32 semicircles) { return semicircles * (degrees / twoP
+  */
+ static QDateTime toDateTime(quint32 timestamp) {
+   QDateTime dateTime;
+-  dateTime.setTime_t(sec1970to1990 + timestamp);
++  dateTime.setSecsSinceEpoch(sec1970to1990 + timestamp);
+   return dateTime.toUTC();
+ }
+ 
+diff --git a/src/qmapshack/gis/gpx/CGpxProject.cpp b/src/qmapshack/gis/gpx/CGpxProject.cpp
+index 53f1f3686d3f..c51d794d67c6 100644
+--- a/src/qmapshack/gis/gpx/CGpxProject.cpp
++++ b/src/qmapshack/gis/gpx/CGpxProject.cpp
+@@ -338,7 +338,7 @@ bool CGpxProject::saveAs(const QString& fn, IGisProject& project, bool strictGpx
+       throw tr("Failed to create file '%1'").arg(_fn_);
+     }
+     QTextStream out(&file);
+-    out.setCodec("UTF-8");
++    out.setEncoding(QStringConverter::Utf8);
+     out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>" << Qt::endl;
+ 
+     out << doc.toString();
+diff --git a/src/qmapshack/gis/gpx/serialization.cpp b/src/qmapshack/gis/gpx/serialization.cpp
+index 0d6f9b459466..315dbb58c8d3 100644
+--- a/src/qmapshack/gis/gpx/serialization.cpp
++++ b/src/qmapshack/gis/gpx/serialization.cpp
+@@ -1016,7 +1016,7 @@ void CDeviceGarmin::createAdventureFromProject(IGisProject* project, const QStri
+ 
+   file.open(QIODevice::WriteOnly);
+   QTextStream out(&file);
+-  out.setCodec("UTF-8");
++  out.setEncoding(QStringConverter::Utf8);
+   out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>" << Qt::endl;
+   out << doc.toString();
+   file.close();
+diff --git a/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp b/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp
+index 1585529e70d5..013b06d67791 100644
+--- a/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp
++++ b/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp
+@@ -342,12 +342,12 @@ QString CGisItemOvlArea::getInfo(quint32 feature) const {
+   str += "<br/>\n" + tr("Area: %1%2").arg(val, unit);
+ 
+   QString desc = removeHtml(area.desc).simplified();
+-  if (desc.count()) {
++  if (desc.length()) {
+     if (!str.isEmpty()) {
+       str += "<br/>\n";
+     }
+ 
+-    if ((feature & eFeatureShowFullText) || (desc.count() < 300)) {
++    if ((feature & eFeatureShowFullText) || (desc.length() < 300)) {
+       str += desc;
+     } else {
+       str += desc.left(297) + "...";
+@@ -355,12 +355,12 @@ QString CGisItemOvlArea::getInfo(quint32 feature) const {
+   }
+ 
+   QString cmt = removeHtml(area.cmt).simplified();
+-  if ((cmt != desc) && cmt.count()) {
++  if ((cmt != desc) && cmt.length()) {
+     if (!str.isEmpty()) {
+       str += "<br/>\n";
+     }
+ 
+-    if ((feature & eFeatureShowFullText) || (cmt.count() < 300)) {
++    if ((feature & eFeatureShowFullText) || (cmt.length() < 300)) {
+       str += cmt;
+     } else {
+       str += cmt.left(297) + "...";
+diff --git a/src/qmapshack/gis/prj/IGisProject.cpp b/src/qmapshack/gis/prj/IGisProject.cpp
+index ddf4c8a17221..13a15cd5bdfa 100644
+--- a/src/qmapshack/gis/prj/IGisProject.cpp
++++ b/src/qmapshack/gis/prj/IGisProject.cpp
+@@ -467,7 +467,7 @@ QString IGisProject::getInfo() const {
+   if (!desc.isEmpty()) {
+     str += "<br/>\n";
+ 
+-    if (desc.count() < 100) {
++    if (desc.length() < 100) {
+       str += desc;
+     } else {
+       str += desc.left(97) + "...";
+diff --git a/src/qmapshack/gis/rte/CGisItemRte.cpp b/src/qmapshack/gis/rte/CGisItemRte.cpp
+index 24d69ae4dfa4..215a91ebdd62 100644
+--- a/src/qmapshack/gis/rte/CGisItemRte.cpp
++++ b/src/qmapshack/gis/rte/CGisItemRte.cpp
+@@ -366,12 +366,12 @@ QString CGisItemRte::getInfo(quint32 feature) const {
+   }
+ 
+   QString desc = removeHtml(rte.desc).simplified();
+-  if (desc.count()) {
++  if (desc.length()) {
+     if (!str.isEmpty()) {
+       str += "<br/>\n";
+     }
+ 
+-    if ((feature & eFeatureShowFullText) || (desc.count() < 300)) {
++    if ((feature & eFeatureShowFullText) || (desc.length() < 300)) {
+       str += desc;
+     } else {
+       str += desc.left(297) + "...";
+@@ -379,12 +379,12 @@ QString CGisItemRte::getInfo(quint32 feature) const {
+   }
+ 
+   QString cmt = removeHtml(rte.cmt).simplified();
+-  if ((cmt != desc) && cmt.count()) {
++  if ((cmt != desc) && cmt.length()) {
+     if (!str.isEmpty()) {
+       str += "<br/>\n";
+     }
+ 
+-    if ((feature & eFeatureShowFullText) || cmt.count() < 300) {
++    if ((feature & eFeatureShowFullText) || cmt.length() < 300) {
+       str += cmt;
+     } else {
+       str += cmt.left(297) + "...";
+diff --git a/src/qmapshack/gis/search/CSearchLineEdit.cpp b/src/qmapshack/gis/search/CSearchLineEdit.cpp
+index 42fd514f358e..acea8c471c23 100644
+--- a/src/qmapshack/gis/search/CSearchLineEdit.cpp
++++ b/src/qmapshack/gis/search/CSearchLineEdit.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <canvas/CCanvas.h>
+ 
++#include <QActionGroup>
+ #include <QMenu>
+ #include <QTimer>
+ 
+diff --git a/src/qmapshack/gis/tcx/CTcxProject.cpp b/src/qmapshack/gis/tcx/CTcxProject.cpp
+index a1f11dc62f51..647d51cee9a9 100644
+--- a/src/qmapshack/gis/tcx/CTcxProject.cpp
++++ b/src/qmapshack/gis/tcx/CTcxProject.cpp
+@@ -497,7 +497,7 @@ bool CTcxProject::saveAs(const QString& fn, IGisProject& project) {
+     res = false;
+   }
+   QTextStream out(&file);
+-  out.setCodec("UTF-8");
++  out.setEncoding(QStringConverter::Utf8);
+   out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>" << Qt::endl;
+ 
+   out << doc.toString();
+diff --git a/src/qmapshack/gis/tnv/CTwoNavProject.cpp b/src/qmapshack/gis/tnv/CTwoNavProject.cpp
+index a3bfefb1dbd3..7f27a5175053 100644
+--- a/src/qmapshack/gis/tnv/CTwoNavProject.cpp
++++ b/src/qmapshack/gis/tnv/CTwoNavProject.cpp
+@@ -164,7 +164,7 @@ bool CTwoNavProject::saveWpts(QList<CGisItemWpt*>& wpts, const QString& filename
+     return false;
+   }
+   QTextStream out(&file);
+-  out.setCodec(QTextCodec::codecForName("UTF-8"));
++  out.setEncoding(QStringConverter::Utf8);
+ 
+   qreal north = -90.0;
+   qreal south = 90.0;
+diff --git a/src/qmapshack/gis/tnv/serialization.cpp b/src/qmapshack/gis/tnv/serialization.cpp
+index aa0491494d61..193a79fe855c 100644
+--- a/src/qmapshack/gis/tnv/serialization.cpp
++++ b/src/qmapshack/gis/tnv/serialization.cpp
+@@ -173,7 +173,7 @@ bool CGisItemTrk::saveTwoNav(const QString& filename) {
+   IGisProject* project = getParentProject();
+ 
+   QTextStream out(&file);
+-  out.setCodec(QTextCodec::codecForName("UTF-8"));
++  out.setEncoding(QStringConverter::Utf8);
+   out << Qt::bom;
+   out << "B  UTF-8" << Qt::endl;
+   out << "G  WGS 84" << Qt::endl;
+@@ -295,7 +295,7 @@ bool CGisItemTrk::readTwoNav(const QString& filename) {
+     return false;
+   }
+   QTextStream in(&file);
+-  in.setCodec(QTextCodec::codecForName("UTF-8"));
++  in.setEncoding(QStringConverter::Utf8);
+ 
+   CTrackData::trkseg_t seg;
+ 
+@@ -304,9 +304,9 @@ bool CGisItemTrk::readTwoNav(const QString& filename) {
+     switch (line[0].toLatin1()) {
+       case 'B': {
+         QString name = line.mid(1).simplified();
+-        QTextCodec* codec = QTextCodec::codecForName(name.toLatin1());
+-        if (codec) {
+-          in.setCodec(codec);
++        auto codec = QStringConverter::encodingForName(name.toLatin1());
++        if (codec.has_value()) {
++          in.setEncoding(codec.value());
+         }
+         break;
+       }
+@@ -512,7 +512,7 @@ bool CTwoNavProject::loadWpts(const QString& filename, const QDir& dir) {
+     return false;
+   }
+   QTextStream in(&file);
+-  in.setCodec(QTextCodec::codecForName("UTF-8"));
++  in.setEncoding(QStringConverter::Utf8);
+ 
+   while (!line.isEmpty()) {
+     line = in.readLine();
+@@ -520,9 +520,9 @@ bool CTwoNavProject::loadWpts(const QString& filename, const QDir& dir) {
+     switch (line[0].toLatin1()) {
+       case 'B': {
+         QString name = line.mid(1).simplified();
+-        QTextCodec* codec = QTextCodec::codecForName(name.toLatin1());
+-        if (codec) {
+-          in.setCodec(codec);
++        auto codec = QStringConverter::encodingForName(name.toLatin1());
++        if (codec.has_value()) {
++          in.setEncoding(codec.value());
+         }
+         break;
+       }
+diff --git a/src/qmapshack/gis/trk/CGisItemTrk.cpp b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+index 9503e14261ba..87b96c63adde 100644
+--- a/src/qmapshack/gis/trk/CGisItemTrk.cpp
++++ b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+@@ -487,7 +487,7 @@ QString CGisItemTrk::getInfo(quint32 feature) const {
+     }
+ 
+     QString desc = removeHtml(trk.desc).simplified();
+-    if (desc.count()) {
++    if (desc.length()) {
+       if (!str.isEmpty()) {
+         str += "<br/>\n";
+       }
+@@ -495,7 +495,7 @@ QString CGisItemTrk::getInfo(quint32 feature) const {
+     }
+ 
+     QString cmt = removeHtml(trk.cmt).simplified();
+-    if ((cmt != desc) && cmt.count()) {
++    if ((cmt != desc) && cmt.length()) {
+       if (!str.isEmpty()) {
+         str += "<br/>\n";
+       }
+diff --git a/src/qmapshack/gis/trk/CTrackData.h b/src/qmapshack/gis/trk/CTrackData.h
+index d2ff57111011..c55736726ee7 100644
+--- a/src/qmapshack/gis/trk/CTrackData.h
++++ b/src/qmapshack/gis/trk/CTrackData.h
+@@ -141,7 +141,7 @@ class CTrackData {
+     }
+ 
+     inline void sanitizeFlags() {
+-      if ((activity == eAct20None)) {
++      if (activity == eAct20None) {
+         act10_e act = act10_e(flags & eActMask);
+         if (act1to2.contains(act)) {
+           activity = act1to2[act];
+@@ -268,7 +268,10 @@ class CTrackData {
+   }
+ 
+   template <typename T1, typename T2>
+-  class iterator : public std::iterator<std::forward_iterator_tag, T2> {
++  class iterator {
++    using iterator_category = std::forward_iterator_tag;
++    using value_type = T2;
++
+     T1& trk;
+     int seg = 0;
+     int pt = 0;
+diff --git a/src/qmapshack/gis/trk/filter/CFilterNewDate.cpp b/src/qmapshack/gis/trk/filter/CFilterNewDate.cpp
+index 4a84c1ca363a..daf87a7ba3a0 100644
+--- a/src/qmapshack/gis/trk/filter/CFilterNewDate.cpp
++++ b/src/qmapshack/gis/trk/filter/CFilterNewDate.cpp
+@@ -45,7 +45,7 @@ CFilterNewDate::CFilterNewDate(CGisItemTrk& trk, QWidget* parent) : QWidget(pare
+ 
+     case IUnit::eTZAuto: {
+       CTrackData::trkpt_t trkpt = *trk.getTrackData().begin();
+-      zone = IUnit::pos2timezone(trkpt * DEG_TO_RAD);
++      zone = IUnit::pos2timezone(trkpt.radPoint() * DEG_TO_RAD);
+       // break; // intended
+     }
+ 
+diff --git a/src/qmapshack/gis/wpt/CDetailsGeoCache.h b/src/qmapshack/gis/wpt/CDetailsGeoCache.h
+index bbf4153f267e..26f1eeb2b859 100644
+--- a/src/qmapshack/gis/wpt/CDetailsGeoCache.h
++++ b/src/qmapshack/gis/wpt/CDetailsGeoCache.h
+@@ -26,6 +26,7 @@
+ class CGisItemWpt;
+ class QNetworkAccessManager;
+ class QTimer;
++class QNetworkReply;
+ 
+ class CDetailsGeoCache : public QDialog, private Ui::IDetailsGeoCache {
+   Q_OBJECT
+diff --git a/src/qmapshack/gis/wpt/CGisItemWpt.cpp b/src/qmapshack/gis/wpt/CGisItemWpt.cpp
+index 3409a627bb99..e44ffc569d77 100644
+--- a/src/qmapshack/gis/wpt/CGisItemWpt.cpp
++++ b/src/qmapshack/gis/wpt/CGisItemWpt.cpp
+@@ -209,7 +209,7 @@ QString CGisItemWpt::getLastName(const QString& name) {
+     if (idx == 0) {
+       lastName = QString::number(lastName.toInt() + 1);
+     } else if (idx < s) {
+-      lastName = lastName.left(idx) + QString::number(lastName.midRef(idx).toInt() + 1);
++      lastName = lastName.left(idx) + QString::number(lastName.mid(idx).toInt() + 1);
+     }
+   }
+ 
+@@ -328,12 +328,12 @@ QString CGisItemWpt::getInfo(quint32 feature) const {
+       }
+     }
+   } else {
+-    if (desc.count()) {
++    if (desc.length()) {
+       if (str.size() > initialSize) {
+         str += "<br/>\n";
+       }
+ 
+-      if ((feature & eFeatureShowFullText) || (desc.count() < 300)) {
++      if ((feature & eFeatureShowFullText) || (desc.length() < 300)) {
+         str += desc;
+       } else {
+         str += desc.left(297) + "...";
+@@ -342,12 +342,12 @@ QString CGisItemWpt::getInfo(quint32 feature) const {
+   }
+ 
+   QString cmt = removeHtml(wpt.cmt).simplified();
+-  if ((cmt != desc) && cmt.count()) {
++  if ((cmt != desc) && cmt.length()) {
+     if (str.size() > initialSize) {
+       str += "<br/>\n";
+     }
+ 
+-    if ((feature & eFeatureShowFullText) || (cmt.count() < 300)) {
++    if ((feature & eFeatureShowFullText) || (cmt.length() < 300)) {
+       str += cmt;
+     } else {
+       str += cmt.left(297) + "...";
+diff --git a/src/qmapshack/map/CMapJNX.cpp b/src/qmapshack/map/CMapJNX.cpp
+index e7656dcbf539..8ee232cb8f42 100644
+--- a/src/qmapshack/map/CMapJNX.cpp
++++ b/src/qmapshack/map/CMapJNX.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include "map/CMapJNX.h"
+ 
++#include <QtCore5Compat/QTextCodec>
+ #include <QtGui>
+ 
+ #include "helpers/CDraw.h"
+diff --git a/src/qmapshack/map/CMapList.cpp b/src/qmapshack/map/CMapList.cpp
+index da02f06c486c..8749535aaa5a 100644
+--- a/src/qmapshack/map/CMapList.cpp
++++ b/src/qmapshack/map/CMapList.cpp
+@@ -31,7 +31,7 @@ void CMapTreeWidget::dragEnterEvent(QDragEnterEvent* e) {
+ }
+ 
+ void CMapTreeWidget::dragMoveEvent(QDragMoveEvent* e) {
+-  CMapItem* item = dynamic_cast<CMapItem*>(itemAt(e->pos()));
++  CMapItem* item = dynamic_cast<CMapItem*>(itemAt(e->position().toPoint()));
+ 
+   if (item && item->isActivated()) {
+     e->setDropAction(Qt::MoveAction);
+diff --git a/src/qmapshack/map/garmin/CGarminTyp.cpp b/src/qmapshack/map/garmin/CGarminTyp.cpp
+index 7bb084f61f02..fc9d200e6fa0 100644
+--- a/src/qmapshack/map/garmin/CGarminTyp.cpp
++++ b/src/qmapshack/map/garmin/CGarminTyp.cpp
+@@ -21,10 +21,11 @@
+ 
+ #include "map/garmin/CGarminTyp.h"
+ 
+-#include <stdio.h>
++#include <qtextcodec.h>
+ #include <string.h>
+ 
+ #include <QMessageBox>
++#include <QtCore5Compat>
+ #include <QtCore>
+ 
+ #include "CMainWindow.h"
+@@ -84,7 +85,7 @@ bool CGarminTyp::parseHeader(QDataStream& in) {
+ 
+   for (i = 0; i < 10; ++i) {
+     in >> byte;
+-    garmintyp.append(byte);
++    garmintyp.append(QChar(byte));
+   }
+   garmintyp.append(0);
+   if (garmintyp != "GARMIN TYP") {
+@@ -151,15 +152,12 @@ bool CGarminTyp::parseDrawOrder(QDataStream& in, QList<quint32>& drawOrder) {
+   quint8 typ;
+   quint32 subtyp;
+ 
+-  int count = 1;
+-
+   const int N = sectOrder.arraySize / sectOrder.arrayModulo;
+ 
+   for (i = 0; i < N; i++) {
+     in >> typ >> subtyp;
+     //         qDebug() << Qt::hex << typ << subtyp;
+     if (typ == 0) {
+-      count++;
+     } else if (subtyp == 0) {
+ #ifdef DBG
+       qDebug() << QString("Type 0x%1 is priority %2").arg(typ, 0, 16).arg(count);
+@@ -951,7 +949,7 @@ bool CGarminTyp::decodeColorTable(QDataStream& in, QImage& img, int ncolors, int
+ }
+ 
+ void CGarminTyp::decodeBitmap(QDataStream& in, QImage& img, int w, int h, int bpp) {
+-  int x = 0, j = 0;
++  int x = 0;
+   quint8 color;
+ 
+   if (bpp == 0) {
+@@ -983,7 +981,6 @@ void CGarminTyp::decodeBitmap(QDataStream& in, QImage& img, int w, int h, int bp
+         //                 %5").arg(x).arg(y).arg(value,0,16).arg(color).arg(j);
+         x += 1;
+       }
+-      j += 1;
+     }
+     x = 0;
+   }
+diff --git a/src/qmapshack/map/garmin/CGarminTyp.h b/src/qmapshack/map/garmin/CGarminTyp.h
+index 6586c791b269..3fd63481245c 100644
+--- a/src/qmapshack/map/garmin/CGarminTyp.h
++++ b/src/qmapshack/map/garmin/CGarminTyp.h
+@@ -21,6 +21,8 @@
+ 
+ #include <QtGui>
+ 
++class QTextCodec;
++
+ class CGarminTyp {
+   Q_DECLARE_TR_FUNCTIONS(CGarminTyp)
+  public:
+diff --git a/src/qmapshack/map/garmin/IGarminStrTbl.cpp b/src/qmapshack/map/garmin/IGarminStrTbl.cpp
+index c9068ab5490c..c5c43e68f5e9 100644
+--- a/src/qmapshack/map/garmin/IGarminStrTbl.cpp
++++ b/src/qmapshack/map/garmin/IGarminStrTbl.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include "IGarminStrTbl.h"
+ 
++#include <QtCore5Compat/QTextCodec>
+ #include <QtCore>
+ 
+ #include "helpers/CFileExt.h"
+diff --git a/src/qmapshack/map/garmin/IGarminStrTbl.h b/src/qmapshack/map/garmin/IGarminStrTbl.h
+index 735ae8c0b34b..f7036d41da4f 100644
+--- a/src/qmapshack/map/garmin/IGarminStrTbl.h
++++ b/src/qmapshack/map/garmin/IGarminStrTbl.h
+@@ -23,7 +23,7 @@
+ 
+ class CFileExt;
+ class QByteArray;
+-class QStringList;
++class QTextCodec;
+ 
+ class IGarminStrTbl : public QObject {
+  public:
+diff --git a/src/qmapshack/mouse/IScrOpt.cpp b/src/qmapshack/mouse/IScrOpt.cpp
+index b452ec206501..7e49d3e059e1 100644
+--- a/src/qmapshack/mouse/IScrOpt.cpp
++++ b/src/qmapshack/mouse/IScrOpt.cpp
+@@ -58,7 +58,7 @@ void IScrOpt::moveTo(const QPoint& anchor) {
+ 
+ void IScrOpt::mouseMove(const QPoint& pos) { mousePos = pos; }
+ 
+-void IScrOpt::enterEvent(QEvent* e) {
++void IScrOpt::enterEvent(QEnterEvent* e) {
+   QWidget::enterEvent(e);
+   CCanvas::restoreOverrideCursor("IScrOpt::enterEvent");
+ }
+diff --git a/src/qmapshack/mouse/IScrOpt.h b/src/qmapshack/mouse/IScrOpt.h
+index 77c716eec44d..14031107d84c 100644
+--- a/src/qmapshack/mouse/IScrOpt.h
++++ b/src/qmapshack/mouse/IScrOpt.h
+@@ -48,7 +48,7 @@ class IScrOpt : public QWidget {
+   void slotLinkActivated(const QString& link);
+ 
+  protected:
+-  void enterEvent(QEvent* e) override;
++  void enterEvent(QEnterEvent* e) override;
+   void leaveEvent(QEvent* e) override;
+   // block mouse actions to hit the canvas
+   void mousePressEvent(QMouseEvent* e) override { e->accept(); }
+diff --git a/src/qmapshack/plot/CPlotAxisTime.cpp b/src/qmapshack/plot/CPlotAxisTime.cpp
+index 037537b3e26b..8e2e9ec5f37b 100644
+--- a/src/qmapshack/plot/CPlotAxisTime.cpp
++++ b/src/qmapshack/plot/CPlotAxisTime.cpp
+@@ -89,7 +89,7 @@ const CPlotAxis::tic_t* CPlotAxisTime::ticmark(const tic_t* t) /* override */
+ {
+   const tic_t* _tic_ = CPlotAxis::ticmark(t);
+   if (_tic_) {
+-    QDateTime time = QDateTime::fromTime_t(tic.val);
++    QDateTime time = QDateTime::fromSecsSinceEpoch(tic.val);
+     time.setTimeSpec(Qt::LocalTime);
+     tic.lbl = time.toString(strFormat);
+   }
+diff --git a/src/qmapshack/plot/IPlot.cpp b/src/qmapshack/plot/IPlot.cpp
+index 6e80496545c9..c10929586675 100644
+--- a/src/qmapshack/plot/IPlot.cpp
++++ b/src/qmapshack/plot/IPlot.cpp
+@@ -221,7 +221,7 @@ void IPlot::leaveEvent(QEvent* /*e*/) {
+   update();
+ }
+ 
+-void IPlot::enterEvent(QEvent* /*e*/) {
++void IPlot::enterEvent(QEnterEvent* /*e*/) {
+   needsRedraw = true;
+   QCursor cursor = QCursor(QPixmap(":/cursors/cursorArrow.png"), 0, 0);
+   CCanvas::setOverrideCursor(cursor, "IPlot::enterEvent");
+diff --git a/src/qmapshack/plot/IPlot.h b/src/qmapshack/plot/IPlot.h
+index dc76308ed9a6..a5b707fe8a63 100644
+--- a/src/qmapshack/plot/IPlot.h
++++ b/src/qmapshack/plot/IPlot.h
+@@ -76,7 +76,7 @@ class IPlot : public QWidget, public INotifyTrk {
+   void paintEvent(QPaintEvent* e) override;
+   void resizeEvent(QResizeEvent* e) override;
+   void leaveEvent(QEvent* e) override;
+-  void enterEvent(QEvent* e) override;
++  void enterEvent(QEnterEvent* e) override;
+   void keyPressEvent(QKeyEvent* e) override;
+   void mouseMoveEvent(QMouseEvent* e) override;
+   void mousePressEvent(QMouseEvent* e) override;
+diff --git a/src/qmapshack/qlgt/converter.cpp b/src/qmapshack/qlgt/converter.cpp
+index 695093fb35be..42c25b0ed489 100644
+--- a/src/qmapshack/qlgt/converter.cpp
++++ b/src/qmapshack/qlgt/converter.cpp
+@@ -41,7 +41,7 @@ CDBProject::CDBProject(CQlgtFolder& folder) : IGisProject(eTypeDb, "", (CGisList
+ 
+ CGisItemWpt::CGisItemWpt(const CQlgtWpt& wpt1, IGisProject* project) : IGisItem(project, eTypeWpt, NOIDX) {
+   qreal direction;
+-  QDateTime time = QDateTime::fromTime_t(wpt1.timestamp, QTimeZone("UTC"));
++  QDateTime time = QDateTime::fromSecsSinceEpoch(wpt1.timestamp, QTimeZone("UTC"));
+ 
+   wpt.time = time.toUTC();
+   wpt.name = wpt1.name;
+@@ -131,7 +131,7 @@ CGisItemTrk::CGisItemTrk(const CQlgtTrack& trk1, IGisProject* project)
+   CTrackData::trkseg_t seg;
+   for (const CQlgtTrack::pt_t& pt1 : trk1.track) {
+     CTrackData::trkpt_t pt;
+-    QDateTime time = QDateTime::fromTime_t(pt1._timestamp, QTimeZone("UTC"));
++    QDateTime time = QDateTime::fromSecsSinceEpoch(pt1._timestamp, QTimeZone("UTC"));
+     time = time.addMSecs(pt1._timestamp_msec);
+ 
+     pt.lon = pt1._lon;
+diff --git a/src/qmapshack/realtime/IRtRecord.cpp b/src/qmapshack/realtime/IRtRecord.cpp
+index a5b1841aa42e..88cf9da8cf28 100644
+--- a/src/qmapshack/realtime/IRtRecord.cpp
++++ b/src/qmapshack/realtime/IRtRecord.cpp
+@@ -52,7 +52,7 @@ bool IRtRecord::readFile(const QString& filename) {
+     QByteArray data;
+     stream >> crc >> data;
+ 
+-    if ((qChecksum(data.data(), data.size()) != crc) || (stream.status() != QDataStream::Ok)) {
++    if ((qChecksum(data) != crc) || (stream.status() != QDataStream::Ok)) {
+       error = tr("Failed to read entry. Truncate record to last valid entry.");
+       file.close();
+       QFile::resize(filename, size);
+@@ -77,7 +77,7 @@ bool IRtRecord::writeEntry(const QByteArray& data) {
+   stream.setVersion(QDataStream::Qt_5_2);
+   stream.setByteOrder(QDataStream::LittleEndian);
+ 
+-  quint16 crc = qChecksum(data.data(), data.size());
++  quint16 crc = qChecksum(data);
+   stream << crc << data;
+ 
+   if (stream.status() != QDataStream::Ok) {
+diff --git a/src/qmapshack/realtime/ais/CRtAis.cpp b/src/qmapshack/realtime/ais/CRtAis.cpp
+index f4ac0cc96049..96eaabb8792b 100644
+--- a/src/qmapshack/realtime/ais/CRtAis.cpp
++++ b/src/qmapshack/realtime/ais/CRtAis.cpp
+@@ -127,7 +127,7 @@ void CRtAis::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRectF>& blo
+     ship_t& ship = ships[key];
+ 
+     if (!ship.aid) {
+-      QDateTime lim = QDateTime::fromTime_t(ship.timePosition).addSecs(900);
++      QDateTime lim = QDateTime::fromSecsSinceEpoch(ship.timePosition).addSecs(900);
+       if (lim < now) {
+         ships.remove(key);
+         continue;
+@@ -180,7 +180,7 @@ void CRtAis::fastDraw(QPainter& p, const QRectF& viewport, CRtDraw* rt) {
+     if (!ship.callsign.isEmpty()) text += "<tr><td>" + tr("callsign:") + "</td><td>" + ship.callsign + "</td></tr>";
+     if (!ship.imo.isEmpty()) text += "<tr><td>" + tr("imo:") + "</td><td>" + ship.imo + "</td></tr>";
+     if (!ship.mmsi.isEmpty()) text += "<tr><td>" + tr("mmsi:") + "</td><td>" + ship.mmsi + "</td></tr>";
+-    text += "<tr><td>" + tr("last contact:") + "</td><td>" + QDateTime::fromTime_t(ship.timePosition).toString() +
++    text += "<tr><td>" + tr("last contact:") + "</td><td>" + QDateTime::fromSecsSinceEpoch(ship.timePosition).toString() +
+             "</td></tr>";
+     text += "<tr><td>" + tr("longitude:") + "</td><td>" + QString::number(ship.longitude) + "°</td></tr>";
+     text += "<tr><td>" + tr("latitude:") + "</td><td>" + QString::number(ship.latitude) + "°</td></tr>";
+diff --git a/src/qmapshack/realtime/ais/CRtAisInfo.cpp b/src/qmapshack/realtime/ais/CRtAisInfo.cpp
+index f98427f81b64..28941f2de09e 100644
+--- a/src/qmapshack/realtime/ais/CRtAisInfo.cpp
++++ b/src/qmapshack/realtime/ais/CRtAisInfo.cpp
+@@ -199,7 +199,7 @@ bool CRtAisInfo::verifyLine(const QString& line) {
+     cs ^= data[i];
+   }
+ 
+-  return line.rightRef(2).toInt(0, 16) == cs;
++  return line.right(2).toInt(0, 16) == cs;
+ }
+ 
+ void CRtAisInfo::nmeaVDM(const QStringList& tokens) {
+@@ -500,9 +500,9 @@ void CRtAisInfo::getString(const QByteArray& data, QString& string, int start, i
+   for (int i = start; i < end && end - i >= 6; i += 6) {
+     int c = get6bitInt(data, i, 6) & 0x3F;
+     if (c < 32) {
+-      string.insert(ci++, c + 64);
++      string.insert(ci++, QChar(c + 64));
+     } else {
+-      string.insert(ci++, c);
++      string.insert(ci++, QChar(c));
+     }
+   }
+   static const QRegularExpression re1("^[@\\s]+");
+diff --git a/src/qmapshack/realtime/ais/CRtAisRecord.cpp b/src/qmapshack/realtime/ais/CRtAisRecord.cpp
+index c0e54a5f62f7..f6f5be3d0dc9 100644
+--- a/src/qmapshack/realtime/ais/CRtAisRecord.cpp
++++ b/src/qmapshack/realtime/ais/CRtAisRecord.cpp
+@@ -33,7 +33,7 @@ bool CRtAisRecord::writeEntry(const CRtAis::ship_t& ship) {
+   trkpt.lon = ship.longitude;
+   trkpt.lat = ship.latitude;
+   trkpt.ele = 0;
+-  trkpt.time = QDateTime::fromTime_t(ship.timePosition);
++  trkpt.time = QDateTime::fromSecsSinceEpoch(ship.timePosition);
+ 
+   stream << trkpt;
+   track << trkpt;
+diff --git a/src/qmapshack/realtime/gpstether/CRtGpsTetherInfo.cpp b/src/qmapshack/realtime/gpstether/CRtGpsTetherInfo.cpp
+index a4abb2c75acc..fa30044c6687 100644
+--- a/src/qmapshack/realtime/gpstether/CRtGpsTetherInfo.cpp
++++ b/src/qmapshack/realtime/gpstether/CRtGpsTetherInfo.cpp
+@@ -257,7 +257,7 @@ bool CRtGpsTetherInfo::verifyLine(const QString& line) {
+     cs ^= data[i];
+   }
+ 
+-  return line.rightRef(2).toInt(0, 16) == cs;
++  return line.right(2).toInt(0, 16) == cs;
+ }
+ 
+ void CRtGpsTetherInfo::nmeaGSV(const QStringList& /*tokens*/) {}
+diff --git a/src/qmapshack/realtime/opensky/CRtOpenSky.cpp b/src/qmapshack/realtime/opensky/CRtOpenSky.cpp
+index 322168ed959c..79a2f0e44f0a 100644
+--- a/src/qmapshack/realtime/opensky/CRtOpenSky.cpp
++++ b/src/qmapshack/realtime/opensky/CRtOpenSky.cpp
+@@ -178,9 +178,9 @@ void CRtOpenSky::fastDraw(QPainter& p, const QRectF& viewport, CRtDraw* rt) {
+     text += "<tr><td>" + tr("key:") + "</td><td>" + aircraft.key + "</td></tr>";
+     text += "<tr><td>" + tr("callsign:") + "</td><td>" + aircraft.callsign + "</td></tr>";
+     text += "<tr><td>" + tr("origin country:") + "</td><td>" + aircraft.originCountry + "</td></tr>";
+-    text += "<tr><td>" + tr("time position:") + "</td><td>" + QDateTime::fromTime_t(aircraft.timePosition).toString() +
++    text += "<tr><td>" + tr("time position:") + "</td><td>" + QDateTime::fromSecsSinceEpoch(aircraft.timePosition).toString() +
+             "</td></tr>";
+-    text += "<tr><td>" + tr("last contact:") + "</td><td>" + QDateTime::fromTime_t(aircraft.lastContact).toString() +
++    text += "<tr><td>" + tr("last contact:") + "</td><td>" + QDateTime::fromSecsSinceEpoch(aircraft.lastContact).toString() +
+             "</td></tr>";
+     text += "<tr><td>" + tr("longitude:") + "</td><td>" + QString::number(aircraft.longitude) + "°</td></tr>";
+     text += "<tr><td>" + tr("latitude:") + "</td><td>" + QString::number(aircraft.latitude) + "°</td></tr>";
+@@ -277,7 +277,7 @@ void CRtOpenSky::slotRequestFinished(QNetworkReply* reply) {
+     QMutexLocker lock(&IRtSource::mutex);
+     aircrafts.clear();
+ 
+-    timestamp = QDateTime::fromTime_t(json.object().value("time").toInt());
++    timestamp = QDateTime::fromSecsSinceEpoch(json.object().value("time").toInt());
+     const QJsonArray& jsonStates = json.object().value("states").toArray();
+     for (const QJsonValue& jsonState : jsonStates) {
+       aircraft_t aircraft;
+diff --git a/src/qmapshack/realtime/opensky/CRtOpenSkyRecord.cpp b/src/qmapshack/realtime/opensky/CRtOpenSkyRecord.cpp
+index d9845b28b91f..d52b04bd3d24 100644
+--- a/src/qmapshack/realtime/opensky/CRtOpenSkyRecord.cpp
++++ b/src/qmapshack/realtime/opensky/CRtOpenSkyRecord.cpp
+@@ -33,7 +33,7 @@ bool CRtOpenSkyRecord::writeEntry(const CRtOpenSky::aircraft_t& aircraft) {
+   trkpt.lon = aircraft.longitude;
+   trkpt.lat = aircraft.latitude;
+   trkpt.ele = aircraft.geoAltitude;
+-  trkpt.time = QDateTime::fromTime_t(aircraft.timePosition);
++  trkpt.time = QDateTime::fromSecsSinceEpoch(aircraft.timePosition);
+ 
+   stream << trkpt;
+   track << trkpt;
+diff --git a/src/qmapshack/setup/CAppSetupLinux.cpp b/src/qmapshack/setup/CAppSetupLinux.cpp
+index c876f17ae18f..e2453b9bd5bc 100644
+--- a/src/qmapshack/setup/CAppSetupLinux.cpp
++++ b/src/qmapshack/setup/CAppSetupLinux.cpp
+@@ -30,7 +30,7 @@ void CAppSetupLinux::initQMapShack() {
+   prepareGdal("", "");
+ 
+   // setup translators
+-  QString resourceDir = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
++  QString resourceDir = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+   QString translationPath = QCoreApplication::applicationDirPath();
+   static const QRegularExpression re("bin$");
+   translationPath.replace(re, "share/qmapshack/translations");
+diff --git a/src/qmapshack/setup/CLogHandler.cpp b/src/qmapshack/setup/CLogHandler.cpp
+index 7f9a0f102095..1a5004b99bc4 100644
+--- a/src/qmapshack/setup/CLogHandler.cpp
++++ b/src/qmapshack/setup/CLogHandler.cpp
+@@ -26,7 +26,7 @@ CLogHandler::CLogHandler(QString logDirectory, bool writeToFile, bool debugOutpu
+       logFile(QDir(logDirectory).absoluteFilePath(logfileName())),
+       fileStream(&logFile) {
+   if (writeToFile) {
+-    fileStream.setCodec("UTF-8");
++    fileStream.setEncoding(QStringConverter::Utf8);
+     logFile.open(QIODevice::WriteOnly | QIODevice::Append);
+   }
+   qSetMessagePattern("%{time yyyy-MM-dd h:mm:ss.zzz} [%{type}] %{message}");
+diff --git a/src/qmapshack/setup/IAppSetup.cpp b/src/qmapshack/setup/IAppSetup.cpp
+index f2f19580be81..8a8eac852547 100644
+--- a/src/qmapshack/setup/IAppSetup.cpp
++++ b/src/qmapshack/setup/IAppSetup.cpp
+@@ -65,13 +65,13 @@ void IAppSetup::prepareGdal(QString gdalDir, QString projDir) {
+ QString IAppSetup::path(QString path, QString subdir, bool mkdir, QString debugName) {
+   QDir pathDir(path);
+ 
+-  if (subdir != 0) {
++  if (!subdir.isNull()) {
+     pathDir = QDir(pathDir.absoluteFilePath(subdir));
+   }
+   if (mkdir && !pathDir.exists()) {
+     pathDir.mkpath(pathDir.absolutePath());
+     qDebug() << debugName << "path created" << pathDir.absolutePath();
+-  } else if (debugName != 0) {
++  } else if (!debugName.isNull()) {
+     qDebug() << debugName << "path" << pathDir.absolutePath();
+   }
+   return pathDir.absolutePath();
+diff --git a/src/qmapshack/units/IUnit.cpp b/src/qmapshack/units/IUnit.cpp
+index d5a940137a70..1cca304aa9f8 100644
+--- a/src/qmapshack/units/IUnit.cpp
++++ b/src/qmapshack/units/IUnit.cpp
+@@ -688,12 +688,12 @@ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+     // add the literal string to the format so fromString()
+     // will succeed
+     format += "'";
+-    format += timetext.rightRef(6);
++    format += timetext.right(6);
+     format += "'";
+ 
+     // calculate the offset
+-    int offsetHours(timetext.midRef(i + 1, 2).toUInt());
+-    int offsetMinutes(timetext.midRef(i + 4, 2).toUInt());
++    int offsetHours(timetext.mid(i + 1, 2).toUInt());
++    int offsetMinutes(timetext.mid(i + 4, 2).toUInt());
+     if (timetext[i] == '-') {
+       tzoffset = -(60 * offsetHours + offsetMinutes);
+     } else {
+diff --git a/src/qmaptool/CMakeLists.txt b/src/qmaptool/CMakeLists.txt
+index 6b777d5a8a1a..7ddf257b0c06 100644
+--- a/src/qmaptool/CMakeLists.txt
++++ b/src/qmaptool/CMakeLists.txt
+@@ -194,26 +194,26 @@ set( RCS
+ # Some Qt magic
+ ###############################################################################################
+ 
+-qt5_wrap_ui(UI_HDRS ${UIS})
+-qt5_add_resources(RC_SRCS ${RCS})
++qt6_wrap_ui(UI_HDRS ${UIS})
++qt6_add_resources(RC_SRCS ${RCS})
+ 
+ ###############################################################################################
+ # Translation related stuff
+ ###############################################################################################
+-translate_ts(${APPLICATION_NAME}_QM_FILES
+-    UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
+-    UPDATE_OPTIONS "-I${CMAKE_CURRENT_SOURCE_DIR}" ${KEEP_OLD_TRANSLATIONS}
+-    SOURCES ${SRCS} ${HDRS} ${UIS}
+-    TEMPLATE ${APPLICATION_NAME}
+-    TRANSLATION_DIR "locale"
+-)
++# translate_ts(${APPLICATION_NAME}_QM_FILES
++#     UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
++#     UPDATE_OPTIONS "-I${CMAKE_CURRENT_SOURCE_DIR}" ${KEEP_OLD_TRANSLATIONS}
++#     SOURCES ${SRCS} ${HDRS} ${UIS}
++#     TEMPLATE ${APPLICATION_NAME}
++#     TRANSLATION_DIR "locale"
++# )
+ 
+-if (UNIX AND NOT WIN32 AND NOT APPLE)
+-    translate_desktop(${APPLICATION_NAME}_DESKTOP_FILES
+-        TRANSLATION_DIR "locale"
+-        SOURCES "${PROJECT_SOURCE_DIR}/qmaptool.desktop.in"
+-    )
+-endif()
++# if (UNIX AND NOT WIN32 AND NOT APPLE)
++#     translate_desktop(${APPLICATION_NAME}_DESKTOP_FILES
++#         TRANSLATION_DIR "locale"
++#         SOURCES "${PROJECT_SOURCE_DIR}/qmaptool.desktop.in"
++#     )
++# endif()
+ 
+ ###############################################################################################
+ # Build source file and include paths lists
+@@ -259,9 +259,9 @@ target_compile_definitions(${APPLICATION_NAME} PUBLIC
+ )
+ 
+ target_link_libraries(${APPLICATION_NAME}
+-    Qt5::Widgets
+-    Qt5::Network
+-    Qt5::Help
++    Qt6::Widgets
++    Qt6::Network
++    Qt6::Help
+     ${GDAL_LIBRARIES}
+     ${PROJ_LIBRARIES}
+ )
+diff --git a/src/qmaptool/CSingleInstanceProxy.cpp b/src/qmaptool/CSingleInstanceProxy.cpp
+index 964a75e1433e..9bab9f0e7d99 100644
+--- a/src/qmaptool/CSingleInstanceProxy.cpp
++++ b/src/qmaptool/CSingleInstanceProxy.cpp
+@@ -84,7 +84,7 @@ void CSingleInstanceProxy::slotNewConnection() {
+ 
+     // raise the application window to top of desktop
+     w.raise();
+-    QApplication::setActiveWindow(&w);
++    w.activateWindow();
+   }
+ 
+   socket->close();
+diff --git a/src/qmaptool/canvas/CCanvas.cpp b/src/qmaptool/canvas/CCanvas.cpp
+index 11e316842373..3c0ea671aba8 100644
+--- a/src/qmaptool/canvas/CCanvas.cpp
++++ b/src/qmaptool/canvas/CCanvas.cpp
+@@ -115,7 +115,7 @@ void CCanvas::wheelEvent(QWheelEvent* e) {
+   tool->wheelEventFx(e);
+ }
+ 
+-void CCanvas::enterEvent(QEvent* e) {
++void CCanvas::enterEvent(QEnterEvent* e) {
+   QMutexLocker lock(&mutex);
+ 
+   tool->enterEventFx(e);
+diff --git a/src/qmaptool/canvas/CCanvas.h b/src/qmaptool/canvas/CCanvas.h
+index 1a81e16527ff..72b0a489056f 100644
+--- a/src/qmaptool/canvas/CCanvas.h
++++ b/src/qmaptool/canvas/CCanvas.h
+@@ -60,7 +60,7 @@ class CCanvas : public QWidget {
+   void mouseReleaseEvent(QMouseEvent* e) override;
+   void mouseDoubleClickEvent(QMouseEvent* e) override;
+   void wheelEvent(QWheelEvent* e) override;
+-  void enterEvent(QEvent* e) override;
++  void enterEvent(QEnterEvent* e) override;
+   void leaveEvent(QEvent* e) override;
+   void keyPressEvent(QKeyEvent* e) override;
+ 
+diff --git a/src/qmaptool/setup/CAppSetupLinux.cpp b/src/qmaptool/setup/CAppSetupLinux.cpp
+index 5936483e6910..1e2fc9818a9b 100644
+--- a/src/qmaptool/setup/CAppSetupLinux.cpp
++++ b/src/qmaptool/setup/CAppSetupLinux.cpp
+@@ -29,7 +29,7 @@ void CAppSetupLinux::initQMapTool() {
+   prepareGdal("", "");
+ 
+   // setup translators
+-  QString resourceDir = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
++  QString resourceDir = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+   QString translationPath = QCoreApplication::applicationDirPath();
+   static const QRegularExpression re("bin$");
+   translationPath.replace(re, "share/qmaptool/translations");
+diff --git a/src/qmaptool/setup/CLogHandler.cpp b/src/qmaptool/setup/CLogHandler.cpp
+index 934c61175b3b..f6ccedf144fa 100644
+--- a/src/qmaptool/setup/CLogHandler.cpp
++++ b/src/qmaptool/setup/CLogHandler.cpp
+@@ -26,7 +26,7 @@ CLogHandler::CLogHandler(QString logDirectory, bool writeToFile, bool debugOutpu
+       logFile(QDir(logDirectory).absoluteFilePath(logfileName())),
+       fileStream(&logFile) {
+   if (writeToFile) {
+-    fileStream.setCodec("UTF-8");
++    fileStream.setEncoding(QStringConverter::Utf8);
+     logFile.open(QIODevice::WriteOnly | QIODevice::Append);
+   }
+   qSetMessagePattern("%{time yyyy-MM-dd h:mm:ss.zzz} [%{type}] %{message}");
+diff --git a/src/qmaptool/setup/IAppSetup.cpp b/src/qmaptool/setup/IAppSetup.cpp
+index 41f626cb3f9a..e76c75f1c6c3 100644
+--- a/src/qmaptool/setup/IAppSetup.cpp
++++ b/src/qmaptool/setup/IAppSetup.cpp
+@@ -92,13 +92,13 @@ void IAppSetup::prepareGdal(QString gdalDir, QString projDir) {
+ QString IAppSetup::path(QString path, QString subdir, bool mkdir, QString debugName) {
+   QDir pathDir(path);
+ 
+-  if (subdir != 0) {
++  if (!subdir.isNull()) {
+     pathDir = QDir(pathDir.absoluteFilePath(subdir));
+   }
+   if (mkdir && !pathDir.exists()) {
+     pathDir.mkpath(pathDir.absolutePath());
+     qDebug() << debugName << "path created" << pathDir.absolutePath();
+-  } else if (debugName != 0) {
++  } else if (!debugName.isNull()) {
+     qDebug() << debugName << "path" << pathDir.absolutePath();
+   }
+   return pathDir.absolutePath();
+diff --git a/src/qmaptool/units/IUnit.cpp b/src/qmaptool/units/IUnit.cpp
+index 030ccc37ac65..51ba94b29963 100644
+--- a/src/qmaptool/units/IUnit.cpp
++++ b/src/qmaptool/units/IUnit.cpp
+@@ -526,12 +526,12 @@ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+     // add the literal string to the format so fromString()
+     // will succeed
+     format += "'";
+-    format += timetext.rightRef(6);
++    format += timetext.right(6);
+     format += "'";
+ 
+     // calculate the offset
+-    int offsetHours(timetext.midRef(i + 1, 2).toUInt());
+-    int offsetMinutes(timetext.midRef(i + 4, 2).toUInt());
++    int offsetHours(timetext.mid(i + 1, 2).toUInt());
++    int offsetMinutes(timetext.mid(i + 4, 2).toUInt());
+     if (timetext[i] == '-') {
+       tzoffset = -(60 * offsetHours + offsetMinutes);
+     } else {
+diff --git a/src/qmt_map2jnx/CMakeLists.txt b/src/qmt_map2jnx/CMakeLists.txt
+index ba27cf6294fa..42e5507e3709 100644
+--- a/src/qmt_map2jnx/CMakeLists.txt
++++ b/src/qmt_map2jnx/CMakeLists.txt
+@@ -50,8 +50,8 @@ IF(WIN32)
+ ENDIF(WIN32)
+ 
+ TARGET_LINK_LIBRARIES(${APPLICATION_NAME}
+-    Qt5::Core
+-    Qt5::Gui
++    Qt6::Core
++    Qt6::Gui
+     ${GDAL_LIBRARIES}
+     ${PROJ_LIBRARIES}
+     ${JPEG_LIBRARIES})
+diff --git a/src/qmt_rgb2pct/CMakeLists.txt b/src/qmt_rgb2pct/CMakeLists.txt
+index f018992b34b5..1d661b77bb86 100644
+--- a/src/qmt_rgb2pct/CMakeLists.txt
++++ b/src/qmt_rgb2pct/CMakeLists.txt
+@@ -37,19 +37,19 @@ set( RCS
+ # Some Qt magic
+ ###############################################################################################
+ 
+-qt5_wrap_ui(UI_HDRS ${UIS})
+-qt5_add_resources(RC_SRCS ${RCS})
++qt6_wrap_ui(UI_HDRS ${UIS})
++qt6_add_resources(RC_SRCS ${RCS})
+ 
+ ###############################################################################################
+ # Translation related stuff
+ ###############################################################################################
+-translate_ts(${APPLICATION_NAME}_QM_FILES
+-    UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
+-    UPDATE_OPTIONS "-I${CMAKE_CURRENT_SOURCE_DIR}" ${KEEP_OLD_TRANSLATIONS}
+-    SOURCES ${SRCS} ${HDRS} ${UIS}
+-    TEMPLATE ${APPLICATION_NAME}
+-    TRANSLATION_DIR "locale"
+-)
++# translate_ts(${APPLICATION_NAME}_QM_FILES
++#     UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
++#     UPDATE_OPTIONS "-I${CMAKE_CURRENT_SOURCE_DIR}" ${KEEP_OLD_TRANSLATIONS}
++#     SOURCES ${SRCS} ${HDRS} ${UIS}
++#     TEMPLATE ${APPLICATION_NAME}
++#     TRANSLATION_DIR "locale"
++# )
+ 
+ ###############################################################################################
+ # Build source file and include paths lists
+@@ -90,7 +90,7 @@ target_compile_definitions(${APPLICATION_NAME} PUBLIC
+ )
+ 
+ target_link_libraries(${APPLICATION_NAME}
+-    Qt5::Core
++    Qt6::Core
+     ${GDAL_LIBRARIES}
+     ${PROJ_LIBRARIES}
+ )
+diff --git a/src/qmt_rgb2pct/main.cpp b/src/qmt_rgb2pct/main.cpp
+index 5cd47efd7ecf..a2cf0eb982c1 100644
+--- a/src/qmt_rgb2pct/main.cpp
++++ b/src/qmt_rgb2pct/main.cpp
+@@ -47,7 +47,7 @@ static void prepareTranslator(QString translationPath, QString translationPrefix
+ static void loadTranslations() {
+ #if defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD) || defined(__FreeBSD_kernel__) || defined(__GNU__) || \
+     defined(Q_OS_CYGWIN)
+-  QString resourceDir = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
++  QString resourceDir = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+   QString translationPath = QCoreApplication::applicationDirPath();
+   static const QRegularExpression re("bin$");
+   translationPath.replace(re, "share/" APP_STR "/translations");
+diff --git a/test/unittest/CMakeLists.txt b/test/unittest/CMakeLists.txt
+index 09882ff0cde0..2b5298bfce1b 100644
+--- a/test/unittest/CMakeLists.txt
++++ b/test/unittest/CMakeLists.txt
+@@ -24,7 +24,7 @@ find_package(ROUTINO REQUIRED)
+ 
+ if(UNIX)
+     if(Qt5DBus_FOUND)
+-        set(DBUS_LIB Qt5::DBus)
++        set(DBUS_LIB Qt6::DBus)
+     endif(Qt5DBus_FOUND)
+ else(UNIX)
+     set(DBUS_LIB)
+@@ -66,13 +66,13 @@ add_executable(qttest EXCLUDE_FROM_ALL
+ file(COPY input DESTINATION ${CMAKE_BINARY_DIR}/bin/)
+ 
+ target_link_libraries(qttest
+-    Qt5::Widgets
+-    Qt5::Xml
+-    Qt5::Script
+-    Qt5::Sql
+-    Qt5::WebKitWidgets
+-    Qt5::PrintSupport
+-    Qt5::Test
++    Qt6::Widgets
++    Qt6::Xml
++    Qt6::Script
++    Qt6::Sql
++    Qt6::WebKitWidgets
++    Qt6::PrintSupport
++    Qt6::Test
+     QMS
+     ${DBUS_LIB}
+     ${GDAL_LIBRARIES}
+-- 
+2.49.0
+

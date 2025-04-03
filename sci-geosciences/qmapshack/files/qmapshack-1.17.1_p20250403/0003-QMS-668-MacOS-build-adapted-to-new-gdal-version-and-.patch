@@ -1,0 +1,1098 @@
+From f1449e1884d573a606a2262fc31f28f800fb0c6b Mon Sep 17 00:00:00 2001
+From: Manfred <d029940@users.noreply.github.com>
+Date: Sat, 9 Mar 2024 21:58:58 +0100
+Subject: [PATCH 03/26] [QMS-668] MacOS build adapted to new gdal version and
+ new brew packages
+
+---
+ MacOSX/README.md                              |  29 +-
+ MacOSX/build-otoolrecursive.sh                |   6 +-
+ MacOSX/bundle-env-path.sh                     |  37 ---
+ MacOSX/bundle-qmapshack.sh                    |   1 +
+ MacOSX/bundle-qmaptool.sh                     |   2 +-
+ MacOSX/check_bundle_dylibs_refs.sh            | 138 ++++++++++
+ MacOSX/clean.sh                               |  10 +-
+ MacOSX/config.sh                              |   5 +-
+ MacOSX/create_local_env.sh                    |   3 +-
+ MacOSX/helpers/bundle-dylibs.sh               |  58 ++++
+ MacOSX/helpers/otoolrecursive/CMakeLists.txt  |  15 ++
+ MacOSX/helpers/otoolrecursive/LICENSE         |  28 ++
+ MacOSX/helpers/otoolrecursive/README.md       |  17 ++
+ .../otoolrecursive/loaderpathresolver.cpp     |  83 ++++++
+ .../otoolrecursive/loaderpathresolver.h       |  51 ++++
+ MacOSX/helpers/otoolrecursive/main.cpp        | 248 ++++++++++++++++++
+ MacOSX/helpers/test-dylibs.sh                 |  18 ++
+ MacOSX/helpers/testParamters-sub.sh           |  19 ++
+ MacOSX/helpers/testParamters.sh               |  69 +++++
+ changelog.txt                                 |   1 +
+ 20 files changed, 779 insertions(+), 59 deletions(-)
+ delete mode 100755 MacOSX/bundle-env-path.sh
+ create mode 100644 MacOSX/check_bundle_dylibs_refs.sh
+ create mode 100644 MacOSX/helpers/bundle-dylibs.sh
+ create mode 100644 MacOSX/helpers/otoolrecursive/CMakeLists.txt
+ create mode 100644 MacOSX/helpers/otoolrecursive/LICENSE
+ create mode 100644 MacOSX/helpers/otoolrecursive/README.md
+ create mode 100644 MacOSX/helpers/otoolrecursive/loaderpathresolver.cpp
+ create mode 100644 MacOSX/helpers/otoolrecursive/loaderpathresolver.h
+ create mode 100644 MacOSX/helpers/otoolrecursive/main.cpp
+ create mode 100644 MacOSX/helpers/test-dylibs.sh
+ create mode 100644 MacOSX/helpers/testParamters-sub.sh
+ create mode 100644 MacOSX/helpers/testParamters.sh
+
+diff --git a/MacOSX/README.md b/MacOSX/README.md
+index 46ca5c1bad10..be2d2259e76a 100755
+--- a/MacOSX/README.md
++++ b/MacOSX/README.md
+@@ -5,9 +5,10 @@ The root directory of the local build environment must be empty and referenced a
+ 
+ This directory contains sub-directories while building:
+ 
+-- routino/ (for building routino)
++- routino\*/ (for building routino)
+ - quazip/ (for building quazip)
+-- gdal/ (optional - for building gdal)
++- proj\*/ (for building proj)
++- gdal/ (for building gdal)
+ - local/ (contains all the files and dirs installed by packages locally built)
+ - qmapshack/ (QMS source from git)
+ - build_qmapshack (directory were the build process of QMS itself happens)
+@@ -17,10 +18,13 @@ Local packages to be build are:
+ 
+ - routino
+ - quazip
+-- gdal (optional)
++- gdal if BUILD_GDAL="x" in config.sh
++- proj if BUILD_PROJ="x" in config.sh
+ 
+ All other packages are taken from homebrew package manager.
+-The homebrew package manager is the packagemanger of choice.
++The homebrew package manager is the package manager of choice.
++
++The package manager MacPorts is also supported. In this case no local packages are built. All packages are taking from MacPorts
+ 
+ Important script vars:
+ 
+@@ -30,18 +34,20 @@ Important script vars:
+ Parameters to configure build:
+ 
+ - XCODE_PROJECT (optional: if set, create an XCode project instead of building QMS)
+-  can be set with -x on commandline
+-- BUILD_GDAL (optional: if set, build GDAL instead of using the homebrew package)
+-  can be set with -g on commandline
++  can be set with -x on the command line
+ - BREW_PACKAGE_BUILD if set creates QMS as an app relying on brew packages on runtime
+   homebrew packages are listed in install-brew-packages.sh
+-  can be set with -b on commandline
++  can be set with -b on the command line
++- MACPORTS_BUILD can be set with -m on the command line
++  if set all packages are taken from MacPorts and no local packages are built.
++- BUILD_GDAL (optional: if set, build GDAL instead of using the homebrew package)
++  can be set with -g on commandline
+ 
+ To run the complete build process:
+ 
+ 1. Create a directory and cd into this directory. This dir will be referenced as $QMSDEVDIR
+ 2. clone git repo https://github.com/d029940/qmapshack.git
+-3. Check build paramters in ./qmapshack/MacOSX/config.sh
++3. Check build parameters in ./qmapshack/MacOSX/config.sh
+ 4. run "sh ./qmapshack/MacOSX/build-all.sh | tee log.txt"
+ 5. ATTENTION: manual intervention is needed for: - applying admin password while changing dylibs (Apple requirement)
+ 6. check log.txt if an error occured
+@@ -68,11 +74,12 @@ Scripts for building partial steps in the build process
+   package files are also copied to local environment
+ - build-quazip.sh: builds Quazip
+ - build-routino.sh: builds Routino
+-- build-gdal.sh: builds GDAL (currently not used since brew packages is used instead)
++- build-gdal.sh: builds GDAL
++- build-proj.sh: builds PROJ
++- build-otoolrecursive.sh: builds otoolrecursive, a tool for recursively chasing down dylibs dependencies
+ - build-QMS.sh: compiles QMapShack
+ - bundle-all.sh: The complete bundling process (calls (in)directly the other bundle scripts).
+   Should be called, when everything is built but not bundled (build-all.sh includes this script).
+-- bundle-env-path.ah: sets shell variables for the bundling process
+ - bundle-qmapshack.sh: bundles the app QMapShack
+ - bundle-qmaptool.sh: bundles the app QMapTool
+ - bundle.sh: bundles and signs QMapShack
+diff --git a/MacOSX/build-otoolrecursive.sh b/MacOSX/build-otoolrecursive.sh
+index e79672b74370..bb2bb563914b 100755
+--- a/MacOSX/build-otoolrecursive.sh
++++ b/MacOSX/build-otoolrecursive.sh
+@@ -5,10 +5,10 @@ echo "${ATTN}---------------------------${NC}"
+ 
+ ######################################################################## 
+ # build otoolrecursive (command line tool which recursivly lists all dependencies of a dylib)
+-cd $QMSDEVDIR
+-git clone https://github.com/d029940/otoolrecursive.git otoolrecursive
++# cd $QMSDEVDIR
++# git clone https://github.com/d029940/otoolrecursive.git otoolrecursive
+ # --> folder $QMSVERDIR/quazip/ created
+-cd $QMSDEVDIR/otoolrecursive
++cd $QMSDEVDIR/qmapshack/MacOSX/helpers/otoolrecursive 
+ mkdir build
+ cd ./build
+ $PACKAGES_PATH/bin/cmake .. -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV
+diff --git a/MacOSX/bundle-env-path.sh b/MacOSX/bundle-env-path.sh
+deleted file mode 100755
+index aa937a2735be..000000000000
+--- a/MacOSX/bundle-env-path.sh
++++ /dev/null
+@@ -1,37 +0,0 @@
+-#!/bin/sh
+-
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh
+-
+-set -a
+-declare APP_LANG=("ca" "cs" "de" "en" "es" "fr" "nl" "ru")
+-APP_NAME_LOWER="$(tr [A-Z] [a-z] <<< "$APP_NAME")"
+-APP_BUNDLE=$APP_NAME.app
+-
+-APP_BUNDLE_QMAPTOOL=QMapTool.app
+-
+-SRC_OSX_DIR=$QMS_SRC_DIR/MacOSX
+-SRC_RESOURCES_DIR=$SRC_OSX_DIR/resources
+-BUILD_BIN_DIR=$QMSDEVDIR/build_QMapShack/bin
+-
+-BUILD_BUNDLE_DIR=$BUILD_RELEASE_DIR/$APP_BUNDLE
+-BUILD_BUNDLE_CONTENTS_DIR=$BUILD_BUNDLE_DIR/Contents
+-BUILD_BUNDLE_APP_DIR=$BUILD_BUNDLE_DIR/Contents/MacOS
+-BUILD_BUNDLE_RES_DIR=$BUILD_BUNDLE_DIR/Contents/Resources
+-BUILD_BUNDLE_FRW_DIR=$BUILD_BUNDLE_DIR/Contents/Frameworks
+-BUILD_BUNDLE_PLUGIN_DIR=$BUILD_BUNDLE_DIR/Contents/PlugIns
+-BUILD_BUNDLE_EXTLIB_DIR=$BUILD_BUNDLE_DIR/Contents/lib
+-BUILD_BUNDLE_APP_FILE=$BUILD_BUNDLE_APP_DIR/$APP_NAME
+-
+-BUILD_BUNDLE_RES_QM_DIR=$BUILD_BUNDLE_RES_DIR/translations
+-BUILD_BUNDLE_RES_GDAL_DIR=$BUILD_BUNDLE_RES_DIR/gdal
+-BUILD_BUNDLE_RES_GEOS_DIR=$BUILD_BUNDLE_RES_DIR/geos
+-BUILD_BUNDLE_RES_PROJ_DIR=$BUILD_BUNDLE_RES_DIR/proj
+-BUILD_BUNDLE_RES_ROUTINO_DIR=$BUILD_BUNDLE_RES_DIR/routino
+-BUILD_BUNDLE_RES_HELP_DIR=$BUILD_BUNDLE_RES_DIR/help
+-BUILD_BUNDLE_RES_BIN_DIR=$BUILD_BUNDLE_CONTENTS_DIR/Tools
+-
+-HELP_QMS_DIR=$QMS_SRC_DIR/src/qmapshack/doc
+-HELP_QMT_DIR=$QMS_SRC_DIR/src/qmaptool/doc
+-
+-set +a
+diff --git a/MacOSX/bundle-qmapshack.sh b/MacOSX/bundle-qmapshack.sh
+index e03f2f09a183..237a2aac9b57 100755
+--- a/MacOSX/bundle-qmapshack.sh
++++ b/MacOSX/bundle-qmapshack.sh
+@@ -44,6 +44,7 @@ function copyAdditionalLibraries {
+                 cp -vP `brew --prefix gdal`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+                 cp -vP `brew --prefix openexr`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+                 cp -vP `brew --prefix geos`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix jpeg-xl`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+             fi
+             
+             $LOCAL_ENV/bin/otoolrecursive -u $BUILD_BUNDLE_FRW_DIR/libgdal.dylib | xargs -I{} cp -v {} $BUILD_BUNDLE_FRW_DIR
+diff --git a/MacOSX/bundle-qmaptool.sh b/MacOSX/bundle-qmaptool.sh
+index 0bcae98e1c20..afb0dc917322 100755
+--- a/MacOSX/bundle-qmaptool.sh
++++ b/MacOSX/bundle-qmaptool.sh
+@@ -50,7 +50,7 @@ function copyAdditionalLibraries {
+                 cp -vP `brew --prefix gdal`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+                 cp -vP `brew --prefix openexr`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+                 cp -vP `brew --prefix geos`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+-
++                cp -vP `brew --prefix jpeg-xl`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
+             fi
+             $LOCAL_ENV/bin/otoolrecursive -u $GDAL/lib/libgdal.dylib | xargs -I{} cp -vf {} $BUILD_BUNDLE_FRW_DIR
+ 
+diff --git a/MacOSX/check_bundle_dylibs_refs.sh b/MacOSX/check_bundle_dylibs_refs.sh
+new file mode 100644
+index 000000000000..9ef9860322a1
+--- /dev/null
++++ b/MacOSX/check_bundle_dylibs_refs.sh
+@@ -0,0 +1,138 @@
++#!/bin/sh
++
++set -a
++APP_NAME=QMapTool
++APP_NAME=$1
++set +a
++
++BUILD_RELEASE_DIR=$QMSDEVDIR/release
++
++
++if [[ "$APP_NAME" != "QMapTool" && "$APP_NAME" != "QMapShack" ]] 
++then
++    echo "Parameter needs to be either QMapTool or QMapShack"
++    exit
++fi
++
++# vars for bundling
++set -a
++declare APP_LANG=("ca" "cs" "de" "en" "es" "fr" "nl" "ru")
++APP_NAME_LOWER="$(tr [A-Z] [a-z] <<< "$APP_NAME")"
++APP_BUNDLE=$APP_NAME.app
++
++APP_BUNDLE_QMAPTOOL=QMapTool.app
++
++BUILD_BUNDLE_DIR=$BUILD_RELEASE_DIR/$APP_BUNDLE
++BUILD_BUNDLE_CONTENTS_DIR=$BUILD_BUNDLE_DIR/Contents
++BUILD_BUNDLE_APP_DIR=$BUILD_BUNDLE_DIR/Contents/MacOS
++BUILD_BUNDLE_RES_DIR=$BUILD_BUNDLE_DIR/Contents/Resources
++BUILD_BUNDLE_FRW_DIR=$BUILD_BUNDLE_DIR/Contents/Frameworks
++BUILD_BUNDLE_PLUGIN_DIR=$BUILD_BUNDLE_DIR/Contents/PlugIns
++BUILD_BUNDLE_EXTLIB_DIR=$BUILD_BUNDLE_DIR/Contents/lib
++BUILD_BUNDLE_APP_FILE=$BUILD_BUNDLE_APP_DIR/$APP_NAME
++
++BUILD_BUNDLE_RES_BIN_DIR=$BUILD_BUNDLE_CONTENTS_DIR/Tools
++
++set +a
++
++
++APP_VERSION=0
++BUILD_TIME=$(date +"%y-%m-%dT%H:%M:%S")
++BUILD_HASH_KEY=0
++COMMIT_STATUS=0
++
++
++function printLinkingApp {
++    printLinking $BUILD_BUNDLE_APP_FILE
++
++    for F in `find $BUILD_BUNDLE_FRW_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
++    do
++        printLinking $F
++    done
++
++    for F in `find $BUILD_BUNDLE_FRW_DIR/Qt*.framework/Versions/5 -type f -maxdepth 1`
++    do
++        printLinking $F
++    done
++
++    for F in `find $BUILD_BUNDLE_FRW_DIR/Qt*.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess -type f -maxdepth 1`
++    do
++        printLinking $F
++    done
++
++    for F in `find $BUILD_BUNDLE_PLUGIN_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
++    do
++        printLinking $F
++    done
++
++    checkLibraries $BUILD_BUNDLE_APP_FILE
++
++    for F in `find $BUILD_BUNDLE_FRW_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
++    do
++        checkLibraries $F
++    done
++
++    for F in `find $BUILD_BUNDLE_FRW_DIR/Qt*.framework/Versions/5 -type f -maxdepth 1`
++    do
++        checkLibraries $F
++    done
++
++    for F in `find $BUILD_BUNDLE_FRW_DIR/Qt*.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess -type f -maxdepth 1`
++    do
++        echo $F
++        checkLibraries $F
++    done
++
++    for F in `find $BUILD_BUNDLE_PLUGIN_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
++    do
++        checkLibraries $F
++    done
++}
++
++
++function printLinkingExtTools {
++    for F in `find $BUILD_BUNDLE_RES_BIN_DIR -type f ! \( -name "*.py" \)`
++    do
++        printLinking $F
++    done
++}
++
++
++function checkLibraries {
++	F=$1 # file
++	DIR=${BUILD_BUNDLE_APP_FILE%/*}
++
++    echo "--------------------"
++    echo "das File: $F"
++    echo "--------------------"
++
++	for P in `otool -L $F | awk '{print $1}'`
++    do
++        echo $P
++        
++    	if [[ "$P" == "@executable_path"* ]]; then
++    		FREL=${P##@executable_path}
++    		LIB=${DIR}${FREL}
++    		#echo "LIB = $LIB"
++    		if [ ! -e $LIB ]; then
++    			echo "referenced library not bundled: $P"
++    		fi
++    	fi
++    	if [[ "$P" == "/"* && "$P" != "/System/Library/"* && "$P" != "/usr/lib/"* && "$P" != *":" ]]; then
++    		echo "external library: $P"
++    	fi
++        
++    done
++}
++
++
++function printLinking {
++    echo "--------------------"
++    echo "otool $1"
++    otool -L $1
++    echo "--------------------"
++}
++
++printLinkingApp
++printLinkingExtTools
++
+diff --git a/MacOSX/clean.sh b/MacOSX/clean.sh
+index 40c17337db27..6cb343b344ad 100755
+--- a/MacOSX/clean.sh
++++ b/MacOSX/clean.sh
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-export DIR_SCRIPT=$(cd `dirname $0` && pwd -P) # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
+ 
+ ######################################################################## 
+ # clean up
+@@ -9,15 +8,18 @@ echo "${ATTN}Cleaning build artifacts ...${NC}"
+ 
+ rm $QMSDEVDIR/brewlist*.txt
+ echo "${ATTN}Installed homebrew packages are listed in $QMSDEVDIR/brewdiff*.diff${NC}"
++rm $QMSDEVDIR/portlist*.txt
++echo "${ATTN}Installed macports are listed in $QMSDEVDIR/portsdiff*.diff${NC}"
+ 
+ rm -rf $QMSDEVDIR/local
++rm -rf $QMSDEVDIR/otoolrecursive
+ rm -rf $QMSDEVDIR/quazip
+ rm -rf $QMSDEVDIR/gdal
+ rm -rf $QMSDEVDIR/routino*
+-rm -rf $QMSDEVDIR/qmapshack 
++rm -rf $QMSDEVDIR/proj*
+ rm -rf $QMSDEVDIR/build_QMapShack
+ 
+-echo "${ATTN}You can remove 1st_QMS_start.sh script from $QMSDEVDIR, if you don't want to build again${NC}"
++echo "${ATTN}You can remove the qmapshap git repo from $QMSDEVDIR by rm -rf $QMSDEVDIR/qmapshack ${NC}"
+ 
+ 
+ 
+diff --git a/MacOSX/config.sh b/MacOSX/config.sh
+index 62934d01a8c0..06bcf3c11016 100644
+--- a/MacOSX/config.sh
++++ b/MacOSX/config.sh
+@@ -163,7 +163,7 @@ if [[ "$MACPORTS_BUILD" == "x" ]]; then
+ else
+     # GDAL, ROUTINO, QUAZIP, PROJ are compiled from source
+     if [[ "$BUILD_GDAL" == "x" ]]; then
+-        export GDAL_RELEASE="3.7"
++        export GDAL_RELEASE="3.8"
+         export GDAL=$LOCAL_ENV
+     else
+         export GDAL=$PACKAGES_PATH
+@@ -180,6 +180,9 @@ fi
+ # env vars for building QMS
+ export OSX_DEPLOYMENT_TARGET=12.0  # MacOS build target
+ 
++# prefer local development environment:
++export PATH=$LOCAL_ENV/bin:$PATH
++
+ ########################################################################
+ # print all config variables
+ echo $INFO
+diff --git a/MacOSX/create_local_env.sh b/MacOSX/create_local_env.sh
+index 8fcce519ae94..3c6cd16be348 100755
+--- a/MacOSX/create_local_env.sh
++++ b/MacOSX/create_local_env.sh
+@@ -1,8 +1,7 @@
+ #!/bin/sh
+ 
+ # Create a local environment for all includes, libs, ... needed
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
+ 
+ mkdir $LOCAL_ENV
+ mkdir $LOCAL_ENV/bin
+diff --git a/MacOSX/helpers/bundle-dylibs.sh b/MacOSX/helpers/bundle-dylibs.sh
+new file mode 100644
+index 000000000000..f03e5382ce7f
+--- /dev/null
++++ b/MacOSX/helpers/bundle-dylibs.sh
+@@ -0,0 +1,58 @@
++#!/bin/sh
++
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++
++INPUT_LIB="/Users/manfred/Developer/CPlusPlus/Projects/QMS/release/QMapShack.app/Contents/Tools/qmt_rgb2pct"
++# INPUT_LIB=$1
++
++function adjustLinkDyLib {
++    echo ">>> Adjusting dylibs of `basename $1`"
++    # adjust all dylibs in Frameworks with references to package manager
++    F=$1 # file
++    
++    # exclude symlinks
++    # if [[ -L "$F" ]]; then
++    #         return
++    # fi
++
++    for P in `otool -L $F | awk '{print $1}'`
++    do
++        # $P = dylib referenced by $F
++        # get filename of path
++        LIB=`basename $P`
++        
++        # only for references to package, i.e. check if $P starts with $PACKAGES_PATH
++         if [[ "$P" =~ ^"$PACKAGES_PATH"  ]]; then
++            PREL="@executable_path/../Frameworks/$LIB"
++            echo "Changing $LIB to reference $PREL"
++            sudo install_name_tool -change $P $PREL $F
++         fi
++    done
++}
++
++function adjustLinkExtTool {
++    # $1 = filename of exttool
++    echo ">>> Adjusting ext Tools of $1"
++    for P in `otoolrecursive $1`
++    do
++
++        LIB=${P##*/}    
++        LIB=${LIB%%:}
++        PREL="@executable_path/../Frameworks/$LIB"
++
++        if [[ "$P" == *".framework"* ]]; then
++            LIB_VERSION=Versions/5
++            LIB=$LIB.framework/$LIB_VERSION/$LIB
++            PREL="@executable_path/../Frameworks/$LIB"
++        else
++             echo "cp -v $P ../Frameworks/"
++        fi
++   
++        echo "install_name_tool -change $P $PREL `basename $1`"
++        install_name_tool -change $P $PREL $1
++    done
++}
++
++
++# adjustLinkDyLib $INPUT_LIB
++adjustLinkExtTool $INPUT_LIB
+diff --git a/MacOSX/helpers/otoolrecursive/CMakeLists.txt b/MacOSX/helpers/otoolrecursive/CMakeLists.txt
+new file mode 100644
+index 000000000000..3de749c3bb93
+--- /dev/null
++++ b/MacOSX/helpers/otoolrecursive/CMakeLists.txt
+@@ -0,0 +1,15 @@
++cmake_minimum_required(VERSION 3.5)
++
++project(otoolrecursive LANGUAGES CXX)
++
++set(CMAKE_CXX_STANDARD 20)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++
++add_executable(otoolrecursive main.cpp
++  loaderpathresolver.h loaderpathresolver.cpp)
++
++include(GNUInstallDirs)
++install(TARGETS otoolrecursive
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++)
+diff --git a/MacOSX/helpers/otoolrecursive/LICENSE b/MacOSX/helpers/otoolrecursive/LICENSE
+new file mode 100644
+index 000000000000..3c80eb701b54
+--- /dev/null
++++ b/MacOSX/helpers/otoolrecursive/LICENSE
+@@ -0,0 +1,28 @@
++BSD 3-Clause License
++
++Copyright (c) 2023, Manfred
++
++Redistribution and use in source and binary forms, with or without
++modification, are permitted provided that the following conditions are met:
++
++1. Redistributions of source code must retain the above copyright notice, this
++   list of conditions and the following disclaimer.
++
++2. Redistributions in binary form must reproduce the above copyright notice,
++   this list of conditions and the following disclaimer in the documentation
++   and/or other materials provided with the distribution.
++
++3. Neither the name of the copyright holder nor the names of its
++   contributors may be used to endorse or promote products derived from
++   this software without specific prior written permission.
++
++THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
++FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
++CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+diff --git a/MacOSX/helpers/otoolrecursive/README.md b/MacOSX/helpers/otoolrecursive/README.md
+new file mode 100644
+index 000000000000..b37dd21e9655
+--- /dev/null
++++ b/MacOSX/helpers/otoolrecursive/README.md
+@@ -0,0 +1,17 @@
++# otoolrecursive
++
++Command line tool which lists refernced dylibs in a given dylib recursively
++Usage: otoolrecursive [-uprels]  <dynlib file>
++
++Options are:
++
++- v verbose output
++- u only lists user dylibs
++- r only lists dylibs which are referenced by @rpath
++- l only lists dylibs which are referenced by @loader_path
++- e only lists dylibs which are referenced by @executbale_path
++- s only lists system dylibs
++
++If neither of the options u,r,l,e,s are given, all dylbs will be listed
++
++Currently dylibs are  listed under packages if they reside in the subtree of /opt/homebrew or /opt/local
+\ No newline at end of file
+diff --git a/MacOSX/helpers/otoolrecursive/loaderpathresolver.cpp b/MacOSX/helpers/otoolrecursive/loaderpathresolver.cpp
+new file mode 100644
+index 000000000000..6f8b5c0a422d
+--- /dev/null
++++ b/MacOSX/helpers/otoolrecursive/loaderpathresolver.cpp
+@@ -0,0 +1,83 @@
++/****************************************************************************
++**
++** Copyright (C) 2020 Manfred Kern. All rights reserved.
++** Contact: manfred.kern@gmail.com
++**
++** Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are met:
++**
++** 1. Redistributions of source code must retain the above copyright notice,
++**    this list of conditions and the following disclaimer.
++**
++** 2. Redistributions in binary form must reproduce the above copyright
++**    notice, this list of conditions and the following disclaimer in the
++**    documentation and/or other materials provided with the distribution.
++**
++** 3. All advertising materials mentioning features or use of this software
++**    must display the following acknowledgement:
++**    This product includes software developed by the the organization.
++**
++** 4. Neither the name of the copyright holder nor the names of its
++**    contributors may be used to endorse or promote products derived from
++**    this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
++**
++****************************************************************************/
++#include "loaderpathresolver.h"
++#include <filesystem>
++#include <iostream>
++
++using namespace std;
++
++const string LoaderPathResolver::LOADER_PATH{"@loader_path"};
++
++LoaderPathResolver::LoaderPathResolver()
++{
++}
++
++/**
++ * @brief Replaces the relative path part (@loader_path/.. ...) in loader_path_dylib by loader prefix path from otool_dylib
++ * @param otool_dylib - dylib from which loader path is taken
++ * @param loader_path_dylib - dylib for which the relative @loader_path/.. is replaced by the absolute loader path
++ * @return modified loader_path_dylib with @loader_path/.. replaced by absolute path
++ */
++const std::string LoaderPathResolver::loader_path(const std::string &otool_dylib,
++                                                  const std::string &loader_path_dylib)
++{
++    // check if referenced dylib starts with @loader_path
++    string_view loader_path_dylib_view{loader_path_dylib};
++    if (!loader_path_dylib_view.starts_with(LOADER_PATH)) {
++        loader_path_dylib_view.remove_prefix(LOADER_PATH.size());
++
++        return loader_path_dylib;
++    }
++
++    const string HOMEBREW_PREFIX{"/opt/homebrew/"};
++    const string MACPORTS_PREFIX{"/opt/local/"};
++
++    // remove from otool_dylib the filename and one parent) --> last part
++    if (!otool_dylib.starts_with(HOMEBREW_PREFIX) && !otool_dylib.starts_with(MACPORTS_PREFIX)) {
++        return loader_path_dylib;
++    }
++
++    auto firstPart = otool_dylib.starts_with(HOMEBREW_PREFIX) ? HOMEBREW_PREFIX : MACPORTS_PREFIX;
++
++    // remove from loader_path_dylib everything from the start until the first char --> second part
++    auto pos_of_lastpart = loader_path_dylib.rfind("../") + 3;
++    auto lastPart = loader_path_dylib.substr(pos_of_lastpart,
++                                             loader_path_dylib.size() - pos_of_lastpart);
++    string parent = firstPart + lastPart;
++    return parent;
++}
+diff --git a/MacOSX/helpers/otoolrecursive/loaderpathresolver.h b/MacOSX/helpers/otoolrecursive/loaderpathresolver.h
+new file mode 100644
+index 000000000000..58fd28537bff
+--- /dev/null
++++ b/MacOSX/helpers/otoolrecursive/loaderpathresolver.h
+@@ -0,0 +1,51 @@
++/****************************************************************************
++**
++** Copyright (C) 2020 Manfred Kern. All rights reserved.
++** Contact: manfred.kern@gmail.com
++**
++** Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are met:
++**
++** 1. Redistributions of source code must retain the above copyright notice,
++**    this list of conditions and the following disclaimer.
++**
++** 2. Redistributions in binary form must reproduce the above copyright
++**    notice, this list of conditions and the following disclaimer in the
++**    documentation and/or other materials provided with the distribution.
++**
++** 3. All advertising materials mentioning features or use of this software
++**    must display the following acknowledgement:
++**    This product includes software developed by the the organization.
++**
++** 4. Neither the name of the copyright holder nor the names of its
++**    contributors may be used to endorse or promote products derived from
++**    this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
++**
++****************************************************************************/
++#pragma once
++
++#include <string>
++
++class LoaderPathResolver
++{
++public:
++    static const std::string LOADER_PATH;
++
++    LoaderPathResolver();
++    static const std::string loader_path(const std::string &otool_dylib,
++                                         const std::string &loader_path_dylib);
++};
++
+diff --git a/MacOSX/helpers/otoolrecursive/main.cpp b/MacOSX/helpers/otoolrecursive/main.cpp
+new file mode 100644
+index 000000000000..70d6f6f98057
+--- /dev/null
++++ b/MacOSX/helpers/otoolrecursive/main.cpp
+@@ -0,0 +1,248 @@
++/****************************************************************************
++**
++** Copyright (C) 2020 Manfred Kern. All rights reserved.
++** Contact: manfred.kern@gmail.com
++**
++** Redistribution and use in source and binary forms, with or without
++** modification, are permitted provided that the following conditions are met:
++**
++** 1. Redistributions of source code must retain the above copyright notice,
++**    this list of conditions and the following disclaimer.
++**
++** 2. Redistributions in binary form must reproduce the above copyright
++**    notice, this list of conditions and the following disclaimer in the
++**    documentation and/or other materials provided with the distribution.
++**
++** 3. All advertising materials mentioning features or use of this software
++**    must display the following acknowledgement:
++**    This product includes software developed by the the organization.
++**
++** 4. Neither the name of the copyright holder nor the names of its
++**    contributors may be used to endorse or promote products derived from
++**    this software without specific prior written permission.
++**
++**
++** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
++**
++****************************************************************************/
++#include <cstdlib>
++#include <filesystem>
++#include <iostream>
++#include <set>
++#include <vector>
++
++#include "loaderpathresolver.h"
++
++using namespace std;
++
++const string OTOOL{"otool -L "};
++
++const string SYSTEM_LIBS{"/System/Library/"};
++const string LIBS{"/usr/lib"};
++set<string> systemLibs;
++set<string> userLibs;
++
++const string RPATH{"@rpath"};
++set<string> rpathLibs;
++const string LOADER_PATH{"@loader_path"};
++vector<pair<string, string>> loaderLibs; // calling dylib, referenced dylib
++const string EXECUTABLE_PATH{"@executable_path"};
++set<string> executableLibs;
++
++string libFileName{}; // dynlib to parse
++string pathToLibFileName{};
++vector<string> options{}; // command line options
++    // (-v verbose, -u user libs -r rpath libs, -e executable libs, -l loader_path libs, -s system libs)
++
++string absPath(const string &filename)
++{
++    int index = filename.find_last_of("/\\");
++    return filename.substr(0, index);
++}
++
++string filenameNoPath(const string &filename)
++{
++    int index = filename.find_last_of("/\\");
++    return filename.substr(index + 1);
++}
++
++string trim(const string &str)
++{
++    size_t first = str.find_first_not_of(' ');
++    if (string::npos == first) {
++        return str;
++    }
++    size_t last = str.find_last_not_of(' ');
++    return str.substr(first, (last - first + 1));
++}
++
++///
++/// \brief firstWord - Assumption str starts with non whitespace character
++/// \param str String where to extract first word
++///
++void firstWord(string &str)
++{
++    for (int i = 0; i < str.size(); i++) {
++        if (isspace(str[i])) {
++            str.erase(i, str.size());
++            return;
++        }
++    };
++}
++
++///
++/// \brief startsWith
++/// \param str - Complete string
++/// \param pre - partial string to compare with str from the start
++/// \return true, if str starts with pre, otherwise false
++///
++bool startsWith(const string &str, const string &pre)
++{
++    return str.compare(0, pre.size(), pre) == 0 ? true : false;
++}
++
++void printLibs()
++{
++    cout << "----------------------------------------------------------------" << endl;
++    cout << "*** @rpath ***" << endl;
++    for (const string &dylib : rpathLibs) {
++        cout << dylib << endl;
++    }
++
++    cout << "----------------------------------------------------------------" << endl;
++    cout << "*** @loader_path ***" << endl;
++    for (const pair<string, string> &dylib : loaderLibs) {
++        cout << dylib.first << " -- " << dylib.second << endl;
++    }
++
++    cout << "----------------------------------------------------------------" << endl;
++    cout << "*** @executabe_path ***" << endl;
++    for (const string &dylib : executableLibs) {
++        cout << dylib << endl;
++    }
++
++    cout << "----------------------------------------------------------------" << endl;
++    cout << "*** system libs ***" << endl;
++    for (const string &dylib : systemLibs) {
++        cout << dylib << endl;
++    }
++    cout << "----------------------------------------------------------------" << endl;
++}
++
++vector<string> toBeProcessedLibs;
++set<string> processedLibs;
++
++void libsReferred(const string &dylib)
++{
++    string cmd{OTOOL};
++    cmd.append(dylib);
++    cmd.append(" | awk '{ print $1 }'");
++    // cout << "Calling " << cmd << endl;
++
++    FILE *fp;
++    char path[PATH_MAX];
++
++    fp = popen(cmd.c_str(), "r");
++    if (fp == nullptr) {
++        std::cerr << "Cannot open pipe to otool\n";
++        return;
++    }
++
++    // ignore 1st line, since it is the calling dylib
++    if (fgets(path, PATH_MAX, fp) == NULL) {
++        return;
++    }
++    while (fgets(path, PATH_MAX, fp) != NULL) {
++        char *pos = strchr(path, '\n');
++        if (pos == nullptr)
++            continue;
++        *pos = '\0';
++
++        // duplicate?
++        if (dylib.compare(path) == 0)
++            continue;
++
++        // system libs
++        if (startsWith(path, SYSTEM_LIBS) || startsWith(path, LIBS)) {
++            systemLibs.insert(path);
++            continue;
++        }
++
++        // @rpath
++        if (startsWith(path, RPATH)) {
++            // Collect for processing later on
++            rpathLibs.insert(path);
++            continue;
++        }
++
++        // @loader_path
++        if (startsWith(path, LOADER_PATH)) {
++            // Collect for processing later on
++            loaderLibs.push_back(make_pair(dylib, path));
++            //            toBeProcessedLibs.push_back(LoaderPathResolver::loader_path(dylib, path));
++            continue;
++        }
++
++        // @executable_path
++        // Collect for processing later on
++        if (startsWith(path, EXECUTABLE_PATH)) {
++            executableLibs.insert(path);
++            continue;
++        }
++
++        toBeProcessedLibs.push_back(path);
++    }
++
++    pclose(fp);
++
++    while (!toBeProcessedLibs.empty()) {
++        string lib = toBeProcessedLibs.back();
++        toBeProcessedLibs.pop_back();
++        auto result = processedLibs.insert(lib);
++        if (result.second == true) {
++            cout << lib << endl;
++            libsReferred(lib);
++        }
++    }
++}
++
++int main(int argc, char *argv[])
++{
++    if (argc == 1) {
++        std::cerr << "No dylib filename given!" << endl;
++        std::cerr << "usage: otoolrecursive [-vurels]  <dylib file>\n";
++        return EXIT_FAILURE;
++    }
++
++    // Parsing command line arguments
++    for (int i = 1; i < argc; ++i) {
++        if (argv[i][0] == '-' && strlen(argv[i]) == 2) {
++            options.push_back(argv[i] + 1);
++
++        } else if (filesystem::exists(argv[i])) {
++            libFileName = filesystem::absolute(argv[i]);
++            pathToLibFileName = absPath(libFileName);
++        } else {
++            std::cerr << "usage: otoolrecursive [-vprelo]  <dynlib file>\n";
++            return EXIT_FAILURE;
++        }
++    }
++
++    libsReferred(libFileName);
++    //    containsLibs(libFileName);
++
++    if (std::count(options.begin(), options.end(), "v")) {
++        printLibs();
++    }
++    return EXIT_SUCCESS;
++}
+diff --git a/MacOSX/helpers/test-dylibs.sh b/MacOSX/helpers/test-dylibs.sh
+new file mode 100644
+index 000000000000..dded8a883148
+--- /dev/null
++++ b/MacOSX/helpers/test-dylibs.sh
+@@ -0,0 +1,18 @@
++#!/bin/sh
++
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++
++# DIR="/Users/manfred/Developer/CPlusPlus/Projects/QMS/release/QMapShack.app/Contents/Frameworks"
++DIR="/Users/manfred/Developer/CPlusPlus/Projects/QMS/release/QMapShack.app/Contents/Tools"
++# DIR=$1
++
++function checkkDyLibs {
++  
++    for F in `find $DIR -type f ! \( -name "*.py" \)`
++    do
++        echo "Checking `basename $F`"
++        otoolrecursive $F
++    done
++}
++
++checkkDyLibs $DIR
+diff --git a/MacOSX/helpers/testParamters-sub.sh b/MacOSX/helpers/testParamters-sub.sh
+new file mode 100644
+index 000000000000..c5a979757bf3
+--- /dev/null
++++ b/MacOSX/helpers/testParamters-sub.sh
+@@ -0,0 +1,19 @@
++#!/bin/sh
++# checking arguments: intested in -x, -g, -b
++while getopts ":bgx" opt; do
++  case $opt in
++    b)
++      echo "-b was triggered!"
++      ;;
++    g)
++      echo "-g was triggered!" >&2
++      ;;
++    x)
++        echo "-x was triggered!" >&2
++      ;;
++    \?)
++      echo "Invalid option: -$OPTARG" >&2
++      exit
++      ;;
++  esac
++done
+\ No newline at end of file
+diff --git a/MacOSX/helpers/testParamters.sh b/MacOSX/helpers/testParamters.sh
+new file mode 100644
+index 000000000000..7cbcc7942891
+--- /dev/null
++++ b/MacOSX/helpers/testParamters.sh
+@@ -0,0 +1,69 @@
++#!/bin/sh
++
++source ./testParamters-sub.sh
++
++# Getting the fullpath dir name of the running script
++Directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
++
++echo $Directory
++echo $PWD
++echo ${Directory%/*/*}
++
++if [[ "$Directory" == "$PWD" ]] ; then
++    echo "This script is in the current dir"
++else
++    echo "This script is NOT in the current dir"
++fi
++
++# Check variables with the z option. -z means checking of unset (ake not set or an empty string)
++# Set to xxx= / xxx="" OR xxx="<anything>"
++BUILD_GDAL=
++BREW_PACKAGE_BUILD=1
++XCODE_PROJECT=
++
++if [[ -z "${XCODE_PROJECT}" ]]; then
++    echo "Build w/o Xcode"
++else
++    echo "Build with Xcode"
++fi
++if [[ "${XCODE_PROJECT}" == "" ]]; then
++    echo "Build w/o Xcode"
++else
++    echo "Build with Xcode"
++fi
++
++if [[ ! -z $BUILD_GDAL ]] || [[ -z $BREW_PACKAGE_BUILD  ]]  ; then
++    echo "GDAL in bundle"
++fi
++
++if [[ ! -z $BUILD_GDAL ]]  ; then # NOT (GDAL not set or empty)
++    if [[ -z $BREW_PACKAGE_BUILD ]]; then
++        echo "Build GDAL, self-contained bundle"
++    else
++            echo "Build GDAL, brew pkg"
++    fi
++elif [[ -z $BREW_PACKAGE_BUILD  ]] # NOT (BUILD_STANDALONE not set or empty)
++then
++    echo "Build Self contained Bundle"
++else
++    echo "Brew pkg"
++fi
++
++# Check variables comparing to an argument with an empty string or unset (mimik z option, ususally easier to understand)
++
++if [[ "$BUILD_GDAL" != "" ]] || [[ "$BREW_PACKAGE_BUILD" == ""  ]]  ; then
++    echo "GDAL in bundle"
++fi
++
++if [[ "$BUILD_GDAL" != "" ]]  ; then # NOT (GDAL not set or empty)
++    if [[ "$BREW_PACKAGE_BUILD" == "" ]]; then
++        echo "Build GDAL, self-contained bundle"
++    else
++            echo "Build GDAL, brew pkg"
++    fi
++elif [[ "$BREW_PACKAGE_BUILD" == ""  ]] # NOT (BUILD_STANDALONE not set or empty)
++then
++    echo "Build Self contained Bundle"
++else
++    echo "Brew pkg"
++fi
+diff --git a/changelog.txt b/changelog.txt
+index 8ecc23b1e236..ac34d9b9f994 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -1,5 +1,6 @@
+ V1.XX.X
+ [QMS-656] TMS/WMTS: Fix loosing layer selection when reloading maps
++[QMS-668] MacOS build adapted to new gdal version and new brew packages
+ 
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+-- 
+2.49.0
+

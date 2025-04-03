@@ -1,0 +1,24 @@
+From b681973cd770cb5f91578f7e137cc9a32e2933ad Mon Sep 17 00:00:00 2001
+From: JFritzle <62614244+JFritzle@users.noreply.github.com>
+Date: Tue, 7 Jan 2025 15:52:27 +0100
+Subject: [PATCH 12/26] Update changelog.txt
+
+---
+ changelog.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/changelog.txt b/changelog.txt
+index 8cf4313e36ec..477f3028ed25 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -6,6 +6,7 @@ V1.XX.X
+ [QMS-683] Fix alglib error on interpolation
+ [QMS-692] Trackpoints erroneously flaged invalid for short tracks (<50m)
+ [QMS-699] Fix writing to default config when using command line parameter -c
++[QMS-706] Apply PNG file’s offset to user-defined waypoint icon from "External Icons" folder
+ 
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+-- 
+2.49.0
+

@@ -1,0 +1,176 @@
+From 4c386ac4d19910afbdf9277582762139b27de93e Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Fri, 19 Apr 2024 15:19:36 +0200
+Subject: [PATCH 05/26] [QMS-675] Apply font size and color to polylines
+
+---
+ src/qmapshack/map/CMapIMG.cpp | 52 +++++++++++++++++++++++++----------
+ src/qmapshack/map/CMapIMG.h   |  8 +++---
+ 2 files changed, 42 insertions(+), 18 deletions(-)
+
+diff --git a/src/qmapshack/map/CMapIMG.cpp b/src/qmapshack/map/CMapIMG.cpp
+index bc5199479922..a9cac6c5f6a4 100644
+--- a/src/qmapshack/map/CMapIMG.cpp
++++ b/src/qmapshack/map/CMapIMG.cpp
+@@ -1565,9 +1565,8 @@ void CMapIMG::drawPolylines(QPainter& p, polytype_t& lines, const QPointF& scale
+   textpaths.clear();
+   QFont font = CMainWindow::self().getMapFont();
+ 
+-  font.setPixelSize(12);
++  font.setPointSize(9);
+   font.setBold(false);
+-  QFontMetricsF metrics(font);
+ 
+   QVector<qreal> lengths;
+   lengths.reserve(100);
+@@ -1641,7 +1640,19 @@ void CMapIMG::drawPolylines(QPainter& p, polytype_t& lines, const QPointF& scale
+           }
+ 
+           if (scale.x() < STREETNAME_THRESHOLD && property.labelType != CGarminTyp::eNone) {
+-            collectText(item, poly, font, metrics, h);
++            QFont f(font);
++            switch (property.labelType) {
++              case CGarminTyp::eSmall:
++                f.setPointSize(font.pointSize() - 2);
++                break;
++              case CGarminTyp::eLarge:
++                f.setPointSize(font.pointSize() + 2);
++                break;
++              default:;
++            }
++
++            collectText(item, poly, f, h,
++                        CMainWindow::self().isNight() ? property.colorLabelNight : property.colorLabelDay);
+           }
+ 
+           path.addPolygon(poly);
+@@ -1681,7 +1692,7 @@ void CMapIMG::drawPolylines(QPainter& p, polytype_t& lines, const QPointF& scale
+         QList<quint32>::const_iterator it = dict[type].constBegin();
+         for (; it != dict[type].constEnd(); ++it) {
+           // borderCount++;
+-          drawLine(p, lines[*it], property, metrics, font, scale);
++          drawLine(p, lines[*it], property, font, scale);
+         }
+         // draw foreground line in a second run for nicer borders
+       } else {
+@@ -1690,7 +1701,7 @@ void CMapIMG::drawPolylines(QPainter& p, polytype_t& lines, const QPointF& scale
+         QList<quint32>::const_iterator it = dict[type].constBegin();
+         for (; it != dict[type].constEnd(); ++it) {
+           // normalCount++;
+-          drawLine(p, lines[*it], property, metrics, font, scale);
++          drawLine(p, lines[*it], property, font, scale);
+         }
+       }
+     }
+@@ -1724,8 +1735,8 @@ void CMapIMG::drawPolylines(QPainter& p, polytype_t& lines, const QPointF& scale
+   //        << "deletedCount:" << deletedCount;
+ }
+ 
+-void CMapIMG::drawLine(QPainter& p, CGarminPolygon& l, const CGarminTyp::polyline_property& property,
+-                       const QFontMetricsF& metrics, const QFont& font, const QPointF& scale) {
++void CMapIMG::drawLine(QPainter& p, CGarminPolygon& l, const CGarminTyp::polyline_property& property, const QFont& font,
++                       const QPointF& scale) {
+   QPolygonF& poly = l.pixel;
+   const int size = poly.size();
+   const int lineWidth = p.pen().width();
+@@ -1739,7 +1750,19 @@ void CMapIMG::drawLine(QPainter& p, CGarminPolygon& l, const CGarminTyp::polylin
+   //    simplifyPolyline(line);
+ 
+   if (scale.x() < STREETNAME_THRESHOLD && property.labelType != CGarminTyp::eNone) {
+-    collectText(l, poly, font, metrics, lineWidth);
++    QFont f(font);
++    switch (property.labelType) {
++      case CGarminTyp::eSmall:
++        f.setPointSize(font.pointSize() - 2);
++        break;
++      case CGarminTyp::eLarge:
++        f.setPointSize(font.pointSize() + 2);
++        break;
++      default:;
++    }
++
++    collectText(l, poly, f, lineWidth,
++                CMainWindow::self().isNight() ? property.colorLabelNight : property.colorLabelDay);
+   }
+ 
+   p.drawPolyline(poly);
+@@ -1758,8 +1781,8 @@ void CMapIMG::drawLine(QPainter& p, const CGarminPolygon& l) {
+   p.drawPolyline(poly);
+ }
+ 
+-void CMapIMG::collectText(const CGarminPolygon& item, const QPolygonF& line, const QFont& font,
+-                          const QFontMetricsF& metrics, qint32 lineWidth) {
++void CMapIMG::collectText(const CGarminPolygon& item, const QPolygonF& line, const QFont& font, qint32 lineWidth,
++                          const QColor& color) {
+   QString str;
+   if (item.hasLabel()) {
+     str = item.getLabelText();
+@@ -1774,6 +1797,7 @@ void CMapIMG::collectText(const CGarminPolygon& item, const QPolygonF& line, con
+   tp.font = font;
+   tp.text = str;
+   tp.lineWidth = lineWidth;
++  tp.color = color;
+ 
+   const int size = line.size();
+   for (int i = 1; i < size; ++i) {
+@@ -1914,17 +1938,17 @@ void CMapIMG::drawText(QPainter& p) {
+ 
+     // adjust font size until string fits into polyline
+     while (width > (length * 0.7)) {
+-      font.setPixelSize(font.pixelSize() - 1);
++      font.setPointSize(font.pointSize() - 1);
+       fm = QFontMetricsF(font);
+       width = fm.width(textpath.text);
+ 
+-      if ((font.pixelSize() < 8)) {
++      if ((font.pointSize() < 6)) {
+         break;
+       }
+     }
+ 
+     // no way to draw a readable string - skip
+-    if ((font.pixelSize() < 8)) {
++    if ((font.pointSize() < 6)) {
+       continue;
+     }
+ 
+@@ -2001,7 +2025,7 @@ void CMapIMG::drawText(QPainter& p) {
+       p.drawText(0, +1, str);
+       p.drawText(+1, +1, str);
+ 
+-      p.setPen(Qt::black);
++      p.setPen(textpath.color);
+       p.drawText(0, 0, str);
+ 
+       p.restore();
+diff --git a/src/qmapshack/map/CMapIMG.h b/src/qmapshack/map/CMapIMG.h
+index 97bbae3a79c0..4ae1766d89d6 100644
+--- a/src/qmapshack/map/CMapIMG.h
++++ b/src/qmapshack/map/CMapIMG.h
+@@ -174,12 +174,11 @@ class CMapIMG : public IMap {
+   void drawLabels(QPainter& p, const QVector<strlbl_t>& lbls);
+   void drawText(QPainter& p);
+ 
+-  void drawLine(QPainter& p, CGarminPolygon& l, const CGarminTyp::polyline_property& property,
+-                const QFontMetricsF& metrics, const QFont& font, const QPointF& scale);
++  void drawLine(QPainter& p, CGarminPolygon& l, const CGarminTyp::polyline_property& property, const QFont& font, const QPointF& scale);
+   void drawLine(QPainter& p, const CGarminPolygon& l);
+ 
+-  void collectText(const CGarminPolygon& item, const QPolygonF& line, const QFont& font, const QFontMetricsF& metrics,
+-                   qint32 lineWidth);
++  void collectText(const CGarminPolygon& item, const QPolygonF& line, const QFont& font,
++                   qint32 lineWidth, const QColor& color);
+ 
+   void getInfoPoints(const pointtype_t& points, const QPoint& pt, QMultiMap<QString, QString>& dict) const;
+   void getInfoPolylines(const QPoint& pt, QMultiMap<QString, QString>& dict) const;
+@@ -480,6 +479,7 @@ class CMapIMG : public IMap {
+     QFont font;
+     QVector<qreal> lengths;
+     qint32 lineWidth;
++    QColor color;
+   };
+ 
+   QVector<textpath_t> textpaths;
+-- 
+2.49.0
+

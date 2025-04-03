@@ -1,0 +1,24 @@
+From 0061648f1793b74c1b4391907496eeccb426a264 Mon Sep 17 00:00:00 2001
+From: frankystone <>
+Date: Wed, 5 Feb 2025 10:06:36 +0100
+Subject: [PATCH 24/26] prevent  BorderCollapsing
+
+---
+ src/qmapshack/gis/prj/CDetailsPrj.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/qmapshack/gis/prj/CDetailsPrj.cpp b/src/qmapshack/gis/prj/CDetailsPrj.cpp
+index 25c902d20b7d..802e366f14bd 100644
+--- a/src/qmapshack/gis/prj/CDetailsPrj.cpp
++++ b/src/qmapshack/gis/prj/CDetailsPrj.cpp
+@@ -207,6 +207,7 @@ void CDetailsPrj::draw(QTextDocument& doc, bool printable) {
+   fmtFrameRoot.setRightMargin(ROOT_FRAME_MARGIN);
+ 
+   fmtTableStandard.setBorder(1);
++  fmtTableStandard.setBorderCollapse(false);
+   fmtTableStandard.setBorderBrush(Qt::black);
+   fmtTableStandard.setCellPadding(4);
+   fmtTableStandard.setCellSpacing(0);
+-- 
+2.49.0
+

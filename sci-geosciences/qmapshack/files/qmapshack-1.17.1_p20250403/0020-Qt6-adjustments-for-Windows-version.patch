@@ -1,0 +1,62 @@
+From d5ba08ccbf717a3153f8805ed2b7200da5ee6861 Mon Sep 17 00:00:00 2001
+From: wthaem <55309218+wthaem@users.noreply.github.com>
+Date: Thu, 26 Sep 2024 15:04:56 +0200
+Subject: [PATCH 20/26] Qt6 adjustments for Windows version
+
+---
+ src/qmapshack/CMainWindow.cpp | 7 ++++---
+ src/qmapshack/CMainWindow.h   | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/qmapshack/CMainWindow.cpp b/src/qmapshack/CMainWindow.cpp
+index d0e773cd932a..15b6cf601016 100644
+--- a/src/qmapshack/CMainWindow.cpp
++++ b/src/qmapshack/CMainWindow.cpp
+@@ -69,11 +69,12 @@
+ #include "version.h"
+ 
+ #ifdef Q_OS_WIN64
++#include <windows.h>
+ #include <dbt.h>
+ #include <guiddef.h>
+ #include <initguid.h>
+ #include <usbiodef.h>
+-#include <windows.h>
++
+ 
+ #include "device/CDeviceWatcherWindows.h"
+ #endif  // Q_OS_WIN64
+@@ -1472,7 +1473,7 @@ void CMainWindow::displayFullscreen() {
+ static void sendDeviceEvent(DWORD unitmask, bool add) {
+   for (char i = 0; i < 26; ++i) {
+     if (unitmask & 0x1) {
+-      QString path = QString(i + 'A') + ":/";
++      QString path = QString::number(i) + "A:/";
+       qDebug() << "sendDeviceEvent" << path << add;
+       CEventDevice* event = new CEventDevice(path, add);
+       QCoreApplication::postEvent(CDeviceWatcherWindows::self(), event);
+@@ -1482,7 +1483,7 @@ static void sendDeviceEvent(DWORD unitmask, bool add) {
+   }
+ }
+ 
+-bool CMainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result) {
++bool CMainWindow::nativeEvent(const QByteArray& eventType, void* message, qintptr* result) {
+   MSG* msg = (MSG*)message;
+   // qDebug() << "nativeEvent" << eventType << msg->message << msg->lParam << msg->wParam;
+ 
+diff --git a/src/qmapshack/CMainWindow.h b/src/qmapshack/CMainWindow.h
+index cda0f642f3f5..589cce2a1bd8 100644
+--- a/src/qmapshack/CMainWindow.h
++++ b/src/qmapshack/CMainWindow.h
+@@ -126,7 +126,7 @@ class CMainWindow : public QMainWindow, private Ui::IMainWindow {
+  protected:
+   bool eventFilter(QObject* obj, QEvent* event) override;
+ #ifdef Q_OS_WIN64
+-  bool CMainWindow::nativeEvent(const QByteArray& eventType, void* message, long* result);
++  bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result);
+ #endif  // Q_OS_WIN64
+   void dragEnterEvent(QDragEnterEvent* event) override;
+   void dropEvent(QDropEvent* event) override;
+-- 
+2.49.0
+

@@ -1,0 +1,81 @@
+From 605a3b54174986193e5f9c6c39ea0ad2a82f9097 Mon Sep 17 00:00:00 2001
+From: mitxel-m <nodeslatxapa@gmail.com>
+Date: Fri, 24 Jan 2025 23:20:57 +0100
+Subject: [PATCH 13/26] Adjust square zoom levels to fit EPSG:3857 tiles and
+ other minor fix in Proj Wizard
+
+---
+ changelog.txt                               |  1 +
+ src/qmapshack/canvas/IDrawContext.cpp       | 10 +++++++---
+ src/qmapshack/grid/CProjWizard.cpp          |  4 +---
+ src/qmaptool/overlay/refmap/CProjWizard.cpp |  4 +---
+ 4 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/changelog.txt b/changelog.txt
+index 477f3028ed25..98819f57d577 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -7,6 +7,7 @@ V1.XX.X
+ [QMS-692] Trackpoints erroneously flaged invalid for short tracks (<50m)
+ [QMS-699] Fix writing to default config when using command line parameter -c
+ [QMS-706] Apply PNG file’s offset to user-defined waypoint icon from "External Icons" folder
++[QMS-709] Adjust square zoom levels to fit EPSG:3857 tiles and other minor fix in Proj Wizard
+ 
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+diff --git a/src/qmapshack/canvas/IDrawContext.cpp b/src/qmapshack/canvas/IDrawContext.cpp
+index 8e529fe704cd..f7c50b39fca3 100644
+--- a/src/qmapshack/canvas/IDrawContext.cpp
++++ b/src/qmapshack/canvas/IDrawContext.cpp
+@@ -29,11 +29,15 @@ const qreal IDrawContext::scalesDefault[N_DEFAULT_ZOOM_LEVELS] = {
+     //, 15000.0, 20000.0, 30000.0, 50000.0, 70000.0
+ };
+ 
++// For TMS maps at zoom 0 there is only one tile of 256 px, and 6378137 is the radius of the sphere considered in Web Mercator,
++// so at zoom 0 one pixel equals 156543.033928041 m
++#define MPIXEL (156543.033928041 * 1.00025)
+ #define N_SQUARE_ZOOM_LEVELS 17
+ const qreal IDrawContext::scalesSquare[N_SQUARE_ZOOM_LEVELS] = {
+-    0.1492910709,   0.2985821417,    0.5971642834,    1.1943285668,    2.3886571336,   4.7773142672,
+-    9.5546285344,   19.1092570688,   38.2185141376,   76.4370282752,   152.8740565504, 305.7481131008,
+-    611.4962262016, 1222.9924524032, 2445.9849048064, 4891.9698096128, 9783.9396192256};
++   MPIXEL/1048576., MPIXEL/524288., MPIXEL/262144., MPIXEL/131072., MPIXEL/65536.,
++   MPIXEL/32768., MPIXEL/16384., MPIXEL/8192., MPIXEL/4096.,
++   MPIXEL/2048., MPIXEL/1024., MPIXEL/512., MPIXEL/256.,
++   MPIXEL/128., MPIXEL/64., MPIXEL/32., MPIXEL/16.};
+ 
+ QPointF operator*(const QPointF& p1, const QPointF& p2) { return QPointF(p1.x() * p2.x(), p1.y() * p2.y()); }
+ 
+diff --git a/src/qmapshack/grid/CProjWizard.cpp b/src/qmapshack/grid/CProjWizard.cpp
+index 963b1e6f6c88..3040bdfe9b2d 100644
+--- a/src/qmapshack/grid/CProjWizard.cpp
++++ b/src/qmapshack/grid/CProjWizard.cpp
+@@ -74,9 +74,7 @@ CProjWizard::CProjWizard(QLineEdit& line) : QDialog(CMainWindow::getBestWidgetFo
+           &CProjWizard::slotChange);
+ 
+   QString projstr = line.text();
+-  QRegExp re2(
+-      "\\s*\\+proj=merc \\+a=6378137 \\+b=6378137 \\+lat_ts=0.001 \\+lon_0=0.0 \\+x_0=0.0 \\+y_0=0 \\+k=1.0 \\+units=m "
+-      "\\+nadgrids=@null \\+no_defs");
++  QRegExp re2("\\s*EPSG:3857");
+   QRegExp re3("\\s*\\+proj=merc\\s(.*)");
+   QRegExp re4("\\s*\\+proj=utm \\+zone=([0-9]+)\\s(.*)");
+ 
+diff --git a/src/qmaptool/overlay/refmap/CProjWizard.cpp b/src/qmaptool/overlay/refmap/CProjWizard.cpp
+index d7d2cedc83ef..ccba81f37505 100644
+--- a/src/qmaptool/overlay/refmap/CProjWizard.cpp
++++ b/src/qmaptool/overlay/refmap/CProjWizard.cpp
+@@ -74,9 +74,7 @@ CProjWizard::CProjWizard(QLineEdit& line, QWidget* parent) : QDialog(parent), li
+           &CProjWizard::slotChange);
+ 
+   QString projstr = line.text();
+-  QRegExp re2(
+-      "\\s*\\+proj=merc \\+a=6378137 \\+b=6378137 \\+lat_ts=0.001 \\+lon_0=0.0 \\+x_0=0.0 \\+y_0=0 \\+k=1.0 \\+units=m "
+-      "\\+nadgrids=@null \\+no_defs");
++  QRegExp re2("\\s*EPSG:3857");
+   QRegExp re3("\\s*\\+proj=merc\\s(.*)");
+   QRegExp re4("\\s*\\+proj=utm \\+zone=([0-9]+)\\s(.*)");
+ 
+-- 
+2.49.0
+

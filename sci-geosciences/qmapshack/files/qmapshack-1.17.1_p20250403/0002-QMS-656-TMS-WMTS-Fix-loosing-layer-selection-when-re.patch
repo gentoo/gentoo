@@ -1,0 +1,67 @@
+From 6c118e320ef74325ba57f678babaafa94622e238 Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 9 Jan 2024 10:51:52 +0100
+Subject: [PATCH 02/26] [QMS-656] TMS/WMTS: Fix loosing layer selection when
+ reloading maps
+
+---
+ changelog.txt                  | 3 +++
+ src/qmapshack/map/CMapTMS.cpp  | 7 +++----
+ src/qmapshack/map/CMapWMTS.cpp | 3 ++-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/changelog.txt b/changelog.txt
+index a3c68ba9e511..8ecc23b1e236 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -1,3 +1,6 @@
++V1.XX.X
++[QMS-656] TMS/WMTS: Fix loosing layer selection when reloading maps
++
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+ [QMS-622] Update BRouter setup (install from github)
+diff --git a/src/qmapshack/map/CMapTMS.cpp b/src/qmapshack/map/CMapTMS.cpp
+index d9f62cfb930e..875d8737e934 100644
+--- a/src/qmapshack/map/CMapTMS.cpp
++++ b/src/qmapshack/map/CMapTMS.cpp
+@@ -48,9 +48,7 @@ CMapTMS::CMapTMS(const QString& filename, CMapDraw* parent) : IMapOnline(parent)
+   qDebug() << "------------------------------";
+   qDebug() << "TMS: try to open" << filename;
+ 
+-  proj.init(
+-      "EPSG:3857",
+-      "EPSG:4326");
++  proj.init("EPSG:3857", "EPSG:4326");
+ 
+   qDebug() << "tms:" << proj.getProjSrc();
+ 
+@@ -159,8 +157,9 @@ void CMapTMS::getLayers(QListWidget& list) /* override */
+     int i = 0;
+     for (const layer_t& layer : qAsConst(layers)) {
+       QListWidgetItem* item = new QListWidgetItem(layer.title, &list);
+-      item->setCheckState(layer.enabled ? Qt::Checked : Qt::Unchecked);
++      int enabled = layer.enabled;
+       item->setData(Qt::UserRole, i++);
++      item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
+     }
+ 
+     connect(&list, &QListWidget::itemChanged, this, &CMapTMS::slotLayersChanged);
+diff --git a/src/qmapshack/map/CMapWMTS.cpp b/src/qmapshack/map/CMapWMTS.cpp
+index 89e973ac494f..c52969036f7a 100644
+--- a/src/qmapshack/map/CMapWMTS.cpp
++++ b/src/qmapshack/map/CMapWMTS.cpp
+@@ -260,8 +260,9 @@ void CMapWMTS::getLayers(QListWidget& list) {
+     int i = 0;
+     for (const layer_t& layer : qAsConst(layers)) {
+       QListWidgetItem* item = new QListWidgetItem(layer.title, &list);
+-      item->setCheckState(layer.enabled ? Qt::Checked : Qt::Unchecked);
++      bool enabled = layer.enabled;
+       item->setData(Qt::UserRole, i++);
++      item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
+     }
+ 
+     connect(&list, &QListWidget::itemChanged, this, &CMapWMTS::slotLayersChanged);
+-- 
+2.49.0
+

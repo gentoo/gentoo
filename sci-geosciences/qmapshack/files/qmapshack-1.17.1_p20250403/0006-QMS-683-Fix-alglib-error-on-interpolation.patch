@@ -1,0 +1,68 @@
+From 9edd48da223c1409e9d45da84342c778e1b580fd Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 20 Aug 2024 13:10:44 +0200
+Subject: [PATCH 06/26] [QMS-683] Fix alglib error on interpolation
+
+---
+ changelog.txt                         |  1 +
+ src/qmapshack/gis/trk/CGisItemTrk.cpp | 13 +++----------
+ src/qmapshack/gis/trk/CGisItemTrk.h   |  1 -
+ 3 files changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/changelog.txt b/changelog.txt
+index cd8f97f280ea..e9c2da212847 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -2,6 +2,7 @@ V1.XX.X
+ [QMS-656] TMS/WMTS: Fix loosing layer selection when reloading maps
+ [QMS-668] MacOS build adapted to new gdal version and new brew packages
+ [QMS-675] The label colors defined in the TYP are not used
++[QMS-683] Fix alglib error on interpolation
+ 
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+diff --git a/src/qmapshack/gis/trk/CGisItemTrk.cpp b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+index e1471d718a1a..81e8b60778d8 100644
+--- a/src/qmapshack/gis/trk/CGisItemTrk.cpp
++++ b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+@@ -2658,22 +2658,15 @@ void CGisItemTrk::setupInterpolation(bool on, qint32 q) {
+     y[trkpt.idxVisible] = trkpt.ele;
+   }
+ 
+-  /// @todo find a better way to scale the algorithm
+-  interp.m = interp.Q * 50;
+-  if (N < 400) {
+-    interp.m = N / (16 / interp.Q);
+-  }
+-
+-  interp.m &= 0xFFFFFFFE;
++  interp.m = interp.Q * N / 10;
+ 
+   try {
+-    alglib::spline1dfitcubic(x, y, interp.m, interp.info, interp.p, interp.rep);
++    alglib::spline1dfit(x, y, interp.m, 0.00001, interp.p, interp.rep);
++    interp.valid = true;
+   } catch (const alglib::ap_error& e) {
+     qWarning() << "Error from alglib: " << e.msg.c_str();
+   }
+ 
+-  interp.valid = interp.info > 0;
+-
+   updateVisuals(eVisualPlot, "setupInterpolation()");
+ }
+ 
+diff --git a/src/qmapshack/gis/trk/CGisItemTrk.h b/src/qmapshack/gis/trk/CGisItemTrk.h
+index 095bc1abb47a..14ba6c4ad73c 100644
+--- a/src/qmapshack/gis/trk/CGisItemTrk.h
++++ b/src/qmapshack/gis/trk/CGisItemTrk.h
+@@ -911,7 +911,6 @@ class CGisItemTrk : public IGisItem, public IGisLine {
+   struct interpolate_t {
+     bool valid = false;
+     quality_e Q = eQualityCoarse;
+-    alglib::ae_int_t info = -1;
+     alglib::ae_int_t m = 0;
+     alglib::spline1dinterpolant p;
+     alglib::spline1dfitreport rep;
+-- 
+2.49.0
+

@@ -1,0 +1,33 @@
+From b99988f1dd21cbc76a0a4ec9abb0235d9bf1d9b3 Mon Sep 17 00:00:00 2001
+From: JFritzle <jfbeck@t-online.de>
+Date: Tue, 7 Jan 2025 14:20:59 +0100
+Subject: [PATCH 11/26] [QMS-706] Apply PNG offset to user-defined waypoints
+
+Extract PNG offset by QImage::offset() function from
+user-defined waypoint icon file.
+For offset equal to (0,0) take icon center as offset,
+for offset not equal to (0,0) take this offset value.
+Store and apply offset value in QMS "wptIcons".
+---
+ src/qmapshack/helpers/CWptIconManager.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/qmapshack/helpers/CWptIconManager.cpp b/src/qmapshack/helpers/CWptIconManager.cpp
+index a1d67a578a0b..93c9c2e70f6b 100644
+--- a/src/qmapshack/helpers/CWptIconManager.cpp
++++ b/src/qmapshack/helpers/CWptIconManager.cpp
+@@ -198,8 +198,9 @@ void CWptIconManager::init() {
+ }
+ 
+ void CWptIconManager::setWptIconByName(const QString& name, const QString& filename) {
+-  QPixmap icon(filename);
+-  wptIcons[name] = icon_t(filename, icon.width() >> 1, icon.height() >> 1);
++  QImage icon(filename);
++  wptIcons[name] = (icon.offset() == QPoint(0, 0)) ? icon_t(filename, icon.width() >> 1, icon.height() >> 1)
++                                                   : icon_t(filename, icon.offset().x(), icon.offset().y());
+ }
+ 
+ void CWptIconManager::setWptIconByName(const QString& name, const QPixmap& icon) {
+-- 
+2.49.0
+

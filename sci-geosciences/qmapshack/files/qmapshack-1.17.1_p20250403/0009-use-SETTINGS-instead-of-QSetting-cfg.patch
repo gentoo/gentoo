@@ -1,0 +1,33 @@
+From efb9975ed11763465338afbbdbe5da64deb75bb1 Mon Sep 17 00:00:00 2001
+From: frankystone <>
+Date: Thu, 21 Nov 2024 17:26:06 +0100
+Subject: [PATCH 09/26] use SETTINGS instead of QSetting cfg
+
+---
+ src/qmapshack/units/IUnit.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/qmapshack/units/IUnit.cpp b/src/qmapshack/units/IUnit.cpp
+index ded64a56fabb..1f83cfb0663f 100644
+--- a/src/qmapshack/units/IUnit.cpp
++++ b/src/qmapshack/units/IUnit.cpp
+@@ -21,6 +21,7 @@
+ #include "CMainWindow.h"
+ #include "gis/GeoMath.h"
+ #include "gis/proj_x.h"
++#include "helpers/CSettings.h"
+ #include "units/CUnitAviation.h"
+ #include "units/CUnitImperial.h"
+ #include "units/CUnitMetric.h"
+@@ -600,7 +601,7 @@ void IUnit::setUnitType(type_e t, QObject* parent) {
+       break;
+   }
+ 
+-  QSettings cfg;
++  SETTINGS;
+   cfg.setValue("Units/type", t);
+ }
+ 
+-- 
+2.49.0
+

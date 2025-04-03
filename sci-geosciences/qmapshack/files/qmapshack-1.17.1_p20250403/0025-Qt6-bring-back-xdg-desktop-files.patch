@@ -1,0 +1,195 @@
+From 2e18a59d888d1107fc4e127864969f3f9b6066b2 Mon Sep 17 00:00:00 2001
+From: Henning Schild <henning@hennsch.de>
+Date: Wed, 2 Apr 2025 17:43:41 +0200
+Subject: [PATCH 25/26] Qt6 bring back xdg desktop files
+
+Simply merge all translations into one file and install that.
+---
+ CMakeLists.txt                            |  2 ++
+ qmapshack.desktop                         | 23 +++++++++++++++++++++++
+ qmapshack.desktop.in                      | 15 ---------------
+ qmaptool.desktop.in => qmaptool.desktop   |  2 --
+ src/qmapshack/CMakeLists.txt              |  7 -------
+ src/qmapshack/locale/qmapshack_cs.desktop |  3 ---
+ src/qmapshack/locale/qmapshack_de.desktop |  3 ---
+ src/qmapshack/locale/qmapshack_es.desktop |  3 ---
+ src/qmapshack/locale/qmapshack_it.desktop |  3 ---
+ src/qmapshack/locale/qmapshack_ru.desktop |  3 ---
+ src/qmaptool/CMakeLists.txt               |  7 -------
+ 11 files changed, 25 insertions(+), 46 deletions(-)
+ create mode 100644 qmapshack.desktop
+ delete mode 100644 qmapshack.desktop.in
+ rename qmaptool.desktop.in => qmaptool.desktop (90%)
+ delete mode 100644 src/qmapshack/locale/qmapshack_cs.desktop
+ delete mode 100644 src/qmapshack/locale/qmapshack_de.desktop
+ delete mode 100644 src/qmapshack/locale/qmapshack_es.desktop
+ delete mode 100644 src/qmapshack/locale/qmapshack_it.desktop
+ delete mode 100644 src/qmapshack/locale/qmapshack_ru.desktop
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c4e9e6603620..b4a8e3d73df6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -252,6 +252,7 @@ endif(BUILD_QMAPTOOL)
+ ###############################################################################################
+ if (UNIX AND NOT WIN32 AND NOT APPLE)
+ if(BUILD_QMAPSHACK)
++    install( FILES        qmapshack.desktop                 DESTINATION     ${XDG_APPS_DIR} )
+     install( FILES        src/icons/48x48/QMapShack.png     DESTINATION     ${DATA_INSTALL_PREFIX}/pixmaps )
+     install( DIRECTORY    src/icons/qmapshack/hicolor       DESTINATION     ${ICON_INSTALL_DIR} )
+     install( FILES        qmapshack.1                       DESTINATION     ${MAN_INSTALL_DIR}/man1  )
+@@ -260,6 +261,7 @@ if(BUILD_QMAPSHACK)
+ endif(BUILD_QMAPSHACK)
+ 
+ if(BUILD_QMAPTOOL)
++    install( FILES        qmaptool.desktop                  DESTINATION     ${XDG_APPS_DIR} )
+     install( FILES        src/icons/48x48/QMapTool.png      DESTINATION     ${DATA_INSTALL_PREFIX}/pixmaps )
+     install( DIRECTORY    src/icons/qmaptool/hicolor        DESTINATION     ${ICON_INSTALL_DIR} )
+     install( FILES        qmaptool.1                        DESTINATION     ${MAN_INSTALL_DIR}/man1  )
+diff --git a/qmapshack.desktop b/qmapshack.desktop
+new file mode 100644
+index 000000000000..73cb23eb0ac5
+--- /dev/null
++++ b/qmapshack.desktop
+@@ -0,0 +1,23 @@
++[Desktop Entry]
++Version=1.0
++Name=QMapShack
++Name[cs]=QMapShack
++Name[de]=QMapShack
++Name[es]=QMapShack
++Name[it]=QMapShack
++Name[ru]=QMapShack
++Exec=qmapshack %F
++Icon=QMapShack
++Terminal=false
++Type=Application
++X-MultipleArgs=false
++Categories=Qt;Geoscience;Geography;Science;
++GenericName=GPS device mapping utility
++GenericName[cs]=Data GPS - a správa map
++GenericName[de]=GPS Daten- und Kartenverwaltung
++GenericName[es]=Datos GPS y Cartografía
++GenericName[it]=Cartografia e manipolazione dati GPS
++GenericName[ru]= Администрация GPS данных и карт
++Keywords=map;GPS;geocaching;waypoints;tracks;
++MimeType=application/x-gpx;
++StartupNotify=true
+diff --git a/qmapshack.desktop.in b/qmapshack.desktop.in
+deleted file mode 100644
+index 52d7ca95c1be..000000000000
+--- a/qmapshack.desktop.in
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Desktop Entry]
+-Version=1.0
+-Name=QMapShack
+-Exec=qmapshack %F
+-Icon=QMapShack
+-Terminal=false
+-Type=Application
+-X-MultipleArgs=false
+-Categories=Qt;Geoscience;Geography;Science;
+-GenericName=GPS device mapping utility
+-Keywords=map;GPS;geocaching;waypoints;tracks;
+-MimeType=application/x-gpx;
+-StartupNotify=true
+-
+-#TRANSLATIONS_DIR=src/locale
+diff --git a/qmaptool.desktop.in b/qmaptool.desktop
+similarity index 90%
+rename from qmaptool.desktop.in
+rename to qmaptool.desktop
+index b7f37a0c3f9c..23187e6a134a 100644
+--- a/qmaptool.desktop.in
++++ b/qmaptool.desktop
+@@ -11,5 +11,3 @@ GenericName=Tool to create raster maps
+ Keywords=map;raster;referencing
+ MimeType=application/x-tif;
+ StartupNotify=true
+-
+-#TRANSLATIONS_DIR=src/locale
+diff --git a/src/qmapshack/CMakeLists.txt b/src/qmapshack/CMakeLists.txt
+index 23c283a18269..24674cd32c75 100644
+--- a/src/qmapshack/CMakeLists.txt
++++ b/src/qmapshack/CMakeLists.txt
+@@ -920,13 +920,6 @@ qt6_add_resources(RC_SRCS ${RCS})
+ #     TRANSLATION_DIR "locale"
+ # )
+ 
+-# if (UNIX AND NOT WIN32 AND NOT APPLE)
+-#     translate_desktop(${APPLICATION_NAME}_DESKTOP_FILES
+-#         TRANSLATION_DIR "locale"
+-#         SOURCES "${PROJECT_SOURCE_DIR}/qmapshack.desktop.in"
+-#     )
+-# endif()
+-
+ ###############################################################################################
+ # Build source file and include paths lists
+ ###############################################################################################
+diff --git a/src/qmapshack/locale/qmapshack_cs.desktop b/src/qmapshack/locale/qmapshack_cs.desktop
+deleted file mode 100644
+index 5fb6a3328529..000000000000
+--- a/src/qmapshack/locale/qmapshack_cs.desktop
++++ /dev/null
+@@ -1,3 +0,0 @@
+-#Translations
+-Name[cs]=QMapShack
+-GenericName[cs]=Data GPS - a správa map
+diff --git a/src/qmapshack/locale/qmapshack_de.desktop b/src/qmapshack/locale/qmapshack_de.desktop
+deleted file mode 100644
+index 0d838cfb9d05..000000000000
+--- a/src/qmapshack/locale/qmapshack_de.desktop
++++ /dev/null
+@@ -1,3 +0,0 @@
+-#Translations
+-Name[de]=QMapShack
+-GenericName[de]=GPS Daten- und Kartenverwaltung
+diff --git a/src/qmapshack/locale/qmapshack_es.desktop b/src/qmapshack/locale/qmapshack_es.desktop
+deleted file mode 100644
+index ae3172d84157..000000000000
+--- a/src/qmapshack/locale/qmapshack_es.desktop
++++ /dev/null
+@@ -1,3 +0,0 @@
+-#Translations
+-Name[es]=QMapShack
+-GenericName[es]=Datos GPS y Cartografía
+diff --git a/src/qmapshack/locale/qmapshack_it.desktop b/src/qmapshack/locale/qmapshack_it.desktop
+deleted file mode 100644
+index 027149843155..000000000000
+--- a/src/qmapshack/locale/qmapshack_it.desktop
++++ /dev/null
+@@ -1,3 +0,0 @@
+-#Translations
+-Name[it]=QMapShack
+-GenericName[it]=Cartografia e manipolazione dati GPS
+diff --git a/src/qmapshack/locale/qmapshack_ru.desktop b/src/qmapshack/locale/qmapshack_ru.desktop
+deleted file mode 100644
+index f4890ae942f0..000000000000
+--- a/src/qmapshack/locale/qmapshack_ru.desktop
++++ /dev/null
+@@ -1,3 +0,0 @@
+-#Translations
+-Name[ru]=QMapShack
+-GenericName[ru]= Администрация GPS данных и карт
+diff --git a/src/qmaptool/CMakeLists.txt b/src/qmaptool/CMakeLists.txt
+index 7ddf257b0c06..b2aca22a0005 100644
+--- a/src/qmaptool/CMakeLists.txt
++++ b/src/qmaptool/CMakeLists.txt
+@@ -208,13 +208,6 @@ qt6_add_resources(RC_SRCS ${RCS})
+ #     TRANSLATION_DIR "locale"
+ # )
+ 
+-# if (UNIX AND NOT WIN32 AND NOT APPLE)
+-#     translate_desktop(${APPLICATION_NAME}_DESKTOP_FILES
+-#         TRANSLATION_DIR "locale"
+-#         SOURCES "${PROJECT_SOURCE_DIR}/qmaptool.desktop.in"
+-#     )
+-# endif()
+-
+ ###############################################################################################
+ # Build source file and include paths lists
+ ###############################################################################################
+-- 
+2.49.0
+

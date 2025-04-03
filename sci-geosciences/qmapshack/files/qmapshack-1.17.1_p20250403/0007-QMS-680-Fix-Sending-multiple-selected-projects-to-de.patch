@@ -1,0 +1,76 @@
+From d5f8b7abc093d947201031daff6bbce0963279f3 Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Wed, 31 Jul 2024 12:50:23 +0200
+Subject: [PATCH 07/26] [QMS-680] Fix: Sending multiple selected projects to
+ device
+
+---
+ changelog.txt                     |  1 +
+ src/qmapshack/gis/CGisListWks.cpp | 31 ++++++++++++++-----------------
+ 2 files changed, 15 insertions(+), 17 deletions(-)
+
+diff --git a/changelog.txt b/changelog.txt
+index e9c2da212847..37ee5a9982a3 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -2,6 +2,7 @@ V1.XX.X
+ [QMS-656] TMS/WMTS: Fix loosing layer selection when reloading maps
+ [QMS-668] MacOS build adapted to new gdal version and new brew packages
+ [QMS-675] The label colors defined in the TYP are not used
++[QMS-680] Fix: Sending multiple selected projects to device
+ [QMS-683] Fix alglib error on interpolation
+ 
+ V1.17.1
+diff --git a/src/qmapshack/gis/CGisListWks.cpp b/src/qmapshack/gis/CGisListWks.cpp
+index 85b9cf977e3a..d6dad54fba07 100644
+--- a/src/qmapshack/gis/CGisListWks.cpp
++++ b/src/qmapshack/gis/CGisListWks.cpp
+@@ -626,23 +626,13 @@ void CGisListWks::dropEvent(QDropEvent* e) {
+ 
+   IDevice* device = dynamic_cast<IDevice*>(itemAt(e->pos()));
+   if (device) {
+-    IGisProject* project = dynamic_cast<IGisProject*>(currentItem());
+-    if (project) {
+-      CCanvas* canvas = CMainWindow::self().getVisibleCanvas();
+-      if (canvas) {
+-        canvas->reportStatus(
+-            "device",
+-            tr("<b>Update devices</b><p>Update %1<br/>Please wait...</p>").arg(device->text(CGisListWks::eColumnName)));
+-        canvas->update();
+-        qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+-      }
+-
+-      int lastResult = CSelectCopyAction::eResultNone;
+-      device->insertCopyOfProject(project, lastResult);
+-
+-      if (canvas) {
+-        canvas->reportStatus("device", "");
++    const QList<QTreeWidgetItem*>& items = selectedItems();
++    for (QTreeWidgetItem* item : items) {
++      IGisProject* project = dynamic_cast<IGisProject*>(item);
++      if (project == nullptr) {
++        continue;
+       }
++      syncPrjToDevices(project, {device->getKey()});
+     }
+   }
+ 
+@@ -1811,7 +1801,14 @@ void CGisListWks::slotSyncWksDev() {
+       }
+     }
+   }
+-  syncPrjToDevices(project, keys);
++  const QList<QTreeWidgetItem*>& items = selectedItems();
++  for (QTreeWidgetItem* item : items) {
++    IGisProject* project = dynamic_cast<IGisProject*>(item);
++    if (project == nullptr) {
++      continue;
++    }
++    syncPrjToDevices(project, keys);
++  }
+ }
+ 
+ void CGisListWks::slotSyncDevWks() {
+-- 
+2.49.0
+

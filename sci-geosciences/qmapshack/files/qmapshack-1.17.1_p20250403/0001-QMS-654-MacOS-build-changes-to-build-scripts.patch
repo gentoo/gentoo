@@ -1,0 +1,1629 @@
+From 5e4b179cd2a3214b4ef3fa45c26b5196e9640486 Mon Sep 17 00:00:00 2001
+From: Manfred Kern <manfred.kern@gmail.com>
+Date: Tue, 12 Dec 2023 21:38:22 +0100
+Subject: [PATCH 01/26] [QMS-654] MacOS build (changes to build scripts)
+
+---
+ CMakeLists.txt                  |  40 +++++----
+ MacOSX/README.md                |  70 ++++++++-------
+ MacOSX/build-QMS.sh             |  37 +++++---
+ MacOSX/build-all.sh             |  38 +++++++--
+ MacOSX/build-gdal.sh            |  52 ++++++++++--
+ MacOSX/build-otoolrecursive.sh  |  17 ++++
+ MacOSX/build-proj.sh            |  27 ++++++
+ MacOSX/build-quazip.sh          |  28 ++++--
+ MacOSX/build-routino.sh         |  31 +++----
+ MacOSX/bundle-all.sh            |   3 +-
+ MacOSX/bundle-common-func.sh    | 131 ++++++++++++++++++++++++----
+ MacOSX/bundle-qmapshack.sh      | 146 ++++++++++++++++++++++++--------
+ MacOSX/bundle-qmaptool.sh       |  93 +++++++++++++++-----
+ MacOSX/config.sh                | 127 +++++++++++++++++++++------
+ MacOSX/install-brew-packages.sh |  43 ----------
+ MacOSX/install-packages.sh      |  95 +++++++++++++++++++++
+ MacOSX/resources/Info.plist     |  70 +++++++--------
+ changelog.txt                   |   1 +
+ 18 files changed, 765 insertions(+), 284 deletions(-)
+ create mode 100755 MacOSX/build-otoolrecursive.sh
+ create mode 100755 MacOSX/build-proj.sh
+ delete mode 100755 MacOSX/install-brew-packages.sh
+ create mode 100755 MacOSX/install-packages.sh
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4b3ec82a8831..ca5b92295fe7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,40 +82,44 @@ endif(KEEP_OLD_TRANSLATIONS)
+ # All OS and compiler specific tweaks
+ ###############################################################################################
+ if (APPLE)
+-    # Var LOCAL_DEV needs to be defined from outside (caller) 
+-    message(STATUS "LOCAL_DEV = ${LOCAL_DEV}")
+-    if(NOT DEFINED LOCAL_DEV)
+-        message(FATAL_ERROR "LOCAL_DEV not set!!!")
+-    endif(NOT DEFINED LOCAL_DEV)
+-
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_INIT} -Wall -std=c++11 -stdlib=libc++")
+     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++")
+     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -framework Foundation -framework DiskArbitration")
+     SET(LINK_FLAGS "${LINK_FLAGS} -framework Foundation -framework DiskArbitration")
+-    
+-    if(NOT DEFINED ENV{HOMEBREW_PREFIX})
+-        message(FATAL_ERROR "HOMEBREW_PREFIX not set!!!")
+-    endif()
+-    set(HOMEBREW_PREFIX "$ENV{HOMEBREW_PREFIX}" CACHE PATH "Path to Homebrew installation")
+-    message("HOMEBREW_PREFIX = ${HOMEBREW_PREFIX}")
+ 
+     if(NOT DEFINED QT_DEV_PATH)
+-        message(WARNING "QT_DEV_PATH not set!!!")
+-        set(QT_DEV_PATH "${HOMEBREW_PREFIX}/opt/qt5" CACHE PATH "Path to Qt installation")
++        message(FATAL_ERROR "QT_DEV_PATH not set!!!")
+     endif()
++    # set(QT_DEV_PATH   ${QT_DEV_PATH} CACHE PATH "Path to directory containing Qt5 include and lib")
+     message("QT_DEV_PATH = ${QT_DEV_PATH}")
+ 
+     if(NOT DEFINED ROUTINO_DEV_PATH)
+-        set(ROUTINO_DEV_PATH "${LOCAL_DEV}" CACHE PATH "Path to directory containing routino include and lib, e.g. lib/routino")
++        message(FATAL_ERROR "ROUTINO_DEV_PATH not set!!!")
+     endif(NOT DEFINED ROUTINO_DEV_PATH)
++    # set(ROUTINO_DEV_PATH ${ROUTINO_DEV_PATH} CACHE PATH "Path to directory containing routino include and lib")
++    message("ROUTINO_DEV_PATH = ${ROUTINO_DEV_PATH}")
++    
+     if(NOT DEFINED QuaZip-Qt5_DIR)
+-        set(QuaZip-Qt5_DIR "${LOCAL_DEV}/lib/cmake/QuaZip-Qt5" CACHE PATH "Path to directory containing quazip cmake config files, e.g. lib/cmake/QuaZip-Qt5-1.3")
++        message(FATAL_ERROR "QuaZip-Qt5_DIR not set!!!")
+     endif(NOT DEFINED QuaZip-Qt5_DIR)
++    # set(QuaZip-Qt5_DIR ${QuaZip-Qt5_DIR} CACHE PATH "Path to directory containing quazip cmake config files")
++    message("QuaZip-Qt5_DIR = ${QuaZip-Qt5_DIR}")
++
+     if(NOT DEFINED PROJ_DEV_PATH)
+-        set(PROJ_DEV_PATH "${LOCAL_DEV}/lib/cmake/proj" CACHE PATH "Path to directory containing PROJ include and lib, e.g. lib/cmake/proj")
++        message(FATAL_ERROR "PROJ_DEV_PATH not set!!!")
+     endif(NOT DEFINED PROJ_DEV_PATH)
++    # set(PROJ_DEV_PATH ${PROJ_DEV_PATH} CACHE PATH "Path to directory containing PROJ include and lib")
++    message("PROJ_DEV_PATH = ${PROJ_DEV_PATH}")
++
++    if(NOT DEFINED GDAL_DEV_PATH)
++        message(FATAL_ERROR "GDAL_DEV_PATH not set!!!")
++    endif(NOT DEFINED GDAL_DEV_PATH)
++    # set(GDAL_DEV_PATH ${GDAL_DEV_PATH} CACHE PATH "Path to directory containing GDAL include and lib")
++    message("GDAL_DEV_PATH = ${GDAL_DEV_PATH}")
++    # set(JPEG_DEV_PATH "C:\\JPEG" CACHE PATH "Path to directory containing JPEG include and lib, e.g. M:\\lib\\JPEG")
+ 
+-    set(CMAKE_PREFIX_PATH "${HOMEBREW_PREFIX}" "${QT_DEV_PATH}")
++    set(CMAKE_PREFIX_PATH ${QT_DEV_PATH})
++    message("CMAKE_PREFIX_PATH = ${CMAKE_PREFIX_PATH}")
+ endif(APPLE)
+ 
+ if(WIN32)
+diff --git a/MacOSX/README.md b/MacOSX/README.md
+index 041336537e89..46ca5c1bad10 100755
+--- a/MacOSX/README.md
++++ b/MacOSX/README.md
+@@ -5,86 +5,82 @@ The root directory of the local build environment must be empty and referenced a
+ 
+ This directory contains sub-directories while building:
+ 
+-- routino/      (for building routino)
+-- quazip/       (for building quazip)
+-- gdal/         (optional - for building gdal)
+-- local/        (contains all the files and dirs installed by packages locally built)
+-- qmapshack/    (QMS source from git)
++- routino/ (for building routino)
++- quazip/ (for building quazip)
++- gdal/ (optional - for building gdal)
++- local/ (contains all the files and dirs installed by packages locally built)
++- qmapshack/ (QMS source from git)
+ - build_qmapshack (directory were the build process of QMS itself happens)
+-- release/      (bundles created)
+-
++- release/ (bundles created)
+ 
+ Local packages to be build are:
++
+ - routino
+ - quazip
+-- gdal  (optional)
++- gdal (optional)
+ 
+ All other packages are taken from homebrew package manager.
+ The homebrew package manager is the packagemanger of choice.
+ 
+ Important script vars:
+ 
+-- QMSDEVDIR               (mandatory: the build environment)
+-- BUILD_RELEASE_DIR       (optional: location where the bundles are put)
++- QMSDEVDIR (mandatory: the build environment)
++- BUILD_RELEASE_DIR (optional: location where the bundles are put)
+ 
+ Parameters to configure build:
+-- XCODE_PROJECT           (optional: if set, create an XCode project instead of building QMS)
+-                          can be set with -x on commandline
+-- BUILD_GDAL              (optional: if set, build GDAL instead of using the homebrew package)
+-                          can be set with -g on commandline
+-- BREW_PACKAGE_BUILD      if set creates QMS as an app relying on brew packages on runtime
+-                          homebrew packages are listed in install-brew-packages.sh
+-                          can be set with -b on commandline
+ 
++- XCODE_PROJECT (optional: if set, create an XCode project instead of building QMS)
++  can be set with -x on commandline
++- BUILD_GDAL (optional: if set, build GDAL instead of using the homebrew package)
++  can be set with -g on commandline
++- BREW_PACKAGE_BUILD if set creates QMS as an app relying on brew packages on runtime
++  homebrew packages are listed in install-brew-packages.sh
++  can be set with -b on commandline
+ 
+ To run the complete build process:
++
+ 1. Create a directory and cd into this directory. This dir will be referenced as $QMSDEVDIR
+ 2. clone git repo https://github.com/d029940/qmapshack.git
+ 3. Check build paramters in ./qmapshack/MacOSX/config.sh
+ 4. run "sh ./qmapshack/MacOSX/build-all.sh | tee log.txt"
+-5. ATTENTION: manual intervention is needed for:
+-        - applying admin password while changing dylibs (Apple requirement)
++5. ATTENTION: manual intervention is needed for: - applying admin password while changing dylibs (Apple requirement)
+ 6. check log.txt if an error occured
+ 7. After building successfuly, the bundles are located in the release folder
+-8. check brew*.diff for packages installed by homebrew during build process and uninstall them if not needed elsewhere.
++8. check brew\*.diff for packages installed by homebrew during build process and uninstall them if not needed elsewhere.
+ 
++---
+ 
+---------------------------------------------------
+ Contents of this folder MACOSX
+ 
+ Folders:
++
+ - archive: Outdated scripts to be deleted soon
+-- resources: Resources like icons, info.plist specifically needed for MacOS 
++- resources: Resources like icons, info.plist specifically needed for MacOS
+ 
+ Scripts for the overall build process:
+ 
+ - build-all.sh: automatically builds QMapShack. (calls sub build scripts, more modular)
+-        The only manual intervention is to pass the admin password for changing paths in dylibs
++  The only manual intervention is to pass the admin password for changing paths in dylibs
+ 
+ Scripts for building partial steps in the build process
++
+ - install-brew-packages.sh: installs homebrew (if needed) and packages for the build process
+-                            package files are also copied to local environment
++  package files are also copied to local environment
+ - build-quazip.sh: builds Quazip
+ - build-routino.sh: builds Routino
+ - build-gdal.sh: builds GDAL (currently not used since brew packages is used instead)
+ - build-QMS.sh: compiles QMapShack
+ - bundle-all.sh: The complete bundling process (calls (in)directly the other bundle scripts).
+-  Should be called, when everything is built but not bundled (build-all.sh includes this script). 
++  Should be called, when everything is built but not bundled (build-all.sh includes this script).
+ - bundle-env-path.ah: sets shell variables for the bundling process
+ - bundle-qmapshack.sh: bundles the app QMapShack
+ - bundle-qmaptool.sh: bundles the app QMapTool
+ - bundle.sh: bundles and signs QMapShack
+ - config.sh: checks for valid a build dir and contains the vars driving the build process
+-- clean.sh: cleans all build artifacts, except for brew*diff.txt (which lists brew packages installed for the build process)
++- clean.sh: cleans all build artifacts, except for brew\*diff.txt (which lists brew packages installed for the build process)
+ - create_local_env: create a local environment where all external libs/packages can be saved
+-    (Idea: the libs can be downloaded via package managers and copied 
+-    or directly from the internet. 
+-    Subsequent build process will be from then on independent libs spread across the file system
+-    Build processes, like bundling have still to be adapted (WiP)).
+-- install-brew-packages.sh: installs homebrew packages for the build process
+-
+-
+-
+-
+-
+-   
++  (Idea: the libs can be downloaded via package managers and copied
++  or directly from the internet.
++  Subsequent build process will be from then on independent libs spread across the file system
++  Build processes, like bundling have still to be adapted (WiP)).
++- install-packages.sh: installs packages for the build process
+diff --git a/MacOSX/build-QMS.sh b/MacOSX/build-QMS.sh
+index c75ab1733ad2..d8dfd238ba54 100755
+--- a/MacOSX/build-QMS.sh
++++ b/MacOSX/build-QMS.sh
+@@ -5,28 +5,36 @@
+ ######################################################################## 
+ # build QMapShack
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
+-
+-# MacOS build target
+-OSX_DEPLOYMENT_TARGET=11.0
+-echo "${INFO}MacOS deplyment target: ${OSX_DEPLOYMENT_TARGET}${NC}"
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Building QMS ...${NC}"
++echo "${ATTN}----------------${NC}"
+ 
+ # Dir to Quazip cmake files
+ QUAZIP_CMAKE_DIR=`find $LOCAL_ENV/lib/cmake -type d -name "QuaZip*"`
++echo "QUAZIP_CMAKE_DIR = $QUAZIP_CMAKE_DIR"
+ 
++if [ -d $QMSDEVDIR/build_QMapShack ]; then
++  rm -rf $QMSDEVDIR/build_QMapShack
++fi
+ mkdir $QMSDEVDIR/build_QMapShack
+ cd $QMSDEVDIR/build_QMapShack
+ 
+-echo "LOCAL = $LOCAL_ENV"
+-# CMAKE_PAR="-DQT_DEV_PATH:PATH=$QT_DIR -DLOCAL_DEV:PATH=$LOCAL_ENV -DCMAKE_MACOSX_RPATH=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=$OSX_DEPLOYMENT_TARGET -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DGDAL_CONFIG=$GDAL_DIR/bin/gdal-config -DGDAL_INCLUDE_DIR=$GDAL_DIR/include -DGDAL_LIBRARY=$GDAL_DIR/lib/libgdal.dylib"
+-CMAKE_PAR="-DLOCAL_DEV:PATH=$LOCAL_ENV -DCMAKE_MACOSX_RPATH=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=$OSX_DEPLOYMENT_TARGET -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DGDAL_CONFIG=$GDAL_DIR/bin/gdal-config -DGDAL_INCLUDE_DIR=$GDAL_DIR/include -DGDAL_LIBRARY=$GDAL_DIR/lib/libgdal.dylib"
++if [ ! -z `brew --prefix qt` ]; then
++  echo "unlinking qt and linking qt@5"
++  brew unlink qt
++  brew link qt@5
++fi
+ 
++GDAL_CMAKE_PAR="-DGDAL_CONFIG=$GDAL/bin/gdal-config -DGDAL_INCLUDE_DIR=$GDAL/include -DGDAL_LIBRARY=$GDAL/lib/libgdal.dylib -DGDAL_DEV_PATH=$GDAL"
++CMAKE_PAR="-DLOCAL_DEV=$LOCAL_ENV  -DCMAKE_MACOSX_RPATH=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=$OSX_DEPLOYMENT_TARGET -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DQT_DEV_PATH=$QT_DEV_PATH $GDAL_CMAKE_PAR -DROUTINO_DEV_PATH=$ROUTINO_DEV_PATH -DPROJ_DEV_PATH=$PROJ_DEV_PATH -DQuaZip-Qt5_DIR=$QuaZip_Qt5_DIR"
++# else
++#   CMAKE_PAR="-DLOCAL_DEV=$LOCAL_ENV  -DCMAKE_MACOSX_RPATH=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=$OSX_DEPLOYMENT_TARGET -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DQT_DEV_PATH=$QT_DEV_PATH -DGDAL_DEV_PATH=$GDAL -DROUTINO_DEV_PATH=$ROUTINO_DEV_PATH -DPROJ_DEV_PATH=$PROJ_DEV_PATH -DQuaZip-Qt5_DIR=$QuaZip_Qt5_DIR"
++# fi
+ 
+ echo "${INFO} cmake ../qmapshack ${CMAKE_PAR}${NC}"
+ 
+ if [[ "$XCODE_PROJECT" == "" ]]; then
+-    cmake ../qmapshack $CMAKE_PAR -DCMAKE_BUILD_TYPE=Release 
++    $PACKAGES_PATH/bin/cmake ../qmapshack $CMAKE_PAR -DCMAKE_BUILD_TYPE=Release 
+     # building QMapShack
+     echo "${INFO}Building QMapShack - can take very long ...${NC}"
+     make
+@@ -43,9 +51,16 @@ else
+     # export Qt5WebEngineWidgets_DIR=$QT_DIR/lib/cmake/Qt5WebEngineWidgets
+     # export Qt5Help_DIR=$QT_DIR/lib/cmake/Qt5Help
+     # export PROJ_DATA=$PROJ_DIR/share/proj
+-    cmake ../qmapshack -G Xcode $CMAKE_PAR -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV -DCMAKE_MACOSX_BUNDLE=ON
++    $PACKAGES_PATH/bin/cmake ../qmapshack -G Xcode $CMAKE_PAR -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV -DCMAKE_MACOSX_BUNDLE=ON
+     echo "${INFO}Xcode project written in $QMSDEVDIR/build_QMapShack${NC}"
+     exit
+ fi
+ 
++if [ ! -z `brew --prefix qt` ]; then
++  echo "unlinking qt@5 and linking qt"
++  brew unlink qt@5
++  brew link qt
++fi
++
++
+ cd $QMSDEVDIR
+\ No newline at end of file
+diff --git a/MacOSX/build-all.sh b/MacOSX/build-all.sh
+index d6b21f5dd838..034224132746 100755
+--- a/MacOSX/build-all.sh
++++ b/MacOSX/build-all.sh
+@@ -14,8 +14,7 @@
+ # 2a. QMapShack has been downloaded from git (git clone ...)
+ ######################################################################## 
+ 
+-export DIR_SCRIPT=$(cd `dirname $0` && pwd -P) # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
+ 
+ echo "${INFO}Are these parameters correct?${NC}"
+ echo "${INFO}Is your build dir outside of the qmapshack source dir (cloned from GitHub)?${NC}"
+@@ -38,25 +37,46 @@ fi
+ source $SRC_OSX_DIR/create_local_env.sh
+ 
+ ########################################################################
+-# install homebrew (if needed) and packages 
++# install homebrew (if needed) and packages / macports
+ cd $QMSDEVDIR
+-source  $SRC_OSX_DIR/install-brew-packages.sh
++source  $SRC_OSX_DIR/install-packages.sh
+ cd $QMSDEVDIR
+ 
+ ######################################################################## 
+-# build Quazip
++# build otoolrecursive
++
+ cd $QMSDEVDIR
+-source $SRC_OSX_DIR/build-quazip.sh
++source $SRC_OSX_DIR/build-otoolrecursive.sh
+ cd $QMSDEVDIR
+ 
+ ######################################################################## 
+-# build GDAL
+-if [[ "$BUILD_GDAL" != "" ]]; then
++# build Quazip
++if [ -z "$MACPORTS_BUILD" ]; then
+     cd $QMSDEVDIR
+-    source $SRC_OSX_DIR/build-gdal.sh
++    source $SRC_OSX_DIR/build-quazip.sh
+     cd $QMSDEVDIR
+ fi
+ 
++######################################################################## 
++# build Proj
++if [ -z "$MACPORTS_BUILD" ]; then
++   if [[ "$BUILD_PROJ" == "x" ]]; then
++        cd $QMSDEVDIR
++        source $SRC_OSX_DIR/build-proj.sh
++        cd $QMSDEVDIR
++    fi
++fi
++
++######################################################################## 
++# build GDAL
++if [ -z "$MACPORTS_BUILD" ]; then
++   if [[ "$BUILD_GDAL" == "x" ]]; then
++        cd $QMSDEVDIR
++        source $SRC_OSX_DIR/build-gdal.sh
++        cd $QMSDEVDIR
++    fi
++fi
++
+ ######################################################################## 
+ # build Routino
+ cd $QMSDEVDIR
+diff --git a/MacOSX/build-gdal.sh b/MacOSX/build-gdal.sh
+index e0090d809256..a523ab2b6341 100755
+--- a/MacOSX/build-gdal.sh
++++ b/MacOSX/build-gdal.sh
+@@ -1,18 +1,58 @@
+ #!/bin/sh
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Building GDAL ...${NC}"
++echo "${ATTN}-----------------${NC}"
+ 
+ ######################################################################## 
+ # build GDAL (experimental: now using cmake)
+     echo "${ATTN}Building GDAL ...${NC}"
+     cd $QMSDEVDIR
+-    git clone https://github.com/OSGeo/gdal.git
++    git clone -b "release/$GDAL_RELEASE" https://github.com/OSGeo/gdal.git
+ # --> folder $QMSVERDIR/gdal/ created
+     cd $QMSDEVDIR/gdal
+     mkdir build
+     cd ./build
+-    cmake ..  -DCMAKE_PREFIX_PATH=$LOCAL_ENV -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV -DGDAL_SET_INSTALL_RELATIVE_RPATH=ON -DGDAL_USE_INTERNAL_LIBS=ON -DGDAL_USE_EXTERNAL_LIBS=OFF
+-    cmake --build . -j4
+-    cmake --build . --target install
++    # Boost headers need to be in the include path
++    export CPATH="$LOCAL_ENV/include:$PACKAGES_PATH/include:${CPATH}"
++    echo "CPATH = $CPATH"
++    export LIBRARY_PATH="$LOCAL_ENV/lib:$PACKAGES_PATH/lib"
++    export LD_LIBRARY_PATH="$LOCAL_ENV/lib:$PACKAGES_PATH/lib"
++    export PATH="$PACKAGES_PATH/opt/expat/bin:$PATH"
++
++
++    # LDFLAGS="-L$PACKAGES_PATH/opt/expat/lib"
++    # CPPFLAGS="-I$PACKAGES_PATH/opt/expat/include"
++
++    GDAL=$LOCAL_ENV
++
++    $PACKAGES_PATH/bin/cmake .. -DCMAKE_PREFIX_PATH=$GDAL \
++                                -DCMAKE_BUILD_TYPE=Release \
++                                -DCMAKE_INSTALL_PREFIX=$GDAL \
++                                -DGDAL_SET_INSTALL_RELATIVE_RPATH=ON \
++                                -DGDAL_USE_INTERNAL_LIBS=ON \
++                                -DGDAL_USE_EXTERNAL_LIBS=OFF \
++                                -DCMAKE_DISABLE_FIND_PACKAGE_Arrow=ON \
++                                -DGDAL_USE_CURL=ON \
++                                -DGDAL_ENABLE_DRIVER_WMS:BOOL=ON \
++                                -DGDAL_ENABLE_DRIVER_WCS:BOOL=ON \
++                                -DGDAL_USE_TIFF=ON \
++                                -DGDAL_USE_GEOTIFF=ON \
++                                -DGDAL_USE_GEOS=ON=ON \
++                                -DGDAL_USE_PNG=ON \
++                                -DGDAL_USE_GIF=ON \
++                                -DGDAL_USE_ODBC=ON \
++                                -DGDAL_USE_PCRE2=ON \
++                                -DGDAL_USE_ICONV=ON \
++                                -DGDAL_USE_LIBXML2=ON \
++                                -DGDAL_USE_EXPAT=ON \
++                                -DGDAL_USE_HEIF=ON \
++                                -DGDAL_USE_WEBP=OFF \
++                                # -DGDAL_USE_HDF5=ON \ (Problem)
++                                # -DGDAL_USE_JPEG=ON \ (Problem)
++                            
++                                                                
++                             
++    $PACKAGES_PATH/bin/cmake --build . -j4
++    $PACKAGES_PATH/bin/cmake --build . --target install
+     cd $QMSDEVDIR
+\ No newline at end of file
+diff --git a/MacOSX/build-otoolrecursive.sh b/MacOSX/build-otoolrecursive.sh
+new file mode 100755
+index 000000000000..e79672b74370
+--- /dev/null
++++ b/MacOSX/build-otoolrecursive.sh
+@@ -0,0 +1,17 @@
++#!/bin/sh
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Building otoolrecursive ...${NC}"
++echo "${ATTN}---------------------------${NC}"
++
++######################################################################## 
++# build otoolrecursive (command line tool which recursivly lists all dependencies of a dylib)
++cd $QMSDEVDIR
++git clone https://github.com/d029940/otoolrecursive.git otoolrecursive
++# --> folder $QMSVERDIR/quazip/ created
++cd $QMSDEVDIR/otoolrecursive
++mkdir build
++cd ./build
++$PACKAGES_PATH/bin/cmake .. -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV
++$PACKAGES_PATH/bin/cmake --build . -j4
++$PACKAGES_PATH/bin/cmake --build . --target install
++cd $QMSDEVDIR
+diff --git a/MacOSX/build-proj.sh b/MacOSX/build-proj.sh
+new file mode 100755
+index 000000000000..ee95e7c9ea75
+--- /dev/null
++++ b/MacOSX/build-proj.sh
+@@ -0,0 +1,27 @@
++#!/bin/sh
++
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Building PROJ ...${NC}"
++echo "${ATTN}-----------------${NC}"
++
++######################################################################## 
++# build Proj
++
++PROJ_PKG=proj-9.3.0
++
++cd $QMSDEVDIR
++echo "${ATTN}Building Proj ...${NC}"
++curl https://download.osgeo.org/proj/$PROJ_PKG.tar.gz  | tar xzf -
++
++# --> folder $QMSVERDIR/$PROJ_PKG/ created
++cd $QMSDEVDIR/$PROJ_PKG
++mkdir build
++cd build
++$PACKAGES_PATH/bin/cmake .. -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV
++$PACKAGES_PATH/bin/cmake .. -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV
++$PACKAGES_PATH/bin/cmake --build . -j4
++$PACKAGES_PATH/bin/cmake --build . --target install
++
++$LOCAL_ENV/share/proj
++curl https://download.osgeo.org/proj/proj-data-1.15.tar.gz | tar xzf -
++cd $QMSDEVDIR
+diff --git a/MacOSX/build-quazip.sh b/MacOSX/build-quazip.sh
+index 717d3ccb956e..8b46c8d5f4d4 100755
+--- a/MacOSX/build-quazip.sh
++++ b/MacOSX/build-quazip.sh
+@@ -1,7 +1,8 @@
+ #!/bin/sh
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Building QUAZIP ...${NC}"
++echo "${ATTN}-------------------${NC}"
+ 
+ ######################################################################## 
+ # build Quazip
+@@ -12,10 +13,21 @@ git clone https://github.com/stachenov/quazip.git quazip
+ cd $QMSDEVDIR/quazip
+ mkdir build
+ cd ./build
+-cmake .. -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV
+-cmake --build . -j4
+-cmake --build . --target install
++
++if [ ! -z `brew --prefix qt` ]; then
++  echo "unlinking qt and linking qt@5"
++  brew unlink qt
++  brew link qt@5
++fi
++
++$PACKAGES_PATH/bin/cmake .. -DCMAKE_INSTALL_PREFIX=$LOCAL_ENV -DQT_VERSION_MAJOR=5 -DQUAZIP_QT_MAJOR_VERSION=5
++$PACKAGES_PATH/bin/cmake --build . -j4
++$PACKAGES_PATH/bin/cmake --build . --target install
++
++if [ ! -z `brew --prefix qt` ]; then
++  echo "unlinking qt@5 and linking qt"
++  brew unlink qt@5
++  brew link qt
++fi
++
+ cd $QMSDEVDIR
+-pushd $LOCAL_ENV/lib/cmake
+-mv QuaZip-Qt5-1.4 QuaZip-Qt5
+-popd
+\ No newline at end of file
+diff --git a/MacOSX/build-routino.sh b/MacOSX/build-routino.sh
+index bb126536d459..bf2544c6d387 100755
+--- a/MacOSX/build-routino.sh
++++ b/MacOSX/build-routino.sh
+@@ -1,22 +1,24 @@
+ #!/bin/sh
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
+ 
+ ######################################################################## 
+ # build Routino
+-echo "${INFO}Building Routino ...${NC}"
++echo "${ATTN}Building Routino ...${NC}"
++echo "${ATTN}--------------------${NC}"
+ echo "${INFO}At the end you will be prompted for admin password for adjusting routino libs${NC}"
+ 
+ # Prerequisite
+ # QMapShack installed from git in QMapShack
+ # Local environment created
+ 
+-ROUTINO_PKG=routino-3.3.3
++ROUTINO_PKG=routino-3.4.1
+ ROUTINO_SRC_DIR=$QMSDEVDIR/$ROUTINO_PKG
+-ROUTINO_LIB_DIR=$LOCAL_ENV/lib
+-ROUTINO_INCLUDE_DIR=$LOCAL_ENV/include
+-ROUTINO_XML_DIR=$LOCAL_ENV/xml
++// The following paths are needed by cmake/Modules/FindROUTINO.cmake. So do not change!
++ROUTINO_LIB_DIR=$ROUTINO_DEV_PATH/lib
++ROUTINO_INCLUDE_DIR=$ROUTINO_DEV_PATH/include
++ROUTINO_SHARE_DIR=$ROUTINO_DEV_PATH/xml
++ROUTINO_BIN_DIR=$ROUTINO_DEV_PATH/bin
+ 
+    
+ function checkoutRoutino {
+@@ -45,21 +47,20 @@ function adjustLinking {
+ function copyRoutinoToInstallDir {
+     echo "${GREEN}Copy Routino build files to install directory ...${NC}"
+     
++    
++    mkdir -p $ROUTINO_SHARE_DIR
+     cp -f $ROUTINO_SRC_DIR/src/libroutino.so.0.0.0       $ROUTINO_LIB_DIR/libroutino.dylib
+     cp -f $ROUTINO_SRC_DIR/src/routino.h                 $ROUTINO_INCLUDE_DIR
+-    cp -f $ROUTINO_SRC_DIR/xml/routino-profiles.xml      $ROUTINO_XML_DIR
+-    cp -f $ROUTINO_SRC_DIR/xml/routino-tagging.xml       $ROUTINO_XML_DIR
+-    cp -f $ROUTINO_SRC_DIR/xml/routino-translations.xml  $ROUTINO_XML_DIR
+-    cp -f $ROUTINO_SRC_DIR/src/planetsplitter            $ROUTINO_LIB_DIR
++    cp -f $ROUTINO_SRC_DIR/xml/routino-profiles.xml       $ROUTINO_SHARE_DIR/profiles.xml
++    cp -f $ROUTINO_SRC_DIR/xml/routino-tagging.xml       $ROUTINO_SHARE_DIR/tagging.xml
++    cp -f $ROUTINO_SRC_DIR/xml/routino-translations.xml  $ROUTINO_SHARE_DIR/translations.xml
++    cp -f $ROUTINO_SRC_DIR/src/planetsplitter            $ROUTINO_BIN_DIR
++    cp -f $ROUTINO_SRC_DIR/src/router                    $ROUTINO_BIN_DIR
+     
+     cp -f $ROUTINO_LIB_DIR/libroutino.dylib          $ROUTINO_LIB_DIR/routino
+     cp -f $ROUTINO_LIB_DIR/libroutino.dylib          $ROUTINO_LIB_DIR/routino.dylib   
+     cp -f $ROUTINO_LIB_DIR/libroutino.dylib          $ROUTINO_LIB_DIR/routino.a
+     cp -f $ROUTINO_LIB_DIR/libroutino.dylib          $ROUTINO_LIB_DIR/libroutino.a
+-
+-    cp -f $ROUTINO_XML_DIR/routino-profiles.xml      $ROUTINO_XML_DIR/profiles.xml
+-    cp -f $ROUTINO_XML_DIR/routino-tagging.xml       $ROUTINO_XML_DIR/tagging.xml
+-    cp -f $ROUTINO_XML_DIR/routino-translations.xml  $ROUTINO_XML_DIR/translations.xml
+ }
+ 
+ if [[ "$1" == "" ]]; then
+diff --git a/MacOSX/bundle-all.sh b/MacOSX/bundle-all.sh
+index e9bfd5d44c15..e38a7bf6ef5e 100755
+--- a/MacOSX/bundle-all.sh
++++ b/MacOSX/bundle-all.sh
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
+ 
+ # Bundling QMapShack and QMapTool
+ echo "${INFO}Bundle QMapShack ...${NC}"
+diff --git a/MacOSX/bundle-common-func.sh b/MacOSX/bundle-common-func.sh
+index 8e7af48cf671..f8763a905c14 100755
+--- a/MacOSX/bundle-common-func.sh
++++ b/MacOSX/bundle-common-func.sh
+@@ -1,9 +1,41 @@
+ #!/bin/sh
+ 
+-# DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-# source $DIR_SCRIPT/config.sh   # check for important paramters
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++
++# Directories for QMS
++SRC_RESOURCES_DIR=$SRC_OSX_DIR/resources
++BUILD_BIN_DIR=$QMSDEVDIR/build_QMapShack/bin
++
++# vars for bundling
++set -a
++declare APP_LANG=("ca" "cs" "de" "en" "es" "fr" "nl" "ru")
++APP_NAME_LOWER="$(tr [A-Z] [a-z] <<< "$APP_NAME")"
++APP_BUNDLE=$APP_NAME.app
++
++APP_BUNDLE_QMAPTOOL=QMapTool.app
++
++BUILD_BUNDLE_DIR=$BUILD_RELEASE_DIR/$APP_BUNDLE
++BUILD_BUNDLE_CONTENTS_DIR=$BUILD_BUNDLE_DIR/Contents
++BUILD_BUNDLE_APP_DIR=$BUILD_BUNDLE_DIR/Contents/MacOS
++BUILD_BUNDLE_RES_DIR=$BUILD_BUNDLE_DIR/Contents/Resources
++BUILD_BUNDLE_FRW_DIR=$BUILD_BUNDLE_DIR/Contents/Frameworks
++BUILD_BUNDLE_PLUGIN_DIR=$BUILD_BUNDLE_DIR/Contents/PlugIns
++BUILD_BUNDLE_EXTLIB_DIR=$BUILD_BUNDLE_DIR/Contents/lib
++BUILD_BUNDLE_APP_FILE=$BUILD_BUNDLE_APP_DIR/$APP_NAME
++
++BUILD_BUNDLE_RES_QM_DIR=$BUILD_BUNDLE_RES_DIR/translations
++BUILD_BUNDLE_RES_GDAL_DIR=$BUILD_BUNDLE_RES_DIR/gdal
++BUILD_BUNDLE_RES_GEOS_DIR=$BUILD_BUNDLE_RES_DIR/geos
++BUILD_BUNDLE_RES_PROJ_DIR=$BUILD_BUNDLE_RES_DIR/proj
++BUILD_BUNDLE_RES_ROUTINO_DIR=$BUILD_BUNDLE_RES_DIR/routino
++BUILD_BUNDLE_RES_HELP_DIR=$BUILD_BUNDLE_RES_DIR/help
++BUILD_BUNDLE_RES_BIN_DIR=$BUILD_BUNDLE_CONTENTS_DIR/Tools
++
++HELP_QMS_DIR=$QMS_SRC_DIR/src/qmapshack/doc
++HELP_QMT_DIR=$QMS_SRC_DIR/src/qmaptool/doc
++
++set +a
+ 
+-SRC_RESOURCES_DIR=$QMS_SRC_DIR/MacOSX/resources
+ 
+ APP_VERSION=0
+ BUILD_TIME=$(date +"%y-%m-%dT%H:%M:%S")
+@@ -39,8 +71,9 @@ function buildAppStructure {
+     #         *.icns
+     #      Frameworks/
+     #         <libs>
+-    #      PlugIns
++    #      PlugIns/
+     #         <libs>
++    #      Tools/
+     #      libs/
+ 
+     rm -rf $BUILD_BUNDLE_DIR
+@@ -68,8 +101,8 @@ function buildAppStructure {
+ 
+     cp -v $SRC_RESOURCES_DIR/$APP_NAME.icns $BUILD_BUNDLE_RES_DIR
+     cp -v $SRC_RESOURCES_DIR/*.qss $BUILD_BUNDLE_RES_DIR
+-    # inject PATH of HOMEBREW, so that external tools can be run from the app bundles
+-    sed  "s|HOMEBREW|$HOMEBREW_PREFIX|" $SRC_RESOURCES_DIR/Info.plist > $QMSDEVDIR/Info.plist
++    # inject PATH of PACKAGES_PATH, so that external tools can be run from the app bundles
++    sed  "s|PACKAGES_PATH|$PACKAGES_PATH|" $SRC_RESOURCES_DIR/Info.plist > $QMSDEVDIR/Info.plist
+     mv $QMSDEVDIR/Info.plist $BUILD_BUNDLE_CONTENTS_DIR
+ 
+     # new icon, if one has been created (otherwise the one from predefined data)
+@@ -89,19 +122,21 @@ function buildAppStructure {
+ function copyQtTrqnslations {
+     for i in "${APP_LANG[@]}"
+     do
+-        cp -v $QT_DIR/translations/*_${i}.qm $BUILD_BUNDLE_RES_QM_DIR
++        cp -v $QT_DEV_PATH/translations/*_${i}.qm $BUILD_BUNDLE_RES_QM_DIR
+     done
+ }
+ 
+ 
+ function qtDeploy {
+     # -no-strip
+-    echo "MACdeployQT  $QT_DIR/ und  $BUILD_BUNDLE_DIR/"
+-    $QT_DIR/bin/macdeployqt $BUILD_BUNDLE_DIR -always-overwrite -verbose=3
++    echo "MACdeployQT  $QT_DEV_PATH/ and  $BUILD_BUNDLE_DIR/"
++    $QT_DEV_PATH/bin/macdeployqt $BUILD_BUNDLE_DIR -always-overwrite -verbose=3
+ }
+ 
+ 
+ function printLinkingApp {
++    echo "--------------------------------------------"
++    echo "*** printLinkingApp ***"
+     printLinking $BUILD_BUNDLE_APP_FILE
+ 
+     for F in `find $BUILD_BUNDLE_FRW_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
+@@ -154,19 +189,23 @@ function adjustLinking {
+     for F in `find $BUILD_BUNDLE_PLUGIN_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
+     do
+         adjustLinkQt $F "libq"
+-        adjustLinkQt $F "$HOMEBREW_PREFIX/"
++        # adjustLinkQt $F "$PACKAGES_PATH/"
+     done
+ 
+     for F in `find $BUILD_BUNDLE_FRW_DIR/Qt*.framework/Versions/5 -type f -maxdepth 1`
+     do
+-        adjustLinkQt $F "$HOMEBREW_PREFIX/"
++        adjustLinkQt $F "$PACKAGES_PATH/"
+     done
+ 
+     for F in `find $BUILD_BUNDLE_FRW_DIR -type f -type f \( -iname "*.dylib" -o -iname "*.so" \)`
+     do
+         adjustLinkQt $F "Qt"
+-        adjustLinkQt $F "libroutino"
+-        adjustLinkQt $F "$HOMEBREW_PREFIX/"
++        if [ -z "$MACPORTS_BUILD" ]; then
++            adjustLinkQt $F "libroutino"
++        fi
++        # echo "--- Adjusting libs with references to $PACKAGES_PATH ---"
++        adjustLinkDyLib $F
++        
+     done
+ 
+     adjustLinkQt $BUILD_BUNDLE_APP_FILE "Qt"
+@@ -176,7 +215,7 @@ function adjustLinking {
+     # QtWebEngineProcess.app is an app within QtWebEngineCore.framework, which references other Qt frameworks
+     PATH_TO_QTWEBENGINEPROCESS="QtWebEngineCore.framework/Helpers/QtWebEngineProcess.app"
+     F=$BUILD_BUNDLE_FRW_DIR/$PATH_TO_QTWEBENGINEPROCESS/Contents/MacOS/QtWebEngineProcess
+-    adjustLinkQt $F "$HOMEBREW_PREFIX/"
++    adjustLinkQt $F "$PACKAGES_PATH/"
+     if [ -d "$BUILD_BUNDLE_FRW_DIR/$PATH_TO_QTWEBENGINEPROCESS/Contents" ]; then
+         pushd $BUILD_BUNDLE_FRW_DIR/$PATH_TO_QTWEBENGINEPROCESS/Contents
+         ln -s ../../../../../../../Frameworks .
+@@ -184,6 +223,53 @@ function adjustLinking {
+     fi
+ }
+ 
++function adjustLinkDyLib {
++    echo ">>> Adjusting dylibs of `basename $1`"
++    # adjust all dylibs in Frameworks with references to package manager
++    F=$1 # file
++    
++    # exclude symlinks
++    if [[ -L "$F" ]]; then
++            return
++    fi
++
++    for P in `otool -L $F | awk '{print $1}'`
++    do
++        # $P = dylib referenced by $F
++        # get filename of path
++        LIB=`basename $P`
++        
++        # only for references to package, i.e. check if $P starts with $PACKAGES_PATH
++         if [[ "$P" =~ ^"$PACKAGES_PATH"  ]]; then
++            PREL="@executable_path/../Frameworks/$LIB"
++            echo "Changing $LIB to reference $PREL"
++            sudo install_name_tool -change $P $PREL $F
++         fi
++    done
++}
++
++function adjustLinkExtTool {
++    # $1 = filename of exttool
++    echo ">>> Adjusting ext Tools of $1"
++    for P in `otoolrecursive $1`
++    do
++
++        LIB=${P##*/}    
++        LIB=${LIB%%:}
++        PREL="@executable_path/../Frameworks/$LIB"
++
++        if [[ "$P" == *".framework"* ]]; then
++            LIB_VERSION=Versions/5
++            LIB=$LIB.framework/$LIB_VERSION/$LIB
++            PREL="@executable_path/../Frameworks/$LIB"
++        else
++             echo "cp -v $P ../Frameworks/"
++        fi
++   
++        echo "install_name_tool -change $P $PREL `basename $1`"
++        install_name_tool -change $P $PREL $1
++    done
++}
+ 
+ function adjustLinkQt {
+     F=$1 # file
+@@ -192,13 +278,17 @@ function adjustLinkQt {
+ 
+     for P in `otool -L $F | awk '{print $1}'`
+     do
++        # exclude symlinks
++        if [[ -L "$P" ]]; then
++            break
++        fi
+         #  replace double slashes
+         if [[ "$P" == *//* ]]; then 
+             PSLASH=$(echo $P | sed 's,//,/,g')
+             sudo install_name_tool -change $P $PSLASH $F
+         fi
+ 
+-        LIB=${P##*/}
++        LIB=${P##*/}    
+         LIB=${LIB%%:}
+         PREL="@executable_path/../Frameworks/$LIB"
+ 
+@@ -228,6 +318,12 @@ function adjustLinkQt {
+         elif [[ "$P" == *$L* ]]; then
+             echo "name_tool: $FREL > $PREL ($P)"
+             sudo install_name_tool -change $P $PREL $F
++        elif [[ "$P" == @loader_path* ]]; then
++            echo "name_tool: $FREL > $PREL ($P)"
++            sudo install_name_tool -change $P $PREL $F
++        elif [[ "$P" == @rpath* ]]; then
++            echo "name_tool: $FREL > $PREL ($P)"
++            sudo install_name_tool -change $P $PREL $F
+         fi
+     done
+ }
+@@ -240,12 +336,15 @@ function adjustLinkingExtTools {
+     do
+         echo "F    = $F"
+         install_name_tool -add_rpath @executable_path/../Frameworks $F
++        adjustLinkExtTool $F
+     done
+     echo "--------------------------------------------"
+ }
+ 
+ 
+ function printLinkingExtTools {
++    echo "--------------------------------------------"
++    echo "*** printLinkingExtTools ***"
+     for F in `find $BUILD_BUNDLE_RES_BIN_DIR -type f ! \( -name "*.py" \)`
+     do
+         printLinking $F
+@@ -342,6 +441,4 @@ if [[ "$1" == "info" ]]; then
+ fi
+ if [[ "$1" == "info-before" ]]; then
+     printLinking $BUILD_RELEASE_DIR/$APP_NAME
+-    # TODO
+-    # printLinking $LOCAL_ENV/lib/libroutino.so
+ fi
+diff --git a/MacOSX/bundle-qmapshack.sh b/MacOSX/bundle-qmapshack.sh
+index 2068cd30a8ac..e03f2f09a183 100755
+--- a/MacOSX/bundle-qmapshack.sh
++++ b/MacOSX/bundle-qmapshack.sh
+@@ -1,18 +1,15 @@
+ #!/bin/sh
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
+-
+-
+-echo "${INFO}Bundling QMapShack.app${NC}"
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
+ 
++echo "${ATTN}Building QMapShack.app ...${NC}"
++echo "${ATTN}--------------------------${NC}"
+ 
+ set -a
+ APP_NAME=QMapShack
+ set +a
+ 
+-source $DIR_SCRIPT/bundle-env-path.sh
+-source $DIR_SCRIPT/bundle-common-func.sh
++source $SRC_OSX_DIR/bundle-common-func.sh
+ 
+ 
+ function extendAppStructure {
+@@ -26,21 +23,58 @@ function extendAppStructure {
+ 
+ 
+ function copyAdditionalLibraries {
+-    cp -v    $LOCAL_ENV/lib/libroutino* $BUILD_BUNDLE_FRW_DIR
+-    cp -v    $LOCAL_ENV/lib/libquazip*.dylib $BUILD_BUNDLE_FRW_DIR
+-
+-    if [ -z "$BREW_PACKAGE_BUILD"]; then
+-        # copy only if built as standalone package (QMS not as a brew pkg)
+-        cp -v    $GDAL_DIR/lib/libgdal*.dylib $BUILD_BUNDLE_FRW_DIR
+-        cp -v    $HOMEBREW_PREFIX/lib/libgeos*.dylib $BUILD_BUNDLE_EXTLIB_DIR
+-
+-        cp -v    $HOMEBREW_PREFIX/lib/libproj*.dylib $BUILD_BUNDLE_FRW_DIR
+-
+-        cp -v    $HOMEBREW_PREFIX/lib/libdbus*.dylib $BUILD_BUNDLE_FRW_DIR
+-
+-        cp -v -R $QT_DIR/lib/QtOpenGL.framework $BUILD_BUNDLE_FRW_DIR
+-        cp -v -R $QT_DIR/lib/QtQuick.framework $BUILD_BUNDLE_FRW_DIR
+-        cp -v -R $QT_DIR/lib/QtQml.framework $BUILD_BUNDLE_FRW_DIR
++      if [ -z "$MACPORTS_BUILD" ]; then
++
++        echo "---building with homebrew---"
++        cp -v    $ROUTINO_DEV_PATH/lib/libroutino* $BUILD_BUNDLE_FRW_DIR
++        cp -v    $LOCAL_ENV/lib/libquazip*.dylib $BUILD_BUNDLE_FRW_DIR
++
++        if [ -z "$BREW_PACKAGE_BUILD" ]; then
++            # copy only if built as standalone package (QMS not as a brew pkg)
++            echo "---build needs brew at runtime---"
++
++            if [[ "$BUILD_GDAL" == "x" ]]; then
++                cp -vP `brew --prefix openjpeg`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix libkml`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix minizip`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix uriparser`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix geos`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP $LOCAL_ENV/lib/libgdal*.dylib $BUILD_BUNDLE_FRW_DIR
++            else
++                cp -vP `brew --prefix gdal`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix openexr`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix geos`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++            fi
++            
++            $LOCAL_ENV/bin/otoolrecursive -u $BUILD_BUNDLE_FRW_DIR/libgdal.dylib | xargs -I{} cp -v {} $BUILD_BUNDLE_FRW_DIR
++
++            if [[ "$BUILD_PROJ" == "x" ]]; then
++                cp -vP $LOCAL_ENV/lib/libproj*.dylib $BUILD_BUNDLE_FRW_DIR
++            else
++                cp -vP `brew --prefix proj`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++            fi
++            cp -vP `brew --prefix dbus`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++
++            cp -v -R $QT_DEV_PATH/lib/QtOpenGL.framework $BUILD_BUNDLE_FRW_DIR
++            cp -v -R $QT_DEV_PATH/lib/QtQuick.framework $BUILD_BUNDLE_FRW_DIR
++            cp -v -R $QT_DEV_PATH/lib/QtQml.framework $BUILD_BUNDLE_FRW_DIR
++        fi
++        if [[ "$BUILD_GDAL" == "x" ]]; then
++            cp -vL $GDAL/lib/libgdal*.dylib $BUILD_BUNDLE_FRW_DIR
++        else
++            cp -vP `brew --prefix gdal`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++        fi
++        
++    else
++        echo "---building with macports---"
++        echo "---copy additional libs into bundle ------------------"
++        port contents routino | grep $PACKAGES_PATH/lib/libgroutino | xargs -I{} cp -vP {} $BUILD_BUNDLE_FRW_DIR
++        port contents quazip1 | grep $PACKAGES_PATH/lib/libquazip1 | xargs -I{} cp -vP {} $BUILD_BUNDLE_FRW_DIR
++        port contents gdal | grep $GDAL/lib/libgdal | xargs -I{} cp -vP {} $BUILD_BUNDLE_FRW_DIR
++
++        cp -v -R $QT_DEV_PATH/lib/QtOpenGL.framework $BUILD_BUNDLE_FRW_DIR
++        cp -v -R $QT_DEV_PATH/lib/QtQuick.framework $BUILD_BUNDLE_FRW_DIR
++        cp -v -R $QT_DEV_PATH/lib/QtQml.framework $BUILD_BUNDLE_FRW_DIR
+     fi
+ 
+     # remove debug libraries
+@@ -56,15 +90,33 @@ function copyAdditionalLibraries {
+ 
+ 
+ function copyExternalFiles {
+-    cp -v $GDAL_DIR/share/gdal/* $BUILD_BUNDLE_RES_GDAL_DIR
++    if [ -z "$MACPORTS_BUILD" ]; then
++
++        echo "---building with homebrew---"
++        cp -vP $LOCAL_ENV/share/gdal/* $BUILD_BUNDLE_RES_GDAL_DIR
++        if [[ "$BUILD_PROJ" == "x" ]]; then
++            cp -vP $LOCAL_ENV/share/proj/* $BUILD_BUNDLE_RES_PROJ_DIR
++        else
++            cp -vP $PACKAGES_PATH/share/proj/* $BUILD_BUNDLE_RES_PROJ_DIR
++        fi
++        
++        cp -v $ROUTINO_DEV_PATH/xml/profiles.xml $BUILD_BUNDLE_RES_ROUTINO_DIR
++        cp -v $ROUTINO_DEV_PATH/xml/translations.xml $BUILD_BUNDLE_RES_ROUTINO_DIR
++        cp -v $ROUTINO_DEV_PATH/xml/tagging.xml $BUILD_BUNDLE_RES_ROUTINO_DIR  
++    else
++        echo "---building with macports---"
++
++        port contents gdal | grep $PACKAGES_PATH/share/gdal/ | xargs -I{} cp -vP {} $BUILD_BUNDLE_RES_GDAL_DIR
++        port contents proj9 | grep $PACKAGES_PATH/lib/proj9/share/proj/ | xargs -I{} cp -vP {} $BUILD_BUNDLE_RES_PROJ_DIR
++        # port contents routino | grep $PACKAGES_PATH/share/routino/ | xargs -I{} cp -vP {} $BUILD_BUNDLE_RES_ROUTINO_DIR 
++        cp -v $ROUTINO_DEV_PATH/xml/profiles.xml $BUILD_BUNDLE_RES_ROUTINO_DIR
++        cp -v $ROUTINO_DEV_PATH/xml/translations.xml $BUILD_BUNDLE_RES_ROUTINO_DIR
++        cp -v $ROUTINO_DEV_PATH/xml/tagging.xml $BUILD_BUNDLE_RES_ROUTINO_DIR  
++    fi
+ 
+-    cp -v $HOMEBREW_PREFIX/share/proj/* $BUILD_BUNDLE_RES_PROJ_DIR
++    # Too many files copied from proj --> delete them
+     rm $BUILD_BUNDLE_RES_PROJ_DIR/*.tif
+     rm $BUILD_BUNDLE_RES_PROJ_DIR/*.txt
+-
+-    cp -v $LOCAL_ENV/xml/profiles.xml $BUILD_BUNDLE_RES_ROUTINO_DIR
+-    cp -v $LOCAL_ENV/xml/translations.xml $BUILD_BUNDLE_RES_ROUTINO_DIR
+-    cp -v $LOCAL_ENV/xml/tagging.xml $BUILD_BUNDLE_RES_ROUTINO_DIR    
+ }
+ 
+ function copyExternalHelpFiles_QMS {
+@@ -74,12 +126,26 @@ function copyExternalHelpFiles_QMS {
+ 
+ 
+ function copyExtTools {
+-    if [ -z "$BREW_PACKAGE_BUILD"]; then
+-        # copy only if built as standalone package (QMS not as a brew pkg)
+-        cp -v $GDAL_DIR/bin/gdalbuildvrt            $BUILD_BUNDLE_RES_BIN_DIR
+-        cp -v $HOMEBREW_PREFIX/bin/proj             $BUILD_BUNDLE_RES_BIN_DIR
++    if [ -z "$MACPORTS_BUILD" ]; then
++        echo "---building with homebrew---"
++ 
++        if [ -z "$BREW_PACKAGE_BUILD" ]; then
++            # copy only if built as standalone package (QMS not as a brew pkg)
++            if [[ "$BUILD_PROJ" == "x" ]]; then
++                cp -v $LOCAL_ENV/bin/proj             $BUILD_BUNDLE_RES_BIN_DIR
++            else
++                cp -v $PACKAGES_PATH/bin/proj             $BUILD_BUNDLE_RES_BIN_DIR
++            fi
++        fi
++        cp -v $GDAL/bin/gdalbuildvrt                $BUILD_BUNDLE_RES_BIN_DIR
++        cp -v $ROUTINO_DEV_PATH/bin/planetsplitter  $BUILD_BUNDLE_RES_BIN_DIR
++      else
++        echo "---building with macports---"
++        cp -v $PACKAGES_PATH/lib/proj9/bin/proj          $BUILD_BUNDLE_RES_BIN_DIR
++        cp -v $PACKAGES_PATH/bin/gdalbuildvrt            $BUILD_BUNDLE_RES_BIN_DIR
++        cp -v $ROUTINO_DEV_PATH/bin/planetsplitter       $BUILD_BUNDLE_RES_BIN_DIR
+     fi
+-    cp -v $LOCAL_ENV/lib/planetsplitter         $BUILD_BUNDLE_RES_BIN_DIR
++   
+     # currently only used by QMapTool.
+     cp -v $BUILD_BIN_DIR/qmt_rgb2pct            $BUILD_BUNDLE_RES_BIN_DIR
+     cp -v $BUILD_BIN_DIR/qmt_map2jnx            $BUILD_BUNDLE_RES_BIN_DIR
+@@ -99,6 +165,13 @@ function archiveBundle {
+ 
+ 
+ if [[ "$1" == "" ]]; then
++
++    if [ ! -z `brew --prefix qt` ]; then
++        echo "unlinking qt and linking qt@5"
++        brew unlink qt
++        brew link qt@5
++    fi
++
+     echo "---extract version -----------------"
+     extractVersion
+     readRevisionHash
+@@ -150,6 +223,13 @@ if [[ "$1" == "" ]]; then
+     # codesign -s <Apple Dev Account> --force --deep --sign - $BUILD_RELEASE_DIR/QMapShack.app
+     codesign -s manfred.kern@gmail.com --force --deep --sign - $BUILD_RELEASE_DIR/QMapShack.app
+     # codesign --force --deep --sign - $BUILD_RELEASE_DIR/QMapShack.app
++
++    if [ ! -z `brew --prefix qt` ]; then
++        echo "unlinking qt@5 and linking qt"
++        brew unlink qt@5
++        brew link qt
++    fi
++
+ fi
+ 
+ if [[ "$1" == "archive" ]]; then
+diff --git a/MacOSX/bundle-qmaptool.sh b/MacOSX/bundle-qmaptool.sh
+index f30aeb13a31c..0bcae98e1c20 100755
+--- a/MacOSX/bundle-qmaptool.sh
++++ b/MacOSX/bundle-qmaptool.sh
+@@ -1,16 +1,14 @@
+ #!/bin/sh
+ 
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
+-
+-echo "${INFO}Bundling QMapTool.app${NC}"
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Building QMapTool.app ...${NC}"
++echo "${ATTN}-------------------------${NC}"
+ 
+ set -a
+ APP_NAME=QMapTool
+ set +a
+ 
+-source $DIR_SCRIPT/bundle-env-path.sh
+-source $DIR_SCRIPT/bundle-common-func.sh
++source $SRC_OSX_DIR/bundle-common-func.sh
+ 
+ function extendAppStructure {
+     mkdir $BUILD_BUNDLE_RES_GDAL_DIR
+@@ -33,17 +31,51 @@ function linkToQMapShack {
+ 
+ 
+ function copyAdditionalLibraries {
+-    if [ -z "$BREW_PACKAGE_BUILD"]; then
+-        # copy only if built as standalone package (QMS not as a brew pkg)
++    if [ -z "$MACPORTS_BUILD" ]; then
++        echo "---building with homebrew---"
++
++        if [ -z "$BREW_PACKAGE_BUILD" ]; then
++
++            # copy only if built as standalone package (QMS not as a brew pkg)
++            echo "---copy additional libs into bundle ------------------"
++           
++            if [[ "$BUILD_GDAL" == "x" ]]; then
++                cp -vP `brew --prefix openjpeg`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix libkml`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix minizip`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix uriparser`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix geos`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP $LOCAL_ENV/lib/libgdal*.dylib $BUILD_BUNDLE_FRW_DIR
++            else
++                cp -vP `brew --prefix gdal`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix openexr`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++                cp -vP `brew --prefix geos`/lib/lib*.dylib $BUILD_BUNDLE_FRW_DIR
++
++            fi
++            $LOCAL_ENV/bin/otoolrecursive -u $GDAL/lib/libgdal.dylib | xargs -I{} cp -vf {} $BUILD_BUNDLE_FRW_DIR
++
++            cp -v -R $QT_DEV_PATH/lib/QtOpenGL.framework $BUILD_BUNDLE_FRW_DIR
++            cp -v -R $QT_DEV_PATH/lib/QtQuick.framework $BUILD_BUNDLE_FRW_DIR
++            cp -v -R $QT_DEV_PATH/lib/QtQml.framework $BUILD_BUNDLE_FRW_DIR
++        else
++            echo "---build needs brew at runtime---"
++            if [[ "$BUILD_GDAL" == "x" ]]; then
++                cp -v $GDAL/lib/libgdal*.dylib $BUILD_BUNDLE_FRW_DIR
++            fi
++        fi
++    else 
++        echo "---building with macports---"
+         echo "---copy additional libs into bundle ------------------"
+-        cp -v    $HOMEBREW_PREFIX/lib/libgeos*.dylib $BUILD_BUNDLE_EXTLIB_DIR
+-        cp -v    $GDAL_DIR/lib/libgdal*.dylib $BUILD_BUNDLE_FRW_DIR
+-        cp -v -R $QT_DIR/lib/QtOpenGL.framework $BUILD_BUNDLE_FRW_DIR
+-        cp -v -R $QT_DIR/lib/QtQuick.framework $BUILD_BUNDLE_FRW_DIR
+-        cp -v -R $QT_DIR/lib/QtQml.framework $BUILD_BUNDLE_FRW_DIR
++        # gdal
++        port contents gdal | grep $PACKAGES_PATH/lib/libgdal | xargs -I{} cp -vP {} $BUILD_BUNDLE_FRW_DIR
++
++        # Qt
++        cp -v -R $QT_DEV_PATH/lib/QtOpenGL.framework $BUILD_BUNDLE_FRW_DIR
++        cp -v -R $QT_DEV_PATH/lib/QtQuick.framework $BUILD_BUNDLE_FRW_DIR
++        cp -v -R $QT_DEV_PATH/lib/QtQml.framework $BUILD_BUNDLE_FRW_DIR
+     fi
+ 
+-       # remove debug libraries
++    # remove debug libraries
+     for F in `find $BUILD_BUNDLE_FRW_DIR/Qt*.framework/* -type f -name '*_debug*'`
+     do
+         echo $F
+@@ -53,18 +85,19 @@ function copyAdditionalLibraries {
+ 
+ 
+ function copyExtTools {
+-    if [ -z "$BREW_PACKAGE_BUILD"]; then
+-        # copy only if built as standalone package (QMS not as a brew pkg)
+-        echo "---copy additional tools into bundle ------------------"
+-        cp -v $GDAL_DIR/bin/gdalbuildvrt            $BUILD_BUNDLE_RES_BIN_DIR
+-        cp -v $GDAL_DIR/bin/gdaladdo                $BUILD_BUNDLE_RES_BIN_DIR
+-        cp -v $GDAL_DIR/bin/gdal_translate          $BUILD_BUNDLE_RES_BIN_DIR
+-        cp -v $GDAL_DIR/bin/gdalwarp               $BUILD_BUNDLE_RES_BIN_DIR
+-    fi
+ 
++    # copy only if built as standalone package (QMS does not need homebrew at runtime)
++    # if [ -z "$BREW_PACKAGE_BUILD" ]; then
++        echo "---copy additional tools into bundle ------------------"
++        cp -v $GDAL/bin/gdalbuildvrt            $BUILD_BUNDLE_RES_BIN_DIR
++        cp -v $GDAL/bin/gdaladdo                $BUILD_BUNDLE_RES_BIN_DIR
++        cp -v $GDAL/bin/gdal_translate          $BUILD_BUNDLE_RES_BIN_DIR
++        cp -v $GDAL/bin/gdalwarp                $BUILD_BUNDLE_RES_BIN_DIR
++    # fi
+      # currently only used by QMapTool.
+     cp -v $BUILD_BIN_DIR/qmt_rgb2pct            $BUILD_BUNDLE_RES_BIN_DIR
+     cp -v $BUILD_BIN_DIR/qmt_map2jnx            $BUILD_BUNDLE_RES_BIN_DIR
++
+ }
+ 
+ function copyExternalHelpFiles_QMT {
+@@ -80,6 +113,13 @@ function removeDuplicatedQtLibs {
+ 
+ 
+ if [[ "$1" == "" ]]; then
++
++    if [ ! -z `brew --prefix qt` ]; then
++        echo "unlinking qt and linking qt@5"
++        brew unlink qt
++        brew link qt@5
++    fi
++
+     echo "---extract version -----------------"
+     extractVersion
+     readRevisionHash
+@@ -98,7 +138,7 @@ if [[ "$1" == "" ]]; then
+     copyAdditionalLibraries
+     echo "---copy external files -------------"
+     copyQtTrqnslations
+-    copyExternalFiles
++    # copyExternalFiles  (no external files for QMapTool)
+     copyExternalHelpFiles_QMT
+     if [ -z "$BREW_PACKAGE_BUILD" ]; then
+         # copy only if built as standalone package (QMS not as a brew pkg)
+@@ -124,4 +164,11 @@ if [[ "$1" == "" ]]; then
+     # codesign -s <Apple Dev Account> --force --deep --sign - $BUILD_RELEASE_DIR/QMapTool.app
+     codesign -s manfred.kern@gmail.com --force --deep --sign - $BUILD_RELEASE_DIR/QMapTool.app
+     # codesign --force --deep --sign - $BUILD_RELEASE_DIR/QMapTool.app
++
++    if [ ! -z `brew --prefix qt` ]; then
++        echo "unlinking qt@5 and linking qt"
++        brew unlink qt@5
++        brew link qt
++    fi
++
+ fi
+diff --git a/MacOSX/config.sh b/MacOSX/config.sh
+index e1bc9befef73..62934d01a8c0 100644
+--- a/MacOSX/config.sh
++++ b/MacOSX/config.sh
+@@ -7,9 +7,12 @@
+ # Also set some vars for coloring output
+ ######################################################################## 
+ 
+-# only include onece
+-if [[ -z $INCLUDED ]]; then
+-export INCLUDED="yes"
++# only include once
++if [ -z "$INCLUDED" ]; then
++    export INCLUDED="yes"
++else
++    return
++fi
+ 
+ # Some vars
+ ######################################################################## 
+@@ -56,19 +59,20 @@ if [[ "$QMSDEVDIR" == "$DIR_SCRIPT" ]] || [[ "$QMSDEVDIR"  ==  ${DIR_SCRIPT%/*}
+     exit
+ fi
+ 
+-# root dir for building QMS
+-
+-
+ # Parameters for the build
+ ########################################################################
+ 
+-# build GDAL from source
+-# if set with any value -> build GDAL from source
+-# if an empty string -> take GDAL from homebrew
+-export BUILD_GDAL=
++# Default: Build with homebrew packages and copz the libs and bins into the bundle
++
++# build with macports
++# if set with any value -> build with macports
++# if an empty string -> build with homebrew
++# export MACPORTS_BUILD="x"
++export MACPORTS_BUILD=
+ 
+-# preparing to create a brew-package
+-# if set with any value -> prepare for QMS brew package
++# build with brew package, but do not copy libs and bins from the brew package
++# into the bundle, i.e. the brew packages are nedded at runtime 
++# if set with any value -> do not copy brew packages into the bundle
+ # if an empty string -> create self-contained bundle
+ export BREW_PACKAGE_BUILD=
+ 
+@@ -77,15 +81,26 @@ export BREW_PACKAGE_BUILD=
+ # if an empty string -> compile, build and nundle w/o XCode
+ export XCODE_PROJECT=
+ 
+-# checking arguments: intested in -x (Xcode), -g (GDAL), -b (Homebrew)
+-while getopts ":bgx" opt; do
++
++# GDAL: if set to "x", it will be built from source. 
++# If not set (i.e. blank), GDAL will be taken from the package manager
++export BUILD_GDAL="x"
++# PROJ (still experimental): if set to "x", it will be built from source. 
++# If not set (i.e. blank), PROJ will be taken from the package manager
++export BUILD_PROJ=
++
++
++# checking arguments: intested in -x (Xcode), -m (MacPorts), -b (Homebrew)
++while getopts ":bmx" opt; do
+   case $opt in
+     b)
+         export BREW_PACKAGE_BUILD="x"
++        export MACPORTS_BUILD=
+         shift
+         ;;
+-    g)
+-        export BUILD_GDAL="x"
++    m)
++        export MACPORTS_BUILD="x"
++        export BREW_PACKAGE_BUILD=
+         shift
+         ;;
+     x)
+@@ -104,34 +119,92 @@ done
+ echo $INFO
+ echo "Parameters driving the build process:"
+ echo "-------------------------------------"
+-echo "Brew pkg built = ${BREW_PACKAGE_BUILD}"
+-echo "Build GDAL from source = ${BUILD_GDAL}"
++echo "Brew pkg needed at run time = ${BREW_PACKAGE_BUILD}"
++echo "Build with MacPorts = ${MACPORTS_BUILD}"
+ echo "Xcode build = ${XCODE_PROJECT}"
+ echo "-------------------------------------"
+ echo ${NC}
+ 
+-fi  #include once
+ 
+ ########################################################################
+ # Addtional Vars / Paramters for building
+ 
+ export LOCAL_ENV=$QMSDEVDIR/local  # folder for building pkgs from source
+ 
++# package manager
++eval "$(brew shellenv)"   # set HOMEBREW_PREFIX
++export PACKAGES_PATH=$HOMEBREW_PREFIX
++if [[ "$MACPORTS_BUILD" == "x" ]]; then
++    export MACPORTS=/opt/local          # Macports package manager
++    export HOMEBREW_PREFIX=
++    export BREW_PACKAGE_BUILD=
++    export PACKAGES_PATH=$MACPORTS
++fi
++
+ # Directories for QMS
+ export BUILD_RELEASE_DIR=$QMSDEVDIR/release # app bundles will be put
+ export QMS_SRC_DIR=$QMSDEVDIR/qmapshack # QMS source dir (clone from GitHub)
+ export SRC_OSX_DIR=$QMSDEVDIR/qmapshack/MacOSX # Sources only for MacOS
+ 
+ # QT5
+-export QT_DIR=$HOMEBREW_PREFIX/opt/qt5
+-export Qt5_DIR=$QT_DIR/lib/cmake
+-
+-# GDAL
+-if [ -z "${BUILD_GDAL}" ]; then
+-    export GDAL_DIR=`brew --prefix gdal`
++if [[ "$MACPORTS_BUILD" == "x" ]]; then
++    export QT_DEV_PATH=$PACKAGES_PATH/libexec/qt5
+ else
+-    export GDAL_DIR=$LOCAL_ENV
++    export QT_DEV_PATH=$PACKAGES_PATH/opt/qt5
++fi
++export Qt5_DIR=$QT_DEV_PATH/lib/cmake
++
++# Other packages needed
++if [[ "$MACPORTS_BUILD" == "x" ]]; then
++    export GDAL=$PACKAGES_PATH
++    export ROUTINO_DEV_PATH=$PACKAGES_PATH
++    export PROJ_DEV_PATH=$PACKAGES_PATH/lib/proj9
++    export QuaZip_Qt5_DIR=$PACKAGES_PATH/lib/cmake/QuaZip-Qt5-1.4
++else
++    # GDAL, ROUTINO, QUAZIP, PROJ are compiled from source
++    if [[ "$BUILD_GDAL" == "x" ]]; then
++        export GDAL_RELEASE="3.7"
++        export GDAL=$LOCAL_ENV
++    else
++        export GDAL=$PACKAGES_PATH
++    fi
++    export ROUTINO_DEV_PATH=$LOCAL_ENV
++    if [[ "$BUILD_PROJ" == "x" ]]; then
++        export PROJ_DEV_PATH=$LOCAL_ENV
++    else
++        export PROJ_DEV_PATH=$PACKAGES_PATH
++    fi
++    export QuaZip_Qt5_DIR=$LOCAL_ENV/lib/cmake/QuaZip-Qt5-1.4
+ fi
+ 
+-cd $QMSDEVDIR
++# env vars for building QMS
++export OSX_DEPLOYMENT_TARGET=12.0  # MacOS build target
++
++########################################################################
++# print all config variables
++echo $INFO
++echo "Config variables:"
++echo "-------------------------------------"
++echo "MACPORTS = $MACPORTS"
++echo "HOMEBREW_PREFIX = $HOMEBREW_PREFIX"
++echo "PACKAGES_PATH = $PACKAGES_PATH"
++echo "LOCAL_ENV = $LOCAL_ENV"
++echo "BREW_PACKAGE_BUILD = $BREW_PACKAGE_BUILD"
++echo "MACPORTS_BUILD = $MACPORTS_BUILD"
++echo "BUILD_RELEASE_DIR = $BUILD_RELEASE_DIR"
++echo "QMS_SRC_DIR = $QMS_SRC_DIR"
++echo "SRC_OSX_DIR = $SRC_OSX_DIR"
++echo "QT_DEV_PATH = $QT_DEV_PATH"
++echo "Qt5_DIR = $Qt5_DIR"
++echo "BUILD_GDAL = $BUILD_GDAL"
++echo "GDAL = $GDAL"
++echo "GDAL_RELEASE = $GDAL_RELEASE"
++echo "ROUTINO_DEV_PATH = $ROUTINO_DEV_PATH"
++echo "BUILD_PROJ = $BUILD_PROJ"
++echo "PROJ_DEV_PATH = $PROJ_DEV_PATH"
++echo "QuaZip_Qt5_DIR = $QuaZip_Qt5_DIR"
++echo "OSX_DEPLOYMENT_TARGET = $OSX_DEPLOYMENT_TARGET"
++echo "-------------------------------------"
++echo ${NC}
+ 
++cd $QMSDEVDIR
+diff --git a/MacOSX/install-brew-packages.sh b/MacOSX/install-brew-packages.sh
+deleted file mode 100755
+index 94b4333702e2..000000000000
+--- a/MacOSX/install-brew-packages.sh
++++ /dev/null
+@@ -1,43 +0,0 @@
+-#!/bin/sh
+-
+-DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  # absolute path to the dir of this script
+-source $DIR_SCRIPT/config.sh   # check for important paramters
+-
+-######################################################################## 
+-#
+-# install homebrew (if needed) and packages
+-
+-######################################################################## 
+-# install homebrew  (https://brew.sh)
+-#       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+-# HomwBrew location (this can also be put into $HOME/.zshrc, if homebrew is used anyway)
+-if command -v brew > /dev/null 2>&1; then
+-    brew update
+-else
+-    # Install Homebrew
+-    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+-fi
+-eval "$(brew shellenv)"
+-
+-######################################################################## 
+-# install all necessary packages with homebrew.
+-# Attention: there will be installed additional packages due to dependencies
+-# First get all currently installed brew packages to be able to find out which packahes will be installed
+-# during QMS build
+-echo "${ATTN}Fetching brew packages (cmake, qt@5, proj, gdal, geos and dependencies ...${NC}"
+-rm -f $QMSDEVDIR/brewlist*.txt
+-brew list > $QMSDEVDIR/brewlist-`date +%s`.txt
+-brew install cmake
+-brew install qt@5
+-
+-brew install dbus
+-brew install proj
+-if [[ "$BUILD_GDAL" == "" ]]; then
+-    brew install gdal
+-fi
+-brew install geos
+-
+-# # Used by routino
+-# brew install bzip2
+-brew list > $QMSDEVDIR/brewlist-`date +%s`.txt
+-diff $QMSDEVDIR/brewlist*.txt > $QMSDEVDIR/brewdiff-`date +%s`.txt
+diff --git a/MacOSX/install-packages.sh b/MacOSX/install-packages.sh
+new file mode 100755
+index 000000000000..0f8d00146b85
+--- /dev/null
++++ b/MacOSX/install-packages.sh
+@@ -0,0 +1,95 @@
++#!/bin/sh
++
++source $QMSDEVDIR/qmapshack/MacOSX/config.sh   # check for important paramters
++echo "${ATTN}Installing packages ...${NC}"
++echo "${ATTN}-----------------------${NC}"
++
++######################################################################## 
++#
++# install homebrew (if needed) and packages / macports
++
++if [ -z "$MACPORTS_BUILD" ]; then
++
++    ######################################################################## 
++    # install homebrew  (https://brew.sh)
++    #       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
++    # HomwBrew location (this can also be put into $HOME/.zshrc, if homebrew is used anyway)
++    if command -v brew > /dev/null 2>&1; then
++        brew update
++    else
++        # Install Homebrew
++        /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
++    fi
++    eval "$(brew shellenv)"
++
++    ######################################################################## 
++    # install all necessary packages with homebrew.
++    # Attention: there will be installed additional packages due to dependencies
++    # First get all currently installed brew packages to be able to find out which packahes will be installed
++    # during QMS build
++    echo "${ATTN}Fetching brew packages ${NC}"
++    rm -f $QMSDEVDIR/brewlist*.txt
++    brew list > $QMSDEVDIR/brewlist-`date +%s`.txt
++    brew install cmake
++    brew install qt@5
++
++    brew install dbus
++
++    # packages to build proj
++    if [[ "$BUILD_PROJ" == "x" ]]; then
++        brew install libtiff
++    else
++        brew install proj
++    fi
++
++    brew install geos
++    # Packages to build gdal
++    if [[ "$BUILD_GDAL" == "x" ]]; then
++        brew install boost
++        brew install openjpeg
++        brew install libkml
++        brew install minizip
++        brew install uriparser
++        brew install unixodbc
++        brew install libtiff
++        brew install libgeotiff
++        brew install libheif
++        brew install geos
++    else
++        brew install gdal
++    fi
++
++
++    # # Used by routino
++    # brew install bzip2
++    brew list > $QMSDEVDIR/brewlist-`date +%s`.txt
++    diff $QMSDEVDIR/brewlist*.txt > $QMSDEVDIR/brewdiff-`date +%s`.txt
++
++else
++     # install packages from macports
++    echo "${ATTN}Fetching mac ports ${NC}"
++    rm -f $QMSDEVDIR/portlist*.txt
++    port installed > $QMSDEVDIR/portlist-`date +%s`.txt
++
++    # install mac ports
++    # sudo port -v selfupdate
++    # sudo port upgrade outdated
++     # qt5
++    sudo port install qt5
++    sudo port install qt5-qtwebengine
++    # if quazip is not compiled from source
++    sudo port install quazip1
++    # if routino is not compiled from source
++    sudo port install routino
++    # if gdal is not compiled from source
++    sudo port install zstd
++    sudo port install jpeg
++    sudo port install tiff
++    sudo paort install proj
++    sudo port install gdal
++
++    sudo port install cmake
++
++    port installed > $QMSDEVDIR/portlist-`date +%s`.txt
++    diff $QMSDEVDIR/portlist*.txt > $QMSDEVDIR/portsdiff-`date +%s`.txt
++fi
+diff --git a/MacOSX/resources/Info.plist b/MacOSX/resources/Info.plist
+index 34c522f2a9dc..23935ff6a7ee 100644
+--- a/MacOSX/resources/Info.plist
++++ b/MacOSX/resources/Info.plist
+@@ -1,41 +1,41 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+-<dict>
+-	<key>CFBundleDevelopmentRegion</key>
+-	<string>English</string>
+-	<key>CFBundleIconFile</key>
+-	<string>QMapShack</string>
+-	<key>CFBundleIdentifier</key>
+-	<string>org.qlandkarte.QMapShack</string>
+-	<key>CFBundleExecutable</key>
+-	<string>QMapShack</string>
+-	<key>CFBundleName</key>
+-	<string>QMapShack</string>
+-	<key>CFBundleInfoDictionaryVersion</key>
+-	<string>6.0</string>
+-	<key>CFBundlePackageType</key>
+-	<string>APPL</string>
+-	<key>CFBundleShortVersionString</key>
+-	<string>APP_VERSION</string>
+-	<key>CFBundleVersion</key>
+-	<string>BUNDLE_VERSION</string>
+-	<key>BuildTime</key>
+-	<string>BUNDLE_VERSION</string>
+-	<key>BuildHashKey</key>
+-	<string>BUNDLE_VERSION</string>
+-	<key>NSPrincipalClass</key>
+-	<string>NSApplication</string>
+-	<key>CSResourcesFileMapped</key>
+-	<true/>
+-	<key>LSRequiresCarbon</key>
+-	<true/>
+-	<key>LSEnvironment</key>
+ 	<dict>
+-    	<key>PATH</key>
+-    	<string>$PATH:HOMEBREW/bin</string>
++		<key>CFBundleDevelopmentRegion</key>
++		<string>English</string>
++		<key>CFBundleIconFile</key>
++		<string>QMapShack</string>
++		<key>CFBundleIdentifier</key>
++		<string>org.qlandkarte.QMapShack</string>
++		<key>CFBundleExecutable</key>
++		<string>QMapShack</string>
++		<key>CFBundleName</key>
++		<string>QMapShack</string>
++		<key>CFBundleInfoDictionaryVersion</key>
++		<string>6.0</string>
++		<key>CFBundlePackageType</key>
++		<string>APPL</string>
++		<key>CFBundleShortVersionString</key>
++		<string>APP_VERSION</string>
++		<key>CFBundleVersion</key>
++		<string>BUNDLE_VERSION</string>
++		<key>BuildTime</key>
++		<string>BUNDLE_VERSION</string>
++		<key>BuildHashKey</key>
++		<string>BUNDLE_VERSION</string>
++		<key>NSPrincipalClass</key>
++		<string>NSApplication</string>
++		<key>CSResourcesFileMapped</key>
++		<true/>
++		<key>LSRequiresCarbon</key>
++		<true/>
++		<key>LSEnvironment</key>
++		<dict>
++			<key>PATH</key>
++			<string>$PATH:PACKAGES_PATH/bin</string>
++		</dict>
++		<key>NSRequiresAquaSystemAppearance</key>
++		<string>true</string>
+ 	</dict>
+-	<key>NSRequiresAquaSystemAppearance</key>
+-	<string>true</string>
+-</dict>
+ </plist>
+diff --git a/changelog.txt b/changelog.txt
+index 898902a3055a..a3c68ba9e511 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -4,6 +4,7 @@ V1.17.1
+ [QMS-623] remove use of QTimer in BRouter startup error detection
+ [QMS-630] BRouter on-the-fly routing cannot be canceled
+ [QMS-649] Replace proj strings by EPSG code in CRS definitions
++[QMS-654] MacOS build (changes to build scripts)
+ 
+ V1.17.0
+ [QMS-429] Bad OSM Tag formatting crashes QMS
+-- 
+2.49.0
+

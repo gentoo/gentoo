@@ -1,0 +1,141 @@
+From 4817ed88c65cb50727129f29f105a155d3caec45 Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 3 Sep 2024 15:24:21 +0200
+Subject: [PATCH 18/26] Fix QFontMetric width
+
+---
+ src/qmapshack/map/CMapIMG.cpp             | 11 +++++------
+ src/qmapshack/plot/CPlotAxis.cpp          |  8 ++++----
+ src/qmapshack/plot/CPlotAxis.h            |  2 +-
+ src/qmapshack/widgets/CDateTimeEditor.cpp |  6 +++---
+ 4 files changed, 13 insertions(+), 14 deletions(-)
+
+diff --git a/src/qmapshack/map/CMapIMG.cpp b/src/qmapshack/map/CMapIMG.cpp
+index c660963522e9..3a7b581ae80d 100644
+--- a/src/qmapshack/map/CMapIMG.cpp
++++ b/src/qmapshack/map/CMapIMG.cpp
+@@ -1119,7 +1119,6 @@ void CMapIMG::draw(IDrawContext::buffer_t& buf) /* override */
+   USE_ANTI_ALIASING(p, true);
+ 
+   QFont f = CMainWindow::self().getMapFont();
+-  fm = QFontMetrics(f);
+ 
+   p.setFont(f);
+   p.setPen(Qt::black);
+@@ -1934,13 +1933,13 @@ void CMapIMG::drawText(QPainter& p) {
+ 
+     // get path length and string length
+     qreal length = qAbs(path.length());
+-    qreal width = fm.width(textpath.text);
++    qreal width = fm.size(Qt::TextSingleLine, textpath.text).width();
+ 
+     // adjust font size until string fits into polyline
+     while (width > (length * 0.7)) {
+       font.setPointSize(font.pointSize() - 1);
+       fm = QFontMetricsF(font);
+-      width = fm.width(textpath.text);
++      width = fm.size(Qt::TextSingleLine, textpath.text).width();
+ 
+       if ((font.pointSize() < 6)) {
+         break;
+@@ -1977,7 +1976,7 @@ void CMapIMG::drawText(QPainter& p) {
+     // get starting angle of first two letters
+     const QString& text = textpath.text;
+     qreal percent1 = offset / length;
+-    qreal percent2 = (offset + fm.width(text.left(2))) / length;
++    qreal percent2 = (offset + fm.size(Qt::TextSingleLine, text.left(2)).width()) / length;
+ 
+     QPointF point1 = path.pointAtPercent(percent1);
+     QPointF point2 = path.pointAtPercent(percent2);
+@@ -1997,7 +1996,7 @@ void CMapIMG::drawText(QPainter& p) {
+ 
+     for (int i = 0; i < size; ++i) {
+       // percent1 = percent2;
+-      percent2 = (offset + fm.width(text[i])) / length;
++      percent2 = (offset + fm.size(Qt::TextSingleLine, text[i]).width()) / length;
+ 
+       point1 = point2;
+       point2 = path.pointAtPercent(percent2);
+@@ -2030,7 +2029,7 @@ void CMapIMG::drawText(QPainter& p) {
+ 
+       p.restore();
+ 
+-      offset += fm.width(text[i]);
++      offset += fm.size(Qt::TextSingleLine, text[i]).width();
+     }
+   }
+ }
+diff --git a/src/qmapshack/plot/CPlotAxis.cpp b/src/qmapshack/plot/CPlotAxis.cpp
+index 78c72f380c49..f1007e137767 100644
+--- a/src/qmapshack/plot/CPlotAxis.cpp
++++ b/src/qmapshack/plot/CPlotAxis.cpp
+@@ -137,21 +137,21 @@ const QString CPlotAxis::fmtdbl(qreal val) {
+   return f;
+ }
+ 
+-int CPlotAxis::getScaleWidth(const QFontMetrics& m) {
++int CPlotAxis::getScaleWidth(const QFontMetrics& fm) {
+   if (!valid) {
+     return 0;
+   }
+ 
+   if (scaleWidth > 0) {
+-    return scaleWidth * m.horizontalAdvance("X");
++    return scaleWidth * fm.horizontalAdvance("X");
+   }
+ 
+-  int width = 6 * m.horizontalAdvance("X");
++  int width = 6 * fm.horizontalAdvance("X");
+   QString format_single_prec = ((interval * ticScale) < 1) ? fmtdbl(interval) : fmtsgl(interval);
+ 
+   const tic_t* t = ticmark();
+   while (nullptr != t) {
+-    int tmp = m.horizontalAdvance(QString::asprintf(format_single_prec.toLatin1().data(), t->val * ticScale));
++    int tmp = fm.horizontalAdvance(QString::asprintf(format_single_prec.toLatin1().data(), t->val * ticScale));
+     width = qMax(width, tmp);
+ 
+     t = ticmark(t);
+diff --git a/src/qmapshack/plot/CPlotAxis.h b/src/qmapshack/plot/CPlotAxis.h
+index 051418a8e7ea..b9750821e1df 100644
+--- a/src/qmapshack/plot/CPlotAxis.h
++++ b/src/qmapshack/plot/CPlotAxis.h
+@@ -62,7 +62,7 @@ class CPlotAxis : public QObject {
+   /// calculate format for the given value
+   virtual const QString fmtdbl(qreal val);
+   /// get the maximum width of a scale with provided fontmetrics
+-  virtual int getScaleWidth(const QFontMetrics& m);
++  virtual int getScaleWidth(const QFontMetrics& fm);
+   /// get a new ticmark object
+   virtual const tic_t* ticmark(const tic_t* t = nullptr);
+   /// get the total limits and the used ones
+diff --git a/src/qmapshack/widgets/CDateTimeEditor.cpp b/src/qmapshack/widgets/CDateTimeEditor.cpp
+index b3ec5da21d94..1847ca0db365 100644
+--- a/src/qmapshack/widgets/CDateTimeEditor.cpp
++++ b/src/qmapshack/widgets/CDateTimeEditor.cpp
+@@ -1,5 +1,5 @@
+ /**********************************************************************************************
+-    Copyright (C) 2015 Florian Pigorsch <mail@florian-pigorsch.de> 
++    Copyright (C) 2015 Florian Pigorsch <mail@florian-pigorsch.de>
+ 
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+@@ -225,14 +225,14 @@ bool CDateTimeEditor::focusNextPrevChild(bool next) {
+ const QSize& CDateTimeEditor::getCharSize() const {
+   if (m_font != font() || m_charSize.isEmpty()) {
+     m_font = font();
+-    const QFontMetrics metrics = fontMetrics();
++    const QFontMetrics fm = fontMetrics();
+ 
+     m_charSize.setWidth(0);
+     m_charSize.setHeight(0);
+ 
+     const QString& chars = "0123456789-: YMDHS";
+     for (const QChar& c : chars) {
+-      const QSize cSize = metrics.size(0, c);
++      const QSize cSize = fm.size(Qt::TextSingleLine, c);
+       m_charSize = m_charSize.expandedTo(cSize);
+     }
+   }
+-- 
+2.49.0
+

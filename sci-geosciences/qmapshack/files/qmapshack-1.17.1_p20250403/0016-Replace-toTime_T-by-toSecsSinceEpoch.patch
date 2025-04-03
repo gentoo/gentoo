@@ -1,0 +1,152 @@
+From a4c06310af2e7a443bc01b633a9ec22e590911ff Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 3 Sep 2024 13:19:15 +0200
+Subject: [PATCH 16/26] Replace toTime_T by toSecsSinceEpoch
+
+---
+ src/qmapshack/gis/db/CDBItem.cpp        | 2 +-
+ src/qmapshack/gis/rte/CGisItemRte.cpp   | 6 +++---
+ src/qmapshack/gis/trk/CGisItemTrk.cpp   | 8 ++++----
+ src/qmapshack/gis/trk/CPropertyTrk.cpp  | 2 +-
+ src/qmapshack/gis/trk/filter/filter.cpp | 6 +++---
+ src/qmapshack/plot/IPlot.cpp            | 4 ++--
+ 6 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/qmapshack/gis/db/CDBItem.cpp b/src/qmapshack/gis/db/CDBItem.cpp
+index 3db37414d72d..6fc8d5c347e8 100644
+--- a/src/qmapshack/gis/db/CDBItem.cpp
++++ b/src/qmapshack/gis/db/CDBItem.cpp
+@@ -74,7 +74,7 @@ void CDBItem::updateAge() {
+     }
+ 
+     if (timestamp.isValid()) {
+-      quint64 diff = QDateTime::currentDateTimeUtc().toTime_t() - timestamp.toTime_t();
++      quint64 diff = QDateTime::currentDateTimeUtc().toSecsSinceEpoch() - timestamp.toSecsSinceEpoch();
+       if (diff < (60 * 60)) {
+         setText(CGisListDB::eColumnTime, tr("%1 min.").arg(diff / 60));
+       } else if (diff < (60 * 60 * 24)) {
+diff --git a/src/qmapshack/gis/rte/CGisItemRte.cpp b/src/qmapshack/gis/rte/CGisItemRte.cpp
+index db936f89d2e1..24d69ae4dfa4 100644
+--- a/src/qmapshack/gis/rte/CGisItemRte.cpp
++++ b/src/qmapshack/gis/rte/CGisItemRte.cpp
+@@ -556,7 +556,7 @@ void CGisItemRte::drawItem(QPainter& p, const QRectF& /*viewport*/, CGisDraw* gi
+     p.drawEllipse(anchor, 5, 5);
+ 
+     QString str, val, unit;
+-    IUnit::self().seconds2time((mouseMoveFocus->time.toTime_t() - startTime.toTime_t()), val, unit);
++    IUnit::self().seconds2time((mouseMoveFocus->time.toSecsSinceEpoch() - startTime.toSecsSinceEpoch()), val, unit);
+     str += tr("Time: %1%2").arg(val, unit) + " ";
+     IUnit::self().meter2distance(mouseMoveFocus->distance, val, unit);
+     str += tr("Distance: %1%2").arg(val, unit);
+@@ -803,7 +803,7 @@ void CGisItemRte::setResult(Routino_Output* route, const QString& options) {
+       rtept->fakeSubpt.instruction = QString(next->desc1) + ".\n" + QString(next->desc2) + ".";
+ 
+       rte.totalDistance = rtept->fakeSubpt.distance;
+-      rte.totalTime = rtept->fakeSubpt.time.toTime_t() - time.toTime_t();
++      rte.totalTime = rtept->fakeSubpt.time.toSecsSinceEpoch() - time.toSecsSinceEpoch();
+     } else if (rtept != nullptr) {
+       rtept->subpts << subpt_t();
+       subpt_t& subpt = rtept->subpts.last();
+@@ -826,7 +826,7 @@ void CGisItemRte::setResult(Routino_Output* route, const QString& options) {
+       }
+ 
+       rte.totalDistance = subpt.distance;
+-      rte.totalTime = subpt.time.toTime_t() - time.toTime_t();
++      rte.totalTime = subpt.time.toSecsSinceEpoch() - time.toSecsSinceEpoch();
+       subpt.instruction = QString(next->desc1) + ".\n" + QString(next->desc2) + ".";
+     }
+ 
+diff --git a/src/qmapshack/gis/trk/CGisItemTrk.cpp b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+index 2af9a5560822..9503e14261ba 100644
+--- a/src/qmapshack/gis/trk/CGisItemTrk.cpp
++++ b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+@@ -537,14 +537,14 @@ QString CGisItemTrk::getInfoRange() const {
+   }
+ 
+   bool timeIsValid = pt1->time.isValid() && pt2->time.isValid();
+-  qreal deltaTime = pt2->time.toTime_t() - pt1->time.toTime_t();
++  qreal deltaTime = pt2->time.toSecsSinceEpoch() - pt1->time.toSecsSinceEpoch();
+ 
+   const qreal distance = pt2->distance - pt1->distance;
+ 
+   IUnit::self().meter2distance(distance, val, unit);
+   str += QString("%3 %1%2 ").arg(val, unit).arg(QChar(0x21A6));
+   if (timeIsValid) {
+-    quint32 t = pt2->time.toTime_t() - pt1->time.toTime_t();
++    quint32 t = pt2->time.toSecsSinceEpoch() - pt1->time.toSecsSinceEpoch();
+     quint32 hh = t / 3600;
+     quint32 mm = (t % 3600) / 60;
+     quint32 ss = t % 60;
+@@ -686,7 +686,7 @@ QString CGisItemTrk::getInfoRange(const CTrackData::trkpt_t& trkpt1, const CTrac
+   }
+ 
+   if (pt1.time.isValid() && pt2.time.isValid()) {
+-    dt = pt2.time.toTime_t() - pt1.time.toTime_t();
++    dt = pt2.time.toSecsSinceEpoch() - pt1.time.toSecsSinceEpoch();
+   }
+ 
+   QString asc = tr("Ascent: -");
+@@ -2309,7 +2309,7 @@ bool CGisItemTrk::setMouseFocusByTime(quint32 time, focusmode_e fmode, const QSt
+         continue;
+       }
+ 
+-      qreal d = qAbs(qreal(pt.time.toTime_t()) - qreal(time));
++      qreal d = qAbs(qreal(pt.time.toSecsSinceEpoch()) - qreal(time));
+       if (d <= delta) {
+         newPointOfFocus = &pt;
+         delta = d;
+diff --git a/src/qmapshack/gis/trk/CPropertyTrk.cpp b/src/qmapshack/gis/trk/CPropertyTrk.cpp
+index 53592f34170c..4ada09adaf43 100644
+--- a/src/qmapshack/gis/trk/CPropertyTrk.cpp
++++ b/src/qmapshack/gis/trk/CPropertyTrk.cpp
+@@ -55,7 +55,7 @@ void CPropertyTrk::setupData() {
+     if ((key == CKnownExtension::internalProgress) || (key == CKnownExtension::internalSpeedTime)) {
+       property.min = 0;
+       property.axisType = property_t::eAxisTime;
+-      property.getX = [](const CTrackData::trkpt_t& p) { return p.time.isValid() ? p.time.toTime_t() : NOFLOAT; };
++      property.getX = [](const CTrackData::trkpt_t& p) { return p.time.isValid() ? p.time.toSecsSinceEpoch() : NOFLOAT; };
+     }
+ 
+     if (key == CKnownExtension::internalSpeedDist) {
+diff --git a/src/qmapshack/gis/trk/filter/filter.cpp b/src/qmapshack/gis/trk/filter/filter.cpp
+index d654dba81d41..50b0c2085543 100644
+--- a/src/qmapshack/gis/trk/filter/filter.cpp
++++ b/src/qmapshack/gis/trk/filter/filter.cpp
+@@ -254,7 +254,7 @@ void CGisItemTrk::filterOffsetElevation(int offset) {
+ }
+ 
+ void CGisItemTrk::filterNewDate(const QDateTime& date) {
+-  qint64 delta = qint64(date.toTime_t()) - qint64(timeStart.toUTC().toTime_t());
++  qint64 delta = qint64(date.toSecsSinceEpoch()) - qint64(timeStart.toUTC().toSecsSinceEpoch());
+ 
+   for (CTrackData::trkpt_t& pt : trk) {
+     pt.time = pt.time.addSecs(delta);
+@@ -490,8 +490,8 @@ void CGisItemTrk::filterChangeStartPoint(qint32 idxNewStartPoint, const QString&
+   QDateTime newTimeStart = pts[idxNewStartPoint].time;
+   QDateTime newTimeEnd = pts[idxNewStartPoint - 1].time;
+ 
+-  qint64 deltaStart = qint64(oldTimeStart.toUTC().toTime_t()) - qint64(newTimeStart.toUTC().toTime_t());
+-  qint64 deltaEnd = qint64(oldTimeEnd.toUTC().toTime_t()) - qint64(newTimeEnd.toUTC().toTime_t());
++  qint64 deltaStart = qint64(oldTimeStart.toUTC().toSecsSinceEpoch()) - qint64(newTimeStart.toUTC().toSecsSinceEpoch());
++  qint64 deltaEnd = qint64(oldTimeEnd.toUTC().toSecsSinceEpoch()) - qint64(newTimeEnd.toUTC().toSecsSinceEpoch());
+ 
+   qint32 i;
+   for (i = 0; i < idxNewStartPoint; ++i) {
+diff --git a/src/qmapshack/plot/IPlot.cpp b/src/qmapshack/plot/IPlot.cpp
+index 71565094ad30..6e80496545c9 100644
+--- a/src/qmapshack/plot/IPlot.cpp
++++ b/src/qmapshack/plot/IPlot.cpp
+@@ -1183,8 +1183,8 @@ void IPlot::drawActivities(QPainter& p) {
+     const CTrackData::trkpt_t* trkptEnd = trkData.getTrkPtByTotalIndex(range.idxTotalEnd);
+ 
+     if (data->axisType == CPlotData::eAxisTime) {
+-      x1 = data->x().val2pt(trkptBeg->time.toTime_t());
+-      x2 = data->x().val2pt(trkptEnd->time.toTime_t());
++      x1 = data->x().val2pt(trkptBeg->time.toSecsSinceEpoch());
++      x2 = data->x().val2pt(trkptEnd->time.toSecsSinceEpoch());
+     } else {
+       x1 = data->x().val2pt(trkptBeg->distance);
+       x2 = data->x().val2pt(trkptEnd->distance);
+-- 
+2.49.0
+

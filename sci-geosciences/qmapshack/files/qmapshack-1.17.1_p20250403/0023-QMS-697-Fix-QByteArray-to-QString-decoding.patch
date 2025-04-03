@@ -1,0 +1,89 @@
+From bf53e1d5ccba58deb586ce92fc987645277758f9 Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 12 Nov 2024 09:02:33 +0100
+Subject: [PATCH 23/26] [QMS-697]  Fix QByteArray to QString decoding
+
+---
+ src/qmapshack/gis/rte/router/CRouterBRouter.cpp              | 4 ++--
+ src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp | 4 ++--
+ src/qmapshack/helpers/CTimeDialog.cpp                        | 4 ++--
+ src/qmapshack/map/CMapRMAP.cpp                               | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/qmapshack/gis/rte/router/CRouterBRouter.cpp b/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
+index c8521248ea40..054c00862236 100644
+--- a/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
++++ b/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
+@@ -341,7 +341,7 @@ int CRouterBRouter::synchronousRequest(const QVector<QPointF>& points, const QLi
+     const QDomElement& xmlGpx = xml.documentElement();
+ 
+     if (xmlGpx.isNull() || xmlGpx.tagName() != "gpx") {
+-      throw QString(res);
++      throw QString(res.data());
+     }
+     setup->parseBRouterVersion(xmlGpx.attribute("creator"));
+ 
+@@ -469,7 +469,7 @@ void CRouterBRouter::slotRequestFinished(QNetworkReply* reply) {
+ 
+     const QDomElement& xmlGpx = xml.documentElement();
+     if (xmlGpx.isNull() || xmlGpx.tagName() != "gpx") {
+-      throw QString(res);
++      throw QString(res.data());
+     }
+ 
+     IGisItem::key_t key;
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
+index c83356761355..018eb152f995 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
+@@ -670,7 +670,7 @@ void CRouterBRouterSetup::displayProfileAsync(const QString& profile) {
+       file.open(QIODevice::ReadOnly);
+       const QByteArray& content = file.readAll();
+       file.close();
+-      emit sigDisplayOnlineProfileFinished(profile, QString(content));
++      emit sigDisplayOnlineProfileFinished(profile, QString(content.data()));
+     }
+   } else {
+     Q_ASSERT(installMode == eModeOnline);
+@@ -711,7 +711,7 @@ void CRouterBRouterSetup::loadOnlineProfileFinished(QNetworkReply* reply) {
+     readLocalProfiles();
+   } else {
+     Q_ASSERT(mode == eProfileDisplay);
+-    emit sigDisplayOnlineProfileFinished(profile, QString(content));
++    emit sigDisplayOnlineProfileFinished(profile, QString(content.data()));
+   }
+ }
+ 
+diff --git a/src/qmapshack/helpers/CTimeDialog.cpp b/src/qmapshack/helpers/CTimeDialog.cpp
+index ce18cad56d98..4467b1f0b291 100644
+--- a/src/qmapshack/helpers/CTimeDialog.cpp
++++ b/src/qmapshack/helpers/CTimeDialog.cpp
+@@ -33,10 +33,10 @@ CTimeDialog::CTimeDialog(QWidget* parent, const QDateTime& datetime)
+ 
+   const QList<QByteArray>& ids = QTimeZone::availableTimeZoneIds();
+   foreach (const QByteArray& id, ids) {
+-    comboTimezone->addItem(id);
++    comboTimezone->addItem(id.data());
+   }
+ 
+-  comboTimezone->setCurrentText(zone);
++  comboTimezone->setCurrentText(zone.data());
+ 
+   const QDateTime& newTime = timestamp_utc0.toTimeZone(QTimeZone(zone));
+   dateTimeEdit->setDateTime(newTime);
+diff --git a/src/qmapshack/map/CMapRMAP.cpp b/src/qmapshack/map/CMapRMAP.cpp
+index b8e909edb113..fe7d4a960f67 100644
+--- a/src/qmapshack/map/CMapRMAP.cpp
++++ b/src/qmapshack/map/CMapRMAP.cpp
+@@ -40,7 +40,7 @@ CMapRMAP::CMapRMAP(const QString& filename, CMapDraw* parent) : IMap(eFeatVisibi
+   QByteArray charbuf(20, 0);
+   stream.readRawData(charbuf.data(), 19);
+ 
+-  if ("CompeGPSRasterImage" != QString(charbuf)) {
++  if ("CompeGPSRasterImage" != QString(charbuf.data())) {
+     QMessageBox::warning(CMainWindow::getBestWidgetForParent(), tr("Error..."), tr("This is not a TwoNav RMAP file."),
+                          QMessageBox::Abort, QMessageBox::Abort);
+     return;
+-- 
+2.49.0
+

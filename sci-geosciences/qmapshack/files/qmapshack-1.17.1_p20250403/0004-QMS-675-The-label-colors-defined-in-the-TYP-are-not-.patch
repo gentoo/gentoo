@@ -1,0 +1,216 @@
+From e27db1b415f02339812b06d7dd7ad1d385cdd80c Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Thu, 18 Apr 2024 15:46:06 +0200
+Subject: [PATCH 04/26] [QMS-675] The label colors defined in the TYP are not
+ used
+
+---
+ changelog.txt                           |  1 +
+ src/qmapshack/map/CMapIMG.cpp           | 46 +++++++++----------------
+ src/qmapshack/map/CMapIMG.h             |  5 +--
+ src/qmapshack/map/garmin/CGarminTyp.cpp | 12 +++----
+ 4 files changed, 26 insertions(+), 38 deletions(-)
+
+diff --git a/changelog.txt b/changelog.txt
+index ac34d9b9f994..cd8f97f280ea 100644
+--- a/changelog.txt
++++ b/changelog.txt
+@@ -1,6 +1,7 @@
+ V1.XX.X
+ [QMS-656] TMS/WMTS: Fix loosing layer selection when reloading maps
+ [QMS-668] MacOS build adapted to new gdal version and new brew packages
++[QMS-675] The label colors defined in the TYP are not used
+ 
+ V1.17.1
+ [QMS-547] Fixed: QMS freezes on zoom when activating multi-layered online maps
+diff --git a/src/qmapshack/map/CMapIMG.cpp b/src/qmapshack/map/CMapIMG.cpp
+index 2ad9b7be158e..bc5199479922 100644
+--- a/src/qmapshack/map/CMapIMG.cpp
++++ b/src/qmapshack/map/CMapIMG.cpp
+@@ -1797,7 +1797,8 @@ bool CMapIMG::intersectsWithExistingLabel(const QRect& rect) const {
+   return false;
+ }
+ 
+-void CMapIMG::addLabel(const CGarminPoint& pt, const QRect& rect, CGarminTyp::label_type_e type) {
++void CMapIMG::addLabel(const CGarminPoint& pt, const QRect& rect, const CGarminTyp::point_property& property,
++                       bool isNight) {
+   QString str;
+   if (pt.hasLabel()) {
+     str = pt.getLabelText();
+@@ -1808,22 +1809,18 @@ void CMapIMG::addLabel(const CGarminPoint& pt, const QRect& rect, CGarminTyp::la
+   strlbl.pt = pt.pos.toPoint();
+   strlbl.str = str;
+   strlbl.rect = rect;
+-  strlbl.type = type;
++  strlbl.property = property;
++  strlbl.isNight = isNight;
+ }
+ 
+ void CMapIMG::drawPoints(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPois) {
+   pointtype_t::iterator pt = pts.begin();
+   while (pt != pts.end()) {
+-    //        if((pt->type > 0x1600) && (zoomFactor > CResources::self().getZoomLevelThresholdPois()))
+-    //        {
+-    //            ++pt;
+-    //            continue;
+-    //        };
+-
+     map->convertRad2Px(pt->pos);
+ 
+-    const QImage& icon =
+-        CMainWindow::self().isNight() ? pointProperties[pt->type].imgNight : pointProperties[pt->type].imgDay;
++    const CGarminTyp::point_property& property = pointProperties[pt->type];
++
++    const QImage& icon = CMainWindow::self().isNight() ? property.imgNight : property.imgDay;
+     const QSizeF& size = icon.size();
+ 
+     if (isCluttered(rectPois, QRectF(pt->pos, size))) {
+@@ -1838,12 +1835,8 @@ void CMapIMG::drawPoints(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPoi
+ 
+     bool showLabel = true;
+ 
+-    if (pointProperties.contains(pt->type)) {
+-      p.drawImage(pt->pos.x() - (size.width() / 2), pt->pos.y() - (size.height() / 2), icon);
+-      showLabel = pointProperties[pt->type].labelType != CGarminTyp::eNone;
+-    } else {
+-      p.drawPixmap(pt->pos.x() - 4, pt->pos.y() - 4, QPixmap(":/icons/8x8/bullet_blue.png"));
+-    }
++    p.drawImage(pt->pos.x() - (size.width() / 2), pt->pos.y() - (size.height() / 2), icon);
++    showLabel = property.labelType != CGarminTyp::eNone;
+ 
+     if (CMainWindow::self().isPoiText() && showLabel) {
+       // calculate bounding rectangle with a border of 2 px
+@@ -1853,7 +1846,7 @@ void CMapIMG::drawPoints(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPoi
+ 
+       // if no intersection was found, add label to list
+       if (!intersectsWithExistingLabel(rect)) {
+-        addLabel(*pt, rect, CGarminTyp::eStandard);
++        addLabel(*pt, rect, property, CMainWindow::self().isNight());
+       }
+     }
+     ++pt;
+@@ -1861,13 +1854,11 @@ void CMapIMG::drawPoints(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPoi
+ }
+ 
+ void CMapIMG::drawPois(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPois) {
+-  CGarminTyp::label_type_e labelType = CGarminTyp::eStandard;
+-
+   for (CGarminPoint& pt : pts) {
+     map->convertRad2Px(pt.pos);
+ 
+-    const QImage& icon =
+-        CMainWindow::self().isNight() ? pointProperties[pt.type].imgNight : pointProperties[pt.type].imgDay;
++    const CGarminTyp::point_property& property = pointProperties[pt.type];
++    const QImage& icon = CMainWindow::self().isNight() ? property.imgNight : property.imgDay;
+     const QSizeF& size = icon.size();
+ 
+     if (isCluttered(rectPois, QRectF(pt.pos, size))) {
+@@ -1879,13 +1870,7 @@ void CMapIMG::drawPois(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPois)
+       continue;
+     }
+ 
+-    labelType = CGarminTyp::eStandard;
+-    if (pointProperties.contains(pt.type)) {
+-      p.drawImage(pt.pos.x() - (size.width() / 2), pt.pos.y() - (size.height() / 2), icon);
+-      labelType = pointProperties[pt.type].labelType;
+-    } else {
+-      p.drawPixmap(pt.pos.x() - 4, pt.pos.y() - 4, QPixmap(":/icons/8x8/bullet_red.png"));
+-    }
++    p.drawImage(pt.pos.x() - (size.width() / 2), pt.pos.y() - (size.height() / 2), icon);
+ 
+     if (CMainWindow::self().isPoiText()) {
+       // calculate bounding rectangle with a border of 2 px
+@@ -1895,7 +1880,7 @@ void CMapIMG::drawPois(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPois)
+ 
+       // if no intersection was found, add label to list
+       if (!intersectsWithExistingLabel(rect)) {
+-        addLabel(pt, rect, labelType);
++        addLabel(pt, rect, property, CMainWindow::self().isNight());
+       }
+     }
+   }
+@@ -1908,7 +1893,8 @@ void CMapIMG::drawLabels(QPainter& p, const QVector<strlbl_t>& lbls) {
+   fonts[CGarminTyp::eLarge].setPointSize(f.pointSize() + 2);
+ 
+   for (const strlbl_t& lbl : lbls) {
+-    CDraw::text(lbl.str, p, lbl.pt, Qt::black, fonts[lbl.type]);
++    CDraw::text(lbl.str, p, lbl.pt, lbl.isNight ? lbl.property.colorLabelNight : lbl.property.colorLabelDay,
++                fonts[lbl.property.labelType]);
+   }
+ }
+ 
+diff --git a/src/qmapshack/map/CMapIMG.h b/src/qmapshack/map/CMapIMG.h
+index 4ff40a84f39a..97bbae3a79c0 100644
+--- a/src/qmapshack/map/CMapIMG.h
++++ b/src/qmapshack/map/CMapIMG.h
+@@ -150,7 +150,8 @@ class CMapIMG : public IMap {
+     QPoint pt;
+     QRect rect;
+     QString str;
+-    CGarminTyp::label_type_e type = CGarminTyp::eStandard;
++    CGarminTyp::point_property property;
++    bool isNight = false;
+   };
+ 
+   quint8 scale2bits(const QPointF& scale);
+@@ -165,7 +166,7 @@ class CMapIMG : public IMap {
+                   bool fast, const QRectF& viewport, polytype_t& polylines, polytype_t& polygons, pointtype_t& points,
+                   pointtype_t& pois);
+   bool intersectsWithExistingLabel(const QRect& rect) const;
+-  void addLabel(const CGarminPoint& pt, const QRect& rect, CGarminTyp::label_type_e type);
++  void addLabel(const CGarminPoint& pt, const QRect& rect, const CGarminTyp::point_property& property, bool isDay);
+   void drawPolygons(QPainter& p, polytype_t& lines);
+   void drawPolylines(QPainter& p, polytype_t& lines, const QPointF& scale);
+   void drawPoints(QPainter& p, pointtype_t& pts, QVector<QRectF>& rectPois);
+diff --git a/src/qmapshack/map/garmin/CGarminTyp.cpp b/src/qmapshack/map/garmin/CGarminTyp.cpp
+index 133572ab085f..7bb084f61f02 100644
+--- a/src/qmapshack/map/garmin/CGarminTyp.cpp
++++ b/src/qmapshack/map/garmin/CGarminTyp.cpp
+@@ -475,12 +475,12 @@ bool CGarminTyp::parsePolygon(QDataStream& in, QMap<quint32, polygon_property>&
+       property.labelType = (label_type_e)(t8 & 0x07);
+ 
+       if (t8 & 0x08) {
+-        in >> r >> g >> b;
++        in >> b >> g >> r;
+         property.colorLabelDay = qRgb(r, g, b);
+       }
+ 
+       if (t8 & 0x10) {
+-        in >> r >> g >> b;
++        in >> b >> g >> r;
+         property.colorLabelNight = qRgb(r, g, b);
+       }
+ #ifdef DBG
+@@ -826,12 +826,12 @@ bool CGarminTyp::parsePolyline(QDataStream& in, QMap<quint32, polyline_property>
+       property.labelType = (label_type_e)(t8_1 & 0x07);
+ 
+       if (t8_1 & 0x08) {
+-        in >> r >> g >> b;
++        in >> b >> g >> r;
+         property.colorLabelDay = qRgb(r, g, b);
+       }
+ 
+       if (t8_1 & 0x10) {
+-        in >> r >> g >> b;
++        in >> b >> g >> r;
+         property.colorLabelNight = qRgb(r, g, b);
+       }
+ #ifdef DBG
+@@ -1141,12 +1141,12 @@ bool CGarminTyp::parsePoint(QDataStream& in, QMap<quint32, point_property>& poin
+       property.labelType = (label_type_e)(t8_1 & 0x07);
+ 
+       if (t8_1 & 0x08) {
+-        in >> r >> g >> b;
++        in >> b >> g >> r;
+         property.colorLabelDay = qRgb(r, g, b);
+       }
+ 
+       if (t8_1 & 0x10) {
+-        in >> r >> g >> b;
++        in >> b >> g >> r;
+         property.colorLabelNight = qRgb(r, g, b);
+       }
+ #ifdef DBG
+-- 
+2.49.0
+

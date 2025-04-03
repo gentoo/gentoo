@@ -1,0 +1,2112 @@
+From eba8133f692bdac291f632c2a922560bc7a82043 Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 3 Sep 2024 12:58:59 +0200
+Subject: [PATCH 15/26] Replace qAsConst by std::as_const
+
+---
+ src/qmapshack/CMainWindow.cpp                 | 12 +++----
+ src/qmapshack/canvas/CCanvas.cpp              | 18 +++++-----
+ src/qmapshack/dem/CDemDraw.cpp                |  4 +--
+ src/qmapshack/dem/CDemList.cpp                |  2 +-
+ src/qmapshack/device/CDeviceWatcherLinux.cpp  |  4 +--
+ src/qmapshack/gis/CGisListDB.cpp              | 10 +++---
+ src/qmapshack/gis/CGisListWks.cpp             |  2 +-
+ src/qmapshack/gis/CGisWorkspace.cpp           | 14 ++++----
+ src/qmapshack/gis/db/CDBProject.cpp           |  6 ++--
+ src/qmapshack/gis/db/IDBFolder.cpp            |  2 +-
+ src/qmapshack/gis/gpx/serialization.cpp       | 12 +++----
+ src/qmapshack/gis/ovl/CGisItemOvlArea.cpp     |  6 ++--
+ src/qmapshack/gis/prj/IGisProject.cpp         | 10 +++---
+ src/qmapshack/gis/rte/CGisItemRte.cpp         | 12 +++----
+ .../gis/rte/router/CRouterBRouter.cpp         |  2 +-
+ .../gis/rte/router/CRouterMapQuest.cpp        |  2 +-
+ .../gis/rte/router/CRouterRoutino.cpp         |  4 +--
+ .../brouter/CRouterBRouterDownloadPage.cpp    |  8 ++---
+ .../router/brouter/CRouterBRouterSetup.cpp    |  2 +-
+ .../brouter/CRouterBRouterSetupWizard.cpp     |  2 +-
+ .../brouter/CRouterBRouterTilesSelect.cpp     |  2 +-
+ .../brouter/CRouterBRouterTilesSelectArea.cpp |  2 +-
+ .../brouter/CRouterBRouterTilesSelectLayout.h |  2 +-
+ .../gis/search/CGeoSearchWebConfigDialog.cpp  |  2 +-
+ .../gis/summary/CGisSummaryDropZone.cpp       |  2 +-
+ src/qmapshack/gis/suunto/ISuuntoProject.cpp   |  2 +-
+ src/qmapshack/gis/tcx/CTcxProject.cpp         |  4 +--
+ src/qmapshack/gis/tcx/serialization.cpp       |  4 +--
+ src/qmapshack/gis/tnv/serialization.cpp       |  4 +--
+ src/qmapshack/gis/trk/CActivityTrk.cpp        | 24 ++++++-------
+ src/qmapshack/gis/trk/CGisItemTrk.cpp         | 36 +++++++++----------
+ src/qmapshack/gis/trk/filter/filter.cpp       |  8 ++---
+ src/qmapshack/gis/wpt/CDetailsGeoCache.cpp    |  2 +-
+ src/qmapshack/gis/wpt/CGisItemWpt.cpp         |  2 +-
+ src/qmapshack/grid/CGrid.cpp                  | 16 ++++-----
+ src/qmapshack/grid/CProjWizard.cpp            |  2 +-
+ src/qmapshack/helpers/CFileExt.h              |  2 +-
+ src/qmapshack/helpers/CLimit.cpp              |  2 +-
+ src/qmapshack/helpers/CToolBarSetupDialog.cpp |  2 +-
+ src/qmapshack/helpers/CValue.cpp              |  2 +-
+ src/qmapshack/helpers/CWptIconDialog.cpp      |  2 +-
+ src/qmapshack/helpers/CWptIconManager.cpp     |  4 +--
+ src/qmapshack/map/CMapDraw.cpp                |  4 +--
+ src/qmapshack/map/CMapGEMF.cpp                |  4 +--
+ src/qmapshack/map/CMapIMG.cpp                 | 10 +++---
+ src/qmapshack/map/CMapJNX.cpp                 |  2 +-
+ src/qmapshack/map/CMapList.cpp                |  2 +-
+ src/qmapshack/map/CMapTMS.cpp                 |  6 ++--
+ src/qmapshack/map/CMapVRT.cpp                 |  2 +-
+ src/qmapshack/map/CMapWMTS.cpp                |  6 ++--
+ src/qmapshack/map/IMapOnline.cpp              |  2 +-
+ src/qmapshack/mouse/CMouseNormal.cpp          |  2 +-
+ src/qmapshack/mouse/CMouseRuler.cpp           |  2 +-
+ src/qmapshack/mouse/CMouseSelect.cpp          |  6 ++--
+ src/qmapshack/mouse/CScrOptUnclutter.cpp      |  6 ++--
+ .../mouse/line/CLineOpSelectRange.cpp         |  2 +-
+ src/qmapshack/mouse/line/ILineOp.cpp          |  6 ++--
+ src/qmapshack/mouse/line/IMouseEditLine.cpp   | 10 +++---
+ src/qmapshack/plot/CPlotData.cpp              |  2 +-
+ src/qmapshack/plot/CPlotProfile.cpp           |  2 +-
+ src/qmapshack/plot/IPlot.cpp                  |  6 ++--
+ src/qmapshack/plot/ITrack.cpp                 |  2 +-
+ src/qmapshack/poi/CPoiDraw.cpp                |  4 +--
+ src/qmapshack/poi/CPoiFilePOI.cpp             | 12 +++----
+ src/qmapshack/poi/CPoiList.cpp                |  2 +-
+ src/qmapshack/print/CPrintDialog.cpp          |  2 +-
+ src/qmapshack/qlgt/CQlgtWpt.cpp               |  2 +-
+ src/qmapshack/qlgt/CQmsDb.cpp                 |  2 +-
+ src/qmapshack/realtime/IRtRecord.cpp          |  2 +-
+ src/qmapshack/widgets/CDateTimeEditor.cpp     |  4 +--
+ .../widgets/CSelectDoubleListWidget.cpp       |  4 +--
+ src/qmapshack/widgets/CTemplateWidget.cpp     |  4 +--
+ src/qmaptool/items/CItemListWidget.h          |  2 +-
+ src/qmaptool/items/CItemTreeWidget.h          |  2 +-
+ src/qmaptool/overlay/COverlayCutMap.cpp       |  2 +-
+ src/qmaptool/overlay/COverlayGridTool.cpp     |  2 +-
+ src/qmaptool/overlay/gridtool/CGridPlacer.cpp |  2 +-
+ src/qmaptool/overlay/refmap/CProjWizard.cpp   |  2 +-
+ 78 files changed, 198 insertions(+), 198 deletions(-)
+
+diff --git a/src/qmapshack/CMainWindow.cpp b/src/qmapshack/CMainWindow.cpp
+index a97253c95452..d0e773cd932a 100644
+--- a/src/qmapshack/CMainWindow.cpp
++++ b/src/qmapshack/CMainWindow.cpp
+@@ -294,14 +294,14 @@ CMainWindow::CMainWindow() : id(QRandomGenerator::global()->generate()) {
+ 
+   if (cfg.contains("MainWindow/activedocks")) {
+     const QStringList& dockNames = cfg.value("MainWindow/activedocks").toStringList();
+-    for (QDockWidget* const& dock : qAsConst(docks)) {
++    for (QDockWidget* const& dock : std::as_const(docks)) {
+       if (dockNames.contains(dock->objectName())) {
+         activeDocks << dock;
+       }
+     }
+   }
+ 
+-  for (QDockWidget* const& dock : qAsConst(docks)) {
++  for (QDockWidget* const& dock : std::as_const(docks)) {
+     connect(dock, &QDockWidget::visibilityChanged, this, &CMainWindow::slotDockVisibilityChanged);
+     connect(dock, &QDockWidget::topLevelChanged, this, &CMainWindow::slotDockFloating);
+   }
+@@ -464,7 +464,7 @@ CMainWindow::CMainWindow() : id(QRandomGenerator::global()->generate()) {
+   prepareMenuForMac();
+ 
+   // make sure all actions that have a shortcut are available even when menu and toolbar are not visible
+-  for (QAction* action : qAsConst(availableActions)) {
++  for (QAction* action : std::as_const(availableActions)) {
+     if (!action->shortcuts().isEmpty()) {
+       addAction(action);
+     }
+@@ -495,7 +495,7 @@ CMainWindow::~CMainWindow() {
+   cfg.setValue("geometry", saveGeometry());
+   cfg.setValue("units", IUnit::self().type);
+   QStringList activeDockNames;
+-  for (QDockWidget* const& dock : qAsConst(activeDocks)) {
++  for (QDockWidget* const& dock : std::as_const(activeDocks)) {
+     activeDockNames << dock->objectName();
+   }
+   cfg.setValue("activedocks", activeDockNames);
+@@ -1374,7 +1374,7 @@ void CMainWindow::showDocks() const {
+ 
+ void CMainWindow::hideDocks() {
+   activeDocks.clear();
+-  for (QDockWidget* const& dock : qAsConst(docks)) {
++  for (QDockWidget* const& dock : std::as_const(docks)) {
+     if (!dock->isHidden()) {
+       dock->hide();
+       activeDocks << dock;
+@@ -1396,7 +1396,7 @@ void CMainWindow::slotDockVisibilityChanged(bool visible) {
+   if (visible) {
+     activeDocks.clear();
+   } else {
+-    for (QDockWidget* const& dock : qAsConst(docks)) {
++    for (QDockWidget* const& dock : std::as_const(docks)) {
+       if (!dock->isHidden()) {
+         visible = true;
+         break;
+diff --git a/src/qmapshack/canvas/CCanvas.cpp b/src/qmapshack/canvas/CCanvas.cpp
+index 2bd4570ed161..7f097ab6b8a4 100644
+--- a/src/qmapshack/canvas/CCanvas.cpp
++++ b/src/qmapshack/canvas/CCanvas.cpp
+@@ -170,10 +170,10 @@ CCanvas::~CCanvas() {
+   saveSizeTrackProfile();
+ 
+   /* stop running drawing-threads and don't destroy unless they have finished*/
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     context->quit();
+   }
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     context->wait();
+   }
+ 
+@@ -476,7 +476,7 @@ void CCanvas::reportStatus(const QString& key, const QString& msg) {
+   QString report;
+   QStringList keys = statusMessages.keys();
+   keys.sort();
+-  for (const QString& key : qAsConst(keys)) {
++  for (const QString& key : std::as_const(keys)) {
+     report += statusMessages[key] + "\n";
+   }
+ 
+@@ -1015,7 +1015,7 @@ void CCanvas::setup() {
+ QString CCanvas::getProjection() { return map->getProjection(); }
+ 
+ void CCanvas::setProjection(const QString& proj) {
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     if (!context->setProjection(proj)) {
+       QMessageBox::warning(this, tr("Map Projection..."),
+                            tr("Failed to setup map projection. Please configure a valid projection."), QMessageBox::Ok);
+@@ -1027,7 +1027,7 @@ void CCanvas::setProjection(const QString& proj) {
+ }
+ 
+ void CCanvas::setScales(const scales_type_e type) {
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     context->setScales(type);
+   }
+ }
+@@ -1137,7 +1137,7 @@ void CCanvas::showProfile(bool yes) {
+ 
+ bool CCanvas::setDrawContextSize(const QSize& s) {
+   bool done = true;
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     done &= context->resize(s);
+   }
+   return done;
+@@ -1155,15 +1155,15 @@ void CCanvas::print(QPainter& p, const QRectF& area, const QPointF& focus, bool
+ 
+   redraw_e redraw = eRedrawAll;
+ 
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     context->draw(p, redraw, focus);
+   }
+ 
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     context->wait();
+   }
+ 
+-  for (IDrawContext* context : qAsConst(allDrawContext)) {
++  for (IDrawContext* context : std::as_const(allDrawContext)) {
+     context->draw(p, redraw, focus);
+   }
+ 
+diff --git a/src/qmapshack/dem/CDemDraw.cpp b/src/qmapshack/dem/CDemDraw.cpp
+index 7123165d5f97..8cff38cf8ced 100644
+--- a/src/qmapshack/dem/CDemDraw.cpp
++++ b/src/qmapshack/dem/CDemDraw.cpp
+@@ -81,7 +81,7 @@ void CDemDraw::setupDemPath(const QString& path) {
+ void CDemDraw::setupDemPath(const QStringList& paths) {
+   demPaths = paths;
+ 
+-  for (CDemDraw* dem : qAsConst(dems)) {
++  for (CDemDraw* dem : std::as_const(dems)) {
+     QStringList keys;
+     dem->saveActiveMapsList(keys);
+     dem->buildMapList();
+@@ -124,7 +124,7 @@ void CDemDraw::buildMapList() {
+   QMutexLocker lock(&CDemItem::mutexActiveDems);
+   demList->clear();
+ 
+-  for (const QString& path : qAsConst(demPaths)) {
++  for (const QString& path : std::as_const(demPaths)) {
+     QDir dir(path);
+     // find available maps
+     const QStringList& filenames = dir.entryList(supportedFormats, QDir::Files | QDir::Readable, QDir::Name);
+diff --git a/src/qmapshack/dem/CDemList.cpp b/src/qmapshack/dem/CDemList.cpp
+index db71f6f1995b..377d102456fd 100644
+--- a/src/qmapshack/dem/CDemList.cpp
++++ b/src/qmapshack/dem/CDemList.cpp
+@@ -91,7 +91,7 @@ void CDemList::sort() {
+   std::sort(items1.begin(), items1.end(), &sortByName<CDemItem>);
+ 
+   QList<QTreeWidgetItem*> items2;
+-  for (CDemItem* item : qAsConst(items1)) {
++  for (CDemItem* item : std::as_const(items1)) {
+     items2 << item;
+   }
+   treeWidget->addTopLevelItems(items2);
+diff --git a/src/qmapshack/device/CDeviceWatcherLinux.cpp b/src/qmapshack/device/CDeviceWatcherLinux.cpp
+index 5c51c9bac015..0873ba80a9d4 100644
+--- a/src/qmapshack/device/CDeviceWatcherLinux.cpp
++++ b/src/qmapshack/device/CDeviceWatcherLinux.cpp
+@@ -118,7 +118,7 @@ void CDeviceWatcherLinux::slotUpdate() {
+     }
+   }
+ 
+-  for (const QDBusObjectPath& path : qAsConst(paths)) {
++  for (const QDBusObjectPath& path : std::as_const(paths)) {
+     QDBusMessage call = QDBusMessage::createMethodCall("org.freedesktop.UDisks2", path.path(),
+                                                        "org.freedesktop.DBus.Introspectable", "Introspect");
+     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
+@@ -174,7 +174,7 @@ QString CDeviceWatcherLinux::readMountPoint(const QString& path) {
+     }
+   }
+ 
+-  for (const QByteArray& point : qAsConst(list)) {
++  for (const QByteArray& point : std::as_const(list)) {
+     points.append(point);
+   }
+ #endif
+diff --git a/src/qmapshack/gis/CGisListDB.cpp b/src/qmapshack/gis/CGisListDB.cpp
+index d1096833d887..5f05867dc9b2 100644
+--- a/src/qmapshack/gis/CGisListDB.cpp
++++ b/src/qmapshack/gis/CGisListDB.cpp
+@@ -492,7 +492,7 @@ void CGisListDB::slotDelFolder() {
+   }
+ 
+   // iterate over all items to be deleted.
+-  for (QTreeWidgetItem* item : qAsConst(itemsToDelete)) {
++  for (QTreeWidgetItem* item : std::as_const(itemsToDelete)) {
+     // Test if the item's parent is also in the list.
+     // If it is skip it because it will be deleted together with its parent.
+     if (itemsToDelete.contains(item->parent())) {
+@@ -626,7 +626,7 @@ void CGisListDB::slotMoveFolder() {
+   }
+ 
+   // iterate over all items to be deleted.
+-  for (IDBFolder* folder : qAsConst(foldersToDelete)) {
++  for (IDBFolder* folder : std::as_const(foldersToDelete)) {
+     // Test if the item's parent is also in the list.
+     // If it is skip it because it will be deleted together with it's parent.
+     if (foldersToDelete.contains(dynamic_cast<IDBFolder*>(folder->parent()))) {
+@@ -736,7 +736,7 @@ void CGisListDB::slotDelLostFoundItem() {
+   }
+ 
+   qDeleteAll(delItems);
+-  for (CDBFolderLostFound* folder : qAsConst(folders)) {
++  for (CDBFolderLostFound* folder : std::as_const(folders)) {
+     folder->update();
+ 
+     IDBFolderSql* dbfolder = folder->getDBFolder();
+@@ -800,13 +800,13 @@ void CGisListDB::slotDelItem() {
+   }
+ 
+   qDeleteAll(dbItems);
+-  for (IDBFolderSql* dbFolder : qAsConst(dbFolders)) {
++  for (IDBFolderSql* dbFolder : std::as_const(dbFolders)) {
+     dbFolder->updateLostFound();
+     dbFolder->announceChange();
+   }
+ 
+   // tell all folders to update their statistics and waypoint/track correlations
+-  for (IDBFolder* folder : qAsConst(folders)) {
++  for (IDBFolder* folder : std::as_const(folders)) {
+     folder->updateItemsOnWks();
+   }
+ }
+diff --git a/src/qmapshack/gis/CGisListWks.cpp b/src/qmapshack/gis/CGisListWks.cpp
+index d6dad54fba07..453a4a76f1de 100644
+--- a/src/qmapshack/gis/CGisListWks.cpp
++++ b/src/qmapshack/gis/CGisListWks.cpp
+@@ -2022,7 +2022,7 @@ bool CGisListWks::event(QEvent* e) {
+           }
+         }
+ 
+-        for (CDBProject* project : qAsConst(projects)) {
++        for (CDBProject* project : std::as_const(projects)) {
+           project->blockUpdateItems(false);
+         }
+         e->accept();
+diff --git a/src/qmapshack/gis/CGisWorkspace.cpp b/src/qmapshack/gis/CGisWorkspace.cpp
+index c2dcfdb3040f..90d7df6c9117 100644
+--- a/src/qmapshack/gis/CGisWorkspace.cpp
++++ b/src/qmapshack/gis/CGisWorkspace.cpp
+@@ -248,7 +248,7 @@ void CGisWorkspace::slotActivityTrkByKey(const QList<IGisItem::key_t>& keys, trk
+       }
+     }
+ 
+-    for (IGisProject* project : qAsConst(projects)) {
++    for (IGisProject* project : std::as_const(projects)) {
+       project->blockUpdateItems(false);
+     }
+   }
+@@ -516,11 +516,11 @@ void CGisWorkspace::delItemsByKey(const QList<IGisItem::key_t>& keys) {
+ 
+   // make all database projects that are changed to post their new status
+   // this will update the database view.
+-  for (CDBProject* project : qAsConst(projects)) {
++  for (CDBProject* project : std::as_const(projects)) {
+     project->postStatus(true);
+   }
+   // unblock update for all projects seen
+-  for (IGisProject* project : qAsConst(projectsAll)) {
++  for (IGisProject* project : std::as_const(projectsAll)) {
+     project->blockUpdateItems(false);
+   }
+ 
+@@ -619,7 +619,7 @@ void CGisWorkspace::changeWptSymByKey(const QList<IGisItem::key_t>& keys, const
+     }
+   }
+ 
+-  for (IGisProject* project : qAsConst(projects)) {
++  for (IGisProject* project : std::as_const(projects)) {
+     project->blockUpdateItems(false);
+   }
+ 
+@@ -667,7 +667,7 @@ void CGisWorkspace::addEleToWptTrkByKey(const QList<IGisItem::key_t>& keys) {
+     }
+   }
+ 
+-  for (IGisProject* project : qAsConst(projects)) {
++  for (IGisProject* project : std::as_const(projects)) {
+     project->blockUpdateItems(false);
+   }
+ 
+@@ -954,7 +954,7 @@ void CGisWorkspace::colorTrkByKey(const QList<IGisItem::key_t>& keys) {
+       }
+     }
+ 
+-    for (IGisProject* project : qAsConst(projects)) {
++    for (IGisProject* project : std::as_const(projects)) {
+       project->blockUpdateItems(false);
+     }
+   }
+@@ -1215,7 +1215,7 @@ void CGisWorkspace::tagItemsByKey(const QList<IGisItem::key_t>& keys) {
+   dlg.exec();
+ 
+   if (dlg.result() == QDialog::Accepted) {
+-    for (IGisItem* gisItem : qAsConst(items)) {
++    for (IGisItem* gisItem : std::as_const(items)) {
+       if (dlg.getRatingChanged()) {
+         gisItem->setRating(dlg.getRating());
+       }
+diff --git a/src/qmapshack/gis/db/CDBProject.cpp b/src/qmapshack/gis/db/CDBProject.cpp
+index f712b411ee81..cffd82c47ed1 100644
+--- a/src/qmapshack/gis/db/CDBProject.cpp
++++ b/src/qmapshack/gis/db/CDBProject.cpp
+@@ -124,7 +124,7 @@ CDBProject::CDBProject(const QString& filename, IDBFolder* parentFolder, CGisLis
+   addChildren(items);
+ 
+   // set change indication else the item will not be saved
+-  for (QTreeWidgetItem* item : qAsConst(items)) {
++  for (QTreeWidgetItem* item : std::as_const(items)) {
+     IGisItem* gisItem = dynamic_cast<IGisItem*>(item);
+     if (gisItem) {
+       gisItem->updateDecoration(IGisItem::eMarkChanged, IGisItem::eMarkNone);
+@@ -602,7 +602,7 @@ void CDBProject::showItems(CEvtD2WShowItems* evt, action_e action2ForAll) {
+     qDeleteAll(takeChildren());
+   }
+ 
+-  for (const evt_item_t& item : qAsConst(evt->items)) {
++  for (const evt_item_t& item : std::as_const(evt->items)) {
+     IGisItem* gisItem = IGisItem::newGisItem(item.type, item.id, db, this);
+ 
+     /* [Issue #72] Database/Workspace inconsistency in QMS 1.4.0
+@@ -642,7 +642,7 @@ void CDBProject::hideItems(CEvtD2WHideItems* evt) {
+ 
+   QMessageBox::StandardButtons last = QMessageBox::YesToAll;
+ 
+-  for (const QString& k : qAsConst(evt->keys)) {
++  for (const QString& k : std::as_const(evt->keys)) {
+     key.item = k;
+     delItemByKey(key, last);
+   }
+diff --git a/src/qmapshack/gis/db/IDBFolder.cpp b/src/qmapshack/gis/db/IDBFolder.cpp
+index c0361c29cfba..756a3ee1e358 100644
+--- a/src/qmapshack/gis/db/IDBFolder.cpp
++++ b/src/qmapshack/gis/db/IDBFolder.cpp
+@@ -551,7 +551,7 @@ void IDBFolder::setChildIndicator() {
+ 
+ void IDBFolder::addItemsSorted(QList<CDBItem*>& items) {
+   sortItems(items);
+-  for (CDBItem* item : qAsConst(items)) {
++  for (CDBItem* item : std::as_const(items)) {
+     addChild(item);
+   }
+   items.clear();
+diff --git a/src/qmapshack/gis/gpx/serialization.cpp b/src/qmapshack/gis/gpx/serialization.cpp
+index f9d4e04a5af4..0d6f9b459466 100644
+--- a/src/qmapshack/gis/gpx/serialization.cpp
++++ b/src/qmapshack/gis/gpx/serialization.cpp
+@@ -299,7 +299,7 @@ static void writeXml(QDomNode& ext, const QHash<QString, QVariant>& extensions)
+     return CKnownExtension::get(k1).order < CKnownExtension::get(k2).order;
+   });
+ 
+-  for (const QString& key : qAsConst(keys)) {
++  for (const QString& key : std::as_const(keys)) {
+     QStringList tags = key.split('|', Qt::SkipEmptyParts);
+ 
+     if (tags.size() == 1) {
+@@ -312,7 +312,7 @@ static void writeXml(QDomNode& ext, const QHash<QString, QVariant>& extensions)
+ 
+       QString lastTag = tags.last();
+       tags.pop_back();
+-      for (const QString& tag : qAsConst(tags)) {
++      for (const QString& tag : std::as_const(tags)) {
+         QDomNode child = node.firstChildElement(tag);
+         if (child.isNull()) {
+           QDomElement elem = doc.createElement(tags.first());
+@@ -639,7 +639,7 @@ void CGisItemWpt::writeGcExt(QDomNode& xmlCache) {
+     QDomElement xmlLogs = xmlCache.ownerDocument().createElement("groundspeak:logs");
+     xmlCache.appendChild(xmlLogs);
+ 
+-    for (const geocachelog_t& log : qAsConst(geocache.logs)) {
++    for (const geocachelog_t& log : std::as_const(geocache.logs)) {
+       QDomElement xmlLog = xmlCache.ownerDocument().createElement("groundspeak:log");
+       xmlLogs.appendChild(xmlLog);
+ 
+@@ -736,7 +736,7 @@ void CGisItemTrk::save(QDomNode& gpx, bool strictGpx11) {
+     writeXml(gpxx, "gpxx:DisplayColor", trk.color);
+   }
+ 
+-  for (const CTrackData::trkseg_t& seg : qAsConst(trk.segs)) {
++  for (const CTrackData::trkseg_t& seg : std::as_const(trk.segs)) {
+     QDomElement xmlTrkseg = doc.createElement("trkseg");
+     xmlTrk.appendChild(xmlTrkseg);
+ 
+@@ -803,7 +803,7 @@ void CGisItemRte::save(QDomNode& gpx, bool strictGpx11) {
+     writeXml(xmlExt, "ql:key", key.item);
+   }
+ 
+-  for (const rtept_t& pt : qAsConst(rte.pts)) {
++  for (const rtept_t& pt : std::as_const(rte.pts)) {
+     QDomElement xmlRtept = doc.createElement("rtept");
+     xmlRte.appendChild(xmlRtept);
+     writeWpt(xmlRtept, pt, strictGpx11);
+@@ -861,7 +861,7 @@ void CGisItemOvlArea::save(QDomNode& gpx, bool strictGpx11) {
+   writeXml(xmlArea, "ql:flags", flags);
+   writeXml(xmlArea, history);
+ 
+-  for (const pt_t& pt : qAsConst(area.pts)) {
++  for (const pt_t& pt : std::as_const(area.pts)) {
+     QDomElement xmlPt = doc.createElement("ql:point");
+     xmlArea.appendChild(xmlPt);
+     writeWpt(xmlPt, pt, strictGpx11);
+diff --git a/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp b/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp
+index 8694199994bb..1585529e70d5 100644
+--- a/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp
++++ b/src/qmapshack/gis/ovl/CGisItemOvlArea.cpp
+@@ -133,7 +133,7 @@ QPointF CGisItemOvlArea::getPointCloseBy(const QPoint& screenPos) {
+   qint32 i = 0;
+   qint32 idx = NOIDX;
+   qint32 d = NOINT;
+-  for (const QPointF& point : qAsConst(polygonArea)) {
++  for (const QPointF& point : std::as_const(polygonArea)) {
+     int tmp = (screenPos - point).manhattanLength();
+     if (tmp < d) {
+       idx = i;
+@@ -185,7 +185,7 @@ void CGisItemOvlArea::deriveSecondaryData() {
+   qreal south = 90;
+   qreal west = 180;
+ 
+-  for (const pt_t& pt : qAsConst(area.pts)) {
++  for (const pt_t& pt : std::as_const(area.pts)) {
+     if (pt.lon < west) {
+       west = pt.lon;
+     }
+@@ -238,7 +238,7 @@ void CGisItemOvlArea::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRe
+ 
+   QPointF pt1;
+ 
+-  for (const pt_t& pt : qAsConst(area.pts)) {
++  for (const pt_t& pt : std::as_const(area.pts)) {
+     pt1.setX(pt.lon);
+     pt1.setY(pt.lat);
+     pt1 *= DEG_TO_RAD;
+diff --git a/src/qmapshack/gis/prj/IGisProject.cpp b/src/qmapshack/gis/prj/IGisProject.cpp
+index 2f7312182332..ddf4c8a17221 100644
+--- a/src/qmapshack/gis/prj/IGisProject.cpp
++++ b/src/qmapshack/gis/prj/IGisProject.cpp
+@@ -893,7 +893,7 @@ void IGisProject::sortItems() {
+ 
+   QList<QTreeWidgetItem*> items = takeChildren();
+   QList<QTreeWidgetItem*> others;  // For example Search
+-  for (QTreeWidgetItem* item : qAsConst(items)) {
++  for (QTreeWidgetItem* item : std::as_const(items)) {
+     CGisItemTrk* trk = dynamic_cast<CGisItemTrk*>(item);
+     if (trk != nullptr) {
+       trks << trk;
+@@ -928,16 +928,16 @@ void IGisProject::sortItems() {
+ 
+   items.clear();
+   items << others;
+-  for (IGisItem* item : qAsConst(trks)) {
++  for (IGisItem* item : std::as_const(trks)) {
+     items << item;
+   }
+-  for (IGisItem* item : qAsConst(rtes)) {
++  for (IGisItem* item : std::as_const(rtes)) {
+     items << item;
+   }
+-  for (IGisItem* item : qAsConst(wpts)) {
++  for (IGisItem* item : std::as_const(wpts)) {
+     items << item;
+   }
+-  for (IGisItem* item : qAsConst(ovls)) {
++  for (IGisItem* item : std::as_const(ovls)) {
+     items << item;
+   }
+ 
+diff --git a/src/qmapshack/gis/rte/CGisItemRte.cpp b/src/qmapshack/gis/rte/CGisItemRte.cpp
+index d6b3c5b4eca0..db936f89d2e1 100644
+--- a/src/qmapshack/gis/rte/CGisItemRte.cpp
++++ b/src/qmapshack/gis/rte/CGisItemRte.cpp
+@@ -142,7 +142,7 @@ IGisItem* CGisItemRte::createClone() {
+ 
+ bool CGisItemRte::isCalculated() {
+   bool yes = true;
+-  for (const rtept_t& pt : qAsConst(rte.pts)) {
++  for (const rtept_t& pt : std::as_const(rte.pts)) {
+     if ((pt.fakeSubpt.lat == NOFLOAT) || (pt.fakeSubpt.lon == NOFLOAT)) {
+       yes = false;
+       break;
+@@ -417,7 +417,7 @@ QPointF CGisItemRte::getPointCloseBy(const QPoint& screenPos) {
+ 
+   qint32 d = NOINT;
+   QPointF pt = NOPOINTF;
+-  for (const QPointF& point : qAsConst(line)) {
++  for (const QPointF& point : std::as_const(line)) {
+     int tmp = (screenPos - point).manhattanLength();
+     if (tmp < d) {
+       pt = point;
+@@ -467,7 +467,7 @@ void CGisItemRte::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRectF>
+   QVector<QPixmap> icons;
+   QVector<QPointF> focus;
+ 
+-  for (const rtept_t& rtept : qAsConst(rte.pts)) {
++  for (const rtept_t& rtept : std::as_const(rte.pts)) {
+     QPointF pt(rtept.lon * DEG_TO_RAD, rtept.lat * DEG_TO_RAD);
+ 
+     gis->convertRad2Px(pt);
+@@ -588,7 +588,7 @@ void CGisItemRte::drawLabel(QPainter& p, const QPolygonF& viewport, QList<QRectF
+     return;
+   }
+ 
+-  for (const rtept_t& rtept : qAsConst(rte.pts)) {
++  for (const rtept_t& rtept : std::as_const(rte.pts)) {
+     QPointF pt(rtept.lon * DEG_TO_RAD, rtept.lat * DEG_TO_RAD);
+ 
+     gis->convertRad2Px(pt);
+@@ -737,7 +737,7 @@ QPointF CGisItemRte::setMouseFocusByPoint(const QPoint& pt, focusmode_e fmode, c
+     quint32 i = 0;
+     qint32 d1 = NOINT;
+ 
+-    for (const QPointF& point : qAsConst(line)) {
++    for (const QPointF& point : std::as_const(line)) {
+       int tmp = (pt - point).manhattanLength();
+       if (tmp <= d1) {
+         idx = i;
+@@ -760,7 +760,7 @@ QPointF CGisItemRte::setMouseFocusByPoint(const QPoint& pt, focusmode_e fmode, c
+ 
+ const CGisItemRte::subpt_t* CGisItemRte::getSubPtByIndex(quint32 idx) {
+   quint32 cnt = 0;
+-  for (const rtept_t& rtept : qAsConst(rte.pts)) {
++  for (const rtept_t& rtept : std::as_const(rte.pts)) {
+     if (cnt == idx) {
+       return &rtept.fakeSubpt;
+     }
+diff --git a/src/qmapshack/gis/rte/router/CRouterBRouter.cpp b/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
+index a072cbe8ca15..c8521248ea40 100644
+--- a/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
++++ b/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
+@@ -236,7 +236,7 @@ QNetworkRequest CRouterBRouter::getRequest(const QVector<QPointF>& routePoints,
+         QPolygonF polygon;
+         line->getPolylineDegFromData(polygon);
+         QString nogoPoints;
+-        for (const QPointF point : qAsConst(polygon)) {
++        for (const QPointF point : std::as_const(polygon)) {
+           if (!nogoPoints.isEmpty()) {
+             nogoPoints.append(",");
+           }
+diff --git a/src/qmapshack/gis/rte/router/CRouterMapQuest.cpp b/src/qmapshack/gis/rte/router/CRouterMapQuest.cpp
+index 2216c4ff9be4..0f9a1d1f6ef8 100644
+--- a/src/qmapshack/gis/rte/router/CRouterMapQuest.cpp
++++ b/src/qmapshack/gis/rte/router/CRouterMapQuest.cpp
+@@ -158,7 +158,7 @@ void CRouterMapQuest::addMapQuestLocations(QDomDocument& xml, QDomElement& locat
+   SGisLine line;
+   rte.getPolylineFromData(line);
+ 
+-  for (const IGisLine::point_t& pt : qAsConst(line)) {
++  for (const IGisLine::point_t& pt : std::as_const(line)) {
+     QDomElement location = xml.createElement("location");
+     location.appendChild(
+         xml.createTextNode(QString("%1,%2").arg(pt.coord.y() * RAD_TO_DEG).arg(pt.coord.x() * RAD_TO_DEG)));
+diff --git a/src/qmapshack/gis/rte/router/CRouterRoutino.cpp b/src/qmapshack/gis/rte/router/CRouterRoutino.cpp
+index 2ef0deb8b9d2..20ed33e4e851 100644
+--- a/src/qmapshack/gis/rte/router/CRouterRoutino.cpp
++++ b/src/qmapshack/gis/rte/router/CRouterRoutino.cpp
+@@ -220,7 +220,7 @@ void CRouterRoutino::buildDatabaseList() {
+ 
+   IAppSetup* setup = IAppSetup::getPlatformInstance();
+ 
+-  for (const QString& path : qAsConst(dbPaths)) {
++  for (const QString& path : std::as_const(dbPaths)) {
+     QDir dir(path);
+     const QStringList& filenames =
+         dir.entryList(QStringList("*segments.mem"), QDir::Files | QDir::Readable, QDir::Name);
+@@ -369,7 +369,7 @@ void CRouterRoutino::calcRoute(const IGisItem::key_t& key) {
+ 
+     int idx = 0;
+     QVector<Routino_Waypoint*> waypoints(line.size(), nullptr);
+-    for (const IGisLine::point_t& pt : qAsConst(line)) {
++    for (const IGisLine::point_t& pt : std::as_const(line)) {
+       waypoints[idx] = Routino_FindWaypoint(data, profile, pt.coord.y() * RAD_TO_DEG, pt.coord.x() * RAD_TO_DEG);
+       if (waypoints[idx] == nullptr) {
+         throw xlateRoutinoError(Routino_errno);
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterDownloadPage.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterDownloadPage.cpp
+index 213f7072d66e..30027e45f053 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterDownloadPage.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterDownloadPage.cpp
+@@ -78,7 +78,7 @@ void CRouterBRouterDownloadPage::begin() {
+ 
+ void CRouterBRouterDownloadPage::slotListVersionsClicked(const QModelIndex& index) {
+   const QString& version = index.data().toString();
+-  for (const CRouterBRouterReleaseItem& item : qAsConst(releaseItems)) {
++  for (const CRouterBRouterReleaseItem& item : std::as_const(releaseItems)) {
+     if (item.name == version) {
+       downloadUrl = QUrl(item.url);
+       textVersionDetails->setText(item.description);
+@@ -93,7 +93,7 @@ void CRouterBRouterDownloadPage::slotListVersionsClicked(const QModelIndex& inde
+ 
+ void CRouterBRouterDownloadPage::updateModel() const {
+   QStringList versions;
+-  for (const CRouterBRouterReleaseItem& item : qAsConst(releaseItems)) {
++  for (const CRouterBRouterReleaseItem& item : std::as_const(releaseItems)) {
+     versions.append(item.name);
+   }
+   model->setStringList(versions);
+@@ -226,7 +226,7 @@ void CRouterBRouterDownloadPage::localBRouterDownloadFinished(QNetworkReply* rep
+       }
+       textLocalInstall->append(tr("installing into %1").arg(setup->localDir));
+       setup->installLocalBRouter(messageList);
+-      for (const QString& message : qAsConst(messageList)) {
++      for (const QString& message : std::as_const(messageList)) {
+         textLocalInstall->append(message);
+       }
+       messageList.clear();
+@@ -236,7 +236,7 @@ void CRouterBRouterDownloadPage::localBRouterDownloadFinished(QNetworkReply* rep
+       setComplete(setup->isLocalBRouterValid);
+       setup->readLocalProfiles();
+     } catch (const QString& msg) {
+-      for (const QString& message : qAsConst(messageList)) {
++      for (const QString& message : std::as_const(messageList)) {
+         textLocalInstall->append(message);
+       }
+       if (outfile.isOpen()) {
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
+index fd6f9dbe723d..c83356761355 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
+@@ -251,7 +251,7 @@ void CRouterBRouterSetup::readLocalProfiles() {
+       changed = true;
+     }
+   }
+-  for (const QString& profile : qAsConst(installedProfiles)) {
++  for (const QString& profile : std::as_const(installedProfiles)) {
+     if (!localProfiles.contains(profile)) {
+       localProfiles << profile;
+       changed = true;
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetupWizard.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetupWizard.cpp
+index 51d9a2655c5b..de267be23ac7 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetupWizard.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetupWizard.cpp
+@@ -513,7 +513,7 @@ void CRouterBRouterSetupWizard::slotProfileDownClicked() const {
+ void CRouterBRouterSetupWizard::updateProfiles() const {
+   const QStringList& profiles = setup->getProfiles();
+   QStringList available;
+-  for (const QString& profile : qAsConst(setup->onlineProfilesAvailable)) {
++  for (const QString& profile : std::as_const(setup->onlineProfilesAvailable)) {
+     if (!profiles.contains(profile)) {
+       available << profile;
+     }
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp
+index 8df5206c33bc..1ee2e50b65ce 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp
+@@ -466,7 +466,7 @@ void CRouterBRouterTilesSelect::slotDownload() {
+ }
+ 
+ void CRouterBRouterTilesSelect::slotDownloadReadReady() {
+-  for (QNetworkReply* reply : qAsConst(tilesDownloadManagerReplies)) {
++  for (QNetworkReply* reply : std::as_const(tilesDownloadManagerReplies)) {
+     if (reply->bytesAvailable() > 0) {
+       try {
+         const QString& fileName = reply->property("tile").toString();
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectArea.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectArea.cpp
+index bbcb68a4e365..875c32303534 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectArea.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectArea.cpp
+@@ -96,7 +96,7 @@ void CRouterBRouterTilesSelectArea::drawGrid() {
+   QPainter painter(this);
+   painter.setPen(gridPen);
+ 
+-  for (const QPoint& tile : qAsConst(gridTiles)) {
++  for (const QPoint& tile : std::as_const(gridTiles)) {
+     painter.drawPolyline(gridPolygon(tile));
+   }
+ }
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectLayout.h b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectLayout.h
+index 347fd5bde919..e6743d1d0d12 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectLayout.h
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelectLayout.h
+@@ -38,7 +38,7 @@ class CRouterBRouterTilesSelectLayout : public QLayout {
+   QSize sizeHint() const override { return QSize(200, 200); }
+ 
+   void setGeometry(const QRect& r) override {
+-    for (QLayoutItem* item : qAsConst(items)) {
++    for (QLayoutItem* item : std::as_const(items)) {
+       item->setGeometry(r);
+     }
+   }
+diff --git a/src/qmapshack/gis/search/CGeoSearchWebConfigDialog.cpp b/src/qmapshack/gis/search/CGeoSearchWebConfigDialog.cpp
+index 05ded0b04728..f5e398e617dd 100644
+--- a/src/qmapshack/gis/search/CGeoSearchWebConfigDialog.cpp
++++ b/src/qmapshack/gis/search/CGeoSearchWebConfigDialog.cpp
+@@ -56,7 +56,7 @@ CGeoSearchWebConfigDialog::CGeoSearchWebConfigDialog(QList<CGeoSearchWeb::servic
+ void CGeoSearchWebConfigDialog::setupTreeWidget() {
+   treeServices->clear();
+ 
+-  for (const CGeoSearchWeb::service_t& service : qAsConst(services)) {
++  for (const CGeoSearchWeb::service_t& service : std::as_const(services)) {
+     QTreeWidgetItem* item = new QTreeWidgetItem(treeServices);
+     item->setText(0, service.name);
+     item->setIcon(0, QIcon(service.icon));
+diff --git a/src/qmapshack/gis/summary/CGisSummaryDropZone.cpp b/src/qmapshack/gis/summary/CGisSummaryDropZone.cpp
+index 8fb6f1176a2f..9d6032cca071 100644
+--- a/src/qmapshack/gis/summary/CGisSummaryDropZone.cpp
++++ b/src/qmapshack/gis/summary/CGisSummaryDropZone.cpp
+@@ -98,7 +98,7 @@ void CGisSummaryDropZone::dropEvent(QDropEvent* e) {
+   CSelectCopyAction::result_e copyActionForAll = CSelectCopyAction::eResultSkip;
+   for (const CGisSummary::folder_t& folder : folders) {
+     CDBProject* project = new CDBProject(folder.db, folder.id, nullptr);
+-    for (IGisItem* gisItem : qAsConst(gisItems)) {
++    for (IGisItem* gisItem : std::as_const(gisItems)) {
+       project->insertCopyOfItem(gisItem, -1, copyActionForAll);
+     }
+ 
+diff --git a/src/qmapshack/gis/suunto/ISuuntoProject.cpp b/src/qmapshack/gis/suunto/ISuuntoProject.cpp
+index bdbbca27cd94..86c7f38e84bf 100644
+--- a/src/qmapshack/gis/suunto/ISuuntoProject.cpp
++++ b/src/qmapshack/gis/suunto/ISuuntoProject.cpp
+@@ -39,7 +39,7 @@ void ISuuntoProject::fillTrackPointsFromSamples(QList<sample_t>& samplesList, QL
+   int lap = 0;
+   CTrackData::trkseg_t* seg = &(trk.segs[lap]);
+ 
+-  for (const sample_t& sample : qAsConst(samplesList)) {
++  for (const sample_t& sample : std::as_const(samplesList)) {
+     if (sample.time > lapsList[lap]) {
+       lap++;
+       seg = &(trk.segs[lap]);
+diff --git a/src/qmapshack/gis/tcx/CTcxProject.cpp b/src/qmapshack/gis/tcx/CTcxProject.cpp
+index 133f43bf69c8..a1f11dc62f51 100644
+--- a/src/qmapshack/gis/tcx/CTcxProject.cpp
++++ b/src/qmapshack/gis/tcx/CTcxProject.cpp
+@@ -462,7 +462,7 @@ bool CTcxProject::saveAs(const QString& fn, IGisProject& project) {
+   if (activityTrks.size() != 0) {
+     tcx.appendChild(activitiesNode);
+   }
+-  for (CGisItemTrk* trkToBeSaved : qAsConst(activityTrks)) {
++  for (CGisItemTrk* trkToBeSaved : std::as_const(activityTrks)) {
+     trkToBeSaved->saveTCXactivity(activitiesNode);
+   }
+ 
+@@ -470,7 +470,7 @@ bool CTcxProject::saveAs(const QString& fn, IGisProject& project) {
+   if (courseTrks.size() != 0) {
+     tcx.appendChild(coursesNode);
+   }
+-  for (CGisItemTrk* trkToBeSaved : qAsConst(courseTrks)) {
++  for (CGisItemTrk* trkToBeSaved : std::as_const(courseTrks)) {
+     trkToBeSaved->saveTCXcourse(coursesNode);
+   }
+ 
+diff --git a/src/qmapshack/gis/tcx/serialization.cpp b/src/qmapshack/gis/tcx/serialization.cpp
+index 245b1258f5b6..8260bc88dfa5 100644
+--- a/src/qmapshack/gis/tcx/serialization.cpp
++++ b/src/qmapshack/gis/tcx/serialization.cpp
+@@ -161,7 +161,7 @@ void CGisItemTrk::saveTCXcourse(QDomNode& coursesNode) {
+   }
+ 
+   int i = 0;
+-  for (const IGisItem::key_t& wptKey : qAsConst(wptKeys))  // browse course points
++  for (const IGisItem::key_t& wptKey : std::as_const(wptKeys))  // browse course points
+   {
+     CGisItemWpt* wptItem = dynamic_cast<CGisItemWpt*>(project->getItemByKey(wptKey));
+     wptItem->saveTCX(courseNode, trkPtToOverwriteDateTimes[i++]);
+@@ -185,7 +185,7 @@ void CGisItemTrk::saveTCXactivity(QDomNode& activitiesNode) {
+   activityNode.lastChild().appendChild(
+       doc.createTextNode(trk.segs[0].pts[0].time.toString("yyyy-MM-dd'T'hh:mm:ss'Z'")));
+ 
+-  for (const CTrackData::trkseg_t& seg : qAsConst(trk.segs)) {
++  for (const CTrackData::trkseg_t& seg : std::as_const(trk.segs)) {
+     QDomElement lapElmt = doc.createElement("Lap");
+     activityNode.appendChild(lapElmt);
+     lapElmt.setAttribute("StartTime", seg.pts[0].time.toString("yyyy-MM-dd'T'hh:mm:ss'Z'"));
+diff --git a/src/qmapshack/gis/tnv/serialization.cpp b/src/qmapshack/gis/tnv/serialization.cpp
+index 5d6bed23ef90..aa0491494d61 100644
+--- a/src/qmapshack/gis/tnv/serialization.cpp
++++ b/src/qmapshack/gis/tnv/serialization.cpp
+@@ -196,7 +196,7 @@ bool CGisItemTrk::saveTwoNav(const QString& filename) {
+   out << "s " << name << Qt::endl;
+   out << "y " << getKey().item << Qt::endl;
+ 
+-  for (const CTrackData::trkseg_t& seg : qAsConst(trk.segs)) {
++  for (const CTrackData::trkseg_t& seg : std::as_const(trk.segs)) {
+     for (const CTrackData::trkpt_t& trkpt : seg.pts) {
+       list.clear();
+ 
+@@ -472,7 +472,7 @@ void CGisItemWpt::saveTwoNav(QTextStream& out, const QDir& dir) {
+     out << "a .\\" << filenameCmt << ",0" << Qt::endl;
+   }
+ 
+-  for (const image_t& img : qAsConst(images)) {
++  for (const image_t& img : std::as_const(images)) {
+     QString fn = img.info;
+     if (fn.isEmpty()) {
+       fn = QString("picture.png");
+diff --git a/src/qmapshack/gis/trk/CActivityTrk.cpp b/src/qmapshack/gis/trk/CActivityTrk.cpp
+index 31e51084a631..32d1b165a9b1 100644
+--- a/src/qmapshack/gis/trk/CActivityTrk.cpp
++++ b/src/qmapshack/gis/trk/CActivityTrk.cpp
+@@ -90,7 +90,7 @@ QMenu* CActivityTrk::getMenu(const QList<IGisItem::key_t>& keys, QWidget* parent
+   auto func = [keys]() { CGisWorkspace::self().slotActivityTrkByKey(keys, CTrackData::trkpt_t::eAct20None); };
+   QAction::connect(act, &QAction::triggered, &CGisWorkspace::self(), func);
+ 
+-  for (const desc_t& desc : qAsConst(actDescriptor)) {
++  for (const desc_t& desc : std::as_const(actDescriptor)) {
+     act = menu->addAction(QIcon(desc.iconLarge), desc.name);
+     auto func = [keys, desc]() { CGisWorkspace::self().slotActivityTrkByKey(keys, desc.activity); };
+     QAction::connect(act, &QAction::triggered, &CGisWorkspace::self(), func);
+@@ -202,7 +202,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+ 
+   // gather any used activities
+   QVector<const desc_t*> descs;
+-  for (const desc_t& desc : qAsConst(actDescriptor)) {
++  for (const desc_t& desc : std::as_const(actDescriptor)) {
+     if (acts.contains(desc.activity)) {
+       descs << &desc;
+     }
+@@ -220,7 +220,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   // ############### build header ###############
+   str += "<tr>";
+   str += "<th></th>";
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     str += QString(
+                "<th align='right'>"
+                "<img src='%1'/><br/>"
+@@ -240,7 +240,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Distance:") + "</td>";
+   distance = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().meter2distance(s.distance, val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1 %2</td>").arg(val, unit);
+@@ -261,7 +261,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Ascent:") + "</td>";
+   total = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().meter2elevation(qMin(s.ascent, NOFLOAT), val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1%2</td>").arg(val, unit);
+@@ -282,7 +282,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Descent:") + "</td>";
+   total = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().meter2elevation(qMin(s.descent, NOFLOAT), val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1%2</td>").arg(val, unit);
+@@ -303,7 +303,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Speed Moving:") + "</td>";
+   total = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().meter2speed(s.distance / s.ellapsedSecondsMoving, val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1%2</td>").arg(val, unit);
+@@ -324,7 +324,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Speed Total:") + "</td>";
+   total = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().meter2speed(s.distance / s.ellapsedSeconds, val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1%2</td>").arg(val, unit);
+@@ -345,7 +345,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Time Moving:") + "</td>";
+   total = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().seconds2time(s.ellapsedSecondsMoving, val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1%2</td>").arg(val, unit);
+@@ -366,7 +366,7 @@ void CActivityTrk::printSummary(const QMap<trkact_t, summary_t>& summary, const
+   str += "<tr>";
+   str += "<td>" + tr("Time Total:") + "</td>";
+   total = 0;
+-  for (const desc_t* desc : qAsConst(descs)) {
++  for (const desc_t* desc : std::as_const(descs)) {
+     const summary_t& s = summary[desc->activity];
+     IUnit::self().seconds2time(s.ellapsedSeconds, val, unit);
+     str += QString("<td align='right'>&nbsp;&nbsp;%1%2</td>").arg(val, unit);
+@@ -401,7 +401,7 @@ void CActivityTrk::sumUp(QMap<trkact_t, summary_t>& summary) const {
+ }
+ 
+ const CActivityTrk::desc_t& CActivityTrk::getDescriptor(trkact_t act) {
+-  for (const desc_t& desc : qAsConst(actDescriptor)) {
++  for (const desc_t& desc : std::as_const(actDescriptor)) {
+     if (desc.activity == act) {
+       return desc;
+     }
+@@ -421,7 +421,7 @@ void CActivityTrk::setColor(trkact_t act, const IGisItem::color_t& color) {
+ }
+ 
+ void CActivityTrk::getActivityNames(QStringList& names) const {
+-  for (const desc_t& desc : qAsConst(actDescriptor)) {
++  for (const desc_t& desc : std::as_const(actDescriptor)) {
+     if (allActivities.contains(desc.activity)) {
+       names << desc.name;
+     }
+diff --git a/src/qmapshack/gis/trk/CGisItemTrk.cpp b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+index ce0e79b30131..2af9a5560822 100644
+--- a/src/qmapshack/gis/trk/CGisItemTrk.cpp
++++ b/src/qmapshack/gis/trk/CGisItemTrk.cpp
+@@ -354,7 +354,7 @@ QString CGisItemTrk::getInfoLimits() const {
+   QStringList keys = extrema.keys();
+   std::sort(keys.begin(), keys.end(), sortByString);
+ 
+-  for (const QString& key : qAsConst(keys)) {
++  for (const QString& key : std::as_const(keys)) {
+     if (key == CKnownExtension::internalSpeedTime)  // Output of "Speed*" will already be covered by internalSpeedDist
+     {                                               // No need to show it twice
+       continue;
+@@ -624,7 +624,7 @@ QString CGisItemTrk::getInfoTrkPt(const CTrackData::trkpt_t& pt) const {
+     keys = keys.mid(0, 10);
+   }
+ 
+-  for (const QString& key : qAsConst(keys)) {
++  for (const QString& key : std::as_const(keys)) {
+     const CKnownExtension& ext = CKnownExtension::get(key);
+     if (ext.known) {
+       str +=
+@@ -1149,11 +1149,11 @@ void CGisItemTrk::findWaypointsCloseBy(CProgressDialog& progress, quint32& curre
+ 
+   bool doDeriveData = false;
+   numberOfAttachedWpt = 0;
+-  for (const trkwpt_t& trkwpt : qAsConst(trkwpts)) {
++  for (const trkwpt_t& trkwpt : std::as_const(trkwpts)) {
+     qreal minD = WPT_FOCUS_DIST_IN;
+     qint32 index = NOIDX;
+ 
+-    for (const pointDP& pt : qAsConst(line)) {
++    for (const pointDP& pt : std::as_const(line)) {
+       ++current;
+       qreal d = (trkwpt.x - pt.x) * (trkwpt.x - pt.x) + (trkwpt.y - pt.y) * (trkwpt.y - pt.y);
+ 
+@@ -1302,7 +1302,7 @@ bool CGisItemTrk::cut() {
+                  isInRange(removeEnd, seg.pts.first().idxTotal, seg.pts.last().idxTotal)) {
+         QVector<CTrackData::trkpt_t> pts;
+ 
+-        for (const CTrackData::trkpt_t& pt : qAsConst(seg.pts)) {
++        for (const CTrackData::trkpt_t& pt : std::as_const(seg.pts)) {
+           if (!(removeStart <= pt.idxTotal && pt.idxTotal <= removeEnd)) {
+             pts << pt;
+           }
+@@ -1373,7 +1373,7 @@ void CGisItemTrk::reverse() {
+   trk1->key.clear();
+   trk1->history.events.clear();
+ 
+-  for (const CTrackData::trkseg_t& seg : qAsConst(trk.segs)) {
++  for (const CTrackData::trkseg_t& seg : std::as_const(trk.segs)) {
+     CTrackData::trkseg_t seg1;
+     for (const CTrackData::trkpt_t& pt : seg.pts) {
+       CTrackData::trkpt_t pt1 = pt;
+@@ -1500,7 +1500,7 @@ void CGisItemTrk::deleteSelectedPoints() {
+ 
+   for (CTrackData::trkseg_t& seg : trk.segs) {
+     QVector<CTrackData::trkpt_t> pts;
+-    for (const CTrackData::trkpt_t& pt : qAsConst(seg.pts)) {
++    for (const CTrackData::trkpt_t& pt : std::as_const(seg.pts)) {
+       if (idx1 < pt.idxTotal && pt.idxTotal < idx2) {
+         continue;
+       }
+@@ -1623,12 +1623,12 @@ void CGisItemTrk::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRectF>
+ 
+     p.setPen(QPen(Qt::lightGray, penWidthBg, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+ 
+-    for (const QPolygonF& l : qAsConst(lines)) {
++    for (const QPolygonF& l : std::as_const(lines)) {
+       p.drawPolyline(l);
+     }
+ 
+     QPixmap bullet("://icons/8x8/bullet_dark_gray.png");
+-    for (const QPolygonF& l : qAsConst(lines)) {
++    for (const QPolygonF& l : std::as_const(lines)) {
+       for (const QPointF& pt : l) {
+         p.drawPixmap(pt.x() - 3, pt.y() - 3, bullet);
+       }
+@@ -1643,14 +1643,14 @@ void CGisItemTrk::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRectF>
+   const CMainWindow& w = CMainWindow::self();
+   if (key == keyUserFocus && w.isShowTrackHighlight()) {
+     p.setPen(QPen(Qt::red, penWidthHi, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+-    for (const QPolygonF& l : qAsConst(lines)) {
++    for (const QPolygonF& l : std::as_const(lines)) {
+       p.drawPolyline(l);
+     }
+   }
+ 
+   p.setBrush(color);
+   p.setPen(penBackground);
+-  for (const QPolygonF& l : qAsConst(lines)) {
++  for (const QPolygonF& l : std::as_const(lines)) {
+     p.drawPolyline(l);
+     const QRectF& bounding = l.boundingRect();
+     auto area = bounding.width() * bounding.height();
+@@ -1663,7 +1663,7 @@ void CGisItemTrk::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRectF>
+     // use the track's ordinary color
+     penForeground.setColor(color);
+     p.setPen(penForeground);
+-    for (const QPolygonF& l : qAsConst(lines)) {
++    for (const QPolygonF& l : std::as_const(lines)) {
+       p.drawPolyline(l);
+     }
+   } else if (getColorizeSource() == "activity") {
+@@ -1673,7 +1673,7 @@ void CGisItemTrk::drawItem(QPainter& p, const QPolygonF& viewport, QList<QRectF>
+   }
+ 
+   if (isNogo()) {
+-    for (const QPolygonF& l : qAsConst(lines)) {
++    for (const QPolygonF& l : std::as_const(lines)) {
+       CDraw::nogos(l, extViewport, p, 80);
+     }
+   }
+@@ -2093,7 +2093,7 @@ void CGisItemTrk::drawHighlight(QPainter& p) {
+ 
+   p.setPen(QPen(QColor(255, 0, 0, 100), penWidthHi, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+ 
+-  for (const QPolygonF& line : qAsConst(lines)) {
++  for (const QPolygonF& line : std::as_const(lines)) {
+     p.drawPolyline(line);
+   }
+ }
+@@ -2588,7 +2588,7 @@ void CGisItemTrk::updateVisuals(quint32 visuals, const QString& who) {
+     dlgDetails->updateData();
+   }
+ 
+-  for (INotifyTrk* visual : qAsConst(registeredVisuals)) {
++  for (INotifyTrk* visual : std::as_const(registeredVisuals)) {
+     if (visuals & visual->mask) {
+       visual->updateData();
+     }
+@@ -2606,7 +2606,7 @@ void CGisItemTrk::setMouseFocusVisuals(const CTrackData::trkpt_t* pt) {
+     dlgDetails->setMouseFocus(pt);
+   }
+ 
+-  for (INotifyTrk* visual : qAsConst(registeredVisuals)) {
++  for (INotifyTrk* visual : std::as_const(registeredVisuals)) {
+     visual->setMouseFocus(pt);
+   }
+ }
+@@ -2616,7 +2616,7 @@ void CGisItemTrk::setMouseRangeFocusVisuals(const CTrackData::trkpt_t* pt1, cons
+     dlgDetails->setMouseRangeFocus(pt1, pt2);
+   }
+ 
+-  for (INotifyTrk* visual : qAsConst(registeredVisuals)) {
++  for (INotifyTrk* visual : std::as_const(registeredVisuals)) {
+     visual->setMouseRangeFocus(pt1, pt2);
+   }
+ }
+@@ -2626,7 +2626,7 @@ void CGisItemTrk::setMouseClickFocusVisuals(const CTrackData::trkpt_t* pt) {
+     dlgDetails->setMouseClickFocus(pt);
+   }
+ 
+-  for (INotifyTrk* visual : qAsConst(registeredVisuals)) {
++  for (INotifyTrk* visual : std::as_const(registeredVisuals)) {
+     visual->setMouseClickFocus(pt);
+   }
+ }
+diff --git a/src/qmapshack/gis/trk/filter/filter.cpp b/src/qmapshack/gis/trk/filter/filter.cpp
+index 4361197de961..d654dba81d41 100644
+--- a/src/qmapshack/gis/trk/filter/filter.cpp
++++ b/src/qmapshack/gis/trk/filter/filter.cpp
+@@ -97,7 +97,7 @@ void CGisItemTrk::filterRemoveInvalidPoints() {
+ 
+   for (CTrackData::trkseg_t& seg : trk.segs) {
+     QVector<CTrackData::trkpt_t> pts;
+-    for (const CTrackData::trkpt_t& pt : qAsConst(seg.pts)) {
++    for (const CTrackData::trkpt_t& pt : std::as_const(seg.pts)) {
+       if (pt.isInvalid(CTrackData::trkpt_t::invalid_e(invalidMask))) {
+         nothingDone = false;
+         continue;
+@@ -130,7 +130,7 @@ void CGisItemTrk::filterDelete() {
+ 
+   for (CTrackData::trkseg_t& seg : trk.segs) {
+     QVector<CTrackData::trkpt_t> pts;
+-    for (const CTrackData::trkpt_t& pt : qAsConst(seg.pts)) {
++    for (const CTrackData::trkpt_t& pt : std::as_const(seg.pts)) {
+       if (pt.isHidden()) {
+         nothingDone = false;
+         continue;
+@@ -437,7 +437,7 @@ void CGisItemTrk::filterSplitSegment() {
+   }
+ 
+   int part = 0;
+-  for (const CTrackData::trkseg_t& seg : qAsConst(trk.segs)) {
++  for (const CTrackData::trkseg_t& seg : std::as_const(trk.segs)) {
+     if (0 < seg.pts.count()) {
+       qint32 idx1 = seg.pts[0].idxTotal;
+       qint32 idx2 = seg.pts[seg.pts.count() - 1].idxTotal;
+@@ -533,7 +533,7 @@ void CGisItemTrk::filterLoopsCut(qreal minLoopLength) {
+ 
+       bool firstCycle = true;
+       CTrackData::trkpt_t prevScannedPt;
+-      for (const CTrackData::trkpt_t& scannedPt : qAsConst(pts)) {
++      for (const CTrackData::trkpt_t& scannedPt : std::as_const(pts)) {
+         if (scannedPt.idxTotal == pts[pts.size() - 2].idxTotal) {
+           break;
+         }
+diff --git a/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp b/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp
+index 535811a677b1..6cf2f9536ed1 100644
+--- a/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp
++++ b/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp
+@@ -267,7 +267,7 @@ void CDetailsGeoCache::slotRequestFinished(QNetworkReply* reply) {
+ 
+   bool watchOut = false;
+   QStringList lines = asw.split("\n");
+-  for (const QString& line : qAsConst(lines)) {
++  for (const QString& line : std::as_const(lines)) {
+     if (!watchOut && re1.match(line).hasMatch()) {
+       watchOut = true;
+     } else if (watchOut) {
+diff --git a/src/qmapshack/gis/wpt/CGisItemWpt.cpp b/src/qmapshack/gis/wpt/CGisItemWpt.cpp
+index 5460e9db17ef..3409a627bb99 100644
+--- a/src/qmapshack/gis/wpt/CGisItemWpt.cpp
++++ b/src/qmapshack/gis/wpt/CGisItemWpt.cpp
+@@ -1180,7 +1180,7 @@ QMap<searchProperty_e, CGisItemWpt::fSearch> CGisItemWpt::initKeywordLambdaMap()
+   });
+   map.insert(eSearchPropertyGeocacheLoggedBy, [](CGisItemWpt* item) {
+     searchValue_t searchValue;
+-    for (const geocachelog_t& log : qAsConst(item->geocache.logs)) {
++    for (const geocachelog_t& log : std::as_const(item->geocache.logs)) {
+       searchValue.str1 += log.finder + ", ";
+     }
+     return searchValue;
+diff --git a/src/qmapshack/grid/CGrid.cpp b/src/qmapshack/grid/CGrid.cpp
+index a8c4cec1d278..16c57d6bc493 100644
+--- a/src/qmapshack/grid/CGrid.cpp
++++ b/src/qmapshack/grid/CGrid.cpp
+@@ -297,22 +297,22 @@ void CGrid::draw(QPainter& p, const QRect& rect) {
+     int yoff = fm.height() + fm.ascent();
+     int xoff = fm.horizontalAdvance("XX.XXXX") >> 1;
+ 
+-    for (const val_t& val : qAsConst(horzTopTicks)) {
++    for (const val_t& val : std::as_const(horzTopTicks)) {
+       CDraw::text(qAbs(val.val) < 1.e-5 ? "0" : QString("%1%2").arg(val.val * RAD_TO_DEG).arg(QChar(0260)), p,
+                   QPoint(val.pos, yoff), textColor);
+     }
+ 
+-    for (const val_t& val : qAsConst(horzBtmTicks)) {
++    for (const val_t& val : std::as_const(horzBtmTicks)) {
+       CDraw::text(qAbs(val.val) < 1.e-5 ? "0" : QString("%1%2").arg(val.val * RAD_TO_DEG).arg(QChar(0260)), p,
+                   QPoint(val.pos, h), textColor);
+     }
+ 
+-    for (const val_t& val : qAsConst(vertLftTicks)) {
++    for (const val_t& val : std::as_const(vertLftTicks)) {
+       CDraw::text(qAbs(val.val) < 1.e-5 ? "0" : QString("%1%2").arg(val.val * RAD_TO_DEG).arg(QChar(0260)), p,
+                   QPoint(xoff, val.pos), textColor);
+     }
+ 
+-    for (const val_t& val : qAsConst(vertRgtTicks)) {
++    for (const val_t& val : std::as_const(vertRgtTicks)) {
+       CDraw::text(qAbs(val.val) < 1.e-5 ? "0" : QString("%1%2").arg(val.val * RAD_TO_DEG).arg(QChar(0260)), p,
+                   QPoint(w - xoff, val.pos), textColor);
+     }
+@@ -321,19 +321,19 @@ void CGrid::draw(QPainter& p, const QRect& rect) {
+     int yoff = fm.height() + fm.ascent();
+     int xoff = fm.horizontalAdvance("XXXX") >> 1;
+ 
+-    for (const val_t& val : qAsConst(horzTopTicks)) {
++    for (const val_t& val : std::as_const(horzTopTicks)) {
+       CDraw::text(QString("%1").arg(qint32(val.val / 1000)), p, QPoint(val.pos, yoff), textColor);
+     }
+ 
+-    for (const val_t& val : qAsConst(horzBtmTicks)) {
++    for (const val_t& val : std::as_const(horzBtmTicks)) {
+       CDraw::text(QString("%1").arg(qint32(val.val / 1000)), p, QPoint(val.pos, h), textColor);
+     }
+ 
+-    for (const val_t& val : qAsConst(vertLftTicks)) {
++    for (const val_t& val : std::as_const(vertLftTicks)) {
+       CDraw::text(QString("%1").arg(qint32(val.val / 1000)), p, QPoint(xoff, val.pos), textColor);
+     }
+ 
+-    for (const val_t& val : qAsConst(vertRgtTicks)) {
++    for (const val_t& val : std::as_const(vertRgtTicks)) {
+       CDraw::text(QString("%1").arg(qint32(val.val / 1000)), p, QPoint(w - xoff, val.pos), textColor);
+     }
+   }
+diff --git a/src/qmapshack/grid/CProjWizard.cpp b/src/qmapshack/grid/CProjWizard.cpp
+index 3c4ccf316df1..8cd5a1ce6b69 100644
+--- a/src/qmapshack/grid/CProjWizard.cpp
++++ b/src/qmapshack/grid/CProjWizard.cpp
+@@ -52,7 +52,7 @@ CProjWizard::CProjWizard(QLineEdit& line) : QDialog(CMainWindow::getBestWidgetFo
+   }
+   std::sort(list.begin(), list.end(), mitabLessThan);
+ 
+-  for (const mitab_entry_t& entry : qAsConst(list)) {
++  for (const mitab_entry_t& entry : std::as_const(list)) {
+     comboDatum->addItem(entry.name, entry.idx);
+   }
+ 
+diff --git a/src/qmapshack/helpers/CFileExt.h b/src/qmapshack/helpers/CFileExt.h
+index b2ffa60aed51..31ddf114435f 100644
+--- a/src/qmapshack/helpers/CFileExt.h
++++ b/src/qmapshack/helpers/CFileExt.h
+@@ -37,7 +37,7 @@ class CFileExt : public QFile {
+   }
+ 
+   void free() {
+-    for (uchar* p : qAsConst(mappedSections)) {
++    for (uchar* p : std::as_const(mappedSections)) {
+       unmap(p);
+     }
+     mappedSections.clear();
+diff --git a/src/qmapshack/helpers/CLimit.cpp b/src/qmapshack/helpers/CLimit.cpp
+index 7d0c61188b40..f8145eea30e8 100644
+--- a/src/qmapshack/helpers/CLimit.cpp
++++ b/src/qmapshack/helpers/CLimit.cpp
+@@ -161,7 +161,7 @@ void CLimit::setMax(const qreal& val) {
+ QString CLimit::getUnit() const { return funcGetUnit(source); }
+ 
+ void CLimit::updateSys() {
+-  for (CLimit* limit : qAsConst(allLimits)) {
++  for (CLimit* limit : std::as_const(allLimits)) {
+     if (limit != this) {
+       limit->updateSys(source);
+     }
+diff --git a/src/qmapshack/helpers/CToolBarSetupDialog.cpp b/src/qmapshack/helpers/CToolBarSetupDialog.cpp
+index a77c9dbf8e44..f0e88d72ff4e 100644
+--- a/src/qmapshack/helpers/CToolBarSetupDialog.cpp
++++ b/src/qmapshack/helpers/CToolBarSetupDialog.cpp
+@@ -79,7 +79,7 @@ void CToolBarSetupDialog::configure() const {
+       selectedItems << new CDialogItem(action->icon(), "---------------", action->objectName());
+     } else {
+       QString configuredName = action->objectName();
+-      for (QListWidgetItem* const& item : qAsConst(availableItems)) {
++      for (QListWidgetItem* const& item : std::as_const(availableItems)) {
+         if (configuredName == dynamic_cast<CDialogItem* const>(item)->actionName) {
+           selectedItems << item;
+           break;
+diff --git a/src/qmapshack/helpers/CValue.cpp b/src/qmapshack/helpers/CValue.cpp
+index 965fb1090b14..776c036b0d92 100644
+--- a/src/qmapshack/helpers/CValue.cpp
++++ b/src/qmapshack/helpers/CValue.cpp
+@@ -70,7 +70,7 @@ const QVariant& CValue::operator=(const QVariant& v) {
+     SETTINGS;
+     cfg.setValue(cfgTag, v);
+ 
+-    for (CValue* value : qAsConst(allValues)) {
++    for (CValue* value : std::as_const(allValues)) {
+       if (value != this) {
+         value->updateSys(cfgTag, v);
+       }
+diff --git a/src/qmapshack/helpers/CWptIconDialog.cpp b/src/qmapshack/helpers/CWptIconDialog.cpp
+index f6573330f02a..56430da2590b 100644
+--- a/src/qmapshack/helpers/CWptIconDialog.cpp
++++ b/src/qmapshack/helpers/CWptIconDialog.cpp
+@@ -45,7 +45,7 @@ void CWptIconDialog::setupList(QObject* obj) {
+ 
+   std::sort(keys.begin(), keys.end(), sortByString);
+ 
+-  for (const QString& key : qAsConst(keys)) {
++  for (const QString& key : std::as_const(keys)) {
+     const QString& icon = wptIcons[key].path;
+     QPixmap pixmap = CWptIconManager::self().loadIcon(icon);
+ 
+diff --git a/src/qmapshack/helpers/CWptIconManager.cpp b/src/qmapshack/helpers/CWptIconManager.cpp
+index 93c9c2e70f6b..041f45983b27 100644
+--- a/src/qmapshack/helpers/CWptIconManager.cpp
++++ b/src/qmapshack/helpers/CWptIconManager.cpp
+@@ -40,7 +40,7 @@ CWptIconManager::~CWptIconManager() {
+ }
+ 
+ void CWptIconManager::removeNumberedBullets() {
+-  for (const QString& filename : qAsConst(mapNumberedBullets)) {
++  for (const QString& filename : std::as_const(mapNumberedBullets)) {
+     QFile::remove(filename);
+   }
+   mapNumberedBullets.clear();
+@@ -304,7 +304,7 @@ QMenu* CWptIconManager::getWptIconMenu(const QString& title, QObject* obj, const
+ 
+   std::sort(keys.begin(), keys.end(), sortByString);
+ 
+-  for (const QString& key : qAsConst(keys)) {
++  for (const QString& key : std::as_const(keys)) {
+     const QString& icon = wptIcons[key].path;
+     QPixmap pixmap = loadIcon(icon);
+ 
+diff --git a/src/qmapshack/map/CMapDraw.cpp b/src/qmapshack/map/CMapDraw.cpp
+index 606cb03ef905..4748bb3b154b 100644
+--- a/src/qmapshack/map/CMapDraw.cpp
++++ b/src/qmapshack/map/CMapDraw.cpp
+@@ -89,7 +89,7 @@ void CMapDraw::setupMapPath(const QString& path) {
+ void CMapDraw::setupMapPath(const QStringList& paths) {
+   mapPaths = paths;
+ 
+-  for (CMapDraw* map : qAsConst(maps)) {
++  for (CMapDraw* map : std::as_const(maps)) {
+     QStringList keys;
+     map->saveActiveMapsList(keys);
+     map->buildMapList();
+@@ -269,7 +269,7 @@ void CMapDraw::buildMapList() {
+ 
+   QSet<QString> maps;
+ 
+-  for (const QString& path : qAsConst(mapPaths)) {
++  for (const QString& path : std::as_const(mapPaths)) {
+     QDir dir(path);
+ 
+     // find available maps
+diff --git a/src/qmapshack/map/CMapGEMF.cpp b/src/qmapshack/map/CMapGEMF.cpp
+index 1e588f065b45..5291007359a3 100644
+--- a/src/qmapshack/map/CMapGEMF.cpp
++++ b/src/qmapshack/map/CMapGEMF.cpp
+@@ -104,7 +104,7 @@ CMapGEMF::CMapGEMF(const QString& filename, CMapDraw* parent) : IMap(eFeatVisibi
+ 
+   for (quint32 i = 0; i <= MAX_ZOOM_LEVEL; i++) {
+     QList<range_t> rangeZoom;
+-    for (const range_t& range : qAsConst(ranges)) {
++    for (const range_t& range : std::as_const(ranges)) {
+       if (range.zoomlevel == i) {
+         rangeZoom << range;
+         minZoom = qMin(i, minZoom);
+@@ -200,7 +200,7 @@ void CMapGEMF::draw(IDrawContext::buffer_t& buf) {
+ quint64 CMapGEMF::getFilenameFromAddress(const quint64 offset, QString& filename) {
+   quint64 temp = offset;
+ 
+-  for (const gemffile_t& gf : qAsConst(files)) {
++  for (const gemffile_t& gf : std::as_const(files)) {
+     if (temp < gf.size) {
+       filename = gf.filename;
+ 
+diff --git a/src/qmapshack/map/CMapIMG.cpp b/src/qmapshack/map/CMapIMG.cpp
+index a9cac6c5f6a4..c660963522e9 100644
+--- a/src/qmapshack/map/CMapIMG.cpp
++++ b/src/qmapshack/map/CMapIMG.cpp
+@@ -636,7 +636,7 @@ void CMapIMG::readBasics() {
+ 
+   // combine copyright sections
+   copyright.clear();
+-  for (const QString& str : qAsConst(copyrights)) {
++  for (const QString& str : std::as_const(copyrights)) {
+     if (!copyright.isEmpty()) {
+       copyright += "\n";
+     }
+@@ -1025,7 +1025,7 @@ void CMapIMG::processPrimaryMapData() {
+    * Query all subfiles for possible maplevels.
+    * Exclude basemap to avoid pollution.
+    */
+-  for (const subfile_desc_t& subfile : qAsConst(subfiles)) {
++  for (const subfile_desc_t& subfile : std::as_const(subfiles)) {
+     for (const maplevel_t& maplevel : subfile.maplevels) {
+       if (!maplevel.inherited) {
+         map_level_t ml;
+@@ -1221,7 +1221,7 @@ void CMapIMG::loadVisibleData(bool fast, polytype_t& polygons, polytype_t& polyl
+   }
+ #endif
+ 
+-  for (const subfile_desc_t& subfile : qAsConst(subfiles)) {
++  for (const subfile_desc_t& subfile : std::as_const(subfiles)) {
+     //        qDebug() << "-------";
+     //        qDebug() << (viewport.topLeft() * RAD_TO_DEG) << (viewport.bottomRight() * RAD_TO_DEG);
+     //        qDebug() << (subfile.area.topLeft() * RAD_TO_DEG) << (subfile.area.bottomRight() * RAD_TO_DEG);
+@@ -1925,7 +1925,7 @@ void CMapIMG::drawLabels(QPainter& p, const QVector<strlbl_t>& lbls) {
+ void CMapIMG::drawText(QPainter& p) {
+   p.setPen(Qt::black);
+ 
+-  for (const textpath_t& textpath : qAsConst(textpaths)) {
++  for (const textpath_t& textpath : std::as_const(textpaths)) {
+     QPainterPath path;
+     QFont font = textpath.font;
+     QFontMetricsF fm(font);
+@@ -2250,7 +2250,7 @@ void CMapIMG::getInfoPolygons(const QPoint& pt, QMultiMap<QString, QString>& dic
+ bool CMapIMG::findPolylineCloseBy(const QPointF& pt1, const QPointF& pt2, qint32 threshold,
+                                   QPolygonF& polyline) /* override */
+ {
+-  for (const CGarminPolygon& line : qAsConst(polylines)) {
++  for (const CGarminPolygon& line : std::as_const(polylines)) {
+     if (line.pixel.size() < 2) {
+       continue;
+     }
+diff --git a/src/qmapshack/map/CMapJNX.cpp b/src/qmapshack/map/CMapJNX.cpp
+index 02e3e681779b..e7656dcbf539 100644
+--- a/src/qmapshack/map/CMapJNX.cpp
++++ b/src/qmapshack/map/CMapJNX.cpp
+@@ -276,7 +276,7 @@ void CMapJNX::draw(IDrawContext::buffer_t& buf) /* override */
+   p.setOpacity(getOpacity() / 100.0);
+   p.translate(-pp);
+ 
+-  for (const file_t& mapFile : qAsConst(files)) {
++  for (const file_t& mapFile : std::as_const(files)) {
+     if (!viewport.intersects(mapFile.bbox)) {
+       continue;
+     }
+diff --git a/src/qmapshack/map/CMapList.cpp b/src/qmapshack/map/CMapList.cpp
+index 4faf2f41f50f..da02f06c486c 100644
+--- a/src/qmapshack/map/CMapList.cpp
++++ b/src/qmapshack/map/CMapList.cpp
+@@ -95,7 +95,7 @@ void CMapList::sort() {
+   std::sort(items1.begin(), items1.end(), &sortByName<CMapItem>);
+ 
+   QList<QTreeWidgetItem*> items2;
+-  for (CMapItem* item : qAsConst(items1)) {
++  for (CMapItem* item : std::as_const(items1)) {
+     items2 << item;
+   }
+   treeWidget->addTopLevelItems(items2);
+diff --git a/src/qmapshack/map/CMapTMS.cpp b/src/qmapshack/map/CMapTMS.cpp
+index 875d8737e934..6dff830eccac 100644
+--- a/src/qmapshack/map/CMapTMS.cpp
++++ b/src/qmapshack/map/CMapTMS.cpp
+@@ -155,7 +155,7 @@ void CMapTMS::getLayers(QListWidget& list) /* override */
+   list.clear();
+   if (layers.size() > 1) {
+     int i = 0;
+-    for (const layer_t& layer : qAsConst(layers)) {
++    for (const layer_t& layer : std::as_const(layers)) {
+       QListWidgetItem* item = new QListWidgetItem(layer.title, &list);
+       int enabled = layer.enabled;
+       item->setData(Qt::UserRole, i++);
+@@ -203,7 +203,7 @@ void CMapTMS::loadConfig(QSettings& cfg) {
+ 
+   // enable layers stored in configuration
+   enabled = cfg.value("enabledLayers", enabled).toStringList();
+-  for (const QString& str : qAsConst(enabled)) {
++  for (const QString& str : std::as_const(enabled)) {
+     int idx = str.toInt();
+     if (idx < layers.size()) {
+       layers[idx].enabled = true;
+@@ -312,7 +312,7 @@ void CMapTMS::draw(IDrawContext::buffer_t& buf) /* override */
+   }
+ 
+   // draw layers
+-  for (const layer_t& layer : qAsConst(layers)) {
++  for (const layer_t& layer : std::as_const(layers)) {
+     if (!layer.enabled) {
+       continue;
+     }
+diff --git a/src/qmapshack/map/CMapVRT.cpp b/src/qmapshack/map/CMapVRT.cpp
+index a77448830e4f..7ddd142c41d1 100644
+--- a/src/qmapshack/map/CMapVRT.cpp
++++ b/src/qmapshack/map/CMapVRT.cpp
+@@ -210,7 +210,7 @@ bool CMapVRT::testForOverviews(const QString& filename) {
+     return false;
+   }
+ 
+-  for (const QString& file : qAsConst(files)) {
++  for (const QString& file : std::as_const(files)) {
+     using pGDALDataset = QSharedPointer<GDALDataset>;
+     pGDALDataset _dataset = pGDALDataset((GDALDataset*)GDALOpen(file.toUtf8(), GA_ReadOnly), GDALClose);
+     // _dataset will be destroyed automatically by shared pointer.
+diff --git a/src/qmapshack/map/CMapWMTS.cpp b/src/qmapshack/map/CMapWMTS.cpp
+index c52969036f7a..8ca3e467e912 100644
+--- a/src/qmapshack/map/CMapWMTS.cpp
++++ b/src/qmapshack/map/CMapWMTS.cpp
+@@ -258,7 +258,7 @@ void CMapWMTS::getLayers(QListWidget& list) {
+   list.clear();
+   if (layers.size() > 1) {
+     int i = 0;
+-    for (const layer_t& layer : qAsConst(layers)) {
++    for (const layer_t& layer : std::as_const(layers)) {
+       QListWidgetItem* item = new QListWidgetItem(layer.title, &list);
+       bool enabled = layer.enabled;
+       item->setData(Qt::UserRole, i++);
+@@ -307,7 +307,7 @@ void CMapWMTS::loadConfig(QSettings& cfg) /* override */
+ 
+   // enable layers stored in configuration
+   enabled = cfg.value("enabledLayers", enabled).toStringList();
+-  for (const QString& str : qAsConst(enabled)) {
++  for (const QString& str : std::as_const(enabled)) {
+     int idx = str.toInt();
+     if (idx < layers.size()) {
+       layers[idx].enabled = true;
+@@ -381,7 +381,7 @@ void CMapWMTS::draw(IDrawContext::buffer_t& buf) /* override */
+   QRectF viewport(QPointF(x1, y1) * RAD_TO_DEG, QPointF(x2, y2) * RAD_TO_DEG);
+ 
+   // draw layers
+-  for (const layer_t& layer : qAsConst(layers)) {
++  for (const layer_t& layer : std::as_const(layers)) {
+     if (!layer.boundingBox.intersects(viewport) || !layer.enabled) {
+       continue;
+     }
+diff --git a/src/qmapshack/map/IMapOnline.cpp b/src/qmapshack/map/IMapOnline.cpp
+index e6e08d629610..4ad566e78517 100644
+--- a/src/qmapshack/map/IMapOnline.cpp
++++ b/src/qmapshack/map/IMapOnline.cpp
+@@ -57,7 +57,7 @@ void IMapOnline::slotQueueChanged() {
+ 
+       QNetworkRequest request;
+       request.setUrl(url);
+-      for (const rawHeaderItem_t& item : qAsConst(rawHeaderItems)) {
++      for (const rawHeaderItem_t& item : std::as_const(rawHeaderItems)) {
+         request.setRawHeader(item.name.toLatin1(), item.value.toLatin1());
+       }
+       accessManager->get(request);
+diff --git a/src/qmapshack/mouse/CMouseNormal.cpp b/src/qmapshack/mouse/CMouseNormal.cpp
+index 2da0938f9074..6c1e8b555a59 100644
+--- a/src/qmapshack/mouse/CMouseNormal.cpp
++++ b/src/qmapshack/mouse/CMouseNormal.cpp
+@@ -266,7 +266,7 @@ void CMouseNormal::draw(QPainter& p, CCanvas::redraw_e needsRedraw, const QRect&
+         break;
+       }
+ 
+-      for (IGisItem* item : qAsConst(items)) {
++      for (IGisItem* item : std::as_const(items)) {
+         item->drawHighlight(p);
+         screenUnclutter->addItem(item);
+       }
+diff --git a/src/qmapshack/mouse/CMouseRuler.cpp b/src/qmapshack/mouse/CMouseRuler.cpp
+index 59d79f959f4d..1d9c5c130bc2 100644
+--- a/src/qmapshack/mouse/CMouseRuler.cpp
++++ b/src/qmapshack/mouse/CMouseRuler.cpp
+@@ -148,7 +148,7 @@ void CMouseRuler::slotToWpt() {
+ 
+   bool first = true;
+   QMutexLocker lock(&IGisItem::mutexItems);
+-  for (const QPointF& pt : qAsConst(ruler)) {
++  for (const QPointF& pt : std::as_const(ruler)) {
+     if (!first) {
+       // update name after the first one
+       name = CGisItemWpt::getLastName(name);
+diff --git a/src/qmapshack/mouse/CMouseSelect.cpp b/src/qmapshack/mouse/CMouseSelect.cpp
+index afce8cc31e51..89a8604d4b43 100644
+--- a/src/qmapshack/mouse/CMouseSelect.cpp
++++ b/src/qmapshack/mouse/CMouseSelect.cpp
+@@ -79,7 +79,7 @@ void CMouseSelect::findItems(QList<IGisItem*>& items) {
+     cntTrk = 0;
+     cntRte = 0;
+     cntOvl = 0;
+-    for (IGisItem* item : qAsConst(items)) {
++    for (IGisItem* item : std::as_const(items)) {
+       itemKeys << item->getKey();
+       switch (item->type()) {
+         case IGisItem::eTypeWpt:
+@@ -154,11 +154,11 @@ void CMouseSelect::draw(QPainter& p, CCanvas::redraw_e needsRedraw, const QRect&
+   QList<IGisItem*> items;
+   findItems(items);
+ 
+-  for (IGisItem* item : qAsConst(items)) {
++  for (IGisItem* item : std::as_const(items)) {
+     item->drawHighlight(p);
+   }
+ 
+-  for (QPointF pos : qAsConst(posPoiHighlight)) {
++  for (QPointF pos : std::as_const(posPoiHighlight)) {
+     if (pos != NOPOINTF) {
+       gis->convertRad2Px(pos);
+       QRectF r(0, 0, 42, 42);
+diff --git a/src/qmapshack/mouse/CScrOptUnclutter.cpp b/src/qmapshack/mouse/CScrOptUnclutter.cpp
+index 1c6ac6235c6b..758d25f0356d 100644
+--- a/src/qmapshack/mouse/CScrOptUnclutter.cpp
++++ b/src/qmapshack/mouse/CScrOptUnclutter.cpp
+@@ -61,7 +61,7 @@ void CScrOptUnclutter::clear() {
+ void CScrOptUnclutter::mouseMove(const QPoint& pos) {
+   IScrOpt::mouseMove(pos);
+ 
+-  for (const item_t& item : qAsConst(items)) {
++  for (const item_t& item : std::as_const(items)) {
+     if (item.active.contains(mousePos) || item.text.contains(mousePos)) {
+       if (!doSpecialCursor) {
+         CCanvas::setOverrideCursor(Qt::PointingHandCursor, "CScrOptUnclutter::mouseMoveEvent");
+@@ -97,7 +97,7 @@ IGisItem::key_t CScrOptUnclutter::getItemKey(int index) {
+ }
+ 
+ const CScrOptUnclutter::item_t* CScrOptUnclutter::selectItem(const QPoint& point) {
+-  for (const item_t& item : qAsConst(items)) {
++  for (const item_t& item : std::as_const(items)) {
+     if (item.active.contains(point) || item.text.contains(point)) {
+       return &item;
+     }
+@@ -124,7 +124,7 @@ void CScrOptUnclutter::draw(QPainter& p) {
+     }
+   }
+ 
+-  for (const item_t& item : qAsConst(items)) {
++  for (const item_t& item : std::as_const(items)) {
+     p.setPen(Qt::NoPen);
+     p.setBrush(QColor(255, 255, 255, 255));
+     p.drawEllipse(item.area.center(), 20, 20);
+diff --git a/src/qmapshack/mouse/line/CLineOpSelectRange.cpp b/src/qmapshack/mouse/line/CLineOpSelectRange.cpp
+index ef4778608751..4a6b89d2c5c9 100644
+--- a/src/qmapshack/mouse/line/CLineOpSelectRange.cpp
++++ b/src/qmapshack/mouse/line/CLineOpSelectRange.cpp
+@@ -159,7 +159,7 @@ void CLineOpSelectRange::drawFg(QPainter& p) {
+           r.moveCenter(points[i].pixel);
+           p.drawRect(r);
+ 
+-          for (const IGisLine::subpt_t& subpt : qAsConst(points[i].subpts)) {
++          for (const IGisLine::subpt_t& subpt : std::as_const(points[i].subpts)) {
+             p.drawEllipse(subpt.pixel, 2, 2);
+           }
+         }
+diff --git a/src/qmapshack/mouse/line/ILineOp.cpp b/src/qmapshack/mouse/line/ILineOp.cpp
+index a74cf01c2855..6e65900c008c 100644
+--- a/src/qmapshack/mouse/line/ILineOp.cpp
++++ b/src/qmapshack/mouse/line/ILineOp.cpp
+@@ -321,7 +321,7 @@ void ILineOp::tryRouting(IGisLine::point_t& pt1, IGisLine::point_t& pt2) const {
+   try {
+     if (CRouterSetup::self().calcRoute(pt1.coord, pt2.coord, subs) >= 0) {
+       pt1.subpts.clear();
+-      for (const QPointF& sub : qAsConst(subs)) {
++      for (const QPointF& sub : std::as_const(subs)) {
+         pt1.subpts << IGisLine::subpt_t(sub);
+       }
+     }
+@@ -350,7 +350,7 @@ void ILineOp::finalizeOperation(qint32 idx) {
+     if (idx > 0) {
+       IGisLine::point_t& pt1 = points[idx - 1];
+       pt1.subpts.clear();
+-      for (const QPointF& pt : qAsConst(subLineCoord1)) {
++      for (const QPointF& pt : std::as_const(subLineCoord1)) {
+         pt1.subpts << IGisLine::subpt_t(pt);
+       }
+     }
+@@ -358,7 +358,7 @@ void ILineOp::finalizeOperation(qint32 idx) {
+     if (idx < (points.size() - 1)) {
+       IGisLine::point_t& pt1 = points[idx];
+       pt1.subpts.clear();
+-      for (const QPointF& pt : qAsConst(subLineCoord2)) {
++      for (const QPointF& pt : std::as_const(subLineCoord2)) {
+         pt1.subpts << IGisLine::subpt_t(pt);
+       }
+     }
+diff --git a/src/qmapshack/mouse/line/IMouseEditLine.cpp b/src/qmapshack/mouse/line/IMouseEditLine.cpp
+index d3facb8ada0d..09193f5283c7 100644
+--- a/src/qmapshack/mouse/line/IMouseEditLine.cpp
++++ b/src/qmapshack/mouse/line/IMouseEditLine.cpp
+@@ -155,7 +155,7 @@ void IMouseEditLine::draw(QPainter& p, CCanvas::redraw_e needsRedraw, const QRec
+     pixelPts.clear();
+     pixelSubs.clear();
+ 
+-    for (const IGisLine::point_t& pt : qAsConst(points)) {
++    for (const IGisLine::point_t& pt : std::as_const(points)) {
+       pixelLine << pt.pixel;
+       pixelPts << pt.pixel;
+ 
+@@ -181,7 +181,7 @@ void IMouseEditLine::draw(QPainter& p, CCanvas::redraw_e needsRedraw, const QRec
+   p.setPen(Qt::NoPen);
+   p.setBrush(Qt::white);
+   QRect r1(0, 0, 9, 9);
+-  for (const QPointF& pt : qAsConst(pixelPts)) {
++  for (const QPointF& pt : std::as_const(pixelPts)) {
+     r1.moveCenter(pt.toPoint());
+     p.drawRect(r1);
+   }
+@@ -191,12 +191,12 @@ void IMouseEditLine::draw(QPainter& p, CCanvas::redraw_e needsRedraw, const QRec
+   p.setPen(Qt::NoPen);
+   p.setBrush(Qt::black);
+   QRect r2(0, 0, 7, 7);
+-  for (const QPointF& pt : qAsConst(pixelPts)) {
++  for (const QPointF& pt : std::as_const(pixelPts)) {
+     r2.moveCenter(pt.toPoint());
+     p.drawRect(r2);
+   }
+ 
+-  for (const QPointF& pt : qAsConst(pixelSubs)) {
++  for (const QPointF& pt : std::as_const(pixelSubs)) {
+     p.drawEllipse(pt, 2, 2);
+   }
+ 
+@@ -450,7 +450,7 @@ void IMouseEditLine::updateStatus() {
+   qreal lastEle = points[0].ele;
+   QPointF lastPos = points[0].coord;
+ 
+-  for (const IGisLine::point_t& pt1 : qAsConst(points)) {
++  for (const IGisLine::point_t& pt1 : std::as_const(points)) {
+     qreal delta = pt1.ele - lastEle;
+     if (qAbs(delta) > ASCENT_THRESHOLD) {
+       if (delta > 0) {
+diff --git a/src/qmapshack/plot/CPlotData.cpp b/src/qmapshack/plot/CPlotData.cpp
+index 4f5f1118b745..1f68f6b9556a 100644
+--- a/src/qmapshack/plot/CPlotData.cpp
++++ b/src/qmapshack/plot/CPlotData.cpp
+@@ -55,7 +55,7 @@ void CPlotData::setLimits() {
+     ymax = p.y();
+   }
+ 
+-  for (const line_t& line : qAsConst(lines)) {
++  for (const line_t& line : std::as_const(lines)) {
+     const QPolygonF& points = line.points;
+     for (const QPointF& p : points) {
+       if (p.y() != NOFLOAT) {
+diff --git a/src/qmapshack/plot/CPlotProfile.cpp b/src/qmapshack/plot/CPlotProfile.cpp
+index 1e98c2eede38..e38055ad8553 100644
+--- a/src/qmapshack/plot/CPlotProfile.cpp
++++ b/src/qmapshack/plot/CPlotProfile.cpp
+@@ -149,7 +149,7 @@ void CPlotProfile::updateData() {
+ 
+   if (trk->isInterpolationEnabled()) {
+     QPolygonF spline;
+-    for (const QPointF& pt : qAsConst(lineEle)) {
++    for (const QPointF& pt : std::as_const(lineEle)) {
+       spline << QPointF(pt.x(), trk->getElevationInterpolated(pt.x()) * elevationFactor);
+     }
+ 
+diff --git a/src/qmapshack/plot/IPlot.cpp b/src/qmapshack/plot/IPlot.cpp
+index 85216238d831..71565094ad30 100644
+--- a/src/qmapshack/plot/IPlot.cpp
++++ b/src/qmapshack/plot/IPlot.cpp
+@@ -1007,7 +1007,7 @@ void IPlot::drawDecoration(QPainter& p) {
+ 
+       // check if the mouse is near a waypoint
+       if (!showWptLabels) {
+-        for (const CPlotData::point_t& tag : qAsConst(data->tags)) {
++        for (const CPlotData::point_t& tag : std::as_const(data->tags)) {
+           int ptx = left + data->x().val2pt(tag.point.x());
+ 
+           if (qAbs(x - ptx) >= 10) {
+@@ -1085,7 +1085,7 @@ void IPlot::drawTags(QPainter& p) {
+   CPlotAxis& xaxis = data->x();
+   CPlotAxis& yaxis = data->y();
+ 
+-  for (const CPlotData::point_t& tag : qAsConst(data->tags)) {
++  for (const CPlotData::point_t& tag : std::as_const(data->tags)) {
+     int ptx = left + xaxis.val2pt(tag.point.x());
+     int pty = bottom - yaxis.val2pt(tag.point.y());
+ 
+@@ -1130,7 +1130,7 @@ void IPlot::drawTagLabels(QPainter& p) {
+ 
+   CPlotAxis& xaxis = data->x();
+ 
+-  for (const CPlotData::point_t& tag : qAsConst(data->tags)) {
++  for (const CPlotData::point_t& tag : std::as_const(data->tags)) {
+     int ptx = left + xaxis.val2pt(tag.point.x());
+ 
+     if (!((left < ptx) && (ptx < right))) {
+diff --git a/src/qmapshack/plot/ITrack.cpp b/src/qmapshack/plot/ITrack.cpp
+index daa811ac935e..00a9cd0ec6ca 100644
+--- a/src/qmapshack/plot/ITrack.cpp
++++ b/src/qmapshack/plot/ITrack.cpp
+@@ -90,7 +90,7 @@ void ITrack::updateData() {
+   }
+ 
+   line.clear();
+-  for (const QPointF& trkpt : qAsConst(coords)) {
++  for (const QPointF& trkpt : std::as_const(coords)) {
+     QPointF pt(trkpt.x(), trkpt.y());
+     proj.transform(pt, PJ_INV);
+     line << pt;
+diff --git a/src/qmapshack/poi/CPoiDraw.cpp b/src/qmapshack/poi/CPoiDraw.cpp
+index d517434d429a..fb492841fb06 100644
+--- a/src/qmapshack/poi/CPoiDraw.cpp
++++ b/src/qmapshack/poi/CPoiDraw.cpp
+@@ -104,7 +104,7 @@ void CPoiDraw::setupPoiPath(const QString& path) {
+ void CPoiDraw::setupPoiPath(const QStringList& paths) {
+   poiPaths = paths;
+ 
+-  for (CPoiDraw* poi : qAsConst(pois)) {
++  for (CPoiDraw* poi : std::as_const(pois)) {
+     QStringList keys;
+     poi->saveActivePoisList(keys);
+     poi->buildPoiList();
+@@ -180,7 +180,7 @@ void CPoiDraw::buildPoiList() {
+   QMutexLocker lock(&CPoiFileItem::mutexActivePois);
+   poiList->clear();
+ 
+-  for (const QString& path : qAsConst(poiPaths)) {
++  for (const QString& path : std::as_const(poiPaths)) {
+     QDir dir(path);
+     // find available maps
+     const QStringList& files = dir.entryList(supportedFormats, QDir::Files | QDir::Readable, QDir::Name);
+diff --git a/src/qmapshack/poi/CPoiFilePOI.cpp b/src/qmapshack/poi/CPoiFilePOI.cpp
+index c111c6be2471..72b6f752ebab 100644
+--- a/src/qmapshack/poi/CPoiFilePOI.cpp
++++ b/src/qmapshack/poi/CPoiFilePOI.cpp
+@@ -127,7 +127,7 @@ void CPoiFilePOI::draw(IDrawContext::buffer_t& buf) {
+         if (poi->needsRedraw()) {
+           return;
+         }
+-        for (quint64 poiToDrawID : qAsConst(loadedPoisByArea)[categoryID][minLonM10][minLatM10]) {
++        for (quint64 poiToDrawID : std::as_const(loadedPoisByArea)[categoryID][minLonM10][minLatM10]) {
+           const CPoiItemPOI& poiToDraw = loadedPois[poiToDrawID];
+           QPointF pt = poiToDraw.getCoordinates();
+           poi->convertRad2Px(pt);
+@@ -158,7 +158,7 @@ void CPoiFilePOI::draw(IDrawContext::buffer_t& buf) {
+   }
+ 
+   // Draw Icons
+-  for (const poiGroup_t& poiGroup : qAsConst(displayedPois)) {
++  for (const poiGroup_t& poiGroup : std::as_const(displayedPois)) {
+     QFontMetricsF fm(CMainWindow::self().getMapFont());
+ 
+     QPixmap icon;
+@@ -220,7 +220,7 @@ bool CPoiFilePOI::findPoiCloseBy(const QPoint& px, QSet<IPoiItem>& poiItems, QLi
+ 
+   poiGroup_t poiGroup;
+   if (getPoiGroupCloseBy(px, poiGroup)) {
+-    for (quint64 key : qAsConst(poiGroup.pois)) {
++    for (quint64 key : std::as_const(poiGroup.pois)) {
+       poiItems.insert(loadedPois[key].toPoi());
+     }
+     posPoiHighlight.append(poiGroup.iconCenter);
+@@ -252,7 +252,7 @@ void CPoiFilePOI::findPoisIn(const QRectF& degRect, QSet<IPoiItem>& pois, QList<
+             !loadedPoisByArea[categoryID][minLonM10].contains(minLatM10)) {
+           loadPOIsFromFile(categoryID, minLonM10, minLatM10);
+         }
+-        for (quint64 poiFoundID : qAsConst(loadedPoisByArea)[categoryID][minLonM10][minLatM10]) {
++        for (quint64 poiFoundID : std::as_const(loadedPoisByArea)[categoryID][minLonM10][minLatM10]) {
+           const CPoiItemPOI& poiItemFound = loadedPois[poiFoundID];
+           if (!copiedItems.contains(poiItemFound.getKey())) {
+             // Maybe look through the whole code of selecting items from a map to avoid this conversion
+@@ -267,7 +267,7 @@ void CPoiFilePOI::findPoisIn(const QRectF& degRect, QSet<IPoiItem>& pois, QList<
+   }
+ 
+   // Find Highlights
+-  for (const poiGroup_t& poiGroup : qAsConst(displayedPois)) {
++  for (const poiGroup_t& poiGroup : std::as_const(displayedPois)) {
+     if (degRect.contains(poiGroup.iconCenter * RAD_TO_DEG)) {
+       posPoiHighlight.append(poiGroup.iconCenter);
+     }
+@@ -309,7 +309,7 @@ bool CPoiFilePOI::getToolTip(const QPoint& px, QString& str) const {
+       str += "<i>" + tr("Zoom in to see more details.") + "</i>";
+       if (poiGroup.pois.count() <= 10) {
+         str += "<br>\n" + tr("POIs at this point:");
+-        for (quint64 poiID : qAsConst(poiGroup.pois)) {
++        for (quint64 poiID : std::as_const(poiGroup.pois)) {
+           str += "<br>\n<b>" + loadedPois[poiID].getName() + "</b>";
+         }
+       }
+diff --git a/src/qmapshack/poi/CPoiList.cpp b/src/qmapshack/poi/CPoiList.cpp
+index 98d19b0b0895..fd2a92af59ca 100644
+--- a/src/qmapshack/poi/CPoiList.cpp
++++ b/src/qmapshack/poi/CPoiList.cpp
+@@ -73,7 +73,7 @@ void CPoiList::sort() {
+   std::sort(items1.begin(), items1.end(), &sortByName<CPoiFileItem>);
+ 
+   QList<QTreeWidgetItem*> items2;
+-  for (CPoiFileItem* item : qAsConst(items1)) {
++  for (CPoiFileItem* item : std::as_const(items1)) {
+     items2 << item;
+   }
+   treeWidget->addTopLevelItems(items2);
+diff --git a/src/qmapshack/print/CPrintDialog.cpp b/src/qmapshack/print/CPrintDialog.cpp
+index 03fb81e44e5f..2e838226f320 100644
+--- a/src/qmapshack/print/CPrintDialog.cpp
++++ b/src/qmapshack/print/CPrintDialog.cpp
+@@ -207,7 +207,7 @@ void CPrintDialog::slotPrint() {
+   int n = 0;
+   PROGRESS_SETUP(tr("Printing pages."), 0, N, this);
+ 
+-  for (const QPointF& pt : qAsConst(centers)) {
++  for (const QPointF& pt : std::as_const(centers)) {
+     if (!first) {
+       printer.newPage();
+     } else {
+diff --git a/src/qmapshack/qlgt/CQlgtWpt.cpp b/src/qmapshack/qlgt/CQlgtWpt.cpp
+index d50b83144b29..4fbf88fd4f6c 100644
+--- a/src/qmapshack/qlgt/CQlgtWpt.cpp
++++ b/src/qmapshack/qlgt/CQlgtWpt.cpp
+@@ -274,7 +274,7 @@ QDataStream& operator<<(QDataStream& s, CQlgtWpt& wpt) {
+ 
+     s3 << cache.logs.count();
+ 
+-    for (const CQlgtWpt::geocachelog_t& log : qAsConst(cache.logs)) {
++    for (const CQlgtWpt::geocachelog_t& log : std::as_const(cache.logs)) {
+       s3 << log.id;
+       s3 << log.date;
+       s3 << log.type;
+diff --git a/src/qmapshack/qlgt/CQmsDb.cpp b/src/qmapshack/qlgt/CQmsDb.cpp
+index 4044e522b330..675a6750ebba 100644
+--- a/src/qmapshack/qlgt/CQmsDb.cpp
++++ b/src/qmapshack/qlgt/CQmsDb.cpp
+@@ -117,7 +117,7 @@ void CQmsDb::addFolder(CQlgtFolder& folder) {
+       generate key and info text properly
+    */
+   CDBProject project(folder);
+-  for (quint64 id : qAsConst(folder.items)) {
++  for (quint64 id : std::as_const(folder.items)) {
+     quint64 idChild = mapItemIDs[id];
+     query.prepare("SELECT type FROM items WHERE id=:id");
+     query.bindValue(":id", idChild);
+diff --git a/src/qmapshack/realtime/IRtRecord.cpp b/src/qmapshack/realtime/IRtRecord.cpp
+index 894f07e55e80..a5b1841aa42e 100644
+--- a/src/qmapshack/realtime/IRtRecord.cpp
++++ b/src/qmapshack/realtime/IRtRecord.cpp
+@@ -111,7 +111,7 @@ void IRtRecord::reset() {
+ 
+ void IRtRecord::draw(QPainter& p, const QPolygonF& viewport, QList<QRectF>& blockedAreas, CRtDraw* rt) {
+   QPolygonF tmp;
+-  for (const CTrackData::trkpt_t& trkpt : qAsConst(track)) {
++  for (const CTrackData::trkpt_t& trkpt : std::as_const(track)) {
+     tmp << QPointF(trkpt.lon * DEG_TO_RAD, trkpt.lat * DEG_TO_RAD);
+   }
+ 
+diff --git a/src/qmapshack/widgets/CDateTimeEditor.cpp b/src/qmapshack/widgets/CDateTimeEditor.cpp
+index 8a6c3b94d679..b3ec5da21d94 100644
+--- a/src/qmapshack/widgets/CDateTimeEditor.cpp
++++ b/src/qmapshack/widgets/CDateTimeEditor.cpp
+@@ -126,7 +126,7 @@ void CDateTimeEditor::paintEvent(QPaintEvent* /*event*/) {
+   }
+ 
+   painter.setRenderHint(QPainter::Antialiasing);
+-  for (const CharacterInfo& c : qAsConst(m_characters)) {
++  for (const CharacterInfo& c : std::as_const(m_characters)) {
+     const QRect r = getCharacterRect(c.m_position);
+     if (c.m_position == m_selectedPosition) {
+       painter.setPen(pal.highlightedText().color());
+@@ -326,7 +326,7 @@ bool CDateTimeEditor::selectFirstPosition() {
+   m_selectedPosition = -1;
+   m_selectedGroup = NONE;
+ 
+-  for (const CharacterInfo& c : qAsConst(m_characters)) {
++  for (const CharacterInfo& c : std::as_const(m_characters)) {
+     if (c.isEditable()) {
+       found = true;
+       m_selectedPosition = c.m_position;
+diff --git a/src/qmapshack/widgets/CSelectDoubleListWidget.cpp b/src/qmapshack/widgets/CSelectDoubleListWidget.cpp
+index bfc9e533fceb..888f07c396f7 100644
+--- a/src/qmapshack/widgets/CSelectDoubleListWidget.cpp
++++ b/src/qmapshack/widgets/CSelectDoubleListWidget.cpp
+@@ -145,7 +145,7 @@ void CSelectDoubleListWidget::slotUp() const {
+   std::sort(indices.begin(), indices.end());
+ 
+   int i = 0;
+-  for (int index : qAsConst(indices)) {
++  for (int index : std::as_const(indices)) {
+     if (index > i) {
+       listSelected->insertItem(index - 1, listSelected->takeItem(index));
+       listSelected->setCurrentRow(index - 1, QItemSelectionModel::Select);
+@@ -164,7 +164,7 @@ void CSelectDoubleListWidget::slotDown() const {
+   std::sort(indices.begin(), indices.end(), [](int a, int b) { return a > b; });
+ 
+   int i = listSelected->count() - 1;
+-  for (int index : qAsConst(indices)) {
++  for (int index : std::as_const(indices)) {
+     if (index < i) {
+       listSelected->insertItem(index + 1, listSelected->takeItem(index));
+       listSelected->setCurrentRow(index + 1, QItemSelectionModel::Select);
+diff --git a/src/qmapshack/widgets/CTemplateWidget.cpp b/src/qmapshack/widgets/CTemplateWidget.cpp
+index 987ac366b69d..dbcadead2fb4 100644
+--- a/src/qmapshack/widgets/CTemplateWidget.cpp
++++ b/src/qmapshack/widgets/CTemplateWidget.cpp
+@@ -72,7 +72,7 @@ QString CTemplateWidget::text() {
+   std::sort(groups.begin(), groups.end(),
+             [](const QGroupBox* g1, const QGroupBox* g2) { return g1->objectName() < g2->objectName(); });
+ 
+-  for (const QGroupBox* group : qAsConst(groups)) {
++  for (const QGroupBox* group : std::as_const(groups)) {
+     str += QString("<p><b>%1</b>: ").arg(group->title());
+     str += resolveGroup(group);
+     str += "</p>";
+@@ -88,7 +88,7 @@ QString CTemplateWidget::resolveGroup(const QGroupBox* group) {
+     return w1->property("order").toInt() < w2->property("order").toInt();
+   });
+ 
+-  for (const QWidget* w : qAsConst(widgets)) {
++  for (const QWidget* w : std::as_const(widgets)) {
+     const QString pre(str.isEmpty() ? "" : ", ");
+ 
+     {
+diff --git a/src/qmaptool/items/CItemListWidget.h b/src/qmaptool/items/CItemListWidget.h
+index 0c5023270e86..bff3dc58e726 100644
+--- a/src/qmaptool/items/CItemListWidget.h
++++ b/src/qmaptool/items/CItemListWidget.h
+@@ -49,7 +49,7 @@ class CItemListWidget : public QWidget, private Ui::IItemListWidget {
+ 
+     std::sort(items.begin(), items.end(), lessThan);
+ 
+-    for (QListWidgetItem* item : qAsConst(items)) {
++    for (QListWidgetItem* item : std::as_const(items)) {
+       listFiles->addItem(item);
+     }
+ 
+diff --git a/src/qmaptool/items/CItemTreeWidget.h b/src/qmaptool/items/CItemTreeWidget.h
+index 82c96b1baf30..852feec0c694 100644
+--- a/src/qmaptool/items/CItemTreeWidget.h
++++ b/src/qmaptool/items/CItemTreeWidget.h
+@@ -50,7 +50,7 @@ public:
+ 
+     std::sort(items.begin(), items.end(), lessThan);
+ 
+-    for (QTreeWidgetItem *item : qAsConst(items)) {
++    for (QTreeWidgetItem *item : std::as_const(items)) {
+       treeFiles->addTopLevelItem(item);
+     }
+ 
+diff --git a/src/qmaptool/overlay/COverlayCutMap.cpp b/src/qmaptool/overlay/COverlayCutMap.cpp
+index ef2ef8ef49a9..e53f17e80573 100644
+--- a/src/qmaptool/overlay/COverlayCutMap.cpp
++++ b/src/qmaptool/overlay/COverlayCutMap.cpp
+@@ -92,7 +92,7 @@ bool COverlayCutMap::drawFx(QPainter& p, CCanvas::redraw_e needsRedraw) {
+   // draw black dots for each point in region
+   p.setPen(QPen(Qt::black, 1));
+   p.setBrush(Qt::black);
+-  for (const QPointF& pt : qAsConst(shape)) {
++  for (const QPointF& pt : std::as_const(shape)) {
+     if (pt == pt1) {
+       continue;
+     }
+diff --git a/src/qmaptool/overlay/COverlayGridTool.cpp b/src/qmaptool/overlay/COverlayGridTool.cpp
+index 30c604105e2e..73fc40982b0d 100644
+--- a/src/qmaptool/overlay/COverlayGridTool.cpp
++++ b/src/qmaptool/overlay/COverlayGridTool.cpp
+@@ -146,7 +146,7 @@ bool COverlayGridTool::drawFx(QPainter& p, CCanvas::redraw_e needsRedraw) {
+     p.setPen(QPen(Qt::white, 1));
+     p.setBrush(Qt::darkGreen);
+ 
+-    for (COverlayRefMapPoint* point : qAsConst(refPoints)) {
++    for (COverlayRefMapPoint* point : std::as_const(refPoints)) {
+       QPointF pt = point->getPtPtx();
+       context->convertMap2Screen(pt);
+       dot1.moveCenter(pt);
+diff --git a/src/qmaptool/overlay/gridtool/CGridPlacer.cpp b/src/qmaptool/overlay/gridtool/CGridPlacer.cpp
+index 5f3cde079f7f..f761d801d7ac 100644
+--- a/src/qmaptool/overlay/gridtool/CGridPlacer.cpp
++++ b/src/qmaptool/overlay/gridtool/CGridPlacer.cpp
+@@ -203,7 +203,7 @@ void CGridPlacer::slotSetArea() {
+   qreal left = NOFLOAT;
+   qreal right = -NOFLOAT;
+ 
+-  for (const CGridPoint& point : qAsConst(points)) {
++  for (const CGridPoint& point : std::as_const(points)) {
+     const QPointF& pt = point.getPoint();
+ 
+     top = qMin(pt.y(), top);
+diff --git a/src/qmaptool/overlay/refmap/CProjWizard.cpp b/src/qmaptool/overlay/refmap/CProjWizard.cpp
+index e9f9ba02904f..d431e0fc03aa 100644
+--- a/src/qmaptool/overlay/refmap/CProjWizard.cpp
++++ b/src/qmaptool/overlay/refmap/CProjWizard.cpp
+@@ -52,7 +52,7 @@ CProjWizard::CProjWizard(QLineEdit& line, QWidget* parent) : QDialog(parent), li
+   }
+   std::sort(list.begin(), list.end(), mitabLessThan);
+ 
+-  for (const mitab_entry_t& entry : qAsConst(list)) {
++  for (const mitab_entry_t& entry : std::as_const(list)) {
+     comboDatum->addItem(entry.name, entry.idx);
+   }
+ 
+-- 
+2.49.0
+

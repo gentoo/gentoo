@@ -1,0 +1,78 @@
+From 8bdb0888f5671f87967443f566b9fe14f5f63b35 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C8=98tefan=20Talpalaru?= <stefantalpalaru@yahoo.com>
+Date: Mon, 30 Sep 2024 20:37:47 +0200
+Subject: [PATCH 21/26] Qt6DBus support
+
+---
+ CMakeLists.txt               |  4 ++--
+ src/qmapshack/CMakeLists.txt | 14 +++++++-------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 830f87290ea8..c4e9e6603620 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -200,9 +200,9 @@ endif()
+ 
+ if(USE_QT6DBus)
+     find_package(Qt6DBus REQUIRED)
+-    if(Qt5DBus_FOUND)
++    if(Qt6DBus_FOUND)
+         add_definitions(-DHAVE_DBUS)
+-    endif(Qt5DBus_FOUND)
++    endif(Qt6DBus_FOUND)
+ endif(USE_QT6DBus)
+ 
+ # Everything included. Let's finetune the mess a bit more
+diff --git a/src/qmapshack/CMakeLists.txt b/src/qmapshack/CMakeLists.txt
+index da39c21976cd..23c283a18269 100644
+--- a/src/qmapshack/CMakeLists.txt
++++ b/src/qmapshack/CMakeLists.txt
+@@ -368,12 +368,12 @@ set( SRCS
+ )
+ 
+ 
+-if(Qt5DBus_FOUND)
++if(Qt6DBus_FOUND)
+ set( SRCS
+     ${SRCS}
+     device/CDeviceWatcherLinux.cpp
+ )
+-endif(Qt5DBus_FOUND)
++endif(Qt6DBus_FOUND)
+ 
+ 
+ if (APPLE)
+@@ -746,12 +746,12 @@ set( HDRS
+ )
+ 
+ 
+-if(Qt5DBus_FOUND)
++if(Qt6DBus_FOUND)
+ set( HDRS
+     ${HDRS}
+     device/CDeviceWatcherLinux.h
+ )
+-endif(Qt5DBus_FOUND)
++endif(Qt6DBus_FOUND)
+ 
+ 
+ if(APPLE)
+@@ -977,11 +977,11 @@ if(${DEVELOPMENT_VERSION})
+     )
+ endif(${DEVELOPMENT_VERSION})
+ 
+-if(Qt5DBus_FOUND)
++if(Qt6DBus_FOUND)
+     set(DBUS_LIB Qt6::DBus)
+-else(Qt5DBus_FOUND)
++else(Qt6DBus_FOUND)
+     set(DBUS_LIB)
+-endif(Qt5DBus_FOUND)
++endif(Qt6DBus_FOUND)
+ 
+ target_link_libraries(${APPLICATION_NAME}
+     Qt6::Widgets
+-- 
+2.49.0
+

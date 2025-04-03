@@ -1,0 +1,1116 @@
+From e5ffa86838522c94ea1d25bcd30c03d4bc352639 Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 3 Sep 2024 10:13:48 +0200
+Subject: [PATCH 14/26] Replace QRegExp by QRegularExpression
+
+---
+ src/qmapshack/device/CDeviceGarmin.cpp        |   7 +-
+ src/qmapshack/device/CDeviceTwoNav.cpp        |  12 +-
+ src/qmapshack/gis/CGisItemRate.cpp            |   3 +-
+ .../gis/db/CExportDatabaseThread.cpp          |   3 +-
+ src/qmapshack/gis/rte/CGisItemRte.cpp         |  10 +-
+ .../gis/rte/router/CRouterBRouter.cpp         |  11 +-
+ .../gis/rte/router/CRouterRoutino.cpp         |   7 +-
+ .../router/brouter/CRouterBRouterLocal.cpp    |   3 +-
+ .../router/brouter/CRouterBRouterSetup.cpp    |  19 ++--
+ .../brouter/CRouterBRouterTilesSelect.cpp     |  37 +++---
+ .../brouter/CRouterBRouterTilesSelect.h       |   6 +-
+ src/qmapshack/gis/search/CSearch.cpp          |  26 +++--
+ src/qmapshack/gis/tnv/CTwoNavProject.cpp      |   6 +-
+ src/qmapshack/gis/tnv/serialization.cpp       |   7 +-
+ src/qmapshack/gis/wpt/CDetailsGeoCache.cpp    |  19 ++--
+ src/qmapshack/grid/CProjWizard.cpp            |  40 ++++---
+ src/qmapshack/realtime/ais/CRtAisInfo.cpp     |   6 +-
+ src/qmapshack/setup/CAppSetupLinux.cpp        |   3 +-
+ src/qmapshack/units/IUnit.cpp                 |  96 ++++++++--------
+ src/qmapshack/units/IUnit.h                   |  10 +-
+ src/qmapshack/widgets/CTextEditWidget.cpp     |  11 +-
+ src/qmaptool/overlay/COverlayRefMap.cpp       |  10 +-
+ src/qmaptool/overlay/refmap/CProjWizard.cpp   |  42 ++++---
+ src/qmaptool/setup/CAppSetupLinux.cpp         |   3 +-
+ src/qmaptool/units/IUnit.cpp                  | 105 ++++++++++--------
+ src/qmaptool/units/IUnit.h                    |  10 +-
+ src/qmt_rgb2pct/main.cpp                      |   3 +-
+ 27 files changed, 287 insertions(+), 228 deletions(-)
+
+diff --git a/src/qmapshack/device/CDeviceGarmin.cpp b/src/qmapshack/device/CDeviceGarmin.cpp
+index 79b725c36f6b..5bec4da4b0c4 100644
+--- a/src/qmapshack/device/CDeviceGarmin.cpp
++++ b/src/qmapshack/device/CDeviceGarmin.cpp
+@@ -185,8 +185,8 @@ void CDeviceGarmin::reorderProjects(IGisProject* project) {
+ }
+ 
+ QString CDeviceGarmin::simplifiedName(IGisProject* project) {
+-  QString name = project->getName();
+-  return name.remove(QRegExp("[^A-Za-z0-9_]"));
++  static const QRegularExpression re("[^A-Za-z0-9_]");
++  return project->getName().remove(re);
+ }
+ 
+ QString CDeviceGarmin::createFileName(IGisProject* project, const QString& path, const QString& suffix) {
+@@ -256,9 +256,10 @@ void CDeviceGarmin::saveImages(CGisItemWpt& wpt) {
+     }
+ 
+     QString filename;
++    static const QRegularExpression re("[^A-Za-z0-9_]");
+     for (const CGisItemWpt::image_t& image : images) {
+       filename = image.info;
+-      filename = filename.remove(QRegExp("[^A-Za-z0-9_]"));
++      filename = filename.remove(re);
+ 
+       if (!filename.endsWith("jpg")) {
+         filename += ".jpg";
+diff --git a/src/qmapshack/device/CDeviceTwoNav.cpp b/src/qmapshack/device/CDeviceTwoNav.cpp
+index 942b7a675916..0c6387493ec5 100644
+--- a/src/qmapshack/device/CDeviceTwoNav.cpp
++++ b/src/qmapshack/device/CDeviceTwoNav.cpp
+@@ -81,16 +81,17 @@ CDeviceTwoNav::~CDeviceTwoNav() {}
+ 
+ void CDeviceTwoNav::readReginfo(const QString& filename) {
+   QString product, unittype;
+-  QRegExp re("(.*)=(.*)");
++  static const QRegularExpression re(QRegularExpression::anchoredPattern("(.*)=(.*)"));
+   QFile file(filename);
+   file.open(QIODevice::ReadOnly);
+ 
+   while (!file.atEnd()) {
+     QString line = file.readLine().simplified();
+ 
+-    if (re.exactMatch(line)) {
+-      QString tok = re.cap(1);
+-      QString val = re.cap(2);
++    const QRegularExpressionMatch& match = re.match(line);
++    if (match.hasMatch()) {
++      QString tok = match.captured(1);
++      QString val = match.captured(2);
+ 
+       if (tok == "product") {
+         product = val;
+@@ -106,8 +107,9 @@ void CDeviceTwoNav::readReginfo(const QString& filename) {
+ }
+ 
+ void CDeviceTwoNav::insertCopyOfProject(IGisProject* project) {
++  static const QRegularExpression re("[^A-Za-z0-9_]");
+   QString name = project->getName();
+-  name = name.remove(QRegExp("[^A-Za-z0-9_]"));
++  name = name.remove(re);
+ 
+   QDir dirData = dir.absoluteFilePath(pathData);
+   QString filename = dirData.absoluteFilePath(name);
+diff --git a/src/qmapshack/gis/CGisItemRate.cpp b/src/qmapshack/gis/CGisItemRate.cpp
+index bc49f9c948a5..0327836e6603 100644
+--- a/src/qmapshack/gis/CGisItemRate.cpp
++++ b/src/qmapshack/gis/CGisItemRate.cpp
+@@ -52,7 +52,8 @@ qreal CGisItemRate::getRating() { return rating; }
+ bool CGisItemRate::getRatingChanged() { return ratingChanged; }
+ 
+ QSet<QString> CGisItemRate::getKeywords() const {
+-  const QList<QString>& keywords = keywordPlainTextEdit->toPlainText().split(QRegExp("\\s*,\\s*"), Qt::SkipEmptyParts);
++  static const QRegularExpression re("\\s*,\\s*");
++  const QList<QString>& keywords = keywordPlainTextEdit->toPlainText().split(re, Qt::SkipEmptyParts);
+   return {keywords.begin(), keywords.end()};
+ }
+ 
+diff --git a/src/qmapshack/gis/db/CExportDatabaseThread.cpp b/src/qmapshack/gis/db/CExportDatabaseThread.cpp
+index a89f23a5cab6..fcd7cc45b6a3 100644
+--- a/src/qmapshack/gis/db/CExportDatabaseThread.cpp
++++ b/src/qmapshack/gis/db/CExportDatabaseThread.cpp
+@@ -40,8 +40,9 @@ void CExportDatabaseThread::start(const QString& path, bool saveAsGpx11) {
+ }
+ 
+ QString CExportDatabaseThread::simplifyString(const QString& str) const {
++  static const QRegularExpression re("[^\\w\\d]");
+   QString s = str;
+-  return s.replace(QRegExp("[^\\w\\d]"), "_");
++  return s.replace(re, "_");
+ }
+ 
+ void CExportDatabaseThread::slotAbort() {
+diff --git a/src/qmapshack/gis/rte/CGisItemRte.cpp b/src/qmapshack/gis/rte/CGisItemRte.cpp
+index 6f7c05e4efb0..d6b3c5b4eca0 100644
+--- a/src/qmapshack/gis/rte/CGisItemRte.cpp
++++ b/src/qmapshack/gis/rte/CGisItemRte.cpp
+@@ -1096,13 +1096,13 @@ void CGisItemRte::setResultFromBRouter(const QDomDocument& xml, const QString& o
+     if (node.isComment()) {
+       const QString& commentTxt = node.toComment().data();
+       // ' track-length = 180864 filtered ascend = 428 plain-ascend = -172 cost=270249 '
+-      const QRegExp rxAscDes(
++      static const QRegularExpression rxAscDes(
+           "(\\s*track-length\\s*=\\s*)(-?\\d+)(\\s*)(filtered "
+           "ascend\\s*=\\s*-?\\d+)(\\s*)(plain-ascend\\s*=\\s*-?\\d+)(\\s*)(cost\\s*=\\s*-?\\d+)(\\s*)");
+-      int pos = rxAscDes.indexIn(commentTxt);
+-      if (pos > -1) {
+-        rte.totalDistance = rxAscDes.cap(2).toFloat();
+-        rte.cmt = QString("%1, %2, %3").arg(rxAscDes.cap(4), rxAscDes.cap(6), rxAscDes.cap(8));
++      const QRegularExpressionMatch& match = rxAscDes.match(commentTxt);
++      if (match.hasMatch()) {
++        rte.totalDistance = match.captured(2).toFloat();
++        rte.cmt = QString("%1, %2, %3").arg(match.captured(4), match.captured(6), match.captured(8));
+       }
+       break;
+     }
+diff --git a/src/qmapshack/gis/rte/router/CRouterBRouter.cpp b/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
+index c9c6b5d6fb39..a072cbe8ca15 100644
+--- a/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
++++ b/src/qmapshack/gis/rte/router/CRouterBRouter.cpp
+@@ -195,7 +195,8 @@ QString CRouterBRouter::getOptions() {
+ void CRouterBRouter::routerSelected() { getBRouterVersion(); }
+ 
+ bool CRouterBRouter::hasFastRouting() {
+-  return setup->installMode == CRouterBRouterSetup::eModeLocal && setup->isLocalBRouterValid && checkFastRecalc->isChecked();
++  return setup->installMode == CRouterBRouterSetup::eModeLocal && setup->isLocalBRouterValid &&
++         checkFastRecalc->isChecked();
+ }
+ 
+ QNetworkRequest CRouterBRouter::getRequest(const QVector<QPointF>& routePoints, const QList<IGisItem*>& nogos) const {
+@@ -365,13 +366,13 @@ int CRouterBRouter::synchronousRequest(const QVector<QPointF>& points, const QLi
+         }
+         const QString& commentTxt = node.toComment().data();
+         // ' track-length = 180864 filtered ascend = 428 plain-ascend = -172 cost=270249 '
+-        const QRegExp rxAscDes(
++        static const QRegularExpression rxAscDes(
+             "(\\s*track-length\\s*=\\s*)(-?\\d+)(\\s*)(filtered "
+             "ascend\\s*=\\s*-?\\d+)(\\s*)(plain-ascend\\s*=\\s*-?\\d+)(\\s*)(cost\\s*=\\s*)(-?\\d+)(\\s*)");
+-        int pos = rxAscDes.indexIn(commentTxt);
+-        if (pos > -1) {
++        const QRegularExpressionMatch& match = rxAscDes.match(commentTxt);
++        if (match.hasMatch()) {
+           bool ok;
+-          *costs = rxAscDes.cap(9).toDouble(&ok);
++          *costs = match.captured(9).toDouble(&ok);
+           if (!ok) {
+             *costs = -1;
+           }
+diff --git a/src/qmapshack/gis/rte/router/CRouterRoutino.cpp b/src/qmapshack/gis/rte/router/CRouterRoutino.cpp
+index 805f25eb793d..2ef0deb8b9d2 100644
+--- a/src/qmapshack/gis/rte/router/CRouterRoutino.cpp
++++ b/src/qmapshack/gis/rte/router/CRouterRoutino.cpp
+@@ -212,7 +212,7 @@ void CRouterRoutino::slotSetupPaths() {
+ }
+ 
+ void CRouterRoutino::buildDatabaseList() {
+-  QRegExp re("(.*)-segments.mem");
++  static const QRegularExpression re(QRegularExpression::anchoredPattern("(.*)-segments.mem"));
+   freeDatabaseList();
+ 
+   // initialise
+@@ -226,8 +226,9 @@ void CRouterRoutino::buildDatabaseList() {
+         dir.entryList(QStringList("*segments.mem"), QDir::Files | QDir::Readable, QDir::Name);
+     for (const QString& filename : filenames) {
+       QString prefix;
+-      if (re.exactMatch(filename)) {
+-        prefix = re.cap(1);
++      const QRegularExpressionMatch& match = re.match(filename);
++      if (match.hasMatch()) {
++        prefix = match.captured(1);
+       } else {
+         continue;
+       }
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterLocal.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterLocal.cpp
+index 13780cd32b0f..fcd2ae2acb6e 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterLocal.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterLocal.cpp
+@@ -58,7 +58,8 @@ void CRouterBRouterLocal::startBRouter() {
+ 
+   if (brouterState == QProcess::NotRunning) {
+     QStringList args;
+-    args << brouter.setup->localJavaOpts.split(QRegExp("\\s+"));
++    static const QRegularExpression re("\\s+");
++    args << brouter.setup->localJavaOpts.split(re);
+     args << QString("-DmaxRunningTime=%1").arg(brouter.setup->localMaxRunningTime);
+     args << "-cp";
+     args << brouter.setup->localBRouterJar;
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
+index e01738e02b35..fd6f9dbe723d 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterSetup.cpp
+@@ -532,10 +532,10 @@ void CRouterBRouterSetup::loadOnlineVersionFinished(QNetworkReply* reply) {
+     return;
+   }
+   const QString gpx(reply->readAll());
+-  const QRegExp reVersion = QRegExp("^<\\?xml.+<gpx.+creator=\"(.*)\"");
+-
+-  if (reVersion.indexIn(gpx) > -1) {
+-    parseBRouterVersion(reVersion.cap(1));
++  static const QRegularExpression reVersion("^<\\?xml.+<gpx.+creator=\"(.*)\"");
++  const QRegularExpressionMatch& match = reVersion.match(gpx);
++  if (match.hasMatch()) {
++    parseBRouterVersion(match.captured(1));
+     return;
+   }
+   emit sigError("invalid reply", "response is not brouter-gpx");
+@@ -544,15 +544,16 @@ void CRouterBRouterSetup::loadOnlineVersionFinished(QNetworkReply* reply) {
+ void CRouterBRouterSetup::parseBRouterVersion(const QString& text) {
+   // version string is either like "BRouter 1.4.9 / 24092017"
+   // or (without the date) like "BRouter-1.4.9"
+-  QRegExp reVersion("\\bBRouter[- ](\\d+)\\.(\\d+)\\.(\\d+)\\b");
+-  if (reVersion.indexIn(text) > -1) {
++  static const QRegularExpression reVersion("\\bBRouter[- ](\\d+)\\.(\\d+)\\.(\\d+)\\b");
++  const QRegularExpressionMatch match = reVersion.match(text);
++  if (match.hasMatch()) {
+     bool ok;
+-    versionMajor = reVersion.cap(1).toInt(&ok);
++    versionMajor = match.captured(1).toInt(&ok);
+     if (ok) {
+-      versionMinor = reVersion.cap(2).toInt(&ok);
++      versionMinor = match.captured(2).toInt(&ok);
+     }
+     if (ok) {
+-      versionPatch = reVersion.cap(3).toInt(&ok);
++      versionPatch = match.captured(3).toInt(&ok);
+     }
+     if (ok) {
+       emit sigVersionChanged();
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp
+index c40bb37ee543..8df5206c33bc 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.cpp
+@@ -37,16 +37,19 @@ const int CRouterBRouterTilesSelect::maxTileLon = 85;
+ const int CRouterBRouterTilesSelect::tileSize = 5;
+ // pattern for filenames of tiles: 'E10_N20.rd5'
+ const QString CRouterBRouterTilesSelect::patternTileName = QString("([EW])(\\d{1,3})_([NS])(\\d{1,3})\\.rd5$");
+-const QRegExp CRouterBRouterTilesSelect::regExpTileName = QRegExp(CRouterBRouterTilesSelect::patternTileName);
++const QRegularExpression CRouterBRouterTilesSelect::regExpTileName =
++    QRegularExpression(CRouterBRouterTilesSelect::patternTileName);
+ // pattern for tiles date parsing: '16-Feb-2017 20:48  '
+ const QString CRouterBRouterTilesSelect::patternDate =
+     "(\\d{1,2}-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\\d{4} \\d{1,2}:\\d{2})";
+-const QRegExp CRouterBRouterTilesSelect::regExpDate = QRegExp(CRouterBRouterTilesSelect::patternDate);
++const QRegularExpression CRouterBRouterTilesSelect::regExpDate =
++    QRegularExpression(CRouterBRouterTilesSelect::patternDate);
+ const QString CRouterBRouterTilesSelect::formatDate = "dd-MMM-yyyy HH:mm";
+ const QLocale CRouterBRouterTilesSelect::localeDate = QLocale(QLocale::English, QLocale::UnitedStates);
+ // pattern for tiles size parsing: 8.2M 271K 9.3K
+ const QString CRouterBRouterTilesSelect::patternSize = " {0,2}(\\d{1,3}|\\d\\.\\d)([KMG])";
+-const QRegExp CRouterBRouterTilesSelect::regExpSize = QRegExp(CRouterBRouterTilesSelect::patternSize);
++const QRegularExpression CRouterBRouterTilesSelect::regExpSize =
++    QRegularExpression(CRouterBRouterTilesSelect::patternSize);
+ 
+ CRouterBRouterTilesSelect::CRouterBRouterTilesSelect(QWidget* parent) : QWidget(parent) {
+   for (int x = minTileLat; x < maxTileLat; x += tileSize) {
+@@ -253,7 +256,8 @@ void CRouterBRouterTilesSelect::initialize()
+ 
+     const QStringList& segments = dir.entryList();
+     for (const QString& segment : segments) {
+-      if (regExpTileName.indexIn(segment) > -1) {
++      const QRegularExpressionMatch& match = regExpTileName.match(segment);
++      if (match.hasMatch()) {
+         const QPoint& tile = tileFromFileName(segment);
+         if (tile != noTile) {
+           CRouterBRouterTilesStatus* status = getTileStatus(tile);
+@@ -322,7 +326,8 @@ void CRouterBRouterTilesSelect::afterSlotLoadOnlineTilesRequestFinishedRunJavasc
+ 
+     const QString& tileName = tileMap.value("name").toString();
+     // only anchors matching the desired pattern
+-    if (regExpTileName.indexIn(tileName) > -1) {
++    const QRegularExpressionMatch& match = regExpTileName.match(tileName);
++    if (match.hasMatch()) {
+       const QPoint& tile = tileFromFileName(tileName);
+ 
+       if (tile != noTile) {
+@@ -332,7 +337,8 @@ void CRouterBRouterTilesSelect::afterSlotLoadOnlineTilesRequestFinishedRunJavasc
+ 
+           const QString& date = tileMap.value("date").toString();
+ 
+-          if (regExpDate.indexIn(date) < 0) {
++          const QRegularExpressionMatch& matchDate = regExpDate.match(date);
++          if (!matchDate.hasMatch()) {
+             segmentsError(tr("cannot parse: %1 is not a date").arg(date));
+             update();
+             return;
+@@ -341,8 +347,8 @@ void CRouterBRouterTilesSelect::afterSlotLoadOnlineTilesRequestFinishedRunJavasc
+           status->remoteDate = localeDate.toDateTime(date, formatDate);
+ 
+           const QString& size = tileMap.value("size").toString();
+-
+-          if (regExpSize.indexIn(size) < 0) {
++          const QRegularExpressionMatch& matchSize = regExpSize.match(size);
++          if (!matchSize.hasMatch()) {
+             bool ok = false;
+             status->remoteSize = size.toLongLong(&ok, 10);
+             if (!ok) {
+@@ -351,10 +357,10 @@ void CRouterBRouterTilesSelect::afterSlotLoadOnlineTilesRequestFinishedRunJavasc
+               return;
+             }
+           } else {
+-            status->remoteSize = regExpSize.cap(1).toFloat() * (regExpSize.cap(2) == "M"   ? 1048576
+-                                                                : regExpSize.cap(2) == "G" ? 1073741824
+-                                                                : regExpSize.cap(2) == "K" ? 1024
+-                                                                                           : 1);
++            status->remoteSize = matchSize.captured(1).toFloat() * (matchSize.captured(2) == "M"   ? 1048576
++                                                                    : matchSize.captured(2) == "G" ? 1073741824
++                                                                    : matchSize.captured(2) == "K" ? 1024
++                                                                                                   : 1);
+           }
+ 
+           if (status->isLocal && status->remoteDate > status->localDate) {
+@@ -387,9 +393,10 @@ QString CRouterBRouterTilesSelect::formatSize(const qint64 size) {
+ }
+ 
+ QPoint CRouterBRouterTilesSelect::tileFromFileName(const QString& fileName) {
+-  if (regExpTileName.indexIn(fileName) > -1) {
+-    return QPoint(regExpTileName.cap(2).toInt() * (regExpTileName.cap(1) == "E" ? 1 : -1),
+-                  regExpTileName.cap(4).toInt() * (regExpTileName.cap(3) == "N" ? 1 : -1));
++  const QRegularExpressionMatch& match = regExpTileName.match(fileName);
++  if (match.hasMatch()) {
++    return QPoint(match.captured(2).toInt() * (match.captured(1) == "E" ? 1 : -1),
++                  match.captured(4).toInt() * (match.captured(3) == "N" ? 1 : -1));
+   } else {
+     return noTile;
+   }
+diff --git a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.h b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.h
+index c10380d2e173..910d5ff82b1f 100644
+--- a/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.h
++++ b/src/qmapshack/gis/rte/router/brouter/CRouterBRouterTilesSelect.h
+@@ -59,9 +59,9 @@ class CRouterBRouterTilesSelect : public QWidget {
+   static const QString patternTileName;
+   static const QString patternDate;
+   static const QString patternSize;
+-  static const QRegExp regExpTileName;
+-  static const QRegExp regExpDate;
+-  static const QRegExp regExpSize;
++  static const QRegularExpression regExpTileName;
++  static const QRegularExpression regExpDate;
++  static const QRegularExpression regExpSize;
+   static const QString formatDate;
+   static const QLocale localeDate;
+ 
+diff --git a/src/qmapshack/gis/search/CSearch.cpp b/src/qmapshack/gis/search/CSearch.cpp
+index a51ebb36bed0..8942e6c2b544 100644
+--- a/src/qmapshack/gis/search/CSearch.cpp
++++ b/src/qmapshack/gis/search/CSearch.cpp
+@@ -167,24 +167,24 @@ CSearch::CSearch(QString searchstring) : searchText(searchstring) {
+       const static QString capIgnAnd = "(?:" + tr("and") + ")?";
+       // The second number, the units and the "and" are optional
+       // The String has to be matched completely in order to avoid false positives thus the ^ and the $
+-      QRegExp numericArguments(
++      static const QRegularExpression numericArguments(
+           "^" + capNum + capIgnWS + capUnit + capIgnWS + capIgnAnd + capIgnWS + capNumOpt + capIgnWS + capUnit + "$",
+-          Qt::CaseInsensitive);
+-      numericArguments.indexIn(filterValueString);
+-      if (numericArguments.cap(0).simplified() != "") {
+-        if (numericArguments.cap(1) != "")  // to avoid removal of NOFLOAT
++          QRegularExpression::PatternOption::CaseInsensitiveOption);
++      const QRegularExpressionMatch& match = numericArguments.match(filterValueString);
++      if (match.captured(0).simplified() != "") {
++        if (match.captured(1) != "")  // to avoid removal of NOFLOAT
+         {
+-          filterValue.value1 = numericArguments.cap(1).toFloat();
++          filterValue.value1 = match.captured(1).toFloat();
+         }
+ 
+-        filterValue.str1 = numericArguments.cap(2);
++        filterValue.str1 = match.captured(2);
+ 
+-        if (numericArguments.cap(3) != "")  // to avoid removal of NOFLOAT
++        if (match.captured(3) != "")  // to avoid removal of NOFLOAT
+         {
+-          filterValue.value2 = numericArguments.cap(3).toFloat();
++          filterValue.value2 = match.captured(3).toFloat();
+         }
+ 
+-        filterValue.str2 = numericArguments.cap(4);
++        filterValue.str2 = match.captured(4);
+       }
+     }
+     if (filterValue.toString().isEmpty()) {
+@@ -574,9 +574,11 @@ QMap<CSearch::search_type_e, CSearch::fSearch> CSearch::initSearchTypeLambdaMap(
+   map.insert(eSearchTypeRegEx, [](const searchValue_t& itemValue, searchValue_t& searchValue) {
+     if (CSearch::caseSensitivity == Qt::CaseInsensitive)  // There is no option to make regex caseinsensitive
+     {
+-      return itemValue.toString().toLower().contains(QRegExp(searchValue.toString().toLower()));
++      const QRegularExpression re(searchValue.toString().toLower());
++      return itemValue.toString().toLower().contains(re);
+     } else {
+-      return itemValue.toString().contains(QRegExp(searchValue.toString()));
++      const QRegularExpression re(searchValue.toString());
++      return itemValue.toString().contains(re);
+     }
+   });
+   return map;
+diff --git a/src/qmapshack/gis/tnv/CTwoNavProject.cpp b/src/qmapshack/gis/tnv/CTwoNavProject.cpp
+index db1427c1b5f3..a3bfefb1dbd3 100644
+--- a/src/qmapshack/gis/tnv/CTwoNavProject.cpp
++++ b/src/qmapshack/gis/tnv/CTwoNavProject.cpp
+@@ -87,7 +87,8 @@ bool CTwoNavProject::save() {
+       CGisItemTrk* trk = dynamic_cast<CGisItemTrk*>(item);
+       if (trk) {
+         QString fn = trk->getName();
+-        fn = fn.remove(QRegExp("[^A-Za-z0-9_]"));
++        static const QRegularExpression re("[^A-Za-z0-9_]");
++        fn = fn.remove(re);
+         fn = dir.absoluteFilePath(fn + ".trk");
+ 
+         if (!trk->saveTwoNav(fn)) {
+@@ -105,7 +106,8 @@ bool CTwoNavProject::save() {
+     }
+ 
+     QString fn = getName();
+-    fn = fn.remove(QRegExp("[^A-Za-z0-9_]"));
++    static const QRegularExpression re("[^A-Za-z0-9_]");
++    fn = fn.remove(re);
+ 
+     if (!wpts.isEmpty()) {
+       if (!saveWpts(wpts, dir.absoluteFilePath(fn + ".wpt"), dir)) {
+diff --git a/src/qmapshack/gis/tnv/serialization.cpp b/src/qmapshack/gis/tnv/serialization.cpp
+index fb8f69e50a45..5d6bed23ef90 100644
+--- a/src/qmapshack/gis/tnv/serialization.cpp
++++ b/src/qmapshack/gis/tnv/serialization.cpp
+@@ -96,10 +96,11 @@ static QStringList writeCompeTime(const QDateTime& t, bool isTrack) {
+ 
+ static QDateTime readCompeTime(QString str, bool isTrack) {
+   QDateTime timestamp;
+-  QRegExp re("([0-9]{2})-([A-Za-z]{3})-.*");
++  static const QRegularExpression re(QRegularExpression::anchoredPattern("([0-9]{2})-([A-Za-z]{3})-.*"));
+ 
+-  if (re.exactMatch(str)) {
+-    QString monthStr = re.cap(2);
++  const QRegularExpressionMatch& match = re.match(str);
++  if (match.hasMatch()) {
++    QString monthStr = match.captured(2);
+ 
+     QHash<QString, QString> monthStr2Num{{"JAN", "01"}, {"FEB", "02"}, {"MAR", "03"}, {"APR", "04"},
+                                          {"MAY", "05"}, {"JUN", "06"}, {"JUL", "07"}, {"AUG", "08"},
+diff --git a/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp b/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp
+index 67f7480c1e9b..535811a677b1 100644
+--- a/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp
++++ b/src/qmapshack/gis/wpt/CDetailsGeoCache.cpp
+@@ -261,20 +261,21 @@ void CDetailsGeoCache::slotRequestFinished(QNetworkReply* reply) {
+     return;
+   }
+ 
+-  QRegExp re1(".*CachePageImages.*");
+-  QRegExp re2("(https://.*\\.jpg).*>(.*)</a>");
+-  re2.setMinimal(true);
++  static const QRegularExpression re1(QRegularExpression::anchoredPattern(".*CachePageImages.*"));
++  static const QRegularExpression re2("(https://.*\\.jpg).*>(.*)</a>",
++                                      QRegularExpression::PatternOption::InvertedGreedinessOption);
+ 
+   bool watchOut = false;
+   QStringList lines = asw.split("\n");
+   for (const QString& line : qAsConst(lines)) {
+-    if (!watchOut && re1.exactMatch(line)) {
++    if (!watchOut && re1.match(line).hasMatch()) {
+       watchOut = true;
+     } else if (watchOut) {
+-      int pos = 0;
+-      while ((pos = re2.indexIn(line, pos)) != NOIDX) {
+-        QString url = re2.cap(1);
+-        QString info = re2.cap(2);
++      QRegularExpressionMatchIterator i = re2.globalMatch(line);
++      while (i.hasNext()) {
++        const QRegularExpressionMatch& match = i.next();
++        QString url = match.captured(1);
++        QString info = match.captured(2);
+ 
+         QNetworkRequest request;
+         request.setUrl(url);
+@@ -282,8 +283,6 @@ void CDetailsGeoCache::slotRequestFinished(QNetworkReply* reply) {
+         reply->setProperty("whatfor", "image");
+         reply->setProperty("info", info);
+         cntSpoiler++;
+-
+-        pos += re2.matchedLength();
+       }
+ 
+       watchOut = false;
+diff --git a/src/qmapshack/grid/CProjWizard.cpp b/src/qmapshack/grid/CProjWizard.cpp
+index 3040bdfe9b2d..3c4ccf316df1 100644
+--- a/src/qmapshack/grid/CProjWizard.cpp
++++ b/src/qmapshack/grid/CProjWizard.cpp
+@@ -74,28 +74,32 @@ CProjWizard::CProjWizard(QLineEdit& line) : QDialog(CMainWindow::getBestWidgetFo
+           &CProjWizard::slotChange);
+ 
+   QString projstr = line.text();
+-  QRegExp re2("\\s*EPSG:3857");
+-  QRegExp re3("\\s*\\+proj=merc\\s(.*)");
+-  QRegExp re4("\\s*\\+proj=utm \\+zone=([0-9]+)\\s(.*)");
++  static const QRegularExpression re2(QRegularExpression::anchoredPattern("\\s*EPSG:3857"));
++  static const QRegularExpression re3(QRegularExpression::anchoredPattern("\\s*\\+proj=merc\\s(.*)"));
++  static const QRegularExpression re4(QRegularExpression::anchoredPattern("\\s*\\+proj=utm \\+zone=([0-9]+)\\s(.*)"));
+ 
+-  if (re2.exactMatch(projstr)) {
++  const QRegularExpressionMatch& match2 = re2.match(projstr);
++  if (match2.hasMatch()) {  // case 2
+     radioWorldMercator->setChecked(true);
+-  } else if (re3.exactMatch(projstr)) {
+-    radioMercator->setChecked(true);
+-    findDatum(re3.cap(1));
+-  } else if (re4.exactMatch(projstr)) {
+-    radioUTM->setChecked(true);
+-    spinUTMZone->setValue(re4.cap(1).toInt());
+-
+-    QString datum = re4.cap(2);
+-    if (datum.startsWith("+south ")) {
+-      datum = datum.mid(7);
+-      comboHemisphere->setCurrentIndex(1);
++  } else {
++    const QRegularExpressionMatch& match3 = re3.match(projstr);
++    if (match3.hasMatch()) {  // case 3
++      radioMercator->setChecked(true);
++      findDatum(match3.captured(1));
++    } else {
++      const QRegularExpressionMatch& match4 = re4.match(projstr);
++      if (match4.hasMatch()) {  // case 3
++        radioUTM->setChecked(true);
++        spinUTMZone->setValue(match4.captured(1).toInt());
++        QString datum = match4.captured(2);
++        if (datum.startsWith("+south ")) {
++          datum = datum.mid(7);
++          comboHemisphere->setCurrentIndex(1);
++        }
++        findDatum(datum);
++      }
+     }
+-
+-    findDatum(datum);
+   }
+-
+   slotChange();
+ }
+ 
+diff --git a/src/qmapshack/realtime/ais/CRtAisInfo.cpp b/src/qmapshack/realtime/ais/CRtAisInfo.cpp
+index 043a068bef5d..f98427f81b64 100644
+--- a/src/qmapshack/realtime/ais/CRtAisInfo.cpp
++++ b/src/qmapshack/realtime/ais/CRtAisInfo.cpp
+@@ -505,8 +505,10 @@ void CRtAisInfo::getString(const QByteArray& data, QString& string, int start, i
+       string.insert(ci++, c);
+     }
+   }
+-  string.replace(QRegExp("^[@\\s]+"), "");
+-  string.replace(QRegExp("[@\\s]+$"), "");
++  static const QRegularExpression re1("^[@\\s]+");
++  static const QRegularExpression re2("[@\\s]+$");
++  string.replace(re1, "");
++  string.replace(re2, "");
+ }
+ 
+ void CRtAisInfo::startRecord(const QString& filename) {
+diff --git a/src/qmapshack/setup/CAppSetupLinux.cpp b/src/qmapshack/setup/CAppSetupLinux.cpp
+index 7581ef32516c..c876f17ae18f 100644
+--- a/src/qmapshack/setup/CAppSetupLinux.cpp
++++ b/src/qmapshack/setup/CAppSetupLinux.cpp
+@@ -32,7 +32,8 @@ void CAppSetupLinux::initQMapShack() {
+   // setup translators
+   QString resourceDir = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+   QString translationPath = QCoreApplication::applicationDirPath();
+-  translationPath.replace(QRegExp("bin$"), "share/qmapshack/translations");
++  static const QRegularExpression re("bin$");
++  translationPath.replace(re, "share/qmapshack/translations");
+   prepareTranslator(resourceDir, "qt_");
+   prepareTranslator(translationPath, "qmapshack_");
+ 
+diff --git a/src/qmapshack/units/IUnit.cpp b/src/qmapshack/units/IUnit.cpp
+index 1f83cfb0663f..d5a940137a70 100644
+--- a/src/qmapshack/units/IUnit.cpp
++++ b/src/qmapshack/units/IUnit.cpp
+@@ -422,18 +422,21 @@ const char* IUnit::tblTimezone[] = {"Africa/Abidjan",
+ 
+ const int N_TIMEZONES = sizeof(IUnit::tblTimezone) / sizeof(const char*);
+ 
+-const QRegExp IUnit::reCoord1(
+-    "^\\s*([N|S]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s+([E|W|O]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s*$");
++const QRegularExpression IUnit::reCoord1(QRegularExpression::anchoredPattern(
++    "^\\s*([N|S]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s+([E|W|O]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s*$"));
+ 
+-const QRegExp IUnit::reCoord2("^\\s*([N|S]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s+([E|W|O]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s*$");
++const QRegularExpression IUnit::reCoord2(QRegularExpression::anchoredPattern(
++    "^\\s*([N|S]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s+([E|W|O]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s*$"));
+ 
+-const QRegExp IUnit::reCoord3("^\\s*([-0-9]+\\.[0-9]+)\\s+([-0-9]+\\.[0-9]+)\\s*$");
++const QRegularExpression IUnit::reCoord3(
++    QRegularExpression::anchoredPattern("^\\s*([-0-9]+\\.[0-9]+)\\s+([-0-9]+\\.[0-9]+)\\s*$"));
+ 
+-const QRegExp IUnit::reCoord4(
++const QRegularExpression IUnit::reCoord4(QRegularExpression::anchoredPattern(
+     "^\\s*([N|S]){1}\\s*([0-9]+)\\W+([0-9]+)\\W+([0-9]+\\.[0-9]+)\\W*([E|W|O]){1}\\W*([0-9]+)\\W+([0-9]+)\\W+([0-9]+\\."
+-    "[0-9]+)\\W*\\s*$");
++    "[0-9]+)\\W*\\s*$"));
+ 
+-const QRegExp IUnit::reCoord5("^\\s*([-0-9]+\\.[0-9]+)([N|S])\\s+([-0-9]+\\.[0-9]+)([W|E])\\s*$");
++const QRegularExpression IUnit::reCoord5(
++    QRegularExpression::anchoredPattern("^\\s*([-0-9]+\\.[0-9]+)([N|S])\\s+([-0-9]+\\.[0-9]+)([W|E])\\s*$"));
+ 
+ IUnit::IUnit(const type_e& type, const QString& baseUnit, const qreal baseFactor, const QString& speedUnit,
+              const qreal speedFactor, const QString& elevationUnit, const qreal elevationFactor, QObject* parent)
+@@ -655,7 +658,7 @@ bool IUnit::parseTimestamp(const QString& time, QDateTime& datetime) {
+ }
+ 
+ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+-  const QRegExp tzRE("[-+]\\d\\d:\\d\\d$");
++  static const QRegularExpression tzRE("[-+]\\d\\d:\\d\\d$");
+   int i;
+ 
+   tzoffset = 0;
+@@ -676,9 +679,7 @@ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+   if (timetext.indexOf("Z") != NOIDX) {
+     format += "'Z'";
+     applyTzOffset = true;
+-  }
+-
+-  else if ((i = tzRE.indexIn(timetext)) != NOIDX) {
++  } else if ((i = timetext.indexOf(tzRE)) != NOIDX) {
+     // trailing timezone offset [-+]HH:MM present
+     // This does not match the original intentions of the GPX
+     // file format but appears to be found occasionally in
+@@ -819,48 +820,53 @@ void IUnit::degToStr(const qreal& x, const qreal& y, QString& str) {
+ }
+ 
+ bool IUnit::strToDeg(const QString& str, qreal& lon, qreal& lat) {
+-  if (reCoord2.exactMatch(str)) {
+-    bool signLat = reCoord2.cap(1) == "S";
+-    qreal absLat = reCoord2.cap(2).toDouble();
++  const QRegularExpressionMatch& match1 = reCoord1.match(str);
++  const QRegularExpressionMatch& match2 = reCoord2.match(str);
++  const QRegularExpressionMatch& match3 = reCoord3.match(str);
++  const QRegularExpressionMatch& match4 = reCoord4.match(str);
++  const QRegularExpressionMatch& match5 = reCoord5.match(str);
++  if (match2.hasMatch()) {
++    bool signLat = match2.captured(1) == "S";
++    qreal absLat = match2.captured(2).toDouble();
+     lat = signLat ? -absLat : absLat;
+ 
+-    bool signLon = reCoord2.cap(3) == "W";
+-    qreal absLon = reCoord2.cap(4).toDouble();
++    bool signLon = match2.captured(3) == "W";
++    qreal absLon = match2.captured(4).toDouble();
+     lon = signLon ? -absLon : absLon;
+-  } else if (reCoord1.exactMatch(str)) {
+-    bool signLat = reCoord1.cap(1) == "S";
+-    int degLat = reCoord1.cap(2).toInt();
+-    qreal minLat = reCoord1.cap(3).toDouble();
++  } else if (match1.hasMatch()) {
++    bool signLat = match1.captured(1) == "S";
++    int degLat = match1.captured(2).toInt();
++    qreal minLat = match1.captured(3).toDouble();
+ 
+     GPS_Math_DegMin_To_Deg(signLat, degLat, minLat, lat);
+ 
+-    bool signLon = reCoord1.cap(4) == "W";
+-    int degLon = reCoord1.cap(5).toInt();
+-    qreal minLon = reCoord1.cap(6).toDouble();
++    bool signLon = match1.captured(4) == "W";
++    int degLon = match1.captured(5).toInt();
++    qreal minLon = match1.captured(6).toDouble();
+ 
+     GPS_Math_DegMin_To_Deg(signLon, degLon, minLon, lon);
+-  } else if (reCoord3.exactMatch(str)) {
+-    lat = reCoord3.cap(1).toDouble();
+-    lon = reCoord3.cap(2).toDouble();
+-  } else if (reCoord4.exactMatch(str)) {
+-    bool signLat = reCoord4.cap(1) == "S";
+-    int degLat = reCoord4.cap(2).toInt();
+-    int minLat = reCoord4.cap(3).toInt();
+-    qreal secLat = reCoord4.cap(4).toFloat();
++  } else if (match3.hasMatch()) {
++    lat = match3.captured(1).toDouble();
++    lon = match3.captured(2).toDouble();
++  } else if (match4.hasMatch()) {
++    bool signLat = match4.captured(1) == "S";
++    int degLat = match4.captured(2).toInt();
++    int minLat = match4.captured(3).toInt();
++    qreal secLat = match4.captured(4).toFloat();
+ 
+     GPS_Math_DegMinSec_To_Deg(signLat, degLat, minLat, secLat, lat);
+ 
+-    bool signLon = reCoord4.cap(5) == "W";
+-    int degLon = reCoord4.cap(6).toInt();
+-    int minLon = reCoord4.cap(7).toInt();
+-    qreal secLon = reCoord4.cap(8).toFloat();
++    bool signLon = match4.captured(5) == "W";
++    int degLon = match4.captured(6).toInt();
++    int minLon = match4.captured(7).toInt();
++    qreal secLon = match4.captured(8).toFloat();
+ 
+     GPS_Math_DegMinSec_To_Deg(signLon, degLon, minLon, secLon, lon);
+-  } else if (reCoord5.exactMatch(str)) {
+-    bool signLon = reCoord4.cap(4) == "W";
+-    bool signLat = reCoord4.cap(2) == "S";
+-    lat = reCoord5.cap(1).toDouble();
+-    lon = reCoord5.cap(3).toDouble();
++  } else if (match5.hasMatch()) {
++    bool signLon = match5.captured(4) == "W";
++    bool signLat = match5.captured(2) == "S";
++    lat = match5.captured(1).toDouble();
++    lon = match5.captured(3).toDouble();
+ 
+     if (signLon) {
+       lon = -lon;
+@@ -886,15 +892,15 @@ bool IUnit::strToDeg(const QString& str, qreal& lon, qreal& lat) {
+ }
+ 
+ bool IUnit::isValidCoordString(const QString& str) {
+-  if (reCoord1.exactMatch(str)) {
++  if (reCoord1.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord2.exactMatch(str)) {
++  } else if (reCoord2.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord3.exactMatch(str)) {
++  } else if (reCoord3.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord4.exactMatch(str)) {
++  } else if (reCoord4.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord5.exactMatch(str)) {
++  } else if (reCoord5.match(str).hasMatch()) {
+     return true;
+   }
+   return false;
+diff --git a/src/qmapshack/units/IUnit.h b/src/qmapshack/units/IUnit.h
+index b1f36a6f0ad2..e9773adfc1e6 100644
+--- a/src/qmapshack/units/IUnit.h
++++ b/src/qmapshack/units/IUnit.h
+@@ -158,11 +158,11 @@ class IUnit : public QObject {
+  private:
+   static const IUnit* m_self;
+ 
+-  static const QRegExp reCoord1;
+-  static const QRegExp reCoord2;
+-  static const QRegExp reCoord3;
+-  static const QRegExp reCoord4;
+-  static const QRegExp reCoord5;
++  static const QRegularExpression reCoord1;
++  static const QRegularExpression reCoord2;
++  static const QRegularExpression reCoord3;
++  static const QRegularExpression reCoord4;
++  static const QRegularExpression reCoord5;
+ 
+   enum unit_type_e { eUnitTypeTime, eUnitTypeDistance, eUnitTypeSpeed, eUnitTypeArea };
+ 
+diff --git a/src/qmapshack/widgets/CTextEditWidget.cpp b/src/qmapshack/widgets/CTextEditWidget.cpp
+index ecfb90369cc0..434b4a9a26c9 100644
+--- a/src/qmapshack/widgets/CTextEditWidget.cpp
++++ b/src/qmapshack/widgets/CTextEditWidget.cpp
+@@ -168,15 +168,14 @@ CTextEditWidget::~CTextEditWidget() {
+ 
+ QString CTextEditWidget::getHtml() {
+   QString str = textEdit->toHtml();
+-  QRegExp re(".*(\\<body.*body\\>).*");
+-  if (re.exactMatch(str)) {
+-    str = re.cap(1);
++  static const QRegularExpression re(QRegularExpression::anchoredPattern(".*(\\<body.*body\\>).*"));
++  const QRegularExpressionMatch& match = re.match(str);
++  if (match.hasMatch()) {
++    str = match.captured(1);
+ 
+-    QRegExp re1("<body.*>");
+-    re1.setMinimal(true);
++    static const QRegularExpression re1("<body.*>", QRegularExpression::PatternOption::InvertedGreedinessOption);
+     str = str.replace("body>", "div>").replace(re1, "<div>");
+   }
+-
+   return str;
+ }
+ 
+diff --git a/src/qmaptool/overlay/COverlayRefMap.cpp b/src/qmaptool/overlay/COverlayRefMap.cpp
+index 6a077b637e01..022c3782cd0a 100644
+--- a/src/qmaptool/overlay/COverlayRefMap.cpp
++++ b/src/qmaptool/overlay/COverlayRefMap.cpp
+@@ -559,13 +559,15 @@ void COverlayRefMap::slotLoadGcp() {
+   file.open(QIODevice::ReadOnly);
+   QString line = file.readLine();
+   if (line.trimmed() == "#V1.0") {
+-    QRegExp re1("^-gcp\\s(-{0,1}[0-9]+)\\s(-{0,1}[0-9]+)\\s(-{0,1}[0-9\\.]+)\\s(-{0,1}[0-9\\.]+).*$");
++    static const QRegularExpression re1(
++        "^-gcp\\s(-{0,1}[0-9]+)\\s(-{0,1}[0-9]+)\\s(-{0,1}[0-9\\.]+)\\s(-{0,1}[0-9\\.]+).*$");
+ 
+     qint32 cnt = 1;
+     while (1) {
+-      if (re1.exactMatch(line)) {
+-        QPointF ptPtx(re1.cap(1).toDouble(), re1.cap(2).toDouble());
+-        QPointF ptRef(re1.cap(4).toDouble(), re1.cap(3).toDouble());
++      const QRegularExpressionMatch& match = re1.match(line);
++      if (match.hasMatch()) {
++        QPointF ptPtx(match.captured(1).toDouble(), match.captured(2).toDouble());
++        QPointF ptRef(match.captured(4).toDouble(), match.captured(3).toDouble());
+         new COverlayRefMapPoint(cnt++, ptRef, ptPtx, treeWidget);
+       }
+ 
+diff --git a/src/qmaptool/overlay/refmap/CProjWizard.cpp b/src/qmaptool/overlay/refmap/CProjWizard.cpp
+index ccba81f37505..e9f9ba02904f 100644
+--- a/src/qmaptool/overlay/refmap/CProjWizard.cpp
++++ b/src/qmaptool/overlay/refmap/CProjWizard.cpp
+@@ -74,28 +74,34 @@ CProjWizard::CProjWizard(QLineEdit& line, QWidget* parent) : QDialog(parent), li
+           &CProjWizard::slotChange);
+ 
+   QString projstr = line.text();
+-  QRegExp re2("\\s*EPSG:3857");
+-  QRegExp re3("\\s*\\+proj=merc\\s(.*)");
+-  QRegExp re4("\\s*\\+proj=utm \\+zone=([0-9]+)\\s(.*)");
++  static const QRegularExpression re2(QRegularExpression::anchoredPattern("\\s*EPSG:3857"));
++  static const QRegularExpression re3(QRegularExpression::anchoredPattern("\\s*\\+proj=merc\\s(.*)"));
++  static const QRegularExpression re4(QRegularExpression::anchoredPattern("\\s*\\+proj=utm \\+zone=([0-9]+)\\s(.*)"));
+ 
+-  if (re2.exactMatch(projstr)) {
++  const QRegularExpressionMatch& match1 = re2.match(projstr);
++  if (match1.hasMatch()) {
+     radioWorldMercator->setChecked(true);
+-  } else if (re3.exactMatch(projstr)) {
+-    radioMercator->setChecked(true);
+-    findDatum(re3.cap(1));
+-  } else if (re4.exactMatch(projstr)) {
+-    radioUTM->setChecked(true);
+-    spinUTMZone->setValue(re4.cap(1).toInt());
+-
+-    QString datum = re4.cap(2);
+-    if (datum.startsWith("+south ")) {
+-      datum = datum.mid(7);
+-      comboHemisphere->setCurrentIndex(1);
+-    }
++  } else {
++    const QRegularExpressionMatch& match3 = re3.match(projstr);
++    if (match3.hasMatch()) {
++      radioMercator->setChecked(true);
++      findDatum(match3.captured(1));
++    } else {
++      const QRegularExpressionMatch& match4 = re4.match(projstr);
++      if (match4.hasMatch()) {
++        radioUTM->setChecked(true);
++        spinUTMZone->setValue(match4.captured(1).toInt());
++
++        QString datum = match4.captured(2);
++        if (datum.startsWith("+south ")) {
++          datum = datum.mid(7);
++          comboHemisphere->setCurrentIndex(1);
++        }
+ 
+-    findDatum(datum);
++        findDatum(datum);
++      }
++    }
+   }
+-
+   slotChange();
+ }
+ 
+diff --git a/src/qmaptool/setup/CAppSetupLinux.cpp b/src/qmaptool/setup/CAppSetupLinux.cpp
+index b703e7bb6f3e..5936483e6910 100644
+--- a/src/qmaptool/setup/CAppSetupLinux.cpp
++++ b/src/qmaptool/setup/CAppSetupLinux.cpp
+@@ -31,7 +31,8 @@ void CAppSetupLinux::initQMapTool() {
+   // setup translators
+   QString resourceDir = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+   QString translationPath = QCoreApplication::applicationDirPath();
+-  translationPath.replace(QRegExp("bin$"), "share/qmaptool/translations");
++  static const QRegularExpression re("bin$");
++  translationPath.replace(re, "share/qmaptool/translations");
+   prepareTranslator(resourceDir, "qt_");
+   prepareTranslator(translationPath, "qmaptool_");
+ 
+diff --git a/src/qmaptool/units/IUnit.cpp b/src/qmaptool/units/IUnit.cpp
+index 7356bff86cd2..030ccc37ac65 100644
+--- a/src/qmaptool/units/IUnit.cpp
++++ b/src/qmaptool/units/IUnit.cpp
+@@ -418,18 +418,21 @@ const char* IUnit::tblTimezone[] = {"Africa/Abidjan",
+ 
+ const int N_TIMEZONES = sizeof(IUnit::tblTimezone) / sizeof(const char*);
+ 
+-const QRegExp IUnit::reCoord1(
+-    "^\\s*([N|S]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s+([E|W|O]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s*$");
++const QRegularExpression IUnit::reCoord1(QRegularExpression::anchoredPattern(
++    "^\\s*([N|S]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s+([E|W|O]){1}\\W*([0-9]+)\\W*([0-9]+\\.[0-9]+)\\s*$"));
+ 
+-const QRegExp IUnit::reCoord2("^\\s*([N|S]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s+([E|W|O]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s*$");
++const QRegularExpression IUnit::reCoord2(QRegularExpression::anchoredPattern(
++    "^\\s*([N|S]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s+([E|W|O]){1}\\s*([0-9]+\\.[0-9]+)\\W*\\s*$"));
+ 
+-const QRegExp IUnit::reCoord3("^\\s*([-0-9]+\\.[0-9]+)\\s+([-0-9]+\\.[0-9]+)\\s*$");
++const QRegularExpression IUnit::reCoord3(
++    QRegularExpression::anchoredPattern("^\\s*([-0-9]+\\.[0-9]+)\\s+([-0-9]+\\.[0-9]+)\\s*$"));
+ 
+-const QRegExp IUnit::reCoord4(
++const QRegularExpression IUnit::reCoord4(QRegularExpression::anchoredPattern(
+     "^\\s*([N|S]){1}\\s*([0-9]+)\\W+([0-9]+)\\W+([0-9]+\\.[0-9]+)\\W*([E|W|O]){1}\\W*([0-9]+)\\W+([0-9]+)\\W+([0-9]+\\."
+-    "[0-9]+)\\W*\\s*$");
++    "[0-9]+)\\W*\\s*$"));
+ 
+-const QRegExp IUnit::reCoord5("^\\s*([-0-9]+\\.[0-9]+)([N|S])\\s+([-0-9]+\\.[0-9]+)([W|E])\\s*$");
++const QRegularExpression IUnit::reCoord5(
++    QRegularExpression::anchoredPattern("^\\s*([-0-9]+\\.[0-9]+)([N|S])\\s+([-0-9]+\\.[0-9]+)([W|E])\\s*$"));
+ 
+ IUnit::IUnit(const type_e& type, const QString& baseunit, const qreal basefactor, const QString& speedunit,
+              const qreal speedfactor, QObject* parent)
+@@ -493,10 +496,11 @@ bool IUnit::parseTimestamp(const QString& time, QDateTime& datetime) {
+ }
+ 
+ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+-  const QRegExp tzRE("[-+]\\d\\d:\\d\\d$");
++  static const QRegularExpression tzRE("[-+]\\d\\d:\\d\\d$");
+   int i;
+ 
+   tzoffset = 0;
++  bool applyTzOffset = false;
+ 
+   QString format = "yyyy-MM-dd'T'hh:mm:ss";
+ 
+@@ -512,7 +516,8 @@ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+   // trailing "Z" explicitly declares the timestamp to be UTC
+   if (timetext.indexOf("Z") != NOIDX) {
+     format += "'Z'";
+-  } else if ((i = tzRE.indexIn(timetext)) != NOIDX) {
++    applyTzOffset = true;
++  } else if ((i = timetext.indexOf(tzRE)) != NOIDX) {
+     // trailing timezone offset [-+]HH:MM present
+     // This does not match the original intentions of the GPX
+     // file format but appears to be found occasionally in
+@@ -533,10 +538,17 @@ QDateTime IUnit::parseTimestamp(const QString& timetext, int& tzoffset) {
+       tzoffset = 60 * offsetHours + offsetMinutes;
+     }
+     tzoffset *= 60;  // seconds
++    applyTzOffset = true;
+   }
+ 
+   QDateTime datetime = QDateTime::fromString(timetext, format);
+-  datetime.setOffsetFromUtc(tzoffset);
++
++  if (applyTzOffset) {
++    datetime.setOffsetFromUtc(tzoffset);
++  } else {  // if timetext has no 'Z' and no [-+]HH:MM then this is local time then simply switch to UTC without
++            // applying any offset
++    datetime = datetime.toUTC();
++  }
+ 
+   return datetime;
+ }
+@@ -643,48 +655,53 @@ bool IUnit::degToStr(const qreal& x, const qreal& y, QString& str) {
+ }
+ 
+ bool IUnit::strToDeg(const QString& str, qreal& lon, qreal& lat) {
+-  if (reCoord2.exactMatch(str)) {
+-    bool signLat = reCoord2.cap(1) == "S";
+-    qreal absLat = reCoord2.cap(2).toDouble();
++  const QRegularExpressionMatch& match1 = reCoord1.match(str);
++  const QRegularExpressionMatch& match2 = reCoord2.match(str);
++  const QRegularExpressionMatch& match3 = reCoord3.match(str);
++  const QRegularExpressionMatch& match4 = reCoord4.match(str);
++  const QRegularExpressionMatch& match5 = reCoord5.match(str);
++  if (match2.hasMatch()) {
++    bool signLat = match2.captured(1) == "S";
++    qreal absLat = match2.captured(2).toDouble();
+     lat = signLat ? -absLat : absLat;
+ 
+-    bool signLon = reCoord2.cap(3) == "W";
+-    qreal absLon = reCoord2.cap(4).toDouble();
++    bool signLon = match2.captured(3) == "W";
++    qreal absLon = match2.captured(4).toDouble();
+     lon = signLon ? -absLon : absLon;
+-  } else if (reCoord1.exactMatch(str)) {
+-    bool signLat = reCoord1.cap(1) == "S";
+-    int degLat = reCoord1.cap(2).toInt();
+-    qreal minLat = reCoord1.cap(3).toDouble();
++  } else if (match1.hasMatch()) {
++    bool signLat = match1.captured(1) == "S";
++    int degLat = match1.captured(2).toInt();
++    qreal minLat = match1.captured(3).toDouble();
+ 
+     GPS_Math_DegMin_To_Deg(signLat, degLat, minLat, lat);
+ 
+-    bool signLon = reCoord1.cap(4) == "W";
+-    int degLon = reCoord1.cap(5).toInt();
+-    qreal minLon = reCoord1.cap(6).toDouble();
++    bool signLon = match1.captured(4) == "W";
++    int degLon = match1.captured(5).toInt();
++    qreal minLon = match1.captured(6).toDouble();
+ 
+     GPS_Math_DegMin_To_Deg(signLon, degLon, minLon, lon);
+-  } else if (reCoord3.exactMatch(str)) {
+-    lat = reCoord3.cap(1).toDouble();
+-    lon = reCoord3.cap(2).toDouble();
+-  } else if (reCoord4.exactMatch(str)) {
+-    bool signLat = reCoord4.cap(1) == "S";
+-    int degLat = reCoord4.cap(2).toInt();
+-    int minLat = reCoord4.cap(3).toInt();
+-    qreal secLat = reCoord4.cap(4).toFloat();
++  } else if (match3.hasMatch()) {
++    lat = match3.captured(1).toDouble();
++    lon = match3.captured(2).toDouble();
++  } else if (match4.hasMatch()) {
++    bool signLat = match4.captured(1) == "S";
++    int degLat = match4.captured(2).toInt();
++    int minLat = match4.captured(3).toInt();
++    qreal secLat = match4.captured(4).toFloat();
+ 
+     GPS_Math_DegMinSec_To_Deg(signLat, degLat, minLat, secLat, lat);
+ 
+-    bool signLon = reCoord4.cap(5) == "W";
+-    int degLon = reCoord4.cap(6).toInt();
+-    int minLon = reCoord4.cap(7).toInt();
+-    qreal secLon = reCoord4.cap(8).toFloat();
++    bool signLon = match4.captured(5) == "W";
++    int degLon = match4.captured(6).toInt();
++    int minLon = match4.captured(7).toInt();
++    qreal secLon = match4.captured(8).toFloat();
+ 
+     GPS_Math_DegMinSec_To_Deg(signLon, degLon, minLon, secLon, lon);
+-  } else if (reCoord5.exactMatch(str)) {
+-    bool signLon = reCoord4.cap(4) == "W";
+-    bool signLat = reCoord4.cap(2) == "S";
+-    lat = reCoord5.cap(1).toDouble();
+-    lon = reCoord5.cap(3).toDouble();
++  } else if (match5.hasMatch()) {
++    bool signLon = match5.captured(4) == "W";
++    bool signLat = match5.captured(2) == "S";
++    lat = match5.captured(1).toDouble();
++    lon = match5.captured(3).toDouble();
+ 
+     if (signLon) {
+       lon = -lon;
+@@ -710,15 +727,15 @@ bool IUnit::strToDeg(const QString& str, qreal& lon, qreal& lat) {
+ }
+ 
+ bool IUnit::isValidCoordString(const QString& str) {
+-  if (reCoord1.exactMatch(str)) {
++  if (reCoord1.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord2.exactMatch(str)) {
++  } else if (reCoord2.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord3.exactMatch(str)) {
++  } else if (reCoord3.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord4.exactMatch(str)) {
++  } else if (reCoord4.match(str).hasMatch()) {
+     return true;
+-  } else if (reCoord5.exactMatch(str)) {
++  } else if (reCoord5.match(str).hasMatch()) {
+     return true;
+   }
+   return false;
+diff --git a/src/qmaptool/units/IUnit.h b/src/qmaptool/units/IUnit.h
+index 6c13403ac3b8..528d3223102a 100644
+--- a/src/qmaptool/units/IUnit.h
++++ b/src/qmaptool/units/IUnit.h
+@@ -120,10 +120,10 @@ class IUnit : public QObject {
+  private:
+   static const IUnit* m_self;
+ 
+-  static const QRegExp reCoord1;
+-  static const QRegExp reCoord2;
+-  static const QRegExp reCoord3;
+-  static const QRegExp reCoord4;
+-  static const QRegExp reCoord5;
++  static const QRegularExpression reCoord1;
++  static const QRegularExpression reCoord2;
++  static const QRegularExpression reCoord3;
++  static const QRegularExpression reCoord4;
++  static const QRegularExpression reCoord5;
+ };
+ #endif  // IUNIT_H
+diff --git a/src/qmt_rgb2pct/main.cpp b/src/qmt_rgb2pct/main.cpp
+index 589d3d52e692..5cd47efd7ecf 100644
+--- a/src/qmt_rgb2pct/main.cpp
++++ b/src/qmt_rgb2pct/main.cpp
+@@ -49,7 +49,8 @@ static void loadTranslations() {
+     defined(Q_OS_CYGWIN)
+   QString resourceDir = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+   QString translationPath = QCoreApplication::applicationDirPath();
+-  translationPath.replace(QRegExp("bin$"), "share/" APP_STR "/translations");
++  static const QRegularExpression re("bin$");
++  translationPath.replace(re, "share/" APP_STR "/translations");
+   prepareTranslator(resourceDir, "qt_");
+   prepareTranslator(translationPath, APP_STR "_");
+ #endif
+-- 
+2.49.0
+

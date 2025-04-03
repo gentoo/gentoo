@@ -1,0 +1,58 @@
+From 4206606852818f4d4fb746b59b17b4a237dd50ab Mon Sep 17 00:00:00 2001
+From: Oliver Eichler <oliver.eichler@gmx.de>
+Date: Tue, 3 Sep 2024 14:07:21 +0200
+Subject: [PATCH 17/26] Replace QMatrix by QTransform
+
+---
+ src/qmapshack/poi/CPoiItemPOI.h           |  2 +-
+ src/qmaptool/overlay/COverlayGridTool.cpp | 11 +++++------
+ 2 files changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/src/qmapshack/poi/CPoiItemPOI.h b/src/qmapshack/poi/CPoiItemPOI.h
+index eaf3692d3f44..41330b6ee114 100644
+--- a/src/qmapshack/poi/CPoiItemPOI.h
++++ b/src/qmapshack/poi/CPoiItemPOI.h
+@@ -58,7 +58,7 @@ class CPoiItemPOI {
+   QStringList wikidataRelatedKeys;
+   QStringList nameRelatedKeys;
+   QString garminIcon;
+-  quint64 key;
++  quint64 key{0};
+   QString name;
+ };
+ 
+diff --git a/src/qmaptool/overlay/COverlayGridTool.cpp b/src/qmaptool/overlay/COverlayGridTool.cpp
+index 73fc40982b0d..73c7bcd82b59 100644
+--- a/src/qmaptool/overlay/COverlayGridTool.cpp
++++ b/src/qmaptool/overlay/COverlayGridTool.cpp
+@@ -26,7 +26,6 @@
+ #include "helpers/CSettings.h"
+ #include "items/CItemRefMap.h"
+ #include "overlay/refmap/COverlayRefMapPoint.h"
+-#include "overlay/refmap/CProjWizard.h"
+ 
+ COverlayGridTool::COverlayGridTool(QWidget* parent) : QWidget(parent) {
+   setupUi(this);
+@@ -244,14 +243,14 @@ void COverlayGridTool::slotCalculate() {
+ 
+   qreal disty = qSqrt(dx2 * dx2 + dy2 * dy2);
+ 
+-  QMatrix translationMatrix(1, 0, 0, 1, ptTopLeft.x(), ptTopLeft.y());
+-  QMatrix rotationMatrix(qCos(alpha), qSin(alpha), -qSin(alpha), qCos(alpha), 0, 0);
+-  QMatrix scalingMatrix(distx, 0, 0, disty, 0, 0);
++  QTransform translationMatrix(1, 0, 0, 1, ptTopLeft.x(), ptTopLeft.y());
++  QTransform rotationMatrix(qCos(alpha), qSin(alpha), -qSin(alpha), qCos(alpha), 0, 0);
++  QTransform scalingMatrix(distx, 0, 0, disty, 0, 0);
+ 
+   // forward matrix index -> map pixel coord
+-  QMatrix mxFwd = scalingMatrix * rotationMatrix * translationMatrix;
++  QTransform mxFwd = scalingMatrix * rotationMatrix * translationMatrix;
+   // backward matrix map pixel coord -> index
+-  QMatrix mxBwd = mxFwd.inverted();
++  QTransform mxBwd = mxFwd.inverted();
+ 
+   QPointF tl = mxBwd.map(area.topLeft());
+   QPointF br = mxBwd.map(area.bottomRight());
+-- 
+2.49.0
+
