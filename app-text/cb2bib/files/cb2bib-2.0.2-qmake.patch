@@ -1,0 +1,49 @@
+From 5703387d1a720eb8b02e9e1c35e7d06158df9167 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 3 Apr 2025 21:38:10 +0200
+Subject: [PATCH] Disable qtwebkit, qtwebengine, installation of
+ AUTHORS/COPYRIGHT/LICENSE/CHANGELOG files
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/src.pro | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/src.pro b/src/src.pro
+index c5f1523..b19104c 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -130,10 +130,10 @@ LIBS += -lc2b
+ QMAKE_LIBDIR += .
+ INCLUDEPATH += c2b .
+ 
+-qtHaveModule(webkitwidgets){
++false{
+     CONFIG += use_webkit
+ } else {
+-qtHaveModule(webenginewidgets){
++false{
+     CONFIG += use_webengine
+ }}
+ CONFIG(use_webkit) {
+@@ -203,7 +203,7 @@ desktop.files += ../c2bscripts/cb2bib.desktop ../c2bscripts/c2bciter.desktop ../
+ desktop.path = /usr/share/applications
+ icons.files += ../src/icons/cb2bib.png
+ icons.path = /usr/share/pixmaps
+-cb2bibdata.files += ../AUTHORS ../COPYRIGHT ../LICENSE ../CHANGELOG ../data ../c2btools ../testPDFImport
++cb2bibdata.files +=  ../data ../c2btools ../testPDFImport
+ cb2bibdata.path = /usr/share/cb2bib
+ cb2bibdoc.files += ../doc/cb2bib_user_manual.pdf
+ cb2bibdoc.path = /usr/share/cb2bib/doc
+@@ -217,7 +217,7 @@ INSTALLS += target script cb2bibdata
+ target.path = /Applications
+ script.files += ../c2bscripts/c2bimport ../c2bscripts/c2bciter
+ script.path = /Applications
+-cb2bibdata.files += ../AUTHORS ../COPYRIGHT ../LICENSE ../CHANGELOG ../data ../doc ../c2btools ../testPDFImport
++cb2bibdata.files +=  ../data ../doc ../c2btools ../testPDFImport
+ cb2bibdata.path = Contents/Resources
+ QMAKE_BUNDLE_DATA += script cb2bibdata
+ #   Set this directory if third party tools, like pdftotext are packaged
+-- 
+2.49.0
+
