@@ -24,7 +24,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="test"
 
-ruby_add_depend "test? ( dev-ruby/bson dev-ruby/ox dev-ruby/rantly dev-ruby/sqlite3 dev-ruby/tokyocabinet )"
+ruby_add_depend "test? (
+	dev-ruby/bson
+	dev-ruby/ox
+	dev-ruby/rantly
+	dev-ruby/sqlite3
+	dev-ruby/timecop
+	dev-ruby/tokyocabinet
+)"
 
 all_ruby_prepare() {
 	sed -e "s/__dir__/'.'/" \
