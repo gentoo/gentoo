@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>tex@gentoo.org</email>
-    <name>Gentoo TeX Project</name>
-  </maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<use>
+		<flag name="webengine">Enable internal browser using <pkg>dev-qt/qtwebengine</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,16 @@
+Find system libs instead of 3rd libs
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f32e01..b4afe45 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1462,5 +1462,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
+ )
+ endif()
+ 
+-
+-
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(hunspell REQUIRED IMPORTED_TARGET hunspell)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::hunspell)
++pkg_check_modules(synctex REQUIRED IMPORTED_TARGET synctex)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::synctex)
