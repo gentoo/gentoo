@@ -3,13 +3,16 @@ https://github.com/ofalk/libdnet/pull/104
 From de57a2349172148496386e284db91abe6406b02a Mon Sep 17 00:00:00 2001
 From: "Z. Liu" <zhixu.liu@gmail.com>
 Date: Wed, 19 Feb 2025 11:37:37 +0800
-Subject: [PATCH] python/dnet.pyx: fix incompatible-function-pointer-types for
- modern compiler
+Subject: [PATCH 1/2] python/dnet.pyx: fix incompatible-function-pointer-types
+ for modern compiler
 
 which is error now, see https://bugs.gentoo.org/933360,
 clang 19 (maybe earlier) has the same problem too
 
 Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ python/dnet.pyx | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/python/dnet.pyx b/python/dnet.pyx
 index 4e3604f..04db2c6 100644
@@ -105,6 +108,76 @@ index 4e3604f..04db2c6 100644
      f, a = <object>arg
      ret = f(rule_to_dict(rule), a)
      if not ret:
+-- 
+2.45.2
+
+
+From 0a742400b2167f67067e13bfcbecb9f17a7eefe8 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 3 Apr 2025 08:09:26 +0000
+Subject: [PATCH 2/2] python/dnet.pyx: fix -Wincompatible-pointer-types
+ reported by gcc14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+./dnet.c:8451:52: error: passing argument 2 of ‘PyObject_AsReadBuffer’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 8451 |   __pyx_t_1 = (PyObject_AsReadBuffer(__pyx_v_pkt, (&__pyx_v_p), (&__pyx_v_n)) == 0);
+      |                                                   ~^~~~~~~~~~~
+      |                                                    |
+      |                                                    char **
+/usr/include/python3.12/abstract.h:370:52: note: expected ‘const void **’ but argument is of type ‘char **’
+  370 |                                       const void **buffer,
+      |                                       ~~~~~~~~~~~~~^~~~~~
+./dnet.c:8451:66: error: passing argument 3 of ‘PyObject_AsReadBuffer’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 8451 |   __pyx_t_1 = (PyObject_AsReadBuffer(__pyx_v_pkt, (&__pyx_v_p), (&__pyx_v_n)) == 0);
+      |                                                                 ~^~~~~~~~~~~
+      |                                                                  |
+      |                                                                  int *
+/usr/include/python3.12/abstract.h:371:51: note: expected ‘Py_ssize_t *’ {aka ‘long int *’} but argument is of type ‘int *’
+  371 |                                       Py_ssize_t *buffer_len);
+      |                                       ~~~~~~~~~~~~^~~~~~~~~~
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ python/dnet.pyx | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/python/dnet.pyx b/python/dnet.pyx
+index 04db2c6..6aefaa2 100644
+--- a/python/dnet.pyx
++++ b/python/dnet.pyx
+@@ -25,7 +25,7 @@ cdef extern from "dnet.h":
+ cdef extern from "Python.h":
+     object  PyBytes_FromStringAndSize(char *s, int len)
+     int     PyBytes_Size(object o)
+-    int     PyObject_AsReadBuffer(object o, char **pp, int *lenp)
++    int     PyObject_AsReadBuffer(object o, const void **pp, ssize_t *lenp)
+     int     PyLong_Check(object o)
+     int     PyLong_Check(object o)
+     long    PyLong_AsLong(object o)
+@@ -294,8 +294,8 @@ def ip_checksum(pkt):
+     """
+     cdef char buf[2048]
+     cdef char *p
+-    cdef int n
+-    if PyObject_AsReadBuffer(pkt, &p, &n) == 0:
++    cdef ssize_t n
++    if PyObject_AsReadBuffer(pkt, <const void **>&p, &n) == 0:
+         if n < 2048:
+             memcpy(buf, p, n)
+             __ip_checksum(buf, n)
+@@ -310,8 +310,8 @@ def ip_checksum(pkt):
+ 
+ def ip_cksum_add(buf, int sum):
+     cdef char *p
+-    cdef int n
+-    if PyObject_AsReadBuffer(buf, &p, &n) == 0:
++    cdef ssize_t n
++    if PyObject_AsReadBuffer(buf, <const void **>&p, &n) == 0:
+         return __ip_cksum_add(p, n, sum)
+     else:
+         raise TypeError
 -- 
 2.45.2
 
