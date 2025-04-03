@@ -66,7 +66,8 @@ src_prepare() {
 	qt6-build_src_prepare
 
 	# qttools is picky about clang versions and ignores LLVM_SLOT
-	sed -i '/find_package/s/${VERSION}//' cmake/FindWrapLibClang.cmake || die
+	sed -e '/find_package/s/${\(LLVM_\)*VERSION}//' \
+		-i cmake/FindWrapLibClang.cmake || die
 }
 
 src_configure() {
