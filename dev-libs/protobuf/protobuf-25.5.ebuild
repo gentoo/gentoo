@@ -28,14 +28,13 @@ HOMEPAGE="https://protobuf.dev/"
 
 LICENSE="BSD"
 SLOT="0/${MY_SLOT}.0"
-IUSE="conformance debug emacs examples +libprotoc libupb +protobuf +protoc test zlib"
+IUSE="conformance debug emacs examples +libprotoc +protobuf +protoc test zlib"
 
 # Require protobuf for the time being
 REQUIRED_USE="
 	protobuf
 	examples? ( protobuf protoc )
 	libprotoc? ( protobuf )
-	libupb? (	protobuf )
 	protoc? ( protobuf )
 "
 
@@ -81,7 +80,6 @@ multilib_src_configure() {
 
 		-Dprotobuf_BUILD_CONFORMANCE="$(usex test "$(usex conformance)")"
 		-Dprotobuf_BUILD_LIBPROTOC="$(usex libprotoc)"
-		-Dprotobuf_BUILD_LIBUPB="$(usex libupb)"
 		-Dprotobuf_BUILD_PROTOBUF_BINARIES="$(usex protobuf)"
 		-Dprotobuf_BUILD_PROTOC_BINARIES="$(usex protoc)"
 		-Dprotobuf_BUILD_SHARED_LIBS="yes"
