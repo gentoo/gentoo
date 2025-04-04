@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,18 +38,14 @@ BDEPEND="dev-lang/swig"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
-	#although cppunit is not used, it fails if it isn't there, fix it
-	sed -i 's#FATAL_ERROR "CppUnit#MESSAGE "CppUnit#' CMakeLists.txt
-	sed -i '/${CPPUNIT_INCLUDE_DIRS}/d' CMakeLists.txt
-	sed -i '/${CPPUNIT_LIBRARY_DIRS}/d' CMakeLists.txt
-	sed -i '/GR_PKG_DOC_DIR/d' CMakeLists.txt
+	# fix path for doc files
+	sed -i "s/802_15_4 CXX/802154 CXX/" CMakeLists.txt || die
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DGR_PKG_DOC_DIR="/usr/share/doc/${P}"
 	)
 	cmake_src_configure
 }
