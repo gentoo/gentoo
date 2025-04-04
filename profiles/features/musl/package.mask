@@ -443,6 +443,7 @@ dev-libs/cudnn
 dev-libs/cudnn-frontend
 dev-python/pycuda
 dev-util/nsight-compute
+dev-util/nsight-graphics
 dev-util/nvidia-cuda-toolkit
 dev-libs/optix
 media-libs/nvidia-vaapi-driver

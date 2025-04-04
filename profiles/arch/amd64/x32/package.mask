@@ -4,6 +4,7 @@
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-04)
 # Requires dev-qt/qtwebengine
 dev-util/nsight-compute
+dev-util/nsight-graphics
 
 # Z. Liu <zhixu.liu@gmail.com> (2025-01-23)
 # Requires dev-qt/qtwebengine
