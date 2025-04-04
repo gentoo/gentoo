@@ -41,6 +41,10 @@ src_prepare() {
 	# spice accepts -O1 at most
 	replace-flags -O* -O1
 
+	# The code is from 1989, later updated in 1993. It is deeply incompatible
+	# with Modern C (c99). It also needs `#define linux` from gnu...
+	append-flags -std=gnu89
+
 	# Avoid re-creating WORKDIR due to stupid mtime
 	touch ..
 
