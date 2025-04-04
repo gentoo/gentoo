@@ -48,6 +48,8 @@ src_prepare() {
 	# Avoid re-creating WORKDIR due to stupid mtime
 	touch ..
 
+	echo "CC = $(tc-getCC)" >> conf/defaults
+
 	sed -i -e "s/termcap/ncurses/g" \
 		-e "s/joe/\/usr\/libexec\/editor/g" \
 		-e "s/-O2 -s/${CFLAGS}/g" \
