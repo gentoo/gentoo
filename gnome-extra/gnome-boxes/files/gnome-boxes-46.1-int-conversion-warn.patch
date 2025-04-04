@@ -1,0 +1,10 @@
+--- a/src/meson.build	2024-04-22 06:56:01.000000000 -0300
++++ b/src/meson.build	2024-07-20 17:54:37.006739364 -0300
+@@ -24,6 +24,7 @@
+   '-DDATADIR="' + data_dir + '"',
+   '-DGNOMELOCALEDIR="' + locale_dir + '"',
+   '-DGETTEXT_PACKAGE="gnome-boxes"',
++  '-Wno-error=int-conversion',
+   '-DCACHEDIR="/var/cache/"',
+   '-DG_LOG_DOMAIN="Boxes"',
+ ]
