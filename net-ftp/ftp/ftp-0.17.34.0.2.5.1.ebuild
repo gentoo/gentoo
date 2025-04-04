@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,6 +55,9 @@ src_configure() {
 	# bug #101038
 	append-lfs-flags
 	tc-export CC
+
+	# bug #943875
+	append-cflags "-std=gnu17"
 
 	# Not an autoconf script
 	edo ./configure \
