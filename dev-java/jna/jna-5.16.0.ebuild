@@ -104,7 +104,8 @@ src_compile() {
 	# Using -j1 since otherwise fails to build:
 	# cannot find ../build/native/libtestlib.so: No such file or directory
 	# [Makefile:505: ../build/native/libtestlib2.so] Error 1
-	emake -j1 "${args[@]}"
+	# --shuffle=none https://bugs.gentoo.org/952962
+	emake -j1 --shuffle=none "${args[@]}"
 }
 
 src_test() {
