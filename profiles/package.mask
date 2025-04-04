@@ -306,18 +306,20 @@ dev-python/pyside6-tools
 =dev-cpp/cpp-httplib-0.18.6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Qt5 package without any revdeps. Use dev-qt/qttools[qdbus] instead.
-dev-qt/qdbusviewer
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 packages without any revdeps.
 dev-qt/assistant
+dev-qt/linguist
 dev-qt/pixeltool
 dev-qt/qdbus
+dev-qt/qdbusviewer
 dev-qt/qdoc
 dev-qt/qtdiag
+dev-qt/qtpaths
+dev-qt/qt3d:5
+dev-qt/qtdatavis3d:5
 dev-qt/qtgamepad:5
 dev-qt/qtlocation:5
+dev-qt/qtnetworkauth:5
 dev-qt/qtplugininfo
 dev-qt/qtquicktimeline:5
 dev-qt/qtsensors:5
