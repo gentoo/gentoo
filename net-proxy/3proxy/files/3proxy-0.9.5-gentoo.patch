@@ -1,0 +1,51 @@
+diff --git a/Makefile.Linux b/Makefile.Linux
+index 4f3f2b3..f15f6ff 100644
+--- a/Makefile.Linux
++++ b/Makefile.Linux
+@@ -8,13 +8,13 @@
+ # library support. Add -DSAFESQL for poorely written ODBC library / drivers.
+ 
+ BUILDDIR = ../bin/
+-CC = gcc
++CC ?= gcc
+ 
+-CFLAGS = -g  -fPIC -O2 -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER
++CFLAGS += -fPIC -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER
+ COUT = -o 
+ LN = $(CC)
+ DCFLAGS = 
+-LDFLAGS = -fPIC -O2 -fno-strict-aliasing -pthread
++LDFLAGS += -fPIC -fno-strict-aliasing -pthread
+ DLFLAGS = -shared
+ DLSUFFICS = .ld.so
+ # -lpthreads may be reuqired on some platforms instead of -pthreads
+@@ -40,13 +40,13 @@ PLUGINS = StringsPlugin TrafficPlugin PCREPlugin TransparentPlugin
+ include Makefile.inc
+ 
+ allplugins:
+-	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; make ;	cd ../.. ; done
++	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; $(MAKE) ; cd ../.. ; done
+ 
+ DESTDIR		=
+ prefix		= 
+ exec_prefix	= $(prefix)
+-man_prefix	= /usr/share
+-chroot_prefix	= /usr/local
++man_prefix	= $(prefix)/usr/share
++chroot_prefix	= $(prefix)/usr/local
+ 
+ INSTALL		= /usr/bin/install
+ INSTALL_BIN	= $(INSTALL) -m 755
+diff --git a/scripts/3proxy.service b/scripts/3proxy.service
+index cdb3af2..6e71d4d 100644
+--- a/scripts/3proxy.service
++++ b/scripts/3proxy.service
+@@ -5,7 +5,7 @@ After=network.target
+ 
+ [Service]
+ Environment=CONFIGFILE=/etc/3proxy/3proxy.cfg
+-ExecStart=/bin/3proxy ${CONFIGFILE}
++ExecStart=/usr/bin/3proxy ${CONFIGFILE}
+ ExecReload=/bin/kill -SIGUSR1 $MAINPID
+ KillMode=process
+ Restart=on-failure
