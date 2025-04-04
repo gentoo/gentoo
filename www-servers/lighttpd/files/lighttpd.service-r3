@@ -1,0 +1,84 @@
+[Unit]
+Description=Lighttpd Daemon
+After=syslog.target network-online.target
+Documentation=man:lighttpd https://wiki.lighttpd.net
+
+# optional: systemd socket activation for lighttpd
+# Requires lighttpd.conf: server.systemd-socket-activation = "enable"
+# Requires installation, configuration, enabling of systemd lighttpd*.socket
+# https://git.lighttpd.net/lighttpd/lighttpd1.4/src/branch/master/doc/systemd/
+#Requires=lighttpd-http-ipv4.socket lighttpd-http-ipv6.socket lighttpd-https-ipv4.socket lighttpd-https-ipv6.socket
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+PIDFile=/run/lighttpd.pid
+ExecStartPre=/usr/sbin/lighttpd -tt -f /etc/lighttpd/lighttpd.conf
+ExecStart=/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+ExecReload=/usr/sbin/lighttpd -tt -f /etc/lighttpd/lighttpd.conf
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=on-failure
+
+# increase num files soft limit; 1024 harkens back to select() limit
+# (lighttpd.conf must still be configured with `server.max-fds`; default 4096)
+LimitNOFILE=32768:524288
+
+#
+# system capabilities hardening
+#
+
+# (comment all out if running lighttpd as root to manage system, e.g. via LuCI)
+
+# Recommended configuration: have systemd start lighttpd as unprivileged user.
+# Note: starting lighttpd as unprivileged user requires TLS certificates to be
+#   readable by the unprivileged user and will fail for existing configurations
+#   where that is not currently the case.  For that scenario and for similar
+#   compatibility reasons, this is not yet enabled by default.
+#User=lighttpd
+#Group=lighttpd
+
+# Allow unprivileged lighttpd to bind,listen to ports < 1024 (i.e. 80 and 443).
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+# Recommended configuration: strictly limit capabilities
+# Limit capabilities, including for children and privileged processes, e.g. root
+# CAP_NET_BIND_SERVICE allows bind() to ports < 1024 (i.e. 80 and 443).
+# CAP_SETGID, CAP_SETUID, and CAP_SYS_CHROOT are self explanatory.
+#CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_SYS_CHROOT
+# If not starting lighttpd as root, minimal capability to bind to ports < 1024:
+#CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+# Using systemd socket activation, even CAP_NET_BIND_SERVICE is not necessary
+# and could be removed from AmbientCapabilities and CapabilityBoundingSet.
+# Requires lighttpd*.socket 'Requires' in [Unit] section at top of this file.
+
+# Note: PrivateTmp=yes
+#   could break backends if named socket from independent daemon is located
+#   in /tmp; must relocate lighttpd.conf socket paths to e.g. /run/lighttpd
+# Note: ProtectHome=read-only
+#   could break CGI scripts or WebDAV writing to home paths
+# Note: RestrictSUIDSGID=yes
+#   could break CGI scripts or WebDAV setting suid/sgid permission bit on files
+
+KeyringMode=private
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=read-only
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=full
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
