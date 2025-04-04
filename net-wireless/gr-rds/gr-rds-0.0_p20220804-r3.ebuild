@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_BRANCH="maint-3.10"
 else
 	KEYWORDS="~amd64 ~x86"
-	COMMIT="c1cba54dfac0661c088c44a120eeb38c300f6c01"
+	COMMIT="f3646d04c138dc3279528808dcf6f847887e4a4f"
 	SRC_URI="https://github.com/bastibl/gr-rds/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
