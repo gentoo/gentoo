@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NOTE: We combine here several PyPI packages, we do this because
+# pyside can and does break if it is compiled with a different
+# toolchain then was used to build shiboken. This bundling ensures
+# that we always use the same toolchain for all components.
+
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
@@ -10,17 +15,28 @@ DISTUTILS_EXT=1
 
 inherit distutils-r1 llvm-r1 multiprocessing qmake-utils virtualx
 
-MY_PN=pyside-pyside-setup
+MY_PN=${PN}-setup-everywhere-src
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python bindings for the Qt framework"
 HOMEPAGE="https://wiki.qt.io/PySide6"
-SRC_URI="https://github.com/qtproject/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
-S="${WORKDIR}/${MY_P}"
+
+if [[ ${PV} == *.9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI=(
+		"https://code.qt.io/${PN}/${PN}-setup.git"
+		"https://github.com/qtproject/${PN}-${PN}-setup.git"
+	)
+	EGIT_BRANCH=dev
+	[[ ${PV} == 6.*.9999 ]] && EGIT_BRANCH=${PV%.9999}
+else
+	SRC_URI="https://download.qt.io/official_releases/QtForPython/${PN}6/PySide6-${PV}-src/${MY_P}.tar.xz"
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+fi
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="6/${PV}"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 
 # If a flag enables multiple Qt modules, they should be ordered
 # according to their dependencies, e.g. for 3d, 3DCore must be first.
@@ -107,7 +123,7 @@ declare -A QT_REQUIREMENTS=(
 	["webchannel"]="core"
 	["webengine"]="core gui network printsupport quick webchannel"
 	["websockets"]="network"
-	["webview"]="gui"
+	["webview"]="gui quick webengine"
 	["widgets"]="gui"
 	["xml"]="core"
 )
@@ -206,8 +222,6 @@ BDEPEND="
 PATCHES=(
 	# Needs porting to newer wheel and setuptools
 	"${FILESDIR}/${PN}-6.8.2-quick-fix-build-wheel.patch"
-	# References files not present in our dev-qt/qtbase
-	"${FILESDIR}/${P}-no-qtexampleicons.patch" # TODO: remove in 6.8.3
 )
 
 # Build system duplicates system libraries. TODO: fix
@@ -345,9 +359,15 @@ python_compile() {
 		--build-type=shiboken6
 	)
 	distutils-r1_python_compile
+
+	# The build system uses its own build dir, find the name of this dir.
+	local pyside_build_dir=$(find "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))" -maxdepth 1 -type d -name 'qfp-*' -printf "%f\n")
+	export BUILD_ID=${pyside_build_dir#qfp-py${EPYTHON#python}-qt$(ver_cut 1-3)-}
+
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
 		--reuse-build
+		--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 		--build-type=shiboken6-generator
 	)
 	distutils-r1_python_compile
@@ -356,7 +376,7 @@ python_compile() {
 		DISTUTILS_ARGS=(
 			"${MAIN_DISTUTILS_ARGS[@]}"
 			--reuse-build
-			--shiboken-target-path="$(find "${BUILD_DIR}/build" -type d -name cmake)/../../"
+			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--build-type=pyside6
 		)
 		distutils-r1_python_compile
@@ -410,7 +430,7 @@ python_compile() {
 	done
 
 	# Install misc files from inner install dir
-	find "${BUILD_DIR}"/build/*/install -type f \
+	find "${BUILD_DIR}"/build*/${pyside_build_dir}/install -type f \
 		-name libPySidePlugin.so -exec \
 		mkdir -p "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
 		-exec \
@@ -418,7 +438,7 @@ python_compile() {
 			|| die
 
 	for dir in cmake pkgconfig; do
-		find "${BUILD_DIR}"/build/*/install -type d -name ${dir} \
+		find "${BUILD_DIR}"/build*/${pyside_build_dir}/install -type d -name ${dir} \
 			-exec cp -r "{}" "${BUILD_DIR}/install/usr/lib/" \; \
 				|| die
 	done
@@ -470,18 +490,11 @@ python_compile() {
 }
 
 python_test() {
-	# figure out the build dir
-	local build_dir build_classifier
-	build_dir=$(ls -d "${BUILD_DIR}"/build/qfp-*/build/)
-	build_classifier="${build_dir##${BUILD_DIR}/build/qfp-}"
-	build_classifier="${build_dir%%/build}"
-
 	# Otherwise it picks the last built directory breaking assumption for multi target builds
 	mkdir -p build_history/9999-99-99_999999/ || die
-	cat <<- EOF > build_history/9999-99-99_999999/build_dir.txt || die
-	${build_dir}
-	${build_classifier}
-	EOF
+	local pyside_build_dir=qfp-py${EPYTHON#python}-qt$(ver_cut 1-3)-${BUILD_ID}
+	echo "$(ls -d "${BUILD_DIR}"/build*/${pyside_build_dir}/build | sort -V | tail -n 1)" > build_history/9999-99-99_999999/build_dir.txt || die
+	echo "${pyside_build_dir}" >> build_history/9999-99-99_999999/build_dir.txt || die
 
 	virtx ${EPYTHON} testrunner.py test --projects=shiboken6 $(usev core '--projects=pyside6')  ||
 		die "Tests failed with ${EPYTHON}"
