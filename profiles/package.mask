@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2025-04-04)
+# Package is dead and has a pile of patches to make it compile.
+# SRC_URI is long gone. Many alternative image viewers.
+# Removal on 2025-05-04.  Bug #953119.
+media-gfx/xloadimage
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
 # No release since 2021, no commit in 3 years, depends on Qt5WebEngine.
 # Use app-text/uchmviewer instead. Bug #823008
