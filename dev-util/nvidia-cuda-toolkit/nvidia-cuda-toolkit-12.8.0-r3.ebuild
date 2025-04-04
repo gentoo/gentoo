@@ -63,10 +63,6 @@ BDEPEND="
 CUDA_PATH="/opt/cuda"
 QA_PREBUILT="${CUDA_PATH#/}/*"
 
-PATCHES=(
-	"${FILESDIR}/nvidia-cuda-toolkit-glibc-2.41-r1.patch"
-)
-
 python_check_deps() {
 	python_has_version "dev-python/defusedxml[${PYTHON_USEDEP}]"
 }
@@ -153,6 +149,14 @@ src_unpack() {
 	)
 
 	bash "${DISTDIR}/${A}" --tar xf -X <(printf "%s\n" "${exclude[@]}") || die "failed to extract ${A}"
+}
+
+src_prepare() {
+	pushd "builds/cuda_nvcc/targets/${narch}-linux" >/dev/null || die
+	eapply -p5 "${FILESDIR}/nvidia-cuda-toolkit-glibc-2.41-r1.patch"
+	popd >/dev/null || die
+
+	default
 }
 
 src_configure() {
