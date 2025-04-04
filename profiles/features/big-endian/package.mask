@@ -66,6 +66,7 @@ kde-apps/eventviews
 kde-apps/calendarsupport
 kde-apps/calendarjanitor
 net-im/telegram-desktop
+dev-util/nsight-compute
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # Test failures on BE (#700902)
