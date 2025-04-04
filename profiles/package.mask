@@ -146,6 +146,8 @@ net-im/yowsup
 =app-emulation/virtualbox-7.1.6a
 =app-emulation/virtualbox-extpack-oracle-7.1.6
 =app-emulation/virtualbox-additions-7.1.6
+=app-emulation/virtualbox-modules-7.1.6
+=app-emulation/virtualbox-guest-additions-7.1.6-r1
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-25)
 # Package destabilisation mask after prolongued time w/o maintainer.
