@@ -1,9 +1,9 @@
-# Copyright 2008-2024 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib elisp-common toolchain-funcs
+inherit cmake-multilib elisp-common
 
 ABSEIL_BRANCH="lts_2023_08_02" # NOTE from https://github.com/protocolbuffers/protobuf/blob/main/.gitmodules
 
@@ -53,15 +53,6 @@ PATCHES=(
 )
 
 DOCS=( CONTRIBUTORS.txt README.md )
-
-src_configure() {
-	if tc-ld-is-gold; then
-		# https://sourceware.org/bugzilla/show_bug.cgi?id=24527
-		tc-ld-disable-gold
-	fi
-
-	cmake-multilib_src_configure
-}
 
 multilib_src_configure() {
 	local mycmakeargs=(
