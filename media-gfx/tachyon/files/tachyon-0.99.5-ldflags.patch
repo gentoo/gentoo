@@ -1,6 +1,7 @@
---- a/Makefile
-+++ b/Makefile
-@@ -121,7 +121,7 @@ ${MGFLIB} : ../libmgf/Makefile
+diff '--color=auto' -urN unix.orig/Makefile unix/Makefile
+--- unix.orig/Makefile	2025-04-04 18:07:35.287673315 +0300
++++ unix/Makefile	2025-04-04 18:07:46.214794876 +0300
+@@ -165,7 +165,7 @@
  	};
  
  ${ARCHDIR}/tachyon : ${RAYLIB} ${PARSELIB} ${OBJDIR}/main.o ${OBJDIR}/getargs.o ${OBJDIR}/parse.o ${OBJDIR}/nffparse.o ${OBJDIR}/glwin.o ${OBJDIR}/spaceball.o ${OBJDIR}/trackball.o ${PARSEOBJS} 
