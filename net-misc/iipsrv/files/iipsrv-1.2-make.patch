@@ -1,0 +1,11 @@
+--- iipsrv-1.2/Makefile.am	2021-04-09 22:29:51.000000000 +0200
++++ iipsrv-1.2/Makefile.am.new	2023-10-11 00:13:21.665852075 +0200
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = dist-bzip2
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = fcgi src man
++SUBDIRS = src man
+ 
+-EXTRA_DIST = TODO COPYING.FCGI doc windows
++EXTRA_DIST = doc windows
