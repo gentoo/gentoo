@@ -33,7 +33,7 @@ fi
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
-if [[ ${PV} != *9999* && ${PV} != *beta* ]] && false ; then
+if [[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
 	GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PV}" # omit trailing slash
 	MY_P=rust-${PV}
 	# Keep this separate to allow easy commenting out if not yet built
