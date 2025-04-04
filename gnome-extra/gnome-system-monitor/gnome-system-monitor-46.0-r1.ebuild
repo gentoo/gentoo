@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,10 @@ BDEPEND="
 	virtual/pkgconfig
 	>=sys-auth/polkit-0.114
 " # polkit needed at buildtime for ITS rules of policy files, first available in 0.114
+
+PATCHES=(
+	"${FILESDIR}/${PN}-46.0-fix-clang-compilation.patch"
+)
 
 src_configure() {
 	local emesonargs=(
