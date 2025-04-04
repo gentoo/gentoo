@@ -603,12 +603,12 @@ cargo_live_src_unpack() {
 	export CARGO_HOME="${ECARGO_REGISTRY_DIR}"
 
 	# Absence of quotes around offline arg is intentional, as cargo bails out if it encounters ''
-	einfo "cargo fetch ${offline:+--offline}"
-	cargo fetch ${offline:+--offline} || die #nowarn
+	einfo "${CARGO} fetch ${offline:+--offline}"
+	"${CARGO}" fetch ${offline:+--offline} || die #nowarn
 
 	# Let cargo copy all required crates to "${WORKDIR}" for offline use in later phases.
-	einfo "cargo vendor ${offline:+--offline} ${ECARGO_VENDOR}"
-	cargo vendor ${offline:+--offline} "${ECARGO_VENDOR}" || die #nowarn
+	einfo "${CARGO} vendor ${offline:+--offline} ${ECARGO_VENDOR}"
+	"${CARGO}" vendor ${offline:+--offline} "${ECARGO_VENDOR}" || die #nowarn
 
 	# Users may have git checkouts made by cargo.
 	# While cargo vendors the sources, it still needs git checkout to be present.
