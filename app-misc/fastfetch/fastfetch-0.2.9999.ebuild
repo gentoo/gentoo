@@ -89,7 +89,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DENABLE_OSMESA=no
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
