@@ -1,0 +1,12 @@
+# https://bugs.gentoo.org/833613
+--- a/os-daq-modules/daq_nfq.c
++++ b/os-daq-modules/daq_nfq.c
+@@ -27,7 +27,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/time.h>
+-#include <sys/unistd.h>
++#include <unistd.h>
+ 
+ #include <netinet/ip.h>
+ 
