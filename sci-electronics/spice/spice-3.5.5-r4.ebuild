@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc-4.1.patch
 	# Bug https://bugs.gentoo.org/783192
 	"${FILESDIR}"/${P}-arlocal.patch
+	# util/build never exits on failure, leading to confusing reports
+	"${FILESDIR}"/${P}-makefile-exit-on-fail.patch
 )
 
 src_prepare() {

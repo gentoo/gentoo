@@ -1,0 +1,66 @@
+From 57beed0c071b159695a8695de23325bdfd5f1ec6 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 3 Apr 2025 20:51:10 -0400
+Subject: [PATCH] src_compile: exit on failure
+
+This "build script" wraps around `make` in some horrifying ways. And as
+a result, if make exits with an error this is ignored.
+
+To cap it off, the entire software is based around recursive make -k so
+it takes forever to build and return errors. There is no point in doing
+this just to get a failed build; be more responsive.
+---
+ util/build                | 2 +-
+ util/skeleton/make_std.bd | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/util/build b/util/build
+index bf4bbcc..c740858 100755
+--- a/util/build
++++ b/util/build
+@@ -172,7 +172,7 @@ if test -z "${DEBUG}"; then
+ 	$EXEC cat ${FILES0} "${TOP0}/${DIR}/${SUBDIR}/makedefs" \
+ 		"${TMP_TRAILER}" "${SKEL_DIR}/make_std.bd" \
+ 	| make -f - bootstrap DIR="${DIR}" SUBDIR="${SUBDIR}" \
+-		VPATH="${TOP0}/${DIR}/${SUBDIR}" CWD="${CWD}"
++		VPATH="${TOP0}/${DIR}/${SUBDIR}" CWD="${CWD}" || exit
+ 	echo Done with build at `date`
+ else
+ 	$EXEC cat ${FILES0} "${TOP0}/${DIR}/${SUBDIR}/makedefs" \
+diff --git a/util/skeleton/make_std.bd b/util/skeleton/make_std.bd
+index d4ef591..50baf3a 100644
+--- a/util/skeleton/make_std.bd
++++ b/util/skeleton/make_std.bd
+@@ -16,17 +16,17 @@ BUILD_DIR =								      \
+ 		echo Making \"$(PURPOSE)\" in "$${NEW_NAME}";		      \
+ 		cat $(FILES_L) $${NEW_DIR}/makedefs			      \
+ 			$(FILES_T) $${OFILE} $${DFILE}			      \
+-		| ${MAKE} -f - -k recursive				      \
++		| ${MAKE} -f - recursive				      \
+ 			PARENT="$${NEW_PARENT}" NAME="$${NEW_NAME}"	      \
+ 			$${SET_COMP} $${COMP_TO_CWD} $${CWD_TO_COMP}	      \
+ 			VPATH="$${NEW_VPATH}" SUBDIR="$${SUBDIR}"	      \
+-			DIR="$${DIR}"
++			DIR="$${DIR}" || exit
+ 
+ .c.o:
+ 	$(CC) $(CFLAGS) $(INCLUDE) -c $(SRC_DIR)/$*.c $(OUTPUT) $(ASM_HACK)
+ 
+ bootstrap: always
+-	-@if test "x$(DIR)" = "xsrc/"; then				      \
++	@if test "x$(DIR)" = "xsrc/"; then				      \
+ 		if test ! -d "$(OBJ_DIR)"; then				      \
+ 			$(MKDIR) -p "$(OBJ_DIR)";			      \
+ 		fi;							      \
+@@ -41,7 +41,7 @@ bootstrap: always
+ 	$(BUILD_DIR);
+ 
+ recurse: $(PRE_PURPOSE) $(UPDATE_TARGET)
+-	-@SUBDIRS="$(MAKE_SUBDIRS)";					      \
++	@SUBDIRS="$(MAKE_SUBDIRS)";					      \
+ 	for xx in $${SUBDIRS}; do					      \
+ 		if test -z "$(DIR)"; then				      \
+ 			DIR=$${xx}/;					      \
+-- 
+2.49.0
+
