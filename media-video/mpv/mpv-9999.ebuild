@@ -23,17 +23,16 @@ SLOT="0/2" # soname
 IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
-	+lua nvenc openal opengl pipewire pulseaudio rubberband sdl selinux
-	sixel sndio soc test tools +uchardet vaapi vdpau +vulkan wayland xv
-	zimg zlib
+	+lua nvenc openal pipewire pulseaudio rubberband sdl selinux sixel
+	sndio soc test tools +uchardet vaapi vdpau +vulkan wayland xv zimg
+	zlib
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( cli libmpv )
 	egl? ( || ( X drm wayland ) )
 	lua? ( ${LUA_REQUIRED_USE} )
-	nvenc? ( || ( egl opengl vulkan ) )
-	opengl? ( || ( X aqua ) )
+	nvenc? ( || ( egl vulkan ) )
 	test? ( cli )
 	tools? ( cli )
 	uchardet? ( iconv )
@@ -46,7 +45,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
-	>=media-libs/libplacebo-7.349.0:=[opengl?,vulkan?]
+	>=media-libs/libplacebo-7.349.0:=[vulkan?]
 	>=media-video/ffmpeg-6.1:=[encode(+),soc(-)?,threads(+),vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
@@ -85,7 +84,6 @@ COMMON_DEPEND="
 	libcaca? ( media-libs/libcaca )
 	lua? ( ${LUA_DEPS} )
 	openal? ( media-libs/openal )
-	opengl? ( media-libs/libglvnd[X?] )
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
 	rubberband? ( media-libs/rubberband:= )
@@ -125,6 +123,15 @@ BDEPEND="
 	cli? ( dev-python/docutils )
 	wayland? ( dev-util/wayland-scanner )
 "
+
+pkg_pretend() {
+	if has_version "${CATEGORY}/${PN}[X,opengl]" && use !egl; then #953107
+		ewarn "${PN}'s 'opengl' USE was removed in favour of the 'egl' USE as it was"
+		ewarn "only for the deprecated 'gl-x11' mpv option when 'egl-x11/wayland'"
+		ewarn "should be used if --gpu-api=opengl. It is recommended to enable 'egl'"
+		ewarn "unless using vulkan (default since ${PN}-0.40) or something else."
+	fi
+}
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -192,7 +199,7 @@ src_configure() {
 		$(meson_feature wayland)
 		$(meson_feature xv)
 
-		-Dgl=$(use egl || use libmpv || use opengl &&
+		-Dgl=$(use aqua || use egl || use libmpv &&
 			echo enabled || echo disabled)
 		$(meson_feature egl)
 		$(meson_feature libmpv plain-gl)
