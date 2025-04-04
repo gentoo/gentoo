@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="3proxy daemon"
+description="A really tiny cross-platform proxy servers set"
+command=/usr/bin/3proxy
+command_args="/etc/3proxy/3proxy.cfg"
+command_user="3proxy:3proxy"
+command_background=yes
+pidfile="/run/3proxy.pid"
+
+depend() {
+use dns
+}
