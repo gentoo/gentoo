@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.6-parallel-grammar.patch #673390
 	"${FILESDIR}"/${PN}-2.0.6-static-libs.patch
 	"${FILESDIR}"/${PN}-2.0.7-gcc14-build-fix.patch
+	"${FILESDIR}"/${PN}-2.0.7-musl-unistd-fix.patch
 )
 
 src_prepare() {
