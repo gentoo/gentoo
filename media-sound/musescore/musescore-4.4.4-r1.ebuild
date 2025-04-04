@@ -14,7 +14,7 @@ else
 	SRC_URI="
 		https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
@@ -60,10 +60,9 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
-	"${FILESDIR}/${PN}-4.5.0-unbundle-deps.patch"
+	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
-	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
 )
 
 src_unpack() {
