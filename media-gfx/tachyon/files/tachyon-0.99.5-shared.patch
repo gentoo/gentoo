@@ -1,16 +1,18 @@
-diff -up tachyon/unix/Makefile.shared tachyon/unix/Makefile
---- a/Makefile.shared	2011-02-07 16:14:38.000000000 +0100
-+++ b/Makefile	2011-07-23 20:23:51.000000000 +0200
-@@ -22,7 +22,7 @@ OBJDIR=${ARCHDIR}/libtachyon
+diff '--color=auto' -urN unix.orig/Makefile unix/Makefile
+--- unix.orig/Makefile	2025-04-04 18:08:53.437298704 +0300
++++ unix/Makefile	2025-04-04 18:11:23.444469688 +0300
+@@ -23,8 +23,8 @@
  #
  # Name of raytracing library file to create
  #
 -RAYLIB=${ARCHDIR}/libtachyon.a
+-RAYLIBOPTIX=${ARCHDIR}/libtachyonoptix.a
 +RAYLIB=${ARCHDIR}/libtachyon.so
++RAYLIBOPTIX=${ARCHDIR}/libtachyonoptix.so
  RAYLIBDIR=${ARCHDIR}
  
- #
-@@ -251,124 +251,125 @@ RAYOBJS= ${OBJDIR}/api.o \
+ 
+@@ -337,124 +337,125 @@
  	${OBJDIR}/tgafile.o \
  	${OBJDIR}/winbmp.o
  
@@ -175,5 +177,5 @@ diff -up tachyon/unix/Makefile.shared tachyon/unix/Makefile
 -	${CC} ${CFLAGS} -c ${SRCDIR}/api.c -o ${OBJDIR}/api.o
 +	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/api.c -o ${OBJDIR}/api.o
  
- clean :
- 	@echo "Cleaning object files, binaries etc."
+ 
+ ##

@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x64-macos"
 IUSE="doc examples jpeg mpi +opengl openmp png threads"
 
 DEPEND="
-	jpeg? ( virtual/jpeg:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	mpi? ( virtual/mpi )
 	opengl? (
 		virtual/glu
@@ -30,8 +30,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PF}-ldflags.patch"
-	"${FILESDIR}/${PF}-shared.patch"
+	"${FILESDIR}/${P}-ldflags.patch"
+	"${FILESDIR}/${P}-shared.patch"
 )
 
 src_prepare() {
