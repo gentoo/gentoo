@@ -28,6 +28,7 @@ SLOT="0"
 IUSE="debug +seavgabios"
 
 BDEPEND="
+	sys-devel/gcc:*
 	>=sys-power/iasl-20060912
 	${PYTHON_DEPS}"
 RDEPEND="!sys-firmware/seabios-bin"
@@ -71,6 +72,15 @@ src_prepare() {
 
 	# Ensure precompiled iasl files are never used
 	find "${WORKDIR}" -name '*.hex' -delete || die
+
+	# Force gcc because build failed with clang, #887115
+	if ! tc-is-gcc ; then
+		ewarn "seabios can be built with gcc only."
+		ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+		export CC=${CHOST}-gcc
+		export CXX=${CHOST}-g++
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
 }
 
 src_configure() {
