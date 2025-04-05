@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rancher/k3d/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT Apache-2.0 BSD BSD-2 MPL-2.0 ISC"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 src_prepare() {
