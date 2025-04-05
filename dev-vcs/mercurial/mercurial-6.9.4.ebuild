@@ -216,9 +216,6 @@ CRATES="
 	zstd@0.12.3+zstd.1.5.2
 "
 
-# for stdsimd
-RUST_MAX_VER=1.77.1
-
 inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing
 
 DESCRIPTION="Scalable distributed SCM"

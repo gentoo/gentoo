@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -200,9 +200,6 @@ CRATES="
 	zstd-sys@2.0.7+zstd.1.5.4
 	zstd@0.12.3+zstd.1.5.2
 "
-
-# for stdsimd
-RUST_MAX_VER=1.77.1
 
 inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing
 
