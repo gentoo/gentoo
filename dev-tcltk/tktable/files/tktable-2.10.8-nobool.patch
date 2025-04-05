@@ -1,0 +1,39 @@
+From 78fdd693c43aec8595b6b8b122bd1dede218f85e Mon Sep 17 00:00:00 2001
+From: Christian Werner <chw@ch-werner.de>
+Date: Wed, 10 Jun 2020 01:12:58 +0000
+Subject: [PATCH] Do not use bool as variable name in tktable
+
+Imported from http://www.androwish.org/home/info/f2bd6de01c438a20
+---
+ generic/tkTable.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/generic/tkTable.c b/generic/tkTable.c
+index 2cb084a..4d89b3a 100644
+--- a/generic/tkTable.c
++++ b/generic/tkTable.c
+@@ -3843,7 +3843,7 @@ TableValidateChange(tablePtr, r, c, old, new, index)
+      int index;			/* index of insert/delete, -1 otherwise */
+ {
+     register Tcl_Interp *interp = tablePtr->interp;
+-    int code, bool;
++    int code, flag;
+     Tk_RestrictProc *rstrct;
+     ClientData cdata;
+     Tcl_DString script;
+@@ -3884,13 +3884,13 @@ TableValidateChange(tablePtr, r, c, old, new, index)
+ 	Tcl_BackgroundError(interp);
+ 	code = TCL_ERROR;
+     } else if (Tcl_GetBooleanFromObj(interp, Tcl_GetObjResult(interp),
+-				     &bool) != TCL_OK) {
++				     &flag) != TCL_OK) {
+ 	Tcl_AddErrorInfo(interp,
+ 			 "\n\tboolean not returned by validation command");
+ 	Tcl_BackgroundError(interp);
+ 	code = TCL_ERROR;
+     } else {
+-	code = (bool) ? TCL_OK : TCL_BREAK;
++	code = (flag) ? TCL_OK : TCL_BREAK;
+     }
+     Tcl_SetObjResult(interp, Tcl_NewObj());
+ 

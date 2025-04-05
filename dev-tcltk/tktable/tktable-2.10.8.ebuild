@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,8 @@ SRC_URI="https://github.com/wjoye/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm64 ppc x86"
 SLOT="0"
+KEYWORDS="amd64 ~arm64 ppc x86"
 RESTRICT="test"
 
 DEPEND=">=dev-lang/tk-8.0:="
@@ -26,6 +26,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10-parallelMake.patch
 	"${FILESDIR}"/${P}-clang6.patch
+	"${FILESDIR}"/${P}-nobool.patch
 )
 
 src_prepare() {
