@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ else
 	KEYWORDS="amd64 x86"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="GPL-3+"
 SLOT="0"
 
 DOCS=( README.md )
