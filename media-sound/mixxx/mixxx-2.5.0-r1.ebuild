@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
 else
 	SRC_URI="https://github.com/mixxxdj/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -48,7 +48,7 @@ RDEPEND="
 	media-libs/libsoundtouch:=
 	media-libs/libvorbis
 	media-libs/portaudio
-	<media-libs/taglib-2
+	media-libs/taglib:=
 	media-sound/lame
 	virtual/glu
 	virtual/libusb:1
@@ -101,6 +101,9 @@ PATCHES=(
 	# Fix strict-aliasing violations in vendored katai_cpp_stl_runtime
 	# https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/commit/c01f530.patch
 	"${FILESDIR}"/${PN}-2.5.0-fix-strict-aliasing-kaitai.patch
+	# Fix regression with taglib2 and multi-value field.
+	# Merged, to be remove at next version 2.5.1
+	"${FILESDIR}"/${PN}-2.5.0-fix_taglib2.patch
 )
 
 CMAKE_SKIP_TESTS=(
