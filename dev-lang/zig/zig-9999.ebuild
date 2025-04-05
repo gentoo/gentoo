@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 19 )
+LLVM_COMPAT=( 20 )
 LLVM_OPTIONAL=1
 
 ZIG_SLOT="$(ver_cut 1-2)"
