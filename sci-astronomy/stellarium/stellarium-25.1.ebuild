@@ -87,6 +87,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/stellarium-0.25.1-md4c.patch"
 	"${FILESDIR}/stellarium-0.25.1-astrometry.patch"
+	"${FILESDIR}/stellarium-0.25.1-qt69.patch"
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
