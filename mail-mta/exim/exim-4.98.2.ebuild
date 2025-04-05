@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -119,6 +119,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.97-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.97-no-exim_id_update.patch
+	eapply     "${FILESDIR}"/exim-4.98-tidydb-crash.patch # upstream #3144
 
 	# oddity, they disable berkdb as hack, and then throw an error when
 	# berkdb isn't enabled
