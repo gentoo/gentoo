@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -169,7 +169,7 @@ RUST_MAX_VER="1.71.1"
 inherit cargo cmake flag-o-matic lua-single xdg
 
 DESCRIPTION="An improved, cross-platform, stable Jagged Alliance 2 runtime"
-HOMEPAGE="https://github.com/ja2-stracciatella/"
+HOMEPAGE="https://ja2-stracciatella.github.io/"
 SRC_URI="
 	https://github.com/ja2-stracciatella/ja2-stracciatella/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	editor? ( https://github.com/ja2-stracciatella/free-ja2-resources/releases/download/v1/editor.slf -> ${P}-editor.slf )
