@@ -1,0 +1,44 @@
+# Remove adding of "-g" to CFLAGS and CXXFLAGS if "./configure --enable-debug"
+diff -Naur old/m4/acinclude.m4 new/m4/acinclude.m4
+--- old/m4/acinclude.m4
++++ new/m4/acinclude.m4
+@@ -91,8 +91,6 @@
+ AC_ARG_ENABLE(debug, [AC_HELP_STRING([--enable-debug], [turn on debugging (default is OFF)])],,
+                        enable_debug=$debug_default)
+     if test "x$enable_debug" = "xyes"; then
+-        CFLAGS="-g $CFLAGS"
+-        CXXFLAGS="-g $CXXFLAGS"
+         CPPFLAGS="-DDEBUG -DcbDEBUG $CPPFLAGS"
+         AC_MSG_RESULT(yes)
+     else
+diff -Naur a/m4/acinclude.m4 b/m4/acinclude.m4
+--- a/m4/acinclude.m4
++++ b/m4/acinclude.m4
+@@ -211,7 +211,7 @@
+ fi
+ 
+ AC_MSG_CHECKING(whether to build the displayevents plugin)
+-dsplayevents_default="yes"
++displayevents_default="yes"
+ AC_ARG_ENABLE(displayevents, [AC_HELP_STRING([--enable-displayevents], [build the displayevents plugin (default YES)])],,
+                        enable_displayevents=$displayevents_default)
+ AM_CONDITIONAL([BUILD_DISPLAYEVENTS], [test "x$enable_displayevents" = "xyes"])
+diff -Naur a/src/plugins/displayevents/Makefile.am b/src/plugins/displayevents/Makefile.am
+--- a/src/plugins/displayevents/Makefile.am
++++ b/src/plugins/displayevents/Makefile.am
+@@ -8,7 +8,7 @@
+ libDisplayEvents_la_LDFLAGS = -module -version-info 0:1:0 -shared -no-undefined -avoid-version
+ 
+ libDisplayEvents_la_LIBADD = $(PLUGIN_WX_LIBS) \
+-							../../../sdk/libcodeblocks.la
++							../../sdk/libcodeblocks.la
+ 
+ libDisplayEvents_la_SOURCES = DisplayEvents.cpp
+ 
+@@ -21,5 +21,5 @@
+ 
+ CLEANFILES = $(pkgdata_DATA)
+ 
+-IncrementalSearch.zip: manifest.xml
++DisplayEvents.zip: manifest.xml
+ 	PWD=`pwd` cd $(srcdir) && zip -R $(PWD)/DisplayEvents.zip manifest.xml > /dev/null
