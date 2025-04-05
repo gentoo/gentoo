@@ -13,4 +13,7 @@
 	<upstream>
 		<remote-id type="github">abseil/abseil-cpp</remote-id>
 	</upstream>
+	<use>
+		<flag name="test-helpers">Build libraries that you can use to write tests against Abseil code.</flag>
+	</use>
 </pkgmetadata>
