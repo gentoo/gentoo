@@ -17,38 +17,29 @@ S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 LICENSE="MIT"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
-	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +man nat-pmp qrcode +sqlite +system-libsecp256k1 systemtap test test-full upnp zeromq"
+IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui nat-pmp qrcode +sqlite +system-libsecp256k1 systemtap test test-full upnp zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	dbus? ( gui )
-	kde? ( gui )
 	qrcode? ( gui )
 	test-full? ( test )
 "
 # dev-libs/univalue is now bundled, as upstream dropped support for system copy
 # and their version in the Bitcoin repo has deviated a fair bit from upstream.
 # Upstream also seems very inactive.
-RDEPEND="
-	!dev-util/bitcoin-tx
+COMMON_DEPEND="
 	>=dev-libs/boost-1.81.0:=
 	>=dev-libs/libevent-2.1.12:=
 	berkdb? ( >=sys-libs/db-4.8.30:$(db_ver_to_slot 4.8)=[cxx] )
-	cli? ( !net-p2p/bitcoin-cli )
 	daemon? (
-		!net-p2p/bitcoind
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
 	gui? (
-		!net-p2p/bitcoin-qt
-		>=dev-qt/qtcore-5.15.14:5
-		>=dev-qt/qtgui-5.15.14:5
-		>=dev-qt/qtnetwork-5.15.14:5
-		>=dev-qt/qtwidgets-5.15.14:5
-		dbus? ( >=dev-qt/qtdbus-5.15.14:5 )
+		>=dev-qt/qtbase-6.2:6[dbus?,gui,network,widgets]
 	)
 	nat-pmp? ( >=net-libs/libnatpmp-20230423:= )
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
@@ -57,8 +48,15 @@ RDEPEND="
 	upnp? ( >=net-libs/miniupnpc-2.2.7:= )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
 "
+RDEPEND="
+	${COMMON_DEPEND}
+	!dev-util/bitcoin-tx
+	cli? ( !net-p2p/bitcoin-cli )
+	daemon? ( !net-p2p/bitcoind )
+	gui? ( !net-p2p/bitcoin-qt )
+"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	systemtap? ( >=dev-debug/systemtap-4.8 )
 "
 BDEPEND="
@@ -67,7 +65,7 @@ BDEPEND="
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
-	gui? ( >=dev-qt/linguist-tools-5.15.14:5 )
+	gui? ( >=dev-qt/qttools-6.2:6[linguist] )
 	test? ( ${PYTHON_DEPS} )
 "
 IDEPEND="
@@ -92,6 +90,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${FILESDIR}/28.1-qt6.patch"
 	"${FILESDIR}/28.0-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )
@@ -174,7 +173,6 @@ src_configure() {
 		--disable-ccache
 		$(use_enable asm)
 		$(use_enable zeromq zmq)
-		$(use_enable man)
 		$(use_enable external-signer)
 		--with-utils
 		$(use_enable {,util-}cli)
@@ -182,10 +180,16 @@ src_configure() {
 		--${wallet}-util-wallet
 		--disable-util-util
 		$(use_with daemon)
-		$(use_with gui gui qt5)
+		$(use_with gui gui qt6)
 		$(use_with dbus qtdbus)
 		$(use_with system-libsecp256k1)
 	)
+	if use gui ; then
+		myeconfargs+=(
+			--with-qt-libdir="${EPREFIX}/usr/$(get_libdir)/qt6"
+			--with-qt-bindir="${EPREFIX}/usr/$(get_libdir)/qt6/bin:${EPREFIX}/usr/$(get_libdir)/qt6/libexec"
+		)
+	fi
 	econf "${myeconfargs[@]}"
 }
 
@@ -258,11 +262,6 @@ src_install() {
 		newins src/qt/res/src/bitcoin.svg bitcoin128.svg
 
 		domenu "${FILESDIR}/org.bitcoin.bitcoin-qt.desktop"
-
-		if use kde ; then
-			insinto /usr/share/kservices5
-			doins "${FILESDIR}/bitcoin-qt.protocol"
-		fi
 	fi
 
 	if use examples ; then
@@ -290,10 +289,6 @@ pkg_preinst() {
 			dosym -r {/etc/,/var/lib/bitcoin/.}bitcoin/bitcoin.conf
 			dosym -r /var/lib/bitcoin{/.bitcoin,d}
 		fi
-	fi
-
-	if use kde && [[ -d "${EROOT}/usr/share/kde4" ]] ; then
-		dosym -r /usr/share/{kservices5,kde4/services}/bitcoin-qt.protocol
 	fi
 }
 
