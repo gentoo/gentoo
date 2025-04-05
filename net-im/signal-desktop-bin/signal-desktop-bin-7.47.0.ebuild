@@ -76,9 +76,10 @@ src_install() {
 
 	doins -r usr/share/applications
 	doins -r usr/share/icons
-	fperms +x /opt/Signal/signal-desktop /opt/Signal/chrome-sandbox /opt/Signal/chrome_crashpad_handler
+
+	fperms +x /opt/Signal/{signal-desktop,chrome-sandbox,chrome_crashpad_handler}
 	fperms u+s /opt/Signal/chrome-sandbox
-	pax-mark m opt/Signal/signal-desktop opt/Signal/chrome-sandbox opt/Signal/chrome_crashpad_handler
+	pax-mark m opt/Signal/{signal-desktop,chrome-sandbox,chrome_crashpad_handler}
 
 	newbin - signal-desktop <<- _EOF_
 		#!/bin/sh
