@@ -42,6 +42,7 @@ DEPEND="
 	)
 	benchmark? (
 		virtual/blas
+		dev-cpp/gtest
 		llvm-runtimes/openmp
 	)
 "
