@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1 udev
+inherit dkms udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -22,22 +22,29 @@ SLOT="0"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"
 
+src_prepare() {
+	default
+	sed "s/@DO_NOT_CHANGE@/${PV}/" \
+		hid-xpadneo/dkms.conf.in > hid-xpadneo/dkms.conf || die
+	cp VERSION hid-xpadneo/VERSION || die
+}
+
 src_compile() {
 	local modlist=( hid-${PN}=kernel/drivers/hid:hid-${PN}:hid-${PN}/src )
 	local modargs=( KERNEL_SOURCE_DIR="${KV_OUT_DIR}" )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	# install modprobe.d/rules.d files and docs
 	emake PREFIX="${ED}" ETC_PREFIX=/usr/lib DOC_PREFIX=/usr/share/doc/${PF} install
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then

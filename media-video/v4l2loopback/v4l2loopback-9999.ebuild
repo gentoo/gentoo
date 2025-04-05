@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1 toolchain-funcs
+inherit dkms toolchain-funcs
 
 case ${PV} in
 9999)
@@ -37,17 +37,18 @@ src_prepare() {
 
 src_compile() {
 	local modlist=(
-		v4l2loopback=video:::all
+		v4l2loopback=video:::v4l2loopback
 	)
 
-	linux-mod-r1_src_compile
+	emake utils
+	dkms_src_compile
 	if use examples; then
 		emake CC="$(tc-getCC)" -C examples
 	fi
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 	dosbin utils/v4l2loopback-ctl
 	dodoc doc/kernel_debugging.txt
 	dodoc doc/docs.txt

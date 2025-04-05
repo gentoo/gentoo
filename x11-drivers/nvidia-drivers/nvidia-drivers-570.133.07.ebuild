@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
+inherit desktop dkms eapi9-pipestatus eapi9-ver flag-o-matic
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.14
@@ -175,6 +175,16 @@ src_prepare() {
 	# makefile attempts to install wayland library even if not built
 	use wayland || sed -i 's/ WAYLAND_LIB_install$//' \
 		nvidia-settings/src/Makefile || die
+
+	# upstream ships a stub dkms.conf, sed some things into place.
+	sed -i {kernel,kernel-open}/dkms.conf \
+		-i kernel-module-source/kernel-open/dkms.conf \
+		-e "s/__VERSION_STRING/${PV}/g" \
+		-e "s/-j__JOBS//g" \
+		-e "s/__EXCLUDE_MODULES//g" \
+		-e "s/__DKMS_MODULES//g" || die
+	cp kernel-module-source/kernel-open/dkms.conf \
+		kernel-module-source/dkms.conf || die
 }
 
 src_compile() {
@@ -231,7 +241,7 @@ src_compile() {
 		# temporary workaround for bug #914468
 		addpredict "${KV_OUT_DIR}"
 
-		linux-mod-r1_src_compile
+		dkms_src_compile
 		CFLAGS=${o_cflags} CXXFLAGS=${o_cxxflags} LDFLAGS=${o_ldflags}
 	fi
 
@@ -338,7 +348,15 @@ documentation that is installed alongside this README."
 	readme.gentoo_create_doc
 
 	if use modules; then
-		linux-mod-r1_src_install
+		if use dkms; then
+			if use kernel-open; then
+				dkms_dopackage kernel-module-source
+			else
+				dkms_dopackage kernel
+			fi
+		else
+			linux-mod-r1_src_install
+		fi
 
 		insinto /etc/modprobe.d
 		doins "${T}"/nvidia.conf
@@ -536,7 +554,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	readme.gentoo_print_elog
 
