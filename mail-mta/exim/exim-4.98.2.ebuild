@@ -5,6 +5,24 @@ EAPI="7"
 
 inherit db-use flag-o-matic toolchain-funcs pam systemd
 
+DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
+HOMEPAGE="https://www.exim.org/"
+
+SDIR=$(
+	[[ ${PV} == *_rc* ]]   && echo /test
+	[[ ${PV} == *.*.*.* ]] && echo /fixes
+)
+COMM_URI="https://downloads.exim.org/exim4${SDIR}"
+
+SRC_URI="${COMM_URI}/${P//_rc/-RC}.tar.xz
+	mirror://gentoo/system_filter.exim.gz
+	doc? ( ${COMM_URI}/${PN}-pdf-${PV//_rc/-RC}.tar.xz )"
+S=${WORKDIR}/${P//_rc/-RC}
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn gdbm gnutls idn ipv6 ldap lmtp maildir mbx
 mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
@@ -30,21 +48,6 @@ REQUIRED_USE="
 # so we make -dane mandatory to use gnutls.  Bleh.
 # We cannot express a required use for berkdb/gdbm/tdb correctly because
 # berkdb and gdbm are both enabled in base profile
-
-SDIR=$([[ ${PV} == *_rc* ]]   && echo /test
-	 [[ ${PV} == *.*.*.* ]] && echo /fixes)
-COMM_URI="https://downloads.exim.org/exim4${SDIR}"
-
-GPV="r0"
-DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
-SRC_URI="${COMM_URI}/${P//_rc/-RC}.tar.xz
-	mirror://gentoo/system_filter.exim.gz
-	doc? ( ${COMM_URI}/${PN}-pdf-${PV//_rc/-RC}.tar.xz )"
-HOMEPAGE="https://www.exim.org/"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	dev-libs/libpcre2:=
@@ -107,8 +110,6 @@ RDEPEND="${COMMON_DEPEND}
 	dcc? ( mail-filter/dcc )
 	selinux? ( sec-policy/selinux-exim )
 	"
-
-S=${WORKDIR}/${P//_rc/-RC}
 
 src_prepare() {
 	# Legacy patches which need a respin for -p1
