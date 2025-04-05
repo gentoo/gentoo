@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/jrblevin/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-3+"
