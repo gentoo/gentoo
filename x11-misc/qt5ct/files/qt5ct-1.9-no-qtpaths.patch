@@ -1,0 +1,29 @@
+--- a/CMakeLists.txt	2025-01-27 19:16:40.000000000 +0100
++++ b/CMakeLists.txt	2025-04-05 19:50:06.509849584 +0200
+@@ -45,16 +45,19 @@
+     message(FATAL_ERROR "Could NOT find lrelease executable")
+ endif()
+ 
+-get_filename_component(QT_QTPATHS_EXECUTABLE ${QT_LRELEASE_EXECUTABLE} DIRECTORY)
+-set(QT_QTPATHS_EXECUTABLE ${QT_QTPATHS_EXECUTABLE}/qtpaths)
++if(NOT PLUGINDIR)
++    get_filename_component(QT_QTPATHS_EXECUTABLE ${QT_LRELEASE_EXECUTABLE} DIRECTORY)
++    set(QT_QTPATHS_EXECUTABLE ${QT_QTPATHS_EXECUTABLE}/qtpaths)
+ 
+-if(EXISTS ${QT_QTPATHS_EXECUTABLE})
+-    message(STATUS "Found qtpaths executable: " ${QT_QTPATHS_EXECUTABLE})
+-else()
+-    message(FATAL_ERROR "Could NOT find qtpaths executable")
++    if(EXISTS ${QT_QTPATHS_EXECUTABLE})
++        message(STATUS "Found qtpaths executable: " ${QT_QTPATHS_EXECUTABLE})
++    else()
++        message(FATAL_ERROR "Could NOT find qtpaths executable")
++    endif()
++
++    execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ endif()
+ 
+-execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ message(STATUS "Plugin path: " ${PLUGINDIR})
+ 
+ message(STATUS "Generating translations ...")
