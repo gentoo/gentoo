@@ -185,6 +185,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	# Gentoo patches go here
+		eapply "${FILESDIR}"/${P}-lto.patch
 	popd || die
 
 	# Drop some upstream too-developer-oriented flags and fix the
