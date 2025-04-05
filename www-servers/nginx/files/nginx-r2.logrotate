@@ -1,0 +1,11 @@
+# Copyright 1999-2025 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+/var/log/nginx/*.log {
+	missingok
+	delaycompress
+	sharedscripts
+	postrotate
+		test -r /run/nginx.pid && kill -s USR1 "$(cat /run/nginx.pid)"
+	endscript
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-headers-more module allows adding, settin, or clearing any output or input header.
+
+		This is an enhanced version of the standard headers module since it provides more
+		utilities like resetting or clearing "builtin headers" like Content-Type, Content-Length,
+		and Server.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/openresty/headers-more-nginx-module/issues</bugs-to>
+		<remote-id type="github">openresty/headers-more-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>
