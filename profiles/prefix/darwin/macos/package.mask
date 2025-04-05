@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2025-04-05)
+# Fails to compile, implicit decl _NSGetExecutablePath
+=sys-apps/gawk-5.3.2
+
 # Sam James <sam@gentoo.org> (2025-04-01)
 # Fails to build w/ `error: implicit declaration of function 'clock_nanosleep'`
 # See bug #951918.
