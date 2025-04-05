@@ -49,7 +49,13 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	conformance? ( dev-libs/jsoncpp[${MULTILIB_USEDEP}] )
-	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )
+	test? (
+		|| (
+			dev-cpp/abseil-cpp[test-helpers(-)]
+			dev-cpp/abseil-cpp[test]
+		)
+		dev-cpp/gtest[${MULTILIB_USEDEP}]
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}

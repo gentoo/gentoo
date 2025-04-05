@@ -18,10 +18,10 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0/${PV:2:4}.$(ver_cut 2).0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
-IUSE="test"
+IUSE="test test-helpers"
 
 RDEPEND="
-	test? (
+	test-helpers? (
 		dev-cpp/gtest:=[${MULTILIB_USEDEP}]
 	)
 "
@@ -60,14 +60,17 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DABSL_ENABLE_INSTALL=TRUE
-		-DABSL_USE_EXTERNAL_GOOGLETEST=ON
-		-DABSL_PROPAGATE_CXX_STD=TRUE
+		-DABSL_ENABLE_INSTALL="yes"
+		-DABSL_USE_EXTERNAL_GOOGLETEST="yes"
+		-DABSL_PROPAGATE_CXX_STD="yes"
+
 		# TEST_HELPERS needed for protobuf (bug #915902)
-		-DABSL_BUILD_TEST_HELPERS="$(usex test)"
+		-DABSL_BUILD_TEST_HELPERS="$(usex test-helpers)"
+
 		-DABSL_BUILD_TESTING="$(usex test)"
 	)
-	# intentional use, it uses both variables for tests.
+	# intentional use, it requires both variables for tests.
+	# (BUILD_TESTING AND ABSL_BUILD_TESTING)
 	if use test; then
 		mycmakeargs+=(
 			-DBUILD_TESTING="yes"
