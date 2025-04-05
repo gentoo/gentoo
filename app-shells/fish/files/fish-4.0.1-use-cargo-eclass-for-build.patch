@@ -1,12 +1,11 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 496226e89..cb032d6d5 100644
+index 496226e89..69bdf037d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -51,17 +51,6 @@ function(CREATE_TARGET target)
-   add_custom_target(
+@@ -52,18 +52,7 @@ function(CREATE_TARGET target)
      ${target} ALL
      COMMAND
--      "${CMAKE_COMMAND}" -E
+       "${CMAKE_COMMAND}" -E
 -        env ${VARS_FOR_CARGO}
 -          ${Rust_CARGO}
 -            build --bin ${target}
@@ -17,9 +16,12 @@ index 496226e89..cb032d6d5 100644
 -            ${CARGO_FLAGS}
 -            ${FEATURES_ARG}
 -      &&
-       "${CMAKE_COMMAND}" -E
-         copy "${rust_target_dir}/${rust_profile}/${target}" "${CMAKE_CURRENT_BINARY_DIR}"
+-      "${CMAKE_COMMAND}" -E
+-        copy "${rust_target_dir}/${rust_profile}/${target}" "${CMAKE_CURRENT_BINARY_DIR}"
++        copy "${FISH_RUST_BUILD_DIR}/${rust_profile}/${target}" "${CMAKE_CURRENT_BINARY_DIR}"
      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+     USES_TERMINAL
+   )
 diff --git a/cmake/Rust.cmake b/cmake/Rust.cmake
 index 40887be45..fa0f7ab6f 100644
 --- a/cmake/Rust.cmake
