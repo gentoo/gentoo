@@ -4,7 +4,7 @@
 EAPI=8
 
 ADA_COMPAT=( gcc_14 )
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit ada python-any-r1 multiprocessing
 
 DESCRIPTION="Opinionated code formatter for the Ada language"
