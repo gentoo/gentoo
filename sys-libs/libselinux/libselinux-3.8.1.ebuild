@@ -3,7 +3,7 @@
 
 EAPI="8"
 PYTHON_COMPAT=( python3_{10..13} )
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33"
 
 # No, I am not calling ruby-ng
 inherit flag-o-matic python-r1 toolchain-funcs multilib-minimal
@@ -26,14 +26,13 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="python ruby static-libs ruby_targets_ruby31 ruby_targets_ruby32 ruby_targets_ruby33"
+IUSE="python ruby static-libs ruby_targets_ruby32 ruby_targets_ruby33"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}]
 	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP},static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby31? ( dev-lang/ruby:3.1 )
 		ruby_targets_ruby32? ( dev-lang/ruby:3.2 )
 		ruby_targets_ruby33? ( dev-lang/ruby:3.3 )
 	)
