@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://github.com/nowrep/obs-vkcapture/issues</bugs-to>
-		<remote-id type="github">nowrep/obs-vkcapture</remote-id>
+		<bugs-to>https://github.com/dimtpap/obs-pipewire-audio-capture/issues</bugs-to>
+		<remote-id type="github">dimtpap/obs-pipewire-audio-capture</remote-id>
 	</upstream>
 </pkgmetadata>
