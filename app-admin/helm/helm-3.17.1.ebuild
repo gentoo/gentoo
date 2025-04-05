@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv"
 RESTRICT="test"
 
 src_compile() {
