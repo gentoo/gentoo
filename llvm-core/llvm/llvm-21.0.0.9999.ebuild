@@ -63,7 +63,7 @@ PDEPEND="
 	binutils-plugin? ( >=llvm-core/llvmgold-${LLVM_MAJOR} )
 "
 
-LLVM_COMPONENTS=( llvm cmake libc third-party )
+LLVM_COMPONENTS=( llvm cmake third-party )
 LLVM_MANPAGES=1
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
@@ -282,7 +282,6 @@ get_distribution_components() {
 			llvm-dwp
 			llvm-exegesis
 			llvm-extract
-			llvm-gpu-loader
 			llvm-gsymutil
 			llvm-ifs
 			llvm-install-name-tool
@@ -424,12 +423,6 @@ multilib_src_configure() {
 
 		# disable OCaml bindings (now in dev-ml/llvm)
 		-DOCAMLFIND=NO
-
-		# disable automagic dependencies on hsa/CUDA runtimes
-		# these are only used to run tests on GPU and we don't care
-		# about that
-		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_CUDAToolkit=ON
 	)
 
 	local suffix=
