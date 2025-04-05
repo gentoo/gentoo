@@ -25,10 +25,15 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/ml-dtypes[${PYTHON_USEDEP}]
 		dev-python/tabulate[${PYTHON_USEDEP}]
 		test-rust? (
 			dev-python/nbval[${PYTHON_USEDEP}]
+		)
+		!arm? (
+			dev-python/jinja2[${PYTHON_USEDEP}]
+			dev-python/pandas[${PYTHON_USEDEP}]
 		)
 	)
 "
@@ -44,6 +49,14 @@ python_test() {
 		# requires mx (possibly git version), torch
 		test/test_microxcaling.py
 	)
+
+	if ! has_version "dev-python/jinja2[${PYTHON_USEDEP}]" ||
+		! has_version "dev-python/pandas[${PYTHON_USEDEP}]"
+	then
+		EPYTEST_IGNORE+=(
+			docs/source
+		)
+	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	if has_version "dev-python/nbval[${PYTHON_USEDEP}]"; then
