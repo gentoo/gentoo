@@ -26,11 +26,6 @@ dev-libs/libbsd
 # embrace guile-3. (bug #825334)
 media-sound/lilypond
 
-# Fabian Groffen <grobian@gentoo.org> (2023-06-24)
-# Fails to link due to missing libintl, already fixed upstream:
-# https://git.savannah.gnu.org/cgit/tar.git/commit/?id=8632df398b2f548465ebe68b8f494c0d6f8d913d
-=app-arch/tar-1.35
-
 # Benda Xu <heroxbd@gentoo.org> (2023-07-09)
 # Requires Glibc <sys/xattr.h> to work properly.
 # For example, 'lgetxattr' is not available on macOS or gnulib.
