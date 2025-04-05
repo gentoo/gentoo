@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/abo-abo/hydra/"
 SRC_URI="https://github.com/abo-abo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 SLOT="0"
 
 RDEPEND="app-emacs/lv"
