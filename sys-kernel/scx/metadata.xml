@@ -17,9 +17,6 @@
 		<name>Florian Schmaus</name>
 		<email>flow@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="openrc">Enable support for <pkg>sys-apps/openrc</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">sched-ext/scx</remote-id>
 		<changelog>https://github.com/sched-ext/scx/releases</changelog>
