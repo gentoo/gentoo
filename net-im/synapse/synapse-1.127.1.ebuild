@@ -114,7 +114,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64"
-IUSE="postgres systemd test"
+IUSE="postgres selinux systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -151,6 +151,7 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
+	selinux? ( sec-policy/selinux-matrixd )
 	systemd? ( dev-python/python-systemd[${PYTHON_USEDEP}] )
 "
 BDEPEND="
