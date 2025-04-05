@@ -12,7 +12,6 @@
     <flag name="remote">Controling Gajim instance from command line with gajim-remote</flag>
     <flag name="rst">Generating XHTML output from RST code</flag>
     <flag name="spell">Spellchecking of composed messages</flag>
-    <flag name="upnp">Ability to request your router to forward port for file transfer</flag>
     <flag name="voice">Support for video calls, audio calls and voice messages</flag>
     <flag name="webp">Support WebP avatars</flag>
   </use>
