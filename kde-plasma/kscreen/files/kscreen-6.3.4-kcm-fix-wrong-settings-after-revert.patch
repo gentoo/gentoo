@@ -1,0 +1,40 @@
+From 50a3ee595f5f5c6cebed220b79f13483f3ecad97 Mon Sep 17 00:00:00 2001
+From: Oliver Beard <olib141@outlook.com>
+Date: Fri, 4 Apr 2025 12:51:04 +0000
+Subject: [PATCH] kcm: Fix wrong settings shown when reverting changes When
+ reverting display changes, due to model changes, the StackLayout's
+ currentIndex is changed by the stackLayout. This is a behaviour added in Qt
+ 6.5, and requires working around to ensure we keep it the same as
+ selectedOutput.
+
+BUG: 490586
+FIXED-IN: 6.3
+
+
+(cherry picked from commit 3e8ccda33895efe9311b5b5f1e142c6d608846da)
+
+Co-authored-by: Oliver Beard <olib141@outlook.com>
+---
+ kcm/ui/Panel.qml | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/kcm/ui/Panel.qml b/kcm/ui/Panel.qml
+index 799477a6f..1b9ebac72 100644
+--- a/kcm/ui/Panel.qml
++++ b/kcm/ui/Panel.qml
+@@ -58,6 +58,12 @@ ColumnLayout {
+                 enabledOutputs: root.enabledOutputs
+                 onReorder: root.reorder()
+             }
++
++            // "Since 6.5, inserting/removing a new Item at an index less than or equal to the current
++            // index will increment/decrement the current index, but keep the current Item."
++            // This causes BUG: 490586 and the following works around it:
++            onItemAdded: panelView.currentIndex = Qt.binding(() => root.selectedOutput)
++            onItemRemoved: panelView.currentIndex = Qt.binding(() => root.selectedOutput)
+         }
+     }
+ 
+-- 
+GitLab
+
