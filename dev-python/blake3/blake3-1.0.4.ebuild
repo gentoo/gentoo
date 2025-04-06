@@ -116,6 +116,7 @@ src_prepare() {
 
 python_compile() {
 	local DISTUTILS_USE_PEP517=$(usex rust maturin setuptools)
+	local DISTUTILS_UPSTREAM_PEP517=${DISTUTILS_USE_PEP517}
 
 	if ! use rust; then
 		cd c_impl || die
