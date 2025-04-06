@@ -20,7 +20,8 @@ KEYWORDS="~amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND="
-	>=dev-util/intel-graphics-compiler-2.10.2
+	>=dev-util/intel-graphics-compiler-2.10.2:0
+	!dev-util/intel-graphics-compiler:legacy
 	>=media-libs/gmmlib-22.7.1:=
 "
 

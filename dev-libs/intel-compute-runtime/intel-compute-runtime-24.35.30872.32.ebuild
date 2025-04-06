@@ -15,12 +15,13 @@ SRC_URI="https://github.com/intel/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
-SLOT="0/1.5.30872"
+SLOT="legacy/1.5.30872"
 KEYWORDS="amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND="
-	>=dev-util/intel-graphics-compiler-1.0.17791.18
+	>=dev-util/intel-graphics-compiler-1.0.17791.18:legacy
+	!dev-util/intel-graphics-compiler:0
 	>=media-libs/gmmlib-22.5.2:=
 "
 
