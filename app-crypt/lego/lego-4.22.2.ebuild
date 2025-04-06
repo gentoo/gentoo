@@ -19,7 +19,7 @@ else
 	https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
 	https://github.com/go-acme/lego/archive/${DOCUMENTATION_COMMIT}.tar.gz -> ${P}-docs.tar.gz
 "
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 # main
