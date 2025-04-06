@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="+alsa debug g15 jack pipewire portaudio pulseaudio multilib nls +rnnoise speech test zeroconf"
+IUSE="+alsa debug jack pipewire portaudio pulseaudio multilib nls +rnnoise speech test zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -57,7 +57,6 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
-	g15? ( app-misc/g15daemon:= )
 	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )
@@ -95,7 +94,7 @@ src_configure() {
 		-Dbundled-gsl="OFF"
 		-Dbundled-json="OFF"
 		-Dbundled-speex="OFF"
-		-Dg15="$(usex g15)"
+		-Dg15="OFF"
 		-Djackaudio="$(usex jack)"
 		-Doverlay="ON"
 		-Dportaudio="$(usex portaudio)"
