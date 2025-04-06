@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="elibc_musl? ( !tools )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-2023.06.01-gentoo.patch
 )
 
 src_prepare() {
