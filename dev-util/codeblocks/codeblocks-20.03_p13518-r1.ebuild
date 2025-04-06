@@ -56,7 +56,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-nodebug.diff"
-	"${FILESDIR}/${P}_FortranProject-r378-autotools-build.patch"
+	"${FILESDIR}/${PN}-20.03_p13518_FortranProject-r378-autotools-build.patch"
 )
 
 src_unpack() {

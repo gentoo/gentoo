@@ -48,7 +48,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}_env.patch"
-	"${FILESDIR}/${P}_FortranProject-r386-autotools-build.patch"
+	"${FILESDIR}/${PN}-20.03_p13518_FortranProject-r378-autotools-build.patch"
 )
 
 src_prepare() {
