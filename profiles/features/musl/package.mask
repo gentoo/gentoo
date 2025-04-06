@@ -170,7 +170,6 @@ dev-libs/cutlass
 # Conrad Kostecki <conikost@gentoo.org> (2022-12-31)
 # RTLD_DEEPBIND does not exist on musl
 dev-libs/intel-compute-runtime
-dev-libs/intel-compute-runtime-legacy
 
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
