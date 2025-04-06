@@ -62,6 +62,7 @@ python_compile() {
 
 	if use native-extensions; then
 		local DISTUTILS_USE_PEP517=maturin
+		local DISTUTILS_UPSTREAM_PEP517=maturin
 		cd sqlglotrs || die
 		distutils-r1_python_compile
 		cd - >/dev/null || die
