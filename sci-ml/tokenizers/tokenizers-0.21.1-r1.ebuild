@@ -349,6 +349,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="dev-libs/oniguruma"
 BDEPEND="
 	test? ( sci-ml/datasets[${PYTHON_SINGLE_USEDEP}] )
 	$(python_gen_cond_dep '
@@ -384,6 +385,7 @@ src_configure() {
 }
 
 src_compile() {
+	export RUSTONIG_SYSTEM_LIBONIG=1
 	cd tokenizers
 	cargo_src_compile
 	cd ../bindings/python
