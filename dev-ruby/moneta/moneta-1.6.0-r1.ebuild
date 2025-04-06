@@ -26,7 +26,9 @@ IUSE="test"
 
 ruby_add_depend "test? (
 	dev-ruby/bson
+	dev-ruby/dalli
 	dev-ruby/ox
+	dev-ruby/rack-cache
 	dev-ruby/rantly
 	dev-ruby/sqlite3
 	dev-ruby/timecop
