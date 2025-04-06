@@ -14,7 +14,7 @@
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<use>
-		<flag name="dracut-cpio">Build the enhanced 'dracut-cpio' program</flag>
+		<flag name="dracut-cpio">Build the enhanced 'dracut-cpio' program, written in Rust.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dracut-ng/dracut-ng</remote-id>
