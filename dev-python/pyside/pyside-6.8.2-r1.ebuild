@@ -208,6 +208,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-build/cmake
 	dev-python/distro[${PYTHON_USEDEP}]
+	<dev-python/wheel-0.46.0[${PYTHON_USEDEP}]
 	dev-util/patchelf
 	doc? (
 		>=dev-libs/libxml2-2.6.32
