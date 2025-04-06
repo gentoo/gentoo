@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="readme.md"
 RUBY_FAKEGEM_GEMSPEC="rack-session.gemspec"
@@ -26,13 +26,13 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/minitest:5
 	dev-ruby/minitest-global_expectations
-	dev-ruby/rack:3.0
+	dev-ruby/rack:3.1
 )"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -e '2igem "rack", "~> 3.0.0"' \
+	sed -e '2igem "rack", "~> 3.1.0"' \
 		-i test/helper.rb || die
 }
