@@ -27,7 +27,7 @@ else
 	# 		https://projects.blender.org/blender/blender-test-data/archive/blender-v$(ver_cut 1-2)-release.tar.gz
 	# 	)
 	# "
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 	RESTRICT="test" # the test archive returns LFS references.
 fi
 
@@ -96,11 +96,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-2.1.0 )
-	oneapi? ( || (
-			dev-libs/intel-compute-runtime[l0]
-			dev-libs/intel-compute-runtime-legacy[l0]
-		)
-	)
+	oneapi? ( dev-libs/intel-compute-runtime[l0] )
 	openexr? (
 		>=dev-libs/imath-3.1.7:=
 		>=media-libs/openexr-3.2.1:0=
@@ -185,7 +181,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.2-CUDA_NVCC_FLAGS.patch"
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
-	"${FILESDIR}/${PN}-4.3.2-ffmpeg7.patch"
 )
 
 blender_check_requirements() {
