@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="dvb"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,sql,widgets,xml]
 	>=kde-frameworks/kconfig-${KFMIN}:6
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:6
@@ -32,8 +32,11 @@ DEPEND="
 	media-video/vlc[X]
 	dvb? ( media-libs/libv4l[dvb] )
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	!${CATEGORY}/${PN}:5
+"
+DEPEND="${COMMON_DEPEND}
+	x11-libs/libXScrnSaver
 "
 BDEPEND="
 	sys-devel/gettext
