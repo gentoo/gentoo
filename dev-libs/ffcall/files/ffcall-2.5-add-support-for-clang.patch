@@ -1,0 +1,53 @@
+https://git.savannah.gnu.org/cgit/libffcall.git/commit/?id=fe6d9f089d8326b077420c10fec8c2174557be30
+
+From fe6d9f089d8326b077420c10fec8c2174557be30 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Tue, 20 Aug 2024 13:38:19 +0200
+Subject: [PATCH] Add support for Android.
+
+* m4/cc-gcc.m4 (CL_CC_GCC): If using clang as compiler, add the option
+-no-integrated-as to GCC_X_NONE.
+* NEWS: Mention Android as supported.
+
+diff --git a/m4/cc-gcc.m4 b/m4/cc-gcc.m4
+index 1e12d8e..97c2dac 100644
+--- a/m4/cc-gcc.m4
++++ b/m4/cc-gcc.m4
+@@ -1,5 +1,5 @@
+ dnl -*- Autoconf -*-
+-dnl Copyright (C) 1993-2017 Free Software Foundation, Inc.
++dnl Copyright (C) 1993-2024 Free Software Foundation, Inc.
+ dnl This file is free software, distributed under the terms of the GNU
+ dnl General Public License as published by the Free Software Foundation;
+ dnl either version 2 of the License, or (at your option) any later version.
+@@ -27,6 +27,27 @@ AC_DEFUN([CL_CC_GCC],
+   if test $cl_cv_prog_cc_gcc = yes; then
+     CC_GCC=true
+     GCC_X_NONE='-x none'
++
++    dnl On arm, there are two slightly different syntaxes for assembly language:
++    dnl The "divided" syntax (standard since ca. 2000) and the "unified" syntax
++    dnl (supported by GNU binutils since 2009).  See
++    dnl https://sourceware.org/binutils/docs/as/ARM_002dInstruction_002dSet.html
++    dnl While GNU as and thus GCC supports both, clang by default uses an
++    dnl "integrated" assembler that supports only the "unified" syntax, leading
++    dnl to errors "error: invalid instruction" on instructions such as stmeqia.
++    dnl We therefore need to tell clang to use the external assembler.
++    AC_CACHE_CHECK([whether using clang], [cl_cv_prog_cc_clang],
++      [AC_EGREP_CPP([yes],
++         [#ifdef __clang__
++          yes
++          #endif
++         ],
++         [cl_cv_prog_cc_clang=yes],
++         [cl_cv_prog_cc_clang=no])
++      ])
++    if test $cl_cv_prog_cc_clang = yes; then
++      GCC_X_NONE="$GCC_X_NONE -no-integrated-as"
++    fi
+   else
+     CC_GCC=false
+     GCC_X_NONE=''
+-- 
+2.45.2
+
