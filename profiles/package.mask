@@ -39,20 +39,6 @@
 # Removal on 2025-05-09.  Bug #909900.
 app-text/nfoview
 
-# Sam James <sam@gentoo.org> (2025-04-05)
-# New abseil/protobuf breaks too much:
-# * net-libs/grpc (bug #953141)
-# * media-libs/opencv (bug #953138)
-# * dev-libs/protobuf (bug #953140)
-=dev-cpp/abseil-cpp-20250127.0*
-=dev-cpp/abseil-cpp-20240722.1*
-=dev-cpp/abseil-cpp-20240116.3*
-=dev-cpp/abseil-cpp-20230802.3*
-=dev-libs/protobuf-30*
-=dev-ruby/google-protobuf-4.30*
-=dev-java/protobuf-java-4.30*
-=dev-python/protobuf-6.30*
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-04-04)
 # Temporary mask until handled the usage of shorter SLOT.
 # Bugs #953127, #953103.
