@@ -322,7 +322,7 @@ _distutils_set_globals() {
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-78.1.0[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
@@ -347,7 +347,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-78.1.0[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
