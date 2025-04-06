@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,7 @@ DEPEND="
 "
 BDEPEND="
 	app-text/asciidoc
+	app-text/xmlto
 	virtual/pkgconfig
 	python? ( dev-lang/swig )
 "
@@ -73,6 +74,9 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Dasciidoctor=false
+		-Dhtmldir=/usr/share/doc/${PF}/html
+		-Dmandir=/usr/share/man
+		-Dversion-tag=${PVR}-gentoo
 		$(meson_use python)
 	)
 
@@ -82,6 +86,12 @@ src_configure() {
 	# was somewhat automagic, so this isn't a huge loss for now, but we should
 	# upstream some build options for these.
 	meson_src_configure
+}
+
+src_compile() {
+	# The 'docs' target is not part of the 'all' target, hence we need to
+	# explicitly specify 'docs'.
+	meson_src_compile all docs
 }
 
 src_install() {
