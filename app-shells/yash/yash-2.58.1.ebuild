@@ -12,7 +12,7 @@ SRC_URI="https://github.com/magicant/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips x86"
 IUSE="nls test"
 RESTRICT="!test? ( test )"
 
