@@ -1,0 +1,24 @@
+diff '--color=auto' -Naur mac-11.02_orig/Shared/All.h mac-11.02/Shared/All.h
+--- mac-11.02_orig/Shared/All.h	2025-04-05 12:05:08.846377914 +0200
++++ mac-11.02/Shared/All.h	2025-04-05 12:05:42.068980250 +0200
+@@ -11,7 +11,7 @@
+ **************************************************************************************************/
+ #if !defined(PLATFORM_WINDOWS) && !defined(PLATFORM_APPLE) && !defined(PLATFORM_LINUX) && !defined(PLATFORM_ANDROID)
+     #pragma message("No platform set for MACLib, defaulting to Windows")
+-    #define PLATFORM_WINDOWS
++    #define PLATFORM_LINUX
+ #endif
+ 
+ #ifdef PLATFORM_ANDROID
+diff '--color=auto' -Naur mac-11.02_orig/Source/Shared/All.h mac-11.02/Source/Shared/All.h
+--- mac-11.02_orig/Source/Shared/All.h	2025-04-05 12:05:08.853381414 +0200
++++ mac-11.02/Source/Shared/All.h	2025-04-05 12:05:44.045968210 +0200
+@@ -11,7 +11,7 @@
+ **************************************************************************************************/
+ #if !defined(PLATFORM_WINDOWS) && !defined(PLATFORM_APPLE) && !defined(PLATFORM_LINUX) && !defined(PLATFORM_ANDROID)
+     #pragma message("No platform set for MACLib, defaulting to Windows")
+-    #define PLATFORM_WINDOWS
++    #define PLATFORM_LINUX
+ #endif
+ 
+ #ifdef PLATFORM_ANDROID
