@@ -1,7 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+inherit edos2unix
 
 DESCRIPTION="TCL MySQL Interface"
 HOMEPAGE="http://www.xdobry.de/mysqltcl/"
@@ -23,10 +24,12 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.05-ldflags.patch
 	"${FILESDIR}"/${PN}-3.05-API.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
 HTML_DOCS=( doc/mysqltcl.html )
 
 src_prepare() {
+	edos2unix generic/mysqltcl.c
 	default_src_prepare
 	sed -i 's/-pipe//g;s/-O2//g;s/-fomit-frame-pointer//g' configure || die
 }

@@ -1,0 +1,22 @@
+--- a/generic/mysqltcl.c	2025-04-06 09:16:50.402168333 +0200
++++ b/generic/mysqltcl.c	2025-04-06 09:17:26.718696196 +0200
+@@ -2642,8 +2642,7 @@
+ #ifdef _WINDOWS
+ __declspec( dllexport )
+ #endif
+-int Mysqltcl_Init(interp)
+-    Tcl_Interp *interp;
++int Mysqltcl_Init(Tcl_Interp *interp)
+ {
+   char nbuf[MYSQL_SMALL_SIZE];
+   MysqltclState *statePtr;
+@@ -2763,8 +2762,7 @@
+ #ifdef _WINDOWS
+ __declspec( dllexport )
+ #endif
+-int Mysqltcl_SafeInit(interp)
+-    Tcl_Interp *interp;
++int Mysqltcl_SafeInit(Tcl_Interp *interp)
+ {
+   return Mysqltcl_Init(interp);
+ }
