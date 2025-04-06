@@ -62,6 +62,7 @@ else
 		test? (
 			https://github.com/${PN}/${PN}_extra/archive/refs/tags/${PV}.tar.gz -> ${PN}_extra-${PV}.tar.gz
 		)
+		https://github.com/opencv/opencv/commit/1db93911aeb65599f22db47d5d39f75bc94a821d.patch -> ${PN}-4.10.0-protobuf-30.patch
 	"
 	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 fi
@@ -335,6 +336,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-cuda-fp16.patch" # 25880
 	"${FILESDIR}/${PN}-4.10.0-26234.patch" # 26234
 	"${FILESDIR}/${PN}-4.10.0-tbb-detection.patch"
+
+	"${DISTDIR}/${P}-protobuf-30.patch" # drop in 4.11
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
