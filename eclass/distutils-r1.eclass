@@ -154,10 +154,11 @@
 # will be merged into ${D}.
 
 # @ECLASS_VARIABLE: DISTUTILS_UPSTREAM_PEP517
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specifies the PEP517 build backend used upstream.  It is used
 # by the eclass to verify the correctness of DISTUTILS_USE_PEP517,
-# and matches DISTUTILS_USE_PEP517 by default.  However, it can be
+# and defaults to ${DISTUTILS_USE_PEP517}.  However, it can be
 # overriden to workaround the eclass check, when it is desirable
 # to build the wheel using other backend than the one used upstream.
 #
@@ -165,7 +166,6 @@
 # be subtle differences between the behavior of different PEP517 build
 # backends, for example regarding finding package files.  When using
 # this option, please make sure that the package is installed correctly.
-: "${DISTUTILS_UPSTREAM_PEP517:=${DISTUTILS_USE_PEP517}}"
 
 # @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
@@ -1164,7 +1164,10 @@ _distutils-r1_get_backend() {
 	fi
 
 	# verify that the ebuild correctly specifies the build backend
-	local expected_backend=$(_distutils-r1_key_to_backend "${DISTUTILS_UPSTREAM_PEP517}")
+	local expected_backend=$(
+		_distutils-r1_key_to_backend \
+			"${DISTUTILS_UPSTREAM_PEP517:-${DISTUTILS_USE_PEP517}}"
+	)
 	if [[ ${expected_backend} != ${build_backend} ]]; then
 		# special-case deprecated backends
 		case ${build_backend} in
