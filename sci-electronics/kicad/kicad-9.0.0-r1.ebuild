@@ -18,6 +18,9 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
+	SRC_URI+="
+		https://gitlab.com/kicad/code/kicad/-/commit/5774338af2e22e1ff541ad9ab368e459e2a2add2.patch -> ${PN}-9.0.0-protobuf-30.patch
+	"
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]] ; then
@@ -99,6 +102,10 @@ if [[ ${PV} == 9999 ]] ; then
 fi
 
 CHECKREQS_DISK_BUILD="1500M"
+
+PATCHES=(
+	"${DISTDIR}/${P}-protobuf-30.patch" # drop in 9.0.1
+)
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
