@@ -56,6 +56,7 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto
 	use openmp && append-cxxflags -fopenmp
 
 	local mycmakeargs=(
