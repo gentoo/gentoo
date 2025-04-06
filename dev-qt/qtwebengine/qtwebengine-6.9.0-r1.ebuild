@@ -109,6 +109,7 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
 	"${FILESDIR}"/${PN}-6.8.3-pipewire1.4.patch
 	"${FILESDIR}"/${PN}-6.9.0-x11-pixmap-leak.patch
+	"${FILESDIR}"/${PN}-6.9.0-QTBUG-133570.patch
 )
 
 python_check_deps() {
