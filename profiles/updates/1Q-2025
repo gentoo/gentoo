@@ -25,5 +25,3 @@ move dev-libs/FBGEMM sci-ml/FBGEMM
 move dev-libs/FP16 sci-ml/FP16
 move dev-libs/oneDNN sci-ml/oneDNN
 move dev-cpp/gemmlowp sci-ml/gemmlowp
-move <=dev-util/intel-graphics-compiler-1.0.17791.18 dev-util/intel-graphics-compiler-legacy
-move <=dev-libs/intel-compute-runtime-24.35.30872.32 dev-libs/intel-compute-runtime-legacy
