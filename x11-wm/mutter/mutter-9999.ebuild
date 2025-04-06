@@ -13,19 +13,19 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/mutter.git"
 	SRC_URI=""
-	SLOT="0/15" # This can get easily out of date, but better than 9967
+	SLOT="0/16" # This can get easily out of date, but better than 9967
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
-IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
+IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	|| ( X wayland )
 	gtk-doc? ( introspection )
 	wayland? ( ^^ ( elogind systemd ) udev )
-	test? ( wayland )"
+	test? ( wayland screencast )"
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked, but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard gschema
@@ -36,6 +36,7 @@ RESTRICT="!test? ( test )"
 # really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
 # v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
 # dev-libs/wayland is always needed at build time due to https://bugs.gentoo.org/937632
+# libdisplay-info is now a hard dependency https://gitlab.gnome.org/GNOME/mutter/-/commit/c820a63b872ddedc47dad390bc18d9c9ec5971ed
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
@@ -43,7 +44,7 @@ RDEPEND="
 	>=x11-libs/cairo-1.14[X]
 	>=x11-libs/pixman-0.42
 	>=dev-libs/fribidi-1.0.0
-	>=gnome-base/gsettings-desktop-schemas-47_beta[introspection?]
+	>=gnome-base/gsettings-desktop-schemas-48_beta[introspection?]
 	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
 	>=dev-libs/json-glib-0.12.0[introspection?]
@@ -52,7 +53,7 @@ RDEPEND="
 	>=x11-misc/colord-1.4.5:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
-	>=dev-libs/libei-1.0.901
+	>=dev-libs/libei-1.3.901
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -62,14 +63,14 @@ RDEPEND="
 
 	>=dev-libs/wayland-1.23.0
 	wayland? (
-		>=dev-libs/wayland-protocols-1.36
+		>=dev-libs/wayland-protocols-1.41
 
 		>=x11-libs/libdrm-2.4.118
 		media-libs/mesa[gbm(+)]
-		>=dev-libs/libinput-1.26.0:=
+		>=dev-libs/libinput-1.27.0:=
 
 		elogind? ( sys-auth/elogind )
-		xwayland? ( >=x11-base/xwayland-23.2.1[libei(+)] )
+		>=x11-base/xwayland-23.2.1[libei(+)]
 		video_cards_nvidia? ( gui-libs/egl-wayland )
 	)
 	udev? (
@@ -82,7 +83,7 @@ RDEPEND="
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	libdisplay? ( media-libs/libdisplay-info )
+	>=media-libs/libdisplay-info-0.2.0:=
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
 		gnome-extra/zenity
@@ -156,6 +157,12 @@ python_check_deps() {
 src_configure() {
 	use debug && EMESON_BUILDTYPE=debug
 	local emesonargs=(
+
+		# By default meson.eclass sets --wrap-mode to nodownload. This works
+		# file for tar balls. But for live ebuild some subprojects, gvdb in
+		# This case needs to be cloned as well.
+		--wrap-mode default
+
 		# Mutter X11 renderer only supports gles2 and GLX, thus do NOT pass
 		#
 		#   -Dopengl_libname=libOpenGL.so.0
@@ -188,16 +195,15 @@ src_configure() {
 	fi
 
 	emesonargs+=(
-		$(meson_use systemd)
+		$(meson_use systemd logind)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
 		$(meson_use gnome libgnome_desktop)
-		$(meson_use udev)
+		$(meson_use udev logind)
 		-Dudev_dir=$(get_udevdir)
 		$(meson_use input_devices_wacom libwacom)
 		-Dsound_player=true
 		-Dstartup_notification=true
-		$(meson_feature libdisplay libdisplay_info)
 		$(meson_use X sm)
 		$(meson_use introspection)
 		$(meson_use gtk-doc docs)
@@ -210,6 +216,8 @@ src_configure() {
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
 		$(meson_use X x11)
+		-Dfonts=true
+		-Dbash_completion=true
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path
@@ -238,6 +246,14 @@ src_test() {
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share
 	glib-compile-schemas "${BUILD_DIR}"/data
 	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data meson_src_test
+}
+
+src_install() {
+	meson_src_install
+	if ! has_version 'app-shells/bash-completion'; then
+		mkdir -p ${ED}/usr/share/bash-completion/completions || die
+		mv ${ED}/etc/bash_completion.d/* ${ED}/usr/share/bash-completion/completions/ || die
+	fi
 }
 
 pkg_postinst() {
