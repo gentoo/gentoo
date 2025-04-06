@@ -1,8 +1,8 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit bash-completion-r1 go-module
+inherit go-module shell-completion
 
 DESCRIPTION="kubectl plugin for Kubernetes OpenID Connect authentication"
 HOMEPAGE="https://github.com/int128/kubelogin"
@@ -22,6 +22,5 @@ src_install() {
 	bin/${PN} completion bash > ${PN}.bash || die
 	bin/${PN} completion zsh > ${PN}.zsh || die
 	newbashcomp ${PN}.bash ${PN}
-	insinto /usr/share/zsh/site-functions
-	newins ${PN}.zsh _${PN}
+	newzshcomp ${PN}.zsh _${PN}
 }
