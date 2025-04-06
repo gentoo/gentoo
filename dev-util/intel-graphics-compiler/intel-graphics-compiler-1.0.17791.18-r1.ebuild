@@ -17,7 +17,7 @@ SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MY_P}.tar.gz -> ${P}
 S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="MIT"
-SLOT="0/1.0.1"
+SLOT="legacy/1.0.1"
 KEYWORDS="amd64"
 IUSE="debug vc"
 
@@ -34,7 +34,10 @@ DEPEND="
 	)
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="
+	!dev-util/intel-graphics-compiler:0
+	${DEPEND}
+"
 
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
