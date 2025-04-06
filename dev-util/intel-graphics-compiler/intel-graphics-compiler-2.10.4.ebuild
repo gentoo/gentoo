@@ -31,7 +31,10 @@ DEPEND="
 	)
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="
+	!dev-util/intel-graphics-compiler:legacy
+	${DEPEND}
+"
 
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
