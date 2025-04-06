@@ -321,6 +321,9 @@ multilib_src_configure() {
 	if [[ ${CHOST} != *-darwin* ]] ; then
 		# set SONAME for the library
 		options+=( --soname=legacy )
+	else
+		# to allow install_name_tool id change
+		append-ldflags -headerpad_max_install_names
 	fi
 
 	# https://sqlite.org/forum/forumpost/4f4d06a9f6683bb9
