@@ -163,9 +163,10 @@ dev-java/jgoodies-looks
 dev-java/jgoodies-common
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-30)
-# Depends on dev-python/python-poppler-qt5, stuck on py3.12, painful to
-# package. Use media-gfx/inkscape or app-text/pdfarranger alternatively.
-# Removal on 2025-04-29. Bugs #947726, #952250
+# Depends on dev-python/python-poppler-qt5, stuck on py3.12, new 0.7.0
+# release available w/ PyQt6 support would require packaging new pymupdf
+# dependency (bug #949686). Use media-gfx/inkscape or app-text/pdfarranger
+# alternatively. Removal on 2025-04-29. Bugs #947726, #952250
 app-text/krop
 
 # Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
