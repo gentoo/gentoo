@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: CFGFILE=${CFGFILE:=/etc/mpd.conf}
+
+depend() {
+	need localmount
+	use net netmount alsasound esound pulseaudio
+	config ${CFGFILE}
+}
+
+get_config() {
+	x=$1
+	test -e ${CFGFILE} || return 1
+	sed -n \
+		-e '/^[ \t]*'${x}'/{s:^[ \t]*'${x}'[ \t]\+"\?\([^#"]\+\)[^"]*"\?$:\1: ; {p;q} }' \
+		${CFGFILE}
+}
+
+extra_started_commands='reload'
+# Required by io_uring
+rc_ulimit="-l 65535"
+command=/usr/bin/mpd
+command_args=${CFGFILE}
+mpd_user="$(get_config user)"
+mpd_group="$(get_config group)"
+required_files=${CFGFILE}
+pidfile=$(get_config pid_file)
+description="Music Player Daemon"
+
+check_config() {
+	if [ -z "$(get_config pid_file)" ]; then
+		eerror "pid_file must be set in ${CFGFILE}!"
+		return 1
+	fi
+	if [ -z "$(get_config user)" ]; then
+		eerror "user must be set in ${CFGFILE}!"
+		return 1
+	fi
+	if [ -z "$(get_config group)" ]; then
+		eerror "group must be set in ${CFGFILE}!"
+		return 1
+	fi
+}
+
+start_pre() {
+	check_config || return 1
+
+	local pid_dir="$(dirname "${pidfile}")"
+	checkpath -d -m 700 -o "${mpd_user}:${mpd_group}" "${pid_dir}"
+
+	local log_file="$(get_config log_file)"
+	if [ -n "${log_file}" ] && [ "${log_file}" != "syslog" ]; then
+		local log_dir="$(dirname "${log_file}")"
+		checkpath -d -m 755 -o "${mpd_user}:${mpd_group}" "${log_dir}"
+	fi
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --pidfile ${pidfile} --signal HUP
+	eend $?
+}
