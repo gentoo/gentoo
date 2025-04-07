@@ -90,6 +90,11 @@ pkg_setup() {
 	rust_pkg_setup
 }
 
+src_prepare() {
+	default
+	sed -i -e '/^]$/ d' configure || die
+}
+
 src_configure() {
 	econf \
 		--enable-experimental-64bit-time_t-support-on-glibc \
