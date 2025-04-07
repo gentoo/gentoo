@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
-IUSE="netgear readynas zeroconf"
+IUSE="branding netgear readynas zeroconf"
 
 DEPEND="
 	dev-db/sqlite:3
@@ -41,7 +41,6 @@ BDEPEND="
 CONFIG_CHECK="~INOTIFY_USER"
 
 PATCHES=(
-	"${WORKDIR}"/minidlna-gentoo-artwork.patch
 	"${FILESDIR}"/minidlna-1.3.3-ffmpeg7.patch
 )
 
@@ -49,6 +48,8 @@ src_prepare() {
 	sed -e "/log_dir/s:/var/log:/var/log/minidlna:" \
 		-e "/db_dir/s:/var/cache/:/var/lib/:" \
 		-i minidlna.conf || die
+
+	use branding && eapply "${WORKDIR}"/minidlna-gentoo-artwork.patch
 
 	default
 	eautoreconf
