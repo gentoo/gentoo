@@ -1,0 +1,5 @@
+license classifiers are deprecated and may become an error
+--- a/setup.py
++++ b/setup.py
+@@ -37 +36,0 @@
+-        'License :: OSI Approved :: MIT License',
