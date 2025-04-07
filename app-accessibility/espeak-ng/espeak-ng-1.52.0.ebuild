@@ -18,7 +18,8 @@ fi
 
 LICENSE="GPL-3+ unicode"
 SLOT="0"
-IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
+IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	mbrola? ( app-accessibility/mbrola )
@@ -31,6 +32,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	man? ( app-text/ronn-ng )
+	test? ( sys-apps/which )
 "
 
 DOCS=( CHANGELOG.md README.md docs )
