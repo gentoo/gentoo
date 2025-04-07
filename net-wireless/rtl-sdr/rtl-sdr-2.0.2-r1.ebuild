@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
 else
 	SRC_URI="https://github.com/osmocom/rtl-sdr/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
