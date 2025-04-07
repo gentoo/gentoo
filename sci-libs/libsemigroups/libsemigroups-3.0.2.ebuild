@@ -24,6 +24,8 @@ BDEPEND="eigen? ( dev-cpp/eigen )"
 DEPEND="dev-libs/libfmt"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-gcc15-testfix.patch" )
+
 src_prepare() {
 	# Remove bundled deps that we should not be using.
 	rm -rf third_party/fmt-* \
