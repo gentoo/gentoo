@@ -5,7 +5,14 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
+	<use>
+		<flag name="test-full">
+			Run test suite in full, including tests that run a local
+			database instance.
+		</flag>
+	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:mongodb:c_driver</remote-id>
 		<remote-id type="github">mongodb/mongo-c-driver</remote-id>
 	</upstream>
 </pkgmetadata>
