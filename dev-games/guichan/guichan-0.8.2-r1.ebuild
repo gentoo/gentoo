@@ -11,7 +11,7 @@ SRC_URI="https://github.com/darkbitsorg/${PN}/releases/download/v${PV}/${P}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="allegro opengl sdl"
 
 DEPEND="
