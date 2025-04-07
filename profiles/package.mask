@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-04-05)
+# Ruby 3.1 is no longer supported upstream and will no longer
+# receive security updates. This mask also includes any
+# remaining ruby31-only packages.
+dev-lang/ruby:3.1
+dev-ruby/async:1
+dev-ruby/pathutil
+=app-admin/puppet-7*
+
 # Sam James <sam@gentoo.org> (2025-04-05)
 # New abseil/protobuf breaks too much:
 # * net-libs/grpc (bug #953141)
