@@ -6,8 +6,7 @@ EAPI=8
 inherit cmake flag-o-matic xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
-HOMEPAGE="https://keepassxc.org/
-	https://github.com/keepassxreboot/keepassxc/"
+HOMEPAGE="https://keepassxc.org"
 
 if [[ "${PV}" = *9999* ]] ; then
 	inherit git-r3
@@ -27,7 +26,8 @@ else
 	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
-LICENSE="LGPL-2.1 GPL-2 GPL-3"
+# COPYING order
+LICENSE="|| ( GPL-2 GPL-3 ) BSD LGPL-2.1 MIT LGPL-2 CC0-1.0 Apache-2.0 GPL-2+ BSD-2"
 SLOT="0"
 IUSE="X autotype browser doc keeshare +keyring +network +ssh-agent test yubikey"
 
@@ -73,8 +73,8 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-2.7.10-tests.patch" )
 
 src_prepare() {
-	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *9999 ]] ; then
-		printf '%s' "${PV}" > .version || die
+	if ! [[ "${PV}" =~ _beta|9999 ]]; then
+		echo "${PV}" > .version || die
 	fi
 
 	cmake_src_prepare
