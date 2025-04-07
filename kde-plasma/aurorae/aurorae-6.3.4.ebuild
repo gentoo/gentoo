@@ -35,7 +35,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
-	!<kde-plasma/kwin-6.3.2:6
+	!<kde-plasma/kwin-6.3.2
 "
 
 DOCS=( README )
