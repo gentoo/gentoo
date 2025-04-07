@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/nano.git"
 	inherit autotools git-r3
@@ -60,6 +62,11 @@ src_configure() {
 		$(use_enable unicode utf8)
 		$(use_enable minimal tiny)
 	)
+
+	if tc-is-cross-compiler ; then
+		# bug 953104
+		export gl_cv_func_strcasecmp_works=yes
+	fi
 
 	econf "${myconfargs[@]}"
 }
