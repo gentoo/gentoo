@@ -22,7 +22,6 @@ IUSE="test"
 ruby_add_rdepend "
 	|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 )
 	virtual/ruby-ssl
-	!<dev-ruby/rack-2.2.7-r1
 "
 
 ruby_add_bdepend "test? (
