@@ -19,6 +19,7 @@
     <flag name="fifo">Support writing audio to a FIFO</flag>
     <flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis (discouraged)</flag>
     <flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
+    <flag name="httpd">Enable built-in stream server</flag>
     <flag name="id3tag">Support for ID3 tags</flag>
     <flag name="inotify">Use the Linux kernel inotify subsystem to notice changes to mpd music library</flag>
     <flag name="lame">Support for MP3 streaming via Icecast2</flag>
@@ -32,11 +33,13 @@
     <flag name="pipewire">PipeWire support</flag>
     <flag name="qobuz">Build plugin to access qobuz</flag>
     <flag name="recorder">Enables output plugin for recording radio streams</flag>
+    <flag name="shout">Enable ShoutCast/IceCast plugin using <pkg>media-libs/libshout</pkg></flag>
     <flag name="signalfd">Use the signalfd function in MPD's event loop</flag>
     <flag name="snapcast">Snapcast audio plugin</flag>
     <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
     <flag name="soundcloud">Build plugin to access soundcloud</flag>
     <flag name="systemd">Enable support for systemd socket activation</flag>
+    <flag name="tremor">Enable support for <pkg>media-libs/tremor</pkg>, a fixed-point version of the Ogg Vorbis decoder</flag>
     <flag name="twolame">Support twolame MPEG-2 encoding</flag>
     <flag name="webdav">Enable using music from a WebDAV share</flag>
     <flag name="wildmidi">Enable MIDI support via wildmidi</flag>
