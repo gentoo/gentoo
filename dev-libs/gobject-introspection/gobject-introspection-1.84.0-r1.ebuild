@@ -63,7 +63,11 @@ pkg_setup() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature test cairo)
-		$(meson_use test tests)
+		# Enable building the tests (and installing them) unconditionally
+		# for now as a workaround for old gnome-extra/cjs and dev-libs/gjs,
+		# see bug #952011.
+		#$(meson_use test tests)
+		-Dtests=true
 		$(meson_feature doctool)
 		#-Dglib_src_dir
 		$(meson_use gtk-doc gtk_doc)
