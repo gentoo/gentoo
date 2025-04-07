@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/openknights/${P}.tar.gz"
 
 LICENSE="openknights"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="!sci-biology/newick-utils"
 BDEPEND="
