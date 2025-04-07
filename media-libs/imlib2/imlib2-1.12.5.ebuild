@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+X apidoc avif bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 debug
 eps +filters +gif +jpeg jpeg2k jpegxl heif lzma mp3 packing +png
-raw +shm static-libs svg +text +tools +tiff +webp +zlib"
+raw +shm static-libs svg +text +tools +tiff +webp y4m +zlib"
 
 REQUIRED_USE="shm? ( X )"
 
@@ -44,6 +44,7 @@ RDEPEND="
 	tools? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-4.0.4:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
+	y4m? ( media-libs/libyuv:= )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 	!<media-plugins/imlib2_loaders-1.10.0
 "
@@ -88,9 +89,14 @@ multilib_src_configure() {
 		$(use_enable tools progs)
 		$(use_with tiff)
 		$(use_with webp)
+		$(multilib_native_use_with y4m)
 		$(use_with zlib)
-		# BUG: https://git.enlightenment.org/old/legacy-imlib2/issues/31
-		--without-y4m
+
+		# needed if a package is dlopen-ing imlib2 with RTLD_LOCAL,
+		# which dev-perl/Image-Imlib2 *might* be doing (haven't
+		# verified). if not, then should be fine to disable.
+		# See also: https://git.enlightenment.org/old/legacy-imlib2/issues/30
+		--enable-rtld-local-support
 	)
 
 	# imlib2 has different configure options for x86/amd64 assembly
