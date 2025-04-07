@@ -6,6 +6,7 @@
     <name>Ultrabug</name>
   </maintainer>
   <upstream>
+    <remote-id type="cpe">cpe:/a:mongodb:libbson</remote-id>
     <remote-id type="github">mongodb/mongo-c-driver</remote-id>
   </upstream>
 </pkgmetadata>
