@@ -164,6 +164,7 @@ dev-build/cmake dap
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb builds practically only on the authors' computer.
+dev-libs/mongo-c-driver test-full
 dev-python/pymongo test-full
 
 # Sam James <sam@gentoo.org> (2023-05-15)
