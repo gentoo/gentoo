@@ -13,6 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">doge</remote-id>
-		<remote-id type="github">thiderman/doge</remote-id>
+		<remote-id type="github">Olivia5k/doge</remote-id>
 	</upstream>
 </pkgmetadata>
