@@ -7,19 +7,25 @@
 	</maintainer>
 	<use>
 		<flag name="autotype">Add support to autotype the passwords into other applications</flag>
-		<flag name="browser">Enables browser plugin support</flag>
+		<flag name="browser">Enable communication with web browser plugins</flag>
 		<flag name="keeshare">Enable KeeShare sharing integration</flag>
-		<flag name="network">Enable network support</flag>
+		<flag name="network">Enable network support (e.g. for downloading favicons)</flag>
 		<flag name="yubikey">Enable database unlocking via hardware keys supporting YubiKey-style HMAC-SHA1 protocol</flag>
 		<flag name="ssh-agent">Use KeePassXC to unlock SSH keys</flag>
 		<flag name="keyring">Enable support for use as the the system keyring</flag>
 	</use>
 	<longdescription>
-		KeePassXC provides a safe location for your passwords and similar
-		data. It encrypts its databasee with AES either by passphrase or a key
-		file, compatible with a PDA and Windows version.
+		KeePassXC is a modern, secure, and open-source password manager that
+		stores and manages your most sensitive information. It can save many
+		different types of information, such as usernames, passwords, URLs,
+		attachments, and notes in an offline, encrypted file. It supports
+		user-defined titles, groups and icons. The software also includes
+		a easy-to-use password and passphrase generator utility.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/keepassxreboot/keepassxc/issues</bugs-to>
+		<changelog>https://github.com/keepassxreboot/keepassxc/releases</changelog>
+		<doc>https://keepassxc.org/docs/</doc>
 		<remote-id type="github">keepassxreboot/keepassxc</remote-id>
 	</upstream>
 </pkgmetadata>
