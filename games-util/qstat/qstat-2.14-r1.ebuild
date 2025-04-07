@@ -20,7 +20,6 @@ DOCS=( CHANGES.txt COMPILE.txt template/README.txt )
 
 PATCHES=(
 	"${FILESDIR}"/"${P}"-gcc-10.patch
-	"${FILESDIR}"/"${P}"-unneeded-cast.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
