@@ -18,6 +18,15 @@ thunderbolt unsupported wacom +wallpapers webengine"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
+# The =kde-apps/spectacle-6.3* pin is needed because Spectacle moved from
+# KDE Gear => KDE Plasma, but KDE Gear's version scheme is higher than
+# KDE Plasma's, so without such a pin, there's nothing that will cause
+# the in-reality newer (but wrt PV, older) Spectacle to be pulled in for users.
+#
+# It can be changed to =kde-apps/spectacle-6* in due course once newer
+# KDE Plasma and KDE Gear are stabled and old is cleaned up. Changing it
+# to >=kde-plasma/spectacle-${PV}:${SLOT} however can't be done for quite
+# some time.
 RDEPEND="
 	!${CATEGORY}/${PN}:5
 	!kde-plasma/khotkeys:5
