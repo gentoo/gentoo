@@ -61,7 +61,7 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	lz4? ( app-arch/lz4:= )
 	maxminddb? ( dev-libs/libmaxminddb:= )
-	minizip? ( sys-libs/minizip-ng )
+	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
@@ -80,7 +80,7 @@ RDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6:= )
 	ssl? ( >=net-libs/gnutls-3.5.8:= )
 	wifi? ( >=net-libs/libssh-0.6:= )
-	zlib? ( sys-libs/zlib-ng )
+	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="
@@ -217,6 +217,7 @@ src_configure() {
 		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)
 		-DENABLE_MINIZIP=$(usex minizip)
+		-DENABLE_MINIZIPNG=OFF
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex http2)
 		-DENABLE_NGHTTP3=$(usex http3)
@@ -229,8 +230,8 @@ src_configure() {
 		-DENABLE_SNAPPY=$(usex snappy)
 		-DENABLE_SPANDSP=$(usex spandsp)
 		-DBUILD_wifidump=$(usex wifi)
-		-DENABLE_ZLIB=OFF
-		-DENABLE_ZLIBNG=$(usex zlib)
+		-DENABLE_ZLIB=$(usex zlib)
+		-DENABLE_ZLIBNG=OFF
 		-DENABLE_ZSTD=$(usex zstd)
 	)
 
