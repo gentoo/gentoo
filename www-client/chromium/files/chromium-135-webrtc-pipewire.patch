@@ -1,0 +1,29 @@
+https://webrtc.googlesource.com/src/+/0a9787897f3d36055130b0532967d31c31e8408f
+
+Pipewire 1.4 changed some functions from taking void*
+to taking the actual type they expect, which makes
+some code that built with 1.2 no longer build with 1.4.
+
+For older versions, this is effectively a no-op.
+
+--- a/third_party/webrtc/modules/video_capture/linux/pipewire_session.cc
++++ b/third_party/webrtc/modules/video_capture/linux/pipewire_session.cc
+
+@@ -87,7 +87,7 @@
+       .param = OnNodeParam,
+   };
+ 
+-  pw_node_add_listener(proxy_, &node_listener_, &node_events, this);
++  pw_node_add_listener(reinterpret_cast<pw_node*>(proxy_), &node_listener_, &node_events, this);
+ }
+ 
+ // static
+@@ -119,7 +119,7 @@
+       uint32_t id = info->params[i].id;
+       if (id == SPA_PARAM_EnumFormat &&
+           info->params[i].flags & SPA_PARAM_INFO_READ) {
+-        pw_node_enum_params(that->proxy_, 0, id, 0, UINT32_MAX, nullptr);
++        pw_node_enum_params(reinterpret_cast<pw_node*>(that->proxy_), 0, id, 0, UINT32_MAX, nullptr);
+         break;
+       }
+     }
