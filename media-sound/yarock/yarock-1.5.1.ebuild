@@ -33,20 +33,6 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( CHANGES.md README.md )
 
-PATCHES=(
-	# TODO(?): https://github.com/sebaro/Yarock/issues/1#issuecomment-2398941145
-	"${FILESDIR}"/${PN}-1.4.0-taglib2-include.patch
-	# Pending: https://github.com/sebaro/Yarock/pull/3
-	"${FILESDIR}"/${P}-assorted-fixes.patch
-)
-
-src_prepare() {
-	cmake_src_prepare
-	sed -e "/^Version/d" \
-		-i data/org.yarock.desktop || die
-	mv data/{org.,}yarock.desktop || die
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PHONON=OFF # questionable benefit over vlc directly
