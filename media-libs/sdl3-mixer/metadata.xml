@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<longdescription>
+		A simple multi-channel audio mixer that supports 8 channels of 16 bit stereo audio, plus a single channel of music.
+		It can load FLAC, MP3, Ogg, VOC, and WAV format audio.
+		It can also load MIDI, MOD, and Opus audio, depending on build options.
+		It is a part of the SDL project, and is used by many games and applications.
+	</longdescription>
+	<use>
+		<flag name="drlibs">Use vendored dr_{flac,mp3} instead of <pkg>media-libs/flac</pkg> and/or <pkg>media-sound/mpg123-base</pkg> for those formats</flag>
+		<flag name="fluidsynth">Use <pkg>media-sound/fluidsynth</pkg> for MIDI support</flag>
+		<flag name="gme">Support additional music formats with <pkg>media-libs/game-music-emu</pkg></flag>
+		<flag name="midi">Basic support for MIDI files</flag>
+		<flag name="mod">Basic support for MOD files</flag>
+		<flag name="modplug">Support MOD via <pkg>media-libs/libmodplug</pkg></flag>
+		<flag name="playtools">Install playwave and playmus tools (useful for testing)</flag>
+		<flag name="stb">Use <pkg>dev-libs/stb</pkg> instead of <pkg>media-libs/libvorbis</pkg> for OGG Vorbis support</flag>
+		<flag name="tremor">Use <pkg>media-libs/tremor</pkg> instead of <pkg>media-libs/libvorbis</pkg> for OGG Vorbis support</flag>
+		<flag name="wav">Support WAVE files</flag>
+		<flag name="wavpack">Support WavPack files</flag>
+		<flag name="xmp">Support MOD via <pkg>media-libs/libxmp</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libsdl-org/SDL_mixer</remote-id>
+	</upstream>
+</pkgmetadata>
