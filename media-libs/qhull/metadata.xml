@@ -21,4 +21,7 @@
 		<bugs-to>https://github.com/qhull/qhull/issues</bugs-to>
 		<remote-id type="github">qhull/qhull</remote-id>
 	</upstream>
+	<use>
+		<flag name="tools">Build applications</flag>
+	</use>
 </pkgmetadata>
