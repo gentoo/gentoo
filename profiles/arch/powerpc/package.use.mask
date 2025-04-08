@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-04-08)
+# media-libs/libsidplayfp is not keyworded
+media-sound/mpd sid
+
 # Yongxiang Liang <tanekliang@gentoo.org> (2024-10-10)
 # app-i18n/fcitx:5 is not yet keyworded
 media-libs/libsdl2 fcitx
