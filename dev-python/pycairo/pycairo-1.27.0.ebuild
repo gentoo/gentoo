@@ -23,11 +23,11 @@ SRC_URI="
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="examples test"
+IUSE="X examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=x11-libs/cairo-1.15.10[svg(+)]
+	>=x11-libs/cairo-1.15.10[svg(+),X=]
 "
 DEPEND="
 	${RDEPEND}
