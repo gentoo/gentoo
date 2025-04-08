@@ -13,6 +13,7 @@ DESCRIPTION="pahole (Poke-a-Hole) and other DWARF utilities"
 HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"
 
 if [[ ${PV} == 9999 ]] ; then
+	EGIT_BRANCH="next"
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
 	inherit git-r3
 else
