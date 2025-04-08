@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}
 		dev-python/pygobject:3
 		sys-auth/polkit
 	)"
+BDEPEND="dev-util/intltool"
 
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
