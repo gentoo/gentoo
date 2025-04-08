@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -34,10 +34,10 @@ PATCHES=(
 
 ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/kramdown ) )"
 
-ruby_add_bdepend "test? ( dev-ruby/rack:2.2 >=dev-ruby/rspec-3.11.0 dev-ruby/webrick )"
+ruby_add_bdepend "test? ( dev-ruby/rack:3.1 >=dev-ruby/rspec-3.11.0 dev-ruby/webrick )"
 
 all_ruby_prepare() {
-	sed -i -e '/[Bb]undler/ s:^:#:' -e '3igem "rack", "~> 2.2.0"' spec/spec_helper.rb || die
+	sed -i -e '/[Bb]undler/ s:^:#:' -e '3igem "rack", "~> 3.1.0"' spec/spec_helper.rb || die
 
 	sed -i -e '/samus/I s:^:#:' Rakefile || die
 
