@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>strdenis02@gmail.com</email>
+		<name>Denis Strizhkin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="frappe">Install Frappe flavor.</flag>
+		<flag name="latte">Install Latte flavor.</flag>
+		<flag name="macchiato">Install Macchiato flavor.</flag>
+		<flag name="mocha">Install Mocha flavor.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">catppuccin/cursors</remote-id>
+	</upstream>
+</pkgmetadata>
