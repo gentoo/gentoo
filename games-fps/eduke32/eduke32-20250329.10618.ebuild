@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="8d79c372a"
+EGIT_COMMIT="821c90525"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
