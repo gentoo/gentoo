@@ -16,7 +16,7 @@ LICENSE="BSD"
 # NOTE: Follow SONAME variable in CMakeLists.txt
 SONAME="11"
 SLOT="0/${SONAME}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="icu test"
 RESTRICT="!test? ( test )"
 
