@@ -37,5 +37,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">libsdl-org/SDL</remote-id>
+		<remote-id type="github">libsdl-org/sdl2-compat</remote-id>
 	</upstream>
 </pkgmetadata>
