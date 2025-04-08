@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs.patch"
 	"${FILESDIR}/${PN}-1.3.5-fix-gcc-linking.patch"
 	"${FILESDIR}/${PN}-1.3.14-gcc15.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 951367, PR#92 pending
 )
 
 pkg_setup() {
