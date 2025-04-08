@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,7 +37,7 @@
+ # Checks for libraries.
+ AM_GNU_GETTEXT_VERSION(0.19.8)
+ AM_GNU_GETTEXT([external])
+-NE_REQUIRE_VERSIONS([0], [27 28 29 30 31 32 33])
++NE_REQUIRE_VERSIONS([0], [27 28 29 30 31 32 33 34])
+ DAV_CHECK_NEON
+ 
+ # Checks for header files.
