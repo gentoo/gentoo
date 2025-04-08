@@ -69,6 +69,7 @@ src_test() {
 		tests/test_hub_mixin_pytorch.py::PytorchHubMixinTest::test_push_to_hub
 		tests/test_offline_utils.py::test_offline_with_timeout
 		tests/test_utils_pagination.py::TestPagination::test_paginate_github_api
+		tests/test_fastai_integration.py::TestFastaiUtils::test_push_to_hub_and_from_pretrained_fastai
 	)
 
 	distutils-r1_src_test
