@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2025-04-08 22:04:35.298750813 +0200
++++ b/CMakeLists.txt	2025-04-08 22:04:47.430599644 +0200
+@@ -14,7 +14,7 @@
+ # limitations under the License.
+ #===============================================================================
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if(POLICY CMP0022)
+     cmake_policy(SET CMP0022 NEW)
