@@ -15,7 +15,7 @@ MY_PN_RPL="replays"
 MY_PN_SFX="opensound"
 MY_PN_TS="title-sequences"
 MY_PV_MSX="1.6"
-MY_PV_OBJ="1.5.1"
+MY_PV_OBJ="1.6.1"
 MY_PV_RPL="0.0.86"
 MY_PV_SFX="1.0.5"
 MY_PV_TS="0.4.14"
@@ -125,6 +125,7 @@ src_configure() {
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)
+		-DDISABLE_VERSION_CHECKER=OFF
 		$(usex !dedicated "-DDISABLE_VORBIS=$(usex !vorbis)" "")
 		-DDOWNLOAD_OBJECTS=OFF
 		-DDOWNLOAD_OPENMSX=OFF
