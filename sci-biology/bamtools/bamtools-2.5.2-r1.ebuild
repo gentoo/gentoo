@@ -25,6 +25,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/"${P}-cmake.patch" )
+
 src_prepare() {
 	# delete bundled libs, just to be safe
 	rm -rf src/third_party/{gtest-1.6.0,jsoncpp} || die
