@@ -10,6 +10,8 @@ DESCRIPTION="Commercial version of app-emulation/wine with paid support"
 HOMEPAGE="https://www.codeweavers.com/products/"
 SRC_URI="https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-${PV}.bin"
 
+S="${WORKDIR}"
+
 LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -18,9 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="bindist test"
 QA_PREBUILT="*"
-S="${WORKDIR}"
 
-DEPEND=""
 BDEPEND="${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-arch/unzip
