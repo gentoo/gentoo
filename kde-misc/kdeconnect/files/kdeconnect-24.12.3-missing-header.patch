@@ -1,0 +1,24 @@
+From 120a089ed8a45176289b8f1addf044817b13aa7b Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 20 Jan 2025 21:41:50 +0100
+Subject: [PATCH] Add missing include
+
+---
+ core/backends/lan/mdns_wrapper.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/core/backends/lan/mdns_wrapper.h b/core/backends/lan/mdns_wrapper.h
+index d044ca5ed..1878f7a27 100644
+--- a/core/backends/lan/mdns_wrapper.h
++++ b/core/backends/lan/mdns_wrapper.h
+@@ -7,6 +7,7 @@
+ #ifndef KDECONNECT_MDNS_WRAPPER_H
+ #define KDECONNECT_MDNS_WRAPPER_H
+ 
++#include <QHash>
+ #include <QHostAddress>
+ #include <QMap>
+ #include <QSocketNotifier>
+-- 
+GitLab
+

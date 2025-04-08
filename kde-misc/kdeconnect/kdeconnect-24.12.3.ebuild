@@ -82,6 +82,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" ) # bug 953443
+
 src_configure() {
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/921648
