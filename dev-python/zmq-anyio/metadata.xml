@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">davidbrochart/zmq-anyio</remote-id>
+		<remote-id type="github">QuantStack/zmq-anyio</remote-id>
 		<remote-id type="pypi">zmq-anyio</remote-id>
 	</upstream>
 </pkgmetadata>

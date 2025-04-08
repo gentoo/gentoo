@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Asynchronous API for ZMQ using AnyIO"
 HOMEPAGE="
-	https://github.com/davidbrochart/zmq-anyio/
+	https://github.com/QuantStack/zmq-anyio/
 	https://pypi.org/project/zmq-anyio/
 "
 
