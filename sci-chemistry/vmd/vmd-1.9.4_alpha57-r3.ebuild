@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cuda desktop prefix python-single-r1 toolchain-funcs xdg
 
@@ -119,6 +119,9 @@ src_prepare() {
 
 	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/32122.html
 	eapply "${WORKDIR}"/${PN}-patches/${PN}-1.9.4-tmpdir.patch
+
+	# https://bugs.gentoo.org/947213
+	eapply "${FILESDIR}"/${P}-fltk-null.patch
 
 	# PREFIX
 	sed \

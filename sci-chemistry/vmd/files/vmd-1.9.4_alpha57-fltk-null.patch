@@ -1,0 +1,11 @@
+--- a/src/SelectionBuilder.C	2022-04-27 15:21:15.000000000 +0900
++++ b/src/SelectionBuilder.C	2025-03-20 15:02:33.086330280 +0900
+@@ -182,7 +182,7 @@
+ 
+   int line = self->macrobrowser->value();
+   if (!line) {
+-    self->macrooutput->value(NULL);
++    self->macrooutput->value("");
+     return;
+   }
+   const char *name = self->macrobrowser->text(line);
