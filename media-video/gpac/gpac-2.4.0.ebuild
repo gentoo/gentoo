@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gpac/gpac/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/12"
-KEYWORDS="~alpha amd64 ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="
 	X a52 aac alsa dvb ffmpeg http2 jack jpeg jpeg2k libcaca lzma mad
 	opengl png pulseaudio sdl ssl theora truetype vorbis xvid
