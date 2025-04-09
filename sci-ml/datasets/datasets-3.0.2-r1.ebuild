@@ -106,6 +106,7 @@ src_test() {
 		tests/test_file_utils.py::test_xopen_remote
 		tests/test_hub.py::test_delete_from_hub
 		tests/test_offline_util.py::test_offline_with_timeout
+		tests/test_search.py::ElasticSearchIndexTest::test_elasticsearch
 	)
 	distutils-r1_src_test
 }
