@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -76,6 +76,13 @@ src_compile() {
 }
 
 src_install() {
+	# httpdocs/geoip/README.geolocation.md is a symlink, change to real file
+	GEOLOCATION_MD="httpdocs/geoip/README.geolocation.md"
+	if [[ -h "${GEOLOCATION_MD}" ]] ; then
+		GEOLOCATION_MD_REAL=$(readlink -m -- "${GEOLOCATION_MD}" || die)
+		ln -f ${GEOLOCATION_MD_REAL} ${GEOLOCATION_MD} || die
+	fi
+
 	SHARE_NTOPNG_DIR="${EPREFIX}/usr/share/${PN}"
 	insinto "${SHARE_NTOPNG_DIR}"
 	doins -r httpdocs
