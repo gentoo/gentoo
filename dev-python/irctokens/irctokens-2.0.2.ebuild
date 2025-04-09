@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,10 +22,8 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.2-exclude-tests.patch
-)
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
@@ -34,3 +32,7 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.2-exclude-tests.patch
+)
