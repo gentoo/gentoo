@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,12 +25,16 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="dedicated gtk3 gtk4 json mapimg modpack mysql nls +qt6 readline rule-editor sdl +server +sound +system-lua web-server"
+IUSE="authentication dedicated gtk3 gtk4 json mapimg mariadb modpack nls odbc qt6"
+IUSE+=" readline rule-editor sdl +sdl3 +server +sound sqlite +system-lua web-server"
 
 REQUIRED_USE="
+	authentication? ( || ( mariadb odbc sqlite ) )
+	!dedicated? ( || ( gtk3 gtk4 qt6 sdl sdl3 ) )
+	dedicated? ( !gtk3 !gtk4 !mapimg !nls !qt6 !sdl !sdl3 !sound )
+	modpack? ( sqlite )
+	sound? ( || ( sdl3 sdl ) )
 	system-lua? ( ${LUA_REQUIRED_USE} )
-	!dedicated? ( || ( gtk3 gtk4 qt6 sdl ) )
-	dedicated? ( !gtk3 !gtk4 !mapimg !nls !qt6 !sdl !sound )
 "
 
 RDEPEND="
@@ -38,7 +42,6 @@ RDEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
 	dev-build/libtool
-	dev-db/sqlite:3
 	dev-libs/icu:=
 	net-misc/curl
 	sys-libs/zlib
@@ -55,13 +58,31 @@ RDEPEND="
 			media-libs/sdl2-image[png]
 			media-libs/sdl2-ttf
 		)
+		sdl3? (
+			media-libs/libsdl3
+			media-libs/sdl3-ttf
+			media-libs/sdl3-image[png]
+		)
 		sound? (
-			media-libs/libsdl2[sound]
-			media-libs/sdl2-mixer[vorbis]
+			sdl? (
+				media-libs/libsdl2[sound]
+				media-libs/sdl2-mixer[vorbis]
+			)
+			sdl3? (
+				media-libs/libsdl3
+				media-libs/sdl3-mixer[vorbis]
+			)
 		)
 	)
 	json? ( dev-libs/jansson:= )
 	readline? ( sys-libs/readline:= )
+	mariadb? ( || (
+		dev-db/mariadb:*
+		dev-db/mariadb-connector-c
+		)
+	)
+	odbc? ( dev-db/unixODBC )
+	sqlite? ( dev-db/sqlite:3 )
 	system-lua? (
 		${LUA_DEPS}
 	)
@@ -91,9 +112,6 @@ src_configure() {
 	# Docs here: https://github.com/freeciv/freeciv/blob/main/doc/INSTALL.meson
 	local myclient=() emesonargs=() myfcmp=()
 
-	# Upstream considers meson "experimental" until 3.2.0 according to their roadmap
-	emesonargs+=( -Dack_experimental=true )
-
 	if use dedicated || use server ; then
 		emesonargs+=( -Dserver=enabled )
 	elif use web-server; then
@@ -106,20 +124,21 @@ src_configure() {
 	# for sanity we'll build the modpack bin with the same UIs as the client.
 	# 'fcmp' = freeciv modpack (client) - gtk3, qt, cli, gtk4
 	freeciv_enable_ui() {
-				local flag=$1
-				local client_name=${2:-${flag}}
-				local fcmp_name=${3:-${client_name}}
+		local flag=$1
+		local client_name=${2:-${flag}}
+		local fcmp_name=${3:-${client_name}}
 
-				if use ${flag} ; then
-					myclient+=( ${client_name} )
-					use modpack && myfcmp+=( ${fcmp_name} )
-				fi
-			}
+		if use ${flag} ; then
+			myclient+=( ${client_name} )
+			use modpack && myfcmp+=( ${fcmp_name} )
+		fi
+	}
 
 	if ! use dedicated ; then
 		# there's no SDL modpack backend; rather than incidentally pull in GTK3 (as is default)
 		# let's explicitly set the backend to CLI
 		freeciv_enable_ui sdl sdl2 cli
+		freeciv_enable_ui sdl3 sdl3 cli
 		freeciv_enable_ui gtk3 gtk3.22 gtk3
 		freeciv_enable_ui gtk4
 		freeciv_enable_ui qt6 qt
@@ -132,14 +151,47 @@ src_configure() {
 
 	# the client and fpmc arrays are now populated (or not for dedicated); let's add them to emesonargs
 	emesonargs+=(
-		-Dclients=$(echo ${myclient[*]} | sed 's/ /,/g')
-		-Dfcmp=$(echo ${myfcmp[*]} | sed 's/ /,/g')
+		-Dclients=$(IFS=, ; echo "${myclient[*]}")
+		-Dfcmp=$(IFS=, ; echo "${myfcmp[*]}")
 	)
+
+	if use authentication; then
+		local myfcdb=()
+		use sqlite && myfcdb+=( sqlite3 )
+		use mariadb && myfcdb+=( mariadb )
+		use odbc && myfcdb+=( odbc )
+		emesonargs+=(
+			-Dfcdb=$(IFS=, ; echo "${myfcdb[*]}")
+		)
+	else
+		# If we don't want authentication
+		emesonargs+=( -Dfcdb="" )
+	fi
+
+	if use sound; then
+		# We can only select one, prefer the newer SDL3
+		if use sdl3 ; then
+			emesonargs+=( -Daudio=sdl3 )
+		elif use sdl ; then
+			emesonargs+=( -Daudio=sdl2 )
+		fi
+	else
+		# We don't want any audio support; probably a dedicated server
+		emesonargs+=( -Daudio=none )
+	fi
 
 	# If we're building a live ebuild, we want to include the git revision in the version string
 	if [[ ${PV} == 9999 ]] ; then
 		emesonargs+=( -Dgitrev=true )
 	fi
+
+	local tools=( manual ) # We always want this
+	# ruleup is the rule-updater; if you're building the editor you probably want this too
+	# default-enabled upstream
+	use rule-editor && tools+=( ruledit ruleup )
+	emesonargs+=(
+		-Dtools=$(IFS=, ; echo ${tools[*]})
+	)
 
 	# Anything that can be trivially set by meson_use goes here
 	emesonargs+=(
@@ -147,8 +199,6 @@ src_configure() {
 		$(meson_use mapimg mwand)
 		$(meson_use nls)
 		$(meson_use readline)
-		$(meson_use rule-editor ruledit)
-		$(meson_use sound audio)
 		$(meson_use system-lua syslua)
 	)
 
@@ -163,9 +213,10 @@ src_install() {
 	# that would require a lot of work to avoid orphan files.
 	# freeciv-manual only supports one ruleset argument at a time.
 	elog "Generating html manual..."
-	for RULESET in alien civ1 civ2 civ2civ3 classic experimental multiplayer sandbox
+	for RULESET in alien civ1 civ2 civ2civ3 classic goldkeep multiplayer sandbox
 	do
-		$(find "${WORKDIR}" -type d -maxdepth 1 -mindepth 1 -iname '*-build')/freeciv-manual -r ${RULESET} || die
+		$(find "${WORKDIR}" -type d -maxdepth 1 -mindepth 1 -iname '*-build')/freeciv-manual -r ${RULESET} ||
+			die "Unable to generate HTML output for ${RULESET}"
 		docinto html/rulesets/${RULESET}
 		dodoc ${RULESET}*.html
 	done
@@ -191,11 +242,13 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] && use authentication; then
 		einfo "There are a number of supported authentication backends."
 		einfo "sqlite3 is the default, however dedicated servers may wish to"
-		einfo "use another supported backend; please consult the documentation"
-		einfo "to configure freeciv for a particular backend:"
+		einfo "use another supported backend. Additional configuration is required,"
+		einfo "to do so, even if the relevant USE was selected at build time."
+		einfo "please consult the documentation for instructions on configuring"
+		einfo "freeciv for a particular backend:"
 		einfo "https://github.com/freeciv/freeciv/blob/main/doc/README.fcdb"
 	fi
 }

@@ -10,19 +10,24 @@
 		<name>Matt Joly</name>
 	</maintainer>
 	<use>
+		<flag name="authentication">Enable authentication support, useful for dedicated servers</flag>
 		<flag name="gtk3">Build the gtk3 client</flag>
 		<flag name="gtk4">Build the gtk4 client</flag>
 		<flag name="json">Add support for JSON via
 			<pkg>dev-libs/jansson</pkg></flag>
+		<flag name="mariadb">Support <pkg>dev-db/mariadb</pkg> as an authentication backend</flag>
 		<flag name="mapimg">Additional mag image toolkit
 			via <pkg>media-gfx/imagemagick</pkg></flag>
 		<flag name="modpack">Build the freeciv-modpack-program
 			to download/install mods</flag>
+		<flag name="odbc">Support ODBC as an authentication backend</flag>
 		<flag name="rule-editor">Build ruleset editor</flag>
 		<flag name="server">Enable server support. Disabling this
-			will also make it impossible to start local games.</flag>
+			will also make it impossible to start local games</flag>
 		<flag name="sound">Add support for sound provided by
-			<pkg>media-libs/sdl-mixer</pkg></flag>
+			<pkg>media-libs/sdl2-mixer</pkg> or <pkg>media-libs/sdl3-mixer</pkg></flag>
+		<flag name="sdl3">Build the SDL3 client. This will also use <pkg>media-libs/sdl3-mixer</pkg>
+			for audio in the SDL2 client, if enabled</flag>
 		<flag name="system-lua">Use <pkg>dev-lang/lua</pkg> instead of
 			the bundled liblua</flag>
 		<flag name="web-server">Build the freeciv-web server in place
