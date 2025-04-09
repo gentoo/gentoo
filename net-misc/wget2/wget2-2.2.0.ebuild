@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/0" # subslot = libwget.so version
 KEYWORDS="~amd64 ~arm64 ~loong ~x86"
-IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test xattr zlib"
+IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma pcre psl +ssl test xattr zlib"
 
 RDEPEND="
 	brotli? ( app-arch/brotli )

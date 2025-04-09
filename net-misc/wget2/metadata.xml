@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="gpgme">Build <pkg>app-crypt/gpgme</pkg> backend</flag>
-		<flag name="openssl">Enable crypto support via <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="psl">Use public suffix list via <pkg>net-libs/libpsl</pkg></flag>
 	</use>
 	<upstream>
