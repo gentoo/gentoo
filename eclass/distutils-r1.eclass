@@ -647,12 +647,6 @@ distutils_enable_tests() {
 		setup.py)
 			;;
 		unittest)
-			# unittest-or-fail is needed in py<3.12
-			local test_pkgs="$(python_gen_cond_dep '
-					dev-python/unittest-or-fail[${PYTHON_USEDEP}]
-				' 3.10 3.11
-			)"
-			[[ -n ${test_pkgs} ]] && test_deps+=" ${test_pkgs}"
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
