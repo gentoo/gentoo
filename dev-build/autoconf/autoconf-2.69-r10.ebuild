@@ -80,3 +80,10 @@ src_prepare() {
 src_test() {
 	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
+
+src_install() {
+	toolchain-autoconf_src_install
+
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+}
