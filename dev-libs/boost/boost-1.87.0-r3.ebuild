@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	"${FILESDIR}"/${PN}-1.87.0-move.patch
 	"${FILESDIR}"/${PN}-1.87.0-smart_ptr-operator.patch
+	"${FILESDIR}"/${PN}-1.87.0-thread-typo.patch
 )
 
 create_user-config.jam() {
