@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-04-09)
+# dev-db/tinycdb is not keyworded here
+mail-mta/sendmail tinycdb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
 # Needs kde-frameworks/breeze-icons which is not keyworded here.
 net-irc/quassel system-icons
