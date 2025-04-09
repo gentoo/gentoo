@@ -30,7 +30,7 @@ src_install() {
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r .
-	dodir "${MY_HTDOCSDIR}"/data
+	keepdir "${MY_HTDOCSDIR}"/data
 
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/apps
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/data
