@@ -5,7 +5,10 @@ EAPI=8
 
 inherit cmake-multilib
 
-DESCRIPTION="Simple Direct Media Layer 2 compatibility wrapper around SDL3"
+# TODO: switch to new description when non-compat is gone, this is so it is
+# not displayed on packages.gentoo.org which may be confusing for users
+DESCRIPTION="Simple Direct Media Layer"
+#DESCRIPTION="Simple Direct Media Layer 2 compatibility wrapper around SDL3"
 HOMEPAGE="https://www.libsdl.org/"
 SRC_URI="https://www.libsdl.org/release/sdl2-compat-${PV}.tar.gz"
 S=${WORKDIR}/sdl2-compat-${PV}
