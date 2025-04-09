@@ -9,6 +9,9 @@
 		<flag name="llvm">
 			Add support for llvm JIT engine
 		</flag>
+		<flag name="numa">
+			Add support for NUMA
+		</flag>
 		<flag name="oauth">
 			Enable OAuth2 authentication support
 		</flag>
