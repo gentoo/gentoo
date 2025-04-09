@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	dbus? ( sys-apps/dbus )
 	gui? (
 		media-libs/fontconfig
-		media-libs/freetype:2
+		>=media-libs/freetype-2.13.1:2
 		media-libs/harfbuzz:=
 		media-libs/libjpeg-turbo:=
 		media-libs/libpng:=
