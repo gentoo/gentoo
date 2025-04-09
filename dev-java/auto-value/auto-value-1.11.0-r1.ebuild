@@ -11,13 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Immutable value-type code generation for Java 1.7+"
 HOMEPAGE="https://github.com/google/auto/tree/master/value"
-CTV="0.21.0"
-TV="1.4.4"
-SRC_URI="https://github.com/google/auto/archive/${P}.tar.gz
-	test? (
-		https://repo1.maven.org/maven2/com/google/truth/truth/${TV}/truth-${TV}.jar
-		https://repo1.maven.org/maven2/com/google/testing/compile/compile-testing/${CTV}/compile-testing-${CTV}.jar
-	)"
+SRC_URI="https://github.com/google/auto/archive/${P}.tar.gz"
 S="${WORKDIR}/auto-${P}"
 
 LICENSE="Apache-2.0"
@@ -36,8 +30,10 @@ DEPEND="
 	dev-java/javapoet:0
 	>=virtual/jdk-1.8:*
 	test? (
+		dev-java/compile-testing:0
 		>=dev-java/error-prone-annotations-2.37.0:0
 		>=dev-java/guava-testlib-33.4.7:0
+		dev-java/truth:0
 	)
 "
 
@@ -66,11 +62,13 @@ JAVA_TEST_EXCLUDES=(
 JAVA_TEST_GENTOO_CLASSPATH="
 	error-prone-annotations
 	checker-framework-qual
+	compile-testing
 	escapevelocity
 	guava-testlib
 	incap
 	javapoet
 	junit-4
+	truth
 "
 
 JAVA_TEST_SRC_DIR="value/src/test/java"
@@ -116,7 +114,7 @@ src_compile() {
 		-name '*.java') || die "gather sources"
 
 	einfo "compile them all"
-	mkdir -p target/classes || die "mkdir target/classes" # still needed for jdk-1.8
+	mkdir -p target/classes || die "mkdir target/classes"	# still needed for openjdk-8
 	ejavac -d target/classes -classpath "${cp}" ${sources[@]}
 
 	use doc && ejavadoc -d target/api -classpath "${cp}" -quiet ${sources[@]}
@@ -159,8 +157,6 @@ src_compile() {
 
 src_test() {
 	JAVA_GENTOO_CLASSPATH_EXTRA=":auto-common.jar:auto-service-annotations.jar:auto-value-annotations.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/truth-${TV}.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/compile-testing-${CTV}.jar"
 
 	# java.lang.NoClassDefFoundError: com/google/auto/common/MoreTypes
 	# means 'auto-common.jar' is also needed on processorpath.
