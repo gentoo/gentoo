@@ -19,7 +19,8 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	>=dev-python/setuptools-77[${PYTHON_USEDEP}]
