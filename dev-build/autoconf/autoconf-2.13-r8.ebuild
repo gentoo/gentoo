@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,4 +57,11 @@ src_configure() {
 		--bindir="${EPREFIX}"/usr/bin \
 		--program-suffix="-${PV}" \
 		--infodir="${TC_AUTOCONF_INFOPATH}"
+}
+
+src_install() {
+	toolchain-autoconf_src_install
+
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
 }
