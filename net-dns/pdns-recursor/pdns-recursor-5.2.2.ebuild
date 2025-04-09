@@ -29,12 +29,13 @@ CRATES="
 	scratch@1.0.7
 	serde@1.0.210
 	serde_derive@1.0.210
-	serde_yml@0.0.12
+	serde_yaml@0.9.34+deprecated
 	shlex@1.3.0
 	syn@2.0.77
 	termcolor@1.4.1
 	unicode-ident@1.0.12
 	unicode-width@0.1.13
+	unsafe-libyaml@0.2.11
 	version_check@0.9.5
 	winapi-util@0.1.9
 	windows-sys@0.59.0
@@ -88,11 +89,6 @@ pkg_setup() {
 	filter-flags -ftree-vectorize
 	filter-lto
 	rust_pkg_setup
-}
-
-src_prepare() {
-	default
-	sed -i -e '/^]$/ d' configure || die
 }
 
 src_configure() {
