@@ -38,7 +38,7 @@ CDEPEND="
 	media-libs/opus
 	media-libs/rnnoise
 	~media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
-	>=media-video/ffmpeg-6:=[amrenc,lame,opus,twolame,vpx]
+	>=media-video/ffmpeg-6:=[opus,vpx]
 	sys-libs/zlib:=[minizip]
 	kde-frameworks/kcoreaddons:6
 	!enchant? ( >=app-text/hunspell-1.7:= )
