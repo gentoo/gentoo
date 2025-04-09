@@ -11,13 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Use beautiful Java code to generate beautiful Java code."
 HOMEPAGE="https://github.com/square/javapoet/"
-TV="1.4.4"
-CTV="0.21.0"
-SRC_URI="https://github.com/square/${PN}/archive/${P}.tar.gz
-	test? (
-		https://repo1.maven.org/maven2/com/google/truth/truth/${TV}/truth-${TV}.jar
-		https://repo1.maven.org/maven2/com/google/testing/compile/compile-testing/${CTV}/compile-testing-${CTV}.jar
-	)"
+SRC_URI="https://github.com/square/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
@@ -28,15 +22,20 @@ DEPEND="
 	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/eclipse-ecj:4.20
+		dev-java/compile-testing:0
 		dev-java/jimfs:0
 		dev-java/junit:4
 		dev-java/mockito:2
+		dev-java/truth:0
 	)
 "
 
 RDEPEND=">=virtual/jre-1.8:*"
 
-PATCHES=( "${FILESDIR}/javapoet-1.13.0-skipFailingTests.patch" )
+PATCHES=(
+	"${FILESDIR}/javapoet-1.13.0-skipFailingTests.patch"
+	"${FILESDIR}/javapoet-1.13.0-ClassNameTest.patch"	# works with Java <= 21
+)
 
 JAVA_AUTOMATIC_MODULE_NAME="com.squareup.javapoet"
 JAVA_SRC_DIR="src/main/java"
@@ -47,6 +46,7 @@ JAVA_TEST_EXCLUDES=(
 )
 
 JAVA_TEST_GENTOO_CLASSPATH="
+	compile-testing
 	eclipse-ecj-4.20
 	jimfs
 	junit-4
@@ -61,8 +61,11 @@ src_prepare() {
 }
 
 src_test() {
-	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/truth-${TV}.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/compile-testing-${CTV}.jar"
+	# Having 'truth' in JAVA_TEST_GENTOO_CLASSPATH would cause one test failure
+	# on 'compileJavaFile(com.squareup.javapoet.FileReadingTest)'.
+	# The eclass builds that classpath '--with-dependencies' which would add the
+	# annotation processor so that annotation processing gets enabled.
+	JAVA_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjars --build-only truth)"
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if ver_test "${vm_version}" -ge 17; then
