@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 elisp-common optfeature
 
 DESCRIPTION="A semantic grep for the C language"
@@ -26,7 +26,7 @@ BDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-sphinx.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.20-sphinx.patch )
 
 SITEFILE="50${PN}-gentoo.el"
 
