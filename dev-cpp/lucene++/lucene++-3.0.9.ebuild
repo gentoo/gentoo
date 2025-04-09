@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_P="LucenePlusPlus-rel_${PV}"
-inherit cmake
+inherit edo cmake flag-o-matic
 
 DESCRIPTION="C++ port of Lucene library, a high-performance, full-featured text search engine"
 HOMEPAGE="https://github.com/luceneplusplus/LucenePlusPlus"
@@ -14,8 +14,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="|| ( LGPL-3 Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~loong ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug"
-RESTRICT="test"
+IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/boost:=[zlib]"
 RDEPEND="${DEPEND}"
@@ -24,13 +24,23 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.7-boost-1.85.patch"
 	"${FILESDIR}/${PN}-3.0.9-boost-1.87.patch"
 	"${FILESDIR}/${PN}-3.0.9-pkgconfig.patch"
+	"${FILESDIR}/${PN}-3.0.9-tests-gtest-cstdint.patch"
 )
 
 src_configure() {
+	# Can't be tested with LTO because of ODR issues in test mocks
+	filter-lto
+
 	local mycmakeargs=(
 		-DENABLE_DEMO=OFF
-		-DENABLE_TEST=OFF
+		-DENABLE_TEST=$(usex test)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	edo "${BUILD_DIR}"/src/test/lucene++-tester \
+		--test_dir="${S}"/src/test/testfiles \
+		--gtest_filter="-ParallelMultiSearcherTest*:SortTest.*:"
 }
