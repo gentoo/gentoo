@@ -14,7 +14,7 @@ if [[ ${PV} == 99999999999999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://home.apache.org/~arfrever/distfiles/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~loong ppc64 x86"
+	KEYWORDS="amd64 arm64 ~loong ppc64 x86"
 fi
 
 LICENSE="BSD"
