@@ -388,6 +388,11 @@ _distutils_set_globals() {
 			DISTUTILS_DEPS=${bdep}
 			readonly DISTUTILS_DEPS
 		fi
+	else
+		eqawarn "distutils-r1.eclass legacy mode is deprecated and will be removed."
+		eqawarn "Please migrate your ebuilds to use DISTUTILS_USE_PEP517 (common values"
+		eqawarn "are 'setuptools' for packages using setuptools/distutils,"
+		eqawarn "and 'no' for packages using non-PEP517 build systems)."
 	fi
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
@@ -977,15 +982,6 @@ distutils-r1_python_prepare_all() {
 	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 		_distutils-r1_disable_ez_setup
 		_distutils-r1_handle_pyproject_toml
-
-		case ${DISTUTILS_USE_SETUPTOOLS} in
-			no)
-				eqawarn "Non-PEP517 builds are deprecated for ebuilds using plain distutils."
-				eqawarn "Please migrate to DISTUTILS_USE_PEP517=setuptools."
-				eqawarn "Please see Python Guide for more details:"
-				eqawarn "  https://projects.gentoo.org/python/guide/distutils.html"
-				;;
-		esac
 	fi
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]
