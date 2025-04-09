@@ -8,7 +8,7 @@ COMMIT=8881b346c8579862a34c4ab46314501117e339dc
 MY_PN=${PN%-booking}
 DESCRIPTION="High-performance Graphite front-end, Booking.com fork"
 HOMEPAGE="https://github.com/bookingcom/carbonapi"
-SRC_URI="https://github.com/bookingcom/carbonapi/archive/${COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/bookingcom/carbonapi/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
@@ -34,7 +34,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	acct-group/carbon
 	acct-user/carbon"
-BDEPEND=""
 
 src_prepare() {
 	export VERSION="gentoo-${PVR}"

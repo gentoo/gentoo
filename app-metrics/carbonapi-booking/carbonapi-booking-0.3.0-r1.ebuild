@@ -33,7 +33,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	acct-group/carbon
 	acct-user/carbon"
-BDEPEND=""
 
 src_prepare() {
 	export VERSION="gentoo-${PVR}"
