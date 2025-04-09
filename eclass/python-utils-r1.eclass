@@ -1481,7 +1481,7 @@ epytest() {
 # @FUNCTION: eunittest
 # @USAGE: [<args>...]
 # @DESCRIPTION:
-# Run unit tests using dev-python/unittest-or-fail, passing the standard
+# Run unit tests using unittest, passing the standard
 # set of options, followed by user-specified options.
 #
 # This command dies on failure and respects nonfatal.
@@ -1492,11 +1492,7 @@ eunittest() {
 	_python_check_occluded_packages
 
 	# unittest fails with "no tests" correctly since Python 3.12
-	local runner=unittest
-	if _python_impl_matches "${EPYTHON}" 3.{9..11}; then
-		runner=unittest_or_fail
-	fi
-	set -- "${EPYTHON}" -m "${runner}" discover -v "${@}"
+	set -- "${EPYTHON}" -m unittest discover -v "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die -n "Tests failed with ${EPYTHON}"
