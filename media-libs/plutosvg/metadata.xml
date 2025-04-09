@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kangie@gentoo.org</email>
+    <name>Matt Jolly</name>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="freetype">Enable <pkg>media-libs/freetype</pkg> integration</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">sammycage/plutosvg</remote-id>
+  </upstream>
+</pkgmetadata>
