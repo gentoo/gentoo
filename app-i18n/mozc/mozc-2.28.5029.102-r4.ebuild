@@ -45,7 +45,7 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="amd64 ~loong x86"
+KEYWORDS="amd64 arm64 ~loong x86"
 IUSE="debug emacs fcitx5 +gui ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx5 ibus )"
 RESTRICT="!test? ( test )"
