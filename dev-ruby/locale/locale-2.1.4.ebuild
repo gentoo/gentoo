@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc/reference"
@@ -17,11 +17,11 @@ inherit ruby-fakegem
 
 DESCRIPTION="A pure ruby library which provides basic APIs for localization"
 HOMEPAGE="https://github.com/ruby-gettext/locale"
-LICENSE="|| ( Ruby-BSD GPL-2 )"
 SRC_URI="https://github.com/ruby-gettext/locale/archive/${PV}.tar.gz -> ${P}-git.tgz"
+LICENSE="|| ( Ruby-BSD GPL-2 )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
