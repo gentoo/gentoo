@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-04-09)
+# Still uses legacy distutils-r1 mode, and lacks Python 3.13 target.
+# No reply from the maintainer for a year now.
+# Removal on 2025-05-09.  Bug #909900.
+app-text/nfoview
+
 # Sam James <sam@gentoo.org> (2025-04-05)
 # New abseil/protobuf breaks too much:
 # * net-libs/grpc (bug #953141)
