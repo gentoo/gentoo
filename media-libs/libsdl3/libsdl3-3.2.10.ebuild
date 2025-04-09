@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 
 IUSE="
 	X alsa aqua dbus doc ibus io-uring jack kms opengl oss pipewire
-	pulseaudio sndio static-libs test udev usb vulkan wayland
+	pulseaudio sndio test udev usb vulkan wayland
 	cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2
 	cpu_flags_x86_avx512f cpu_flags_x86_mmx cpu_flags_x86_sse
 	cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1
@@ -95,7 +95,7 @@ src_configure() {
 		-DSDL_DEPS_SHARED=no # link rather than dlopen() where possible
 		-DSDL_LIBURING=$(usex io-uring)
 		-DSDL_RPATH=no
-		-DSDL_STATIC=$(usex static-libs)
+		-DSDL_STATIC=no
 		-DSDL_TESTS=$(usex test)
 
 		# audio
