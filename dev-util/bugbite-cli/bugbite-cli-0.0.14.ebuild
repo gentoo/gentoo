@@ -24,6 +24,12 @@ BDEPEND="
 	test? ( dev-util/cargo-nextest )
 "
 
+RDEPEND="
+	openssl? (
+		!static? ( dev-libs/openssl:= )
+	)
+"
+
 QA_FLAGS_IGNORED="usr/bin/bite"
 
 pkg_setup() {
