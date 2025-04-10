@@ -1,0 +1,77 @@
+https://inbox.sourceware.org/gcc-patches/20250409151104.2600656-1-ppalka@redhat.com/
+
+From 660e4bf9391692acb0bb18ba5eb38e689ae0a8a6 Mon Sep 17 00:00:00 2001
+Message-ID: <660e4bf9391692acb0bb18ba5eb38e689ae0a8a6.1744212391.git.sam@gentoo.org>
+From: Patrick Palka <ppalka@redhat.com>
+Date: Wed, 9 Apr 2025 11:11:04 -0400
+Subject: [PATCH] c++: alias_ctad_tweaks ICE w/ inherited CTAD [PR119687]
+
+With inherited CTAD the set of guides may be a two-dimensional overload
+set (i.e. OVERLOADs containing OVERLOADs) so alias_ctad_tweaks (which
+also handles the inherited CTAD transformation) needs to use the 2D-aware
+lkp_iterator instead of ovl_iterator.  Actually, we might as well use
+the more idiomatic lkp_range here.
+
+	PR c++/119687
+
+gcc/cp/ChangeLog:
+
+	* pt.cc (alias_ctad_tweaks): Use lkp_range / lkp_iterator
+	instead of ovl_iterator.
+
+gcc/testsuite/ChangeLog:
+
+* g++.dg/cpp23/class-deduction-inherited8.C: New test.
+---
+ gcc/cp/pt.cc                                  |  3 +--
+ .../g++.dg/cpp23/class-deduction-inherited8.C | 21 +++++++++++++++++++
+ 2 files changed, 22 insertions(+), 2 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/cpp23/class-deduction-inherited8.C
+
+diff --git a/gcc/cp/pt.cc b/gcc/cp/pt.cc
+index 0e120c4040ed..352a7f4ed316 100644
+--- a/gcc/cp/pt.cc
++++ b/gcc/cp/pt.cc
+@@ -30937,9 +30937,8 @@ alias_ctad_tweaks (tree tmpl, tree uguides)
+   tree aguides = NULL_TREE;
+   tree atparms = INNERMOST_TEMPLATE_PARMS (fullatparms);
+   unsigned natparms = TREE_VEC_LENGTH (atparms);
+-  for (ovl_iterator iter (uguides); iter; ++iter)
++  for (tree f : lkp_range (uguides))
+     {
+-      tree f = *iter;
+       tree in_decl = f;
+       location_t loc = DECL_SOURCE_LOCATION (f);
+       tree ret = TREE_TYPE (TREE_TYPE (f));
+diff --git a/gcc/testsuite/g++.dg/cpp23/class-deduction-inherited8.C b/gcc/testsuite/g++.dg/cpp23/class-deduction-inherited8.C
+new file mode 100644
+index 000000000000..79fceadd9e1c
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/cpp23/class-deduction-inherited8.C
+@@ -0,0 +1,21 @@
++// PR c++/119687
++// { dg-do compile { target c++20 } }
++
++template <typename> class QFlagsStorage{};
++
++template <typename Enum> struct QFlagsStorageHelper : QFlagsStorage<Enum>  {
++  using QFlagsStorage<Enum>::QFlagsStorage;
++
++public:
++  QFlagsStorageHelper(Enum);
++};
++
++template <typename Enum> struct QFlags : public QFlagsStorageHelper<Enum> {
++  using Base = QFlagsStorageHelper<Enum>;
++  using Base::Base;
++  QFlags(Enum);
++};
++
++void f(int flag) {
++  QFlags{int{}};
++}
+
+base-commit: 334545194d9023fb9b2f72ee0dcde8af94930f25
+-- 
+2.49.0
+

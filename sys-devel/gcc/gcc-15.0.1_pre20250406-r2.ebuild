@@ -53,5 +53,7 @@ src_prepare() {
 	toolchain_src_prepare
 	eapply "${FILESDIR}"/${P}-simplify-oops.patch
 	eapply "${FILESDIR}"/${P}-compare-debug.patch
+	eapply "${FILESDIR}"/${P}-de-locale.patch
+	eapply "${FILESDIR}"/${P}-qt.patch
 	eapply_user
 }
