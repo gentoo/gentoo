@@ -14,6 +14,9 @@
 		provide additional functionality, like a task list manager, an equation editor,
 		a tray icon, and support for version control.
 	</longdescription>
+	<use>
+		<flag name="ubuntu-mono">Install mono icons for Unity</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">zim-desktop-wiki/zim-desktop-wiki</remote-id>
 	</upstream>
