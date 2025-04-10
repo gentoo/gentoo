@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 PATCHES=(
 	# https://bugs.gentoo.org/936053
