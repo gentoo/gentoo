@@ -21,7 +21,7 @@ DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext
 HOMEPAGE="https://ruby-gettext.github.io/"
 
 LICENSE="|| ( GPL-2 Ruby-BSD LGPL-3+ )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="0"
 IUSE="doc test"
 
