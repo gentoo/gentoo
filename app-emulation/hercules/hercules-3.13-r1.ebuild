@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.13-posix-test.patch
 	"${FILESDIR}"/${PN}-3.13-unbundle-libltdl.patch
 	"${FILESDIR}"/${PN}-3.13-user-install.patch
+	"${FILESDIR}"/${PN}-3.13-autoconf.patch
 )
 
 src_prepare() {
