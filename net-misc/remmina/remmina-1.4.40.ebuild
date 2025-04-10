@@ -67,7 +67,6 @@ RDEPEND="
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 PATCHES=( "${FILESDIR}/remmina-1.4.40-libssh-no.patch" )
 
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
