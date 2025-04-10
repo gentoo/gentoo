@@ -4,7 +4,7 @@
 EAPI=8
 
 ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3{,_11} )
 inherit ada python-any-r1 multiprocessing
 
 XMLADA=xmlada-${PV}
@@ -25,6 +25,7 @@ DEPEND="${ADA_DEPS}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]"
 RDEPEND="${DEPEND}"
 BDEPEND="doc? (
+	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	')
