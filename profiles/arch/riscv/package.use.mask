@@ -1,6 +1,10 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-04-26)
+# dev-python/sphinx-panels is not keyworded
+net-dns/knot doc
+
 # Alfredo Tupone <tupone@gentoo.org> (2025-04-15)
 # drop dev-ml test 
 dev-ml/duration test
