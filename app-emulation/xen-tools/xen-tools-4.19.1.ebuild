@@ -410,7 +410,7 @@ src_prepare() {
 	fi
 
 	if ! use system-seabios ; then
-		sed -i "/^export HOSTCC/i override CC:=gcc" tools/firmware/seabios-dir/Makefile
+		sed -i "/^export HOSTCC/i override CC:=gcc" tools/firmware/seabios-dir/Makefile || die
 	fi
 
 	default
