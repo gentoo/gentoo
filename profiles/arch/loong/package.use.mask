@@ -355,7 +355,7 @@ sys-libs/libxcrypt compat
 # limitations.
 
 # LoongArch has no gold
-sys-devel/binutils gold
+<sys-devel/binutils-2.44 gold
 
 # These aren't ported to LoongArch yet
 dev-libs/libpcre jit

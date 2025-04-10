@@ -63,7 +63,7 @@ games-emulation/rmg -dynarec
 # Abandoned upstream, does not take bug reports, unsupported in Gentoo.
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.
 # See #934149, #934151, #936022, #936021
-sys-devel/binutils -gold
+<sys-devel/binutils-2.44 -gold
 
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needs as-yet-unkeyworded KF6 (bug #934215)

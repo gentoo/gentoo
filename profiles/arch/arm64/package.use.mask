@@ -83,7 +83,7 @@ sys-kernel/installkernel -ugrd
 # Abandoned upstream, does not take bug reports, unsupported in Gentoo.
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.
 # See #934149, #934151, #936022, #936021
-sys-devel/binutils -gold
+<sys-devel/binutils-2.44 -gold
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which is keyworded here
