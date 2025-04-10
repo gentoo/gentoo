@@ -77,6 +77,9 @@ src_configure() {
 	# See https://github.com/intel/intel-graphics-compiler/issues/212
 	append-ldflags -Wl,-z,undefs
 
+	# See bug #938519 and https://github.com/intel/intel-graphics-compiler/issues/362
+	filter-lto
+
 	# See bug #893370 and https://github.com/intel/intel-graphics-compiler/issues/282
 	append-flags -U_GLIBCXX_ASSERTIONS
 
