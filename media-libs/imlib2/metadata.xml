@@ -18,6 +18,7 @@
 		<flag name="apidoc">Provide doxygen generated API docs</flag>
 		<flag name="avif">Avif image loader support via <pkg>media-libs/libavif</pkg></flag>
 		<flag name="bzip2">Bzip2 loader support</flag>
+		<flag name="dlopen">Support dlopen-ing Imlib2 with RTLD_LOCAL</flag>
 		<flag name="filters">Build filter functions (blur, sharpen, etc)</flag>
 		<flag name="heif">Heif and Avif image loader support</flag>
 		<flag name="eps">Eps image loader support</flag>
@@ -26,6 +27,7 @@
 		<flag name="shm">Use MIT shared memory support for X image transfer</flag>
 		<flag name="tools">Build and install the demo tools</flag>
 		<flag name="text">Build text (TrueType font) functions</flag>
+		<flag name="y4m">Y4M image loader support</flag>
 		<flag name="zlib">Zlib loader support</flag>
 	</use>
 	<longdescription>
