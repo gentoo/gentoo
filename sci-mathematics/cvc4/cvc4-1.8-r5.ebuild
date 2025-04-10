@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-toml.patch
 	"${FILESDIR}"/${P}-bash-5.2-fix.patch
+	"${FILESDIR}"/${P}-size_t.patch
 )
 
 python_check_deps() {
