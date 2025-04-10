@@ -51,6 +51,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-zstd.patch"
+	"${FILESDIR}/${P}-zstd2.patch"
 )
 
 src_configure() {
