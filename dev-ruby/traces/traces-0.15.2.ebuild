@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/traces/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~riscv ~sparc ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/console )"
