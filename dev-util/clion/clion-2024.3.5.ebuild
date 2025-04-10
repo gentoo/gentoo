@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop wrapper
+inherit desktop optfeature toolchain-funcs wrapper
 
 DESCRIPTION="A complete toolset for C and C++ development"
 HOMEPAGE="https://www.jetbrains.com/clion/"
@@ -12,24 +12,29 @@ SRC_URI="https://download.jetbrains.com/cpp/CLion-${PV}.tar.gz"
 LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
 	Apache-1.1 Apache-2.0 BSD BSD-2 CC0-1.0 CDDL-1.1 CPL-0.5 CPL-1.0
 	EPL-1.0 EPL-2.0 GPL-2 GPL-2-with-classpath-exception GPL-3 ISC JDOM
-	LGPL-2.1+ LGPL-3 MIT MPL-1.0 MPL-1.1 OFL-1.1 public-domain PSF-2 UoI-NCSA ZLIB"
-SLOT="0"
+	LGPL-2.1+ LGPL-3 MIT MPL-1.0 MPL-1.1 OFL-1.1 public-domain PSF-2
+	UoI-NCSA ZLIB"
+SLOT="0/2024"
 KEYWORDS="~amd64"
-RESTRICT="bindist mirror splitdebug"
+RESTRICT="bindist mirror"
 
-BDEPEND="dev-util/patchelf"
+BDEPEND="
+	dev-util/debugedit
+	dev-util/patchelf
+"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
-	dev-debug/gdb
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-util/lttng-ust:0/2.12
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/wayland
 	dev-build/cmake
 	app-alternatives/ninja
 	media-libs/alsa-lib
+	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/mesa
 	net-print/cups
@@ -55,30 +60,38 @@ RDEPEND="
 QA_PREBUILT="opt/${PN}/*"
 
 src_prepare() {
+	tc-export OBJCOPY
 	default
 
 	local remove_me=(
+		Install-Linux-tar.txt
 		help/ReferenceCardForMac.pdf
 		bin/cmake
 		bin/gdb/linux
 		bin/lldb/linux
 		bin/ninja
-		license/CMake*
-		plugins/cwm-plugin/quiche-native/darwin-aarch64
-		plugins/cwm-plugin/quiche-native/darwin-x86-64
-		plugins/cwm-plugin/quiche-native/linux-aarch64
-		plugins/cwm-plugin/quiche-native/win32-x86-64
+		lib/async-profiler/aarch64
+		plugins/clion-radler/DotFiles/linux-arm64
+		plugins/clion-radler/dotTrace.dotMemory/DotFiles/linux-arm64
 		plugins/remote-dev-server/selfcontained
+		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_aarch64.so
 	)
 
 	rm -rv "${remove_me[@]}" || die
 
-	for file in "jbr/lib/{libjcef.so,jcef_helper}"
-	do
-		if [[ -f "${file}" ]]; then
-			patchelf --set-rpath '$ORIGIN' "${file}" || die
+	# removing debug symbols and relocating debug files as per #876295
+	# we're escaping all the files that contain $() in their name
+	# as they should not be executed
+	find . -type f ! -name '*$(*)*' -exec sh -c '
+		if file "{}" | grep -qE "ELF (32|64)-bit"; then
+			${OBJCOPY} --remove-section .note.gnu.build-id "{}"
+			debugedit -b "${EPREFIX}/opt/${PN}" -d "/usr/lib/debug" -i "{}"
 		fi
-	done
+	' \;
+
+	patchelf --set-rpath '$ORIGIN' "jbr/lib/libjcef.so" || die
+	patchelf --set-rpath '$ORIGIN' "jbr/lib/jcef_helper" || die
+	patchelf --set-rpath '$ORIGIN/../lib' "bin/clang/linux/x64/lib/libclazyPlugin.so" || die
 }
 
 src_install() {
@@ -86,13 +99,15 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{clion.sh,fsnotifier,inspect.sh,ltedit.sh,repair,restart.py,clang/linux/x64/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
+	fperms 755 "${dir}"/bin/{clion.sh,format.sh,fsnotifier,inspect.sh,jetbrains_client.sh,ltedit.sh,remote-dev-server.sh,restarter,clang/linux/x64/bin/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
 
 	if [[ -d jbr ]]; then
-		fperms 755 "${dir}"/jbr/bin/{java,javac,jdb,jrunscript,keytool,rmiregistry,serialver}
+		fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,keytool,rmiregistry,serialver}
 		# Fix #763582
 		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
+
+	fperms 755 "${dir}"/plugins/clion-radler/DotFiles/linux-x64/Rider.Backend
 
 	dosym -r "${EPREFIX}/usr/bin/ninja" "${dir}"/bin/ninja/linux/x64/ninja
 
@@ -103,4 +118,8 @@ src_install() {
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	insinto /usr/lib/sysctl.d
 	newins - 30-"${PN}"-inotify-watches.conf <<<"fs.inotify.max_user_watches = 524288"
+}
+
+pkg_postinst() {
+	optfeature "Debugging support" dev-debug/gdb
 }
