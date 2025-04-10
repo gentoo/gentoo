@@ -5,10 +5,6 @@
 		<email>lu_zero@gentoo.org</email>
 		<name>Luca Barbato</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
-	</maintainer>
 	<longdescription>
 		Standard GNU file utilities (chmod, cp, dd, dir, ls, ...), text utilities (sort, tr, head, wc, ...), and shell utilities (whoami, who, ...), written in Rust
 	</longdescription>
