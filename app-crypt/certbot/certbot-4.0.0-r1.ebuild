@@ -182,6 +182,7 @@ python_compile() {
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	# Argument required to change pytest rootdir.
-	epytest "${BUILD_DIR}"
+	# Change for pytest rootdir is required.
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
+	epytest
 }
