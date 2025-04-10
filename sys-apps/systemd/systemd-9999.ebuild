@@ -160,7 +160,7 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	bpf? (
-		dev-util/bpftool
+		>=dev-util/bpftool-7.0.0
 		sys-devel/bpf-toolchain
 	)
 	test? (
