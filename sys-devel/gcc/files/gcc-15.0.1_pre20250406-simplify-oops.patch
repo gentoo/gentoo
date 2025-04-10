@@ -1,0 +1,81 @@
+https://gcc.gnu.org/PR119672
+https://gcc.gnu.org/PR119713
+https://bugs.gentoo.org/953420
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=04918a2d3f20b02ac3efad1096c33894d57789a0
+
+From 04918a2d3f20b02ac3efad1096c33894d57789a0 Mon Sep 17 00:00:00 2001
+From: Jakub Jelinek <jakub@redhat.com>
+Date: Tue, 8 Apr 2025 15:14:58 +0200
+Subject: [PATCH] simplify-rtx: Fix up POPCOUNT optimization [PR119672]
+
+The gcc.dg/vect/pr113281-1.c test and many others ICE on riscv since
+presumably the r15-9238 change which allowed more cases of vector modes
+in simplify_const_relational_operation.
+In the testcase it is EQ of
+(popcount:SI (unspec:RVVMF32BI [
+            (and:RVVMF32BI (const_vector:RVVMF32BI repeat [
+                        (const_int 1 [0x1])
+                    ])
+                (reg:RVVMF32BI 147 [ mask__6.8_35 ]))
+            (reg:SI 143 [ _41 ])
+            (const_int 0 [0])
+            (reg:SI 66 vl)
+            (reg:SI 67 vtype)
+        ] UNSPEC_VPREDICATE))
+and
+(const_int 0 [0])
+which it tries to fold as EQ comparison of
+(unspec:RVVMF32BI [
+        (and:RVVMF32BI (const_vector:RVVMF32BI repeat [
+                    (const_int 1 [0x1])
+                ])
+            (reg:RVVMF32BI 147 [ mask__6.8_35 ]))
+        (reg:SI 143 [ _41 ])
+        (const_int 0 [0])
+        (reg:SI 66 vl)
+        (reg:SI 67 vtype)
+    ] UNSPEC_VPREDICATE)
+with
+(const_int 0 [0])
+which ICEs because const0_rtx isn't a vector.
+Fixed by using CONST0_RTX, so that we pass
+(const_vector:RVVMF32BI repeat [
+        (const_int 0 [0])
+    ])
+instead.
+
+2025-04-08  Jakub Jelinek  <jakub@redhat.com>
+
+	PR rtl-optimization/119672
+	* simplify-rtx.cc (simplify_context::simplify_relational_operation_1):
+	For POPCOUNT == 0 or != 0 optimizations use
+	CONST0_RTX (GET_MODE (XEXP (op0, 0))) rather than const0_rtx.
+---
+ gcc/simplify-rtx.cc | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gcc/simplify-rtx.cc b/gcc/simplify-rtx.cc
+index 6f969effdf99..88d31a71c05a 100644
+--- a/gcc/simplify-rtx.cc
++++ b/gcc/simplify-rtx.cc
+@@ -6465,14 +6465,16 @@ simplify_context::simplify_relational_operation_1 (rtx_code code,
+       case LEU:
+ 	/* (eq (popcount x) (const_int 0)) -> (eq x (const_int 0)).  */
+ 	return simplify_gen_relational (EQ, mode, GET_MODE (XEXP (op0, 0)),
+-					XEXP (op0, 0), const0_rtx);
++					XEXP (op0, 0),
++					CONST0_RTX (GET_MODE (XEXP (op0, 0))));
+ 
+       case NE:
+       case GT:
+       case GTU:
+ 	/* (ne (popcount x) (const_int 0)) -> (ne x (const_int 0)).  */
+ 	return simplify_gen_relational (NE, mode, GET_MODE (XEXP (op0, 0)),
+-					XEXP (op0, 0), const0_rtx);
++					XEXP (op0, 0),
++					CONST0_RTX (GET_MODE (XEXP (op0, 0))));
+ 
+       default:
+ 	break;
+-- 
+2.43.5

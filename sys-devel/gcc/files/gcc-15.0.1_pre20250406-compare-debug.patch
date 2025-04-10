@@ -1,0 +1,88 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=088887de7717a22b1503760e9b79dfbe22a0f428
+
+From 088887de7717a22b1503760e9b79dfbe22a0f428 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 9 Apr 2025 14:36:19 +0200
+Subject: [PATCH] rtl-optimization/119689 - compare-debug failure with LRA
+
+The previous change to fix LRA rematerialization broke compare-debug
+for i586 bootstrap.  Fixed by using prev_nonnote_nondebug_insn
+instead of prev_nonnote_insn.
+
+	PR rtl-optimization/119689
+	PR rtl-optimization/115568
+	* lra-remat.cc (create_cands): Use prev_nonnote_nondebug_insn
+	to check whether insn2 is directly before insn.
+
+	* g++.target/i386/pr119689.C: New testcase.
+---
+ gcc/lra-remat.cc                         |  2 +-
+ gcc/testsuite/g++.target/i386/pr119689.C | 44 ++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/g++.target/i386/pr119689.C
+
+diff --git a/gcc/lra-remat.cc b/gcc/lra-remat.cc
+index 2f3afffcf5be..5f823193aa73 100644
+--- a/gcc/lra-remat.cc
++++ b/gcc/lra-remat.cc
+@@ -460,7 +460,7 @@ create_cands (void)
+ 		&& dst_regno >= FIRST_PSEUDO_REGISTER
+ 		&& reg_renumber[dst_regno] < 0
+ 		&& BLOCK_FOR_INSN (insn2) == BLOCK_FOR_INSN (insn)
+-		&& insn2 == prev_nonnote_insn (insn))
++		&& insn2 == prev_nonnote_nondebug_insn (insn))
+ 	      {
+ 		create_cand (insn2, regno_potential_cand[src_regno].nop,
+ 			     dst_regno, insn);
+diff --git a/gcc/testsuite/g++.target/i386/pr119689.C b/gcc/testsuite/g++.target/i386/pr119689.C
+new file mode 100644
+index 000000000000..cdc6d2dade53
+--- /dev/null
++++ b/gcc/testsuite/g++.target/i386/pr119689.C
+@@ -0,0 +1,44 @@
++// { dg-do compile }
++// { dg-options "-O2 -fcompare-debug" }
++// { dg-additional-options "-march=i586 -mtune=generic" { target ia32 } }
++// { dg-additional-options "-fPIC" { target { fpic } } }
++
++enum gimple_code { GIMPLE_ASSIGN, GIMPLE_RETURN };
++bool is_gimple_call();
++int m_sig, m_exp, sreal_new_exp;
++struct sreal {
++  sreal(long long sig) {
++    long long __trans_tmp_6 = sig >= 0 ? sig : -(unsigned long long)sig;
++    sig = __trans_tmp_6 <<= sreal_new_exp -= m_exp = __trans_tmp_6;
++    m_sig = sig;
++  }
++  void operator/(sreal);
++};
++struct ipa_predicate {
++  ipa_predicate(bool = true);
++  void operator&=(ipa_predicate);
++  void operator&(ipa_predicate);
++};
++void add_condition();
++gimple_code eliminated_by_inlining_prob_code;
++static int eliminated_by_inlining_prob() {
++  switch (eliminated_by_inlining_prob_code) {
++  case GIMPLE_RETURN:
++    return 2;
++  case GIMPLE_ASSIGN:
++    return 1;
++  }
++  return 0;
++}
++void fp_expression_p() {
++  ipa_predicate bb_predicate;
++  for (;;) {
++    int prob = eliminated_by_inlining_prob();
++    ipa_predicate sra_predicate;
++    sra_predicate &= add_condition;
++    if (is_gimple_call())
++      sreal(prob) / 2;
++    if (prob != 2)
++      bb_predicate & sra_predicate;
++  }
++}
+-- 
+2.43.5
