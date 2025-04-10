@@ -1,0 +1,19 @@
+diff --git a/src/remmina_file_editor.c b/src/remmina_file_editor.c
+index 8de8e6f4a0cc91952aa5f92e587f09e3a5b9e205..33011995154120fe938627997fd1d347983a69aa 100644
+--- a/src/remmina_file_editor.c
++++ b/src/remmina_file_editor.c
+@@ -941,7 +941,7 @@ static gpointer ssh_tunnel_auth_list[] =
+ 
+ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gint type)
+ {
+-
++#ifdef HAVE_LIBSSH
+ 	RemminaFileEditor* gfe = (RemminaFileEditor*)user_data;
+ 	RemminaFileEditorPriv *priv = gfe->priv;
+ 	const gchar *cs;
+@@ -1046,6 +1046,7 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
+ 		g_free(cs);
+ 	}	
+ 	gtk_widget_destroy(dialog);
++#endif
+ }
