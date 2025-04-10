@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -87,7 +87,7 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
-LLVM_COMPAT=( {17..19} )
+LLVM_COMPAT=( {17..20} )
 PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 inherit cargo flag-o-matic llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
@@ -147,6 +147,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	rust_pkg_setup
 	llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 }
