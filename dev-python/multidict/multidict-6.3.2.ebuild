@@ -52,15 +52,6 @@ python_test() {
 		tests/test_views_benchmarks.py
 	)
 
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_IGNORE+=(
-				# https://github.com/aio-libs/multidict/issues/1114
-				tests/test_incorrect_args.py
-			)
-			;;
-	esac
-
 	rm -rf multidict || die
 
 	local cext=--c-extensions
