@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_NAME="${PN/ruby-/}"
 RUBY_FAKEGEM_VERSION="${PV%_*}"
@@ -20,8 +20,8 @@ inherit ruby-fakegem
 DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext package"
 HOMEPAGE="https://ruby-gettext.github.io/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 LICENSE="|| ( GPL-2 Ruby-BSD LGPL-3+ )"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="0"
 IUSE="doc test"
 
