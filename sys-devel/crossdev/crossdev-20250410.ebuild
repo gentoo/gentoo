@@ -33,6 +33,8 @@ src_install() {
 
 	if [[ ${PV} == "99999999" ]] ; then
 		sed -i "s:@CDEVPV@:${EGIT_VERSION}:" "${ED}"/usr/bin/crossdev || die
+	else
+		sed -i "s:@CDEVPV@:${PV}:" "${ED}"/usr/bin/crossdev || die
 	fi
 
 	dodir /usr/share/config.site.d
