@@ -26,7 +26,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.12
+	>=dev-lang/ocaml-4.14
 "
 DEPEND="
 	${RDEPEND}
