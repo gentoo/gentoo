@@ -3,9 +3,6 @@
 
 EAPI=8
 
-# note: only bump when there is a release on pypi, GH tags (which include
-# tests) are for the whole package and may have no changes to python/
-
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
