@@ -9,10 +9,6 @@
 	<email>zerochaos@gentoo.org</email>
 	<name>Rick Farina</name>
 </maintainer>
-<maintainer type="person">
-	<email>mpagano@gentoo.org</email>
-	<name>Mike Pagano</name>
-</maintainer>
 <maintainer type="project">
 	<email>kernel@gentoo.org</email>
 	<name>Gentoo Kernel Project</name>
