@@ -106,7 +106,7 @@ src_test() {
 
 src_install() {
 	perl-module_src_install
-	cp Doc/scantree.pl "${D}"/${VENDOR_ARCH}/PDL/Doc || die
+	cp utils/scantree.pl "${D}"/${VENDOR_ARCH}/PDL/Doc || die
 }
 
 pkg_postinst() {
