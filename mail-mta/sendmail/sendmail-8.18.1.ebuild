@@ -66,7 +66,8 @@ PDEPEND="
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.16.1-build-system.patch
-	eapply "${FILESDIR}"/${PN}-8.18.1-ctime.patch
+	eapply "${FILESDIR}"/${PN}-8.18.1-c23-ctime.patch
+	eapply "${FILESDIR}"/${PN}-8.18.1-c23-sm_strtoll.patch
 	eapply -p0 "${FILESDIR}"/${PN}-delivered_hdr.patch
 	eapply_user
 
@@ -110,6 +111,8 @@ src_prepare() {
 		confENVDEF+=" -D_FFR_TLS_1 -D_FFR_TLS_EC"
 		# Bug #944822 - fix certification chain with intermediate cert file
 		confENVDEF+=" -D_FFR_TLS_USE_CERTIFICATE_CHAIN_FILE"
+		# Enable DANE support (RFC 6698)
+		confENVDEF+=" -DDANE"
 		conf_sendmail_LIBS+=" $($(tc-getPKG_CONFIG) --libs openssl)"
 	fi
 
