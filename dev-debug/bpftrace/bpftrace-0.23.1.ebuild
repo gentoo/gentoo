@@ -28,6 +28,7 @@ IUSE="pcap test systemd"
 RESTRICT="test"
 
 RDEPEND="
+	>=dev-libs/blazesym_c-0.1.1
 	>=dev-libs/libbpf-1.5:=
 	>=dev-util/bcc-0.25.0:=
 	$(llvm_gen_dep '
