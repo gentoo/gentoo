@@ -154,10 +154,11 @@
 # will be merged into ${D}.
 
 # @ECLASS_VARIABLE: DISTUTILS_UPSTREAM_PEP517
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specifies the PEP517 build backend used upstream.  It is used
 # by the eclass to verify the correctness of DISTUTILS_USE_PEP517,
-# and matches DISTUTILS_USE_PEP517 by default.  However, it can be
+# and defaults to ${DISTUTILS_USE_PEP517}.  However, it can be
 # overriden to workaround the eclass check, when it is desirable
 # to build the wheel using other backend than the one used upstream.
 #
@@ -165,7 +166,6 @@
 # be subtle differences between the behavior of different PEP517 build
 # backends, for example regarding finding package files.  When using
 # this option, please make sure that the package is installed correctly.
-: "${DISTUTILS_UPSTREAM_PEP517:=${DISTUTILS_USE_PEP517}}"
 
 # @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
@@ -322,7 +322,7 @@ _distutils_set_globals() {
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-78.1.0[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
@@ -347,7 +347,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-75.8.2[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-78.1.0[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -388,6 +388,14 @@ _distutils_set_globals() {
 			DISTUTILS_DEPS=${bdep}
 			readonly DISTUTILS_DEPS
 		fi
+	else
+		eqawarn
+		eqawarn "=== ${CATEGORY}/${PF} ==="
+		eqawarn "distutils-r1.eclass legacy mode is deprecated and will be removed."
+		eqawarn "Please migrate your ebuilds to use DISTUTILS_USE_PEP517 (common values"
+		eqawarn "are 'setuptools' for packages using setuptools/distutils,"
+		eqawarn "and 'no' for packages using non-PEP517 build systems)."
+		eqawarn
 	fi
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
@@ -599,7 +607,7 @@ distutils_enable_sphinx() {
 #
 # - pytest: dev-python/pytest
 #
-# - setup.py: setup.py test (no deps included)
+# - setup.py: setup.py test (no deps included; deprecated)
 #
 # - unittest: for built-in Python unittest module
 #
@@ -645,14 +653,13 @@ distutils_enable_tests() {
 			fi
 			;;
 		setup.py)
+			eqawarn
+			eqawarn "=== ${CATEGORY}/${PF} ==="
+			eqawarn "distutils_enable_tests setup.py is deprecated and will be removed."
+			eqawarn "Please use unittest or pytest instead."
+			eqawarn
 			;;
 		unittest)
-			# unittest-or-fail is needed in py<3.12
-			local test_pkgs="$(python_gen_cond_dep '
-					dev-python/unittest-or-fail[${PYTHON_USEDEP}]
-				' 3.10 3.11
-			)"
-			[[ -n ${test_pkgs} ]] && test_deps+=" ${test_pkgs}"
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -981,15 +988,6 @@ distutils-r1_python_prepare_all() {
 	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 		_distutils-r1_disable_ez_setup
 		_distutils-r1_handle_pyproject_toml
-
-		case ${DISTUTILS_USE_SETUPTOOLS} in
-			no)
-				eqawarn "Non-PEP517 builds are deprecated for ebuilds using plain distutils."
-				eqawarn "Please migrate to DISTUTILS_USE_PEP517=setuptools."
-				eqawarn "Please see Python Guide for more details:"
-				eqawarn "  https://projects.gentoo.org/python/guide/distutils.html"
-				;;
-		esac
 	fi
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]
@@ -1164,7 +1162,10 @@ _distutils-r1_get_backend() {
 	fi
 
 	# verify that the ebuild correctly specifies the build backend
-	local expected_backend=$(_distutils-r1_key_to_backend "${DISTUTILS_UPSTREAM_PEP517}")
+	local expected_backend=$(
+		_distutils-r1_key_to_backend \
+			"${DISTUTILS_UPSTREAM_PEP517:-${DISTUTILS_USE_PEP517}}"
+	)
 	if [[ ${expected_backend} != ${build_backend} ]]; then
 		# special-case deprecated backends
 		case ${build_backend} in
