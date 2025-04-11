@@ -66,7 +66,8 @@ PDEPEND="
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.16.1-build-system.patch
-	eapply "${FILESDIR}"/${PN}-8.18.1-ctime.patch
+	eapply "${FILESDIR}"/${PN}-8.18.1-c23-ctime.patch
+	eapply "${FILESDIR}"/${PN}-8.18.1-c23-sm_strtoll.patch
 	eapply -p0 "${FILESDIR}"/${PN}-delivered_hdr.patch
 	eapply_user
 
