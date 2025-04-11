@@ -89,6 +89,7 @@ app-text/kchmviewer
 # to catch up on support if needed. May or may keep masked until 6.9.1
 # depending on issues. If wanted, feel free to add `dev-qt/*:6/6.9.0`
 # to package.unmask and report issues.
+=dev-python/pyqt6-6.9*
 =dev-python/pyside-6.9.0*
 =dev-qt/qt-docs-6.9.0*
 =dev-qt/qt3d-6.9.0*
