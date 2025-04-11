@@ -1,0 +1,14 @@
+Add CACHE Entry to allow ON/OFF with useflag
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f32e01..9e234b4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR})
+ ################ OPTIONS ####################
+ set(COMPILEUSB "no")
+ set(AUTHORIZELINUXQSTYLES "yes")
+-set(INTERNALBROWSER "yes")
++set(INTERNALBROWSER "yes" CACHE BOOL "Enable QtWebEngineWidgets support")
+ set(DEBIANSPELLDIR "no")
+ ################# INSTALL_DIR #####################
+ if (UNIX AND NOT APPLE)
