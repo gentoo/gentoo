@@ -53,6 +53,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.17.0-fix-makefile-r1.patch"
+	"${FILESDIR}/${PN}-1.17.4-go-1.24.patch"
 )
 
 DOCS=( NOTICE README.md )
