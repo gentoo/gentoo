@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
-inherit dist-kernel-utils eapi9-ver linux-info mount-boot python-any-r1 savedconfig
+inherit dist-kernel-utils eapi9-ver linux-info mount-boot savedconfig
 
 # In case this is a real snapshot, fill in commit below.
 # For normal, tagged releases, leave blank
@@ -104,7 +103,6 @@ pkg_setup() {
 		fi
 	fi
 	linux-info_pkg_setup
-	python_setup
 }
 
 src_unpack() {
@@ -121,6 +119,12 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# Stub out this script to avoid errors in the live ebuild
+	cat >check_whence.py<<-EOF
+	#!/bin/sh
+	exit 0
+	EOF
 
 	cp "${FILESDIR}/${PN}-make-amd-ucode-img.bash" "${T}/make-amd-ucode-img" || die
 	chmod +x "${T}/make-amd-ucode-img" || die
