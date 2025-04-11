@@ -1,6 +1,6 @@
 define(`confCCOPTS', `@@confCCOPTS@@')
 define(`confSTDIO_TYPE', `portable')
-define(`confENVDEF', `-DXDEBUG=0')
+define(`confENVDEF', `@@confENVDEF@@')
 define(`confLDOPTS', `@@confLDOPTS@@')
 define(`confMANOWN', `root')
 define(`confMANGRP', `root')
