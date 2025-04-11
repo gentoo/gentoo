@@ -7,13 +7,13 @@ DIST_AUTHOR=ETJ
 DIST_VERSION=2.100
 DIST_EXAMPLES=( "examples/*" )
 
-inherit perl-module toolchain-funcs
+inherit perl-module
 
 DESCRIPTION="Perl Data Language for scientific computing"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"
 SLOT="0"
-# KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gd gsl hdf netpbm pgplot test"
 
 # these need another round of review
@@ -50,22 +50,6 @@ RDEPEND="
 	pgplot? ( dev-perl/PGPLOT )
 "
 
-# OLD:
-# # now in separate, new distros:
-#	gd? ( media-libs/gd )
-#	gsl? ( sci-libs/gsl )
-#	hdf? (
-#		sci-libs/hdf
-#		dev-perl/Alien-HDF4
-#	)
-# # always enabled:
-#	pdl2? (
-#		>=dev-perl/Devel-REPL-1.3.11
-#		|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
-#	)
-# # always in PGPLOT already
-#	pgplot? ( dev-perl/PGPLOT )
-
 DEPEND="
 	${RDEPEND}
 "
@@ -85,7 +69,7 @@ BDEPEND="
 	)
 "
 
-# this is a temporary workaround
+# this is a temporary workaround until old PDL versions are gone
 PDEPEND="
 	gd?   ( dev-perl/PDL-IO-GD )
 	gsl?  ( dev-perl/PDL-GSL )
