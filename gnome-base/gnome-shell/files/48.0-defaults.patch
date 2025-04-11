@@ -1,0 +1,15 @@
+--- a/data/default-apps/dash.txt	2025-03-16 11:30:51.000000000 -0300
++++ b/data/default-apps/dash.txt	2025-03-16 13:42:43.990100739 -0300
+@@ -1,6 +1,10 @@
++chromium-browser-chromium.desktop
++firefox.desktop
++firefox-bin.desktop
++org.gnome.Evolution.desktop
+ org.gnome.Epiphany.desktop
+ org.gnome.Calendar.desktop
++org.gnome.Music.desktop
+ org.gnome.Nautilus.desktop
+ org.gnome.Software.desktop
+ org.gnome.TextEditor.desktop
+-org.gnome.Calculator.desktop
+\ No newline at end of file
