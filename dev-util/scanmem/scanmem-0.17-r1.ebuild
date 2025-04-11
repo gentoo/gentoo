@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..13} python3_13t )
 inherit autotools python-single-r1
 
 DESCRIPTION="Locate and modify variables in executing processes"
