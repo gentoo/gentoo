@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="async-connect">Enable asynchronous connect</flag>
+		<flag name="colors">Enable color output</flag>
 		<flag name="chat-screen">Enable the chat screen</flag>
 		<flag name="help-screen">Enable the help screen</flag>
 		<flag name="key-screen">Enable key editor screen</flag>
@@ -18,6 +19,8 @@
 		<flag name="song-screen">Enable song viewer screen</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/MusicPlayerDaemon/ncmpc/issues</bugs-to>
+		<changelog>https://github.com/MusicPlayerDaemon/ncmpc/blob/master/NEWS</changelog>
 		<remote-id type="github">MusicPlayerDaemon/ncmpc</remote-id>
 	</upstream>
 </pkgmetadata>
