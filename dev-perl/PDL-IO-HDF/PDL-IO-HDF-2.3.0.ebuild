@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A PDL interface to the HDF4 library"
 
 SLOT="0"
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	>=dev-perl/PDL-2.94.0
