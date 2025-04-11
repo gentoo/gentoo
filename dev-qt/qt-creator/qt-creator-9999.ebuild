@@ -45,7 +45,7 @@ IUSE="
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
-QT_PV=6.5.4:6
+QT_PV=6.7.3:6
 
 # := is used where Qt's private APIs are used for safety
 COMMON_DEPEND="
@@ -54,6 +54,7 @@ COMMON_DEPEND="
 	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
+	sys-libs/zlib:=
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
