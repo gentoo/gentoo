@@ -154,6 +154,7 @@ src_prepare() {
 src_configure() {
 	local wallet ; if use berkdb || use sqlite ; then wallet=ON ; else wallet=OFF ; fi
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
 		-DBUILD_SHARED_LIBS=ON
 		-DENABLE_WALLET=${wallet}
 		-DWITH_SQLITE=$(usex sqlite)
