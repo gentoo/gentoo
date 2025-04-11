@@ -68,7 +68,7 @@ src_configure() {
 		-e "s|lo = NULL|lo = 0|g" \
 		-e "s|hi = NULL|hi = 0|g" \
 		"${BUILD_DIR}"/src/parser/cvc/CvcParser.c \
-		die
+		|| die
 }
 
 src_test() {
