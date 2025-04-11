@@ -62,8 +62,6 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r .
 
-	keepdir /usr/share/${PN}/plugins
-
 	exeinto /usr/share/${PN}/bin
 	doexe "${FILESDIR}"/elasticsearch-systemd-pre-exec
 
@@ -88,9 +86,11 @@ src_install() {
 
 pkg_postinst() {
 	# Elasticsearch will choke on our keep file and dodir will not preserve the empty dir
-	local KEEPFILE
-	KEEPFILE=$(find "${EROOT}/usr/share/${PN}/plugins/" -type f -name '.keep*')
-	rm "${KEEPFILE}" || die
+	# equery check complain .keep* file not exist after rm .keep*
+	if [[ ! -d ${EROOT}/usr/share/${PN}/plugins ]] ; then
+		mkdir ${EROOT}/usr/share/${PN}/plugins || die
+	fi
+
 	tmpfiles_process /usr/lib/tmpfiles.d/${PN}.conf
 	if ! systemd_is_booted ; then
 		elog "You may create multiple instances of ${PN} by"
