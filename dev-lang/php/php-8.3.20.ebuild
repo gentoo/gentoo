@@ -135,7 +135,6 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
-	"${FILESDIR}/php-bug75457-pcre2-backport.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -275,13 +274,6 @@ src_prepare() {
 	   ext/gd/tests/bug65148.phpt \
 	   ext/gd/tests/bug73272.phpt \
 	   || die
-
-	# Test currently fails in the sandbox and the test for this variant
-	# might be broken. Upstream discusses removing the test again.
-	#
-	# - https://github.com/php/php-src/commit/930624899bb996efc2f6a24b992ede90
-	#
-	rm ext/standard/tests/file/bug72666_variation3.phpt || die
 
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
