@@ -26,6 +26,15 @@ DEPEND="${RDEPEND}
 	sys-devel/m4"
 
 src_prepare() {
+	local confENVDEF="-DXDEBUG=0"
+
+	eapply "${FILESDIR}"/${PN}-8.18.1-c23-sm_strtoll.patch
+
+	if use elibc_musl; then
+		eapply "${FILESDIR}"/${PN}-musl-disable-cdefs.patch
+		confENVDEF+=" -DHASSTRERROR"
+	fi
+
 	cd "${S}/${PN}" || die
 
 	default
@@ -36,6 +45,7 @@ src_prepare() {
 
 	sed -e "s|@@confCCOPTS@@|${CFLAGS}|" \
 		-e "s|@@confLDOPTS@@|${LDFLAGS}|" \
+		-e "s|@@confENVDEF@@|${confENVDEF}|" \
 		-e "s:@@confCC@@:$(tc-getCC):" "${FILESDIR}/site.config.m4" \
 		> "${S}/devtools/Site/site.config.m4" || die "sed failed"
 }
