@@ -37,7 +37,7 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 # TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg gdal gles2-only imaging
@@ -83,7 +83,6 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/tiff:=
 	sci-libs/hdf5:=[mpi=]
-	sci-libs/proj:=
 	sys-libs/zlib
 	boost? ( dev-libs/boost:=[mpi?] )
 	cgns? (
@@ -98,6 +97,7 @@ RDEPEND="
 	!minimal? (
 		>=media-libs/libharu-2.4.0:=
 		media-libs/libtheora
+		sci-libs/proj:=
 	)
 	mpi? ( virtual/mpi[cxx,romio] )
 	mysql? ( dev-db/mariadb-connector-c )
