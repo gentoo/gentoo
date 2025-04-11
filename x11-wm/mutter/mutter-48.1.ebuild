@@ -153,12 +153,6 @@ python_check_deps() {
 src_configure() {
 	use debug && EMESON_BUILDTYPE=debug
 	local emesonargs=(
-
-		# By default meson.eclass sets --wrap-mode to nodownload. This works
-		# file for tar balls. But for live ebuild some subprojects, gvdb in
-		# This case needs to be cloned as well.
-		--wrap-mode default
-
 		# Mutter X11 renderer only supports gles2 and GLX, thus do NOT pass
 		#
 		#   -Dopengl_libname=libOpenGL.so.0
