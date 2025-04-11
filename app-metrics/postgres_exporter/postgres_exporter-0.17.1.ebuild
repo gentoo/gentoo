@@ -1,16 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit go-module
+inherit go-module edo systemd
 
-GIT_COMMIT=68c176b8833b7580bf847cecf60f8e0ad5923f9a
+GIT_COMMIT=1e574cf4fd2a75a8a707d424eafcaa0b88cb7af4
 
 DESCRIPTION="PostgreSQL stats exporter for Prometheus"
 HOMEPAGE="https://github.com/prometheus-community/postgres_exporter"
 SRC_URI="https://github.com/prometheus-community/postgres_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/app-metrics/${PN}/${P}-deps.tar.xz"
+SRC_URI+=" https://repos.s3.m9.lfstrm.tv/gentoo/distfiles/${P}-vendor.tar.xz"
 
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
@@ -34,15 +34,16 @@ src_prepare() {
 }
 
 src_compile() {
-	promu build -v --prefix bin || die
+	edo promu build -v --prefix bin
 }
 
 src_install() {
-	dobin bin/*
-	dodoc README.md queries.yaml
+	dobin bin/postgres_exporter
+	dodoc README.md
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/${PN}-r1.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}-r1.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
 
 	keepdir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
