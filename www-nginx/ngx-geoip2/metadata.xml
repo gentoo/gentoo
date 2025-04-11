@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-geoip2 module creates variables with values from the maxmind GeoIP2 databases based
+		on the client IP (default) or from a specific variable (both IPv4 and IPv6 are supported).
+
+		The module supports NGINX streams and can be used in the same way the HTTP module can be
+		used.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/leev/ngx_http_geoip2_module/issues</bugs-to>
+		<remote-id type="github">leev/ngx_http_geoip2_module</remote-id>
+	</upstream>
+</pkgmetadata>
