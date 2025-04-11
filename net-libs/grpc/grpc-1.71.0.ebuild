@@ -73,7 +73,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.71.0-fix-already-registered.patch"
 	"${FILESDIR}/${PN}-1.71.0-system-gtest.patch"
 )
 
@@ -173,6 +172,9 @@ src_prepare() {
 
 		# Respect EPYTHON when testing, don't touch installed files otherwise
 		python_fix_shebang --force "${S}"
+
+		# NOTE doesn't apply if we don't replace gtest/abseil libs
+		eapply "${FILESDIR}/${PN}-1.71.0-fix-already-registered.patch"
 	fi
 
 	# Called via system() by some of the C++ sources, respect EPYTHON
