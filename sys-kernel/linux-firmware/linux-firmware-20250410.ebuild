@@ -104,6 +104,7 @@ pkg_setup() {
 		fi
 	fi
 	linux-info_pkg_setup
+	python_setup
 }
 
 src_unpack() {
