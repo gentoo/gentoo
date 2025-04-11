@@ -142,6 +142,7 @@ src_compile() {
 
 src_install() {
 	edo ${EPYTHON} setup.py install --prefix="${EPREFIX}/usr" --root="${D}"
+	python_fix_shebang "${ED}"
 	python_optimize
 	einstalldocs
 
