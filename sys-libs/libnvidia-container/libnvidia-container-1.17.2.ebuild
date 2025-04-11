@@ -53,6 +53,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.17.0-fix-makefile-r1.patch"
+	"${FILESDIR}/${PN}-1.17.4-go-1.24.patch"
 )
 
 DOCS=( NOTICE README.md )
@@ -73,6 +74,13 @@ src_prepare() {
 	eapply -p1 "${S}"/mk/nvidia-modprobe.patch
 	popd || die
 
+	if ! tc-is-gcc; then
+		ewarn "libnvidia-container must be built with gcc because of option \"-fplan9-extensions\"!"
+		ewarn "Ignoring CC=$(tc-getCC) and forcing ${CHOST}-gcc"
+		export CC=${CHOST}-gcc AR=${CHOST}-gcc-ar
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
+
 	default
 }
 
@@ -84,12 +92,7 @@ src_configure() {
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_LDFLAGS="${CGO_LDFLAGS:-$LDFLAGS}"
 
-	tc-export CC LD OBJCOPY PKG_CONFIG
-
-	if ! tc-is-gcc; then
-		eerror "Building ${PN} with clang is not supported because of option \"-fplan9-extensions\"!"
-		die "$(tc-getCC) is not a supported compiler. Please use sys-devel/gcc"
-	fi
+	tc-export LD OBJCOPY PKG_CONFIG
 
 	# we could also set GO compiller, but it currently defaults to gccgo, but as for now I believe
 	# most users will prefer dev-lang/go and they usually don't define GO="go" their make.conf either.
