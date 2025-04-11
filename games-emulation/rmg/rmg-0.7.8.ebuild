@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,7 +52,7 @@ LICENSE="
 	rust-plugin? ( ISC Unicode-DFS-2016 )
 "
 SLOT="0"
-IUSE="angrylion-plugin discord dynarec rust-plugin"
+IUSE="angrylion-plugin discord dynarec netplay rust-plugin"
 
 DEPEND="
 	dev-libs/hidapi
@@ -65,6 +65,10 @@ DEPEND="
 	media-libs/speexdsp
 	sys-libs/zlib[minizip(+)]
 	virtual/opengl
+	netplay? (
+		dev-qt/qtwebsockets:6
+		media-libs/sdl2-net
+	)
 	rust-plugin? ( dev-libs/libusb:1 )
 "
 RDEPEND="${DEPEND}"
@@ -73,16 +77,6 @@ BDEPEND="
 	dynarec? ( dev-lang/nasm )
 	rust-plugin? ( ${RUST_DEPEND} )
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.5.6-parallel-rdp-standalone-musl.patch
-	# Use pkg-config(1) for SDL2 and don't depend on which(1)
-	"${FILESDIR}"/${P}-mupen64plus-core-sdl-pkgconfig.patch
-	# https://bugs.gentoo.org/941889
-	"${FILESDIR}"/${P}-mupen64plus-input-raphnetraw-pkgconfig.patch
-	# https://github.com/gonetz/GLideN64/issues/2877
-	"${FILESDIR}"/${P}-mupen64plus-video-GLideN64-strict-aliasing.patch
-)
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/RMG/Plugin/Input/libmupen64plus_input_gca.so"
@@ -130,6 +124,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DAPPIMAGE_UPDATER=OFF
 		-DDISCORD_RPC=$(usex discord)
+		-DNETPLAY=$(usex netplay)
 		-DNO_ASM=$(usex dynarec OFF ON)
 		-DNO_RUST=$(usex rust-plugin OFF ON)
 		-DPORTABLE_INSTALL=OFF
