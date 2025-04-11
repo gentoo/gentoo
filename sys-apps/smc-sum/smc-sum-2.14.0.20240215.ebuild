@@ -1,11 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MODULES_OPTIONAL_IUSE="+module"
-
-inherit linux-mod-r1
+inherit dkms
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN/smc-/}"
@@ -19,7 +18,6 @@ S="${WORKDIR}/${MY_PN}_${MY_PV}_Linux_x86_64"
 LICENSE="supermicro"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="module"
 
 RDEPEND="
 	sys-libs/zlib
@@ -57,12 +55,10 @@ src_compile() {
 	local modargs=( KDIR="${KV_OUT_DIR}" )
 	local modlist=( sum_bios="misc:driver/Source/Linux" )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
 	newbin sum smc-sum
-	einstalldocs
-
-	linux-mod-r1_src_install
+	dkms_src_install
 }

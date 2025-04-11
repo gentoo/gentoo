@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gnif/vendor-reset.git"
@@ -26,11 +26,11 @@ CONFIG_CHECK="FTRACE KPROBES PCI_QUIRKS KALLSYMS FUNCTION_TRACER"
 src_compile() {
 	local modlist=( vendor-reset )
 	local modargs=( KDIR="${KV_OUT_DIR}" )
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	insinto /etc/modules-load.d/
 	newins "${FILESDIR}"/modload.conf vendor-reset.conf
