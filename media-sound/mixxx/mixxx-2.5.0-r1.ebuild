@@ -21,7 +21,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 # gles2-only: at least not before 2.6 for keyworded ebuild
-IUSE="aac benchmark ffmpeg gles2-only keyfinder lv2 midi modplug mp3 mp4 opus"
+IUSE="aac benchmark ffmpeg keyfinder lv2 midi modplug mp3 mp4 opus"
 IUSE+=" qtkeychain rubberband shout test upower wavpack"
 REQUIRED_USE="
 	benchmark? ( test )
@@ -36,7 +36,7 @@ RDEPEND="
 	dev-libs/hidapi
 	dev-libs/protobuf:=
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[concurrent,dbus,gles2-only=,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
+	dev-qt/qtbase:6[concurrent,dbus,-gles2-only,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtshadertools:6
 	dev-qt/qtsvg:6
@@ -93,9 +93,14 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	# Building mixxx-test target only with explicit test useflag
+	"${FILESDIR}"/${P}-tests.patch
 	# Fix strict-aliasing violations in vendored katai_cpp_stl_runtime
 	# https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/commit/c01f530.patch
 	"${FILESDIR}"/${PN}-2.5.0-fix-strict-aliasing-kaitai.patch
+	# Fix regression with taglib2 and multi-value field.
+	# Merged, to be remove at next version 2.5.1
+	"${FILESDIR}"/${PN}-2.5.0-fix_taglib2.patch
 )
 
 CMAKE_SKIP_TESTS=(
@@ -132,7 +137,6 @@ src_configure() {
 		-DOPTIMIZE=OFF
 		-DOPUS="$(usex opus)"
 		-DPORTMIDI="$(usex midi)"
-		-DQGLES2="$(usex gles2-only)"
 		# new QML-UI, experimental and not functionnal for now
 		-DQML=OFF
 		-DQTKEYCHAIN="$(usex qtkeychain)"
