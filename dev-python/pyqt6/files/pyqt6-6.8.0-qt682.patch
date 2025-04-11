@@ -1,9 +1,0 @@
-Quick build fix while waiting for PyQt6-6.8.2, not entirely sure
-if this is correct as hardly know sip.
---- a/sip/QtCore/qstringconverter_base.sip
-+++ b/sip/QtCore/qstringconverter_base.sip
-@@ -24,3 +24,3 @@
- 
--class QStringConverterBase
-+class QStringConverterBase /NoDefaultCtors/
- {
