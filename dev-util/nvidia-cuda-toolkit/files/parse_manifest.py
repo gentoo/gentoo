@@ -157,7 +157,7 @@ def main():
                 # optional dir offset, we merge it into path
                 dir = ""
                 if "dir" in node.attrib:
-                    dir = f" \"{Path(node.attrib["dir"])}\""
+                    dir = f" \"{Path(node.attrib['dir'])}\""
 
                 filepath = basedir / path / file
 
@@ -183,12 +183,12 @@ def main():
 
                 subdir = ""
                 if "subdir" in node.attrib:
-                    subdir = f" \"{node.attrib["subdir"]}\""
+                    subdir = f" \"{node.attrib['subdir']}\""
 
                 print(f"{ind * (level + 1) * indent}dopcfile "
                       f"\"{lib_name}\" "
                       f"\"{lib_version}\" "
-                      f"\"{node.attrib["description"]}\"{subdir}")
+                      f"\"{node.attrib['description']}\"{subdir}")
 
             # <desktopFile
             #  filename="nsight"
@@ -202,13 +202,13 @@ def main():
             # create a .desktop file
             for node in el.findall("./desktopFile"):
                 print(f"{ind * (level + 1) * indent}dodesktopFile \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["filename"]}\" \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["name"]}\" \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["categories"]}\" \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["keywords"]}\" \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["iconPath"]}\" \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["execPath"]}\" \\")
-                print(f"{ind * (level + 2) * indent}\"{node.attrib["tryExecPath"]}\"")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['filename']}\" \\")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['name']}\" \\")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['categories']}\" \\")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['keywords']}\" \\")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['iconPath']}\" \\")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['execPath']}\" \\")
+                print(f"{ind * (level + 2) * indent}\"{node.attrib['tryExecPath']}\"")
 
             # iterator over all nested packages
             for node in el.findall("./package"):
