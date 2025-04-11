@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index df2fde63..95525397 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,19 +210,19 @@ add_subdirectory(icons)
+ 
+ include(GNUInstallDirs)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/
+-        DESTINATION share/doc/${PROJECT_NAME} FILES_MATCHING PATTERN "*.html")
++        DESTINATION ${DOCDIR} FILES_MATCHING PATTERN "*.html")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/
+-        DESTINATION share/doc/${PROJECT_NAME}/images FILES_MATCHING PATTERN "*.png")
++        DESTINATION ${DOCDIR}/images FILES_MATCHING PATTERN "*.png")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/
+-        DESTINATION share/doc/${PROJECT_NAME}/images FILES_MATCHING PATTERN "*.jpg")
++        DESTINATION ${DOCDIR}/images FILES_MATCHING PATTERN "*.jpg")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/prettyPhoto/dark_rounded/
+-        DESTINATION share/doc/${PROJECT_NAME}/images/prettyPhoto/dark_rounded)
++        DESTINATION ${DOCDIR}/images/prettyPhoto/dark_rounded)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/icons/
+-        DESTINATION share/doc/${PROJECT_NAME}/images/icons)
++        DESTINATION ${DOCDIR}/images/icons)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/scripts
+-        DESTINATION share/doc/${PROJECT_NAME} FILES_MATCHING PATTERN "*.css")
++        DESTINATION ${DOCDIR} FILES_MATCHING PATTERN "*.css")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/scripts/
+-        DESTINATION share/doc/${PROJECT_NAME}/scripts FILES_MATCHING PATTERN "*.js")
++        DESTINATION ${DOCDIR}/scripts FILES_MATCHING PATTERN "*.js")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/sf2/
+         DESTINATION share/${PROJECT_NAME}/sf2 FILES_MATCHING PATTERN "*.sf2")
+ install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.desktop
