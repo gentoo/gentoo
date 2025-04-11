@@ -58,9 +58,10 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -j1 -C gnat2why \
-		GPRARGS="-XLIBRARY_TYPE=relocatable -XBuild=Production -v" \
-		PROCS=$(makeopts_jobs)
+	emake -C gnat2why setup
+	gprbuild -j$(makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
+		-Pgnat2why/gnat2why.gpr \
+		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	gprbuild -j$(makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
 		-P gnatprove.gpr \
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
