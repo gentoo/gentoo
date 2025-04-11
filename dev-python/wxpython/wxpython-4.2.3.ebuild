@@ -20,6 +20,7 @@ HOMEPAGE="
 
 LICENSE="wxWinLL-3"
 SLOT="4.0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test webkit"
 RESTRICT="!test? ( test )"
 
@@ -27,7 +28,7 @@ RESTRICT="!test? ( test )"
 # optionally patched out because it's so huge, but other elements are not,
 # which makes us have to require all features from wxGTK
 DEPEND="
-	>=x11-libs/wxGTK-3.2.6:${WX_GTK_VER}=[gstreamer,libnotify,opengl,sdl,tiff,webkit?,X]
+	>=x11-libs/wxGTK-3.2.7:${WX_GTK_VER}=[gstreamer,libnotify,opengl,sdl,tiff,webkit?,X]
 	media-libs/libpng:=
 	media-libs/tiff:=
 	media-libs/libjpeg-turbo:=
