@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake qmake-utils
 
 DESCRIPTION="Qt5 configuration tool, similar to qtconfig for Qt4"
 HOMEPAGE="https://sourceforge.net/projects/qt5ct/"
@@ -23,8 +23,16 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-qt/linguist-tools:5
-	dev-qt/qtpaths:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-no-qtpaths.patch" )
+
+src_configure() {
+	local mycmakeargs=(
+		-DPLUGINDIR=$(qt5_get_plugindir)
+	)
+	cmake_src_configure
+}
 
 src_install() {
 	cmake_src_install
