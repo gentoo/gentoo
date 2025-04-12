@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-v${PV}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ppc64 ~x86"
 IUSE="appindicator geoclue gtk nls wayland"
 
 COMMON_DEPEND=">=x11-libs/libX11-1.4
