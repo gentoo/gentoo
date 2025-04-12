@@ -47,19 +47,18 @@ diff -ruN nss_ldap-257.2.orig/configure.in nss_ldap-257.2/configure.in
 diff -ruN nss_ldap-257.2.orig/ldap-nss.c nss_ldap-257.2/ldap-nss.c
 --- nss_ldap-257.2.orig/ldap-nss.c	2007-10-24 14:22:55.000000000 +0200
 +++ nss_ldap-257.2/ldap-nss.c	2007-10-24 14:27:32.000000000 +0200
-@@ -82,10 +82,14 @@
+@@ -82,10 +82,13 @@
  #endif
  #ifdef HAVE_GSSAPI_H
  #include <gssapi.h>
 -#elif defined(HAVE_GSSAPI_GSSAPI_KRB5_H)
-+#else
++#endif
 +#ifdef HAVE_GSSAPI_GSSAPI_H
  #include <gssapi/gssapi.h>
 +#endif
 +#ifdef HAVE_GSSAPI_GSSAPI_KRB5_H
  #include <gssapi/gssapi_krb5.h>
  #endif
-+#endif
  #ifdef CONFIGURE_KRB5_CCNAME
  #include <krb5.h>
  #endif
