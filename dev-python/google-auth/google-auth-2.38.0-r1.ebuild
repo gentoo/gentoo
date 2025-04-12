@@ -44,6 +44,18 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin deps
+	sed -i -e 's:,<[0-9.]*::' setup.py || die
+}
+
+python_compile() {
+	distutils-r1_python_compile
+	find "${BUILD_DIR}" -name '*.pth' -delete || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# tests are broken with up-to-date pyopenssl
@@ -57,9 +69,4 @@ python_test() {
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p asyncio
-}
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
 }
