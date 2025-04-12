@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2021-make.patch #Bug #883167
 	"${FILESDIR}"/${PN}-2020-bibtex.patch
 	"${FILESDIR}"/${P}-spark.patch
+	"${FILESDIR}"/${PN}-2021-sighandler.patch
 )
 
 QA_FLAGS_IGNORED=(
