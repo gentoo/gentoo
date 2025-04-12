@@ -13,7 +13,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 	S="${EGIT_CHECKOUT_DIR}"
 else
 	SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
