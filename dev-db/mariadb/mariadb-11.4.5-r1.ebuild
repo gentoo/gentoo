@@ -1294,6 +1294,8 @@ pkg_config() {
 	cmd=(
 		"${mysql_binary}"
 		--no-defaults
+		# Skip SSL for client connections, see bug #951865
+		--skip-ssl
 		"--socket='${socket}'"
 		-hlocalhost
 		"-e \"${sql}\""
