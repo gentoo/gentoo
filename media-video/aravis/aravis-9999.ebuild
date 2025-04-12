@@ -1,7 +1,8 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit meson xdg
 
 DESCRIPTION="Library for video acquisition using Genicam cameras"
@@ -10,17 +11,16 @@ HOMEPAGE="https://github.com/AravisProject/aravis"
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/AravisProject/${PN}"
+	S="${WORKDIR}/${P}"
 else
-	MY_P="${PN^^}_${PV//./_}"
-	SRC_URI="https://github.com/AravisProject/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/AravisProject/${PN}/releases/download/$PV/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="LGPL-2+"
 SLOT="0"
-# FIXME: As of right now tests are always built, once that changes a USE flag
-# should be added. c.f. https://github.com/AravisProject/aravis/issues/286
-IUSE="doc fast-heartbeat gstreamer introspection packet-socket usb viewer"
+IUSE="doc fast-heartbeat gstreamer introspection packet-socket test usb viewer"
+RESTRICT="!test? ( test )"
 
 GST_DEPEND="
 	media-libs/gstreamer:1.0
@@ -48,24 +48,20 @@ DEPEND="
 	viewer? (
 		${GST_DEPEND}
 		x11-libs/gtk+:3
-		x11-libs/libnotify
 	)
 "
 RDEPEND="${DEPEND}"
 
-if [[ ${PV} != 9999 ]]; then
-	S="${WORKDIR}/${PN}-${MY_P}"
-fi
-
 src_configure() {
 	local emesonargs=(
-		$(meson_use doc documentation)
+		$(meson_feature doc documentation)
 		$(meson_use fast-heartbeat)
-		$(meson_use gstreamer gst-plugin)
-		$(meson_use introspection)
-		$(meson_use packet-socket)
-		$(meson_use usb)
-		$(meson_use viewer)
+		$(meson_feature gstreamer gst-plugin)
+		$(meson_feature introspection)
+		$(meson_feature packet-socket)
+		$(meson_use test tests)
+		$(meson_feature usb)
+		$(meson_feature viewer)
 	)
 	meson_src_configure
 }
