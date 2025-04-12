@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 218ae66..c319dce 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -362,7 +362,7 @@ configure_file(
+ 
+ install(TARGETS postsrsd RUNTIME DESTINATION ${CMAKE_INSTALL_SBINDIR})
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.conf"
+-        DESTINATION "${CMAKE_INSTALL_DATADIR}/doc/${PROJECT_NAME}"
++        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+ )
+ if(INSTALL_SYSTEMD_SERVICE)
+     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.service"
