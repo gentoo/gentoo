@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
 
@@ -34,6 +34,8 @@ BDEPEND="
 	')
 	test? ( $(python_gen_cond_dep '
 		dev-python/cffi[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/pyelftools[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	') )
