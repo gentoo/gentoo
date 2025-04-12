@@ -402,8 +402,10 @@ app-admin/rsyslog imhttp mdblookup
 dev-lang/ocaml spacetime
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
+# Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-12)
 # Mask assembly optimisations that are platform-specific
 dev-libs/libsecp256k1 asm
+net-p2p/bitcoin-core asm
 
 # Ettore Di Giacinto <mudler@gentoo.org> (2016-10-18)
 # Enable gambit and scm only on supported arches
