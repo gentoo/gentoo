@@ -12,7 +12,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/529/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/79" # correspond with libgwenhywfar.so version
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="debug doc gtk qt5 test"
+IUSE="debug gtk qt5 test" # doc (is broken, bug #950614
 
 # broken upstream, reported but got no reply
 RESTRICT="test"
@@ -44,15 +44,15 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( app-text/doxygen )
 "
+# 	doc? ( app-text/doxygen )
 
 src_configure() {
 	local myeconfargs=(
 		--with-docpath="${EPREFIX}/usr/share/doc/${PF}/apidoc"
 		--with-libxml2-code=yes
 		$(use_enable debug)
-		$(use_enable doc full-doc)
+# 		$(use_enable doc full-doc)
 	)
 	use qt5 && myeconfargs+=(
 		--with-qt5-moc="$(qt5_get_bindir)/moc"
@@ -67,11 +67,11 @@ src_configure() {
 
 src_compile() {
 	emake
-	use doc && emake srcdoc
+# 	use doc && emake srcdoc
 }
 
 src_install() {
 	default
-	use doc && emake DESTDIR="${D}" install-srcdoc
+# 	use doc && emake DESTDIR="${D}" install-srcdoc
 	find "${D}" -name '*.la' -type f -delete || die
 }
