@@ -713,6 +713,8 @@ haskell-cabal_src_prepare() {
 }
 
 haskell-cabal_src_configure() {
+	einfo "GHC version: $(ghc-version) $(ghc-pm-version)"
+
 	cabal-is-dummy-lib && return
 
 	pushd "${S}" > /dev/null || die
