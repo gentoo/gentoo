@@ -8,4 +8,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">atftp</remote-id>
+	</upstream>
 </pkgmetadata>
