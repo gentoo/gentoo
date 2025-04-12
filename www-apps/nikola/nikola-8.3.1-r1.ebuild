@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10,11,12,13} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit bash-completion-r1 distutils-r1 optfeature pypi
+inherit distutils-r1 optfeature pypi shell-completion
 
 DESCRIPTION="A static website and blog generator"
 HOMEPAGE="https://getnikola.com/"
@@ -52,8 +52,7 @@ src_install() {
 	gunzip "${ED}/usr/share/man/man1/${PN}.1.gz" || die
 
 	newbashcomp ${PN}.bashcomp ${PN}
-	insinto /usr/share/zsh/site-functions
-	newins ${PN}.zshcomp _${PN}
+	newzshcomp ${PN}.zshcomp _${PN}
 }
 
 pkg_postinst() {
