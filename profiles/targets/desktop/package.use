@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-03)
+# Desktop users will probably want QR code scanning in Bitcoin-Qt, but
+# enabling USE=qrcode by default in the ebuild requires also enabling
+# USE=gui, which pulls in Qt that is likely not wanted on servers.
+net-p2p/bitcoin-core qrcode
+
 # Filip Kobierski <fkobi@pm.me> (2025-02-27)
 # Most desktop users will get doxygen because a USE=doc dep.
 # With USE=gui, which is the default for this profile, it pulls in
