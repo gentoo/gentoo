@@ -99,10 +99,34 @@ RDEPEND="
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	llvm? (
 		$(llvm_gen_dep "
-			llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+			llvm-core/llvm:\${LLVM_SLOT}[${MULTILIB_USEDEP}]
+			video_cards_r300? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
+			video_cards_r600? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
+			video_cards_radeon? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
+			video_cards_radeonsi? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
 			opencl? (
 				dev-util/spirv-llvm-translator:\${LLVM_SLOT}
-				llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+				llvm-core/clang:\${LLVM_SLOT}[${MULTILIB_USEDEP}]
+				video_cards_r300? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
+				video_cards_r600? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
+				video_cards_radeon? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
+				video_cards_radeonsi? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
 				=llvm-core/libclc-\${LLVM_SLOT}*[spirv(-)]
 			)
 		")
