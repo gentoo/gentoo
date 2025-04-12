@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson-multilib usr-ldscript
+inherit meson-multilib
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://gitlab.com/bzip2/bzip2"
@@ -31,14 +31,6 @@ multilib_src_configure() {
 	)
 
 	meson_src_configure
-}
-
-multilib_src_install() {
-	meson_src_install
-
-	if multilib_is_native_abi ; then
-		gen_usr_ldscript -a bz2
-	fi
 }
 
 multilib_src_install_all() {
