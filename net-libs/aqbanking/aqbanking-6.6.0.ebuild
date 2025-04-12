@@ -9,7 +9,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/531/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="debug doc ebics examples ofx"
 
 DEPEND="
