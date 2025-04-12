@@ -90,6 +90,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# force thin lto, makes build much faster and less memory hungry
+	# (i.e. makes it possible to actually build uv on 32-bit PPC)
+	sed -i -e '/lto/s:fat:thin:' Cargo.toml || die
+
 	# enable system libraries where supported
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 	# TODO: unbundle libz-ng-sys, tikv-jemalloc-sys?
