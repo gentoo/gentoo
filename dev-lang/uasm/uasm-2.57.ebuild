@@ -13,7 +13,7 @@ S="${WORKDIR}/UASM-${TAG}"
 
 LICENSE="Watcom-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 PATCHES=(
 	"${FILESDIR}/build-fix.patch"
 	"${FILESDIR}/makefile-dep-fix-2.57.patch"
