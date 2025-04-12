@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	>=dev-python/six-1.3.0[${PYTHON_USEDEP}]
