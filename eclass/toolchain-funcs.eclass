@@ -1156,7 +1156,12 @@ tc-enables-ssp-all() {
 #
 # If the library is not recognized, the function returns 1.
 tc-get-cxx-stdlib() {
-	local code='#include <ciso646>
+	local code='
+#if __cplusplus >= 202002L
+	#include <version>
+#else
+	#include <ciso646>
+#endif
 
 #if defined(_LIBCPP_VERSION)
 	HAVE_LIBCXX
