@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Michał Górny <mgorny@gentoo.org> (2024-04-12)
+# dev-python/mpi4py has no stable keywords.
+media-gfx/netgen mpi
+sci-libs/vtk mpi
+
 # Sam James <sam@gentoo.org> (2025-03-07)
 # Gradually unmask for newer Rust to avoid making users recompile for
 # the change. See bug #735154.
