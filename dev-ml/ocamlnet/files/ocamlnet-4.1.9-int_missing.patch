@@ -1,0 +1,20 @@
+--- a/configure	2025-04-12 18:33:58.152657365 +0200
++++ b/configure	2025-04-12 18:34:13.302476934 +0200
+@@ -829,7 +829,7 @@
+     cat <<EOF >tmp/t.c
+ #include "tcl.h"
+ 
+-main () {
++int main () {
+ }
+ EOF
+ 
+@@ -849,7 +849,7 @@
+ #include <stdio.h>
+ #include "tcl.h"
+ 
+-do_something () {
++int do_something () {
+     void (*x)(int);
+     x = Tcl_Exit;
+     exit(0);

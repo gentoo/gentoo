@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unboundLexer.patch
 	"${FILESDIR}"/${P}-shuffle.patch
 	"${FILESDIR}"/${P}-noWhich.patch
+	"${FILESDIR}"/${P}-int_missing.patch
 )
 
 ocamlnet_use_with() {
