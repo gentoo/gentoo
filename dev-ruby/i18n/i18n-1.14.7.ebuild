@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
@@ -44,14 +44,17 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	case ${RUBY} in
+		*ruby34)
+			versions="8.0"
+			;;
 		*ruby33)
 			versions="7.0 7.1 7.2 8.0"
 			;;
 		*ruby32)
-			versions="6.1 7.0 7.1 7.2 8.0"
+			versions="7.0 7.1 7.2 8.0"
 			;;
 		*ruby31)
-			versions="6.1 7.0 7.1 7.2"
+			versions="7.0 7.1 7.2"
 			;;
 	esac
 
