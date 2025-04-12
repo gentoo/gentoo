@@ -1,19 +1,22 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="Access, organize and share your photos on GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gnome-photos"
 
 LICENSE="GPL-3+ LGPL-2+ CC0-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test upnp-av"
-RESTRICT="!test? ( test )"
+#RESTRICT="!test? ( test )"
+# https://gitlab.gnome.org/GNOME/gegl/-/issues/335
+# https://gitlab.gnome.org/Archive/gnome-photos/-/issues/214
+RESTRICT="test"
 
 DEPEND="
 	media-libs/babl
