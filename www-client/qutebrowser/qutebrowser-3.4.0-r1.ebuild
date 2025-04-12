@@ -44,12 +44,9 @@ RDEPEND="
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
-# TODO: drop gherkin-official dep entirely when >=31 is fixed (not looked
-# into yet), should normally be pulled by pytest-bdd instead
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
-			<dev-python/gherkin-official-31
 			dev-python/pyqt6[testlib]
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/cheroot[${PYTHON_USEDEP}]
