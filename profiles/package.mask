@@ -76,6 +76,7 @@ app-text/kchmviewer
 # depending on issues. If wanted, feel free to add `dev-qt/*:6/6.9.0`
 # to package.unmask and report issues.
 =dev-python/pyqt6-6.9*
+=dev-python/pyqt6-webengine-6.9*
 =dev-python/pyside-6.9.0*
 =dev-qt/qt-docs-6.9.0*
 =dev-qt/qt3d-6.9.0*
