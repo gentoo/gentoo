@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
+# Deprecated and no longer maintained upstream. Open security
+# issues. Use media-gfx/fig2dev instead.
+# Removal on 2025-05-12. Bug #917279.
+media-gfx/transfig
+
 # Hans de Graaff <graaff@gentoo.org> (2025-06-09)
 # Obsolete slots that are ruby32 or ruby33-only. No reverse dependencies
 # left. Use the newer slot instead. Masked for removal on 2025-07-09.
@@ -306,6 +312,63 @@ dev-libs/libxml2-compat
 # Bugs #955398, #955396, #955411.
 =dev-python/ensurepip-setuptools-80.3.0
 =dev-python/setuptools-80.3.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
+# Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
+# Bug #947297; removal on 2025-05-26
+dev-db/sqliteman
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
+# Dead upstream, last revdep on x11-libs/qwtplot3d and x11-libs/qwt:5
+# Bugs #948047, #942455; removal on 2025-05-26
+sci-visualization/scidavis
+x11-libs/qwtplot3d
+x11-libs/qwt:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# A pain to maintain. No more revdeps. Bug #925718
+dev-qt/qtwebengine:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# Requires Qt5WebEngine; bug #925722
+# Removal on 2025-05-24 - with a good chance to be kept if ported by then.
+www-client/otter
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# Requires Qt5WebEngine; no more revdeps. Bug #926684
+# Removal on 2025-05-24.
+dev-python/pyqtwebengine
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# Dead upstream, Qt5 based, no more revdeps. Bug #949019
+# Removal on 2025-05-24.
+dev-python/python-poppler-qt5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-22)
+# Dead upstream, depends on downstream patching even for Qt5 support.
+# Almost no one else keeps packaging this. Bug #947622
+# Removal on 2025-05-22.
+sci-visualization/zhu3d
+
+# Michał Górny <mgorny@gentoo.org> (2025-04-22)
+# This package was only really necessary for packages without
+# Python 3.12+ support, and the eclass no longer uses it.
+# Removal on 2025-05-22.  Bug #954213.
+dev-python/unittest-or-fail
+
+# Hans de Graaff <graaff@gentoo.org> (2025-04-21)
+# ruby32-only slot. Use the newer slot instead.
+# Masked for removal on 2025-05-21.
+dev-ruby/highline:2
+
+# Sam James <sam@gentoo.org> (2025-04-21)
+# Several packages need porting. Tracker bug #954128.
+=dev-python/cython-3.1*
+
+# Hans de Graaff <graaff@gentoo.org> (2025-04-20)
+# ruby32-only slot. Use the newer slot instead.
+# Masked for removal on 2025-05-20.
+dev-ruby/activeldap:6
 
 # Michał Górny <mgorny@gentoo.org> (2025-04-19)
 # This package will no longer feature stable keywords, due to unresolved
