@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools readme.gentoo-r1 systemd udev
+inherit autotools multilib readme.gentoo-r1 systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
