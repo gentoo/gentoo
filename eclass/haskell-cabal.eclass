@@ -178,8 +178,8 @@ fi
 # Example:
 #
 # CABAL_CHDEPS=(
-# 	'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
-# 	'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
+#     'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
+#     'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
 # )
 : "${CABAL_CHDEPS:=}"
 
@@ -194,9 +194,11 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra packages that need to be exposed when compiling Setup.hs
-# @EXAMPLE:
+#
+# Example:
+#
 # GHC_BOOTSTRAP_PACKAGES=(
-#	cabal-doctest
+#     cabal-doctest
 # )
 : "${GHC_BOOTSTRAP_PACKAGES:=}"
 
