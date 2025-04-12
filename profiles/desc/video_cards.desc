@@ -6,6 +6,7 @@
 # Keep it sorted.
 
 amdgpu - VIDEO_CARDS setting to build driver for AMDGPU video cards
+asahi - VIDEO_CARDS setting to build support for Apple AGX GPUs
 ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
 d3d12 - VIDEO_CARDS seeting to build driver for Microsoft WSL video cards
 dummy - VIDEO_CARDS setting to build driver for dummy video cards
