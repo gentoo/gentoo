@@ -28,8 +28,6 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+adblock pdf widevine"
 
-# TODO: check if pdfjs-5 works again with qtwebengine-6.9.x, or try the
-# (unpackaged) legacy edition of pdfjs-5 meant for old chromium compat.
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets]
@@ -42,7 +40,7 @@ RDEPEND="
 		dev-python/zipp[${PYTHON_USEDEP}]
 		dev-qt/qtbase:6[icu,sqlite]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
-		pdf? ( <www-plugins/pdfjs-5 )
+		pdf? ( www-plugins/pdfjs )
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
