@@ -617,8 +617,6 @@ distutils_enable_sphinx() {
 #
 # - pytest: dev-python/pytest
 #
-# - setup.py: setup.py test (no deps included; deprecated)
-#
 # - unittest: for built-in Python unittest module
 #
 # This function is meant as a helper for common use cases, and it only
@@ -661,10 +659,6 @@ distutils_enable_tests() {
 					${test_pkgs}
 				")"
 			fi
-			;;
-		setup.py)
-			eqawarn "QA Notice: 'distutils_enable_tests setup.py' is deprecated and will be removed."
-			eqawarn "Please use unittest or pytest instead."
 			;;
 		unittest)
 			;;
@@ -1640,9 +1634,6 @@ distutils-r1_python_test() {
 			;;
 		pytest)
 			epytest
-			;;
-		setup.py)
-			nonfatal esetup.py test --verbose
 			;;
 		unittest)
 			eunittest
