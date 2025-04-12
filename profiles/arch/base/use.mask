@@ -207,6 +207,11 @@ video_cards_vivante
 # linux-only drivers
 video_cards_qxl
 
+# drivers with virtgpu DRM native-context support
+# these could be unmasked on all architectures with qemu system target but
+# unmasking only tested and actually used ones is a sane default.
+video_cards_asahi
+
 # not needed on non-x86, non-amd64, non-ppc systems
 input_devices_synaptics
 input_devices_wacom
