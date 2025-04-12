@@ -189,7 +189,6 @@ get_distribution_components() {
 			libclang-python-bindings
 
 			# tools
-			amdgpu-arch
 			c-index-test
 			clang
 			clang-format
@@ -204,7 +203,7 @@ get_distribution_components() {
 			clang-sycl-linker
 			diagtool
 			hmaptool
-			nvptx-arch
+			offload-arch
 
 			# needed for cross-compiling Clang
 			clang-tblgen
