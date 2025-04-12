@@ -32,6 +32,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
+	>=dev-ml/dune-3.12
 	test? (
 		dev-ml/ounit2
 		dev-ml/ppx_expect
