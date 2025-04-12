@@ -56,7 +56,9 @@ src_install() {
 	doexe emacs-wrapper.sh
 	elisp-site-file-install "${SITEFILE}"
 
-	insinto /usr/lib/systemd/user
+	# don't use systemd_douserunit because it would require inheriting
+	# three eclasses (systemd pulls toolchain-funcs and multilib)
+	insinto "/usr/lib/systemd/user"
 	doins emacs.service
 
 	if use games; then
