@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-04-12)
+# >=31 breaks www-client/qutebrowser's tests
+# https://github.com/cucumber/gherkin/issues/373
+# https://github.com/qutebrowser/qutebrowser/commit/12e683826783
+>=dev-python/gherkin-official-31
+
 # Michał Górny <mgorny@gentoo.org> (2025-04-09)
 # Still uses legacy distutils-r1 mode, and lacks Python 3.13 target.
 # No reply from the maintainer for a year now.
