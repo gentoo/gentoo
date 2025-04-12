@@ -4,7 +4,7 @@
 EAPI=8
 
 DOCS_BUILDER="doxygen"
-DOCS_DIR="docs/.doxygen"
+DOCS_DIR="docs/doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 LLVM_COMPAT=( 19 )
 ROCM_VERSION=${PV}
