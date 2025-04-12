@@ -1,0 +1,13 @@
+Missing include on musl - transitively included on glibc
+https://bugs.gentoo.org/898174
+https://bugs.gentoo.org/832766
+--- a/src/wbt201.c
++++ b/src/wbt201.c
+@@ -36,6 +36,7 @@
+ #include <errno.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <math.h>
++#include <locale.h>
+ 
+ #define DEFDEVS "[g-rays2]\ndevices = auto;bluetooth;/dev/ttyUSB0\n"
+ 
