@@ -10,8 +10,8 @@ HOMEPAGE="https://github.com/dino/libomemo-c/"
 SRC_URI="https://github.com/dino/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD BSD-1 GPL-3 ISC"
-KEYWORDS="amd64"
 SLOT="0"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -22,6 +22,9 @@ DEPEND="${RDEPEND}
 		dev-libs/openssl
 	)
 "
+
+# upstream are switching to meson, so no need to try send this upstream
+PATCHES=( "${FILESDIR}/${P}-cmake4.patch" ) # bug 953548
 
 src_configure() {
 	local mycmakeargs=(

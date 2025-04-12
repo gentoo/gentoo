@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt	2025-02-28 16:30:57.000000000 +0100
++++ b/CMakeLists.txt	2025-04-12 16:56:54.729179310 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.4)
++cmake_minimum_required(VERSION 3.5)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
+ project(omemo-c)
+ 
