@@ -6,7 +6,6 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<use>
-		<flag name="config-file">Enable config file support</flag>
 		<flag name="doc">Build documentation and man pages (requires <pkg>app-text/asciidoc</pkg>)</flag>
 		<flag name="drm">Enable support for using drm for vsync</flag>
 		<flag name="opengl">Enable features that require opengl (opengl backend, and opengl vsync methods)</flag>
