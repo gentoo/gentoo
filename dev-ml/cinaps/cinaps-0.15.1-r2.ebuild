@@ -1,7 +1,7 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit dune
 
@@ -17,8 +17,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-ml/re:="
 RDEPEND="${DEPEND}"
-BDEPEND="
-	test? (
-		dev-ml/ppx_jane:0/0.14.0
-	)
-"
+BDEPEND="test? ( dev-ml/ppx_jane )"
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
