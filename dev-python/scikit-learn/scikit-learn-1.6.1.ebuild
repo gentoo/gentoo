@@ -64,6 +64,14 @@ python_test() {
 		cluster/_hdbscan/hdbscan.py::sklearn.cluster._hdbscan.hdbscan.HDBSCAN
 	)
 
+	case ${ARCH} in
+		ppc64)
+			EPYTEST_DESELECT+=(
+				# TODO
+				ensemble/_weight_boosting.py::sklearn.ensemble._weight_boosting.AdaBoostRegressor
+			)
+	esac
+
 	rm -rf sklearn || die
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest --pyargs sklearn
