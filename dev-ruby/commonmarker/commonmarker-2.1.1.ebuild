@@ -165,7 +165,9 @@ ruby_add_bdepend "dev-ruby/rb_sys"
 
 all_ruby_prepare() {
 	cargo_src_unpack
-	export RUSTONIG_SYSTEM_LIBONIG=1
+
+	# Tests fail when using the system oniguruma, bug 951737.
+	# export RUSTONIG_SYSTEM_LIBONIG=1
 
 	sed -i -e '/focus/ s:^:#:' test/test_helper.rb || die
 }
