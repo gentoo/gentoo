@@ -127,23 +127,6 @@ app-text/kchmviewer
 # Removal on 2025-05-01.  Bug #949960.
 x11-terms/aterm
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
-# Package destabilisation mask: Depends on Qt5WebEngine with no Qt6-based
-# release in sight. Snapshot is from a Qt6 work branch, so nowhere near
-# stabilisation material. Bug #926676
-~sci-geosciences/qmapshack-1.17.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-01)
-# Package destabilisation mask: No KF6-based- or ffmpeg-7 compatible
-# release in sight, needs xcb platform workaround, providing a snapshot
-# is the best we can do.
-~media-video/subtitlecomposer-0.8.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-01)
-# Package destabilisation mask: No KF6-based release in sight, runtime-
-# defunct in Wayland sessions, providing a snapshot is the best we can do.
-~kde-misc/rsibreak-0.12.15
-
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
 # https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
@@ -193,11 +176,6 @@ net-im/yowsup
 =app-emulation/virtualbox-additions-7.1.6
 =app-emulation/virtualbox-modules-7.1.6
 =app-emulation/virtualbox-guest-additions-7.1.6-r1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-25)
-# Package destabilisation mask after prolongued time w/o maintainer.
-# Bug #936636
-~app-editors/texworks-0.6.8
 
 # Maciej Barć <xgqt@gentoo.org> (2025-03-25)
 # It is possible Gentoo could be hit by "legal" action when having this package.
@@ -329,10 +307,6 @@ dev-python/bitvector
 # Removal on 2025-04-16.  Bug #897290.
 sys-cluster/crmsh
 sys-cluster/pacemaker
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-17)
-# Database migration issues on upgrade, bug #951486
-~app-office/kmymoney-5.1.92_p20250306
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-03-15)
 # EAPI=7, uses deprecated Go eclasses. Isn't maintained in Gentoo
