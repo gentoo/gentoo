@@ -378,34 +378,6 @@ dev-vcs/notify-webhook
 # Removal on 2025-04-15.
 sci-biology/clustalx
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-02-27)
-# We have collected a lot of barely used Perl virtuals over time
-# (they effectively only make sense with version dependencies).
-# Time to clean up. In ebuilds, just depend on dev-lang/perl.
-# The following are masked for removal on 2025-03-31:
-virtual/perl-Attribute-Handlers
-virtual/perl-AutoLoader
-virtual/perl-CPAN-Meta-YAML
-virtual/perl-Dumpvalue
-virtual/perl-ExtUtils-Constant
-virtual/perl-ExtUtils-Install
-virtual/perl-ExtUtils-Manifest
-virtual/perl-Filter-Simple
-virtual/perl-I18N-LangTags
-virtual/perl-IPC-Cmd
-virtual/perl-Locale-Maketext-Simple
-virtual/perl-Memoize
-virtual/perl-Module-Loaded
-virtual/perl-Net-Ping
-virtual/perl-Perl-OSType
-virtual/perl-Pod-Escapes
-virtual/perl-Safe
-virtual/perl-Thread-Queue
-virtual/perl-Thread-Semaphore
-virtual/perl-threads-shared
-virtual/perl-Tie-RefHash
-virtual/perl-Time-Piece
-
 # Eray Aslan <eras@gentoo.org> (2025-02-24)
 # Mask experimental software
 =mail-mta/postfix-3.11*
