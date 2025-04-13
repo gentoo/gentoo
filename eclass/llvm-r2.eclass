@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm-r2.eclass
@@ -54,7 +54,7 @@ esac
 if [[ -z ${_LLVM_R2_ECLASS} ]]; then
 _LLVM_R2_ECLASS=1
 
-inherit llvm-utils
+inherit llvm-utils multilib
 
 # == internal control knobs ==
 
