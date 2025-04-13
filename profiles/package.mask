@@ -382,12 +382,6 @@ dev-vcs/notify-webhook
 # https://github.com/lkrg-org/lkrg/issues/364
 =app-antivirus/lkrg-0.9.9
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-01)
-# Last release 14 years ago, dead upstream, depends on Qt5 (and even that
-# only by means of downstream patching). Bug #947634.
-# Removal on 2025-04-15.
-sci-biology/clustalx
-
 # Eray Aslan <eras@gentoo.org> (2025-02-24)
 # Mask experimental software
 =mail-mta/postfix-3.11*
