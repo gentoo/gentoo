@@ -60,6 +60,9 @@ BDEPEND="
 	$(vala_depend)
 "
 
+# upstream switched to meson, so no need to try send it there
+PATCHES=( "${FILESDIR}/${P}-cmake4.patch" )
+
 src_configure() {
 	vala_setup
 
