@@ -60,6 +60,9 @@ src_configure() {
 	# non-machine specific assembly methods here.
 	use sparc && myconf="${myconf} machine=none"
 
+	# Unfortunately the assembly routines for hppa hard-assume HPUX ...
+	use hppa && myconf="${myconf} machine=none"
+
 	perl-module_src_configure
 }
 
