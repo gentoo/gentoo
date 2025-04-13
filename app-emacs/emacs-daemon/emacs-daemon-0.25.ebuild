@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp
+inherit elisp-common
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -22,20 +22,17 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 LICENSE="GPL-2+"
 SLOT="0"
 
-RDEPEND=">=app-emacs/emacs-common-1.11"
+BDEPEND=">=app-editors/emacs-${NEED_EMACS}:*"
+RDEPEND="${BDEPEND}
+	>=app-emacs/emacs-common-1.11"
 
 pkg_setup() {
-	local has_daemon has_gtk line
-	has_daemon=$(${EMACS} ${EMACSFLAGS} --eval "(princ (fboundp 'daemonp))")
+	elisp-check-emacs-version
+
+	local has_gtk line
 	has_gtk=$(${EMACS} ${EMACSFLAGS} --eval "(princ (featurep 'gtk))")
 
-	if [[ ${has_daemon} != t ]]; then
-		while read line; do ewarn "${line}"; done <<-EOF
-		Your current Emacs version does not support running as a daemon which
-		is required for ${CATEGORY}/${PN}.
-		Use "eselect emacs" to select an Emacs version >= 23.
-		EOF
-	elif [[ ${has_gtk} == t ]]; then
+	if [[ ${has_gtk} == t ]]; then
 		while read line; do ewarn "${line}"; done <<-EOF
 		Your current Emacs is compiled with GTK+. There is a long-standing bug
 		in GTK+ that prevents Emacs from recovering from X disconnects:
@@ -47,8 +44,6 @@ pkg_setup() {
 		EOF
 	fi
 }
-
-src_compile() { :; }
 
 src_install() {
 	newinitd emacs.rc emacs
