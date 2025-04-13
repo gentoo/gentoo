@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 BDEPEND="ssl? ( virtual/pkgconfig )"
 
 DOCS=( AUTHORS NEWS COPYING README ChangeLog )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.76-fix-test_tricky-libcurl.patch # Gentoo Bug #953520
+)
 
 # All checks in libmicrohttpd's configure are correct
 # Gentoo Bug #923760
