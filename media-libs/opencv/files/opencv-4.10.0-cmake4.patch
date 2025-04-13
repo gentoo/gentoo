@@ -1,0 +1,165 @@
+https://github.com/opencv/opencv/pull/27192
+
+From cb8030809e0278d02fa335cc1f5ec7c3c17548e0 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Wed, 2 Apr 2025 13:45:08 -0700
+Subject: [PATCH] Fix configuring with CMake version 4
+
+fixes #27122
+---
+ CMakeLists.txt                                                  | 2 +-
+ cmake/OpenCVGenPkgconfig.cmake                                  | 2 +-
+ .../introduction/linux_gcc_cmake/linux_gcc_cmake.markdown       | 2 +-
+ modules/python/CMakeLists.txt                                   | 2 +-
+ platforms/android/build-tests/test_cmake_build.py               | 2 +-
+ samples/CMakeLists.example.in                                   | 2 +-
+ samples/CMakeLists.txt                                          | 2 +-
+ samples/cpp/example_cmake/CMakeLists.txt                        | 2 +-
+ samples/cpp/tutorial_code/gpu/gpu-thrust-interop/CMakeLists.txt | 2 +-
+ samples/hal/c_hal/CMakeLists.txt                                | 2 +-
+ samples/hal/slow_hal/CMakeLists.txt                             | 2 +-
+ samples/openvx/CMakeLists.txt                                   | 2 +-
+ 12 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7985623ffb53..ca402b65c9b1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,7 +16,7 @@ endif()
+ include(cmake/OpenCVMinDepVersions.cmake)
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES WindowsPhone OR CMAKE_SYSTEM_NAME MATCHES WindowsStore)
+-  cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
++  cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+   #Required to resolve linker error issues due to incompatibility with CMake v3.0+ policies.
+   #CMake fails to find _fseeko() which leads to subsequent linker error.
+   #See details here: http://www.cmake.org/Wiki/CMake/Policies
+diff --git a/cmake/OpenCVGenPkgconfig.cmake b/cmake/OpenCVGenPkgconfig.cmake
+index 4fc80f5e4b27..3532260efb53 100644
+--- a/cmake/OpenCVGenPkgconfig.cmake
++++ b/cmake/OpenCVGenPkgconfig.cmake
+@@ -110,7 +110,7 @@ endif()
+ # =============================================================================
+ else() # DEFINED CMAKE_HELPER_SCRIPT
+ 
+-cmake_minimum_required(VERSION 2.8.12.2)
++cmake_minimum_required(VERSION 3.5)
+ cmake_policy(SET CMP0012 NEW)
+ include("${CMAKE_HELPER_SCRIPT}")
+ include("${OpenCV_SOURCE_DIR}/cmake/OpenCVUtils.cmake")
+diff --git a/doc/tutorials/introduction/linux_gcc_cmake/linux_gcc_cmake.markdown b/doc/tutorials/introduction/linux_gcc_cmake/linux_gcc_cmake.markdown
+index 7cfbb31777d3..75bdc2ef42d0 100644
+--- a/doc/tutorials/introduction/linux_gcc_cmake/linux_gcc_cmake.markdown
++++ b/doc/tutorials/introduction/linux_gcc_cmake/linux_gcc_cmake.markdown
+@@ -63,7 +63,7 @@ int main(int argc, char** argv )
+ 
+ Now you have to create your CMakeLists.txt file. It should look like this:
+ @code{.cmake}
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ project( DisplayImage )
+ find_package( OpenCV REQUIRED )
+ include_directories( ${OpenCV_INCLUDE_DIRS} )
+diff --git a/modules/python/CMakeLists.txt b/modules/python/CMakeLists.txt
+index 93eab8c94d21..ec30f4215012 100644
+--- a/modules/python/CMakeLists.txt
++++ b/modules/python/CMakeLists.txt
+@@ -35,7 +35,7 @@ add_subdirectory(python3)
+ 
+ else()  # standalone build
+ 
+-cmake_minimum_required(VERSION 2.8.12.2)
++cmake_minimum_required(VERSION 3.5)
+ project(OpenCVPython CXX C)
+ include("./standalone.cmake")
+ 
+diff --git a/platforms/android/build-tests/test_cmake_build.py b/platforms/android/build-tests/test_cmake_build.py
+index 25d185b8e5c6..51affd1f3b4b 100644
+--- a/platforms/android/build-tests/test_cmake_build.py
++++ b/platforms/android/build-tests/test_cmake_build.py
+@@ -7,7 +7,7 @@
+ log.basicConfig(format='%(message)s', level=log.DEBUG)
+ 
+ CMAKE_TEMPLATE='''\
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ 
+ # Enable C++11
+ set(CMAKE_CXX_STANDARD 11)
+diff --git a/samples/CMakeLists.example.in b/samples/CMakeLists.example.in
+index 7cf20d5e44b3..59a133bc9d74 100644
+--- a/samples/CMakeLists.example.in
++++ b/samples/CMakeLists.example.in
+@@ -1,5 +1,5 @@
+ # cmake needs this line
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if(NOT DEFINED EXAMPLE_NAME)
+   message(FATAL_ERROR "Invalid build script: missing EXAMPLE_NAME")
+diff --git a/samples/CMakeLists.txt b/samples/CMakeLists.txt
+index 6a18b61afa33..dabe07747f81 100644
+--- a/samples/CMakeLists.txt
++++ b/samples/CMakeLists.txt
+@@ -62,7 +62,7 @@ else()
+ #  Standalone mode
+ #
+ #===================================================================================================
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(samples C CXX)
+ option(BUILD_EXAMPLES "Build samples" ON)
+diff --git a/samples/cpp/example_cmake/CMakeLists.txt b/samples/cpp/example_cmake/CMakeLists.txt
+index 8d5cd98af291..f17aca4b5432 100644
+--- a/samples/cpp/example_cmake/CMakeLists.txt
++++ b/samples/cpp/example_cmake/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # cmake needs this line
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ # Define project name
+ project(opencv_example_project)
+diff --git a/samples/cpp/tutorial_code/gpu/gpu-thrust-interop/CMakeLists.txt b/samples/cpp/tutorial_code/gpu/gpu-thrust-interop/CMakeLists.txt
+index 037d508569b3..1a35085aa2a6 100644
+--- a/samples/cpp/tutorial_code/gpu/gpu-thrust-interop/CMakeLists.txt
++++ b/samples/cpp/tutorial_code/gpu/gpu-thrust-interop/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ 
+ FIND_PACKAGE(CUDA REQUIRED)
+ INCLUDE_DIRECTORIES(${CUDA_INCLUDE_DIRS})
+diff --git a/samples/hal/c_hal/CMakeLists.txt b/samples/hal/c_hal/CMakeLists.txt
+index 8cf78aa5ff63..72dfef01c3ad 100644
+--- a/samples/hal/c_hal/CMakeLists.txt
++++ b/samples/hal/c_hal/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12.2 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ 
+ set(PROJECT_NAME "c_hal")
+ set(HAL_LIB_NAME "c_hal")
+diff --git a/samples/hal/slow_hal/CMakeLists.txt b/samples/hal/slow_hal/CMakeLists.txt
+index 1ffa4670b6ab..a20596ea2a13 100644
+--- a/samples/hal/slow_hal/CMakeLists.txt
++++ b/samples/hal/slow_hal/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12.2 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ 
+ set(PROJECT_NAME "slow_hal")
+ set(HAL_LIB_NAME "slow_hal")
+diff --git a/samples/openvx/CMakeLists.txt b/samples/openvx/CMakeLists.txt
+index fd04e6b9e261..c5efdf9ad02a 100644
+--- a/samples/openvx/CMakeLists.txt
++++ b/samples/openvx/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ ocv_install_example_src(cpp *.cpp *.hpp CMakeLists.txt)
+ 
+-cmake_minimum_required(VERSION 2.8.12.2)
++cmake_minimum_required(VERSION 3.5)
+ 
+ set(OPENCV_OPENVX_SAMPLE_REQUIRED_DEPS
+   opencv_core

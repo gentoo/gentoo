@@ -338,6 +338,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-tbb-detection.patch"
 
 	"${DISTDIR}/${P}-protobuf-30.patch" # drop in 4.11
+	"${FILESDIR}/${P}-cmake4.patch" # PR pending
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
