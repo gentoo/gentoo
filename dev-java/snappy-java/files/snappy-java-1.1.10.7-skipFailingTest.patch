@@ -1,0 +1,48 @@
+
+There was 1 failure:
+1) loadSnappyByDiffentClassloadersInTheSameJVM(org.xerial.snappy.SnappyLoaderTest)
+java.lang.UnsatisfiedLinkError: Native Library /var/tmp/portage/dev-java/snappy-java-1.1.10.7-r2/work/snappy-java-1.1.10.7/build/objects/libsnappyjava.so already loaded in another classloader
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:157)
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:129)
+	at java.base/jdk.internal.loader.NativeLibraries.findFromPaths(NativeLibraries.java:249)
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:241)
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2278)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:822)
+	at java.base/java.lang.System.loadLibrary(System.java:1663)
+	at org.xerial.snappy.SnappyLoader.loadNativeLibrary(SnappyLoader.java:185)
+	at org.xerial.snappy.SnappyLoader.loadSnappyApi(SnappyLoader.java:157)
+	at org.xerial.snappy.Snappy.init(Snappy.java:70)
+	at org.xerial.snappy.Snappy.<clinit>(Snappy.java:47)
+	at java.base/jdk.internal.misc.Unsafe.ensureClassInitialized0(Native Method)
+	at java.base/jdk.internal.misc.Unsafe.ensureClassInitialized(Unsafe.java:1169)
+	at java.base/jdk.internal.reflect.MethodHandleAccessorFactory.ensureClassInitialized(MethodHandleAccessorFactory.java:341)
+	at java.base/jdk.internal.reflect.MethodHandleAccessorFactory.newMethodAccessor(MethodHandleAccessorFactory.java:72)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newMethodAccessor(ReflectionFactory.java:124)
+	at java.base/java.lang.reflect.Method.acquireMethodAccessor(Method.java:711)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:562)
+	at org.xerial.snappy.SnappyLoaderTest.loadSnappyByDiffentClassloadersInTheSameJVM(SnappyLoaderTest.java:106)
+
+FAILURES!!!
+Tests run: 103,  Failures: 1
+
+This failure would not occur if the native library was included in the jar.
+
+--- a/src/test/java/org/xerial/snappy/SnappyLoaderTest.java
++++ b/src/test/java/org/xerial/snappy/SnappyLoaderTest.java
+@@ -27,6 +27,7 @@ package org.xerial.snappy;
+ import org.codehaus.plexus.classworlds.ClassWorld;
+ import org.codehaus.plexus.classworlds.realm.ClassRealm;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.xerial.util.FileResource;
+ import org.xerial.util.log.Logger;
+ 
+@@ -77,7 +78,7 @@ public class SnappyLoaderTest
+         }
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void loadSnappyByDiffentClassloadersInTheSameJVM()
+             throws Exception
+     {
