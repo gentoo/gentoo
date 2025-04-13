@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~m68k ~mips ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~m68k ~mips ppc64 ~riscv ~sparc x86"
 IUSE="offensive pcre test"
 RESTRICT="!test? ( test )"
 
