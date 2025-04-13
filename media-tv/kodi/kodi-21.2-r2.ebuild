@@ -272,6 +272,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
 	"${FILESDIR}"/kodi-21.1-silence-libdvdread-git.patch
+	"${FILESDIR}"/kodi-21.2-pipewire-1.4.0-fix.patch
 )
 
 # bug #544020
