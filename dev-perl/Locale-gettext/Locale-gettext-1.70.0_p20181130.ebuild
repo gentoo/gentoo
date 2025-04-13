@@ -35,5 +35,5 @@ PATCHES=(
 src_compile() {
 	# Makefile.PL cannot know we use libintl over system
 	[[ ${CHOST} == *-solaris* ]] && export LDLOADLIBS="-lintl"
-	default
+	perl-module_src_compile
 }
