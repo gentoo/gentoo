@@ -1,0 +1,47 @@
+From 1f1aaca09a1f9919f5169caea9c396b14c2af765 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 8 Apr 2025 14:41:04 +0200
+Subject: [PATCH] Don't print Xvnc banner before parsing args
+
+If we'll be running in inetd mode, then stdout and stderr will be a
+client socket and not an appropriate place for logging.
+
+Mimic what Xorg does instead.
+---
+ unix/xserver/hw/vnc/xvnc.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/unix/xserver/hw/vnc/xvnc.c b/unix/xserver/hw/vnc/xvnc.c
+index ddb249937..a13168c47 100644
+--- a/unix/xserver/hw/vnc/xvnc.c
++++ b/unix/xserver/hw/vnc/xvnc.c
+@@ -446,7 +446,7 @@ ddxProcessArgument(int argc, char *argv[], int i)
+     }
+ 
+     if (!strcmp(argv[i], "-showconfig") || !strcmp(argv[i], "-version")) {
+-        /* Already shown at start */
++        vncPrintBanner();
+         exit(0);
+     }
+ 
+@@ -1171,8 +1171,11 @@ InitOutput(ScreenInfo * scrInfo, int argc, char **argv)
+     int i;
+     int NumFormats = 0;
+ 
+-    if (serverGeneration == 1)
++    if (serverGeneration == 1) {
++        vncPrintBanner();
++
+         LoadExtensionList(vncExtensions, ARRAY_SIZE(vncExtensions), TRUE);
++    }
+ 
+ #if XORG_AT_LEAST(1, 20, 0)
+     xorgGlxCreateVendor();
+@@ -1266,7 +1269,5 @@ vncClientGone(int fd)
+ int
+ main(int argc, char *argv[], char *envp[])
+ {
+-    vncPrintBanner();
+-
+     return dix_main(argc, argv, envp);
+ }
