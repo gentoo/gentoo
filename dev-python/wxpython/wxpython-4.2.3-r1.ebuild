@@ -9,7 +9,7 @@ PYPI_NO_NORMALIZE=1
 PYPI_PN="wxPython"
 WX_GTK_VER="3.2-gtk3"
 
-inherit distutils-r1 multiprocessing virtualx wxwidgets pypi
+inherit distutils-r1 multilib multiprocessing virtualx wxwidgets pypi
 
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
 HOMEPAGE="
@@ -95,6 +95,11 @@ python_compile() {
 
 	distutils-r1_python_compile
 
+	# This package's built system relies on copying extensions back
+	# to source directory for setuptools to pick them up.  This is
+	# hopeless.
+	find -name "*$(get_modname)" -delete || die
+
 	cp "${S}/sip_corewxAppTraits.cpp" "${S}/sip/cpp/" || die
 }
 
@@ -128,6 +133,7 @@ python_test() {
 		EPYTEST_IGNORE+=( unittests/test_webview.py )
 	fi
 
+	rm -rf wx || die
 	# We use pytest-forked as opensuse does to avoid tests corrupting each
 	# other.
 	virtx epytest --forked unittests
