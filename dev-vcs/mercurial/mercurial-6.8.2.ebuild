@@ -213,7 +213,7 @@ LICENSE="GPL-2+
 		Apache-2.0 BSD MIT MPL-2.0 MPL-2.0 PYTHON Unicode-DFS-2016
 		 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+chg emacs gpg test tk rust"
 
 BDEPEND="rust? ( ${RUST_DEPEND} )"
