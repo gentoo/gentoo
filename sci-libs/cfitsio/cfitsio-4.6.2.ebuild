@@ -23,6 +23,7 @@ RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
+	tools? ( !dev-util/smem )
 "
 # Bug #803350
 DEPEND="
