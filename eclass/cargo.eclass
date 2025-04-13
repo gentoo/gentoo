@@ -561,6 +561,8 @@ cargo_live_src_unpack() {
 	[[ "${PV}" == *9999* ]] || die "${FUNCNAME} only allowed in live/9999 ebuilds"
 	[[ "${EBUILD_PHASE}" == unpack ]] || die "${FUNCNAME} only allowed in src_unpack"
 
+	_cargo_check_initialized
+
 	mkdir -p "${S}" || die
 	mkdir -p "${ECARGO_VENDOR}" || die
 	mkdir -p "${ECARGO_HOME}" || die
