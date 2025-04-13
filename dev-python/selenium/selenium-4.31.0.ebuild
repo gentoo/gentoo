@@ -62,6 +62,7 @@ BDEPEND="
 	)
 "
 
+# xdist is causing random pytest crashes with high job numbers
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -94,7 +95,6 @@ python_test() {
 		local -x PATH=${T}/bin:${PATH}
 		local -x SE_MANAGER_PATH="$(type -P selenium-manager)"
 
-		local EPYTEST_XDIST=1
 		pytest_args+=(
 			-p rerunfailures --reruns=5
 
