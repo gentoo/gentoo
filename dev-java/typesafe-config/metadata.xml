@@ -6,6 +6,6 @@
     <name>Java</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">typesafehub/config</remote-id>
+    <remote-id type="github">lightbend/config</remote-id>
   </upstream>
 </pkgmetadata>
