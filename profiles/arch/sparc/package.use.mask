@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-04-13)
+# Fails to build app-editors/emacs[jit] and has many test failures in the
+# libgccjit testsuite: bug #953775 (https://gcc.gnu.org/PR119767).
+app-editors/emacs jit
+sys-devel/gcc jit
+
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-04-09)
 # dev-db/tinycdb is not keyworded here
 mail-mta/sendmail tinycdb
