@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA checks related to site-packages directory:
@@ -34,6 +34,7 @@ python_site_check() {
 	local eggs=()
 	local outside_site=()
 	local stray_packages=()
+	local wrong_ext=()
 
 	# Avoid running the check if sufficiently new gpep517 is not installed
 	# yet. It's valid to schedule (for merge order) >=gpep517-8 after
@@ -104,12 +105,29 @@ python_site_check() {
 					-name 'README.txt' \
 				')' -print0
 		)
+
 		# check for forbidden packages
 		for f in "${forbidden_package_names[@]}"; do
 			[[ -d ${sitedir}/${f} ]] && stray_packages+=(
 				"${sitedir#${ED}}/${f}"
 			)
 		done
+
+		# check for extensions compiled for wrong implementations
+		local ext_suffix=$(
+			"${impl}" - <<-EOF
+				import sysconfig
+				print(sysconfig.get_config_var("EXT_SUFFIX"))
+			EOF
+		)
+		while IFS= read -d $'\0' -r f; do
+			wrong_ext+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" '(' \
+				-name "*.pypy*$(get_modname)" -o \
+				-name "*.cpython*$(get_modname)" \
+				')' -a '!' -name "*${ext_suffix}" -print0
+		)
 
 		einfo "Verifying compiled files for ${impl}"
 		local kind pyc py
@@ -243,6 +261,14 @@ python_site_check() {
 		eqawarn "instead of site-packages (use \$(python_get_sitedir)):"
 		eqawarn
 		eqatag -v python-site.stdlib "${outside_site[@]}"
+	fi
+
+	if [[ ${wrong_ext[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: Extensions found compiled for the wrong Python version"
+		eqawarn "(likely broken build isolation):"
+		eqawarn
+		eqatag -v python-site.wrong-ext "${wrong_ext[@]}"
 	fi
 }
 
