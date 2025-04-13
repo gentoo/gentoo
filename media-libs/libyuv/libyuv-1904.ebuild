@@ -17,7 +17,7 @@ else
 	MYTAG="0.0.1904.20250204"
 	SRC_URI="https://salsa.debian.org/debian/libyuv/-/archive/upstream/${MYTAG}/libyuv-upstream-${MYTAG}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/libyuv-upstream-${MYTAG}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~x86"
 fi
 
 LICENSE="BSD"
