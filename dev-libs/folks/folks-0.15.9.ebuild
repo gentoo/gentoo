@@ -1,13 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Library for aggregating people from multiple sources"
-HOMEPAGE="https://wiki.gnome.org/Projects/Folks https://gitlab.gnome.org/GNOME/folks"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/folks"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/26" # subslot = libfolks soname version
