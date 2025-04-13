@@ -1921,9 +1921,12 @@ toolchain_src_configure() {
 			# respect USE=graphite here in case the user passes some
 			# graphite flags rather than try strip them out.
 			$(use_with graphite isl)
-			$(use_with zstd)
 			--with-system-zlib
 		)
+
+		if tc_has_feature zstd ; then
+			confgcc_jit+=( $(use_with zstd) )
+		fi
 
 		if tc_version_is_at_least 15.0.0_pre20241124 ${PV} ; then
 			confgcc_jit+=( $(use_enable libgdiagnostics) )
