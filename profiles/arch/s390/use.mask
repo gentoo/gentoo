@@ -1,8 +1,12 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -s390
+
+# Michał Górny <mgorny@gentoo.org> (2025-04-13)
+# media-libs/libavif is not keyworded here.
+avif
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-17)
 # media-libs/libheif is not keyworded here
