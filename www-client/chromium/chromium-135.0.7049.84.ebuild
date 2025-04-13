@@ -416,6 +416,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-135-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-135-map_droppable-glibc.patch"
 		"${FILESDIR}/chromium-135-webrtc-pipewire.patch"
+		"${FILESDIR}/chromium-135-gperf.patch"
 	)
 
 	if use bundled-toolchain; then

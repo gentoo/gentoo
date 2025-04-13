@@ -211,7 +211,7 @@ BDEPEND="
 	>=dev-build/gn-${GN_MIN_VER}
 	app-alternatives/ninja
 	dev-lang/perl
-	>=dev-util/gperf-3.0.3
+	>=dev-util/gperf-3.2
 	dev-vcs/git
 	>=net-libs/nodejs-${NODE_VER}:0/${NODE_VER%%.*}[inspector]
 	>=sys-devel/bison-2.4.3
@@ -416,6 +416,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-135-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-135-map_droppable-glibc.patch"
 		"${FILESDIR}/chromium-136-drop-nodejs-ver-check.patch"
+		"${FILESDIR}/chromium-135-gperf.patch"
 	)
 
 	if use bundled-toolchain; then
