@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
-    <email>joakim.tjernlund@infinera.com</email>
+    <email>joakim.tjernlund@nokia.com</email>
     <name>Joakim Tjernlund</name>
   </maintainer>
   <maintainer type="project" proxied="proxy">
