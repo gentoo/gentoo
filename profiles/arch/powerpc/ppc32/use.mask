@@ -4,6 +4,13 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# Michał Górny <mgorny@gentoo.org> (2025-04-13)
+# Converted to global mask.
+#
+# Sam James <sam@gentoo.org> (2021-03-11)
+# media-libs/libavif isn't keyworded here
+avif
+
 # matoro <matoro_gentoo@matoro.tk> (2023-06-17)
 # media-libs/libheif is not keyworded here
 heif
