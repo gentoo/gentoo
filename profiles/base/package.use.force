@@ -4,7 +4,7 @@
 # Sebastian Pipping <sping@gentoo.org> (2025-03-27)
 # This blocks accidental use of bundled vulnerable dev-libs/expat
 # for now (bug #952113)
-dev-libs/xmlrpc-c libxml2
+<dev-libs/xmlrpc-c-1.59.03-r2 libxml2
 
 # Joonas Niilola <juippis@gentoo.org> (2025-03-05)
 # 136.0 can't be compiled with "-rust-extensions".
