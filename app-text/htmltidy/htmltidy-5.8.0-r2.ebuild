@@ -1,19 +1,19 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 USE_RUBY="ruby26 ruby27 ruby30 ruby31 ruby32"
 RUBY_OPTIONAL="yes"
 
-inherit cmake ruby-ng
-
 MY_PN="tidy-html5"
 MY_P="${MY_PN}-${PV}"
+inherit cmake ruby-ng
 
 DESCRIPTION="Tidy the layout and correct errors in HTML and XML documents"
 HOMEPAGE="https://www.html-tidy.org/"
 SRC_URI="https://github.com/htacg/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0/58" # subslot is SOVERSION
@@ -23,14 +23,13 @@ IUSE="deprecated test"
 RESTRICT="!test? ( test )"
 ruby_add_bdepend "test? ( dev-ruby/thor dev-ruby/tty-editor )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.8.0-no_static_lib.patch
-	"${FILESDIR}"/${PN}-5.8.0-ol_type.patch
-)
-
 DOCS=( README.md README/CHANGELOG.md )
 
-S="${WORKDIR}"/${MY_P}
+PATCHES=(
+	"${FILESDIR}"/${P}-no_static_lib.patch
+	"${FILESDIR}"/${P}-ol_type.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 951860
+)
 
 pkg_setup() {
 	use test && ruby-ng_pkg_setup
@@ -64,7 +63,7 @@ src_configure() {
 
 src_test() {
 	cd regression_testing || die
-	rm -f Gemfile.lock
+	rm -f Gemfile.lock || die
 	${RUBY} ./test.rb test -t "${BUILD_DIR}/tidy" || die "Test execution failed"
 }
 
