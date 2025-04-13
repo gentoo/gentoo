@@ -60,7 +60,7 @@ RDEPEND="
 	dev-python/olefile[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-77[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	test? (
