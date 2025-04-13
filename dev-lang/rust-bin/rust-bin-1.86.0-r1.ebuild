@@ -57,7 +57,7 @@ if [[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
 fi
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
-SLOT="$(ver_cut 1-2)"
+SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
 IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 RDEPEND="

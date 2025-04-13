@@ -35,8 +35,8 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
-dev-lang/rust:1.86 llvm_slot_19
-dev-lang/rust-bin:1.86 llvm_slot_19
+dev-lang/rust:1.86.0 llvm_slot_19
+dev-lang/rust-bin:1.86.0 llvm_slot_19
 dev-lang/rust:1.85.1 llvm_slot_19
 dev-lang/rust-bin:1.85.1 llvm_slot_19
 dev-lang/rust:1.85.0 llvm_slot_19
