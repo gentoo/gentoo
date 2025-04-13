@@ -26,3 +26,4 @@ llvm-runtimes/openmp
 llvm-runtimes/offload
 llvm-core/clang-runtime
 llvm-core/libclc
+llvm-runtimes/libatomic-stub
