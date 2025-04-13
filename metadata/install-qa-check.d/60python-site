@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # QA checks related to site-packages directory:
+# - files installed top-level instead of into site-packages
+# - bad/unknown package versions
+# - deprecated .egg files
+# - stray files in top-level site-packages directory
+# - forbidden top-level package names ("test" and so on)
+# - extensions compiled for wrong Python implementation
 # - missing, mismatched or stray .pyc files
 # Maintainer: Python project <python@gentoo.org>
 
