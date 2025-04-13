@@ -100,7 +100,7 @@ python_configure_all() {
 		[build_ext]
 		debug = True
 		disable_platform_guessing = True
-		$(usepil truetype)_avif = True
+		$(usepil avif)_avif = True
 		$(usepil truetype)_freetype = True
 		$(usepil jpeg)_jpeg = True
 		$(usepil jpeg2k)_jpeg2000 = True
