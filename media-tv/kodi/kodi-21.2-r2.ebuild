@@ -439,10 +439,12 @@ src_configure() {
 		mycmakeargs+=( -DENABLE_${name^^}=$(usex ${flag}) )
 	done
 
-	# TODO: drop compat and allow using >=media-video/ffmpeg-7
-	ffmpeg_compat_setup 6
-	ffmpeg_compat_add_flags
-	mycmakeargs+=( -DFFMPEG_INCLUDE_DIRS="${SYSROOT}$(ffmpeg_compat_get_prefix 6)" )
+	if use system-ffmpeg; then
+		# TODO: drop compat and allow using >=media-video/ffmpeg-7
+		ffmpeg_compat_setup 6
+		ffmpeg_compat_add_flags
+		mycmakeargs+=( -DFFMPEG_INCLUDE_DIRS="${SYSROOT}$(ffmpeg_compat_get_prefix 6)" )
+	fi
 
 	if ! is-flag -DNDEBUG && ! is-flag -D_DEBUG ; then
 		# Kodi requires one of the 'NDEBUG' or '_DEBUG' defines
