@@ -110,7 +110,7 @@ python_test() {
 				# TODO
 				numpy/_core/tests/test_function_base.py::TestLinspace::test_denormal_numbers
 				numpy/f2py/tests/test_kind.py::TestKind::test_real
-				numpy/f2py/tests/test_kind.py::TestKind::test_quad_precisionn
+				numpy/f2py/tests/test_kind.py::TestKind::test_quad_precision
 
 				# require too much memory
 				'numpy/_core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
