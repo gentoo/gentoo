@@ -1,0 +1,27 @@
+https://github.com/xbmc/xbmc/issues/26526
+https://github.com/xbmc/xbmc/commit/269053ebbfd3cc4a3156a511f54ab7f08a09a730
+https://github.com/xbmc/xbmc/pull/26502
+https://github.com/xbmc/xbmc/pull/26527
+
+From e23a105b8988aba9b8401493bf6031a6878bd435 Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Fri, 7 Mar 2025 13:30:47 +0100
+Subject: [PATCH] [AudioEngine] PipeWire: Fix build with PipeWire 1.4.0
+
+PipeWire >= 1.4.0 requires the correct struct type to be used, otherwise
+it will fail to compile.
+
+Reference: https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/188d920733f0791413d3386e5536ee7377f71b2f
+(cherry picked from commit 269053ebbfd3cc4a3156a511f54ab7f08a09a730)
+--- a/xbmc/cores/AudioEngine/Sinks/pipewire/PipewireNode.cpp
++++ b/xbmc/cores/AudioEngine/Sinks/pipewire/PipewireNode.cpp
+@@ -40,7 +40,8 @@ void CPipewireNode::EnumerateFormats()
+   for (uint32_t param = 0; param < m_info->n_params; param++)
+   {
+     if (m_info->params[param].id == SPA_PARAM_EnumFormat)
+-      pw_node_enum_params(m_proxy.get(), 0, m_info->params[param].id, 0, 0, NULL);
++      pw_node_enum_params(reinterpret_cast<struct pw_node*>(m_proxy.get()), 0,
++                          m_info->params[param].id, 0, 0, NULL);
+   }
+ }
+ 
