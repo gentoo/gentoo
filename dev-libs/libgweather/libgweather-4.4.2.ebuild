@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Location and timezone database and weather-lookup library"
-HOMEPAGE="https://wiki.gnome.org/Projects/LibGWeather"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgweather"
 
 LICENSE="GPL-2+"
 SLOT="4/4-0" # subslot = 4-(libgweather-4 soname suffix)
