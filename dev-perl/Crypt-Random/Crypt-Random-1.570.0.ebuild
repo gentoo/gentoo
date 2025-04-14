@@ -21,3 +21,7 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-division.patch"
+)
