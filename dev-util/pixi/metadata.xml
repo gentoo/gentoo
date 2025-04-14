@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">prefix-dev/pixi</remote-id>
 	</upstream>
+	<use>
+		<flag name="rustls">Use Rustls instead of OpenSSL.</flag>
+	</use>
 </pkgmetadata>

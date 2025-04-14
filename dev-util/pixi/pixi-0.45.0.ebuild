@@ -81,12 +81,13 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+rustls"
 
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-arch/zstd:=
-	dev-libs/openssl:=
+	!rustls? ( dev-libs/openssl:= )
 "
 
 src_prepare() {
@@ -103,7 +104,7 @@ src_prepare() {
 
 src_configure() {
 	local myfeatures=(
-		native-tls
+		$(usex rustls rustls-tls native-tls)
 	)
 	cargo_src_configure --no-default-features
 
