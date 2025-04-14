@@ -23,14 +23,12 @@ S="${WORKDIR}/${PN}_${MY_PV}"
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="bzip2 +context debug doc icu lzma +nls mpi numpy python +stacktrace tools zlib zstd"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-# the tests will never fail because these are not intended as sanity
-# tests at all. They are more a way for upstream to check their own code
-# on new compilers. Since they would either be completely unreliable
-# (failing for no good reason) or completely useless (never failing)
-# there is no point in having them in the ebuild to begin with.
-RESTRICT="test"
+IUSE="bzip2 +context debug doc icu lzma +nls mpi numpy python +stacktrace test test-full tools zlib zstd"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test-full? ( test )
+"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
@@ -205,6 +203,123 @@ multilib_src_compile() {
 			|| die "Building of Boost tools failed"
 		popd >/dev/null || die
 	fi
+}
+
+multilib_src_test() {
+	# create custom options for tests based on the build settings
+	TEST_OPTIONS=("${OPTIONS[@]}")
+
+	# dial down log output - the full b2 command used to compile & run
+	# a test suite will be printed by ejam and can be used to build
+	# and run the tests in a test suite's directory.
+	TEST_OPTIONS=("${TEST_OPTIONS[@]/-d+2/-d0}")
+
+	# The following libraries do not compile or fail their tests:
+	local libs_excluded=(
+		# fails to use std::reverse_copy
+		"algorithm"
+		# test output comparison failure
+		"config"
+		# "C++03 support was deprecated in Boost.Chrono 1.82" ??
+		"contract"
+		# passes but takes >1 hour to build (enabled with USE=test-full)
+		"geometry"
+		# tries to use MPI even with use=-mpi (enabled with USE=mpi)
+		"graph_parallel"
+		# undefined reference to `boost::math::concepts::real_concept boost::math::bernoulli_b2n<boost::math::concepts::real_concept>(int)
+		"math"
+		# assignment of read-only member 'gauss::laguerre::detail::laguerre_l_object<T>::order'
+		"multiprecision"
+		# uint8_t is not a member of std
+		"mysql"
+		# PyObject* boost::parameter::python::aux::unspecified_type():
+		#   /usr/include/python3.13/object.h:339:30: error: lvalue required as left operand of assignment
+		"parameter_python"
+		# scope/lambda_tests22.cpp(27): test 'x == 1' failed in function 'int main()'
+		"phoenix"
+		# Unable to find file or target named (yes, really)
+		"predef"
+		# AttributeError: property '<unnamed Boost.Python function>' of 'X' object has no setter
+		"python"
+		# vec_access.hpp:95:223: error: static assertion failed: Boost QVM static assertion failure
+		"qvm"
+		# regex_timer.cpp:19: ../../../boost/timer.hpp:21:3: error: #error This header is
+		#   deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress
+		#   this error.)
+		"regex"
+		# in function `boost::archive::tmpnam(char*)': test_array.cpp:(.text+0x108):
+		#   undefined reference to `boost::filesystem::detail::unique_path(...)'
+		"serialization"
+		# TuTestMain.cpp(22) fatal error: in "test_main_caller( argc_ argv )":
+		#   std::runtime_error: Event was not consumed!
+		"statechart"
+		# erase_tests.cpp:(.text+0x44cce): undefined reference to
+		#   tbb::detail::r1::execution_slot(tbb::detail::d1::execution_data const*)
+		"unordered"
+		# t_5_007.cpp(22): error: could not find include file: boost/version.hpp
+		"wave"
+	)
+
+	if use mpi; then
+		ewarn "Enabling graph_parallel tests due to USE=mpi"
+		libs_excluded=("${libs_excluded[@]/graph_parallel}")
+	fi
+
+	if use test-full; then
+		ewarn "Enabling expensive tests - this will take a long time!"
+		libs_excluded=("${libs_excluded[@]/geometry}")
+	fi
+
+	# libraries which must be patched with an additonal main()
+	local libs_needpatch=(
+		"accumulators"
+	)
+
+	# prepare to find libraries without failing candidates
+	local findlibs="find ${BUILD_DIR}/libs -maxdepth 1 -mindepth 1 -type d"
+	for excl in ${libs_excluded[@]}; do
+	   findlibs+=" -not -name ${excl} "
+	done
+
+	# collect libraries to test in sorted order
+	local libs=($(${findlibs} | sort))
+
+	echo; echo -n "Running the following tests: "
+	for lib in ${libs[@]}; do echo -n "$(basename ${lib}) "; done
+	echo
+
+	echo; echo -n "Skipping: "
+	for lib in ${libs_excluded[@]}; do echo -n "${lib} "; done
+	echo
+
+	# Some test suites have no main because normally boost.test can
+	# automatically initialize & run them. Since this only works for
+	# statically linked builds/tests we use an explicit list of tests
+	# which need patching with an additional main().
+	# Determining this dynamically is not really possible.
+	for lib in "${libs_needpatch[@]}"; do
+		# move into library test dir
+		pushd "${BUILD_DIR}/libs/${lib}/test" >/dev/null || die
+			# find all test cases and patch them
+			testcases=($(find . -name "*.cpp"))
+			for testcase in "${testcases[@]}"; do
+				# add main() to bootstrap old-style test suite
+				cat "${FILESDIR}/unit-test-main.cpp" >> ${testcase}
+			done
+		popd >/dev/null
+	done
+
+	# finally build & run all test suites
+	for lib in "${libs[@]}"; do
+		# skip libraries without test directory
+		[[ ! -d "${lib}/test" ]] && continue
+
+		# move into library test dir & run all tests
+		pushd "${lib}/test" >/dev/null || die
+			echo; echo "Running tests in: "$(pwd)
+			ejam --prefix="${EPREFIX}"/usr "${TEST_OPTIONS[@]}" || die
+		popd >/dev/null
+	done
 }
 
 multilib_src_install() {
