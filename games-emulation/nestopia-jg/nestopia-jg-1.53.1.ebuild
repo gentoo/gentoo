@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,11 +31,6 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	# https://bugs.gentoo.org/945404
-	"${FILESDIR}"/${P}-odr.patch
-)
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
