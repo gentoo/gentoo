@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 
@@ -51,7 +51,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/nokogiri-1.8.1
 	>=dev-ruby/builder-3.1.0
 	>=dev-ruby/listen-3.3:3
-	dev-ruby/rack:3.0
+	|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 )
 	dev-ruby/rexml
 	dev-ruby/mocha
 	>dev-ruby/minitest-5.15.0:*
