@@ -68,10 +68,6 @@ media-libs/libass libunibreak
 # dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
 sys-apps/systemd bpf
 
-# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
-# Needs dev-libs/openspecfun which is not yet keyworded
-sci-visualization/gnuplot amos
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
