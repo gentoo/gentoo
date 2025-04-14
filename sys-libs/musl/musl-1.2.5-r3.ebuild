@@ -193,12 +193,59 @@ src_install() {
 	fi
 }
 
+# Simple test to make sure our new musl isn't completely broken.
+# Make sure we don't test with statically built binaries since
+# they will fail.  Also, skip if this musl is a cross compiler.
+#
+# If coreutils is built with USE=multicall, some of these files
+# will just be wrapper scripts, not actual ELFs we can test.
+musl_sanity_check() {
+	cd / #228809
+
+	# We enter ${ED} so to avoid trouble if the path contains
+	# special characters; for instance if the path contains the
+	# colon character (:), then the linker will try to split it
+	# and look for the libraries in an unexpected place. This can
+	# lead to unsafe code execution if the generated prefix is
+	# within a world-writable directory.
+	# (e.g. /var/tmp/portage:${HOSTNAME})
+	pushd "${ED}"/usr/$(get_libdir) >/dev/null
+
+	# first let's find the actual dynamic linker here
+	# symlinks may point to the wrong abi
+	local newldso=$(find . -maxdepth 1 -name 'libc.so' -type f -print -quit)
+
+	einfo Last-minute run tests with ${newldso} in /usr/$(get_libdir) ...
+
+	local x striptest
+	for x in cal date env free ls true uname uptime ; do
+		x=$(type -p ${x})
+		[[ -z ${x} || ${x} != ${EPREFIX}/* ]] && continue
+		striptest=$(LC_ALL="C" file -L ${x} 2>/dev/null) || continue
+		case ${striptest} in
+		*"statically linked"*) continue;;
+		*"ASCII text"*) continue;;
+		esac
+		# We need to clear the locale settings as the upgrade might want
+		# incompatible locale data.  This test is not for verifying that.
+		LC_ALL=C \
+		${newldso} --library-path . ${x} > /dev/null \
+			|| die "simple run test (${x}) failed"
+	done
+
+	popd >/dev/null
+}
+
 pkg_preinst() {
 	# Nothing to do if just installing headers
 	just_headers && return
 
 	# Prepare /etc/ld.so.conf.d/ for files
 	mkdir -p "${EROOT}"/etc/ld.so.conf.d
+
+	[[ -n ${ROOT} ]] && return 0
+	[[ -d ${ED}/$(get_libdir) ]] || return 0
+	musl_sanity_check
 }
 
 pkg_postinst() {
