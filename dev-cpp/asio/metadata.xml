@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">chriskohlhoff/asio</remote-id>
+		<remote-id type="sourceforge">asio</remote-id>
 	</upstream>
 </pkgmetadata>
