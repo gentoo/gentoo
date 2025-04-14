@@ -11,7 +11,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
+inherit edo flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
 MY_PV="$(ver_rs 1- _)"
 
@@ -23,14 +23,12 @@ S="${WORKDIR}/${PN}_${MY_PV}"
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="bzip2 +context debug doc icu lzma +nls mpi numpy python +stacktrace tools zlib zstd"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-# the tests will never fail because these are not intended as sanity
-# tests at all. They are more a way for upstream to check their own code
-# on new compilers. Since they would either be completely unreliable
-# (failing for no good reason) or completely useless (never failing)
-# there is no point in having them in the ebuild to begin with.
-RESTRICT="test"
+IUSE="bzip2 +context debug doc icu lzma +nls mpi numpy python +stacktrace test test-full tools zlib zstd"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test-full? ( test )
+"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
@@ -205,6 +203,146 @@ multilib_src_compile() {
 			|| die "Building of Boost tools failed"
 		popd >/dev/null || die
 	fi
+}
+
+multilib_src_test() {
+	##
+	## Preparation
+	##
+
+	# Some test suites have no main because normally boost.test can
+	# automatically initialize & run them, but this only seems to be
+	# supported for statically linked builds/tests.
+	# Therefore we use an explicit list of tests which need patching
+	# with an additional main().
+	# Determining this dynamically is not really possible.
+	local libs_needpatch=(
+		"accumulators"
+	)
+
+	einfo "Patching: ${libs_needpatch[@]}"
+
+	local lib
+	for lib in "${libs_needpatch[@]}"; do
+		# move into library test dir
+		pushd "${BUILD_DIR}/libs/${lib}/test" >/dev/null || die
+			# find all test cases and patch them
+			local testcases testcase
+			readarray -td '' testcases < <(find . -name "*.cpp" -print0)
+			for testcase in "${testcases[@]}"; do
+				# add main() to bootstrap old-style test suite
+				cat "${FILESDIR}/unit-test-main.cpp" >> ${testcase} || die
+			done
+		popd >/dev/null
+	done
+
+	##
+	## Test exclusions
+	##
+
+	# The following libraries do not compile or fail their tests:
+	local libs_excluded=(
+		# fails to use std::reverse_copy
+		"algorithm"
+		# test output comparison failure
+		"config"
+		# "C++03 support was deprecated in Boost.Chrono 1.82" ??
+		"contract"
+		# undefined reference to `boost::math::concepts::real_concept boost::math::bernoulli_b2n<boost::math::concepts::real_concept>(int)
+		"math"
+		# assignment of read-only member 'gauss::laguerre::detail::laguerre_l_object<T>::order'
+		"multiprecision"
+		# uint8_t is not a member of std
+		"mysql"
+		# PyObject* boost::parameter::python::aux::unspecified_type():
+		#   /usr/include/python3.13/object.h:339:30: error: lvalue required as left operand of assignment
+		"parameter_python"
+		# scope/lambda_tests22.cpp(27): test 'x == 1' failed in function 'int main()'
+		"phoenix"
+		# Unable to find file or target named (yes, really)
+		"predef"
+		# AttributeError: property '<unnamed Boost.Python function>' of 'X' object has no setter
+		"python"
+		# vec_access.hpp:95:223: error: static assertion failed: Boost QVM static assertion failure
+		"qvm"
+		# regex_timer.cpp:19: ../../../boost/timer.hpp:21:3: error: #error This header is
+		#   deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress
+		#   this error.)
+		"regex"
+		# in function `boost::archive::tmpnam(char*)': test_array.cpp:(.text+0x108):
+		#   undefined reference to `boost::filesystem::detail::unique_path(...)'
+		"serialization"
+		# TuTestMain.cpp(22) fatal error: in "test_main_caller( argc_ argv )":
+		#   std::runtime_error: Event was not consumed!
+		"statechart"
+		# erase_tests.cpp:(.text+0x44cce): undefined reference to
+		#   tbb::detail::r1::execution_slot(tbb::detail::d1::execution_data const*)
+		"unordered"
+		# t_5_007.cpp(22): error: could not find include file: boost/version.hpp
+		"wave"
+	)
+
+	if ! use mpi; then
+		# graph_parallel tries to use MPI even with use=-mpi
+		local no_mpi=( "mpi" "graph_parallel" )
+		einfo "Disabling tests due to USE=-mpi: ${no_mpi[@]}"
+		libs_excluded+=( ${no_mpi[@]} )
+	fi
+
+	if ! use test-full; then
+		# passes its tests but takes a very long time to build
+		local no_full=( "geometry" )
+		einfo "Disabling expensive tests due to USE=-test-full: ${no_full[@]}"
+		libs_excluded+=( ${no_full[@]} )
+	fi
+
+	einfo "Skipping the following tests: ${libs_excluded[@]}"
+
+	##
+	## Find and run tests
+	##
+
+	# Prepare to find libraries but without exclusions
+	local excluded findlibs="find ${BUILD_DIR}/libs -maxdepth 1 -mindepth 1 -type d "
+	for excluded in ${libs_excluded[@]}; do
+	   findlibs+="-not -name ${excluded} "
+	done
+
+	# Must come as last argument
+	findlibs+="-print0"
+
+	# Collect libraries to test, with full path.
+	# The list is then sorted to provide predictable execution order,
+	# which would otherwise depend on the file system.
+	local libs
+	readarray -td '' libs < <(${findlibs})
+	readarray -td '' libs < <(printf '%s\0' "${libs[@]}" | sort -z)
+
+	# Build the list of test names we are about to run
+	local lib_names
+	for lib in ${libs[@]}; do
+		lib_names+=("${lib##*/}")
+	done
+
+	# Create custom options for tests based on the build settings
+	TEST_OPTIONS=("${OPTIONS[@]}")
+
+	# Dial down log output - the full b2 command used to compile & run
+	# a test suite will be printed by ejam and can be used to build
+	# and run the tests in a test suite's directory.
+	TEST_OPTIONS=("${TEST_OPTIONS[@]/-d+2/-d0}")
+
+	# Finally build & run all test suites
+	einfo "Running the following tests: ${lib_names[*]}"
+	for lib in "${libs[@]}"; do
+		# Skip libraries without test directory
+		[[ ! -d "${lib}/test" ]] && continue
+
+		# Move into library test dir & run all tests
+		pushd "${lib}/test" >/dev/null || die
+			edob -m "Running tests in: $(pwd)" ejam --prefix="${EPREFIX}"/usr "${TEST_OPTIONS[@]}"
+		popd >/dev/null
+	done
 }
 
 multilib_src_install() {
