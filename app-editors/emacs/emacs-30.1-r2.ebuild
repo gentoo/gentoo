@@ -82,14 +82,9 @@ X_DEPEND="x11-libs/libICE
 			x11-libs/libXt
 		)
 		!motif? (
-			Xaw3d? (
-				x11-libs/libXaw3d
-				x11-libs/libXt
-			)
-			!Xaw3d? ( athena? (
-				x11-libs/libXaw
-				x11-libs/libXt
-			) )
+			x11-libs/libXt
+			Xaw3d? ( x11-libs/libXaw3d )
+			!Xaw3d? ( athena? ( x11-libs/libXaw ) )
 		)
 	)"
 
