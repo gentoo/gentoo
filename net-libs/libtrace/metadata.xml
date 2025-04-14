@@ -6,7 +6,7 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<use>
-		<flag name="numa">Use <pkg>sys-process/numactl</pkg></flag>
+		<flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">LibtraceTeam/libtrace</remote-id>
