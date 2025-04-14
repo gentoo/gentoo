@@ -1,0 +1,17 @@
+# Include endian.h because otherwise constants like BYTE_ORDER,
+# LITTLE_ENDIAN or BIG_ENDIAN as well as functions like
+# toBigEndian are missing when building with musl.
+# On glibc these symbols are present without including
+# endian.h, however including it anyway is fine.
+#
+# Related bug: https://bugs.gentoo.org/927902
+--- a/types.h
++++ b/types.h
+@@ -40,6 +40,7 @@
+ #include <fstream>
+ #include <array>
+ #include <cstdint>
++#include <endian.h>
+ 
+ class Error : public std::runtime_error
+ {
