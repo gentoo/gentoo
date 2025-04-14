@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ModSecurity-NGINX connector is the connection point between NGINX and libmodsecurity
+		(ModSecurity v3). Said another way, this project provides a communication channel between
+		NGINX and libmodsecurity. This connector is required to use LibModSecurity with NGINX.
+
+		The ModSecurity-NGINX connector takes the form of an NGINX module. The module simply serves
+		as a layer of communication between NGINX and ModSecurity.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/owasp-modsecurity/ModSecurity-nginx/issues</bugs-to>
+		<remote-id type="github">owasp-modsecurity/ModSecurity-nginx</remote-id>
+	</upstream>
+</pkgmetadata>
