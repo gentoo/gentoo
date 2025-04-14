@@ -11,7 +11,7 @@ SRC_URI="https://github.com/HowardHinnant/date/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="only-c-locale test"
 RESTRICT="!test? ( test )"
 
