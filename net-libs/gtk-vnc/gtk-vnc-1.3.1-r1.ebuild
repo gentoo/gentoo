@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic gnome.org vala meson python-any-r1 xdg
 
 DESCRIPTION="VNC viewer widget for GTK"
-HOMEPAGE="https://wiki.gnome.org/Projects/gtk-vnc https://gitlab.gnome.org/GNOME/gtk-vnc"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gtk-vnc"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
