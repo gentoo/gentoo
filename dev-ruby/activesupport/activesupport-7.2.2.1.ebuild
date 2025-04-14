@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 
@@ -49,7 +49,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/nokogiri-1.8.1
 	>=dev-ruby/builder-3.1.0
 	>=dev-ruby/listen-3.3:3
-	dev-ruby/rack:3.0
+	|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 )
 	dev-ruby/rexml
 	dev-ruby/mocha
 	>dev-ruby/minitest-5.15.0:*
@@ -61,7 +61,7 @@ all_ruby_prepare() {
 
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|execjs\|jquery-rails\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\|cgi\|net-smtp\|net-imap\|net-pop\|digest\|matrix\|web-console\|error_highlight\|jbuilder\|httpclient\|prism\|useragent\)/ s:^:#:" \
+	sed -i -e "/\(system_timer\|execjs\|jquery-rails\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\|cgi\|net-smtp\|net-imap\|net-pop\|digest\|matrix\|web-console\|error_highlight\|jbuilder\|httpclient\|prism\|useragent\|launchy\)/ s:^:#:" \
 		-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
 		-e '/^group :test/,/^end/ s:^:#:' \
 		-e '/^\s*group :\(db\|doc\|rubocop\|job\|cable\|lint\|mdl\|storage\|ujs\|test\|view\) do/,/^\s*end/ s:^:#:' \
