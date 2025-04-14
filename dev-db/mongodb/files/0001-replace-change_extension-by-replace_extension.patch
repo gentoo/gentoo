@@ -1,0 +1,25 @@
+From 01c202b65f136450e0bd3f516d7268322e9beafc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Valenduc?= <francoisvalenduc@gmail.com>
+Date: Fri, 11 Apr 2025 18:50:10 +0200
+Subject: [PATCH] replace change_extension by replace_extension
+
+---
+ src/mongo/db/storage/backup_block.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mongo/db/storage/backup_block.cpp b/src/mongo/db/storage/backup_block.cpp
+index 9b8dc29f209..a8b86398665 100644
+--- a/src/mongo/db/storage/backup_block.cpp
++++ b/src/mongo/db/storage/backup_block.cpp
+@@ -59,7 +59,7 @@ std::string extractIdentFromPath(const boost::filesystem::path& dbpath,
+ 
+     // Remove the file extension and convert to generic form (i.e. replace "\" with "/"
+     // on windows, no-op on unix).
+-    return boost::filesystem::change_extension(identWithExtension, "").generic_string();
++    return boost::filesystem::path(identWithExtension).replace_extension("").generic_string();
+ }
+ 
+ }  // namespace details
+-- 
+2.49.0
+
