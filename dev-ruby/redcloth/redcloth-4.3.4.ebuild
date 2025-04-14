@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_NAME="RedCloth"
 
@@ -29,7 +29,7 @@ SRC_URI="https://github.com/jgarber/redcloth/archive/v${PV}.tar.gz -> ${RUBY_FAK
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE=""
+IUSE="test"
 
 DEPEND+=" =dev-util/ragel-6*"
 
