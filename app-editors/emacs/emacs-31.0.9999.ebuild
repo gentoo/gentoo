@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
+IUSE="acl alsa athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -123,32 +123,30 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 		tiff? ( media-libs/tiff:= )
 		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( media-gfx/imagemagick:0=[jpeg?,png?,svg?,tiff?] )
-		!aqua? (
-			gsettings? (
-				>=app-emacs/emacs-common-1.11[gsettings]
-				>=dev-libs/glib-2.28.6
-			)
-			gtk? ( !X? (
-				media-libs/fontconfig
-				media-libs/freetype
-				>=x11-libs/cairo-1.12.18
-				x11-libs/gtk+:3
-				harfbuzz? ( media-libs/harfbuzz:0= )
-				m17n-lib? (
-					>=dev-libs/libotf-0.9.4
-					>=dev-libs/m17n-lib-1.5.1
-				)
-			) )
-			!gtk? ( ${X_DEPEND} )
-			X? ( ${X_DEPEND} )
+		gsettings? (
+			>=app-emacs/emacs-common-1.11[gsettings]
+			>=dev-libs/glib-2.28.6
 		)
+		gtk? ( !X? (
+			media-libs/fontconfig
+			media-libs/freetype
+			>=x11-libs/cairo-1.12.18
+			x11-libs/gtk+:3
+			harfbuzz? ( media-libs/harfbuzz:0= )
+			m17n-lib? (
+				>=dev-libs/libotf-0.9.4
+				>=dev-libs/m17n-lib-1.5.1
+			)
+		) )
+		!gtk? ( ${X_DEPEND} )
+		X? ( ${X_DEPEND} )
 	)"
 
 DEPEND="${RDEPEND}
-	gui? ( !aqua? (
+	gui? (
 		!gtk? ( x11-base/xorg-proto )
 		X? ( x11-base/xorg-proto )
-	) )"
+	)"
 
 BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
@@ -279,7 +277,7 @@ src_configure() {
 	# X11, pure GTK (without X11), or Nextstep (Aqua/Cocoa).
 	# General GUI support is enabled by the "gui" USE flag, then
 	# the window system is selected as follows:
-	#   "aqua" -> Nextstep
+	#   "aqua" -> Nextstep (no longer supported by ebuild #757300)
 	#   "gtk -X" -> pure GTK
 	#   otherwise -> X11
 	# For X11 there is the further choice of toolkits GTK, Motif,
@@ -290,12 +288,6 @@ src_configure() {
 		einfo "Configuring to build without window system support"
 		myconf+=(
 			--without-x --without-pgtk --without-ns
-		)
-	elif use aqua; then
-		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
-		myconf+=(
-			--with-ns --disable-ns-self-contained
-			--without-x --without-pgtk
 		)
 	elif use gtk && ! use X; then
 		einfo "Configuring to build with pure GTK (without X11) support"
@@ -545,13 +537,6 @@ src_install() {
 
 	dodoc README BUGS CONTRIBUTE
 
-	if use gui && use aqua; then
-		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
-		mv nextstep/Emacs.app \
-			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
-	fi
-
 	local DOC_CONTENTS="You can set the version to be started by
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
@@ -566,9 +551,6 @@ src_install() {
 			machine would satisfy basic Emacs requirements under X11.
 			See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
 			for how to enable anti-aliased fonts."
-		use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
-			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
-			symlink it into /Applications by yourself."
 	fi
 	if ! use mailutils; then
 		DOC_CONTENTS+="\\n\\nThe mailutils USE flag is disabled. If Emacs'
