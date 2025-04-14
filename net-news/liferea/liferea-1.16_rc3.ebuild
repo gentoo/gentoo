@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2+"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 fi
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
