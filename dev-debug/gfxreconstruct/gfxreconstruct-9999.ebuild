@@ -49,7 +49,6 @@ if [[ ${PV} != 9999* ]]; then
 	"
 	PATCHES=(
 		"${FILESDIR}"/1.3.296.0-use-system-vulkan.patch
-		"${FILESDIR}"/1.4.304.0-fix-build.patch
 	)
 fi
 
