@@ -313,12 +313,12 @@ src_configure() {
 			--without-gconf
 			$(use_with gsettings)
 			$(use_with toolkit-scroll-bars)
+			$(use_with xft)
 			$(use_with xpm)
 		)
 
 		if use xft; then
 			myconf+=(
-				--with-xft
 				$(use_with cairo)
 				$(use_with harfbuzz)
 				$(use_with m17n-lib libotf)
@@ -326,7 +326,6 @@ src_configure() {
 			)
 		else
 			myconf+=(
-				--without-xft
 				--without-cairo
 				--without-libotf --without-m17n-flt
 			)
