@@ -1,0 +1,17 @@
+# Connection string for the PostgreSQL database.
+# You need to either connect as superuser, or create a user with enough 
+# rights, as described in # /usr/share/doc/postgres_exporter-${PV}/README.md
+DATA_SOURCE_URI="localhost:5432/postgres?sslmode=disable"
+
+# For >=postgres-10, create user in psql with:
+#   CREATE USER postgres_exporter;
+#   GRANT pg_monitor TO postgres_exporter;
+DATA_SOURCE_USER="postgres_exporter"
+
+# Path to file with user's password. Empty value - no password required.
+DATA_SOURCE_PASS_FILE=""
+
+# Additional arguments for postgres_exporter.
+# See `postgres_exporter --help` for more info.
+command_args=""
+

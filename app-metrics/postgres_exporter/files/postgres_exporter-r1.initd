@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2016-2018 Gentoo Foundation
+# Copyright 2016-2025 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="Prometheus PostgreSQL exporter"
@@ -7,13 +7,26 @@ pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
 user=${user:-${RC_SVCNAME}}
 group=${group:-${RC_SVCNAME}}
 
+supervisor=supervise-daemon
+
 command="/usr/bin/postgres_exporter"
 command_args="${command_args:-}"
 command_background="true"
-start_stop_daemon_args="--user ${user} --group ${group} \
-	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+command_user="${user}:${group}"
+
+export DATA_SOURCE_URI
+export DATA_SOURCE_USER
+export DATA_SOURCE_PASS_FILE
+
+start_stop_daemon_args="--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
 	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
 
 depend() {
 	after net
 }
+
+start_pre() {
+	checkpath -d -o ${user} -m755 /var/log/${RC_SVCNAME}
+	checkpath -f -o ${user} -m644 /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+}
+
