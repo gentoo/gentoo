@@ -203,17 +203,17 @@ src_prepare() {
 	fi
 
 	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
+	sed -i "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
 	# libseccomp is detected by configure but doesn't appear to have any
 	# effect on the installed image. Suppress it by supplying pkg-config
 	# with a wrong library name.
-	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
+	sed -i "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
 
 	# Tests that use bubblewrap don't work in the sandbox:
 	# "bwrap: setting up uid map: Permission denied"
 	# So, disrupt the search for the bwrap executable.
-	sed -i -e 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
+	sed -i 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
 		test/lisp/emacs-lisp/bytecomp-tests.el || die
 
 	AT_M4DIR=m4 eautoreconf
