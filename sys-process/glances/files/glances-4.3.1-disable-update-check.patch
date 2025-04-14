@@ -1,0 +1,20 @@
+From 345789c365404f41d2743df43b4c1debd424f460 Mon Sep 17 00:00:00 2001
+From: John Helmert III <ajak@gentoo.org>
+Date: Sun, 13 Apr 2025 12:37:06 -0700
+Subject: [PATCH] disable update check
+
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+--- a/glances/main.py
++++ b/glances/main.py
+@@ -606,7 +606,7 @@ Examples of use:
+         parser.add_argument(
+             '--disable-check-update',
+             action='store_true',
+-            default=False,
++            default=True,
+             dest='disable_check_update',
+             help='disable online Glances version ckeck',
+         )
+-- 
+2.49.0
+
