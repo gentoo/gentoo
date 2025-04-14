@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-04-14)
+# Obsolete slot that fails tests, bug 933189. EAPI 7.  Use the newer
+# slot instead. Masked for removal on 2025-05-14.
+dev-ruby/childprocess:2
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-12)
 # >=31 breaks www-client/qutebrowser's tests
 # https://github.com/cucumber/gherkin/issues/373
