@@ -1,0 +1,24 @@
+https://github.com/jbenden/mod_clamav/commit/509be57280634453be338b52d1bd0af212356587
+From 509be57280634453be338b52d1bd0af212356587 Mon Sep 17 00:00:00 2001
+From: offsides <josh@honorablemenschen.com>
+Date: Tue, 2 Jan 2024 17:21:37 -0500
+Subject: [PATCH] Update mod_clamav.c (#19)
+
+end_login is no longer defined in compat.h as of 1.3.9rc2, so the call needs to be replaced with pr_session_end
+---
+ mod_clamav.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mod_clamav.c b/mod_clamav.c
+index dcc4929..d39e347 100644
+--- a/mod_clamav.c
++++ b/mod_clamav.c
+@@ -239,7 +239,7 @@ static int clamavd_scan_stream(int sockd, const char *abs_filename,
+   buf = malloc(bufsz);
+   if (!buf) {
+     pr_log_pri(PR_LOG_CRIT, "Out of memory!");
+-    end_login(1);
++    pr_session_end(1);
+   }
+ 
+   /* send file contents using protocol defined by Clamd */
