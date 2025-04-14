@@ -147,8 +147,7 @@ DEPEND="${RDEPEND}
 	) )"
 
 BDEPEND="sys-apps/texinfo
-	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )"
+	virtual/pkgconfig"
 
 IDEPEND="app-eselect/eselect-emacs"
 
