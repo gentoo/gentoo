@@ -34,7 +34,10 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.0.0-man.patch" )
+PATCHES=(
+	"${FILESDIR}/oorexx-5.0.0-cmake_minimum_required.patch"
+	"${FILESDIR}/oorexx-5.0.0-man.patch"
+)
 
 src_configure() {
 	# bug 924171
