@@ -384,7 +384,7 @@ src_configure() {
 
 	if tc-is-cross-compiler; then
 		# Configure a CBUILD directory when cross-compiling to make tools
-		mkdir -p "${S}-build" && pushd "${S}-build" >/dev/null || die
+		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
 		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
@@ -456,7 +456,7 @@ src_test() {
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
-	mkdir -p "${T}"/gpg || die
+	mkdir "${T}"/gpg || die
 	for f in browser extra ssh; do
 		echo "%Assuan%\nsocket=${T}/gpg/S.${f}" \
 			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
