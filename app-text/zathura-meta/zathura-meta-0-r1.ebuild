@@ -8,7 +8,7 @@ HOMEPAGE="https://pwmt.org/projects/zathura/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="cb djvu epub +pdf postscript"
 
 RDEPEND="
