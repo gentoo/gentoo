@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-14)
+# Package destabilisation mask after prolongued time w/o maintainer.
+# Bug #949838
+~app-emulation/q4wine-1.3.13
+
 # Hans de Graaff <graaff@gentoo.org> (2025-04-14)
 # Obsolete slot that fails tests, bug 933189. EAPI 7.  Use the newer
 # slot instead. Masked for removal on 2025-05-14.
