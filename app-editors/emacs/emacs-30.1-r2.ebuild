@@ -44,6 +44,7 @@ IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm g
 REQUIRED_USE="
 	?? ( alsa oss )
 	jit? ( zlib )
+	xft? ( X )
 "
 
 X_DEPEND="x11-libs/libICE
