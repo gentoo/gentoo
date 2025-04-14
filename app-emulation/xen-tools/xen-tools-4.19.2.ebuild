@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://xenbits.xen.org/git-http/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 	SEABIOS_VER="1.16.0"
 	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"
@@ -25,8 +25,8 @@ else
 
 	XEN_GENTOO_PATCHSET_NUM=2
 	XEN_GENTOO_PATCHSET_BASE=4.17.0
-	XEN_PRE_PATCHSET_NUM=1
-	XEN_PRE_VERSION_BASE=4.18.3
+	XEN_PRE_PATCHSET_NUM=
+	XEN_PRE_VERSION_BASE=
 
 	XEN_BASE_PV="${PV}"
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
@@ -409,11 +409,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Workaround from sys-firmware/edk2 (bug #913110)
-	export LDFLAGS="-z notext"
-	export EXTRA_LDFLAGS="-z notext"
-	export DLINK_FLAGS="-z notext"
-
 	local myconf=(
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		--libexecdir="${EPREFIX}/usr/libexec"

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit flag-o-matic mount-boot python-any-r1 secureboot toolchain-funcs
 
@@ -12,12 +12,12 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://xenbits.xen.org/git-http/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="amd64 ~arm -x86"
+	KEYWORDS="~amd64 ~arm -x86"
 
 	XEN_GENTOO_PATCHSET_NUM=2
 	XEN_GENTOO_PATCHSET_BASE=4.17.0
-	XEN_PRE_PATCHSET_NUM=1
-	XEN_PRE_VERSION_BASE=4.18.3
+	XEN_PRE_PATCHSET_NUM=
+	XEN_PRE_VERSION_BASE=
 
 	XEN_BASE_PV="${PV}"
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
