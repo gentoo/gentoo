@@ -158,6 +158,7 @@ IDEPEND="app-eselect/eselect-emacs"
 
 RDEPEND+=" ${IDEPEND}"
 
+DOCS=( BUGS CONTRIBUTE README )
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
@@ -551,7 +552,7 @@ src_install() {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc README BUGS CONTRIBUTE
+	einstalldocs
 
 	if use gui && use aqua; then
 		dodir /Applications/Gentoo
