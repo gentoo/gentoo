@@ -44,6 +44,7 @@ IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm g
 REQUIRED_USE="
 	?? ( alsa oss )
 	jit? ( zlib )
+	m17n-lib? ( xft )
 	xft? ( X )
 "
 
@@ -306,6 +307,8 @@ src_configure() {
 			--without-gconf
 			$(use_with gsettings)
 			$(use_with toolkit-scroll-bars)
+			$(use_with m17n-lib libotf)
+			$(use_with m17n-lib m17n-flt)
 			$(use_with xft)
 			$(use_with xpm)
 		)
@@ -314,18 +317,13 @@ src_configure() {
 			myconf+=(
 				$(use_with cairo)
 				$(use_with harfbuzz)
-				$(use_with m17n-lib libotf)
-				$(use_with m17n-lib m17n-flt)
 			)
 		else
 			myconf+=(
 				--without-cairo
-				--without-libotf --without-m17n-flt
 			)
 			use cairo && ewarn \
 				"USE flag \"cairo\" has no effect if \"xft\" is not set."
-			use m17n-lib && ewarn \
-				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
 
 		local f line
