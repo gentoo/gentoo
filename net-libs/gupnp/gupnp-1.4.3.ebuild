@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
@@ -50,8 +50,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	use introspection && vala_src_prepare
-	xdg_src_prepare
+	default
+	use introspection && vala_setup
 
 	# This makes sense for upstream but not for us downstream, bug #906124.
 	sed -i -e '/-Werror=deprecated-declarations/d' meson.build || die
