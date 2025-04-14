@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
+		app-arch/7zip
 		app-arch/arj
 		app-arch/bzip2
 		app-arch/bzip3
@@ -33,7 +34,6 @@ BDEPEND="
 		app-arch/lzip
 		app-arch/lzop
 		app-arch/ncompress
-		app-arch/p7zip
 		app-arch/pbzip2
 		app-arch/pdlzip
 		app-arch/pigz
@@ -58,9 +58,12 @@ BDEPEND="
 		sys-apps/diffutils
 		sys-apps/file
 		sys-apps/grep
+		|| (
+			>=app-arch/7zip-24.09[symlink(+)]
+			app-arch/p7zip
+		)
 		!elibc_musl? ( app-arch/rar )
 		!x86? (
-			app-arch/7zip
 			app-arch/clzip
 			app-arch/lrzip
 			app-arch/unar
@@ -76,7 +79,6 @@ BDEPEND="
 # app-arch/clzip is unkeyworded on x86
 # app-arch/lrzip bug #916317 on x86
 # app-arch/unar is unkeyworded on x86
-# app-arch/7zip is unkeyworded on x86
 
 # Unpackaged testable dependencies
 # archmage
