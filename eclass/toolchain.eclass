@@ -2125,8 +2125,6 @@ gcc_do_filter_flags() {
 			-fharden-control-flow-redundancy -fno-harden-control-flow-redundancy \
 			-fhardcfr-skip-leaf -fhardcfr-check-exceptions \
 			-fhardcfr-check-returning-calls '-fhardcfr-check-noreturn-calls=*'
-
-		# New in GCC 14.
 		filter-flags -Walloc-size
 	fi
 
@@ -2134,6 +2132,10 @@ gcc_do_filter_flags() {
 		filter-flags -fdiagnostics-explain-harder -fdiagnostics-details
 		filter-flags -fdiagnostics-set-output=text:experimental-nesting=yes
 	fi
+
+	# Ada: PR116226
+	# D: PR117002 (bug #940750)
+	filter-flags -Warray-bounds
 
 	# Please use USE=lto instead (bug #906007).
 	filter-lto
@@ -2330,18 +2332,13 @@ gcc_do_make() {
 		BOOT_LDFLAGS=${BOOT_LDFLAGS-"${abi_ldflags} ${LDFLAGS}"}
 		LDFLAGS_FOR_TARGET="${LDFLAGS_FOR_TARGET:-${LDFLAGS}}"
 
-		if _tc_use_if_iuse d ; then
+		if _tc_use_if_iuse d && use hardened ; then
 			# If we need to in future, we could really simplify this
 			# to just be unconditional for stage1. It doesn't really
 			# matter there. If we want to go in the other direction
 			# and make this more conditional, we could check if
 			# the bootstrap compiler is < GCC 12. See bug #940470.
-			if use hardened ; then
-				STAGE1_CXXFLAGS+=" -U_GLIBCXX_ASSERTIONS"
-			fi
-
-			# This can be dropped a while after 2025-03-31 (bug #940750).
-			STAGE1_GDCFLAGS+=" -Wno-array-bounds"
+			STAGE1_CXXFLAGS+=" -U_GLIBCXX_ASSERTIONS"
 		fi
 
 		emakeargs+=(
