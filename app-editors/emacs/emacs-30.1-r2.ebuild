@@ -45,6 +45,7 @@ REQUIRED_USE="
 	?? ( alsa oss )
 	jit? ( zlib )
 	m17n-lib? ( xft )
+	motif? ( xpm )
 	xft? ( X )
 "
 
@@ -77,7 +78,6 @@ X_DEPEND="x11-libs/libICE
 	!gtk? (
 		motif? (
 			>=x11-libs/motif-2.3:0
-			x11-libs/libXpm
 			x11-libs/libXmu
 			x11-libs/libXt
 		)
