@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://github.com/pwmt/girara/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 arm ~arm64 ~riscv x86"
+	KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 fi
 
 LICENSE="ZLIB"
