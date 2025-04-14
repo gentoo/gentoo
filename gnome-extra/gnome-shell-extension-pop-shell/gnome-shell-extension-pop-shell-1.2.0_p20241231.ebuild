@@ -13,7 +13,7 @@ S="${WORKDIR}/shell-${EGIT_COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
