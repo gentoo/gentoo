@@ -9,7 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="7zip">Install <pkg>app-arch/p7zip</pkg> for 7zip archive support in <pkg>kde-apps/ark</pkg></flag>
+		<flag name="7zip">Install <pkg>app-arch/p7zip</pkg> or <pkg>app-arch/7zip</pkg>[symlink] for 7zip archive support in <pkg>kde-apps/ark</pkg></flag>
 		<flag name="gpg">Install <pkg>kde-apps/kgpg</pkg> which depends on <pkg>kde-apps/akonadi</pkg></flag>
 		<flag name="lrz">Install <pkg>app-arch/lrzip</pkg> for LRZ archive support in <pkg>kde-apps/ark</pkg></flag>
 		<flag name="rar">Install one of <pkg>app-arch/rar</pkg>, <pkg>app-arch/unrar</pkg> or <pkg>app-arch/unar</pkg> for RAR archive support in <pkg>kde-apps/ark</pkg></flag>
