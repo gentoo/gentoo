@@ -1,0 +1,14 @@
+pthread_yield is not standardized and is even deprecated. It's also not
+available on musl (i guess other libcs too).
+Bug: https://bugs.gentoo.org/895062
+--- a/prov/util/src/util_wait.c
++++ b/prov/util/src/util_wait.c
+@@ -613,7 +613,7 @@ static int util_wait_yield_run(struct fid_wait *wait_fid, int timeout)
+ 			}
+ 		}
+ 		fastlock_release(&wait->util_wait.lock);
+-		pthread_yield();
++		sched_yield();
+ 	}
+ 
+ 	fastlock_acquire(&wait->signal_lock);
