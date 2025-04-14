@@ -291,19 +291,13 @@ src_configure() {
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
-		myconf+=(
-			--without-x --without-pgtk --without-ns
-		)
+		myconf+=( --without-ns --without-pgtk --without-x )
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
-		myconf+=(
-			--with-ns --disable-ns-self-contained
-			--without-x --without-pgtk
-		)
+		myconf+=( --with-ns --disable-ns-self-contained --without-pgtk --without-x )
 	elif use gtk && ! use X; then
 		einfo "Configuring to build with pure GTK (without X11) support"
-		myconf+=(
-			--with-pgtk --without-x --without-ns
+		myconf+=( --without-ns --with-pgtk --without-x
 			--with-toolkit-scroll-bars #836392
 			--without-gconf
 			--without-xwidgets
