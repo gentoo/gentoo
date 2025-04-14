@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -102,4 +102,6 @@ src_install() {
 pkg_postinst() {
 	einfo "As of version 3, ${PN} no longer packages the pandoc executable"
 	einfo "as standard. For the executable, run 'emerge -av app-text/pandoc-cli'."
+
+	haskell-cabal_pkg_postinst
 }
