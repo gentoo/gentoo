@@ -465,7 +465,7 @@ src_test() {
 	# for socket paths on Linux.
 	mkdir -p "${T}"/gpg || die
 	for f in browser extra ssh; do
-		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
+		echo "%Assuan%\nsocket=${T}/gpg/S.${f}" \
 			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
 	done
 
