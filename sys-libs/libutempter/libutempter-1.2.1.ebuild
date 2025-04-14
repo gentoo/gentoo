@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Library that allows non-privileged apps to write utmp (login) info"
-HOMEPAGE="https://altlinux.org/index.php?module=sisyphus&package=libutempter"
+HOMEPAGE="https://git.altlinux.org/people/ldv/packages/?p=libutempter.git https://github.com/altlinux/libutempter"
 SRC_URI="ftp://ftp.altlinux.org/pub/people/ldv/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
