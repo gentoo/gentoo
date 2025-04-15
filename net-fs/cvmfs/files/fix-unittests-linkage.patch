@@ -1,0 +1,117 @@
+From f3fbae9dc5dc183969e5b77cc0c3bcee15dbb586 Mon Sep 17 00:00:00 2001
+From: Andriy Utkin <hello@autkin.net>
+Date: Wed, 9 Apr 2025 18:32:37 +0100
+Subject: [PATCH] Fix unittests linkage on Gentoo
+
+It gave to the linkage command the protobuf lib path only, not the
+pkgconfig-provided list of flags to supply.
+
+pkg-config metadata of protobuf package on Gentoo system indicates that
+linker flags for transitive deps, specifically libabsl* are necessary.
+---
+ cmake/Modules/FindProtobuf.cmake | 54 +++++++++++++++++++-------------
+ test/unittests/CMakeLists.txt    |  4 +--
+ 2 files changed, 34 insertions(+), 24 deletions(-)
+
+diff --git a/cmake/Modules/FindProtobuf.cmake b/cmake/Modules/FindProtobuf.cmake
+index dd3f18638..39ca93f41 100644
+--- a/cmake/Modules/FindProtobuf.cmake
++++ b/cmake/Modules/FindProtobuf.cmake
+@@ -214,28 +214,43 @@ endif()
+ #    if the debug one is specified also include debug/optimized keywords
+ #    in *_LIBRARIES variable
+ function(_protobuf_find_libraries name filename)
+-   find_library(${name}_LIBRARY
+-       NAMES ${filename}
+-       PATHS ${PROTOBUF_SRC_ROOT_FOLDER}/vsprojects/${_PROTOBUF_ARCH_DIR}Release)
+-   mark_as_advanced(${name}_LIBRARY)
+-
+-   find_library(${name}_LIBRARY_DEBUG
+-       NAMES ${filename}
+-       PATHS ${PROTOBUF_SRC_ROOT_FOLDER}/vsprojects/${_PROTOBUF_ARCH_DIR}Debug)
+-   mark_as_advanced(${name}_LIBRARY_DEBUG)
+-
+-   if(NOT ${name}_LIBRARY_DEBUG)
++  find_package(PkgConfig)
++  if (PKG_CONFIG_FOUND)
++    pkg_check_modules(${name} IMPORTED_TARGET GLOBAL ${filename})
++    if (${${name}_FOUND})
++      MESSAGE(${PKG_CONFIG_EXECUTABLE})
++      MESSAGE(${${name}_LIBRARIES})
++      MESSAGE(${${name}_LINK_LIBRARIES})
++      set(${name}_LIBRARIES     ${${name}_LINK_LIBRARIES} PARENT_SCOPE)
++    endif (${${name}_FOUND})
++  endif (PKG_CONFIG_FOUND)
++
++  if (NOT ${${name}_FOUND})
++    # pkg-config didn't work
++
++    find_library(${name}_LIBRARY
++      NAMES ${filename}
++      PATHS ${PROTOBUF_SRC_ROOT_FOLDER}/vsprojects/${_PROTOBUF_ARCH_DIR}Release)
++    mark_as_advanced(${name}_LIBRARY)
++
++    find_library(${name}_LIBRARY_DEBUG
++      NAMES ${filename}
++      PATHS ${PROTOBUF_SRC_ROOT_FOLDER}/vsprojects/${_PROTOBUF_ARCH_DIR}Debug)
++    mark_as_advanced(${name}_LIBRARY_DEBUG)
++
++    if(NOT ${name}_LIBRARY_DEBUG)
+       # There is no debug library
+       set(${name}_LIBRARY_DEBUG ${${name}_LIBRARY} PARENT_SCOPE)
+       set(${name}_LIBRARIES     ${${name}_LIBRARY} PARENT_SCOPE)
+-   else()
++    else()
+       # There IS a debug library
+       set(${name}_LIBRARIES
+-          optimized ${${name}_LIBRARY}
+-          debug     ${${name}_LIBRARY_DEBUG}
+-          PARENT_SCOPE
++        optimized ${${name}_LIBRARY}
++        debug     ${${name}_LIBRARY_DEBUG}
++        PARENT_SCOPE
+       )
+-   endif()
++    endif()
++  endif()
+ endfunction()
+ 
+ # Internal function: find threads library
+@@ -303,11 +318,6 @@ find_program(PROTOBUF_PROTOC_EXECUTABLE
+ )
+ mark_as_advanced(PROTOBUF_PROTOC_EXECUTABLE)
+ 
+-
+-include(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(Protobuf DEFAULT_MSG
+-    PROTOBUF_LIBRARY PROTOBUF_INCLUDE_DIR)
+-
+-if(PROTOBUF_FOUND)
++if(NOT PROTOBUF_INCLUDE_DIRS AND PROTOBUF_INCLUDE_DIR)
+     set(PROTOBUF_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIR})
+ endif()
+diff --git a/test/unittests/CMakeLists.txt b/test/unittests/CMakeLists.txt
+index c4fcc9b1c..a98d4a60f 100644
+--- a/test/unittests/CMakeLists.txt
++++ b/test/unittests/CMakeLists.txt
+@@ -52,7 +52,7 @@ if (BUILD_LIBCVMFS_CACHE)
+                          ${GTEST_LIBRARIES}
+                          ${ZLIB_LIBRARIES}
+                          ${RT_LIBRARY}
+-                         ${PROTOBUF_LITE_LIBRARY}
++                         ${PROTOBUF_LITE_LIBRARIES}
+                          pthread
+   )
+   if (INSTALL_UNITTESTS)
+@@ -560,7 +560,7 @@ list (APPEND CVMFS_UNITTESTS_LINK_LIBRARIES
+       ${UUID_LIBRARIES}
+       ${PACPARSER_LIBRARIES}
+       ${VJSON_LIBRARIES}
+-      ${PROTOBUF_LITE_LIBRARY}
++      ${PROTOBUF_LITE_LIBRARIES}
+       ${LibArchive_LIBRARY}
+       ${RT_LIBRARY}
+       ${VARNISHSHARD_LIBRARIES}
+-- 
+2.48.1
+
