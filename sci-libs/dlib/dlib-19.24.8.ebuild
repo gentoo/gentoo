@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 # doc needs a bunch of deps not in portage
 RDEPEND="
+	media-video/ffmpeg[X?]
 	cblas? ( virtual/cblas )
 	cuda? ( dev-libs/cudnn:= )
 	gif? ( media-libs/giflib:= )
