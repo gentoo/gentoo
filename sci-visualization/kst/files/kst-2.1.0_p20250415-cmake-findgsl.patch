@@ -1,0 +1,119 @@
+From 219e338d31878b19560dd6ef9ce99df954501ea5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 15 Apr 2025 19:59:04 +0200
+Subject: [PATCH] Use CMake FindGSL module
+
+Fixes build if /usr/include/gsl directory is polluted by ms-gsl.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt              |  2 +-
+ cmake/modules/FindGsl.cmake | 67 -------------------------------------
+ src/plugins/CMakeLists.txt  |  3 +-
+ 3 files changed, 2 insertions(+), 70 deletions(-)
+ delete mode 100644 cmake/modules/FindGsl.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a4bc5239..bc84fbf0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -161,7 +161,7 @@ endif()
+ if(kst_3rdparty)
+   message(STATUS "3rd party libs for plugins--------------------")
+   find_package(Getdata)
+-  find_package(Gsl)
++  find_package(GSL)
+   find_package(Netcdf)
+   find_package(Matio)
+   find_package(CFITSIO)
+diff --git a/cmake/modules/FindGsl.cmake b/cmake/modules/FindGsl.cmake
+deleted file mode 100644
+index 6261e3a0..00000000
+--- a/cmake/modules/FindGsl.cmake
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# ***************************************************************************
+-# *                                                                         *
+-# *   Copyright : (C) 2010 The University of Toronto                        *
+-# *   email     : netterfield@astro.utoronto.ca                             *
+-# *                                                                         *
+-# *   Copyright : (C) 2010 Peter Kümmel                                     *
+-# *   email     : syntheticpp@gmx.net                                       *
+-# *                                                                         *
+-# *   This program is free software; you can redistribute it and/or modify  *
+-# *   it under the terms of the GNU General Public License as published by  *
+-# *   the Free Software Foundation; either version 2 of the License, or     *
+-# *   (at your option) any later version.                                   *
+-# *                                                                         *
+-# ***************************************************************************
+-
+-# use pkg to find the library name and paths,
+-# but use this iformation in find_* only
+-if(NOT GSL_INCLUDEDIR)
+-
+-if(NOT kst_cross)
+-	include(FindPkgConfig)
+-	pkg_check_modules(PKGGSL QUIET gsl)
+-endif()
+-
+-if(NOT PKGGSL_LIBRARIES)
+-	set(PKGGSL_LIBRARIES gsl)
+-	if (UNIX AND NOT kst_cross)
+-		set(PKGGSL_LIBRARIES ${PKGGSL_LIBRARIES} m gslcblas)
+-	endif()
+-endif()
+-
+-set(GSL_INCLUDEDIR GSL_INCLUDEDIR-NOTFOUND CACHE STRING "" FORCE)
+-find_path(GSL_INCLUDEDIR gsl_version.h
+-	HINTS
+-	ENV GSL_DIR
+-	PATH_SUFFIXES include/gsl include
+-	PATHS ${kst_3rdparty_dir} ${PKGGSL_INCLUDEDIR})
+-
+-set(GSL_LIBRARY_LIST)
+-foreach(it ${PKGGSL_LIBRARIES})
+-	set(lib lib-NOTFOUND CACHE STRING "" FORCE)
+-	FIND_LIBRARY(lib ${it} 
+-		HINTS
+-		ENV GSL_DIR
+-		PATH_SUFFIXES lib
+-		PATHS ${kst_3rdparty_dir} ${PKGGSL_LIBRARY_DIRS})
+-	list(APPEND GSL_LIBRARY_LIST ${lib})
+-endforeach()
+-set(GSL_LIBRARIES ${GSL_LIBRARY_LIST} CACHE STRING "" FORCE)
+-
+-endif()
+-
+-if(GSL_INCLUDEDIR AND GSL_LIBRARIES)
+-	set(GSL_INCLUDE_DIR ${GSL_INCLUDEDIR} ${GSL_INCLUDEDIR}/..)
+-	set(gsl 1)
+-    message(STATUS "Found GSL:")
+-	message(STATUS "     includes : ${GSL_INCLUDE_DIR}")
+-	message(STATUS "     libraries: ${GSL_LIBRARIES}")
+-else()
+-	message(STATUS "Not found: GSL.")
+-    MESSAGE(STATUS "      If GSL is installed outside the CMake search path,")
+-    MESSAGE(STATUS "      set the environmental variable GSL_DIR to the")
+-    MESSAGE(STATUS "      GSL install prefix.")
+-endif()
+-
+-message(STATUS "")
+-
+diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
+index 6c744f97..0f4006ca 100644
+--- a/src/plugins/CMakeLists.txt
++++ b/src/plugins/CMakeLists.txt
+@@ -31,10 +31,9 @@ kst_add_plugin(filters differentiation)
+ kst_add_plugin(filters exponential)
+ 
+ if(gsl)
+-	include_directories(${GSL_INCLUDE_DIR})
+ 	macro(kst_add_gsl_plugin dir name)
+ 		kst_add_plugin(${dir} ${name})
+-		kst_link(${GSL_LIBRARIES})
++		kst_link(GSL::gsl)
+ 	endmacro()
+ 	
+ 	kst_add_gsl_plugin(dataobject/convolution    convolve)
+-- 
+2.49.0

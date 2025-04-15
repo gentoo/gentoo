@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">kst</remote-id>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">graphics/kst-plot</remote-id>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kst</bugs-to>
 	</upstream>
 </pkgmetadata>

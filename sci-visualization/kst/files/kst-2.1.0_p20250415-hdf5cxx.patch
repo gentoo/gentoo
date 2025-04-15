@@ -1,0 +1,20 @@
+https://build.opensuse.org/projects/openSUSE:Factory/packages/kst/files/fix-hdf5-include-path.patch
+
+Subject: Fix a header path
+From: Antonio Larrosa <alarrosa@suse.com>
+
+We install H5Cpp.h in /usr/include so we need to fix the include line.
+
+Index: kst-plot/src/datasources/hdf5/hdf5.h
+===================================================================
+--- a/src/datasources/hdf5/hdf5.h
++++ b/src/datasources/hdf5/hdf5.h
+@@ -18,7 +18,7 @@
+ #include <dataplugin.h>
+ 
+ #include <QFileInfo>
+-#include <hdf5/serial/H5Cpp.h>
++#include <H5Cpp.h>
+ #include <exception>
+ 
+ #include "debug.h"
