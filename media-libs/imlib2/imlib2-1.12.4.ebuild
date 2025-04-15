@@ -5,7 +5,7 @@ EAPI=8
 
 # Must be bumped with media-plugins/imlib2_loaders!
 
-inherit multilib-minimal toolchain-funcs
+inherit libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/
@@ -56,6 +56,11 @@ BDEPEND="
 
 # default DOCS will haul README.in we do not need
 DOCS=( AUTHORS ChangeLog README TODO )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
