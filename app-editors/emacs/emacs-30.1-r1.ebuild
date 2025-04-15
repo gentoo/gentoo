@@ -25,7 +25,7 @@ else
 	# 27.0.9999            live ebuild (slot 27-vcs)
 	# 27.0.90              upstream prerelease snapshot (27-vcs)
 	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
-	if [[ ${PV} == *_pre* ]]; then
+	if [[ ${PV} =~ _pre ]]; then
 		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
