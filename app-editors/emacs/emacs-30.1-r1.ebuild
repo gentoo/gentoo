@@ -41,6 +41,9 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
+REQUIRED_USE="
+	jit? ( zlib )
+"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -98,10 +101,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
-	jit? (
-		sys-devel/gcc:=[jit(-)]
-		sys-libs/zlib
-	)
+	jit? ( sys-devel/gcc:=[jit(-)] )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -258,6 +258,7 @@ src_configure() {
 		$(use_with threads)
 		$(use_with tree-sitter)
 		$(use_with wide-int)
+		$(use_with zlib)
 	)
 
 	if use alsa; then
@@ -266,14 +267,6 @@ src_configure() {
 		myconf+=( --with-sound=alsa )
 	else
 		myconf+=( --with-sound=$(usex sound oss no) )
-	fi
-
-	if use jit; then
-		use zlib || ewarn \
-			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
-		myconf+=( --with-zlib )
-	else
-		myconf+=( $(use_with zlib) )
 	fi
 
 	# Emacs supports these window systems:
