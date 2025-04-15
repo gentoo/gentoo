@@ -485,7 +485,7 @@ src_test() {
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
-	mkdir "${T}"/gpg || die
+	mkdir -p "${T}"/gpg || die
 	local f
 	for f in browser extra ssh; do
 		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
