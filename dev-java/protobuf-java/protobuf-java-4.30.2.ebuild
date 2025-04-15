@@ -21,7 +21,7 @@ MY_PV="$(ver_cut 2-3)"
 MY_PV="${MY_PV/_rc/-rc}"
 TV="1.4.4"
 SRC_URI="
-	https://github.com/protocolbuffers/protobuf/archive/v${MY_PV}.tar.gz -> protobuf-${MY_PV}.tar.gz
+	https://github.com/protocolbuffers/protobuf/releases/download/v${MY_PV}/protobuf-${MY_PV}.tar.gz
 	test? (
 		https://repo1.maven.org/maven2/com/google/truth/truth/${TV}/truth-${TV}.jar
 	)
@@ -97,12 +97,19 @@ src_prepare() {
 	# Split the file in two parts, one for each run-protoc call
 	awk '/--java_out/{x="test-sources-build-"++i;}{print > x;}' \
 		java/core/generate-test-sources-build.xml || die
+
+	# Requires TestParameterInjector library, currently not available in Gentoo.
+	rm java/core/src/test/java/com/google/protobuf/CodedInputStreamTest.java || die
+
+	# java/core/src/test/java/editions_unittest/TestDelimited.java:2867:
+	# error: package editions_unittest.MessageImport does not exist
+	rm java/core/src/test/java/com/google/protobuf/TextFormatTest.java || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-Dprotobuf_BUILD_TESTS=OFF
-		-Dprotobuf_ABSL_PROVIDER=package
+		-Dprotobuf_LOCAL_DEPENDENCIES_ONLY=ON
 	)
 	if ! use system-protoc; then
 		cmake_src_configure
@@ -136,21 +143,17 @@ src_test() {
 	run-protoc @test-sources-build-2 \
 		|| die "run-protoc test-sources-build-2 failed"
 
-	# java/core/src/test/java/editions_unittest/TestDelimited.java:2867:
-	# error: package editions_unittest.MessageImport does not exist
-	rm java/core/src/test/java/com/google/protobuf/TextFormatTest.java || die
-
 	einfo "Running tests"
 	# Invalid test class 'map_test.MapInitializationOrderTest':
 	# 1. Test class should have exactly one public constructor
 	# Invalid test class 'protobuf_unittest.CachedFieldSizeTest':
 	# 1. Test class should have exactly one public constructor
 	pushd "${JAVA_TEST_SRC_DIR}" >/dev/null || die
-		local JAVA_TEST_RUN_ONLY=$(find ./* \
+		local JAVA_TEST_RUN_ONLY=$(find * \
 			-path "**/*Test.java" \
 			! -path "**/Abstract*Test.java" \
 			! -name "MapInitializationOrderTest.java" \
-			! -path '*protobuf_unittest/CachedFieldSizeTest.java'
+			! -name CachedFieldSizeTest.java
 			)
 	popd >/dev/null || die
 	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
