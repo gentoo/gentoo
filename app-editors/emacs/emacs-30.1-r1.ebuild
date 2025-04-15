@@ -252,6 +252,7 @@ src_configure() {
 		$(use_with games gameuser ":gamestat")
 		$(use_with gmp libgmp)
 		$(use_with gpm)
+		$(use_with !gtk xwidgets)
 		$(use_with jit native-compilation aot)
 		$(use_with kerberos) $(use_with kerberos kerberos5)
 		$(use_with lcms lcms2)
@@ -291,7 +292,6 @@ src_configure() {
 			--with-pgtk
 			--with-toolkit-scroll-bars #836392
 			--without-gconf
-			--without-xwidgets
 			$(use_with gsettings)
 			$(use_with harfbuzz)
 			$(use_with m17n-lib libotf)
@@ -334,7 +334,7 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=( --with-x-toolkit=gtk3 --without-xwidgets )
+			myconf+=( --with-x-toolkit=gtk3 )
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf+=( --with-x-toolkit=motif )
