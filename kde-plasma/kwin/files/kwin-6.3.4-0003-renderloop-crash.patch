@@ -1,0 +1,35 @@
+https://invent.kde.org/plasma/kwin/-/merge_requests/7496
+
+From 6d096dc5ad2e4a5fac6fb65552107473c0e55a6f Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Fri, 11 Apr 2025 12:30:12 +0000
+Subject: [PATCH] Fix a crash in RenderLoop::scheduleRepaint
+
+When kwin shuts down, the output layers may attempt to schedule a repaint
+after the workspace has been destroyed.
+
+SENTRY: KWIN-AYY
+
+
+(cherry picked from commit 534582e089d1dbed9a1e3d18031ac90cc364c570)
+
+Co-authored-by: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+---
+ src/core/renderloop.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/renderloop.cpp b/src/core/renderloop.cpp
+index f2ef3ea213b..d997e2bf737 100644
+--- a/src/core/renderloop.cpp
++++ b/src/core/renderloop.cpp
+@@ -263,7 +263,7 @@ void RenderLoop::scheduleRepaint(Item *item, RenderLayer *layer, OutputLayer *ou
+     }
+     const bool vrr = d->presentationMode == PresentationMode::AdaptiveSync || d->presentationMode == PresentationMode::AdaptiveAsync;
+     const bool tearing = d->presentationMode == PresentationMode::Async || d->presentationMode == PresentationMode::AdaptiveAsync;
+-    if ((vrr || tearing) && workspace()->activeWindow() && d->output) {
++    if ((vrr || tearing) && workspace() && workspace()->activeWindow() && d->output) {
+         Window *const activeWindow = workspace()->activeWindow();
+         if ((item || layer || outputLayer) && activeWindowControlsVrrRefreshRate() && item != activeWindow->surfaceItem()) {
+             d->delayedVrrTimer.start();
+-- 
+GitLab

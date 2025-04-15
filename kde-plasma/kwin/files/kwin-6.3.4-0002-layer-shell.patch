@@ -1,0 +1,92 @@
+https://invent.kde.org/plasma/kwin/-/merge_requests/7479
+
+From 6f9bc0f2bd51d8e70d0868858e02e3ac04498840 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Tue, 18 Mar 2025 19:11:22 +0100
+Subject: [PATCH 1/2] layershellv1window: close the window when the desired
+ output gets removed
+
+Workspace::outputRemoved also gets emitted when the output is turned off, and it
+doesn't require taking special care to turn the output off before removing it.
+
+(cherry picked from commit 4ee32d7f71de7f7f9a24c44b9dc4dd31fd3be98f)
+---
+ src/layershellv1window.cpp | 8 ++++----
+ src/layershellv1window.h   | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/layershellv1window.cpp b/src/layershellv1window.cpp
+index 0e044fcf183..b6e18dedd61 100644
+--- a/src/layershellv1window.cpp
++++ b/src/layershellv1window.cpp
+@@ -55,8 +55,8 @@ LayerShellV1Window::LayerShellV1Window(LayerSurfaceV1Interface *shellSurface,
+     connect(shellSurface->surface(), &SurfaceInterface::aboutToBeDestroyed,
+             this, &LayerShellV1Window::destroyWindow);
+ 
+-    connect(output, &Output::enabledChanged,
+-            this, &LayerShellV1Window::handleOutputEnabledChanged);
++    connect(workspace(), &Workspace::outputRemoved,
++            this, &LayerShellV1Window::handleOutputRemoved);
+ 
+     connect(shellSurface->surface(), &SurfaceInterface::sizeChanged,
+             this, &LayerShellV1Window::handleSizeChanged);
+@@ -338,9 +338,9 @@ void LayerShellV1Window::handleAcceptsFocusChanged()
+     }
+ }
+ 
+-void LayerShellV1Window::handleOutputEnabledChanged()
++void LayerShellV1Window::handleOutputRemoved(Output *output)
+ {
+-    if (!m_desiredOutput->isEnabled()) {
++    if (output == m_desiredOutput) {
+         closeWindow();
+         destroyWindow();
+     }
+diff --git a/src/layershellv1window.h b/src/layershellv1window.h
+index 923b5a6b4e0..9cdaa1d56a9 100644
+--- a/src/layershellv1window.h
++++ b/src/layershellv1window.h
+@@ -66,7 +66,7 @@ private:
+     void handleUnmapped();
+     void handleCommitted();
+     void handleAcceptsFocusChanged();
+-    void handleOutputEnabledChanged();
++    void handleOutputRemoved(Output *output);
+     void scheduleRearrange();
+     void activateScreenEdge();
+     void deactivateScreenEdge();
+-- 
+GitLab
+
+
+From dc9dcc06f75ef12bd6c05d0c549414a5c1d3acea Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Thu, 3 Apr 2025 08:25:31 +0300
+Subject: [PATCH 2/2] Break Workspace::outputRemoved connection when a layer
+ shell window is destroyed
+
+So the destroyWindow() function is not called again when the Workspace
+emits the outputRemoved signal.
+
+(cherry picked from commit 23626717185a560df20615a252b2aba266ad756a)
+---
+ src/layershellv1window.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/layershellv1window.cpp b/src/layershellv1window.cpp
+index b6e18dedd61..2282ac147b8 100644
+--- a/src/layershellv1window.cpp
++++ b/src/layershellv1window.cpp
+@@ -204,7 +204,9 @@ void LayerShellV1Window::destroyWindow()
+     }
+     m_shellSurface->disconnect(this);
+     m_shellSurface->surface()->disconnect(this);
+-    m_desiredOutput->disconnect(this);
++
++    disconnect(workspace(), &Workspace::outputRemoved,
++               this, &LayerShellV1Window::handleOutputRemoved);
+ 
+     markAsDeleted();
+     Q_EMIT closed();
+-- 
+GitLab

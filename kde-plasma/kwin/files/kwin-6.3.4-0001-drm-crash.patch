@@ -1,0 +1,44 @@
+https://mail.kde.org/pipermail/distributions/2025-April/001573.html
+https://invent.kde.org/plasma/kwin/-/commit/93bf2f98ae22e654d997c7140b7fe9936fa3f2d3
+
+From 93bf2f98ae22e654d997c7140b7fe9936fa3f2d3 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Thu, 10 Apr 2025 14:13:33 +0000
+Subject: [PATCH] backends/drm: also clean up pending commits with legacy
+ modesetting
+
+The thread is only created with atomic modesetting, but m_committed is set with
+legacy modesetting too, so it also has to be dealt with.
+
+This should address remaining cases of
+https://crash-reports.kde.org/share/issue/c27bccb6794a48349b42b70a4e655619/
+
+
+(cherry picked from commit d357c110f1d5d41f597bce731bb1b8f9eb8de598)
+
+Co-authored-by: Xaver Hugl <xaver.hugl@gmail.com>
+---
+ src/backends/drm/drm_commit_thread.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/backends/drm/drm_commit_thread.cpp b/src/backends/drm/drm_commit_thread.cpp
+index 2b23b59bb35..49a2085ae9e 100644
+--- a/src/backends/drm/drm_commit_thread.cpp
++++ b/src/backends/drm/drm_commit_thread.cpp
+@@ -301,10 +301,10 @@ DrmCommitThread::~DrmCommitThread()
+             m_pong.notify_all();
+         }
+         m_thread->wait();
+-        if (m_committed) {
+-            m_committed->setDefunct();
+-            m_gpu->addDefunctCommit(std::move(m_committed));
+-        }
++    }
++    if (m_committed) {
++        m_committed->setDefunct();
++        m_gpu->addDefunctCommit(std::move(m_committed));
+     }
+ }
+ 
+-- 
+GitLab

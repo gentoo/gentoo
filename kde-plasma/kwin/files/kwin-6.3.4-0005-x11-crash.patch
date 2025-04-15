@@ -1,0 +1,36 @@
+https://invent.kde.org/plasma/kwin/-/merge_requests/7498
+
+From 3be0acf56938800be682b0150214fcf9cc3da127 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Fri, 11 Apr 2025 14:23:02 +0000
+Subject: [PATCH] Disconnect committed signal in X11Window::associate()
+
+It's possible that a new surface can be assigned while the previous
+surface is still alive, in which case we want to ignore its committed
+signal.
+
+
+(cherry picked from commit 194cb54eba26e863d5e7c23bda1e2e146f839d9e)
+
+Co-authored-by: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+---
+ src/x11window.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/x11window.cpp b/src/x11window.cpp
+index ab9410bc7a..218bc76af9 100644
+--- a/src/x11window.cpp
++++ b/src/x11window.cpp
+@@ -5020,6 +5020,10 @@ void X11Window::updateWindowPixmap()
+ 
+ void X11Window::associate(XwaylandSurfaceV1Interface *shellSurface)
+ {
++    if (surface()) {
++        disconnect(surface(), &SurfaceInterface::committed, this, &X11Window::handleCommitted);
++    }
++
+     setSurface(shellSurface->surface());
+ 
+     if (surface()->isMapped()) {
+-- 
+GitLab
