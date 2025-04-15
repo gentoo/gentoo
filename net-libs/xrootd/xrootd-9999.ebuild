@@ -97,7 +97,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_SYSTEM_ISAL=TRUE
 		$(usex python "-DINSTALL_PYTHON_BINDINGS=FALSE" "")
 		-DXRDCEPH_SUBMODULE=$(usex ceph)
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex libxml2 "no" "yes")
@@ -163,9 +162,8 @@ src_test() {
 		')
 		# server fails to start due to long path to unix domain socket
 		$(usev scitokens '
-			XRootD::scitokens::setup
-			XRootD::scitokens::test
-			XRootD::scitokens::teardown
+			XRootD::scitokens
+			XRootD::tpc
 		')
 	)
 	cmake_src_test
