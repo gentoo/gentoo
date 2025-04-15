@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1+"
 # Based off the soname, e.g. /usr/lib64/libflint.so -> libflint.so.15
 SLOT="0/19"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc ntl test"
 
 RESTRICT="!test? ( test )"
