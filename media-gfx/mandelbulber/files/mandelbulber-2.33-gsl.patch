@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/834692
+https://github.com/buddhi1980/mandelbulber2/pull/972
+https://github.com/microsoft/GSL/issues/466
+
+By injecting -I/usr/include/gsl, `#include <algorithm>` starts to mean
+"use ms-gsl's algorithm" rather than the C++ stdlib one. But all of the
+includes for ms-gsl here are properly namespaced, e.g. <gsl/foo.h>, so
+we can drop the explicit -I*.
+--- a/makefiles/common.pri
++++ b/makefiles/common.pri
+@@ -122,7 +122,6 @@ macx:DEFINES += "SHARED_DIR_IS_APP_DIR"
+ # test hardcoded lib path for gsl in travis container 
+ #QMAKE_CXXFLAGS += -I/usr/include/gsl
+ 
+-QMAKE_CXXFLAGS += -I/usr/include/gsl
+ m1:QMAKE_CXXFLAGS += -I/opt/homebrew/include
+ 
+ # library linking
