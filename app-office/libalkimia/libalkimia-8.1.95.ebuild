@@ -15,7 +15,7 @@ https://community.kde.org/Alkimia"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/unstable/${KDE_ORG_NAME}/${KDE_ORG_NAME}-${PV}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="LGPL-2.1"
