@@ -1,0 +1,22 @@
+https://github.com/curl/curl/commit/4f3c22d77d752fea6ff9ab2706f70d58882ea466
+From: Stefan Eissing <stefan@eissing.org>
+Date: Fri, 4 Apr 2025 18:10:28 +0200
+Subject: [PATCH] https-connect, fix httpsrr target check
+
+The HTTPSRR check on the record's target was not working as it used the
+wrong index on the NUL byte if the target was not NULL.
+
+Fixes #16966
+Reported-by: Pavel Kropachev
+Closes #16968
+--- a/lib/cf-https-connect.c
++++ b/lib/cf-https-connect.c
+@@ -673,7 +673,7 @@ CURLcode Curl_cf_https_setup(struct Curl_easy *data,
+        (!conn->dns_entry->hinfo->target ||      /* for same host */
+         !conn->dns_entry->hinfo->target[0] ||
+         (conn->dns_entry->hinfo->target[0] == '.' &&
+-         !conn->dns_entry->hinfo->target[0])) &&
++         !conn->dns_entry->hinfo->target[1])) &&
+        (conn->dns_entry->hinfo->port < 0 ||    /* for same port */
+         conn->dns_entry->hinfo->port == conn->remote_port)) {
+       size_t i;

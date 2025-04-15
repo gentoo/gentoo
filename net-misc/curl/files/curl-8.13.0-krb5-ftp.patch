@@ -1,0 +1,19 @@
+https://github.com/curl/curl/commit/5caba3bd97a14b64d906ece77bc0e2b339161a1f
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Thu, 3 Apr 2025 08:49:20 +0200
+Subject: [PATCH] curl_krb5: only use functions if FTP is still enabled
+
+Reported-by: x1sc0 on github
+Fixes #16925
+Closes #16931
+--- a/lib/curl_krb5.h
++++ b/lib/curl_krb5.h
+@@ -39,7 +39,7 @@ struct Curl_sec_client_mech {
+ #define AUTH_CONTINUE   1
+ #define AUTH_ERROR      2
+ 
+-#ifdef HAVE_GSSAPI
++#if defined(HAVE_GSSAPI) && !defined(CURL_DISABLE_FTP)
+ void Curl_sec_conn_init(struct connectdata *);
+ void Curl_sec_conn_destroy(struct connectdata *);
+ int Curl_sec_read_msg(struct Curl_easy *data, struct connectdata *conn, char *,
