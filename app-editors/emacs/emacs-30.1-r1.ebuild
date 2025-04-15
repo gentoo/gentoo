@@ -43,6 +43,7 @@ LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif oss png selinux source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
 REQUIRED_USE="
 	?? ( alsa oss )
+	gui? ( ^^ ( aqua || ( X gtk ) ) )
 	jit? ( zlib )
 	X? ( ?? ( gtk motif || ( athena Xaw3d ) ) )
 "
@@ -529,7 +530,7 @@ src_install() {
 
 	dodoc README BUGS CONTRIBUTE
 
-	if use gui && use aqua; then
+	if use aqua; then
 		dodir /Applications/Gentoo
 		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 		mv nextstep/Emacs.app \
