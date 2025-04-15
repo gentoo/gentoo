@@ -12,4 +12,8 @@
 		<flag name="mp3">Sets runtime dependencies to support decoding MP3 audio.</flag>
 		<flag name="fallback">Sets runtime dependencies to support decoding "other" audio files.</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://sourceforge.net/projects/xwax/lists/xwax-devel</bugs-to>
+		<doc>https://wiki.xwax.org</doc>
+	</upstream>
 </pkgmetadata>
