@@ -35,7 +35,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="Apache-2.0"
 # format is 0/${CORE_SOVERSION//./}.${CPP_SOVERSION//./} , check top level CMakeLists.txt
 SLOT="0/46.$(ver_rs 1-2 '' "$(ver_cut 1-2)")"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="doc examples test systemd"
 RESTRICT="!test? ( test )"
 
