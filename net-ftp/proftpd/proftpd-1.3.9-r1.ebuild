@@ -33,7 +33,7 @@ S="${WORKDIR}/${P/_/}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse dso dynmasq exec ifsession ifversion ident ipv6
+IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse dso dynmasq exec ifsession ifversion ident
 	kerberos ldap log-forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
 	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique-id vroot"
 # Some tests are ran in chroot. Confuses sandbox.
@@ -246,7 +246,6 @@ src_configure() {
 		$(use_enable ctrls)
 		$(use_enable dso)
 		$(use_enable ident)
-		$(use_enable ipv6)
 		$(use_enable memcache)
 		$(use_enable ncurses)
 		$(use_enable nls)
