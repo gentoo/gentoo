@@ -44,6 +44,7 @@ IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm g
 REQUIRED_USE="
 	?? ( alsa oss )
 	jit? ( zlib )
+	X? ( ?? ( gtk motif || ( athena Xaw3d ) ) )
 "
 
 X_DEPEND="x11-libs/libICE
@@ -341,17 +342,9 @@ src_configure() {
 				Motif toolkit instead.
 			EOF
 			myconf+=( --with-x-toolkit=gtk3 --without-xwidgets )
-			for f in motif Xaw3d athena; do
-				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"gtk\" is set."
-			done
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf+=( --with-x-toolkit=motif )
-			for f in Xaw3d athena; do
-				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"motif\" is set."
-			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
 			myconf+=( --with-x-toolkit=lucid $(use_with Xaw3d xaw3d) )
