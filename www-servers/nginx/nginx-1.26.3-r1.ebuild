@@ -41,10 +41,10 @@ HTTP_HEADERS_MORE_MODULE_P="ngx_http_headers_more-${HTTP_HEADERS_MORE_MODULE_PV}
 HTTP_HEADERS_MORE_MODULE_URI="https://github.com/openresty/headers-more-nginx-module/archive/v${HTTP_HEADERS_MORE_MODULE_PV}.tar.gz"
 HTTP_HEADERS_MORE_MODULE_WD="${WORKDIR}/headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_PV}"
 
-# http_cache_purge (https://github.com/nginx-modules/ngx_cache_purge, BSD-2 license)
-HTTP_CACHE_PURGE_MODULE_PV="2.5.3"
+# http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, https://github.com/FRiCKLE/ngx_cache_purge, BSD-2 license)
+HTTP_CACHE_PURGE_MODULE_PV="2.3"
 HTTP_CACHE_PURGE_MODULE_P="ngx_http_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
-HTTP_CACHE_PURGE_MODULE_URI="https://github.com/nginx-modules/ngx_cache_purge/archive/refs/tags/${HTTP_CACHE_PURGE_MODULE_PV}.tar.gz"
+HTTP_CACHE_PURGE_MODULE_URI="http://labs.frickle.com/files/ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}.tar.gz"
 HTTP_CACHE_PURGE_MODULE_WD="${WORKDIR}/ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 
 # http_slowfs_cache (http://labs.frickle.com/nginx_ngx_slowfs_cache/, BSD-2 license)
@@ -166,7 +166,7 @@ GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOI
 GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
 
 # njs-module (https://github.com/nginx/njs, as-is)
-NJS_MODULE_PV="0.8.9"
+NJS_MODULE_PV="0.8.10"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
@@ -219,8 +219,10 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+SLOT="0"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+
+RESTRICT="!test? ( test )"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
 	fastcgi geo grpc gzip limit_req limit_conn map memcached mirror
@@ -261,8 +263,6 @@ NGINX_MODULES_3RD="
 	stream_geoip2
 	stream_javascript
 "
-
-RESTRICT="!test? ( test )"
 
 IUSE="aio debug +http +http2 http3 +http-cache ktls libatomic pcre +pcre2 pcre-jit rtmp selinux ssl test threads vim-syntax"
 
@@ -336,7 +336,7 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	app-misc/mime-types[nginx]
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
@@ -445,6 +445,12 @@ src_prepare() {
 
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${FILESDIR}"/http_upstream_check-nginx-1.11.5+.patch
+	fi
+
+	if use nginx_modules_http_cache_purge; then
+		cd "${HTTP_CACHE_PURGE_MODULE_WD}" || die
+		eapply "${FILESDIR}"/http_cache_purge-1.11.6+.patch
+		cd "${S}" || die
 	fi
 
 	if use nginx_modules_http_upload_progress; then
@@ -740,7 +746,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/nginx.service-r1 nginx.service
 
 	doman man/nginx.8
-	dodoc CHANGES* README.md
+	dodoc CHANGES* README
 
 	# just keepdir. do not copy the default htdocs files (bug #449136)
 	keepdir /var/www/localhost
@@ -786,7 +792,7 @@ src_install() {
 
 	if use nginx_modules_http_cache_purge; then
 		docinto ${HTTP_CACHE_PURGE_MODULE_P}
-		dodoc "${HTTP_CACHE_PURGE_MODULE_WD}"/{CHANGES,README.md}
+		dodoc "${HTTP_CACHE_PURGE_MODULE_WD}"/{CHANGES,README.md,TODO.md}
 	fi
 
 	if use nginx_modules_http_slowfs_cache; then
@@ -802,6 +808,12 @@ src_install() {
 	if use nginx_modules_http_lua; then
 		docinto ${HTTP_LUA_MODULE_P}
 		dodoc "${HTTP_LUA_MODULE_WD}"/README.markdown
+		insinto /etc/nginx
+		newins - 00-config.lua_vhost.conf <<-EOF
+			lua_package_path "/etc/nginx/?.lua;;";
+		EOF
+		insinto /etc/nginx/resty
+		touch "${ED}"/etc/nginx/resty/core.lua
 	fi
 
 	if use nginx_modules_http_auth_pam; then
