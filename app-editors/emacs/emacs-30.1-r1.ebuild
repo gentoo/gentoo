@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif oss png selinux source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
 REQUIRED_USE="
 	jit? ( zlib )
 "
@@ -262,11 +262,11 @@ src_configure() {
 	)
 
 	if use alsa; then
-		use sound || ewarn \
-			"USE flag \"alsa\" overrides \"-sound\"; enabling sound support."
+		use oss || ewarn \
+			"USE flag \"alsa\" overrides \"-oss\"; enabling sound support."
 		myconf+=( --with-sound=alsa )
 	else
-		myconf+=( --with-sound=$(usex sound oss no) )
+		myconf+=( --with-sound=$(usex oss oss no) )
 	fi
 
 	# Emacs supports these window systems:
