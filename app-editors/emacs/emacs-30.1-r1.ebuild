@@ -44,6 +44,7 @@ IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm g
 REQUIRED_USE="
 	?? ( alsa oss )
 	gui? ( ^^ ( aqua || ( X gtk ) ) )
+	motif? ( xpm )
 	jit? ( zlib )
 	X? ( ?? ( gtk motif || ( athena Xaw3d ) ) )
 "
@@ -77,7 +78,6 @@ X_DEPEND="x11-libs/libICE
 	!gtk? (
 		motif? (
 			>=x11-libs/motif-2.3:0
-			x11-libs/libXpm
 			x11-libs/libXmu
 			x11-libs/libXt
 		)
