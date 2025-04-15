@@ -251,6 +251,10 @@ src_configure() {
 		use arm64 && tc-is-gcc && filter-flags '-march=*' '-mcpu=*'
 	fi
 
+	# chromium passes this by default, but qtwebengine does not and it may
+	# "possibly" get enabled by some paths and cause issues (bug #953111)
+	append-ldflags -Wl,-z,noexecstack
+
 	export NINJAFLAGS=$(get_NINJAOPTS)
 	[[ ${NINJA_VERBOSE^^} == OFF ]] || NINJAFLAGS+=" -v"
 
