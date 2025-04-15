@@ -236,6 +236,7 @@ src_configure() {
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX}
 		--localstatedir="${EPREFIX}"/var
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}"
+		--disable-ns-self-contained # effective only with USE=aqua
 		--without-compress-install
 		--without-hesiod
 		--without-pop
@@ -283,8 +284,7 @@ src_configure() {
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
 		myconf+=(
-			--with-ns --disable-ns-self-contained
-			--without-x --without-pgtk
+			--with-ns --without-x --without-pgtk
 		)
 	elif use gtk && ! use X; then
 		einfo "Configuring to build with pure GTK (without X11) support"
