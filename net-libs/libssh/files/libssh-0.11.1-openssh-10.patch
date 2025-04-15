@@ -1,0 +1,48 @@
+https://gitlab.com/libssh/libssh-mirror/-/issues/298
+https://gitlab.com/libssh/libssh-mirror/-/commit/af10857aa3216f40c5c2e5d7116803fb03c166f9
+
+From af10857aa3216f40c5c2e5d7116803fb03c166f9 Mon Sep 17 00:00:00 2001
+From: Norbert Pocs <norbertpocs0@gmail.com>
+Date: Fri, 11 Apr 2025 09:04:40 +0200
+Subject: [PATCH] CmakeLists: Fix multiple digit major version for OpenSSH
+
+Signed-off-by: Norbert Pocs <norbertpocs0@gmail.com>
+Reviewed-by: Jakub Jelen <jjelen@redhat.com>
+---
+ tests/CMakeLists.txt | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 8d4e94b69..e8b196b83 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -104,9 +104,10 @@ add_subdirectory(unittests)
+ find_program(SSH_EXECUTABLE NAMES ssh)
+ if (SSH_EXECUTABLE)
+     execute_process(COMMAND ${SSH_EXECUTABLE} -V ERROR_VARIABLE OPENSSH_VERSION_STR)
+-    string(REGEX REPLACE "^.*OpenSSH_([0-9]).[0-9].*$" "\\1" OPENSSH_VERSION_MAJOR "${OPENSSH_VERSION_STR}")
+-    string(REGEX REPLACE "^.*OpenSSH_[0-9].([0-9]).*$" "\\1" OPENSSH_VERSION_MINOR "${OPENSSH_VERSION_STR}")
++    string(REGEX REPLACE "^.*OpenSSH_([0-9]+).[0-9].*$" "\\1" OPENSSH_VERSION_MAJOR "${OPENSSH_VERSION_STR}")
++    string(REGEX REPLACE "^.*OpenSSH_[0-9]+.([0-9]).*$" "\\1" OPENSSH_VERSION_MINOR "${OPENSSH_VERSION_STR}")
+     set(OPENSSH_VERSION "${OPENSSH_VERSION_MAJOR}.${OPENSSH_VERSION_MINOR}")
++    add_definitions(-DOPENSSH_VERSION_MAJOR=${OPENSSH_VERSION_MAJOR} -DOPENSSH_VERSION_MINOR=${OPENSSH_VERSION_MINOR})
+     if("${OPENSSH_VERSION}" VERSION_LESS "6.3")
+         # ssh - Q was introduced in 6.3
+         message("Version less than 6.3, hardcoding cipher list")
+@@ -207,14 +208,6 @@ if (CLIENT_TESTING OR SERVER_TESTING)
+                     /usr/bin
+                     /usr/local/bin)
+ 
+-    find_program(SSH_EXECUTABLE NAMES ssh)
+-    if (SSH_EXECUTABLE)
+-        execute_process(COMMAND ${SSH_EXECUTABLE} -V ERROR_VARIABLE OPENSSH_VERSION_STR)
+-        string(REGEX REPLACE "^.*OpenSSH_([0-9]).[0-9].*$" "\\1" OPENSSH_VERSION_MAJOR "${OPENSSH_VERSION_STR}")
+-        string(REGEX REPLACE "^.*OpenSSH_[0-9].([0-9]).*$" "\\1" OPENSSH_VERSION_MINOR "${OPENSSH_VERSION_STR}")
+-        add_definitions(-DOPENSSH_VERSION_MAJOR=${OPENSSH_VERSION_MAJOR} -DOPENSSH_VERSION_MINOR=${OPENSSH_VERSION_MINOR})
+-    endif()
+-
+     set(LOCAL_USER "nobody")
+     set(LOCAL_UID "65533")
+     find_program(ID_EXECUTABLE NAMES id)
+-- 
+GitLab

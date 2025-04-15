@@ -39,6 +39,10 @@ BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 DOCS=( AUTHORS CHANGELOG README )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.11.1-openssh-10.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
