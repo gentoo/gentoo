@@ -41,6 +41,9 @@ src_configure() {
 		-DLLVM_ENABLE_RUNTIMES="flang-rt"
 		# this package forces NO_DEFAULT_PATHS
 		-DLLVM_BINARY_DIR="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+		# set correct install paths
+		-DFLANG_RT_INSTALL_RESOURCE_PATH="/usr/lib/clang/${LLVM_MAJOR}"
+		-DLLVM_DEFAULT_TARGET_TRIPLE="${CHOST}"
 
 		-DFLANG_RT_INCLUDE_TESTS=$(usex test)
 	)
@@ -58,15 +61,4 @@ src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-flang-rt
-}
-
-src_install() {
-	cmake_src_install
-
-	# in standalone build, the library is installed to (incorrect) resource dir
-	# but the driver only looks for it in lib (sigh)
-	# https://github.com/llvm/llvm-project/issues/127538
-	mkdir -p "${ED}/usr/lib/llvm/${LLVM_MAJOR}" || die
-	mv "${ED}/usr/$(get_libdir)/clang/${LLVM_MAJOR}/lib"/* \
-		"${ED}/usr/lib/llvm/${LLVM_MAJOR}/lib" || die
 }
