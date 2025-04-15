@@ -245,6 +245,7 @@ src_configure() {
 		--with-sound=$(usev alsa || usev oss || printf no)
 		$(use_enable acl)
 		$(use_enable xattr)
+		$(use_with aqua ns)
 		$(use_with dbus)
 		$(use_with dynamic-loading modules)
 		$(use_with games gameuser ":gamestat")
@@ -263,6 +264,7 @@ src_configure() {
 		$(use_with tree-sitter)
 		$(use_with wide-int)
 		$(use_with zlib)
+		$(use_with X x)
 	)
 
 	# Emacs supports these window systems:
@@ -278,18 +280,14 @@ src_configure() {
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
-		myconf+=(
-			--without-x --without-pgtk --without-ns
-		)
+		myconf+=( --without-pgtk )
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
-		myconf+=(
-			--with-ns --without-x --without-pgtk
-		)
+		myconf+=( --without-pgtk )
 	elif use gtk && ! use X; then
 		einfo "Configuring to build with pure GTK (without X11) support"
 		myconf+=(
-			--with-pgtk --without-x --without-ns
+			--with-pgtk
 			--with-toolkit-scroll-bars #836392
 			--without-gconf
 			--without-xwidgets
@@ -301,7 +299,7 @@ src_configure() {
 	else
 		# X11
 		myconf+=(
-			--with-x --without-pgtk --without-ns
+			--without-pgtk
 			--without-gconf
 			$(use_with gsettings)
 			$(use_with toolkit-scroll-bars)
