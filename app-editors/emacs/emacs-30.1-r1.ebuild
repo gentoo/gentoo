@@ -220,7 +220,7 @@ src_prepare() {
 }
 
 src_configure() {
-	replace-flags "-O[3-9]" -O2			#839405
+	replace-flags "-O[3-9]" -O2 #839405
 
 	# We want floating-point arithmetic to be correct #933380
 	replace-flags -Ofast -O2
@@ -398,7 +398,7 @@ src_compile() {
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src
-		emake lib	   # Cross-compile dependencies first for timestamps
+		emake lib # Cross-compile dependencies first for timestamps
 		# Save native build tools in the cross-directory
 		cp "${S}-build"/lib-src/make-{docfile,fingerprint} lib-src || die
 		# Specify the native Emacs to compile lisp
