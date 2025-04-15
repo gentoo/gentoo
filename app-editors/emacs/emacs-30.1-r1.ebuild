@@ -43,6 +43,7 @@ LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif oss png selinux source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
 REQUIRED_USE="
 	?? ( alsa oss )
+	?? ( gfile inotify )
 	gui? ( ^^ ( aqua || ( X gtk ) ) )
 	motif? ( xpm )
 	jit? ( zlib )
@@ -99,9 +100,9 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	games? ( acct-group/gamestat )
+	gfile? ( >=dev-libs/glib-2.28.6 )
 	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
-	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	jit? ( sys-devel/gcc:=[jit(-)] )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
@@ -239,7 +240,7 @@ src_configure() {
 		--without-hesiod
 		--without-pop
 		--with-pdumper
-		--with-file-notification=$(usev inotify || usev gfile || echo no)
+		--with-file-notification=$(usev inotify || usev gfile || printf no)
 		--with-sound=$(usev alsa || usev oss || printf no)
 		$(use_enable acl)
 		$(use_enable xattr)
