@@ -24,6 +24,8 @@ SLOT="0/3"	# subslot is SOVERSION
 IUSE="+cryptsetup device-mapper escrow gtk-doc introspection lvm +nvme test +tools"
 RESTRICT="!test? ( test )"
 
+# sys-fs/e2fsprogs: required by --with-fs
+# virtual/libudev: required at top-level
 RDEPEND="
 	>=dev-libs/glib-2.42.2
 	dev-libs/libbytesize
@@ -31,6 +33,8 @@ RDEPEND="
 	>=sys-apps/kmod-19
 	>=sys-apps/util-linux-2.27
 	>=sys-block/parted-3.1
+	sys-fs/e2fsprogs:=
+	virtual/libudev:=
 	cryptsetup? (
 		escrow? (
 			>=dev-libs/nss-3.18.0
