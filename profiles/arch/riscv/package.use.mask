@@ -1,6 +1,16 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone (2025-04-15)
+# drop dev-ml test 
+dev-ml/duration test
+dev-ml/luv test
+dev-ml/ocaml-base64 test
+dev-ml/opam-0install-cudf test
+dev-ml/opam-file-format test
+dev-ml/spdx_licenses test
+dev-ml/yojson test
+
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
