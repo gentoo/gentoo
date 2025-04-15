@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupne@gentoo.org> (2025-04-15)
+# test depend on packages only 0.14 is stable
+dev-ml/dune test
+dev-ml/dune-private-libs test
+dev-ml/duration test
+dev-ml/luv test
+dev-ml/ocaml-base64 test
+dev-ml/opam-file-format test
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-26)
 # Dependencies e.g. bindgen not stable here.
 dev-build/meson test-full
