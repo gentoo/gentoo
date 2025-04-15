@@ -45,6 +45,10 @@ BDEPEND="
 
 DOCS=( docs/README.txt )
 
+PATCHES=(
+	"${FILESDIR}/${P}"-disable-upstream-flags.patch
+)
+
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
