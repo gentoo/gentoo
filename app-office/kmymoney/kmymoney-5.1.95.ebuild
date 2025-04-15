@@ -16,7 +16,7 @@ SRC_URI="mirror://kde/unstable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="calendar hbci holidays sql sqlcipher"
 [[ ${KDE_BUILD_TYPE} = live ]] && IUSE+=" experimental"
 
