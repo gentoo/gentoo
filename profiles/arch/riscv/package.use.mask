@@ -1,7 +1,7 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Alfredo Tupone (2025-04-15)
+# Alfredo Tupone <tupone@gentoo.org> (2025-04-15)
 # drop dev-ml test 
 dev-ml/duration test
 dev-ml/luv test
