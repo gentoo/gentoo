@@ -18,8 +18,8 @@ PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
 
-inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
-		pax-utils xdg-utils
+inherit eapi9-ver flag-o-matic linux-info toolchain-funcs python-r1 udev fcaps \
+		readme.gentoo-r1 pax-utils xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	QEMU_DOCS_PREBUILT=0
@@ -47,7 +47,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	[[ "${PV}" != *_rc* ]] && KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+	[[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -66,14 +66,13 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
 	smartcard snappy spice ssh static-user systemtap test udev usb
-	usbredir vde +vhost-net virgl virtfs +vnc vte xattr xdp xen
+	usbredir vde +vhost-net virgl virtfs +vnc vte wayland X xattr xdp xen
 	zstd"
 
 COMMON_TARGETS="
 	aarch64
 	alpha
 	arm
-	cris
 	hppa
 	i386
 	loongarch64
@@ -185,7 +184,7 @@ SOFTMMU_TOOLS_DEPEND="
 		dev-libs/nettle:=[static-libs(+)]
 	)
 	gtk? (
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[wayland?,X?]
 		vte? ( x11-libs/vte:2.91 )
 	)
 	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
@@ -317,12 +316,10 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-9.1.0-capstone-include-path.patch
-	"${FILESDIR}"/${PN}-9.0.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${PN}-9.2.0-capstone-include-path.patch
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
-	"${FILESDIR}"/${PN}-9.0.0-glibc-2.41.patch
-
+	"${FILESDIR}"/${PN}-7.2.16-optionrom-pass-Wl-no-error-rwx-segments.patch
 )
 
 QA_PREBUILT="
@@ -479,6 +476,10 @@ src_prepare() {
 	# Use correct toolchain to fix cross-compiling
 	tc-export AR AS LD NM OBJCOPY PKG_CONFIG RANLIB STRINGS
 	export WINDRES=${CHOST}-windres
+
+	# defang automagic dependencies
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
@@ -679,6 +680,7 @@ qemu_src_configure() {
 			--disable-tools
 			--enable-cap-ng
 			--enable-seccomp
+			--disable-libcbor
 		)
 		local static_flag="none"
 		;;
@@ -932,16 +934,6 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-firmware_abi_change() {
-	local pv
-	for pv in ${REPLACING_VERSIONS}; do
-		if ver_test ${pv} -lt ${FIRMWARE_ABI_VERSION}; then
-			return 0
-		fi
-	done
-	return 1
-}
-
 pkg_postinst() {
 	if [[ -n ${softmmu_targets} ]] && use kernel_linux; then
 		udev_reload
@@ -955,7 +947,7 @@ pkg_postinst() {
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
 
-	if use pin-upstream-blobs && firmware_abi_change; then
+	if use pin-upstream-blobs && ver_replacing -lt ${FIRMWARE_ABI_VERSION}; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
 
 		if has_version 'sys-firmware/edk2-bin'; then
