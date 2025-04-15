@@ -1,0 +1,34 @@
+https://github.com/libffi/libffi/pull/899
+
+From 9991e8312b2cb4d1a9d0842ec9440c5e606f8cde Mon Sep 17 00:00:00 2001
+Message-ID: <9991e8312b2cb4d1a9d0842ec9440c5e606f8cde.1744688368.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Apr 2025 04:37:09 +0100
+Subject: [PATCH] pa: add .note.GNU-stack marker to linux.S
+
+Similarly to f515eac04cf8e5f594d5d9dee5fb7dfc3a186a4c, add a .note.GNU-stack
+marker to pa/linux.S as it doesn't need an executable stack. Absence of the
+note means that GNU Binutils will consider it as needing an executable stack
+and mark it as such automatically.
+
+Bug: https://bugs.gentoo.org/953805
+Bug: https://github.com/libffi/libffi/issues/898
+---
+ src/pa/linux.S | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/pa/linux.S b/src/pa/linux.S
+index 2d3b036..fdd4332 100644
+--- a/src/pa/linux.S
++++ b/src/pa/linux.S
+@@ -425,3 +425,7 @@ ffi_closure_pa32:
+ 
+ 	.align 4
+ .LEFDE2:
++
++#if defined(__ELF__) && defined(__linux__)
++.section .note.GNU-stack,"",%progbits
++#endif
+-- 
+2.49.0
+
