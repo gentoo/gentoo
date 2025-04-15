@@ -30,7 +30,7 @@ DEPEND="
 	app-arch/zstd:=
 	dev-cpp/abseil-cpp:=
 	dev-libs/libpcre2:=
-	>=dev-libs/protobuf-3.0.0:=
+	<dev-libs/protobuf-30:=
 	sys-libs/zlib:=
 	virtual/libusb:1=
 "
