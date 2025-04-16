@@ -116,10 +116,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-2.1.init" openvpn
 	newconfd "${FILESDIR}/${PN}-2.1.conf" openvpn
 
-	# install examples, controlled by the respective useflag
 	if use examples; then
-		# (is the below comment relevant anymore?)
-		## dodoc does not supportly support directory traversal, #15193
 		docinto examples
 		dodoc -r contrib sample
 	fi
