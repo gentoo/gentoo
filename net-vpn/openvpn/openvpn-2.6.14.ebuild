@@ -19,12 +19,11 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="dco down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
+IUSE="dco down-root examples inotify iproute2 +lz4 +lzo mbedtls"
 IUSE+=" pam pkcs11 +plugins selinux systemd test"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	^^ ( openssl mbedtls )
 	pkcs11? ( !mbedtls )
 	!plugins? ( !pam !down-root )
 	inotify? ( plugins )
@@ -38,7 +37,7 @@ COMMON_DEPEND="
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
 	mbedtls? ( net-libs/mbedtls:0= )
-	openssl? ( >=dev-libs/openssl-1.0.2:0= )
+	!mbedtls? ( >=dev-libs/openssl-1.0.2:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )
@@ -73,20 +72,13 @@ src_prepare() {
 }
 
 src_configure() {
-	local -a myeconfargs
-
-	if ! use mbedtls; then
-		myeconfargs+=(
-			$(use_enable pkcs11)
-		)
-	fi
-
-	myeconfargs+=(
+	local myeconfargs=(
 		$(use_enable inotify async-push)
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
 		$(use_enable lz4)
 		$(use_enable lzo)
 		$(use_enable plugins)
+		$(use_enable pkcs11)
 		$(use_enable iproute2)
 		$(use_enable pam plugin-auth-pam)
 		$(use_enable down-root plugin-down-root)
