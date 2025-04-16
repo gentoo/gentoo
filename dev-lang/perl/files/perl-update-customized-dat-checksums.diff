@@ -1,0 +1,14 @@
+diff -Naur a/t/porting/customized.dat b/t/porting/customized.dat
+--- a/t/porting/customized.dat	2024-04-17 07:55:44.817648181 -0000
++++ b/t/porting/customized.dat	2024-04-17 07:55:55.146770509 -0000
+@@ -3,8 +3,8 @@
+ #     ./perl -I../lib porting/customized.t --regen
+ AutoLoader cpan/AutoLoader/t/02AutoSplit.t bb90cda13b88599ad45de4b45799d5218afcb6d8
+ Compress::Raw::Bzip2 cpan/Compress-Raw-Bzip2/Bzip2.xs 76ad65475e73a545d0e1513e3dfdc4033db3c7c0
+-Compress::Raw::Zlib cpan/Compress-Raw-Zlib/lib/Compress/Raw/Zlib.pm 4198f92e2880d36d6cef4f1be216005b6738ada8
+-Compress::Raw::Zlib cpan/Compress-Raw-Zlib/Zlib.xs 2ed95faab364703f6b93f7ffff6e0f2a2b2adedd
++Compress::Raw::Zlib cpan/Compress-Raw-Zlib/lib/Compress/Raw/Zlib.pm 8a16e70959c6936e3289df0348808e8320571213
++Compress::Raw::Zlib cpan/Compress-Raw-Zlib/Zlib.xs cd6a5ede2f1a66588df4bf3f3205e73af809c4e2
+ Digest::MD5 cpan/Digest-MD5/MD5.pm cf2fd9d327f3e314e9e66bb6ecb7a62b4ec72767
+ Digest::MD5 cpan/Digest-MD5/MD5.xs dc40839d25ba5e2d6f42fc9b81b409f1d0dbfb0e
+ ExtUtils::Constant cpan/ExtUtils-Constant/lib/ExtUtils/Constant/Base.pm 7560e1018f806db5689dee78728ccb8374aea741
