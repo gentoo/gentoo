@@ -158,13 +158,13 @@ src_configure() {
 
 src_compile() {
 	# -j1 for bug #902991; it clobbers object files in parallel
-	emake -j5 -C "${core_build_dir}"
-	emake -j5 -C "${plugins_build_dir}"
+	emake -j1 -C "${core_build_dir}"
+	emake -j1 -C "${plugins_build_dir}"
 }
 
 src_install() {
-	emake -j5 -C "${core_build_dir}" INSTALL_ROOT="${D}" install
-	emake -j5 -C "${plugins_build_dir}" INSTALL_ROOT="${D}" install
+	emake -j1 -C "${core_build_dir}" INSTALL_ROOT="${D}" install
+	emake -j1 -C "${plugins_build_dir}" INSTALL_ROOT="${D}" install
 
 	if use test; then
 		# remove test artifacts that must not be installed
