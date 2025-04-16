@@ -6,6 +6,12 @@
 
 # New entries go on top.
 
+# Matt Jolly <kangie@gentoo.org> (2025-04-16)
+# Older versions of freeciv build an incompatible client and
+# server with this USE enabled.
+# Bug #937565
+<games-strategy/freeciv-3.2.0 json
+
 # Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
 # Upstream is dead and broken. All 'whatsapp' deps
 # will be last-rited on 2025-04-28.
