@@ -1,9 +1,9 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop linux-mod-r1 xdg
+inherit desktop dkms xdg
 
 DESCRIPTION="Use your phone or tablet as webcam with a v4l device driver and app"
 HOMEPAGE="https://www.dev47apps.com/droidcam/linux/"
@@ -80,7 +80,7 @@ src_compile() {
 		KERNEL_DIR="${KV_OUT_DIR}"
 	)
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_test() {
@@ -115,7 +115,7 @@ src_install() {
 		fi
 	fi
 
-	linux-mod-r1_src_install
+	dkms_src_install
 }
 
 pkg_preinst() {
@@ -125,7 +125,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	if use gtk; then
 		xdg_pkg_postinst
 	else

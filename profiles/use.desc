@@ -66,6 +66,7 @@ dedicated - Add support for dedicated game servers (some packages do not provide
 dga - Add DGA (Direct Graphic Access) support for X
 dist-kernel - Enable subslot rebuilds on Distribution Kernel upgrades
 djvu - Support DjVu, a PDF-like document format esp. suited for scanned documents
+dkms - Manage external kernel modules with sys-kernel/dkms
 doc - Add extra documentation (API, Javadoc, etc). It is recommended to enable per package instead of globally
 dri - Enable direct rendering: used for accelerated 3D and some 2D, like DMA
 dts - Enable DTS Coherent Acoustics decoder support

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 DESCRIPTION="Kernel modules for TUXEDO laptops"
 HOMEPAGE="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
@@ -62,5 +62,5 @@ src_compile() {
 	)
 	local modargs=( KDIR=${KV_OUT_DIR} )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }

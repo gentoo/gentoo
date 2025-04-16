@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info linux-mod-r1
+inherit dkms
 
 DESCRIPTION="device that allows access to Linux kernel cryptographic drivers"
 HOMEPAGE="http://cryptodev-linux.org/"
@@ -42,11 +42,11 @@ src_compile() {
 	local modlist=( cryptodev="extra:${S}" )
 	local modargs=( KERNEL_DIR="${KV_OUT_DIR}" )
 
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	insinto /usr/include/crypto
 	doins crypto/cryptodev.h

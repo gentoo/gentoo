@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-22)
+# DKMS is available here
+-dkms
+
 # Sam James <sam@gentoo.org> (2025-02-19)
 # x11-drivers/xf86-input-wacom is available here
 -input_devices_wacom

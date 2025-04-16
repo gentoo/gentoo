@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-26)
+# Stable mask until things have settled and the documentation is done.
+dkms
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
 # KDE Frameworks is not stable
 kde

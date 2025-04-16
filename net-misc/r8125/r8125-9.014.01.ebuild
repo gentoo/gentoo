@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 DESCRIPTION="r8125 vendor driver for Realtek RTL8125 PCI-E NICs"
 HOMEPAGE="https://www.realtek.com/Download/List?cate_id=584"
@@ -37,5 +37,5 @@ src_compile() {
 		ENABLE_RX_PACKET_FRAGMENT=y
 	)
 
-	linux-mod-r1_src_compile
+	dkms_src_compile --no-kernelrelease
 }

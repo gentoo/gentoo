@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit readme.gentoo-r1 systemd udev xdg-utils distutils-r1 linux-mod-r1
+inherit dkms readme.gentoo-r1 systemd udev xdg-utils distutils-r1
 
 DESCRIPTION="Drivers and user-space daemon to control Razer devices on GNU/Linux"
 HOMEPAGE="https://openrazer.github.io/
@@ -94,6 +94,7 @@ src_prepare() {
 
 	# Remove bad tests.
 	rm daemon/tests/test_effect_sync.py || die
+	mv install_files/dkms/dkms.conf dkms.conf || die
 }
 
 src_compile() {
@@ -104,7 +105,7 @@ src_compile() {
 	local -a modlist=(
 		{razeraccessory,razerkbd,razerkraken,razermouse}="hid:${S}:driver"
 	)
-	linux-mod-r1_src_compile
+	dkms_src_compile
 
 	if use daemon ; then
 		distutils-r1_src_compile
@@ -122,7 +123,7 @@ src_test() {
 }
 
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	udev_dorules install_files/udev/99-razer.rules
 	exeinto "$(get_udevdir)"
@@ -154,7 +155,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 
 	if use daemon ; then

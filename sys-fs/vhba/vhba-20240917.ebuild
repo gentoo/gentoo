@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1 udev
+inherit dkms udev
 
 MY_P=vhba-module-${PV}
 DESCRIPTION="Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite"
@@ -24,21 +24,21 @@ DEPEND="
 
 CONFIG_CHECK="~BLK_DEV_SR ~CHR_DEV_SG"
 
-src_compile() {
-	local modlist=( vhba )
-	local modargs=( KDIR="${KV_OUT_DIR}" )
-
-	linux-mod-r1_src_compile
-}
-
 src_prepare() {
 	default
 	# Avoid -Werror problems
 	sed -i -e '/ccflags/s/-Werror/-Wall/' Makefile || die "sed failed"
 }
 
+src_compile() {
+	local modlist=( vhba )
+	local modargs=( KDIR="${KV_OUT_DIR}" )
+
+	dkms_src_compile
+}
+
 src_install() {
-	linux-mod-r1_src_install
+	dkms_src_install
 
 	einfo "Generating udev rules ..."
 	udev_newrules - 69-vhba.rules <<-EOF
@@ -49,7 +49,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 	udev_reload
 }
 

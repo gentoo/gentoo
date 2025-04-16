@@ -1,9 +1,9 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit dkms
 
 COMMIT_HASH="cfff3d242c11dc3ebfa70e7771ee1c094bf2f368"
 DESCRIPTION="Kernel module to expose more Framework Laptop stuff"
@@ -40,11 +40,11 @@ src_compile() {
 	local modlist=(
 		framework_laptop
 	)
-	linux-mod-r1_src_compile
+	dkms_src_compile
 }
 
 pkg_postinst() {
-	linux-mod-r1_pkg_postinst
+	dkms_pkg_postinst
 
 	#if kernel_is -lt 6 7 0; then
 		ewarn "For the Framework Laptop 13 AMD Ryzen 7040 series and the Framework Laptop 16a,"
