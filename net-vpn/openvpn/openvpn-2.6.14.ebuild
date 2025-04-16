@@ -105,7 +105,7 @@ src_test() {
 src_install() {
 	default
 
-	find "${ED}/usr" -name '*.la' -delete || die
+	find "${ED}/usr" -type f -name "*.la" -delete || die
 
 	# Install some helper scripts
 	keepdir /etc/openvpn
