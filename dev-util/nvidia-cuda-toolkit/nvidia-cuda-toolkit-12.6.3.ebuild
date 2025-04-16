@@ -6,7 +6,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit check-reqs toolchain-funcs
+inherit check-reqs edo toolchain-funcs
 inherit python-r1
 
 DRIVER_PV="560.35.05"
@@ -78,16 +78,7 @@ cuda-toolkit_check_reqs() {
 }
 
 cuda_verify() {
-	if has_version "sys-apps/grep[pcre]"; then
-		local DRIVER_PV_info
-		DRIVER_PV_info="$(bash "${DISTDIR}/${A}" --info | grep -oP "cuda_${PV}.*run" | cut -d '_' -f 3)"
-
-		if [[ "${DRIVER_PV}" != "${DRIVER_PV_info}" ]]; then
-			die "check DRIVER_PV is ${DRIVER_PV} and should be ${DRIVER_PV_info}"
-		fi
-	fi
-
-	# rest only works in with unpacked sources
+	# only works with unpacked sources
 	[[ "${EBUILD_PHASE}" != prepare ]] && return
 
 	# run self checks
@@ -148,7 +139,8 @@ src_unpack() {
 		"builds/nvidia_fs"
 	)
 
-	bash "${DISTDIR}/${A}" --tar xf -X <(printf "%s\n" "${exclude[@]}") || die "failed to extract ${A}"
+	edob -m "failed to extract ${A}" \
+		bash "${DISTDIR}/${A}" --tar xf -X <(printf "%s\n" "${exclude[@]}")
 }
 
 src_prepare() {
