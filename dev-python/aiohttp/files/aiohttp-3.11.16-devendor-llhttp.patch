@@ -1,0 +1,54 @@
+https://src.fedoraproject.org/rpms/python-aiohttp/raw/bceb660b835a4aaffd763a261cb2cd2392ee06db/f/0001-Unbundle-llhttp.patch
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Wed, 16 Feb 2022 13:57:57 +0100
+Subject: [PATCH] Unbundle llhttp
+
+Modified a little by arthurzam@gentoo.org to force cythonize
+
+--- a/aiohttp/_cparser.pxd
++++ b/aiohttp/_cparser.pxd
+@@ -1,7 +1,7 @@
+ from libc.stdint cimport int32_t, uint8_t, uint16_t, uint64_t
+
+
+-cdef extern from "../vendor/llhttp/build/llhttp.h":
++cdef extern from "llhttp.h":
+
+     struct llhttp__internal_s:
+         int32_t _index
+--- a/setup.py
++++ b/setup.py
+@@ -27,23 +27,21 @@ if IS_GIT_REPO and not (HERE / "vendor/llhttp/README.md").exists():
+ # NOTE: makefile cythonizes all Cython modules
+
+ extensions = [
+-    Extension("aiohttp._websocket.mask", ["aiohttp/_websocket/mask.c"]),
++    Extension("aiohttp._websocket.mask", ["aiohttp/_websocket/mask.pyx"]),
+     Extension(
+         "aiohttp._http_parser",
+         [
+-            "aiohttp/_http_parser.c",
+-            "aiohttp/_find_header.c",
+-            "vendor/llhttp/build/c/llhttp.c",
+-            "vendor/llhttp/src/native/api.c",
+-            "vendor/llhttp/src/native/http.c",
++            "aiohttp/_http_parser.pyx",
+         ],
+-        define_macros=[("LLHTTP_STRICT_MODE", 0)],
+-        include_dirs=["vendor/llhttp/build"],
+     ),
+-    Extension("aiohttp._http_writer", ["aiohttp/_http_writer.c"]),
++    Extension("aiohttp._http_writer", ["aiohttp/_http_writer.pyx"]),
+     Extension("aiohttp._websocket.reader_c", ["aiohttp/_websocket/reader_c.c"]),
+ ]
+
++if not NO_EXTENSIONS:
++    from Cython.Build import cythonize
++    extensions = cythonize(extensions, force=True, language_level=3)
++
+
+ build_type = "Pure" if NO_EXTENSIONS else "Accelerated"
+ setup_kwargs = {} if NO_EXTENSIONS else {"ext_modules": extensions}
+--
+2.48.1
+

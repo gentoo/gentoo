@@ -17,10 +17,15 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+native-extensions test-rust"
 
-RDEPEND="
+DEPEND="
+	$(python_gen_cond_dep '
+		native-extensions? ( net-libs/llhttp:= )
+	' 'python3*')
+"
+RDEPEND="${DEPEND}
 	>=dev-python/aiodns-3.2.0[${PYTHON_USEDEP}]
 	>=dev-python/aiohappyeyeballs-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/aiosignal-1.1.2[${PYTHON_USEDEP}]
@@ -57,6 +62,10 @@ BDEPEND="
 
 DOCS=( CHANGES.rst CONTRIBUTORS.txt README.rst )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.11.16-devendor-llhttp.patch
+)
+
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -66,6 +75,8 @@ src_prepare() {
 	# xfail_strict fails on py3.10
 	sed -i -e '/--cov/d' -e '/pytest_cov/d' -e '/xfail_strict/d' setup.cfg || die
 	sed -i -e 's:-Werror::' Makefile || die
+	# remove the bundled llhttp, we use the system one
+	rm -r vendor/llhttp || die
 
 	distutils-r1_src_prepare
 }
