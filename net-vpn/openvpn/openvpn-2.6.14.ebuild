@@ -142,11 +142,6 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process openvpn.conf
 
-	if use x64-macos ; then
-		elog "You might want to install tuntaposx for TAP interface support:"
-		elog "http://tuntaposx.sourceforge.net"
-	fi
-
 	if systemd_is_booted || has_version sys-apps/systemd ; then
 		elog "In order to use OpenVPN with systemd please use the correct systemd service file."
 		elog  ""
