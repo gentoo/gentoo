@@ -1,0 +1,19 @@
+--- a/setup.py	2025-02-22 16:44:42.102439182 +0100
++++ b/setup.py	2025-02-22 16:46:52.393841294 +0100
+@@ -6,6 +6,7 @@
+ import subprocess
+ import sys
+ import warnings
++import shlex
+ from pathlib import Path
+ 
+ import torch
+@@ -127,7 +128,7 @@
+             if NVCC_FLAGS is None:
+                 nvcc_flags = []
+             else:
+-                nvcc_flags = NVCC_FLAGS.split(" ")
++                nvcc_flags = shlex.split(NVCC_FLAGS)
+         extra_compile_args["nvcc"] = nvcc_flags
+ 
+     if sys.platform == "win32":
