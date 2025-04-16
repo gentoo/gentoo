@@ -6,7 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="photos">Install collection of player photos (large)</flag>
 		<flag name="scripts">Install additional python and tcl utility scripts</flag>
 	</use>
 	<upstream>
