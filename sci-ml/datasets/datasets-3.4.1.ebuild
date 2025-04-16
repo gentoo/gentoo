@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}"
 #  pyav
 #  pyspark
 #  py7zr
-#  pytest-xdist
 #  s3fs
 #  tensorflow
 #  tiktoken
@@ -64,6 +63,7 @@ BDEPEND="test? (
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/protobuf:=[${PYTHON_USEDEP}]
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/soundfile[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
