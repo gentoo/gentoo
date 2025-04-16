@@ -19,12 +19,13 @@ else
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
-IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
+IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland X xwayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	|| ( X wayland )
 	gtk-doc? ( introspection )
 	wayland? ( ^^ ( elogind systemd ) udev )
+	xwayland? ( wayland )
 	test? ( wayland )"
 RESTRICT="!test? ( test )"
 
@@ -79,7 +80,6 @@ RDEPEND="
 		media-libs/mesa[gbm(+)]
 		>=dev-libs/libinput-1.26.0:=
 		elogind? ( sys-auth/elogind )
-		xwayland? ( >=x11-base/xwayland-23.2.1[libei(+)] )
 		video_cards_nvidia? ( gui-libs/egl-wayland )
 	)
 	udev? (
@@ -105,7 +105,10 @@ RDEPEND="
 		>=x11-libs/libxkbcommon-0.4.3[X]
 		x11-libs/libXtst
 	)
-	wayland? ( xwayland? ( ${X11_CLIENT_DEPS} ) )
+	xwayland? (
+		${X11_CLIENT_DEPS}
+		 >=x11-base/xwayland-23.2.1[libei(+)]
+	)
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
@@ -164,19 +167,7 @@ src_configure() {
 		-Degl=true
 		$(meson_use X glx)
 		$(meson_use wayland)
-	)
-
-	if use wayland; then
-		emesonargs+=(
-			$(meson_use xwayland)
-		)
-	else
-		emesonargs+=(
-			-Dxwayland=false
-		)
-	fi
-
-	emesonargs+=(
+		$(meson_use xwayland)
 		$(meson_use systemd)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
