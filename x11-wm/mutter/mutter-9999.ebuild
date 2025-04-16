@@ -39,6 +39,7 @@ RESTRICT="!test? ( test )"
 # dev-libs/wayland is always needed at build time due to https://bugs.gentoo.org/937632
 X11_CLIENT_DEPS="
 	>=gui-libs/gtk-4.0.0:4[X,introspection?]
+	media-libs/libglvnd[X]
 	>=x11-libs/libX11-1.7.0
 	>=x11-libs/libXcomposite-0.4
 	x11-libs/libXcursor
@@ -73,7 +74,7 @@ RDEPEND="
 	>=dev-libs/libei-1.0.901
 	gnome? ( gnome-base/gnome-desktop:4= )
 	>=media-libs/libcanberra-0.26
-	media-libs/libglvnd[X]
+	media-libs/libglvnd
 	>=dev-libs/wayland-1.23.0
 	wayland? (
 		>=dev-libs/wayland-protocols-1.36
