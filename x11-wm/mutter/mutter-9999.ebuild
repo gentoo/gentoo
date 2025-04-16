@@ -58,7 +58,7 @@ RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.46[introspection?]
-	>=x11-libs/cairo-1.14[X]
+	>=x11-libs/cairo-1.14
 	>=x11-libs/pixman-0.42
 	>=dev-libs/fribidi-1.0.0
 	>=gnome-base/gsettings-desktop-schemas-47_beta[introspection?]
