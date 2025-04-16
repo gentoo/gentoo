@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-build
 
@@ -20,7 +20,7 @@ pkg_postinst() {
 	elog
 	elog " * open:"
 	elog "    - dev-libs/intel-compute-runtime - integrated Intel GPUs from Gen12 onwards. 64-bit only;"
-	elog "    - dev-libs/intel-compute-runtime:legacy - integrated Intel GPUs from Gen5 up to Gen11. 64-bit only;"
+	elog "    - dev-libs/intel-compute-runtime:legacy - integrated Intel GPUs from Gen8 up to Gen11. 64-bit only;"
 	elog "    - dev-libs/pocl - to run OpenCL programs on your CPU, if you do not have a supported GPU;"
 	elog "    - dev-libs/rocm-opencl-runtime - AMD GPUs supported by the amdgpu kernel driver. 64-bit only;"
 	elog "    - media-libs/mesa[opencl] - some older AMD GPUs; see [1]. 32-bit support;"
