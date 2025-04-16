@@ -34,7 +34,7 @@
 			of the freeciv server</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://osdn.net/projects/freeciv/ticket/</bugs-to>
+		<bugs-to>https://redmine.freeciv.org/projects/freeciv</bugs-to>
 		<remote-id type="github">freeciv/freeciv</remote-id>
 		<remote-id type="sourceforge">freeciv</remote-id>
 	</upstream>
