@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	gui-libs/gtk:4
-	>=gui-libs/libadwaita-1.0.0:1
+	>=gui-libs/libadwaita-1.5:1
 	>=gnome-base/librsvg-2.46.0:2
 	x11-libs/pango
 "
