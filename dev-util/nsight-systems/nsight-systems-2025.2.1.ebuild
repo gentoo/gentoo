@@ -3,13 +3,14 @@
 
 EAPI=8
 
-inherit unpacker
+inherit edo unpacker
 
 DESCRIPTION="performance analysis tool designed to visualize an application’s algorithms"
 HOMEPAGE="https://developer.nvidia.com/nsight-systems"
 
-MY_PV=$(ver_cut 1-2)
-MY_PV=${MY_PV//./_}
+MY_PV="$(ver_rs 1-2 '_' "$(ver_cut 1-2)")"
+MY_PN="${PN//nsight-}"
+MY_PN_SHORT="sys"
 
 PV_BUILD="130-1"
 
@@ -21,6 +22,7 @@ SRC_URI="
 		https://developer.nvidia.com/downloads/assets/tools/secure/${PN}/${MY_PV}/${PN}-${PV}_${PV}.${PV_BUILD}_arm64.deb
 	)
 "
+
 S="${WORKDIR}"
 
 LICENSE="NVIDIA-r2"
@@ -86,16 +88,16 @@ src_prepare() {
 		fi
 	fi
 
-	readarray -t rpath_libs < <(
+	local rpaths rpath
+	readarray -t rpaths < <(
 		find "${S}/opt/nvidia/${PN}/${PV}/host-linux-"* \
 			-name 'libparquet*.so*.0.0' -o \
 			-name 'libarrow*.so*.0.0' -o \
 			-name 'libssh.so'|| die
 	)
-	for rpath_lib in "${rpath_libs[@]}"; do
-		# ebegin "fixing rpath for ${rpath_lib}"
-		patchelf --set-rpath '$ORIGIN' "${rpath_lib}" || die
-		# eend $?
+	for rpath in "${rpaths[@]}"; do
+		edob -m "fixing rpath for ${rpath}" \
+			patchelf --set-rpath '$ORIGIN' "${rpath}"
 	done
 
 	eapply_user
