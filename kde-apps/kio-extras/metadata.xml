@@ -13,7 +13,9 @@
 	<use>
 		<flag name="activities">Enable activities KIO worker and fileitem plugin</flag>
 		<flag name="ios">Enable AFC (Apple File Conduit) KIO worker for iOS devices support</flag>
+		<flag name="libproxy">Enable support for WPAD problem detection via <pkg>net-libs/libproxy</pkg></flag>
 		<flag name="man">Enable manpages KIO worker</flag>
+		<flag name="nfs">Enable NFS support using <pkg>net-libs/libtirpc</pkg></flag>
 		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
 		<flag name="taglib">Enable audio thumbnails via <pkg>media-libs/taglib</pkg></flag>
