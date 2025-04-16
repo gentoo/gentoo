@@ -87,7 +87,6 @@ RDEPEND="
 		>=dev-libs/libgudev-238
 	)
 	systemd? ( sys-apps/systemd )
-	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
@@ -101,6 +100,7 @@ RDEPEND="
 	X? (
 		${X11_CLIENT_DEPS}
 		x11-libs/libICE
+		x11-libs/libSM
 		>=x11-libs/libXrandr-1.5.0
 		>=x11-libs/libxkbcommon-0.4.3[X]
 		x11-libs/libXtst
