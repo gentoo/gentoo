@@ -37,7 +37,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 # Missing x test:
-#  elastisearch
 #  joblib
 #  joblibspark
 #  faiss-cpu
@@ -60,6 +59,7 @@ BDEPEND="test? (
 	$(python_gen_cond_dep '
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
+		dev-python/elasticsearch[${PYTHON_USEDEP}]
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/protobuf:=[${PYTHON_USEDEP}]
