@@ -25,14 +25,12 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="authentication dedicated gtk3 gtk4 json mapimg mariadb modpack nls odbc qt6"
-IUSE+=" readline rule-editor sdl +sdl3 +server +sound sqlite svg +system-lua web-server"
+IUSE="dedicated gtk3 gtk4 json mapimg modpack nls qt6"
+IUSE+=" readline rule-editor sdl +sdl3 +server +sound svg +system-lua web-server"
 
 REQUIRED_USE="
-	authentication? ( || ( mariadb odbc sqlite ) )
 	!dedicated? ( || ( gtk3 gtk4 qt6 sdl sdl3 ) )
 	dedicated? ( !gtk3 !gtk4 !mapimg !nls !qt6 !sdl !sdl3 !sound )
-	modpack? ( sqlite )
 	sound? ( || ( sdl3 sdl ) )
 	system-lua? ( ${LUA_REQUIRED_USE} )
 "
@@ -42,6 +40,7 @@ RDEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
 	dev-build/libtool
+	dev-db/sqlite:3
 	dev-libs/icu:=
 	net-misc/curl
 	sys-libs/zlib
@@ -76,13 +75,6 @@ RDEPEND="
 	)
 	json? ( dev-libs/jansson:= )
 	readline? ( sys-libs/readline:= )
-	mariadb? ( || (
-		dev-db/mariadb:*
-		dev-db/mariadb-connector-c
-		)
-	)
-	odbc? ( dev-db/unixODBC )
-	sqlite? ( dev-db/sqlite:3 )
 	system-lua? (
 		${LUA_DEPS}
 	)
@@ -156,19 +148,6 @@ src_configure() {
 		-Dclients=$(IFS=, ; echo "${myclient[*]}")
 		-Dfcmp=$(IFS=, ; echo "${myfcmp[*]}")
 	)
-
-	if use authentication; then
-		local myfcdb=()
-		use sqlite && myfcdb+=( sqlite3 )
-		use mariadb && myfcdb+=( mariadb )
-		use odbc && myfcdb+=( odbc )
-		emesonargs+=(
-			-Dfcdb=$(IFS=, ; echo "${myfcdb[*]}")
-		)
-	else
-		# If we don't want authentication
-		emesonargs+=( -Dfcdb="" )
-	fi
 
 	if use sound; then
 		# We can only select one, prefer the newer SDL3
@@ -244,13 +223,11 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if [[ -z ${REPLACING_VERSIONS} ]] && use authentication; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		einfo "There are a number of supported authentication backends."
 		einfo "sqlite3 is the default, however dedicated servers may wish to"
-		einfo "use another supported backend. Additional configuration is required,"
-		einfo "to do so, even if the relevant USE was selected at build time."
-		einfo "please consult the documentation for instructions on configuring"
-		einfo "freeciv for a particular backend:"
+		einfo "use another supported backend; please consult the documentation"
+		einfo "to configure freeciv for a particular backend:"
 		einfo "https://github.com/freeciv/freeciv/blob/main/doc/README.fcdb"
 	fi
 }
