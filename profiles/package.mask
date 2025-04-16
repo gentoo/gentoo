@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# Dead upstream, Qt5 based, no more revdeps. Bug #949019
+# Removal on 2025-05-24.
+dev-python/python-poppler-qt5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-22)
 # Dead upstream, depends on downstream patching even for Qt5 support.
 # Almost no one else keeps packaging this. Bug #947622
