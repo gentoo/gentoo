@@ -24,16 +24,16 @@ IUSE+=" pam pkcs11 +plugins selinux systemd test"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	dco? ( !iproute2 )
+	inotify? ( plugins )
 	pkcs11? ( !mbedtls )
 	!plugins? ( !pam !down-root )
-	inotify? ( plugins )
-	dco? ( !iproute2 )
 "
 
 COMMON_DEPEND="
-	kernel_linux? (
-		iproute2? ( sys-apps/iproute2[-minimal] )
-	)
+	sys-libs/libcap-ng:=
+	dco? ( >=net-vpn/ovpn-dco-0.2 >=dev-libs/libnl-3.2.29:= )
+	kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) )
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
 	mbedtls? ( net-libs/mbedtls:0= )
@@ -41,8 +41,6 @@ COMMON_DEPEND="
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )
-	dco? ( >=net-vpn/ovpn-dco-0.2 >=dev-libs/libnl-3.2.29:= )
-	sys-libs/libcap-ng:=
 "
 
 BDEPEND="virtual/pkgconfig"
@@ -73,17 +71,17 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable inotify async-push)
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
+		$(use_enable dco)
+		$(use_enable down-root plugin-down-root)
+		$(use_enable inotify async-push)
+		$(use_enable iproute2)
 		$(use_enable lz4)
 		$(use_enable lzo)
 		$(use_enable plugins)
 		$(use_enable pkcs11)
-		$(use_enable iproute2)
 		$(use_enable pam plugin-auth-pam)
-		$(use_enable down-root plugin-down-root)
 		$(use_enable systemd)
-		$(use_enable dco)
 	)
 
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
@@ -124,7 +122,7 @@ src_install() {
 		# (is the below comment relevant anymore?)
 		## dodoc does not supportly support directory traversal, #15193
 		docinto examples
-		dodoc -r sample contrib
+		dodoc -r contrib sample
 	fi
 
 	# https://bugs.gentoo.org/755680#c3
