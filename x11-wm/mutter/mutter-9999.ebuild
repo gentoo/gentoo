@@ -36,6 +36,22 @@ RESTRICT="!test? ( test )"
 # really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
 # v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
 # dev-libs/wayland is always needed at build time due to https://bugs.gentoo.org/937632
+X11_CLIENT_DEPS="
+	>=gui-libs/gtk-4.0.0:4[X,introspection?]
+	>=x11-libs/libX11-1.7.0
+	>=x11-libs/libXcomposite-0.4
+	x11-libs/libXcursor
+	x11-libs/libXdamage
+	x11-libs/libXext
+	>=x11-libs/libXfixes-6
+	>=x11-libs/libXi-1.7.4
+	x11-libs/libxkbfile
+	x11-misc/xkeyboard-config
+	x11-libs/libXrender
+	x11-libs/libxcb:=
+	x11-libs/libXinerama
+	x11-libs/libXau
+"
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
@@ -88,34 +104,14 @@ RDEPEND="
 		gnome-extra/zenity
 	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
-"
-
-X_OR_XWAYLAND_DEPS="
-	>=gui-libs/gtk-4.0.0:4[X,introspection?]
-	>=x11-libs/libX11-1.7.0
-	>=x11-libs/libXcomposite-0.4
-	x11-libs/libXcursor
-	x11-libs/libXdamage
-	x11-libs/libXext
-	>=x11-libs/libXfixes-6
-	>=x11-libs/libXi-1.7.4
-	x11-libs/libxkbfile
-	x11-misc/xkeyboard-config
-	x11-libs/libXrender
-	x11-libs/libxcb:=
-	x11-libs/libXinerama
-	x11-libs/libXau
-"
-
-RDEPEND+="
 	X? (
-	   ${X_OR_XWAYLAND_DEPS}
+	   ${X11_CLIENT_DEPS}
 	   x11-libs/libICE
 	   >=x11-libs/libXrandr-1.5.0
 	   >=x11-libs/libxkbcommon-0.4.3[X]
 	   x11-libs/libXtst
 	)
-	wayland? ( xwayland? ( ${X_OR_XWAYLAND_DEPS} ) )
+	wayland? ( xwayland? ( ${X11_CLIENT_DEPS} ) )
 "
 
 DEPEND="${RDEPEND}
