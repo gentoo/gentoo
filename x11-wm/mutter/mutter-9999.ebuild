@@ -69,21 +69,15 @@ RDEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
-
 	gnome? ( gnome-base/gnome-desktop:4= )
-
 	>=media-libs/libcanberra-0.26
-
 	media-libs/libglvnd[X]
-
 	>=dev-libs/wayland-1.23.0
 	wayland? (
 		>=dev-libs/wayland-protocols-1.36
-
 		>=x11-libs/libdrm-2.4.118
 		media-libs/mesa[gbm(+)]
 		>=dev-libs/libinput-1.26.0:=
-
 		elogind? ( sys-auth/elogind )
 		xwayland? ( >=x11-base/xwayland-23.2.1[libei(+)] )
 		video_cards_nvidia? ( gui-libs/egl-wayland )
@@ -105,15 +99,14 @@ RDEPEND="
 	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 	X? (
-	   ${X11_CLIENT_DEPS}
-	   x11-libs/libICE
-	   >=x11-libs/libXrandr-1.5.0
-	   >=x11-libs/libxkbcommon-0.4.3[X]
-	   x11-libs/libXtst
+		${X11_CLIENT_DEPS}
+		x11-libs/libICE
+		>=x11-libs/libXrandr-1.5.0
+		>=x11-libs/libxkbcommon-0.4.3[X]
+		x11-libs/libXtst
 	)
 	wayland? ( xwayland? ( ${X11_CLIENT_DEPS} ) )
 "
-
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
