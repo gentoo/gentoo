@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>chutzpah@gentoo.org</email>
-    <name>Patrick McLean</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>williamh@gentoo.org</email>
-    <name>William Hubbs</name>
-  </maintainer>
-  <longdescription>OpenVPN is an easy-to-use, robust and highly
-configurable VPN daemon which can be used to securely link two or more
-networks using an encrypted tunnel.</longdescription>
-  <use>
-    <flag name="dco">Enable support for kernel data channel offload</flag>
-    <flag name="down-root">Enable the down-root plugin</flag>
-    <flag name="iproute2">Enabled iproute2 support instead of net-tools</flag>
-    <flag name="mbedtls">Use mbed TLS as the backend crypto library</flag>
-    <flag name="openssl">Use OpenSSL as the backend crypto library</flag>
-    <flag name="pkcs11">Enable PKCS#11 smartcard support</flag>
-    <flag name="plugins">Enable the OpenVPN plugin system</flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:openvpn:openvpn</remote-id>
-    <remote-id type="github">OpenVPN/openvpn</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription>
+		OpenVPN is an easy-to-use, robust and highly configurable VPN which
+		can be used to securely link networks using an encrypted tunnel.
+	</longdescription>
+	<use>
+		<flag name="dco">Enable support for kernel data channel offload</flag>
+		<flag name="down-root">Enable the down-root plugin</flag>
+		<flag name="iproute2">Enabled iproute2 support instead of net-tools</flag>
+		<flag name="mbedtls">
+			Use <pkg>net-libs/mbedtls</pkg> instead of<pkg>dev-libs/openssl</pkg>
+			as the TLS backend crypto library
+		</flag>
+		<flag name="openssl">Use OpenSSL as the backend crypto library</flag>
+		<flag name="pkcs11">Enable PKCS#11 smartcard support</flag>
+		<flag name="plugins">Enable the OpenVPN plugin system</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/OpenVPN/openvpn/issues</bugs-to>
+		<changelog>https://github.com/OpenVPN/openvpn/releases</changelog>
+		<remote-id type="cpe">cpe:/a:openvpn:openvpn</remote-id>
+		<remote-id type="github">OpenVPN/openvpn</remote-id>
+	</upstream>
 </pkgmetadata>
