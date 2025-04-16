@@ -3,18 +3,21 @@
 
 EAPI=8
 
-inherit desktop unpacker
+inherit desktop edo unpacker
 
 DESCRIPTION="standalone developer tool with ray-tracing support"
 HOMEPAGE="https://developer.nvidia.com/nsight-graphics"
 
 MY_PV="$(ver_rs 1-3 '_')"
+MY_PN="${PN//nsight-}"
+MY_PN_SHORT="gfx"
+
 PV_BUILD="25073"
 
 SRC_URI="
 	https://developer.nvidia.com/downloads/assets/tools/secure/${PN}/${MY_PV}/linux/NVIDIA_Nsight_Graphics_${PV}.${PV_BUILD}.run
-	mirror+https://developer.download.nvidia.com/images/nvidia-nsight-graphics-icon-gbp-shaded-128.png
-		-> nvidia-nsight-graphics-icon-gbp-shaded-128.20231126.png
+	mirror+https://developer.download.nvidia.com/images/nvidia-nsight-${MY_PN}-icon-gbp-shaded-128.png
+		-> nvidia-nsight-${MY_PN}-icon-gbp-shaded-128.20231126.png
 "
 
 S="${WORKDIR}/pkg"
@@ -60,16 +63,18 @@ src_prepare() {
 
 	pushd host/linux-desktop-nomad-* >/dev/null || die
 
-	readarray -t rpath_bins < <(find . -maxdepth 1 -name '*.bin')
-	for rpath_bin in "${rpath_bins[@]}"; do
-		ebegin "fixing rpath for ${rpath_bin}"
-		patchelf --set-rpath '$ORIGIN' "${rpath_bin}" || die
-		eend $?
+	local rpaths rpath
+	readarray -t rpaths < <(find . -maxdepth 1 -name '*.bin')
+	for rpath in "${rpaths[@]}"; do
+		edob -m "fixing rpath for ${rpath}" \
+			patchelf --set-rpath '$ORIGIN' "${rpath}"
 
+		# OpenGLVersionChecker stumbles on "OpenGL ES profile version string" so disable the check
 		sed \
 			-e "s/NV_AGORA_PATH/NV_AGORA_PATH_/g" \
 			-e "4i export QT_PLUGIN_PATH=\"\${NV_AGORA_PATH_}/Plugins\"" \
-			-i "$(basename "${rpath_bin}" .bin)" \
+			-e "s/AGORA_USE_MESA_FALLBACK=true/AGORA_USE_MESA_FALLBACK=false/" \
+			-i "$(basename "${rpath}" .bin)" \
 			|| die
 	done
 
@@ -93,28 +98,29 @@ src_install() {
 	dodir "${dir}"
 	mv ./* "${ED}${dir}" || die
 
-	local arch_dir="$(find "${ED}${dir}/host" -mindepth 1 -maxdepth 1 -name 'linux-*' -exec basename {} \;)"
-	if [[ -z "${arch_dir}" ]]; then
+	local arch_dirs
+	readarray -t arch_dirs < <(find "${ED}${dir}/host" -mindepth 1 -maxdepth 1 -name 'linux-*' -exec basename {} \;)
+	if [[ -z "${arch_dirs[*]}" ]]; then
 		die "failed to find arch dir"
 	fi
-	if [[ "$(echo "${arch_dir}" | wc -l )" -gt 1 ]]; then
-		echo ${arch_dir}
-		die "found $(echo "${arch_dir}" | wc -l )"
+	if [[ "$(echo "${#arch_dirs[@]}" | wc -l )" -gt 1 ]]; then
+		eerror "${arch_dirs[*]}"
+		die "found ${#arch_dirs[*]} arch dirs"
 	fi
 
 	cp \
-		"${DISTDIR}/nvidia-nsight-graphics-icon-gbp-shaded-128.20231126.png" \
-		"${ED}${dir}/host/${arch_dir}/ngfx-ui.png" \
+		"${DISTDIR}/nvidia-nsight-${MY_PN}-icon-gbp-shaded-128.20231126.png" \
+		"${ED}${dir}/host/${arch_dirs[0]}/n${MY_PN_SHORT}-ui.png" \
 			|| die
 
 	newmenu - "${P}.desktop" <<-EOF || die
 		[Desktop Entry]
 		Type=Application
-		Name=NVIDIA Nsight Graphics ${PV}
-		GenericName=NVIDIA Nsight Graphics
-		Icon=${EPREFIX}${dir}/host/${arch_dir}/ngfx-ui.png
-		Exec=env WAYLAND_DISPLAY= ${EPREFIX}${dir}/host/${arch_dir}/ngfx-ui
-		TryExec=${EPREFIX}${dir}/host/${arch_dir}/ngfx-ui
+		Name=NVIDIA Nsight ${MY_PN^} ${PV}
+		GenericName=NVIDIA Nsight ${MY_PN^}
+		Icon=${EPREFIX}${dir}/host/${arch_dirs[0]}/n${MY_PN_SHORT}-ui.png
+		Exec=env WAYLAND_DISPLAY= ${EPREFIX}${dir}/host/${arch_dirs[0]}/n${MY_PN_SHORT}-ui
+		TryExec=${EPREFIX}${dir}/host/${arch_dirs[0]}/n${MY_PN_SHORT}-ui
 		Keywords=cuda;gpu;nvidia;nsight;
 		X-AppInstall-Keywords=cuda;gpu;nvidia;nsight;
 		X-GNOME-Keywords=cuda;gpu;nvidia;nsight;
