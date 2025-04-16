@@ -2352,7 +2352,7 @@ gcc_do_make() {
 		)
 	fi
 
-	if is_jit ; then
+	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
 		# TODO: docs for jit?
 		einfo "Building JIT"
 		emake -C "${WORKDIR}"/build-jit "${emakeargs[@]}"
@@ -2554,7 +2554,7 @@ toolchain_src_install() {
 		done < <(find gcc/include*/ -name '*.h')
 	fi
 
-	if is_jit ; then
+	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
 		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
 		# and bug #843341.
 		#
@@ -2781,9 +2781,11 @@ gcc_movelibs() {
 
 	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
 	# due to a bug in gcc build system.
-	if [[ ${PWD} == "${WORKDIR}"/build-jit ]] && is_jit ; then
-		dodir "${LIBPATH#${EPREFIX}}"
-		mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
+	if [[ ${PWD} == "${WORKDIR}"/build-jit ]] ; then
+		if is_jit || _tc_use_if_iuse libgdiagnostics ; then
+			dodir "${LIBPATH#${EPREFIX}}"
+			mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
+		fi
 	fi
 
 	# For all the libs that are built for CTARGET, move them into the
