@@ -5,14 +5,6 @@
 		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>pabloorduna98@gmail.com</email>
-		<name>Pablo Orduna</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">kovidgoyal/kitty</remote-id>
