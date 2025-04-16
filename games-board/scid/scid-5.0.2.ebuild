@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,10 @@ inherit cmake desktop optfeature python-single-r1
 
 DESCRIPTION="Shane's Chess Information Database"
 HOMEPAGE="https://scid.sourceforge.net/"
-SRC_URI="https://sourceforge.net/projects/scid/files/Scid/Scid%205.0/${PN}_src_${PV}.zip/download -> ${P}.zip"
-
-#S="${WORKDIR}/${PN}"
+SRC_URI="
+	https://sourceforge.net/projects/scid/files/Scid/Scid%205.0/${PN}_src_${PV}.zip/download
+		-> ${P}.zip
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,21 +22,26 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-lang/tcl:=
-	dev-lang/tk"
+	dev-lang/tk
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	dev-tcltk/tkimg
-	scripts? ( ${PYTHON_DEPS} )"
+	scripts? ( ${PYTHON_DEPS} )
+"
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
 BDEPEND="
 	app-arch/unzip
-	scripts? ( ${PYTHON_DEPS} )"
+	scripts? ( ${PYTHON_DEPS} )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.2-pgnfix-python3.patch
 	"${FILESDIR}"/${PN}-4.7.0-tcl-start-path.patch
+	"${FILESDIR}"/${PN}-4.7.0-system-gtest.patch
 )
 
 HTML_DOCS=( help/. )
@@ -86,7 +92,7 @@ src_install() {
 	make_desktop_entry scid Scid
 
 	# delete re-located files
-	rm -r "${ED}"/usr/share/{bin,scid/{scid,scripts}} || die
+	rm -r -- "${ED}"/usr/share/{bin,scid/{scid,scripts}} || die
 }
 
 pkg_postinst() {
