@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,10 @@ BDEPEND="app-arch/unzip"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-numpy2.patch
+)
 
 python_install() {
 	distutils-r1_python_install

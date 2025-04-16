@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/936525
+https://github.com/singularity/singularity/issues/346
+https://github.com/singularity/singularity/commit/57013b621d641ae9b0b2554918807a88b7727b87
+--- a/singularity/code/buyable.py
++++ b/singularity/code/buyable.py
+@@ -185,3 +185,3 @@
+         was_complete = self.cost_paid
+-        cost_paid = numpy.maximum(numpy.cast[int64](numpy.round(raw_paid)),
++        cost_paid = numpy.maximum(numpy.asarray(numpy.round(raw_paid), dtype=int64),
+                                   was_complete)
