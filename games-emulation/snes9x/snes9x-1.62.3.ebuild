@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools cmake flag-o-matic python-any-r1 toolchain-funcs xdg
 
 # TODO: try unbundling, albeit compatibility with (and between) these
@@ -57,13 +57,16 @@ RDEPEND="
 	)
 	libretro? ( !games-emulation/libretro-snes9x )
 	xinerama? ( x11-libs/libXinerama )
-	xv? ( x11-libs/libXv )"
+	xv? ( x11-libs/libXv )
+"
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 BDEPEND="
 	virtual/pkgconfig
-	gui? ( ${PYTHON_DEPS} )"
+	gui? ( ${PYTHON_DEPS} )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.62.1-flags.patch
