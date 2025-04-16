@@ -5,6 +5,10 @@
 -elibc_musl
 elibc_glibc
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-16)
+# sci-libs/mkl is masked on musl
+mkl
+
 # Sam James <sam@gentoo.org> (2024-08-21)
 # dev-debug/systemtap doesn't work on musl
 systemtap

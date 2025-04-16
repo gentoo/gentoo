@@ -170,20 +170,14 @@ net-irc/ngircd test
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Rolling mask for all USE flags which pull in a masked binary package
 # (linked against glibc). Use for all such packages.
-sci-ml/oneDNN mkl
 kde-apps/kdenetwork-meta dropbox
-media-libs/opencv atlas mkl
+media-libs/opencv atlas
 media-video/ffmpeg amf
 media-video/ffmpeg-compat amf
 media-video/handbrake amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
 sys-apps/hwloc gl
-sci-chemistry/gromacs mkl
-sci-libs/armadillo mkl
-sci-ml/caffe2 mkl
-sci-libs/dlib mkl
-sci-libs/trilinos mkl
 www-client/qutebrowser widevine
 
 # Sam James <sam@gentoo.org> (2022-10-03)
