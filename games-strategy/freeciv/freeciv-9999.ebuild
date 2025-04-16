@@ -131,7 +131,10 @@ src_configure() {
 
 		if use ${flag} ; then
 			myclient+=( ${client_name} )
-			use modpack && myfcmp+=( ${fcmp_name} )
+			# Avoid duplicate `cli` entries; meson will complain
+			if use modpack && [[ ! " ${myfcmp[*]} " =~ " ${fcmp_name} " ]]; then
+				myfcmp+=( ${fcmp_name} )
+			fi
 		fi
 	}
 
@@ -153,8 +156,8 @@ src_configure() {
 
 	# the client and fpmc arrays are now populated (or not for dedicated); let's add them to emesonargs
 	emesonargs+=(
-		-Dclients=$(IFS=, ; echo "${myclient[*]}")
-		-Dfcmp=$(IFS=, ; echo "${myfcmp[*]}")
+		-Dclients="$(meson-format-array "${myclient[*]}")"
+		-Dfcmp="$(meson-format-array "${myfcmp[*]}")"
 	)
 
 	if use authentication; then
@@ -163,7 +166,7 @@ src_configure() {
 		use mariadb && myfcdb+=( mariadb )
 		use odbc && myfcdb+=( odbc )
 		emesonargs+=(
-			-Dfcdb=$(IFS=, ; echo "${myfcdb[*]}")
+			-Dfcdb="$(meson-format-array "${myfcdb[*]}")"
 		)
 	else
 		# If we don't want authentication
@@ -192,7 +195,7 @@ src_configure() {
 	# default-enabled upstream
 	use rule-editor && tools+=( ruledit ruleup )
 	emesonargs+=(
-		-Dtools=$(IFS=, ; echo ${tools[*]})
+		-Dtools=$(meson-format-array ${tools[*]})
 	)
 
 	# Anything that can be trivially set by meson_use goes here
