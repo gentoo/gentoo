@@ -48,7 +48,7 @@ X11_CLIENT_DEPS="
 	>=x11-libs/libXi-1.7.4
 	x11-libs/libxkbfile
 	x11-misc/xkeyboard-config
-	x11-libs/libXrender
+	>=x11-libs/libXrandr-1.5.0
 	x11-libs/libxcb:=
 	x11-libs/libXinerama
 	x11-libs/libXau
@@ -102,7 +102,6 @@ RDEPEND="
 		${X11_CLIENT_DEPS}
 		x11-libs/libICE
 		x11-libs/libSM
-		>=x11-libs/libXrandr-1.5.0
 		>=x11-libs/libxkbcommon-0.4.3[X]
 		x11-libs/libXtst
 	)
