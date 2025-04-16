@@ -1,0 +1,32 @@
+From ba17939f0af90905a90dce96f4540e273a744bdb Mon Sep 17 00:00:00 2001
+From: Oscar Lesta <oscar.lesta@gmail.com>
+Date: Wed, 25 Dec 2024 21:33:16 -0300
+Subject: Fix compatibility with numpy 2.2.1.
+--- a/monsterz.py
++++ b/monsterz.py
+@@ -117,6 +117,10 @@
+             for x, p in enumerate(line):
+                 r, g, b = p
+-                M = int(max(r, g, b))
+-                m = int(min(r, g, b))
++                # convert from numpy.int8 to int
++                r = r.item()
++                g = g.item()
++                b = b.item()
++                M = max(r, g, b)
++                m = min(r, g, b)
+                 val = (2 * M + r + g + b) // 5
+                 p[0] = (val + r) // 2
+@@ -141,6 +145,10 @@
+             for x, p in enumerate(line):
+                 r, g, b = p
+-                M = int(max(r, g, b))
+-                m = int(min(r, g, b))
++                # convert from numpy.int8 to int
++                r = r.item()
++                g = g.item()
++                b = b.item()
++                M = max(r, g, b)
++                m = min(r, g, b)
+                 p[0] = (m + r) // 2
+                 p[1] = (m + g) // 2
