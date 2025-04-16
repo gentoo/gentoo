@@ -63,12 +63,6 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
-src_prepare() {
-	default
-
-	eautoreconf
-}
-
 src_configure() {
 	local myeconfargs=(
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
