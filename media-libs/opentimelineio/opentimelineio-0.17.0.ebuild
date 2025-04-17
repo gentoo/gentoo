@@ -25,7 +25,7 @@ else
 			-> rapidjson-${RAPIDJSON_COMMIT}.tar.gz
 	"
 	S="${WORKDIR}/${MY_PN}-${PV}"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"
