@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ruby-gnome/pkg-config"
 LICENSE="|| ( LGPL-2 LGPL-2.1 LGPL-3 )"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~s390 sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( >=dev-ruby/test-unit-2.5.1-r1 )"
