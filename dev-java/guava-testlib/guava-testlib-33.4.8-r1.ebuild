@@ -11,9 +11,7 @@ inherit java-pkg-2 java-pkg-simple check-reqs
 
 DESCRIPTION="A set of java classes to assist the tests for Guava itself"
 HOMEPAGE="https://github.com/google/guava"
-# Currently we bundle the binary version of truth.jar used only for tests, we don't install it.
-SRC_URI="https://github.com/google/guava/archive/v${PV}.tar.gz -> guava-${PV}.tar.gz
-	test? ( https://repo1.maven.org/maven2/com/google/truth/truth/1.4.4/truth-1.4.4.jar )"
+SRC_URI="https://github.com/google/guava/archive/v${PV}.tar.gz -> guava-${PV}.tar.gz"
 S="${WORKDIR}/guava-${PV}"
 
 LICENSE="Apache-2.0"
@@ -33,6 +31,7 @@ DEPEND="
 	dev-java/jsr305:0
 	dev-java/j2objc-annotations:0
 	>=virtual/jdk-11:*
+	test? ( dev-java/truth:0 )
 "
 
 RDEPEND="
@@ -44,7 +43,7 @@ JAVA_CLASSPATH_EXTRA="checker-framework-qual jsr305 j2objc-annotations"
 JAVA_INTERMEDIATE_JAR_NAME="com.google.common.testlib"
 JAVA_RELEASE_SRC_DIRS=( ["9"]="guava-testlib/src9" )
 JAVA_SRC_DIR="${PN}/src"
-JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4 truth"
 JAVA_TEST_SRC_DIR="${PN}/test"
 
 check_env() {
@@ -71,7 +70,6 @@ src_prepare() {
 }
 
 src_test() {
-	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/truth-1.4.4.jar:testdata.jar"
 	JAVA_TEST_EXTRA_ARGS="-Xmx${CHECKREQS_MEMORY}"
 	java-pkg-simple_src_test
 }
