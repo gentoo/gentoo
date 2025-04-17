@@ -5,6 +5,10 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<use>
+		<flag name="torch">Use pytorch</flag>
+		<flag name="vision">Support vision</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">huggingface/datasets</remote-id>
 		<remote-id type="pypi">datasets</remote-id>
