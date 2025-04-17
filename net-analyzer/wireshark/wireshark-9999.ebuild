@@ -4,9 +4,9 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{3..4} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
+inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils toolchain-funcs xdg cmake
 
 DESCRIPTION="Network protocol analyzer (sniffer)"
 HOMEPAGE="https://www.wireshark.org/"
@@ -156,10 +156,6 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	# crashes at runtime
-	# https://bugs.gentoo.org/754021
-	filter-lto
-
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
@@ -209,8 +205,6 @@ src_configure() {
 		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
-		# only appends -flto
-		-DENABLE_LTO=OFF
 		-DENABLE_LUA=$(usex lua)
 		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)
@@ -232,6 +226,8 @@ src_configure() {
 		-DENABLE_ZLIBNG=OFF
 		-DENABLE_ZSTD=$(usex zstd)
 	)
+
+	tc-is-lto && mycmakeargs+=( -DENABLE_LTO=ON )
 
 	cmake_src_configure
 }
