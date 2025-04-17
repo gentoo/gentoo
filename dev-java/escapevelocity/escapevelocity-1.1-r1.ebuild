@@ -11,9 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A reimplementation of a subset of the Apache Velocity templating system."
 HOMEPAGE="https://github.com/google/escapevelocity"
-TV="1.4.4"
-SRC_URI="https://github.com/google/${PN}/archive/${P}.tar.gz
-	test? ( https://repo1.maven.org/maven2/com/google/truth/truth/${TV}/truth-${TV}.jar )"
+SRC_URI="https://github.com/google/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
@@ -28,6 +26,7 @@ DEPEND="
 	test? (
 		>=dev-java/guava-testlib-33.4.8:0
 		dev-java/velocity:0
+		dev-java/truth:0
 	)
 "
 
@@ -37,10 +36,5 @@ RDEPEND="
 "
 
 JAVA_SRC_DIR="src/main/java"
-JAVA_TEST_GENTOO_CLASSPATH="guava-testlib,junit-4,velocity"
+JAVA_TEST_GENTOO_CLASSPATH="guava-testlib,junit-4,truth,velocity"
 JAVA_TEST_SRC_DIR="src/test/java"
-
-src_test() {
-	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/truth-${TV}.jar"
-	java-pkg-simple_src_test
-}
