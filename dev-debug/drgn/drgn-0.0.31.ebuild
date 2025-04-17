@@ -23,7 +23,7 @@ KEYWORDS="~amd64"
 IUSE="debuginfod openmp"
 
 DEPEND="
-	>=dev-libs/elfutils-0.165
+	>=dev-libs/elfutils-0.165[debuginfod?]
 	dev-libs/libkdumpfile:=
 "
 RDEPEND="${DEPEND}"
