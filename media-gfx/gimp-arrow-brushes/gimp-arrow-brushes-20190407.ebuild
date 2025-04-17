@@ -21,16 +21,11 @@ SRC_URI="
 	https://dev.gentoo.org/~pacho/${PN}/checkmark_brushes-1.0.tar.bz2
 	https://dev.gentoo.org/~pacho/${PN}/star_brushes.tar.bz2
 "
+S="${WORKDIR}"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND=""
-
-S="${WORKDIR}"
 
 src_install() {
 	for i in */*.gbr; do
