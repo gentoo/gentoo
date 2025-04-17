@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 GENTOO_VDR_CONDITIONAL=yes
 
@@ -9,17 +9,16 @@ inherit flag-o-matic git-r3 toolchain-funcs vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-
 EGIT_REPO_URI="https://git.code.sf.net/p/xineliboutput/git"
+S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="bluray caps cec dbus fbcon jpeg nls opengl +vdr vdpau +X +xine xinerama"
+IUSE="bluray caps cec dbus fbcon jpeg nls opengl +vdr vdpau wayland +X +xine xinerama"
 
 COMMON_DEPEND="
 	vdr? (
-		>=media-video/vdr-1.6.0
+		media-video/vdr
 		caps? ( sys-libs/libcap )
 	)
 
@@ -38,6 +37,14 @@ COMMON_DEPEND="
 			bluray? ( media-libs/libbluray )
 			opengl? ( virtual/opengl )
 		)
+		wayland? (
+			>=media-libs/xine-lib-1.2.10[wayland]
+			bluray? ( media-libs/libbluray )
+			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
+			jpeg? ( media-libs/libjpeg-turbo:= )
+			opengl? ( virtual/opengl )
+			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2.10[vdpau] )
+		)
 	)
 
 	cec? ( dev-libs/libcec )"
@@ -52,11 +59,10 @@ DEPEND="${COMMON_DEPEND}
 		)
 	)"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="acct-user/vdr
+	virtual/pkgconfig"
 
-S=${WORKDIR}/${P}
-
-VDR_CONFD_FILE="${FILESDIR}/confd-2.0.0"
+VDR_CONFD_FILE="${FILESDIR}/confd-2.3.0"
 
 pkg_setup() {
 	if ! use vdr && ! use xine; then
@@ -69,6 +75,10 @@ pkg_setup() {
 		XINE_PLUGIN_DIR=$($(tc-getPKG_CONFIG) --variable=plugindir libxine)
 		[ -z "${XINE_PLUGIN_DIR}" ] && die "Could not find xine plugin dir"
 	fi
+}
+
+src_unpack() {
+	git-r3_src_unpack
 }
 
 src_prepare() {
@@ -106,11 +116,11 @@ src_configure() {
 		$(use_enable caps libcap) \
 		$(use_enable jpeg libjpeg) \
 		$(use_enable xinerama) \
-		$(use_enable vdpau) \
 		$(use_enable dbus dbus-glib-1) \
 		$(use_enable nls i18n) \
 		$(use_enable bluray libbluray) \
 		$(use_enable opengl) \
+		$(use_enable wayland) \
 		$(use_enable cec libcec) \
 		${myconf} \
 		|| die
@@ -151,10 +161,15 @@ src_install() {
 				insinto $VDR_PLUGIN_DIR
 				doins libxineliboutput-sxfe.so.*
 			fi
+			if use wayland; then
+				dobin vdr-wlfe
+
+				insinto $VDR_PLUGIN_DIR
+				doins libxineliboutput-wlfe.so.*
+			fi
 		fi
 	else
 		emake DESTDIR="${D}" install
-
-		dodoc HISTORY README
 	fi
+	dodoc HISTORY README
 }
