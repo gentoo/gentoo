@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.87.0-move.patch
 	"${FILESDIR}"/${PN}-1.87.0-smart_ptr-operator.patch
 	"${FILESDIR}"/${PN}-1.87.0-thread-typo.patch
+	"${FILESDIR}"/${PN}-1.87.0-solaris.patch
 )
 
 create_user-config.jam() {
