@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,8 @@ KEYWORDS="~amd64"
 # The Activision EULA is inappropriate but this was never resolved. :(
 # https://doomwiki.org/wiki/Raven_source_code_licensing
 RESTRICT="bindist mirror"
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
