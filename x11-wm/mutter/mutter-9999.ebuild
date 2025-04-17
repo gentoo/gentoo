@@ -94,7 +94,6 @@ RDEPEND="
 	libdisplay? ( media-libs/libdisplay-info )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
-		gnome-extra/zenity
 	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 	X? (
@@ -127,7 +126,10 @@ BDEPEND="
 			>=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]
 		')
 		app-text/docbook-xml-dtd:4.5
-		X? ( x11-misc/xvfb-run )
+		X? (
+			gnome-extra/zenity
+			x11-misc/xvfb-run
+		)
 	)
 	wayland? (
 		>=sys-kernel/linux-headers-4.4
