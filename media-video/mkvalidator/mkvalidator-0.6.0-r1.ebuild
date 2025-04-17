@@ -17,6 +17,8 @@ PATCHES=( "${FILESDIR}/${P}-cmake4.patch" )
 
 src_configure() {
 	# https://bugs.gentoo.org/949733
+	# https://github.com/Matroska-Org/foundation-source/issues/145
+	# https://github.com/Matroska-Org/foundation-source/pull/153
 	append-flags -fno-strict-aliasing
 	filter-lto
 
