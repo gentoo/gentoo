@@ -1,0 +1,39 @@
+From db087fe4548fd9fb4a6ffc085e1ac38b009dabca Mon Sep 17 00:00:00 2001
+From: Andriy Utkin <hello@autkin.net>
+Date: Mon, 14 Apr 2025 23:30:59 +0100
+Subject: [PATCH] Override unittests exclusions to pass on Gentoo
+
+The following ones fail when run in test phase on Gentoo.
+
+-T_Dns.CaresResolverSimple
+-T_Dns.CaresResolverMany
+-T_Dns.CaresResolverIpv4
+-T_Dns.CaresResolverSameResult
+-T_Dns.CaresResolverTimeout
+-T_Dns.NormalResolverSimple
+-T_Util.GetShell
+-T_Util.ManagedExecClearEnv
+
+Part of them pass when PROPERTIES="test_network test_privileged"
+is added into ebuild, and ALLOW_TEST="network privileged" is set when
+merging the package.
+---
+ test/unittests/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/unittests/CMakeLists.txt b/test/unittests/CMakeLists.txt
+index ed79b5d4c..7ed59cb43 100644
+--- a/test/unittests/CMakeLists.txt
++++ b/test/unittests/CMakeLists.txt
+@@ -600,7 +600,7 @@ endif ()
+ #
+ # For `make check`
+ #
+-add_test (NAME cvmfs_unittests COMMAND cvmfs_unittests --gtest_filter=-*Slow)
++add_test (NAME cvmfs_unittests COMMAND cvmfs_unittests --gtest_filter=-*Slow:T_Dns.CaresResolverSimple:T_Dns.CaresResolverMany:T_Dns.CaresResolverIpv4:T_Dns.CaresResolverSameResult:T_Dns.CaresResolverTimeout:T_Dns.NormalResolverSimple:T_Util.GetShell:T_Util.ManagedExecClearEnv)
+ add_dependencies (check cvmfs_unittests)
+ 
+ endif (BUILD_UNITTESTS OR BUILD_UNITTESTS_DEBUG)
+-- 
+2.48.1
+

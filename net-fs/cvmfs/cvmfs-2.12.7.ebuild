@@ -13,7 +13,8 @@ LICENSE="BSD"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="server"
+IUSE="go server test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	acct-group/cvmfs
@@ -41,11 +42,15 @@ RDEPEND="${CDEPEND}
 "
 
 DEPEND="${CDEPEND}
+	go? ( dev-lang/go )
+	test? ( dev-debug/gdb )
 	virtual/pkgconfig
 "
 
 PATCHES=(
 		"${FILESDIR}"/${PN}-2.10.1-gentoo.patch
+		"${FILESDIR}"/fix-unittests-linkage.patch
+		"${FILESDIR}"/test-exclusions.patch
 )
 
 pkg_setup() {
@@ -79,6 +84,8 @@ src_configure() {
 		-DBUILD_PRELOADER=OFF # special purpose utility for HPCs
 		-DBUILD_RECEIVER=OFF # for distributed publishers only
 		-DBUILD_SERVER=$(usex server)
+		-DBUILD_GATEWAY=$(usex go)
+		-DBUILD_UNITTESTS=$(usex test)
 		-DINSTALL_BASH_COMPLETION=OFF
 		-DINSTALL_MOUNT_SCRIPTS=ON
 		-DINSTALL_PUBLIC_KEYS=ON
@@ -94,6 +101,11 @@ src_install() {
 	dodoc doc/*.md
 	keepdir /var/lib/cvmfs
 	use server && keepdir /var/lib/cvmfs-server
+}
+
+src_test() {
+	local myctestargs=( --verbose )
+	cmake_src_test
 }
 
 pkg_config() {
