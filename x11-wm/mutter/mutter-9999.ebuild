@@ -110,8 +110,9 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
+	X? ( x11-base/xorg-proto )
+	xwayland? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	dev-util/wayland-scanner
