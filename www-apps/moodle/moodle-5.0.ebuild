@@ -24,7 +24,7 @@ AUTHENTICATION_FLAGS="imap?,ldap?,odbc?"
 AUTHENTICATION_MODES=${AUTHENTICATION_FLAGS//\?/}
 AUTHENTICATION_MODES=${AUTHENTICATION_MODES//,/ }
 
-PHP_REQUIRED_FLAGS="ctype,curl,iconv,json(+),session,simplexml,xml,zip"
+PHP_REQUIRED_FLAGS="ctype,curl,iconv,json(+),session,simplexml,sodium,xml,zip"
 PHP_OPTIONAL_FLAGS="gd,intl,soap,ssl,tokenizer"
 PHP_FLAGS="${PHP_REQUIRED_FLAGS},${PHP_OPTIONAL_FLAGS}"
 
@@ -40,8 +40,8 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 DEPEND=""
 RDEPEND="
 	|| (
-		dev-lang/php:8.1[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 		dev-lang/php:8.2[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+		dev-lang/php:8.3[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	)
 	virtual/httpd-php
 	virtual/cron"
