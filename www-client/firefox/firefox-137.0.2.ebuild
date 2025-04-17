@@ -82,7 +82,7 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="+clang dbus debug eme-free hardened hwaccel jack libproxy pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-jpeg +system-libevent"
-IUSE+=" +system-libvpx system-png +system-webp valgrind wayland wifi +X"
+IUSE+=" +system-libvpx system-png +system-webp test valgrind wayland wifi +X"
 
 # Firefox-only IUSE
 IUSE+=" +gmp-autoupdate gnome-shell +jumbo-build openh264 +telemetry wasm-sandbox"
@@ -98,6 +98,8 @@ REQUIRED_USE="|| ( X wayland )
 	wayland? ( dbus )
 	wifi? ( dbus )
 "
+
+RESTRICT="!test? ( test )"
 
 FF_ONLY_DEPEND="!www-client/firefox:0
 	selinux? ( sec-policy/selinux-mozilla )"
@@ -794,7 +796,6 @@ src_configure() {
 		--disable-legacy-profile-creation \
 		--disable-parental-controls \
 		--disable-strip \
-		--disable-tests \
 		--disable-updater \
 		--disable-wmf \
 		--enable-negotiateauth \
@@ -1071,6 +1072,8 @@ src_configure() {
 		mozconfig_add_options_mk '-telemetry setting' "MOZ_TELEMETRY_REPORTING=0"
 	fi
 
+	mozconfig_use_enable test tests
+
 	# Disable notification when build system has finished
 	export MOZ_NOSPAM=1
 
@@ -1150,6 +1153,29 @@ src_compile() {
 	fi
 
 	${virtx_cmd} ./mach build --verbose || die
+}
+
+src_test() {
+	# https://firefox-source-docs.mozilla.org/testing/automated-testing/index.html
+	local -a failures=()
+
+	# Some tests respect this
+	local -x MOZ_HEADLESS=1
+
+	# Check testing/mach_commands.py
+	einfo "Testing with cppunittest ..."
+	./mach cppunittest
+	local ret=$?
+	if [[ ${ret} -ne 0 ]]; then
+		eerror "Test suite cppunittest failed with error code ${ret}"
+		failures+=( cppunittest )
+	fi
+
+	if [[ ${#failures} -eq 0 ]]; then
+		einfo "Test suites succeeded"
+	else
+		die "Test suites failed: ${failures[@]}"
+	fi
 }
 
 src_install() {
