@@ -54,6 +54,7 @@ X11_CLIENT_DEPS="
 	x11-libs/libXau
 	>=x11-libs/startup-notification-0.7
 "
+# Entries are ordered according to the use of dependency() in meson.build
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	x11-libs/gdk-pixbuf:2
