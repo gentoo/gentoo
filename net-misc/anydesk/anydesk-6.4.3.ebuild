@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -14,19 +14,17 @@ LICENSE="AnyDesk-TOS BSD BSD-2 openssl ZLIB"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-# x11-libs/gtkglext is required and cannot be mitigated: https://bugs.gentoo.org/868255
 RDEPEND="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
-	media-libs/glu
-	media-libs/libglvnd
+	media-libs/harfbuzz
+	sys-apps/dbus
 	sys-auth/polkit
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
-	x11-libs/gtkglext
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXdamage
