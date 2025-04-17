@@ -9,4 +9,7 @@
 		<remote-id type="pypi">drgn</remote-id>
 		<remote-id type="github">osandov/drgn</remote-id>
 	</upstream>
+	<use>
+		<flag name="debuginfod">Enable debuginfod support</flag>
+	</use>
 </pkgmetadata>
