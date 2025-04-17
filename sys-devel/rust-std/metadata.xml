@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>rust@gentoo.org</email>
+		<name>Rust Project</name>
+	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>randy@electronsweatshop.com</email>
 		<name>Randy Barlow</name>
@@ -12,10 +16,6 @@
 	<maintainer type="person" proxied="yes">
 		<email>matoro_gentoo@matoro.tk</email>
 		<name>Matoro Mahri</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>rust@gentoo.org</email>
-		<name>Rust Project</name>
 	</maintainer>
 	<longdescription>
 		The Rust Standard Library is the foundation of portable Rust software,
