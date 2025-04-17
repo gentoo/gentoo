@@ -2782,9 +2782,14 @@ gcc_movelibs() {
 	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
 	# due to a bug in gcc build system.
 	if [[ ${PWD} == "${WORKDIR}"/build-jit ]] ; then
-		if is_jit || _tc_use_if_iuse libgdiagnostics ; then
-			dodir "${LIBPATH#${EPREFIX}}"
+		dodir "${LIBPATH#${EPREFIX}}"
+
+		if is_jit ; then
 			mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
+		fi
+
+		if _tc_use_if_iuse libgdiagnostics ; then
+			mv "${ED}"/usr/lib/libgdiagnostics* "${D}${LIBPATH}" || die
 		fi
 	fi
 
