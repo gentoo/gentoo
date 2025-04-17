@@ -1,4 +1,4 @@
-# Copyright 2016-2024 Gentoo Authors
+# Copyright 2016-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ else
 	fi
 fi
 
-inherit bash-completion-r1 distutils-r1 toolchain-funcs
+inherit shell-completion distutils-r1 toolchain-funcs
 
 DESCRIPTION="Open source build system"
 HOMEPAGE="https://mesonbuild.com/"
@@ -123,8 +123,6 @@ python_install_all() {
 	insinto /usr/share/vim/vimfiles
 	doins -r data/syntax-highlighting/vim/{ftdetect,indent,syntax}
 
-	insinto /usr/share/zsh/site-functions
-	doins data/shell-completions/zsh/_meson
-
+	dozshcomp data/shell-completions/zsh/_meson
 	dobashcomp data/shell-completions/bash/meson
 }

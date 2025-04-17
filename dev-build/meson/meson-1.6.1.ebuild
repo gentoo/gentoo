@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit bash-completion-r1 edo distutils-r1 flag-o-matic toolchain-funcs
+inherit shell-completion edo distutils-r1 flag-o-matic toolchain-funcs
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mesonbuild/meson"
@@ -214,9 +214,7 @@ python_install_all() {
 	insinto /usr/share/vim/vimfiles
 	doins -r data/syntax-highlighting/vim/{ftdetect,indent,syntax}
 
-	insinto /usr/share/zsh/site-functions
-	doins data/shell-completions/zsh/_meson
-
+	dozshcomp data/shell-completions/zsh/_meson
 	dobashcomp data/shell-completions/bash/meson
 
 	if [[ ${PV} = *9999* ]]; then
