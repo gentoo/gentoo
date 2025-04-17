@@ -47,6 +47,10 @@ CMAKE_SKIP_TESTS=(
 	tst_scaling
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-reset-mframe.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package compositor Qt6Quick)
