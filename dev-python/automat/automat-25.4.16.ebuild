@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=hatchling
+DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 
@@ -21,7 +21,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="examples"
 
 BDEPEND="
-	dev-python/hatch-vcs[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/twisted[${PYTHON_USEDEP}]
 	)
