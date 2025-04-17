@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.9.0-cmake4.patch
 )
 
 DOCS=( AUTHORS CODINGSTYLE ChangeLog README examples/ samples/ )
