@@ -20,14 +20,12 @@ HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
 LICENSE="GPL-2"
 # subslot is OPENRGB_PLUGIN_API_VERSION from
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
-SLOT="0/3"
+SLOT="0/4"
 
 RDEPEND="
 	dev-cpp/cpp-httplib:=
 	dev-libs/hidapi
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[gui,widgets]
 	net-libs/mbedtls:0=
 	virtual/libusb:1
 "
@@ -37,7 +35,7 @@ DEPEND="
 	dev-libs/mdns
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 
@@ -73,10 +71,11 @@ src_configure() {
 		libs+=( -lcpp-httplib )
 	fi
 
-	eqmake5 \
+	eqmake6 \
 		INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann" \
-		DEFINES+="OPENRGB_EXTRA_PLUGIN_DIRECTORY=\\\\\"\\\"${EPREFIX}/usr/$(get_libdir)/OpenRGB/plugins\\\\\"\\\"" \
-		LIBS+="${libs[@]}"
+		OPENRGB_SYSTEM_PLUGIN_DIRECTORY="${EPREFIX}/usr/$(get_libdir)/openrgb/plugins" \
+		LIBS+="${libs[@]}" \
+		PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
