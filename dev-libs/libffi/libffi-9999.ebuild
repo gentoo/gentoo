@@ -32,10 +32,6 @@ IUSE="debug +exec-static-trampoline pax-kernel static-libs test"
 RESTRICT="!test? ( test )"
 BDEPEND="test? ( dev-util/dejagnu )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.8-pa-add-.note.GNU-stack-marker-to-linux.S.patch
-)
-
 src_prepare() {
 	default
 
