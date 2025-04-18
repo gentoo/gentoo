@@ -25,7 +25,7 @@ REQUIRED_USE="
 	|| ( X wayland )
 	gtk-doc? ( introspection )
 	wayland? ( ^^ ( elogind systemd ) udev )
-	test? ( wayland )"
+	test? ( screencast wayland )"
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked, but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard gschema
