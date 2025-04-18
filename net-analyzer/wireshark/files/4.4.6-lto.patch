@@ -1,0 +1,164 @@
+From d674e9a17f215d8c0fb3ae9e8c44e9a77952c3d1 Mon Sep 17 00:00:00 2001
+Message-ID: <d674e9a17f215d8c0fb3ae9e8c44e9a77952c3d1.1744950020.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Thu, 17 Apr 2025 19:57:46 +0100
+Subject: [PATCH] CMake: don't build with -fPIE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Qt's qcompilerdetection.h currently checks for whether -fPIE is being used
+along with QT_USE_PROTECTED_VISIBILITY ("reduce relocations", which Qt
+automatically uses if supported). It bails out if -fPIE is used, as -fPIC
+is required instead.
+
+If LTO is used, when one does something like:
+(1) g++ -c -flto -fPIC qtlto.cc
+(2) g++     -pie -fPIE qtlto.o -o qtlto
+
+At point (1), the Qt check in the headers fires, and everything is fine,
+because we're indeed using -fPIC, and GCC doesn't automatically add -fPIE
+when built with --enable-default-pie if -fPIC is present on the command line.
+
+GCC may apply optimisations at this point given Qt is using -mno-direct-extern-access
+and it was built with -fPIC not -fPIE.
+
+Later, at point (2), -fPIE is passed. This happens in Wireshark because
+`CMAKE_POSITION_INDEPENDENT_CODE` gets set in CMakeLists.txt. With LTO,
+there's no opportunity for the Qt sanity check in headers to fire again,
+as everything is already long-preprocessed and GCC will have applied some
+optimisations already assuming the -fPIC code model in (1). But as slyfox
+says at https://bugs.gentoo.org/754021#c12, GCC merges -fPIC -fPIE to -fPIE
+at LTO-time (-fPIC coming from the earlier LTO object in (1), and -fPIE
+was just-passed on the command line).
+
+qtlto (or Wireshark) then crashes. For Wireshark, this looks like:
+```
+ #0  0x00007ff40e529cf0 in QScopedPointer<QObjectData, QScopedPointerDeleter<QObjectData> >::get (this=<optimized out>)
+     at /usr/src/debug/dev-qt/qtbase-6.8.3/qtbase-everywhere-src-6.8.3/src/corelib/tools/qscopedpointer.h:112
+ #1  qGetPtrHelper<QScopedPointer<QObjectData, QScopedPointerDeleter<QObjectData> > > (ptr=<optimized out>)
+     at /usr/src/debug/dev-qt/qtbase-6.8.3/qtbase-everywhere-src-6.8.3/src/corelib/global/qtclasshelpermacros.h:128
+ #2  QObject::d_func (this=<optimized out>) at /usr/src/debug/dev-qt/qtbase-6.8.3/qtbase-everywhere-src-6.8.3/src/corelib/kernel/qobject.h:108
+ #3  QObjectPrivate::get (o=<optimized out>) at /usr/src/debug/dev-qt/qtbase-6.8.3/qtbase-everywhere-src-6.8.3/src/corelib/kernel/qobject_p.h:150
+ #4  doActivate<false> (sender=0x0, signal_index=9, argv=argv@entry=0x7ffe59a73c30) at /usr/src/debug/dev-qt/qtbase-6.8.3/qtbase-everywhere-src-6.8.3/src/corelib/kernel/qobject.cpp:4003
+ #5  0x00007ff40e4d2809 in QMetaObject::activate
+     (sender=<optimized out>, m=m@entry=0x7ff40f44f6c0 <QGuiApplication::staticMetaObject>, local_signal_index=local_signal_index@entry=1, argv=argv@entry=0x7ffe59a73c30)
+     at /usr/src/debug/dev-qt/qtbase-6.8.3/qtbase-everywhere-src-6.8.3/src/corelib/kernel/qobject.cpp:4183
+ #6  0x00007ff40ead5676 in QGuiApplication::screenAdded (this=<optimized out>, _t1=<optimized out>)
+[...]
+```
+
+We need to drop -fPIE somehow at link-time accordingly. There's a few
+ways of doing this but I've gone for not calling `check_pie_supported()`
+(see (7) below).
+
+(Analysis on fixing this in other packages may depend on whether any static
+libraries *installed* by CMake where -fPIC was no longer passed for those,
+we would have a problem. I'd tried to use POSITION_INDEPENDENT_CODE at first
+but then -fPIC gets dropped as well everywhere, and setting the target
+property to false for just the Wireshark executable also doesn't work
+because it'll pass -no-pie which isn't what we want.)
+
+There are some questions:
+(3) Why doesn't this happen with Clang, given that Clang has -fno-direct-access-external-data
+    (equivalent to GCC's -mno-direct-extern-access), even when Qt is built
+    with bfd (not lld)?
+
+    The answer seems to be that Clang doesn't implement the optimisation
+    yet to avoid copy-relocations where possible. GCC implemented that in
+    5.x in r5-5573-g77ad54d911dd7c.
+
+(4) Why doesn't this (seem to) happen in other distributions?
+
+    nextcloud-client suffers from the same issue analysed here, see
+    https://bugs.gentoo.org/933110. The upstream bug at https://github.com/nextcloud/desktop/issues/2790
+    was reported by a Debian developer (cgzones), so it's a reasonable assumption
+    that it can happen on Debian.
+
+    Debian is one of few distributions (we're another) to use --enable-default-pie
+    in GCC rather than just passing it to all package builds in the package manager:
+    it's possible that some distros are just disabling -fPIE or adding a workaround
+    like we did for https://bugs.gentoo.org/552440. Not many distros build
+    with LTO either.
+
+    Debian also stopped building Wireshark with LTO because of a bug in Wireshark
+    itself (https://bugs.gentoo.org/941890), so I guess they disabled LTO
+    and didn't notice this crash.
+
+    (This is enough for me to be more confident in my analysis, anyway.)
+
+(5) Could Qt communicate this somehow automatically?
+
+    I think it might be able to if statically linking Qt and Qt was built
+    with LTO.
+
+    Otherwise, I think the only option would be an ELF .note. pkg-config
+    could maybe work but you can't assume all Qt consumers use that...
+
+    See the discussion around <https://bugreports.qt.io/browse/QTBUG-45755?focusedId=282483&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-282483>:
+    > Thiago Macieira added a comment - 22 May '15 17:11
+    > There aren't that many autoconf-based Qt5 builds and we've never exported the flag anyway.
+
+    (It might be worth bringing this .note idea up to Thiago and/or H.J. but
+    I'm not sure yet if it'll work.)
+
+    On the Qt side, -fPIC gets passed in to various places before because
+    Qt's CMake config files have INTERFACE_COMPILE_OPTIONS w/ -fPIC. Maybe
+    the answer is for Qt packages to never use CMAKE_POSITION_INDEPENDENT_CODE
+    instead. This came up in https://gitlab.kitware.com/cmake/cmake/-/issues/15570.
+
+(6) Could we just disable "reduce relocations" in Qt itself, given that
+    the workaround here will need to be applied in various Qt consumers?
+
+    This would significantly impact startup times of applications using Qt
+    and there don't seem to be too many applications doing this (only 2
+    known so far in Gentoo: Wireshark and nextcloud-client).
+
+(7) Is the mechanism used to fix this brittle?
+
+    Yes, we're relying on a CMake bug/feature for now at https://gitlab.kitware.com/cmake/cmake/-/issues/25588
+    so it doesn't try to enable *or* disable PIE at link-time and we can
+    just rely on our toolchain defaults.
+
+Thanks to Arusekk for producing a minimal example and reporting it upstream
+to Wireshark, thanks to slyfox for analysing the interaction with LTO, thanks
+to Holger for the discussion around it and testing, and thanks to Eli for
+reviewing the commit message.
+
+Bug: https://bugs.gentoo.org/552440
+Bug: https://bugs.gentoo.org/754021
+Bug: https://bugs.gentoo.org/933110
+Bug: https://bugs.gentoo.org/941890
+Bug: https://gitlab.kitware.com/cmake/cmake/-/issues/15570
+Bug: https://gitlab.kitware.com/cmake/cmake/-/issues/25588
+Bug: https://gitlab.kitware.com/cmake/cmake/-/issues/23980
+Bug: https://gitlab.com/wireshark/wireshark/-/issues/17040
+Bug: https://bugreports.qt.io/browse/QTBUG-45755
+Bug: https://bugreports.qt.io/browse/QTBUG-47942
+Bug: https://gcc.gnu.org/PR65248
+Bug: https://gcc.gnu.org/PR65886
+Thanks-to: Arusekk <arek_koz@o2.pl>
+Thanks-to: Sergei Trofimovich <slyfox@gentoo.org>
+Thanks-to: Holger Hoffstätte <holger@applied-asynchrony.com>
+Thanks-to: Eli Schwartz <eschwartz@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d82a718bf6..c177e46571 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1254,7 +1254,6 @@ if(NOT CMAKE_C_COMPILER_ID MATCHES "MSVC" AND NOT OSS_FUZZ)
+ 		endif()
+ 	else()
+ 		include(CheckPIESupported)
+-		check_pie_supported()
+ 	endif()
+ endif()
+ 
+
+base-commit: 85ff46c76b2a6a4b94094e4f20dfa66b43086182
+-- 
+2.49.0
+

@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{3..4} )
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils toolchain-funcs xdg cmake
+inherit fcaps lua-single python-any-r1 qmake-utils toolchain-funcs xdg cmake
 
 DESCRIPTION="Network protocol analyzer (sniffer)"
 HOMEPAGE="https://www.wireshark.org/"
@@ -117,7 +117,10 @@ if [[ ${PV} != *9999* ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-wireshark )"
 fi
 
-PATCHES=( "${FILESDIR}/4.4.4-fix-skipping-rawshark-tests-on-big-endian.patch" )
+PATCHES=(
+	"${FILESDIR}/4.4.4-fix-skipping-rawshark-tests-on-big-endian.patch"
+	"${FILESDIR}/4.4.6-lto.patch"
+)
 
 python_check_deps() {
 	use test || return 0
@@ -153,10 +156,6 @@ src_configure() {
 	local mycmakeargs
 
 	python_setup
-
-	if use gui ; then
-		append-cxxflags -fPIC -DPIC
-	fi
 
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"
