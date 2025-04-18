@@ -13,7 +13,7 @@ SRC_URI="https://github.com/canonical/lightdm/releases/download/${PV}/${P}.tar.x
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="audit elogind +gnome +gtk +introspection non-root qt5 systemd vala X"
+IUSE="audit elogind +gnome +gtk +introspection non-root systemd vala X"
 
 REQUIRED_USE="^^ ( elogind systemd )
 	vala? ( introspection )"
@@ -32,12 +32,8 @@ COMMON_DEPEND="
 	audit? ( sys-process/audit )
 	gnome? ( sys-apps/accountsservice )
 	introspection? ( >=dev-libs/gobject-introspection-1 )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-	)
 "
+
 RDEPEND="${COMMON_DEPEND}
 	acct-group/lightdm
 	acct-group/video
@@ -120,7 +116,6 @@ src_configure() {
 		--disable-tests
 		$(use_enable audit libaudit)
 		$(use_enable introspection)
-		$(use_enable qt5 liblightdm-qt5)
 		$(use_enable vala)
 		--with-user-session=${_session}
 		--with-greeter-session=${_greeter}
