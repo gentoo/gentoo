@@ -1,0 +1,36 @@
+From c1e709dd260b7621f36737b585dac1fd45a7704c Mon Sep 17 00:00:00 2001
+From: da-woods <dw-git@d-woods.co.uk>
+Date: Sun, 6 Apr 2025 08:43:34 +0100
+Subject: [PATCH] Fix __Pyx_Owned_Py_None usage as actual function (GH-6782)
+
+In the tracing code, we are using it like a function (i.e. casting to void to mark it unused) so it has to be a function, not just a macro.
+
+Fixes https://github.com/cython/cython/issues/6781
+---
+ Cython/Utility/TypeConversion.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Cython/Utility/TypeConversion.c b/Cython/Utility/TypeConversion.c
+index b86125699c7..e085fae8eb3 100644
+--- a/Cython/Utility/TypeConversion.c
++++ b/Cython/Utility/TypeConversion.c
+@@ -103,7 +103,7 @@ static CYTHON_INLINE PyObject *__Pyx_XNewRef(PyObject *obj) {
+ #endif
+ }
+ 
+-#define __Pyx_Owned_Py_None(b) __Pyx_NewRef(Py_None)
++static CYTHON_INLINE PyObject *__Pyx_Owned_Py_None(int b);
+ static CYTHON_INLINE PyObject * __Pyx_PyBool_FromLong(long b);
+ static CYTHON_INLINE int __Pyx_PyObject_IsTrue(PyObject*);
+ static CYTHON_INLINE int __Pyx_PyObject_IsTrueAndDecref(PyObject*);
+@@ -420,6 +420,10 @@ static CYTHON_INLINE Py_hash_t __Pyx_PyIndex_AsHash_t(PyObject* o) {
+   }
+ }
+ 
++static CYTHON_INLINE PyObject *__Pyx_Owned_Py_None(int b) {
++    CYTHON_UNUSED_VAR(b);
++    return __Pyx_NewRef(Py_None);
++}
+ 
+ static CYTHON_INLINE PyObject * __Pyx_PyBool_FromLong(long b) {
+   return b ? __Pyx_NewRef(Py_True) : __Pyx_NewRef(Py_False);
