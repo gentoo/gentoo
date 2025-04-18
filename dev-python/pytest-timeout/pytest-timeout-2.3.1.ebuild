@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -27,7 +27,7 @@ BDEPEND="
 		!hppa? (
 			$(python_gen_cond_dep '
 				dev-python/pytest-cov[${PYTHON_USEDEP}]
-			' python3_{10..11} pypy3)
+			' python3_{10..13} 'pypy3*')
 		)
 	)
 "
