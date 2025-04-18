@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="Command-line utility and library for L-function computations"
 HOMEPAGE="https://gitlab.com/sagemath/lcalc"
 SRC_URI="https://gitlab.com/-/project/12934202/uploads/679cb360a06a713233876cd6fa0ba2fa/${P}.tar.xz"
@@ -24,6 +26,13 @@ DEPEND="double-double? ( sci-libs/qd:= )
 	quad-double? ( sci-libs/qd:= )
 	pari? ( sci-mathematics/pari:= )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+
+	# Attempt to fix bug 953363 (using the fix for bug 914068)
+	elibtoolize
+}
 
 src_configure() {
 	econf $(use_with pari) \
