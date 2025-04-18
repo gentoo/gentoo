@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>francoisvalenduc@gmail.com</email>
+		<name>François Valenduc</name>
+	</maintainer>
+	<longdescription>Easy to use retry decorator</longdescription>
+</pkgmetadata>
