@@ -1,10 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit java-pkg-2 prefix
 
+DOWNLOAD_ID="890"
 MY_DATE="$(ver_cut 4)"
 MY_PN="SMCIPMITool"
 MY_PN_SRC_URI="SMCIPMItool"
@@ -12,7 +13,7 @@ MY_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI"
 HOMEPAGE="https://www.supermicro.com/"
-SRC_URI="https://www.supermicro.com/Bios/sw_download/651/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz"
+SRC_URI="https://www.supermicro.com/Bios/sw_download/${DOWNLOAD_ID}/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz"
 
 LICENSE="supermicro"
 SLOT="0"
