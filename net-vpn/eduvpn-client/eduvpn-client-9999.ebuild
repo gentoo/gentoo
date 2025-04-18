@@ -47,7 +47,7 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	net-misc/networkmanager
-	>=net-vpn/eduvpn-common-2.99[${PYTHON_USEDEP}]
+	>=net-vpn/eduvpn-common-3[${PYTHON_USEDEP}]
 	x11-libs/libnotify
 "
 
