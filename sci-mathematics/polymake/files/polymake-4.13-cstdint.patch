@@ -1,0 +1,13 @@
+diff --git a/lib/core/include/internal/comparators.h b/lib/core/include/internal/comparators.h
+index 57e3f14..3486f80 100644
+--- a/lib/core/include/internal/comparators.h
++++ b/lib/core/include/internal/comparators.h
+@@ -17,6 +17,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #include "polymake/internal/comparators_ops.h"
+ #include "polymake/internal/matrix_rows_cols.h"
+ #include "polymake/TransformedContainer.h"

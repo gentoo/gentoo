@@ -53,6 +53,8 @@ RDEPEND="${DEPEND}
 	dev-perl/XML-SAX
 	dev-perl/XML-Writer"
 
+PATCHES=( "${FILESDIR}/${P}-cstdint.patch" )
+
 src_configure() {
 	# Without this, the build system tries to use "the highest possible"
 	# optimization level and will override what's in your CXXFLAGS.
