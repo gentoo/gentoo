@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_TESTED=( python3_{10..13} pypy3 pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13t )
 
 inherit distutils-r1 multiprocessing pypi
 
@@ -46,7 +46,7 @@ BDEPEND="
 		' "${PYTHON_TESTED[@]}")
 		$(python_gen_cond_dep '
 			dev-python/time-machine[${PYTHON_USEDEP}]
-		' 'python3*')
+		' python3_{10..13})
 		$(python_gen_cond_dep '
 			>=dev-python/pytest-freezer-0.4.6[${PYTHON_USEDEP}]
 		' 'pypy3*')
