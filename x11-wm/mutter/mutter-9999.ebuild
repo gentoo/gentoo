@@ -98,7 +98,6 @@ X_OR_XWAYLAND_DEPS="
 	x11-libs/libXext
 	>=x11-libs/libXfixes-6
 	>=x11-libs/libXi-1.7.4
-	x11-libs/libxkbfile
 	x11-misc/xkeyboard-config
 	>=x11-libs/libXrandr-1.5.0
 	x11-libs/libxcb:=
@@ -112,6 +111,7 @@ RDEPEND+="
 		${X_OR_XWAYLAND_DEPS}
 		x11-libs/libICE
 		>=x11-libs/libxkbcommon-0.4.3[X]
+		x11-libs/libxkbfile
 		x11-libs/libXtst
 		x11-libs/libSM
 	)
