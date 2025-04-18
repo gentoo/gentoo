@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit bash-completion-r1 meson python-any-r1 virtualx xdg-utils
+inherit meson python-any-r1 shell-completion virtualx xdg-utils
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
 HOMEPAGE="https://github.com/acrisci/playerctl"
@@ -93,7 +93,6 @@ src_install() {
 	dodoc -r "${S}"/examples/.
 	docompress -x "/usr/share/doc/${PF}/examples"
 
-	newbashcomp data/playerctl.bash "${PN}"
-	insinto /usr/share/zsh/site-functions
-	newins data/playerctl.zsh _playerctl
+	newbashcomp data/playerctl.bash playerctl
+	newzshcomp data/playerctl.zsh _playerctl
 }
