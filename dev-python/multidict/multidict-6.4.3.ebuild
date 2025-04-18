@@ -29,6 +29,11 @@ RDEPEND="
 		>=dev-python/typing-extensions-4.1.0[${PYTHON_USEDEP}]
 	' 3.10)
 "
+BDEPEND="
+	test? (
+		dev-python/objgraph[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
