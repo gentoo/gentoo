@@ -123,6 +123,8 @@ src_prepare() {
 	# CHECKREQS_MEMORY and causes unneccessary errors. Upstream set them
 	# according to CI OOM failures, which are not applicable to normal Gentoo build.
 	sed -i -e '/\.max_rss = .*,/d' build.zig || die
+
+	sed -i '/exe\.allow_so_scripts = true;/d' build.zig || die
 }
 
 src_configure() {
