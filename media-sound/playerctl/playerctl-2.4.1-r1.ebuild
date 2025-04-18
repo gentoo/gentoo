@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit bash-completion-r1 meson python-any-r1 virtualx xdg-utils
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
