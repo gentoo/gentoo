@@ -54,8 +54,8 @@ python_site_check() {
 		local impl=${prog%/*}
 		impl=${impl##*/}
 
-		# NB: using ${impl}* to catch pypy3.* for pypy3
-		local pydir=( "${ED}"/usr/lib/${impl}* )
+		local pydir="${ED}"/usr/lib/${impl}
+		[[ ${impl} == pypy3 ]] && pydir="${ED}"/usr/lib/pypy3.10
 		[[ -d ${pydir} ]] || continue
 
 		# check for packages installing outside site-packages
