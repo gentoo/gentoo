@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/dnspython[${PYTHON_USEDEP}]
-		dev-python/ipaddr[${PYTHON_USEDEP}]
 		dev-python/m2crypto[${PYTHON_USEDEP}]
 	')
 	net-dns/unbound[python,${PYTHON_SINGLE_USEDEP}]
