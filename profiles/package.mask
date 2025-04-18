@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2025-04-18)
+# Package not needed anymore by the only consumer net-dns/hash-slinger.
+# Masked for removal on 2025-05-18. Bug #952341
+dev-python/ipaddr
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-14)
 # Package destabilisation mask after prolongued time w/o maintainer.
 # Bug #949838
