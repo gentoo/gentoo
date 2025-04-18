@@ -75,6 +75,13 @@ python_site_check() {
 		local sitedir=( "${pydir}"/site-packages )
 		[[ -d ${sitedir} ]] || continue
 
+		local modname=$(
+			"${impl}" - <<-EOF
+				import sysconfig
+				print(sysconfig.get_config_var("SHLIB_SUFFIX"))
+			EOF
+		)
+
 		# check for bad package versions
 		while IFS= read -d $'\0' -r f; do
 			bad_versions+=( "${f#${ED}}" )
@@ -107,7 +114,7 @@ python_site_check() {
 					-name '*.pth' -o \
 					-name '*.py' -o \
 					-name '*.pyi' -o \
-					-name "*$(get_modname)" -o \
+					-name "*${modname}" -o \
 					-name 'README.txt' \
 				')' -print0
 		)
@@ -130,8 +137,8 @@ python_site_check() {
 			wrong_ext+=( "${f#${ED}}" )
 		done < <(
 			find "${sitedir}" '(' \
-				-name "*.pypy*$(get_modname)" -o \
-				-name "*.cpython*$(get_modname)" \
+				-name "*.pypy*${modname}" -o \
+				-name "*.cpython*${modname}" \
 				')' -a '!' -name "*${ext_suffix}" -print0
 		)
 
