@@ -1,0 +1,36 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure cargo based ebuilds define correct RUST_MIN_VER
+# Maintainer: Rust Project <rust@gentoo.org>
+
+cargo_ver_check() {
+	has cargo ${INHERITED} || return
+
+	# First version of Rust to support that edition
+	declare -A RUST_EDITIONS=(
+		[2024]="1.85.0"
+		#[2021]="1.56.0" # our oldest rust version is 1.74.0
+	)
+
+	# Maximum value for "edition" across Cargo.toml files
+	local cargo_toml_edition=$(
+		find "${S}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
+		sort -n |
+		tail -n 1
+	)
+	if [[ -n ${cargo_toml_edition} ]]; then
+		local min_rust_ver="${RUST_EDITIONS[${cargo_toml_edition}]}"
+		if [[ -n ${min_rust_ver} ]] && ver_test "${RUST_MIN_VER:-0}" -lt "${min_rust_ver}"; then
+			eqawarn
+			eqawarn "QA Notice: found Cargo.toml file which specifies edition=\"${cargo_toml_edition}\""
+			eqawarn "which requires RUST_MIN_VER=\"${min_rust_ver}\""
+			eqawarn
+		fi
+	fi
+}
+
+cargo_ver_check
+: # guarantee successful exit
+
+# vim:ft=sh
