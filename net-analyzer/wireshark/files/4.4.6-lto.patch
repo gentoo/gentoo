@@ -122,8 +122,8 @@ There are some questions:
 
 Thanks to Arusekk for producing a minimal example and reporting it upstream
 to Wireshark, thanks to slyfox for analysing the interaction with LTO, thanks
-to Holger for the discussion around it and testing, and thanks to Eli for
-reviewing the commit message.
+to Holger and Eli for the discussion around it, reviewing the commit message,
+and generally talking it all through and giving ideas.
 
 Bug: https://bugs.gentoo.org/552440
 Bug: https://bugs.gentoo.org/754021
