@@ -363,7 +363,7 @@ python_compile() {
 
 	# The build system uses its own build dir, find the name of this dir.
 	local pyside_build_dir=$(find "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))" -maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n")
-	export BUILD_ID=${pyside_build_dir#qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-}
+	export pyside_build_id=${pyside_build_dir#qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-}
 
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
@@ -493,7 +493,7 @@ python_compile() {
 python_test() {
 	# Otherwise it picks the last built directory breaking assumption for multi target builds
 	mkdir -p build_history/9999-99-99_999999/ || die
-	local pyside_build_dir=qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-${BUILD_ID}
+	local pyside_build_dir=qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-${pyside_build_id}
 	echo "$(ls -d "${BUILD_DIR}"/build*/${pyside_build_dir}/build | sort -V | tail -n 1)" > build_history/9999-99-99_999999/build_dir.txt || die
 	echo "${pyside_build_dir}" >> build_history/9999-99-99_999999/build_dir.txt || die
 
