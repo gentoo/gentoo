@@ -114,6 +114,7 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
 	"${FILESDIR}"/${PN}-6.8.3-clang20.patch
 	"${FILESDIR}"/${PN}-6.8.3-pipewire1.4.patch
+	"${FILESDIR}"/${PN}-6.8.3-gperf3.2.patch
 )
 
 python_check_deps() {
