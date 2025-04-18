@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres radius samba selinux snmp ssh +ssl"
+IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game nls postgres radius samba selinux snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
 # get built if the binary it uses is installed. For example, check_snmp
@@ -88,6 +88,12 @@ src_prepare() {
 		|| die 'failed to fix perl interpreter path'
 
 	eautoreconf
+
+	# eautoreconf replaces $(MKDIR_P) with $(mkdir_p) in
+	# po/Makefile.in.in. As you might expect, this does not work.
+	sed -i po/Makefile.in.in \
+		-e 's/@mkdir_p@/@MKDIR_P@/' \
+		|| die
 }
 
 src_configure() {
@@ -111,9 +117,10 @@ src_configure() {
 	fi
 
 	econf \
-		$(use_with mysql) \
 		$(use_with ipv6) \
 		$(use_with ldap) \
+		$(use_with mysql) \
+		$(use_enable nls) \
 		$(use_with postgres pgsql /usr) \
 		$(use_with radius) \
 		"${myconf[@]}" \
