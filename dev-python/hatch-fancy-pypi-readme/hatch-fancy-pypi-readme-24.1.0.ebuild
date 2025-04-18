@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} python3_13t )
 
 inherit distutils-r1
 
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/hatchling[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{9..10})
+	' 3.10)
 "
 
 distutils_enable_tests pytest
