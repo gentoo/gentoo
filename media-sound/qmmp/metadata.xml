@@ -19,6 +19,7 @@
 		<flag name="libxmp">Enable module files renderer (modplug replacement) via <pkg>media-libs/libxmp</pkg></flag>
 		<flag name="lyrics">Fetch track lyrics from the web</flag>
 		<flag name="midi">Enable midi support using wildmidi library</flag>
+		<flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
 		<flag name="notifier">Enable qmmps' notifier system</flag>
 		<flag name="pipewire">Enable PipeWire output plugin</flag>
 		<flag name="projectm">Enable projectm music visualization plugin</flag>
