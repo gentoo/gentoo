@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,10 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.2.3-cmake-std.patch" )
+PATCHES=(
+	"${FILESDIR}/boolector-3.2.3-cmake-std.patch"
+	"${FILESDIR}/boolector-3.2.4-cmake_minimum_required.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
