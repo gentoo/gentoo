@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -26,10 +26,12 @@ BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
 		dev-python/hypothesis[${PYTHON_USEDEP}]
-		dev-python/zope-interface[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/zope-interface[${PYTHON_USEDEP}]
+		' python3_{10..13} 'pypy*')
 		$(python_gen_cond_dep '
 			dev-python/cloudpickle[${PYTHON_USEDEP}]
-		' 'python*' pypy3)
+		' python3_{10..13} pypy3)
 	)
 "
 
