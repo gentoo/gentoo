@@ -25,6 +25,8 @@ ruby_add_rdepend "
 	dev-ruby/json
 "
 
+ruby_add_depend "test? ( dev-ruby/sus-fixtures-console )"
+
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
 
