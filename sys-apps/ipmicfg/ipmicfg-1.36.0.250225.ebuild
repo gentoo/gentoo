@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DOWNLOAD_ID="897"
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN^^}"
 MY_PV="$(ver_cut 1-3)"
@@ -11,7 +12,7 @@ inherit secureboot
 
 DESCRIPTION="An in-band utility for configuring Supermicro IPMI devices"
 HOMEPAGE="https://www.supermicro.com"
-SRC_URI="https://www.supermicro.com/Bios/sw_download/760/${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
+SRC_URI="https://www.supermicro.com/Bios/sw_download/${DOWNLOAD_ID}/${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
 S="${WORKDIR}/${MY_PN}_${MY_PV}_build.${MY_DATE}"
 
 LICENSE="supermicro"
