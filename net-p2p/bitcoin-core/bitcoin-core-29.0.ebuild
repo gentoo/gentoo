@@ -5,70 +5,70 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools bash-completion-r1 check-reqs db-use desktop edo multiprocessing python-any-r1 systemd toolchain-funcs xdg-utils
+inherit bash-completion-r1 check-reqs cmake db-use desktop edo multiprocessing python-any-r1 systemd toolchain-funcs xdg-utils
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz
+	https://github.com/bitcoin/bitcoin/pull/30997/commits/f9472962d1cdf58bfc1ad64c4bb44ddf5d0b4db2.patch?full_index=1 -> ${PN}-29.0-qt6.patch
 "
 S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
 LICENSE="MIT"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
-	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde +man nat-pmp qrcode +sqlite +system-libsecp256k1 systemtap test test-full upnp zeromq"
+IUSE="asm +berkdb +cli +daemon dbus examples +external-signer gui qrcode +sqlite +system-libsecp256k1 systemtap test test-full zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	dbus? ( gui )
-	kde? ( gui )
 	qrcode? ( gui )
 	test-full? ( test )
 "
 # dev-libs/univalue is now bundled, as upstream dropped support for system copy
 # and their version in the Bitcoin repo has deviated a fair bit from upstream.
 # Upstream also seems very inactive.
-RDEPEND="
-	!dev-util/bitcoin-tx
+COMMON_DEPEND="
 	>=dev-libs/boost-1.81.0:=
 	>=dev-libs/libevent-2.1.12:=
 	berkdb? ( >=sys-libs/db-4.8.30:$(db_ver_to_slot 4.8)=[cxx] )
-	cli? ( !net-p2p/bitcoin-cli )
 	daemon? (
-		!net-p2p/bitcoind
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
 	gui? (
-		!net-p2p/bitcoin-qt
-		>=dev-qt/qtcore-5.15.14:5
-		>=dev-qt/qtgui-5.15.14:5
-		>=dev-qt/qtnetwork-5.15.14:5
-		>=dev-qt/qtwidgets-5.15.14:5
-		dbus? ( >=dev-qt/qtdbus-5.15.14:5 )
+		>=dev-qt/qtbase-6.2:6[dbus?,gui,network,widgets]
 	)
-	nat-pmp? ( >=net-libs/libnatpmp-20230423:= )
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
 	sqlite? ( >=dev-db/sqlite-3.38.5:= )
-	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[ellswift,extrakeys,recovery,schnorr] )
-	upnp? ( >=net-libs/miniupnpc-2.2.7:= )
+	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[asm=,ellswift,extrakeys,recovery,schnorr] )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
 "
+RDEPEND="
+	${COMMON_DEPEND}
+	!dev-util/bitcoin-tx
+	cli? ( !net-p2p/bitcoin-cli )
+	daemon? ( !net-p2p/bitcoind )
+	gui? ( !net-p2p/bitcoin-qt )
+"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	systemtap? ( >=dev-debug/systemtap-4.8 )
 "
 BDEPEND="
+	>=dev-build/cmake-3.25
 	virtual/pkgconfig
 	daemon? (
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
-	gui? ( >=dev-qt/linguist-tools-5.15.14:5 )
-	test? ( ${PYTHON_DEPS} )
+	gui? ( >=dev-qt/qttools-6.2:6[linguist] )
+	test? (
+		${PYTHON_DEPS}
+	)
 "
 IDEPEND="
 	gui? ( dev-util/desktop-file-utils )
@@ -92,7 +92,8 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/28.0-syslibs.patch"
+	"${DISTDIR}/${PN}-29.0-qt6.patch"
+	"${FILESDIR}/29.0-cmake-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )
 
@@ -138,18 +139,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-	if use system-libsecp256k1 ; then
-		rm -r src/secp256k1 || die
-		sed -e '/^DIST_SUBDIRS *=/s/\bsecp256k1\b//' -i src/Makefile.am || die
-	else
-		pushd src/secp256k1 >/dev/null || die
-		AT_NOELIBTOOLIZE=yes eautoreconf
-		popd >/dev/null || die
-	fi
-	eautoreconf
+	eapply_user
+	! use system-libsecp256k1 || rm -r src/secp256k1 || die
+	cmake_src_prepare
 
-	# we say --disable-util-util, so we can't test bitcoin-util
+	# we set BUILD_UTIL=OFF, so we can't test bitcoin-util
 	sed -ne '/^  {/{h;:0;n;H;/^  }/!b0;g;\|"exec": *"\./bitcoin-util"|d};p' \
 		-i test/util/data/bitcoin-util-test.json || die
 
@@ -158,57 +152,55 @@ src_prepare() {
 }
 
 src_configure() {
-	local wallet ; if use berkdb || use sqlite ; then wallet=enable ; else wallet=disable ; fi
-	local myeconfargs=(
-		--disable-static
-		--${wallet}-wallet
-		$(use_with sqlite)
-		$(use_with berkdb bdb)
-		$(use_enable systemtap usdt)
-		$(use_with upnp miniupnpc)
-		$(use_with nat-pmp natpmp)
-		$(use_enable test tests)
-		--disable-bench
-		--disable-fuzz{,-binary}
-		$(use_with qrcode qrencode)
-		--disable-ccache
-		$(use_enable asm)
-		$(use_enable zeromq zmq)
-		$(use_enable man)
-		$(use_enable external-signer)
-		--with-utils
-		$(use_enable {,util-}cli)
-		--enable-util-tx
-		--${wallet}-util-wallet
-		--disable-util-util
-		$(use_with daemon)
-		$(use_with gui gui qt5)
-		$(use_with dbus qtdbus)
-		$(use_with system-libsecp256k1)
+	local wallet ; if use berkdb || use sqlite ; then wallet=ON ; else wallet=OFF ; fi
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
+		-DBUILD_SHARED_LIBS=ON
+		-DENABLE_WALLET=${wallet}
+		-DWITH_SQLITE=$(usex sqlite)
+		-DWITH_BDB=$(usex berkdb)
+		-DWITH_USDT=$(usex systemtap)
+		-DBUILD_TESTS=$(usex test)
+		-DBUILD_BENCH=OFF
+		-DBUILD_{FOR_FUZZING,FUZZ_BINARY}=OFF
+		-DWITH_QRENCODE=$(usex qrcode)
+		-DWITH_CCACHE=OFF
+		-DWITH_ZMQ=$(usex zeromq)
+		-DENABLE_EXTERNAL_SIGNER=$(usex external-signer)
+		-DBUILD_CLI=$(usex cli)
+		-DBUILD_TX=ON
+		-DBUILD_WALLET_TOOL=${wallet}
+		-DBUILD_UTIL=OFF
+		-DBUILD_DAEMON=$(usex daemon)
+		-DBUILD_GUI=$(usex gui)
+		-DWITH_DBUS=$(usex dbus)
+		-DWITH_SYSTEM_LIBSECP256K1=$(usex system-libsecp256k1 ON \
+			"OFF -DSECP256K1_ASM=$(usex asm AUTO OFF)")
 	)
-	econf "${myeconfargs[@]}"
+	cmake_src_configure
 }
 
 src_compile() {
-	default
+	cmake_src_compile
 
 	if use daemon && ! tc-is-cross-compiler ; then
-		TOPDIR="${S}" bash contrib/devtools/gen-bitcoin-conf.sh || die
+		TOPDIR="${S}" BUILDDIR="${BUILD_DIR}" bash contrib/devtools/gen-bitcoin-conf.sh || die
 	fi
 	sed -e 's/ To use, copy this file$//p;Tp;:0;n;/save the file\.$/!b0;d;:p;p' \
 		-ni share/examples/bitcoin.conf || die
 }
 
 src_test() {
-	emake check
+	cmake_src_test
 
-	use daemon && edo "${PYTHON}" test/functional/test_runner.py \
+	if use daemon ; then
+		cd -- "${BUILD_DIR}" || die
+		edo "${PYTHON}" test/functional/test_runner.py \
 			--ansi $(usev test-full --extended) --jobs="$(get_makeopts_jobs)" --timeout-factor="${TIMEOUT_FACTOR:-15}"
+	fi
 }
 
 src_install() {
-	dodoc -r doc/release-notes
-
 	use external-signer && DOCS+=( doc/external-signer.md )
 	use berkdb || use sqlite && DOCS+=( doc/managing-wallets.md )
 	use systemtap && DOCS+=( doc/tracing.md )
@@ -220,7 +212,8 @@ src_install() {
 		docompress -x "/usr/share/doc/${PF}/rpcauth.py"
 	fi
 
-	default
+	einstalldocs
+	cmake_src_install
 
 	find "${ED}" -type f -name '*.la' -delete || die
 	! use test || rm -f -- "${ED}"/usr/bin/test_bitcoin{,-qt} || die
@@ -258,11 +251,6 @@ src_install() {
 		newins src/qt/res/src/bitcoin.svg bitcoin128.svg
 
 		domenu "${FILESDIR}/org.bitcoin.bitcoin-qt.desktop"
-
-		if use kde ; then
-			insinto /usr/share/kservices5
-			doins "${FILESDIR}/bitcoin-qt.protocol"
-		fi
 	fi
 
 	if use examples ; then
@@ -290,10 +278,6 @@ pkg_preinst() {
 			dosym -r {/etc/,/var/lib/bitcoin/.}bitcoin/bitcoin.conf
 			dosym -r /var/lib/bitcoin{/.bitcoin,d}
 		fi
-	fi
-
-	if use kde && [[ -d "${EROOT}/usr/share/kde4" ]] ; then
-		dosym -r /usr/share/{kservices5,kde4/services}/bitcoin-qt.protocol
 	fi
 }
 
