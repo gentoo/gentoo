@@ -1,0 +1,26 @@
+From 99248e3681036af5132bf5338ec939148da13478 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 18 Apr 2025 16:33:35 +0200
+Subject: [PATCH] Update `test_wheel.WheelTestCase.test_abi` for freethreading
+
+Update `test_wheel.WheelTestCase.test_abi` to account for the `t` suffix
+added in freethreaded CPython builds.
+
+Fixes #243
+---
+ tests/test_wheel.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/test_wheel.py b/tests/test_wheel.py
+index da5bd58..c14bba3 100644
+--- a/tests/test_wheel.py
++++ b/tests/test_wheel.py
+@@ -719,6 +719,8 @@ def test_abi(self):
+                 us = sysconfig.get_config_var('Py_UNICODE_SIZE')
+                 if us == 4 or (us is None and sys.maxunicode == 0x10FFFF):
+                     parts.append('u')
++            if bool(sysconfig.get_config_var("Py_GIL_DISABLED")):
++                parts.append('t')
+         if vi < (3, 5):
+             abi = ABI
+         else:

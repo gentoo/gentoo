@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
 
 inherit distutils-r1
 
 DESCRIPTION="Low-level components of distutils2/packaging"
 HOMEPAGE="
 	https://pypi.org/project/distlib/
-	https://github.com/pypa/distlib
+	https://github.com/pypa/distlib/
 "
 SRC_URI="
 	https://github.com/pypa/distlib/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
@@ -35,6 +35,8 @@ src_prepare() {
 	local PATCHES=(
 		# use system pypiserver instead of bundled one
 		"${FILESDIR}"/distlib-0.3.9-system-pypiserver.py
+		# https://github.com/pypa/distlib/pull/244
+		"${FILESDIR}/${P}-freethreading.patch"
 	)
 
 	# make sure it's not used
