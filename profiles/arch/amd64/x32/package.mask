@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2025-04-18)
+# X32 abi does not exist on windows
+app-emulation/wine-vanilla
+app-emulation/wine-staging
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-04)
 # Requires dev-qt/qtwebengine
 dev-util/nsight-compute
