@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 CLI_COMPAT=( pypy3 python3_{10..13} )
-PYTHON_COMPAT=( "${CLI_COMPAT[@]}" pypy3_11 )
+PYTHON_COMPAT=( "${CLI_COMPAT[@]}" pypy3_11 python3_13t )
 PYTHON_REQ_USE="threads(+),sqlite"
 
 inherit distutils-r1 optfeature
@@ -69,6 +69,12 @@ python_test() {
 				hypothesis-python/tests/pytest/test_fixtures.py::test_given_plus_overridden_fixture
 			)
 			;;
+		python3.13t)
+			EPYTEST_DESELECT+=(
+				# TODO: missing warning
+				'hypothesis-python/tests/cover/test_random_module.py::test_passing_referenced_instance_within_function_scope_warns'
+			)
+			;&
 		python3.1[23]*)
 			EPYTEST_DESELECT+=(
 				# TODO
