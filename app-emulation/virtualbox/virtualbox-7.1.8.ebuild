@@ -350,6 +350,8 @@ src_configure() {
 	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"
 
+	# --enable-webservice is a no-op
+	# webservice is automagically enabled if gsoap is found
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
 		--with-g++="$(tc-getCXX)"
@@ -364,7 +366,7 @@ src_configure() {
 		$(usev !lvm --disable-devmapper)
 		$(usev !pulseaudio --disable-pulse)
 		$(usev !python --disable-python)
-		$(usev vboxwebsrv --enable-webservice)
+		$(usev !vboxwebsrv --with-gsoap-dir=/dev/null)
 		$(usev vde --enable-vde)
 		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
