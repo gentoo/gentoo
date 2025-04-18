@@ -1,0 +1,283 @@
+From fb5024b3cc07c63e347d2ba1b63ef87b96f1a7dc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 30 Apr 2025 22:56:56 +0200
+Subject: [PATCH 1/6] Properly find pugixml, fix includes and drop cmake refs
+ of bundled dir
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                                | 3 +--
+ cmake/qet_compilation_vars.cmake              | 4 ----
+ sources/ElementsCollection/elementslocation.h | 2 +-
+ sources/NameList/nameslist.h                  | 2 +-
+ sources/diagramcontext.h                      | 2 +-
+ 5 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71cc5a530..8473c4591 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,7 @@ include(cmake/git_update_submodules.cmake)
+ include(cmake/git_last_commit_sha.cmake)
+ include(cmake/fetch_kdeaddons.cmake)
+ include(cmake/fetch_singleapplication.cmake)
+-include(cmake/fetch_pugixml.cmake)
++find_package(pugixml CONFIG REQUIRED)
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ 
+@@ -118,7 +118,6 @@ target_include_directories(
+   ${QET_DIR}/sources/NameList
+   ${QET_DIR}/sources/NameList/ui
+   ${QET_DIR}/sources/utils
+-  ${QET_DIR}/pugixml/src
+   ${QET_DIR}/sources/dataBase
+   ${QET_DIR}/sources/dataBase/ui
+   ${QET_DIR}/sources/factory/ui
+diff --git a/cmake/qet_compilation_vars.cmake b/cmake/qet_compilation_vars.cmake
+index 1783dce0e..1b664610d 100644
+--- a/cmake/qet_compilation_vars.cmake
++++ b/cmake/qet_compilation_vars.cmake
+@@ -421,10 +421,6 @@ set(QET_SRC_FILES
+   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.cpp
+   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.h
+ 
+-  ${QET_DIR}/pugixml/src/pugiconfig.hpp
+-  ${QET_DIR}/pugixml/src/pugixml.cpp
+-  ${QET_DIR}/pugixml/src/pugixml.hpp
+-
+   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
+   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
+   ${QET_DIR}/sources/qetgraphicsitem/conductortextitem.cpp
+diff --git a/sources/ElementsCollection/elementslocation.h b/sources/ElementsCollection/elementslocation.h
+index 92fd2ea87..7e1246463 100644
+--- a/sources/ElementsCollection/elementslocation.h
++++ b/sources/ElementsCollection/elementslocation.h
+@@ -20,7 +20,7 @@
+ 
+ #include "../NameList/nameslist.h"
+ #include "../diagramcontext.h"
+-#include "pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ #include <QIcon>
+ #include <QString>
+diff --git a/sources/NameList/nameslist.h b/sources/NameList/nameslist.h
+index c316a79c7..e495bf8b3 100644
+--- a/sources/NameList/nameslist.h
++++ b/sources/NameList/nameslist.h
+@@ -17,7 +17,7 @@
+ */
+ #ifndef NAMES_LIST_H
+ #define NAMES_LIST_H
+-#include "pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ #include <QtXml>
+ /**
+diff --git a/sources/diagramcontext.h b/sources/diagramcontext.h
+index d04104345..dbaf170c1 100644
+--- a/sources/diagramcontext.h
++++ b/sources/diagramcontext.h
+@@ -17,7 +17,7 @@
+ */
+ #ifndef DIAGRAM_CONTEXT_H
+ #define DIAGRAM_CONTEXT_H
+-#include "pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ #include <QDomElement>
+ #include <QHash>
+-- 
+2.51.0
+
+
+From 27a3f9767bb1c0262cad58513393274af3b64eae Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Aug 2025 18:43:14 +0200
+Subject: [PATCH 2/6] Properly find KF6
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8473c4591..1203a76d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,7 +47,13 @@ include(cmake/start_options.cmake)
+ include(cmake/developer_options.cmake)
+ include(cmake/git_update_submodules.cmake)
+ include(cmake/git_last_commit_sha.cmake)
+-include(cmake/fetch_kdeaddons.cmake)
++if(BUILD_WITH_KF6)
++  find_package(ECM 6.8.0 REQUIRED NO_MODULE)
++  list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
++  find_package(KF6CoreAddons CONFIG REQUIRED)
++  find_package(KF6WidgetsAddons CONFIG REQUIRED)
++  set(KF6_PRIVATE_LIBRARIES KF6::CoreAddons KF6::WidgetsAddons)
++endif()
+ include(cmake/fetch_singleapplication.cmake)
+ find_package(pugixml CONFIG REQUIRED)
+ 
+-- 
+2.51.0
+
+
+From ebd9c295052ea85d0f1f8ad8b860f79aa1f37ec0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Aug 2025 19:08:44 +0200
+Subject: [PATCH 3/6] Fix paths ...
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cmake/paths_compilation_installation.cmake | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/cmake/paths_compilation_installation.cmake b/cmake/paths_compilation_installation.cmake
+index 33fbc29d5..ab742f8c9 100644
+--- a/cmake/paths_compilation_installation.cmake
++++ b/cmake/paths_compilation_installation.cmake
+@@ -20,19 +20,19 @@ message(" - paths_compilation_installation")
+ 
+ if(UNIX AND NOT APPLE)
+   # for Linux, BSD, Solaris, Minix
+-  set(COMPIL_PREFIX               "/usr/local/")
+-  set(INSTALL_PREFIX              "/usr/local/")
++  set(COMPIL_PREFIX               "/usr/")
++  set(INSTALL_PREFIX              "/usr/")
+   set(QET_BINARY_PATH             "bin/")
+   set(QET_COMMON_COLLECTION_PATH  "share/qelectrotech/elements/")
+   set(QET_COMMON_TBT_PATH         "share/qelectrotech/titleblocks/")
+   set(QET_LANG_PATH               "share/qelectrotech/lang/")
+   set(QET_EXAMPLES_PATH           "share/qelectrotech/examples/")
+-  set(QET_LICENSE_PATH            "doc/qelectrotech/")
+-  set(QET_MIME_PACKAGE_PATH       "../share/mime/packages/")
++  set(QET_LICENSE_PATH            "share/doc/qelectrotech/")
++  set(QET_MIME_PACKAGE_PATH       "share/mime/packages/")
+   set(QET_DESKTOP_PATH            "share/applications/")
+   set(QET_ICONS_PATH              "share/icons/hicolor/")
+-  set(QET_MAN_PATH                "man/")
+-  set(QET_APPDATA_PATH            "share/appdata")
++  set(QET_MAN_PATH                "share/man/")
++  set(QET_APPDATA_PATH            "share/metainfo")
+ endif()
+ 
+ if(APPLE)
+-- 
+2.51.0
+
+
+From 5498b1e0910dee7affe3e92a0be7e6b0d70dfa16 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Aug 2025 19:10:56 +0200
+Subject: [PATCH 4/6] Don't install small files (README, ChangeLog, CREDIT) [to
+ wrong location]
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1203a76d9..37d3c82e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -143,7 +143,7 @@ install(DIRECTORY ico/breeze-icons/256x256 DESTINATION ${QET_ICONS_PATH})
+ install(DIRECTORY elements DESTINATION share/qelectrotech)
+ install(DIRECTORY examples DESTINATION share/qelectrotech)
+ install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
+-install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
++# install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
+ install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
+ install(FILES misc/qelectrotech.xml DESTINATION share/mime/packages)
+ install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
+-- 
+2.51.0
+
+
+From a28051bb1c19fb09a34f20db0df6322e2ed7d4d7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Aug 2025 19:20:08 +0200
+Subject: [PATCH 5/6] DO NOT update submodules, do not try and detect git
+ commit sha
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                  | 2 +-
+ cmake/git_last_commit_sha.cmake | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 37d3c82e1..94456bb32 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,7 +45,7 @@ endif()
+ include(cmake/paths_compilation_installation.cmake)
+ include(cmake/start_options.cmake)
+ include(cmake/developer_options.cmake)
+-include(cmake/git_update_submodules.cmake)
++# include(cmake/git_update_submodules.cmake)
+ include(cmake/git_last_commit_sha.cmake)
+ if(BUILD_WITH_KF6)
+   find_package(ECM 6.8.0 REQUIRED NO_MODULE)
+diff --git a/cmake/git_last_commit_sha.cmake b/cmake/git_last_commit_sha.cmake
+index 0e8164121..e5e5f81e6 100644
+--- a/cmake/git_last_commit_sha.cmake
++++ b/cmake/git_last_commit_sha.cmake
+@@ -16,6 +16,7 @@
+ 
+ message(" - git_last_commit_sha")
+ 
++if(NOT GIT_COMMIT_SHA)
+ find_package(Git QUIET)
+ 
+ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+@@ -36,6 +37,7 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+       ", please check")
+   endif()
+ endif()
++endif()
+ 
+ # This adds to definitions => .cpp
+ add_definitions(-DGIT_COMMIT_SHA="${GIT_COMMIT_SHA}")
+-- 
+2.51.0
+
+
+From 53cc4e666757e4dbb8f8e216b9cf17877dfc0845 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Aug 2025 20:33:00 +0200
+Subject: [PATCH 6/6] Work around build error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+sources/machine_info.cpp:137:42: error: ‘autosaveDir’ is not a member of ‘QETApp’
+  137 |         qInfo()<< " Autosave:"<< QETApp::autosaveDir() % "/autosave";
+      |                                          ^~~~~~~~~~~
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ sources/machine_info.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sources/machine_info.cpp b/sources/machine_info.cpp
+index c53ed455e..734d42e9d 100644
+--- a/sources/machine_info.cpp
++++ b/sources/machine_info.cpp
+@@ -133,8 +133,8 @@ void MachineInfo::send_info_to_debug()
+ 	qInfo()<< " App Config Location:"<< QETApp::configDir();
+ 	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
+ 	qInfo()<< " App Data Location:"<< QETApp::dataDir();
+-	qInfo()<< " Directory for project's autosave files (stalefiles):";
+-	qInfo()<< " Autosave:"<< QETApp::autosaveDir() % "/autosave";
++	//qInfo()<< " Directory for project's autosave files (stalefiles):";
++	//qInfo()<< " Autosave:"<< QETApp::autosaveDir() % "/autosave";
+ 	// qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
+ 	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+ 	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
+-- 
+2.51.0
+
