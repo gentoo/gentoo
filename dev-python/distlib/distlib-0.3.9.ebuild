@@ -27,6 +27,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	test? (
 		dev-python/pypiserver
+		dev-python/test[${PYTHON_USEDEP}]
 	)
 "
 
