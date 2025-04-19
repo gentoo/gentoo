@@ -197,6 +197,15 @@ src_prepare() {
 		)
 	fi
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# meson.build doesn't carry any Solaris logic, and "sees"
+		# functions that are not available by default, provide backup
+		# definitions to match autoconf/Makefile
+		PATCHES+=(
+			"${FILESDIR}"/${PN}-2.49.0-meson-solaris-override.patch
+		)
+	fi
+
 	default
 }
 
