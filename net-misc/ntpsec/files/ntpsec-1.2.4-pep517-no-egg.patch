@@ -1,0 +1,38 @@
+diff --git a/pylib/ntp-in.egg-info b/pylib/ntp-in.egg-info
+deleted file mode 100644
+index b672a8431..000000000
+--- a/pylib/ntp-in.egg-info
++++ /dev/null
+@@ -1,12 +0,0 @@
+-Metadata-Version: 1.0
+-Name: ntpsec
+-Version: @NTPSEC_VERSION_EXTENDED@
+-Platform: POSIX
+-Summary: The NTP reference implementation, refactored
+-Home-page: https://ntpsec.org/
+-License:  Beerware, BSD-2-Clause, BSD-3-Clause, BSD-4-Clause, CC-BY-4.0, ISC, MIT, NTP
+-Description: 
+-         The Network Time Protocol suite, refactored
+-Author: the NTPsec project
+-Author-email: devel@ntpsec.org
+-Keywords: 
+\ No newline at end of file
+diff --git a/pylib/wscript b/pylib/wscript
+index d010802..6e4a956 100644
+--- a/pylib/wscript
++++ b/pylib/wscript
+@@ -101,11 +101,9 @@ def build(ctx):
+         install_path='${PYTHONDIR}/ntp'
+     )
+ 
+-    # pep241  lay an egg
+-    egg = ['ntp-%s.egg-info' % ctx.env.NTPSEC_VERSION]
++    # pep517 pyproject.toml
+     ctx(
+         features="subst",
+-        source=['ntp-in.egg-info'],
+-        target=egg
++        source=['pyproject.toml'],
++        target=['../pyproject.toml']
+     )
+-    ctx.install_files(ctx.env.PYTHONDIR, egg)
