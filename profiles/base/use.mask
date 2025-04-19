@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2025-04-19)
+# Ruby 3.1 is no longer supported upstream and will no longer
+# receive security updates.
+ruby_targets_ruby31
+
 # Sam James <sam@gentoo.org> (2025-03-09)
 # Obsolete in favour of gcc_*. gnat-gpl will be removed soon.
 ada_target_gnat_2021
