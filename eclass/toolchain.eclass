@@ -1915,7 +1915,6 @@ toolchain_src_configure() {
 			--disable-systemtap
 
 			--enable-host-shared
-			--enable-languages=jit
 
 			# Might be used for the just-built GCC. Easier to just
 			# respect USE=graphite here in case the user passes some
@@ -1923,6 +1922,12 @@ toolchain_src_configure() {
 			$(use_with graphite isl)
 			--with-system-zlib
 		)
+
+		if is_jit ; then
+			confgcc_jit+=( --enable-languages=jit )
+		else
+			confgcc_jit+=( --enable-languages=c,c++ )
+		fi
 
 		if tc_has_feature zstd ; then
 			confgcc_jit+=( $(use_with zstd) )
