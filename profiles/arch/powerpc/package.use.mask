@@ -35,7 +35,6 @@ media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
 kde-apps/kleopatra pim
 kde-plasma/plasma-nm openconnect
-net-irc/quassel urlpreview
 net-p2p/ktorrent rss
 
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
@@ -279,10 +278,6 @@ x11-themes/qtcurve plasma
 # Jonathan Scruggs <j.scruggs@gmail.com> (2017-09-23)
 # dependencies not keyworded yet
 media-libs/openimageio ptex
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2017-08-22)
-# Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
-app-i18n/fcitx-libpinyin dictionary-manager
 
 # Göktürk Yüksek <gokturk@gentoo.org> (2017-08-15)
 # Requires java
