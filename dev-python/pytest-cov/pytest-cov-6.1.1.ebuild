@@ -45,12 +45,7 @@ python_test() {
 
 	# https://github.com/pytest-dev/pytest-cov/issues/517
 	local -x PYTHONPATH=$(python_get_sitedir):${PYTHONPATH}
-	local EPYTEST_DESELECT=(
-		# this one's broken by the PYTHONPATH hack
-		# the alternative is to symlink coverage and pytest into venv,
-		# but that's ugly and likely to break again in the future
-		tests/test_pytest_cov.py::test_central_subprocess_change_cwd_with_pythonpath
-	)
+	local -x PYTHONUSERBASE=/usr
 
 	epytest
 }
