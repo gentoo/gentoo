@@ -1,0 +1,23 @@
+Correct size of variables that are passed to library and then discarded.
+Also replace sed that corrects path for library.
+https://bugs.gentoo.org/919443
+--- a/src/wmnetload.c
++++ b/src/wmnetload.c
+@@ -37,7 +37,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+-#include <dockapp.h>
++#include <libdockapp/dockapp.h>
+ #ifdef HAVE_SYS_SOCKIO_H
+ #include <sys/sockio.h>
+ #endif
+@@ -1051,7 +1051,7 @@
+ setshape(void)
+ {
+ 	Pixmap mask, pixmap;
+-	unsigned int h, w;
++	unsigned short int h, w;
+ 
+ 	if (DAMakePixmapFromData(backlight_off_xpm, &pixmap, &mask, &h, &w)) {
+ 		DASetShape(mask);
