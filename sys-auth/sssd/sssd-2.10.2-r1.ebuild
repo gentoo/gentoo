@@ -9,13 +9,12 @@ PLOCALE_BACKUP="sv"
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools linux-info multilib-minimal optfeature plocale \
-	python-single-r1 pam systemd toolchain-funcs
+	python-single-r1 pam systemd tmpfiles udev toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SSSD/sssd.git"
@@ -24,7 +23,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl doc +netlink nfsv4 nls passkey python samba selinux systemd systemtap test"
+IUSE="doc +netlink nfsv4 nls passkey python samba selinux systemd systemtap test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -38,18 +37,19 @@ DEPEND="
 	dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 	>=dev-libs/popt-1.16
 	>=dev-libs/openssl-1.0.2:=
-	>=net-dns/bind-tools-9.9[gssapi]
+	>=net-dns/bind-9.9[gssapi]
 	>=net-dns/c-ares-1.10.0-r1:=[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.30:=[sasl,experimental]
+	net-fs/cifs-utils[acl]
 	>=sys-apps/dbus-1.6
 	>=sys-apps/keyutils-1.5:=
+	sys-libs/libcap
 	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.0.7
 	>=sys-libs/tdb-1.2.9
 	>=sys-libs/tevent-0.9.16
 	virtual/ldb:=
 	virtual/libintl
-	acl? ( net-fs/cifs-utils[acl] )
 	netlink? ( dev-libs/libnl:3 )
 	nfsv4? ( >=net-fs/nfs-utils-2.3.1-r2 )
 	nls? ( >=sys-devel/gettext-0.18 )
@@ -73,18 +73,21 @@ DEPEND="
 	)
 	systemtap? ( dev-debug/systemtap )"
 RDEPEND="${DEPEND}
+	acct-user/sssd
+	acct-group/sssd
 	passkey? ( sys-apps/pcsc-lite[policykit] )
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
 DEPEND+="
 	sys-apps/shadow"
 BDEPEND="
+	acct-user/sssd
+	acct-group/sssd
+	sys-libs/libcap
 	virtual/pkgconfig
-	app-text/docbook-xml-dtd:4.4
-	>=dev-libs/libxslt-1.1.26
 	${PYTHON_DEPS}
 	doc? ( app-text/doxygen )
-	nls? ( sys-devel/gettext
-	       app-text/po4a )
+	nls? (	app-text/po4a
+		sys-devel/gettext )
 	test? (
 		dev-libs/check
 		dev-libs/softhsm:2
@@ -95,6 +98,8 @@ BDEPEND="
 		sys-libs/pam_wrapper
 		sys-libs/uid_wrapper
 	)
+	app-text/docbook-xml-dtd:4.4
+	>=dev-libs/libxslt-1.1.26
 "
 
 CONFIG_CHECK="~KEYS"
@@ -102,6 +107,7 @@ CONFIG_CHECK="~KEYS"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.8.2-krb5_pw_locked.patch"
 	"${FILESDIR}/${PN}-2.9.6-conditional-python-install.patch"
+	"${FILESDIR}/${PN}-2.10.0_beta2-fix-systemd-systemconfdir.patch"
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -115,9 +121,41 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
+sssd_migrate_files() {
+	if has_version "<=sys-auth/sssd-2.9.9999"
+	then
+		einfo "Checking if sssd is running"
+		if [ -f /run/sssd.pid ]
+		then
+			elog "Please stop sssd after installing before"
+			elog "performing the migration process"
+		fi
+		einfo "Checking if /var/lib/sss ownership"
+		if [ -d /var/lib/sss ] && [ $(stat -c "%U:%G" /var/lib/sss) != "sssd:sssd" ]
+		then
+			elog "After installing, please execute"
+			elog "chown -R sssd:sssd /var/lib/sss"
+		fi
+		einfo "Checking if /var/log/sssd ownership"
+		if [ -d /var/log/sssd ] && [ $(stat -c "%U:%G" /var/log/sssd) != "sssd:sssd" ]
+		then
+			elog "After installing, please execute"
+			elog "chown -R sssd:sssd /var/log/sssd"
+		fi
+		einfo "Checking if /etc/sssd ownership"
+		if ! use systemd && [ -d /etc/sssd ] && [ $(stat -c "%U:%G" /etc/sssd) != "root:sssd" ]
+		then
+			elog "After installing, please execute"
+			elog "chown -R root:sssd /etc/sssd"
+		fi
+	fi
+}
+
 pkg_setup() {
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
+
+	sssd_migrate_files
 }
 
 src_prepare() {
@@ -154,6 +192,13 @@ src_prepare() {
 		Makefile.am \
 		|| die
 
+	# requires valgrind headers installed, see
+	# https://github.com/SSSD/sssd/pull/7845
+	sed -i \
+		-e '/^\s*test_iobuf[ \\]*$/d' \
+		Makefile.am \
+		|| die
+
 	eautoreconf
 
 	multilib_copy_sources
@@ -161,11 +206,6 @@ src_prepare() {
 
 src_configure() {
 	local native_dbus_cflags=$($(tc-getPKG_CONFIG) --cflags dbus-1 || die)
-
-	# Workaround for bug #938302
-	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
-		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
-	fi
 
 	multilib-minimal_src_configure
 }
@@ -178,9 +218,9 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}"/var
 		--runstatedir="${EPREFIX}"/run
 		--sbindir="${EPREFIX}"/usr/sbin
-		--with-pid-path="${EPREFIX}"/run
+		--with-pid-path="${EPREFIX}"/run/sssd
 		--with-plugin-path="${EPREFIX}"/usr/$(get_libdir)/sssd
-		--enable-pammoddir="${EPREFIX}$(getpam_mod_dir)"
+		--enable-pammoddir="${EPREFIX}"/$(getpam_mod_dir)
 		--with-ldb-lib-dir="${EPREFIX}"/usr/$(get_libdir)/samba/ldb
 		--with-db-path="${EPREFIX}"/var/lib/sss/db
 		--with-gpo-cache-path="${EPREFIX}"/var/lib/sss/gpo_cache
@@ -189,6 +229,8 @@ multilib_src_configure() {
 		--with-mcache-path="${EPREFIX}"/var/lib/sss/mc
 		--with-secrets-db-path="${EPREFIX}"/var/lib/sss/secrets
 		--with-log-path="${EPREFIX}"/var/log/sssd
+		--with-tmpfilesdir=/usr/lib/tmpfiles.d
+		--with-udevrulesdir="$(get_udevdir)/rules.d"
 		--with-kcm
 		--enable-kcm-renewal
 		--with-os=gentoo
@@ -198,9 +240,8 @@ multilib_src_configure() {
 		--disable-valgrind
 		$(use_with samba)
 		--with-smb-idmap-interface-version=6
-		$(multilib_native_use_enable acl cifs-idmap-plugin)
+		--enable-cifs-idmap-plugin
 		$(multilib_native_use_with selinux)
-		$(multilib_native_use_with selinux semanage)
 		--enable-krb5-locator-plugin
 		$(use_enable samba pac-responder)
 		$(multilib_native_use_with nfsv4 nfsv4-idmapd-plugin)
@@ -218,8 +259,8 @@ multilib_src_configure() {
 		$(multilib_native_use_with python python3-bindings)
 		# Annoyingly configure requires that you pick systemd XOR sysv
 		--with-initscript=$(usex systemd systemd sysv)
+		--with-sssd-user=sssd
 		KRB5_CONFIG="${ESYSROOT}"/usr/bin/krb5-config
-		# Needed for Samba 4.21
 		CPPFLAGS="${CPPFLAGS} -I${ESYSROOT}/usr/include/samba-4.0"
 	)
 
@@ -315,6 +356,8 @@ multilib_src_install_all() {
 	keepdir /var/lib/sss/pubconf/krb5.include.d
 	keepdir /var/lib/sss/secrets
 	keepdir /var/log/sssd
+	keepdir /etc/sssd/conf.d
+	keepdir /etc/sssd/pki
 
 	# strip empty dirs
 	if ! use doc; then
@@ -327,6 +370,8 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	tmpfiles_process sssd-tmpfiles.conf
+	echo
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features."
