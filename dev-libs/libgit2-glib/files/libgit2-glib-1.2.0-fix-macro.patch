@@ -1,0 +1,26 @@
+From a95f38cba3e440bb4b418691af60dc9c209ed9ce Mon Sep 17 00:00:00 2001
+From: Antoine Jacoutot <ajacoutot@gnome.org>
+Date: Thu, 2 Jan 2025 14:03:41 +0100
+Subject: [PATCH] Fix definition of GGIT_MICRO_VERSION.
+
+Signed-off-by: Antoine Jacoutot <ajacoutot@gnome.org>
+---
+ libgit2-glib/ggit-version.h.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgit2-glib/ggit-version.h.in b/libgit2-glib/ggit-version.h.in
+index 4b25185..642271b 100644
+--- a/libgit2-glib/ggit-version.h.in
++++ b/libgit2-glib/ggit-version.h.in
+@@ -35,7 +35,7 @@
+  *
+  * libgit2-glib micro version component (e.g. 3 if %GGIT_VERSION is 1.2.3)
+  */
+-#define GGIT_MINOR_VERSION (@MICRO_VERSION@)
++#define GGIT_MICRO_VERSION (@MICRO_VERSION@)
+ 
+ #define GGIT_ENCODE_VERSION(major,minor,micro) \
+         ((major) << 24 | (minor) << 16 | (micro) << 8)
+-- 
+GitLab
+
