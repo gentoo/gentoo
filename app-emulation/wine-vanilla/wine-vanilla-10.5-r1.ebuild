@@ -15,7 +15,8 @@ else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
 	S=${WORKDIR}/wine-${PV}
-	KEYWORDS="-* ~amd64 ~x86"
+	# TODO: re-add -*
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
