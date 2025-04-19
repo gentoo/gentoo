@@ -3,7 +3,6 @@
 
 EAPI=8
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools edo flag-o-matic multilib multilib-build optfeature
 inherit prefix python-any-r1 toolchain-funcs wrapper
@@ -53,6 +52,7 @@ REQUIRED_USE="
 	bluetooth? ( dbus )
 	crossdev-mingw? ( mingw )
 	wow64? ( abi_x86_64 !abi_x86_32 mingw )
+	|| ( abi_x86_32 abi_x86_64 arm64 )
 "
 
 # tests are non-trivial to run, can hang easily, don't play well with
@@ -156,6 +156,10 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
+	arm64? (
+		llvm-core/clang:*
+		strip? ( llvm-core/llvm:* )
+	)
 	mingw? ( !crossdev-mingw? (
 		>=dev-util/mingw64-toolchain-10.0.0_p1-r2[${MULTILIB_USEDEP}]
 		wow64? ( dev-util/mingw64-toolchain[abi_x86_32] )
@@ -242,7 +246,7 @@ src_prepare() {
 			# if used without --target *-windows, then gets used in install
 			# phase despite USE=mingw, drop as a quick fix for now
 			sed -i '/MSVCRTFLAGS=/s/-mabi=ms//' configure.ac || die
-		else
+		elif use !arm64; then
 			# fails in ./configure unless --enable-archs is passed, allow to
 			# bypass with EXTRA_ECONF but is currently considered unsupported
 			# (by Gentoo) as additional work is needed for (proper) support
@@ -277,8 +281,6 @@ src_configure() {
 		--libdir="${EPREFIX}"${WINE_PREFIX}
 		--mandir="${EPREFIX}"${WINE_DATADIR}/man
 
-		$(usev wow64 --enable-archs=x86_64,i386)
-
 		$(use_enable gecko mshtml)
 		$(use_enable mono mscoree)
 		--disable-tests
@@ -294,7 +296,6 @@ src_configure() {
 		$(use_with gstreamer)
 		$(use_with kerberos gssapi)
 		$(use_with kerberos krb5)
-		$(use_with mingw)
 		$(use_with netapi)
 		$(use_with nls gettext)
 		$(use_with opencl)
@@ -323,6 +324,18 @@ src_configure() {
 		')
 		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
+
+	if use arm64; then
+		# TODO?: should do clang for x86* too, and drop --without-mingw support
+		conf+=(
+			--enable-archs=aarch64
+			--with-mingw=clang
+		)
+	else
+		conf+=(
+			$(usev wow64 --enable-archs=x86_64,i386)
+		)
+	fi
 
 	filter-lto # build failure
 	filter-flags -Wl,--gc-sections # runtime issues (bug #931329)
@@ -380,7 +393,7 @@ src_configure() {
 
 	# order matters with multilib: configure+compile 64->32, install 32->64
 	local -i bits
-	for bits in $(usev abi_x86_64 64) $(usev abi_x86_32 32); do
+	for bits in $(usev abi_x86_64 64) $(usev abi_x86_32 32) $(usev arm64 64); do
 	(
 		einfo "Configuring ${PN} for ${bits}bits in ${WORKDIR}/build${bits} ..."
 
@@ -404,13 +417,14 @@ src_configure() {
 }
 
 src_compile() {
-	use abi_x86_64 && emake -C ../build64 # do first
+	use abi_x86_64 || use arm64 && emake -C ../build64 # do first
 	use abi_x86_32 && emake -C ../build32
 }
 
 src_install() {
 	use abi_x86_32 && emake DESTDIR="${D}" -C ../build32 install
-	use abi_x86_64 && emake DESTDIR="${D}" -C ../build64 install # do last
+	use abi_x86_64 || use arm64 &&
+		emake DESTDIR="${D}" -C ../build64 install # do last
 
 	# "wine64" is no longer provided, but a keep symlink for old scripts
 	# TODO: remove the guard later, only useful for bisecting -9999
@@ -427,6 +441,13 @@ src_install() {
 		make_wrapper "${bin##*/}-${P#wine-}" "${bin#"${ED}"}"
 	done
 
+	if use arm64; then
+		dostrip -x ${WINE_PREFIX}/wine/aarch64-windows
+		if use strip; then
+			find "${ED}"${WINE_PREFIX}/wine/aarch64-windows -regex '.*\.\(dll\|exe\)' \
+				-exec llvm-strip --strip-unneeded {} +
+		fi
+	fi
 	if use mingw; then
 		# don't let portage try to strip PE files with the wrong
 		# strip executable and instead handle it here (saves ~120MB)

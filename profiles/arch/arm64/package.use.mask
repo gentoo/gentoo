@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2025-04-18)
+# Not supported on arm64
+app-emulation/wine-vanilla crossdev-mingw dos gecko mingw wow64
+app-emulation/wine-staging crossdev-mingw dos gecko mingw wow64
+
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
