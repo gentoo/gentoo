@@ -16,6 +16,7 @@
 			and is mostly unsupported, try disabling if have issues)
 		</flag>
 		<flag name="gecko">Enable mshtml support using <pkg>app-emulation/wine-gecko</pkg></flag>
+		<flag name="mingw">Build PE files using <pkg>dev-util/mingw64-toolchain</pkg> (more tested) rather than <pkg>llvm-core/clang</pkg> (newer)</flag>
 		<flag name="mono">Enable .NET support using <pkg>app-emulation/wine-mono</pkg></flag>
 		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>
 		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
