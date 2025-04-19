@@ -5,6 +5,7 @@
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">np-hardass/wine-desktop-common</remote-id>
 	</upstream>
