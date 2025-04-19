@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="Accuracy-focused XAudio reimplementation for open platforms"
 HOMEPAGE="https://fna-xna.github.io/"
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE="debug dumpvoices test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="media-libs/libsdl2[sound]"
+RDEPEND="media-libs/libsdl2[${MULTILIB_USEDEP},sound]"
 DEPEND="${RDEPEND}"
 
 src_configure() {
@@ -29,7 +29,7 @@ src_configure() {
 		-DDUMP_VOICES=$(usex dumpvoices)
 	)
 
-	cmake_src_configure
+	cmake-multilib_src_configure
 }
 
 src_test() {
