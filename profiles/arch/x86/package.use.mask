@@ -147,6 +147,7 @@ media-tv/mythtv nvdec
 # Bug #893234
 app-i18n/fcitx-libpinyin dictionary-manager
 app-misc/anki gui
+app-office/kraft pim
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/qtpy test

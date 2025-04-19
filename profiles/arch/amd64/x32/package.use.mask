@@ -53,6 +53,7 @@ media-libs/libva-intel-driver hybrid
 # reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
 app-misc/anki gui
+app-office/kraft pim
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 games-util/lgogdownloader gui
