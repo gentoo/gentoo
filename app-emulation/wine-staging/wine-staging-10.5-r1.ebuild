@@ -20,7 +20,8 @@ else
 		https://dl.winehq.org/wine/source/${WINE_SDIR}/${WINE_P}.tar.xz
 		https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="-* ~amd64 ~x86"
+	# TODO: re-add -*
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
