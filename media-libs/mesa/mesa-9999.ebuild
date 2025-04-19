@@ -54,8 +54,8 @@ SLOT="0"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
 VIDEO_CARDS="${RADEON_CARDS}
-	d3d12 freedreno intel lavapipe lima nouveau nvk panfrost v3d vc4 virgl
-	vivante vmware zink"
+	asahi d3d12 freedreno intel lavapipe lima nouveau nvk panfrost v3d vc4
+	virgl vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -81,6 +81,7 @@ REQUIRED_USE="
 		)
 	)
 	llvm? ( ${LLVM_REQUIRED_USE} )
+	video_cards_asahi? ( llvm )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
@@ -99,10 +100,34 @@ RDEPEND="
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	llvm? (
 		$(llvm_gen_dep "
-			llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+			llvm-core/llvm:\${LLVM_SLOT}[${MULTILIB_USEDEP}]
+			video_cards_r300? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
+			video_cards_r600? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
+			video_cards_radeon? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
+			video_cards_radeonsi? (
+				llvm-core/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			)
 			opencl? (
 				dev-util/spirv-llvm-translator:\${LLVM_SLOT}
-				llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+				llvm-core/clang:\${LLVM_SLOT}[${MULTILIB_USEDEP}]
+				video_cards_r300? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
+				video_cards_r600? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
+				video_cards_radeon? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
+				video_cards_radeonsi? (
+					llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				)
 				=llvm-core/libclc-\${LLVM_SLOT}*[spirv(-)]
 			)
 		")
@@ -173,6 +198,9 @@ BDEPEND="
 		dev-python/packaging[\${PYTHON_USEDEP}]
 		dev-python/pyyaml[\${PYTHON_USEDEP}]
 	")
+	video_cards_asahi? (
+		llvm-core/libclc[spirv(-)]
+	)
 	video_cards_intel? (
 		~dev-util/mesa_clc-${PV}
 		llvm-core/libclc[spirv(-)]
@@ -216,7 +244,8 @@ src_unpack() {
 
 pkg_pretend() {
 	if use vulkan; then
-		if ! use video_cards_d3d12 &&
+		if ! use video_cards_asahi &&
+		   ! use video_cards_d3d12 &&
 		   ! use video_cards_freedreno &&
 		   ! use video_cards_intel &&
 		   ! use video_cards_lavapipe &&
@@ -226,7 +255,7 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d &&
 		   ! use video_cards_virgl; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain asahi, d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
 		fi
 	fi
 
@@ -302,7 +331,9 @@ pkg_setup() {
 	use llvm && llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 
-	if use opencl || (use vulkan && use video_cards_nvk); then
+	if use opencl ||
+	   use video_cards_asahi ||
+	   (use vulkan && use video_cards_nvk); then
 		rust_pkg_setup
 	fi
 }
@@ -374,6 +405,7 @@ multilib_src_configure() {
 
 	gallium_enable !llvm softpipe
 	gallium_enable llvm llvmpipe
+	gallium_enable video_cards_asahi asahi
 	gallium_enable video_cards_d3d12 d3d12
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
@@ -395,7 +427,7 @@ multilib_src_configure() {
 		gallium_enable video_cards_radeon r300 r600
 	fi
 
-	if use llvm && use opencl; then
+	if use llvm && (use opencl || use video_cards_asahi); then
 		PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
 		# See https://gitlab.freedesktop.org/mesa/mesa/-/blob/main/docs/rusticl.rst
 		emesonargs+=(
@@ -405,6 +437,7 @@ multilib_src_configure() {
 	fi
 
 	if use vulkan; then
+		vulkan_enable video_cards_asahi asahi
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
