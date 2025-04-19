@@ -1,0 +1,26 @@
+From 2605c36cf9a5c3e49d59dcd36ee5b57ab3437922 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Valenduc?= <francoisvalenduc@gmail.com>
+Date: Mon, 17 Feb 2025 21:57:45 +0100
+Subject: [PATCH] add boost include
+
+---
+ src/mongo/db/storage/backup_block.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/mongo/db/storage/backup_block.cpp b/src/mongo/db/storage/backup_block.cpp
+index 9b8dc29f209..6328a727fbe 100644
+--- a/src/mongo/db/storage/backup_block.cpp
++++ b/src/mongo/db/storage/backup_block.cpp
+@@ -30,6 +30,9 @@
+ #include "mongo/db/storage/backup_block.h"
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
++#include <boost/filesystem/operations.hpp>
++#include <boost/filesystem/path.hpp>
+ #include <set>
+ 
+ #include "mongo/base/string_data.h"
+-- 
+2.45.3
+
