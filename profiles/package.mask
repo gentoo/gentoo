@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-04-19)
+# This package will no longer feature stable keywords, due to unresolved
+# test failures blocking the stabilization request for months.
+<dev-python/mpi4py-4
+
 # Hans de Graaff <graaff@gentoo.org> (2025-04-19)
 # Ruby 3.1 is no longer supported upstream and will no longer
 # receive security updates. This mask also includes any
