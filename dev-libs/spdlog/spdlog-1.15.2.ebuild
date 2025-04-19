@@ -13,12 +13,12 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gabime/${PN}"
 else
 	SRC_URI="https://github.com/gabime/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="test static-libs"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -34,7 +34,6 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
-	"${FILESDIR}/${PN}-1.15.0-libfmt-11.1.0.patch"
 )
 
 multilib_src_prepare() {
@@ -47,7 +46,7 @@ multilib_src_configure() {
 		-DSPDLOG_BUILD_BENCH=no
 		-DSPDLOG_BUILD_EXAMPLE=no
 		-DSPDLOG_FMT_EXTERNAL=yes
-		-DSPDLOG_BUILD_SHARED=$(usex static-libs)
+		-DSPDLOG_BUILD_SHARED=yes
 		-DSPDLOG_BUILD_TESTS=$(usex test)
 	)
 
