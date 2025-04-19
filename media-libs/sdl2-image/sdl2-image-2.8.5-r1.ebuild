@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( jpeg png )"
 
 RDEPEND="
-	>=media-libs/libsdl2-2.0.9[${MULTILIB_USEDEP}]
+	>=media-libs/libsdl2-2.30.0[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	avif? ( >=media-libs/libavif-1.0.0:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
