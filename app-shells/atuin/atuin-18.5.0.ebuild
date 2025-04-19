@@ -5,7 +5,7 @@ EAPI=8
 
 CRATES=""
 
-RUST_MIN_VER="1.71.1"
+RUST_MIN_VER="1.86"
 
 inherit cargo greadme shell-completion systemd
 
@@ -19,7 +19,7 @@ LICENSE="MIT"
 # - openssl for ring crate
 LICENSE+=" Apache-2.0 BSD Boost-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 openssl"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="+client +daemon server test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -29,11 +29,6 @@ REQUIRED_USE="
 "
 RDEPEND="server? ( acct-user/atuin )"
 DEPEND="test? ( dev-db/postgresql )"
-# protobuf can be dropped after atuin 18.3.0, since upstream switched to
-# protox with 9fa223eaaf0e ("chore(build): compile protobufs with protox (#2122)")
-BDEPEND="
-	dev-libs/protobuf
-"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
@@ -116,8 +111,7 @@ src_test() {
 }
 
 src_install() {
-	exeinto "/usr/bin"
-	doexe "${ATUIN_BIN}"
+	dobin "${ATUIN_BIN}"
 
 	if use server; then
 		systemd_dounit "${FILESDIR}/atuin.service"
@@ -128,6 +122,10 @@ src_install() {
 	newbashcomp "completions/${PN}.bash" "${PN}"
 	dozshcomp "completions/_${PN}"
 	dofishcomp "completions/${PN}.fish"
+
+	if use daemon; then
+		systemd_douserunit "${FILESDIR}"/atuin-daemon.{service,socket}
+	fi
 
 	if ! use client; then
 		return 0
