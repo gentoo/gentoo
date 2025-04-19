@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
+# These are not currently supported on arm64. Porting wine-gecko and
+# wine-mono is on Wine's TODO[1], mingw64-toolchain lacks ebuild
+# support (crossdev might be usable, but users are on their own there),
+# dosbox is not keyworded here, and wow64 would require x86 emulation
+# to make sense.
+# [1] https://gitlab.winehq.org/wine/wine/-/wikis/ARM64#todo
+app-emulation/wine-vanilla crossdev-mingw dos gecko mingw mono wow64
+app-emulation/wine-staging crossdev-mingw dos gecko mingw mono wow64
+
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
