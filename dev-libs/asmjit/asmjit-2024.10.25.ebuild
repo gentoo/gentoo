@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	CommitId=f1096428b87e9d16305de16e91f2a7f52aef5a88
 	SRC_URI="https://github.com/asmjit/${PN}/archive/${CommitId}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 ~arm64"
 	S="${WORKDIR}"/${PN}-${CommitId}
 fi
 
