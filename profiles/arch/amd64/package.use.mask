@@ -432,8 +432,10 @@ app-admin/rsyslog -imhttp -mdblookup
 dev-lang/ocaml -spacetime
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
+# Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-12)
 # Assembly optimisations are supported on amd64 for all versions
 dev-libs/libsecp256k1 -asm
+net-p2p/bitcoin-core -asm
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)
