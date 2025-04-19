@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KDE_ORG_COMMIT=0fb2eb516b5d762f202195f8f439bbf1ea463880
 inherit cmake kde.org xdg
 
 DESCRIPTION="Fast heap memory profiler"
