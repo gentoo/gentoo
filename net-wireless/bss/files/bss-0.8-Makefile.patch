@@ -1,3 +1,4 @@
+Make build system respect CFLAGS and PREFIX
 https://bugs.gentoo.org/725228
 --- a/Makefile
 +++ b/Makefile
@@ -25,7 +26,7 @@ https://bugs.gentoo.org/725228
 -	$(CC) -c $(L2P_SRC)
 -	$(CC) -c $(REP_SRC)
 -	$(CC) $(BSS_TMP) $(L2P_TMP) $(REP_TMP) -o $(BSS_OBJ) $(CFLAGS) $(BSS_FLAGS) $(BSS_LIBS)
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(BSS_SRC) 
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(BSS_SRC)
 +	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(L2P_SRC)
 +	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(REP_SRC)
 +	$(CC) $(LDFLAGS) $(BSS_TMP) $(L2P_TMP) $(REP_TMP) -o $(BSS_OBJ) $(CFLAGS) $(BSS_LIBS)
