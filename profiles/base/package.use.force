@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
+# Currently fails to build without, and Valve would likely not be
+# interested in a bug. May leave forced depending on how this goes.
+app-emulation/wine-proton mingw
+
 # Sebastian Pipping <sping@gentoo.org> (2025-03-27)
 # This blocks accidental use of bundled vulnerable dev-libs/expat
 # for now (bug #952113)
