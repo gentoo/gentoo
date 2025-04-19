@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib multiprocessing
+inherit cmake-multilib
 
 DESCRIPTION="PulseAudio emulation for ALSA"
 HOMEPAGE="https://github.com/i-rinat/apulse"
