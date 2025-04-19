@@ -3,26 +3,33 @@
 
 EAPI=8
 
-inherit optfeature wine
+PYTHON_COMPAT=( python3_{10..13} )
+inherit edo optfeature python-any-r1 wine
 
 WINE_GECKO=2.47.4
 WINE_MONO=10.0.0
+WINE_P=wine-$(ver_cut 1-2)
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine.git"
+	EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine-staging.git"
+	WINE_EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine.git"
 else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
-	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
-	S=${WORKDIR}/wine-${PV}
-	KEYWORDS="-* ~amd64 ~x86"
+	SRC_URI="
+		https://dl.winehq.org/wine/source/${WINE_SDIR}/${WINE_P}.tar.xz
+		https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	"
+	# TODO: re-add -*
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
 HOMEPAGE="
-	https://www.winehq.org/
-	https://gitlab.winehq.org/wine/wine/
+	https://wiki.winehq.org/Wine-Staging
+	https://gitlab.winehq.org/wine/wine-staging/
 "
+S=${WORKDIR}/${WINE_P}
 
 LICENSE="
 	LGPL-2.1+
@@ -131,6 +138,8 @@ DEPEND="
 	bluetooth? ( net-wireless/bluez )
 "
 BDEPEND="
+	${PYTHON_DEPS}
+	dev-vcs/git
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -139,16 +148,47 @@ BDEPEND="
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	__clear_cache # unused on amd64+x86 (bug #900338)
+	__clear_cache # unused on amd64+x86 (bug #900334)
 	res_getservers # false positive
 )
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
+	"${FILESDIR}"/${PN}-7.17-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
 	"${FILESDIR}"/${PN}-8.13-rpath.patch
 )
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
+		git-r3_src_unpack
+
+		# hack: use subshell to preserve state (including what git-r3 unpack
+		# sets) for smart-live-rebuild as this is not the repo to look at
+		(
+			EGIT_COMMIT=$(<"${EGIT_CHECKOUT_DIR}"/staging/upstream-commit) || die
+			EGIT_REPO_URI=${WINE_EGIT_REPO_URI}
+			EGIT_CHECKOUT_DIR=${S}
+			einfo "Fetching Wine commit matching the current patchset by default (${EGIT_COMMIT})"
+			git-r3_src_unpack
+		)
+	else
+		default
+	fi
+}
+
+src_prepare() {
+	local patchinstallargs=(
+		--all
+		--no-autoconf
+		${MY_WINE_STAGING_CONF}
+	)
+
+	edo "${PYTHON}" ../${P}/staging/patchinstall.py "${patchinstallargs[@]}"
+
+	wine_src_prepare
+}
 
 src_configure() {
 	local wineconfargs=(
