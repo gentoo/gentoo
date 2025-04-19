@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -28,4 +28,10 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	mkdir tmp || die
+
+	case ${RUBY} in
+		*ruby33)
+			sed -e 's/* 3/* 5/' -i spec/integration/editor_spec.rb || die
+			;;
+	esac
 }
