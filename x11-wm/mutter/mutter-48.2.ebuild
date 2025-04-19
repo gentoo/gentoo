@@ -15,14 +15,13 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/16" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
 IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland X video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
-	|| ( X wayland )
 	gtk-doc? ( introspection )
 	wayland? ( ^^ ( elogind systemd ) udev )
 	test? ( wayland screencast )"
@@ -92,34 +91,29 @@ RDEPEND="
 	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 "
-
-X_OR_XWAYLAND_DEPS="
-	>=gui-libs/gtk-4.0.0:4[X,introspection?]
-	>=x11-libs/libX11-1.7.0
-	>=x11-libs/libXcomposite-0.4
-	x11-libs/libXcursor
-	x11-libs/libXdamage
-	x11-libs/libXext
-	>=x11-libs/libXfixes-6
-	>=x11-libs/libXi-1.7.4
-	x11-libs/libxkbfile
-	x11-misc/xkeyboard-config
-	x11-libs/libXrender
-	x11-libs/libxcb:=
-	x11-libs/libXinerama
-	x11-libs/libXau
-"
-
+# for now upstream has "have_x11 = true" in the meson.build, but sooner or later upstream is going to make X optional.
+#	X? (
 RDEPEND+="
-	X? (
-	   ${X_OR_XWAYLAND_DEPS}
-	   x11-libs/libICE
-	   >=x11-libs/libXrandr-1.5.0
-	   >=x11-libs/libxkbcommon-0.4.3[X]
-	   x11-libs/libXtst
-	)
-	wayland? ( xwayland? ( ${X_OR_XWAYLAND_DEPS} ) )
+		>=gui-libs/gtk-4.0.0:4[X,introspection?]
+		>=x11-libs/libX11-1.7.0
+		>=x11-libs/libXcomposite-0.4
+		x11-libs/libXcursor
+		x11-libs/libXdamage
+		x11-libs/libXext
+		>=x11-libs/libXfixes-6
+		>=x11-libs/libXi-1.7.4
+		x11-libs/libXtst
+		x11-libs/libxkbfile
+		x11-misc/xkeyboard-config
+		>=x11-libs/libxkbcommon-0.4.3[X]
+		x11-libs/libXrender
+		>=x11-libs/libXrandr-1.5.0
+		x11-libs/libxcb:=
+		x11-libs/libXinerama
+		x11-libs/libXau
+		dev-python/argcomplete
 "
+#	)"
 
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
@@ -138,7 +132,7 @@ BDEPEND="
 			>=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]
 		')
 		app-text/docbook-xml-dtd:4.5
-		X? ( x11-misc/xvfb-run )
+		x11-misc/xvfb-run
 	)
 	wayland? (
 		>=sys-kernel/linux-headers-4.4
@@ -159,12 +153,6 @@ python_check_deps() {
 src_configure() {
 	use debug && EMESON_BUILDTYPE=debug
 	local emesonargs=(
-
-		# By default meson.eclass sets --wrap-mode to nodownload. This works
-		# file for tar balls. But for live ebuild some subprojects, gvdb in
-		# This case needs to be cloned as well.
-		--wrap-mode default
-
 		# Mutter X11 renderer only supports gles2 and GLX, thus do NOT pass
 		#
 		#   -Dopengl_libname=libOpenGL.so.0
@@ -182,22 +170,10 @@ src_configure() {
 		$(meson_use wayland gles2)
 		#gles2_libname
 		-Degl=true
-		$(meson_use X glx)
+		-Dglx=true
 		$(meson_use wayland)
-	)
-
-	if use wayland; then
-		emesonargs+=(
-			$(meson_use xwayland)
-		)
-	else
-		emesonargs+=(
-			-Dxwayland=false
-		)
-	fi
-
-	emesonargs+=(
-		$(meson_use systemd)
+		$(meson_use wayland xwayland)
+		$(meson_use systemd logind)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
 		$(meson_use gnome libgnome_desktop)
@@ -206,7 +182,7 @@ src_configure() {
 		$(meson_use input_devices_wacom libwacom)
 		-Dsound_player=true
 		-Dstartup_notification=true
-		$(meson_use X sm)
+		-Dsm=true
 		$(meson_use introspection)
 		$(meson_use gtk-doc docs)
 		$(meson_use test cogl_tests)
