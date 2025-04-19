@@ -1,0 +1,26 @@
+https://github.com/gap-packages/guava/issues/110
+
+diff --git a/tst/guava.tst b/tst/guava.tst
+index c6b356b..fc70f65 100644
+--- a/tst/guava.tst
++++ b/tst/guava.tst
+@@ -100,11 +100,14 @@ gap> Print(" Codes\n");
+ gap> C:=RandomLinearCode(20,10,GF(4));
+ a  [20,10,?] randomly generated code over GF(4)
+ gap> c:=Random(C);;
+-gap> NamesOfComponents(C);
+-[ "Representative", "ZeroImmutable", "name", "LeftActingDomain", "Dimension", 
+-  "GeneratorsOfLeftOperatorAdditiveGroup", "Basis", "NiceFreeLeftModule", 
+-  "WordLength", "GeneratorMat" ]
+-gap> NamesOfComponents(c);
++gap> nC:=NamesOfComponents(C);;
++gap> Sort(nC); nC;
++[ "Basis", "Dimension", "GeneratorMat",
++  "GeneratorsOfLeftOperatorAdditiveGroup", "LeftActingDomain",
++  "NiceFreeLeftModule", "Representative", "WordLength", "ZeroImmutable",
++  "name" ]
++gap> nc:=NamesOfComponents(c);;
++gap> Sort(nc); nc;
+ [ "VectorCodeword", "WordLength", "treatAsPoly" ]
+ gap> c!.VectorCodeword;
+ < immutable compressed vector length 20 over GF(4) >
