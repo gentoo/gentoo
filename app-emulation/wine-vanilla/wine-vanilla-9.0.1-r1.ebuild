@@ -3,10 +3,10 @@
 
 EAPI=8
 
-inherit optfeature wine
+inherit wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.0.0
+WINE_MONO=8.1.0
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,23 +24,16 @@ HOMEPAGE="
 	https://gitlab.winehq.org/wine/wine/
 "
 
-LICENSE="
-	LGPL-2.1+
-	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
-	|| ( WTFPL-2 public-domain )
-"
+LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
-	+X +alsa bluetooth capi cups +dbus dos llvm-libunwind ffmpeg
-	+fontconfig +gecko gphoto2 +gstreamer kerberos +mono netapi
-	nls odbc opencl +opengl pcap perl pulseaudio samba scanner
-	+sdl selinux smartcard +ssl +truetype udev +unwind usb v4l
-	+vulkan wayland +xcomposite xinerama
+	+X +alsa capi cups +dbus dos llvm-libunwind +fontconfig +gecko
+	gphoto2 +gstreamer kerberos +mono netapi nls odbc opencl +opengl
+	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
+	+truetype udev +unwind usb v4l +vulkan wayland +xcomposite
+	xinerama
 "
-REQUIRED_USE="
-	X? ( truetype )
-	bluetooth? ( dbus )
-"
+REQUIRED_USE="X? ( truetype )"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -69,7 +62,7 @@ WINE_DLOPEN_DEPEND="
 	ssl? ( net-libs/gnutls:=[${WINE_USEDEP}] )
 	truetype? ( media-libs/freetype[${WINE_USEDEP}] )
 	v4l? ( media-libs/libv4l[${WINE_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[X?,wayland?,${WINE_USEDEP}] )
+	vulkan? ( media-libs/vulkan-loader[X?,${WINE_USEDEP}] )
 "
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
@@ -79,7 +72,6 @@ WINE_COMMON_DEPEND="
 	)
 	alsa? ( media-libs/alsa-lib[${WINE_USEDEP}] )
 	capi? ( net-libs/libcapi:=[${WINE_USEDEP}] )
-	ffmpeg? ( media-video/ffmpeg:=[${WINE_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${WINE_USEDEP}] )
 	gstreamer? (
 		dev-libs/glib:2[${WINE_USEDEP}]
@@ -128,7 +120,6 @@ DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )
-	bluetooth? ( net-wireless/bluez )
 "
 BDEPEND="
 	sys-devel/bison
@@ -148,6 +139,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
 	"${FILESDIR}"/${PN}-8.13-rpath.patch
+	"${FILESDIR}"/${PN}-10.0-binutils2.44.patch
 )
 
 src_configure() {
@@ -161,7 +153,6 @@ src_configure() {
 		$(use_with capi)
 		$(use_with cups)
 		$(use_with dbus)
-		$(use_with ffmpeg)
 		$(use_with fontconfig)
 		$(use_with gphoto2 gphoto)
 		$(use_with gstreamer)
@@ -188,11 +179,6 @@ src_configure() {
 		$(use_with wayland)
 		$(use_with xcomposite)
 		$(use_with xinerama)
-
-		$(usev !bluetooth '
-			ac_cv_header_bluetooth_bluetooth_h=no
-			ac_cv_header_bluetooth_rfcomm_h=no
-		')
 		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
@@ -208,11 +194,4 @@ src_install() {
 	wine_src_install
 
 	dodoc ANNOUNCE* AUTHORS README* documentation/README*
-}
-
-pkg_postinst() {
-	wine_pkg_postinst
-
-	optfeature "/dev/hidraw* access used for *some* controllers (e.g. DualShock4)" \
-		games-util/game-device-udev-rules
 }
