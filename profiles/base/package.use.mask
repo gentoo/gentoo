@@ -185,7 +185,6 @@ net-dns/bind jemalloc
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # Prepare for KDE PIM 5 removal and avoid conflicts w/ KDE PIM 6
 app-office/kmymoney:5 addressbook
-app-office/kraft:5 pim
 
 # orbea <orbea@riseup.net> (2024-07-19)
 # The dynarec is only supported upstream for amd64, arm, arm64 and x86.
