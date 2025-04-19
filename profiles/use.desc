@@ -305,6 +305,7 @@ smartcard - Enable smartcard support
 smp - Enable support for multiprocessors or multicore systems
 snappy - Enable support for Snappy compression (as implemented in app-arch/snappy)
 sndfile - Add support for libsndfile
+sndio - Enable support for OpenBSD's cross-plafrorm media-sound/sndio audio & MIDI backend
 snmp - Add support for the Simple Network Management Protocol if available
 soap - Add support for SOAP (Simple Object Access Protocol)
 sockets - Add support for tcp/ip sockets
