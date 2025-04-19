@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/880505
+https://github.com/mp3splt/mp3splt/pull/373
+
+--- a/plugins/ogg_new_stream_handler.h
++++ b/plugins/ogg_new_stream_handler.h
+@@ -61,7 +61,7 @@ void splt_ogg_nsh_free(splt_ogg_new_stream_handler **nsh);
+ 
+ void splt_ogg_initialise_for_new_stream(splt_ogg_new_stream_handler *nsh, 
+     ogg_page *page, ogg_int64_t *cutpoint, ogg_int64_t previous_granulepos);
+-int splt_ogg_new_stream_needs_header_packet();
++int splt_ogg_new_stream_needs_header_packet(splt_ogg_new_stream_handler *nsh);
+ void splt_ogg_new_stream_handle_header_packet(splt_ogg_new_stream_handler *nsh, ogg_packet *packet, int *error);
+ 
+ #define MP3SPLT_OGG_NEW_STREAM_HANDLER_H
