@@ -6,9 +6,10 @@
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=Heaptrack</bugs-to>
+		<remote-id type="kde-invent">sdk/heaptrack</remote-id>
 	</upstream>
 	<use>
-		<flag name="gui">Install Qt5-based analyzer tool</flag>
+		<flag name="gui">Install Qt6-based analyzer tool</flag>
 	</use>
 </pkgmetadata>
