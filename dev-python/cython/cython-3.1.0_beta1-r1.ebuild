@@ -45,6 +45,13 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx-issues \
 	dev-python/sphinx-tabs
 
+python_prepare_all() {
+	# Needs dev-python/pip and doesn't like 'externally-managed' (bug #927995)
+	rm tests/run/coverage_cmd_src_pkg_layout.srctree || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_compile() {
 	# Python gets confused when it is in sys.path before build.
 	local -x PYTHONPATH=
