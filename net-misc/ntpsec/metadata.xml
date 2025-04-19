@@ -7,26 +7,10 @@
 	</longdescription>
 	<use>
 		<flag name="early">Drop root privileges early</flag>
-		<flag name="gdb">Enable debugging with gdb</flag>
 		<flag name="heat">Install contrib heat generating scripts</flag>
 		<flag name="libbsd">Use libbsd instead of internal funcs</flag>
 		<flag name="nist">Set local clock deps</flag>
 		<flag name="ntpviz">Make visualizations of offsets, jiffies, etc.</flag>
-		<flag name="rclock_oncore">Oncore driver</flag>
-		<flag name="rclock_trimble">Trimble driver</flag>
-		<flag name="rclock_truetime">Trutime driver (deprecated)</flag>
-		<flag name="rclock_gpsd">Enable gpsd daemon support</flag>
-		<flag name="rclock_jjy">JJY driver</flag>
-		<flag name="rclock_generic">Enable support for generic time radios and GPSDOs</flag>
-		<flag name="rclock_spectracom">Spectracom driver</flag>
-		<flag name="rclock_shm">Obtain refclock info from shared memory-segment</flag>
-		<flag name="rclock_pps">PPS cesium clock driver</flag>
-		<flag name="rclock_hpgps">Hewlett Packard GPS driver</flag>
-		<flag name="rclock_zyfer">Zyfer driver</flag>
-		<flag name="rclock_arbiter">Arbiter 1088A/B GPS driver</flag>
-		<flag name="rclock_nmea">NMEA GPS driver</flag>
-		<flag name="rclock_modem">NIST/USNO/PTB Modem Time Services</flag>
-		<flag name="rclock_local">Support for undisciplined local clock (not recommended)</flag>
 		<flag name="oncore">Oncore driver</flag>
 		<flag name="trimble">Trimble driver</flag>
 		<flag name="truetime">Trutime driver (deprecated)</flag>
