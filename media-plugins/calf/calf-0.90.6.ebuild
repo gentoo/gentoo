@@ -68,6 +68,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	mkdir -p "${ED}"/usr/share/bash-completion/completions || die "Failed to create bash complation dir"
-	cp "${S}"/calf "${ED}"/usr/share/bash-completion/completions/calfjackhost || die "Failed to install bash completion"
+	mv "${ED}"/usr/share/bash-completion/completions/calf \
+		"${ED}"/usr/share/bash-completion/completions/calfjackhost || die "Failed to install bash completion"
 }
