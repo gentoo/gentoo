@@ -26,11 +26,14 @@ RDEPEND="
 	' 3.10)
 "
 BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/yaxmldiff[${PYTHON_USEDEP}]
 	)
 "
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 distutils_enable_tests pytest
 
@@ -208,6 +211,25 @@ python_test() {
 
 		# Needs bazel
 		"bazel-json"
+
+		# Fail outside of a git repo
+		"coexisting_object_directories-from_build_dir-coveralls"
+		"coexisting_object_directories-from_build_dir-without_object_dir-coveralls"
+		"coexisting_object_directories-from_root_dir-coveralls"
+		"coexisting_object_directories-from_root_dir-without_object_dir-coveralls"
+		"coexisting_object_directories-from_root_dir-without_search_dir-coveralls"
+		"simple1-dir-txt"
+		"simple1-dir-json"
+		"simple1-dir-json_summary"
+		"simple1-dir-csv"
+		"simple1-dir-cobertura"
+		"simple1-dir-jacoco"
+		"simple1-dir-sonarqube"
+		"wspace-txt"
+		"wspace-cobertura"
+		"wspace-jacoco"
+		"wspace-lcov"
+		"wspace-sonarqube"
 	)
 
 	local cc cc_ver
