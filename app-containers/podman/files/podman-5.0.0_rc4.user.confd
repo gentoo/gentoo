@@ -1,0 +1,6 @@
+# Config file for /etc/user/init.d/podman
+
+# Sets the API service daemon log level
+# valid levels: debug, info, warn, error, fatal or panic
+#LOG_LEVEL="error"
+
