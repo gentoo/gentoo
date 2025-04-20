@@ -1,6 +1,13 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-04-20)
+# Needs dev-python/scipy for tests which often ends up destabled on arches
+# even if it was previously stable there, as its own test results vary a lot.
+# Just avoid tests for liblc3 in general and unmask in a few places where
+# scipy will surely be around in future.
+media-sound/liblc3 test
+
 # Sam James <sam@gentoo.org> (2025-02-13)
 # sys-cluster/corosync is not marked stable on most arches
 sys-fs/mdadm corosync
