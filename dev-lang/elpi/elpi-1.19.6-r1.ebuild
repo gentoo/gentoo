@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,9 +23,9 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	<dev-ml/atd-2.16.0:=
 	>=dev-lang/ocaml-4.08.0:=
 	>=dev-ml/menhir-20211230:=
-	dev-ml/atd:=
 	dev-ml/ppx_deriving:=
 	dev-ml/ppxlib:=
 	dev-ml/re:=
