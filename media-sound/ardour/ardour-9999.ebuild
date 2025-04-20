@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,9 @@ DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
+	# Main repo disabled for now by upstream
+	#EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
+	EGIT_REPO_URI="https://github.com/Ardour/ardour.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
