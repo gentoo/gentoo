@@ -26,6 +26,7 @@ RDEPEND="
 	' 3.10)
 "
 BDEPEND="
+	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
