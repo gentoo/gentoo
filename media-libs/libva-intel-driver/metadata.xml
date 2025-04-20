@@ -9,6 +9,6 @@
     <flag name="hybrid">Enable support for hybrid vaapi hardware acceleration on Intel Haswell and newer architectures</flag>
   </use>
   <upstream>
-    <remote-id type="github">intel/intel-vaapi-driver</remote-id>
+    <remote-id type="github">irql-notlessorequal/intel-vaapi-driver</remote-id>
   </upstream>
 </pkgmetadata>

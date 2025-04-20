@@ -1,20 +1,20 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PN="intel-vaapi-driver"
-if [[ ${PV} = *9999* ]] ; then # Live ebuild
+if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/intel/intel-vaapi-driver"
+	EGIT_REPO_URI="https://github.com/irql-notlessorequal/intel-vaapi-driver"
 fi
 
-inherit autotools multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="HW video decode support for Intel integrated graphics"
 HOMEPAGE="https://github.com/intel/intel-vaapi-driver"
 if [[ ${PV} != *9999* ]] ; then
-	SRC_URI="https://github.com/intel/${MY_PN}/releases/download/${PV}/${MY_PN}-${PV}.tar.bz2"
+	SRC_URI="https://github.com/irql-notlessorequal/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -34,27 +34,20 @@ RDEPEND="
 
 	wayland? (
 		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
-		>=media-libs/mesa-9.1.6[egl(+),${MULTILIB_USEDEP}]
+		virtual/opengl[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
-
-src_prepare() {
-	default
-	sed -e 's/intel-gen4asm/\0diSaBlEd/g' -i configure.ac || die
-	eautoreconf
-}
+BDEPEND="
+	dev-util/wayland-scanner
+	virtual/pkgconfig
+"
 
 multilib_src_configure() {
-	local myconf=(
-		$(use_enable hybrid hybrid-codec)
-		$(use_enable wayland)
-		$(use_enable X x11)
+	local emesonargs=(
+		-Denable_hybrid_codec=$(usex hybrid true false)
+		-Dwith_wayland=$(usex wayland)
+		-Dwith_x11=$(usex X)
 	)
-	ECONF_SOURCE="${S}" econf "${myconf[@]}"
-}
-
-multilib_src_install_all() {
-	find "${D}" -name "*.la" -delete || die
+	meson_src_configure
 }
