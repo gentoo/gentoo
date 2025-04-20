@@ -71,13 +71,10 @@ src_prepare() {
 }
 
 python_configure() {
-	if [[ ! -d tools && ${EPYTHON} != pypy3 ]] && use native-extensions
+	# check for .install-cython, so that we do this only once
+	if [[ ! -f .install-cython && ${EPYTHON} != pypy3 ]] &&
+		use native-extensions
 	then
-		# workaround missing files
-		mkdir tools || die
-		> requirements/cython.txt || die
-		> tools/gen.py || die
-		chmod +x tools/gen.py || die
 		# force rehashing first
 		emake requirements/.hash/cython.txt.hash
 		> .update-pip || die
