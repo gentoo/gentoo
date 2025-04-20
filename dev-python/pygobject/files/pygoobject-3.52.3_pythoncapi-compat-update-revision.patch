@@ -1,0 +1,23 @@
+From 13fc6c0fd8e86e86088e4fd8ed3b029f8d2b4745 Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Sat, 19 Apr 2025 07:05:47 +0200
+Subject: [PATCH] Change to a newer pythoncapi-compat upstream revision.
+
+The current upstream revision fails to build for PYTHON_TARGETS="pypy3.11"
+
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ subprojects/pythoncapi-compat.wrap | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/subprojects/pythoncapi-compat.wrap b/subprojects/pythoncapi-compat.wrap
+index 8b8e1a8..9ac4a08 100644
+--- a/subprojects/pythoncapi-compat.wrap
++++ b/subprojects/pythoncapi-compat.wrap
+@@ -1,5 +1,5 @@
+ [wrap-git]
+ directory=pythoncapi-compat
+ url=https://github.com/python/pythoncapi-compat.git
+-revision=2d18aecd7b2f549d38a13e27b682ea4966f37bd8
++revision=0a8b2c56331a31d7f7096faaa1c1c26467b51c15
+ depth=1
