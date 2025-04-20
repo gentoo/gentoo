@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+aom doc examples gdk-pixbuf go openh264 rav1e svt-av1 test +threads +webp x265"
 RESTRICT="!test? ( test )"
