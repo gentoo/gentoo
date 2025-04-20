@@ -15,7 +15,7 @@ S="${WORKDIR}"/clog
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 
 RDEPEND="!<dev-libs/cpuinfo-${PV}"
