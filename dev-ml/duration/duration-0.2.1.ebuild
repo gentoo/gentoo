@@ -7,7 +7,8 @@ inherit dune
 
 DESCRIPTION="Duration - conversions to various time units"
 HOMEPAGE="https://github.com/hannesm/duration"
-SRC_URI="https://github.com/hannesm/duration/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hannesm/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
