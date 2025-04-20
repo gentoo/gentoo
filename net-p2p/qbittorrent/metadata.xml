@@ -10,9 +10,8 @@
 		<name>Filip Kobierski</name>
 	</maintainer>
 	<use>
-		<flag name="webui">
-			Install qBittorrent Web UI (qbittorrent-nox) and systemd/OpenRC service
-		</flag>
+		<flag name="dbus">Enable support for notifications and power-management features via D-Bus</flag>
+		<flag name="webui">Install qBittorrent Web UI (qbittorrent-nox)</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/qbittorrent/qBittorrent/issues</bugs-to>
