@@ -25,7 +25,7 @@ audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit
 avif - Add AV1 Image Format (AVIF) support
 bash-completion - Enable bash-completion support
-berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
+berkdb - Add support for sys-libs/db (Berkeley DB)
 bidi - Enable bidirectional language support
 big-endian - Big-endian toolchain support
 bindist - Flag to enable or disable options for prebuilt (GRP) packages (eg. due to licensing issues)
