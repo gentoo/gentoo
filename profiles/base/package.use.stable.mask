@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-04-20)
+# Needs a newer version to be stable but complications been delaying
+# that, mask for now (bug #950193).
+media-video/ffmpeg liblc3
+
 # Michał Górny <mgorny@gentoo.org> (2024-04-12)
 # dev-python/mpi4py has no stable keywords.
 media-gfx/netgen mpi
