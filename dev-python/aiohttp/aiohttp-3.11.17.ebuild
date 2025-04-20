@@ -17,10 +17,18 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+native-extensions test-rust"
 
+DEPEND="
+	native-extensions? (
+		$(python_gen_cond_dep '
+			net-libs/llhttp:=
+		' 'python3*')
+	)
+"
 RDEPEND="
+	${DEPEND}
 	>=dev-python/aiodns-3.2.0[${PYTHON_USEDEP}]
 	>=dev-python/aiohappyeyeballs-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/aiosignal-1.1.2[${PYTHON_USEDEP}]
@@ -61,13 +69,19 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${PN}-3.11.17-unbundle-llhttp.patch"
+	)
+
+	distutils-r1_src_prepare
+
 	# increase the timeout a little
 	sed -e '/abs=/s/0.001/0.01/' -i tests/test_helpers.py || die
 	# xfail_strict fails on py3.10
 	sed -i -e '/--cov/d' -e '/pytest_cov/d' -e '/xfail_strict/d' setup.cfg || die
 	sed -i -e 's:-Werror::' Makefile || die
-
-	distutils-r1_src_prepare
+	# remove vendored llhttp
+	rm -r vendor || die
 }
 
 python_configure() {
