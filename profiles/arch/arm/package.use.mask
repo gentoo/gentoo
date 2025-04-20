@@ -140,16 +140,11 @@ dev-python/nbclassic doc
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
-app-i18n/fcitx-libpinyin dictionary-manager
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/qtpy test
 games-util/lgogdownloader gui
-net-irc/quassel urlpreview
-net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
-sci-mathematics/yacas gui
-sci-physics/root qt5
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593

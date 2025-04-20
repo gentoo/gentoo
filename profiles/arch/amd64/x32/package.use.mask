@@ -51,7 +51,6 @@ media-libs/libva-intel-driver hybrid
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # dev-qt/qtwebengine requires net-libs/nodejs, plus mask all
 # reverse-dependencies.
-app-i18n/fcitx-libpinyin dictionary-manager
 app-misc/anki gui
 app-office/kraft pim
 dev-lang/idris2 test-full
@@ -62,11 +61,7 @@ kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra pim
 kde-misc/kio-gdrive share
 kde-plasma/plasma-nm openconnect
-net-irc/quassel urlpreview
-net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
-sci-mathematics/yacas gui
-sci-physics/root qt5
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-05)
 # sys-cluster/ceph no longer supports x86, versions that support
