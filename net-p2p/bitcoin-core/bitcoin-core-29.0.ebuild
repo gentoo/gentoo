@@ -11,7 +11,6 @@ DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz
-	https://github.com/bitcoin/bitcoin/pull/30997/commits/f9472962d1cdf58bfc1ad64c4bb44ddf5d0b4db2.patch?full_index=1 -> ${PN}-29.0-qt6.patch
 "
 S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
@@ -92,7 +91,7 @@ DOCS=(
 )
 
 PATCHES=(
-	"${DISTDIR}/${PN}-29.0-qt6.patch"
+	"${FILESDIR}/29.0-qt6.patch"
 	"${FILESDIR}/29.0-cmake-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )
