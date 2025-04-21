@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/minitest:5
 		dev-ruby/nokogiri
-		|| ( dev-ruby/rails:6.1 dev-ruby/rails:7.0 )
+		dev-ruby/rails:7.0
 	)
 	doc? (
 		dev-ruby/yard
