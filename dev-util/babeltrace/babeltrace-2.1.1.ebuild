@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic libtool python-single-r1
 
 DESCRIPTION="A command-line tool and library to read and convert trace files"
