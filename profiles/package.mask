@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# Requires Qt5WebEngine; bug #925722
+# Removal on 2025-05-24 - with a good chance to be kept if ported by then.
+www-client/otter
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
 # Requires Qt5WebEngine; no more revdeps. Bug #926684
 # Removal on 2025-05-24.
 dev-python/pyqtwebengine
