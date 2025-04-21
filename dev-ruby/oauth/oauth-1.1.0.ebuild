@@ -34,8 +34,8 @@ ruby_add_bdepend "test? (
 	dev-ruby/webmock
 	dev-ruby/rack
 	dev-ruby/rest-client
-	|| ( dev-ruby/actionpack:7.1 dev-ruby/actionpack:7.0 dev-ruby/actionpack:6.1 )
-	|| ( dev-ruby/railties:7.1 dev-ruby/railties:7.0 dev-ruby/railties:6.1 )
+	|| ( dev-ruby/actionpack:7.1 dev-ruby/actionpack:7.0 )
+	|| ( dev-ruby/railties:7.1 dev-ruby/railties:7.0 )
 )"
 
 all_ruby_prepare() {
