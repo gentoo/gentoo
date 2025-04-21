@@ -52,6 +52,7 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
+	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
 	eapply "${FILESDIR}"/${P}-PR119858.patch
 	eapply_user
 }
