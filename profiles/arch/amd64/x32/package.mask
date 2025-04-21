@@ -88,7 +88,6 @@ app-text/zeal
 app-editors/ghostwriter
 app-editors/retext
 app-office/merkuro
-app-office/kmymoney
 app-office/skrooge
 app-office/texmaker
 app-text/bibletime
