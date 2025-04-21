@@ -125,10 +125,10 @@ src_install() {
 		newins "${FILESDIR}/podman.logrotated" podman
 
 		exeinto /etc/user/init.d
-		newexe "${FILESDIR}/podman-5.0.0_rc4.user.initd"
+		newexe "${FILESDIR}/podman-5.0.0_rc4.user.initd" podman
 
 		insinto /etc/user/conf.d
-		newins "${FILESDIR}/podman-5.0.0_rc4.user.confd"
+		newins "${FILESDIR}/podman-5.0.0_rc4.user.confd" podman
 	fi
 
 	keepdir /var/lib/containers
