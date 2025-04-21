@@ -28,7 +28,7 @@ IUSE="examples"
 python_install_all() {
 	if use examples; then
 		# skip symlink meant for development
-		rm examples/btrfs
+		rm examples/btrfs || die
 		dodoc -r examples
 	fi
 
