@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit ruby-ng-gnome2
 RUBY_S=ruby-gnome-${PV}/gdk_pixbuf2
 
 DESCRIPTION="Ruby GdkPixbuf2 bindings"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 IUSE="test"
 
 DEPEND="test? ( x11-libs/gdk-pixbuf[jpeg,gif(+)] )"
