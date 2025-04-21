@@ -182,11 +182,13 @@ src_unpack() {
 		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
 	else
 		default
-		if use test; then
-			#The tests are downloaded from: https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
-			mkdir -p lib || die
-			mv "${WORKDIR}/blender-${TEST_TARBALL_VERSION}-tests/tests" lib || die
-		fi
+
+		# BUG upstream returns LFS references instead of files
+		# if use test; then
+		# 	#The tests are downloaded from: https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
+		# 	mkdir -p lib || die
+		# 	mv "${WORKDIR}/blender-${TEST_TARBALL_VERSION}-tests/tests" lib || die
+		# fi
 	fi
 
 }

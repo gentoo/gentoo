@@ -51,7 +51,7 @@
 			Use embree to accelerate certain areas of the Cycles render engine.
 		</flag>
 		<flag name="experimental">
-			Build Experimental Blender Modules
+			Enable experimental features
 		</flag>
 		<flag name="fluid">
 			Adds fluid simulation support via the built-in Mantaflow library.

@@ -224,10 +224,11 @@ src_unpack() {
 	else
 		default
 
-		if use test; then
-			mkdir -p "${S}/tests/data/" || die
-			mv blender-test-data/* "${S}/tests/data/" || die
-		fi
+		# BUG upstream returns LFS references instead of files
+		# if use test; then
+		# 	mkdir -p "${S}/tests/data/" || die
+		# 	mv blender-test-data/* "${S}/tests/data/" || die
+		# fi
 	fi
 }
 
@@ -498,6 +499,13 @@ src_install() {
 	pax-mark m "${BUILD_DIR}"/bin/blender
 
 	cmake_src_install
+
+	# X-KDE-RunOnDiscreteGpu is obsolete, so trim it
+	sed \
+		-e "s/=blender/=${P}/" \
+		-e "s/Name=Blender/Name=Blender Bin ${PV}/" \
+		-e "/X-KDE-RunOnDiscreteGpu.*/d" \
+		-i "${ED}/usr/share/applications/blender-${BV}.desktop" || die
 
 	if use man; then
 		# Slot the man page
