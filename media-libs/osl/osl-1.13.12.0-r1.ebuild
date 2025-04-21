@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
 # Check this on updates
-LLVM_COMPAT=( {15..19} )
+LLVM_COMPAT=( {18..19} )
 
 inherit cmake cuda flag-o-matic llvm-r1 toolchain-funcs python-single-r1
 
