@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -119,6 +119,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
 	"${FILESDIR}/${P}-import-qif.patch"
 	"${FILESDIR}/${PN}-5.8-guile-load-path.patch"
+	"${FILESDIR}/${P}-swig-4.3.patch"
 )
 
 pkg_setup() {

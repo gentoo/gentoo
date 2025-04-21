@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/953429
+https://github.com/Gnucash/gnucash/commit/85084e75d63633b8c7e44b99ee6cc20f421b52fc
+
+From 85084e75d63633b8c7e44b99ee6cc20f421b52fc Mon Sep 17 00:00:00 2001
+From: John Ralls <jralls@ceridwen.us>
+Date: Thu, 26 Dec 2024 11:45:10 -0800
+Subject: [PATCH] Fix python bindings build with Swig-4.3.0.
+
+---
+ bindings/python/time64.i                     | 11 ++++++++---
+ common/cmake_modules/GncAddSwigCommand.cmake |  6 ++++++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/bindings/python/time64.i b/bindings/python/time64.i
+index 93d9f261f8c..3f85448dedc 100644
+--- a/bindings/python/time64.i
++++ b/bindings/python/time64.i
+@@ -132,6 +132,12 @@
+     $1 = &secs;
+ }
+ 
++#ifdef HAVE_SWIG_APPENDOUTPUT
++#define SWIG_APPENDOUTPUT(res, func) SWIG_AppendOutput(res, func)
++#else
++#define SWIG_APPENDOUTPUT(res, func) SWIG_Python_AppendOutput(res, func)
++#endif
++
+ %typemap(argout) time64 *date (time64 secs) {
+   PyDateTime_IMPORT;
+   PyObject *tp;
+@@ -148,9 +154,8 @@
+       tp = PyDateTime_FromDateAndTime(t.tm_year + 1900, t.tm_mon + 1,
+                                                  t.tm_mday, t.tm_hour, t.tm_min,
+                                                  t.tm_sec, 0);
+-
+-      $result = SWIG_Python_AppendOutput($result, tp);
+-  } else $result = SWIG_Python_AppendOutput($result, Py_None);
++      $result = SWIG_APPENDOUTPUT($result, tp);
++  } else $result = SWIG_APPENDOUTPUT($result, Py_None);
+ }
+ 
+ %apply time64 *date { time64 *last_date };
+diff --git a/common/cmake_modules/GncAddSwigCommand.cmake b/common/cmake_modules/GncAddSwigCommand.cmake
+index 811f347608d..a3c8dac995f 100644
+--- a/common/cmake_modules/GncAddSwigCommand.cmake
++++ b/common/cmake_modules/GncAddSwigCommand.cmake
+@@ -86,6 +86,12 @@ macro (gnc_add_swig_python_command _target _out_var _py_out_var _output _py_outp
+ 	 )
+ 
+     set (PYTHON_SWIG_FLAGS ${DEFAULT_SWIG_PYTHON_FLAGS})
++
++    if (SWIG_VERSION VERSION_GREATER_EQUAL "4.3.0")
++      list(APPEND PYTHON_SWIG_FLAGS
++        -DHAVE_SWIG_APPENDOUTPUT=1)
++    endif()
++
+     foreach (dir ${DEFAULT_SWIG_PYTHON_C_INCLUDES} ${_include_dirs})
+         list (APPEND PYTHON_SWIG_FLAGS "-I${dir}")
+     endforeach (dir)
