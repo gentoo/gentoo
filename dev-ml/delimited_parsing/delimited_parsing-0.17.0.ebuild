@@ -11,8 +11,8 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
-IUSE="ocamlopt"
+KEYWORDS="~amd64 ~arm64"
+IUSE="+ocamlopt"
 
 RDEPEND="
 	>=dev-lang/ocaml-5
