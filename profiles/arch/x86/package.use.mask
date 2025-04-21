@@ -4,6 +4,7 @@
 # Alfredo Tupone <tupone@gentoo.org> (2025-04-21)
 # ocamlopt is not available on 32 bits arch
 >=dev-lang/ocaml-5 ocamlopt
+>=dev-ml/camlp4-5.2_p1 ocamlopt
 
 # Conrad Kostecki <conikost@gentoo.org> (2025-04-02)
 # media-libs/libsdl3 is not keyworded
