@@ -44,9 +44,6 @@
 			This makes it so that the user doesn't have to wait for the kernels to compile when they are used for the first time in Blender.
 			If this option is not on, they will be built as needed at runtime.
 		</flag>
-		<flag name="dds">
-			Adds DDS textures support to Blender.
-		</flag>
 		<flag name="embree">
 			Use embree to accelerate certain areas of the Cycles render engine.
 		</flag>
