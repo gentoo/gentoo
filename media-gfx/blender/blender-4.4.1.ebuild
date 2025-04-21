@@ -72,7 +72,7 @@ SLOT="${BLENDER_BRANCH}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip jack
-	jemalloc jpeg2k man +nanovdb ndof nls +oidn oneapi openal +openexr +opengl +openpgl
+	jemalloc jpeg2k man +nanovdb ndof nls +oidn openal +openexr +opengl +openmp +openpgl
 	+opensubdiv +openvdb optix osl pipewire +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
@@ -146,13 +146,12 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-2.1.0 )
-	oneapi? ( dev-libs/intel-compute-runtime:=[l0] )
 	openexr? (
 		>=dev-libs/imath-3.1.7:=
 		>=media-libs/openexr-3.2.1:0=
 	)
 	openpgl? ( media-libs/openpgl:= )
-	opensubdiv? ( >=media-libs/opensubdiv-3.6.0-r2[opengl,cuda?,tbb?] )
+	opensubdiv? ( >=media-libs/opensubdiv-3.6.0-r2[opengl,cuda?,openmp?,tbb?] )
 	openvdb? (
 		>=media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
@@ -247,6 +246,8 @@ PATCHES=(
 )
 
 blender_check_requirements() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	if use doc; then
 		CHECKREQS_DISK_BUILD="4G" check-reqs_pkg_pretend
 	fi
@@ -277,18 +278,6 @@ blender_get_version() {
 
 pkg_pretend() {
 	blender_check_requirements
-
-	if use oneapi; then
-		einfo "The Intel oneAPI support is rudimentary."
-		einfo ""
-		einfo "Please report any bugs you find to https://bugs.gentoo.org/"
-		if ! command -v icpx &>/dev/null && ! command -v dpcpp &>/dev/null; then
-			eerror "Could not find icpx or dpcpp."
-			eerror "You need SYCL/DCP++ to enable oneapi support."
-			eerror "Try sys-devel/DPC++::science"
-			die "FindSYCL would fail. Aborting."
-		fi
-	fi
 }
 
 pkg_setup() {
@@ -456,6 +445,7 @@ src_configure() {
 
 		# Compiler Options:
 		# -DWITH_BUILDINFO="yes"
+		-DWITH_OPENMP="$(usex openmp)"
 
 		# System Options:
 		-DWITH_INSTALL_PORTABLE="no"
@@ -526,8 +516,6 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_CUDA="$(usex cuda)"
 		-DWITH_CYCLES_CUDA_BINARIES="$(usex cuda "$(usex cycles-bin-kernels)")"
 
-		-DWITH_CYCLES_DEVICE_ONEAPI="$(usex oneapi)"
-		-DWITH_CYCLES_ONEAPI_BINARIES="$(usex oneapi "$(usex cycles-bin-kernels)")"
 		-DWITH_CYCLES_DEVICE_HIP="$(usex hip)"
 		-DWITH_CYCLES_HIP_BINARIES="$(usex hip "$(usex cycles-bin-kernels)")"
 		-DWITH_CYCLES_HYDRA_RENDER_DELEGATE="no" # TODO: package Hydra
@@ -626,7 +614,6 @@ src_configure() {
 			use cuda && CYCLES_TEST_DEVICES+=( "CUDA" )
 			use optix && CYCLES_TEST_DEVICES+=( "OPTIX" )
 			use hip && CYCLES_TEST_DEVICES+=( "HIP" )
-			use oneapi && CYCLES_TEST_DEVICES+=( "ONEAPI" )
 		fi
 		mycmakeargs+=(
 			-DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${T}/usr"
@@ -696,10 +683,6 @@ src_test() {
 	local -x CMAKE_SKIP_TESTS=(
 		"^script_pyapi_bpy_driver_secure_eval$"
 		"^cycles_image_colorspace_cpu$"
-		"^cycles_image_data_types_cpu$"
-		"^cycles_image_mapping_cpu$"
-		"^cycles_osl_cpu$"
-		"^cycles_image_data_types_optix$"
 		"^compositor_cpu_color$"
 		"^compositor_cpu_filter$"
 	)
@@ -711,25 +694,12 @@ src_test() {
 		)
 	fi
 
-	if ! has_version "media-libs/openimageio[python]"; then
-		CMAKE_SKIP_TESTS+=(
-			# import OpenImageIO as oiio # ModuleNotFoundError: No module named 'OpenImageIO'
-			"^compositor_cpu_file_output$"
-		)
-	fi
-
 	# For debugging, print out all information.
 	local -x VERBOSE="$(usex debug "true" "false")"
 
 	# Show the window in the foreground.
 	local -x USE_WINDOW="false"
 	local -x USE_DEBUG="false"
-
-	eqawarn "VERBOSE=${VERBOSE}"
-	eqawarn "USE_WINDOW=${USE_WINDOW}"
-	eqawarn "USE_DEBUG=${USE_DEBUG}"
-	eqawarn "BLENDER_SYSTEM_RESOURCES=${BLENDER_SYSTEM_RESOURCES}"
-	eqawarn "EXPENSIVE_TESTS=${EXPENSIVE_TESTS}"
 
 	if [[ "${EXPENSIVE_TESTS:-0}" -gt 0 ]]; then
 		if [[ "${USE_WINDOW}" = "true" ]] &&

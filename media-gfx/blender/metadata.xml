@@ -63,7 +63,7 @@
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
 		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
-		<flag name="oneapi">Build OIDN with Intel oneAPI SyCL support</flag>
+		<flag name="oneapi">Build cycles renderer with Intel oneAPI SyCL support</flag>
 		<flag name="openpgl">Enable path guiding support in Cycles</flag>
 		<flag name="opensubdiv">
 			Add rendering support form OpenSubdiv from Dreamworks Animation
@@ -77,6 +77,9 @@
 		</flag>
 		<flag name="osl">
 			Add support for OpenShadingLanguage scripting.
+		</flag>
+		<flag name="pipewire">
+			Enable Pipewire for audio support on Linux
 		</flag>
 		<flag name="potrace">
 			Add support for converting bitmaps into Grease pencil line using the potrace library.
