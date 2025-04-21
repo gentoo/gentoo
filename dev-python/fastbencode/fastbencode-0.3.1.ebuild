@@ -24,3 +24,8 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/breezy-team/fastbencode/pull/97
+	"${FILESDIR}/${P}-cython-3.1.patch"
+)
