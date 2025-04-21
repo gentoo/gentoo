@@ -144,7 +144,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 PATCHES=(
 	"${FILESDIR}"/1.78.0-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
-	#"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch  # pending refresh
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
 	"${FILESDIR}"/1.79.0-revert-8c40426.patch
 	"${FILESDIR}/1.81.0-backport-bug937164.patch"
