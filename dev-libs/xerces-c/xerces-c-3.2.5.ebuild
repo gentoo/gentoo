@@ -12,7 +12,10 @@ if [[ ${PV} == *9999 ]] ; then
 	ESVN_REPO_URI="https://svn.apache.org/repos/asf/xerces/c/trunk"
 	inherit subversion
 else
-	SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.xz"
+	SRC_URI="
+		mirror://apache/xerces/c/3/sources/${P}.tar.xz
+		https://archive.apache.org/dist/xerces/c/3/sources/${P}.tar.xz
+	"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
