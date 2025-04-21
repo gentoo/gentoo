@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake-cxx.patch
 	"${FILESDIR}"/${P}-py312.patch
 	"${FILESDIR}"/${P}-cmake4.patch
+	"${FILESDIR}"/${P}-swig-4.3.patch
 )
 
 pkg_setup() {
