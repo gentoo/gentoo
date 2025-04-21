@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ PATCHES=( "${FILESDIR}/${P}-test-directories.patch" "${FILESDIR}/${P}-test-isola
 ruby_add_rdepend "
 	>=dev-ruby/sassc-2.0
 	dev-ruby/tilt:*
-	|| ( dev-ruby/railties:7.1 dev-ruby/railties:7.0 dev-ruby/railties:6.1 )
+	|| ( dev-ruby/railties:7.1 dev-ruby/railties:7.0 )
 	>=dev-ruby/sprockets-3.0:*
 	dev-ruby/sprockets-rails:*
 "
