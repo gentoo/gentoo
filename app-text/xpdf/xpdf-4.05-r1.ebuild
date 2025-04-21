@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/xpdf.asc
 inherit cmake desktop verify-sig xdg
 
-DESCRIPTION="The PDF viewer and tools"
+DESCRIPTION="PDF viewer and toolkit"
 HOMEPAGE="https://www.xpdfreader.com"
 SRC_URI="https://dl.xpdfreader.com/${P}.tar.gz
 	i18n? (
@@ -27,30 +27,26 @@ SRC_URI="https://dl.xpdfreader.com/${P}.tar.gz
 LICENSE="|| ( GPL-2 GPL-3 ) i18n? ( BSD )"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="cmyk cups +fontconfig i18n icons +libpaper metric opi png +textselect utils qt6"
+IUSE="cmyk cups +fontconfig i18n icons +libpaper metric opi png +textselect utils"
 
 BDEPEND="
 	icons? ( gnome-base/librsvg )
 	verify-sig? ( sec-keys/openpgp-keys-xpdf )
 "
 DEPEND="
+	dev-qt/qtbase:6[concurrent,network,widgets]
+	media-libs/freetype
+	sys-libs/zlib
 	cups? (
-		qt6? ( dev-qt/qtbase:6[gui,widgets] )
-		!qt6? ( dev-qt/qtprintsupport:5[cups] )
-		dev-qt/qtprintsupport:5[cups]
+		dev-qt/qtbase:6[gui,widgets]
 		net-print/cups
 	)
 	fontconfig? ( media-libs/fontconfig )
 	libpaper? ( app-text/libpaper:= )
 	utils? ( png? ( media-libs/libpng:0 ) )
-	qt6? ( dev-qt/qtbase:6[network,concurrent,widgets] )
-	!qt6? ( dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 )
-	media-libs/freetype
-	sys-libs/zlib
 "
 RDEPEND="${DEPEND}
-	qt6? ( dev-qt/qtsvg:6 )
-	!qt6? ( dev-qt/qtsvg:5 )
+	dev-qt/qtsvg:6
 	media-fonts/urw-fonts
 "
 
@@ -95,7 +91,6 @@ src_configure() {
 		-DWITH_LIBPNG=$(usex png)
 		-DXPDFWIDGET_PRINTING=$(usex cups)
 		-DSYSTEM_XPDFRC="${EPREFIX}/etc/xpdfrc"
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Widgets=$(usex !qt6)
 	)
 	cmake_src_configure
 }
