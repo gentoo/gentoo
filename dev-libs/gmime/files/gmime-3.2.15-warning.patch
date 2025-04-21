@@ -1,0 +1,35 @@
+https://github.com/jstedfast/gmime/commit/3f7005f4c7576de581bb5164c7990aaa4031c2c1
+
+From 3f7005f4c7576de581bb5164c7990aaa4031c2c1 Mon Sep 17 00:00:00 2001
+From: Jeffrey Stedfast <jestedfa@microsoft.com>
+Date: Fri, 4 Oct 2024 16:03:24 -0400
+Subject: [PATCH] Fixed issue in decode_route() when ENABLE_WARNINGS is enabled
+
+Fixes issue #169
+---
+ gmime/internet-address.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gmime/internet-address.c b/gmime/internet-address.c
+index cd6baa90..a89eab0e 100644
+--- a/gmime/internet-address.c
++++ b/gmime/internet-address.c
+@@ -45,7 +45,7 @@
+ 
+ 
+ #ifdef ENABLE_WARNINGS
+-#define w(x) x
++#define w(x) (x)
+ #else
+ #define w(x)
+ #endif /* ENABLE_WARNINGS */
+@@ -1437,7 +1437,7 @@ decode_route (const char **in)
+ 	skip_cfws (&inptr);
+ 	
+ 	if (*inptr != ':') {
+-		w(g_warning ("Invalid route domain-list, missing ':': %.*s", inptr - start, start));
++		w(g_warning ("Invalid route domain-list, missing ':': %.*s", inptr - *in, *in));
+ 		goto error;
+ 	}
+ 	
+
