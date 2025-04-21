@@ -43,7 +43,6 @@ COMMON_DEPEND="
 	acl? (
 		kernel_linux? (
 			sys-apps/acl
-			sys-apps/attr
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
