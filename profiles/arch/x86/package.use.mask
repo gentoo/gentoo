@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2025-04-21)
+# ocamlopt is not available on 32 bits arch
+>=dev-lang/ocaml-5 ocamlopt
+
 # Conrad Kostecki <conikost@gentoo.org> (2025-04-02)
 # media-libs/libsdl3 is not keyworded
 app-emulation/faudio sdl3
