@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
+# Requires Qt5WebEngine; no more revdeps. Bug #926684
+# Removal on 2025-05-24.
+dev-python/pyqtwebengine
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
 # Dead upstream, Qt5 based, no more revdeps. Bug #949019
 # Removal on 2025-05-24.
 dev-python/python-poppler-qt5
