@@ -5,6 +5,9 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
+	<use>
+		<flag name="dracut">Install dracut module</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Azure/azure-vm-utils</remote-id>
 	</upstream>
