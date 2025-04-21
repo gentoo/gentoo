@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-04-21)
+# ruby32-only slot. Use the newer slot instead.
+# Masked for removal on 2025-05-21.
+dev-ruby/highline:2
+
 # Sam James <sam@gentoo.org> (2025-04-21)
 # Several packages need porting. Tracker bug #954128.
 =dev-python/cython-3.1*
