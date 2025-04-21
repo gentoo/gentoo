@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-21)
+# Prepare cleanup of dev-qt/qtwebengine:5
+app-i18n/fcitx-chinese-addons webengine
+app-office/libalkimia webengine
+
 # Matt Jolly <kangie@gentoo.org> (2025-04-16)
 # Older versions of freeciv build an incompatible client and
 # server with this USE enabled.
