@@ -1,14 +1,17 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools linux-info xdg multilib-minimal optfeature pam toolchain-funcs
+inherit autotools eapi9-ver linux-info xdg multilib-minimal optfeature pam toolchain-funcs
 
 MY_PV="${PV/_beta/b}"
 MY_PV="${MY_PV/_rc/rc}"
 MY_PV="${MY_PV/_p/op}"
 MY_P="${PN}-${MY_PV}"
+
+DESCRIPTION="The Common Unix Printing System"
+HOMEPAGE="https://openprinting.github.io/cups/"
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
@@ -16,19 +19,15 @@ if [[ ${PV} == *9999 ]] ; then
 	[[ ${PV} != 9999 ]] && EGIT_BRANCH=branch-${PV/.9999}
 else
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
-	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	fi
+	[[ ${PV} =~ _beta|_rc ]] || KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="The Common Unix Printing System"
-HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
-
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD"
 SLOT="0"
-IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X xinetd zeroconf"
+# NOTE: could use verify-sig
+IUSE="acl dbus debug gnutls gui kerberos pam selinux static-libs systemd test usb xinetd zeroconf"
 
 RESTRICT="!test? ( test )"
 
@@ -47,14 +46,14 @@ COMMON_DEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
+	gui? ( x11-misc/xdg-utils )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )
-	!openssl? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] )
-	openssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
+	gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] )
+	!gnutls? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
-	X? ( x11-misc/xdg-utils )
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[dbus,${MULTILIB_USEDEP}] )
 "
@@ -69,6 +68,7 @@ RDEPEND="
 	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
+DOCS=( {CHANGES,CREDITS,README}.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.1-nostrip.patch"
@@ -158,32 +158,24 @@ multilib_src_configure() {
 		--with-system-groups="root lpadmin"
 		--with-xinetd="${EPREFIX}"/etc/xinetd.d
 		$(multilib_native_use_enable acl)
+		$(multilib_native_use_enable pam)
+		$(multilib_native_use_enable usb libusb)
+		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
 		$(use_enable dbus)
 		$(use_enable debug)
 		$(use_enable debug debug-guards)
 		$(use_enable debug debug-printfs)
 		$(use_enable kerberos gssapi)
-		$(multilib_native_use_enable pam)
 		$(use_enable static-libs static)
-		--with-tls=$(usex openssl openssl gnutls)
 		$(use_with systemd ondemand systemd)
-		$(multilib_native_use_enable usb libusb)
 		$(use_with zeroconf dnssd avahi)
-		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
+		--with-tls=$(usex gnutls gnutls openssl)
 	)
 
 	# Handle empty LINGUAS properly, bug #771162
-	if [[ -n "${LINGUAS+x}" ]] ; then
-		myeconfargs+=(
-			--with-languages="${LINGUAS}"
-		)
-	fi
+	[[ -n "${LINGUAS+x}" ]] && myeconfargs+=( --with-languages="${LINGUAS}" )
 
-	if tc-is-static-only; then
-		myeconfargs+=(
-			--disable-shared
-		)
-	fi
+	tc-is-static-only && myeconfargs+=( --disable-shared )
 
 	# Install in /usr/libexec always, instead of using /usr/lib/cups, as that
 	# makes more sense when facing multilib support.
@@ -237,7 +229,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc {CHANGES,CREDITS,README}.md
+	einstalldocs
 
 	# Move the default config file to docs
 	dodoc "${ED}"/etc/cups/cupsd.conf.default
@@ -266,8 +258,9 @@ multilib_src_install_all() {
 		sed -i -e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
 			"${ED}"/etc/xinetd.d/cups-lpd || die
 		# It is safer to disable this by default, bug #137130
-		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
-			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
+		if ! grep -q -w "disable" "${ED}"/etc/xinetd.d/cups-lpd; then
+			sed -i "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die
+		fi
 		# Write permission for file owner (root), bug #296221
 		fperms u+w /etc/xinetd.d/cups-lpd
 	else
@@ -278,7 +271,7 @@ multilib_src_install_all() {
 
 	keepdir /etc/cups/{interfaces,ppd,ssl}
 
-	if ! use X ; then
+	if ! use gui; then
 		rm -r "${ED}"/usr/share/applications || die
 	fi
 
@@ -289,32 +282,28 @@ multilib_src_install_all() {
 	rm -r "${ED}"/usr/share/cups/banners || die
 
 	# The following are created by the init script
-	rm -r "${ED}"/var/cache || die
-	rm -r "${ED}"/run || die
+	rm -r "${ED}"/{run,var/cache} || die
 
-	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} /var/log/cups /var/spool/cups/tmp
+	keepdir /usr/{libexec/cups/driver,share/cups/{model,profiles}} /var/{log/cups,spool/cups/tmp}
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	local v
 
-	for v in ${REPLACING_VERSIONS}; do
-		if ! ver_test ${v} -ge 2.2.2-r2 ; then
-			ewarn "The cupsd init script switched to using pidfiles. Shutting down"
-			ewarn "cupsd will fail the next time. To fix this, please run once as root"
-			ewarn "   killall cupsd ; /etc/init.d/cupsd zap ; /etc/init.d/cupsd start"
-			break
-		fi
-	done
+	if ver_replacing -lt 2.2.2-r2 ; then
+		ewarn "The cupsd init script switched to using pidfiles. Shutting down"
+		ewarn "cupsd will fail the next time. To fix this, please run once as root"
+		ewarn "   killall cupsd ; /etc/init.d/cupsd zap ; /etc/init.d/cupsd start"
+	fi
 
-	for v in ${REPLACING_VERSIONS}; do
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "For information about installing a printer and general cups setup"
 		elog "take a look at: https://wiki.gentoo.org/wiki/Printing"
-		break
-	done
+	fi
 
-	optfeature_header "CUPS may need installing the following for certain features to work:"
-	use zeroconf && optfeature "local hostname resolution using a hostname.local naming scheme" sys-auth/nss-mdns
+	use zeroconf && {
+		optfeature_header "CUPS may need installing the following for certain features to work:"
+		optfeature "local hostname resolution using a hostname.local naming scheme" sys-auth/nss-mdns
+	}
 }
