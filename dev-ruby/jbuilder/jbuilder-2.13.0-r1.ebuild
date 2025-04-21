@@ -21,7 +21,7 @@ IUSE="test"
 
 ruby_add_rdepend "
 	|| ( dev-ruby/activesupport:7.2 dev-ruby/activesupport:7.1 dev-ruby/activesupport:7.0 )
-	|| ( dev-ruby/actionview:7.2 dev-ruby/actionview:7.1 dev-ruby/actionview:7.0)
+	|| ( dev-ruby/actionview:7.2 dev-ruby/actionview:7.1 dev-ruby/actionview:7.0 )
 "
 
 ruby_add_bdepend "test? (
