@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic libtool python-single-r1
 
-DESCRIPTION="A command-line tool and library to read and convert trace files"
+DESCRIPTION="Command-line tool and library to read and convert trace files"
 HOMEPAGE="https://babeltrace.org/"
 SRC_URI="https://www.efficios.com/files/${PN}/${PN}$(ver_cut 1)-${PV}.tar.bz2"
 S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
