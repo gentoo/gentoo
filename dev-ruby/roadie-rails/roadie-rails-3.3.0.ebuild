@@ -21,11 +21,11 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 
 ruby_add_rdepend "dev-ruby/roadie:5
-	|| ( dev-ruby/railties:8.0 dev-ruby/railties:7.2 dev-ruby/railties:7.1 dev-ruby/railties:7.0 dev-ruby/railties:6.1 )"
+	|| ( dev-ruby/railties:8.0 dev-ruby/railties:7.2 dev-ruby/railties:7.1 dev-ruby/railties:7.0 )"
 ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
-		|| ( dev-ruby/rails:8.0 dev-ruby/rails:7.2 dev-ruby/rails:7.1 dev-ruby/rails:7.0 dev-ruby/rails:6.1 )
+		|| ( dev-ruby/rails:8.0 dev-ruby/rails:7.2 dev-ruby/rails:7.1 dev-ruby/rails:7.0 )
 		dev-ruby/rspec-rails
 		dev-ruby/rspec-collection_matchers
 		dev-ruby/sass-rails )"
