@@ -19,7 +19,7 @@ declare -A GIT_CRATES=(
 
 # https://crates.io/crates/llvm-sys#llvm-compatibility
 LLVM_COMPAT=( {20..21} )
-RUST_REQ_USE="llvm_targets_BPF(+)"
+RUST_REQ_USE="llvm_targets_BPF(+),rust-src"
 
 inherit cargo llvm-r2
 
