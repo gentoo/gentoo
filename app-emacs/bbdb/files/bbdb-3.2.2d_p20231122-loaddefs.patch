@@ -1,0 +1,12 @@
+--- bbdb/lisp/Makefile.am
++++ bbdb/lisp/Makefile.am
+@@ -87,7 +87,8 @@
+ 	  echo "*** Delete these files; do not load them from your init file ***") && \
+ 	  false ; \
+ 	fi
+-	@echo "(provide 'bbdb-loaddefs)" > $@;
++	@echo ";;; $@ -*- lexical-binding: t -*-" > $@
++	@echo "(provide 'bbdb-loaddefs)" >> $@;
+ 	@echo "(if (and load-file-name (file-name-directory load-file-name))" >> $@;
+ 	@echo "    (add-to-list 'load-path (file-name-directory load-file-name)))" >> $@;
+ 	@echo "" >> $@;
