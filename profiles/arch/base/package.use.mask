@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-20)
+# requires SYCL/DCP++ from ::science
+media-gfx/blender oneapi
+
 # Sam James <sam@gentoo.org> (2025-03-11)
 # The COBOL frontend only allows building on a small number of platforms
 # for now until more testing and integration is done.
@@ -85,7 +89,7 @@ sys-apps/hwloc rocm l0
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
 # only keyworded for amd64 currently
-media-gfx/blender gnome oneapi renderdoc vulkan
+media-gfx/blender gnome renderdoc vulkan
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
 # dev-qt/qtlanguageserver:6 currently has very few keywords
