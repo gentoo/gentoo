@@ -13,7 +13,7 @@ MY_P=${P/-/-v}
 DESCRIPTION="Python bindings for dev-libs/icu"
 HOMEPAGE="
 	https://gitlab.pyicu.org/main/pyicu/
-	https://pypi.org/project/PyICU/
+	https://pypi.org/project/pyicu/
 "
 SRC_URI="
 	https://gitlab.pyicu.org/main/pyicu/-/archive/v${PV}/${MY_P}.tar.bz2
