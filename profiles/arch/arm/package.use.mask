@@ -5,6 +5,8 @@
 # ocamlopt is not available on 32 bits arch
 >=dev-lang/ocaml-5 ocamlopt
 >=dev-ml/camlp4-5.2_p1 ocamlopt
+>=dev-ml/findlib-1.9.8-r1 ocamlopt
+dev-ml/labltk ocamlopt
 
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-04-09)
 # dev-db/tinycdb is not keyworded here
