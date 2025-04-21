@@ -38,7 +38,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-6.1-libdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.1-libdir.patch
+	"${FILESDIR}"/${PN}-10.0.1-gcc15.patch
+)
 
 src_prepare() {
 	default
