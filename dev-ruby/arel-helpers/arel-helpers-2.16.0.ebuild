@@ -25,7 +25,6 @@ ruby_add_rdepend "
 		dev-ruby/activerecord:7.2
 		dev-ruby/activerecord:7.1
 		dev-ruby/activerecord:7.0
-		dev-ruby/activerecord:6.1
 	)
 "
 
