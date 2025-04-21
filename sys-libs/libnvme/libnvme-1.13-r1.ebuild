@@ -32,7 +32,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	dev-lang/swig
+	python? ( dev-lang/swig )
 "
 
 src_configure() {
