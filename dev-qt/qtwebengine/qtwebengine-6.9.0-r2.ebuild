@@ -109,6 +109,11 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
+	"${FILESDIR}"/${PN}-6.8.3-pipewire1.4.patch
+	"${FILESDIR}"/${PN}-6.8.3-gperf3.2.patch
+	"${FILESDIR}"/${PN}-6.9.0-x11-pixmap-leak.patch
+	"${FILESDIR}"/${PN}-6.9.0-QTBUG-133570.patch
 )
 
 python_check_deps() {

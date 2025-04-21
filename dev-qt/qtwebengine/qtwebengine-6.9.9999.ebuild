@@ -28,7 +28,7 @@ REQUIRED_USE="
 "
 
 # dlopen: krb5, libva, pciutils
-# gcc: for -latomic
+# gcc or libatomic-stub: for -latomic
 RDEPEND="
 	app-arch/snappy:=
 	dev-libs/expat
@@ -53,7 +53,10 @@ RDEPEND="
 	media-libs/tiff:=
 	sys-apps/dbus
 	sys-apps/pciutils
-	sys-devel/gcc:*
+	|| (
+		sys-devel/gcc:*
+		llvm-runtimes/libatomic-stub
+	)
 	sys-libs/zlib:=[minizip]
 	virtual/libudev:=
 	x11-libs/libX11
