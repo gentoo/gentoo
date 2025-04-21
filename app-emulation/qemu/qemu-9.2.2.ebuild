@@ -288,8 +288,9 @@ BDEPEND="
 	)
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
-		dev-libs/glib[utils]
 		app-alternatives/bc
+		dev-libs/glib[utils]
+		dev-python/pycotap[${PYTHON_USEDEP}]
 	)
 "
 CDEPEND="
