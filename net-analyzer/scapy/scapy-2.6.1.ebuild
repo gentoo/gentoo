@@ -21,6 +21,7 @@ BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
+		net-libs/libpcap
 	)
 "
 
