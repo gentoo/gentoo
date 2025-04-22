@@ -1717,7 +1717,6 @@ distutils-r1_python_install() {
 		# python likes to compile any module it sees, which triggers sandbox
 		# failures if some packages haven't compiled their modules yet.
 		addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
-		addpredict "${EPREFIX}/usr/lib/pypy3.10"
 		addpredict "${EPREFIX}/usr/local" # bug 498232
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
