@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-04-22)
+# This package was only really necessary for packages without
+# Python 3.12+ support, and the eclass no longer uses it.
+# Removal on 2025-05-22.  Bug #954213.
+dev-python/unittest-or-fail
+
 # Hans de Graaff <graaff@gentoo.org> (2025-04-21)
 # ruby32-only slot. Use the newer slot instead.
 # Masked for removal on 2025-05-21.
