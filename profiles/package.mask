@@ -257,12 +257,6 @@ kde-misc/kdirstat
 dev-python/pysvg-py3
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# Unmaintained.  Last release in 2015, missing tests in sdist and not
-# tagged on GitHub.  Not marked for py3.13.  No reverse dependencies.
-# Removal on 2025-04-16.  Bug #951493.
-dev-python/simplebayes
-
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
 >=xfce-base/garcon-4.21
