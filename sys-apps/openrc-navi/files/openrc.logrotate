@@ -1,4 +1,0 @@
-/var/log/rc.log {
-	missingok
-	notifempty
-}
