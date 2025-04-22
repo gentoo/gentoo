@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.lxde.org/en/Status_of_LXDE_components"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 
 RDEPEND="
 	>=lxde-base/menu-cache-1.1.0-r1
