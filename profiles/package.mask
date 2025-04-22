@@ -212,17 +212,6 @@ games-emulation/ryujinx
 # Removal on 2025-04-22. Bug #951936
 dev-build/qconf
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-23)
-# dev-python/pip-run is a NIH package with significant number of NIH
-# deps.  New versions require "coherent" build system that's designed
-# to be completely incompatible with downstream packaging.
-# No revdeps left.
-#
-# Includes a number of NIH dependencies, some of them abandoned.
-#
-# Removal on 2025-04-22.  Bug #951933.
-dev-python/autocommand
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
