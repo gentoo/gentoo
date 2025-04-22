@@ -7,7 +7,6 @@ Copy CUDA_HOST_COMPILER logic from cuda to optix
 
 pass CUDA_NVCC_FLAGS into the custom nvcc call for optix, as for
 WITH_CYCLES_CUDA_BINARIES
-use CYCLES_CUDA_BINARIES_ARCH for optix instead of sm_50
 
 Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
 Signed-off-by: Paul Zander <negril.nx@gmail.com>
@@ -28,12 +27,10 @@ index 6144de7be33..a59d6dd2b7e 100644
      if(WITH_NANOVDB)
        set(cuda_flags ${cuda_flags}
          -D WITH_NANOVDB)
-@@ -969,7 +974,8 @@ if(WITH_CYCLES_DEVICE_OPTIX AND WITH_CYCLES_CUDA_BINARIES)
-       COMMAND
+@@ -970,6 +975,7 @@ if(WITH_CYCLES_DEVICE_OPTIX AND WITH_CYCLES_CUDA_BINARIES)
          ${CUDA_NVCC_EXECUTABLE}
          --ptx
--        -arch=sm_50
-+        -arch=${CYCLES_CUDA_BINARIES_ARCH}
+         -arch=sm_50
 +        ${CUDA_NVCC_FLAGS}
          ${cuda_flags}
          ${input}
