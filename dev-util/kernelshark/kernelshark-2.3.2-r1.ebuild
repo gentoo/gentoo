@@ -29,6 +29,7 @@ DEPEND="
 	dev-libs/json-c:=
 	dev-qt/qtbase:6=[network,opengl,widgets]
 	dev-qt/qtscxml:6=
+	dev-util/trace-cmd:=
 	>=media-libs/freeglut-3.0.0:=
 	x11-libs/libXmu:=
 	x11-libs/libXi:=

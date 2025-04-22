@@ -31,6 +31,7 @@ DEPEND="
 	dev-qt/qtscxml:6=
 	>=dev-libs/libtracefs-1.3
 	>=dev-libs/libtraceevent-1.5
+	dev-util/trace-cmd:=
 	>=media-libs/freeglut-3.0.0:=
 	sys-devel/gcc:=[openmp]
 	x11-libs/libXmu:=
