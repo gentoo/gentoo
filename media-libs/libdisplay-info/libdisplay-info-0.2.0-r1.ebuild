@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/emersion/libdisplay-info"
 SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/${PV}/downloads/${P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/2"
+SLOT="0/$(ver_cut 2)"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 BDEPEND="
