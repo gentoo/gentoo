@@ -282,13 +282,6 @@ dev-python/simplebayes
 # Removal on 2025-04-16.  Bug #951492.
 dev-python/ssl-fetch
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# The package was broken from day one, assigned to python@ team
-# and the actual maintainer has ignored the bug report from day one.
-# No reverse dependencies.
-# Removal on 2025-04-16.  Bug #942776.
-dev-python/django-bootstrap5
-
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
