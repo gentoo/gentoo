@@ -28,8 +28,8 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="${PYVER}/pypy310-pp73-384"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+ensurepip gdbm +jit ncurses sqlite +symlink +test-install tk"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="+ensurepip gdbm +jit ncurses sqlite +test-install tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py${PYVER}
 RESTRICT="test"
@@ -39,7 +39,6 @@ RDEPEND="
 		>=dev-python/pypy3_10-exe-${PYPY_PV}:${PYPY_PV}[bzip2(+),ncurses?]
 		>=dev-python/pypy3_10-exe-bin-${PYPY_PV}:${PYPY_PV}
 	)
-	dev-lang/python-exec[python_targets_pypy3(-)]
 	dev-libs/openssl:0=
 	dev-python/gentoo-common
 	ensurepip? ( dev-python/ensurepip-wheels )
@@ -50,9 +49,6 @@ RDEPEND="
 		dev-tcltk/tix:0=
 	)
 	!dev-python/pypy3_10
-	symlink? (
-		!<dev-python/pypy3-7.3.17-r100
-	)
 "
 DEPEND="
 	${RDEPEND}
@@ -225,15 +221,4 @@ src_install() {
 
 	# remove to avoid collisions
 	rm "${PYTHON}" || die
-
-	if use symlink; then
-		dosym pypy${PYVER} /usr/bin/pypy3
-
-		# install symlinks for python-exec
-		local EPYTHON=pypy3
-		local scriptdir=${D}$(python_get_scriptdir)
-		mkdir -p "${scriptdir}" || die
-		ln -s "../../../bin/pypy3" "${scriptdir}/python3" || die
-		ln -s python3 "${scriptdir}/python" || die
-	fi
 }

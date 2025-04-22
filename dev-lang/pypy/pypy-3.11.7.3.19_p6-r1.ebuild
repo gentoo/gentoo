@@ -50,7 +50,7 @@ RDEPEND="
 		dev-tcltk/tix:0=
 	)
 	symlink? (
-		!dev-lang/pypy:3.10[symlink]
+		!dev-lang/pypy:3.10[symlink(-)]
 		!<dev-python/pypy3-7.3.17-r100
 	)
 "
