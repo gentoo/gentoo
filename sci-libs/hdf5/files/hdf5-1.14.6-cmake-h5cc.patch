@@ -1,0 +1,64 @@
+From 02b701653deb5eeaa6fe4462ba5c9bdd30dc778d Mon Sep 17 00:00:00 2001
+From: Atri Bhattacharya <badshah400@gmail.org>
+Date: Tue, 11 Mar 2025 22:44:29 +0530
+Subject: [PATCH 1/2] h5cc: Fix location of settings and pkgconfig files
+
+In h5cc and other compiler wrappers, drop hardcoded 'lib' as the dir for
+libhdf5.settings and pkgconfig scripts and use cmake computed values for
+HDF5_INSTALL_LIB_DIR. This fixes issues on systems where the libdir is
+'lib64' for instance, as on 64-bit Linux OSes, and 'lib' in the
+wrappers point to incorrect locations of the settings and pkgconfig
+files.
+---
+ config/cmake/libh5cc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/cmake/libh5cc.in b/config/cmake/libh5cc.in
+index 2608f49423a..3ac9588740b 100644
+--- a/config/cmake/libh5cc.in
++++ b/config/cmake/libh5cc.in
+@@ -32,7 +32,7 @@ pc_args=""
+ # libhdf5.settings file residing in the lib directory.
+ showconfigure()
+ {
+-  cat $dir/lib/libhdf5.settings
++  cat $dir/@HDF5_INSTALL_LIB_DIR@/libhdf5.settings
+   status=$?
+ }
+ 
+@@ -57,7 +57,7 @@ usage() {
+   exit $EXIT_FAILURE
+ }
+ 
+-export PKG_CONFIG_PATH=$dir/lib/pkgconfig
++export PKG_CONFIG_PATH=$dir/@HDF5_INSTALL_LIB_DIR@/pkgconfig
+ 
+ for arg in $@ ; do
+   case "$arg" in
+
+From b777d6f4d8df67726c7611a945f3e204513efd16 Mon Sep 17 00:00:00 2001
+From: Atri Bhattacharya <badshah400@gmail.org>
+Date: Tue, 11 Mar 2025 22:52:17 +0530
+Subject: [PATCH 2/2] h5cc: Drop -show from output when calling command.
+
+When calling `h5cc -show FOO`, the output should not repeat the '-show'
+argument itself. This commit fixes the '-show' command invoked from a
+cmake built h5cc to be consistent with an (previously) autotools built
+one.
+---
+ config/cmake/libh5cc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/cmake/libh5cc.in b/config/cmake/libh5cc.in
+index 3ac9588740b..2af2abf0aff 100644
+--- a/config/cmake/libh5cc.in
++++ b/config/cmake/libh5cc.in
+@@ -66,7 +66,7 @@ for arg in $@ ; do
+       exit $status
+       ;;
+     -show)
+-      echo @_PKG_CONFIG_COMPILER@ $@ `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
++      echo @_PKG_CONFIG_COMPILER@ ${@:2} `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
+       exit $status
+       ;;
+     -help)
