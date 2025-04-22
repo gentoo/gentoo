@@ -20,7 +20,6 @@ move net-analyzer/RustScan net-analyzer/rustscan
 move dev-python/APScheduler dev-python/apscheduler
 move dev-python/Arpeggio dev-python/arpeggio
 move dev-python/Babel dev-python/babel
-move dev-python/BitVector dev-python/bitvector
 move dev-python/ConfigArgParse dev-python/configargparse
 move dev-python/CppHeaderParser dev-python/cppheaderparser
 move dev-python/Events dev-python/events

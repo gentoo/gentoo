@@ -295,12 +295,6 @@ dev-python/django-bootstrap5
 # Removal on 2025-04-16.  Bug #951491.
 dev-python/spdx-tools
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# Last release in 2021, aimed at Python 3.9.  Test suite is broken with
-# Python 3.13.  No reverse dependencies.
-# Removal on 2025-04-16.  Bug #951490.
-dev-python/bitvector
-
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
