@@ -289,12 +289,6 @@ dev-python/ssl-fetch
 # Removal on 2025-04-16.  Bug #942776.
 dev-python/django-bootstrap5
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# Fragile package with no reverse dependencies.  Currently broken with
-# all dev-python/beartype versions in Gentoo.
-# Removal on 2025-04-16.  Bug #951491.
-dev-python/spdx-tools
-
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
