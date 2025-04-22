@@ -1,7 +1,0 @@
-#!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-pidfile="/var/run/pigpio.pid"
-command="/usr/bin/pigpiod"
-command_args="${PIGPIOD_OPTS}"

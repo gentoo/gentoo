@@ -225,13 +225,6 @@ dev-python/autocommand
 dev-python/jaraco-env
 dev-python/pip-run
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-22)
-# EAPI=7, uses legacy distutils non-PEP517 build, no reverse
-# dependencies, missing python compat bumps. Unmaintained in
-# Gentoo for more than 3 years.
-# Removal on 2025-04-21.  Bugs #951854, #909910, #929427.
-dev-libs/pigpio
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
