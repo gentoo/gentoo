@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="
 	cheetah cherrypy ldap libcloud libvirt genshi gnupg keyring mako
-	mongodb neutron	nova openssl portage profile redis selinux test raet
+	mongodb neutron nova openssl portage profile redis selinux test raet
 	+zeromq vim-syntax
 "
 
@@ -79,12 +79,8 @@ RDEPEND="
 	redis? ( dev-python/redis[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
 	amd64? (
-		nova? (
-			$(python_gen_cond_dep '>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]' python3_1{0..1})
-		)
-		neutron? (
-			$(python_gen_cond_dep '>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]' python3_1{0..1})
-		)
+		nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
+		neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
 	)
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )

@@ -24,7 +24,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="
 	cheetah cherrypy ldap libcloud libvirt genshi gnupg keyring mako
-	mongodb neutron	nova portage profile redis selinux test raet
+	mongodb neutron nova portage profile redis selinux test raet
 	+zeromq vim-syntax
 "
 
@@ -78,12 +78,8 @@ RDEPEND="
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	redis? ( dev-python/redis[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
-	nova? (
-		$(python_gen_cond_dep '>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]' python3.1{0..1})
-	)
-	neutron? (
-		$(python_gen_cond_dep '>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]' python3.1{0..1})
-	)
+	nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
+	neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )
@@ -132,8 +128,6 @@ DOCS=( README.rst AUTHORS )
 REQUIRED_USE="
 	|| ( raet zeromq )
 	test? ( cheetah genshi )
-	nova? ( || ( python_targets_python3_10 python_targets_python3_11 ) )
-	neutron? ( || ( python_targets_python3_10 python_targets_python3_11 ) )
 "
 RESTRICT="
 	!test? ( test )
