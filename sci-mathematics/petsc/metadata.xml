@@ -18,7 +18,6 @@
 		<flag name="metis">Add support for metis (<pkg>sci-libs/parmetis</pkg>)</flag>
 		<flag name="mumps">Add support for mumps (<pkg>sci-libs/mumps</pkg>)</flag>
 		<flag name="scotch">Add support for scotch (<pkg>sci-libs/scotch</pkg>)</flag>
-		<flag name="sparse">Use suitesparse (<pkg>sci-libs/suitesparse</pkg>) including cholmod (<pkg>sci-libs/cholmod</pkg>) for sparse factorization</flag>
 		<flag name="superlu">Use superlu (<pkg>sci-libs/superlu</pkg>) for preconditioning</flag>
 	</use>
 	<upstream>
