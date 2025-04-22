@@ -22,14 +22,6 @@
 # from the removed cgi module rather than rely on this.
 dev-python/legacy-cgi
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-09)
-# Unmaintained upstream. Does not build with llvm-16 and up, nor with
-# python-3.12 and up. Please port to Qt6.
-# Bug: https://bugs.gentoo.org/920544
-dev-python/pyside2
-dev-python/pyside2-tools
-dev-python/shiboken2
-
 # Michał Górny <mgorny@gentoo.org> (2023-12-10)
 # Superseded by dev-python/psycopg:0 (version 3).
 dev-python/psycopg:2
