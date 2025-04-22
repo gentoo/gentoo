@@ -323,11 +323,6 @@ sys-cluster/teleport
 # should now Just Work. Removal on 2025-04-10.
 dev-lang/gnat-gpl
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-03-08)
-# EAPI=7. Broken CLI for packages.g.o.
-# Removal on 2025-04-07.
-app-portage/pgo
-
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
