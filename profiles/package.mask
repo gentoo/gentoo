@@ -276,12 +276,6 @@ dev-python/simplebayes
 >=xfce-base/xfce4-settings-4.21
 >=xfce-base/xfconf-4.21
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# A "forever beta" wrapper over dev-python/requests, with no tests,
-# and dead for 9 years already.  Finally, no reverse dependencies left.
-# Removal on 2025-04-16.  Bug #951492.
-dev-python/ssl-fetch
-
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
