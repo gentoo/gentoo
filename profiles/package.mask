@@ -207,11 +207,6 @@ net-im/yowsup
 # Removal on 2025-04-25.
 games-emulation/ryujinx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-23)
-# No revdeps after net-im/psi treecleaning. Depends on Qt5.
-# Removal on 2025-04-22. Bug #951936
-dev-build/qconf
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21

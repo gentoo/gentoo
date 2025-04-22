@@ -43,7 +43,6 @@ move dev-util/gn dev-build/gn
 move dev-util/gyp dev-build/gyp
 move dev-util/netsurf-buildsystem dev-build/netsurf-buildsystem
 move dev-util/scons dev-build/scons
-move sys-devel/qconf dev-build/qconf
 move dev-util/b2 dev-build/b2
 move dev-util/kbuild dev-build/kbuild
 move dev-util/ddd dev-debug/ddd
