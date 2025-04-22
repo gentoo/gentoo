@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A lossless, high performance data compression library"
+DESCRIPTION="Lossless, high performance data compression library"
 HOMEPAGE="https://github.com/richgel999/miniz"
 SRC_URI="https://github.com/richgel999/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -14,3 +14,5 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 DOCS=( ChangeLog.md readme.md )
+
+PATCHES=( "${FILESDIR}/${P}-cmake4.patch" ) # bug 951684
