@@ -39,11 +39,6 @@ DEPEND="
 BDEPEND="
 	python? (
 		${DISTUTILS_DEPS}
-		test? (
-			$(python_gen_cond_dep '
-				dev-python/unittest-or-fail[${PYTHON_USEDEP}]
-			' 3.{10..11})
-		)
 	)
 "
 
