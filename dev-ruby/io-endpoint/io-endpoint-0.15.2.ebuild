@@ -30,6 +30,9 @@ all_ruby_prepare() {
 
 	sed -e '/covered/I s:^:#:' -i config/sus.rb || die
 
+	sed -e "s:/tmp/test.ipc:${TMP}/test.ipc:" \
+		-i test/io/endpoint/unix_endpoint.rb || die
+
 	# Avoid tests that require unpackaged "bake" and require running
 	# with Bundler.
 	rm -f test/traces/backend/capture.rb || die
