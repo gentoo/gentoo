@@ -3,7 +3,11 @@
 
 EAPI=8
 
-inherit desktop pax-utils xdg optfeature
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
+	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
+	sv sw ta te th tr uk ur vi zh-CN zh-TW"
+
+inherit chromium-2 desktop pax-utils xdg optfeature
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
@@ -73,16 +77,25 @@ RDEPEND="
 
 QA_PREBUILT="*"
 
+src_unpack() {
+	default
+	mv "${S}"/VSCode-linux-* "${S}/vscode" || die
+}
+
+src_configure() {
+	default
+	chromium_suid_sandbox_check_kernel_config
+}
+
+src_prepare() {
+	default
+	pushd "vscode/locales" > /dev/null || die
+	chromium_remove_language_paks
+	popd > /dev/null || die
+}
+
 src_install() {
-	if use amd64; then
-		cd "${WORKDIR}/VSCode-linux-x64" || die
-	elif use arm; then
-		cd "${WORKDIR}/VSCode-linux-armhf" || die
-	elif use arm64; then
-		cd "${WORKDIR}/VSCode-linux-arm64" || die
-	else
-		die "Visual Studio Code only supports amd64, arm and arm64"
-	fi
+	cd vscode || die
 
 	# Cleanup
 	rm -r ./resources/app/ThirdPartyNotices.txt || die
