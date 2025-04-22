@@ -92,6 +92,11 @@ dev-python/python-poppler-qt5
 sci-visualization/zhu3d
 
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
+# Metapackage used for pypy3 target in the past.
+# Removal on 2025-05-22.
+dev-python/pypy3
+
+# Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # This package was only really necessary for packages without
 # Python 3.12+ support, and the eclass no longer uses it.
 # Removal on 2025-05-22.  Bug #954213.
