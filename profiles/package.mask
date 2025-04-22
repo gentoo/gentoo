@@ -244,13 +244,6 @@ mail-filter/afew
 # Removal on 2025-04-21.  Bug #896608.
 app-office/gtg
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-20)
-# Upstream have made clear that they are not going to port to Qt6 and
-# recommend sys-apps/qdirstat (from original k4dirstat author) instead.
-# Alternatively, there is kde-apps/filelight available.
-# Bug #951138. Removal on 2025-04-19.
-kde-misc/kdirstat
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
