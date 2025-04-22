@@ -36,15 +36,10 @@ IUSE="acl +cxx doc emacs git java ncurses nls openmp static-libs xattr"
 # Note: The version of libxml2 corresponds to the version bundled via gnulib.
 # If the build detects too old of a system version, it will end up falling back
 # to the bundled copy (bug #596918).
-#
-# Note: expat lacks a subslot because it is dynamically loaded at runtime.  We
-# would depend on older subslots if they were available (based on the ABIs that
-# are explicitly handled), but expat doesn't currently use subslots.
 DEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.3:=
-	dev-libs/expat
 	acl? ( virtual/acl )
 	ncurses? ( sys-libs/ncurses:= )
 	java? ( >=virtual/jdk-1.8:* )
