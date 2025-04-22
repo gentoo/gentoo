@@ -74,7 +74,7 @@ DEPEND="
 		sys-libs/zlib
 	)
 	X? (
-		dev-qt/qtwidgets:5=
+		dev-qt/qtbase:6[widgets]
 	)
 	"
 RDEPEND="${DEPEND}
