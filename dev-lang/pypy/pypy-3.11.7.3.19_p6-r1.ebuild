@@ -28,7 +28,7 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="${PYVER}/pypy311-pp73-416"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+ensurepip gdbm +jit ncurses sqlite symlink +test-install tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py${PYVER}
@@ -39,7 +39,7 @@ RDEPEND="
 		dev-lang/pypy3-exe:${PV%_p*}[bzip2(+),ncurses?]
 		dev-lang/pypy3-exe-bin:${PV%_p*}
 	)
-	dev-lang/python-exec[python_targets_pypy3(-)]
+	dev-lang/python-exec[python_targets_pypy${PYVER/./_}(-)]
 	dev-libs/openssl:0=
 	dev-python/gentoo-common
 	ensurepip? ( dev-python/ensurepip-wheels )
