@@ -340,13 +340,6 @@ sys-apps/openrc-navi
 # Mask out of caution for now.
 =dev-util/pkgconf-2.4.1
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-06)
-# This package is clearly unmaintained.  It has lost all CPython
-# versions, and retained PyPy3 likely only because it wasn't versioned.
-# Also, since it's eclass usage used to be broken, it went under the
-# radar.  Removal on 2025-04-05.  Bug #950702.
-dev-vcs/notify-webhook
-
 # John Helmert III <ajak@gentoo.org> (2025-03-02)
 # Doesn't seem to cleanly load, see:
 # https://github.com/lkrg-org/lkrg/issues/364
