@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-22)
+# Dead upstream, depends on downstream patching even for Qt5 support.
+# Almost no one else keeps packaging this. Bug #947622
+# Removal on 2025-05-22.
+sci-visualization/zhu3d
+
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # This package was only really necessary for packages without
 # Python 3.12+ support, and the eclass no longer uses it.
