@@ -13,6 +13,10 @@ depend() {
 	after upsdrv
 }
 
+start_pre() {
+	checkpath -q -d -m 0700 -o nut:nut /run/nut
+}
+
 start() {
 	ebegin "Starting upsd"
 	# clean up first

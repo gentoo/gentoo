@@ -4,12 +4,16 @@
 
 extra_started_commands="reload"
 
-pidfile=/var/run/upslog.pid
+pidfile=/run/nut/upslog.pid
 bin=/usr/bin/upslog
 
 depend() {
 	use upsdrv
 	after upsdrv
+}
+
+start_pre() {
+	checkpath -q -d -m 0700 -o nut:nut /run/nut
 }
 
 start() {
