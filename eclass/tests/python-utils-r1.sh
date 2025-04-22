@@ -62,7 +62,7 @@ test_fix_shebang() {
 
 tmpfile=$(mktemp)
 
-inherit python-utils-r1
+inherit multilib python-utils-r1
 
 for minor in {11..13} 13t; do
 	ebegin "Testing python3.${minor}"
