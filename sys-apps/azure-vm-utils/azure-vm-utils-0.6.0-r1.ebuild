@@ -14,11 +14,19 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="dracut test"
 RESTRICT="!test? ( test )"
 
+CDEPEND="
+	dev-libs/json-c:=
+"
 DEPEND="
+	${CDEPEND}
 	test? ( dev-util/cmocka )
 "
 RDEPEND="
+	${CDEPEND}
 	dracut? ( sys-kernel/dracut )
+"
+BDEPEND="
+	virtual/pkgconfig
 "
 
 src_configure() {

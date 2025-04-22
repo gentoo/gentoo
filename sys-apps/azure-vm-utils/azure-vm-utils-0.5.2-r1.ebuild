@@ -14,8 +14,18 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+CDEPEND="
+	dev-libs/json-c:=
+"
 DEPEND="
+	${CDEPEND}
 	test? ( dev-util/cmocka )
+"
+RDEPEND="
+	${CDEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
 "
 
 src_configure() {
