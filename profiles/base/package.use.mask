@@ -87,7 +87,6 @@ dev-build/meson test-full
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
 # Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
 kde-frameworks/kfilemetadata:5 mobi
-media-gfx/okularpart:5 mobi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
 # Prepare cleanup of kde-apps/kaccounts-integration:6[qt5] and
@@ -107,10 +106,6 @@ app-emulation/pcem experimental
 # openjfx for OpenJDK 25 is not yet available.
 dev-java/openjdk:25 javafx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-28)
-# Prepare virtual/bitcoin-leveldb last-rites, bug #945359
-net-p2p/bitcoin-core system-leveldb
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-12-16)
 # sci-libs/atlas requires you to disable frequency scaling to build.
 # This barely works on older Intel CPUs on good days.
@@ -120,16 +115,6 @@ media-libs/opencv atlas
 # John M. Harris, Jr. <johnmh@johnmh.me> (2024-12-12)
 # seccomp is only supported with systemd
 sys-apps/fwupd seccomp
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-24)
-# sci-libs/vtk[qt5] cleanup, bug #944817
-sci-libs/vtk qt5
-~sci-chemistry/avogadro2-1.97.0 vtk
-~sci-libs/avogadrolibs-1.97.0 vtk
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-11-23)
-# dev-python/pyside2 last-rites
-dev-python/qtpy pyside2
 
 # Sam James <sam@gentoo.org> (2024-11-17)
 # The example bindings fail to build.
