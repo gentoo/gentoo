@@ -21,7 +21,7 @@ RDEPEND="
 		>=dev-libs/wayland-1.20
 	)
 	X? (
-		>=media-libs/libdisplay-info-0.1.1
+		>=media-libs/libdisplay-info-0.1.1:=
 		>=x11-libs/libX11-1.6.7
 		>=x11-libs/libXrandr-1.5.0
 		>=x11-libs/libwnck-3.14:3
