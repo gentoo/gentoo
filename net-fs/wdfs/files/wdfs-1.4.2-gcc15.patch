@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/943933
+
+--- a/src/wdfs-main.c
++++ b/src/wdfs-main.c
+@@ -1227,7 +1227,7 @@ static int wdfs_statfs(const char *localpath, struct statvfs *buf)
+ 
+ /* author jens, 04.08.2005 17:41:12, location: goettingen
+  * this method is called, when the filesystems is unmounted. time to clean up! */
+-static void wdfs_destroy()
++static void wdfs_destroy(void* a)
+ {
+ 	if (wdfs.debug == true)
+ 		fprintf(stderr, ">> freeing globaly used memory\n");
+--- a/src/wdfs-main.h
++++ b/src/wdfs-main.h
+@@ -29,10 +29,8 @@
+ 	esac
+ */
+ 
+-typedef enum {
+-	true 	= 1,
+-	false 	= 0
+-} bool_t;
++#include <stdbool.h>
++typedef bool bool_t;
+ 
+ /* used as mode for unify_path() */
+ enum {
+--- a/src/webdav.h
++++ b/src/webdav.h
+@@ -3,7 +3,8 @@
+ 
+ extern ne_session *session;
+ 
+-int setup_webdav_session();
++int setup_webdav_session(
++	const char *uri_string, const char *username, const char *password);
+ 
+ int lockfile(const char *remotepath, const int timeout);
+ int unlockfile(const char *remotepath);
