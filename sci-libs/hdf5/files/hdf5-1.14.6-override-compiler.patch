@@ -1,0 +1,187 @@
+From c60ce3e3e9110740bf1f3f0914943ecb549d7d33 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 22 Apr 2025 20:54:12 +0200
+Subject: [PATCH] h5cc: Allow overriding the compilers written into the file
+
+Add a set of `PKG_CONFIG_C_COMPILER`, `PKG_CONFIG_CXX_COMPILER`
+and `PKG_CONFIG_Fortran_COMPILER` variables that can be used to override
+the compiler string written into `h5cc`, `h5c++`, etc.  This is
+particularly useful when e.g. using ccache during the build,
+as the ccache path otherwise ends up in `h5cc`.
+---
+ CMakeLists.txt                 | 24 ++++++++++++++++++++++++
+ c++/src/CMakeLists.txt         |  6 +-----
+ fortran/src/CMakeLists.txt     |  6 +-----
+ hl/c++/src/CMakeLists.txt      |  6 +-----
+ hl/fortran/src/CMakeLists.txt  |  6 +-----
+ hl/src/CMakeLists.txt          |  6 +-----
+ release_docs/INSTALL_CMake.txt |  4 ++++
+ src/CMakeLists.txt             |  6 +-----
+ 8 files changed, 34 insertions(+), 30 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a95a6e4a48c..d0e2fe8d34c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1057,6 +1057,16 @@ else ()
+   set (HDF5_ENABLE_MAP_API OFF CACHE BOOL "Build the map API" FORCE)
+ endif ()
+ 
++#-----------------------------------------------------------------------------
++# Option to override the compiler for pkg-config & h5cc
++#-----------------------------------------------------------------------------
++if (HDF5_ENABLE_PARALLEL AND MPI_C_FOUND)
++  set (_PKG_CONFIG_C_COMPILER ${MPI_C_COMPILER})
++else ()
++  set (_PKG_CONFIG_C_COMPILER ${CMAKE_C_COMPILER})
++endif ()
++set (PKG_CONFIG_C_COMPILER ${_PKG_CONFIG_C_COMPILER} CACHE STRING "C compiler to use in h5cc")
++
+ #-----------------------------------------------------------------------------
+ # Add the HDF5 Library Target to the build
+ #-----------------------------------------------------------------------------
+@@ -1220,6 +1230,13 @@ if (EXISTS "${HDF5_SOURCE_DIR}/fortran" AND IS_DIRECTORY "${HDF5_SOURCE_DIR}/for
+       endif ()
+     endif ()
+ 
++    if (HDF5_ENABLE_PARALLEL AND MPI_Fortran_FOUND)
++      set (_PKG_CONFIG_Fortran_COMPILER ${MPI_Fortran_COMPILER})
++    else ()
++      set (_PKG_CONFIG_Fortran_COMPILER ${CMAKE_Fortran_COMPILER})
++    endif ()
++    set (PKG_CONFIG_Fortran_COMPILER ${_PKG_CONFIG_Fortran_COMPILER} CACHE STRING "Fortran compiler to use in h5cc")
++
+     add_subdirectory (fortran)
+     if (HDF5_BUILD_HL_LIB)
+       if (EXISTS "${HDF5_SOURCE_DIR}/hl/fortran" AND IS_DIRECTORY "${HDF5_SOURCE_DIR}/hl/fortran")
+@@ -1247,6 +1264,13 @@ if (EXISTS "${HDF5_SOURCE_DIR}/c++" AND IS_DIRECTORY "${HDF5_SOURCE_DIR}/c++")
+ 
+     include (${HDF_RESOURCES_DIR}/HDFCompilerCXXFlags.cmake)
+ 
++    if (HDF5_ENABLE_PARALLEL AND MPI_CXX_FOUND)
++      set (_PKG_CONFIG_CXX_COMPILER ${MPI_CXX_COMPILER})
++    else ()
++      set (_PKG_CONFIG_CXX_COMPILER ${CMAKE_CXX_COMPILER})
++    endif ()
++    set (PKG_CONFIG_CXX_COMPILER ${_PKG_CONFIG_CXX_COMPILER} CACHE STRING "C++ compiler to use in h5cc")
++
+     add_subdirectory (c++)
+     if (HDF5_BUILD_HL_LIB)
+       if (EXISTS "${HDF5_SOURCE_DIR}/hl/c++" AND IS_DIRECTORY "${HDF5_SOURCE_DIR}/hl/c++")
+diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
+index 09546acd451..21325d6ca50 100644
+--- a/c++/src/CMakeLists.txt
++++ b/c++/src/CMakeLists.txt
+@@ -206,11 +206,7 @@ install (
+ )
+ 
+ if (NOT WIN32 AND NOT MINGW)
+-  if (HDF5_ENABLE_PARALLEL AND MPI_CXX_FOUND)
+-    set (_PKG_CONFIG_COMPILER ${MPI_CXX_COMPILER})
+-  else ()
+-    set (_PKG_CONFIG_COMPILER ${CMAKE_CXX_COMPILER})
+-  endif ()
++  set (_PKG_CONFIG_COMPILER ${PKG_CONFIG_CXX_COMPILER})
+   configure_file (
+       ${HDF_RESOURCES_DIR}/libh5cc.in
+       ${HDF5_BINARY_DIR}/CMakeFiles/h5c++
+diff --git a/fortran/src/CMakeLists.txt b/fortran/src/CMakeLists.txt
+index 2b6da612015..92bf227b813 100644
+--- a/fortran/src/CMakeLists.txt
++++ b/fortran/src/CMakeLists.txt
+@@ -614,11 +614,7 @@ install (
+ )
+ 
+ if (NOT WIN32 AND NOT MINGW)
+-  if (HDF5_ENABLE_PARALLEL AND MPI_Fortran_FOUND)
+-    set (_PKG_CONFIG_COMPILER ${MPI_Fortran_COMPILER})
+-  else ()
+-    set (_PKG_CONFIG_COMPILER ${CMAKE_Fortran_COMPILER})
+-  endif ()
++  set (_PKG_CONFIG_COMPILER ${PKG_CONFIG_Fortran_COMPILER})
+   configure_file (
+       ${HDF_RESOURCES_DIR}/libh5cc.in
+       ${HDF5_BINARY_DIR}/CMakeFiles/h5fc
+diff --git a/hl/c++/src/CMakeLists.txt b/hl/c++/src/CMakeLists.txt
+index 3f2bd5af14a..0e6996437be 100644
+--- a/hl/c++/src/CMakeLists.txt
++++ b/hl/c++/src/CMakeLists.txt
+@@ -124,11 +124,7 @@ install (
+ )
+ 
+ if (NOT WIN32 AND NOT MINGW)
+-  if (HDF5_ENABLE_PARALLEL AND MPI_CXX_FOUND)
+-    set (_PKG_CONFIG_COMPILER ${MPI_CXX_COMPILER})
+-  else ()
+-    set (_PKG_CONFIG_COMPILER ${CMAKE_CXX_COMPILER})
+-  endif ()
++  set (_PKG_CONFIG_COMPILER ${PKG_CONFIG_CXX_COMPILER})
+   configure_file (
+       ${HDF_RESOURCES_DIR}/libh5cc.in
+       ${HDF5_BINARY_DIR}/CMakeFiles/h5hlc++
+diff --git a/hl/fortran/src/CMakeLists.txt b/hl/fortran/src/CMakeLists.txt
+index 649a9674d51..94864a6ceec 100644
+--- a/hl/fortran/src/CMakeLists.txt
++++ b/hl/fortran/src/CMakeLists.txt
+@@ -359,11 +359,7 @@ install (
+ )
+ 
+ if (NOT WIN32 AND NOT MINGW)
+-  if (HDF5_ENABLE_PARALLEL AND MPI_Fortran_FOUND)
+-    set (_PKG_CONFIG_COMPILER ${MPI_Fortran_COMPILER})
+-  else ()
+-    set (_PKG_CONFIG_COMPILER ${CMAKE_Fortran_COMPILER})
+-  endif ()
++  set (_PKG_CONFIG_COMPILER ${PKG_CONFIG_Fortran_COMPILER})
+   configure_file (
+       ${HDF_RESOURCES_DIR}/libh5cc.in
+       ${HDF5_BINARY_DIR}/CMakeFiles/h5hlfc
+diff --git a/hl/src/CMakeLists.txt b/hl/src/CMakeLists.txt
+index 3bca28e29f5..85fe2e87d98 100644
+--- a/hl/src/CMakeLists.txt
++++ b/hl/src/CMakeLists.txt
+@@ -156,11 +156,7 @@ install (
+ )
+ 
+ if (NOT WIN32 AND NOT MINGW)
+-  if (HDF5_ENABLE_PARALLEL AND MPI_C_FOUND)
+-    set (_PKG_CONFIG_COMPILER ${MPI_C_COMPILER})
+-  else ()
+-    set (_PKG_CONFIG_COMPILER ${CMAKE_C_COMPILER})
+-  endif ()
++  set (_PKG_CONFIG_COMPILER ${PKG_CONFIG_C_COMPILER})
+   configure_file (
+       ${HDF_RESOURCES_DIR}/libh5cc.in
+       ${HDF5_BINARY_DIR}/CMakeFiles/h5hlcc
+diff --git a/release_docs/INSTALL_CMake.txt b/release_docs/INSTALL_CMake.txt
+index 14e4fa6d54f..bcec85603db 100644
+--- a/release_docs/INSTALL_CMake.txt
++++ b/release_docs/INSTALL_CMake.txt
+@@ -861,6 +861,10 @@ HDF5_ENABLE_FORMATTERS         "format source files"
+ HDF5_BUILD_DOC                 "Build documentation"                                OFF
+ HDF5_ENABLE_DOXY_WARNINGS      "Enable fail if doxygen parsing has warnings."       OFF
+ 
++PKG_CONFIG_C_COMPILER          "C compiler to use in h5cc"                          ${CMAKE_C_COMPILER}
++PKG_CONFIG_CXX_COMPILER        "C++ compiler to use in h5cc"                        ${CMAKE_CXX_COMPILER}
++PKG_CONFIG_Fortran_COMPILER    "Fortran compiler to use in h5cc"                    ${CMAKE_Fortran_COMPILER}
++
+ ---------------- HDF5 VFD Options ---------------------
+ HDF5_ENABLE_DIRECT_VFD         "Build the Direct I/O Virtual File Driver"           OFF
+ HDF5_ENABLE_MIRROR_VFD         "Build the Mirror Virtual File Driver"               OFF
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e81f1d84e95..404d3e35c62 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1253,11 +1253,7 @@ install (
+ )
+ 
+ if (NOT WIN32)
+-  if (HDF5_ENABLE_PARALLEL AND MPI_C_FOUND)
+-    set (_PKG_CONFIG_COMPILER ${MPI_C_COMPILER})
+-  else ()
+-    set (_PKG_CONFIG_COMPILER ${CMAKE_C_COMPILER})
+-  endif ()
++  set (_PKG_CONFIG_COMPILER ${PKG_CONFIG_C_COMPILER})
+   configure_file (
+       ${HDF_RESOURCES_DIR}/libh5cc.in
+       ${HDF5_BINARY_DIR}/CMakeFiles/h5cc
