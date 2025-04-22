@@ -1,0 +1,27 @@
+
+ Fix build with protobuf >= 30
+ https://protobuf.dev/support/migration/#string_view-return-type
+
+--- a/cvmfs/cache_extern.cc
++++ b/cvmfs/cache_extern.cc
+@@ -538,7 +538,7 @@ void *ExternalCacheManager::MainRead(void *data) {
+       continue;
+     } else {
+       PANIC(kLogSyslogErr | kLogDebug, "unexpected message %s",
+-            msg->GetTypeName().c_str());
++            msg->GetTypeName().data());
+     }
+ 
+     RpcInFlight rpc_inflight;
+diff --git a/cvmfs/cache_plugin/channel.cc b/cvmfs/cache_plugin/channel.cc
+index 4c52d7604..e74d3aa8a 100644
+--- a/cvmfs/cache_plugin/channel.cc
++++ b/cvmfs/cache_plugin/channel.cc
+@@ -550,7 +550,7 @@ bool CachePlugin::HandleRequest(int fd_con) {
+   } else {
+     LogCvmfs(kLogCache, kLogSyslogErr | kLogDebug,
+              "unexpected message from client: %s",
+-             msg_typed->GetTypeName().c_str());
++             msg_typed->GetTypeName().data());
+     return false;
+   }

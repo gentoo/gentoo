@@ -46,6 +46,7 @@ DEPEND="${CDEPEND}
 
 PATCHES=(
 		"${FILESDIR}"/${PN}-2.10.1-gentoo.patch
+		"${FILESDIR}"/${PN}-2.12.7-protobuf.patch
 )
 
 pkg_setup() {
