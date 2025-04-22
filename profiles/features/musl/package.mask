@@ -92,7 +92,6 @@ sci-electronics/ghdl
 # Alfredo Tupone <tupone@gentoo.org> (2024-03-13)
 # To bootstrap uses an ada compiler built using glibc
 dev-lang/ada-bootstrap
-dev-lang/gnat-gpl
 dev-lang/spark
 dev-ada/gnatcoll-db
 dev-ada/gprbuild

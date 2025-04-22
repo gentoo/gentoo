@@ -280,7 +280,6 @@ net-dns/ddclient test
 
 # Mike Gilbert <floppym@gentoo.org> (2022-10-16)
 # Only supported on MIPS.
-dev-lang/gnat-gpl -fixed-point
 sys-devel/gcc -fixed-point
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)

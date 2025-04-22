@@ -6,7 +6,3 @@
 # openbsd-netcat-1.190 requires SOCK_NONBLOCK from socket,
 # which is available since Linux 2.6.27.
 >=net-analyzer/openbsd-netcat-1.190
-
-# Tupone Alfredo <tupone@gentoo.org> (2018-11-04)
-# require newer glibc
-dev-lang/gnat-gpl

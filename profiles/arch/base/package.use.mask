@@ -206,7 +206,6 @@ sys-devel/gcc ieee-long-double
 
 # Mike Gilbert <floppym@gentoo.org> (2022-10-16)
 # Only supported on MIPS.
-dev-lang/gnat-gpl fixed-point
 sys-devel/gcc fixed-point
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
