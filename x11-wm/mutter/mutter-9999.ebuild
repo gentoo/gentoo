@@ -19,7 +19,7 @@ else
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
-IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection +libdisplay screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
+IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	|| ( X wayland )
@@ -53,6 +53,7 @@ RDEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
+	>=media-libs/libdisplay-info-0.2:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -82,7 +83,6 @@ RDEPEND="
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	libdisplay? ( media-libs/libdisplay-info )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
 		gnome-extra/zenity
@@ -197,7 +197,6 @@ src_configure() {
 		$(meson_use input_devices_wacom libwacom)
 		-Dsound_player=true
 		-Dstartup_notification=true
-		$(meson_feature libdisplay libdisplay_info)
 		$(meson_use X sm)
 		$(meson_use introspection)
 		$(meson_use gtk-doc docs)
