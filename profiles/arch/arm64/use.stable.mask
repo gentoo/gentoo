@@ -20,8 +20,6 @@ nvenc
 
 # Sam James <sam@gentoo.org> (2020-10-08)
 # Not enough packages stable w/ PyPy3 support
-python_targets_pypy3
-python_single_target_pypy3
 python_targets_pypy3_11
 python_single_target_pypy3_11
 

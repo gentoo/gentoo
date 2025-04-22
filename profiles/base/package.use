@@ -8,7 +8,6 @@
 # Michał Górny <mgorny@gentoo.org> (2024-09-15)
 # Each flag is used by exactly one version, so let's default-enable
 # them all to make tattoo not fail on almost everything.
-dev-python/python-tests:3.10 python_targets_python3_10
 dev-python/python-tests:3.11 python_targets_python3_11
 dev-python/python-tests:3.12 python_targets_python3_12
 dev-python/python-tests:3.13 python_targets_python3_13
