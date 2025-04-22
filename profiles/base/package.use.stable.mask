@@ -27,12 +27,6 @@ app-arch/mt-st test
 # dev-libs/protobuf-28.3 is not yet marked stable.
 >=dev-java/protobuf-java-4.28.3 system-protoc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
-# Pin down kf6compat mask to currently stable versions.
-<kde-frameworks/kglobalaccel-5.116.0-r1 kf6compat
-<kde-frameworks/kguiaddons-5.116.0-r1 kf6compat
-<kde-frameworks/kwallet-5.116.0-r1 kf6compat
-
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
 # Calendar is broken with some languages on 115.0 release with <icu-75.
 # Bug #910229, #920713
