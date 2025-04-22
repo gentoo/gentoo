@@ -29,7 +29,5 @@ mkl
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is unstable on this arch.
-python_targets_pypy3
-python_single_target_pypy3
 python_targets_pypy3_11
 python_single_target_pypy3_11
