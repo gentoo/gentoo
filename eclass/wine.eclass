@@ -57,12 +57,13 @@ BDEPEND="
 	dev-lang/perl
 	mingw? (
 		!crossdev-mingw? (
-			dev-util/mingw64-toolchain[${WINE_USEDEP}]
 			wow64? ( dev-util/mingw64-toolchain[abi_x86_32] )
+			!wow64? ( dev-util/mingw64-toolchain[${WINE_USEDEP}] )
 		)
 	)
 	!mingw? (
-		llvm-core/clang:*[${WINE_USEDEP}]
+		llvm-core/clang:*
+		llvm-core/lld:*
 		strip? ( llvm-core/llvm:* )
 	)
 "
