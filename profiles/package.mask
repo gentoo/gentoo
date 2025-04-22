@@ -301,14 +301,6 @@ dev-python/spdx-tools
 # Removal on 2025-04-16.  Bug #951490.
 dev-python/bitvector
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-17)
-# sys-cluster/pacemaker is not really maintained in Gentoo.  It is
-# multiple versions behind, does not support Python 3.11 and has a bunch
-# of other problems reported.  sys-cluster/crmsh is its only
-# unconditional dependency.
-# Removal on 2025-04-16.  Bug #897290.
-sys-cluster/pacemaker
-
 # Sam James <sam@gentoo.org> (2025-03-07)
 # May cause emerge to hang (bug #950707). Tests hang on one machine
 # and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
