@@ -44,7 +44,6 @@ sci-physics/pythia rivet
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-17)
 # depends on java packages, not keyworded on x86
 app-forensics/sleuthkit java
-app-office/gtg test
 app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 dev-lang/logtalk fop
 dev-lang/swi-prolog test

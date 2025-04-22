@@ -239,11 +239,6 @@ dev-libs/pigpio
 # Removal on 2025-04-21.  Bug #751541.
 mail-filter/afew
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-22)
-# Stuck on Python 3.10, no reply from maintainer.  No revdeps.
-# Removal on 2025-04-21.  Bug #896608.
-app-office/gtg
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
