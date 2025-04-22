@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-04-22)
+# qemu[X] still has automagic on some parts of gtk[X]. Workaround that
+# for now for bug #954152.
+app-emulation/qemu X
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
 # Currently fails to build without, and Valve would likely not be
 # interested in a bug. May leave forced depending on how this goes.
