@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,6 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# XXX: Can be dropped on next release (after 3.52.16)
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/924665
 	# https://github.com/openlink/iODBC/issues/100
