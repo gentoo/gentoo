@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug"
 
-DEPEND="|| ( >=sys-apps/openrc-0.55 >=sys-apps/openrc-navi-0.60_beta3 )"
+DEPEND=">=sys-apps/openrc-0.55"
 RDEPEND="${DEPEND}
 	sys-boot/plymouth
 	!sys-apps/systemd"
