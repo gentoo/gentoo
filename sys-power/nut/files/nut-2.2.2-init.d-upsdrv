@@ -21,6 +21,10 @@ stop() {
 	_dostop "$UPSNAME" "$msgtext"
 }
 
+start_pre() {
+	checkpath -q -d -m 0700 -o nut:nut /run/nut
+}
+
 startall() {
 	_dostart "" "$msgtext"
 }
@@ -39,5 +43,5 @@ _dostop() {
 	# Not in our control at all
 	ebegin "Stopping UPS $msgtext"
 	/usr/sbin/upsdrvctl stop $UPSNAME
-	eend $? "Failed to stop UPS $msgtext!"
+	ewarn $? "Failed to stop UPS $msgtext!"
 }
