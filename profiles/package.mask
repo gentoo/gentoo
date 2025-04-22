@@ -307,7 +307,6 @@ dev-python/bitvector
 # of other problems reported.  sys-cluster/crmsh is its only
 # unconditional dependency.
 # Removal on 2025-04-16.  Bug #897290.
-sys-cluster/crmsh
 sys-cluster/pacemaker
 
 # Sam James <sam@gentoo.org> (2025-03-07)
