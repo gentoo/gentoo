@@ -425,7 +425,7 @@ src_configure() {
 		-DWITH_GTESTS="$(usex test)"
 		-DWITH_HARFBUZZ="$(usex truetype)"
 		-DWITH_HARU="$(usex pdf)"
-		-DWITH_HEADLESS="$(usex !X "$(use !wayland)")"
+		-DWITH_HEADLESS="$(usex !X "$(usex !wayland)")"
 		-DWITH_INPUT_NDOF="$(usex ndof)"
 		-DWITH_INTERNATIONAL="$(usex nls)"
 		-DWITH_MATERIALX="no" # TODO: Package MaterialX

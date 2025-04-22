@@ -456,7 +456,7 @@ src_configure() {
 		-DWITH_GTESTS=$(usex test)
 		-DWITH_HARFBUZZ="$(usex truetype)"
 		-DWITH_HARU=$(usex pdf)
-		-DWITH_HEADLESS="$(usex !X "$(use !wayland)")"
+		-DWITH_HEADLESS="$(usex !X "$(usex !wayland)")"
 		-DWITH_HYDRA="no" # TODO: Package Hydra
 		-DWITH_IMAGE_OPENEXR=$(usex openexr)
 		-DWITH_IMAGE_OPENJPEG=$(usex jpeg2k)
