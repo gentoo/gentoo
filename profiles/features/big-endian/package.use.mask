@@ -28,7 +28,6 @@ games-fps/eduke32 vpx
 media-plugins/gst-plugins-meta vpx
 net-p2p/ktorrent rss webengine
 kde-apps/kalarm pim
-dev-python/qtpy pyqt5
 gnome-base/gnome extras
 games-engines/scummvm vpx
 
