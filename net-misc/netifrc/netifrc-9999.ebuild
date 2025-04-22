@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,10 +25,7 @@ IUSE="+dhcp"
 
 RDEPEND="
 	sys-apps/gentoo-functions
-	|| (
-		>=sys-apps/openrc-0.15
-		sys-apps/openrc-navi
-	)
+	>=sys-apps/openrc-0.15
 	dhcp? (
 		|| (
 			net-misc/dhcpcd
