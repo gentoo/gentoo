@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,6 @@ RDEPEND="
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/openrc[sysv-utils(-),selinux?]
-		sys-apps/openrc-navi[sysv-utils(-),selinux?]
 		sys-apps/systemd[sysv-utils]
 		sys-apps/s6-linux-init[sysv-utils(-)]
 	)
