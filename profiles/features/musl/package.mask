@@ -373,7 +373,6 @@ net-print/cnijfilter2
 net-print/hplip-plugin
 net-vpn/microsoft-azurevpnclient
 sci-chemistry/cara-bin
-sci-electronics/eagle
 sci-electronics/labone
 sci-libs/mkl
 sci-mathematics/gimps

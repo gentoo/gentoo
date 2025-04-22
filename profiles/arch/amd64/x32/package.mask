@@ -43,7 +43,6 @@ net-analyzer/gsad
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2022-02-13)
 # Requires qtwebengine
-sci-electronics/eagle
 sci-geosciences/gpsbabel
 sci-geosciences/qgis
 sci-geosciences/viking

@@ -88,4 +88,3 @@ net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb
 sci-biology/foldingathome
 sci-chemistry/cara-bin
-sci-electronics/eagle
