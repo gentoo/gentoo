@@ -223,7 +223,6 @@ dev-build/qconf
 # Removal on 2025-04-22.  Bug #951933.
 dev-python/autocommand
 dev-python/jaraco-env
-dev-python/pip-run
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.

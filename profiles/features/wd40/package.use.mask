@@ -73,7 +73,6 @@ sys-kernel/installkernel efistub
 # Need dev-python/jsonschema (or its revdeps).
 dev-python/botocore test
 dev-python/ipython nbconvert test
-dev-python/pip-run test
 dev-python/sphinx-autodoc-typehints test
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)

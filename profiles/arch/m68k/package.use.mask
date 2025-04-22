@@ -87,7 +87,6 @@ dev-python/hatchling test
 dev-python/isort test
 dev-python/numpydoc test
 dev-python/objgraph test
-dev-python/pip-run test
 dev-python/pytest-regressions test
 dev-python/pytest-subprocess test
 dev-python/requests test
