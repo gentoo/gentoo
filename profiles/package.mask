@@ -232,13 +232,6 @@ dev-python/pip-run
 # Removal on 2025-04-21.  Bugs #951854, #909910, #929427.
 dev-libs/pigpio
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-22)
-# Depends on deprecated notmuch bindings.  The migration to new bindings
-# have not been finished in 5 years already.  Still uses legacy
-# distutils-r1.eclass mode.
-# Removal on 2025-04-21.  Bug #751541.
-mail-filter/afew
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
