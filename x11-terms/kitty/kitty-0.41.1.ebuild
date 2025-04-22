@@ -120,6 +120,8 @@ src_prepare() {
 	sed -i setup.py "${sedargs[@]}" || die
 
 	local skiptests=(
+		# broken with nspawn defaults, skip for convenience (bug #954176)
+		kitty_tests/crypto.py
 		# relies on 'who' command which doesn't detect users with pid-sandbox
 		kitty_tests/utmp.py
 		# may fail/hang depending on environment and shell initialization
