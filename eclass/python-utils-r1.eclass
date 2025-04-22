@@ -39,9 +39,9 @@ inherit multiprocessing toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
-	pypy3 pypy3_11
+	pypy3_11
 	python3_13t
-	python3_{10..13}
+	python3_{11..13}
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -51,9 +51,9 @@ readonly _PYTHON_ALL_IMPLS
 # All historical Python implementations that are no longer supported.
 _PYTHON_HISTORICAL_IMPLS=(
 	jython2_7
-	pypy pypy1_{8,9} pypy2_0
+	pypy pypy1_{8,9} pypy2_0 pypy3
 	python2_{5..7}
-	python3_{1..9}
+	python3_{1..10}
 )
 readonly _PYTHON_HISTORICAL_IMPLS
 
@@ -137,9 +137,9 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|pypy3_11|python3_9|python3_1[0-3]|python3_13t)
+				pypy3_11|python3_9|python3_1[1-3]|python3_13t)
 					;;
-				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-9])
+				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9]|python3_10)
 					obsolete+=( "${i}" )
 					;;
 				*)
@@ -229,8 +229,7 @@ _python_impl_matches() {
 				return 0
 				;;
 			3.10)
-				[[ ${impl} == python${pattern/./_} || ${impl} == pypy3 ]] &&
-					return 0
+				return 1
 				;;
 			3.8|3.9|3.1[1-3])
 				[[ ${impl%t} == python${pattern/./_} || ${impl} == pypy${pattern/./_} ]] &&
@@ -448,9 +447,6 @@ _python_export() {
 				case ${impl} in
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}${PYTHON_REQ_USE:+[${PYTHON_REQ_USE}]}"
-						;;
-					pypy3)
-						PYTHON_PKG_DEP="dev-lang/pypy:3.10=[symlink${PYTHON_REQ_USE:+,${PYTHON_REQ_USE}}]"
 						;;
 					pypy3.*)
 						PYTHON_PKG_DEP="dev-lang/pypy:${impl#pypy}=${PYTHON_REQ_USE:+[${PYTHON_REQ_USE}]}"
