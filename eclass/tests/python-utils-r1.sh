@@ -64,7 +64,7 @@ tmpfile=$(mktemp)
 
 inherit python-utils-r1
 
-for minor in {10..13} 13t; do
+for minor in {11..13} 13t; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"
@@ -118,19 +118,6 @@ for minor in {10..13} 13t; do
 
 	eoutdent
 done
-
-ebegin "Testing pypy3"
-eindent
-test_var EPYTHON pypy3 pypy3
-test_var PYTHON pypy3 /usr/bin/pypy3
-if [[ -x /usr/bin/pypy3 ]]; then
-	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3.*/site-packages"
-	test_var PYTHON_INCLUDEDIR pypy3 "/usr/include/pypy3.*"
-fi
-test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:3.10=\[symlink\]'
-PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP pypy3 '*dev-lang/pypy*:3.10=\[symlink,sqlite\]'
-test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
-eoutdent
 
 for minor in 11; do
 	ebegin "Testing pypy3.${minor}"
@@ -216,18 +203,12 @@ test_is "_python_impl_matches python3_6 python*" 0
 test_is "_python_impl_matches python3_7 python*" 0
 test_is "_python_impl_matches pypy3 python*" 1
 set +f
-test_is "_python_impl_matches python3_10 3.10" 0
-test_is "_python_impl_matches python3_10 3.11" 1
-test_is "_python_impl_matches python3_10 3.12" 1
 test_is "_python_impl_matches python3_11 3.10" 1
 test_is "_python_impl_matches python3_11 3.11" 0
 test_is "_python_impl_matches python3_11 3.12" 1
 test_is "_python_impl_matches python3_12 3.10" 1
 test_is "_python_impl_matches python3_12 3.11" 1
 test_is "_python_impl_matches python3_12 3.12" 0
-test_is "_python_impl_matches pypy3 3.10" 0
-test_is "_python_impl_matches pypy3 3.11" 1
-test_is "_python_impl_matches pypy3 3.12" 1
 test_is "_python_impl_matches pypy3_11 3.10" 1
 test_is "_python_impl_matches pypy3_11 3.11" 0
 test_is "_python_impl_matches pypy3_11 3.12" 1
