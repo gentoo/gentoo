@@ -524,8 +524,7 @@ src_install() {
 	fi
 
 	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF || die
-	X
-	;;; ${EMACS_SUFFIX} site-lisp configuration
+	;;; ${EMACS_SUFFIX} site-lisp configuration  -*-lexical-binding:t-*-
 	X
 	(when (string-equal emacs-version "${FULL_VERSION}")
 	Y  (setq find-function-C-source-directory
