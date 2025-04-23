@@ -303,7 +303,7 @@ _cmake_check_build_dir() {
 		# TODO: For EAPI > 8, we should ban S=WORKDIR for CMake.
 		# See bug #889420.
 		if [[ ${S} == "${WORKDIR}" && ${BUILD_DIR} == "${WORKDIR}_build" ]] ; then
-			eqawarn "QA notice: S=WORKDIR is deprecated for cmake.eclass."
+			eqawarn "QA Notice: S=WORKDIR is deprecated for cmake.eclass."
 			eqawarn "Please relocate the sources in src_unpack."
 			BUILD_DIR="${WORKDIR}"/${P}_build
 		fi
