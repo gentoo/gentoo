@@ -53,7 +53,7 @@ REQUIRED_USE="
 	)
 	cuda? ( video_cards_nvidia vtkm )
 	java? ( rendering )
-	minimal? ( !rendering )
+	minimal? ( !gdal !rendering )
 	!minimal? ( cgns netcdf rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt6? ( rendering )
