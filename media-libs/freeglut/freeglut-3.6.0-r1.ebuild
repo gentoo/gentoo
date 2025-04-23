@@ -27,6 +27,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.0-c23.patch
+	"${FILESDIR}"/${PN}-3.6.0-cmake4.patch
 )
 
 src_configure() {
