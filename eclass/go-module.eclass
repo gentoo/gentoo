@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -371,7 +371,7 @@ go-module_src_unpack() {
 	fi
 	GOFLAGS="${GOFLAGS} -p=$(makeopts_jobs)"
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
-		eqawarn "This ebuild uses EGO_SUM which is deprecated"
+		eqawarn "QA Notice: This ebuild uses EGO_SUM which is deprecated"
 		eqawarn "Please migrate to a dependency tarball"
 		eqawarn "This will become a fatal error in the future"
 		_go-module_src_unpack_gosum
