@@ -1,4 +1,3 @@
-;;; pkg-info site-lisp configuration
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'pkg-info-library-original-version "pkg-info" nil t)
 (autoload 'pkg-info-library-version "pkg-info" nil t)
