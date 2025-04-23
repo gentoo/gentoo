@@ -1,5 +1,3 @@
-;; sci-visualisation/epix site init file
-
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'epix-mode "epix" "ePiX editing mode" t)
