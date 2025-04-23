@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: wxwidgets.eclass
@@ -69,7 +69,7 @@ setup-wxwidgets() {
 	case ${WX_GTK_VER} in
 		3.0-gtk3 | 3.2-gtk3) wxtoolkit=gtk3 ;;
 		3.0)      wxtoolkit=gtk2
-		          eqawarn "This package relies on the deprecated GTK 2 slot, which will go away soon (https://bugs.gentoo.org/618642)"
+		          eqawarn "QA Notice: This package relies on the deprecated GTK 2 slot, which will go away soon (https://bugs.gentoo.org/618642)"
 		          ;;
 	esac
 
