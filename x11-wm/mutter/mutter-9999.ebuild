@@ -80,7 +80,6 @@ RDEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
-	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	test? (
@@ -105,6 +104,7 @@ X_OR_XWAYLAND_DEPS="
 	x11-libs/libxcb:=
 	x11-libs/libXinerama
 	x11-libs/libXau
+	>=x11-libs/startup-notification-0.7
 "
 
 RDEPEND+="
