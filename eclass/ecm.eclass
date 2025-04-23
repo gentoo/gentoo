@@ -498,7 +498,7 @@ if [[ ${EAPI} == 8 ]]; then
 # Determine if the current GCC version is acceptable, otherwise die.
 _ecm_deprecated_check_gcc_version() {
 	if ver_test ${KFMIN} -ge 6.9; then
-		eqawarn "QA notice: ecm_pkg_${1} has become a no-op."
+		eqawarn "QA Notice: ecm_pkg_${1} has become a no-op."
 		eqawarn "It is no longer being exported with KFMIN >=6.9.0."
 	else
 		[[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] &&
@@ -592,7 +592,7 @@ ecm_src_prepare() {
 				diff -Naur ${f}.old ${f} 1>>${pf}
 				rm ${f}.old || die "Failed to clean up"
 			done
-			eqawarn "QA notice: Build system modified by ECM_TEST=forceoptional-recursive."
+			eqawarn "QA Notice: Build system modified by ECM_TEST=forceoptional-recursive."
 			eqawarn "Unified diff file ready for pickup in:"
 			eqawarn "  ${pf}"
 			eqawarn "Push it upstream to make this message go away."
@@ -780,7 +780,7 @@ if [[ ${EAPI} == 8 ]]; then
 # Carryall for ecm_pkg_preinst, ecm_pkg_postinst and ecm_pkg_postrm.
 _ecm_nongui_deprecated() {
 	if ver_test ${KFMIN} -ge 6.9; then
-		eqawarn "QA notice: ecm_pkg_${1} has become a no-op."
+		eqawarn "QA Notice: ecm_pkg_${1} has become a no-op."
 		eqawarn "It is no longer being exported with KFMIN >=6.9.0."
 	else
 		case ${ECM_NONGUI} in
