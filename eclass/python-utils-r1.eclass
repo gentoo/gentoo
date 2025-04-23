@@ -1279,7 +1279,7 @@ _python_check_occluded_packages() {
 			)
 
 			if [[ -n ${diff} ]]; then
-				eqawarn "The directory ${fn} occludes package installed for ${EPYTHON}."
+				eqawarn "QA Notice: The directory ${fn} occludes package installed for ${EPYTHON}."
 				eqawarn "The installed package includes additional files:"
 				eqawarn
 				while IFS= read -r l; do
