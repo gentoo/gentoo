@@ -1,5 +1,4 @@
-
-;;; auctex site-lisp configuration
+;;; auctex site-lisp configuration  -*-lexical-binding:t-*-
 
 (add-to-list 'load-path "@SITELISP@")
 (require 'tex-site)
