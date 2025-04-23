@@ -1,4 +1,3 @@
-;;; dev-perl/Perl-Critic site-lisp configuration
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'perlcritic "perlcritic" "" t)
