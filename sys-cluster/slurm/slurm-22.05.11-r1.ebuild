@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,6 @@ SLOT="0"
 IUSE="X debug hdf5 html ipmi json lua multiple-slurmd +munge mysql numa
 		nvml ofed pam perl slurmdbd slurmrestd static-libs torque ucx yaml"
 
-# See bug #813924 for hdf5lib < dep, needs proper fix
 COMMON_DEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
@@ -53,7 +52,7 @@ COMMON_DEPEND="
 	lua? ( ${LUA_DEPS} )
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
-	hdf5? ( <sci-libs/hdf5-1.12:= )
+	hdf5? ( sci-libs/hdf5:= )
 	numa? ( sys-process/numactl )
 	nvml? ( dev-util/nvidia-cuda-toolkit x11-drivers/nvidia-drivers )
 	ofed? ( sys-cluster/rdma-core )
