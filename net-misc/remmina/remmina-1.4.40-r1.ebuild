@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	gvnc? ( net-libs/gtk-vnc )
 	kwallet? ( kde-frameworks/kwallet:5 )
 	python? ( ${PYTHON_DEPS} )
-	rdp? ( net-misc/freerdp:3=
+	rdp? ( >=net-misc/freerdp-3.11.0:3=
 		cups? ( net-print/cups:= ) )
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh:0=[sftp]
