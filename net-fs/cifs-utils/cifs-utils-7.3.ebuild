@@ -43,7 +43,6 @@ REQUIRED_USE="
 DOCS="doc/linux-cifs-client-guide.odt"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-6.12-ln_in_destdir.patch" # bug #766594
 	"${FILESDIR}/${PN}-7.3-no-clobber-fortify-source.patch"
 )
 
