@@ -1,6 +1,3 @@
-
-;; site-init for media-gfx/asymptote
-
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'asy-mode "asy-mode" "Asymptote major mode." t)
