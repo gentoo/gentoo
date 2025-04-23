@@ -109,15 +109,14 @@ X_OR_XWAYLAND_DEPS="
 
 RDEPEND+="
 	X? (
-	   ${X_OR_XWAYLAND_DEPS}
-	   x11-libs/libICE
-	   >=x11-libs/libXrandr-1.5.0
-	   >=x11-libs/libxkbcommon-0.4.3[X]
-	   x11-libs/libXtst
+		${X_OR_XWAYLAND_DEPS}
+		x11-libs/libICE
+		>=x11-libs/libXrandr-1.5.0
+		>=x11-libs/libxkbcommon-0.4.3[X]
+		x11-libs/libXtst
 	)
 	wayland? ( xwayland? ( ${X_OR_XWAYLAND_DEPS} ) )
 "
-
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
