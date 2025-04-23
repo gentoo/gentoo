@@ -1,0 +1,13 @@
+
+Set cmake_minimum_required(VERSION) to 3.10 so that it works with cmake-4.
+Bug: https://bugs.gentoo.org/954223
+
+--- cJSON-1.7.18/CMakeLists.txt~	2025-04-22 21:00:57.000000000 +0200
++++ cJSON-1.7.18/CMakeLists.txt	2025-04-22 21:01:15.694382211 +0200
+@@ -1,5 +1,5 @@
+ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(cJSON
+     VERSION 1.7.18

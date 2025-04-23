@@ -15,6 +15,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-cmake4.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
