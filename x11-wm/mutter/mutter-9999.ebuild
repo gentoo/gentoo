@@ -47,6 +47,7 @@ RDEPEND="
 	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
 	>=dev-libs/json-glib-0.12.0[introspection?]
+	>=x11-libs/libxkbcommon-0.4.3[X?]
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
 	sys-apps/dbus
 	>=x11-misc/colord-1.4.5:=
@@ -111,7 +112,6 @@ RDEPEND+="
 		${X_OR_XWAYLAND_DEPS}
 		x11-libs/libICE
 		>=x11-libs/libXrandr-1.5.0
-		>=x11-libs/libxkbcommon-0.4.3[X]
 		x11-libs/libXtst
 		x11-libs/libSM
 	)
