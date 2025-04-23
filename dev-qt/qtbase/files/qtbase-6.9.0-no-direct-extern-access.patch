@@ -1,0 +1,9 @@
+Re-allow auto-detect rather than do =ON to ensure the toolchain supports it.
+https://bugs.gentoo.org/754021
+https://github.com/qt/qtbase/commit/48675dfa3 (revert of)
+--- a/configure.cmake
++++ b/configure.cmake
+@@ -784,3 +784,2 @@
+     CONDITION NOT WIN32 AND TEST_no_direct_extern_access
+-    AUTODETECT OFF
+ )
