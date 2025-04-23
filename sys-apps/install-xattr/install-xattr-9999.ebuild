@@ -9,7 +9,7 @@ HOMEPAGE="https://dev.gentoo.org/~blueness/install-xattr/"
 inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/elfix.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/install-xattr.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
@@ -23,19 +23,4 @@ SLOT="0"
 src_configure() {
 	tc-export CC
 	append-lfs-flags
-}
-
-src_compile() {
-	if [[ ${PV} == "9999" ]] ; then
-		cd "${WORKDIR}/${P}/misc/${PN}" || die
-	fi
-	default
-}
-
-src_install() {
-	if [[ ${PV} == "9999" ]] ; then
-		cd "${WORKDIR}/${P}/misc/${PN}" || die
-	fi
-
-	emake DESTDIR="${ED}" install
 }
