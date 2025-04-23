@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: chromium-2.eclass
@@ -83,7 +83,7 @@ chromium_remove_language_paks() {
 	# Look for missing pak files.
 	for lang in ${CHROMIUM_LANGS}; do
 		if [[ ! -e ${lang}.pak ]]; then
-			eqawarn "L10N warning: no .pak file for ${lang} (${lang}.pak not found)"
+			eqawarn "QA Notice: L10N warning: no .pak file for ${lang} (${lang}.pak not found)"
 		fi
 	done
 
@@ -101,7 +101,7 @@ chromium_remove_language_paks() {
 		fi
 
 		if ! has ${lang} ${CHROMIUM_LANGS}; then
-			eqawarn "L10N warning: no ${lang} in LANGS"
+			eqawarn "QA Notice: L10N warning: no ${lang} in LANGS"
 			continue
 		fi
 
