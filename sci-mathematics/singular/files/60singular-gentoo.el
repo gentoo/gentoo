@@ -1,6 +1,3 @@
-
-;; site-file for sci-mathematics/singular
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'singular "singular"
   "Start Singular using default values." t)
