@@ -1,4 +1,4 @@
-# Copyright 2011-2024 Gentoo Authors
+# Copyright 2011-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
@@ -77,7 +77,7 @@ _systemd_unprefix() {
 systemd_get_systemunitdir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
+	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
 }
 
 # @FUNCTION: systemd_get_userunitdir
@@ -99,7 +99,7 @@ systemd_get_userunitdir() {
 systemd_get_utildir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_systemd_get_dir systemdutildir /lib/systemd
+	_systemd_get_dir systemdutildir /usr/lib/systemd
 }
 
 # @FUNCTION: systemd_get_systemgeneratordir
@@ -109,7 +109,7 @@ systemd_get_utildir() {
 systemd_get_systemgeneratordir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
+	_systemd_get_dir systemdsystemgeneratordir /usr/lib/systemd/system-generators
 }
 
 # @FUNCTION: systemd_get_systempresetdir
@@ -119,7 +119,7 @@ systemd_get_systemgeneratordir() {
 systemd_get_systempresetdir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
+	_systemd_get_dir systemdsystempresetdir /usr/lib/systemd/system-preset
 }
 
 # @FUNCTION: systemd_get_sleepdir
@@ -127,7 +127,7 @@ systemd_get_systempresetdir() {
 # Output the path for the system sleep directory.
 systemd_get_sleepdir() {
 	debug-print-function ${FUNCNAME} "$@"
-	_systemd_get_dir systemdsleepdir /lib/systemd/system-sleep
+	_systemd_get_dir systemdsleepdir /usr/lib/systemd/system-sleep
 }
 
 # @FUNCTION: systemd_dounit

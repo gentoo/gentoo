@@ -35,11 +35,11 @@ test_systemd_unprefix() {
 	tend $?
 }
 
-test_system_dir /lib/systemd/system systemd_get_systemunitdir
-test_system_dir /lib/systemd systemd_get_utildir
-test_system_dir /lib/systemd/system-generators systemd_get_systemgeneratordir
-test_system_dir /lib/systemd/system-preset systemd_get_systempresetdir
-test_system_dir /lib/systemd/system-sleep systemd_get_sleepdir
+test_system_dir /usr/lib/systemd/system systemd_get_systemunitdir
+test_system_dir /usr/lib/systemd systemd_get_utildir
+test_system_dir /usr/lib/systemd/system-generators systemd_get_systemgeneratordir
+test_system_dir /usr/lib/systemd/system-preset systemd_get_systempresetdir
+test_system_dir /usr/lib/systemd/system-sleep systemd_get_sleepdir
 
 test_user_dir /usr/lib/systemd/user systemd_get_userunitdir
 
