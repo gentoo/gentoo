@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,13 @@ SLOT="0/2.2"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
+RDEPEND="
+	>=dev-build/cmake-4.0.0
+"
+DEPEND="
+	${RDEPEND}
+"
+
 # AUTHORS.txt only links the google group
 DOCS=( ChangeLog.txt README.md )
 
@@ -28,6 +35,7 @@ multilib_src_configure() {
 	append-lfs-flags
 
 	local mycmakeargs=(
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 		-DBUILD_TESTING=$(usex test)
 		# avoid installing .cmake/packages, e.g.:

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,11 +23,15 @@ RDEPEND="
 	virtual/opengl
 	media-libs/freeglut
 	tbb? ( <dev-cpp/tbb-2021.4.0:= )
+	>=dev-build/cmake-4.0.0
 "
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/doxygen[dot] )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.85-soversion.patch )
+PATCHES=( 
+	"${FILESDIR}"/${PN}-2.85-soversion.patch
+	"${FILESDIR}"/${PN}-3.21-cmake-version.patch
+	)
 
 DOCS=( AUTHORS.txt LICENSE.txt README.md )
 
@@ -63,6 +67,8 @@ src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+		-DOpenGL_GL_PREFERENCE=GLVND
 		-DBUILD_CPU_DEMOS=OFF
 		-DBUILD_OPENGL3_DEMOS=OFF
 		-DBUILD_BULLET2_DEMOS=OFF
@@ -76,6 +82,7 @@ src_configure() {
 		-DBULLET2_MULTITHREADING=$(usex threads)
 		-DBULLET2_USE_OPEN_MP_MULTITHREADING=$(usex openmp)
 		-DBULLET2_USE_TBB_MULTITHREADING=$(usex tbb)
+		-DBUILD_BULLET_ROBOTICS_GUI_EXTRA=ON
 	)
 	cmake_src_configure
 }

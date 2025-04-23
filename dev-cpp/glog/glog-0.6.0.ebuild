@@ -30,6 +30,7 @@ RDEPEND="gflags? ( dev-cpp/gflags:0=[${MULTILIB_USEDEP}] )
 		llvm-libunwind? ( llvm-runtimes/libunwind:0=[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:0=[${MULTILIB_USEDEP}] )
 	)
+	>=dev-build/cmake-4.0.0
 "
 DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )
@@ -42,6 +43,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DWITH_GFLAGS=$(usex gflags ON OFF)
 		-DWITH_GTEST=$(usex test ON OFF)
