@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
@@ -31,9 +31,9 @@ rpm_unpack() {
 		if [[ ${a} == ./* ]] ; then
 			: # nothing to do -- path is local
 		elif [[ ${a} == "${DISTDIR}"/* ]] ; then
-			eqawarn 'do not use ${DISTDIR} with rpm_unpack -- it is added for you'
+			eqawarn 'QA Notice: do not use ${DISTDIR} with rpm_unpack -- it is added for you'
 		elif [[ ${a} == /* ]] ; then
-			eqawarn 'do not use full paths with rpm_unpack -- use ./ paths instead'
+			eqawarn 'QA Notice: do not use full paths with rpm_unpack -- use ./ paths instead'
 		else
 			a="${DISTDIR}/${a}"
 		fi
