@@ -1,5 +1,3 @@
-;;; ctemplate site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 
 (setq auto-mode-alist (cons '("\\.tpl$" . tpl-mode) auto-mode-alist))
