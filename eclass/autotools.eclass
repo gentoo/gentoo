@@ -598,7 +598,7 @@ autotools_run_tool() {
 	done
 
 	if [[ ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
-		eqawarn "Running '${1}' in ${EBUILD_PHASE_FUNC} phase"
+		eqawarn "QA Notice: Running '${1}' in ${EBUILD_PHASE_FUNC} phase"
 	fi
 
 	if ${missing_ok} && ! type -P ${1} >/dev/null ; then
