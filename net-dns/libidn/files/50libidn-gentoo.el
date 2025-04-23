@@ -1,6 +1,3 @@
-
-;;; libidn site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'idna-to-ascii "idna"
   "Returns an ASCII Compatible Encoding (ACE) of STR.")
