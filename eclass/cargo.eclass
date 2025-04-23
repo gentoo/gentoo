@@ -542,7 +542,7 @@ cargo_src_unpack() {
 		popd >/dev/null || die
 
 		if [[ ${#crates[@]} -ge 300 ]]; then
-			eqawarn "This package uses a very large number of CRATES.  Please provide"
+			eqawarn "QA Notice: This package uses a very large number of CRATES.  Please provide"
 			eqawarn "a crate tarball instead and fetch it via SRC_URI.  You can use"
 			eqawarn "'pycargoebuild --crate-tarball' to create one."
 		fi
