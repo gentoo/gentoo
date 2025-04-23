@@ -654,7 +654,7 @@ java-pkg-simple_src_compile() {
 				JAVA_PKG_WANT_SOURCE=${tmp_source}
 				JAVA_PKG_WANT_TARGET=${tmp_target}
 			else
-				eqawarn "Need at least JDK 9 to compile module-info.java in src_compile."
+				eqawarn "QA Notice: Need at least JDK 9 to compile module-info.java in src_compile."
 				eqawarn "Please adjust DEPEND accordingly. See https://bugs.gentoo.org/796875#c3"
 			fi
 		fi
