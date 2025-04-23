@@ -620,7 +620,7 @@ python_foreach_impl() {
 			[[ ! ${_DISTUTILS_CALLING_FOREACH_IMPL} &&
 				! ${_DISTUTILS_FOREACH_IMPL_WARNED} ]]
 		then
-			eqawarn "python_foreach_impl has been called directly while using distutils-r1."
+			eqawarn "QA Notice: python_foreach_impl has been called directly while using distutils-r1."
 			eqawarn "Please redefine python_*() phase functions to meet your expectations"
 			eqawarn "instead."
 			_DISTUTILS_FOREACH_IMPL_WARNED=1
