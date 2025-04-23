@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
 	"${FILESDIR}"/${PN}-6.8.0-qcontiguouscache.patch
 	"${FILESDIR}"/${PN}-6.8.2-cross.patch
+	"${FILESDIR}"/${PN}-6.8.3-CVE-2025-3512.patch
 )
 
 src_prepare() {
