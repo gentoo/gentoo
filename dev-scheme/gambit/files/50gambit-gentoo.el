@@ -1,6 +1,3 @@
-
-;;; gambit site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'gambit-inferior-mode "gambit" "Hook Gambit mode into cmuscheme.")
 (autoload 'gambit-mode "gambit" "Hook Gambit mode into scheme.")
