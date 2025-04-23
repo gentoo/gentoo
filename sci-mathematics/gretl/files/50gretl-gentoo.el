@@ -1,6 +1,3 @@
-
-;;; sci-mathematics/gretl site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'gretl-mode "gretl" nil t)
