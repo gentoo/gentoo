@@ -429,7 +429,7 @@ xorg-3_src_install() {
 
 	# Many X11 libraries unconditionally install developer documentation
 	if [[ -d "${D}"/usr/share/man/man3 ]]; then
-		! in_iuse doc && eqawarn "ebuild should set XORG_DOC=doc since package installs library documentation"
+		! in_iuse doc && eqawarn "QA Notice: ebuild should set XORG_DOC=doc since package installs library documentation"
 	fi
 
 	if in_iuse doc && ! use doc; then
