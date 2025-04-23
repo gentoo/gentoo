@@ -30,10 +30,13 @@ RDEPEND="
 	>=dev-python/requests-oauthlib-0.7.0[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# remove mock dependency
+	# https://github.com/googleapis/google-auth-library-python-oauthlib/pull/351
+	find -name 'test_*.py' -exec \
+		sed -i -e 's:import mock:from unittest import mock:' {} + || die
+}
