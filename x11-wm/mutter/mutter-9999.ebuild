@@ -60,7 +60,7 @@ RDEPEND="
 
 	>=media-libs/libcanberra-0.26
 
-	media-libs/libglvnd[X]
+	media-libs/libglvnd
 
 	>=dev-libs/wayland-1.23.0
 	wayland? (
@@ -91,6 +91,7 @@ RDEPEND="
 
 X_OR_XWAYLAND_DEPS="
 	>=gui-libs/gtk-4.0.0:4[X,introspection?]
+	media-libs/libglvnd[X]
 	>=x11-libs/libX11-1.7.0
 	>=x11-libs/libXcomposite-0.4
 	x11-libs/libXcursor
