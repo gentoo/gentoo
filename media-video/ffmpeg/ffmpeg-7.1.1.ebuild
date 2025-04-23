@@ -371,10 +371,9 @@ src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	else
-		if use verify-sig; then
+		use verify-sig &&
 			verify-sig_verify_detached "${DISTDIR}"/ffmpeg-${PV}.tar.xz{,.asc} \
 				"${BROOT}"/usr/share/openpgp-keys/ffmpeg.asc
-		fi
 		default
 	fi
 }
