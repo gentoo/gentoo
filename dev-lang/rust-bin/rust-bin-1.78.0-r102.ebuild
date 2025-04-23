@@ -10,7 +10,7 @@ inherit llvm-r1 multilib prefix rust-toolchain verify-sig multilib-minimal
 
 MY_P="rust-${PV}-r101"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
-MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-06-13/rust-src-${PV}.tar.xz"
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-05-02/rust-src-${PV}.tar.xz"
 GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PV}-r101" # omit leading slash
 
 DESCRIPTION="Systems programming language from Mozilla"
