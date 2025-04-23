@@ -39,7 +39,7 @@ fi
 # that's different from the actual binary.
 LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
-IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
+IUSE="caps doc hardened lzma +man scrypt seccomp selinux +server systemd test zstd"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -140,6 +140,8 @@ src_configure() {
 		--enable-gpl
 		--enable-module-pow
 
+		$(use_enable hardened gcc-hardening)
+		$(use_enable hardened linker-hardening)
 		$(use_enable man asciidoc)
 		$(use_enable man manpage)
 		$(use_enable lzma)
@@ -147,8 +149,6 @@ src_configure() {
 		$(use_enable seccomp)
 		$(use_enable server module-relay)
 		$(use_enable systemd)
-		$(use_enable tor-hardening gcc-hardening)
-		$(use_enable tor-hardening linker-hardening)
 		$(use_enable test unittests)
 		$(use_enable zstd)
 	)
