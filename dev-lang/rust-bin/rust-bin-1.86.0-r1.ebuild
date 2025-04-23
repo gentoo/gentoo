@@ -70,6 +70,7 @@ RDEPEND="
 	)
 	!dev-lang/rust:stable
 	!dev-lang/rust-bin:stable
+	!dev-lang/rust-bin:1.86
 "
 BDEPEND="
 	prefix? ( dev-util/patchelf )
