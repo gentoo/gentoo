@@ -1,6 +1,3 @@
-
-;;; site-lisp configuration for ratpoison
-
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'ratpoisonrc-mode "ratpoison" "Mode for ratpoison configuration files." t)
