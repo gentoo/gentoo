@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit java-pkg-2
+inherit java-pkg-2 xdg
 
 DESCRIPTION="Full-fledged graphical interface to operate gprofng"
 HOMEPAGE="https://www.gnu.org/software/gprofng-gui/"
