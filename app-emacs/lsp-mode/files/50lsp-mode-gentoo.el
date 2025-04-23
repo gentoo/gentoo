@@ -1,5 +1,3 @@
-;;; lsp-mode site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'lsp-completion-at-point "lsp-completion" "Get lsp completions." t)
