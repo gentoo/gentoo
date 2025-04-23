@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
+inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs verify-sig
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -32,15 +32,22 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	SLOT="${PV%%.*}"
-	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	if [[ ${PV} == *.*.* ]]; then
+		SLOT+="-vcs"
+	else # normal release
+		IUSE="verify-sig"
+		SRC_URI+=" verify-sig? ( mirror://gnu/emacs/${P}.tar.xz.sig )"
+		VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
+	fi
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
+IUSE+=" acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -152,7 +159,8 @@ DEPEND="${RDEPEND}
 
 BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )"
+	gzip-el? ( app-arch/gzip )
+	verify-sig? ( sec-keys/openpgp-keys-${PN} )"
 
 IDEPEND="app-eselect/eselect-emacs"
 
