@@ -30,6 +30,7 @@ RESTRICT="test"
 DEPEND="
 	~dev-cpp/fizz-${PV}:=
 	~dev-cpp/folly-${PV}:=
+	~dev-cpp/mvfst-${PV}:=
 	~dev-cpp/wangle-${PV}:=
 	dev-cpp/gflags:=
 	dev-cpp/glog:=[gflags]
