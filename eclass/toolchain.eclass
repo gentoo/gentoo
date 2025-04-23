@@ -1842,7 +1842,7 @@ toolchain_src_configure() {
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/PR106899 being fixed
 		# without corresponding ebuild changes.
-		eqawarn "Snapshot release with pre-generated info pages found!"
+		eqawarn "QA Notice: Snapshot release with pre-generated info pages found!"
 		eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
 	fi
 
