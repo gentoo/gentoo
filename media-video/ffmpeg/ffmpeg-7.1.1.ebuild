@@ -20,10 +20,7 @@ else
 		https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz
 		verify-sig? ( https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz.asc )
 		${FFMPEG_SOC_PATCH:+"
-			soc? (
-				https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH}
-				verify-sig? ( https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH}.asc )
-			)
+			soc? ( https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH} )
 		"}
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
@@ -330,14 +327,7 @@ BDEPEND="
 	"}
 "
 [[ ${PV} != 9999 ]] &&
-	BDEPEND+="
-		verify-sig? (
-			sec-keys/openpgp-keys-ffmpeg
-			${FFMPEG_SOC_PATCH:+"
-				soc? ( >=sec-keys/openpgp-keys-gentoo-developers-20240708 )
-			"}
-		)
-	"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
 
 DOCS=( CREDITS Changelog README.md doc/APIchanges )
 [[ ${PV} != 9999 ]] && DOCS+=( RELEASE_NOTES )
@@ -384,9 +374,6 @@ src_unpack() {
 		if use verify-sig; then
 			verify-sig_verify_detached "${DISTDIR}"/ffmpeg-${PV}.tar.xz{,.asc} \
 				"${BROOT}"/usr/share/openpgp-keys/ffmpeg.asc
-			in_iuse soc && use soc &&
-				verify-sig_verify_detached "${DISTDIR}"/${FFMPEG_SOC_PATCH}{,.asc} \
-					"${BROOT}"/usr/share/openpgp-keys/gentoo-developers.asc
 		fi
 		default
 	fi
