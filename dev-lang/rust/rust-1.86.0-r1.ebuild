@@ -129,6 +129,7 @@ RDEPEND="${DEPEND}
 	dev-lang/rust-common
 	sys-apps/lsb-release
 	!dev-lang/rust:stable
+	!dev-lang/rust:1.86
 	!dev-lang/rust-bin:stable
 "
 
