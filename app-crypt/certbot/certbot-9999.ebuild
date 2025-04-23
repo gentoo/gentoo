@@ -173,6 +173,11 @@ src_prepare() {
 
 	# Used to build documentation
 	mkdir "${CERTBOT_DOCS}" || die
+
+	# Remove "broken" symbolic link used as documentation.
+	# Copy actual file, removing source breaks wheel building.
+	rm -f "${S}/README.rst"
+	cp "${S}/certbot/README.rst" "${S}/README.rst" || die
 }
 
 python_compile() {
