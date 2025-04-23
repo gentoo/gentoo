@@ -389,7 +389,7 @@ _distutils_set_globals() {
 			readonly DISTUTILS_DEPS
 		fi
 	else
-		eqawarn "distutils-r1.eclass legacy mode is deprecated and will be removed."
+		eqawarn "QA Notice: distutils-r1.eclass legacy mode is deprecated and will be removed."
 		eqawarn "Please migrate your ebuilds to use DISTUTILS_USE_PEP517 (common values"
 		eqawarn "are 'setuptools' for packages using setuptools/distutils,"
 		eqawarn "and 'no' for packages using non-PEP517 build systems)."
@@ -650,7 +650,7 @@ distutils_enable_tests() {
 			fi
 			;;
 		setup.py)
-			eqawarn "'distutils_enable_tests setup.py' is deprecated and will be removed."
+			eqawarn "QA Notice: 'distutils_enable_tests setup.py' is deprecated and will be removed."
 			eqawarn "Please use unittest or pytest instead."
 			;;
 		unittest)
@@ -1183,7 +1183,7 @@ _distutils-r1_get_backend() {
 
 		# if we didn't die, we're dealing with a deprecated backend
 		if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
-			eqawarn "${build_backend} backend is deprecated.  Please see:"
+			eqawarn "QA Notice: ${build_backend} backend is deprecated.  Please see:"
 			eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
 			eqawarn "The project should use ${expected_backend} instead."
 			> "${T}"/.distutils_deprecated_backend_warned || die
@@ -1991,7 +1991,7 @@ _distutils-r1_compare_installed_files() {
 			--exclude="*$(get_modname)" \
 			"${_DISTUTILS_PREVIOUS_SITE}" "${sitedir}"
 		if [[ ${?} -ne 0 ]]; then
-			eqawarn "Package creating at least one pure Python wheel installs different"
+			eqawarn "QA Notice: Package creating at least one pure Python wheel installs different"
 			eqawarn "Python files between implementations.  See diff in build log, above"
 			eqawarn "this message."
 		fi
@@ -2182,7 +2182,7 @@ _distutils-r1_post_python_install() {
 		if [[ ! ${DISTUTILS_EXT} && ! ${_DISTUTILS_EXT_WARNED} ]]; then
 			if [[ $(find "${sitedir}" -name "*$(get_modname)" | head -n 1) ]]
 			then
-				eqawarn "Python extension modules (*$(get_modname)) found installed. Please set:"
+				eqawarn "QA Notice: Python extension modules (*$(get_modname)) found installed. Please set:"
 				eqawarn "  DISTUTILS_EXT=1"
 				eqawarn "in the ebuild."
 				_DISTUTILS_EXT_WARNED=1
