@@ -87,7 +87,7 @@ RDEPEND="
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 "
 
-X_OR_XWAYLAND_DEPS="
+X11_CLIENT_DEPS="
 	>=gui-libs/gtk-4.0.0:4[X,introspection?]
 	media-libs/libglvnd[X]
 	>=x11-libs/libX11-1.7.0
@@ -107,13 +107,13 @@ X_OR_XWAYLAND_DEPS="
 
 RDEPEND+="
 	X? (
-		${X_OR_XWAYLAND_DEPS}
+		${X11_CLIENT_DEPS}
 		x11-libs/libICE
 		x11-libs/libxkbfile
 		x11-libs/libXtst
 		x11-libs/libSM
 	)
-	wayland? ( xwayland? ( ${X_OR_XWAYLAND_DEPS} ) )
+	wayland? ( xwayland? ( ${X11_CLIENT_DEPS} ) )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
