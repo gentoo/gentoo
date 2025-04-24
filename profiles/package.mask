@@ -212,13 +212,6 @@ net-im/yowsup
 # Large-scale breakage (bug #951350).
 =dev-build/cmake-4*
 
-# Maciej Barć <xgqt@gentoo.org> (2025-03-25)
-# It is possible Gentoo could be hit by "legal" action when having this package.
-# Very unstable development, switches upstream to avoid "legal" trouble.
-# See also: bug #948196 bug #927392
-# Removal on 2025-04-25.
-games-emulation/ryujinx
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
