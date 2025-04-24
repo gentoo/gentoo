@@ -1,11 +1,11 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit python-any-r1
+inherit libtool python-any-r1
 
 DESCRIPTION="A fast and low-memory footprint OCI Container Runtime fully written in C"
 HOMEPAGE="https://github.com/containers/crun"
@@ -36,6 +36,11 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	local myeconfargs=(
