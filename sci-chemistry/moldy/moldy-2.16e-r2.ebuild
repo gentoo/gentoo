@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Molecular dynamics simulations platform"
 HOMEPAGE="http://www.ccp5.ac.uk/moldy/moldy.html"
@@ -29,6 +29,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944874
+	append-cflags -std=gnu17
+
 	#Individuals may want to edit the OPT* variables below.
 	#From the READ.ME:
 	#You may need to  "hand-tune" compiler or optimization options,
