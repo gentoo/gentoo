@@ -1,12 +1,6 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Alfredo Tupone <tupone@gentoo.org> (2025-04-21)
-# ocamlopt is not available on 32 bits arch
->=dev-lang/ocaml-5 ocamlopt
->=dev-ml/findlib-1.9.8-r1 ocamlopt
-dev-ml/labltk ocamlopt
-
 # Alfredo Tupone <tupone@gentoo.org> (2025-04-15)
 # drop dev-ml test 
 dev-ml/duration test
