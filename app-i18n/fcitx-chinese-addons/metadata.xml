@@ -16,9 +16,7 @@
 	<use>
 		<flag name="cloudpinyin">Build cloud pinyin addon</flag>
 		<flag name="data">Build data</flag>
-		<flag name="gui">Enable GUI support (qt5 or qt6)</flag>
 		<flag name="opencc">Enable support for conversion between Traditional and Simplified Chinese</flag>
-		<flag name="qt5">Enable configure qt5</flag>
 		<flag name="webengine">Enable built-in browser using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 <upstream>
