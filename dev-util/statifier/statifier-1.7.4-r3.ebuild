@@ -11,9 +11,9 @@ DESCRIPTION="Statifier is a tool for creating portable, self-containing Linux ex
 HOMEPAGE="http://statifier.sourceforge.net"
 SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${P}.tar.gz"
 
-KEYWORDS="amd64 x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	app-shells/bash
