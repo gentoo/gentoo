@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=hatchling
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_{10..13} )
 
@@ -29,18 +29,19 @@ RDEPEND="
 	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-libs/capstone-5.0.2[python,${PYTHON_USEDEP}]
+		>=dev-libs/capstone-5.0.3[python,${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.9.8[${PYTHON_USEDEP}]
 		>=dev-python/pycparser-2.22[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.29[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.18.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.32.3[${PYTHON_USEDEP}]
+		>=dev-python/rich-13.7.1[${PYTHON_USEDEP}]
 		>=dev-python/sortedcontainers-2.4.0[${PYTHON_USEDEP}]
 		>=dev-python/tabulate-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/typing-extensions-4.12.0[${PYTHON_USEDEP}]
-		>=dev-util/pwntools-4.13.0[${PYTHON_USEDEP}]
+		>=dev-util/pwntools-4.14.0[${PYTHON_USEDEP}]
 		>=dev-util/ROPgadget-7.3[${PYTHON_USEDEP}]
-		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
+		>=dev-util/unicorn-2.1.3[python,${PYTHON_USEDEP}]
 	')
 "
 
