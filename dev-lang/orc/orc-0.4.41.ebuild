@@ -6,7 +6,7 @@ EAPI=8
 inherit meson-multilib
 
 DESCRIPTION="The Oil Runtime Compiler, a just-in-time compiler for array operations"
-HOMEPAGE="https://gstreamer.freedesktop.org/"
+HOMEPAGE="https://gstreamer.freedesktop.org/ https://gitlab.freedesktop.org/gstreamer/orc"
 SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="BSD BSD-2"
