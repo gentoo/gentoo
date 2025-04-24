@@ -157,6 +157,11 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 "
+
+CLC_DEPSTRING="
+	~dev-util/mesa_clc-${PV}
+	llvm-core/libclc[spirv(-)]
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
@@ -173,10 +178,7 @@ BDEPEND="
 		dev-python/packaging[\${PYTHON_USEDEP}]
 		dev-python/pyyaml[\${PYTHON_USEDEP}]
 	")
-	video_cards_intel? (
-		~dev-util/mesa_clc-${PV}
-		llvm-core/libclc[spirv(-)]
-	)
+	video_cards_intel? ( ${CLC_DEPSTRING} )
 	vulkan? (
 		dev-util/glslang
 		video_cards_nvk? (
@@ -433,6 +435,10 @@ multilib_src_configure() {
 		emesonargs+=($(meson_feature video_cards_intel intel-rt))
 	fi
 
+	if use video_cards_intel; then
+		emesonargs+=(-Dmesa-clc=system)
+	fi
+
 	use debug && EMESON_BUILDTYPE=debug
 
 	emesonargs+=(
@@ -450,7 +456,6 @@ multilib_src_configure() {
 		$(meson_feature unwind libunwind)
 		$(meson_feature zstd)
 		$(meson_use cpu_flags_x86_sse2 sse2)
-		-Dmesa-clc=$(usex video_cards_intel system auto)
 		-Dvalgrind=$(usex valgrind auto disabled)
 		-Dvideo-codecs=$(usex proprietary-codecs "all" "all_free")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
