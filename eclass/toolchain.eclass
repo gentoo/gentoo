@@ -1834,7 +1834,7 @@ toolchain_src_configure() {
 	fi
 
 	if [[ ${CTARGET} != *-darwin* ]] && tc_version_is_at_least 14.1 ; then
-		# This allows passing -stdlib-=libc++ at runtime.
+		# This allows passing -stdlib=libc++ at runtime.
 		confgcc+=( --with-gxx-libcxx-include-dir="${ESYSROOT}"/usr/include/c++/v1 )
 	fi
 
