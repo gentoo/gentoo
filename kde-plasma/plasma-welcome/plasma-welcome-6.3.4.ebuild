@@ -11,7 +11,7 @@ DESCRIPTION="Friendly onboarding wizard for Plasma"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
