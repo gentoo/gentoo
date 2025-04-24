@@ -17,7 +17,7 @@ else
 		https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
 		https://github.com/caddyserver/dist/archive/refs/tags/v${PV}.tar.gz -> ${P}-docs.tar.gz
 "
-	KEYWORDS="~amd64 arm64 ~loong ~riscv"
+	KEYWORDS="amd64 arm64 ~loong ~riscv"
 fi
 
 # MAIN
