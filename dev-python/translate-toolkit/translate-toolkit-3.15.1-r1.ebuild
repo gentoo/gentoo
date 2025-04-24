@@ -54,6 +54,13 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# strip unnecessary pins
+	sed -i -e 's:,<[0-9.]*::' pyproject.toml || die
+}
+
 src_test() {
 	# unfortunately, this bad quality package doesn't support XDG_DATA_DIRS
 	# correctly, so we need to reassemble all data files in a single directory
