@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,10 @@ HOMEPAGE="
 	https://thrift.apache.org/
 	https://github.com/apache/thrift
 "
-SRC_URI="https://downloads.apache.org/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="
+	https://downloads.apache.org/${PN}/${PV}/${P}.tar.gz
+	https://archive.apache.org/dist/${PN}/${PV}/${P}.tar.gz
+"
 S="${WORKDIR}/${P}/lib/py"
 
 LICENSE="Apache-2.0"
