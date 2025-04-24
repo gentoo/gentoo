@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,10 @@ DEPEND="
 	udev? ( virtual/udev )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="app-alternatives/lex"
+BDEPEND="
+	app-alternatives/lex
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	#"${FILESDIR}"/${PN}-9.15.1-run-lock.patch
