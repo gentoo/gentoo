@@ -25,6 +25,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-typo-fix.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/numpy[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/scipy[${PYTHON_USEDEP}]"
