@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,10 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A high-performance coordination service for distributed applications"
 HOMEPAGE="https://zookeeper.apache.org/"
-SRC_URI="https://downloads.apache.org/${MY_PN}/${MY_P}/apache-${MY_P}-bin.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://downloads.apache.org/${MY_PN}/${MY_P}/apache-${MY_P}-bin.tar.gz -> ${P}.tar.gz
+	https://archive.apache.org/dist/${MY_PN}/${MY_P}/apache-${MY_P}-bin.tar.gz -> ${P}.tar.gz
+"
 S="${WORKDIR}/apache-${MY_P}-bin"
 
 LICENSE="Apache-2.0"
