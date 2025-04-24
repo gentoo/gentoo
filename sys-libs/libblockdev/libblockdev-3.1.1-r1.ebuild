@@ -32,7 +32,6 @@ RDEPEND="
 	sys-apps/gptfdisk
 	>=sys-apps/kmod-19
 	>=sys-apps/util-linux-2.27
-	>=sys-block/parted-3.1
 	sys-fs/e2fsprogs:=
 	virtual/libudev:=
 	cryptsetup? (
@@ -49,6 +48,9 @@ RDEPEND="
 		virtual/udev
 	)
 	nvme? ( sys-libs/libnvme )
+	tools? (
+		>=sys-block/parted-3.1
+	)
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
