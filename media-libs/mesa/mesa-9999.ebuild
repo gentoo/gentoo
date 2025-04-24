@@ -179,6 +179,7 @@ BDEPEND="
 		dev-python/pyyaml[\${PYTHON_USEDEP}]
 	")
 	video_cards_intel? ( ${CLC_DEPSTRING} )
+	video_cards_panfrost? ( ${CLC_DEPSTRING} )
 	vulkan? (
 		dev-util/glslang
 		video_cards_nvk? (
@@ -435,8 +436,9 @@ multilib_src_configure() {
 		emesonargs+=($(meson_feature video_cards_intel intel-rt))
 	fi
 
-	if use video_cards_intel; then
-		emesonargs+=(-Dmesa-clc=system)
+	if use video_cards_intel ||
+	   use video_cards_panfrost; then
+	   emesonargs+=(-Dmesa-clc=system)
 	fi
 
 	use debug && EMESON_BUILDTYPE=debug
