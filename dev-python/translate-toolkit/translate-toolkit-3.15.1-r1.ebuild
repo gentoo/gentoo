@@ -66,7 +66,7 @@ src_test() {
 	# correctly, so we need to reassemble all data files in a single directory
 	local -x XDG_DATA_HOME=${T}/share
 	cp -r translate/share "${T}/" || die
-	cp -r "${ESYSROOT}/usr/share"/gaupol "${XDG_DATA_HOME}"/ || die
+	cp -r "${ESYSROOT}"/usr/share/gaupol "${XDG_DATA_HOME}"/ || die
 
 	distutils-r1_src_test
 }
@@ -88,14 +88,14 @@ python_test() {
 		tests/odf_xliff/test_odf_xliff.py
 	)
 
-	if ! use ini; then
+	if ! has_version "dev-python/iniparse[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=(
 			translate/convert/test_ini2po.py
 			translate/convert/test_po2ini.py
 		)
 	fi
 
-	if ! use subtitles; then
+	if ! has_version "media-video/gaupol[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=(
 			translate/storage/test_subtitles.py
 		)
