@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
 KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gui idn
-meanwhile ncurses networkmanager nls perl pie prediction python sasl spell tcl
+meanwhile ncurses networkmanager nls perl prediction python sasl spell tcl
 test tk v4l +xscreensaver zephyr zeroconf"
 RESTRICT="!test? ( test )"
 
@@ -171,7 +171,6 @@ src_configure() {
 	# Stabilize things, for your own good
 	strip-flags
 	replace-flags -O? -O2
-	use pie && append-cflags -fPIE -pie
 
 	use gadu 	&& DEFAULT_PRPLS+=",gg"
 	use groupwise 	&& DEFAULT_PRPLS+=",novell"
