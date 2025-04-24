@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="a weather application, it shows the weather in a graphical way"
 HOMEPAGE="http://wiki.colar.net/wmfrog_dockapp"
@@ -30,6 +30,9 @@ src_prepare() {
 }
 
 src_compile() {
+	# bug #944305
+	append-cflags -std=gnu17
+
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" INCDIR="" \
 		LIBDIR="" SYSTEM="${LDFLAGS}"
 }
