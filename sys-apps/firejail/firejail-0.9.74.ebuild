@@ -81,6 +81,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #937374
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+
 	local myeconfargs=(
 		--disable-fatal-warnings
 		--disable-firetunnel
