@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_P="${PN}-byte-${PV}"
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark"
 HOMEPAGE="http://www.tux.org/~mayer/linux/bmark.html"
@@ -30,6 +30,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	# bug #943907
+	append-cflags -std=gnu17
 }
 
 src_install() {
