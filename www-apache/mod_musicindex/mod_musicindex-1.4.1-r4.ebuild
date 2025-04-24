@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit apache-module autotools
+inherit apache-module autotools flag-o-matic
 
 DESCRIPTION="mod_musicindex allows nice displaying of directories containing music files"
 HOMEPAGE="http://hacks.slashdirt.org/sw/musicindex/"
@@ -46,6 +46,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944206
+	append-cflags -std=gnu17
+
 	econf \
 		--with-vorbis-libraries="${ESYSROOT}/usr/$(get_libdir)" \
 		--with-libFLAC-libraries="${ESYSROOT}/usr/$(get_libdir)" \
