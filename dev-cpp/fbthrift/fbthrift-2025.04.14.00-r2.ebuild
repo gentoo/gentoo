@@ -22,14 +22,14 @@ SRC_URI="https://github.com/facebook/fbthrift/archive/refs/tags/v${PV}.tar.gz ->
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64"
-IUSE="test"
+IUSE="io-uring test"
 
 # See https://github.com/facebook/fbthrift/issues/628
 RESTRICT="test"
 
 DEPEND="
 	~dev-cpp/fizz-${PV}:=
-	~dev-cpp/folly-${PV}:=
+	~dev-cpp/folly-${PV}:=[io-uring(+)=]
 	~dev-cpp/mvfst-${PV}:=
 	~dev-cpp/wangle-${PV}:=
 	dev-cpp/gflags:=
