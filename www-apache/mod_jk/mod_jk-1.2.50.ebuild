@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,14 @@ inherit apache-module autotools verify-sig
 
 DESCRIPTION="Provides an AJP Apache2-JK-connector for the Tomcat servlet engine"
 HOMEPAGE="https://tomcat.apache.org/connectors-doc/"
-SRC_URI="mirror://apache/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz
-	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-connectors/jk/tomcat-connectors-${PV}-src.tar.gz.asc  )"
+SRC_URI="
+	mirror://apache/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz
+	https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz
+	verify-sig? (
+		https://downloads.apache.org/tomcat/tomcat-connectors/jk/tomcat-connectors-${PV}-src.tar.gz.asc
+		https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-${PV}-src.tar.gz.asc
+	)
+"
 S="${WORKDIR}/${MY_P}/native"
 
 LICENSE="Apache-2.0"
