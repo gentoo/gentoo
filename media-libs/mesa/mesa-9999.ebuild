@@ -165,11 +165,10 @@ CLC_DEPSTRING="
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
-		>=dev-build/meson-1.7.0
 		>=dev-util/bindgen-0.71.0
 		${RUST_DEPEND}
 	)
-	>=dev-build/meson-1.4.1
+	>=dev-build/meson-1.7.0
 	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
@@ -183,7 +182,6 @@ BDEPEND="
 	vulkan? (
 		dev-util/glslang
 		video_cards_nvk? (
-			>=dev-build/meson-1.7.0
 			>=dev-util/bindgen-0.71.0
 			>=dev-util/cbindgen-0.26.0
 			${RUST_DEPEND}
