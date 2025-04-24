@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ REQUIRED_USE="
 BLOCKDEV_MIN_VER="3.0"
 
 COMMON_DEPEND="
-	>=sys-auth/polkit-0.114[daemon]
+	>=sys-auth/polkit-0.114[daemon(+)]
 	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}:=[cryptsetup,lvm?,nvme]
 	virtual/udev
 	acl? ( virtual/acl )
@@ -60,6 +60,15 @@ BDEPEND="
 # dev-build/autoconf-archive
 
 DOCS=( AUTHORS HACKING NEWS README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-BLKRRPART_harder.patch
+	"${FILESDIR}"/${P}-targetcli_config.json_netif_timeout.patch
+	"${FILESDIR}"/${P}-udiskslinuxmanager_use_after_free.patch
+	"${FILESDIR}"/${P}-udiskslinuxblock_survive_missing_fstab.patch
+
+	"${FILESDIR}"/${PN}-2.10.1-slibtool-export-dynamic.patch
+)
 
 pkg_setup() {
 	# Listing only major arch's here to avoid tracking kernel's defconfig
