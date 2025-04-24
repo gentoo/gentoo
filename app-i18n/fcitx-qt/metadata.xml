@@ -15,7 +15,6 @@
 	</maintainer>
 	<use>
 		<flag name="onlyplugin">Build only plugin</flag>
-		<flag name="qt6">Build support for QT6</flag>
 		<flag name="staticplugin">Build plugin as static</flag>
 	</use>
 	<upstream>
