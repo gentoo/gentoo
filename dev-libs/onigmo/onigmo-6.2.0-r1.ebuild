@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Onigmo is a regular expressions library forked from Oniguruma"
 HOMEPAGE="https://github.com/k-takata/Onigmo"
@@ -21,6 +21,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/k-takata/Onigmo/issues/169 (bug #943945)
+	append-cflags -std=gnu17
+
 	econf \
 		$(use_enable combination-explosion-check) \
 		$(use_enable crnl-as-line-terminator)
