@@ -69,6 +69,7 @@ go_cross_compile() {
 
 PATCHES=(
 	"${FILESDIR}"/go-1.24-skip-gdb-tests.patch
+	"${FILESDIR}"/go-1.24-vgetrandom.patch
 	"${FILESDIR}"/go-1.24-dont-force-gold-arm.patch
 	"${FILESDIR}"/go-never-download-newer-toolchains.patch
 )
