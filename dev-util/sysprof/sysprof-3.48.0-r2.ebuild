@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="
 		x11-libs/pango
 	)
 	dev-libs/json-glib
-	>=sys-auth/polkit-0.114[daemon]
+	>=sys-auth/polkit-0.114[daemon(+)]
 	unwind? ( sys-libs/libunwind:= )
 	>=dev-util/sysprof-common-${PV}
 	>=dev-util/sysprof-capture-${PV}:${API_VERSION}
