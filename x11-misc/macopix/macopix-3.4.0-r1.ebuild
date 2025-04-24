@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application"
 HOMEPAGE="https://rosegray.sakura.ne.jp/macopix/index-e.html https://github.com/chimari/MaCoPiX"
@@ -65,6 +65,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #943977
+	append-cflags -std=gnu17
+
 	econf \
 		$(use_with gnutls)
 }
