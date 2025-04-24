@@ -54,7 +54,7 @@ SLOT="0"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
 VIDEO_CARDS="${RADEON_CARDS}
-	d3d12 freedreno intel lavapipe lima nouveau nvk panfrost v3d vc4 virgl
+	asahi d3d12 freedreno intel lavapipe lima nouveau nvk panfrost v3d vc4 virgl
 	vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
@@ -159,7 +159,7 @@ DEPEND="${RDEPEND}
 "
 
 CLC_DEPSTRING="
-	~dev-util/mesa_clc-${PV}[video_cards_panfrost?]
+	~dev-util/mesa_clc-${PV}[video_cards_asahi?,video_cards_panfrost?]
 	llvm-core/libclc[spirv(-)]
 "
 BDEPEND="
@@ -177,6 +177,7 @@ BDEPEND="
 		dev-python/packaging[\${PYTHON_USEDEP}]
 		dev-python/pyyaml[\${PYTHON_USEDEP}]
 	")
+	video_cards_asahi? ( ${CLC_DEPSTRING} )
 	video_cards_intel? ( ${CLC_DEPSTRING} )
 	video_cards_panfrost? ( ${CLC_DEPSTRING} )
 	vulkan? (
@@ -216,7 +217,8 @@ src_unpack() {
 
 pkg_pretend() {
 	if use vulkan; then
-		if ! use video_cards_d3d12 &&
+		if ! use video_cards_asahi &&
+		   ! use video_cards_d3d12 &&
 		   ! use video_cards_freedreno &&
 		   ! use video_cards_intel &&
 		   ! use video_cards_lavapipe &&
@@ -226,7 +228,7 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d &&
 		   ! use video_cards_virgl; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain asahi, d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
 		fi
 	fi
 
@@ -367,6 +369,7 @@ multilib_src_configure() {
 
 	gallium_enable !llvm softpipe
 	gallium_enable llvm llvmpipe
+	gallium_enable video_cards_asahi asahi
 	gallium_enable video_cards_d3d12 d3d12
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
@@ -398,6 +401,7 @@ multilib_src_configure() {
 	fi
 
 	if use vulkan; then
+		vulkan_enable video_cards_asahi asahi
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
@@ -435,13 +439,15 @@ multilib_src_configure() {
 		emesonargs+=($(meson_feature video_cards_intel intel-rt))
 	fi
 
-	if use video_cards_intel ||
+	if use video_cards_asahi ||
+	   use video_cards_intel ||
 	   use video_cards_nvk ||
 	   use video_cards_panfrost; then
 	   emesonargs+=(-Dmesa-clc=system)
 	fi
 
-	if use video_cards_panfrost; then
+	if use video_cards_asahi ||
+	   use video_cards_panfrost; then
 	    emesonargs+=(-Dprecomp-compiler=system)
 	fi
 
