@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/944388
+
+The comment for clearSoundBuffer() makes clear it uses the global soundCache,
+as do the other functions that operate on it.
+--- a/src/ag.c
++++ b/src/ag.c
+@@ -1772,7 +1772,7 @@ struct sprite* letters = NULL;
+ 	// tidy up and exit
+ 	free(rootWord);
+ 	Mix_CloseAudio();
+-	clearSoundBuffer(&soundCache);
++	clearSoundBuffer();
+ 	//trashDLBTree();
+ 	destroyLetters(&letters);
+ 	SDL_FreeSurface(screen);

@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop toolchain-funcs vcs-clean
 
 DESCRIPTION="Create as many words as you can before the time runs out"
 HOMEPAGE="http://www.coralquest.com/anagramarama/"
 SRC_URI="http://www.omega.clara.net/anagramarama/dist/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,16 +17,18 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	>=media-libs/libsdl-1.2
 	>=media-libs/sdl-mixer-1.2
-	>=media-libs/sdl-image-1.2"
-RDEPEND="${DEPEND}
-	sys-apps/miscfiles"
+	>=media-libs/sdl-image-1.2
+"
+RDEPEND="
+	${DEPEND}
+	sys-apps/miscfiles
+"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fhs.patch
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 src_prepare() {
