@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit elisp-common
+inherit elisp-common flag-o-matic
 
 DESCRIPTION="C function call hierarchy analyzer"
 HOMEPAGE="https://www.gnu.org/software/cflow/"
@@ -24,6 +24,9 @@ BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
+	# bug #944004
+	append-flags -std=gnu17
+
 	econf \
 		$(use_enable nls) \
 		$(use_enable debug) \
