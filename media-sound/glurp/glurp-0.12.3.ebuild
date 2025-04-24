@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop
+inherit desktop flag-o-matic
 
 DESCRIPTION="Glurp is a GTK2 based graphical client for the Music Player Daemon"
 HOMEPAGE="https://sourceforge.net/projects/glurp/"
@@ -17,11 +17,15 @@ IUSE="debug"
 RDEPEND="
 	x11-libs/gtk+:2
 	dev-libs/glib:2
-	media-libs/libmpd:="
+	media-libs/libmpd:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	# bug #943858
+	append-cflags -std=gnu17
+
 	econf $(use_enable debug)
 }
 
