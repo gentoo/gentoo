@@ -187,6 +187,7 @@ BDEPEND="
 			>=dev-util/bindgen-0.71.0
 			>=dev-util/cbindgen-0.26.0
 			${RUST_DEPEND}
+			${CLC_DEPSTRING}
 		)
 	)
 	wayland? ( dev-util/wayland-scanner )
@@ -437,6 +438,7 @@ multilib_src_configure() {
 	fi
 
 	if use video_cards_intel ||
+	   use video_cards_nvk ||
 	   use video_cards_panfrost; then
 	   emesonargs+=(-Dmesa-clc=system)
 	fi
