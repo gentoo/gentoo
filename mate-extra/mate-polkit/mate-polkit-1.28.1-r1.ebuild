@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ COMMON_DEPEND="x11-libs/gdk-pixbuf:2
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.50:2
-	>=sys-auth/polkit-0.102[daemon]
+	>=sys-auth/polkit-0.102[daemon(+)]
 	accountsservice? ( sys-apps/accountsservice )"
 
 BDEPEND="${COMMON_DEPEND}
