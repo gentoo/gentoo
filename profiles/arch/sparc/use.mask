@@ -4,10 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Older targets don't have an old enough dev-lang/ada-bootstrap available
-ada_target_gnat_2021
-
 # matoro <matoro_gentoo@matoro.tk> (2024-06-11)
 # Extensive use of unaligned access, no plans to fix, #636552
 # https://github.com/memcached/memcached/issues/902

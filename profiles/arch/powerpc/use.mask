@@ -4,10 +4,6 @@
 # PPC Specific use flags
 #
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Older targets don't have an old enough dev-lang/ada-bootstrap available
-ada_target_gnat_2021
-
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
 -tcmalloc

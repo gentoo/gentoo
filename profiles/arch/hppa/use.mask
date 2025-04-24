@@ -7,10 +7,6 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Older targets don't have an old enough dev-lang/ada-bootstrap available
-ada_target_gnat_2021
-
 # Sam James <sam@gentoo.org> (2023-09-11)
 # wayland hasn't been tested on hppa
 wayland

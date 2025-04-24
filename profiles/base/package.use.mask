@@ -621,10 +621,6 @@ dev-lang/rust parallel-compiler
 # doesn't trigger test failures.
 >=sci-libs/pastix-6.0.0 mpi
 
-# Alfredo Tupone <tupone@gentoo.org> (2021-06-27)
-# lto does not work on dev-lang/gnat-gpl-2021
-dev-lang/gnat-gpl:10 lto
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
 kde-plasma/plasma-meta firewall
@@ -824,14 +820,6 @@ app-text/ghostscript-gpl l10n_ja
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi
-
-# Alfredo Tupone <tupone@gentoo.org> (2018-11-18)
-# go brokes build of gnat-gpl
-dev-lang/gnat-gpl go
-
-# Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
-# jit brokes build of gnat-gpl
-dev-lang/gnat-gpl jit
 
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-26)
 # Server feature in paramiko is patched out for security reasons. It can

@@ -8,10 +8,6 @@
 # x11-drivers/xf86-input-wacom is available here
 -input_devices_wacom
 
-# Sam James <sam@gentoo.org> (2025-01-05)
-# Older targets don't have an old enough dev-lang/ada-bootstrap available
-ada_target_gnat_2021
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
 # dev-libs/optix works on arm64
 -optix
