@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)"
 HOMEPAGE="http://xml2doc.sourceforge.net"
@@ -24,6 +24,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	# Fix GCC 10 -fno-common change
 	"${FILESDIR}"/${P}-gcc10-no-common.patch
+	# bug #923170
+	"${FILESDIR}"/${P}-c99.patch
 )
 
 src_prepare() {
@@ -35,6 +37,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	# bug #944764
+	append-cflags -std=gnu17
 	econf --disable-pdf
 }
 
