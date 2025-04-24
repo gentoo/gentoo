@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	# make sure we link against libudev
 	sed -i -e 's/:qtConfig(libudev)//' \
+		-e "s/\$\$QMAKE_LIBS_LIBUDEV/-ludev/" \
 		src/serialport/serialport-lib.pri || die
 
 	qt5-build_src_prepare
