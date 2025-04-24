@@ -438,7 +438,7 @@ net-misc/netkit-rsh
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
 dev-libs/cudnn
-dev-libs/cudnn-frontend
+sci-ml/cudnn-frontend
 dev-python/pycuda
 dev-util/nsight-compute
 dev-util/nsight-graphics

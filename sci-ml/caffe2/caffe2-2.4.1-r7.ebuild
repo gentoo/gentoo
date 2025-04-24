@@ -53,7 +53,7 @@ RDEPEND="
 	sci-ml/foxi
 	cuda? (
 		dev-libs/cudnn
-		>=dev-libs/cudnn-frontend-1.0.3:0/8
+		>=sci-ml/cudnn-frontend-1.0.3:0/8
 		<dev-util/nvidia-cuda-toolkit-12.5:=[profiler]
 	)
 	fbgemm? ( sci-ml/FBGEMM )
