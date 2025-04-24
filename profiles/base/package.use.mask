@@ -6,6 +6,14 @@
 
 # New entries go on top.
 
+# sin-ack <sin-ack@protonmail.com> (2025-04-24)
+# Folly's support for io_uring depends on as-of-yet unreleased liburing
+# features. All Facebook packages that depend on this support are masked.
+# Can be dropped once liburing 2.10 is released.
+# Bug #954335
+dev-cpp/folly io-uring
+dev-cpp/fbthrift io-uring
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-21)
 # Prepare cleanup of dev-qt/qtwebengine:5
 app-i18n/fcitx-chinese-addons webengine
