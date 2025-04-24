@@ -4,6 +4,7 @@
 # Matt Turner <mattst88@gentoo.org> (2025-04-23)
 # Requires osmesa, which was removed in mesa-25.1
 app-emulation/aranym osmesa
+media-gfx/asymptote offscreen
 
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Needs linux-only dev-libs/libaio.
