@@ -161,6 +161,10 @@ check_distribution_components() {
 					llvm-debuginfod)
 						use debuginfod || continue
 						;;
+					# used only w/ USE=xml
+					llvm-mt)
+						use xml || continue
+						;;
 				esac
 
 				all_targets+=( "${l}" )
@@ -298,7 +302,6 @@ get_distribution_components() {
 			llvm-ml
 			llvm-ml64
 			llvm-modextract
-			llvm-mt
 			llvm-nm
 			llvm-objcopy
 			llvm-objdump
@@ -356,6 +359,9 @@ get_distribution_components() {
 		)
 		use debuginfod && out+=(
 			llvm-debuginfod
+		)
+		use xml && out+=(
+			llvm-mt
 		)
 	fi
 
