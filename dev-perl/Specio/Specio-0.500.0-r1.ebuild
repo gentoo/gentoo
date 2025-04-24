@@ -16,6 +16,7 @@ IUSE="minimal"
 RDEPEND="
 	!minimal? ( >=dev-perl/Ref-Util-0.112.0 )
 	virtual/perl-Carp
+	dev-perl/Clone
 	dev-perl/Devel-StackTrace
 	dev-perl/Eval-Closure
 	virtual/perl-Encode
