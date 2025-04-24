@@ -93,12 +93,11 @@ src_configure() {
 src_test() {
 	local -x QT_QPA_PLATFORM=offscreen
 	# QCollator::setNumericMode is not supported w/ POSIX/C locale or w/o icu
-	# Unset and source LC_COLLATE from the current system locale.
+	# Set LC_COLLATE=en_US.utf8 if available.
 	# Required for PQCTest::getFoldersIn()
 	unset LC_COLLATE
-	source "${EPREFIX}"/etc/env.d/02locale
-	[[ -n "${LC_COLLATE}" ]] && export LC_COLLATE
-	"${BUILD_DIR}"/photoqt_test || die
+	locale -a | grep -iq "en_US.utf8" || die "locale en_US.utf8 not available, testsuite not launched"
+	LC_COLLATE="en_US.utf8" "${BUILD_DIR}"/photoqt_test || die
 }
 
 pkg_postinst() {
