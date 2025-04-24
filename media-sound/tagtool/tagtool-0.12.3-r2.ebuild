@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools xdg
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Audio Tag Tool Ogg/Mp3 Tagger"
 HOMEPAGE="https://sourceforge.net/projects/tagtool/"
@@ -34,6 +34,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #945267
+	append-cflags -std=gnu17
+
 	econf \
 		$(use_enable mp3) \
 		$(use_enable vorbis)
