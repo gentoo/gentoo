@@ -6,6 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">glurp</remote-id>
+		<remote-id type="github">be1/glurp</remote-id>
 	</upstream>
 </pkgmetadata>
