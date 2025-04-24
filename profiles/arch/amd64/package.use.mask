@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2025-04-24)
+# Unmask on amd64.
+lxqt-base/lxqt-meta -wayland
+
 # # Sam James <sam@gentoo.org> (2025-03-11)
 # The COBOL frontend only allows building on a small number of platforms
 # for now until more testing and integration is done.

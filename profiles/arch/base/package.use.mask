@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2025-04-24)
+# lxqt-base/lxqt-wayland-session is only keyworded for amd64 at this time.
+lxqt-base/lxqt-meta wayland
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-20)
 # requires SYCL/DCP++ from ::science
 media-gfx/blender oneapi
