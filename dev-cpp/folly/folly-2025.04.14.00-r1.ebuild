@@ -22,16 +22,9 @@ SRC_URI="https://github.com/facebook/folly/releases/download/v${PV}/${PN}-v${PV}
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
-IUSE="llvm-libunwind test"
+IUSE="io-uring llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
-# NOTE: liburing support is disabled because Folly depends on features
-#       that are not available in the current stable version of liburing.
-#
-#       See: https://github.com/facebook/folly/issues/2420
-#
-# NOTE: Re-check during next bump whether liburing released a version with
-#       zcrx support.
 RDEPEND="
 	app-arch/bzip2
 	app-arch/lz4:=
@@ -51,8 +44,8 @@ RDEPEND="
 	sys-libs/zlib
 	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
+	io-uring? ( >=sys-libs/liburing-2.10:= )
 "
-# libiberty is linked statically
 DEPEND="
 	${RDEPEND}
 	sys-libs/binutils-libs
@@ -61,9 +54,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2024.11.04.00-musl-fix.patch
-	# NOTE: Disable liburing support as mentioned above. Folly doesn't have
-	#       a configure flag for this so we must patch the check out.
-	"${FILESDIR}"/${PN}-2025.04.14.00-force-liburing-off.patch
 )
 
 src_unpack() {
@@ -71,6 +61,17 @@ src_unpack() {
 	mkdir -p "${S}" || die
 	cd "${S}" || die
 	default
+}
+
+src_prepare() {
+	# Folly has no configuration option for disabling io_uring support
+	# so we need to patch it out.
+	if use !io-uring; then
+		eapply "${FILESDIR}"/${PN}-2025.04.14.00-force-liburing-off.patch
+		eapply "${FILESDIR}"/${PN}-2025.04.14.00-CMake-Avoid-finding-liburing.patch
+	fi
+
+	cmake_src_prepare
 }
 
 src_configure() {
