@@ -28,7 +28,6 @@ else
 		https://github.com/mesonbuild/meson/releases/download/${MY_PV}/${MY_P}.tar.gz
 		verify-sig? ( https://github.com/mesonbuild/meson/releases/download/${MY_PV}/${MY_P}.tar.gz.asc )
 		https://github.com/mesonbuild/meson/releases/download/${MY_PV}/meson-reference.3 -> meson-reference-${MY_PV}.3
-		https://github.com/mesonbuild/meson/commit/944456b5f9b4428853f231368e2baea979042c46.patch?full_index=1 -> ${P}-lld.patch
 	"
 	# Releases may be signed by those listed in Releasing.md. Jussi
 	# remains the default release manager.
@@ -103,9 +102,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-python-path.patch
-	# https://github.com/mesonbuild/meson/pull/14486
-	# last-minute regression in lld support
-	"${DISTDIR}"/${P}-lld.patch
 )
 
 src_unpack() {
