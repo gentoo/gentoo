@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit distutils-r1 scons-utils systemd toolchain-funcs udev
