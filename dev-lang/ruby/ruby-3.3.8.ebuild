@@ -162,6 +162,10 @@ src_configure() {
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
 
+	# Avoid a compile error with certain USE flag combinations when
+	# using std=gnu23, bug #945643.
+	append-flags -std=gnu17
+
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
 		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
