@@ -1,0 +1,27 @@
+From 3640422089efa4323b6150d05c089ed444a24e3b Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Sat, 26 Apr 2025 01:18:46 +0200
+Subject: [PATCH] no Werror
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6c4e4e4..6c36fd1 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -787,9 +787,9 @@ find_package(Pugixml 1.5 REQUIRED)
+ include_directories(SYSTEM ${Pugixml_INCLUDE_DIRS})
+ list(APPEND LIBS ${Pugixml_LIBRARIES})
+ 
+-if(NOT SOURCE_PACKAGE)
+-  add_definitions(-Werror -Wfatal-errors )
+-endif()
++# if(NOT SOURCE_PACKAGE)
++#   add_definitions(-Werror -Wfatal-errors )
++# endif()
+ 
+ if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+   # do not error out on "loop not vectorized" clang OpenMP warnings
+-- 
+2.49.0
+
