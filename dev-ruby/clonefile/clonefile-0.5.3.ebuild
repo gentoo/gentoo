@@ -16,4 +16,4 @@ HOMEPAGE="https://codeberg.org/da/ruby-clonefile"
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
