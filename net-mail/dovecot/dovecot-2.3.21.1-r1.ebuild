@@ -108,6 +108,9 @@ src_prepare() {
 
 	# Bug #727244
 	append-cflags -fasynchronous-unwind-tables
+
+	# Can be dropped with 2.4.x (bug #947906)
+	append-cflags -std=gnu17
 }
 
 src_configure() {
