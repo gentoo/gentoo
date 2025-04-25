@@ -17,7 +17,7 @@ SRC_URI="https://github.com/copiousfreetime/launchy/archive/refs/tags/v${PV}.tar
 LICENSE="ISC"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend "
