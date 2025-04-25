@@ -22,13 +22,16 @@ KEYWORDS="~amd64"
 IUSE="cuda"
 
 RDEPEND="
-	sci-ml/caffe2[cuda?]
-	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	dev-python/numpy
 	dev-python/pillow
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
+	media-libs/libwebp
+	media-video/ffmpeg
+	sci-ml/caffe2[cuda?]
+	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 "
+
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
