@@ -63,6 +63,7 @@ REQUIRED_USE="
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-add-include.patch
+	"${FILESDIR}"/${PN}-3.19-format-security.patch
 )
 
 pkg_setup() {
