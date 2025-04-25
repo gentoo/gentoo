@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,8 @@ src_prepare() {
 
 src_configure() {
 	filter-flags -O0 -Os
+	# bug #943881
+	append-cflags -std=gnu17
 
 	local myeconfargs=(
 		# Upstream switched to wolfssl, so no SSL support for now
