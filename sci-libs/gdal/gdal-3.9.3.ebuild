@@ -258,8 +258,19 @@ src_test() {
 	# 1. autotests (much larger, uses pytest)
 	# 2. Small set of fuzzing tests (no download needed)
 
-	# Missing file for test-unit?
-	cmake_src_test -E "(test-unit)"
+	CMAKE_SKIP_TESTS=(
+		# Missing file for test-unit?
+		"test-unit"
+		# requires pytest-benchmark
+		"autotest_benchmark"
+		# network sandbox
+		# TODO: granularly skip network sandbox breaking tests?
+		"autotest_gcore"
+		"autotest_gdrivers"
+		"autotest_utilities"
+	)
+
+	cmake_src_test
 }
 
 src_install() {
