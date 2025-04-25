@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,13 +21,13 @@ RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	media-libs/dav1d
-	media-libs/libvpl
-	media-libs/svt-av1
-	media-libs/svt-hevc
-	media-video/ffmpeg
-	x264? ( media-libs/x264 )
-	openh264? ( media-libs/openh264 )
+	media-libs/dav1d:=
+	media-libs/libvpl:=
+	media-libs/svt-av1:=
+	media-libs/svt-hevc:=
+	media-video/ffmpeg:=
+	x264? ( media-libs/x264:= )
+	openh264? ( media-libs/openh264:= )
 "
 RDEPEND="${DEPEND}"
 
