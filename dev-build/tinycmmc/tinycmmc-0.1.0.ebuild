@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/Grumbel/${PN}.git"
 else
 	SRC_URI="https://github.com/Grumbel/${PN}/archive/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 DESCRIPTION="Tiny CMake Module Collections"
