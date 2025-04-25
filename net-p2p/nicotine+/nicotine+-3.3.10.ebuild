@@ -34,7 +34,7 @@ RDEPEND="
 		>=x11-libs/gtk+-3.22.30:3[introspection]
 	)
 "
-DOCS=( {AUTHORS.NEWS,README}.md )
+DOCS=( {AUTHORS,NEWS,README}.md )
 
 distutils_enable_tests pytest
 
