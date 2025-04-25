@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${unrealircd_conf:=/etc/unrealircd/${RC_SVCNAME}.conf}
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+supervisor=supervise-daemon
+command=/usr/bin/unrealircd
+command_args="-F -f ${unrealircd_conf} ${unrealircd_opts}"
+command_user="unrealircd:unrealircd"
+
+extra_started_commands="checkconfig reload"
+
+checkconfig() {
+	runuser -u "${command_user%%:*}" -- ${command} -c "${unrealircd_conf}"
+}
+
+start_pre() {
+	checkconfig
+}
+
+reload() {
+	checkconfig || return $?
+
+	ebegin "Reloading ${RC_SVCNAME}"
+	supervise-daemon "${RC_SVCNAME}" --signal HUP
+	eend $?
+}
