@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="libobjc2 native-exceptions"
+IUSE="custom-cflags libobjc2 native-exceptions"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=dev-build/make-3.75
@@ -89,6 +89,13 @@ src_configure() {
 		# Strip unsupported flags for clang
 		# bug #949599
 		strip-unsupported-flags
+	fi
+
+	# gnustep-make has sticky flags that affect other gnustep packages
+	# https://bugs.gentoo.org/950346
+	if ! use custom-cflags; then
+		strip-flags
+		filter-lto
 	fi
 
 	econf \
