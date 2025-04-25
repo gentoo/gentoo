@@ -1,13 +1,10 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CRATES=""
-
 inherit cargo
-
-MY_P="${PN}-${PN}-v${PV}"
 
 DESCRIPTION="An implementation of Tor, in Rust."
 HOMEPAGE="https://gitlab.torproject.org/tpo/core/arti/"
@@ -16,10 +13,10 @@ if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.torproject.org/tpo/core/arti"
 else
-	SRC_URI="https://gitlab.torproject.org/tpo/core/${PN}/-/archive/${PN}-v${PV}/${PN}-${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2
-		${CARGO_CRATE_URIS}"
+	SRC_URI="https://gitlab.torproject.org/tpo/core/${PN}/-/archive/${PN}-v${PV}/${PN}-${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI+=" https://github.com/gentoo-crate-dist/arti/releases/download/${PN}-v${PV}/${P}-crates.tar.xz"
+	S="${WORKDIR}/${PN}-${PN}-v${PV}"
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="MIT Apache-2.0"
