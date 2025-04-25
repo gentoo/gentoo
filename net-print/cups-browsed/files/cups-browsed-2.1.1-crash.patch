@@ -1,0 +1,31 @@
+https://github.com/OpenPrinting/cups-browsed/commit/724ac36fd2cd9c11f7c429b63ba1e9e7fed0d326
+
+From 724ac36fd2cd9c11f7c429b63ba1e9e7fed0d326 Mon Sep 17 00:00:00 2001
+From: Till Kamppeter <till.kamppeter@gmail.com>
+Date: Wed, 16 Apr 2025 18:59:34 +0200
+Subject: [PATCH] cups-browsed: NULL check od make/model string when checking
+ printer's PDLs
+
+If we allow setting up queues for non-driverless legacy IPP printers
+(IPP 1.x) we check for known PDLs and here we check also the
+make/model string, but our check would crash cups-browsed if the
+string is NULL. This commit adds an appropriate NULL check.
+---
+ daemon/cups-browsed.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/daemon/cups-browsed.c b/daemon/cups-browsed.c
+index 46bc8892..ad4e4f45 100644
+--- a/daemon/cups-browsed.c
++++ b/daemon/cups-browsed.c
+@@ -6832,7 +6832,8 @@ create_remote_printer_entry (const char *queue_name,
+ 	 ((!strcasestr(pdl, "application/vnd.hp-PCL") &&
+ 	   !strcasestr(pdl, "application/PCL") &&
+ 	   !strcasestr(pdl, "application/x-pcl")) ||
+-	  ((!strncasecmp(make_model, "HP", 2) || // HP inkjets not supported
++	  (make_model &&
++	   (!strncasecmp(make_model, "HP", 2) || // HP inkjets not supported
+ 	    !strncasecmp(make_model, "Hewlett Packard", 15) ||
+ 	    !strncasecmp(make_model, "Hewlett-Packard", 15)) &&
+ 	   !strcasestr(make_model, "LaserJet") &&
+

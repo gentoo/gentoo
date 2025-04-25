@@ -40,11 +40,14 @@ BDEPEND="
 # successfully running the tests, restrict it.
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-model.patch
+	"${FILESDIR}"/${P}-crash.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		--localstatedir="${EPREFIX}"/var
-		# Omit cups here for bug #940311 (CVE-2024-47176 mitigation)
-		--with-browseremoteprotocols=dnssd
 		--with-cups-rundir="${EPREFIX}"/run/cups
 		--with-rcdir=no
 

@@ -1,0 +1,42 @@
+https://github.com/OpenPrinting/cups-browsed/commit/6f48f9daf91fff0c94abe3325b583eb959b480c2
+
+From 6f48f9daf91fff0c94abe3325b583eb959b480c2 Mon Sep 17 00:00:00 2001
+From: Till Kamppeter <till.kamppeter@gmail.com>
+Date: Wed, 16 Apr 2025 17:41:24 +0200
+Subject: [PATCH] cups-browsed: Generate PPD for printer also if it does not
+ report make/model
+
+It can happen that an IPP printer does not report make and model in
+its DNS-SD record. cups-browsed did not create a PPD file for the
+local queue then. This commit fixes it.
+
+The ppdCreatePPDFromIPP2() function of libppd works also when its
+make_model parameter is NULL.
+---
+ daemon/cups-browsed.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/cups-browsed.c b/daemon/cups-browsed.c
+index 5401a134..42cebf3c 100644
+--- a/daemon/cups-browsed.c
++++ b/daemon/cups-browsed.c
+@@ -7582,7 +7582,8 @@ create_queue(void* arg)
+       debug_printf("Generated Default Attributes for local queue %s\n",
+ 		   p->queue_name);
+     }
+-    if (ppdfile == NULL && make_model && strcmp(make_model, "Local Raw Printer"))
++    if (ppdfile == NULL &&
++	(!make_model || strcmp(make_model, "Local Raw Printer")))
+     {
+       // If we do not want CUPS-generated PPDs or we cannot obtain a
+       // CUPS-generated PPD, for example if CUPS does not create a
+@@ -7775,7 +7776,8 @@ create_queue(void* arg)
+ 	debug_printf("Generated Default Attributes for local queue %s\n",
+ 		     p->queue_name);
+       }
+-      if (ppdfile == NULL && make_model && strcmp(make_model, "Local Raw Printer"))
++      if (ppdfile == NULL &&
++	  (!make_model || strcmp(make_model, "Local Raw Printer")))
+       {
+ 	// If we do not want CUPS-generated PPDs or we cannot obtain a
+ 	// CUPS-generated PPD, for example if CUPS does not create a
