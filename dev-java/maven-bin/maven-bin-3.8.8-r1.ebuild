@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,8 +47,7 @@ src_install() {
 
 	dodoc NOTICE README.txt
 
-	dodir /usr/bin
-	dosym "${MAVEN_SHARE}/bin/mvn" "${EPREFIX}/usr/bin/mvn-${SLOT}"
+	dosym -r "${MAVEN_SHARE}/bin/mvn" "/usr/bin/mvn-${SLOT}"
 
 	# See bug #342901.
 	echo "CONFIG_PROTECT=\"${MAVEN_SHARE}/conf\"" > "${T}/25${MAVEN}" || die
