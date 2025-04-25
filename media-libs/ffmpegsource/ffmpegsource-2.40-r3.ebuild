@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/FFMS/ffms2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/ffms2-${PV}
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="MIT"
