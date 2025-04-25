@@ -67,6 +67,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944298
+	append-cflags -std=gnu17
+
 	# bug 908662
 	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
