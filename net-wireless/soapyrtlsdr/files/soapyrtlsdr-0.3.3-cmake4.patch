@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4763d75..48d0913 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Build Soapy SDR support module for RTL-SDR Devices
+ ########################################################################
+-cmake_minimum_required(VERSION 2.8.7)
++cmake_minimum_required(VERSION 3.10.0)
+ project(SoapyRTLSDR CXX)
+ 
+ find_package(SoapySDR "0.4.0" NO_MODULE REQUIRED)
