@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=skrooge</bugs-to>
-		<remote-id type="kde-invent">office/kmymoney</remote-id>
+		<remote-id type="kde-invent">office/skrooge</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
