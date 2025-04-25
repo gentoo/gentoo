@@ -16,7 +16,7 @@ SRC_URI="https://github.com/nanoc/nanoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="${IUSE} minimal"
 
 DEPEND+="test? ( app-text/asciidoc app-text/highlight )"
