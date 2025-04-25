@@ -16,7 +16,7 @@ SRC_URI="https://github.com/nanoc/nanoc/archive/${PV}.tar.gz -> nanoc-${PV}.tar.
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="${IUSE} minimal"
 
 RUBY_S="nanoc-${PV}/nanoc-cli"
