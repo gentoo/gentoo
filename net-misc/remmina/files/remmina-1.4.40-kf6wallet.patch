@@ -1,0 +1,75 @@
+From f182bf745768b6891037032371fab5e44d8579ba Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 25 Apr 2025 21:14:54 +0200
+Subject: [PATCH] Switch KF5Wallet -> KF6Wallet
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ plugins/CMakeLists.txt         | 12 ++++++------
+ plugins/kwallet/CMakeLists.txt | 14 +++++++-------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 1aa0878..02daa41 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -127,15 +127,15 @@ endif()
+ 
+ add_subdirectory(exec)
+ 
+-option(WITH_KF5WALLET "Building KF5WALLET plugin" OFF)
+-if(WITH_KF5WALLET)
+-    CheckHasModule(KF5Wallet)
+-    if(HAS_MODULE_KF5Wallet)
++option(WITH_KF6WALLET "Building KF6WALLET plugin" OFF)
++if(WITH_KF6WALLET)
++    CheckHasModule(KF6Wallet)
++    if(HAS_MODULE_KF6Wallet)
+         message(STATUS "Enabling KDE Wallet plugin.")
+-        add_definitions(-DWITH_KF5WALLET)
++        add_definitions(-DWITH_KF6WALLET)
+         add_subdirectory(kwallet)
+     else()
+-        message(FATAL_ERROR "libKF5wallet not found but requested")
++        message(FATAL_ERROR "libKF6wallet not found but requested")
+     endif()
+ endif()
+ 
+diff --git a/plugins/kwallet/CMakeLists.txt b/plugins/kwallet/CMakeLists.txt
+index a448e31..7564bdb 100644
+--- a/plugins/kwallet/CMakeLists.txt
++++ b/plugins/kwallet/CMakeLists.txt
+@@ -32,23 +32,23 @@
+ 
+ 
+ 
+-# find_suggested_package(KF5Wallet) has already been run on main CMakeLists.txt
++# find_suggested_package(KF6Wallet) has already been run on main CMakeLists.txt
+ 
+-find_suggested_package(KF5Wallet)
+-if(KF5Wallet_FOUND)
+-    message(STATUS "KF5Wallet library found.")
+-    set(REMMINA_PLUGIN_KF5WALLET_SRCS
++find_suggested_package(KF6Wallet)
++if(KF6Wallet_FOUND)
++    message(STATUS "KF6Wallet library found.")
++    set(REMMINA_PLUGIN_KF6WALLET_SRCS
+         src/kwallet_plugin_main.c
+         src/kwallet_plugin.cpp
+         src/kwallet_plugin.h
+     )
+ 
+-    add_library(remmina-plugin-kwallet MODULE ${REMMINA_PLUGIN_KF5WALLET_SRCS})
++    add_library(remmina-plugin-kwallet MODULE ${REMMINA_PLUGIN_KF6WALLET_SRCS})
+     set_target_properties(remmina-plugin-kwallet PROPERTIES PREFIX "")
+     set_target_properties(remmina-plugin-kwallet PROPERTIES NO_SONAME 1)
+ 
+     include_directories(${GTK_INCLUDE_DIRS})
+-    target_link_libraries(remmina-plugin-kwallet KF5::Wallet ${GLib_LIBRARY})
++    target_link_libraries(remmina-plugin-kwallet KF6::Wallet ${GLib_LIBRARY})
+ 
+     install(TARGETS remmina-plugin-kwallet DESTINATION ${REMMINA_PLUGINDIR})
+ endif()
+-- 
+2.49.0
+
