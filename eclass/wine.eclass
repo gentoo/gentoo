@@ -46,7 +46,7 @@ IUSE="
 REQUIRED_USE="
 	|| ( abi_x86_32 abi_x86_64 arm64 )
 	crossdev-mingw? ( mingw )
-	wow64? ( abi_x86_64 !abi_x86_32 )
+	wow64? ( !arm64? ( abi_x86_64 !abi_x86_32 ) )
 "
 
 BDEPEND="
@@ -228,25 +228,31 @@ wine_src_configure() {
 		: "${CROSSLDFLAGS:= }"
 	fi
 
+	# many hardening options are unlikely to work right
+	filter-flags '-fstack-protector*' #870136
+	filter-flags '-mfunction-return=thunk*' #878849
+
+	# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
+	# compile-only tests miss stripping unsupported linker flags
+	filter-flags '-Wl,*'
+
+	# -mavx with mingw-gcc has a history of problems and still see
+	# users have issues despite Wine's -mpreferred-stack-boundary=2
+	use mingw && append-cflags -mno-avx
+
 	conf+=(
 		ac_cv_prog_x86_64_CC="${wcc_amd64}"
 		ac_cv_prog_i386_CC="${wcc_x86}"
 		ac_cv_prog_aarch64_CC="${wcc_arm64}"
 
-		CROSSCFLAGS="${CROSSCFLAGS:-$(
-			# many hardening options are unlikely to work right
-			filter-flags '-fstack-protector*' #870136
-			filter-flags '-mfunction-return=thunk*' #878849
-
-			# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
-			# compile-only tests miss stripping unsupported linker flags
-			filter-flags '-Wl,*'
-
-			# -mavx with mingw-gcc has a history of problems and still see
-			# users have issues despite Wine's -mpreferred-stack-boundary=2
-			use mingw && append-cflags -mno-avx
-
-			CC=${wcc_test} test-flags-CC ${CFLAGS:--O2}
+		i386_CFLAGS="${i386_CFLAGS:-$(
+			CC="${wcc_x86} -target i386-windows" test-flags-CC ${CROSSCFLAGS:-${CFLAGS:--O2}}
+		)}"
+		x86_64_CFLAGS="${x86_64_CFLAGS:-$(
+			CC="${wcc_amd64} -target x86_64-windows" test-flags-CC ${CROSSCFLAGS:-${CFLAGS:--O2}}
+		)}"
+		aarch64_CFLAGS="${aarch64_CFLAGS:-$(
+			CC="${wcc_arm64} -target aarch64-windows" test-flags-CC ${CROSSCFLAGS:-${CFLAGS:--O2}}
 		)}"
 		CROSSLDFLAGS="${CROSSLDFLAGS:-$(
 			# let compiler figure out the right linker for cross
@@ -375,11 +381,17 @@ wine_src_install() {
 # and run eselect wine update.
 wine_pkg_postinst() {
 	if use !abi_x86_32 && use !wow64; then
-		ewarn "32bit support is disabled. While 64bit applications themselves will"
-		ewarn "work, be warned that it is not unusual that installers or other helpers"
-		ewarn "will attempt to use 32bit and fail. If do not want full USE=abi_x86_32,"
-		ewarn "note the experimental USE=wow64 can allow 32bit without full multilib."
+		ewarn "x86 32bit support is disabled. While native 64bit applications themselves"
+		ewarn "will work, be warned that it is not unusual that installers or other helpers"
+		ewarn "will attempt to use 32bit and fail."
+		if use !arm64; then
+			ewarn "If do not want full USE=abi_x86_32, note the experimental USE=wow64 can"
+			ewarn "allow 32bit without full multilib."
+		fi
 	fi
+
+	use arm64 && use wow64 && ewarn \
+		"${PN} does not include an x86 emulator, you will need to provide xtajit.dll yourself"
 
 	# difficult to tell what is needed from here, but try to warn anyway
 	if use abi_x86_32 && { use opengl || use vulkan; }; then
