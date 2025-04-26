@@ -13,7 +13,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv x86"
 
 DEPEND="
 	dev-libs/9libs
