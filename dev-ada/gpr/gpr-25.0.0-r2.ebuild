@@ -4,8 +4,9 @@
 EAPI=8
 
 ADA_COMPAT=( gcc_14 )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit ada multiprocessing
+inherit ada python-any-r1 multiprocessing
 
 DESCRIPTION="LibGPR2 - Parser for GPR Project files"
 HOMEPAGE="https://github.com/AdaCore/gpr"
@@ -16,9 +17,10 @@ S="${WORKDIR}"/${PN}
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+shared static-libs static-pic"
+IUSE="+shared static-libs static-pic test"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
@@ -29,6 +31,22 @@ RDEPEND="${ADA_DEPS}
 DEPEND="${RDEPEND}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]
 	dev-ada/gprbuild[${ADA_USEDEP}]"
+BDEPEND="test? (
+	$(python_gen_any_dep '
+		dev-ada/e3-testsuite[${PYTHON_USEDEP}]
+	')
+	dev-ada/gnatmem
+)"
+
+python_check_deps() {
+	use test || return 0
+	python_has_version "dev-ada/e3-testsuite[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+	ada_pkg_setup
+}
 
 src_prepare() {
 	default
