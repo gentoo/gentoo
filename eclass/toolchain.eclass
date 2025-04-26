@@ -1191,7 +1191,25 @@ toolchain_src_configure() {
 
 	local flag
 	for flag in $(all-flag-vars) ; do
-		einfo "${flag}=\"${!flag}\""
+		[[ -n ${!flag} ]] && einfo "${flag}=\"${!flag}\""
+
+		local stage_flag="STAGE1_${flag}"
+		[[ -n ${!stage_flag} ]] && einfo "${stage_flag}=\"${!stage_flag}\""
+
+		stage_flag="STAGE2_${flag}"
+		[[ -n ${!stage_flag} ]] && einfo "${stage_flag}=\"${!stage_flag}\""
+
+		stage_flag="STAGE3_${flag}"
+		[[ -n ${!stage_flag} ]] && einfo "${stage_flag}=\"${!stage_flag}\""
+
+		local boot_flag="BOOT_${flag}"
+		[[ -n ${!boot_flag} ]] && einfo "${boot_flag}=\"${!boot_flag}\""
+
+		local target_flag="${flag}_FOR_TARGET"
+		[[ -n ${!target_flag} ]] && einfo "${target_flag}=\"${!target_flag}\""
+
+		local build_flag="${flag}_FOR_BUILD"
+		[[ -n ${!build_flag} ]] && einfo "${build_flag}=\"${!build_flag}\""
 	done
 
 	local confgcc=( --host=${CHOST} )
