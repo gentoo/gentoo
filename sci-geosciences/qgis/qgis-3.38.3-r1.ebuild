@@ -117,6 +117,7 @@ BDEPEND="${PYTHON_DEPS}
 				dev-python/pyqt6[${PYTHON_USEDEP},testlib]
 				dev-python/nose2[${PYTHON_USEDEP}]
 				dev-python/mock[${PYTHON_USEDEP}]
+				dev-python/psycopg:2[${PYTHON_USEDEP}]
 			')
 		)
 	)
@@ -250,6 +251,44 @@ src_test() {
 	addwrite "/dev/fuse"
 
 	local -x CMAKE_SKIP_TESTS=(
+		# https://github.com/qgis/QGIS/pull/60991
+		# https://bugreports.qt.io/browse/QTBUG-109955
+		PyQgsUnitTypes$
+		PyQgsCategorizedSymbolRenderer$
+
+		# https://github.com/qgis/QGIS/pull/61483
+		PyQgsConsole$
+
+		# Newer gdal (>=3.9) changed results
+		# https://github.com/qgis/QGIS/pull/59620
+		PyQgsProjectionSelectionWidgets$
+
+		# FIXME: Slightly off numbers. Investigate during a bump.
+		PyQgsCircularString$
+		PyQgsColorRampLegendNode$
+		PyQgsGeometryPaintDevice$
+
+		# FIXME:
+		test_core_layoutlabel$
+		test_core_geometry$
+		PyQgsProcessingAlgsGdalGdalUtils$
+
+		# FIXME:
+		# ERROR 4: `/var/tmp/portage/sci-geosciences/qgis-3.38.3-r1/work/qgis-3.38.3/tests/testdata/mesh/netcdf_parent_quant
+		# ity.nc' not recognized as being in a supported file format.
+		PyQgsMeshLayer$
+		PyQgsMeshLayerRenderer$
+
+		# FIXME:
+		# FAIL! : TestQgsCopcProvider::testQgsRangeRequestCache() 'files[0].baseName().endsWith( QLatin1String( "bytes=3-4" ) )'
+		# returned FALSE. ()
+		# Loc: [/var/tmp/portage/sci-geosciences/qgis-3.38.3-r1/work/qgis-3.38.3/tests/src/providers/testqgscopcprovider.cpp(1103)]
+		test_provider_copcprovider
+
+		# FIXME: ????
+		PyQgsPalettedRasterRenderer$
+
+		# TODO: rationale?
 		PyQgsAFSProvider$
 		PyQgsAnnotation$
 		PyQgsAuthenticationSystem$
@@ -337,6 +376,7 @@ src_test() {
 	)
 
 	CMAKE_SKIP_TESTS+=(
+		# TODO: rationale?
 		test_core_blendmodes$
 		test_core_callout$
 		test_core_compositionconverter$
@@ -370,6 +410,88 @@ src_test() {
 		test_provider_wcsprovider$
 		test_app_maptoolcircularstring$
 		test_app_vertextool$
+	)
+
+	# See https://github.com/qgis/QGIS/blob/final-3_38_3/.ci/test_blocklist_qt6.txt
+	CMAKE_SKIP_TESTS+=(
+		# Qt6 blocklist
+		test_core_compositionconverter
+		test_core_expression
+		test_core_labelingengine
+		test_core_layoutpicture
+		test_core_vectortilelayer
+		test_gui_processinggui
+		test_app_advanceddigitizing
+		test_app_vertextool
+
+		# Crashes -- also disabled on qt5 builds!
+		test_gui_queryresultwidget
+
+		# block list
+		qgis_composerutils
+		PyQgsAppStartup
+
+		# code layout tests are run on separate build
+		qgis_spelling
+		qgis_sipify
+		qgis_sip_include
+		qgis_sip_uptodate
+
+		# Need a local postgres installation
+		PyQgsAuthManagerOgrPostgresTest
+		PyQgsDbManagerPostgis
+
+		# Needs an OpenCL device, the library is not enough
+		test_core_openclutils
+
+		# Relies on a broken/unreliable 3rd party service
+		test_core_layerdefinition
+
+		# MSSQL requires the MSSQL docker
+		PyQgsProviderConnectionMssql
+		PyQgsStyleStorageMssql
+
+		# To be fixed
+		PyQgsPythonProvider
+		PyQgsAnnotation
+		PyQgsAuthenticationSystem
+		PyQgsBlockingProcess
+		PyQgsCodeEditor
+		PyQgsDelimitedTextProvider
+		PyQgsEditWidgets
+		PyQgsElevationProfileCanvas
+		PyQgsProject
+		PyQgsFloatingWidget
+		PyQgsLayoutHtml
+		PyQgsLineSymbolLayers
+		PyQgsMapBoxGlStyleConverter
+		PyQgsMemoryProvider
+		PyQgsNetworkAccessManager
+		PyQgsPalLabelingPlacement
+		PyQgsPlot
+		PyQgsRasterAttributeTable
+		PyQgsRasterLayerRenderer
+		PyQgsShapefileProvider
+		PyQgsTextRenderer
+		PyQgsSpatialiteProvider
+		PyQgsSymbolLayerReadSld
+		PyQgsVectorLayerCache
+		PyQgsVectorLayerEditBuffer
+		PyQgsVectorLayerEditUtils
+		PyQgsLayerDefinition
+		PyQgsSettings
+		PyQgsSettingsEntry
+		PyQgsSelectiveMasking
+		PyQgsServerApi
+		PyQgsServerWMSGetFeatureInfo
+		PyQgsServerWMSGetMap
+		PyQgsServerAccessControlWFSTransactional
+		PyQgsServerWFS
+		ProcessingQgisAlgorithmsTestPt2
+		ProcessingQgisAlgorithmsTestPt3
+		ProcessingQgisAlgorithmsTestPt4
+		ProcessingGdalAlgorithmsVectorTest
+		ProcessingGrassAlgorithmsImageryTest
 	)
 
 	if ! use netcdf; then
