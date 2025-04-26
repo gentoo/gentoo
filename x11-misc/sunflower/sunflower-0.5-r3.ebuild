@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_PEP517="setuptools"
 inherit distutils-r1 xdg
@@ -16,6 +16,7 @@ HOMEPAGE="https://github.com/MeanEYE/Sunflower
 	https://sunflower-fm.org/"
 SRC_URI="https://github.com/MeanEYE/${MY_PN}/archive/refs/tags/${MY_PV}.tar.gz"
 
+S="${WORKDIR}/${MY_PN}-${MY_PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -30,8 +31,6 @@ RDEPEND="${DEPEND}
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	x11-libs/vte:2.91
 "
-
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 src_prepare() {
 	default
