@@ -406,6 +406,20 @@ multilib_src_install() {
 }
 
 pkg_postinst() {
+	if [[ -n "${ROOT}" ]]; then
+		elog "You appear to to be installing in a seperate \$ROOT"
+		elog "to complete the setup and re-sign libraries please run:"
+		elog "emerge --config '=${CATEGORY}/${PF}'"
+	else
+		sign_libraries
+	fi
+}
+
+pkg_config() {
+	sign_libraries
+}
+
+sign_libraries() {
 	multilib_pkg_postinst() {
 		# We must re-sign the libraries AFTER they are stripped.
 		local shlibsign="${EROOT}/usr/bin/shlibsign"
