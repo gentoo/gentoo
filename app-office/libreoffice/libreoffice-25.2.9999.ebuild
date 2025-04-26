@@ -350,7 +350,7 @@ src_unpack() {
 
 	if [[ ${MY_PV} = *9999* ]]; then
 		local base_uri branch mypv
-		base_uri="https://anongit.freedesktop.org/git"
+		base_uri="https://git.libreoffice.org"
 		branch="master"
 		mypv=${MY_PV/.9999}
 		[[ ${mypv} != ${MY_PV} ]] && branch="${PN}-${mypv/./-}"
