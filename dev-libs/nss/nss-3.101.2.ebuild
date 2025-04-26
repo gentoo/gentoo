@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -395,6 +395,20 @@ multilib_src_install() {
 }
 
 pkg_postinst() {
+	if [[ -n "${ROOT}" ]]; then
+		elog "You appear to to be installing in a seperate \$ROOT"
+		elog "to complete the setup and re-sign libraries please run:"
+		elog "emerge --config '=${CATEGORY}/${PF}'"
+	else
+		sign_libraries
+	fi
+}
+
+pkg_config() {
+	sign_libraries
+}
+
+sign_libraries() {
 	multilib_pkg_postinst() {
 		# We must re-sign the libraries AFTER they are stripped.
 		local shlibsign="${EROOT}/usr/bin/shlibsign"
