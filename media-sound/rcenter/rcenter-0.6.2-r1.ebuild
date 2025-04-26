@@ -12,7 +12,7 @@ SRC_URI="http://rooster.stanford.edu/~ben/projects/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 #-sparc: emu10k1 doesn't get recognized on sparc hardware
-KEYWORDS="~amd64 -sparc ~x86"
+KEYWORDS="~amd64 -sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
