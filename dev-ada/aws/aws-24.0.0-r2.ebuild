@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="+shared ssl wsdl"
 
 RDEPEND="dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs]
-	dev-ada/libgpr:=[${ADA_USEDEP},shared?,static-libs]
+	dev-ada/libgpr:=[${ADA_USEDEP},shared(+)?,static-libs]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared?,static-libs]
 	shared? (
 		dev-ada/xmlada[static-pic]
