@@ -36,6 +36,7 @@ src_configure() {
 
 		-DPOSTSRSD_CHROOTDIR="${CHROOT_DIR}"
 		-DSYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
+		-DSYSTEMD_SYSUSERSDIR="${EPREFIX}/usr/lib/sysusers.d"
 
 		-DINSTALL_SYSTEMD_SERVICE=ON
 		# https://github.com/roehling/postsrsd/blob/main/doc/packaging.rst#third-party-dependencies
