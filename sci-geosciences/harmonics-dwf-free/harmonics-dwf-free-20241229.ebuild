@@ -11,7 +11,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 src_install() {
 	insinto /usr/share/harmonics
