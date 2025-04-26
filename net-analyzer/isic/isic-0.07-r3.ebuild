@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/isic/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="net-libs/libnet:1.1"
 RDEPEND="${DEPEND}"
