@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/openpmix/openpmix/releases/download/v${PV}/${P}.tar.
 LICENSE="BSD"
 SLOT="0"
 # No support for 32-bit systems as of 4.2.8 (https://github.com/open-mpi/ompi/issues/11248)
-KEYWORDS="~amd64 ~arm64 ~ppc64 -x86 ~amd64-linux"
+KEYWORDS="~amd64 arm64 ~ppc64 -x86 ~amd64-linux"
 IUSE="debug +munge pmi"
 
 RDEPEND="
