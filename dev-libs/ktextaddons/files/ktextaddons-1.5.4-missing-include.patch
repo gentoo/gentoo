@@ -1,0 +1,25 @@
+From 2b9a04929008abe8f83c57c5e0b9cc7f04a59ae0 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 3 Jan 2025 16:00:02 +0100
+Subject: [PATCH] Add missing include
+
+(cherry picked from commit fdbb082aaa0125d60fdf819c9cb95c40bdb98800)
+---
+ texttranslator/translator/plugins/google/googleengineplugin.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/texttranslator/translator/plugins/google/googleengineplugin.cpp b/texttranslator/translator/plugins/google/googleengineplugin.cpp
+index f7400dd3..41c35ea1 100644
+--- a/texttranslator/translator/plugins/google/googleengineplugin.cpp
++++ b/texttranslator/translator/plugins/google/googleengineplugin.cpp
+@@ -12,6 +12,7 @@
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
+ #include <QNetworkRequest>
++#include <QRegularExpression>
+ #include <QUrlQuery>
+ #include <TextTranslator/TranslatorEngineAccessManager>
+ 
+-- 
+2.49.0
+
