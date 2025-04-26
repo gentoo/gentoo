@@ -19,7 +19,7 @@ SRC_URI+=" https://github.com/Oddegamra/gentoo-ebuilds/releases/download/${P}/${
 
 LICENSE="MIT BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 
 src_prepare() {
 	default
