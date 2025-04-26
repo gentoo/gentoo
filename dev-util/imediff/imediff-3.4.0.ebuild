@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-upstream-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
