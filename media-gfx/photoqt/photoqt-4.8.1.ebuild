@@ -12,7 +12,7 @@ SRC_URI="https://photoqt.org/downloads/source/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="barcode chromecast devil exif freeimage geolocation graphicsmagick +imagemagick lcms mpv pdf raw test vips"
 REQUIRED_USE="chromecast? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
