@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
+# Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
+# Bug #947297; removal on 2025-05-26
+dev-db/sqliteman
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, last revdep on x11-libs/qwtplot3d and x11-libs/qwt:5
 # Bugs #948047, #942455; removal on 2025-05-26
 sci-visualization/scidavis
