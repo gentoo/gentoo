@@ -19,13 +19,12 @@ S="${WORKDIR}"/${MYP}
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="+shared static-libs static-pic"
+IUSE="static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]"
+RDEPEND="dev-ada/xmlada:=[shared,static-libs?,static-pic?,${ADA_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-REQUIRED_USE="${ADA_REQUIRED_USE}
-	|| ( shared static-libs static-pic )"
+REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 PATCHES=( "${FILESDIR}"/${PN}-2020-gentoo.patch )
 
@@ -44,25 +43,14 @@ src_compile() {
 			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			gpr/gpr.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}
-	if use shared; then
-		build relocatable
-	fi
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
+	build relocatable
+	use static-libs && build static
+	use static-pic  && build static-pic
 }
 
 src_install() {
-	if use static-libs; then
-		emake prefix="${D}"/usr libgpr.install.static
-	fi
-	for kind in shared static-pic; do
-		if use ${kind}; then
-			emake prefix="${D}"/usr libgpr.install.${kind}
-		fi
-	done
+	emake prefix="${D}"/usr libgpr.install.shared
+	use static-libs && emake prefix="${D}"/usr libgpr.install.static
+	use static-pic  && emake prefix="${D}"/usr libgpr.install.static-pic
 	rm -r "${D}"/usr/share/gpr/manifests || die
 }
