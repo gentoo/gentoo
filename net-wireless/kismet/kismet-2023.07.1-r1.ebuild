@@ -32,7 +32,7 @@ else
 		"${FILESDIR}"/0001-configure.ac-bashism-fix-critical-existence-failure-.patch
 	)
 
-	KEYWORDS="~amd64 arm ~arm64 ~ppc ~x86"
+	KEYWORDS="~amd64 arm ~arm64 ~ppc x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
