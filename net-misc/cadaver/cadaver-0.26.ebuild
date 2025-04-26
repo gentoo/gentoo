@@ -9,7 +9,7 @@ SRC_URI="https://notroj.github.io/cadaver/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ppc64 ~sparc x86"
 IUSE="nls"
 
 DEPEND=">=net-libs/neon-0.34.0:="
