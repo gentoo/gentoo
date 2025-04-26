@@ -15,7 +15,7 @@ SRC_URI="https://iroffer.net/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+admin +blowfish +chroot curl debug geoip gnutls +http +memsave ruby ssl +telnet upnp"
 
 REQUIRED_USE="
