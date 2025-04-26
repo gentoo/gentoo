@@ -4,7 +4,7 @@
 EAPI=8
 
 PHP_EXT_NAME="imagick"
-USE_PHP="php8-1 php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4"
 
 # https://github.com/Imagick/imagick/issues/626
 PHP_EXT_NEEDED_USE="-debug"
@@ -19,9 +19,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-# imagemagick[-openmp] is needed wrt bug 547922 and upstream
-# https://github.com/Imagick/imagick#openmp
-RDEPEND="media-gfx/imagemagick"
+# The USE="-openmp" requirement on media-gfx/imagemagick (from bug
+# 547922) has been dropped in v3.8.0 due to popular demand. With any
+# luck, enough time has passed that these segfaults no longer occur.
+RDEPEND="media-gfx/imagemagick:="
 DEPEND="
 	${RDEPEND}
 	test? ( media-gfx/imagemagick:=[hdri,jpeg,png,svg,truetype,xml] )
