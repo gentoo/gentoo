@@ -36,7 +36,7 @@ fi
 # it must be GPL-3+ too.
 LICENSE="GPL-3+ GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 
 DEPEND=">=app-shells/bash-${MANGLED_PV}:${MANGLED_PV}"
 RDEPEND="${DEPEND}"
