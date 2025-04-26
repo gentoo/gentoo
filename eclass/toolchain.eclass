@@ -2332,6 +2332,7 @@ gcc_do_make() {
 		# to keep this bound somewhat fresh just to avoid problems. Ultimately,
 		# using not-O0 is just a build-time speed improvement anyway.
 		if ! tc-is-gcc || ver_test $(gcc-fullversion) -lt 10 ; then
+			einfo "Resetting STAGE1_*FLAGS to -O0 because of old or non-GCC bootstrap compiler"
 			STAGE1_CFLAGS="-O0"
 			STAGE1_CXXFLAGS="-O0"
 			STAGE1_GDCFLAGS="-O0"
@@ -2339,7 +2340,8 @@ gcc_do_make() {
 		# know about flags that the version we are compiling does not know
 		# about. In principle we could check e.g. which gnat1 we are using as
 		# a bootstrap. It's simpler to do it unconditionally for now.
-		elif _tc_use_if_iuse ada || _tc_use_if_iuse d; then
+		elif _tc_use_if_iuse ada || _tc_use_if_iuse d ; then
+			einfo "Resetting STAGE1_*FLAGS to -O2 for Ada/D bootstrapping"
 			STAGE1_CFLAGS="-O2"
 			STAGE1_CXXFLAGS="-O2"
 			STAGE1_GDCFLAGS="-O2"
@@ -2363,6 +2365,7 @@ gcc_do_make() {
 			# matter there. If we want to go in the other direction
 			# and make this more conditional, we could check if
 			# the bootstrap compiler is < GCC 12. See bug #940470.
+			einfo "Adding -U_GLIBCXX_ASSERTIONS workaround to STAGE1_CXXFLAGS for D/hardened"
 			STAGE1_CXXFLAGS+=" -U_GLIBCXX_ASSERTIONS"
 		fi
 
