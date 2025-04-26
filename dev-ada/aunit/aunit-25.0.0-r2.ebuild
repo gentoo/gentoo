@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 IUSE="doc"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
