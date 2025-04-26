@@ -5,4 +5,9 @@
         <email>robbat2@gentoo.org</email>
         <name>Robin H. Johnson</name>
     </maintainer>
+    <upstream>
+        <bugs-to>https://github.com/bruceg/relay-ctrl/issues</bugs-to>
+        <changelog>https://untroubled.org/relay-ctrl/NEWS</changelog>
+        <remote-id type="github">bruceg/relay-ctrl</remote-id>
+    </upstream>
 </pkgmetadata>
