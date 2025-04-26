@@ -105,6 +105,10 @@ src_configure() {
 		-DWITH_ZSTD=$(usex zstd)
 		-DWITH_LIBLZMA=$(usex lzma)
 		-DWITH_DOXYGEN=$(usex doc)
+		# Upstream expects these paths to be relative, but cmake.eclass
+		# sets them as absolute paths. bug #954379
+		-DCMAKE_INSTALL_INFODIR=share/info
+		-DCMAKE_INSTALL_MANDIR=share/man
 	)
 
 	# special handling for ASAN
