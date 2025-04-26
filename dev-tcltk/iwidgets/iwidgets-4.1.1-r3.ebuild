@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/incrtcl/%5BIncr%20Widgets%5D/${PV}/${
 
 LICENSE="HPND Old-MIT tcltk"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="
