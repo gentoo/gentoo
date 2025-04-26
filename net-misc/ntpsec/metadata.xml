@@ -28,4 +28,8 @@
 		<flag name="local">Support for undisciplined local clock (not recommended)</flag>
 		<flag name="smear">Specify the interval over which a leap second is applied (experimental)</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">NTPsec/ntpsec</remote-id>
+		<remote-id type="github">ntpsec/ntpsec</remote-id>
+	</upstream>
 </pkgmetadata>
