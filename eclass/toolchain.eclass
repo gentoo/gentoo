@@ -2316,6 +2316,7 @@ gcc_do_make() {
 		if ! tc-is-gcc || ver_test $(gcc-fullversion) -lt 10 ; then
 			STAGE1_CFLAGS="-O0"
 			STAGE1_CXXFLAGS="-O0"
+			STAGE1_GDCFLAGS="-O0"
 		# We have a very good host compiler but it may be a bit too good, and
 		# know about flags that the version we are compiling does not know
 		# about. In principle we could check e.g. which gnat1 we are using as
@@ -2323,6 +2324,7 @@ gcc_do_make() {
 		elif _tc_use_if_iuse ada || _tc_use_if_iuse d; then
 			STAGE1_CFLAGS="-O2"
 			STAGE1_CXXFLAGS="-O2"
+			STAGE1_GDCFLAGS="-O2"
 		fi
 
 		# We only want to use the system's CFLAGS if not building a
