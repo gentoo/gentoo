@@ -21,7 +21,9 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 	projects? ( !minimal )"
 
 RDEPEND="
-	projects? ( ~dev-ada/libgpr-${PV}:=[${ADA_USEDEP},shared?,static-libs?,static-pic?] )
+	projects? (
+		~dev-ada/libgpr-${PV}:=[${ADA_USEDEP},shared(+)?,static-libs?,static-pic?]
+	)
 "
 BDEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]
