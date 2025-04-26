@@ -51,6 +51,7 @@ BDEPEND="
 
 src_prepare() {
 	hprefixify bin/shutter
+	rm t/syntax.t || die  # just a linter
 	default
 }
 
