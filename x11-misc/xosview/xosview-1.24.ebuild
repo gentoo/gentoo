@@ -11,7 +11,7 @@ SRC_URI="http://www.pogo.org.uk/~mark/${PN}/releases/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="suid"
 
 COMMON_DEPS="x11-libs/libX11
