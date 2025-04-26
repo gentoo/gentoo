@@ -40,5 +40,5 @@ src_configure() {
 }
 
 pkg_postinst() {
-		optfeature "audio playback from YouTube" net-misc/yt-dlp
+	optfeature "audio playback from YouTube" net-misc/yt-dlp
 }
