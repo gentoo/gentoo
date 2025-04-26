@@ -279,7 +279,6 @@ src_test() {
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
 	)
-	[[ "$(nice)" -gt 10 ]] && drop_tests+=( "test/parallel/test-os.js" )
 	use inspector ||
 		drop_tests+=(
 			test/parallel/test-inspector-emit-protocol-event.js
