@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-04-26)
+# dev-python/scipy is not marked stable here
+dev-cpp/benchmark tools
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-16)
 # Destabilising app-emulation/qemu on ppc
 sys-boot/grub test grub_platforms_qemu
