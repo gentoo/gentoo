@@ -13,6 +13,6 @@ S="${WORKDIR}/PascalRD-${PN}-${COMMIT}"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 PATCHES=( "${FILESDIR}/${P}-cmake4.patch" )
