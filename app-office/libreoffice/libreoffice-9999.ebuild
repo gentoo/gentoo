@@ -51,7 +51,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m135-6c2dc3e74ea0bd464ba1c6679ded0b643101e682.tar.xz"
+	"${ADDONS_URI}/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz"
 	# not packaged in Gentoo, https://github.com/tsyrogit/zxcvbn-c
 	"${ADDONS_URI}/zxcvbn-c-2.5.tar.gz"
 
