@@ -28,7 +28,8 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test-full? ( test )
 "
-RESTRICT="!test? ( test )"
+# Restricted for bug #954810 (network access), will be fixed shortly
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
