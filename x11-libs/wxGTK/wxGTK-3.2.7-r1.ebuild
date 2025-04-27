@@ -20,8 +20,8 @@ S="${WORKDIR}/wxWidgets-${PV}"
 
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+X curl doc debug keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="+X curl doc debug keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit X"
 REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) keyring? ( X )"
 RESTRICT="!test? ( test )"
 
@@ -38,7 +38,7 @@ RDEPEND="
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[wayland?,${MULTILIB_USEDEP}]
+		>=x11-libs/gtk+-3.24.41-r1:3[wayland?,X?,${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 		x11-libs/libSM[${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -123,6 +123,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# defang automagic dependencies, bug #927952
+	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+
 	# Workaround for bug #915154
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
