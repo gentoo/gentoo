@@ -10,7 +10,7 @@
 # @BLURB: Helper functions to link with slotted ffmpeg-compat libraries
 # @DESCRIPTION:
 # To use this, run ``ffmpeg_compat_setup <slot>`` before packages use
-# pkg-config, depend on media-video/ffmpeg-compat:<slot>=, and ensure
+# pkg-config, depend on media-video/ffmpeg-compat:<slot>, and ensure
 # usage of both pkg-config --cflags and --libs (which adds -Wl,-rpath
 # to find libraries at runtime).  Always verify that it is linked with
 # the right libraries after.
