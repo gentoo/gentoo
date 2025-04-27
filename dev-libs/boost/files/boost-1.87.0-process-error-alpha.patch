@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/942898
+https://github.com/boostorg/process/issues/474
+https://github.com/boostorg/process/commit/9dcd1a2775f11ffd2c16fccd6645e3c7d259dfe4
+
+From 9dcd1a2775f11ffd2c16fccd6645e3c7d259dfe4 Mon Sep 17 00:00:00 2001
+From: Klemens Morgenstern <klemens.morgenstern@gmx.net>
+Date: Mon, 14 Apr 2025 23:51:35 +0800
+Subject: [PATCH] added duplication check for SIGINFO
+
+Closes #474
+---
+ src/error.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/error.cpp b/src/error.cpp
+index b978c3a42..342707204 100644
+--- a/libs/process/src/error.cpp
++++ b/libs/process/src/error.cpp
+@@ -100,7 +100,7 @@ struct exit_code_category final : public error_category
+ #            if defined(SIGILL)
+                     case SIGILL: return "SIGILL:    Illegal Instruction";
+ #            endif
+-#            if defined(SIGINFO)
++#            if defined(SIGINFO) && SIGINFO != SIGPWR
+                     case SIGINFO: return "SIGINFO:   A synonym for SIGPWR";
+ #            endif
+ #            if defined(SIGINT)
+
