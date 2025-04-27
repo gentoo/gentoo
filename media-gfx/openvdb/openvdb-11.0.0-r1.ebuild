@@ -11,7 +11,11 @@ inherit cmake cuda flag-o-matic llvm-r2 multibuild python-single-r1 toolchain-fu
 
 DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
-SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/AcademySoftwareFoundation/openvdb/commit/930c3acb8e0c7c2f1373f3a70dc197f5d04dfe74.patch
+	-> ${PN}-11.0.0-drop-obsolete-isActive-gcc15.patch
+"
 
 LICENSE="MPL-2.0"
 OPENVDB_ABI=$(ver_cut 1)
@@ -193,6 +197,16 @@ src_prepare() {
 		sed \
 			-e 's#message(WARNING " - OpenVDB required to build#message(VERBOSE " - OpenVDB required to build#g' \
 			-i "nanovdb/nanovdb/"*"/CMakeLists.txt" || die
+
+		# backported gcc-15 fix #938253
+		cp "${DISTDIR}/${PN}-11.0.0-drop-obsolete-isActive-gcc15.patch" "${T}" || die
+
+		sed -e "s#nanovdb/nanovdb/tools/GridBuilder.h#nanovdb/nanovdb/util/GridBuilder.h#g" \
+			-i "${T}/${PN}-11.0.0-drop-obsolete-isActive-gcc15.patch" || die
+
+		eapply "${T}/${PN}-11.0.0-drop-obsolete-isActive-gcc15.patch"
+
+		sed -e '24i #include <iomanip>' -i nanovdb/nanovdb/unittest/TestNanoVDB.cu || die
 	fi
 
 	cmake_src_prepare
