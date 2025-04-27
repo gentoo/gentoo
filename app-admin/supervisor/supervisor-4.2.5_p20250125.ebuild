@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="acct-group/supervisor"
 
