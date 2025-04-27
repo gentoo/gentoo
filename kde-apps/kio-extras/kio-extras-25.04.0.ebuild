@@ -7,7 +7,7 @@ ECM_HANDBOOK="optional"
 ECM_TEST="true"
 KFMIN=6.9.0
 QTMIN=6.7.2
-inherit ecm gear.kde.org optfeature
+inherit ecm gear.kde.org optfeature xdg
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://invent.kde.org/network/kio-extras"
@@ -102,4 +102,9 @@ src_configure() {
 
 pkg_postinst() {
 	optfeature "alternative filename search backend" sys-apps/ripgrep
+	use samba && xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	use samba && xdg_pkg_postrm
 }
