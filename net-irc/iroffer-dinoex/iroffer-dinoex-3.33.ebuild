@@ -56,7 +56,7 @@ src_configure() {
 	do_configure \
 		PREFIX="${EPREFIX}/usr" \
 		CC="$(tc-getCC)" \
-		$(!use elibc_musl && usex debug '-profiling' '' '' '')\
+		$(use !elibc_musl && usex debug '-profiling' '' '' '')\
 		$(usex debug '-debug' '' '' '')\
 		$(usex geoip '-geoip' '' '' '')\
 		$(usex chroot '' '-no-chroot' '' '')\
