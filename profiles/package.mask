@@ -47,6 +47,11 @@ media-gfx/transfig
 # Removal on 2025-05-12. Bugs #77471, #926465, #941191, #948965.
 games-fps/tenebrae
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-04-12)
+# Dead upstream, doesn't build with gcc 15, we're the only ones packaging it.
+# Removal on 2025-05-12. Bugs #944434, #943845, #906249, #680698.
+app-shells/esh
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
 # Bug #947297; removal on 2025-05-26
