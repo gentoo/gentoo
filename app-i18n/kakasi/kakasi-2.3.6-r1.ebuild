@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Converts Japanese text between kanji, kana, and romaji"
 HOMEPAGE="http://kakasi.namazu.org/"
@@ -25,6 +25,9 @@ src_prepare() {
 
 	# Clang 16 patch
 	eautoreconf
+
+	# for gcc-15 (bug #944244)
+	append-cflags -std=gnu17
 }
 
 src_install() {
