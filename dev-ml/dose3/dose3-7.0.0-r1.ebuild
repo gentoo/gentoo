@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit dune
 
 DESCRIPTION="Library to perform analysis on package repositories"
-HOMEPAGE="http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose"
+HOMEPAGE="https://www.mancoosi.org/software/ https://irill.gitlab.io/dose3/"
 SRC_URI="https://gitlab.com/irill/${PN}/-/archive/${PV}/${P}.tar.bz2"
 S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
