@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="fbcon svga"
 
 RDEPEND=">=media-libs/libggi-2.2.2
