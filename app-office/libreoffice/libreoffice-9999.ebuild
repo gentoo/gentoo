@@ -345,8 +345,8 @@ src_unpack() {
 		branch="master"
 		mypv=${MY_PV/.9999}
 		[[ ${mypv} != ${MY_PV} ]] && branch="${PN}-${mypv/./-}"
-		git-r3_fetch "${base_uri}/${PN}/core" "refs/heads/${branch}"
-		git-r3_checkout "${base_uri}/${PN}/core"
+		git-r3_fetch "${base_uri}/core" "refs/heads/${branch}"
+		git-r3_checkout "${base_uri}/core"
 		LOCOREGIT_VERSION=${EGIT_VERSION}
 
 		git-r3_fetch "${base_uri}/${PN}/help" "refs/heads/master"
