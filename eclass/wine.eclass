@@ -255,7 +255,7 @@ wine_src_configure() {
 		)
 	elif use abi_x86_64; then
 		conf+=(
-			# per-arch flags are only respected with >=wine-9,
+			# per-arch flags are only respected with >=wine-10,
 			# do a one-arch best effort fallback
 			CROSSCFLAGS="${CROSSCFLAGS_amd64:-${CROSSCFLAGS:-$(_wine_flags c amd64)}}"
 			CROSSLDFLAGS="${CROSSLDFLAGS_amd64:-${CROSSLDFLAGS:-$(_wine_flags ld amd64)}}"
