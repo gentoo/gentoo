@@ -5,9 +5,9 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-LLVM_MAX_SLOT=15
+LLVM_COMPAT=( 15 )
 
-inherit cmake cuda flag-o-matic llvm multibuild python-single-r1 toolchain-funcs
+inherit cmake cuda flag-o-matic llvm-r2 multibuild python-single-r1 toolchain-funcs
 
 DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 
 LICENSE="MPL-2.0"
 OPENVDB_ABI=$(ver_cut 1)
-SLOT="0/${PV}"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="abi$((OPENVDB_ABI + 1))-compat +abi${OPENVDB_ABI}-compat abi$((OPENVDB_ABI - 1))-compat abi$((OPENVDB_ABI - 2))-compat alembic ax +blosc cpu_flags_x86_avx cpu_flags_x86_sse4_2
 	cuda doc examples jpeg +nanovdb numpy openexr png python static-libs test utils zlib"
@@ -43,7 +43,9 @@ RDEPEND="
 	dev-libs/jemalloc:=
 	dev-libs/imath:=
 	ax? (
-		<llvm-core/llvm-$(( LLVM_MAX_SLOT + 1 )):=
+		$(llvm_gen_dep '
+			llvm-core/llvm:${LLVM_SLOT}=
+		')
 	)
 	blosc? (
 		dev-libs/c-blosc:=
@@ -152,7 +154,7 @@ cuda_get_host_arch() {
 }
 
 pkg_setup() {
-	use ax && llvm_pkg_setup
+	use ax && llvm-r2_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
