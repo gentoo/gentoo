@@ -23,6 +23,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-bool.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_TESTS=$(usex test)
