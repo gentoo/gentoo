@@ -66,7 +66,7 @@ src_prepare() {
 src_configure() {
 	# configure automagically uses sphinx even if prebuilt man pages
 	# are available. Force fallback to prebuilt ones.
-	use doc || export SPHINX_BUILD=false
+	use doc || export ac_cv_path_SPHINX_BUILD= SPHINX_BUILD=
 
 	local myeconfargs=(
 		--prefix="${EPREFIX}"/usr
