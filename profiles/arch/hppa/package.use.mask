@@ -119,8 +119,10 @@ media-video/ffmpeg-compat shaderc vulkan
 app-alternatives/ninja samurai
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# Vulkan is not available here, including packages for related USE.
+# Vulkan is not available here, ffmpeg also wants libplacebo[vulkan].
 media-libs/libplacebo shaderc vulkan
+media-video/ffmpeg libplacebo
+media-video/ffmpeg-compat libplacebo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
 # Vulkan is not available on hppa.
