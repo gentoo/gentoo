@@ -8,7 +8,7 @@ PATCHSET="${P}-patchset.tar.xz"
 ECM_HANDBOOK="true"
 KFMIN=6.9.0
 QTMIN=6.8.1
-inherit ecm
+inherit ecm xdg
 
 DESCRIPTION="Graphical debugger interface"
 HOMEPAGE="https://www.kdbg.org/"
