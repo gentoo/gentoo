@@ -1,0 +1,41 @@
+https://github.com/dgibson/dtc/issues/163
+https://git.kernel.org/pub/scm/utils/dtc/dtc.git/commit/?id=ce1d8588880aecd7af264e422a16a8b33617cef7
+
+From ce1d8588880aecd7af264e422a16a8b33617cef7 Mon Sep 17 00:00:00 2001
+From: David Gibson <david@gibson.dropbear.id.au>
+Date: Wed, 5 Feb 2025 13:39:43 +1100
+Subject: tests: When building .so from -O asm output mark as non-executable
+ stack
+
+For certain tests, we take the output from dtc -O asm and build it into
+a .so shared library which we then dlopen() for further tests.  Because we
+don't mark it otherwise, it's treated as requiring an executable stack,
+which dlopen() refuses to open as of glibc-2.41.
+
+Of course, the library is pure data, no code, so it certainly doesn't need
+an executable stack.  Add the -znoexecstack linker option to avoid the
+error.
+
+Fixes: https://github.com/dgibson/dtc/issues/163
+
+Reported-by: Xi Ruoyao <xry111@xry111.site>
+Signed-off-by: David Gibson <david@gibson.dropbear.id.a>
+---
+ tests/run_tests.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/run_tests.sh b/tests/run_tests.sh
+index 937b128..f0b51c0 100755
+--- a/tests/run_tests.sh
++++ b/tests/run_tests.sh
+@@ -201,7 +201,7 @@ run_dtc_test () {
+ }
+ 
+ asm_to_so () {
+-    $CC -shared -o $1.test.so "$SRCDIR/data.S" $1.test.s
++    $CC -shared -Wl,-znoexecstack -o $1.test.so "$SRCDIR/data.S" $1.test.s
+ }
+ 
+ asm_to_so_test () {
+-- 
+cgit 1.2.3-korg

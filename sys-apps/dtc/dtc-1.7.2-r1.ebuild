@@ -48,6 +48,11 @@ DOCS=(
 	Documentation/manual.txt
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-swig-4.3.patch
+	"${FILESDIR}"/${P}-glibc-2.41-execstack.patch
+)
+
 pkg_setup() {
 	if use python ; then
 		export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
