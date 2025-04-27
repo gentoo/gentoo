@@ -51,6 +51,9 @@ BDEPEND="
 PATCHES=(
 	# TODO: upstream:
 	"${FILESDIR}"/cryfs-1.0.1-unbundle-vendored-libs.patch
+
+	# backports
+	"${FILESDIR}"/cryfs-1.0.1-boost-1.88.patch
 )
 
 python_check_deps() {
