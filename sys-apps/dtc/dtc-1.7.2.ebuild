@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit meson python-single-r1
 
 if [[ ${PV} == 9999 ]] ; then
@@ -27,7 +27,12 @@ BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
-	python? ( dev-lang/swig )
+	python? (
+		dev-lang/swig
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+		')
+	)
 "
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit meson python-single-r1
 
 if [[ ${PV} == 9999 ]] ; then
@@ -27,7 +27,12 @@ BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
-	python? ( dev-lang/swig )
+	python? (
+		dev-lang/swig
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+		')
+	)
 "
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
