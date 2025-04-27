@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/944264
+
+--- a/src/config_utils.c
++++ b/src/config_utils.c
+@@ -29,7 +29,7 @@
+ #include "config_utils.h"
+ 
+ static void
+-usage ()
++usage (char* a)
+ {
+   g_printerr (_
+   ("maitretarot [-h | -- help] [-v | --version] [-p port] [-c filename]\n"));
