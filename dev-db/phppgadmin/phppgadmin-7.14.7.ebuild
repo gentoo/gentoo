@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ReimuHakurei/phpPgAdmin/archive/refs/tags/v${PV}-mod
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="dev-lang/php[postgres,session,unicode]"
 
