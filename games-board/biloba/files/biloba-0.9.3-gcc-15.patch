@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/944258
+
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -396,9 +396,9 @@ static int is_inited = FALSE;
+  *
+  * @param bool	Whether the game is inited
+  */
+-void game_init(int bool)
++void game_init(int boo)
+ {
+-	is_inited = bool;
++	is_inited = boo;
+ }
+ 
+ /**
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -95,9 +95,9 @@ int get_y(int y);
+ void put_image(SDL_Surface *surface, int x, int y);
+ 
+ int should_quit(void);
+-void game_init(int bool);
++void game_init(int boo);
+ int game_inited(void);
+-void game_suspend(int bool);
++void game_suspend(int boo);
+ int game_suspended(void);
+ int game_num_players(void);
+ int game_num_net_players(void);
