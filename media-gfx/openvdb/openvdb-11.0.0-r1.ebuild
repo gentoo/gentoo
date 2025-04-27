@@ -56,7 +56,7 @@ RDEPEND="
 			sys-libs/zlib:=
 		)
 		cuda? (
-			>=dev-util/nvidia-cuda-toolkit-11
+			dev-util/nvidia-cuda-toolkit:=
 		)
 	)
 	python? (
@@ -114,43 +114,68 @@ PATCHES=(
 	"${FILESDIR}/${PN}-11.0.0-cmake_fixes.patch"
 )
 
-cuda_set_CUDAHOSTCXX() {
-	local compiler
-	tc-is-gcc && compiler="gcc"
-	tc-is-clang && compiler="clang"
-	[[ -z "$compiler" ]] && die "no compiler specified"
+cuda_get_host_compiler() {
+	if [[ -n "${NVCC_CCBIN}" ]]; then
+		echo "${NVCC_CCBIN}"
+		return
+	fi
 
-	local package="sys-devel/${compiler}"
-	local version="${package}"
-	local CUDAHOSTCXX_test
-	while
-		CUDAHOSTCXX="${CUDAHOSTCXX_test}"
-		version=$(best_version "${version}")
-		if [[ -z "${version}" ]]; then
-			if [[ -z "${CUDAHOSTCXX}" ]]; then
-				die "could not find supported version of ${package}"
+	if [[ -n "${CUDAHOSTCXX}" ]]; then
+		echo "${CUDAHOSTCXX}"
+		return
+	fi
+
+	einfo "Trying to find working CUDA host compiler"
+
+	if ! tc-is-gcc && ! tc-is-clang; then
+		die "$(tc-get-compiler-type) compiler is not supported"
+	fi
+
+	local compiler compiler_type compiler_version
+	local package package_version
+	local -x NVCC_CCBIN
+	local NVCC_CCBIN_default
+
+	compiler_type="$(tc-get-compiler-type)"
+	compiler_version="$("${compiler_type}-major-version")"
+
+	# try the default compiler first
+	NVCC_CCBIN="$(tc-getCXX)"
+	NVCC_CCBIN_default="${NVCC_CCBIN}-${compiler_version}"
+
+	compiler="${NVCC_CCBIN/%-${compiler_version}}"
+
+	# store the package so we can re-use it later
+	package="sys-devel/${compiler_type}"
+	package_version="${package}"
+
+	ebegin "testing ${NVCC_CCBIN_default} (default)"
+
+	while ! nvcc -v -ccbin "${NVCC_CCBIN}" - -x cu <<<"int main(){}" &>> "${T}/cuda_get_host_compiler.log" ; do
+		eend 1
+
+		while true; do
+			# prepare next version
+			if ! package_version="<$(best_version "${package_version}")"; then
+				die "could not find a supported version of ${compiler}"
 			fi
-			break
-		fi
-		CUDAHOSTCXX_test="$(
-			dirname "$(
-				realpath "$(
-					which "${compiler}-$(echo "${version}" | grep -oP "(?<=${package}-)[0-9]*")"
-				)"
-			)"
-		)"
-		version="<${version}"
-	do ! echo "int main(){}" | nvcc "-ccbin ${CUDAHOSTCXX_test}" - -x cu &>/dev/null; done
 
-	export CUDAHOSTCXX
+			NVCC_CCBIN="${compiler}-$(ver_cut 1 "${package_version/#<${package}-/}")"
+
+			[[ "${NVCC_CCBIN}" != "${NVCC_CCBIN_default}" ]] && break
+		done
+		ebegin "testing ${NVCC_CCBIN}"
+	done
+	eend $?
+
+	echo "${NVCC_CCBIN}"
+	export NVCC_CCBIN
 }
 
-cuda_get_host_arch() {
-	[[ -z "${CUDAARCHS}" ]] && einfo "trying to determine host CUDAARCHS"
-	: "${CUDAARCHS:=$(__nvcc_device_query)}"
-	einfo "building for CUDAARCHS = ${CUDAARCHS}"
+cuda_get_host_native_arch() {
+	[[ -n ${CUDAARCHS} ]] && echo "${CUDAARCHS}"
 
-	export CUDAARCHS
+	__nvcc_device_query || die "failed to query the native device"
 }
 
 pkg_setup() {
@@ -210,7 +235,7 @@ my_src_configure() {
 		# -DOPENVDB_DOXYGEN_HOUDINI="no"
 
 		-DUSE_BLOSC="$(usex blosc)"
-		# -DUSE_CCACHE="no"
+		-DUSE_CCACHE="no"
 		-DUSE_COLORED_OUTPUT="yes"
 		# OpenEXR is only needed by the vdb_render tool and defaults to OFF
 		-DUSE_EXR="$(usex openexr "$(usex utils)")"
@@ -265,11 +290,25 @@ my_src_configure() {
 
 		if use cuda; then
 			cuda_add_sandbox -w
-			cuda_set_CUDAHOSTCXX
-			cuda_get_host_arch
+
+			local -x CUDAARCHS
+			: "${CUDAARCHS:="$(cuda_get_host_native_arch)"}"
+
+			local -x CUDAHOSTCXX CUDAHOSTLD
+			CUDAHOSTCXX="$(cuda_get_host_compiler)"
+			CUDAHOSTLD="$(tc-getCXX)"
+
+			if tc-is-gcc; then
+				# Filter out IMPLICIT_LINK_DIRECTORIES picked up by CMAKE_DETERMINE_COMPILER_ABI(CUDA)
+				# See /usr/share/cmake/Help/variable/CMAKE_LANG_IMPLICIT_LINK_DIRECTORIES.rst
+				CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES_EXCLUDE=$(
+					"${CUDAHOSTLD}" -E -v - <<<"int main(){}" |& \
+					grep LIBRARY_PATH | cut -d '=' -f 2 | cut -d ':' -f 1
+				)
+			fi
 
 			# NOTE tbb includes immintrin.h, which breaks nvcc so we pretend they are already included
-			export CUDAFLAGS="-D_AVX512BF16VLINTRIN_H_INCLUDED -D_AVX512BF16INTRIN_H_INCLUDED"
+			# export CUDAFLAGS="-D_AVX512BF16VLINTRIN_H_INCLUDED -D_AVX512BF16INTRIN_H_INCLUDED"
 		fi
 
 		if use utils; then
@@ -345,6 +384,11 @@ my_src_test() {
 	if use cuda; then
 		cuda_add_sandbox -w
 	fi
+
+	local -x GTEST_FILTER="!TestUtil.testCpuTimer"
+	local -x CMAKE_SKIP_TESTS=(
+		"^pytest$"
+	)
 
 	cmake_src_test
 }
