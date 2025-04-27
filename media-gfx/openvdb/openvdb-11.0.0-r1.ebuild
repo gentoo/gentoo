@@ -78,7 +78,7 @@ RDEPEND="
 		jpeg? ( media-libs/libjpeg-turbo:= )
 		png? ( media-libs/libpng:= )
 		openexr? ( >=media-libs/openexr-3:= )
-		media-libs/libglvnd
+		media-libs/libglvnd[X]
 	)
 	!ax? (
 		dev-libs/log4cplus:=
