@@ -4,7 +4,7 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 WANT_AUTOMAKE=none
 
 inherit autotools python-single-r1 perl-module systemd
