@@ -1,0 +1,20 @@
+--- a/nfoview/paths.py	2025-05-03 12:37:51.767811975 +0200
++++ b/nfoview/paths.py	2025-05-03 12:38:42.881021423 +0200
+@@ -42,7 +42,7 @@
+     return Path(sys.argv[0]).parent / "share" / "nfoview"
+ 
+ def get_data_directory_source():
+-    return Path(__file__).parent.parent / "data"
++    return Path(__file__).parent
+ 
+ def get_locale_directory():
+     if hasattr(sys, "frozen"):
+@@ -53,7 +53,7 @@
+     return Path(sys.argv[0]).parent / "share" / "locale"
+ 
+ def get_locale_directory_source():
+-    return Path(__file__).parent.parent / "locale"
++    return Path(f"{sys.prefix}/share/locale")
+ 
+ CONFIG_HOME_DIR = get_config_home_directory().resolve()
+ DATA_DIR = get_data_directory().resolve()
