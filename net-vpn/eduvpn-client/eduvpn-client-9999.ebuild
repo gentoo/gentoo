@@ -10,7 +10,7 @@ DOCS_DIR="doc"
 PYTHON_COMPAT=( python3_{10..13} )
 
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 docs xdg-utils
+inherit distutils-r1 docs xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -55,10 +55,11 @@ if [[ ${PV} != *9999* ]] ; then
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eduvpn-20240307 )"
 fi
 
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+python_install() {
+	distutils-r1_python_install
+	# See utils.py: client supports loading from sys.prefix or
+	# package_data dir. Move to the sys.prefix so desktop files work.
+	# https://codeberg.org/eduVPN/linux-app/pulls/626
+	rsync -a "${D}/$(python_get_sitedir)/eduvpn/data/share/"* \
+		"${ED}/usr/share/" --remove-source-files || die
 }
