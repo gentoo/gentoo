@@ -79,8 +79,6 @@ src_configure() {
 		-DWITH_OGG_VORBIS=$(usex vorbis)
 		-DWITH_OGG_OPUS=$(usex opus)
 		-DWITH_OSS=$(usex oss)
-		# https://bugs.kde.org/show_bug.cgi?id=499512
-		-DWITH_OPTIMIZED_MEMCPY=OFF
 		-DWITH_PULSEAUDIO=$(usex pulseaudio)
 		-DWITH_QT_AUDIO=$(usex qtmedia)
 	)
