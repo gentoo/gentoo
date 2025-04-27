@@ -37,6 +37,7 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 # TODO: when the *new* wow64 mode (aka USE=wow64) is mature enough to
 # be preferred over abi_x86_32, this should be removed and support for
 # 32bit-only-on-64bit be dropped matching how /no-multilib/ handles it
+# (USE=wow64 should be enabled by default on amd64 then, but not arm64)
 readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
 IUSE="
@@ -46,7 +47,7 @@ IUSE="
 REQUIRED_USE="
 	|| ( abi_x86_32 abi_x86_64 arm64 )
 	crossdev-mingw? ( mingw )
-	wow64? ( abi_x86_64 !abi_x86_32 )
+	wow64? ( !arm64? ( abi_x86_64 !abi_x86_32 ) )
 "
 
 BDEPEND="
@@ -384,7 +385,10 @@ wine_src_install() {
 # Provide generic warnings about missing 32bit support,
 # and run eselect wine update.
 wine_pkg_postinst() {
-	if use !abi_x86_32 && use !wow64; then
+	# on amd64, users sometime disable the default 32bit support due to being
+	# annoyed by the requirements without realizing that they need it
+	if use amd64 && use !abi_x86_32 && use !wow64; then
+		ewarn
 		ewarn "32bit support is disabled. While 64bit applications themselves will"
 		ewarn "work, be warned that it is not unusual that installers or other helpers"
 		ewarn "will attempt to use 32bit and fail. If do not want full USE=abi_x86_32,"
@@ -395,16 +399,25 @@ wine_pkg_postinst() {
 	if use abi_x86_32 && { use opengl || use vulkan; }; then
 		if has_version 'x11-drivers/nvidia-drivers'; then
 			if has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'; then
+				ewarn
 				ewarn "x11-drivers/nvidia-drivers is installed but is built without"
 				ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
 				ewarn "applications under ${PN} will likely not be usable."
 				ewarn "Multi-card setups may need this on media-libs/mesa as well."
 			fi
 		elif has_version 'media-libs/mesa[-abi_x86_32]'; then
+			ewarn
 			ewarn "media-libs/mesa seems to be in use but is built without"
 			ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
 			ewarn "applications under ${PN} will likely not be usable."
 		fi
+	fi
+
+	if use arm64 && use wow64; then
+		ewarn
+		ewarn "${PN} does not include an x86 emulator, running x86 binaries"
+		ewarn "with USE=wow64 on arm64 requires manually setting up xtajit.dll"
+		ewarn "(not packaged) in the Wine prefix."
 	fi
 
 	eselect wine update --if-unset || die
