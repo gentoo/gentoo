@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/939020
+https://github.com/evaleev/libint/pull/366
+
+From 485aaae9e18e9ad3d0d43f20caf8f054ded9b80b Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 28 Apr 2025 16:28:23 +0300
+Subject: [PATCH] Include implicit cstdint
+
+Gcc-15 and unreleased clang-21 don't implicitly include it anymore for
+intptr_t.
+
+https://gcc.gnu.org/gcc-15/porting_to.html#header-dep-changes
+
+Bug: https://bugs.gentoo.org/939020
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/src/bin/libint/memory.h
++++ b/src/bin/libint/memory.h
+@@ -21,6 +21,7 @@
+ #include <limits.h>
+ #include <smart_ptr.h>
+ 
++#include <cstdint>
+ #include <list>
+ 
+ #ifndef _libint2_src_bin_libint_memory_h_
+-- 
+2.49.0
+
