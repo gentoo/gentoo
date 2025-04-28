@@ -9,7 +9,7 @@ SRC_URI="https://gitlab.com/-/project/16178617/uploads/b24da56820651687cafb61180
 
 LICENSE="ISC"
 SLOT="0/3"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="doc"
 
 DOCS=( README.md )
