@@ -43,6 +43,7 @@
 # Bug #949035; removal on 2025-05-28.
 x11-wm/fvwm
 x11-themes/fvwm-themes
+=x11-themes/fvwm-crystal-3.7.5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
 # Package destabilisation mask for potential runtime errors and lack of
