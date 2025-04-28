@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -236,7 +236,7 @@ LICENSE+=" Apache-2.0 ISC MIT MPL-2.0 Unicode-DFS-2016"
 # cargo-husky-1.5.0
 LICENSE+=" MIT "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ppc64"
 IUSE="+battery +gpu +zfs"
 
 # Rust packages ignore CFLAGS and LDFLAGS so let's silence the QA warnings
