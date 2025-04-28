@@ -37,6 +37,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=app-crypt/qca-2.3.7:2[qt6(+),ssl]
+	dev-cpp/nlohmann_json
 	>=dev-db/spatialite-4.2.0
 	dev-db/sqlite:3
 	dev-libs/expat
@@ -54,7 +55,7 @@ COMMON_DEPEND="
 	>=sci-libs/gdal-3.0.4:=[geos,spatialite,sqlite]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	>=sci-libs/proj-4.9.3:=
+	>=sci-libs/proj-8.1:=
 	sys-libs/zlib
 	>=dev-python/qscintilla-2.14.1-r1[qt6(+)]
 	>=x11-libs/qwt-6.2.0-r3:=[polar(+),qt6(+),svg(+)]
@@ -123,9 +124,7 @@ BDEPEND="${PYTHON_DEPS}
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.36.3-testReportDir.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-3.42.2-testReportDir.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -164,29 +163,33 @@ src_configure() {
 
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
+		-DUSE_PRECOMPILED_HEADERS=OFF
+		-DWITH_DRACO=OFF
+		-DWITH_QTWEBKIT=OFF
+		-DWITH_INTERNAL_NLOHMANN_JSON=OFF
 		-DBUILD_WITH_QT6=ON
 		-DWITH_ANALYSIS=ON
-		-DWITH_APIDOC=$(usex doc)
+		-DWITH_DESKTOP=ON
 		-DWITH_GUI=ON
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
-		-DENABLE_TESTS=$(usex test)
+		-DWITH_QWTPOLAR=ON
 		-DWITH_3D=$(usex 3d)
+		-DWITH_APIDOC=$(usex doc)
+		-DENABLE_TESTS=$(usex test)
 		-DWITH_GSL=$(usex georeferencer)
 		$(cmake_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
 		$(cmake_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
-		-DWITH_QWTPOLAR=ON
 		-DWITH_QTWEBENGINE=$(usex webengine)
 		-DWITH_PDAL=$(usex pdal)
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
+		-DWITH_PYTHON=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
 		-DWITH_QUICK=$(usex qml)
-		-DWITH_QTWEBKIT=OFF
-		-DWITH_DRACO=OFF
 	)
 
 	# We list all supported versions *by upstream for this version*
