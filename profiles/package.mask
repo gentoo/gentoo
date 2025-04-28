@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2025-04-28)
+# Unmaintained in Gentoo, is not supported upstream,
+# and has a modern successor that does not bring in additional dependencies.
+# Bug #949035; removal on 2025-05-28.
+x11-wm/fvwm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
 # Package destabilisation mask for potential runtime errors and lack of
 # Qt6-compatible plugins. Bug #955031
