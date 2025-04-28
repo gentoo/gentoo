@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.xz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm arm64 ~x86 ~x64-macos"
 IUSE="debug gnutls ident +irc-plus +ipv6 pam +ssl strict-rfc tcpd test zlib"
 
 # Flaky test needs investigation (bug #719256)
