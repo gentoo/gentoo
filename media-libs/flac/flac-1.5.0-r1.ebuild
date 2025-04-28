@@ -59,6 +59,7 @@ multilib_src_configure() {
 	)
 
 	# bash for https://github.com/xiph/flac/pull/803
+	# should be fixed in >1.5.0
 	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
