@@ -96,10 +96,11 @@ src_configure() {
 	# https://gitlab.com/gnu-clisp/clisp/-/issues/49
 	filter-lto
 
-	# We need this to build on alpha
 	if use alpha; then
+		# We need this to build on alpha
 		replace-flags -O? -O1
 	elif use x86; then
+		# bug #585182
 		append-flags -falign-functions=4
 	fi
 
