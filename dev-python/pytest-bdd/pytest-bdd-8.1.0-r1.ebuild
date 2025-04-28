@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,10 @@ RDEPEND="
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gherkin-bounds.patch
+)
 
 src_test() {
 	# terminal_reporter test needs exact wrapping
