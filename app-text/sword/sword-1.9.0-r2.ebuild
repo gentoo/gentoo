@@ -36,6 +36,8 @@ DOCS=( AUTHORS CODINGSTYLE ChangeLog README examples/ samples/ )
 
 src_configure() {
 	local mycmakeargs=(
+		# skip unnecessary tests, bug #954771
+		-DCMAKE_DISABLE_FIND_PACKAGE_cppcheck="ON"
 		-DCMAKE_SKIP_RPATH="ON"
 		# default is shared and static
 		-DLIBSWORD_LIBRARY_TYPE="Shared"
