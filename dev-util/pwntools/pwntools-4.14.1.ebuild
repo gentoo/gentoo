@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
 	if [[ ${PV} != *_beta* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="~amd64 ~arm64 ~riscv x86"
 	fi
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi
