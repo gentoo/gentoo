@@ -12,7 +12,7 @@ S=${WORKDIR}/${PN}-${P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND=">=dev-vcs/git-2.10.0"
 BDEPEND="
