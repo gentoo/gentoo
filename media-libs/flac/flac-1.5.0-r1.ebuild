@@ -65,7 +65,7 @@ multilib_src_configure() {
 multilib_src_test() {
 	# configure has --enable-exhaustive-tests we could pass...
 	# there's also --disable-thorough-test.
-	if [[ ${UID} != 0 ]]; then
+	if (( UID != 0 )); then
 		# Parallel tests work for CMake but don't for autotools as of 1.4.3
 		# https://github.com/xiph/flac/commit/aaffdcaa969c19aee9dc89be420eae470b55e405
 		emake -j1 check
