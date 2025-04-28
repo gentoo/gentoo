@@ -119,12 +119,12 @@ PATCHES=(
 )
 
 cuda_get_host_compiler() {
-	if [[ -n "${NVCC_CCBIN}" ]]; then
+	if [[ -v NVCC_CCBIN ]]; then
 		echo "${NVCC_CCBIN}"
 		return
 	fi
 
-	if [[ -n "${CUDAHOSTCXX}" ]]; then
+	if [[ -v CUDAHOSTCXX ]]; then
 		echo "${CUDAHOSTCXX}"
 		return
 	fi
@@ -132,12 +132,11 @@ cuda_get_host_compiler() {
 	einfo "Trying to find working CUDA host compiler"
 
 	if ! tc-is-gcc && ! tc-is-clang; then
-		die "$(tc-get-compiler-type) compiler is not supported"
+		die "$(tc-get-compiler-type) compiler is not supported (use gcc or clang)"
 	fi
 
 	local compiler compiler_type compiler_version
 	local package package_version
-	local -x NVCC_CCBIN
 	local NVCC_CCBIN_default
 
 	compiler_type="$(tc-get-compiler-type)"
@@ -172,19 +171,45 @@ cuda_get_host_compiler() {
 	done
 	eend $?
 
+	# clean temp file
+	nonfatal rm -f a.out
+
 	echo "${NVCC_CCBIN}"
 	export NVCC_CCBIN
+
+	einfo "Using ${NVCC_CCBIN} to build (via ${package} iteration)"
 }
 
 cuda_get_host_native_arch() {
-	[[ -n ${CUDAARCHS} ]] && echo "${CUDAARCHS}"
+	if [[ -n ${CUDAARCHS} ]]; then
+		echo "${CUDAARCHS}"
+		return
+	fi
 
-	__nvcc_device_query || die "failed to query the native device"
+	if ! SANDBOX_WRITE=/dev/nvidiactl test -w /dev/nvidiactl ; then
+		eerror
+		eerror "Can not access the GPU at /dev/nvidiactl."
+		eerror "User $(id -nu) is not in the group \"video\"."
+		eerror
+		ewarn
+		ewarn "Can not query the native device. Not setting CUDAARCHS."
+		ewarn "Continuing with default value. Set CUDAARCHS manually if needed."
+		ewarn
+		return 1
+	fi
+
+	__nvcc_device_query || eerror "failed to query the native device"
 }
 
 pkg_setup() {
 	use ax && llvm-r2_pkg_setup
 	use python && python-single-r1_pkg_setup
+
+	if use cuda; then
+		# sets up /dev files as a side-effect
+		# needs to be run in pkg_setup as root
+		nvidia-smi -L >/dev/null
+	fi
 }
 
 src_prepare() {
@@ -304,13 +329,25 @@ my_src_configure() {
 
 		if use cuda; then
 			cuda_add_sandbox -w
+			addwrite "/proc/self/task/"
+			addpredict "/dev/char"
 
-			local -x CUDAARCHS
-			: "${CUDAARCHS:="$(cuda_get_host_native_arch)"}"
+			if [[ ! -v "${CUDAARCHS}" ]]; then
+				local -x CUDAARCHS
+				CUDAARCHS="$(cuda_get_host_native_arch)"
+				einfo "Building with CUDAARCHS=${CUDAARCHS}"
+			fi
 
-			local -x CUDAHOSTCXX CUDAHOSTLD
-			CUDAHOSTCXX="$(cuda_get_host_compiler)"
-			CUDAHOSTLD="$(tc-getCXX)"
+
+			if [[ ! -v CUDAHOSTCXX ]]; then
+				local -x CUDAHOSTCXX
+				CUDAHOSTCXX="$(cuda_get_host_compiler)"
+			fi
+			if [[ ! -v CUDAHOSTLD ]]; then
+				local -x CUDAHOSTLD
+				CUDAHOSTLD="$(tc-getCXX)"
+			fi
+
 
 			if tc-is-gcc; then
 				# Filter out IMPLICIT_LINK_DIRECTORIES picked up by CMAKE_DETERMINE_COMPILER_ABI(CUDA)
@@ -320,9 +357,6 @@ my_src_configure() {
 					grep LIBRARY_PATH | cut -d '=' -f 2 | cut -d ':' -f 1
 				)
 			fi
-
-			# NOTE tbb includes immintrin.h, which breaks nvcc so we pretend they are already included
-			# export CUDAFLAGS="-D_AVX512BF16VLINTRIN_H_INCLUDED -D_AVX512BF16INTRIN_H_INCLUDED"
 		fi
 
 		if use utils; then
