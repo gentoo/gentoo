@@ -75,10 +75,11 @@ src_configure() {
 		-DQTC_INSTALL_PO=$(usex nls)
 		-DENABLE_QT5=$(usex qt5)
 		-DENABLE_QT6=$(usex qt6)
+		-DQTC_QT6_ENABLE_KDE=$(usex plasma)
 		-DBUILD_TESTING=$(usex test)
 		-DQTC_ENABLE_X11=$(usex X)
 	)
-	use qt6 && mycmakeargs+=( -DQTC_QT6_ENABLE_KDE=$(usex plasma) )
+	use qt5 && mycmakeargs+=( -DQTC_QT5_ENABLE_KDE=OFF )
 
 	cmake_src_configure
 }
