@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo flag-o-matic xdg-utils
+inherit edo flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="https://clisp.sourceforge.io/"
@@ -12,8 +12,10 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="2/8"
 KEYWORDS="~alpha ~amd64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm threads +unicode +zlib"
 # "jit" disabled ATM
+IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm threads +unicode +zlib"
+# Needs work still
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-lisp/asdf-2.33-r3
@@ -40,6 +42,10 @@ DEPEND="
 "
 BDEPEND="X? ( x11-misc/imake )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-after_glibc_cfree_bdb.patch
+)
+
 BUILDDIR="builddir"
 
 enable_modules() {
@@ -47,18 +53,18 @@ enable_modules() {
 
 	local m
 	for m in "$@" ; do
-		einfo "Enabling module $m"
+		einfo "Enabling module ${m}"
 		myconf+=( --with-module=${m} )
 	done
 }
 
 src_prepare() {
+	default
+
 	# More than -O1 breaks alpha
 	if use alpha; then
 		sed -i -e 's/-O2//g' src/makemake.in || die
 	fi
-	eapply "${FILESDIR}"/"${P}"-after_glibc_cfree_bdb.patch
-	eapply_user
 
 	xdg_environment_reset
 }
@@ -76,7 +82,8 @@ src_configure() {
 
 	# Temporary workaround for bug #932564 with GCC 15
 	# This can be dropped with a new release.
-	append-flags -fno-tree-dce
+	strip-flags
+	append-flags -fno-tree-dce -fno-tree-dse -fno-tree-pta
 
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/856103
@@ -139,6 +146,13 @@ src_configure() {
 		CLHSROOT="http://www.lispworks.com/reference/HyperSpec/"
 	fi
 
+	myconf+=(
+		--config
+		CC="$(tc-getCC)"
+		CFLAGS="${CFLAGS}"
+		LDFLAGS="${LDFLAGS}"
+	)
+
 	# configure chokes on --sysconfdir option
 	edo ./configure "${myconf[@]}" ${BUILDDIR}
 
@@ -151,6 +165,12 @@ src_compile() {
 	export VARTEXFONTS="${T}"/fonts
 	# parallel build fails
 	emake -C "${BUILDDIR}" -j1
+}
+
+src_test() {
+	emake -C "${BUILDDIR}" -j1 check
+	# Test non-portable features and modules
+	emake -C "${BUILDDIR}" -j1 extracheck mod-check
 }
 
 src_install() {
