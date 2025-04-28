@@ -5,14 +5,11 @@ EAPI=8
 
 inherit flag-o-matic libtool multilib-minimal
 
-DESCRIPTION="Free lossless audio encoder and decoder"
+DESCRIPTION="Free Lossless Audio Codec (RFC 9639)"
 HOMEPAGE="https://xiph.org/flac/"
-SRC_URI="
-	https://github.com/xiph/flac/releases/download/${PV}/${P}.tar.xz
-	https://downloads.xiph.org/releases/${PN}/${P}.tar.xz
-"
+SRC_URI="https://downloads.xiph.org/releases/${PN}/${P}.tar.xz"
 
-LICENSE="BSD FDL-1.2 GPL-2 LGPL-2.1"
+LICENSE="BSD FDL-1.3 GPL-2 LGPL-2.1"
 # <libFLAC SONAME>-<libFLAC++ SONAME>
 SLOT="0/11-14"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
@@ -32,7 +29,7 @@ BDEPEND="
 
 src_prepare() {
 	default
-	elibtoolize
+	elibtoolize # without it CFLAGS are not respected
 }
 
 multilib_src_configure() {
@@ -41,7 +38,6 @@ multilib_src_configure() {
 	append-flags $(test-flags-CC -fno-ipa-pta)
 
 	local myeconfargs=(
-		# leave enabling multithreading up to the build system
 		--disable-doxygen-docs
 		--disable-examples
 		--disable-valgrind-testing
