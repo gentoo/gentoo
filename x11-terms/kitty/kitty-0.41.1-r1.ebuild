@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit edo go-env optfeature multiprocessing
+inherit edo flag-o-matic go-env optfeature multiprocessing
 inherit python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -135,6 +135,10 @@ src_prepare() {
 src_compile() {
 	tc-export CC
 	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
+
+	# may cause startup performance issues (bug #954894), kitty upstream did
+	# a workaround in the next version but ideally no one should use these
+	filter-flags -fgraphite-identity -floop-block -floop-parallelize-all
 
 	go-env_set_compile_environment
 	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false"
