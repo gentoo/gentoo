@@ -42,6 +42,11 @@ src_prepare() {
 		-e "/BUILD_DIR/s|build|/var/lib/caffe2/|" \
 		tools/setup_helpers/env.py \
 		|| die
+	# Drop legacy from pyproject.toml
+	sed -i \
+		-e "/build-backend/s|:__legacy__||" \
+		pyproject.toml \
+		|| die
 	distutils-r1_src_prepare
 
 	# Get object file from caffe2
