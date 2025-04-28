@@ -18,7 +18,7 @@ LICENSE="
 "
 SLOT="0"
 if [[ ${PV} != *beta* && ${PV} != *rc* ]]; then
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~riscv x86"
 fi
 IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm libretro libsamplerate mp3 musepack nls notify +nullout opus oss pulseaudio pipewire sc68 shellexec +supereq vorbis wavpack zip"
 
