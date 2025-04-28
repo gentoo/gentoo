@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 src_prepare() {
 	default
