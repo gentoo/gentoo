@@ -35,7 +35,7 @@ JAVA_SRC_DIR="tapestry-json/src/main/java"
 src_compile() {
 	# build classes needed for compilation
 	ejavac -d target/deps \
-		-cp "$(java-pkg_getjars slf4j-api)" \
+		-cp "$(java-pkg_getjars --build-only slf4j-api)" \
 		$(find \
 			commons/src/main/java \
 			plastic-asm/src/main/java \
