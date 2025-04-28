@@ -40,6 +40,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.13.79-cmake-pkgconfig-libdir.patch
+)
+
 src_prepare() {
 	# This test assumes being built with automake (checks for .libs/x).
 	sed -i -e 's/test_81000_zzshowme_check_sfx/skip_&/' test/zziptests.py || die
