@@ -63,7 +63,7 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
 fi
 
-# list of applications ported to KF6 in SLOT=6 having to block SLOT=5
+# list of applications ported to KF6 having to block SLOT=5
 if $(ver_test -gt 24.01.75); then
 	case ${PN} in
 		akonadi | \
@@ -248,7 +248,7 @@ if $(ver_test -gt 24.01.75); then
 	esac
 fi
 
-# list of applications ported to KF6 post-24.02 in SLOT=6 having to block SLOT=5
+# list of applications ported to KF6 post-24.02 having to block SLOT=5
 if $(ver_test -gt 24.04.75); then
 	case ${PN} in
 		audex | \
@@ -262,7 +262,7 @@ if $(ver_test -gt 24.04.75); then
 	esac
 fi
 
-# list of applications ported to KF6 post-24.05 in SLOT=6 having to block SLOT=5
+# list of applications ported to KF6 post-24.05 having to block SLOT=5
 if $(ver_test -gt 24.07.75); then
 	case ${PN} in
 		k3b | \
@@ -285,7 +285,7 @@ if $(ver_test -gt 24.07.75); then
 	esac
 fi
 
-# list of applications ported to KF6 post-24.08 in SLOT=6 having to block SLOT=5
+# list of applications ported to KF6 post-24.08 having to block SLOT=5
 if $(ver_test -gt 24.11.75); then
 	case ${PN} in
 		cantor | \
@@ -295,6 +295,15 @@ if $(ver_test -gt 24.11.75); then
 		marble | \
 		minuet | \
 		step)
+			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
+		*) ;;
+	esac
+fi
+
+# list of applications ported to KF6 post-25.04 having to block SLOT=5
+if $(ver_test -gt 25.07.50); then
+	case ${PN} in
+		artikulate)
 			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
 		*) ;;
 	esac
