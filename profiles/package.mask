@@ -36,7 +36,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-14)
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
 # Package destabilisation mask for potential runtime errors and lack of
 # Qt6-compatible plugins. Bug #955031
 ~sci-geosciences/qgis-3.38.3
