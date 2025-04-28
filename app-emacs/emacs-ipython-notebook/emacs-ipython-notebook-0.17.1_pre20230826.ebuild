@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Check package version in "lisp/ein-pkg.el".
@@ -7,7 +7,7 @@
 EAPI=8
 
 [[ "${PV}" == *20230826 ]] && COMMIT=998ba22660be2035cd23bed1555e47748c4da8a2
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit elisp readme.gentoo-r1 python-single-r1
 
@@ -17,8 +17,8 @@ SRC_URI="https://github.com/millejoh/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
