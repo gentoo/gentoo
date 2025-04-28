@@ -11,35 +11,44 @@ HOMEPAGE="https://github.com/sasagawa888/eisl/"
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/sasagawa888/${PN}.git"
+	EGIT_REPO_URI="https://github.com/sasagawa888/${PN}"
 else
 	SRC_URI="https://github.com/sasagawa888/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.gh.tar.gz"
 
 	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-RESTRICT="test"  # Tests run cppcheck (and fail)
+RESTRICT="test"  # Tests run cppcheck (and fail).
 
 DOCS=( README{,-ja}.md documents )
 
-RDEPEND="sys-libs/ncurses:="
-DEPEND="${RDEPEND}"
+RDEPEND="
+	sys-libs/ncurses:=
+"
+DEPEND="
+	${RDEPEND}
+"
 
-PATCHES=( "${FILESDIR}/${PN}-3.60-Makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.42-makefile.patch"
+)
 
 src_compile() {
 	# bug https://bugs.gentoo.org/939771
 	# don't clean and compile in one invocation with --shuffle possible
-	emake CC="$(tc-getCC)" clean
-	emake CC="$(tc-getCC)" edlis eisl
+	local target=""
+	for target in clean edlis eisl ; do
+		emake CC="$(tc-getCC)" "${target}"
+	done
 }
 
 src_install() {
 	exeinto /usr/bin
-	doexe edlis eisl
+	doexe edlis
+	doexe eisl
 
 	# Compilation of ISLisp files on installation fails.
 	# Do not compile them and mimic "make install".
