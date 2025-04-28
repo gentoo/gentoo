@@ -10,4 +10,5 @@
 		<doc>https://github.com/jtesta/ssh-audit/wiki</doc>
 		<remote-id type="github">jtesta/ssh-audit</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
