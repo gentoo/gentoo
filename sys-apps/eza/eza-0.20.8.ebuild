@@ -224,7 +224,7 @@ LICENSE="EUPL-1.2"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+git"
 
 DEPEND="git? ( =dev-libs/libgit2-1.8*:= )"
