@@ -66,7 +66,6 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	rm -r "${ED}"/usr/bin || die
 	rm -r "${ED}"/usr/include || die
 	rm -r "${ED}"/usr/share || die
 	rm -r "${ED}"/usr/lib*/pkgconfig || die
