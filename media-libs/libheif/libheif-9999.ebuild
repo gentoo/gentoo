@@ -18,12 +18,11 @@ fi
 
 LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+aom doc examples gdk-pixbuf go openh264 rav1e svt-av1 test +threads +webp x265"
+IUSE="+aom doc examples gdk-pixbuf openh264 rav1e svt-av1 test +threads +webp x265"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? ( app-text/doxygen )
-	go? ( dev-lang/go:= )
 "
 DEPEND="
 	media-libs/dav1d:=[${MULTILIB_USEDEP}]
@@ -47,8 +46,6 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 multilib_src_configure() {
-	export GO111MODULE=auto
-
 	local mycmakeargs=(
 		$(cmake_use_find_package doc Doxygen)
 		-DBUILD_TESTING=$(usex test)
