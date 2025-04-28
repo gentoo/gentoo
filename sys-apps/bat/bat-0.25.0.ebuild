@@ -226,7 +226,7 @@ LICENSE="|| ( MIT Apache-2.0 )"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD LGPL-3+ MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~mips ppc64 ~riscv ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
