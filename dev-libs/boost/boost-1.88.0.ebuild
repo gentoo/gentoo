@@ -28,8 +28,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test-full? ( test )
 "
-# Restricted for bug #954810 (network access), will be fixed shortly
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
@@ -50,6 +49,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.81.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	"${FILESDIR}"/${PN}-1.87.0-process-error-alpha.patch
+	"${FILESDIR}"/${PN}-1.88.0-beast-network-sandbox.patch
+	"${FILESDIR}"/${PN}-1.88.0-bind-no-Werror.patch
+	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
 )
 
 create_user-config.jam() {
@@ -246,6 +248,8 @@ multilib_src_test() {
 	local libs_excluded=(
 		# fails to use std::reverse_copy
 		"algorithm"
+		# is_invocable.cpp:35:58: error: static assertion failed: (std::is_invocable<Callable, Args...>() == boost::callable_traits::is_invocable<Callable, Args...>())
+		"callable_traits"
 		# test output comparison failure
 		"config"
 		# "C++03 support was deprecated in Boost.Chrono 1.82" ??
