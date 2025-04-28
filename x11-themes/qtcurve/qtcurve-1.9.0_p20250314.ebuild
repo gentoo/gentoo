@@ -67,7 +67,6 @@ DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 src_configure() {
 	local mycmakeargs=(
-		-DLIB_INSTALL_DIR=$(get_libdir)
 		-DENABLE_QT4=OFF
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
