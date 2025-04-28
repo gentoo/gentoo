@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
+# Unmaintained in Gentoo, depends on masked x11-wm/fvwm,
+# SRC_URI uses mirror://gentoo and the files don't exist on mirrors.
+# Bug #949035; Removal on 2025-05-28 (with x11-wm/fvwm)
+x11-themes/fvwm_icons
+x11-themes/fvwm_sounds
+
+# Matt Jolly <kangie@gentoo.org> (2025-04-28)
 # Unmaintained in Gentoo, is not supported upstream,
 # and has a modern successor that does not bring in additional dependencies.
 # Migrate to x11-wm/fvwm3: https://github.com/fvwmorg/fvwm3/discussions/878
