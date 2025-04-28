@@ -14,7 +14,6 @@ SRC_URI="https://download.sourceforge.net/cdemu/gcdemu/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # librsvg for pixbuf-loader
