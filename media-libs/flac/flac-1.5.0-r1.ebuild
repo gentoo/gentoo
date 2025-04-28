@@ -41,6 +41,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-doxygen-docs
 		--disable-examples
+		--disable-oss-fuzzers # clang only
 		--disable-valgrind-testing
 		--disable-version-from-git
 		$([[ ${CHOST} == *-darwin* ]] && echo "--disable-asm-optimizations")
