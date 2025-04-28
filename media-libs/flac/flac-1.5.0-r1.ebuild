@@ -21,7 +21,6 @@ REQUIRED_USE="cpu_flags_x86_avx2? ( cpu_flags_x86_avx )"
 RDEPEND="ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-arch/xz-utils
 	sys-devel/gettext
 	virtual/pkgconfig
 "
