@@ -39,6 +39,7 @@
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
 # Unmaintained in Gentoo, is not supported upstream,
 # and has a modern successor that does not bring in additional dependencies.
+# Migrate to x11-wm/fvwm3: https://github.com/fvwmorg/fvwm3/discussions/878
 # Bug #949035; removal on 2025-05-28.
 x11-wm/fvwm
 
