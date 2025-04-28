@@ -11,7 +11,7 @@ S="${WORKDIR}/AutoDoc-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 # The test suite tries to LoadPackage this
 BDEPEND="test? ( dev-gap/io )"
