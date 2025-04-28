@@ -26,6 +26,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+DOCS=( AUTHORS {CHANGELOG,README}.md)
+
 src_prepare() {
 	default
 	elibtoolize # without it CFLAGS are not respected
