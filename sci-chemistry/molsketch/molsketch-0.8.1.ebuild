@@ -25,6 +25,8 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.0-_DEFAULT_SOURCE.patch
+	# bug #955047, https://github.com/hvennekate/Molsketch/pull/17
+	"${FILESDIR}"/${PN}-0.8.1-obabel_namespace.patch
 )
 
 src_configure() {
