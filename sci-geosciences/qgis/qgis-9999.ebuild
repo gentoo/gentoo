@@ -117,6 +117,7 @@ BDEPEND="${PYTHON_DEPS}
 				dev-python/pyqt6[${PYTHON_USEDEP},testlib]
 				dev-python/nose2[${PYTHON_USEDEP}]
 				dev-python/mock[${PYTHON_USEDEP}]
+				dev-python/psycopg:2[${PYTHON_USEDEP}]
 			')
 		)
 	)
