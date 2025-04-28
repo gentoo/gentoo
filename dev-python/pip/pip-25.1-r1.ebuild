@@ -53,7 +53,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/ensurepip-setuptools
-			<dev-python/ensurepip-wheel-0.46
+			dev-python/ensurepip-wheel
 			dev-python/freezegun[${PYTHON_USEDEP}]
 			dev-python/pretend[${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
