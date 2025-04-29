@@ -50,6 +50,7 @@ x11-themes/fvwm_sounds
 # Bug #949035; removal on 2025-05-28.
 x11-wm/fvwm
 x11-themes/fvwm-themes
+x11-themes/fvwm-themes-extra
 =x11-themes/fvwm-crystal-3.7.5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
