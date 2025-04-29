@@ -30,6 +30,7 @@ net-p2p/ktorrent rss webengine
 kde-apps/kalarm pim
 gnome-base/gnome extras
 games-engines/scummvm vpx
+net-libs/pjproject vpx
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libaom casualties
