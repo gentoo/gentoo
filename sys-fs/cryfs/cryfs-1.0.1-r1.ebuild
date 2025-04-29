@@ -10,10 +10,8 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
 else
-	SRC_URI="
-		https://github.com/cryfs/cryfs/archive/refs/tags/${PV}.tar.gz
-			-> ${P}.tar.gz
-	"
+	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
+	S=${WORKDIR}
 	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
