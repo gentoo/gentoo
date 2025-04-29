@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-
+LLVM_OPTIONAL=1
 LLVM_COMPAT=( 15 )
 
 inherit cmake cuda flag-o-matic llvm-r2 multibuild python-single-r1 toolchain-funcs
@@ -32,6 +32,7 @@ REQUIRED_USE="
 		abi$((OPENVDB_ABI - 1))-compat
 		abi$((OPENVDB_ABI - 2))-compat
 	)
+	ax? ( ${LLVM_REQUIRED_USE} )
 	cpu_flags_x86_avx? ( cpu_flags_x86_sse4_2 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	blosc? ( zlib )
