@@ -3,7 +3,8 @@
 
 EAPI=8
 
-# TODO: meson
+# Note: upstream meson port is incomplete.
+# https://github.com/apache/arrow/issues/45778
 inherit cmake
 
 # arrow.git: testing
