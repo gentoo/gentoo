@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,11 +54,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
-
-	# Do not hardcode the python libpath #577612
-	sed -i \
-		-e '/DESTINATION/s:"lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}":${PYTHON_SITEDIR}:' \
-		src/libcec/cmake/CheckPlatformSupport.cmake || die
 
 	sed -Ee 's|[ ~]?#DIST#;?||g' debian/changelog.in > ChangeLog || die
 
