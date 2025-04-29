@@ -42,7 +42,7 @@ src_configure() {
 		# this package forces NO_DEFAULT_PATHS
 		-DLLVM_BINARY_DIR="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 		# set correct install paths
-		-DFLANG_RT_INSTALL_RESOURCE_PATH="/usr/lib/clang/${LLVM_MAJOR}"
+		-DFLANG_RT_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
 		-DLLVM_DEFAULT_TARGET_TRIPLE="${CHOST}"
 
 		-DFLANG_RT_INCLUDE_TESTS=$(usex test)
