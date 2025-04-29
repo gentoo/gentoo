@@ -37,6 +37,14 @@ RDEPEND=">=dev-python/requests-2.32.2[${PYTHON_USEDEP}]
 
 distutils_enable_tests pytest
 
+EPYTEST_IGNORE=(
+	# These tests do not make sense downstream
+	"tests/smoke/test_dists.py"
+	# Requires ability to run docker and pytest-docker
+	# https://bugs.gentoo.org/938085
+	"tests/functional"
+)
+
 python_install_all() {
 	distutils-r1_python_install_all
 	dodoc -r *.rst docs
