@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 # !<net-libs/pjproject-2.15.1-r1[libyuv]: bug 955077
 RDEPEND="
 	!<net-libs/pjproject-2.15.1-r1[libyuv]
-	>=media-libs/libjpeg-turbo-3.0.0
+	>=media-libs/libjpeg-turbo-3.0.0:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
