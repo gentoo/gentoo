@@ -88,4 +88,5 @@ pkg_postinst() {
 	optfeature "Marathon data files" games-fps/alephone-marathon
 	optfeature "Marathon 2 Durandal data files" games-fps/alephone-durandal
 	optfeature "Marathon: Infinity data files" games-fps/alephone-infinity
+	optfeature "Apotheosis X data files" games-fps/alephone-apotheosis-x
 }
