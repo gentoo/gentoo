@@ -76,8 +76,7 @@ src_test() {
 	edo ${CARGO} nextest run $(usev !debug '--release') \
 		--color always \
 		--all-features \
-		--tests \
-		-- --skip pkg::env::current_dir
+		--tests
 }
 
 src_install() {
