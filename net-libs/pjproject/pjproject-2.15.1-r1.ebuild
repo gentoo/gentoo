@@ -40,6 +40,7 @@ RDEPEND="
 	)
 	srtp? ( >=net-libs/libsrtp-2.3.0:= )
 	ssl? ( dev-libs/openssl:0= )
+	vpx? ( media-libs/libvpx:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
