@@ -178,6 +178,9 @@ src_configure() {
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
+	# bug #945282
+	append-cflags -std=gnu17
+
 	# Enabling full docs appears to break doc building. If not
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
 	# graphviz are detected. pandoc has loads of dependencies anyway.
