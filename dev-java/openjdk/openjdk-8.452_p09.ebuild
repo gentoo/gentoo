@@ -192,6 +192,9 @@ src_configure() {
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
+	# bug #954888
+	append-cflags -std=gnu17
+
 	tc-export_build_env CC CXX PKG_CONFIG STRIP
 
 	local myconf=(
