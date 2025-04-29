@@ -28,6 +28,7 @@ PDEPEND="biber? ( ~dev-tex/biber-2.$(ver_cut 2) )"
 # corefonts for "Courier New"
 BDEPEND="
 	doc? (
+		dev-texlive/texlive-luatex
 		media-fonts/corefonts
 		virtual/latex-base
 	)
