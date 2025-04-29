@@ -340,15 +340,26 @@ multilib_src_test() {
 
 	# Finally build & run all test suites
 	einfo "Running the following tests: ${lib_names[*]}"
+
+	local failed_tests=()
 	for lib in "${libs[@]}"; do
 		# Skip libraries without test directory
 		[[ ! -d "${lib}/test" ]] && continue
 
 		# Move into library test dir & run all tests
 		pushd "${lib}/test" >/dev/null || die
-			edob -m "Running tests in: $(pwd)" ejam --prefix="${EPREFIX}"/usr "${TEST_OPTIONS[@]}"
-		popd >/dev/null
+		nonfatal edob -m "Running tests in: $(pwd)" ejam --prefix="${EPREFIX}"/usr "${TEST_OPTIONS[@]}" || failed_tests+=( "${lib}" )
+		popd >/dev/null || die
 	done
+
+	if (( ${#failed_tests[@]} )); then
+		eerror "Failed tests. Printing summary."
+		local failed_test
+		for failed_test in "${failed_tests[@]}" ; do
+			eerror "Failed test: ${failed_test}"
+		done
+		die "Tests failed."
+	fi
 }
 
 multilib_src_install() {
