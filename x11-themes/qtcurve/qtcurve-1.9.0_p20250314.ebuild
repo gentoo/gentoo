@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/system/qtcurve"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="gtk nls plasma qt5 +qt6 test X"
+IUSE="gtk plasma qt5 +qt6 test X"
 
 REQUIRED_USE="gtk? ( X )
 	|| ( gtk qt5 qt6 )
@@ -59,8 +59,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-	plasma? ( kde-frameworks/extra-cmake-modules:0 )
+	plasma? (
+		kde-frameworks/extra-cmake-modules:0
+		kde-frameworks/ki18n:6
+	)
 "
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
@@ -71,7 +73,7 @@ src_configure() {
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
 		-DENABLE_GTK2=$(usex gtk)
-		-DQTC_INSTALL_PO=$(usex nls)
+		-DQTC_INSTALL_PO=$(usex plasma)
 		-DENABLE_QT5=$(usex qt5)
 		-DENABLE_QT6=$(usex qt6)
 		-DQTC_QT6_ENABLE_KDE=$(usex plasma)
