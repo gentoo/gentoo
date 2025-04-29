@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,11 @@ ruby_add_bdepend "doc? ( dev-ruby/rdoc )
 	test? ( >=dev-ruby/minitest-5.0 )"
 
 all_ruby_prepare() {
-	if ! use latex; then
+	if use latex; then
+		# https://github.com/gettalong/kramdown/issues/820
+		sed -e "/EXCLUDE_LATEX_FILES =/a'test/testcases/block/14_table/table_with_footnote.text'," \
+			-i test/test_files.rb || die
+	else
 		# Remove latex tests. They will fail gracefully when latex isn't
 		# present at all, but not when components are missing (most
 		# notable ucs.sty).
