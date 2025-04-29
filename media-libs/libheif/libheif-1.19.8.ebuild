@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic gnome2-utils xdg
+inherit cmake-multilib gnome2-utils xdg
 
 DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 HOMEPAGE="https://github.com/strukturag/libheif"
@@ -44,13 +44,6 @@ RDEPEND="${DEPEND}"
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
 )
-
-src_configure() {
-	# https://github.com/strukturag/libheif/issues/1436#issuecomment-2833800946
-	append-flags -fno-strict-aliasing
-
-	multilib-minimal_src_configure
-}
 
 multilib_src_configure() {
 	local mycmakeargs=(
