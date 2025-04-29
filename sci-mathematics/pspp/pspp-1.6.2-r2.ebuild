@@ -38,7 +38,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( virtual/latex-base )"
+	doc? ( virtual/texi2dvi )"
 
 PATCHES=( "${FILESDIR}/pspp-1.6.2-underlinking.patch" )
 
