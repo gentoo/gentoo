@@ -14,7 +14,7 @@ SRC_URI="https://github.com/python-visualization/${PN}/archive/refs/tags/v${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.1-gentoo.patch
