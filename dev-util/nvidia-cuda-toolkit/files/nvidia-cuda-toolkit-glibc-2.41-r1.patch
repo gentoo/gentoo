@@ -12,6 +12,16 @@ of
 
    extern double cospi (double __x) noexcept (true); extern double __cospi (double __x) noexcept (true);
 
+/opt/cuda-12.8.1/bin/../targets/x86_64-linux/include/crt/math_functions.hpp:2982:17: error: 'sinpi' is missing exception specification 'throw()'
+ 2982 | __func__(double sinpi(double a))
+      |                 ^
+      |                                  throw()
+/opt/cuda-12.8.1/bin/../targets/x86_64-linux/include/crt/func_macro.h:37:16: note: expanded from macro '__func__'
+   37 |         inline decl
+      |                ^
+/opt/cuda-12.8.1/bin/../targets/x86_64-linux/include/crt/math_functions.h:6006:17: note: previous declaration is here
+ 6006 | __func__(double sinpi(double a));
+
 See-Also: https://sourceware.org/git/?p=glibc.git;a=commit;h=0ae0af68d8fa3bf6cbe1e4f1de5929ff71de67b3
 Signed-off-by: Paul Zander <negril.nx@gmail.com>
 
@@ -67,6 +77,43 @@ index d8201f9..a9b19d4 100644
  /**
   * \ingroup CUDA_MATH_DOUBLE
   * \brief  Calculate the sine and cosine of the first input argument 
+diff --git a/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.hpp b/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.hpp
+index cc09b91..11eec71 100644
+--- a/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.hpp
++++ b/builds/cuda_nvcc/targets/x86_64-linux/include/crt/math_functions.hpp
+@@ -2979,7 +2979,7 @@ __func__(double rcbrt(const double a))
+   return t;
+ }
+ 
+-__func__(double sinpi(double a))
++__func__(double sinpi(double a)) throw()
+ {
+   int n;
+ 
+@@ -3009,7 +3009,7 @@ __func__(double sinpi(double a))
+   return a;
+ }
+ 
+-__func__(double cospi(double a))
++__func__(double cospi(double a)) throw()
+ {
+   int n;
+ 
+@@ -3340,12 +3340,12 @@ __func__(float rcbrtf(const float a))
+   return static_cast<float>(rcbrt(static_cast<double>(a)));
+ }
+ 
+-__func__(float sinpif(const float a))
++__func__(float sinpif(const float a)) throw()
+ {
+   return static_cast<float>(sinpi(static_cast<double>(a)));
+ }
+ 
+-__func__(float cospif(const float a))
++__func__(float cospif(const float a)) throw()
+ {
+   return static_cast<float>(cospi(static_cast<double>(a)));
+ }
 -- 
 2.48.1
 
