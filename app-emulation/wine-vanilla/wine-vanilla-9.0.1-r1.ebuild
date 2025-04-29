@@ -33,7 +33,11 @@ IUSE="
 	+truetype udev +unwind usb v4l +vulkan wayland +xcomposite
 	xinerama
 "
-REQUIRED_USE="X? ( truetype )"
+# wrt opengl, wine-9 did not support EGL with wayland yet, use 10+
+REQUIRED_USE="
+	X? ( truetype )
+	opengl? ( X )
+"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -48,7 +52,6 @@ WINE_DLOPEN_DEPEND="
 		x11-libs/libXrandr[${WINE_USEDEP}]
 		x11-libs/libXrender[${WINE_USEDEP}]
 		x11-libs/libXxf86vm[${WINE_USEDEP}]
-		opengl? ( media-libs/libglvnd[X,${WINE_USEDEP}] )
 		xcomposite? ( x11-libs/libXcomposite[${WINE_USEDEP}] )
 		xinerama? ( x11-libs/libXinerama[${WINE_USEDEP}] )
 	)
@@ -58,6 +61,7 @@ WINE_DLOPEN_DEPEND="
 	kerberos? ( virtual/krb5[${WINE_USEDEP}] )
 	netapi? ( net-fs/samba[${WINE_USEDEP}] )
 	odbc? ( dev-db/unixODBC[${WINE_USEDEP}] )
+	opengl? ( media-libs/libglvnd[X,${WINE_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${WINE_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${WINE_USEDEP}] )
 	truetype? ( media-libs/freetype[${WINE_USEDEP}] )
