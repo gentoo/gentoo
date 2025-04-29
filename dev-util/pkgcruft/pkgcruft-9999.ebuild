@@ -84,37 +84,7 @@ src_test() {
 		--color always \
 		--all-features \
 		--tests \
-		--no-fail-fast \
-		-- \
-		--skip 'commands::tests::check' \
-		--skip 'dependency::tests::check' \
-		--skip 'dependency_slot_missing::tests::check' \
-		--skip 'eapi_stale::tests::check' \
-		--skip 'eapi_status::tests::check' \
-		--skip 'ebuild_name::tests::check' \
-		--skip 'eclass::tests::check' \
-		--skip 'filesdir::tests::check' \
-		--skip 'header::tests::check' \
-		--skip 'homepage::tests::check' \
-		--skip 'ignore::tests::check' \
-		--skip 'iuse::tests::check' \
-		--skip 'keywords::tests::check' \
-		--skip 'keywords_dropped::tests::check' \
-		--skip 'license::tests::check' \
-		--skip 'live::tests::check' \
-		--skip 'manifest::tests::check' \
-		--skip 'metadata::tests::check' \
-		--skip 'properties::tests::check' \
-		--skip 'python_update::tests::check' \
-		--skip 'repo_layout::tests::check' \
-		--skip 'restrict::tests::check' \
-		--skip 'restrict_test_missing::tests::check' \
-		--skip 'ruby_update::tests::check' \
-		--skip 'src_uri::tests::check' \
-		--skip 'unstable_only::tests::check' \
-		--skip 'use_local::tests::check' \
-		--skip 'variable_order::tests::check' \
-		--skip 'whitespace::tests::check'
+		--no-fail-fast
 }
 
 src_install() {
