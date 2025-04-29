@@ -25,9 +25,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 
 BDEPEND="test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
 		>=dev-python/pytest-console-scripts-1.3.1[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-5.2[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		)"
