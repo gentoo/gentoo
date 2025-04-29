@@ -41,7 +41,7 @@ src_prepare() {
 	default
 
 	# Unnecessary restriction
-	sed -i -e '/importlib-metadata/s:, <= [0-9.]*::' pyproject.toml || die
+	sed -i -e '/importlib-metadata/s:, < [0-9.]*::' pyproject.toml || die
 }
 
 python_test() {
