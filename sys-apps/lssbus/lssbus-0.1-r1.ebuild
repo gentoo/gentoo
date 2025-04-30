@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Small utility for Linux/SPARC that list devices on SBUS"
 HOMEPAGE="https://people.redhat.com/tcallawa/lssbus/"
@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="-* sparc"
 
 src_compile() {
+	append-cflags -std=gnu89 # Bug #951330
+
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
