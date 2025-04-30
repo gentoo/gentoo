@@ -26,7 +26,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-VIDEO_CARDS="panfrost"
+VIDEO_CARDS="asahi panfrost"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -68,6 +68,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	tools_enable video_cards_asahi asahi
 	tools_enable video_cards_panfrost panfrost
 
 	tools_list() {
@@ -108,6 +109,7 @@ src_configure() {
 src_install() {
 	dobin "${BUILD_DIR}"/src/compiler/clc/mesa_clc
 	dobin "${BUILD_DIR}"/src/compiler/spirv/vtn_bindgen2
+	use video_cards_asahi && dobin "${BUILD_DIR}"/src/asahi/clc/asahi_clc
 	use video_cards_panfrost && dobin "${BUILD_DIR}"/src/panfrost/clc/panfrost_compile
 }
 
