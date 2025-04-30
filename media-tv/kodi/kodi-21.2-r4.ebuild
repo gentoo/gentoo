@@ -155,7 +155,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		sys-libs/libcap
 	)
 	cec? (
-		>=dev-libs/libcec-4.0[-cubox]
+		>=dev-libs/libcec-4.0[-cubox(-)]
 	)
 	dbus? (
 		sys-apps/dbus
