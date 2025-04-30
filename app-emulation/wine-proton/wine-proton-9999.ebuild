@@ -4,10 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit python-any-r1 readme.gentoo-r1 toolchain-funcs wine
+inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=9.3.1
+WINE_MONO=10.0.0
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
@@ -23,13 +23,15 @@ fi
 DESCRIPTION="Valve Software's fork of Wine"
 HOMEPAGE="https://github.com/ValveSoftware/wine/"
 
-LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
+LICENSE="LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
-	+alsa crossdev-mingw +dbus +fontconfig +gecko +gstreamer
+	+X +alsa crossdev-mingw +dbus ffmpeg +fontconfig +gecko +gstreamer
 	llvm-libunwind +mono nls perl pulseaudio +sdl selinux +ssl udev
-	+unwind usb v4l video_cards_amdgpu +xcomposite xinerama
+	+unwind usb v4l wayland video_cards_amdgpu +xcomposite xinerama
 "
+# headless is not really supported with wine-proton, use normal Wine
+REQUIRED_USE="|| ( X wayland )"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -39,14 +41,18 @@ RESTRICT="test"
 WINE_DLOPEN_DEPEND="
 	dev-libs/libgcrypt:=[${WINE_USEDEP}]
 	media-libs/freetype[${WINE_USEDEP}]
-	media-libs/libglvnd[X,${WINE_USEDEP}]
-	media-libs/vulkan-loader[X,${WINE_USEDEP}]
-	x11-libs/libXcursor[${WINE_USEDEP}]
-	x11-libs/libXfixes[${WINE_USEDEP}]
-	x11-libs/libXi[${WINE_USEDEP}]
-	x11-libs/libXrandr[${WINE_USEDEP}]
-	x11-libs/libXrender[${WINE_USEDEP}]
-	x11-libs/libXxf86vm[${WINE_USEDEP}]
+	media-libs/libglvnd[X?,${WINE_USEDEP}]
+	media-libs/vulkan-loader[X?,wayland?,${WINE_USEDEP}]
+	X? (
+		x11-libs/libXcursor[${WINE_USEDEP}]
+		x11-libs/libXfixes[${WINE_USEDEP}]
+		x11-libs/libXi[${WINE_USEDEP}]
+		x11-libs/libXrandr[${WINE_USEDEP}]
+		x11-libs/libXrender[${WINE_USEDEP}]
+		x11-libs/libXxf86vm[${WINE_USEDEP}]
+		xcomposite? ( x11-libs/libXcomposite[${WINE_USEDEP}] )
+		xinerama? ( x11-libs/libXinerama[${WINE_USEDEP}] )
+	)
 	dbus? ( sys-apps/dbus[${WINE_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig[${WINE_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${WINE_USEDEP}] )
@@ -55,14 +61,15 @@ WINE_DLOPEN_DEPEND="
 		net-libs/gnutls:=[${WINE_USEDEP}]
 	)
 	v4l? ( media-libs/libv4l[${WINE_USEDEP}] )
-	xcomposite? ( x11-libs/libXcomposite[${WINE_USEDEP}] )
-	xinerama? ( x11-libs/libXinerama[${WINE_USEDEP}] )
 "
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
-	x11-libs/libX11[${WINE_USEDEP}]
-	x11-libs/libXext[${WINE_USEDEP}]
+	X? (
+		x11-libs/libX11[${WINE_USEDEP}]
+		x11-libs/libXext[${WINE_USEDEP}]
+	)
 	alsa? ( media-libs/alsa-lib[${WINE_USEDEP}] )
+	ffmpeg? ( media-video/ffmpeg:=[${WINE_USEDEP}] )
 	gstreamer? (
 		dev-libs/glib:2[${WINE_USEDEP}]
 		media-libs/gst-plugins-base:1.0[opengl,${WINE_USEDEP}]
@@ -76,6 +83,10 @@ WINE_COMMON_DEPEND="
 	)
 	usb? ( dev-libs/libusb:1[${WINE_USEDEP}] )
 	video_cards_amdgpu? ( x11-libs/libdrm[video_cards_amdgpu,${WINE_USEDEP}] )
+	wayland? (
+		dev-libs/wayland[${WINE_USEDEP}]
+		x11-libs/libxkbcommon[${WINE_USEDEP}]
+	)
 "
 RDEPEND="
 	${WINE_COMMON_DEPEND}
@@ -99,7 +110,7 @@ DEPEND="
 		llvm-runtimes/compiler-rt:*[atomic-builtins(-)]
 	)
 	sys-kernel/linux-headers
-	x11-base/xorg-proto
+	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -108,6 +119,7 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
+	wayland? ( dev-util/wayland-scanner )
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -121,7 +133,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
 	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
-	"${FILESDIR}"/${PN}-8.0.5c-vulkan-libm.patch
 	"${FILESDIR}"/${PN}-9.0-rpath.patch
 	"${FILESDIR}"/${PN}-9.0.4-binutils2.44.patch
 )
@@ -144,18 +155,17 @@ src_prepare() {
 
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl
-	dlls/winevulkan/make_vulkan -x vk.xml || die # python
+	dlls/winevulkan/make_vulkan -X video.xml -x vk.xml || die # python
 }
 
 src_configure() {
 	local wineconfargs=(
 		# upstream (Valve) doesn't really support misc configurations (e.g.
 		# adds vulkan code not always guarded by --with-vulkan), so force
-		# some major options that are typically needed by games either way
+		# some options that are typically needed by games either way
 		--with-freetype
 		--with-opengl
 		--with-vulkan
-		--with-x
 
 		# ...and disable most options unimportant for games and unused by
 		# Proton rather than expose as volatile USEs with little support
@@ -171,17 +181,15 @@ src_configure() {
 		--without-sane
 		ac_cv_lib_soname_odbc=
 
-		# afaik wayland support in 9.0.x currently cannot do opengl/vulkan
-		# yet making it mostly pointless for a gaming-oriented build
-		# (IUSE="X wayland" will likely be added in wine-proton-10)
-		--without-wayland
-
 		$(use_enable gecko mshtml)
 		$(use_enable mono mscoree)
 		$(use_enable video_cards_amdgpu amd_ags_x64)
 		--disable-tests
+
+		$(use_with X x)
 		$(use_with alsa)
 		$(use_with dbus)
+		$(use_with ffmpeg)
 		$(use_with fontconfig)
 		$(use_with gstreamer)
 		$(use_with nls gettext)
@@ -194,6 +202,7 @@ src_configure() {
 		$(use_with unwind)
 		$(use_with usb)
 		$(use_with v4l v4l2)
+		$(use_with wayland)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 
@@ -224,6 +233,9 @@ pkg_postinst() {
 	wine_src_postinst
 
 	[[ -v WINE_HAD_ANY_SLOT ]] || readme.gentoo_print_elog
+
+	optfeature "/dev/hidraw* access used for *some* controllers (e.g. DualShock4)" \
+		games-util/game-device-udev-rules
 
 	ewarn
 	ewarn "Warning: please consider ${PN} provided as-is without real"
