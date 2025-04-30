@@ -9,6 +9,7 @@
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="google-code">winetricks</remote-id>
 		<remote-id type="github">Winetricks/winetricks</remote-id>
