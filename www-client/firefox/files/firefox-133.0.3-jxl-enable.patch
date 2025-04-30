@@ -1,0 +1,10 @@
+--- firefox-133.0.3/toolkit/moz.configure	2025-01-04 17:08:20.913796937 +0100
++++ firefox-133.0.3/toolkit/moz.configure	2025-01-04 17:09:45.509650260 +0100
+@@ -871,7 +871,6 @@
+ 
+ @depends("--disable-jxl", milestone.is_nightly)
+ def jxl(value, is_nightly):
+-    if is_nightly and value:
+         return True
+ 
+ 

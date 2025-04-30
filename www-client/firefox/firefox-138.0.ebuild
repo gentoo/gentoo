@@ -80,7 +80,7 @@ S="${WORKDIR}/${PN}-${PV%_*}"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
-IUSE="+clang dbus debug eme-free hardened hwaccel jack libproxy pgo pulseaudio sndio selinux"
+IUSE="+clang dbus debug eme-free hardened hwaccel jack jpegxl libproxy pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-jpeg +system-libevent"
 IUSE+=" +system-libvpx system-png +system-webp test valgrind wayland wifi +X"
 
@@ -599,6 +599,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/firefox-patches"
+	eapply "${FILESDIR}/firefox-133.0.3-jxl-enable.patch"
 	use loong && eapply "${WORKDIR}/firefox-loong-patches"
 
 	# Allow user to apply any additional patches without modifing ebuild
@@ -898,6 +899,7 @@ src_configure() {
 	mozconfig_use_enable valgrind
 
 	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
+	! use jpegxl && mozconfig_add_options_ac '-jpegxl' --disable-jxl
 
 	if use hardened ; then
 		mozconfig_add_options_ac "+hardened" --enable-hardening
