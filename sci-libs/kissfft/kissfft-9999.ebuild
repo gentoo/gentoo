@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -76,6 +76,10 @@ src_configure() {
 
 src_compile() {
 	multibuild_foreach_variant cmake_src_compile
+}
+
+src_test() {
+	multibuild_foreach_variant cmake_src_test
 }
 
 src_install() {
