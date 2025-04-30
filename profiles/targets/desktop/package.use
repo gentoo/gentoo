@@ -39,6 +39,10 @@ x11-base/xwayland libei
 # circular dependency out of the box.
 dev-build/cmake -gui
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-07-29)
+# Required by dev-python/pyqt5[multimedia]
+dev-qt/qtmultimedia:5 widgets
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-05-21)
 # Needed by a global USE=wayland right now (REQUIRED_USE conflicts)
 media-libs/clutter egl
@@ -91,6 +95,10 @@ media-video/mpv -sdl
 # Mike Gilbert <floppym@gentoo.org> (2017-01-04)
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
+
+# Ben de Groot <yngwin@gentoo.org> (2015-02-18)
+# Enable sensible defaults for desktop users (bug #540046)
+dev-python/pyqt5 gui multimedia network printsupport widgets
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-05-08)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
