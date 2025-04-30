@@ -5,9 +5,7 @@ EAPI=8
 
 FORTRAN_NEEDED=fortran
 
-PYTHON_COMPAT=( python3_{10..12} )
-
-inherit cmake flag-o-matic fortran-2 optfeature python-single-r1
+inherit cmake flag-o-matic fortran-2 optfeature
 
 DESCRIPTION="A library to store and exchange meshed data or computation results"
 HOMEPAGE="https://www.salome-platform.org/user-section/about/med"
@@ -17,18 +15,15 @@ LICENSE="LGPL-3"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="doc fortran mpi python test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-RESTRICT="!test? ( test ) python? ( test )"
+IUSE="doc fortran mpi test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!sci-libs/libmed
 	>=sci-libs/hdf5-1.10.2:=[fortran?,mpi(+)?]
 	mpi? ( virtual/mpi[fortran?] )
-	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="python? ( >=dev-lang/swig-3.0.8 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.0-0001-Gentoo-specific-Adjust-install-path-for-build-dir.patch"
@@ -39,19 +34,10 @@ PATCHES=(
 DOCS=( AUTHORS ChangeLog NEWS README README.CMAKE TODO )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
 	use fortran && fortran-2_pkg_setup
 }
 
 src_prepare() {
-	if use python; then
-		# fixes for correct libdir name
-		local pysite=$(python_get_sitedir)
-		pysite="${pysite##/usr/}"
-		sed \
-			-e 's@SET(_install_dir lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/med)@SET(_install_dir '${pysite}'/med)@' \
-			-i ./python/CMakeLists.txt || die "sed on ./python/CMakeLists.txt failed"
-	fi
 	sed -e 's/med-fichier/med/' -i CMakeLists.txt || die "fix paths failed"
 	sed -e 's|doc/med-${MED_STR_VERSION}|doc/'${PF}'/html|' \
 		-i CMakeLists.txt || die "fix doc path failed"
@@ -71,7 +57,7 @@ src_configure() {
 		# so let's avoid rebuilding it because it will be different
 		-DMEDFILE_BUILD_DOC=OFF
 		-DMEDFILE_BUILD_FORTRAN=$(usex fortran)
-		-DMEDFILE_BUILD_PYTHON=$(usex python)
+		-DMEDFILE_BUILD_PYTHON=OFF
 		-DMEDFILE_BUILD_SHARED_LIBS=ON
 		-DMEDFILE_BUILD_STATIC_LIBS=OFF
 		-DMEDFILE_BUILD_TESTS=$(usex test)
@@ -88,18 +74,11 @@ src_install() {
 	# we don't need old 2.3.6 include files
 	rm -r "${ED}"/usr/include/2.3.6 || die "failed to delete obsolete include dir"
 
-	# the optimization done in CMakeLists.txt has been disabled so
-	# we need to do it manually
-	use python && python_optimize
-
 	# Prevent test executables being installed
 	if use test; then
 		rm -r "${ED}"/usr/bin/testc || die "failed to delete C test executables"
 		if use fortran; then
 			rm -r "${ED}"/usr/bin/testf || die "failed to delete fortran test executables"
-		fi
-		if use python; then
-			rm -r "${ED}"/usr/bin/testpy || die "failed to delete python test executables"
 		fi
 	fi
 }
