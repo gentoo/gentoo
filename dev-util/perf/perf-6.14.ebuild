@@ -49,6 +49,7 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	app-alternatives/yacc
 	app-alternatives/lex
+	sys-apps/which
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
