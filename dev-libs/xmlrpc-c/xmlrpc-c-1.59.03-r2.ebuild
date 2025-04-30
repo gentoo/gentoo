@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 # Upstream maintains 3 release channels: https://xmlrpc-c.sourceforge.net/release.html
 # 1. Only the "Super Stable" series is released as a tarball
@@ -59,6 +59,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944182
+	append-cflags -std=gnu17
+
 	tc-export PKG_CONFIG
 
 	econf \
