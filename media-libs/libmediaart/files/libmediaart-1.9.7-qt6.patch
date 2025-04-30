@@ -1,0 +1,82 @@
+From c86087577b113af78f1a9a8a62a1652f5d0e9434 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 30 Apr 2025 23:37:33 +0200
+Subject: [PATCH] Port to Qt6
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ libmediaart/meson.build |  2 +-
+ meson.build             | 18 +++++++++---------
+ meson_options.txt       |  2 +-
+ 3 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/libmediaart/meson.build b/libmediaart/meson.build
+index 4f1201c..50de50a 100644
+--- a/libmediaart/meson.build
++++ b/libmediaart/meson.build
+@@ -17,7 +17,7 @@ libmediaart_sources = [
+ 
+ if image_library_name == 'gdk-pixbuf-2.0'
+   libmediaart_sources += 'extractpixbuf.c'
+-elif image_library_name == 'Qt5Gui'
++elif image_library_name == 'Qt6Gui'
+   add_languages('cpp', required : true)
+   libmediaart_sources += 'extractqt.cpp'
+ else
+diff --git a/meson.build b/meson.build
+index 7e4e0ec..a1a98fa 100644
+--- a/meson.build
++++ b/meson.build
+@@ -24,7 +24,7 @@ glib = dependency('glib-2.0', version: '> ' + glib_required)
+ gio = dependency('gio-2.0', version: '> ' + glib_required)
+ gio_unix = dependency('gio-unix-2.0', version: '> ' + glib_required)
+ gobject = dependency('gobject-2.0', version: '> ' + glib_required)
+-qt5 = dependency('qt5', version: '> 5.0.0', modules: 'Gui', required: false)
++qt6 = dependency('qt6', version: '> 6.0.0', modules: 'Gui', required: false)
+ 
+ ##################################################################
+ # Choose between backends (GdkPixbuf/Qt/etc)
+@@ -42,13 +42,13 @@ elif get_option('image_library') == 'gdk-pixbuf'
+ endif
+ 
+ if image_library_name == ''
+-  if qt5.found()
+-    if get_option('image_library') == 'auto' or get_option('image_library') == 'qt5'
+-      image_library = qt5
+-      image_library_name = 'Qt5Gui'
++  if qt6.found()
++    if get_option('image_library') == 'auto' or get_option('image_library') == 'qt6'
++      image_library = qt6
++      image_library_name = 'Qt6Gui'
+     endif
+-  elif get_option('image_library') == 'qt5'
+-    error('qt5 explicitly requested, but not found')
++  elif get_option('image_library') == 'qt6'
++    error('qt6 explicitly requested, but not found')
+   endif
+ endif
+ 
+@@ -60,8 +60,8 @@ conf = configuration_data()
+ 
+ conf.set('HAVE_GDKPIXBUF', (image_library_name == 'gdk-pixbuf-2.0'),
+          description: 'Define if GdkPixbuf is available')
+-conf.set('HAVE_QT5', (image_library_name == 'Qt5Gui'),
+-         description: 'Define Qt5 is available')
++conf.set('HAVE_QT6', (image_library_name == 'Qt6Gui'),
++         description: 'Define Qt6 is available')
+ conf.set('LIBMEDIAART_VERSION', meson.project_version(),
+          description: 'Libmediaart version')
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 3146b1f..f421e9b 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,4 +1,4 @@
+-option('image_library', type: 'combo', choices: ['auto', 'gdk-pixbuf', 'qt4', 'qt5'],
++option('image_library', type: 'combo', choices: ['auto', 'gdk-pixbuf', 'qt4', 'qt6'],
+        description: 'Which image processing backend to use')
+ option('introspection', type : 'boolean', value : 'true',
+        description : 'Enable / disable the GObject-Introspection integration')
+-- 
+2.49.0
+
