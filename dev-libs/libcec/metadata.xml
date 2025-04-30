@@ -3,7 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="cubox">Enable support for enable support for the TDA995x</flag>
     <flag name="exynos">Enable support for Exynos chipsets</flag>
     <flag name="xrandr">Enable detection of active HDMI using xrandr extensions</flag>
     <flag name="kernel-cec">Enable support for Linux kernel CEC framework</flag>

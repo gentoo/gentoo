@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv x86"
-IUSE="cubox exynos kernel-cec python tools udev +xrandr"
+IUSE="exynos kernel-cec python tools udev +xrandr"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/libplatform-2.0.0
@@ -73,7 +73,8 @@ src_configure() {
 		-DHAVE_LIBUDEV=$(usex udev ON OFF)
 		-DSKIP_PYTHON_WRAPPER=$(usex python OFF ON)
 		-DHAVE_EXYNOS_API=$(usex exynos ON OFF)
-		-DHAVE_TDA995X_API=$(usex cubox ON OFF)
+		# bug 922690 and bug 955124
+		-DHAVE_TDA995X_API=OFF
 		-DHAVE_RPI_API=OFF
 	)
 
