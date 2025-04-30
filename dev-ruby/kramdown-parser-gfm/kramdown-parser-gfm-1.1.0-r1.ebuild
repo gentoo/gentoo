@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 inherit edo ruby-fakegem
 
@@ -11,8 +11,8 @@ DESCRIPTION="A kramdown parser for the GFM dialect of Markdown"
 HOMEPAGE="https://github.com/kramdown/parser-gfm"
 LICENSE="MIT"
 
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~arm64-macos ~x64-macos"
 SLOT="$(ver_cut 1)"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~arm64-macos ~x64-macos"
 IUSE="doc"
 
 ruby_add_rdepend "dev-ruby/kramdown:2"
