@@ -91,7 +91,10 @@ COMMON_DEPEND="
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
-	vdpau? ( x11-libs/libvdpau )
+	vdpau? (
+		media-libs/libglvnd[X]
+		x11-libs/libvdpau
+	)
 	vulkan? ( media-libs/vulkan-loader[X?,wayland?] )
 	wayland? (
 		dev-libs/wayland
@@ -130,6 +133,9 @@ pkg_pretend() {
 		ewarn "only for the deprecated 'gl-x11' mpv option when 'egl-x11/wayland'"
 		ewarn "should be used if --gpu-api=opengl. It is recommended to enable 'egl'"
 		ewarn "unless using vulkan (default since ${PN}-0.40) or something else."
+		ewarn
+		ewarn "USE=vdpau (for nvidia) still enables gl-x11 as it requires it, however"
+		ewarn "it is recommended to instead use --hwdec=nvdec (USE=nvenc) or =vulkan."
 	fi
 }
 
@@ -199,10 +205,11 @@ src_configure() {
 		$(meson_feature wayland)
 		$(meson_feature xv)
 
-		-Dgl=$(use aqua || use egl || use libmpv &&
+		-Dgl=$(use aqua || use egl || use libmpv || use vdpau &&
 			echo enabled || echo disabled)
 		$(meson_feature egl)
 		$(meson_feature libmpv plain-gl)
+		$(meson_feature vdpau gl-x11) # only needed for vdpau (bug #955122)
 
 		$(meson_feature vulkan)
 
