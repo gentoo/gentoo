@@ -97,6 +97,9 @@ src_configure() {
 
 	[ "${videnable}" = "--enable-video" ] && _pj_set_define PJMEDIA_HAS_VIDEO 1 || _pj_set_define PJMEDIA_HAS_VIDEO 0
 
+	# bug 955077 and bug 955129
+	use libyuv && myconf+=( --with-external-yuv )
+
 	LD="$(tc-getCXX)" econf \
 		--enable-shared \
 		${videnable} \
@@ -116,7 +119,6 @@ src_configure() {
 		$(use_with portaudio external-pa) \
 		$(use_with speex external-speex) \
 		$(usex srtp --with-external-srtp --disable-libsrtp) \
-		--with-external-yuv \
 		"${myconf[@]}"
 }
 
