@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+export ENV_FILE="${CONF_FILE:-/etc/${RC_SVCNAME}/${RC_SVCNAME}.conf}"
+
+name="Vaultwarden"
+description="Unofficial Bitwarden compatible password manager"
+command="/usr/bin/${RC_SVCNAME}"
+command_user="${VW_USER:-vaultwarden}:${VW_GROUP:-vaultwarden}"
+command_background="true"
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/var/log/${RC_SVCNAME}.log"
+error_log="/var/log/${RC_SVCNAME}.log"
+directory="${DATA_FOLDER:-/var/lib/${RC_SVCNAME}}"
+umask=0027
+
+depend() {
+	after net
+}
