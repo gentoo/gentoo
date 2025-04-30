@@ -4,7 +4,6 @@
 EAPI=8
 
 DOCS_BUILDER="doxygen"
-
 inherit docs toolchain-funcs
 
 DESCRIPTION="Simulate keyboard input and mouse activity, move and resize windows"
@@ -16,38 +15,39 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="examples"
 
-# Many the tests want to manually start Xvfb regardless of whether there
-# is an X server running or not (i.e. does not play nicely with virtualx),
-# some tests require x11-wm/openbox, some try to run a complete Gnome
-# session. All of them require a Ruby interpreter with dev-ruby/minitest
-# installed. In short, supporting tests here will need MUCH work.
+# tests have various troublesome requirements
 RESTRICT="test"
 
-RDEPEND="x11-libs/libX11
-	x11-libs/libXi
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXinerama
 	x11-libs/libXtst
-	x11-libs/libxkbcommon"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	x11-base/xorg-proto"
+	x11-libs/libxkbcommon
+"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.20210804.2-no_hardcoded_pkg-config.patch
 	"${FILESDIR}"/${PN}-3.20210804.2-no_ldconfig.patch
 )
 
-DOCS=( CHANGELIST README.md )
-
 src_compile() {
 	tc-export CC LD PKG_CONFIG
-	emake PREFIX="${EPREFIX}/usr"
-	use doc && docs_compile
+
+	emake PREFIX="${EPREFIX}"/usr
+	docs_compile
 }
 
 src_install() {
-	emake PREFIX="${ED}/usr" INSTALLMAN="${ED}/usr/share/man" INSTALLLIB="${ED}/usr/$(get_libdir)" install
+	emake PREFIX="${ED}"/usr INSTALLMAN="${ED}"/usr/share/man \
+		INSTALLLIB="${ED}"/usr/$(get_libdir) install
 
-	use examples && DOCS+=( examples )
+	dodoc -r CHANGELIST $(usev examples)
 	einstalldocs
 }
