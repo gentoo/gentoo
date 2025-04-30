@@ -159,7 +159,7 @@ DEPEND="${RDEPEND}
 "
 
 CLC_DEPSTRING="
-	~dev-util/mesa_clc-${PV}
+	~dev-util/mesa_clc-${PV}[video_cards_panfrost?]
 	llvm-core/libclc[spirv(-)]
 "
 BDEPEND="
@@ -439,6 +439,10 @@ multilib_src_configure() {
 	   use video_cards_nvk ||
 	   use video_cards_panfrost; then
 	   emesonargs+=(-Dmesa-clc=system)
+	fi
+
+	if use video_cards_panfrost; then
+	    emesonargs+=(-Dprecomp-compiler=system)
 	fi
 
 	use debug && EMESON_BUILDTYPE=debug
