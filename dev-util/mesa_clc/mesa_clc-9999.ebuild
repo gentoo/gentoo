@@ -25,7 +25,12 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="debug"
+
+VIDEO_CARDS="panfrost"
+for card in ${VIDEO_CARDS}; do
+	IUSE_VIDEO_CARDS+=" video_cards_${card}"
+done
+IUSE="${IUSE_VIDEO_CARDS} debug"
 
 RDEPEND="
 	dev-util/spirv-tools
@@ -63,6 +68,13 @@ pkg_setup() {
 }
 
 src_configure() {
+	tools_enable video_cards_panfrost panfrost
+
+	tools_list() {
+		local tools="$(sort -u <<< "${1// /$'\n'}")"
+		echo "${tools//$'\n'/,}"
+	}
+
 	PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
 
 	use debug && EMESON_BUILDTYPE=debug
@@ -72,6 +84,9 @@ src_configure() {
 		-Dshared-llvm=enabled
 		-Dmesa-clc=enabled
 		-Dinstall-mesa-clc=true
+		-Dprecomp-compiler=enabled
+		-Dinstall-precomp-compiler=true
+		-Dtools=$(tools_list "${TOOLS[*]}")
 
 		-Dgallium-drivers=''
 		-Dvulkan-drivers=''
@@ -86,10 +101,21 @@ src_configure() {
 
 		-Db_ndebug=$(usex debug false true)
 	)
+
 	meson_src_configure
 }
 
 src_install() {
 	dobin "${BUILD_DIR}"/src/compiler/clc/mesa_clc
 	dobin "${BUILD_DIR}"/src/compiler/spirv/vtn_bindgen2
+	use video_cards_panfrost && dobin "${BUILD_DIR}"/src/panfrost/clc/panfrost_compile
+}
+
+# $1 - VIDEO_CARDS flag (check skipped for "--")
+# other args - names of tools to enable
+tools_enable() {
+	if [[ $1 == -- ]] || use $1; then
+		shift
+		TOOLS+=("$@")
+	fi
 }
