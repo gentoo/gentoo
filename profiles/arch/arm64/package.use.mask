@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-04-30)
+# 32-bit only (bug #951981).
+dev-cpp/highway cpu_flags_arm_neon
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
 # These are not currently supported on arm64. Porting wine-gecko and
 # wine-mono is on Wine's TODO[1], mingw64-toolchain lacks ebuild
