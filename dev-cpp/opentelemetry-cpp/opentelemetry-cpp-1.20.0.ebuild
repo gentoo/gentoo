@@ -38,7 +38,6 @@ PATCHES=(
 	# remove tests the need network
 	"${FILESDIR}/${PN}-1.5.0-tests.patch"
 	"${FILESDIR}/${PN}-1.16.1-cstdint.patch"
-	"${FILESDIR}/${PN}-1.16.1-fix-clang-template.patch"
 )
 
 src_configure() {
