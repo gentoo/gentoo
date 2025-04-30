@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 qmake-utils virtualx xdg
 
