@@ -5,4 +5,8 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=Oxygen</bugs-to>
+		<remote-id type="kde-invent">plasma/oxygen-gtk</remote-id>
+	</upstream>
 </pkgmetadata>
