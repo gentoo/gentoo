@@ -33,7 +33,7 @@ DEPEND="
 	<dev-libs/protobuf-30:=
 	sys-libs/zlib:=
 	>=dev-libs/libusb-1.0.28
-	dev-libs/libfmt:=
+	>=dev-libs/libfmt-11:=
 "
 RDEPEND="${DEPEND}
 	udev? ( dev-util/android-udev-rules )
