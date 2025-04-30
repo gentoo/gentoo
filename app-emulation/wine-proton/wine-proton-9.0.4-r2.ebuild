@@ -127,6 +127,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	# similarly to staging, append to `wine --version` for identification
+	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
+
 	wine_src_prepare
 
 	# this is kind-of best effort and ignores llvm slots, ideally
@@ -138,9 +141,6 @@ src_prepare() {
 		sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
 			-i dlls/{ntdll,winevulkan}/Makefile.in || die
 	fi
-
-	# similarly to staging, append to `wine --version` for identification
-	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
 
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl

@@ -138,6 +138,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	# similarly to staging, append to `wine --version` for identification
+	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
+
 	wine_src_prepare
 
 	# this is kind-of best effort and ignores llvm slots, ideally
