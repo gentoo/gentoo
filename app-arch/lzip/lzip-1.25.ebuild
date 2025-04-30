@@ -27,6 +27,9 @@ BDEPEND="
 		sec-keys/openpgp-keys-antoniodiazdiaz
 	)
 "
+PDEPEND="
+	app-alternatives/lzip
+"
 
 src_configure() {
 	# not autotools-based
