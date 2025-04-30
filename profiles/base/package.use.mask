@@ -6,6 +6,12 @@
 
 # New entries go on top.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-04-30)
+# Valve has modified Wine's ffmpeg code with a new pcm_byte_order_reverse_bsf.c
+# that seems riddled with issues (missing identifiers, incompatible pointer
+# types), does not build so mask for now.
+app-emulation/wine-proton ffmpeg
+
 # sin-ack <sin-ack@protonmail.com> (2025-04-24)
 # Folly's support for io_uring depends on as-of-yet unreleased liburing
 # features. All Facebook packages that depend on this support are masked.
