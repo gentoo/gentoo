@@ -1,0 +1,25 @@
+From 6f65e54bbf4bfdae263c704b4efbc7c835de72c5 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 7 Mar 2025 16:49:12 +0100
+Subject: [PATCH] fix
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/samples/cpp/utils/helpers.h b/samples/cpp/utils/helpers.h
+index 67a5cff..4724c95 100644
+--- a/samples/cpp/utils/helpers.h
++++ b/samples/cpp/utils/helpers.h
+@@ -1,8 +1,9 @@
+ #pragma once
+ 
+-#include <stdexcept>
++#include <memory>
+ #include <sstream>
+ 
++#include <cudnn_graph.h>
+ #include <cuda_runtime.h>
+ #include <cuda_fp16.h>
+ 
+-- 
+2.48.1
+
