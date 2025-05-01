@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake python-any-r1 xdg
+inherit cmake flag-o-matic python-any-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -46,7 +46,14 @@ BDEPEND="
 	sys-devel/gettext
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-asio1.34.patch
+	"${FILESDIR}"/${P}-cstdint.patch
+)
+
 src_configure() {
+	append-cflags -std=gnu17
+
 	local mycmakeargs=(
 		-DWL_INSTALL_BASEDIR="${EPREFIX}"/usr/share/doc/${PF}
 		-DWL_INSTALL_BINDIR="${EPREFIX}"/usr/bin
