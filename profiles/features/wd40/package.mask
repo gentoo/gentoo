@@ -223,6 +223,7 @@ app-crypt/certbot-nginx
 app-crypt/rpm-sequoia
 app-emulation/virtiofsd
 app-eselect/eselect-rust
+app-misc/gramps
 app-misc/khal
 app-text/mdbook
 dev-embedded/esptool
