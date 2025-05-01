@@ -7,7 +7,7 @@ FORTRAN_NEEDED=fortran
 
 inherit cmake flag-o-matic fortran-2 optfeature
 
-DESCRIPTION="A library to store and exchange meshed data or computation results"
+DESCRIPTION="Library to store and exchange meshed data or computation results"
 HOMEPAGE="https://www.salome-platform.org/user-section/about/med"
 SRC_URI="https://files.salome-platform.org/Salome/other/${P}.tar.gz"
 S="${WORKDIR}/${P}_SRC"
