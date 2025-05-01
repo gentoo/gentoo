@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
+# Dead upstream for many years, depends on Qt5 and app-text/poppler[qt5].
+# Bug #949025; removal on 2025-05-31
+x11-misc/qcomicbook
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # Package destabilisation mask. 1.0_p20241107 is in ~arch but as snapshot
 # with long-term pending Qt6 patches on top it will not be stabilised.
 # 1.0 release was almost 8 years old already.
