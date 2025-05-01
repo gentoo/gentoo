@@ -35,6 +35,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-default-symver.patch
+	"${FILESDIR}"/${P}-omagic-loop.patch
+)
+
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
 	if [[ ${MERGE_TYPE} != binary ]]; then
