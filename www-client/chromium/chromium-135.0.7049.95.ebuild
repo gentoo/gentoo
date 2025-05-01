@@ -64,7 +64,10 @@ SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/d
 	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
-LICENSE="BSD"
+# https://gitweb.gentoo.org/proj/chromium-tools.git/tree/get-chromium-licences.py
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD FFT2D"
+LICENSE+=" FTL IJG ISC LGPL-2 LGPL-2.1 MIT MPL-1.1 MPL-2.0 MS-PL PSF-2 SGI-B-2.0 SSLeay SunSoft Unicode-3.0"
+LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA X11-Lucent ZLIB libpng libpng2 openssl unRAR"
 SLOT="0/stable"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
 # it shouldn't be keyworded but adventurous users can select it.
