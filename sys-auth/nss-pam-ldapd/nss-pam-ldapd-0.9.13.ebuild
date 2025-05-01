@@ -65,9 +65,9 @@ src_prepare() {
 	touch pynslcd/__init__.py || die "Could not create __init__.py for pynslcd"
 	mv pynslcd/pynslcd.py pynslcd/main.py || die
 
-        find "${S}" -name Makefile.am -exec \
-        sed -e '/^AM_CFLAGS/ s/$/ \$(DEBUG_CFLAGS) \$(EXTRA_CFLAGS)/g' \
-        -i {} \; || die
+	find "${S}" -name Makefile.am -exec \
+		sed -e '/^AM_CFLAGS/ s/$/ \$(DEBUG_CFLAGS) \$(EXTRA_CFLAGS)/g' \
+			-i {} \; || die
 
 	eautoreconf
 }
