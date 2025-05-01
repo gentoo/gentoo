@@ -21,6 +21,9 @@
 	Mac OS X.
 </longdescription>
 <use>
+	<flag name="cgal">
+		Enable cgal render backend via <pkg>sci-mathematics/cgal</pkg> (old/slow)
+	</flag>
 	<flag name="egl">
 		Build using EGL instead of GLX
 	</flag>
@@ -37,7 +40,7 @@
 		Build in support for HID-Class devices using <pkg>dev-libs/hidapi</pkg>
 	</flag>
 	<flag name="manifold">
-		Enable Manifold render backend via <pkg>sci-mathematics/manifold</pkg>
+		Enable Manifold render backend via <pkg>sci-mathematics/manifold</pkg> (new/fast)
 	</flag>
 	<flag name="mimalloc">
 		Build using <pkg>dev-libs/mimalloc</pkg> as memory allocator

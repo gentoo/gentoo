@@ -39,18 +39,17 @@ else
 	else
 		SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -> ${P}.tar.gz"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 # Code is GPL-3+, MCAD library is LGPL-2.1
 LICENSE="GPL-3+ LGPL-2.1"
 SLOT="0"
 
-IUSE="cgal dbus +egl experimental glx +gui hidapi +manifold mimalloc pdf spacenav test"
+IUSE="dbus +egl experimental glx +gui hidapi +manifold mimalloc pdf spacenav test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	|| ( cgal manifold )
 	dbus? ( gui )
 	hidapi? ( gui )
 	spacenav? ( gui )
@@ -70,9 +69,7 @@ RDEPEND="
 	media-libs/lib3mf:=
 	media-libs/libglvnd
 	>=sci-mathematics/clipper2-1.5.2
-	cgal? (
-		sci-mathematics/cgal:=
-	)
+	sci-mathematics/cgal:=
 	glx? (
 		media-libs/libglvnd[X]
 	)
@@ -153,7 +150,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCLANG_TIDY="no"
 		-DENABLE_CAIRO="$(usex pdf)"
-		-DENABLE_CGAL="$(usex cgal)"
+		-DENABLE_CGAL="yes"
 		-DENABLE_EGL="$(usex egl)"
 		-DENABLE_GLX="$(usex glx)"
 		-DENABLE_MANIFOLD="$(usex manifold)"
