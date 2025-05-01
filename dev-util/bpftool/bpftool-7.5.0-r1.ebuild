@@ -65,6 +65,8 @@ BDEPEND="
 
 CONFIG_CHECK="~DEBUG_INFO_BTF"
 
+PATCHES=( "${FILESDIR}/7.5.0-setting-error-code-in-do_loader.patch" )
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 	use llvm && llvm-r1_pkg_setup
