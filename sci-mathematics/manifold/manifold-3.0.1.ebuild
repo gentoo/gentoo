@@ -61,6 +61,10 @@ src_prepare() {
 	sed \
 		-e "/list(APPEND MANIFOLD_FLAGS/s/^/# DONOTSET /" \
 		-i CMakeLists.txt || die
+
+	sed \
+		-e '/<memory>/a#include <cstdint>' \
+		-i include/manifold/manifold.h || die
 }
 
 src_configure() {
