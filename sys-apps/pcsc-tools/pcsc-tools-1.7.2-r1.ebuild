@@ -12,21 +12,22 @@ SRC_URI="https://pcsc-tools.apdu.fr/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
-IUSE="gui network-cron nls"
+IUSE="gui network-cron"
 
 DEPEND=">=sys-apps/pcsc-lite-1.4.14"
 RDEPEND="
 	${DEPEND}
+	dev-perl/libintl-perl
 	dev-perl/pcsc-perl
 	gui? ( dev-perl/Gtk3 )
 "
 BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	sys-devel/gettext
 "
 
 src_configure() {
-	econf $(use_enable nls gettext)
+	econf --enable-gettext
 }
 
 src_compile() {
