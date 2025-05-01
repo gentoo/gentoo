@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">LudovicRousseau/pcsc-perl</remote-id>
+	</upstream>
 </pkgmetadata>
