@@ -14,7 +14,7 @@ S="${WORKDIR}/coda-${P}/lib-src/rpc2"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc x86"
 IUSE="codatunneld lua"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
