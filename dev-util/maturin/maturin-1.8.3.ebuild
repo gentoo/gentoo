@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 RUST_MIN_VER=1.75.0
 inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
 
@@ -28,20 +28,15 @@ KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
-TOMLI_DEPEND="$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.10)"
 DEPEND="
 	app-arch/xz-utils
 	ssl? ( dev-libs/openssl:= )
 "
-RDEPEND="
-	${DEPEND}
-	${TOMLI_DEPEND}
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/mdbook )
 	test? (
-		${TOMLI_DEPEND}
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 		dev-python/boltons[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
