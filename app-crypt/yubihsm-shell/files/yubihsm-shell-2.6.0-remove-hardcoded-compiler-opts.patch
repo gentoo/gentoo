@@ -1,0 +1,14 @@
+We don't want -Werror or other stuff forced on us and our toolchain already
+defaults to various hardening options.
+--- a/cmake/SecurityFlags.cmake
++++ b/cmake/SecurityFlags.cmake
+@@ -1,8 +1,6 @@
+ include(CheckCCompilerFlag)
+ 
+-if (CMAKE_C_COMPILER_ID STREQUAL "Clang" OR
+-    CMAKE_C_COMPILER_ID STREQUAL "AppleClang" OR
+-    CMAKE_C_COMPILER_ID STREQUAL "GNU")
++if (FALSE)
+ 
+     add_compile_options (-Wall -Wextra -Werror)
+     add_compile_options (-Wformat -Wformat-nonliteral -Wformat-security)
