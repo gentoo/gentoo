@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-headers.patch
 )
 
+CMAKE_SKIP_TESTS=( "TestHttpGet\." )
+
 src_prepare() {
 	cmake_src_prepare
 	rm -rv utils/rbutilqt/{quazip,zlib}/ || die
