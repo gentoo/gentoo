@@ -36,7 +36,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # Package destabilisation mask. 1.0_p20241107 is in ~arch but as snapshot
 # with long-term pending Qt6 patches on top it will not be stabilised.
 # 1.0 release was almost 8 years old already.
