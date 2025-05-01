@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>asahi@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">mingw-w64</remote-id>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
+</pkgmetadata>
