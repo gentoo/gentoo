@@ -50,6 +50,7 @@ REQUIRED_USE="
 	wow64? ( !arm64? ( abi_x86_64 !abi_x86_32 ) )
 "
 
+RDEPEND="arm64? ( wow64? ( app-emulation/fex-xtajit ) )"
 BDEPEND="
 	|| (
 		sys-devel/binutils:*
@@ -354,6 +355,10 @@ wine_src_install() {
 		fi
 	fi
 
+	use arm64 && use wow64 &&
+	    dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
+				${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
+
 	# delete unwanted files if requested, not done directly in ebuilds
 	# given must be done after install and before wrappers
 	if (( ${#WINE_SKIP_INSTALL[@]} )); then
@@ -375,11 +380,11 @@ wine_src_install() {
 		if use mingw; then
 			: "$(usex arm64 aarch64 $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip)"
 			find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(a\|dll\|exe\)' \
-				-exec ${_} --strip-unneeded {} +
+				-type f -exec ${_} --strip-unneeded {} +
 		else
 			# llvm-strip errors on .a, and CHOST binutils strip could mangle
 			find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(dll\|exe\)' \
-				-exec llvm-strip --strip-unneeded {} +
+				-type f -exec llvm-strip --strip-unneeded {} +
 		fi
 		eend ${?} || die
 	fi
@@ -416,13 +421,6 @@ wine_pkg_postinst() {
 			ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
 			ewarn "applications under ${PN} will likely not be usable."
 		fi
-	fi
-
-	if use arm64 && use wow64; then
-		ewarn
-		ewarn "${PN} does not include an x86 emulator, running x86 binaries"
-		ewarn "with USE=wow64 on arm64 requires manually setting up xtajit.dll"
-		ewarn "(not packaged) in the Wine prefix."
 	fi
 
 	eselect wine update --if-unset || die
