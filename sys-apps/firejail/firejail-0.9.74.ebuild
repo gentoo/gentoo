@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit toolchain-funcs python-single-r1 linux-info
+inherit flag-o-matic toolchain-funcs python-single-r1 linux-info
 
 DESCRIPTION="Security sandbox for any type of processes"
 HOMEPAGE="https://firejail.wordpress.com/"
