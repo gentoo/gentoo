@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
-inherit check-reqs cmake flag-o-matic optfeature python-single-r1 qmake-utils xdg
+inherit check-reqs cmake flag-o-matic optfeature python-single-r1 qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
@@ -17,7 +17,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	S="${WORKDIR}/freecad-${PV}"
 else
-	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/FreeCAD/FreeCAD/commit/d91b3e051789623f0bc1eff65947c361e7a661d0.patch -> ${PN}-20710.patch
+	"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
@@ -84,7 +87,6 @@ RDEPEND="
 			dev-python/matplotlib[${PYTHON_USEDEP}]
 			>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
 			dev-python/pyside:6=[uitools(-),gui,svg,${PYTHON_USEDEP}]
-
 		' )
 		virtual/glu
 		virtual/opengl
@@ -112,6 +114,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
@@ -137,7 +140,9 @@ src_configure() {
 	filter-lto
 
 	# Fix building tests
-	append-ldflags -Wl,--copy-dt-needed-entries
+	if ! tc-ld-is-mold; then # 940524
+		append-ldflags -Wl,--copy-dt-needed-entries
+	fi
 
 	local mycmakeargs=(
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
@@ -205,7 +210,7 @@ src_configure() {
 		# sub-packages will still be installed inside /usr/lib64/freecad
 		-DINSTALL_TO_SITEPACKAGES=ON
 
-		# Use the version of shiboken2 that matches the selected python version
+		# Use the version of pyside[tools] that matches the selected python version
 		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 		-DPython3_EXECUTABLE=${PYTHON}
 	)
@@ -251,6 +256,9 @@ src_configure() {
 src_test() {
 	cd "${BUILD_DIR}" || die
 
+	# No module named 'ifcopenshell' #940465
+	rm "${BUILD_DIR}/Mod/BIM/nativeifc/ifc_performance_test.py" || die
+
 	local -x FREECAD_USER_HOME="${HOME}"
 	local -x FREECAD_USER_DATA="${T}"
 	local -x FREECAD_USER_TEMP="${T}"
@@ -260,7 +268,13 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	dobin src/Tools/freecad-thumbnailer
+	if [[ -f src/Tools/freecad-thumbnailer ]]; then
+		dobin src/Tools/freecad-thumbnailer
+	fi
+
+	if [[ -f freecad-thumbnailer ]]; then
+		dobin freecad-thumbnailer
+	fi
 
 	if use gui; then
 		newbin - freecad <<- _EOF_
