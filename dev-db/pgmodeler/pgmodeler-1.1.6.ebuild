@@ -21,18 +21,30 @@ DEPEND="${POSTGRES_DEP}
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	default
+	sed -e "/^doc.files/s/LICENSE //" -i pgmodeler.pro || die
+}
+
 src_configure() {
-	eqmake6 \
-		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
-		PREFIX="${EPREFIX}/usr" \
-		PLUGINSDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/plugins" \
-		PRIVATEBINDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/bin" \
-		PRIVATELIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}" \
-		NO_UPDATE_CHECK="true" \
-		-r ${PN}.pro
+	local myqmakeargs=(
+		DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
+		PREFIX="${EPREFIX}/usr"
+		PLUGINSDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/plugins"
+		PRIVATEBINDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/bin"
+		PRIVATELIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}"
+		NO_UPDATE_CHECK="true"
+	)
+	eqmake6 "${myqmakeargs[@]}" -r ${PN}.pro
 }
 
 src_test() {
+	local myqmakeargs=(
+		BINDIR="${T}"
+		SAMPLESDIR="${S}/assets/samples"
+		SCHEMASDIR="${S}/assets"
+	)
+
 	pushd "${S}/tests" || die
 		# skip tests with graphical interaction
 		sed	-e '/^src\/fileselectortest/d' \
@@ -50,11 +62,7 @@ src_test() {
 			-e '/^src\/xmlparsertest/d' \
 			-i tests.pro || die
 
-		eqmake6 \
-			BINDIR="${T}" \
-			SAMPLESDIR="${S}/assets/samples" \
-			SCHEMASDIR="${S}/assets" \
-			tests.pro
+		eqmake6 "${myqmakeargs[@]}" tests.pro
 		emake
 
 		# append all shared-libs to LD_LIBRARY_PATH
