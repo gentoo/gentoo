@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PLOCALES="cs de es fr it ja ka ko nl pl pt pt_BR ru sv th tr zh_CN zh_TW"
 inherit meson plocale python-r1 xdg
 
