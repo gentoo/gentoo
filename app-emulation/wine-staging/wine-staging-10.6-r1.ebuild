@@ -111,6 +111,7 @@ WINE_COMMON_DEPEND="
 "
 RDEPEND="
 	${WINE_COMMON_DEPEND}
+	arm64? ( wow64? ( app-emulation/fex-xtajit ) )
 	app-emulation/wine-desktop-common
 	dos? (
 		|| (
