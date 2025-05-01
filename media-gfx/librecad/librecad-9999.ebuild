@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl he hi hu id_ID it ja ka ko lv mk nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sr sv ta th tr uk zh_cn zh_tw"
 
+PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl he hi hu id_ID it ja ka ko lv mk nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sr sv ta th tr uk zh_cn zh_tw"
 inherit desktop edo plocale qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
@@ -13,19 +13,19 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/v${PV/_/}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/LibreCAD-${PV}"
 	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug doc tools"
+IUSE="doc tools"
 
 RDEPEND="
 	dev-cpp/muParser
 	dev-libs/boost:=
-	dev-qt/qtbase:6[gui,widgets]
+	dev-qt/qtbase:6[gui,network,widgets]
 	dev-qt/qtsvg:6
 	media-libs/freetype:2
 "
@@ -77,6 +77,6 @@ src_install() {
 	use doc && docinto html && dodoc -r librecad/support/doc/*
 	insinto /usr/share/metainfo
 	doins unix/appdata/org.librecad.librecad.appdata.xml
-	doicon librecad/res/main/${PN}.png
+	doicon librecad/res/images/${PN}.png
 	make_desktop_entry ${PN} LibreCAD ${PN} Graphics
 }
