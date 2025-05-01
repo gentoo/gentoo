@@ -17,6 +17,5 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 RESTRICT="test" # actually accesses the pcsc-lite daemon
 
-DEPEND="
-	>=sys-apps/pcsc-lite-1.6.0
-"
+DEPEND=">=sys-apps/pcsc-lite-1.6.0"
+RDEPEND="${DEPEND}"
