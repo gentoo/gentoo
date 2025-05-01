@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
+# Dead upstream for many years, depends on Qt5 and FTB w/ boost-1.87 among
+# other bugs. Bugs #946991, #949076, #943002; removal on 2025-05-31
+games-board/pokerth
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # Dead upstream for many years, depends on Qt5 and app-text/poppler[qt5].
 # Bug #949025; removal on 2025-05-31
 x11-misc/qcomicbook
