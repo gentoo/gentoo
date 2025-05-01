@@ -15,7 +15,7 @@ IUSE="+games share +shotwell +tracker"
 # Note to developers:
 # This is a wrapper for the extra apps integrated with GNOME
 # Keep pkg order within a USE flag as upstream releng versions file
-# TODO: Should we keep these here: file-roller, nautilus-sendto, gnome-photos?
+# TODO: Should we keep these here: file-roller, gnome-photos?
 # TODO: Add gnome-remote-desktop as replacement for vino that was removed from meta in 3.36?
 # TODO: Replace cheese with Snapshot once we have it packaged
 # TODO: Replace tracker-miners by localsearch when it is packaged
@@ -38,7 +38,6 @@ RDEPEND="
 	>=gnome-base/dconf-editor-45.0.1
 	>=mail-client/evolution-3.54.3
 	>=gnome-extra/gnome-tweaks-46.1
-	>=gnome-extra/nautilus-sendto-3.8.6
 	>=app-crypt/seahorse-47.0.1
 
 	games? (
