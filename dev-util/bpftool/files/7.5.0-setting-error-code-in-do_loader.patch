@@ -1,0 +1,45 @@
+Patch from: https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=02a4694107b4c830d4bd6d194e98b3ac0bc86f29
+Adapted patch prefix to match the GH mirror sources.
+
+From 91588da58ed38e4ec870d479ab2d9467288893d2 Mon Sep 17 00:00:00 2001
+From: Sasha Levin <sashal@kernel.org>
+Date: Tue, 11 Mar 2025 12:12:37 +0900
+Subject: bpf: bpftool: Setting error code in do_loader()
+
+From: Sewon Nam <swnam0729@gmail.com>
+
+[ Upstream commit 02a4694107b4c830d4bd6d194e98b3ac0bc86f29 ]
+
+We are missing setting error code in do_loader() when
+bpf_object__open_file() fails. This means the command's exit status code
+will be successful, even though the operation failed. So make sure to
+return the correct error code. To maintain consistency with other
+locations where bpf_object__open_file() is called, return -1.
+
+  [0] Closes: https://github.com/libbpf/bpftool/issues/156
+
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Signed-off-by: Sewon Nam <swnam0729@gmail.com>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Tested-by: Quentin Monnet <qmo@kernel.org>
+Reviewed-by: Quentin Monnet <qmo@kernel.org>
+Link: https://lore.kernel.org/bpf/d3b5b4b4-19bb-4619-b4dd-86c958c4a367@stanley.mountain/t/#u
+Link: https://lore.kernel.org/bpf/20250311031238.14865-1-swnam0729@gmail.com
+Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ tools/bpf/bpftool/prog.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/bpf/bpftool/prog.c b/tools/bpf/bpftool/prog.c
+index e71be67f1d865..52ffb74ae4e89 100644
+--- a/src/prog.c
++++ b/src/prog.c
+@@ -1928,6 +1928,7 @@ static int do_loader(int argc, char **argv)
+ 
+ 	obj = bpf_object__open_file(file, &open_opts);
+ 	if (!obj) {
++		err = -1;
+ 		p_err("failed to open object file");
+ 		goto err_close_obj;
+ 	}
