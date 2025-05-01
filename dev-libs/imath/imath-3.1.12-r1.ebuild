@@ -49,7 +49,6 @@ DOCS=( CHANGES.md CONTRIBUTORS.md README.md SECURITY.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.1.11-fix_cmake_module_export.patch"
-	"${FILESDIR}/${PN}-3.1.11-use-correct-boost_python_version.patch"
 )
 
 pkg_setup() {
@@ -69,8 +68,9 @@ src_configure() {
 	)
 	if use python; then
 		mycmakeargs+=(
-			-DBoost_NO_BOOST_CMAKE=OFF
 			-DPYTHON=ON
+			# looks up Python first, then Python3 and Python2, so we specify both..
+			-DPython_EXECUTABLE="${PYTHON}"
 			-DPython3_EXECUTABLE="${PYTHON}"
 			-DPython3_INCLUDE_DIR="$(python_get_includedir)"
 			-DPython3_LIBRARY="$(python_get_library_path)"
