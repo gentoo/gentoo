@@ -97,6 +97,7 @@ sci-mathematics/maxima vtk
 # Broken bundled Eigen, fails to compile. See bug #865191.
 sci-geosciences/grass pdal
 sci-libs/vtk pdal
+media-gfx/openvdb pdal
 
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Needs dev-python/sympy which is not keyworded

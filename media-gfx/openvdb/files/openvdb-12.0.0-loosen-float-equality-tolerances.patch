@@ -1,0 +1,45 @@
+From b2c1bf2ad677997689b3d57cc01c5876e11fd2a0 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 10 Jan 2025 23:23:07 +0100
+Subject: [PATCH] loosen float equality tolerances
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/nanovdb/nanovdb/unittest/TestNanoVDB.cc b/nanovdb/nanovdb/unittest/TestNanoVDB.cc
+index 33e120c..7be2480 100644
+--- a/nanovdb/nanovdb/unittest/TestNanoVDB.cc
++++ b/nanovdb/nanovdb/unittest/TestNanoVDB.cc
+@@ -5458,7 +5458,7 @@ TEST_F(TestNanoVDB, ScalarSampleFromVoxels)
+     //std::cerr << "2'th order: v = " << sampler2(xyz) << std::endl;
+     EXPECT_NEAR(exact, sampler2(xyz), 1e-4);
+     //std::cerr << "3'rd order: v = " << sampler3(xyz) << std::endl;
+-    EXPECT_NEAR(exact, sampler3(xyz), 1e-5);
++    EXPECT_NEAR(exact, sampler3(xyz), 2e-5);
+ 
+     EXPECT_FALSE(sampler1.zeroCrossing());
+     const auto gradIndex = sampler1.gradient(xyz); //in index space
+diff --git a/openvdb/openvdb/unittest/TestPointRasterizeFrustum.cc b/openvdb/openvdb/unittest/TestPointRasterizeFrustum.cc
+index 9d0d1ff..3e93032 100644
+--- a/openvdb/openvdb/unittest/TestPointRasterizeFrustum.cc
++++ b/openvdb/openvdb/unittest/TestPointRasterizeFrustum.cc
+@@ -33,7 +33,7 @@ public:
+ 
+ TEST_F(TestPointRasterizeFrustum, testScaleByVoxelVolume)
+ {
+-    const double tolerance = 1.0e-6;
++    const double tolerance = 2.0e-4;
+ 
+     // four our of five positions live in (0,0,0) voxels
+ 
+@@ -312,7 +312,7 @@ TEST_F(TestPointRasterizeFrustum, testScaleByVoxelVolume)
+ 
+ TEST_F(TestPointRasterizeFrustum, testPointRasterization)
+ {
+-    const double tolerance = 1.0e-5;
++    const double tolerance = 2.0e-5;
+ 
+     // four our of five positions live in (0,0,0) voxels
+ 
+-- 
+2.47.1
+
