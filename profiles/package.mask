@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
+# Package destabilisation mask. 1.0_p20241107 is in ~arch but as snapshot
+# with long-term pending Qt6 patches on top it will not be stabilised.
+# 1.0 release was almost 8 years old already.
+~media-gfx/fotowall-1.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # No maintainer in Gentoo since 2016, current package is still Qt5 based;
 # upstream does not even bother making tags let alone releases; anyone who
