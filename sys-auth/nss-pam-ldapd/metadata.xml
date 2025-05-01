@@ -24,4 +24,7 @@
     dedicated service (nslcd) that queries the LDAP server with persistent
     connections, authentication, attribute translation, etc.
   </longdescription>
+  <upstream>
+    <remote-id type="github">arthurdejong/nss-pam-ldapd</remote-id>
+  </upstream>
 </pkgmetadata>
