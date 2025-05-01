@@ -159,7 +159,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	optix? ( <dev-libs/optix-9:= )
 	osl? (
-		>=media-libs/osl-1.13:=[${LLVM_USEDEP}]
+		<media-libs/osl-1.14:=[${LLVM_USEDEP}]
 		media-libs/mesa[${LLVM_USEDEP}]
 	)
 	pdf? ( media-libs/libharu )
