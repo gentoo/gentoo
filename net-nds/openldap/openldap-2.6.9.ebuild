@@ -787,6 +787,7 @@ multilib_src_install() {
 			einfo "Install the smbk5pwd module"
 			cd "${S}/contrib/slapd-modules/smbk5pwd" || die
 			emake DESTDIR="${D}" \
+				prefix="${EPREFIX}/usr" \
 				LDAP_BUILD="${BUILD_DIR}" \
 				libexecdir="${EPREFIX}/usr/$(get_libdir)/openldap" install
 			newdoc README smbk5pwd-README
