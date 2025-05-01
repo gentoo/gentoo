@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.02-use-destdir.patch"
 	"${FILESDIR}/${PN}-2.02-disable-static-build.patch"
 	"${FILESDIR}/${PN}-2.02-musl.patch"
+	"${FILESDIR}/${PN}-2.02-respect-ldflags.patch"
 )
 
 src_prepare() {
