@@ -4,6 +4,15 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# media-libs/libspng only keyworded on amd64, arm64
+-spng
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# only keyworded on amd64, arm
+-openni
+-openni2
+
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-11-04)
 # media-libs/tiff only keyworded on amd64
 -lerc
