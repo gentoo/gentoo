@@ -156,7 +156,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
-	optix? ( dev-libs/optix )
+	optix? ( <dev-libs/optix-9:= )
 	osl? (
 		>=media-libs/osl-1.13:=[${LLVM_USEDEP}]
 		media-libs/mesa[${LLVM_USEDEP}]
