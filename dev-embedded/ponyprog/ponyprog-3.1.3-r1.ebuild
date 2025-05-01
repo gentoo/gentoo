@@ -12,7 +12,6 @@ SRC_URI="https://github.com/lancos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="doc"
 
 DEPEND="
 	<app-editors/qhexedit2-0.8.10
