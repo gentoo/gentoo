@@ -81,6 +81,7 @@ multilib_src_install_all() {
 	fi
 
 	insinto /usr/share/gtk-doc/html
+
 	# This will install PangoXft API docs regardless of USE=-X, but this is intentional
 	# doins -r "${S}"/docs/Pango*
 }
