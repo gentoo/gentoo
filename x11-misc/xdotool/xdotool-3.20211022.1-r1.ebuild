@@ -34,7 +34,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.20210804.2-no_hardcoded_pkg-config.patch
-	"${FILESDIR}"/${PN}-3.20210804.2-no_ldconfig.patch
 )
 
 src_compile() {
@@ -46,7 +45,7 @@ src_compile() {
 
 src_install() {
 	emake PREFIX="${ED}"/usr INSTALLMAN="${ED}"/usr/share/man \
-		INSTALLLIB="${ED}"/usr/$(get_libdir) install
+		INSTALLLIB="${ED}"/usr/$(get_libdir) LDCONFIG=: install
 
 	dodoc -r CHANGELIST $(usev examples)
 	einstalldocs
