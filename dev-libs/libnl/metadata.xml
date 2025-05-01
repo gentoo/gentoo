@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">thom311/libnl</remote-id>
+		<remote-id type="cpe">cpe:/a:libnl_project:libnl</remote-id>
 	</upstream>
 </pkgmetadata>
