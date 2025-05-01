@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -90,8 +90,8 @@ src_configure() {
 		# -DASSIMP_UBSAN=yes # Enable Undefined Behavior sanitizer.
 		-DASSIMP_WARNINGS_AS_ERRORS=no # Treat all warnings as errors.
 		# -DBUILD_SHARED_LIBS=yes # Build package with shared libraries.
-		-DASSIMP_BUILD_COLLADA_IMPORTER="$(use collada)"
-		-DASSIMP_BUILD_COLLADA_EXPORTER="$(use collada)"
+		-DASSIMP_BUILD_COLLADA_IMPORTER="$(usex collada)"
+		-DASSIMP_BUILD_COLLADA_EXPORTER="$(usex collada)"
 	)
 
 	if use doc; then
