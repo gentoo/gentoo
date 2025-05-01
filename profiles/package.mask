@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
+# No maintainer in Gentoo since 2016, current package is still Qt5 based;
+# upstream does not even bother making tags let alone releases; anyone who
+# wants to deal with that shall step up as permanent maintainer and cut
+# some kind of Qt6 based package.
+# See also: https://github.com/fritzing/fritzing-app/issues/4086
+# Bug #947619; removal on 2025-05-31
+sci-electronics/fritzing
+
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
 # Unmaintained in Gentoo, depends on masked x11-wm/fvwm,
 # SRC_URI uses mirror://gentoo and the files don't exist on mirrors.
