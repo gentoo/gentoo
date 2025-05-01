@@ -565,12 +565,6 @@ sys-devel/gcc custom-cflags
 # situation is resolved.
 dev-util/rizin test
 
-# Sam James <sam@gentoo.org> (2021-12-27)
-# Doc building is broken and no new releases in a long time.
-# bug #830013
-# fixed in sci-libs/flann-1.9.2-20221027
-<=sci-libs/flann-1.9.2 doc
-
 # Joonas Niilola <juippis@gentoo.org> (2021-12-20)
 # Broken, upstream issue/PR open since 2021-05 without reply.
 # Gentoo bug #821253
