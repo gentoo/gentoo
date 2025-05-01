@@ -1,0 +1,34 @@
+From 4eaf66f11bb80c0f805fd3361cdd9b412aabe796 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 14 Jan 2025 14:00:01 +0100
+Subject: [PATCH] fix fmt-11
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_Field.C b/ThirdParty/ioss/vtkioss/Ioss_Field.C
+index fbb2100..8909eef 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_Field.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_Field.C
+@@ -12,6 +12,7 @@
+ #include <cstdint>
+ #include "vtk_fmt.h"
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ #include <iostream>
+ #include <string>
+ #include <vector>
+diff --git a/ThirdParty/ioss/vtkioss/Ioss_VariableType.C b/ThirdParty/ioss/vtkioss/Ioss_VariableType.C
+index b081dc3..4f1a841 100644
+--- a/ThirdParty/ioss/vtkioss/Ioss_VariableType.C
++++ b/ThirdParty/ioss/vtkioss/Ioss_VariableType.C
+@@ -19,6 +19,7 @@
+ #include VTK_FMT(fmt/core.h)
+ #include VTK_FMT(fmt/format.h)
+ #include VTK_FMT(fmt/ostream.h)
++#include VTK_FMT(fmt/ranges.h)
+ #include <map>
+ #include <sstream>
+ #include <string>
+-- 
+2.48.0
+
