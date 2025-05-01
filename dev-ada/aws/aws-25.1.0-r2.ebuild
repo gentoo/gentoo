@@ -21,7 +21,7 @@ IUSE="doc +shared ssl wsdl"
 
 RDEPEND="${ADA_DEPS}
 	>=dev-ada/gnatcoll-core-25:=[${ADA_USEDEP},shared?,static-libs]
-	dev-ada/libgpr:=[${ADA_USEDEP},shared(+)?,static-libs]
+	dev-ada/libgpr:=[${ADA_USEDEP},static-libs]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared?,static-libs]
 	shared? (
 		dev-ada/xmlada[static-pic]
