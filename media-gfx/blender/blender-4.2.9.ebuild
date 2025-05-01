@@ -106,7 +106,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
-	optix? ( dev-libs/optix )
+	optix? ( <dev-libs/optix-9:= )
 	osl? (
 		>=media-libs/osl-1.13:=[${LLVM_USEDEP}]
 		media-libs/mesa[${LLVM_USEDEP}]
@@ -183,6 +183,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.9-python3.12.patch"
 	"${FILESDIR}/${PN}-4.2.9-python3.13.patch"
 	"${FILESDIR}/${PN}-4.2.9-python3.12_1.patch"
+	"${FILESDIR}/${PN}-4.3.2-optix-8.1.0.patch"
+	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
 )
 
 blender_check_requirements() {
