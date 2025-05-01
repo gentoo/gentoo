@@ -37,6 +37,14 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
+# Unmaintained in Gentoo for almost 3 years, no commit upstream in 5 years
+# and depends on Qt5. Whoever wants to keep this in ::gentoo must sort out
+# the upstream/new-upstream situation and become a permanent maintainer.
+# Bugs #951484, #954360, #752198; removal on 2025-05-31
+x11-apps/radeon-profile
+x11-apps/radeon-profile-daemon
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # Dead upstream for many years, depends on Qt5 and FTB w/ boost-1.87 among
 # other bugs. Bugs #946991, #949076, #943002; removal on 2025-05-31
 games-board/pokerth
