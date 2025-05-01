@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_{12..15} )
 inherit ada multiprocessing
 
 MYPN=gprbuild
