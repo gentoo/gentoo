@@ -1,0 +1,76 @@
+From 57fbf1c67f2d89365601f39e72781fba001fe2f3 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Mon, 28 Apr 2025 08:13:38 +0100
+Subject: [PATCH 3/3] Backport fix for erroneous delimiter pushback condition
+ in read_mbchar
+
+This is a partial backport of commit 7731dc5c4d405ab147fc562e3af2a375ca593554
+from the devel branch. Consider the following test case.
+
+$ LC_ALL=en_US.UTF-8
+$ printf 'FOO\0\315\0\226\0' | while read -rd ''; do echo "${REPLY@Q}"; done
+
+With any vanilla 5.0, 5.1 or 5.2 release, the third record is disregarded.
+
+<FOO>
+<$'\315'>
+
+With 5.3-rc1, the third record is treated as if it were two empty
+records. The same is true of Gentoo's 5.2_p37 release.
+
+'FOO'
+$'\315'
+''
+''
+
+With the upcoming 5.3-rc2, which will incoprorate this patch, all three
+records are read correctly.
+
+<FOO>
+<$'\315'>
+<$'\226'>
+
+The issue is addressed by ensuring that the revised read_mbchar()
+routine refrains from pushing back the delimiter - while effectively
+truncating the mbchar buffer by writing a NUL byte - in cases where the
+delimiter character was not read by the same routine.
+
+As of the time of writing, the issue has not been addressed by any of
+the official patchlevels, nor has 5.3 been released.
+
+Link: https://pubs.opengroup.org/onlinepubs/9799919799.2024edition/utilities/read.html#tag_20_100_06
+Link: https://mywiki.wooledge.org/BashPitfalls#IFS.3D_read_-r_-d_.27.27_filename
+Link: https://lists.gnu.org/archive/html/bug-bash/2025-04/msg00065.html
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ builtins/read.def | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git builtins/read.def builtins/read.def
+index 9fd9a74c..8000def3 100644
+--- builtins/read.def
++++ builtins/read.def
+@@ -1102,14 +1102,14 @@ read_mbchar (fd, string, ind, ch, delim, unbuffered)
+ 	}
+       else if (ret == (size_t)-1)
+ 	{
+-	  /* If we read a delimiter character that makes this an invalid
+-	     multibyte character, we can't just add it to the input string
+-	     and treat it as a byte. We need to push it back so a subsequent
+-	     zread will pick it up. */
+-	  if ((unsigned char)c == delim)
++	  /* If we read (i > 1) a delimiter character (c == delimiter)
++	     that makes this an invalid multibyte character, we can't just
++	     add it to the input string and treat it as a byte.
++	     We need to push it back so a subsequent zread will pick it up. */
++	  if (i > 1 && (unsigned char)c == delim)
+ 	    {
+ 	      zungetc ((unsigned char)c);
+-	      mbchar[--i] = '\0';		/* unget the delimiter */
++	      i--;
+ 	    }
+ 	  break;		/* invalid multibyte character */
+ 	}
+-- 
+2.49.0
+
