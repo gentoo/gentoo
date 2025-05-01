@@ -28,6 +28,8 @@ RESTRICT="!test? ( test )"
 
 DOCS=( ChangeLog.md README.md )
 
+PATCHES=( "${FILESDIR}/${PN}-3.12.0-fallback-missing-char8_t.patch" )
+
 src_prepare() {
 	if use test ; then
 		ln -s "${WORKDIR}"/json_test_data-${TEST_VERSION} "${S}"/json_test_data || die
