@@ -146,6 +146,9 @@ src_configure() {
 	# https://bugs.launchpad.net/hplip/+bug/2055371
 	filter-lto
 
+	# https://bugs.gentoo.org/954891
+	append-flags -std=gnu17
+
 	local drv_build minimal_build
 
 	if use hpcups ; then
