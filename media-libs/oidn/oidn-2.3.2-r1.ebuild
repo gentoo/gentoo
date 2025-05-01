@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 ROCM_VERSION=6.3
 
 inherit cmake cuda python-any-r1 rocm
@@ -33,7 +33,10 @@ RDEPEND="
 	dev-cpp/tbb:=
 	dev-lang/ispc
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	hip? ( dev-util/hip:= )
+	hip? (
+		dev-util/hip:=
+		sci-libs/composable-kernel
+	)
 	openimageio? ( media-libs/openimageio:= )
 "
 DEPEND="${RDEPEND}"
