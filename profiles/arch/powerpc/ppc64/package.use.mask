@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-06)
+# Broken bundled Eigen, fails to compile. See bug #865191.
+sci-geosciences/grass pdal
+sci-libs/vtk pdal
+media-gfx/openvdb pdal
+
 # Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
 # dependencies not yet keyworded
 sci-ml/caffe2 distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
