@@ -72,7 +72,7 @@ PDEPEND="
 			dev-python/ipywidgets[${PYTHON_USEDEP}]
 			dev-python/widgetsnbextension[${PYTHON_USEDEP}]
 		)
-	' 3.{10..12})
+	' 3.{11..12})
 	smp? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
 		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]

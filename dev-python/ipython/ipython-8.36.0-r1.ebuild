@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 optfeature pypi virtualx
@@ -33,11 +33,8 @@ RDEPEND="
 	dev-python/stack-data[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.13.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/exceptiongroup[${PYTHON_USEDEP}]
-	' 3.10)
-	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.10 3.11)
+	' 3.11)
 "
 
 BDEPEND="
@@ -74,7 +71,7 @@ PDEPEND="
 			dev-python/ipywidgets[${PYTHON_USEDEP}]
 			dev-python/widgetsnbextension[${PYTHON_USEDEP}]
 		)
-	' 3.{10..12})
+	' 3.{11..12})
 	smp? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
 		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
