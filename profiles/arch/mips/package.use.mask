@@ -328,9 +328,10 @@ dev-libs/libgudev test
 dev-python/diskcache test
 
 # Sam James <sam@gentoo.org> (2021-02-06)
+# dev-qt/qtbase:6 is not keyworded here
 # media-sound/sndio is not yet keyworded here
 # bug #769098, bug #769122
-media-libs/openal sndio
+media-libs/openal gui sndio
 
 # Sam James <sam@gentoo.org> (2021-01-19)
 # Joonas Niilola <juippis@gentoo.org> (2021-01-10)
