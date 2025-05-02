@@ -217,6 +217,16 @@
 # Python ABI.
 : "${DISTUTILS_ALLOW_WHEEL_REUSE=1}"
 
+# @ECLASS_VARIABLE: DISTUTILS_ALLOW_PYC_SYMLINKS
+# @INTERNAL
+# @DESCRIPTION:
+# If set to a non-empty value, the eclass is allowed to create symlinks
+# between different optimization levels of compiled .pyc files.
+#
+# This is an optimization that can slightly reduce disk space usage.
+# Note that it requires >=dev-python/gpep517-19.
+: "${DISTUTILS_ALLOW_PYC_SYMLINKS=}"
+
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
@@ -992,6 +1002,9 @@ distutils-r1_python_prepare_all() {
 
 	python_export_utf8_locale
 	_distutils-r1_print_package_versions
+	if [[ ${DISTUTILS_ALLOW_PYC_SYMLINKS} ]]; then
+		einfo "DISTUTILS_ALLOW_PYC_SYMLINKS enabled, no support provided"
+	fi
 
 	_DISTUTILS_DEFAULT_CALLED=1
 }
@@ -1220,6 +1233,9 @@ distutils_wheel_install() {
 			--optimize=all
 			"${wheel}"
 	)
+	if [[ ${DISTUTILS_ALLOW_PYC_SYMLINKS} ]]; then
+		cmd+=( --symlink-pyc )
+	fi
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
