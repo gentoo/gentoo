@@ -230,9 +230,7 @@ _python_impl_matches() {
 				fi
 				return 0
 				;;
-			3.10)
-				;;
-			3.8|3.9|3.1[1-3])
+			3.[89]|3.1[0-3])
 				[[ ${impl%t} == python${pattern/./_} || ${impl} == pypy${pattern/./_} ]] &&
 					return 0
 				;;
