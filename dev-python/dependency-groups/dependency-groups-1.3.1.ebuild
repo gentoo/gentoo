@@ -20,9 +20,6 @@ KEYWORDS="~amd64 ~mips ~riscv"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
 distutils_enable_tests pytest
