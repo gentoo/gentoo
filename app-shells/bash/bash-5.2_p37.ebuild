@@ -97,7 +97,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.2_p15-configure-clang16.patch"
 	"${FILESDIR}/${PN}-5.2_p21-wpointer-to-int.patch"
 	"${FILESDIR}/${PN}-5.2_p32-memory-leaks.patch"
-	"${FILESDIR}/${PN}-5.2_p32-read-delimiter-in-invalid-mbchar.patch"
+	"${FILESDIR}/${PN}-5.2_p32-invalid-continuation-byte-ignored-as-delimiter-1.patch"
 )
 
 pkg_setup() {
