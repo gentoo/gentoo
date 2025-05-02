@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib-minimal toolchain-funcs
+inherit dot-a flag-o-matic libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://github.com/westes/flex"
@@ -53,7 +53,7 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
-
+	lto-guarantee-fat
 	multilib-minimal_src_configure
 }
 
@@ -86,6 +86,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	strip-lto-bytecode
 	einstalldocs
 	dodoc ONEWS
 	find "${ED}" -name '*.la' -type f -delete || die
