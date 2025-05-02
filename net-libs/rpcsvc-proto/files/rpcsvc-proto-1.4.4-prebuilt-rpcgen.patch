@@ -1,0 +1,43 @@
+From 7dc8c2a5051208c8808405c8bbdb3fca0cf43f74 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 2 May 2025 16:39:19 +0100
+Subject: [PATCH] configure.ac: Add --with-prebuilt-rpcgen option for
+ cross-compiling
+
+If given an argument, it will use that program to generate the rpcsvc
+headers. Otherwise, it will use "rpcgen" from the PATH.
+
+Closes: https://github.com/thkukuk/rpcsvc-proto/issues/13
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -23,4 +23,18 @@ AM_GNU_GETTEXT([external])
+ AM_GNU_GETTEXT_VERSION([0.20.2])
+ AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.2])
+ 
++RPCGEN='$(top_builddir)/rpcgen/rpcgen'
++AC_ARG_WITH([prebuilt-rpcgen],
++  AS_HELP_STRING(
++    [--with-prebuilt-rpcgen],
++    [use prebuilt rpcgen to generate rpcsvc headers]
++  ),
++  AS_CASE([$withval],
++    [no],  [],
++    [yes], [RPCGEN=rpcgen],
++           [RPCGEN=$withval]
++  )
++)
++AC_SUBST([RPCGEN])
++
+ AC_OUTPUT([Makefile rpcgen/Makefile rpcsvc/Makefile po/Makefile.in])
+--- a/rpcsvc/Makefile.am
++++ b/rpcsvc/Makefile.am
+@@ -12,4 +12,4 @@ nodist_rpcsvc_HEADERS = klm_prot.h nlm_prot.h rstat.h spray.h \
+ 	nfs_prot.h rquota.h sm_inter.h
+ 
+ .x.h:
+-	$(top_builddir)/rpcgen/rpcgen -h -o $@ $<
++	$(RPCGEN) -h -o $@ $<
+-- 
+2.49.0
+
