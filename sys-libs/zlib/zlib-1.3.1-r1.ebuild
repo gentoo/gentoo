@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Worth keeping an eye on 'develop' branch upstream for possible backports.
 AUTOTOOLS_AUTO_DEPEND="no"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/madler.asc
-inherit autotools edo multilib-minimal flag-o-matic verify-sig
+inherit autotools dot-a edo multilib-minimal flag-o-matic verify-sig
 
 DESCRIPTION="Standard (de)compression library"
 HOMEPAGE="https://zlib.net/"
@@ -66,6 +66,11 @@ src_prepare() {
 
 			;;
 	esac
+}
+
+src_configure() {
+	lto-guarantee-fat
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
@@ -164,6 +169,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	strip-lto-bytecode
+
 	dodoc FAQ README ChangeLog doc/*.txt
 
 	if use minizip ; then
