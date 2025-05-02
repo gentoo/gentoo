@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,9 +38,6 @@ RDEPEND="
 	sys-libs/zlib:=
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/tomli[${PYTHON_USEDEP}]
-		')
 	)
 "
 DEPEND="
@@ -53,7 +50,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.11.21-setup-py.patch"
+	"${FILESDIR}/${PN}-5.11.21-setup-py-r1.patch"
 	"${FILESDIR}/${PN}-5.11.21-unistd.patch"
 )
 
