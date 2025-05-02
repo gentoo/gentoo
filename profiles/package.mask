@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
+# Ancient version in tree, upstream discontinued to develop
+# a server for taskwarrior a long time ago
+# Bugs: #953857, #716762; removal on 2025-06-01
+acct-group/taskd
+acct-user/taskd
+app-misc/taskd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # Unmaintained in Gentoo for almost 3 years, no commit upstream in 5 years
 # and depends on Qt5. Whoever wants to keep this in ::gentoo must sort out
