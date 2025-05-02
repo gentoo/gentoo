@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{10..12} pypy3 )
+PYTHON_TESTED=( python3_{11..12} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_11 )
 
 inherit distutils-r1 multiprocessing pypi
@@ -27,10 +27,6 @@ RDEPEND="
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.12[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/exceptiongroup-1.0.0_rc8[${PYTHON_USEDEP}]
-		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
-	' 3.{9..10})
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-6.2.3[${PYTHON_USEDEP}]
