@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,6 +45,9 @@ src_prepare() {
 multilib_src_configure() {
 	# bug #943768
 	append-cflags -std=gnu17
+
+	# bug #923801
+	append-lfs-flags
 
 	local myconf=(
 		--localstatedir="${EPREFIX}"/var
