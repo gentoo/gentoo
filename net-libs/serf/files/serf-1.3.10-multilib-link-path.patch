@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/938134#c1
+--- a/SConstruct
++++ b/SConstruct
+@@ -220,6 +220,7 @@
+ 
+ thisdir = os.getcwd()
+ libdir = '$LIBDIR'
++libdir_base = os.path.basename(str(env['LIBDIR']))
+ incdir = '$PREFIX/include/serf-$MAJOR'
+ 
+ # This version string is used in the dynamic library name, and for Mac OS X also
+@@ -334,7 +335,7 @@
+ 
+   env.Append(LIBS=[apr_libs, apu_libs])
+   if not env.get('SOURCE_LAYOUT', None):
+-    env.Append(LIBPATH=['$APR/lib', '$APU/lib'],
++    env.Append(LIBPATH=[os.path.join('$APR', libdir_base), os.path.join('$APU', libdir_base)],
+                CPPPATH=['$APR/include/apr-1', '$APU/include/apr-1'])
+   elif aprstatic:
+     env.Append(LIBPATH=['$APR/LibR','$APU/LibR'],
+@@ -347,7 +348,7 @@
+   env.Append(LIBS=['zlib.lib'])
+   if not env.get('SOURCE_LAYOUT', None):
+     env.Append(CPPPATH=['$ZLIB/include'],
+-               LIBPATH=['$ZLIB/lib'])
++               LIBPATH=[os.path.join('$ZLIB', libdir_base)])
+   else:
+     env.Append(CPPPATH=['$ZLIB'],
+                LIBPATH=['$ZLIB'])
+@@ -355,7 +356,7 @@
+   # openssl
+   if not env.get('SOURCE_LAYOUT', None):
+     env.Append(CPPPATH=['$OPENSSL/include/openssl'],
+-               LIBPATH=['$OPENSSL/lib'])
++               LIBPATH=[os.path.join('$OPENSSL', libdir_base)])
+   elif 0: # opensslstatic:
+     env.Append(CPPPATH=['$OPENSSL/inc32'],
+                LIBPATH=['$OPENSSL/out32'])
+@@ -396,7 +397,7 @@
+     apu_libs = ''
+ 
+   env.Append(CPPPATH=['$OPENSSL/include'])
+-  env.Append(LIBPATH=['$OPENSSL/lib'])
++  env.Append(LIBPATH=[os.path.join('$OPENSSL', libdir_base)])
+ 
+ 
+ # If build with gssapi, get its information and define SERF_HAVE_GSSAPI
