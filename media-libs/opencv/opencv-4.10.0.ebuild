@@ -367,7 +367,6 @@ cuda_get_host_compiler() {
 
 	local compiler compiler_type compiler_version
 	local package package_version
-	local -x NVCC_CCBIN
 	local NVCC_CCBIN_default
 
 	compiler_type="$(tc-get-compiler-type)"
@@ -648,7 +647,7 @@ multilib_src_configure() {
 		# NOTE set this via MYCMAKEARGS if needed
 		-DWITH_NVCUVID="no" # TODO needs NVIDIA Video Codec SDK
 		-DWITH_NVCUVENC="no" # TODO needs NVIDIA Video Codec SDK
-		-DCUDA_NPP_LIBRARY_ROOT_DIR="$(usex cuda "${CUDA_PATH:=${EPREFIX}/opt/cuda}" "")"
+		-DCUDA_NPP_LIBRARY_ROOT_DIR="$(usex cuda "${CUDA_PATH:-${ESYSROOT}/opt/cuda}" "")"
 	# ===================================================
 	# OpenCV build components
 	# ===================================================
@@ -857,8 +856,8 @@ multilib_src_configure() {
 				)
 			fi
 		else
-			local -x CUDAARCHS
 			: "${CUDAARCHS:="$(cuda_get_host_native_arch)"}"
+			export CUDAARCHS
 		fi
 
 		local -x CUDAHOSTCXX CUDAHOSTLD
