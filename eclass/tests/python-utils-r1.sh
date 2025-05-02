@@ -221,6 +221,14 @@ test_is "_python_impl_matches python3_12 3.10 3.11" 1
 test_is "_python_impl_matches python3_12 3.11 3.12" 0
 test_is "_python_impl_matches python3_12 3.10 3.12" 0
 test_is "_python_impl_matches python3_12 3.10 3.11 3.12" 0
+test_is "_python_impl_matches python3_11 python3_10 python3_11" 0
+test_is "_python_impl_matches python3_11 python3_11 python3_12" 0
+test_is "_python_impl_matches python3_11 python3_10 python3_12" 1
+test_is "_python_impl_matches python3_11 python3_10 python3_11 python3_12" 0
+test_is "_python_impl_matches python3_12 python3_10 python3_11" 1
+test_is "_python_impl_matches python3_12 python3_11 python3_12" 0
+test_is "_python_impl_matches python3_12 python3_10 python3_12" 0
+test_is "_python_impl_matches python3_12 python3_10 python3_11 python3_12" 0
 eoutdent
 
 rm "${tmpfile}"
