@@ -86,8 +86,6 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-fatal-warnings
-		--disable-firetunnel
-		--disable-lts
 		--enable-suid
 		$(use_enable apparmor)
 		$(use_enable chroot)
