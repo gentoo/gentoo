@@ -3,13 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-
+PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="HTTP client library"
 HOMEPAGE="https://serf.apache.org/"
-SRC_URI="mirror://apache/${PN}/${P}.tar.bz2"
+SRC_URI="
+	mirror://apache/${PN}/${P}.tar.bz2
+	https://archive.apache.org/dist/serf/${P}.tar.bz2
+"
 
 LICENSE="Apache-2.0"
 SLOT="1"
@@ -21,9 +23,10 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/apr:1=
 	dev-libs/apr-util:1=
-	dev-libs/openssl:0=
-	sys-libs/zlib:0=
-	kerberos? ( virtual/krb5 )"
+	dev-libs/openssl:=
+	sys-libs/zlib
+	kerberos? ( virtual/krb5 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-build/scons-2.3.0"
 
