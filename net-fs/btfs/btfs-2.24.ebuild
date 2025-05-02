@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools python-r1
 
-DESCRIPTION="a bittorrent filesystem based on FUSE"
+DESCRIPTION="Bittorrent filesystem based on FUSE"
 HOMEPAGE="https://github.com/johang/btfs"
 SRC_URI="https://github.com/johang/btfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
