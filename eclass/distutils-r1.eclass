@@ -227,6 +227,18 @@
 # Note that it requires >=dev-python/gpep517-19.
 : "${DISTUTILS_ALLOW_PYC_SYMLINKS=}"
 
+# @ECLASS_VARIABLE: DISTUTILS_ALLOW_CROSS_IMPL_SYMLINKS
+# @INTERNAL
+# @DESCRIPTION:
+# If set to a non-empty value, the eclass will replace identical files
+# from installed wheels with symlinks, across different Python
+# implementations.  This may include .py files, variety of data files
+# and stable ABI extensions.
+#
+# This is an optimization that can reduce disk space usage when packages
+# are built for multiple Python implementations.
+: "${DISTUTILS_ALLOW_CROSS_IMPL_SYMLINKS=}"
+
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
@@ -1005,6 +1017,9 @@ distutils-r1_python_prepare_all() {
 	if [[ ${DISTUTILS_ALLOW_PYC_SYMLINKS} ]]; then
 		einfo "DISTUTILS_ALLOW_PYC_SYMLINKS enabled, no support provided"
 	fi
+	if [[ ${DISTUTILS_ALLOW_CROSS_IMPL_SYMLINKS} ]]; then
+		einfo "DISTUTILS_ALLOW_CROSS_IMPL_SYMLINKS enabled, no support provided"
+	fi
 
 	_DISTUTILS_DEFAULT_CALLED=1
 }
@@ -1235,6 +1250,33 @@ distutils_wheel_install() {
 	)
 	if [[ ${DISTUTILS_ALLOW_PYC_SYMLINKS} ]]; then
 		cmd+=( --symlink-pyc )
+	fi
+	if [[ ${DISTUTILS_ALLOW_CROSS_IMPL_SYMLINKS} && ${_DISTUTILS_SITES[@]} ]]
+	then
+		set -- "${_DISTUTILS_SITES[@]}"
+		while [[ ${#} -gt 0 ]]; do
+			local full_site=${1}
+			local site=${2}
+			shift 2
+
+			mkdir -p "${BUILD_DIR}/install${site%/*}" || die
+			ln -s "${full_site}" "${BUILD_DIR}/install${site}" || die
+		done
+
+		# construct relative path from new sitedir to previous sitedir
+		local new_site=$(python_get_sitedir)
+		local relative_path=
+		while [[ ${site%%/*} == ${new_site%%/*} ]]; do
+			site=${site#*/}
+			new_site=${new_site#*/}
+		done
+		while [[ ${new_site} == */* ]]; do
+			relative_path+=../
+			new_site=${new_site%/*}
+		done
+		relative_path+=../${site}
+
+		cmd+=( --symlink-to "${relative_path}" )
 	fi
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
@@ -1478,6 +1520,15 @@ distutils_pep517_install() {
 # distutils_pep517_install calls in the ebuild.
 declare -g -A DISTUTILS_WHEELS=()
 
+# @VARIABLE: _DISTUTILS_SITES
+# @INTERNAL
+# @DESCRIPTION:
+# A list of site-packages directories for Python implementations
+# previously built.  Each directory is represented by a pair of values:
+# absolute path to it in the build directory, and the final path
+# returned by python_get_sitedir.
+declare -g _DISTUTILS_SITES=()
+
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -1708,6 +1759,20 @@ distutils-r1_python_install() {
 				mv "${wrapped_scriptdir}" "${reg_scriptdir}" || die
 			fi
 		fi
+
+		# remove site-packages symlinks if we created them
+		if [[ ${DISTUTILS_ALLOW_CROSS_IMPL_SYMLINKS} ]]; then
+			set -- "${_DISTUTILS_SITES[@]}"
+			while [[ ${#} -gt 0 ]]; do
+				local site=${2}
+				shift 2
+
+				if [[ -L "${BUILD_DIR}/install${site}" ]]; then
+					rm "${BUILD_DIR}/install${site}" || die
+				fi
+			done
+		fi
+
 		# prune empty directories to see if ${root} contains anything
 		# to merge
 		find "${BUILD_DIR}"/install -type d -empty -delete || die
@@ -2057,6 +2122,10 @@ _distutils-r1_post_python_compile() {
 
 		_distutils-r1_compare_installed_files
 	fi
+
+	local site=$(python_get_sitedir)
+	local full_site="${BUILD_DIR}/install${site}"
+	_DISTUTILS_SITES+=( "${full_site}" "${site}" )
 }
 
 distutils-r1_src_compile() {
