@@ -6,10 +6,6 @@
 		<name>Rust Project</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
-		<email>randy@electronsweatshop.com</email>
-		<name>Randy Barlow</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
 		<email>navi@vlhl.dev</email>
 		<name>Anna Figueiredo Gomes</name>
 	</maintainer>
