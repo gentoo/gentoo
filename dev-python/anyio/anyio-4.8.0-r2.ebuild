@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -23,11 +23,8 @@ RDEPEND="
 	>=dev-python/sniffio-1.1[${PYTHON_USEDEP}]
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/exceptiongroup-1.2.0[${PYTHON_USEDEP}]
-	' 3.10)
-	$(python_gen_cond_dep '
 		>=dev-python/typing-extensions-4.5[${PYTHON_USEDEP}]
-	' 3.{10..12})
+	' 3.{11..12})
 "
 # On amd64, let's get more test coverage by dragging in uvloop, but let's
 # not bother on other arches where uvloop may not be supported.
@@ -40,11 +37,11 @@ BDEPEND="
 		dev-python/trustme[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			>=dev-python/trio-0.26.1[${PYTHON_USEDEP}]
-		' 3.{10..13})
+		' 3.{11..13})
 		amd64? (
 			$(python_gen_cond_dep '
 				>=dev-python/uvloop-0.21.0_beta1[${PYTHON_USEDEP}]
-			' python3_{10..13})
+			' python3_{11..13})
 		)
 	)
 "
