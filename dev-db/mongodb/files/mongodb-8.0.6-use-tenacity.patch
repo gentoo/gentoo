@@ -1,0 +1,37 @@
+From 4903458dd8933b0754da3b00109a042a5ccf23a8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Valenduc?= <francoisvalenduc@gmail.com>
+Date: Tue, 29 Apr 2025 18:52:54 +0200
+Subject: [PATCH] replace retry by tenacity
+
+the retry decorator is used in site_scons/site_tools/integrate_bazel.py
+which is part of the retry package not available in Gentoo.
+Replace it by tenacity which is well included in Gentoo.
+---
+ site_scons/site_tools/integrate_bazel.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/site_scons/site_tools/integrate_bazel.py b/site_scons/site_tools/integrate_bazel.py
+index b9e2143f23c..995df696d10 100644
+--- a/site_scons/site_tools/integrate_bazel.py
++++ b/site_scons/site_tools/integrate_bazel.py
+@@ -16,7 +16,7 @@ import threading
+ from typing import List, Dict, Set, Tuple, Any
+ import urllib.request
+ import requests
+-from retry import retry
++from tenacity import retry, stop_after_attempt, wait_fixed
+ import sys
+ 
+ import SCons
+@@ -477,7 +477,7 @@ def generate_bazel_info_for_ninja(env: SCons.Environment.Environment) -> None:
+     env["NINJA_BAZEL_INPUTS"] = ninja_bazel_ins
+ 
+ 
+-@retry(tries=5, delay=3)
++@retry(stop=stop_after_attempt(3), wait=wait_fixed(0.1))
+ def download_path_with_retry(*args, **kwargs):
+     urllib.request.urlretrieve(*args, **kwargs)
+ 
+-- 
+2.49.0
+
