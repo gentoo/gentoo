@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 optfeature
 
@@ -21,12 +21,12 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	<dev-python/anyio-5[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
-	<dev-python/h11-0.15[${PYTHON_USEDEP}]
+	>=dev-python/h11-0.16[${PYTHON_USEDEP}]
 	<dev-python/h2-5[${PYTHON_USEDEP}]
 	=dev-python/sniffio-1*[${PYTHON_USEDEP}]
 "
@@ -40,7 +40,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/pytest-trio[${PYTHON_USEDEP}]
 			dev-python/trio[${PYTHON_USEDEP}]
-		' 3.{10..13})
+		' 3.{11..13})
 	)
 "
 
