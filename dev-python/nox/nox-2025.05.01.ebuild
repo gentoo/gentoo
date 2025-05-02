@@ -29,9 +29,6 @@ RDEPEND="
 	>=dev-python/dependency-groups-1.1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.9[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.14.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (
