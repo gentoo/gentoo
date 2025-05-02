@@ -43,6 +43,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.70-envlimits.patch"
 	"${FILESDIR}/${PN}-0.9.74-firecfg.config.patch"
+	"${FILESDIR}/${PN}-0.9.74-manpage-nocompress.patch"
 )
 
 pkg_setup() {
@@ -71,9 +72,6 @@ src_prepare() {
 	for file in ${files[@]} ; do
 		sed -i -r -e "s:/usr/share/doc/firejail([^-]|\$):/usr/share/doc/${PF}\1:" "${file}" || die
 	done
-
-	# remove compression of man pages
-	sed -i -r -e '/rm -f \$\$man.gz; \\/d; /gzip -9n \$\$man; \\/d; s|\*\.([[:digit:]])\) install -m 0644 \$\$man\.gz|\*\.\1\) install -m 0644 \$\$man|g' Makefile || die
 
 	if use contrib; then
 		python_fix_shebang -f contrib/*.py
