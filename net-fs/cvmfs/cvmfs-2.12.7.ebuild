@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake linux-info bash-completion-r1
+inherit cmake linux-info bash-completion-r1 tmpfiles
 
 DESCRIPTION="HTTP read-only file system for distributing software"
 HOMEPAGE="https://cernvm.cern.ch/fs/"
@@ -101,6 +101,7 @@ src_install() {
 	dodoc doc/*.md
 	keepdir /var/lib/cvmfs
 	use server && keepdir /var/lib/cvmfs-server
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles.conf ${PN}.conf
 }
 
 src_test() {
