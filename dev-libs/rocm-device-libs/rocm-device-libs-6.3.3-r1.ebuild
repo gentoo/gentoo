@@ -72,10 +72,7 @@ src_configure() {
 	local -x CXX="$(get_llvm_prefix)/bin/clang++"
 	strip-unsupported-flags
 
-	local mycmakeargs=(
-		-DLLVM_DIR="$(get_llvm_prefix)"
-	)
-	cmake_src_configure
+	LLVM_DIR="$(get_llvm_prefix)" Clang_DIR="$(get_llvm_prefix)" cmake_src_configure
 }
 
 src_install() {
