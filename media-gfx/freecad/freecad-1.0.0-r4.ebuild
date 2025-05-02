@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 qmake-utils toolchain-funcs xdg virtualx
 
@@ -19,6 +19,8 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="
 		https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/FreeCAD/FreeCAD/commit/8934af10128f0bd2d0ffada946d1c93bc5d8869f.patch -> ${PN}-18423.patch
+		https://github.com/FreeCAD/FreeCAD/commit/d91b3e051789623f0bc1eff65947c361e7a661d0.patch -> ${PN}-20710.patch
 	"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
@@ -117,10 +119,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
-	"${FILESDIR}/${PN}-1.0.0-r4-error-cannot-convert-bool-to-App-DocumentInitFlags.patch"
+	"${DISTDIR}/${PN}-18423.patch" # vtk-9.4
+	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
@@ -300,8 +303,8 @@ src_configure() {
 		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 		# -DPython3_EXECUTABLE=${EPYTHON}
 
-		-DPACKAGE_WCREF="%{release} (Git)"
-		-DPACKAGE_WCURL="git://github.com/FreeCAD/FreeCAD.git main"
+		-DPACKAGE_WCREF="${PVR} (gentoo)"
+		-DPACKAGE_WCURL="git://github.com/FreeCAD/FreeCAD.git ${PV}"
 	)
 
 	if [[ ${PV} == *9999* ]]; then
@@ -361,30 +364,6 @@ src_configure() {
 # configuration. Without those, there is a sandbox violation, when it
 # tries to create /var/lib/portage/home/.FreeCAD directory.
 src_test() {
-	local -x EPYTEST_IGNORE=(
-		"Mod/BIM/nativeifc/ifc_performance_test.py"
-	)
-	local -x EPYTEST_DESELECT=(
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_check_python_version_bad"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_check_python_version_bad"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_dependency_failure_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_failure_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_handle_disallowed_python"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_install"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_no_pip_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_no_python_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_report_missing_workbenches_multiple"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_report_missing_workbenches_single"
-		"Mod/AddonManager/AddonManagerTest/gui/test_installer_gui.py::TestInstallerGui::test_success_dialog"
-
-		"Mod/AddonManager/AddonManagerTest/gui/test_uninstaller_gui.py::TestUninstallerGUI::test_confirmation_dialog_cancel"
-		"Mod/AddonManager/AddonManagerTest/gui/test_uninstaller_gui.py::TestUninstallerGUI::test_confirmation_dialog_yes"
-		"Mod/AddonManager/AddonManagerTest/gui/test_uninstaller_gui.py::TestUninstallerGUI::test_failure_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_uninstaller_gui.py::TestUninstallerGUI::test_progress_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_uninstaller_gui.py::TestUninstallerGUI::test_success_dialog"
-		"Mod/AddonManager/AddonManagerTest/gui/test_uninstaller_gui.py::TestUninstallerGUI::test_timer_launches_progress_dialog"
-	)
-
 	cd "${BUILD_DIR}" || die
 
 	# No module named 'ifcopenshell' #940465
