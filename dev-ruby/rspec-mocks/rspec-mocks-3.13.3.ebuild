@@ -57,7 +57,7 @@ all_ruby_prepare() {
 each_ruby_prepare() {
 	case ${RUBY} in
 		*ruby34)
-			Avoid specs failing with ruby34. Should be fixed upstream.
+			# Avoid specs failing with ruby34. Should be fixed upstream.
 			rm -f spec/rspec/mocks/argument_matchers_spec.rb \
 			   spec/rspec/mocks/double_spec.rb \
 			   spec/rspec/mocks/verifying_doubles/expected_arg_verification_spec.rb \
