@@ -6,7 +6,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..13} python3_13t pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -23,7 +23,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/backports-tarfile[${PYTHON_USEDEP}]
-	' 3.10 3.11)
+	' 3.11)
 "
 BDEPEND="
 	test? (
