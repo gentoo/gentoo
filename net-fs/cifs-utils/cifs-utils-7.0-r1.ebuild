@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.12-ln_in_destdir.patch" #766594
 	"${FILESDIR}/${PN}-6.15-musl.patch"
 	"${FILESDIR}/${PN}-7.0-no-clobber-fortify-source.patch"
+	"${FILESDIR}/${PN}-7.0-musl.patch"
 )
 
 pkg_setup() {
