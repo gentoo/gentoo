@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=scikit-build-core
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 FORTRAN_NEEDED=fortran
 inherit cmake distutils-r1 fortran-2 toolchain-funcs
 
@@ -31,7 +31,7 @@ RDEPEND="
 		')
 		$(python_gen_cond_dep '
 			dev-python/typing-extensions[${PYTHON_USEDEP}]
-		' 3.10 3.11 3.12)
+		' 3.11 3.12)
 	)
 "
 DEPEND="${RDEPEND}"
