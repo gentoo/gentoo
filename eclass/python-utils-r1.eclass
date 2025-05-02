@@ -208,6 +208,8 @@ _python_impl_matches() {
 	local impl=${1/./_} pattern
 	shift
 
+	# note: do not add "return 1" below, the function is supposed
+	# to iterate until it matches something
 	for pattern; do
 		case ${pattern} in
 			-2|python2*|pypy)
@@ -229,7 +231,6 @@ _python_impl_matches() {
 				return 0
 				;;
 			3.10)
-				return 1
 				;;
 			3.8|3.9|3.1[1-3])
 				[[ ${impl%t} == python${pattern/./_} || ${impl} == pypy${pattern/./_} ]] &&

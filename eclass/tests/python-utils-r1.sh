@@ -212,6 +212,15 @@ test_is "_python_impl_matches python3_12 3.12" 0
 test_is "_python_impl_matches pypy3_11 3.10" 1
 test_is "_python_impl_matches pypy3_11 3.11" 0
 test_is "_python_impl_matches pypy3_11 3.12" 1
+# https://bugs.gentoo.org/95521
+test_is "_python_impl_matches python3_11 3.10 3.11" 0
+test_is "_python_impl_matches python3_11 3.11 3.12" 0
+test_is "_python_impl_matches python3_11 3.10 3.12" 1
+test_is "_python_impl_matches python3_11 3.10 3.11 3.12" 0
+test_is "_python_impl_matches python3_12 3.10 3.11" 1
+test_is "_python_impl_matches python3_12 3.11 3.12" 0
+test_is "_python_impl_matches python3_12 3.10 3.12" 0
+test_is "_python_impl_matches python3_12 3.10 3.11 3.12" 0
 eoutdent
 
 rm "${tmpfile}"
