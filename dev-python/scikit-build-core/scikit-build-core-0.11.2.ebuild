@@ -25,10 +25,6 @@ RDEPEND="
 	>=dev-python/packaging-23.2[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/pyproject-metadata-0.5[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/exceptiongroup[${PYTHON_USEDEP}]
-		>=dev-python/tomli-1.2.2[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
