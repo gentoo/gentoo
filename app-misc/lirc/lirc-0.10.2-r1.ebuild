@@ -94,6 +94,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	if [[ -d "${WORKDIR}"/debian/patches ]] ; then
+		eapply $(sed -e 's:^:../debian/patches/:' ../debian/patches/series || die)
+	fi
+
 	# https://bugs.gentoo.org/922209
 	sed -i -e "/^libpython / s|\$(libdir)/python\$(PYTHON_VERSION)|$(python_get_stdlib)|" Makefile.am || die
 	sed -i -e "/^libpython / s|\$(libdir)/python\$(PYTHON_VERSION)|$(python_get_stdlib)|" tools/Makefile.am || die
