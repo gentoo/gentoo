@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PLOCALES="cs de es fr it ja ka ko nl pl pt pt_BR ru sv th tr zh_CN zh_TW"
 inherit meson plocale python-r1 xdg
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/MightyCreak/diffuse/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"

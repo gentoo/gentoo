@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -20,9 +20,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc 
 
 RDEPEND="
 	>=dev-python/packaging-24.2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-2.2.1[${PYTHON_USEDEP}]
-	' 3.{9..10})
 "
 BDEPEND="
 	>=dev-python/hatch-vcs-0.3.0[${PYTHON_USEDEP}]

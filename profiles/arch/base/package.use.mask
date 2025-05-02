@@ -279,6 +279,10 @@ dev-util/diffoscope haskell
 # gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
 x11-wm/mutter video_cards_nvidia
 
+# dev-util/mesa_clc with video_cards_{asahi,panfrost} is required to
+# cross-compile dev-libs/mesa with video_cards_{asahi,panfrost}
+dev-util/mesa_clc -video_cards_asahi -video_cards_panfrost
+
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # The clozurecl and clozurecl64 flags are now arch-specific in maxima,
 # so we mask them both by default beginning with v5.44.0-r5 where

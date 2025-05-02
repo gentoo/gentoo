@@ -1,0 +1,146 @@
+From fb31e1965baa732f9e4cdbe3a7d6691d7beb4e03 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Mon, 28 Apr 2025 07:59:25 +0100
+Subject: [PATCH 2/3] Backport fix for invalid continuation bytes above 0x7F
+ being ignored as delimiters
+
+This is a partial backport of commit e327891b52513bef0b34aac625c44f8fa6811f53
+from the devel branch. It addresses an issue in read_mbchar() whereby an
+invalid continuation byte greater than 0x7F isn't recognised as a valid
+delimiter on platforms where char is signed. Consider the following test
+case.
+
+$ LC_ALL=en_US.UTF-8; uname -m
+x86_64
+$ printf '\317\360_' | { read -rd $'\360'; echo "${REPLY@Q}"; }
+$'\317\360_'
+
+After applying this patch, the value of REPLY will be $'\317'.
+
+The issue affects all bash releases from 5.0 to 5.3-rc1. As of the time
+of writing, it has not been addressed by any of the official
+patchlevels, nor has 5.3 been released.
+
+Link: https://pubs.opengroup.org/onlinepubs/9799919799.2024edition/utilities/read.html#tag_20_100_06
+Link: https://mywiki.wooledge.org/BashPitfalls#IFS.3D_read_-r_-d_.27.27_filename
+Link: https://lists.gnu.org/r/bug-bash/2024-08/msg00100.html
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ builtins/read.def | 40 +++++++++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
+
+diff --git builtins/read.def builtins/read.def
+index 53b4bd81..9fd9a74c 100644
+--- builtins/read.def
++++ builtins/read.def
+@@ -142,7 +142,7 @@ sh_timer *read_timeout;
+ 
+ static int reading, tty_modified;
+ static SigHandler *old_alrm;
+-static unsigned char delim;
++static int delim;
+ 
+ static struct ttsave termsave;
+ 
+@@ -320,7 +320,6 @@ read_builtin (list)
+ 	  break;
+ 	case 'N':
+ 	  ignore_delim = 1;
+-	  delim = -1;
+ 	case 'n':
+ 	  nflag = 1;
+ 	  code = legal_number (list_optarg, &intval);
+@@ -348,7 +347,7 @@ read_builtin (list)
+ 	    }
+ 	  break;
+ 	case 'd':
+-	  delim = *list_optarg;
++	  delim = (unsigned char)*list_optarg;
+ 	  break;
+ 	CASE_HELPOPT;
+ 	default:
+@@ -765,7 +764,7 @@ read_builtin (list)
+ 	  continue;
+ 	}
+ 
+-      if (ignore_delim == 0 && (unsigned char)c == delim)
++      if ((unsigned char)c == delim)
+ 	break;
+ 
+       if (c == '\0' && delim != '\0')
+@@ -1107,9 +1106,9 @@ read_mbchar (fd, string, ind, ch, delim, unbuffered)
+ 	     multibyte character, we can't just add it to the input string
+ 	     and treat it as a byte. We need to push it back so a subsequent
+ 	     zread will pick it up. */
+-	  if (c == delim)
++	  if ((unsigned char)c == delim)
+ 	    {
+-	      zungetc (c);
++	      zungetc ((unsigned char)c);
+ 	      mbchar[--i] = '\0';		/* unget the delimiter */
+ 	    }
+ 	  break;		/* invalid multibyte character */
+@@ -1220,6 +1219,8 @@ edit_line (p, itext)
+   len = strlen (ret);
+   ret = (char *)xrealloc (ret, len + 2);
+   ret[len++] = delim;
++  if (delim > 0)
++    ret[len++] = delim;
+   ret[len] = '\0';
+   return ret;
+ }
+@@ -1240,7 +1241,7 @@ static rl_command_func_t *old_delim_func;
+ static int old_newline_ctype;
+ static rl_command_func_t *old_newline_func;
+ 
+-static unsigned char delim_char;
++static int delim_char;
+ 
+ static void
+ set_eol_delim (c)
+@@ -1252,19 +1253,21 @@ set_eol_delim (c)
+     initialize_readline ();
+   cmap = rl_get_keymap ();
+ 
+-  /* Save the old delimiter char binding */
++  /* Save the old newline binding and change it to self-insert */
+   old_newline_ctype = cmap[RETURN].type;
+   old_newline_func =  cmap[RETURN].function;
+-  old_delim_ctype = cmap[c].type;
+-  old_delim_func = cmap[c].function;
+-
+-  /* Change newline to self-insert */
+   cmap[RETURN].type = ISFUNC;
+   cmap[RETURN].function = rl_insert;
+ 
+-  /* Bind the delimiter character to accept-line. */
+-  cmap[c].type = ISFUNC;
+-  cmap[c].function = rl_newline;
++  /* Save any binding to the delimiter and bind the delimiter to accept-line */
++  if (c >= 0)
++    {
++      old_delim_ctype = cmap[c].type;
++      old_delim_func = cmap[c].function;
++
++      cmap[c].type = ISFUNC;
++      cmap[c].function = rl_newline;
++    }
+ 
+   delim_char = c;
+ }
+@@ -1280,7 +1283,10 @@ reset_eol_delim (cp)
+   cmap[RETURN].type = old_newline_ctype;
+   cmap[RETURN].function = old_newline_func;
+ 
+-  cmap[delim_char].type = old_delim_ctype;
+-  cmap[delim_char].function = old_delim_func;
++  if (delim_char >= 0)
++    {
++      cmap[delim_char].type = old_delim_ctype;
++      cmap[delim_char].function = old_delim_func;
++    }
+ }
+ #endif
+-- 
+2.49.0
+

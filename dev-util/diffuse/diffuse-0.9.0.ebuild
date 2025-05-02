@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PLOCALES="cs de es fr it ja ka ko nl pl pt pt_BR ru sv th tr zh_CN zh_TW"
 inherit meson plocale python-r1 xdg
 

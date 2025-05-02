@@ -315,8 +315,8 @@ src_install() {
 	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
 
 	insinto /etc/bash/bashrc.d
-	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
-	newins "${FILESDIR}"/bashrc.d/10-gentoo-title-r1.bash 10-gentoo-title.bash
+	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color-r1.bash | newins - 10-gentoo-color.bash
+	newins "${FILESDIR}"/bashrc.d/10-gentoo-title-r2.bash 10-gentoo-title.bash
 	if [[ ! ${EPREFIX} ]]; then
 		doins "${FILESDIR}"/bashrc.d/15-gentoo-bashrc-check.bash
 	fi

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_TESTED=( python3_{11..13} pypy3_11 )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13t )
 
 inherit distutils-r1 pypi
@@ -27,11 +27,6 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/pluggy-2[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-1.5.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/exceptiongroup-1.0.0_rc8[${PYTHON_USEDEP}]
-		>=dev-python/tomli-1[${PYTHON_USEDEP}]
-	' 3.10)
-	!!<=dev-python/flaky-3.7.0-r5
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-6.2.3[${PYTHON_USEDEP}]

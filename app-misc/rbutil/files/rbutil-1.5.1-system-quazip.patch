@@ -1,25 +1,19 @@
-From 930293a899825ae552370a060dd04117ebc5fdae Mon Sep 17 00:00:00 2001
+From 4917f764bbb9580d9ec312794c0d7ae71c6792e1 Mon Sep 17 00:00:00 2001
 From: James Le Cuirot <chewi@gentoo.org>
-Date: Thu, 7 Jul 2022 21:52:54 +0100
-Subject: [PATCH] rbutil: Add USE_SYSTEM_QUAZIP option to use system-wide
- QuaZIP
+Date: Thu, 07 Jul 2022 21:52:54 +0100
+Subject: [PATCH] rbutil: Try to use system-wide QuaZIP in preference to building our own
 
 QuaZIP is included in several major Linux distributions and packaging
 policies strongly oppose bundling of libraries.
 
 Change-Id: I8d454784dc4b244f4dd8aa18deb3350a29aaab77
 ---
- docs/CREDITS                    |  1 +
- utils/rbutilqt/CMakeLists.txt   | 65 ++++++++++++++++++---------------
- utils/rbutilqt/base/ziputil.cpp |  6 +--
- utils/rbutilqt/base/ziputil.h   |  6 +--
- 4 files changed, 43 insertions(+), 35 deletions(-)
 
 diff --git a/docs/CREDITS b/docs/CREDITS
-index 6f7c23fc7e..3a6fcb83b9 100644
+index 6f7c23f..3a6fcb8 100644
 --- a/docs/CREDITS
 +++ b/docs/CREDITS
-@@ -710,6 +710,7 @@ Marc Aarts
+@@ -710,6 +710,7 @@
  Fabrice Bellard
  Selami Dinçer
  Matej Golian
@@ -28,18 +22,19 @@ index 6f7c23fc7e..3a6fcb83b9 100644
  The libmad team
  The wavpack team
 diff --git a/utils/rbutilqt/CMakeLists.txt b/utils/rbutilqt/CMakeLists.txt
-index 41954cb9ee..350790109b 100644
+index 41954cb..24e15ac 100644
 --- a/utils/rbutilqt/CMakeLists.txt
 +++ b/utils/rbutilqt/CMakeLists.txt
-@@ -255,9 +255,43 @@ if(APPLE)
+@@ -255,9 +255,44 @@
          ${CMAKE_CURRENT_LIST_DIR}/base/ttscarbon.h)
  endif()
  
-+option(USE_SYSTEM_QUAZIP "Use system QuaZIP library" OFF)
-+if(USE_SYSTEM_QUAZIP)
-+    find_package(QuaZip-Qt5 REQUIRED)
++find_package(QuaZip-Qt${QT_VERSION_MAJOR} QUIET)
++if(QuaZip-Qt${QT_VERSION_MAJOR}_FOUND)
++    message("-- Found QuaZip")
 +    set(QUAZIP_LIBRARY QuaZip::QuaZip)
 +else()
++    message("-- QuaZip not found, building our own")
 +    # TODO: Upstream has cmake support, use that instead.
 +    add_library(quazip
 +        ${CMAKE_CURRENT_LIST_DIR}/quazip/ioapi.h
@@ -77,7 +72,7 @@ index 41954cb9ee..350790109b 100644
      mkamsboot mkimxboot mkmpioboot mktccboot mks5lboot
      Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Network)
  target_include_directories(rbbase PUBLIC ${CMAKE_CURRENT_LIST_DIR}/base)
-@@ -298,33 +332,6 @@ target_link_libraries(cutelogger PUBLIC Qt${QT_VERSION_MAJOR}::Core)
+@@ -298,33 +333,6 @@
  target_compile_definitions(cutelogger PUBLIC CUTELOGGER_STATIC)
  set_property(TARGET cutelogger PROPERTY AUTOMOC ON)
  
@@ -112,7 +107,7 @@ index 41954cb9ee..350790109b 100644
      #mspack/cabc.c
      mspack/cabd.c
 diff --git a/utils/rbutilqt/base/ziputil.cpp b/utils/rbutilqt/base/ziputil.cpp
-index e285446711..877a861253 100644
+index e285446..877a861 100644
 --- a/utils/rbutilqt/base/ziputil.cpp
 +++ b/utils/rbutilqt/base/ziputil.cpp
 @@ -22,9 +22,9 @@
@@ -129,7 +124,7 @@ index e285446711..877a861253 100644
  
  ZipUtil::ZipUtil(QObject* parent) : ArchiveUtil(parent)
 diff --git a/utils/rbutilqt/base/ziputil.h b/utils/rbutilqt/base/ziputil.h
-index 73a87a820a..ea32ca42c3 100644
+index 73a87a8..ea32ca4 100644
 --- a/utils/rbutilqt/base/ziputil.h
 +++ b/utils/rbutilqt/base/ziputil.h
 @@ -21,9 +21,9 @@
@@ -145,6 +140,3 @@ index 73a87a820a..ea32ca42c3 100644
  
  class ZipUtil : public ArchiveUtil
  {
--- 
-2.35.1
-

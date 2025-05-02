@@ -36,6 +36,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2024-05-02)
+# Masked for testing
+=dev-util/mesa_clc-25.1*
+=media-libs/mesa-25.1*
+
+# Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
+# Ancient version in tree, upstream discontinued to develop
+# a server for taskwarrior a long time ago
+# Bugs: #953857, #716762; removal on 2025-06-01
+acct-group/taskd
+acct-user/taskd
+app-misc/taskd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
 # Unmaintained in Gentoo for almost 3 years, no commit upstream in 5 years
 # and depends on Qt5. Whoever wants to keep this in ::gentoo must sort out
@@ -233,33 +246,11 @@ media-gfx/xloadimage
 =dev-qt/qtwebsockets-6.9.0*
 =dev-qt/qtwebview-6.9.0*
 
-# Matt Turner <mattst88@gentoo.org> (2025-04-01)
-# Very dead. Last release in 2007. Many open bugs (#712894, #882169, #894620,
-# #907400, #920478, #932284, #943891).
-# Removal on 2025-05-01.  Bug #949960.
-x11-terms/aterm
-
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
 # https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
 # Unmask it after it is properly tested & fixed
 =app-misc/screen-5*
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-03-31)
-# Depends on broken dev-java/rxtx, bugs #761103, #867409, #874444, #898170
-# #927898.
-# Depends on dev-java/jgoodies-{common,looks} which are no longer available
-# "at no charge". https://www.jgoodies.com/downloads/libraries/#post-63
-# Removal on 2025-04-30.
-sci-geosciences/bt747
-dev-java/rxtx
-dev-java/swingx
-dev-java/swingx-beaninfo
-dev-java/swingx-ws
-dev-java/jchart2d
-dev-java/jcalendar
-dev-java/jgoodies-looks
-dev-java/jgoodies-common
 
 # Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
 # Upstream is dead and broken. All 'whatsapp' deps
