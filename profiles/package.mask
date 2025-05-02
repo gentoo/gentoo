@@ -246,12 +246,6 @@ media-gfx/xloadimage
 =dev-qt/qtwebsockets-6.9.0*
 =dev-qt/qtwebview-6.9.0*
 
-# Matt Turner <mattst88@gentoo.org> (2025-04-01)
-# Very dead. Last release in 2007. Many open bugs (#712894, #882169, #894620,
-# #907400, #920478, #932284, #943891).
-# Removal on 2025-05-01.  Bug #949960.
-x11-terms/aterm
-
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
 # https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
