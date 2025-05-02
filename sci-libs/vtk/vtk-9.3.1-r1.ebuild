@@ -99,7 +99,7 @@ RDEPEND="
 		media-libs/libtheora
 		sci-libs/proj:=
 	)
-	mpi? ( virtual/mpi[cxx,romio] )
+	mpi? ( virtual/mpi[romio] )
 	mysql? ( dev-db/mariadb-connector-c )
 	netcdf? ( sci-libs/netcdf:=[mpi=] )
 	odbc? ( dev-db/unixODBC )
