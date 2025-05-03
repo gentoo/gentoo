@@ -22,7 +22,7 @@ IUSE="curl icu gnuplot +hardened readline test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/gmp:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/mpfr:=
 	virtual/libiconv
 	curl? ( net-misc/curl )
