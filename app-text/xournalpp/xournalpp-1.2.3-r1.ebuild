@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xournalpp/xournalpp.git"
 else
 	SRC_URI="https://github.com/xournalpp/xournalpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="amd64 ~ppc64"
 fi
 
 DESCRIPTION="Handwriting notetaking software with PDF annotation support"
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
 	>=dev-libs/glib-2.32.0
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
 	>=gnome-base/librsvg-2.40
 	>=media-libs/portaudio-12[cxx]
