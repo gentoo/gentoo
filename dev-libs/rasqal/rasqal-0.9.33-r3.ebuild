@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	gmp? ( dev-libs/gmp:= )
 	kernel_linux? ( >=sys-apps/util-linux-2.19 )
 	pcre? ( dev-libs/libpcre )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
