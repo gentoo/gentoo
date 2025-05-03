@@ -37,7 +37,7 @@ DEPEND="
 	idn? ( net-dns/libidn2 )
 	jemalloc? ( dev-libs/jemalloc:= )
 	lmdb? ( dev-db/lmdb )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 "
 RDEPEND="
 	${DEPEND}
