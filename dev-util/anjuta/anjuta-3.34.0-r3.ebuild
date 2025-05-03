@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 DEPEND="
 	>=dev-libs/gdl-3.5.5:3=
 	>=dev-libs/glib-2.34:2[dbus]
-	>=dev-libs/libxml2-2.4.23
+	>=dev-libs/libxml2-2.4.23:=
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.10:3
 	x11-libs/pango
