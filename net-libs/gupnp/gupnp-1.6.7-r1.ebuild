@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.70:2[${MULTILIB_USEDEP}]
 	>=net-libs/gssdp-1.6.2:1.6=[introspection?,${MULTILIB_USEDEP}]
-	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.9.1-r4:=[${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.99.0:3.0[introspection?,${MULTILIB_USEDEP}]
 	>=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
