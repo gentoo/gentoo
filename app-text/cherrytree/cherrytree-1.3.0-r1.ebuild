@@ -36,7 +36,7 @@ RDEPEND="app-i18n/uchardet
 	dev-libs/glib:2
 	dev-libs/libfmt:=
 	dev-libs/libsigc++:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=dev-libs/spdlog-1.5:=
 	>=x11-libs/vte-0.70.2:2.91
 	net-misc/curl
@@ -81,5 +81,8 @@ src_configure() {
 }
 
 src_test() {
-	virtx cmake_src_test
+	# the export test suite fails if more than one job is used for testing, so
+	# we force it to a single job here, for more detail see
+	# https://github.com/giuspen/cherrytree/pull/2663
+	MAKEOPTS="${MAKEOPTS} -j1" virtx cmake_src_test
 }
