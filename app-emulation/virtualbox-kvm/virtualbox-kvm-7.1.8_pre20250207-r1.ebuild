@@ -15,7 +15,7 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
@@ -35,10 +35,10 @@ HOMEPAGE="https://www.virtualbox.org/ https://github.com/cyberus-technology/virt
 SRC_URI="
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_PV}.tar.bz2
 	https://github.com/cyberus-technology/virtualbox-kvm/archive/dev-${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz
-	https://download.virtualbox.org/virtualbox/${ORIGIN_PV}/${MY_P}.tar.bz2
+	https://download.virtualbox.org/virtualbox/${ORIGIN_PV%*a}/${MY_P}.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${MY_PN}/${MY_PN}-help-${ORIGIN_PV}.tar.xz ) )
 "
-S="${WORKDIR}/${ORIGIN_PN}-${ORIGIN_PV}"
+S="${WORKDIR}/${ORIGIN_PN}-${ORIGIN_PV%*a}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	acct-group/vboxusers
 	app-arch/xz-utils
 	dev-libs/libtpms
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	gui? (
-		dev-qt/qtbase:6[widgets]
+		dev-qt/qtbase:6[X,widgets]
 		dev-qt/qtscxml:6
 		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
