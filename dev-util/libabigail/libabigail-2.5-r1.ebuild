@@ -42,7 +42,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/elfutils
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	btf? ( dev-libs/libbpf:= )
 	elibc_musl? ( sys-libs/fts-standalone )
 "
