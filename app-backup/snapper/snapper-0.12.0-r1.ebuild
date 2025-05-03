@@ -22,7 +22,7 @@ BDEPEND="app-text/docbook-xsl-stylesheets
 
 RDEPEND="dev-libs/boost:=
 	dev-libs/json-c:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/icu:=
 	sys-apps/acl
 	sys-apps/dbus
