@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/json-glib
 	>=gnome-extra/evolution-data-server-3.46.0:=
 	>=gui-libs/libhandy-1.0.0:1=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	net-misc/curl
 	sys-apps/util-linux
 	>=net-libs/webkit-gtk-2.26:4.1
