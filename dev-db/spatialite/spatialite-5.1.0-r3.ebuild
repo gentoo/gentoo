@@ -23,7 +23,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/zlib[minizip]
 	geos? ( >=sci-libs/geos-3.11.0 )
 	proj? ( sci-libs/proj:= )
