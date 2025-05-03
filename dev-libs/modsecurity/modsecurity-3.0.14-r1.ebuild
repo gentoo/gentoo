@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE="doc fuzzyhash geoip geoip2 json lmdb lua pcre2"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RDEPEND="dev-libs/libpcre:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	net-misc/curl
 	fuzzyhash? ( app-crypt/ssdeep )
 	geoip? ( dev-libs/geoip )
