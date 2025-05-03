@@ -74,7 +74,7 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/jsoncpp:=
 	>=dev-libs/libfmt-8.1.1:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libzip:=
 	dev-libs/pugixml
 	media-libs/freetype
