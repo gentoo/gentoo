@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${PV} == *_rc* ]] ; then
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else
 	SRC_URI="https://downloads.sourceforge.net/nfs/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -29,7 +29,7 @@ RESTRICT="test"
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
 COMMON_DEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	net-libs/libtirpc:=
 	sys-fs/e2fsprogs
 	dev-db/sqlite:3
@@ -72,7 +72,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.2-no-werror.patch
 	"${FILESDIR}"/${PN}-udev-sysctl.patch
-	"${FILESDIR}"/${PN}-2.6.4-C99-inline.patch
+	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-C99-inline.patch
 )
 
 pkg_setup() {
@@ -80,7 +81,7 @@ pkg_setup() {
 
 	if use nfsv4 && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
 		ewarn "Your NFS server will be unable to track clients across server restarts!"
-		ewarn "Please enable CONFIG_CRYPTO_MD5 in your kernel to"
+		ewarn "Please enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
 		ewarn "support the legacy, in-kernel client tracker."
 	fi
 }
@@ -126,7 +127,6 @@ src_configure() {
 		$(use_enable nfsv4 nfsv41)
 		$(use_enable nfsv4 nfsv4server)
 		$(use_enable uuid)
-		$(use_with kerberos krb5 "${ESYSROOT}"/usr)
 		$(use_with tcpd tcp-wrappers)
 	)
 	econf "${myeconfargs[@]}"
