@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	')
 	>=dev-libs/gobject-introspection-0.10.7:=
 	dev-libs/libgee:0.8
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=media-libs/clutter-1.5.11:1.0[introspection]
 	>=x11-libs/gtk+-3:3[introspection]
 	x11-libs/libX11
