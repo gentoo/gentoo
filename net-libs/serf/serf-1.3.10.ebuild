@@ -28,7 +28,6 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 "
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-build/scons-2.3.0"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.8-static-lib.patch
