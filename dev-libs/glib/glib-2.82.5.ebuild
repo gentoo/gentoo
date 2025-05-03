@@ -211,8 +211,25 @@ multilib_src_configure() {
 		#esac
 	#fi
 
+	_need_bootstrap_gi() {
+		if ! multilib_native_use introspection ; then
+			return 1
+		fi
+
+		if ! has_version ">=dev-libs/${INTROSPECTION_P}" ; then
+			return 0
+		fi
+
+		# Is the installed gobject-introspection usable?
+		if ! g-ir-scanner --version &> /dev/null ; then
+			return 0
+		fi
+
+		return 1
+	}
+
 	# Build internal copy of gobject-introspection to avoid circular dependency (built for native abi only)
-	if multilib_native_use introspection && ! has_version ">=dev-libs/${INTROSPECTION_P}" ; then
+	if _need_bootstrap_gi ; then
 		einfo "Bootstrapping gobject-introspection..."
 		INTROSPECTION_BIN_DIR="${T}/bootstrap-gi-prefix/usr/bin"
 		INTROSPECTION_LIB_DIR="${T}/bootstrap-gi-prefix/usr/$(get_libdir)"
