@@ -1,11 +1,11 @@
-# Copyright 2007-2024 Gentoo Authors
+# Copyright 2007-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools linux-info pam systemd udev
 
-MY_P="${P}-23787635"
+MY_P="${P}-24276846"
 
 DESCRIPTION="Tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl +vgauth"
 REQUIRED_USE="
 	multimon? ( X )
@@ -24,12 +24,12 @@ RDEPEND="
 	dev-libs/glib
 	net-libs/libtirpc
 	deploypkg? ( dev-libs/libmspack )
-	fuse? ( sys-fs/fuse:0 )
+	fuse? ( sys-fs/fuse:3= )
 	pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )
 	ssl? ( dev-libs/openssl:= )
 	vgauth? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-libs/xmlsec:=
 	)
 	X? (
@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.4.5-Werror.patch
 	"${FILESDIR}"/${PN}-12.4.5-icu.patch
 	"${FILESDIR}"/${PN}-12.4.5-xmlsec1-pc.patch
+	"${FILESDIR}"/${PN}-12.5.0-c23.patch
 )
 
 pkg_setup() {
@@ -96,6 +97,15 @@ src_configure() {
 		$(use_with dnet)
 		$(use_with icu)
 		--with-udev-rules-dir="$(get_udevdir)"/rules.d
+		$(use_with fuse fuse 3)
+		# Disable it explicitly, we do not yet list the
+		# containerinfo dependencies in the ebuild
+		--disable-containerinfo
+		# Disable it explicitly, gtk2 is obsolete
+		--without-gtk2
+		# Possibly add a separate USE flag for the utility, or
+		# merge it into resolutionkms
+		--disable-vmwgfxctrl
 	)
 	# Avoid a bug in configure.ac
 	use ssl || myeconfargs+=( --without-ssl )
@@ -126,8 +136,11 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/vmtoolsd.service
 	fi
 
-	# Make fstype = vmhgfs-fuse work in fstab
-	dosym vmhgfs-fuse /usr/bin/mount.vmhgfs-fuse
+	# vmhgfs-fuse is built only when fuse is enabled
+	if use fuse; then
+		# Make fstype = vmhgfs-fuse work in fstab
+		dosym vmhgfs-fuse /usr/bin/mount.vmhgfs-fuse
+	fi
 
 	if use X; then
 		fperms 4711 /usr/bin/vmware-user-suid-wrapper
