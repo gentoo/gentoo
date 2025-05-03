@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ RDEPEND="
 	>=dev-libs/glib-2.56:2
 	>=dev-libs/json-glib-1.1.2
 	>=dev-libs/libgcrypt-1.5:=
-	>=dev-libs/libxml2-2.6.8:2
+	>=dev-libs/libxml2-2.6.8:2=
 	media-libs/gstreamer:1.0
 	>=media-libs/libexif-0.6.14
 	>=net-libs/libsoup-3.0:3.0
