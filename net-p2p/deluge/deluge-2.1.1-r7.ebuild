@@ -64,6 +64,15 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-twisted-22.10.patch"
+	# https://dev.deluge-torrent.org/ticket/3598
+	"${FILESDIR}/${P}-ayatana.patch"
+	# https://dev.deluge-torrent.org/ticket/3582
+	"${FILESDIR}/${P}-consoleui-deferred.patch"
+	"${FILESDIR}/${P}-email-module-replace.patch"
+)
+
 distutils_enable_tests pytest
 
 python_prepare_all() {
