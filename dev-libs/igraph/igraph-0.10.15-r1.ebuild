@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,14 +11,14 @@ SRC_URI="https://github.com/igraph/igraph/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="debug test threads"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/gmp:0=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sci-libs/arpack
 	sci-mathematics/glpk:=
 	sci-mathematics/plfit
