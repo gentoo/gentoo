@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="+lit2epub"
 
 DEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.7.2:=
 "
 RDEPEND="${DEPEND}
