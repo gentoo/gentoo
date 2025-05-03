@@ -106,7 +106,7 @@ CDEPEND="
 	pcre? ( dev-libs/libpcre2 )
 	ssl? ( dev-libs/openssl:= )
 	xml? (
-		!expat? ( dev-libs/libxml2 )
+		!expat? ( dev-libs/libxml2:= )
 		expat? ( dev-libs/expat )
 	)
 	yaml? ( dev-libs/libyaml )
@@ -126,7 +126,7 @@ CDEPEND="
 	uwsgi_plugins_router_access? ( sys-apps/tcp-wrappers )
 	uwsgi_plugins_router_spnego? ( virtual/krb5 )
 	uwsgi_plugins_systemd_logger? ( sys-apps/systemd )
-	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
+	uwsgi_plugins_webdav? ( dev-libs/libxml2:= )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
 	go? ( sys-devel/gcc:=[go] )
 	lua? ( ${LUA_DEPS} )
