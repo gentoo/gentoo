@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	dev-libs/libgcrypt:0=
 	virtual/libiconv"
