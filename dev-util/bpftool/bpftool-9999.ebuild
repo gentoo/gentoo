@@ -92,6 +92,11 @@ src_prepare() {
 	sed -i 's/-fno-stack-protector/& -std=gnu11/g' src/Makefile || die
 
 	if ! use clang; then
+		# prevent attribute warning about preserve_access_index
+		# since gcc does not support '#pragma clang attribute push':
+		# https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=675b4e2
+		sed -i 's/std=gnu11/& -DBPF_NO_PRESERVE_ACCESS_INDEX/g' src/Makefile || die
+
 		# remove bpf target & add assembly annotations to fix CO-RE feature detection
 		sed -i -e 's/-target bpf/-dA/' src/Makefile.feature || die
 
