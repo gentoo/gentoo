@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ IUSE="+aio python +zeroconf"
 
 BDEPEND="python? ( ${PYTHON_DEPS} )"
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	virtual/libusb:1
 	aio? ( dev-libs/libaio )
 	zeroconf? ( net-dns/avahi[dbus] )"
