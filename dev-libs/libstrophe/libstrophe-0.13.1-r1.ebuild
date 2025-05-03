@@ -18,7 +18,7 @@ IUSE="doc expat gnutls"
 
 RDEPEND="
 	expat? ( dev-libs/expat )
-	!expat? ( dev-libs/libxml2:2 )
+	!expat? ( dev-libs/libxml2:2= )
 	gnutls? ( net-libs/gnutls:0= )
 	!gnutls? ( dev-libs/openssl:0= )
 "
