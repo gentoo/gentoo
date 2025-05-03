@@ -58,7 +58,7 @@ BDEPEND="
 
 COMMON_DEPEND="
 	dev-cpp/eigen:3
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	sys-libs/zlib:=
 	inchi? ( sci-libs/inchi )
 	json? ( >=dev-libs/rapidjson-1.1.0 )
