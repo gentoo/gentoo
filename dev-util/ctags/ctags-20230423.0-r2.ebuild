@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ DEPEND="
 	json? ( dev-libs/jansson:= )
 	pcre? ( dev-libs/libpcre2 )
 	seccomp? ( sys-libs/libseccomp )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	yaml? ( dev-libs/libyaml )
 "
 RDEPEND="${DEPEND}"
