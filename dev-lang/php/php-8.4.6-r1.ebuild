@@ -32,8 +32,8 @@ IUSE="${IUSE}
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	capstone cdb +ctype curl debug
 	enchant exif ffi +fileinfo +filter
-	+flatfile ftp gd gdbm gmp +iconv imap inifile
-	intl iodbc ipv6 +jit jpeg kerberos ldap ldap-sasl libedit lmdb
+	+flatfile ftp gd gdbm gmp +iconv inifile
+	intl iodbc ipv6 +jit jpeg ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
 	odbc +opcache +opcache-jit pcntl pdo +phar +posix postgres png
 	qdbm readline selinux +session session-mm sharedmem
@@ -86,9 +86,7 @@ COMMON_DEPEND="
 	gdbm? ( sys-libs/gdbm:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
-	imap? ( net-libs/c-client[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
-	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
 	ldap-sasl? ( dev-libs/cyrus-sasl )
 	libedit? ( dev-libs/libedit )
@@ -110,7 +108,7 @@ COMMON_DEPEND="
 	truetype? ( media-libs/freetype )
 	unicode? ( dev-libs/oniguruma:= )
 	valgrind? ( dev-debug/valgrind )
-	xml? ( >=dev-libs/libxml2-2.12.5 )
+	xml? ( >=dev-libs/libxml2-2.12.5:= )
 	xslt? ( dev-libs/libxslt )
 	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib:0= )
@@ -134,7 +132,6 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -213,7 +210,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# In php-7.x, the FPM pool configuration files have been split off
+	# In php-8.x, the FPM pool configuration files have been split off
 	# of the main config. By default the pool config files go in
 	# e.g. /etc/php-fpm.d, which isn't slotted. So here we move the
 	# include directory to a subdirectory "fpm.d" of $PHP_INI_DIR. Later
@@ -246,19 +243,6 @@ src_prepare() {
 	   sapi/cli/tests/bug74600.phpt \
 	   sapi/cli/tests/bug78323.phpt \
 	   || die
-
-	# This is a memory usage test with hard-coded limits. Whenever the
-	# limits are surpassed... they get increased... but in the meantime,
-	# the tests fail. This is not really a test that end users should
-	# be running pre-install, in my opinion. Bug 927461.
-	rm ext/fileinfo/tests/bug78987.phpt || die
-
-	# Bug 935379, not yet fixed upstream but looks harmless (ordering
-	# of keys isn't guaranteed AFAICS):
-	#
-	# - https://github.com/php/php-src/issues/14786
-	#
-	rm ext/dba/tests/dba_gdbm.phpt || die
 
 	# Most tests failing with an external libgd have been fixed,
 	# but there are a few stragglers:
@@ -337,7 +321,6 @@ src_configure() {
 			$(use elibc_glibc || use elibc_musl || echo "${EPREFIX}/usr"))
 		$(use_enable intl)
 		$(use_enable ipv6)
-		$(use_with kerberos)
 		$(use_with xml libxml)
 		$(use_enable unicode mbstring)
 		$(use_with ssl openssl)
@@ -349,7 +332,6 @@ src_configure() {
 		$(use_with postgres pgsql "$("${PG_CONFIG:-true}" --bindir)/..")
 		$(use_enable posix)
 		$(use_with selinux fpm-selinux)
-		$(use_with spell pspell "${EPREFIX}/usr")
 		$(use_enable simplexml)
 		$(use_enable sharedmem shmop)
 		$(use_with snmp snmp "${EPREFIX}/usr")
@@ -415,14 +397,6 @@ src_configure() {
 		php_cv_lib_gd_gdImageCreateFromWebp=$(usex webp)
 		php_cv_lib_gd_gdImageCreateFromXpm=$(usex xpm)
 	)
-
-	# IMAP support
-	if use imap ; then
-		our_conf+=(
-			$(use_with imap imap "${EPREFIX}/usr")
-			$(use_with ssl imap-ssl "${EPREFIX}/usr")
-		)
-	fi
 
 	# LDAP support
 	if use ldap ; then
