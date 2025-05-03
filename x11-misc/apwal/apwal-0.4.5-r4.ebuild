@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/glib:2
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
