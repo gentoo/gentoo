@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	>=net-libs/gupnp-av-0.5.5:0=
 	>=x11-libs/gtk+-3.10:3
 	>=dev-libs/glib-2.68:2
-	>=dev-libs/libxml2-2.4:2
+	>=dev-libs/libxml2-2.4:2=
 	x11-libs/gtksourceview:4
 "
 DEPEND="${RDEPEND}"
