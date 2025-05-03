@@ -18,6 +18,7 @@ HOMEPAGE="
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm arm64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="+native-extensions"
 
 RDEPEND="
 	>=dev-python/ifaddr-0.1.7[${PYTHON_USEDEP}]
@@ -25,7 +26,9 @@ RDEPEND="
 # the build system uses custom build script that uses distutils to build
 # C extensions, sigh
 BDEPEND="
-	>=dev-python/cython-3.0.8[${PYTHON_USEDEP}]
+	native-extensions? (
+		>=dev-python/cython-3.0.8[${PYTHON_USEDEP}]
+	)
 	>=dev-python/setuptools-65.6.3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
@@ -34,12 +37,20 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-export REQUIRE_CYTHON=1
-
 PATCHES=(
 	# https://bugs.gentoo.org/954107 (workaround)
 	"${FILESDIR}/zeroconf-0.146.5-cython-3.1.patch"
 )
+
+python_compile() {
+	if use native-extensions; then
+		local -x REQUIRE_CYTHON=1
+	else
+		local -x SKIP_CYTHON=1
+	fi
+
+	distutils-r1_python_compile
+}
 
 python_test() {
 	local -x SKIP_IPV6=1
