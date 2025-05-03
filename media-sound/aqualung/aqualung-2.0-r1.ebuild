@@ -26,7 +26,7 @@ BDEPEND="
 "
 RDEPEND="
 	app-arch/bzip2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/zlib
 	x11-libs/gtk+:3
 	alsa? ( media-libs/alsa-lib )
