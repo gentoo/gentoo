@@ -23,12 +23,12 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 IUSE="test"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.13.7
+	>=dev-libs/libxml2-2.13.5:=
 	>=dev-libs/libxslt-1.1.43
 	>=sys-libs/zlib-1.3.1
 	virtual/libiconv"
 DEPEND="
-	>=dev-libs/libxml2-2.13.7
+	>=dev-libs/libxml2-2.13.5:=
 	>=dev-libs/libxslt-1.1.43
 	>=sys-libs/zlib-1.3.1
 	virtual/libiconv"
