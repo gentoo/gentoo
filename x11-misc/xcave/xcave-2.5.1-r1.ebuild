@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	gnome-base/libglade
 	x11-libs/gtk+:2
 "
