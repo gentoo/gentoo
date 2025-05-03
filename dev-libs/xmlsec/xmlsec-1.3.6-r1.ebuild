@@ -24,7 +24,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libxml2-2.7.4
+	>=dev-libs/libxml2-2.7.4:=
 	>=dev-libs/libxslt-1.0.20
 	dev-libs/libltdl
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.0:= )
