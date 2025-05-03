@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-
 RDEPEND="
 	>=dev-libs/glib-2.48:2
 	>=x11-libs/gtk+-3.24:3[introspection?]
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 	glade? ( >=dev-util/glade-3.9:3.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )
 	>=dev-libs/fribidi-0.19.7

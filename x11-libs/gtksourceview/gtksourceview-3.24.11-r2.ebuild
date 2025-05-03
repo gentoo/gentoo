@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.48:2
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 	>=x11-libs/gtk+-3.20:3[introspection?]
 	glade? ( >=dev-util/glade-3.9:3.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
