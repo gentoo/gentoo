@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	=virtual/libusb-0*
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/readline:0=
 	perl? ( dev-lang/perl )
 	python? ( ${PYTHON_DEPS} )
