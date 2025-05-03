@@ -25,7 +25,7 @@ IUSE="bibtex cddb discid pdf scanner semantic-desktop taglib v4l xmp yaz"
 RESTRICT="test"
 
 DEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets,xml]
 	>=dev-qt/qtcharts-${QTMIN}:6
