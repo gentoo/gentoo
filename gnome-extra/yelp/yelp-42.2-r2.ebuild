@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	>=app-arch/xz-utils-4.9:=
 	dev-db/sqlite:3=
 	>=dev-libs/glib-2.67.4:2
-	>=dev-libs/libxml2-2.6.5:2
+	>=dev-libs/libxml2-2.6.5:2=
 	>=dev-libs/libxslt-1.1.4
 	>=gnome-extra/yelp-xsl-41.0
 	net-libs/webkit-gtk:4.1
