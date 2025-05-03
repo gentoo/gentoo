@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="aqua nls"
 
 RDEPEND="
 	app-text/enchant:2
-	>=dev-libs/libxml2-2.12.5
+	>=dev-libs/libxml2-2.12.5:=
 	dev-libs/libxslt
 	dev-libs/xerces-c[cpu_flags_x86_sse2,icu]
 	dev-libs/libpcre2
