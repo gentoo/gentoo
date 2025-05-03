@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc ~riscv x86"
 IUSE="gtk"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.4.0:2
+	>=dev-libs/libxml2-2.4.0:2=
 	gtk? ( >=x11-libs/gtk+-2.6:2 )
 "
 DEPEND="${RDEPEND}"
