@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.7.17:3
 	>=dev-libs/glib-2.70:2
 	>=dev-libs/libical-3.0.8:=[glib,introspection?]
-	>=dev-libs/libxml2-2
+	>=dev-libs/libxml2-2:=
 	>=dev-libs/nspr-4.4
 	>=dev-libs/nss-3.9
 	>=net-libs/libsoup-3.1.1:3.0
