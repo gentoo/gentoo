@@ -1,0 +1,49 @@
+#
+# Usage examples (VDR plugin)
+#
+#  If no arguments are given, both X11 and framebuffer frontends are tried.
+#  First working frontend is used with best available video driver.
+#  Complete list of available command-line arguments can be obtained
+#  with "vdr --help".
+#
+#  Only local frontend, X11/Xv video, alsa audio:
+#    _EXTRAOPTS="--local=sxfe --video=xv --audio=alsa --remote=none"
+#
+#  Only local frontend, (slow) X11 video, oss audio:
+#    _EXTRAOPTS="--local=sxfe --video=x11 --audio=oss --remote=none"
+#
+#  Only local frontend, DirectFB:
+#    _EXTRAOPTS="--local=fbfe --video=DirectFB --remote=none"
+#
+#  Only remote frontend(s):
+#    _EXTRAOPTS="--local=none --remote=37890"
+#
+#  Local and remote frontends:
+#    _EXTRAOPTS="--local=sxfe --remote=37890"
+#  or
+#    _EXTRAOPTS="--local=fbfe --remote=37890"
+#
+#
+_EXTRAOPTS="--local=none --remote=37890"
+
+###################################################
+#       start sxfe remote frontend                #
+###################################################
+#
+# We do not add any start up paramaters by default
+# Please refer for detailed info to
+# media-plugins/vdr-xineliboutput README
+# --> Using remote frontends
+#
+# Example:
+# --display=:1.0 --silent --fullscreen --syslog --reconnect xvdr://localhost &>/dev/null
+#
+# init script --> vdr-frontend
+#
+# DEBUG REQUEST: do we need sxfb support? feedback please!
+#
+# sxfe start parameter
+#	allowed values: see README
+#	default: no paramters given
+#
+#REMOTE_FRONTEND=""
