@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="barcode eds"
 RDEPEND="
 	>=dev-libs/glib-2.42.0:2
 	>=x11-libs/gtk+-3.14.0:3
-	>=dev-libs/libxml2-2.9.0:2
+	>=dev-libs/libxml2-2.9.0:2=
 	>=gnome-base/librsvg-2.39.0:2
 	>=x11-libs/cairo-1.14.0
 	>=x11-libs/pango-1.36.1
