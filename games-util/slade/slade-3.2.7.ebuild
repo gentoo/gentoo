@@ -41,8 +41,12 @@ RDEPEND="
 "
 
 BDEPEND="
-	app-arch/p7zip
 	virtual/pkgconfig
+	|| (
+		app-arch/zip
+		app-arch/p7zip
+		app-arch/7zip
+	)
 "
 
 PATCHES=(
@@ -72,6 +76,7 @@ src_configure() {
 		-DUSE_SYSTEM_DUMB=ON
 		-DUSE_SYSTEM_FMT=ON
 		-DWX_GTK3=ON
+		-DZIPTOOL_7Z_EXECUTABLE=$(type -P 7z 7zz | head -n1)
 	)
 
 	setup-wxwidgets
