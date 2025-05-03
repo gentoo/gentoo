@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/gmp:=
 	sys-libs/ncurses:=
 	json? ( dev-libs/json-c:= )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 	berkdb? ( sys-libs/db:4.8= )
 "
 DEPEND="${RDEPEND}"
