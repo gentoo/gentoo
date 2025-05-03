@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	ssl? ( >=dev-libs/openssl-0.9.7:= )
 	unwind? ( sys-libs/libunwind:= )
 	webdav? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-db/sqlite
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )

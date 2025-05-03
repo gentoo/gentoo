@@ -17,12 +17,13 @@ else
 		https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz
 		verify-sig? ( https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz.asc )
 	"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl unwind webdav xattr +zlib zstd"
+IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -53,7 +54,7 @@ COMMON_DEPEND="
 	ssl? ( >=dev-libs/openssl-0.9.7:= )
 	unwind? ( sys-libs/libunwind:= )
 	webdav? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-db/sqlite
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
@@ -70,7 +71,8 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	verify-sig? ( >=sec-keys/openpgp-keys-lighttpd-20250325 )
+	test? ( virtual/perl-Test-Harness )
+	verify-sig? ( sec-keys/openpgp-keys-lighttpd )
 "
 
 # update certain parts of lighttpd.conf based on conditionals
