@@ -22,7 +22,7 @@ BDEPEND="
 RDEPEND="
 	net-misc/curl
 	app-arch/zstd:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:=
 	sci-libs/gdal:=
 	sci-libs/libgeotiff:=
