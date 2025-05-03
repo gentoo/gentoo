@@ -19,7 +19,7 @@ IUSE="gnumeric"
 
 RDEPEND="
 	>=dev-libs/glib-2.36.0:2
-	>=dev-libs/libxml2-2.4.16:2
+	>=dev-libs/libxml2-2.4.16:2=
 	>=gnome-extra/libgsf-1.14.9:=
 	media-libs/libglvnd[X]
 	>=sci-chemistry/bodr-5
