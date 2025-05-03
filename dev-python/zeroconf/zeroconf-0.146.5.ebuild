@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -35,6 +35,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export REQUIRE_CYTHON=1
+
+PATCHES=(
+	# https://bugs.gentoo.org/954107 (workaround)
+	"${FILESDIR}/zeroconf-0.146.5-cython-3.1.patch"
+)
 
 python_test() {
 	local -x SKIP_IPV6=1
