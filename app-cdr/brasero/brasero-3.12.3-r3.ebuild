@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ DEPEND="
 	>=x11-libs/gtk+-3:3[introspection?]
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 	>=x11-libs/libnotify-0.6.1:=
 	|| (
 		media-libs/libcanberra-gtk3
