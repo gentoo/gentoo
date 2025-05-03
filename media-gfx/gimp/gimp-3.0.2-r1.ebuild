@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	>=dev-libs/appstream-glib-0.7.16
 	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/json-glib-1.4.4
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.57.3:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
