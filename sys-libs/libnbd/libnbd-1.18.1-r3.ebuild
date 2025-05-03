@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 # libxml2 - URI support
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	fuse? ( sys-fs/fuse:3= )
 	gnutls? ( net-libs/gnutls:= )
 	python? ( ${PYTHON_DEPS} )
