@@ -21,7 +21,7 @@ REQUIRED_USE="vala? ( introspection )"
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	net-libs/libsoup:3.0
-	>=dev-libs/libxml2-2.6.0
+	>=dev-libs/libxml2-2.6.0:=
 	>=dev-libs/libxslt-1.0.0
 	sys-apps/hwdata
 	sys-apps/osinfo-db-tools
