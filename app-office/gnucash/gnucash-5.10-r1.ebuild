@@ -41,7 +41,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.1.4
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	aqbanking? (
 		>=net-libs/aqbanking-6[ofx?]
