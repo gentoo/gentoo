@@ -36,6 +36,8 @@ RDEPEND="${PYTHON_DEPS}
 BDEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${P}-python3_13.patch )
+
 distutils_enable_sphinx doc
 
 python_compile_all() {
