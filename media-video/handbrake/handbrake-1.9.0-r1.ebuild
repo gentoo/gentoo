@@ -78,7 +78,7 @@ COMMON_DEPEND="
 	gui? (
 		>=gui-libs/gtk-4.4:4[gstreamer]
 		dev-libs/glib:2
-		>=dev-libs/libxml2-2.10.3
+		>=dev-libs/libxml2-2.10.3:=
 		x11-libs/gdk-pixbuf:2
 		x11-libs/pango
 	)
