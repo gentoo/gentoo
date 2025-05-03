@@ -1,0 +1,33 @@
+From: https://sourceforge.net/p/gmtp/discussion/bugs/thread/7b11b950bd
+
+--- a/src/interface.c
++++ b/src/interface.c
+@@ -40,8 +40,8 @@
+ #include "formatdevice.h"
+ #include "progress.h"
+ 
+-void setupFileList();
+-GtkTreeViewColumn *setupFolderList();
++void setupFileList(GtkTreeView *treeviewFiles);
++GtkTreeViewColumn *setupFolderList(GtkTreeView *treeviewFolders);
+ void __fileRemove(GtkTreeRowReference *Row);
+ void __fileDownload(GtkTreeRowReference *Row);
+ void __folderRemove(GtkTreeRowReference *Row);
+@@ -713,7 +713,7 @@ GtkWidget* create_windowMain(void) {
+     gtk_tree_selection_set_mode(folderSelection, GTK_SELECTION_SINGLE);
+ 
+     folderList = gtk_tree_store_new(NUM_FOL_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_PIXBUF);
+-    folderColumn = setupFolderList(treeviewFolders);
++    folderColumn = setupFolderList(GTK_TREE_VIEW(treeviewFolders));
+ 
+     folderListModel = gtk_tree_model_sort_new_with_model(GTK_TREE_MODEL(folderList));
+     gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(folderListModel),
+@@ -741,7 +741,7 @@ GtkWidget* create_windowMain(void) {
+             G_TYPE_UINT, G_TYPE_BOOLEAN, G_TYPE_UINT64, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_STRING,
+             G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_PIXBUF,
+             G_TYPE_STRING);
+-    setupFileList(treeviewFiles);
++    setupFileList(GTK_TREE_VIEW(treeviewFiles));
+ 
+     fileListModel = gtk_tree_model_sort_new_with_model(GTK_TREE_MODEL(fileList));
+     gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(fileListModel),
