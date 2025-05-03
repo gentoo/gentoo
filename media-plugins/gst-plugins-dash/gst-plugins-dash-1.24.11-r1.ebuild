@@ -9,7 +9,7 @@ inherit gstreamer-meson
 DESCRIPTION="MPEG-DASH plugin for GStreamer"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND=">=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]"
+RDEPEND=">=dev-libs/libxml2-2.9.1-r4:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
