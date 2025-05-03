@@ -3,8 +3,8 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{10..13} )
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+PYTHON_COMPAT=( python3_{10..12} )
+USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit check-reqs flag-o-matic gnome2 optfeature python-any-r1 ruby-single toolchain-funcs cmake
 
@@ -16,8 +16,8 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
-SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~sparc ~x86"
+SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
@@ -26,92 +26,91 @@ REQUIRED_USE="|| ( aqua wayland X )"
 # https://bugs.webkit.org/show_bug.cgi?id=215986
 RESTRICT="test"
 
-# Dependencies can be found in Source/cmake/OptionsGTK.cmake.
-#
-# * Missing WebRTC support, but ENABLE_WEB_RTC is experimental upstream.
-#
-# * media-libs/mesa dep is for libgbm
-#
-# * >=gst-plugins-opus-1.14.4-r1 for opusparse (required by MSE)
-#
-# * TODO: gst-plugins-base[X] is only needed when build configuration ends up
-#         with GLX set, but that's a bit automagic too to fix
-#
-# * Cairo is only needed on big-endian systems, where Skia is not officially
-#   supported (the build system will choose a backend for you). We could probably
-#   hard-code a list of BE arches here, to avoid the extra dependency? But I am
-#   holding out hope that this might actually get fixed before we need to do that.
-#
-# * dev-util/sysprof-capture is disabled because it was a new dependency in 2.46
-#   and we don't need any more new problems.
-#
+# Dependencies found at Source/cmake/OptionsGTK.cmake
+# Missing WebRTC support, but ENABLE_WEB_RTC is experimental upstream
+# media-libs/mesa dep is for libgbm
+# >=gst-plugins-opus-1.14.4-r1 for opusparse (required by MSE)
+# TODO: gst-plugins-base[X] is only needed when build configuration ends up
+#       with GLX set, but that's a bit automagic too to fix
+# Softblocking webkit-gtk-2.38:4 as at that time WebKitWebDriver migrated to SLOT=4.1; currently it is found in SLOT=6
 RDEPEND="
-	app-accessibility/at-spi2-core:2
-	dev-db/sqlite:3
-	dev-libs/glib:2
-	dev-libs/hyphen
-	dev-libs/icu:=
-	dev-libs/libgcrypt:0=
+	>=x11-libs/cairo-1.16.0[X?]
+	>=media-libs/fontconfig-2.13.0:1.0
+	>=media-libs/freetype-2.9.0:2
+	>=dev-libs/libgcrypt-1.7.0:0=
 	dev-libs/libtasn1:=
-	dev-libs/libxml2:2
-	dev-libs/libxslt
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
-	media-libs/harfbuzz:=[icu(+)]
+	>=x11-libs/gtk+-3.22.0:3[aqua?,introspection?,wayland?,X?]
+	>=media-libs/harfbuzz-1.4.2:=[icu(+)]
+	>=dev-libs/icu-61.2:=
 	media-libs/libjpeg-turbo:0=
-	media-libs/libepoxy[egl(+)]
-	media-libs/libglvnd
-	media-libs/libpng:0=
-	media-libs/libwebp:=
-	media-libs/mesa
-	media-libs/woff2
-	net-libs/libsoup:2.4[introspection?]
+	>=media-libs/libepoxy-1.5.4[egl(+)]
+	>=net-libs/libsoup-3.0.8:3.0[introspection?]
+	>=dev-libs/libxml2-2.8.0:2=
+	>=media-libs/libpng-1.4:0=
+	dev-db/sqlite:3
 	sys-libs/zlib:0
-	x11-libs/cairo[X?]
-	x11-libs/gtk+:3[aqua?,introspection?,wayland?,X?]
-	x11-libs/libdrm
-	avif? ( media-libs/libavif:= )
-	gamepad? ( dev-libs/libmanette )
-	gstreamer? (
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0[egl,opengl,X?]
-		media-plugins/gst-plugins-opus:1.0
-		media-libs/gst-plugins-bad:1.0
-	)
-	introspection? ( dev-libs/gobject-introspection:= )
-	jpegxl? ( media-libs/libjxl:= )
+	media-libs/libwebp:=
+	>=app-accessibility/at-spi2-core-2.46.0:2
+
+	>=dev-libs/glib-2.70.0:2
+	>=dev-libs/libxslt-1.1.7
+	media-libs/woff2
 	keyring? ( app-crypt/libsecret )
+	introspection? ( >=dev-libs/gobject-introspection-1.59.1:= )
+	x11-libs/libdrm
+	media-libs/mesa
+	spell? ( >=app-text/enchant-0.22:2 )
+	gstreamer? (
+		>=media-libs/gstreamer-1.20:1.0
+		>=media-libs/gst-plugins-base-1.20:1.0[egl,X?]
+		media-libs/gst-plugins-base:1.0[opengl]
+		>=media-plugins/gst-plugins-opus-1.20:1.0
+		>=media-libs/gst-plugins-bad-1.20:1.0
+	)
+
+	X? ( x11-libs/libX11 )
+
+	dev-libs/hyphen
+	jpegxl? ( >=media-libs/libjxl-0.7.0:= )
+	avif? ( >=media-libs/libavif-0.9.0:= )
 	lcms? ( media-libs/lcms:2 )
+
+	media-libs/libglvnd
+	wayland? (
+		>=dev-libs/wayland-1.20
+		>=dev-libs/wayland-protocols-1.24
+	)
+
 	seccomp? (
-		sys-apps/bubblewrap
+		>=sys-apps/bubblewrap-0.3.1
 		sys-libs/libseccomp
 		sys-apps/xdg-dbus-proxy
 	)
-	spell? ( app-text/enchant:2 )
+
 	systemd? ( sys-apps/systemd:= )
-	X? ( x11-libs/libX11 )
-	wayland? (
-		dev-libs/wayland
-		dev-libs/wayland-protocols
-	)
+	gamepad? ( >=dev-libs/libmanette-0.2.4 )
+	!<net-libs/webkit-gtk-2.38:4
 "
 DEPEND="${RDEPEND}"
 # Need real bison, not yacc
 BDEPEND="
 	${PYTHON_DEPS}
 	${RUBY_DEPS}
-	app-accessibility/at-spi2-core
-	dev-lang/perl
+	>=app-accessibility/at-spi2-core-2.5.3
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
-	dev-util/gperf
+	>=dev-util/gperf-3.0.1
 	dev-util/unifdef
-	sys-devel/bison
+	>=sys-devel/bison-2.4.3
+	|| ( >=sys-devel/gcc-7.3 >=llvm-core/clang-5 )
 	sys-devel/gettext
+	virtual/pkgconfig
+
+	>=dev-lang/perl-5.10
 	virtual/perl-Data-Dumper
 	virtual/perl-Carp
 	virtual/perl-JSON-PP
-	virtual/pkgconfig
+
 	wayland? ( dev-util/wayland-scanner )
 "
 
@@ -145,6 +144,9 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	# Fix USE=-jumbo-build on all arches
+	eapply "${FILESDIR}"/2.44.1-non-unified-build-fixes.patch
 
 	# https://bugs.gentoo.org/943213
 	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
@@ -192,6 +194,7 @@ src_configure() {
 
 	# TODO: Check Web Audio support
 	# should somehow let user select between them?
+
 	local mycmakeargs=(
 		-DPython_EXECUTABLE="${PYTHON}"
 		${ruby_interpreter}
@@ -203,19 +206,19 @@ src_configure() {
 		-DENABLE_API_TESTS=OFF
 		-DENABLE_BUBBLEWRAP_SANDBOX=$(usex seccomp)
 		-DENABLE_GAMEPAD=$(usex gamepad)
-		-DENABLE_GEOLOCATION=ON # Runtime optional (talks over dbus service)
 		-DENABLE_MINIBROWSER=$(usex examples)
 		-DENABLE_PDFJS=$(usex pdf)
+		-DENABLE_GEOLOCATION=ON # Runtime optional (talks over dbus service)
 		-DENABLE_SPELLCHECK=$(usex spell)
 		-DENABLE_UNIFIED_BUILDS=$(usex jumbo-build)
 		-DENABLE_VIDEO=$(usex gstreamer)
-		-DENABLE_WEB_AUDIO=$(usex gstreamer)
-		-DENABLE_WEB_CODECS=$(usex gstreamer) # https://bugs.webkit.org/show_bug.cgi?id=269147
-		-DENABLE_WEBDRIVER=OFF
-		-DENABLE_WEBGL=ON
-		-DUSE_AVIF=$(usex avif)
 		-DUSE_GSTREAMER_WEBRTC=$(usex gstreamer)
 		-DUSE_GSTREAMER_TRANSCODER=$(usex gstreamer)
+		-DENABLE_WEB_CODECS=$(usex gstreamer) # https://bugs.webkit.org/show_bug.cgi?id=269147
+		-DENABLE_WEBDRIVER=OFF # Disable WebDriver for webkit2gtk-4.1 and use the webkit2gtk-6.0 one
+		-DENABLE_WEBGL=ON
+		-DENABLE_WEB_AUDIO=$(usex gstreamer)
+		-DUSE_AVIF=$(usex avif)
 		# Source/cmake/OptionsGTK.cmake
 		-DENABLE_DOCUMENTATION=OFF
 		-DENABLE_INTROSPECTION=$(usex introspection)
@@ -231,15 +234,12 @@ src_configure() {
 		-DUSE_LIBDRM=ON
 		-DUSE_LIBHYPHEN=ON
 		-DUSE_LIBSECRET=$(usex keyring)
-		-DUSE_SOUP2=ON
-		-DUSE_SYSPROF_CAPTURE=OFF
+		-DUSE_SOUP2=OFF
 		-DUSE_WOFF2=ON
 	)
 
 	# Temporary workaround for bug 938162 (upstream bug 271371).
-	# The idea to disable WebAssembly and the FTL JIT instead
-	# of using ENABLE_JIT=OFF was stolen from OpenBSD.
-	use riscv && mycmakeargs+=( -DENABLE_WEBASSEMBLY=OFF -DENABLE_FTL_JIT=OFF )
+	use riscv && mycmakeargs+=( -DENABLE_JIT=OFF )
 
 	# https://bugs.gentoo.org/761238
 	append-cppflags -DNDEBUG
