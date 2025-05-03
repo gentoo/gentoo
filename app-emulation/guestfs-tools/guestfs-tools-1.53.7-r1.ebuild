@@ -26,13 +26,13 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND_DEFAULT="
 	app-arch/xz-utils
 	dev-libs/libpcre2:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/libxcrypt:=
 	sys-libs/ncurses:=
 "
 COMMON_DEPEND_EXPLICIT="
 	>=app-emulation/libguestfs-1.49.8:=[ocaml,perl?,libvirt=]
-	dev-libs/jansson:=
+	dev-libs/json-c:=
 	sys-libs/libosinfo
 	|| (
 		dev-libs/libisoburn

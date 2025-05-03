@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	>=app-emulation/qemu-2.0[qemu_softmmu_targets_x86_64,filecaps]
 	dev-lang/perl:=
 	dev-libs/libpcre2:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/jansson:=
 	>=sys-apps/fakechroot-2.8
 	sys-fs/squashfs-tools:*
