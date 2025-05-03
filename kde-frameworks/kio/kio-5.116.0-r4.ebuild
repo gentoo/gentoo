@@ -55,7 +55,7 @@ COMMON_DEPEND="
 		virtual/acl
 	)
 	handbook? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-libs/libxslt
 		=kde-frameworks/kdoctools-${PVCUT}*:5
 	)

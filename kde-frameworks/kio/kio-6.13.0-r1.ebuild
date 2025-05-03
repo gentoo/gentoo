@@ -50,7 +50,7 @@ COMMON_DEPEND="
 		virtual/acl
 	)
 	handbook? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-libs/libxslt
 		=kde-frameworks/karchive-${KDE_CATV}*:6
 		=kde-frameworks/kdoctools-${KDE_CATV}*:6
