@@ -15,8 +15,8 @@ declare -A GIT_CRATES=(
 )
 RUST_MIN_VER="1.82.0"
 
-inherit cargo desktop distutils-r1 eapi9-ver multiprocessing ninja-utils \
-	optfeature readme.gentoo-r1 toolchain-funcs xdg
+inherit cargo desktop distutils-r1 greadme multiprocessing ninja-utils \
+	optfeature toolchain-funcs xdg
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net/"
@@ -257,18 +257,6 @@ src_test() {
 }
 
 python_install_all() {
-	local DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI
-	can temporarily set the environment variable ENABLE_QT5_COMPAT to 1 to have
-	Anki install the previous compatibility code. This option has additional
-	runtime dependencies. Please take a look at this package's optional runtime
-	features for a complete listing.
-	\n\nENABLE_QT5_COMPAT may be removed in the future, so this is not a
-	long-term solution.
-	\n\nAnki's user manual is located online at https://docs.ankiweb.net/
-	\nAnki's add-on developer manual is located online at
-	https://addon-docs.ankiweb.net/"
-
-	readme.gentoo_create_doc
 	pushd qt/bundle/lin > /dev/null || die
 	doman anki.1
 	doicon anki.{png,xpm}
@@ -286,16 +274,36 @@ python_install_all() {
 }
 
 src_install() {
+	greadme_stdin <<- EOF
+	Anki's user manual is located online at https://docs.ankiweb.net/
+	Anki's add-on developer manual is located online at https://addon-docs.ankiweb.net/
+	EOF
+
 	if use gui; then
+		greadme_stdin --append <<-EOF
+		Users with add-ons that still rely on Anki's Qt5 GUI
+		can temporarily set the environment variable ENABLE_QT5_COMPAT to 1 to have
+		Anki install the previous compatibility code. This option has additional
+		runtime dependencies. Please take a look at this package's optional runtime
+		features for a complete listing.
+
+		ENABLE_QT5_COMPAT may be removed in the future, so this is not a
+		long-term solution.
+		EOF
+
 		distutils-r1_src_install
 	else
 		cargo_src_install --path rslib/sync
 	fi
 }
 
+pkg_preinst() {
+	greadme_pkg_preinst
+	use gui && xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	ver_replacing -lt 24.06.3-r1 && local FORCE_PRINT_ELOG=1
-	readme.gentoo_print_elog
+	greadme_pkg_postinst
 	if use gui; then
 		xdg_pkg_postinst
 		optfeature "LaTeX in cards" "app-text/texlive[extra] app-text/dvipng"
