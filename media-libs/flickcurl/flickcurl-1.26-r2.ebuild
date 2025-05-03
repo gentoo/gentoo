@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="raptor"
 
 RDEPEND="
 	>=net-misc/curl-7.10.0
-	>=dev-libs/libxml2-2.6.8:2
+	>=dev-libs/libxml2-2.6.8:2=
 	raptor? ( media-libs/raptor:2 )
 "
 DEPEND="${RDEPEND}"
