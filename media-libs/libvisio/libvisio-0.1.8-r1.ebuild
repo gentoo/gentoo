@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/icu:=
 	dev-libs/librevenge
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
