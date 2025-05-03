@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md ROADMAP.md SECURITY.md"
 
@@ -23,13 +23,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 
 IUSE="test"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.13.5
-	>=dev-libs/libxslt-1.1.43
+	>=dev-libs/libxml2-2.13.5:=
+	>=dev-libs/libxslt-1.1.42
 	>=sys-libs/zlib-1.3.1
 	virtual/libiconv"
 DEPEND="
-	>=dev-libs/libxml2-2.13.5
-	>=dev-libs/libxslt-1.1.43
+	>=dev-libs/libxml2-2.13.5:=
+	>=dev-libs/libxslt-1.1.42
 	>=sys-libs/zlib-1.3.1
 	virtual/libiconv"
 
@@ -57,10 +57,6 @@ all_ruby_prepare() {
 
 	# There is no need for mini_portile2 to be a runtime dependency on Gentoo
 	sed -i -e '/mini_portile2/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
-
-	# Avoid a failing test already dropped upstream.
-	sed -e '128 s:^:#:' \
-		-i test/xml/test_document_encoding.rb || die
 }
 
 each_ruby_configure() {
