@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.66
 	>=x11-libs/gtk+-3.22:3
 	>=gnome-base/libgtop-2.23.1:2=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=mate-base/caja-1.28.0
 	x11-libs/libSM
 	virtual/libintl
