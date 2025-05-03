@@ -28,7 +28,7 @@ DEPEND="
 	>=gui-libs/libadwaita-1.6_alpha:1
 	>=app-crypt/libsecret-0.19
 	>=net-libs/libsoup-2.99.4:3.0
-	>=dev-libs/libxml2-2.6.12:2
+	>=dev-libs/libxml2-2.6.12:2=
 	>=dev-libs/nettle-3.4:=
 	>=dev-libs/libportal-0.6:0=[gtk]
 	>=dev-db/sqlite-3.22:3
