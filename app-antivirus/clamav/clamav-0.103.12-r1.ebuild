@@ -36,7 +36,7 @@ CDEPEND="acct-group/clamav
 	!libclamav-only? ( net-misc/curl )
 	dev-libs/openssl:0=
 	milter? ( mail-filter/libmilter:= )
-	xml? ( dev-libs/libxml2 )"
+	xml? ( dev-libs/libxml2:= )"
 
 # We need at least autoconf-2.69-r5 because that's the first (patched)
 # version of it in Gentoo that supports ./configure --runstatedir.

@@ -188,7 +188,7 @@ COMMON_DEPEND="
 	dev-libs/json-c:=
 	dev-libs/libltdl
 	dev-libs/libpcre2:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:=
 	>=sys-libs/zlib-1.2.2:=
 	virtual/libiconv
