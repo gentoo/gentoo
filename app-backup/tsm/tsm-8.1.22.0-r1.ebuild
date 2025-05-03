@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,7 @@ DEPEND="
 RDEPEND="
 	acct-group/tsm
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-fs/fuse:0
 	acl? ( sys-apps/acl )
 	java? ( virtual/jre:1.8 )
