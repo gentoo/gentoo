@@ -22,7 +22,7 @@ RDEPEND="
 	app-arch/xz-utils
 	app-misc/ddccontrol-db
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	gui? (
 		>=app-accessibility/at-spi2-core-2.46.0
 		media-libs/fontconfig
