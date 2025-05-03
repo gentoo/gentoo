@@ -1,21 +1,21 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org gnome2-utils python-single-r1 meson virtualx xdg
 
 DESCRIPTION="Music management and playback software for GNOME"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/rhythmbox"
+HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
 
 LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="cdr daap doc dbus keyring ipod libnotify lirc mtp +python test +udev upnp-av"
+IUSE="cdr daap dbus keyring gtk-doc ipod libnotify lirc mtp +python test +udev upnp-av"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	ipod? ( udev )
@@ -35,7 +35,7 @@ DEPEND="
 	dev-libs/json-glib
 	>=dev-libs/libpeas-0.7.3:0[gtk]
 	>=net-libs/libsoup-3.0.7:3.0
-	>=dev-libs/libxml2-2.7.8:2
+	>=dev-libs/libxml2-2.7.8:2=
 	x11-libs/pango
 	>=sys-libs/tdb-1.2.6
 	>=dev-libs/totem-pl-parser-3.2:=
@@ -85,14 +85,18 @@ RDEPEND="${DEPEND}
 	)
 "
 BDEPEND="
-	doc? ( dev-util/gi-docgen )
+	gtk-doc? ( dev-util/gtk-doc )
 	dev-util/itstool
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.7-skip-broken-test.patch
+	"${FILESDIR}"/${P}-implicit-declaration.patch
+	"${FILESDIR}"/${P}-libxml2-2.12.patch
+	"${FILESDIR}"/${P}-libxml-entities.patch
+	"${FILESDIR}"/${P}-python3.12.patch
+	"${FILESDIR}"/${P}-skip-broken-test.patch
 )
 
 pkg_setup() {
@@ -116,7 +120,7 @@ src_configure() {
 		-Dsample-plugins=false
 
 		-Dhelp=true
-		$(meson_use doc apidoc)
+		$(meson_use gtk-doc gtk_doc)
 		$(meson_feature test tests)
 	)
 	meson_src_configure
