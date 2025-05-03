@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="${POSTGRES_DEP}
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-qt/qtbase:6[gui,network,opengl,widgets,X]
 	dev-qt/qtsvg:6
 "
