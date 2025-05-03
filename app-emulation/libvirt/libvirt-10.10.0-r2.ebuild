@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://download.libvirt.org/${P}.tar.xz
 		verify-sig? ( https://download.libvirt.org/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -67,7 +67,7 @@ RDEPEND="
 	>=dev-libs/glib-2.56.0
 	dev-libs/libgcrypt
 	dev-libs/libnl:3
-	>=dev-libs/libxml2-2.9.1
+	>=dev-libs/libxml2-2.9.1:=
 	>=net-analyzer/openbsd-netcat-1.105-r1
 	>=net-libs/gnutls-3.2.0:=
 	net-libs/libtirpc:=
@@ -159,6 +159,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-10.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-10.10.0-qemu-tpm-do-not-update-profile-name-for-transient-do.patch
 )
 
 python_check_deps() {

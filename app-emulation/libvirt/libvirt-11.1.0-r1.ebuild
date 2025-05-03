@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://download.libvirt.org/${P}.tar.xz
 		verify-sig? ( https://download.libvirt.org/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -67,7 +67,7 @@ RDEPEND="
 	>=dev-libs/glib-2.66.0
 	dev-libs/libgcrypt
 	dev-libs/libnl:3
-	>=dev-libs/libxml2-2.9.1
+	>=dev-libs/libxml2-2.9.1:=
 	>=net-analyzer/openbsd-netcat-1.105-r1
 	>=net-libs/gnutls-3.2.0:=
 	net-libs/libtirpc:=
