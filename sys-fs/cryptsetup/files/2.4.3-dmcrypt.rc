@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -86,7 +86,13 @@ dm_crypt_execute() {
 		target=${swap}
 		# swap contents do not need to be preserved between boots, luks not required.
 		# suspend2 users should have initramfs's init handling their swap partition either way.
-		: ${options:='-c aes -h sha1 -d /dev/urandom'}
+        # a warning seems to be introduced in 2.7.0 complaining:
+        # WARNING: Using default options for cipher (aes-cbc-plain,
+        # key size 256 bits) that could be incompatible with older
+        # versions.
+        # For plain mode, always use options --cipher,
+        # --key-size and if no keyfile is used, then also --hash.
+		: ${options:='-c aes -s 256 -d /dev/urandom'}
 		: ${pre_mount:='mkswap ${dev}'}
 	fi
 
@@ -205,11 +211,23 @@ dm_crypt_execute() {
 		: ${gpg_options:='-q -d'}
 		# gpg available ?
 		if command -v gpg >/dev/null ; then
+			# gnupg needs a writable directory to decrypt with
+			GNUPGHOME=$(mktemp -d /dev/shm/gpg-home_XXXXX)
+			export GNUPGHOME
+			chmod 700 $GNUPGHOME
+			cp -a /etc/dmcrypt/* $GNUPGHOME/
+			if [ -z "$GPG_KILL_TRAPPED" ]; then
+				# kill lingering gpg-agents + scdaemons used by root for last.
+				# otherwise the user could be bothered with multiple pin entries
+				# if key is used for multiple LUKS devices.
+				trap 'gpgconf --kill gpg-agent 1>/dev/null' EXIT HUP INT TERM
+				GPG_KILL_TRAPPED=1
+			fi
 			i=0
 			while [ ${i} -lt ${dmcrypt_retries} ] ; do
 				# paranoid, don't store key in a variable, pipe it so it stays very little in ram unprotected.
 				# save stdin stdout stderr "values"
-				timeout ${dmcrypt_max_timeout} gpg ${gpg_options} ${key} 2>/dev/null | \
+				timeout ${dmcrypt_max_timeout} gpg ${gpg_options} ${key} 2>>$GNUPGHOME/gpg-stderr | \
 					cryptsetup ${header_opt} --key-file - ${options} ${arg1} ${arg2} ${arg3}
 				ret=$?
 				# The timeout command exits 124 when it times out.
