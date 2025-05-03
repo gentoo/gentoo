@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,11 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
-RDEPEND="dev-libs/libxml2
+RDEPEND="
+	|| (
+		<dev-libs/libxml2-2.14
+		dev-libs/libxml2-compat:2
+	)
 	sys-libs/ncurses-compat
 	sys-libs/zlib
 	sys-process/numactl
