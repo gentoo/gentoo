@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/dbus-glib-0.100[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.35.4[${MULTILIB_USEDEP}]
-	dev-libs/libxml2[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 	gtk? ( x11-libs/gtk+:2[introspection?,${MULTILIB_USEDEP}] )
 	gtk3? ( >=x11-libs/gtk+-3.2:3[introspection?,${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1 )"
