@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,7 @@ RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-ethiopic
