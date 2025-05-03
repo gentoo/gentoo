@@ -19,7 +19,7 @@ IUSE="gtk"
 DEPEND="
 	>=net-misc/networkmanager-1.2:=
 	>=dev-libs/glib-2.34:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/glib:2
 	>=net-vpn/openconnect-3.02:=
 	gtk? (
