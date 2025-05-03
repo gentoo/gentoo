@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-libs/glib-2.58:2[${MULTILIB_USEDEP}]
 	>=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}]
-	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.9.1-r4:2=[${MULTILIB_USEDEP}]
 	brotli? ( >=app-arch/brotli-1.0.6-r1:=[${MULTILIB_USEDEP}] )
 	>=net-libs/libpsl-0.20[${MULTILIB_USEDEP}]
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4[${MULTILIB_USEDEP}] )
