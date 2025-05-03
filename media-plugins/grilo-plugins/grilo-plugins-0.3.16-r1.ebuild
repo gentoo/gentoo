@@ -32,7 +32,7 @@ RDEPEND="
 	daap? ( >=net-libs/libdmapsharing-3.9.11:4.0= )
 	media-libs/libmediaart:2.0
 	net-libs/libsoup:3.0
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	flickr? ( net-libs/liboauth )
 	dev-db/sqlite:3
 	>=dev-libs/totem-pl-parser-3.4.1:=
@@ -41,7 +41,7 @@ RDEPEND="
 	lua? (
 		${LUA_DEPS}
 		app-arch/libarchive
-		dev-libs/libxml2:2
+		dev-libs/libxml2:2=
 		gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.91:= )
 	)
 	thetvdb? ( app-arch/libarchive )
