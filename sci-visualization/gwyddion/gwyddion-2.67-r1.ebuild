@@ -34,7 +34,7 @@ RDEPEND="
 	ruby? ( dev-ruby/narray )
 	unique? ( dev-libs/libunique:3 )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	zlib? ( sys-libs/zlib )
 "
 
