@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ IUSE="autorun cgroups cpusets +crypt doc munge nvidia quickcommit server +syslog
 DEPEND_COMMON="
 	sys-libs/zlib
 	sys-libs/readline:0=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/boost
 	cpusets? ( sys-apps/hwloc:= )
 	munge? ( sys-auth/munge )
