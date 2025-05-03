@@ -33,7 +33,7 @@ DEPEND="
 		x11-libs/pango
 	)
 	jack? (
-		>=dev-libs/libxml2-2.5
+		>=dev-libs/libxml2-2.5:=
 		media-libs/ladspa-sdk
 		virtual/jack
 	)
@@ -68,7 +68,7 @@ DEPEND="
 	)
 	vidstab? ( media-libs/vidstab )
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
-	xml? ( >=dev-libs/libxml2-2.5 )
+	xml? ( >=dev-libs/libxml2-2.5:= )
 "
 #	java? ( >=virtual/jre-1.8:* )
 #	perl? ( dev-lang/perl )
