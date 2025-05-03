@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ IUSE="doc gimp l10n_ja nls X"
 REQUIRED_USE="gimp? ( X )"
 
 DEPEND="
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-gfx/sane-backends
 	virtual/libusb:1
 	virtual/udev
