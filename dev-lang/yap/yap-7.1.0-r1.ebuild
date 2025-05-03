@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ RDEPEND="dev-libs/libutf8proc
 	raptor? ( media-libs/raptor )
 	readline? ( sys-libs/readline:= sys-libs/ncurses:= )
 	sqlite? ( dev-db/sqlite )
-	xml? ( dev-libs/libxml2 )"
+	xml? ( dev-libs/libxml2:= )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/doxygen[dot] )
