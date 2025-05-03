@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -105,7 +105,7 @@ CDEPEND="
 	pcre? ( dev-libs/libpcre:3 )
 	ssl? ( dev-libs/openssl:= )
 	xml? (
-		!expat? ( dev-libs/libxml2 )
+		!expat? ( dev-libs/libxml2:= )
 		expat? ( dev-libs/expat )
 	)
 	yaml? ( dev-libs/libyaml )
@@ -125,7 +125,7 @@ CDEPEND="
 	uwsgi_plugins_router_access? ( sys-apps/tcp-wrappers )
 	uwsgi_plugins_router_spnego? ( virtual/krb5 )
 	uwsgi_plugins_systemd_logger? ( sys-apps/systemd )
-	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
+	uwsgi_plugins_webdav? ( dev-libs/libxml2:= )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
 	go? ( sys-devel/gcc:=[go] )
 	lua? ( ${LUA_DEPS} )
