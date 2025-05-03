@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-03)
+# Dead upstream since 2011, relies on downstream patching even for Qt5.
+# No one else packages this. Bugs #644482, #953769; removal on 2025-05-31
+sci-electronics/osqoop
+
 # Matt Turner <mattst88@gentoo.org> (2024-05-02)
 # Masked for testing
 =dev-util/mesa_clc-25.1*
