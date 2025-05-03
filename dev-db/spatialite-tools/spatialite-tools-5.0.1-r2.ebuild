@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ RDEPEND="
 	dev-db/sqlite:3[extensions(+)]
 	>=dev-db/spatialite-5.0.1[iconv,geos,xls]
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=sci-geosciences/readosm-1.1.0
 	sci-libs/geos
 	sci-libs/proj
