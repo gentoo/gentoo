@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	>=gnome-extra/libgsf-1.13:=
 	sys-libs/zlib
 	media-libs/libpng:0=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	tools? (
 		app-text/texlive-core
 		dev-texlive/texlive-latex
