@@ -10,7 +10,10 @@ PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 inherit distutils-r1 pypi
 
 DESCRIPTION="A mutable set that remembers the order of its entries"
-HOMEPAGE="https://github.com/rspeer/ordered-set"
+HOMEPAGE="
+	https://github.com/rspeer/ordered-set/
+	https://pypi.org/project/ordered-set/
+"
 
 LICENSE="MIT"
 SLOT="0"
