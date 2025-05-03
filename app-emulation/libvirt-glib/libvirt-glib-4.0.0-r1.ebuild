@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.9.1
-	>=app-emulation/libvirt-2.3.0:=
+	>=dev-libs/libxml2-2.9.1:=
+	>=app-emulation/libvirt-1.2.8:=
 	>=dev-libs/glib-2.48.0:2
 	introspection? ( >=dev-libs/gobject-introspection-1.48.0:= )
 "
@@ -30,6 +30,11 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3 )
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0.0-Make-xmlError-structs-constant.patch
+	"${FILESDIR}"/${PN}-4.0.0-libvirt-gconfig-Add-more-libxml-includes.patch
+)
 
 src_prepare() {
 	default
