@@ -46,6 +46,7 @@ DOCS=( README AUTHORS ChangeLog docs/developers docs/scim.cfg )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.18-slibtool.patch
 	"${FILESDIR}"/${PN}-1.4.18-cast-in-initializer.patch
+	"${FILESDIR}"/${PN}-1.4.18-fix-for-gcc15.patch
 )
 
 src_prepare() {
