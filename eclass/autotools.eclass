@@ -382,6 +382,12 @@ eaclocal() {
 			${BROOT}/usr/share/aclocal
 			${ESYSROOT}/usr/share/aclocal
 		EOF
+		if [ "${LIBTOOLIZE:-}" = 'slibtoolize' ]; then
+			printf '%s\n' \
+				"${BROOT}/usr/share/slibtool" \
+				"${ESYSROOT}/usr/share/slibtool" \
+				>> "${T}"/aclocal/dirlist
+		fi
 	fi
 
 	[[ ! -f aclocal.m4 || -n $(grep -e 'generated.*by aclocal' aclocal.m4) ]] && \
