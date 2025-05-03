@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS=""
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -34,7 +34,7 @@ RESTRICT="test"
 
 RDEPEND="${POSTGRES_DEP}
 	dev-libs/json-c:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/protobuf-c:=
 	>=sci-libs/geos-3.9.0
 	>=sci-libs/proj-6.1.0:=
