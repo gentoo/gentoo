@@ -23,7 +23,7 @@ DEPEND="
 	app-accessibility/at-spi2-core:2
 	app-text/poppler[cairo]
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	sys-libs/zlib
 	x11-libs/gdk-pixbuf:2
