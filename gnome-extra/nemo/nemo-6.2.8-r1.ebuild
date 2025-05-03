@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.45.7:2[dbus]
 	>=dev-libs/gobject-introspection-0.9.12:=
 	>=dev-libs/json-glib-1.6.0
-	>=dev-libs/libxml2-2.7.8:2
+	>=dev-libs/libxml2-2.7.8:2=
 	>=gnome-extra/cinnamon-desktop-6.2:0=
 	gnome-extra/libgsf:=
 	x11-libs/cairo
