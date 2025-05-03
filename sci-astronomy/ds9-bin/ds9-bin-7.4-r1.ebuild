@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/fontconfig
 	media-libs/freetype
 	x11-libs/libX11
