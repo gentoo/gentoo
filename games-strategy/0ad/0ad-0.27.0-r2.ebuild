@@ -73,7 +73,7 @@ DEPEND="
 	dev-libs/icu:=
 	dev-libs/libfmt:0=
 	dev-libs/libsodium:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/libpng:0
 	media-libs/libsdl2[X,opengl,video]
 	media-libs/libvorbis
