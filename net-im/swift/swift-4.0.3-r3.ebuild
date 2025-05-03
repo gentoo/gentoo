@@ -33,7 +33,7 @@ RDEPEND="
 	net-libs/miniupnpc:=
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
-	!expat? ( dev-libs/libxml2:2 )
+	!expat? ( dev-libs/libxml2:2= )
 	icu? ( dev-libs/icu:= )
 	idn? ( net-dns/libidn:= )
 	lua? ( ${LUA_DEPS} )
