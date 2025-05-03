@@ -99,6 +99,7 @@ src_prepare() {
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
 
 	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
+	sed -i -e "/'-O3'/d" tools/v8_gypfiles/toolchain.gypi
 
 	# debug builds. change install path, remove optimisations and override buildtype
 	if use debug; then
