@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -93,7 +93,7 @@ COMMON_DEPEND="
 		)
 		vorbis? ( media-libs/libvorbis )
 		wavpack? ( media-sound/wavpack )
-		xml? ( dev-libs/libxml2 )
+		xml? ( dev-libs/libxml2:= )
 		zeroconf? (
 			net-dns/avahi[mdnsresponder-compat]
 			net-misc/curl
