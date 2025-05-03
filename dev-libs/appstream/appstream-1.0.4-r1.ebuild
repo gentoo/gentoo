@@ -27,7 +27,7 @@ RESTRICT="test" # bug 691962
 RDEPEND="
 	app-arch/zstd:=
 	>=dev-libs/glib-2.62:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=dev-libs/libxmlb-0.3.14:=
 	dev-libs/libyaml
 	dev-libs/snowball-stemmer:=
