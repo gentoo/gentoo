@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples gtk ncurses nls perl postgres"
 
 RDEPEND="
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	sci-libs/gsl:0=
 	sys-devel/gettext
 	sys-libs/ncurses:0=
