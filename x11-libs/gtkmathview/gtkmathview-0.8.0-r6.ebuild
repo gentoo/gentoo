@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="mathml svg t1lib"
 RDEPEND="
 	>=dev-libs/glib-2.2.1:2
 	>=dev-libs/popt-1.7
-	>=dev-libs/libxml2-2.6.7:2
+	>=dev-libs/libxml2-2.6.7:2=
 	mathml? ( media-fonts/texcm-ttf )
 	t1lib?	( >=media-libs/t1lib-5:5 )
 "
