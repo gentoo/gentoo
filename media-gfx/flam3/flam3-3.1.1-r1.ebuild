@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-libs/libxml2
+RDEPEND="dev-libs/libxml2:=
 	media-libs/libpng:=
 	virtual/jpeg:=
 	!<=x11-misc/electricsheep-2.6.8-r2"
