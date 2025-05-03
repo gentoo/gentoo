@@ -23,7 +23,7 @@ RDEPEND="
 	>=net-libs/gupnp-av-0.12.9:0=
 	>=media-libs/gupnp-dlna-0.9.4:2.0=
 	>=net-libs/libsoup-3.0:3.0
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 
 	${PYTHON_DEPS}
 
