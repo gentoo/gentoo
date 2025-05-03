@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ IUSE="examples libgda"
 RDEPEND="
 	>=dev-libs/glib-2.56:2
 	>=x11-libs/gtk+-3.22:3
-	>=dev-libs/libxml2-2.6.27:2
+	>=dev-libs/libxml2-2.6.27:2=
 	>=dev-libs/libxslt-1.1.23
 	libgda? ( >=gnome-extra/libgda-1.0:5 )
 "
