@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 DEPEND="dev-libs/apr:1=
 	dev-libs/apr-util:1[openssl]
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libpcre[jit?]
 	net-misc/curl
 	sys-apps/util-linux
