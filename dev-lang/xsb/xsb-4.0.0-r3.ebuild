@@ -24,7 +24,7 @@ RDEPEND="curl? ( net-misc/curl )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	pcre? ( dev-libs/libpcre )
-	xml? ( dev-libs/libxml2 )"
+	xml? ( dev-libs/libxml2:= )"
 
 DEPEND="${RDEPEND}"
 
