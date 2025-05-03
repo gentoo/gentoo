@@ -1,11 +1,11 @@
-# Copyright 2007-2024 Gentoo Authors
+# Copyright 2007-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools linux-info pam systemd udev
 
-MY_P="${P}-23787635"
+MY_P="${P}-24276846"
 
 DESCRIPTION="Tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
@@ -29,7 +29,7 @@ RDEPEND="
 	!pam? ( virtual/libcrypt:= )
 	ssl? ( dev-libs/openssl:= )
 	vgauth? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-libs/xmlsec:=
 	)
 	X? (
