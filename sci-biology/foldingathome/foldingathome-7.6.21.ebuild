@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="Folding@Home is a distributed computing project for protein folding"
 HOMEPAGE="https://foldingathome.org/"
-SRC_URI="https://download.foldingathome.org/releases/public/release/fahclient/centos-6.7-64bit/v$(ver_cut 1-2)/fahclient_${PV}-64bit-release.tar.bz2"
+SRC_URI="https://download.foldingathome.org/releases/public/releases/fahclient/centos-6.7-64bit/v$(ver_cut 1-2)/fahclient_${PV}-64bit-release.tar.bz2"
 S="${WORKDIR}/fahclient_${PV}-64bit-release"
 
 LICENSE="FAH-EULA-2014 FAH-special-permission"
