@@ -15,9 +15,9 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
+inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
@@ -28,13 +28,14 @@ HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="
 	https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.22-r1.tar.bz2
+	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${PV}.tar.xz ) )
 "
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc dtrace java lvm pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
+KEYWORDS="amd64"
+IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
 RESTRICT="!test? ( test )"
 
 unset WATCOM #856769
@@ -43,13 +44,26 @@ COMMON_DEPEND="
 	acct-group/vboxusers
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libtpms
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	net-misc/curl
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
+	gui? (
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
+		dev-qt/qthelp:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
+		dev-qt/qtxml:5
+		x11-libs/libX11
+		x11-libs/libXt
+		opengl? ( dev-qt/qtopengl:5 )
+	)
 	lvm? ( sys-fs/lvm2 )
 	opengl? (
 		media-libs/libglvnd[X]
@@ -84,6 +98,15 @@ DEPEND="
 	>=dev-libs/libxslt-1.1.19
 	virtual/libcrypt:=
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
+	gui? (
+		x11-base/xorg-proto
+		x11-libs/libxcb:=
+		x11-libs/libXcursor
+		x11-libs/libXext
+		x11-libs/libXinerama
+		x11-libs/libXmu
+		x11-libs/libXrandr
+	)
 	java? ( virtual/jdk:1.8 )
 	opengl? (
 		x11-base/xorg-proto
@@ -99,6 +122,7 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	gui? ( x11-libs/libxcb:= )
 	java? ( virtual/jre:1.8 )
 "
 BDEPEND="
@@ -121,7 +145,10 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
+		dev-qt/qthelp:5
 	)
+	gui? ( dev-qt/linguist-tools:5 )
+	nls? ( dev-qt/linguist-tools:5 )
 	java? ( virtual/jdk:1.8 )
 	python? (
 		${PYTHON_DEPS}
@@ -175,14 +202,17 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	einfo
-	einfo "QT 5 is going away.  This build will not include any QT frontend."
-	einfo "Please upgrade to virtualbox 7.1.x, which uses QT 6."
-	einfo
+	if ! use gui; then
+		einfo "No USE=\"gui\" selected, this build will not include any Qt frontend."
+	fi
 
 	if ! use opengl; then
 		einfo "No USE=\"opengl\" selected, this build will lack"
 		einfo "the OpenGL feature."
+	fi
+	if ! use nls && use gui; then
+		einfo "USE=\"gui\" also selects USE=\"nls\".  This build"
+		einfo "will have NLS support."
 	fi
 
 	# 749273
@@ -315,22 +345,20 @@ src_prepare() {
 	# 890561
 	echo -e "\nVBOX_GTAR=gtar" >> LocalConfig.kmk || die
 
-	# because nls support depends on QT5, disable it
-	cat >> LocalConfig.kmk <<-EOF || die
-		VBOX_WITH_NLS :=
-		VBOX_WITH_MAIN_NLS :=
-		VBOX_WITH_PUEL_NLS :=
-		VBOX_WITH_VBOXMANAGE_NLS :=
-		VBOX_WITH_DOCS_QHELP :=
-	EOF
+	if ! use nls && ! use gui; then
+		cat >> LocalConfig.kmk <<-EOF || die
+			VBOX_WITH_NLS :=
+			VBOX_WITH_MAIN_NLS :=
+			VBOX_WITH_PUEL_NLS :=
+			VBOX_WITH_VBOXMANAGE_NLS :=
+		EOF
+	fi
 }
 
 src_configure() {
 	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"
 
-	# --enable-webservice is a no-op
-	# webservice is automagically enabled if gsoap is found
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
 		--with-g++="$(tc-getCXX)"
@@ -345,16 +373,16 @@ src_configure() {
 		$(usev !lvm --disable-devmapper)
 		$(usev !pulseaudio --disable-pulse)
 		$(usev !python --disable-python)
-		$(usev !vboxwebsrv --with-gsoap-dir=/dev/null)
+		$(usev vboxwebsrv --enable-webservice)
 		$(usev vde --enable-vde)
 		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
 	)
 
-	if use sdl || use opengl; then
+	if use gui || use sdl || use opengl; then
 		myconf+=(
-			--disable-qt
 			$(usev !opengl --disable-opengl)
+			$(usev !gui --disable-qt)
 			$(usev !sdl --disable-sdl)
 		)
 	else
@@ -568,6 +596,47 @@ src_install() {
 		done
 	fi
 
+	if use gui; then
+		vbox_inst VirtualBox
+		vbox_inst VirtualBoxVM 4750
+		for each in VirtualBox{,VM} ; do
+			pax-mark -m "${ED}"${vbox_inst_path}/${each}
+		done
+
+		if use opengl; then
+			vbox_inst VBoxTestOGL
+			pax-mark -m "${ED}"${vbox_inst_path}/VBoxTestOGL
+		fi
+
+		for each in virtualbox{,vm} VirtualBox{,VM} ; do
+			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+		done
+
+		insinto /usr/share/${PN}
+		doins -r nls
+		doins -r UnattendedTemplates
+
+		domenu ${PN}.desktop
+
+		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
+		for size in 16 32 48 64 128 ; do
+			newicon -s ${size} ${PN}-${size}px.png ${PN}.png
+		done
+		newicon ${PN}-48px.png ${PN}.png
+		doicon -s scalable ${PN}.svg
+		popd &>/dev/null || die
+		pushd "${S}"/src/VBox/Artwork/other &>/dev/null || die
+		for size in 16 24 32 48 64 72 96 128 256 512 ; do
+			for ico in hdd ova ovf vbox{,-extpack} vdi vdh vmdk ; do
+				icofile="${PN}-${ico}-${size}px.png"
+				if [[ -f "${icofile}" ]]; then
+					newicon -s ${size} ${icofile} ${PN}-${ico}.png
+				fi
+			done
+		done
+		popd &>/dev/null || die
+	fi
+
 	if use lvm; then
 		vbox_inst VBoxVolInfo 4750
 		dosym ${vbox_inst_path}/VBoxVolInfo /usr/bin/VBoxVolInfo
@@ -626,7 +695,10 @@ src_install() {
 	fi
 
 	if use doc; then
-		dodoc UserManual.pdf
+		dodoc UserManual.pdf UserManual.q{ch,hc}
+		docompress -x /usr/share/doc/${PF}
+	elif use gui; then
+		dodoc "${WORKDIR}"/${PN}-help-${PV}/UserManual.q{ch,hc}
 		docompress -x /usr/share/doc/${PF}
 	fi
 
@@ -668,6 +740,10 @@ pkg_postinst() {
 	fi
 
 	tmpfiles_process virtualbox-vboxusb.conf
+
+	if use gui; then
+		elog "To launch VirtualBox just type: \"virtualbox\"."
+	fi
 
 	elog "You must be in the vboxusers group to use VirtualBox."
 	elog ""
