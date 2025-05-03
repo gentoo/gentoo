@@ -4,14 +4,14 @@
 # To create the go modules tarball:
 #   cd src/go
 #   GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
-#   tar -acf zabbix-${PV}-go-deps.tar.xz go-mod
+#   tar -acf $(pwd | grep -Eo 'zabbix-[0-9.]+')-go-deps.tar.xz go-mod
 
 EAPI=8
 
 GO_OPTIONAL="yes"
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
+inherit autotools webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
 HOMEPAGE="https://www.zabbix.com/"
@@ -23,17 +23,17 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 
 S=${WORKDIR}/${MY_P}
 
-LICENSE="GPL-2"
+LICENSE="AGPL-3"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 ~x86"
-IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy selinux server snmp sqlite ssh static"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl +postgres proxy selinux server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	?? ( gnutls openssl )
 	agent2? ( !gnutls )
-	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
-	server? ( ^^ ( mysql oracle postgres ) !sqlite )
-	static? ( !oracle !snmp )"
+	proxy? ( ^^ ( mysql postgres sqlite ) )
+	server? ( ^^ ( mysql postgres ) !sqlite )
+	static? ( !snmp )"
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
@@ -44,12 +44,11 @@ COMMON_DEPEND="
 		net-libs/gnutls:=
 		net-nds/openldap:=
 	)
-	libxml2? ( dev-libs/libxml2 )
+	libxml2? ( dev-libs/libxml2:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
 	openssl? ( dev-libs/openssl:=[-bindist(-)] )
-	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  (
 		dev-libs/libevent:=
@@ -70,13 +69,13 @@ RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.8:* )
 	mysql? ( virtual/mysql )
 	proxy? (
-		dev-libs/libpcre
+		dev-libs/libpcre2:=
 		net-analyzer/fping[suid]
 	)
 	selinux? ( sec-policy/selinux-zabbix )
 	server? (
 		app-admin/webapp-config
-		dev-libs/libpcre
+		dev-libs/libpcre2:=
 		net-analyzer/fping[suid]
 	)
 	frontend? (
@@ -98,7 +97,7 @@ DEPEND="${COMMON_DEPEND}
 			net-libs/gnutls[static-libs]
 			net-nds/openldap[static-libs]
 		)
-		libxml2? ( dev-libs/libxml2[static-libs] )
+		libxml2? ( dev-libs/libxml2:=[static-libs] )
 		mysql? ( dev-db/mysql-connector-c[static-libs] )
 		odbc? ( dev-db/unixODBC[static-libs] )
 		postgres? ( dev-db/postgresql:*[static-libs] )
@@ -120,23 +119,12 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
-	"${FILESDIR}/${PN}-5.0.22-system.sw.packages.patch"
+	"${FILESDIR}/${PN}-6.4.0-configure-sscanf.patch"
 )
 
 ZABBIXJAVA_BASE="opt/zabbix_java"
 
 pkg_setup() {
-	if use oracle; then
-		if [ -z "${ORACLE_HOME}" ]; then
-			eerror
-			eerror "The environment variable ORACLE_HOME must be set"
-			eerror "and point to the correct location."
-			eerror "It looks like you don't have Oracle installed."
-			eerror
-			die "Environment variable ORACLE_HOME is not set"
-		fi
-	fi
-
 	if use frontend; then
 		webapp_pkg_setup
 	fi
@@ -146,30 +134,36 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Since we patch configure.ac with e.g., ${PN}-6.4.0-configure-sscanf.patch".
+	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable agent) \
-		$(use_enable agent2) \
-		$(use_enable ipv6) \
-		$(use_enable java) \
-		$(use_enable proxy) \
-		$(use_enable server) \
-		$(use_enable static) \
-		$(use_with curl libcurl) \
-		$(use_with gnutls) \
-		$(use_with ldap) \
-		$(use_with libxml2) \
-		$(use_with mysql) \
-		$(use_with odbc unixodbc) \
-		$(use_with openipmi openipmi) \
-		$(use_with openssl) \
-		$(use_with oracle) \
-		$(use_with postgres postgresql) \
-		$(use_with snmp net-snmp) \
-		$(use_with sqlite sqlite3) \
-		$(use_with ssh ssh2)
+	local econf_args=(
+		--with-libpcre2
+		"$(use_enable agent)"
+		"$(use_enable agent2)"
+		"$(use_enable ipv6)"
+		"$(use_enable java)"
+		"$(use_enable proxy)"
+		"$(use_enable server)"
+		"$(use_enable static)"
+		"$(use_with curl libcurl)"
+		"$(use_with gnutls)"
+		"$(use_with ldap)"
+		"$(use_with libxml2)"
+		"$(use_with mysql)"
+		"$(use_with odbc unixodbc)"
+		"$(use_with openipmi openipmi)"
+		"$(use_with openssl)"
+		"$(use_with postgres postgresql)"
+		"$(use_with snmp net-snmp)"
+		"$(use_with sqlite sqlite3)"
+		"$(use_with ssh ssh2)"
+	)
+
+	econf ${econf_args[@]}
 }
 
 src_compile() {
@@ -190,7 +184,6 @@ src_install() {
 	)
 
 	for dir in "${dirs[@]}"; do
-		dodir "${dir}"
 		keepdir "${dir}"
 	done
 
@@ -228,14 +221,6 @@ src_install() {
 		newtmpfiles "${FILESDIR}"/zabbix-proxy.tmpfiles zabbix-proxy.conf
 	fi
 
-	if use oracle; then
-		ewarn
-		ewarn "Support for Oracle database has been dropped from PHP"
-		ewarn "so to make the web frontend work, you need to install"
-		ewarn "PECL extension for Oracle database."
-		ewarn "For details see https://bugs.gentoo.org/928386"
-	fi
-
 	if use agent; then
 		insinto /etc/zabbix
 		doins "${S}"/conf/zabbix_agentd.conf
@@ -252,12 +237,12 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/zabbix-agentd.service
 		newtmpfiles "${FILESDIR}"/zabbix-agentd.tmpfiles zabbix-agentd.conf
 	fi
-
 	if use agent2; then
 		insinto /etc/zabbix
 		doins "${S}"/src/go/conf/zabbix_agent2.conf
 		fperms 0640 /etc/zabbix/zabbix_agent2.conf
 		fowners root:zabbix /etc/zabbix/zabbix_agent2.conf
+		keepdir /etc/zabbix/zabbix_agent2.d/plugins.d
 
 		newinitd "${FILESDIR}"/zabbix-agent2.init zabbix-agent2
 
@@ -307,7 +292,7 @@ src_install() {
 			/${ZABBIXJAVA_BASE}/lib
 		keepdir /${ZABBIXJAVA_BASE}
 		exeinto /${ZABBIXJAVA_BASE}/bin
-		doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
+		doexe src/zabbix_java/bin/zabbix-java-gateway-"${MY_PV}".jar
 		exeinto /${ZABBIXJAVA_BASE}/lib
 		doexe \
 			src/zabbix_java/lib/logback-classic-1.5.16.jar \
@@ -330,7 +315,7 @@ pkg_postinst() {
 
 		zabbix_homedir=$(egethome zabbix)
 		if [ -n "${zabbix_homedir}" ] && \
-		   [ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
+			[ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
 			ewarn
 			ewarn "The user 'zabbix' should have his homedir changed"
 			ewarn "to /var/lib/zabbix/home if you want to use"
