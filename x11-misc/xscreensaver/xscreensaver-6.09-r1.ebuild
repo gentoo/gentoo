@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	>=dev-libs/libxml2-2.4.6
+	>=dev-libs/libxml2-2.4.6:=
 	x11-apps/appres
 	x11-apps/xwininfo
 	x11-libs/libX11
