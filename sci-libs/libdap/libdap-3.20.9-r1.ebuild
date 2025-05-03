@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	net-misc/curl
 	sys-apps/util-linux
 	sys-libs/zlib"
