@@ -6,6 +6,8 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/Cloudef/bemenu/issues</bugs-to>
+		<changelog>https://github.com/Cloudef/bemenu/releases</changelog>
 		<remote-id type="github">Cloudef/bemenu</remote-id>
 	</upstream>
 </pkgmetadata>
