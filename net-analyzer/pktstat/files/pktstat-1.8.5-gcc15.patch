@@ -1,0 +1,24 @@
+https://github.com/dleonard0/pktstat/pull/6
+https://bugs.gentoo.org/945321
+
+--- a/resize.c
++++ b/resize.c
+@@ -36,7 +36,7 @@
+ #include "compat.h"
+ 
+ #ifdef SIGWINCH
+-static RETSIGTYPE sigwinch();
++static RETSIGTYPE sigwinch(int sig);
+ #endif
+ 
+ static volatile int sigwinch_seen;
+@@ -44,8 +44,7 @@ static volatile int sigwinch_seen;
+ #ifdef SIGWINCH
+ /* Set the flag when the window size changes */
+ static RETSIGTYPE
+-sigwinch(sig)
+-	int sig;
++sigwinch(int sig)
+ {
+ 	sigwinch_seen = 1;
+ }
