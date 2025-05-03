@@ -220,7 +220,7 @@ RDEPEND="
 	)
 	x264? ( >=media-libs/x264-0.0.20190214:= )
 	x265? ( media-libs/x265:= )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	zeroconf? ( net-dns/avahi[dbus] )
 	zvbi? ( media-libs/zvbi )
 "
