@@ -40,7 +40,7 @@ DEPEND="
 	doc? (
 		dev-libs/glib:2[gtk-doc(+),doc(+)]
 	)
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	sys-libs/zlib
 	gstreamer? ( ${GST_DEPEND} )
 	packet-socket? ( sys-process/audit )
