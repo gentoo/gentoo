@@ -1,12 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit desktop toolchain-funcs xdg
 
-DESCRIPTION="A 3D fantasy MMORPG written in C and SDL"
-HOMEPAGE="http://www.eternal-lands.com"
+DESCRIPTION="3D fantasy MMORPG written in C and SDL"
+HOMEPAGE="https://www.eternal-lands.com"
 SRC_URI="https://github.com/raduprv/Eternal-Lands/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/Eternal-Lands-${PV}"
 
 LICENSE="eternal_lands"
 SLOT="0"
@@ -14,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="app-arch/unzip
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/cal3d[-16bit-indices]
 	media-libs/freealut
 	media-libs/libpng:0=
@@ -23,6 +25,7 @@ RDEPEND="app-arch/unzip
 	media-libs/openal
 	media-libs/sdl2-image
 	media-libs/sdl2-net
+	media-libs/sdl2-ttf
 	sys-libs/zlib[minizip]
 	virtual/glu
 	virtual/opengl
@@ -39,10 +42,8 @@ BDEPEND="${DEPEND}
 		media-gfx/graphviz
 	)"
 
-S="${WORKDIR}/Eternal-Lands-${PV}"
-
 PATCHES=(
-	"${FILESDIR}/${PN}-1.9.5.8-build.patch"
+	"${FILESDIR}/${PN}-1.9.6.1-build.patch"
 	"${FILESDIR}/${PN}-1.9.5.3-minizip.patch"
 )
 
@@ -66,7 +67,7 @@ src_compile() {
 
 src_install() {
 	dobin el.linux.bin
-	newbin "${FILESDIR}"/el-wrapper-1.9.5.8 el
+	newbin "${FILESDIR}"/el-wrapper-1.9.6.1 el
 	newicon -s 48 elc.png ${PN}.png
 	make_desktop_entry el "Eternal Lands"
 
