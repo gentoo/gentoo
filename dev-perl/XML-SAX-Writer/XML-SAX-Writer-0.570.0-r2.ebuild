@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RDEPEND="
 	>=dev-perl/XML-Filter-BufferText-1.0.0
 	>=dev-perl/XML-SAX-Base-1.10.0
 	>=dev-perl/XML-NamespaceSupport-1.40.0
-	>=dev-libs/libxml2-2.4.1
+	>=dev-libs/libxml2-2.4.1:=
 "
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
