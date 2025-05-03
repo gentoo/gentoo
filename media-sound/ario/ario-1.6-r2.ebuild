@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="dbus debug +idle nls taglib zeroconf"
 
 RDEPEND="dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-libs/libmpdclient
 	net-misc/curl
 	x11-libs/gtk+:3
