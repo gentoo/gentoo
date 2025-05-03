@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:= )
 	postscript? ( app-text/ghostscript-gpl )
-	svg? ( dev-libs/libxml2 )
+	svg? ( dev-libs/libxml2:= )
 	tcmalloc? ( dev-util/google-perftools:= )
 	tiff? ( media-libs/tiff:= )
 	truetype? (
