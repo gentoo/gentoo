@@ -8,11 +8,11 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/xkbcommon/${PN}"
 else
 	SRC_URI="https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	S="${WORKDIR}/libxkbcommon-xkbcommon-${PV}"
 fi
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit bash-completion-r1 meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
 
@@ -33,7 +33,7 @@ BDEPEND="
 RDEPEND="
 	X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP}] )
 	tools? ( wayland? ( >=dev-libs/wayland-1.2.0[${MULTILIB_USEDEP}] ) )
-	dev-libs/libxml2[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 	x11-misc/compose-tables
 	x11-misc/xkeyboard-config
 "
