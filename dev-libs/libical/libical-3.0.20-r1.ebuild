@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	glib? ( dev-libs/glib:2 )
 "
 DEPEND="${COMMON_DEPEND}
-	glib? ( dev-libs/libxml2:2 )
+	glib? ( dev-libs/libxml2:2= )
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-libs/timezone-data
