@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>kaichun.ning@gmail.com</email>
+    <name>Kai-Chun Ning</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="gtkspell">Use gtkspell for dictionary support</flag>
+    <flag name="ofono">Use ofono for telephony support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">modem-manager-gui</remote-id>
+  </upstream>
+</pkgmetadata>
