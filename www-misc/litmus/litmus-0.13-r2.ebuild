@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ DEPEND="
 	gnutls? ( net-libs/gnutls:0 )
 	kerberos? ( app-crypt/mit-krb5:0 )
 	libproxy? ( net-libs/libproxy:0 )
-	libxml2? ( dev-libs/libxml2:2 )
+	libxml2? ( dev-libs/libxml2:2= )
 	pkcs11? ( dev-libs/pakchois:0 )
 	ssl? ( dev-libs/openssl:0 )
 "
