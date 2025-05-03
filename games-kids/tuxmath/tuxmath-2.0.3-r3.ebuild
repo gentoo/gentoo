@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="nls svg"
 
 RDEPEND="
 	>=dev-games/t4k-common-0.1.1-r1[svg?]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-libs/libsdl[video]
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer
