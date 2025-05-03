@@ -35,7 +35,7 @@ RDEPEND="
 	app-arch/lz4
 	dev-libs/expat
 	dev-libs/jsoncpp:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/protobuf:=
 	dev-libs/pugixml
 	media-libs/freetype
