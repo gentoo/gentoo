@@ -6,11 +6,11 @@ EAPI=8
 inherit gnome.org meson systemd vala xdg
 
 DESCRIPTION="Rygel is an open source UPnP/DLNA MediaServer"
-HOMEPAGE="https://gnome.pages.gitlab.gnome.org/rygel/"
+HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="gtk gtk-doc +introspection +sqlite tracker test transcode"
 RESTRICT="!test? ( test )"
 
@@ -20,10 +20,10 @@ DEPEND="
 	>=dev-libs/libgee-0.8:0.8=
 	>=net-libs/gssdp-1.5.0:1.6=[vala]
 	>=dev-libs/glib-2.62.0:2
-	>=dev-libs/libxml2-2.7:2
+	>=dev-libs/libxml2-2.7:2=
 	>=net-libs/gupnp-av-0.14.1:=[vala]
 	>=media-libs/gupnp-dlna-0.9.4:2.0=
-	>=net-libs/libsoup-3.2.0:3.0
+	>=net-libs/libsoup-3:3.0
 	sqlite? (
 		>=dev-db/sqlite-3.5:3
 		dev-libs/libunistring:=
@@ -75,7 +75,7 @@ src_configure() {
 		$(meson_use gtk-doc api-docs)
 		-Dman_pages=true
 		-Dsystemd-user-units-dir=$(systemd_get_userunitdir)
-		-Dplugins=gst-launch$(use sqlite && echo ",media-export")$(use tracker && echo ",tracker3")
+		-Dplugins=gst-launch$(use sqlite && echo ",lms,media-export")$(use tracker && echo ",tracker3")
 		-Dengines=gstreamer
 		-Dexamples=false
 		$(meson_use test tests)
