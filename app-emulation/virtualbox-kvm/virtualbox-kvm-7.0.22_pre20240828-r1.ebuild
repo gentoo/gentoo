@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ unset WATCOM #856769
 COMMON_DEPEND="
 	acct-group/vboxusers
 	dev-libs/libtpms
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
