@@ -11,14 +11,14 @@ SRC_URI="https://github.com/igraph/igraph/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug test threads"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/gmp:0=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sci-libs/arpack
 	sci-mathematics/glpk:=
 	sci-mathematics/plfit
