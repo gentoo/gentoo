@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ REQUIRED_USE="${GUILE_REQUIRED_USE}"
 
 RDEPEND="
 	${GUILE_DEPS}
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 "
 DEPEND="${RDEPEND}"
 
