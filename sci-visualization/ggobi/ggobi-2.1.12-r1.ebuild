@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc minimal nls"
 
 RDEPEND="
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-gfx/graphviz
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
