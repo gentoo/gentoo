@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error
 	>=dev-libs/cJSON-1.7.14
-	>=dev-libs/libxml2-2.0:2
+	>=dev-libs/libxml2-2.0:2=
 	>=net-libs/gnutls-3.2.15:=
 	net-libs/libnet:1.1
 	net-libs/libpcap
@@ -32,7 +32,7 @@ DEPEND="
 	sys-libs/libxcrypt:=
 	>=sys-libs/zlib-1.2.8
 	net-libs/paho-mqtt-c:1.3
-	>=net-misc/curl-7.83.0
+	>=net-misc/curl-7.74.0
 	ldap? ( net-nds/openldap:= )
 	radius? ( net-dialup/freeradius-client )
 "
@@ -51,11 +51,6 @@ BDEPEND="
 	)
 	test? ( dev-libs/cgreen )
 "
-
-PATCHES=(
-	# Remove tests that don't work in the network sandbox
-	"${FILESDIR}/${P}-remove-unworking-tests.patch"
-)
 
 pkg_setup() {
 	if tc-is-clang; then
@@ -82,6 +77,12 @@ src_prepare() {
 				"${f}" || die "couldn't disable CLANG parsing"
 		   done
 		fi
+	fi
+
+	#Remove tests that doesn't work in the network sandbox
+	if use test; then
+		sed -i 's/add_test (networking-test networking-test)/ /g' base/CMakeLists.txt || die
+		sed -i 's/add_test (util-test util-test)/ /g' boreas/CMakeLists.txt || die
 	fi
 }
 
