@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/libsigc++:2
 	media-libs/libsndfile
 	media-libs/libsamplerate
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-libs/rubberband
 	sci-libs/fftw:3.0=
 	virtual/jack
