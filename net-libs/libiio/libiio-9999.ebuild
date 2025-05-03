@@ -22,7 +22,7 @@ IUSE="+aio python +zeroconf"
 
 BDEPEND="python? ( ${PYTHON_DEPS} )"
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	virtual/libusb:1
 	aio? ( dev-libs/libaio )
 	zeroconf? ( net-dns/avahi[dbus] )"
