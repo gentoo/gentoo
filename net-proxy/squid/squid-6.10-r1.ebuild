@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="caps gnutls pam ldap samba sasl kerberos nis radius ssl snmp selinux logrotate test ecap"
 IUSE+=" esi ssl-crtd mysql postgres sqlite systemd perl qos tproxy +htcp valgrind +wccp +wccpv2"
 RESTRICT="!test? ( test )"
@@ -43,7 +43,7 @@ DEPEND="
 	ecap? ( net-libs/libecap:1 )
 	esi? (
 		dev-libs/expat
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 	)
 	ldap? ( net-nds/openldap:= )
 	gnutls? ( >=net-libs/gnutls-3.1.5:= )
@@ -317,15 +317,6 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	default
-
-	# Suppress QA warning (bug #877729) for no tests executed
-	# for some subsuites. The layout is odd and there's a bunch
-	# of useless/stub directories which confuses it.
-	find "${S}" -iname test-suite.log -delete || die
 }
 
 src_install() {
