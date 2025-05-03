@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ KEYWORDS="amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="expat static-libs test xml"
 
 RDEPEND="expat? ( >=dev-libs/expat-2.1.0-r3 )
-	 xml? ( >=dev-libs/libxml2-2.9.1-r4 )"
+	 xml? ( >=dev-libs/libxml2-2.9.1-r4:= )"
 DEPEND="${RDEPEND}
 	test? ( >=dev-util/cunit-2.1_p2 )"
 
