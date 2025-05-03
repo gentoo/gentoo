@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RDEPEND="
 	${GUILE_DEPS}
 	>=app-text/evince-3.22.1-r1:=
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	gnome-base/librsvg:2
 	media-libs/fontconfig:1.0
 	>=media-libs/libsmf-1.3
