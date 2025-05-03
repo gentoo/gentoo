@@ -22,7 +22,7 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/zlib
 	nls? ( virtual/libintl )
 	python? ( ${PYTHON_DEPS} )
