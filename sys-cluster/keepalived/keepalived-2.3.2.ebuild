@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://www.keepalived.org/software/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="+bfd dbus json regex snmp systemd"
 
 RDEPEND="
@@ -34,10 +34,6 @@ DEPEND="${RDEPEND}
 DOCS=(
 	README CONTRIBUTORS INSTALL ChangeLog AUTHOR TODO
 	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt
-)
-
-PATCHES=(
-	"${FILESDIR}"/${P}-libressl.patch #903001
 )
 
 src_prepare() {
