@@ -105,6 +105,13 @@ x11-themes/fvwm-themes-extra
 ~sci-geosciences/qgis-3.38.3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
+# Depends on Qt5 and is unmaintained for a very long time - currently
+# packaged release is from 2021. Interested parties should look into
+# packaging (gui-apps/)deskflow instead - see also bug #953262
+# Removal on 2025-05-26. Bug #907118
+x11-misc/synergy
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
 # Bug #947297; removal on 2025-05-26
 dev-db/sqliteman
