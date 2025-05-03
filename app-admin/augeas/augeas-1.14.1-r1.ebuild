@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/readline:="
 DEPEND="${RDEPEND}"
 BDEPEND="
