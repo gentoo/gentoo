@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ DEPEND="
 	>=app-crypt/gpgme-1.13.0:=
 	sqlite? ( >=dev-db/sqlite-3.24:= )
 	ldap? ( net-nds/openldap:= )
-	rubrica? ( dev-libs/libxml2:2 )
+	rubrica? ( dev-libs/libxml2:2= )
 	kerberos? ( app-crypt/mit-krb5 )
 	xface? ( >=media-libs/compface-1.5.1:= )
 	gnome? ( x11-libs/gtksourceview:4 )
