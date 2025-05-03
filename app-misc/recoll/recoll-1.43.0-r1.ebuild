@@ -23,7 +23,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	dev-libs/xapian:=
 	sys-libs/zlib
