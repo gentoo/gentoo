@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 	opengl? ( virtual/opengl )
 	pugixml? ( dev-libs/pugixml )
-	!pugixml? ( dev-libs/libxml2 )
+	!pugixml? ( dev-libs/libxml2:= )
 	sdl2? (
 		media-libs/libsdl2[X,opengl?,video]
 		media-libs/sdl2-gfx
