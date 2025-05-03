@@ -1,43 +1,51 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools bash-completion-r1 cuda desktop flag-o-matic systemd toolchain-funcs multilib-minimal
+inherit autotools bash-completion-r1 cuda desktop flag-o-matic systemd toolchain-funcs xdg-utils multilib-minimal
 
 MY_PV="v$(ver_cut 1-2)"
 DESCRIPTION="Displays the hardware topology in convenient formats"
 HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
-SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
-	https://raw.githubusercontent.com/open-mpi/hwloc/master/contrib/android/assets/lstopo.png"
+SRC_URI="
+	https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
+	https://raw.githubusercontent.com/open-mpi/hwloc/master/contrib/android/assets/lstopo.png
+"
 
 LICENSE="BSD"
 SLOT="0/15"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="cairo +cpuid cuda debug nvml +pci static-libs svg udev xml X video_cards_nvidia"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+IUSE="cairo +cpuid cuda debug doc l0 nvml +pci rocm static-libs svg udev valgrind xml X video_cards_nvidia"
 
 # opencl: opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
 #         anyone with hardware is welcome to step up and help test to get it re-added.
 # video-cards_nvidia: libXext/libX11 deps are only here, see HWLOC_GL_REQUIRES usage in config/hwloc.m4
-RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[X?,svg(+)?,${MULTILIB_USEDEP}] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
+	doc? ( app-text/doxygen )
+	l0? ( dev-libs/level-zero:= )
 	nvml? ( x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}] )
 	pci? (
 		>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]
 		>=x11-libs/libpciaccess-0.13.1-r1[${MULTILIB_USEDEP}]
 	)
+	rocm? ( dev-util/rocm-smi:= )
 	udev? ( virtual/libudev:= )
-	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
+	xml? ( >=dev-libs/libxml2-2.9.1-r4:=[${MULTILIB_USEDEP}] )
 	video_cards_nvidia? (
 		x11-drivers/nvidia-drivers[static-libs]
 		x11-libs/libXext
 		x11-libs/libX11
-	)"
-DEPEND="${RDEPEND}"
-# 2.69-r5 for --runstatedir
-BDEPEND=">=dev-build/autoconf-2.69-r5
-	virtual/pkgconfig"
+	)
+"
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-debug/valgrind )
+"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
 
@@ -45,6 +53,11 @@ DOCS=( AUTHORS NEWS README VERSION )
 
 src_prepare() {
 	default
+
+	# bug #934428 #949986
+	if tc-is-gcc; then
+		eapply "${FILESDIR}/${PN}-2.11.2-fix-enable-gl.patch"
+	fi
 
 	eautoreconf
 }
@@ -65,6 +78,9 @@ multilib_src_configure() {
 		append-ldflags "-L${ESYSROOT}/opt/cuda/$(get_libdir)"
 	fi
 
+	export ac_cv_header_valgrind_valgrind_h=$(multilib_native_usex valgrind)
+	export ac_cv_have_decl_RUNNING_ON_VALGRIND=$(multilib_native_usex valgrind)
+
 	local myconf=(
 		--disable-opencl
 
@@ -78,9 +94,13 @@ multilib_src_configure() {
 		--runstatedir="${EPREFIX}/run"
 		$(multilib_native_use_enable cuda)
 		$(multilib_native_use_enable video_cards_nvidia gl)
+		$(multilib_native_use_enable l0 levelzero)
+		$(multilib_native_use_enable rocm rsmi)
+		$(multilib_native_use_with rocm rocm "${ESYSROOT}/usr")
 		$(use_enable cairo)
 		$(use_enable cpuid)
 		$(use_enable debug)
+		$(use_enable doc doxygen)
 		$(use_enable udev libudev)
 		$(use_enable nvml)
 		$(use_enable pci)
@@ -102,11 +122,21 @@ multilib_src_install_all() {
 		;;
 	esac
 
+	use doc && dodoc -r doc/doxygen-doc/html
+
 	mv "${ED}"/usr/share/bash-completion/completions/hwloc{,-annotate} || die
 	bashcomp_alias hwloc-annotate \
 		hwloc-{diff,ps,compress-dir,gather-cpuid,distrib,info,bind,patch,calc,ls,gather-topology}
 	bashcomp_alias hwloc-annotate lstopo{,-no-graphics}
 
 	find "${ED}" -name '*.la' -delete || die
-	doicon "${DISTDIR}/lstopo.png"
+	newicon -s 512 "${DISTDIR}/lstopo.png" ${PN}.png
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
