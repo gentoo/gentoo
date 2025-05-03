@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ RDEPEND="
 	joystick? ( !backend-sdl? ( media-libs/libjsw ) )
 	png? ( media-libs/libpng:0= )
 	pulseaudio? ( media-libs/libpulse )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	backend-fbcon? ( virtual/linux-sources )"
