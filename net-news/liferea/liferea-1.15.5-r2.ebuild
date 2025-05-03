@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools gnome2-utils optfeature python-single-r1 xdg
 
@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/gobject-introspection
 	dev-libs/json-glib
 	dev-libs/libpeas:0[gtk,python,${PYTHON_SINGLE_USEDEP}]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	gnome-base/gsettings-desktop-schemas
 	net-libs/libsoup:3.0
@@ -34,6 +34,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/intltool
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-libxml2.patch"
+)
 
 src_prepare() {
 	default
