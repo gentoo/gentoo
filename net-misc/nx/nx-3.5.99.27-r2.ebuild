@@ -1,23 +1,24 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="https://github.com/ArcticaProject/nx-libs"
+
 SRC_URI="https://github.com/ArcticaProject/nx-libs/archive/${PV}.tar.gz -> nx-libs-${PV}.tar.gz"
 S="${WORKDIR}/nx-libs-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
-IUSE="selinux"
 
-RDEPEND="dev-libs/libxml2
+RDEPEND="dev-libs/libxml2:=
 	media-libs/libjpeg-turbo:*
 	>=media-libs/libpng-1.2.8:0=
 	>=sys-libs/zlib-1.2.3
+	x11-apps/xkbcomp
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -40,15 +41,9 @@ BDEPEND="virtual/pkgconfig
 	x11-misc/gccmakedep
 	x11-misc/imake"
 
-RDEPEND+=" selinux? ( sec-policy/selinux-nx )"
-
 PATCHES=(
-	# https://github.com/ArcticaProject/nx-libs/pull/1012
-	"${FILESDIR}/${PN}-3.5.99.26-binutils-2.36.patch"
-	# https://github.com/ArcticaProject/nx-libs/pull/1023
-	"${FILESDIR}/${PN}-3.5.99.26-riscv64-support.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-musl.patch"
-	"${FILESDIR}/${PN}-3.5.99.26-which.patch"
+	"${FILESDIR}/${PN}-3.5.99.27-which.patch"
 	# https://github.com/ArcticaProject/nx-libs/pull/1087
 	"${FILESDIR}/${PN}-3.5.99.26-gcc14-32bit.patch"
 	"${FILESDIR}/${PN}-3.5.99.26-gcc14-access.patch"
@@ -99,7 +94,7 @@ src_configure() {
 	local subdir
 	for subdir in nxcomp nxdialog nxcompshad nxproxy ; do
 		pushd ${subdir} || die
-		econf
+		econf --enable-static
 		popd || die
 	done
 
