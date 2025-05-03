@@ -25,6 +25,7 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libxdg-basedir
 	dev-libs/libxml2:=
 	media-fonts/dejavu
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	media-libs/libsdl[joystick,opengl]
 	media-libs/sdl-mixer[vorbis]
@@ -32,7 +33,6 @@ RDEPEND="app-arch/bzip2
 	media-libs/sdl-ttf
 	net-misc/curl
 	sys-libs/zlib:=
-	virtual/jpeg:0
 	virtual/glu
 	virtual/opengl
 	nls? ( virtual/libintl )"
