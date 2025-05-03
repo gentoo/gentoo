@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ DEPEND="
 	>=dev-cpp/gtkmm-4.10.0:4.0
 	>=gui-libs/libadwaita-1
 	>=app-crypt/libsecret-0.8
-	>=dev-libs/libxml2-2:2
+	>=dev-libs/libxml2-2:2=
 	dev-libs/libxslt
 	>=sys-apps/util-linux-2.16
 	test? ( dev-libs/unittest++ )
