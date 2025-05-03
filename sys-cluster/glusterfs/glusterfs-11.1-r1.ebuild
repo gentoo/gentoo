@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools elisp-common python-single-r1 tmpfiles systemd
+inherit autotools elisp-common python-single-r1 tmpfiles systemd bash-completion-r1
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
@@ -13,7 +13,7 @@ SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="debug emacs +fuse georeplication ipv6 +libtirpc rsyslog selinux static-libs tcmalloc test +uring xml"
 
@@ -23,6 +23,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # the tests must be run as root
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-11.0-extras-defer-invoking-of-gluster-volume-set-help-as-.patch"
+)
 
 # sys-apps/util-linux is required for libuuid
 RDEPEND="
@@ -44,18 +48,21 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-glusterfs )
 	tcmalloc? ( dev-util/google-perftools )
 	uring? ( sys-libs/liburing:= )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 "
 DEPEND="
 	${RDEPEND}
 	virtual/acl
-	test? ( >=dev-util/cmocka-1.0.1
+	test? (
+		>=dev-util/cmocka-1.0.1
 		app-benchmarks/dbench
+		dev-libs/xxhash
 		dev-vcs/git
 		virtual/perl-Test-Harness
 		dev-libs/yajl
 		sys-fs/xfsprogs
-		sys-apps/attr )
+		sys-apps/attr
+	)
 "
 BDEPEND="
 	sys-devel/bison
@@ -63,11 +70,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-SITEFILE="50${PN}-mode-gentoo.el"
-
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
-
-QA_PKGCONFIG_VERSION=""
 
 # Maintainer notes:
 # * The build system will always configure & build argp-standalone but it'll never use it
@@ -124,6 +127,10 @@ src_test() {
 src_install() {
 	default
 
+	# Path changes based on whether app-shells/bash-completion is installed, bug #911523
+	rm -rf "${ED}"/etc/bash_completion.d "${D}$(get_bashcompdir)" || die
+	newbashcomp extras/command-completion/gluster.bash gluster
+
 	rm \
 		"${ED}"/etc/glusterfs/glusterfs-{georep-,}logrotate \
 		"${ED}"/etc/glusterfs/gluster-rsyslog-*.conf \
@@ -139,7 +146,7 @@ src_install() {
 
 	if use emacs ; then
 		elisp-install ${PN} extras/glusterfs-mode.el*
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+		elisp-site-file-install "${FILESDIR}/50glusterfs-mode-gentoo.el"
 	fi
 
 	insinto /usr/share/vim/vimfiles/ftdetect; doins "${FILESDIR}"/${PN}.vim
