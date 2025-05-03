@@ -30,7 +30,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/glib:2
-	>=dev-libs/libxml2-2.0
+	>=dev-libs/libxml2-2.0:=
 	>=media-libs/fontconfig-2
 	x11-libs/cairo
 	x11-libs/libXau
