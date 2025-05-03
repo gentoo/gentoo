@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-libs/audiofile:=
 	media-libs/ladspa-sdk
 	media-libs/liblrdf
