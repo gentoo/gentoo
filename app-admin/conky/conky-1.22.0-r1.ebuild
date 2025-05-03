@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 	pulseaudio? ( media-libs/libpulse )
 	rss? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		dev-libs/glib:2
 	)
 	systemd? ( sys-apps/systemd )
