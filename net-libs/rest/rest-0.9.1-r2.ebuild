@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.44.0:2
 	>=net-libs/libsoup-2.99.2:3.0
 	dev-libs/json-glib:0[introspection?]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	app-misc/ca-certificates
 	introspection? ( >=dev-libs/gobject-introspection-1.74.0:= )
 "
