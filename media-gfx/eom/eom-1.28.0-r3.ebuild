@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.52:2
 	>=dev-libs/libpeas-1.8.0:0[gtk]
-	>=dev-libs/libxml2-2:2
+	>=dev-libs/libxml2-2:2=
 	gnome-base/dconf
 	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	sys-libs/zlib
