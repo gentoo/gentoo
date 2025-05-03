@@ -7,13 +7,12 @@ TMPFILES_OPTIONAL=1
 inherit gnome.org gnome2-utils meson systemd tmpfiles xdg
 
 DESCRIPTION="Virtual filesystem implementation for GIO"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gvfs"
+HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
 
 LICENSE="LGPL-2+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="afp archive bluray cdda cdr elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs onedrive policykit samba systemd test +udev udisks zeroconf"
+IUSE="afp archive bluray cdda elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
@@ -21,23 +20,23 @@ REQUIRED_USE="
 	cdda? ( udev )
 	google? ( gnome-online-accounts )
 	gphoto2? ( udev )
-	onedrive? ( gnome-online-accounts )
 	mtp? ( udev )
 	udisks? ( udev )
 "
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/glib-2.70.0:2
 	>=gnome-base/gsettings-desktop-schemas-3.33.0
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	sys-apps/dbus
-	app-crypt/gcr:4=
+	app-crypt/gcr:0=
 	policykit? (
 		>=sys-auth/polkit-0.114
 		sys-libs/libcap
 	)
 	http? (
-		dev-libs/libxml2:2
+		dev-libs/libxml2:2=
 		>=net-libs/libsoup-3.0.0:3.0
 	)
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
@@ -69,10 +68,6 @@ RDEPEND="
 	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
-	onedrive? (
-		>=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts]
-		>=net-libs/msgraph-0.2.0
-	)
 	virtual/openssh
 "
 DEPEND="${RDEPEND}"
@@ -114,9 +109,7 @@ src_configure() {
 		$(meson_use ios afc)
 		$(meson_use afp)
 		$(meson_use archive)
-		$(meson_use cdr burn)
 		$(meson_use cdda)
-		-Ddeprecated_apis=false
 		$(meson_use zeroconf dnssd)
 		$(meson_use gnome-online-accounts goa)
 		$(meson_use google)
@@ -124,7 +117,6 @@ src_configure() {
 		$(meson_use http)
 		$(meson_use mtp)
 		$(meson_use nfs)
-		$(meson_use onedrive)
 		-Dsftp=true
 		$(meson_use samba smb)
 		$(meson_use udisks udisks2)
@@ -142,8 +134,6 @@ src_configure() {
 		-Dinstalled_tests=false
 		-Dman=true
 		-Dprivileged_group=wheel
-		# wsdd not in gentoo repository
-		-Dwsdd=false
 	)
 	meson_src_configure
 }
