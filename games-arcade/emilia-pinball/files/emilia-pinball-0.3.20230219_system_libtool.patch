@@ -1,0 +1,110 @@
+From 342b0bf401d0a6b11993c4f617e3504515f6013f Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Sun, 5 Mar 2023 09:55:16 +0100
+Subject: [PATCH] Autotools: Reuse system libtool installation
+
+---
+ Makefile.am      |  2 +-
+ configure.ac     | 10 +---------
+ helper.mk        |  4 ++--
+ src/Makefile.am  |  4 ++--
+ test/Makefile.am |  4 ++--
+ 5 files changed, 8 insertions(+), 16 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0e3e455..818de4b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = gnu
+ 
+-SUBDIRS = libltdl addon base data src test
++SUBDIRS = addon base data src test
+ 
+ EXTRA_DIST = bootstrap pinball.spec clean pinball.desktop
+ 
+diff --git a/configure.ac b/configure.ac
+index 7cd7970..b61db38 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,6 @@ AC_INIT([pinball],
+ 
+ AC_CONFIG_MACRO_DIRS([libltdl/m4])
+ AM_CONFIG_HEADER(pinconfig.h)
+-LT_CONFIG_LTDL_DIR([libltdl])
+ 
+ AC_CANONICAL_HOST
+ AC_CANONICAL_TARGET
+@@ -33,15 +32,8 @@ AC_PROG_CC
+ AM_PROG_AR
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+-_LT_SET_OPTION([LT_INIT],[dlopen])
+-AC_DIAGNOSE([obsolete],[AC_LIBTOOL_DLOPEN: Remove this warning and the call to _LT_SET_OPTION when you
+-put the 'dlopen' option into LT_INIT's first parameter.])
+ 
+-LT_INIT
+-LTDL_INIT
+-
+-AC_SUBST(INCLTDL)
+-AC_SUBST(LIBLTDL)
++LT_INIT([dlopen])
+ 
+ dnl *******************************************
+ dnl PATHS AND DIRS ****************************
+diff --git a/helper.mk b/helper.mk
+index 4e18b0a..e60674d 100755
+--- a/helper.mk
++++ b/helper.mk
+@@ -166,7 +166,7 @@ config.status configure: acinclude.m4 pinconfig.h.in Makefile.in
+ 
+ INSTALL config.guess config.sub depcomp install-sh autom4te.cache: Makefile.am ltmain.sh pinconfig.h.in README
+ 	@echo "# log: $@: $^"
+-	automake --add-missing --copy --force
++	automake --add-missing --copy
+ 	stat -c '%y: %n' $^ $@
+ 
+ README: README.md
+@@ -198,7 +198,7 @@ pinconfig.h.in: aclocal.m4
+ 
+ libltdl/m4 compile missing ltmain.sh: configure.ac
+ 	@echo "# log: $@: $<"
+-	libtoolize --ltdl --force --copy
++	libtoolize --force
+ 	stat -c '%y: %n' $^ $@
+ 
+ devel: ${app}
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 665882f..03f46f4 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,9 +7,9 @@ bin_PROGRAMS = pinball
+ 
+ pinlib_LIBRARIES = libemilia_pin.a
+ 
+-AM_CPPFLAGS = -I../base -I../addon @INCLTDL@
++AM_CPPFLAGS = -I../base -I../addon
+ 
+-pinball_LDADD = libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++pinball_LDADD = libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ pinball_LDFLAGS = -export-dynamic
+ 
+ pinball_SOURCES = Pinball.cpp
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 69d3dc3..bd42fd4 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -6,8 +6,8 @@ testdatadir = $(pkgdatadir)
+ noinst_PROGRAMS = scale simple light texture load explode collision signal billboard font thread menu joy sound trans math misc varray unittest
+ # noinst_PROGRAMS = unittest
+ 
+-AM_CPPFLAGS = -I../base -I../addon -I../src @INCLTDL@
+-LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++AM_CPPFLAGS = -I../base -I../addon -I../src
++LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ 
+ testlib_LTLIBRARIES = libModuleTest.la
+ 
+-- 
+2.39.2
+
