@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="static-libs +xml"
 RDEPEND="
 	>=dev-libs/libcdio-2.0.0:0=[-minimal,${MULTILIB_USEDEP}]
 	dev-libs/popt
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
