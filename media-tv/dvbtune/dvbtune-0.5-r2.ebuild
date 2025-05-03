@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="xml"
 
-RDEPEND="xml? ( dev-libs/libxml2 )"
+RDEPEND="xml? ( dev-libs/libxml2:= )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
 
 PATCHES=(
-	"${FILESDIR}"/${PF}-gentoo.diff
+	"${FILESDIR}"/${PN}-0.5-r1-gentoo.diff
 	"${FILESDIR}"/${PN}-0.5-stdint.patch
 )
 
