@@ -206,7 +206,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	net-misc/curl
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 "
 DEPEND="${RDEPEND}"
 
