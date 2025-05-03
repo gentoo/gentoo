@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,35 +7,33 @@ inherit cmake linux-info
 
 MY_PV="${PV/_rc/-RC}"
 
-DESCRIPTION="Ncurses interface for QEMU"
+DESCRIPTION="ncurses interface for QEMU"
 HOMEPAGE="https://github.com/nemuTUI/nemu"
 SRC_URI="https://github.com/nemuTUI/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${MY_PV}/"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="dbus network-map +ovf remote-api +usb"
+IUSE="dbus network-map +ovf remote-api"
 
 RDEPEND="
 	>=app-emulation/qemu-6.0.0-r3[vnc,virtfs,spice]
 	dev-db/sqlite:3=
 	dev-libs/json-c
 	sys-libs/ncurses:=[unicode(+)]
-	usb? (
-		virtual/libusb:1
-		virtual/libudev:=
-	)
+	virtual/libusb:1
+	virtual/libudev:=
 	dbus? ( sys-apps/dbus )
 	network-map? ( media-gfx/graphviz[svg] )
 	ovf? (
-		dev-libs/libxml2:2
+		dev-libs/libxml2:2=
 		app-arch/libarchive:=
 	)
 	remote-api? ( dev-libs/openssl )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
+S="${WORKDIR}/${PN}-${MY_PV}/"
 
 pkg_pretend() {
 	if use kernel_linux; then
@@ -60,7 +58,6 @@ src_configure() {
 		-DNM_WITH_REMOTE=$(usex remote-api)
 		-DNM_WITH_OVF_SUPPORT=$(usex ovf)
 		-DNM_WITH_QEMU=off
-		-DNM_WITH_USB=$(usex usb)
 	)
 	cmake_src_configure
 }
