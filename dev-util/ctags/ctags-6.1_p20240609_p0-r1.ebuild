@@ -43,7 +43,7 @@ DEPEND="
 	json? ( dev-libs/jansson:= )
 	pcre? ( dev-libs/libpcre2 )
 	seccomp? ( sys-libs/libseccomp )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	yaml? ( dev-libs/libyaml )
 "
 RDEPEND="${DEPEND}"
@@ -60,10 +60,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	libiconv_open
 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-20230423.0-alignment.patch
-)
-
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
@@ -74,6 +70,8 @@ src_prepare() {
 
 	default
 
+	# Don't automagically use Valgrind
+	sed -i -e '/if type valgrind/s:valgrind:valgrind-falseified:' Tmain/optscript.d/run.sh || die
 	#./misc/dist-test-cases > makefiles/test-cases.mak || die
 
 	eautoreconf

@@ -47,7 +47,7 @@ DEPEND="
 	json? ( dev-libs/jansson:= )
 	pcre? ( dev-libs/libpcre2 )
 	seccomp? ( sys-libs/libseccomp )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	yaml? ( dev-libs/libyaml )
 "
 RDEPEND="${DEPEND}"
