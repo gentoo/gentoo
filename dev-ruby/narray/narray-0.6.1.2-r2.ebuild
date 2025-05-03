@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_VERSION="${PV/_p/.}"
 
 RUBY_FAKEGEM_EXTENSIONS=(./extconf.rb)
 
-inherit ruby-fakegem
+inherit flag-o-matic ruby-fakegem
 
 DESCRIPTION="Numerical N-dimensional Array class"
 HOMEPAGE="https://masa16.github.io/narray/"
@@ -24,8 +24,6 @@ SRC_URI="https://github.com/masa16/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc ~ppc64 x86"
-
-IUSE=""
 
 all_ruby_prepare() {
 	# the tests aren't really written to be a testsuite, so the
@@ -36,6 +34,16 @@ all_ruby_prepare() {
 		test/*.rb || die "sed failed"
 
 	sed -i -e 's:src/narray.h:narray.h:' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -e '/CFLAGS/ s/^#//' \
+		-i extconf.rb || die
+}
+
+each_ruby_configure() {
+	append-flags -std=gnu17
+	filter-flags -std=gnu23
+
+	each_fakegem_configure
 }
 
 each_ruby_test() {
