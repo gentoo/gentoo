@@ -61,7 +61,7 @@ systemd? ( sys-apps/systemd )
 tcl? ( >=dev-lang/tcl-8:0= )
 uring? ( sys-libs/liburing )
 xml? (
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 )
 zlib? ( sys-libs/zlib )

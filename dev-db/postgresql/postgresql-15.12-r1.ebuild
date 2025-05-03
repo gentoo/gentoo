@@ -48,7 +48,7 @@ readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
-xml? ( dev-libs/libxml2 dev-libs/libxslt )
+xml? ( dev-libs/libxml2:= dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
 zstd? ( app-arch/zstd )
 "
