@@ -26,7 +26,7 @@ S="${WORKDIR}"/${MYP}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="cuda distributed fbgemm flash gloo memefficient mkl mpi nnpack +numpy
 	onednn openblas opencl openmp qnnpack rocm xnnpack"
 RESTRICT="test"
@@ -233,6 +233,7 @@ src_configure() {
 		-DUSE_GLOO=$(usex gloo)
 		-DUSE_ITT=OFF
 		-DUSE_KINETO=OFF # TODO
+		-DUSE_KLEIDIAI=OFF # TODO
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
 		-DUSE_MEM_EFF_ATTENTION=$(usex memefficient)
 		-DUSE_MKLDNN=$(usex onednn)
