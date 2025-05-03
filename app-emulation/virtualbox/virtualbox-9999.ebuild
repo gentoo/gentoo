@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	acct-group/vboxusers
 	app-arch/xz-utils
 	dev-libs/libtpms
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
