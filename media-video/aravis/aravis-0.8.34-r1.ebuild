@@ -1,7 +1,7 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg
 
@@ -11,9 +11,9 @@ HOMEPAGE="https://github.com/AravisProject/aravis"
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/AravisProject/${PN}"
+	S="${WORKDIR}/${P}"
 else
-	MY_P="${PN^^}_${PV//./_}"
-	SRC_URI="https://github.com/AravisProject/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/AravisProject/${PN}/releases/download/$PV/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -40,7 +40,7 @@ DEPEND="
 	doc? (
 		dev-libs/glib:2[gtk-doc(+),doc(+)]
 	)
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	sys-libs/zlib
 	gstreamer? ( ${GST_DEPEND} )
 	packet-socket? ( sys-process/audit )
@@ -48,14 +48,9 @@ DEPEND="
 	viewer? (
 		${GST_DEPEND}
 		x11-libs/gtk+:3
-		x11-libs/libnotify
 	)
 "
 RDEPEND="${DEPEND}"
-
-if [[ ${PV} != 9999 ]]; then
-	S="${WORKDIR}/${PN}-${MY_P}"
-fi
 
 src_configure() {
 	local emesonargs=(
