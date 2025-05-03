@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome2 meson readme.gentoo-r1
 
 DESCRIPTION="Desktop note-taking application"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gnote"
+HOMEPAGE="https://wiki.gnome.org/Apps/Gnote"
 
 LICENSE="GPL-3+ FDL-1.1"
 SLOT="0"
@@ -17,10 +17,9 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-libs/glib-2.74:2[dbus]
 	>=dev-cpp/glibmm-2.74:2.68
-	>=dev-cpp/gtkmm-4.10.0:4.0
-	>=gui-libs/libadwaita-1
+	>=dev-cpp/gtkmm-4.0.0:4.0
 	>=app-crypt/libsecret-0.8
-	>=dev-libs/libxml2-2:2
+	>=dev-libs/libxml2-2:2=
 	dev-libs/libxslt
 	>=sys-apps/util-linux-2.16
 	test? ( dev-libs/unittest++ )
