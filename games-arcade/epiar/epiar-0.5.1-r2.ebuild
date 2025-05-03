@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RDEPEND="
 	${LUA_DEPS}
 	dev-games/physfs
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/ftgl
 	media-libs/libsdl[opengl,sound,video]
 	media-libs/sdl-image[png]
