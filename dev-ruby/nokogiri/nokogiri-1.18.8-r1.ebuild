@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md ROADMAP.md SECURITY.md"
 
@@ -19,16 +19,16 @@ SRC_URI="https://github.com/sparklemotion/nokogiri/archive/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
 IUSE="test"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.13.7
+	>=dev-libs/libxml2-2.13.5:=
 	>=dev-libs/libxslt-1.1.43
 	>=sys-libs/zlib-1.3.1
 	virtual/libiconv"
 DEPEND="
-	>=dev-libs/libxml2-2.13.7
+	>=dev-libs/libxml2-2.13.5:=
 	>=dev-libs/libxslt-1.1.43
 	>=sys-libs/zlib-1.3.1
 	virtual/libiconv"
