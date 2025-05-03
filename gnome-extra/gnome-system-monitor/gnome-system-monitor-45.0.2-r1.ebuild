@@ -5,23 +5,23 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="The Gnome System Monitor"
-HOMEPAGE="https://apps.gnome.org/SystemMonitor/"
+HOMEPAGE="https://help.gnome.org/users/gnome-system-monitor/stable/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-
 IUSE="systemd X"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
-	>=dev-cpp/glibmm-2.68:2.68
+	>=dev-cpp/glibmm-2.46:2
 	>=dev-libs/glib-2.56.0:2
-	>=gui-libs/gtk-4.12.0:4[X(+)?]
-	>=dev-cpp/gtkmm-4.0.0:4.0
-	>=gnome-base/libgtop-2.41.2:2=
-	>=gui-libs/libadwaita-1.6_alpha:1
-	>=gnome-base/librsvg-2.46:2
-	>=dev-libs/libxml2-2.0:2
+	>=x11-libs/gtk+-3.22:3[X(+)?]
+	>=dev-cpp/gtkmm-3.3.18:3.0
+	>=dev-cpp/atkmm-2.28:0
+	>=gnome-base/libgtop-2.37.2:2=
+	>=gui-libs/libhandy-1.5.0:1
+	>=gnome-base/librsvg-2.35:2
+	>=dev-libs/libxml2-2.0:2=
 	X? ( >=x11-libs/libwnck-2.91.0:3 )
 	systemd? ( >=sys-apps/systemd-44:0= )
 "
@@ -39,7 +39,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use X wnck)
 		$(meson_use systemd)
-		-Ddevelopment=false
 	)
 	meson_src_configure
 }
