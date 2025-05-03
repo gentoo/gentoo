@@ -20,7 +20,7 @@ REQUIRED_USE="
 DEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.67.4:2[${MULTILIB_USEDEP}]
-	>=dev-libs/libxml2-2.9.1:2[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.9.1:2=[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
 	systemd? ( sys-apps/systemd[${MULTILIB_USEDEP}] )
 	X? (
