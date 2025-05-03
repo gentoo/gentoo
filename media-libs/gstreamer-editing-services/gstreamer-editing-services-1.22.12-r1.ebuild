@@ -23,7 +23,7 @@ RESTRICT="test"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.40.0:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=media-libs/gstreamer-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[introspection?]
