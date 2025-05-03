@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	>=app-pda/libplist-2.3:=
 	>=dev-db/sqlite-3:3
 	>=dev-libs/glib-2.16:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	sys-apps/sg3_utils:0=
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	ios? ( app-pda/libimobiledevice:= )
