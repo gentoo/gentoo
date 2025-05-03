@@ -26,7 +26,7 @@ DEPEND="
 		dev-libs/dbus-glib
 	)
 	eds? ( >=gnome-extra/evolution-data-server-3.38:= )
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	utils? ( sys-libs/readline:0= )
 "
 # telepathy-mission-control needed at runtime; it is used by the telepathy
