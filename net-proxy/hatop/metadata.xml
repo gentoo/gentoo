@@ -5,4 +5,7 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">jhunt/hatop</remote-id>
+	</upstream>
 </pkgmetadata>
