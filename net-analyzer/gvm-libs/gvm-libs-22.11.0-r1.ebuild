@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error
 	>=dev-libs/cJSON-1.7.14
-	>=dev-libs/libxml2-2.0:2
+	>=dev-libs/libxml2-2.0:2=
 	>=net-libs/gnutls-3.2.15:=
 	net-libs/libnet:1.1
 	net-libs/libpcap
